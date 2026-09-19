@@ -409,5 +409,87 @@
       ]
     ]
   },
-  "factcheck": {}
+  "factcheck": {
+    "checked_by": "independent factcheck agent (first round)",
+    "checked_on": "2026-09-20",
+    "method": "未參與撰稿。2026-09-20（台北）以 curl -sL -A \"Mokaair-editorial\" 把 sources[] 四條全部重抓並讀 body；所有請求的 UA、標頭、查詢字串都沒有帶任何 email、姓名或個人資料。四條都 HTTP 200、0 次轉址，位元組數與研究紀錄相同：部落格 1,276,620、What's New 322,901、Kimi K3 模型卡 58,531、Regional availability by models 1,116,274。部落格正文從 article.blog-post 抽成 11,272 字純文字，What's New 從 id=aws-page-content-main 抽出正文（含 Posted on: Sep 18, 2026）。指派訊息提到區域表可能是動態載入——實測不是：ap-east-2 那一列就在模型卡的靜態 HTML 裡（以 <tr> 抓出 \"ap-east-2 (Taipei) [not-supported] [not-supported] [supported]\"）。另外用官方自己在頁首提供的同網址 .md 版（把 .html 換成 .md，模型卡 24,856 bytes、區域頁 478,185 bytes）把模型卡的 Pricing 表、模態表、Programmatic Access 表、32 列區域表，以及區域頁上 Kimi K3 的 32 列表逐格讀出來，兩份渲染結果逐格一致：In-Region 全 32 列都是 not-supported；Geo 只有 us-east-1、us-east-2、us-west-1、us-west-2、ca-central-1 五列 supported；Global 全 32 列都是 supported；ap-east-2 (Taipei) 是 not-supported／not-supported／supported。把內容包拆成約 112 條可核對的主張逐條回原文比對：title、description、正文 12 段每一句、summary 五句、FAQ 六題答句、callout、表格 12 格與 caption、圖解 caption 與 alt 的四格、四條 source 的標題與網址。全稱句與否定句另外用程式數過四條來源的出現次數：Taiwan 0 次；Taipei 只出現在區域表的機房代號（模型卡 1 次、區域頁 20 次）；China／Chinese 在四份正文都是 0 次；serverless 只出現在 AWS 網站導覽列的產品選單 JSON，正文 0 次（據此改掉一句）。價格的兩個出處全程分開處理：部落格只有一句相對敘述 \"Global cross-Region inference costs approximately 10% less than a geographic profile.\"，模型卡才有 $3.00／$15.00／$0.30／$3.75 與 $3.30／$16.50／$0.33／$4.125，本文沒有把兩者相除或相減互證，本輪也沒有加上任何自算的百分比。must_not_write 十六條、not_said 十二條、live_data_warnings 五條逐條對照內容包，只有兩條被違反（語言支援那句借了不在 sources[] 的 Kimi K2.5 模型卡、顯式快取那句把「其他模型也有隱式快取」寫成事實），已改。全文沒有任何台北時刻、沒有台幣換算、沒有跑分或與其他模型的比較、沒有購買或升級建議。兩個結尾連結的 text 逐字比對過目標內容包的 zh-TW title：索引 ai-news-2026-january-september-index 是「2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用」、第二條 ai-news-nvidia-hugging-face-20260903 是「NVIDIA 宣布收購 Hugging Face：公告之外，還有哪些沒說明？」，兩條都完全相同，兩個目標檔也都存在。為了推翻一句話另外讀了 Kimi K2.5 的模型卡（model-card-moonshot-ai-kimi-k2-5.md，HTTP 200、18,040 bytes），它只寫 \"improved reasoning, coding, and multilingual capabilities\"，沒有任何語言清單；這一頁不是 source，文章也沒有任何一句依賴它。除此之外沒有動用 sources[] 以外的網址替文章補任何事實。",
+    "claims_checked": 112,
+    "changes": [
+      {
+        "where": "正文第一節第一段",
+        "before": "公告寫道 2026 年起 Bedrock 已加入數十個開放權重模型",
+        "after": "公告寫道 2025 年起 Bedrock 已加入數十個開放權重模型",
+        "why": "年份錯一年。部落格同一段裡有兩個年份：開放權重模型的累積是 Since 2025，2026 是另一句講平台層功能（工具呼叫、結構化輸出、推理、回應串流、Responses／Chat Completions）的年份，撰稿把兩句的年份對調了。研究紀錄 verified_facts 也寫 2025。",
+        "source": "https://aws.amazon.com/blogs/machine-learning/introducing-kimi-k3-on-amazon-bedrock/ ── \"Since 2025, Bedrock has added dozens of open-weight models from providers including DeepSeek, Google, MiniMax, Mistral AI, Moonshot AI, NVIDIA, OpenAI, and Qwen.\"／\"In 2026, Bedrock added support for tool calling, structured output, reasoning, response streaming, and the Responses and Chat Completions APIs.\""
+      },
+      {
+        "where": "正文第五節第三段",
+        "before": "公告也沒說可從 Bedrock 下載 Kimi K3 權重或自行架設：原文寫這個模型在 Bedrock 上以無伺服器方式可呼叫，模型卡把授權條款連到 Hugging Face 的 LICENSE 頁面。",
+        "after": "公告也沒說可從 Bedrock 下載 Kimi K3 權重或自行架設：四份來源寫的是透過 bedrock-runtime 端點與兩個跨區推論設定檔呼叫這個模型，模型卡把授權條款連到 Hugging Face 的 LICENSE 頁面。",
+        "why": "「原文寫……以無伺服器方式可呼叫」是來源沒有的字。四份來源的正文裡 serverless 出現 0 次（部落格與 What's New 的 HTML 裡有 12 次，全部在 AWS 網站導覽列的產品選單 JSON：Aurora、Glue、Lambda、EFS 等，不屬於這篇文章）。改成來源真的寫出來的呼叫方式，結論（不能下載權重自架）不變。",
+        "source": "https://aws.amazon.com/blogs/machine-learning/introducing-kimi-k3-on-amazon-bedrock/ ── \"Programmatically, you can call the model using the bedrock-runtime endpoint…\"／\"Kimi K3 is available today on Amazon Bedrock through the US Geo (us.) and Global (global.) cross-Region inference profiles.\"；模型卡 \"End User License Agreements and Terms of Use: View\" 連到 huggingface.co/moonshotai/Kimi-K3/blob/main/LICENSE"
+      },
+      {
+        "where": "正文第五節第二段",
+        "before": "四份來源也沒提到支援哪些語言；語言說明寫在同一份文件的 Kimi K2.5 模型卡，不屬於 Kimi K3。",
+        "after": "四份來源也沒提到 Kimi K3 支援哪些語言，更沒有寫它對繁體中文的表現，本文因此不寫任何語言能力。",
+        "why": "後半句拿了一個不在 sources[] 的頁面（Kimi K2.5 模型卡）當依據，而且說法不準：本輪重抓那一頁，它只寫 \"improved reasoning, coding, and multilingual capabilities\" 這個形容詞，沒有任何語言清單，稱不上「語言說明」。否定句改成只講四份來源沒寫什麼，不再對別的頁面下斷言。",
+        "source": "sources[] 四條正文（language／multilingual 與語言清單皆無）；為推翻而讀、未列為來源：https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k2-5.html"
+      },
+      {
+        "where": "FAQ 第六題答句末句",
+        "before": "但這個「第一個」限定在顯式快取，Kimi K3 預設就有的隱式快取其他模型也有。",
+        "after": "但這個「第一個」限定在 Bedrock 平台與顯式快取這兩件事；模型卡另寫 Kimi K3 預設支援的是隱式（自動）快取。",
+        "why": "「隱式快取其他模型也有」是關於其他模型的正面斷言，四份來源沒有一句支撐（模型卡只講 Kimi K3 自己）。改寫成來源撐得住的兩個限定詞，仍然達成 must_not_write 第 3 條要防的事——不讓讀者把「第一個」讀成「第一個支援提示快取的模型」。",
+        "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html ── \"By default, Kimi K3 supports implicit (automatic) prompt caching.\"；部落格 \"Kimi K3 is the first open-weight model on Amazon Bedrock to support explicit prompt caching\""
+      },
+      {
+        "where": "正文第三節第三段",
+        "before": "What's New 重申：開放權重模型與專有模型跑在同一安全邊界內，控制項相同；這些是 AWS 的宣稱，沒有第三方稽核佐證。",
+        "after": "What's New 重申：Kimi K3 與專有模型跑在同一安全邊界內，存取、加密與稽核的控制項相同；這些是 AWS 的宣稱，四份來源裡沒有第三方稽核佐證。",
+        "why": "兩處：(a) What's New 那句的主詞是 Kimi K3 這一個模型，被放大成「開放權重模型」全體並掛給 What's New；(b) 「沒有第三方稽核佐證」是對全世界的否定句，依 BRIEF 的否定句規則縮回「四份來源裡沒有」。順手把原文列舉的三種控制項（存取、加密、稽核）寫出來，取代籠統的「控制項相同」。",
+        "source": "https://aws.amazon.com/about-aws/whats-new/2026/09/moonshot-ai-kimi-k3-on-amazon-bedrock/ ── \"On Amazon Bedrock, Kimi K3 runs within the same security boundary as proprietary models, and the same controls for access, encryption, and auditing across your model portfolio.\""
+      },
+      {
+        "where": "summary 第五句",
+        "before": "官方目前沒有說明語言支援、配額數字，也沒有交代模型本身首次發表的日期。",
+        "after": "四份來源目前沒有說明語言支援、配額數字，也沒有交代模型本身首次發表的日期。",
+        "why": "「官方沒有說明」超出「這幾頁沒有寫」的範圍（BRIEF 的否定句規則），而且與正文第五節自己的寫法（「四份來源也沒提到」「公告沒有公布配額數字」）不一致。",
+        "source": "sources[] 四條正文；模型卡 Quotas and Limits 只寫預設配額會依 \"regional factors, payment history, fraudulent usage, and/or approval of a quota increase request\" 調整，沒有印任何數字"
+      },
+      {
+        "where": "正文第二節第一段",
+        "before": "路由到全球任一商用 AWS 區域",
+        "after": "路由到全球任一支援的商用 AWS 區域",
+        "why": "這一句是 global 設定檔定義的直接轉述，原文有 supported 這個限定詞（summary 第二句與 FAQ 第三題都保留了，只有這裡掉了）。",
+        "source": "https://aws.amazon.com/blogs/machine-learning/introducing-kimi-k3-on-amazon-bedrock/ ── \"…the global profile, global.moonshotai.kimi-k3, which routes each request to any supported commercial AWS Region worldwide.\""
+      },
+      {
+        "where": "正文第二節第二段（價目）",
+        "before": "快取讀取 0.30 美元、寫入（至少 30 分鐘）3.75 美元",
+        "after": "快取讀取 0.30 美元、寫入（30 分鐘）3.75 美元",
+        "why": "這一串是在逐格引模型卡 Pricing 表的欄位，該欄的標題就是 Cache write (30 min)，沒有 at least。「至少 30 分鐘」是另一張表（Cache retention (TTL)）與部落格的說法，FAQ 第六題已經照那個出處寫了，價目這裡不該把兩張表的字混在一起。",
+        "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html ── Pricing 表欄位 \"Cache write (30 min)\"；另一張表 \"Cache retention (TTL) | At least 30 minutes\""
+      },
+      {
+        "where": "表格 caption",
+        "before": "依 Amazon Bedrock 使用者指南 Kimi K3 模型卡的 Pricing 表整理，價格為標準層、每百萬 token，查核日 2026 年 9 月 20 日。",
+        "after": "依 Amazon Bedrock 使用者指南 Kimi K3 模型卡整理，價格取自該頁 Pricing 表、為標準層、每百萬 token，查核日 2026 年 9 月 20 日。",
+        "why": "caption 把整張表都掛在 Pricing 表上，但第二欄「路由範圍」來自同一頁的 Programmatic Access 與 Regional Availability 兩節，不在 Pricing 表裡。改成出處寫到頁、價格再指到該頁的 Pricing 表。",
+        "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3.html ── Pricing 表與 \"Kimi K3 is available through US Geo cross-Region inference (using the us.moonshotai.kimi-k3 profile…) and Global cross-Region inference (using the global.moonshotai.kimi-k3 profile…)\""
+      }
+    ],
+    "open_questions": [
+      "模型卡的 \"Model launch date: 18th Sept 2026\" 被本文讀成「Bedrock 上的上線日」而不是「模型首次發表日」。這是編輯判讀，來源沒有一句話定義這個欄位；判讀的依據是它與 EOL no sooner than、Legacy period、Model EOL date、Model lifecycle: Active 同一組項目符號，而 Model lifecycle policy 連到 Bedrock Model Lifecycle 頁。研究紀錄與內容包都採這個判讀，本輪沿用未改；若站主要更保守，要同步改正文第一節第三段與 FAQ 第一題。",
+      "「Geo 欄支援的五區全在北美」是本站依表上印出的區域名（N. Virginia、Ohio、N. California、Oregon、Canada）做的地理歸納，來源沒有印 North America 這個字。本輪判定屬於常識性歸納而保留。",
+      "同一件事在兩個來源的措辭不同：部落格寫 \"According to Moonshot AI, Kimi K3 is its most capable model\"，模型卡則是 AWS 自己的敘述 \"Kimi K3 is Moonshot AI's most capable open-weight model\"（多了 open-weight、且沒有掛 According to）。本文採部落格那句並歸給 Moonshot AI，沒有提模型卡版本；兩者並不矛盾，但站主若想寫得更嚴謹，可加註模型卡限定在 open-weight。",
+      "Amazon Bedrock 定價頁本輪仍未讀（研究紀錄 unverified_or_excluded 第 3 條已說明），四個金額一律只引模型卡、並在正文與 caption 標明是查核日當天模型卡上的標準層價格。日後若定價頁與模型卡不一致，這四個金額要整組重查。",
+      "FAQ 第六題的提問寫成「顯式提示快取要怎麼用，划算嗎？」，語氣接近價值判斷；答句本身只陳述計費規則（寫入較貴、保留至少 30 分鐘、命中打折且不計入每分鐘輸入 token 配額），沒有給任何結論或建議，因此本輪沒有改。若站主認為 AI 垂直的「不做推薦式比價」連提問語氣都要避開，把「划算嗎」換成中性問法即可，答句不用動。"
+    ],
+    "coordinator_rulings": [
+      "FAQ 第六題提問改中性：「划算嗎」→「怎麼計費」（AI 垂直不做推薦式比價，連提問語氣一併避開）；答句未動。",
+      "Model launch date 讀成 Bedrock 上線日是編輯判讀：FAQ 第一題改成「本文讀作」，正文第一節若有同一判讀由協調者同步改。",
+      "「Geo 欄支援的五區全在北美」屬常識性歸納，保留；部落格與模型卡對 most capable 的兩種措辭並不矛盾，維持採部落格句並歸給 Moonshot AI；Bedrock 定價頁未讀，四個金額只引模型卡並標明查核日。"
+    ]
+  }
 }

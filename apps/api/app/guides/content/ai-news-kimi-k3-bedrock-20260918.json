@@ -42,7 +42,7 @@
             "Kimi K3 在 Bedrock 上有兩種跨區推論設定檔：global.moonshotai.kimi-k3 路由到全球任一支援的商用 AWS 區域，us.moonshotai.kimi-k3 只在美國地理範圍內路由；AWS 表示全球設定檔比地理設定檔「大約便宜 10%」。",
             "台北區域 ap-east-2 在模型卡的區域表上，In-Region 與 Geo 兩欄都是不支援，只有 Global 欄是支援，代表從台北送出的請求只能選擇路由到全球任一商用區域這個選項。",
             "模型卡列出的標準層價格為 Global 每百萬 token 輸入 3.00 美元、輸出 15.00 美元，US 為輸入 3.30 美元、輸出 16.50 美元；AWS 表示 Kimi K3 是 Bedrock 上第一個支援顯式提示快取的開放權重模型。",
-            "AWS 表示使用者的資料會留在 AWS 的資料邊界內處理、不會分享給模型供應商，也不會用於訓練這個模型；官方目前沒有說明語言支援、配額數字，也沒有交代模型本身首次發表的日期。"
+            "AWS 表示使用者的資料會留在 AWS 的資料邊界內處理、不會分享給模型供應商，也不會用於訓練這個模型；四份來源目前沒有說明語言支援、配額數字，也沒有交代模型本身首次發表的日期。"
           ]
         },
         {
@@ -52,7 +52,7 @@
         },
         {
           "type": "paragraph",
-          "text": "AWS 部落格用一句話描述這次上架：Kimi K3 從 Moonshot AI 登上 Amazon Bedrock，AWS 稱為程式撰寫與知識工作的新選項。公告寫道 2026 年起 Bedrock 已加入數十個開放權重模型，供應商含 DeepSeek、Google、MiniMax、Mistral AI、Moonshot AI、NVIDIA、OpenAI 與 Qwen；公告沒有拿 Kimi K3 跟其他模型比較。"
+          "text": "AWS 部落格用一句話描述這次上架：Kimi K3 從 Moonshot AI 登上 Amazon Bedrock，AWS 稱為程式撰寫與知識工作的新選項。公告寫道 2025 年起 Bedrock 已加入數十個開放權重模型，供應商含 DeepSeek、Google、MiniMax、Mistral AI、Moonshot AI、NVIDIA、OpenAI 與 Qwen；公告沒有拿 Kimi K3 跟其他模型比較。"
         },
         {
           "type": "paragraph",
@@ -60,7 +60,7 @@
         },
         {
           "type": "paragraph",
-          "text": "模型卡另列 Bedrock 生命週期欄位，Model launch date 寫 2026 年 9 月 18 日；但這欄位和「目前狀態 Active」「EOL 日期 N/A」同組，指的是 Bedrock 平台的上線日，不是模型第一次公開發表的日期。本文因此只確認「上架 Amazon Bedrock」這件事。"
+          "text": "模型卡另列 Bedrock 生命週期欄位，Model launch date 寫 2026 年 9 月 18 日；但這欄位和「目前狀態 Active」「EOL 日期 N/A」同組，本文讀作 Bedrock 平台的上線日，而不是模型第一次公開發表的日期。本文因此只確認「上架 Amazon Bedrock」這件事。"
         },
         {
           "type": "heading",
@@ -69,11 +69,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Bedrock 文件說明，使用者選送出請求的 AWS 區域，處理由 Bedrock 依設定檔路由；Kimi K3 用同一模型 ID：moonshotai.kimi-k3。無區域限制的工作負載建議用全球設定檔 global.moonshotai.kimi-k3，路由到全球任一商用 AWS 區域；美國地理設定檔 us.moonshotai.kimi-k3 則留在美國地理範圍內，符合資料落地要求。"
+          "text": "Bedrock 文件說明，使用者選送出請求的 AWS 區域，處理由 Bedrock 依設定檔路由；Kimi K3 用同一模型 ID：moonshotai.kimi-k3。無區域限制的工作負載建議用全球設定檔 global.moonshotai.kimi-k3，路由到全球任一支援的商用 AWS 區域；美國地理設定檔 us.moonshotai.kimi-k3 則留在美國地理範圍內，符合資料落地要求。"
         },
         {
           "type": "paragraph",
-          "text": "價格的相對描述只有一句，出自部落格：全球跨區推論比地理設定檔「大約便宜 10%」。模型卡價目表另印絕對金額，兩者出自不同頁面，不相除或相減互證：標準層、每百萬 token，Global 輸入 3.00 美元、輸出 15.00 美元，快取讀取 0.30 美元、寫入（至少 30 分鐘）3.75 美元；US 輸入 3.30 美元、輸出 16.50 美元，讀取 0.33 美元、寫入 4.125 美元。"
+          "text": "價格的相對描述只有一句，出自部落格：全球跨區推論比地理設定檔「大約便宜 10%」。模型卡價目表另印絕對金額，兩者出自不同頁面，不相除或相減互證：標準層、每百萬 token，Global 輸入 3.00 美元、輸出 15.00 美元，快取讀取 0.30 美元、寫入（30 分鐘）3.75 美元；US 輸入 3.30 美元、輸出 16.50 美元，讀取 0.33 美元、寫入 4.125 美元。"
         },
         {
           "type": "paragraph",
@@ -108,7 +108,7 @@
               "標準價 0.5 倍"
             ]
           ],
-          "caption": "依 Amazon Bedrock 使用者指南 Kimi K3 模型卡的 Pricing 表整理，價格為標準層、每百萬 token，查核日 2026 年 9 月 20 日。"
+          "caption": "依 Amazon Bedrock 使用者指南 Kimi K3 模型卡整理，價格取自該頁 Pricing 表、為標準層、每百萬 token，查核日 2026 年 9 月 20 日。"
         },
         {
           "type": "heading",
@@ -125,7 +125,7 @@
         },
         {
           "type": "paragraph",
-          "text": "AWS 對資料處理另有一組保證，同樣是廠商的說法：資料在 AWS 的資料邊界內處理，不分享給模型供應商，不用於訓練這個模型；推論請求一律零資料保留，「零操作員存取」指 AWS 操作人員在推論期間也拿不到提示與回覆內容。What's New 重申：開放權重模型與專有模型跑在同一安全邊界內，控制項相同；這些是 AWS 的宣稱，沒有第三方稽核佐證。"
+          "text": "AWS 對資料處理另有一組保證，同樣是廠商的說法：資料在 AWS 的資料邊界內處理，不分享給模型供應商，不用於訓練這個模型；推論請求一律零資料保留，「零操作員存取」指 AWS 操作人員在推論期間也拿不到提示與回覆內容。What's New 重申：Kimi K3 與專有模型跑在同一安全邊界內，存取、加密與稽核的控制項相同；這些是 AWS 的宣稱，四份來源裡沒有第三方稽核佐證。"
         },
         {
           "type": "image",
@@ -168,18 +168,18 @@
         },
         {
           "type": "paragraph",
-          "text": "公告沒有公布配額數字：模型卡的 Quotas and Limits 只寫帳號有預設配額、可能依區域與付款紀錄調整，沒印出每分鐘 token 或請求數上限。四份來源也沒提到支援哪些語言；語言說明寫在同一份文件的 Kimi K2.5 模型卡，不屬於 Kimi K3。"
+          "text": "公告沒有公布配額數字：模型卡的 Quotas and Limits 只寫帳號有預設配額、可能依區域與付款紀錄調整，沒印出每分鐘 token 或請求數上限。四份來源也沒提到 Kimi K3 支援哪些語言，更沒有寫它對繁體中文的表現，本文因此不寫任何語言能力。"
         },
         {
           "type": "paragraph",
-          "text": "公告也沒說可從 Bedrock 下載 Kimi K3 權重或自行架設：原文寫這個模型在 Bedrock 上以無伺服器方式可呼叫，模型卡把授權條款連到 Hugging Face 的 LICENSE 頁面。定價方面，部落格只寫「詳見 Amazon Bedrock pricing」，本文沒讀到那頁，價格一律引用模型卡查核日當天的標準層價目表。"
+          "text": "公告也沒說可從 Bedrock 下載 Kimi K3 權重或自行架設：四份來源寫的是透過 bedrock-runtime 端點與兩個跨區推論設定檔呼叫這個模型，模型卡把授權條款連到 Hugging Face 的 LICENSE 頁面。定價方面，部落格只寫「詳見 Amazon Bedrock pricing」，本文沒讀到那頁，價格一律引用模型卡查核日當天的標準層價目表。"
         },
         {
           "type": "faq",
           "items": [
             {
               "question": "Kimi K3 是這一天發表的新模型嗎？",
-              "answer": "不是。四份來源談的都是「在 Amazon Bedrock 上正式可用」這件事，也就是上架這個雲端平台，不是模型第一次公開發表。模型卡上的 Model launch date 欄位屬於 Bedrock 平台的生命週期欄位，指的是在 Bedrock 上的上線日；沒有任何一手來源寫出 Moonshot AI 何時首次發表 Kimi K3 或上傳權重，本文因此只寫「上架 Amazon Bedrock」。"
+              "answer": "不是。四份來源談的都是「在 Amazon Bedrock 上正式可用」這件事，也就是上架這個雲端平台，不是模型第一次公開發表。模型卡上的 Model launch date 欄位屬於 Bedrock 平台的生命週期欄位，本文讀作在 Bedrock 上的上線日；沒有任何一手來源寫出 Moonshot AI 何時首次發表 Kimi K3 或上傳權重，本文因此只寫「上架 Amazon Bedrock」。"
             },
             {
               "question": "台灣的開發者可以從台北區域使用 Kimi K3 嗎？",
@@ -198,8 +198,8 @@
               "answer": "AWS 建議新應用優先用 bedrock-runtime 端點，而對 Kimi K3 具體建議使用 Chat Completions API。這個端點同時支援 OpenAI 相容的 Responses 與 Chat Completions API，以及 Bedrock 原生的 Invoke 與 Converse API；文件另外提醒，Converse 目前若在多輪請求裡帶入前幾輪的 reasoning 內容，會出現 InternalServerException，也會拒收 PDF、HTML 這類附加文件，這會影響 LangChain 與 Strands Agents 等框架的預設設定。"
             },
             {
-              "question": "顯式提示快取要怎麼用，划算嗎？",
-              "answer": "顯式快取目前只有 Responses 與 Chat Completions 這兩個 API 支援，可重用的提示前綴至少要 1,024 個 token，之後加上 prompt_cache_breakpoint 標記結束位置。寫進快取的 token 計費較高，但會保留至少 30 分鐘；之後命中快取的請求以折扣費率計費，且不計入每分鐘輸入 token 的配額。AWS 表示這是 Bedrock 上第一個支援顯式提示快取的開放權重模型，但這個「第一個」限定在顯式快取，Kimi K3 預設就有的隱式快取其他模型也有。"
+              "question": "顯式提示快取要怎麼用，怎麼計費？",
+              "answer": "顯式快取目前只有 Responses 與 Chat Completions 這兩個 API 支援，可重用的提示前綴至少要 1,024 個 token，之後加上 prompt_cache_breakpoint 標記結束位置。寫進快取的 token 計費較高，但會保留至少 30 分鐘；之後命中快取的請求以折扣費率計費，且不計入每分鐘輸入 token 的配額。AWS 表示這是 Bedrock 上第一個支援顯式提示快取的開放權重模型，但這個「第一個」限定在 Bedrock 平台與顯式快取這兩件事；模型卡另寫 Kimi K3 預設支援的是隱式（自動）快取。"
             }
           ]
         },
