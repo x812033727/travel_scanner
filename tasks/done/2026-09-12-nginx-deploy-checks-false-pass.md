@@ -1,13 +1,13 @@
 ---
 id: 2026-09-12-nginx-deploy-checks-false-pass
 title: ops/nginx 的上機指引有三處會假通過
-status: in-progress
+status: done
 priority: P1
 area: ops
 owner: claude-opus-5
 claimed_at: 2026-09-19T16:08:58Z
 created_at: 2026-09-12T03:56:07Z
-completed_at:
+completed_at: 2026-09-19T16:55:20Z
 branch: claude/nginx-crawler-ranges-repo
 depends_on:
   - 2026-09-12-edge-rate-limit-and-header-hygiene
@@ -53,8 +53,8 @@ Next，整份照抄會弄壞憑證更新。
 
 ## Definition of done
 
-- [ ] 照 README 做一次，任何一項檢查通過時，它宣稱證明的事情真的成立。（repo 端已改完；
-      要在 `hostinger2` 照下面 How to verify 跑一次才能打勾。）
+- [x] 照 README 做一次，任何一項檢查通過時，它宣稱證明的事情真的成立。（2026-09-19 在
+      `hostinger2` 跑完四步，結果在下方；第 4 步另外抓到 README 自己的兩個誤導。）
 - [x] 安裝器不會在主機上留下一個「編了也不會生效」的設定檔。（離線以假的 `/etc/nginx` 演練過
       11 種情境，見 2026-09-19 筆記；主機上的那一次在 How to verify 第 1 步。）
 - [x] 範例設定講清楚它是要被合併的，不是被複製的。
@@ -306,3 +306,29 @@ than on the User-Agent, restated as data.
 **Still open: step 1.** `install.sh` idempotency has to run after this PR merges and the host
 pulls, for the ordering reason at the top of this section. Definition of done item 1 stays
 unticked until then.
+
+### Step 1, after #568 merged (2026-09-19)
+
+`git pull` to `9af3511f`, then `install.sh` twice. Backup at
+`/root/nginx-backup-step1-2026-09-19-165419`.
+
+- **clean before / still clean** -- `sites-available/mokaair.conf` absent before and after, so
+  the installer no longer seeds a file this host would never read. That was the first false
+  pass in this ticket.
+- **idempotent** -- the two runs printed identical output, and it names the real enabled file
+  (`sites-enabled/mokaair.com -> sites-available/mokaair.com`) with merge instructions rather
+  than `ln -s`.
+- **`nginx -t` successful**, site answers 200 on `/zh-TW`, `/sitemap.xml` and `/feed.xml`.
+
+One file did change, and it is worth saying why rather than waving it through:
+`conf.d/mokaair-rate-limit.conf` went `5010e6e9` -> `7c911aee`. The diff is the eight-line
+comment restored in #568 explaining why the `warn` destination lives in the site file and not
+here -- the very thing the third false pass was about, which I had dropped while porting and
+put back. `diff` over non-comment lines is empty: the directives are byte-identical. Reloaded
+so the loaded config matches disk.
+
+After the reload: `limit_req zone=mokaair_crawlers` x1, `$mokaair_verified_crawler` x3, the
+four crawl-control locations x4. 40 concurrent requests to `/robots.txt` -> 40 x 200; the same
+to `/zh-TW` -> 20 x 200 and 20 x 429. Crawl-control files exempt, ordinary pages still limited.
+
+All four steps done; closing.
