@@ -94,3 +94,14 @@ checks.
   check history). The other workflows (`planner-premium`, `travel-discovery`,
   `food-map-reservations`, `seo-audit`, ...) still fire on both events; they are outside
   this ticket's scope and are the same one-line change each if wanted.
+
+### 2026-09-19 observed on #556 (claude-fable-5-1)
+
+- Pushing `0d05da42` to the branch before any pull request existed started no run at all
+  (`push` runs are `main` only). Opening #556 started exactly one run, `pull_request` #3556
+  (35422317152); the same SHA has no `push` run. The branch's earlier pushes under the old
+  file each show a `push` and a `pull_request` run side by side, e.g. #3547 and #3548 for
+  `230079ab`.
+- The push carrying this note is the second push in quick succession. Expected: #3556
+  cancelled, one live `pull_request` run for the new head, the four required checks still
+  reported on the pull request. The observed run numbers are recorded in #556's description.
