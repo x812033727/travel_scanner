@@ -14,7 +14,7 @@
   "locales": {
     "zh-TW": {
       "title": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
-      "description": "OpenAI 相容端點是供應商提供的 REST 介面，形狀和 OpenAI 的 Chat Completions 端點相同，程式只要換 base_url 與 model 字串就能連到別家模型，不必重寫呼叫邏輯。這篇示範同一段 Python 用 openai 套件連上 OpenRouter 與 Groq 兩個相容端點，再用 LiteLLM 的 completion() 換三個 model 字串連到三家供應商，並比較 OpenRouter 這個託管閘道，跟 LiteLLM 的 SDK 與自架 Proxy，在「相容」範圍上的限制。",
+      "description": "OpenAI 相容端點是供應商提供的 REST 介面，形狀和 OpenAI 的 Chat Completions 端點相同，程式只要換 base_url、金鑰與 model 字串就能連到別家模型，不必重寫呼叫邏輯。這篇示範同一段 Python 用 openai 套件連上 OpenRouter 與 Groq 兩個相容端點，再用 LiteLLM 的 completion() 換三個 model 字串連到三家供應商，並比較 OpenRouter 這個託管閘道，跟 LiteLLM 的 SDK 與自架 Proxy，在「相容」範圍上的限制。",
       "hero": {
         "src": "/guides/ai-workflow-unified-api-layer/hero.jpg",
         "alt": "原創插圖：一張程式碼卡片中間分出兩條線，分別接到寫著 base_url 與 model 字串的不同端點方塊，象徵同一段程式換端點、不換寫法。",
@@ -63,7 +63,7 @@
         },
         {
           "type": "paragraph",
-          "text": "openai 這個 Python 套件本來是為 OpenAI 自己的 API 寫的，但它的用戶端建構式接受 base_url 這個參數，把網址換成任何一個 OpenAI 相容端點，用戶端就會去打那個網址而不是 api.openai.com。下面的程式先連 OpenRouter：官方 quickstart 寫 base_url 要填 https://openrouter.ai/api/v1，請求送到 /api/v1/chat/completions 這個端點，金鑰放進 Authorization 標頭當 Bearer token；文件另外列了 HTTP-Referer 與 X-OpenRouter-Title 兩個選用標頭，設了應用程式才會出現在 OpenRouter 的排行榜上，不設也能正常呼叫。"
+          "text": "openai 這個 Python 套件本來是為 OpenAI 自己的 API 寫的，但它的用戶端建構式接受 base_url 這個參數，把網址換成任何一個 OpenAI 相容端點，用戶端就會去打那個網址而不是 api.openai.com。下面的程式先連 OpenRouter：官方 quickstart 寫 base_url 要填 https://openrouter.ai/api/v1，請求送到 /api/v1/chat/completions 這個端點，金鑰放進 Authorization 標頭當 Bearer token；文件另外列了 HTTP-Referer 與 X-OpenRouter-Title 兩個選用標頭，設了應用程式就能出現在 OpenRouter 的排行榜上，不設也能正常呼叫。"
         },
         {
           "type": "code",
@@ -114,7 +114,7 @@
         {
           "type": "image",
           "src": "/guides/ai-workflow-unified-api-layer/diagram-1.svg",
-          "alt": "流程圖：你的程式 → 換兩個值 → 託管閘道 → 自架閘道 → 到供應商",
+          "alt": "流程圖：你的程式 → 換三個值 → 託管閘道 → 自架閘道 → 到供應商",
           "width": 1600,
           "height": 900,
           "caption": "由左到右：程式先選好要用哪一支用戶端或函式庫，接著只換 base_url、金鑰與 model 字串；第三、四格是兩種常見的中介做法，OpenRouter 是別人已經架好的託管閘道，LiteLLM 可以在自己程序裡呼叫、也能自架成閘道；最後都送到供應商自己的伺服器。查證於 2026 年 9 月。",

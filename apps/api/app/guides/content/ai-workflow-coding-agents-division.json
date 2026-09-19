@@ -97,7 +97,7 @@
               "Gemini CLI",
               "-p（完整寫法 --prompt）",
               "--output-format（別名 -o）：text、json、stream-json",
-              "無頭模式文件列出 response、stats 與選用的 error 三個外層欄位；本文查證當天沒有在那幾頁看到 schema 驗證旗標",
+              "無頭模式文件列出 response、stats 與選用的 error 三個外層欄位；本文查證當天沒在那幾頁看到 schema 驗證旗標",
               "審查：讀 patch 與 plan.md，把結論解析後寫成 review.json"
             ]
           ],
@@ -185,15 +185,15 @@
             },
             {
               "question": "claude -p、codex exec 與 gemini -p 都能拿到通過驗證的結構化 JSON 輸出嗎？",
-              "answer": "不完全一樣。Claude Code 的 --json-schema 在命令列直接吃一段 JSON Schema，文件寫它會在代理流程跑完後給出符合 schema 的輸出；Codex 的 --output-schema 吃的是一份 schema 檔，文件寫 Codex 會拿它驗證工具輸出。Gemini CLI 的無頭模式文件列出的是 response、stats 與選用的 error 三個外層欄位，本文查證當天沒有在那幾頁看到對應的 schema 驗證旗標，response 裡的結構得自己解析再檢查。"
+              "answer": "不完全一樣。Claude Code 的 --json-schema 直接吃一段 JSON Schema，文件寫它會在代理流程跑完後給出符合 schema 的輸出；Codex 的 --output-schema 吃的是一份 schema 檔，文件寫 Codex 會拿它驗證工具輸出。Gemini CLI 的無頭模式文件列出的是 response、stats 與選用的 error 三個外層欄位，本文查證當天沒有在那幾頁看到對應的 schema 驗證旗標，response 裡的結構得自己解析再檢查。"
             },
             {
               "question": "plan.md、patch、review.json 是 Claude Code、Codex 或 Gemini CLI 官方定義的檔案格式嗎？",
-              "answer": "不是。這三個檔名與欄位是這篇文章自己設計的交接慣例，本文查證的三家文件都只講一次呼叫怎麼跑、輸出長什麼樣子，沒有定義工具之間該怎麼交接。挑 Markdown、patch 與 JSON 三種格式，是因為它們剛好對應規劃、執行、審查三個階段最自然的產出，讀者可以照自己的流程改檔名或欄位。"
+              "answer": "不是。這三個檔名與欄位是這篇文章自己設計的交接慣例，本文查證的三家文件都只講一次呼叫怎麼跑、輸出長什麼樣子，沒有定義工具之間該怎麼交接。Markdown、patch 與 JSON 對應的是規劃、執行、審查最自然的產出，讀者可以照自己的流程改檔名或欄位。"
             },
             {
               "question": "為什麼腳本裡每一支 CLI 呼叫都包了一層 timeout？",
-              "answer": "因為模型要跑多久沒有上限，而三家對「沒人能回答核准提示」的處理各寫各的：Claude Code 可以指定工具回答或直接拒絕，Codex 用 --ask-for-approval 控制什麼時候暫停等人核准，Gemini CLI 的 Plan Mode 文件寫它會停下來等你確認。腳本用 timeout 幫每一步設一個上限，那一步超時就直接失敗，而不是讓整條管線無限期等下去。"
+              "answer": "因為模型要跑多久沒有上限，而三家對「沒人能回答核准提示」的處理各寫各的：Claude Code 可以指定工具回答或直接拒絕，Codex 用 --ask-for-approval 控制什麼時候暫停等人核准，Gemini CLI 的 Plan Mode 文件寫它會停下來等你確認。腳本用 timeout 幫每一步設上限，超時就讓那一步失敗，不是讓整條管線無限期等下去。"
             },
             {
               "question": "三支 CLI 的結束代碼（exit code）代表的意義一樣嗎？",
@@ -201,7 +201,7 @@
             },
             {
               "question": "一定要照這篇的分工——Claude Code 規劃、Codex 執行、Gemini CLI 審查——嗎？",
-              "answer": "不用。這篇示範的是規劃、執行、審查三個階段搭配 plan.md、patch、review.json 三個交接檔的做法，哪一家 CLI 負責哪一個階段可以互換，只要每一步呼叫用的是同一支工具當天有效的非互動旗標，輸出也確實寫進約定好的交接檔即可。"
+              "answer": "不用。這篇示範的是規劃、執行、審查三個階段搭配 plan.md、patch、review.json 的做法，哪一家 CLI 負責哪一階段可以互換，只要每一步用的是那支工具當天有效的非互動旗標，輸出也確實寫進約定好的交接檔即可。"
             }
           ]
         },
