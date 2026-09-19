@@ -197,6 +197,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從左看到右：每一格上面是誰在做事，下面是這一格要檢查的東西；卡住時先判斷斷在哪一格。",
+          "description": "四格流程圖，上排由左到右三格，第四格在下排，箭頭最後繞回第一格。第一格，使用者的 LINE：在聊天室傳一句話給你的官方帳號；要檢查的是已經加為好友、而且沒有封鎖。第二格，LINE 平台：產生 webhook 事件並算出簽章，用 HTTPS 的 POST 請求送到你登記的 Webhook URL；要檢查的是 Verify 顯示 Success、Use webhook 已經打開。第三格，你的 webhook 伺服器：用 channel secret 以 HMAC-SHA256 驗證簽章，並在 2 秒內回 HTTP 200；要檢查的是伺服器日誌看得到事件。第四格，回覆：用事件裡的 reply token 呼叫 Reply API，這個 token 只能用一次、要在 1 分鐘內用掉；要檢查的是自己的 LINE 裡收到同一句話。最後箭頭從第四格繞回第一格，回到使用者的聊天室。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

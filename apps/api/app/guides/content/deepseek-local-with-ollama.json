@@ -163,6 +163,7 @@
           "width": 1600,
           "height": 900,
           "caption": "上排是從安裝到第一次對話的四個步驟，中間那排是選標籤時要看的下載大小，最下面一條是對話之外的兩件事。",
+          "description": "上排四個步驟：裝 Ollama（macOS 14 以上、Windows 10 22H2 以上）、選一個標籤（例如 deepseek-r1:8b，下載 5.2GB）、用 ollama pull 拉下模型、用 ollama run 開始對話並以 /bye 離開。中間一排列出六個標籤的下載大小：1.5b 是 1.1GB、7b 是 4.7GB、8b 是 5.2GB、32b 是 20GB、70b 是 43GB、671b 是 404GB 的完整版。下排左邊是本機 API，位址在 localhost 的 11434 埠，curl 或 Python 都可以呼叫；右邊是用 ollama ps 檢查模型跑在哪裡，100% GPU 代表整個模型進了顯示記憶體，100% CPU 代表全靠系統記憶體。最底下提醒公務機關全面禁用，包含地端下載。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

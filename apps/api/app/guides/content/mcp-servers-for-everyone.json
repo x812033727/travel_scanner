@@ -105,6 +105,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從左往右看：你用的 AI 客戶端經過 MCP 接到四類伺服器，本機伺服器跑在你的電腦上，遠端伺服器架在服務商那邊；底下三條是每一類都適用的安全原則。",
+          "description": "左邊列出會接 MCP 的 AI 客戶端：Claude 與 Claude 桌面版（連接器與桌面擴充功能）、Claude Code、ChatGPT Business 與 Enterprise 及 Edu（beta）、Gemini CLI、Cursor 與 VS Code。中間是 MCP，同一套介面，協定版本 2026-07-28。右邊是四類伺服器：檔案的 filesystem 在本機執行，是官方參考伺服器，讀寫你指定的資料夾，由 MCP 指導小組維護；Google 的 Gmail、行事曆與雲端硬碟走 Claude 與 ChatGPT 的官方連接器，Google 自己的官方遠端伺服器屬於開發者預覽；Notion 可以搜尋、讀取、建立與更新內容，由 Notion 官方代管並走 OAuth 授權；瀏覽器類可以開網頁、填表單與量效能，有 Microsoft 的 Playwright MCP 與 Chrome DevTools 團隊的 Chrome DevTools MCP。底下是接之前先確認的四件事：只接你信任的伺服器、唯讀優先、把伺服器回傳的內容當成資料而不是指令、金鑰不要貼進聊天視窗。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

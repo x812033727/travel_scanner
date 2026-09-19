@@ -246,6 +246,7 @@
           "width": 1600,
           "height": 900,
           "caption": "同一條「表單到試算表」流程在兩家的用量：由上往下看每一步扣幾個單位，最下一列是每筆合計與免費層額度。",
+          "description": "左右兩欄對照同一條自動化。左欄是 Zapier，計價單位是 task：觸發（表單有新回覆）0 個 task，AI by Zapier 摘要步驟用標準模型 1 個 task，試算表新增一列 1 個 task，每筆回覆合計 2 個 task；免費方案每月 100 個 task，而且 Zap 只能兩步。右欄是 Make，計價單位是 credits：觸發節點每次檢查 1 個 operation 等於 1 個 credit，AI 節點 1 個 credit 再加 token 換算的 credits，試算表節點 1 個 credit，每筆回覆合計 3 個 credits 起；免費方案每月最多 1,000 credits。結論是差別不在步數，而在觸發與 AI 步驟各家算不算、算幾個單位。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

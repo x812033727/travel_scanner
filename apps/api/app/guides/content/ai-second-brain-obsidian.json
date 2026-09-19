@@ -270,6 +270,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從中間的 vault 往外看三條線，看的是每一條把內容送出去多遠。",
+          "description": "左邊是本機的 vault 資料夾，裡面是 Markdown 純文字檔、.obsidian 設定，以及每日筆記、屬性與 Bases。中間三個方框是三種接法：接法一是社群外掛，要先關掉限制模式，外掛會繼承 Obsidian 的存取權限，例子有 Copilot、Smart Connections 與 Text Generator；接法二是把程式代理開在 vault 資料夾，CLAUDE.md 放在根目錄，代理只能寫入啟動時所在的資料夾；接法三是 MCP 伺服器，Local REST API with MCP 跑在本機 27124 連接埠並用金鑰當權杖，第一次只開讀取類工具。右邊三個方框對應內容會送到哪裡：你填金鑰的那一家雲端模型、代理背後的模型服務、呼叫工具的 AI 客戶端。最下面一條是完全不出門的那條路：Web Clipper 的 Interpreter 接本機 Ollama 的 11434 連接埠，內容不離開這台電腦。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

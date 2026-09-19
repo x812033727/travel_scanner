@@ -275,6 +275,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左往右看：要求先在裝置上處理，複雜的才上私密雲端運算；只有你開了延伸功能並同意，資料才會離開 Apple 進到 ChatGPT。",
+          "description": "由左至右三個區塊。第 1 層裝置端：系統先判斷要求能不能在裝置上算完，官網寫即時翻譯完全在裝置上執行，資料不離開這支裝置，關掉 Apple Intelligence 後裝置端模型會從裝置移除。第 2 層私密雲端運算：複雜的要求送到 Apple 晶片伺服器，只處理與這次要求相關的資料，處理完移除、不儲存，Apple 也不取用，獨立研究者可檢查伺服器上執行的程式碼。第 3 層 ChatGPT 整合：延伸功能預設關閉，開啟後送出前會先問你同意，不連帳號時不儲存也不拿去訓練，連了帳號就套用 OpenAI 的帳號政策，可能記錄要求並用於訓練。下方一排寫每一層的開關位置：總開關在設定裡的 Apple Intelligence 與 Siri，私密雲端運算的紀錄在設定的隱私權與安全性裡的 Apple Intelligence 報告，ChatGPT 在同一頁關閉使用 ChatGPT。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

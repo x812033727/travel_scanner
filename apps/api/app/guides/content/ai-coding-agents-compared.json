@@ -213,6 +213,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左往右看是同一個工具的完整流程，由上往下看是同一個步驟在三個工具的做法；最下面一條是三邊必須一致的驗收條件。",
+          "description": "三欄對照圖。左欄依序列出五個步驟：安裝、登入、權限確認、脈絡檔案、看產出。Claude Code 用官方安裝指令或 Homebrew、WinGet 安裝，執行 claude 以訂閱或 Console 帳號登入，權限模式有 default、plan、acceptEdits、auto 等六個值，脈絡檔案是 CLAUDE.md，用 /diff 看變更、/rewind 回到檢查點。Codex CLI 用官方安裝指令或 npm、Homebrew 安裝，執行 codex login 以 ChatGPT 帳號或 API 金鑰登入，用 /permissions 選 Auto 或 Read Only 預設，脈絡檔案是 AGENTS.md，用 /diff 看變更、/review 再複查一次。Gemini CLI 用 npm 全域安裝，執行 gemini 後選 Login with Google，旗標 approval-mode 有 default、auto_edit、yolo 三個值，脈絡檔案是 GEMINI.md，先開 checkpointing 再用 /restore 還原。三者的脈絡檔案都用 /init 產生初稿。圖的最下方是三邊共用的驗收條件：同一份提示詞、同一個起點、同一張核對清單，每一輪都記下花了多少時間、用掉多少額度、你自己動手改了幾處。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

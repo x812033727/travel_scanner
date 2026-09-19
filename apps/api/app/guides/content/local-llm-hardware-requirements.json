@@ -214,6 +214,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左往右看：先查檔案大小，加上餘裕與上下文，再拿總需求去比對顯示記憶體與系統記憶體。",
+          "description": "三步驟決策圖。第一步查官方檔案大小：Ollama 模型庫標示 gemma3:12b 為 8.1GB、gpt-oss:20b 為 14GB、gpt-oss:120b 為 65GB，這是記憶體需求的下限；同一個模型換量化會變尺寸，gemma3:12b 的 q4_K_M 是 8.1GB、q8_0 是 13GB、fp16 是 24GB。第二步加餘裕與上下文：官方例子是 14GB 檔案配 16GB 記憶體、65GB 檔案配單張 80GB 的 GPU，上下文預設 4096 個 token，長上下文任務建議 64000；Ollama 依顯示記憶體給預設上下文，低於 24 GiB 給 4k、24 至 48 GiB 給 32k、48 GiB 以上給 256k。第三步看總需求塞得進哪裡：塞進顯示記憶體就是 100% GPU 最快，只塞得進系統或統一記憶體就是 CPU 或混合模式、llama.cpp 官方對照是每秒 1.7 對每秒 9.1 個 token，兩邊都塞不下就降量化或換小模型。最下方是硬體上限：單張 GeForce RTX 50 系列顯示記憶體 8GB 至 32GB，Apple Mac 統一記憶體 16GB 至 512GB，NVIDIA 需要運算能力 5.0 以上與驅動 550 以上，macOS 需要 14 以上。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

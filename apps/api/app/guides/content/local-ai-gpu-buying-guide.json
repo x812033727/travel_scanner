@@ -192,6 +192,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由上往下走：先決定要跑的模型與檔案大小，再把顯示記憶體、官方支援清單、頻寬與電源逐一過一次，任何一關不過就往回換選擇。",
+          "description": "由上往下五個步驟。第一步先決定要跑哪個模型，ollama.com/library 的標籤頁直接寫檔案大小，例如 gemma3:12b 是 8.1GB、gpt-oss:20b 是 14GB。第二步確認顯示記憶體裝得下檔案加上下文，Ollama 依顯示記憶體給預設上下文，小於 24 GiB 給 4k；裝不下時 ollama ps 的 PROCESSOR 欄不會是 100% GPU。第三步查官方支援清單，NVIDIA 要 compute capability 5.0 以上與驅動 550 版以上，AMD 在 Linux 要 ROCm v7 或改走 Vulkan，Apple 走 Metal，Intel 在 llama.cpp 走 SYCL。第四步同容量才比記憶體頻寬與世代，RTX 5090 是 32 GB 搭 1792 GB/sec，RX 9070 XT 是 16 GB 搭 640 GB/s。第五步確認電源與機殼，官方規格頁寫 RTX 5090 建議系統電源 1000 W，RX 9070 XT 最低電源供應器建議 750W。任何一關不過就回到上一步換選擇。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

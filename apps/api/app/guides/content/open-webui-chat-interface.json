@@ -192,6 +192,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左往右看：瀏覽器只跟 Open WebUI 說話，模型都是 Open WebUI 從連線設定接進來的，資料留在下方那個 volume 裡。",
+          "description": "由左往右的架構圖。最左邊是瀏覽器，介面開在埠 3000，使用者在這裡聊天、上傳檔案、比較模型；左下角另有一塊說明第一次登入：第一個帳號就是管理員，之後註冊自動關閉，新帳號預設是 pending 待核准。中間是 Open WebUI 本身，容器內部埠是 8080，裡面包含聊天記錄與多模型並排、知識庫與 RAG 檢索、提示詞範本與模型預設、使用者與權限 admin、user、pending 四個部分。右邊是模型來源：上方是本機 Ollama，API 在埠 11434，另一台機器用 OLLAMA_BASE_URL 指過去；下方是 OpenAI 相容 API，填網址與金鑰，服務商沒有 models 端點時手動加模型代號。中間往下連到資料 volume，路徑是 open-webui 冒號斜線 app 斜線 backend 斜線 data，對話、使用者、設定與上傳檔案都存在這裡。左下說明更新只換映像檔、volume 留著，更新前先把 volume 打包備份；右下說明授權：50 人以上不可移除 Open WebUI 標示，門檻算的是任一連續 30 天內可直接使用的人數。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

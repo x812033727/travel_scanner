@@ -331,6 +331,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左到右看：前四步是取得授權與檔案，第五步依檔案格式分成兩條路，下排灰字是官方頁面上寫的細節。",
+          "description": "流程分成五步。第一步讀授權條款：到官網的「TAIDE模型」頁讀 L 類與 G 類兩份全文，條款禁止軍事與非法用途，散布衍生模型要附上條款副本。第二步同意存取條款：到 Hugging Face 的 taide 組織頁選版本，表單有 4 個欄位加一個勾選框，核准方式是自動，同意後立即可以下載。第三步登入這台機器：在終端機執行 hf auth login，官方文件寫受管制模型要先通過驗證才能下載檔案。第四步下載模型檔：官網列出的 9 個公開版本任選一個，拿到的是 safetensors 分片或 .gguf 單檔。第五步本機執行分兩條路：safetensors 分片，例如 12.4B 的 Gemma 版，模型卡的快速開始給了 transformers 與 vLLM 兩段程式，舊的 7B 版模型卡寫 tokenizer 要設成 slow mode；.gguf 單檔是兩個 4 bit 量化版，模型頁的 Use this model 列出 llama.cpp、LM Studio、Jan 與 Ollama，而 Ollama 官方模型庫當天沒有 TAIDE 項目。最後提醒：授權條款寫您僅得於國研院或國研院授權的網站上取用 TAIDE 模型。內容以 2026 年 9 月 15 日官方頁面為準。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

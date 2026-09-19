@@ -92,6 +92,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左到右、再由右到左看六個步驟：1 開分支、2 做檢查點、3 讓代理改、4 看差異、5 跑測試、6 收尾；藍色那一格是代理在做的事，其他都是你在做。",
+          "description": "一張六步驟的流程圖。上排由左到右是三步：1 開一條分支，指令 git switch -c ai/login，main 先保持乾淨；2 先做一個檢查點，指令 git add -A 與 git commit，這是代理動手前的存檔點；3 讓代理改，把目標與完成條件講清楚，改幾個檔都在這條分支上，這一格是代理在做的事，用藍色標示。接著往下轉到中排，由右到左是三步：4 看它改了什麼，用 git diff 與 git log，一行一行看過再往下；5 跑測試，跑專案自己的測試，沒過就回到步驟 3，圖上用一條虛線箭頭畫出這個回頭的路徑；6 收尾，合併或丟掉二選一，不要留著半成品分支。最後從第六步分成兩條路：測試過了就合併回 main，指令是 git switch main 接 git merge ai/login，再用 git branch -d 刪掉分支；不要了就整條丟掉，指令是 git switch main 接 git branch -D ai/login，main 沒被動過，等於沒發生。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

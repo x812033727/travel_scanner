@@ -261,6 +261,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從左看到右：你的程式只認得一個端點，挑哪一家代管、哪一家當備援由 OpenRouter 決定，右下角是 provider 物件能覆寫的部分。",
+          "description": "左邊是你的應用程式，用 OpenAI SDK 或 curl，base URL 指向 openrouter.ai 的 API 網址，金鑰放進 Authorization 標頭當 Bearer token。中間是 OpenRouter：預設路由是價格優先的負載平衡，先排掉最近 30 秒內明顯故障的供應商，再從價格最低的幾家裡依價格平方的倒數加權挑一家，其餘當備援；請求裡的 provider 物件可以覆寫這些規則，order、only 與 ignore 指定哪幾家，allow_fallbacks 關掉就不換人，data_collection 與 zdr 控制資料留存。中間下方註明儲值時收百分之五點五手續費、token 價格不加價。右邊是三家代管同一個模型的供應商：A 每百萬 token 一美元，價格最低所以先送，機率是 C 的九倍；C 每百萬 token 三美元，A 失敗時接手；B 每百萬 token 兩美元，因為三十秒內出過錯被排到最後。底下寫啟用路由或 fallback 時只有成功跑完的那一次會計費，失敗與備援的嘗試不收錢。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

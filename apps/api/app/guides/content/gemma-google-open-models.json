@@ -97,6 +97,7 @@
           "width": 1600,
           "height": 900,
           "caption": "從上往下看：同一套研究分成 Gemini 與 Gemma 兩條路，Gemma 這條再依版本分成 Apache 2.0 與 Gemma Terms of Use 兩種授權。",
+          "description": "結構圖。最上面一個框寫著 Google DeepMind 的同一套研究與技術，往下分成左右兩條路。左邊藍框是 Gemini 雲端服務：透過網站、App 或 API 使用，權重留在 Google 不提供下載，不必準備硬體、按方案或用量計費；它下面接一個白框，說明你拿到的是一個服務，開一個對話就能用，不能下載權重也不能離線執行，模型與方案由 Google 決定。右邊綠框是 Gemma 開放權重：下載權重檔案在自己的電腦執行，可離線、資料不離開你的機器，Ollama、LM Studio、AI Studio 都能跑；它下面再分成兩個授權框，左邊是 Gemma 4，授權為 Apache 2.0，屬於 OSI 核可的開源授權，沒有禁止用途政策；右邊是 Gemma 3 與 3n，授權為 Gemma Terms of Use，是 Google 自訂授權條款，並加上禁止用途政策。最底下一條白框寫上下文視窗：Gemma 4 的 E2B 與 E4B 是 128K token，12B、26B、31B 是 256K token；Gemma 3 是 32K 或 128K token，Gemma 3n 是 32K token；三代模型卡都寫訓練涵蓋 140 種以上語言。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

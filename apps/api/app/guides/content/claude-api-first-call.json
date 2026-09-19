@@ -120,6 +120,7 @@
           "width": 1600,
           "height": 900,
           "caption": "左邊照順序走完六步就能發出第一次請求，右邊是每次請求都不能少的三個參數；圖上的數字與正文相同。",
+          "description": "左半邊由上而下是六個步驟，每一步用箭頭接到下一步。第一步開帳號：到 Claude Console（platform.claude.com）註冊，建立自己的組織。第二步儲值：Settings 到 Billing 按 Buy credits，預付點數，一年到期。第三步設每月上限：Billing 的 Spend limits 按 Adjust limit，Start 級距每月 500 美元。第四步建立金鑰：Settings 到 API keys 按 Create key，選有效期 3 小時到 30 天或 Never。第五步放進環境變數：export ANTHROPIC_API_KEY，不寫進程式、不提交進 git。第六步跑起來：pip install anthropic，執行十行 Python，印出回覆。右半邊是一次請求裡的三個必要參數。model 是模型 id，照官網原封不動複製，例如 claude-opus-5，打錯會拿到 404 not_found_error。max_tokens 是這次回覆最多產生幾個 token，官方範例用 1000，太小會被截斷，回應的 stop_reason 會顯示 max_tokens。messages 是對話內容，每則有 role 與 content，role 是 user 或 assistant，Messages API 無狀態，每次都要送整段歷史。右下角另註明金鑰不是參數：官方 SDK 會自己讀環境變數 ANTHROPIC_API_KEY，所以程式裡看不到金鑰。步驟、介面名稱與數字依 2026 年 9 月的 Anthropic 官方文件與 Claude 說明中心。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

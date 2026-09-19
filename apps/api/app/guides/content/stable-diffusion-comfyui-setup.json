@@ -201,6 +201,7 @@
           "width": 1600,
           "height": 900,
           "caption": "最基本的文字生圖工作流：Load Checkpoint 分出模型、文字編碼器與 VAE 三條線，會合在 KSampler，解碼後存檔。",
+          "description": "由左到右的五格流程圖。第一格 Load Checkpoint 載入模型，分出 MODEL、CLIP、VAE 三條線，整包的 checkpoint 放在 models 底下的 checkpoints 資料夾，拆開的擴散模型放在 diffusion_models。第二格 CLIP Text Encode 寫提示詞，上面那個接 Positive 放你要的東西，下面那個接 Negative 放你不要的東西。第三格 KSampler 在潛在空間逐步去雜訊，主要參數是 seed 控制隨機性、steps 決定去雜訊次數、cfg 決定提示詞約束力、denoise 決定去雜訊強度。第四格 VAE Decode 把潛在空間換回像素空間，VAE 必須跟 checkpoint 同一個家族，混用會出現通道數對不上的張量錯誤。第五格 Save Image 把圖存進 ComfyUI 的 output 資料夾，圖的中繼資料帶著整份工作流與種子，拖回畫面即可還原。下方另外註明兩條線：Empty Latent Image 決定畫布尺寸並接到 KSampler 的 latent_image 輸入；Load Checkpoint 分出來的 VAE 要一路接到最後的 VAE Decode。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

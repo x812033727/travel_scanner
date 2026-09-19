@@ -187,6 +187,7 @@
           "width": 1600,
           "height": 900,
           "caption": "上排是從安裝到接 API 的四個步驟與每一步的指令，下排是這四步中間會用到的三個設定。",
+          "description": "上排四個方框是順序步驟：一、安裝，官網下載頁一行指令，macOS 需要 14 Sonoma 以上、Windows 需要 10 22H2 以上，也可以下載 dmg 或 exe 安裝檔；二、拉模型，指令是 ollama pull gemma4，在模型庫頁看標籤、大小與上下文，例如 9.6GB 與 128K，大小欄是下載大小；三、對話，指令是 ollama run gemma4，離開輸入斜線 bye，用 ollama ps 看 PROCESSOR 欄是 100% GPU 還是 100% CPU；四、接 API，本機位址是 localhost 冒號 11434，路徑有 /api/chat 與 /v1/chat/completions，curl 或 Python 都可以呼叫。下排三個方框是這四步之間會用到的設定：模型放在哪，預設在 .ollama/models，三個系統路徑不同，換磁碟要設 OLLAMA_MODELS；跑在 GPU 還是 CPU，用 ollama ps 看 PROCESSOR 欄，100% GPU 代表全在顯示記憶體，48%/52% CPU/GPU 代表被拆成兩邊；本機還是雲端，標籤結尾帶 cloud 就是雲端，大小欄顯示一個橫線，要全部關掉就設 OLLAMA_NO_CLOUD 等於 1。最下面一條是預設上下文視窗：常見問答寫預設 4096 個 token，可用 OLLAMA_CONTEXT_LENGTH 覆寫，另外依顯示記憶體分級，小於 24 GiB 給 4K，24 到 48 GiB 給 32K，48 GiB 以上給 256K。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",

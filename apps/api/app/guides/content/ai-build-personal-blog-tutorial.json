@@ -313,6 +313,7 @@
           "width": 1600,
           "height": 900,
           "caption": "由左至右是一篇文章從純文字變成公開網址的五個階段；下方兩塊寫的是之後每次發文要做的事，以及不必自己做的事。",
+          "description": "由左至右的五個階段。第一階段是 Markdown 文章，放在 content 資料夾，開頭的 front matter 寫標題、日期與標籤。第二階段是產生器建置，執行 hugo，在本機的 1313 埠預覽，front matter 裡 draft 設成 true 的文章不會被發布。第三階段是靜態檔，全部放進 public 目錄，包含每篇文章的 index.html、當作 RSS 的 index.xml 與一份 sitemap.xml。第四階段是代管服務，可選 GitHub Pages 或 Cloudflare Pages，git push 之後自動建置。第五階段是自訂網域，在 DNS 建 A 或 CNAME 記錄指向代管服務，憑證由平台自動申請，接著開啟 HTTPS。圖下方左邊列出之後每次發文只做的三件事：寫好 Markdown 並把 draft 改成 false、git commit 與 git push、代管服務自動重建後網址上的內容就換了。右邊列出不必自己做的事：RSS 與 sitemap 由產生器產生、HTTPS 憑證由代管服務自動申請、沒有資料庫要備份而整個專案都在 Git 裡、建置產物 public 不進版控。",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
