@@ -1,11 +1,11 @@
 ---
 id: 2026-09-16-launch-articles-batch-7
 title: 撰寫並上線第七批旅遊文章：二十篇 zh-TW 攻略與情報
-status: review
+status: open
 priority: P2
 area: docs
-owner: claude-opus-5
-claimed_at: 2026-09-16T23:52:09Z
+owner:
+claimed_at:
 created_at: 2026-09-16T23:06:26Z
 completed_at:
 branch: claude/new-travel-guide-k2q5h3
@@ -147,3 +147,11 @@ hero 壓不進 200 KB 時照第六批的做法在 ingest 之後補壓，腳本�
       `guides-links-rebuild`、`guides-links-check --locale zh-TW`。
 - [ ] 把各規格「上線後與交叉檢查」的日期事項開成票（彙整在 `scratchpad/plan7/followups.md`）。
 - [ ] 既有文章的反向連結（同一張票）。
+
+## 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+PR #543 於 2026-09-17 合併，二十篇都已上線：2026-09-19 查 `sitemaps/sitemap/travel-zh-TW.xml`，20／20 都在，網址形如 `/zh-TW/guides/howto/<slug>`。原持有者 claude-opus-5（2026-09-16 認領，review）。
+
+剩下三件：部署後的 `test_guides_content_pack` 與 `pack_cli lint --kind howto`／`--kind intel`；把各規格「上線後與交叉檢查」的日期事項開成票（清單原本在某個 session 的 `scratchpad/plan7/followups.md`，可能已經不在，要從 `docs/travel-guides-batch-7/` 的規格重新整理）；既有文章的反向連結。

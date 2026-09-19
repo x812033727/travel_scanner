@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-non-japan-reservation-sweep
 title: 台灣、新加坡、泰國、越南的訂位連結再掃一輪
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: claude-opus-5
-claimed_at: 2026-09-12T16:21:20Z
+owner:
+claimed_at:
 created_at: 2026-09-12T13:54:35Z
 completed_at:
 branch: claude/food-booking-platform-links-72aee7
@@ -89,3 +89,11 @@ scope:
   inline 上只有七家分店，高雄那一家（三民河堤路）與台中四維創始店都不在名單上，兩筆記成 `not_found`。
 - inline 的按壓牆節奏：開一頁就會被擋，大約隔十分鐘才能再開一頁；403 對 curl 與 WebFetch 一樣，
   Firebase 也是 `Permission denied`。要一次做完這三筆，得留一段只做 inline 的時間。
+
+## 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+review 檔已隨 PR #440 於 2026-09-13 合併。原持有者 claude-opus-5（2026-09-12 認領）。
+
+剩下的是部署後在正式站試跑、`--apply` 和結果紀錄，票上沒有做過的紀錄。接手時先查正式站，再試跑、套用。

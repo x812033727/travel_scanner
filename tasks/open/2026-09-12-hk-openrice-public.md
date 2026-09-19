@@ -1,11 +1,11 @@
 ---
 id: 2026-09-12-hk-openrice-public
 title: 香港 OpenRice 店家頁改為公開（僅電話訂位也顯示）
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: claude-opus-5
-claimed_at: 2026-09-12T00:45:00Z
+owner:
+claimed_at:
 created_at: 2026-09-12T00:44:00Z
 completed_at:
 branch: claude/hk-openrice-public
@@ -50,3 +50,11 @@ scope:
   2026-09-11 由後台帳號人工審核的 36 列仍然不會被動到。
 - 香港另外 2 筆能線上訂位的是 Arca Society（inline）與 FRANCIS（SevenRooms），不受這次影響。
 - 相關：`2026-09-11-food-reservation-link-backfill`（本次資料的來源）。
+
+### 釋出認領（由站主授權，2026-09-19）
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+資料與程式已隨 PR #414 於 2026-09-12 合併。原持有者 claude-opus-5（2026-09-12 認領）。
+
+正式站有沒有跑過 `apply-food-platform-reviews`（香港有平台按鈕的店家應從 2 間變 16 間）沒有紀錄。接手時先查正式站的數字，還沒套用就先試跑再套用。

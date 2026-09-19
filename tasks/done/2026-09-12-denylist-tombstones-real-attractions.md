@@ -65,6 +65,14 @@ Deadline is the 2026-09-15 discovery pass — after it runs the four rows are un
 without re-seeding them by hand. Merged before that date this costs nine rows back in a queue
 that is being drained anyway.
 
+### 2026-09-19 補註
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+期限已過：2026-09-15 那一輪探索已經跑過，四筆（Q38278536 喜屋武城、Q8669747 鎮平台、Q10911386 原花園尋常小學校本館、Q2410409 島醫院）可能已被判退成墓碑，接手第一步是確認它們現在的 `review_status`。探索間隔是 `hotspot_discovery_interval_seconds` 604,800 秒（每週），下一輪約在 2026-09-22，程式修正要在那之前部署。
+
+原本鎖住這張票 scope 的 `2026-09-11-deny-school-hospital-tram-stop-ward` 已在同一次整理釋出，現在可以直接認領。
+
 ### 2026-09-19 done in code (claude-fable-5-1)
 
 - `DENIED_TYPES` no longer carries Q245016, Q9842 or Q16917; the comment above the

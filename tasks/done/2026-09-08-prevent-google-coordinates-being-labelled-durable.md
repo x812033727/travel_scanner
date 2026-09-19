@@ -52,6 +52,12 @@ source repairs also cleared unsupported stamps. See
 docs/catalog-review-followup-2026-09-08.md for exact operational scope.
 Other administrators' previously published rows were not silently changed.
 
+### 2026-09-19 補註
+
+claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `docs/work-status-2026-09-19.md`。
+
+在 main `161687ad` 重新確認問題仍在：`apps/api/app/foods/coordinate_queue.py` 的 `apply_approval`（第 298–303 行）把 Google 候選的 `latitude`／`longitude` 寫進店家、標成 `admin_verified`，來源寫 Google Maps 網址。每核准一筆就多一筆。
+
 ### 2026-09-19 done in code (claude-fable-5-1)
 
 - `coordinate_queue.apply_approval` now writes the Google identity only: `google_place_id`,
