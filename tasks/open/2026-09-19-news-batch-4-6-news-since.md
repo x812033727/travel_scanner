@@ -15,6 +15,7 @@ scope:
   - docs/tech-news-2026/research
   - docs/crypto-news-2026/research
   - docs/news-2026-batch-4/check_article.py
+  - docs/news-2026-batch-4/build_assets.py
   - docs/news-2026-batch-4/verticals.py
   - docs/news-2026-batch-4/tech.md
   - docs/news-2026-batch-4/agents/DELTA-4-6.md

@@ -464,7 +464,9 @@ def main() -> int:
                 need(timage is not None and tdiagram.get("caption") == timage.caption, f"{locale} diagram caption differs")
 
     if assets:
-        for locale in LOCALES:
+        # Only the locales the pack ships: a zh-TW-only batch (4.6) has no hero-zh-cn.jpg
+        # to check, and the importer never asks for one.
+        for locale in [loc for loc in LOCALES if loc in pack.locales]:
             s = suffix(locale)
             for name in (f"hero{s}.jpg", f"hero{s}.svg", f"diagram-1{s}.svg"):
                 path = PUBLIC / "guides" / slug / name
