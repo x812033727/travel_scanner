@@ -346,7 +346,7 @@
       "verbatim_quote": "\"restrictedCountries\":[{\"code\":\"WWW\",\"alpha2\":\"WW\",\"name\":\"Worldwide\"}]"
     },
     {
-      "fact": "清單上每一場都帶一個 availableCountForRegistration（可報名人數）欄位，逐場不同；那是查詢當下還開放的人數，不是 Apple 公布的場地容量，也會隨報名而變。2026-09-20 重查：巴黎最早那場（當地 9 月 28 日）是 30，歐洲 29 場落在 3 到 42 之間，北美 10 場則是 985 到 999。",
+      "fact": "清單上每一場都帶一個 availableCountForRegistration（可報名人數）欄位，逐場不同；那是查詢當下還開放的人數，不是 Apple 公布的場地容量，也會隨報名而變。2026-09-20 第二輪重查（creationTimestamp 2026-09-19T19:44:44Z）：巴黎最早那場（當地 9 月 28 日）仍是 30，歐洲 29 場落在 3 到 42 之間（其中 18 場在 20–39，所以「多半顯示二、三十個」成立），北美 10 場則是 986 到 999——第一輪寫的下限 985 幾小時後就變了，正文與 FAQ 沒有引用這兩個數字，只有「30」繫著查核日。",
       "url": "https://developer.apple.com/events/view/upcoming-events/",
       "is_vendor_claim": false,
       "verbatim_quote": "\"availableCountForRegistration\":30"
@@ -412,7 +412,7 @@
     "公告沒有說明 design kits 是新檔案還是併進既有的檔案裡。原文只寫「從 Apple Design Resources 取得 iPhone Duo 的 Figma 與 Sketch design kits」，沒有寫檔名、版本或更新日期。",
     "清單資料沒有印出「這 39 場」這個數字。以 search=workshop 查詢時，Apple 自己回的 totalRecords 是 40，其中一筆是名稱完全不同的 IETF HLS Interest Day；39 是本文 2026-09-20 自己逐筆清點的結果，寫進文章時要講明是本站清點的。",
     "（查核加入）公告沒有直接連到「為 iPhone Duo 準備 App」技術文件，也沒有直接連到 Xcode 27.1 Beta Release Notes。2026-09-20 逐一讀出四個 href：軟體釋出清單 /news/releases/、Apple Design Resources /design/resources/、工作坊清單 /events/view/upcoming-events?search=workshop、iPhone Duo 開發者專頁 /iphone-duo/。文章不可寫成「公告連到技術文件」或「公告連到 Xcode 27.1 beta」。",
-    "（查核加入）「為 iPhone Duo 準備 App」技術文件與 Xcode 27.1 Beta Release Notes 兩頁都沒有印出日期：2026-09-20 抓到的 DocC 外殼與資料檔裡，Updated／modified／September／2026 各 0 次，metadata 也只有 title、role 與 availableLanguages。因此不可以把公告的 2026-09-18 掛到這兩頁上（初稿的 FAQ 第一題曾寫成「2026 年 9 月 18 日的技術文件」）。release notes 標題本身帶版本號 27.1，所以也不能寫成「頁面上沒有版本號」。"
+    "（查核加入；第二輪訂正過證據）「為 iPhone Duo 準備 App」技術文件與 Xcode 27.1 Beta Release Notes 兩頁都沒有印出「最後更新日期」：2026-09-20 抓到的 DocC 外殼與資料檔裡，Updated／updated／modified／Last／September 合計 1 次（prep 資料檔裡的一個 updated 出現在推薦影片的摘要文句中，不是頁面日期戳），沒有任何日期戳，metadata 只有 title、role、availableLanguages（prep 另有 images、modules，xcode 另有 roleHeading），沒有任何日期欄位。第一輪在這裡寫「2026 各 0 次」是錯的：prep 資料檔的 2026 出現 5 次、xcode 資料檔 1 次，全部是頁尾的 Copyright © 2026 Apple Inc. 與 wwdc2026／wwdc2025 影片識別碼，都不是更新日期。因此不可以把公告的 2026-09-18 掛到這兩頁上（初稿的 FAQ 第一題曾寫成「2026 年 9 月 18 日的技術文件」），正文與 FAQ 只能寫「沒有標明最後更新日期」，不可寫成「整頁沒有任何年份」。release notes 標題本身帶版本號 27.1，所以也不能寫成「頁面上沒有版本號」。"
   ],
   "unverified_or_excluded": [
     {
@@ -485,13 +485,14 @@
     "工作坊各場的報名截止時間不同，最早一場（巴黎 9 月 28 日場）的截止是 2026-09-27T15:00:00Z。文章刊出時已經會有場次截止，所以不要寫成「現在還報得到」，只寫報名開放的時間與「各場截止時間不同」。",
     "Xcode 27.1 目前是 beta。Apple 的 release notes 網址在正式版推出後通常會改寫內容、拿掉 beta 的已知問題，本文引用的「模擬器跑不了 StandBy」「多數 App extension 不能除錯」兩條屆時可能就不在頁面上了，查核日 2026-09-20 要寫清楚。",
     "Apple Developer 的技術文件是會改版的活頁，頁面上沒有標明最後更新日期。本文引用的「Xcode 26 and earlier」那一句以 2026-09-20 讀到的版本為準。",
+    "（第二輪重數）2026-09-20（台北）以 sourcing_notes 的同一個 POST 端點與同一段 eventDate 區間（2026-09-20T00:00:00Z 起）再抓一次：未過濾 200／174,177 bytes／creationTimestamp 2026-09-19T19:44:40Z／totalRecords 58（第 2 頁 0 筆，沒有分頁遺漏）；search=workshop 200／87,673 bytes／19:44:44Z／totalRecords 40。骨幹數字全部不變：工作坊 39 場（第 40 筆仍是 IETF HLS Interest Day），倫敦 13、柏林 9、巴黎 7、紐約 4、Cupertino 3、邁阿密（Coral Gables）3，全部 inperson、deliveryLanguage en、status published、restrictedCountries Worldwide、registrationStartDate 2026-09-18T17:45:00Z；58 筆的 regionName 仍是 Europe 29／North America 28／Asia Pacific 1，國家欄只有 United States、United Kingdom、Germany、France、Canada、China mainland 六種，沒有 Taiwan／Japan／Korea。英文說明仍是四個版本（three-day 21、four-day 8、two-day 7＝紐約與 Cupertino、three-day 加 App Intents／Siri 3＝邁阿密），沒有 self-guided 那兩句的仍是 two-day 那 7 場，所以「多數場次寫著」成立。報名截止最早的仍是 Cupertino 當地 9 月 28 日那場（2026-09-24T19:00:00Z），查核當下還沒有任何一場截止。",
     "（查核重數）2026-09-20 以同一個 POST 端點重抓，只把 eventDate 區間的起點改成 2026-09-20T00:00:00Z：未過濾那次回 200／174,177 bytes、creationTimestamp 2026-09-19T19:11:51Z、totalRecords 58；search=workshop 那次回 200／87,673 bytes、creationTimestamp 2026-09-19T19:11:55Z、totalRecords 40（39 場工作坊＋1 筆 IETF HLS Interest Day）。場地分布與撰稿當時相同：倫敦 13、柏林 9、巴黎 7、紐約 4、Cupertino 3、邁阿密 3；地區欄仍是 Europe 29、North America 28、Asia Pacific 1。39 場的 registrationStartDate 全是 2026-09-18T17:45:00Z，全部 inperson、deliveryLanguage en、restrictedCountries Worldwide、status published。報名截止最早的一場不是巴黎，是 Cupertino 當地 9 月 28 日那場（2026-09-24T19:00:00Z）；巴黎最早那場的 2026-09-27T15:00:00Z 是「最早開課」那一場的截止時間，兩者不同，文章只寫「各場截止時間不同」。"
   ],
   "corrections_applied": [],
   "hero_label": "版面得先學會變形",
   "diagram": {
     "title": "Apple 給開發者的四樣東西",
-    "caption": "依 Apple 2026 年 9 月 18 日的開發者公告與它連到的官方頁面整理，查核日 2026 年 9 月 20 日。",
+    "caption": "依 Apple 2026 年 9 月 18 日的開發者公告與本文引用的官方頁面整理，查核日 2026 年 9 月 20 日。",
     "nodes": [
       [
         "Xcode 27.1 beta",
@@ -705,12 +706,125 @@
       "報名截止最早的一場是 Cupertino 當地 9 月 28 日那場（2026-09-24T19:00:00Z），比文章預計刊出的時間還早。正文只寫「各場截止時間不同」、沒有寫「現在還報得到」，符合 live_data_warnings 的要求，但站主若要在刊出時加一句提醒，要重抓後再寫。",
       "本輪改了 24 處、其中 5 處推翻原本的事實陳述（連結落點、技術文件的日期、鏡頭遮蔽的建議、名額欄位的語意、工作坊說明的涵蓋範圍），依科技垂直查核規格的門檻，建議安排第二輪覆核；骨幹論述（Xcode 26 以前建置會少一塊畫面、工作坊只在歐美六個場地）本輪查證後維持不變。"
     ],
-    "second_round": {},
+    "second_round": {
+      "checked_by": "independent second-round factcheck agent（未參與撰稿、未參與第一輪）",
+      "checked_on": "2026-09-20",
+      "method": "sources[] 四條在 2026-09-20（台北）以 curl -sL -A \"Mokaair-editorial\" 自行重抓並讀 body，所有請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的 email、姓名或其他個人資料，也沒有登入：公告頁 200／106,738／0 轉址、技術文件 DocC 外殼 200／19,171 與資料檔 200／87,352、Xcode release notes 外殼 200／18,811 與資料檔 200／6,537、Meet with Apple 外殼 200／38,407（<title> 仍是 Schedule - Meet with Apple - Apple Developer），位元組數與第一輪逐一相同。工作坊清單照 sourcing_notes 的配方以 POST /services-public/event/developer/eventList 重抓三次（未過濾、search=workshop、第 2 頁），逐筆解析 58 筆活動的名稱、場地、城市、國家、regionName、時區、起訖時刻、報名起訖、授課語言、conferenceTypes、可報名人數、screeningMethod 與英文說明，並把 39 場的說明分群比對。兩份 DocC 資料檔還原成段落、列表與 aside 逐句比對，公告頁直接讀 HTML 原始碼取出四段文字與四個 href。研究紀錄 61 條 verbatim_quote 全部以程式做連續字串比對（公告比 HTML 原文、兩份文件比 DocC 的 text／codeVoice 節點與還原後的段落、清單比回應本身的 minified JSON 與重新序列化的兩種形式），61／61 命中，沒有任何一條含 …、… 或 | 的拼接引文。覆核重點放在第一輪改動過的 24 處與它新寫進去的句子（四個連結的落點、技術文件沒有日期、can block、空間不夠時、關鍵特性、讀出保留區域的框、多數場次寫著、清單上、可報名人數、公告的四句正文），以及 summary／description／表格／callout／圖解 caption 這些第一輪只改了同一個錯的一半的地方。沒有用 sources[] 以外的網址替文章補任何事實。",
+      "claims_checked": "正文 18 段、summary 4 句、FAQ 5 題答句、callout、表格 12 格與 caption、圖解 caption 與四格、hero_label、title、description，共約 120 條可核對的主張；研究紀錄 61 條 verbatim_quote 全部重驗；工作坊清單 58 筆活動逐筆重數。",
+      "changes": [
+        {
+          "where": "內容包 zh-TW 第二節第一段",
+          "before": "四段話裡最關鍵的一句，寫在「為 iPhone Duo 準備 App」文件裡：",
+          "after": "最關鍵的一句不在公告裡，寫在「為 iPhone Duo 準備 App」文件裡：",
+          "why": "第一輪已經確認公告全文是四句一行的話（Get Xcode 27.1 beta. ／ Get Figma and Sketch design kits… ／ Sign up for workshops… ／ Find out more about preparing your app…），Xcode 26 and earlier 那一句不在其中，而在技術文件裡。原句卻把它算成「四段話裡」的一句，和同一篇第一段、第三段與 FAQ 第二題的更正互相矛盾。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r 與 https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo （2026-09-20 重抓）"
+        },
+        {
+          "where": "內容包 zh-TW 第三節第二段",
+          "before": "可預覽裝置「另一個螢幕」的內容，對應摺疊機的內外兩塊螢幕。",
+          "after": "可預覽裝置「另一個螢幕」的內容——摺疊機正好有內外兩塊螢幕。",
+          "why": "release notes 原文是 The canvas overrides picker now includes a Display group for previewing content on a device’s alternative display.，整句沒有提到摺疊機，也沒有提到 iPhone Duo；「對應摺疊機的內外兩塊螢幕」是本站的推論，卻寫在 Apple 的敘述裡。改寫後前半照原文，後半是技術文件寫過的事實（a compact outer display and a large inner display），推論留給讀者。",
+          "source": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes"
+        },
+        {
+          "where": "內容包 zh-TW summary 第一句",
+          "before": "…公布 iPhone Duo 的開發資源，包括 Xcode 27.1 beta、Figma 與 Sketch 版型、技術文件與實體工作坊。",
+          "after": "…公布 iPhone Duo 的開發資源，四段話各搭一個連結：Xcode 27.1 beta、Figma 與 Sketch 版型、全球工作坊與 iPhone Duo 開發者專頁。",
+          "why": "兩個第一輪已經推翻、但沒有掃到 summary 的錯疊在同一句裡。(1) 公告第四句 Find out more about preparing your app for iPhone Duo. 連到的是 /iphone-duo/ 開發者專頁，不是技術文件；而且那份技術文件整頁沒有印日期，說 Apple 在 9 月 18 日「公布」它沒有任何來源——這正是第一輪在 FAQ 第一題改掉的同一個錯。(2)「實體」是本站清點活動清單（conferenceTypes 全部 inperson）得到的結果，公告寫的是 workshops around the world；第一輪在 description 把同樣的錯改成「本站清點清單」，summary 漏改。新句子每個詞都在正文出現（「四段話」「各搭一個連結」在第一段，「開發者專頁」在第一段，「全球工作坊」在第一節第一段）。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r （四個 href 逐一讀出）與 POST eventList（2026-09-20）"
+        },
+        {
+          "where": "內容包 zh-TW description",
+          "before": "Xcode 27.1 beta、Figma 與 Sketch 版型、技術文件與全球工作坊",
+          "after": "Xcode 27.1 beta、Figma 與 Sketch 版型、開發者專頁與全球工作坊",
+          "why": "同上 (1)。description 長度 187→188，仍在 120–200。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r"
+        },
+        {
+          "where": "內容包 zh-TW 第五節第一段",
+          "before": "這則公告不涉及任何硬體規格、售價或上市地區",
+          "after": "這則公告的正文不涉及硬體規格、售價或上市地區",
+          "why": "協調者已裁決把這個否定句限縮成「公告的四句正文」（公告的插圖 alt 寫著 in Star White and Night Sky 兩個顏色名），但第一輪只改了第一節那一處。同一篇裡同一個主張出現三次，另外兩次仍是無限制的全稱否定，讀者會看到自相矛盾的兩種寫法。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r （插圖 alt：Front and rear views of iPhone Duo shown side by side in Star White and Night Sky…）"
+        },
+        {
+          "where": "內容包 zh-TW FAQ 第二題答案",
+          "before": "公告沒有提到任何硬體規格或售價。",
+          "after": "公告的四句正文沒有提到硬體規格或售價。",
+          "why": "同上，第三處。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r"
+        },
+        {
+          "where": "內容包 zh-TW 表格第一列「系統怎麼處理」",
+          "before": "把一個大畫面切成兩半；半摺時生效、全開時失效",
+          "after": "把一個大畫面切成較小的畫面；半摺時生效、全開時失效",
+          "why": "原文是 A division occurs when a folding region divides a large view into smaller views.，只寫 smaller views，沒有寫「兩」。摺痕只有一道時切成兩塊是合理的推論，但來源沒有印出這個數字，照規格不能當事實寫。",
+          "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+        },
+        {
+          "where": "內容包 zh-TW 表格第二列「文件給開發者的建議」",
+          "before": "取得保留區域的位置，據此調整版面",
+          "after": "讀出保留區域的框，據此調整版面",
+          "why": "原文是 Inspect the frames of the reserved regions, and adjust your views accordingly.；frames 是框（位置加尺寸），只寫「位置」會漏掉尺寸，也和第一輪自己在 changes 裡寫的「讀出保留區域的框」不一致。",
+          "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo"
+        },
+        {
+          "where": "內容包 zh-TW 表格第四列「文件給開發者的建議」",
+          "before": "改用系統提供的標準版面容器",
+          "after": "改成同時指定圖示與標題的項目",
+          "why": "Prefer system-provided layouts and containers… 那一條是「共通版面與縮放」那一節對整體版面的建議，被套到「工具列項目是自訂視圖」這一列上。文件對這一列有一條正對的建議：When you create toolbar items, specify both an icon and a title for items that you want to have the most adaptability.，直接改用它。",
+          "source": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo （Organize items in your bars 一節）"
+        },
+        {
+          "where": "內容包 zh-TW callout",
+          "before": "工作坊的名額與報名截止時間隨時在變",
+          "after": "工作坊的可報名人數與報名截止時間隨時在變",
+          "why": "第一輪已把正文與 FAQ 的「名額」改成「可報名人數」（availableCountForRegistration 是查詢當下還開放的人數，不是 Apple 公布的名額上限），callout 漏改，同一篇裡兩種說法並存。",
+          "source": "https://developer.apple.com/events/view/upcoming-events/ （POST eventList，2026-09-20）"
+        },
+        {
+          "where": "內容包 zh-TW 圖解 caption 與研究紀錄 diagram.caption（兩邊同步）",
+          "before": "依 Apple 2026 年 9 月 18 日的開發者公告與它連到的官方頁面整理",
+          "after": "依 Apple 2026 年 9 月 18 日的開發者公告與本文引用的官方頁面整理",
+          "why": "第一輪查出公告連到的四頁是 /news/releases/、/design/resources/、工作坊清單、/iphone-duo/，其中三頁不在 sources[]；而圖上第三格的細節「怎麼改版面與工具列」出自技術文件，那一頁正好不是公告連到的頁。原 caption 因此把圖的依據指向一組既不完整、又有三頁沒被引用的頁面。改成「本文引用的官方頁面」之後，四格的依據都落在 sources[] 四條之內。",
+          "source": "https://developer.apple.com/news/?id=nyuppv9r （四個 href）"
+        },
+        {
+          "where": "研究紀錄 not_said 最後一條",
+          "before": "…兩頁都沒有印出日期：…Updated／modified／September／2026 各 0 次…",
+          "after": "…兩頁都沒有印出「最後更新日期」：…第一輪寫「2026 各 0 次」是錯的，prep 資料檔的 2026 出現 5 次、xcode 1 次，全部是頁尾的 Copyright © 2026 Apple Inc. 與 wwdc2026／wwdc2025 影片識別碼…",
+          "why": "第一輪新寫進紀錄的證據句今天重抓就對不上：prep.json 有 5 個 2026、xcode.json 有 1 個，另有 1 個 updated 出現在推薦影片的摘要句（the updated software）裡。結論（兩頁都沒有最後更新日期、metadata 沒有日期欄位）仍然成立，但證據要照今天讀到的寫，而且正文只能寫「沒有標明最後更新日期」，不能被讀成「整頁沒有任何年份」。",
+          "source": "兩份 DocC 資料檔（2026-09-20 重抓，87,352／6,537 bytes）"
+        },
+        {
+          "where": "研究紀錄 verified_facts 可報名人數那一條",
+          "before": "北美 10 場則是 985 到 999",
+          "after": "北美 10 場則是 986 到 999（並補記歐洲 29 場有 18 場落在 20–39）",
+          "why": "活資料在兩輪之間就變了，正好證明這個欄位不能當常數；同時補上「29 場裡 18 場在 20–39」這個分母，讓 FAQ 第五題的「歐洲場次多半顯示二、三十個」有可覆核的依據。正文與 FAQ 都沒有引用 985／986 這兩個數字，只有「30」繫著查核日，今天仍是 30。",
+          "source": "https://developer.apple.com/events/view/upcoming-events/ （POST eventList，creationTimestamp 2026-09-19T19:44:44Z）"
+        },
+        {
+          "where": "研究紀錄 live_data_warnings",
+          "before": "（無）",
+          "after": "新增「（第二輪重數）」一條，記下今天三次 POST 的位元組數、creationTimestamp、totalRecords、場地分布、四種英文說明的場次數、regionName 分布與報名截止最早的一場。",
+          "why": "活資料的每一次重數都要留下時點，之後任何人要再引用這些數字才知道跟誰比。",
+          "source": "POST /services-public/event/developer/eventList（2026-09-20）"
+        }
+      ],
+      "open_questions": [
+        "圖解第三格的標題仍是「說明文件」，圖片 alt 也寫成「Xcode 27.1 beta、設計檔、說明文件與實體工作坊，對應 Apple 這次公布的四項開發者資源」。公告第四句是 Find out more about preparing your app for iPhone Duo.、連到 /iphone-duo/ 開發者專頁，而那一格的細節「怎麼改版面與工具列」出自技術文件。caption 改成「本文引用的官方頁面」後四格都有來源，本輪判定可以留；若站主要與改過的 summary 完全一致，這一格可以換成「開發者專頁」——diagram-1.svg 還沒產生，現在改不必重畫。",
+        "FAQ 第五題「歐洲場次多半顯示二、三十個」今天成立（歐洲 29 場裡 18 場落在 20–39），但這是每分鐘都在動的活資料。發稿當天照協調者裁決重數時，這一句要跟著看，分布變了就改。",
+        "第三節第一段「實機偵錯支援 iOS 17、tvOS 17、watchOS 10 以上與 visionOS」把原文三個 and later 併成句尾一個「以上」。中文可以讀成三者共用，本輪不改；若站主要更保險，寫成「iOS 17 以上、tvOS 17 以上、watchOS 10 以上與 visionOS」要多 6 字，改完段落 2,994／3,000 仍放得下。",
+        "沒有需要回一手來源裁決的「原稿疑似有誤」。四條 sources 今天全部讀得到正文、位元組數與第一輪逐一相同，61 條 verbatim_quote 全部是單一連續字串、沒有任何拼接，工作坊 39 場與六個場地的骨幹數字也沒有變。"
+      ],
+      "verdict": "ok（第二輪改 14 處：內容包 11 處、研究紀錄 3 處；沒有推翻任何骨幹論述，也沒有需要站主回一手來源裁決的事）"
+    },
     "coordinator_rulings": [
       "「公告本身沒有出現任何硬體規格…」改「公告的四句正文沒有出現…」（插圖 alt 有 Star White／Night Sky 顏色名）。",
       "上海線上講座維持英文名的編輯直譯並標明直譯；不換成簡中官方名。",
       "發稿當天：以 POST eventList 重數 39 場、可報名人數與最早截止（Cupertino 9/28 場，2026-09-24T19:00Z 截止）；正文只寫「各場截止時間不同」，不寫「現在還報得到」。",
-      "第二輪照常安排（第一輪推翻 5 處事實陳述）。"
+      "第二輪照常安排（第一輪推翻 5 處事實陳述）。",
+      "第二輪後（2026-09-20）：三個 and later 改寫成各自「以上」；圖解第三格維持「說明文件」（caption 已改成「本文引用的官方頁面」，四格都有來源）；FAQ5 的可報名人數分布列入發稿日重數。"
     ]
   }
 }
