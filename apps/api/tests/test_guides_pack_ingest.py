@@ -648,22 +648,30 @@ def test_an_ordinary_redirect_is_still_followed() -> None:
 # 瑞鳳殿 -- the Sendai mausoleum whose best photograph batch 7 could not ingest.
 JAPANESE_NAME = "瑞鳳殿.jpg"
 JAPANESE_NAME_ENCODED = "%E7%91%9E%E9%B3%B3%E6%AE%BF.jpg"
-THUMB_PATH = f"/wikipedia/commons/thumb/a/a1/{JAPANESE_NAME_ENCODED}/1600px-{JAPANESE_NAME_ENCODED}"
+# The shape the API gave for such a file on 2026-09-19: the name percent-encoded in the path,
+# a tracking query string appended, and the rendition wider than the 1600 px asked for.
+UTM = "?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content="
+THUMB_PATH = (
+    f"/wikipedia/commons/thumb/7/72/{JAPANESE_NAME_ENCODED}/1920px-{JAPANESE_NAME_ENCODED}"
+    f"{UTM}thumbnail"
+)
 
 
 def _commons_like_server(jpeg: bytes) -> tuple[HTTPServer, str, list[str]]:
-    """A server that answers the way Commons does for a Japanese-named file.
+    """A server that answers the way Commons does for a Japanese-named file, plus the one
+    thing that broke the ingest: a response header carrying the name as raw UTF-8 bytes.
 
-    The API's JSON names the picture by percent-encoded URLs; the picture itself comes with
-    the file name in its headers -- percent-encoded in `Content-Disposition` (RFC 5987) and
-    as raw UTF-8 bytes in Thumbor's `xkey`, which is the byte sequence `http.client` turns
-    into ISO-8859-1 mojibake. `seen` records every request path.
+    Today's `thumb.wikimedia.org` names the file percent-encoded (RFC 5987) in
+    `Content-Disposition`, which is plain ASCII; which header carried the bytes on the day
+    batch 7 hit it is not on record. The quoted-name form of `Content-Disposition` is the
+    common way a server puts a file name on the wire unencoded, and any header with a byte
+    over 0x7F fails the same way, so that is the one this server sends. `seen` records
+    every request path.
     """
     seen: list[str] = []
     picture_headers = {
         "Content-Type": "image/jpeg",
-        "Content-Disposition": f"inline;filename*=UTF-8''{JAPANESE_NAME_ENCODED}",
-        "xkey": _on_the_wire(f"File:{JAPANESE_NAME}"),
+        "Content-Disposition": _on_the_wire(f'inline;filename="{JAPANESE_NAME}"'),
     }
 
     class Handler(BaseHTTPRequestHandler):
@@ -673,7 +681,7 @@ def _commons_like_server(jpeg: bytes) -> tuple[HTTPServer, str, list[str]]:
             if self.path.startswith("/w/api.php?"):
                 payload = _commons_payload(
                     "CC BY-SA 4.0",
-                    url=f"{base}/wikipedia/commons/a/a1/{JAPANESE_NAME_ENCODED}",
+                    url=f"{base}/wikipedia/commons/7/72/{JAPANESE_NAME_ENCODED}{UTM}original",
                     thumburl=f"{base}{THUMB_PATH}",
                     descriptionurl=f"https://commons.wikimedia.org/wiki/File:{JAPANESE_NAME_ENCODED}",
                 )
@@ -703,9 +711,9 @@ def test_a_japanese_file_name_survives_the_metadata_call_and_the_download(
 ) -> None:
     """Batch 7's 瑞鳳殿 photograph. The request side was never the problem -- httpx
     percent-encodes the title in the API query and the name in the thumbnail path before
-    urllib sees them -- but the picture's answer carries the file name as raw UTF-8 in a
-    header, `http.client` decodes headers as ISO-8859-1, and handing those strings to
-    `httpx.Response` re-encoded them as ASCII: `UnicodeEncodeError`, ingest over."""
+    urllib sees them -- but `http.client` decodes response headers as ISO-8859-1, and handing
+    those strings to `httpx.Response` re-encoded them as ASCII: the first header byte over
+    0x7F was `UnicodeEncodeError`, and the ingest was over."""
     server, base, seen = _commons_like_server(_jpeg_bytes((64, 48)))
     monkeypatch.setattr(pack_ingest, "COMMONS_API", f"{base}/w/api.php")
     try:
@@ -719,11 +727,10 @@ def test_a_japanese_file_name_survives_the_metadata_call_and_the_download(
     assert info.image_url == f"{base}{THUMB_PATH}"
     assert info.file_page == f"https://commons.wikimedia.org/wiki/File:{JAPANESE_NAME_ENCODED}"
     assert picture.size == (64, 48)
-    # Both hops went out percent-encoded, and the headers read back as the UTF-8 they were.
+    # Both hops went out percent-encoded, and the header reads back as the UTF-8 it was.
     assert f"titles=File%3A{JAPANESE_NAME_ENCODED}" in seen[0]
     assert seen[1] == THUMB_PATH
-    assert answer.headers["xkey"] == f"File:{JAPANESE_NAME}"
-    assert answer.headers["content-disposition"].endswith(JAPANESE_NAME_ENCODED)
+    assert answer.headers["content-disposition"] == f'inline;filename="{JAPANESE_NAME}"'
 
 
 def test_a_redirect_to_a_non_ascii_location_is_followed() -> None:
@@ -736,7 +743,7 @@ def test_a_redirect_to_a_non_ascii_location_is_followed() -> None:
     finally:
         server.shutdown()
     assert answer.text == "ok"
-    assert answer.url.path == f"/{JAPANESE_NAME_ENCODED}"
+    assert answer.url.raw_path == f"/{JAPANESE_NAME_ENCODED}".encode()
 
 
 def test_ingest_knows_every_topic_the_write_path_accepts() -> None:
