@@ -1,0 +1,321 @@
+{
+  "slug": "ai-workflow-coding-agents-division",
+  "title": "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "CLI reference",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Non-interactive mode",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Developer commands",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Gemini CLI",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/README.md",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Headless mode reference",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Gemini CLI cheatsheet",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "claude -p 執行一段查詢後就結束（print mode）",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude -p \"query\" Query via SDK, then exit"
+    },
+    {
+      "fact": "claude -p 可以用管線接收檔案內容",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "cat file | claude -p \"query\" Process piped content"
+    },
+    {
+      "fact": "Claude Code 的 --output-format 只能用在 print mode，可選 text、json、stream-json",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--output-format Specify output format for print mode (options: text , json , stream-json )"
+    },
+    {
+      "fact": "Claude Code 的 --input-format 一樣只用在 print mode",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--input-format Specify input format for print mode (options: text , stream-json )"
+    },
+    {
+      "fact": "Claude Code 的 --json-schema 讓 CLI 在流程跑完後驗證輸出是否符合 JSON Schema，只能用在 print mode",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--json-schema Get validated JSON output matching a JSON Schema after the agent completes its workflow (print mode only)."
+    },
+    {
+      "fact": "Claude Code 的 --max-turns 只能用在 print mode，到上限會以錯誤結束",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--max-turns Limit the number of agentic turns (print mode only). Exits with an error when the limit is reached."
+    },
+    {
+      "fact": "Claude Code 的 --permission-prompt-tool 是設計給非互動模式處理核准提示用的",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--permission-prompt-tool Specify an MCP tool to handle permission prompts in non-interactive mode."
+    },
+    {
+      "fact": "-p 在沒有另外指定核准旗標時，用的是 default 核准模式",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For -p , that’s default when nothing is configured"
+    },
+    {
+      "fact": "Codex 的非互動模式讓你不開互動式 TUI 就能從腳本執行",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Non-interactive mode lets you run Codex from scripts (for example, continuous integration (CI) jobs) without opening the interactive TUI."
+    },
+    {
+      "fact": "codex exec 執行時把進度印到 stderr，只把最後一則訊息印到 stdout",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "While codex exec runs, Codex streams progress to stderr and prints only the final agent message to stdout."
+    },
+    {
+      "fact": "codex exec 預設用唯讀沙盒，自動化要自己選更寬的層級",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default, codex exec runs in a read-only sandbox. In automation, set the least permissions needed for the workflow"
+    },
+    {
+      "fact": "codex exec 的 --json 把輸出改成一行一個 JSON 事件",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To consume Codex output in scripts, use JSON Lines output"
+    },
+    {
+      "fact": "codex exec 開啟 --json 後 stdout 變成 JSONL 串流",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When you enable --json , stdout becomes a JSON Lines (JSONL) stream so you can capture every event Codex emits while it’s running."
+    },
+    {
+      "fact": "codex exec 用 --output-schema 讓輸出符合指定的 JSON Schema",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If you need structured data for downstream steps, use --output-schema to request a final response that conforms to a JSON Schema."
+    },
+    {
+      "fact": "codex exec 官方文件把它列為 Stable、用來在非互動模式執行 Codex",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "codex exec Stable Run Codex non-interactively."
+    },
+    {
+      "fact": "codex exec 的 --json，別名是 --experimental-json",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--json, --experimental-json boolean Print newline-delimited JSON events instead of formatted text."
+    },
+    {
+      "fact": "codex exec 的 --output-schema 會讓 Codex 驗證工具輸出是否符合指定的 JSON Schema 檔",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--output-schema path JSON Schema file describing the expected final response shape. Codex validates tool output against it."
+    },
+    {
+      "fact": "codex exec 的 --output-last-message（別名 -o）把最後一則訊息存成檔案",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--output-last-message, -o path Write the assistant’s final message to a file. Useful for downstream scripting."
+    },
+    {
+      "fact": "codex exec 的 --sandbox（別名 -s）可選 read-only、workspace-write 或 danger-full-access",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--sandbox, -s read-only | workspace-write | danger-full-access Sandbox policy for model-generated commands. Defaults to configuration."
+    },
+    {
+      "fact": "codex exec 的 --skip-git-repo-check 讓它可以在非 Git 目錄執行",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--skip-git-repo-check boolean Allow running outside a Git repository (useful for one-off directories)."
+    },
+    {
+      "fact": "gemini -p（或 --prompt）強制進入非互動模式，位置引數在 TTY 裡預設是互動模式",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Positional prompt. Defaults to interactive mode in a TTY. Use -p/--prompt for non-interactive execution."
+    },
+    {
+      "fact": "Gemini CLI 的 --prompt（別名 -p）會強制轉成非互動模式",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Prompt text. Appended to stdin input if provided. Forces non-interactive mode."
+    },
+    {
+      "fact": "Gemini CLI 的 --output-format（別名 -o）可選 text、json、stream-json",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The format of the CLI output. Choices: text, json, stream-json"
+    },
+    {
+      "fact": "Gemini CLI 的 --approval-mode 可選 default、auto_edit、yolo、plan",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Approval mode for tool execution. Choices: default, auto_edit, yolo, plan"
+    },
+    {
+      "fact": "Gemini CLI 舊版的 --yolo 旗標官方文件已標成 Deprecated，建議改用 --approval-mode=yolo",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Deprecated. Auto-approve all actions. Use --approval-mode=yolo instead."
+    },
+    {
+      "fact": "Gemini CLI 用 --output-format json 拿結構化輸出的用法，官方 README 有寫",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For more advanced scripting, including how to parse JSON and handle errors, use the --output-format json flag to get structured output"
+    },
+    {
+      "fact": "Gemini CLI 用 --output-format stream-json 拿即時事件串流的用法，官方 README 有寫",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/README.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For real-time event streaming (useful for monitoring long-running operations), use --output-format stream-json to get newline-delimited JSON events"
+    },
+    {
+      "fact": "Gemini CLI 的無頭模式提供程式化介面，回傳結構化文字或 JSON，不需要互動式終端機介面",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Headless mode provides a programmatic interface to Gemini CLI, returning structured text or JSON output without an interactive terminal UI."
+    },
+    {
+      "fact": "Gemini CLI 的無頭模式會在非 TTY 環境，或帶 -p／--prompt 時觸發",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Headless mode is triggered when the CLI is run in a non-TTY environment or when providing a query with the -p (or --prompt) flag."
+    },
+    {
+      "fact": "Gemini CLI 的 --output-format json 回傳單一 JSON 物件，包含 response 與使用統計",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Returns a single JSON object containing the response and usage statistics."
+    },
+    {
+      "fact": "Gemini CLI 的 JSON 輸出裡，response 欄位是模型的最終回答（字串）",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "response: (string) The model's final answer."
+    },
+    {
+      "fact": "Gemini CLI 的 JSON 輸出裡，stats 欄位是 token 使用量與 API 延遲統計",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "stats: (object) Token usage and API latency metrics."
+    },
+    {
+      "fact": "Gemini CLI 的文件列出完整結束代碼對照表",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The CLI returns standard exit codes to indicate the result of the headless execution"
+    },
+    {
+      "fact": "Gemini CLI 結束代碼 0 代表成功",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "0: Success."
+    },
+    {
+      "fact": "Gemini CLI 結束代碼 1 代表一般錯誤或 API 失敗",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "1: General error or API failure."
+    },
+    {
+      "fact": "Gemini CLI 結束代碼 42 代表輸入錯誤",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "42: Input error (invalid prompt or arguments)."
+    },
+    {
+      "fact": "Gemini CLI 結束代碼 53 代表對話輪數超過上限",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "53: Turn limit exceeded."
+    }
+  ],
+  "unverified_or_excluded": [
+    "Claude Code 的 --model 旗標與模型別名（sonnet/opus/haiku/fable）：查到了，但這篇不挑特定模型，決定不用。",
+    "Codex 的 --dangerously-bypass-approvals-and-sandbox／--yolo 與 Claude Code 的 --dangerously-skip-permissions：查到了，但為了不鼓勵完全跳過核准的寫法，這篇只在 callout 提一句 Gemini CLI 的 --yolo 已標 Deprecated，不逐一示範每支工具的全自動核准旗標。",
+    "種子網址 https://developers.openai.com/codex/cli/ 當天重讀後會轉址到 learn.chatgpt.com/docs/codex/cli，這篇改採轉址後的頁面與其下的 non-interactive-mode、developer-commands 兩頁；overview 頁本身沒有旗標細節，沒有列進 sources。",
+    "Claude Code 的 --tools／--allowedTools／--disallowedTools 工具權限旗標：查到了，但這篇的核准段落只講會不會卡住，不重複工具白名單的細節，避免跟《Claude Code｜非互動執行與 JSON 輸出》重複。",
+    "Codex 的 CODEX_API_KEY／OPENAI_API_KEY 環境變數認證方式：查到了，但這篇的三支 CLI 範例都假設已經用互動登入完成認證，沒有示範金鑰認證，避免程式碼看起來像需要貼金鑰。"
+  ],
+  "must_not_write": [
+    "不寫任何模型 id 或模型比較，這篇只講 CLI 旗標與交接檔。",
+    "不寫「台灣可用」或可用性保證，三支 CLI 的登入與方案限制留給各自既有文章。",
+    "不寫免責聲明式的 callout。",
+    "不重講 claude -p、codex exec、Gemini CLI 規劃／修改／測試流程、Agent Teams 各自的細節，只點名。"
+  ],
+  "editorial_brief": "這篇是系列第 8 篇，切角是三支編碼代理 CLI（Claude Code、Codex、Gemini CLI）怎麼在同一支腳本裡接力，只講非互動與輸出格式旗標，以及一套本站自訂、不是任何一家官方規格的交接檔格式（plan.md、patch、review.json）。三支 CLI 各自的非互動細節與規劃／修改／測試流程留給站上既有的四篇文章，這篇不重複；同系列第 6 篇談的是正式 JSON Schema 交接、第 9 篇談 MCP 共用工具、第 12 篇談失敗防護，這篇只在需要時一句帶過。",
+  "code_samples": [
+    {
+      "label": "workflow.sh：串接 claude -p、codex exec 與 gemini -p（需要三支 CLI 都已登入，Python 3.11 以上只用內建的 json）",
+      "language": "bash",
+      "lines": 62,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://code.claude.com/docs/en/cli-reference",
+        "https://learn.chatgpt.com/docs/non-interactive-mode",
+        "https://learn.chatgpt.com/docs/developer-commands",
+        "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/cli-reference.md"
+      ]
+    },
+    {
+      "label": "review.json：審查階段寫出的交接檔範例（純資料，不需要套件）",
+      "language": "json",
+      "lines": 19,
+      "compiled_on": "2026-09-18",
+      "checked_against": []
+    }
+  ],
+  "hero_label": "規劃→執行→審查",
+  "diagram": {
+    "layout": "flow",
+    "title": "三支 CLI 怎麼接力",
+    "caption": "流程圖：規劃、執行、審查四步驟怎麼靠 plan.md、patch、review.json 交接（2026 年 9 月查證，本站自訂流程，非官方規格）",
+    "nodes": [
+      [
+        "規劃",
+        "claude -p 寫 plan.md"
+      ],
+      [
+        "執行",
+        "codex exec 產出 patch"
+      ],
+      [
+        "審查",
+        "gemini -p 寫 review.json"
+      ],
+      [
+        "決定",
+        "依 verdict 合併或退回"
+      ]
+    ]
+  }
+}

@@ -35,13 +35,13 @@
       "checked_on": "2026-09-18"
     },
     {
-      "title": "Mistral Docs: Migration guides（OpenAI 相容 base URL 寫法、https://api.mistral.ai/v1、程式範例）",
-      "url": "https://docs.mistral.ai/resources/migration-guides/",
+      "title": "Groq Docs: OpenAI Compatibility（大致相容的宣告、base_url 與 GROQ_API_KEY、不支援欄位收到 400 錯誤）",
+      "url": "https://console.groq.com/docs/openai",
       "checked_on": "2026-09-18"
     },
     {
-      "title": "Mistral Docs: Mistral Small 4 模型頁（官方模型代號 mistral-small-2603）",
-      "url": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
+      "title": "Groq Docs: Models（openai/gpt-oss-120b 模型代號與範例請求）",
+      "url": "https://console.groq.com/docs/models",
       "checked_on": "2026-09-18"
     }
   ],
@@ -161,30 +161,36 @@
       "verbatim_quote": "[OPTIONAL] defaults to https://openrouter.ai/api/v1"
     },
     {
-      "fact": "Mistral 官方遷移文件寫，換 OpenAI 相容用戶端只要改 base URL 與 model 名稱，不用換函式庫。",
-      "url": "https://docs.mistral.ai/resources/migration-guides/",
+      "fact": "Groq 官方文件寫，Groq API 設計成大致相容 OpenAI 的用戶端函式庫。",
+      "url": "https://console.groq.com/docs/openai",
       "is_vendor_claim": true,
-      "verbatim_quote": "point it at the Mistral API by changing only the base URL and model name. No library swap required."
+      "verbatim_quote": "We designed Groq API to be mostly compatible with OpenAI's client libraries"
     },
     {
-      "fact": "Mistral 的 OpenAI 相容 base URL 是 https://api.mistral.ai/v1。",
-      "url": "https://docs.mistral.ai/resources/migration-guides/",
+      "fact": "Groq 的 OpenAI 相容 base URL 是 https://api.groq.com/openai/v1。",
+      "url": "https://console.groq.com/docs/openai",
       "is_vendor_claim": true,
-      "verbatim_quote": "https://api.mistral.ai/v1"
+      "verbatim_quote": "base_url=\"https://api.groq.com/openai/v1\""
     },
     {
-      "fact": "mistral-small-2603 是 Mistral 官方模型頁上目前這一版 Mistral Small 的模型代號，別名是 mistral-small-latest。",
-      "url": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
+      "fact": "Groq 的官方文件寫，logprobs、logit_bias、top_logprobs 等欄位目前不支援，帶了會收到 400 錯誤。",
+      "url": "https://console.groq.com/docs/openai",
       "is_vendor_claim": true,
-      "verbatim_quote": "Click to copy: mistral-small-2603"
+      "verbatim_quote": "result in a 400 error (yikes) if they are supplied"
+    },
+    {
+      "fact": "openai/gpt-oss-120b 是 Groq 模型頁上列出的模型代號，用在請求的 model 欄位。",
+      "url": "https://console.groq.com/docs/models",
+      "is_vendor_claim": true,
+      "verbatim_quote": "\"model\": \"openai/gpt-oss-120b\""
     }
   ],
   "unverified_or_excluded": [
     "LiteLLM 的 Proxy CLI 完整旗標與 config.yaml 全部欄位：這篇只示範最小可行的一段，其餘旗標留給官方文件，避免塞進太多用不到的細節。",
     "OpenRouter 的 X-OpenRouter-Categories 標頭：查到但這篇的程式沒有用到行銷分類功能，只在正文提一次，不放進程式碼。",
-    "Mistral 對 OpenAI 相容端點逐一參數層級的支援清單：官方遷移指南只給了 Python／串流方法與 base URL 的對照表，沒有列出參數層級差異，這篇不猜，只引 OpenRouter 查到的 logit_bias／top_k 當「相容不等於全部參數都通」的例子。",
+    "Groq 對 Audio Transcription／Translation 欄位（vtt、srt 不支援）與 Responses API 的細節：跟這篇的 Chat Completions 範例無關，不放進來，避免離題。",
     "LiteLLM 呼叫 Azure OpenAI、Bedrock、Vertex AI 的完整設定：這篇的重點是 OpenRouter 與另一個原生相容端點的對照，其餘供應商細節留給讀者自己查 LiteLLM 的 Providers 文件。",
-    "Mistral 與 OpenRouter 的定價、免費額度：這篇不比價，留給系列的成本文章處理。"
+    "Groq 與 OpenRouter 的定價、免費額度：這篇不比價，留給系列的成本文章處理。"
   ],
   "must_not_write": [
     "OpenRouter 的儲值、手續費、免費模型與隱私設定：站上《OpenRouter：一把金鑰用遍各家模型》已經整理過。",
@@ -202,7 +208,8 @@
         "https://openrouter.ai/docs/quickstart",
         "https://openrouter.ai/docs/api-reference/overview",
         "https://github.com/openai/openai-python",
-        "https://docs.mistral.ai/resources/migration-guides/"
+        "https://console.groq.com/docs/openai",
+        "https://console.groq.com/docs/models"
       ]
     },
     {

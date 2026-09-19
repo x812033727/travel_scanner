@@ -159,5 +159,36 @@
         "一個模型做完就好"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "三條 sources 在 2026-09-19 用 curl -sL -A \"Mokaair-editorial\" 全部重抓並讀 body（HTTP 200、211,506／367,902／382,226 bytes，都讀得到正文，不是 JS 空殼）；正文 14 段 38 句、摘要 5 句、清單 5 項、表格 16 格與兩個 caption、callout 3 句、FAQ 6 題答句、title、description、圖解 5 組節點與 hero_label 逐條對回原文，共 83 條主張；研究紀錄原有 8 條 verbatim_quote 以程式做連續字串比對，8 條全部命中，新增的 7 條也逐條命中後才寫入。沒有用 sources[] 以外的網址替文章補任何事實；任何請求的 UA、標頭、查詢字串都沒有放入 email 或個人資料。sources 的頁面內容與撰稿當日一致，沒有依今天的頁面改任何數字，所以 checked_on 全部維持 2026-09-18。",
+    "verdict": "needs_owner",
+    "edits_to_the_pack": [
+      "description、導言第一段、摘要第一句、第三段的「換來的速度」：刪掉「拆開比較快」這個沒有來源、而且與來源相反的宣稱。Anthropic 原文是 The main goal is to trade off latency for higher accuracy 與 Agentic systems often trade latency and cost for better task performance，也就是拿延遲換正確率。正文改寫成「拆開不等於變快」，並照 BRIEF 寫「本站沒有實測」。",
+      "依步驟切：提示鏈 → 提示詞串接（本站 ai-term-prompt-chaining 的既有譯名，全站另外 4 篇都用這個詞）；「讓一次模型呼叫處理前一次呼叫的輸出」→「每一次模型呼叫都處理前一次呼叫的輸出」，對回 each LLM call processes the output of the previous one。",
+      "依能力切：補上原文對 orchestrator-workers 的界定（subtasks aren't pre-defined, but determined by the orchestrator based on the specific input），並指出本節那個事先分得出來、可同時進行的例子，在同一篇是歸在 parallelization 的 sectioning。原稿把兩個不同的工作流程接在一起。",
+      "依能力切：「被分派工作的那些模型」→「被分派工作的那一端」，並加一句說子代理講的是委派關係、不一定換模型，避免與 ai-term-subagent 的「不一定使用不同模型、不是較小或較笨的模型」矛盾。",
+      "依能力切：「把一般的旗艦、中階、輕量模型跟另外列出的一組專用模型分開處理」→「把日常在用的那幾個通用模型，跟另外一組專用模型（specialized models）分開列」。OpenAI 那一頁把四個通用模型全放在 Flagship models 底下，沒有三階分欄；Claude 那一頁的 Specialized models 是目錄分組。",
+      "依風險切：routing 的定義補回 specialized（「導向專門處理它的後續任務」）；「這裡要提醒的是」改寫成明講官方例子分的是難易、本篇分的是後果，兩者切開。",
+      "為什麼要拆：第三個好處的「沒有一個模型同時是所有事情的專家」這個全稱否定，改成兩家官方文件自己就建議不同工作挑不同模型（各附一條 verbatim）；並補上 Anthropic 可在任何中間步驟加程式檢查那一句當「好抓錯」的依據。",
+      "「秒答」在正文與表格各一處，改成「交給輕量模型回答就好」「行程問題交輕量模型」：沒有實測，不寫回應時間。"
+    ],
+    "checked_and_correct": [
+      "四個 Anthropic 例子（先寫文案再翻譯、先寫大綱確認合格再寫全文、easy/common 導向小模型、hard/unusual 導向更強模型）逐字對得上原文，舊模型名只留在 verbatim_quote，正文沒有點名。",
+      "三條 sources 都是官方一手頁面、無追蹤參數，checked_on 三條與研究紀錄一致（2026-09-18）。",
+      "三篇必連文章各只一句帶過，沒有整段重講；第二個結尾 link 的 text 逐字等於 ai-model-tiers-explained 的 zh-TW title；第一個逐字等於系列目錄標題。",
+      "全篇 0 個 code 區塊（入門篇允許），沒有 API 接法、沒有成本估算表、沒有路由程式，界線守住。",
+      "只有一個 callout、沒有免責聲明、沒有訂閱或購買建議、沒有「台灣可用」、沒有沒歸因的廠商宣稱。",
+      "圖解與表格 caption 都寫 2026 年 9 月查證，圖上沒有任何數字，摘要沒有數字。"
+    ],
+    "left_for_the_owner": [
+      "正文以《…》點名了兩篇還沒寫的文章，標題是撰稿者自己取的：《Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查》（ai-workflow-coding-agents-division）與《本機開放權重模型與雲端模型混搭》（ai-workflow-local-and-cloud-mix）。那兩篇定稿時如果換了標題，這裡要回頭改。",
+      "系列裡 ai-workflow-basics 提到兄弟篇用「…」，這篇用《…》，兩種括號不一致，autolink 是比對詞彙別名不是標題，不影響連結，但請站主決定統一哪一種。",
+      "ai-workflow-basics 在文末預告這篇時寫的是「一件事拆給多個模型：四種切法」，與實際標題不同，要不要回頭同步由站主決定（那個檔不在本次可動範圍）。",
+      "Claude 模型文件目錄的 Specialized models 底下是 Claude Mythos 5.1 與 Claude Mythos 5，這一頁沒有印出 API id，沒有加進 models-seen.json；之後哪一篇要點名，得先開個別模型頁查 id。"
+    ],
+    "code_recompiled": []
   }
 }

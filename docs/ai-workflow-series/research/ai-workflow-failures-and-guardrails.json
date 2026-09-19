@@ -130,7 +130,7 @@
   "unverified_or_excluded": [
     "MCP 官方文件裡 OAuth 相關的 confused deputy、session hijacking 細節：跟本篇「資料與指令分開」的主題不夠直接對應，決定不逐項展開，只在研究過程中確認這份文件仍是官方現行頁面。",
     "OWASP LLM10 條目列的 Watermarking、Adversarial Robustness Training、Glitch Token Filtering 等偏模型層級的緩解措施：跟應用層的步數與預算上限不是同一種做法，這篇不寫，避免讀者誤以為工作流程層級的防護需要自己重新訓練模型。",
-    "OpenAI safety-best-practices 頁面裡的 safety_identifier 參數與各語言程式範例：跟本篇兩個 code 區塊的主題（步數與預算上限、資料與指令分開）無關，決定不放進範例程式；只留意到頁面上的程式範例把模型 id 寫成gpt-6-astra。",
+    "OpenAI safety-best-practices 頁面裡的 safety_identifier 參數與各語言程式範例：跟本篇兩個 code 區塊的主題（步數與預算上限、資料與指令分開）無關，決定不放進範例程式；只留意到頁面上的程式範例把模型 id 寫成 gpt-6-astra。",
     "Anthropic 頁面裡的 harmlessness screen、多層防護的金融客服範例：屬於單一應用內部審查使用者輸入，跟本篇「模型對模型」的交接情境是不同分工，決定不展開。",
     "是否要引用真實發生過的費用爆炸或迴圈失控事件：指派要求案例寫成情境、不指名任何真實事故或公司，決定三個案例全部用虛構情境呈現。"
   ],

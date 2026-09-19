@@ -1,0 +1,279 @@
+{
+  "slug": "ai-workflow-cross-review-judge",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 406,
+  "locales": {
+    "zh-TW": {
+      "title": "多模型互審：LLM 當評審、投票與集成怎麼做",
+      "description": "多模型互審是讓一個獨立的模型依照寫死的評分準則，對其他模型的答案逐條打分，再用投票或集成整理出判斷。本文示範兩個模型各答一次、第三個模型依準則評分並輸出 JSON 的流程，說明評分準則怎麼寫、OpenAI 文件記錄的位置偏誤與冗長偏誤怎麼緩解，以及呼叫次數怎麼隨評審數量倍增。讀完能用 Python 串接 OpenAI、Anthropic、Google 三家 SDK 兜出一輪互審，再用純 Python 的多數決函式整合評審的結論。",
+      "hero": {
+        "src": "/guides/ai-workflow-cross-review-judge/hero.jpg",
+        "alt": "原創插圖：兩個對話框各自交出一份答案，第三個像評審臂章的圖示拿著清單逐條打勾，最後匯整成一個多數決的結果。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "多模型互審是讓一個獨立的模型依照寫死的評分準則，對另外一到多個模型的答案逐條檢查，再用投票或集成把多個評審的結論整理成一個判斷，而不是把幾段回答貼在一起，單憑印象選一個比較順眼的版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀完這篇，能用 Python 串接 OpenAI、Anthropic、Google 三家官方 SDK，做出兩個模型各答一次、第三個模型依準則評分並輸出 JSON 的完整流程，再用一個純 Python 函式把多位評審的投票結果整理成最終判斷。需要 Python 3.11 以上、openai、anthropic、google-genai、pydantic 四個套件，以及 OPENAI_API_KEY、ANTHROPIC_API_KEY、GOOGLE_API_KEY 三把金鑰；文中的程式已對照官方文件與 SDK 原始碼核對過函式簽名與參數名稱，但站方沒有拿真實金鑰實際呼叫，回傳的 JSON 內容只是示意的結構。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "多模型互審是讓一個獨立的模型依照評分準則，檢查另外一到多個模型的答案，再用投票或集成整理出最終判斷。",
+            "評分準則要寫成可以自動判定的問題，例如限定回答只能是通過、不通過，而不是只給一個籠統的印象分數。",
+            "OpenAI 的官方文件把位置偏誤（換了回答順序，結論跟著變）與冗長偏誤（偏好比較長的回答）列為用模型當評審的已知挑戰。",
+            "呼叫次數會隨評審模型數量增加而倍增，兩個模型各答一次、三位評審投票，呼叫次數就變成五次。",
+            "多數決函式在沒有任何一方過半時回傳沒有結論，把案例留給人工複核。"
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "為什麼要多一個模型當評審",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "讓模型自己說「我答對了」不太可靠，比較常見的做法是另外找一個角色專門檢查輸出。站內「模型與代理評測（Evals）是什麼」已經整理過案例、評分器與外部結果查核的完整拆分，這裡只取其中「評分器」這一步，聚焦在評分器本身也是一個模型的情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這種讓語言模型當裁判的做法有專門的名字，叫做以語言模型擔任評審（LLM-as-a-Judge），站內「以語言模型擔任評審（LLM-as-a-Judge）是什麼」已經說明單一顆評審模型怎麼設計評分任務、怎麼用參考資料讓評語可以核對。本文接著往下一步：回答的一方從一個模型換成兩個以上，評審的一方也可能從一個模型換成多個，中間多了「該信哪一個」的問題。"
+        },
+        {
+          "type": "heading",
+          "text": "評分準則（rubric）要寫成能自動判定的問題",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的官方文件建議，寫評分準則時要具體到可以自動判定，例如直接寫「回答一定要在第一句提到指定的名稱，沒提到就自動判為不通過」，而不是寫「回答要夠專業」這種沒有明確通過條件的敘述；同一個成功標準也可能需要拆成好幾條準則，才能涵蓋不同面向。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外兩個建議是把結果限定成可以窮舉的選項，例如只能回答通過、不通過，或是一到五分的量表，不要只求一段開放式的評語；還建議先讓評審模型把推理過程寫出來，再產生最後的分數或結論，推理完再捨棄推理過程也沒關係，這個做法能提升評分表現，尤其是判斷比較複雜的情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的官方文件也提出接近的建議：評分準則要清楚、詳細，而且盡量把問題設計成可以自動評分的形式，例如把開放式問題改寫成選擇題；同時建議評審先用最有能力的模型，官方文件目前舉的例子是 gpt-6-astra，確認評分結果跟人工標註一致之後，再考慮換成比較便宜或比較快的模型。"
+        },
+        {
+          "type": "heading",
+          "text": "兩答一評：寫一輪完整的互審",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最小的互審流程是兩答一評：同一個問題交給兩個不同廠商的模型各答一次，再交給第三個模型依準則逐條檢查。以下範例是原創情境，不是真實的產品規格：已知的產品說明寫「離線地圖正在測試階段，只開放給部分帳號，還沒有全面上線」，兩個模型要依這句說明回答使用者「支不支援離線地圖」。函式簽名、參數名稱與呼叫方式都對照官方文件與 SDK 原始碼核對過，但站方沒有拿真實金鑰實際呼叫，程式本身能編譯、能執行，顯示的只是呼叫的形狀，不代表模型實際會怎麼回答。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "兩個模型各答一次（需要 openai、anthropic 套件）",
+          "code": "import os\n\nfrom anthropic import Anthropic\nfrom openai import OpenAI\n\nQUESTION = (\n  \"使用者問：「你們的行程規劃工具支援離線地圖嗎？」，\"\n  \"已知的產品說明是：「離線地圖正在測試階段，只開放給部分帳號，還沒有全面上線。」\"\n  \"請依產品說明回答使用者的問題，三句以內。\"\n)\n\n\ndef ask_openai(question: str) -> str:\n  client = OpenAI(timeout=20.0)  # 讀取 OPENAI_API_KEY 環境變數\n  response = client.responses.create(\n    model=\"gpt-5.6-luna\",\n    input=[\n      {\"role\": \"developer\", \"content\": \"只用繁體中文回答，三句以內。\"},\n      {\"role\": \"user\", \"content\": question},\n    ],\n  )\n  return response.output_text\n\n\ndef ask_claude(question: str) -> str:\n  client = Anthropic(timeout=20.0)  # 讀取 ANTHROPIC_API_KEY 環境變數\n  message = client.messages.create(\n    model=\"claude-haiku-4-5-20251001\",\n    max_tokens=512,\n    messages=[{\"role\": \"user\", \"content\": question}],\n  )\n  return next(block.text for block in message.content if block.type == \"text\")\n\n\nif __name__ == \"__main__\":\n  assert os.environ.get(\"OPENAI_API_KEY\"), \"先設定 OPENAI_API_KEY\"\n  assert os.environ.get(\"ANTHROPIC_API_KEY\"), \"先設定 ANTHROPIC_API_KEY\"\n  answer_a = ask_openai(QUESTION)\n  answer_b = ask_claude(QUESTION)\n  print(\"A (OpenAI):\", answer_a)\n  print(\"B (Claude):\", answer_b)"
+        },
+        {
+          "type": "paragraph",
+          "text": "兩個模型答完之後，把兩份回答連同準則一起交給第三個模型評分。這裡選 Google 的模型當評審，是因為它的官方文件示範了直接用 Pydantic 類別定義 JSON Schema，再用 response_format 要求輸出一定要符合這個結構，不需要另外寫程式從一段文字裡把 JSON 挖出來。下面的 judge() 函式接續上一段的 QUESTION、answer_a、answer_b，對每一條準則各自判斷通過或不通過，再給一個整體較佳的一方。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "第三個模型依 rubric 評分並輸出 JSON（需要 google-genai、pydantic 套件）",
+          "code": "import os\nfrom typing import Literal\n\nfrom google import genai\nfrom google.genai import types\nfrom pydantic import BaseModel, Field\n\nRUBRIC = (\n  \"1. 是否提到離線地圖「還在測試階段」，不能說成已經全面開放。\\n\"\n  \"2. 是否提到「只開放給部分帳號」這個限制，不能省略。\\n\"\n  \"3. 是否全程使用繁體中文、三句以內。\"\n)\n\n\nclass Verdict(BaseModel):\n  criterion_1_pass: bool = Field(description=\"是否符合第 1 條準則\")\n  criterion_2_pass: bool = Field(description=\"是否符合第 2 條準則\")\n  criterion_3_pass: bool = Field(description=\"是否符合第 3 條準則\")\n  winner: Literal[\"A\", \"B\", \"tie\"] = Field(description=\"整體較符合準則的一方\")\n  reason: str = Field(description=\"一句話說明依據，不能只憑語氣判斷\")\n\n\ndef judge(question: str, answer_a: str, answer_b: str) -> Verdict:\n  client = genai.Client(http_options=types.HttpOptions(timeout=20000))\n  prompt = (\n    f\"問題：{question}\\n\"\n    f\"準則：\\n{RUBRIC}\\n\"\n    f\"回答 A：{answer_a}\\n\"\n    f\"回答 B：{answer_b}\\n\"\n    \"逐條核對兩個回答是否符合準則，再判斷整體較佳的一方。\"\n  )\n  interaction = client.interactions.create(\n    model=\"gemini-3.8-flash\",\n    input=prompt,\n    response_format={\n      \"type\": \"text\",\n      \"mime_type\": \"application/json\",\n      \"schema\": Verdict.model_json_schema(),\n    },\n  )\n  return Verdict.model_validate_json(interaction.output_text)\n\n\nif __name__ == \"__main__\":\n  assert os.environ.get(\"GOOGLE_API_KEY\"), \"先設定 GOOGLE_API_KEY\"\n  # question、answer_a、answer_b 沿用前一段 ask_openai()、ask_claude() 的回傳值\n  verdict = judge(QUESTION, answer_a, answer_b)\n  print(verdict.model_dump_json(indent=2))"
+        },
+        {
+          "type": "paragraph",
+          "text": "這裡的 Verdict 只列了三個布林欄位加一個整體判斷，實務上可以依準則數量增加欄位，但每加一條準則，提示詞跟要檢查的欄位都要一起加，提示詞太長時評審模型有時候會漏看後面的準則。這一點沒有官方數字可以引用，只能實際跑過才知道要不要把一次評分拆成幾次。"
+        },
+        {
+          "type": "heading",
+          "text": "評審不是中立的：位置偏誤與冗長偏誤",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 的官方文件把「位置偏誤」跟「冗長偏誤」列為用模型當評審時的已知挑戰：位置偏誤是指換了回答出現的先後順序，評審的結論可能跟著變；冗長偏誤是指評審傾向偏好比較長的回答，即使長的那份沒有講出更多重點。文件也提醒，語言模型整體來說偏好比較長的輸出，評分的時候要特別控制回答長度這個變數。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件給的緩解方式包括：能用成對比較或通過、不通過這種二選一的形式，就不要用開放式評語，可靠度比較高；也建議先用能力最好的模型當評審，再視情況換成比較快或比較便宜的模型。本站另外建議一個沒有寫在官方文件裡、但邏輯上通用的做法：同一組候選答案交換順序再評一次，如果兩次結論不一致，代表這組結果本身就不可信，應該轉交人工判斷，不能直接採信任何一次的結果。"
+        },
+        {
+          "type": "heading",
+          "text": "從一個評審到多個評審投票",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一個評審的結論容易被單一次的隨機性或偏誤影響，做法是換成多個評審投票：可以是同一個模型用不同的隨機性設定各評一次，也可以是找幾個不同廠商的模型分別評一次，再統計每個評審給出的結論。統計方式最簡單是多數決：結論出現次數最多的一方勝出，如果次數沒有超過門檻，代表評審之間沒有共識，案例應該交給人工看，而不是硬選一個結論。"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "label": "多數決函式（純 Python，離線可跑）",
+          "code": "from collections import Counter\n\n\ndef majority_vote(votes, quorum=0.5):\n  \"\"\"votes 是像 [\"A\", \"B\", \"A\", \"tie\", \"A\"] 這樣的評審結論列表。\n  沒有任何一方過半時回傳 None，讓呼叫端把案例交給人工複核。\n  \"\"\"\n  if not votes:\n    raise ValueError(\"至少要有一位評審的結論\")\n  counts = Counter(votes)\n  winner, top = counts.most_common(1)[0]\n  if top / len(votes) < quorum:\n    return None\n  return winner\n\n\nif __name__ == \"__main__\":\n  three_judges = [\"A\", \"A\", \"B\"]\n  print(majority_vote(three_judges))  # 示意：A\n\n  no_majority = [\"A\", \"B\", \"tie\"]\n  print(majority_vote(no_majority))  # 示意：None，交給人工判斷\n\n  five_judges = [\"A\", \"A\", \"B\", \"B\", \"tie\"]\n  print(majority_vote(five_judges, quorum=0.6))  # 示意：None，未達六成門檻"
+        },
+        {
+          "type": "paragraph",
+          "text": "多一個評審投票，呼叫次數就跟著乘上去：兩個模型各答一次是兩次呼叫；只有一位評審評一次，總共是三次呼叫；換成三位評審投票，呼叫次數變成兩次答題加三次評分，一共五次；如果照上一節的建議，把每組答案交換順序各評一次，評分階段的呼叫次數要再乘以二，三位評審就變成六次評分，總共八次呼叫。呼叫次數怎麼乘清楚了，實際會花多少錢、要等多久，牽涉到每家模型的價格與延遲，這篇不重複算，詳細的估算方式留給系列裡談成本、品質與延遲取捨的文章。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情境",
+            "呼叫次數算式（n＝回答模型數，m＝評審模型數）",
+            "範例（n=2、m=3）"
+          ],
+          "rows": [
+            [
+              "兩答、一位評審評一次",
+              "n + m",
+              "n=2、m=1 時是 3 次"
+            ],
+            [
+              "兩答、m 位評審各評一次再投票",
+              "n + m",
+              "n=2、m=3 時是 5 次"
+            ],
+            [
+              "在上一列基礎上，每組答案交換順序再評一次",
+              "n + 2m",
+              "n=2、m=3 時是 8 次"
+            ]
+          ],
+          "caption": "呼叫次數隨模型與評審數量增加，公式為本站整理，非官方公布數字（2026 年 9 月）。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-cross-review-judge/diagram-1.svg",
+          "alt": "流程圖：兩個模型各答一次，答案交給評審模型依準則評分，多位評審投票多數決，未過半就轉人工複核。",
+          "width": 1600,
+          "height": 900,
+          "caption": "兩個模型作答、第三個模型依準則評審、多位評審投票多數決的完整流程（2026 年 9 月）。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "什麼時候該用、什麼時候不要用互審",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "多模型互審比較適合大量、規則相對固定的判斷，例如客服回答有沒有符合幾條清楚的規則、摘要有沒有遺漏必要條件；單一次、影響很大的決定，例如要不要對外公開一份聲明，更適合讓人直接看過，評審模型的結論最多當一個輔助的參考訊號，不能取代人工核准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果要互審的不是一段文字，而是一份程式改動，做法會不太一樣：除了語意判斷，還要核對檔名、行號跟原始碼有沒有真的對得上。站內「Subagents 審查工作流：任務契約、工具限制與結果整合」示範過這種情況的合併器設計，遇到兩邊建議衝突時只會保留衝突紀錄，不會自動幫忙選邊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不管是兩答一評或多個評審投票，評審模型的輸出都只是一個可以核對的訊號，不是自動成立的真相；準則寫得越具體、偏誤處理得越仔細、結論記錄得越完整，這個訊號才越值得信任，最後要不要採用，仍然要留一部分給人判斷。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "先交換順序測一次，再決定要不要相信評審",
+          "text": "OpenAI 的官方文件把位置偏誤列為已知挑戰，同一組候選答案換了先後順序，評審的結論可能就跟著變。上線前至少把每組答案交換順序各評一次，如果兩次結論不一樣，代表這組評分本身就不可信，要交給人工看，不能直接採信任何一次的結果。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "評審模型自己也會判斷錯，那多模型互審還有意義嗎？",
+              "answer": "有意義，但要當成一個可以核對的訊號，不是自動成立的真相。準則寫得越具體、要求評審列出每一條準則的通過與否，人越容易看出評審是不是真的照準則判斷；真的有疑慮的案例，還是要交給人看過。"
+            },
+            {
+              "question": "為什麼不能只找兩個模型互評就好，一定要第三個模型當評審嗎？",
+              "answer": "讓兩個模型互評，等於讓其中一個同時當選手又當裁判，沒有獨立的第三方核對，結論比較難讓人信任。本文示範的做法是兩個模型各答一次，由第三個獨立的模型依準則評分，答題和評分的角色分開。"
+            },
+            {
+              "question": "評審模型一定要跟回答的模型來自不同廠商嗎？",
+              "answer": "不一定，但用不同廠商的模型可以避免同一家模型系統性的怪癖同時出現在答題和評分兩邊。本文範例刻意讓 OpenAI 與 Anthropic 的模型答題、Google 的模型評分，同一顆模型評自己家答案的情況目前沒有查到可歸因的官方說法，這篇沒有寫。"
+            },
+            {
+              "question": "多數決一定要用奇數個評審嗎？",
+              "answer": "不一定，但範例的 majority_vote() 函式在沒有任何一方過半時會回傳沒有結論，不會硬選一個；用偶數個評審時，平手交給人工的機率會比較高，門檻（quorum）可以依情境自己調整，不是只能用一半。"
+            },
+            {
+              "question": "評審輸出的 JSON 格式，可以直接拿來自動核准或退回答案嗎？",
+              "answer": "程式上可以，但準則涵蓋不到的狀況、評審誤判的狀況都還是會發生，建議先把評審的 JSON 結論當成排序或篩選的依據，真正影響使用者的決定，還是要留一段時間人工抽查，確認評審的通過與不通過跟實際狀況吻合。"
+            }
+          ]
+        },
+        {
+          "type": "link",
+          "text": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+          "url": "https://mokaair.com/zh-TW/life/ai-workflow-tutorials"
+        },
+        {
+          "type": "link",
+          "text": "以語言模型擔任評審（LLM-as-a-Judge）是什麼",
+          "url": "https://mokaair.com/zh-TW/life/ai-term-llm-as-a-judge"
+        }
+      ],
+      "sources": [
+        {
+          "title": "OpenAI 官方文件：Working with evals",
+          "url": "https://platform.openai.com/docs/guides/evals",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "OpenAI 官方文件：Evaluation best practices",
+          "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "openai-python 官方 SDK README（GitHub）",
+          "url": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Claude Platform Docs：Define success criteria and build evaluations",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Claude Platform Docs：Python SDK reference",
+          "url": "https://platform.claude.com/docs/en/api/sdks/python",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "Gemini API 官方文件：Structured outputs",
+          "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "google-genai 官方 SDK 原始碼 types.py（GitHub）",
+          "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/types.py",
+          "checked_on": "2026-09-18"
+        },
+        {
+          "title": "google-genai 官方 SDK README（GitHub）",
+          "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/README.md",
+          "checked_on": "2026-09-18"
+        }
+      ]
+    }
+  }
+}

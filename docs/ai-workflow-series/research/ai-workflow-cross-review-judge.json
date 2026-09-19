@@ -1,0 +1,278 @@
+{
+  "slug": "ai-workflow-cross-review-judge",
+  "title": "多模型互審：LLM 當評審、投票與集成怎麼做",
+  "checked_on": "2026-09-18",
+  "level": "進階",
+  "sources": [
+    {
+      "title": "OpenAI 官方文件：Working with evals",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "OpenAI 官方文件：Evaluation best practices",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "openai-python 官方 SDK README（GitHub）",
+      "url": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Claude Platform Docs：Define success criteria and build evaluations",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Claude Platform Docs：Python SDK reference",
+      "url": "https://platform.claude.com/docs/en/api/sdks/python",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "Gemini API 官方文件：Structured outputs",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "google-genai 官方 SDK 原始碼 types.py（GitHub）",
+      "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/types.py",
+      "checked_on": "2026-09-18"
+    },
+    {
+      "title": "google-genai 官方 SDK README（GitHub）",
+      "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/README.md",
+      "checked_on": "2026-09-18"
+    }
+  ],
+  "verified_facts": [
+    {
+      "fact": "OpenAI 的官方指南把建立與執行一個 eval 拆成三個步驟。",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "there are three steps to build and run evals for your LLM application"
+    },
+    {
+      "fact": "OpenAI 官方範例用 client.responses.create(model=..., input=[...]) 呼叫 Responses API，input 是一串帶 role 與 content 的訊息。",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": false,
+      "verbatim_quote": "client.responses.create"
+    },
+    {
+      "fact": "OpenAI 的 REST 範例用 Authorization: Bearer $OPENAI_API_KEY 驗證身分。",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Authorization: Bearer $OPENAI_API_KEY"
+    },
+    {
+      "fact": "OpenAI 在文件裡表示正在淘汰 Evals 平台。",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI is deprecating the Evals platform."
+    },
+    {
+      "fact": "OpenAI 的 Python SDK 匯入方式是 from openai import OpenAI。",
+      "url": "https://platform.openai.com/docs/guides/evals",
+      "is_vendor_claim": false,
+      "verbatim_quote": "from openai import OpenAI"
+    },
+    {
+      "fact": "OpenAI 的官方文件把位置偏誤（回答順序）與冗長偏誤（偏好較長回答）列為用模型當評審的挑戰。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Position bias (response order), verbosity bias (preferring longer responses)"
+    },
+    {
+      "fact": "OpenAI 建議把評分準則寫得清楚、詳細。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ensure eval rubrics are clear and detailed"
+    },
+    {
+      "fact": "OpenAI 建議需要強力評審模型時先用 gpt-6-astra，確認跟人工標註一致後再考慮換成別的模型。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Start with gpt-6-astra when you need a strong LLM judge, then validate agreement against your human labels before optimizing for cost or latency."
+    },
+    {
+      "fact": "OpenAI 建議用成對比較或通過/不通過的形式讓評分更可靠。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use pairwise comparison or pass/fail for more reliability"
+    },
+    {
+      "fact": "OpenAI 提醒語言模型整體偏好較長的輸出，評分時要控制回答長度這個變數。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Control for response lengths as LLMs bias towards longer responses in general"
+    },
+    {
+      "fact": "OpenAI 建議把問題改寫成選擇題等形式，方便自動評分。",
+      "url": "https://platform.openai.com/docs/guides/evaluation-best-practices",
+      "is_vendor_claim": true,
+      "verbatim_quote": "reformat questions into multiple choice formats"
+    },
+    {
+      "fact": "openai-python 預設請求逾時是 10 分鐘。",
+      "url": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By default requests time out after 10 minutes"
+    },
+    {
+      "fact": "openai-python 用 timeout=20.0（秒，浮點數）設定客戶端逾時。",
+      "url": "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "timeout=20.0"
+    },
+    {
+      "fact": "Anthropic 的文件建議評分準則要具體、清楚。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Have detailed, clear rubrics"
+    },
+    {
+      "fact": "Anthropic 建議先讓評審模型推理再產生分數，之後可以捨棄推理過程。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Encourage reasoning: Ask the LLM to reason first before producing an evaluation score, and then discard the reasoning."
+    },
+    {
+      "fact": "Anthropic 官方評分範例用 client.messages.create(...) 呼叫模型，範例模型是 claude-opus-5。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": false,
+      "verbatim_quote": "client.messages.create("
+    },
+    {
+      "fact": "Anthropic 形容以程式為基礎的評分最快、最可靠，但對需要彈性的複雜判斷比較不夠細緻。",
+      "url": "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Code-based grading: Fastest and most reliable, extremely scalable, but also lacks nuance for more complex judgments that require less rule-based rigidity."
+    },
+    {
+      "fact": "Anthropic 的 Python SDK 參考頁把 api_key 預設寫成 os.environ.get(\"ANTHROPIC_API_KEY\")，並註明這是預設值可以省略。",
+      "url": "https://platform.claude.com/docs/en/api/sdks/python",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This is the default and can be omitted"
+    },
+    {
+      "fact": "Anthropic 的 Python SDK 預設請求逾時同樣是 10 分鐘，設定方式跟 OpenAI 的 SDK 一樣用 timeout 選項。",
+      "url": "https://platform.claude.com/docs/en/api/sdks/python",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By default requests time out after 10 minutes. You can configure this with a timeout option"
+    },
+    {
+      "fact": "Anthropic 的 Python SDK 安裝指令是 pip install anthropic。",
+      "url": "https://platform.claude.com/docs/en/api/sdks/python",
+      "is_vendor_claim": false,
+      "verbatim_quote": "pip install anthropic"
+    },
+    {
+      "fact": "Google 的官方文件表示 Google GenAI SDK 支援用 Pydantic（Python）定義 JSON Schema。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In addition to supporting JSON Schema in the REST API, the Google GenAI SDKs"
+    },
+    {
+      "fact": "Google 官方範例用 client.interactions.create(model=..., input=..., response_format={...}) 要求輸出符合指定的 JSON Schema。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": false,
+      "verbatim_quote": "client.interactions.create"
+    },
+    {
+      "fact": "google-genai 的 Python SDK 匯入方式是 from google import genai。",
+      "url": "https://ai.google.dev/gemini-api/docs/structured-output",
+      "is_vendor_claim": false,
+      "verbatim_quote": "from google import genai"
+    },
+    {
+      "fact": "google-genai 原始碼裡 HttpOptions.timeout 欄位的說明是「請求逾時，單位毫秒」。",
+      "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/types.py",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Timeout for the request in milliseconds."
+    },
+    {
+      "fact": "google-genai 原始碼把 timeout 定義成 Optional[int]，掛在 HttpOptions 這個類別底下。",
+      "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/types.py",
+      "is_vendor_claim": false,
+      "verbatim_quote": "timeout: Optional[int] = Field("
+    },
+    {
+      "fact": "google-genai 的 README 說明可以設定 GEMINI_API_KEY 或 GOOGLE_API_KEY，客戶端會自動讀取。",
+      "url": "https://raw.githubusercontent.com/googleapis/python-genai/main/README.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It will automatically be picked up by the client."
+    }
+  ],
+  "unverified_or_excluded": [
+    "自我偏好偏誤（judge 傾向偏好與自己同源的模型輸出）：查了 OpenAI 的 evaluation-best-practices、Anthropic 的 develop-tests，以及 Google Cloud 的 evaluation-overview／side-by-side-eval／determine-eval 三頁，都沒有用這個詞或明確描述這個現象，不是這次查得到的官方文件說法，所以沒有寫進正文，只在 FAQ 裡提到查無官方說法。",
+    "OpenAI 的 score_model 圖表器（fine-tuning graders API，輸出 {result, steps} 的 JSON）：那是專門給強化微調用的評分器，model 參數目前只支援 gpt-4o 系列等舊模型，跟 models-seen.json 的白名單對不上，跟本文一問一答的互審場景也不同，所以沒有放進範例，只在研究過程參考過。",
+    "Google Cloud Vertex AI 的 AutoSxS（side-by-side 自動評測，可輸出 model A/B 勝率與信心分數）：是另一個產品線，需要額外的資料集欄位設定，跟本文示範的輕量 SDK 呼叫不是同一條路，超出這篇的範圍，沒有寫進正文。",
+    "OpenAI Evals 平台的 testing_criteria／string_check 設定介面：官方文件寫明這個平台將於 2026 年 11 月 30 日停止服務，不適合當作長期參考的做法，所以範例改成直接呼叫模型 API，不使用這個介面。",
+    "評審模型之間要不要共用同一份對話歷史或前一輪的評語：沒有查到官方文件正面討論這件事，屬於工程上可以自行設計的部分，這篇沒有下判斷，留給讀者依情境決定。"
+  ],
+  "must_not_write": [
+    "呼叫次數對應的實際金額估算（各家單價、免費額度）：留給系列裡談成本、品質與延遲取捨的文章，這篇只講次數怎麼乘。",
+    "怎麼追蹤每一輪呼叫的紀錄、集中看失敗率：留給系列裡談追蹤與可觀測性的文章。",
+    "程式碼審查專用的合併器實作細節（檔名、行號比對）：站內既有的 Subagents 審查工作流文章已經做過，這篇只一句帶過。",
+    "模型評審的統計對齊方法（人工標註一致率、Cohen's kappa 之類的指標）：屬於更完整評測系統的做法，超出這篇兩答一評、多數決的範圍。"
+  ],
+  "editorial_brief": "這篇專講「評審模型」這一步：一顆獨立模型依 rubric 檢查其他模型的答案，搭配投票與集成，包含評分準則怎麼寫、位置偏誤與冗長偏誤兩個有官方出處的已知挑戰、呼叫次數如何隨評審數量倍增，以及兩支對照官方文件與 SDK 原始碼寫成的程式（兩模型作答、第三模型評分輸出 JSON）加一個純 Python 多數決函式。評測的完整拆分留給「模型與代理評測（Evals）是什麼」，單一顆評審模型的設計細節留給「以語言模型擔任評審（LLM-as-a-Judge）是什麼」，程式碼審查專用的合併器留給「Subagents 審查工作流」，成本的實際金額估算留給系列裡談成本與延遲取捨的文章。",
+  "code_samples": [
+    {
+      "label": "兩個模型各答一次（需要 openai、anthropic 套件）",
+      "language": "python",
+      "lines": 41,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://platform.openai.com/docs/guides/evals",
+        "https://raw.githubusercontent.com/openai/openai-python/main/README.md",
+        "https://platform.claude.com/docs/en/test-and-evaluate/develop-tests",
+        "https://platform.claude.com/docs/en/api/sdks/python"
+      ]
+    },
+    {
+      "label": "第三個模型依 rubric 評分並輸出 JSON（需要 google-genai、pydantic 套件）",
+      "language": "python",
+      "lines": 48,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://ai.google.dev/gemini-api/docs/structured-output",
+        "https://raw.githubusercontent.com/googleapis/python-genai/main/google/genai/types.py",
+        "https://raw.githubusercontent.com/googleapis/python-genai/main/README.md"
+      ]
+    },
+    {
+      "label": "多數決函式（純 Python，離線可跑）",
+      "language": "python",
+      "lines": 25,
+      "compiled_on": "2026-09-18",
+      "checked_against": [
+        "https://docs.python.org/3/library/collections.html"
+      ]
+    }
+  ],
+  "hero_label": "多模型互審與投票",
+  "diagram": {
+    "layout": "flow",
+    "title": "兩答一評到多數決",
+    "caption": "兩個模型作答、第三個模型依準則評審、多位評審投票多數決的完整流程（2026 年 9 月）。",
+    "nodes": [
+      [
+        "兩模型作答",
+        "各答一次，共 2 次"
+      ],
+      [
+        "評審評分",
+        "3 位評審各評一次"
+      ],
+      [
+        "多數決",
+        "過半才採用"
+      ],
+      [
+        "未過半",
+        "轉人工複核"
+      ]
+    ]
+  }
+}

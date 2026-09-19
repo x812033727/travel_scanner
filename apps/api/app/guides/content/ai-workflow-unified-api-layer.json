@@ -50,11 +50,11 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 在 Chat Completions 端點定義了一套請求與回應的 JSON 形狀：請求帶 model、messages 等欄位，回應在 choices 裡放 message.content。不少供應商把自己的推論服務包成同一種形狀，Mistral 官方的遷移文件就寫，只要換 base URL 和 model 名稱，就能把原本指向 OpenAI 的用戶端指過來，不用換函式庫。openai 官方套件的說明也寫，用戶端的 base_url 可以直接被覆寫，或改讀 OPENAI_BASE_URL 這個環境變數，程式完全不用動。"
+          "text": "OpenAI 在 Chat Completions 端點定義了一套請求與回應的 JSON 形狀：請求帶 model、messages 等欄位，回應在 choices 裡放 message.content。不少供應商把自己的推論服務包成同一種形狀，讓原本寫給 OpenAI 的程式改個設定就能連過去。openai 官方套件的說明也寫，用戶端的 base_url 可以直接被覆寫，或改讀 OPENAI_BASE_URL 這個環境變數，程式完全不用動。"
         },
         {
           "type": "paragraph",
-          "text": "「相容」指的是形狀，不是每一個參數。OpenRouter 的 API 參考寫得很直接：如果選到的模型不支援某個請求參數，例如非 OpenAI 模型不支援 logit_bias、OpenAI 模型不支援 top_k，那個參數會被忽略，其餘的參數照樣轉送到底層那家供應商的 API。程式不會因為多送了一個參數而報錯，但那個參數也不會真的生效；某個參數在某個模型上到底有沒有用，還是得查那個模型自己的文件，這篇不會每個模型都列。"
+          "text": "「相容」指的是形狀，不是每一個參數。OpenRouter 的 API 參考寫得很直接：如果選到的模型不支援某個請求參數，例如非 OpenAI 模型不支援 logit_bias、OpenAI 模型不支援 top_k，那個參數會被忽略，其餘的參數照樣轉送到底層那家供應商的 API。Groq 官方文件把自己寫成「大致相容」，同時明講 logprobs、logit_bias、top_logprobs 這幾個欄位目前不支援，帶了會直接收到 400 錯誤，不是默默忽略。同一個「相容」，兩家處理方式並不一樣，實際能用哪些參數，還是得查供應商自己的文件。"
         },
         {
           "type": "heading",
@@ -69,11 +69,11 @@
           "type": "code",
           "language": "python",
           "label": "openai 套件：同一段程式換兩個 OpenAI 相容 base_url（需要 openai 套件）",
-          "code": "import os\n\nfrom openai import OpenAI\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 官方 quickstart：base_url 指到 openrouter.ai，金鑰放 Authorization 標頭\nopenrouter = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=os.environ[\"OPENROUTER_API_KEY\"],\n  timeout=30.0,\n)\nreply = openrouter.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": os.environ.get(\"SITE_URL\", \"\"),\n    \"X-OpenRouter-Title\": os.environ.get(\"SITE_NAME\", \"\"),\n  },\n  model=\"anthropic/claude-sonnet-5\",\n  messages=question,\n)\nprint(\"OpenRouter:\", reply.choices[0].message.content)\n\n# 官方遷移指南：base_url 換成 api.mistral.ai，model 換成 Mistral 自己的代號\nmistral = OpenAI(\n  base_url=\"https://api.mistral.ai/v1\",\n  api_key=os.environ[\"MISTRAL_API_KEY\"],\n  timeout=30.0,\n)\nreply = mistral.chat.completions.create(\n  model=\"mistral-small-2603\",\n  messages=question,\n)\nprint(\"Mistral:\", reply.choices[0].message.content)\n"
+          "code": "import os\n\nfrom openai import OpenAI\n\nquestion = [{\"role\": \"user\", \"content\": \"用一句話說明 API 金鑰是什麼\"}]\n\n# 官方 quickstart：base_url 指到 openrouter.ai，金鑰放 Authorization 標頭\nopenrouter = OpenAI(\n  base_url=\"https://openrouter.ai/api/v1\",\n  api_key=os.environ[\"OPENROUTER_API_KEY\"],\n  timeout=30.0,\n)\nreply = openrouter.chat.completions.create(\n  extra_headers={\n    \"HTTP-Referer\": os.environ.get(\"SITE_URL\", \"\"),\n    \"X-OpenRouter-Title\": os.environ.get(\"SITE_NAME\", \"\"),\n  },\n  model=\"anthropic/claude-sonnet-5\",\n  messages=question,\n)\nprint(\"OpenRouter:\", reply.choices[0].message.content)\n\n# 官方文件：base_url 換成 api.groq.com，金鑰改讀 GROQ_API_KEY\ngroq_client = OpenAI(\n  base_url=\"https://api.groq.com/openai/v1\",\n  api_key=os.environ[\"GROQ_API_KEY\"],\n  timeout=30.0,\n)\nreply = groq_client.chat.completions.create(\n  model=\"openai/gpt-oss-120b\",\n  messages=question,\n)\nprint(\"Groq:\", reply.choices[0].message.content)\n"
         },
         {
           "type": "paragraph",
-          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Mistral 官方的遷移指南寫，要用 OpenAI 相容的用戶端連 Mistral，base URL 換成 https://api.mistral.ai/v1、model 換成 Mistral 自己的模型代號就好；範例裡的 mistral-small-2603 是 Mistral 模型頁上寫的目前這一版 Mistral Small 的代號，不需要像 OpenRouter 那樣在代號前面加供應商名稱。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
+          "text": "同一支用戶端換第二次連線時，只有 base_url、金鑰讀的環境變數，以及 model 字串三個地方不一樣：Groq 官方文件寫，要用 OpenAI 相容的用戶端連 Groq，base URL 換成 https://api.groq.com/openai/v1、金鑰改讀 GROQ_API_KEY 就好；範例裡的 openai/gpt-oss-120b 是 Groq 模型頁上列出的代號，也是 OpenAI 自己開放權重的 gpt-oss 模型在 Groq 上跑的版本。兩段呼叫都設了 timeout，避免網路異常時程式卡住不動；這裡用到的 anthropic/claude-sonnet-5 是 OpenRouter 模型頁上的代號，如果想繞過 OpenRouter、直接向 Anthropic 申請金鑰，站上《第一次呼叫 Claude API：金鑰、費用與十行 Python》已經走過一遍，這裡不重複。"
         },
         {
           "type": "heading",
@@ -148,7 +148,7 @@
             [
               "openai 套件直連",
               "openai 套件的 OpenAI(...) 用戶端，base_url 指到該供應商",
-              "供應商自己的原生代號，例如 mistral-small-2603",
+              "供應商自己的原生代號，例如 openai/gpt-oss-120b",
               "那家供應商自己的 API 文件"
             ],
             [
@@ -175,8 +175,8 @@
         {
           "type": "callout",
           "tone": "warning",
-          "title": "同一個參數，兩層的預設反應不一樣",
-          "text": "OpenRouter 的 API 參考寫，收到模型不支援的參數時會直接忽略、其餘照送，程式不會報錯，但那個參數也不會生效。LiteLLM 官方文件則寫，completion() 預設遇到不支援的 OpenAI 參數會丟出例外，要自己設定 drop_params=True，或整體設定 litellm.drop_params = True，才會改成忽略。同一段呼叫換著兩層用，「參數被吃掉卻沒報錯」與「原本想省事卻先噴出例外」都可能發生，換層之前先確認是哪一層在處理這個參數。"
+          "title": "同一個參數，三層的預設反應不一樣",
+          "text": "OpenRouter 的 API 參考寫，收到模型不支援的參數時會直接忽略、其餘照送，程式不會報錯，但那個參數也不會生效。Groq 的官方文件則寫，logprobs、logit_bias、top_logprobs 這幾個欄位不支援，帶了會直接收到 400 錯誤。LiteLLM 官方文件又寫，completion() 預設遇到不支援的 OpenAI 參數會丟出例外，要自己設定 drop_params=True，或整體設定 litellm.drop_params = True，才會改成忽略。同一段呼叫換著這三層用，「被吃掉卻沒報錯」「直接收到 400」「先噴出例外」都可能發生，換層之前先確認是哪一層在處理這個參數。"
         },
         {
           "type": "faq",
@@ -246,13 +246,13 @@
           "checked_on": "2026-09-18"
         },
         {
-          "title": "Mistral Docs: Migration guides（OpenAI 相容 base URL 寫法、https://api.mistral.ai/v1、程式範例）",
-          "url": "https://docs.mistral.ai/resources/migration-guides/",
+          "title": "Groq Docs: OpenAI Compatibility（大致相容的宣告、base_url 與 GROQ_API_KEY、不支援欄位收到 400 錯誤）",
+          "url": "https://console.groq.com/docs/openai",
           "checked_on": "2026-09-18"
         },
         {
-          "title": "Mistral Docs: Mistral Small 4 模型頁（官方模型代號 mistral-small-2603）",
-          "url": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
+          "title": "Groq Docs: Models（openai/gpt-oss-120b 模型代號與範例請求）",
+          "url": "https://console.groq.com/docs/models",
           "checked_on": "2026-09-18"
         }
       ]
