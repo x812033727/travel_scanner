@@ -1,0 +1,363 @@
+{
+  "slug": "ai-workflow-tutorials",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "tutorial",
+    "ai-coding"
+  ],
+  "valid_until": null,
+  "news_date": null,
+  "featured": false,
+  "display_order": 399,
+  "locales": {
+    "zh-TW": {
+      "title": "多模型 AI 工作流教學：從拆任務到串接不同模型",
+      "description": "這個系列教的是怎麼把一件工作拆開、分別交給合適的模型，再把結果接回同一條流程：判斷該不該拆、拆給誰，換供應商不改程式，設計便宜先試的路由與級聯，讓模型之間用結構化輸出交接資料，再到多個代理式工具怎麼分工、同一套工具怎麼給多個客戶端共用，以及上線後怎麼追蹤與防護。一般使用者可以從判斷該不該拆的觀念讀起，已經會寫 Python 的人能直接進到換供應商、寫路由與交接資料的幾篇。",
+      "hero": {
+        "src": "/guides/ai-workflow-tutorials/hero.jpg",
+        "alt": "原創插圖：一張書桌中央延伸出四條路徑，分別通往觀念、接線、協作與工具、營運四個標示牌，代表這個系列的四條路線",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "把一件工作拆開、分別交給不同模型、再把結果接回同一條流程，中間牽涉到好幾個問題：這件事該不該拆、要拆給誰、不同供應商的模型要怎麼接在同一支程式裡、模型之間怎麼交接資料與互相審查，以及流程正式上線之後要怎麼追蹤與防護。這個系列把這幾個問題，依照從觀念到動手接線、再到長期營運的順序，一篇一篇拆開講清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般使用者可以先從觀念的幾篇看起，弄懂一次對話、可重跑的流程與自己決定下一步的代理三個層次有什麼差別，以及把工作拆給多個模型有哪些依據與代價；已經會寫 Python 與命令列的人，可以直接跳進接線的幾篇，學怎麼用同一支程式換供應商、設計便宜先試的路由與級聯、讓模型之間用結構化輸出交接資料。讀完整個系列，你會有一套判斷什麼時候該拆、依什麼依據拆、拆完怎麼接起來、怎麼量成本與抓錯，以及上線後怎麼防止流程自己失控的完整想法，不只是學會單一工具的操作。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "這個系列從一件工作該不該拆、依什麼依據拆講起，再把成本、品質與延遲三個量分開衡量，比較單一旗艦、級聯與並行互審幾種架構的代價。",
+            "接線的幾篇說明怎麼用同一支程式換掉底層供應商、怎麼設計便宜先試、貴的兜底的路由與級聯，以及模型之間交接資料時怎麼用結構化輸出驗證格式。",
+            "協作與工具的部分談規劃、執行、審查幾種代理式命令列工具怎麼分工，以及同一支 MCP 伺服器與同一套去識別化流程怎麼同時給多個客戶端或本機與雲端共用。",
+            "營運的部分處理讓多個模型互相審查、替每一步留下可查的追蹤紀錄，以及擋住重試迴圈、fan-out 費用爆炸與代理間輸出被誤用這幾種常見失控。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "先懂三個觀念：拆解、切法與取捨"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "一次對話、可重跑的流程與自己決定下一步的代理，三者的差別，《"
+            },
+            {
+              "type": "article",
+              "text": "AI 工作流是什麼：從一次對話到可重跑的流程",
+              "kind": "life",
+              "slug": "ai-workflow-basics"
+            },
+            {
+              "type": "text",
+              "text": "》先把這三層分清楚，才看得出一件事目前卡在哪一層。決定要拆之後，《"
+            },
+            {
+              "type": "article",
+              "text": "一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法",
+              "kind": "life",
+              "slug": "ai-workflow-split-tasks-across-models"
+            },
+            {
+              "type": "text",
+              "text": "》整理出依步驟、依能力、依風險、依資料敏感度四種切法，讓你照工作本身的性質挑切法，而不是憑感覺亂拆。拆完了值不值得，還要看怎麼取捨，《"
+            },
+            {
+              "type": "article",
+              "text": "成本、品質、延遲：多模型流程怎麼取捨",
+              "kind": "life",
+              "slug": "ai-workflow-cost-quality-latency"
+            },
+            {
+              "type": "text",
+              "text": "》把成本、品質、延遲三個量分開算清楚，比較單一旗艦、級聯與並行互審幾種架構各自的代價，讓你在動手接線之前，先想清楚值不值得多拆一層。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "接線三步：統一介面、路由級聯、交接資料"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "決定要拆之後，第一件事是讓程式不用為每家供應商重寫一份呼叫邏輯，《"
+            },
+            {
+              "type": "article",
+              "text": "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+              "kind": "life",
+              "slug": "ai-workflow-unified-api-layer"
+            },
+            {
+              "type": "text",
+              "text": "》示範同一段程式只換 base_url 與 model 字串，就能連到別家模型。介面統一了，再往上疊一層判斷，《"
+            },
+            {
+              "type": "article",
+              "text": "模型路由與級聯：便宜先試、貴的兜底",
+              "kind": "life",
+              "slug": "ai-workflow-model-routing-cascade"
+            },
+            {
+              "type": "text",
+              "text": "》講的是便宜的模型先答，信心不夠或逾時出錯才升級給更貴的模型，把多數請求的成本壓低，同時保留少數困難請求的品質。模型換來換去，交接的格式也要先講好，《"
+            },
+            {
+              "type": "article",
+              "text": "模型之間交接資料：JSON Schema 與結構化輸出",
+              "kind": "life",
+              "slug": "ai-workflow-structured-handoff"
+            },
+            {
+              "type": "text",
+              "text": "》把交接寫成 JSON Schema，讓上游模型的輸出先驗證再送下游，下游只讀取通過驗證的欄位。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "協作與工具：代理分工、共用工具、混合部署"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "接線接好之後，實際動手寫程式常常不是一個代理從頭做到尾，《"
+            },
+            {
+              "type": "article",
+              "text": "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
+              "kind": "life",
+              "slug": "ai-workflow-coding-agents-division"
+            },
+            {
+              "type": "text",
+              "text": "》示範怎麼讓三支命令列代理接力完成同一個編碼任務，一支只負責規劃、一支負責動手改程式、一支負責審查，靠檔案交接而不是共用對話紀錄。三支代理要用同一批工具時，《"
+            },
+            {
+              "type": "article",
+              "text": "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
+              "kind": "life",
+              "slug": "ai-workflow-mcp-shared-tools"
+            },
+            {
+              "type": "text",
+              "text": "》示範同一支 MCP 伺服器不必改程式，就能同時登記進三個客戶端，只是每邊的設定檔與白名單要分開設定。工具接好了，還要決定哪一段該留在自己的電腦上，《"
+            },
+            {
+              "type": "article",
+              "text": "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+              "kind": "life",
+              "slug": "ai-workflow-local-and-cloud-mix"
+            },
+            {
+              "type": "text",
+              "text": "》示範用本機模型先做分類與去識別化這類會碰到原始個資的步驟，換成代號的乾淨文字才送進雲端模型收尾。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "營運與防護：互審、追蹤、擋住失敗"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型接起來之後，答案好不好不能只靠自己的印象，《"
+            },
+            {
+              "type": "article",
+              "text": "多模型互審：LLM 當評審、投票與集成怎麼做",
+              "kind": "life",
+              "slug": "ai-workflow-cross-review-judge"
+            },
+            {
+              "type": "text",
+              "text": "》示範讓一個獨立的模型依照寫死的評分準則，對其他模型的答案逐條打分，再用投票或集成整理出判斷。流程正式上線，還要知道哪一步出了問題，《"
+            },
+            {
+              "type": "article",
+              "text": "追蹤、評測與可觀測性：知道流程哪一步出錯",
+              "kind": "life",
+              "slug": "ai-workflow-tracing-evals"
+            },
+            {
+              "type": "text",
+              "text": "》示範只用 Python 標準函式庫自寫一支追蹤器，記下每一步的輸入雜湊、模型與延遲，再用離線評測集比較新舊兩版流程。最後，《"
+            },
+            {
+              "type": "article",
+              "text": "失敗案例與防護：迴圈、費用爆炸與代理間注入",
+              "kind": "life",
+              "slug": "ai-workflow-failures-and-guardrails"
+            },
+            {
+              "type": "text",
+              "text": "》整理無限重試迴圈、fan-out 費用爆炸、上游輸出被下游當成指令這三種常見失控，各自配一種對應的防護，讓流程在還在跑的時候就先停下來。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-workflow-tutorials/diagram-1.svg",
+          "alt": "流程圖：拆解任務、接線交接、協作與工具、追蹤防護四個階段的示意",
+          "width": 1600,
+          "height": 900,
+          "caption": "拆解任務、接線交接、協作與工具、追蹤防護四個階段的示意（查證：2026 年 9 月）",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair"
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "路線",
+            "篇名",
+            "讀完能做到什麼"
+          ],
+          "rows": [
+            [
+              "觀念",
+              "AI 工作流是什麼：從一次對話到可重跑的流程",
+              "判斷一件事該留在一次對話、寫成流程，還是交給代理自己決定下一步"
+            ],
+            [
+              "觀念",
+              "一件事拆給多個模型：依步驟、能力、風險、資料敏感度四種切法",
+              "用依步驟、依能力、依風險、依資料敏感度四種依據，決定要不要拆、怎麼拆給不同模型"
+            ],
+            [
+              "觀念",
+              "成本、品質、延遲：多模型流程怎麼取捨",
+              "分開估算成本、品質與延遲，比較單一旗艦、級聯、並行互審幾種架構的代價"
+            ],
+            [
+              "接線",
+              "統一 API 層：OpenRouter 與 LiteLLM 換模型不改程式",
+              "用同一段程式，靠換 base_url 與 model 字串接上不同供應商的模型"
+            ],
+            [
+              "接線",
+              "模型路由與級聯：便宜先試、貴的兜底",
+              "寫一段便宜模型先試、信心不夠或出錯才升級的級聯，並設好成本上限"
+            ],
+            [
+              "接線",
+              "模型之間交接資料：JSON Schema 與結構化輸出",
+              "把模型之間交接的資料寫成 JSON Schema，驗證失敗就重試，下游只吃驗證過的欄位"
+            ],
+            [
+              "協作與工具",
+              "Claude Code、Codex、Gemini CLI 分工：規劃、執行、審查",
+              "把規劃、執行、審查分給三支命令列代理，靠交接檔接力完成同一個編碼任務"
+            ],
+            [
+              "協作與工具",
+              "一個 MCP 伺服器，同時接上 Claude Code、Codex、Gemini CLI 三個客戶端",
+              "寫一支 MCP 伺服器，同時登記進三個客戶端，並分別收窄各自的工具權限"
+            ],
+            [
+              "協作與工具",
+              "本機去識別化、雲端收尾：用 Ollama 打造混合式 AI 工作流",
+              "把會碰到原始個資的步驟留在本機處理，乾淨的文字才交給雲端模型收尾"
+            ],
+            [
+              "營運",
+              "多模型互審：LLM 當評審、投票與集成怎麼做",
+              "讓另一個模型依評分準則評審答案，再用投票整理出多個模型的共同判斷"
+            ],
+            [
+              "營運",
+              "追蹤、評測與可觀測性：知道流程哪一步出錯",
+              "自寫一支追蹤器記下每一步的細節，並用離線評測集比較新舊兩版流程的分數"
+            ],
+            [
+              "營運",
+              "失敗案例與防護：迴圈、費用爆炸與代理間注入",
+              "替重試迴圈設步數與預算上限，替規劃輸出加 schema 驗證，把模型輸出當資料而非指令"
+            ]
+          ],
+          "caption": "各篇文章的路線與重點（查證：2026 年 9 月）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先想清楚，再動手接線",
+          "text": "這系列每一篇文章都自己在文中標好查證日期，價格、免費額度、速率限制與模型 id 都以那篇當天讀到的官方頁面為準，同一個模型過一段時間可能已經調整。真的要動手寫程式接線之前，建議先看完觀念的幾篇，弄清楚要不要拆、拆給誰、划不划算，再決定要不要疊上一層路由、代理或多模型互審。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "要照順序讀完這個系列嗎？",
+              "answer": "不用照特定順序讀完。一般使用者可以先從觀念的幾篇看起，弄懂一次對話、流程與代理三個層次的差別，以及把工作拆給多個模型的依據；已經會寫 Python 與命令列的人，可以直接跳進接線的幾篇，看怎麼換供應商、寫路由與級聯、讓模型之間交接資料。"
+            },
+            {
+              "question": "不會寫程式，也能看懂這個系列嗎？",
+              "answer": "觀念的幾篇不假設你會寫程式，先弄懂該不該拆、拆給誰、拆完怎麼取捨這幾個判斷就夠；等你想真的動手把不同供應商的模型接在同一支程式裡、設計路由與級聯、讓模型之間交接資料，才需要能跑 Python 與命令列。"
+            },
+            {
+              "question": "這個系列的價格、模型 id 這些資訊，多久更新一次？",
+              "answer": "不會另外更新。每一篇文章都在文中自己標好查證日期，價格、免費額度、速率限制與模型 id 都以那篇當天讀到的官方頁面為準，這些數字本來就可能隨時間調整，實際使用前應該自己到官方頁面再確認一次。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "OpenAI Agents SDK",
+          "url": "https://openai.github.io/openai-agents-python/",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "What is the Model Context Protocol (MCP)?",
+          "url": "https://modelcontextprotocol.io/docs/getting-started/intro",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Structured model outputs",
+          "url": "https://platform.openai.com/docs/guides/structured-outputs",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "LiteLLM Docs",
+          "url": "https://docs.litellm.ai/docs/",
+          "checked_on": "2026-09-19"
+        },
+        {
+          "title": "Working with evals",
+          "url": "https://platform.openai.com/docs/guides/evals",
+          "checked_on": "2026-09-19"
+        }
+      ]
+    }
+  }
+}

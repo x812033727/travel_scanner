@@ -37,7 +37,7 @@
         {
           "type": "summary",
           "items": [
-            "多模型交接失敗多半不是模型變笨，而是雙方沒有先講好輸出的格式；解法是把交接的資料寫成 JSON Schema 這份契約，讓上游模型照著輸出、下游程式照著讀。",
+            "多模型交接失敗不見得是模型變笨，很容易只是雙方沒有先講好輸出的格式；解法是把交接的資料寫成 JSON Schema 這份契約，讓上游模型照著輸出、下游程式照著讀。",
             "OpenAI 的結構化輸出設定放在 response_format（或 Responses API 的 text.format），Anthropic 放在 output_config.format，Google 放在 Interactions API 的 response_format 底下，三家的欄位位置都不一樣。",
             "上游模型的輸出要先用 jsonschema 的 Draft202012Validator 或 validate() 驗證，失敗就把錯誤訊息夾回提示詞重試，重試上限設在三次，避免無限迴圈。",
             "只有通過驗證的欄位會被傳給下游模型或下游程式，其餘文字一律不採用；驗證通過只代表格式對，內容是不是正確仍要另外做業務規則檢查。"
@@ -63,11 +63,11 @@
         },
         {
           "type": "paragraph",
-          "text": "OpenAI 的文件把這個功能叫做 Structured Outputs。在 Chat Completions API 裡，設定放在 response_format 欄位下，型別是 json_schema，裡面再包一個 schema 欄位與一個 strict 旗標；同一個功能改用 Responses API 呼叫時，位置換成 text.format，Python SDK 也提供 text_format 這個參數，可以直接傳 Pydantic 類別進去，不用自己組 JSON Schema。OpenAI 的文件寫，這項功能是從 GPT-4o 起的較新模型支援，沒有逐一列出型號，新專案建議直接用 gpt-6-astra。"
+          "text": "OpenAI 的文件把這個功能叫做 Structured Outputs。在 Chat Completions API 裡，設定放在 response_format 欄位下，型別是 json_schema，裡面再包一個 schema 欄位與一個 strict 旗標；同一個功能改用 Responses API 呼叫時，位置換成 text.format，Python SDK 也提供 text_format 這個參數，可以直接傳 Pydantic 類別進去，不用自己組 JSON Schema。OpenAI 的文件寫，這項功能是從 GPT-4o 起的較新模型支援，新專案建議直接用 gpt-6-astra。"
         },
         {
           "type": "paragraph",
-          "text": "Anthropic 的位置不一樣，設定放在 output_config.format 底下，一樣有 type 是 json_schema 與一個 schema 欄位；Anthropic 的文件寫，舊的 output_format 參數已經搬到 output_config.format，beta 標頭不再是必要的，舊標頭與舊欄位在過渡期還會被接受；同一段也註明 Python SDK 1.0 之後在 client.beta.messages.create() 與 count_tokens() 上不接受舊的 output_format 寫法，會丟 TypeError。Anthropic 另外有一個容易搞混的 strict 旗標，放在工具定義裡面，管的是工具呼叫的參數符不符合 schema，跟這裡講的『整段回覆是不是合法 JSON』是兩件事。支援的模型上，Anthropic 的相容性表列的是系列名而不是 API id：Fable 5 與 5.1、Mythos 5、5.1 與 Preview、Opus 4.5、4.6、4.7、4.8 與 5、Sonnet 4.5、4.6 與 5、Haiku 4.5；頁面範例實際帶進 output_config 的 id 是 claude-opus-5。"
+          "text": "Anthropic 的位置不一樣，設定放在 output_config.format 底下，一樣有 type 是 json_schema 與一個 schema 欄位；Anthropic 的文件寫，舊的 output_format 參數已經搬到 output_config.format，beta 標頭不再是必要的，舊標頭與舊欄位在過渡期還會被接受；同一段也註明 Python SDK v1.0 起在 client.beta.messages.create() 與 count_tokens() 上不接受舊的 output_format 寫法，會丟 TypeError。Anthropic 另外有一個容易搞混的 strict 旗標，放在工具定義裡面，管的是工具呼叫的參數符不符合 schema，跟這裡講的『整段回覆是不是合法 JSON』是兩件事。支援的模型上，Anthropic 的相容性表列的是系列名而不是 API id：Fable 5 與 5.1、Mythos 5、5.1 與 Preview、Opus 4.5、4.6、4.7、4.8 與 5、Sonnet 4.5、4.6 與 5、Haiku 4.5；頁面範例實際帶進 output_config 的 id 是 claude-opus-5。"
         },
         {
           "type": "paragraph",
@@ -92,7 +92,7 @@
               "Chat Completions 的 response_format；Responses API 在 text.format",
               "type 為 json_schema，schema 與 strict 包在裡面",
               "頁面沒有標 beta 或預覽；文件寫從 GPT-4o 起的較新模型支援，新專案建議用 gpt-6-astra",
-              "gpt-6-astra；文件只寫『較新的大型語言模型，從 GPT-4o 起』，沒有逐一列出型號"
+              "gpt-6-astra；文件寫『較新的大型語言模型，從 GPT-4o 起』，與 JSON mode 的對照表另外列出相容的 gpt-4o 快照版本與之後的模型"
             ],
             [
               "Anthropic",
@@ -118,7 +118,7 @@
         },
         {
           "type": "paragraph",
-          "text": "接下來用一個貼近旅遊網站的例子：旅客寫信要求改班機，程式要把這段話轉成四個固定欄位，再讓後續流程照著處理。範例只接上 OpenAI 一家，把 Anthropic 或 Google 換進來只是 HTTP 呼叫那幾行不同，schema 與驗證、重試的邏輯不用改。金鑰一律從環境變數讀，程式不會把它印出來或寫進檔案。"
+          "text": "接下來用一個貼近旅遊網站的例子：旅客寫信要求改班機，程式要把這段話轉成四個固定欄位，再讓後續流程照著處理。範例只接上 OpenAI 一家，把 Anthropic 或 Google 換進來主要是 HTTP 呼叫那幾行不同，驗證與重試的邏輯不用改；但三家文件都寫自己只支援 JSON Schema 的一個子集，換家前要照各自的限制確認 schema。金鑰一律從環境變數讀，程式不會把它印出來或寫進檔案。"
         },
         {
           "type": "code",
@@ -146,7 +146,7 @@
             "把 schema 和提示詞一起送給上游模型",
             "用 Draft202012Validator 檢查回傳的 JSON",
             "有錯誤就把 message 夾回提示詞，重新送一次",
-            "重試達到上限還沒過，就丟出例外並保留最後一次輸出"
+            "重試達到上限（本篇範例設成三次）還沒過，就丟出例外並保留最後一次輸出"
           ]
         },
         {
@@ -195,7 +195,7 @@
             },
             {
               "question": "OpenAI、Anthropic、Google 的結構化輸出參數可以共用同一份 schema 嗎？",
-              "answer": "schema 本身可以共用同一份 JSON Schema 物件，但放的位置不一樣：OpenAI 放在 response_format 或 text.format，Anthropic 放在 output_config.format，Google 放在 response_format 底下的 schema 欄位。換供應商時要改的是外層怎麼包，不是 schema 內容本身。"
+              "answer": "大致可以共用同一份 JSON Schema 物件，但放的位置不一樣：OpenAI 放在 response_format 或 text.format，Anthropic 放在 output_config.format，Google 放在 response_format 底下的 schema 欄位。換供應商時主要改的是外層怎麼包；不過三家文件都寫自己只支援 JSON Schema 的一個子集，schema 裡用到的關鍵字仍要照各自的限制確認。"
             },
             {
               "question": "驗證失敗要重試幾次比較合理？",

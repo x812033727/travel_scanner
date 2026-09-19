@@ -161,10 +161,94 @@
       "verbatim_quote": "--sandbox, -s read-only | workspace-write | danger-full-access Sandbox policy for model-generated commands. Defaults to configuration."
     },
     {
-      "fact": "codex exec 的 --skip-git-repo-check 讓它可以在非 Git 目錄執行",
+      "fact": "Codex 要求命令在 Git 儲存庫裡執行，是為了避免破壞性變更；--skip-git-repo-check 才是繞過這個檢查的旗標",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Codex requires commands to run inside a Git repository to prevent destructive changes."
+    },
+    {
+      "fact": "Codex 官方 CI 範例先 git add -N . 再 git diff 產出 patch，新建檔案才會進到 patch",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "git diff --binary HEAD > codex.patch"
+    },
+    {
+      "fact": "codex exec 的 --output-last-message 把最後一則訊息寫進檔案，同時仍然印到 stdout",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This writes the final message to the file and still prints it to stdout"
+    },
+    {
+      "fact": "codex exec 的定位是給「應該在沒有人介入的情況下跑完」的腳本或 CI 用",
       "url": "https://learn.chatgpt.com/docs/developer-commands",
       "is_vendor_claim": true,
-      "verbatim_quote": "--skip-git-repo-check boolean Allow running outside a Git repository (useful for one-off directories)."
+      "verbatim_quote": "for scripted or CI-style runs that should finish without human interaction."
+    },
+    {
+      "fact": "Codex 的全域旗標 --ask-for-approval（別名 -a）只有 on-request 與 never 兩個值，控制 Codex 什麼時候暫停等人核准",
+      "url": "https://learn.chatgpt.com/docs/developer-commands",
+      "is_vendor_claim": true,
+      "verbatim_quote": "--ask-for-approval, -a on-request | never Control when Codex pauses for human approval before running a command."
+    },
+    {
+      "fact": "Claude Code 的 --json-schema 在命令列直接吃一段 JSON Schema（官方範例是行內字串，不是檔案路徑）",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "claude -p --json-schema '{\"type\":\"object\",\"properties\":{"
+    },
+    {
+      "fact": "Claude Code 的 --json-schema 只在 schema 本身不合法時以錯誤結束，format 關鍵字只當註解、不做用戶端驗證",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Code exits with an error on an invalid schema and accepts the format keyword as an annotation without client-side validation"
+    },
+    {
+      "fact": "Claude Code 的 --permission-prompts 決定 print mode 由誰回答核准提示；傳 none 時 Claude Code 改成拒絕，不是卡住等人",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pass none when nobody can answer, and Claude Code denies them instead."
+    },
+    {
+      "fact": "Claude Code 的 dontAsk 模式下，任何會提示的動作一律被拒絕",
+      "url": "https://code.claude.com/docs/en/permission-modes",
+      "is_vendor_claim": true,
+      "verbatim_quote": "anything that would prompt is denied"
+    },
+    {
+      "fact": "Claude Code 的 dontAsk 模式是給 CI 與受限環境用的，工作階段不會等輸入",
+      "url": "https://code.claude.com/docs/en/permission-modes",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the session never waits for input"
+    },
+    {
+      "fact": "Claude Code 的 plan 模式在沒有互動終端機的環境（含 -p 非互動執行）一樣擋著",
+      "url": "https://code.claude.com/docs/en/permission-modes",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Plan mode keeps its blocks wherever Claude Code runs without an interactive terminal, including non-interactive runs with -p"
+    },
+    {
+      "fact": "Gemini CLI 的 JSON 輸出裡，error 欄位是選用的，只在請求失敗時出現",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "error: (object, optional) Error details if the request failed."
+    },
+    {
+      "fact": "Gemini CLI 的 Plan Mode 會停下來等使用者確認之後才寫正式計畫",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/plan-mode.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Gemini CLI will stop and wait for your confirmation"
+    },
+    {
+      "fact": "Gemini CLI 的 Plan Mode 會把實作計畫寫成一份 Markdown 檔，放在計畫目錄",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/plan-mode.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Gemini CLI creates a detailed implementation plan as a Markdown file in your plans directory."
+    },
+    {
+      "fact": "Gemini CLI 的 Plan Mode 只允許 write_file 與 replace 寫計畫目錄底下的 .md 檔",
+      "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/plan-mode.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "only allowed for .md files in the ~/.gemini/tmp/<project>/<session-id>/plans/ directory or your"
     },
     {
       "fact": "gemini -p（或 --prompt）強制進入非互動模式，位置引數在 TTY 裡預設是互動模式",
@@ -298,21 +382,28 @@
     "Codex 的 --dangerously-bypass-approvals-and-sandbox／--yolo 與 Claude Code 的 --dangerously-skip-permissions：查到了，但為了不鼓勵完全跳過核准的寫法，這篇只在 callout 提一句 Gemini CLI 的 --yolo 已標 Deprecated，不逐一示範每支工具的全自動核准旗標。",
     "種子網址 https://developers.openai.com/codex/cli/ 當天重讀後會轉址到 learn.chatgpt.com/docs/codex/cli，這篇改採轉址後的頁面與其下的 non-interactive-mode、developer-commands 兩頁；overview 頁本身沒有旗標細節，沒有列進 sources。",
     "Claude Code 的 --tools／--allowedTools／--disallowedTools 工具權限旗標：查到了，但這篇的核准段落只講會不會卡住，不重複工具白名單的細節，避免跟《Claude Code｜非互動執行與 JSON 輸出》重複。",
-    "Codex 的 CODEX_API_KEY／OPENAI_API_KEY 環境變數認證方式：查到了，但這篇的三支 CLI 範例都假設已經用互動登入完成認證，沒有示範金鑰認證，避免程式碼看起來像需要貼金鑰。"
+    "Codex 的 CODEX_API_KEY／OPENAI_API_KEY 環境變數認證方式：查到了，但這篇的三支 CLI 範例都假設已經用互動登入完成認證，沒有示範金鑰認證，避免程式碼看起來像需要貼金鑰。",
+    "codex exec 的 --skip-git-repo-check：查證過（文件寫它允許在 Git 儲存庫外執行），但初稿把它放進範例是錯的——同一支腳本下一行就靠 git diff 取變更，等於關掉一個安全檢查卻仍然需要 Git 儲存庫。查核時已從範例移除，只在研究紀錄留下 Codex 要求在 Git 儲存庫裡執行的原句。",
+    "Gemini CLI 的 --sandbox（-s）是布林旗標，與 Codex 的 --sandbox 取值層級（read-only／workspace-write／danger-full-access）不是同一回事：查到了，但這篇沒有用到 Gemini CLI 的沙盒，為免讀者把兩個同名旗標混為一談，不寫。",
+    "Gemini CLI 的 Plan Mode 允許 ask_user、且 web_fetch 需要明確確認：查到了，這是把 Plan Mode 放進無頭腳本的風險來源，但這篇只寫到「文件說它會停下來等你確認」，沒有逐一列出 Plan Mode 的工具白名單。",
+    "Claude Code 的 --permission-mode 其餘取值（acceptEdits、auto、dontAsk、bypassPermissions、manual）與 --dangerously-skip-permissions：查到了，callout 只引用 dontAsk 與 --permission-prompts 說明「沒人回答時會被拒絕」，不逐一示範放寬核准的旗標。"
   ],
   "must_not_write": [
     "不寫任何模型 id 或模型比較，這篇只講 CLI 旗標與交接檔。",
     "不寫「台灣可用」或可用性保證，三支 CLI 的登入與方案限制留給各自既有文章。",
     "不寫免責聲明式的 callout。",
-    "不重講 claude -p、codex exec、Gemini CLI 規劃／修改／測試流程、Agent Teams 各自的細節，只點名。"
+    "不重講 claude -p、codex exec、Gemini CLI 規劃／修改／測試流程、Agent Teams 各自的細節，只點名。",
+    "不把三支 CLI 的核准行為合寫成一句（例如「沒設核准旗標就會卡住」）：三家文件寫的不是同一件事，Claude Code 的文件反而寫沒人能回答時會改成拒絕、工作階段不等輸入。要寫就每一支各自引用自己的文件。",
+    "不寫「Gemini CLI 不驗證 response 內容」這種否定句，只寫「本文查證當天沒有在那幾頁看到 schema 驗證旗標」。",
+    "不寫「Claude Code／Codex 沒有結束代碼對照表」，只寫「本文這次讀到的頁面沒有列出」。"
   ],
   "editorial_brief": "這篇是系列第 8 篇，切角是三支編碼代理 CLI（Claude Code、Codex、Gemini CLI）怎麼在同一支腳本裡接力，只講非互動與輸出格式旗標，以及一套本站自訂、不是任何一家官方規格的交接檔格式（plan.md、patch、review.json）。三支 CLI 各自的非互動細節與規劃／修改／測試流程留給站上既有的四篇文章，這篇不重複；同系列第 6 篇談的是正式 JSON Schema 交接、第 9 篇談 MCP 共用工具、第 12 篇談失敗防護，這篇只在需要時一句帶過。",
   "code_samples": [
     {
       "label": "workflow.sh：串接 claude -p、codex exec 與 gemini -p（需要三支 CLI 都已登入，Python 3.11 以上只用內建的 json）",
       "language": "bash",
-      "lines": 61,
-      "compiled_on": "2026-09-18",
+      "lines": 67,
+      "compiled_on": "2026-09-19",
       "checked_against": [
         "https://code.claude.com/docs/en/cli-reference",
         "https://learn.chatgpt.com/docs/non-interactive-mode",
@@ -330,6 +421,53 @@
       "checked_against": []
     }
   ],
+  "factcheck": {
+    "checked_by": "independent factcheck agent",
+    "checked_on": "2026-09-19",
+    "method": "sources[] 八條全部以 curl -sL -A \"Mokaair-editorial\" 重抓並讀 body（HTML 頁另抓 learn.chatgpt.com 的 .md 版交叉比對），逐句把 title、description、summary、正文每一段、表格每一格、callout、圖解 caption、FAQ 每一題答句與兩個 code 區塊的每一個 CLI 旗標對回原文；41 條既有 verbatim_quote 以程式做連續字串比對（HTML 去標籤、Markdown 去反引號與星號後）。程式範例重驗：workflow.sh 過 bash -n、內嵌 Python 過 py_compile，並在暫存目錄的拋棄式 Git 儲存庫裡用三支假 CLI 跑過一次流程確認交接檔真的產生；review.json 過 json.loads。沒有執行真正的 claude／codex／gemini。任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有使用 sources[] 以外的網址替文章補事實。",
+    "verdict": "needs_second_round",
+    "edits_to_the_pack": [
+      "callout 整段重寫：原本把三支 CLI 的核准機制合寫成「沒設核准旗標，非互動呼叫可能卡住」，但 Claude Code 的文件寫的相反（--permission-prompts 傳 none 時改成拒絕、dontAsk 下會提示的動作一律被拒絕、工作階段不會等輸入）。改成每一支各自引用自己的文件：Claude Code 的 --permission-prompt-tool／--permission-prompts、Codex 的 --ask-for-approval 與 codex exec 的定位、Gemini CLI Plan Mode 的「會停下來等你確認」，並補上「本站沒有實測」。",
+      "程式範例移除 --skip-git-repo-check：腳本下一行就用 git diff，需要 Git 儲存庫，這個旗標等於關掉一個安全檢查卻沒有用處；改成在註解寫明本例需要 Git 儲存庫。",
+      "程式範例補 git add -N：原本只有 git diff，Codex 新建的檔案不會進到 patch；照 Codex 官方 CI 範例的 git add -N . 補上，並用 :(exclude) 把交接目錄排除在 patch 外。",
+      "「Gemini CLI 的 --output-format json 不驗證 response 內容」「只保證外層有 response、stats、error 三個欄位」全數改成範圍句：文件把 error 標為選用（optional），而且本文查證當天沒有在那幾頁看到 schema 驗證旗標（summary、表格、正文、FAQ 共四處）。",
+      "「Gemini CLI 的文件列出完整的結束代碼對照表」「Claude Code 與 Codex 沒有列出同樣完整的對照表」改成範圍句：文件寫的是 standard exit codes 並列出四個；Claude Code 與 Codex 改寫成「本文這次讀到的頁面沒有列出這樣的數字對照」（summary、正文、FAQ 共三處）。",
+      "把 Gemini CLI 的 Plan Mode 用在審查步驟，正文明寫是本文的延伸用法，並補上文件原句的範圍：唯讀環境、是給實作前設計解法用的、只準在計畫目錄裡寫 .md 檔；程式註解同步標明。",
+      "Claude Code 的 --json-schema：原本寫成「把一份 JSON Schema 檔交給 CLI」，官方範例是行內字串不是檔案路徑；「不合法就以錯誤結束」原本語意指向輸出，文件寫的是 schema 本身不合法。表格補上「format 關鍵字只當註解、不做用戶端驗證」。",
+      "Codex 的 --output-last-message 原本寫「只存最後一則訊息」，文件寫它寫進檔案後 stdout 仍會印出；表格改寫。--output-schema 的說法改成文件的用語「驗證工具輸出」。",
+      "summary 第 1 句「決定核准與輸出格式的旗標名稱三家都不同」與正文自相矛盾（--output-format 是 Claude Code 與 Gemini CLI 共用的名字），改成「核准旗標三家各叫各的名字，輸出格式旗標只有 Claude Code 與 Gemini CLI 同名」；導言第一段同步改。",
+      "Gemini CLI 位置引數補回限定詞「在 TTY 裡」：文件寫 Defaults to interactive mode in a TTY，無頭模式文件另寫非 TTY 環境也會觸發。",
+      "三處「三家都沒有共通規格／都沒有定義這三個檔名」改成「本文查證的三家文件都沒有定義」（導言、交接檔那一節、FAQ 3）；description 的「不是官方提供的整合功能」同樣改成範圍句。",
+      "正文重複三次的結束代碼段落收斂成一次（正文末段保留數字與意義，程式後那一段改寫成 set -euo pipefail 的行為），description 末句「不需要另外寫 Python 以外的程式」語意不通，改成「腳本只用 bash 與 Python 內建的 json 模組」。"
+    ],
+    "checked_and_correct": [
+      "八條 sources 今天全部 HTTP 200 且讀得到正文，不是空殼或攔截頁；種子 developers.openai.com/codex/cli/ 今天仍轉址到 learn.chatgpt.com/docs/codex/cli，落地站台的 og:site_name 是 ChatGPT Learn、導覽列有 OpenAI 的 API Dashboard 與 Cookbook，確認是 OpenAI 官方文件，內容也確實是 CLI 參考。",
+      "41 條既有 verbatim_quote 全部在今天的頁面上找得到（HTML 去標籤、Markdown 去反引號後的連續字串）；唯一未過機械比對的第 10 條，是 HTML 去標籤在 stdout 後多出一個空格造成的假陽性，同一頁的 .md 版逐字相符，未更動。",
+      "逐字核對過的 CLI 旗標：claude 的 -p／--print、--output-format（text／json／stream-json）、--input-format、--json-schema、--max-turns、--permission-mode（含 plan）、--permission-prompt-tool、--permission-prompts；codex exec 的 --json／--experimental-json、--output-schema、--output-last-message／-o、--sandbox／-s（read-only｜workspace-write｜danger-full-access）、--skip-git-repo-check、全域 --ask-for-approval／-a；gemini 的 -p／--prompt、--output-format／-o（text／json／stream-json）、--approval-mode（default／auto_edit／yolo／plan）、--yolo（Deprecated）。全部與今天的官方頁面相符，沒有杜撰的旗標。",
+      "-o 在 Codex 是 --output-last-message、在 Gemini CLI 是 --output-format，兩邊都確認過，正文那句成立。",
+      "Gemini CLI 四個結束代碼 0／1／42／53 與各自意義，與今天的 headless.md 逐字相符。",
+      "三種非互動模式的官方稱呼（print mode／non-interactive mode／headless mode）與各自的說明句，三家頁面都找得到，而且正文每一句都有歸屬（Anthropic 的文件、OpenAI 的 Codex 文件、Google 的 Gemini CLI 文件）。",
+      "界線：全篇沒有訂閱、購買或投資建議，沒有推薦式比價，沒有「台灣可用」，沒有任何模型 id（models-seen.json 不需要新增），只有一個 callout 且不是免責聲明，正文中間沒有 link 區塊。",
+      "必連四篇只以一句話點名，沒有整段重講：《Claude Code｜非互動執行與 JSON 輸出》《codex exec 與腳本整合》《CLI 寫程式：理解、規劃、修改與測試》《Claude Code｜Agent Teams 協作》；結尾第二個 link 的 text 與 claude-code-headless-json 的 zh-TW title 逐字相同。",
+      "checked_on 2026-09-18 未更動：今天重讀八個頁面，沒有任何被引用的數字或句子改變，所以撰稿者記的日期仍然是他實際讀到來源的那一天。本輪新引的句子來自同樣那八頁，重讀日期記在本欄位的 checked_on。"
+    ],
+    "left_for_the_owner": [
+      "Gemini CLI 的 Plan Mode 用在審查步驟仍有風險：文件寫 Plan Mode 允許 ask_user、web_fetch 需要明確確認，而且「會停下來等你確認」之後才寫正式計畫。本文已標明是延伸用法並包了 timeout，但站主若要把這支腳本用在正式排程，建議先實測一次 gemini --approval-mode=plan 在無頭環境下的行為，或改用 --output-format json 加預設核准模式。",
+      "程式範例的 git add -N 會動到使用者的索引（intent-to-add）。本文用 :(exclude) 把交接目錄排除在外，但站主若不希望腳本碰索引，可以改成在拋棄式 worktree 裡跑。",
+      "第一個結尾 link 指向尚未發布的系列目錄 ai-workflow-tutorials，第二個 link 依規格由協調者 relink；自檢剩下的 raw_internal_url WARN 是這兩個純 link 造成的。",
+      "本文內文長度剛好卡在站內 life 類 6,000 字元的建議上限（目前 6,000，段落字數 2,944／上限 3,000）。本輪補限定詞時是靠精簡 FAQ 與 summary 的重複敘述換出空間；之後若要再補，請同樣從重複處精簡，不要刪掉查證過的限定條件。"
+    ],
+    "code_recompiled": [
+      {
+        "label": "workflow.sh：串接 claude -p、codex exec 與 gemini -p（需要三支 CLI 都已登入，Python 3.11 以上只用內建的 json）",
+        "result": "ok"
+      },
+      {
+        "label": "review.json：審查階段寫出的交接檔範例（純資料，不需要套件）",
+        "result": "ok"
+      }
+    ]
+  },
   "hero_label": "規劃→執行→審查",
   "diagram": {
     "layout": "flow",
