@@ -1,14 +1,14 @@
 ---
 id: 2026-09-17-commons-non-ascii-filename-ingest
 title: 非 ASCII 檔名的 Commons 圖片 ingest 不進來：UnicodeEncodeError
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T08:40:29Z
 created_at: 2026-09-17T00:56:16Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/guides/pack_ingest.py

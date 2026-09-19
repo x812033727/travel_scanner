@@ -38,6 +38,7 @@ import urllib.error
 import urllib.request
 from collections.abc import Callable, Iterable, Iterator, Sequence
 from dataclasses import dataclass, field
+from email.message import Message
 from glob import glob
 from pathlib import Path
 from typing import Any, Literal
@@ -504,6 +505,22 @@ class _NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
+def _header_bytes(message: Message) -> list[tuple[bytes, bytes]]:
+    """A urllib response's headers as the bytes the server sent, for ``httpx.Response``.
+
+    ``http.client`` decodes every header line as ISO-8859-1, so a value that carries UTF-8 --
+    the file name of a Commons picture, which is Japanese, Korean, Thai or Vietnamese for
+    many of the places this site writes about -- reaches Python as a ``str`` of mojibake.
+    Handed to ``httpx.Response`` as ``str`` it is re-encoded as ASCII, and the first byte
+    over 0x7F raises ``UnicodeEncodeError`` (batch 7's 瑞鳳殿 photograph). Reversing the
+    ISO-8859-1 decode cannot fail and gives back the exact bytes; httpx then chooses the
+    charset itself (ASCII, UTF-8, ISO-8859-1), so ``response.headers[...]`` reads the UTF-8
+    the server meant, and a redirect ``Location`` with such bytes is followed rather than
+    fatal. Pairs rather than a dict, so a repeated header (``Vary``, ``Set-Cookie``) keeps
+    every value."""
+    return [(name.encode("latin-1"), value.encode("latin-1")) for name, value in message.items()]
+
+
 class UrllibTransport(httpx.BaseTransport):
     """httpx over the standard library's ``urllib``.
 
@@ -542,13 +559,13 @@ class UrllibTransport(httpx.BaseTransport):
         try:
             with self._OPENER.open(raw, timeout=60) as answer:
                 return httpx.Response(
-                    answer.status, headers=dict(answer.headers.items()), content=answer.read()
+                    answer.status, headers=_header_bytes(answer.headers), content=answer.read()
                 )
         except urllib.error.HTTPError as error:
             # A 3xx arrives here too, now that urllib no longer follows it, and is returned
             # with its Location intact for httpx to follow.
             return httpx.Response(
-                error.code, headers=dict(error.headers.items()), content=error.read()
+                error.code, headers=_header_bytes(error.headers), content=error.read()
             )
 
 
