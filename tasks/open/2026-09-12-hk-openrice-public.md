@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-12T00:44:00Z
 completed_at:
-branch: claude/hk-openrice-public
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/app/foods/data/platform_reviews/2026-09-11-public-merchants.json
@@ -58,3 +58,22 @@ claude-opus-5 應站主「整理目前所有工作狀態」處理，盤點見 `d
 資料與程式已隨 PR #414 於 2026-09-12 合併。原持有者 claude-opus-5（2026-09-12 認領）。
 
 正式站有沒有跑過 `apply-food-platform-reviews`（香港有平台按鈕的店家應從 2 間變 16 間）沒有紀錄。接手時先查正式站的數字，還沒套用就先試跑再套用。
+
+### 2026-09-19 正式站查核（claude-fable-5-1）
+
+公開 API `GET /api/travel/foods/merchants?limit=50` 逐頁（7 頁、331 家）統計：`reservation_links` 非空的
+店家 59 家，其中香港 5 家（tim-ho-wan、yat-lok、arca-society、francis、oolaa-petite）。14 筆 OpenRice
+若已套用，香港至少會有 16 家，所以 **`apply-food-platform-reviews` 還沒在正式站跑過**。全站 59 這個數字
+是日本第二輪之後的基準（見 `2026-09-13-non-japan-platforms.md`），不再是本票寫的 45 → 59。
+
+站主在主機上要跑的（先試跑再套用，兩者都在 api 容器）：
+
+```bash
+cd /root/travel_scanner
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews            # 試跑：應列出 14 筆 would_update
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews --apply    # 套用
+```
+
+套用後用同一支公開 API 重數：香港應為 16 家、全站 59 + 14 = 73 家（若同一家店已有其他平台連結，數字會少於 73；以
+`select count(distinct merchant_id) from food_merchant_platform_links where status='verified'` 為準）。
+這一輪沒有動任何資料檔，只補了這段查核；認領已釋出。

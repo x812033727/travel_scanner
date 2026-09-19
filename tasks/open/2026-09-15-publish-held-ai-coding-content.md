@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-15T12:49:32Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-14-sitemap-split-before-1000-rows
   - 2026-09-14-claude-advanced-live-validation
@@ -72,7 +72,8 @@ sitemap：2026-09-15 發布 317 篇後，線上文章共 925 個 (article, local
 
 ## Steps
 
-- [ ] 確認前置條件（兩張相依票的狀態，或站主的書面決定）。
+- [x] 確認前置條件（兩張相依票的狀態，或站主的書面決定）。2026-09-19 核對：sitemap 票已 done；`2026-09-14-claude-advanced-live-validation` 仍 open（4 項未完成），要站主書面接受——決定欄在 `docs/content-publication/2026-09-15-held-ai-coding-content.md` 第 1 節。
+- [x] 三批 slug 清單（14＋61＋36＝111，全部有內容包）、本機 lint／pytest、正式站現況、站內連結重算與主機指令，已寫進上述文件（2026-09-19，claude-fable-5-1）。
 - [ ] 請站主決定兩篇 Codex 文章怎麼處理，三個選項：
   - (a) 等 Codex 學習中心一起發。
   - (b) 只發 zh-TW，暫時接受連進學習中心的連結是壞的。
@@ -108,3 +109,16 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
   - 那次發布修掉 160 個壞連結，另新增 9 個指向批次 04（已計入上面的 15 個）。
 - `taipei-4-day-itinerary` 另有 4 個類別寫錯的連結，由 PR #526 處理，不屬本票。
 - 批次 04 的作者當初寫的是「部署後 dry-run、九篇 create、總覽篇 update，再 publish」。之後 #525 改動了其中兩篇，這個步驟已經不能照原樣執行。
+
+### 2026-09-19 準備完成（claude-fable-5-1）
+
+不需要正式站權限的部分都做完，寫在 `docs/content-publication/2026-09-15-held-ai-coding-content.md`；票放回 open，等站主在該文件第 1 節簽兩個決定後，由站主或下一個代理 claim（相依票未完成，要 `--force`）去主機執行第 7 節、回填第 8 節。
+
+- 前置條件：`2026-09-14-sitemap-split-before-1000-rows` 已 done；`2026-09-14-claude-advanced-live-validation` 仍 open，未完成的是第 81 篇遠端 MCP OAuth、第 90 篇真實手機、第 92 篇付費 Actions 模型 job、發布前來源複查——文件第 1 節列給站主決定。`2026-09-14-codex-learning-series` 仍 blocked。
+- slug 清單從 repo 重建：批次 04 表 20 篇 − 5 篇轉入系列 − `gemini-cli-getting-started` ＝ 14（12 一般 ＋ 2 Codex）；#485 ＝ `series_data/claude-code.json` hub ＋ entries 1–60 ＝ 61；#501 ＝ entries 61–96 ＝ 36，與 `advanced/curriculum.json` 相同。111 個 slug 都有內容包、都是 `life`；`claude-code-*.json` 恰 97 個。本分支是 shallow clone，看不到 #485／#501／#499／#502 的原始 commit，改用 evidence 的 content-validation.json（61／97 頁）交叉核對。
+- 內容包在合併後又被 #513（3 篇 description）、#525（2 篇 Codex）、#531（111 篇全部，完整網址→article 行內引用等）改過；最近一次部署 `deploy_20260919_032927`（#553）在這些之後，#554–#556 沒動內容包與圖檔。文件第 7.1 節給了 111 檔 sha256 合成值 `8674d468…7987f6` 讓主機核對，不需再部署。
+- 本機檢查：`pack_cli lint --kind life --slug ×111` 111 entries、0 error、121 warning（119 `no_summary`、2 `text_length`）；整個 life 911 entries 0 error；`pytest tests/test_guides_content_pack.py` 9 passed／5 skipped。沒有改任何內容包。
+- 正式站（06:47–06:50 UTC，9 個請求）：sitemap index 11 個子檔；`life-zh-TW.xml` 705 篇 ＋ 32 主題頁，111 個 slug 都不在；抽查三頁 200＋noindex＋title/h1「這篇文章目前看不到」；兩張 hero 已回 200。summary 端點合計 **1,270** 列（life zh-TW 705），發布後 **1,381**（(a) 1,379），子檔上限 5,000，票面「925 → 1,036」已過時。
+- 站內連結重算（走訪 1,056 個內容包的 JSON）：指向 111 篇的 690 個引用全是 article 行內引用、沒有完整網址。已上線 zh-TW 來源 → 保留中文章 **29 條／21 篇**；扣掉 `codex-beginner-guide` 是 27 條／20 篇，比票面 25 多 2 條：`ai-tools-choose-by-task → ai-coding-tools-overview-2026`、`ai-workflow-coding-agents-division → claude-code-headless-json`（#553 今天上線）。批次 04 引用 `codex-cli-getting-started` 的是 4 篇（票面 3 篇之外多 `ai-coding-git-basics`）。三批之間 #485→#501 12、#501→#485 85，與票面一致。
+- 限制：這個重算用 repo 內容包代表上線內容；正式站 DB 裡 #531 之前匯入的版本可能還是完整網址（真的會點進「看不到」），article 引用則在目標未發布時只顯示純文字。權威重算是主機上的 `guides-links-check --locale zh-TW`，文件第 7.5 節有指令。
+- 沒有做的：站主決定、主機上的 dry-run／publish／驗證。
