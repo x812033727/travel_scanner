@@ -144,6 +144,7 @@ RELATED: dict[str, str] = {
     "tech-news-iphone-duo-dev-resources-20260918": "tech-news-iphone-duo-20260909",
     "crypto-news-occ-three-trust-charters-20260918": "crypto-news-genius-act-occ-20260302",
     "crypto-news-eba-third-party-risk-20260918": "crypto-news-eba-psd2-mica-20260212",
+    "crypto-news-sec-crypto-fraud-patterns-20260918": "crypto-news-sec-regulation-crypto-assets-20260821",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

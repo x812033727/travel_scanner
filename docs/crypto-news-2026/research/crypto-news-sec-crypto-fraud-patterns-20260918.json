@@ -1,0 +1,505 @@
+{
+  "slug": "crypto-news-sec-crypto-fraud-patterns-20260918",
+  "event_date": "2026-09-18",
+  "event_date_basis": "演講頁自己在講者欄下方印出地點與日期兩個欄位：field--name-field-location-news 印「Dallas, Texas」、field--name-field-publish-date 印「Sept. 18, 2026」；頁尾另印「Last Reviewed or Updated: Sept. 18, 2026」。頁面全文沒有印出任何時刻，因此本文不寫演講的確切時刻，也不替它換算台北時間的時刻。時區只影響日期會不會跨天，這一點另有旁證：SEC 官方 speeches/statements RSS（https://www.sec.gov/news/speeches-statements.rss，2026-09-20 以 curl -A \"Mokaair-editorial\" 取得、HTTP 200、11,424 bytes）裡本則的 <pubDate> 是 Fri, 18 Sep 2026 10:40:06 -0400，換算為 UTC 2026-09-18 14:40:06、台北時間 2026-09-18 22:40:06，仍在同一天；講詞本身第一句是 Good morning，達拉斯所在的 CDT（UTC-5）上午對應的台北時間一律落在同一個 9 月 18 日晚間。因此台北時間的事件日為 2026-09-18。該 RSS 未列入 sources[]（上限四條，且事件日在頁面上直接印著）。注意：9 月 18 日是「演講日」，不是任何一件案子的起訴日——演講裡舉的兩案分別在 2026-08-11 與 2025-12-22 起訴。",
+  "title": "SEC 執法處長點名兩種加密詐騙包裝：合夥投流動性池、假平台配投資社團",
+  "checked_on": "2026-09-20",
+  "sources": [
+    {
+      "title": "SEC 演講全文：Remarks Before 12th Annual Government Enforcement Institute（David Woodcock, Director, Division of Enforcement；Dallas, Texas；Sept. 18, 2026；頁面標示 [As Prepared]）",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "SEC 訴訟公告 Litigation Release No. 26608：SEC Charges Company and its CEO in Alleged $425 Million Ponzi Scheme（演講註腳 1 指向的一手文件）",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "SEC 新聞稿 2025-144：SEC Charges Three Purported Crypto Asset Trading Platforms and Four Investment Clubs with Scheme That Targeted Retail Investors on Social Media（演講註腳 2 指向的一手文件）",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "checked_on": "2026-09-20"
+    },
+    {
+      "title": "SEC 投資人教育與協助辦公室投資人警示：Group Chats as a Gateway to Investment Scams -- Investor Alert（頁面日期欄印 Dec. 22, 2025；新聞稿 2025-144 正文連到這一頁）",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "publisher": "Investor.gov（U.S. Securities and Exchange Commission, Office of Investor Education and Assistance）",
+      "checked_on": "2026-09-20"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-20（台北時間）本人重抓並逐段讀完 sources[] 全部四條，讀到正文後才登記 checked_on；所有請求都沒有帶任何人的 email 或任何個人資料。\n\n取得配方（可重現，請照抄）：www.sec.gov 對 curl 一律回 403，body 是 1,923 bytes 的「SEC.gov | Request Rate Threshold Exceeded」封鎖頁（以 -A \"Mokaair-editorial\" 與 curl 預設 UA 各試一次都一樣；加上 Accept／Accept-Language／--compressed 後改回 919 bytes 的同一類封鎖頁）。本輪改走本機已安裝的 Microsoft Edge 無頭模式，指令為：\"C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe\" --headless=new --disable-gpu --no-first-run --no-default-browser-check --user-data-dir=<全新空白暫存目錄> --user-agent=\"Mokaair-editorial\" --virtual-time-budget=12000 --dump-dom <URL>。user-data-dir 指向一個全新的空白目錄，等於沒有任何既有 cookie、登入狀態或個人資料被送出；UA 仍是規格指定的 Mokaair-editorial，沒有偽裝成別的瀏覽器字串。\n\n各頁取得結果（--dump-dom 看不到 HTTP 狀態碼，因此判斷依據是 body 內容而不是狀態碼）：\n(1) 演講頁 94,975 bytes，<title> 為「SEC.gov | Remarks Before 12th Annual Government Enforcement Institute」，正文欄位 field--name-body 完整，含 44 個段落／小標與 9 條編號註腳，結尾是「Thank you for your time.」與「Last Reviewed or Updated: Sept. 18, 2026」——不是封鎖頁。\n(2) lr-26608 72,906 bytes，<title>「SEC.gov | Goliath Ventures, Inc.; Christopher A. Delgado」，正文完整到調查與訴訟人員名單。\n(3) 新聞稿 2025-144 70,428 bytes，<title> 與標題一致，正文完整到投資人警示那一段與「###」。\n(4) investor.gov 警示頁 62,465 bytes，<title>「Group Chats as a Gateway to Investment Scams -- Investor Alert | Investor.gov」，正文 31 段完整，含結尾的 OIEA 免責段。\n\n逐字引文的驗證方式：把四頁的 DOM 依文字層級元素（p／h1–h5／li／blockquote／td／span／strong／em／a／time）切開，行內標籤直接刪除而不插入空白、NBSP 原樣保留，再檢查本紀錄的每一條 verbatim_quote 是否落在「單一元素」之內。60 條全部通過，沒有任何一條跨段落或跨元素拼接。唯一一條被這個檢查擋下來的是 lr-26608 報頭的完整案名——原始碼是 <h3><em>Securities and Exchange Commission v. Goliath Ventures, Inc. and Christopher A. Delgado</em>, No. 26-cv-01741 (M.D. Fla. filed Aug. 11, 2026)</h3>，案名被 <em> 包住，逐字連續字串只到 Delgado 為止，所以本紀錄改用演講註腳 1 裡本來就是一整串的引用格式，並把 <em> 這件事寫在 verified_facts 裡。\n\n另外讀過但沒有列入 sources[] 的一手文件：\n- SEC 新聞稿 2026-35「SEC Appoints David Woodcock as Director of the Division of Enforcement」（https://www.sec.gov/newsroom/press-releases/2026-35-sec-appoints-david-woodcock-director-division-enforcement ，2026-09-20 以同一條 Edge 配方取得、69,024 bytes、正文完整）。它印著「Washington D.C., April 8, 2026」與「David Woodcock has been appointed Director of the Division of Enforcement, effective May 4, 2026」，可以佐證職稱與「first three months on the job」的說法。因為 sources 上限四條、而職稱在演講頁上就印著，沒有列入。文章若要寫他的到任日或年資，必須把這一條加進 sources[]。\n- SEC speeches/statements RSS（curl 200、11,424 bytes），只用來確認本則的 pubDate，見 event_date_basis。\n\n沒有動用、也不得動用的東西：探索代理透過 WebFetch 取得的講詞摘要（本輪完全不採用，全部事實回到自己抓下來的 DOM）；任何二手幣圈媒體；任何封存站。WebFetch 對這個網址本身讀得到，但它只會回摘要、不會給逐字全文，所以不能拿來做 verbatim_quote 的依據。",
+  "verified_facts": [
+    {
+      "fact": "頁面把這篇歸類為「Speech」，標題是演講名稱本身。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Remarks Before 12th Annual Government Enforcement Institute"
+    },
+    {
+      "fact": "講者姓名。頁面在標題下方的講者欄印出。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "David Woodcock"
+    },
+    {
+      "fact": "職稱。頁面講者欄緊接姓名印出，SEC 的 speeches/statements RSS 同一則的 description 欄也是同一串（David Woodcock, Director, Division of Enforcement）。繁中寫法建議是「美國證券交易委員會（SEC）執法處處長」，執法處即 Division of Enforcement。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Director, Division of Enforcement"
+    },
+    {
+      "fact": "演講地點。頁面的 field--name-field-location-news 欄位只印這一串，沒有印場地名稱。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Dallas, Texas"
+    },
+    {
+      "fact": "演講日期。頁面的 field--name-field-publish-date 欄位印出，頁尾的「Last Reviewed or Updated」也是同一天。頁面全文沒有印出任何時刻。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sept. 18, 2026"
+    },
+    {
+      "fact": "頁面公布的是「備稿」全文，不是現場逐字稿。正文第一個段落就是這個標記，SEC 沒有在這一頁提供影音或現場紀錄。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[As Prepared]"
+    },
+    {
+      "fact": "頁尾的檢閱／更新日期與演講日同一天，代表本紀錄查核時這份講詞還沒有被事後修訂過。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Last Reviewed or Updated: Sept. 18, 2026"
+    },
+    {
+      "fact": "主辦者。原文只寫是他的法學院母校德州大學主辦這場活動，沒有印出主辦單位的正式全名，也沒有議程連結。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "I’m grateful to my law school alma mater, the University of Texas, for hosting this event and for inviting me to speak today."
+    },
+    {
+      "fact": "【全篇最重要的限制】SEC 演講慣例的免責聲明，而且措辭是兩層：他說自己「以執法處處長的官方身分」發言，但內容代表他個人的意見，不必然代表委員會、各委員或幕僚同仁的立場。所以這場演講不是 SEC 的政策、也不是委員會的決議。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Before I begin, allow me to share the standard disclaimer: I am speaking today in my official capacity as Director of the Division of Enforcement. My remarks represent my own views and do not necessarily reflect the views of the Commission, the Commissioners, or my colleagues on the staff."
+    },
+    {
+      "fact": "演講自述的三個主題：執法處近況、幾項新措施、對辯護律師的直接訊息。加密詐騙不在這三個主題裡，它出現在「案例亮點」那一節底下。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, I want to provide a clear update on the SEC’s Enforcement Division, outline a few new initiatives that strengthen our enforcement program, and deliver some direct messages about what defense counsel should expect from us going forward."
+    },
+    {
+      "fact": "他自述上任後的前三個月走訪了全部 10 個區域辦公室。這是他對自己作為的陳述，外界無法驗證。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In my first three months on the job, I visited all 10 of our regional offices and met with every Specialized Unit and Associate Group."
+    },
+    {
+      "fact": "他明白反對用件數與金額衡量執法成效，這是本篇不要寫「SEC 今年辦了幾件加密案」的直接理由。引文是他列舉外界盯的指標。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the number of cases the Commission files or amount of monetary remedies it obtains in those cases"
+    },
+    {
+      "fact": "第一種包裝的前導句：他把這類募集詐騙定位成「基本款」，並說即使市場結構與商品改變，打擊它仍是核心任務。注意來源自己漏了一個連字號，原文印的是 bread-and butter，引用時必須照抄，不可以「修正」成 bread-and-butter。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Counteracting “bread-and butter” offering frauds—especially those that generate significant retail harm—remains foundational to our mission, even as market structures and products evolve."
+    },
+    {
+      "fact": "【包裝一】演講點名的第一件案子，講詞寫的是「上個月」（對應起訴日 2026-08-11），金額與人數都帶 at least／over 的限定詞。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Last month, for example, the SEC charged a company and its founder and CEO for raising at least $425 million from over 1,300 investors through an alleged multi-year Ponzi scheme."
+    },
+    {
+      "fact": "【包裝一的辨識重點】演講描述的包裝方式：以「與公司合夥、去投資加密資產流動性池」為名的未登記證券募集，實際上拿新舊投資人的錢與加密資產去付前面投資人的報酬，執行長另外挪用至少 5,100 萬美元買不動產、名車與遊艇。整段是起訴書的指控。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "According to the complaint, the defendants operated the scheme through an unregistered securities offering in which investors would “partner” with the company to invest in purported crypto asset liquidity pools, but rather than using the investor funds as promised, the defendants used money and crypto assets from new and existing investors to pay promised returns to earlier investors and the CEO misappropriated at least $51 million for personal use, including to buy real estate, luxury vehicles, and a yacht."
+    },
+    {
+      "fact": "第二種包裝的前導句：他把它歸在「披著新興技術外衣的詐騙」。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At the same time, we are staying nimble and adjusting to new methods of fraud, including fraud cloaked in new and emerging technologies."
+    },
+    {
+      "fact": "【包裝二】演講點名的第二件案子，講詞寫的是「2025 年底」（對應起訴日 2025-12-22），三家假的加密資產交易平台加四個投資社團，至少 1,400 萬美元。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In late-2025, the Commission charged three purported crypto asset trading platforms and four investment clubs with defrauding retail investors of at least $14 million in an alleged investment confidence scam."
+    },
+    {
+      "fact": "【包裝二的辨識重點】演講描述的四個步驟：投資社團用社群媒體招攬、以「AI 生成的投資明牌」取得信任、誘導到假的加密資產交易平台開戶入金、在那裡提供號稱由正當企業發行的「Security Token Offerings」。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This alleged scheme involved the investment clubs soliciting investors through social media, gaining investors’ confidence with supposedly AI-generated investment tips, and luring them to open and fund accounts on the purported crypto asset trading platforms where they allegedly offered investors “Security Token Offerings” purportedly issued by legitimate businesses."
+    },
+    {
+      "fact": "他自己下的結論句，最適合當文章的骨架：包裝會換，投資人受的傷害一樣。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The lesson, of course, is that fraud changes shape, but investor harm looks the same."
+    },
+    {
+      "fact": "包裝一對應的案件與起訴日，寫在演講的註腳 1，並直接連到 SEC 的訴訟公告。這一串在頁面上是一整段連續文字，可以逐字引用。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SEC v. Goliath Ventures, Inc. and Christopher A. Delgado, No. 26-cv-01741 (M.D. Fla. filed Aug. 11, 2026)"
+    },
+    {
+      "fact": "包裝二對應的案件與起訴日，寫在演講的註腳 2，並直接連到 SEC 的新聞稿 2025-144。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SEC v. Morocoin Tech Corp., et al., No. 25-cv-04102 (D. Colo. filed Dec. 22, 2025)"
+    },
+    {
+      "fact": "演講宣布的其中一個新單位與零售詐騙直接相關：Retail Fraud Working Group。這是他對新單位作用的自述，屬於宣稱。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In addition, we launched the Retail Fraud Working Group to bring focused energy and resources from across the Division to pursue retail fraud—using data, technology, and intelligence-sharing."
+    },
+    {
+      "fact": "該工作小組的對外工作包含與外國夥伴協調，以及對散戶做教育宣導——這是演講裡唯一和「一般人自保」沾得上邊的機制描述。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The working group is also coordinating with foreign partners and participating in educational outreach to retail investors."
+    },
+    {
+      "fact": "【比例證據，用來避免把這篇寫成「加密演講」】加密的部分到上面那兩段就結束了，緊接著的下一段（引文）已經轉到境外不法行為人與假 SEC 申報，再往後是財報查核個案、新單位與對辯護律師的要求。查法：以 2026-09-20 抓下的 DOM 為準，講詞正文（[As Prepared] 起到 Thank you for your time.，共 44 個段落／小標）裡 crypto 以詞界比對出現 4 次，全部落在那兩段之內；token 出現 1 次，在「Security Token Offerings」裡。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/woodcock-remarks-before-12th-annual-government-enforcement-institute-091826",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Our mandate also includes taking decisive action to disrupt foreign bad actors targeting U.S. markets and investors."
+    },
+    {
+      "fact": "包裝一的一手文件報頭：訴訟公告編號與日期。注意同一個報頭的案名被 <em> 包起來，所以案名與案號在原始碼裡不是一整串連續文字，不可以把它們接成一句當逐字引文。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Litigation Release No. 26608 / August 11, 2026"
+    },
+    {
+      "fact": "包裝一的一手文件標題，SEC 自己就用 Alleged 這個字。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SEC Charges Company and its CEO in Alleged $425 Million Ponzi Scheme"
+    },
+    {
+      "fact": "包裝一的期間與核心包裝方式：起訴書指控 2023 年 1 月至 2026 年 1 月，用未登記證券募集，讓投資人「與 Goliath 合夥」去投資據稱由該公司管理的加密資產流動性池。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": true,
+      "verbatim_quote": "from at least January 2023 through January 2026, Defendants operated the Ponzi scheme through an unregistered securities offering in which investors would “partner” with Goliath to invest in purported crypto asset liquidity pools managed by Goliath"
+    },
+    {
+      "fact": "【話術特徵，數字不可寫進文章】起訴書指控被告承諾固定的每月配息（來源印的是 3% 到 10%）並「保證返還本金」，配息的說法是來自池內買賣雙方付的手續費。幣圈規格禁止在文章裡印任何報酬率數字，所以正文只能寫「承諾固定的每月配息並保證本金」，不帶百分比。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The complaint alleges that Defendants promised investors monthly profit distributions of 3% to 10% generated from the fees buyers and sellers paid to trade the crypto assets within those liquidity pools, and guaranteed the return of investors’ principal."
+    },
+    {
+      "fact": "【包裝一最關鍵的一句】起訴書指控錢根本沒有進過任何流動性池，執行長挪用至少 5,100 萬美元。請注意訴訟公告寫的是 homes 與 travel，演講寫的是 real estate 且沒有 travel，兩邊措辭不同，要各自標出處，不可以混寫。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Defendants did not invest any investor funds or crypto assets into any crypto asset liquidity pool, and Delgado misappropriated at least $51 million of investor funds for personal use, including the purchase of homes, luxury vehicles, a yacht, and travel."
+    },
+    {
+      "fact": "【最實用的辨識點】起訴書指控被告請業務員拉人並用投資人的錢付佣金，同時偽造帳戶餘額與投資績效數字，讓投資人以為有賺錢、以為資產真的在池子裡。也就是「對帳單好看」本身不是證據。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Defendants hired sales agents to recruit additional investors and compensated those agents with commissions drawn from investor funds, while fabricating account balance and investment performance metrics to make it appear that investors were earning profits and that their assets were invested in crypto asset liquidity pools."
+    },
+    {
+      "fact": "【龐氏的收尾方式】起訴書指控 2025 年 11 月新錢進不來、停發月配息、整個架構崩掉。這是龐氏結構的共同結局，可以當作「配息突然停掉」這個警訊的依據。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": true,
+      "verbatim_quote": "by November 2025, Goliath could no longer raise new investor money quickly enough to repay existing investors, it halted monthly distributions, and the scheme collapsed"
+    },
+    {
+      "fact": "【案件狀態，寫錯會出事】Delgado 同意「雙軌和解」，但那只是同意，判決仍須法院核准，吐出不法所得與罰款的金額也由法院裁定。不可以寫成已判決、已定罪或已確定賠償金額。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Delgado has agreed to a bifurcated settlement in connection with this civil enforcement action."
+    },
+    {
+      "fact": "同意的內容是永久禁制令等民事救濟，且明白寫著仍待法院核准。",
+      "url": "https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26608",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Delgado consented to the entry of a judgment, subject to court approval, that would permanently enjoin him from violating the charged provisions of the federal securities laws"
+    },
+    {
+      "fact": "包裝二的一手文件標題，SEC 自己用「purported（號稱的）」形容那三家平台，並點出招攬管道是社群媒體。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SEC Charges Three Purported Crypto Asset Trading Platforms and Four Investment Clubs with Scheme That Targeted Retail Investors on Social Media"
+    },
+    {
+      "fact": "新聞稿的副標一句話講完包裝二：假交易、假募集。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Defendants misappropriated $14 million from retail investors using fake trading and fake offerings"
+    },
+    {
+      "fact": "包裝二的發稿地與日期，也就是起訴日（2025-12-22），與演講裡的「In late-2025」相符。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Washington D.C., Dec. 22, 2025"
+    },
+    {
+      "fact": "注意新聞稿自己有兩種寫法：首段寫 more than $14 million，後段與副標寫 at least／$14 million。引用時挑一處並標明是哪一處，不可以把兩個說法寫成同一句。這是首段的寫法。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "defrauded retail investors out of more than $14 million in an elaborate investment confidence scam"
+    },
+    {
+      "fact": "【包裝二的完整鏈條，適合直接改寫成辨識清單】SEC 網路與新興技術小組主管 Laura D’Allaird 把四個步驟講完：社群廣告吸引→群組裡有人假扮金融專業人士、承諾 AI 明牌帶來獲利→把錢投進假的加密資產交易平台→錢被挪走。這是 SEC 官員的說法。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our complaint alleges a multi-step fraud that attracted victims with ads on social media, built victims’ trust in group chats where fraudsters posed as financial professionals and promised profits from AI-generated investment tips, then convinced victims to put their money into fake crypto asset trading platforms where it was misappropriated"
+    },
+    {
+      "fact": "包裝二的期間與通訊工具：起訴書指控 2024 年 1 月至 2025 年 1 月，四個「投資社團」用 WhatsApp 經營，靠社群廣告拉人入群。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "from at least January 2024 to January 2025, AI Wealth, Lane Wealth, AIIEF, and Zenith operated so-called investment clubs using WhatsApp and solicited investors to join the clubs with ads on social media"
+    },
+    {
+      "fact": "【辨識點：假執照】新聞稿指控那三個平台謊稱持有政府核發的執照。措辭是 government licenses，沒有點名哪一國、哪一個機關。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "purported crypto asset trading platforms Morocoin, Berge, and Cirkor, which falsely claimed to have government licenses, as alleged"
+    },
+    {
+      "fact": "【包裝二最關鍵的一句】起訴書指控平台上根本沒有任何交易發生、平台是假的，那些 Security Token Offering 與它們號稱的發行公司也不存在。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In reality, no trading took place on the trading platforms, which were fake, and the Security Token Offerings and their purported issuing companies did not exist, according to the complaint."
+    },
+    {
+      "fact": "【辨識點：提領時再收一手】起訴書指控投資人想領錢時，被告再以預付費用的名義騙第二次。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When investors tried to withdraw their funds, the complaint alleges that the defendants further defrauded victims by demanding that they pay advance fees."
+    },
+    {
+      "fact": "資金流向：起訴書指控至少 1,400 萬美元被挪走，並透過一連串銀行帳戶與加密資產錢包匯到境外。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the defendants misappropriated at least $14 million from U.S.-based retail investors and funneled those funds overseas through a web of bank accounts and crypto asset wallets, as alleged"
+    },
+    {
+      "fact": "SEC 在同一份新聞稿裡給出的自保原則：不要只憑群組裡的資訊做投資決定。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "never to rely solely on information from group chats in making investment decisions"
+    },
+    {
+      "fact": "SEC 建議的查證動作：用 Investor.gov 查對方的背景。（台灣讀者的對應動作要由編輯自己寫成「查主管機關的名單」，不可以宣稱 Investor.gov 查得到台灣業者。）",
+      "url": "https://www.sec.gov/newsroom/press-releases/2025-144-sec-charges-three-purported-crypto-asset-trading-platforms-four-investment-clubs-scheme-targeted",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The SEC encourages investors to use Investor.gov to check the background of anyone offering or selling them an investment."
+    },
+    {
+      "fact": "SEC 投資人教育與協助辦公室的警示頁標題。頁面的日期欄印 Dec. 22, 2025，與新聞稿 2025-144 同一天，不是 2026 年 9 月才出現的新警示。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Group Chats as a Gateway to Investment Scams"
+    },
+    {
+      "fact": "警示頁上的日期欄。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Dec. 22, 2025"
+    },
+    {
+      "fact": "【最適合當文章結論的一句自保原則】SEC 投資人教育辦公室要讀者對「群組裡有不認識的人在給投資建議」保持警覺，並說這常常就是詐騙的起點。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Be wary of any group chat where you receive investment advice from someone you don’t know"
+    },
+    {
+      "fact": "【通用辨識點，不綁特定案件】帳面上看得到「獲利」，但要提領時被要求先付手續費、稅金或保證金——這是這一類詐騙的共同斷點。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Your account may show “profits.” But when you try to withdraw the “profits,” fraudsters may demand a fee, tax, or deposit to release the funds."
+    },
+    {
+      "fact": "【比新聞稿多出來的細節一：深偽】同一個 Morocoin 案，警示頁寫出廣告裡用了知名金融專業人士的深偽影片。新聞稿 2025-144 沒有寫這一項，引用時要標明是警示頁寫的。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "soliciting them through social media ads (including ads featuring deepfake videos of prominent financial professionals) to join group chats on WhatsApp"
+    },
+    {
+      "fact": "【比新聞稿多出來的細節二：群組裡的分工】每個「投資社團」都有一個發總經與個股評論的「教授」，加一個負責跟成員聯絡的「助理」。這是台灣讀者最容易認出來的角色組合。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Each investment “club” allegedly had: (1) a “professor” who posted updates in the group chat on macroeconomic conditions or commentary on stocks, and (2) an “assistant” who handled communications with members."
+    },
+    {
+      "fact": "【比新聞稿多出來的細節三：AI 訊號與群組裡的自演】起訴書指控「教授」與「助理」散布號稱以 AI 生成「訊號」為依據的交易建議，群組成員還貼出據稱成功的交易截圖並稱讚那些訊號。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the professors and assistants circulated trade recommendations in the group chats that they claimed were based on AI-generated “signals.”"
+    },
+    {
+      "fact": "【比新聞稿多出來的細節四：假執照的具體內容】警示頁寫的是那些平台吹噓持有「包含 SEC 在內」的監理機關執照。新聞稿寫的是 government licenses，兩者措辭不同，不可以互換。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The defendants allegedly directed investors in the group chats to open accounts on crypto asset trading platforms falsely boasting licenses from regulators including the SEC."
+    },
+    {
+      "fact": "【假 STO 的賣點】起訴書指控那些假的 Security Token Offering 被宣傳成「零風險、高獲利、由正當企業推出」。這句是辨識「零風險」話術的直接依據。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "the defendants tricked investors into investing in phony Security Token Offerings that the defendants falsely promoted as zero-risk, high-profit opportunities by legitimate businesses"
+    },
+    {
+      "fact": "【提領關卡的完整版】起訴書指控被告在投資人要提領時收取名目費用，並謊稱帳戶即將因為 SEC 調查而被凍結。「主管機關要凍結你的帳戶、先付錢」本身就是警訊。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The defendants then allegedly charged investors bogus fees to withdraw their money, falsely telling investors that their accounts were about to be frozen due to SEC investigations."
+    },
+    {
+      "fact": "【原則句】SEC 投資人教育辦公室的判準：承諾高報酬又幾乎沒有風險，是投資詐騙的典型徵兆。這句可以用來取代任何報酬率數字。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The promise of high returns with little or no risk is a classic sign of investment fraud."
+    },
+    {
+      "fact": "【付款方式的警訊清單裡與加密最相關的一條】被要求把加密資產轉到不認識的錢包或個人。整份清單還包含匯款或開支票給個人、付給另一家公司、寄到郵政信箱等可疑地址、在備註寫與投資無關的名目。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Sending crypto assets to an unknown wallet or individual"
+    },
+    {
+      "fact": "【這一頁自己的法律地位】警示頁結尾寫明它既不是法律見解、也不是 SEC 的政策宣示。引用它時不可以寫成「SEC 規定」或「SEC 認定」。",
+      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/gateway-to-investment-scams",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It is neither a legal interpretation nor a statement of SEC policy."
+    }
+  ],
+  "not_said": [
+    "這場演講沒有宣布任何新的加密資產規則、豁免、登記制度或函釋。以 2026-09-20 抓下的講詞全文（44 個段落／小標加 9 條註腳）查核，rule、rulemaking、regulation、guidance 以詞界比對各 0 次；唯一一次 policy 是在講對辯護律師的內部做法那一段（This policy supports clarity, efficiency, and fairness）。文章不得寫成「SEC 於 9 月 18 日發布／宣布……」。",
+    "這一頁沒有點名任何國家或地區，也沒有提到台灣。以 2026-09-20 抓下的講詞正文用詞界比對，Taiwan、Taipei、China、Asia、Japan、Korea 各 0 次。可以寫的只是「同樣的包裝在台灣的社群裡也看得到」這種編輯觀察，且必須寫明是編輯的說法，不是 SEC 說的。",
+    "演講沒有說這兩種包裝是「最常見」「成長最快」或「占比最高」的加密詐騙。原文的句型是 for example 與 including，是舉例；most common、fastest 以詞界比對在正文 0 次。",
+    "演講沒有給出加密案件的件數、金額統計或占總案件的比例。相反地，他整段在反對用件數與金額衡量執法成效。文章不得自行加總兩案金額，也不得推算任何占比。",
+    "演講沒有說 SEC 會對交易所、錢包、託管商或任何特定業者採取新的行動。exchange、wallet、stablecoin、bitcoin 以詞界比對在正文各 0 次。",
+    "四份一手文件都沒有寫被害人要怎麼取回資金、有沒有成立分配基金（fair fund）、或已經發還多少。文章不得暗示受害者可以循某個管道求償。",
+    "演講沒有說「加密資產本身是詐騙」。那兩段講的是「以加密資產為包裝」的募集與「假的」交易平台，SEC 自己用的字是 purported 與 fake。",
+    "investor.gov 的警示頁沒有說任何平台、App 或錢包是安全的。它反過來寫：App 出現在知名的 App 商店，不代表那個 App 或你在裡面看到的交易活動是合法的。文章不得整理出任何「安全平台」名單。",
+    "演講與兩件案子的一手文件都沒有說被告已被法院判定違法。以 2026-09-20 查核，lr-26608 寫 Delgado 同意雙軌和解但判決 subject to court approval、金額由法院裁定，且 SEC 的調查仍在進行（The SEC’s continuing investigation）；新聞稿 2025-144 全篇是 alleged／according to the complaint。",
+    "演講沒有把註腳 4 的 SEC v. Ichcoin Tech Corp. 說成加密案件。那個案名出現在「用假的 SEC 申報冒充美國顧問」那一段，本輪沒有讀 lr-26623，因此對那一案的任何性質描述都不得寫。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "「SEC 在 2026 年 9 月 18 日對加密詐騙發動新一波執法／宣布新政策」這類寫法。",
+      "seen_where": "候選清單與一般的新聞化標題寫法會這樣推。",
+      "why_excluded": "9 月 18 日只有一場演講。演講舉的兩案分別在 2026-08-11 與 2025-12-22 起訴，兩案的一手文件都在那兩天發布；當天沒有任何新的起訴、規則或政策文件。這是本篇最容易出錯的地方。"
+    },
+    {
+      "claim": "把演講裡的 4.25 億美元、1,300 人、5,100 萬美元、1,400 萬美元寫成確定的受害金額或人數。",
+      "seen_where": "演講與 lr-26608、新聞稿 2025-144。",
+      "why_excluded": "原文一律帶 at least／over／more than，而且是起訴時的指控，不是法院認定的數字。要寫只能寫成「SEC 指控至少……」。"
+    },
+    {
+      "claim": "起訴書指控的每月配息百分比。",
+      "seen_where": "lr-26608 正文。",
+      "why_excluded": "幣圈規格把報酬率列為不可寫（`crypto.md` 的「不可以寫」第四項），理由是不管怎麼包裝都會被讀成報酬。本紀錄保留了逐字引文供查核者比對，但文章只能寫「承諾固定的每月配息並保證本金」。"
+    },
+    {
+      "claim": "David Woodcock 的到任日、年資，或「上任四個多月」這類換算。",
+      "seen_where": "SEC 新聞稿 2026-35（2026-09-20 已讀到正文，印著 effective May 4, 2026）。",
+      "why_excluded": "為了把 sources 控制在四條而沒有列入；演講頁本身只印「In my first three months on the job」。文章若要寫到任日，必須把新聞稿 2026-35 加進 sources[]，否則只能引用那句備稿原文。"
+    },
+    {
+      "claim": "「12th Annual Government Enforcement Institute」的主辦單位全名、議程、與會人數或其他場次資訊。",
+      "seen_where": "演講頁只寫由母校 University of Texas 主辦，地點欄只印 Dallas, Texas。",
+      "why_excluded": "頁面沒有印主辦單位的正式全名，也沒有議程連結；本輪沒有去找活動官網，不寫。"
+    },
+    {
+      "claim": "演講的現場影音、問答內容，或「他在台上說」這類描述。",
+      "seen_where": "頁面標示 [As Prepared]。",
+      "why_excluded": "公布的是備稿全文，SEC 沒有在這一頁提供影音或現場逐字稿，無法證明照稿念。文章一律寫「講稿寫道」「備稿全文指出」。"
+    },
+    {
+      "claim": "兩件案子的被告國籍、據點、是否在台灣或亞洲有分支，或台灣是否有受害者。",
+      "seen_where": "無一手依據。新聞稿 2025-144 只寫資金被匯到境外（overseas）。",
+      "why_excluded": "四份文件都沒有寫地理來源；本輪也沒有查任何台灣主管機關的一手資料。不寫任何台灣案例、金額或查緝數字。"
+    },
+    {
+      "claim": "兩案起訴書（complaint PDF）裡的其他細節。",
+      "seen_where": "兩頁各有一個「SEC Complaint」連結（包裝二為 https://www.sec.gov/files/litigation/complaints/2025/comp-pr2025-144.pdf）。",
+      "why_excluded": "本輪沒有下載或閱讀這兩份 PDF，因此不引用它們的任何內容；訴訟公告與新聞稿上寫到的才可以用。"
+    },
+    {
+      "claim": "探索代理透過 WebFetch 取得的講詞摘要。",
+      "seen_where": "候選清單 `candidates-crypto.md` 第 3 則。",
+      "why_excluded": "本輪全部事實回到自己以 headless Edge 抓下的 DOM。實際核對後有兩處與摘要不同：摘要把兩案並列而沒有寫出時間差（一件是「上個月」、一件是「2025 年底」），也沒有提到 AI 明牌與深偽這一層。WebFetch 能讀到這個網址，但只會回摘要，不能拿來當 verbatim_quote 的依據。"
+    },
+    {
+      "claim": "SEC 執法處新成立的 Financial Reporting and Accounting Unit、Office of Artificial Intelligence & Analytics 與 FDA 備忘錄、CFTC Harmonization Initiative 等內容。",
+      "seen_where": "同一篇演講的其他段落。",
+      "why_excluded": "與加密詐騙包裝無關，且本篇只有五節。Retail Fraud Working Group 因為直接關係到零售詐騙與對散戶的宣導，保留一句話的篇幅；其餘不寫。若之後要寫，CFTC 那一段與已刊的 `crypto-news-cftc-passive-software-20260917` 有相鄰關係。"
+    }
+  ],
+  "editorial_brief": "骨架一句話：這不是新規則，是執法端把「他們最近真的辦到的兩種加密詐騙包裝」攤在檯面上——而這兩種包裝，台灣的社群裡每天都看得到。\n\n讀者是看過既有幾篇 SEC 文章的台灣一般讀者。既有文章講的都是「制度長什麼樣」（`crypto-news-sec-regulation-crypto-assets-20260821` 的募集豁免與安全港、`crypto-news-sec-crypto-interpretation-20260323` 的五類加密資產分法）；這一篇的新東西是「執法端實際看到的包裝」，所以**全篇不要重講 SEC 的分類架構或草案內容**，那兩篇已經寫過，用一句話帶過並連過去就好。\n\n五節安排建議：\n1) 這是一場演講，不是一份命令。先把三件事講清楚：9/18 是演講日，不是起訴日；講稿開頭的免責聲明白紙黑字寫「代表我個人意見、不必然代表委員會」；頁面標的是 [As Prepared] 的備稿。順便交代這場演講的主體其實是執法處近況與對辯護律師的要求，加密只占兩段——這樣讀者才知道標題在講的是什麼。\n2) 包裝一：合夥投「流動性池」。用一句話講包裝（與公司合夥、去投資號稱由它管理的加密資產流動性池），再講起訴書指控的真相（錢根本沒進過任何池子、拿新錢付舊人、負責人挪用去買房買車買遊艇）。收在兩個辨識點：承諾固定月配息並保證本金；對帳單上的獲利可以是做出來的。\n3) 包裝二：假平台配投資社團。照 SEC 官員講的四步鏈條寫：社群廣告→群組裡的「教授」與「助理」、號稱 AI 生成的訊號、成員貼出的獲利截圖→誘導到假平台開戶（平台謊稱有執照）→買到根本不存在的「Security Token Offering」。收在最關鍵的斷點：想提領的時候被再收一次費，甚至被告知「帳戶要被主管機關凍結、先付錢」。\n4) 兩種包裝共通的辨識清單（本篇的實用價值所在，用表呈現）。每一列都要指得到一條來源：零風險高獲利的承諾、保證本金、群組裡不認識的人給建議、平台自稱有執照、提領要先付費、要求把加密資產轉到不認識的錢包。**只寫讀者要檢查什麼、怎麼查，不寫詐騙怎麼架設、話術怎麼寫。**\n5) 界線與怎麼自己查。講清楚兩案現在的狀態（都還是指控；包裝一的個人被告同意和解但判決仍待法院核准、金額由法院定），以及台灣讀者的對應動作：SEC 叫美國人去 Investor.gov 查背景，台灣讀者對應的是查主管機關的名單——這句要寫成編輯的類比，不可以宣稱 Investor.gov 查得到台灣業者，也不可以新增任何台灣的案例或數字。想提台灣制度，只能用一句話連回既有已發布文章（例如 `crypto-news-taiwan-vasp-act-20260630`），且不得新增數字。\n\n用語：法規語境寫「虛擬資產」，一般語境寫「加密貨幣」；Security Token Offering 第一次出現寫「證券型代幣發行（Security Token Offering, STO）」並說明本案的 STO 是假的；「流動性池（liquidity pool）」第一次出現要用一句話解釋它在正常情況下是什麼，但**不可以寫成一種可以投入的東西**，只能寫成「被拿來當包裝的名詞」。\n\n結構規定：幣圈篇有兩個 callout——一個本文提醒（建議放「這是演講，不是 SEC 政策」）、一個規格逐字指定的免責 callout，兩個都在第 5 節之後、兩個 link 之前。第一個結尾連結逐字用索引現行標題「2026 年加密貨幣新聞總整理：法規、技術與產業的重點」（slug `crypto-news-2026-index`）；第二個結尾連結指向既有已發布的 `crypto-news-sec-regulation-crypto-assets-20260821`，text 必須逐字等於它 zh-TW 的 title：「SEC 提出 Regulation Crypto Assets 草案：兩項募集豁免與一個安全港，尚未定案」。`display_order` 依 DELTA-4-6 第 4 條為 **216**。只做 zh-TW，沒有翻譯與逐語審稿。",
+  "must_not_write": [
+    "【最重要】不可以把這場演講寫成 SEC 的政策、決議或新方向。講稿開頭自己寫著「My remarks represent my own views and do not necessarily reflect the views of the Commission, the Commissioners, or my colleagues on the staff.」。標題與正文一律寫「SEC 執法處處長 David Woodcock 在演講中表示／舉出」，不可以寫「SEC 宣布」「SEC 認定」「美國主管機關表示」「SEC 點名」。",
+    "不可以寫這兩件案子是 9 月 18 日、本週或最近起訴的。Goliath 案起訴日是 2026-08-11（演講寫 Last month），Morocoin 案起訴日是 2025-12-22（演講寫 In late-2025）。9 月 18 日是演講日。",
+    "不可以寫兩案已判決、已定罪、已認定詐騙成立，或寫出任何「賠償金額」。兩案的事實全部是起訴書的指控；Goliath 案的個人被告只是「同意雙軌和解」，判決 subject to court approval，吐出不法所得與罰款的金額由法院裁定；Morocoin 案仍在起訴階段。一律寫「SEC 指控」「起訴書主張」。",
+    "不可以寫任何可以照做的行騙步驟、話術腳本、招攬文案、假平台或假代幣的架設方式。本篇只寫「怎麼辨識」與「怎麼查證」，每一條都要寫成讀者的檢查動作；圖解也一樣，節點只放辨識點，不畫流程。",
+    "不可以印出起訴書裡的每月配息百分比，也不可以印任何其他報酬率、殖利率、質押或空投數字。要寫就寫「承諾固定的每月配息並保證本金」。",
+    "不可以把 4.25 億美元、1,300 人、5,100 萬美元、1,400 萬美元寫成確定的損失。原文一律是 at least／over／more than，而且是起訴時的指控。也不可以把兩案金額相加。",
+    "不可以把這場演講寫成一場「加密演講」。以 2026-09-20 抓下的講詞正文（44 個段落／小標）查核，crypto 以詞界比對只出現 4 次、全部在第 15、16 兩段。標題與導言不得暗示整場演講在談加密。",
+    "不可以寫「他在台上說」「現場表示」「演講中強調時語氣如何」。頁面標示 [As Prepared]，是備稿；SEC 沒有提供影音或現場逐字稿。",
+    "不可以寫「最常見」「成長最快」「第一起」「唯一」「恰好兩種」。原文用的是 for example 與 including，是舉例不是清單；也不可以把兩種包裝寫成「加密詐騙只有這兩種」。",
+    "不可以寫演講點名了台灣、亞洲或任何國家。以 2026-09-20 用詞界比對，Taiwan／Taipei／China／Asia／Japan／Korea 在正文各 0 次。台灣的對照只能寫成編輯的觀察，並明講是編輯的說法。",
+    "不可以新增任何台灣案例、台灣受害金額、台灣查緝或裁罰數字，也不可以寫「金管會將比照」「台灣也會這樣做」。本輪沒有查任何台灣一手來源。要提台灣制度只能用一句話連回既有已發布文章，且不得新增數字。",
+    "不可以重講 SEC 的加密資產分類架構、Regulation Crypto Assets 草案的兩項募集豁免與安全港、或 2026-03-23 聯名解釋令的五類分法——那是 `crypto-news-sec-regulation-crypto-assets-20260821` 與 `crypto-news-sec-crypto-interpretation-20260323` 的內容。",
+    "不可以把新聞稿 2025-144 的「謊稱持有政府執照（government licenses）」與 investor.gov 的「吹噓持有包含 SEC 在內的監理機關執照」混成同一句。兩份文件措辭不同，要各自標出處。同理，演講寫 real estate、訴訟公告寫 homes 與 travel，也不可以互換。",
+    "不可以把 investor.gov 的警示內容寫成 SEC 的法律見解、規定或政策。那一頁自己寫「It is neither a legal interpretation nor a statement of SEC policy.」；也不可以寫它是 2026 年 9 月才發布的新警示，頁面日期欄印的是 Dec. 22, 2025。",
+    "不可以出現幣價、漲跌幅、市值、交易量、ETF 資金流，也不可以把任何代幣、平台、錢包、交易所寫成可以持有、值得選擇或比較安全的東西；更不可以整理出「安全平台清單」。流動性池只能當成被拿來包裝的名詞出現，不可以寫成一種可以參與的東西。",
+    "不可以引用 CoinDesk、CoinTelegraph、The Block 等二手站或任何幣圈整理補事實，也不可以拿探索代理用 WebFetch 取得的摘要當依據。sec.gov 的 403 封鎖頁（1,923 bytes 的 Request Rate Threshold Exceeded）更不可以當成「讀過」。",
+    "不可以自己加總、換算或清點來源沒有印出的數字（兩案金額相加、被害人總數、加密案件占比、平台或社團的總數推算）。",
+    "不可以寫 SEC v. Ichcoin Tech Corp.（演講註腳 4）是加密案件——演講把它放在「用假的 SEC 申報冒充美國顧問」那一段，本輪沒有讀 lr-26623。",
+    "不可以「修正」來源自己的錯字或標點：演講原文印的是 “bread-and butter”（少一個連字號）、lr-26608 的調查人員名單印的是 Crytal Ivory，要引用就照抄並註明是來源如此。lr-26608 報頭的案名被 <em> 包住，案名與案號在原始碼裡不是一整串，不可以接成一句當逐字引文。",
+    "圖解不畫任何商標、字標、平台介面或聊天室截圖，圖上不放正文沒有的數字，也不畫成可以照做的詐騙流程。"
+  ],
+  "live_data_warnings": [
+    "兩案都還沒結束：lr-26608 寫 SEC 的調查仍在進行（The SEC’s continuing investigation），Delgado 的判決 subject to court approval、金額待法院裁定；Morocoin 案在起訴階段。定稿當天必須重抓這兩頁，如果已經出現判決、和解金額或新的訴訟公告，第 5 節與所有「指控」措辭都要改寫。",
+    "sec.gov 對 curl 一律回 403 的 Request Rate Threshold Exceeded 封鎖頁（1,923 bytes；加上一般瀏覽器標頭後是 919 bytes 的同類頁）。可用的路徑是本機 Microsoft Edge 的 --headless=new --dump-dom，UA 用 Mokaair-editorial、user-data-dir 指向全新空白目錄。定稿當天要用同一條路徑重抓四頁並確認 <title> 與正文不是封鎖頁；不可以拿 403 頁登記 checked_on。",
+    "演講頁的「Last Reviewed or Updated」目前與演講日同為 Sept. 18, 2026。SEC 事後修訂講詞會改這個欄位，定稿當天要確認它沒有變；若變了，所有逐字引文都要重新比對。",
+    "investor.gov 的警示頁是活文件，SEC 之後可能改寫段落或增刪案例。本紀錄引用的是 2026-09-20 讀到的版本（62,465 bytes、31 段），頁面日期欄印 Dec. 22, 2025。定稿當天要重抓並逐句比對本紀錄引用的六句。",
+    "sec.gov 的 speeches/statements RSS 只保留最近 25 筆，過幾天本則就會掉出 feed。事件日的依據以演講頁上印的 Sept. 18, 2026 為主，RSS 的 pubDate 只是旁證，不要把 feed 的筆數寫進文章或當成事實。",
+    "本則沒有任何價格或市場數據，也不得為了時效補上任何行情數字。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "包裝會換，傷害一樣",
+  "diagram": {
+    "title": "兩種包裝，一條共同的破口",
+    "caption": "美國 SEC 執法處處長 David Woodcock 於 2026 年 9 月 18 日在達拉斯的備稿演講中舉出的兩件加密詐騙案，以及兩案起訴書描述的包裝方式。兩案均為 SEC 的指控，尚未經法院認定。查核日 2026 年 9 月 20 日。",
+    "nodes": [
+      [
+        "包裝一",
+        "合夥投「流動性池」"
+      ],
+      [
+        "包裝二",
+        "假平台配投資社團"
+      ],
+      [
+        "共同的話術",
+        "保證本金、對帳單有獲利"
+      ],
+      [
+        "提領這一關",
+        "假平台要你先付費"
+      ]
+    ]
+  },
+  "factcheck": {}
+}
