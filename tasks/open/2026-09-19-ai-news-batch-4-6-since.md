@@ -1,11 +1,11 @@
 ---
 id: 2026-09-19-ai-news-batch-4-6-since
 title: AI 新聞批次 4.6：2026-09-18 的兩則（Anthropic 內嵌式評估、Google Flow 與時裝週）
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-opus-5
-claimed_at: 2026-09-19T11:57:29Z
+owner:
+claimed_at:
 created_at: 2026-09-19T11:57:24Z
 completed_at:
 branch: claude/ai-teaching-news-expansion-wa6kur

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-19-ai-workflow-batch-2-model-swap
 title: 教學系列「多模型 AI 工作流」批次 2：把別的模型接進 Claude Code 與 Codex（5 篇）
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-opus-5
-claimed_at: 2026-09-19T11:21:25Z
+owner:
+claimed_at:
 created_at: 2026-09-19T11:21:14Z
 completed_at:
 branch: claude/ai-teaching-news-expansion-wa6kur
