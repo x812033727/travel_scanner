@@ -285,7 +285,7 @@ FAQ 三題、image caption 裡的每一句，加上 OWASP 十個條目編號與�
 | source | HTTP | bytes | body 是正文嗎 |
 | --- | --- | --- | --- |
 | `genai.owasp.org/llmrisk/llm102025-unbounded-consumption/` | 200 | 362,405 | **是**。定義段、7 個 Common Examples、15 條 Prevention and Mitigation Strategies、6 個 Example Attack Scenarios 全在 |
-| `genai.owasp.org/llmrisk/llm052025-improper-output-handling/` | 200 | 350,655 | **是**。定義段、5 個弱點例子、7 條緩解建議、6 個 Attack Scenario 全在（第一輪記 350,704；差 49 bytes 落在頁尾的分享／留言區塊，正文一字未動） |
+| `genai.owasp.org/llmrisk/llm052025-improper-output-handling/` | 200 | 350,655 | **是**。定義段、5 個弱點例子、7 條緩解建議、6 個 Attack Scenario 全在（第一輪記 350,704、今天 350,655；本篇引用的三句逐字比對後完全相同，正文沒有變動） |
 | `genai.owasp.org/llm-top-10/` | 200 | 913,375 | **是**。`LLM01:2025` 到 `LLM10:2025` 逐一印出 |
 | `developers.openai.com/api/docs/guides/safety-best-practices` | 200 | 396,143 | **是**。Moderation API、Adversarial testing、Human in the loop (HITL)、Constrain user input and limit output tokens 等節全在 |
 | `platform.claude.com/docs/en/…/mitigate-jailbreaks` | 200 | 408,985 | **是**。Indirect prompt injection ×3、JSON-encode untrusted content、Screen tool outputs、Chain safeguards 全在 |

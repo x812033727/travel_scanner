@@ -494,7 +494,7 @@
     "second_round": {
       "checked_by": "independent factcheck agent (second round, did not write or first-round the article)",
       "checked_on": "2026-09-19",
-      "claims_checked": 61,
+      "claims_checked": 108,
       "method": "只覆核第一輪改動過的段落與新寫進去的句子，不整篇重做：sources[] 七條今天全部以 curl -sL -A \"Mokaair-editorial\" 重抓（HTTP 200、bytes 與第一輪相同、body 都讀得到正文），研究紀錄 53 條 verbatim_quote（原 28 條＋第一輪新增 25 條）全部用程式做連續字串比對，HTML 來源只做空白與引號正規化、markdown 來源（README 與 gemini-cli 的 mcp-server.md）另外還原引用符號、行內反引號與硬斷行後比對，53 條全中，沒有一條需要改寫或刪除。三塊程式重新抽出重驗：python3 -m py_compile、bash -n、bash -n 全數通過，第三塊 heredoc 裡的 TOML 另用 tomllib 解析成 {'mcp_servers': {'flight-desk': {'command': 'python', 'args': ['flight_server.py'], 'enabled_tools': ['flight_status']}}}。任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有用 sources[] 以外的網址替文章補事實。",
       "verdict": "ok",
       "edits": [

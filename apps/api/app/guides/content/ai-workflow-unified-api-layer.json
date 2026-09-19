@@ -191,7 +191,7 @@
             },
             {
               "question": "換供應商時，程式碼真的只需要改 base_url 和 model 嗎？",
-              "answer": "以這篇示範的兩個呼叫來說是的：openai 套件的用戶端只換了 base_url、金鑰讀的環境變數，和 model 字串三個地方，其餘程式碼沒有變。要注意的是不同供應商的 model 字串寫法不一樣：OpenRouter 是固定的「供應商／模型」格式，Groq 則是填它模型頁表格 MODEL ID 欄位上的代號，兩邊不一定長得一樣。"
+              "answer": "以這篇示範的兩個呼叫來說是的：openai 套件的用戶端只換了 base_url、金鑰讀的環境變數，和 model 字串三個地方，其餘程式碼沒有變。要注意的是不同供應商的 model 字串寫法不一樣：OpenRouter 用的是「供應商／模型」這種格式，Groq 則是填它模型頁表格 MODEL ID 欄位上的代號，兩邊不一定長得一樣。"
             },
             {
               "question": "LiteLLM 的 model 字串為什麼要加供應商前綴？",
