@@ -1,0 +1,222 @@
+{
+  "slug": "tech-news-iphone-duo-dev-resources-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": ["tech", "tech-news", "software"],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 320,
+  "locales": {
+    "zh-TW": {
+      "title": "Apple 公布 iPhone Duo 開發資源：Xcode 26 以前建置的 App 用不滿螢幕",
+      "description": "2026 年 9 月 18 日，Apple 公布 iPhone Duo 的開發資源：Xcode 27.1 beta、Figma 與 Sketch 版型、技術文件，以及歐美六個場地的實體工作坊。本文依官方公告整理系統怎麼處理版面與工具列、Xcode 目前的已知限制與工作坊報名範圍，不重覆 9 月 9 日已發表的規格，查核日 2026 年 9 月 20 日。",
+      "hero": {
+        "src": "/guides/tech-news-iphone-duo-dev-resources-20260918/hero.jpg",
+        "alt": "原創插圖：左側是一個直立矩形代表工具圖示，中央一個大矩形被一條虛線分成左右兩半代表摺疊螢幕的摺痕，右側排列四個小方框各放一個簡化符號，分別代表程式碼、畫筆、文件與人形，對應開發資源的四個項目；不呈現實際機身外觀或商標",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 18 日，Apple 在開發者新聞（Apple Developer News）刊出一則公告，向開發者公布 iPhone Duo 的開發資源，主題是幫助開發者調整 App，讓它們在這支摺疊 iPhone 上正確顯示。公告全文只有四段話，每段各搭一個連結，分別指向 Xcode 27.1 beta、設計檔、工作坊報名與技術文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文於 2026 年 9 月 20 日查核，讀的是這則公告與它連到的三份官方頁面：技術文件「為 iPhone Duo 準備 App」、Xcode 27.1 Beta Release Notes，以及 Meet with Apple 工作坊清單。本站沒有實機測試，不做購買或升級建議，文中對 Apple 自家工具與課程效果的描述一律標明是 Apple 的說法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 18 日，Apple 透過開發者新聞公布 iPhone Duo 的開發資源，包括 Xcode 27.1 beta、Figma 與 Sketch 版型、技術文件與實體工作坊。",
+            "Apple 在技術文件裡明講，用 Xcode 26 或更早版本建置的 App，畫面不會延伸到狀態列與相機下方，這是不少使用者看到版面留白的原因。",
+            "系統在部分姿勢下會把工具列整組改成直立、放到螢幕側邊，只有帶圖示的項目才會被排進去；摺痕與鏡頭在文件裡合稱保留區域，半摺時摺痕生效、全開時失效。",
+            "以本文 2026 年 9 月 20 日查核的清單，工作坊系列共有 39 場，全部在歐美六個場地、全程英文舉行；亞太地區唯一一場是 9 月 16 日就開放報名的上海線上講座，不屬於這則公告。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Apple 對開發者公布了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "這則公告標題大意是「用新資源為 iPhone Duo 打造 App」，登在 Apple Developer News，頁面印出的日期是 2026 年 9 月 18 日，沒有印出任何時刻。全文只有四段話：取得 Xcode 27.1 beta；從 Apple Design Resources 取得 Figma 與 Sketch 版型；報名全球工作坊；以及連到「為 iPhone Duo 準備 App」技術文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二段與第三段是 Apple 對自己資源的描述，不是可以獨立驗證的事實：Apple 說明可以從 Apple Design Resources 取得設計檔，也說明報名工作坊能學到怎麼為所有螢幕尺寸最佳化 App、打造客製化體驗。公告沒有講設計檔是全新的檔案還是併進既有版型，也沒有提到工作坊要不要收費。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告本身沒有出現任何硬體規格、售價、上市地區或電信商——這些在 9 月 9 日發表當天已經整理過，本文結尾會連回那一篇，這裡不重複。公告也沒有寫任何一支第三方 App 什麼時候會更新，本文同樣不做這方面的猜測。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼有些 App 版面還留著一塊空白"
+        },
+        {
+          "type": "paragraph",
+          "text": "四段話裡最關鍵的一句，寫在「為 iPhone Duo 準備 App」文件裡：用最新版 Xcode 建置，才能使用 iPhone Duo 全部可用畫面；用 Xcode 26 或更早版本建置的話，App 不會延伸到狀態列與相機下方。換句話說，有些人打開某些 App 覺得上面空一塊，並不是裝置故障，而是那支 App 建置時用的工具版本還沒跟上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件把「會變形」講成這支手機上最關鍵的一件事：外螢幕小、內螢幕大，兩螢幕都有前鏡頭，內螢幕鏡頭不用時會藏起來；開合、半摺與旋轉時，內容會在兩螢幕間搬家並依方向調整，半摺時畫面要配合摺痕所在區域。Apple 表示，App 若已能在 iPad 與 Mac 上執行、或已為 iPhone 鏡像功能做過縮放，就已經走了一大段路——這是 Apple 對移植難度的判斷，不是實測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "導覽列、工具列與分頁列在某些姿勢下會被系統整組改成直立、放到螢幕側邊；闔起來只用外螢幕時會直排，打開時前緣或後緣的部分畫面也會直排。Apple 要開發者重新檢視這些列，讓常用控制項留在看得到的地方，較少用的收進溢出選單。但只有帶圖示的項目才會排進直式工具列——只有文字沒圖示、或用自訂視圖做的項目，系統都不會直排，這正是「按鈕不見了」的原因。"
+        },
+        {
+          "type": "table",
+          "header": ["情況", "系統怎麼處理", "文件給開發者的建議"],
+          "rows": [
+            ["摺痕（division）", "把一個大畫面切成兩半；半摺時生效、全開時失效", "版面依場景或容器範圍計算，不要寫死畫面尺寸"],
+            ["鏡頭遮蔽（occlusion）", "內鏡頭啟用時會擋住內容，外鏡頭永遠擋著", "避免把重要內容放在鏡頭正下方"],
+            ["工具列項目只有文字", "系統不會把它排進直式工具列", "加上圖示，或收進溢出選單"],
+            ["工具列項目是自訂視圖", "系統同樣不會把它排進直式工具列", "改用系統提供的標準版面容器"]
+          ],
+          "caption": "依 Apple「為 iPhone Duo 準備 App」技術文件整理，查核日 2026 年 9 月 20 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Xcode 27.1 與模擬器現在的限制"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者要用的工具是 Xcode 27.1，文件標題本身就寫著 Beta，仍是測試版，內含 Swift 6.4 與 iOS 27.1、iPadOS 27、tvOS 27、watchOS 27、macOS 27、visionOS 27 的 SDK；執行它需要 Mac 跑 macOS Tahoe 26.6 以上——這是開發用 Mac 的門檻，不是使用者手機的門檻。實機偵錯支援 iOS 17、tvOS 17、watchOS 10 以上與 visionOS。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple 列出幾項已知問題：iPhone Duo 模擬器跑不了 StandBy 待機模式；大多數 App extension——小工具、鍵盤、分享選單這類——在模擬器裡無法執行與偵錯；模擬器第一次啟動可能要好幾分鐘。這一版新增預覽功能：畫布的裝置選單多了「Display」一組，可預覽裝置「另一個螢幕」的內容，對應摺疊機的內外兩塊螢幕。"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有一條路目前是壞的：專案用到 iOS 27.1 專屬的 API，建置 Mac Catalyst 版本會出現編譯錯誤；以 iOS 27.1 為建置目標的專案，甚至看不到 Mac Catalyst 執行目標可選。這些都寫在 Xcode 27.1 beta 目前的已知問題清單裡，正式版會不會修好、何時推出，四份來源都沒有寫，本文也不猜測。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-iphone-duo-dev-resources-20260918/diagram-1.svg",
+          "alt": "四格圖解：Xcode 27.1 beta、設計檔、說明文件與實體工作坊，對應 Apple 這次公布的四項開發者資源",
+          "width": 1600,
+          "height": 900,
+          "caption": "依 Apple 2026 年 9 月 18 日的開發者公告與它連到的官方頁面整理，查核日 2026 年 9 月 20 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "實體工作坊在哪裡、誰報得到"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告第三段連到 Meet with Apple 的活動清單，過濾出的工作坊正式名稱是「Workshop: Optimize your app for iPhone Duo」。Apple 說明：帶自己的專案來，和 Apple 的人一起檢視、往前推進；每天流程相同，來越多天走越遠，需要幾天就報名幾天，現場用 iPhone Duo 實機建置與測試 App——這是 Apple 對課程形式與效果的說法，本文只轉述。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以本文 2026 年 9 月 20 日重新清點 Apple 提供的清單，屬於這個工作坊系列的場次共有 39 場（清單裡另有一筆名稱完全不同的活動，不算在內），全部落在六個場地：歐洲的倫敦、巴黎、柏林，以及北美的邁阿密、庫比蒂諾與紐約。每一場都是實體進行、全程英文授課，名額逐場設定，例如巴黎第一場只開放 30 個名額。"
+        },
+        {
+          "type": "paragraph",
+          "text": "清單資料顯示，所有場次的報名開放時間都相同，換算台北時間是 9 月 19 日凌晨 1 點 45 分，略晚於公告刊出；各場次的報名截止時間則不一樣。報名的地區限制欄位寫的是不限國家，但這只代表報名沒有國籍門檻，不代表你所在地區就有場次可以參加，兩件事要分開看。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以查核當天的清單，沒有任何一場落在台灣、日本或韓國。亞太唯一一場相關活動，是上海 Apple Developer Center 的線上講座，英文名稱直譯「iPhone Duo 入門」，透過 Webex 進行、授課語言是簡體中文；報名在 9 月 16 日就開放，早於 9 月 18 日這則公告兩天，因此不屬於這篇公告。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀者現在可以做的事"
+        },
+        {
+          "type": "paragraph",
+          "text": "對還沒動手寫 App 的一般讀者來說，這則公告不涉及任何硬體規格、售價或上市地區，那些留在 9 月 9 日發表當天的整理裡。這篇公告要回答的問題只有一個：為什麼某些 App 打開後版面還怪怪的——答案在於開發者用什麼版本的工具建置、有沒有照 Apple 這次給的規則調整版面與工具列。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文查核的四份來源都沒有寫任何第三方 App 的更新時程，也沒有點名哪一支 App 已經改好或還沒改。讀者能做的、也是本文核實過的作法，是留意自己常用的 App 在 App Store 上的更新說明——開發者若已經照這次的規則調整版面，通常會寫在版本記錄裡。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Xcode 27.1 目前仍是 beta，Apple 的技術文件與 release notes 都是會持續更動的活頁，頁面上沒有版本號也沒有標明最後更新日期。本文引用的敘述以 2026 年 9 月 20 日讀到的版本為準，之後可能已經修改，甚至隨正式版推出而整段換掉。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的 iPhone Duo 上某些 App 版面留白、按鈕跑到旁邊，是手機壞了嗎？",
+              "answer": "不是。Apple 在 2026 年 9 月 18 日的技術文件裡說明，用 Xcode 26 或更早版本建置的 App，畫面不會延伸到狀態列與相機下方，系統也可能把某些工具列整組改成直立、放在螢幕側邊。這是建置工具版本與版面規則造成的現象，不是裝置故障；要修好，得等這支 App 的開發者用新版工具與新規則重新調整版面。"
+            },
+            {
+              "question": "Apple 這次公布了哪些開發者資源？",
+              "answer": "公告本身只有四段話，各搭一個連結：取得 Xcode 27.1 beta、從 Apple Design Resources 取得 iPhone Duo 的 Figma 與 Sketch 版型、報名全球工作坊，以及閱讀「為 iPhone Duo 準備 App」的技術文件。公告沒有提到任何硬體規格或售價。"
+            },
+            {
+              "question": "台灣有工作坊可以參加嗎？",
+              "answer": "以本文 2026 年 9 月 20 日查核的清單，沒有。這一系列工作坊在六個場地舉行，全部在歐洲（倫敦、巴黎、柏林）與北美（邁阿密、庫比蒂諾、紐約），全程英文、實體進行，清單上沒有任何台灣、日本或韓國的場次。亞太地區唯一一場相關活動是上海的線上講座，語言是簡體中文，而且它在 9 月 16 日就開放報名，早於 9 月 18 日的這則公告，不屬於這次公布的內容。"
+            },
+            {
+              "question": "Xcode 27.1 beta 現在能拿來開發準備上架的 App 嗎？",
+              "answer": "官方文件標題本身就寫著 Beta，而且列出多項已知問題，例如 iPhone Duo 模擬器裡跑不了 StandBy 待機模式、大多數 App extension 在模擬器裡無法執行與偵錯，用到 iOS 27.1 專屬 API 的專案建置 Mac Catalyst 版本也會出現編譯錯誤。公告只寫「取得 Xcode 27.1 beta」，沒有講它是不是上架的必要條件，也沒有給正式版的推出時間。"
+            },
+            {
+              "question": "工作坊要收費嗎？名額好搶嗎？",
+              "answer": "公告與活動清單都沒有出現費用或免費的字樣，本文查核到的頁面也沒有官方說明。名額則是逐場設定，以本文查核當下的資料，歐洲場次多半只開放二、三十個名額，各場次的報名截止時間也不一樣。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "讀這篇前的提醒",
+          "text": "本文只整理 Apple 給開發者的資源與時間表，不是任何第三方 App 是否已支援 iPhone Duo 的名單，也不是官方的使用者版更新時程——四份來源都沒有寫這些。文中對 Apple 自家工具與課程效果的描述（例如設計檔的內容、工作坊的學習成果）一律是 Apple 的說法，本站沒有實際使用測試。Xcode 27.1 目前仍是 beta，Apple 的技術文件也會持續更動，本文引用的內容以查核日 2026 年 9 月 20 日讀到的版本為準；工作坊的名額與報名截止時間隨時在變，請以 Apple 官方頁面當下顯示的資訊為準，本文不做購買或升級建議。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+        },
+        {
+          "type": "link",
+          "text": "Apple 發表 iPhone Duo：螢幕、電池與台灣上市時程整理",
+          "url": "https://mokaair.com/zh-TW/life/tech-news-iphone-duo-20260909"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Apple Developer News：Build for iPhone Duo with new resources",
+          "url": "https://developer.apple.com/news/?id=nyuppv9r",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Preparing your app for iPhone Duo（Technology Overviews）",
+          "url": "https://developer.apple.com/documentation/technologyoverviews/preparing-your-app-for-iphone-duo",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Xcode 27.1 Beta Release Notes",
+          "url": "https://developer.apple.com/documentation/xcode-release-notes/xcode-27_1-release-notes",
+          "checked_on": "2026-09-20"
+        },
+        {
+          "title": "Meet with Apple：Upcoming activities（含 iPhone Duo 工作坊清單）",
+          "url": "https://developer.apple.com/events/view/upcoming-events/",
+          "checked_on": "2026-09-20"
+        }
+      ]
+    }
+  }
+}
