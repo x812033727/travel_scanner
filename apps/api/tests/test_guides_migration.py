@@ -12,6 +12,7 @@ import importlib.util
 import os
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import cast
 from uuid import uuid4
 
 import pytest
@@ -44,6 +45,11 @@ GUIDE_TABLES = (
 )
 
 
+def mapped_table(model: type[Base]) -> sa.Table:
+    """The model's Table: ``__table__`` is declared as a bare ``FromClause``."""
+    return cast(sa.Table, model.__table__)
+
+
 def migration(name: str = "0072_travel_guides"):
     path = Path(__file__).parents[1] / f"migrations/versions/{name}.py"
     spec = importlib.util.spec_from_file_location(f"{name}_migration", path)
@@ -58,7 +64,7 @@ def plant_history(connection):
     user_id, article_id, locale_id, revision_id = uuid4(), uuid4(), uuid4(), uuid4()
     now = datetime.now(UTC)
     connection.execute(
-        User.__table__.insert().values(
+        mapped_table(User).insert().values(
             id=user_id,
             email=f"guides-migration-{user_id}@example.com",
             is_active=True,
@@ -66,7 +72,7 @@ def plant_history(connection):
         )
     )
     connection.execute(
-        GuideArticle.__table__.insert().values(
+        mapped_table(GuideArticle).insert().values(
             id=article_id,
             slug="existing-article",
             kind="howto",
@@ -81,7 +87,7 @@ def plant_history(connection):
         )
     )
     connection.execute(
-        GuideArticleLocale.__table__.insert().values(
+        mapped_table(GuideArticleLocale).insert().values(
             id=locale_id,
             article_id=article_id,
             locale="zh-TW",
@@ -94,7 +100,7 @@ def plant_history(connection):
         )
     )
     connection.execute(
-        GuideArticleRevision.__table__.insert().values(
+        mapped_table(GuideArticleRevision).insert().values(
             id=revision_id,
             article_locale_id=locale_id,
             version=2,
@@ -113,13 +119,13 @@ def test_upgrade_seeds_topics_only_and_never_touches_existing_content(monkeypatc
     monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
-        tables = [User.__table__]
+        tables = [mapped_table(User)]
         if fresh_metadata:
             tables += [
-                GuideTopic.__table__,
-                GuideArticle.__table__,
-                GuideArticleLocale.__table__,
-                GuideArticleRevision.__table__,
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
             ]
         Base.metadata.create_all(connection, tables=tables)
         with Operations.context(MigrationContext.configure(connection)):
@@ -190,16 +196,16 @@ def test_upgrade_seeds_topics_only_and_never_touches_existing_content(monkeypatc
 
 
 def test_the_models_carry_the_constraints_the_service_relies_on():
-    article = {constraint.name for constraint in GuideArticle.__table__.constraints}
+    article = {constraint.name for constraint in mapped_table(GuideArticle).constraints}
     assert {"uq_guide_article_slug", "ck_guide_article_kind", "ck_guide_article_version"} <= article
-    row = {constraint.name for constraint in GuideArticleLocale.__table__.constraints}
+    row = {constraint.name for constraint in mapped_table(GuideArticleLocale).constraints}
     assert {
         "uq_guide_article_locale",
         "ck_guide_article_locale_locale",
         "ck_guide_article_locale_version",
         "ck_guide_article_locale_published_version",
     } <= row
-    revision = {constraint.name for constraint in GuideArticleRevision.__table__.constraints}
+    revision = {constraint.name for constraint in mapped_table(GuideArticleRevision).constraints}
     assert {
         "uq_guide_article_revision_version",
         "ck_guide_article_revision_action",
@@ -308,7 +314,7 @@ def sections(connection) -> dict[str, str]:
 def insert_article(connection, *, slug: str, kind: str):
     now = datetime.now(UTC)
     connection.execute(
-        GuideArticle.__table__.insert().values(
+        mapped_table(GuideArticle).insert().values(
             id=uuid4(), slug=slug, kind=kind, destination_id=None, valid_until=None,
             featured=False, display_order=100, is_active=True, version=1,
             created_at=now, updated_at=now,
@@ -333,13 +339,13 @@ def test_0073_adds_the_life_kind_and_section_without_touching_travel_rows(
         monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
-        tables = [User.__table__]
+        tables = [mapped_table(User)]
         if fresh_metadata:
             tables += [
-                GuideTopic.__table__,
-                GuideArticle.__table__,
-                GuideArticleLocale.__table__,
-                GuideArticleRevision.__table__,
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
             ]
         Base.metadata.create_all(connection, tables=tables)
         with Operations.context(MigrationContext.configure(connection)):
@@ -373,7 +379,7 @@ def test_0073_adds_the_life_kind_and_section_without_touching_travel_rows(
             with connection.begin_nested() as nested:
                 with pytest.raises(sa.exc.IntegrityError):
                     connection.execute(
-                        GuideTopic.__table__.insert().values(
+                        mapped_table(GuideTopic).insert().values(
                             id=uuid4(), slug="hobby", names_json={}, display_order=1,
                             is_active=True, section="hobby", source="admin",
                             created_at=datetime.now(UTC), updated_at=datetime.now(UTC),
@@ -459,7 +465,7 @@ async def test_postgresql_append_only_guard_and_preserved_rows(monkeypatch):
             await connection.execute(sa.text(f'SET LOCAL search_path TO "{schema}"'))
 
             def run(sync):
-                User.__table__.create(sync, checkfirst=False)
+                mapped_table(User).create(sync, checkfirst=False)
                 with Operations.context(MigrationContext.configure(sync)):
                     module.upgrade()
                     revision_id = plant_history(sync)
@@ -508,7 +514,7 @@ def test_0075_seeds_finance_and_its_rollback_spares_the_other_life_topics(monkey
         monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
-        Base.metadata.create_all(connection, tables=[User.__table__])
+        Base.metadata.create_all(connection, tables=[mapped_table(User)])
         with Operations.context(MigrationContext.configure(connection)):
             travel.upgrade()
             life.upgrade()
@@ -588,11 +594,11 @@ def test_0079_seeds_the_two_news_verticals_and_its_rollback_spares_the_earlier_v
         Base.metadata.create_all(
             connection,
             tables=[
-                User.__table__,
-                GuideTopic.__table__,
-                GuideArticle.__table__,
-                GuideArticleLocale.__table__,
-                GuideArticleRevision.__table__,
+                mapped_table(User),
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
             ],
         )
         with Operations.context(MigrationContext.configure(connection)):
@@ -676,13 +682,13 @@ def test_0076_adds_the_hierarchy_and_its_rollback_spares_the_earlier_vocabulary(
     travel, life, finance, hierarchy = modules
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
-        tables = [User.__table__]
+        tables = [mapped_table(User)]
         if fresh_metadata:
             tables += [
-                GuideTopic.__table__,
-                GuideArticle.__table__,
-                GuideArticleLocale.__table__,
-                GuideArticleRevision.__table__,
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
             ]
         Base.metadata.create_all(connection, tables=tables)
         with Operations.context(MigrationContext.configure(connection)):
@@ -775,14 +781,14 @@ def test_0077_creates_the_search_tables_once_and_its_rollback_drops_only_them(
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
         tables = [
-            User.__table__,
-            GuideTopic.__table__,
-            GuideArticle.__table__,
-            GuideArticleLocale.__table__,
-            GuideArticleRevision.__table__,
+            mapped_table(User),
+            mapped_table(GuideTopic),
+            mapped_table(GuideArticle),
+            mapped_table(GuideArticleLocale),
+            mapped_table(GuideArticleRevision),
         ]
         if fresh_metadata:
-            tables += [GuideSearchEntry.__table__, GuideArticleAlias.__table__]
+            tables += [mapped_table(GuideSearchEntry), mapped_table(GuideArticleAlias)]
         Base.metadata.create_all(connection, tables=tables)
         plant_history(connection)
         with Operations.context(MigrationContext.configure(connection)):
@@ -829,14 +835,14 @@ def test_0078_creates_the_link_table_once_and_its_rollback_drops_only_it(
     engine = sa.create_engine("sqlite://")
     with engine.begin() as connection:
         tables = [
-            User.__table__,
-            GuideTopic.__table__,
-            GuideArticle.__table__,
-            GuideArticleLocale.__table__,
-            GuideArticleRevision.__table__,
+            mapped_table(User),
+            mapped_table(GuideTopic),
+            mapped_table(GuideArticle),
+            mapped_table(GuideArticleLocale),
+            mapped_table(GuideArticleRevision),
         ]
         if fresh_metadata:
-            tables += [GuideArticleLink.__table__]
+            tables += [mapped_table(GuideArticleLink)]
         Base.metadata.create_all(connection, tables=tables)
         plant_history(connection)
         with Operations.context(MigrationContext.configure(connection)):

@@ -16,8 +16,8 @@ from httpx import ASGITransport, AsyncClient
 from sqlalchemy import event, select, text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
+from app.db import Base
 from app.models import (
-    Base,
     FoodMerchant,
     FoodMerchantFavorite,
     FoodMerchantSource,
@@ -130,7 +130,7 @@ def test_ranking_uses_saved_then_detour_and_distance_with_bounded_pages() -> Non
         candidate("far", 36, 140),
         candidate("other", 35.705, 139.8),
     ]
-    kwargs = dict(
+    kwargs: dict[str, Any] = dict(
         origin=(35.7, 139.8),
         following=(35.72, 139.8),
         radius_km=3,

@@ -7,8 +7,6 @@ from uuid import uuid4
 
 import pytest
 from sqlalchemy import select
-from test_discovery_flow import seed_reservation_merchant
-from test_travel_discovery import harness as harness
 
 from app.foods.platform_links import serialize_reservation_link
 from app.foods.platform_review_import import (
@@ -20,6 +18,8 @@ from app.foods.platform_review_import import (
     summarize,
 )
 from app.models import AdminAuditLog, FoodMerchantPlatformLink
+from tests.test_discovery_flow import seed_reservation_merchant
+from tests.test_travel_discovery import harness as harness
 
 SEVENROOMS = "https://www.sevenrooms.com/reservations/mokaair-fixture"
 EVIDENCE = [{

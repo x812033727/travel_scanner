@@ -4,14 +4,14 @@ import json
 from collections.abc import AsyncIterator
 from copy import deepcopy
 from datetime import UTC, datetime
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import httpx
 import pytest
 from pydantic import ValidationError
-from sqlalchemy import func, select
+from sqlalchemy import Table, func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
@@ -52,7 +52,7 @@ async def session(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[AsyncSession
     )
     engine = create_async_engine("sqlite+aiosqlite://")
     tables = [
-        model.__table__
+        cast(Table, model.__table__)
         for model in (
             TravelServiceProduct,
             HotelBookingOption,

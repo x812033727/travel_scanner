@@ -36,7 +36,7 @@ def frozen_quote_clock(monkeypatch: pytest.MonkeyPatch) -> None:
     # Keep quote generation and the service's validity/quota clocks consistent.
     class FrozenDateTime(datetime):
         @classmethod
-        def now(cls, tz: tzinfo | None = None) -> datetime:
+        def now(cls, tz: tzinfo | None = None) -> datetime:  # type: ignore[override]  # plain datetimes on purpose
             return NOW.astimezone(tz) if tz is not None else NOW.replace(tzinfo=None)
 
     monkeypatch.setattr(hotel_quotes, "datetime", FrozenDateTime)
@@ -192,7 +192,7 @@ async def test_search_quote_validity_uses_fixed_clock(monkeypatch, expires_after
         daily_limit=1,
     )
     try:
-        assert hotel_quotes.datetime.now(UTC) == NOW
+        assert hotel_quotes.datetime.now(UTC) == NOW  # type: ignore[attr-defined]  # the fixture's frozen clock
         result = await search_quotes(
             hotel(), QUERY, "ja", config(hotel_quote_policies={"booking": policy}), redis
         )

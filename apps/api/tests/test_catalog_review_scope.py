@@ -45,10 +45,9 @@ from app.catalog_review.service import (
     run_view,
 )
 from app.config import Settings
-from app.db import get_session
+from app.db import Base, get_session
 from app.models import (
     AdminAuditLog,
-    Base,
     CatalogReviewItem,
     CatalogReviewRun,
     FoodArea,
@@ -198,7 +197,7 @@ async def test_snapshot_counts_history_and_global_lock(
         kind for kind, value in view["pending_counts"].items() if kind != "total" and value
     } == set(SCOPE_KINDS[scope])
     assert view["runs"][0]["scope"] == scope
-    other = "foods" if scope == "hotspots" else "hotspots"
+    other: CatalogScope = "foods" if scope == "hotspots" else "hotspots"
     blocked = await overview(session, configured(), other)
     assert blocked["runs"] == []
     assert blocked["active_run"] == {"id": str(run.id), "scope": scope, "status": "queued"}
@@ -725,7 +724,7 @@ async def test_http_scope_boundaries_and_foreign_item_pagination(
     run = await start(session, user, "foods")
     app = FastAPI()
     app.include_router(router)
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.dependency_overrides[current_user] = lambda: user
 
     async def database() -> AsyncIterator[AsyncSession]:
@@ -734,7 +733,8 @@ async def test_http_scope_boundaries_and_foreign_item_pagination(
     app.dependency_overrides[get_session] = database
     monkeypatch.setattr(routes, "load_runtime_settings", AsyncMock(return_value=configured()))
     monkeypatch.setattr(routes, "enforce_named_rate_limit", AsyncMock())
-    monkeypatch.setattr(routes, "enqueue_saved_run", AsyncMock())
+    enqueue = AsyncMock()
+    monkeypatch.setattr(routes, "enqueue_saved_run", enqueue)
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         result = await client.get("/admin/catalog-review?scope=foods")
         assert result.status_code == 200 and result.json()["pending_counts"]["total"] == 2
@@ -749,7 +749,7 @@ async def test_http_scope_boundaries_and_foreign_item_pagination(
         assert (await client.get("/admin/catalog-review?scope=hotels")).status_code == 422
         result = await client.post(f"/admin/catalog-review/runs/{run.id}/resume?scope=hotspots")
         assert result.status_code == 409
-        assert not routes.enqueue_saved_run.called
+        assert not enqueue.called
 
 
 @pytest.mark.asyncio
@@ -767,7 +767,7 @@ async def test_http_budget_extension_is_explicit_scoped_versioned_and_admin_only
     settings = configured().model_copy(update={"catalog_review_max_calls": 160})
     app = FastAPI()
     app.include_router(router)
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.dependency_overrides[current_user] = lambda: user
 
     async def database() -> AsyncIterator[AsyncSession]:
@@ -776,7 +776,8 @@ async def test_http_budget_extension_is_explicit_scoped_versioned_and_admin_only
     app.dependency_overrides[get_session] = database
     monkeypatch.setattr(routes, "load_runtime_settings", AsyncMock(return_value=settings))
     monkeypatch.setattr(routes, "enforce_named_rate_limit", AsyncMock())
-    monkeypatch.setattr(routes, "enqueue_saved_run", AsyncMock())
+    enqueue = AsyncMock()
+    monkeypatch.setattr(routes, "enqueue_saved_run", enqueue)
     url = f"/admin/catalog-review/runs/{run.id}/resume?scope=hotspots"
     body = {"expected_version": 4, "max_calls": 160}
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -800,7 +801,7 @@ async def test_http_budget_extension_is_explicit_scoped_versioned_and_admin_only
         bodyless = await client.post(url)
         assert bodyless.status_code == 409
         assert bodyless.json()["code"] == "catalog_run_not_resumable"
-        routes.enqueue_saved_run.assert_not_awaited()
+        enqueue.assert_not_awaited()
         assert run.usage_json["calls"] == 80 and run.request_json["max_calls"] == 80
         response = await client.post(url, json=body)
         assert response.status_code == 202
@@ -808,11 +809,11 @@ async def test_http_budget_extension_is_explicit_scoped_versioned_and_admin_only
         assert response.json()["usage"]["calls"] == 80
         assert response.json()["status"] == "queued" and response.json()["version"] == 5
         assert not response.json()["can_extend_budget"]
-        routes.enqueue_saved_run.assert_awaited_once_with(session, run)
+        enqueue.assert_awaited_once_with(session, run)
         duplicate = await client.post(url, json=body)
         assert duplicate.status_code == 409
         assert duplicate.json()["code"] == "catalog_version_conflict"
-        assert routes.enqueue_saved_run.await_count == 1
+        assert enqueue.await_count == 1
 
 
 # --- merchant enrichment -------------------------------------------------------------

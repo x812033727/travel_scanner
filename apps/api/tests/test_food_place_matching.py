@@ -1,7 +1,9 @@
-from typing import Any
+from typing import Any, cast
 from uuid import uuid4
 
 import pytest
+from redis.asyncio import Redis
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
 from app.foods.place_matching import (
@@ -106,11 +108,11 @@ async def test_a_dry_run_reports_the_candidate_without_writing(
     row = merchant()
 
     reports = await match_merchant_places(
-        session,
-        None,
+        cast(AsyncSession, session),
+        cast(Redis, None),
         Settings(),
         [row],
-        apply=False,  # type: ignore[arg-type]
+        apply=False,
     )
 
     assert [r.outcome for r in reports] == ["would_match"]
@@ -127,11 +129,11 @@ async def test_applying_writes_only_the_place_id(monkeypatch: pytest.MonkeyPatch
     row = merchant()
 
     reports = await match_merchant_places(
-        session,
-        None,
+        cast(AsyncSession, session),
+        cast(Redis, None),
         Settings(),
         [row],
-        apply=True,  # type: ignore[arg-type]
+        apply=True,
     )
 
     assert [r.outcome for r in reports] == ["matched"]
@@ -155,11 +157,11 @@ async def test_a_place_id_another_merchant_owns_is_reported_not_written(
     row = merchant()
 
     reports = await match_merchant_places(
-        session,
-        None,
+        cast(AsyncSession, session),
+        cast(Redis, None),
         Settings(),
         [row],
-        apply=True,  # type: ignore[arg-type]
+        apply=True,
     )
 
     assert [r.outcome for r in reports] == ["duplicate"]
@@ -187,11 +189,11 @@ async def test_no_candidate_and_provider_failure_do_not_stop_the_batch(
     rows = [merchant(slug="a"), merchant(slug="b"), merchant(slug="c")]
 
     reports = await match_merchant_places(
-        session,
-        None,
+        cast(AsyncSession, session),
+        cast(Redis, None),
         Settings(),
         rows,
-        apply=True,  # type: ignore[arg-type]
+        apply=True,
     )
 
     assert [r.outcome for r in reports] == ["no_candidate", "failed", "matched"]
@@ -225,11 +227,11 @@ async def test_an_unconfigured_provider_stops_the_batch(monkeypatch: pytest.Monk
     session = MatchSession()
 
     reports = await match_merchant_places(
-        session,
-        None,
+        cast(AsyncSession, session),
+        cast(Redis, None),
         Settings(),
         [merchant()],
-        apply=True,  # type: ignore[arg-type]
+        apply=True,
     )
 
     assert [r.outcome for r in reports] == ["not_configured"]
@@ -267,9 +269,9 @@ async def test_korea_is_excluded_from_the_target_query() -> None:
             return Result()
 
     await unmatched_merchants(
-        QuerySession(),
+        cast(AsyncSession, QuerySession()),
         destination_ids=("seoul",),
-        limit=5,  # type: ignore[arg-type]
+        limit=5,
     )
 
     sql = captured["sql"]

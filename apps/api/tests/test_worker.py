@@ -1,3 +1,4 @@
+from redis import Redis
 from rq import SimpleWorker, Worker
 
 from app import worker
@@ -24,7 +25,7 @@ def test_main_listens_on_every_queue_and_runs_the_scheduler(monkeypatch) -> None
         def work(self, **kwargs: object) -> None:
             calls["work"] = kwargs
 
-    monkeypatch.setattr(worker.Redis, "from_url", lambda _url: object())
+    monkeypatch.setattr(Redis, "from_url", lambda _url: object())
     monkeypatch.setattr(worker, "Queue", FakeQueue)
     monkeypatch.setattr(worker, "worker_class", lambda: FakeWorker)
 

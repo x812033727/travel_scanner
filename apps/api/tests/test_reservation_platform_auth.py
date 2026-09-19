@@ -45,7 +45,7 @@ async def test_platform_write_keeps_real_authentication_and_content_role(
 ) -> None:
     api = FastAPI()
     api.include_router(router)
-    api.add_exception_handler(AppError, app_error_handler)
+    api.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     monkeypatch.setattr(auth, "get_redis", lambda: redis)
     monkeypatch.setattr(auth, "runtime_auth_settings", AsyncMock(return_value=get_settings()))

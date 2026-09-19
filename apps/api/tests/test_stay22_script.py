@@ -2,7 +2,7 @@
 
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
@@ -10,7 +10,7 @@ import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
 from pydantic import ValidationError
-from sqlalchemy import event, select
+from sqlalchemy import Table, event, select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.db import Base, get_session
@@ -23,6 +23,7 @@ from app.models import (
 )
 from app.problems import AppError, app_error_handler
 from app.travel_services import hotel_admin, router, stay22_script
+from app.travel_services.hotel_options import ready_option
 from app.travel_services.schemas import CatalogConfig, HotelConfigPatch, Stay22Config
 
 LMA_ID = "0123456789abcdef01234567"
@@ -59,7 +60,11 @@ def test_enabled_script_requires_id_but_disabled_can_be_preconfigured() -> None:
     with pytest.raises(ValidationError):
         Stay22Config(integration_mode="arbitrary", lma_id=LMA_ID)
     with pytest.raises(ValidationError):
-        Stay22Config(enabled="true", integration_mode="script", lma_id=LMA_ID)
+        Stay22Config(
+            enabled="true",  # type: ignore[arg-type]  # strict=True must reject the string
+            integration_mode="script",
+            lma_id=LMA_ID,
+        )
 
 
 @pytest.fixture
@@ -70,7 +75,7 @@ async def script_api(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[tuple]:
     def advisory_stub(connection: Any, _record: Any) -> None:
         connection.create_function("pg_advisory_xact_lock", 1, lambda _key: 0)
 
-    tables = [model.__table__ for model in (
+    tables = [cast(Table, model.__table__) for model in (
         TravelServiceProduct, HotelBookingOption, TravelServiceConfig, AdminAuditLog,
     )]
     async with engine.begin() as connection:
@@ -102,7 +107,7 @@ async def script_api(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[tuple]:
             safe_target = AsyncMock(side_effect=lambda value: value.url)
             monkeypatch.setattr(stay22_script, "safe_click_target", safe_target)
             app = FastAPI()
-            app.add_exception_handler(AppError, app_error_handler)
+            app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
             app.include_router(router.router, prefix="/api/v1")
             app.dependency_overrides[get_session] = lambda: session
             async with AsyncClient(transport=ASGITransport(app), base_url="http://test") as client:
@@ -279,7 +284,7 @@ async def test_rakuten_japan_is_direct_only_while_global_script_behavior_is_pres
     await session.commit()
     # The Japan option is ready for ordinary first-party booking, not rejected
     # merely because its platform namespace is excluded from the SDK document.
-    assert stay22_script.ready_option(product, rakuten, config, datetime.now(UTC))
+    assert ready_option(product, rakuten, config, datetime.now(UTC))
     response = await client.get(options_url(product))
     assert response.status_code == 200, response.text
     assert [item["provider"] for item in response.json()["options"]] == (

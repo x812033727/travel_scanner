@@ -8,6 +8,7 @@ it, the later ones build on what the earlier ones left — and the last one clea
 import os
 from collections.abc import AsyncIterator
 from datetime import date
+from typing import Any
 
 import pytest
 import pytest_asyncio
@@ -67,7 +68,7 @@ def _seeded_slugs(theme_slug: str, destination_id: str | None = None) -> set[str
     }
 
 
-async def _rankings(session: AsyncSession, **kwargs: object) -> dict[str, object]:
+async def _rankings(session: AsyncSession, **kwargs: object) -> dict[str, Any]:
     return await list_rankings(session, limit=50, **kwargs)  # type: ignore[arg-type]
 
 

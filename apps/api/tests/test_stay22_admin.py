@@ -1,13 +1,13 @@
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import pytest
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
-from sqlalchemy import event, select
+from sqlalchemy import Table, event, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.auth.service import current_user
@@ -50,7 +50,7 @@ async def session(monkeypatch: pytest.MonkeyPatch) -> AsyncIterator[AsyncSession
         connection.create_function("pg_advisory_xact_lock", 1, lambda _key: 0)
 
     tables = [
-        model.__table__
+        cast(Table, model.__table__)
         for model in (
             TravelServiceProduct,
             HotelBookingOption,

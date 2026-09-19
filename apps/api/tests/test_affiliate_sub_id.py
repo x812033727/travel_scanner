@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import re
 from pathlib import Path
+from typing import Any
 from unittest.mock import AsyncMock
 from uuid import NAMESPACE_URL, uuid4, uuid5
 
@@ -108,7 +109,10 @@ async def test_no_partner_receives_a_member_derived_sub_id(partner: str, monkeyp
     # klook.com host, so that partner needs a host it will accept.
     host = "www.klook.com" if partner == "klook" else "example.test"
     template = f"https://{host}/go?campaign={{sub_id}}&q={{query}}"
-    overrides = {definition.template_field: template, definition.allowed_hosts_field: host}
+    overrides: dict[str, Any] = {
+        definition.template_field: template,
+        definition.allowed_hosts_field: host,
+    }
     if partner == "klook":
         overrides |= {"klook_enabled": True, "klook_affiliate_id": "134379"}
 

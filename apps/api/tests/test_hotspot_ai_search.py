@@ -1,4 +1,5 @@
 import json
+from typing import Literal
 
 import httpx
 import pytest
@@ -123,7 +124,9 @@ def test_unconfigured_provider_is_explicit_and_never_falls_back() -> None:
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("name", ["openai", "minimax"])
-async def test_responses_adapter_repairs_invalid_json_once(name: str) -> None:
+async def test_responses_adapter_repairs_invalid_json_once(
+    name: Literal["openai", "minimax"],
+) -> None:
     calls = 0
 
     def handler(request: httpx.Request) -> httpx.Response:

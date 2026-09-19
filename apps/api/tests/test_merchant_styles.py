@@ -611,7 +611,7 @@ async def test_fourth_batch_preserves_existing_approved_merchant(catalog: Any) -
         session.add_all([source, category])
         await session.commit()
 
-        tracked = (existing, source, category)
+        tracked: tuple[Base, ...] = (existing, source, category)
         for item in tracked:
             await session.refresh(item)
         snapshots = [

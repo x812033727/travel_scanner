@@ -13,11 +13,10 @@ patches the limiter instead of the client.
 
 from datetime import UTC, date, datetime, timedelta
 from types import SimpleNamespace
+from typing import Any
 from uuid import uuid4
 
 import pytest
-from test_ai_itinerary import planner_candidates, request_for
-from test_trip_preferences import harness as shared_harness
 
 from app import infra
 from app.ai import itinerary as itinerary_module
@@ -31,11 +30,13 @@ from app.ai.itinerary import (
 from app.config import Settings
 from app.models import UsageAccount
 from app.trips import router as trips
+from tests.test_ai_itinerary import planner_candidates, request_for
+from tests.test_trip_preferences import harness as shared_harness
 
 harness = shared_harness
 
 
-def keyed_settings(**overrides: object) -> Settings:
+def keyed_settings(**overrides: Any) -> Settings:
     """Settings with a roster, so the gate is reached rather than short-circuited.
 
     The budgets are pinned rather than left to the defaults because `conftest.py` raises

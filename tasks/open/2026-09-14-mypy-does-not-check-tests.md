@@ -1,18 +1,19 @@
 ---
 id: 2026-09-14-mypy-does-not-check-tests
 title: mypy does not check tests, so a signature change breaks integration tests silently
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T09:28:30Z
 created_at: 2026-09-14T04:33:01Z
 completed_at:
-branch:
+branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
   - apps/api/pyproject.toml
   - .github/workflows/ci.yml
+  - apps/api/tests
 ---
 
 # mypy does not check tests, so a signature change breaks integration tests silently
@@ -45,23 +46,23 @@ person looks and still be broken.
 
 ## Definition of done
 
-- [ ] A call in `tests/` that does not match the signature in `app/` fails a check a
+- [x] A call in `tests/` that does not match the signature in `app/` fails a check a
       developer can run before pushing.
-- [ ] CI runs that check.
-- [ ] The bar is written down: if `tests/` is checked less strictly than `app/`, this file
+- [x] CI runs that check.
+- [x] The bar is written down: if `tests/` is checked less strictly than `app/`, this file
       says which settings differ and why.
 
 ## Steps
 
-- [ ] Measure first: `uv run mypy tests` and count. `test_integration_postgres_redis.py`
+- [x] Measure first: `uv run mypy tests` and count. `test_integration_postgres_redis.py`
       alone has 9 pre-existing errors, all `object` indexing in fixture payloads and none of
       them a real defect, so this is not a one-line change and should not be started as one.
-- [ ] Decide the shape. Two candidates, and the second is probably right:
+- [x] Decide the shape. Two candidates, and the second is probably right:
       - strict everywhere, fixing every existing error first — cleanest, largest;
       - a `[[tool.mypy.overrides]]` for `tests.*` that relaxes the rules those 9 errors trip
         (`no-any-return`, indexing an `object`) while keeping the ones that catch this class
         — `arg-type` above all, which is exactly what would have caught `_digest`.
-- [ ] Add the check to `.github/workflows/ci.yml` next to `uv run mypy app`, as its own step
+- [x] Add the check to `.github/workflows/ci.yml` next to `uv run mypy app`, as its own step
       so a failure names itself.
 - [ ] Re-run the scenario that motivated this: change a signature in `app/`, leave a `tests/`
       caller alone, and confirm the check fails.
@@ -102,3 +103,43 @@ step one is `explicit_package_bases` plus `mypy_path`, or an `__init__.py`, befo
 of real errors means anything. The "9 pre-existing errors" figure quoted above came from
 checking `test_integration_postgres_redis.py` on its own, which sidesteps the collision.
 
+### 2026-09-19 done in repo (claude-fable-5-1)
+
+Scope widened to `apps/api/tests` after the claim: the check cannot pass without touching the
+tests it reads, and no active ticket held those files except the four another agent of the
+same owner was editing at the time (`test_guides.py`, `test_food_integration.py`,
+`test_database_operations_center.py`, `test_warning_codes.py`), which were done last.
+
+**Layout.** `explicit_package_bases = true` in `[tool.mypy]`: mypy names every file from the
+cwd (`app.x`, `tests.test_x`) and the "found twice" error is gone. Twelve test modules imported
+their siblings as top-level modules (`from test_trip_preferences import harness`), which mypy
+cannot resolve without a second package root that would recreate the collision; they now import
+`from tests.test_trip_preferences import ...`, the form eleven other files already used. That
+works at runtime because the editable install puts `apps/api` on `sys.path`.
+
+**Measurement** (`uv run mypy tests` under `strict`): 2245 errors in 140 files. By code:
+841 `no-untyped-def`, 560 `no-untyped-call`, 268 `arg-type`, 180 `attr-defined`, 65
+`unused-ignore`, 61 `call-arg`, 57 `union-attr`, 39 `index`, 36 `type-arg`, 30 `list-item`,
+20 `operator`, 20 `no-any-return`, 18 `import-not-found`, 16 `assignment`, 10 `dict-item`, 8
+`var-annotated`, 7 `misc`, the rest single digits.
+
+**The bar** (the `[[tool.mypy.overrides]]` for `tests.*` in `apps/api/pyproject.toml`):
+
+| relaxed in tests | why |
+| --- | --- |
+| `disallow_untyped_defs`, `disallow_incomplete_defs`, `disallow_untyped_calls`, `disallow_untyped_decorators` | test functions are unannotated by convention; pytest calls them |
+| `disallow_any_generics`, `warn_return_any` | JSON payloads are bare dicts |
+| `warn_unused_ignores` | an ignore that app's stricter run needs must not fail here |
+| `implicit_reexport` | fixtures are shared by importing them from other test modules |
+| `disable_error_code`: `index`, `union-attr`, `operator`, `assignment`, `list-item`, `dict-item`, `var-annotated`, `misc`, `comparison-overlap`, `type-var`, `func-returns-value` | these describe the test's own literal data, not a call into `app/` |
+
+Kept, and this is the point: `check_untyped_defs` (the bodies of unannotated tests are read),
+`arg-type`, `call-arg`, `attr-defined`, `name-defined`, `return-value`, `override` and the
+import codes — the codes that fire when `app/` changes and a test does not. Under that
+override 511 errors remained (269 `arg-type`, 178 `attr-defined`, 61 `call-arg`, 3 singles),
+all fixed in the tests without changing what any test exercises: `dict[str, Any]` for payloads
+and kwargs, `cast(AsyncSession, fake)` for test doubles, `Base.metadata.tables[...]` for
+`__table__`, `assert x is not None` for optionals, and `# type: ignore[code]` with a reason
+where the stub is the problem (`add_exception_handler`, partial `model_construct`).
+
+CI: `uv run mypy tests` runs as its own step after `uv run mypy app`.

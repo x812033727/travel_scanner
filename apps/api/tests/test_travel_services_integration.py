@@ -107,7 +107,7 @@ async def client(session, actor, monkeypatch):
     monkeypatch.setattr("app.trips.router.load_runtime_settings", AsyncMock(return_value=settings))
     # Hotel mutation reuses the real routing/serialization path with paid routing disabled.
     application = FastAPI()
-    application.add_exception_handler(AppError, app_error_handler)
+    application.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     application.include_router(router.router)
     application.include_router(admin.router)
     application.include_router(affiliate_router.router)
@@ -332,7 +332,7 @@ async def test_unified_affiliate_same_hotel_fallback_and_project_isolation(
     brand.code = "booking"
     affiliate.target_url = option.url
     # The existing approval context binds credentials, brand version and exact target.
-    settings = await router.load_runtime_settings(session)
+    settings = await router.load_runtime_settings(session)  # type: ignore[attr-defined]  # the client fixture's AsyncMock
     affiliate.verification_context = link_context(settings)
     await session.commit()
     create = AsyncMock(return_value="https://tp.st/fixture")

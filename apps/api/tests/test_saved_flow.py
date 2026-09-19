@@ -2,14 +2,12 @@
 
 from contextlib import asynccontextmanager
 from datetime import UTC, date, datetime, timedelta
+from typing import Any, cast
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
 import pytest
 from sqlalchemy import delete, func, select, update
-from test_community_foundation import Harness
-from test_community_foundation import harness as community_harness
-from test_discovery_community import guide_fixture
 
 from app.community.models import Collection, CollectionItem, Profile
 from app.config import get_settings
@@ -28,6 +26,9 @@ from app.models import (
     User,
 )
 from app.saved import service
+from tests.test_community_foundation import Harness
+from tests.test_community_foundation import harness as community_harness
+from tests.test_discovery_community import guide_fixture
 
 harness = community_harness
 
@@ -36,12 +37,11 @@ harness = community_harness
 async def test_service_integration_fixture_isolates_saved_limiter_on_current_loop(
     harness: Harness, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from test_travel_services_integration import client as service_client
-    from test_travel_services_integration import (
+    from app.community import policy
+    from tests.test_travel_services_integration import client as service_client
+    from tests.test_travel_services_integration import (
         test_favorites_and_cascade_without_deleting_selected_history as favorites_scenario,
     )
-
-    from app.community import policy
 
     unisolated = AsyncMock(side_effect=AssertionError("Must not use another loop's Redis pool"))
     monkeypatch.setattr(policy, "enforce_named_rate_limit", unisolated)
@@ -49,16 +49,18 @@ async def test_service_integration_fixture_isolates_saved_limiter_on_current_loo
         actor = await session.get(User, harness.ids[0])
         # Exercise the actual integration fixture and exact failing CI scenario
         # on the always-on SQLite harness; PostgreSQL CI runs both variants.
-        fixture = asynccontextmanager(service_client.__wrapped__)
+        fixture = asynccontextmanager(cast(Any, service_client).__wrapped__)
         async with fixture(session, actor, monkeypatch) as client:
             await favorites_scenario(client, session)
-            assert policy.enforce_named_rate_limit is not unisolated
-            assert policy.enforce_named_rate_limit.await_count == 4
+            # The fixture installed its own limiter on the module by name; read it back.
+            installed: AsyncMock = cast(Any, policy).enforce_named_rate_limit
+            assert installed is not unisolated
+            assert installed.await_count == 4
             assert all(
                 call.args == ("community:interaction", str(actor.id))
                 and call.kwargs["window_seconds"] == 60
                 and call.kwargs["limit"] > 0
-                for call in policy.enforce_named_rate_limit.await_args_list
+                for call in installed.await_args_list
             )
     unisolated.assert_not_awaited()
 
@@ -78,7 +80,7 @@ async def test_service_integration_fixture_isolates_saved_limiter_on_current_loo
 def test_frontend_seed_rejects_non_loopback_or_connection_overrides(
     monkeypatch: pytest.MonkeyPatch, url: str
 ) -> None:
-    from fixtures.frontend_flow_seed import require_isolated_target
+    from tests.fixtures.frontend_flow_seed import require_isolated_target
 
     monkeypatch.setenv("DISCOVERY_E2E", "1")
     with pytest.raises(RuntimeError, match="loopback"):
@@ -86,7 +88,7 @@ def test_frontend_seed_rejects_non_loopback_or_connection_overrides(
 
 
 def test_frontend_seed_requires_explicit_opt_in(monkeypatch: pytest.MonkeyPatch) -> None:
-    from fixtures.frontend_flow_seed import require_isolated_target
+    from tests.fixtures.frontend_flow_seed import require_isolated_target
 
     monkeypatch.delenv("DISCOVERY_E2E", raising=False)
     with pytest.raises(RuntimeError, match="DISCOVERY_E2E=1"):
@@ -100,9 +102,8 @@ def test_frontend_seed_requires_explicit_opt_in(monkeypatch: pytest.MonkeyPatch)
 async def test_frontend_seed_replay_is_searchable_saved_and_plannable(
     harness: Harness, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from fixtures import frontend_flow_seed as fixture
-
     from app.discovery.sources import catalog_items
+    from tests.fixtures import frontend_flow_seed as fixture
 
     h = harness
     # Guards have separate rejection tests; use this same replay/read contract on

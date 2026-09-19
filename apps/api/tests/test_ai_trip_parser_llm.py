@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 from datetime import UTC, datetime, timedelta
-from typing import Any
+from typing import Any, cast
 
 import httpx
 import pytest
@@ -535,13 +535,13 @@ async def test_parse_trip_endpoint_runs_the_configured_llm_parser(
     real_roster = trip_parser_providers
 
     def roster_on_mock_transport(settings: Settings) -> list[Any]:
-        providers = real_roster(settings)
+        providers: list[Any] = real_roster(settings)
         for provider in providers:
             client = httpx.AsyncClient(
                 transport=httpx.MockTransport(lambda _r: responses_ok(draft_body()))
             )
             made_clients.append(client)
-            provider.client = client  # type: ignore[union-attr]
+            provider.client = client
         return providers
 
     monkeypatch.setattr(infra, "get_redis", CountingRedis)
@@ -683,7 +683,7 @@ async def test_discover_endpoint_parses_notes_with_the_configured_llm_parser(
     real_roster = trip_parser_providers
 
     def roster_on_mock_transport(settings: Settings) -> list[Any]:
-        providers = real_roster(settings)
+        providers: list[Any] = real_roster(settings)
         for provider in providers:
             client = httpx.AsyncClient(
                 transport=httpx.MockTransport(
@@ -691,7 +691,7 @@ async def test_discover_endpoint_parses_notes_with_the_configured_llm_parser(
                 )
             )
             made_clients.append(client)
-            provider.client = client  # type: ignore[union-attr]
+            provider.client = client
         return providers
 
     monkeypatch.setattr(infra, "get_redis", CountingRedis)
@@ -741,7 +741,7 @@ def test_factory_returns_the_rules_parser_without_configured_providers() -> None
 
 
 def test_factory_returns_the_llm_parser_and_honours_planner_gating() -> None:
-    keys = {"openai_api_key": "sk-test", "minimax_api_key": "mm-test"}
+    keys: dict[str, Any] = {"openai_api_key": "sk-test", "minimax_api_key": "mm-test"}
     live = build_trip_parser(
         Settings(ai_planner_mode="auto", ai_planner_priority="minimax,openai", **keys)
     )
@@ -806,10 +806,8 @@ def test_the_parse_budget_stays_short_even_when_the_planner_budget_is_long() -> 
     )
     assert isinstance(parser, LLMTripParser)
     assert parser.total_timeout_seconds == trip_parser_module.PARSE_TIMEOUT_CEILING_SECONDS
-    assert (
-        parser.providers[0].timeout_seconds  # type: ignore[union-attr]
-        == trip_parser_module.PARSE_TIMEOUT_CEILING_SECONDS
-    )
+    openai = cast(ResponsesTripParserProvider, parser.providers[0])
+    assert openai.timeout_seconds == trip_parser_module.PARSE_TIMEOUT_CEILING_SECONDS
 
 
 @pytest.mark.asyncio
@@ -881,7 +879,7 @@ async def test_parse_trip_endpoint_offers_places_it_can_actually_search(
     real_roster = trip_parser_providers
 
     def roster_on_mock_transport(settings: Settings) -> list[Any]:
-        providers = real_roster(settings)
+        providers: list[Any] = real_roster(settings)
         for provider in providers:
             client = httpx.AsyncClient(
                 transport=httpx.MockTransport(
@@ -891,7 +889,7 @@ async def test_parse_trip_endpoint_offers_places_it_can_actually_search(
                 )
             )
             made_clients.append(client)
-            provider.client = client  # type: ignore[union-attr]
+            provider.client = client
         return providers
 
     monkeypatch.setattr(infra, "get_redis", CountingRedis)
@@ -932,13 +930,13 @@ async def test_a_supported_parse_carries_no_suggestion_list(
     real_roster = trip_parser_providers
 
     def roster_on_mock_transport(settings: Settings) -> list[Any]:
-        providers = real_roster(settings)
+        providers: list[Any] = real_roster(settings)
         for provider in providers:
             client = httpx.AsyncClient(
                 transport=httpx.MockTransport(lambda _r: responses_ok(draft_body()))
             )
             made_clients.append(client)
-            provider.client = client  # type: ignore[union-attr]
+            provider.client = client
         return providers
 
     monkeypatch.setattr(infra, "get_redis", CountingRedis)

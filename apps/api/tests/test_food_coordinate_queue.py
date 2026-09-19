@@ -1,9 +1,10 @@
 from datetime import UTC, datetime
 from decimal import Decimal
-from typing import Any
+from typing import Any, cast
 from uuid import uuid4
 
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.foods import coordinate_queue
 from app.foods.coordinate_queue import (
@@ -15,6 +16,9 @@ from app.foods.coordinate_queue import (
     merchant_search_query,
 )
 from app.models import FoodMerchant
+
+# `apply_approval` only consults the session through the patched ownership lookup.
+NO_SESSION = cast(AsyncSession, None)
 
 
 def make_merchant(**overrides: Any) -> FoodMerchant:
@@ -144,7 +148,7 @@ async def test_approval_records_the_identity_and_never_googles_coordinates(
     actor = uuid4()
     now = datetime(2026, 9, 5, tzinfo=UTC)
     outcome = await apply_approval(
-        None,  # session is only consulted through the patched ownership lookup
+        NO_SESSION,
         google_returning(match),  # type: ignore[arg-type]
         merchant,
         expected_place_id=match.place_id,
@@ -177,7 +181,7 @@ async def test_approval_leaves_existing_coordinates_and_their_provenance_alone(
     match = make_match(latitude=22.980, longitude=120.224)
     own_the_place(monkeypatch, {})
     outcome = await apply_approval(
-        None,
+        NO_SESSION,
         google_returning(match),  # type: ignore[arg-type]
         merchant,
         expected_place_id=match.place_id,
@@ -199,7 +203,7 @@ async def test_a_maps_url_from_google_is_never_written_as_provenance(
         own_the_place(monkeypatch, {})
         assert (
             await apply_approval(
-                None,
+                NO_SESSION,
                 google_returning(match),  # type: ignore[arg-type]
                 merchant,
                 expected_place_id=match.place_id,
@@ -218,7 +222,7 @@ async def test_korean_merchants_record_the_identity_but_wait_for_naver(
     match = make_match()
     own_the_place(monkeypatch, {})
     outcome = await apply_approval(
-        None,
+        NO_SESSION,
         google_returning(match),  # type: ignore[arg-type]
         merchant,
         expected_place_id=match.place_id,
@@ -239,7 +243,7 @@ async def test_approval_refuses_when_google_changed_its_mind(
     merchant = make_merchant()
     own_the_place(monkeypatch, {})
     outcome = await apply_approval(
-        None,
+        NO_SESSION,
         google_returning(make_match(place_id="ChIJsomethingelse00")),  # type: ignore[arg-type]
         merchant,
         expected_place_id="ChIJexample1234567890",
@@ -259,7 +263,7 @@ async def test_approval_skips_conflicts_missing_results_and_ineligible_rows(
     own_the_place(monkeypatch, {match.place_id: uuid4()})
     assert (
         await apply_approval(
-            None,
+            NO_SESSION,
             google_returning(match),  # type: ignore[arg-type]
             taken,
             expected_place_id=match.place_id,
@@ -270,7 +274,7 @@ async def test_approval_skips_conflicts_missing_results_and_ineligible_rows(
     assert taken.google_place_id is None
     assert (
         await apply_approval(
-            None,
+            NO_SESSION,
             FakeGoogle({}),  # type: ignore[arg-type]
             make_merchant(),
             expected_place_id=match.place_id,
@@ -284,7 +288,7 @@ async def test_approval_skips_conflicts_missing_results_and_ineligible_rows(
     ):
         assert (
             await apply_approval(
-                None,
+                NO_SESSION,
                 google_returning(match),  # type: ignore[arg-type]
                 ineligible,
                 expected_place_id=match.place_id,
@@ -309,7 +313,7 @@ async def test_genuine_durable_coordinates_survive_an_identity_approval(
         coordinate_source_url="https://www.wikidata.org/wiki/Q1",
     )
     outcome = await apply_approval(
-        None,
+        NO_SESSION,
         google_returning(match),  # type: ignore[arg-type]
         durable,
         expected_place_id=match.place_id,
@@ -338,7 +342,7 @@ async def test_a_durable_type_without_a_source_url_is_not_given_a_google_one(
         coordinate_source_url=None,
     )
     outcome = await apply_approval(
-        None,
+        NO_SESSION,
         google_returning(match),  # type: ignore[arg-type]
         half_durable,
         expected_place_id=match.place_id,

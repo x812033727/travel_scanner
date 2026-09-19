@@ -34,6 +34,7 @@ from app.ui_text.schemas import (
     UI_TEXT_NAMESPACES,
     PublicUiText,
     UiTextBatchWrite,
+    UiTextSnapshot,
     UiTextWrite,
 )
 from app.ui_text.service import (
@@ -381,9 +382,7 @@ async def test_upsert_stores_the_override_audits_it_and_clears_every_locale(
 
 
 @pytest.mark.asyncio
-async def test_upsert_rejects_bad_input_before_touching_rows(
-    fake_table: None, actor: User
-) -> None:
+async def test_upsert_rejects_bad_input_before_touching_rows(fake_table: None, actor: User) -> None:
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     session = FakeSession()
     for namespace, payload, code in [
@@ -552,9 +551,9 @@ async def test_admin_routes_validate_paths_before_reaching_the_service(
         namespace: str,
         key: str,
         _payload: object,
-    ) -> ui_text_service.UiTextSnapshot:
+    ) -> UiTextSnapshot:
         calls.append((locale, namespace, key))
-        return ui_text_service.UiTextSnapshot(
+        return UiTextSnapshot(
             locale=locale,
             namespace=namespace,
             version="v",

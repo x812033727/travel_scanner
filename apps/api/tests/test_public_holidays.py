@@ -16,6 +16,7 @@ from httpx import ASGITransport, AsyncClient
 from app.holidays import refresh as refresh_module
 from app.holidays.service import (
     ATTRIBUTION,
+    DATA_DIR,
     LOCALES,
     calendars,
     holidays_between,
@@ -109,7 +110,7 @@ def test_the_japanese_parser_tells_a_substitute_from_a_citizens_holiday() -> Non
 def test_a_refresh_of_a_year_already_in_the_repository_reports_no_difference() -> None:
     """What the parsers produce is what is vendored, minus the hand-written names."""
     for country, year in (("tw", 2026), ("tw", 2027), ("jp", 2026), ("jp", 2027)):
-        stored = json.loads((refresh_module.DATA_DIR / f"{country}_{year}.json").read_text("utf-8"))
+        stored = json.loads((DATA_DIR / f"{country}_{year}.json").read_text("utf-8"))
         fetched = [
             {key: row[key] for key in ("date", "key", "kind", "is_working_day", "source")}
             for row in stored

@@ -12,6 +12,7 @@ from pydantic import ValidationError
 
 from app.catalog_review import evidence
 from app.catalog_review import provider as provider_module
+from app.catalog_review.enrichment import VerifiedCandidate
 from app.catalog_review.errors import CatalogAssessmentError, safe_error_diagnostics
 from app.catalog_review.evidence import fetch_sources, is_trusted_source, normalize_source_url
 from app.catalog_review.provider import CatalogGeminiProvider
@@ -1487,11 +1488,7 @@ async def test_enrich_assess_uses_enum_schema_without_tools_and_rechecks_every_c
         )
         result = await provider.enrich_assess(
             [merchant_candidate()],
-            verified={
-                "row-1": [
-                    provider_module.VerifiedCandidate(MERCHANT_SITE, "official", "寿司大", False)
-                ]
-            },
+            verified={"row-1": [VerifiedCandidate(MERCHANT_SITE, "official", "寿司大", False)]},
             area_slugs={"row-1": ["tokyo-tsukiji"]},
             catalog={"category_slugs": ["sushi"], "areas": {}, "categories": []},
         )

@@ -5,6 +5,7 @@ from __future__ import annotations
 from datetime import UTC, datetime, timedelta
 from uuid import uuid4
 
+from app.i18n import Locale
 from app.models import TripPlan, TripPlanItem
 from app.trips.export_router import filename_for
 from app.trips.ics import escape_text, fold, trip_calendar
@@ -146,13 +147,14 @@ def test_an_unrouted_leg_says_it_is_an_estimate_in_the_reader_s_language() -> No
         "transit",
     )
 
-    for locale, expected in (
+    cases: tuple[tuple[Locale, str], ...] = (
         ("zh-TW", "估算"),
         ("zh-CN", "估算"),
         ("en", "estimated"),
         ("ja", "推定"),
         ("ko", "추정"),
-    ):
+    )
+    for locale, expected in cases:
         events = parse(trip_calendar(trip(), [first, second], [segment], locale=locale))
         assert expected in events[1]["DESCRIPTION"], locale
 

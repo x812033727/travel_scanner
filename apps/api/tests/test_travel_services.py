@@ -1,3 +1,4 @@
+import time
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -477,7 +478,7 @@ async def test_link_verification_pins_each_hop_and_requires_identity(monkeypatch
     original_client = httpx.AsyncClient
     monkeypatch.setattr(network, "public_request_target", resolve)
     monkeypatch.setattr(
-        network.httpx,
+        httpx,
         "AsyncClient",
         lambda **kw: original_client(transport=httpx.MockTransport(respond), **kw),
     )
@@ -511,7 +512,7 @@ async def test_link_rejects_unsafe_redirect_before_request(monkeypatch, target):
     original_client = httpx.AsyncClient
     monkeypatch.setattr(network, "public_request_target", resolve)
     monkeypatch.setattr(
-        network.httpx,
+        httpx,
         "AsyncClient",
         lambda **kw: original_client(
             transport=httpx.MockTransport(
@@ -529,9 +530,8 @@ async def test_link_rejects_unsafe_redirect_before_request(monkeypatch, target):
 
 @pytest.mark.asyncio
 async def test_marker_budget_shared_across_projects_and_cache_hits_are_free(monkeypatch):
-    from app.affiliates import service
 
-    monkeypatch.setattr(service.time, "time", lambda: 1000)
+    monkeypatch.setattr(time, "time", lambda: 1000)
     redis = fakeredis.aioredis.FakeRedis(decode_responses=True)
     settings = Settings(
         travelpayouts_api_token="test", travelpayouts_marker="456", travelpayouts_project_id="123"
@@ -553,7 +553,7 @@ async def test_marker_budget_shared_across_projects_and_cache_hits_are_free(monk
         with pytest.raises(ConnectionError, match="budget exhausted"):
             await client.create("https://www.klook.com/activity/100/", "svc_tour_tokyo")
         assert len(requests) == 100
-        monkeypatch.setattr(service.time, "time", lambda: 1061)
+        monkeypatch.setattr(time, "time", lambda: 1061)
         await client.create("https://www.klook.com/activity/100/", "svc_tour_tokyo")
         assert len(requests) == 101
     await redis.aclose()

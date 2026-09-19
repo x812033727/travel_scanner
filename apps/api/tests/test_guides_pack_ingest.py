@@ -12,6 +12,7 @@ import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from threading import Thread
+from typing import Any
 
 import httpx
 import pytest
@@ -54,8 +55,8 @@ GOOD_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"
 """
 
 
-def good_document(**overrides: object) -> dict[str, object]:
-    document: dict[str, object] = {
+def good_document(**overrides: object) -> dict[str, Any]:
+    document: dict[str, Any] = {
         "title": "ChatGPT 新手入門",
         "description": "註冊、免費與付費差別、第一個對話。",
         "hero": {
@@ -119,7 +120,7 @@ def test_lint_document_accepts_a_complete_article_and_names_what_is_missing() ->
         b
         for b in good_document()["blocks"]
         if b["type"] not in {"table", "callout", "image", "link"}
-    ]  # type: ignore[index,union-attr]
+    ]
     stripped = GuideDocument.model_validate(
         good_document(
             blocks=blocks[:2],

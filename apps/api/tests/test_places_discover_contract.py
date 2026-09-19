@@ -36,7 +36,7 @@ async def client() -> AsyncIterator[httpx.AsyncClient]:
 
     app = FastAPI()
     app.include_router(destinations_router, prefix="/api/v1")
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.dependency_overrides[get_session] = database
     async with httpx.AsyncClient(
         transport=httpx.ASGITransport(app=app),

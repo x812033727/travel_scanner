@@ -132,7 +132,7 @@ async def test_dns_pinned_redirect_chain(monkeypatch, location, expected):
         return httpx.Response(200)
 
     client = httpx.AsyncClient(transport=httpx.MockTransport(handle))
-    monkeypatch.setattr(network.httpx, "AsyncClient", lambda **kwargs: client)
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **kwargs: client)
     monkeypatch.setattr(
         network,
         "public_request_target",
@@ -154,7 +154,7 @@ async def test_private_dns_never_requested(monkeypatch):
 @pytest.mark.asyncio
 async def test_mismatch_identity_query_or_status_rejected(monkeypatch):
     client = httpx.AsyncClient(transport=httpx.MockTransport(lambda req: httpx.Response(404)))
-    monkeypatch.setattr(network.httpx, "AsyncClient", lambda **kwargs: client)
+    monkeypatch.setattr(httpx, "AsyncClient", lambda **kwargs: client)
     monkeypatch.setattr(
         network,
         "public_request_target",

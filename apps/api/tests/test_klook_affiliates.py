@@ -352,7 +352,7 @@ async def test_direct_network_checks_final_response_and_same_hotel_id(monkeypatc
     original = httpx.AsyncClient
     monkeypatch.setattr(network, "public_request_target", resolve)
     monkeypatch.setattr(
-        network.httpx,
+        httpx,
         "AsyncClient",
         lambda **kwargs: original(transport=httpx.MockTransport(respond), **kwargs),
     )
@@ -399,7 +399,7 @@ async def test_hotel_option_health_allows_only_safe_klook_property_alias(monkeyp
     original = httpx.AsyncClient
     monkeypatch.setattr(network, "public_request_target", pinned)
     monkeypatch.setattr(
-        network.httpx,
+        httpx,
         "AsyncClient",
         lambda **kwargs: original(transport=httpx.MockTransport(response), **kwargs),
     )

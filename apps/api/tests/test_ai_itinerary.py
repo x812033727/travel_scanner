@@ -3,11 +3,12 @@ from __future__ import annotations
 import json
 from datetime import date
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import httpx
 import pytest
 from pydantic import ValidationError
+from sqlalchemy.ext.asyncio import AsyncSession
 
 import app.ai.itinerary as itinerary_module
 import app.trips.router as trip_router
@@ -678,14 +679,14 @@ async def test_candidate_loader_hides_unrequested_excursions_and_forwards_extens
     base = request_for().preferences.model_copy(update={"interests": ["culture"]})
 
     standard = await trip_router._load_ai_planner_candidates(
-        object(),
+        cast(AsyncSession, object()),
         "東京",
         base,
         start_date=date(2027, 4, 8),
         end_date=date(2027, 4, 11),
     )
     deep = await trip_router._load_ai_planner_candidates(
-        object(),
+        cast(AsyncSession, object()),
         "東京",
         base.model_copy(
             update={

@@ -2,12 +2,16 @@ from __future__ import annotations
 
 from collections.abc import Awaitable, Callable
 from datetime import date
-from typing import Any
+from typing import Any, cast
 from uuid import UUID
 
 import pytest
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.hotspots import service
+
+# The tests patch `list_rankings`, the only path that would read the session.
+NO_SESSION = cast(AsyncSession, None)
 
 RankingsFake = Callable[..., Awaitable[dict[str, Any]]]
 
@@ -98,7 +102,7 @@ async def test_planner_pages_past_unverified_imports(monkeypatch: pytest.MonkeyP
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, calls))
 
     rows = await service.load_planner_hotspots(
-        None,
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -116,7 +120,7 @@ async def test_planner_stops_paging_once_it_has_enough(monkeypatch: pytest.Monke
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, calls))
 
     rows = await service.load_planner_hotspots(
-        None,
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -140,7 +144,7 @@ async def test_planner_pulls_interest_categories_from_below_the_cut(
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, calls))
 
     rows = await service.load_planner_hotspots(
-        None,  # type: ignore[arg-type]
+        NO_SESSION,
         destination_id="tokyo",
         interests=["shopping", "spa", "deep_travel"],
         limit=12,
@@ -164,7 +168,7 @@ async def test_planner_without_interests_keeps_plain_ranking_order(
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, calls))
 
     rows = await service.load_planner_hotspots(
-        None,
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -182,7 +186,7 @@ async def test_planner_gives_up_after_the_page_cap(monkeypatch: pytest.MonkeyPat
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, calls))
 
     rows = await service.load_planner_hotspots(
-        None,
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -228,7 +232,7 @@ async def test_planner_rows_carry_theme_slugs(monkeypatch: pytest.MonkeyPatch) -
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, []))
 
     rows = await service.load_planner_hotspots(
-        None,
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -256,7 +260,7 @@ async def test_named_shop_types_come_before_the_city_s_landmarks(
     monkeypatch.setattr(service, "list_rankings", paging_fake(ranking, []))
 
     rows = await service.load_planner_hotspots(
-        None,  # type: ignore[arg-type]
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -286,7 +290,7 @@ async def test_a_spot_in_season_is_pulled_in_but_kept_to_its_share(
     monkeypatch.setattr(service, "season_slugs_for", _season_slugs(["sakura"]))
 
     rows = await service.load_planner_hotspots(
-        None,  # type: ignore[arg-type]
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -312,7 +316,7 @@ async def test_nothing_is_in_season_outside_its_months(
     monkeypatch.setattr(service, "season_slugs_for", _season_slugs([]))
 
     rows = await service.load_planner_hotspots(
-        None,  # type: ignore[arg-type]
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -343,7 +347,7 @@ async def test_an_extension_city_s_season_does_not_reshape_the_main_trip(
     monkeypatch.setattr(service, "season_slugs_for", _season_slugs(["sakura"]))
 
     rows = await service.load_planner_hotspots(
-        None,  # type: ignore[arg-type]
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,
@@ -365,7 +369,7 @@ async def test_a_shop_without_a_seeded_duration_gets_a_shop_sized_one(
     monkeypatch.setattr(service, "list_rankings", paging_fake([row, landmark], []))
 
     rows = await service.load_planner_hotspots(
-        None,
+        NO_SESSION,
         destination_id="tokyo",
         limit=12,
         days=6,

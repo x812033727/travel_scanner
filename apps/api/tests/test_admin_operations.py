@@ -11,11 +11,15 @@ from httpx import ASGITransport, AsyncClient
 from app.admin import operations_router, operations_service
 from app.admin.operations_schemas import AdminAuditItem, AdminAuditPage
 from app.auth.service import current_user
+from app.config import get_settings
+from app.database_admin.agent import DatabaseAgentClient
 from app.database_admin.schemas import AgentDatabaseOverview, AgentVerifiedBackup
 from app.db import get_session
+from app.deployments.agent import DeploymentAgentClient
 from app.deployments.schemas import AgentOverview
 from app.models import AdminAuditLog, User
 from app.problems import AppError, app_error_handler
+from app.schema import expected_schema_revision
 
 
 def test_navigation_registry_has_stable_unique_destinations() -> None:
@@ -249,17 +253,17 @@ async def test_bootstrap_navigation_comes_from_backend_capabilities(
 async def test_system_health_uses_live_agents_and_latest_verified_backup(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    settings = operations_service.get_settings()
+    settings = get_settings()
     monkeypatch.setattr(settings, "deployments_enabled", True)
     monkeypatch.setattr(settings, "deploy_admin_emails", "deploy@example.com")
     monkeypatch.setattr(settings, "deploy_agent_hmac_key", "x" * 32)
     monkeypatch.setattr(settings, "deploy_agent_socket", "/run/deployer.sock")
     session = AsyncMock()
-    session.scalar.return_value = operations_service.expected_schema_revision()
+    session.scalar.return_value = expected_schema_revision()
     redis = SimpleNamespace(ping=AsyncMock(return_value=True))
     monkeypatch.setattr(operations_service, "get_redis", lambda: redis)
     monkeypatch.setattr(
-        operations_service.DeploymentAgentClient,
+        DeploymentAgentClient,
         "overview",
         AsyncMock(
             return_value=AgentOverview(
@@ -273,7 +277,7 @@ async def test_system_health_uses_live_agents_and_latest_verified_backup(
     older = datetime.now(UTC) - timedelta(days=1)
     latest = datetime.now(UTC)
     monkeypatch.setattr(
-        operations_service.DatabaseAgentClient,
+        DatabaseAgentClient,
         "overview",
         AsyncMock(
             return_value=AgentDatabaseOverview(
@@ -320,7 +324,7 @@ async def test_system_health_uses_live_agents_and_latest_verified_backup(
 async def test_system_health_never_turns_missing_agents_into_success(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    settings = operations_service.get_settings()
+    settings = get_settings()
     monkeypatch.setattr(settings, "deployments_enabled", True)
     monkeypatch.setattr(settings, "deploy_admin_emails", "deploy@example.com")
     monkeypatch.setattr(settings, "deploy_agent_hmac_key", "x" * 32)
@@ -328,17 +332,17 @@ async def test_system_health_never_turns_missing_agents_into_success(
     monkeypatch.setattr(settings, "admin_database_maintenance_enabled", True)
     monkeypatch.setattr(settings, "database_admin_emails", "database@example.com")
     session = AsyncMock()
-    session.scalar.return_value = operations_service.expected_schema_revision()
+    session.scalar.return_value = expected_schema_revision()
     redis = SimpleNamespace(ping=AsyncMock(return_value=True))
     monkeypatch.setattr(operations_service, "get_redis", lambda: redis)
     missing = AppError(503, "deployment_agent_unavailable", "offline")
     monkeypatch.setattr(
-        operations_service.DeploymentAgentClient,
+        DeploymentAgentClient,
         "overview",
         AsyncMock(side_effect=missing),
     )
     monkeypatch.setattr(
-        operations_service.DatabaseAgentClient,
+        DatabaseAgentClient,
         "overview",
         AsyncMock(
             side_effect=AppError(503, "database_agent_unavailable", "offline")
@@ -357,23 +361,23 @@ async def test_system_health_never_turns_missing_agents_into_success(
 async def test_system_health_treats_disconnected_agent_snapshots_as_stale(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    settings = operations_service.get_settings()
+    settings = get_settings()
     monkeypatch.setattr(settings, "deployments_enabled", True)
     monkeypatch.setattr(settings, "deploy_admin_emails", "deploy@example.com")
     monkeypatch.setattr(settings, "deploy_agent_hmac_key", "x" * 32)
     monkeypatch.setattr(settings, "deploy_agent_socket", "/run/deployer.sock")
     session = AsyncMock()
-    session.scalar.return_value = operations_service.expected_schema_revision()
+    session.scalar.return_value = expected_schema_revision()
     monkeypatch.setattr(
         operations_service, "get_redis", lambda: SimpleNamespace(ping=AsyncMock())
     )
     monkeypatch.setattr(
-        operations_service.DeploymentAgentClient,
+        DeploymentAgentClient,
         "overview",
         AsyncMock(return_value=AgentOverview(connected=False)),
     )
     monkeypatch.setattr(
-        operations_service.DatabaseAgentClient,
+        DatabaseAgentClient,
         "overview",
         AsyncMock(
             return_value=AgentDatabaseOverview(connected=False, available=False)

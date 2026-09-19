@@ -13,6 +13,7 @@ from pydantic import ValidationError
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
+from app.db import Base
 from app.foods.enrichment import (
     PLATFORM_HOSTS,
     EnrichmentOrigin,
@@ -23,7 +24,6 @@ from app.foods.enrichment import (
 )
 from app.models import (
     AdminAuditLog,
-    Base,
     FoodArea,
     FoodCategory,
     FoodMerchant,

@@ -1,3 +1,4 @@
+import json
 from collections import Counter
 
 import fakeredis.aioredis
@@ -31,7 +32,8 @@ async def test_amadeus_multi_city_sends_every_leg() -> None:
     def handler(request: httpx.Request) -> httpx.Response:
         if request.url.path.endswith("/token"):
             return httpx.Response(200, json={"access_token": "token", "expires_in": 1800})
-        captured.update(request.read() and __import__("json").loads(request.content))
+        request.read()
+        captured.update(json.loads(request.content))
         return httpx.Response(200, json={"data": [], "dictionaries": {}})
 
     query = SearchCreate(

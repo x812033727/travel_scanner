@@ -1,5 +1,6 @@
 import logging
 from types import SimpleNamespace
+from typing import Any
 from uuid import UUID, uuid4
 
 import httpx
@@ -11,7 +12,7 @@ from app.hotspots import ai_tasks
 class FakeSession:
     def __init__(self, run: SimpleNamespace) -> None:
         self.run = run
-        self.added: list[object] = []
+        self.added: list[Any] = []
         self.commits = 0
         self.rollbacks = 0
 

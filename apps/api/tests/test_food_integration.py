@@ -4,6 +4,7 @@ from collections import Counter
 from collections.abc import AsyncIterator
 from datetime import UTC, date, datetime
 from decimal import Decimal
+from typing import Any, cast
 from uuid import UUID, uuid4
 
 import pytest
@@ -631,13 +632,13 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             "home-style"
         ] == 1
 
-        admin_listing = await list_admin_foods(
+        admin_listing = cast(dict[str, Any], await list_admin_foods(
             User(email="food-listing@example.test", password_hash="not-used", is_admin=True),
             session,
             locale="ja",
             food_kind="dessert",
             limit=100,
-        )
+        ))
         assert admin_listing["total"] == len(admin_listing["items"]) > 0
         assert all(item["food_kind"] == "dessert" for item in admin_listing["items"])
         assert all(
@@ -850,7 +851,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 )
             ).all()
         )
-        updated = await update_food_merchant(
+        updated = cast(dict[str, Any], await update_food_merchant(
             verified.id,
             FoodMerchantUpdatePayload(
                 area_slug="seoul-admin-test-area",
@@ -859,7 +860,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             ),
             admin,
             session,
-        )
+        ))
         assert updated["area"]["slug"] == "seoul-admin-test-area"
         assert updated["area_source"] == "admin"
         assert [item["slug"] for item in updated["categories"]] == ["home-style", "rice-dishes"]
@@ -872,7 +873,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             ),
             admin, session,
         )
-        reviewed = await update_merchant_platform_link(
+        reviewed = cast(dict[str, Any], await update_merchant_platform_link(
             verified.id,
             MerchantPlatformLinkPayload(
                 provider="catchtable_global",
@@ -883,7 +884,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             ),
             admin,
             session,
-        )
+        ))
         assert reviewed["platform_link"]["status"] == "verified"
         assert reviewed["platform_link"]["checked_by_user_id"] == str(admin.id)
         assert [item["provider"] for item in reviewed["platform_links"]] == [
@@ -895,13 +896,13 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
                 AdminAuditLog.target == f"food_merchant:{verified.id}",
             )
         )
-        platform_filtered = await list_food_merchants(
+        platform_filtered = cast(dict[str, Any], await list_food_merchants(
             admin,
             session,
             country_code="KR",
             platform="catchtable_global",
             platform_status="verified",
-        )
+        ))
         assert any(
             item["id"] == str(verified.id) for item in platform_filtered["items"]
         )

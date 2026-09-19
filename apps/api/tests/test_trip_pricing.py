@@ -1,5 +1,6 @@
 from datetime import date
 from decimal import Decimal
+from typing import Any
 from uuid import uuid4
 
 import pytest
@@ -33,7 +34,7 @@ def _trip(**data: object) -> TripPlan:
     )
 
 
-def _anchor(trip: TripPlan, role: str, offer_id: object, snapshot: dict[str, object] | None):
+def _anchor(trip: TripPlan, role: str, offer_id: object, snapshot: dict[str, Any] | None):
     return TripPlanItem(
         id=uuid4(),
         trip_plan_id=trip.id,

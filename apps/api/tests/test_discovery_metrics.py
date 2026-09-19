@@ -1,10 +1,12 @@
 from datetime import UTC, datetime, timedelta
+from typing import cast
 from unittest.mock import AsyncMock
 from uuid import uuid4
 
 import httpx
 import pytest
 from fastapi import FastAPI, Header
+from sqlalchemy import Table
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.analytics.discovery import MEASURED_EVENTS, USEFUL_EVENTS, event_summary, router
@@ -45,7 +47,7 @@ def test_discovery_errors_have_five_locale_messages() -> None:
 async def test_admin_metrics_enforce_permissions_environment_bots_window_and_disable(monkeypatch):
     engine = create_async_engine("sqlite+aiosqlite://")
     async with engine.begin() as connection:
-        await connection.run_sync(AnalyticsEvent.__table__.create)
+        await connection.run_sync(cast(Table, AnalyticsEvent.__table__).create)
     factory = async_sessionmaker(engine, expire_on_commit=False)
     now = datetime.now(UTC)
     settings = Settings(analytics_enabled=True, app_env="production")
@@ -99,7 +101,7 @@ async def test_admin_metrics_enforce_permissions_environment_bots_window_and_dis
         return User(id=uuid4(), email="metrics@example.test", is_admin=x_test_role == "admin")
 
     app = FastAPI()
-    app.add_exception_handler(AppError, app_error_handler)
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(router)
     app.dependency_overrides[get_session] = database
     app.dependency_overrides[current_user] = authenticate

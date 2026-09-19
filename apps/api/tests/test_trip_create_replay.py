@@ -9,10 +9,10 @@ from unittest.mock import AsyncMock
 import pytest
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import async_sessionmaker
-from test_trip_preferences import harness as shared_harness
 
 from app.models import TripPlan
 from app.trips import router as trips
+from tests.test_trip_preferences import harness as shared_harness
 
 harness = shared_harness
 

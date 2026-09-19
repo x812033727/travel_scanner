@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 from pathlib import Path
+from typing import cast
 
 import pytest
 import sqlalchemy as sa
@@ -59,7 +60,7 @@ def test_the_model_carries_the_index_so_a_fresh_install_is_already_current():
     index = next(
         (
             item
-            for item in CollectionItem.__table__.indexes
+            for item in cast(sa.Table, CollectionItem.__table__).indexes
             if item.name == "ix_community_collection_item_reference"
         ),
         None,

@@ -22,7 +22,8 @@ from app.catalog_review.enrich_cli import (
     enrichment_idempotency_key,
 )
 from app.config import Settings
-from app.models import Base, CatalogReviewRun, FoodMerchant, User
+from app.db import Base
+from app.models import CatalogReviewRun, FoodMerchant, User
 
 ADMIN = "Admin@Example.test"
 
@@ -151,6 +152,13 @@ async def test_run_is_created_executed_inline_and_resumed_on_replay(
 ) -> None:
     executed = AsyncMock()
     monkeypatch.setattr(enrich_cli, "_run", executed)
+    # The same doubles the ``db`` fixture installs, held here so their release can be asserted.
+    redis_closed = AsyncMock()
+    engine_disposed = AsyncMock()
+    get_redis = Mock(return_value=SimpleNamespace(aclose=redis_closed))
+    get_redis.cache_clear = Mock()
+    monkeypatch.setattr(enrich_cli, "get_redis", get_redis)
+    monkeypatch.setattr(enrich_cli, "engine", SimpleNamespace(dispose=engine_disposed))
     first = await enrich_food_merchants(
         actor_email=ADMIN,
         destination_ids=["tokyo"],
@@ -167,8 +175,8 @@ async def test_run_is_created_executed_inline_and_resumed_on_replay(
     run_id = UUID(first["run"]["id"])
     executed.assert_awaited_once_with(run_id)
     # Redis and the engine are released even though the worker ran inline.
-    enrich_cli.get_redis.return_value.aclose.assert_awaited()
-    enrich_cli.engine.dispose.assert_awaited()
+    redis_closed.assert_awaited()
+    engine_disposed.assert_awaited()
 
     async with db() as session:
         run = await session.get(CatalogReviewRun, run_id)

@@ -1,6 +1,7 @@
 import os
 from collections.abc import AsyncIterator
 from datetime import date
+from typing import Any
 
 import pytest
 import pytest_asyncio
@@ -45,7 +46,9 @@ async def test_candidates_are_grouped_by_country_and_faceted() -> None:
         await seed_catalog(session, date(2026, 9, 1))
         await session.commit()
 
-        listing = await list_hotspot_candidates(admin, session, locale="zh-TW", limit=100)
+        listing: dict[str, Any] = await list_hotspot_candidates(
+            admin, session, locale="zh-TW", limit=100
+        )
         assert listing["total"] >= len(listing["items"]) > 0
         keys = [
             (
@@ -66,7 +69,7 @@ async def test_candidates_are_grouped_by_country_and_faceted() -> None:
             HOTSPOT_CATEGORY_ORDER
         )
 
-        filtered = await list_hotspot_candidates(
+        filtered: dict[str, Any] = await list_hotspot_candidates(
             admin, session, locale="ja", country_code="JP", category="culture", limit=100
         )
         assert filtered["items"]

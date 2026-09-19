@@ -12,6 +12,7 @@ import os
 import re
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime, timedelta
+from typing import cast
 from uuid import uuid4
 
 import pytest
@@ -19,7 +20,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from httpx import ASGITransport, AsyncClient
 from pydantic import ValidationError
-from sqlalchemy import event, func, select, text, update
+from sqlalchemy import Table, event, func, select, text, update
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.pool import NullPool
@@ -27,7 +28,7 @@ from sqlalchemy.pool import NullPool
 from app.auth.service import current_user
 from app.config import get_settings
 from app.db import Base, get_session
-from app.i18n import ERROR_DETAILS, LOCALES
+from app.i18n import ERROR_DETAILS, LOCALES, Locale
 from app.models import AdminAuditLog, SitePage, SitePageRevision, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 from app.site_pages import service
@@ -38,11 +39,14 @@ from app.site_pages.schemas import (
     DraftWrite,
     LinkBlock,
     PageDocument,
+    PageSlug,
     PublishWrite,
     RestoreWrite,
 )
 
-TABLES = [User.__table__, SitePage.__table__, SitePageRevision.__table__, AdminAuditLog.__table__]
+TABLES = [
+    cast(Table, model.__table__) for model in (User, SitePage, SitePageRevision, AdminAuditLog)
+]
 
 
 @pytest.fixture(params=["sqlite", "postgresql"])
@@ -116,8 +120,8 @@ def make_app(database, actor=None) -> FastAPI:
     application = FastAPI()
     application.include_router(admin_router, prefix="/api/v1")
     application.include_router(public_router, prefix="/api/v1")
-    application.add_exception_handler(AppError, app_error_handler)
-    application.add_exception_handler(RequestValidationError, validation_error_handler)
+    application.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    application.add_exception_handler(RequestValidationError, validation_error_handler)  # type: ignore[arg-type]
 
     async def session_dependency():
         async with database() as session:
@@ -511,7 +515,8 @@ async def test_revision_ids_are_bound_to_page_and_locale(database, actor) -> Non
     async with database() as session:
         await service.initialize_pages(session, actor)
         original = await service.page_detail(session, "privacy", "en")
-        for slug, locale in [("terms", "en"), ("privacy", "ja")]:
+        wrong_targets: list[tuple[PageSlug, Locale]] = [("terms", "en"), ("privacy", "ja")]
+        for slug, locale in wrong_targets:
             with pytest.raises(AppError) as rejected:
                 await service.restore_revision(
                     session,
