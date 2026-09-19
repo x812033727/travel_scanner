@@ -167,7 +167,13 @@
       "verbatim_quote": "Codex requires commands to run inside a Git repository to prevent destructive changes."
     },
     {
-      "fact": "Codex 官方 CI 範例先 git add -N . 再 git diff 產出 patch，新建檔案才會進到 patch",
+      "fact": "Codex 官方 CI 範例在產出 patch 之前先跑 git add -N .",
+      "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
+      "is_vendor_claim": true,
+      "verbatim_quote": "git add -N ."
+    },
+    {
+      "fact": "Codex 官方 CI 範例接著用 git diff --binary HEAD 把變更寫成 codex.patch",
       "url": "https://learn.chatgpt.com/docs/non-interactive-mode",
       "is_vendor_claim": true,
       "verbatim_quote": "git diff --binary HEAD > codex.patch"
@@ -207,6 +213,12 @@
       "url": "https://code.claude.com/docs/en/cli-reference",
       "is_vendor_claim": true,
       "verbatim_quote": "Pass none when nobody can answer, and Claude Code denies them instead."
+    },
+    {
+      "fact": "Claude Code 的 --permission-prompts 這一列註明要 Claude Code v2.1.259 以上才有（同一頁其他被本文引用的旗標都沒有版本下限）",
+      "url": "https://code.claude.com/docs/en/cli-reference",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Requires Claude Code v2.1.259 or later"
     },
     {
       "fact": "Claude Code 的 dontAsk 模式下，任何會提示的動作一律被拒絕",
@@ -323,7 +335,7 @@
       "verbatim_quote": "stats: (object) Token usage and API latency metrics."
     },
     {
-      "fact": "Gemini CLI 的文件列出完整結束代碼對照表",
+      "fact": "Gemini CLI 的無頭模式文件寫它回傳標準的結束代碼，底下列出四個；文件沒有自稱這份對照是完整的",
       "url": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/docs/cli/headless.md",
       "is_vendor_claim": true,
       "verbatim_quote": "The CLI returns standard exit codes to indicate the result of the headless execution"
@@ -379,7 +391,7 @@
   ],
   "unverified_or_excluded": [
     "Claude Code 的 --model 旗標與模型別名（sonnet/opus/haiku/fable）：查到了，但這篇不挑特定模型，決定不用。",
-    "Codex 的 --dangerously-bypass-approvals-and-sandbox／--yolo 與 Claude Code 的 --dangerously-skip-permissions：查到了，但為了不鼓勵完全跳過核准的寫法，這篇只在 callout 提一句 Gemini CLI 的 --yolo 已標 Deprecated，不逐一示範每支工具的全自動核准旗標。",
+    "Codex 的 --dangerously-bypass-approvals-and-sandbox／--yolo 與 Claude Code 的 --dangerously-skip-permissions：查到了，但為了不鼓勵完全跳過核准的寫法，這篇不示範任何全自動核准旗標。Gemini CLI 的 --yolo 已標 Deprecated 也查證過；第一輪把 callout 改寫成三家各引自己的文件之後，正文不再提 --yolo，研究紀錄保留那條原句備查。",
     "種子網址 https://developers.openai.com/codex/cli/ 當天重讀後會轉址到 learn.chatgpt.com/docs/codex/cli，這篇改採轉址後的頁面與其下的 non-interactive-mode、developer-commands 兩頁；overview 頁本身沒有旗標細節，沒有列進 sources。",
     "Claude Code 的 --tools／--allowedTools／--disallowedTools 工具權限旗標：查到了，但這篇的核准段落只講會不會卡住，不重複工具白名單的細節，避免跟《Claude Code｜非互動執行與 JSON 輸出》重複。",
     "Codex 的 CODEX_API_KEY／OPENAI_API_KEY 環境變數認證方式：查到了，但這篇的三支 CLI 範例都假設已經用互動登入完成認證，沒有示範金鑰認證，避免程式碼看起來像需要貼金鑰。",
@@ -455,7 +467,7 @@
       "Gemini CLI 的 Plan Mode 用在審查步驟仍有風險：文件寫 Plan Mode 允許 ask_user、web_fetch 需要明確確認，而且「會停下來等你確認」之後才寫正式計畫。本文已標明是延伸用法並包了 timeout，但站主若要把這支腳本用在正式排程，建議先實測一次 gemini --approval-mode=plan 在無頭環境下的行為，或改用 --output-format json 加預設核准模式。",
       "程式範例的 git add -N 會動到使用者的索引（intent-to-add）。本文用 :(exclude) 把交接目錄排除在外，但站主若不希望腳本碰索引，可以改成在拋棄式 worktree 裡跑。",
       "第一個結尾 link 指向尚未發布的系列目錄 ai-workflow-tutorials，第二個 link 依規格由協調者 relink；自檢剩下的 raw_internal_url WARN 是這兩個純 link 造成的。",
-      "本文內文長度剛好卡在站內 life 類 6,000 字元的建議上限（目前 6,000，段落字數 2,944／上限 3,000）。本輪補限定詞時是靠精簡 FAQ 與 summary 的重複敘述換出空間；之後若要再補，請同樣從重複處精簡，不要刪掉查證過的限定條件。"
+      "本文內文長度剛好卡在站內 life 類 6,000 字元的建議上限（第二輪後仍是 6,000，段落字數 2,933／上限 3,000）。第二輪要在 callout 補 --permission-prompts 的版本下限，是靠精簡導言第二段重複三次的「登入」敘述與 callout 裡和正文重複的「預設沙盒唯讀」換出空間，兩者相抵剛好 0；之後若要再補，請同樣從重複處精簡，不要刪掉查證過的限定條件。"
     ],
     "code_recompiled": [
       {
@@ -466,7 +478,46 @@
         "label": "review.json：審查階段寫出的交接檔範例（純資料，不需要套件）",
         "result": "ok"
       }
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (second round, did not write and did not do the first round)",
+      "checked_on": "2026-09-19",
+      "method": "sources[] 八條全部自己重抓（curl -sL -A \"Mokaair-editorial\"；四個 learn.chatgpt.com／code.claude.com 的 HTML 頁另抓官方提供的 .md 版交叉比對），八條今天都 HTTP 200 且讀得到正文，bytes 與第一輪記的完全相同。覆核第一輪改過的每一段與新寫進去的每一句：callout 全文、導言兩段、summary 四句、表格三格的『結構化輸出驗證』欄與 Codex 角色格、正文『實作』那段的 Plan Mode 三句、正文末段、FAQ 第 2／3／4／5 題，逐句回來源原文。研究紀錄的 verbatim_quote 全部用程式做連續字串比對（HTML 去標籤、Markdown 去反引號與星號、空白正規化後），改動前 55 條 55/55 通過、改動後 57 條 57/57 通過，另外逐條檢查 quote 是否真的撐得起它的 fact。程式範例第二次重驗：workflow.sh 過 bash -n、內嵌 Python 抽出來過 py_compile、review.json 過 json.loads；並在暫存目錄新建一個拋棄式 Git 儲存庫、用三支假的 CLI 腳本實跑 workflow.sh 六種情境（核准、要求修改、審查回傳非 JSON、三支 CLI 各自回非零、不在 Git 儲存庫裡）。沒有執行真正的 claude／codex／gemini，沒有刪任何檔。任何請求的 UA、標頭、查詢字串與表單都沒有放入 email 或任何個人資料，也沒有使用 sources[] 以外的網址替文章補事實。",
+      "claims_checked": 139,
+      "edits": [
+        "內容包 callout：--permission-prompts 補回文件上的版本下限。cli-reference 那一列結尾寫 Requires Claude Code v2.1.259 or later，第一輪重寫 callout 時沒有帶上；同一頁本文引用的其他旗標都沒有版本下限。改成「--permission-prompts（文件註明要 v2.1.259 以上）傳 none 表示……」。",
+        "內容包 callout：「--ask-for-approval 只有 on-request 與 never」改成「--ask-for-approval，文件只列出 on-request 與 never」。文件的值欄位寫的是 on-request | never，這是一份列舉而不是「此旗標只有兩個值」的宣告，依規格把全稱否定收回「這一頁列出的」。",
+        "內容包 callout：刪掉與正文重複的「預設沙盒唯讀」六個字（正文『實作』那段已經寫「官方文件寫預設沙盒是唯讀」），但保留文件上的但書「自動化要自己指定需要的最小權限」。這是為了把版本下限換進來的字數，沒有刪任何查證過的限定條件。",
+        "內容包導言第二段：「已經安裝並各自登入……並且三支 CLI 都已經完成官方要求的登入或金鑰設定」三次講登入，合併成「已經裝好……而且三支都完成官方要求的登入或金鑰設定」，「或金鑰設定」這個限定詞保留（description 在第一輪已經把它刪掉，全篇只剩這裡有）。段落字數 2,944 → 2,933，內文長度維持 6,000。",
+        "研究紀錄第 47 條 fact：「Gemini CLI 的文件列出完整結束代碼對照表」與 must_not_write 第 7 條自相矛盾，而且它的 verbatim_quote（The CLI returns standard exit codes…）沒有「完整」的意思。第一輪改了正文卻沒有改這條，已改成「文件寫它回傳標準的結束代碼，底下列出四個；文件沒有自稱這份對照是完整的」。",
+        "研究紀錄第 21 條 fact：「先 git add -N . 再 git diff 產出 patch，新建檔案才會進到 patch」只掛了 git diff --binary HEAD > codex.patch 一句引文，撐不起 git add -N 那半句，也撐不起「新建檔案才會進 patch」。拆成兩條，各自掛自己找得到的連續字串（git add -N . 與 git diff --binary HEAD > codex.patch）；「git add -N 讓新建檔案出現在 git diff」改由拋棄式儲存庫的實測支撐（見 code_rerun），文件沒有解釋原因。",
+        "研究紀錄新增一條 fact：--permission-prompts 的版本下限，verbatim_quote 為 Requires Claude Code v2.1.259 or later（該字串在 cli-reference 整頁只出現一次，就在這一列）。",
+        "研究紀錄 unverified_or_excluded：那條寫著「這篇只在 callout 提一句 Gemini CLI 的 --yolo 已標 Deprecated」，但第一輪重寫 callout 之後正文已經沒有 --yolo。改成正文不再提、研究紀錄保留原句備查。",
+        "研究紀錄 left_for_the_owner 的字數提醒：2,944 更新為 2,933，並寫明第二輪的字數是從哪兩處重複敘述換來的。"
+      ],
+      "code_rerun": [
+        "workflow.sh：bash -n 通過；heredoc 裡的 16 行 Python 抽出來 python -m py_compile 通過；review.json json.loads 通過。67 行、18 行，與 code_samples 的 lines 相符（本輪沒有改 code）。",
+        "拋棄式 Git 儲存庫實跑（三支假 CLI，未執行真 CLI）：四個交接檔 plan.md／change.patch／raw-response.json／review.json 全部產生（另有 -o 的 codex-final.txt）；假 Codex 新建的 app/new_module.py 以 new file mode 100644 進到 change.patch；寫進 .handoff 的檔案沒有進 patch，git status 仍顯示 ?? .handoff/，:(exclude) 有效。",
+        "對照組：同一個工作樹先 git reset，只跑 git diff 時 new_module 0 次命中；再 git add -N 後 2 次命中——證實正文與註解說的「git add -N 才讓 Codex 新建的檔案出現在 git diff」。",
+        "退出碼：verdict 為 approve 時 0；changes_requested 時 1，訊息走 stderr；審查回傳的 response 不是 JSON 時落到 fallback（changes_requested／reviewer did not return valid JSON）後一樣 1；三支 CLI 分別回 3／7／42 時，set -euo pipefail 讓腳本停在那一步並原樣傳回 3／7／42；不在 Git 儲存庫裡跑會停在 git add -N（128），與註解寫的「本例需要 Git 儲存庫」一致。",
+        "逐字再對一次文件的旗標：claude 的 -p／--print、--output-format、--json-schema、--permission-mode plan、--permission-prompt-tool、--permission-prompts；codex exec 與 --sandbox workspace-write、--output-last-message／-o、--output-schema、--json／--experimental-json、全域 --ask-for-approval；gemini 的 -p／--prompt、--output-format json、--approval-mode plan。全部與今天的頁面相符。另確認 Codex 兩頁沒有 --output-format，Claude Code 與 Gemini CLI 兩邊都沒有對方的核准旗標名——正文「輸出格式旗標只有 Claude Code 與 Gemini CLI 同名」成立。"
+      ],
+      "checked_and_correct": [
+        "第一輪重寫的 callout 三句話，每一句都回得到自己那家的原句：--permission-prompt-tool（Specify an MCP tool to handle permission prompts in non-interactive mode.）、--permission-prompts none（Pass none when nobody can answer, and Claude Code denies them instead.）、dontAsk（anything that would prompt is denied／the session never waits for input）、Codex 的 --ask-for-approval（Control when Codex pauses for human approval before running a command.）與 codex exec 的定位（for scripted or CI-style runs that should finish without human interaction.）、Gemini CLI Plan Mode（Gemini CLI will stop and wait for your confirmation）。callout 沒有把本站的延伸用法寫成官方建議，結尾仍有「本站沒有實測」。",
+        "Plan Mode 當審查是本站延伸用法這件事，正文與程式註解都標明了，而且引的是文件原句（read-only environment for architecting robust solutions before implementation／只準在計畫目錄裡寫 .md）。",
+        "summary 四句、FAQ 六題答句都在正文找得到對應；表格 20 格、兩個 caption、圖解四組節點與 hero_label 逐格對過，沒有正文以外的數字。",
+        "界線：只有一個 callout、不是免責聲明；沒有訂閱／購買／投資建議、沒有推薦式比價、沒有速度或品質排名、沒有「台灣可用」；三家的宣稱都有歸屬；沒有任何模型 id，models-seen.json 不需要新增。",
+        "正文點名的系列文章標題今天逐字核對過內容包：《Claude Code｜非互動執行與 JSON 輸出》《codex exec 與腳本整合》《CLI 寫程式：理解、規劃、修改與測試》《Claude Code｜Agent Teams 協作》《模型之間交接資料：JSON Schema 與結構化輸出》《失敗案例與防護：迴圈、費用爆炸與代理間注入》六篇全部相符；結尾第一個 link 的 text 等於 ai-workflow-tutorials 的 title，第二個 link 的 text 等於 claude-code-headless-json 的 title。",
+        "與必連四篇沒有矛盾：claude-code-headless-json 寫「成功退出碼應為零，失敗為非零」，本篇的「只能用退出碼是不是 0 判斷成敗」與它一致；本篇沒有重寫那幾篇的教學步驟。",
+        "checked_on 2026-09-18 未更動：今天重抓的八頁，被引用的句子與數字全部沒變，bytes 也與第一輪相同，依規格不因重查而改；第二輪新引的兩句（Requires Claude Code v2.1.259 or later、git add -N .）同樣出自原本那八頁。"
+      ],
+      "left_for_the_owner": [
+        "第一輪留下的四件事都還在（Plan Mode 用在無頭審查的殘餘風險、git add -N 會動到使用者索引、兩個結尾純 link 等協調者 relink、內文長度卡在 6,000）。第二輪沒有推翻其中任何一件，只更新了字數。",
+        "callout 現在寫的版本下限只適用 --permission-prompts。若站主日後把 --permission-prompt-tool 的 MCP 限制（文件另註明要 v2.1.199 以上）也寫進正文，記得一併帶上那個版本。",
+        "「git add -N 讓 Codex 新建的檔案出現在 git diff」這半句，Codex 文件只示範了這個順序、沒有解釋原因；本輪是在拋棄式儲存庫實測確認的，不是 sources[] 裡的句子。若站主希望正文每一句都只靠文件，可以把程式註解的那半句改成「照 Codex 官方 CI 範例的順序」。"
+      ],
+      "verdict": "ok"
+    }
   },
   "hero_label": "規劃→執行→審查",
   "diagram": {
