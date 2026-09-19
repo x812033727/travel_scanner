@@ -778,7 +778,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
         )
 
         admin = User(
-            email="food-admin-integration@example.test",
+            email=f"food-admin-integration-{uuid4().hex}@example.test",
             password_hash="not-used",
             is_admin=True,
         )
@@ -1074,11 +1074,17 @@ async def test_reseeding_corrects_seed_owned_text_and_leaves_admin_edits_alone(
     ramen = next(item for item in FOOD_SEEDS if item.slug == "jp-ramen")
 
     async with SessionFactory() as session:
+        # A per-run address: ``update_food`` commits, ``_clear`` leaves users alone and
+        # ``users.email`` is unique, so a fixed one made the second run on the same
+        # database fail with UniqueViolation before this test even started.
         admin = User(
-            email="food-owner-integration@example.test", password_hash="not-used", is_admin=True
+            email=f"food-owner-integration-{uuid4().hex}@example.test",
+            password_hash="not-used",
+            is_admin=True,
         )
         session.add(admin)
         await session.flush()
+        admin_id = admin.id
         sushi_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-sushi"))
         ramen_id = await session.scalar(select(TravelFood.id).where(TravelFood.slug == "jp-ramen"))
         assert sushi_id is not None and ramen_id is not None
@@ -1143,5 +1149,7 @@ async def test_reseeding_corrects_seed_owned_text_and_leaves_admin_edits_alone(
         assert sushi_text["ko"].name == "관리자 스시"
         restored = await session.scalar(select(TravelFood).where(TravelFood.slug == "jp-ramen"))
         assert restored is not None and restored.romanized_name == ramen.romanized_name
+        await session.execute(delete(AdminAuditLog).where(AdminAuditLog.actor_user_id == admin_id))
+        await session.execute(delete(User).where(User.id == admin_id))
         await _clear(session)
         await session.commit()
