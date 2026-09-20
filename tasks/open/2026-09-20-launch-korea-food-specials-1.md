@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-launch-korea-food-specials-1
 title: Launch the Korea food and cafe specials batch 1
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex
@@ -80,7 +80,7 @@ scope:
 ## Steps
 
 - [x] 規格 → 撰稿 → 兩輪查核 → 收件檢查（22 篇）
-- [ ] 開 PR-C（內容包＋資產）
+- [x] 開 PR-C（內容包＋資產）
 - [ ] 部署 → `seed-foods` → `guides-import --slug ×22 --locale zh-TW --dry-run` → `--publish`
 - [ ] `guides-links-rebuild` → `guides-links-check --locale zh-TW`
 - [ ] 逐頁驗證（含隨機抽 Naver 連結在真實瀏覽器打開是對的店）
