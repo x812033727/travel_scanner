@@ -148,6 +148,8 @@ scope:
 
 # Codex deep content and isolated learning components
 
+**2026-09-20 release update:** Full-text five-language editorial acceptance is complete for all 60 lessons; the hub and all 300 lesson locale documents are published. The integrated local and signed-out production browser checks passed; PR #578, PR #583, and the guarded production deployment are recorded in `docs/codex-learning/production-release-2026-09-20.md`. Historical “0/60” and “no PR/deployment” notes below describe earlier checkpoints. Representative Codex product-interface operation evidence remains outside the completed editorial/browser/publication evidence, so this task retains that explicit open item rather than treating diagrams or responsive browser screenshots as product screenshots.
+
 ## Why
 
 Complete the approved 60-lesson, five-language learning series while keeping editorial acceptance, executable examples, browser evidence and publication distinct. The latest 60-lesson draft checkpoint is d3f28a25; earlier counts in this task's Git history are superseded by docs/codex-learning/progress.md.
@@ -171,8 +173,8 @@ Complete the approved 60-lesson, five-language learning series while keeping edi
 - [x] Deepen Unit I (26, 29, 30, 55, 56, 57), add three examples, correct one YAML comment and verify 14 local exec/JSON/CI checks.
 - [x] Complete targeted depth review for Unit J (31, 32, 58, 59, 60, 12), preserving 30 original code blocks, adding eight examples and verifying 12 Windows reference checks; all 60 lessons now have this round of targeted revision.
 - [ ] Complete remaining full-text five-language editorial acceptance and representative product UI evidence.
-- [ ] Complete final integrated browser acceptance for all 60 lessons and the hub. The preview-start restriction remains unresolved.
-- [ ] After all acceptance gates pass, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
+- [x] Complete final integrated browser acceptance for all 60 lessons and the hub.
+- [x] After content and browser acceptance, proceed with the already authorized PR, exact-head CI/merge, guarded import/publication/deployment and public verification. No partial PR.
 
 ## Full-text review checkpoint
 
