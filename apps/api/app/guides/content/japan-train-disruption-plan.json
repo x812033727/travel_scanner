@@ -3,23 +3,28 @@
   "kind": "howto",
   "destination_id": null,
   "topics": [
-    "transport",
-    "safety"
+    "safety",
+    "transport"
   ],
+  "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "日本電車停駛時怎麼改行程：查官方資訊、保留車票與備案順序",
       "description": "導航還有路線，不代表列車正在行駛。遇到延誤或停駛，先確認營運公司與受影響區間，再決定等待、改線或取消當天遠行。",
       "hero": {
         "src": "/guides/japan-train-disruption-plan/hero.jpg",
+        "alt": "旅客在雨天車站檢視紙本地圖，旁邊有行李（AI 生成示意插畫，非實拍）",
         "width": 1600,
         "height": 900,
-        "alt": "旅客在雨天車站檢視紙本地圖，旁邊有行李（AI 生成示意插畫，非實拍）",
         "credit": {
           "author": "Mokaair · AI 生成示意圖",
-          "license": "AI 生成，非實拍"
+          "license": "AI 生成，非實拍",
+          "source_url": null
         }
       },
       "blocks": [
@@ -29,8 +34,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "先確認哪家公司、哪個區間出問題"
+          "text": "先確認哪家公司、哪個區間出問題",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -69,13 +74,14 @@
           "description": "依序檢查：辨認業者、保住必要行程、檢查替代線、留原票單據。編輯整理，非地圖或實測時間。",
           "credit": {
             "author": "Mokaair",
-            "license": "© Mokaair"
+            "license": "© Mokaair",
+            "source_url": null
           }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "先保住必要行程，再處理觀光行程"
+          "text": "先保住必要行程，再處理觀光行程",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -118,8 +124,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "確認替代路線的代價，再買新票"
+          "text": "確認替代路線的代價，再買新票",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -131,8 +137,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "保留原票和紀錄，退款走原購買管道"
+          "text": "保留原票和紀錄，退款走原購買管道",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -140,8 +146,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "把異動拆成現在、下一段與今晚三層"
+          "text": "把異動拆成現在、下一段與今晚三層",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -167,13 +173,13 @@
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
             "讀業者公告並核對現場資訊。",
             "先聯絡航班、住宿或其他必要行程。",
             "查替代線的實際營運與轉乘條件。",
             "儲存原票與收據，依原管道辦理。"
-          ]
+          ],
+          "ordered": false
         },
         {
           "type": "rich_paragraph",
@@ -190,6 +196,758 @@
       "sources": [
         {
           "title": "JR 東日本：官方列車執行資訊及更新限制",
+          "url": "https://traininfo.jreast.co.jp/train_info/e/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "When Trains Stop Running in Japan: Official Updates, Keeping Tickets, and Backup Priorities",
+      "description": "A route appearing in your navigation app does not mean trains are running. During delays or suspensions, first identify the operator and affected sections, then decide whether to wait, reroute, or cancel the day's long-distance outing.",
+      "hero": {
+        "src": "/guides/japan-train-disruption-plan/hero.jpg",
+        "alt": "A traveler checks a paper map at a station on a rainy day, with luggage nearby (AI-generated illustration, not a photograph)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI-generated conceptual illustration",
+          "license": "AI-generated; not a photograph",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When a train is delayed during your trip, the easiest response is to keep refreshing your navigation app. But the app's suggestions, station announcements, and the railway company's service notices may update at different times. This article gives ordinary travelers a sequence to follow during disruptions. It is not a live disaster report and does not promise that other routes will be viable alternatives. Follow the day's safety instructions and staff directions first."
+        },
+        {
+          "type": "heading",
+          "text": "First identify the operator and affected section",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A single station may serve JR, private railways, and subway lines. Check your ticket, platform signs, or line name to identify the operator you will actually use. JR East has its own official service information page, with categories such as Kanto, Tohoku, Shinetsu, and Shinkansen; it is not an overview of every railway in Japan. Through services running across different operators' networks may also be affected, so do not assume your entire journey is unaffected just because there is no notice for the line serving your destination."
+        },
+        {
+          "type": "paragraph",
+          "text": "Break each notice into four parts: affected section, direction, cause, and current status. Delays, service suspensions, trains turning back on parts of a route, and announced upcoming suspensions have different implications for your plans. The official page also warns that its information may differ from actual operations and that it does not refresh automatically. Refresh it manually when checking, then cross-check the station displays. The absence of a warning you expected does not guarantee the next train will be on time."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Backup plans are especially important for regional conventional rail services. Outlying routes served by a single line, such as the JR Senzan Line from Sendai to Yamadera, have no parallel alternative during a suspension, leaving you to wait or change your plans. For an example, see "
+            },
+            {
+              "type": "article",
+              "text": "A Day Trip from Sendai to Yamadera (Risshakuji): Taking the Senzan Line and How Long It Takes to Climb 1,015 Stone Steps",
+              "kind": "howto",
+              "slug": "yamadera-day-trip-from-sendai"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-train-disruption-plan/diagram-1-en.svg",
+          "alt": "Four-step sequence: identify the operator, protect essential plans, check alternative lines, and keep original tickets and receipts",
+          "width": 1600,
+          "height": 900,
+          "caption": "The editors' suggested sequence; this diagram does not represent geographic distances, service guarantees, or measured results.",
+          "description": "Check in order: identify the operator, protect essential plans, check alternative lines, and keep original tickets and receipts. Compiled by the editors; not a map or measured travel times.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Protect essential plans before dealing with sightseeing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Divide today's plans into what must be done, what can be rescheduled, and what can be skipped. Deal first with your return flight, confirmed accommodation, and any restaurants you need to contact; another shopping district or outlying attraction is usually easier to drop. Do not add transfer after transfer just to keep every attraction, increasing the burden of luggage, physical effort, and the risk of missing the last service. If you decide to wait nearby, choose somewhere you can receive announcements, rest, and stay clear of evacuation routes."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Situation",
+            "A more sensible first step",
+            "Do not assume"
+          ],
+          "rows": [
+            [
+              "Brief delays, but trains are still running",
+              "Check departures at the station and the expected impact",
+              "You will definitely make your connection at the next station"
+            ],
+            [
+              "Service suspended on part of the route",
+              "Check which turnback stations you can reach and the alternative lines",
+              "All parallel routes are operating normally"
+            ],
+            [
+              "Widespread suspension announced in advance",
+              "Cut back your travel early and contact your accommodation",
+              "The last service will run to the original timetable"
+            ],
+            [
+              "No clear time for service to resume",
+              "Rearrange essential plans",
+              "Service will definitely resume after a short wait"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "If transport disruption affects accommodation you have booked, first contact the hotel to explain the situation and your intended arrangements, and keep both sides' replies. You can replace a planned day trip to an outlying area with activities within walking distance of your accommodation, but do not assume that walking in bad weather is automatically a safe backup. Decide whether to go out or whether further travel is necessary based on official alerts, local conditions, and your own circumstances. Sometimes the safe backup is to stay at your accommodation and rest."
+        },
+        {
+          "type": "heading",
+          "text": "Check the costs of an alternative route before buying new tickets",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After finding another route, confirm that it is actually operating today, where its entrance is, whether you need a separate ticket, and how you will reach your destination on the final leg. If you have large luggage or a companion who has difficulty using stairs, a workable transfer requires more than two lines intersecting on a map. First ask the railway company whether its alternative transport arrangements apply to your ticket type, mobile ticket, or transit card. Other travelers' experiences are no substitute for the rules."
+        },
+        {
+          "type": "paragraph",
+          "text": "Taxis and buses may also be affected by road conditions, queues, and weather, so check current costs and travel times. If the new plan only just gets you there in time and leaves no room for unexpected problems, consider canceling nonessential activities. For long-distance alternatives across prefectures, take particular care to check last departures and whether you can check into your accommodation. Do not buy a string of riskier new tickets just to salvage an original sightseeing ticket."
+        },
+        {
+          "type": "heading",
+          "text": "Keep original tickets and records; request refunds through the original purchase channel",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep your original tickets, reservation numbers, payment records, and service notices until ticket arrangements are resolved. Eligibility for refunds, rescheduling, fee waivers, or travel on other services depends on the applicable rules of the carrier and purchase channel. Travel platforms, official railway websites, and station ticket counters may handle requests differently. Do not discard a paper ticket and then expect a screenshot to qualify for the same procedure. A delay certificate and refund eligibility are also separate matters."
+        },
+        {
+          "type": "heading",
+          "text": "Break changes into three parts: now, the next leg, and tonight",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When service is suspended, start by dividing a note on your phone into three columns. Under \"now,\" record your current station, the correct line, train status, and the time you checked. Under \"next leg,\" record the service you originally planned to connect to and whether you have already bought a ticket. Under \"tonight,\" record your accommodation and anything you must arrive in time for. This lets you tell station staff directly where you need to go and what tickets you hold, instead of showing them a map of your entire trip and expecting them to guess your priorities."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you originally planned to visit an attraction before going to your hotel. If the time for service to resume remains uncertain, first consider skipping the attraction and going straight to your accommodation. This reduces the connections your plans depend on; it does not mean the alternative route will necessarily be faster. When checking a new route, verify the operating status of each operator along the way. One railway resuming service does not mean all connecting services and onward transfers are also back to normal."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you are comparing a bus, another railway, or staying overnight, first ask how your original ticket should be handled, then check actual availability for the alternatives. Do not immediately buy an unchangeable ticket for the next leg merely because a map shows that a route exists. Confirm fares, alternative transport arrangements, and refund eligibility against the notices for that disruption and your ticket type. Keep the original order, change notifications, and new arrangements so you can submit any later requests through the official process."
+        },
+        {
+          "type": "paragraph",
+          "text": "If your travel companions are separated, agree on a fixed meeting point and a way to share updates. Avoid having everyone follow different social media reports at the same time. Share confirmed facts first, such as where you currently are and which section you cannot travel on; clearly mark any unconfirmed resumption time as needing verification. Once a new plan lets everyone arrive safely and complete the essentials, there is no need to keep adding transfers just to recover the original itinerary."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Note your current location, then update your travel companions",
+          "text": "The station, exit, next meeting point, and one main contact person are more useful than repeatedly sharing different navigation screenshots. After revising your itinerary, keep just one current plan and clearly state which tickets have not yet been bought and which reservations still await a reply."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Read the operator's notices and cross-check information at the station.",
+            "First contact the providers for your flight, accommodation, or other essential plans.",
+            "Check whether alternative lines are actually operating and whether transfers are feasible.",
+            "Keep original tickets and receipts, and handle requests through the original purchase channel."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "When rearranging travel within Tokyo, first distinguish what each ticket covers",
+              "kind": "howto",
+              "slug": "tokyo-transit-passes"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "JR East: Official Train Service Information and Update Limitations",
+          "url": "https://traininfo.jreast.co.jp/train_info/e/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "日本の電車が運休したときの予定変更：公式情報の確認、乗車券の保管、代替案の検討順序",
+      "description": "経路案内にルートが表示されていても、列車が運行しているとは限りません。遅延や運休が発生したら、まず運行会社と影響区間を確認し、待つか、別ルートにするか、その日の遠出を取りやめるかを決めましょう。",
+      "hero": {
+        "src": "/guides/japan-train-disruption-plan/hero.jpg",
+        "alt": "雨の日の駅で紙の地図を確認する旅行者と、そのそばの荷物（AI 生成のイメージイラスト、実写ではありません）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair・AI生成のイメージイラスト",
+          "license": "AI生成、実写ではありません",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "旅行中に列車の遅延を知ると、つい経路案内を何度も更新してしまいがちです。しかし、経路案内の提案、駅構内の放送、鉄道会社の運行情報では、更新時刻が異なる場合があります。この記事では、一般の旅行者が運行異常に遭遇したときの対応順序を紹介します。リアルタイムの災害情報ではなく、別の路線で必ず代替できると保証するものでもありません。当日の安全に関する指示や係員の案内を優先してください。"
+        },
+        {
+          "type": "heading",
+          "text": "まず、どの会社のどの区間で問題が起きているかを確認",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ駅に JR、私鉄、地下鉄が乗り入れていることがあります。まず切符の券面、ホームの表示、路線名を見て、実際に利用する運行会社を特定しましょう。JR 東日本には独自の公式運行情報ページがあり、関東、東北、信越、新幹線などのエリア別に分類されています。日本全国の鉄道を網羅するページではありません。複数の会社にまたがる直通列車も連鎖的に影響を受けることがあるため、目的地のある路線にお知らせが出ていないからといって、移動全体に影響がないとは判断しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "お知らせは、影響区間、方向、原因、現在の状況の四つに分けて確認します。遅延、運転見合わせ、一部区間での折り返し運転、運休予告では、旅程への影響が異なります。公式ページにも、掲載情報と実際の運行状況に差が生じる場合があり、ページは自動更新されないと注意書きがあります。確認するときは手動で更新し、現地の案内表示とも照合しましょう。想定していた警告が表示されていなくても、次の列車が必ず定刻どおりに来るとは限りません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "地方の在来線では、特に代替案を先に考えておきましょう。仙台から山寺へ向かう JR 仙山線のように、アクセスが一路線に限られる近郊路線は、運休すると並行する代替路線がなく、待つか予定を変更するしかありません。具体例は次の記事をご覧ください："
+            },
+            {
+              "type": "article",
+              "text": "仙台発・山寺（立石寺）日帰り旅：仙山線の乗り方と1,015 段の石段を登る所要時間",
+              "kind": "howto",
+              "slug": "yamadera-day-trip-from-sendai"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-train-disruption-plan/diagram-1-ja.svg",
+          "alt": "四つの手順：運行会社を特定、必須の予定を守る、代替路線を確認、元の切符と領収書を保管",
+          "width": 1600,
+          "height": 900,
+          "caption": "編集部が提案する対応の順序です。模式図は地理的な距離、サービスの保証、効果の実測結果を示すものではありません。",
+          "description": "順に確認：運行会社を特定、必須の予定を守る、代替路線を確認、元の切符と領収書を保管。編集部による整理であり、地図や実測時間ではありません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "まず必須の予定を守り、観光の予定はその後に",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "今日の予定を、必ず済ませるもの、日程を変更できるもの、諦められるものに分けます。帰りの便、予約確定済みの宿泊先、連絡が必要な飲食店への対応を優先しましょう。別のショッピングエリアや郊外の観光地は、比較的省きやすいものです。すべての観光地を回ろうとして乗り換えを次々に追加すると、荷物や体力の負担、最終便に間に合わないリスクまで増えてしまいます。近くで待つなら、運行情報を確認でき、休憩ができて、避難の妨げにならない場所を選びましょう。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状況",
+            "まず取るとよい行動",
+            "思い込まないこと"
+          ],
+          "rows": [
+            [
+              "短時間の遅延だが運行中",
+              "現地の列車運行状況と予想される影響を確認",
+              "次の駅で必ず乗り継げる"
+            ],
+            [
+              "一部区間で運転見合わせ",
+              "到達できる折り返し駅と代替路線を調べる",
+              "並行する路線はすべて平常運行"
+            ],
+            [
+              "広範囲の運休予告",
+              "早めに移動範囲を縮小し、宿泊先へ連絡",
+              "最終便は当初の時刻表どおりに出発する"
+            ],
+            [
+              "明確な再開時刻が不明",
+              "必須の予定を組み直す",
+              "少し待てば必ず再開する"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "交通の途絶が予約済みの宿泊に影響する場合は、まずホテルへ連絡し、状況と今後の予定を説明して、双方のやり取りを保存します。予定していた郊外への日帰り旅行は、宿泊先の近くや徒歩圏内での活動に変更できますが、悪天候の中での散歩を無条件に安全な代替案と考えてはいけません。外出するか、引き続き移動する必要があるかは、公的な警報、現地の環境、自分の状態に基づいて判断しましょう。宿泊先で休むことが、安全な代替案になる場合もあります。"
+        },
+        {
+          "type": "heading",
+          "text": "代替ルートの負担を確認してから、新しい切符を買う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "別のルートが見つかったら、今日実際に運行しているか、入口はどこか、別途切符を買う必要があるか、最後の区間で目的地までどう移動するかを確認します。大きな荷物がある場合や同行者が階段を使いにくい場合、乗り換えが可能かどうかは、地図上で二つの路線が交差しているだけでは判断できません。振替輸送が手持ちの切符の種類、モバイル乗車券、交通系ICカードに適用されるかは、まず鉄道会社に確認し、ほかの旅行者の経験を規則の代わりにしないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "タクシーやバスも、道路状況、待ち行列、天候の影響を受けることがあります。費用と所要時間は、その時点で確認してください。新しい案でもぎりぎり間に合うだけで、不測の事態に対応する余裕がないなら、必須ではない予定の取りやめを検討しましょう。都道府県をまたぐ長距離の代替ルートでは、特に最終便と宿泊先にチェックインできるかを確認する必要があります。もともとの観光用の切符一枚を無駄にしないために、さらにリスクの高い切符を次々と買い足さないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "元の切符と記録を保管し、払い戻しは購入元で手続き",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "切符の取り扱いがはっきりするまでは、元の切符、予約番号、支払い記録、運行に関するお知らせを保管します。払い戻し、日程変更、手数料の免除、別の便の利用が可能かどうかは、運送事業者と購入元の適用規則で決まります。旅行予約サイト、鉄道会社の公式サイト、駅で購入した場合では、受付方法が異なることがあります。紙の切符を先に捨ててから、スクリーンショットで同じ手続きを求めないようにしてください。遅延証明書と払い戻しの対象条件も別のものです。"
+        },
+        {
+          "type": "heading",
+          "text": "変更への対応を「今」「次の区間」「今夜」の三つに分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "運休に遭遇したら、まずスマートフォンのメモを三つの欄に分けるとよいでしょう。「今」の欄には、現在いる駅、正確な路線名、列車の状況、確認時刻を記録します。「次の区間」には、当初乗り継ぐ予定だった交通機関と、切符を購入済みかどうかを記録します。「今夜」には、宿泊先と必ず到着しなければならない用件を書きます。こうしておけば、駅員に尋ねるときに、どこへ行きたいのか、どの切符を持っているのかを明確に伝えられます。旅行全体の地図だけを見せて、優先順位を相手に推測してもらう事態を避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、もともとは観光地に寄ってからホテルへ行く予定だったとしても、交通の再開時刻が不明なら、まず観光地を取りやめて宿泊先へ直行することを検討しましょう。これは乗り継ぎに必要な条件を減らす方法であり、代替ルートのほうが必ず早いという意味ではありません。新しいルートを確認するときは、途中で利用する各社の運行状況をそれぞれ調べてください。一つの鉄道路線が再開しても、すべての接続交通や次の乗り継ぎも同時に平常どおりになるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "バス、別の鉄道、一泊して待つ方法を比較しているなら、まず元の切符の扱いを確認し、その後で代替の選択肢に実際に空きがあるかを調べましょう。地図上に路線が表示されているだけで、変更できない次の区間の切符をすぐに買わないでください。運賃、振替輸送、払い戻しの対象条件は、その都度のお知らせと切符の種類に基づいて確認します。元の予約記録、変更通知、新しい予定を保存しておくと、後日、正式な手順で申請しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同行者が別々の場所にいるときは、固定の集合場所と情報の更新方法を決め、一人ひとりが同時に別々のSNS情報を追わないようにしましょう。まず、現在どこにいるか、どの区間に乗れないかなど、確認済みの事実を伝えます。未確認の運転再開時刻は「要確認」と明記してください。新しい案で全員が安全に到着でき、必須の用事を済ませられるなら、元の旅程を取り戻すために乗り換えを増やし続ける必要はありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず現在地を記録し、同行者と共有する",
+          "text": "駅、出口、次の集合場所、主な連絡担当者一人を決めて共有するほうが、異なる経路案内のスクリーンショットを何度も送るより役立ちます。予定を変更したら、最新の案だけを一つ残し、どの切符が未購入で、どの予約が返答待ちなのかを明確に伝えましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "運行会社のお知らせを読み、現地の情報と照合する。",
+            "まず航空便、宿泊先、その他の必須予定の関係先へ連絡する。",
+            "代替路線の実際の運行状況と乗り換え条件を調べる。",
+            "元の切符と領収書を保管し、購入元で手続きをする。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "東京都心の移動を組み直すときは、まず切符の利用可能範囲を確認",
+              "kind": "howto",
+              "slug": "tokyo-transit-passes"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "JR 東日本：公式の列車運行情報と更新上の制約",
+          "url": "https://traininfo.jreast.co.jp/train_info/e/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "일본 열차 운행 중단 시 일정 변경법: 공식 정보 확인, 승차권 보관과 대안 검토 순서",
+      "description": "길찾기에 경로가 나온다고 열차가 운행 중이라는 뜻은 아닙니다. 지연이나 운행 중단이 발생하면 먼저 운영 회사와 영향 구간을 확인한 뒤 기다릴지, 경로를 바꿀지, 당일 장거리 일정을 취소할지 결정하세요.",
+      "hero": {
+        "src": "/guides/japan-train-disruption-plan/hero.jpg",
+        "alt": "비 오는 날 역에서 종이 지도를 살펴보는 여행객과 옆에 놓인 짐(AI 생성 예시 일러스트, 실제 촬영 사진 아님)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 생성 예시 일러스트",
+          "license": "AI 생성, 실제 사진 아님",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "여행 중 열차 지연을 알게 되면 가장 쉽게 하는 행동은 길찾기를 계속 새로고침하는 것입니다. 하지만 길찾기에 표시되는 경로, 역 현장 방송, 철도 회사의 운행 공지는 업데이트 시점이 다를 수 있습니다. 이 글은 일반 여행객이 운행 이상을 겪었을 때의 대응 순서를 안내합니다. 실시간 재난 상황 안내가 아니며, 다른 노선으로 반드시 대체할 수 있다고 보장하지도 않습니다. 당일의 안전 지침과 직원 안내를 우선 따르세요."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 어느 회사의 어느 구간에 문제가 생겼는지 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 역에 JR, 사철, 지하철이 함께 있을 수 있습니다. 먼저 승차권, 승강장 표지나 노선명을 보고 실제로 이용하는 운영 회사를 확인하세요. JR 동일본은 간토, 도호쿠, 신에쓰, 신칸센 등 지역·노선별로 구분된 자체 공식 운행 정보 페이지를 운영합니다. 일본의 모든 철도를 한눈에 보여주는 페이지는 아닙니다. 여러 회사의 노선을 오가는 직통열차도 연쇄적으로 영향을 받을 수 있으므로, 목적지가 속한 노선에 공지가 없다는 이유만으로 전체 여정에 영향이 없다고 단정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "공지를 영향 구간, 방향, 원인, 현재 상태의 네 가지로 나누어 읽으세요. 지연, 운행 일시 중단, 일부 구간 회차, 운행 중단 예고는 일정에 미치는 의미가 서로 다릅니다. 공식 페이지에서도 정보와 실제 운행에 차이가 있을 수 있으며 페이지가 자동으로 갱신되지 않는다고 안내합니다. 확인할 때 직접 새로고침하고 현장 안내판도 다시 대조하세요. 예상했던 경고가 표시되지 않는다고 다음 열차가 반드시 정시에 온다는 뜻은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "지방의 일반 철도 노선은 대안을 더 먼저 생각해 두어야 합니다. 센다이에서 야마데라로 가는 JR 센잔선처럼 하나의 노선으로 오가는 근교 노선은 운행이 중단되면 나란히 달리는 대체 노선이 없어 기다리거나 일정을 바꿀 수밖에 없습니다. 관련 사례는 다음 글을 참고하세요: "
+            },
+            {
+              "type": "article",
+              "text": "센다이 출발 야마데라(릿샤쿠지) 당일치기: 센잔선 이용법과 1,015개 돌계단을 오르는 데 걸리는 시간",
+              "kind": "howto",
+              "slug": "yamadera-day-trip-from-sendai"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-train-disruption-plan/diagram-1-ko.svg",
+          "alt": "네 단계 대응 절차: 운영 회사 확인, 필수 일정 확보, 대체 노선 확인, 원래 승차권과 증빙 보관",
+          "width": 1600,
+          "height": 900,
+          "caption": "편집부가 권하는 대응 순서입니다. 도해는 지리적 거리, 서비스 보장이나 실제 효과 측정 결과를 나타내지 않습니다.",
+          "description": "순서대로 확인하세요: 운영 회사 확인, 필수 일정 확보, 대체 노선 확인, 원래 승차권과 증빙 보관. 편집부가 정리한 자료로, 지도나 실제 측정 시간이 아닙니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "필수 일정을 먼저 확보한 뒤 관광 일정을 조정하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "오늘 일정을 반드시 해야 하는 것, 날짜를 바꿀 수 있는 것, 포기할 수 있는 것으로 나누세요. 돌아가는 항공편, 확정된 숙소, 연락이 필요한 식당부터 처리해야 합니다. 다른 쇼핑 거리나 먼 교외 관광지는 대체로 빼기 쉽습니다. 모든 관광지를 지키려다 환승을 연달아 추가해 짐을 옮기는 부담, 체력 소모, 막차를 놓칠 위험까지 함께 키우지 마세요. 근처에서 기다릴 계획이라면 공지를 확인할 수 있고 쉴 수 있으며 대피에 방해가 되지 않는 장소부터 고르세요."
+        },
+        {
+          "type": "table",
+          "header": [
+            "상황",
+            "더 합리적인 첫 조치",
+            "섣불리 단정하지 말 것"
+          ],
+          "rows": [
+            [
+              "잠시 지연되지만 운행 중",
+              "현장의 열차 운행편과 예상 영향 확인",
+              "다음 역에서 반드시 환승할 수 있다"
+            ],
+            [
+              "일부 구간 운행 일시 중단",
+              "갈 수 있는 회차역과 대체 노선 확인",
+              "나란히 달리는 모든 노선이 정상 운행한다"
+            ],
+            [
+              "광범위한 운행 중단 예고",
+              "미리 이동 범위를 줄이고 숙소에 연락",
+              "막차가 원래 시간표대로 출발한다"
+            ],
+            [
+              "명확한 운행 재개 시각 없음",
+              "필수 일정 재조정",
+              "조금만 기다리면 반드시 운행이 재개된다"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "교통 중단이 예약한 숙소 이용에 영향을 준다면 먼저 호텔에 연락해 상황과 예정된 계획을 설명하고 양측의 답변을 보관하세요. 원래 계획한 먼 교외 당일치기 여행은 숙소 근처에서 걸어갈 수 있는 활동으로 바꿀 수 있습니다. 다만 악천후 속 산책을 당연히 안전한 대안으로 여기지는 마세요. 외출할지, 계속 이동해야 할지는 공식 경보, 현장 환경, 자신의 상태를 바탕으로 판단하세요. 때로는 숙소에 머물며 쉬는 것이 안전한 대안입니다."
+        },
+        {
+          "type": "heading",
+          "text": "대체 경로의 비용과 부담을 확인한 뒤 새 표를 사세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 경로를 찾았다면 오늘 실제로 운행하는지, 입구가 어디인지, 표를 따로 사야 하는지, 마지막 구간에서 목적지까지 어떻게 가는지 확인하세요. 큰 짐이 있거나 동행자가 계단을 이용하기 어렵다면 지도에서 두 노선이 만난다는 것만으로 환승이 가능하다고 볼 수 없습니다. 이른바 대체 수송이 자신이 가진 승차권 종류, 모바일 승차권이나 교통카드에도 적용되는지 먼저 철도 회사에 확인하세요. 다른 여행객의 경험을 규정 대신 기준으로 삼지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "택시나 버스도 도로 상황, 대기 줄, 날씨의 영향을 받을 수 있으므로 요금과 소요 시간은 그때 확인해야 합니다. 새 계획으로도 간신히 시간에 맞출 뿐 돌발 상황에 대처할 여유가 전혀 없다면 필수가 아닌 일정은 취소하는 편을 고려하세요. 현이나 시 경계를 넘는 장거리 대안은 특히 막차와 숙소 체크인 가능 여부를 확인해야 합니다. 원래 가진 관광 승차권 한 장을 살리려고 위험이 더 큰 새 표를 잇달아 사지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "원래 승차권과 기록을 보관하고 환불은 원래 구매처에서 진행하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "승차권 처리가 명확해질 때까지 원래 승차권, 예약 번호, 결제 기록과 운행 공지를 보관하세요. 환불, 날짜 변경, 수수료 면제나 다른 열차 이용 가능 여부는 운송 회사와 구매처의 적용 규정에 따라 결정됩니다. 여행 플랫폼, 철도 공식 웹사이트, 역에서 산 표는 접수 방식이 다를 수 있습니다. 종이 승차권을 먼저 버린 뒤 스크린샷으로 같은 절차를 적용해 달라고 요구하지 마세요. 지연 증명과 환불 자격도 서로 다른 문제입니다."
+        },
+        {
+          "type": "heading",
+          "text": "변경 사항을 지금, 다음 구간, 오늘 밤으로 나누세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "운행이 중단되면 먼저 휴대전화 메모를 세 칸으로 나눠 보세요. 지금 칸에는 현재 역, 정확한 노선, 열차 상태와 조회 시각을 적습니다. 다음 구간에는 원래 환승하려던 교통편과 승차권 구매 여부를 기록합니다. 오늘 밤에는 숙소와 반드시 도착해야 하는 일정을 적습니다. 이렇게 하면 역무원에게 물을 때 어디로 가야 하고 어떤 표를 갖고 있는지 바로 설명할 수 있습니다. 전체 여행 지도 한 장만 보여주며 상대가 우선순위를 짐작하게 하지 않아도 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "원래 관광지를 들른 뒤 호텔로 갈 계획이었다고 가정해 보세요. 교통 운행 재개 시각이 여전히 불확실하다면 관광지를 취소하고 숙소로 바로 가는 방안을 먼저 고려하세요. 이는 일정 사이의 연결 조건을 줄이는 방법이지, 대체 경로가 반드시 더 빠르다는 뜻은 아닙니다. 새 경로를 확인할 때는 도중에 이용할 각 회사의 운행 상황을 따로 확인하세요. 어느 한 철도가 운행을 재개했다고 모든 연결 교통편과 다음 환승 구간도 동시에 정상화되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "버스, 다른 철도, 하룻밤 숙박하는 방안을 비교 중이라면 먼저 원래 승차권을 어떻게 처리해야 하는지 묻고, 대체 교통편에 실제로 자리가 있는지 확인하세요. 지도에 어떤 노선이 있다는 이유만으로 변경할 수 없는 다음 구간 표를 바로 사지 마세요. 요금, 대체 수송과 환불 자격은 해당 공지와 승차권 종류에 따라 확인해야 합니다. 원래 주문 내역, 변경 안내와 새 계획을 보관하면 나중에 정식 절차에 따라 신청하기 편합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동행자들이 흩어졌다면 고정된 집합 장소와 정보 공유 방식을 정하세요. 각자 동시에 서로 다른 소셜미디어 소식을 쫓지 마세요. 현재 어디에 있는지, 어느 구간을 이용할 수 없는지처럼 확인된 사실부터 전달하고, 아직 확인되지 않은 운행 재개 시각은 확인 대기 중이라고 명확히 표시하세요. 새 계획으로 모두 안전하게 도착하고 필수 일정을 마칠 수 있다면 원래 일정을 되찾으려고 계속 환승을 늘릴 필요는 없습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "현재 위치부터 적고 동행자와 공유하세요",
+          "text": "역, 출구, 다음 집합 장소와 주 연락 담당자 한 명을 정하는 것이 서로 다른 길찾기 스크린샷을 반복해서 보내는 것보다 유용합니다. 일정을 바꾼 뒤에는 최신 계획 하나만 남기고, 아직 사지 않은 승차권과 답변을 기다리는 예약이 무엇인지 명확히 알리세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "운영 회사 공지를 읽고 현장 정보와 대조하세요.",
+            "항공편, 숙소나 다른 필수 일정의 담당 업체에 먼저 연락하세요.",
+            "대체 노선의 실제 운행 여부와 환승 조건을 확인하세요.",
+            "원래 승차권과 영수증을 보관하고 원래 구매처에서 처리하세요."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도쿄 시내 교통편을 다시 계획할 때는 먼저 승차권의 적용 범위를 구분하세요",
+              "kind": "howto",
+              "slug": "tokyo-transit-passes"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "JR 동일본: 공식 열차 운행 정보와 업데이트의 한계",
+          "url": "https://traininfo.jreast.co.jp/train_info/e/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "日本电车停运时怎么改行程：查官方信息、保留车票与安排备选方案的顺序",
+      "description": "导航还有路线，不代表列车正在运行。遇到延误或停运，先确认运营公司与受影响区间，再决定等待、改线或取消当天远行。",
+      "hero": {
+        "src": "/guides/japan-train-disruption-plan/hero.jpg",
+        "alt": "旅客在雨天车站查看纸质地图，旁边有行李（AI 生成示意插画，非实拍）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 生成示意图",
+          "license": "AI 生成，非实拍",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "旅行中看到列车延误，最容易做的事是不断刷新导航。但导航提供的方案、车站现场广播和铁路公司的运行公告，更新时间可能不同。这篇提供普通旅客遇到异常时的处理顺序，不是实时灾情通报，也不承诺其他路线一定可以替代。当天的安全指示和工作人员安排应优先遵循。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认哪家公司、哪个区间出问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一座车站可能有 JR、私铁和地铁，先看票面、站台标识或路线名称，找出实际乘坐的运营商。JR 东日本有自己的官方运行信息页，按关东、东北、信越、新干线等区域分类；它不是全日本所有铁路的总览。跨公司的直通列车也可能受连带影响，因此不要因为目的地所在路线没有公告，就直接推断整段旅程不受影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把公告拆成四项：受影响区间、方向、原因、当前状态。延误、暂停运行、部分区间折返和预告停运，对行程的意义不同。官方页面也提醒信息与实际运行可能有出入，页面并非自动更新；查看时手动刷新，并再次核对现场信息牌。没有显示你预期的警示，也不等于下一班一定准点。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "地方普通铁路更要先想好备选方案：像仙台到山寺的 JR 仙山线这种靠一条线路进出的近郊路线，停运时没有平行的替代路线，只能等或改行程，例子见"
+            },
+            {
+              "type": "article",
+              "text": "仙台出发山寺（立石寺）一日游：仙山线怎么坐、1,015 级石阶要爬多久",
+              "kind": "howto",
+              "slug": "yamadera-day-trip-from-sendai"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-train-disruption-plan/diagram-1-zh-cn.svg",
+          "alt": "四步流程：识别运营商、保住必要行程、检查替代线路、保留原票和单据",
+          "width": 1600,
+          "height": 900,
+          "caption": "编辑建议的处理顺序；示意图不代表地理距离、服务保证或效果实测。",
+          "description": "依次检查：识别运营商、保住必要行程、检查替代线路、保留原票和单据。编辑整理，非地图或实测时间。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "先保住必要行程，再处理观光行程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把今天的安排分成必须完成、可以改期和可以放弃。返程航班、已确认住宿和需要联系的餐厅应先处理；另一个商圈或远郊景点通常较容易删减。不要为了保留全部景点，连续增加多次换乘，把行李、体力负担和末班车风险一起放大。要留在附近等待，先选能接收公告、可休息且不妨碍疏散的地方。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "情况",
+            "较合理的第一步",
+            "不要直接假设"
+          ],
+          "rows": [
+            [
+              "短暂延误但仍运行",
+              "确认现场班次与预计影响",
+              "下一站换乘一定接得上"
+            ],
+            [
+              "部分路段暂停运行",
+              "查询可抵达的折返站与替代线路",
+              "所有平行路线都正常"
+            ],
+            [
+              "预告大范围停运",
+              "提前缩短出行距离并联系住宿",
+              "最后一班会按原时刻表发车"
+            ],
+            [
+              "无明确恢复时间",
+              "重新安排必要行程",
+              "等一下就一定恢复"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "如果交通中断影响已订住宿，先联系酒店说明情况与预计安排，保留双方回复。原订远郊一日游可改成住宿附近、步行距离内的活动，但不要默认恶劣天气下的散步就是安全的备选方案。是否外出、是否仍需出行，根据官方警报、现场环境与自己的状况判断。安全的备选方案有时就是留在住宿处休息。"
+        },
+        {
+          "type": "heading",
+          "text": "确认替代路线的代价，再买新票",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "找到另一条路线后，确认它今天确实运营、入口在哪里、是否要另外购票，以及最后一段如何抵达目的地。带大型行李或同行者不便走楼梯时，换乘是否可行，不能只看地图上两条线是否交会。所谓替代运输是否适用于自己的票种、手机票或交通卡，先向铁路公司确认，不以其他旅客的经验代替规则。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出租车或巴士也可能受道路、排队和天气影响，费用与时间应当场核实。若新方案只是勉强赶上、没有任何处理突发状况的余地，就应考虑取消非必要行程。跨县市的长距离替代方案，尤其要核对末班车和能否入住，不要为了一张原本的观光票再买一连串风险更高的新票。"
+        },
+        {
+          "type": "heading",
+          "text": "保留原票和记录，退款走原购买渠道",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在票务处理清楚前保留原票、预订编号、付款记录与运行公告。是否可退款、改期、免手续费或使用其他班次，由承运方与购票渠道的适用规则决定。旅游平台、铁路官网与车站购票的受理方式可能不同；不要先丢掉纸票，再用截图要求适用同一流程。延误证明与退款资格也不是同一回事。"
+        },
+        {
+          "type": "heading",
+          "text": "把行程变动拆成现在、下一段与今晚三层",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到停运时，可以先把手机备忘录分成三栏。现在这一栏记录所在站、正确路线、列车状态与查询时间；下一段记录原本要换乘的交通服务，以及是否已买票；今晚则是住宿与必须到场的事项。这样询问站务人员时，可以直接说清楚自己要到哪里、持有什么票，避免只拿着一张整趟旅行地图请对方猜优先顺序。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设你原本先到景点再去酒店，当交通恢复时间仍不确定，就先考虑取消景点、直接到住宿地。这是减少衔接条件的方法，不代表替代路线一定更快。确认新路线时，把途中每家运营商的运营情况分别查清楚；某一条铁路恢复，并不代表所有接驳与下一段换乘也同步正常。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果正在比较巴士、其他铁路或住宿一晚的做法，先问原车票如何处理，再看替代选项是否确实有空位。不要只看地图显示存在某条线，就立即购买不能更改的下一段票。票价、替代运输与退费资格按当次公告及票种确认；保留原订单、变更通知与新安排，方便日后依正式流程提出申请。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同行者分散时，约定固定集合点与信息更新方式，不要每个人同时追踪不同的社交媒体消息。先传达已确认的事实，例如目前在哪里、哪一段无法乘坐；尚未确认的恢复时间明确标为待查。当新方案能让大家安全抵达并完成必要事项，就不必为了追回原行程而继续增加换乘。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先记下当前位置，再和同行者同步",
+          "text": "车站、出口、下一个集合点与一位主要联系人，比反复传不同导航截图更有用。改完行程后，只保留一份最新方案，明确说明哪些车票还没买、哪些预订尚待回复。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "阅读运营商公告并核对现场信息。",
+            "先联系航班、住宿或其他必要行程的相关方。",
+            "查询替代线路的实际运营与换乘条件。",
+            "保存原票与收据，依原渠道办理。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新安排东京市区交通时，先分清票券适用范围",
+              "kind": "howto",
+              "slug": "tokyo-transit-passes"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "JR 东日本：官方列车运行信息及更新限制",
           "url": "https://traininfo.jreast.co.jp/train_info/e/",
           "checked_on": "2026-09-14"
         }
