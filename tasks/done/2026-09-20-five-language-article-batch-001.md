@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-five-language-article-batch-001
 title: Five-language article batch 001
-status: in-progress
+status: done
 priority: P1
 area: meta
 owner: codex-article-localization
 claimed_at: 2026-09-20T02:55:48Z
 created_at: 2026-09-20T02:55:32Z
-completed_at:
+completed_at: 2026-09-20T05:46:54Z
 branch: codex/article-localization-batch-001
 depends_on:
   - 2026-09-20-five-language-article-release-tooling
@@ -42,17 +42,17 @@ ordering, visibility or existing prose.
 - [x] All six guides contain complete independently reviewed zh-TW documents.
 - [x] Any embedded image text has a hash-bound zh-TW rendition with visual checks.
 - [x] The reviewed bundle installs idempotently and passes local guide and link checks.
-- [ ] The exact PR head is merged, backed up, deployed and health checked.
-- [ ] Only the six authorized zh-TW locales are published and browser verified.
+- [x] The exact PR head is merged, backed up, deployed and health checked.
+- [x] Only the six authorized zh-TW locales are published and browser verified.
 
 ## Steps
 
 - [x] Capture a fresh read-only production snapshot and rebuild the baseline.
 - [x] Translate, render and independently review the six zh-TW documents.
 - [x] Assemble and install batch 001 from the reviewed, hash-bound artifacts.
-- [ ] Open and merge the content PR.
-- [ ] Back up and deploy the exact merged revision.
-- [ ] Dry-run, publish and verify the six zh-TW public pages.
+- [x] Open and merge the content PR.
+- [x] Back up and deploy the exact merged revision.
+- [x] Dry-run, publish and verify the six zh-TW public pages.
 
 ## How to verify
 
@@ -88,3 +88,31 @@ Local validation: all six packs load with exactly five locales; 38 guide content
 and series tests passed with 24 environment skips; five-locale i18n validation
 passed. Assembled internal routes use zh-TW paths, article references retain their
 identity for runtime publication checks, and existing locale prose stayed intact.
+
+PR #579 was merged as `9d5f77e2f8af516a4260aa555145bd13fa6e5547`
+after all eight required checks passed. Main-branch CI run 35491278150 then passed
+the API, web, container and full-stack smoke jobs for that exact commit. The guarded
+production release built and activated the same commit; `/health` and `/ready`
+returned HTTP 200 and all application services used the target images.
+
+The custom-format pre-deploy backup is
+`/root/mokaair-localization-9d5f77e2f8af/predeploy.dump` with SHA-256
+`11d1af993592407d92002743a94285130d3dfa38eac61c0d369684505587dc42`.
+The pre-publication backup is
+`/root/mokaair-localization-9d5f77e2f8af/prepublish.dump` with SHA-256
+`71dbff1f1fd96a2b5a01890a54aceabf0ea542d891fb35394a45eedefec3160d`.
+Both were verified with `pg_restore --list` before their protected phase proceeded.
+
+The sealed publication journal finished with six draft operations, six article
+publication operations, zero hub operations and no pending entry. A direct database
+snapshot matched the journal's expected state: all six zh-TW documents have
+`version=2`, `published_version=2` and `latest_action=published`, while all 24
+pre-existing en, ja, ko and zh-CN locale records remained byte-for-byte unchanged.
+
+Browser verification covered every zh-TW route at desktop 1440x1000 and mobile
+390x844. All six pages and all six localized SVGs returned HTTP 200; the exact
+Traditional Chinese title and substantive body rendered, canonical and all five
+language alternates were correct, localized internal links had no wrong-locale
+targets, and no page had horizontal document overflow. The guarded clear-hold phase
+wrote its completion receipt only after this browser receipt and then removed the
+shared deployment hold.
