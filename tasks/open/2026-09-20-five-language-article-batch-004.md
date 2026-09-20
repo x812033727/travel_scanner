@@ -47,7 +47,7 @@ pack and asset paths above do not overlap another open task.
 - [x] Claim five non-overlapping paths and capture a fresh production snapshot.
 - [x] Translate twenty missing documents and render twenty localized SVGs.
 - [x] Complete hash-bound automated pre-review and read-only link-target checks.
-- [ ] Independently review all translated text, artwork glyphs and source images.
+- [x] Independently review all translated text, artwork glyphs and source images.
 - [ ] Assemble/install the reviewed bundle, then perform guarded PR and release.
 
 ## How to verify
@@ -119,3 +119,17 @@ The external installation journal SHA-256 is
 This PR carries only those four packs and sixteen localized SVGs. The four
 existing hero images are byte-identical references. Hong Kong will be handled
 after its corrected source is published and its four translations are rebased.
+Hong Kong ferry/tram was held until source PR #590 was merged and the live zh-TW
+locale republished at version 8, normalized SHA-256
+`e59b60f8ca4b19233820cc03e9126ddb0c4a29c70b06bed79ec43a3e359c5efa`.
+Four rebased jobs were independently reviewed against that source, including the
+7 kg OR 30 L rule, motorman discretion, alternate transport, attribution, links
+and 1600x900 SVG renders. The hash-bound handoff SHA-256 is
+`621e2ccbba95cab440aaae5de3a52011bfe4051afa7b70b84f08148cc7a4f0dd`;
+all four reviews pass `assemble_bundle.reviewed_document`. The single-article
+reviewed release bundle is staged outside the repository with manifest SHA-256
+`69d1bd84d1713492292472b8ef17cd78a0c27a8de410a8f055b2fe834bc9f02b`.
+Its repository pack retains the original metadata and zh-TW JSON unchanged and
+adds only en, ja, ko and zh-CN plus their four localized diagrams. Merge,
+deployment, publication and browser verification remain outstanding.
+The four-locale content PR is #595; it does not perform publication.
