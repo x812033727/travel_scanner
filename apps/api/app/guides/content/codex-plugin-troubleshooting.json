@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "區分已安裝、已連帳號、已授權與工具可用，依實際錯誤重連或移除需要處理的項目。",
+            "把插件問題縮小到可以驗證的一層，修正後用相同文件重新測試。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -263,23 +270,8 @@
           "text": "常見問題與恢復方式"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "找不到移除按鈕時，先看是否為工作區安裝或預設插件；這類項目可能由管理員控制，記錄限制即可。卸載插件只移除該環境的套件，獨立連接的 "
-            },
-            {
-              "type": "article",
-              "text": "MCP",
-              "kind": "life",
-              "slug": "ai-term-model-context-protocol"
-            },
-            {
-              "type": "text",
-              "text": " 可能仍存在。若要結束練習，分別確認 Installed 狀態與連線管理中的外部服務，再視需要撤銷自己練習帳號的授權。不要刪除別人依賴的共用連線，或把解除一次連線當成所有裝置都已停用。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "找不到移除按鈕時，先看是否為工作區安裝或預設插件；這類項目可能由管理員控制，記錄限制即可。卸載插件只移除該環境的套件，獨立連接的 MCP 可能仍存在。若要結束練習，分別確認 Installed 狀態與連線管理中的外部服務，再視需要撤銷自己練習帳號的授權。不要刪除別人依賴的共用連線，或把解除一次連線當成所有裝置都已停用。"
         },
         {
           "type": "rich_paragraph",
@@ -367,7 +359,7 @@
         {
           "title": "Plugins: installation, support and connections",
           "url": "https://learn.chatgpt.com/docs/plugins",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -385,6 +377,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Distinguish installation, account connection, authorization and callable tools before reconnecting or removing a plugin.",
+            "Narrow a plugin failure to one testable layer and repeat the same document request after a repair."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -714,7 +713,7 @@
         {
           "title": "Plugins: installation, support and connections",
           "url": "https://learn.chatgpt.com/docs/plugins",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -732,6 +731,13 @@
         "alt": "独自の手順図です。製品画面の画像ではありません。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "導入、アカウント接続、許可、ツール利用を区別し、原因に応じて再接続や削除を行います。",
+            "プラグイン障害を検証可能な層に絞り、修正後に同じ文書要求を再実行します。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -900,7 +906,7 @@
             },
             {
               "type": "text",
-              "text": "を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。ホストの沙盒と外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。"
+              "text": "を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。ホストのサンドボックスと外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。"
             }
           ]
         },
@@ -973,7 +979,7 @@
         },
         {
           "type": "paragraph",
-          "text": "削除ボタンがなければ管理者配布や既定項目かを確認し、制限を記録します。アンインストールはその環境の束を除去しますが、別接続の MCP は残り得ます。終了時は導入状態と外部接続管理を別々に確認し、必要なら自分の実習認可だけ失効します。共有接続や全端末を一括処理したと判断しません。"
+          "text": "削除ボタンがなければ管理者配布や既定項目かを確認し、制限を記録します。アンインストールはその環境のプラグインパッケージを除去しますが、別接続の MCP は残り得ます。終了時は導入状態と外部接続管理を別々に確認し、必要なら自分の実習認可だけ失効します。共有接続や全端末を一括処理したと判断しません。"
         },
         {
           "type": "rich_paragraph",
@@ -1057,7 +1063,7 @@
         {
           "title": "Plugins: installation, support and connections",
           "url": "https://learn.chatgpt.com/docs/plugins",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1075,6 +1081,13 @@
         "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "설치, 계정 연결, 승인, 도구 사용 가능 상태를 구분해 원인에 맞게 재연결하거나 제거합니다.",
+            "플러그인 오류를 검증 가능한 한 계층으로 좁힌 뒤 같은 문서를 다시 요청합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1400,7 +1413,7 @@
         {
           "title": "Plugins: installation, support and connections",
           "url": "https://learn.chatgpt.com/docs/plugins",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1418,6 +1431,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "区分已安装、已连帐号、已授权与工具可用，依实际错误重连或移除需要处理的项目。",
+            "把插件问题缩小到可以验证的一层，修正后用相同文件重新测试。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1747,7 +1767,7 @@
         {
           "title": "Plugins: installation, support and connections",
           "url": "https://learn.chatgpt.com/docs/plugins",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

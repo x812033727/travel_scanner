@@ -1,11 +1,12 @@
 {
-  "checkedAt": "2026-09-14T15:03:18.657136+00:00",
+  "checkedAt": "2026-09-20T02:59:05.556610+00:00",
   "status": "passed",
   "checks": [
     "Rendered lesson programs exactly match the reference sources",
     "A synthetic single-turn JSONL stream and exact fixture answer are accepted",
     "The exact authored wrong-count answer passes structural verify-only but fails fixture truth; original evidence stays valid",
     "The browser measurement parses as JavaScript only; no DOM, page, browser or preview was executed",
+    "Real CLI help confirms flags; an invalid sandbox exits during parsing and leaves old output unchanged without a model call",
     "Eight invalid shapes, types, revisions and count combinations are rejected",
     "Truncated JSONL, missing completion, failure events and duplicate or reversed turn boundaries are rejected",
     "A valid-looking final answer cannot override unsuccessful or incorrectly typed process status",
@@ -16,10 +17,16 @@
     "CI is manually triggered with pinned Actions, read-only permissions and a separate secret-free validation job",
     "The exact CI validation script accepts the fixture, rejects changed counts and writes matching synthetic run identifiers"
   ],
-  "cliProbe": null,
+  "cliProbe": {
+    "version": "codex-cli 0.155.0-alpha.9.2",
+    "helpSha256": "0e82cfde0122715250e93dc65866caa956b2ac5b9d0b20ec4ad4f9e81486509e",
+    "invalidFlagExit": 2,
+    "oldReportPreserved": true,
+    "modelInvoked": false
+  },
   "authorHashes": {
-    "26": "8f4bfc6e2c108af7067abbdeb4aca17a5809132f4c0ab25500f8bb0abf7d7f2b",
-    "29": "19d8e61615ff185ec2afe747f36659173d9a7568d9f049a7b0553e0c786bccfa",
+    "26": "29ece096c13bd25a297080bf88a1d2bfa001b735c64180ae984dfec5fb2c5eb4",
+    "29": "847c52b9b6895423470155a0b0d320b817bb1a6efd8472937003a62d53fd9526",
     "30": "72c85ebd1c95a8b347cad9c8643213736335c6ee7753021ed538e21c51952de6",
     "55": "eb86e765ece8dd8205fec46b14d88f666c53d9554e726427dec50963b0f157cd",
     "56": "05d16531f0005a0ec3dc9655704360fc59da326be80b71868a39d23008b03994",

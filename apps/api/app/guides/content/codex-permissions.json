@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "沙盒決定工具技術上能碰哪些檔案或網路，授權政策決定什麼時候需要詢問。",
+            "兩層設定不能混為一談：不顯示詢問不代表動作一定被允許，能讀檔也不代表可以寫入所有地方。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -80,23 +87,8 @@
           "text": "步驟 1：建立最小權限練習"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "在編輯器建立 codex-permissions-lab，新增 note.txt 與 request.txt，分別放以下兩段。它們只是虛構"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "，不需要 API 金鑰、登入檔或正式專案。開整合終端機，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 確認末端是此資料夾，避免用錯目前目錄來判斷沙盒。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "在編輯器建立 codex-permissions-lab，新增 note.txt 與 request.txt，分別放以下兩段。它們只是虛構標記，不需要 API 金鑰、登入檔或正式專案。開整合終端機，用 PowerShell 的 Get-Location 或 macOS／Linux 的 pwd 確認末端是此資料夾，避免用錯目前目錄來判斷沙盒。"
         },
         {
           "type": "code",
@@ -358,6 +350,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "沙盒决定工具技术上能碰哪些档案或网路，授权政策决定什么时候需要询问。",
+            "两层设定不能混为一谈：不显示询问不代表动作一定被允许，能读档也不代表可以写入所有地方。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -678,6 +677,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Sandbox rules define technical access to files and networks; approval policy determines when the agent asks before acting.",
+            "No prompt does not guarantee permission, and read access does not imply write access everywhere."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -997,6 +1003,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "サンドボックスは技術的なアクセス範囲、承認設定は確認するタイミングを制御します。",
+            "確認が出ないことと無制限に操作できることは同じではありません。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1311,6 +1324,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "샌드박스는 기술적인 접근 범위를, 승인 정책은 질문 시점을 제어합니다.",
+            "질문이 없다는 것과 무제한 실행이 가능하다는 것은 다릅니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

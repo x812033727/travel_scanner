@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "把重複邏輯與大型資料拆到必要的支援檔案，讓技能按需要讀取並驗證相對路徑。",
+            "把一份簡單技能拆成清楚的指令、規格、範本與可重複執行的檢查程式，完成一份能核對的待辦統計。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -202,23 +209,8 @@
           "text": "路徑反例：找到腳本，卻讀錯輸入位置"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "先確定目前位於 codex-skill-lab，且技能資料夾內沒有另一份 data/tasks.json，再逐行執行下面兩行。第一行移到技能根目錄；第二行能找到 scripts/count-tasks.mjs，但會在錯誤位置找 data/tasks.json，預期 ENOENT、退出 1，沒有成功 JSON。立即讀取退出碼後，用最後一行回到練習根目錄，再重跑前面的完整命令，應恢復 3／1／2。不要把 SKILL.md 的相對連結基準套到腳本的輸入"
-            },
-            {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
-            },
-            {
-              "type": "text",
-              "text": "。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "先確定目前位於 codex-skill-lab，且技能資料夾內沒有另一份 data/tasks.json，再逐行執行下面兩行。第一行移到技能根目錄；第二行能找到 scripts/count-tasks.mjs，但會在錯誤位置找 data/tasks.json，預期 ENOENT、退出 1，沒有成功 JSON。立即讀取退出碼後，用最後一行回到練習根目錄，再重跑前面的完整命令，應恢復 3／1／2。不要把 SKILL.md 的相對連結基準套到腳本的輸入參數。"
         },
         {
           "type": "code",
@@ -257,23 +249,8 @@
           "text": "步驟 5：使用技能並檢查交付"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "從練習根目錄開始新任務。桌面版在技能入口或輸入 @ 後選擇 todo-summary；CLI／IDE 用 /"
-            },
-            {
-              "type": "article",
-              "text": "skills",
-              "kind": "life",
-              "slug": "ai-term-agent-skills"
-            },
-            {
-              "type": "text",
-              "text": " 或輸入 $ 選擇。先確認選單中的名稱與檔案位置，若沒有出現，檢查專案根目錄和副檔名，重新開啟 Codex 後再試。以下是給代理的自然語言需求，不是要在 PowerShell 執行的命令。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "從練習根目錄開始新任務。桌面版在技能入口或輸入 @ 後選擇 todo-summary；CLI／IDE 用 /skills 或輸入 $ 選擇。先確認選單中的名稱與檔案位置，若沒有出現，檢查專案根目錄和副檔名，重新開啟 Codex 後再試。以下是給代理的自然語言需求，不是要在 PowerShell 執行的命令。"
         },
         {
           "type": "code",
@@ -385,6 +362,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Move repeated logic and large references into useful resources, then verify conditional loading and relative paths.",
+            "Split a simple skill into instructions, a specification, a template and a repeatable checker, then produce a verifiable task summary."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -718,6 +702,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "反復処理と大きな資料を支援ファイルに分け、必要時の読み込みと相対パスを確認します。",
+            "簡単なスキルを指示、仕様、テンプレート、繰り返し実行できる検査に分け、確認可能なタスク集計を作ります。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1046,6 +1037,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "반복 로직과 큰 자료를 지원 파일로 나누고 필요할 때 읽는 흐름과 상대 경로를 확인합니다.",
+            "간단한 스킬을 지침, 규격, 템플릿, 반복 실행 가능한 검사로 나누고 확인 가능한 작업 통계를 만듭니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1373,6 +1371,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "把重复逻辑与大型资料拆到必要的支援档案，让技能按需要读取并验证相对路径。",
+            "把一份简单技能拆成清楚的指令、规格、范本与可重复执行的检查程式，完成一份能核对的待办统计。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "把同一件事的追問留在同一任務，把獨立成果分成不同任務，能減少上下文混亂。",
+            "專案負責定位相關檔案，任務負責一次具體工作；建立很多任務不會自動讓檔案彼此隔離，隔離需要 worktree 等機制。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -110,23 +117,8 @@
           "text": "步驟 2：建立兩個成果不同的任務"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "從這個專案開第一個新任務，送出下面的清點要求。回覆後看它是否真的指出兩個檔案、PROJECT-LAB 與 Revision: 1，再將任務改名為「PROJECT-LAB — 清點教材」。利用任務選單的重新命名功能，保留共同"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "與成果詞，之後只記得 PROJECT-LAB 也能搜尋。此任務只讀，不需要新增文件。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "從這個專案開第一個新任務，送出下面的清點要求。回覆後看它是否真的指出兩個檔案、PROJECT-LAB 與 Revision: 1，再將任務改名為「PROJECT-LAB — 清點教材」。利用任務選單的重新命名功能，保留共同標記與成果詞，之後只記得 PROJECT-LAB 也能搜尋。此任務只讀，不需要新增文件。"
         },
         {
           "type": "code",
@@ -379,6 +371,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "把同一件事的追问留在同一任务，把独立成果分成不同任务，能减少上下文混乱。",
+            "专案负责定位相关档案，任务负责一次具体工作；建立很多任务不会自动让档案彼此隔离，隔离需要 worktree 等机制。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -720,6 +719,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Keep follow-ups about one outcome in the same task and separate independent outcomes into different tasks.",
+            "Projects identify files; tasks track assignments.",
+            "Multiple tasks do not automatically isolate files: use worktrees when isolation is needed."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1060,6 +1067,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "同じ成果への追加依頼は同じタスクで続け、独立した成果は別にします。",
+            "プロジェクトはファイルの位置、タスクは依頼を整理します。",
+            "複数タスクだけではファイルは分離されません。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1395,6 +1410,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "같은 결과를 위한 후속 요청은 같은 작업에서 이어 가고 독립적인 결과는 분리합니다.",
+            "프로젝트는 파일 위치를, 작업은 요청을 정리합니다.",
+            "여러 작업이 자동으로 파일을 격리하지는 않습니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

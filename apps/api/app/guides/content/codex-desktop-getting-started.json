@@ -25,6 +25,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "桌面版把任務、檔案、終端機與修改結果放在同一個工作空間。",
+            "目前官方下載文件使用 ChatGPT desktop app 名稱，進入後可選 Codex。",
+            "這裡提供三種系統的安裝主線；Linux 屬預覽版，不能把其支援範圍推廣到所有發行版。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -43,7 +51,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你會在自己的電腦選對安裝入口，開啟一個獨立練習資料夾，請 Codex 修改待辦網站，最後以檔案差異與瀏覽器確認成果。閱讀約 15 分鐘，安裝與操作約 25 分鐘。本文依 2026-09-14 官方名稱使用「ChatGPT 桌面應用程式」，在其中選擇 Codex；舊畫面或捷徑仍可能顯示 Codex。"
+          "text": "你會在自己的電腦選對安裝入口，開啟一個獨立練習資料夾，請 Codex 修改待辦網站，最後以檔案差異與瀏覽器確認成果。閱讀約 15 分鐘，安裝與操作約 25 分鐘。本文依 2026-09-20 官方名稱使用「ChatGPT 桌面應用程式」，在其中選擇 Codex；舊畫面或捷徑仍可能顯示 Codex。"
         },
         {
           "type": "rich_paragraph",
@@ -172,7 +180,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Linux：桌面版目前是預覽版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，提供 x64 與 ARM64。先在終端機確認系統與處理器，再從"
+              "text": "Linux：桌面版目前是預覽版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，以及保持完整更新的 Arch Linux，均支援 x64 與 ARM64。先在終端機確認系統與處理器，再從"
             },
             {
               "type": "link",
@@ -181,7 +189,7 @@
             },
             {
               "type": "text",
-              "text": "下載對應套件。其他發行版不在這次正式支援清單中，不要把套件裝得進去當成全部功能受支援。"
+              "text": "選擇對應套件或安裝腳本。其他發行版不在這次正式支援清單中，不要把套件裝得進去當成全部功能受支援。"
             }
           ]
         },
@@ -193,7 +201,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Ubuntu／Debian 選 .deb，Fedora 選 .rpm。x86_64 代表 x64；aarch64 或 arm64 選 ARM64。在放有下載檔案的資料夾開啟終端機，只執行下表符合自己系統的一行。檔案被瀏覽器加上編號時，先核對實際檔名。"
+          "text": "Ubuntu／Debian 選 .deb，Fedora 選 .rpm；Arch 使用官方安裝腳本。x86_64 代表 x64；aarch64 或 arm64 選 ARM64。在放有下載檔案的資料夾開啟終端機，只執行符合自己系統的方式。檔案被瀏覽器加上編號時，先核對實際檔名。"
         },
         {
           "type": "table",
@@ -224,6 +232,16 @@
               "sudo dnf install ./chatgpt.aarch64.rpm"
             ]
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Arch 下載官方腳本後再以 sudo 執行；腳本會設定 OpenAI 簽署的套件庫並進行完整系統更新，執行前先閱讀內容與確認提示。"
+        },
+        {
+          "type": "code",
+          "label": "Arch Linux 終端機；x64 與 ARM64 共用",
+          "language": "bash",
+          "code": "curl --proto '=https' --tlsv1.2 -fL -o install-arch.sh https://persistent.oaistatic.com/codex-app-prod/linux/install-arch.sh\nsudo bash install-arch.sh\n"
         },
         {
           "type": "paragraph",
@@ -335,7 +353,7 @@
         },
         {
           "type": "paragraph",
-          "text": "開啟 http://127.0.0.1:4173。先看標題，再新增 Read 與 Build，完成 Read，切換 Active tasks 應只剩 Build，Completed tasks 應只剩 Read。重新整理後資料應保留。輸入只有空白的任務不得新增；這是與正常流程一起檢查的邊界案例。"
+          "text": "開啟 http://127.0.0.1:4173。若這個來源已有想保留的虛構任務，先另行記錄；展開 About this exercise，選 Reset practice data，再切到 All tasks 並確認清單為空。這只清除練習資料，不會還原程式檔。接著新增 Read 與 Build，完成 Read；Active tasks 應只剩 Build，Completed tasks 應只剩 Read。重新整理後資料應保留。輸入只有空白的任務不得新增；這是與正常流程一起檢查的邊界案例。"
         },
         {
           "type": "paragraph",
@@ -394,7 +412,7 @@
             },
             {
               "type": "text",
-              "text": "及 Linux 文件於 2026-09-14 查證。教材網站已在 Windows／Edge 153 的 360、390、1280px 視窗驗證；這些是網頁成果截圖，不是桌面產品介面、實體手機或 macOS／Linux 安裝實測。接著可讀"
+              "text": "及 Linux 文件於 2026-09-20 查證。教材網站已在 Windows／Edge 153 的 360、390、1280px 視窗驗證；這些是網頁成果截圖，不是桌面產品介面、實體手機或 macOS／Linux 安裝實測。接著可讀"
             },
             {
               "type": "article",
@@ -482,22 +500,22 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Windows desktop app",
           "url": "https://learn.chatgpt.com/docs/windows/windows-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop app",
           "url": "https://learn.chatgpt.com/docs/linux/linux-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "ChatGPT download",
           "url": "https://chatgpt.com/download/",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -517,6 +535,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "桌面版把任务、档案、终端机与修改结果放在同一个工作空间。",
+            "目前官方下载文件使用 ChatGPT desktop app 名称，进入后可选 Codex。",
+            "这里提供三种系统的安装主线；Linux 属预览版，不能把其支援范围推广到所有发行版。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -535,7 +561,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "你会在自己的电脑选对安装入口，开启一个独立练习资料夹，请 Codex 修改待办网站，最后以档案差异与浏览器确认成果。阅读约 15 分钟，安装与操作约 25 分钟。本文依 2026-09-14 官方名称使用「ChatGPT 桌面应用程式」，在其中选择 Codex；旧画面或捷径仍可能显示 Codex。"
+          "text": "你会在自己的电脑选对安装入口，开启一个独立练习资料夹，请 Codex 修改待办网站，最后以档案差异与浏览器确认成果。阅读约 15 分钟，安装与操作约 25 分钟。本文依 2026-09-20 官方名称使用「ChatGPT 桌面应用程式」，在其中选择 Codex；旧画面或捷径仍可能显示 Codex。"
         },
         {
           "type": "rich_paragraph",
@@ -664,7 +690,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Linux：桌面版目前是预览版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，提供 x64 与 ARM64。先在终端机确认系统与处理器，再从"
+              "text": "Linux：桌面版目前是预览版，官方列出 Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44，以及保持完整更新的 Arch Linux，均支援 x64 与 ARM64。先在终端机确认系统与处理器，再从"
             },
             {
               "type": "link",
@@ -673,7 +699,7 @@
             },
             {
               "type": "text",
-              "text": "下载对应套件。其他发行版不在这次正式支援清单中，不要把套件装得进去当成全部功能受支援。"
+              "text": "选择对应套件或安装脚本。其他发行版不在这次正式支援清单中，不要把套件装得进去当成全部功能受支援。"
             }
           ]
         },
@@ -685,7 +711,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Ubuntu／Debian 选 .deb，Fedora 选 .rpm。x86_64 代表 x64；aarch64 或 arm64 选 ARM64。在放有下载档案的资料夹开启终端机，只执行下表符合自己系统的一行。档案被浏览器加上编号时，先核对实际档名。"
+          "text": "Ubuntu／Debian 选 .deb，Fedora 选 .rpm；Arch 使用官方安装脚本。x86_64 代表 x64；aarch64 或 arm64 选 ARM64。在放有下载档案的资料夹开启终端机，只执行符合自己系统的方式。档案被浏览器加上编号时，先核对实际档名。"
         },
         {
           "type": "table",
@@ -716,6 +742,16 @@
               "sudo dnf install ./chatgpt.aarch64.rpm"
             ]
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Arch 下载官方脚本后再以 sudo 执行；脚本会设定 OpenAI 签署的套件库并进行完整系统更新，执行前先阅读内容与确认提示。"
+        },
+        {
+          "type": "code",
+          "label": "Arch Linux 终端机；x64 与 ARM64 共用",
+          "language": "bash",
+          "code": "curl --proto '=https' --tlsv1.2 -fL -o install-arch.sh https://persistent.oaistatic.com/codex-app-prod/linux/install-arch.sh\nsudo bash install-arch.sh\n"
         },
         {
           "type": "paragraph",
@@ -827,7 +863,7 @@
         },
         {
           "type": "paragraph",
-          "text": "开启 http://127.0.0.1:4173。先看标题，再新增 Read 与 Build，完成 Read，切换 Active tasks 应只剩 Build，Completed tasks 应只剩 Read。重新整理后资料应保留。输入只有空白的任务不得新增；这是与正常流程一起检查的边界案例。"
+          "text": "开启 http://127.0.0.1:4173。若这个来源已有想保留的虚构任务，先另行记录；展开 About this exercise，选 Reset practice data，再切到 All tasks 并确认清单为空。这只清除练习资料，不会还原程式档。接著新增 Read 与 Build，完成 Read；Active tasks 应只剩 Build，Completed tasks 应只剩 Read。重新整理后资料应保留。输入只有空白的任务不得新增；这是与正常流程一起检查的边界案例。"
         },
         {
           "type": "paragraph",
@@ -886,7 +922,7 @@
             },
             {
               "type": "text",
-              "text": "及 Linux 文件于 2026-09-14 查证。教材网站已在 Windows／Edge 153 的 360、390、1280px 视窗验证；这些是网页成果截图，不是桌面产品介面、实体手机或 macOS／Linux 安装实测。接著可读"
+              "text": "及 Linux 文件于 2026-09-20 查证。教材网站已在 Windows／Edge 153 的 360、390、1280px 视窗验证；这些是网页成果截图，不是桌面产品介面、实体手机或 macOS／Linux 安装实测。接著可读"
             },
             {
               "type": "article",
@@ -974,22 +1010,22 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Windows desktop app",
           "url": "https://learn.chatgpt.com/docs/windows/windows-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop app",
           "url": "https://learn.chatgpt.com/docs/linux/linux-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "ChatGPT download",
           "url": "https://chatgpt.com/download/",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1009,6 +1045,15 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "The desktop workspace combines tasks, files, terminals and change review.",
+            "Current official downloads use the name ChatGPT desktop app; choose Codex inside it.",
+            "Follow the separate installation path for your system.",
+            "Linux is a preview with a specific support list, not a promise of compatibility with every distribution."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1027,7 +1072,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "Install the appropriate desktop app, open an isolated practice folder, ask Codex to update a todo website and verify the result through a diff and a browser. Allow 15 minutes to read and 25 minutes for setup and practice. This lesson uses the official name as checked on 2026-09-14: the ChatGPT desktop app, with Codex selected inside it. Older screens or shortcuts may still say Codex."
+          "text": "Install the appropriate desktop app, open an isolated practice folder, ask Codex to update a todo website and verify the result through a diff and a browser. Allow 15 minutes to read and 25 minutes for setup and practice. This lesson uses the official name as checked on 2026-09-20: the ChatGPT desktop app, with Codex selected inside it. Older screens or shortcuts may still say Codex."
         },
         {
           "type": "rich_paragraph",
@@ -1156,7 +1201,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Linux: the desktop app is in preview. The documented distributions are Ubuntu 24.04/26.04 LTS, Debian 13 and Fedora 43/44, with x64 and ARM64 packages. Check your distribution and processor before downloading from the "
+              "text": "Linux: the desktop app is in preview. The documented distributions are Ubuntu 24.04/26.04 LTS, Debian 13, Fedora 43/44, and fully updated current Arch Linux releases, with x64 and ARM64 support. Check your distribution and processor before choosing a package or script on the "
             },
             {
               "type": "link",
@@ -1177,7 +1222,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Use .deb for Ubuntu/Debian and .rpm for Fedora. x86_64 means x64; aarch64 or arm64 means ARM64. Open a terminal in the download folder and run only the row matching your system. If the browser added a number to the filename, check the actual name first."
+          "text": "Use .deb for Ubuntu/Debian, .rpm for Fedora, and the official install script for Arch. x86_64 means x64; aarch64 or arm64 means ARM64. Open a terminal in the download folder and use only the method matching your system. If the browser added a number to the filename, check the actual name first."
         },
         {
           "type": "table",
@@ -1208,6 +1253,16 @@
               "sudo dnf install ./chatgpt.aarch64.rpm"
             ]
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "On Arch, download and then run the official script with sudo. It configures OpenAI's signed package repository and performs a full system upgrade, so inspect the script and confirmation prompt first."
+        },
+        {
+          "type": "code",
+          "label": "Arch Linux terminal; same commands for x64 and ARM64",
+          "language": "bash",
+          "code": "curl --proto '=https' --tlsv1.2 -fL -o install-arch.sh https://persistent.oaistatic.com/codex-app-prod/linux/install-arch.sh\nsudo bash install-arch.sh\n"
         },
         {
           "type": "paragraph",
@@ -1319,7 +1374,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Visit http://127.0.0.1:4173. Check the heading, add Read and Build, and complete Read. Active tasks should show only Build; Completed tasks should show only Read. Reload and confirm the data remains. A whitespace-only task must be rejected: verify this boundary case alongside the normal workflow."
+          "text": "Visit http://127.0.0.1:4173. If this origin contains fictional tasks you want to keep, record them first. Open About this exercise, choose Reset practice data, select All tasks, and confirm the list is empty. This resets practice data only; it does not restore source files. Add Read and Build, then complete Read. Active tasks should show only Build; Completed tasks should show only Read. Reload and confirm the data remains. A whitespace-only task must be rejected: verify this boundary case alongside the normal workflow."
         },
         {
           "type": "paragraph",
@@ -1360,7 +1415,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Installation and features were checked on 2026-09-14 using the "
+              "text": "Installation and features were checked on 2026-09-20 using the "
             },
             {
               "type": "link",
@@ -1466,22 +1521,22 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Windows desktop app",
           "url": "https://learn.chatgpt.com/docs/windows/windows-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop app",
           "url": "https://learn.chatgpt.com/docs/linux/linux-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "ChatGPT download",
           "url": "https://chatgpt.com/download/",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1501,6 +1556,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "デスクトップではタスク、ファイル、端末、差分を一つの画面で扱えます。",
+            "現在の公式配布名は ChatGPT desktop app で、その中から Codex を選びます。",
+            "Linux はプレビューであり、すべてのディストリビューションを保証するものではありません。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1519,7 +1582,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "自分の OS に合うアプリをインストールし、独立した練習フォルダーを開いて Codex に ToDo サイトの変更を依頼します。最後に差分とブラウザで結果を確認します。読む時間は約 15 分、準備と操作は約 25 分です。2026-09-14 の公式名称に合わせて「ChatGPT デスクトップアプリ」と呼び、その中で Codex を選びます。古い画面やショートカットには Codex と表示される場合があります。"
+          "text": "自分の OS に合うアプリをインストールし、独立した練習フォルダーを開いて Codex に ToDo サイトの変更を依頼します。最後に差分とブラウザで結果を確認します。読む時間は約 15 分、準備と操作は約 25 分です。2026-09-20 の公式名称に合わせて「ChatGPT デスクトップアプリ」と呼び、その中で Codex を選びます。古い画面やショートカットには Codex と表示される場合があります。"
         },
         {
           "type": "rich_paragraph",
@@ -1644,7 +1707,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Linux：現在はプレビュー版です。公式の対象は Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44 で、x64 と ARM64 のパッケージがあります。次のコマンドで OS と CPU を確認し、"
+              "text": "Linux：現在はプレビュー版です。公式の対象は Ubuntu 24.04／26.04 LTS、Debian 13、Fedora 43／44、および完全更新済みの現行 Arch Linux で、x64 と ARM64 に対応します。次のコマンドで OS と CPU を確認し、"
             },
             {
               "type": "link",
@@ -1653,7 +1716,7 @@
             },
             {
               "type": "text",
-              "text": "から対応するものを取得します。他のディストリビューションはこの正式対応一覧に含まれません。インストール成功だけですべての機能への対応を判断しないでください。"
+              "text": "から対応するパッケージまたはスクリプトを選びます。他のディストリビューションはこの正式対応一覧に含まれません。インストール成功だけですべての機能への対応を判断しないでください。"
             }
           ]
         },
@@ -1665,7 +1728,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Ubuntu／Debian は .deb、Fedora は .rpm を選びます。x86_64 は x64、aarch64 または arm64 は ARM64 です。ダウンロード先のフォルダーで、自分の環境に合う一行だけ実行します。ブラウザがファイル名に番号を付けた場合は実際の名前を確認してください。"
+          "text": "Ubuntu／Debian は .deb、Fedora は .rpm、Arch は公式インストールスクリプトを選びます。x86_64 は x64、aarch64 または arm64 は ARM64 です。ダウンロード先のフォルダーで、自分の環境に合う方法だけを実行します。ブラウザがファイル名に番号を付けた場合は実際の名前を確認してください。"
         },
         {
           "type": "table",
@@ -1696,6 +1759,16 @@
               "sudo dnf install ./chatgpt.aarch64.rpm"
             ]
           ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Arch は公式スクリプトをダウンロードして sudo で実行します。OpenAI の署名済みパッケージリポジトリを設定し、システム全体を更新するため、内容と確認表示を先に読みます。"
+        },
+        {
+          "type": "code",
+          "label": "Arch Linux 端末。x64／ARM64 共通",
+          "language": "bash",
+          "code": "curl --proto '=https' --tlsv1.2 -fL -o install-arch.sh https://persistent.oaistatic.com/codex-app-prod/linux/install-arch.sh\nsudo bash install-arch.sh\n"
         },
         {
           "type": "paragraph",
@@ -1807,7 +1880,7 @@
         },
         {
           "type": "paragraph",
-          "text": "http://127.0.0.1:4173 を開き、見出しを確認します。Read と Build を追加して Read を完了にすると、Active tasks には Build だけ、Completed tasks には Read だけが表示されるはずです。再読み込み後もデータが残ることを確認します。空白だけのタスクは追加できないことも、正常操作と一緒に試します。"
+          "text": "http://127.0.0.1:4173 を開きます。このオリジンに残したい架空タスクがあれば先に記録します。About this exercise を開いて Reset practice data を選び、All tasks で空の一覧を確認します。これは練習データだけを消し、ソースファイルは復元しません。その後 Read と Build を追加して Read を完了にすると、Active tasks には Build だけ、Completed tasks には Read だけが表示されるはずです。再読み込み後もデータが残ることを確認します。空白だけのタスクは追加できないことも、正常操作と一緒に試します。"
         },
         {
           "type": "paragraph",
@@ -1848,7 +1921,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "インストールと機能は 2026-09-14 に"
+              "text": "インストールと機能は 2026-09-20 に"
             },
             {
               "type": "link",
@@ -1954,22 +2027,22 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Windows desktop app",
           "url": "https://learn.chatgpt.com/docs/windows/windows-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop app",
           "url": "https://learn.chatgpt.com/docs/linux/linux-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "ChatGPT download",
           "url": "https://chatgpt.com/download/",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1989,6 +2062,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "데스크톱 작업 공간은 작업, 파일, 터미널과 변경 검토를 모아 보여 줍니다.",
+            "현재 공식 배포 이름은 ChatGPT desktop app이며 앱 안에서 Codex를 선택합니다.",
+            "Linux는 지원 목록이 정해진 미리보기 버전입니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -2007,7 +2088,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "운영체제에 맞는 앱을 설치하고 독립된 실습 폴더를 열어 Codex에 할 일 웹사이트 수정을 요청합니다. 마지막으로 파일 차이와 브라우저에서 결과를 확인합니다. 읽기 약 15분, 설치와 실습 약 25분입니다. 2026-09-14 공식 명칭에 맞춰 ChatGPT 데스크톱 앱이라고 부르며 그 안에서 Codex를 선택합니다. 예전 화면이나 바로가기는 여전히 Codex라고 표시할 수 있습니다."
+          "text": "운영체제에 맞는 앱을 설치하고 독립된 실습 폴더를 열어 Codex에 할 일 웹사이트 수정을 요청합니다. 마지막으로 파일 차이와 브라우저에서 결과를 확인합니다. 읽기 약 15분, 설치와 실습 약 25분입니다. 2026-09-20 공식 명칭에 맞춰 ChatGPT 데스크톱 앱이라고 부르며 그 안에서 Codex를 선택합니다. 예전 화면이나 바로가기는 여전히 Codex라고 표시할 수 있습니다."
         },
         {
           "type": "rich_paragraph",
@@ -2132,7 +2213,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Linux: 데스크톱 앱은 미리보기 단계입니다. 공식 대상은 Ubuntu 24.04/26.04 LTS, Debian 13, Fedora 43/44이며 x64와 ARM64 패키지를 제공합니다. 먼저 배포판과 CPU를 확인한 뒤 "
+              "text": "Linux: 데스크톱 앱은 미리보기 단계입니다. 공식 대상은 Ubuntu 24.04/26.04 LTS, Debian 13, Fedora 43/44, 완전히 업데이트한 현재 Arch Linux이며 x64와 ARM64를 지원합니다. 먼저 배포판과 CPU를 확인한 뒤 "
             },
             {
               "type": "link",
@@ -2141,7 +2222,7 @@
             },
             {
               "type": "text",
-              "text": "에서 맞는 파일을 받습니다. 다른 배포판은 이 공식 지원 목록 밖에 있으며 패키지가 설치됐다고 모든 기능을 지원하는 것은 아닙니다."
+              "text": "에서 맞는 패키지나 스크립트를 선택합니다. 다른 배포판은 이 공식 지원 목록 밖에 있으며 패키지가 설치됐다고 모든 기능을 지원하는 것은 아닙니다."
             }
           ]
         },
@@ -2153,7 +2234,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Ubuntu/Debian은 .deb, Fedora는 .rpm을 선택합니다. x86_64는 x64, aarch64 또는 arm64는 ARM64입니다. 다운로드 폴더에서 자신의 환경에 맞는 한 줄만 실행합니다. 브라우저가 파일 이름에 번호를 붙였다면 실제 이름을 먼저 확인하세요."
+          "text": "Ubuntu/Debian은 .deb, Fedora는 .rpm, Arch는 공식 설치 스크립트를 선택합니다. x86_64는 x64, aarch64 또는 arm64는 ARM64입니다. 다운로드 폴더에서 자신의 환경에 맞는 방법 하나만 사용합니다. 브라우저가 파일 이름에 번호를 붙였다면 실제 이름을 먼저 확인하세요."
         },
         {
           "type": "table",
@@ -2187,6 +2268,16 @@
         },
         {
           "type": "paragraph",
+          "text": "Arch에서는 공식 스크립트를 내려받은 뒤 sudo로 실행합니다. OpenAI 서명 패키지 저장소를 설정하고 전체 시스템 업데이트를 수행하므로 스크립트 내용과 확인 메시지를 먼저 검토하세요."
+        },
+        {
+          "type": "code",
+          "label": "Arch Linux 터미널, x64와 ARM64 공통",
+          "language": "bash",
+          "code": "curl --proto '=https' --tlsv1.2 -fL -o install-arch.sh https://persistent.oaistatic.com/codex-app-prod/linux/install-arch.sh\nsudo bash install-arch.sh\n"
+        },
+        {
+          "type": "paragraph",
           "text": "앱 메뉴에서 ChatGPT를 열거나 터미널에서 chatgpt를 실행합니다. 이후 업데이트는 배포판 패키지 관리자를 사용합니다. Linux 미리보기는 아직 Computer Use를 지원하지 않으며 네이티브 Wayland도 실험적 제한이 있습니다. 파일 수정과 직접 하는 브라우저 확인은 연습할 수 있습니다. macOS 화면을 Linux 실화면으로 표시해서는 안 됩니다."
         },
         {
@@ -2200,7 +2291,7 @@
         },
         {
           "type": "paragraph",
-          "text": "New chat을 만들고 먼저 읽기만 요청합니다. 아래는 PowerShell이나 Terminal이 아니라 Codex 작업 입력창에 붙입니다. 수정 전에 다른 프로젝트, 압축되지 않은 파일, 다른 호스트를 선택한 문제를 찾을 수 있습니다."
+          "text": "New chat을 만들고 먼저 읽기만 요청합니다. 아래는 PowerShell이나 Terminal이 아니라 Codex 작업 입력창에 붙입니다. 수정 전에 다른 프로젝트, 압축을 풀지 않은 파일, 다른 호스트를 선택한 문제를 찾을 수 있습니다."
         },
         {
           "type": "code",
@@ -2295,7 +2386,7 @@
         },
         {
           "type": "paragraph",
-          "text": "http://127.0.0.1:4173에서 제목을 확인하고 Read와 Build를 추가한 뒤 Read를 완료합니다. Active tasks에는 Build만, Completed tasks에는 Read만 보여야 합니다. 새로 고침 후 데이터도 남아야 합니다. 공백뿐인 항목은 추가되지 않는지 정상 흐름과 함께 확인합니다."
+          "text": "http://127.0.0.1:4173을 엽니다. 이 origin에 보존할 가상 작업이 있다면 먼저 기록하세요. About this exercise를 열고 Reset practice data를 선택한 뒤 All tasks에서 빈 목록을 확인합니다. 이 작업은 실습 데이터만 지우며 소스 파일을 복원하지 않습니다. Read와 Build를 추가하고 Read를 완료하면 Active tasks에는 Build만, Completed tasks에는 Read만 보여야 합니다. 새로 고침 후 데이터도 남아야 합니다. 공백뿐인 항목은 추가되지 않는지 정상 흐름과 함께 확인합니다."
         },
         {
           "type": "paragraph",
@@ -2336,7 +2427,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "설치와 기능은 2026-09-14에 "
+              "text": "설치와 기능은 2026-09-20에 "
             },
             {
               "type": "link",
@@ -2442,22 +2533,22 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Windows desktop app",
           "url": "https://learn.chatgpt.com/docs/windows/windows-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop app",
           "url": "https://learn.chatgpt.com/docs/linux/linux-app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "ChatGPT download",
           "url": "https://chatgpt.com/download/",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

@@ -1,18 +1,32 @@
 {
-  "checkedAt": "2026-09-14T09:01:05.140352+00:00",
+  "checkedAt": "2026-09-20T02:58:02.268036+00:00",
   "scope": "Public source URL response only; not factual or authenticated-surface verification",
+  "manualReview": [
+    {
+      "url": "https://chatgpt.com/download/",
+      "checkedOn": "2026-09-20",
+      "result": "accessible",
+      "observedTitle": "Download ChatGPT",
+      "note": "The automated HEAD and GET checks received 403. A separate browser fetch loaded the official page and its desktop and mobile download sections."
+    }
+  ],
   "sources": [
     {
       "url": "https://chatgpt.com/download/",
       "attempts": [
         {
           "method": "HEAD",
-          "status": 200,
+          "status": 403,
+          "resolvedUrl": "https://chatgpt.com/download/"
+        },
+        {
+          "method": "GET",
+          "status": 403,
           "resolvedUrl": "https://chatgpt.com/download/"
         }
       ],
-      "method": "HEAD",
-      "status": 200,
+      "method": "GET",
+      "status": 403,
       "resolvedUrl": "https://chatgpt.com/download/"
     },
     {

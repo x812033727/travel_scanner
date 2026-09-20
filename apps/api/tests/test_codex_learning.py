@@ -341,8 +341,16 @@ def test_deep_drafts_preserve_code_sources_and_structures_across_locales():
             ]
             assert document.sources == reference.sources
             body = [block for block in document.blocks if block.type != "image"]
-            assert body[0].type == body[-1].type == "rich_paragraph"
-            assert body[0].inlines[0].slug == body[-1].inlines[0].slug == "codex-learning-hub"
+            summaries = [block for block in body if block.type == "summary"]
+            assert len(summaries) == 1
+            assert 2 <= len(summaries[0].items) <= 5
+            navigable_body = [block for block in body if block.type != "summary"]
+            assert navigable_body[0].type == navigable_body[-1].type == "rich_paragraph"
+            assert (
+                navigable_body[0].inlines[0].slug
+                == navigable_body[-1].inlines[0].slug
+                == "codex-learning-hub"
+            )
         if slug == "codex-skills":
             sample = (
                 ROOT / "docs/codex-learning/practice/skills/todo-acceptance/SKILL.md"

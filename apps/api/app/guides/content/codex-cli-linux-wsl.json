@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "辨識主機與 WSL 的工具、路徑和帳號，從正確目錄執行相同練習並更新 CLI。",
+            "在 Linux 或 Windows 的 WSL2 中安裝 Codex CLI，分辨主機、發行版與檔案位置，完成標記檔唯讀驗證及更新。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -182,23 +189,8 @@
           "code": "Read note.txt and note.original.txt in the current Linux practice directory. Report the current directory and the exact marker, and check whether both files match. Do not edit, create files, or use external services. Stop and report any missing file or access error.\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": " LINUX-CLI-01；同時看實際讀取記錄。接著在同一個 Codex 工作階段要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。完成後才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核對沒有改動。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "上段是 Codex 對話，不是 bash 命令。要求的目錄應是 Linux 練習資料夾，標記 LINUX-CLI-01；同時看實際讀取記錄。接著在同一個 Codex 工作階段要求讀取不存在的 note-missing.txt，預期清楚回報缺檔而不新增。完成後才用 /exit 回 shell，重跑 sha256sum、cat 和 ls，核對沒有改動。能完成這兩種結果，才驗證安裝、登入、定位與讀取串在一起。"
         },
         {
           "type": "heading",
@@ -372,6 +364,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Distinguish host and WSL tools, paths and accounts, then run the exercise and update from the right environment.",
+            "Install Codex CLI in Linux or WSL2, distinguish host, distribution and file location, verify a read-only marker-file task and update correctly."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -707,6 +706,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "ホストと WSL のツール、パス、アカウントを区別し、正しい環境で練習と更新を行います。",
+            "Linux または WSL2 で CLI を導入し、ホスト、ディストリビューション、ファイルの場所を区別して、印付きファイルの読み取り検証と更新を行います。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1041,6 +1047,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "호스트와 WSL의 도구, 경로, 계정을 구분하고 올바른 환경에서 실습과 업데이트를 진행합니다.",
+            "Linux 또는 WSL2에서 CLI를 설치하고 호스트, 배포판, 파일 위치를 구분해 표식 파일 읽기 전용 검증과 업데이트를 진행합니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1374,6 +1387,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "辨识主机与 WSL 的工具、路径和帐号，从正确目录执行相同练习并更新 CLI。",
+            "在 Linux 或 Windows 的 WSL2 中安装 Codex CLI，分辨主机、发行版与档案位置，完成标记档唯读验证及更新。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

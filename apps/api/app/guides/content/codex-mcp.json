@@ -25,6 +25,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "MCP 讓 Codex 使用外部工具與資料。",
+            "STDIO 伺服器通常由本機命令啟動；HTTP 伺服器透過 URL 連線。",
+            "設定檔寫入成功只代表設定存在，還需要確認服務啟動、驗證通過與工具回應。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -64,14 +72,8 @@
           "type": "rich_paragraph",
           "inlines": [
             {
-              "type": "article",
-              "text": "MCP",
-              "kind": "life",
-              "slug": "ai-term-model-context-protocol"
-            },
-            {
               "type": "text",
-              "text": " 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與"
+              "text": "MCP 是讓客戶端呼叫工具與取得上下文的協定。伺服器提供哪些能力，取決於該伺服器；接上文件服務不會自動取得你的 GitHub 或本機瀏覽器。OpenAI Docs MCP 提供文件搜尋與原文內容，不會代你呼叫 OpenAI API。本篇用它練習讀取驗收；日後換成會寫入資料的服務，仍須重新檢查工具與"
             },
             {
               "type": "article",
@@ -208,13 +210,13 @@
         },
         {
           "type": "code",
-          "label": "Codex CLI 互動輸入框：查看連線，非終端機命令",
+          "label": "Codex 桌面版、CLI、IDE 輸入框：查看連線，非終端機命令",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "CLI 在新的互動工作階段輸入 /mcp，查看練習伺服器與當下工具。桌面版和 IDE 則回到前述 MCP servers 設定頁確認狀態，再開新任務觀察實際工具活動；不要假定各入口都有 /mcp。若要求認證，先核對公開端點。其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，本篇公開文件服務不需任意填入 API key。"
+          "text": "在桌面版、CLI 或 IDE 的新任務／工作階段輸入 /mcp，查看練習伺服器與當下工具；這是 Codex 輸入框指令，不是終端機命令。也可回到 MCP servers 設定頁確認狀態，再觀察新任務的實際工具活動。若要求認證，先核對公開端點。其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，本篇公開文件服務不需任意填入 API key。"
         },
         {
           "type": "code",
@@ -233,7 +235,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失敗對照只改自己新增的項目：在原區段加入 enabled = false，或使用停用控制，保存並重新啟動。CLI 在新工作階段用 /mcp；桌面和 IDE 依前述設定頁與新任務核對，確認不再提供該項工具。舊對話文字不算新讀取。恢復時把 enabled 改回 true 或移除自己加的 false，再重新啟動並重做讀取。"
+          "text": "失敗對照只改自己新增的項目：原區段已有 enabled 就把該值改成 false；沒有才新增一次 enabled = false，不能重複鍵或表格。也可使用客戶端停用控制。保存並重新啟動後，在桌面版、CLI 或 IDE 的新任務／工作階段用 /mcp 和實際工具活動確認不再提供該工具。舊對話文字不算新讀取。恢復時還原原值，或只移除這次新增的 enabled 鍵，再重新啟動並重做讀取。"
         },
         {
           "type": "code",
@@ -318,12 +320,12 @@
         {
           "title": "Model Context Protocol",
           "url": "https://learn.chatgpt.com/docs/extend/mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "OpenAI Docs MCP",
           "url": "https://developers.openai.com/learn/docs-mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -342,6 +344,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "MCP 让 Codex 使用外部工具与资料。",
+            "STDIO 伺服器通常由本机命令启动；HTTP 伺服器透过 URL 连线。",
+            "设定档写入成功只代表设定存在，还需要确认服务启动、验证通过与工具回应。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -520,13 +530,13 @@
         },
         {
           "type": "code",
-          "label": "Codex CLI 互动输入框：查看连线，非终端机命令",
+          "label": "Codex 桌面版、CLI、IDE 输入框：查看连线，非终端机命令",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "CLI 在新的互动工作阶段输入 /mcp，查看练习伺服器与当下工具。桌面版和 IDE 则回到前述 MCP servers 设定页确认状态，再开新任务观察实际工具活动；不要假定各入口都有 /mcp。若要求认证，先核对公开端点。其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，本篇公开文件服务不需任意填入 API key。"
+          "text": "在桌面版、CLI 或 IDE 的新任务／工作阶段输入 /mcp，查看练习伺服器与当下工具；这是 Codex 输入框指令，不是终端机命令。也可回到 MCP servers 设定页确认状态，再观察新任务的实际工具活动。若要求认证，先核对公开端点。其他 OAuth 服务可能需要 Authenticate 或 codex mcp login 名称，本篇公开文件服务不需任意填入 API key。"
         },
         {
           "type": "code",
@@ -545,7 +555,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失败对照只改自己新增的项目：在原区段加入 enabled = false，或使用停用控制，保存并重新启动。CLI 在新工作阶段用 /mcp；桌面和 IDE 依前述设定页与新任务核对，确认不再提供该项工具。旧对话文字不算新读取。恢复时把 enabled 改回 true 或移除自己加的 false，再重新启动并重做读取。"
+          "text": "失败对照只改自己新增的项目：原区段已有 enabled 就把该值改成 false；没有才新增一次 enabled = false，不能重复键或表格。也可使用客户端停用控制。保存并重新启动后，在桌面版、CLI 或 IDE 的新任务／工作阶段用 /mcp 和实际工具活动确认不再提供该工具。旧对话文字不算新读取。恢复时还原原值，或只移除这次新增的 enabled 键，再重新启动并重做读取。"
         },
         {
           "type": "code",
@@ -630,12 +640,12 @@
         {
           "title": "Model Context Protocol",
           "url": "https://learn.chatgpt.com/docs/extend/mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "OpenAI Docs MCP",
           "url": "https://developers.openai.com/learn/docs-mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -654,6 +664,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "MCP connects Codex to tools and data.",
+            "STDIO servers usually start as local processes; HTTP servers use a URL.",
+            "Saving configuration only proves it exists: verify startup, authentication and an actual tool response."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -832,13 +850,13 @@
         },
         {
           "type": "code",
-          "label": "Codex CLI composer: inspect connections, not a shell command",
+          "label": "Codex desktop, CLI or IDE composer: inspect connections, not a shell command",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "In a fresh interactive CLI session, use /mcp to inspect the server and tools. In desktop or IDE, check the MCP servers settings described above, then observe tool activity in a new task; do not assume every surface has /mcp. If authentication is requested, verify the public endpoint first. Other OAuth services may require Authenticate or codex mcp login with their name; do not add an arbitrary API key for this public service."
+          "text": "In a fresh desktop, CLI or IDE task/session, enter /mcp in the Codex composer to inspect the server and tools; it is not a shell command. You can also check MCP servers settings and observe tool activity in the new task. If authentication is requested, verify the public endpoint first. Other OAuth services may require Authenticate or codex mcp login with their name; do not add an arbitrary API key for this public service."
         },
         {
           "type": "code",
@@ -857,7 +875,7 @@
         },
         {
           "type": "paragraph",
-          "text": "For the negative case, disable only your new entry with enabled = false or the client control, save and restart. In a fresh CLI session use /mcp; in desktop or IDE use the settings and new-task checks above. Confirm its tools are unavailable. Old conversation text is not fresh retrieval. Restore enabled to true or remove your added false value, restart and repeat the read."
+          "text": "For the negative case, change an existing enabled value to false; add enabled = false once only when that key is absent. Never duplicate the key or table. The client disable control is also valid. Save, restart, then use /mcp and actual tool activity in a fresh desktop, CLI or IDE task/session to confirm the tools are unavailable. Old conversation text is not fresh retrieval. Restore the prior value, or remove only the key you added, restart and repeat the read."
         },
         {
           "type": "code",
@@ -942,12 +960,12 @@
         {
           "title": "Model Context Protocol",
           "url": "https://learn.chatgpt.com/docs/extend/mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "OpenAI Docs MCP",
           "url": "https://developers.openai.com/learn/docs-mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -966,6 +984,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "MCP は外部ツールと接続します。",
+            "STDIO はローカル命令、HTTP は URL を使います。",
+            "設定保存だけでなく起動、認証、応答を確認します。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1036,12 +1062,12 @@
           "rows": [
             [
               "STDIO",
-              "程序と引数",
+              "プログラムと引数",
               "Codex ホストがローカルプロセスを起動"
             ],
             [
               "Streamable HTTP",
-              "MCP 端点 URL",
+              "MCP エンドポイント URL",
               "ネット経由のサービス"
             ],
             [
@@ -1053,7 +1079,7 @@
         },
         {
           "type": "paragraph",
-          "text": "今回は Streamable HTTP のみです。一般のホームページは MCP 端点とは限らず、公式の端点を使います。STDIO 命令を URL 欄へ貼りません。"
+          "text": "今回は Streamable HTTP のみです。一般のホームページは MCP エンドポイントとは限らず、公式のエンドポイントを使います。STDIO コマンドを URL 欄へ貼りません。"
         },
         {
           "type": "rich_paragraph",
@@ -1144,13 +1170,13 @@
         },
         {
           "type": "code",
-          "label": "Codex CLI 対話欄：端末命令ではない",
+          "label": "Codex デスクトップ、CLI、IDE の入力欄：端末コマンドではない",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "CLI では新しい対話セッションの /mcp でサーバーとツールを確認します。デスクトップと IDE は前述の MCP servers 設定で状態を見て、新規タスクの実際のツール活動を確認します。全入口に /mcp があるとは限りません。認証要求時は公開端点を照合します。他の OAuth サービスでは Authenticate や codex mcp login が必要でも、本篇の公開サービスに任意の API key を入れません。"
+          "text": "デスクトップ、CLI、IDE の新しいタスクまたはセッションで、Codex の入力欄に /mcp を入力し、サーバーとツールを確認します。端末コマンドではありません。MCP servers 設定の状態と、新規タスクの実際のツール活動も確認できます。認証要求時は公開エンドポイントを照合します。他の OAuth サービスでは Authenticate や codex mcp login が必要でも、本篇の公開サービスに任意の API key を入れません。"
         },
         {
           "type": "code",
@@ -1169,7 +1195,7 @@
         },
         {
           "type": "paragraph",
-          "text": "失敗対照は自分が追加した項目だけを enabled = false または無効化操作で保存・再起動します。CLI は新セッションの /mcp、デスクトップと IDE は前述の設定と新規タスクで利用不可を確認します。旧会話は新取得ではありません。true または追加した false の除去で戻し、再起動して再取得します。"
+          "text": "失敗対照は自分の項目だけを変更します。enabled が既にあれば false に変更し、なければ enabled = false を一度だけ追加します。キーや表を重複させません。クライアントの無効化操作でも構いません。保存・再起動後、デスクトップ、CLI、IDE の新規タスクまたはセッションで /mcp と実際のツール活動を確認します。旧会話は新取得ではありません。元の値へ戻すか、今回追加したキーだけを除き、再起動して再取得します。"
         },
         {
           "type": "code",
@@ -1254,12 +1280,12 @@
         {
           "title": "Model Context Protocol",
           "url": "https://learn.chatgpt.com/docs/extend/mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "OpenAI Docs MCP",
           "url": "https://developers.openai.com/learn/docs-mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1278,6 +1304,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "MCP는 외부 도구를 연결합니다.",
+            "STDIO는 로컬 명령, HTTP는 URL을 사용합니다.",
+            "설정 저장뿐 아니라 시작, 인증과 응답을 확인해야 합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1456,13 +1490,13 @@
         },
         {
           "type": "code",
-          "label": "Codex CLI 대화 입력창: 셸 명령 아님",
+          "label": "Codex 데스크톱·CLI·IDE 입력창: 셸 명령 아님",
           "language": "text",
           "code": "/mcp\n"
         },
         {
           "type": "paragraph",
-          "text": "CLI의 새 대화 세션에서 /mcp로 서버와 도구를 확인합니다. 데스크톱과 IDE는 앞서 설명한 MCP servers 설정에서 상태를 확인한 뒤 새 작업의 실제 도구 활동을 봅니다. 모든 화면에 /mcp가 있다고 가정하지 마세요. 인증을 요구하면 공개 주소부터 확인합니다. 다른 OAuth 서비스에는 Authenticate나 codex mcp login이 필요할 수 있지만 이 공개 서비스에 임의의 API key를 넣지 않습니다."
+          "text": "데스크톱·CLI·IDE의 새 작업 또는 세션에서 Codex 입력창에 /mcp를 입력해 서버와 도구를 확인하세요. 셸 명령이 아닙니다. MCP servers 설정 상태와 새 작업의 실제 도구 활동도 확인할 수 있습니다. 인증을 요구하면 공개 주소부터 확인합니다. 다른 OAuth 서비스에는 Authenticate나 codex mcp login이 필요할 수 있지만 이 공개 서비스에 임의의 API key를 넣지 않습니다."
         },
         {
           "type": "code",
@@ -1481,7 +1515,7 @@
         },
         {
           "type": "paragraph",
-          "text": "실패 대조는 자신이 추가한 항목만 enabled = false 또는 비활성화 기능으로 바꾸고 저장·재시작합니다. 새 CLI 세션은 /mcp, 데스크톱과 IDE는 앞서 설명한 설정과 새 작업에서 도구 사용 불가를 확인합니다. 이전 대화는 새 조회가 아닙니다. true로 복구하거나 추가한 false를 제거하고 재시작·재조회합니다."
+          "text": "실패 대조는 자신이 추가한 항목만 바꿉니다. enabled가 이미 있으면 false로 수정하고, 없을 때만 enabled = false를 한 번 추가하세요. 키나 표를 중복하면 안 됩니다. 클라이언트 비활성화 기능도 가능합니다. 저장·재시작한 뒤 데스크톱·CLI·IDE의 새 작업 또는 세션에서 /mcp와 실제 도구 활동으로 사용 불가를 확인합니다. 이전 대화는 새 조회가 아닙니다. 이전 값을 복구하거나 이번에 추가한 키만 제거한 뒤 재시작·재조회합니다."
         },
         {
           "type": "code",
@@ -1566,12 +1600,12 @@
         {
           "title": "Model Context Protocol",
           "url": "https://learn.chatgpt.com/docs/extend/mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "OpenAI Docs MCP",
           "url": "https://developers.openai.com/learn/docs-mcp",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

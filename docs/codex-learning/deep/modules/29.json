@@ -35,7 +35,7 @@
       "text": [
         "本機文件必須由可存取它的桌面主機處理，電腦要開機、程式要持續運行，資料夾也要存在。Windows、macOS、Linux 都核對實際桌面版本是否提供 Scheduled；Linux 預覽缺少功能時記為目前不可用，不猜測已設定成功。CLI 與 IDE 沒有 Scheduled 管理介面，可以先準備腳本與提示詞，再到支援的桌面或網頁管理。",
         "Local files need a desktop host that can access them, with the computer on, app running and folder available. On Windows, macOS and Linux, check whether the installed desktop version offers Scheduled; record missing preview support as unavailable. CLI and IDE have no Scheduled management UI, though they can prepare scripts/prompts before management on a supported desktop or web surface.",
-        "ローカル文書はアクセス可能なホスト、電源、稼働アプリ、存在するディレクトリが必要です。各 OS の実版で Scheduled を確認し、Linux プレビューでなければ利用不可と記録します。CLI・IDE は管理 UI がなく、準備後に対応入口で管理します。",
+        "ローカル文書はアクセス可能なホスト、電源、稼働中のアプリ、存在するディレクトリが必要です。Windows、macOS、Linux の実際のデスクトップ版で Scheduled の有無を確認し、入口がなければ現在のバージョンでは利用不可と記録します。CLI と IDE には管理 UI がないため、準備後に対応するデスクトップまたは Web で管理します。",
         "로컬 문서는 접근 가능한 호스트·전원·실행 중인 앱·존재하는 폴더가 필요합니다. 각 OS의 실제 버전에서 Scheduled를 확인하고 Linux 미리 보기에 없으면 사용 불가로 기록하세요. CLI/IDE에는 관리 UI가 없으며 준비 후 지원 진입점에서 관리합니다."
       ]
     },
@@ -169,7 +169,7 @@
       "text": [
         "完成一次變更後再跑相同狀態，核對「沒有變更時保持安靜」是否符合你的通知設定，同時仍能在 Scheduled 找到執行狀態。沒有推播不一定是沒有執行；系統通知、應用程式通知與這份排程的回報條件要分開查。若你希望每週固定收到報告，即使內容一樣，也應改成那個明確需求，不能同時要求永遠通知與無變更不通知。",
         "Run the unchanged state again and verify quiet-on-no-change behavior while checking run status in Scheduled. No push notification does not necessarily mean no execution; inspect OS notifications, app notifications and schedule reporting separately. If you want every weekly report even when unchanged, request that explicitly rather than asking both always-notify and silence-on-no-change.",
-        "同状態で再実行し、変化なしの通知条件と履歴を確認します。推播なしは未実行とは限らず、OS、アプリ、予約条件を分けて調べます。毎週同内容でも欲しいならそう指定し、常時通知と変化なし無通知を同時に求めません。",
+        "同じ状態で再実行し、変化がない場合の通知条件と履歴を確認します。プッシュ通知がないことは未実行を意味しないため、OS 通知、アプリ通知、スケジュールの報告条件を分けて調べます。毎週同じ内容でも受け取りたい場合はそう指定し、常時通知と変化なしの無通知を同時に求めません。",
         "같은 상태로 다시 실행해 무변경 알림 조건과 기록을 확인합니다. 푸시 없음이 미실행은 아니므로 OS·앱·예약 조건을 따로 봅니다. 같은 내용도 매주 받으려면 명시하고 항상 알림과 무변경 무알림을 동시에 요청하지 않습니다."
       ]
     },
@@ -254,7 +254,7 @@
       "text": [
         "完成紀錄包括來源、時區、保存項目、一次真正排程結果、變更後的新讀取、修改時間及 Paused 狀態。若入口不可用或尚未等到排程，只填已完成部分。事件觸發排程另受方案與入口限制，本篇不把桌面定時任務當成 Gmail／Slack 事件監聽。產品流程依官方文件查證，未替讀者建立排程或宣稱各平台已實測；下一篇 [codex exec](article:codex-exec-scripting) 介紹非互動腳本。",
         "Record source, time zone, saved entry, one real scheduled result, fresh reading after change, edited time and Paused state. Mark partial completion if unsupported or no trigger has occurred. Event triggers have separate plan/surface limits; desktop timing is not Gmail/Slack event monitoring. The flow is documented from official sources without creating reader schedules or claiming all-platform tests. Continue to [codex exec](article:codex-exec-scripting).",
-        "出所、タイムゾーン、保存項目、実予約結果、変更後読取り、変更時刻、Paused を残し、未提供・未起動なら部分完了とします。事件起動は別制限があるため定時を Gmail・Slack 監視としません。公式確認であり利用者の予約作成や全 OS 実測を主張せず、次は [codex exec](article:codex-exec-scripting) です。",
+        "出所、タイムゾーン、保存項目、実際のスケジュール結果、変更後の再読取り、変更時刻、Paused を残し、未提供・未起動なら部分完了とします。イベント起動には別の制限があるため、定時実行を Gmail・Slack 監視とは扱いません。公式資料による確認であり、利用者のスケジュール作成や全 OS の実測は主張しません。次は [codex exec](article:codex-exec-scripting) です。",
         "출처·시간대·저장 항목·실제 예약 결과·변경 후 읽기·수정 시간·Paused를 기록하고 미지원·미실행이면 부분 완료로 표시합니다. 이벤트 트리거는 별도 제한이 있어 시간 예약을 Gmail/Slack 감시로 보지 않습니다. 공식 확인이며 사용자 예약 생성이나 전 OS 실측을 주장하지 않고 다음은 [codex exec](article:codex-exec-scripting)입니다."
       ]
     }

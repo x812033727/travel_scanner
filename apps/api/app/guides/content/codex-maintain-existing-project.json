@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "建立現況基準，處理一項真實變更，以回歸檢查和交接紀錄交付可追溯成果。",
+            "接手既有 Small Steps，把畫面中的統計邏輯抽成可測試函式，同時保留全部既有行為。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -198,23 +205,8 @@
           "code": "const counts = countTasks(tasks);\ndocument.querySelector(\"#count\").textContent = `${counts.active} active / ${counts.total} total`;\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "檢查這裡的"
-            },
-            {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
-            },
-            {
-              "type": "text",
-              "text": "確實是 tasks。只有 Read 完成、Build 未完成時，Completed 的 shown 只有一筆；若誤傳 shown，會得到 0 active / 1 total，而正確畫面應仍為 1 active / 2 total。核心六項測試只驗 countTasks 的函式契約，仍可能全部通過，所以保留這個獨立的接線與畫面核對。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "檢查這裡的參數確實是 tasks。只有 Read 完成、Build 未完成時，Completed 的 shown 只有一筆；若誤傳 shown，會得到 0 active / 1 total，而正確畫面應仍為 1 active / 2 total。核心六項測試只驗 countTasks 的函式契約，仍可能全部通過，所以保留這個獨立的接線與畫面核對。"
         },
         {
           "type": "heading",
@@ -226,23 +218,8 @@
           "text": "若修改前的同一個練習服務仍在執行，直接重新整理該網址，不另啟動第二個；已停止才使用以下命令。在此資料夾啟動預覽：Windows 執行 py -3 -m http.server 4173 --bind 127.0.0.1；macOS／Linux 執行 python3 -m http.server 4173 --bind 127.0.0.1，瀏覽同一 http://127.0.0.1:4173。若已有人占用，先核對原服務，不直接終止它。在修改前後使用同一來源網址及虛構待辦，避免換連接埠後空白的 localStorage 被誤認為資料遺失。保留修改前建立的 Read、Build，不重設或重複新增；先比對儲存的兩筆 ID 與完成狀態，再依序選 All tasks、Active、Completed，三次統計都必須是 1 active / 2 total。"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "重新整理確認兩筆資料、ID 與完成狀態保留。先用同一組兩筆資料，在 390px 與桌面寬度各檢查一次篩選與統計；接著選 All tasks，只刪除一次 Read，確認 1 active / 1 total。按 Tab 確認焦點仍可見。這是回歸驗收，不需要新的設計圖。若數字隨篩選改變，就回到 app.js 查函式引數；若純函式本身不對，用新測試的實際失敗案例定位。只有在確實觀察過後才填寫瀏覽器通過，未操作的系統另外"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "重新整理確認兩筆資料、ID 與完成狀態保留。先用同一組兩筆資料，在 390px 與桌面寬度各檢查一次篩選與統計；接著選 All tasks，只刪除一次 Read，確認 1 active / 1 total。按 Tab 確認焦點仍可見。這是回歸驗收，不需要新的設計圖。若數字隨篩選改變，就回到 app.js 查函式引數；若純函式本身不對，用新測試的實際失敗案例定位。只有在確實觀察過後才填寫瀏覽器通過，未操作的系統另外標記。"
         },
         {
           "type": "heading",
@@ -320,6 +297,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Establish a baseline, implement one change and deliver traceable regression checks and handoff notes.",
+            "Take over existing Small Steps code, extract its UI counting logic into a testable function and preserve all behavior."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -588,6 +572,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "現状を記録し、一つの変更を実施して回帰確認と引き継ぎを残します。",
+            "既存 Small Steps の画面内集計を試験可能な関数へ抽出し、全挙動を保ちます。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -855,6 +846,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "현황 기준을 만들고 한 가지 변경을 수행해 회귀 검사와 인계 기록을 남깁니다.",
+            "기존 Small Steps 화면의 집계 로직을 시험 가능한 함수로 추출하고 모든 동작을 보존합니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1121,6 +1119,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "建立现况基准，处理一项真实变更，以回归检查和交接纪录交付可追溯成果。",
+            "接手既有 Small Steps，把画面中的统计逻辑抽成可测试函式，同时保留全部既有行为。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

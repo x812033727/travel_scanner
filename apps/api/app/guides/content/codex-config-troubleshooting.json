@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "從設定來源追查無效或衝突的選項，一次修改一項，驗證結果後保留可還原的紀錄。",
+            "用四份獨立樣本練習缺引號、重複鍵、鍵放錯層與不支援的值，再用設定診斷分辨未載入與被覆寫，只修正真正有問題的來源。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -225,23 +232,8 @@
           "text": "修正、還原與交付紀錄"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "真正要改設定時，先備份那份確定會載入的檔案，只修改已定位的鍵。保持原來的帳號、供應者及其他設定，不貼上整包範例取代整份檔案。重啟後核對診斷與本機"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "；若無法證明有效值，寫「尚未確認」，保留原因。出現新問題就把該鍵或檔案還原，再核對已回到先前狀態，不需要清空整個 .codex。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "真正要改設定時，先備份那份確定會載入的檔案，只修改已定位的鍵。保持原來的帳號、供應者及其他設定，不貼上整包範例取代整份檔案。重啟後核對診斷與本機標記；若無法證明有效值，寫「尚未確認」，保留原因。出現新問題就把該鍵或檔案還原，再核對已回到先前狀態，不需要清空整個 .codex。"
         },
         {
           "type": "code",
@@ -250,23 +242,8 @@
           "code": "Symptom: record the actual error or unchanged setting.\nFile and layer: record the relevant path and whether it loaded.\nDiagnosis: syntax / key scope / unsupported value / precedence / trust / policy.\nMinimal change: record exactly one repaired cause.\nValidation: distinguish sample parser checks from actual client diagnostics.\nRestoration: record the backup or original value and the result after restarting.\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "完成後應有一份通過的起點、四份能說明原因的故障樣本，以及各自修正後通過的副本。另能用真實工作階段分清「檔案沒載入」和「載入但被覆寫」，並知道何時仍缺乏證據。本篇 Python 樣本以離線解析驗證，Codex 的有效層級則依官方診斷流程確認；模型、"
-            },
-            {
-              "type": "article",
-              "text": "MCP",
-              "kind": "life",
-              "slug": "ai-term-model-context-protocol"
-            },
-            {
-              "type": "text",
-              "text": " 或權限的問題再連到相應專篇，不用這個單鍵檢查器替它們下結論。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "完成後應有一份通過的起點、四份能說明原因的故障樣本，以及各自修正後通過的副本。另能用真實工作階段分清「檔案沒載入」和「載入但被覆寫」，並知道何時仍缺乏證據。本篇 Python 樣本以離線解析驗證，Codex 的有效層級則依官方診斷流程確認；模型、MCP 或權限的問題再連到相應專篇，不用這個單鍵檢查器替它們下結論。"
         },
         {
           "type": "rich_paragraph",
@@ -335,6 +312,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Trace ineffective or conflicting settings, change one item at a time and keep a reversible record.",
+            "Diagnose missing quotes, duplicate keys, wrong scope and unsupported values with four isolated samples."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -618,6 +602,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "無効な設定や衝突の出典を調べ、一項目ずつ変更し、戻せる記録を残します。",
+            "四つの独立例で引用符の欠落、重複キー、誤った階層、非対応の値を確認します。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -896,6 +887,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "적용되지 않거나 충돌하는 설정의 출처를 찾고 한 항목씩 변경해 복원 가능한 기록을 남깁니다.",
+            "독립 예시 네 개로 따옴표 누락, 중복 키, 잘못된 위치, 미지원 값을 확인합니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1173,6 +1171,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "从设定来源追查无效或冲突的选项，一次修改一项，验证结果后保留可还原的纪录。",
+            "用四份独立样本练习缺引号、重复键、键放错层与不支援的值，再用设定诊断分辨未载入与被覆写，只修正真正有问题的来源。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

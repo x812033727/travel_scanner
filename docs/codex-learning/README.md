@@ -1,12 +1,12 @@
 # Codex 學習中心：實作與維護
 
-**60 篇五語深入稿已編譯，依 [深入教學計畫](depth-plan.md)與[作者模板](article-template.md)等待最終驗收。** 已對齊「規劃 Claude Code 教學目錄」的深度，保留五語、既有 ID／網址與截圖要求。現在有 60 筆目錄、十個單元、URL 篩選與先備導覽；沒有短稿或待寫空篇。正式深入驗收仍為 0/60，缺口與本輪證據見[製作進度](progress.md)。
+**60 篇五語深入稿、五語總目錄與本機最終頁面驗收已於 2026-09-20 完成。** 系列對齊 Claude Code 教學中心的深度，保留既有 ID／網址，新增十單元、URL 篩選、指令索引、五語摘要與先備導覽；沒有短稿或待寫空篇。全文終審為 60/60，總目錄終審通過，修正紀錄見[最終編輯處置](evidence/final-editorial-resolution.json)。
 
-逐篇補強使用[深入製作與驗收總目錄](deepening/README.md)：十份單元文件包含 60 篇獨立規格，每篇明列材料、操作、交付物、成功／失敗、還原與圖片需求，並連回現有作者稿及五語內容包。[共同驗收表](deepening/review-checklist.md)列出五篇代表稿及六組十篇的檢查順序。五篇代表稿已完成一輪定向補強，細節與未實測項目見[審核紀錄](evidence/representative-depth-review.json)；仍待全篇與最終頁面驗收。
+逐篇補強使用[深入製作與驗收總目錄](deepening/README.md)：十份單元文件包含 60 篇獨立規格，每篇明列材料、操作、交付物、成功／失敗、還原與圖片需求，並連回作者稿及五語內容包。[共同驗收表](deepening/review-checklist.md)列出五篇代表稿及六組十篇的檢查順序；六組全文紀錄及缺漏的第三組證據均已補齊。
 
-本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。**沒有 push、PR、匯入、正式發布或部署**。使用者已授權全部完成且驗收後，再開 PR、合併與部署；完成前不提前交付部分 PR。
+本系列有一個總目錄與 60 篇獨立教學，每篇提供繁中、簡中、英文、日文、韓文，共 61 個內容包、305 份語言文件。路由為 `/{locale}/life/codex-learning-hub` 與既有 `/life/<slug>`。本機 Edge 以 360／390／1280px 完成 920 筆整頁報告（915 項頁面驗收與 5 次明確記錄的首次取文重試），另有 12 項目錄／實戰頁檢查及 6 項練習資料復原檢查。PR、合併、正式匯入、部署與公開網址驗收仍是後續獨立步驟。
 
-五篇代表稿與 A 至 J 十單元已完成本輪定向補強，合計 **60 篇，沒有待做的本輪補強篇章**。最新 [J 審核紀錄](evidence/unit-j-depth-review.json)包含網站交接、CSV 去重邊界、重構接線、Git 忽略、效率判讀及 PowerShell 狀態；[I](evidence/unit-i-depth-review.json)、[H](evidence/unit-h-depth-review.json)、[G](evidence/unit-g-depth-review.json)保留先前補強。下一階段為完整五語終審、產品證據與最終頁面驗收，正式驗收仍為 0/60。
+五篇代表稿與 A 至 J 十單元已完成定向補強及全文終審。先前被標為 changes-required 的 03、06、20、25–29、50–52、54 與總目錄已依精確問題修正；全文第三組證據亦已建立。現階段只等待整套 PR、CI、合併、正式內容發布、部署及公開頁面驗收。
 
 ## 內容與發布來源
 
@@ -69,9 +69,9 @@ apps/api/.venv/Scripts/python.exe tools/codex-learning/check-workshop-practice.p
 
 ## 查證、圖片與限制
 
-查證日為 **2026-09-14**。每篇記錄官方來源及 checked_on；[研究工具](../../tools/codex-learning/research.py) 從作者資料列舉官方 Markdown，儲存於未提交的 `.codex/codex-learning-research/`。主要查證入口：
+本次變更篇章與總目錄的查證日為 **2026-09-20**；其他未變更篇章保留各自最後查證日。每篇記錄官方來源及 checked_on；[研究工具](../../tools/codex-learning/research.py) 從作者資料列舉官方 Markdown，儲存於未提交的 `.codex/codex-learning-research/`。主要查證入口：
 
-- [桌面版](https://learn.chatgpt.com/docs/app)、[Windows](https://learn.chatgpt.com/docs/windows/windows-app)、[Linux 預覽](https://learn.chatgpt.com/docs/linux/linux-app)：產品名稱、下載與平台限制。
+- [桌面版](https://learn.chatgpt.com/docs/app)、[Windows](https://learn.chatgpt.com/docs/windows/windows-app)、[Linux](https://learn.chatgpt.com/docs/linux/linux-app)：產品名稱、下載與平台限制。
 - [Remote](https://learn.chatgpt.com/docs/remote)：iOS／Android 的遠端入口、主機必須可用；不能把手機當作可直接讀取任意電腦檔案的本機 CLI。
 - [CLI 指令](https://learn.chatgpt.com/docs/developer-commands?surface=cli)、[AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md)：依介面區分指令及規則層級。
 - [登入](https://learn.chatgpt.com/docs/auth)、[方案](https://learn.chatgpt.com/docs/pricing)、[模型](https://learn.chatgpt.com/docs/models)：變動資訊集中於 02／17，不在多篇硬寫價格、額度或模型排行榜。
@@ -80,7 +80,7 @@ apps/api/.venv/Scripts/python.exe tools/codex-learning/check-workshop-practice.p
 
 ## 可重現的本機整頁驗證
 
-**本節為重現說明，目前最終驗收尚未執行。** 本任務的 Next 預覽啟動被自動核准審查拒絕，限制為只監聽本機後仍回覆 `blocked by policy`，未提供具體原因。沒有改用其他啟動方式繞過；既有 fixture 是舊快照，不能用來證明最終 60 篇通過。
+**2026-09-20 已依本節重現並通過。** 使用正式 Next production build 與只綁定 localhost 的假發布 API；假 API 僅提供公開狀態，不接觸資料庫或正式服務。完整報告見 `browser-check.json`、`depth-browser.json` 與 `practice-browser.json`。
 
 在第一個終端機啟動僅限 localhost 的唯讀假發布 API：
 
@@ -119,4 +119,4 @@ apps/api/.venv/Scripts/python.exe -m unittest discover -s docs/codex-learning/ex
 
 共用系統已於本機整合：checkpoint 5f5b0b11 後，以 7abe6057 將 main 3b8df68c693eb81ccde7793a2f89d71999dbb2c2 合入本分支，包含 Claude 系列 PR #485 的能力。新版使用 inlines／article 引用與 code label；build-series.py 由前端唯一課程資料生成五語 API 目錄。這不是本系列已合入 main。
 
-最新 60 篇快照：168 項受影響前端、9 項編譯器、59 項 API／系列／內容包及 39 項工具測試通過；18 項依賴 PostgreSQL 的案例略過。全站 ESLint、TypeScript／正式建置、API Ruff／Mypy、多語與任務檢查通過。內容稽核 0 錯誤、24 個篇幅與集合頁編輯提示；完整範圍及尚未完成的瀏覽器與圖文驗收見 progress.md。
+最新本機快照：60 篇／300 份文章文件及 61 個內容包通過 schema、連結、圖片、五語程式碼與來源檢查；每份文件新增兩至五句、取自既有內容的五語摘要。內容稽核 0 錯誤、27 項提示：22 項為深入英文篇幅或總目錄短於一般文章建議，5 項為專用目錄沒有正文 SVG；門檻未調低，互動目錄及封面仍另行驗收。最終 CI 數字以 PR 為準。

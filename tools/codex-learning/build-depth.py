@@ -245,6 +245,25 @@ def simplified(body):
     return "".join(output)
 
 
+def summary_items(description, blocks):
+    """Reuse localized article prose for a two-to-five sentence opening summary."""
+    sentences = [item.strip() for item in re.split(r"(?<=[.!?。！？])\s*", description) if item.strip()]
+    for block in blocks:
+        if len(sentences) >= 2:
+            break
+        if block["type"] not in {"paragraph", "note", "callout"}:
+            continue
+        for item in re.split(r"(?<=[.!?。！？])\s*", block.get("text", "")):
+            item = item.strip()
+            if item and item not in sentences and len(item) <= 300:
+                sentences.append(item)
+            if len(sentences) >= 2:
+                break
+    if len(sentences) < 2 or any(len(item) > 300 for item in sentences[:5]):
+        raise ValueError("Localized prose cannot form a valid two-to-five sentence summary")
+    return sentences[:5]
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
@@ -313,7 +332,10 @@ def main():
                         pictures.append({"type": "image", "src": f'/guides/{row["slug"]}/reference-{width}.png',
                                          "alt": FEATURE_ALT[locale], "caption": FEATURE_CAPTIONS[locale],
                                          "width": width, "height": 900, "credit": {"author": "Mokaair", "license": "© Mokaair"}})
-                pack["locales"][locale]["blocks"] = blocks + pictures
+                description = pack["locales"][locale].get("description")
+                summaries = ([{"type": "summary", "items": summary_items(description, blocks)}]
+                             if description else [])
+                pack["locales"][locale]["blocks"] = [*summaries, *blocks, *pictures]
                 pack["locales"][locale]["sources"] = sources[id_text]
             encoded = json.dumps(pack, ensure_ascii=False, indent=2) + "\n"
             entry["packHash"] = sha256(encoded.encode("utf-8")).hexdigest()
