@@ -1,13 +1,13 @@
 ---
 id: 2026-09-19-news-batch-4-6-news-since
 title: News batch 4.6: news since 2026-09-18 (AI 4, tech 4, crypto 3, zh-TW only) plus two updates
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T18:09:01Z
 created_at: 2026-09-19T18:08:59Z
-completed_at:
+completed_at: 2026-09-19T23:49:54Z
 branch: claude/news-batch-4-6-since-0918
 depends_on: []
 scope:
@@ -73,8 +73,8 @@ scratchpad `news46/STATE-4-6.md`；探索候選檔 `news46/candidates-{ai,tech,c
 - [x] 兩則更新：已評估——目標文章是五語系且字數頂格，只加一節與 checker 互斥；兩位代理的改動已還原，另開票 `multi-language-maintenance`（見 Notes）
 - [x] `check_article.py` RELATED 與 `verticals.py` 接續號段：AI 167–170、科技 317–320、幣圈 214–216
 - [x] 三個索引文章不改標題；索引增補另開 `2026-09-19-4-6-11-zh-tw-update`（update_index.py 是五語機制，zh-TW-only 不能直接套）
-- [ ] PR 合併、部署後 `guides-import --slug`（先 dry-run 核對計畫），正式站每篇 200、可索引、在 `life-zh-TW.xml`
-- [ ] 本票記下 slug 清單、dry-run／publish 輸出與驗證結果
+- [x] PR 合併、部署後 `guides-import --slug`（先 dry-run 核對計畫），正式站每篇 200、可索引、在 `life-zh-TW.xml`
+- [x] 本票記下 slug 清單、dry-run／publish 輸出與驗證結果
 
 ## Steps
 
@@ -87,7 +87,7 @@ scratchpad `news46/STATE-4-6.md`；探索候選檔 `news46/candidates-{ai,tech,c
 - [x] `DELTA-4-6.md`、`check_article.py` RELATED、`verticals.py`
 - [x] 撰稿（sonnet ×11，5 小時窗 19:20Z 重置後派）→ 查核第一輪（opus）→ 第二輪（opus，SECOND-ROUND）
 - [x] 出圖、`check_article.py --assets`（不帶 --full）、relink、lint、commit、PR
-- [ ] 站主 AskUserQuestion 明確選「合併並發布」→ 部署 → `guides-import --slug` → 驗證 → 本票 done
+- [x] 站主 AskUserQuestion 明確選「合併並發布」→ 部署 → `guides-import --slug` → 驗證 → 本票 done
 
 ## How to verify
 
@@ -99,6 +99,19 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 ```
 
 ## Notes
+
+- **發布紀錄（2026-09-19T23:41Z–23:49Z UTC，台北 2026-09-20 早上）**：站主在 AskUserQuestion 明確選「合併並發布」。PR #572 squash 為 `7f2c5478`；
+  主機前置檢查：無 hold 檔、無進行中的分段發布、repo 落後 3 個 commit；`/root/deploy-travel-scanner.sh` 23:44Z 起跑、23:47Z health 3/3、alembic `0081_affiliate_click_article (head)`（無 migration）、log `deploy_20260919_234433.log`。
+  `guides-import --actor-email <容器 ADMIN_EMAILS 第一位> --locale zh-TW --publish --dry-run --slug ×11`：計畫 11 篇、taxonomy create 11、zh-TW create 11、update 0；
+  `--publish`：created 11、updated 0、unchanged 0、published 11、taxonomy_updated 11、`failed: null`。
+  驗證（UA `Mokaair-editorial/1.0`、每請求間隔 1.5 秒）：11 頁 `https://mokaair.com/zh-TW/life/<slug>` 皆 200、無 robots meta（可索引）、`/guides/<slug>/hero.jpg` 皆 200、11 個網址都在 `sitemaps/sitemap/life-zh-TW.xml`、`/feed.xml` 已出現；
+  `guides-links-check --locale zh-TW` findings 19 筆、無一涉及本批 slug。主機輸出在 `/root/news46-20260920/`（dryrun.json、publish.json、publish-run.log、links-after.json）。
+- 發稿日活資料：第二輪查核全部在 2026-09-20 當天重抓（EBA 活動頁兩欄仍空、SEC 兩案無新判決、iPhone Duo 39 場未變、OCC 三份 PDF md5 相符），與發稿同日，未再重抓。
+- slug 清單：AI `ai-news-anthropic-accenture-evaluation-20260918`、`ai-news-openai-australia-youth-safety-20260918`、`ai-news-gemini-notebook-study-tools-20260918`、`ai-news-kimi-k3-bedrock-20260918`；
+  科技 `tech-news-npm-stage-only-tokens-20260918`、`tech-news-cisa-kev-linux-kernel-20260918`、`tech-news-windows-cloud-rebuild-20260918`、`tech-news-iphone-duo-dev-resources-20260918`；
+  幣圈 `crypto-news-occ-three-trust-charters-20260918`、`crypto-news-eba-third-party-risk-20260918`、`crypto-news-sec-crypto-fraud-patterns-20260918`。
+- 給下一批的教訓：zh-TW-only 的批次 `check_article.py` 不帶 `--full`；`cmd | tail && git commit` 會吃掉 FAIL，要看 exit code；含中文的 FAIL 訊息要 `PYTHONIOENCODING=utf-8`；表格 caption ≤200 字、description 120–200 字；
+  用 `json.dump` 改內容包會把表格陣列展開成多行，改用文字插入；第二輪查核平均每篇再改 13 處（含推翻第一輪與協調者自己新寫的句子），不能省。
 
 - PR #572（2026-09-20）：11 create／0 update；兩輪查核合計改 327 處＋35 條協調者裁決；出圖 11 篇；索引增補另開 `2026-09-19-4-6-11-zh-tw-update`。等站主明確選「合併並發布」。
 

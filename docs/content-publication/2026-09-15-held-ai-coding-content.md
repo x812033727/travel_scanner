@@ -19,7 +19,7 @@
 文章本身已寫明哪些是「依官方文件核對、未由作者實機操作」（見 `docs/claude-code-series/advanced/README.md` 的「驗證狀態」與 `source-review.md`）。
 #501 與 #485 互相大量連結（#485→#501 12 條、#501→#485 85 條），批次 04 又連到 #485，所以 **不接受決定一就整批 111 篇都不能發**。
 
-- [ ] 接受：照目前寫明的限制發布 36 篇；`2026-09-14-claude-advanced-live-validation` 繼續獨立進行，補完後再更新文章。（日期：＿＿＿＿ 簽名：＿＿＿＿）
+- [x] 接受：照目前寫明的限制發布 36 篇；`2026-09-14-claude-advanced-live-validation` 繼續獨立進行，補完後再更新文章。（日期：2026-09-20　簽名：站主於 AskUserQuestion 選定，claude-fable-5-1 代填）
 - [ ] 不接受：本票維持 open，等實測票完成。
 
 ### 決定二：`codex-cli-getting-started` 與 `codex-cloud-tasks-github` 怎麼處理
@@ -39,7 +39,7 @@
 | (b) 只發 zh-TW，暫時接受連進學習中心的引用還不能點 | 兩篇留在清單，指令本來就帶 `--locale zh-TW`，所以只會建立 zh-TW；四個外語版本留到學習中心發布時再匯入（屆時會是 `create`） | 兩篇裡指向學習中心的 article 引用顯示為純文字；`guides-links-check --locale zh-TW` 會把它們列成 `unpublished`（票面 DoD 允許的唯一例外，第 8.7 節要記下來） |
 | (c) 先拿掉兩篇連進學習中心的引用再發 | 要改兩個內容包（不在本票 scope；而且這兩個檔案也在 blocked 票 `2026-09-14-codex-learning-series` 的 scope 裡，另開票時 claim 會被 overlap 擋，需要 `--force` 並在票裡說明）、合併、**重新部署映像**，然後才能匯入 | 最慢；學習中心發布時還要再把引用加回去 |
 
-- [ ] (a)　- [ ] (b)　- [ ] (c)　（日期：＿＿＿＿ 簽名：＿＿＿＿）
+- [ ] (a)　- [x] (b)　- [ ] (c)　（日期：2026-09-20　簽名：站主於 AskUserQuestion 選定，claude-fable-5-1 代填）
 
 ## 2. 正式站現況（2026-09-19 06:47–06:50 UTC 實測）
 
@@ -472,7 +472,10 @@ echo "$SLUG_ARGS" | wc -w                    # 222（(a) 是 218）
 docker compose -f /root/travel_scanner/docker-compose.prod.yml exec -T api sh -c \
   'cd /app/app/guides/content && while read -r s; do sha256sum "$s.json"; done' \
   < <(cat b04.txt cc485.txt cc501.txt) | sha256sum
-# 預期 8674d4685f55ee108cf1d8d7c05b7bea883d60f6ea95354779c027445b7987f6  -
+# 預期 954a319af2dc626ecd88a3a959c4664ec27e40a733d9f7dfe16dff58844a93d1  -   （2026-09-20 起，= main 在 #563 之後）
+# 2026-09-20 第一次執行時關卡擋下：映像算出 954a319a…，文件原寫 8674d468…（= #559 基準，已在 6a254971 重算驗證）。
+# 查因：6a254971..main 之間只有 #563 `14ce467d` 碰過這 111 篇，+119 行／0 刪除，每篇加一行圖片 description
+# （兩篇 Codex 五語各一行）。映像 = 現在的 main。純附加 metadata，不影響匯入，預期值改成上面那個。
 # 單檔參考：codex-cli-getting-started.json 475c1a62…ecda6、codex-cloud-tasks-github.json 497085b1…104d7e、claude-code-tutorials.json 24b1ff9c…f46d
 ```
 
@@ -602,61 +605,75 @@ EOF
 
 ### 8.1 站主決定
 
-- 決定一：＿＿＿＿（日期／簽名）
-- 決定二：＿＿＿＿（日期／簽名）
+- 決定一：接受，照文章寫明的限制發布 36 篇（2026-09-20，站主於 AskUserQuestion 選定；claude-fable-5-1 代填）
+- 決定二：(b) 111 篇 zh-TW 全發（2026-09-20，同上）
 
 ### 8.2 前置核對（7.0、7.1）
 
 ```text
-git log -1:
-compose ps:
-claude-code-* 檔數:
-111 檔 sha256 合成值:
-hold 檔:
+執行時間（UTC）: 2026-09-19 ~17:0x（台北 09-20 凌晨），腳本 /root/held111-precheck.sh，跑了兩次
+git log -1: 9af3511f 2026-09-20 ops(nginx): repo 補上已在主機的爬蟲允許清單，並修好 CI 的設定測試 (#568)
+compose ps: travel_scanner-api-1 Up 2 hours、travel_scanner-web-1 Up 2 hours（映像為 #566 ecc6cbc0 部署）
+claude-code-* 檔數: 97
+111 檔 sha256 合成值: 954a319af2dc626ecd88a3a959c4664ec27e40a733d9f7dfe16dff58844a93d1
+  第一次執行與文件原值 8674d468… 不符、關卡停止；查因見 §7.1 註解（#563 每篇加一行圖片 description，映像 = main）。
+  在本機驗證：6a254971 算出 8674d468…（= 文件原值）、origin/main 算出 954a319a…（= 映像）。第二次執行以此值通過。
+hold 檔: 無
+slug 檔: b04 14 / cc485 61 / cc501 36 = 111，無重複；SLUG_ARGS 222 個字
+actor: 由 api 容器的 ADMIN_EMAILS 第一個值取得，不寫進指令或文件
 ```
 
 ### 8.3 不帶 slug 的 dry-run（7.2）
 
 ```text
-執行時間（UTC）:
-plan rows / ours / missing / not a plain zh-TW create:
-other packs by taxonomy:
-other creates:
+執行時間（UTC）: 2026-09-19 ~17:2x（第二次 precheck，關卡以更新後的 sha 通過）
+plan rows / ours / missing / not a plain zh-TW create: 1036 / 111 / [] / []
+other packs by taxonomy: {'unchanged': 829, 'create': 95, 'update': 1}
+other creates: 95（codex-account-usage、codex-agents-md、codex-agents-md-scopes、codex-automation-recovery、codex-automations、codex-browser-images、codex-ci-workflows、codex-cli-linux-wsl、codex-cli-macos、codex-cli-windows、codex-commands、codex-config-toml …）= §6 預告的 codex／gemini／notebooklm／google-flow／llms-txt-evaluation，一篇都沒進 --slug
 ```
 
 ### 8.4 `--slug` dry-run `--publish`（7.3）
 
 ```text
-執行時間（UTC）:
-plan / want / missing / extra / bad:
+執行時間（UTC）: 同上，緊接 7.2
+plan / want / missing / extra / bad: 111 / 111 / [] / [] / []
+actor: api 容器 ADMIN_EMAILS 第一個值（不寫進文件）
 ```
 
 ### 8.5 正式 `--publish` 與回放 dry-run（7.4）
 
 ```text
-執行時間（UTC）:
-created / updated / unchanged / published / taxonomy_updated / failed:
-回放 dry-run:
+執行時間（UTC）: 2026-09-19T17:49:52Z → 17:50:18Z（26 秒），/root/held111-publish.sh 在 nohup 下執行，輸出在 /root/held-content-20260919/publish-run.log
+publish.json 摘要: {'created': 111, 'updated': 0, 'unchanged': 0, 'published': 111, 'taxonomy_updated': 0, 'failed': None}
+回放 dry-run（--slug 同組）: [('unchanged', 'unchanged', False)]
+決定二 = (b)：兩篇 Codex 只建 zh-TW，四個外語版本留到學習中心發布時再匯（屆時為 create）
 ```
 
 ### 8.6 逐頁驗證、sitemap、summary、系列 API（7.5）
 
 ```text
-page-checks.txt 不合格行:
-life-zh-TW.xml article locs / ours present / missing:
-summary:
-series claude-code entries:
+執行時間（UTC）: 2026-09-19T17:51:03Z → 17:57:46Z，/root/held111-verify.sh（nohup），日誌 /root/held-content-20260919/verify-run.log
+逐頁: 111/111 都是 page=200 hero=200 robots=none；「這篇文章目前看不到」標題 0；canonical 全部 = https://mokaair.com/zh-TW/life/<slug>
+sitemap life-zh-TW.xml: article locs 816、ours present 111、missing []
+summary: life zh-TW 816（intel 19、howto 106；四個外語各 life 90／howto 18／intel 2）→ 合計 1,381
+系列 API /api/travel/guides/series/claude-code?locale=zh-TW: hub claude-code-tutorials、entries 96
 ```
 
 ### 8.7 `guides-links-check --locale zh-TW`（7.5）
 
 ```text
-findings 總數:
-still pointing at one of ours:
-from the two Codex pages（選 (b) 時的例外）:
+exit=1（有 findings 即非零，預期）；findings 19
+still pointing at one of ours: []
+from the two Codex pages: 14 —— codex-cli-getting-started → codex-commands／codex-agents-md／…（10）、codex-cloud-tasks-github → codex-learning-hub／codex-mobile-guide／codex-testing-review／codex-first-project（4），
+  全部是決定二 (b) 同意暫留的 unpublished 引用（頁面上顯示純文字，學習中心發布時自動變連結）
+其餘 5 筆 findings 不指向本批，屬發布前就存在的狀況；完整 JSON 在主機 /root/held-content-20260919/links-after.json
 ```
 
 ### 8.8 發布後注意到、但不屬本票的事
+
+- `guides-links-check` 另有 5 筆不指向本批的 findings，發布前就在；沒有逐一判讀，留給 `2026-09-14-codex-learning-series`（blocked）或連結維護票。
+- §7.1 的 sha256 預期值會隨每次動到這 111 篇內容包的 PR 過期（這次是 #563 加圖片 description）。關卡本身是對的，但下次照 runbook 跑之前先在本機用同一方法重算 origin/main。
+- 111 篇全是 zh-TW；四個外語版本（兩篇 Codex 有）留到 Codex 學習中心發布時再匯，屆時為 create。
 
 ```text
 ```
