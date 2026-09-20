@@ -8,7 +8,7 @@ owner: claude-fable-5-1
 claimed_at: 2026-09-19T23:52:05Z
 created_at: 2026-09-19T23:52:03Z
 completed_at:
-branch:
+branch: claude/travel-guide-info-0c934d
 depends_on: []
 scope:
   - docs/travel-guides-batch-8
@@ -33,8 +33,8 @@ scope:
 
 ## Steps
 
-- [ ] 五個區域研究代理（opus）：日本西部與中部、韓國、泰國、越南、港星馬與跨區
-- [ ] 協調者選 20 篇、定 display_order 與互連
+- [x] 五個區域研究代理（opus）：日本西部與中部、韓國、泰國、越南、港星馬與跨區（2026-09-20 00:26Z 全部回來，無一被額度切斷）
+- [x] 協調者選 20 篇、定 display_order 與互連（1210–1400，清單見下方「交接」）
 - [ ] 規格代理（opus，一次 ≤7 個）
 - [ ] 三輪一致性審查（連結與時效、區塊規則、事實與口徑）
 - [ ] README、check:tasks、PR
@@ -47,3 +47,22 @@ scope:
 
 - 研究檔與抓下來的原始頁留在規劃工作區（session scratchpad `plan8/`），不進 repo（同第七批）。
 - 對外請求的 User-Agent 一律 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)`，不得帶任何人的 email 或個人資料。
+
+## 交接（2026-09-20）
+
+這張票由 session「Google 索引未建立問題」（worktree `exciting-wozniak-51d668`，分支 `claude/travel-guides-batch-8-plan`）開出並認領，
+做完研究、選題，派了規格 #1–#9。站主同一時間另開 session「旅遊攻略與情報」下了同一個指令；兩邊撞題後，站主用 AskUserQuestion
+決定由後者（本分支 `claude/travel-guide-info-0c934d`，脈絡較小、協調較省 Fable 額度）接手整批 20 篇。切點：
+
+- 原 session：不再派代理；在途的規格 #3–#9 跑完後連同 #1、#2 交過來（寫在它的 worktree，未 commit）；不從它的分支開 PR。
+- 本 session：規格 #10–#20、三輪一致性審查、README、launch 票、PR，以及之後的撰稿與上線。
+- 研究檔、原始頁與原 session 的狀態檔留在它的 scratchpad `plan8/`（只讀）；本 session 的狀態檔在自己的 scratchpad `plan8/STATE-here.md`。
+
+選定的 20 篇（display_order）：okinawa-lodging-tax-2027（intel，1210）、japan-public-holidays-2027（intel，1220）、
+ghibli-park-tickets-and-access（1230）、kanazawa-shirakawago-day-trip（1240）、onomichi-shimanami-kaido-cycling（1250）、
+kerama-islands-ferry-from-naha（1260）、okinawa-without-a-car（1270）、hallasan-hiking-reservation-guide（1280）、
+marado-gapado-ferry-day-trip（1290）、chiang-mai-airport-transport-where-to-stay（1300）、
+chiang-mai-night-markets-walking-streets（1310）、phuket-old-town-big-buddha-viewpoints（1320）、
+pattaya-koh-larn-day-trip-from-bangkok（1330）、thailand-temple-etiquette-dress-code（1340）、da-lat-3-day-itinerary（1350）、
+ninh-binh-day-trip-from-hanoi（1360）、my-son-sanctuary-day-trip-from-da-nang（1370）、vung-tau-day-trip-from-ho-chi-minh（1380）、
+ngong-ping-360-lantau-day（1390）、kuala-lumpur-3-day-itinerary（1400）。
