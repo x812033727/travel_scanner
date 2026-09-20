@@ -72,9 +72,17 @@ Each job lives at `docs/article-localization/work/<slug>/<locale>/`:
 - `translated-fields.json`: all expected JSON-pointer translations, no missing or
   extra keys. Numeric/URL/inline-code tokens must survive. Long copied source
   prose, placeholder markers, wrong scripts, and schema size violations fail.
-- `document.json`: schema-validated staged document; code, credits, dates,
-  metadata, structural links and identities are preserved. A later publication
+- `document.json`: schema-validated staged document; code, dates, metadata,
+  structural links and identities are preserved. The known AI hero credit pair
+  `Mokaair · AI 生成示意圖` / `AI 生成，非實拍` exposes two descriptive fields for
+  translation while requiring the exact `Mokaair · ` attribution prefix and an
+  `AI` disclosure in each result. Photographer names, credit source URLs and
+  copyright/CC license identities remain immutable. Other credit formats are
+  deliberately excluded until explicitly reviewed. A later publication
   assembly step must localize same-site link routes and apply publication checks.
+  This field allowlist changes the immutable job hash for matching future jobs.
+  Existing prepared/rendered jobs keep their original fields and receipts; use a
+  new work root for a newly prepared job rather than rewriting staged inputs.
 - `assets.json`: `{svg, public_svg, targets, source_sha256}` for each localized
   SVG. `svg` is an absolute staged path; public paths use locale suffixes.
 - `assets/guides/<slug>/`: localized SVGs, rendered raster targets and preview

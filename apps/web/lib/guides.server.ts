@@ -317,11 +317,10 @@ const SITEMAP_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 /**
  * The enumeration, plus whether it is the complete publication picture.
  *
- * `complete` is false after a failed page. A failed first page returns no entries at all; a
- * failed later page keeps the rows already read, because a child with most of its articles
- * beats a child with none -- but either way the caller must not read an absence here as
- * "not published". A slice that filled `SITEMAP_CHILD_LIMIT` is complete: the rows after it
- * belong to the next numbered child, not to this one.
+ * `complete` is false after any failed or malformed page, and no article rows are returned:
+ * a partial child could otherwise advertise missing sibling languages as a complete set.
+ * A slice that filled `SITEMAP_CHILD_LIMIT` is complete for that child; later rows belong to
+ * the next numbered child.
  */
 export type GuideSitemapResult = { entries: GuideSitemapEntry[]; complete: boolean };
 
@@ -334,70 +333,56 @@ export type GuideSitemapFilters = { section?: GuideSection; locale?: Locale; off
  * Publication-aware enumeration for `app/sitemaps/sitemap.ts`, following `next_cursor`
  * until the API says the page was the last one or the child's slice is full.
  *
- * Returns no entries on a failed first page. The sitemap must degrade to its static child
- * rather than disappear: an empty sitemap tells Google the site has no pages, which is far
- * worse than one missing section.
+ * Returns no entries on any failed page. A legacy API without an explicit terminal cursor
+ * cannot prove that all rows were read, and every row must name its published sibling
+ * locales so a one-language child can generate reciprocal hreflang links.
  */
 export async function guideSitemapEntries(filters: GuideSitemapFilters = {}): Promise<GuideSitemapResult> {
-  const rows: Array<Omit<GuideSitemapEntry, "locales"> & { apiLocales?: Locale[] }> = [];
-  const byArticle = new Map<string, Locale[]>();
-  let cursor: string | null = null;
-  let complete = true;
-  do {
+  const incomplete: GuideSitemapResult = { entries: [], complete: false };
+  const rows: GuideSitemapEntry[] = [];
+  const seenRows = new Set<string>();
+  const seenCursors = new Set<string>();
+  let cursor: string | undefined;
+  while (true) {
     const params = new URLSearchParams({ limit: String(SITEMAP_PAGE_SIZE) });
     if (filters.section) params.set("section", filters.section);
     if (filters.locale) params.set("locale", filters.locale);
     // The offset enters the order once; every later page continues from the cursor.
-    if (!cursor && filters.offset) params.set("offset", String(filters.offset));
+    if (cursor === undefined && filters.offset) params.set("offset", String(filters.offset));
     if (cursor) params.set("cursor", cursor);
     const row: unknown = await fetchJson(`/guides/sitemap?${params.toString()}`, defaultLocale);
     const body = row as Record<string, unknown> | null;
-    if (!body || !Array.isArray(body.entries)) {
-      // A failed page: keep what earlier pages gave, and say the picture is not whole.
-      complete = false;
-      break;
-    }
+    const remaining = SITEMAP_CHILD_LIMIT - rows.length;
+    if (!body || !Array.isArray(body.entries)
+      || body.entries.length > Math.min(SITEMAP_PAGE_SIZE, remaining)
+      || !Object.hasOwn(body, "next_cursor")) return incomplete;
+    const next = body.next_cursor;
+    if (next !== null && (typeof next !== "string" || !next || next.length > 512
+      || next.trim() !== next || seenCursors.has(next))) return incomplete;
+    if (next !== null && body.entries.length === 0) return incomplete;
     for (const value of body.entries) {
       const entry = value as Record<string, unknown> | null;
-      if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string") continue;
-      if (!isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)) continue;
-      // Neither of these is reachable through today's API, which validates the slug on write and
-      // types published_at as a datetime. They are here because either one costs the whole file
-      // rather than one URL. Next interpolates the URL into <loc> and into every alternate's href
-      // with no escaping (next/dist/build/webpack/loaders/metadata/resolve-route-data.js), so a
-      // slug holding `&` or `<` makes the document unparseable; and a date that does not parse
-      // becomes an Invalid Date, which is truthy and is a Date, so the same serialiser calls
-      // toISOString() on it and throws -- a 500 on the child rather than a missing entry.
-      if (!SITEMAP_SLUG.test(entry.slug)) continue;
-      if (!Number.isFinite(Date.parse(entry.published_at))) continue;
+      if (!entry || typeof entry.slug !== "string" || typeof entry.published_at !== "string"
+        || !isGuideKind(entry.kind) || !locales.includes(entry.locale as Locale)
+        || !SITEMAP_SLUG.test(entry.slug) || !Number.isFinite(Date.parse(entry.published_at))
+        || !Array.isArray(entry.locales) || !entry.locales.includes(entry.locale)
+        || !entry.locales.every((item) => locales.includes(item as Locale))) return incomplete;
       const locale = entry.locale as Locale;
-      const key = `${entry.kind}:${entry.slug}`;
-      byArticle.set(key, [...(byArticle.get(key) ?? []), locale]);
+      const key = `${entry.kind}:${entry.slug}:${locale}`;
+      if (seenRows.has(key)) return incomplete;
+      seenRows.add(key);
       // Same guard as published_at, but a bad value here costs only the lastmod, never the URL.
       const modified = typeof entry.modified_at === "string" && Number.isFinite(Date.parse(entry.modified_at))
         ? { modified_at: entry.modified_at } : {};
-      // The API names every locale the article is published in; a child that holds one locale
-      // could not learn the others from its own rows. An older API sends none, and then the
-      // rows this read saw are the best picture there is.
-      const apiLocales = Array.isArray(entry.locales)
-        && entry.locales.every((item) => locales.includes(item as Locale)) && entry.locales.includes(locale)
-        ? { apiLocales: entry.locales as Locale[] } : {};
-      rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at, ...modified, ...apiLocales });
+      const siblingLocales = entry.locales as Locale[];
+      rows.push({ kind: entry.kind, slug: entry.slug, locale, published_at: entry.published_at,
+        locales: locales.filter((value) => siblingLocales.includes(value)), ...modified });
     }
-    cursor = typeof body.next_cursor === "string" && body.next_cursor ? body.next_cursor : null;
     // A full slice is this child's whole share; the rows after it are the next child's.
-    if (rows.length >= SITEMAP_CHILD_LIMIT) break;
-  } while (cursor);
-
-  return {
-    entries: rows.slice(0, SITEMAP_CHILD_LIMIT).map(({ apiLocales, ...entry }) => ({
-      ...entry,
-      // Ordered by the site's own locale list rather than the API's row order, so two runs
-      // cannot produce differently ordered alternates for the same article.
-      locales: locales.filter((value) => (apiLocales ?? byArticle.get(`${entry.kind}:${entry.slug}`))?.includes(value)),
-    })),
-    complete,
-  };
+    if (rows.length === SITEMAP_CHILD_LIMIT || next === null) return { entries: rows, complete: true };
+    seenCursors.add(next);
+    cursor = next;
+  }
 }
 
 /** Published rows per kind and locale, from `GET /guides/sitemap/summary`. */
