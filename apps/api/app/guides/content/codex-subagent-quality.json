@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "定義獨立輸入、修改範圍與交付證據，審查子代理結果並處理缺項。",
+            "把子代理回報轉成可核對的主張，抓出一個錯誤判斷與一個沒有證據的成功宣稱。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -60,23 +67,8 @@
           ]
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "主任務收到"
-            },
-            {
-              "type": "article",
-              "text": "子代理",
-              "kind": "life",
-              "slug": "ai-term-subagent"
-            },
-            {
-              "type": "text",
-              "text": "結果後仍負責驗收。兩個代理一致不代表事實已獨立驗證，因為它們可能看了相同的舊摘要或作了相同假設。這篇把回報中的「程式有某個行為」「測試已通過」「修改已交付」分開處理，要求每一類都對上實際檔案、執行紀錄或 Git 狀態。閱讀與執行層級不同，不用要求所有句子都有相同形式的證據。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "主任務收到子代理結果後仍負責驗收。兩個代理一致不代表事實已獨立驗證，因為它們可能看了相同的舊摘要或作了相同假設。這篇把回報中的「程式有某個行為」「測試已通過」「修改已交付」分開處理，要求每一類都對上實際檔案、執行紀錄或 Git 狀態。閱讀與執行層級不同，不用要求所有句子都有相同形式的證據。"
         },
         {
           "type": "heading",
@@ -221,23 +213,8 @@
           ]
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "如果子代理讀的是舊提交，先把目前分支或檔案版本補給它，再只要求重查受影響的結論。若它被停止或等待授權，保留已取得的部分，把缺項交回主任務決定後續；不要把「Done」標籤推論成每個驗收條件都完成。兩份報告都指向同一段未檢驗文字時，應新增獨立的原始碼或測試證據，而不是再開更"
-            },
-            {
-              "type": "article",
-              "text": "多代理",
-              "kind": "life",
-              "slug": "ai-term-multi-agent-system"
-            },
-            {
-              "type": "text",
-              "text": "投票。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "如果子代理讀的是舊提交，先把目前分支或檔案版本補給它，再只要求重查受影響的結論。若它被停止或等待授權，保留已取得的部分，把缺項交回主任務決定後續；不要把「Done」標籤推論成每個驗收條件都完成。兩份報告都指向同一段未檢驗文字時，應新增獨立的原始碼或測試證據，而不是再開更多代理投票。"
         },
         {
           "type": "heading",
@@ -323,6 +300,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Define independent inputs, edit scopes and evidence, then review subagent results and resolve gaps.",
+            "Turn worker reports into verifiable claims and detect one incorrect conclusion and one unsupported success claim."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -594,6 +578,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "独立した入力、変更範囲、証拠を定義し、サブエージェントの結果と不足を確認します。",
+            "エージェント報告を検証可能な主張に変え、誤判断一件と証拠なしの成功一件を見つけます。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -864,6 +855,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "독립 입력, 수정 범위, 증거를 정하고 하위 에이전트 결과와 누락을 확인합니다.",
+            "작업자 보고를 검증 가능한 주장으로 바꿔 잘못된 판단 하나와 근거 없는 성공 주장 하나를 찾습니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1133,6 +1131,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "定义独立输入、修改范围与交付证据，审查子代理结果并处理缺项。",
+            "把子代理回报转成可核对的主张，抓出一个错误判断与一个没有证据的成功宣称。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

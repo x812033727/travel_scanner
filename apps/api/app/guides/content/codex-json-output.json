@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "區分事件串流與最終結果，解析結構化輸出並拒絕缺欄位或錯誤格式。",
+            "把一次 Codex 回答變成能被程式檢查的資料，同時保留執行事件。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -128,23 +135,8 @@
           "text": "步驟 3：建立一次執行、逐層驗證的程式"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "將下方完整程式存為同一資料夾的 run_summary.py。它只用 Python 標準函式庫，不需 pip install。程式先建立全新的輸出資料夾，保存 schema 與 running 狀態，再用"
-            },
-            {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
-            },
-            {
-              "type": "text",
-              "text": "陣列啟動 Codex；不把模型文字拼成 shell 指令。120 秒是教材自行設定的等待上限，不是 Codex 的固定限制。遇到逾時、啟動失敗或非零退出，保留產物並拒絕接受答案，不自動重試。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "將下方完整程式存為同一資料夾的 run_summary.py。它只用 Python 標準函式庫，不需 pip install。程式先建立全新的輸出資料夾，保存 schema 與 running 狀態，再用參數陣列啟動 Codex；不把模型文字拼成 shell 指令。120 秒是教材自行設定的等待上限，不是 Codex 的固定限制。遇到逾時、啟動失敗或非零退出，保留產物並拒絕接受答案，不自動重試。"
         },
         {
           "type": "rich_paragraph",
@@ -332,6 +324,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Separate event streams from final results, parse structured output and reject missing or invalid fields.",
+            "Turn a Codex answer into programmatically checked data while retaining execution events."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -627,6 +626,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "イベント列と最終結果を区別し、構造化出力を解析して不足項目や不正形式を検出します。",
+            "Codex の回答をプログラムで検証できるデータにし、実行イベントも残します。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -921,6 +927,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "이벤트 스트림과 최종 결과를 구분하고 구조화 출력을 해석해 누락과 잘못된 형식을 거부합니다.",
+            "Codex 답변을 프로그램으로 검증하는 데이터로 만들고 실행 이벤트도 보존합니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1214,6 +1227,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "区分事件串流与最终结果，解析结构化输出并拒绝缺栏位或错误格式。",
+            "把一次 Codex 回答变成能被程式检查的资料，同时保留执行事件。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

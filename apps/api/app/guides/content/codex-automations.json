@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "排程讓固定工作在指定時間執行，但要先確認使用哪個環境。",
+            "需要本機檔案的桌面排程，電腦與應用程式必須在執行時可用；雲端任務不能直接讀取未提供的本機資料。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -268,7 +275,7 @@
         {
           "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -287,6 +294,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "排程让固定工作在指定时间执行，但要先确认使用哪个环境。",
+            "需要本机档案的桌面排程，电脑与应用程式必须在执行时可用；云端任务不能直接读取未提供的本机资料。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -531,7 +545,7 @@
         {
           "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -550,6 +564,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Scheduled work needs a defined execution environment.",
+            "A desktop task that reads local files requires the computer and app to be available at run time.",
+            "Cloud work cannot directly read local data you have not supplied."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -794,7 +816,7 @@
         {
           "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -813,6 +835,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "定期実行には実行環境を決めます。",
+            "ローカルファイルを読む場合、実行時にコンピューターとアプリが利用可能である必要があります。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -856,7 +885,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ローカル文書はアクセス可能なホスト、電源、稼働アプリ、存在するディレクトリが必要です。各 OS の実版で Scheduled を確認し、Linux プレビューでなければ利用不可と記録します。CLI・IDE は管理 UI がなく、準備後に対応入口で管理します。"
+          "text": "ローカル文書はアクセス可能なホスト、電源、稼働中のアプリ、存在するディレクトリが必要です。Windows、macOS、Linux の実際のデスクトップ版で Scheduled の有無を確認し、入口がなければ現在のバージョンでは利用不可と記録します。CLI と IDE には管理 UI がないため、準備後に対応するデスクトップまたは Web で管理します。"
         },
         {
           "type": "table",
@@ -953,7 +982,7 @@
         },
         {
           "type": "paragraph",
-          "text": "同状態で再実行し、変化なしの通知条件と履歴を確認します。推播なしは未実行とは限らず、OS、アプリ、予約条件を分けて調べます。毎週同内容でも欲しいならそう指定し、常時通知と変化なし無通知を同時に求めません。"
+          "text": "同じ状態で再実行し、変化がない場合の通知条件と履歴を確認します。プッシュ通知がないことは未実行を意味しないため、OS 通知、アプリ通知、スケジュールの報告条件を分けて調べます。毎週同じ内容でも受け取りたい場合はそう指定し、常時通知と変化なしの無通知を同時に求めません。"
         },
         {
           "type": "heading",
@@ -1013,7 +1042,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "出所、タイムゾーン、保存項目、実予約結果、変更後読取り、変更時刻、Paused を残し、未提供・未起動なら部分完了とします。事件起動は別制限があるため定時を Gmail・Slack 監視としません。公式確認であり利用者の予約作成や全 OS 実測を主張せず、次は "
+              "text": "出所、タイムゾーン、保存項目、実際のスケジュール結果、変更後の再読取り、変更時刻、Paused を残し、未提供・未起動なら部分完了とします。イベント起動には別の制限があるため、定時実行を Gmail・Slack 監視とは扱いません。公式資料による確認であり、利用者のスケジュール作成や全 OS の実測は主張しません。次は "
             },
             {
               "type": "article",
@@ -1057,7 +1086,7 @@
         {
           "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1076,6 +1105,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "예약 작업에는 실행 환경을 정해야 합니다.",
+            "로컬 파일을 읽는 작업은 실행 시 컴퓨터와 앱을 사용할 수 있어야 합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1320,7 +1356,7 @@
         {
           "title": "Scheduled tasks: creation, context, testing and permissions",
           "url": "https://learn.chatgpt.com/docs/automations",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

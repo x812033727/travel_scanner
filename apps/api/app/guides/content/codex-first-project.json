@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "使用 Small Steps 待辦網站的獨立副本，修改主標題與背景色。",
+            "辨識五個練習檔案的用途，比對修改前後差異、核心測試與兩種視窗寬度，確認原有功能及資料保留。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -128,7 +135,7 @@
         },
         {
           "type": "paragraph",
-          "text": "瀏覽器開啟 http://127.0.0.1:4173。看到 Small Steps 待辦畫面後，新增 Read、Build，勾選 Read，切到 Completed 應只看到 Read；切到 Active 應只看到 Build。重新整理確認狀態仍在。直接雙擊 index.html 可能因 file 網址限制無法載入模組，請使用剛啟動的 http 網址。"
+          "text": "瀏覽器開啟 http://127.0.0.1:4173。若這個來源已有想保留的虛構任務，先另行記錄；展開 About this exercise，選 Reset practice data，再切到 All tasks 並確認清單為空。這只清除練習資料，不會還原程式檔。接著新增 Read、Build，勾選 Read；Completed 應只看到 Read，Active 應只看到 Build。重新整理確認狀態仍在。直接雙擊 index.html 可能因 file 網址限制無法載入模組，請使用剛啟動的 http 網址。"
         },
         {
           "type": "heading",
@@ -160,7 +167,7 @@
         },
         {
           "type": "paragraph",
-          "text": "再做兩個邊界測試：只輸入空白不能新增；輸入 下方樣本 應顯示為文字，不應成為圖片。用 Tab 移動到輸入框、按鈕、篩選與核取方塊，應有可見焦點。這些檢查確認小幅畫面修改沒有順手破壞資料處理或鍵盤操作；核心測試不會自動涵蓋 CSS 外觀，所以兩種證據都要看。"
+          "text": "再做兩個邊界測試：只輸入空白不能新增；把下方樣本輸入待辦欄位後，畫面應顯示原始文字，不應把它當成圖片。用 Tab 移動到輸入框、按鈕、篩選與核取方塊，應有可見焦點。這些檢查確認小幅畫面修改沒有順手破壞資料處理或鍵盤操作；核心測試不會自動涵蓋 CSS 外觀，所以兩種證據都要看。"
         },
         {
           "type": "code",
@@ -230,7 +237,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的"
+              "text": "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-20 的"
             },
             {
               "type": "link",
@@ -243,7 +250,7 @@
             },
             {
               "type": "link",
-              "text": "CLI 檔案",
+              "text": "CLI 文件",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {
@@ -369,12 +376,12 @@
         {
           "title": "Codex quickstart",
           "url": "https://learn.chatgpt.com/docs/quickstart",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
-          "title": "Codex CLI",
+          "title": "Codex CLI documentation",
           "url": "https://learn.chatgpt.com/docs/codex/cli",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -393,6 +400,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "使用 Small Steps 待办网站的独立副本，修改主标题与背景色。",
+            "辨识五个练习文件的用途，比对修改前后差异、核心测试与两种窗口宽度，确认原有功能及数据保留。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -497,7 +511,7 @@
         },
         {
           "type": "paragraph",
-          "text": "浏览器开启 http://127.0.0.1:4173。看到 Small Steps 待办画面后，新增 Read、Build，勾选 Read，切到 Completed 应只看到 Read；切到 Active 应只看到 Build。重新整理确认状态仍在。直接双击 index.html 可能因 file 网址限制无法载入模组，请使用刚启动的 http 网址。"
+          "text": "浏览器开启 http://127.0.0.1:4173。若这个来源已有想保留的虚构任务，先另行记录；展开 About this exercise，选 Reset practice data，再切到 All tasks 并确认清单为空。这只清除练习资料，不会还原程式档。接著新增 Read、Build，勾选 Read；Completed 应只看到 Read，Active 应只看到 Build。重新整理确认状态仍在。直接双击 index.html 可能因 file 网址限制无法载入模组，请使用刚启动的 http 网址。"
         },
         {
           "type": "heading",
@@ -529,7 +543,7 @@
         },
         {
           "type": "paragraph",
-          "text": "再做两个边界测试：只输入空白不能新增；输入 下方样本 应显示为文字，不应成为图片。用 Tab 移动到输入框、按钮、筛选与核取方块，应有可见焦点。这些检查确认小幅画面修改没有顺手破坏资料处理或键盘操作；核心测试不会自动涵盖 CSS 外观，所以两种证据都要看。"
+          "text": "再做两个边界测试：只输入空白不能新增；把下方样本输入待办栏位后，画面应显示原始文字，不应把它当成图片。用 Tab 移动到输入框、按钮、筛选与核取方块，应有可见焦点。这些检查确认小幅画面修改没有顺手破坏资料处理或键盘操作；核心测试不会自动涵盖 CSS 外观，所以两种证据都要看。"
         },
         {
           "type": "code",
@@ -599,7 +613,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "材料是本系列原创、可公开分享的虚构练习网站。参考版核心与浏览器行为已在 Windows／Edge 验证；其他 OS 的启动说明未冒充实机测试。Codex 入口依 2026-09-14 的"
+              "text": "材料是本系列原创、可公开分享的虚构练习网站。参考版核心与浏览器行为已在 Windows／Edge 验证；其他 OS 的启动说明未冒充实机测试。Codex 入口依 2026-09-20 的"
             },
             {
               "type": "link",
@@ -612,7 +626,7 @@
             },
             {
               "type": "link",
-              "text": "CLI 档案",
+              "text": "CLI 文件",
               "url": "https://learn.chatgpt.com/docs/codex/cli"
             },
             {
@@ -738,12 +752,12 @@
         {
           "title": "Codex quickstart",
           "url": "https://learn.chatgpt.com/docs/quickstart",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
-          "title": "Codex CLI",
+          "title": "Codex CLI documentation",
           "url": "https://learn.chatgpt.com/docs/codex/cli",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -762,6 +776,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Use an independent copy of the Small Steps todo website to change its heading and background.",
+            "Identify the five practice files and compare the diff, core tests and two viewport widths while preserving behavior and data."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -866,7 +887,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Open http://127.0.0.1:4173 in your browser. Add Read and Build, complete Read, then check that Completed shows only Read and Active only Build. Refresh to confirm persistence. Double-clicking index.html may prevent module loading under a file URL; use the HTTP address of the running server."
+          "text": "Open http://127.0.0.1:4173 in your browser. If this origin contains fictional tasks you want to keep, record them first. Open About this exercise, choose Reset practice data, select All tasks, and confirm the list is empty. This resets practice data only; it does not restore source files. Add Read and Build, complete Read, then check that Completed shows only Read and Active only Build. Refresh to confirm persistence. Double-clicking index.html may prevent module loading under a file URL; use the HTTP address of the running server."
         },
         {
           "type": "heading",
@@ -968,7 +989,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-14 against the "
+              "text": "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-20 against the "
             },
             {
               "type": "link",
@@ -1107,12 +1128,12 @@
         {
           "title": "Codex quickstart",
           "url": "https://learn.chatgpt.com/docs/quickstart",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
-          "title": "Codex CLI",
+          "title": "Codex CLI documentation",
           "url": "https://learn.chatgpt.com/docs/codex/cli",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1131,6 +1152,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Small Steps の ToDo サイトを独立したコピーで使い、見出しと背景色を変更します。",
+            "五つの教材ファイルの役割を確認し、差分、基本テスト、二つの画面幅を照合して機能とデータを保ちます。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1231,7 +1259,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ブラウザーで http://127.0.0.1:4173 を開きます。Read と Build を追加して Read を完了し、Completed では Read だけ、Active では Build だけになることを確認します。再読み込みでも状態が残るはずです。index.html のダブルクリックは file URL の制約でモジュールを読めない場合があるため、起動した HTTP URL を使います。"
+          "text": "ブラウザーで http://127.0.0.1:4173 を開きます。このオリジンに残したい架空タスクがあれば先に記録します。About this exercise を開いて Reset practice data を選び、All tasks で空の一覧を確認します。これは練習データだけを消し、ソースファイルは復元しません。その後 Read と Build を追加して Read を完了し、Completed では Read だけ、Active では Build だけになることを確認します。再読み込みでも状態が残るはずです。index.html のダブルクリックは file URL の制約でモジュールを読めない場合があるため、起動した HTTP URL を使います。"
         },
         {
           "type": "heading",
@@ -1263,7 +1291,7 @@
         },
         {
           "type": "paragraph",
-          "text": "境界も二つ確認します。空白だけでは追加されず、下のサンプル は画像ではなく文字として表示されます。Tab で入力、ボタン、絞り込み、チェックボックスへ移動し、フォーカスが見えることも確認します。表示変更に付随するデータやキーボード操作の退行を見つけるためです。基本テストは CSS 外観を自動確認しないので両方の証拠を見ます。"
+          "text": "境界も二つ確認します。空白だけでは追加されず、下のサンプルは画像ではなく文字として表示されます。Tab で入力、ボタン、絞り込み、チェックボックスへ移動し、フォーカスが見えることも確認します。表示変更に付随するデータやキーボード操作の退行を見つけるためです。基本テストは CSS 外観を自動確認しないので両方の証拠を見ます。"
         },
         {
           "type": "code",
@@ -1333,7 +1361,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-14 の"
+              "text": "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-20 の"
             },
             {
               "type": "link",
@@ -1472,12 +1500,12 @@
         {
           "title": "Codex quickstart",
           "url": "https://learn.chatgpt.com/docs/quickstart",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
-          "title": "Codex CLI",
+          "title": "Codex CLI documentation",
           "url": "https://learn.chatgpt.com/docs/codex/cli",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1496,6 +1524,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Small Steps 할 일 사이트의 독립 복사본에서 제목과 배경색을 바꿉니다.",
+            "실습 파일 다섯 개의 역할을 확인하고 변경 내역, 핵심 테스트, 두 화면 폭을 비교하여 기존 기능과 데이터를 보존합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1596,7 +1631,7 @@
         },
         {
           "type": "paragraph",
-          "text": "브라우저에서 http://127.0.0.1:4173을 엽니다. Read와 Build를 추가하고 Read를 완료한 뒤 Completed에는 Read만, Active에는 Build만 보이는지 확인합니다. 새로고침해 상태가 유지되는지도 봅니다. index.html을 더블클릭하면 file URL 제한으로 모듈을 못 불러올 수 있으므로 실행한 HTTP 주소를 사용하세요."
+          "text": "브라우저에서 http://127.0.0.1:4173을 엽니다. 이 origin에 보존할 가상 작업이 있다면 먼저 기록하세요. About this exercise를 열고 Reset practice data를 선택한 뒤 All tasks에서 빈 목록을 확인합니다. 이 작업은 실습 데이터만 지우며 소스 파일을 복원하지 않습니다. Read와 Build를 추가하고 Read를 완료한 뒤 Completed에는 Read만, Active에는 Build만 보이는지 확인합니다. 새로고침해 상태가 유지되는지도 봅니다. index.html을 더블클릭하면 file URL 제한으로 모듈을 못 불러올 수 있으므로 실행한 HTTP 주소를 사용하세요."
         },
         {
           "type": "heading",
@@ -1628,7 +1663,7 @@
         },
         {
           "type": "paragraph",
-          "text": "경계 사례 두 가지도 확인합니다. 공백만으로는 할 일을 추가할 수 없어야 하고 아래 샘플는 이미지가 아닌 텍스트로 보여야 합니다. Tab으로 입력창, 버튼, 필터, 체크박스를 이동하며 포커스가 보이는지 확인하세요. 작은 화면 수정에 데이터 처리나 키보드 동작 회귀가 섞이지 않았는지 검사하는 것입니다. 핵심 테스트는 CSS 외관을 자동 확인하지 않으므로 두 종류의 증거를 모두 봅니다."
+          "text": "경계 사례 두 가지도 확인합니다. 공백만으로는 할 일을 추가할 수 없어야 하고 아래 샘플은 이미지가 아닌 텍스트로 보여야 합니다. Tab으로 입력창, 버튼, 필터, 체크박스를 이동하며 포커스가 보이는지 확인하세요. 작은 화면 수정에 데이터 처리나 키보드 동작 회귀가 섞이지 않았는지 검사하는 것입니다. 핵심 테스트는 CSS 외관을 자동 확인하지 않으므로 두 종류의 증거를 모두 봅니다."
         },
         {
           "type": "code",
@@ -1698,7 +1733,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-14의 "
+              "text": "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-20의 "
             },
             {
               "type": "link",
@@ -1837,12 +1872,12 @@
         {
           "title": "Codex quickstart",
           "url": "https://learn.chatgpt.com/docs/quickstart",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
-          "title": "Codex CLI",
+          "title": "Codex CLI documentation",
           "url": "https://learn.chatgpt.com/docs/codex/cli",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

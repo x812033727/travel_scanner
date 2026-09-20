@@ -17,7 +17,7 @@
       "text": [
         "把兩條獨立分支的成果合到第三個檢查目錄，驗收組合結果，再演練衝突與中止。閱讀約 20 分鐘、操作約 30 分鐘。需要 Git、Node.js、編輯器，先讀 [Worktree](article:codex-worktrees) 與[證據驗收](article:codex-subagent-quality)。全程使用新建的 integration-lab，小型純文字材料不連正式專案、GitHub 或外部資料庫。",
         "Combine two independent branches in a third review checkout, test the combined result, then practice a conflict and abort. Allow 20 minutes to read and 30 to practice. Use Git, Node.js and an editor after [Worktrees](article:codex-worktrees) and [Evidence checks](article:codex-subagent-quality). A new integration-lab contains only small text fixtures, without production files, GitHub or an external database.",
-        "独立二分岐を第三の確認ディレクトリへ統合して検証し、競合と中止を練習します。読む時間20分、実習30分。[Worktree](article:codex-worktrees)と[証拠確認](article:codex-subagent-quality)の後、Git、Node.js、エディターを使います。新 integration-lab の小教材だけで、正式環境や外部サービスに接続しません。",
+        "独立した二つのブランチを第三の確認ディレクトリへ統合して検証し、競合と中止を練習します。読む時間20分、実習30分。[Worktree](article:codex-worktrees)と[証拠確認](article:codex-subagent-quality)の後、Git、Node.js、エディターを使います。新しい integration-lab の小教材だけで、本番環境や外部サービスに接続しません。",
         "두 독립 브랜치를 세 번째 검토 폴더에 합쳐 검증하고 충돌과 중지를 연습합니다. 읽기 20분, 실습 30분입니다. [Worktree](article:codex-worktrees)와 [증거 확인](article:codex-subagent-quality) 후 Git·Node.js·편집기를 사용하세요. 새 integration-lab의 작은 자료만 쓰며 운영 환경이나 외부 서비스에 연결하지 않습니다."
       ]
     },
@@ -26,7 +26,7 @@
       "text": [
         "平行工作節省的是可以獨立完成的時間，最後的整合仍有順序。兩個工作者都說完成，可能只是各自的分支完成；同一頁同時用到兩個變更時，還要在相同版本與環境重跑驗收。這篇用標題與頁尾兩個文字檔代表兩份交付，不把簡單文字測試宣稱成整個網站測試。學會流程後，再套用到你專案真正的建置與瀏覽器檢查。",
         "Parallel work saves time on independent parts; integration still has an order. Two completed workers may mean only that each branch is done. A page using both changes needs acceptance on their combined version and environment. This exercise represents the deliverables with heading and footer text files, without calling those checks full website tests. Apply the workflow to your project's real build/browser checks afterward.",
-        "並行で短縮できても統合には順序があります。二人完了は各分岐の完了にすぎず、両変更を使う同一画面は組合せ版で確認が必要です。今回は標題とフッターの文書で交付を表し、全サイト試験とは呼びません。後で実際のビルド・画面確認に適用します。",
+        "並行で短縮できても統合には順序があります。二人の完了は各ブランチの完了にすぎず、両方の変更を使う同一画面は組合せ版で確認が必要です。今回は見出しとフッターのファイルで成果物を表し、全サイトのテストとは呼びません。後で実際のビルドと画面確認に適用します。",
         "독립 작업은 병렬로 시간을 줄여도 통합에는 순서가 있습니다. 두 완료는 각 브랜치만 끝난 것일 수 있어 같은 화면의 조합 버전에서 검증해야 합니다. 제목·푸터 텍스트로 결과물을 나타내며 전체 사이트 시험으로 부르지 않습니다. 이후 실제 빌드·브라우저 검증에 적용하세요."
       ]
     },
@@ -55,7 +55,7 @@
       "label": [
         "新 integration-lab 終端機：僅設定這個練習庫",
         "New integration-lab terminal: repository-local setup only",
-        "新 integration-lab 端末：この庫だけ設定",
+        "新しい integration-lab の端末：このリポジトリだけ設定",
         "새 integration-lab 터미널: 이 저장소만 설정"
       ]
     },
@@ -64,7 +64,7 @@
       "text": [
         "用編輯器建立下列三個完整檔案。heading.txt 初始為 Title: Small Steps，footer.txt 初始為 Footer: Local exercise，各自保留最後換行。測試描述的是兩項尚未完成的新要求，所以基準執行刻意是零通過、兩失敗；這是沒有遠端的獨立教材，不是在正式 main 上留下未說明的失敗。",
         "Create the three complete files below. Initially heading.txt contains Title: Small Steps and footer.txt contains Footer: Local exercise, each with a final newline. The tests describe two new requirements that are not yet implemented, so the baseline deliberately has zero passes and two failures. This isolated, remote-free lab is not an unexplained failure on a production main branch.",
-        "下記三ファイルを作り、標題とフッターの初期値に末尾改行を残します。試験は未実装の新要件二つなので基準は意図した零通過・二失敗です。遠隔なしの独立教材であり、正式 main に説明なしの失敗を残すものではありません。",
+        "下記三ファイルを作り、見出しとフッターの初期値に末尾改行を残します。テストは未実装の新要件二つを表すため、基準は意図した0件成功・2件失敗です。リモートなしの独立教材であり、本番の main に説明なしの失敗を残すものではありません。",
         "아래 세 파일을 만들고 제목·푸터 초기값에 마지막 줄바꿈을 남깁니다. 테스트는 미구현 요구 두 가지이므로 기준은 의도적인 0 통과·2 실패입니다. 원격 없는 독립 자료이며 운영 main에 설명 없는 실패를 남기는 것이 아닙니다."
       ]
     },
@@ -137,7 +137,7 @@
       "text": [
         "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援子代理的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。",
         "A may change only integration-heading/heading.txt to Title: Small Steps Lab. B may change only integration-footer/footer.txt to Footer: Practice only. Make these exact edits manually, or explicitly delegate two workers in a supported Codex task with full paths, branches, exclusive writable files and report format. Reference verification uses equivalent deterministic edits without claiming two model runs.",
-        "A は標題コピーの一文書だけ、B はフッターコピーの一文書だけを指定値へ変えます。手動か、対応 Codex で全パス、分岐、唯一の編集対象、報告形式を明示して2つのエージェントへ依頼できます。参考検証は同等の明示編集でありモデル二実行とはしません。",
+        "A は見出し側コピーの一ファイルだけ、B はフッター側コピーの一ファイルだけを指定値へ変えます。手動で行うか、対応する Codex で全パス、ブランチ、唯一の編集対象、報告形式を明示して二つのエージェントへ依頼できます。参考検証は同等の明示編集であり、モデルを二つ実行したとはしません。",
         "A는 제목 사본의 한 파일만, B는 푸터 사본의 한 파일만 지정값으로 바꿉니다. 직접 편집하거나 지원 Codex에서 전체 경로·브랜치·유일한 쓰기 파일·보고 형식을 주어 두 작업자에게 명시 위임할 수 있습니다. 참고 검증은 동등한 지정 편집이며 두 모델 실행으로 표시하지 않습니다."
       ]
     },
@@ -157,7 +157,7 @@
       "text": [
         "| 工作 | 可寫入檔案 | 此時測試預期 |\n| --- | --- | --- |\n| A 標題 | heading.txt | 標題通過、頁尾尚未通過 |\n| B 頁尾 | footer.txt | 頁尾通過、標題尚未通過 |\n| 整合者 | 確認後的組合分支 | 合併兩份後兩項通過 |\n\n任何人若改了 integration.test.mjs，先查看原因與差異，不讓工作者把驗收目標改低。",
         "| Work | Writable file | Expected tests at this stage |\n| --- | --- | --- |\n| A: heading | heading.txt | Heading passes; footer pending |\n| B: footer | footer.txt | Footer passes; heading pending |\n| Integrator | Reviewed combined branch | Both pass after both merges |\n\nInspect any change to integration.test.mjs before accepting it; workers must not weaken acceptance.",
-        "| 作業 | 編集対象 | その段階の試験 |\n| --- | --- | --- |\n| A 標題 | heading.txt | 標題成功・フッター未完 |\n| B フッター | footer.txt | フッター成功・標題未完 |\n| 統合者 | 確認済み組合せ | 両統合後に二成功 |\n\n試験変更があれば理由と差分を確認し、要件を弱めさせません。",
+        "| 作業 | 編集対象 | その段階のテスト |\n| --- | --- | --- |\n| A：見出し | heading.txt | 見出し成功・フッター未完 |\n| B：フッター | footer.txt | フッター成功・見出し未完 |\n| 統合者 | 確認済みの組合せ | 両方の統合後に二項目成功 |\n\nテスト変更があれば理由と差分を確認し、要件を弱めさせません。",
         "| 작업 | 쓰기 파일 | 해당 단계 시험 |\n| --- | --- | --- |\n| A 제목 | heading.txt | 제목 통과·푸터 대기 |\n| B 푸터 | footer.txt | 푸터 통과·제목 대기 |\n| 통합자 | 검토된 조합 브랜치 | 둘을 합친 뒤 두 통과 |\n\n시험 파일이 바뀌면 이유와 차이를 확인하고 기준을 낮추게 하지 마세요."
       ]
     },
@@ -208,7 +208,7 @@
       "label": [
         "原目錄：依序合到檢查分支並驗收",
         "Original terminal: merge sequentially into the review branch and test",
-        "元端末：確認分岐へ順に統合して検証",
+        "元の端末：確認ブランチへ順に統合して検証",
         "원본: 검토 브랜치에 순서대로 병합 후 검증"
       ]
     },
@@ -217,7 +217,7 @@
       "text": [
         "預期整合目錄兩項通過，diff 同時包含標題與頁尾的新值，而原 integration-lab 的 main 仍是初始文字。若第一個 merge 已衝突，先停止，不執行第二個；不能用某條分支自己的綠燈代替組合驗收。這裡的 --no-ff 用於讓教材清楚保留兩次整合紀錄，真實儲存庫的合併策略仍依其規則決定。",
         "Expect both checks to pass in the review checkout, both new values in its diff and unchanged baseline text on original main. If the first merge conflicts, stop before the second. A green individual branch does not replace combined acceptance. --no-ff preserves visible integration records for teaching; real repositories should follow their own merge policy.",
-        "統合先は二成功、差分は両新値、元 main は初期値のままです。最初の merge が競合したら二回目へ進みません。個別の成功で組合せ確認を代用しません。教材では履歴を示すため --no-ff を使い、実庫は自身の方針に従います。",
+        "統合先は二項目成功、差分は両方の新しい値、元の main は初期値のままです。最初の merge が競合したら二回目へ進みません。個別の成功で組合せ確認を代用しません。教材では履歴を示すため --no-ff を使い、実際のリポジトリではその方針に従います。",
         "통합 폴더는 두 통과, 차이는 두 새 값, 원본 main은 초기값이어야 합니다. 첫 merge가 충돌하면 두 번째는 실행하지 마세요. 개별 브랜치 통과는 조합 검증을 대신하지 않습니다. --no-ff는 교육상 기록을 남기기 위한 것이며 실제 저장소 정책은 따로 따릅니다."
       ]
     },
@@ -237,7 +237,7 @@
       "text": [
         "將這個完整 SHA 和兩項通過結果放在同一筆紀錄。完成下一步衝突與 abort 後，從原目錄再執行同一命令，結果必須與此刻相同，並且 status 乾淨、兩項仍通過；三者一起核對才能確認回到原狀。不要把標題分支或 main 的 SHA 誤填為整合 SHA。",
         "Record this full SHA with the two passing checks. After the conflict and abort below, run the same command from the original folder: require the identical SHA, clean status and both tests passing. Do not substitute the heading branch or main SHA for the integration commit.",
-        "この完全 SHA と二成功を同じ記録に残します。次の競合と abort 後、元フォルダーから同じ命令で同じ SHA、未変更状態、二成功を確認します。標題分岐や main の SHA を統合 SHA と取り違えません。",
+        "この完全 SHA と二項目の成功を同じ記録に残します。次の競合と abort 後、元フォルダーから同じコマンドで同じ SHA、変更なしの状態、二項目の成功を確認します。見出し側ブランチや main の SHA を統合 SHA と取り違えません。",
         "이 전체 SHA를 두 항목 통과와 함께 기록합니다. 다음 충돌과 abort 후 원본 폴더에서 같은 명령으로 동일 SHA, 깨끗한 상태, 두 통과를 모두 확인하세요. 제목 브랜치나 main의 SHA를 통합 SHA로 적지 마세요."
       ]
     },
@@ -266,7 +266,7 @@
       "text": [
         "在 integration-conflict/heading.txt 把初始文字改成 Title: Another direction，保存並只提交該檔。它從舊 main 起步，也改同一行，因此與整合分支的標題方向相衝突。先確認 integration-review 的 status 沒有未提交修改、兩項測試都通過，再嘗試合入衝突分支。這個前提讓 --abort 可以回到開始合併前的清楚狀態，不拿含未保存工作內容的目錄做演練。",
         "Change only integration-conflict/heading.txt to Title: Another direction and commit it. Starting from old main, it edits the same line differently from the integrated branch. Before merging it, confirm the review checkout is clean and both tests pass. That gives --abort a clear pre-merge state instead of practicing on unsaved work.",
-        "競合コピーの標題だけを Title: Another direction にしてコミットします。旧 main から同じ行を違う値へ変えるため統合先と競合します。確認ディレクトリの未変更と二成功を確認してから試し、未保存作業ではなく明確な開始状態へ abort で戻します。",
+        "競合側コピーの見出しだけを Title: Another direction にしてコミットします。旧 main から同じ行を違う値へ変えるため統合先と競合します。確認ディレクトリが変更なしで二項目のテストに成功することを確認してから試し、未保存作業ではなく明確な開始状態へ abort で戻します。",
         "충돌 사본의 제목만 Title: Another direction으로 바꿔 커밋합니다. 이전 main의 같은 줄을 다르게 바꾸므로 통합 브랜치와 충돌합니다. 검토 폴더가 깨끗하고 두 테스트가 통과하는지 확인한 뒤 시도해 미저장 작업 대신 명확한 시작 상태로 abort하게 합니다."
       ]
     },
@@ -277,7 +277,7 @@
       "label": [
         "原目錄：預期 merge 非零且 heading.txt 顯示衝突",
         "Original terminal: expect a nonzero merge and conflict in heading.txt",
-        "元端末：非0の merge と標題競合を確認",
+        "元の端末：0以外の merge 終了コードと見出しの競合を確認",
         "원본: merge 비0과 heading.txt 충돌 예상"
       ]
     },
@@ -315,7 +315,7 @@
       "text": [
         "測試找不到文字檔時，確認三個檔案都在同一份 checkout；此測試依自己的檔案 URL 讀資料，因此從原目錄執行也不會誤讀另一份文字。status 顯示未知修改時先問清來源；分支不存在時回看 worktree 建立與提交紀錄；合併成功但驗收失敗時查組合 diff，不讓工作者擅自改驗收條件。不要把需要先產出共同介面的工作硬拆成彼此不知道規格的兩個寫入任務。",
         "If tests cannot locate text files, confirm all three files belong to the same checkout. The test reads relative to its own file URL, preventing the caller's directory from selecting another copy. Identify unexpected changes, trace missing branches to creation/commits and inspect combined diffs after a merge that fails acceptance. Do not let workers weaken tests or split dependent interface work without a shared contract.",
-        "教材は試験自身の URL 基準で読むため、文書不在なら同じコピーに三つ揃うか確認します。不明変更は出所、分岐不在は作成・コミット、統合後失敗は組合せ差分を調べます。試験を弱めたり、共同介面が未定の依存作業を無理に独立分担したりしません。",
+        "教材はテスト自身の URL を基準に読むため、ファイルがなければ同じコピーに三つ揃っているか確認します。不明な変更は出所、ブランチ不在は作成・コミット、統合後の失敗は組合せ差分を調べます。テストを弱めたり、共通インターフェースが未定の依存作業を無理に独立分担したりしません。",
         "테스트는 자신의 파일 URL 기준으로 읽으므로 파일이 없으면 같은 사본에 셋이 있는지 확인합니다. 알 수 없는 변경은 출처, 없는 브랜치는 생성·커밋, 병합 후 실패는 조합 차이를 보세요. 기준을 낮추거나 공통 인터페이스도 정하지 않은 의존 작업을 무리하게 독립 분담하지 않습니다."
       ]
     },
@@ -324,7 +324,7 @@
       "text": [
         "完成後停止練習工作者並關閉副本視窗，從原 integration-lab 核對 worktree list 的完整路徑與四份副本的 clean status。只有本篇新增、成果已提交且未在使用的副本才依序移除；任何拒絕都先檢查，不加 force。以下保留原庫及 codex/integration 分支，所以之後仍能用 git show 查到組合成果。沒有合併到正式 main，也沒有開 PR。",
         "Stop practice workers and close checkout windows, then verify full paths and clean statuses for all four copies from integration-lab. Remove only the new, committed, unused copies, investigating refusals without force. The original repository and codex/integration branch remain, so git show can still retrieve the combined result. No production main merge or PR occurs.",
-        "作業者とコピー窓を閉じ、元から四経路と clean を確認します。追加・コミット済み・未使用のものだけ除去し、拒否は force で回避しません。元庫と統合分岐を残すため後で成果を読めます。正式 main の統合や PR はありません。",
+        "作業者とコピーのウィンドウを閉じ、元から四つのパスと clean 状態を確認します。追加済み、コミット済み、未使用のものだけ削除し、拒否されても force で回避しません。元のリポジトリと統合ブランチを残すため、後で成果を読めます。本番 main への統合や PR はありません。",
         "작업자와 사본 창을 닫고 원본에서 네 전체 경로와 clean 상태를 확인합니다. 추가했고 커밋됐으며 미사용인 사본만 제거하고 거부는 force 없이 조사하세요. 원본과 통합 브랜치가 남아 결과를 읽을 수 있으며 운영 main 병합이나 PR은 없습니다."
       ]
     },

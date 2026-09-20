@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "畫面需求需要把參考、實際結果與修改條件放在一起。",
+            "瀏覽器可以找資料與檢視網站，截圖能傳達當下畫面，生成圖適合概念參考；三者提供的證據不同，不能用生成的介面當成操作成功。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -100,17 +107,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "Codex 桌面可用內建瀏覽器共同查看網頁，從工具列、網址連結或 @Browser 指定使用；macOS 的開啟快捷鍵是 Cmd＋Shift＋B，Windows 是 Ctrl＋Shift＋B。Linux 先依實際桌面版本的工具列與功能提供情形確認，不假定任何發行版快捷鍵都相同。內建 Browser 不提供給 CLI／IDE；這兩個入口若另有已設定的瀏覽器 "
-            },
-            {
-              "type": "article",
-              "text": "MCP",
-              "kind": "life",
-              "slug": "ai-term-model-context-protocol"
-            },
-            {
-              "type": "text",
-              "text": "，應先按 "
+              "text": "Codex 桌面可用內建瀏覽器共同查看網頁，從工具列、網址連結或 @Browser 指定使用；macOS 的開啟快捷鍵是 Cmd＋Shift＋B，Windows 是 Ctrl＋Shift＋B。Linux 先依實際桌面版本的工具列與功能提供情形確認，不假定任何發行版快捷鍵都相同。內建 Browser 不提供給 CLI／IDE；這兩個入口若另有已設定的瀏覽器 MCP，應先按 "
             },
             {
               "type": "article",
@@ -204,7 +201,7 @@
         },
         {
           "type": "paragraph",
-          "text": "桌面內建瀏覽器若有 Annotation mode，開啟後選取標題與表單之間的區域，留言說明要縮小哪一段間距，再回到主任務送出要求。若沒有標註入口，附上兩張 before 圖並指出標題下方的空白，同樣有效；註解保存不代表模型已開始修改，仍須送出任務。不要只寫「更好看」，把要改的值、保留項目及兩種寬度的驗收說清楚。"
+          "text": "先在 Codex 桌面版開啟練習專案與一個新任務；走 CLI 路線則在練習專案目錄執行 codex 並開始新的互動工作階段。桌面內建瀏覽器若有 Annotation mode，開啟後選取標題與表單之間的區域，留言說明要縮小哪一段間距，再回到主任務送出要求。若沒有標註入口，附上兩張 before 圖並指出標題下方的空白，同樣有效；註解保存不代表模型已開始修改，仍須送出任務。不要只寫「更好看」，把要改的值、保留項目及兩種寬度的驗收說清楚。"
         },
         {
           "type": "code",
@@ -345,7 +342,7 @@
         {
           "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -364,6 +361,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "画面需求需要把参考、实际结果与修改条件放在一起。",
+            "浏览器可以找资料与检视网站，截图能传达当下画面，生成图适合概念参考；三者提供的证据不同，不能用生成的介面当成操作成功。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -534,7 +538,7 @@
         },
         {
           "type": "paragraph",
-          "text": "桌面内建浏览器若有 Annotation mode，开启后选取标题与表单之间的区域，留言说明要缩小哪一段间距，再回到主任务送出要求。若没有标注入口，附上两张 before 图并指出标题下方的空白，同样有效；注解保存不代表模型已开始修改，仍须送出任务。不要只写「更好看」，把要改的值、保留项目及两种宽度的验收说清楚。"
+          "text": "先在 Codex 桌面版开启练习专案与一个新任务；走 CLI 路线则在练习专案目录执行 codex 并开始新的互动工作阶段。桌面内建浏览器若有 Annotation mode，开启后选取标题与表单之间的区域，留言说明要缩小哪一段间距，再回到主任务送出要求。若没有标注入口，附上两张 before 图并指出标题下方的空白，同样有效；注解保存不代表模型已开始修改，仍须送出任务。不要只写「更好看」，把要改的值、保留项目及两种宽度的验收说清楚。"
         },
         {
           "type": "code",
@@ -675,7 +679,7 @@
         {
           "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -694,6 +698,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Visual work needs a reference, the actual result and explicit change criteria.",
+            "Browser inspection, screenshots and generated concepts provide different evidence.",
+            "A generated interface is not proof that a workflow works."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -864,7 +876,7 @@
         },
         {
           "type": "paragraph",
-          "text": "If desktop Annotation mode is available, select the region between heading and form, describe the spacing change and submit a request in the parent task. Otherwise attach the two before images and identify the gap in text. Saving a comment does not itself start a model edit; submit the task. Replace vague aesthetic requests with the desired value, preserved behavior and both viewport checks."
+          "text": "First open the practice project and a new task in Codex desktop. For the CLI route, run codex from the practice-project folder and start a fresh interactive session. If desktop Annotation mode is available, select the region between heading and form, describe the spacing change and submit a request in the parent task. Otherwise attach the two before images and identify the gap in text. Saving a comment does not itself start a model edit; submit the task. Replace vague aesthetic requests with the desired value, preserved behavior and both viewport checks."
         },
         {
           "type": "code",
@@ -1005,7 +1017,7 @@
         {
           "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1024,6 +1036,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "画面の作業では参考、現状、変更条件を揃えます。",
+            "スクリーンショットと生成図は証拠の意味が違い、生成した画面で動作成功を証明できません。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1175,7 +1194,7 @@
         },
         {
           "type": "paragraph",
-          "text": "レスポンシブを二寸法の CSS 像素にし、倍率と二件データを固定します。各 OS の領域撮影でページだけを before 名に保存します。装置倍率で PNG 像素は変わるため、viewport、倍率、版、日付を別記し画像寸法から推測しません。"
+          "text": "レスポンシブ表示を 390×900 と 1280×900 CSS ピクセルにし、倍率と二件のデータを固定します。各 OS の範囲指定スクリーンショットでページだけを before 名に保存します。デバイスの表示倍率で PNG のピクセル数は変わるため、viewport、倍率、ブラウザーのバージョン、日付を別記し、画像寸法から推測しません。"
         },
         {
           "type": "code",
@@ -1185,7 +1204,7 @@
         },
         {
           "type": "paragraph",
-          "text": "撮影からアカウント、私的分頁、通知を外し必要なら小領域を再撮影します。他 OS の図を改題して実測とせず、個人情報は共有前に伏せます。生成・概念図は示意と明記し操作証拠にしません。他人の図は出典、作者、ライセンス、署名を保存し説明と代替文を現言語にします。"
+          "text": "撮影範囲からアカウント、私用タブ、通知を外し、必要なら小さい範囲で撮り直します。他 OS の画面を改題して実測とせず、個人情報は共有前に伏せます。生成画像・概念図はイメージ図と明記し、操作証拠にしません。他人の画像は出典、作者、ライセンス、必要なクレジットを保存し、説明と代替テキストを記事の言語で記します。"
         },
         {
           "type": "heading",
@@ -1194,7 +1213,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Annotation mode があれば標題とフォーム間を選んで間隔を記し、親へ要求を送ります。なければ二 before 図と文字で場所を示します。注釈保存だけでは編集は始まらず送信が必要です。曖昧な美観でなく値、保全、二寸法の検証を指定します。"
+          "text": "まず Codex デスクトップで実習プロジェクトと新規タスクを開きます。CLI の場合は実習プロジェクトのフォルダーで codex を実行し、新しい対話セッションを始めます。Annotation mode があれば見出しとフォームの間を選んで間隔を記し、親タスクへ要求を送ります。なければ二枚の before 画像と文字で場所を示します。注釈の保存だけでは編集は始まらず、タスクの送信が必要です。曖昧な美観ではなく、値、維持する動作、二つの表示幅での検証を指定します。"
         },
         {
           "type": "code",
@@ -1335,7 +1354,7 @@
         {
           "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1354,6 +1373,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "시각 작업에는 참고, 현재 화면과 변경 조건이 필요합니다.",
+            "스크린샷과 생성 그림은 증거의 의미가 다르며 생성 화면으로 동작 성공을 증명할 수 없습니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1524,7 +1550,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Annotation mode가 있으면 제목과 양식 사이를 선택해 간격을 적고 부모에게 요청을 보냅니다. 없으면 before 두 그림과 위치 설명을 첨부하세요. 주석 저장만으로 수정이 시작되지 않으므로 작업을 제출합니다. 막연한 미관 대신 값·보존·두 크기 검증을 명시하세요."
+          "text": "먼저 Codex 데스크톱에서 연습 프로젝트와 새 작업을 여세요. CLI 경로는 연습 프로젝트 폴더에서 codex를 실행해 새 대화 세션을 시작합니다. Annotation mode가 있으면 제목과 양식 사이를 선택해 간격을 적고 부모 작업에 요청을 보냅니다. 없으면 before 두 그림과 위치 설명을 첨부하세요. 주석 저장만으로 수정이 시작되지 않으므로 작업을 제출합니다. 막연한 미관 대신 값·보존할 동작·두 크기 검증을 명시하세요."
         },
         {
           "type": "code",
@@ -1665,7 +1691,7 @@
         {
           "title": "Browser: preview, comments and permissions",
           "url": "https://learn.chatgpt.com/docs/browser",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

@@ -25,6 +25,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "長工作需要把決策與證據留下，不能只依靠對話長度。",
+            "README 說明怎麼使用專案，設計文件記錄為何這樣做，交接文件整理目前做到哪裡；AGENTS.",
+            "md 則放持續有效的工作規則，避免把所有進度塞成規則。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -97,23 +105,8 @@
           "code": "node --test core.test.mjs\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "預期是 2 過 1 敗，失敗在篩選行為。只有真的執行得到這個結果，才能在交接寫「已確認」。沒有 Node 或路徑錯誤，就寫阻礙與實際錯誤摘要，不填預設成功數字。不要保存帳號、金鑰或完整私密工具輸出；這個教材只需要虛構"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "與相關測試資訊。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "預期是 2 過 1 敗，失敗在篩選行為。只有真的執行得到這個結果，才能在交接寫「已確認」。沒有 Node 或路徑錯誤，就寫阻礙與實際錯誤摘要，不填預設成功數字。不要保存帳號、金鑰或完整私密工具輸出；這個教材只需要虛構標記與相關測試資訊。"
         },
         {
           "type": "heading",
@@ -121,23 +114,8 @@
           "text": "步驟 2：寫一份可查證的交接"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "在根目錄建立 handoff.md。下面是完成"
-            },
-            {
-              "type": "article",
-              "text": "基準測試",
-              "kind": "life",
-              "slug": "ai-term-benchmark"
-            },
-            {
-              "type": "text",
-              "text": "後可使用的完整範例；如果你的結果不同，先更正 Observed 欄位。目標說明要做到什麼，Scope 指出可以改哪裡，Observed 帶上版本與命令，Not checked 保留缺少的證據，Next 讓接手者知道第一步要確認什麼。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "在根目錄建立 handoff.md。下面是完成基準測試後可使用的完整範例；如果你的結果不同，先更正 Observed 欄位。目標說明要做到什麼，Scope 指出可以改哪裡，Observed 帶上版本與命令，Not checked 保留缺少的證據，Next 讓接手者知道第一步要確認什麼。"
         },
         {
           "type": "code",
@@ -323,6 +301,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "长工作需要把决策与证据留下，不能只依靠对话长度。",
+            "README 说明怎么使用专案，设计文件记录为何这样做，交接文件整理目前做到哪里；AGENTS.",
+            "md 则放持续有效的工作规则，避免把所有进度塞成规则。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -593,6 +579,15 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Long work needs durable decisions and evidence, not just a long conversation.",
+            "README explains use, design documents explain choices, handoffs record current progress and AGENTS.",
+            "md holds ongoing instructions.",
+            "Do not turn all temporary progress into permanent rules."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -862,6 +857,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "長い作業には判断と証拠を残します。",
+            "README は使い方、設計書は理由、引き継ぎは進捗、AGENTS.",
+            "md は継続する規則に分けます。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1122,6 +1125,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "긴 작업에는 결정과 증거를 남깁니다.",
+            "README는 사용법, 설계 문서는 이유, 인계는 진행 상황, AGENTS.",
+            "md는 지속할 규칙으로 구분합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

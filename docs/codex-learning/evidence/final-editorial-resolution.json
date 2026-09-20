@@ -1,0 +1,156 @@
+{
+  "checked_on": "2026-09-20",
+  "reviewer": "gpt-6-finalization",
+  "scope": "Resolution of every changes-required result from checkpoints 1, 2, 4 and 5 plus the five-language hub editorial review. Historical review files remain unchanged; this record supersedes only their named findings for the exact current hashes.",
+  "base_commit": "fc4460fe98adb19466c4ce055ede4ed36ee561a0",
+  "lessons": [
+    {
+      "id": 3,
+      "slug": "codex-desktop-getting-started",
+      "pack_sha256": "395696c037e92476ce589487c9a2821618e74ec158fb51f5eb34147706f6c5e0",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Added Arch to the documentation-checked Linux list, documented the full-upgrade warning, and made reset/All tasks/empty-list prerequisites explicit in four author locales."
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "codex-first-project",
+      "pack_sha256": "139da6d3c4cea84a80e66dcf0e25f753bc1d8e89563b4474445a6025f02c88bf",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Added preservation, exercise-only reset, All tasks and empty-list baseline; clarified Chinese sample wording, Japanese spacing, Korean grammar and CLI source naming."
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "codex-debugging",
+      "pack_sha256": "484f2e0f959ef6b386590ee39af18d8a79589c8671212848486524b66efde83a",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Added desktop/CLI startup, OS-specific preview commands, exercise-only reset/empty-list baseline and corrected the Traditional Chinese catalogue character."
+      ]
+    },
+    {
+      "id": 25,
+      "slug": "codex-mcp",
+      "pack_sha256": "d7e31c07db0d588027f0b70bfbfd4f2aa68b2b9314cb279cac16de5685800bf3",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Updated /mcp support for desktop, CLI and IDE; made enabled edits duplicate-safe; corrected Japanese endpoint/program terminology."
+      ]
+    },
+    {
+      "id": 26,
+      "slug": "codex-browser-images",
+      "pack_sha256": "fef7dd4c87512b9108e4f7ce40b4b142f0e4adc16279abe71b758a16c7e8d6da",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Added explicit desktop/CLI task startup and corrected literal Japanese screenshot, viewport and annotation terms."
+      ]
+    },
+    {
+      "id": 27,
+      "slug": "codex-worktrees",
+      "pack_sha256": "042a23a697f514a01ccef9f1c2ed043d7736288b176e08430f23929b60de1ea5",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Corrected Japanese sandbox, repository, branch, index, path, heading and cleanup terminology without changing the Git exercise."
+      ]
+    },
+    {
+      "id": 28,
+      "slug": "codex-subagents",
+      "pack_sha256": "2f968761556c1a5ef9f0a34df9a69eac15310a66b95253140ad267550a2271cb",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Updated the Japanese background subagent panel steps to the documented composer, status, stop and thread workflow."
+      ]
+    },
+    {
+      "id": 29,
+      "slug": "codex-automations",
+      "pack_sha256": "d771d17689c1f877d8fa3ff13524a12e075f12945b6342da45ed3ab9b29f9eda",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Updated Japanese Scheduled availability wording and notification/event terminology while retaining local-host prerequisites and CLI/IDE UI limits."
+      ]
+    },
+    {
+      "id": 50,
+      "slug": "codex-plugin-troubleshooting",
+      "pack_sha256": "34d1d6e4e5a6d633414a6ab15439483b12511bd7a741be12c8bafae3e55bd605",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Corrected Japanese sandbox and plugin-package terminology."
+      ]
+    },
+    {
+      "id": 51,
+      "slug": "codex-templates-cheatsheet",
+      "pack_sha256": "f05c36a22202667cc17d931cfc4813ad4a2a7ad0257c12734f9fda3485379e64",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Added explicit desktop/CLI template submission instructions and clarified the unfilled original-template copy in all author locales."
+      ]
+    },
+    {
+      "id": 52,
+      "slug": "codex-mcp-troubleshooting",
+      "pack_sha256": "7e2def7333db56d19d9bab55e6d386319656a20ba2ffa13f0b0e5799306fb22a",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Made enabled edits duplicate-safe, updated /mcp for desktop/CLI/IDE, and corrected Japanese client/host terminology."
+      ]
+    },
+    {
+      "id": 54,
+      "slug": "codex-parallel-integration",
+      "pack_sha256": "c698b9a6589c3657ddc086cdec0416944ad5ef1dfadf764ee240f1d7279674e2",
+      "editorial_result": "passed",
+      "resolved_findings": [
+        "Corrected Japanese branch, repository, heading, test, path and shared-interface terminology throughout the integration exercise."
+      ]
+    }
+  ],
+  "hub": {
+    "slug": "codex-learning-hub",
+    "pack_sha256": "9080433e964b7ca0c4465871c55bdb51277249bc768347e6e6d3c3b63f0bfb77",
+    "editorial_result": "passed",
+    "resolved_findings": [
+      "Explains search, intersected Experience/Platform/Goal/Unit filters, Clear filters, URL preservation and command-kind distinctions in five locales.",
+      "Replaces the three generic ranges with ten A-J routes and explains directory order versus stable IDs.",
+      "Adds publication-gated structured links for beginner/platform, prompting/AGENTS.md, commands/troubleshooting and account/model starting points.",
+      "Explains reading versus practice time, planned/unpublished/unavailable states, return/related links, source dates and fictional practice.",
+      "The rebuild-preservation test passes and rebuild-depth retained the authored hub."
+    ]
+  },
+  "editorial_totals": {
+    "lessons_passed": 60,
+    "hub_passed": true,
+    "five_locale_lesson_documents": 300
+  },
+  "local_page_acceptance": {
+    "status": "passed",
+    "environment": "Windows / Edge 153.0.4234.32 / production Next build / synthetic local publication API",
+    "browser_checks": 920,
+    "article_width_locale_combinations": 900,
+    "hub_width_locale_combinations": 15,
+    "practice_checks": 6,
+    "transient_first_attempt_retries": 5,
+    "retry_disposition": "Five isolated first-attempt fixture fetch failures passed on the next attempt; no hub or lesson failed repeatedly.",
+    "reports": [
+      "browser-check.json",
+      "depth-browser.json",
+      "practice-browser.json"
+    ],
+    "limitations": [
+      "Synthetic publication API is not production publication evidence.",
+      "Responsive widths do not claim physical iOS/Android testing.",
+      "Public-page acceptance remains pending until merge, deployment and content publication."
+    ]
+  },
+  "editorial_result": "passed",
+  "accepted_for_pr": true,
+  "public_page_acceptance": "pending"
+}

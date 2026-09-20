@@ -129,10 +129,10 @@
     {
       "type": "p",
       "text": [
-        "瀏覽器開啟 http://127.0.0.1:4173。看到 Small Steps 待辦畫面後，新增 Read、Build，勾選 Read，切到 Completed 應只看到 Read；切到 Active 應只看到 Build。重新整理確認狀態仍在。直接雙擊 index.html 可能因 file 網址限制無法載入模組，請使用剛啟動的 http 網址。",
-        "Open http://127.0.0.1:4173 in your browser. Add Read and Build, complete Read, then check that Completed shows only Read and Active only Build. Refresh to confirm persistence. Double-clicking index.html may prevent module loading under a file URL; use the HTTP address of the running server.",
-        "ブラウザーで http://127.0.0.1:4173 を開きます。Read と Build を追加して Read を完了し、Completed では Read だけ、Active では Build だけになることを確認します。再読み込みでも状態が残るはずです。index.html のダブルクリックは file URL の制約でモジュールを読めない場合があるため、起動した HTTP URL を使います。",
-        "브라우저에서 http://127.0.0.1:4173을 엽니다. Read와 Build를 추가하고 Read를 완료한 뒤 Completed에는 Read만, Active에는 Build만 보이는지 확인합니다. 새로고침해 상태가 유지되는지도 봅니다. index.html을 더블클릭하면 file URL 제한으로 모듈을 못 불러올 수 있으므로 실행한 HTTP 주소를 사용하세요."
+        "瀏覽器開啟 http://127.0.0.1:4173。若這個來源已有想保留的虛構任務，先另行記錄；展開 About this exercise，選 Reset practice data，再切到 All tasks 並確認清單為空。這只清除練習資料，不會還原程式檔。接著新增 Read、Build，勾選 Read；Completed 應只看到 Read，Active 應只看到 Build。重新整理確認狀態仍在。直接雙擊 index.html 可能因 file 網址限制無法載入模組，請使用剛啟動的 http 網址。",
+        "Open http://127.0.0.1:4173 in your browser. If this origin contains fictional tasks you want to keep, record them first. Open About this exercise, choose Reset practice data, select All tasks, and confirm the list is empty. This resets practice data only; it does not restore source files. Add Read and Build, complete Read, then check that Completed shows only Read and Active only Build. Refresh to confirm persistence. Double-clicking index.html may prevent module loading under a file URL; use the HTTP address of the running server.",
+        "ブラウザーで http://127.0.0.1:4173 を開きます。このオリジンに残したい架空タスクがあれば先に記録します。About this exercise を開いて Reset practice data を選び、All tasks で空の一覧を確認します。これは練習データだけを消し、ソースファイルは復元しません。その後 Read と Build を追加して Read を完了し、Completed では Read だけ、Active では Build だけになることを確認します。再読み込みでも状態が残るはずです。index.html のダブルクリックは file URL の制約でモジュールを読めない場合があるため、起動した HTTP URL を使います。",
+        "브라우저에서 http://127.0.0.1:4173을 엽니다. 이 origin에 보존할 가상 작업이 있다면 먼저 기록하세요. About this exercise를 열고 Reset practice data를 선택한 뒤 All tasks에서 빈 목록을 확인합니다. 이 작업은 실습 데이터만 지우며 소스 파일을 복원하지 않습니다. Read와 Build를 추가하고 Read를 완료한 뒤 Completed에는 Read만, Active에는 Build만 보이는지 확인합니다. 새로고침해 상태가 유지되는지도 봅니다. index.html을 더블클릭하면 file URL 제한으로 모듈을 못 불러올 수 있으므로 실행한 HTTP 주소를 사용하세요."
       ]
     },
     {
@@ -194,10 +194,10 @@
     {
       "type": "p",
       "text": [
-        "再做兩個邊界測試：只輸入空白不能新增；輸入 下方樣本 應顯示為文字，不應成為圖片。用 Tab 移動到輸入框、按鈕、篩選與核取方塊，應有可見焦點。這些檢查確認小幅畫面修改沒有順手破壞資料處理或鍵盤操作；核心測試不會自動涵蓋 CSS 外觀，所以兩種證據都要看。",
+        "再做兩個邊界測試：只輸入空白不能新增；把下方樣本輸入待辦欄位後，畫面應顯示原始文字，不應把它當成圖片。用 Tab 移動到輸入框、按鈕、篩選與核取方塊，應有可見焦點。這些檢查確認小幅畫面修改沒有順手破壞資料處理或鍵盤操作；核心測試不會自動涵蓋 CSS 外觀，所以兩種證據都要看。",
         "Check two boundaries: whitespace alone must not add a task, and the sample below must display as text rather than becoming an image. Use Tab to reach the input, button, filter and checkbox with visible focus. These checks catch data-handling or keyboard regressions accompanying a visual edit. Core tests do not automatically inspect CSS appearance, so examine both kinds of evidence.",
-        "境界も二つ確認します。空白だけでは追加されず、下のサンプル は画像ではなく文字として表示されます。Tab で入力、ボタン、絞り込み、チェックボックスへ移動し、フォーカスが見えることも確認します。表示変更に付随するデータやキーボード操作の退行を見つけるためです。基本テストは CSS 外観を自動確認しないので両方の証拠を見ます。",
-        "경계 사례 두 가지도 확인합니다. 공백만으로는 할 일을 추가할 수 없어야 하고 아래 샘플는 이미지가 아닌 텍스트로 보여야 합니다. Tab으로 입력창, 버튼, 필터, 체크박스를 이동하며 포커스가 보이는지 확인하세요. 작은 화면 수정에 데이터 처리나 키보드 동작 회귀가 섞이지 않았는지 검사하는 것입니다. 핵심 테스트는 CSS 외관을 자동 확인하지 않으므로 두 종류의 증거를 모두 봅니다."
+        "境界も二つ確認します。空白だけでは追加されず、下のサンプルは画像ではなく文字として表示されます。Tab で入力、ボタン、絞り込み、チェックボックスへ移動し、フォーカスが見えることも確認します。表示変更に付随するデータやキーボード操作の退行を見つけるためです。基本テストは CSS 外観を自動確認しないので両方の証拠を見ます。",
+        "경계 사례 두 가지도 확인합니다. 공백만으로는 할 일을 추가할 수 없어야 하고 아래 샘플은 이미지가 아닌 텍스트로 보여야 합니다. Tab으로 입력창, 버튼, 필터, 체크박스를 이동하며 포커스가 보이는지 확인하세요. 작은 화면 수정에 데이터 처리나 키보드 동작 회귀가 섞이지 않았는지 검사하는 것입니다. 핵심 테스트는 CSS 외관을 자동 확인하지 않으므로 두 종류의 증거를 모두 봅니다."
       ]
     },
     {
@@ -259,10 +259,10 @@
     {
       "type": "p",
       "text": [
-        "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-14 的[官方快速開始](https://learn.chatgpt.com/docs/quickstart)與 [CLI 檔案](https://learn.chatgpt.com/docs/codex/cli)查證。圖片只表示練習成果，不是 Codex 的產品介面。",
-        "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-14 against the [official quickstart](https://learn.chatgpt.com/docs/quickstart) and [CLI documentation](https://learn.chatgpt.com/docs/codex/cli). Images illustrate exercise results, not Codex product UI.",
-        "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-14 の[公式クイックスタート](https://learn.chatgpt.com/docs/quickstart)と [CLI 文書](https://learn.chatgpt.com/docs/codex/cli)で確認しました。画像は練習成果で Codex UI ではありません。",
-        "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-14의 [공식 빠른 시작](https://learn.chatgpt.com/docs/quickstart)과 [CLI 문서](https://learn.chatgpt.com/docs/codex/cli)로 확인했습니다. 이미지는 실습 결과이며 Codex 제품 화면이 아닙니다."
+        "材料是本系列原創、可公開分享的虛構練習網站。參考版核心與瀏覽器行為已在 Windows／Edge 驗證；其他 OS 的啟動說明未冒充實機測試。Codex 入口依 2026-09-20 的[官方快速開始](https://learn.chatgpt.com/docs/quickstart)與 [CLI 文件](https://learn.chatgpt.com/docs/codex/cli)查證。圖片只表示練習成果，不是 Codex 的產品介面。",
+        "The materials are an original, shareable fictional website. Reference core and browser behavior were verified on Windows/Edge; other OS startup instructions are not claimed as hands-on tests. Codex entry points were checked on 2026-09-20 against the [official quickstart](https://learn.chatgpt.com/docs/quickstart) and [CLI documentation](https://learn.chatgpt.com/docs/codex/cli). Images illustrate exercise results, not Codex product UI.",
+        "教材はこのシリーズ独自の公開共有可能な架空サイトです。参考版の基本動作とブラウザー動作は Windows/Edge で検証し、他 OS の起動説明を実機試験と称していません。入口は 2026-09-20 の[公式クイックスタート](https://learn.chatgpt.com/docs/quickstart)と [CLI 文書](https://learn.chatgpt.com/docs/codex/cli)で確認しました。画像は練習成果で Codex UI ではありません。",
+        "자료는 이 시리즈가 직접 만든 공개 공유 가능한 가상 사이트입니다. 참고 버전의 핵심 및 브라우저 동작은 Windows/Edge에서 확인했으며 다른 OS의 시작 안내를 직접 테스트했다고 주장하지 않습니다. Codex 진입점은 2026-09-20의 [공식 빠른 시작](https://learn.chatgpt.com/docs/quickstart)과 [CLI 문서](https://learn.chatgpt.com/docs/codex/cli)로 확인했습니다. 이미지는 실습 결과이며 Codex 제품 화면이 아닙니다."
       ]
     },
     {

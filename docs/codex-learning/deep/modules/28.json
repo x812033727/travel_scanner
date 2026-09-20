@@ -129,7 +129,7 @@
       "text": [
         "桌面從主任務的子代理活動開啟個別工作，查看讀到哪些檔案與目前狀態。CLI 在互動畫面輸入 /agent 切換查看，不是終端機中的 codex agent 命令。IDE 若提供背景代理面板，可展開看狀態或開啟個別代理。各入口可在主任務直接要求引導或停止某個工作者；看不到面板時先查版本與入口支援，不假造已完成名單。",
         "On desktop, open individual workers from activity in the parent and inspect files and status. In the interactive CLI, /agent switches views; it is not a shell command named codex agent. In an IDE with the background-agent panel, expand it or open a worker. Ask the parent to steer or stop a specific worker. If controls are absent, check version/surface support rather than inventing a completion list.",
-        "デスクトップは親の活動から個別作業を開き、ファイルと状態を見ます。CLI の /agent は対話内の切替で codex agent という端末命令ではありません。IDE の背景面板があれば開きます。親へ誘導・停止を依頼でき、表示がなければ版と対応を確認します。",
+        "デスクトップでは、入力欄の上に表示される実行中のサブエージェントを展開し、状態の確認、停止、個別スレッドの表示を行います。CLI の /agent は対話内の切替で、codex agent という端末コマンドではありません。IDE でも利用可能なサブエージェント表示を確認します。表示がなければクライアントのバージョンと対応状況を確認します。",
         "데스크톱은 부모 활동에서 개별 작업을 열어 파일과 상태를 봅니다. CLI /agent는 대화 안의 전환이며 codex agent라는 셸 명령이 아닙니다. IDE에 배경 패널이 있으면 펼치세요. 부모에게 방향 수정·중지를 요청하며 표시가 없으면 버전과 지원을 확인합니다."
       ]
     },

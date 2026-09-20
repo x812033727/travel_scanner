@@ -1,6 +1,6 @@
 """Verify all authored references and locale code against the final draft packs."""
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from hashlib import sha256
 import importlib.util
 import json
@@ -63,7 +63,10 @@ for row in sorted(catalog, key=lambda item: item["order"]):
             code_reference = code_blocks
         assert code_blocks == code_reference
         assert all(block["label"].strip() for block in blocks if block["type"] == "code")
-        assert document["sources"] and all(source["checked_on"] == "2026-09-14" for source in document["sources"])
+        assert document["sources"]
+        for source in document["sources"]:
+            checked_on = date.fromisoformat(source["checked_on"])
+            assert date(2026, 9, 14) <= checked_on <= datetime.now(timezone.utc).date(), source
         images = [block for block in blocks if block["type"] == "image"]
         assert images and all(image.get("alt") and image.get("caption") and image.get("credit") for image in images)
         assert all((ROOT / "apps/web/public" / image["src"].lstrip("/")).is_file() for image in images)

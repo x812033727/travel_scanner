@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "用具體工作情境比較桌面、手機、CLI、IDE 與雲端，核對檔案和工具在哪裡執行。",
+            "你會選出一個適合目前工作的主要入口，說明檔案在哪裡、命令在哪裡執行、要去哪裡看結果，並用唯讀任務確認選擇。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -219,23 +226,8 @@
           "code": "Read location.txt without changing files.\nReport the exact marker, working directory, and where commands for this task run.\nDistinguish verified facts from anything you cannot determine.\nDo not install tools, create files, or change settings.\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "預期讀到 local-copy-A，並能以工具結果支援工作路徑。平臺可能使用隔離工作副本，因此不要求路徑和自己桌面文字完全相同；重點是所選分支、檔案"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "和工作環境能對上。若它無法證實是哪臺主機，就把主機身份列為未知，再回連線設定核對，而不是把推測當作成功。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "預期讀到 local-copy-A，並能以工具結果支援工作路徑。平臺可能使用隔離工作副本，因此不要求路徑和自己桌面文字完全相同；重點是所選分支、檔案標記和工作環境能對上。若它無法證實是哪臺主機，就把主機身份列為未知，再回連線設定核對，而不是把推測當作成功。"
         },
         {
           "type": "paragraph",
@@ -376,7 +368,7 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop preview",
@@ -414,6 +406,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Compare desktop, mobile, CLI, IDE and cloud scenarios, and identify where files and tools run.",
+            "Choose one primary interface for your current work, identify where files live and commands run, and verify that choice with a read-only task."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -752,7 +751,7 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop preview",
@@ -790,6 +789,13 @@
         "alt": "独自の手順図です。製品画面の画像ではありません。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "デスクトップ、モバイル、CLI、IDE、クラウドを具体例で比べ、ファイルとツールの実行場所を確認します。",
+            "今回の作業に合う入口を一つ選び、ファイルの場所、コマンドの実行場所、成果の確認場所を説明し、読み取りタスクで選択を確認します。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1128,7 +1134,7 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop preview",
@@ -1166,6 +1172,13 @@
         "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "데스크톱, 모바일, CLI, IDE, 클라우드를 사례로 비교하고 파일과 도구의 실행 위치를 확인합니다.",
+            "현재 작업에 맞는 기본 진입점을 선택하고 파일 위치, 명령 실행 위치, 결과 확인 위치를 설명한 뒤 읽기 전용 작업으로 확인합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1504,7 +1517,7 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop preview",
@@ -1542,6 +1555,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "用具体工作情境比较桌面、手机、CLI、IDE 与云端，核对档案和工具在哪里执行。",
+            "你会选出一个适合目前工作的主要入口，说明档案在哪里、命令在哪里执行、要去哪里看结果，并用唯读任务确认选择。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1880,7 +1900,7 @@
         {
           "title": "ChatGPT desktop app",
           "url": "https://learn.chatgpt.com/docs/app",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Linux desktop preview",

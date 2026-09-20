@@ -158,7 +158,7 @@
       "text": [
         "ChatGPT 訂閱登入與 OpenAI API key 登入不同；某些需要 OAuth 的插件在 API key 模式不可用。看到這項限制時查插件詳情與[帳號篇](article:codex-account-usage)，不要把服務的密碼放進 config.toml，也不要切換全面放行來處理 OAuth 問題。主機沙盒控制本機工作範圍，外部服務的文件權限由該服務管理，放寬其中一層無法保證另一層通過。",
         "ChatGPT subscription sign-in differs from OpenAI API key sign-in; some plugins requiring OAuth are unavailable with API key authentication. Check plugin details and [Accounts](article:codex-account-usage). Do not put a service password in config.toml or use unrestricted approvals to solve OAuth. Host sandboxing governs local work, while the external service governs document access; relaxing one layer does not guarantee access through the other.",
-        "ChatGPT のログインと OpenAI API key 方式は異なり、OAuth を要する一部は API key で利用できません。詳細と[アカウント](article:codex-account-usage)を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。ホストの沙盒と外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。",
+        "ChatGPT のログインと OpenAI API key 方式は異なり、OAuth を要する一部は API key で利用できません。詳細と[アカウント](article:codex-account-usage)を確認し、パスワードを config.toml に書いたり、OAuth のため全面許可へ変えたりしません。ホストのサンドボックスと外部文書の権限は別なので、一方を緩めても他方の成功は保証されません。",
         "ChatGPT 로그인과 OpenAI API key 로그인은 다르며 OAuth가 필요한 일부 플러그인은 API key 방식에서 사용할 수 없습니다. 상세 정보와 [계정](article:codex-account-usage)을 확인하세요. 서비스 암호를 config.toml에 넣거나 OAuth 해결을 위해 전면 허용으로 바꾸지 않습니다. 호스트 샌드박스와 외부 문서 권한은 별개라 하나를 완화해도 다른 계층의 성공이 보장되지 않습니다."
       ]
     },
@@ -259,7 +259,7 @@
       "text": [
         "找不到移除按鈕時，先看是否為工作區安裝或預設插件；這類項目可能由管理員控制，記錄限制即可。卸載插件只移除該環境的套件，獨立連接的 MCP 可能仍存在。若要結束練習，分別確認 Installed 狀態與連線管理中的外部服務，再視需要撤銷自己練習帳號的授權。不要刪除別人依賴的共用連線，或把解除一次連線當成所有裝置都已停用。",
         "If Uninstall is absent, check whether the plugin is workspace-installed or a default managed by an administrator and record the restriction. Uninstalling removes that environment's bundle; separately connected MCP integrations can remain. To close the exercise, check both Installed and external connection management, revoking your practice authorization if needed. Preserve shared connections and do not equate one disconnection with disabling every device.",
-        "削除ボタンがなければ管理者配布や既定項目かを確認し、制限を記録します。アンインストールはその環境の束を除去しますが、別接続の MCP は残り得ます。終了時は導入状態と外部接続管理を別々に確認し、必要なら自分の実習認可だけ失効します。共有接続や全端末を一括処理したと判断しません。",
+        "削除ボタンがなければ管理者配布や既定項目かを確認し、制限を記録します。アンインストールはその環境のプラグインパッケージを除去しますが、別接続の MCP は残り得ます。終了時は導入状態と外部接続管理を別々に確認し、必要なら自分の実習認可だけ失効します。共有接続や全端末を一括処理したと判断しません。",
         "제거 버튼이 없으면 관리자 배포나 기본 항목인지 확인하고 제한을 기록합니다. 제거는 해당 환경의 묶음을 없애며 별도 MCP 연결은 남을 수 있습니다. 연습 종료 시 설치 상태와 외부 연결 관리를 각각 확인하고 필요하면 자신의 연습 인증만 취소하세요. 공유 연결을 보존하고 한 번의 연결 해제를 모든 기기 비활성화로 해석하지 않습니다."
       ]
     },

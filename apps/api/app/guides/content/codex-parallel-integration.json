@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "依檔案與介面契約整合獨立修改，處理衝突，再驗證合併後的整體行為。",
+            "把兩條獨立分支的成果合到第三個檢查目錄，驗收組合結果，再演練衝突與中止。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -128,23 +135,8 @@
           "code": "git worktree add -b codex/heading ../integration-heading main\ngit worktree add -b codex/footer ../integration-footer main\ngit worktree add -b codex/integration ../integration-review main\ngit worktree list\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援"
-            },
-            {
-              "type": "article",
-              "text": "子代理",
-              "kind": "life",
-              "slug": "ai-term-subagent"
-            },
-            {
-              "type": "text",
-              "text": "的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "A 只能改 integration-heading/heading.txt 為 Title: Small Steps Lab；B 只能改 integration-footer/footer.txt 為 Footer: Practice only。你可以手動完成這兩個明確編輯，或在支援子代理的 Codex 主任務中明確委派兩位工作者，分別提供完整路徑、分支、唯一可寫檔案與回報格式。本篇參考驗證使用手動等價編輯，不冒充已啟動兩個模型。"
         },
         {
           "type": "code",
@@ -244,23 +236,8 @@
           "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "查看衝突檔會看到兩種標題與 Git "
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "。這次不選任一方，而是保存錯誤和 status，執行 merge --abort。中止後再跑測試，預期恢復先前兩項通過、status 乾淨。若工作目錄在合併前本來就有修改，abort 不保證能重建所有未提交狀態；因此不要省略前一步的檢查。真正要解衝突時逐段決定保留行為，再重跑測試，不能一律取 ours 或 theirs。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "查看衝突檔會看到兩種標題與 Git 標記。這次不選任一方，而是保存錯誤和 status，執行 merge --abort。中止後再跑測試，預期恢復先前兩項通過、status 乾淨。若工作目錄在合併前本來就有修改，abort 不保證能重建所有未提交狀態；因此不要省略前一步的檢查。真正要解衝突時逐段決定保留行為，再重跑測試，不能一律取 ours 或 theirs。"
         },
         {
           "type": "code",
@@ -335,17 +312,17 @@
         {
           "title": "Git merge and abort",
           "url": "https://git-scm.com/docs/git-merge",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -363,6 +340,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Integrate independent edits using file and interface contracts, resolve conflicts and verify combined behavior.",
+            "Combine two independent branches in a third review checkout, test the combined result, then practice a conflict and abort."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -645,17 +629,17 @@
         {
           "title": "Git merge and abort",
           "url": "https://git-scm.com/docs/git-merge",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -673,6 +657,13 @@
         "alt": "独自の手順図です。製品画面の画像ではありません。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "ファイルとインターフェースの契約に沿って変更を統合し、衝突と全体動作を確認します。",
+            "独立した二つのブランチを第三の確認ディレクトリへ統合して検証し、競合と中止を練習します。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -692,7 +683,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "独立二分岐を第三の確認ディレクトリへ統合して検証し、競合と中止を練習します。読む時間20分、実習30分。Worktreeと証拠確認の後、Git、Node.js、エディターを使います。新 integration-lab の小教材だけで、正式環境や外部サービスに接続しません。"
+          "text": "独立した二つのブランチを第三の確認ディレクトリへ統合して検証し、競合と中止を練習します。読む時間20分、実習30分。Worktreeと証拠確認の後、Git、Node.js、エディターを使います。新しい integration-lab の小教材だけで、本番環境や外部サービスに接続しません。"
         },
         {
           "type": "rich_paragraph",
@@ -721,7 +712,7 @@
         },
         {
           "type": "paragraph",
-          "text": "並行で短縮できても統合には順序があります。二人完了は各分岐の完了にすぎず、両変更を使う同一画面は組合せ版で確認が必要です。今回は標題とフッターの文書で交付を表し、全サイト試験とは呼びません。後で実際のビルド・画面確認に適用します。"
+          "text": "並行で短縮できても統合には順序があります。二人の完了は各ブランチの完了にすぎず、両方の変更を使う同一画面は組合せ版で確認が必要です。今回は見出しとフッターのファイルで成果物を表し、全サイトのテストとは呼びません。後で実際のビルドと画面確認に適用します。"
         },
         {
           "type": "heading",
@@ -734,13 +725,13 @@
         },
         {
           "type": "code",
-          "label": "新 integration-lab 端末：この庫だけ設定",
+          "label": "新しい integration-lab の端末：このリポジトリだけ設定",
           "language": "sh",
           "code": "git init -b main\ngit config user.name \"Codex Learner\"\ngit config user.email \"learner@example.test\"\n"
         },
         {
           "type": "paragraph",
-          "text": "下記三ファイルを作り、標題とフッターの初期値に末尾改行を残します。試験は未実装の新要件二つなので基準は意図した零通過・二失敗です。遠隔なしの独立教材であり、正式 main に説明なしの失敗を残すものではありません。"
+          "text": "下記三ファイルを作り、見出しとフッターの初期値に末尾改行を残します。テストは未実装の新要件二つを表すため、基準は意図した0件成功・2件失敗です。リモートなしの独立教材であり、本番の main に説明なしの失敗を残すものではありません。"
         },
         {
           "type": "code",
@@ -779,7 +770,7 @@
         },
         {
           "type": "paragraph",
-          "text": "A は標題コピーの一文書だけ、B はフッターコピーの一文書だけを指定値へ変えます。手動か、対応 Codex で全パス、分岐、唯一の編集対象、報告形式を明示して2つのエージェントへ依頼できます。参考検証は同等の明示編集でありモデル二実行とはしません。"
+          "text": "A は見出し側コピーの一ファイルだけ、B はフッター側コピーの一ファイルだけを指定値へ変えます。手動で行うか、対応する Codex で全パス、ブランチ、唯一の編集対象、報告形式を明示して二つのエージェントへ依頼できます。参考検証は同等の明示編集であり、モデルを二つ実行したとはしません。"
         },
         {
           "type": "code",
@@ -792,29 +783,29 @@
           "header": [
             "作業",
             "編集対象",
-            "その段階の試験"
+            "その段階のテスト"
           ],
           "rows": [
             [
-              "A 標題",
+              "A：見出し",
               "heading.txt",
-              "標題成功・フッター未完"
+              "見出し成功・フッター未完"
             ],
             [
-              "B フッター",
+              "B：フッター",
               "footer.txt",
-              "フッター成功・標題未完"
+              "フッター成功・見出し未完"
             ],
             [
               "統合者",
-              "確認済み組合せ",
-              "両統合後に二成功"
+              "確認済みの組合せ",
+              "両方の統合後に二項目成功"
             ]
           ]
         },
         {
           "type": "paragraph",
-          "text": "試験変更があれば理由と差分を確認し、要件を弱めさせません。"
+          "text": "テスト変更があれば理由と差分を確認し、要件を弱めさせません。"
         },
         {
           "type": "code",
@@ -839,13 +830,13 @@
         },
         {
           "type": "code",
-          "label": "元端末：確認分岐へ順に統合して検証",
+          "label": "元の端末：確認ブランチへ順に統合して検証",
           "language": "sh",
           "code": "git -C ../integration-review status --short\ngit -C ../integration-review merge --no-ff codex/heading -m \"Integrate practice heading\"\ngit -C ../integration-review merge --no-ff codex/footer -m \"Integrate practice footer\"\nnode --test ../integration-review/integration.test.mjs\ngit -C ../integration-review diff main...HEAD -- heading.txt footer.txt\n"
         },
         {
           "type": "paragraph",
-          "text": "統合先は二成功、差分は両新値、元 main は初期値のままです。最初の merge が競合したら二回目へ進みません。個別の成功で組合せ確認を代用しません。教材では履歴を示すため --no-ff を使い、実庫は自身の方針に従います。"
+          "text": "統合先は二項目成功、差分は両方の新しい値、元の main は初期値のままです。最初の merge が競合したら二回目へ進みません。個別の成功で組合せ確認を代用しません。教材では履歴を示すため --no-ff を使い、実際のリポジトリではその方針に従います。"
         },
         {
           "type": "code",
@@ -855,7 +846,7 @@
         },
         {
           "type": "paragraph",
-          "text": "この完全 SHA と二成功を同じ記録に残します。次の競合と abort 後、元フォルダーから同じ命令で同じ SHA、未変更状態、二成功を確認します。標題分岐や main の SHA を統合 SHA と取り違えません。"
+          "text": "この完全 SHA と二項目の成功を同じ記録に残します。次の競合と abort 後、元フォルダーから同じコマンドで同じ SHA、変更なしの状態、二項目の成功を確認します。見出し側ブランチや main の SHA を統合 SHA と取り違えません。"
         },
         {
           "type": "heading",
@@ -870,11 +861,11 @@
         },
         {
           "type": "paragraph",
-          "text": "競合コピーの標題だけを Title: Another direction にしてコミットします。旧 main から同じ行を違う値へ変えるため統合先と競合します。確認ディレクトリの未変更と二成功を確認してから試し、未保存作業ではなく明確な開始状態へ abort で戻します。"
+          "text": "競合側コピーの見出しだけを Title: Another direction にしてコミットします。旧 main から同じ行を違う値へ変えるため統合先と競合します。確認ディレクトリが変更なしで二項目のテストに成功することを確認してから試し、未保存作業ではなく明確な開始状態へ abort で戻します。"
         },
         {
           "type": "code",
-          "label": "元端末：非0の merge と標題競合を確認",
+          "label": "元の端末：0以外の merge 終了コードと見出しの競合を確認",
           "language": "sh",
           "code": "git -C ../integration-conflict add -- heading.txt\ngit -C ../integration-conflict commit -m \"Create a conflicting practice heading\"\ngit -C ../integration-review merge --no-ff codex/conflict -m \"Attempt conflicting integration\"\ngit -C ../integration-review status --short\n"
         },
@@ -895,11 +886,11 @@
         },
         {
           "type": "paragraph",
-          "text": "教材は試験自身の URL 基準で読むため、文書不在なら同じコピーに三つ揃うか確認します。不明変更は出所、分岐不在は作成・コミット、統合後失敗は組合せ差分を調べます。試験を弱めたり、共同介面が未定の依存作業を無理に独立分担したりしません。"
+          "text": "教材はテスト自身の URL を基準に読むため、ファイルがなければ同じコピーに三つ揃っているか確認します。不明な変更は出所、ブランチ不在は作成・コミット、統合後の失敗は組合せ差分を調べます。テストを弱めたり、共通インターフェースが未定の依存作業を無理に独立分担したりしません。"
         },
         {
           "type": "paragraph",
-          "text": "作業者とコピー窓を閉じ、元から四経路と clean を確認します。追加・コミット済み・未使用のものだけ除去し、拒否は force で回避しません。元庫と統合分岐を残すため後で成果を読めます。正式 main の統合や PR はありません。"
+          "text": "作業者とコピーのウィンドウを閉じ、元から四つのパスと clean 状態を確認します。追加済み、コミット済み、未使用のものだけ削除し、拒否されても force で回避しません。元のリポジトリと統合ブランチを残すため、後で成果を読めます。本番 main への統合や PR はありません。"
         },
         {
           "type": "code",
@@ -955,17 +946,17 @@
         {
           "title": "Git merge and abort",
           "url": "https://git-scm.com/docs/git-merge",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -983,6 +974,13 @@
         "alt": "직접 제작한 흐름도이며 제품 화면이 아닙니다."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "파일과 인터페이스 계약에 따라 변경을 통합하고 충돌과 전체 동작을 검증합니다.",
+            "두 독립 브랜치를 세 번째 검토 폴더에 합쳐 검증하고 충돌과 중지를 연습합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1265,17 +1263,17 @@
         {
           "title": "Git merge and abort",
           "url": "https://git-scm.com/docs/git-merge",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1293,6 +1291,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "依档案与介面契约整合独立修改，处理冲突，再验证合并后的整体行为。",
+            "把两条独立分支的成果合到第三个检查目录，验收组合结果，再演练冲突与中止。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1575,17 +1580,17 @@
         {
           "title": "Git merge and abort",
           "url": "https://git-scm.com/docs/git-merge",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }
