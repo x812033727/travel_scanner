@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-translate-guide-summary-and-svg-image
 title: Translate guide summary and SVG image descriptions in article localization jobs
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: codex-batch007-summary-tool
@@ -34,14 +34,14 @@ omits the document field and silently replaces it from the translated SVG.
   a mismatch stops materialization before any artifacts are written.
 - [x] Existing image-only jobs still derive descriptions from SVG `<desc>`;
   unsupported blocks, immutable credits, URLs and source dates stay guarded.
-- [ ] Focused tests, format/lint and task checks pass; PR contains tooling only.
+- [x] Focused tests, format/lint and task checks pass; PR contains tooling only.
 
 ## Steps
 
 - [x] Confirm #596 merged and close its task before claiming this scope.
 - [x] Add narrow field extraction and preflight consistency guard.
 - [x] Test full and image-only paths, document validation, and refusal cases.
-- [ ] Open a separate tooling PR; do not import or publish article content.
+- [x] Open a separate tooling PR; do not import or publish article content.
 
 ## How to verify
 
@@ -66,3 +66,5 @@ output artifacts. Ruff check/format, the 14 artifact-integrity tests, and task
 validation pass. The broad `npm run test:tools` cannot start its unrelated
 Playwright crawler test in this fresh worktree because `@playwright/test` is
 not installed here; CI installs dependencies and will run the full suite.
+Tooling PR #600 is open at authored head `bbd4951a`; no content was imported or
+published. Leave this task in review until the PR is merged.
