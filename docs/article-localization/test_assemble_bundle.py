@@ -177,6 +177,22 @@ def test_parallel_asset_edit_cannot_inherit_reviewed_hash(tmp_path, monkeypatch)
         module.copy_pinned_asset(source, target, expected)
 
 
+def test_release_text_and_reviewed_svg_require_portable_lf_bytes(tmp_path):
+    text = tmp_path / "portable.json"
+    module.write_text_lf(text, '{\r\n  "ok": true\r\n}\r\n')
+    assert text.read_bytes() == b'{\n  "ok": true\n}\n'
+
+    svg = tmp_path / "reviewed.svg"
+    copied = tmp_path / "copied.svg"
+    svg.write_bytes(b"<svg>\r\n</svg>\r\n")
+    with pytest.raises(ValueError, match="must use LF"):
+        module.copy_pinned_asset(svg, copied, module.sha(svg))
+
+    svg.write_bytes(b"<svg> \n</svg>\n")
+    with pytest.raises(ValueError, match="trailing whitespace"):
+        module.copy_pinned_asset(svg, copied, module.sha(svg))
+
+
 def test_large_or_duplicate_batch_is_refused_before_any_io(tmp_path):
     for slugs in (["same", "same"], [f"article-{i}" for i in range(21)], []):
         with pytest.raises(ValueError, match="one to twenty"):

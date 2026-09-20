@@ -7,6 +7,7 @@ import process from 'node:process';
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 import { loadBoundJob, finishRenderBinding } from './artifact-integrity.mjs';
+import { containerFor, contains, overlaps } from './render-layout.mjs';
 
 const args = process.argv.slice(2);
 if (args.length !== 2 || args[0] !== '--job') throw new Error('Usage: node tools/article-localization/render.mjs --job <staged job directory>');
@@ -25,6 +26,10 @@ function safeDimensions(source) {
   return { width: Math.ceil(width), height: Math.ceil(height) };
 }
 
+function canonicalSvgText(source) {
+  return source.replace(/\r\n?/g, '\n').split('\n').map(line => line.trimEnd()).join('\n').replace(/\n*$/, '\n');
+}
+
 async function load(page, source, size) {
   if (/<script\b|\son\w+\s*=|<foreignObject\b/i.test(source)) throw new Error('Active SVG content is not supported');
   await page.setViewportSize(size);
@@ -39,13 +44,6 @@ async function load(page, source, size) {
   });
 }
 
-const contains = (outer, inner, tolerance = 1) => inner.left >= outer.left - tolerance && inner.top >= outer.top - tolerance && inner.right <= outer.right + tolerance && inner.bottom <= outer.bottom + tolerance;
-const overlaps = (a, b) => Math.min(a.right, b.right) - Math.max(a.left, b.left) > 2 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 2;
-const containerFor = (original, text) => original.rectangles.filter(rect => {
-  const center = { x: (text.box.left + text.box.right) / 2, y: (text.box.top + text.box.bottom) / 2 };
-  return rect.width > 0 && rect.height > 0 && center.x >= rect.left && center.x <= rect.right && center.y >= rect.top && center.y <= rect.bottom && text.box.width <= rect.width * 1.1 && text.box.height <= rect.height * 1.1;
-}).sort((a, b) => a.width * a.height - b.width * b.height)[0];
-
 try {
   const page = await browser.newPage();
   await page.route('**/*', route => route.abort());
@@ -55,6 +53,9 @@ try {
     const relative = path.relative(directory, svgPath);
     if (relative.startsWith('..') || path.isAbsolute(relative)) throw new Error('Staged asset escaped job directory');
     let source = await readFile(svgPath, 'utf8');
+    const portableSource = canonicalSvgText(source);
+    const sourceBytesChanged = portableSource !== source;
+    source = portableSource;
     const size = safeDimensions(source);
     const original = await load(page, job.assets[index].source_svg, size);
     let localized = await load(page, source, size);
@@ -86,7 +87,7 @@ try {
       source = await page.locator('svg').evaluate(svg => svg.outerHTML);
       localized = await load(page, source, size);
     }
-    if (fontAdjustments.length) await writeFile(svgPath, source + '\n');
+    if (fontAdjustments.length || sourceBytesChanged) await writeFile(svgPath, canonicalSvgText(source));
     const issues = [];
     if (original.text.length !== localized.text.length) issues.push({ reason: 'visible text node count changed' });
     localized.text.forEach((text, textIndex) => {
