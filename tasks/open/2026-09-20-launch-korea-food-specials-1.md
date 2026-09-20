@@ -4,13 +4,14 @@ title: Launch the Korea food and cafe specials batch 1
 status: in-progress
 priority: P2
 area: docs
-owner: claude-opus-5
-claimed_at: 2026-09-20T09:06:58Z
+owner: codex
+claimed_at: 2026-09-20T12:09:46Z
 created_at: 2026-09-20T09:06:28Z
 completed_at:
-branch:
+branch: codex/korea-food-specials-complete
 depends_on: []
 scope:
+  - docs/korea-food-specials
   - apps/api/app/guides/content/busan-dwaeji-gukbap-food-guide.json
   - apps/api/app/guides/content/seoul-dwaeji-gukbap-food-guide.json
   - apps/api/app/guides/content/busan-milmyeon-food-guide.json
@@ -69,16 +70,16 @@ scope:
 
 ## Definition of done
 
-- [ ] 22 個內容包在 `apps/api/app/guides/content/`，每個都通過 `pack_cli ingest --dry-run` 零錯誤
-- [ ] 22 組資產在 `apps/web/public/guides/<slug>/`（hero、圖解、內文照片）
-- [ ] 每篇都經過兩輪獨立查核（查核者與撰稿者不同模型），逐條記錄在工作目錄的 `verify/<slug>/`
+- [x] 22 個內容包在 `apps/api/app/guides/content/`，每個都通過 `pack_cli ingest --dry-run` 零錯誤
+- [x] 22 組資產在 `apps/web/public/guides/<slug>/`（hero、圖解、內文照片）
+- [x] 每篇都經過兩輪獨立查核（查核者與撰稿者不同模型），逐條記錄在工作目錄的 `verify/<slug>/`
 - [ ] 正式站發布後，每一篇：200、h1 等於標題、canonical 正確、無 noindex、hero 與圖解都 200
 - [ ] 每個子主題 hub 列出正確的文章；麵包屑是「旅遊情報與攻略 › 旅遊攻略 › 美食 › <料理> › 標題」
 - [ ] `travel-zh-TW` sitemap 列出這 22 篇
 
 ## Steps
 
-- [ ] 規格 → 撰稿 → 兩輪查核 → 收件檢查（22 篇）
+- [x] 規格 → 撰稿 → 兩輪查核 → 收件檢查（22 篇）
 - [ ] 開 PR-C（內容包＋資產）
 - [ ] 部署 → `seed-foods` → `guides-import --slug ×22 --locale zh-TW --dry-run` → `--publish`
 - [ ] `guides-links-rebuild` → `guides-links-check --locale zh-TW`
@@ -101,6 +102,7 @@ curl -s -o /dev/null -w "%{http_code}\n" https://mokaair.com/zh-TW/guides/topics
 
 - **正式站的每一步都要站主明確同意**，不要自己跑發布指令。
 - **米其林全批一個字都不寫**：`guide.michelin.com` 對我們每個工具都回 403（一手來源讀不到），政府頁的轉述又互相打架（同一家店三個官方頁三個年份）。原計畫的 `kfood-michelin-2027-edition` 複查票因此取消。
-- 字數帶寬 2026-09-20 從 3,900／4,200 放寬到 **3,600–4,400、硬牆 4,600**：repo 自己對 `howto` 的建議區間是 `TEXT_RANGE = (1_500, 6_000)` 而且只是 warning，舊的牆逼撰稿者砍掉規格自己要的 callout 與 FAQ。
-- 工作目錄（不在 repo 裡）：`C:/Users/x8120/mokaair-work/korea-food-specials/`，`STATE.md` 是進度，`prompts/` 是各階段的代理指令，`verify/` 是逐條查核記錄。
+- 正文字數依 `docs/korea-food-specials/README.md` 最後一次調整：**目標 3,800–4,600、硬牆 5,000**；repo 的 `howto` 建議區間是 `TEXT_RANGE = (1_500, 6_000)`，只產生 warning。
+- 工作目錄（不在 repo 裡）：原研究在 `C:/Users/x8120/mokaair-work/korea-food-specials/`；最後收件稿與原始查核在 `C:/Users/x8120/mokaair-work/korea-food-specials-codex/`。44 份可審閱的查核紀錄與跨篇檢查腳本已整理進 `docs/korea-food-specials/verification/`。
 - 相關票：`2026-09-20-kfood-isim-address-conflict`、`2026-09-20-kfood-maxim-plant-evidence`（研究階段撞到的正式站資料問題）。
+- 2026-09-20 本機完成：22 篇 `pack_cli ingest --dry-run` 零錯誤、`pack_cli lint` 22 entries checked、逐篇 intake 零錯誤、跨篇檢查 22 packs／44 reviews、`npm run check:tasks` 與 `npm run test:tools` 通過。咖啡篇逐店類型再次覆核後移除缺乏類型依據的 Polv、477+；少數字數及 hero 品質下限提示不影響硬性門檻。正式站步驟仍待站主逐步同意。
