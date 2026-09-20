@@ -38,6 +38,48 @@ def test_food_catalog_has_at_least_ten_complete_items_per_country() -> None:
         }
 
 
+#: Korean dishes production holds that no seed file does. An administrator created them
+#: through catalog review before the ``kr-`` slug convention, so most keep a bare slug such
+#: as ``dakhanmari`` or ``kalguksu``. ``seed_food_catalog`` matches a dish by slug alone: a
+#: seed that spelled one of these by the convention would not update the row, it would
+#: publish a second 닭한마리 beside it. Read from ``GET /api/travel/foods?country_code=KR`` on
+#: 2026-09-20; re-read it before adding a Korean dish, and add here what it has gained.
+PRODUCTION_ONLY_KOREAN_DISHES = frozenset(
+    {
+        "닭한마리",
+        "간장게장",
+        "국수전골",
+        "한정식",
+        "족발",
+        "칼국수",
+        "갈치국",
+        "전복뚝배기",
+        "멜조림",
+        "성게국",
+        "통갈치구이",
+        "만두",
+        "문어숙회",
+        "설렁탕",
+        "쌈밥",
+    }
+)
+
+
+def test_no_korean_seed_duplicates_a_dish_production_already_holds() -> None:
+    seeded = {item.local_name for item in FOOD_SEEDS if item.country_code == "KR"}
+    assert seeded & PRODUCTION_ONLY_KOREAN_DISHES == set()
+
+
+def test_a_dish_slug_carries_its_country_and_a_country_names_a_dish_once() -> None:
+    """The slug prefix is how a dish and its guide hub come to share a slug
+    (``app.guides.taxonomy.TRAVEL_SEED_SUBTOPICS``), and the local name is the only key two
+    spellings of one dish have in common."""
+    for item in FOOD_SEEDS:
+        assert item.slug.startswith(f"{item.country_code.lower()}-"), item.slug
+    names = Counter((item.country_code, item.local_name) for item in FOOD_SEEDS)
+    assert [key for key, count in names.items() if count > 1] == []
+
+
 def test_every_destination_has_an_approved_coordinate_complete_food_area() -> None:
     food_areas = [item for item in HOTSPOT_SEEDS if item.category == "food"]
     by_destination = {item.destination_id for item in food_areas}
