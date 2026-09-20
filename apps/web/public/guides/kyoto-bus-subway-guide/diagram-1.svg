@@ -2,14 +2,14 @@
   <title id="title">京都站出發的五條觀光走廊 / Kyoto sightseeing corridors from Kyoto Station</title>
   <desc id="desc">簡化的京都示意地圖。京都站往東：觀光特急巴士 EX100、EX101（500 日圓，週六日假日）和市巴士 206（230 日圓）沿東山通到清水寺的五条坂、祇園、岡崎、銀閣寺；往西北：市巴士 205 沿西大路通到金閣寺；往西：JR 嵯峨野線到嵯峨嵐山，走 13 分鐘到天龍寺，市巴士 28 會塞車；往南：JR 奈良線 3 分鐘到東福寺、5 分鐘到伏見稻荷，京阪本線也到這兩站；市中心有地鐵烏丸線（京都到北大路、國際會館）和東西線（二条城前、烏丸御池、三条京阪、蹴上），220 到 360 日圓；京阪本線沿鴨川東岸經祇園四条、清水五条，阪急沿四条通從京都河原町往大阪梅田與嵐山。地下鐵・巴士一日券 1,100 日圓。</desc>
   <rect width="1600" height="900" fill="#F7F1E8"/>
-  <text x="60" y="60" font-size="34" font-weight="700" fill="#102A2B">京都站出發的五條觀光走廊　實線搭電車、虛線搭巴士</text>
+  <text x="60" y="60" font-size="34" font-weight="700" fill="#102A2B">京都站出發觀光走廊　實線：電車／觀光特急；虛線：一般市巴士</text>
   <text x="60" y="94" font-size="19" fill="#5C6B6B">Kyoto sightseeing corridors from Kyoto Station · 示意圖，非精確比例 · 票價為 2026 年 9 月查證</text>
 
   <!-- fare panel -->
-  <rect x="1180" y="26" width="380" height="112" rx="16" fill="#FFFFFF" stroke="#B9B2A8" stroke-width="2"/>
-  <text x="1200" y="56" font-size="16" font-weight="700" fill="#102A2B">市バス 均一 230 日圓 ｜ 観光特急 EX 500 日圓</text>
-  <text x="1200" y="84" font-size="16" font-weight="700" fill="#102A2B">地下鉄 220 到 360 日圓 ｜ 地下鉄・バス1日券 1,100</text>
-  <text x="1200" y="112" font-size="15" fill="#5C6B6B">JR、京阪、阪急不在一日券內，用 ICOCA 逐次付</text>
+  <rect x="1120" y="26" width="440" height="112" rx="16" fill="#FFFFFF" stroke="#B9B2A8" stroke-width="2"/>
+  <text x="1140" y="56" font-size="14" font-weight="700" fill="#102A2B">市バス 均一 230 日圓 ｜ 観光特急 EX 500 日圓</text>
+  <text x="1140" y="84" font-size="14" font-weight="700" fill="#102A2B">地下鉄 220 到 360 日圓 ｜ 地下鉄・バス1日券 1,100</text>
+  <text x="1140" y="112" font-size="14" fill="#5C6B6B">JR、京阪、阪急不在一日券內，用 ICOCA 逐次付</text>
 
   <!-- Kamo river -->
   <rect x="1000" y="120" width="26" height="640" rx="13" fill="#BFD9E3" opacity="0.9"/>
@@ -17,66 +17,66 @@
 
   <!-- Subway Karasuma line -->
   <path d="M 760 610 L 760 140" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
-  <text x="775" y="150" font-size="16" font-weight="700" fill="#0D6B68">地下鉄烏丸線 Karasuma Line</text>
+  <text x="775" y="150" font-size="16" font-weight="700" fill="#0D6B68" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">地下鉄烏丸線 Karasuma Line</text>
   <circle cx="760" cy="470" r="11" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
-  <text x="778" y="461" font-size="15" font-weight="700" fill="#102A2B">四条 Shijo</text>
+  <text x="778" y="461" font-size="15" font-weight="700" fill="#102A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">四条 Shijo</text>
   <circle cx="760" cy="330" r="11" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
-  <text x="778" y="318" font-size="15" font-weight="700" fill="#102A2B">烏丸御池 Karasuma Oike</text>
+  <text x="778" y="318" font-size="15" font-weight="700" fill="#102A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">烏丸御池 Karasuma Oike</text>
   <circle cx="760" cy="200" r="11" fill="#FFFFFF" stroke="#0D6B68" stroke-width="6"/>
-  <text x="778" y="206" font-size="15" font-weight="700" fill="#102A2B">北大路 Kitaoji</text>
+  <text x="778" y="206" font-size="15" font-weight="700" fill="#102A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">北大路 Kitaoji</text>
 
   <!-- Subway Tozai line -->
   <path d="M 340 330 L 1420 330" fill="none" stroke="#0D6B68" stroke-width="8" stroke-linecap="round"/>
-  <text x="340" y="312" font-size="16" font-weight="700" fill="#0D6B68">地下鉄東西線 Tozai Line（太秦天神川 ↔ 山科・六地蔵）</text>
+  <text x="340" y="292" font-size="16" font-weight="700" fill="#0D6B68" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">地下鉄東西線 Tozai Line（太秦天神川 ↔ 山科・六地蔵）</text>
   <circle cx="560" cy="330" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
-  <text x="560" y="356" font-size="15" font-weight="700" fill="#102A2B" text-anchor="middle">二条城前 Nijojo-mae</text>
+  <text x="560" y="356" font-size="15" font-weight="700" fill="#102A2B" text-anchor="middle" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">二条城前 Nijojo-mae</text>
   <circle cx="1060" cy="330" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
-  <text x="1060" y="312" font-size="15" font-weight="700" fill="#102A2B" text-anchor="middle">三条京阪 Sanjo Keihan</text>
+  <text x="1060" y="312" font-size="15" font-weight="700" fill="#102A2B" text-anchor="middle" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">三条京阪 Sanjo Keihan</text>
   <circle cx="1290" cy="330" r="10" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5"/>
-  <text x="1300" y="356" font-size="15" font-weight="700" fill="#102A2B">蹴上 Keage · 南禅寺</text>
+  <text x="1300" y="356" font-size="15" font-weight="700" fill="#102A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">蹴上 Keage · 南禅寺</text>
 
   <!-- JR Sagano line to Arashiyama -->
-  <path d="M 700 640 C 520 640, 330 520, 300 432" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
-  <text x="300" y="662" font-size="16" font-weight="700" fill="#6B4A3A">JR 嵯峨野線 Sagano Line</text>
+  <path d="M 700 640 C 565 640, 500 545, 500 450" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <text x="300" y="662" font-size="16" font-weight="700" fill="#6B4A3A" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">JR 嵯峨野線 Sagano Line</text>
   <!-- City bus 28 to Arashiyama -->
-  <path d="M 690 604 L 520 556 L 302 452" fill="none" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 12" stroke-linecap="round"/>
-  <text x="560" y="522" font-size="15" fill="#B8442D" font-weight="700">市バス 28（堀川通のりば，假日會塞）</text>
+  <path d="M 690 604 L 520 556 L 500 462" fill="none" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 12" stroke-linecap="round"/>
+  <text x="560" y="522" font-size="15" fill="#B8442D" font-weight="700" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">市バス 28（堀川通のりば，假日會塞）</text>
 
   <!-- City bus 205 to Kinkakuji -->
-  <path d="M 690 626 L 520 626 L 430 560 L 430 212" fill="none" stroke="#D97A2B" stroke-width="7" stroke-dasharray="16 12" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="445" y="250" font-size="15" font-weight="700" fill="#D97A2B">市バス 205（西大路通のりば）</text>
+  <path d="M 690 626 L 560 626 L 520 560 L 520 222" fill="none" stroke="#D97A2B" stroke-width="7" stroke-dasharray="16 12" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="535" y="255" font-size="15" font-weight="700" fill="#D97A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">市バス 205（西大路通のりば）</text>
 
   <!-- Hankyu along Shijo -->
   <path d="M 990 470 L 340 470" fill="none" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
-  <text x="360" y="496" font-size="15" font-weight="700" fill="#7E57C2">阪急京都線 Hankyu → 桂（嵐山線）・大阪梅田</text>
+  <text x="360" y="496" font-size="15" font-weight="700" fill="#7E57C2" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">阪急京都線 Hankyu → 桂（嵐山線）・大阪梅田</text>
   <circle cx="990" cy="470" r="11" fill="#FFFFFF" stroke="#7E57C2" stroke-width="6"/>
-  <text x="985" y="500" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">京都河原町 Kyoto-Kawaramachi</text>
+  <text x="985" y="500" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">京都河原町 Kyoto-Kawaramachi</text>
 
   <!-- Keihan along the river -->
   <path d="M 1040 140 L 1040 640 L 918 762 L 1046 836" fill="none" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="1054" y="270" font-size="16" font-weight="700" fill="#2F6F9F">京阪本線 Keihan</text>
+  <text x="975" y="274" font-size="16" font-weight="700" fill="#2F6F9F" text-anchor="end" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">京阪本線 Keihan</text>
   <circle cx="1040" cy="440" r="10" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
-  <text x="1022" y="446" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">祇園四条 Gion-Shijo</text>
+  <text x="1022" y="446" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">祇園四条 Gion-Shijo</text>
   <circle cx="1040" cy="520" r="10" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="5"/>
-  <text x="1022" y="526" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">清水五条 · 走 25 分到清水寺</text>
+  <text x="1022" y="526" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">清水五条 · 走 25 分到清水寺</text>
 
   <!-- JR Nara line -->
   <path d="M 790 672 L 906 768 L 1040 846" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="700" y="734" font-size="16" font-weight="700" fill="#6B4A3A">JR 奈良線 Nara Line</text>
+  <text x="700" y="734" font-size="16" font-weight="700" fill="#6B4A3A" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">JR 奈良線 Nara Line</text>
   <circle cx="908" cy="766" r="12" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
-  <text x="890" y="800" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end">東福寺 Tofuku-ji · JR 3 分</text>
+  <text x="890" y="800" font-size="15" font-weight="700" fill="#102A2B" text-anchor="end" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">東福寺 Tofuku-ji · JR 3 分</text>
   <circle cx="1042" cy="842" r="12" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="6"/>
-  <text x="1064" y="848" font-size="15" font-weight="700" fill="#102A2B">伏見稲荷 Fushimi Inari · JR 5 分／京阪 走 5 分</text>
+  <text x="1064" y="848" font-size="15" font-weight="700" fill="#102A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">伏見稲荷 Fushimi Inari · JR 5 分／京阪 走 5 分</text>
 
   <!-- EX100 tourist express -->
   <path d="M 840 640 L 1200 600 L 1205 470 L 1210 340 L 1330 232" fill="none" stroke="#B8442D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- City bus 206 -->
   <path d="M 840 660 L 1160 626 L 1160 150" fill="none" stroke="#B8442D" stroke-width="6" stroke-dasharray="14 12" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="1060" y="690" font-size="15" font-weight="700" fill="#B8442D">観光特急 EX100・EX101 500 日圓（土日祝，D1 のりば）</text>
-  <text x="1060" y="712" font-size="15" fill="#B8442D">市バス 206 等 230 日圓（東山通のりば）</text>
-  <text x="1172" y="172" font-size="15" fill="#B8442D">206 → 北大路バスターミナル</text>
+  <text x="1060" y="690" font-size="15" font-weight="700" fill="#B8442D" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">観光特急 EX100・EX101 500 日圓（土日祝，D1 のりば）</text>
+  <text x="1060" y="712" font-size="15" fill="#B8442D" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">市バス 206 等 230 日圓（東山通のりば）</text>
+  <text x="1335" y="270" font-size="14" fill="#B8442D" text-anchor="start">206 → 北大路バスターミナル</text>
   <circle cx="1210" cy="340" r="9" fill="#B8442D"/>
-  <text x="1300" y="312" font-size="15" font-weight="700" fill="#102A2B">岡崎公園・平安神宮 Okazaki</text>
+  <text x="1300" y="312" font-size="15" font-weight="700" fill="#102A2B" style="paint-order:stroke;stroke:#F7F1E8;stroke-width:5px;stroke-linejoin:round">岡崎公園・平安神宮 Okazaki</text>
 
   <!-- Kyoto Station -->
   <rect x="680" y="610" width="160" height="64" rx="20" fill="#102A2B"/>
@@ -84,40 +84,40 @@
   <text x="760" y="662" font-size="15" fill="#E6F2F1" text-anchor="middle">Kyoto Station</text>
 
   <!-- Destination boxes -->
-  <rect x="70" y="395" width="230" height="70" rx="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="5"/>
-  <text x="185" y="424" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">嵐山 Arashiyama</text>
-  <text x="185" y="450" font-size="15" fill="#5C6B6B" text-anchor="middle">JR 嵯峨嵐山 走 13 分到天龍寺 · 嵐電 · 阪急</text>
+  <rect x="20" y="390" width="480" height="84" rx="18" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="5"/>
+  <text x="260" y="421" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">嵐山 Arashiyama</text>
+  <text x="260" y="452" font-size="14" fill="#5C6B6B" text-anchor="middle">JR 嵯峨嵐山 走 13 分到天龍寺 · 嵐電 · 阪急</text>
 
-  <rect x="380" y="140" width="220" height="70" rx="18" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
-  <text x="490" y="169" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">金閣寺 Kinkaku-ji</text>
-  <text x="490" y="195" font-size="15" fill="#5C6B6B" text-anchor="middle">205 金閣寺道 下車 · 9:00 到 17:00</text>
+  <rect x="300" y="140" width="400" height="82" rx="18" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5"/>
+  <text x="500" y="171" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">金閣寺 Kinkaku-ji</text>
+  <text x="500" y="199" font-size="14" fill="#5C6B6B" text-anchor="middle">205 金閣寺道 下車 · 9:00 到 17:00</text>
 
-  <rect x="1180" y="540" width="240" height="70" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
-  <text x="1300" y="569" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">清水寺 Kiyomizu-dera</text>
-  <text x="1300" y="595" font-size="15" fill="#5C6B6B" text-anchor="middle">五条坂 下車走 10 分 · 6:00 開門</text>
+  <rect x="1200" y="532" width="360" height="90" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1380" y="565" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">清水寺 Kiyomizu-dera</text>
+  <text x="1380" y="594" font-size="14" fill="#5C6B6B" text-anchor="middle">五条坂 下車走 10 分 · 6:00 開門</text>
 
-  <rect x="1180" y="400" width="240" height="70" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
-  <text x="1300" y="429" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">祇園 Gion</text>
-  <text x="1300" y="455" font-size="15" fill="#5C6B6B" text-anchor="middle">京阪 祇園四条 · 八坂神社 · 花見小路</text>
+  <rect x="1200" y="392" width="360" height="86" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1380" y="425" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">祇園 Gion</text>
+  <text x="1380" y="455" font-size="14" fill="#5C6B6B" text-anchor="middle">京阪 祇園四条 · 八坂神社 · 花見小路</text>
 
-  <rect x="1230" y="160" width="240" height="70" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
-  <text x="1350" y="189" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">銀閣寺 Ginkaku-ji</text>
-  <text x="1350" y="215" font-size="15" fill="#5C6B6B" text-anchor="middle">EX100 銀閣寺前 · 5／7／105 銀閣寺道</text>
+  <rect x="1100" y="140" width="460" height="90" rx="18" fill="#FFFFFF" stroke="#B8442D" stroke-width="5"/>
+  <text x="1330" y="172" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">銀閣寺 Ginkaku-ji</text>
+  <text x="1330" y="211" font-size="14" fill="#5C6B6B" text-anchor="middle">EX100 銀閣寺前 · 5／7／105 銀閣寺道</text>
 
   <!-- legend -->
   <g font-size="15" fill="#102A2B">
-    <line x1="60" y1="876" x2="110" y2="876" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
-    <text x="120" y="881">地下鉄 Subway</text>
-    <line x1="260" y1="876" x2="310" y2="876" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
-    <text x="320" y="881">JR 西日本</text>
-    <line x1="430" y1="876" x2="480" y2="876" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
-    <text x="490" y="881">京阪 Keihan</text>
-    <line x1="600" y1="876" x2="650" y2="876" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
-    <text x="660" y="881">阪急 Hankyu</text>
-    <line x1="770" y1="876" x2="820" y2="876" stroke="#B8442D" stroke-width="9" stroke-linecap="round"/>
-    <text x="830" y="881">観光特急バス EX</text>
-    <line x1="980" y1="876" x2="1030" y2="876" stroke="#B8442D" stroke-width="6" stroke-dasharray="12 10" stroke-linecap="round"/>
-    <text x="1040" y="881">市バス City Bus（會塞車）</text>
-    <text x="1400" y="881" fill="#5C6B6B">© Mokaair 製圖 2026</text>
+    <line x1="40" y1="876" x2="80" y2="876" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="90" y="881">地下鉄 Subway</text>
+    <line x1="230" y1="876" x2="270" y2="876" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="280" y="881">JR 西日本</text>
+    <line x1="385" y1="876" x2="425" y2="876" stroke="#2F6F9F" stroke-width="8" stroke-linecap="round"/>
+    <text x="435" y="881">京阪 Keihan</text>
+    <line x1="555" y1="876" x2="595" y2="876" stroke="#7E57C2" stroke-width="8" stroke-linecap="round"/>
+    <text x="605" y="881">阪急 Hankyu</text>
+    <line x1="740" y1="876" x2="780" y2="876" stroke="#B8442D" stroke-width="9" stroke-linecap="round"/>
+    <text x="790" y="881">観光特急バス EX</text>
+    <line x1="1010" y1="876" x2="1050" y2="876" stroke="#B8442D" stroke-width="6" stroke-dasharray="12 10" stroke-linecap="round"/>
+    <text x="1060" y="881">市バス City Bus（會塞車）</text>
+    <text x="1380" y="881" fill="#5C6B6B">© Mokaair 製圖 2026</text>
   </g>
 </svg>
