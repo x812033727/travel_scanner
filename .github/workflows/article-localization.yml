@@ -1,0 +1,72 @@
+name: Article localization tooling
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/article-localization.yml'
+      - 'tools/article-localization/**'
+      - 'docs/article-localization/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/article-localization.yml'
+      - 'tools/article-localization/**'
+      - 'docs/article-localization/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: article-localization-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-safety:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: travel_scanner
+          POSTGRES_USER: travel
+          POSTGRES_PASSWORD: travel
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U travel -d travel_scanner"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: uv sync --frozen
+        working-directory: apps/api
+      - run: npm ci
+      - name: Lint localization release tools
+        run: uv run --project apps/api ruff check tools/article-localization docs/article-localization
+      - name: Verify immutable translation artifacts
+        run: |
+          uv run --project apps/api python tools/article-localization/test_pipeline.py
+          node --test tools/article-localization/artifact-integrity.test.mjs
+      - name: Verify assembly, installation and evidence reporting
+        run: >-
+          uv run --project apps/api pytest -q -o asyncio_mode=auto
+          docs/article-localization/test_build_baseline.py
+          docs/article-localization/test_assemble_bundle.py
+          docs/article-localization/test_install_bundle.py
+          docs/article-localization/test_report_progress.py
+      - name: Verify transactional publication on SQLite and PostgreSQL
+        run: >-
+          uv run --project apps/api pytest -q -o asyncio_mode=auto
+          docs/article-localization/test_publish_bundle.py
+        env:
+          RUN_INTEGRATION_TESTS: '1'
