@@ -304,8 +304,8 @@ async def _clear(session: AsyncSession) -> None:
 # the catalog describes, not that the catalog happens to have a particular size. Do not
 # re-hardcode the derived ones: each needed a CI round-trip to update, and only CI can
 # see them at all.
-DISH_COUNT = 80
-MERCHANT_COUNT = 173
+DISH_COUNT = 87
+MERCHANT_COUNT = 179
 
 SEEDED_LOCALIZATIONS = sum(len(seed.localized_names) for seed in FOOD_SEEDS)
 SEEDED_COUNTRIES = {seed.country_code for seed in FOOD_SEEDS}
@@ -359,7 +359,7 @@ async def test_food_seed_public_filters_maps_and_admin_state_are_idempotent() ->
             int(await session.scalar(select(func.count(FoodMerchantPlatformLink.id))) or 0)
             == MERCHANT_COUNT
         )
-        # One row per merchant-dish. Higher than the 185 distinct (city, dish) pairs the
+        # One row per merchant-dish. Higher than the 193 distinct (city, dish) pairs the
         # catalog validator counts, because a city can have several places for one dish.
         assert (
             int(await session.scalar(select(func.count(FoodMerchantFood.id))) or 0)
