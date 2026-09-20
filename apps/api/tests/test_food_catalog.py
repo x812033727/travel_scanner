@@ -70,6 +70,31 @@ def test_no_korean_seed_duplicates_a_dish_production_already_holds() -> None:
     assert seeded & PRODUCTION_ONLY_KOREAN_DISHES == set()
 
 
+def test_the_dishes_added_for_the_food_specials_claim_only_cities_with_an_anchor() -> None:
+    """Each of these was added for a dish-by-city special, and a city is listed only where an
+    official page names a shop serving the dish there. ``validate_merchant_catalog`` holds the
+    pairs equal in general; this pins the particular claim, so widening a dish to a city is
+    a decision someone makes here rather than a side effect of adding a merchant."""
+    expected = {
+        "kr-dwaeji-gukbap": {"busan", "seoul"},
+        "kr-milmyeon": {"busan"},
+        "kr-gomtang": {"seoul"},
+        "kr-heukdwaeji": {"jeju"},
+        "kr-gogi-guksu": {"jeju"},
+        "kr-jjim-galbi": {"daegu"},
+        "kr-makchang": {"daegu"},
+    }
+    dishes = {item.slug: item for item in FOOD_SEEDS}
+    for slug, cities in expected.items():
+        assert set(dishes[slug].destination_ids) == cities, slug
+        anchors = {m.destination_id for m in MERCHANT_SEEDS if slug in m.food_slugs}
+        assert anchors == cities, slug
+    # Two of the anchors are rows an administrator already published in production. Their
+    # seed slugs must stay exactly these, or the seeder creates a second shop beside each.
+    adopted = {"busan-songjeong-samdae-gukbap", "seoul-hadongkwan-main-store"}
+    assert adopted <= {merchant.slug for merchant in MERCHANT_SEEDS}
+
+
 def test_a_dish_slug_carries_its_country_and_a_country_names_a_dish_once() -> None:
     """The slug prefix is how a dish and its guide hub come to share a slug
     (``app.guides.taxonomy.TRAVEL_SEED_SUBTOPICS``), and the local name is the only key two
@@ -212,8 +237,8 @@ def test_the_two_repaired_official_sources_stay_repaired() -> None:
 
 def test_direct_sources_are_verified_and_country_balanced() -> None:
     merchant_country = {merchant.slug: merchant.country_code for merchant in MERCHANT_SEEDS}
-    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 113
-    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 113
+    assert len(MERCHANT_DIRECT_SOURCE_SEEDS) == 119
+    assert len({seed.merchant_slug for seed in MERCHANT_DIRECT_SOURCE_SEEDS}) == 119
     # 2026-09-06: every merchant was searched once; the 60 still missing are listed with
     # their reason above the tuple, so a change here means a page was found or lost.
     assert Counter(
@@ -221,7 +246,7 @@ def test_direct_sources_are_verified_and_country_balanced() -> None:
     ) == {
         "HK": 8,
         "JP": 44,
-        "KR": 19,
+        "KR": 25,
         "SG": 6,
         "TH": 11,
         "TW": 16,

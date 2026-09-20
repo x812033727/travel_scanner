@@ -107,7 +107,7 @@ def test_area_seed_slug_and_source_name_are_derived() -> None:
 
 
 def test_every_merchant_has_categories_and_curated_areas_stay_in_their_city() -> None:
-    assert len(MERCHANT_SEEDS) == 173
+    assert len(MERCHANT_SEEDS) == 179
     for merchant in MERCHANT_SEEDS:
         assert 1 <= len(merchant.category_slugs) <= 6, merchant.slug
         assert len(set(merchant.category_slugs)) == len(merchant.category_slugs)
@@ -118,8 +118,8 @@ def test_every_merchant_has_categories_and_curated_areas_stay_in_their_city() ->
     merchant_slugs = {merchant.slug for merchant in MERCHANT_SEEDS}
     assert set(MERCHANT_AREA_KEYS) <= merchant_slugs
     assert set(MERCHANT_EXTRA_CATEGORIES) <= merchant_slugs
-    assert sum(1 for merchant in MERCHANT_SEEDS if merchant.area_slug) == 80
-    assert sum(len(merchant.category_slugs) for merchant in MERCHANT_SEEDS) == 271
+    assert sum(1 for merchant in MERCHANT_SEEDS if merchant.area_slug) == 82
+    assert sum(len(merchant.category_slugs) for merchant in MERCHANT_SEEDS) == 280
     by_slug = {merchant.slug: merchant for merchant in MERCHANT_SEEDS}
     assert by_slug["tokyo-ichiran-shibuya"].area_slug == "tokyo-shibuya"
     assert by_slug["tokyo-ichiran-shibuya"].category_slugs == ("ramen",)
