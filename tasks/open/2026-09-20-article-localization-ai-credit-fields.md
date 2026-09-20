@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-article-localization-ai-credit-fields
 title: Translate descriptive AI hero image credits safely
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: codex-credit-localization-tool
