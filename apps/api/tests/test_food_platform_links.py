@@ -298,9 +298,9 @@ def test_home_search_and_list_pages_are_rejected(provider: str, url: str) -> Non
 
 
 def test_every_curated_merchant_has_a_conservative_audit_result() -> None:
-    assert len(MERCHANT_SEEDS) == 173
+    assert len(MERCHANT_SEEDS) == 179
     assert len(PLATFORM_LINK_AUDIT_SEEDS) == len(MERCHANT_SEEDS)
-    assert len({item.merchant_slug for item in PLATFORM_LINK_AUDIT_SEEDS}) == 173
+    assert len({item.merchant_slug for item in PLATFORM_LINK_AUDIT_SEEDS}) == 179
     merchants = {item.slug: item for item in MERCHANT_SEEDS}
     for audit in PLATFORM_LINK_AUDIT_SEEDS:
         assert audit.status in {"verified", "not_found", "ambiguous", "disabled"}

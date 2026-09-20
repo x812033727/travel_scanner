@@ -12,7 +12,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.foods import service
 from app.foods.catalog import FOOD_SEEDS
 from app.foods.merchant_catalog import MerchantDirectSourceSeed, MerchantSeed
-from app.models import FoodLocalization, FoodMerchant, FoodMerchantSource, TravelFood
+from app.models import (
+    FoodLocalization,
+    FoodMerchant,
+    FoodMerchantCategory,
+    FoodMerchantFood,
+    FoodMerchantSource,
+    TravelFood,
+)
 
 FOOD_SEED = next(seed for seed in FOOD_SEEDS if seed.slug == "jp-sushi")
 MERCHANT_SEED = MerchantSeed(
@@ -172,6 +179,53 @@ async def test_merchant_review_identity_and_source_edits_survive_seed(
 
     assert len(session.rows) == row_count
     assert (snapshot(merchant), [snapshot(row) for row in sources]) == before
+
+
+async def test_a_seed_adopts_a_merchant_an_administrator_published_and_only_links_the_dish(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Production holds merchants an administrator created and published by hand
+    (``busan-songjeong-samdae-gukbap``), in no seed file. A seed that names one of them as
+    the anchor of a new dish must add the dish link and nothing else: not a second merchant,
+    not a source, not a category, and never a change of review state or identity on a row
+    the public already sees."""
+    session = FoodSeedSession()
+    merchant = FoodMerchant(
+        slug=MERCHANT_SEED.slug, destination_id="tokyo", country_code="JP",
+        name="Published by hand", local_name="手動公開店", display_order=7,
+        review_status="approved", is_active=True, map_match_status="verified",
+        google_place_id="ChIJ-published-by-hand", area_source="admin", verified_at=NOW,
+    )
+    merchant.id = uuid4()
+    source = FoodMerchantSource(
+        merchant_id=merchant.id, source_type="official_tourism",
+        source_scope="merchant_listing", source_title="Tourism board page",
+        source_url="https://example.test/listing", claims_json=["display_name"],
+        is_current=True, last_verified_at=NOW,
+    )
+    source.id = uuid4()
+    curated = FoodMerchantCategory(
+        merchant_id=merchant.id, category_id=uuid4(), is_primary=True, display_order=1,
+        source="admin",
+    )
+    curated.id = uuid4()
+    session.rows += [merchant, source, curated]
+    monkeypatch.setattr(
+        service, "MERCHANT_SEEDS", (replace(MERCHANT_SEED, food_slugs=(FOOD_SEED.slug,)),)
+    )
+    monkeypatch.setattr(service, "MERCHANT_DIRECT_SOURCE_SEEDS", (DIRECT_SOURCE,))
+    before = snapshot(merchant), snapshot(source), snapshot(curated)
+
+    for _ in range(2):
+        await service.seed_food_catalog(cast(AsyncSession, session))
+
+    assert (snapshot(merchant), snapshot(source), snapshot(curated)) == before
+    assert [row for row in session.rows if isinstance(row, FoodMerchant)] == [merchant]
+    assert [row for row in session.rows if isinstance(row, FoodMerchantSource)] == [source]
+    assert [row for row in session.rows if isinstance(row, FoodMerchantCategory)] == [curated]
+    food = next(row for row in session.rows if isinstance(row, TravelFood))
+    links = [row for row in session.rows if isinstance(row, FoodMerchantFood)]
+    assert [(link.merchant_id, link.food_id) for link in links] == [(merchant.id, food.id)]
 
 
 async def test_unverified_merchant_with_deleted_sources_is_not_treated_as_new(
