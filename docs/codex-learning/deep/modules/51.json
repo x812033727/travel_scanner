@@ -15,10 +15,10 @@
     {
       "type": "note",
       "text": [
-        "建立一個自己的範本資料夾，能依任務選對欄位、填入真實觀察、刪掉不適用的步驟。閱讀約 15 分鐘、操作約 20 分鐘。範本是普通文字，貼進任務後才成為要求；不是新的斜線指令，也不是安裝後自動執行的插件。先完成[需求描述](article:codex-prompting)與[Markdown](article:codex-markdown-basics)即可開始。",
-        "Create a personal template folder, choose fields appropriate to a task, fill in real observations and remove inapplicable steps. Allow 15 minutes to read and 20 to practice. Templates are ordinary text that becomes a request when submitted; they are neither new slash commands nor automatically executing plugins. Start with [Prompting](article:codex-prompting) and [Markdown](article:codex-markdown-basics).",
-        "自分用の雛形フォルダーを作り、作業に合う欄を選び、観測値を記入し不要な手順を除きます。読む時間15分、実習20分。雛形は送信して初めて要求になる普通の文字で、新しい対話指令や自動実行プラグインではありません。[依頼の書き方](article:codex-prompting)と [Markdown](article:codex-markdown-basics)から始めます。",
-        "자신의 템플릿 폴더를 만들고 작업에 맞는 항목을 선택해 실제 관찰값을 채우며 불필요한 절차를 제거합니다. 읽기 15분, 실습 20분입니다. 템플릿은 제출하면 요청이 되는 일반 텍스트이며 새로운 슬래시 명령이나 자동 실행 플러그인이 아닙니다. [요청 작성](article:codex-prompting)과 [Markdown](article:codex-markdown-basics)을 먼저 읽으세요."
+        "建立一個自己的範本資料夾，能依任務選對欄位、填入真實觀察、刪掉不適用的步驟。閱讀約 15 分鐘、操作約 20 分鐘。完成後把內容貼進 Codex 任務輸入框並送出，才會成為要求：桌面版開新任務；CLI 則在專案目錄啟動 codex，再貼進互動輸入框。它不是新的斜線指令，也不是安裝後自動執行的插件。先完成[需求描述](article:codex-prompting)與[Markdown](article:codex-markdown-basics)即可開始。",
+        "Create a personal template folder, choose fields appropriate to a task, fill in real observations and remove inapplicable steps. Allow 15 minutes to read and 20 to practice. It becomes a request only after you paste the completed content into a Codex composer and submit it: open a new desktop task, or start codex in the project folder and use the interactive CLI composer. It is neither a new slash command nor an automatically executing plugin. Start with [Prompting](article:codex-prompting) and [Markdown](article:codex-markdown-basics).",
+        "自分用のテンプレートフォルダーを作り、作業に合う欄を選び、観測値を記入し不要な手順を除きます。読む時間15分、実習20分。完成内容を Codex の入力欄へ貼り付けて送信した時に初めて依頼になります。デスクトップでは新規タスクを開き、CLI ではプロジェクトフォルダーで codex を起動して対話入力欄を使います。新しいスラッシュコマンドや自動実行プラグインではありません。[依頼の書き方](article:codex-prompting)と [Markdown](article:codex-markdown-basics)から始めます。",
+        "자신의 템플릿 폴더를 만들고 작업에 맞는 항목을 선택해 실제 관찰값을 채우며 불필요한 절차를 제거합니다. 읽기 15분, 실습 20분입니다. 완성 내용을 Codex 입력창에 붙여 넣고 제출해야 요청이 됩니다. 데스크톱은 새 작업을 열고, CLI는 프로젝트 폴더에서 codex를 시작해 대화 입력창을 사용하세요. 새로운 슬래시 명령이나 자동 실행 플러그인이 아닙니다. [요청 작성](article:codex-prompting)과 [Markdown](article:codex-markdown-basics)을 먼저 읽으세요."
       ]
     },
     {
@@ -292,10 +292,10 @@
     {
       "type": "p",
       "text": [
-        "小練習：選 bug.md 填入一個你已觀察到的練習錯誤，再選 handoff.md 交代下一步。把兩份交給沒有看過原任務的人閱讀：對方應能找到正確資料夾、重現相同現象、知道哪些還沒確認。若對方還必須猜你用哪台電腦或哪份資料，補那個欄位即可，不要加長所有範本。保留一份空白主範本，每次另存任務副本，避免上次的結果變成下次的預設答案。",
-        "Exercise: fill bug.md with an observed practice failure and handoff.md with the next step. Give both to someone unfamiliar with the original task: they should locate the folder, reproduce the symptom and identify unchecked items. Add a missing host or data field where needed instead of lengthening every template. Keep a blank master and save a separate task copy so yesterday's result does not become tomorrow's default answer.",
-        "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。ホストやデータを推測させるならその欄を足し、全雛形を長くしません。空の原本を保持し作業ごとにコピーを保存して、前回結果を既定値にしません。",
-        "연습으로 관찰한 오류를 bug.md에, 다음 단계를 handoff.md에 채워 원래 작업을 모르는 사람에게 전달하세요. 폴더·재현·미확인 사항을 알 수 있어야 합니다. 기기나 데이터를 추측해야 하면 그 항목만 추가하세요. 빈 원본을 보존하고 작업별 사본을 저장해 이전 결과가 다음 기본 답이 되지 않게 합니다."
+        "小練習：選 bug.md 填入一個你已觀察到的練習錯誤，再選 handoff.md 交代下一步。把兩份交給沒有看過原任務的人閱讀：對方應能找到正確資料夾、重現相同現象、知道哪些還沒確認。若對方還必須猜你用哪台電腦或哪份資料，補那個欄位即可，不要加長所有範本。保留一份未填寫的原始範本，每次另存任務副本，避免上次的結果變成下次的預設答案。",
+        "Exercise: fill bug.md with an observed practice failure and handoff.md with the next step. Give both to someone unfamiliar with the original task: they should locate the folder, reproduce the symptom and identify unchecked items. Add a missing host or data field where needed instead of lengthening every template. Keep an unfilled original template and save a separate task copy so yesterday's result does not become tomorrow's default answer.",
+        "実習では観測済みの不具合を bug.md、次の一歩を handoff.md に書き、元の作業を知らない人に渡します。場所、再現、未確認が分かれば合格です。ホストやデータを推測させるならその欄だけを足し、全テンプレートを長くしません。未記入の元テンプレートを保持し、作業ごとに別コピーを保存して、前回結果を次回の既定値にしません。",
+        "연습으로 관찰한 오류를 bug.md에, 다음 단계를 handoff.md에 채워 원래 작업을 모르는 사람에게 전달하세요. 폴더·재현·미확인 사항을 알 수 있어야 합니다. 기기나 데이터를 추측해야 하면 그 항목만 추가하세요. 작성하지 않은 원본 템플릿을 보존하고 작업별 사본을 저장해 이전 결과가 다음 기본 답이 되지 않게 합니다."
       ]
     },
     {

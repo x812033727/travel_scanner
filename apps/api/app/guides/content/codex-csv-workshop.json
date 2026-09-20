@@ -25,6 +25,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "這個實戰製作 CSV 名單整理工具，保留原檔並產生新結果。",
+            "規則固定為修剪空白、將 email 轉小寫、同 email 保留第一筆有效資料、略過缺姓名或格式不合的 email，最後回報保留、重複與無效筆數。",
+            "這是練習用格式檢查，不保證信箱真實存在。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -130,23 +138,8 @@
           "text": "步驟 3：檢查參考程式的保護位置"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "以下是完整參考程式，存為 clean_contacts.py 可獨立執行；若你已讓 Codex 生成版本，先另存備份，再比較差異。csv 模組負責引號、逗號與換行，不能用 split(',') 替代。程式在全部輸入讀完後才用 x 模式建立輸出；已有目標檔就失敗。這能避免輸入格式錯誤時留下輸出，但磁碟在寫到一半失敗仍可能留下不完整檔案，該次必須"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "失敗並檢查產物，不能聲稱這是完整交易系統。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "以下是完整參考程式，存為 clean_contacts.py 可獨立執行；若你已讓 Codex 生成版本，先另存備份，再比較差異。csv 模組負責引號、逗號與換行，不能用 split(',') 替代。程式在全部輸入讀完後才用 x 模式建立輸出；已有目標檔就失敗。這能避免輸入格式錯誤時留下輸出，但磁碟在寫到一半失敗仍可能留下不完整檔案，該次必須標記失敗並檢查產物，不能聲稱這是完整交易系統。"
         },
         {
           "type": "code",
@@ -212,23 +205,8 @@
           "code": "name,email\n ,first@example.test\nFirst valid,FIRST@example.test\nLater duplicate,first@example.test\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "用這份新增輸入與尚不存在的 cleaned-first-valid.csv 執行同一程式，其他"
-            },
-            {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
-            },
-            {
-              "type": "text",
-              "text": "不變。預期 kept 1、duplicate 1、invalid 1：第一筆姓名空白而無效，不應先占住 email；第二筆才是第一筆有效資料；第三筆才算重複。若輸出沒有 First valid，檢查 seen 是在資料通過驗證後才加入，而不是先去重再驗證。原 contacts.csv 與 cleaned-01.csv 都保持原樣。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "用這份新增輸入與尚不存在的 cleaned-first-valid.csv 執行同一程式，其他參數不變。預期 kept 1、duplicate 1、invalid 1：第一筆姓名空白而無效，不應先占住 email；第二筆才是第一筆有效資料；第三筆才算重複。若輸出沒有 First valid，檢查 seen 是在資料通過驗證後才加入，而不是先去重再驗證。原 contacts.csv 與 cleaned-01.csv 都保持原樣。"
         },
         {
           "type": "code",
@@ -338,6 +316,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "这个实战制作 CSV 名单整理工具，保留原档并产生新结果。",
+            "规则固定为修剪空白、将 email 转小写、同 email 保留第一笔有效资料、略过缺姓名或格式不合的 email，最后回报保留、重复与无效笔数。",
+            "这是练习用格式检查，不保证信箱真实存在。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -623,6 +609,15 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Build a CSV cleaner that preserves its input and writes a new output.",
+            "The exercise trims whitespace, lowercases email, keeps the first valid occurrence of an address and skips blank names or malformed addresses.",
+            "It reports kept, duplicate and invalid counts.",
+            "Its format check does not prove a mailbox exists."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -907,6 +902,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "入力を保って別ファイルに出す CSV 整理ツールを作ります。",
+            "空白除去、email の小文字化、重複は最初の有効行を保持、空の名前や不正な形式を除外し、三種類の件数を報告します。",
+            "実在するメールかは保証しません。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1190,6 +1193,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "입력을 보존하고 새 파일로 내보내는 CSV 정리 도구를 만듭니다.",
+            "공백 제거, email 소문자화, 중복 중 첫 유효 행 유지, 빈 이름이나 잘못된 형식 제외 후 세 종류의 건수를 보고합니다.",
+            "실제 이메일 존재를 보장하지는 않습니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

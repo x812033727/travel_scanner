@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "排除問題先判斷發生在哪一層：找不到程式是安裝或 PATH；進不了帳號是登入；讀不到檔案是目錄或權限；結果不對則可能是需求或專案程式。",
+            "一次改一個條件，才能知道是哪個修正有效。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -333,23 +340,8 @@
           ]
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "，不能把整份設定覆蓋成網路上的範本。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "一次只改一個條件。設定恢復正常後保留必要改動，移走你自己加的診斷標記，不能把整份設定覆蓋成網路上的範本。"
         },
         {
           "type": "heading",
@@ -500,14 +492,8 @@
           "type": "rich_paragraph",
           "inlines": [
             {
-              "type": "article",
-              "text": "MCP",
-              "kind": "life",
-              "slug": "ai-term-model-context-protocol"
-            },
-            {
               "type": "text",
-              "text": " 設定存在但工具不可用: "
+              "text": "MCP 設定存在但工具不可用: "
             },
             {
               "type": "article",
@@ -546,14 +532,8 @@
           "type": "rich_paragraph",
           "inlines": [
             {
-              "type": "article",
-              "text": "子代理",
-              "kind": "life",
-              "slug": "ai-term-subagent"
-            },
-            {
               "type": "text",
-              "text": "說完成卻有衝突: "
+              "text": "子代理說完成卻有衝突: "
             },
             {
               "type": "article",
@@ -694,6 +674,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "排除问题先判断发生在哪一层：找不到程式是安装或 PATH；进不了帐号是登入；读不到档案是目录或权限；结果不对则可能是需求或专案程式。",
+            "一次改一个条件，才能知道是哪个修正有效。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1338,6 +1325,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Start by locating the failing layer.",
+            "A missing executable suggests installation or PATH; a rejected account suggests authentication; missing files suggest location or permissions; an incorrect result may involve the request or project code.",
+            "Change one condition at a time."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1981,6 +1976,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "まず失敗する層を見分けます。",
+            "コマンド不在は導入や PATH、ログイン失敗は認証、ファイル不在は場所や権限、結果の誤りは依頼やコードを調べます。",
+            "一度に一つだけ条件を変えます。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -2623,6 +2626,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "먼저 실패한 계층을 구분합니다.",
+            "명령을 못 찾으면 설치나 PATH, 로그인 거부는 인증, 파일 누락은 위치나 권한, 결과 오류는 요청이나 코드를 확인합니다.",
+            "한 번에 조건 하나만 바꾸세요."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

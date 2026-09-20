@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "追蹤對話、主機、工作目錄與分支，用交接紀錄確認接續的是同一份工作。",
+            "完成一張交接紀錄，從另一個支援 Remote 的裝置接續讀取，再用新檔案標記驗證工作位置。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -151,23 +158,8 @@
           "code": "Read host-marker.txt and handoff.md again from the current project. Compare their revision values. Report any disagreement; do not assume the handoff note is newer than the file. Do not edit either file.\n"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "確認差異後，由你把 handoff.md 的 Marker 更新為 2，並在 Verified 寫明這次由哪個控制裝置、何時完成新讀取。只記錄看到的結果，不填「測試全部通過」，因為這次並沒有執行程式測試。要還原練習時，將"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "與紀錄一起改回 1，再讀一次確認；這種精確還原不會撤銷其他程式或遠端任務。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "確認差異後，由你把 handoff.md 的 Marker 更新為 2，並在 Verified 寫明這次由哪個控制裝置、何時完成新讀取。只記錄看到的結果，不填「測試全部通過」，因為這次並沒有執行程式測試。要還原練習時，將標記與紀錄一起改回 1，再讀一次確認；這種精確還原不會撤銷其他程式或遠端任務。"
         },
         {
           "type": "heading",
@@ -319,6 +311,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Track the conversation, host, directory and branch so a handoff continues the intended work.",
+            "Create a handoff record, continue reading from another Remote-capable device and verify the execution location with a fresh file marker."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -601,6 +600,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "会話、ホスト、作業場所、ブランチを追跡し、意図した作業を引き継ぎます。",
+            "引継ぎ記録を作り、別の Remote 対応端末から読み取りを続け、新しいファイル印で実行場所を確認します。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -878,6 +884,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "대화, 호스트, 작업 경로, 브랜치를 추적해 의도한 작업을 이어 갑니다.",
+            "인계 기록을 만들고 다른 Remote 지원 기기에서 읽기를 이어 간 뒤 새 파일 표식으로 실행 위치를 확인합니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1154,6 +1167,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "追踪对话、主机、工作目录与分支，用交接纪录确认接续的是同一份工作。",
+            "完成一张交接纪录，从另一个支援 Remote 的装置接续读取，再用新档案标记验证工作位置。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

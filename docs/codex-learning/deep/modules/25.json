@@ -44,7 +44,7 @@
       "text": [
         "| 類型 | 你要提供的資料 | 執行位置 |\n| --- | --- | --- |\n| STDIO | 啟動程式與參數 | Codex 主機啟動本機程序 |\n| Streamable HTTP | MCP 服務網址 | 透過網路連到服務 |\n| 插件提供的 MCP | 插件安裝與必要連線 | 依插件與入口提供 |\n\n本篇只做 Streamable HTTP。一般網站首頁不等於 MCP 網址，必須使用服務官方列出的端點；也不能把 STDIO 的 command 貼到 URL 欄。",
         "| Type | Required information | Execution location |\n| --- | --- | --- |\n| STDIO | Program and arguments | Local process started by the Codex host |\n| Streamable HTTP | MCP endpoint URL | Network connection to the service |\n| Plugin-provided MCP | Plugin installation and required connection | Depends on plugin and surface |\n\nThis exercise uses only Streamable HTTP. A website homepage is not necessarily its MCP endpoint; use the provider's documented address, and do not paste a STDIO command into a URL field.",
-        "| 方式 | 必要情報 | 実行場所 |\n| --- | --- | --- |\n| STDIO | 程序と引数 | Codex ホストがローカルプロセスを起動 |\n| Streamable HTTP | MCP 端点 URL | ネット経由のサービス |\n| プラグイン由来 | 導入と必要な接続 | 個別の提供条件による |\n\n今回は Streamable HTTP のみです。一般のホームページは MCP 端点とは限らず、公式の端点を使います。STDIO 命令を URL 欄へ貼りません。",
+        "| 方式 | 必要情報 | 実行場所 |\n| --- | --- | --- |\n| STDIO | プログラムと引数 | Codex ホストがローカルプロセスを起動 |\n| Streamable HTTP | MCP エンドポイント URL | ネット経由のサービス |\n| プラグイン由来 | 導入と必要な接続 | 個別の提供条件による |\n\n今回は Streamable HTTP のみです。一般のホームページは MCP エンドポイントとは限らず、公式のエンドポイントを使います。STDIO コマンドを URL 欄へ貼りません。",
         "| 방식 | 필요 정보 | 실행 위치 |\n| --- | --- | --- |\n| STDIO | 프로그램과 인수 | Codex 호스트가 로컬 프로세스 시작 |\n| Streamable HTTP | MCP 주소 | 네트워크로 서비스 접속 |\n| 플러그인 제공 MCP | 설치와 필요한 연결 | 플러그인과 진입점에 따름 |\n\n이번에는 Streamable HTTP만 사용합니다. 웹사이트 첫 페이지가 MCP 주소는 아니므로 공식 주소를 사용하고 STDIO 명령을 URL 칸에 넣지 마세요."
       ]
     },
@@ -167,19 +167,19 @@
       "language": "text",
       "code": "/mcp\n",
       "label": [
-        "Codex CLI 互動輸入框：查看連線，非終端機命令",
-        "Codex CLI composer: inspect connections, not a shell command",
-        "Codex CLI 対話欄：端末命令ではない",
-        "Codex CLI 대화 입력창: 셸 명령 아님"
+        "Codex 桌面版、CLI、IDE 輸入框：查看連線，非終端機命令",
+        "Codex desktop, CLI or IDE composer: inspect connections, not a shell command",
+        "Codex デスクトップ、CLI、IDE の入力欄：端末コマンドではない",
+        "Codex 데스크톱·CLI·IDE 입력창: 셸 명령 아님"
       ]
     },
     {
       "type": "p",
       "text": [
-        "CLI 在新的互動工作階段輸入 /mcp，查看練習伺服器與當下工具。桌面版和 IDE 則回到前述 MCP servers 設定頁確認狀態，再開新任務觀察實際工具活動；不要假定各入口都有 /mcp。若要求認證，先核對公開端點。其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，本篇公開文件服務不需任意填入 API key。",
-        "In a fresh interactive CLI session, use /mcp to inspect the server and tools. In desktop or IDE, check the MCP servers settings described above, then observe tool activity in a new task; do not assume every surface has /mcp. If authentication is requested, verify the public endpoint first. Other OAuth services may require Authenticate or codex mcp login with their name; do not add an arbitrary API key for this public service.",
-        "CLI では新しい対話セッションの /mcp でサーバーとツールを確認します。デスクトップと IDE は前述の MCP servers 設定で状態を見て、新規タスクの実際のツール活動を確認します。全入口に /mcp があるとは限りません。認証要求時は公開端点を照合します。他の OAuth サービスでは Authenticate や codex mcp login が必要でも、本篇の公開サービスに任意の API key を入れません。",
-        "CLI의 새 대화 세션에서 /mcp로 서버와 도구를 확인합니다. 데스크톱과 IDE는 앞서 설명한 MCP servers 설정에서 상태를 확인한 뒤 새 작업의 실제 도구 활동을 봅니다. 모든 화면에 /mcp가 있다고 가정하지 마세요. 인증을 요구하면 공개 주소부터 확인합니다. 다른 OAuth 서비스에는 Authenticate나 codex mcp login이 필요할 수 있지만 이 공개 서비스에 임의의 API key를 넣지 않습니다."
+        "在桌面版、CLI 或 IDE 的新任務／工作階段輸入 /mcp，查看練習伺服器與當下工具；這是 Codex 輸入框指令，不是終端機命令。也可回到 MCP servers 設定頁確認狀態，再觀察新任務的實際工具活動。若要求認證，先核對公開端點。其他 OAuth 服務可能需要 Authenticate 或 codex mcp login 名稱，本篇公開文件服務不需任意填入 API key。",
+        "In a fresh desktop, CLI or IDE task/session, enter /mcp in the Codex composer to inspect the server and tools; it is not a shell command. You can also check MCP servers settings and observe tool activity in the new task. If authentication is requested, verify the public endpoint first. Other OAuth services may require Authenticate or codex mcp login with their name; do not add an arbitrary API key for this public service.",
+        "デスクトップ、CLI、IDE の新しいタスクまたはセッションで、Codex の入力欄に /mcp を入力し、サーバーとツールを確認します。端末コマンドではありません。MCP servers 設定の状態と、新規タスクの実際のツール活動も確認できます。認証要求時は公開エンドポイントを照合します。他の OAuth サービスでは Authenticate や codex mcp login が必要でも、本篇の公開サービスに任意の API key を入れません。",
+        "데스크톱·CLI·IDE의 새 작업 또는 세션에서 Codex 입력창에 /mcp를 입력해 서버와 도구를 확인하세요. 셸 명령이 아닙니다. MCP servers 설정 상태와 새 작업의 실제 도구 활동도 확인할 수 있습니다. 인증을 요구하면 공개 주소부터 확인합니다. 다른 OAuth 서비스에는 Authenticate나 codex mcp login이 필요할 수 있지만 이 공개 서비스에 임의의 API key를 넣지 않습니다."
       ]
     },
     {
@@ -214,10 +214,10 @@
     {
       "type": "p",
       "text": [
-        "失敗對照只改自己新增的項目：在原區段加入 enabled = false，或使用停用控制，保存並重新啟動。CLI 在新工作階段用 /mcp；桌面和 IDE 依前述設定頁與新任務核對，確認不再提供該項工具。舊對話文字不算新讀取。恢復時把 enabled 改回 true 或移除自己加的 false，再重新啟動並重做讀取。",
-        "For the negative case, disable only your new entry with enabled = false or the client control, save and restart. In a fresh CLI session use /mcp; in desktop or IDE use the settings and new-task checks above. Confirm its tools are unavailable. Old conversation text is not fresh retrieval. Restore enabled to true or remove your added false value, restart and repeat the read.",
-        "失敗対照は自分が追加した項目だけを enabled = false または無効化操作で保存・再起動します。CLI は新セッションの /mcp、デスクトップと IDE は前述の設定と新規タスクで利用不可を確認します。旧会話は新取得ではありません。true または追加した false の除去で戻し、再起動して再取得します。",
-        "실패 대조는 자신이 추가한 항목만 enabled = false 또는 비활성화 기능으로 바꾸고 저장·재시작합니다. 새 CLI 세션은 /mcp, 데스크톱과 IDE는 앞서 설명한 설정과 새 작업에서 도구 사용 불가를 확인합니다. 이전 대화는 새 조회가 아닙니다. true로 복구하거나 추가한 false를 제거하고 재시작·재조회합니다."
+        "失敗對照只改自己新增的項目：原區段已有 enabled 就把該值改成 false；沒有才新增一次 enabled = false，不能重複鍵或表格。也可使用客戶端停用控制。保存並重新啟動後，在桌面版、CLI 或 IDE 的新任務／工作階段用 /mcp 和實際工具活動確認不再提供該工具。舊對話文字不算新讀取。恢復時還原原值，或只移除這次新增的 enabled 鍵，再重新啟動並重做讀取。",
+        "For the negative case, change an existing enabled value to false; add enabled = false once only when that key is absent. Never duplicate the key or table. The client disable control is also valid. Save, restart, then use /mcp and actual tool activity in a fresh desktop, CLI or IDE task/session to confirm the tools are unavailable. Old conversation text is not fresh retrieval. Restore the prior value, or remove only the key you added, restart and repeat the read.",
+        "失敗対照は自分の項目だけを変更します。enabled が既にあれば false に変更し、なければ enabled = false を一度だけ追加します。キーや表を重複させません。クライアントの無効化操作でも構いません。保存・再起動後、デスクトップ、CLI、IDE の新規タスクまたはセッションで /mcp と実際のツール活動を確認します。旧会話は新取得ではありません。元の値へ戻すか、今回追加したキーだけを除き、再起動して再取得します。",
+        "실패 대조는 자신이 추가한 항목만 바꿉니다. enabled가 이미 있으면 false로 수정하고, 없을 때만 enabled = false를 한 번 추가하세요. 키나 표를 중복하면 안 됩니다. 클라이언트 비활성화 기능도 가능합니다. 저장·재시작한 뒤 데스크톱·CLI·IDE의 새 작업 또는 세션에서 /mcp와 실제 도구 활동으로 사용 불가를 확인합니다. 이전 대화는 새 조회가 아닙니다. 이전 값을 복구하거나 이번에 추가한 키만 제거한 뒤 재시작·재조회합니다."
       ]
     },
     {

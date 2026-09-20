@@ -25,64 +25,231 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "本目錄把 60 篇 Codex 教學分成十個單元，可依程度、平台、需求、單元或關鍵字找到下一篇。",
+            "文章編號是固定識別碼，卡片順序是建議學習順序；只有已發布文章可點擊，其他項目會顯示狀態。"
+          ]
+        },
+        {
           "type": "paragraph",
-          "text": "從安裝、第一個任務到 MD 規則與進階整合，規劃 60 篇 Codex 教學、十個單元。依程度、平台、需求或指令搜尋下一篇；尚未公開的教學會標示狀態，方便安排學習路線。"
+          "text": "這個目錄收錄 60 篇 Codex 教學，分成十個單元。卡片順序是建議學習順序；文章編號是固定識別碼，因此畫面順序不一定依 01–60 排列。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你會學到什麼"
+          "text": "如何找教學"
         },
         {
           "type": "paragraph",
-          "text": "60 / 10 / Windows · macOS · Linux · iOS · Android / CLI · IDE · Cloud"
+          "text": "搜尋會比對標題、摘要、功能名與指令別名。程度、平台、需求與單元可以同時篩選；結果不對時按「清除篩選」。目前搜尋和篩選會保留在網址，分享或切換語言後仍能回到相同選擇。指令索引也能搜尋，但請分清終端機命令（例如 codex）、互動斜線指令（例如 /plan）與設定檔（例如 AGENTS.md、config.toml）。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "開始之前"
-        },
-        {
-          "type": "paragraph",
-          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+          "text": "十條學習路線"
         },
         {
           "type": "table",
           "header": [
-            "檢查項目",
-            "驗收方式"
+            "單元",
+            "主題",
+            "使用方式"
           ],
           "rows": [
             [
-              "01–20",
-              "先確認環境"
+              "A",
+              "基本概念",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
             ],
             [
-              "21–40",
-              "完成一個操作"
+              "B",
+              "安裝與電腦",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
             ],
             [
-              "41–60",
-              "檢查真實結果"
+              "C",
+              "手機與跨裝置",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "D",
+              "MD 與設定",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "E",
+              "指令與工作階段",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "F",
+              "日常開發",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "G",
+              "Skills 與 Plugins",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "H",
+              "工具與平行工作",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "I",
+              "自動化與輸出",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
+            ],
+            [
+              "J",
+              "實戰與維護",
+              "每個單元 6 篇；先看單元內的先備教學，再依目錄順序練習。"
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "延伸閱讀"
+          "text": "四個直接起點"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次使用：先看"
+            },
+            {
+              "type": "article",
+              "text": "Codex 入門",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "平台選擇",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想把需求說清楚：先看"
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要查操作：先看"
+            },
+            {
+              "type": "article",
+              "text": "CLI 與斜線指令",
+              "kind": "life",
+              "slug": "codex-commands"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "常見問題排除",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要選方案或模型：先看"
+            },
+            {
+              "type": "article",
+              "text": "帳號與額度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "與"
+            },
+            {
+              "type": "article",
+              "text": "模型選擇",
+              "kind": "life",
+              "slug": "codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "閱讀時間、操作時間與發布狀態"
+        },
+        {
+          "type": "paragraph",
+          "text": "卡片把閱讀與實際操作時間分開估算。只有已發布文章可點擊；規劃中表示內容尚未完成，未發布表示已有內容但尚未公開，入口不可用則表示該帳號、版本或平台沒有該功能。每篇開頭與結尾可返回本目錄，並提供上一篇、下一篇和相關教學。來源日期表示最後查證日，不代表每個平台都親自實測。"
         },
         {
           "type": "callout",
           "tone": "info",
-          "text": "跨平台操作依官方文件查證；未在每個系統實測。介面與帳號提供的功能可能不同。"
+          "text": "練習請使用可公開的虛構資料。文章會標出官方文件查證與實測範圍；不要把示意圖當成真實介面，也不要把未實測平台寫成已驗證。"
         }
       ],
       "sources": [
         {
           "title": "OpenAI documentation index",
           "url": "https://learn.chatgpt.com/docs/llms.txt",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -101,64 +268,231 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "本目录把 60 篇 Codex 教程分为十个单元，可按程度、平台、需求、单元或关键字找到下一篇。",
+            "文章编号是固定识别码，卡片顺序是建议学习顺序；只有已发布文章可点击，其他项目会显示状态。"
+          ]
+        },
+        {
           "type": "paragraph",
-          "text": "从安装、第一个任务到 MD 规则与进阶集成，规划 60 篇 Codex 教程、十个单元。按程度、平台、需求或命令搜索下一篇；尚未公开的教程会标示状态，方便安排学习路线。"
+          "text": "本目录收录 60 篇 Codex 教程，分为十个单元。卡片顺序是建议学习顺序；文章编号是固定识别码，因此画面顺序不一定按 01–60 排列。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "你会学到什么"
+          "text": "如何查找教程"
         },
         {
           "type": "paragraph",
-          "text": "60 / 10 / Windows · macOS · Linux · iOS · Android / CLI · IDE · Cloud"
+          "text": "搜索会比对标题、摘要、功能名和命令别名。程度、平台、需求与单元可以同时筛选；结果不对时点击“清除筛选”。当前搜索和筛选会保留在网址中，分享或切换语言后仍能回到相同选择。命令索引也能搜索，但请分清终端命令（如 codex）、交互斜线命令（如 /plan）和设置文件（如 AGENTS.md、config.toml）。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "开始之前"
-        },
-        {
-          "type": "paragraph",
-          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+          "text": "十条学习路线"
         },
         {
           "type": "table",
           "header": [
-            "检查项目",
-            "验收方式"
+            "单元",
+            "主题",
+            "使用方式"
           ],
           "rows": [
             [
-              "01–20",
-              "先确认环境"
+              "A",
+              "基本概念",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
             ],
             [
-              "21–40",
-              "完成一个操作"
+              "B",
+              "安装与电脑",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
             ],
             [
-              "41–60",
-              "检查真实结果"
+              "C",
+              "手机与跨设备",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "D",
+              "MD 与设置",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "E",
+              "命令与会话",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "F",
+              "日常开发",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "G",
+              "Skills 与 Plugins",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "H",
+              "工具与并行工作",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "I",
+              "自动化与输出",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
+            ],
+            [
+              "J",
+              "实战与维护",
+              "每个单元 6 篇；先看单元内的先备教程，再按目录顺序练习。"
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "延伸阅读"
+          "text": "四个直接起点"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "第一次使用：先看"
+            },
+            {
+              "type": "article",
+              "text": "Codex 入门",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "平台选择",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想把需求说清楚：先看"
+            },
+            {
+              "type": "article",
+              "text": "需求描述",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要查操作：先看"
+            },
+            {
+              "type": "article",
+              "text": "CLI 与斜线命令",
+              "kind": "life",
+              "slug": "codex-commands"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "常见问题排除",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "要选方案或模型：先看"
+            },
+            {
+              "type": "article",
+              "text": "账号与额度",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "模型选择",
+              "kind": "life",
+              "slug": "codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "阅读时间、操作时间与发布状态"
+        },
+        {
+          "type": "paragraph",
+          "text": "卡片把阅读与实际操作时间分开估算。只有已发布文章可点击；规划中表示内容尚未完成，未发布表示已有内容但尚未公开，入口不可用则表示该账号、版本或平台没有该功能。每篇开头与结尾可返回本目录，并提供上一篇、下一篇和相关教程。来源日期表示最后查证日，不代表每个平台都亲自实测。"
         },
         {
           "type": "callout",
           "tone": "info",
-          "text": "跨平台操作依官方文件查证；未在每个系统实测。介面与帐号提供的功能可能不同。"
+          "text": "练习请使用可公开的虚构资料。文章会标出官方文件查证与实测范围；不要把示意图当成真实界面，也不要把未实测平台写成已验证。"
         }
       ],
       "sources": [
         {
           "title": "OpenAI documentation index",
           "url": "https://learn.chatgpt.com/docs/llms.txt",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -177,64 +511,231 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "This directory organizes 60 Codex tutorials into ten units and supports search by experience, platform, goal, unit or keyword.",
+            "Lesson numbers are stable identifiers while card order is the suggested route; only published lessons are links and every other entry shows its state."
+          ]
+        },
+        {
           "type": "paragraph",
-          "text": "A planned 60-lesson, ten-unit Codex curriculum, from setup and your first task to MD instructions and advanced integrations. Find your next lesson by experience, platform, goal or command; unpublished entries show their status."
+          "text": "This directory contains 60 Codex tutorials in ten units. Card order is the suggested study order. Lesson numbers are stable identifiers, so the screen does not necessarily run from 01 to 60."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "What you will learn"
+          "text": "Find a tutorial"
         },
         {
           "type": "paragraph",
-          "text": "60 / 10 / Windows · macOS · Linux · iOS · Android / CLI · IDE · Cloud"
+          "text": "Search matches titles, summaries, feature names and command aliases. Experience, Platform, Goal and Unit filters combine; use Clear filters when the result is too narrow. The current search and filters stay in the URL, so a shared link or language switch preserves the selection. The command index is searchable too. Keep terminal commands such as codex, interactive slash commands such as /plan, and configuration files such as AGENTS.md or config.toml distinct."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "Before you start"
-        },
-        {
-          "type": "paragraph",
-          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+          "text": "Ten study routes"
         },
         {
           "type": "table",
           "header": [
-            "Check",
-            "Acceptance method"
+            "Unit",
+            "Topic",
+            "How to use it"
           ],
           "rows": [
             [
-              "01–20",
-              "Confirm the environment"
+              "A",
+              "Foundations",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
             ],
             [
-              "21–40",
-              "Complete one action"
+              "B",
+              "Setup and computers",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
             ],
             [
-              "41–60",
-              "Inspect the actual result"
+              "C",
+              "Mobile and devices",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "D",
+              "MD and configuration",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "E",
+              "Commands and sessions",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "F",
+              "Everyday development",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "G",
+              "Skills and Plugins",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "H",
+              "Tools and parallel work",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "I",
+              "Automation and output",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
+            ],
+            [
+              "J",
+              "Workshops and maintenance",
+              "Each unit has six lessons. Complete its prerequisites, then follow directory order."
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "Continue learning"
+          "text": "Four direct starting points"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "New to Codex: start with "
+            },
+            {
+              "type": "article",
+              "text": "Codex foundations",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "platform selection",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To write a clear request: read "
+            },
+            {
+              "type": "article",
+              "text": "Prompting",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To find an operation: use "
+            },
+            {
+              "type": "article",
+              "text": "CLI and slash commands",
+              "kind": "life",
+              "slug": "codex-commands"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "Troubleshooting",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To choose access or a model: read "
+            },
+            {
+              "type": "article",
+              "text": "Accounts and usage",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "Model selection",
+              "kind": "life",
+              "slug": "codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Reading time, practice time and publication state"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cards estimate reading and hands-on practice separately. Only published lessons are links. Planned means the article is unfinished; unpublished means content exists but is not public; unavailable means the account, version or platform lacks that entry point. Every lesson links back here at the top and bottom and offers previous, next and related lessons. A source date is the last verification date, not a claim that every platform was personally tested."
         },
         {
           "type": "callout",
           "tone": "info",
-          "text": "Cross-platform steps were checked against official documentation, not tested on every operating system. Interfaces and account availability can differ."
+          "text": "Use fictional, shareable practice data. Lessons label documentation checks and actual test scope. Treat generated diagrams as illustrations, not product screenshots, and do not report an untested platform as verified."
         }
       ],
       "sources": [
         {
           "title": "OpenAI documentation index",
           "url": "https://learn.chatgpt.com/docs/llms.txt",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -253,64 +754,231 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "この目次は Codex の60レッスンを十単元に分け、習熟度、環境、目的、単元、キーワードから次の記事を探せます。",
+            "番号は固定識別子、カードは推奨学習順です。公開済みだけがリンクになり、他の記事は状態を表示します。"
+          ]
+        },
+        {
           "type": "paragraph",
-          "text": "導入と最初のタスクから MD の指示、高度な連携まで、60 レッスン・十単元を予定しています。習熟度、環境、目的、コマンドで次の記事を探せます。未公開の記事には状態を表示します。"
+          "text": "この目次には Codex の60レッスンを十単元にまとめています。カードの順序は推奨学習順です。レッスン番号は固定識別子のため、画面が 01〜60 の順になるとは限りません。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "学べること"
+          "text": "レッスンの探し方"
         },
         {
           "type": "paragraph",
-          "text": "60 / 10 / Windows · macOS · Linux · iOS · Android / CLI · IDE · Cloud"
+          "text": "検索はタイトル、要約、機能名、コマンドの別名を対象にします。習熟度、環境、目的、単元は組み合わせて絞り込めます。結果が狭すぎる場合は「条件をクリア」を使います。現在の検索条件は URL に保存され、共有や言語切替後も選択を維持します。コマンド索引も検索できます。codex などの端末コマンド、/plan などの対話スラッシュコマンド、AGENTS.md や config.toml などの設定ファイルを区別してください。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "始める前に"
-        },
-        {
-          "type": "paragraph",
-          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+          "text": "十の学習ルート"
         },
         {
           "type": "table",
           "header": [
-            "確認項目",
-            "確認方法"
+            "単元",
+            "テーマ",
+            "進め方"
           ],
           "rows": [
             [
-              "01–20",
-              "環境を確かめる"
+              "A",
+              "基本概念",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
             ],
             [
-              "21–40",
-              "一つの操作を行う"
+              "B",
+              "導入とパソコン",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
             ],
             [
-              "41–60",
-              "実際の結果を調べる"
+              "C",
+              "モバイルと端末連携",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "D",
+              "MD と設定",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "E",
+              "コマンドとセッション",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "F",
+              "日常の開発",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "G",
+              "Skills と Plugins",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "H",
+              "ツールと並行作業",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "I",
+              "自動化と出力",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
+            ],
+            [
+              "J",
+              "実践と保守",
+              "各単元は6レッスンです。前提レッスンを済ませ、目次順に進めます。"
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "次に学ぶこと"
+          "text": "四つの開始地点"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "初めて使う場合は"
+            },
+            {
+              "type": "article",
+              "text": "Codex 入門",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "環境の選び方",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "から始めます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "依頼を明確にする場合は"
+            },
+            {
+              "type": "article",
+              "text": "プロンプト",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "を読みます。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "操作を調べる場合は"
+            },
+            {
+              "type": "article",
+              "text": "CLI とスラッシュコマンド",
+              "kind": "life",
+              "slug": "codex-commands"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "トラブルシューティング",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "を使います。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "プランやモデルを選ぶ場合は"
+            },
+            {
+              "type": "article",
+              "text": "アカウントと利用枠",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "モデル選択",
+              "kind": "life",
+              "slug": "codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "を読みます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "読む時間、操作時間、公開状態"
+        },
+        {
+          "type": "paragraph",
+          "text": "カードでは読む時間と実際の操作時間を分けて見積もります。公開済みだけがリンクになります。作成予定は未完成、未公開は内容があるものの公開前、利用不可はアカウント、バージョン、環境に入口がない状態です。各レッスンの冒頭と末尾からこの目次へ戻れ、前後と関連レッスンへ進めます。出典日付は最終確認日であり、全環境の実機検証を意味しません。"
         },
         {
           "type": "callout",
           "tone": "info",
-          "text": "各 OS の手順は公式文書で確認していますが、すべての環境で実機検証したわけではありません。画面や提供状況は異なる場合があります。"
+          "text": "公開可能な架空データで練習してください。記事は公式文書の確認と実測範囲を明記します。生成図を製品画面として扱わず、未検証の環境を検証済みと記録しません。"
         }
       ],
       "sources": [
         {
           "title": "OpenAI documentation index",
           "url": "https://learn.chatgpt.com/docs/llms.txt",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -329,64 +997,231 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "이 목차는 Codex 강의 60개를 열 개 단원으로 나누고 수준·환경·목표·단원·키워드로 다음 글을 찾게 합니다.",
+            "번호는 고정 식별자이고 카드 순서는 추천 학습 경로입니다. 게시된 글만 링크되며 나머지는 상태를 표시합니다."
+          ]
+        },
+        {
           "type": "paragraph",
-          "text": "설치와 첫 작업부터 MD 지침과 고급 연동까지 60개 강의, 열 개 단원을 계획합니다. 수준, 환경, 목표, 명령으로 다음 글을 찾고 미게시 항목의 상태를 확인할 수 있습니다."
+          "text": "이 목차는 Codex 강의 60개를 열 개 단원으로 묶습니다. 카드 순서는 추천 학습 순서입니다. 강의 번호는 고정 식별자이므로 화면이 01부터 60까지 순서대로 표시되지는 않을 수 있습니다."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "학습 목표"
+          "text": "강의 찾기"
         },
         {
           "type": "paragraph",
-          "text": "60 / 10 / Windows · macOS · Linux · iOS · Android / CLI · IDE · Cloud"
+          "text": "검색은 제목·요약·기능명·명령 별칭을 확인합니다. 수준·환경·목표·단원 필터를 함께 적용할 수 있으며 결과가 너무 좁으면 ‘필터 지우기’를 누르세요. 현재 검색과 필터는 URL에 남아 공유하거나 언어를 바꿔도 선택을 유지합니다. 명령 색인도 검색할 수 있습니다. codex 같은 터미널 명령, /plan 같은 대화 슬래시 명령, AGENTS.md·config.toml 같은 설정 파일을 구분하세요."
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "시작 전 준비"
-        },
-        {
-          "type": "paragraph",
-          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+          "text": "열 개 학습 경로"
         },
         {
           "type": "table",
           "header": [
-            "검사 항목",
-            "확인 방법"
+            "단원",
+            "주제",
+            "학습 방법"
           ],
           "rows": [
             [
-              "01–20",
-              "환경 확인"
+              "A",
+              "기본 개념",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
             ],
             [
-              "21–40",
-              "작업 하나 완료"
+              "B",
+              "설치와 컴퓨터",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
             ],
             [
-              "41–60",
-              "실제 결과 확인"
+              "C",
+              "모바일과 기기 연결",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "D",
+              "MD와 설정",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "E",
+              "명령과 세션",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "F",
+              "일상 개발",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "G",
+              "Skills와 Plugins",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "H",
+              "도구와 병렬 작업",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "I",
+              "자동화와 출력",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
+            ],
+            [
+              "J",
+              "실전과 유지보수",
+              "단원마다 강의 6개가 있습니다. 선행 강의를 마치고 목차 순서대로 연습하세요."
             ]
           ]
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "이어서 학습하기"
+          "text": "바로 시작할 네 지점"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "처음 사용한다면 "
+            },
+            {
+              "type": "article",
+              "text": "Codex 입문",
+              "kind": "life",
+              "slug": "codex-beginner-guide"
+            },
+            {
+              "type": "text",
+              "text": "과 "
+            },
+            {
+              "type": "article",
+              "text": "환경 선택",
+              "kind": "life",
+              "slug": "codex-platforms-guide"
+            },
+            {
+              "type": "text",
+              "text": "부터 시작하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "요청을 명확히 쓰려면 "
+            },
+            {
+              "type": "article",
+              "text": "프롬프트",
+              "kind": "life",
+              "slug": "codex-prompting"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "article",
+              "text": "AGENTS.md",
+              "kind": "life",
+              "slug": "codex-agents-md"
+            },
+            {
+              "type": "text",
+              "text": "를 읽으세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "작업 방법을 찾으려면 "
+            },
+            {
+              "type": "article",
+              "text": "CLI와 슬래시 명령",
+              "kind": "life",
+              "slug": "codex-commands"
+            },
+            {
+              "type": "text",
+              "text": "과 "
+            },
+            {
+              "type": "article",
+              "text": "문제 해결",
+              "kind": "life",
+              "slug": "codex-troubleshooting"
+            },
+            {
+              "type": "text",
+              "text": "을 사용하세요."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "요금제나 모델을 고르려면 "
+            },
+            {
+              "type": "article",
+              "text": "계정과 사용량",
+              "kind": "life",
+              "slug": "codex-account-usage"
+            },
+            {
+              "type": "text",
+              "text": "과 "
+            },
+            {
+              "type": "article",
+              "text": "모델 선택",
+              "kind": "life",
+              "slug": "codex-model-selection"
+            },
+            {
+              "type": "text",
+              "text": "을 읽으세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "읽기 시간, 실습 시간, 게시 상태"
+        },
+        {
+          "type": "paragraph",
+          "text": "카드는 읽기와 실제 실습 시간을 따로 추정합니다. 게시된 글만 링크됩니다. 작성 예정은 미완성, 미게시는 내용이 있으나 공개 전, 사용 불가는 계정·버전·환경에 해당 진입점이 없는 상태입니다. 모든 강의의 처음과 끝에서 이 목차로 돌아오고 이전·다음·관련 강의로 이동할 수 있습니다. 출처 날짜는 마지막 확인일이며 모든 환경을 직접 시험했다는 뜻은 아닙니다."
         },
         {
           "type": "callout",
           "tone": "info",
-          "text": "각 OS 절차는 공식 문서로 확인했으며 모든 환경에서 직접 시험한 것은 아닙니다. 화면과 계정별 제공 기능은 다를 수 있습니다."
+          "text": "공개 가능한 가상 자료로 연습하세요. 글은 공식 문서 확인과 실제 시험 범위를 구분합니다. 생성 그림을 제품 화면으로 취급하지 말고 시험하지 않은 환경을 검증 완료로 기록하지 마세요."
         }
       ],
       "sources": [
         {
           "title": "OpenAI documentation index",
           "url": "https://learn.chatgpt.com/docs/llms.txt",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

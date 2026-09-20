@@ -24,6 +24,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "從執行紀錄判斷是否已產生結果，避免重複操作，修正條件並確認排程停止。",
+            "從一次失敗的自動化判斷是否仍在執行、能否重試，以及哪份結果可以接受。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -123,23 +130,8 @@
           "text": "步驟 2：重現『有答案，但沒有完成證據』"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "的模擬中斷，不要修改真實失敗紀錄來假裝成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "用檔案管理員將成功的 run-01 完整複製成 recovery-running。只在副本 status.json 改成下方內容，保留原本正確的 final.json 與事件檔。這是明確標記的模擬中斷，不要修改真實失敗紀錄來假裝成功。接著在原練習資料夾執行 verify-only；Windows 用 PowerShell，macOS／Linux 用各自終端機。預期 Not accepted: Process did not exit successfully，退出非 0。"
         },
         {
           "type": "code",
@@ -294,6 +286,13 @@
         "alt": "Original workflow illustration, not a product screenshot."
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Use execution records to detect prior effects, avoid duplicates, repair prerequisites and confirm a schedule has stopped.",
+            "Use a failed automation to determine whether work is still running, whether retry is appropriate and which result can be accepted."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -551,6 +550,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "実行記録で既存の結果を確認し、重複を避け、前提を直して停止を確かめます。",
+            "失敗した自動化から、まだ実行中か、再試行できるか、どの結果を採用できるか判断します。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -807,6 +813,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "실행 기록으로 기존 결과를 확인하고 중복을 피하며 조건을 고쳐 일정 중지를 검증합니다.",
+            "실패한 자동화에서 실행이 남아 있는지, 재시도할 수 있는지, 어떤 결과를 채택할지 판단합니다."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1062,6 +1075,13 @@
         "alt": "原创流程示意图，非产品界面截图。"
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "从执行纪录判断是否已产生结果，避免重复操作，修正条件并确认排程停止。",
+            "从一次失败的自动化判断是否仍在执行、能否重试，以及哪份结果可以接受。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

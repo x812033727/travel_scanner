@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "模型決定可用能力與成本條件，推理深度影響代理願意花多少工作來處理問題。",
+            "先用同一個小任務比較品質，再決定是否提高深度；模型名稱與額度會變，因此只以帳號當下顯示的選項為準。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -247,17 +254,7 @@
             },
             {
               "type": "text",
-              "text": "，移除本次新增的覆寫值並還原原先選擇。切換後狀態不符，先停止比較並確認是否被既有啟動"
-            },
-            {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
-            },
-            {
-              "type": "text",
-              "text": "或專案設定影響，不拿錯誤設定的結果當實驗。"
+              "text": "，移除本次新增的覆寫值並還原原先選擇。切換後狀態不符，先停止比較並確認是否被既有啟動參數或專案設定影響，不拿錯誤設定的結果當實驗。"
             }
           ]
         },
@@ -281,23 +278,8 @@
           ]
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "完成條件是能指出實際選擇、用同一題目判斷兩次結果、說明比較的限制，並把模型與推理控制恢復到練習前的值。sample.mjs 應完全沒變；若任務改了它，保留差異後用上面的完整內容還原，再把該次"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "為未遵守範圍。圖中 1 是記錄，2 是控制變因比較，3 是按證據選擇。本文不提供虛構的模型速度實測排名。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "完成條件是能指出實際選擇、用同一題目判斷兩次結果、說明比較的限制，並把模型與推理控制恢復到練習前的值。sample.mjs 應完全沒變；若任務改了它，保留差異後用上面的完整內容還原，再把該次標記為未遵守範圍。圖中 1 是記錄，2 是控制變因比較，3 是按證據選擇。本文不提供虛構的模型速度實測排名。"
         },
         {
           "type": "rich_paragraph",
@@ -353,6 +335,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "模型决定可用能力与成本条件，推理深度影响代理愿意花多少工作来处理问题。",
+            "先用同一个小任务比较品质，再决定是否提高深度；模型名称与额度会变，因此只以帐号当下显示的选项为准。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -658,6 +647,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Model choice affects available capabilities and usage conditions; reasoning effort affects how much work the agent devotes to a problem.",
+            "Compare quality on the same small task before increasing effort.",
+            "Use the options currently exposed by your account rather than assuming a named model is universally available."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -962,6 +959,14 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "モデルと推論量は別の選択です。",
+            "同じ小さな課題で品質を比較し、必要なら推論量を増やします。",
+            "名前だけで判断せず、現在のアカウントに表示される候補を使います。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1265,6 +1270,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "모델 선택과 추론 수준은 별개입니다.",
+            "같은 작은 과제에서 품질을 비교하고 필요할 때 추론을 높입니다.",
+            "이름만 보고 판단하지 말고 현재 계정에 표시되는 옵션을 사용하세요."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

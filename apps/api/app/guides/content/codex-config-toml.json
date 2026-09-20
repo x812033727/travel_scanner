@@ -25,6 +25,16 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "config.",
+            "toml 控制 Codex 的設定值，與 AGENTS.",
+            "md 的自然語言工作規則不同。",
+            "使用者設定在 Codex home，受信任專案也能有 .",
+            "codex/config."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -177,17 +187,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、"
-            },
-            {
-              "type": "article",
-              "text": "MCP",
-              "kind": "life",
-              "slug": "ai-term-model-context-protocol"
-            },
-            {
-              "type": "text",
-              "text": " 與外部服務還有自己的權限和設定；需要控制這些範圍時讀"
+              "text": "這個開關只關閉內建網頁搜尋工具，不能用來證明所有網路都被封鎖。Shell、瀏覽器、MCP 與外部服務還有自己的權限和設定；需要控制這些範圍時讀"
             },
             {
               "type": "article",
@@ -231,23 +231,8 @@
           "text": "常見問題與下一步"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "不能啟動時，先看錯誤指到哪份 TOML、哪一行，檢查引號、重複鍵與表格位置；能啟動但值沒變時，查檔案路徑、專案信任、啟動"
-            },
-            {
-              "type": "article",
-              "text": "參數",
-              "kind": "life",
-              "slug": "ai-term-model-parameters"
-            },
-            {
-              "type": "text",
-              "text": "和較近的子目錄設定；編輯器與 CLI 不同時，查它們是否在相同 OS、使用者與工作目錄，尤其 Windows 和 WSL 不共享同一個使用者家目錄。這些問題需要逐一查來源，重裝程式通常不是第一個判斷。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "不能啟動時，先看錯誤指到哪份 TOML、哪一行，檢查引號、重複鍵與表格位置；能啟動但值沒變時，查檔案路徑、專案信任、啟動參數和較近的子目錄設定；編輯器與 CLI 不同時，查它們是否在相同 OS、使用者與工作目錄，尤其 Windows 和 WSL 不共享同一個使用者家目錄。這些問題需要逐一查來源，重裝程式通常不是第一個判斷。"
         },
         {
           "type": "rich_paragraph",
@@ -337,6 +322,16 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "config.",
+            "toml 控制 Codex 的设定值，与 AGENTS.",
+            "md 的自然语言工作规则不同。",
+            "使用者设定在 Codex home，受信任专案也能有 .",
+            "codex/config."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -626,6 +621,16 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "config.",
+            "toml sets client options, while AGENTS.",
+            "md describes working instructions.",
+            "User settings live in Codex home; trusted projects can add .",
+            "codex/config."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -914,6 +919,16 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "config.",
+            "toml は設定値、AGENTS.",
+            "md は作業指示を扱います。",
+            "ユーザー設定に加えて信頼したプロジェクトに .",
+            "codex/config."
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -1201,6 +1216,16 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "config.",
+            "toml은 설정 값을, AGENTS.",
+            "md는 작업 지침을 다룹니다.",
+            "사용자 설정 외에 신뢰하는 프로젝트에 .",
+            "codex/config."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [

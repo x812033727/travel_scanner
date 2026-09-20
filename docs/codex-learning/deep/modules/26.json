@@ -140,7 +140,7 @@
       "text": [
         "在瀏覽器的響應式模式依序使用 390×900 與 1280×900 CSS 像素，固定縮放與相同兩筆資料。用 Windows 截圖工具、macOS 區域截圖，或 Linux 所提供的截圖程式只擷取頁面內容，保存 before-390.png 與 before-1280.png。截圖檔本身的像素可能受裝置縮放影響，因此把 CSS viewport、縮放比例、瀏覽器版本與日期另外寫在文字紀錄，不單靠 PNG 尺寸猜測。",
         "Use responsive mode at 390×900 and 1280×900 CSS pixels with fixed zoom and the same two tasks. Capture the page area with Windows Snipping Tool, macOS region capture or the Linux screenshot utility, saving before-390.png and before-1280.png. Device scaling can alter PNG pixel dimensions, so separately record CSS viewport, zoom, browser version and date instead of inferring them from image dimensions.",
-        "レスポンシブを二寸法の CSS 像素にし、倍率と二件データを固定します。各 OS の領域撮影でページだけを before 名に保存します。装置倍率で PNG 像素は変わるため、viewport、倍率、版、日付を別記し画像寸法から推測しません。",
+        "レスポンシブ表示を 390×900 と 1280×900 CSS ピクセルにし、倍率と二件のデータを固定します。各 OS の範囲指定スクリーンショットでページだけを before 名に保存します。デバイスの表示倍率で PNG のピクセル数は変わるため、viewport、倍率、ブラウザーのバージョン、日付を別記し、画像寸法から推測しません。",
         "반응형 모드를 두 CSS 크기로 맞추고 배율과 두 데이터를 고정합니다. 각 OS 영역 캡처로 페이지 부분만 before 파일에 저장하세요. 장치 배율이 PNG 크기를 바꿀 수 있으므로 viewport·배율·버전·날짜를 별도 기록합니다."
       ]
     },
@@ -160,7 +160,7 @@
       "text": [
         "截圖之前先移開帳號區、私人分頁或通知，必要時重新擷取較小範圍。不要拿另一個平台的畫面改一個圖說就宣稱已測該平台；圖片含個人資料時由你先遮蔽再提供。概念圖與生成圖片可幫助說明外觀方向，但應寫「示意圖」，不能用它代替實際操作結果。採用別人的圖片時保存來源、作者、授權與必要署名，圖說與替代文字仍用文章的當前語言。",
         "Remove account areas, private tabs and notifications from the capture, taking a smaller region if needed. Do not relabel another platform's screenshot as a test of your platform. Redact personal data before sharing. Concept/generated images can describe a visual direction when labeled illustrations, but cannot prove an operation. For others' images, preserve source, author, license and attribution, with captions and alt text in the article's language.",
-        "撮影からアカウント、私的分頁、通知を外し必要なら小領域を再撮影します。他 OS の図を改題して実測とせず、個人情報は共有前に伏せます。生成・概念図は示意と明記し操作証拠にしません。他人の図は出典、作者、ライセンス、署名を保存し説明と代替文を現言語にします。",
+        "撮影範囲からアカウント、私用タブ、通知を外し、必要なら小さい範囲で撮り直します。他 OS の画面を改題して実測とせず、個人情報は共有前に伏せます。生成画像・概念図はイメージ図と明記し、操作証拠にしません。他人の画像は出典、作者、ライセンス、必要なクレジットを保存し、説明と代替テキストを記事の言語で記します。",
         "계정·개인 탭·알림을 캡처에서 제외하고 필요하면 작은 영역을 다시 찍습니다. 다른 OS 화면의 제목만 바꿔 실측으로 쓰지 말고 개인정보는 공유 전에 가리세요. 생성·개념 이미지는 예시로 표시하며 조작 증거가 아닙니다. 타인 그림은 출처·작가·허가·표기를 보존하고 캡션과 대체 텍스트를 현재 언어로 씁니다."
       ]
     },
@@ -176,10 +176,10 @@
     {
       "type": "p",
       "text": [
-        "桌面內建瀏覽器若有 Annotation mode，開啟後選取標題與表單之間的區域，留言說明要縮小哪一段間距，再回到主任務送出要求。若沒有標註入口，附上兩張 before 圖並指出標題下方的空白，同樣有效；註解保存不代表模型已開始修改，仍須送出任務。不要只寫「更好看」，把要改的值、保留項目及兩種寬度的驗收說清楚。",
-        "If desktop Annotation mode is available, select the region between heading and form, describe the spacing change and submit a request in the parent task. Otherwise attach the two before images and identify the gap in text. Saving a comment does not itself start a model edit; submit the task. Replace vague aesthetic requests with the desired value, preserved behavior and both viewport checks.",
-        "Annotation mode があれば標題とフォーム間を選んで間隔を記し、親へ要求を送ります。なければ二 before 図と文字で場所を示します。注釈保存だけでは編集は始まらず送信が必要です。曖昧な美観でなく値、保全、二寸法の検証を指定します。",
-        "Annotation mode가 있으면 제목과 양식 사이를 선택해 간격을 적고 부모에게 요청을 보냅니다. 없으면 before 두 그림과 위치 설명을 첨부하세요. 주석 저장만으로 수정이 시작되지 않으므로 작업을 제출합니다. 막연한 미관 대신 값·보존·두 크기 검증을 명시하세요."
+        "先在 Codex 桌面版開啟練習專案與一個新任務；走 CLI 路線則在練習專案目錄執行 codex 並開始新的互動工作階段。桌面內建瀏覽器若有 Annotation mode，開啟後選取標題與表單之間的區域，留言說明要縮小哪一段間距，再回到主任務送出要求。若沒有標註入口，附上兩張 before 圖並指出標題下方的空白，同樣有效；註解保存不代表模型已開始修改，仍須送出任務。不要只寫「更好看」，把要改的值、保留項目及兩種寬度的驗收說清楚。",
+        "First open the practice project and a new task in Codex desktop. For the CLI route, run codex from the practice-project folder and start a fresh interactive session. If desktop Annotation mode is available, select the region between heading and form, describe the spacing change and submit a request in the parent task. Otherwise attach the two before images and identify the gap in text. Saving a comment does not itself start a model edit; submit the task. Replace vague aesthetic requests with the desired value, preserved behavior and both viewport checks.",
+        "まず Codex デスクトップで実習プロジェクトと新規タスクを開きます。CLI の場合は実習プロジェクトのフォルダーで codex を実行し、新しい対話セッションを始めます。Annotation mode があれば見出しとフォームの間を選んで間隔を記し、親タスクへ要求を送ります。なければ二枚の before 画像と文字で場所を示します。注釈の保存だけでは編集は始まらず、タスクの送信が必要です。曖昧な美観ではなく、値、維持する動作、二つの表示幅での検証を指定します。",
+        "먼저 Codex 데스크톱에서 연습 프로젝트와 새 작업을 여세요. CLI 경로는 연습 프로젝트 폴더에서 codex를 실행해 새 대화 세션을 시작합니다. Annotation mode가 있으면 제목과 양식 사이를 선택해 간격을 적고 부모 작업에 요청을 보냅니다. 없으면 before 두 그림과 위치 설명을 첨부하세요. 주석 저장만으로 수정이 시작되지 않으므로 작업을 제출합니다. 막연한 미관 대신 값·보존할 동작·두 크기 검증을 명시하세요."
       ]
     },
     {

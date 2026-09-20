@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "子代理適合把能獨立完成的工作分開處理，再由主要任務整合結果。",
+            "分工會增加模型與工具用量；若工作互相依賴、都要改同一段程式，平行處理反而可能產生衝突。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -61,19 +68,8 @@
           ]
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "article",
-              "text": "子代理",
-              "kind": "life",
-              "slug": "ai-term-subagent"
-            },
-            {
-              "type": "text",
-              "text": "是主任務委派出去的工作者，負責明確的一部分，再把結果交回來。它不是另一個自動隔離的 Git 儲存庫，也不是多開兩個視窗就會自動互相協調。適合並行的工作必須各自有輸入、範圍與成果，而且不必等待另一個子任務先改好檔案。這次兩個人都只讀，因此不需要讓他們競爭同一份程式碼的寫入權。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "子代理是主任務委派出去的工作者，負責明確的一部分，再把結果交回來。它不是另一個自動隔離的 Git 儲存庫，也不是多開兩個視窗就會自動互相協調。適合並行的工作必須各自有輸入、範圍與成果，而且不必等待另一個子任務先改好檔案。這次兩個人都只讀，因此不需要讓他們競爭同一份程式碼的寫入權。"
         },
         {
           "type": "heading",
@@ -196,23 +192,8 @@
           "text": "正常參考版中 addTask 會修剪文字、限制長度、檢查 ID，並回傳新陣列；visibleTasks 依 active／completed 篩選；decodeTasks 會拒絕錯誤格式與重複 ID。主任務應回到這些實際函式驗證 A 的說法，再對照 B 指出的測試片段。假如 B 說沒有測重複 ID，先區分新增時與儲存讀回時的兩種檢查，不要只因兩份報告不同就選較長的一份。"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "再由主任務執行一次"
-            },
-            {
-              "type": "article",
-              "text": "基準測試",
-              "kind": "life",
-              "slug": "ai-term-benchmark"
-            },
-            {
-              "type": "text",
-              "text": "，保存實際 exit code 與結果。驗收表至少包括「主張、檔案／函式、測試證據、已確認或未確認」。有些行為可讀程式確定，但沒經過瀏覽器操作；有些測試缺口只是建議，不是現存 Bug。把這些狀態分開，讀者才知道下一步該補測試、實際重現還是直接修正。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "再由主任務執行一次基準測試，保存實際 exit code 與結果。驗收表至少包括「主張、檔案／函式、測試證據、已確認或未確認」。有些行為可讀程式確定，但沒經過瀏覽器操作；有些測試缺口只是建議，不是現存 Bug。把這些狀態分開，讀者才知道下一步該補測試、實際重現還是直接修正。"
         },
         {
           "type": "heading",
@@ -321,7 +302,7 @@
         {
           "title": "Subagents: orchestration, permissions and custom roles",
           "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -340,6 +321,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "子代理适合把能独立完成的工作分开处理，再由主要任务整合结果。",
+            "分工会增加模型与工具用量；若工作互相依赖、都要改同一段程式，平行处理反而可能产生冲突。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -611,7 +599,7 @@
         {
           "title": "Subagents: orchestration, permissions and custom roles",
           "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -630,6 +618,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Subagents suit independent work that can be reviewed and combined by the main task.",
+            "They consume additional model and tool usage.",
+            "Parallel tasks with mutual dependencies or overlapping edits can create more conflict than speed."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -901,7 +897,7 @@
         {
           "title": "Subagents: orchestration, permissions and custom roles",
           "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -920,6 +916,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "サブエージェントは独立した調査を分担し、主担当が統合する仕組みです。",
+            "利用量が増え、依存や編集の重複があると競合します。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1053,7 +1056,7 @@
         },
         {
           "type": "paragraph",
-          "text": "デスクトップは親の活動から個別作業を開き、ファイルと状態を見ます。CLI の /agent は対話内の切替で codex agent という端末命令ではありません。IDE の背景面板があれば開きます。親へ誘導・停止を依頼でき、表示がなければ版と対応を確認します。"
+          "text": "デスクトップでは、入力欄の上に表示される実行中のサブエージェントを展開し、状態の確認、停止、個別スレッドの表示を行います。CLI の /agent は対話内の切替で、codex agent という端末コマンドではありません。IDE でも利用可能なサブエージェント表示を確認します。表示がなければクライアントのバージョンと対応状況を確認します。"
         },
         {
           "type": "code",
@@ -1191,7 +1194,7 @@
         {
           "title": "Subagents: orchestration, permissions and custom roles",
           "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1210,6 +1213,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "하위 에이전트는 독립 조사를 나누고 주 작업이 통합하는 방식입니다.",
+            "사용량이 늘며 의존성과 편집 중복이 있으면 충돌합니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1481,7 +1491,7 @@
         {
           "title": "Subagents: orchestration, permissions and custom roles",
           "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

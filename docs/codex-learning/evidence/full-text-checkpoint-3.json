@@ -1,0 +1,530 @@
+{
+  "checked_on": "2026-09-20",
+  "reviewer": "gpt-6-finalization",
+  "checkpoint": 3,
+  "planned_ids": [
+    42,
+    43,
+    16,
+    44,
+    11,
+    45,
+    22,
+    17,
+    8,
+    18
+  ],
+  "scope": "Full-text and metadata review of checkpoint 3 in five locales. Lesson 11 reuses its unchanged representative review; nine lessons were read against their authored files, compiled Simplified Chinese documents, sources, examples, failure paths and restoration steps.",
+  "hash_convention": "Author sources use canonical LF UTF-8. The Simplified Chinese hash covers the canonical compiled locale document.",
+  "lessons": [
+    {
+      "id": 42,
+      "slug": "codex-agents-md-scopes",
+      "source_hashes": {
+        "zh-TW": "73c9659a616618bb501f2000a141b034ef37ff21d39666ee28c39c6f96daad1f",
+        "en": "3c4c152b9b4b0eea400810bb492f3cf59518aca31011260ad2dd363defb31c0d",
+        "ja": "c8fb338336efaf311065710ebbdd7e9a019080aa78ed58e573be895ccf54c45d",
+        "ko": "b38b6886c8140ecef7cd6ce2c7486a698051f3819043d3279930e8f87c1ca493",
+        "zh-CN": "815b3f31da6917445c8f338c849a74f79fffc3619194e3fb69edbd3288f6eaa0"
+      },
+      "pack_hash": "8dc69b826884bffc2e13285aea41164ae019331d69a8533c26bf2bd6311d5d7d",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified discovery order, nested and override cases, fresh-session comparisons, observation matrix, restoration and failure classification across five locales."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 43,
+      "slug": "codex-rules-and-context-files",
+      "source_hashes": {
+        "zh-TW": "58d5c41c510308763f1dcef8cc821786705b461ebf84c19f105f2a8e2f2d5e3d",
+        "en": "cfc2c9f060ab42115fb45fd8a40c3c711a4e03edcd64508f41e8509cc682112d",
+        "ja": "a21891ae1824536d93d5b21280609aa0c9998b7d43c1d67f0b798adaba89f958",
+        "ko": "67ac84385488883c22f76cc9fe80d90ea5d3fe83b4b4e2c96069a9b42b48dbe4",
+        "zh-CN": "b04b8769873b01fd01f08b509016ccbff96e9aed7dc896c16053bb269b1dd365"
+      },
+      "pack_hash": "52330b001138b2fcac53afdb8ee1f38aaa53bffba02f143e705b52091828d129",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified the division between persistent rules, README entry points, design constraints and handoff records, including stale-context detection and restoration."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 16,
+      "slug": "codex-config-toml",
+      "source_hashes": {
+        "zh-TW": "584651e1df859174bc8f289751879822227b78d5ec5366f863631e62abc77089",
+        "en": "1ed0ab3491195ce05765bedccbab8bfe8d082f91efe446a37273002ce1fad9dd",
+        "ja": "997e68fa28185112a9ad2455789bdd555f70f0306bcd364bdd808ec4e186d0b5",
+        "ko": "7f12141c126410dad22017fdc0f9a03b5de262eb4d26e034d575b286b6ff3081",
+        "zh-CN": "c26d98ae47ee6fce7c84d3ed750fe13210c1c92d5eee27783a713ff11b589043"
+      },
+      "pack_hash": "2c276406ac83949941d644ca476d9d67b81f58a9804d901a94503b0d48222415",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified user versus project configuration, backup and scoped web_search exercise, restart evidence, precedence diagnosis and exact restoration."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 44,
+      "slug": "codex-config-troubleshooting",
+      "source_hashes": {
+        "zh-TW": "4840d631f89eb753892c54e4742cfa40946303db5f640097c0d47d32b737201d",
+        "en": "a10bfa14e0ff6c3e6f13debc5a5ca377b3a8e3f3d1c1d7b6a4e9291d6ef2f85a",
+        "ja": "ead51a0a93fef184a8206c5cbc1435ba1823b9e24851c9fd3b82e02bfb84e914",
+        "ko": "d416270549e08541b9fd5664b5947364eac36ebb78daa10848b9502da62c7935",
+        "zh-CN": "9790a9a97e8336f0362d0246ab43d9a921d6de550a2949f58a211dfe16cef641"
+      },
+      "pack_hash": "bcdd9614d95307eeb3551bb4bc96d1f3b555903dec40648e16fb9b5330850aac",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified four isolated TOML failures, exit-code handling, the checker limits, runtime diagnostics and non-destructive recovery."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 11,
+      "slug": "codex-commands",
+      "source_hashes": {
+        "zh-TW": "823bcd089204b19cee4d4d0ed7d565de07c055f28be0f288de5452fe7735004c",
+        "en": "3cea626dbe555388527527b1db089cba35ef24868d19e842aa138ae11fa1b4cc",
+        "ja": "b1325b4fa47ee2afde42b239fa13f5a2026175c47a68cad0f22b1105e4c7bc96",
+        "ko": "3c8b97c6d4bbe9f4ae225f8f51e4050ceba497b2f0cf89939b191b649e7a9568",
+        "zh-CN": "5aa4680e96e2aa1e75ceecfbf94c71fd073fd49fc51b7fe68b0d9e3a7f3e8ec1"
+      },
+      "pack_hash": "7fbc23943393709e67c46c715f7c6b61fb8b2c0c84b854202fc8f59b3d026dc5",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Reused the unchanged representative full-text review for terminal commands, interactive slash commands, shortcuts, prompts and configuration-file distinctions."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 45,
+      "slug": "codex-sessions-resume",
+      "source_hashes": {
+        "zh-TW": "071edaa7c63af5f117c22f0bb875498a8ecd9a84fcfa86ac4cc193ed2a879aa0",
+        "en": "d3b2dda72ea63ed9a9c2c0ff1c617463a598e982bb45d3c793ac62bac7d9de4f",
+        "ja": "88369193c373f8a532a5752672f2a30f0703eb8be754fee1001a152e3020152f",
+        "ko": "ab8b444daa9f891444ece2ba69ef7c27efa9a59f41c2d26e163527cc50b5fbf7",
+        "zh-CN": "42a4350d41f3a05a4e4fb087657770908f134dc771d0c472aff4a5496d57dbc3"
+      },
+      "pack_hash": "45e528e44358719fba451c57a8505252790e77197954ebc26cd9f1a05a6faebe",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified resume, fork and fresh-session boundaries, shared-file limitations, unique markers and cleanup without treating task history as file isolation."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 22,
+      "slug": "codex-context-handoff",
+      "source_hashes": {
+        "zh-TW": "50671d8af6636ca6d6e4e4e0ec9d84dac8cce8d3360f4237db8d3656a70457b6",
+        "en": "4daf99a47d64814aa15a6ae5c352147d5b4acb31e3c1b708ec54169e6fe3a977",
+        "ja": "9af4902328d6ef0f9ae5d6df624554de23b8641c14136e539cb3b57849ca7015",
+        "ko": "c621b273f53e8d2e65eab12944dde6b5e26b0c92516670673aad036fde994f74",
+        "zh-CN": "9772712ef277bfa6daf1cb9454af06b31cb75795966c9e5517518d4356ce015e"
+      },
+      "pack_hash": "ee90b2691f88b6cd526b174a95a049c3b30bd01c2ed8ddcf3ec37cff3023ef25",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified compact and handoff behavior, stale-record detection, rereading after compaction and evidence that separates earlier history from the current run."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 17,
+      "slug": "codex-model-selection",
+      "source_hashes": {
+        "zh-TW": "a06ffb7c99dff69b7870b9be79a775dc07bb398212320f50ede7f53da8e862d8",
+        "en": "da5c529563da583b45c09c048e9ccf36fad274338c8d6a5bda3cbe992a1fc920",
+        "ja": "0012539f7abba53643752882af5d135e752a95123241a30c1171b1e035d94cac",
+        "ko": "aad86e8d9f6d9074036b245ad650874388837cb9238e818c6f9564fcb0818f75",
+        "zh-CN": "fe082291ff23a1f19e9d0ca53030538d2f9b9193d301921fe63e482fbafe32df"
+      },
+      "pack_hash": "262870af5a9d8081e90c3d822f7a4461fd8dd71214865355ec7608760f8c2d19",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified account-visible model and effort choices, two-run controlled comparison, invalid-comparison cases, usage limits and restoration."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 8,
+      "slug": "codex-plan-mode",
+      "source_hashes": {
+        "zh-TW": "60e5efe31cd3a7e334908f9eed234ec45b61ca198e357e3e6ea3e86544b165f6",
+        "en": "52b379b2bb7bbbee9a6223fed6745436353cabf1a36b2674a7ffb984231ce27d",
+        "ja": "e10fd7900b999f6404e4696f4041d0410af9a2b7bc3a54c5155175e66b021460",
+        "ko": "72edc193111df3c763cf133c3c37efcf0d9c8984e20cb239033c593e0a10a979",
+        "zh-CN": "d881bd921e412a5c118dcba5fab5d2fae361fd4da80a5d36ca40d217b2d3da27"
+      },
+      "pack_hash": "d0178a5c0685cddd184f866cf701449904ff6c65e238a9a009da005a8d808855",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified repeatable broken baseline, Plan-only investigation, explicit plan revision, rejection of a plausible wrong plan, implementation handoff and regression checks."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    },
+    {
+      "id": 18,
+      "slug": "codex-permissions",
+      "source_hashes": {
+        "zh-TW": "8a424fbdc903488a0d50ce48f802815cca35975debc52e2e635f4417fbb5c3fa",
+        "en": "384a83a059f9eac9ebc78aa03d7bf336ef4eff51b5fd7496c7c0e7d0f2b1d82a",
+        "ja": "ea23e1aba1287f71df7f70324fc541b2b1139ac4da9880f0c112c57ad4501752",
+        "ko": "53f1490b8a5ece65e281772dff69b1aaaf0ede63fbf85bda56049c5cd532c4f0",
+        "zh-CN": "768e8051f424bc28b7137a913b068dcfbc243b3900bad465527917c6f82aa045"
+      },
+      "pack_hash": "6663edcb3e71ec72791b611e0b4a95f592b4041734431b66b1e77b53adabe9ca",
+      "editorial_result": "passed",
+      "locales": {
+        "zh-TW": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "zh-CN": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "en": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ja": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        },
+        "ko": {
+          "full_text_read": true,
+          "metadata_and_captions_read": true,
+          "editorial_result": "passed"
+        }
+      },
+      "findings": [
+        "Verified filesystem scope, approval policy, sandbox enforcement, network and credential boundaries, observable refusal/write states and scoped cleanup."
+      ],
+      "five_locale_code_and_metadata_contracts": "passed",
+      "product_or_reference_evidence": {
+        "result": "reference-reviewed-final-page-pending",
+        "scope": "Existing isolated reference evidence applies where listed; this editorial checkpoint does not claim a live Codex model or final public page."
+      },
+      "final_page_acceptance": "pending",
+      "accepted": false
+    }
+  ],
+  "code_blocks_checked_across_five_locales": 74,
+  "editorial_result": "passed",
+  "final_page_acceptance": "pending",
+  "accepted": false,
+  "limitations": [
+    "No paid model task was required for editorial review.",
+    "Final integrated browser and public-page acceptance are recorded separately.",
+    "macOS, Linux and physical mobile execution remain documentation-checked where not directly tested."
+  ]
+}

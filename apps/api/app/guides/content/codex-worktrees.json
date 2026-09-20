@@ -25,6 +25,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Worktree 讓同一個 Git 程式庫有不同的工作目錄，各自承接不同分支。",
+            "它適合讓兩項工作分開改檔，但資料庫、連接埠與外部服務仍可能共用，不能把檔案隔離當成所有資源隔離。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -184,23 +191,8 @@
           "text": "在 Git 專案的新任務輸入框下選 Worktree，再選起始分支，送出需求後由 Codex 建立工作目錄。選目前分支連同未提交修改時，先核對那些修改確實應帶入，不要把無關私有資料也當作任務背景。桌面建立的管理型 worktree 預設可能是 detached HEAD；要長期保留成果，可在任務標頭用 Create branch here 建立分支，再按正常 Git 流程驗收提交。"
         },
         {
-          "type": "rich_paragraph",
-          "inlines": [
-            {
-              "type": "text",
-              "text": "需要把同一任務與程式帶到 Local 時用 Hand off，完成後重新核對目錄、分支及檔案；Handoff 是移動工作，不等於已合併 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同欄位；若 Linux 預覽沒有所需控制，使用本篇 Git 命令方式並"
-            },
-            {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
-            },
-            {
-              "type": "text",
-              "text": "差異。手機透過 Remote 控制連線電腦上的任務，worktree 留在主機，不是在 iPhone 或 Android 本機執行 Git。"
-            }
-          ]
+          "type": "paragraph",
+          "text": "需要把同一任務與程式帶到 Local 時用 Hand off，完成後重新核對目錄、分支及檔案；Handoff 是移動工作，不等於已合併 main 或已部署。Windows、macOS、Linux 依可用的桌面版本操作相同欄位；若 Linux 預覽沒有所需控制，使用本篇 Git 命令方式並標記差異。手機透過 Remote 控制連線電腦上的任務，worktree 留在主機，不是在 iPhone 或 Android 本機執行 Git。"
         },
         {
           "type": "table",
@@ -320,12 +312,12 @@
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees and Handoff",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -344,6 +336,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Worktree 让同一个 Git 程式库有不同的工作目录，各自承接不同分支。",
+            "它适合让两项工作分开改档，但资料库、连接埠与外部服务仍可能共用，不能把档案隔离当成所有资源隔离。"
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -625,12 +624,12 @@
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees and Handoff",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -649,6 +648,14 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "A Git worktree gives one repository multiple working directories on different branches.",
+            "It isolates file edits, but databases, ports and external services may still be shared.",
+            "File isolation is not full resource isolation."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -930,12 +937,12 @@
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees and Handoff",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -955,6 +962,13 @@
       },
       "blocks": [
         {
+          "type": "summary",
+          "items": [
+            "Worktree は一つの Git リポジトリに別ブランチの作業場所を作ります。",
+            "ファイルは分かれても DB、ポート、外部サービスは共有される場合があります。"
+          ]
+        },
+        {
           "type": "rich_paragraph",
           "inlines": [
             {
@@ -973,7 +987,7 @@
         {
           "type": "callout",
           "tone": "info",
-          "text": "第二の作業ディレクトリを作り、編集の分離を確認、成果を保存して実習ディレクトリを片付けます。読む時間15分、実習20分。Git とエディターを用意し分岐と差分を読みます。遠隔なしの新規小リポジトリを使い、push や公開はしません。"
+          "text": "第二の作業ディレクトリを作り、編集の分離を確認、成果を保存して実習ディレクトリを片付けます。読む時間15分、実習20分。Git とエディターを用意しブランチと差分を読みます。リモートなしの新規小リポジトリを使い、push や公開はしません。"
         },
         {
           "type": "rich_paragraph",
@@ -984,7 +998,7 @@
             },
             {
               "type": "article",
-              "text": "分岐と差分",
+              "text": "ブランチと差分",
               "kind": "life",
               "slug": "codex-git-basics"
             }
@@ -992,16 +1006,16 @@
         },
         {
           "type": "paragraph",
-          "text": "Worktree は同一 Git の別 checkout で、ファイルと索引は別、コミットと分岐情報は共通です。修正と調査の併行に適しても安全沙盒ではありません。同じ DB、雲文書、port は競合し得ます。フォルダー名だけでなく編集担当、外部データ、稼働サービスも分けます。"
+          "text": "Worktree は同一 Git の別 checkout で、ファイルとインデックスは別、コミットとブランチ情報は共通です。修正と調査の並行作業に適していても、安全なサンドボックスではありません。同じ DB、クラウド文書、ポートは競合し得ます。フォルダー名だけでなく編集担当、外部データ、稼働サービスも分けます。"
         },
         {
           "type": "heading",
           "level": 2,
-          "text": "手順1：私的データのない実習庫を作る"
+          "text": "手順1：個人データのない実習リポジトリを作る"
         },
         {
           "type": "paragraph",
-          "text": "自分の実習領域に空の worktree-lab を Windows Explorer、Finder、Linux のファイル管理で作り、そこで端末を開きます。現在地と正式ファイルがないことを確認します。下の命令は新規実習庫のみで実行し、作者設定は local のまま --global を加えません。"
+          "text": "自分の実習領域に空の worktree-lab を Windows Explorer、Finder、Linux のファイルマネージャーで作り、そこで端末を開きます。現在地と本番ファイルがないことを確認します。下のコマンドは新規実習リポジトリだけで実行し、作成者設定は local のまま --global を加えません。"
         },
         {
           "type": "code",
@@ -1027,7 +1041,7 @@
         },
         {
           "type": "paragraph",
-          "text": "main と未コミットなしを確認します。失敗はこの庫の作者設定を直し、組織の署名方針を教材のため変更しません。初回コミットがなければ HEAD 基準もないため先に完了します。同名があれば未使用名に揃えて置換し、既存を強制上書きしません。"
+          "text": "main と未コミット変更なしを確認します。失敗時はこのリポジトリの作成者設定を直し、組織の署名方針を教材のため変更しません。初回コミットがなければ HEAD の基準もないため先に完了します。同名があれば未使用名に揃えて置換し、既存を強制上書きしません。"
         },
         {
           "type": "heading",
@@ -1045,7 +1059,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "新分岐 codex/worktree-practice で同階層に worktree-copy を作ります。対象不存在を先に確認し、list の二経路が main と新分岐であること、両文書が LOCAL-A であることを見ます。Windows でも実際に worktree-lab 内なら相対パスを使えます。"
+              "text": "新しいブランチ codex/worktree-practice で同じ階層に worktree-copy を作ります。対象が存在しないことを先に確認し、list の二つのパスが main と新ブランチであること、両ファイルが LOCAL-A であることを見ます。Windows でも実際に worktree-lab 内なら相対パスを使えます。"
             },
             {
               "type": "article",
@@ -1076,7 +1090,7 @@
         {
           "type": "heading",
           "level": 2,
-          "text": "手順3：分岐の使用制限と成果保存"
+          "text": "手順3：ブランチの使用制限と成果保存"
         },
         {
           "type": "code",
@@ -1086,7 +1100,7 @@
         },
         {
           "type": "paragraph",
-          "text": "Git は同じ分岐を二箇所で使うことを拒み、main 使用中を報告します。両方とも元分岐のままなのが保護動作で、強制や制限無視を加えません。確認済み marker をコピー分岐へコミットし、元から比較します。提出はローカル内にあり GitHub へ自動送信されません。"
+          "text": "Git は同じブランチを二箇所で使うことを拒み、main が使用中と報告します。両方とも元のブランチのままなのが保護動作で、強制や制限回避を加えません。確認済み marker をコピー側ブランチへコミットし、元から比較します。成果はローカル内にあり GitHub へ自動送信されません。"
         },
         {
           "type": "paragraph",
@@ -1100,7 +1114,7 @@
         },
         {
           "type": "code",
-          "label": "元端末：コピー成果を保存して分岐比較",
+          "label": "元の端末：コピー成果を保存してブランチを比較",
           "language": "sh",
           "code": "git -C ../worktree-copy add -- notes.md\ngit -C ../worktree-copy commit -m \"Change isolated practice marker\"\ngit -C ../worktree-copy status --short\ngit diff main...codex/worktree-practice -- notes.md\n"
         },
@@ -1111,11 +1125,11 @@
         },
         {
           "type": "paragraph",
-          "text": "Git の新規タスク下で Worktree と開始分岐を選び要求を送ります。未コミット変更を含める場合は対象作業に属するか確認し、無関係の私的資料を混ぜません。管理型は当初 detached HEAD の場合があり、長期保存には標頭の Create branch here で分岐を作って検証・コミットします。"
+          "text": "Git の新規タスクで Worktree と開始ブランチを選び、要求を送ります。未コミット変更を含める場合は対象作業に属するか確認し、無関係の個人資料を混ぜません。管理型は当初 detached HEAD の場合があり、長期保存には見出しの Create branch here でブランチを作って検証・コミットします。"
         },
         {
           "type": "paragraph",
-          "text": "同じタスクとコードを Local へ移すには Hand off を使い、移動後に場所、分岐、ファイルを確認します。移動は main 統合や公開ではありません。各 OS の利用可能な版で操作し、Linux に欄がなければ Git 手順との差を記録します。携帯 Remote でも worktree と Git はホストに残ります。"
+          "text": "同じタスクとコードを Local へ移すには Hand off を使い、移動後に場所、ブランチ、ファイルを確認します。移動は main への統合や公開ではありません。各 OS の利用可能なバージョンで操作し、Linux に項目がなければ Git 手順との差を記録します。モバイルの Remote でも worktree と Git はホストに残ります。"
         },
         {
           "type": "table",
@@ -1126,24 +1140,24 @@
           ],
           "rows": [
             [
-              "追跡ファイル・索引",
+              "追跡ファイル・インデックス",
               "あり",
-              "編集中の実経路"
+              "編集中の実際のパス"
             ],
             [
-              "コミット・分岐",
+              "コミット・ブランチ",
               "共通",
-              "各 checkout の分岐"
+              "各 checkout のブランチ"
             ],
             [
-              "依存・ビルドキャッシュ",
-              "通常個別準備",
+              "依存関係・ビルドキャッシュ",
+              "通常は個別準備",
               "プロジェクト準備手順"
             ],
             [
-              "ローカル port",
+              "ローカルポート",
               "保証なし",
-              "各プレビューの port"
+              "各プレビューのポート"
             ],
             [
               "DB・外部サービス",
@@ -1178,7 +1192,7 @@
         },
         {
           "type": "paragraph",
-          "text": "コピーを使う窓・端末・プレビューを閉じ、元に戻って list の全経路とコピーの未変更を確認します。成果が codex/worktree-practice にコミット済みになってから除去し、未コミットがあれば保存、拒否には --force を加えません。元庫とコミット分岐を残し、今回のコピーだけを除きます。"
+          "text": "コピーを使うウィンドウ、端末、プレビューを閉じ、元に戻って list の全パスとコピーが変更なしであることを確認します。成果が codex/worktree-practice にコミット済みになってから削除し、未コミットがあれば保存し、拒否されても --force を加えません。元のリポジトリとコミット済みブランチを残し、今回のコピーだけを除きます。"
         },
         {
           "type": "code",
@@ -1191,7 +1205,7 @@
           "inlines": [
             {
               "type": "text",
-              "text": "list は元のみ、main は LOCAL-A、分岐の git show は COPY-B のままを確認します。分離状態と分岐使用拒否の記録を合わせ、作成・分離・保存・除去を検証します。Git 試験とデスクトップ Handoff は別記し、未操作 OS は公式確認とします。次は"
+              "text": "list は元だけ、main は LOCAL-A、ブランチの git show は COPY-B のままであることを確認します。分離状態とブランチ使用拒否の記録を合わせ、作成・分離・保存・削除を検証します。Git テストとデスクトップ Handoff は別記し、未操作 OS は公式確認とします。次は"
             },
             {
               "type": "article",
@@ -1235,12 +1249,12 @@
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees and Handoff",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     },
@@ -1259,6 +1273,13 @@
         }
       },
       "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Worktree는 하나의 Git 저장소에 다른 브랜치의 작업 폴더를 만듭니다.",
+            "파일이 분리되어도 DB, 포트와 외부 서비스는 공유될 수 있습니다."
+          ]
+        },
         {
           "type": "rich_paragraph",
           "inlines": [
@@ -1540,12 +1561,12 @@
         {
           "title": "Git worktree",
           "url": "https://git-scm.com/docs/git-worktree",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         },
         {
           "title": "Codex worktrees and Handoff",
           "url": "https://learn.chatgpt.com/docs/environments/git-worktrees",
-          "checked_on": "2026-09-14"
+          "checked_on": "2026-09-20"
         }
       ]
     }

@@ -80,10 +80,10 @@
     {
       "type": "p",
       "text": [
-        "先用前篇的唯讀問題取得一次正常結果，保存原設定後，在既有練習區段加上 enabled = false。桌面按 MCP 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。",
-        "Obtain a normal read with the previous lesson's question, save the configuration, then add enabled = false to the existing practice section. Use Restart in desktop MCP settings, restart the IDE extension, or open a fresh CLI session. Merely asking again in the old conversation can reuse earlier content. This exercise deliberately disables your entry; it does not indicate a remote service outage.",
-        "前記事の読取りで正常結果を得て設定を保存後、既存実習区画に enabled = false を加えます。デスクトップの Restart、IDE 拡張再起動、CLI 新規セッションを使います。旧会話への再質問は過去情報を再利用し得ます。意図したローカル無効化であり公式側の障害ではありません。",
-        "이전 글의 읽기 요청으로 정상 결과를 얻고 설정을 보존한 뒤 기존 연습 구간에 enabled = false를 추가합니다. 데스크톱 Restart, IDE 확장 재시작, CLI 새 세션을 사용하세요. 이전 대화에서 재질문하면 과거 내용을 쓸 수 있습니다. 의도적 로컬 비활성화이며 공식 서비스 장애가 아닙니다."
+        "先用前篇的唯讀問題取得一次正常結果並保存原設定。既有練習區段已有 enabled 時把原值改為 false；沒有才新增一次 enabled = false，不能重複鍵或表格。桌面按 MCP 設定中的 Restart，IDE 重新啟動擴充套件，CLI 結束後開新工作階段。不要只在舊對話重新問一句，因為它仍可能引用已讀過的內容。這個練習刻意讓伺服器不可用，不代表遠端官方服務真的壞了。",
+        "Obtain a normal read with the previous lesson's question and save the configuration. Change an existing enabled value to false; add enabled = false once only when the key is absent, never duplicating the key or table. Use Restart in desktop MCP settings, restart the IDE extension, or open a fresh CLI session. Merely asking again in the old conversation can reuse earlier content. This exercise deliberately disables your entry; it does not indicate a remote service outage.",
+        "前記事の読取りで正常結果を得て設定を保存します。enabled が既にあれば false に変更し、なければ enabled = false を一度だけ追加して、キーや表を重複させません。デスクトップの Restart、IDE 拡張再起動、CLI 新規セッションを使います。旧会話への再質問は過去情報を再利用し得ます。意図したローカル無効化であり公式側の障害ではありません。",
+        "이전 글의 읽기 요청으로 정상 결과를 얻고 설정을 보존합니다. enabled가 이미 있으면 false로 수정하고, 없을 때만 enabled = false를 한 번 추가해 키나 표를 중복하지 마세요. 데스크톱 Restart, IDE 확장 재시작, CLI 새 세션을 사용합니다. 이전 대화에서 재질문하면 과거 내용을 쓸 수 있습니다. 의도적 로컬 비활성화이며 공식 서비스 장애가 아닙니다."
       ]
     },
     {
@@ -102,19 +102,19 @@
       "language": "text",
       "code": "/mcp\n",
       "label": [
-        "新 Codex CLI 互動工作階段：檢查可用工具",
-        "Fresh interactive Codex CLI session: inspect tools",
-        "新しい Codex CLI 対話セッション：ツール確認",
-        "새 Codex CLI 대화 세션: 도구 확인"
+        "桌面版、CLI 或 IDE 的新任務／工作階段：檢查可用工具",
+        "Fresh desktop, CLI or IDE task/session: inspect tools",
+        "デスクトップ、CLI、IDE の新規タスクまたはセッション：ツール確認",
+        "데스크톱·CLI·IDE의 새 작업 또는 세션: 도구 확인"
       ]
     },
     {
       "type": "p",
       "text": [
-        "/mcp 這段只在 CLI 互動畫面使用。桌面版和 IDE 以 MCP servers 設定確認停用，重新啟動後在新任務檢查工具活動。記錄「客戶端未提供工具」即可，不必為了重現命令而改用其他入口；跨入口測試要另記主機與設定位置。",
-        "The /mcp block is for interactive CLI. In desktop or IDE, confirm disabling in MCP servers settings, restart and inspect tool activity in a new task. Record that the client did not expose the tool; switching surfaces is unnecessary. If you compare surfaces, record each host and configuration location.",
-        "/mcp は CLI 対話画面用です。デスクトップと IDE は MCP servers 設定で無効化を確認し、再起動後の新規タスクで活動を見ます。「クライアントがツールを提供しなかった」と記録すればよく、命令再現のため入口を変える必要はありません。比較する場合は主機と設定場所を別記します。",
-        "/mcp는 CLI 대화 화면용입니다. 데스크톱과 IDE는 MCP servers 설정에서 비활성화를 확인하고 재시작 후 새 작업의 도구 활동을 봅니다. 클라이언트가 도구를 제공하지 않았다고 기록하면 되며 명령 재현을 위해 화면을 바꿀 필요는 없습니다. 화면을 비교한다면 각각의 호스트와 설정 위치를 적으세요."
+        "/mcp 可在桌面版、CLI、IDE 的 Codex 輸入框使用，不是終端機命令。重新啟動後，在新任務／工作階段同時用 /mcp、MCP servers 設定與實際工具活動確認停用。記錄「客戶端未提供工具」即可；跨入口測試要另記主機與設定位置。",
+        "Use /mcp in the Codex composer on desktop, CLI or IDE; it is not a shell command. After restarting, confirm disabling in a fresh task/session with /mcp, MCP servers settings and actual tool activity. Record that the client did not expose the tool. If you compare surfaces, record each host and configuration location.",
+        "/mcp はデスクトップ、CLI、IDE の Codex 入力欄で使い、端末コマンドではありません。再起動後、新規タスクまたはセッションで /mcp、MCP servers 設定、実際のツール活動を確認します。「クライアントがツールを提供しなかった」と記録し、入口を比較する場合はホストと設定場所を別記します。",
+        "/mcp는 데스크톱·CLI·IDE의 Codex 입력창에서 사용하며 셸 명령이 아닙니다. 재시작 후 새 작업 또는 세션에서 /mcp, MCP servers 설정, 실제 도구 활동으로 비활성화를 확인하세요. 클라이언트가 도구를 제공하지 않았다고 기록하고, 화면을 비교한다면 각각의 호스트와 설정 위치를 적으세요."
       ]
     },
     {
