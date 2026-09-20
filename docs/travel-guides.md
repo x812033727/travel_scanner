@@ -90,8 +90,9 @@ the destination axis cannot gather one dish across cities, so `0082_travel_food_
 seeds a sub-topic per dish under `food`, plus `cafe` (`taxonomy.TRAVEL_SEED_SUBTOPICS`). A
 dish sub-topic is spelled as `app/foods/catalog.py` spells a dish (`kr-` and the Revised
 Romanization), so a seeded dish and its hub share a slug and a test holds their Korean and
-Traditional Chinese names identical; a hub that several dishes share has a slug no dish
-will take (`kr-bbq`, `kr-beef-bone-soup`). **A special carries its sub-topic alone, not
+Traditional Chinese names identical; a hub that two dishes share has a slug no dish will
+take (`kr-beef-bone-soup`, for seolleongtang and gomtang), and Busan's milmyeon files under
+`kr-naengmyeon`, the same family in another city. **A special carries its sub-topic alone, not
 `food` as well.** `?topic=food` and the `food` hub list it either way, but the reader's
 breadcrumb is built from an article's first topic in display order, which would be `food`
 and would leave the dish out; alone, the trail reads 攻略 › 美食 › 豬肉湯飯. Neither `food` nor

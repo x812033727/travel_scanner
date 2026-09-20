@@ -68,24 +68,31 @@ SEED_TOPICS: tuple[tuple[str, Labels], ...] = (
 # share one slug (``kr-naengmyeon``), and the zh-TW and ko labels here are that dish's names.
 # Two kinds of hub have no twin. A dish an administrator created before the convention keeps
 # its own production slug (``dakhanmari``, ``kalguksu``, ``jokbal``, ``ganjang-gejang``,
-# ``seolleongtang``), so its hub is spelled by the convention instead. And a hub several
-# dishes share has a slug no dish will ever take: ``kr-bbq`` gathers samgyeopsal, bulgogi,
-# galbi and Jeju black pork, ``kr-beef-bone-soup`` gathers seolleongtang and gomtang, and
-# Busan's milmyeon files under ``kr-naengmyeon``. ``cafe`` is the one that is not a dish.
+# ``seolleongtang``), so its hub is spelled by the convention instead. And a hub two dishes
+# share has a slug no dish will ever take: ``kr-beef-bone-soup`` gathers seolleongtang and
+# gomtang, which one special covers together. Busan's milmyeon files under ``kr-naengmyeon``
+# for the opposite reason: it is the same family in another city, and one hub with Seoul and
+# Busan in it is the dish-across-cities shape the sub-topics exist for. ``cafe`` is the one
+# that is not a dish.
+#
+# The labels were checked language by language against the Korea Tourism Organization's own
+# sites (テジクッパ rather than デジクッパ, 刀切面 and 猪蹄 for zh-CN). ``cafe`` reads 咖啡店 in
+# zh-TW because that is the site owner's word for it; KTO's Traditional Chinese pages prefer
+# 咖啡廳, and either is natural in Taiwan.
 TRAVEL_SEED_SUBTOPICS: tuple[tuple[str, str, Labels], ...] = (
-    ("cafe", "food", ("Cafes", "カフェ", "카페", "咖啡店", "咖啡店")),
+    ("cafe", "food", ("Cafes", "カフェ", "카페", "咖啡店", "咖啡厅")),
     (
         "kr-dwaeji-gukbap",
         "food",
-        ("Dwaeji-gukbap", "デジクッパ", "돼지국밥", "豬肉湯飯", "猪肉汤饭"),
+        ("Dwaeji-gukbap", "テジクッパ", "돼지국밥", "豬肉湯飯", "猪肉汤饭"),
     ),
-    ("kr-naengmyeon", "food", ("Naengmyeon", "韓国冷麺", "냉면", "韓式冷麵", "韩式冷面")),
+    ("kr-naengmyeon", "food", ("Naengmyeon", "韓国冷麺", "냉면", "韓式冷麵", "韩国冷面")),
     ("kr-samgyetang", "food", ("Samgyetang", "サムゲタン", "삼계탕", "蔘雞湯", "参鸡汤")),
     (
         "kr-beef-bone-soup",
         "food",
         (
-            "Seolleongtang & gomtang",
+            "Seolleongtang & Gomtang",
             "ソルロンタン・コムタン",
             "설렁탕·곰탕",
             "雪濃湯・牛骨湯",
@@ -93,10 +100,18 @@ TRAVEL_SEED_SUBTOPICS: tuple[tuple[str, str, Labels], ...] = (
         ),
     ),
     ("kr-dak-hanmari", "food", ("Dak-hanmari", "タッカンマリ", "닭한마리", "一隻雞", "一只鸡")),
-    ("kr-kalguksu", "food", ("Kalguksu", "カルグクス", "칼국수", "刀削手擀麵", "刀削手擀面")),
-    ("kr-jokbal", "food", ("Jokbal", "チョッパル", "족발", "韓式豬腳", "韩式猪脚")),
+    ("kr-kalguksu", "food", ("Kalguksu", "カルグクス", "칼국수", "刀切麵", "刀切面")),
+    ("kr-jokbal", "food", ("Jokbal", "チョッパル", "족발", "韓式豬腳", "韩式猪蹄")),
     ("kr-tteokbokki", "food", ("Tteokbokki", "トッポッキ", "떡볶이", "辣炒年糕", "辣炒年糕")),
-    ("kr-bbq", "food", ("Korean BBQ", "韓国焼肉", "고기구이", "韓式烤肉", "韩式烤肉")),
+    ("kr-heukdwaeji", "food", ("Jeju black pork", "済州黒豚", "흑돼지", "黑豬肉", "黑猪肉")),
+    ("kr-gogi-guksu", "food", ("Gogi-guksu", "コギグクス", "고기국수", "豬肉湯麵", "猪肉汤面")),
+    ("kr-jjim-galbi", "food", ("Jjim-galbi", "チムカルビ", "찜갈비", "辣燉排骨", "辣炖排骨")),
+    ("kr-makchang", "food", ("Makchang", "マクチャン", "막창", "烤腸", "烤肠")),
+    (
+        "kr-ganjang-gejang",
+        "food",
+        ("Ganjang-gejang", "カンジャンケジャン", "간장게장", "醬蟹", "酱蟹"),
+    ),
     ("kr-bibimbap", "food", ("Bibimbap", "ビビンバ", "비빔밥", "韓式拌飯", "韩式拌饭")),
 )
 
@@ -105,42 +120,67 @@ TRAVEL_SEED_SUBTOPICS: tuple[tuple[str, str, Labels], ...] = (
 TRAVEL_TOPIC_DESCRIPTIONS: dict[str, dict[str, str]] = {
     "cafe": {
         "zh-TW": (
-            "一個街區寫一篇的咖啡店特輯：怎麼走、每家店是哪一種店，逐店附入選依據的官方來源與查核日期。"
+            "一個街區寫一篇的咖啡店特輯：這一區怎麼逛、每家店是哪一種店，"
+            "逐店附入選依據的官方來源與查核日期。"
         )
     },
     "kr-dwaeji-gukbap": {
         "zh-TW": (
-            "釜山的日常湯飯，首爾也吃得到：依城市分篇，寫菜單怎麼看、桌上怎麼調味，"
+            "釜山的日常湯飯，首爾也吃得到：依城市分篇，寫菜單怎麼看、桌上的佐料怎麼加，"
             "以及有官方來源點名的店家。"
         )
     },
     "kr-naengmyeon": {
         "zh-TW": (
-            "平壤冷麵、咸興冷麵到釜山的小麥冷麵（밀면）：各城市的系譜與吃法，依城市分篇，"
-            "附店家的官方來源與查核日期。"
+            "首爾的平壤冷麵與咸興冷麵、釜山的小麥冷麵（밀면）：依城市分篇，"
+            "寫各自的吃法與有官方來源點名的店家。"
         )
     },
     "kr-samgyetang": {
-        "zh-TW": (
-            "整隻童子雞燉人蔘與糯米的補身湯：怎麼吃、一人份怎麼點，以及各城市有官方來源點名的店家。"
-        )
+        "zh-TW": ("一人一鍋的蔘雞湯（삼계탕）：怎麼點、怎麼吃，以及各城市有官方來源點名的店家。")
     },
     "kr-beef-bone-soup": {
         "zh-TW": (
-            "雪濃湯（설렁탕）與牛骨湯（곰탕）：乳白與清澈兩種牛湯的差別、在桌上自己調味的吃法，"
-            "以及各城市的店家。"
+            "雪濃湯（설렁탕）與牛骨湯（곰탕）：兩種牛湯的差別、在桌上自己調味的吃法，"
+            "以及各城市有官方來源點名的店家。"
         )
     },
-    "kr-dak-hanmari": {"zh-TW": "整隻雞下鍋的清湯鍋：沾醬自己調、麵與年糕的加點順序，依城市分篇。"},
+    "kr-dak-hanmari": {
+        "zh-TW": (
+            "整隻雞下鍋的一隻雞（닭한마리）：怎麼點、怎麼吃，以及各城市有官方來源點名的店家。"
+        )
+    },
     "kr-kalguksu": {
-        "zh-TW": "現擀現切的湯麵：湯頭的幾種系統、配菜與加點方式，以及各城市有官方來源點名的店家。"
+        "zh-TW": (
+            "現切麵條的韓式湯麵刀切麵（칼국수）：怎麼點、配什麼，以及各城市有官方來源點名的店家。"
+        )
     },
-    "kr-jokbal": {"zh-TW": "醬滷豬腳與釜山的涼拌冷盤豬腳：份量怎麼選、怎麼包著吃，依城市分篇。"},
+    "kr-jokbal": {
+        "zh-TW": ("韓式豬腳（족발）：份量怎麼選、怎麼包著吃，依城市分篇，附有官方來源點名的店家。")
+    },
     "kr-tteokbokki": {
-        "zh-TW": "從市場小攤到桌邊現煮的年糕鍋：辣度、配料與加點方式，以及各城市的代表街區。"
+        "zh-TW": (
+            "辣炒年糕（떡볶이）：從市場小攤到桌邊現煮的年糕鍋，依城市分篇，附有官方來源點名的店家。"
+        )
     },
-    "kr-bbq": {"zh-TW": "五花肉、排骨到濟州黑豬肉：部位怎麼選、幾人份起點、誰來烤，依城市分篇。"},
-    "kr-bibimbap": {"zh-TW": "全州拌飯、石鍋拌飯與生牛肉拌飯的差別，怎麼拌、怎麼點，依城市分篇。"},
+    "kr-heukdwaeji": {
+        "zh-TW": ("濟州的黑豬肉（흑돼지）燒烤：部位怎麼選、怎麼吃，以及有官方來源點名的店家。")
+    },
+    "kr-gogi-guksu": {
+        "zh-TW": ("濟州的豬肉湯麵（고기국수）：怎麼點、怎麼吃，以及有官方來源點名的店家。")
+    },
+    "kr-jjim-galbi": {
+        "zh-TW": ("大邱東仁洞的辣燉排骨（찜갈비）：怎麼點、怎麼吃，以及有官方來源點名的店家。")
+    },
+    "kr-makchang": {"zh-TW": "大邱的烤腸（막창）：怎麼點、怎麼吃，以及有官方來源點名的店家。"},
+    "kr-ganjang-gejang": {
+        "zh-TW": ("醬油醃生蟹的醬蟹（간장게장）：怎麼點、怎麼吃，以及各城市有官方來源點名的店家。")
+    },
+    "kr-bibimbap": {
+        "zh-TW": (
+            "韓式拌飯（비빔밥）：全州拌飯與各城市的版本，怎麼點、怎麼拌，附有官方來源點名的店家。"
+        )
+    },
 }
 
 # The lifestyle section's top-level vocabulary, same shape. None of these slugs may collide

@@ -143,7 +143,7 @@
 | --- | --- | --- |
 | `food` 美食 | `cafe` 咖啡店 | 商圈咖啡店特輯 |
 | | `kr-…` 一道料理一個（與 `app/foods/catalog.py` 的料理同 slug、同名稱） | 「料理 × 城市」特輯 |
-| | `kr-bbq`、`kr-beef-bone-soup`（多道料理共用的家族 hub，slug 永遠不會是料理） | 烤肉類、雪濃湯與牛骨湯；釜山小麥冷麵歸 `kr-naengmyeon` |
+| | `kr-beef-bone-soup`（兩道料理共用的 hub，slug 永遠不會是料理） | 雪濃湯與牛骨湯同一篇特輯；釜山小麥冷麵歸 `kr-naengmyeon`（同一家族、不同城市） |
 
 特輯**只掛子主題、不同時掛 `food`**：麵包屑取文章依 display_order 的第一個主題，同時掛會顯示「攻略 › 美食 › 標題」而看不到料理；`?topic=food` 與美食 hub 本來就含子主題的文章。後台建立、slug 沒有 `kr-` 前綴的料理（`dakhanmari`、`kalguksu`、`jokbal`、`ganjang-gejang`、`seolleongtang`）的 hub 仍照慣例拼成 `kr-dak-hanmari` 等，兩邊不同 slug。
 
