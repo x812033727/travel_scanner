@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-correct-hong-kong-tram-luggage-guidance
 title: Correct Hong Kong tram luggage guidance
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-article-localization
 claimed_at: 2026-09-20T09:04:25Z
 created_at: 2026-09-20T08:51:01Z
-completed_at:
+completed_at: 2026-09-20T10:51:10Z
 branch: codex/hong-kong-tram-luggage-source
 depends_on: []
 scope:
@@ -27,10 +27,10 @@ rule before any new-language translation is released.
 
 ## Definition of done
 
-- [ ] The published zh-TW guide describes both luggage limits and the
+- [x] The published zh-TW guide describes both luggage limits and the
       motorman's judgement, and tells readers with prohibited or unconfirmed
       luggage to use other transport.
-- [ ] Existing editorial metadata, article identity, images and other source
+- [x] Existing editorial metadata, article identity, images and other source
       checks remain unchanged; the corrected source version is available to
       the localization baseline before Hong Kong target locales publish.
 
@@ -41,7 +41,7 @@ rule before any new-language translation is released.
 - [x] Correct the two relevant paragraphs and update only the checked date
       and title of the already-cited passenger notice source.
 - [x] Validate `ArticlePack`, exact changed JSON pointers and focused tests.
-- [ ] Merge the guarded PR, update the live zh-TW source, then repin the Hong
+- [x] Merge the guarded PR, update the live zh-TW source, then repin the Hong
       Kong translation baseline before dependent locale publication.
 
 ## How to verify
@@ -77,3 +77,5 @@ the old document hash, and a new snapshot is required before a live write.
 Independent source review tightened the motorman condition to the official
 Traditional Chinese meaning, `會對其他乘客構成不便`, rather than the narrower
 `妨礙其他乘客`; the final pack and document hashes above reflect that revision.
+- PR #590 merged as `968f7b8e56be8d92c03b4f4369d56e8e5ae77641`; the guarded deployment and verified backup completed.
+- The public zh-TW locale is version 8 with published and draft normalized document SHA-256 `e59b60f8ca4b19233820cc03e9126ddb0c4a29c70b06bed79ec43a3e359c5efa`. Signed-out browser verification confirmed the corrected luggage rule and source date. The dependent four-language job is rebased to this exact live source.
