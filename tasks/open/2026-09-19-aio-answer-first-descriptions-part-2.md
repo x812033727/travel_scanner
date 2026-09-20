@@ -1,47 +1,17 @@
 ---
 id: 2026-09-19-aio-answer-first-descriptions-part-2
 title: AIO: answer-first descriptions, part 2 — 東南亞、台灣、港澳新加坡的 how-to 與 intel（33 份文件）
-status: review
+status: blocked
 priority: P3
 area: docs
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T11:16:15Z
+owner: codex-aio-task-close
+claimed_at: 2026-09-20T16:39:45Z
 created_at: 2026-09-19T11:14:27Z
 completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+branch: codex/close-stale-aio-task
 depends_on: []
 scope:
-  - apps/api/app/guides/content/bangkok-4-day-itinerary.json
-  - apps/api/app/guides/content/bangkok-airport-to-city.json
-  - apps/api/app/guides/content/bangkok-bts-mrt-boat-guide.json
-  - apps/api/app/guides/content/bangkok-where-to-stay.json
-  - apps/api/app/guides/content/chiang-mai-3-day-itinerary.json
-  - apps/api/app/guides/content/da-nang-hoi-an-4-day-itinerary.json
-  - apps/api/app/guides/content/hanoi-4-day-itinerary.json
-  - apps/api/app/guides/content/ho-chi-minh-city-4-day-itinerary.json
-  - apps/api/app/guides/content/hong-kong-4-day-itinerary.json
-  - apps/api/app/guides/content/jiufen-shifen-yehliu-day-trip.json
-  - apps/api/app/guides/content/kaohsiung-3-day-itinerary.json
-  - apps/api/app/guides/content/krabi-ao-nang-railay-4-islands.json
-  - apps/api/app/guides/content/macau-day-trip-from-hong-kong.json
-  - apps/api/app/guides/content/sentosa-day-guide.json
-  - apps/api/app/guides/content/singapore-4-day-itinerary.json
-  - apps/api/app/guides/content/tainan-2-day-itinerary.json
-  - apps/api/app/guides/content/taipei-metro-easycard-guide.json
-  - apps/api/app/guides/content/taipei-night-markets-guide.json
-  - apps/api/app/guides/content/taipei-viewpoints-101-elephant-mountain.json
-  - apps/api/app/guides/content/taipei-where-to-stay.json
-  - apps/api/app/guides/content/taiwan-entry-2026-arrival-card.json
-  - apps/api/app/guides/content/taiwan-esim-sim-wifi.json
-  - apps/api/app/guides/content/taiwan-etiquette-safety-tips.json
-  - apps/api/app/guides/content/taiwan-food-guide-must-eat.json
-  - apps/api/app/guides/content/taiwan-payment-easycard-cash-cards.json
-  - apps/api/app/guides/content/taiwan-tax-refund-shopping-2026.json
-  - apps/api/app/guides/content/taoyuan-airport-to-taipei.json
-  - apps/api/app/guides/content/thailand-entry-2026-tdac.json
-  - apps/api/app/guides/content/thailand-esim-sim-wifi.json
-  - apps/api/app/guides/content/usj-guide.json
-  - apps/api/app/guides/content/vietnam-money-sim-grab-guide.json
+  - tasks/open/2026-09-19-aio-answer-first-descriptions-part-2.md
 ---
 
 # AIO: answer-first descriptions, part 2 — 東南亞、台灣、港澳新加坡的 how-to 與 intel（33 份文件）
@@ -187,3 +157,9 @@ After merge and deploy, the owner imports the 31 packs on the host (dry run firs
 python -m app.cli guides-import --actor-email <admin> --dry-run --slug bangkok-4-day-itinerary --slug bangkok-airport-to-city --slug bangkok-bts-mrt-boat-guide --slug bangkok-where-to-stay --slug chiang-mai-3-day-itinerary --slug da-nang-hoi-an-4-day-itinerary --slug hanoi-4-day-itinerary --slug ho-chi-minh-city-4-day-itinerary --slug hong-kong-4-day-itinerary --slug jiufen-shifen-yehliu-day-trip --slug kaohsiung-3-day-itinerary --slug krabi-ao-nang-railay-4-islands --slug macau-day-trip-from-hong-kong --slug sentosa-day-guide --slug singapore-4-day-itinerary --slug tainan-2-day-itinerary --slug taipei-metro-easycard-guide --slug taipei-night-markets-guide --slug taipei-viewpoints-101-elephant-mountain --slug taipei-where-to-stay --slug taiwan-entry-2026-arrival-card --slug taiwan-esim-sim-wifi --slug taiwan-etiquette-safety-tips --slug taiwan-food-guide-must-eat --slug taiwan-payment-easycard-cash-cards --slug taiwan-tax-refund-shopping-2026 --slug taoyuan-airport-to-taipei --slug thailand-entry-2026-tdac --slug thailand-esim-sim-wifi --slug usj-guide --slug vietnam-money-sim-grab-guide
 python -m app.cli guides-import --actor-email <admin> --publish --slug bangkok-4-day-itinerary --slug bangkok-airport-to-city --slug bangkok-bts-mrt-boat-guide --slug bangkok-where-to-stay --slug chiang-mai-3-day-itinerary --slug da-nang-hoi-an-4-day-itinerary --slug hanoi-4-day-itinerary --slug ho-chi-minh-city-4-day-itinerary --slug hong-kong-4-day-itinerary --slug jiufen-shifen-yehliu-day-trip --slug kaohsiung-3-day-itinerary --slug krabi-ao-nang-railay-4-islands --slug macau-day-trip-from-hong-kong --slug sentosa-day-guide --slug singapore-4-day-itinerary --slug tainan-2-day-itinerary --slug taipei-metro-easycard-guide --slug taipei-night-markets-guide --slug taipei-viewpoints-101-elephant-mountain --slug taipei-where-to-stay --slug taiwan-entry-2026-arrival-card --slug taiwan-esim-sim-wifi --slug taiwan-etiquette-safety-tips --slug taiwan-food-guide-must-eat --slug taiwan-payment-easycard-cash-cards --slug taiwan-tax-refund-shopping-2026 --slug taoyuan-airport-to-taipei --slug thailand-entry-2026-tdac --slug thailand-esim-sim-wifi --slug usj-guide --slug vietnam-money-sim-grab-guide
 ```
+
+### 2026-09-21 stale-claim handoff
+
+- The 31 pack edits for this task were merged in PR #565 (`d11178863d1a2a35ddfff17be65bcc2a63514194`) on 2026-09-19. Its checklist and repository checks are complete. The original `review` claim exceeded the documented 24-hour takeover period, so `codex-aio-task-close` claimed it through the task CLI without `--force`.
+- The task remains open as `blocked`: its own handoff still requires a production import dry run and publication audit, and no verified import receipt has been attached here. Recheck live versions and preserve later edits before any import. Do not treat the merged pack changes as proof that production descriptions were republished.
+- The repository editing scope is now only this task file. The merged pack paths are released for separately claimed localization work; future production import must compare the current published revisions to the exact reviewed descriptions and stop on drift. No article pack or production data was changed in this handoff.
