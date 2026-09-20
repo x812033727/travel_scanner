@@ -107,14 +107,27 @@ def read_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8-sig"))
 
 
+def write_text_lf(path: Path, value: str) -> None:
+    """Write portable text bytes that match Git's repository checkout policy."""
+    path.write_text(
+        value.replace("\r\n", "\n").replace("\r", "\n"),
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
+def canonical_svg_text(value: str) -> str:
+    """Keep SVG indentation while removing checkout-sensitive line trivia."""
+    lines = value.replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    return "\n".join(line.rstrip() for line in lines).rstrip("\n") + "\n"
+
+
 def write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(
         f".{path.name}.{os.getpid()}.{threading.get_ident()}.tmp"
     )
-    temporary.write_text(
-        json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    write_text_lf(temporary, json.dumps(value, ensure_ascii=False, indent=2) + "\n")
     os.replace(temporary, path)
 
 
@@ -852,9 +865,7 @@ def materialize(
         )
         target = contained(directory / "assets", asset["target_svg"].lstrip("/"))
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(
-            ET.tostring(root, encoding="unicode") + "\n", encoding="utf-8"
-        )
+        write_text_lf(target, canonical_svg_text(ET.tostring(root, encoding="unicode")))
         for reference in asset["references"]:
             set_pointer(document, reference["pointer"], reference["target"])
             if localized_description:

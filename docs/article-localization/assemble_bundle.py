@@ -35,6 +35,15 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def write_text_lf(path, value):
+    """Write text exactly as Git will check it out on every supported platform."""
+    Path(path).write_text(
+        value.replace("\r\n", "\n").replace("\r", "\n"),
+        encoding="utf-8",
+        newline="\n",
+    )
+
+
 def digest(document):
     return hashlib.sha256(
         json.dumps(
@@ -313,6 +322,16 @@ def copy_pinned_asset(original, target, expected):
     shutil.copyfile(original, target)
     if sha(target) != expected:
         raise ValueError(f"Asset changed while copying reviewed bytes: {original.name}")
+    if target.suffix.lower() == ".svg" and b"\r" in target.read_bytes():
+        raise ValueError(
+            f"Reviewed SVG must use LF line endings; re-render it: {original.name}"
+        )
+    if target.suffix.lower() == ".svg" and any(
+        line.rstrip() != line for line in target.read_bytes().splitlines()
+    ):
+        raise ValueError(
+            f"Reviewed SVG contains trailing whitespace; re-render it: {original.name}"
+        )
 
 
 def assemble(baseline_path, work, slugs, output, prior_manifests=()):
@@ -412,10 +431,10 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
         relative = f"packs/{article['slug']}.json"
         path = output / relative
         path.parent.mkdir(exist_ok=True)
-        path.write_text(
+        write_text_lf(
+            path,
             json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2)
             + "\n",
-            encoding="utf-8",
         )
         manifest["articles"].append(
             {
@@ -438,12 +457,12 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
         target.parent.mkdir(parents=True, exist_ok=True)
         copy_pinned_asset(original, target, expected)
         manifest["assets"].append({"path": relative, "sha256": expected})
-    (output / "release-manifest.json").write_text(
-        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+    write_text_lf(
+        output / "release-manifest.json", json.dumps(manifest, indent=2) + "\n"
     )
-    (output / "link-transformations.json").write_text(
+    write_text_lf(
+        output / "link-transformations.json",
         json.dumps(transformations, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
     return manifest
 

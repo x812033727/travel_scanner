@@ -26,6 +26,10 @@ function safeDimensions(source) {
   return { width: Math.ceil(width), height: Math.ceil(height) };
 }
 
+function canonicalSvgText(source) {
+  return source.replace(/\r\n?/g, '\n').split('\n').map(line => line.trimEnd()).join('\n').replace(/\n*$/, '\n');
+}
+
 async function load(page, source, size) {
   if (/<script\b|\son\w+\s*=|<foreignObject\b/i.test(source)) throw new Error('Active SVG content is not supported');
   await page.setViewportSize(size);
@@ -49,6 +53,9 @@ try {
     const relative = path.relative(directory, svgPath);
     if (relative.startsWith('..') || path.isAbsolute(relative)) throw new Error('Staged asset escaped job directory');
     let source = await readFile(svgPath, 'utf8');
+    const portableSource = canonicalSvgText(source);
+    const sourceBytesChanged = portableSource !== source;
+    source = portableSource;
     const size = safeDimensions(source);
     const original = await load(page, job.assets[index].source_svg, size);
     let localized = await load(page, source, size);
@@ -80,7 +87,7 @@ try {
       source = await page.locator('svg').evaluate(svg => svg.outerHTML);
       localized = await load(page, source, size);
     }
-    if (fontAdjustments.length) await writeFile(svgPath, source + '\n');
+    if (fontAdjustments.length || sourceBytesChanged) await writeFile(svgPath, canonicalSvgText(source));
     const issues = [];
     if (original.text.length !== localized.text.length) issues.push({ reason: 'visible text node count changed' });
     localized.text.forEach((text, textIndex) => {

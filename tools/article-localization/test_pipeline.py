@@ -79,6 +79,16 @@ def sample():
 
 
 class PipelineTests(unittest.TestCase):
+    def test_pipeline_text_writer_normalizes_line_endings(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "portable.txt"
+            pipeline.write_text_lf(path, "first\r\nsecond\rthird\n")
+            self.assertEqual(path.read_bytes(), b"first\nsecond\nthird\n")
+            self.assertEqual(
+                pipeline.canonical_svg_text("<svg>\r\n  <text>x</text>  \r\n</svg>"),
+                "<svg>\n  <text>x</text>\n</svg>\n",
+            )
+
     def test_child_overrides_cover_effective_config_layers_and_preflight(self):
         config = {"mcp_servers": {"node_repl": {}, "unityMCP": {}}}
         effective_servers = [
