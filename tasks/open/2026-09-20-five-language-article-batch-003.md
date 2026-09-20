@@ -4,8 +4,8 @@ title: Five-language article batch 003
 status: in-progress
 priority: P1
 area: docs
-owner: codex-article-localization-batch003
-claimed_at: 2026-09-20T07:27:37Z
+owner: codex-article-localization
+claimed_at: 2026-09-20T08:59:50Z
 created_at: 2026-09-20T07:26:10Z
 completed_at:
 branch: codex/article-localization-batch-003
@@ -92,3 +92,24 @@ pipeline's 27 Python tests, 17 Node artifact/layout tests, and `check:tasks`
 passed. Independent line-by-line editorial and visual sign-off remains pending;
 do not assemble or publish from the rendered state alone. Re-export the live
 snapshot before assembly because the deployed revision may have advanced.
+
+Four non-onsen articles now have all sixteen target locale documents independently
+reviewed, including each localized SVG at full size. The exact four-article
+manifest SHA-256 is
+`099aec1b983a418f288998840c1548b51c90ab3f8e496c5ba702dac281d8186b`.
+Its original four pack hashes still matched the branch and current main; the
+twenty pinned bundle assets (sixteen new diagrams plus four unchanged covers)
+matched their recorded hashes. The installer completed twice with the same
+24-file result; the durable journal SHA-256 is
+`1cfc2b50e6fee21d567f0f383385571144dc451a5c13df2a55ce55e6ed9e81ec`.
+Reviewed inputs and installation evidence are preserved outside the repository
+under `C:\Users\x8120\.codex\article-localization-batch-003`.
+`japan-onsen-ryokan-guide` is deliberately excluded pending a separate source
+correction, fresh live baseline, regenerated translations and independent review.
+Focused content-pack/link tests gave 11 passed and 5 skipped; one existing,
+unrelated link test still fails because `taipei-4-day-itinerary` points four
+locales to `taiwan-entry-2026-arrival-card` under the `howto` kind although the
+target article kind is `intel`. Neither article belongs to this batch. Task
+validation and `git diff --check` passed. Installer inputs remain untracked
+locally after the native cleanup command was blocked by automatic policy; the
+PR contains only the scoped article packs, diagrams and this task record.
