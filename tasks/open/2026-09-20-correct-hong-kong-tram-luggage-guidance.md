@@ -1,0 +1,75 @@
+---
+id: 2026-09-20-correct-hong-kong-tram-luggage-guidance
+title: Correct Hong Kong tram luggage guidance
+status: review
+priority: P1
+area: docs
+owner: codex-hk-tram-luggage-source
+claimed_at: 2026-09-20T08:51:02Z
+created_at: 2026-09-20T08:51:01Z
+completed_at:
+branch: codex/hong-kong-tram-luggage-source
+depends_on: []
+scope:
+  - apps/api/app/guides/content/hong-kong-ferry-tram-day.json
+---
+
+# Correct Hong Kong tram luggage guidance
+
+## Why
+
+The published Traditional Chinese Hong Kong ferry/tram guide suggests that a
+traveller with large luggage only needs to consider whether boarding is easy.
+Hong Kong Tramways' passenger notice instead prohibits luggage above 7 kg in
+weight or 30 litres in volume, and also permits the motorman to refuse goods
+that would inconvenience other passengers. The guide must state the actual
+rule before any new-language translation is released.
+
+## Definition of done
+
+- [ ] The published zh-TW guide describes both luggage limits and the
+      motorman's judgement, and tells readers with prohibited or unconfirmed
+      luggage to use other transport.
+- [ ] Existing editorial metadata, article identity, images and other source
+      checks remain unchanged; the corrected source version is available to
+      the localization baseline before Hong Kong target locales publish.
+
+## Steps
+
+- [x] Verify the current Hong Kong Tramways passenger notice in English and
+      Traditional Chinese.
+- [x] Correct the two relevant paragraphs and update only the checked date
+      and title of the already-cited passenger notice source.
+- [x] Validate `ArticlePack`, exact changed JSON pointers and focused tests.
+- [ ] Merge the guarded PR, update the live zh-TW source, then repin the Hong
+      Kong translation baseline before dependent locale publication.
+
+## How to verify
+
+Run `ArticlePack.model_validate` and compare normalized document hashes; run
+`pytest tests/test_guides_content_pack.py tests/test_guides_content_links.py -q`
+inside `apps/api`, `npm run check:tasks` and `git diff --check`. At publication,
+compare live source version/hash with the pinned preimage before writing and
+verify the resulting public zh-TW paragraph and source date.
+
+## Notes
+
+Based on `origin/main` commit `3bb3b7b979e304b473b8c9fb18ccf1b569aa044d`.
+The original pack SHA-256 is
+`208d95f876e63edac1e2a87b1b6741a7492005882e4a55de9795859263d5bc43`;
+the corrected pack SHA-256 is
+`3f2998d19fde18b9d6af6de0072c7870e719fd0a5a19d476c6261373fa183f5f`.
+Normalized zh-TW document SHA-256 changes from
+`e03a3b07c6db7fe01b768d81410d15985ee8cbcb406e6939ad74b30f0137759d`
+to `fcfab0dcc25f90120b047d99b773c2a9d76d66185b522e85666fce5a344cfe68`.
+Only `blocks[6].text`, `blocks[17].text`, `sources[2].title` and
+`sources[2].checked_on` changed; the last date is `2026-09-20`.
+
+Official [Traditional Chinese passenger notice](https://www.hktramways.com/tc/notice-to-passengers)
+item 9 expressly prohibits luggage exceeding either the 7 kg or 30 litre
+threshold and goods the motorman considers inconvenient to others. The
+existing [English notice](https://www.hktramways.com/en/notice-to-passengers)
+remains the article's source URL; its check date was refreshed after reading
+both official language versions. Do not infer publication from this repository
+change: the last pinned production snapshot had zh-TW locale version 6 and
+the old document hash, and a new snapshot is required before a live write.
