@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-five-language-article-batch-002
 title: Five-language article batch 002
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-article-localization
 claimed_at: 2026-09-20T05:52:40Z
 created_at: 2026-09-20T05:52:33Z
-completed_at:
+completed_at: 2026-09-20T08:01:48Z
 branch: codex/article-localization-batch-002
 depends_on: []
 scope:
@@ -42,8 +42,8 @@ unfinished repository task.
 - [x] All five packs contain complete, independently reviewed documents in all five locales.
 - [x] Each source SVG has reviewed en, ja, ko and zh-CN variants with no overflow or missing glyphs.
 - [x] The reviewed bundle installs idempotently without changing the existing zh-TW prose.
-- [ ] The exact content PR is merged, backed up, deployed and health checked.
-- [ ] Only the twenty authorized missing locales are published and browser verified.
+- [x] The exact content PR is merged, backed up, deployed and health checked.
+- [x] Only the twenty authorized missing locales are published and browser verified.
 
 ## Steps
 
@@ -52,8 +52,8 @@ unfinished repository task.
 - [x] Render all twenty localized SVGs and pass automated layout checks.
 - [x] Complete independent editorial, photo and visual review.
 - [x] Assemble, install and validate the explicit five-article release bundle.
-- [ ] Open and merge the content PR after its required checks pass.
-- [ ] Back up, deploy, dry-run, publish and browser verify the exact release.
+- [x] Open and merge the content PR after its required checks pass.
+- [x] Back up, deploy, dry-run, publish and browser verify the exact release.
 
 ## How to verify
 
@@ -101,3 +101,31 @@ the Codex account reached its usage limit, so their names are not recorded as
 reviewers. The installer requires its baseline, bundle and jobs within the
 repository; the scoped staging and installation-journal paths above support
 that hash-pinned local install and remain outside the content PR.
+
+Content PR #584 merged at `80ad55c6a85b7a5635f9763c5837094aa5dbc513`.
+The exact main-branch CI run `35496710188` passed web, API, full-stack smoke
+and container jobs. Before activation, production created and verified a
+123,718,198-byte custom-format PostgreSQL backup with `pg_restore --list`;
+its SHA-256 is `b913f857338cbd1344a655b4b47bae35838a1f40fa181182d5013ee9d340629d`.
+The guarded hostinger2 deploy activated the same commit and passed `/ready`,
+`/health` and article-page checks.
+
+The publisher dry run targeted only five articles and twenty missing locales.
+Its durable journal records 20/20 draft imports, 20/20 article publications,
+zero hub publications, no pending operation and manifest
+`6a6478b9f907bad5874ce7ab74a0d14b1c02fe4e1142ddf55fdc8765088ed685`.
+The journal SHA-256 is
+`ae768c3d000a8177d31d3b2aac605c3b27ab3d564ba4c585f022cbb63d0d7a56`.
+A separate read-only production snapshot matches all twenty published content
+hashes and confirms that the five original zh-TW locales and article metadata
+did not change. Its compressed SHA-256 is
+`163e7d2b3e4c9d88273b32327d1d400d73f1da94e99273fa749b746237ec0afa`.
+
+All 50 combinations of five articles, five languages and desktop/mobile
+passed live title/body, canonical, reciprocal hreflang, image, same-language
+link and viewport checks. Every displayed article link was also requested:
+225 unique URLs returned HTTP 200. The browser evidence SHA-256 is
+`9491c8e519455123b54e10f7a0e611e99143ddb36786789fc046f788dcf49706`.
+The host accepted a hash-pinned browser receipt, marked the release complete
+and cleared its deployment hold. Subsequent `/ready` and an English article
+request both returned HTTP 200 at the deployed commit.
