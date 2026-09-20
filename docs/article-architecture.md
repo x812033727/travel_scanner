@@ -137,7 +137,15 @@
 | `finance` 理財與金錢 | `finance-basics` / `banking` / `credit` / `tax-insurance` / `investing` / `crypto`（0079） | 財經批次 01／02／02／03–04／05–06；`crypto-news-*`、`bitcoin-*`、`stablecoin-*` |
 | `tech` 科技與產業（0079 新增） | `tech-news` | `tech-news-*` |
 
-**旅遊**：主題不加子層；第二軸為國家 → 目的地（`DestinationProfile.country` → `japan`、`south-korea`、`taiwan`、`thailand`、`vietnam`、`singapore`、`hong-kong`）。
+**旅遊**：第二軸為國家 → 目的地（`DestinationProfile.country` → `japan`、`south-korea`、`taiwan`、`thailand`、`vietnam`、`singapore`、`hong-kong`）；主題只有 `food` 底下有子層（0082）。美食特輯是一道料理、一個城市寫一篇（「豬肉湯飯｜釜山美食特輯」「豬肉湯飯｜首爾美食特輯」），目的地這一軸沒辦法把同一道料理跨城市收在一起，所以每道料理一個子主題、外加 `cafe`（`taxonomy.TRAVEL_SEED_SUBTOPICS`）。其餘旅遊主題維持單層。
+
+| 父主題 | 子主題 | 規則 |
+| --- | --- | --- |
+| `food` 美食 | `cafe` 咖啡店 | 商圈咖啡店特輯 |
+| | `kr-…` 一道料理一個（與 `app/foods/catalog.py` 的料理同 slug、同名稱） | 「料理 × 城市」特輯 |
+| | `kr-beef-bone-soup`（兩道料理共用的 hub，slug 永遠不會是料理） | 雪濃湯與牛骨湯同一篇特輯；釜山小麥冷麵歸 `kr-naengmyeon`（同一家族、不同城市） |
+
+特輯**只掛子主題、不同時掛 `food`**：麵包屑取文章依 display_order 的第一個主題，同時掛會顯示「攻略 › 美食 › 標題」而看不到料理；`?topic=food` 與美食 hub 本來就含子主題的文章。後台建立、slug 沒有 `kr-` 前綴的料理（`dakhanmari`、`kalguksu`、`jokbal`、`ganjang-gejang`、`seolleongtang`）的 hub 仍照慣例拼成 `kr-dak-hanmari` 等，兩邊不同 slug。
 
 ## 部署與驗證
 
