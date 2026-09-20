@@ -67,7 +67,12 @@ from app.guides.schemas import (
     TableBlock,
     section_of,
 )
-from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS
+from app.guides.taxonomy import (
+    LIFE_SEED_SUBTOPICS,
+    LIFE_SEED_TOPICS,
+    SEED_TOPICS,
+    TRAVEL_SEED_SUBTOPICS,
+)
 from app.i18n import Locale
 from app.problems import AppError
 from app.site_pages.schemas import HeadingBlock, LinkBlock, ListBlock, ParagraphBlock
@@ -773,7 +778,9 @@ def _known_topics(kind: Kind) -> set[str]:
         return {slug for slug, _ in LIFE_SEED_TOPICS} | {
             slug for slug, _parent, _labels in LIFE_SEED_SUBTOPICS
         }
-    return {slug for slug, _ in SEED_TOPICS}
+    return {slug for slug, _ in SEED_TOPICS} | {
+        slug for slug, _parent, _labels in TRAVEL_SEED_SUBTOPICS
+    }
 
 
 def _load_json(path: Path) -> Any:

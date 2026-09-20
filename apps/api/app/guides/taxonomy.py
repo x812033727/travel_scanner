@@ -11,8 +11,15 @@ bleed into each other's filters.
 Topics are two levels deep. A lifestyle parent such as ``ai`` holds sub-topics such as
 ``ai-terms`` (``GuideTopic.parent_id``); an article may carry the parent, the child or both.
 Filtering by the parent includes its children, and the listing counts each article once
-under the parent however many of its children it carries. The travel vocabulary stays one
-level: its second axis is the destination, grouped by country in ``service``.
+under the parent however many of its children it carries.
+
+The travel vocabulary is one level everywhere except under ``food``. Its second axis is
+still the destination, grouped by country in ``service``; but a food special is written one
+dish and one city at a time (豬肉湯飯 in Busan, 豬肉湯飯 in Seoul), and the destination axis
+cannot gather the same dish across cities. ``TRAVEL_SEED_SUBTOPICS`` is that gathering: one
+sub-topic per dish, plus ``cafe``. A special carries its sub-topic alone, not ``food`` as
+well. ``?topic=food`` lists it either way, and the article's breadcrumb is built from its
+first topic in display order, which would be ``food`` and would leave the dish out.
 """
 
 from __future__ import annotations
@@ -52,6 +59,89 @@ SEED_TOPICS: tuple[tuple[str, Labels], ...] = (
     ("viewpoint", ("Viewpoints", "展望スポット", "전망 명소", "觀景", "观景")),
     ("beach", ("Beaches", "ビーチ", "해변", "海灘", "海滩")),
 )
+
+# slug, parent slug, (en, ja, ko, zh-TW, zh-CN). Seeded by 0082 in this order and, like the
+# lifestyle tuples, appended to and never reordered.
+#
+# A dish sub-topic is spelled the way ``app.foods.catalog`` spells a dish: ``kr-`` and the
+# Revised Romanization with a hyphen between words. A dish the catalog seeds and its hub then
+# share one slug (``kr-naengmyeon``), and the zh-TW and ko labels here are that dish's names.
+# Two kinds of hub have no twin. A dish an administrator created before the convention keeps
+# its own production slug (``dakhanmari``, ``kalguksu``, ``jokbal``, ``ganjang-gejang``,
+# ``seolleongtang``), so its hub is spelled by the convention instead. And a hub several
+# dishes share has a slug no dish will ever take: ``kr-bbq`` gathers samgyeopsal, bulgogi,
+# galbi and Jeju black pork, ``kr-beef-bone-soup`` gathers seolleongtang and gomtang, and
+# Busan's milmyeon files under ``kr-naengmyeon``. ``cafe`` is the one that is not a dish.
+TRAVEL_SEED_SUBTOPICS: tuple[tuple[str, str, Labels], ...] = (
+    ("cafe", "food", ("Cafes", "カフェ", "카페", "咖啡店", "咖啡店")),
+    (
+        "kr-dwaeji-gukbap",
+        "food",
+        ("Dwaeji-gukbap", "デジクッパ", "돼지국밥", "豬肉湯飯", "猪肉汤饭"),
+    ),
+    ("kr-naengmyeon", "food", ("Naengmyeon", "韓国冷麺", "냉면", "韓式冷麵", "韩式冷面")),
+    ("kr-samgyetang", "food", ("Samgyetang", "サムゲタン", "삼계탕", "蔘雞湯", "参鸡汤")),
+    (
+        "kr-beef-bone-soup",
+        "food",
+        (
+            "Seolleongtang & gomtang",
+            "ソルロンタン・コムタン",
+            "설렁탕·곰탕",
+            "雪濃湯・牛骨湯",
+            "雪浓汤・牛骨汤",
+        ),
+    ),
+    ("kr-dak-hanmari", "food", ("Dak-hanmari", "タッカンマリ", "닭한마리", "一隻雞", "一只鸡")),
+    ("kr-kalguksu", "food", ("Kalguksu", "カルグクス", "칼국수", "刀削手擀麵", "刀削手擀面")),
+    ("kr-jokbal", "food", ("Jokbal", "チョッパル", "족발", "韓式豬腳", "韩式猪脚")),
+    ("kr-tteokbokki", "food", ("Tteokbokki", "トッポッキ", "떡볶이", "辣炒年糕", "辣炒年糕")),
+    ("kr-bbq", "food", ("Korean BBQ", "韓国焼肉", "고기구이", "韓式烤肉", "韩式烤肉")),
+    ("kr-bibimbap", "food", ("Bibimbap", "ビビンバ", "비빔밥", "韓式拌飯", "韩式拌饭")),
+)
+
+# The lead paragraph of each travel sub-topic's hub, which is also its meta description.
+# Seeded by 0082 only where a topic has none; an editor's own text is never overwritten.
+TRAVEL_TOPIC_DESCRIPTIONS: dict[str, dict[str, str]] = {
+    "cafe": {
+        "zh-TW": (
+            "一個街區寫一篇的咖啡店特輯：怎麼走、每家店是哪一種店，逐店附入選依據的官方來源與查核日期。"
+        )
+    },
+    "kr-dwaeji-gukbap": {
+        "zh-TW": (
+            "釜山的日常湯飯，首爾也吃得到：依城市分篇，寫菜單怎麼看、桌上怎麼調味，"
+            "以及有官方來源點名的店家。"
+        )
+    },
+    "kr-naengmyeon": {
+        "zh-TW": (
+            "平壤冷麵、咸興冷麵到釜山的小麥冷麵（밀면）：各城市的系譜與吃法，依城市分篇，"
+            "附店家的官方來源與查核日期。"
+        )
+    },
+    "kr-samgyetang": {
+        "zh-TW": (
+            "整隻童子雞燉人蔘與糯米的補身湯：怎麼吃、一人份怎麼點，以及各城市有官方來源點名的店家。"
+        )
+    },
+    "kr-beef-bone-soup": {
+        "zh-TW": (
+            "雪濃湯（설렁탕）與牛骨湯（곰탕）：乳白與清澈兩種牛湯的差別、在桌上自己調味的吃法，"
+            "以及各城市的店家。"
+        )
+    },
+    "kr-dak-hanmari": {"zh-TW": "整隻雞下鍋的清湯鍋：沾醬自己調、麵與年糕的加點順序，依城市分篇。"},
+    "kr-kalguksu": {
+        "zh-TW": "現擀現切的湯麵：湯頭的幾種系統、配菜與加點方式，以及各城市有官方來源點名的店家。"
+    },
+    "kr-jokbal": {"zh-TW": "醬滷豬腳與釜山的涼拌冷盤豬腳：份量怎麼選、怎麼包著吃，依城市分篇。"},
+    "kr-tteokbokki": {
+        "zh-TW": "從市場小攤到桌邊現煮的年糕鍋：辣度、配料與加點方式，以及各城市的代表街區。"
+    },
+    "kr-bbq": {"zh-TW": "五花肉、排骨到濟州黑豬肉：部位怎麼選、幾人份起點、誰來烤，依城市分篇。"},
+    "kr-bibimbap": {"zh-TW": "全州拌飯、石鍋拌飯與生牛肉拌飯的差別，怎麼拌、怎麼點，依城市分篇。"},
+}
 
 # The lifestyle section's top-level vocabulary, same shape. None of these slugs may collide
 # with SEED_TOPICS or app.discovery.taxonomy.LABELS: a slug is global (uq_guide_topic_slug)

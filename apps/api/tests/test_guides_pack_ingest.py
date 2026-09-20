@@ -750,7 +750,12 @@ def test_a_redirect_to_a_non_ascii_location_is_followed() -> None:
 def test_ingest_knows_every_topic_the_write_path_accepts() -> None:
     """``ingest`` used to read the parent topics only and refused 805 published packs."""
     from app.guides.pack_ingest import _known_topics
-    from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS
+    from app.guides.taxonomy import (
+        LIFE_SEED_SUBTOPICS,
+        LIFE_SEED_TOPICS,
+        SEED_TOPICS,
+        TRAVEL_SEED_SUBTOPICS,
+    )
 
     life = _known_topics("life")
     assert life == {slug for slug, _ in LIFE_SEED_TOPICS} | {
@@ -758,5 +763,13 @@ def test_ingest_knows_every_topic_the_write_path_accepts() -> None:
     }
     # The pair that exposed it: a sister pack carries ai-plans, a subtopic of ai.
     assert {"ai", "software", "ai-plans", "claude-code", "ai-terms"} <= life
-    # Travel has no subtopics, so its vocabulary is exactly its parents.
-    assert _known_topics("howto") == {slug for slug, _ in SEED_TOPICS}
+    # Travel gained sub-topics with 0082: the dishes and ``cafe`` under ``food``. A food
+    # special carries its dish alone, so a vocabulary of parents only would refuse every one.
+    travel = {slug for slug, _ in SEED_TOPICS} | {
+        slug for slug, _parent, _labels in TRAVEL_SEED_SUBTOPICS
+    }
+    for kind in ("howto", "intel"):
+        assert _known_topics(kind) == travel  # type: ignore[arg-type]
+    assert {"food", "cafe", "kr-dwaeji-gukbap"} <= travel
+    # Each section's sub-topics stay its own, as the write path keeps them.
+    assert travel.isdisjoint(life)

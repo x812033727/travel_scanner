@@ -29,6 +29,7 @@ from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
     GuideArticleRevision,
+    GuideArticleTopic,
     GuideTopic,
 )
 from app.models import User
@@ -298,6 +299,65 @@ def test_the_seeded_life_display_orders_are_unique_and_each_revision_starts_abov
         assert not seen & set(orders), name
         assert min(orders) > highest, name
         seen |= set(orders)
+        highest = max(orders)
+
+
+#: Every migration that seeds a travel sub-topic, oldest first. One name to change if a
+#: revision has to be renumbered because another branch took its number first.
+TRAVEL_SUBTOPIC_MIGRATIONS = ("0082_travel_food_subtopics",)
+
+
+def seeded_travel_subtopics(name: str) -> list[tuple[str, str, int, object]]:
+    return list(migration(name).TRAVEL_SEED_SUBTOPICS)
+
+
+def test_the_seeded_travel_sub_topics_match_the_python_vocabulary():
+    """The travel sub-topics and their hub leads, concatenated in revision order, must agree
+    with the application constants -- the same contract as the lifestyle ones, and the one
+    that lets ``pack_ingest`` accept a slug a fresh database will actually hold."""
+    from app.guides.taxonomy import (
+        SEED_TOPICS,
+        TRAVEL_SEED_SUBTOPICS,
+        TRAVEL_TOPIC_DESCRIPTIONS,
+    )
+
+    seeded = [
+        (slug, parent, labels)
+        for name in TRAVEL_SUBTOPIC_MIGRATIONS
+        for slug, parent, _, labels in seeded_travel_subtopics(name)
+    ]
+    assert seeded == list(TRAVEL_SEED_SUBTOPICS)
+
+    leads: dict[str, dict[str, str]] = {}
+    for name in TRAVEL_SUBTOPIC_MIGRATIONS:
+        described = migration(name).TOPIC_DESCRIPTIONS
+        assert not set(described) & set(leads), name
+        leads.update(described)
+    assert leads == TRAVEL_TOPIC_DESCRIPTIONS
+
+    # A lead only for a row this revision owns: one written onto ``food`` would survive the
+    # rollback and leave the parent different from how 0072 seeded it.
+    children = {slug for slug, _, _ in TRAVEL_SEED_SUBTOPICS}
+    assert set(leads) <= children
+    assert {parent for _, parent, _ in seeded} <= {slug for slug, _ in SEED_TOPICS}
+
+
+def test_the_seeded_travel_sub_topic_orders_sit_in_a_band_of_their_own():
+    """One ``display_order`` column sorts every row in ``guide_topics``. The travel parents
+    hold 10-190 and the lifestyle revisions each start above the last lifestyle maximum, so
+    the travel children take a band neither will grow into; inside it each revision ascends
+    and begins above the one before."""
+    taken = {order for _, order, _ in migration().SEED_TOPICS}
+    for name in LIFE_SEED_MIGRATIONS:
+        taken |= {order for _, order, _ in seeded_life_topics(name)}
+        taken |= {order for _, _, order, _ in seeded_life_subtopics(name)}
+    highest = 999
+    for name in TRAVEL_SUBTOPIC_MIGRATIONS:
+        orders = [order for _, _, order, _ in seeded_travel_subtopics(name)]
+        assert orders == sorted(orders), name
+        assert len(orders) == len(set(orders)), name
+        assert min(orders) > highest, name
+        assert not taken & set(orders), name
         highest = max(orders)
 
 
@@ -662,6 +722,161 @@ def test_0079_seeds_the_two_news_verticals_and_its_rollback_spares_the_earlier_v
                 remaining
             )
             assert len(remaining) == before
+
+
+TRAVEL_SUBTOPIC_CHAIN = (
+    "0072_travel_guides",
+    "0074_lifestyle_guides",
+    "0075_finance_topic",
+    "0076_guide_topic_hierarchy",
+    "0080_crypto_and_tech_topics",
+    *TRAVEL_SUBTOPIC_MIGRATIONS,
+)
+
+
+def travel_subtopic_modules(monkeypatch):
+    modules = [migration(name) for name in TRAVEL_SUBTOPIC_CHAIN]
+    for module in modules:
+        monkeypatch.setattr(module.context, "is_offline_mode", lambda: False)
+    return modules
+
+
+def topic_rows(connection):
+    return {
+        row.slug: row
+        for row in connection.execute(
+            sa.select(
+                GuideTopic.slug,
+                GuideTopic.id,
+                GuideTopic.parent_id,
+                GuideTopic.section,
+                GuideTopic.display_order,
+                GuideTopic.names_json,
+                GuideTopic.descriptions_json,
+                GuideTopic.source,
+            )
+        )
+    }
+
+
+def test_0082_files_every_dish_under_food_and_its_rollback_takes_only_its_own_rows(monkeypatch):
+    """0082 adds no schema either. Every row it seeds is a travel child of ``food``, which
+    0072 seeded ten revisions earlier and which must come out of both directions exactly as
+    it went in. The rollback removes this revision's rows and the article links to them, and
+    nothing else: an article's link to ``food`` itself stays.
+
+    ``PRAGMA foreign_keys`` stays off for the reason the 0074 test gives.
+    """
+    *earlier, dishes = travel_subtopic_modules(monkeypatch)
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        Base.metadata.create_all(
+            connection,
+            tables=[
+                mapped_table(User),
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
+                mapped_table(GuideArticleTopic),
+            ],
+        )
+        with Operations.context(MigrationContext.configure(connection)):
+            for module in earlier:
+                module.upgrade()
+            before = topic_rows(connection)
+
+            dishes.upgrade()
+
+            rows = topic_rows(connection)
+            assert len(rows) == len(before) + len(dishes.TRAVEL_SEED_SUBTOPICS)
+            for slug, parent, order, labels in dishes.TRAVEL_SEED_SUBTOPICS:
+                assert rows[slug].parent_id == rows[parent].id, slug
+                assert (rows[slug].section, rows[slug].display_order, rows[slug].source) == (
+                    "travel",
+                    order,
+                    "seed",
+                )
+                assert rows[slug].names_json == dict(zip(dishes.LOCALES, labels, strict=True))
+                assert all(rows[slug].names_json.values()), slug
+            assert rows["cafe"].descriptions_json == dishes.TOPIC_DESCRIPTIONS["cafe"]
+            # The parent is somebody else's row: not a label, a lead or an order of it moves.
+            assert rows["food"] == before["food"]
+
+            article_id = uuid4()
+            now = datetime.now(UTC)
+            connection.execute(
+                mapped_table(GuideArticle).insert().values(
+                    id=article_id, slug="busan-dwaeji-gukbap-food-guide", kind="howto",
+                    destination_id="busan", valid_until=None, featured=False,
+                    display_order=100, is_active=True, version=1, created_at=now, updated_at=now,
+                )
+            )
+            for slug in ("kr-dwaeji-gukbap", "food"):
+                connection.execute(
+                    mapped_table(GuideArticleTopic).insert().values(
+                        id=uuid4(), article_id=article_id, topic_id=rows[slug].id
+                    )
+                )
+
+            # A re-run writes nothing, and neither a lead nor a label an editor rewrote is
+            # restored by one.
+            connection.execute(
+                sa.update(GuideTopic)
+                .where(GuideTopic.slug == "cafe")
+                .values(
+                    descriptions_json={"zh-TW": "自訂"},
+                    names_json={"zh-TW": "自訂名"},
+                )
+            )
+            dishes.upgrade()
+            kept = topic_rows(connection)
+            assert len(kept) == len(rows)
+            assert kept["cafe"].descriptions_json == {"zh-TW": "自訂"}
+            assert kept["cafe"].names_json == {"zh-TW": "自訂名"}
+
+            dishes.downgrade()
+
+            remaining = topic_rows(connection)
+            assert set(remaining) & set(dishes.SLUGS) == set()
+            assert remaining == before
+            linked = set(
+                connection.scalars(
+                    sa.select(GuideArticleTopic.topic_id).where(
+                        GuideArticleTopic.article_id == article_id
+                    )
+                )
+            )
+            assert linked == {before["food"].id}
+
+
+def test_0082_seeds_a_flat_vocabulary_when_food_is_gone(monkeypatch):
+    """A parent an administrator removed is no reason to skip its children, for the reason
+    0076 and 0080 give: the vocabulary is still complete, it is just flat there."""
+    *earlier, dishes = travel_subtopic_modules(monkeypatch)
+    engine = sa.create_engine("sqlite://")
+    with engine.begin() as connection:
+        Base.metadata.create_all(
+            connection,
+            tables=[
+                mapped_table(User),
+                mapped_table(GuideTopic),
+                mapped_table(GuideArticle),
+                mapped_table(GuideArticleLocale),
+                mapped_table(GuideArticleRevision),
+            ],
+        )
+        with Operations.context(MigrationContext.configure(connection)):
+            for module in earlier:
+                module.upgrade()
+            connection.execute(sa.delete(GuideTopic).where(GuideTopic.slug == "food"))
+
+            dishes.upgrade()
+
+            rows = topic_rows(connection)
+            for slug in dishes.SLUGS:
+                assert rows[slug].parent_id is None, slug
+                assert rows[slug].section == "travel", slug
 
 
 @pytest.mark.parametrize("fresh_metadata", [False, True])

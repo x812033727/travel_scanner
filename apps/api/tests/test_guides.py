@@ -40,7 +40,13 @@ from app.guides.models import (
 )
 from app.guides.publication import today
 from app.guides.router import admin_router, public_router
-from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS, seed_names
+from app.guides.taxonomy import (
+    LIFE_SEED_SUBTOPICS,
+    LIFE_SEED_TOPICS,
+    SEED_TOPICS,
+    TRAVEL_SEED_SUBTOPICS,
+    seed_names,
+)
 from app.models import AdminAuditLog, AffiliateClick, User
 from app.problems import AppError, app_error_handler, validation_error_handler
 
@@ -139,6 +145,24 @@ async def database(request, tmp_path) -> AsyncIterator[async_sessionmaker[AsyncS
                     section="life",
                     source="seed",
                     parent_id=parents[parent],
+                )
+            )
+        # And the dishes and ``cafe`` under ``food``, as 0082 seeds them.
+        travel_parents = {
+            row.slug: row.id
+            for row in await session.scalars(
+                select(GuideTopic).where(GuideTopic.section == "travel")
+            )
+        }
+        for order, (slug, parent, labels) in enumerate(TRAVEL_SEED_SUBTOPICS):
+            session.add(
+                GuideTopic(
+                    slug=slug,
+                    names_json=seed_names(labels),
+                    display_order=1000 + order * 10,
+                    section="travel",
+                    source="seed",
+                    parent_id=travel_parents[parent],
                 )
             )
         await session.commit()
@@ -1496,7 +1520,7 @@ async def test_topics_belong_to_one_section_and_are_refused_in_the_other(
         ]
         assert [row["slug"] for row in life_rows] == parents + children
         unfiltered = (await api.get("/guides/topics", params={"locale": "zh-TW"})).json()["topics"]
-        assert len(unfiltered) == len(life_rows) + 19
+        assert len(unfiltered) == len(life_rows) + len(SEED_TOPICS) + len(TRAVEL_SEED_SUBTOPICS)
 
         # A travel topic on a lifestyle article, and the reverse, are both refused -- on
         # create and on update, because `topics` is optional and would otherwise be a way in.
@@ -1608,6 +1632,55 @@ def test_the_seeded_sub_topics_hang_under_a_seeded_parent_and_collide_with_nothi
         assert parent in parents, slug
         names = seed_names(labels)
         assert set(names) == set(LOCALES) and all(value.strip() for value in names.values()), slug
+    assert set(children) & {slug for slug, _, _ in TRAVEL_SEED_SUBTOPICS} == set()
+
+
+def test_the_travel_sub_topics_hang_under_a_travel_parent_and_collide_with_nothing() -> None:
+    """The same rules for the dishes and ``cafe`` under ``food``. A topic slug is global and
+    is also a URL (``/guides/topics/<slug>``), so it must be one the admin API would accept,
+    and it must not be one of the three words the router keeps for itself."""
+    from app.discovery.taxonomy import LABELS
+    from app.guides.admin_service import RESERVED_SLUGS
+    from app.guides.schemas import SLUG_PATTERN
+    from app.i18n import LOCALES
+
+    parents = {slug for slug, _ in SEED_TOPICS}
+    children = [slug for slug, _, _ in TRAVEL_SEED_SUBTOPICS]
+    assert len(set(children)) == len(children)
+    taken = (
+        parents
+        | {slug for slug, _ in LIFE_SEED_TOPICS}
+        | {slug for slug, _, _ in LIFE_SEED_SUBTOPICS}
+        | set(LABELS)
+        | set(RESERVED_SLUGS)
+    )
+    assert set(children) & taken == set()
+    for slug, parent, labels in TRAVEL_SEED_SUBTOPICS:
+        assert parent in parents, slug
+        assert SLUG_PATTERN.fullmatch(slug) and len(slug) <= 64, slug
+        names = seed_names(labels)
+        assert set(names) == set(LOCALES) and all(value.strip() for value in names.values()), slug
+
+
+def test_a_dish_sub_topic_is_named_as_the_dish_catalog_names_the_dish() -> None:
+    """A dish hub that shares its slug with a seeded dish is the same dish, so the two must
+    not drift apart: the hub's Korean and Traditional Chinese labels are the dish's names.
+    The four below were in the catalog before the hubs existed; a dish seeded later under a
+    hub's slug joins the comparison by itself."""
+    from app.foods.catalog import FOOD_SEEDS
+
+    dishes = {seed.slug: seed for seed in FOOD_SEEDS}
+    twins = [
+        (slug, seed_names(labels))
+        for slug, _, labels in TRAVEL_SEED_SUBTOPICS
+        if slug in dishes
+    ]
+    assert {"kr-naengmyeon", "kr-samgyetang", "kr-tteokbokki", "kr-bibimbap"} <= {
+        slug for slug, _ in twins
+    }
+    for slug, names in twins:
+        assert names["ko"] == dishes[slug].local_name, slug
+        assert names["zh-TW"] == dishes[slug].name, slug
 
 
 async def test_a_parent_topic_filter_includes_its_children(database, actor) -> None:
@@ -1650,6 +1723,65 @@ async def test_a_parent_topic_filter_includes_its_children(database, actor) -> N
                 "counts": {},
             }
         ]
+
+
+async def test_a_food_special_filed_under_its_dish_alone_still_answers_the_food_filter(
+    database, actor
+) -> None:
+    """A special carries its dish and nothing else, because the reader's breadcrumb is built
+    from an article's first topic in display order and ``food`` would come first. It must
+    lose nothing by that: the ``food`` filter and the ``food`` count both include it, the
+    dish hub gathers the same dish across cities, and the chip names its parent."""
+    async with client(make_app(database, actor)) as api:
+        busan = await create_article(
+            api, slug="busan-dwaeji-gukbap-food-guide", kind="howto",
+            destination_id="busan", topics=["kr-dwaeji-gukbap"],
+        )
+        await publish(api, busan["id"], "zh-TW", busan["version"])
+        seoul = await create_article(
+            api, slug="seoul-dwaeji-gukbap-food-guide", kind="howto",
+            destination_id="seoul", topics=["food", "kr-dwaeji-gukbap"],
+        )
+        await publish(api, seoul["id"], "zh-TW", seoul["version"])
+        general = await create_article(
+            api, slug="korea-food-guide-must-eat", kind="howto", destination_id=None,
+            topics=["food"],
+        )
+        await publish(api, general["id"], "zh-TW", general["version"])
+
+        async def slugs(**params):
+            response = await api.get("/guides", params={"locale": "zh-TW", **params})
+            assert response.status_code == 200, response.text
+            return sorted(item["slug"] for item in response.json()["articles"])
+
+        specials = ["busan-dwaeji-gukbap-food-guide", "seoul-dwaeji-gukbap-food-guide"]
+        assert await slugs(topic="food") == sorted([*specials, "korea-food-guide-must-eat"])
+        assert await slugs(topic="kr-dwaeji-gukbap") == specials
+        assert await slugs(topic="kr-dwaeji-gukbap", destination="busan") == specials[:1]
+        assert await slugs(topic="cafe") == []
+
+        response = await api.get("/guides/topics", params={"locale": "zh-TW", "section": "travel"})
+        assert response.status_code == 200, response.text
+        rows = {item["slug"]: item for item in response.json()["topics"]}
+        assert rows["food"]["count"] == 3 and rows["food"]["parent"] is None
+        assert rows["kr-dwaeji-gukbap"]["count"] == 2
+        assert rows["kr-dwaeji-gukbap"]["parent"] == "food"
+        assert rows["kr-dwaeji-gukbap"]["label"] == "豬肉湯飯"
+        assert rows["cafe"]["count"] == 0
+        # Parents first in display order, then each parent's children in theirs.
+        order = [item["slug"] for item in response.json()["topics"]]
+        assert order.index("beach") < order.index("cafe") < order.index("kr-dwaeji-gukbap")
+
+        # A dish is a travel topic like any other: a lifestyle article may not carry it.
+        wrong_section = await api.post(
+            "/admin/guides",
+            json={
+                "slug": "gukbap-at-home", "kind": "life", "destination_id": None,
+                "topics": ["kr-dwaeji-gukbap"], "document": document(),
+            },
+        )
+        assert wrong_section.status_code == 422
+        assert wrong_section.json()["code"] == "guide_topic_section_mismatch"
 
 
 async def test_the_vocabulary_counts_published_articles_per_locale(database, actor) -> None:
