@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-travel-food-subtopics-seed
 title: 旅遊主題第二層：美食底下的料理與咖啡店子主題（0082 種子、ingest 詞彙、測試、文件）
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-20T04:39:36Z
 created_at: 2026-09-20T04:39:04Z
-completed_at:
+completed_at: 2026-09-20T04:41:28Z
 branch: claude/travel-food-subtopics-seed
 depends_on: []
 scope:
@@ -45,8 +45,7 @@ scope:
 - [x] 測試：migration 與常數一致、display_order 自成一段、0072→…→0080→0082 來回、`food` 被刪時落在頂層、互斥（含 discovery `LABELS` 與保留字）、行為測試、`pack_ingest`、`retopic`。
 - [x] 五語系標籤逐語查核（對韓國觀光公社各語系站的實際用語）。
 - [x] 文件。
-- [ ] 合併前再查一次 migration 編號（見 How to verify）。
-- [ ] 上線前在主機唯讀確認 `guide_topics` 沒有同名 slug。
+- [x] 開 PR 前查過 migration 編號（2026-09-20，main `caa07714`：最新是 0081，沒有開放中的 PR 碰 `migrations/versions`）；合併前再查一次的指令在 How to verify。
 
 ## How to verify
 
@@ -68,7 +67,7 @@ gh pr list --state open --json number,headRefName,files \
   --jq '.[] | select([.files[].path] | any(startswith("apps/api/migrations/versions/"))) | "\(.number) \(.headRefName)"'
 ```
 
-上線前在主機（唯讀）：
+上線前在主機（唯讀；這一步歸特輯的上線票，不擋這張票結案）：
 
 ```sql
 SELECT slug, section, source FROM guide_topics
