@@ -281,13 +281,14 @@ def document_fields(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
             "heading": {"text": 200},
             "paragraph": {"text": 4000},
             "link": {"text": 200},
-            "image": {"alt": 200, "caption": 300},
+            "image": {"alt": 200, "caption": 300, "description": 4000},
             "callout": {"title": 80, "text": 2000},
             "offer": {"heading": 120},
             "partner_link": {"label": 80, "note": 200},
             "code": {"label": 160},
             "table": {"caption": 200},
             "list": {},
+            "summary": {},
             "rich_paragraph": {},
         }
         if kind not in keys:
@@ -297,6 +298,9 @@ def document_fields(document: dict[str, Any]) -> dict[str, dict[str, Any]]:
         if kind == "list":
             for item_index, value in enumerate(block["items"]):
                 add(f"{prefix}/items/{item_index}", value, 2000)
+        elif kind == "summary":
+            for item_index, value in enumerate(block["items"]):
+                add(f"{prefix}/items/{item_index}", value, 300)
         elif kind == "table":
             for column, value in enumerate(block["header"]):
                 add(f"{prefix}/header/{column}", value, 120)
@@ -953,7 +957,9 @@ def materialize(
         if pointer.startswith("/document/"):
             set_pointer(document, pointer.removeprefix("/document"), value)
     localize_verified_site_links(document, job["locale"])
-    assets = []
+    # Check all paired descriptions before writing any SVG. A full translation
+    # must not silently lose its reviewed image description to SVG backfill.
+    rendered_assets = []
     for index, asset in enumerate(job["assets"]):
         root, slots = svg_slots(asset["source_svg"])
         for slot_index, (node, attribute) in enumerate(slots):
@@ -964,6 +970,22 @@ def materialize(
             if description_node is not None
             else None
         )
+        if localized_description:
+            for reference in asset["references"]:
+                description_pointer = (
+                    f"/document{reference['pointer'].removesuffix('/src')}/description"
+                )
+                if (
+                    description_pointer in job["fields"]
+                    and translations[description_pointer] != localized_description
+                ):
+                    raise ValueError(
+                        f"{description_pointer}: translation differs from SVG <desc>"
+                    )
+        rendered_assets.append((asset, root, localized_description))
+
+    assets = []
+    for asset, root, localized_description in rendered_assets:
         target = contained(directory / "assets", asset["target_svg"].lstrip("/"))
         target.parent.mkdir(parents=True, exist_ok=True)
         write_text_lf(target, canonical_svg_text(ET.tostring(root, encoding="unicode")))
