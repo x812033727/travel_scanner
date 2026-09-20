@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-localize-four-tokyo-first-trip-guides
 title: Localize four Tokyo first-trip guides and diagrams
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch007-source-pr
 claimed_at: 2026-09-20T14:39:09Z
 created_at: 2026-09-20T12:47:01Z
 completed_at:
-branch:
+branch: codex/batch007-source-corrections
 depends_on: []
 scope:
   - apps/api/app/guides/content/narita-haneda-to-tokyo.json
@@ -86,6 +86,8 @@ in the release branch. No import, PR or publication is authorized by this task a
 
 ## Published-source correction checkpoint (2026-09-20)
 
+- Source-only PR [#603](https://github.com/x812033727/travel_scanner/pull/603)
+  is open for review; the full five-language task is still unfinished.
 - The independent review at
   `C:\Users\x8120\.codex\article-localization-release\batch007-tokyo-provisional\independent-review-HOLD.md`
   identified seven zh-TW source issues; its SHA-256 is
