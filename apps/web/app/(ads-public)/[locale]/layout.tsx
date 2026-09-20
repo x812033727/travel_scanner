@@ -5,6 +5,8 @@ import { getAdsenseSlot } from "@/lib/adsense.server";
 
 export { generateMetadata, generateStaticParams } from "@/app/[locale]/layout";
 
+const filterableTutorialHub = /^\/(?:en|ja|ko|zh-TW|zh-CN)\/life\/(?:codex-learning-hub|claude-code-tutorials)\/?$/;
+
 /**
  * A second document root for the two article routes, and nothing else.
  *
@@ -27,8 +29,13 @@ export default async function AdsPublicLayout({ children, params }: {
   const ads = await getAdsenseSlot();
   if (!ads.enabled) return OriginalLocaleLayout({ children, params });
   const requestPath = (await headers()).get("x-travel-pathname") || "";
+  const pathname = requestPath.split("?")[0];
+  // These directories write search terms and filters into the URL after hydration. Keep
+  // the whole document ad-free: redirecting would break its shareable filters, while
+  // loading the vendor on the clean URL would still let it observe later URL changes.
+  if (filterableTutorialHub.test(pathname)) return OriginalLocaleLayout({ children, params });
   // Third-party code can read location.href for itself, so a clean article URL is the only
   // way to keep a reader's search terms or campaign tags out of the ad document.
-  if (requestPath.includes("?")) redirect(requestPath.split("?")[0]);
+  if (requestPath.includes("?")) redirect(pathname);
   return OriginalLocaleLayout({ children, params, ads });
 }

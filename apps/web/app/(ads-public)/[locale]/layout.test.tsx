@@ -52,4 +52,17 @@ describe("the article document root", () => {
     expect(redirect).not.toHaveBeenCalled();
     expect(original).toHaveBeenCalledTimes(1);
   });
+
+  it.each(["codex-learning-hub", "claude-code-tutorials"])(
+    "keeps the %s filter URL and omits ads for the document lifetime",
+    async (slug) => {
+      incoming.mockResolvedValue(new Headers({
+        "x-travel-pathname": `/zh-TW/life/${slug}?q=AGENTS.md&unit=D`,
+      }));
+      await AdsPublicLayout({ children: <p>Tutorial directory</p>, params });
+      expect(redirect).not.toHaveBeenCalled();
+      expect(original).toHaveBeenCalledTimes(1);
+      expect(original.mock.calls[0][0].ads).toBeUndefined();
+    },
+  );
 });
