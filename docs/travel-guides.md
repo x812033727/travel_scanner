@@ -81,10 +81,25 @@ children's articles too (`taxonomy.topic_ids_including_children`), and `GET /gui
 returns each topic's `parent`, its hub lead (`descriptions_json`, per locale) and how many
 articles each locale publishes under it (`count`, `counts`; a parent counts the distinct
 union of itself and its children). `tutorial` is deliberately not a parent: it marks the
-format of most lifestyle articles, not their subject. The travel vocabulary stays one level;
-its second axis is the destination, grouped by country (`?country=japan`, mapped to the
-catalog's cities by `service.destinations_in_country`, and `GET /guides/destinations` for
-the hub's country groups). Three slugs are refused as article slugs -- `topics`, `series`,
+format of most lifestyle articles, not their subject. The travel vocabulary's second axis is
+the destination, grouped by country (`?country=japan`, mapped to the catalog's cities by
+`service.destinations_in_country`, and `GET /guides/destinations` for the hub's country
+groups), and it is one level deep everywhere except under `food`. A food special is written
+one dish and one city at a time (「豬肉湯飯｜釜山美食特輯」, 「豬肉湯飯｜首爾美食特輯」), and
+the destination axis cannot gather one dish across cities, so `0082_travel_food_subtopics`
+seeds a sub-topic per dish under `food`, plus `cafe` (`taxonomy.TRAVEL_SEED_SUBTOPICS`). A
+dish sub-topic is spelled as `app/foods/catalog.py` spells a dish (`kr-` and the Revised
+Romanization), so a seeded dish and its hub share a slug and a test holds their Korean and
+Traditional Chinese names identical; a hub that several dishes share has a slug no dish
+will take (`kr-bbq`, `kr-beef-bone-soup`). **A special carries its sub-topic alone, not
+`food` as well.** `?topic=food` and the `food` hub list it either way, but the reader's
+breadcrumb is built from an article's first topic in display order, which would be `food`
+and would leave the dish out; alone, the trail reads 攻略 › 美食 › 豬肉湯飯. Neither `food` nor
+a dish maps to a partner module (`apps/web/lib/guide-affiliate.ts`), so a special ends with
+no partner panel, which is the editorial rule for food articles anyway; adding `culture` or
+`viewpoint` to one would bring the activities panel back. The one thing the lone sub-topic
+costs is the admin list's topic filter, which matches a slug exactly: filter by the dish.
+Three slugs are refused as article slugs -- `topics`, `series`,
 `search` -- because the web routes own those path segments. The vocabulary, the rules that
 re-file existing packs (`app/guides/retopic.py`) and the phases that build on this live in
 [`docs/article-architecture.md`](article-architecture.md).
@@ -951,10 +966,13 @@ unreachable in production: `/admin/guides` was in the web fallback navigation bu
 `NAVIGATION_REGISTRY`, so the layout answered "forbidden". The frozen `lastmod` was the
 last API-side defect and is fixed by `modified_at` (see Publication).
 
-One remains of the two filed while the lifestyle section was planned:
-
-- `tasks/open/2026-09-12-guide-topic-admin-crud.md` — a topic still needs a seed migration,
-  which contradicts what this file and `GuideTopic`'s own docstring promise.
+Both of the two filed while the lifestyle section was planned are closed.
+`tasks/done/2026-09-12-guide-topic-admin-crud.md` gave editors `POST` and `PUT
+/admin/guides/topics`, so a topic an editor files articles under by hand no longer needs a
+deploy. A topic a **content pack** names still needs a seed migration, and that is by design
+rather than a gap: `pack_ingest._known_topics` reads the tuples in `app/guides/taxonomy.py`,
+because a pack has to import into a fresh database, and a fresh database holds exactly what
+the migrations seeded. `0080` and `0082` are the pattern.
 
 The other, a `link` block that published tracked URLs undisclosed and uncounted, was closed
 by the partner-link work: tracked ordinary URLs are refused on write and paid links have a
