@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-tutorial-hub-query-ads
 title: Preserve tutorial hub filters when ads are enabled
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: gpt-6
 claimed_at: 2026-09-20T05:59:14Z
 created_at: 2026-09-20T05:59:13Z
-completed_at:
+completed_at: 2026-09-20T07:31:08Z
 branch: codex/tutorial-hub-query-ads
 depends_on: []
 scope:
@@ -35,7 +35,7 @@ production, even though the client-side controls and local tests pass.
 
 - [x] Exempt only the two URL-filtered tutorial directory routes from the advertised layout.
 - [x] Add regression coverage for both hubs and retain the generic article privacy test.
-- [ ] Verify the exact production URL after merge and deployment.
+- [x] Verify the exact production URL after merge and deployment.
 
 ## How to verify
 
@@ -51,5 +51,7 @@ would not protect later client-side URL changes, so the complete interactive doc
 use the ordinary ad-free locale layout.
 
 Local verification: the focused ads-public layout suite passed 6/6; web lint, web typecheck,
-and the task registry check passed. Production verification remains gated on PR CI, exact
-merge, and deployment.
+and the task registry check passed. At that checkpoint, production verification was still
+gated on PR CI, exact merge, and deployment.
+
+PR #583 merged with its required checks green. Production SHA `6532eaa6e7e9d5a34b94cfe8f8a62ed2e0fba9a1` returns 200 for the Codex and Claude Code hub query URLs. Signed-out Edge confirmed Codex search/unit values and browser history across five locales, and Claude Code `q=CLAUDE.md&level=beginner` survives a reload with no ad script in the document. The full receipt is `docs/codex-learning/production-release-2026-09-20.md`.

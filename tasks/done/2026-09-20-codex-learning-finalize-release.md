@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-codex-learning-finalize-release
 title: Finish, publish, and deploy the Codex learning center
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: gpt-6
 claimed_at: 2026-09-20T01:16:22Z
 created_at: 2026-09-20T01:15:00Z
-completed_at:
+completed_at: 2026-09-20T07:31:03Z
 branch: codex/codex-learning-finalize
 depends_on: []
 scope:
@@ -110,16 +110,16 @@ PR #525 merged the five-language 60-lesson Codex learning center and its shared 
 - [x] Replace the sparse five-language hub body with searchable/filterable usage guidance, ten A-J study routes, publication-gated starting points, state/evidence labels, and current official-source dates.
 - [x] Rebuild the generated author files and content packs, preserving code, source, image, slug, and navigation contracts.
 - [x] Pass affected content, compiler, API, frontend, browser, build, task, and import checks, including 360/390/1280 responsive page acceptance.
-- [ ] Open a reviewable PR only after local completion, obtain green CI, merge the exact reviewed head, and verify the remote merge.
-- [ ] Back up and deploy the exact green merged SHA, import and publish the hub plus all 60 lessons in five locales, and verify public signed-out pages and navigation.
+- [x] Open a reviewable PR only after local completion, obtain green CI, merge the exact reviewed head, and verify the remote merge.
+- [x] Back up and deploy the exact green merged SHA, import and publish the hub plus all 60 lessons in five locales, and verify public signed-out pages and navigation.
 
 ## Steps
 
 - [x] Recheck current official product documentation and implement the editorial fixes.
 - [x] Rebuild, audit, and complete the missing editorial evidence.
 - [x] Run local API/import and browser acceptance against the final content.
-- [ ] Create, validate, and merge the finalization PR.
-- [ ] Perform the guarded production release, publish content, and verify the live site.
+- [x] Create, validate, and merge the finalization PR.
+- [x] Perform the guarded production release, publish content, and verify the live site.
 
 ## How to verify
 
@@ -132,3 +132,5 @@ The earlier broad parent task overlaps active guide/API work. This task uses exa
 All official product facts were rechecked against OpenAI documentation on 2026-09-20. The rebuilt set contains the hub plus 60 lesson packs, each with five locales and a rendered summary block; the remaining gates are final local acceptance, PR/CI/merge, and production publication.
 
 Final local acceptance passed: Next production build generated 308 static pages; frontend Vitest passed 3,217 tests; API Pytest passed 3,980 tests with 343 integration skips under UTF-8 mode; tool tests passed 75 with one Windows-only skip; Codex reference checks passed 94; and the browser report passed 915 page checks with five recorded first-attempt fixture retries. This host has neither Docker nor PostgreSQL, so the database-difference `guides-import --dry-run` stopped at the expected loopback connection refusal after loading all 61 whitelisted packs. Repeat that read-only dry-run against production after deployment and before `--publish`.
+
+PR #578 merged the completed 61-pack series, and PR #583 merged the tutorial-hub query fix; their reviewed commits and required checks passed. The guarded production release published 300 article locale documents and 5 hub locale documents, then deployed green main SHA `6532eaa6e7e9d5a34b94cfe8f8a62ed2e0fba9a1`. A fresh 123,585,075-byte PostgreSQL custom-format backup passed `pg_restore --list`, and the database/Redis containers were preserved. The post-deploy import preview reports 305 `unchanged` documents and no pending publication. Signed-out Edge deep QA passed 300 articles, 5 hubs and 317 checks; 390px/1280px samples and Claude Code hub filter reload also passed. Production Codex link findings are zero in every locale. See `docs/codex-learning/production-release-2026-09-20.md` and its structured receipt for precise hashes, retry counts and untested devices.

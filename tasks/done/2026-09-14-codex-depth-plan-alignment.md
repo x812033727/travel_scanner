@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-codex-depth-plan-alignment
 title: Align Codex deep tutorials with Claude Code plan
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: gpt-6
+claimed_at: 2026-09-20T07:32:03Z
 created_at: 2026-09-14T02:23:07Z
-completed_at:
+completed_at: 2026-09-20T07:32:17Z
 branch: codex/codex-learning-complete
 depends_on: []
 scope:
@@ -48,5 +48,7 @@ scope:
 2026-09-14 本輪依使用者「繼續規劃深入教學」補上 deepening/README.md、unit-a.md 至 unit-j.md 及 review-checklist.md。60 篇規格與現有草稿逐篇連結，以五篇代表稿先行、六組各十篇核對。規格中的成功／失敗案例與圖片是下一輪要求，不代表新增實測結果。
 
 驗證通過：十單元各六篇、60 個穩定 ID／slug／單元／次序、240 個作者稿連結、60 個五語內容包連結、1,101 個相對連結與必要錨點，以及六組十篇的完整覆蓋。npm run check:tasks 通過 412 個任務檔；其他任務既有警告保留。
+
+2026-09-20 收尾：本規劃的七項完成條件均已實作並保留五語課程結構；60 篇與總目錄已公開，正式發布結果見 `docs/codex-learning/production-release-2026-09-20.md`。此任務只負責與 Claude Code 課程的規劃對齊，代表篇實際產品介面證據仍由原系列／內容任務追蹤，不算入本規劃完成條件。
 
 目前 60 篇五語草稿已編譯；本輪只完成深入製作規劃，最終深入驗收仍 0/60。預覽啟動被自動核准審查拒絕（blocked by policy，未提供具體理由），產品操作與圖文終審仍待完成；原系列任務保留 blocked。本規劃保存後釋放持有，文章補強由對應內容任務接續，不提前開 PR、匯入、發布或部署。
