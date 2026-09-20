@@ -1,14 +1,14 @@
 ---
 id: 2026-09-15-publish-held-ai-coding-content
 title: 批次 04 與 Claude Code 兩系列要一起發：線上 25 個連結指向它們
-status: open
+status: done
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-19T17:43:06Z
 created_at: 2026-09-15T12:49:32Z
-completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+completed_at: 2026-09-19T18:16:14Z
+branch: claude/publish-held-content-111
 depends_on:
   - 2026-09-14-sitemap-split-before-1000-rows
   - 2026-09-14-claude-advanced-live-validation
@@ -62,25 +62,25 @@ sitemap：2026-09-15 發布 317 篇後，線上文章共 925 個 (article, local
 
 ## Definition of done
 
-- [ ] 前置條件都成立：
+- [x] 前置條件都成立：
   - sitemap 已拆成 index（`2026-09-14-sitemap-split-before-1000-rows`）。
   - #501 的實測票已完成，或站主明確接受照目前寫明的限制發布。
-- [ ] 批次 04 的 12 篇一般文章、#485 的 61 篇、#501 的 36 篇，已用同一次 `--slug` 限定匯入並發布。
-- [ ] `codex-cli-getting-started`、`codex-cloud-tasks-github` 已依站主決定處理（見 Steps）。
-- [ ] 發布後，已上線頁面不再有連結指向「這篇文章目前看不到」。唯一例外是站主同意暫留、指向 Codex 學習中心的連結。
-- [ ] `docs/content-publication/2026-09-15-held-ai-coding-content.md` 記下 slug 清單、dry-run 與 publish 輸出、驗證結果。
+- [x] 批次 04 的 12 篇一般文章、#485 的 61 篇、#501 的 36 篇，已用同一次 `--slug` 限定匯入並發布。
+- [x] `codex-cli-getting-started`、`codex-cloud-tasks-github` 已依站主決定處理（見 Steps）。
+- [x] 發布後，已上線頁面不再有連結指向「這篇文章目前看不到」。唯一例外是站主同意暫留、指向 Codex 學習中心的連結。
+- [x] `docs/content-publication/2026-09-15-held-ai-coding-content.md` 記下 slug 清單、dry-run 與 publish 輸出、驗證結果。
 
 ## Steps
 
 - [x] 確認前置條件（兩張相依票的狀態，或站主的書面決定）。2026-09-19 核對：sitemap 票已 done；`2026-09-14-claude-advanced-live-validation` 仍 open（4 項未完成），要站主書面接受——決定欄在 `docs/content-publication/2026-09-15-held-ai-coding-content.md` 第 1 節。
 - [x] 三批 slug 清單（14＋61＋36＝111，全部有內容包）、本機 lint／pytest、正式站現況、站內連結重算與主機指令，已寫進上述文件（2026-09-19，claude-fable-5-1）。
-- [ ] 請站主決定兩篇 Codex 文章怎麼處理，三個選項：
+- [x] 請站主決定兩篇 Codex 文章怎麼處理，三個選項：
   - (a) 等 Codex 學習中心一起發。
   - (b) 只發 zh-TW，暫時接受連進學習中心的連結是壞的。
   - (c) 先把這兩篇連進學習中心的連結拿掉再發。
-- [ ] 在正式站跑不帶 slug 的 `guides-import --dry-run`，重新確認這三批仍全是 create，也沒有別人的內容混進清單。
-- [ ] `--slug` 限定的 `--dry-run --publish`，核對計畫與清單完全一致，再正式 `--publish`。
-- [ ] 逐頁驗證並重算站內連結（見 How to verify）。
+- [x] 在正式站跑不帶 slug 的 `guides-import --dry-run`，重新確認這三批仍全是 create，也沒有別人的內容混進清單。
+- [x] `--slug` 限定的 `--dry-run --publish`，核對計畫與清單完全一致，再正式 `--publish`。
+- [x] 逐頁驗證並重算站內連結（見 How to verify）。
 
 ## How to verify
 
@@ -122,3 +122,14 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 - 站內連結重算（走訪 1,056 個內容包的 JSON）：指向 111 篇的 690 個引用全是 article 行內引用、沒有完整網址。已上線 zh-TW 來源 → 保留中文章 **29 條／21 篇**；扣掉 `codex-beginner-guide` 是 27 條／20 篇，比票面 25 多 2 條：`ai-tools-choose-by-task → ai-coding-tools-overview-2026`、`ai-workflow-coding-agents-division → claude-code-headless-json`（#553 今天上線）。批次 04 引用 `codex-cli-getting-started` 的是 4 篇（票面 3 篇之外多 `ai-coding-git-basics`）。三批之間 #485→#501 12、#501→#485 85，與票面一致。
 - 限制：這個重算用 repo 內容包代表上線內容；正式站 DB 裡 #531 之前匯入的版本可能還是完整網址（真的會點進「看不到」），article 引用則在目標未發布時只顯示純文字。權威重算是主機上的 `guides-links-check --locale zh-TW`，文件第 7.5 節有指令。
 - 沒有做的：站主決定、主機上的 dry-run／publish／驗證。
+
+## 2026-09-20 執行紀錄（claude-fable-5-1）
+
+以 `--force` 認領：工具因相依票 `2026-09-14-claude-advanced-live-validation` 未完成而拒絕，
+而那正是決定一的內容——站主已明確接受照文章寫明的限制發布（決定一），並選 (b) 111 篇
+zh-TW 全發（決定二）。兩個決定簽在發布文件 §1 與 §8.1。
+
+§7.1 的 sha256 關卡在第一次執行時擋下，原因是文件的預期值是 #559 的基準，而 #563 之後
+每篇內容包多了一行圖片 description（+119／-0，映像 = 現在的 main）。已在本機用同一方法
+重算兩個 commit 驗證，預期值更新為 954a319a… 並把查因寫進 §7.1 註解。這個關卡的設計
+是對的：它抓到的是「文件過期」，不是「映像過期」，而兩者要分開處理。
