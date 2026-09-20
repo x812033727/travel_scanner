@@ -1181,23 +1181,59 @@ def mcp_servers(
 
 
 def child_config_args(
-    config: dict[str, Any], effective_names: Iterable[str] = ()
+    config: dict[str, Any], effective_servers: Iterable[dict[str, Any]] = ()
 ) -> list[str]:
     # Codex merges user, project, system, and managed config. Build overrides from
-    # the effective inventory as well as the user file, then verify the merged child.
+    # the unoverridden effective inventory, then verify the merged child. A disabled
+    # server still needs a valid transport because Codex validates transport before
+    # applying `enabled=false`.
     configured = config.get("mcp_servers", {})
     if not isinstance(configured, dict):
         raise TypeError("MCP configuration needs explicit CLI override review")
-    names = set(configured) | set(effective_names)
+    inventory: dict[str, dict[str, Any]] = {}
+    for server in effective_servers:
+        if not isinstance(server, dict) or not isinstance(server.get("name"), str):
+            raise TypeError("Codex MCP inventory was invalid; no translation started")
+        name = server["name"]
+        if name in inventory:
+            raise ValueError("Codex MCP inventory had duplicate servers")
+        inventory[name] = server
+    names = set(configured) | set(inventory)
     # Codex splits override paths on dots; quoted segments create a different server
     # whose missing transport prevents config loading. Refuse ambiguous server names.
     if any(not re.fullmatch(r"[A-Za-z0-9_-]+", name) for name in names):
         raise ValueError("MCP server names need explicit CLI override review")
-    return [
-        part
-        for name in sorted(names)
-        for part in ["-c", f"mcp_servers.{name}.enabled=false"]
-    ]
+    missing = set(configured) - set(inventory)
+    if missing:
+        raise ValueError("configured MCP server was missing from effective inventory")
+
+    args: list[str] = []
+    for name in sorted(inventory):
+        transport = inventory[name].get("transport")
+        if not isinstance(transport, dict):
+            raise TypeError("MCP server transport needs explicit CLI override review")
+        transport_type = transport.get("type")
+        if transport_type == "stdio":
+            key = "command"
+        elif transport_type == "streamable_http":
+            key = "url"
+        else:
+            raise ValueError("MCP server transport needs explicit CLI override review")
+        value = transport.get(key)
+        if not isinstance(value, str) or not value:
+            raise ValueError(f"{transport_type} MCP server is missing {key}")
+        # JSON string syntax is valid TOML basic-string syntax. Only the minimum
+        # transport locator is forwarded; env, headers, and token fields are ignored.
+        literal = json.dumps(value, ensure_ascii=False)
+        args.extend(
+            [
+                "-c",
+                f"mcp_servers.{name}.{key}={literal}",
+                "-c",
+                f"mcp_servers.{name}.enabled=false",
+            ]
+        )
+    return args
 
 
 def preflight_child_config(
@@ -1420,9 +1456,7 @@ def main() -> int:
     # Documented dotted configuration overrides apply to this child invocation only.
     # No tools are needed for string translation; avoid unrelated MCP startup overhead.
     effective_servers = mcp_servers(codex, [], child_env)
-    config_args = child_config_args(
-        config, (server["name"] for server in effective_servers)
-    )
+    config_args = child_config_args(config, effective_servers)
     preflight_child_config(codex, config_args, child_env)
     # Fail before spending any usage if the caller did not use the API environment.
     sys.path.insert(0, str(ROOT / "apps/api"))

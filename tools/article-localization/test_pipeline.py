@@ -80,18 +80,51 @@ def sample():
 class PipelineTests(unittest.TestCase):
     def test_child_overrides_cover_effective_config_layers_and_preflight(self):
         config = {"mcp_servers": {"node_repl": {}, "unityMCP": {}}}
-        args = pipeline.child_config_args(config, {"managed_server"})
+        effective_servers = [
+            {
+                "name": "node_repl",
+                "enabled": True,
+                "transport": {
+                    "type": "stdio",
+                    "command": r"C:\Program Files\Codex\node.exe",
+                    "args": ["server.js"],
+                    "env": {"MCP_TOKEN": "never-forward-this"},
+                },
+            },
+            {
+                "name": "unityMCP",
+                "enabled": True,
+                "transport": {
+                    "type": "streamable_http",
+                    "url": "http://127.0.0.1:8080/mcp",
+                    "http_headers": {"Authorization": "never-forward-this"},
+                },
+            },
+            {
+                "name": "managed_server",
+                "enabled": True,
+                "transport": {"type": "stdio", "command": "managed-mcp"},
+            },
+        ]
+        args = pipeline.child_config_args(config, effective_servers)
         self.assertEqual(
             args,
             [
                 "-c",
+                'mcp_servers.managed_server.command="managed-mcp"',
+                "-c",
                 "mcp_servers.managed_server.enabled=false",
                 "-c",
+                'mcp_servers.node_repl.command="C:\\\\Program Files\\\\Codex\\\\node.exe"',
+                "-c",
                 "mcp_servers.node_repl.enabled=false",
+                "-c",
+                'mcp_servers.unityMCP.url="http://127.0.0.1:8080/mcp"',
                 "-c",
                 "mcp_servers.unityMCP.enabled=false",
             ],
         )
+        self.assertNotIn("never-forward-this", " ".join(args))
         with patch.object(
             pipeline.subprocess,
             "run",
@@ -135,6 +168,25 @@ class PipelineTests(unittest.TestCase):
             pipeline.mcp_servers("codex", [])
         with self.assertRaisesRegex(ValueError, "override review"):
             pipeline.child_config_args({"mcp_servers": {"ambiguous.name": {}}})
+
+    def test_child_overrides_reject_invalid_effective_transports(self):
+        invalid_servers = [
+            ({"name": "unknown", "transport": {"type": "sse"}}, "review"),
+            ({"name": "stdio", "transport": {"type": "stdio"}}, "missing command"),
+            (
+                {
+                    "name": "http",
+                    "transport": {"type": "streamable_http", "url": ""},
+                },
+                "missing url",
+            ),
+        ]
+        for server, message in invalid_servers:
+            with (
+                self.subTest(server=server),
+                self.assertRaisesRegex(ValueError, message),
+            ):
+                pipeline.child_config_args({}, [server])
 
     def test_chatgpt_provider_config_and_child_environment_fail_closed(self):
         for config, error, message in [
