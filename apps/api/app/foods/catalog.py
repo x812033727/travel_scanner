@@ -696,8 +696,8 @@ FOOD_SEEDS: tuple[FoodSeed, ...] = (
     _food(
         "kr-gogi-guksu",
         "KR",
-        "肉湯麵",
-        "肉汤面",
+        "豬肉湯麵",
+        "猪肉汤面",
         "고기국수",
         "Gogi-guksu",
         "noodle_soup",
@@ -712,8 +712,8 @@ FOOD_SEEDS: tuple[FoodSeed, ...] = (
     _food(
         "kr-jjim-galbi",
         "KR",
-        "燉排骨",
-        "炖排骨",
+        "辣燉排骨",
+        "辣炖排骨",
         "찜갈비",
         "Jjim-galbi",
         "main",
