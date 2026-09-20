@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.affiliates.content_links import CONTENT_PARTNERS
 from app.auth.service import AdminUser
 from app.db import get_session
-from app.guides import admin_service, search, service, taxonomy
+from app.guides import admin_service, search, service, sitemap, taxonomy
 from app.guides.publication import ArticleStatus
 from app.guides.schemas import (
     AdminTopic,
@@ -162,7 +162,7 @@ async def public_sitemap(
     limit: int = Query(default=service.SITEMAP_LIMIT, ge=1, le=service.SITEMAP_LIMIT),
 ) -> SitemapList:
     response.headers["Cache-Control"] = "no-store"
-    return await service.sitemap_entries(
+    return await sitemap.entries(
         session, section=section, locale=locale, cursor=cursor, offset=offset, limit=limit
     )
 
@@ -170,7 +170,7 @@ async def public_sitemap(
 @public_router.get("/sitemap/summary", response_model=SitemapSummary)
 async def public_sitemap_summary(response: Response, session: Session) -> SitemapSummary:
     response.headers["Cache-Control"] = "no-store"
-    return await service.sitemap_summary(session)
+    return await sitemap.summary(session)
 
 
 @public_router.get("/series", response_model=SeriesIndex)

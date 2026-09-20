@@ -908,8 +908,8 @@ class SitemapEntry(BaseModel):
     slug: str
     locale: Locale
     published_at: datetime
-    # When the current public version went live -- the honest lastmod. None only when the
-    # published pointer is damaged, which costs the row its date, not its place.
+    # When the current public version went live -- the honest lastmod. A damaged public
+    # revision pointer is excluded from the sitemap because its article page cannot render.
     modified_at: datetime | None = None
     # Every locale this article is published in, so a child sitemap that holds one locale can
     # still name the article's other translations as alternates.
@@ -918,8 +918,8 @@ class SitemapEntry(BaseModel):
 
 class SitemapList(BaseModel):
     entries: list[SitemapEntry]
-    # Present when the page was full and rows follow; absent (None) on the last page and from
-    # an API that predates paging. Same keyset shape as the listing, one key wider.
+    # Present when rows follow; None on the last page. The opaque keyset is (slug, locale),
+    # independent of publication timestamps and editorial ordering.
     next_cursor: str | None = None
 
 

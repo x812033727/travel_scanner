@@ -192,9 +192,9 @@ describe("further reading and names", () => {
 
 describe("the sitemap enumeration", () => {
   const rows = [
-    { kind: "howto", slug: "narita-to-tokyo", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z" },
-    { kind: "howto", slug: "narita-to-tokyo", locale: "ja", published_at: "2026-09-02T00:00:00Z" },
-    { kind: "intel", slug: "jr-pass-sale", locale: "en", published_at: "2026-09-10T00:00:00Z" },
+    { kind: "howto", slug: "narita-to-tokyo", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z", locales: ["ja", "zh-TW"] },
+    { kind: "howto", slug: "narita-to-tokyo", locale: "ja", published_at: "2026-09-02T00:00:00Z", locales: ["ja", "zh-TW"] },
+    { kind: "intel", slug: "jr-pass-sale", locale: "en", published_at: "2026-09-10T00:00:00Z", locales: ["en"] },
   ];
 
   it("takes each row's published locales from the API, which is what a one-language child needs", async () => {
@@ -205,26 +205,25 @@ describe("the sitemap enumeration", () => {
     expect(entries[0].locales).toEqual(["en", "ja", "zh-TW"]);
   });
 
-  it("falls back to the locales it saw when an older API names none, or names nonsense", async () => {
-    vi.stubGlobal("fetch", respond({ entries: [...rows, { ...rows[2], locales: ["xx", "en"] }] }));
-    const { entries } = await guideSitemapEntries();
-    const narita = entries.filter((entry) => entry.slug === "narita-to-tokyo");
-    for (const entry of narita) expect(entry.locales).toEqual(["ja", "zh-TW"]);
-    expect(entries.find((entry) => entry.slug === "jr-pass-sale")!.locales).toEqual(["en"]);
+  it("rejects an older API without sibling locales or a terminal cursor", async () => {
+    vi.stubGlobal("fetch", respond({ entries: rows.map((row) => ({
+      kind: row.kind, slug: row.slug, locale: row.locale, published_at: row.published_at,
+    })) }));
+    await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
+    vi.stubGlobal("fetch", respond({ entries: [{ ...rows[2], locales: ["xx", "en"] }], next_cursor: null }));
+    await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
   });
 
   it("orders the alternates by the site's locale list, not the API's row order", async () => {
-    vi.stubGlobal("fetch", respond({ entries: [...rows].reverse() }));
+    vi.stubGlobal("fetch", respond({ entries: [...rows].reverse(), next_cursor: null }));
     const { entries } = await guideSitemapEntries();
     for (const entry of entries.filter((row) => row.slug === "narita-to-tokyo")) {
       expect(entry.locales).toEqual(["ja", "zh-TW"]);
     }
   });
 
-  it("drops a malformed row instead of putting a broken URL in the sitemap", async () => {
-    vi.stubGlobal("fetch", respond({
-      entries: [
-        ...rows,
+  it("rejects a malformed row without advertising incomplete alternates", async () => {
+    const malformed = [
         { kind: "recipes", slug: "not-a-section", locale: "zh-TW", published_at: "2026-09-01T00:00:00Z" },
         { kind: "howto", slug: "no-locale", locale: "xx", published_at: "2026-09-01T00:00:00Z" },
         { kind: "howto", slug: "no-date", locale: "en" },
@@ -237,14 +236,11 @@ describe("the sitemap enumeration", () => {
         // A date that does not parse reaches Next as an Invalid Date, which is truthy and is a
         // Date, so its serialiser calls toISOString() and throws: a 500 on the child.
         { kind: "howto", slug: "bad-date", locale: "en", published_at: "sometime" },
-      ],
-    }));
-    const { entries } = await guideSitemapEntries();
-    expect(entries).toHaveLength(3);
-    expect(entries.some((entry) => entry.slug.startsWith("no-"))).toBe(false);
-    expect(entries.some((entry) => String(entry.kind) === "recipes")).toBe(false);
-    expect(entries.some((entry) => entry.slug === "bad-date")).toBe(false);
-    for (const entry of entries) expect(entry.slug).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    ];
+    for (const row of malformed) {
+      vi.stubGlobal("fetch", respond({ entries: [...rows, row], next_cursor: null }));
+      await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
+    }
   });
 
   it("carries the current version's own timestamp when the API sends one, and only then", async () => {
@@ -255,7 +251,7 @@ describe("the sitemap enumeration", () => {
         // their URL and simply carry no lastmod of their own.
         rows[1],
         { ...rows[2], modified_at: "sometime" },
-      ],
+      ], next_cursor: null,
     }));
     const { entries } = await guideSitemapEntries();
     expect(entries).toHaveLength(3);
@@ -304,11 +300,64 @@ describe("the sitemap enumeration", () => {
     }
   });
 
-  it("keeps the pages it read when a later page fails, and says the picture is not whole", async () => {
-    vi.stubGlobal("fetch", paged([[rows[0]], [rows[1]], [rows[2]]], 2));
+  it("drains 1,005 rows and keeps sibling languages across the 1,000-row boundary", async () => {
+    const first = Array.from({ length: 999 }, (_, index) => ({
+      kind: "howto", slug: `guide-${index}`, locale: "en", locales: ["en"],
+      published_at: "2026-09-01T00:00:00Z",
+    }));
+    first.push(rows[0]);
+    const second = [rows[1], ...Array.from({ length: 4 }, (_, index) => ({
+      kind: "howto", slug: `guide-${999 + index}`, locale: "en", locales: ["en"],
+      published_at: "2026-09-01T00:00:00Z",
+    }))];
+    const fetchMock = paged([first, second]);
+    vi.stubGlobal("fetch", fetchMock);
     const result = await guideSitemapEntries();
-    expect(result.complete).toBe(false);
-    expect(result.entries.map((entry) => entry.slug)).toEqual(["narita-to-tokyo", "narita-to-tokyo"]);
+    expect(result.complete).toBe(true);
+    expect(result.entries).toHaveLength(1005);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    for (const entry of result.entries.filter((row) => row.slug === "narita-to-tokyo")) {
+      expect(entry.locales).toEqual(["ja", "zh-TW"]);
+    }
+  });
+
+  it("requires a terminal cursor even when exactly 1,000 rows fit in one response", async () => {
+    const page = Array.from({ length: 1000 }, (_, index) => ({
+      kind: "howto", slug: `guide-${index}`, locale: "en", locales: ["en"],
+      published_at: "2026-09-01T00:00:00Z",
+    }));
+    vi.stubGlobal("fetch", respond({ entries: page, next_cursor: null }));
+    expect((await guideSitemapEntries()).entries).toHaveLength(1000);
+    vi.stubGlobal("fetch", respond({ entries: page }));
+    await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
+  });
+
+  it("rejects repeated cursors, empty nonterminal pages, and duplicate rows", async () => {
+    for (const continuation of [
+      { entries: [rows[1]], next_cursor: "page-1" },
+      { entries: [], next_cursor: "page-2" },
+      { entries: [rows[0]], next_cursor: null },
+      { entries: [rows[1]] },
+    ]) {
+      vi.stubGlobal("fetch", vi.fn()
+        .mockResolvedValueOnce({ ok: true, json: async () => ({ entries: [rows[0]], next_cursor: "page-1" }) })
+        .mockResolvedValueOnce({ ok: true, json: async () => continuation }));
+      await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
+    }
+  });
+
+  it("rejects an oversized API page instead of silently truncating it", async () => {
+    const page = Array.from({ length: 1001 }, (_, index) => ({
+      kind: "howto", slug: `guide-${index}`, locale: "en", locales: ["en"],
+      published_at: "2026-09-01T00:00:00Z",
+    }));
+    vi.stubGlobal("fetch", respond({ entries: page, next_cursor: null }));
+    await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
+  });
+
+  it("discards earlier pages when a later page fails", async () => {
+    vi.stubGlobal("fetch", paged([[rows[0]], [rows[1]], [rows[2]]], 2));
+    await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: false });
   });
 
   it("stops at the child's slice rather than paging without bound, and calls a full slice complete", async () => {
@@ -318,7 +367,10 @@ describe("the sitemap enumeration", () => {
     let calls = 0;
     vi.stubGlobal("fetch", vi.fn(async () => {
       calls += 1;
-      return { ok: true, json: async () => ({ entries: page, next_cursor: `page-${calls}` }) };
+      return { ok: true, json: async () => ({
+        entries: page.map((row, index) => ({ ...row, slug: `deal-${(calls - 1) * SITEMAP_PAGE_SIZE + index}`, locales: ["zh-TW"] })),
+        next_cursor: `page-${calls}`,
+      }) };
     }));
     const slice = await guideSitemapEntries();
     // The rows after the slice are the next numbered child's, not a gap in the picture.
@@ -347,12 +399,12 @@ describe("the sitemap enumeration", () => {
     vi.stubGlobal("fetch", respond({ entries: rows, next_cursor: null }));
     await expect(guideSitemapEntries()).resolves.toMatchObject({ complete: true });
     // Nothing published at all is still a complete answer -- the API said so.
-    vi.stubGlobal("fetch", respond({ entries: [] }));
+    vi.stubGlobal("fetch", respond({ entries: [], next_cursor: null }));
     await expect(guideSitemapEntries()).resolves.toEqual({ entries: [], complete: true });
   });
 
   it("does not cache a list an editor can withdraw from", async () => {
-    const fetchMock = respond({ entries: [] });
+    const fetchMock = respond({ entries: [], next_cursor: null });
     vi.stubGlobal("fetch", fetchMock);
     await guideSitemapEntries();
     const [url, init] = fetchMock.mock.calls[0];
