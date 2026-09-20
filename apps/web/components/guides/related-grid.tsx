@@ -23,7 +23,7 @@ export function RelatedGrid({
   return (
     <section data-testid="related-grid" aria-labelledby="related-grid-heading" className="border-t border-[var(--line)] pt-8">
       <h2 id="related-grid-heading" className="text-xl font-bold tracking-tight">{heading}</h2>
-      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+      <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {shown.map((item) => (
           <li key={`${item.kind}:${item.slug}`} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
