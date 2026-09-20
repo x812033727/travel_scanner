@@ -1,7 +1,7 @@
 ---
 id: 2026-09-14-article-sitemap-pagination
 title: Paginate article sitemap for all five languages
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-sitemap-pagination
@@ -87,3 +87,5 @@ npm run check:tasks
   web typecheck, scoped Ruff, scoped ESLint, i18n and task checks passed. Scoped mypy
   has no errors in changed files but reports five existing errors in `app/infra.py`
   and `app/hotspots/guides.py`. CI must run the PostgreSQL integration cases.
+- Review PR: https://github.com/x812033727/travel_scanner/pull/594. Merge and deploy
+  remain with the parent release sequence after CI and review.
