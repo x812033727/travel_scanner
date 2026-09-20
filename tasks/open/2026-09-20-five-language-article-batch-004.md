@@ -132,3 +132,4 @@ reviewed release bundle is staged outside the repository with manifest SHA-256
 Its repository pack retains the original metadata and zh-TW JSON unchanged and
 adds only en, ja, ko and zh-CN plus their four localized diagrams. Merge,
 deployment, publication and browser verification remain outstanding.
+The four-locale content PR is #595; it does not perform publication.
