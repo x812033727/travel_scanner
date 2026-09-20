@@ -298,6 +298,14 @@ def svg_slots(raw: str) -> tuple[ET.Element, list[tuple[ET.Element, str]]]:
     return root, slots
 
 
+def root_description(root: ET.Element) -> ET.Element | None:
+    descriptions = list(root.iter(f"{{{SVG_NS}}}desc"))
+    direct = list(root.findall(f"{{{SVG_NS}}}desc"))
+    if len(descriptions) > 1 or descriptions != direct:
+        raise ValueError("SVG must have at most one root-level desc")
+    return descriptions[0] if descriptions else None
+
+
 def asset_plan(
     document: dict[str, Any], locale: str, public: Path
 ) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]], list[str]]:
@@ -348,6 +356,7 @@ def asset_plan(
                     "source": getattr(node, attribute),
                     "max_length": 1500,
                     "kind": "svg",
+                    "svg_tag": node.tag.split("}")[-1],
                 }
         index = indices[svg_relative]
         target = str(
@@ -384,6 +393,26 @@ def protected_tokens(value: str) -> tuple[list[str], list[str], list[str]]:
     return numbers, urls, code
 
 
+def protected_tokens_match(field: dict[str, Any], source: str, value: str) -> bool:
+    source_numbers, source_urls, source_code = protected_tokens(source)
+    target_numbers, target_urls, target_code = protected_tokens(value)
+    if source_urls != target_urls or source_code != target_code:
+        return False
+    if source_numbers == target_numbers:
+        return True
+    # Mokaair SVG accessibility metadata commonly contains the same complete
+    # description in Chinese and English. A localized title/desc may collapse
+    # those two copies, but it must retain every distinct numeric value. Visible
+    # labels keep the strict multiset check below.
+    bilingual_svg_metadata = bool(
+        field.get("kind") == "svg"
+        and field.get("svg_tag") in {"title", "desc"}
+        and re.search(r"[\u3400-\u9fff]", source)
+        and re.search(r"[A-Za-z]{3}", source)
+    )
+    return bilingual_svg_metadata and set(source_numbers) == set(target_numbers)
+
+
 def validate_fields(
     fields: dict[str, Any], translations: Any, source_locale: str, target_locale: str
 ) -> list[str]:
@@ -408,7 +437,7 @@ def validate_fields(
             r"<[!/?A-Za-z]", value
         ):
             errors.append(f"{pointer}: invalid markup/control characters")
-        if protected_tokens(source) != protected_tokens(value):
+        if not protected_tokens_match(field, source, value):
             errors.append(f"{pointer}: changed numeric, URL, or inline-code tokens")
         errors.extend(
             f"{pointer}: {message}"
@@ -815,6 +844,12 @@ def materialize(
         root, slots = svg_slots(asset["source_svg"])
         for slot_index, (node, attribute) in enumerate(slots):
             setattr(node, attribute, translations[f"/assets/{index}/text/{slot_index}"])
+        description_node = root_description(root)
+        localized_description = (
+            "".join(description_node.itertext()).strip()
+            if description_node is not None
+            else None
+        )
         target = contained(directory / "assets", asset["target_svg"].lstrip("/"))
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(
@@ -822,6 +857,14 @@ def materialize(
         )
         for reference in asset["references"]:
             set_pointer(document, reference["pointer"], reference["target"])
+            if localized_description:
+                parent: Any = document
+                for part in reference["pointer"].lstrip("/").split("/")[:-1]:
+                    parent = (
+                        parent[int(part)] if isinstance(parent, list) else parent[part]
+                    )
+                if isinstance(parent, dict) and "description" in parent:
+                    parent["description"] = localized_description
         assets.append(
             {
                 "svg": str(target),

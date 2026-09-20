@@ -58,6 +58,7 @@ def sample():
                 "src": "/guides/test/diagram.svg",
                 "alt": "示意圖",
                 "caption": "步驟",
+                "description": "旅行 3 說明",
                 "width": 300,
                 "height": 200,
                 "credit": {
@@ -743,6 +744,41 @@ class PipelineTests(unittest.TestCase):
             len(pipeline.selected_articles(baseline, None, "article-0,article-1")), 2
         )
 
+    def test_bilingual_svg_metadata_can_collapse_duplicate_numbers(self):
+        field = {
+            "source": "日期 2026/9/1。Checked on 2026/9/1.",
+            "max_length": 200,
+            "kind": "svg",
+            "svg_tag": "desc",
+        }
+        translation = "日期為 2026/9/1。"
+        self.assertEqual(
+            pipeline.validate_fields(
+                {"/assets/0/text/1": field},
+                {"/assets/0/text/1": translation},
+                "en",
+                "zh-TW",
+            ),
+            [],
+        )
+        visible_field = {**field, "svg_tag": "text"}
+        errors = pipeline.validate_fields(
+            {"/assets/0/text/0": visible_field},
+            {"/assets/0/text/0": translation},
+            "en",
+            "zh-TW",
+        )
+        self.assertIn("changed numeric, URL, or inline-code tokens", errors[0])
+
+    def test_nested_or_multiple_svg_descriptions_fail_closed(self):
+        for source in [
+            '<svg xmlns="http://www.w3.org/2000/svg"><g><desc>nested</desc></g></svg>',
+            '<svg xmlns="http://www.w3.org/2000/svg"><desc>one</desc><desc>two</desc></svg>',
+        ]:
+            root, _ = pipeline.svg_slots(source)
+            with self.assertRaisesRegex(ValueError, "one root-level desc"):
+                pipeline.root_description(root)
+
     def test_image_only_does_not_retranslate_body_and_detects_svg_drift(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -751,7 +787,7 @@ class PipelineTests(unittest.TestCase):
             image_dir.mkdir(parents=True)
             svg = image_dir / "diagram.svg"
             svg.write_text(
-                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><text x="10">旅行 3</text></svg>',
+                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><title>旅行 3 圖</title><desc>旅行 3 說明</desc><text x="10">旅行 3</text></svg>',
                 encoding="utf-8",
             )
             source = sample()
@@ -777,6 +813,7 @@ class PipelineTests(unittest.TestCase):
             actual = pipeline.read_json(directory / "document.json")
             self.assertEqual(actual["title"], source["title"])
             self.assertEqual(actual["blocks"][4]["src"], "/guides/test/diagram-en.svg")
+            self.assertEqual(actual["blocks"][4]["description"], "Travel 3")
             pipeline.assert_no_drift(job, root)
             svg.write_text(
                 '<svg xmlns="http://www.w3.org/2000/svg"/>', encoding="utf-8"
