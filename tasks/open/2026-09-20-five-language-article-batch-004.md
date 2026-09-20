@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-five-language-article-batch-004
 title: Five-language article batch 004
-status: in-progress
+status: open
 priority: P1
 area: docs
-owner: codex-article-localization-batch004
-claimed_at: 2026-09-20T08:22:41Z
+owner:
+claimed_at:
 created_at: 2026-09-20T08:22:34Z
 completed_at:
 branch: codex/article-localization-batch-004
@@ -81,13 +81,13 @@ article and all four target scripts, but is not editorial approval. Each of
 the five hero images is an unchanged AI conceptual raster, with its translated
 non-photograph disclosure in the new locale; diagrams have translated text.
 
-Pre-review validation SHA-256:
+Initial pre-review validation SHA-256:
 `8da9540920ccb30e13e5f70647cffa3b3924dd533390dd7eafe986f8ba9dbf88`.
 Its twenty rows bind source document, pack, translated document, SVG and render
-hashes. The manual correction log SHA-256 is
-`0d36dcd75a9b9146145d1e74483021b215e06b599cf79e77e56c34e8b1657706`;
-it records two Korean number-word fixes, twenty hero credit disclosures and
-four same-locale Tokyo links. The read-only route-check SHA-256 is
+hashes. The current manual correction log SHA-256 is
+`b56189ede65e9bd9a324641d2c0fbde181dabeadf46f7eef5eea1b0c0de56a85`;
+it records two Korean number-word fixes, twenty hero credit disclosures,
+four same-locale Tokyo links and the three later reviewer fixes. The read-only route-check SHA-256 is
 `f002768c85ff6a82ba44585f39e2728e05e25d81ab77c992bb565dd4d788dc65`:
 the four target-language Tokyo city pages and four Cheung Chau guide pages
 returned HTTP 200 with substantive localized headings. Other ArticleInline
@@ -98,3 +98,16 @@ must be rechecked before assembly and release.
 The localization pipeline's 27 Python tests, 14 artifact integrity tests,
 3 layout tests and `check:tasks` passed. The five pack and public image paths
 remain unchanged; no review, PR, import or publication has been claimed.
+
+Independent review later requested three field-level corrections in the four
+non-Hong Kong guides: the laundry ja/ko checklist now says collect clothes,
+check dryness, then pack; train-disruption ko now uses the broader `열차` in
+its title. Each corrected job was rematerialized, its previously documented
+localized AI credit reapplied, and its SVG rerendered. The other seventeen
+jobs' six core file hashes remained byte-identical. Current pre-review SHA-256
+is `e5274d483fb1ac15625a8bf9703e3b976bb26c89757f4a31a886f1a4d31d9355`;
+the unaffected-job comparison SHA-256 is
+`046b0c286470bf543d440feda4fb559a81f0b0e2b1752fbc0cbae7a40f9312c4`.
+All sixteen new-locale documents for the four non-Hong Kong guides subsequently
+received independent hash-bound review. Hong Kong remains held because its
+published source needs a luggage-rule correction in a separate task/PR.
