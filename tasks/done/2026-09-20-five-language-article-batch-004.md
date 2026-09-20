@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-five-language-article-batch-004
 title: Five-language article batch 004
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-article-localization
 claimed_at: 2026-09-20T08:53:03Z
 created_at: 2026-09-20T08:22:34Z
-completed_at:
+completed_at: 2026-09-20T12:38:26Z
 branch: codex/article-localization-batch-004
 depends_on: []
 scope:
@@ -34,12 +34,12 @@ pack and asset paths above do not overlap another open task.
 
 ## Definition of done
 
-- [ ] Five complete, independently reviewed documents per article, preserving
+- [x] Five complete, independently reviewed documents per article, preserving
       the published source and all existing editorial state.
-- [ ] Localized text-bearing diagrams pass visual and glyph review.
-- [ ] An exact reviewed bundle installs idempotently; its content PR is merged,
+- [x] Localized text-bearing diagrams pass visual and glyph review.
+- [x] An exact reviewed bundle installs idempotently; its content PR is merged,
       deployed, and only the missing public locales are published.
-- [ ] Twenty new public pages pass desktop/mobile content, image, canonical,
+- [x] Twenty new public pages pass desktop/mobile content, image, canonical,
       hreflang and same-language link checks.
 
 ## Steps
@@ -48,7 +48,7 @@ pack and asset paths above do not overlap another open task.
 - [x] Translate twenty missing documents and render twenty localized SVGs.
 - [x] Complete hash-bound automated pre-review and read-only link-target checks.
 - [x] Independently review all translated text, artwork glyphs and source images.
-- [ ] Assemble/install the reviewed bundle, then perform guarded PR and release.
+- [x] Assemble/install the reviewed bundle, then perform guarded PR and release.
 
 ## How to verify
 
@@ -133,3 +133,19 @@ Its repository pack retains the original metadata and zh-TW JSON unchanged and
 adds only en, ja, ko and zh-CN plus their four localized diagrams. Merge,
 deployment, publication and browser verification remain outstanding.
 The four-locale content PR is #595; it does not perform publication.
+
+Closeout (2026-09-20, confirmed by the task owner): PR #591 delivered the four
+Japan guides and PR #595 delivered Hong Kong. Across the five already-public
+articles, twenty missing locale drafts were independently reviewed, then the
+reviewed packs and localized diagrams were merged, deployed and published.
+Hong Kong's ten desktop/mobile public pages and 62 links passed browser checks;
+the 5648 release hold was cleared and all ten services were healthy. The
+published source correction and its four added locales remain separate from
+the article-pack merge and deployment evidence above.
+
+An unrelated gap remains in the **existing zh-TW source** illustration for
+`hong-kong-ferry-tram-day`: it contains visible English helper labels such as
+“A practical sequence” and “Choose the pier.” Task
+`2026-09-20-localize-hong-kong-ferry-tram-zh` owns that exact SVG file after
+this batch scope is released. Finishing this batch does not mean the broader
+five-language text-and-artwork program is complete.
