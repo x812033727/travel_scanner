@@ -22,6 +22,13 @@ three workers. `--include-existing` creates image-only jobs for existing transla
 bodies, preserving their prose. The original source locale is not unnecessarily
 retranslated. Missing SVG companions are recorded for manual raster review.
 
+Full translations include every `summary.items` sentence (300 characters per
+item) and each nonempty image `description` (4,000 characters). When an image
+also has a translated SVG root `<desc>`, its document description must match
+that text exactly; a mismatch stops materialization before any output files are
+written. Image-only jobs continue to populate descriptions from the SVG without
+retranslating existing document prose.
+
 The baseline must provide `articles` and `batches`. An article uses `slug`,
 `source_locale`, `source_document`, `source_sha256`, `pack_path`, `pack_sha256`,
 `missing_locales`, `locale_documents`, `status`, and optional `database`. A batch

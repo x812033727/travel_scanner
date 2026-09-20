@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-article-localization-verified-site-links
 title: Localize verified same-site guide links in article translation jobs
-status: review
+status: done
 priority: P1
 area: tools
 owner: codex-batch006-link-tool
 claimed_at: 2026-09-20T12:35:56Z
 created_at: 2026-09-20T12:35:27Z
-completed_at:
+completed_at: 2026-09-20T13:15:41Z
 branch: codex/batch006-localize-site-links
 depends_on: []
 scope:
@@ -36,7 +36,7 @@ a clickable public link in a translated article.
   source URLs and source check dates remain unchanged.
 - [x] Focused tests, lint, format and task checks pass; no content pack or asset
   is changed by this tooling PR.
-- [ ] Parent review and PR merge/release decision.
+- [x] Parent review and PR merge/release decision.
 
 ## Steps
 
@@ -64,5 +64,7 @@ Only URL values of LinkBlock and rich-paragraph link nodes are rewritten; the
 translation field allowlist still excludes URLs. Publication assembly applies
 its separate article-link checks, and release must recheck current route status.
 The Hanoi zh-TW source sentence is under a separate editorial HOLD.
-PR #596 is open for parent review. It contains only the tooling change and this
-task handoff; it has not been merged or deployed, and no content was published.
+PR #596 passed nine CI checks and was merged at exact head
+`e914f64f698ba24a79ef302561fd3421d62d1471` into main
+`1ba7b366d52b4ac2fce4239dcc0d7a1f07cc250b`. The tooling PR changed no
+content pack or asset, and did not itself import or publish content.

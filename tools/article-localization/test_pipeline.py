@@ -640,6 +640,174 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["blocks"][4]["credit"], source["blocks"][4]["credit"])
         self.assertEqual(result["sources"][0]["checked_on"], "2026-09-14")
 
+    def test_summary_items_are_complete_and_keep_the_guide_limit(self):
+        source = {
+            "title": "東京交通票券",
+            "description": "先確認行程，再比較票券。",
+            "hero": None,
+            "blocks": [
+                {
+                    "type": "summary",
+                    "items": [
+                        "一天搭 4 趟以上地鐵才比較一日券。",
+                        "只在東京市區移動、行程沒有跨城市長距離交通時，先用 IC 卡逐次付費，不必預先買整日交通票。",
+                        "跨城市行程再計算長途票價。",
+                    ],
+                },
+                {"type": "heading", "level": 2, "text": "票券選擇"},
+            ],
+            "sources": [],
+        }
+        fields = pipeline.document_fields(source)
+        summary_pointers = [
+            pointer
+            for pointer in fields
+            if pointer.startswith("/document/blocks/0/items/")
+        ]
+        self.assertEqual(
+            summary_pointers,
+            [f"/document/blocks/0/items/{index}" for index in range(3)],
+        )
+        self.assertTrue(
+            all(fields[pointer]["max_length"] == 300 for pointer in summary_pointers)
+        )
+        translations = {pointer: field["source"] for pointer, field in fields.items()}
+        translations.update(
+            {
+                "/document/title": "Tokyo Transit Tickets",
+                "/document/description": "Compare passes after fixing your itinerary.",
+                "/document/blocks/0/items/0": "Compare a day pass if you take 4 or more subway rides in one day.",
+                "/document/blocks/0/items/1": "For travel only within Tokyo, start by paying per ride with an IC card.",
+                "/document/blocks/0/items/2": "Calculate long-distance fares for intercity trips.",
+                "/document/blocks/1/text": "Choosing a ticket",
+            }
+        )
+        job = {
+            "fields": fields,
+            "source_document": source,
+            "source_locale": "zh-TW",
+            "locale": "en",
+            "assets": [],
+            "raster_review_required": [],
+            "job_sha256": "test-job",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            pipeline.materialize(job, translations, directory)
+            result = pipeline.read_json(directory / "document.json")
+            self.assertEqual(
+                result["blocks"][0]["items"],
+                [translations[pointer] for pointer in summary_pointers],
+            )
+            self.assertEqual(
+                source["blocks"][0]["items"][0], fields[summary_pointers[0]]["source"]
+            )
+
+        for invalid, message in [
+            ({summary_pointers[0]: "A" * 301}, "exceeds 300"),
+            ({summary_pointers[0]: "Compare 5 subway rides."}, "changed numeric"),
+            (
+                {summary_pointers[1]: source["blocks"][0]["items"][1]},
+                "copied unchanged",
+            ),
+        ]:
+            errors = pipeline.validate_fields(
+                fields, {**translations, **invalid}, "zh-TW", "en"
+            )
+            self.assertTrue(any(message in error for error in errors), errors)
+        missing = {
+            pointer: value
+            for pointer, value in translations.items()
+            if pointer != summary_pointers[2]
+        }
+        self.assertTrue(
+            any(
+                "field set differs" in error
+                for error in pipeline.validate_fields(fields, missing, "zh-TW", "en")
+            )
+        )
+
+    def test_full_image_description_must_match_localized_svg_desc(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            public = root / "apps/web/public"
+            svg = public / "guides/test/diagram.svg"
+            svg.parent.mkdir(parents=True)
+            svg.write_text(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200"><title>旅行 3 圖</title><desc>旅行 3 說明</desc><text x="10">旅行 3</text></svg>',
+                encoding="utf-8",
+            )
+            second_svg = svg.with_name("diagram-2.svg")
+            second_svg.write_bytes(svg.read_bytes())
+            source = sample()
+            source["blocks"].append(
+                {
+                    **copy.deepcopy(source["blocks"][4]),
+                    "src": "/guides/test/diagram-2.svg",
+                }
+            )
+            assets, image_fields, raster_review = pipeline.asset_plan(
+                source, "en", public
+            )
+            fields = pipeline.document_fields(source)
+            fields.update(image_fields)
+            description_pointer = "/document/blocks/4/description"
+            self.assertEqual(fields[description_pointer]["max_length"], 4000)
+            self.assertEqual(fields[description_pointer]["source"], "旅行 3 說明")
+            translations = {
+                pointer: field["source"] for pointer, field in fields.items()
+            }
+            translations["/document/title"] = "Travel guide"
+            translations[description_pointer] = "Travel 3 description"
+            translations["/document/blocks/5/description"] = "Travel 3 description"
+            for pointer in image_fields:
+                translations[pointer] = (
+                    "Travel 3 description"
+                    if image_fields[pointer]["svg_tag"] == "desc"
+                    else "Travel 3"
+                )
+            job = {
+                "fields": fields,
+                "source_document": source,
+                "source_locale": "zh-TW",
+                "locale": "en",
+                "assets": assets,
+                "raster_review_required": raster_review,
+                "job_sha256": "test-job",
+            }
+            directory = root / "valid"
+            pipeline.materialize(job, translations, directory)
+            result = pipeline.read_json(directory / "document.json")
+            self.assertEqual(result["blocks"][4]["description"], "Travel 3 description")
+
+            invalid = {
+                **translations,
+                "/document/blocks/5/description": "Travel 3 detailed description",
+            }
+            rejected = root / "rejected"
+            with self.assertRaisesRegex(ValueError, "differs from SVG <desc>"):
+                pipeline.materialize(job, invalid, rejected)
+            self.assertFalse(rejected.exists())
+
+            invalid = {**translations, description_pointer: "A" * 4001}
+            self.assertTrue(
+                any(
+                    "exceeds 4000" in error
+                    for error in pipeline.validate_fields(
+                        fields, invalid, "zh-TW", "en"
+                    )
+                )
+            )
+            invalid = {**translations, description_pointer: "Travel 4 description"}
+            self.assertTrue(
+                any(
+                    "changed numeric" in error
+                    for error in pipeline.validate_fields(
+                        fields, invalid, "zh-TW", "en"
+                    )
+                )
+            )
+
     def test_only_verified_public_site_links_follow_the_target_locale(self):
         source = sample()
         routes = (
