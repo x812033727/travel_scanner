@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-five-language-article-batch-004
 title: Five-language article batch 004
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: codex-article-localization
+claimed_at: 2026-09-20T08:53:03Z
 created_at: 2026-09-20T08:22:34Z
 completed_at:
 branch: codex/article-localization-batch-004
@@ -111,3 +111,11 @@ the unaffected-job comparison SHA-256 is
 All sixteen new-locale documents for the four non-Hong Kong guides subsequently
 received independent hash-bound review. Hong Kong remains held because its
 published source needs a luggage-rule correction in a separate task/PR.
+
+The four reviewed Japan guides are installed idempotently from release manifest
+`c7c85a4dcf2c2735009f0cbfa924e08ee50bbfa26a9091c7daf4f9d70cb2e9b9`.
+The external installation journal SHA-256 is
+`0293a365ddfa68c8ca38ab27afa98fc9bceddfcb435184b0bb219cbd76e1a8a8`.
+This PR carries only those four packs and sixteen localized SVGs. The four
+existing hero images are byte-identical references. Hong Kong will be handled
+after its corrected source is published and its four translations are rebased.
