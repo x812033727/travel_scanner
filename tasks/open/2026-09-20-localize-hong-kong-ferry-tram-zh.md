@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-localize-hong-kong-ferry-tram-zh
 title: Localize Hong Kong ferry/tram zh-TW diagram labels
-status: in-progress
+status: review
 priority: P2
 area: web
 owner: codex-batch005-author
@@ -29,7 +29,7 @@ Chinese. Readers should see one consistent language in the source artwork.
       Traditional Chinese; only the Mokaair brand name remains in Latin script.
 - [x] SVG dimensions, shapes, colors, step numbers and attribution remain intact.
 - [x] 1600×900 and 390px previews have no missing glyphs, collisions or clipping.
-- [ ] A narrow SVG-only PR is open for independent review.
+- [x] A narrow SVG-only PR is open for independent review.
 
 ## Steps
 
@@ -37,7 +37,7 @@ Chinese. Readers should see one consistent language in the source artwork.
 - [x] Change the six English helper labels, including the footer.
 - [x] Compare XML structure, protected numbers and provenance with base.
 - [x] Render and visually inspect desktop/mobile previews.
-- [ ] Run task checks and open the focused PR.
+- [x] Run task checks and open the focused PR.
 
 ## How to verify
 
@@ -70,3 +70,8 @@ overlap or clipping. The author QA receipt and previews are external at
 `C:\Users\x8120\.codex\article-localization-batch-005\hong-kong-zh-svg-review`;
 the receipt SHA-256 is
 `5c906a161b85655483996584de74c18a28e413e610a56fb24aeb9da7e79b618b`.
+
+PR #597 is open for independent review at commit `45cef541` (before this
+task-status follow-up). `npm run check:tasks` passed with only warnings from
+unrelated older tasks, and `git diff --check` passed. Keep this task in review
+until the PR is merged; no production asset or article document was changed.
