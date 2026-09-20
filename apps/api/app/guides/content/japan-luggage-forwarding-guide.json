@@ -6,20 +6,25 @@
     "packing",
     "transport"
   ],
+  "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "日本行李宅配怎麼安排：跨城輕裝、飯店代收與機場取件",
       "description": "行李寄得出去，也要確保到得了下一站。從確認飯店代收、填寫收件資料，到把機場宅配和一般宅配分開處理，整理一套不讓行程被行李綁住的做法。",
       "hero": {
         "src": "/guides/japan-luggage-forwarding-guide/hero.jpg",
+        "alt": "行李箱、空白寄件標籤與宅配車，後方有日本街道和列車（AI 生成示意插畫，非實拍）",
         "width": 1600,
         "height": 900,
-        "alt": "行李箱、空白寄件標籤與宅配車，後方有日本街道和列車（AI 生成示意插畫，非實拍）",
         "credit": {
           "author": "Mokaair · AI 生成示意圖",
-          "license": "AI 生成，非實拍"
+          "license": "AI 生成，非實拍",
+          "source_url": null
         }
       },
       "blocks": [
@@ -29,8 +34,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "先確認「有人收」，再決定從哪裡寄"
+          "text": "先確認「有人收」，再決定從哪裡寄",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -50,13 +55,14 @@
           "description": "依序檢查：確認代收、核對日期、準備小包、儲存單據。編輯整理，非地圖或實測時間。",
           "credit": {
             "author": "Mokaair",
-            "license": "© Mokaair"
+            "license": "© Mokaair",
+            "source_url": null
           }
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "把跨城行程切成大箱子與隨身包"
+          "text": "把跨城行程切成大箱子與隨身包",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -95,8 +101,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "機場取件要倒推航班，不能只填「機場」"
+          "text": "機場取件要倒推航班，不能只填「機場」",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -108,8 +114,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "交寄當下留下能追蹤的紀錄"
+          "text": "交寄當下留下能追蹤的紀錄",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -117,8 +123,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "用兩晚短住的情境，檢查行李能否分流"
+          "text": "用兩晚短住的情境，檢查行李能否分流",
+          "level": 2
         },
         {
           "type": "paragraph",
@@ -144,13 +150,13 @@
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
             "詢問下一間住宿能否代收，取得明確回覆。",
             "用訂房姓名與入住日核對收件資料。",
             "按承運方確認的送達日準備隨身用品。",
             "儲存寄件單、追蹤號碼與取件位置。"
-          ]
+          ],
+          "ordered": false
         },
         {
           "type": "rich_paragraph",
@@ -167,6 +173,686 @@
       "sources": [
         {
           "title": "Yamato：一般 TA-Q-BIN 服務與受理條件",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Yamato：空港宅急便",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/customer/send/services/airport/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Planning Luggage Forwarding in Japan: Traveling Light Between Cities, Hotel Delivery, and Airport Pickup",
+      "description": "Sending luggage is only half the job; make sure it can reach your next stop. From confirming hotel acceptance and filling in recipient details to handling airport forwarding separately from regular delivery, here is a practical approach to keeping luggage from dictating your itinerary.",
+      "hero": {
+        "src": "/guides/japan-luggage-forwarding-guide/hero.jpg",
+        "alt": "Suitcases, a blank shipping label, and a delivery truck, with a Japanese street and train behind them (AI-generated illustration, not a photograph)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI-generated conceptual illustration",
+          "license": "AI-generated; not a photograph",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sometimes the most tiring part of traveling between cities is dragging luggage around while looking for an elevator. Luggage forwarding suits travelers who have short stays along the way and are willing to spend the night with just a small backpack. If you change accommodation every day or fly the next day, keeping your large suitcase with you may be easier to manage. This article focuses on arranging domestic services within Japan. It does not assume same-day delivery or present illustrations as photographs of actual service counters."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm someone can receive it before deciding where to send it from",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Yamato (Black Cat) offers regular parcel delivery, airport forwarding, and some same-day delivery options as separate services. Its official regular-delivery website lets you look up options by shipping area, size, and other criteria, but actual acceptance also depends on the origin, destination, and item restrictions. After booking your hotels, ask the next one whether it accepts luggage before check-in, how early it may arrive, and how to write the reservation name. For accommodation with an unstaffed reception, apartments, self-check-in properties, or branches with similar addresses, you especially cannot assume that providing only the street address will ensure successful receipt."
+        },
+        {
+          "type": "paragraph",
+          "text": "Once the hotel replies, put its official Japanese name, postal code, address, phone number, your check-in date, and reservation name in a single note. If a travel companion made the booking, use the name the hotel can find in its system and add the names of the actual guests. These details help staff verify the delivery; there is no need to print payment information from your booking email, passport details, or your full itinerary on the outside of the parcel. Separately confirm whether the sending hotel helps complete the form, arranges courier pickup, and collects payment."
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-luggage-forwarding-guide/diagram-1-en.svg",
+          "alt": "Four-step process: confirm acceptance, check dates, pack a small bag, and save the paperwork",
+          "width": 1600,
+          "height": 900,
+          "caption": "The editors' suggested sequence; this diagram does not represent geographic distances, service guarantees, or measured results.",
+          "description": "Check in order: confirm acceptance, verify dates, pack a small bag, and save the paperwork. Compiled by the editors; not a map or measured timing.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Split your intercity trip between a large suitcase and a small bag",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by sketching out “current hotel—short stay en route—next accommodation base.” Having the large suitcase skip the short stay while carrying what you need for that part of the trip in a small bag is often simpler than forwarding luggage every night. Ask about the expected delivery date before handing it over, then decide how many changes of clothing to carry. For outlying islands, remote areas, or weather disruptions, do not rely on experience from a previous delivery between cities. Forwarding only truly reduces your burden if you can still complete that day's plans when your luggage arrives late."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Arrangement",
+            "Best suited to",
+            "Check first"
+          ],
+          "rows": [
+            [
+              "Send from one hotel to the next",
+              "Short stays en route with only a small bag",
+              "Whether the sending hotel handles dispatch and the receiving hotel accepts luggage"
+            ],
+            [
+              "Send to an airport counter",
+              "Traveling light on the return journey",
+              "The airport-specific service, terminal, and shipping deadline"
+            ],
+            [
+              "Carry it yourself throughout",
+              "Frequent accommodation changes or needing your luggage the next day",
+              "Station elevators and onboard luggage rules"
+            ],
+            [
+              "Short-term storage",
+              "Returning to the same area that day",
+              "Pickup opening hours and location"
+            ]
+          ],
+          "caption": "Decide based on whether you need access to your luggage along the way, rather than price alone."
+        },
+        {
+          "type": "heading",
+          "text": "Work backward from your flight for airport pickup; “airport” alone is not enough",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before sending luggage to an airport, check Yamato's airport forwarding instructions and the counter for your terminal directly. Verify the flight date, terminal, pickup location, and latest shipping requirements together. “Ask when we get to the airport” is not a plan for fixing delivery to the wrong terminal. Airport forwarding and regular hotel delivery have different acceptance deadlines; the exact deadline is the one the shipping counter confirms for your route. Do not substitute someone else's claim that “sending it the day before was enough” for the requirements of your own flight."
+        },
+        {
+          "type": "paragraph",
+          "text": "In practice, save the counter location first, then add pickup to your airport arrival checklist, before airline check-in. The airline's baggage drop deadline and the delivery counter's opening hours are separate matters, and missing either can cause problems. If an early flight does not fit the counter's opening time, send your luggage to your final night's hotel or take it to the airport yourself. If your flight changes, reconfirm the receiving arrangements too; simply updating the departure time in your calendar is not enough."
+        },
+        {
+          "type": "heading",
+          "text": "Keep traceable records when handing over your luggage",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First check the suitcase's exterior, zippers, and handles, and remove old baggage tags that could cause confusion. Take a clear photo of the shipping slip, check the delivery date, address, and number of bags, then save the tracking number. A tracking status of “delivered” does not mean the hotel has assigned the luggage to your room. On arrival, ask at reception using your name and shipping slip. If it has not arrived by the expected time, contact the carrier first to check its status, then ask the hotel for help. There is no need to place duplicate orders at different counters at the same time."
+        },
+        {
+          "type": "heading",
+          "text": "Use a two-night stopover to check whether you can split up your luggage",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you stay in City A, spend two nights in the mountains, then return to City B for three consecutive nights. You could confirm that the hotel in City B accepts luggage, then ask the carrier whether it can deliver your suitcase directly there. This is only an example arrangement, not a guarantee that any route will take no more than two days. If the hotel cannot store luggage in advance, or the carrier's delivery date does not align with your check-in, carry it yourself or change the delivery destination. Do not hand it over before finding someone to receive it."
+        },
+        {
+          "type": "paragraph",
+          "text": "When packing your small bag, check items in the order you will actually use them during those two nights: clothes to change into after arrival, supplies for the next day's outing, charging equipment, and confirmation details for your next stay. Leave room in the large suitcase for shopping, since you only need that space on the return trip. If traveling with others, double-check who is keeping shared items so that everyone does not assume the adapter is in someone else's bag. Keep important items somewhere you can access yourself; do not put everything in one piece of luggage just because someone offers to help."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the final night, also treat “the hotel has received the luggage” and “ready to leave for the airport” as separate checkpoints. Check the suitcases when you check in. If there is a problem with their exterior condition or the number of bags, keep a record and report it through the carrier's process; do not wait until after checkout to open them and inspect them. If they have not arrived that evening, first clarify the progress of the case and feasible pickup options, then decide on the next day's transport. Base any recovery arrangements on clear answers, and avoid adding a succession of steps that all depend on punctual connections."
+        },
+        {
+          "type": "paragraph",
+          "text": "The value of splitting up your luggage this way is less carrying, not guaranteed savings. When comparing options, consider the shipping fee, any small bag you may need, detours for pickup, and the uncertainty you are willing to accept. Travelers changing accommodation only once, with convenient elevators at both stations, may not need forwarding. Those who need to travel light for part of the journey are more likely to benefit in practice."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Items to keep in your small bag rather than send ahead",
+          "text": "Keep identification documents, tickets for that day, payment methods, keys, and essential personal items with you. Check the carrier's rules to confirm whether it accepts batteries, fragile items, or other special items. Do not send anything you must use at a specific time through a delivery service without a guaranteed schedule."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ask whether your next accommodation can receive luggage and obtain a clear reply.",
+            "Verify the recipient details against the reservation name and check-in date.",
+            "Pack what you need to carry based on the delivery date confirmed by the carrier.",
+            "Save the shipping slip, tracking number, and pickup location."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Recheck your tickets and luggage arrangements before taking the Shinkansen",
+              "kind": "howto",
+              "slug": "japan-shinkansen-ticket-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Yamato: Regular TA-Q-BIN Service and Acceptance Conditions",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Yamato: Airport TA-Q-BIN",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/customer/send/services/airport/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "日本での荷物配送の手配方法：都市間の身軽な移動、ホテル受け取りと空港引き取り",
+      "description": "荷物は発送するだけでなく、次の滞在先へ確実に届くようにする必要があります。ホテルの受け取り対応の確認、届け先情報の記入、空港配送と通常配送を分けた手配まで、荷物に旅程を縛られないための方法をまとめます。",
+      "hero": {
+        "src": "/guides/japan-luggage-forwarding-guide/hero.jpg",
+        "alt": "スーツケース、未記入の発送ラベル、配送車。背景に日本の街並みと列車（AI生成のイメージイラスト、実写ではありません）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair・AI生成のイメージイラスト",
+          "license": "AI生成、実写ではありません",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "都市間を移動する旅で一番疲れるのは、荷物を引きながらエレベーターを探すことかもしれません。荷物配送は、途中に短い滞在を挟み、小さなリュックだけで宿泊してもよい人に向いています。毎日宿を変える場合や翌日に飛行機に乗る場合は、大きなスーツケースを手元に置くほうが管理しやすいでしょう。この記事は日本国内のサービスの手配方法を中心に扱い、発送当日の到着を前提とせず、イメージイラストを実際のカウンター写真として扱うこともありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず「受け取ってもらえるか」を確認してから、発送場所を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "クロネコ Yamatoの通常配送、空港配送、一部の当日配送は、それぞれ別のサービスです。通常配送は公式サイトで配送地域やサイズなどの条件を指定して調べられますが、実際に受け付けてもらえるかは、発送地、届け先、荷物の制限にもよります。ホテルを予約したら、次のホテルがチェックイン前の荷物を受け取れるか、何日前から到着してよいか、予約者名をどう記入すればよいかを先に聞きましょう。フロントが無人の宿、アパートメント、セルフチェックインの宿、住所が似ている別館などは、住所だけを書けば問題なく受け取ってもらえると思い込まないことが特に大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホテルから回答を得たら、日本語の正式名称、郵便番号、住所、電話番号、チェックイン日、予約者名を一つのメモにまとめます。同行者が予約した場合は、ホテルのシステムで確認できる予約者名を使い、実際に宿泊する人の名前も添えましょう。この情報はスタッフが照合するためのものなので、予約メールにある支払い情報、パスポート情報、旅程全体まで荷物の外側に印刷して貼る必要はありません。発送元のホテルが伝票の記入補助、集荷の手配、料金の徴収に対応するかも、それぞれ確認しましょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-luggage-forwarding-guide/diagram-1-ja.svg",
+          "alt": "四つの手順：受け取り対応の確認、日付の照合、小さなバッグの準備、伝票の保存",
+          "width": 1600,
+          "height": 900,
+          "caption": "編集部が提案する手順です。模式図は地理的な距離、サービスの保証、効果の実測結果を示すものではありません。",
+          "description": "順に確認：受け取り対応の確認、日付の照合、小さなバッグの準備、伝票の保存。編集部がまとめたもので、地図や実測時間ではありません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "都市間の旅程に合わせて、大きなスーツケースと手荷物を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず「現在のホテル—途中の短期滞在先—次の拠点となる宿泊先」を書き出してみましょう。大きなスーツケースは途中の短期滞在先を飛ばして送り、その間に使う物を手荷物に入れるほうが、毎晩発送するより手配が単純になることが多いです。発送前に到着予定日を確認してから、手元に残す衣類の量を決めましょう。離島や遠隔地への配送、天候の影響がある場合は、前回の都市間配送の経験をそのまま当てはめないでください。荷物が遅れてもその日の予定をこなせてこそ、負担を減らせたといえます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "手配方法",
+            "向いている状況",
+            "事前の確認事項"
+          ],
+          "rows": [
+            [
+              "ホテルから次のホテルへ送る",
+              "途中は小さなバッグだけで短期滞在する",
+              "発送元と届け先が発送・受け取りに対応するか"
+            ],
+            [
+              "空港カウンターへ送る",
+              "帰りは身軽に移動したい",
+              "空港専用サービス、ターミナル、発送期限"
+            ],
+            [
+              "全行程で自分で持ち運ぶ",
+              "頻繁に宿を変える、または翌日に使う",
+              "駅のエレベーターと車内の荷物ルール"
+            ],
+            [
+              "短時間預ける",
+              "その日のうちに同じエリアへ戻る",
+              "受け取り場所と営業時間"
+            ]
+          ],
+          "caption": "料金だけで判断せず、途中で荷物を使う必要があるかに応じて決めましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "空港での引き取りはフライトから逆算し、届け先を「空港」だけにしない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "空港へ送る前に、Yamatoの空港配送の案内と該当ターミナルのカウンターを直接調べましょう。搭乗日、ターミナル、引き取り場所、発送期限の条件をまとめて確認する必要があります。ターミナルを間違えた場合の対応を、「空港に着いてから聞けばよい」で済ませる計画にはしないでください。空港配送と通常のホテル向け配送では受付締め切りが異なり、正確な期限は発送窓口が配送ルートに応じて確認した結果に従います。他人の「前日に送っても間に合った」という経験を、自分のフライトに合わせた条件確認の代わりにしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体的には、まずカウンターの場所を保存し、空港到着後のやることに荷物の引き取りを加えて、航空会社のチェックインより前に組み込みます。航空会社の手荷物預け入れ締め切りと配送カウンターの営業時間は別のもので、どちらに間に合わなくても困ります。早朝便でカウンターの開店時間が合わない場合は、最終泊のホテルへ送るか、自分で空港へ持っていきましょう。フライトが変更されたときも、カレンダーの出発時刻を変えるだけでなく、受け取りの手配を確認し直す必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "発送時に追跡できる記録を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まずスーツケースの外観、ファスナー、持ち手を確認し、混同しやすい古い荷物タグを外します。発送伝票を鮮明に撮影して、受取日、住所、個数を確認し、追跡番号を保存しましょう。追跡画面で配達完了と表示されても、ホテルが荷物をあなたの部屋に割り当てたとは限りません。到着したら、名前と発送伝票を使ってフロントに問い合わせましょう。予定の時刻までに届かない場合は、まず配送業者に連絡して状況を確認し、その後でホテルに協力を頼みます。複数の窓口に同時に連絡して、重複して申し込む必要はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "二泊の短期滞在を例に、荷物を分けて運べるか確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず都市甲に泊まり、続いて山間部に二泊し、その後は都市乙へ戻って三連泊するとします。都市乙のホテルに受け取り対応を確認し、配送業者にスーツケースをそこへ直接送れるか聞くことができます。これは手配の一例で、どのルートでも必ず二日以内に届くという意味ではありません。ホテルが事前に保管できない場合や、配送業者が示した日付がチェックイン日に合わない場合は、自分で持ち運ぶか、届け先を調整しましょう。発送してから受け取る人を探すことのないようにしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手荷物をまとめるときは、途中の二泊で実際に使う順に確認しましょう。到着後の着替え、翌日の外出用品、充電機器、次の宿泊先の予約確認情報です。帰りにだけ必要になる、買った物を入れるためのスペースは、大きなスーツケースに残しておきます。同行者がいる場合は、共用品を誰が保管するか互いに確認し、全員が変換プラグは相手のバッグにあると思い込む事態を防ぎましょう。大切な物は自分で取り出せる場所に置き、誰かが手伝ってくれるからといって、すべてを一つの荷物にまとめないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後の夜も、「ホテルに荷物が届いていること」と「空港へ向かう準備」を別々の確認項目にしましょう。チェックイン時にまずスーツケースを確認し、外観や個数に問題があれば記録を残し、配送業者の手順に沿って申し出ます。チェックアウト後まで開けずに待たないでください。その夜に届いていない場合は、まず対応の進み具合と可能な受け取り方法を確認してから、翌日の交通手段を決めます。どのような対処も明確な回答をもとに組み立て、時間どおりにつなぐ必要のある手順を次々に増やさないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このように荷物を分ける方法の価値は、持ち運びを減らすことにあり、節約を保証するものではありません。比較するときは、配送料、必要になるかもしれない小さなバッグ、受け取りのための遠回り、自分が許容できる不確実性を併せて考えましょう。宿を一度しか変えず、両方の駅でエレベーターを便利に使える人には、必ずしも配送は必要ありません。途中の区間を身軽に移動する必要がある人のほうが、実際の助けを得やすいでしょう。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "発送せず、手元のバッグに残しておく物",
+          "text": "身分証明書、当日の乗車券、支払い手段、鍵、必要な身の回り品は手元に残します。電池、割れ物、その他の特殊な物品を配送で受け付けるかは、配送業者の規定に従って確認してください。決まった時刻に必ず使う物を、到着時期が保証されていない配送に預けないようにしましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "次の宿泊先が荷物を受け取れるかを尋ね、明確な回答を得る。",
+            "予約者名とチェックイン日を使って、届け先情報を照合する。",
+            "配送業者が確認した到着日に合わせて、手元に残す用品を準備する。",
+            "発送伝票、追跡番号、引き取り場所を保存する。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "新幹線に乗る前に、乗車券と荷物の手配をもう一度確認する",
+              "kind": "howto",
+              "slug": "japan-shinkansen-ticket-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Yamato：通常のTA-Q-BINサービスと受付条件",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Yamato：空港宅急便",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/customer/send/services/airport/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "일본 수하물 택배 이용법: 도시 간 가벼운 이동, 호텔 대리 수령과 공항 수령",
+      "description": "짐을 보낼 때는 다음 목적지에 제대로 도착할 수 있는지도 확인해야 합니다. 호텔의 대리 수령 가능 여부 확인과 수취인 정보 작성부터 공항 택배와 일반 택배를 구분해 이용하는 방법까지, 짐에 얽매이지 않는 여행을 위한 방법을 정리했습니다.",
+      "hero": {
+        "src": "/guides/japan-luggage-forwarding-guide/hero.jpg",
+        "alt": "캐리어, 빈 발송 라벨과 택배 차량, 뒤로 보이는 일본 거리와 열차(AI 생성 예시 삽화이며 실제 사진이 아님)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 생성 예시 일러스트",
+          "license": "AI 생성, 실제 사진 아님",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "도시를 옮겨 다니는 여행에서 가장 힘든 순간은 때로 짐을 끌고 엘리베이터를 찾을 때입니다. 수하물 택배는 중간에 짧은 숙박 일정이 있고 작은 배낭만으로 하룻밤을 지낼 수 있는 사람에게 적합합니다. 매일 숙소를 바꾸거나 다음 날 바로 비행기를 탄다면 큰 캐리어를 직접 가지고 다니는 편이 오히려 관리하기 쉽습니다. 이 글은 일본 국내 서비스의 이용 계획을 중심으로 설명하며, 발송 당일 도착을 전제로 삼거나 예시 삽화를 실제 창구 사진으로 제시하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 ‘받아 줄 사람이 있는지’ 확인하고 발송 장소 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "쿠로네코 Yamato의 일반 택배, 공항 택배와 일부 당일 배송은 서로 다른 서비스입니다. 일반 택배는 공식 웹사이트에서 배송 지역과 크기 등의 조건으로 조회할 수 있으며, 실제 접수 가능 여부는 발송지와 목적지, 물품 제한에 따라 달라집니다. 호텔을 예약한 뒤에는 다음 호텔이 체크인 전 짐을 받아 주는지, 얼마나 일찍 도착해도 되는지, 예약자 이름을 어떻게 적어야 하는지 먼저 물어보세요. 무인 프런트가 있는 숙소, 아파트형 숙소, 셀프 체크인 숙소나 주소가 비슷한 별관은 특히 주소만 적으면 문제없이 대신 받아 줄 것이라고 생각해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "호텔의 답변을 받은 뒤에는 정식 일본어 명칭, 우편번호, 주소, 전화번호, 체크인 날짜와 예약자 이름을 하나의 메모에 모아 두세요. 동행자가 예약했다면 호텔 시스템에서 조회할 수 있는 이름을 사용하고 실제 투숙객 이름도 덧붙이세요. 이 정보는 직원이 대조하기 위한 것이므로 예약 확인 메일의 결제 정보, 여권 정보나 전체 일정을 모두 택배 겉면에 인쇄할 필요는 없습니다. 발송하는 호텔의 운송장 작성 지원, 택배 수거 요청 대행, 요금 수납 여부도 각각 확인해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-luggage-forwarding-guide/diagram-1-ko.svg",
+          "alt": "네 단계 절차: 대리 수령 확인, 날짜 대조, 작은 가방 준비, 운송장 보관",
+          "width": 1600,
+          "height": 900,
+          "caption": "편집부가 권하는 처리 순서입니다. 도식은 지리적 거리, 서비스 보장이나 실제 효과 측정 결과를 나타내지 않습니다.",
+          "description": "순서대로 확인: 대리 수령 확인, 날짜 대조, 작은 가방 준비, 운송장 보관. 편집부가 정리한 도식이며 지도나 실측 시간 자료가 아닙니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "도시 간 여행 짐을 큰 캐리어와 휴대용 가방으로 나누기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 ‘현재 호텔—중간에 짧게 머물 숙소—다음 고정 숙소’로 경로를 그려 보세요. 큰 캐리어는 중간 숙소를 건너뛰어 보내고, 휴대용 가방에는 그 구간에서 쓸 물품을 넣으면 매일 밤 새로 택배를 보내는 것보다 간단한 경우가 많습니다. 발송 전에 예상 도착일을 확실히 물어본 뒤 휴대할 옷의 양을 정하세요. 외딴섬이나 외진 지역으로 보내거나 날씨의 영향을 받을 때는 이전의 도시 간 배송 경험을 그대로 적용하지 마세요. 짐이 늦게 도착해도 그날 일정을 마칠 수 있어야 실제로 부담이 줄어듭니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "이용 방식",
+            "적합한 상황",
+            "먼저 확인할 사항"
+          ],
+          "rows": [
+            [
+              "호텔에서 다음 호텔로 발송",
+              "중간에 작은 가방만 들고 짧게 숙박할 때",
+              "발송 호텔의 접수와 도착 호텔의 대리 수령 가능 여부"
+            ],
+            [
+              "공항 창구로 발송",
+              "돌아가는 길에 가볍게 이동하고 싶을 때",
+              "공항 전용 서비스, 터미널과 발송 기한"
+            ],
+            [
+              "전 구간 직접 휴대",
+              "숙소를 자주 옮기거나 다음 날 바로 짐이 필요할 때",
+              "역의 엘리베이터와 열차 내 수하물 규정"
+            ],
+            [
+              "단시간 보관",
+              "당일 같은 지역으로 돌아올 때",
+              "짐을 찾을 곳의 영업시간과 위치"
+            ]
+          ],
+          "caption": "이동 중 짐을 사용할 필요가 있는지에 따라 결정하고, 가격 하나만으로 판단하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "공항 수령은 항공편 시간부터 역산하고, 목적지에 ‘공항’만 적지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공항으로 보내기 전에는 Yamato의 공항 택배 안내와 해당 터미널 창구를 직접 확인하세요. 항공편 날짜, 터미널, 수령 장소와 최종 발송 조건을 함께 대조해야 합니다. 잘못된 터미널로 보냈을 때의 해결책을 ‘공항에 가서 물어보기’로 잡아서는 안 됩니다. 공항 택배와 일반 호텔 택배의 접수 마감은 다르며, 정확한 기한은 발송 창구에서 배송 경로에 따라 확인한 결과를 기준으로 삼으세요. 다른 사람의 ‘전날 보내도 늦지 않았다’는 경험으로 본인 항공편의 조건 확인을 대신하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제로는 먼저 창구 위치를 저장한 뒤, 공항 도착 후 할 일에 짐 수령을 추가하고 항공사 체크인보다 앞에 배치하세요. 항공사의 위탁 수하물 접수 마감과 택배 창구 영업시간은 별개이며, 어느 하나라도 놓치면 곤란해집니다. 이른 아침 항공편이라 창구 개점 시간과 맞지 않는다면 마지막 밤에 묵는 호텔로 보내거나 직접 공항까지 가져가세요. 항공편이 변경되면 수령 계획도 다시 확인해야 하며, 달력의 출발 시간만 바꿔서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "발송할 때 추적할 수 있는 기록 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 캐리어의 외관, 지퍼와 손잡이를 확인하고 혼동하기 쉬운 기존 수하물 태그를 떼세요. 운송장을 선명하게 촬영하고 수령일, 주소와 수량을 확인한 뒤 배송 조회 번호를 저장하세요. 배송 조회 화면에 배송 완료로 표시되어도 호텔에서 짐을 본인 객실에 배정했다는 뜻은 아닙니다. 도착하면 이름과 운송장으로 프런트에 문의하세요. 예정된 시간에 도착하지 않았다면 먼저 배송업체에 연락해 상태를 확인한 뒤 호텔에 도움을 요청하세요. 여러 창구를 동시에 찾아 중복으로 접수할 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "이틀 밤 머무는 상황으로 짐을 나눠 보낼 수 있는지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 도시 A에서 숙박한 뒤 산간 지역에서 이틀 밤을 지내고, 다시 도시 B로 돌아와 사흘 밤을 연박한다고 가정해 보세요. 도시 B의 호텔에 대리 수령이 가능한지 확인한 뒤 배송업체에 캐리어를 그곳으로 바로 보낼 수 있는지 물어볼 수 있습니다. 이는 이용 계획의 예시일 뿐, 어떤 경로든 반드시 이틀 안에 도착한다는 뜻은 아닙니다. 호텔이 미리 보관해 줄 수 없거나 배송업체가 안내한 날짜가 체크인 일정과 맞지 않으면 직접 휴대하거나 배송 목적지를 조정하세요. 먼저 발송하고 나서 받아 줄 사람을 찾지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대용 가방을 챙길 때는 중간에 머무는 이틀 밤 동안 실제로 사용할 순서에 따라 확인하세요. 도착 후 갈아입을 옷, 다음 날 외출할 때 쓸 물품, 충전 장비와 다음 숙소의 예약 확인 자료가 필요합니다. 돌아올 때에만 필요한 쇼핑 물품용 여유 공간은 큰 캐리어에 남겨 두세요. 동행자가 있다면 공용 물품을 누가 맡는지 서로 확인해 모두가 변환 어댑터는 다른 사람 가방에 있다고 생각하는 일을 피하세요. 중요한 물품은 자신이 꺼낼 수 있는 곳에 두고, 누군가 도와주겠다고 한다는 이유로 전부 같은 짐에 몰아넣지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막 밤에도 ‘호텔의 짐 수령 완료’와 ‘공항으로 갈 준비’를 별개의 확인 항목으로 나누세요. 체크인할 때 먼저 캐리어를 확인하고, 외관이나 수량에 문제가 있으면 기록을 남겨 배송업체의 절차에 따라 알리세요. 체크아웃한 뒤에야 열어 확인하는 일이 없도록 하세요. 그날 밤까지 받지 못했다면 먼저 처리 진행 상황과 가능한 수령 방법을 확실히 물어본 뒤 다음 날 이동 수단을 정하세요. 모든 후속 조치는 명확한 답변을 바탕으로 마련하고, 시간을 정확히 맞춰 이어 가야 하는 단계를 계속 늘리지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이렇게 짐을 나누는 방식의 가치는 직접 옮기는 부담을 줄이는 데 있으며, 비용 절약을 보장하는 데 있지 않습니다. 비교할 때는 발송비, 필요할 수 있는 작은 가방, 짐을 찾기 위한 우회 동선과 본인이 감수할 수 있는 불확실성까지 함께 고려하세요. 숙소를 한 번만 옮기고 두 역 모두 엘리베이터를 편리하게 이용할 수 있다면 택배가 필요하지 않을 수 있습니다. 중간 구간을 가볍게 이동해야 하는 사람일수록 실제 도움을 얻기 쉽습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "택배로 보내지 말고 휴대할 물품",
+          "text": "신분증, 당일 승차권, 결제 수단, 열쇠와 꼭 필요한 개인 물품은 직접 지니세요. 배터리, 깨지기 쉬운 물건이나 기타 특수 물품을 접수할 수 있는지는 배송업체 규정에 따라 확인하세요. 제시간에 꼭 써야 하는 물품을 배송 일정이 보장되지 않는 서비스에 맡기지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "다음 숙소에 대리 수령이 가능한지 물어보고 명확한 답변을 받으세요.",
+            "예약자 이름과 체크인 날짜로 수취인 정보를 대조하세요.",
+            "배송업체가 확인한 도착일에 맞춰 휴대할 물품을 준비하세요.",
+            "운송장, 배송 조회 번호와 수령 장소를 저장하세요."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "신칸센 탑승 전 승차권과 수하물 계획 다시 확인하기",
+              "kind": "howto",
+              "slug": "japan-shinkansen-ticket-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Yamato: 일반 TA-Q-BIN 서비스와 접수 조건",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Yamato: 공항 택배",
+          "url": "https://www.kuronekoyamato.co.jp/ytc/customer/send/services/airport/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "日本行李宅配怎么安排：跨城轻装、酒店代收与机场取件",
+      "description": "行李寄得出去，也要确保能到达下一站。从确认酒店代收、填写收件资料，到把机场宅配和普通宅配分开处理，整理一套不让行程被行李绑住的做法。",
+      "hero": {
+        "src": "/guides/japan-luggage-forwarding-guide/hero.jpg",
+        "alt": "行李箱、空白寄件标签与快递车，后方有日本街道和列车（AI 生成示意插画，非实拍）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 生成示意图",
+          "license": "AI 生成，非实拍",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "跨城旅行最累的部分，有时是拖着行李找电梯。行李宅配适合中间穿插短住、又愿意用小背包过夜的人；如果天天换住宿，或隔天就要搭飞机，把大箱子留在身边反而比较容易掌控。本文以日本境内服务的安排方法为主，不把寄件当天送达当作默认情况，也不把示意插画当成实际柜台照片。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认“有人收”，再决定从哪里寄",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "黑猫 Yamato 的普通宅配、机场宅配与部分当日配送是不同服务。普通宅配官网可按寄送区域、尺寸等条件查询，实际受理还要看寄件地、目的地与物品限制。订好酒店后，先问下一家是否接受入住前送达的行李、可以提前多久抵达，以及预订姓名需要怎么写。无人柜台、公寓、自助入住或地址相似的分店，尤其不能只填街道地址就假设能顺利代收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "取得酒店回复后，把正式日文名称、邮政编码、地址、电话、入住日期和预订姓名放在同一张备忘录中。由同行者订房时，使用酒店系统查得到的姓名，并补充实际入住人的名字。这份资料是用来让工作人员核对的，不必把订房邮件里的付款信息、护照资料或完整行程都印在包裹外。寄件酒店是否协助填单、代叫快递和收取费用，也应分别确认。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/japan-luggage-forwarding-guide/diagram-1-zh-cn.svg",
+          "alt": "四步流程：确认代收、核对日期、准备小包、保存单据",
+          "width": 1600,
+          "height": 900,
+          "caption": "编辑建议的处理顺序；示意图不代表地理距离、服务保证或效果实测。",
+          "description": "依次检查：确认代收、核对日期、准备小包、保存单据。编辑整理，并非地图或实测时间。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "把跨城行程所需行李分成大箱子与随身包",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先画出“当前酒店—中间短住—下一个固定住宿点”。大箱子跳过中间短住，随身包放那段行程会用到的物品，往往比每晚都寄一次更简单。交寄前问清预计送达日，再决定随身衣物的数量；遇到离岛、偏远地区或天气影响时，不沿用上一次城市间配送的经验。行李晚到时仍能完成当天行程，才算真的减轻负担。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "安排方式",
+            "适合情况",
+            "先确认"
+          ],
+          "rows": [
+            [
+              "从酒店寄到下一家酒店",
+              "途中只带小包短住",
+              "两端是否受理与代收"
+            ],
+            [
+              "寄到机场柜台",
+              "回程想轻装出行",
+              "机场专用服务、航站楼与寄件期限"
+            ],
+            [
+              "全程自行携带",
+              "频繁换住宿或隔天就要用",
+              "车站电梯与车内行李规定"
+            ],
+            [
+              "短时寄存",
+              "当天会回到同一区域",
+              "取件营业时间与位置"
+            ]
+          ],
+          "caption": "根据是否需要中途使用行李决定，不只看价格。"
+        },
+        {
+          "type": "heading",
+          "text": "机场取件要按航班倒推时间，不能只填“机场”",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "寄往机场前，直接查阅 Yamato 的机场宅配说明与对应航站楼柜台。航班日期、航站楼、取件地点和最晚寄件条件必须一起核对；寄到错误航站楼后的补救，不能靠“到机场再问”来安排。机场宅配和普通酒店宅配的受理截止时间不同，确切期限以寄件柜台按路线确认的结果为准。不要引用别人的“前一天寄也赶得上”代替对自己航班条件的核实。"
+        },
+        {
+          "type": "paragraph",
+          "text": "实际做法是先保存柜台位置，再把取件加入抵达机场后的待办事项，并排在航空公司值机之前。航空公司的行李托运截止时间与宅配柜台营业时间是两回事，任何一个赶不上都会造成麻烦。若早班机与柜台开门时间对不上，改寄最后一晚的酒店或自行带往机场。航班变动时，也要重新确认收件安排，不能只修改日历中的起飞时间。"
+        },
+        {
+          "type": "heading",
+          "text": "交寄时留下能追踪的记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先确认箱子外观、拉链与把手，拆掉容易混淆的旧行李标签。把寄件单拍清楚，检查收件日、地址和件数，再保存追踪号码。追踪页面显示配送完成，不等于酒店已把行李分配到你的房间；抵达时用姓名和寄件单向柜台查询。如果未在预期时间抵达，先联系承运方确认状态，再请酒店协助，不必同时找不同柜台重复下单。"
+        },
+        {
+          "type": "heading",
+          "text": "用两晚短住的情境，检查行李能否分流",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设你先住城市甲，接着到山区住两晚，再回城市乙连住三晚。可以向城市乙的酒店确认代收，再询问承运方能否把箱子直接送到那里。这只是安排示例，并不代表任何路线都必然在两天内送到。如果酒店不能提前保管，或承运方提供的日期对不上入住时间，就改成自行携带或调整寄送终点，不要先交寄才找收件人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理随身包时，按照中间两晚真正会用到的顺序检查：抵达后换穿的衣服、隔天外出的用品、充电设备，以及下一次住宿的确认资料。把回程才需要的购物空间留在大箱子里。若有同行者，可互相确认共同用品由谁保管，避免每个人都以为转换插头在对方包里。重要用品放在自己能拿到的位置，不因为有人愿意帮忙就全部集中到同一件行李中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后一晚也要把“酒店已收件”和“准备去机场”分成两个检查点。入住时先确认箱子，发现外观或件数有问题就保留记录，按承运方流程反映；不要等退房后才拆开查看。若当晚没有收到，先问清处理进度与可行的领取方式，再决定隔天交通。任何补救安排都以明确答复为基础，避免连续增加需要准时衔接的步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这种分流方式的价值在于减少搬运，而非保证省钱。比较时把寄件费、可能需要的小包、绕路取件和自己愿意承担的不确定性一起考虑。只换一次住宿、两站都有方便使用的电梯的人，未必需要宅配；需要中途轻装走一段的人，才更容易从中得到实际帮助。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "留在随身包里、不要寄走的东西",
+          "text": "证件、当日车票、付款工具、钥匙与必要个人物品留在身上。配送是否接收电池、易碎品或其他特殊物品，按承运方规定确认；不要把必须准时使用的物品交给无法保证时效的配送服务。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "询问下一家住宿能否代收，取得明确回复。",
+            "用预订姓名与入住日核对收件资料。",
+            "按承运方确认的送达日准备随身用品。",
+            "保存寄件单、追踪号码与取件位置。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "搭乘新干线前再确认车票与行李安排",
+              "kind": "howto",
+              "slug": "japan-shinkansen-ticket-guide"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Yamato：普通 TA-Q-BIN 服务与受理条件",
           "url": "https://www.kuronekoyamato.co.jp/ytc/en/send/services/takkyubin/",
           "checked_on": "2026-09-14"
         },
