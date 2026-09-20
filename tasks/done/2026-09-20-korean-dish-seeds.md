@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-korean-dish-seeds
 title: 料理目錄補上韓國美食特輯要用的七道料理與代表店
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-20T04:58:00Z
 created_at: 2026-09-20T04:57:30Z
-completed_at:
+completed_at: 2026-09-20T05:24:52Z
 branch: claude/korean-dish-seeds
 depends_on: []
 scope:
