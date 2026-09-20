@@ -101,3 +101,10 @@ Validate each materialized `GuideDocument`, every translated scalar, numeric and
   `npm run check:tasks` and `git diff --check` passed. Publication remains
   contingent on merged PR, green CI, fresh source/version audit, guarded
   deployment, import dry run and signed-out browser verification.
+
+## 2026-09-21 publication and visual checkpoint
+
+- PR #602 merged at `2c2cf9902ccc1e7ad21bc0a89dd2a469e7ce62b1` with green post-merge CI. A verified `pg_dump -Fc` backup preceded deployment. Exact-manifest dry-run, twelve drafts and twelve publications completed; 1,756 published locale rows became 1,768. The post-publication database scope audit passed with SHA-256 `7cfab50a4c43d04c02e9c78f08326e172ed37ac48d6d41d18608dc1982dd024e`.
+- Signed-out browser automation passed 30/30 desktop/mobile pages (SHA-256 `172e7aadcc9cb7cd5a29f39db9e044eb1707fc612d600a4e6c0d3c6ce01794f3`), 120/120 content links (SHA-256 `b6874d0b3ea9f9c3accabde264c214f847f74b4da9221e24ef042541ecf002a4`), and sitemap pagination/hreflang (1,768 API entries, 2,310 XML URLs, no missing alternates). Original release hold remains active until a guarded follow-up transition.
+- Independent visual review is `HOLD` only for Gardens/en: eight U+2019 apostrophes in seven fields render with excessive glyph advance on desktop and mobile. It also logged a transient Gardens/ko header screenshot (stable recapture passed) and minor Hawker/en 390px one-pixel recommendation-card overflow. Review SHA-256 `20e51c6d7c1a879ecec6f4b174f9763371d47034826e16221aa6fe2dd0562a38`.
+- PR #605 is the narrow Gardens/en typography correction. Independent recursive diff review (SHA-256 `3e31e6590a85563a84966c8bf2181d041be322ab6a7d5d27ee98697edfe94ce3`) confirmed only those eight character substitutions; focused content tests passed (12 passed, 5 skipped). Do not close this task until the correction is merged, version-guarded into the live en locale, desktop/mobile screenshots are rechecked, and the release hold is cleared with accurate evidence.
