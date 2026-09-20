@@ -14,7 +14,12 @@ import pytest
 
 from app.guides import retopic
 from app.guides.pack_cli import main
-from app.guides.taxonomy import LIFE_SEED_SUBTOPICS, LIFE_SEED_TOPICS, SEED_TOPICS
+from app.guides.taxonomy import (
+    LIFE_SEED_SUBTOPICS,
+    LIFE_SEED_TOPICS,
+    SEED_TOPICS,
+    TRAVEL_SEED_SUBTOPICS,
+)
 
 
 def pack(slug: str, kind: str = "life", topics: list[str] | None = None) -> dict:
@@ -76,6 +81,7 @@ def test_the_rule_table_only_names_lifestyle_sub_topics_under_their_seeded_paren
     assert {rule.subtopic for rule in retopic.RULES} <= subtopics
     assert set(retopic.SUBTOPIC_PARENT.values()) <= {slug for slug, _ in LIFE_SEED_TOPICS}
     assert retopic.LIFE_VOCABULARY.isdisjoint({slug for slug, _ in SEED_TOPICS})
+    assert retopic.LIFE_VOCABULARY.isdisjoint({slug for slug, _, _ in TRAVEL_SEED_SUBTOPICS})
     # Every series the registry of members knows maps to a seeded sub-topic too.
     assert set(retopic.series_members().values()) <= subtopics
 
