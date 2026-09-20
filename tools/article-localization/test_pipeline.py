@@ -640,6 +640,95 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["blocks"][4]["credit"], source["blocks"][4]["credit"])
         self.assertEqual(result["sources"][0]["checked_on"], "2026-09-14")
 
+    def test_only_known_ai_hero_disclosure_is_translatable(self):
+        source = sample()
+        source["hero"] = {
+            "src": "/guides/test/hero.jpg",
+            "alt": "AI 生成示意圖",
+            "width": 1600,
+            "height": 900,
+            "credit": {
+                "author": "Mokaair · AI 生成示意圖",
+                "license": "AI 生成，非實拍",
+                "source_url": "https://example.com/credit",
+            },
+        }
+        fields = pipeline.document_fields(source)
+        author = "/document/hero/credit/author"
+        disclosure = "/document/hero/credit/license"
+        self.assertEqual(fields[author]["kind"], "ai_hero_credit_author")
+        self.assertEqual(fields[disclosure]["kind"], "ai_hero_credit_disclosure")
+        self.assertNotIn("/document/hero/credit/source_url", fields)
+        self.assertNotIn("/document/blocks/4/credit/author", fields)
+
+        translations = {pointer: field["source"] for pointer, field in fields.items()}
+        translations[author] = "Mokaair · AI-generated illustration"
+        translations[disclosure] = "AI-generated illustration, not a photograph"
+        self.assertIn(
+            "all fields copied unchanged",
+            pipeline.validate_fields(fields, translations, "zh-TW", "en"),
+        )
+        translations["/document/title"] = "Travel explanation"
+        self.assertEqual(
+            pipeline.validate_fields(fields, translations, "zh-TW", "en"), []
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            job = {
+                "fields": fields,
+                "source_document": source,
+                "source_locale": "zh-TW",
+                "locale": "en",
+                "assets": [],
+                "raster_review_required": [],
+                "job_sha256": "test-job",
+            }
+            pipeline.materialize(job, translations, directory, validate_schema=True)
+            result = pipeline.read_json(directory / "document.json")
+            self.assertEqual(result["hero"]["credit"]["author"], translations[author])
+            self.assertEqual(
+                result["hero"]["credit"]["license"], translations[disclosure]
+            )
+            self.assertEqual(
+                result["hero"]["credit"]["source_url"],
+                source["hero"]["credit"]["source_url"],
+            )
+            self.assertEqual(
+                result["blocks"][4]["credit"], source["blocks"][4]["credit"]
+            )
+
+        for changed, expected in [
+            (
+                {author: "Another creator · AI illustration"},
+                "Mokaair attribution changed",
+            ),
+            ({author: "Mokaair · illustration"}, "AI image disclosure removed"),
+            (
+                {disclosure: "Illustration, not a photograph"},
+                "AI image disclosure removed",
+            ),
+            ({disclosure: source["hero"]["credit"]["license"]}, "copied unchanged"),
+        ]:
+            invalid = {**translations, **changed}
+            self.assertTrue(
+                any(
+                    expected in error
+                    for error in pipeline.validate_fields(
+                        fields, invalid, "zh-TW", "en"
+                    )
+                ),
+                changed,
+            )
+
+        photo = copy.deepcopy(source)
+        photo["hero"]["credit"].update(author="Takeshi Aida", license="CC BY-SA 2.0")
+        self.assertNotIn(author, pipeline.document_fields(photo))
+        self.assertNotIn(disclosure, pipeline.document_fields(photo))
+        licensed_art = copy.deepcopy(source)
+        licensed_art["hero"]["credit"]["license"] = "© Mokaair"
+        self.assertNotIn(author, pipeline.document_fields(licensed_art))
+        self.assertNotIn(disclosure, pipeline.document_fields(licensed_art))
+
     def test_prepared_migration_never_resets_a_quota_block_or_prior_attempt(self):
         for status, attempted in [("blocked", False), ("prepared", True)]:
             with tempfile.TemporaryDirectory() as tmp:
