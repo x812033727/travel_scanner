@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-correct-hanoi-old-quarter-source-sentence
 title: Correct Hanoi Old Quarter source sentence
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-batch005-author
@@ -29,14 +29,14 @@ intended meaning, so the published source needs a small, version-guarded edit.
 - [x] Only the final sentence of zh-TW `/blocks/11/text` is made grammatical,
       preserving the advice, document structure, sources and all other prose.
 - [x] ArticlePack schema validation and an exact scalar-path diff pass.
-- [ ] A narrow source-correction PR is open for independent review.
+- [x] A narrow source-correction PR is open for independent review.
 
 ## Steps
 
 - [x] Read the current published source and compare all four drafted locales.
 - [x] Confirm the existing safety advice against a primary Hanoi city source.
 - [x] Change only the one source sentence and check normalized hashes.
-- [ ] Run focused checks and open a PR. Do not publish or import locales.
+- [x] Run focused checks and open a PR. Do not publish or import locales.
 
 ## How to verify
 
@@ -87,3 +87,7 @@ Focused verification: `test_guides_content_pack.py` and
 `test_guides_content_links.py` completed with 12 passed, 5 skipped;
 `npm run check:tasks` validated 636 task files (only unrelated existing
 warnings), and `git diff --check` passed.
+
+PR #599 is open for independent review. Its first commit is `cf0f65b5`;
+this follow-up records the task's review status. Do not mark the task done
+until the PR is merged, and do not publish the corrected source from this PR.
