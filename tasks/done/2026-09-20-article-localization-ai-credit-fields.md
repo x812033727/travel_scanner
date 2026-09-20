@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-article-localization-ai-credit-fields
 title: Translate descriptive AI hero image credits safely
-status: review
+status: done
 priority: P2
 area: tools
 owner: codex-credit-localization-tool
 claimed_at: 2026-09-20T08:30:04Z
 created_at: 2026-09-20T08:29:59Z
-completed_at:
+completed_at: 2026-09-20T12:33:00Z
 branch: codex/article-localization-credit-fields
 depends_on: []
 scope:
@@ -32,13 +32,13 @@ Photographer attribution and legal license names must remain unchanged.
 - [x] Field validation rejects a missing Mokaair prefix, omitted AI disclosure,
   copied source disclosure, and translation jobs changing only credit text.
 - [x] Focused tests, format/lint, and task validation pass.
-- [ ] Parent review and PR/release decision.
+- [x] Parent review and PR/release decision.
 
 ## Steps
 
 - [x] Add an exact AI hero credit allowlist and validate attribution/disclosure.
 - [x] Document staging and migration implications.
-- [ ] Await parent review before opening a PR.
+- [x] Parent review completed; PR #589 merged and included in production deployment bf820a62.
 
 ## How to verify
 
@@ -54,3 +54,7 @@ The repository currently has 34 AI hero credits with the exact descriptive pair
 `Mokaair · AI 生成示意圖` / `AI 生成，非實拍`; copyright/CC and photo credits are separate.
 The allowlist intentionally does not rewrite existing staged jobs. Matching new
 jobs gain two fields and a new job hash, so prepare them under a new work root.
+
+Parent confirmed PR #589 was merged, and its tooling was deployed with bf820a62
+and verified on the production service. The task is closed before claiming the
+subsequent same-file URL localization work.

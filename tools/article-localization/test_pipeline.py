@@ -640,6 +640,134 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result["blocks"][4]["credit"], source["blocks"][4]["credit"])
         self.assertEqual(result["sources"][0]["checked_on"], "2026-09-14")
 
+    def test_only_verified_public_site_links_follow_the_target_locale(self):
+        source = sample()
+        routes = (
+            "/guides/howto",
+            "/destinations/hanoi",
+            "/destinations/singapore",
+        )
+        source["blocks"].extend(
+            {
+                "type": "link",
+                "text": "站內頁面",
+                "url": f"https://mokaair.com/zh-TW{route}",
+            }
+            for route in routes
+        )
+        source["blocks"].append(
+            {
+                "type": "link",
+                "text": "外部頁面",
+                "url": "https://example.com/zh-TW/guides/howto",
+            }
+        )
+        source["blocks"][1]["inlines"].append(
+            {
+                "type": "link",
+                "text": "河內目的地",
+                "url": "https://mokaair.com/zh-TW/destinations/hanoi",
+            }
+        )
+        source["sources"][0]["url"] = "https://mokaair.com/zh-TW/guides/howto"
+        for locale in pipeline.LOCALES:
+            document = copy.deepcopy(source)
+            pipeline.localize_verified_site_links(document, locale)
+            for index, route in enumerate(routes, start=5):
+                self.assertEqual(
+                    document["blocks"][index]["url"],
+                    f"https://mokaair.com/{locale}{route}",
+                )
+            self.assertEqual(
+                document["blocks"][1]["inlines"][-1]["url"],
+                f"https://mokaair.com/{locale}/destinations/hanoi",
+            )
+            self.assertEqual(
+                document["blocks"][8]["url"],
+                "https://example.com/zh-TW/guides/howto",
+            )
+            self.assertEqual(document["sources"][0], source["sources"][0])
+            self.assertEqual(
+                document["blocks"][1]["inlines"][2], source["blocks"][1]["inlines"][2]
+            )
+        self.assertEqual(
+            source["blocks"][5]["url"], "https://mokaair.com/zh-TW/guides/howto"
+        )
+
+        fields = pipeline.document_fields(source)
+        self.assertNotIn("/document/blocks/5/url", fields)
+        translations = {pointer: field["source"] for pointer, field in fields.items()}
+        translations["/document/title"] = "Travel explanation"
+        job = {
+            "fields": fields,
+            "source_document": source,
+            "source_locale": "zh-TW",
+            "locale": "en",
+            "assets": [],
+            "raster_review_required": [],
+            "job_sha256": "test-job",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            directory = Path(tmp)
+            pipeline.materialize(job, translations, directory)
+            staged = pipeline.read_json(directory / "document.json")
+            self.assertEqual(
+                staged["blocks"][5]["url"], "https://mokaair.com/en/guides/howto"
+            )
+            self.assertEqual(staged["sources"][0], source["sources"][0])
+
+    def test_unapproved_site_links_refuse_materialization_without_artifacts(self):
+        for url in (
+            "https://mokaair.com/zh-TW/guides/howto/draft-article",
+            "https://mokaair.com/guides/howto",
+            "https://mokaair.com/zh-TW/guides/howto?topic=rail",
+            "https://mokaair.com/zh-TW/guides/howto#first",
+            "http://mokaair.com/zh-TW/guides/howto",
+            "https://www.mokaair.com/zh-TW/guides/howto",
+            "https://mokaair.com./zh-TW/guides/howto",
+        ):
+            with self.subTest(url=url), tempfile.TemporaryDirectory() as tmp:
+                source = sample()
+                source["blocks"].append(
+                    {"type": "link", "text": "站內頁面", "url": url}
+                )
+                fields = pipeline.document_fields(source)
+                translations = {
+                    pointer: field["source"] for pointer, field in fields.items()
+                }
+                translations["/document/title"] = "Travel explanation"
+                job = {
+                    "fields": fields,
+                    "source_document": source,
+                    "source_locale": "zh-TW",
+                    "locale": "en",
+                    "assets": [],
+                    "raster_review_required": [],
+                    "job_sha256": "test-job",
+                }
+                directory = Path(tmp)
+                with self.assertRaisesRegex(ValueError, "same-site URL|not approved"):
+                    pipeline.materialize(job, translations, directory)
+                self.assertFalse((directory / "document.json").exists())
+                self.assertFalse((directory / "assets.json").exists())
+
+        source = sample()
+        source["blocks"].append(
+            {
+                "type": "link",
+                "text": "站內頁面",
+                "url": "https://mokaair.com/zh-TW/guides/howto",
+            }
+        )
+        with (
+            patch.dict(
+                pipeline.VERIFIED_PUBLIC_SITE_LINK_LOCALES,
+                {"/guides/howto": frozenset({"zh-TW"})},
+            ),
+            self.assertRaisesRegex(ValueError, "not approved for en"),
+        ):
+            pipeline.localize_verified_site_links(source, "en")
+
     def test_only_known_ai_hero_disclosure_is_translatable(self):
         source = sample()
         source["hero"] = {
