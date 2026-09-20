@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-article-localization-verified-site-links
 title: Localize verified same-site guide links in article translation jobs
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: codex-batch006-link-tool
@@ -44,7 +44,7 @@ a clickable public link in a translated article.
   publication assembler; close the completed overlapping AI-credit task.
 - [x] Add a narrow verified-route mapping at pipeline materialization and tests
   for all five locales, external/source preservation and refusal paths.
-- [ ] Open an independent PR without merging, deploying or publishing.
+- [x] Open an independent PR without merging, deploying or publishing.
 
 ## How to verify
 
@@ -64,3 +64,5 @@ Only URL values of LinkBlock and rich-paragraph link nodes are rewritten; the
 translation field allowlist still excludes URLs. Publication assembly applies
 its separate article-link checks, and release must recheck current route status.
 The Hanoi zh-TW source sentence is under a separate editorial HOLD.
+PR #596 is open for parent review. It contains only the tooling change and this
+task handoff; it has not been merged or deployed, and no content was published.
