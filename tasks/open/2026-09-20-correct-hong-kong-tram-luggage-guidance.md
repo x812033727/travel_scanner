@@ -1,11 +1,11 @@
 ---
 id: 2026-09-20-correct-hong-kong-tram-luggage-guidance
 title: Correct Hong Kong tram luggage guidance
-status: review
+status: in-progress
 priority: P1
 area: docs
-owner: codex-hk-tram-luggage-source
-claimed_at: 2026-09-20T08:51:02Z
+owner: codex-article-localization
+claimed_at: 2026-09-20T09:04:25Z
 created_at: 2026-09-20T08:51:01Z
 completed_at:
 branch: codex/hong-kong-tram-luggage-source
@@ -58,10 +58,10 @@ Based on `origin/main` commit `3bb3b7b979e304b473b8c9fb18ccf1b569aa044d`.
 The original pack SHA-256 is
 `208d95f876e63edac1e2a87b1b6741a7492005882e4a55de9795859263d5bc43`;
 the corrected pack SHA-256 is
-`3f2998d19fde18b9d6af6de0072c7870e719fd0a5a19d476c6261373fa183f5f`.
+`de6ab95f2f85bfa3bb38b6db2d1f73b2380e9a73eda4db4164f3158cbdc4bc7a`.
 Normalized zh-TW document SHA-256 changes from
 `e03a3b07c6db7fe01b768d81410d15985ee8cbcb406e6939ad74b30f0137759d`
-to `fcfab0dcc25f90120b047d99b773c2a9d76d66185b522e85666fce5a344cfe68`.
+to `e59b60f8ca4b19233820cc03e9126ddb0c4a29c70b06bed79ec43a3e359c5efa`.
 Only `blocks[6].text`, `blocks[17].text`, `sources[2].title` and
 `sources[2].checked_on` changed; the last date is `2026-09-20`.
 
@@ -73,3 +73,7 @@ remains the article's source URL; its check date was refreshed after reading
 both official language versions. Do not infer publication from this repository
 change: the last pinned production snapshot had zh-TW locale version 6 and
 the old document hash, and a new snapshot is required before a live write.
+
+Independent source review tightened the motorman condition to the official
+Traditional Chinese meaning, `會對其他乘客構成不便`, rather than the narrower
+`妨礙其他乘客`; the final pack and document hashes above reflect that revision.
