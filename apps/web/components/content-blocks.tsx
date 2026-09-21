@@ -229,7 +229,11 @@ export function ContentBlocks({
             // scroll. 1280px is the narrowest breakpoint where that margin is certainly
             // free -- even with a classic 15px scrollbar the page has 268px a side to give
             // and only 226 is taken.
-            <div tabIndex={0} role="group" className="-mx-5 overflow-x-auto px-5 xl:-mx-[226px] xl:px-0">{image}</div>
+            // The gutter comes back on the left only. That one lines the diagram up with the
+            // text before any scrolling; a matching one on the right earns nothing and costs
+            // the end of the scroll, which stopped on 20px of blank with the last column's
+            // leading edge pushed out of frame.
+            <div tabIndex={0} role="group" className="-mx-5 overflow-x-auto pl-5 xl:-mx-[226px] xl:pl-0">{image}</div>
           ) : image}
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
