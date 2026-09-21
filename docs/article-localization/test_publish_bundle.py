@@ -17,8 +17,6 @@ from types import SimpleNamespace
 from uuid import UUID, uuid4
 
 import pytest
-from sqlalchemy import func, select, update
-
 from app.auth import service as auth_service
 from app.guides import admin_service
 from app.guides.models import GuideArticle, GuideArticleLocale, GuideArticleRevision
@@ -31,6 +29,7 @@ from app.guides.schemas import (
     VisibilityWrite,
 )
 from app.models import User
+from sqlalchemy import func, select, update
 from tests import test_guides as guides
 
 spec = importlib.util.spec_from_file_location(
@@ -378,7 +377,7 @@ async def test_reviewed_source_correction_publishes_once_with_missing_translatio
 @pytest.mark.parametrize("tamper", ["absent", "unapproved", "unlisted_text", "draft"])
 async def test_source_correction_requires_exact_clean_review(tmp_path, database, owner, tamper):
     original, _, before = await case(tmp_path, database, owner)
-    baseline, pack, review, manifest, _ = reviewed_source_correction(
+    _, pack, _, manifest, _ = reviewed_source_correction(
         original,
         approved=tamper != "unapproved",
         draft_hash="f" * 64 if tamper == "draft" else None,

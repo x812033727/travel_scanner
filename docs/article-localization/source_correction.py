@@ -126,7 +126,7 @@ def verify_review(review, article, locale, corrected_document, asset_hashes):
         raise ValueError("Source correction includes unreviewed document changes")
     assets = review["assets"]
     if not isinstance(assets, list):
-        raise ValueError("Invalid source correction assets")
+        raise TypeError("Invalid source correction assets")
     paths = set()
     for asset in assets:
         if not isinstance(asset, dict) or set(asset) != {"path", "before_sha256", "after_sha256"}:
