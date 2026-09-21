@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-article-localization-batch-006-three-guides
 title: Localize KL and two Singapore guides into five languages (Batch 006 split)
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-batch006-three
 claimed_at: 2026-09-20T13:34:51Z
 created_at: 2026-09-20T13:26:59Z
-completed_at:
+completed_at: 2026-09-21T12:19:02Z
 branch: codex/article-localization-batch-006-three-guides
 depends_on: []
 scope:
@@ -31,15 +31,15 @@ Three published zh-TW Mokaair guides from the initial Batch 006 inventory still 
 - [x] The three exact packs have complete en, ja, ko and zh-CN documents, with full body, table, caption, alt, source title and text-bearing SVG coverage.
 - [x] Each locale is rebound to the latest published zh-TW version and content hash, with independent editorial and visual approval.
 - [x] Controlled same-site links resolve to the corresponding published locale, and no draft destination becomes a public link.
-- [ ] A guarded, rerunnable installation and publication plan limits changes to the twelve missing locales and necessary image references; published outcomes and browser QA are recorded separately.
+- [x] A guarded, rerunnable installation and publication plan limits changes to the twelve missing locales and necessary image references; published outcomes and browser QA are recorded separately.
 
 ## Steps
 
 - [x] Capture the initial read-only public/source versions and prepare twelve external, unpublished locale jobs.
 - [x] Repair issues from the first independent review in external drafts; preserve the earlier attempt and hash trail.
 - [x] Obtain independent review of the latest external handoff and controlled locale-prefixed link rewriting.
-- [ ] Re-snapshot source/version/visibility and compare hashes before import and publication; preserve concurrent editorial edits.
-- [ ] Record per-locale schema, content, SVG, link, desktop/mobile and public-versus-draft validation.
+- [x] Re-snapshot source/version/visibility and compare hashes before import and publication; preserve concurrent editorial edits.
+- [x] Record per-locale schema, content, SVG, link, desktop/mobile and public-versus-draft validation.
 
 ## How to verify
 
@@ -108,3 +108,10 @@ Validate each materialized `GuideDocument`, every translated scalar, numeric and
 - Signed-out browser automation passed 30/30 desktop/mobile pages (SHA-256 `172e7aadcc9cb7cd5a29f39db9e044eb1707fc612d600a4e6c0d3c6ce01794f3`), 120/120 content links (SHA-256 `b6874d0b3ea9f9c3accabde264c214f847f74b4da9221e24ef042541ecf002a4`), and sitemap pagination/hreflang (1,768 API entries, 2,310 XML URLs, no missing alternates). Original release hold remains active until a guarded follow-up transition.
 - Independent visual review is `HOLD` only for Gardens/en: eight U+2019 apostrophes in seven fields render with excessive glyph advance on desktop and mobile. It also logged a transient Gardens/ko header screenshot (stable recapture passed) and minor Hawker/en 390px one-pixel recommendation-card overflow. Review SHA-256 `20e51c6d7c1a879ecec6f4b174f9763371d47034826e16221aa6fe2dd0562a38`.
 - PR #605 is the narrow Gardens/en typography correction. Independent recursive diff review (SHA-256 `3e31e6590a85563a84966c8bf2181d041be322ab6a7d5d27ee98697edfe94ce3`) confirmed only those eight character substitutions; focused content tests passed (12 passed, 5 skipped). Do not close this task until the correction is merged, version-guarded into the live en locale, desktop/mobile screenshots are rechecked, and the release hold is cleared with accurate evidence.
+
+## 2026-09-21 final correction and release closeout
+
+- PR #605 merged as `d10ec52f5b7811b53fa7f02b6c8be2c193467ff9`; PR #607 merged as `de4ea69861c8181fd67af4d0b9b52a9ddc65544c`. Both are included in deployed main `42b1754e6e51ddbdd3694ae5666e62a04fd98648`, whose main CI run `35583528498` passed.
+- The exact release used a verified `pg_dump -Fc` backup and retained its deployment hold through publication reconciliation. A read-only adoption gate confirmed Gardens/en v4/published v4 at document SHA-256 `62a1e068438f19c1374ea1d43d2d31ff2725e8621737dead9b59b8c071aba6ca`, the pinned publication actor, unchanged article/taxonomy and unchanged other four locale hashes. It recorded `database_write: false` rather than inventing phase receipts for writes already complete.
+- Signed-out browser QA passed 31/31 target pages: the three articles in five languages at desktop and 390px, plus Hawker/en at 320px. It verified exact visible text, all image loads, canonical plus reciprocal hreflang, same-locale links and layout. The replacement repository-only probe `life/gemini-api-batch-recovery` remained unavailable in all five languages; raw evidence SHA-256 is `70a746075f3f8f3defe1069f69c0def6defcde5795a70e8abbf3f72ad9d67222` and signed receipt SHA-256 is `d472488177187b7c93c1369145d64cc0b0d7325b9e19e8286d68d13d5422a086`.
+- Manual review of the full screenshots confirmed normal Gardens/en apostrophe spacing and no Hawker related-card overflow at 390px or 320px. A fresh database verify then passed and the exact release hold was cleared. Final host receipt SHA-256: `ae06a3f724127265392cf279f64bd0ab01a2d32f8042a4d611e880231cff86af`; `/ready` remained healthy on schema `0082_travel_food_subtopics`, and all fifteen public article-language routes returned HTTP 200 after closeout.
