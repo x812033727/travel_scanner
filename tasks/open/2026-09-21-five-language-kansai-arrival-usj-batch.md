@@ -1,7 +1,7 @@
 ---
 id: 2026-09-21-five-language-kansai-arrival-usj-batch
 title: Five-language Kansai arrival and USJ batch 008
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-kansai-batch008
@@ -110,3 +110,5 @@ localized SVG at full and 390px widths and inspect the images.
   47 passed, 11 skipped, two whole-repository asset checks deselected because the
   isolated sparse checkout does not materialize unrelated guide assets. Full
   output is external `api-focused-after-rebase.log`.
+- Review PR: https://github.com/x812033727/travel_scanner/pull/629. Merge and
+  production release remain sequenced after the preceding localization batch.
