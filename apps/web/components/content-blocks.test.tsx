@@ -293,6 +293,39 @@ describe("rendering the rich blocks", () => {
     expect(screen.getByRole("link", { name: "CC BY-SA 4.0" }).getAttribute("href")).toBe("https://creativecommons.org/licenses/by-sa/4.0/");
   });
 
+  it("draws a diagram wide enough to read, inside a box that scrolls and takes keyboard focus", () => {
+    const { container } = render(<ContentBlocks labels={labels} blocks={[{
+      type: "image", src: "/guides/narita-to-tokyo/route-map.svg", alt: "路線圖", width: 1600, height: 900,
+    }]} />);
+    const image = screen.getByRole("img", { name: "路線圖" });
+    // 15px, the floor pack_ingest enforces, lands at 11.1 CSS px here; fitted to the 728px
+    // column it would be 6.8, and 3.1 on a phone.
+    expect(image.style.width).toBe("1180px");
+    // Tailwind preflight caps an image at 100% of its box; without this the width is ignored.
+    expect(image.style.maxWidth).toBe("none");
+    const box = image.parentElement!;
+    expect(box.className).toContain("overflow-x-auto");
+    expect(box.getAttribute("tabindex")).toBe("0");
+    // The alt belongs to the image; naming the box as well would read it out twice.
+    expect(box.getAttribute("aria-label")).toBeNull();
+    expect(container.querySelector("figure")).not.toBeNull();
+  });
+
+  it("keeps a photograph fitted to the column, with no scroller", () => {
+    render(<ContentBlocks labels={labels} blocks={blocks} />);
+    const photo = screen.getByRole("img", { name: "Skyliner 列車" });
+    expect(photo.style.width).toBe("");
+    expect(photo.className).toContain("w-full");
+    expect(photo.parentElement!.tagName).toBe("FIGURE");
+  });
+
+  it("never draws a diagram larger than it was authored", () => {
+    render(<ContentBlocks labels={labels} blocks={[{
+      type: "image", src: "/guides/narita-to-tokyo/route-map.svg", alt: "小圖", width: 640, height: 360,
+    }]} />);
+    expect(screen.getByRole("img", { name: "小圖" }).style.width).toBe("640px");
+  });
+
   it("draws a table with a header row, its cells and its caption, inside a box that scrolls", () => {
     const { container } = render(<ContentBlocks blocks={blocks} labels={labels} />);
     expect(screen.getAllByRole("columnheader").map((cell) => cell.textContent)).toEqual(["方式", "時間"]);

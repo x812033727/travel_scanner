@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ComponentProps } from "react";
 
 type GuideImageProps = Pick<ComponentProps<"img">,
-  "alt" | "width" | "height" | "loading" | "fetchPriority" | "decoding" | "className"
+  "alt" | "width" | "height" | "loading" | "fetchPriority" | "decoding" | "className" | "style"
 > & { src: string };
 
 /** Keep the original image in server HTML; only transient failures need client work. */

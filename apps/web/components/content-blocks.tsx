@@ -29,6 +29,11 @@ export type ContentBlockLabels = {
   faq?: string;
 };
 
+/** The width a 1600px-wide diagram is drawn at so its smallest label reaches the reader.
+ *  `pack_ingest.MIN_LABEL_PX` is 15, and 15 * 1180/1600 = 11.1 CSS px; below about 11 a
+ *  Han or Hangul glyph stops resolving. A diagram authored narrower keeps its own width. */
+const DIAGRAM_READABLE_WIDTH = 1180;
+
 const TONE_CLASSES: Record<CalloutTone, string> = {
   tip: "border-[var(--teal)]",
   warning: "border-[var(--warning,#b45309)]",
@@ -181,9 +186,34 @@ export function ContentBlocks({
       // crawler and a screen reader while first paint stays what it was. Text only: the SVG
       // itself is never inlined, because `contentImageSrc` vets the path, not the file.
       const description = block.description?.trim() ?? "";
+      // A diagram is drawn on a 1600x900 canvas, but the article column tops out at 728px at
+      // every viewport, so the 15px floor `pack_ingest` enforces reaches the reader at 6.8px
+      // on a laptop and 3.1px on a phone. Fitting it to the column is what makes it
+      // decorative. Give it its own scroller and a width where that floor clears 11px; a
+      // photograph keeps fitting the column, because its detail does not live in 15px text.
+      const diagram = src.endsWith(".svg");
+      const image = (
+        <GuideImage
+          src={src} alt={block.alt} width={block.width} height={block.height}
+          loading="lazy" decoding="async"
+          className={diagram ? "h-auto rounded-2xl" : "h-auto w-full rounded-2xl"}
+          // `maxWidth` rides with the width rather than sitting in a class: Tailwind's
+          // preflight caps every image at 100% of its box, and a utility that only this
+          // branch uses is one dead-code pass away from never reaching the stylesheet.
+          style={diagram
+            ? { width: Math.min(block.width ?? DIAGRAM_READABLE_WIDTH, DIAGRAM_READABLE_WIDTH), maxWidth: "none" }
+            : undefined}
+        />
+      );
       return (
         <figure key={index} className="my-2">
-          <GuideImage src={src} alt={block.alt} width={block.width} height={block.height} loading="lazy" decoding="async" className="h-auto w-full rounded-2xl" />
+          {diagram ? (
+            // `tabIndex` so the box can be scrolled from the keyboard: it holds no focusable
+            // child, and only Firefox focuses a scroll container on its own. It carries no
+            // `aria-label`; the image inside already has the alt, and naming the group would
+            // read it out twice.
+            <div tabIndex={0} role="group" className="overflow-x-auto rounded-2xl">{image}</div>
+          ) : image}
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
               {caption}
