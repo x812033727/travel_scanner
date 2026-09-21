@@ -75,6 +75,14 @@ _LANGUAGES = {
     "zh-cn": "zh-CN", "zh-hans": "zh-CN",
 }
 _LOCALE = "(?:" + "|".join(_LANGUAGES) + ")"
+# Catchtable Global spells Japanese `ja-JP`; its bare `/ja/` path is a 404 there, and
+# it publishes no Korean edition at all (catchtable.co.kr is the domestic site and is
+# not an accepted host). The short spellings stay accepted so reviewed rows keep
+# resolving. Longest alternative first, so `ja` never cuts `ja-jp` short.
+_CATCHTABLE_LANGUAGES = {**_LANGUAGES, "ja-jp": "ja"}
+_CATCHTABLE_LOCALE = "(?:" + "|".join(
+    sorted(_CATCHTABLE_LANGUAGES, key=len, reverse=True)
+) + ")"
 # Tabelog and Gurunavi label their language directories their own way, and serve
 # Japanese with no directory at all.
 _TABELOG_LANGUAGES = {"en": "en", "tw": "zh-TW", "cn": "zh-CN", "kr": "ko", "th": "th"}
@@ -163,7 +171,8 @@ def _merchant_identity(provider: str, path: str, host: str) -> str:
             rf"/{_LOCALE}/(?P<id>{_SLUG})/reserve/(?:message|landing)",
         ),
         "catchtable_global": (
-            rf"/{optional_locale}(?:shop|restaurant|restaurants)/(?P<id>{_CATCHTABLE_SLUG})",
+            rf"/(?:{_CATCHTABLE_LOCALE}/)?(?:shop|restaurant|restaurants)"
+            rf"/(?P<id>{_CATCHTABLE_SLUG})",
         ),
         "eztable": (rf"/{optional_locale}(?:restaurant|restaurants)/(?P<id>{_SLUG})",),
         "chope": (
@@ -257,10 +266,12 @@ def platform_url_language(provider: str, url: str) -> str:
         if provider == "gurunavi" and parts.netloc == "r.gnavi.co.jp":
             return "ja"
         return aliases.get(first_segment, "ja")
+    if provider == "catchtable_global":
+        return _CATCHTABLE_LANGUAGES.get(first_segment, "")
     if provider == "inline":
         language = dict(parse_qsl(parts.query)).get("language", "")
     elif provider in {
-        "tablecheck", "catchtable_global", "eztable", "chope", "openrice",
+        "tablecheck", "eztable", "chope", "openrice",
         "hungry_hub", "myconcierge", "autoreserve",
     }:
         language = first_segment

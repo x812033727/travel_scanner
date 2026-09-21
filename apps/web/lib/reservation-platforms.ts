@@ -28,6 +28,9 @@ export const reservationPlatformDefinitions: readonly {
 ];
 
 const localePattern = /^(?:en|ja|ko|zh-(?:tw|cn|hk|hant|hans)|th|vi)$/i;
+// Catchtable Global spells Japanese "ja-JP"; its bare "/ja/" path is a 404 there.
+// Keep app/foods/platform_links.py::_CATCHTABLE_LANGUAGES in step with this.
+const catchtableLocale = /^(?:ja-JP|en|ja|ko|zh-(?:tw|cn|hk|hant|hans)|th|vi)$/i;
 const forbiddenSlugs = new Set([
   "search", "ranking", "rankings", "discovery", "explore", "restaurants",
   "list_of_restaurants", "reserve", "reservations", "shops", "restaurant", "booking", "branches",
@@ -52,8 +55,9 @@ const autoreserveId = /^[A-Za-z0-9]{20}$/;
 const digits = /^\d+$/;
 
 function merchantIdentity(provider: string, segments: string[], host: string): string | undefined {
+  const localeFor = provider === "catchtable_global" ? catchtableLocale : localePattern;
   const hasLocale = ["tablecheck", "catchtable_global", "eztable", "chope", "openrice", "hungry_hub", "myconcierge", "autoreserve"].includes(provider)
-    && localePattern.test(segments[0] ?? "");
+    && localeFor.test(segments[0] ?? "");
   const path = hasLocale ? segments.slice(1) : segments;
   const lower = path.map((part) => part.toLowerCase());
   const venue = (index: number) => merchantSlug(path[index]) ? path[index] : undefined;
