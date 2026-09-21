@@ -429,4 +429,4 @@ async def probe(settings: Settings, client: httpx.AsyncClient | None = None) -> 
         await jev.close()
     answer = answers["ok"]
     value = answer.noul if isinstance(answer, NoulAnswer) else 0.0
-    return f"Jev {settings.jev_model} 判斷測試成功（noul={value:.2f}）"
+    return f"Jev ✓（{settings.jev_model}；noul={value:.2f}）"

@@ -31,26 +31,26 @@ redeploy can change is the thing that card exists to avoid.
 
 ## Definition of done
 
-- [ ] The Jev key and Base URL appear on the 「AI 供應商與金鑰」 card, save encrypted,
+- [x] The Jev key and Base URL appear on the 「AI 供應商與金鑰」 card, save encrypted,
       and read back masked.
-- [ ] The card's connection test proves the Jev key, and a failure message never
+- [x] The card's connection test proves the Jev key, and a failure message never
       carries the key.
-- [ ] A non-official Jev Base URL is refused by the admin PUT, not just at boot.
+- [x] A non-official Jev Base URL is refused by the admin PUT, not just at boot.
 
 ## Steps
 
-- [ ] `PROVIDER_DEFINITIONS["ai_vendors"]`: `config_fields` += `jev_api_base_url`,
+- [x] `PROVIDER_DEFINITIONS["ai_vendors"]`: `config_fields` += `jev_api_base_url`,
       `secret_fields` += `jev_api_key`, and name Jev in the card description as a
       decision model rather than a generator.
-- [ ] `_configured`'s `ai_vendors` branch: add `(settings.jev_api_key, "Jev")`.
-- [ ] `_test_ai_vendors`: the existing loop is `GET {base}/models`, which TypeSafe does
+- [x] `_configured`'s `ai_vendors` branch: add `(settings.jev_api_key, "Jev")`.
+- [x] `_test_ai_vendors`: the existing loop is `GET {base}/models`, which TypeSafe does
       not serve. Call `app.ai.jev.probe` instead -- one noul question, about forty
       input tokens, output unbilled -- and fold its result into the same summary.
-- [ ] `admin-settings-panel.tsx`: `fieldMeta` for `jev_api_base_url`, `secretLabels`
+- [x] `admin-settings-panel.tsx`: `fieldMeta` for `jev_api_base_url`, `secretLabels`
       for `jev_api_key`. Ship literal English labels like `amadeus_client_id` and
       `flightaware_api_key` already do, so the five `admin.json` files stay out of
       scope; move them to `providerFields.*` / `providerSecrets.*` in a follow-up.
-- [ ] Tests: the key is masked on read, a non-official Base URL is rejected, and the
+- [x] Tests: the key is masked on read, a non-official Base URL is rejected, and the
       failure message redacts the key.
 
 ## How to verify
@@ -65,7 +65,32 @@ Then `docker compose up`, open the admin panel, paste a real key on the 「AI �
 
 ## Notes
 
-- **Why this is filed blocked.** Every file it needs is in the scope of
+- **STATUS: the code is done and on `claude/add-jev-key-msana6`; this file's
+  frontmatter is stale and needs three commands run by hand.** The site owner
+  authorised the unblock, and the two blockers below were verified merged first --
+  every checkbox in each was ticked by its owner, `ai_planner_user_budget` is on the
+  card at `admin-settings-panel.tsx:169`, `apps/web/app/ads.txt/route.ts` exists and
+  the static `apps/web/public/ads.txt` is gone. The `npm run tasks` write commands
+  were then refused by the session's permission layer, so the board could not be
+  updated. Nobody hand-edited another owner's task file to get around that. What is
+  still owed:
+
+  ```bash
+  npm run tasks -- done 2026-09-14-planner-budget-admin-card
+  npm run tasks -- done 2026-09-13-adsense-ads-txt-drift
+  npm run tasks -- claim 2026-09-21-jev-api-key-on-the-ai --owner <you> \
+    --branch claude/add-jev-key-msana6
+  npm run tasks -- status 2026-09-21-jev-api-key-on-the-ai review
+  ```
+
+- **The i18n decision changed once the blockers were cleared.** The earlier plan was
+  to ship literal English labels to keep `apps/web/messages/` out of scope. With the
+  scope free, the labels follow the card's own convention instead: every other key on
+  it (`openai_api_key`, `anthropic_api_key`, `minimax_api_key`,
+  `hotspot_guide_gemini_api_key`) is `localized: true`, so `jev_api_key` is too and
+  carries `providerSecrets.jev_api_key` in all five locales. The Base URL stays a
+  literal label, because the three vendor base URLs beside it already are.
+- **Why this was filed blocked.** Every file it needs is in the scope of
   `2026-09-14-planner-budget-admin-card` (status `review`, owner `claude-fable-5-1`),
   and `apps/web/messages/*/admin.json` is additionally in
   `2026-09-13-adsense-ads-txt-drift`. `commandClaim` in `tools/tasks.mjs` refuses an
