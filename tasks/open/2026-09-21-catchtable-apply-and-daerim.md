@@ -1,6 +1,6 @@
 ---
 id: 2026-09-21-catchtable-apply-and-daerim
-title: CatchTable 九筆審核結果還沒套到正式站，大林倉庫餐酒館卡在 Naver 網址
+title: CatchTable 九筆已套用；剩大林倉庫餐酒館卡在 Naver 網址
 status: open
 priority: P2
 area: ops
@@ -14,7 +14,7 @@ scope:
   - apps/api/app/foods/data/platform_reviews
 ---
 
-# CatchTable 九筆審核結果還沒套到正式站，大林倉庫餐酒館卡在 Naver 網址
+# CatchTable 九筆已套用；剩大林倉庫餐酒館卡在 Naver 網址
 
 ## Why
 
@@ -28,36 +28,45 @@ scope:
 | | 狀態 |
 |---|---|
 | D. `/ja-JP/` 網址被語言驗證擋掉 | **已合併**（PR #610，`_CATCHTABLE_LANGUAGES`） |
-| B+C. 解掉 2 筆 ambiguous、7 筆補語言版本 | **檔案已合併**，`2026-09-21-korea-catchtable.json`，9 筆 |
+| B+C. 解掉 2 筆 ambiguous、7 筆補語言版本 | **已套用到正式站**（2026-09-21，`dafbf1ee` 部署後） |
 | A. 大林倉庫 dining & bar 建成新店家 | **卡住**，見下 |
 
-**剩下的第一件事：那個檔案還沒套用。** 2026-09-21 查過正式站，
-容器跑的是 `49fc0cf7`（#604），#610 與 #611 都還沒部署。所以：
+**B+C 已完成。** 2026-09-21 部署 `dafbf1ee` 之後套用，`updated 9 / skipped 0`，
+六筆 verified、兩筆 disabled、一筆 not_found 全數寫入。正式站實測：
 
-- 容器裡沒有 `_CATCHTABLE_LANGUAGES`，`/ja-JP/` 仍會被擋。
-- 容器裡沒有那個 JSON 檔，dry-run 直接 `FileNotFoundError`。
+| 送出的語言 | 回傳的網址 |
+|---|---|
+| `zh-TW` | `https://www.catchtable.net/zh-TW/shop/<slug>` |
+| `zh-CN` | `https://www.catchtable.net/zh-CN/shop/<slug>` |
+| `ja` | `https://www.catchtable.net/ja-JP/shop/<slug>` |
+| `ko` | `https://www.catchtable.net/shop/<slug>`（無前綴，CatchTable 沒有韓文版） |
 
-**要先部署，才能套用。順序不能顛倒。**
+`seoul-hyoddeu` 的公開訂位按鈕**已經消失**，那是這批唯一拿掉東西的一筆。
+
+**一個會害人白忙的細節：`X-Travel-Locale` 只吃 `en / ja / ko / zh-TW / zh-CN`**
+（`apps/api/app/i18n.py` 的 `LOCALES`，預設 `zh-TW`）。送 `ja-JP` 不會報錯，
+會**安靜地回退到 zh-TW**，於是看起來像日文網址沒生效。驗證時別送 CatchTable 自己的代碼。
+另外 `limit` 上限低於 100（`limit=50` 可、`limit=100` 回 422），`country_code` 不是有效篩選。
 
 ## Definition of done
 
-- [ ] `2026-09-21-korea-catchtable.json` 套進正式站資料庫。
-- [ ] `/zh-TW/foods` 上 6 家 verified 的店真的出現訂位按鈕，點進去是對的店。
-- [ ] 2 家 disabled 的店**沒有**按鈕。
-- [ ] 切換語言會換到對應語言的網址。
+- [x] `2026-09-21-korea-catchtable.json` 套進正式站資料庫。
+- [x] 6 家 verified 的店在 API 上帶出訂位網址（zh-TW／zh-CN／ja／ko 四種都驗過）。
+- [x] `seoul-hyoddeu` 已無按鈕（這批唯一拿掉東西的一筆）。
+- [x] 切換語言會換到對應語言的網址。
 
 ## Steps
 
-- [ ] 先部署（要含 #610）。
-- [ ] dry-run，**先看計畫再套**：
+- [x] 先部署（要含 #610）。
+- [x] dry-run，**先看計畫再套**：
 
 ```bash
 docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
   apply-food-platform-reviews --file app/foods/data/platform_reviews/2026-09-21-korea-catchtable.json
 ```
 
-- [ ] 確認計畫無誤後加 `--apply`。
-- [ ] 線上驗：
+- [x] 確認計畫無誤後加 `--apply`。
+- [x] 線上驗：
 
 ```bash
 curl -s -H 'X-Travel-Locale: zh-CN' "https://mokaair.com/api/travel/foods/merchants?destination_id=seoul&limit=50" \
@@ -75,15 +84,15 @@ gyeongju-yosokkoong             verified
 seoul-korea-house               verified
 seoul-maple-tree-house          verified
 seoul-osulloc-teahouse-bukchon  verified
-seoul-hyoddeu                   disabled   ← 線上現在有按鈕，但頁面只能候位
+seoul-hyoddeu                   disabled   ← 套用前線上有按鈕，但頁面只能候位；現已移除
 chunshim                        disabled
 seoul-somunnanseongsugamjatang  not_found
 ```
 
-**`seoul-hyoddeu` 是這次唯一會拿掉東西的一筆，也是最該先套的一筆**：
-正式站現在有那顆訂位按鈕，但點進去的 CatchTable 頁面只能線上候位，不能訂位。
-依站主規則這種要 `disabled` 不公開。注意 API 的 `serviceTypes` 欄位單獨看
-**判斷不出來**這一點，是實際渲染頁面才看到的。
+**`seoul-hyoddeu` 是這次唯一拿掉東西的一筆。** 套用前正式站有那顆訂位按鈕，
+但點進去的 CatchTable 頁面只能線上候位，不能訂位；依站主規則要 `disabled` 不公開。
+**注意 API 的 `serviceTypes` 欄位單獨看判斷不出來**，是實際渲染頁面才看到的——
+下次查別的平台時，這是唯一可靠的方法。已於 2026-09-21 套用，按鈕確認消失。
 
 ### 三個會踩到的點
 
