@@ -29,24 +29,24 @@ and photo licensing.
 
 ## Definition of done
 
-- [ ] Both guides have complete native-quality `zh-TW` documents with the
+- [x] Both guides have complete native-quality `zh-TW` documents with the
   live source field/block structure.
-- [ ] Both text-bearing diagrams have dedicated Traditional Chinese SVGs whose
+- [x] Both text-bearing diagrams have dedicated Traditional Chinese SVGs whose
   wording and numbers match the documents.
-- [ ] Tax eligibility, thresholds, fees, export timing, fines, emergency
+- [x] Tax eligibility, thresholds, fees, export timing, fines, emergency
   procedures, and reader scope are current and backed by reader-visible
   official sources.
-- [ ] Independent review reports no unresolved blocker or major finding, and
+- [x] Independent review reports no unresolved blocker or major finding, and
   focused checks plus desktop/mobile renders pass.
 
 ## Steps
 
 - [x] Confirm production publishes `en`, `ja`, `ko`, and `zh-CN` but
   reports `zh-TW` as unpublished for both exact slugs.
-- [ ] Recheck official sources and write both complete Traditional Chinese
+- [x] Recheck official sources and write both complete Traditional Chinese
   documents without changing the existing locales or pack metadata.
-- [ ] Create and inspect the localized SVGs at 1600x900 and 390x219.
-- [ ] Resolve independent-review findings and complete focused validation.
+- [x] Create and inspect the localized SVGs at 1600x900 and 390x219.
+- [x] Resolve independent-review findings and complete focused validation.
 - [ ] Keep the branch clean without opening a PR until batch006 PR #627
   merges; then rebase onto the new exact `origin/main`, prove content hashes
   unchanged, complete this task, and open a non-draft PR.
@@ -83,4 +83,6 @@ inspect both SVGs at desktop and 390px widths.
 - Focused API result: 49 passed, 7 skipped, 2 global asset tests deselected. Running those two in this sparse checkout reports only unrelated missing asset directories; both target packs and all six referenced target assets are present and validated.
 - `npm run test:tools` passed in the complete batch005 worktree (75 passed, 1 skipped); `npm run check:tasks` and `git diff --check` pass here. Both diagrams were inspected at 1600x900 and responsive 390x219.
 - Current official-source review corrected two stale source-locale claims: some heated-tobacco products have been approved since 2025, while e-cigarette use and unapproved heated tobacco remain prohibited; natural-disaster closure notices use the current 19:00-22:00 / 04:30 / 10:30 windows.
-- Independent review remains pending because every subagent slot is occupied. PR #627 is still open; no batch007 PR will be created before it merges.
+
+- Independent reviewer result at `af371816`: no blockers and no majors. All three minor findings were fixed: the official tax-rounding rules are explicit, diagram wording now says the goods remain unopened and unused and leave with the traveller, and the Dihua tea-shop photo alt/caption now describe the actual indoor scene.
+- Post-review target validation, both scoped lints, `git diff --check`, and the focused API suite (49 passed, 7 skipped, 2 sparse-only global asset tests deselected) pass. Full `test:tools` remains 75 passed / 1 skipped from the complete worktree run.
