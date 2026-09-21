@@ -112,3 +112,11 @@ localized SVG at full and 390px widths and inspect the images.
   output is external `api-focused-after-rebase.log`.
 - Review PR: https://github.com/x812033727/travel_scanner/pull/629. Merge and
   production release remain sequenced after the preceding localization batch.
+- Independent v8 review approved frozen candidate ad3179bd (review SHA-256
+  14a701b62d20580a598cc032384a48817e182dd323b5158a0ead2059330728a6).
+  Post-rebase checks preserve all 18 reviewed file hashes, 18 Git blobs and 10
+  semantic document hashes. Public BFF refresh confirms the two zh-TW version 6
+  published document hashes and eight missing public locales (receipt SHA-256
+  47de18faef74041fae02ca2c80d81001ffab35d0bd86fc8eb11ec173e111cf4f).
+  The public API cannot prove article-row versions or unpublished draft absence;
+  a live import dry-run and release still require a fresh database-level gate.
