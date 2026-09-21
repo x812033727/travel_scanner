@@ -309,6 +309,10 @@ describe("rendering the rich blocks", () => {
     // whole phone width. A three-up decoder's column is 361px on screen and never fitted 335.
     expect(box.className).toContain("-mx-5");
     expect(box.className).toContain("px-5");
+    // From xl the box opens to the diagram's own width. The figure's column is 728px, not
+    // main's 768: that 768 includes main's own px-5. So the margin is (1180 - 728) / 2.
+    expect(box.className).toContain("xl:-mx-[226px]");
+    expect(box.className).toContain("xl:px-0");
     expect(box.getAttribute("tabindex")).toBe("0");
     // The alt belongs to the image; naming the box as well would read it out twice.
     expect(box.getAttribute("aria-label")).toBeNull();

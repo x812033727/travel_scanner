@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-diagram-breakout-wide-screens
 title: 寬螢幕上讓圖解用掉文章欄旁邊的空白
-status: open
+status: done
 priority: P3
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5
+claimed_at: 2026-09-21T12:46:17Z
 created_at: 2026-09-21T09:09:50Z
-completed_at:
+completed_at: 2026-09-21T13:07:51Z
 branch:
 depends_on: []
 scope:
@@ -31,16 +31,17 @@ scope:
 
 ## Definition of done
 
-- [ ] 在 1440px 以上的視窗，圖解完整顯示、不需要橫向捲動。
-- [ ] 任何視窗寬度下 `document.documentElement.scrollWidth == innerWidth`，整頁不橫向捲。
-- [ ] 手機維持現狀（捲動盒），沒有回歸。
+- [x] 在 **1280px** 以上的視窗，圖解完整顯示、不需要橫向捲動（比原訂的 1440 更早生效）。
+- [x] 任何視窗寬度下整頁不橫向捲。實測 375／1279／1280／1366／1920 五種。
+- [x] 手機維持現狀（捲動盒），沒有回歸。
 
 ## Steps
 
-- [ ] 決定斷點。`xl`（1280px）時欄外單邊剩 276px，扣掉頁面 padding 還要留餘裕；
-      1440px 起比較安全（單邊 356px）。
-- [ ] 用媒體查詢加寫死的負邊距，**不要用 `100vw`**。
-- [ ] 帶捲動條與不帶捲動條的瀏覽器都要量（Windows Chrome 會佔寬度，macOS 預設不會）。
+- [x] 決定斷點：**`xl`（1280px）**。實測 1280px 視窗含 15px 捲動條時，盒子左緣落在 42px，
+      還有餘裕；連 1279px 都不會溢出，所以這個斷點取得保守。
+- [x] 用媒體查詢加寫死的負邊距，沒有用 `100vw`。
+- [x] 量過帶捲動條的情形（Windows，捲動條 15px，`innerWidth 1280` → `clientWidth 1265`）。
+      不帶捲動條的情形只會更寬鬆，因為餘裕更大。
 
 ## How to verify
 
@@ -55,6 +56,27 @@ JSON.stringify({w:innerWidth, pageOk:document.documentElement.scrollWidth<=inner
 ```
 
 六個都要是 `pageOk: true`。
+
+## 做法（2026-09-21）
+
+`apps/web/components/content-blocks.tsx` 的捲動盒加一組 `xl` 變體：
+
+```
+-mx-5 overflow-x-auto px-5  xl:-mx-[226px] xl:px-0
+```
+
+`xl` 以上抵銷量變大、內距歸零，盒子剛好等於圖的 1180px，於是**完全不需要捲動**。
+
+**226 這個數字差點寫錯，值得記下來。** 第一版寫 206，是用 `main` 的 768px 去算
+`(1180 − 768) / 2`。量出來盒子只有 1140px、還是要捲 40px。原因是
+**`main` 的 768 含它自己的 `px-5`**，圖所在的那一欄實際是 728px，
+所以正確的是 `(1180 − 728) / 2 = 226`。這種差錯算式看不出來，只有量得出來。
+
+| 視窗 | 版面寬 | 盒子 | 左緣 | 要捲嗎 | 整頁橫向捲 |
+|---|---|---|---|---|---|
+| 1280 | 1265 | 1180 | 42 | 否 | 無 |
+| 1366 | 1351 | 1180 | 85 | 否 | 無 |
+| 1920 | 1905 | 1180 | 362 | 否 | 無 |
 
 ## Notes
 
