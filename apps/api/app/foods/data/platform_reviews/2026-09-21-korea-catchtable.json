@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-21-korea-catchtable",
+  "researched_at": "2026-09-21T02:30:00+00:00",
+  "method": "平台搜尋 API 找店、店家 API 讀服務類型、瀏覽器渲染店頁判斷控制項；三者互相印證。",
+  "rules": "只有渲染後看得到店家自己的訂位控制項才算可訂位；只能候位存 disabled；語言網址取自店頁自己的 hreflang。",
+  "records": [
+    {
+      "merchant_id": "5580fba0-2adb-4327-a9bd-b02a14aa9ad3",
+      "slug": "daegu-nosekondo",
+      "name": "노 세콘도",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/nosecondo",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/nosecondo",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/nosecondo",
+        "ja": "https://www.catchtable.net/ja-JP/shop/nosecondo"
+      },
+      "expected_checked_at": "2026-09-11T12:47:42.345802+00:00",
+      "review_note": "2026-09-21：訂位狀態不變，本次只改網址結構並補語言版本。原本把 /zh-TW/ 版當成 canonical，讓日文、英文、簡中讀者看到「此頁為繁體中文」的提示；改成無語言前綴當 canonical，四個語言各自放進 localized_urls。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。 同時重新渲染店頁確認仍可訂位。注意：本筆原由管理員在後台審過，帶 expected_checked_at 覆寫後會轉為批次列。",
+      "booking_observation": "2026-09-21 重新渲染店頁確認仍可訂位：頁面有「預訂」，沒有 data-testid dock-waiting-btn 的候位鈕。判斷只看店家自己的控制項，不整頁搜關鍵字，因為頁尾「如果您喜歡」區塊會列出別家餐廳。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/nosecondo",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：有「預訂」，沒有候位 dock 按鈕。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/nosecondo",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=nosecondo",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "aa2042c9-c295-4bbc-8ffb-d2f06dd45f65",
+      "slug": "daegu-yurang",
+      "name": "와인바 까브유랑",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/cave_urang",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/cave_urang",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/cave_urang",
+        "ja": "https://www.catchtable.net/ja-JP/shop/cave_urang"
+      },
+      "expected_checked_at": "2026-09-11T12:52:23.420312+00:00",
+      "review_note": "2026-09-21：訂位狀態不變，本次只改網址結構並補語言版本。原本把 /zh-TW/ 版當成 canonical，讓日文、英文、簡中讀者看到「此頁為繁體中文」的提示；改成無語言前綴當 canonical，四個語言各自放進 localized_urls。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。 同時重新渲染店頁確認仍可訂位。注意：本筆原由管理員在後台審過，帶 expected_checked_at 覆寫後會轉為批次列。",
+      "booking_observation": "2026-09-21 重新渲染店頁確認仍可訂位：頁面有「預訂」，沒有 data-testid dock-waiting-btn 的候位鈕。判斷只看店家自己的控制項，不整頁搜關鍵字，因為頁尾「如果您喜歡」區塊會列出別家餐廳。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/cave_urang",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：有「預訂」，沒有候位 dock 按鈕。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/cave_urang",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=cave_urang",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "e95fe152-2251-4b0e-b1ff-a1f0e5a636e5",
+      "slug": "gyeongju-yosokkoong",
+      "name": "요석궁1779",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/yosukgung.kr",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/yosukgung.kr",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/yosukgung.kr",
+        "ja": "https://www.catchtable.net/ja-JP/shop/yosukgung.kr"
+      },
+      "expected_checked_at": "2026-09-12T02:02:02.628227+00:00",
+      "review_note": "2026-09-21：訂位狀態不變，本次只改網址結構並補語言版本。原本把 /zh-TW/ 版當成 canonical，讓日文、英文、簡中讀者看到「此頁為繁體中文」的提示；改成無語言前綴當 canonical，四個語言各自放進 localized_urls。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。 同時重新渲染店頁確認仍可訂位。注意：本筆原由管理員在後台審過，帶 expected_checked_at 覆寫後會轉為批次列。",
+      "booking_observation": "2026-09-21 重新渲染店頁確認仍可訂位：頁面有「預訂」，沒有 data-testid dock-waiting-btn 的候位鈕。判斷只看店家自己的控制項，不整頁搜關鍵字，因為頁尾「如果您喜歡」區塊會列出別家餐廳。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/yosukgung.kr",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：有「預訂」，沒有候位 dock 按鈕。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/yosukgung.kr",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=yosukgung.kr",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "8310a1ba-a603-4a25-96ce-e922333724b3",
+      "slug": "seoul-korea-house",
+      "name": "한국의집",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/koreahouse",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/koreahouse",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/koreahouse",
+        "ja": "https://www.catchtable.net/ja-JP/shop/koreahouse"
+      },
+      "expected_checked_at": "2026-09-11T12:01:42.317243+00:00",
+      "review_note": "2026-09-21：訂位狀態不變，本次只改網址結構並補語言版本。原本把 /zh-TW/ 版當成 canonical，讓日文、英文、簡中讀者看到「此頁為繁體中文」的提示；改成無語言前綴當 canonical，四個語言各自放進 localized_urls。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。 同時重新渲染店頁確認仍可訂位。注意：本筆原由管理員在後台審過，帶 expected_checked_at 覆寫後會轉為批次列。",
+      "booking_observation": "2026-09-21 重新渲染店頁確認仍可訂位：頁面有「預訂」，沒有 data-testid dock-waiting-btn 的候位鈕。判斷只看店家自己的控制項，不整頁搜關鍵字，因為頁尾「如果您喜歡」區塊會列出別家餐廳。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/koreahouse",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：有「預訂」，沒有候位 dock 按鈕。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/koreahouse",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=koreahouse",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "b060d1c5-5386-4ae4-8f55-84cb8fd4b561",
+      "slug": "seoul-maple-tree-house",
+      "name": "단풍나무집 이태원점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/mapletreehouseitaewon",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/mapletreehouseitaewon",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/mapletreehouseitaewon",
+        "ja": "https://www.catchtable.net/ja-JP/shop/mapletreehouseitaewon"
+      },
+      "expected_checked_at": "2026-09-11T12:23:29.032476+00:00",
+      "review_note": "2026-09-21：訂位狀態不變，本次只改網址結構並補語言版本。原本把 /zh-TW/ 版當成 canonical，讓日文、英文、簡中讀者看到「此頁為繁體中文」的提示；改成無語言前綴當 canonical，四個語言各自放進 localized_urls。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。 同時重新渲染店頁確認仍可訂位。注意：本筆原由管理員在後台審過，帶 expected_checked_at 覆寫後會轉為批次列。",
+      "booking_observation": "2026-09-21 重新渲染店頁確認仍可訂位：頁面有「預訂」，沒有 data-testid dock-waiting-btn 的候位鈕。判斷只看店家自己的控制項，不整頁搜關鍵字，因為頁尾「如果您喜歡」區塊會列出別家餐廳。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/mapletreehouseitaewon",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：有「預訂」，沒有候位 dock 按鈕。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/mapletreehouseitaewon",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=mapletreehouseitaewon",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "36d3a1e7-9634-4320-aa5f-650de1b2c142",
+      "slug": "seoul-osulloc-teahouse-bukchon",
+      "name": "오설록 티하우스 북촌점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/osullocteahouse_bukchon",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/osullocteahouse_bukchon",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/osullocteahouse_bukchon",
+        "ja": "https://www.catchtable.net/ja-JP/shop/osullocteahouse_bukchon"
+      },
+      "expected_checked_at": "2026-09-11T12:56:33.163088+00:00",
+      "review_note": "2026-09-21：訂位狀態不變，本次只改網址結構並補語言版本。原本把 /zh-TW/ 版當成 canonical，讓日文、英文、簡中讀者看到「此頁為繁體中文」的提示；改成無語言前綴當 canonical，四個語言各自放進 localized_urls。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。 同時重新渲染店頁確認仍可訂位。注意：本筆原由管理員在後台審過，帶 expected_checked_at 覆寫後會轉為批次列。",
+      "booking_observation": "2026-09-21 重新渲染店頁確認仍可訂位：頁面有「預訂」，沒有 data-testid dock-waiting-btn 的候位鈕。判斷只看店家自己的控制項，不整頁搜關鍵字，因為頁尾「如果您喜歡」區塊會列出別家餐廳。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/osullocteahouse_bukchon",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：有「預訂」，沒有候位 dock 按鈕。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/osullocteahouse_bukchon",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=osullocteahouse_bukchon",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "365defab-21b0-4925-8c43-330de98575f9",
+      "slug": "seoul-hyoddeu",
+      "name": "효뜨",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/hieutu_yongsan",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/hieutu_yongsan",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/hieutu_yongsan",
+        "ja": "https://www.catchtable.net/ja-JP/shop/hieutu_yongsan"
+      },
+      "expected_checked_at": "2026-09-11T12:16:12.072184+00:00",
+      "review_note": "2026-09-21：由 verified 改為 disabled。2026-09-11 審核時這家可訂位，今天重新渲染店頁後只剩 data-testid dock-waiting-btn「登記遠端候位」，整頁沒有「預訂」，讀者按下訂位按鈕其實訂不到。依站主 2026-09-11 的規則（只有真的能訂位的頁面才公開），改存停用並撤下公開按鈕。平台 API 的 serviceTypes 仍含 DINING_GLOBAL，但 mainServiceType 是 WAITING，這證明只看 API 欄位會誤判，必須以渲染後的店家控制項為準。",
+      "booking_observation": "只有遠端候位登記，沒有日期、人數選擇，也沒有「尋找可用時間」。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/hieutu_yongsan",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染 zh-TW 店頁：唯一控制項是 dock-waiting-btn「登記遠端候位」，「預訂」出現 0 次。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/hieutu_yongsan",
+          "role": "locale_variant",
+          "observation": "每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=hieutu_yongsan",
+          "role": "independent_verification",
+          "observation": "平台自己的店家 API 回報的 serviceTypes，與渲染後的控制項互相印證。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "4c24619c-1696-4048-9449-93828bca7a2b",
+      "slug": "chunshim",
+      "name": "춘심이네",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/chunshim_jeju",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/chunshim_jeju",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/chunshim_jeju",
+        "ja": "https://www.catchtable.net/ja-JP/shop/chunshim_jeju"
+      },
+      "review_note": "2026-09-21：解掉 2026-09-11 留下的 ambiguous。平台搜尋「춘심이네」唯一一筆是 alias chunshim_jeju、韓文名 춘심이네 본점，地址 16, Changcheonjungang-ro 24beon-gil, Andeok-myeon, Seogwipo-si, Jeju-do，與目錄這筆的地址與座標（33.2644／126.3705）一致，是同一家本店。店頁只有「登記遠端候位」，沒有訂位控制項，依規則存為停用不公開。每個店頁自己的 hreflang 指定四個語言網址：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴。在 daelimchanggobar 與 koreahouse 兩家獨立確認過，且 /ja-JP/shop/koreahouse 實際渲染日文（lang=ja、標題「韓国の家」）。CatchTable 全球站沒有韓文版，所以不存 ko。",
+      "booking_observation": "serviceTypes 只有 WAITING_GLOBAL、REMOTE_WAITING_GLOBAL、RESERVED_ENTRY_GLOBAL，沒有 DINING_GLOBAL。",
+      "evidence": [
+        {
+          "url": "https://api.catchtable.net/api/v6/search/keyword?page=0&localeCode=zh-TW&q=%EC%B6%98%EC%8B%AC%EC%9D%B4%EB%84%A4",
+          "role": "search_result",
+          "observation": "唯一一筆：alias chunshim_jeju、춘심이네 본점、Seogwipo-si Jeju、座標 33.2644513／126.3704974。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/chunshim_jeju",
+          "role": "platform_page",
+          "observation": "2026-09-21 渲染：唯一控制項 dock-waiting-btn「登記遠端候位」，「預訂」0 次。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v5/shop/detail?localeCode=zh-TW&shopRefOrAlias=chunshim_jeju",
+          "role": "independent_verification",
+          "observation": "mainServiceType WAITING、shopStatus REGISTERED、serviceTypes 不含 DINING_GLOBAL，與渲染結果一致。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "350e190c-5720-45ec-b091-11256c76708d",
+      "slug": "seoul-somunnanseongsugamjatang",
+      "name": "소문난성수감자탕 별관",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "not_found",
+      "canonical_url": null,
+      "localized_urls": {},
+      "review_note": "2026-09-21：解掉 2026-09-11 留下的 ambiguous。平台搜尋四種寫法「소문난성수감자탕」「성수감자탕」「소문난 성수」「감자탕 성수」全部零筆，CatchTable 上沒有這家店，改記為找不到。",
+      "booking_observation": "平台上沒有這家店的頁面。",
+      "evidence": [
+        {
+          "url": "https://api.catchtable.net/api/v6/search/keyword?page=0&localeCode=zh-TW&q=%EC%86%8C%EB%AC%B8%EB%82%9C%EC%84%B1%EC%88%98%EA%B0%90%EC%9E%90%ED%83%95",
+          "role": "search_result",
+          "observation": "shopList 空陣列，hasNext false。"
+        },
+        {
+          "url": "https://api.catchtable.net/api/v6/search/keyword?page=0&localeCode=zh-TW&q=%EC%84%B1%EC%88%98%EA%B0%90%EC%9E%90%ED%83%95",
+          "role": "search_result",
+          "observation": "另外三種寫法同樣零筆。"
+        }
+      ]
+    }
+  ]
+}
