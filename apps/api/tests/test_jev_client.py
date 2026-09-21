@@ -175,6 +175,32 @@ async def test_an_oversized_batch_is_refused_before_it_is_sent() -> None:
     assert seen == []
 
 
+@pytest.mark.asyncio
+async def test_a_noul_without_criteria_does_not_send_a_null() -> None:
+    """criteria is optional on a noul; absent is not the same as null to a validator."""
+    client, seen = _client([httpx.Response(200, json=ANSWERS)])
+    await client.ask("a support ticket", QUESTIONS)
+    body = seen[0].read().decode()
+    assert '"is_urgent":{"type":"noul","instructions":"The message conveys urgency"}' in body
+    assert "null" not in body
+
+
+@pytest.mark.asyncio
+async def test_a_noul_may_still_clarify_what_yes_and_no_cover() -> None:
+    client, seen = _client([httpx.Response(200, json=ANSWERS)])
+    await client.ask(
+        "a support ticket",
+        {
+            **QUESTIONS,
+            "is_urgent": NoulQuestion(
+                instructions="The message conveys urgency",
+                criteria={"true": "needs an answer today", "false": "can wait a week"},
+            ),
+        },
+    )
+    assert '"needs an answer today"' in seen[0].read().decode()
+
+
 def test_cjk_is_estimated_at_least_as_heavily_as_latin() -> None:
     """The estimate is pessimistic on purpose: this product's state is usually CJK."""
     assert estimate_tokens("東京車站") >= 4

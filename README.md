@@ -526,12 +526,18 @@ calibrated confidence. It is deliberately absent from `AI_PLANNER_PRIORITY` and 
 every guide-search and introduction provider list, because a vendor on those lists
 that can never return a draft would fall through to the catalog forever. Its place is
 the work where a generating model is currently doing a classifier's job: filtering
-guide-article candidates, matching a food merchant to a platform listing, triaging
-what a person should look at first. TypeSafe reports its best accuracy in English and
-asks each user to validate on their own Traditional Chinese data before setting
-automation thresholds, so `JEV_CJK_AUTOPILOT_ENABLED` ships false: until numbers from
-our own five-language content say otherwise, a confident answer about non-English
-content is flagged for review rather than acted on.
+guide-article candidates, matching a food merchant to a platform listing, deciding
+whether a crawled page is a fare page at all.
+
+Two of TypeSafe's own published weaknesses bound that list. Jev reads dates as text
+rather than as ordered quantities, so date ordering, intervals and windows are
+unreliable; and it is not a calculator, does not count reliably, and its score levels
+are weakly calibrated numerically. Prices, durations, budgets and schedules therefore
+stay with the deterministic code that already owns them. TypeSafe also states that
+English is its primary training language and where accuracy is currently best, and
+publishes no figures for any other language, so `JEV_CJK_AUTOPILOT_ENABLED` ships
+false: until numbers from our own five-language content say otherwise, a confident
+answer about non-English content is flagged for review rather than acted on.
 
 `POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
 current trip version. The request accepts `scope=day` with `day_date`, or the

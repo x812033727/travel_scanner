@@ -9,6 +9,15 @@ reader expects prose. It is deliberately absent from the planner and guide-searc
 provider rosters in ``app.ai.itinerary`` and ``app.hotspots.ai_search``: a vendor on
 those lists that can never return a draft would fall through to the catalog forever.
 
+TypeSafe publishes what Jev 1.13 is bad at, and two entries decide where it may be
+pointed in a travel product. It "reads dates as text, not as ordered quantities", so
+which of two dates comes first, how far apart they are, and whether one falls inside
+a window are all unreliable -- most of what this product asks about dates. And it is
+"not a calculator", does "not count reliably", and its "score levels are weak in
+numerical calibration", so no price, duration or budget decision belongs here. What
+is left is judgement about text: is this article about this place, is this listing
+this shop, is this page a fare page.
+
 Kept out of ``app.hotspots`` and ``app.foods`` so either can import it. The vendor
 ships an SDK; this module is plain ``httpx`` like every other provider here, because
 one POST does not earn a dependency whose own retry loop would fight the circuit
@@ -38,7 +47,10 @@ SYSTEM_ONE_PATH = "/systemone"
 # longest single question may carry 32k.
 VENDOR_MAX_REQUEST_TOKENS = 64_000
 VENDOR_MAX_STATE_TOKENS = 32_000
-# A choice question takes at most 255 options; a score takes 2 to 10 ordered levels.
+# The score range is the vendor's: "ordered rubric levels (2-10 levels)". The choice
+# cap is ours -- TypeSafe documents no maximum -- and exists because a question with
+# hundreds of options is a retrieval problem wearing a classifier's clothes, and
+# because accuracy is documented to fall as unrelated detail grows.
 MAX_CHOICE_OPTIONS = 255
 MIN_SCORE_LEVELS = 2
 MAX_SCORE_LEVELS = 10
@@ -75,6 +87,9 @@ class ScoreQuestion(BaseModel):
 class NoulQuestion(BaseModel):
     type: Literal["noul"] = "noul"
     instructions: str
+    # Optional on a noul, unlike choice and score where it is required: it clarifies
+    # what yes and no are meant to cover when the statement alone is ambiguous.
+    criteria: dict[str, str] | None = None
 
 
 JevQuestion = ChoiceQuestion | ScoreQuestion | NoulQuestion
@@ -201,7 +216,10 @@ class JevClient:
         payload = {
             "model": self.model,
             "state": state,
-            "questions": {name: question.model_dump() for name, question in questions.items()},
+            "questions": {
+                name: question.model_dump(exclude_none=True)
+                for name, question in questions.items()
+            },
         }
         body = await self._send(payload, question_names=sorted(questions))
         answers: dict[str, JevAnswer] = {}
@@ -352,9 +370,10 @@ def route(
     Two things live here rather than in a comment. A noul answer has no ``confidence``
     -- its own value is the probability -- so it needs thresholds chosen for noul and
     not borrowed from a choice. And while ``cjk_autopilot`` is off, a confident answer
-    about non-English state is downgraded to ``confirm``: TypeSafe says accuracy is
-    best in English and asks you to validate on your own Traditional Chinese data
-    first, and this product is written in five languages.
+    about non-English state is downgraded to ``confirm``. TypeSafe states that
+    "English is the primary training language and where accuracy is currently best"
+    and publishes no accuracy figures for any other language; this product is written
+    in five. Until our own numbers say otherwise, that gap is a default-closed switch.
     """
     certainty = answer.noul if isinstance(answer, NoulAnswer) else answer.confidence
     if certainty >= act_at:

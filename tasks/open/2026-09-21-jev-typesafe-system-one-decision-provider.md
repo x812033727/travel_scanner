@@ -83,13 +83,30 @@ about forty input tokens, and output is not billed.
 - **422 is never retried.** It means this module built an illegal question. The size
   and shape guards in `_check_questions` / `_check_size` exist so that most of those
   never leave the process; the batch-splitting caller gets `JevRequestTooLarge`.
-- **The CJK caveat is code, not prose.** TypeSafe reports best accuracy in English and
-  asks each user to validate on their own Traditional Chinese data before setting
-  automation thresholds. This product ships in five languages, so
-  `jev_cjk_autopilot_enabled` defaults to false and `route()` downgrades a confident
-  non-English answer from `act` to `confirm` while it is off. The thresholds 0.9 / 0.5
-  are the vendor's example numbers and are placeholders until shadow-mode numbers from
-  our own content replace them.
+- **The language caveat is code, not prose.** `docs.typesafe.ai/models` states that
+  "English is the primary training language and where accuracy is currently best", and
+  TypeSafe publishes no accuracy figures for any other language. This product ships in
+  five, so `jev_cjk_autopilot_enabled` defaults to false and `route()` downgrades a
+  confident non-English answer from `act` to `confirm` while it is off. The thresholds
+  0.9 / 0.5 are the vendor's example numbers and are placeholders until shadow-mode
+  numbers from our own content replace them.
+- **What the first-party docs corrected, after this was first written.** The initial
+  pass was built partly from third-party write-ups; `docs.typesafe.ai` confirmed the
+  endpoint, auth, error codes, 64k/32k limits, the `jev-1.13.0` id, the pricing and
+  the 2-10 score range, and corrected three things. A noul takes an **optional
+  `criteria`** to clarify what yes and no cover, so `NoulQuestion` carries it and the
+  payload is dumped with `exclude_none` rather than sending `criteria: null`. The
+  255-option **choice cap is ours, not the vendor's** -- TypeSafe documents no maximum
+  -- and the constant says so. And the "validate on your own Traditional Chinese data"
+  instruction is not in the docs; only the English-is-best statement above is.
+- **`docs.typesafe.ai/model-jaggedness/jev-1.13` is the page to read before pointing
+  Jev at anything new.** Two entries rule out whole categories here: Jev "reads dates
+  as text, not as ordered quantities", so date ordering, intervals and windows are
+  unreliable -- which is most of what a travel product asks about dates; and it is
+  "not a calculator", does "not count reliably", and its "score levels are weak in
+  numerical calibration". Also documented: it answers the question as literally
+  written, multi-hop or doubly-negated instructions cost accuracy, and accuracy falls
+  as the state grows with content unrelated to the decision.
 - **Jev is deliberately not a planner vendor.** It cannot generate. It is absent from
   `AIProviderName` in both `app/ai/itinerary.py` and `app/hotspots/ai_search.py`, from
   `ai_planner_priority`, and from every `*_default_provider` allow-list. A vendor on
@@ -109,4 +126,8 @@ about forty input tokens, and output is not billed.
   produces the numbers that decide whether `jev_cjk_autopilot_enabled` may ever be on.
   Ranked after it: food-merchant/platform-row matching, crawler page-shape alerting.
   Explicitly not: any generation, money arithmetic (`alerts/policy.py`, `pricing/`),
-  anything on a user request path, and auth or permission decisions.
+  anything on a user request path, and auth or permission decisions. **Withdrawn after
+  reading the jaggedness page**: scoring guide-article staleness by how long ago a fact
+  was last checked. That is date ordering, which Jev does unreliably by its own
+  documentation, and it was the one idea here that would have been graded on exactly
+  the axis the model is weakest on.
