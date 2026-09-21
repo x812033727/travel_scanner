@@ -9,9 +9,10 @@ automatic execution. The CLI requires PostgreSQL; tests exercise SQLite separate
 
 Manifest schema 1: baseline_sha256, articles (1..20) with slug, pack_path,
 pack_sha256, locales, publish_locales, hub, optional requires (slug, locale,
-document_sha256); assets with path and sha256. Paths are relative to --bundle.
-Only selected locales are written. Existing documents may change image src only;
-repository-only articles become five private drafts, never publications.
+document_sha256), optional source_corrections; assets with path and sha256.
+Paths are relative to --bundle. Only selected locales are written. Existing
+documents may change image src only unless an exact, independently reviewed
+old-to-new source correction is pinned. Repository-only articles remain drafts.
 
 Each existing admin-service operation commits once. A durable intent precedes it;
 resume accepts only the exact version/hash/action/actor transition, including an
@@ -25,6 +26,7 @@ import argparse
 import asyncio
 import copy
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -35,6 +37,9 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 from uuid import UUID, uuid4
+
+from sqlalchemy import func, select, text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.auth.service import cached_admin_capabilities, user_is_suspended
 from app.config import get_settings
@@ -52,8 +57,12 @@ from app.guides.schemas import (
 from app.guides.service import _topics_for, document_hash
 from app.i18n import LOCALES
 from app.models import AdminAuditLog, User
-from sqlalchemy import func, select, text
-from sqlalchemy.ext.asyncio import AsyncSession
+
+CORRECTION_SPEC = importlib.util.spec_from_file_location(
+    "article_localization_source_correction", Path(__file__).with_name("source_correction.py")
+)
+source_correction = importlib.util.module_from_spec(CORRECTION_SPEC)
+CORRECTION_SPEC.loader.exec_module(source_correction)
 
 PHASES = ("dry-run", "drafts", "publish-articles", "publish-hubs")
 LOCK_KEY = 817420260914
@@ -142,9 +151,7 @@ class Bundle:
 
 def canonical_sha256(value):
     return sha(
-        json.dumps(
-            value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
-        ).encode("utf-8")
+        json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
     )
 
 
@@ -155,9 +162,7 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
     manifest = json.loads(raw)
     require(manifest.get("schema_version") == 1, "Unsupported manifest schema")
     baseline_raw = baseline_path.read_bytes()
-    require(
-        sha(baseline_raw) == manifest.get("baseline_sha256"), "Baseline SHA256 mismatch"
-    )
+    require(sha(baseline_raw) == manifest.get("baseline_sha256"), "Baseline SHA256 mismatch")
     baseline_doc = json.loads(baseline_raw)
     require(baseline_doc.get("schema_version") == 1, "Unsupported baseline schema")
     baseline = {row["slug"]: row for row in baseline_doc["articles"]}
@@ -176,9 +181,7 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
     require(len(asset_hashes) == len(assets), "Repeated asset in bundle")
     for path, expected in asset_hashes.items():
         require(path.startswith("public/guides/"), "Unexpected asset location")
-        require(
-            sha(safe_path(root, path).read_bytes()) == expected, "Asset SHA256 mismatch"
-        )
+        require(sha(safe_path(root, path).read_bytes()) == expected, "Asset SHA256 mismatch")
     packs = {}
     used_assets = set()
     for entry in entries:
@@ -197,9 +200,7 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
         )
         wanted_metadata = {key: source["metadata"][key] for key in metadata(pack)}
         wanted_metadata["topics"] = sorted(wanted_metadata["topics"])
-        require(
-            metadata(pack) == wanted_metadata, f"{slug}: classification/order changed"
-        )
+        require(metadata(pack) == wanted_metadata, f"{slug}: classification/order changed")
         require(
             pack.valid_until is None or pack.valid_until >= datetime.now(UTC).date(),
             f"{slug}: expired article cannot be imported by this release",
@@ -220,10 +221,67 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
         )
         require(type(entry.get("hub")) is bool, f"{slug}: explicit hub flag required")
         require(
-            document_hash(normalized(source["source_document"]))
-            == source["source_sha256"],
+            document_hash(normalized(source["source_document"])) == source["source_sha256"],
             f"{slug}: source document hash mismatch",
         )
+        corrections = entry.get("source_corrections", [])
+        require(isinstance(corrections, list), f"{slug}: invalid source corrections")
+        corrected_locales = set()
+        for correction in corrections:
+            require(
+                isinstance(correction, dict)
+                and set(correction)
+                == {
+                    "locale",
+                    "from_published_sha256",
+                    "to_document_sha256",
+                    "review_path",
+                    "review_sha256",
+                },
+                f"{slug}: invalid source correction binding",
+            )
+            locale = correction["locale"]
+            require(
+                locale in selected
+                and locale in publish
+                and locale not in corrected_locales
+                and locale in source["locale_documents"]
+                and source["database"] is not None,
+                f"{slug}:{locale}: source correction must select a published locale",
+            )
+            corrected_locales.add(locale)
+            require(
+                correction["review_path"] == f"reviews/{slug}-{locale}.json"
+                and bool(HASH.fullmatch(correction["review_sha256"])),
+                f"{slug}:{locale}: invalid source correction review path/hash",
+            )
+            review_path = safe_path(root, correction["review_path"])
+            require(
+                sha(review_path.read_bytes()) == correction["review_sha256"],
+                f"{slug}:{locale}: source correction review SHA256 mismatch",
+            )
+            review = json.loads(review_path.read_bytes())
+            wanted = pack.locales[locale].model_dump(mode="json")
+            require(
+                wanted == normalized(source["locale_documents"][locale]),
+                f"{slug}:{locale}: corrected document differs from baseline",
+            )
+            try:
+                binding = source_correction.verify_review(
+                    review, source, locale, wanted, asset_hashes
+                )
+            except (ValueError, KeyError, TypeError) as error:
+                raise Refused(f"{slug}:{locale}: invalid source correction review") from error
+            require(
+                binding["from_published_sha256"] == correction["from_published_sha256"]
+                and binding["to_document_sha256"] == correction["to_document_sha256"],
+                f"{slug}:{locale}: source correction review binding mismatch",
+            )
+        if source["database"] is not None and source["source_locale"] in corrected_locales:
+            require(
+                source["source_document"] == source["locale_documents"][source["source_locale"]],
+                f"{slug}: corrected source document differs from locale",
+            )
         publication = source.get("publication_locales")
         require(
             isinstance(publication, list)
@@ -247,6 +305,17 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
             )
         for locale, old_document in source["locale_documents"].items():
             wanted = pack.locales[locale].model_dump(mode="json")
+            if locale in corrected_locales:
+                continue
+            if source["database"] is not None and locale in source["database"].get(
+                "locales", {}
+            ):
+                pinned_locale = source["database"]["locales"][locale]
+                require(
+                    document_hash(normalized(old_document))
+                    == (pinned_locale["published_sha256"] or pinned_locale["draft_sha256"]),
+                    f"{slug}:{locale}: baseline existing document differs from pinned version",
+                )
             if locale not in selected:
                 require(
                     wanted == normalized(old_document),
@@ -254,8 +323,7 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
                 )
             else:
                 require(
-                    without_image_sources(wanted)
-                    == without_image_sources(old_document),
+                    without_image_sources(wanted) == without_image_sources(old_document),
                     f"{slug}:{locale}: existing document changes more than image src",
                 )
         for locale in selected:
@@ -394,23 +462,15 @@ def persist_journal(path, journal):
 
 
 async def snapshot(session, slugs, *, lock=False):
-    query = (
-        select(GuideArticle)
-        .where(GuideArticle.slug.in_(slugs))
-        .order_by(GuideArticle.id)
-    )
+    query = select(GuideArticle).where(GuideArticle.slug.in_(slugs)).order_by(GuideArticle.id)
     if lock:
         query = query.with_for_update(nowait=True)
-    articles = list(
-        await session.scalars(query.execution_options(populate_existing=True))
-    )
+    articles = list(await session.scalars(query.execution_options(populate_existing=True)))
     ids = [article.id for article in articles]
     query = select(GuideArticleLocale).where(GuideArticleLocale.article_id.in_(ids))
     if lock:
         query = query.order_by(GuideArticleLocale.id).with_for_update(nowait=True)
-    locales = list(
-        await session.scalars(query.execution_options(populate_existing=True))
-    )
+    locales = list(await session.scalars(query.execution_options(populate_existing=True)))
     topics = await _topics_for(session, ids)
     revisions = {
         (row.article_locale_id, row.version): row
@@ -424,9 +484,7 @@ async def snapshot(session, slugs, *, lock=False):
         await session.scalars(
             select(AdminAuditLog)
             .where(AdminAuditLog.action == "guide_article_updated")
-            .where(
-                AdminAuditLog.target.in_([f"guide:{article_id}" for article_id in ids])
-            )
+            .where(AdminAuditLog.target.in_([f"guide:{article_id}" for article_id in ids]))
             .order_by(AdminAuditLog.created_at.desc(), AdminAuditLog.id.desc())
         )
     )
@@ -480,9 +538,7 @@ async def snapshot(session, slugs, *, lock=False):
                 "id": str(row.id),
                 "version": row.version,
                 "published_version": row.published_version,
-                "published_at": row.published_at.isoformat()
-                if row.published_at
-                else None,
+                "published_at": row.published_at.isoformat() if row.published_at else None,
                 "updated_at": row.updated_at.isoformat(),
                 "draft_sha256": document_hash(normalized(row.draft_json)),
                 "published_sha256": document_hash(normalized(published.document_json))
@@ -499,8 +555,7 @@ async def snapshot(session, slugs, *, lock=False):
 def require_live(row, slug):
     require(row is not None and row["is_active"], f"{slug}: absent or hidden")
     require(
-        row["valid_until"] is None
-        or row["valid_until"] >= datetime.now(UTC).date().isoformat(),
+        row["valid_until"] is None or row["valid_until"] >= datetime.now(UTC).date().isoformat(),
         f"{slug}: expired",
     )
 
@@ -523,23 +578,29 @@ def validate_initial(bundle, state):
             f"{slug}: article identity/version changed",
         )
         require(
-            all(
-                row[key] == value for key, value in metadata(bundle.packs[slug]).items()
-            ),
+            all(row[key] == value for key, value in metadata(bundle.packs[slug]).items()),
             f"{slug}: classification/order changed",
         )
-        require(
-            set(row["locales"]) == set(pinned["locales"]), f"{slug}: locale set changed"
-        )
+        require(set(row["locales"]) == set(pinned["locales"]), f"{slug}: locale set changed")
         for locale, expected in pinned["locales"].items():
             actual = row["locales"][locale]
             require(
                 all(actual[key] == value for key, value in expected.items()),
                 f"{slug}:{locale}: version/source/publication changed",
             )
-        source = row["locales"][baseline["source_locale"]]
+        source_locale = baseline["source_locale"]
+        source = row["locales"][source_locale]
+        correction = next(
+            (
+                item
+                for item in entry.get("source_corrections", [])
+                if item["locale"] == source_locale
+            ),
+            None,
+        )
         require(
-            source["published_sha256"] == baseline["source_sha256"],
+            source["published_sha256"]
+            == (correction["from_published_sha256"] if correction else baseline["source_sha256"]),
             f"{slug}: source publication changed",
         )
         for locale in entry["locales"]:
@@ -555,8 +616,7 @@ def validate_initial(bundle, state):
                     and baseline_document is not None
                     and existing["published_version"] is None
                     and existing["published_sha256"] is None
-                    and existing["draft_sha256"]
-                    == document_hash(normalized(baseline_document))
+                    and existing["draft_sha256"] == document_hash(normalized(baseline_document))
                     and existing["latest_sha256"] == existing["draft_sha256"]
                 )
                 require(
@@ -572,30 +632,19 @@ def planned_operations(bundle, state):
         row = state[slug]
         for index, locale in enumerate(entry["locales"]):
             old = row["locales"].get(locale) if row else None
-            wanted = document_hash(
-                bundle.packs[slug].locales[locale].model_dump(mode="json")
-            )
+            wanted = document_hash(bundle.packs[slug].locales[locale].model_dump(mode="json"))
             action = (
-                (
-                    "create_article"
-                    if index == 0 and row is None
-                    else "start_translation"
-                )
+                ("create_article" if index == 0 and row is None else "start_translation")
                 if old is None
                 else "unchanged"
                 if old["draft_sha256"] == wanted
                 else "save_draft"
             )
-            operations["drafts"].append(
-                {"slug": slug, "locale": locale, "action": action}
-            )
+            operations["drafts"].append({"slug": slug, "locale": locale, "action": action})
             if (
                 index == 0
                 and row is None
-                and (
-                    bundle.packs[slug].featured
-                    or bundle.packs[slug].display_order != 100
-                )
+                and (bundle.packs[slug].featured or bundle.packs[slug].display_order != 100)
             ):
                 operations["drafts"].append(
                     {"slug": slug, "locale": locale, "action": "update_metadata"}
@@ -603,12 +652,8 @@ def planned_operations(bundle, state):
         phase = "publish-hubs" if entry["hub"] else "publish-articles"
         for locale in entry["publish_locales"]:
             old = row["locales"].get(locale) if row else None
-            wanted = document_hash(
-                bundle.packs[slug].locales[locale].model_dump(mode="json")
-            )
-            action = (
-                "unchanged" if old and old["published_sha256"] == wanted else "publish"
-            )
+            wanted = document_hash(bundle.packs[slug].locales[locale].model_dump(mode="json"))
+            action = "unchanged" if old and old["published_sha256"] == wanted else "publish"
             operations[phase].append({"slug": slug, "locale": locale, "action": action})
     for phase, items in operations.items():
         for index, item in enumerate(items):
@@ -649,9 +694,7 @@ def validate_journal(bundle, journal):
         "done",
         "dry_run",
     }
-    require(
-        isinstance(journal, dict) and set(journal) == keys, "Invalid journal schema"
-    )
+    require(isinstance(journal, dict) and set(journal) == keys, "Invalid journal schema")
     require(journal["schema_version"] == 2, "Unsupported journal schema")
     require(journal["seal_sha256"] == journal_seal(journal), "Journal seal mismatch")
     require(
@@ -674,13 +717,11 @@ def validate_journal(bundle, journal):
     operations = planned_operations(bundle, initial)
     require(journal["operations"] == operations, "Journal operation plan was forged")
     require(
-        journal["authorization_sha256"]
-        == journal_authorization(bundle, initial, operations),
+        journal["authorization_sha256"] == journal_authorization(bundle, initial, operations),
         "Journal authorization binding mismatch",
     )
     require(
-        isinstance(journal["expected"], dict)
-        and set(journal["expected"]) == set(bundle.slugs),
+        isinstance(journal["expected"], dict) and set(journal["expected"]) == set(bundle.slugs),
         "Invalid expected state",
     )
     require(type(journal["dry_run"]) is bool, "Invalid journal dry-run state")
@@ -705,8 +746,7 @@ def validate_journal(bundle, journal):
         if journal["done"][phase]:
             for earlier in PHASES[1 : index + 1]:
                 require(
-                    journal["done"][earlier]
-                    == [item["id"] for item in operations[earlier]],
+                    journal["done"][earlier] == [item["id"] for item in operations[earlier]],
                     f"Completed operations are out of phase before {phase}",
                 )
     pending = journal["pending"]
@@ -729,8 +769,7 @@ def validate_journal(bundle, journal):
         )
         for earlier in PHASES[1 : PHASES.index(pending["phase"])]:
             require(
-                journal["done"][earlier]
-                == [item["id"] for item in operations[earlier]],
+                journal["done"][earlier] == [item["id"] for item in operations[earlier]],
                 f"Pending operation is out of phase before {pending['phase']}",
             )
     require(
@@ -753,9 +792,7 @@ def validate_journal(bundle, journal):
 
 def authorize_operation(bundle, journal, phase, operation):
     operations = validate_journal(bundle, journal)
-    require(
-        phase in PHASES[1:] and operation in operations[phase], "Unauthorized operation"
-    )
+    require(phase in PHASES[1:] and operation in operations[phase], "Unauthorized operation")
     require(operation["phase"] == phase, "Operation phase mismatch")
 
 
@@ -767,9 +804,7 @@ def same_state(actual, expected):
 async def active_actor(session, actor_id=None):
     allowed = get_settings().admin_email_set
     require(bool(allowed), "No configured owner available")
-    query = select(User).where(
-        func.lower(User.email).in_(allowed), User.is_active.is_(True)
-    )
+    query = select(User).where(func.lower(User.email).in_(allowed), User.is_active.is_(True))
     if actor_id:
         query = query.where(User.id == UUID(str(actor_id)))
     actor = await session.scalar(
@@ -798,23 +833,18 @@ async def require_dependencies(session, bundle, entry):
                     "slug": other["slug"],
                     "locale": locale,
                     "document_sha256": document_hash(
-                        bundle.packs[other["slug"]]
-                        .locales[locale]
-                        .model_dump(mode="json")
+                        bundle.packs[other["slug"]].locales[locale].model_dump(mode="json")
                     ),
                 }
                 for locale in other["publish_locales"]
             )
-    states = await snapshot(
-        session, sorted({item["slug"] for item in required}), lock=True
-    )
+    states = await snapshot(session, sorted({item["slug"] for item in required}), lock=True)
     for item in required:
         row = states[item["slug"]]
         require_live(row, item["slug"])
         locale = row["locales"].get(item["locale"])
         require(
-            locale is not None
-            and locale["published_sha256"] == item["document_sha256"],
+            locale is not None and locale["published_sha256"] == item["document_sha256"],
             f"{item['slug']}:{item['locale']}: hub dependency is not published as reviewed",
         )
 
@@ -823,9 +853,7 @@ def accept_transition(before, after, intent, bundle):
     slug, language, action = intent["slug"], intent["locale"], intent["action"]
     for other in before:
         if other != slug:
-            require(
-                after[other] == before[other], f"{other}: unrelated article changed"
-            )
+            require(after[other] == before[other], f"{other}: unrelated article changed")
     old, new = before[slug], after[slug]
     if action == "unchanged":
         require(new == old, f"{slug}: unexpected write")
@@ -937,9 +965,7 @@ def validate_expected_progress(bundle, journal):
             slug, locale = operation["slug"], operation["locale"]
             old_article = state[slug]
             final_article = final.get(slug)
-            require(
-                final_article is not None, f"{slug}: journal result article is absent"
-            )
+            require(final_article is not None, f"{slug}: journal result article is absent")
             if action == "update_metadata":
                 new_article = copy.deepcopy(old_article)
                 new_article.update(metadata(bundle.packs[slug]))
@@ -947,9 +973,7 @@ def validate_expected_progress(bundle, journal):
                 new_article["updated_at"] = final_article["updated_at"]
                 new_article["metadata_audit"] = final_article["metadata_audit"]
             else:
-                wanted = document_hash(
-                    bundle.packs[slug].locales[locale].model_dump(mode="json")
-                )
+                wanted = document_hash(bundle.packs[slug].locales[locale].model_dump(mode="json"))
                 final_locale = final_article["locales"].get(locale)
                 require(
                     final_locale is not None,
@@ -964,11 +988,7 @@ def validate_expected_progress(bundle, journal):
                     new_article["locales"] = {}
                 else:
                     new_article = copy.deepcopy(old_article)
-                old_locale = (
-                    old_article["locales"].get(locale)
-                    if old_article is not None
-                    else None
-                )
+                old_locale = old_article["locales"].get(locale) if old_article is not None else None
                 new_locale = copy.deepcopy(old_locale or final_locale)
                 new_locale.update(
                     {
@@ -1009,9 +1029,7 @@ def validate_expected_progress(bundle, journal):
             after[slug] = new_article
             accept_transition(state, after, intent, bundle)
             state = after
-    require(
-        state == final, "Journal expected state does not match completed operations"
-    )
+    require(state == final, "Journal expected state does not match completed operations")
 
 
 def complete_intent(journal, state, path, status):
@@ -1060,9 +1078,7 @@ async def write_operation(session, actor, operation, before, bundle):
             ),
         )
     elif action == "start_translation":
-        await admin_service.start_translation(
-            session, actor, UUID(row["id"]), locale, document
-        )
+        await admin_service.start_translation(session, actor, UUID(row["id"]), locale, document)
     elif action == "save_draft":
         await admin_service.save_draft(
             session,
@@ -1155,9 +1171,7 @@ async def execute_phase(
                         "actor_id": str(actor.id),
                         "created_at": stamp(),
                         "initial": actual,
-                        "authorization_sha256": journal_authorization(
-                            bundle, actual, operations
-                        ),
+                        "authorization_sha256": journal_authorization(bundle, actual, operations),
                         "seal_sha256": "",
                         "expected": actual,
                         "pending": None,
@@ -1192,9 +1206,7 @@ async def execute_phase(
                 for operation in journal["operations"][phase]:
                     if operation["id"] in journal["done"][phase]:
                         continue
-                    verify_bundle(
-                        bundle.root, bundle.baseline_path, bundle.manifest_sha256
-                    )
+                    verify_bundle(bundle.root, bundle.baseline_path, bundle.manifest_sha256)
                     verify_deployed(bundle, deployed_root)
                     authorize_operation(bundle, journal, phase, operation)
                     if postgres:
@@ -1205,9 +1217,7 @@ async def execute_phase(
                         if row is not None:
                             require_live(row, slug)
                     entry = next(
-                        item
-                        for item in bundle.entries
-                        if item["slug"] == operation["slug"]
+                        item for item in bundle.entries if item["slug"] == operation["slug"]
                     )
                     if phase == "publish-hubs":
                         await require_dependencies(session, bundle, entry)
@@ -1229,9 +1239,7 @@ async def execute_phase(
                         journal,
                         after,
                         journal_path,
-                        "unchanged"
-                        if operation["action"] == "unchanged"
-                        else "committed",
+                        "unchanged" if operation["action"] == "unchanged" else "committed",
                     )
                     validate_journal(bundle, journal)
                     await session.rollback()
@@ -1262,9 +1270,7 @@ async def execute_phase(
         finally:
             await connection.rollback()
             if locked:
-                await connection.execute(
-                    text("SELECT pg_advisory_unlock(:key)"), {"key": LOCK_KEY}
-                )
+                await connection.execute(text("SELECT pg_advisory_unlock(:key)"), {"key": LOCK_KEY})
                 await connection.commit()
 
 
@@ -1279,9 +1285,7 @@ def main(argv=None):
     parser.add_argument("phase", choices=PHASES)
     args = parser.parse_args(argv)
     try:
-        require(
-            engine.dialect.name == "postgresql", "Production CLI requires PostgreSQL"
-        )
+        require(engine.dialect.name == "postgresql", "Production CLI requires PostgreSQL")
         bundle = verify_bundle(args.bundle, args.baseline, args.manifest_sha256)
         with journal_lock(args.state_dir):
             result = asyncio.run(
@@ -1300,9 +1304,7 @@ def main(argv=None):
             json.dumps(
                 {
                     "status": "stopped",
-                    "reason": str(error)
-                    if isinstance(error, Refused)
-                    else type(error).__name__,
+                    "reason": str(error) if isinstance(error, Refused) else type(error).__name__,
                     "next": "Review journal; reuse the same bundle and state for reconciliation",
                 }
             ),
