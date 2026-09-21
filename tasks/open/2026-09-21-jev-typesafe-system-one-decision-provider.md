@@ -119,6 +119,17 @@ about forty input tokens, and output is not billed.
   and `--force` would defeat the point of the board. Both blockers look already merged
   -- `ai_planner_user_budget` is in the panel and `apps/web/app/ads.txt/` exists -- so
   the unblock is for their owner to run `npm run tasks -- done <id>` on each.
+- **Nothing calls Jev yet, and that is the honest state of this branch.** The only
+  importer of `app/ai/jev.py` is its own test. `probe` was written for the admin card's
+  connection test, which is the blocked follow-up, so today `JEV_API_KEY` is read by
+  `jev_client` and by nothing that runs. `route_answer` exists so that when the first
+  caller does arrive it binds the operator's three settings rather than inventing its
+  own numbers and silently opting out of the non-English downgrade.
+- **Statuses.** `docs.typesafe.ai/sdk/python/api/exceptions` lists 400, 401, 403, 404,
+  422, 429 and 5xx. 400 and 422 are both "we built an illegal request" and are raised
+  without a retry; 401 and 403 are both "this key will not work" and likewise. Only
+  429, 529 and a 5xx are retried. TypeSafe documents no `Retry-After` header; the
+  client honours one when present and falls back to exponential backoff when not.
 - **Where Jev should be used first**, once the key path is live: the guide-candidate
   assessment in `app/hotspots/ai_search.py` (the `relevance_score < 60` threshold),
   in shadow mode, recording Jev's answer beside the current one and changing no

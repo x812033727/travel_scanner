@@ -185,7 +185,8 @@ class JevClient:
     def _check_size(self, state: Any, questions: dict[str, JevQuestion]) -> None:
         state_tokens = estimate_tokens(state)
         per_question = {
-            name: estimate_tokens(question.model_dump()) for name, question in questions.items()
+            name: estimate_tokens(question.model_dump(exclude_none=True))
+            for name, question in questions.items()
         }
         longest = max(per_question.values())
         if state_tokens + longest > self.max_state_tokens:
@@ -264,13 +265,20 @@ class JevClient:
                 attempt += 1
                 continue
             status = response.status_code
-            if status == 401:
-                raise JevAuthError("Jev rejected the API key")
-            if status == 422:
+            if status in {401, 403}:
+                # 403 is the vendor's "access was denied": the key is real but not
+                # entitled to this model. Like 401, a second identical request cannot
+                # change the answer, and the operator needs to see it.
+                raise JevAuthError(
+                    "Jev rejected the API key"
+                    if status == 401
+                    else "Jev denied this key access to the request"
+                )
+            if status in {400, 422}:
                 # A validation failure means this module built an illegal question.
                 # Retrying sends the same illegal question again.
                 raise JevRequestInvalid(
-                    f"Jev refused the request for {', '.join(question_names)}: "
+                    f"Jev refused the request ({status}) for {', '.join(question_names)}: "
                     f"{_vendor_message(response)}"
                 )
             if status == 429 and attempt < 2:
@@ -385,6 +393,22 @@ def route(
     if tier == "act" and locale != "en" and not cjk_autopilot:
         return "confirm"
     return tier
+
+
+def route_answer(answer: JevAnswer, settings: Settings, *, locale: str = "en") -> Tier:
+    """``route`` with this deployment's thresholds already applied.
+
+    Callers should reach for this rather than ``route``: the three settings are the
+    operator's, and a call site that passed its own numbers could quietly opt out of
+    the non-English downgrade that ``jev_cjk_autopilot_enabled`` exists to enforce.
+    """
+    return route(
+        answer,
+        act_at=settings.jev_act_confidence,
+        flag_at=settings.jev_flag_confidence,
+        locale=locale,
+        cjk_autopilot=settings.jev_cjk_autopilot_enabled,
+    )
 
 
 async def probe(settings: Settings, client: httpx.AsyncClient | None = None) -> str:

@@ -22,7 +22,9 @@ from app.ai.jev import (
     ScoreQuestion,
     estimate_tokens,
     route,
+    route_answer,
 )
+from app.config import Settings
 
 SECRET = "jev-test-key-that-must-never-appear-in-a-url"
 
@@ -125,6 +127,23 @@ async def test_a_rejected_key_is_not_retried() -> None:
 
 
 @pytest.mark.asyncio
+async def test_a_denied_key_is_not_retried_either() -> None:
+    """403 is a real key without access to this model; asking twice does not help."""
+    client, seen = _client([httpx.Response(403, json={"message": "no access"})])
+    with pytest.raises(JevAuthError):
+        await client.ask("state", {"ok": NoulQuestion(instructions="true")})
+    assert len(seen) == 1
+
+
+@pytest.mark.asyncio
+async def test_a_400_is_read_the_same_way_as_a_422() -> None:
+    client, seen = _client([httpx.Response(400, json={"message": "malformed question"})])
+    with pytest.raises(JevRequestInvalid, match="malformed question"):
+        await client.ask("state", {"ok": NoulQuestion(instructions="true")})
+    assert len(seen) == 1
+
+
+@pytest.mark.asyncio
 async def test_a_422_is_our_bug_and_is_not_retried() -> None:
     client, seen = _client([httpx.Response(422, json={"message": "criteria is required"})])
     with pytest.raises(JevRequestInvalid, match="criteria is required"):
@@ -219,3 +238,13 @@ def test_routing_downgrades_a_confident_non_english_answer_until_it_is_validated
 def test_routing_reads_the_probability_a_noul_answer_actually_carries() -> None:
     assert route(NoulAnswer(type="noul", noul=0.2), act_at=0.9, flag_at=0.5) == "hold"
     assert route(NoulAnswer(type="noul", noul=0.6), act_at=0.9, flag_at=0.5) == "confirm"
+
+
+def test_the_settings_bound_router_keeps_the_non_english_guard_shut() -> None:
+    """A call site cannot opt out of the downgrade by passing its own numbers."""
+    settings = Settings()
+    assert settings.jev_cjk_autopilot_enabled is False
+    confident = NoulAnswer(type="noul", noul=0.99)
+    assert route_answer(confident, settings, locale="en") == "act"
+    assert route_answer(confident, settings, locale="zh-TW") == "confirm"
+    assert route_answer(confident, settings, locale="ja") == "confirm"
