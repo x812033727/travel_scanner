@@ -221,7 +221,15 @@ export function ContentBlocks({
             // edge lined up with the text at rest, and the right edge running off the screen
             // is the cue that there is more. No `100vw`: it counts the scrollbar and would
             // give the page the sideways scroll this is meant to avoid.
-            <div tabIndex={0} role="group" className="-mx-5 overflow-x-auto px-5">{image}</div>
+            //
+            // From `xl` the window stops being the constraint. `main` is `max-w-3xl` with
+            // `px-5`, so the column the figure sits in is 768 - 40 = 728px, and
+            // (1180 - 728) / 2 = 226px a side opens the box to the diagram's full width. The
+            // gutter inside it goes with it: nothing overflows, so there is nothing to
+            // scroll. 1280px is the narrowest breakpoint where that margin is certainly
+            // free -- even with a classic 15px scrollbar the page has 268px a side to give
+            // and only 226 is taken.
+            <div tabIndex={0} role="group" className="-mx-5 overflow-x-auto px-5 xl:-mx-[226px] xl:px-0">{image}</div>
           ) : image}
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">
