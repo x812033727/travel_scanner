@@ -1,7 +1,7 @@
 ---
 id: 2026-09-21-taiwan-zh-tw-third-sub-batch
 title: Taiwan zh-TW third sub-batch: Kaohsiung and Tainan itineraries
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-taiwan-zh-tw-batch003
@@ -44,7 +44,7 @@ writing to production.
       errors from the existing shared diagrams are recorded separately.
 - [x] The final content, diagrams and evidence have independent review with no
       blockers.
-- [ ] An unmerged pull request carries the reviewed commit.
+- [x] An unmerged pull request carries the reviewed commit.
 
 ## Steps
 
@@ -59,7 +59,7 @@ writing to production.
 - [x] Validate field parity, schema, SVG numbers, focused tests and the task board.
 - [x] Rebase onto current `origin/main` with unchanged content hashes and obtain
       final independent review.
-- [ ] Push and open the pull request.
+- [x] Push and open the pull request.
 
 ## How to verify
 
@@ -107,6 +107,7 @@ writing to production.
   `git diff --check` pass.
 - Independent final review approved the source facts, locale-only pack changes,
   SVG render evidence and rebase hashes with no blockers.
+- Pull request: https://github.com/x812033727/travel_scanner/pull/622 (unmerged).
 - At baseline `origin/main` `bb53e361bb6c1ac35a00ac0f65e49c0b304ac034`, the full
   pack lint already reports Kaohsiung shared-diagram number errors in `en`, `ja`,
   `ko`, `zh-CN`, and a Tainan shared-diagram error in `ja`. The added `zh-TW`
