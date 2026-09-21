@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','Noto Sans KR','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">桃園機場到台北市區：機場捷運、1819 公車、計程車與高鐵轉乘</title>
+  <desc id="desc">桃園機場到台北與南下轉乘示意圖。機場捷運直達車約 35–39 分鐘、普通車約 49–52 分鐘到台北車站，成人票價 NT$160；國光客運 1819 約 55 分鐘到台北轉運站，全票依車型 NT$133–164；官方排班計程車跳表另加高速公路通行費，到台北市區估計 NT$1,200–1,900。機捷普通車約 20 分鐘、NT$35 到 A18 高鐵桃園站；轉乘高鐵到台中約 30–41 分鐘、NT$540，到台南約 1 小時 12 分至 1 小時 37 分、NT$1,190，到左營約 1 小時 24 分至 1 小時 51 分、NT$1,330。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="80" y="76" font-size="40" font-weight="700" fill="#102A2B">桃園機場到台北、台中、台南與高雄的主要路線</text>
+  <text x="80" y="114" font-size="22" fill="#5C6B6B">機場捷運・國光客運 1819・官方排班計程車・A18 轉乘高鐵｜2026 年 9 月查證</text>
+
+  <!-- Airport MRT Express to Taipei Main Station -->
+  <path d="M 330 280 C 620 280, 760 170, 1066 170" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
+  <!-- Airport MRT Commuter -->
+  <path d="M 330 300 C 660 300, 820 200, 1066 178" fill="none" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+  <!-- Bus 1819 -->
+  <path d="M 330 320 C 660 320, 820 300, 1066 300" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <!-- Taxi -->
+  <path d="M 330 340 C 660 340, 820 410, 1066 410" fill="none" stroke="#5C6B6B" stroke-width="8" stroke-dasharray="6 14" stroke-linecap="round"/>
+  <!-- Commuter train to HSR Taoyuan A18 -->
+  <path d="M 205 360 L 205 544" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <!-- THSR southbound -->
+  <path d="M 205 576 L 205 690 L 1380 690" fill="none" stroke="#2F6F9F" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Airport node -->
+  <g>
+    <rect x="80" y="240" width="250" height="120" rx="24" fill="#0D6B68"/>
+    <text x="205" y="290" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">桃園機場 T1／T2</text>
+    <text x="205" y="326" font-size="16" fill="#E6F2F1" text-anchor="middle">機捷 A12／A13</text>
+  </g>
+
+  <!-- Line labels -->
+  <g font-size="20" font-weight="700">
+    <text x="350" y="200" fill="#0D6B68">機場捷運直達車</text>
+    <text x="690" y="290" fill="#6B4A3A">機場捷運普通車</text>
+    <text x="690" y="345" fill="#B8442D">國光客運 1819</text>
+    <text x="660" y="436" fill="#5C6B6B">官方排班計程車</text>
+    <text x="230" y="470" fill="#6B4A3A">機捷普通車</text>
+    <text x="300" y="672" fill="#2F6F9F">台灣高鐵</text>
+  </g>
+
+  <!-- Taipei destinations -->
+  <g font-size="26" font-weight="700" fill="#102A2B">
+    <circle cx="1080" cy="170" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
+    <text x="1115" y="162">A1 台北車站</text>
+    <text x="1115" y="190" font-size="18" font-weight="400" fill="#5C6B6B">直達車 35–39 分鐘・NT$160</text>
+    <text x="1115" y="214" font-size="18" font-weight="400" fill="#5C6B6B">普通車 49–52 分鐘・NT$160</text>
+    <circle cx="1080" cy="300" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1115" y="292">台北轉運站</text>
+    <text x="1115" y="320" font-size="18" font-weight="400" fill="#5C6B6B">國光 1819 約 55 分鐘・全票 NT$133–164</text>
+    <circle cx="1080" cy="410" r="16" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="8"/>
+    <text x="1115" y="402">台北市區</text>
+    <text x="1115" y="430" font-size="18" font-weight="400" fill="#5C6B6B">跳表＋高速公路通行費・約 NT$1,200–1,900</text>
+  </g>
+
+  <!-- HSR Taoyuan and the south -->
+  <g font-size="26" font-weight="700" fill="#102A2B">
+    <circle cx="205" cy="560" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="240" y="552">A18 高鐵桃園站</text>
+    <text x="240" y="580" font-size="18" font-weight="400" fill="#5C6B6B">普通車約 20 分鐘・NT$35（尖峰少數直達車約 17 分鐘）</text>
+    <circle cx="620" cy="690" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="620" y="735" text-anchor="middle">台中</text>
+    <text x="620" y="763" font-size="18" font-weight="400" fill="#5C6B6B" text-anchor="middle">高鐵 30–41 分鐘・NT$540</text>
+    <circle cx="1000" cy="690" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="1000" y="735" text-anchor="middle">台南</text>
+    <text x="1000" y="763" font-size="18" font-weight="400" fill="#5C6B6B" text-anchor="middle">1 小時 12 分–1 小時 37 分・NT$1,190</text>
+    <circle cx="1380" cy="690" r="16" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="8"/>
+    <text x="1380" y="735" text-anchor="middle">左營（高雄）</text>
+    <text x="1380" y="763" font-size="18" font-weight="400" fill="#5C6B6B" text-anchor="middle">1 小時 24 分–1 小時 51 分・NT$1,330</text>
+  </g>
+
+  <text x="80" y="815" font-size="16" fill="#5C6B6B">車程依桃園機場、桃園捷運與台灣高鐵公告；金額為成人單程新台幣。1819 票價依車型，計程車為官方排班業者估價。虛線代表公車與計程車。</text>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"/>
+    <text x="152" y="867">機捷直達車</text>
+    <line x1="360" y1="860" x2="420" y2="860" stroke="#6B4A3A" stroke-width="8" stroke-linecap="round"/>
+    <text x="432" y="867">機捷普通車</text>
+    <line x1="660" y1="860" x2="720" y2="860" stroke="#2F6F9F" stroke-width="10" stroke-linecap="round"/>
+    <text x="732" y="867">台灣高鐵</text>
+    <line x1="900" y1="860" x2="960" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"/>
+    <text x="972" y="867">公車</text>
+    <line x1="1090" y1="860" x2="1150" y2="860" stroke="#5C6B6B" stroke-width="6" stroke-dasharray="6 12" stroke-linecap="round"/>
+    <text x="1162" y="867">官方排班計程車</text>
+    <text x="1400" y="867" fill="#5C6B6B">© Mokaair 2026</text>
+  </g>
+</svg>
