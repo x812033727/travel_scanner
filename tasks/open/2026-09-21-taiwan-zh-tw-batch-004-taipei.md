@@ -1,7 +1,7 @@
 ---
 id: 2026-09-21-taiwan-zh-tw-batch-004-taipei
 title: Taiwan zh-TW batch 004: Taipei viewpoints and where to stay
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-taiwan-zh-tw-batch004
@@ -39,7 +39,7 @@ language-specific diagrams without changing the existing locales or article taxo
 - [x] Focused API/tool/task tests pass, apart from pre-existing non-target locale lint errors
   recorded below.
 - [x] Independent fact/content review has no blocking finding.
-- [ ] Rebase onto the latest `origin/main`, prove content hashes unchanged, and open a
+- [x] Rebase onto the latest `origin/main`, prove content hashes unchanged, and open a
   non-draft pull request.
 
 ## Steps
@@ -58,7 +58,7 @@ language-specific diagrams without changing the existing locales or article taxo
   construction, transport, lodging and disposable-amenity claims, including both diagrams.
 - [x] Obtain the reviewer's final approval after applying the remaining five completeness
   corrections.
-- [ ] Freeze content hashes, rebase, prove the payload is unchanged, push and open the PR.
+- [x] Freeze content hashes, rebase, prove the payload is unchanged, push and open PR #624.
 
 ## How to verify
 
@@ -106,4 +106,7 @@ captured production source. The external evidence directory is
   checks pass; task check prints only repository-wide stale/overlap warnings outside this scope.
 - Playwright renders at 1600x900 and 390x220 report 0 outside text, 0 overlaps and 0 missing
   glyphs for both diagrams after the review corrections; all four PNGs were inspected.
+- Rebased onto `origin/main` at `2e952951f33a1d8db6f09d37c5068f883cf3b53f` before
+  opening non-draft PR #624. Both canonical zh-TW document hashes and all four normalized Git
+  blobs were identical before and after the rebase.
 - This task must not merge, deploy, import or publish the documents.
