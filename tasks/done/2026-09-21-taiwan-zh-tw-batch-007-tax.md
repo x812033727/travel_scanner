@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-taiwan-zh-tw-batch-007-tax
 title: Taiwan zh-TW batch 007: tax refund and etiquette
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-taiwan-zh-tw-batch007
 claimed_at: 2026-09-21T17:38:07Z
 created_at: 2026-09-21T17:38:00Z
-completed_at:
+completed_at: 2026-09-21T19:29:30Z
 branch: codex/taiwan-zh-tw-batch-007
 depends_on: []
 scope:
@@ -47,7 +47,7 @@ and photo licensing.
   documents without changing the existing locales or pack metadata.
 - [x] Create and inspect the localized SVGs at 1600x900 and 390x219.
 - [x] Resolve independent-review findings and complete focused validation.
-- [ ] Keep the branch clean without opening a PR until batch006 PR #627
+- [x] Keep the branch clean without opening a PR until batch006 PR #627
   merges; then rebase onto the new exact `origin/main`, prove content hashes
   unchanged, complete this task, and open a non-draft PR.
 
@@ -86,3 +86,14 @@ inspect both SVGs at desktop and 390px widths.
 
 - Independent reviewer result at `af371816`: no blockers and no majors. All three minor findings were fixed: the official tax-rounding rules are explicit, diagram wording now says the goods remain unopened and unused and leave with the traveller, and the Dihua tea-shop photo alt/caption now describe the actual indoor scene.
 - Post-review target validation, both scoped lints, `git diff --check`, and the focused API suite (49 passed, 7 skipped, 2 sparse-only global asset tests deselected) pass. Full `test:tools` remains 75 passed / 1 skipped from the complete worktree run.
+- Batch006 PR #627 squash-merged as exact `main`
+  `746004d046044a44a15f09e611a34a0e02c647f3`. This branch rebased cleanly
+  onto that commit. Both `zh-TW` document hashes, both top-level/existing-locale
+  hashes, and all four Git blob IDs remained identical. Three raw working-tree
+  hashes changed only because rebase normalized CRLF to the committed LF bytes;
+  converting those same bytes back to CRLF exactly reproduces the reviewed hashes.
+- Post-rebase target validation and scoped lint passed. Focused API tests passed
+  (49 passed, 7 skipped, 2 sparse-only global asset tests deselected), and the
+  equivalent full checkout passed `test:tools` (75 passed, 1 skipped). Task and
+  diff checks passed. Fresh 1600x900 and 390x219 renders of both SVGs were
+  inspected without clipping, overlap, or missing glyphs.
