@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-constrain-related-guide-cards-to-mobile
 title: Constrain related guide cards to mobile grid width
-status: review
+status: done
 priority: P2
 area: web
 owner: codex-related-grid
 claimed_at: 2026-09-20T16:12:22Z
 created_at: 2026-09-20T16:12:13Z
-completed_at:
+completed_at: 2026-09-21T12:19:27Z
 branch: codex/batch006-hawker-card-width
 depends_on: []
 scope:
@@ -43,3 +43,5 @@ Live DOM before change: English Hawker `/en/guides/howto/singapore-hawker-first-
 Validation on 2026-09-20 UTC: equivalent grid CSS on the signed-out live page gave document widths 320/320 and 390/390 for English, 390/390 in the other four locales, and 768/768 with 356px × 2 columns. Every related card had `scrollWidth == clientWidth`; full English card screenshots at 320 and 390 showed the long text wrapping. `npm run test:web -- related-grid.test.tsx` passed 3/3, `npm run typecheck:web` passed, `npx eslint components/guides/related-grid.tsx --max-warnings=0` passed, and `npm run check:tasks` passed with unrelated queue warnings. CI will perform full lint/build after PR.
 
 PR #607: https://github.com/x812033727/travel_scanner/pull/607. Full `npm run lint:web` passed sequentially after an earlier parallel Windows process exited without diagnostics. Task remains in review until the PR is merged.
+
+PR #607 merged as `de4ea69861c8181fd67af4d0b9b52a9ddc65544c` and is included in deployed main `42b1754e6e51ddbdd3694ae5666e62a04fd98648`. Signed-out final browser QA passed Hawker/en at both 390px and 320px with document width equal to the viewport, card contents contained, and no horizontal overflow; the other four locales and the complete Batch006 desktop/mobile matrix also passed. Raw final evidence SHA-256 is `70a746075f3f8f3defe1069f69c0def6defcde5795a70e8abbf3f72ad9d67222`.
