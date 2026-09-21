@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans SC','Noto Sans JP','PingFang SC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">新加坡四天三夜分区示意图 / Singapore in 4 days by district</title>
+  <desc id="desc">新加坡岛简化轮廓上标出四天的区域：Day 1 滨海湾，滨海湾花园温室 9:00–21:00，Garden Rhapsody 19:45 与 20:45；Day 2 牛车水与丹戎巴葛，马里安曼兴都庙 6:00–12:00、18:00–21:00；Day 3 二选一，方案 A 北边万态（实线），飞禽公园 9:00–18:00、夜间野生动物园 18:00–24:00，方案 B 南边圣淘沙（虚线）；Day 4 甘榜格南、小印度、乌节路，苏丹回教堂周五不开放，最后到东边樟宜 Jewel 雨漩涡 10:00–22:00。灰线是 MRT 示意骨架。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">新加坡四天三夜：哪一天去哪一区</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">Singapore in 4 days by district · 示意图，不依比例</text>
+
+  <!-- island outlines -->
+  <path d="M 70 440 C 90 340, 200 250, 340 215 C 470 180, 640 175, 760 200 C 880 225, 1000 290, 1060 380 C 1090 430, 1070 490, 1010 520 C 900 580, 780 650, 640 680 C 520 700, 380 690, 260 650 C 160 615, 60 540, 70 440 Z" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+  <ellipse cx="545" cy="770" rx="120" ry="36" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="3"/>
+
+  <!-- MRT schematic skeleton -->
+  <g fill="none" stroke="#B9B1A5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 520 270 L 520 590 L 545 770"/>
+    <path d="M 520 520 L 840 520 L 940 420"/>
+  </g>
+
+  <!-- Day 3 routes: A solid to Mandai, B dashed to Sentosa -->
+  <path d="M 520 520 L 520 270" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 520 520 L 520 590 L 545 770" fill="none" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="20 14" stroke-linejoin="round"/>
+
+  <!-- markers -->
+  <g font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">
+    <circle cx="520" cy="270" r="22" fill="#6B4A3A"/>
+    <text x="520" y="276">3A</text>
+    <circle cx="545" cy="770" r="22" fill="#6B4A3A"/>
+    <text x="545" y="776">3B</text>
+    <circle cx="520" cy="450" r="22" fill="#2F6F9F"/>
+    <text x="520" y="456">4</text>
+    <circle cx="660" cy="440" r="22" fill="#2F6F9F"/>
+    <text x="660" y="446">4</text>
+    <circle cx="940" cy="420" r="22" fill="#2F6F9F"/>
+    <text x="940" y="426">4</text>
+    <circle cx="520" cy="590" r="22" fill="#B8442D"/>
+    <text x="520" y="596">2</text>
+    <circle cx="660" cy="580" r="22" fill="#0D6B68"/>
+    <text x="660" y="586">1</text>
+  </g>
+
+  <!-- map labels -->
+  <g font-size="17" font-weight="700">
+    <text x="492" y="266" text-anchor="end" fill="#6B4A3A">万态 Mandai</text>
+    <text x="492" y="292" text-anchor="end" font-weight="400" fill="#5C6B6B">飞禽公园・夜间野生动物园</text>
+    <text x="492" y="457" text-anchor="end" fill="#2F6F9F">乌节路 Orchard Road</text>
+    <text x="692" y="432" fill="#2F6F9F">甘榜格南 Kampong Glam</text>
+    <text x="692" y="458" fill="#2F6F9F">小印度 Little India</text>
+    <text x="940" y="384" text-anchor="middle" fill="#2F6F9F">樟宜 Changi・Jewel</text>
+    <text x="492" y="584" text-anchor="end" fill="#B8442D">牛车水 Chinatown</text>
+    <text x="492" y="610" text-anchor="end" fill="#B8442D">丹戎巴葛 Tanjong Pagar</text>
+    <text x="692" y="587" fill="#0D6B68">滨海湾 Marina Bay</text>
+    <text x="410" y="777" text-anchor="end" fill="#6B4A3A">圣淘沙 Sentosa</text>
+  </g>
+
+  <!-- right panel: times per day -->
+  <g font-size="17" fill="#102A2B">
+    <rect x="1120" y="120" width="440" height="120" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+    <text x="1144" y="160" font-size="20" font-weight="700" fill="#0D6B68">Day 1 滨海湾 Marina Bay</text>
+    <text x="1144" y="192">温室 9:00–21:00</text>
+    <text x="1144" y="220">Garden Rhapsody 19:45／20:45</text>
+
+    <rect x="1120" y="258" width="440" height="120" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+    <text x="1144" y="298" font-size="20" font-weight="700" fill="#B8442D">Day 2 牛车水 Chinatown・丹戎巴葛</text>
+    <text x="1144" y="330">马里安曼兴都庙</text>
+    <text x="1144" y="358">6:00–12:00、18:00–21:00</text>
+
+    <rect x="1120" y="396" width="440" height="150" rx="14" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="4"/>
+    <text x="1144" y="436" font-size="20" font-weight="700" fill="#6B4A3A">Day 3 二选一：万态或圣淘沙</text>
+    <text x="1144" y="468">A 飞禽公园 9:00–18:00</text>
+    <text x="1144" y="496">A 夜间野生动物园 18:00–24:00</text>
+    <text x="1144" y="524">B 圣淘沙 Sentosa 海滩</text>
+
+    <rect x="1120" y="564" width="440" height="124" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4"/>
+    <text x="1144" y="604" font-size="20" font-weight="700" fill="#2F6F9F">Day 4 甘榜格南・小印度・乌节路</text>
+    <text x="1144" y="636">苏丹回教堂周五不开放</text>
+    <text x="1144" y="664">Jewel 雨漩涡 10:00–22:00</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="17" fill="#102A2B">
+    <line x1="1130" y1="734" x2="1190" y2="734" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"/>
+    <text x="1206" y="740">方案 A 万态 Mandai（实线）</text>
+    <line x1="1130" y1="768" x2="1190" y2="768" stroke="#6B4A3A" stroke-width="10" stroke-dasharray="20 14"/>
+    <text x="1206" y="774">方案 B 圣淘沙 Sentosa（虚线）</text>
+    <line x1="1130" y1="802" x2="1190" y2="802" stroke="#B9B1A5" stroke-width="7" stroke-linecap="round"/>
+    <text x="1206" y="808">MRT 示意骨架 MRT (schematic)</text>
+  </g>
+
+  <text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 制图 2026</text>
+</svg>
