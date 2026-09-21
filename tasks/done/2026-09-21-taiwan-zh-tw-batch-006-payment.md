@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-taiwan-zh-tw-batch-006-payment
 title: Taiwan zh-TW batch 006: payment and food
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-taiwan-zh-tw-batch006
 claimed_at: 2026-09-21T17:03:05Z
 created_at: 2026-09-21T17:02:57Z
-completed_at:
+completed_at: 2026-09-21T17:33:38Z
 branch: codex/taiwan-zh-tw-batch-006
 depends_on: []
 scope:
@@ -46,7 +46,7 @@ photo licensing.
   documents without changing existing locales or pack metadata.
 - [x] Create and inspect the localized SVGs at 1600x900 and 390x219.
 - [x] Resolve independent-review findings and complete the focused validation.
-- [ ] Keep the branch ready without opening a PR until batch005 PR #626 merges;
+- [x] Keep the branch ready without opening a PR until batch005 PR #626 merges;
   then rebase onto the new `origin/main` and prove content hashes are unchanged.
 
 ## How to verify
@@ -88,3 +88,12 @@ SVGs at desktop and 390px widths.
   unsupported food-price ranges, an ambiguous stamp-tax sentence, two SVG
   wording issues, and missing lottery-range parity. All were corrected. The
   final re-review reports 0 blocker, 0 major, and 0 minor.
+- PR #626 merged as exact `main`
+  `d390cc5da44185e546668c8fd8bce412c34d5b79`. The batch rebased cleanly
+  onto that commit; its rewritten content commit was
+  `5dbe327a34ebae88c9b952649e3dde13161360b4`.
+- The two canonical `zh-TW` document hashes and both normalized SVG hashes
+  were identical before and after rebase. All four Git blob IDs were also
+  identical. Raw working-tree file hashes changed only where Git converted
+  CRLF to the committed LF representation during rebase; parsed content and
+  committed bytes did not change.
