@@ -16,11 +16,29 @@ cd apps/api && python -m app.guides.pack_cli lint --kind howto
 
 **確認主機上沒有別人的分階段發布正在進行**（`/root/travel-scanner-deploy.hold`）。有的話就停下來問站主——那個 hold 是別的發布流程的鎖，硬闖會把它切斷。
 
+確認主機 checkout 乾淨，記下目前與 `origin/main` 的 SHA，並核對目標 SHA 的 CI 已全綠。一般部署腳本會部署執行時的 `origin/main`；若其間又有提交合併，先檢查新增的提交與 CI，再決定是否部署。
+
+2026-09-20 的唯讀基準：主機 HEAD `8ee76a22e89ec88fe7a28a32f05330a12f4a5cf3`、無 hold、工作樹乾淨；待部署的 `aeb6dbb1babc82622c00b449aca5d3e6493040ee` 除本批 #601 外，還包含 #598、#599、#600。這個區間沒有 `migrations/versions/` 變更，主機腳本會跳過它的條件式資料庫備份。執行時若基準改變，以新查到的版本與差異為準。
+
+**正式站操作前先取得站主同意。** 即使這次沒有 migration 差異，發布文章前仍先手動做一份可還原的資料庫備份，並驗證目錄可讀：
+
+```bash
+cd /root/travel_scanner
+set -euo pipefail
+dump="/root/travel_scanner_pre_korea_food_$(date -u +%Y%m%dT%H%M%SZ).dump"
+docker compose -f docker-compose.prod.yml exec -T postgres sh -c 'pg_dump -U "$POSTGRES_USER" -d "$POSTGRES_DB" -Fc' > "$dump"
+test -s "$dump"
+docker compose -f docker-compose.prod.yml exec -T postgres pg_restore --list < "$dump" > /dev/null
+sha256sum "$dump"
+```
+
+記下備份路徑與 SHA-256；任一步失敗就停止。
+
 ## 1. 部署
 
 照 `ops/release/README.md` 的既有流程。這一批**沒有**多階段發布，是一般的 deploy。
 
-部署會同時帶上 **migration 0082**（旅遊子主題）——它是 seeding-only、只插入缺的 slug、導言只寫 NULL 的列，重跑不會覆蓋後台編輯過的內容。
+旅遊子主題的 **migration 0082** 已在上述主機 HEAD 的程式碼中。部署後確認資料庫 revision 與站點健康，不要因為腳本沒有偵測到新 migration 就略過事前手動備份。
 
 ## 2. 記下基準，再種料理
 
@@ -30,13 +48,13 @@ cd apps/api && python -m app.guides.pack_cli lint --kind howto
 curl -s "https://mokaair.com/api/travel/foods/facets" | python -m json.tool | head -30
 ```
 
-（2026-09-20 的基準：全部 120 道、韓國 25 道。）
+最初盤點是全部 120 道、韓國 25 道；2026-09-20 約 23:00 的公開 API 唯讀檢查已是全部 127 道、韓國 32 道。先核對當下數量與下面的代表店關聯；若資料已符合預期，記錄為已完成並跳過 `seed-foods`，不要為了照清單重跑寫入。
 
 ```bash
 docker compose -f docker-compose.prod.yml exec -T api python -m app.cli seed-foods
 ```
 
-**`seed-foods` 是冪等的，但沒有 dry-run。** 跑完應該是：全部 127 道、韓國 32 道（新增 7 道）。
+**`seed-foods` 是冪等的，但沒有 dry-run。** 只有當最新檢查確認資料缺失、且站主明確同意這一步時才執行。目標是全部 127 道、韓國 32 道（原基準新增 7 道）。
 
 驗證「認養」有沒有生效——這兩家是正式站早就公開的店，種子只會加料理連結、不動審核狀態：
 
