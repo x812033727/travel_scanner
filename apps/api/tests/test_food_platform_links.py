@@ -215,6 +215,41 @@ def test_catchtable_dotted_identity_matches_reviewed_locale_aliases(locale: str)
     assert platform_url_language("catchtable_global", localized) == locale
 
 
+@pytest.mark.parametrize(
+    ("directory", "locale"),
+    [("ja-JP", "ja"), ("zh-TW", "zh-TW"), ("zh-CN", "zh-CN")],
+)
+def test_catchtable_accepts_its_own_language_directory_spellings(
+    directory: str, locale: str
+) -> None:
+    """Catchtable spells Japanese `ja-JP`. Its bare `/ja/` path is a 404 on the site,
+    so a reviewer who copies the Japanese page needs this spelling to store it."""
+    canonical = "https://www.catchtable.net/shop/daelimchanggobar"
+    localized = f"https://www.catchtable.net/{directory}/shop/daelimchanggobar"
+    assert platform_url_identity("catchtable_global", localized) == platform_url_identity(
+        "catchtable_global", canonical
+    )
+    assert platform_url_language("catchtable_global", localized) == locale
+    assert validate_localized_platform_urls(
+        "catchtable_global", canonical, {locale: localized}
+    ) == {locale: localized}
+
+
+@pytest.mark.parametrize("provider,url", [
+    ("tablecheck", "https://www.tablecheck.com/ja-JP/shops/brunch/reserve"),
+    ("eztable", "https://www.eztable.com/ja-JP/restaurant/brunch"),
+    ("chope", "https://www.chope.co/ja-JP/singapore-restaurants/restaurant/brunch"),
+    ("openrice", "https://www.openrice.com/ja-JP/hongkong/r-brunch-r123"),
+    ("hungry_hub", "https://web.hungryhub.com/ja-JP/restaurants/brunch/web"),
+    ("autoreserve", "https://autoreserve.com/ja-JP/restaurants/ABCDEFGHIJKLMNOPQRST"),
+])
+def test_catchtable_language_directory_does_not_widen_other_providers(
+    provider: str, url: str
+) -> None:
+    with pytest.raises(ValueError):
+        validate_platform_url(provider, url)
+
+
 @pytest.mark.parametrize("identifier", ["yosukgungkr", "yosukgung-kr", "yosukgung.kr2",
                                         "yosukgung.kr.branch", "Yosukgung.kr"])
 def test_catchtable_dotted_ids_remain_distinct(identifier: str) -> None:

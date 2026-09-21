@@ -212,3 +212,13 @@ def test_committed_review_file_is_valid() -> None:
     batch = load_review_file(DEFAULT_REVIEW_FILE)
     assert batch.records
     assert all(item.status != "verified" or item.evidence for item in batch.records)
+
+
+def test_every_committed_review_file_loads() -> None:
+    """Only the default file was checked before, so a later batch could only fail on
+    the production host. Every committed file is an input the CLI may be pointed at."""
+    paths = sorted(DEFAULT_REVIEW_FILE.parent.glob("*.json"))
+    assert len(paths) >= 4
+    for path in paths:
+        batch = load_review_file(path)
+        assert batch.records, path.name

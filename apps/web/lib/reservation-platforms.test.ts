@@ -49,6 +49,29 @@ describe("reservation platforms", () => {
     expect(reservationPlatformIdentity("catchtable_global", url)).toBe(`catchtable_global:${id}`);
   });
 
+  it.each([["ja-JP"], ["zh-TW"], ["zh-CN"]])(
+    "keeps one Catchtable branch identity across its own language directory %s",
+    (directory) => {
+      // Catchtable spells Japanese "ja-JP"; its bare "/ja/" path is a 404 on the site.
+      const url = `https://www.catchtable.net/${directory}/shop/daelimchanggobar`;
+      expect(reservationPlatformHref("catchtable_global", url)).toBe(url);
+      expect(reservationPlatformIdentity("catchtable_global", url)).toBe(
+        reservationPlatformIdentity("catchtable_global", "https://www.catchtable.net/shop/daelimchanggobar"),
+      );
+    },
+  );
+
+  it.each([
+    ["tablecheck", "https://www.tablecheck.com/ja-JP/shops/brunch/reserve"],
+    ["eztable", "https://www.eztable.com/ja-JP/restaurant/brunch"],
+    ["chope", "https://www.chope.co/ja-JP/singapore-restaurants/restaurant/brunch"],
+    ["openrice", "https://www.openrice.com/ja-JP/hongkong/p-brunch-p123"],
+    ["hungry_hub", "https://web.hungryhub.com/ja-JP/restaurants/brunch/web"],
+  ])("does not widen %s with Catchtable's language directory", (provider, url) => {
+    expect(reservationPlatformHref(provider, url)).toBeUndefined();
+    expect(reservationPlatformIdentity(provider, url)).toBeUndefined();
+  });
+
   it("never drops a Catchtable dotted suffix when comparing branches", () => {
     const identities = ["yosukgung.kr", "yosukgung.jp", "yosukgung", "yosukgungkr"].map((id) =>
       reservationPlatformIdentity("catchtable_global", `https://www.catchtable.net/shop/${id}`));
