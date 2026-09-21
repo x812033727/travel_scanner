@@ -51,6 +51,13 @@ def test_secure_production_configuration_is_accepted() -> None:
         ),
         (
             {
+                "jev_api_key": "production-jev-key",
+                "jev_api_base_url": "https://attacker.example/v1",
+            },
+            "JEV_API_BASE_URL",
+        ),
+        (
+            {
                 "line_messaging_enabled": True,
                 "line_channel_secret": "line-channel-secret",
                 "line_channel_access_token": "line-access-token",
@@ -128,6 +135,8 @@ def test_official_provider_endpoints_are_accepted_in_production() -> None:
         duffel_base_url="https://api.duffel.com",
         google_travel_impact_api_key="key",
         google_travel_impact_base_url="https://travelimpactmodel.googleapis.com/v1",
+        jev_api_key="key",
+        jev_api_base_url="https://api.typesafe.ai/v1",
     ).validate_deployment_security()
 
 
