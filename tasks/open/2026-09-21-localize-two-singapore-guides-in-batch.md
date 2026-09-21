@@ -100,6 +100,12 @@ three 390px scroll positions; text bounds and pairwise overlap are zero.
   `guide_article_aliases`, and catalogue-wide image checks fail because the
   sparse worktree intentionally omits other articles' artwork. These failures
   are not reported as passes. Re-run full CI after the final rebase/PR.
+- Candidate v2 corrects the English itinerary block 27 temporal cues: source
+  `下午` is now "In the afternoon" and `傍晚` is "At dusk". The original
+  candidate commit, manifest and review receipt remain as historical evidence;
+  v2 needs its own independent editorial review. The earlier 4px mobile-image
+  blocker used the older c5d9 ContentBlocks; re-evaluate it against the
+  deployed d862 code with 1180px SVG horizontal scrolling.
 - Base checkout is `d8621daf47b7acd8fec617b735d76d9e79931268`; main has
   advanced. Recheck fresh origin/main and live versions/visibility before a PR
   or any production publication. No PR or production write from this task yet.
