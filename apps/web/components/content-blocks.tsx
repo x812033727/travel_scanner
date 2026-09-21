@@ -212,7 +212,16 @@ export function ContentBlocks({
             // child, and only Firefox focuses a scroll container on its own. It carries no
             // `aria-label`; the image inside already has the alt, and naming the group would
             // read it out twice.
-            <div tabIndex={0} role="group" className="overflow-x-auto rounded-2xl">{image}</div>
+            //
+            // `-mx-5 px-5` cancels the article's own gutter (`main` is `px-5`, 20px at every
+            // breakpoint) and puts it back inside the scroller. The window into the diagram
+            // is then the full 375px of a phone rather than 335, which is what lets a column
+            // of the common three-up decoder -- 490 canvas px, 361 on screen -- be seen whole;
+            // at 335 none of its three columns ever was. The padding keeps the diagram's left
+            // edge lined up with the text at rest, and the right edge running off the screen
+            // is the cue that there is more. No `100vw`: it counts the scrollbar and would
+            // give the page the sideways scroll this is meant to avoid.
+            <div tabIndex={0} role="group" className="-mx-5 overflow-x-auto px-5">{image}</div>
           ) : image}
           {caption || block.credit ? (
             <figcaption className="mt-2 text-sm leading-6 text-[var(--muted)]">

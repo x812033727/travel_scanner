@@ -305,6 +305,10 @@ describe("rendering the rich blocks", () => {
     expect(image.style.maxWidth).toBe("none");
     const box = image.parentElement!;
     expect(box.className).toContain("overflow-x-auto");
+    // The gutter is cancelled and re-applied inside, so the window into the diagram is the
+    // whole phone width. A three-up decoder's column is 361px on screen and never fitted 335.
+    expect(box.className).toContain("-mx-5");
+    expect(box.className).toContain("px-5");
     expect(box.getAttribute("tabindex")).toBe("0");
     // The alt belongs to the image; naming the box as well would read it out twice.
     expect(box.getAttribute("aria-label")).toBeNull();

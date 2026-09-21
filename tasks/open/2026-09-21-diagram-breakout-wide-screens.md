@@ -63,3 +63,8 @@ JSON.stringify({w:innerWidth, pageOk:document.documentElement.scrollWidth<=inner
 - 現行寬度常數是 `DIAGRAM_READABLE_WIDTH = 1180`，在 `apps/web/components/content-blocks.tsx`，
   由 `pack_ingest.MIN_LABEL_PX = 15` 推出來（`15 × 1180/1600 = 11.1px`）。
 - 圖在 1180px 時高 664px。突破欄寬不會改變這個高度，只會少掉橫向捲動。
+- **2026-09-21 續修後起點已經不是 728 了。** 捲動盒用 `-mx-5 px-5` 抵銷並加回
+  `main` 的 20px 留白，所以現在桌機的可視窗口是 **768px**（等於 `main` 本身），手機是 375px。
+  這張票要處理的是「768 以外那片空白」，離 1180 還差 412px。
+- `-mx-5` 安全的原因是它抵銷一個已知的固定值。**這張票要的突破不一樣**，
+  它需要知道視窗寬度，所以才會碰到 `100vw` 含捲動條的問題。
