@@ -30,12 +30,12 @@ the published GuideDocument is the source of truth.
 
 ## Definition of done
 
-- [x] Both packs contain complete zh-TW, zh-CN, en, ja and ko documents; the
-      zh-TW documents match the published revisions byte-for-byte after
-      canonical normalization.
+- [ ] Both packs contain complete zh-TW, zh-CN, en, ja and ko documents, and
+      the corrected Changi zh-TW fare boundary has been approved as a new
+      versioned published source before the missing locales are imported.
 - [x] Each new locale has a language-specific diagram. Existing photographs,
       author credits, licences and source URLs remain intact.
-- [x] Local pack lint and focused content/asset checks pass, and all eight
+- [x] Local pack lint and focused content/asset checks pass, and all ten
       diagrams are rendered at desktop and 390px mobile width without label
       overflow or overlap.
 - [ ] Independent editorial review accepts wording, eligibility, source facts
@@ -106,6 +106,32 @@ three 390px scroll positions; text bounds and pairwise overlap are zero.
   v2 needs its own independent editorial review. The earlier 4px mobile-image
   blocker used the older c5d9 ContentBlocks; re-evaluate it against the
   deployed d862 code with 1180px SVG horizontal scrolling.
-- Base checkout is `d8621daf47b7acd8fec617b735d76d9e79931268`; main has
-  advanced. Recheck fresh origin/main and live versions/visibility before a PR
-  or any production publication. No PR or production write from this task yet.
+- The first candidate started at `d8621daf47b7acd8fec617b735d76d9e79931268`;
+  the branch now includes main and PR #635 exists. Recheck fresh origin/main
+  and live versions/visibility before any production publication. No
+  production write has occurred.
+- PR #635 remains draft with auto-merge disabled. Independent v3 review
+  `C:\Users\x8120\.codex\article-localization-release\batch010-work\review-batch010-v3-preflight.json`
+  (SHA-256 `c9b3fb3ae3b5cac5eeea7cfc43f9b3edd0467b2c931f5be5f8501d8e4fa180d9`)
+  supersedes the prior editorial approval and returned 27 source-to-target
+  fields across 10 finding groups, including 13 numeric warning rows.
+  Corrected target wording is staged only against the hash-bound old fields;
+  no production import or deployment has occurred.
+- The published Changi zh-TW v6 fare table says `40.2 km 以上` at 257 cents.
+  SimplyGo's Adult Fares table instead places 39.3–40.2 km at 256 cents and
+  `Over 40.2 km` at 257 cents. The repository candidate now says
+  `超過 40.2 km` in zh-TW and `超过 40.2 km` in zh-CN. Independent source
+  correction review and a separate versioned zh-TW publication are mandatory
+  before translating/publishing from a repinned source. The already correct
+  en/ja/ko strict-`>` fields remain unchanged.
+- The v4 content-delta audit at
+  `C:\Users\x8120\.codex\article-localization-release\batch010-work\qa-v4\content-delta.json`
+  (SHA-256 `590129cedc3f7f72a4821193d5cd1272aa12b81a02cc063801758960abc6102f`)
+  compares the new candidate with frozen e0392c90. It confirms exactly 16 JSON
+  field changes (14 translated fields and two source-language fare labels),
+  exactly 10 SVG text-slot changes, and no changed source URLs, photo credits,
+  checked-on dates or unrelated article fields. All ten five-language SVGs
+  rendered at desktop and three 390px scroll positions; bounding-box and
+  pairwise-text overlap counts were zero. Pack lint passed with pre-existing
+  no-summary and English length advisories; independent editorial review is
+  still required.
