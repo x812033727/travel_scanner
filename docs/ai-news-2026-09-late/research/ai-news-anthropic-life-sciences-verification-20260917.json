@@ -470,5 +470,98 @@
         "資安分類器仍會擋"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把內容包拆成 130 條可查主張（title、description、兩段前言、summary 五句、17 段正文、表格 4 列 12 格與表頭、圖說、FAQ 五題、callout、兩個結尾連結、sources 四條），2026-09-23 台北 01:03–01:04 以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐條重抓四個來源（同主機間隔 ≥1 秒，UA／標頭／查詢字串未帶任何姓名或 email，未填寫或送出任何表單），以研究紀錄記載的同一套正規化（刪 <!-- -->、刪註解、去 script/style、<br> 與區塊結束標籤換行、html.unescape、壓空白）抽出純文字後逐字比對。四條全部 200 且讀到正文：公告頁 173,459 bytes、新聞總覽頁 460,541 bytes、威脅報告 1,221,782 bytes、申請頁 441,344 bytes。verified_facts 43 條的 verbatim_quote 逐條做連續字串比對，41 條在 .txt 命中、第 37 條依紀錄所載在 .html 命中、第 40 條因申請頁當天改字而失效（見 open_questions）。另以程式核對兩個結尾連結的 text 與目標內容包 zh-TW title 逐字相同、圖說與本紀錄 diagram.caption 逐字相同、內容包 title 與本紀錄 title 相同、slug 後綴／news_date／第一段日期三者皆 2026-09-17。",
+    "claims_checked": 130,
+    "verdict": "10 處事實修正，全部屬於限定詞、日期歸屬與名詞精確度；骨幹敘述（兩種授權的條件、離線監測與 30 天保留、未開放的部分、台灣未見開放地區說明）經查全部正確，未動。",
+    "changes": [
+      {
+        "claim": "早期存取組織的狀態",
+        "before": "已有數十個組織透過早期存取用過這個方案",
+        "after": "已有數十個組織透過早期存取加入這個方案",
+        "why": "原文是 We have already onboarded dozens of organizations through an early-access program，是「已納入」的持續狀態；「用過」讀起來像已經結束。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "第一週的預期規模",
+        "before": "公司預期第一週再增數百個組織",
+        "after": "公司預期第一週納入數百個組織",
+        "why": "原文 We expect to enroll hundreds of organizations within the first week 沒有寫這是相對於「數十個」的增量，「再增」是自己算出來的關係。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "近期模型收緊防護的範圍",
+        "before": "因此近期模型上線時都帶了較嚴格的防護",
+        "after": "因此近期模型上線時帶了較嚴格的防護",
+        "why": "原文 we have launched recent models (most notably Claude Fable 5) with stronger safeguards 沒有全稱語氣，「都」是被加上去的絕對詞。",
+        "source_url": "https://www.anthropic.com/threat-intelligence-report-september-2026"
+      },
+      {
+        "claim": "標準用途的適用型號屬於哪一天",
+        "before": "一年續約一次；今天適用 Mythos 5.1、Opus 5 與 Sonnet 5",
+        "after": "一年續約一次；9 月 17 日當天適用 Mythos 5.1、Opus 5 與 Sonnet 5",
+        "why": "原文 Standard Use grants apply to Mythos 5.1, Opus 5, and Sonnet 5 today 的 today 是公告當天（2026-09-17）；文章後段又寫申請頁在 2026-09-23 寫的是 Opus 5.5，留著「今天」會被讀成閱讀當天，正是 must_not_write 第 8 條要避免的混用。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "表格第三欄的時點標示",
+        "before": "表頭：適用模型／方案（查核日資訊）",
+        "after": "表頭：適用模型／方案（依 9 月 17 日公告）",
+        "why": "表格四列的內容全部出自 9/17 公告；查核日（2026-09-23）的申請頁寫的是 Opus 5.5，標成「查核日資訊」會與正文第 11 段和 FAQ 第 5 題自相矛盾。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "Claude.ai／Claude Code 只套用預設授權的例外",
+        "before": "唯一的例外是用 API 驗證方式登入 Claude Code 的情況",
+        "after": "例外是用 API 驗證方式登入 Claude Code 的情況",
+        "why": "原文只寫一個括號例外 (except while using Claude Code with API authentication)，沒有寫那是唯一的例外。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "PHI 的中文展開",
+        "before": "手上有病患健康資訊（PHI）的客戶",
+        "after": "手上有受保護健康資訊（PHI）的客戶",
+        "why": "原文只寫 customers with PHI data；PHI 是 Protected Health Information，「病患健康資訊」把 Protected 讀成 Patient。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "發現未授權活動之後會發生什麼（正文）",
+        "before": "一旦發現未經授權的活動，會通知組織的管理員",
+        "after": "一旦發現未經授權的活動，可以把案例交給組織的管理員",
+        "why": "原文是 we can flag these cases to organization admins，can 是能力而非承諾；寫成「會通知」是安靜強化來源。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "發現未授權活動之後會發生什麼（FAQ 第 4 題）",
+        "before": "一旦發現用途超出申請書登記的範圍，Anthropic 會通知組織的管理員",
+        "after": "一旦發現用途超出申請書登記的範圍，Anthropic 可以把案例交給組織的管理員",
+        "why": "同上，與正文一併改，維持全篇一致。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      },
+      {
+        "claim": "標準用途夠不夠用（FAQ 第 3 題）",
+        "before": "標準用途一次授權給整個團隊、一年續約一次，能滿足大多數日常工作",
+        "after": "標準用途一次授權給整個團隊、一年續約一次，Anthropic 說這能滿足大多數日常工作",
+        "why": "Standard Use grants are suitable for most life science work 與 we expect Standard Use to cover the majority of access needs 都是 Anthropic 自己的說法；正文第 6 段有歸因，FAQ 漏掉了。",
+        "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+      }
+    ],
+    "open_questions": [
+      "申請頁在 2026-09-23 當天改字：撰稿代理 00:30 抓到的是 'LSVP is currently available to verified organizations on Team and Enterprise plans only.'，查核代理 01:03 重抓變成 'LSVP is currently available to verified organizations on Claude Enterprise and Team plans, and the Claude Platform (API).'（441,311 → 441,344 bytes，差的 33 bytes 就是這一句）。因此 sources[3] 與 verified_facts 第 40 條的 verbatim_quote 在現行頁面上搜尋不到——兩個時點的 HTML 都留著（撰稿的在 _raw/…/lsvp-form.html，查核的在查核代理的暫存區），不是捏造。語意沒有被推翻：正文第 10 段、表格第四列與 callout 寫的「第一方 console 提供 API 存取／Enterprise 與 Team」本來就涵蓋 Claude Platform (API)，所以正文未改。要不要把那兩處 verbatim_quote 更新成新句子，請協調者裁定；第二輪重跑逐字比對時會再撞到一次。",
+      "drug discovery 的譯法：公告同一個清單裡有 drug discovery 與 clinical development，研究紀錄 fact 4 與正文都譯成「藥物開發」與「臨床開發」，兩個「開發」容易混（drug discovery 一般譯「新藥探索」）。研究紀錄是拘束性文件且自己就是這樣寫，查核代理不自行偏離，是否統一改由協調者決定（正文第 3 段與第 11 段各一處）。",
+      "正文第 15 段「不能用『Team 與 Enterprise 方案在台灣買得到』去推論這個方案在台灣是否開放」這句，把「Team 與 Enterprise 方案在台灣買得到」當成前提，但四條來源沒有一條寫台灣的方案供應情況。這個說法是照研究紀錄 unverified_or_excluded 第 1 條原樣搬來的，所以保留；若協調者認為不該在正文帶入未經查證的前提，可改成「不能從別處的方案供應情況去推論」。",
+      "新聞總覽頁今天的精選卡片多了 2026-09-22 的 Introducing Claude Opus 5.5。正文「申請頁沒印日期，看不出何時寫上去的」仍然成立，但若要讓讀者知道 Opus 5.5 已有自己的發布日，需要新增一條來源（本輪沒有抓那一頁），所以沒寫。"
+    ],
+    "coordinator_rulings": [
+      "ASSIGNMENTS A3「補寫件（窗口外），正文不可寫『最近』『本週』」：逐字 grep，全篇「最近」「近日」「本週」「日前」各 0 次；第一段直接寫 2026 年 9 月 17 日，並交代前一輪名額已滿才補上（DELTA-4-7 第 1 條）。",
+      "ASSIGNMENTS A3「分 Standard Use 與 High-risk Use，後者只給單一研究專案、半年續約」：正文第 7 段、表格第二列、FAQ 第 3 題三處一致，且都保留「資安分類器等其他防護不受影響」。",
+      "ASSIGNMENTS A3「Mythos 的高風險授權與美國政府合作中、目前僅限少數經額外審查的機構」：正文第 8 段與表格第二列照原文寫，未寫成已開放。",
+      "ASSIGNMENTS A3「它引用的威脅報告正是第二個連結那篇」：公告 HTML 裡 recent threat report 的 href 確為 https://www.anthropic.com/threat-intelligence-report-september-2026；第二個結尾連結 text 與 ai-news-anthropic-threat-report-20260910 的 zh-TW title 逐字相同（程式比對 True）。",
+      "DELTA-4-7 第 14 條（讀者優先）：全篇無「本文」；description 只在句尾帶「（2026 年 9 月查證）」；title／description／summary 無清點數字。正文只有 1 個「官方」。但第 3、4、6、8、16 段各有兩個以上歸因詞（Anthropic 表示／說明／公司預期／公告舉／公告列），依「≤1 attribution per paragraph」偏多——屬風格不屬事實，依查核規格『never restyle』未改，留給協調者或第二輪處理。",
+      "AI 垂直界線：全篇無購買建議、無推薦式比價、無金額；廠商宣稱皆有歸因；beta、預期、尚未支援三種狀態都保留。只有一個 callout，沒有免責 callout。"
+    ]
   }
 }

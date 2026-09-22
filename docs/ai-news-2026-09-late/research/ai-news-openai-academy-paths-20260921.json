@@ -398,5 +398,108 @@
       ["教師與學生", "Teach and Learn with AI"]
     ]
   },
-  "corrections_applied": []
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把內容包拆成 96 條可查的主張（title、description、5 句 summary、14 段正文、表格 16 格與 caption、圖解 caption、6 題 FAQ、callout、兩個結尾連結、4 條 sources），再用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同主機間隔 ≥1 秒，在 2026-09-23 重抓 sources[] 四條全部（公告 200／420,321 B、說明中心課程 200／110,050 B、支援地區 200／70,122 B、課程頁 200／296,459 B），剝 <!-- -->／script／style、html.unescape、去掉 U+2060 後逐句比對；課程頁是 Next.js 應用，正文從 <script id=\"__NEXT_DATA__\"> 的 props.pageProps.data.course.course 取出。所有英文引文以連續字串比對確認在今天的正文裡；兩個結尾連結逐字比對目標內容包的 zh-TW title。工具在 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\ai-news-openai-academy-paths-20260921\\。",
+    "claims_checked": 96,
+    "changes": [
+      {
+        "claim": "Apply AI at Work 這次有沒有變動",
+        "before": "Apply AI at Work（一般工作者路徑）是原本就有的路徑，這次沒有變動。",
+        "after": "Apply AI at Work（一般工作者路徑）是原本就有的路徑，這次新增的課程是加在它旁邊。",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "AI Leadership 的對象與學習目標出自哪一份文件",
+        "before": "OpenAI 說明中心的課程表列出預估時間 180 分鐘……目標是幫助負責策略、導入與變革管理的人評估 AI 能在哪裡創造商業價值，練習設定優先順序、對齊利害關係人，並做出一份初步的 AI 策略草案。",
+        "after": "（對象與商業價值那一段改掛回公告原文：連上商業優先順序、定義負責人與治理方式、做出初步的 AI 策略與導入藍圖；說明中心的課程表只承擔 180 分鐘、內容欄與「不對應單一產品」）",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "AI for Educators 的溝通對象清單",
+        "before": "或是改寫給學生與同事的溝通內容",
+        "after": "或是改寫給學生、教學助理與同事的溝通內容",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "AI for College Students 的初學者是否該先修 AI Foundations",
+        "before": "如果是完全沒用過 ChatGPT 的初學者，官方建議先修 AI Foundations。",
+        "after": "課程頁沒有列先修課程，講 AI 基礎與提示詞的入門課是 Apply AI at Work 路徑裡的 AI Foundations。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "FAQ 第三題同一件事",
+        "before": "如果是完全沒用過的初學者，官方建議先修 AI Foundations 這門入門課。",
+        "after": "課程頁沒有列先修課程；要從零開始的話，課程表裡講 AI 基礎與提示詞的是 AI Foundations。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "企業怎麼搭配路徑（方向寫反）",
+        "before": "新人訓練安排 Apply AI at Work，技術團隊上 Build with AI，主管訓練則放進 AI Leadership 所在的 Lead AI Adoption。",
+        "after": "新人訓練安排 Apply AI at Work，開發者與技術團隊上 Build with AI，主管、Champion 或轉型計畫裡則放 AI Leadership。",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "徽章不是什麼",
+        "before": "徽章由 Accredible 發出並管理，不是學分、學位或任何正式資格的替代。",
+        "after": "徽章由 Accredible 發出並管理，代表的是完成課程並通過測驗這兩件事。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "個人 vs 透過組織報名",
+        "before": "個人身分就能修，學校或公司的員工也是用個人身分報名。",
+        "after": "可以用個人身分修，也可以透過所屬的組織修。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "選錯帳號的後果",
+        "before": "選錯 email 就得從頭來過。",
+        "after": "選錯帳號，課程紀錄與徽章就會掛在那個 email 上。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "October 31 是什麼期限",
+        "before": "期限寫到 10 月 31 日（頁面沒有印年份）",
+        "after": "要在 10 月 31 日前領取（頁面沒有印年份）",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "summary 第五句對台灣的否定範圍",
+        "before": "免費期滿後每月 20 美元續訂，台灣沒有對應方案。",
+        "after": "免費期滿後每月 20 美元續訂，頁面沒有寫台灣有對應方案。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "第二段的「沒有第三方測試可以對照」",
+        "before": "；規格、時程與價格數字都是 OpenAI 自己的說法，沒有第三方測試可以對照。",
+        "after": "；課程時間、測驗規則與學生優惠的價格都是 OpenAI 自己頁面上寫的。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "語言那一句引到的頁面",
+        "before": "公告、課程目錄與課程頁讀到的內容都是英文。（正文與 FAQ 各一次）",
+        "after": "公告、說明中心的課程表與課程頁讀到的內容都是英文。（正文與 FAQ 各一次）",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "callout 裡寫給撰稿者的指示",
+        "before": "規格與價格數字一律是 OpenAI 自己的說法；四個月免費 ChatGPT Work 學生優惠期滿後的續訂價可以照官方原文引用，但不做划算與否的評語。",
+        "after": "課程時間與價格數字一律是 OpenAI 自己的說法。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      }
+    ],
+    "open_questions": [
+      "課程頁上「Claim the student offer」的連結指向 https://chatgpt.com/students/2026/，網址裡帶 2026；頁面印出來的文字仍然只有 October 31、沒有年份。依研究紀錄的規定沒有把年份補進正文，但站主若要寫年份，需要先取得 chatgpt.com/students 那一頁作為來源。",
+      "「四條路徑」是依公告的四個角色小標與說明中心課程表的四個 Category 欄位清點的，官方沒有印出「四」這個字；研究紀錄的 must_not_write 第一條已裁定照四條寫，維持原狀。",
+      "第一段與第二段各有兩個以上的來源指示詞（公告／說明中心），在這一篇是承重的（公告沉默、說明中心才寫全球可修），沒有改成單一歸因。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 2 條：只做 zh-TW，自檢不帶 --full。",
+      "DELTA-4-7 第 10 條：事件日 2026-09-21，照公告署名日期；本輪重抓仍印 September 21, 2026。",
+      "研究紀錄 unverified_or_excluded 第 2 條：AI for Educators 與 AI Leadership 兩個課程頁不在 sources[]，只有那兩頁才有的細節不得進正文——撰稿把「建議先修 AI Foundations」寫進大學生那一節，已改掉。",
+      "研究紀錄 must_not_write 第 9 條：不補學生優惠的年份、不寫台灣可以領，已逐句核對。"
+    ]
+  }
 }

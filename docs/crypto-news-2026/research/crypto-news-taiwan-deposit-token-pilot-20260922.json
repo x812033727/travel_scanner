@@ -4,7 +4,7 @@
   "display_order": 217,
   "event_date": "2026-09-22",
   "event_date_basis": "金管會新聞稿內頁自印「2026-09-22」與「更新日期：2026-09-22」，正文寫「於今日（22日）開放銀行申請試辦存款代幣業務」；金管會新聞稿清單頁同一筆也印 2026-09-22、發布單位銀行局。台灣主管機關頁面印的日期本來就是台北時間，依 DELTA-4-5 第 5、6 條與 DELTA-4-7 第 10 條不換算。頁面沒有印任何時刻，不存在 00:00／16:00 佔位時刻的問題，正文也不要寫發布時刻。slug 尾碼、news_date 與正文第一段的日期三者一律 2026-09-22。",
-  "title": "金管會開放銀行試辦存款代幣：法律性質仍是銀行存款，營業計畫書要寫五件事",
+  "title": "金管會開放銀行申請試辦存款代幣：法律性質仍是銀行存款，營業計畫書要寫五件事",
   "title_candidates": [
     "金管會開放銀行試辦存款代幣：法律性質仍是銀行存款，營業計畫書要寫五件事",
     "存款代幣不是穩定幣：金管會開放銀行申請試辦，走的是銀行法那條路",
@@ -294,7 +294,7 @@
     "text": "美國 OCC 穩定幣發行規則草案：一比一準備金、兩個營業日贖回與定期申報",
     "verified": "2026-09-23 打開 apps/api/app/guides/content/crypto-news-genius-act-occ-20260302.json，locales['zh-TW'].title 逐字等於上面的 text（該包有五個語系、news_date 2026-03-02、display_order 204）。DELTA-4-7 第 7 條那張表也是同一個字串。"
   },
-  "hero_label": "存款代幣開放試辦",
+  "hero_label": "存款代幣開放申請",
   "diagram": {
     "title": "存款代幣試辦怎麼看",
     "caption": "四格圖解：金管會把存款代幣的法律性質定為銀行存款、銀行依「金融業申請業務試辦作業要點」提出申請、營業計畫書要具體說明五件事，以及穩定幣那一側另由虛擬資產服務法規範；依 2026 年 9 月 23 日查核的官方文件繪製。",
@@ -305,5 +305,81 @@
       ["和穩定幣不同", "穩定幣另有專法"]
     ]
   },
-  "corrections_applied": []
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "round-1 fact-check agent (independent of the writer)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23 台北時間 01:06 以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 三條（同一主機間隔 ≥2 秒，請求不帶任何個人資料），去標籤、html.unescape、先刪 <!-- --> 後逐句比對：金管會新聞稿內頁 200／123,312 bytes（去標籤 3,056 字，五項應載事項與聯絡單位全部讀到）、金管會新聞稿清單頁 200／243,605 bytes（2026-09-22／銀行局／金管會開放銀行申請試辦存款代幣業務，今日仍排第 3 筆）、全國法規資料庫虛擬資產服務法 200／92,400 bytes（研究紀錄記的是 92,406，差值是頁尾瀏覽人次等活資料；第 2、3、4、34、36、37、55、56 條與沿革逐條讀到）。把 title、description、summary 四句、全部 14 段、表格 15 格與 caption、圖解 caption、FAQ 六題、兩個 callout、兩個結尾連結文字、sources[] 與研究紀錄的 hero_label／diagram 拆成 96 條主張逐條核對；另機械核對新聞稿去標籤全文的「穩定幣」「虛擬資產」「中央銀行」「存款保險」各 0 次，虛擬資產服務法全文「存款代幣」0 次，兩個結尾連結文字與目標內容包 zh-TW title 逐字相同。原始 body 存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\crypto-news-taiwan-deposit-token-pilot-20260922\\fc1\\。",
+    "claims_checked": 103,
+    "changes": [
+      {
+        "claim": "標題：金管會開放了什麼",
+        "before": "金管會開放銀行試辦存款代幣：法律性質仍是銀行存款，營業計畫書要寫五件事",
+        "after": "金管會開放銀行申請試辦存款代幣：法律性質仍是銀行存款，營業計畫書要寫五件事",
+        "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202609220001&dtable=News"
+      },
+      {
+        "claim": "description：存款代幣依哪些法規辦理",
+        "before": "原則依現行銀行法辦理",
+        "after": "原則依現行銀行法等相關法規辦理",
+        "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202609220001&dtable=News"
+      },
+      {
+        "claim": "摘要第四句：穩定幣許可時中央銀行的角色，以及準備資產的信託範圍",
+        "before": "許可前須經中央銀行會商同意，且發行人須設十足準備資產並全數信託，",
+        "after": "金管會許可前應會商中央銀行同意，且發行人須設十足準備資產，扣除繳存準備金後全數信託，",
+        "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400163"
+      },
+      {
+        "claim": "第四節第三段結論：存款代幣與穩定幣準備資產義務的關係",
+        "before": "存款代幣沒有這一整套要求，因為金管會把它定性為本來就受銀行法規範的銀行存款。",
+        "after": "這一整套要求是虛擬資產服務法寫給穩定幣發行人的；金管會 9 月 22 日的新聞稿講存款代幣時，只寫法律性質仍屬銀行存款、相關業務原則上依現行銀行法等相關法規辦理，沒有提到這部法怎麼適用。",
+        "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202609220001&dtable=News"
+      },
+      {
+        "claim": "第四節第四段：美國那一側是什麼狀態",
+        "before": "美國那邊另有一套資本與贖回要求，是另一個主管機關依另一部法訂的規則，",
+        "after": "美國那邊另有一套準備金與贖回的規則草案，是另一個主管機關依另一部法提出的，",
+        "source_url": "https://mokaair.com/zh-TW/life/crypto-news-genius-act-occ-20260302"
+      },
+      {
+        "claim": "第三節第二段：金管會說試辦之後要做什麼",
+        "before": "再決定要不要修正制度或訂新規則。",
+        "after": "再決定要不要修正監理制度與法令規範。",
+        "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202609220001&dtable=News"
+      },
+      {
+        "claim": "FAQ 第二題：穩定幣發行人的準備資產義務",
+        "before": "且發行人須設十足準備資產並全數信託保管、不得支付任何形式之利息或收益",
+        "after": "且發行人須設十足準備資產，扣除繳存準備金後全數信託予金融機構保管，也不得支付任何形式之利息或收益",
+        "source_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0400163"
+      },
+      {
+        "claim": "FAQ 第四題：三個來源有沒有提到中央存款保險公司",
+        "before": "也沒有提到中央存款保險公司。",
+        "after": "也沒有說明中央存款保險公司在這件事上的角色。",
+        "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2"
+      },
+      {
+        "claim": "免責 callout（協調者裁定：逐字回到 crypto.md 樣板）",
+        "before": "這裡說明的是法規、技術與產業運作……當期公告為準，查核日為 2026-09-23。",
+        "after": "本文說明的是法規、技術與產業運作……當期公告為準，本文查核日為 2026-09-23。",
+        "source_url": "docs/news-2026-batch-4/crypto.md"
+      },
+      {
+        "claim": "研究紀錄 hero_label（跟著標題一起補回「申請」）",
+        "before": "存款代幣開放試辦",
+        "after": "存款代幣開放申請",
+        "source_url": "https://www.fsc.gov.tw/ch/home.jsp?id=96&parentpath=0,2&mcustomize=news_view.jsp&dataserno=202609220001&dtable=News"
+      }
+    ],
+    "open_questions": [
+      "第一個 callout 的「依日期尋找2026 年 9 月 22 日」少一個半形空格（正文同一句有空格）。屬排版不屬事實，依查核規格「不重寫風格」沒有改，留給協調者定奪。",
+      "title_candidates[0] 仍是改字前的舊標題，刻意保留為候選紀錄；現行標題以 title 欄為準。",
+      "「金融業申請業務試辦作業要點」全文本輪仍未取得（金管會主管法規查詢系統以名稱與「試辦」檢索各 0 筆，研究紀錄已記錄）；文章只寫「銀行依這份要點申請」，沒有描述要點內容，維持原判。"
+    ],
+    "coordinator_rulings": [
+      "幣圈垂直的固定免責 callout 逐字照 docs/news-2026-batch-4/crypto.md 的樣板（含兩處「本文」），與 DELTA-4-7 第 14 條「正文不要出現本文」並存；已還原成與已發布的 crypto-news-occ-three-trust-charters-20260918 相同的字串，只有查核日不同。"
+    ]
+  }
 }

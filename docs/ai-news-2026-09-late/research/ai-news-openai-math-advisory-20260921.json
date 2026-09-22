@@ -4,7 +4,7 @@
   "display_order": 171,
   "event_date": "2026-09-21",
   "event_date_basis": "OpenAI 的公告頁 https://openai.com/index/advisory-group-on-mathematics-and-ai/ 在標題上方逐字印出「OpenAISeptember 21, 2026」（頁面把作者名與日期相連排版），分類標為「Company」。該頁沒有任何 JSON-LD、article:published_time、datePublished、dateModified 或 publishedAt 字串（2026-09-23 對抓下來的 370,857 bytes 原始碼逐一 grep，四個關鍵字全部 0 筆），全篇也沒有印出任何時刻，因此沒有時區換算問題，也沒有佔位時刻要裁定。同頁底部的「Keep reading」區塊為同日的 Expanding OpenAI Academy 一文標註「CompanySep 21, 2026」，與本篇同日，可佐證該站的日期標示方式。事件日採 2026-09-21（台北時間同日，不換算）。另：把 2026-09-22 23:29 探索代理存下的同一頁（_raw/ai/oa-math.html）與 2026-09-23 00:26 重抓的版本抽出正文後 diff，正文逐字相同，僅導覽列的斷行因抽字腳本不同而異，可證這 24 小時內頁面正文沒有改動。",
-  "title": "OpenAI 的數學顧問小組是獨立的：能公開意見，但不管內部進度",
+  "title": "與 OpenAI 合作的數學顧問小組是獨立的：能公開意見，但不管內部進度",
   "title_candidates": [
     "OpenAI 的數學顧問小組是獨立的：能公開意見，但不管內部進度",
     "九位數學家組成獨立顧問小組：內部模型解出超過 100 題之後",
@@ -394,5 +394,133 @@
       ["獨立顧問小組", "給建議、不做決定"],
       ["數學界公開信", "質疑解題當成指標"]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent, round 1",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23 01:03-01:04（台北）用規格指定的 Mokaair-editorial UA 自行重抓 sources[] 四條（同一主機間隔 ≥ 1 秒，任何請求都沒有帶入任何人的姓名、email 或個人資料），去掉 HTML 註解與 script／style 後 html.unescape 抽正文，再把 title／description／summary 五句／16 段正文／表格四列與 caption／圖解 caption／FAQ 五題／callout／兩個結尾連結／四條 sources 拆成 101 條主張逐條比對，英文引句用連續子字串比對（正規化 U+2011、彎引號、NBSP 後）。四條今天的結果：advisory 200／370,896 B／正文 4,942 字元；agmai 200／67,830 B／2,508 字元；mathandai 200／10,873 B／6,290 字元；navier 200／457,098 B／11,975 字元——四條都讀到正文，openai.com 本輪沒有 403。把撰稿代理 00:26-00:28 存下的 _raw 正文與我 01:03 的版本正規化空白後比對，四頁逐字相同，這段期間來源沒有改動。兩個結尾連結的 text 與目標內容包的 zh-TW title 用程式做字元級比對，兩條都完全相同。",
+    "claims_checked": 101,
+    "claims_confirmed": 87,
+    "claims_changed": 13,
+    "claims_not_found": 1,
+    "changes": [
+      {
+        "claim": "標題把小組寫成 OpenAI 的小組",
+        "before": "OpenAI 的數學顧問小組是獨立的：能公開意見，但不管內部進度",
+        "after": "與 OpenAI 合作的數學顧問小組是獨立的：能公開意見，但不管內部進度",
+        "source_url": "https://agmai.org/",
+        "why": "agmai.org 寫「This group operates independently of any AI company」並說願意對任何模型可能重大影響數學的 AI 公司提出建議；OpenAI 的原文也是「與已經成立了獨立顧問小組的數學家們合作」。「OpenAI 的」是所有格，與研究紀錄 must_not_write 第 3 條與全篇主軸相牴觸。研究紀錄的 title 已同步改，title_candidates 保留原樣。"
+      },
+      {
+        "claim": "description：OpenAI 公告「將與」一群數學家合作",
+        "before": "OpenAI 公告將與一群數學家合作",
+        "after": "OpenAI 公告正與一群數學家合作",
+        "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+        "why": "原文是現在進行式 we are working with mathematicians who have established…，agmai.org 的 Current Task 也寫 We are currently facing…advising OpenAI，合作已經在進行，不是預告。"
+      },
+      {
+        "claim": "第一段：OpenAI 在官方網站公告「將與」一群數學家合作",
+        "before": "OpenAI 在官方網站公告，將與一群數學家合作",
+        "after": "OpenAI 在官方網站公告，正與一群數學家合作",
+        "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+        "why": "同上。"
+      },
+      {
+        "claim": "summary 第 1 句：「將與」＋「普林斯頓高等研究院」",
+        "before": "OpenAI 公告將與一群數學家合作，這群數學家已自行成立獨立的數學顧問小組，初始成員九人，掛在普林斯頓高等研究院之下。",
+        "after": "OpenAI 公告正與一群數學家合作，這群數學家已自行成立獨立的數學顧問小組，初始成員九人，掛在高等研究院（Institute for Advanced Study）之下。",
+        "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+        "why": "時態同上；另見下一條。"
+      },
+      {
+        "claim": "第一段：「掛在普林斯頓高等研究院（Institute for Advanced Study）之下」",
+        "before": "掛在普林斯頓高等研究院（Institute for Advanced Study）之下",
+        "after": "掛在高等研究院（Institute for Advanced Study）之下",
+        "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+        "why": "NOT FOUND：OpenAI 公告只寫 hosted at the Institute for Advanced Study，agmai.org 只在標題下印 Institute for Advanced Study，兩頁（與另外兩條來源）今天全文搜尋 Princeton 都是 0 筆。加上「普林斯頓」是來源沒有的字，而且會讓讀者誤以為與普林斯頓大學有隸屬關係。"
+      },
+      {
+        "claim": "第五段：「小組掛在普林斯頓高等研究院之下」",
+        "before": "小組掛在普林斯頓高等研究院之下，初始成員九人",
+        "after": "小組掛在高等研究院之下，初始成員九人",
+        "source_url": "https://agmai.org/",
+        "why": "同上。"
+      },
+      {
+        "claim": "summary 第 2 句把 OpenAI 自報的成果寫成事實",
+        "before": "起因是 OpenAI 一個自 8 月 28 日開始訓練、尚未發布的內部模型，除了解出 Navier–Stokes 千禧年大獎難題，還解出超過 100 題長期未解的數學問題。",
+        "after": "起因是一個自 8 月 28 日開始訓練、尚未發布的內部模型：OpenAI 表示它除了解出 Navier–Stokes 千禧年大獎難題，還解出超過 100 題長期未解的數學問題。",
+        "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+        "why": "研究紀錄把這兩項標為 is_vendor_claim: true，且這批結果正是那封公開信在爭的事、尚未經同儕審查。正文第三段與 callout 有歸因，摘要卻沒有；摘要是讀者最先看到的區塊，補上歸因。"
+      },
+      {
+        "claim": "第二段列舉讀過的來源時漏掉第四條",
+        "before": "讀的是 OpenAI 公告全文、顧問小組自己的網站，以及數學家公開信全文；",
+        "after": "讀的是 OpenAI 的兩份公告、顧問小組自己的網站，以及數學家公開信全文；",
+        "source_url": "https://openai.com/index/navier-stokes-solution/",
+        "why": "sources[] 有四條，第四條（Navier–Stokes 那篇）正文確實有用到（「比 GPT-6 Astra 強得多」只出現在該頁），第二段卻只列三條。"
+      },
+      {
+        "claim": "第四段把 OpenAI 的說法強化成「更審慎」",
+        "before": "寫道這樣的疑慮凸顯AI 公司需要更審慎地與數學社群往來。",
+        "after": "寫道這樣的疑慮凸顯 AI 公司需要審慎地與數學社群往來。",
+        "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+        "why": "原文是 Their criticisms highlight the need for thoughtful engagement of AI companies with the math community.，沒有比較級；研究紀錄 not_said 的用字也是「審慎往來」。同時補上漏掉的空格。"
+      },
+      {
+        "claim": "第十四段：「三份官方頁面…都沒有提到台灣、亞洲或任何特定地區」",
+        "before": "三份官方頁面查核到 9 月 23 日為止，都沒有提到台灣、亞洲或任何特定地區。",
+        "after": "四份官方頁面查核到 9 月 23 日為止，都沒有提到台灣、亞洲或任何特定地區。",
+        "source_url": "https://openai.com/index/navier-stokes-solution/",
+        "why": "今天對四條來源的正文逐一搜尋 Taiwan／Asia／Japan／Korea／country／countries 全部 0 筆（navier 頁唯一的 region 是 This central region shrinks 的流體描述），所以這個否定句對四份都成立，寫三份是少算了自己列出的來源。"
+      },
+      {
+        "claim": "FAQ 第五題：「這三個官方頁面」",
+        "before": "OpenAI 的公告、顧問小組的網站與數學家公開信這三個官方頁面都沒有提到台灣、亞洲或任何特定地區",
+        "after": "OpenAI 的兩份公告、顧問小組的網站與數學家公開信這四個官方頁面都沒有提到台灣、亞洲或任何特定地區",
+        "source_url": "https://openai.com/index/navier-stokes-solution/",
+        "why": "同上。"
+      },
+      {
+        "claim": "callout 列舉來源時漏掉第四條",
+        "before": "內容整理自 OpenAI 公告全文、顧問小組網站 agmai.org與數學家公開信全文；",
+        "after": "內容整理自 OpenAI 的兩份公告、顧問小組網站 agmai.org 與數學家公開信全文；",
+        "source_url": "https://openai.com/index/navier-stokes-solution/",
+        "why": "同第二段那一條；同時補上漏掉的空格。"
+      },
+      {
+        "claim": "callout 用「以下內容」指涉整篇文章，但 callout 排在正文與 FAQ 之後",
+        "before": "小組成員名單與網站上的建議都可能隨時間變動，以下內容為2026 年 9 月 23 日查核當天的狀態",
+        "after": "小組成員名單與網站上的建議都可能隨時間變動，這一篇寫的是 2026 年 9 月 23 日查核當天的狀態",
+        "source_url": "https://agmai.org/",
+        "why": "版面上 callout 之後只剩兩個結尾連結，「以下內容」指不到任何東西；改成 DELTA-4-7 第 14 條要的「這一篇」。同時補上漏掉的空格。"
+      }
+    ],
+    "typography_fixes": [
+      "中英文之間漏空格共 8 處，其中 3 處（「凸顯AI」「agmai.org與」「以下內容為2026」）併在上面的事實修正裡，另外 5 處單獨修正：「不是OpenAI 設立的」「決定權都在 OpenAI自己身上」「不限OpenAI；」「不是ChatGPT」「Anthropic 執行長Amodei」。這五處不是事實變更，全篇其他地方都有空格，屬撰稿時掉字。"
+    ],
+    "checked_and_correct": [
+      "兩個結尾連結的 text 與目標內容包的 zh-TW title 字元級完全相同：索引 ai-news-2026-january-september-index，第二條 ai-news-pace-the-frontier-20260912（display_order 147、news_date 2026-09-12）。",
+      "九位初始成員名單與兩個來源逐行一致，OpenAI 頁面上的錯字 Simons Institue 沒有被抄進文章（文章只列名字不列單位）。",
+      "第十二段「Martin Hairer 同時是公開信連署人（標註 2014 年費爾茲獎得主）」逐字屬實；另以程式核對，九位成員中只有 Hairer 出現在宣言頁那份 27 位費爾茲獎得主名單上，Gowers、Witten、De Lellis、Wood 都不在，所以這句沒有把個案寫成通例。文章沒有印出連署總人數，也沒有印出 27 這個編輯清點數字，符合 must_not_write。",
+      "「截至 9 月 23 日查核當天尚未刊出任何一份建議」今天重新確認：agmai.org 全站只有 Purpose／Independence, Transparency, and Accountability／Advisory Group Members／Current Task 四節，站內連結只有 /input（意見表單，未點開、未送出）與 ias.edu 的專案頁，沒有任何建議頁。",
+      "「內部模型比 GPT-6 Astra 強得多」的連字號已正規化為一般 U+002D；全篇沒有 U+2011、NBSP 或零寬字元。",
+      "checked_on 2026-09-23 在四條 source、研究紀錄、第二段、表格 caption 四處一致，且等於我今天重抓的日期，因此不動。",
+      "事件日一致：slug 尾碼 20260921 = news_date 2026-09-21 = 第一段「2026 年 9 月 21 日」= OpenAI 公告頁印的 September 21, 2026。",
+      "topics [ai, ai-news] 通過 check_article.py，且與站上 13 篇治理／公司類 ai-news（frontier-governance、misalignment-reports、pace-the-frontier、eu-transparency 等）同一組，不必改。",
+      "讀者優先：全篇 0 個「本文」，指涉自己一律用「這一篇」；「官方」共 9 次、分散在 4 段與 FAQ，沒有每句掛一次；description 以「（2026 年 9 月查證）」收尾、155 字。",
+      "界線：只有一個 callout、沒有投資免責段落、沒有購買建議或比價，OpenAI 的能力宣稱在正文與 callout 都有歸因，「超過 100 題」沒有被寫成已經過同儕審查或已被數學界接受。",
+      "圖解 caption 與研究紀錄 diagram.caption 逐字相同；hero.alt 依規格未查也未動。"
+    ],
+    "open_questions": [
+      "標題我改了（「OpenAI 的數學顧問小組」→「與 OpenAI 合作的數學顧問小組」）。這是研究紀錄自己選的 title，也在 title_candidates 第一位，所以請協調者確認：若要保留原標題，研究紀錄的 title 也要一起改回去（check_article.py 會比對兩者）。備選是紀錄裡的第四個候選「數學家自己成立顧問小組：不支薪、可公開建議，但沒有決定權」。",
+      "「普林斯頓高等研究院」改成「高等研究院（Institute for Advanced Study）」。理由是四份來源都沒有出現 Princeton。若站主認為這是中文慣用名、可讀性優先，可以改回去——但這樣就不是來源撐得住的寫法了。",
+      "第十二段結尾「顯示這場討論不是「支持顧問小組」與「連署公開信」兩個互斥的陣營」是編輯推論，不是任何來源寫的；支撐它的只有 Hairer 一個重疊個案。我沒有刪，但第二輪若要收緊，這是最該看的一句。",
+      "宣言頁那 27 個名字上方沒有任何標題（只在其後有「Add your name／Endorse the Declaration」與另一個 Endorsers 分頁），文章稱他們為「連署人」是合理解讀但不是來源印出的字。若要更保守可寫「署名者」。",
+      "description 與第一段仍把「解出 Navier–Stokes」與「超過 100 題」寫在 OpenAI 公告的框架裡而沒有逐句掛「OpenAI 表示」（summary 我已補）。研究紀錄的 summary 也是這樣寫的，所以我依紀錄保留；若站主要求更嚴，description 還有 45 字的空間可以加。"
+    ],
+    "coordinator_rulings": [],
+    "verdict": "needs_second_round",
+    "verdict_note": "改了 13 處事實／表述（含一處 NOT FOUND 改寫）與 8 處漏空格，其中標題與「普林斯頓」動到了骨幹表述；依 DELTA-4-7 第 12 條，第二輪本來就必做。"
   }
 }
