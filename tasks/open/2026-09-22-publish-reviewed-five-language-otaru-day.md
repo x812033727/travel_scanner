@@ -1,7 +1,7 @@
 ---
 id: 2026-09-22-publish-reviewed-five-language-otaru-day
 title: Publish reviewed five-language Otaru day trip
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch012-draft
@@ -38,7 +38,7 @@ ropeway last-car times; those source revisions must be guarded against the live 
 - [x] Copy only the receipt-bound Otaru pack and five SVGs from the isolated draft.
 - [x] Verify the zh-TW delta is limited to three reviewed content pointers.
 - [x] Run scoped lint, guide content/link tests, and task check.
-- [ ] Open draft PR and obtain independent committed LF blob/render review.
+- [x] Open draft PR; independent committed LF blob/render review remains pending.
 
 ## How to verify
 
@@ -68,6 +68,10 @@ and render them separately.
   the exact LF-normalized Git blobs. Editorial approval of the Windows candidate
   does not establish committed-blob identity. No automatic merge, deployment,
   import or publication.
+- Draft PR: `https://github.com/x812033727/travel_scanner/pull/646`;
+  initial content commit `90ceb6fccf34dce0478e2187cdcb300e6791cae8` from
+  main `d52af4d95a40f5e353c567d366ee1b2b69dc5696`. Keep the PR draft and
+  do not enable auto-merge pending exact committed LF blob/render review.
 - Scoped lint exited 0 (inherited no-summary and English length warnings);
   content/link tests: 12 passed, 5 skipped; `check:tasks` exited 0 with
   unrelated pre-existing stale-claim warnings. Git staging transformed only
