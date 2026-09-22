@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Apple SD Gothic Neo',system-ui,sans-serif">
+  <title id="title">Seoul transit card decision tree: T-money or Climate Card / Which Seoul transit card to buy</title>
+  <desc id="desc">At Incheon Airport you cannot enter with Climate Card. For AREX all-stop, buy T-money; an empty card costs 2,500–5,000 won. First: Several separately paid subway/bus rides? A discounted transfer with no additional basic fare does not count. Otherwise use T-money: subway from 1,550 won, bus from 1,500 won, with a transfer discount within 30 minutes of getting off. Second: Are all rides covered? Use T-money for excluded trips such as Incheon Airport to the city, Sinbundang Line, Suwon, or Nami Island. But you can exit at Incheon Airport T1/T2 after taking an AREX all-stop train from an eligible Seoul station; you cannot enter at the airport in the reverse direction. Third: How many consecutive days? If each ride incurs a separate basic fare of 1,550 won and no transfer discounts apply during the pass period, holders of a physical Climate Card need at least 4/6/7/10/13 rides to break even on the 1/2/3/5/7-day passes, respectively. A new physical card adds 3,000 won and raises those thresholds, in the same order, to 6/8/9/12/15 rides. These are face-value thresholds excluding any overseas-card service fee; recompute the break-even ride count from the amount actually charged. Short-term passes start on the top-up day. Designated new machines on subway Lines 1–8 accept overseas credit/debit cards for short-term passes; some channels still require cash. For just one or two rides, a single-use transit card is another option: a basic fare of 1,650 won plus a 500-won deposit.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B" /></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Seoul transit cards: three questions to choose T-money or Climate Card (fares verified in 2026/9)</text>
+
+
+  <rect x="300" y="72" width="1000" height="60" rx="30" fill="#2E7D5B" />
+  <text x="800" y="110" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">Taking an all-stop train from the airport? Buy T-money first (empty card about 2,500 to 5,000 won)</text>
+  <path d="M 800 134 L 800 166" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+
+
+  <polygon points="800,170 1100,230 800,290 500,230" fill="#FFFFFF" stroke="#102A2B" stroke-width="4" />
+  <text x="800" y="224" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Question 1: While in Seoul,</text>
+  <text x="800" y="250" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Several paid subway/bus rides?</text>
+
+  <path d="M 500 230 L 330 230 L 330 296" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <text x="470" y="222" font-size="18" fill="#5C6B6B" text-anchor="end">No</text>
+  <rect x="120" y="300" width="420" height="96" rx="14" fill="#E9F5EE" stroke="#2E7D5B" stroke-width="4" />
+  <text x="330" y="332" font-size="19" font-weight="700" fill="#1F5C42" text-anchor="middle">Pay per ride with T-money</text>
+  <text x="330" y="358" font-size="15" fill="#1F5C42" text-anchor="middle">Subway from 1,550 · bus from 1,500 won (within 10 km)</text>
+  <text x="330" y="382" font-size="15" fill="#1F5C42" text-anchor="middle">Transfer discount within 30 min (60 min from 21:00 to 07:00)</text>
+
+  <path d="M 800 292 L 800 336" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <text x="814" y="320" font-size="18" fill="#5C6B6B">Yes</text>
+
+
+  <polygon points="800,340 1130,400 800,460 470,400" fill="#FFFFFF" stroke="#102A2B" stroke-width="4" />
+  <text x="800" y="394" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Question 2 · All trips covered?</text>
+  <text x="800" y="420" font-size="15" fill="#5C6B6B" text-anchor="middle">(Airport→city: no; Seoul→airport all-stop: exit yes)</text>
+
+  <path d="M 1130 400 L 1176 400" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)" />
+  <text x="1153" y="390" font-size="16" fill="#5C6B6B" text-anchor="middle">No</text>
+  <rect x="1180" y="350" width="390" height="100" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4" />
+  <text x="1375" y="382" font-size="18" font-weight="700" fill="#8A2E1D" text-anchor="middle">Use T-money on excluded routes</text>
+  <text x="1375" y="408" font-size="15" fill="#8A2E1D" text-anchor="middle">Airport→Seoul, express &amp; bus: excluded</text>
+  <text x="1375" y="432" font-size="15" fill="#8A2E1D" text-anchor="middle">Seoul all-stop→airport: exit allowed</text>
+
+  <path d="M 800 462 L 800 506" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <text x="814" y="490" font-size="18" fill="#5C6B6B">Yes</text>
+
+
+  <rect x="570" y="510" width="460" height="100" rx="22" fill="#FFFFFF" stroke="#102A2B" stroke-width="4" />
+  <text x="800" y="554" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Question 3 · Days in a row?</text>
+  <text x="800" y="580" font-size="15" fill="#5C6B6B" text-anchor="middle">Climate Card: count each paid ride across the full pass</text>
+  <path d="M 800 612 L 800 650" stroke="#5C6B6B" stroke-width="4" fill="none" />
+  <path d="M 240 650 L 1360 650" stroke="#5C6B6B" stroke-width="4" fill="none" />
+  <g stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)">
+    <path d="M 240 650 L 240 676" />
+    <path d="M 520 650 L 520 676" />
+    <path d="M 800 650 L 800 676" />
+    <path d="M 1080 650 L 1080 676" />
+    <path d="M 1360 650 L 1360 676" />
+  </g>
+  <g font-size="15" fill="#5C6B6B">
+    <text x="250" y="672">1 day</text>
+    <text x="530" y="672">2 days</text>
+    <text x="810" y="672">3 days</text>
+    <text x="1090" y="672">5 days</text>
+    <text x="1370" y="672">7 days</text>
+  </g>
+  <g fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4">
+    <rect x="115" y="680" width="250" height="90" rx="14" />
+    <rect x="395" y="680" width="250" height="90" rx="14" />
+    <rect x="675" y="680" width="250" height="90" rx="14" />
+    <rect x="955" y="680" width="250" height="90" rx="14" />
+    <rect x="1235" y="680" width="250" height="90" rx="14" />
+  </g>
+  <g font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">
+    <text x="240" y="712">1-day pass 5,000 won</text>
+    <text x="520" y="712">2-day pass 8,000 won</text>
+    <text x="800" y="712">3-day pass 10,000 won</text>
+    <text x="1080" y="712">5-day pass 15,000 won</text>
+    <text x="1360" y="712">7-day pass 20,000 won</text>
+  </g>
+  <g font-size="15" fill="#1F4E73" text-anchor="middle">
+    <text x="240" y="738">Existing card: 4 rides total</text>
+    <text x="520" y="738">Existing card: 6 rides total</text>
+    <text x="800" y="738">Existing card: 7 rides total</text>
+    <text x="1080" y="738">Existing card: 10 rides total</text>
+    <text x="1360" y="738">Existing card: 13 rides total</text>
+    <text x="240" y="760">New card + 3,000: 6 rides</text>
+    <text x="520" y="760">New card + 3,000: 8 rides</text>
+    <text x="800" y="760">New card + 3,000: 9 rides</text>
+    <text x="1080" y="760">New card + 3,000: 12 rides</text>
+    <text x="1360" y="760">New card + 3,000: 15 rides</text>
+  </g>
+
+
+  <text x="60" y="812" font-size="15" fill="#5C6B6B">Break-even uses separate 1,550-won fares. Face-value thresholds exclude overseas-card fees; recompute from the amount charged.</text>
+  <text x="60" y="840" font-size="15" fill="#5C6B6B">Only one or two rides? A single-use card costs 1,650 won plus a refundable 500-won deposit; it cannot be used on buses. Up to 4 transfers; tap off buses or the transfer chain ends.</text>
+  <text x="1540" y="882" font-size="15" fill="#8A8F8F" text-anchor="end">© Mokaair illustration 2026</text>
+</svg>
