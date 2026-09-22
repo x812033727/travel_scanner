@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-jev-typesafe-system-one-decision-provider
 title: Jev (TypeSafe System One) decision provider: settings, client and catalog
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-21T15:37:12Z
 created_at: 2026-09-21T15:37:08Z
-completed_at:
+completed_at: 2026-09-22T05:35:24Z
 branch: claude/add-jev-key-msana6
 depends_on: []
 scope:
@@ -51,8 +51,10 @@ card is a separate task because its files are held by another claim (see Notes).
       generating code path can be pointed at it.
 - [x] Something actually calls Jev: the guide-candidate assessor is measured against
       it, per language, while the existing threshold still decides every accept.
-- [ ] The key can be entered from the admin panel -- **not this task**, see
-      `2026-09-21-jev-api-key-on-the-ai`.
+- [x] The key can be entered from the admin panel. This was filed as
+      `2026-09-21-jev-api-key-on-the-ai` while its files were held by another claim;
+      that claim was released in time, so both halves rode the same pull request
+      (#644) and both are true now.
 
 ## Steps
 

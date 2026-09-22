@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-jev-api-key-on-the-ai
 title: Jev API key on the AI vendors admin card
-status: open
+status: done
 priority: P2
 area: api
 owner:
 claimed_at:
 created_at: 2026-09-21T15:48:56Z
-completed_at:
+completed_at: 2026-09-22T05:35:29Z
 branch:
 depends_on:
   - 2026-09-21-jev-typesafe-system-one-decision-provider
