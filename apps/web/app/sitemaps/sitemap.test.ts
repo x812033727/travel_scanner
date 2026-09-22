@@ -304,8 +304,17 @@ describe("sitemap", () => {
 
   it("carries every public destination", () => {
     const paths = SITEMAP_ROUTES.map((route) => route.path);
-    expect(paths).toContain("/destinations/tokyo/services");
+    expect(paths).toContain("/destinations/tokyo");
     expect(paths.filter((path) => path.startsWith("/destinations/")).length).toBeGreaterThanOrEqual(33);
+  });
+
+  it("leaves out the services page of every one of them", () => {
+    // One template per city with the name in its title and the lodging drawn by Stay22 after
+    // hydration: Search Console read 23 of them as duplicates and overrode the canonical each
+    // declared. They carry `noindex` now, and a sitemap that still named them would be the
+    // site contradicting itself. The destination page above links to each one.
+    const paths = SITEMAP_ROUTES.map((route) => route.path);
+    expect(paths.filter((path) => path.endsWith("/services"))).toEqual([]);
   });
 });
 

@@ -49,6 +49,16 @@ export async function generateMetadata({
   return {
     title: `${name} · ${t("title")}`,
     description: t("intro"),
+    // Every city's services page is the same page. The heading, the disclosure and the
+    // description are one translated string apiece, and the lodging itself is drawn after
+    // hydration by Stay22, so the only word a crawler sees that names the city is the one
+    // in the title above: four of these fetched on 2026-09-22 differed by 31 bytes of HTML.
+    // Google read them the way they are written and picked its own canonical for 23 of them,
+    // discarding the self-reference below; saying `noindex` is agreeing with it out loud
+    // rather than asking again every crawl. `follow`, because the page's whole purpose is the
+    // outbound lodging links, and the destination guide that links here is indexable and
+    // carries the city-specific writing these pages do not.
+    robots: { index: false, follow: true },
     alternates: {
       canonical: `/${locale}${path}`,
       languages: Object.fromEntries(locales.map((l) => [l, `/${l}${path}`])),

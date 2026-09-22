@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-sitemap-lists-pet-friendly-places
 title: Sitemap lists the pet-friendly place pages, not just the directory
-status: review
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:27:46Z
 created_at: 2026-09-14T13:30:26Z
-completed_at:
+completed_at: 2026-09-22T10:45:06Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on:
   - 2026-09-10-seo-open-content-pages

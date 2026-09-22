@@ -113,15 +113,18 @@ test("runtime sitemap exposes only public routes and stable localized alternate 
   }));
   // The assertions below are about the whole index: the children joined read as one file.
   const xml = documents.join("\n");
-  // Seven unconditional base routes, 33 destination guides and 33 services pages, times five
-  // locales, with the fixture's public switches all enabled; plus the four article hubs, which
+  // Seven unconditional base routes and 33 destination guides, times five locales, with the
+  // fixture's public switches all enabled. Their 33 services pages used to be counted here and
+  // carry `noindex` since 2026-09-22, so the sitemap no longer names them -- the 165 that went
+  // missing from this number are exactly those. Plus the four article hubs, which
   // are listed per language rather than per route -- /guides wherever either travel kind
   // publishes (zh-TW, ja, en), /guides/intel in zh-TW and ja, /guides/howto in en and /life in
   // zh-TW, which is seven of their twenty possible URLs; plus the four synthetic article
   // translations the fixture API publishes (three travel, one lifestyle), each in the child of
   // its own section and language.
-  expect(xml.match(/<url>/g)).toHaveLength(5 * (7 + 33 + 33) + 7 + 4);
-  expect(documents[children.indexOf("/sitemaps/sitemap/static.xml")].match(/<url>/g)).toHaveLength(5 * (7 + 33 + 33) + 7);
+  expect(xml.match(/<url>/g)).toHaveLength(5 * (7 + 33) + 7 + 4);
+  expect(documents[children.indexOf("/sitemaps/sitemap/static.xml")].match(/<url>/g)).toHaveLength(5 * (7 + 33) + 7);
+  expect(xml).not.toContain("/services</loc>");
   expect(documents[children.indexOf("/sitemaps/sitemap/life-zh-TW.xml")]).toContain("/zh-TW/life/synthetic-ai-notes</loc>");
   expect(documents[children.indexOf("/sitemaps/sitemap/travel-ja.xml")]).toContain("/ja/guides/intel/synthetic-fare-notice</loc>");
   expect(documents[children.indexOf("/sitemaps/sitemap/travel-ja.xml")]).not.toContain("/zh-TW/guides/intel/synthetic-fare-notice</loc>");
