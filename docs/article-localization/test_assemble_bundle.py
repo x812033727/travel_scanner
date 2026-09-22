@@ -3,6 +3,7 @@
 import copy
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -407,3 +408,323 @@ def test_stale_baseline_without_split_targets_is_refused():
     }
     with pytest.raises(ValueError, match="rebuild"):
         module.baseline_targets(article)
+
+
+def preservation_case(tmp_path, monkeypatch):
+    root = tmp_path / "repo"
+    slug = "preserved-source"
+    pack_path = root / f"apps/api/app/guides/content/{slug}.json"
+    pack_path.parent.mkdir(parents=True)
+    live = module.GuideDocument.model_validate(document()).model_dump(mode="json")
+    repository = copy.deepcopy(live)
+    repository["description"] = "Reviewed repository-only answer-first description"
+    locales = {"zh-TW": repository}
+    for locale in module.LOCALES[1:]:
+        translated = copy.deepcopy(live)
+        translated["title"] = f"Reviewed {locale} title"
+        translated["description"] = f"Reviewed {locale} description"
+        locales[locale] = translated
+    pack = module.ArticlePack.model_validate(
+        {
+            "slug": slug,
+            "kind": "life",
+            "destination_id": None,
+            "topics": ["packing", "connectivity"],
+            "valid_until": None,
+            "featured": False,
+            "display_order": 100,
+            "locales": locales,
+        }
+    ).model_dump(mode="json")
+    pack_path.write_text(
+        json.dumps(pack, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
+    repo_commit = "1" * 40
+    targets = list(module.LOCALES[1:])
+    article = {
+        "slug": slug,
+        "kind": "life",
+        "status": "published",
+        "pack_path": pack_path.relative_to(root).as_posix(),
+        "pack_sha256": module.sha(pack_path),
+        "metadata": {key: pack[key] for key in (
+            "slug", "kind", "destination_id", "topics", "valid_until", "featured",
+            "display_order",
+        )},
+        "source_locale": "zh-TW",
+        "source_document": live,
+        "source_sha256": module.digest(live),
+        "locale_documents": {**locales, "zh-TW": live},
+        "existing_locales": list(module.LOCALES),
+        "missing_locales": [],
+        "translation_missing_locales": [],
+        "publication_missing_locales": targets,
+        "publication_locales": targets,
+        "target_locales": targets,
+        "batch_locales": targets,
+        "locale_provenance": {
+            locale: "database-published" if locale == "zh-TW" else "repository-only"
+            for locale in module.LOCALES
+        },
+        "published_locales": ["zh-TW"],
+        "database": {
+            "id": "article-id",
+            "version": 2,
+            "locales": {
+                "zh-TW": {
+                    "id": "locale-id",
+                    "version": 8,
+                    "published_version": 8,
+                    "published_sha256": module.digest(live),
+                    "draft_sha256": module.digest(live),
+                }
+            },
+        },
+        "assets": [],
+    }
+    baseline = {"schema_version": 1, "repo_commit": repo_commit, "articles": [article]}
+    baseline_path = tmp_path / "baseline.json"
+    baseline_path.write_text(json.dumps(baseline), encoding="utf-8")
+    work = tmp_path / "work"
+    for locale in targets:
+        directory = work / slug / locale
+        directory.mkdir(parents=True)
+        (directory / "document.json").write_text("{}", encoding="utf-8")
+
+    def reviewed(_directory, _article, locale):
+        return copy.deepcopy(_article["locale_documents"][locale]), []
+
+    monkeypatch.setattr(module, "ROOT", root)
+    monkeypatch.setattr(module, "reviewed_document", reviewed)
+    monkeypatch.setattr(module, "git_head", lambda: repo_commit)
+
+    def pinned_git_blob(revision, path):
+        assert revision == repo_commit
+        assert path == article["pack_path"]
+        return module.repository_preservation.git_blob_sha1(pack_path.read_bytes())
+
+    monkeypatch.setattr(
+        module,
+        "git_blob",
+        pinned_git_blob,
+    )
+    raw = pack_path.read_bytes()
+    review = {
+        "schema_version": 1,
+        "status": "PASS",
+        "reviewer": "independent-reviewer",
+        "reviewed_at": "2026-09-22T04:45:00+00:00",
+        "reason": "Preserve the independently reviewed repository description",
+        "evidence_sha256": "e" * 64,
+        "slug": slug,
+        "article_id": "article-id",
+        "article_version": 2,
+        "locale": "zh-TW",
+        "locale_id": "locale-id",
+        "locale_version": 8,
+        "published_version": 8,
+        "live_published_sha256": module.digest(live),
+        "live_draft_sha256": module.digest(live),
+        "baseline_source_sha256": module.digest(live),
+        "baseline_locale_sha256": module.digest(live),
+        "repo_commit": repo_commit,
+        "repo_pack_path": article["pack_path"],
+        "repo_pack_git_blob_sha1": module.repository_preservation.git_blob_sha1(raw),
+        "repo_pack_sha256": module.sha(pack_path),
+        "repo_document_sha256": module.digest(repository),
+        "changes": [
+            {
+                "pointer": "/description",
+                "before": live["description"],
+                "after": repository["description"],
+            }
+        ],
+    }
+    review_path = tmp_path / "preservation-review.json"
+    review_path.write_text(json.dumps(review), encoding="utf-8")
+    return {
+        "root": root,
+        "slug": slug,
+        "pack_path": pack_path,
+        "pack": pack,
+        "article": article,
+        "baseline": baseline,
+        "baseline_path": baseline_path,
+        "work": work,
+        "review": review,
+        "review_path": review_path,
+        "live": live,
+        "repository": repository,
+        "targets": targets,
+    }
+
+
+def write_preservation_case(case):
+    case["pack_path"].write_text(
+        json.dumps(case["pack"], ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+        newline="\n",
+    )
+    raw = case["pack_path"].read_bytes()
+    case["article"]["pack_sha256"] = module.sha(case["pack_path"])
+    case["review"]["repo_pack_sha256"] = module.sha(case["pack_path"])
+    case["review"]["repo_pack_git_blob_sha1"] = (
+        module.repository_preservation.git_blob_sha1(raw)
+    )
+    case["baseline_path"].write_text(json.dumps(case["baseline"]), encoding="utf-8")
+    case["review_path"].write_text(json.dumps(case["review"]), encoding="utf-8")
+
+
+def test_reviewed_unselected_repository_description_is_preserved_from_final_git_pack(
+    tmp_path, monkeypatch
+):
+    case = preservation_case(tmp_path, monkeypatch)
+    output = tmp_path / "bundle"
+    manifest = module.assemble(
+        case["baseline_path"],
+        case["work"],
+        [case["slug"]],
+        output,
+        repository_preservation_reviews=[case["review_path"]],
+    )
+    entry = manifest["articles"][0]
+    assert entry["locales"] == case["targets"]
+    assert entry["publish_locales"] == case["targets"]
+    assert entry["repository_preservations"][0]["locale"] == "zh-TW"
+    assert (output / entry["pack_path"]).read_bytes() == case["pack_path"].read_bytes()
+    assembled = json.loads((output / entry["pack_path"]).read_text(encoding="utf-8"))
+    assert assembled["locales"]["zh-TW"] == case["repository"]
+    assert case["article"]["source_document"] == case["live"]
+    assert "zh-TW" not in entry["locales"] and "zh-TW" not in entry["publish_locales"]
+
+
+def test_repository_preservation_rejects_unchanged_pack_after_real_git_head_drift(
+    tmp_path, monkeypatch
+):
+    real_git_blob = module.git_blob
+    real_git_head = module.git_head
+    case = preservation_case(tmp_path, monkeypatch)
+
+    def git(*args):
+        return subprocess.run(
+            ["git", *args],
+            cwd=case["root"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    git("init")
+    git("config", "user.name", "Preservation Test")
+    git("config", "user.email", "preservation-test@example.invalid")
+    git("add", case["article"]["pack_path"])
+    git("commit", "-m", "final translation pack")
+    final_head = git("rev-parse", "HEAD")
+    case["baseline"]["repo_commit"] = final_head
+    case["review"]["repo_commit"] = final_head
+    write_preservation_case(case)
+    monkeypatch.setattr(module, "git_blob", real_git_blob)
+    monkeypatch.setattr(module, "git_head", real_git_head)
+
+    accepted = module.assemble(
+        case["baseline_path"],
+        case["work"],
+        [case["slug"]],
+        tmp_path / "bundle-at-final-head",
+        repository_preservation_reviews=[case["review_path"]],
+    )
+    assert accepted["articles"][0]["repository_preservations"][0]["repo_commit"] == final_head
+
+    git("commit", "--allow-empty", "-m", "later unrelated commit")
+    assert git("rev-parse", "HEAD") != final_head
+    with pytest.raises(ValueError, match="pinned final Git HEAD"):
+        module.assemble(
+            case["baseline_path"],
+            case["work"],
+            [case["slug"]],
+            tmp_path / "rejected-after-head-drift",
+            repository_preservation_reviews=[case["review_path"]],
+        )
+    assert not (tmp_path / "rejected-after-head-drift").exists()
+
+
+@pytest.mark.parametrize(
+    "tamper",
+    [
+        "status",
+        "reviewed_at",
+        "blob",
+        "git_commit_tree",
+        "pointer",
+        "baseline_source",
+        "extra_source",
+        "target",
+        "target_translation",
+        "metadata",
+    ],
+)
+def test_repository_preservation_rejects_tamper_or_other_scope(tmp_path, monkeypatch, tamper):
+    case = preservation_case(tmp_path, monkeypatch)
+    if tamper == "status":
+        case["review"]["status"] = "DESIGN_ALIGNED_NOT_IMPLEMENTATION_APPROVAL"
+    elif tamper == "reviewed_at":
+        case["review"]["reviewed_at"] = "not-a-time"
+    elif tamper == "blob":
+        case["review"]["repo_pack_git_blob_sha1"] = "f" * 40
+    elif tamper == "git_commit_tree":
+        monkeypatch.setattr(module, "git_blob", lambda _revision, _path: "f" * 40)
+    elif tamper == "pointer":
+        case["review"]["changes"][0]["pointer"] = "/title"
+    elif tamper == "baseline_source":
+        changed = copy.deepcopy(case["article"]["source_document"])
+        changed["title"] = "Tampered baseline source title"
+        case["article"]["source_document"] = changed
+        case["article"]["source_sha256"] = module.digest(changed)
+        case["review"]["baseline_source_sha256"] = module.digest(changed)
+    elif tamper == "extra_source":
+        case["pack"]["locales"]["zh-TW"]["title"] = "Unreviewed repository title"
+        case["review"]["repo_document_sha256"] = module.digest(
+            case["pack"]["locales"]["zh-TW"]
+        )
+        write_preservation_case(case)
+    elif tamper == "target":
+        case["article"]["published_locales"] = []
+        case["article"]["publication_missing_locales"] = list(module.LOCALES)
+        case["article"]["publication_locales"] = list(module.LOCALES)
+        case["article"]["target_locales"] = list(module.LOCALES)
+        case["article"]["batch_locales"] = list(module.LOCALES)
+    elif tamper == "target_translation":
+        case["pack"]["locales"]["en"]["title"] = "Unreviewed final-Git target title"
+        write_preservation_case(case)
+    elif tamper == "metadata":
+        case["pack"]["display_order"] = 101
+        write_preservation_case(case)
+    case["baseline_path"].write_text(json.dumps(case["baseline"]), encoding="utf-8")
+    case["review_path"].write_text(json.dumps(case["review"]), encoding="utf-8")
+    with pytest.raises(ValueError):
+        module.assemble(
+            case["baseline_path"],
+            case["work"],
+            [case["slug"]],
+            tmp_path / "rejected-bundle",
+            repository_preservation_reviews=[case["review_path"]],
+        )
+    assert not (tmp_path / "rejected-bundle").exists()
+
+
+def test_repository_preservation_cannot_overlap_source_correction(tmp_path, monkeypatch):
+    case = preservation_case(tmp_path, monkeypatch)
+    correction = tmp_path / "source-correction.json"
+    correction.write_text(
+        json.dumps({"slug": case["slug"], "locale": "zh-TW"}), encoding="utf-8"
+    )
+    with pytest.raises(ValueError, match="overlaps selected/source-correction"):
+        module.assemble(
+            case["baseline_path"],
+            case["work"],
+            [case["slug"]],
+            tmp_path / "rejected-overlap",
+            source_correction_reviews=[correction],
+            repository_preservation_reviews=[case["review_path"]],
+        )
+    assert not (tmp_path / "rejected-overlap").exists()

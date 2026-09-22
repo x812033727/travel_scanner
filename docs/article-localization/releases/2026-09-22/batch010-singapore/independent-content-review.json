@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_full_content_and_source_correction",
+  "decision": "approved",
+  "reviewer": "codex-batch008-independent-editorial-review",
+  "reviewed_at_utc": "2026-09-22T00:12:24.031730+00:00",
+  "candidate_commit": "a320aab66d174a1e699e32c4ae894fc92fb007a8",
+  "previous_candidate_commit": "b97e3e78bc16697d6bbbc027d62794e7cd614740",
+  "manifest_sha256": "f6b991a2e6b2227ea4e692599de663ff3354695b3afc61aca994ce6140824a9a",
+  "source_request_sha256": "4220b8e700358a4710c76bb0fc4ffd3d62b682adac94458cf78cce2b649c1268",
+  "content_delta_sha256": "7f0296922ba06d15a646636162a33b32d5d39b989065b341cad6a9fb469126bc",
+  "structural_qa_sha256": "c509b50b3d3f5da96405bd97e854ac0900719f34dab149d0883c0d83715a9181",
+  "v4_rejection_sha256": "df1afe795726e7439d1af7805b5267d2004630363215ebee72dd37823e225dc2",
+  "fresh_live_db_receipt_sha256": "283ba05b4a8345cda4c4a389253be29e7c40985984f28823a5443ff34018c46f",
+  "fresh_live_svg_receipt_sha256": "d83adde3bd3b80a2337cf22fe2895743a9cffa107a66cab3dac3fb1368fcc606",
+  "live_source_baseline": [
+    {
+      "slug": "singapore-4-day-itinerary",
+      "article_id": "eab7514e-7b3d-4ddc-b3b3-e1ef80ad732c",
+      "article_version": 2,
+      "status": "published",
+      "is_active": true,
+      "locale": "zh-TW",
+      "locale_version": 8,
+      "published_version": 8,
+      "published_sha256": "2ef11f1818758f946708a5d9fb18ee9dd0d74be8569aadac08ad8aa38fdd0af3",
+      "draft_sha256": "2ef11f1818758f946708a5d9fb18ee9dd0d74be8569aadac08ad8aa38fdd0af3"
+    },
+    {
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "article_id": "af071b22-4e4b-4c86-86d3-38138bc1a858",
+      "article_version": 2,
+      "status": "published",
+      "is_active": true,
+      "locale": "zh-TW",
+      "locale_version": 6,
+      "published_version": 6,
+      "published_sha256": "4b147220af61ad0b8b0d17d46883b50a1f2bdb58c28338e2b6372589c2a93805",
+      "draft_sha256": "4b147220af61ad0b8b0d17d46883b50a1f2bdb58c28338e2b6372589c2a93805"
+    }
+  ],
+  "candidate_pack_sha256": {
+    "singapore-4-day-itinerary": "4d0757e2d766e69316dc0da2fb42c5ed4899572d226c4842a5a6d141f0e5f444",
+    "singapore-changi-airport-mrt-simplygo-guide": "bce89956341dc4596a929a8970fb2a92b39600c05bc264ebc03cf6c676c76f58"
+  },
+  "candidate_locale_document_sha256": {
+    "singapore-4-day-itinerary": {
+      "zh-TW": "8ab73603bf6a0d5426cd1caced64468f0e886e08fd31597a362d3ac0b7ce5744",
+      "zh-CN": "6b198aa6347f3562266123f1f799736746e89f20166e112f4ed1f659523c3a3f",
+      "en": "530fc89984d8e4a675fc964b167efb6fa23349db29e02717d27e06abb84edc77",
+      "ja": "483c7ff59a2bea4020e2b42703d45bb7282b107bd8daf154b16c6445f1b02dd6",
+      "ko": "0f6191416a449961b2c98d7f655886745b2f4556f59c3bae12cfdfaadf7267d9"
+    },
+    "singapore-changi-airport-mrt-simplygo-guide": {
+      "zh-TW": "3e829acc5730c2299d8704d48ec3288131996226ca2a70c535d7c0683a595114",
+      "zh-CN": "bf2b9d207649e76bf7a8ca952783a8777e7a7aea07d3ae04ff0e9e5e5c3c4e10",
+      "en": "27a1c6bfc57fac025b1102d24c98af4ad639d3e89221ee2e37124a43fdca227c",
+      "ja": "848e03b2e9b9b384b04bdb249cfcb6842992e74a91b0a5ba9b9078679544d677",
+      "ko": "b2bbb60bd72404de7dcbfa3c6add97bf43c3b4f86476d1412587951bc17fc8cf"
+    }
+  },
+  "asset_hashes": {
+    "itinerary_source_svg_before_live_sha256": "a88952c2230ba11859f658321f1a161dce35417b159b534b7699ae93fa67966b",
+    "itinerary_source_svg_after_candidate_sha256": "a1dc4871e5a36ee171cc7bf93687d34633c44a0076bceee5015506e917002ab0",
+    "changed_locale_svg_sha256": {
+      "zh-TW": "a1dc4871e5a36ee171cc7bf93687d34633c44a0076bceee5015506e917002ab0",
+      "zh-CN": "f5c5b3c63f9616469c0bba57a0b7fc19809570578bcdc85ff625d1d53b20e084",
+      "en": "682fbce6ad8d512bbe1f1bfc342392bcbd001b66a98028cfc5746eaefe9bcbea",
+      "ja": "e6d6434e219361fafc21677258390457571b58c745928944b8a068483d0f3e2b",
+      "ko": "5c89b3767c897a0dba5094117af70520790588cea8752a0dfb485dd67c628ff4"
+    }
+  },
+  "reviewed_scope": {
+    "packs": 2,
+    "documents": 10,
+    "new_or_changed_svgs": 5,
+    "unchanged_changi_localized_svgs": 4,
+    "manifest_files": 12,
+    "v4_to_v5_changed_fields": 90,
+    "render_screenshots": 10,
+    "source_counts": {
+      "singapore-4-day-itinerary": 20,
+      "singapore-changi-airport-mrt-simplygo-guide": 14
+    },
+    "same_locale_internal_link_occurrences": 20
+  },
+  "resolved_v4_blockers": [
+    {
+      "id": "foreign_card_admin_fee",
+      "status": "resolved",
+      "pointers": [
+        "/blocks/16/rows/0/2",
+        "/blocks/31/text",
+        "/sources/4/title",
+        "/blocks/0/text (en, ja, ko)"
+      ],
+      "assessment": "Five languages restrict the SGD 0.60 fee to foreign-issued Mastercard/Visa, matching the card-specific SimplyGo FAQ; existing source context and other charges are preserved."
+    },
+    {
+      "id": "night_safari_timeslot",
+      "status": "resolved",
+      "pointers": [
+        "/blocks/28/title",
+        "/blocks/28/text",
+        "/blocks/31/rows/2/1",
+        "/sources/19"
+      ],
+      "assessment": "Five languages distinguish Destination Pass exemption since 2026-07-01 from required bookings for Friends of Mandai and Single Attraction ticket holders."
+    },
+    {
+      "id": "sultan_mosque_friday_svg",
+      "status": "resolved",
+      "pointers": [
+        "/blocks/11/description",
+        "/blocks/34/text",
+        "/blocks/35/caption",
+        "/svg/text[30]"
+      ],
+      "assessment": "Five languages and five diagrams limit Friday closure to walk-in/free-and-easy visiting; 1600x900 diagrams render without text bounds or overlap errors."
+    },
+    {
+      "id": "zh_cn_traditional_character",
+      "status": "resolved",
+      "pointers": [
+        "/blocks/18/text",
+        "/blocks/36/text"
+      ],
+      "assessment": "Both Simplified Chinese instances now use 接着."
+    }
+  ],
+  "source_list_disposition": {
+    "approved": true,
+    "itinerary_source_count": 20,
+    "replaced_entry": 19,
+    "new_url": "https://www.mandai.com/en/announcements.html",
+    "reason": "The itinerary only points readers to its separate Changi transport guide for card/fee specifics. Its same-language article link remains; the Changi guide retains the direct SimplyGo FAQ citation, while Mandai announcement directly supports the newly corrected Night Safari ticket exception."
+  },
+  "primary_sources": [
+    {
+      "url": "https://www.mandai.com/en/announcements.html",
+      "supports": "Destination Pass no Night Safari slot booking from 1 July 2026; Friends of Mandai and Single Attraction still book."
+    },
+    {
+      "url": "https://www.simplygo.com.sg/faqs/cards-and-charms/simplygo/contactless-bank-cards/",
+      "supports": "Foreign-issued Mastercard or Visa fee SGD 0.60 per day of use; accepted-card context and possible issuer fees."
+    },
+    {
+      "url": "https://www.sultanmosque.sg/visitors-info/",
+      "supports": "Friday unavailable for walk-in free-and-easy visits; Saturday-Thursday visitor times."
+    },
+    {
+      "url": "https://www.simplygo.com.sg/travel-fares/adult-fares/",
+      "supports": "39.3–40.2 km is 256/206 cents and only over 40.2 km is 257/207 cents."
+    }
+  ],
+  "blocking_findings": [],
+  "nonblocking_notes": [
+    "Approval is for the frozen candidate only. The published zh-TW source corrections require the versioned source-correction flow before locale import; repin 10 locale hashes against the result.",
+    "The five new non-zh-TW locales are still absent from the live database. Green CI, import preflight, release backup, publication, and browser verification remain separate gates."
+  ]
+}
