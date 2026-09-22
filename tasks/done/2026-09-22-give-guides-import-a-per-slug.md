@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-give-guides-import-a-per-slug
 title: Give guides-import a per-slug publish hold
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5
 claimed_at: 2026-09-22T04:05:00Z
 created_at: 2026-09-22T04:00:00Z
-completed_at:
+completed_at: 2026-09-22T06:41:48Z
 branch: claude/guides-import-publish-hold
 depends_on: []
 scope:
@@ -64,7 +64,7 @@ releases.
 - [x] A publishing run reports what it withheld and why.
 - [x] A hold on a slug with no pack fails a test rather than silently protecting nothing.
 - [x] A malformed or missing hold list is refused or treated as empty, not ignored.
-- [ ] Reviewed and merged.
+- [x] Reviewed and merged as `e0016797` on 2026-09-22.
 
 ## Steps
 
