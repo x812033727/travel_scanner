@@ -34,15 +34,29 @@ if [ "$current" != "$branch" ]; then
 fi
 
 for round in $(seq 1 "$rounds"); do
-  git fetch -q origin main
-  if ! git rebase origin/main; then
+  git fetch -q origin main "$branch"
+  # Somebody (or GitHub's own "update branch", which merges main into open PR branches) may
+  # have pushed to the branch since this worktree last saw it. A lease push would be refused
+  # with "stale info", and force-pushing over it would drop their commits, so stop instead.
+  behind_remote=$(git rev-list --count "HEAD..origin/$branch")
+  if [ "$behind_remote" != "0" ]; then
+    echo "round $round: origin/$branch has $behind_remote commit(s) this worktree lacks; integrate first" >&2
+    echo "  no local commits of your own: git reset --hard origin/$branch" >&2
+    echo "  local commits to keep:       git reset --hard origin/$branch && git cherry-pick <them>" >&2
+    exit 3
+  fi
+  if git merge-base --is-ancestor origin/main HEAD; then
+    echo "round $round: branch already contains origin/main, no rebase needed"
+  elif ! git rebase origin/main; then
     git rebase --abort
     echo "round $round: rebase conflict; resolve it by hand, then rerun" >&2
     exit 3
   fi
-  git push --force-with-lease origin "$branch"
+  if [ "$(git rev-parse HEAD)" != "$(git rev-parse "origin/$branch")" ]; then
+    git push --force-with-lease origin "$branch"
+  fi
   head=$(git rev-parse HEAD)
-  echo "round $round: head $head pushed, waiting up to ${wait_secs}s for the required checks"
+  echo "round $round: head $head, waiting up to ${wait_secs}s for the required checks"
 
   deadline=$(( $(date +%s) + wait_secs ))
   while :; do
@@ -70,7 +84,14 @@ for round in $(seq 1 "$rounds"); do
     exit 4
   fi
 
-  state=$(gh pr view "$pr" --json mergeStateStatus -q .mergeStateStatus)
+  # GitHub reports UNKNOWN for a while after the checks finish; give it a few polls before
+  # reading it as anything.
+  state=UNKNOWN
+  for _ in 1 2 3 4 5 6; do
+    state=$(gh pr view "$pr" --json mergeStateStatus -q .mergeStateStatus)
+    [ "$state" != "UNKNOWN" ] && break
+    sleep 20
+  done
   case "$state" in
     CLEAN|HAS_HOOKS|UNSTABLE)
       gh pr merge "$pr" --squash --match-head-commit "$head"

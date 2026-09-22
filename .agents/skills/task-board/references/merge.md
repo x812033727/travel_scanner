@@ -31,7 +31,7 @@ gh pr view <n> --json state -q .state                         # MERGED
 ## rebase 與同步的坑
 
 - **`git rebase --continue` 說「You must edit all merge conflicts」但 `git ls-files -u` 是空的**：那是未暫存的改動在擋，常見是 `next dev` 重寫的 `apps/web/next-env.d.ts`，或 rebase 停住時改了 `tasks/` 的筆記。把 diff 存成 patch、`git checkout -- <files>`、繼續 rebase、再 `git apply`。**不要 `git rebase --skip`**，會重設工作樹。
-- **有東西把 base 合進了你的 PR 分支**（`Merge branch 'main' into …` 不是你做的）：push 會被拒。分支上只有自己的 commit 時 `git pull --rebase`；已經被自動 merge 過的用 `git reset --hard origin/<branch>` 再 `cherry-pick` 自己的新 commit。**不要 force-push** 蓋掉別人剛推的東西。
+- **有東西把 base 合進了你的 PR 分支**（`Merge branch 'main' into …` 不是你做的；2026-09-22 在 #665 上又發生一次，`--force-with-lease` 回 `stale info`）：push 會被拒。分支上只有自己的 commit 時 `git pull --rebase`；已經被自動 merge 過的用 `git reset --hard origin/<branch>` 再 `cherry-pick` 自己的新 commit。**不要 force-push** 蓋掉別人剛推的東西。
 - **疊在別的 PR 上的分支，在 base 被 squash 進 main 之後會變 `DIRTY`**：main 只有一個壓扁的 commit，你的分支帶著原本那幾個。`git merge origin/main` 逐一解衝突，main 那側通常只是「少了本分支新增的東西」，解完 `git diff <merge 前的分支 tip>` 應該是空的。
 - 開始 chain 之前 PR 分支不能在主 checkout 被 checkout；每個 PR 一個 worktree 就沒這個問題。
 - `git stash` 是所有 worktree 共用的堆疊：要暫存就 `git stash push -u -m <tag>`、記下 SHA、`apply`、依 SHA 找回 `stash@{n}` 再 drop；不要裸的 `stash`／`pop`。
