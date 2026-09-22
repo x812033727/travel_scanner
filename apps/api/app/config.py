@@ -506,6 +506,12 @@ class Settings(BaseSettings):
     # paragraph in a README: while it is off, a confident answer about non-English
     # state is downgraded from "act" to "confirm" instead of acting on its own.
     jev_cjk_autopilot_enabled: bool = False
+    # The first Jev consumer, shipped measuring rather than deciding. "shadow" asks Jev
+    # the same question the guide assessor is already answering and records both, while
+    # the existing relevance threshold still decides every accept. An "enforce" value
+    # belongs here later; the enum exists now so adding it is not a type change. Same
+    # reasoning as public_read_rate_limit_mode: move on evidence, not on principle.
+    jev_shadow_guide_assessment: Literal["off", "shadow"] = "off"
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None

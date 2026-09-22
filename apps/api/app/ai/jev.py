@@ -29,6 +29,7 @@ from __future__ import annotations
 import asyncio
 import random
 import re
+from collections.abc import Mapping
 from datetime import UTC, datetime
 from typing import Any, Literal
 
@@ -165,7 +166,7 @@ class JevClient:
         if self._external_client is None:
             await self._client.aclose()
 
-    def _check_questions(self, questions: dict[str, JevQuestion]) -> None:
+    def _check_questions(self, questions: Mapping[str, JevQuestion]) -> None:
         if not questions:
             raise JevRequestInvalid("a System One call needs at least one question")
         for name, question in questions.items():
@@ -182,7 +183,7 @@ class JevClient:
                         f"{MAX_SCORE_LEVELS} ordered levels, got {len(question.criteria)}"
                     )
 
-    def _check_size(self, state: Any, questions: dict[str, JevQuestion]) -> None:
+    def _check_size(self, state: Any, questions: Mapping[str, JevQuestion]) -> None:
         state_tokens = estimate_tokens(state)
         per_question = {
             name: estimate_tokens(question.model_dump(exclude_none=True))
@@ -204,7 +205,7 @@ class JevClient:
     async def ask(
         self,
         state: str | dict[str, Any] | list[Any],
-        questions: dict[str, JevQuestion],
+        questions: Mapping[str, JevQuestion],
     ) -> tuple[dict[str, JevAnswer], dict[str, int]]:
         """Answer every question about one state in a single round trip.
 

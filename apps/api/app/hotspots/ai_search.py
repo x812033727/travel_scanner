@@ -14,6 +14,14 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.gemini import GeminiStructuredProvider
+from app.ai.jev import (
+    JevError,
+    JevRequestTooLarge,
+    NoulQuestion,
+    consume_jev_call,
+    jev_client,
+    route_answer,
+)
 from app.ai.structured_output import (
     anthropic_output_text,
     ensure_response_completed,
@@ -599,6 +607,125 @@ def provider_evidence(candidate: GuideCandidate) -> dict[str, Any]:
     return youtube_status_metadata(candidate.metadata.get("youtube_status"))
 
 
+# The assessor's own words, narrowed to the one judgement a System One model can make.
+# ASSESS_PROMPT asks for relevance, planning usefulness, source quality and language in
+# one breath; this asks only the first, as a statement that is either true or not.
+SHADOW_QUESTION = (
+    "Candidate {candidate_id} is a first-hand travel guide to this attraction, "
+    "not a ticket aggregator, scraped copy, or generic destination page."
+)
+
+
+def _shadow_rows(
+    chunk: dict[str, GuideCandidate],
+    answers: dict[str, Any],
+    scores: dict[str, CandidateAssessment],
+    locale: str,
+    settings: Settings,
+) -> list[dict[str, Any]]:
+    """One row per candidate: what Jev said, what shipped, and whether they agree."""
+    rows: list[dict[str, Any]] = []
+    for candidate_id in chunk:
+        answer = answers.get(candidate_id)
+        score = scores.get(candidate_id)
+        if answer is None or score is None:
+            continue
+        noul = float(getattr(answer, "noul", 0.0))
+        # The live decision is `relevance_score >= 60`; the comparison has to be against
+        # that same line, not against a prettier one invented here.
+        shipped_accepted = score.relevance_score >= 60
+        rows.append(
+            {
+                "candidate_id": candidate_id,
+                "locale": locale,
+                "detected_locale": score.detected_locale,
+                "jev_noul": round(noul, 4),
+                "jev_tier": route_answer(answer, settings, locale=score.detected_locale),
+                "relevance_score": score.relevance_score,
+                "quality_score": score.quality_score,
+                "shipped_accepted": shipped_accepted,
+                "jev_accepted": noul >= settings.jev_act_confidence,
+                "agreed": (noul >= settings.jev_act_confidence) == shipped_accepted,
+            }
+        )
+    return rows
+
+
+async def _jev_shadow_assessment(
+    settings: Settings,
+    redis: Redis,
+    *,
+    locale: str,
+    context: dict[str, Any],
+    by_id: dict[str, GuideCandidate],
+    scores: dict[str, CandidateAssessment],
+) -> dict[str, Any] | None:
+    """Ask Jev the same question, record both answers, and change nothing.
+
+    Every failure here is swallowed into the returned block. This is a measurement
+    bolted onto a run that has already decided what it is keeping; a decision model
+    that cannot be reached, is out of budget or answers nonsense must not cost an
+    administrator their search.
+    """
+    if settings.jev_shadow_guide_assessment != "shadow":
+        return None
+    if not settings.jev_configured:
+        return {"error": "jev_not_configured", "rows": []}
+    rows: list[dict[str, Any]] = []
+    usage = {"calls": 0, "input_tokens": 0}
+    errors: list[str] = []
+    client = jev_client(settings)
+    try:
+        # Start with the whole shortlist and halve on the client's own size refusal,
+        # so the batch splits on the limit the vendor actually enforces rather than on
+        # a guess. State shrinks with the questions: the cap counts both.
+        pending: list[list[str]] = [list(by_id)]
+        while pending:
+            ids = pending.pop(0)
+            if not ids:
+                continue
+            if not await consume_jev_call(redis, settings):
+                errors.append("jev_quota_exhausted")
+                break
+            chunk = {candidate_id: by_id[candidate_id] for candidate_id in ids}
+            state = {
+                **context,
+                "candidates": [
+                    _candidate_metadata(candidate, candidate_id)
+                    for candidate_id, candidate in chunk.items()
+                ],
+            }
+            questions = {
+                candidate_id: NoulQuestion(
+                    instructions=SHADOW_QUESTION.format(candidate_id=candidate_id)
+                )
+                for candidate_id in chunk
+            }
+            try:
+                answers, call_usage = await client.ask(state, questions)
+            except JevRequestTooLarge:
+                if len(ids) == 1:
+                    errors.append(f"too_large:{ids[0]}")
+                    continue
+                middle = len(ids) // 2
+                pending[:0] = [ids[:middle], ids[middle:]]
+                continue
+            except (JevError, httpx.HTTPError) as exc:
+                errors.append(summarize_provider_error(exc))
+                break
+            usage["calls"] += 1
+            usage["input_tokens"] += int(call_usage.get("input_tokens", 0))
+            rows.extend(_shadow_rows(chunk, answers, scores, locale, settings))
+    except Exception as exc:  # noqa: BLE001 -- recorded, never raised into the run
+        errors.append(summarize_provider_error(exc))
+    finally:
+        await client.close()
+    block: dict[str, Any] = {"model": settings.jev_model, "usage": usage, "rows": rows}
+    if errors:
+        block["errors"] = errors
+    return block
+
+
 def _add_usage(total: dict[str, int], incoming: dict[str, int]) -> None:
     total["ai_calls"] = total.get("ai_calls", 0) + 1
     total["input_tokens"] = total.get("input_tokens", 0) + incoming.get("input_tokens", 0)
@@ -819,6 +946,7 @@ async def execute_ai_search(
                 },
             )
             _add_usage(usage, assessment_usage)
+            scores_by_id = {item.candidate_id: item for item in assessment.items}
             accepted: list[GuideCandidate] = []
             accepted_per_type: dict[str, int] = {"article": 0, "video": 0}
             for score in sorted(
@@ -873,6 +1001,16 @@ async def execute_ai_search(
                 "accepted": len(accepted),
                 "created": created,
             }
+            shadow = await _jev_shadow_assessment(
+                settings,
+                redis,
+                locale=locale,
+                context={"attraction": context, "requested_locale": locale},
+                by_id=by_id,
+                scores=scores_by_id,
+            )
+            if shadow is not None:
+                result.setdefault("jev_shadow", {})[locale] = shadow
             run.result_json = result
             run.usage_json = usage
             run.progress = 10 + int((locale_index + 1) / len(scope) * 85)

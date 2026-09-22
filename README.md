@@ -539,6 +539,14 @@ publishes no figures for any other language, so `JEV_CJK_AUTOPILOT_ENABLED` ship
 false: until numbers from our own five-language content say otherwise, a confident
 answer about non-English content is flagged for review rather than acted on.
 
+The first place Jev is wired up is the hotspot guide search, and it is wired up
+watching. With `JEV_SHADOW_GUIDE_ASSESSMENT=shadow` each run asks Jev the same
+question its candidate assessor is already answering, records both answers on the run,
+and still accepts exactly what the existing relevance threshold accepts. Nothing about
+the search changes. `jev-shadow-report` reads the runs back and prints agreement
+overall and per language, plus the disagreements to look at by hand, which is what a
+threshold should be set from.
+
 `POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
 current trip version. The request accepts `scope=day` with `day_date`, or the
 backward-compatible default `scope=trip`. Day scope leaves every other date
