@@ -1,7 +1,7 @@
 ---
 id: 2026-09-21-jev-typesafe-system-one-decision-provider
 title: Jev (TypeSafe System One) decision provider: settings, client and catalog
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5

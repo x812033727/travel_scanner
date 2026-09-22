@@ -1,7 +1,7 @@
 ---
 id: 2026-09-21-jev-api-key-on-the-ai
 title: Jev API key on the AI vendors admin card
-status: blocked
+status: open
 priority: P2
 area: api
 owner:
@@ -65,23 +65,16 @@ Then `docker compose up`, open the admin panel, paste a real key on the ã€ŒAI ä¾
 
 ## Notes
 
-- **STATUS: the code is done and on `claude/add-jev-key-msana6`; this file's
-  frontmatter is stale and needs three commands run by hand.** The site owner
-  authorised the unblock, and the two blockers below were verified merged first --
+- **STATUS: the code is done, on `claude/add-jev-key-msana6`, and in PR #644.** It
+  cannot be claimed yet: this task depends on
+  `2026-09-21-jev-typesafe-system-one-decision-provider`, which is `review` until that
+  same PR merges. Both close together on merge; nothing is owed before then.
+- **The two blockers are closed.** They were verified merged before being archived --
   every checkbox in each was ticked by its owner, `ai_planner_user_budget` is on the
   card at `admin-settings-panel.tsx:169`, `apps/web/app/ads.txt/route.ts` exists and
-  the static `apps/web/public/ads.txt` is gone. The `npm run tasks` write commands
-  were then refused by the session's permission layer, so the board could not be
-  updated. Nobody hand-edited another owner's task file to get around that. What is
-  still owed:
-
-  ```bash
-  npm run tasks -- done 2026-09-14-planner-budget-admin-card
-  npm run tasks -- done 2026-09-13-adsense-ads-txt-drift
-  npm run tasks -- claim 2026-09-21-jev-api-key-on-the-ai --owner <you> \
-    --branch claude/add-jev-key-msana6
-  npm run tasks -- status 2026-09-21-jev-api-key-on-the-ai review
-  ```
+  the static `apps/web/public/ads.txt` is gone. While `npm run tasks` writes were
+  refused by the session's permission layer, nobody hand-edited another owner's task
+  file to work around it; the archiving waited until the command was available.
 
 - **The i18n decision changed once the blockers were cleared.** The earlier plan was
   to ship literal English labels to keep `apps/web/messages/` out of scope. With the
