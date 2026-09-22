@@ -9,8 +9,7 @@ claimed_at:
 created_at: 2026-09-22T02:05:00Z
 completed_at:
 branch:
-depends_on:
-  - 2026-09-21-validate-equivalent-singapore-guide-numbers-and
+depends_on: []
 scope:
   - apps/api/app/guides/content/singapore-4-day-itinerary.json
   - apps/api/app/guides/content/singapore-changi-airport-mrt-simplygo-guide.json
@@ -65,7 +64,11 @@ directory would ship both of these guides. This task is the hold.
       satisfied, or their unreviewed content is reverted from `main`.
 - [ ] The Changi fare boundary is approved and published as a new versioned
       zh-TW source through the editorial flow, and the live source is repinned.
-- [ ] `2026-09-21-validate-equivalent-singapore-guide-numbers-and` is done.
+- [ ] The batch010 validator task is done. It is
+      `2026-09-21-validate-equivalent-singapore-guide-numbers-and`, filed by PR
+      #639, which had not merged when this task was written -- so it is named
+      here rather than in `depends_on`, which only accepts tasks already on the
+      board. Link it once #639 lands.
 - [ ] An independent editorial review has accepted the v4 wording, eligibility,
       source facts and image legibility.
 
