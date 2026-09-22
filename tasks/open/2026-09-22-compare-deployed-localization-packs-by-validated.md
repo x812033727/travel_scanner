@@ -42,9 +42,10 @@ must remain byte-pinned, but deployment should accept equivalent pack content.
 
 ## How to verify
 
-From `apps/api`, run `uv run pytest ../../docs/article-localization/test_publish_bundle.py -q -o asyncio_mode=auto`
-and `uv run ruff check ../../docs/article-localization/publish_bundle.py ../../docs/article-localization/test_publish_bundle.py`.
-Run `npm run check:tasks` and `git diff --check` from repository root.
+From `apps/api`, run `uv run pytest ../../docs/article-localization/test_publish_bundle.py -q -o asyncio_mode=auto`.
+From repository root, run the CI lint command
+`uv run --project apps/api ruff check tools/article-localization docs/article-localization`,
+then `npm run check:tasks` and `git diff --check`.
 
 ## Notes
 
@@ -53,5 +54,8 @@ claim required `--force` against that now-merged, inactive scope. Its owner will
 close it separately; do not edit that task from this branch.
 
 Focused local checks: publisher tests 52 passed, 51 skipped (optional integration
-fixture), Ruff passed, `git diff --check` passed, and task check exited 0 with
-existing warnings including the merged #637 task overlap.
+fixture), `git diff --check` passed, and task check exited 0 with existing
+warnings including the merged #637 task overlap. Initial PR CI found the
+repository-root Ruff import order differs from the app-directory configuration;
+the exact CI lint command now passes, and deployed-pack regressions pass (8 passed,
+8 skipped optional integration).

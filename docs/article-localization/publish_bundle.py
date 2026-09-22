@@ -38,9 +38,6 @@ from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 from uuid import UUID, uuid4
 
-from sqlalchemy import func, select, text
-from sqlalchemy.ext.asyncio import AsyncSession
-
 from app.auth.service import cached_admin_capabilities, user_is_suspended
 from app.config import get_settings
 from app.db import engine
@@ -57,6 +54,8 @@ from app.guides.schemas import (
 from app.guides.service import _topics_for, document_hash
 from app.i18n import LOCALES
 from app.models import AdminAuditLog, User
+from sqlalchemy import func, select, text
+from sqlalchemy.ext.asyncio import AsyncSession
 
 CORRECTION_SPEC = importlib.util.spec_from_file_location(
     "article_localization_source_correction", Path(__file__).with_name("source_correction.py")

@@ -17,8 +17,6 @@ from types import SimpleNamespace
 from uuid import UUID, uuid4
 
 import pytest
-from sqlalchemy import func, select, update
-
 from app.auth import service as auth_service
 from app.guides import admin_service
 from app.guides.models import GuideArticle, GuideArticleLocale, GuideArticleRevision
@@ -31,6 +29,7 @@ from app.guides.schemas import (
     VisibilityWrite,
 )
 from app.models import User
+from sqlalchemy import func, select, update
 from tests import test_guides as guides
 
 spec = importlib.util.spec_from_file_location(
