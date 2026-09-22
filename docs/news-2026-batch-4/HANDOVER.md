@@ -186,6 +186,34 @@ AI 索引把「2026-09-15 與 2026-09-18 兩度增補」改成「之後多次增
 - **fca-p2p**：第 4 節第 3 段「規範範圍還在擴大中」是編輯過場句（來源只印 `until October 2027`）。
 - **ko 的「가상자산／암호자산」**：perimeter 譯者用了「암호자산」，審稿統一成站上的「가상자산」；**ja 的「莒」**（西莒／莒光）與「虛擬資產服務法」的繁體字會被 `translation_checks.py` 的 cp932 檢查標出，是假陽性。
 
+## 1e. 9 月 18 日的十一篇（批次 4.6）：只做 zh-TW，索引連結另一張票
+
+PR #572（squash 為 `7f2c5478`）。站主 2026-09-20 決定**只做 zh-TW**：內容包只有 `zh-TW`、研究紀錄沒有 `translations`、
+沒有翻譯也沒有逐語審稿，自檢一律 `check_article.py`（**不帶 `--full`**——它只多四個譯文檢查，對 zh-TW-only 必然 FAIL）。
+規則差異寫在 [`agents/DELTA-4-6.md`](agents/DELTA-4-6.md)；9/19–20 是週末，19 個候選的事件日全部是 9/18。
+十一篇都經**兩輪**獨立查核（兩輪合計改 327 處，另有協調者 35 條裁決），`pack_cli lint --kind life` 0 error。
+`display_order` 依 `check_article.py` 的 `RELATED`：AI 167–170、科技 317–320、幣圈 214–216。
+
+| 垂直 | slug |
+| --- | --- |
+| AI | `ai-news-anthropic-accenture-evaluation-20260918`、`ai-news-openai-australia-youth-safety-20260918`、`ai-news-gemini-notebook-study-tools-20260918`、`ai-news-kimi-k3-bedrock-20260918` |
+| 科技 | `tech-news-npm-stage-only-tokens-20260918`、`tech-news-cisa-kev-linux-kernel-20260918`、`tech-news-windows-cloud-rebuild-20260918`、`tech-news-iphone-duo-dev-resources-20260918` |
+| 幣圈 | `crypto-news-occ-three-trust-charters-20260918`、`crypto-news-eba-third-party-risk-20260918`、`crypto-news-sec-crypto-fraud-patterns-20260918` |
+
+**2026-09-19T23:44Z 部署（log `deploy_20260919_234433.log`，無 migration）、`guides-import --locale zh-TW --publish --slug` ×11**
+（zh-TW create 11、update 0、published 11、`taxonomy_updated` 11、`failed: null`；先核對 dry-run 計畫才 `--publish`）。
+驗證：11 頁 `/zh-TW/life/<slug>` 皆 200、無 robots meta、`hero.jpg` 皆 200、都在 `life-zh-TW.xml` 與 `/feed.xml`；
+`guides-links-check --locale zh-TW` 的 19 筆 findings 與本批無關。主機輸出在 `/root/news46-20260920/`。
+
+原本要「更新既有文章」的兩則（馬祖 5G 示範、Apple 9/18 全球開賣）**在本批取消**：兩篇目標都是五語系、zh-TW 已頂 3,000 字、
+`sources` 已四條，DELTA-4-6 第 8 條在它們身上與 checker 互斥；改由票 `2026-09-19-multi-language-maintenance-update-for-two` 處理。
+
+**三個索引當天沒有動**（`update_index.py` 本來是五語機制：`NEW` 跨語系套用，`CITED` 加上去會超過來源上限）。
+zh-TW 的索引連結由票 `2026-09-19-4-6-11-zh-tw-update` 補上：`update_index.py` 學會 `--locale` 與 `--dry-run`，
+11 個連結只進 zh-TW 文件（AI +4、科技 +4、幣圈 +3）、三句 zh-TW 增補日期改寫，`CITED` 對這批全空
+（AI 索引已引 19/20 條、科技 17 條，而且單邊加來源會讓五語文件的來源清單不一致），en／ja／ko／zh-CN 一個位元組都沒動。
+科技索引 zh-TW 的 `_body_length` 因此從 5,994 越過 6,000 指引（6,163；是 warning 不是 error，其他四語早就超過）。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）

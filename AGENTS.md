@@ -52,4 +52,8 @@ content phases), read [`ops/release/README.md`](ops/release/README.md): the driv
 `apps/web` is the Next.js frontend and its same-origin BFF, `apps/api` is the FastAPI
 service, worker and migrations, `ops/` is deployment, `tools/` is repository tooling,
 and `docs/` holds the long-form specifications. `architecture.md` describes the
-boundaries; `README.md` describes the product.
+boundaries; `README.md` describes the product. `.agents/skills/` holds the skills Codex and
+Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`, and
+`npm run test:tools` keeps the two in step); start any article batch with the
+`content-pipeline` skill, a production deploy with `deploy`, and board work with
+`task-board`.
