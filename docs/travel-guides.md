@@ -611,8 +611,14 @@ Images:
 
 - Files live under `apps/web/public/guides/<slug>/`: `hero.jpg` (1600×900, ≤200 KB),
   inline photos `photo-N.webp` (≤1200 px wide, ≤150 KB), diagrams `diagram-N.svg`
-  (viewBox 1600×900, a `<title>` and `<desc>`, system-font fallbacks only, no external
-  fonts or scripts). `apps/api/tests/test_guides_content_pack.py` checks existence and size.
+  (1600 px wide; a positive integral height up to 4000 px; a matching origin-zero
+  `viewBox`, root `width` and root `height`; a `<title>` and `<desc>`; system-font fallbacks
+  only; no external fonts or scripts). Existing reviewed 1600×900 diagrams that omit the
+  optional root size attributes remain valid, but variable-height diagrams must declare
+  them. Each document's image `width` and `height` must exactly match its SVG; ingest derives
+  those values for every locale reference and lint rejects stale metadata.
+  `apps/api/tests/test_guides_content_pack.py` checks existence and size. Hero illustrations
+  remain fixed at 1600×900 and are rendered to raster `hero.jpg`.
 - Photographs come from Wikimedia Commons only, under CC0, Public domain, CC BY or CC BY-SA
   (any version). Never NC or ND, never KOGL type 3/4 (its no-modification clause forbids
   even a resize), never a merchant's own interior shot. The licence, author and file page are
