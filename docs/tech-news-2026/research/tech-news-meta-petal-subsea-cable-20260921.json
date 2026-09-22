@@ -242,7 +242,7 @@
       "verbatim_quote": "Meta will fund and operate the cable system. As part of this, NEC will be responsible for the overall design and construction of the two-core system, and Sumitomo Electric will provide the two-core fiber for the submarine cable system construction."
     },
     {
-      "fact": "聯合稿的用詞是「48 對空間通道（芯對）」，而且對世界第一用的是 aims to be（力求成為），比 Meta 頁面的 will be 保守；Anjana 在這裡被寫成世界第一條 24 對跨洋系統，同樣是三家公司的合作案。",
+      "fact": "聯合稿的用詞是「48 對空間通道（芯對）」；它對「世界第一」用了兩種強度，標題與首段是直述（the world’s first commercial petabit optical submarine cable system），談規格那一句才改成 aims to be the world’s first petabit-class（而且不再寫 commercial）；只引其中一種、把整份稿說成「比 Meta 保守」是錯的（2026-09-23 第一輪查核更正）。Anjana 在這裡被寫成世界第一條 24 對跨洋系統，同樣是三家公司的合作案。",
       "url": "https://sumitomoelectric.com/press/2026/09/prs040",
       "is_vendor_claim": true,
       "verbatim_quote": "With 48 pairs of spatial channels (core-pairs), Petal will achieve a transoceanic transmission capacity that doubles Anjana, the world’s first transoceanic 24 fiber-pair system (another collaboration between Meta, NEC, and Sumitomo Electric) and aims to be the world’s first petabit-class optical submarine cable system."
@@ -421,6 +421,159 @@
         "Petal",
         "2 芯、等效 48 對"
       ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent round-1 factcheck agent (did not write the draft)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23 台北 01:28 起用 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 重抓 sources[] 兩條（同一主機間隔 ≥1 秒，UA／標頭／查詢字串未帶任何人的姓名或 email），engineering.fb.com 200／100,217 bytes、sumitomoelectric.com 200／150,242 bytes，兩者與研究代理存下的 _raw body 去標籤後逐位元組相同；NEC 的兩個官方索引今天仍是 403（380／420 bytes），所以 sources[] 不動。把內容包拆成 132 條主張逐條回原文（title、description、summary 四句、17 段正文、表格每一格與 caption、圖說、六題 FAQ、callout、兩個結尾連結、兩條 source），另外重跑研究紀錄 41 條 verbatim_quote 的連續子字串比對（0 problems）、hero_label 與 diagram 的額度、summary／圖說數字是否都在正文、兩個結尾連結與目標內容包 zh-TW title 的逐字比對。判定：112 條確認、20 條改（對應 17 處文字取代，其中 3 個錯誤同時出現在正文與 FAQ）、1 條查無、2 條不適用。報告在 docs/news-2026-batch-4/factcheck-draft/tech-news-meta-petal-subsea-cable-20260921.md。自檢 check_article.py OK（zh-TW paragraphs 2823 → 2908，上限 3000，刻意留 92 字給第二輪）；pack_cli lint 只剩 image_missing 與 raw_internal_url。",
+    "claims_checked": 132,
+    "changes": [
+      {
+        "claim": "description：Petal 的容量是現有同距離海纜的兩倍",
+        "before": "是現有同距離海纜的兩倍",
+        "after": "是現有同距離最先進海纜的兩倍",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "原文 doubling what today’s most advanced subsea cables carry at this distance；刪掉 most advanced 會把 Meta 的宣稱放大。"
+      },
+      {
+        "claim": "summary 第 2 句：Anjana 是 Meta 的前一條海纜",
+        "before": "容量是前一條海纜 Anjana（24 對、0.5 Pbps）的兩倍。",
+        "after": "容量是 Anjana（24 對、0.5 Pbps）的兩倍。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "原文只有 recently to Anjana’s 24 fiber pairs 與 This is double Anjana’s capacity，沒有寫 Anjana 是前一條；同頁頁尾清單還有 2025-10 的 Candle。"
+      },
+      {
+        "claim": "第二節小標：容量從一對光纖長到二十四對",
+        "before": "容量是怎麼長出來的：從一對光纖到二十四對",
+        "after": "容量是怎麼長出來的：從 8 對光纖到 24 對",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "正文沒有寫過「一對光纖」，來源給的起點是 Marea 的 8 對。"
+      },
+      {
+        "claim": "P3：Meta 那一篇的標題是《Inside Petal》",
+        "before": "標題是《Inside Petal》，頁面自印的時間戳記是「POSTED ON SEPTEMBER 21, 2026」。",
+        "after": "頁面自印的時間戳記是「POSTED ON SEPTEMBER 21, 2026」；標題《Inside Petal》後面接的就是「世界第一條 petabit 等級跨洋海纜」這個主張。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "標題全文是 Inside Petal: Building the World’s First Petabit-Class Transoceanic Subsea Cable；只寫前半會漏掉 Meta 在標題上就下的宣稱。"
+      },
+      {
+        "claim": "P5：兩頁都沒有出現台灣或亞太航線的字樣",
+        "before": "以 2026 年 9 月 23 日查核所見，這兩頁都沒有出現台灣或亞太航線的字樣。",
+        "after": "以 2026 年 9 月 23 日查核所見，兩頁的文章主體都沒有出現台灣；Meta 那一頁只有頁尾舊文清單印過 Asia-Pacific，講的是另一條海纜。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "Meta 頁面上 Asia-Pacific 出現 2 次（Read More in Connectivity 與 Related Posts 裡 2025-10-05 那篇 Candle 海纜的標題）。研究紀錄 not_said 本來就限定在「正文」，是內容包放寬了。"
+      },
+      {
+        "claim": "FAQ A2：兩份文件都沒有提到台灣或亞太航線",
+        "before": "以查核到的兩份官方文件來看，都沒有提到台灣或亞太航線；",
+        "after": "以查核到的兩份官方文件來看，文章主體都沒有提到台灣，也沒有寫亞太航線（Meta 那一頁只有頁尾的舊文連結清單印過 Asia-Pacific，指的是另一條海纜）；",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "同上。"
+      },
+      {
+        "claim": "P6：SDM 的中譯",
+        "before": "空間分工多工（SDM）",
+        "after": "空間分割多工（SDM）",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "原文 spatial division multiplexing，division 是分割不是分工。"
+      },
+      {
+        "claim": "P8：Petal 選 2 芯光纖的理由是不必讓整個海纜生態系重新驗證",
+        "before": "Meta 表示 Petal 選了第三條路，理由是不必讓整個海纜生態系重新驗證就能把容量做上去，供電也維持在現有設備上限內（額定最高 18 kV）。",
+        "after": "Petal 選的是第三條，目的是在跨大西洋距離做到 1 Pbps。貼文另外寫，Petal 會留在現有供電設備的上限內（額定最高 18 kV）——電壓再高上去，整個海纜生態系就得重新驗證。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "18 kV 那句在中繼器那一節，是設計性質不是選擇理由，而且 requalification ... necessary at higher equipment voltages 的條件被刪掉了；選 2 芯的目的來源自己寫了 to make the leap to 1 Pbps at transatlantic distances。"
+      },
+      {
+        "claim": "P9：兩個難題的解法",
+        "before": "Meta 說明，做法是控制芯與周圍介質的折射率差、讓兩個芯的光訊號反向傳輸，結果是幾乎量不到的串音。",
+        "after": "壓低衰減靠的是製作預型體時使用超高純度合成石英，壓低串音則是控制芯與周圍介質的折射率差、並讓兩個芯的光訊號反向傳輸，Meta 說結果是幾乎量不到的串音。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "原文分成兩句：The former is achieved by using ultra-pure synthetic silica during the manufacture of the preform. The latter is achieved by carefully controlling for high refractive indexes…；原稿把「後者」的解法寫成兩個難題的共同解。"
+      },
+      {
+        "claim": "P11：Meta 出資並營運這句分工只有聯合新聞稿才寫",
+        "before": "法國端登陸由 Orange 協助——Meta 出資並營運這句分工，只有聯合新聞稿才寫。",
+        "after": "法國端登陸由 Orange 協助，並把 Petal 稱作自己最新的海纜投資；「營運」這兩個字只出現在聯合新聞稿裡。",
+        "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+        "why": "Meta 貼文寫 Our latest cable investment, Petal 與 Petal is a key piece of Meta’s subsea cable investments，所以「出資」不是聯合稿獨有；operate 一詞在 Meta 頁面出現 0 次，聯合稿才寫 Meta will fund and operate the cable system。"
+      },
+      {
+        "claim": "P13：住友電工具名的聯合新聞稿用詞比較保守，寫力求成為世界第一個商用 petabit 級",
+        "before": "住友電工具名的聯合新聞稿用詞比較保守，寫這套系統力求成為世界第一個商用 petabit 級光纖海纜系統。這一篇把兩種說法分開寫，不講成同一件事。",
+        "after": "三家公司具名的聯合新聞稿同一頁就有兩種強度，開頭直接寫 Petal 是世界第一個商用 petabit 級光纖海纜系統，後面談規格時改成「力求成為」世界第一個 petabit 級，而且沒有再提商用。",
+        "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+        "why": "本輪最重的一處。聯合稿標題是 the World’s First Petabit Transoceanic Submarine Cable System、首段是 have started collaboration to build “Petal”, the world’s first commercial petabit (*) optical submarine cable system（直述），而 aims to be the world’s first petabit-class optical submarine cable system 那一句沒有 commercial。原稿把兩句混成一句，還把整份稿說成比 Meta 保守，方向相反。"
+      },
+      {
+        "claim": "FAQ A6：同上的「用詞比較保守」",
+        "before": "住友電工具名的聯合新聞稿用詞比較保守，寫這套系統力求成為世界第一個商用 petabit 級光纖海纜系統。這一篇把兩種說法分開寫，不簡化成單一的世界第一。",
+        "after": "三家公司具名的聯合新聞稿在同一頁用了兩種強度：開頭直接寫 Petal 是世界第一個商用 petabit 級光纖海纜系統，後面談規格時改成「力求成為」世界第一個 petabit 級光纖海纜系統，沒有再提商用。所以「世界第一」要看是哪一份文件、哪一句話。",
+        "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+        "why": "同上。"
+      },
+      {
+        "claim": "P14 與 FAQ A3：平均每個音訊串流約 0.16 Mbps",
+        "before": "平均每個音訊串流約 0.16 Mbps（即 160 kbps）",
+        "after": "每個音訊串流約 0.16 Mbps（即 160 kbps）",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "註腳原文 an audio stream bitrate of ~0.16 Mbps (160 kbps)，「~」是約不是平均；頁面全文沒有 average。兩處都改。"
+      },
+      {
+        "claim": "P15：來源沒有寫調變格式或使用哪個頻段",
+        "before": "也沒有寫調變格式或使用哪個頻段；",
+        "after": "也沒有寫 Petal 用的調變格式或頻段；",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "L 波段在頁面上有出現，講的是 Petal 沒有選的那條路（PLCN 的 24 對 C+L）；不限縮就與第三節自相矛盾。"
+      },
+      {
+        "claim": "P3 讀者優先：把查證紀律寫進正文、用「正文」指涉自己",
+        "before": "這是 Meta 自己的說法，沒有第三方驗證，正文一律寫成 Meta 表示。",
+        "after": "這是 Meta 自己的說法，沒有經過第三方驗證。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "DELTA-4-7 第 14 條：查證紀律不寫進正文、不用「正文／本文」指涉自己；同段歸因從 3 個降到 1 個。"
+      },
+      {
+        "claim": "P10 讀者優先：這一篇沒有獨立核算／不替 Meta 回推",
+        "before": "這是 Meta 自己的說明，這一篇沒有獨立核算。……但頁面沒有印出 Marea 本身的容量數字，這一篇不替 Meta 回推這個數字。",
+        "after": "……不過頁面從頭到尾沒有印出 Marea 本身的容量數字，這個倍數只能當成 Meta 給的相對值，回推不出 Marea 有多大。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "DELTA-4-7 第 14 條；歸因從 3 個降到 2 個。事實（頁面沒印 Marea 容量、不得回推）完全保留。"
+      },
+      {
+        "claim": "P14 讀者優先：句末的引用指令",
+        "before": "不是海纜規格數字，引用時把條件一併寫出。",
+        "after": "不是海纜的規格數字。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "那是寫給撰稿者的指令，不是給讀者的內容。註腳的四個條件在同一段仍然寫著。"
+      },
+      {
+        "claim": "P16 讀者優先：這一篇照樣寫成 Meta 的說法",
+        "before": "這是 Meta 自己引用的背景數字，頁面沒有標明年份或出處，這一篇照樣寫成 Meta 的說法，不當成有年份的統計。",
+        "after": "這個數字頁面沒有標年份、也沒有寫出處，是 Meta 的說法，不是可以拿來引用的統計。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "DELTA-4-7 第 14 條；限定（沒有年份、沒有出處、只是說法）一個都沒有少。"
+      },
+      {
+        "claim": "P2 讀者優先：宣告自己不做比較",
+        "before": "本站另外報導過台灣與馬祖之間的海纜備援，這一篇不重複那些數字，也不把 Petal 拿來跟台灣的海纜比較——兩者的距離、用途與規模不是同一類事情。",
+        "after": "本站另外寫過台灣與馬祖之間的海纜備援，那是另一個題目——距離、用途與規模都和 Petal 不是同一類。",
+        "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+        "why": "站主明令不可比較臺馬海纜；不比較是靠不比較做到的，宣告反而把比較放進讀者腦裡。改寫後全篇仍無任何距離、容量或規模的並列。"
+      }
+    ],
+    "open_questions": [
+      "「設計容量」這個詞（description、P1、FAQ A3）：兩份來源都沒有 design capacity，Meta 寫的是 Petal will deliver 1 Pbps。文章往保守方向寫，而且本紀錄 unverified_or_excluded 已裁定「兩份來源都只寫設計容量」，所以第一輪未改；若站主要貼原文，可改成「Meta 表示容量為 1 Pbps」。",
+      "「法國電信集團 Orange」（P4、FAQ A5）：來源只寫 support on the French landing from Orange、landing party in France 與職稱 EVP, Orange International Networks，沒有這個描述。事實上沒錯但不在 sources[] 裡，第一輪未改，請裁定留著或改成「Orange」。",
+      "NEC 兩個官方索引今天仍 403（380／420 bytes）。之後若抓得到 NEC 自己的稿，值得補進 sources[]。另外提醒：Meta 貼文本身就有一段掛 NEC 名義的具名引言（Eduardo Mateo, Chief Strategy Officer, Submarine Network Division），本紀錄 unverified_or_excluded 寫「NEC 的說法只能引住友電工聯合稿」寫得比實際窄。",
+      "圖還沒畫：build_assets.py 的 _DRAWINGS 沒有這個 slug（DELTA-4-7 第 15 條是刻意的）。定稿數字是 8／16／24／48／0.5／1／2029；圖上不得出現 Marea 的容量或任何回推值。"
+    ],
+    "coordinator_rulings": [
+      "站主的六項特別指示全部通過：2029 年是預計而非已建成、全篇無衛星與 IRIS²（「衛星」0 次、IRIS 0 次、「歐盟」0 次）、沒有與臺馬海纜的比較（唯一出現「臺馬」與「1.9 Tbps」的是第二個結尾連結的逐字標題）、容量宣稱全部歸因給 Meta 或聯合稿、串流類比帶著星號註腳的四個條件、「約一百個中繼器」寫成業界通則且 96 寫成單一中繼器內的放大器數。",
+      "本紀錄 verified_facts 裡「對世界第一用的是 aims to be，比 Meta 頁面的 will be 保守」這句只引了聯合稿兩種強度中的一種，會把第二輪帶往同一個錯誤；第一輪已把那一條的 fact 改寫成同時交代標題／首段的直述與規格段的 aims to be，verbatim_quote 未動。",
+      "歸因密度（FACTCHECK-47 的讀者優先規則）：改前 P3／P10 各有 3 個歸因詞、P8 有「Meta 列出」＋「Meta 表示」＋新加的第三個；改後每一段正文都在 2 個以內，第一段 1 個。「本文」0 次、「正文」自我指涉 0 次。",
+      "段落字數刻意停在 2908（上限 3000），留 92 字給第二輪；description 198（上限 200），若第二輪要加字要先減字。"
     ]
   }
 }

@@ -673,10 +673,16 @@
           "before": "開發者另外用得到 Antigravity 這個自稱的 AI 代理開發平台",
           "after": "開發者另外用得到 Antigravity 這個 Google 自家的 AI 代理開發平台",
           "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        },
+        {
+          "claim": "協調者追加裁定：刪掉第二段最後一句查證紀律，並把它承載的總括歸因移到最近一個原本沒有歸因的規格主張上",
+          "before": "以及 5 月 12 日的發表文；這一篇沒有實機測試，規格與功能一律是 Google 官方頁面自己的說法，也不提供購買或升級建議。／電池方面，外觀設計那篇寫最長 14 小時影片播放、16 小時網頁瀏覽，預購那篇的說法較籠統，只寫最長 14 小時電池續航，",
+          "after": "以及 5 月 12 日的發表文。／電池方面，Google 表示最長 14 小時影片播放、16 小時網頁瀏覽，這是外觀設計那篇的寫法；預購那篇較籠統，只寫最長 14 小時電池續航，",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
         }
       ],
       "open_questions": [
-        "正文第二段仍寫「這一篇沒有實機測試，規格與功能一律是 Google 官方頁面自己的說法」。協調者裁定三只點名兩句「本站沒有查證／未測試」，這一句措辭不同且承載 must_not_write 第 7 條要的總括歸因，因此保留；若審稿認為它同屬查證紀律，刪掉不影響任何事實（checker 只要求前兩段出現查核日，那句在同一段的句首）。",
+        "（已結案）正文第二段的「這一篇沒有實機測試…」原本保留，協調者於本輪追加裁定刪除；刪除後逐段清點發現只有電池那一段沒有「Google 表示」，而 must_not_write 第 7 條把電池列進一律要掛歸因的清單，因此把歸因補在那裡。字數 2,806→2,769，check_article 與 lint 重跑結果不變。",
         "verified_facts 第 39 條仍把離線觀看寫成「Netflix、HBO Max（支援離線觀看）」，第 10 條仍寫「Acer 是全系列唯一的翻轉機」。原文分別是 `...like Netflix and HBO Max with offline viewing supported` 與 `The sole convertible in the lineup`，內容包兩處都已由第一輪改正、第二輪覆核無誤；紀錄這兩條是撰稿當時的證據紀錄，兩輪都沒有動，留給協調者決定要不要加註。",
         "blog.google 的 Googlebook 分類頁本身沒有問題（200／381,521 B、三篇 9 月文頁尾的 Posted in 都指向它），只是伺服器送出的 HTML 只含 5 月那一篇（三個 9 月 slug 與標題出現 0 次、position_maximum 為 1），其餘靠瀏覽器的 load-more。裁定一改指預購公告的 Pricing 小節後，正文已不再依賴它。"
       ],

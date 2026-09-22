@@ -365,7 +365,7 @@
       "checked_by": "independent factcheck agent (round 2, a different agent from round 1)",
       "checked_on": "2026-09-23",
       "method": "覆核第一輪改動的五處與它新寫進去的每一句，另抽三分之一第一輪判 CONFIRMED 的主張重查，合計 33 條。sources[] 四條全部自己重抓：行政院公報先打 https://gazette.nat.gov.tw/egFront/ 取 cookie（-c，200／54,336 B）再帶 -b 開 detail.do?metaid=168088（200／28,835 B），並另抓網頁文字版 Eg.htm（200／4,303 B）與 PDF（200／54,535 B）；財政部新聞稿 200／73,807 B；全國法規資料庫 200／92,406 B；各稅法令函釋檢索系統的網址本身只有 10,438 B 的 SPA 殼，內文改用 POST https://ttc.mof.gov.tw/Api/GetData（form-urlencoded，jQuery 的 $.param 形狀；JSON body 會回「資料庫發生錯誤」）FunctionId=FF20001、ObjParams[Serno]=202609030001（200／1,641 B）重現，法律依據 Flag=B、關係法令 Flag=R 兩欄都讀到。查詢字串自己重打：FF10001 的 SearchContent1=11504611390 回 1 筆、台財稅字第11504611390號／同串加「令」／11504611390號／台財稅字11504611390／虛擬資產全部 0 筆；行政院公報進階搜尋的「公文字號」欄用瀏覽器等值的 POST 表單送出台財稅字第11504611390號回 1 筆，全文＝虛擬資產服務法回 3 筆（財政部令、總統令、行政院第3996次會議），沒有指定施行日期的命令。內容包與研究紀錄的每一條逐字引文都用去空白後的連續字串比對今天抓到的正文，全部命中。全部請求用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同一主機間隔 ≥1 秒，任何 UA、標頭、查詢字串或表單都沒有帶入任何人的姓名或 email。",
-      "claims_checked": 33,
+      "claims_checked": 34,
       "changes": [
         {
           "claim": "第一段末的補寫件交代（協調者裁定：刪掉編輯流程敘述）",
@@ -419,6 +419,12 @@
           "claim": "第一個 callout 裡第一輪新寫的否定句，範圍沒有限縮到本文引用的頁面",
           "before": "令上沒有印生效日期，官方頁面也沒有寫這則令要等法律施行才適用。",
           "after": "令上沒有印生效日期，公報與新聞稿也沒有寫這則令要等法律施行才適用。",
+          "source_url": "https://gazette.nat.gov.tw/egFront/detail.do?metaid=168088"
+        },
+        {
+          "claim": "第 19 段末句「官方頁面沒有這樣講」範圍不明（SECOND-ROUND 第 4 條）",
+          "before": "反過來也不能說『因為法還沒上路，這則令就沒有效力』，官方頁面沒有這樣講。",
+          "after": "反過來也不能說『因為法還沒上路，這則令就沒有效力』，公報與新聞稿都沒有這樣講。",
           "source_url": "https://gazette.nat.gov.tw/egFront/detail.do?metaid=168088"
         },
         {
