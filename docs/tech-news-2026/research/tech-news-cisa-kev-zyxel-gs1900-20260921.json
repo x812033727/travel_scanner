@@ -342,5 +342,58 @@
         "服務代表或官方中文論壇"
       ]
     ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23（台北）獨立查核第一輪。先把內容包拆成 106 條可查證主張（title、description、兩段開場、四條 summary、十四段正文、表格十二格與 caption、圖解 caption、六題 FAQ、callout、兩個結尾連結、四條 sources），再用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 把 sources[] 四條全部重抓一次（同一主機間隔 ≥2 秒，UA／標頭／查詢字串都沒有帶入任何人的姓名或 email），去掉 <!-- --> 註解、script/style 與標籤、html.unescape、空白正規化之後逐條比對：CISA 公告 200／53,145 B、KEV 目錄頁 200／286,240 B、Zyxel 英文公告 200／103,799 B、Zyxel 繁中公告 200／102,183 B，四條都讀到正文。另外為了反駁草稿對 2026-09-18 那一次的描述，讀了 KEV 官方 JSON feed（catalogVersion 2026.09.21、count 1717）與 CISA 2026-09-18 的兩則公告（200／53,411 B、200／53,224 B），三者都只當反證，沒有加進 sources[]。",
+    "claims_checked": 106,
+    "changes": [
+      {
+        "claim": "開場段說這是這一系列公告第一次在編號旁直接寫出具名的廠商與產品線。",
+        "before": "——KEV 目錄的廠商／產品欄印的是「Zyxel | GS1900 Series Switches」，這是這系列公告第一次在編號旁直接寫出具名的廠商與產品線。",
+        "after": "——KEV 目錄的廠商／產品欄是「Zyxel | GS1900 Series Switches」，而 CISA 在這一筆的備註裡直接連到原廠公告，公告上有型號與韌體版本的對照表。",
+        "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      },
+      {
+        "claim": "正文說 CISA 2026-09-18 那一次一個廠牌或型號都沒有點名。",
+        "before": "CISA 在 2026 年 9 月 18 日也發布過同機制的公告，但那一次一個廠牌或型號都沒有點名。",
+        "after": "CISA 在 2026 年 9 月 18 日也用同一個機制加進三個 Linux 核心漏洞，KEV 目錄那三筆的廠商／產品欄印的是「Linux | Kernel」，落不到任何一台具體的機器；這一次點到的是一條硬體產品線，對得到自己手上那一台。",
+        "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      },
+      {
+        "claim": "summary 第一條跟著開場段的對比說法走。",
+        "before": "，這次在編號旁直接寫出受影響廠牌與產品線：Zyxel GS1900 系列交換器。",
+        "after": "，廠商／產品欄印的是「Zyxel | GS1900 Series Switches」，點到的是一條硬體產品線。",
+        "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      },
+      {
+        "claim": "KEV 目錄「Action」欄的條件被前移，讓雲端服務那一段也變成有條件。",
+        "before": "依照廠商指示採取緩解措施，並符合 BOD 26-04 的規定；沒有可用的緩解措施時，就依 BOD 26-04 對雲端服務的規定處理，或停止使用該產品。",
+        "after": "依照廠商指示採取緩解措施，並符合 BOD 26-04 與 CISA「鑑識初篩要求」的規定；雲端服務照 BOD 26-04 適用的指引處理，沒有可用的緩解措施就停止使用該產品。",
+        "source_url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+      },
+      {
+        "claim": "兩份原廠公告的網址差異。",
+        "before": "網址只差 /tw/zh/，",
+        "after": "網址只把 /global/en/ 換成 /tw/zh/，",
+        "source_url": "https://www.zyxel.com/tw/zh/support/security-advisories/zyxel-security-advisory-for-stack-based-buffer-overflow-vulnerability-in-gs1900-series-switches-06-16-2026"
+      },
+      {
+        "claim": "第二段把讀了哪幾頁、有沒有操作過機器寫進正文，牴觸本紀錄 must_not_write 第 20 條（查證流水帳）。",
+        "before": "這一篇的資料在 2026 年 9 月 23 日查核，讀的是 CISA 這則公告全文、KEV 目錄頁對這一筆的完整條目，以及 Zyxel 原廠公告的英文版與繁體中文版。本站沒有登入或操作任何一台交換器，也不做任何品牌或型號的購買、換機建議；下文整理官方公告寫了什麼、沒寫什麼，以及讀者可以自己核對的兩件事：型號與韌體版本。",
+        "after": "這一篇的資料在 2026 年 9 月 23 日查核，來源是 CISA 與 Zyxel 的四份官方頁面。下文整理公告寫了什麼、沒寫什麼，以及讀者可以自己核對的兩件事：型號與韌體版本；這裡不做任何品牌或型號的購買、換機建議。",
+        "source_url": null
+      }
+    ],
+    "open_questions": [
+      "表格第一列「管到誰」欄寫「所有 GS1900 使用者」是 editorial_brief 指定的，但 must_not_write 第 3 條禁止把十個型號擴大成整個系列。查核判斷它講的是「誰該去對這張表」而不是「誰有漏洞」，所以沒有動；站主若覺得容易誤讀，可改成「表上列出的型號使用者」。",
+      "正文與 callout 合計出現 14 次「本站」（DELTA-4-7 第 14 條只明文禁「本文」）。第二段最嚴重的一處已改，其餘（P13／P14／P19／P21／P22／P23 與 callout）是界線聲明，照「不要重述查證紀律」的精神可以再收斂，但那是改寫不是改事實，留給審稿。",
+      "callout 仍寫「本站沒有操作或測試任何一台交換器」，與第二段刪掉的那句同一類。查核沒有動 callout，因為它是全篇唯一一個 callout，動了會牽到界線聲明的完整性。"
+    ],
+    "coordinator_rulings": [
+      "「這一次不一樣在哪裡」這個角度保留，但依據換成查得實的那一個：2026-09-18 那三筆 KEV 的廠商／產品欄是「Linux | Kernel」（對不到具體機器），這一筆是一條硬體產品線且 CISA 備註直接連到列了型號與韌體版本的原廠公告。原稿的「第一次點名具名廠商」是錯的——2026-09-18 兩則公告在編號旁印的就是「Linux Kernel Race Condition Vulnerability」等名稱。",
+      "sources[] 維持四條、checked_on 維持 2026-09-23（查核當天重抓四條全部 200 且讀到正文，沒有改動的理由）。KEV JSON feed 與 09-18 兩則公告只作為反證，依 tech FACTCHECK 規格不列入 sources[]。"
+    ]
   }
 }

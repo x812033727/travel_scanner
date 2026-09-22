@@ -592,6 +592,68 @@
       "幣圈垂直的固定免責 callout 必須是 docs/news-2026-batch-4/crypto.md 的樣板逐字，與已發布的幣圈內容包一致（撰稿者依 DELTA-4-7 第 14 條把「本文」改成「這一篇」，這一段是該條的例外）。第一輪已還原兩處，並與 crypto-news-occ-three-trust-charters-20260918 的同一段做過正規化比對，除查核日外完全相同。",
       "事件日＝2026-09-17（命令署期與豁免效期起算日）；2026-09-22 刊登聯邦公報（91 FR 60168-60184）是「現在可以寫了」的觸發，不是事件。第一輪逐條覆核：署期行、第 V 節、新聞稿電頭、三份聲明頁面自印日期全部是 9/17，內容包的 slug 尾碼／news_date／第一段三者一致。",
       "效期一律寫 2026 年 9 月 17 日至 2031 年 9 月 17 日，不得寫成「刊登後五年」或 2031-09-22。第一輪查了全篇六處提到期限的地方，每一處寫的都是 9/17→9/17；標題的「效期五年」是區間長度，不是新聞稿那句 five years after publication 的概述。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, 未參與撰稿也未參與第一輪)",
+      "checked_on": "2026-09-23",
+      "method": "第二輪範圍照 agents/SECOND-ROUND.md：第一輪改動過的四處、第一輪新寫進去的每一句（免責 callout 還原後的兩句、第九段「借入」、第十八段新增的「電子郵件」），外加用固定亂數種子 'crypto-news-sec-innovation-exemption-20260917/round2' 從 58 條 CONFIRMED 抽出的三分之一（19 條：C2、C13、C14、C16、C17、C18、C20、C23、C26、C27、C28、C33、C47、C50、C51、C52、C54、C55、C59），以及指派訊息點名的 C34「不是認股權證與權利」與 C2／C8 的否定範圍。四條來源今天由第二輪自己重抓一次（curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥2 秒，UA／標頭／查詢字串未帶入任何人的姓名、email 或個人資料），四條全部 200、bytes 與第一輪相同、body 都是正文；另抓聯邦公報 API 的 2026-19388.json（200／2,704 B）核對文件身分。本紀錄 59 條 verbatim_quote（4 條 sources ＋ 55 條 verified_facts）用程式對第二輪自己的正規化正文做連續子字串比對，59 條全中、0 條落空、0 條的 url 不在 sources[]。腳本在 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\crypto-news-sec-innovation-exemption-20260917-r2\\。",
+      "claims_checked": 27,
+      "verdict_counts": {
+        "confirmed": 25,
+        "changed": 2,
+        "not_found": 0,
+        "out_of_scope_style": 3
+      },
+      "changes": [
+        {
+          "claim": "第二十三段：命令對「非證券加密資產」定義的出處",
+          "before": "命令對「非證券加密資產」的定義，沿用的是 SEC 與 CFTC 今年 3 月作成的聯名解釋令。",
+          "after": "命令對「非證券加密資產」的定義，沿用的是今年 3 月刊登的加密資產解釋令（91 FR 13714）。",
+          "source_url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt"
+        },
+        {
+          "claim": "第一段：「創新豁免」這個名字是誰取的",
+          "before": "作成一份附條件的臨時豁免命令，業界稱之為「創新豁免」（Innovation Exemption）。",
+          "after": "作成一份附條件的臨時豁免命令，SEC 稱之為「創新豁免」（Innovation Exemption）。",
+          "source_url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment"
+        }
+      ],
+      "changes_basis": [
+        "第二十三段：命令註 6 的原文是 `A ``non-security crypto asset'' is a crypto asset that itself is not a security. See Securities Exchange Act Release No. 11412 (Mar. 17, 2026), 91 FR 13714, 13716 (Mar. 23, 2026) (``Crypto Asset Interpretative Statement'').`——只是一份 Securities Exchange Act release，從頭到尾沒有提到 CFTC。第二輪實測：命令全文 CFTC／Commodity Futures／joint statement 各 0 次；新聞稿與兩份聲明的 CFTC 只出現在 sec.gov 導覽列的「SEC-CFTC Harmonization Initiative」樣板連結，不在正文。「聯名」為真但只有站內交叉引用撐得住，照協調者裁定改成註 6 自己印的身分與 FR 頁碼。",
+        "第一段：沒有任何一條來源說「業界」這樣叫它。命令全文 `Innovation Exemption` 出現 0 次；用這個名字的是 SEC 自己——新聞稿標題 `SEC Issues “Innovation Exemption” to Facilitate the Trading of Tokenized NMS Stock and Request for Comment`（7 次）、Atkins 聲明（8 次）、Peirce 聲明（6 次）。而且本紀錄 unverified_or_excluded 第 3 條明文把「任何『業界反應』」列為不得下筆。改成 SEC，屬 NOT FOUND 的改寫，不是風格。"
+      ],
+      "rechecked_and_still_correct": [
+        "第一輪改動 3（第九段「借貸」→「借入」）：條件 J 原文 `Thus, a TSV cannot borrow, whether secured or unsecured, securities or non-security crypto assets on the TSV, and cannot, directly or indirectly, hypothecate ...` 只禁止借入；借出一側只另外禁止 `extend credit to a TSV Participant for the purpose of purchasing a Tokenized NMS Stock`。改對了。",
+        "第一輪改動 4（第十八段補「電子郵件」）：第 VI 節末原文列 `Electronic Comments`（internet comment form；`Send an email to ...`）與 `Paper Comments`（`Send paper comments to Secretary, Securities and Exchange Commission, 100 F Street NE, Washington, DC 20549-1090`）共三條管道。補對了。",
+        "第一輪改動 1、2（免責 callout 還原成「本文」）：程式比對 crypto.md 樣板，title 與 text 逐字相同（只有查核日不同），並與四篇已發布幣圈內容包的同一段正規化後完全一致。維持不動。",
+        "C34「第二層是其餘非第一層、且不是認股權證與權利的 NMS 股票」：原文 `Tier 2 NMS stock under the LULD Plan is NMS stock that is not Tier 1 NMS stock and is not rights and warrants.`，另有註 4 `Tokenized NMS Stock eligible for trading on a TSV does not include rights and warrants.` 與註 73 `Because the LULD Plan excludes rights and warrants from LULD Tier 1 and Tier 2, Tokenized NMS Stock for purposes of the TSV Exemption excludes rights and warrants.` 三處支撐。成立。",
+        "C2／C8／C52 的否定範圍：正文與 FAQ 都把「還沒有場所公告開業」繫在「這四份文件」與查核日 2026-09-23 上，與 not_said 第 1 條要求的寫法一致；description 用「查核到目前為止」加句尾「（2026 年 9 月查證）」壓縮，沒有寫成「官方沒有」或「從未」。",
+        "C16／C17／C54：命令全文 `U.S. person` 8 次全部綁在 TSV 自己身上（`To be eligible for the TSV Exemption, a TSV must be a U.S. person.`）；citizenship／nationality／non-U.S.／foreign person 各 0 次。正文與 FAQ3 的寫法與 must_not_write 第 14 條要求的句子一致。",
+        "C13／C59：條件 K 與第 III 節 a. Disclaimer 原文（`the Commission has not passed upon the merits or accuracy of the disclosures in the Notice`、`A TSV cannot make any statements--public or private--to the effect that it is ``registered'' ... ``approved'' or ``endorsed''`）逐句對上。",
+        "C14：命令全文 `vote`／`unanimous` 各 0 次，新聞稿與兩份聲明正文也沒有票數（只有導覽列的 Commission Votes 連結）。正文不寫「一致通過」成立。",
+        "C18／C27／C28：條件 E（`the same dividends ... the same voting rights ... the same share of the residual assets ... upon liquidation`、`No primary issuance or initial offerings`）與條件 D（`may not commence until at least 30 calendar days from the date when the issuer receives the Issuer Notice`、`on or prior to the 30th calendar day`、`Within five business days, the TSV must amend the public Notice`）逐格對上，表格三列九格無誤。",
+        "C20：Atkins 聲明 `Issuers Can Object: Issuers must have the opportunity to object and prevent their security from trading on a TSV.`。",
+        "C33／C55：條件 F 的 75／0.25%、250／2.5%、分母 `the average daily share volume during the prior month in the relevant NMS stock`、與關係企業 TSV 合併計算（成交量與檔數兩者），以及 `does not in any way alter or modify, or propose to alter or modify, the LULD Plan` 全部對上。",
+        "C50／C51：第 VII 節 `It is hereby ordered that pursuant to section 36(a)(1) of the Exchange Act that, until September 17, 2031 ...`、第 V 節 `The exemptions are effective from September 17, 2026, until September 17, 2031.`；已生效不是草案成立。",
+        "日期一致：命令標題後單獨一行 `September 17, 2026.`、第 V 節、新聞稿電頭 `Washington D.C., Sept. 17, 2026`、兩份聲明頁面自印 `Sept. 17, 2026` 全是 9/17；slug 尾碼 20260917 等於 news_date 2026-09-17 等於第一段。全篇「刊登後五年」0 次、2031-09-22 0 次。",
+        "界線（crypto.md）：改後全篇仍無價格、漲跌、市值、成交金額、報酬或費率比較，未點名任何股票、交易所、錢包、鏈或穩定幣品牌；註 72 的 2025 年日均成交股數沒有進正文。兩個 callout 都在，免責樣板逐字。",
+        "兩個結尾連結文字與目標內容包現行 zh-TW title 逐字元相同（27／27、52／52）；FAQ6 引的 2026-10-20 與 crypto-news-sec-regulation-crypto-assets-20260821 現行內容包一致。"
+      ],
+      "open_questions": [
+        "研究紀錄自己的 summary 仍寫「業界稱之為『創新豁免』」。第二輪只獲授權改內容包與附加本欄，沒有動 summary；但那句與本紀錄 unverified_or_excluded 第 3 條（不得寫任何「業界反應」）互相矛盾，建議協調者一併改成 SEC，免得下一位撰稿者再抄一次。",
+        "Peirce 聲明有一句 `The exemptions are available to U.S. persons, including incumbents and new entrants.`，講的是「誰可以援用豁免」（TSV 與 Covered Firm），不是「誰可以在池子裡交易」。正文與 FAQ3 的空白宣告（四份文件沒有交代非美國人可不可以參加）因此仍然成立，但這句離得很近，協調者如果之後要放寬那段寫法，必須先處理它。",
+        "第十八段「可透過 SEC 網路意見表單、電子郵件或紙本送交秘書長」：三條管道都對，但「送交秘書長」只屬於紙本那一條，中文讀起來像三條都寄秘書長。命令另有一句 `To help the Commission process and review your comments more efficiently, please use only one method.` 也沒有帶到。屬句構，第二輪沒有改（改成「…、電子郵件，或紙本寄給秘書長」需加 1 字）。",
+        "第二段句尾「事件日期照命令署期與豁免效期起算日認定」是查證方法，照 DELTA-4-7 第 14 條不該進正文；刪掉可省 20 字且不影響 checker（查核日在同段第一句）。第一輪已列為風格待決，第二輪同樣沒有改，請協調者裁定。",
+        "第六段「委員個人的看法，第五節另有整理」與第十九段「第 VI 節」兩種「節」並存（第一輪風格 findings 之一），第二輪維持原判：不是事實錯誤，留給協調者。",
+        "第十五段「SEC 得依交易法第 36 條修改期間或其他任何部分」省掉了原文的條件 `if it determines that such modification is necessary or appropriate in the public interest and consistent with the protection of investors`。「得」已保住裁量語氣，第二輪判為可接受的壓縮；若協調者要補，改後字數 2974，尚有 26 字空間。"
+      ],
+      "coordinator_rulings": [
+        "指派訊息裁定：「SEC 與 CFTC 聯名解釋令」改成「今年 3 月刊登的加密資產解釋令（91 FR 13714）」（命令註 6 從未提到 CFTC）。已照改，見 changes 第 1 條。",
+        "指派訊息裁定：正文維持在 3,000 字以內。改後 check_article 印 `OK ... zh-TW paragraphs 2974`（第一輪 2969，兩處改動合計加 5 字）。",
+        "免責 callout 維持第一輪還原後的 crypto.md 樣板逐字，不再更動。"
+      ],
+      "self_check": "check_article.py exit=0 / `OK crypto-news-sec-innovation-exemption-20260917 zh-TW paragraphs 2974`；pack_cli lint --kind life --slug ... exit=1，只有兩筆 image_missing（hero.jpg 與 diagram-1.svg，圖還沒畫，DELTA-4-7 第 15 條），沒有 raw_internal_url。",
+      "verdict": "ok"
+    }
   }
 }

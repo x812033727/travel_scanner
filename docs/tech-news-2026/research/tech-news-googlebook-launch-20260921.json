@@ -637,6 +637,55 @@
       "DELTA-4-7 第 11 條：blog.google 頁首「Read AI-generated summary」一律跳過。查核確認正文、摘要、FAQ、callout 都沒有出現該區塊獨有的 select countries 說法，四處市場名單全部來自正文的 Pricing, availability, and pre-order details 小節。",
       "ASSIGNMENTS.md：時間線寫「5 月 12 日發表、9 月 21 日開放預購、10 月 4 日上架」，不可寫成 9/21 才發表。標題、description、第一段、FAQ 第 2 題與圖解四格都照此，無違反。",
       "本輪沒有改標題，研究紀錄的 title 不動；checked_on 四處（內容包四條 sources、研究紀錄、第二段、表格 caption、圖解 caption）本來就一致且等於我今天重抓的日期 2026-09-23，依規格不動。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2)",
+      "checked_on": "2026-09-23",
+      "method": "2026-09-23（台北）以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 自己重抓 sources[] 四條，同一主機間隔 2 秒，UA／標頭／查詢字串／表單都沒有帶入任何人的姓名、email 或個人資料；四條全部 200，bytes 376,349／380,829／372,293／385,384 與紀錄一致，且與第一輪的抓取逐位元組相同（5 月發表文與撰稿代理留存檔仍只差 days_since_published 132→133 的分析計數，正文未變）。59 條 verified_facts 的 verbatim_quote 對我自己的抓取做連續子字串比對：59／59 命中、0 落空，四條 sources 的 verbatim_quote 也全部命中；沒有任何引文含 `...`／`…`／`|`，不存在拼接段落的問題。把內容包拆成 88 條句級主張，覆核第一輪改動的 11 條（含它新寫的每一句）、依種子隨機抽驗其餘 77 條的三分之一（25 條），另獨立重抓一次 blog.google 的 Googlebook 分類頁（200／381,521 B）驗證協調者裁定一的前提。",
+      "claims_checked": 88,
+      "changes": [
+        {
+          "claim": "協調者裁定一：三處請讀者去 blog.google Googlebook 分類頁的導引，改成指向預購公告的 Pricing, availability, and pre-order details 小節（正文第一節、FAQ 第 1 題、callout，共三處）",
+          "before": "讀者之後可以自行到 blog.google 的 Googlebook 分類頁確認有沒有更新／可以直接到 Google 官方部落格的 Googlebook 分類頁查看有沒有更新（是否已有更新）",
+          "after": "上市名單就印在預購公告的 Pricing, availability, and pre-order details 一節，讀者之後可以回那一節確認有沒有更新／可以回到 Google 官方部落格的預購公告，上市名單就印在那一篇的 Pricing, availability, and pre-order details 一節",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        },
+        {
+          "claim": "協調者裁定二：hero.alt 不得帶清點數字（unverified_or_excluded 第 2 條、must_not_write 第 21 條）",
+          "before": "七個色塊標示美國與另外六個上市市場的相對位置",
+          "after": "美國與加拿大、英國、愛爾蘭、法國、德國、澳洲各以一個色塊標示相對位置",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+        },
+        {
+          "claim": "協調者裁定三之一：安全段末的查證紀律句（DELTA-4-7 第 14 條）",
+          "before": "筆電品類首見是 Google 自己的說法，本站沒有查證其他廠商是否也有同等認證。",
+          "after": "筆電品類首見是 Google 自己的說法。",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        },
+        {
+          "claim": "協調者裁定三之二：FAQ 第 5 題末的查證紀律句（DELTA-4-7 第 14 條）",
+          "before": "使用者也可以直接把它關掉；這是 Google 官方的說法，本站沒有另外測試驗證。",
+          "after": "使用者也可以直接把它關掉。",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/"
+        },
+        {
+          "claim": "Antigravity 的定性：原文 `our AI agent development platform` 的 our 是所有格，不是存疑的限定詞（第一輪把它列為文風建議、沒有改）",
+          "before": "開發者另外用得到 Antigravity 這個自稱的 AI 代理開發平台",
+          "after": "開發者另外用得到 Antigravity 這個 Google 自家的 AI 代理開發平台",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        }
+      ],
+      "open_questions": [
+        "正文第二段仍寫「這一篇沒有實機測試，規格與功能一律是 Google 官方頁面自己的說法」。協調者裁定三只點名兩句「本站沒有查證／未測試」，這一句措辭不同且承載 must_not_write 第 7 條要的總括歸因，因此保留；若審稿認為它同屬查證紀律，刪掉不影響任何事實（checker 只要求前兩段出現查核日，那句在同一段的句首）。",
+        "verified_facts 第 39 條仍把離線觀看寫成「Netflix、HBO Max（支援離線觀看）」，第 10 條仍寫「Acer 是全系列唯一的翻轉機」。原文分別是 `...like Netflix and HBO Max with offline viewing supported` 與 `The sole convertible in the lineup`，內容包兩處都已由第一輪改正、第二輪覆核無誤；紀錄這兩條是撰稿當時的證據紀錄，兩輪都沒有動，留給協調者決定要不要加註。",
+        "blog.google 的 Googlebook 分類頁本身沒有問題（200／381,521 B、三篇 9 月文頁尾的 Posted in 都指向它），只是伺服器送出的 HTML 只含 5 月那一篇（三個 9 月 slug 與標題出現 0 次、position_maximum 為 1），其餘靠瀏覽器的 load-more。裁定一改指預購公告的 Pricing 小節後，正文已不再依賴它。"
+      ],
+      "coordinator_rulings": [
+        "裁定一（分類頁導引改指預購公告的 Pricing, availability, and pre-order details 小節）：已在正文第一節、FAQ 第 1 題與 callout 三處套用。我獨立重抓分類頁確認前提屬實——伺服器 HTML 只列到 5 月那篇；同時確認 `Pricing, availability, and pre-order details` 這個小節標題確實存在於預購、外觀設計、內建智慧三篇（5 月發表文沒有），上市名單與 $899 都印在那一節。",
+        "裁定二（hero.alt 不得出現「六個」）：已改為列出七個市場的名字、不給任何總數，「七個色塊」這個同義的清點數字也一併拿掉。hero_label、圖解四格與 diagram nodes 本來就沒有這個問題。",
+        "裁定三（刪掉兩句查證紀律）：已刪。安全段保留「筆電品類首見是 Google 自己的說法」以滿足 must_not_write 第 9 條；FAQ 第 5 題的答案本來就以「Google 說明」開頭，刪掉句尾後歸因仍在。改完全篇「本站」0 次、「本文」0 次。",
+        "第一輪的 12 處改動全部覆核：9 個事實／歸因問題逐條回到一手來源，全部成立，沒有一處需要回退。最關鍵的 `Starting at $899, every Googlebook includes 12 months of Google AI Pro` 另有旁證——預購文同一頁還有一句同構的 `Starting at $899, every Googlebook features premium materials like aluminum, magnesium alloy, and carbon fiber`，兩句都證明 every Googlebook 指全系列而不是起價那一款。"
+      ]
+    }
   }
 }

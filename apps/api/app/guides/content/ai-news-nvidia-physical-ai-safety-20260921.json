@@ -9,7 +9,7 @@
   "display_order": 176,
   "locales": {
     "zh-TW": {
-      "title": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+      "title": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
       "description": "2026 年 9 月 21 日，NVIDIA 在官方部落格說明實體 AI（自駕車與機器人）的安全為什麼要橫跨硬體、軟體、AI 行為與運作環境。內容整理 Halos 安全系統目前哪些部分已完成第三方認證、哪些還在檢驗中，以及 ANAB 認可的檢驗實驗室屬於哪種類別、效期到何時（2026 年 9 月查證）。",
       "hero": {
         "src": "/guides/ai-news-nvidia-physical-ai-safety-20260921/hero.jpg",
@@ -35,7 +35,7 @@
           "type": "summary",
           "items": [
             "2026 年 9 月 21 日，NVIDIA 在官方部落格說明實體 AI（自駕車與機器人）的安全，為什麼必須橫跨硬體、軟體、AI 行為、運作環境與部署生命週期，而不是部署前檢查一次就結束。",
-            "自駕車端，TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與相關工程流程認證到 ISO 26262 ASIL D；機器人端，TÜV Rheinland 目前還在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度，尚未完成。",
+            "自駕車端，TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與車用產品生命週期軟體流程認證到 ISO 26262 ASIL D；機器人端，TÜV Rheinland 目前還在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度，尚未完成。",
             "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構，登記類別是 Type C（second party），檢驗方式是審閱文件，效期到 2027 年 1 月 2 日；NVIDIA 也說明，最終的系統級認證仍要由獨立第三方機構完成。",
             "ANAB 的認可被 NVIDIA 說成在 80 個國家受到承認、包含中國，但查核到的四個官方頁面都沒有提到台灣，也無法從這句話推論台灣是否在其中。",
             "機器人端的 Halos Core for IGX 目前只開放已註冊的開發者早期存取，人形機器人 Digit 5 的安全系統整合也還在進行中，尚未出貨。"
@@ -52,7 +52,7 @@
         },
         {
           "type": "paragraph",
-          "text": "市場研究機構 ABI Research 預測，到 2035 年前 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間全球約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下，ABI Research 原始報告要付費訂閱、Omdia 報告連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。"
+          "text": "ABI Research 預測，到 2035 年 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下兩份原始報告都要訂閱才讀得到，這裡引用的是 NVIDIA 部落格轉述的說法。"
         },
         {
           "type": "heading",
@@ -71,7 +71,7 @@
           "type": "table",
           "header": ["安全說法", "涵蓋對象", "目前狀態", "認定者"],
           "rows": [
-            ["已完成認證", "自駕車：DriveOS 6.0 與相關工程流程", "通過 ISO 26262 ASIL D、ISO/SAE 21434", "TÜV SÜD"],
+            ["已完成認證", "自駕車：DriveOS 6.0、車用產品生命週期軟體流程與車用工程流程", "DriveOS 6.0 與產品生命週期軟體流程通過 ISO 26262 ASIL D；車用工程流程通過 ISO/SAE 21434", "TÜV SÜD"],
             ["還在檢驗中", "機器人：IGX Thor、Halos OS、Holoscan Sensor Bridge", "檢驗功能安全認證準備度，尚未完成", "TÜV Rheinland"],
             ["機構獲得認可", "NVIDIA 自家的 Halos AI Systems Inspection Lab", "認可為 ISO/IEC 17020 檢驗機構，登記類別 Type C（second party）", "ANAB"],
             ["設計上支援", "機器人硬體 IGX Thor", "支援 IEC 61508、ISO 13849 等標準，非已取得認證", "NVIDIA 自述"]
@@ -93,7 +93,7 @@
         },
         {
           "type": "paragraph",
-          "text": "ANAB 認可的不是任何一輛車或機器人，而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab，讓它符合 ISO/IEC 17020、登記類別「TYPE C (SECOND PARTY) BODY」（意為：第二方型檢驗機構），檢驗方式是「review of documentation」（意為：審閱文件），效期到 2027 年 1 月 2 日。NVIDIA 表示，實驗室補充既有認證工作，最終系統級認證仍由獨立第三方機構完成——檢驗報告不等於系統認證。"
+          "text": "ANAB 認可的不是任何一輛車或機器人，而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab；ANAB 的證書開給 NVIDIA Corporation，符合 ISO/IEC 17020，登記類別是「TYPE C (SECOND PARTY) BODY」（意為：第二方型檢驗機構），檢驗方式是「review of documentation」（意為：審閱文件），效期到 2027 年 1 月 2 日。NVIDIA 表示，實驗室補充既有認證工作，最終系統級認證仍由獨立第三方機構完成——檢驗報告不等於系統認證。"
         },
         {
           "type": "image",
@@ -147,11 +147,11 @@
             },
             {
               "question": "這間檢驗實驗室算是獨立第三方機構嗎？",
-              "answer": "依 ANAB 的證書檔案，這間實驗室登記的類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方；NVIDIA 官方也寫明，最終認證要由獨立第三方機構完成。這不代表檢驗結果不可信，只是登記類別與「獨立第三方」不是同一件事，可以理解成廠商自己先做一層檢驗把關，再交給外部機構做最後認證。"
+              "answer": "ANAB 的證書與認可範圍檔案開給的是 NVIDIA Corporation，登記的檢驗機構類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方；NVIDIA 官方也寫明，最終認證要由獨立第三方機構完成。這不代表檢驗結果不可信，只是登記類別與「獨立第三方」不是同一件事，可以理解成廠商自己先做一層檢驗把關，再交給外部機構做最後認證。"
             },
             {
               "question": "文章提到的自駕車與工業機器人數量，是 NVIDIA 的目標嗎？",
-              "answer": "不是。這兩個數字分別來自市場研究機構 ABI Research（預測到 2035 年前有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下，兩份原始報告都讀不到，一份要付費訂閱、另一份的連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。"
+              "answer": "不是。這兩個數字分別來自 ABI Research（預測到 2035 年有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下兩份原始報告都要訂閱才讀得到，這裡引用的是 NVIDIA 部落格轉述的說法。"
             },
             {
               "question": "機器人現在可以直接買來裝 NVIDIA 的安全系統嗎？",

@@ -4,7 +4,7 @@
   "display_order": 176,
   "event_date": "2026-09-21",
   "event_date_basis": "2026-09-23 台北時間重抓 https://blogs.nvidia.com/blog/physical-ai-halos-safety/（HTTP 200、121,824 bytes）。頁面正文自印的日期是 September 21, 2026（日期後面接作者署名，署名不抄進紀錄）；HTML 的 article:published_time 是 2026-09-21T16:00:46+00:00、article:modified_time 是 2026-09-21T16:06:14+00:00，JSON-LD 的 datePublished／dateModified 與之相同。這個 16:00 是整點排程的佔位時刻，照 DELTA-4-7 第 10 條（沿用 OpenAI 00:00 與 4.6 第 7 條 Accenture 16:00 的判例）不換算台北時間——換算會變成 9/22 00:00，與頁面自印的 September 21, 2026 互相矛盾。事件日維持 2026-09-21，slug 後綴、news_date 與正文第一段三者都寫 2026 年 9 月 21 日。正文不得寫出任何發布時刻，也不得寫「台北時間 9 月 22 日凌晨」。",
-  "title": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+  "title": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
   "title_candidates": [
     "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
     "自駕車與機器人怎麼證明自己安全？NVIDIA 分層安全的現在進度",
@@ -427,5 +427,75 @@
       ]
     ]
   },
-  "corrections_applied": []
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把標題、description、summary 五句、十三個段落、表格四列與 caption、圖解 caption 與 alt、六題 FAQ、callout、兩個結尾連結、四條 sources 與研究紀錄的 diagram／hero_label 拆成 124 條可查核主張，逐條回一手來源。四條 sources 於 2026-09-23 用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'（同一主機間隔 ≥1.5 秒、任何請求都沒有帶入姓名或 email）重抓：blogs.nvidia.com 200／121,824 bytes、safety-certification 200／665,291 bytes、halos/robotics 200／761,431 bytes、ANAB PDF 200／434,445 bytes（系統 python 的 pypdf 抽出 6 頁），四份都讀到正文，bytes 與研究紀錄一致。HTML 先刪 <!-- --> 註解、再 html.unescape、&nbsp; 換空白，所有引文以壓縮空白後的連續子字串比對：內容包裡 17 段英文引文全部命中、研究紀錄 4 條 sources 與 38 條 verified_facts 的 verbatim_quote 全部命中（0 失敗）。另外重抓了兩條被排除的預測報告連結（my.abiresearch.com 200／17,744 bytes 登入牆、omdia.tech.informa.com 200／221,965 bytes 訂閱牆），只用來核對正文對「讀不到」的描述，沒有拿來撐任何事實。核對腳本與原始檔留在 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\ai-news-nvidia-physical-ai-safety-20260921\\。",
+    "claims_checked": 124,
+    "changes": [
+      {
+        "claim": "標題把「評估」列為三種說法之一，但全篇只有標題出現這兩個字，正文與表格的四種說法是已認證／還在檢驗中／機構獲得認可／設計上支援。來源裡確實有一項評估（TÜV Rheinland 對 DRIVE AV 的 UNECE 安全評估），但這篇從頭到尾沒有寫它。",
+        "before": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+        "after": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "摘要第二句把 ISO 26262 ASIL D 的對象寫成「相關工程流程」；來源寫的是 Automotive Product Lifecycle 軟體流程與 DriveOS 6.0 取得 ASIL D，車用工程流程取得的是 ISO/SAE 21434。",
+        "before": "TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與相關工程流程認證到 ISO 26262 ASIL D",
+        "after": "TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與車用產品生命週期軟體流程認證到 ISO 26262 ASIL D",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "表格第一列把兩個標準一起掛在「DriveOS 6.0 與相關工程流程」上，等於說 DriveOS 6.0 也通過了 ISO/SAE 21434；來源沒有這樣寫。",
+        "before": "[\"已完成認證\", \"自駕車：DriveOS 6.0 與相關工程流程\", \"通過 ISO 26262 ASIL D、ISO/SAE 21434\", \"TÜV SÜD\"]",
+        "after": "[\"已完成認證\", \"自駕車：DriveOS 6.0、車用產品生命週期軟體流程與車用工程流程\", \"DriveOS 6.0 與產品生命週期軟體流程通過 ISO 26262 ASIL D；車用工程流程通過 ISO/SAE 21434\", \"TÜV SÜD\"]",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "「市場研究機構」是四條來源都沒有的描述；「全球」也不在 Omdia 那句話裡（原文只寫 roughly 60 million industrial robots will be deployed between 2026 and 2035，沒有地理範圍）；「到 2035 年前」與原文的 By 2035 差一個字。另外 Omdia 報告連結 2026-09-23 本輪重抓回 HTTP 200／221,965 bytes（頁面寫 A subscription is required to view this content），不再是研究紀錄當時的 403，「被拒絕存取」已不成立；ABI 仍是登入牆。",
+        "before": "市場研究機構 ABI Research 預測，到 2035 年前 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間全球約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下，ABI Research 原始報告要付費訂閱、Omdia 報告連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "after": "ABI Research 預測，到 2035 年 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下兩份原始報告都要訂閱才讀得到，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "FAQ 第四題與正文同一組問題（機構描述、By 2035、Omdia 連結狀態）。",
+        "before": "這兩個數字分別來自市場研究機構 ABI Research（預測到 2035 年前有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下，兩份原始報告都讀不到，一份要付費訂閱、另一份的連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "after": "這兩個數字分別來自 ABI Research（預測到 2035 年有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下兩份原始報告都要訂閱才讀得到，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "ANAB 的證書與認可範圍檔案從頭到尾沒有出現 Halos AI Systems Inspection Lab 這個名字，持證者印的是 NVIDIA Corporation；把 Type C 的登記直接說成「這間實驗室的類別」少了一步。",
+        "before": "而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab，讓它符合 ISO/IEC 17020、登記類別「TYPE C (SECOND PARTY) BODY」",
+        "after": "而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab；ANAB 的證書開給 NVIDIA Corporation，符合 ISO/IEC 17020，登記類別是「TYPE C (SECOND PARTY) BODY」",
+        "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+      },
+      {
+        "claim": "FAQ 第三題同一件事。",
+        "before": "依 ANAB 的證書檔案，這間實驗室登記的類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方",
+        "after": "ANAB 的證書與認可範圍檔案開給的是 NVIDIA Corporation，登記的檢驗機構類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方",
+        "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+      },
+      {
+        "claim": "研究紀錄的 title 跟著內容包的新標題（check_article.py 會比對兩者）。",
+        "before": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+        "after": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      }
+    ],
+    "open_questions": [
+      "title_candidates[0] 仍是研究代理原本提的舊標題（含「評估」），沒有動；要不要同步由協調者決定。第三個候選「NVIDIA Halos 的安全分層：誰檢驗、檢驗到哪裡、哪些還沒完成」也完全撐得住，若協調者偏好不用「認可／認證」這種形近詞可以換。",
+      "Digit 的型號：部落格寫 its Digit 5 humanoid，機器人頁那句未來式寫的是 Digit, Agility's humanoid（沒有 5）。正文與 FAQ 把未來式那句掛在「Digit 5」上，是兩頁合併的結果；兩頁講的是同一台機器人，但嚴格說機器人頁沒有印出型號。",
+      "機器人頁另有一句 The NVIDIA IGX is a third-party assessed, safety-compliant System-on-a-Chip，與部落格「designed to support standards including IEC 61508 and ISO 13849」是第二組措辭落差（第一組是 Halos OS 的 safety-certified）。這一輪沒有把它寫進正文，如果第二輪覺得該補，字數要從別處挪。",
+      "預測報告的取得狀態是活資料：ABI 是登入牆、Omdia 這一輪已從 403 變成 200＋訂閱牆。正文現在寫「都要訂閱才讀得到」，比寫死狀態碼耐放，但若之後再變動要再改。",
+      "全篇「官方」出現 16 次（正文、FAQ、callout 合計）。歸因密度規則（開頭段 ≤1、任一段 ≤2 個歸因語）是過的，但若協調者要進一步壓低「官方」的重複，那是文字調整、不是事實問題，這一輪沒有動。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 10 條：頁面時刻 16:00（article:published_time 2026-09-21T16:00:46+00:00）是整點排程佔位，不換算台北時間；事件日維持 2026-09-21。本輪重抓的 meta 與 JSON-LD 與研究紀錄一致，正文第一段、slug 後綴、news_date 三者都寫 9 月 21 日，沒有出現任何時刻——維持原判。",
+      "指派表 A6：4,900 萬台與 6,000 萬台一律歸因給 ABI Research 與 Omdia，標題與摘要不放這兩個數字——查核後仍然成立（標題、description、summary 都沒有這兩個數字）。",
+      "研究紀錄 must_not_write：兩個官方頁對 Halos OS 的措辭不一致時以「還在檢驗」那一版為準，兩邊都要寫出來——正文第 8 段照做，維持。",
+      "研究紀錄 unverified_or_excluded：不得請求部落格裡 Advantech 那個夾帶個人 email 的 outlook safelinks 轉址網址，也不得抄 ANAB PDF 上的聯絡人姓名與 email——本輪都沒有請求、沒有抄錄，查核報告裡也沒有。",
+      "AI 垂直只有一個 callout、沒有投資免責段落——維持（內容包只有一個 callout）。"
+    ]
+  }
 }

@@ -482,7 +482,7 @@
     "caption": "整理自 OpenAI 2026 年 9 月 21 日〈Building standards for the next phase of AI〉，這一篇的資料在 2026 年 9 月 23 日查核。",
     "nodes": [
       ["起點", "RSI 尚未完全自主"],
-      ["支柱一", "各國標準互補機制"],
+      ["支柱一", "國家與國際標準互補機制"],
       ["支柱二", "共同量測與事故通報"],
       ["界線", "不是許可證或審查"]
     ]
@@ -612,6 +612,85 @@
       "ASSIGNMENTS.md A2 要求 RSI 的官方說法照抄語氣：內容包把英文原句與中文括號譯文並列，逐字比對無誤，本輪保留。",
       "兩個結尾連結的 text 與目標內容包的 zh-TW title 逐字相同（索引與失準通報框架那篇都已存在於 worktree），check_article.py 對它們沒有 FAIL，本輪沒有動。",
       "DELTA-4-7 第 12 條：第二輪必做。本輪改了 22 條主張、18 處文字。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "獨立查核代理（第二輪），沒有參與撰稿，也沒有參與第一輪",
+      "checked_on": "2026-09-23",
+      "method": "四條 sources 全部自己重抓（2026-09-23 台北 01:29，curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同一主機間隔 ≥2 秒、UA/標頭/查詢字串都沒有任何人的姓名或 email），四條都 200 且讀到正文：公告 418,052 bytes（抽取後 13,985 字元，RSI／International standards／(1)／(2)／The United States should lead 五節齊全）、RSS 741,570 bytes（1,215 個 item）、NIST 85,196 bytes、研究加速報告 2,315,093 bytes；本輪同樣沒有遇到 openai.com/index/* 的 403。範圍照 FACTCHECK-47 的第二輪規定：第一輪改動的 22 條主張與 18 處文字逐處回原文重查，第一輪新寫進去的每一句逐句比對，再從第一輪 85 條 CONFIRMED 裡機械抽樣三分之一（每三條取一條，共 29 條）重查，另外自己新查 9 個面向。機械檢查：51 條 verbatim_quote 對今天抓到的正文做連續字串比對（正規化 NBSP／U+2011／彎引號後）全部命中、0 MISS；四份來源的關鍵字掃描（Taiwan／Taipei／台灣／臺灣／台北／EU AI Act／European Union／Europe／AI Act／binding／treaty）；兩個結尾連結的 text 與目標內容包 zh-TW title 逐字比對；每一段的歸因詞計數；段落字數與 description 字數。",
+      "claims_checked": 60,
+      "claims_checked_detail": "22 條第一輪改動過的主張＋29 條隨機抽樣的 CONFIRMED＋9 條第二輪自己新查的面向＝60 條；另有 51 條 verbatim_quote 的機械比對與 4 條來源的重抓，不計入這 60 條。",
+      "verdict_counts": {
+        "re_confirmed": 52,
+        "changed": 8,
+        "not_found": 0,
+        "out_of_scope": 0
+      },
+      "changes": [
+        {
+          "claim": "block[5]：把「完全自主的 RSI 今天沒有發生」那句寫成排在風險句「之後」。原文的順序相反——引句在前，Done without appropriate care and caution 那句在後，而「維持有意義人類監督」又來自更後面的 Collective action 條目。「接著」是對原文結構的錯誤描述。",
+          "before": "原文接著劃出現況的界線",
+          "after": "原文也劃出現況的界線",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[6]：三個問題的第一項壓掉了原文的 incident definitions（Evaluations, reporting requirements, and incident definitions by different nations could conflict）。第一輪把它列為 open question、理由是字數只剩 86 字餘裕；本輪刪掉 block[14] 的編輯自述後有餘裕，補回。",
+          "before": "各國評估與通報要求可能互相衝突",
+          "after": "各國評估、通報要求與事故定義可能互相衝突",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[14]：同一段把「失準通報框架是第三個方向的早期貢獻」講了兩次，中間夾著「這是另一篇文章的題目，這一篇只帶一句」這種編輯過程的自述（DELTA-4-7 第 14 條：查證紀律與編輯決定不要寫進正文），而且整段的歸因詞是 3 個（OpenAI 目前／那份報告寫明／OpenAI 把它列為），超過 FACTCHECK-47「任一段最多兩個」的上限。刪掉自述後歸因詞剩 2 個，事實一句不少（must_not_write 第 2 條本來就只允許一句）。",
+          "before": "；第三個方向的早期貢獻則是失準通報框架——這是另一篇文章的題目，這一篇只帶一句：OpenAI 把它列為支柱二的早期貢獻。",
+          "after": "；第三個方向的早期貢獻則是 OpenAI 的失準通報框架。",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[23]：原文是 ensuring that alignment research and deployment of that research stay ahead of capabilities——走在能力前面的是「對齊研究」與「對齊研究的部署」。寫成「對齊研究與部署」會被讀成「對齊研究與（產品）部署」，把 OpenAI 自己否定的速度框架又讀回來。",
+          "before": "而是讓對齊研究與部署走在能力前面",
+          "after": "而是讓對齊研究及其部署走在能力前面",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "表格第三列：原文是 standards bodies such as ISO...（舉例），與第一列十國那個 such as 同一種句型。第一輪替第一列加了「（舉例）」，第三列漏了，不加會被讀成「公告點的就這五個」。must_not_write 第 18 條也要求不得寫成已經參與。",
+          "before": "公告主張要合作的組織",
+          "after": "公告主張要合作的組織（舉例）",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[16] 圖解 alt：支柱一的字沿用第一輪修正前的說法「各國標準互補機制」，與修正後的正文、小標「支柱一：讓國家標準與國際標準互補」互相矛盾。原文互補的是 national 與 international frontier standards，不是「各國之間」。",
+          "before": "支柱一寫各國標準互補機制",
+          "after": "支柱一寫國家與國際標準互補機制",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "研究紀錄 diagram.nodes 的支柱一節點同上。這一欄是 build_assets.py 出圖時實際畫在圖上的字（DELTA-4-7 第 15 條，圖還沒畫），留著舊說法就會畫出與正文矛盾的圖，所以本輪一併改。summary 與 suggested_table 依協調者指示維持原狀、不得據以回改內容包。",
+          "before": "[\"支柱一\", \"各國標準互補機制\"]",
+          "after": "[\"支柱一\", \"國家與國際標準互補機制\"]",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[1] 與 callout 各有一句把這份政策主張稱為「規格」。這是一篇政策主張，沒有任何規格；第一輪列為 open question 第 2 條，協調者裁定改成「標準」或「規範」。block[20] 的「實務規格」不動——那一處對應原文 practical specifications，是正確用法。",
+          "before": "以下規格與主張／文中的規格與主張",
+          "after": "以下標準與主張／文中的標準與主張",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        }
+      ],
+      "open_questions": [
+        "block[1] 整段是「我們讀了哪幾頁」的查證紀律，DELTA-4-7 第 14 條說這不是內容；但它同時是本批所有文章的共同格式，而且 check_article.py 要求查核日出現在前兩段。本輪只把「規格」換成「標準」，沒有動段落結構——要不要全批一起改，是協調者的事。同段的「本站沒有做任何實測」對一篇政策主張也讀不太通。",
+        "FAQ 第一題仍寫「以這幾條來源查核到 2026 年 9 月 23 日，公告沒有寫啟動時間」。這一句的否定範圍本來就限縮在「公告」，不是第一輪修掉的那種四條來源全稱句，所以沒有改；但「這幾條來源」四個字在這裡是多餘的。",
+        "block[13] 第三個方向壓掉了原文的 for alignment and automated AI research issues（事故分類追蹤通報回應的適用範圍）。不是錯誤、只是壓縮，且改動會動到已經很滿的一段，本輪沒有補。",
+        "sources[3] 的標題寫「（公告點名的第一份貢獻）」。原文 initial contribution 掛在第一個方向、early contribution 掛在第三個方向，「第一份」指的是「第一個方向的那一份」而不是「時間上最早的那一份」，讀者看標題可能會誤解。屬於來源標題措辭，本輪沒有改。",
+        "summary 第五句後半「OpenAI 自己也說這個構想預期會隨時間大幅演變」只出現在 FAQ 第一題與 callout，沒有出現在任何正文段落。checker 的 body_without_summary 涵蓋 callout 所以不會 FAIL，事實本身也有 verbatim_quote 撐著（While we expect this concept to evolve substantially over time），本輪沒有為此加字。",
+        "研究紀錄的 summary 與 suggested_table 仍是第一輪修正前的說法（「借用各國已成立的 AI 安全研究所網絡」、第一列沒有「（舉例）」、第三列把 Appia Foundation 併進標準組織）。依協調者指示本輪不動，定稿一律以內容包為準。"
+      ],
+      "coordinator_rulings": [
+        "協調者裁定：把指涉這份政策主張的「規格」改成「標準」或「規範」。已改兩處（block[1]、callout），block[20] 對應原文 practical specifications 的「實務規格」保留。",
+        "協調者裁定：研究紀錄的 summary 與 suggested_table 已過時，內容包才是基準，不得回改。本輪據此保留那兩欄，只改 diagram.nodes（那一欄會被畫進圖裡）。",
+        "FACTCHECK-47 的歸因密度規則（開頭段最多一個、任一段最多兩個）是協調者核准的編輯，不是風格回報。逐段計數後只有 block[14] 超標（3 個），已改；block[10] 的三個標記裡有兩個是 must_not_write 第 6 條硬性要求的清單出處標示（NIST 頁面／OpenAI 文中），真正的「X 表示」只有一個，不動。開頭段的「OpenAI 提出」是新聞主角本身在做的動作，真正的歸因詞只有「文章同時寫明」一個。",
+        "第一輪把台灣／歐盟 AI 法案的否定句從「四條來源」限縮成三份文件，與 must_not_write 第 7 條規定的句型（「以這幾條來源查核到⋯⋯未見台灣」）字面不同。本輪重測確認第一輪是對的：RSS feed 裡 Taiwan 命中 1 次（2025-06-01 的中國影響力行動那則，寫的是 a Taiwanese social media influencer）、EU AI Act 命中 1 次（2026-07-31 的歐洲那則），四條全稱句站不住；限縮後的句子把三份文件逐一點名，比原句型更精確，維持第一輪的寫法。",
+        "事件日與 display_order 不動：RSS 的 pubDate 今天重抓仍是 Mon, 21 Sep 2026 10:00:00 GMT（台北 9/21 18:00，不跨日），category 仍是 Global Affairs，公告頁自印 September 21, 2026；slug 後綴、news_date 與第一段三者一致。",
+        "結論：ok。第二輪改了 8 處（其中 2 處是協調者指定的「規格」措辭），沒有一處推翻第一輪的判斷；第一輪那 18 處文字本輪逐處回原文重查，全部成立。"
+      ]
+    }
   }
 }

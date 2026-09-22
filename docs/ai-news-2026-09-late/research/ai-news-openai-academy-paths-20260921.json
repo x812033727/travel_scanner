@@ -500,6 +500,94 @@
       "DELTA-4-7 第 10 條：事件日 2026-09-21，照公告署名日期；本輪重抓仍印 September 21, 2026。",
       "研究紀錄 unverified_or_excluded 第 2 條：AI for Educators 與 AI Leadership 兩個課程頁不在 sources[]，只有那兩頁才有的細節不得進正文——撰稿把「建議先修 AI Foundations」寫進大學生那一節，已改掉。",
       "研究紀錄 must_not_write 第 9 條：不補學生優惠的年份、不寫台灣可以領，已逐句核對。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, not the writer, not round 1)",
+      "checked_on": "2026-09-23",
+      "method": "第二輪自己重抓 sources[] 四條（curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同主機間隔 ≥1.2 秒，任何請求都沒有帶入姓名或 email）：公告 200／420,322 B、說明中心課程 200／110,051 B、支援地區 200／70,121 B、課程頁 200／296,427 B，四條都讀到正文；課程頁的正文從 <script id=\"__NEXT_DATA__\"> 的 props.pageProps.data.course.course 取，description 是 Slate 節點，另外攤平成純文字。範圍：第一輪改過的 14 處（15 次字串替換）逐句回一手來源重驗、第一輪新寫進去的每一句逐句回原文、再加 58 條原判 CONFIRMED 的（占 78 條的 74%），合計重查 72 條。研究紀錄 44 條 verified_facts 與 4 條 sources 的 verbatim_quote 全部用程式做連續字串比對，另比對正文裡三段英文引文。工具在 C:\\\\Users\\\\x8120\\\\mokaair-work\\\\news47\\\\_tools\\\\ai-news-openai-academy-paths-20260921-r2\\\\。",
+      "claims_rechecked": 72,
+      "round_1_changes_reverified": 14,
+      "changes": [
+        {
+          "claim": "AI for Educators 的內容欄「出題」",
+          "before": "備課、出題、評量與溝通內容（正文第 6 段與表格第 3 列各一次）",
+          "after": "備課、課堂活動、評量與溝通內容",
+          "why": "說明中心課程表寫的是 Lesson planning, activities, assessments, and communications；activities 是課堂活動，不是出題，而 assessments 已經譯成評量。公告同一節也寫 create an activity or assessment。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "測驗沒過可以重考幾次",
+          "before": "沒通過可以再考一次，題目會重新隨機抽。",
+          "after": "沒通過可以重考，題目會重新隨機抽。",
+          "why": "原文 If you do not pass, you can try again with a newly randomized selection of questions. 沒有寫只能再考一次；「再考一次」會被讀成只有一次補考機會。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "FAQ Q1 末句的否定範圍",
+          "before": "官方沒有另外說明台灣以外還有沒有其他限制。",
+          "after": "查核當天讀到的這幾頁，沒有再寫台灣還有什麼其他限制。",
+          "why": "「官方沒有」超出查核範圍（本篇只讀了四頁），而且「台灣以外」語意不清；照正文的寫法限縮到讀過的頁面與查核日。",
+          "source_url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries"
+        },
+        {
+          "claim": "FAQ Q2 的題目仍在問學分",
+          "before": "課程徽章等於證照或學分嗎？",
+          "after": "課程徽章等於證照嗎？",
+          "why": "第一輪已把「不是學分、學位或任何正式資格的替代」從正文刪掉（無來源），FAQ 的題目與答句卻原封不動；credit 與 degree 在四條來源全文各出現 0 次。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "FAQ Q2 答句的學分／學位",
+          "before": "它們代表完成課程並通過測驗，不是學分或學位。",
+          "after": "它們代表的是完成課程並通過測驗這兩件事。",
+          "why": "同上；改成與正文一致的說法 Each badge recognizes that you completed a course and passed the assessment.，FAQ 答案回到正文的子集。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "FAQ Q5 首句的否定範圍",
+          "before": "官方頁面沒有說明課程使用哪些語言。",
+          "after": "公告與說明中心都沒有說明課程使用哪些語言。",
+          "why": "「官方頁面」是不設限的否定；正文寫的是「公告與說明中心都沒有寫」，兩處改成同一個範圍。language 在公告與說明中心全文各 0 次。",
+          "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+        }
+      ],
+      "round_1_changes_upheld": [
+        "「這次新增的課程是加在它旁邊」：These join Apply AI at Work… 逐字命中，公告沒有寫 Apply AI at Work 未改版。",
+        "AI Leadership 的對象與商業價值改掛回公告：helps people responsible for strategy, adoption, and change management assess where AI could create business value. 與 Learners connect an initiative to business priorities, define ownership and governance, and develop an initial AI strategy and roadmap for adoption. 兩句都在公告正文，說明中心課程表只承擔 180 min／內容欄／No single product。",
+        "「學生、教學助理與同事」：adapt communications for students, teaching assistants, or colleagues 逐字命中。",
+        "刪掉「官方建議先修 AI Foundations」：課程頁 __NEXT_DATA__ 的 prerequisiteCourses 是空陣列、整頁 AI Foundations 出現 0 次；改成「課程頁沒有列先修課程」與說明中心課程表的 AI Foundations 一列，兩者都撐得住。",
+        "「要在 10 月 31 日前領取」：Claim the student offer by October 31 是領取期限；頁面文字仍然沒有年份（超連結是 https://chatgpt.com/students/2026/，依裁定不進正文，第二輪維持不寫）。",
+        "企業搭配路徑的方向：A company might use Apply AI at Work in employee onboarding, offer Build with AI courses to developers and technical teams, and include AI Leadership in an executive, Champion, or transformation program. 與改後的正文一致。",
+        "「徽章……代表的是完成課程並通過測驗這兩件事」：Each badge recognizes that you completed a course and passed the assessment. 命中。",
+        "「可以用個人身分修，也可以透過所屬的組織修」：Learners can access courses as individuals or through an organization. 命中。",
+        "「選錯帳號，課程紀錄與徽章就會掛在那個 email 上」：If you use the wrong account, your course activity and OpenAI Academy badges will be associated with the email address for that account. 命中。",
+        "語言那一句改引「說明中心的課程表」：三個來源都在 sources[] 裡，而且今天讀到的都是英文。",
+        "summary 第五句「頁面沒有寫台灣有對應方案」：課程頁只寫 Eligible U.S. college students，沒有其他地區的方案。",
+        "第二段「課程時間、測驗規則與學生優惠的價格都是 OpenAI 自己頁面上寫的」：時間與測驗規則在說明中心、價格在課程頁，三者都是 OpenAI 自己的頁面。",
+        "callout 刪掉寫給撰稿者的指示，保留「課程時間與價格數字一律是 OpenAI 自己的說法。」"
+      ],
+      "checked_and_correct": [
+        "事件日鏈：公告署名區今天仍只印 September 21, 2026，slug 後綴 20260921＝news_date 2026-09-21＝正文第一段一致。",
+        "台灣那條鏈三段今天全部重抓命中：公告全文 countr／region／global／Taiwan 各 0 次（只有頁尾語系選單印 English United States）；說明中心 OpenAI Academy courses are available globally to anyone with a ChatGPT account.；支援地區頁第 194 行 Taiwan（前後 Svalbard and Jan Mayen、Tajikistan）。",
+        "表格 16 格逐格對說明中心課程表（AI Foundations 60–75 min、AI Leadership 180 min、AI for Educators 45 min、AI for College Students 45 min 與各自的 What's covered 欄）全部相符，內容欄的「出題」已於本輪改掉。",
+        "徽章規則：完成課程＋測驗 80% 以上、10–20 題、題庫 50 題、Accredible 發放與管理、eligible pathway 才有完課證書、三門獨立課不構成路徑——說明中心與課程頁兩處一致。",
+        "兩段英文引文（The educator decides what belongs in their teaching.／These badges and certificates of completion are not certifications and do not guarantee eligibility for a future certification.）與「Eligible U.S. college students」逐字命中。",
+        "課程頁：Level: Intermediate、designed for higher education students who already have some experience using ChatGPT and writing prompts、No prior experience with Projects or Work is required、four months of ChatGPT Work for free、$20/month after the free period unless you cancel——全部命中。",
+        "兩個結尾連結的 text 與目標內容包的 zh-TW title 用程式逐字比對，兩條都相同。",
+        "sources[] 四條的 title／url／checked_on 與研究紀錄一致，checked_on 2026-09-23 與表格 caption、圖解 caption 同日。",
+        "體例：全篇 0 個「本文」；description 199 字、句尾只有「（2026 年 9 月查證）」；title／description／summary 沒有清點數字；第一段一個歸因詞、其餘每段最多兩個；16 段正文合計 2,734 字（1,800–3,000）；沒有購買建議、比價或投資語氣，廠商宣稱都有歸因。",
+        "活資料仍未進正文：課程頁 enrollCount 今天讀到 824（第一輪 823、研究時 815），說明中心頁首 Updated: 2 days ago、支援地區頁 Updated: last month 都沒有被換算。"
+      ],
+      "quote_continuity_notes": [
+        "44 條 verified_facts 的 verbatim_quote 全部命中。其中 6 條（Gradual 那句、四列課程表、課程頁的 Duration: 45 minutes）在「標籤之間補空白」的剝法下對不上，是因為它們取自「標籤直接刪掉、不補分隔」的渲染：把空白全部去掉後 6 條都命中，四列課程表各自是同一列的儲存格依序相接，不是把不同段落拼在一起，所以不改。",
+        "sources[] 四條的 verbatim_quote 今天也全部命中。"
+      ],
+      "open_questions": [
+        "每月 20 美元在 summary 第五句與正文最後一段各出現一次；must_not_write 第 10 條寫「可以照官方原文寫一次」。兩處都是純事實、沒有划算與否的評語，而且 summary 必須是正文的子集，所以沒有動——若站主要嚴格照「一次」解，刪 summary 那一句的價格即可。",
+        "第一輪留下的學生優惠年份問題維持原樣：課程頁文字只有 October 31，超連結帶 2026；要寫年份得先把 chatgpt.com/students 那一頁抓下來並換掉 sources[] 其中一條。",
+        "summary 第四句的「60 到 75 分鐘」只出現在表格、沒有出現在任何一段正文。check_article.py 的 body_without_summary 把表格算進正文，所以自檢通過；若之後有人把這條規則收緊成「只看段落」，要把這個時間補進正文。"
+      ],
+      "verdict": "ok"
+    }
   }
 }
