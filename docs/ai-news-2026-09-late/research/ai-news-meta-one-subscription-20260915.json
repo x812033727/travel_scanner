@@ -1,0 +1,641 @@
+{
+  "slug": "ai-news-meta-one-subscription-20260915",
+  "vertical": "ai",
+  "display_order": 174,
+  "event_date": "2026-09-15",
+  "event_date_basis": "公告頁的 JSON-LD NewsArticle 節點印 \"datePublished\":\"2026-09-15T15:00:59+00:00\"，同一頁的 <meta property=\"article:published_time\"> 也是同一個時刻；換算台北時間是 2026 年 9 月 15 日 23:00:59，仍是同一天。15:00:59 不是 00:00 或 16:00 那種整點排程佔位時刻，所以 DELTA-4-5 第 5 條、DELTA-4-6 第 7 條的「佔位時刻不換算」判例在這裡用不上，但換算後日期不變，事件日就是 2026-09-15，與 DELTA-4-7 第 10 條的站主裁定一致。同一節點的 \"dateModified\":\"2026-09-16T20:22:09+00:00\"（台北 9 月 17 日 04:22）**不是**事件日；slug 後綴、news_date、正文第一段的日期三者一律 2026-09-15。頁面自己在標題下方同時印兩個時間戳（<time class=\"entry-date published\" datetime=\"2026-09-15T08:00:59-07:00\">September 15, 2026</time> 與 <time class=\"updated\" datetime=\"2026-09-16T13:22:09-07:00\">September 16, 2026</time>，都是美西時間），新聞室索引 https://about.fb.com/news/ 對這一則列出的日期也是 September 15, 2026，兩處互相印證。關於 9 月 16 日那次更新：**頁面沒有任何編者註、更新說明或修訂紀錄（全文 \"Editor\" 0 次，正文沒有 Update 字樣），本站也沒有 9 月 15 日的原始版本可以比對，因此無法指出 9/16 改了什麼**。可以確定的只有一件事：同一則公告的法文版（https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/）的 JSON-LD 是 \"datePublished\":\"2026-09-15T15:25:57+00:00\",\"dateModified\":\"2026-09-15T16:23:33+00:00\"，兩個時間都在 9 月 15 日，而它的「À retenir」摘要已經帶有「plus de 50 fonctionnalités lancées et 15 millions d'abonnements et d'essais à ce jour」，**所以「超過 50 項功能、1,500 萬份訂閱與試用」這個數字不是 9 月 16 日才加上去的**。撰稿因此**不要**寫「9 月 16 日更新後新增了……」這種句子；要提更新，只能寫成「這一頁在 9 月 16 日又改過一次，官方沒有說明改了什麼」，而且日期一律照 9 月 15 日。",
+  "title": "Meta One 訂閱服務上線：官方說核心體驗維持免費，台灣價格沒有寫",
+  "title_candidates": [
+    "Meta One 訂閱服務上線：官方說核心功能維持免費，台灣價格沒有寫",
+    "Meta 推出 Meta One 訂閱：哪些還是免費的，哪些要付費才有",
+    "Meta One 開放訂閱：三類方案各自管到誰，價格因地區而異"
+  ],
+  "summary": "2026 年 9 月 15 日，Meta 在官方新聞室宣布訂閱服務 Meta One。Instagram Plus、Facebook Plus、WhatsApp Plus 今年稍早就以「Meta One 單一產品方案」的名義推出（公告原文：Earlier this year, we launched Meta One single product plans），這次是在同一個名字下新增兩種個人組合方案（Core、Premium）與四種創作者／商家方案（Essential、Advanced、Expert、Max）。對讀者最要緊的一句話是官方自己寫的：Facebook、Instagram、WhatsApp 與 Meta AI 的核心體驗「一直是免費的，這一點不會改變」，訂閱買到的是更多 AI 生成用量、表達功能與商家工具。公告寫方案「現已在全球提供」，但同一頁結尾又寫方案、權益、價格與供應情形可能因地區、App 與帳號而異，摘要欄位的措辭則是「逐步推出」。價格只印美元符號、沒有幣別代碼，而同一則公告的法文版印的是歐元、而且不是美元的換算（Core $7.99 對 6,99 €、Premium $19.99 對 20,99 €、Essential $14.99 對 16,99 €），所以美元數字不能當成全球價，更不能換算成新台幣。全文沒有出現台灣，公告也沒有寫台灣的價格或開放時間。Meta 宣稱到目前為止累計「超過 50 項功能上線、1,500 萬份訂閱與試用」，那是訂閱與試用合計、沒有期間與方法說明的廠商自述。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "Introducing Meta One: A Subscription Service With More Features and AI to Create, Connect, and Stand Out（Meta 官方新聞室公告，署名 Facebook company）",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "publisher": "Meta（Meta Newsroom / about.fb.com）",
+      "fetched_at": "2026-09-23T00:29:45+08:00",
+      "http_status": 200,
+      "bytes": 713186,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "The core experience across our apps and Meta AI has always been free, and that’s not changing."
+    },
+    {
+      "title": "Meta Newsroom 新聞總覽頁（這一則列在頁面上，列表日期 September 15, 2026）",
+      "url": "https://about.fb.com/news/",
+      "publisher": "Meta（Meta Newsroom）",
+      "fetched_at": "2026-09-23T00:32:11+08:00",
+      "http_status": 200,
+      "bytes": 307920,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "We’re introducing Meta One, a new subscription service on Facebook, Instagram, WhatsApp, and Meta AI that offers more AI usage, enhanced expression features, and tools for creators and businesses."
+    },
+    {
+      "title": "Présentation de Meta One : Un service d’abonnement offrant davantage de fonctionnalités et d’IA pour créer, se connecter et se démarquer（同一則公告的法文版，用來對照歐元定價與摘要欄位的成文時間）",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+      "publisher": "Meta（Meta Newsroom / about.fb.com）",
+      "fetched_at": "2026-09-23T00:33:46+08:00",
+      "http_status": 200,
+      "bytes": 855949,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Les offres Meta One sont désormais disponibles dans le monde entier, à partir de 2,49 € par mois pour les offres sur un seul produit, 6,99 € par mois pour les offres groupées destinées aux particuliers et 16,99 € par mois pour les offres groupées destinées aux créateurs et aux entreprises."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-23（台北）以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐條抓取，同一主機的請求間隔 ≥1 秒，任何請求的 UA、標頭、查詢字串都沒有帶入任何人的姓名、email 或個人資料。三條 sources[] 全部 HTTP 200、0 次轉址、body 是正文，原始檔留在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\ai-news-meta-one-subscription-20260915\\ 供查核代理比對：\n(1) 主來源 main.html → 200／713,186 bytes（指派表記的 713,199 是 9/18 探索當時的大小，about.fb.com 是 WordPress 動態頁，導覽與推薦區塊會變）。正文在 <div class=\"entry-content\"> 裡（抽成純文字 6,008 字元，存成 entry-content.txt），JSON-LD 的 NewsArticle 節點另有一份 articleBody（6,343 字元、wordCount 991，存成 articleBody.txt），兩者逐句一致。**三條「Takeaways」摘要不在 entry-content 裡**，而在正文前一個獨立的 <div class=\"highlights-container\"><h2 class=\"highlights-title …\">Takeaways</h2> 區塊，引用時要知道它和正文是兩塊不同的文字，措辭也真的不一樣（見 verified_facts 的「逐步推出」對「現已在全球提供」）。\n(2) 新聞總覽頁 newsroom.html → 200／307,920 bytes，這一則的 <article> 卡片同時印 <time class=\"entry-date published\" datetime=\"2026-09-15T08:00:59-07:00\">September 15, 2026</time> 與 <time class=\"updated\" …>September 16, 2026</time>，標題與摘要與主來源相符；本紀錄只用它確認列表日期，不引用頁面上其他項目或計數。\n(3) 法文版 fr.html → 200／855,949 bytes，正文抽成 8,641 字元（fr-entry-content.txt）。它的「À retenir」是寫在 entry-content 內的 <h2> + <ul>，與英文版的 highlights 區塊同一組內容。\n**兩個取得上的陷阱，查核代理請一起沿用**：①頁面內嵌一段 ElevenLabs／Speechify 朗讀器的 JSON（欄位 tts_text），那份文字把 AI 全部換成 \"ay-eye\"、並把標題與摘要串成一長段——「15 million」在原始碼裡的第一個命中就在那裡面，**絕對不可以拿它當引文來源**；本紀錄所有引文都取自渲染後真正印出來的段落或 JSON-LD。②正文的 [gallery …] 短碼在 articleBody 裡沒有展開，圖說與圖片內的文字本紀錄一律沒有讀，不得引用。\n另外抓了但**不列入 sources[]、文中也不得引用其內容**的一條：公告末句連到的 https://www.meta.com/meta-one-plans/?utm_source=newsroom&utm_medium=referral&utm_content=newsroom-post（2026-09-23T00:32:04+08:00，200／435,330 bytes），最終網址被導到 https://www.meta.com/zh-tw/meta-one-plans/，但整頁是瀏覽器端渲染的殼：可抽出的可見文字只有 24 個字元（頁面標題「Meta One 訂閱方案：定價、功能和更多內容」），全頁搜尋 $、NT$、每月、台灣、Premium、Instagram Plus 全部 0 次。照 DELTA 的判準，200 加大 bytes 不等於讀到文件，所以它不撐任何句子。\n**為什麼這一則現在才寫**（DELTA-4-7 第 1 條要求交代）：事件日 9/15 落在上一輪（9/16 起）與本輪（9/20 起）兩個窗口之外，上一輪的探索清單 docs/news-2026-batch-4/candidates-since-0916-ai.md 是靠「更新日 9/16 落在窗口內」把它撈進來、並標成邊界項目交由協調者裁定，站主到 2026-09-20 圈選才定案補寫。正文要交代時就照這個寫（例如「這則公告發布時落在本站上一輪整理的區間外，這次補上」），**不要寫成「來源當時讀不到」**——來源一直讀得到。",
+  "verified_facts": [
+    {
+      "fact": "事件本身：2026 年 9 月 15 日，Meta 在官方新聞室宣布推出訂閱服務 Meta One，分成個人、創作者與商家三種對象的方案。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Today, we’re introducing Meta One: a new subscription service that brings more value to the apps and experiences billions of people already use — with plans for individuals, creators, and businesses."
+    },
+    {
+      "fact": "事件日的機器可讀依據：JSON-LD 的 NewsArticle 節點同時印發布時間與最後修改時間。台北時間分別是 2026-09-15 23:00:59 與 2026-09-17 04:22:09。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\":\"2026-09-15T15:00:59+00:00\",\"dateModified\":\"2026-09-16T20:22:09+00:00\""
+    },
+    {
+      "fact": "新聞總覽頁對這一則列出的日期是 September 15, 2026（頁面上另有一個 class=\"updated\" 的 September 16, 2026），與 JSON-LD 一致。",
+      "url": "https://about.fb.com/news/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<time class=\"entry-date published\" datetime=\"2026-09-15T08:00:59-07:00\">September 15, 2026</time>"
+    },
+    {
+      "fact": "全篇最該寫進第一段的一句：官方說免費的核心體驗不會變。注意時態與範圍——原文是「一直是免費的，而這一點不會改變」，不是「未來永遠免費」的承諾。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The core experience across our apps and Meta AI has always been free, and that’s not changing."
+    },
+    {
+      "fact": "摘要區塊（Takeaways）的第三條用的是未來式，措辭與正文那一句不同，兩句都要照原文分開處理。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The core experience across our apps and Meta AI will stay free."
+    },
+    {
+      "fact": "訂閱買到的是什麼：官方寫訂閱解鎖的是更專門的功能與更多 AI 用量，超出一個為數十億人打造的免費體驗所能提供的範圍。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Subscriptions unlock more specialized capabilities and expanded AI usage that go beyond what a free experience built for billions can offer."
+    },
+    {
+      "fact": "上線規模與範圍：超過 50 項功能，分布在 Instagram、Facebook、WhatsApp 與 Meta AI，之後才會擴到 Edits 與 AI 眼鏡等。Edits 與 AI 眼鏡是預告，不是已上線。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re launching with more than 50 features on Instagram, Facebook, WhatsApp, and Meta AI, and will expand to Edits, AI glasses, and more over time."
+    },
+    {
+      "fact": "官方唯一的成績數字，在 Takeaways 區塊、不在正文：到目前為止累計超過 50 項功能上線、1,500 萬份「訂閱與試用」。同一句還寫方案是「逐步推出」，與正文「現已在全球提供」的措辭不一樣，兩句要一起寫，不可只取其一。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Meta One plans are rolling out gradually, with more than 50 features launched and 15 million subscriptions and trials to-date."
+    },
+    {
+      "fact": "供應與定價的官方說法（正文「How to Get Started」第一句）：方案現已在全球提供，單一產品方案每月自 $2.99 起、個人組合方案 $7.99 起、創作者與商家組合方案 $14.99 起。頁面只印 $，沒有任何幣別代碼。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Meta One plans are now available globally and start at just $2.99 a month for single products, $7.99 a month for individual bundles, and $14.99 a month for creator and business bundles."
+    },
+    {
+      "fact": "最重要的限定句，在正文倒數第二段：方案、權益、價格與供應情形可能因地區、App 與帳號而異；要知道自己的帳號有哪些功能，官方叫你從訂閱流程裡看。這一句必須和「全球提供」寫在一起，也是讀者「我這邊會不會不一樣」的官方答案。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Plans, benefits, pricing, and availability may vary by region, by app, and by account. To see the specific features available to your account, start the subscription process."
+    },
+    {
+      "fact": "單一產品方案的三個名稱與官方標價（頁面只印 $）：WhatsApp Plus $2.99／月。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "WhatsApp Plus ($2.99/mo)"
+    },
+    {
+      "fact": "單一產品方案：Instagram Plus $3.99／月。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Instagram Plus ($3.99/mo)"
+    },
+    {
+      "fact": "單一產品方案：Facebook Plus $3.99／月。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Facebook Plus ($3.99/mo)"
+    },
+    {
+      "fact": "個人組合方案：Core $7.99／月。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Core ($7.99/mo)"
+    },
+    {
+      "fact": "個人組合方案：Premium $19.99／月，官方說是 Core 的全部再加上最多的 Meta AI 與全家族 App 創作空間。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Premium ($19.99/mo): Everything in Core, with the most room to create content with Meta AI and across our family of apps."
+    },
+    {
+      "fact": "創作者／商家方案的第一階：Essential 自 $14.99／月起。注意原文用的是 starting at，不是固定價。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Essential (starting at $14.99/mo): Establish yourself and build confidence with new audiences."
+    },
+    {
+      "fact": "Essential 的驗證徽章與冒名保護帶條件，原文括號寫明「須通過驗證」，不是訂閱就有。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "impersonation protection so people know you’re who you say you are (pending successful verification)."
+    },
+    {
+      "fact": "創作者／商家方案的第二階：Advanced 自 $49.99／月起，賣點是排程、貼文與 Reels 可放連結、可匯出的分析、團隊成員不必共用密碼就能存取帳號。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Advanced (starting at $49.99/mo): Invest in professional-grade tools."
+    },
+    {
+      "fact": "創作者／商家方案的上兩階：Expert 自 $149／月起、Max 自 $499／月起。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Expert (starting at $149/mo) and Max (starting at $499/mo): Scale and optimize."
+    },
+    {
+      "fact": "Meta AI 的免費與付費界線，官方寫得很直白：日常使用仍然免費，Core 與 Premium 是給想要更多創作自由的人。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Meta AI will still be free for everyday use — Core and Premium are for people who want even more creative freedom from our AI tools."
+    },
+    {
+      "fact": "付費方案多出來的 AI 用量具體指什麼：更多 Meta AI 媒體生成，包含建立與編輯圖片、用 Muse 模型生成影片，以及更多 Instagram 的 Restyle 這類 App 內建 AI 工具。這是本篇與站上既有 Muse Spark 那一篇唯一的接點，只能點到為止。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This means more media generation with Meta AI, including creating and editing images and generating videos powered by Muse models, and more use of in-app AI tools like Restyle on Instagram."
+    },
+    {
+      "fact": "Meta One 不是從零開始：官方寫今年稍早就推出過 Instagram Plus、Facebook Plus、WhatsApp Plus 三個單一產品方案。因此不可以寫成「Meta 首次推出訂閱制」。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Earlier this year, we launched Meta One single product plans — Instagram Plus, Facebook Plus, and WhatsApp Plus"
+    },
+    {
+      "fact": "官方對既有方案的成效只給形容詞、沒有數字：「留存表現強勁」。這是純廠商宣稱，寫的時候要明講沒有附數字。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These plans are seeing strong retention and we’re continuing to grow them."
+    },
+    {
+      "fact": "唯一的使用行為數字，限定詞很多：在早期測試中，超過一半的訂閱者同時用到組合方案裡的 AI 與表達功能，Instagram 的 Restyle 與語音效果名列最主要的訂閱原因（原文是 among the top reasons，不是最高級）。原文沒有寫樣本數、期間或地區。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In early testing, more than half of subscribers engaged with both AI and expression features in our bundled plans, with AI features like Restyle and voice effects on Instagram among the top reasons people subscribed."
+    },
+    {
+      "fact": "WhatsApp Plus 的備份儲存與 Focus Schedules 是預告中的測試，不是已上線的功能（will soon test）。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "WhatsApp Plus will soon test storage for chat and media backups and Focus Schedules, which help you protect the time that matters most by muting or hiding chats on a schedule."
+    },
+    {
+      "fact": "商家方案的核心賣點之一是 Meta Business Agent 的更多額度（不分日夜回覆顧客）。站上既有的小店指南已經寫過 Business Agent 的「開始使用免費、未來納入付費訂閱」，本篇只要寫「現在它被放進付費的商家方案裡」，不要重講那一篇。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Plus, respond to customers day and night with more access to Meta Business Agent."
+    },
+    {
+      "fact": "另一個預告：Edits Plus 與 Edits 助理都還沒上線（soon we’ll bring／the upcoming Edits assistant）。",
+      "url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "soon we’ll bring Edits Plus to Meta One, a new product plan that offers more cloud storage so you can sync and access projects across devices, plus additional usage of the upcoming Edits assistant, which helps you analyze your Instagram insights and brainstorm new ideas."
+    },
+    {
+      "fact": "價格不是全球一套：同一則公告的法文版把「現已在全球提供」寫成一模一樣的意思，但價格是歐元，而且不是美元的換算——單一產品自 2,49 €、個人組合自 6,99 €、創作者與商家組合自 16,99 € 起。對照英文版的 $2.99／$7.99／$14.99，可以直接看出各市場自己定價。",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Les offres Meta One sont désormais disponibles dans le monde entier, à partir de 2,49 € par mois pour les offres sur un seul produit, 6,99 € par mois pour les offres groupées destinées aux particuliers et 16,99 € par mois pour les offres groupées destinées aux créateurs et aux entreprises."
+    },
+    {
+      "fact": "換算關係不成立的最強證據：Core 在英文版是 $7.99、法文版是 6,99 €（歐元數字比美元小），Premium 在英文版是 $19.99、法文版是 20,99 €（歐元數字比美元大）。同一組方案在兩個市場的高低順序都會翻轉，所以任何「美元 × 匯率 = 台灣價」的推算都是錯的。",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Premium (20,99 €/mois)"
+    },
+    {
+      "fact": "同一個現象在商家方案更明顯：Expert 英文版 $149 起、法文版 169 € 起；Max 英文版 $499 起、法文版 549 € 起。",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Expert (à partir de 169 €/mois) et Max (à partir de 549 €/mois)"
+    },
+    {
+      "fact": "法文版的日期：發布與最後修改都在 2026-09-15（台北 9/15 23:25 與 9/16 00:23），而它的摘要已經帶著 1,500 萬那個數字——這是判斷「9/16 更新加了什麼」時唯一有依據的一條線索，結論是那個數字不是 9/16 才出現的。",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\":\"2026-09-15T15:25:57+00:00\",\"dateModified\":\"2026-09-15T16:23:33+00:00\""
+    },
+    {
+      "fact": "法文版摘要與英文 Takeaways 同一組內容（含「逐步推出」與 1,500 萬份訂閱與試用），可用來證明那三條摘要是官方寫的、不是網站自動生成的。",
+      "url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Les offres Meta One sont déployées progressivement, avec plus de 50 fonctionnalités lancées et 15 millions d’abonnements et d’essais à ce jour."
+    }
+  ],
+  "not_said": [
+    "沒有台灣。主來源全文 \"Taiwan\" 0 次，公告沒有列出任何國家或地區名單，也沒有寫台灣的售價、上線時間或中文支援。要寫成否定句只能限縮到「這一頁沒有寫」，不可以寫成「台灣不能訂」或「台灣一定訂得到」。",
+    "沒有幣別代碼。英文版只印 $，沒有 USD 或任何代碼；要寫「美元」必須像這樣加註：官方頁面只印 $、未標幣別代碼。法文版印的是 €。",
+    "沒有說 1,500 萬是什麼。原文是 \"subscriptions and trials to-date\"——訂閱與試用合計的累計數，沒有拆開、沒有起算日、沒有統計方法，也沒有說其中多少是付費中的帳號。",
+    "沒有說「早期測試」的樣本數、期間或地區，也沒有說那是哪些方案的測試。",
+    "沒有任何營收、獲利或每位訂閱者貢獻的數字；「留存表現強勁」只有形容詞、沒有數字。",
+    "沒有印出免費版 Meta AI 的用量上限，也沒有印出各付費方案的具體用量數字（生成幾張圖、幾支影片、幾分鐘）。全篇只有 more、most room 這類相對詞。",
+    "沒有說 Edits、AI 眼鏡何時納入，也沒有說 Edits Plus、Edits 助理、WhatsApp Plus 的備份與 Focus Schedules 何時開放，全部是 will／soon／upcoming。",
+    "沒有中文版公告。以 2026-09-23 查核，主來源頁面自己的語言切換清單只有 English、Portugese、German、French、Japanese、Korean、Spanish (LTAM)、Spanish (ES) 八個選項，沒有任何中文選項；<link rel=\"alternate\"> 也只有 hreflang=\"x-default\" 與 hreflang=\"en\" 兩條。文章裡的中文一律是本站翻譯，不是官方繁中文案。",
+    "沒有說 9 月 16 日那次更新改了什麼。頁面沒有編者註、沒有修訂說明，正文也沒有「Update」段落。",
+    "沒有和其他公司的訂閱制做任何比較，也沒有提到任何競爭對手的名字。",
+    "沒有說既有訂閱者（Instagram Plus／Facebook Plus／WhatsApp Plus 的舊用戶）會怎麼被轉換、會不會漲價、要不要重新訂閱。",
+    "沒有說取消、退費或試用期長度的規則。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Meta One 在台灣的售價、可訂閱的方案，以及 meta.com 方案頁上的任何內容。",
+      "seen_where": "公告末句連到的 https://www.meta.com/meta-one-plans/?utm_source=newsroom&utm_medium=referral&utm_content=newsroom-post，2026-09-23T00:32:04+08:00 取得 HTTP 200／435,330 bytes，最終網址 https://www.meta.com/zh-tw/meta-one-plans/。",
+      "why_excluded": "整頁是瀏覽器端渲染的殼：可抽出的可見文字只有 24 個字元（頁面標題「Meta One 訂閱方案：定價、功能和更多內容」），全頁搜尋 $、NT$、每月、台灣、Premium、Instagram Plus 各 0 次。沒有讀到 body 的頁面不得列進 sources[]，也不得撐任何句子。另外，本機連線被導到 /zh-tw/ 是連線端的地區／語言路由，**不是**官方對台灣是否供應的說法，不可以拿來寫「台灣已經開賣」。"
+    },
+    {
+      "claim": "「1,500 萬訂閱」或「1,500 萬付費用戶」。",
+      "seen_where": "Takeaways 第二條 \"15 million subscriptions and trials to-date\"。",
+      "why_excluded": "原文是訂閱與試用**合計**。把 trials 刪掉會把一個混合數字寫成付費規模。要寫就寫成「訂閱與試用合計 1,500 萬份（官方到查核日為止的累計說法）」。"
+    },
+    {
+      "claim": "「9 月 16 日的更新新增了 X」或「1,500 萬是 9 月 16 日更新後才有的數字」。",
+      "seen_where": "英文版 dateModified 2026-09-16T20:22:09+00:00；法文版 datePublished 2026-09-15T15:25:57+00:00、dateModified 2026-09-15T16:23:33+00:00 且已含同一條摘要。",
+      "why_excluded": "頁面沒有任何更新說明，本站也沒有 9/15 的原始版本可比對，所以改了什麼無從得知；而法文版的證據反而說明 1,500 萬那條摘要 9/15 就在。正文只能寫「這一頁在 9 月 16 日又改過一次，官方沒有說明改了什麼」，不得指名任何一段是「更新後才有的內容」。"
+    },
+    {
+      "claim": "把美元價換算成新台幣，或把歐元價當成台灣以外地區的統一價。",
+      "seen_where": "英文版 $2.99／$3.99／$7.99／$19.99／$14.99／$49.99／$149／$499 對法文版 2,49 €／2,99 €／6,99 €／20,99 €／16,99 €／54,99 €／169 €／549 €。",
+      "why_excluded": "兩組數字不是換算關係（Core 歐元低於美元、Premium 歐元高於美元），代表各市場自己定價；官方也寫 pricing may vary by region。任何換算或推估都是編輯自己編的。"
+    },
+    {
+      "claim": "「Meta One 一共有九個方案」這類清點數字。",
+      "seen_where": "公告依三個小標列出方案，但沒有印出任何方案總數。",
+      "why_excluded": "加總與清點來源沒印就不是事實。要用就必須在正文明寫是本站依公告清單清點，且與圖、摘要的寫法一致；建議乾脆不要用總數，改照官方的三個分組寫。"
+    },
+    {
+      "claim": "Meta Business Agent 在台灣的開放時程與中文支援、以及 2026 年 8 月 19 日那則 Meta for Business 公告的內容。",
+      "seen_where": "站上既有的 ai-for-small-business-taiwan 引用過該公告（「現在開始使用免費，之後想用更多要訂閱 Meta One」）。",
+      "why_excluded": "那則公告本輪沒有重抓，不在 sources[] 裡。本篇只能寫這次公告自己寫的「商家方案含更多 Meta Business Agent 額度」，不得引用另一篇的文字，也不得替它補上台灣時程。"
+    },
+    {
+      "claim": "公告內的 [gallery] 圖組裡的畫面、介面截圖與圖說。",
+      "seen_where": "articleBody 保留了 [gallery type=\"slideshow\" …] 短碼，沒有展開成圖說文字。",
+      "why_excluded": "本輪沒有讀圖也沒有讀圖說；而且規格一律不寫介面截圖與商標圖示的描述。"
+    },
+    {
+      "claim": "「Meta 首次推出訂閱服務」「Meta One 是社群平台第一個 AI 訂閱制」這類最高級說法。",
+      "seen_where": "對「Today, we’re introducing Meta One」最直接的誤讀。",
+      "why_excluded": "同一頁寫 Instagram Plus／Facebook Plus／WhatsApp Plus 是今年稍早就推出的，Meta One 是把它們併進來再往上加。規格也禁止「首次」「唯一」。"
+    }
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "ai-news-meta-muse-spark-20260408",
+      "what_it_already_says": "Meta Superintelligence Labs 的 Muse Spark 模型，以及社群裡的 AI 助手怎麼改變搜尋與提問、怎麼分辨資訊來源與隱私權限。它是本篇的第二個結尾連結。本篇提到「用 Muse 模型生成影片」時只能點一句當接點，不得重講 Muse 是什麼模型、能力如何。"
+    },
+    {
+      "slug": "meta-ai-whatsapp-instagram",
+      "what_it_already_says": "Meta AI 在 WhatsApp、Instagram、Messenger、Facebook 與 meta.ai 的五個入口怎麼叫出來、台灣能不能用要看哪一頁、端對端加密為什麼不涵蓋你和 Meta AI 的對話、Meta 說自己用哪些資料訓練、怎麼刪對話。本篇**不要**再解釋 Meta AI 是什麼、在哪裡、隱私怎麼設定——那些都寫過了；本篇只處理「免費與付費的界線移到哪裡」。"
+    },
+    {
+      "slug": "ai-for-small-business-taiwan",
+      "what_it_already_says": "台灣小店的 AI 實作指南，裡面已經寫過 Meta Business Agent（官方公告寫開始使用免費、未來納入付費訂閱；台灣開放時程與中文支援官方頁面沒寫），也已經寫過「2026 年 8 月 19 日公告：Meta AI 小型商家功能現在開始使用免費，之後想用更多要訂閱 Meta One」。本篇是同一條線的後續，**不可以重寫小店怎麼用**，也不可以與那一篇打架：本篇能新增的只有「這次公告把 Business Agent 的額度放進付費的創作者／商家方案」。"
+    },
+    {
+      "slug": "ai-news-chatgpt-free-thinking-20260806",
+      "what_it_already_says": "ChatGPT 免費版與付費版在文字聊天、檔案與圖片額度上的差別，以及怎麼判斷要不要多花時間思考。「免費版與付費版差在哪」這個解釋本站已經做過一次，本篇不要重跑同一套說明，更不可以拿 Meta One 與 ChatGPT 方案比價。"
+    },
+    {
+      "slug": "ai-news-chatgpt-sponsored-agents-20260916",
+      "what_it_already_says": "ChatGPT 的 Sponsored Agents 在美國測試、台灣未列入開放名單。「怎麼讀一則公告的開放地區」這件事那一篇已經示範過，本篇不要重講方法論，直接講 Meta One 這一頁自己寫了什麼（全球提供＋因地區而異＋沒有提到台灣）。"
+    },
+    {
+      "slug": "ai-news-siri-ai-ios-27-20260914",
+      "what_it_already_says": "Siri AI 隨 iOS 27 推出、先上英文 beta、台灣 iPhone 使用者能用到什麼。同樣是「台灣讀者現在能用到什麼」的角度，本篇要避免用同一組句型鋪陳，直接把 Meta One 的差異（全球提供但價格與供應因地區而異）講完。"
+    },
+    {
+      "slug": "ai-news-gemini-38-live-20260915",
+      "what_it_already_says": "Google 的 Gemini 3.8 Live 與 Extended Thinking，事件日同樣是 2026-09-15 但完全不同題目、不同廠商。兩篇沒有內容重疊，只是同一天；本篇不需要、也不應該提到它。"
+    },
+    {
+      "slug": "meta-ads-first-campaign",
+      "what_it_already_says": "Meta 廣告管理員的入門設定（Facebook、Instagram、Threads 的版位、素材與追蹤）。Meta One 的商家方案賣的是自然觸及端的專業工具與客服代理，**不是廣告投放**；本篇不可以把兩者混為一談，也不要導向廣告操作。"
+    }
+  ],
+  "second_link": {
+    "slug": "ai-news-meta-muse-spark-20260408",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-meta-muse-spark-20260408",
+    "text": "Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？",
+    "verified": "2026-09-23 確認 apps/api/app/guides/content/ai-news-meta-muse-spark-20260408.json 存在，locales 有 zh-TW／en／ja／ko／zh-CN，zh-TW title 逐字為「Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？」，news_date 2026-04-08、display_order 131、topics [\"ai\",\"software\",\"ai-news\"]。與 DELTA-4-7 第 7 條表格逐字相同。text 照抄這一行，一個字都不要改、不要補前後綴。內容上也接得起來：本篇公告寫付費方案買到的是「用 Muse 模型生成影片」的更多額度。"
+  },
+  "editorial_brief": "讀者是台灣一般讀者，看到「Meta 開始收訂閱費」的第一個反應是三個問題：我現在用的會不會變成要錢？要錢的是什麼？我這邊多少錢、訂得到嗎？這一篇就照這三個問題的順序寫，不要寫成方案介紹型錄，也不要寫成開箱或推薦。\n\n骨架建議五節：一、9 月 15 日發生了什麼，以及官方那句「核心體驗一直是免費的，這一點不會改變」——第一段就要把讀者最擔心的事講掉，同時交代這則公告發布時落在本站上一輪整理的區間外、這次補上。二、訂閱買到的到底是什麼：更多 AI 生成用量（圖片、Muse 模型的影片、Instagram Restyle）與表達功能；這一節結尾放表，把三個分組（單一產品、個人組合、創作者與商家）與官方標價、官方自己的限定詞（starting at、須通過驗證）排在一起。三、台灣讀者真正該知道的那件事：官方寫「現已在全球提供」，但同一頁也寫方案、權益、價格與供應可能因地區、App、帳號而異，摘要欄位甚至寫「逐步推出」；價格只印 $、沒有幣別代碼，而同一則公告的法文版印歐元且不是換算——所以不要自己換算台幣，要看自己的帳號有哪些方案、多少錢，官方的答案是從訂閱流程裡看。這一節結尾放圖。四、數字要怎麼讀：1,500 萬是「訂閱與試用」合計的累計數、超過一半的訂閱者同時用 AI 與表達功能是「早期測試」的結果、「留存表現強勁」沒有附數字；還有哪些是預告（Edits Plus、Edits 助理、WhatsApp Plus 的備份與 Focus Schedules、AI 眼鏡）。五、商家與創作者那一側：Meta 把 Business Agent 的額度、排程、可匯出分析、團隊存取放進付費層，這對台灣小商家的意義是「原本免費試用的客服代理現在有了付費上層」，一句帶過並把細節交給站上既有的小店指南。\n\n語氣照 DELTA-4-7 第 14 條：不要出現「本文」，指自己用「這一篇」；查證流水帳不寫進正文，「官方」兩個字不要每句都掛；description 最多在句尾帶一個「（2026 年 9 月查證）」。\n\n刻意不寫：任何購買、升級、退訂建議；與 ChatGPT／Gemini 的比價；台幣換算；Meta AI 的入口與隱私設定（既有文章寫過）；小店怎麼用 AI（既有文章寫過）；廣告投放；Muse 模型本身的能力。",
+  "must_not_write": [
+    "不寫台幣價格、不做任何匯率換算、不推估台灣售價。公告只印 $、沒有幣別代碼，同一則公告的法文版印歐元而且不是美元的換算（Core $7.99 對 6,99 €、Premium $19.99 對 20,99 €），各市場自己定價。",
+    "不寫購買、升級、續訂或退訂建議，不寫「值不值得」「划不划算」「推薦哪一個方案」，也不拿 Meta One 跟 ChatGPT、Gemini 或任何其他服務比價——`ai.md` 明定不寫訂閱或購買建議。",
+    "不把「15 million subscriptions and trials to-date」寫成訂閱人數、付費用戶數或會員數。原文是訂閱與試用合計的累計數，沒有期間、沒有方法、沒有拆分。",
+    "不把「now available globally」單獨寫成「台灣一定訂得到、功能一樣」。同一頁的結尾寫 plans, benefits, pricing, and availability may vary by region, by app, and by account，摘要那一條寫的是 rolling out gradually；三句要一起處理。",
+    "不寫台灣的開放狀況、上線時間或中文介面。公告全文沒有出現 Taiwan，要寫只能限縮成「這一則公告沒有寫台灣」。",
+    "不引用 meta.com 的 Meta One 方案頁（https://www.meta.com/meta-one-plans/）的任何價格、方案或供應地區——那一頁本輪讀不到內容，只讀到頁面標題。也不可以把「本站開啟時被導到繁體中文版」寫成官方對台灣供應的說法。",
+    "不寫「9 月 16 日更新後新增了……」。頁面沒有說明更新內容，本站也沒有 9/15 的版本可比對；要提就只能寫「這一頁在 9 月 16 日又改過一次，官方沒有說明改了什麼」。",
+    "不把事件日寫成 9 月 16 日或 9 月 17 日。slug 後綴、news_date、正文第一段一律 2026 年 9 月 15 日。也不要在正文寫出 15:00:59 這個時刻（要寫時間只能寫台北時間 9 月 15 日晚間）。",
+    "不寫「首次」「唯一」「Meta 第一個訂閱制」。公告自己寫 Instagram Plus、Facebook Plus、WhatsApp Plus 今年稍早就推出了。",
+    "不把 will／soon／upcoming 寫成已上線：WhatsApp Plus 的備份儲存與 Focus Schedules（will soon test）、Edits Plus 與 Edits 助理（soon we’ll bring／upcoming）、Edits 與 AI 眼鏡的納入（will expand）全部都是預告。",
+    "不把 Essential 的驗證徽章、驗證頻道與冒名保護寫成訂閱就有——原文帶 (pending successful verification)。",
+    "不把 starting at 的價格寫成固定價：Essential、Advanced、Expert、Max 四階官方寫的都是「起」。",
+    "不寫方案總數（例如「九個方案」）這類來源沒印的清點數字，除非正文自己明寫是本站依公告清單清點。",
+    "不寫 Meta Business Agent 的台灣開放時程或中文支援，也不引用 2026 年 8 月 19 日那則 Meta for Business 公告——它不在本篇 sources[] 裡。",
+    "不重講 Meta AI 的入口、隱私設定或訓練資料（meta-ai-whatsapp-instagram 已寫），不重講 Muse Spark 模型本身（ai-news-meta-muse-spark-20260408 已寫），不重講小店怎麼用 AI（ai-for-small-business-taiwan 已寫）。",
+    "不描述任何介面截圖、商標圖示或公告裡的圖組畫面；圖解不畫產品外觀，圖上不放正文沒有的數字。",
+    "不加 finance 主題、不寫投資免責段落；callout 只有一個。"
+  ],
+  "live_data_warnings": [
+    "主來源是 WordPress 動態頁，導覽、推薦與語言選單會隨站況改變，位元組數也會跟著變（指派表記的 713,199 是 2026-09-18 探索時的大小，本輪同一網址是 713,186）。本紀錄引用的是 2026-09-23T00:29:45+08:00 讀到的版本；查核代理讀到不同文字，一律以重讀當天為準並在查核報告記下差異。",
+    "這一頁已經被改過一次（dateModified 2026-09-16T20:22:09Z），Meta 隨時可能再改。正文引用的每一個數字都要繫著查核日 2026 年 9 月 23 日。",
+    "「more than 50 features launched and 15 million subscriptions and trials to-date」是滾動累計的數字，隨時會過期，正文必須寫成官方到查核日為止的說法，不可以寫成現況或常數。",
+    "價格與供應情形官方自己寫明會因地區、App 與帳號而異，代表同一個網址不同讀者看到的方案本來就可能不同；寫價格一定要同時帶查核日、「起」與「因地區而異」三個限定。",
+    "https://www.meta.com/meta-one-plans/ 會依連線地區與語言路由到不同語系頁（本站這次落到 /zh-tw/），任何人重測可能落到別的頁；這個行為本身不能當成任何事實的依據。",
+    "新聞總覽頁 https://about.fb.com/news/ 是滾動列表，這一則會隨新公告往下掉甚至掉出首頁。本紀錄只用它確認這一則的列表日期，不引用頁面上其他項目或計數；查核代理若在首頁找不到，改用文章網址直接驗。",
+    "本紀錄的 diagram.caption 與各處查核日寫的都是 2026 年 9 月 23 日。撰稿代理若在不同日期重抓來源，內容包每條 source 的 checked_on、正文的查核日那句、表格 caption 與圖說要一起改。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "核心免費，付費加量",
+  "diagram": {
+    "title": "免費與訂閱之間怎麼分",
+    "caption": "Meta 在 2026 年 9 月 15 日公布的 Meta One 訂閱架構整理：核心體驗官方說維持免費，付費層分成單一產品方案、個人組合方案與創作者商家方案三類，價格與供應官方寫明可能因地區、App 與帳號而異，資料查核日 2026 年 9 月 23 日。",
+    "nodes": [
+      [
+        "核心體驗",
+        "官方說維持免費"
+      ],
+      [
+        "單一產品方案",
+        "各 App 的加值功能"
+      ],
+      [
+        "個人組合方案",
+        "更多 AI 生成用量"
+      ],
+      [
+        "創作者與商家",
+        "專業工具與客服代理"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "FACTCHECK-47.md 的方法：把內容包的 title、description、兩段開場、summary 四條、五節正文、表格每一格與 caption、圖說、FAQ 六題、callout、兩個結尾連結與 sources[] 拆成 91 條可查證主張，逐條回一手來源。三條 sources[] 於 2026-09-23 台北時間以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓、同主機間隔 >= 1 秒、請求未帶任何姓名或 email：主來源 200／713,186 bytes／0 轉址，新聞總覽頁 200／307,920 bytes，法文版 200／855,949 bytes，三者 bytes 與研究紀錄完全相同，body 都是正文。另以程式逐條比對 verified_facts 的 32 條與 sources[] 的 3 條 verbatim_quote（彎引號與 NBSP 正規化後做連續字串比對），35 條全部在當天抓下的頁面裡找得到，0 條落空；研究紀錄的 sourcing_verdict: full 成立。",
+    "claims_checked": 91,
+    "verdict": "confirmed 72／changed 18／not_found 1；事實類更動 11 處、DELTA-4-7 第 14 條讀者優先更動 7 處。骨幹論述（核心體驗免費、三個分組與標價、全球提供但因地區而異、1,500 萬是訂閱與試用合計、台灣未被提及）全部成立。",
+    "changes": [
+      {
+        "claim": "標題：核心「功能」維持免費",
+        "before": "Meta One 訂閱服務上線：官方說核心功能維持免費，台灣價格沒有寫",
+        "after": "Meta One 訂閱服務上線：官方說核心體驗維持免費，台灣價格沒有寫",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "公告寫的是 core experience，而且這一篇的主旨正是「功能」被移進付費層；description、正文與 diagram.nodes 本來就寫「核心體驗」，只有標題是例外。"
+      },
+      {
+        "claim": "第二段交代讀了哪幾個頁面",
+        "before": "這一篇的資料在 2026 年 9 月 23 日查核，讀的是公告英文版、法文版與 Meta 新聞室總覽頁；本站沒有實測……",
+        "after": "這一篇的資料在 2026 年 9 月 23 日查核，本站沒有實測……",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "DELTA-4-7 第 14 條：查證流水帳不寫進正文。"
+      },
+      {
+        "claim": "「核心體驗一直是免費的」放在公告最前面，而且不是對未來的承諾",
+        "before": "官方把這句話放在公告最前面：「The core experience … has always been free, and that's not changing.」……這句話講的是既有事實，不是對未來的新承諾。",
+        "after": "公告正文把這句話放在前段：「…」（旗下 App 與 Meta AI 的核心體驗一直是免費的，這一點不會改變）。頁首的摘要欄位則寫成未來式的 will stay free（會維持免費）。前一句講的是過去到現在，後一句才指向之後。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "被引的那一句在 entry-content 第二段，真正放在最前面的是 highlights-container 的 Takeaways；而 Takeaways 第三條正是未來式的 The core experience across our apps and Meta AI will stay free.（verified_facts 5），草稿整篇沒有提到它，於是把一句未來式的官方說法寫成了『不是對未來的新承諾』。"
+      },
+      {
+        "claim": "Premium 加上「跨 App 額度」",
+        "before": "再加上最多的 Meta AI 創作空間與跨 App 額度。",
+        "after": "再加上在 Meta AI 與旗下 App 家族裡最多的創作空間。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "原文是 the most room to create content with Meta AI and across our family of apps，沒有任何「額度」。"
+      },
+      {
+        "claim": "Expert 與 Max「公告沒有列出功能清單」",
+        "before": "兩階官方形容為擴大規模並最佳化，公告沒有列出功能清單。",
+        "after": "兩階寫的是擴大規模並最佳化，內容是最高等級的功能存取與 Meta Business Agent 容量，給大規模經營的團隊。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "公告其實寫了 These plans include our highest levels of feature access and Meta Business Agent capacity for teams managing at scale.；否定句超出了『這一頁沒有寫』的範圍。"
+      },
+      {
+        "claim": "引用站上小商家指南的「Business Agent 開始使用免費、之後想用更多要訂閱 Meta One」",
+        "before": "站上既有的小商家 AI 指南已寫過 Business Agent 開始使用免費、之後想用更多要訂閱 Meta One，這一篇只補一項新資訊——這次公告把額度放進了收費的商家方案……",
+        "after": "……讓客服代理不分日夜回覆顧客，Advanced 以上再加上更多回覆則數。這次公告把這項額度列在收費的商家方案裡；商家在台灣怎麼申請、是否支援中文，公告沒有寫。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "那句事實出自 2026-08-19 的 Meta for Business 公告，不在 sources[] 裡，研究紀錄 unverified_or_excluded 6 與 must_not_write 14 明文排除。改寫後改用公告自己寫的 even more Meta Business Agent responses（Advanced）。"
+      },
+      {
+        "claim": "表格把單一產品與個人組合的月費也標成「起」",
+        "before": "2.99 起（WhatsApp Plus）、3.99 起（…）／7.99 起（Core）、19.99 起（Premium）",
+        "after": "2.99（WhatsApp Plus）、3.99（…）／7.99（Core）、19.99（Premium）；caption 補寫只有創作者與商家四階原文標 starting at",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "公告對這五個方案印的是 ($2.99/mo)、($3.99/mo)、($7.99/mo)、($19.99/mo) 的固定月費，只有 Essential／Advanced／Expert／Max 四階寫 starting at。表格原本與同一篇的正文和 FAQ4 互相矛盾。"
+      },
+      {
+        "claim": "摘要與正文兩句並排的編務說明",
+        "before": "摘要欄位的措辭是逐步推出，跟正文現已全球提供不是同一句話，這一篇把兩句並排寫出，不只取其一。",
+        "after": "頁首摘要欄位的措辭又是逐步推出，跟正文的現已全球提供不是同一句話。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "DELTA-4-7 第 14 條：查證紀律不寫進正文。事實本身不變。"
+      },
+      {
+        "claim": "「否定句只能限縮到……」寫進正文",
+        "before": "否定句只能限縮到這一則公告沒有寫台灣，不能反過來說台灣訂不到。",
+        "after": "這只代表這一則公告沒有寫台灣，不等於台灣訂不到。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "同上；句意保留，改成對讀者說的話。"
+      },
+      {
+        "claim": "「這一篇因此不替台灣讀者換算或推估新台幣價格」",
+        "before": "代表各市場自己定價，這一篇因此不替台灣讀者換算或推估新台幣價格。",
+        "after": "代表各市場自己定價，把美元數字換算成新台幣不會是台灣的售價。",
+        "source_url": "https://about.fb.com/news/2026/09/presentation-de-meta-one-un-service-dabonnement-offrant-davantage-de-fonctionnalites-et-dia-pour-creer-se-connecter-et-se-demarquer/",
+        "why": "同上；把編務說明換成讀者用得上的結論，依據仍是英法兩版價格不成換算關係。"
+      },
+      {
+        "claim": "Restyle 與語音效果「是最常被提到的訂閱原因」",
+        "before": "Instagram 的 Restyle 與語音效果是最常被提到的訂閱原因",
+        "after": "Instagram 的 Restyle 與語音效果名列最主要的訂閱原因",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "原文是 among the top reasons people subscribed，草稿把 among 刪掉、變成最高級。"
+      },
+      {
+        "claim": "「這一篇一律照 will、soon、upcoming 寫成即將」",
+        "before": "……同樣是未來式。這一篇一律照 will、soon、upcoming 寫成即將，不當成已上線的功能。",
+        "after": "……同樣是未來式。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "DELTA-4-7 第 14 條；預告的三項事實原句未動。"
+      },
+      {
+        "claim": "「把原本免費試用的功能往上移到付費層」與「現有功能不會因此消失」",
+        "before": "並把更多 AI 生成用量、商家客服代理額度這些原本免費試用的功能，往上移到付費層。使用者如果沒有主動訂閱，公告的說法是現有功能不會因此消失。",
+        "after": "並把更多 AI 生成用量與商家客服代理額度放進付費層。沒有主動訂閱的人，公告的說法是核心體驗維持免費，Meta AI 的日常使用也仍然免費。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "公告沒有說這些功能原本是免費試用（Business Agent 的免費期出自不在 sources[] 的另一則公告）；官方真正寫的是 Meta AI will still be free for everyday use（verified_facts 20），改用這一句。"
+      },
+      {
+        "claim": "「留給第二個連結那篇處理」",
+        "before": "Muse 模型本身的能力，留給第二個連結那篇處理。",
+        "after": "Muse 模型本身的能力，站上另一篇也寫過。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "「第二個連結」是編務用語，讀者看不懂。"
+      },
+      {
+        "claim": "「從 App 內的訂閱流程」可以看到方案與價格",
+        "before": "想知道自己的帳號能訂閱到哪些方案與價格，直接從 App 內的訂閱流程查看",
+        "after": "想知道自己的帳號有哪些方案與功能可用，公告寫的做法是走一次訂閱流程去看",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "原文是 To see the specific features available to your account, start the subscription process.——寫的是「功能」，也沒有說在 App 內。"
+      },
+      {
+        "claim": "FAQ2：「同一段也寫明……」與「訂閱流程裡查看方案與價格」",
+        "before": "但同一段也寫明……要知道自己的帳號能訂閱到什麼方案與價格，官方的建議是直接從訂閱流程裡查看",
+        "after": "但同一頁也寫明……要知道自己的帳號有哪些功能可用，官方寫的做法是開始訂閱流程來查看",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "may vary 那一句在正文倒數第二段，不和 now available globally 同一段；後半同上一條。"
+      },
+      {
+        "claim": "FAQ4：「實際金額會依選擇的功能與規模而不同」",
+        "before": "……四階都是這樣標示，實際金額會依選擇的功能與規模而不同，公告本身沒有列出更高階的完整定價區間。",
+        "after": "……四階都是這樣標示，單一產品與個人組合方案則是直接標一個月費。公告本身沒有列出更高階的完整定價區間，只寫方案、權益、價格與供應可能因地區、App 與帳號而異。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "公告沒有寫金額為何不同；它唯一給的理由是 may vary by region, by app, and by account。"
+      },
+      {
+        "claim": "Instagram 內建 AI 工具的「使用次數」（正文與 FAQ6 各一處）",
+        "before": "更多 Instagram 內建 AI 工具（例如 Restyle）的使用次數",
+        "after": "更多 Instagram 內建 AI 工具（例如 Restyle）的使用",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+        "why": "原文是 more use of in-app AI tools，沒有把它量化成次數。"
+      }
+    ],
+    "open_questions": [
+      "summary 第一條把官方的 the core experience across our apps 寫成「Facebook、Instagram、WhatsApp 與 Meta AI」。本輪沒有改：新聞總覽頁對這一則的摘要自己就寫 a new subscription service on Facebook, Instagram, WhatsApp, and Meta AI（sources[2] 的 verbatim_quote），公告正文也寫 launching with more than 50 features on Instagram, Facebook, WhatsApp, and Meta AI。但 our apps 的範圍比這四個大（同一頁就提到 Messenger 與 Edits），請第二輪或站主決定要不要收斂成「旗下 App」。",
+      "表格標頭寫「官方標價（每月，美元）」，而公告只印 $、沒有幣別代碼。caption 已註明、正文與 summary 也都寫「公告只印美元符號，沒有幣別代碼」，本輪維持；若站主認為標頭不該直接寫「美元」，可改成「官方標價（每月，公告只印 $）」。",
+      "正文 5 節、每節 3 段，修正後 2,902 字（上限 3,000），只剩 98 字空間。第二輪若要再補句子，得同時刪字，且不得刪但書或限定詞。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 10 條：事件日 2026-09-15（JSON-LD datePublished 2026-09-15T15:00:59+00:00），dateModified 2026-09-16T20:22:09+00:00 不是事件日。本輪重抓仍是這兩個時刻，slug 後綴、news_date 與正文第一段三者一致，未動。",
+      "DELTA-4-7 第 7 條：兩個結尾連結的 text 逐字比對通過——索引 pack 的 zh-TW title 為「2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用」、ai-news-meta-muse-spark-20260408 的為「Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？」，與內容包一字不差，未動。",
+      "meta.com 的 Meta One 方案頁不是來源：內容包全篇 0 次提及、sources[] 也沒有列，符合研究紀錄 unverified_or_excluded 1 與 must_not_write 6。",
+      "ai.md 的界線：全篇沒有購買、升級或退訂建議，沒有與其他服務比價，沒有台幣換算；「投資」只出現在 Invest in professional-grade tools 的譯文，callout 只有一個、不帶 finance 主題。",
+      "DELTA-4-7 第 15 條：本 slug 尚未登記 build_assets.py 的 _DRAWINGS，本輪照規格沒有跑 --assets。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, did not write the draft and did not run round 1)",
+      "checked_on": "2026-09-23",
+      "method": "三條 sources[] 今天用同一個 UA（Mokaair-editorial/1.0）重抓，同一主機間隔 ≥2 秒，請求沒有帶入任何姓名或 email；三條都 200、0 次轉址、bytes 與第一輪相同（713,186／307,920／855,949）。用程式對今天抓下的頁面做連續字串比對：研究紀錄 32 條 verified_facts 與 3 條 sources 的 verbatim_quote 共 35 條、內容包 4 段英文引文，全部命中，0 條落空，沒有一條帶 ...／…／| 的拼接引文。第一輪改過的 18 處與新寫進去的每一句逐句回一手來源重查，另抽查第一輪判 CONFIRMED 的 25 條。",
+      "claims_rechecked": 62,
+      "changes": [
+        {
+          "claim": "summary 第一條：官方那句話涵蓋哪些 App（協調者裁定）",
+          "before": "官方表示 Facebook、Instagram、WhatsApp 與 Meta AI 的核心體驗一直是免費的",
+          "after": "官方表示 Meta 旗下的 App 與 Meta AI 的核心體驗一直是免費的",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "被引的那一句（正文與 Takeaways 第三條）寫的都是 across our apps；四個 App 的名字只出現在新聞總覽頁對這一則的摘要，而同一頁還提到 Messenger 與 Edits，our apps 的範圍比四個大。協調者裁定改寫成「Meta 旗下的 App」。"
+        },
+        {
+          "claim": "表格價格欄標頭（協調者裁定）",
+          "before": "官方標價（每月，美元）",
+          "after": "月費（$）",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "今天重抓全文搜尋 USD 0 次、dollar 0 次、currency 0 次；公告只印 $。標頭直接寫「美元」等於把推論寫成事實，與同一格 caption 自己寫的「未附幣別代碼」互相矛盾。"
+        },
+        {
+          "claim": "表格 caption 的幣別說法（協調者裁定）",
+          "before": "金額為官方所印的美元數字（未附幣別代碼）",
+          "after": "金額照公告所印；公告只印 $ 這個符號，沒有寫是哪一種幣別。",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "同上。研究紀錄 not_said 2 也要求「要寫美元必須加註」；本輪照裁定改成不寫幣別名稱。"
+        },
+        {
+          "claim": "正文、summary、FAQ 裡把 $ 寫成「美元」的九處金額",
+          "before": "WhatsApp Plus 每月 2.99 美元、……Essential 自 14.99 美元起……（改前全篇 23 次「美元」）",
+          "after": "WhatsApp Plus 每月 $2.99、……Essential 自 $14.99 起……（改後 0 次，照公告印的 $ 寫）",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "與標頭同一個裁定：頁面沒有印任何幣別名稱或代碼，寫「美元」是推論。改用公告自己印的符號後，標頭、正文、summary、FAQ 四處不再互相矛盾，段落字數也跟著少了 21 字。"
+        },
+        {
+          "claim": "§2 p3 Meta Business Agent 回覆則數適用到哪幾階（第一輪新寫的句子）",
+          "before": "Advanced 以上再加上更多回覆則數",
+          "after": "Advanced 那一階再加上更多回覆則數",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "公告只在 Advanced 那一階寫 even more Meta Business Agent responses；Expert 與 Max 寫的是 highest levels of feature access and Meta Business Agent capacity——是 capacity，不是 responses。「以上」把只對一階說的話推到三階。法文版同樣只在 Advanced 寫 un nombre encore plus important de réponses。"
+        },
+        {
+          "claim": "§5 p3 訂閱流程能看到什麼（第一輪改過的句子）",
+          "before": "想知道自己的帳號有哪些方案與功能可用",
+          "after": "想知道自己的帳號有哪些功能可用",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "原文是 To see the specific features available to your account, start the subscription process——只寫 features。第一輪已把 FAQ2 改成「有哪些功能可用」，正文這一句漏改，兩處說法不一致。"
+        },
+        {
+          "claim": "FAQ2 的 may vary 被寫成「會」",
+          "before": "但同一頁也寫明價格、權益與供應情形會因地區、App 與帳號而異",
+          "after": "但同一頁也寫明價格、權益與供應情形可能因地區、App 與帳號而異",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "原文是 may vary。summary 第三條與 §3 p2 都寫「可能」，只有 FAQ2 把情態動詞刪成肯定句。"
+        },
+        {
+          "claim": "description 的 may vary 被寫成肯定句",
+          "before": "價格與供應官方寫明因地區而異",
+          "after": "價格與供應官方寫明可能因地區而異",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "同上。改後 description 170 字，仍在 120–200 之間。"
+        },
+        {
+          "claim": "圖說（與研究紀錄 diagram.caption）的 may vary 被寫成肯定句",
+          "before": "價格與供應官方寫明因地區、App 與帳號而異",
+          "after": "價格與供應官方寫明可能因地區、App 與帳號而異",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "同上；內容包圖說與研究紀錄 diagram.caption 兩邊一起改，維持逐字一致。"
+        },
+        {
+          "claim": "§4 p3 will expand 的清單被寫成完整清單",
+          "before": "公告寫功能未來會擴展到 Edits 與 AI 眼鏡",
+          "after": "公告寫功能未來會擴展到 Edits、AI 眼鏡等",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "原文是 will expand to Edits, AI glasses, and more over time，and more 被刪掉，兩個例子被寫成全部。"
+        },
+        {
+          "claim": "研究紀錄 verified_facts 24 自己的敘述寫成最高級（草稿那個錯的來源）",
+          "before": "Instagram 的 Restyle 與語音效果是最常被提到的訂閱原因",
+          "after": "Instagram 的 Restyle 與語音效果名列最主要的訂閱原因（原文是 among the top reasons，不是最高級）",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "同一條的 verbatim_quote 是對的，錯的是紀錄自己的白話敘述——第一輪在內容包改掉的那句最高級就是照它寫的，不改這裡下一位還會再犯。"
+        },
+        {
+          "claim": "「把三個方案併入同一品牌」的框架（協調者裁定，description／第一段／summary 第一條／§1 p3／本紀錄 summary 五處）",
+          "before": "把原本分開的 Instagram Plus、Facebook Plus、WhatsApp Plus 三個方案併入同一品牌，再加上兩種個人組合方案與四種創作者及商家方案",
+          "after": "Instagram Plus、Facebook Plus、WhatsApp Plus 今年稍早就以 Meta One 單一產品方案推出，這次在同一個名字下新增兩種個人組合方案與四種創作者及商家方案",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "公告寫的是 Earlier this year, we launched Meta One single product plans — Instagram Plus, Facebook Plus, and WhatsApp Plus——那三個方案今年稍早推出時就已經在 Meta One 這個名字底下，這一頁並沒有描述一次改名或併品牌的動作；這次新增的是個人組合與創作者商家方案。協調者 2026-09-23 裁定改掉這個框架，並要求本紀錄的 summary 一併改。§1 p3 同時把公告原文放進正文，讓讀者看得到依據；該段順手刪掉「公告也提醒讀者」，歸因數維持在兩個以內。"
+        }
+      ],
+      "open_questions": [
+        "（已結案）「併入同一品牌」的框架已由協調者 2026-09-23 裁定拿掉，五處都照公告原文改寫，見 changes 最後一條。",
+        "「兩種個人組合方案與四種創作者及商家方案」是依公告列出的方案名清點出來的分組數，公告沒有印。must_not_write 13 禁的是總數（例如「九個方案」）而不是分組數，且四階在公告裡逐行列名，本輪維持；若站主認為連分組數都要避開，§2 兩段與第一段要一起改。",
+        "§2 p3 把 more access to Meta Business Agent 譯成「更多 Meta Business Agent 額度」。公告對 Expert／Max 寫的是 capacity（容量），對 Essential 寫的是 more access，兩個詞不同；本輪認為「額度」讀得通而未改，若要更貼字面可改成「更多 Meta Business Agent 的使用權限」。",
+        "正文 2,959 字（上限 3,000），離上限還有 41 字（協調者的改寫加了 75 字）；description 197 字；本輪沒有為了字數刪掉任何但書或限定詞，反而補回三處 may 與一處 and more。",
+        "「9 月 16 日又改過一次」用的是頁面印出的美西日期（<time class=\"updated\">September 16, 2026），dateModified 換算台北是 9 月 17 日 04:22。本紀錄 must_not_write 7 與 unverified_or_excluded 3 指定的寫法就是「9 月 16 日」，本輪照紀錄維持；事件日不受影響。",
+        "summary 第二條與 §3 p1 照「How to Get Started」那一句寫分組起始價（start at just），表格照每個方案自己標的價寫，FAQ4 解釋兩者差別——三處都對，但只看表格的讀者可能覺得與摘要不一致。要再明確只能加字，會吃掉 116 字的餘裕。"
+      ],
+      "verdict": "ok",
+      "self_check": "check_article.py ai-news-meta-one-subscription-20260915 → OK（exit 0，zh-TW paragraphs 2959）；pack_cli lint --kind life 只剩規格允許的 image_missing（圖未畫）與 raw_internal_url（未 relink）。"
+    }
+  }
+}
