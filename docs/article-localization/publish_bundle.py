@@ -38,6 +38,9 @@ from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 from uuid import UUID, uuid4
 
+from sqlalchemy import func, select, text
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.auth.service import cached_admin_capabilities, user_is_suspended
 from app.config import get_settings
 from app.db import engine
@@ -54,8 +57,6 @@ from app.guides.schemas import (
 from app.guides.service import _topics_for, document_hash
 from app.i18n import LOCALES
 from app.models import AdminAuditLog, User
-from sqlalchemy import func, select, text
-from sqlalchemy.ext.asyncio import AsyncSession
 
 CORRECTION_SPEC = importlib.util.spec_from_file_location(
     "article_localization_source_correction", Path(__file__).with_name("source_correction.py")
@@ -366,16 +367,27 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
 
 
 def verify_deployed(bundle: Bundle, deployed_root: Path):
-    """Require the installed pack and assets to be the exact reviewed bundle bytes."""
+    """Require reviewed pack content and byte-identical installed image assets."""
     root = deployed_root.resolve()
     require(root.is_dir(), "Deployed root is absent")
     for entry in bundle.entries:
-        path = safe_path(root, bundle.baseline[entry["slug"]]["pack_path"])
-        require(path.is_file(), f"{entry['slug']}: deployed content pack is absent")
-        require(
-            sha(path.read_bytes()) == entry["pack_sha256"],
-            f"{entry['slug']}: deployed content pack SHA256 mismatch",
-        )
+        slug = entry["slug"]
+        path = safe_path(root, bundle.baseline[slug]["pack_path"])
+        require(path.is_file(), f"{slug}: deployed content pack is absent")
+        deployed_raw = path.read_bytes()
+        if sha(deployed_raw) != entry["pack_sha256"]:
+            # The reviewed bundle remains byte-pinned by verify_bundle. Repository
+            # packs can serialize the same validated ArticlePack with different
+            # field order, whitespace, or omitted default values.
+            try:
+                deployed_pack = ArticlePack.model_validate_json(deployed_raw)
+            except ValueError as error:
+                raise Refused(f"{slug}: deployed content pack mismatch") from error
+            require(
+                deployed_pack.model_dump(mode="json")
+                == bundle.packs[slug].model_dump(mode="json"),
+                f"{slug}: deployed content pack mismatch",
+            )
     for asset in bundle.manifest["assets"]:
         path = safe_path(root, f"apps/web/{asset['path']}")
         require(path.is_file(), f"{asset['path']}: deployed asset is absent")
