@@ -174,3 +174,5 @@
     本次規劃刻意不加，因為構圖要照文章最後定稿的數字畫。撰稿定稿後由撰稿代理或協調者替每個 slug 加一個繪圖函式並登記進 `_DRAWINGS`，
     然後才跑 `check_article.py <slug> --assets`。沒加就會直接 `SystemExit: no drawing for <slug>; add one to _DRAWINGS in build_assets.py`。
     圖上的數字不可以比正文強，也不可以出現來源沒印的清點數字（同 HANDOVER 第 3 節）。
+
+16. **幣圈固定免責 callout 逐字照 `crypto.md` 樣板，含「本文」二字**（協調者 2026-09-23 裁決）。第 14 條的「不寫本文」不及於這個 callout：它與已發布的幣圈文章逐字相同、只換查核日，撰稿與查核都不得改寫。正文其餘任何地方仍不得出現「本文」。
