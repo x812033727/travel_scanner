@@ -474,8 +474,44 @@ async def test_deployed_hash_mismatch_stops_before_database_write(
     else:
         changed = deployed / "apps/web" / bundle.manifest["assets"][0]["path"]
     changed.write_bytes(b"unreviewed deployed bytes")
-    with pytest.raises(driver.Refused, match="deployed .*SHA256 mismatch"):
+    with pytest.raises(driver.Refused, match="deployed .*mismatch"):
         await run(bundle, path, database, "drafts" if timing == "before-write" else "dry-run")
+    assert await state(database) == before["test-guide"]
+
+
+async def test_deployed_pack_with_equivalent_serialization_passes(tmp_path, database, owner):
+    bundle, path, _ = await case(tmp_path, database, owner)
+    deployed = bundle.root / "deployed/apps/api/app/guides/content/test-guide.json"
+    # The repository pack includes explicit defaults and a different field order,
+    # while the manifest still pins the original reviewed bundle bytes.
+    deployed.write_bytes(
+        json.dumps(
+            bundle.packs["test-guide"].model_dump(mode="json"),
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    )
+    assert driver.sha(deployed.read_bytes()) != bundle.entries[0]["pack_sha256"]
+    assert (await run(bundle, path, database, "dry-run"))["status"] == "read_only"
+    await run(bundle, path, database, "drafts")
+    assert "en" in (await state(database))["locales"]
+
+
+@pytest.mark.parametrize("change", ["metadata", "document"])
+async def test_deployed_pack_semantic_change_stops_before_database_write(
+    tmp_path, database, owner, change
+):
+    bundle, path, before = await case(tmp_path, database, owner)
+    deployed = bundle.root / "deployed/apps/api/app/guides/content/test-guide.json"
+    pack = json.loads(deployed.read_text("utf-8"))
+    if change == "metadata":
+        pack["featured"] = True
+    else:
+        pack["locales"]["en"]["title"] = "Unreviewed title"
+    write_json(deployed, pack)
+    with pytest.raises(driver.Refused, match="deployed content pack mismatch"):
+        await run(bundle, path, database, "dry-run")
     assert await state(database) == before["test-guide"]
 
 
@@ -550,7 +586,7 @@ async def test_deployed_pack_is_rechecked_before_each_database_write(
             deployed.write_bytes(b"changed between writes")
 
     monkeypatch.setattr(driver, "write_operation", change_install_after_first_write)
-    with pytest.raises(driver.Refused, match="deployed content pack SHA256 mismatch"):
+    with pytest.raises(driver.Refused, match="deployed content pack mismatch"):
         await run(bundle, path, database, "drafts")
     assert calls == 1
     after = await state(database)
