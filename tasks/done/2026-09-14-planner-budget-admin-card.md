@@ -1,13 +1,13 @@
 ---
 id: 2026-09-14-planner-budget-admin-card
 title: Planner budget cannot be lowered without a restart
-status: review
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T11:12:49Z
 created_at: 2026-09-14T13:50:02Z
-completed_at:
+completed_at: 2026-09-22T01:27:06Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:

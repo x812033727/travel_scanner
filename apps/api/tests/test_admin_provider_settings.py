@@ -897,6 +897,42 @@ async def test_ai_vendor_secrets_are_masked_and_shared_by_the_ai_features() -> N
 
 
 @pytest.mark.asyncio
+async def test_the_jev_key_lives_on_the_same_card_and_is_masked_like_its_neighbours() -> None:
+    """The owner asked to type this key into the panel, not into a redeploy."""
+    base = Settings()
+    vendors_row = ProviderConfig(
+        provider="ai_vendors",
+        enabled=True,
+        config={},
+        secret_config_encrypted=encrypt_secrets({"jev_api_key": "jev-secret-ending-9012"}, base),
+    )
+    session = SnapshotSession([vendors_row])
+    snapshot = await settings_snapshot(session)  # type: ignore[arg-type]
+    assert "jev-secret-ending-9012" not in snapshot.model_dump_json()
+    vendors = next(item for item in snapshot.providers if item.provider == "ai_vendors")
+    assert vendors.secrets["jev_api_key"].masked == "••••••••9012"
+    assert vendors.secrets["jev_api_key"].source == "database"
+    assert "Jev" in vendors.status_message
+
+
+def test_a_jev_base_url_off_the_official_host_is_refused_by_the_panel() -> None:
+    """Refused here as well as at boot: the Bearer header follows this URL."""
+    with pytest.raises(AppError) as host_error:
+        _validate_provider_values(
+            "ai_vendors",
+            {},
+            ProviderSettingsUpdate(config={"jev_api_base_url": "https://attacker.example/v1"}),
+        )
+    assert getattr(host_error.value, "code", None) == "provider_setting_invalid"
+
+    with pytest.raises(AppError) as moved_secret:
+        _validate_provider_values(
+            "ai_planner", {}, ProviderSettingsUpdate(secrets={"jev_api_key": "jev-new"})
+        )
+    assert getattr(moved_secret.value, "code", None) == "provider_setting_unknown"
+
+
+@pytest.mark.asyncio
 async def test_snapshot_exposes_model_catalog_options() -> None:
     snapshot = await settings_snapshot(SnapshotSession([]))  # type: ignore[arg-type]
     by_provider = {item.provider: item for item in snapshot.providers}
@@ -1257,6 +1293,44 @@ async def test_ai_vendors_connection_test_probes_each_configured_vendor() -> Non
     )
     with pytest.raises(ConnectionError):
         await admin_service._test_ai_vendors(nothing, None)
+
+
+@pytest.mark.asyncio
+async def test_the_jev_probe_posts_a_real_decision_because_there_is_no_model_list() -> None:
+    """Every other vendor here is proved by a GET; TypeSafe serves no such endpoint."""
+    import httpx
+
+    seen: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request)
+        return httpx.Response(
+            200,
+            json={
+                "model": "jev-1.13.0",
+                "answers": {"ok": {"type": "noul", "noul": 0.98}},
+                "usage": {"input_tokens": 41, "output_tokens": 0},
+            },
+        )
+
+    settings = Settings(jev_api_key="jev-secret-key")
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        message = await admin_service._test_ai_vendors(settings, client)
+    assert "Jev ✓（jev-1.13.0；noul=0.98）" in message
+    assert "jev-secret-key" not in message
+    assert len(seen) == 1
+    assert seen[0].method == "POST"
+    assert str(seen[0].url) == "https://api.typesafe.ai/v1/systemone"
+    assert seen[0].headers["Authorization"] == "Bearer jev-secret-key"
+
+    def unauthorized(_request: httpx.Request) -> httpx.Response:
+        return httpx.Response(401, json={"message": "bad key"})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(unauthorized)) as client:
+        with pytest.raises(ConnectionError) as error:
+            await admin_service._test_ai_vendors(settings, client)
+    assert "Jev 驗證失敗（JevAuthError）" in str(error.value)
+    assert "jev-secret-key" not in str(error.value)
 
 
 def test_hotspot_guides_status_reports_its_own_sources() -> None:

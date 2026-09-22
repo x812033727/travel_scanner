@@ -35,7 +35,7 @@ CI runs these; run the ones your change touches first.
 ```bash
 npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:web
 npm run test:tools && npm run check:tasks
-cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest
+cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv run pytest
 ```
 
 ## Releases on the production host

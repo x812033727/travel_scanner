@@ -75,6 +75,7 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
         {"navitime-route-totalnavi.p.rapidapi.com", ".navitime.co.jp", ".navitime.biz"}
     ),
     "ekispert_api_base_url": frozenset({"api.ekispert.jp"}),
+    "jev_api_base_url": frozenset({"api.typesafe.ai"}),
     "odsay_api_base_url": frozenset({"api.odsay.com"}),
 }
 
@@ -241,6 +242,14 @@ class Settings(BaseSettings):
     # this is the model the planner and the trip parser use.
     gemini_model: str = "gemini-3.8-flash"
     minimax_api_key: str | None = None
+    # Jev is TypeSafe's System One model. It decides -- choice, score, noul -- and never
+    # generates text, so it is not an AI_PLANNER_PRIORITY vendor and never a planner
+    # fallback; it lives here only because its key belongs on the same encrypted card.
+    jev_api_base_url: str = "https://api.typesafe.ai/v1"
+    # The vendor ships the `jev-latest` alias and then tells you to pin a version in
+    # production. Every other model id in this file is pinned; so is this one.
+    jev_model: str = "jev-1.13.0"
+    jev_api_key: str | None = None
     travel_provider_mode: str = "mock"
     flight_provider_mode: str = "auto"
     flight_search_strategy: str = "hybrid"
@@ -477,6 +486,32 @@ class Settings(BaseSettings):
     hotspot_intro_ai_max_output_tokens: int = Field(default=8_000, ge=1_000, le=32_000)
     hotspot_intro_ai_daily_run_limit: int = Field(default=20, ge=1, le=200)
     hotspot_intro_ai_daily_call_budget: int = Field(default=200, ge=1, le=2_000)
+    # Jev decision budgets. A System One call returns no prose, so a slow one is a
+    # signal rather than a long answer being written: 20s, not the planner's 90.
+    jev_timeout_seconds: float = Field(default=20.0, gt=0, le=60)
+    jev_daily_call_budget: int = Field(default=200, ge=1, le=5_000)
+    # The vendor caps a request at 64k tokens, and state plus the longest single
+    # question at 32k. These sit under both, so a batch splits on our own estimate
+    # instead of on a 422 from the far side.
+    jev_max_state_tokens: int = Field(default=24_000, ge=1_000, le=32_000)
+    jev_max_request_tokens: int = Field(default=56_000, ge=2_000, le=64_000)
+    # The vendor's own example thresholds, and placeholders until shadow-mode numbers
+    # from our own data replace them. Above `act` the answer may be acted on; between
+    # the two it is flagged for review; below `flag` nothing happens.
+    jev_act_confidence: float = Field(default=0.9, ge=0, le=1)
+    jev_flag_confidence: float = Field(default=0.5, ge=0, le=1)
+    # TypeSafe says accuracy is best in English and asks you to validate on your own
+    # Traditional Chinese data before setting automation thresholds. This product is
+    # five-language, so that warning is a default-closed switch rather than a
+    # paragraph in a README: while it is off, a confident answer about non-English
+    # state is downgraded from "act" to "confirm" instead of acting on its own.
+    jev_cjk_autopilot_enabled: bool = False
+    # The first Jev consumer, shipped measuring rather than deciding. "shadow" asks Jev
+    # the same question the guide assessor is already answering and records both, while
+    # the existing relevance threshold still decides every accept. An "enforce" value
+    # belongs here later; the enum exists now so adding it is not a type change. Same
+    # reasoning as public_read_rate_limit_mode: move on evidence, not on principle.
+    jev_shadow_guide_assessment: Literal["off", "shadow"] = "off"
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
@@ -634,6 +669,10 @@ class Settings(BaseSettings):
         return bool(self.odsay_api_key and self.odsay_api_base_url)
 
     @property
+    def jev_configured(self) -> bool:
+        return bool(self.jev_api_key and self.jev_api_base_url)
+
+    @property
     def naver_maps_configured(self) -> bool:
         return bool(self.naver_maps_client_id and self.naver_maps_client_secret)
 
@@ -713,6 +752,7 @@ class Settings(BaseSettings):
             "NAVITIME_API_BASE_URL": (self.navitime_api_key, "navitime_api_base_url"),
             "EKISPERT_API_BASE_URL": (self.ekispert_api_key, "ekispert_api_base_url"),
             "ODSAY_API_BASE_URL": (self.odsay_api_key, "odsay_api_base_url"),
+            "JEV_API_BASE_URL": (self.jev_api_key, "jev_api_base_url"),
             "TRAVELPAYOUTS_API_BASE_URL": (
                 self.travelpayouts_api_token if self.travelpayouts_enabled else None,
                 "travelpayouts_api_base_url",
