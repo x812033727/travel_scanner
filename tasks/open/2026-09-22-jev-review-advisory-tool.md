@@ -207,7 +207,16 @@ has one failure and three fixture errors from its own `write_text`/`read_text` c
 without `encoding=`, and `mypy tests` reports `socketserver.UnixStreamServer` undefined
 in `tests/support/e2e_deploy_agent.py`. Both are platform-only and green in CI.
 
-**Still open.** `S2` of the same plan (turning `JEV_SHADOW_GUIDE_ASSESSMENT=shadow` on
-for the production worker) is not part of this branch: it is a host change, it needs the
-owner's explicit approval, and a container rebuild during a staged release would break
-the release. Do it from the plan, not from here.
+**S2 (the production shadow switch) was done on 2026-09-22 ~13:33Z, outside this branch.**
+With the owner's explicit approval and after confirming no staged release was between
+phases (every `/root/mokaair-localization-*/state.json` was `complete` or activated, no
+hold file), `/root/travel_scanner/.env` (backup `.env.bak-20260922-jev`) gained
+`JEV_SHADOW_GUIDE_ASSESSMENT=shadow` and only the `worker` service was recreated
+(`up -d --no-deps --no-build --force-recreate worker`; `restart` would not re-read the
+env file). The key was not added to the file; it stays on the admin card and reaches the
+job through `load_runtime_settings`. Afterwards the worker was Up, its environment listed
+exactly one new variable name, its log had no error lines, and the other ten services
+were untouched. The owner's connection test on the card passed. Shadow rows appear only
+when an admin runs the hotspot guide 「AI 搜尋」 (`POST /hotspots/guides/ai-search`); the
+first `jev-shadow-report` after the switch showed `runs_with_shadow_rows: 0` because no
+such search had been run yet.

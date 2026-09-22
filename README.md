@@ -563,6 +563,11 @@ deterministic regex baseline -- `本文|這篇`, `官方頁(寫|說|的)|我們(
 its call: read `flagged_without_signal` before believing it does. Flags never change
 the exit code, and no pack is ever modified.
 
+Production has run the shadow measurement since 2026-09-22: the worker's env carries
+`JEV_SHADOW_GUIDE_ASSESSMENT=shadow` (the key stays on the admin card), so every admin
+guide search now records Jev's answer beside the assessor's, and `jev-shadow-report`
+is where those numbers are read back.
+
 `POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
 current trip version. The request accepts `scope=day` with `day_date`, or the
 backward-compatible default `scope=trip`. Day scope leaves every other date
