@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans KR','PingFang TC','Microsoft JhengHei','Apple SD Gothic Neo',system-ui,sans-serif">
+  <title id="title">仁川空港からソウル市内への鉄道・バス路線図</title>
+  <desc id="desc">空港鉄道AREXの直通列車はソウル駅へ。普通列車は弘大入口、孔徳などに停車してソウル駅へ。空港バスは明洞、江南などへ向かい、深夜にはN系統のバスが運行します。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"></rect>
+  <text x="80" y="88" font-size="40" font-weight="700" fill="#102A2B">仁川空港 → ソウル市内　主なルート</text>
+  <text x="80" y="128" font-size="22" fill="#5C6B6B">仁川空港 → ソウル中心部 · 所要時間は目安。公式時刻表を確認</text>
+
+
+  <path d="M 300 470 C 620 470, 780 400, 1250 400" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"></path>
+
+  <path d="M 300 470 C 560 470, 700 250, 960 250 L 1250 250 L 1250 400" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <path d="M 300 470 C 620 520, 900 580, 1210 580" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"></path>
+  <path d="M 300 470 C 620 600, 900 760, 1210 760" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"></path>
+
+  <g>
+    <rect x="80" y="410" width="220" height="120" rx="24" fill="#0D6B68"></rect>
+    <text x="190" y="458" font-size="30" font-weight="700" fill="#FFFFFF" text-anchor="middle">仁川空港</text>
+    <text x="190" y="496" font-size="20" fill="#E6F2F1" text-anchor="middle">T1/T2 ターミナル</text>
+  </g>
+
+  <g font-size="26" font-weight="700" fill="#102A2B">
+    <circle cx="960" cy="250" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"></circle>
+    <text x="960" y="210" text-anchor="middle">弘大入口</text>
+    <circle cx="1250" cy="250" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"></circle>
+    <text x="1285" y="242">孔徳</text>
+    <circle cx="1250" cy="400" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"></circle>
+    <text x="1285" y="392">ソウル駅</text>
+    <text x="1285" y="420" font-size="16" font-weight="400" fill="#5C6B6B" style="font-size: 16px;">直通 T1 43分／T2 51分 · 普通列車 約60分</text>
+    <circle cx="1210" cy="580" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"></circle>
+    <text x="1285" y="588">明洞</text>
+    <text x="1285" y="616" font-size="16" font-weight="400" fill="#5C6B6B" style="font-size: 16px;">6001/6015・N6701ソウル駅約60分(T1)</text>
+    <circle cx="1210" cy="760" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"></circle>
+    <text x="1285" y="768">江南</text>
+    <text x="1285" y="796" font-size="18" font-weight="400" fill="#5C6B6B">6703・N6000江南約70分(T1)</text>
+  </g>
+
+  <g font-size="22" font-weight="700">
+    <text x="560" y="300" fill="#6B4A3A">AREX 普通</text>
+    <text x="620" y="410" fill="#0D6B68">AREX 直通</text>
+    <text x="520" y="690" fill="#B8442D">空港バス・深夜N</text>
+  </g>
+
+  <g font-size="20" fill="#102A2B">
+    <line x1="80" y1="860" x2="140" y2="860" stroke="#0D6B68" stroke-width="10" stroke-linecap="round"></line>
+    <text x="152" y="867">AREX直通</text>
+    <line x1="420" y1="860" x2="480" y2="860" stroke="#6B4A3A" stroke-width="10" stroke-linecap="round"></line>
+    <text x="492" y="867">AREX普通</text>
+    <line x1="780" y1="860" x2="840" y2="860" stroke="#B8442D" stroke-width="8" stroke-dasharray="18 12" stroke-linecap="round"></line>
+    <text x="852" y="867">バス</text>
+    <text x="1180" y="867" fill="#5C6B6B">© Mokaair 制作 2026</text>
+  </g>
+</svg>
