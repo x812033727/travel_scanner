@@ -1,13 +1,13 @@
 ---
 id: 2026-09-13-adsense-ads-txt-drift
 title: Serve ads.txt from the configured publisher id instead of a build-time file
-status: review
+status: done
 priority: P3
 area: web
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T09:27:35Z
 created_at: 2026-09-13T09:44:42Z
-completed_at:
+completed_at: 2026-09-22T01:27:11Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
