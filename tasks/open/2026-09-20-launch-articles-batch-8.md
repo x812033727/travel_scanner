@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-launch-articles-batch-8
 title: 撰寫並上線第八批旅遊文章：二十篇 zh-TW 攻略與情報
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-22T13:07:55Z
 created_at: 2026-09-20T02:32:43Z
 completed_at:
-branch:
+branch: claude/launch-articles-batch-8
 depends_on:
   - 2026-09-19-plan-articles-batch-8
 scope:
@@ -52,6 +52,7 @@ scope:
   - apps/web/public/guides/vung-tau-day-trip-from-ho-chi-minh
   - apps/web/public/guides/ngong-ping-360-lantau-day
   - apps/web/public/guides/kuala-lumpur-3-day-itinerary
+  - docs/travel-guides-batch-8/ERRATA.md
 ---
 
 # 撰寫並上線第八批旅遊文章：二十篇 zh-TW 攻略與情報
@@ -116,3 +117,13 @@ uv run python -m app.guides.pack_cli lint --kind intel
 - 研究檔與抓下來的原始頁不在 repo（規劃工作區）；規格的「官方來源」一節已把要用的網址與 2026-09-20 讀到的原文抄進去。
 - 第七批的教訓（`tasks/done/2026-09-16-launch-articles-batch-7.md`）：二十個代理同時跑會撞模型限額；
   過了 `ingest --dry-run` 的草稿不等於查證過的文章；hero 壓不進 200 KB 時在 ingest 之後補壓。
+
+## 進度（2026-09-22，第一波）
+
+- 第一波七篇（寧平、頭頓、美山、慶良間、不開車玩沖繩、沖繩住宿稅、大叻）由七位 opus 撰稿代理各寫一篇（同時 ≤7），
+  再各派一位新的 opus 查核代理逐條對官方頁。查核結果：美山 112 條／0 事實改動、頭頓 61／0、大叻 75／1、沖繩住宿稅 48／1、
+  寧平 90／2、不開車玩沖繩 76／2、慶良間 80／6（→ 第二輪：六筆全部確認，另一筆改動＝座間味泊位編號 No.6／No.7A 在官方頁與港區地圖都查不到，整篇移除；復原步驟在工作區 verify-2.md）。七篇全部 `pack_cli ingest` 進 repo，hero 全部 ≤200 KB。第一波完成 2026-09-23。
+- 讀者優先規則的裁決（描述只留一個查證戳記、開頭段最多一個出處語、標題與 summary 不寫自選數量）與規格差異都記在
+  `docs/travel-guides-batch-8/ERRATA.md`（本票 scope 新增）。
+- 協調者工具在持久目錄 `C:\Users\x8120\mokaair-work\_tools\`（WRITER.md、VERIFIER.md、intake_check.py、shared_check.py、shrink_hero.py），
+  狀態檔 `C:\Users\x8120\mokaair-work\STATE.md`。
