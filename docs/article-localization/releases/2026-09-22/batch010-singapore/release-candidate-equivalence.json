@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "reviewer": "codex-batch010-v6-topics-order-independent",
+  "reviewed_at_utc": "2026-09-22T02:04:06.824457+00:00",
+  "decision": "PASS_exact_v6_topics_order_only_candidate",
+  "blocking_findings": [],
+  "scope": {
+    "slugs": [
+      "singapore-4-day-itinerary",
+      "singapore-changi-airport-mrt-simplygo-guide"
+    ],
+    "purpose": "Independent read-only review of v5-to-v6 candidate delta and prior content-review inheritance",
+    "release_or_production_approval": false,
+    "candidate_or_production_edited": false
+  },
+  "binding": {
+    "v5_bundle_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch010-work\\release-v5\\bundle",
+    "v5_manifest_sha256": "e260504f0fa9ab7e87d912d6ef42bc75892f1af150c49f333a98c9c17e9b9024",
+    "v6_bundle_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch010-work\\release-v6-topics-order\\bundle",
+    "v6_manifest_sha256": "f3aa4de95a19d5786c7764298c741327ed35672bb42d2153a1347d9dbdff9a21",
+    "unchanged_baseline_sha256": "c7b385a94741bd7f9650b563db72f736dc9617b79c5b31d965edcb401b5074d1",
+    "prior_independent_approval_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch010-independent-review-v5\\content-review-batch010-v5-approved.json",
+    "prior_independent_approval_sha256": "1fb7167c392307d19bbf84461107316bf5b594bd0e8cdc24d1604dd730412f57",
+    "prior_approved_candidate_commit": "a320aab66d174a1e699e32c4ae894fc92fb007a8",
+    "git_commit_compared": "d52af4d95a40f5e353c567d366ee1b2b69dc5696",
+    "byte_and_semantic_audit_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch010-work\\release-v6-topics-order\\independent-review\\byte-and-semantic-audit.json",
+    "byte_and_semantic_audit_sha256": "4d3b6aea47c655efb38530a9590a026427412ac3ff4508c03cdcfcc479dcc0a6",
+    "model_and_prior_review_audit_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch010-work\\release-v6-topics-order\\independent-review\\model-and-prior-review-audit.json",
+    "model_and_prior_review_audit_sha256": "b98bc4df45a5183a0ec059e03f41146e2d8d486c084f3b1d2ee06de61696c172"
+  },
+  "exact_delta": {
+    "bundle_file_count": 22,
+    "changed_files": [
+      "packs/singapore-4-day-itinerary.json",
+      "packs/singapore-changi-airport-mrt-simplygo-guide.json",
+      "release-manifest.json"
+    ],
+    "pack_json_changes": {
+      "singapore-4-day-itinerary": [
+        {
+          "pointer": "/topics/0",
+          "before": "culture",
+          "after": "itinerary"
+        },
+        {
+          "pointer": "/topics/1",
+          "before": "itinerary",
+          "after": "culture"
+        }
+      ],
+      "singapore-changi-airport-mrt-simplygo-guide": [
+        {
+          "pointer": "/topics/0",
+          "before": "budget",
+          "after": "transport"
+        },
+        {
+          "pointer": "/topics/1",
+          "before": "transport",
+          "after": "budget"
+        }
+      ]
+    },
+    "pack_sha256_before_after": {
+      "singapore-4-day-itinerary": {
+        "v5": "f551643201528450541c9abe8bfbdb5c85920604c8a47e6d327196fd9c8bf0cb",
+        "v6": "cca981435b67e72c19abc1d763da031b0a4f6dd614037dd0bf70245e55a66e93"
+      },
+      "singapore-changi-airport-mrt-simplygo-guide": {
+        "v5": "8a0d164ab2b0f2abc7de17a0ce7def98fe2d82ef72249c1c995cdade6b65b30c",
+        "v6": "9577d546e6290935ee2f70384439c4b007d3341d392cace4aaac193b4580a761"
+      }
+    },
+    "manifest_json_changes": [
+      {
+        "pointer": "/articles/0/pack_sha256",
+        "before": "f551643201528450541c9abe8bfbdb5c85920604c8a47e6d327196fd9c8bf0cb",
+        "after": "cca981435b67e72c19abc1d763da031b0a4f6dd614037dd0bf70245e55a66e93"
+      },
+      {
+        "pointer": "/articles/1/pack_sha256",
+        "before": "8a0d164ab2b0f2abc7de17a0ce7def98fe2d82ef72249c1c995cdade6b65b30c",
+        "after": "9577d546e6290935ee2f70384439c4b007d3341d392cace4aaac193b4580a761"
+      }
+    ],
+    "unchanged_file_sha256": {
+      "link-transformations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "public/guides/singapore-4-day-itinerary/diagram-1-en.svg": "682fbce6ad8d512bbe1f1bfc342392bcbd001b66a98028cfc5746eaefe9bcbea",
+      "public/guides/singapore-4-day-itinerary/diagram-1-ja.svg": "e6d6434e219361fafc21677258390457571b58c745928944b8a068483d0f3e2b",
+      "public/guides/singapore-4-day-itinerary/diagram-1-ko.svg": "5c89b3767c897a0dba5094117af70520790588cea8752a0dfb485dd67c628ff4",
+      "public/guides/singapore-4-day-itinerary/diagram-1-zh-cn.svg": "f5c5b3c63f9616469c0bba57a0b7fc19809570578bcdc85ff625d1d53b20e084",
+      "public/guides/singapore-4-day-itinerary/diagram-1.svg": "a1dc4871e5a36ee171cc7bf93687d34633c44a0076bceee5015506e917002ab0",
+      "public/guides/singapore-4-day-itinerary/hero.jpg": "317157d179adb5add278e77d886c8d0cfe9cda3788ce9b5cce1444f1a007b7cd",
+      "public/guides/singapore-4-day-itinerary/photo-1.webp": "c483a97cee3cde669419327dd0f4d1298fb492c8d03c6b3c87b0b9648ad43dfd",
+      "public/guides/singapore-4-day-itinerary/photo-2.webp": "e45692937b56edc838777dd5c3557ba28b95fd2170a58696b6b80a32790dedd3",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/diagram-1-en.svg": "d210c4921e12dc2bfb7df1d59c501ee377c773ee0b4757cdfe6b50fbd64c0525",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/diagram-1-ja.svg": "ebf9e2bf84606b1a86f6f3d5db1297eeb84380f91ec4fbeec6b3f2d7a85570d9",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/diagram-1-ko.svg": "fe64fd74043b7c7d644a43322fe98ac5136e73aeae09bef1ce47cceeba442471",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/diagram-1-zh-cn.svg": "d30ee9353aaababead6cf878ef57c797cea4ccfd5950b84111d0c11dde2f1db4",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/diagram-1.svg": "1c54c9569d167a225d7667b23a65fb863fbbdacf1bcedd004a41042adcdadcaa",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/hero.jpg": "a97a8e3b973f9a0364afa754c1f24e716399909571243f0906f52f3f4f8d74c1",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/photo-1.webp": "922da0b96b14beb12437c371b2648a75fdf2f739635c9fa043eaa5539979d05b",
+      "public/guides/singapore-changi-airport-mrt-simplygo-guide/photo-2.webp": "cf2d509843e151e1c29ef900514758412e321321e6e73704ed212825aa4607f9",
+      "reviews/singapore-4-day-itinerary-zh-TW.json": "7a7cd0fc6a60d38a818332c208fb74507d24ec508e224a920ade0126d1955c92",
+      "reviews/singapore-changi-airport-mrt-simplygo-guide-zh-TW.json": "9afa9f95b5aa9b32c55b168d391492e34a7e9b272108eb09118ba273d4bec293"
+    }
+  },
+  "verification": {
+    "two_packs": "Only topics[0] and topics[1] swap in each pack. Itinerary changes culture,itinerary,nature to itinerary,culture,nature; Changi changes budget,transport to transport,budget. Every other pack JSON field and raw file line remains unchanged.",
+    "manifest": "Only the two article pack_sha256 values change. Baseline SHA, locale/publish lists, source-correction review hashes and all 16 asset paths/hashes remain identical; every v5/v6 manifest pack, source review and asset hash matches its file.",
+    "documents": "All five raw locale JSON subtrees per guide are identical in v5 and v6 and in the compared Git commit. Their ten normalized GuideDocument hashes match the previous independent approved receipt.",
+    "git_pack_model": "Both v6 packs validate under ArticlePack to exactly the same model_dump(mode=json) as Git commit d52af4d95a40f5e353c567d366ee1b2b69dc5696. Raw JSON differs only because v6 explicitly writes default aliases={}, related=[], news_date=null while that commit omits them.",
+    "prior_review": "The independent batch010 v5 content receipt is approved and hash-bound. Since documents and all assets are unchanged, its editorial judgment carries to this exact candidate delta."
+  },
+  "nonblocking_limits": [
+    "This review checks the candidate bundle and a local Git commit object. It does not re-read the production database or prove the current live host revision.",
+    "No import dry-run, production write, PR change, deployment or publication was performed here; those remain separate gates.",
+    "Any change to this manifest, either pack or any asset invalidates this receipt."
+  ]
+}

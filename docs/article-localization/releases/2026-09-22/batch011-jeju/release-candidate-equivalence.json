@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-22",
+  "review": "independent Jeju v2 topics-order equivalence audit",
+  "disposition": "PASS: v2 changes only the two topic positions and manifest pack digest; full ArticlePack model equals PR #643 head",
+  "pr_url": "https://github.com/x812033727/travel_scanner/pull/643",
+  "pr_head_oid": "e1150216ff79f7e355ee3e0c7cd5ef0b4fe374a8",
+  "pr_pack_path": "apps/api/app/guides/content/jeju-car-rental-guide.json",
+  "pr_pack_blob_oid": "216531f4194f8be065725f5f8f2e6dd085d13f16",
+  "pr_pack_sha256": "0bced19c85270f92d07c1dc4e459fa57fc440f100db5f651899c0495c0602a2f",
+  "v1_bundle_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\jeju-release\\release-bundle-candidate",
+  "v2_bundle_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\jeju-release\\release-v2-topics-order\\bundle",
+  "v1_manifest_sha256": "a400c19e1ea036bbf22c2a10ecf656d51ee9a8d725b7c829d43432f94f3663ca",
+  "v2_manifest_sha256": "c6051f2698e4355243f2e22a0fa62fbd60589ad7b05d53272763852f23d93eea",
+  "v1_pack_sha256": "e43c2fcc25313c3f823d7a7c354afcf815c80e8a628b1ef68a0de2563a060c0f",
+  "v2_pack_sha256": "e71f9e21c0c7f7f53cbce1033f19c341df44d565d6e1b87f98b2f6c51eda3f33",
+  "v1_topics": [
+    "packing",
+    "transport"
+  ],
+  "v2_topics": [
+    "transport",
+    "packing"
+  ],
+  "pr_topics": [
+    "transport",
+    "packing"
+  ],
+  "pack_json_leaf_differences": [
+    {
+      "pointer": "/topics/0",
+      "v1": "packing",
+      "v2": "transport"
+    },
+    {
+      "pointer": "/topics/1",
+      "v1": "transport",
+      "v2": "packing"
+    }
+  ],
+  "manifest_leaf_differences": [
+    {
+      "pointer": "/articles/0/pack_sha256",
+      "v1": "e43c2fcc25313c3f823d7a7c354afcf815c80e8a628b1ef68a0de2563a060c0f",
+      "v2": "e71f9e21c0c7f7f53cbce1033f19c341df44d565d6e1b87f98b2f6c51eda3f33"
+    }
+  ],
+  "full_articlepack_v2_equals_pr": true,
+  "full_articlepack_v1_equals_pr": false,
+  "v2_locale_count": 5,
+  "baseline_sha256": "b9153b9e6003cdfe11e083d7a12375886bd188785326fa78c29dfd083eb4e18b",
+  "baseline_exact_v1_match": true,
+  "bundle_file_comparison": [
+    {
+      "path": "link-transformations.json",
+      "v1_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "v2_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "identical": true
+    },
+    {
+      "path": "packs/jeju-car-rental-guide.json",
+      "v1_sha256": "e43c2fcc25313c3f823d7a7c354afcf815c80e8a628b1ef68a0de2563a060c0f",
+      "v2_sha256": "e71f9e21c0c7f7f53cbce1033f19c341df44d565d6e1b87f98b2f6c51eda3f33",
+      "identical": false
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/diagram-1-en.svg",
+      "v1_sha256": "0668ea1a9b3ccb97175f0c7c2cdd437c36ffbb716fbb04a84818830aab99a958",
+      "v2_sha256": "0668ea1a9b3ccb97175f0c7c2cdd437c36ffbb716fbb04a84818830aab99a958",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/diagram-1-ja.svg",
+      "v1_sha256": "aae9d8aa78105e1ed9a4df1fc256259ccb3fc524d34b089794455a4ebd1ba6eb",
+      "v2_sha256": "aae9d8aa78105e1ed9a4df1fc256259ccb3fc524d34b089794455a4ebd1ba6eb",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/diagram-1-ko.svg",
+      "v1_sha256": "4159aa563f6ccfa75cdb44693d1db3c59ac22cb29b87e9be1e3d61ae6779f97b",
+      "v2_sha256": "4159aa563f6ccfa75cdb44693d1db3c59ac22cb29b87e9be1e3d61ae6779f97b",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/diagram-1-zh-cn.svg",
+      "v1_sha256": "f25612cc99ddc099d53d2992bdaac6d7ee7f56f948cdbd84f5ce33c38c3385ca",
+      "v2_sha256": "f25612cc99ddc099d53d2992bdaac6d7ee7f56f948cdbd84f5ce33c38c3385ca",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/diagram-1.svg",
+      "v1_sha256": "baf9e3a32cc75e52a243392320b516fdd5872ed1da4c8653c24e9d53386340a7",
+      "v2_sha256": "baf9e3a32cc75e52a243392320b516fdd5872ed1da4c8653c24e9d53386340a7",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/hero.jpg",
+      "v1_sha256": "3aa3605038c484e3de9f423290bf82cb25952387211a73795b56a3ece76a4541",
+      "v2_sha256": "3aa3605038c484e3de9f423290bf82cb25952387211a73795b56a3ece76a4541",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/photo-1.webp",
+      "v1_sha256": "6152c745b1024f4c5eed70772a613d9b841e53f178e6bc947de0ac9b8a8ee1d1",
+      "v2_sha256": "6152c745b1024f4c5eed70772a613d9b841e53f178e6bc947de0ac9b8a8ee1d1",
+      "identical": true
+    },
+    {
+      "path": "public/guides/jeju-car-rental-guide/photo-2.webp",
+      "v1_sha256": "95253c8f2bc47a50daa1d0929ec173c5fc254c34d309313d59289ce9205dfe64",
+      "v2_sha256": "95253c8f2bc47a50daa1d0929ec173c5fc254c34d309313d59289ce9205dfe64",
+      "identical": true
+    },
+    {
+      "path": "release-manifest.json",
+      "v1_sha256": "a400c19e1ea036bbf22c2a10ecf656d51ee9a8d725b7c829d43432f94f3663ca",
+      "v2_sha256": "c6051f2698e4355243f2e22a0fa62fbd60589ad7b05d53272763852f23d93eea",
+      "identical": false
+    },
+    {
+      "path": "reviews/jeju-car-rental-guide-zh-TW.json",
+      "v1_sha256": "d49b681dc0fbd946066a2558d8ace9a2d0e9c266fbda4fbf1d1df8a7a8857f2a",
+      "v2_sha256": "d49b681dc0fbd946066a2558d8ace9a2d0e9c266fbda4fbf1d1df8a7a8857f2a",
+      "identical": true
+    }
+  ],
+  "changed_bundle_files": [
+    "packs/jeju-car-rental-guide.json",
+    "release-manifest.json"
+  ],
+  "asset_pr_blob_checks": [
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/diagram-1-en.svg",
+      "manifest_sha256": "0668ea1a9b3ccb97175f0c7c2cdd437c36ffbb716fbb04a84818830aab99a958",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/diagram-1-en.svg",
+      "pr_blob_oid": "7c955cfdbe24af6b7b10a71a6432f17503bce319",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/diagram-1-ja.svg",
+      "manifest_sha256": "aae9d8aa78105e1ed9a4df1fc256259ccb3fc524d34b089794455a4ebd1ba6eb",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/diagram-1-ja.svg",
+      "pr_blob_oid": "abf2dc0435ac1e610362459e65b8467f69313407",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/diagram-1-ko.svg",
+      "manifest_sha256": "4159aa563f6ccfa75cdb44693d1db3c59ac22cb29b87e9be1e3d61ae6779f97b",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/diagram-1-ko.svg",
+      "pr_blob_oid": "b6e67d10bbbef140525fddc2a4092f0b7d2ecaa6",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/diagram-1-zh-cn.svg",
+      "manifest_sha256": "f25612cc99ddc099d53d2992bdaac6d7ee7f56f948cdbd84f5ce33c38c3385ca",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/diagram-1-zh-cn.svg",
+      "pr_blob_oid": "18c7dd6fee728a3ef3def2767f43398096f2a49c",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/diagram-1.svg",
+      "manifest_sha256": "baf9e3a32cc75e52a243392320b516fdd5872ed1da4c8653c24e9d53386340a7",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/diagram-1.svg",
+      "pr_blob_oid": "98a982639df9394d58d1a52dea091dca918eb6e6",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/hero.jpg",
+      "manifest_sha256": "3aa3605038c484e3de9f423290bf82cb25952387211a73795b56a3ece76a4541",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/hero.jpg",
+      "pr_blob_oid": "9e3d165898aa8e8c51ec0a66825f64f99e84da1c",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/photo-1.webp",
+      "manifest_sha256": "6152c745b1024f4c5eed70772a613d9b841e53f178e6bc947de0ac9b8a8ee1d1",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/photo-1.webp",
+      "pr_blob_oid": "40b793e61e8bb95b1f1ec37d578ae6fe0e1fc2bf",
+      "exact_pr_blob_match": true
+    },
+    {
+      "bundle_path": "public/guides/jeju-car-rental-guide/photo-2.webp",
+      "manifest_sha256": "95253c8f2bc47a50daa1d0929ec173c5fc254c34d309313d59289ce9205dfe64",
+      "pr_path": "apps/web/public/guides/jeju-car-rental-guide/photo-2.webp",
+      "pr_blob_oid": "dc7df57e5cbc2b41b6da7c3c84924741bbe06b7e",
+      "exact_pr_blob_match": true
+    }
+  ],
+  "zh_tw_source_review_sha256": "d49b681dc0fbd946066a2558d8ace9a2d0e9c266fbda4fbf1d1df8a7a8857f2a",
+  "unchanged_external_evidence": {
+    "source-correction-review-jeju.json": "d49b681dc0fbd946066a2558d8ace9a2d0e9c266fbda4fbf1d1df8a7a8857f2a",
+    "review-projection-reconciled.json": "3517efc98f6bf8e1ddadaaa38d69866be3ab85b7e59cd6ccc88f0fe95d9237d7",
+    "lf-svg-independent-review.json": "421e65ba10467c24b6a79f03691a16ba09af193e7b54d8924fe57366a21967fc",
+    "pr-svg-line-ending-attestation.json": "eeb683f2eeb83c44a7af404b41e0d777b7d71b1fc09efb60130a8bcd1a703229",
+    "preflight.json": "a6ac5664b5a882fb7503265c52aeb33fd9575416221ffa29d1b0ef1f677fc2a5"
+  },
+  "release_limit": "Read-only equivalence review only; PR remains open and this receipt does not authorize merge, deploy, database writes, import, or publication."
+}
