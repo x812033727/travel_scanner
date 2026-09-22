@@ -63,6 +63,22 @@ def git_blob(revision, path):
     return blob
 
 
+def git_head():
+    try:
+        revision = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError) as error:
+        raise ValueError("Current Git HEAD is unavailable") from error
+    if not repository_preservation.GIT_HASH.fullmatch(revision):
+        raise ValueError("Current Git HEAD is invalid")
+    return revision
+
+
 def write_text_lf(path, value):
     """Write text exactly as Git will check it out on every supported platform."""
     Path(path).write_text(
@@ -412,6 +428,10 @@ def assemble(
                 raise ValueError(f"Repository preservation locale is absent: {slug}:{locale}")
             path, review = preservation_inputs[key]
             repository_document = repository_pack.locales[locale].model_dump(mode="json")
+            if git_head() != baseline["repo_commit"]:
+                raise ValueError(
+                    f"Repository preservation requires the pinned final Git HEAD: {slug}"
+                )
             if git_blob(baseline["repo_commit"], article["pack_path"]) != (
                 repository_preservation.git_blob_sha1(repository_pack_raw)
             ):

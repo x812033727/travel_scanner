@@ -3,6 +3,7 @@
 import copy
 import importlib.util
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -495,6 +496,7 @@ def preservation_case(tmp_path, monkeypatch):
 
     monkeypatch.setattr(module, "ROOT", root)
     monkeypatch.setattr(module, "reviewed_document", reviewed)
+    monkeypatch.setattr(module, "git_head", lambda: repo_commit)
 
     def pinned_git_blob(revision, path):
         assert revision == repo_commit
@@ -594,6 +596,56 @@ def test_reviewed_unselected_repository_description_is_preserved_from_final_git_
     assert assembled["locales"]["zh-TW"] == case["repository"]
     assert case["article"]["source_document"] == case["live"]
     assert "zh-TW" not in entry["locales"] and "zh-TW" not in entry["publish_locales"]
+
+
+def test_repository_preservation_rejects_unchanged_pack_after_real_git_head_drift(
+    tmp_path, monkeypatch
+):
+    real_git_blob = module.git_blob
+    real_git_head = module.git_head
+    case = preservation_case(tmp_path, monkeypatch)
+
+    def git(*args):
+        return subprocess.run(
+            ["git", *args],
+            cwd=case["root"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    git("init")
+    git("config", "user.name", "Preservation Test")
+    git("config", "user.email", "preservation-test@example.invalid")
+    git("add", case["article"]["pack_path"])
+    git("commit", "-m", "final translation pack")
+    final_head = git("rev-parse", "HEAD")
+    case["baseline"]["repo_commit"] = final_head
+    case["review"]["repo_commit"] = final_head
+    write_preservation_case(case)
+    monkeypatch.setattr(module, "git_blob", real_git_blob)
+    monkeypatch.setattr(module, "git_head", real_git_head)
+
+    accepted = module.assemble(
+        case["baseline_path"],
+        case["work"],
+        [case["slug"]],
+        tmp_path / "bundle-at-final-head",
+        repository_preservation_reviews=[case["review_path"]],
+    )
+    assert accepted["articles"][0]["repository_preservations"][0]["repo_commit"] == final_head
+
+    git("commit", "--allow-empty", "-m", "later unrelated commit")
+    assert git("rev-parse", "HEAD") != final_head
+    with pytest.raises(ValueError, match="pinned final Git HEAD"):
+        module.assemble(
+            case["baseline_path"],
+            case["work"],
+            [case["slug"]],
+            tmp_path / "rejected-after-head-drift",
+            repository_preservation_reviews=[case["review_path"]],
+        )
+    assert not (tmp_path / "rejected-after-head-drift").exists()
 
 
 @pytest.mark.parametrize(

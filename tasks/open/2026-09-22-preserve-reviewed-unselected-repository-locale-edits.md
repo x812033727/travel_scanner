@@ -83,9 +83,19 @@ Their exact open/done task paths are included in this task's scope for that boun
 queue repair. This task must be released and claimed again without `--force` after the
 old records are archived, before product-code validation continues.
 
-Local validation before independent review: 125 passed, 59 skipped across all five
+Local validation after the independent-review fix: 126 passed, 59 skipped across all five
 article-localization test modules; repository-wide article-localization Ruff, task
 check and `git diff --check` passed. Task-check warnings are pre-existing stale claims
 and unrelated overlaps. The two merged task records were archived with root-verified
 merge, 9/9 CI and production-use evidence; this task was then released and reclaimed
 without `--force`, removing its original scope overlap before validation resumed.
+
+Independent review of frozen head `ff4f51c9` withheld on one issue: an unchanged pack
+could retain an old receipt after the current worktree advanced by an unrelated Git
+commit. The preservation path now requires current `HEAD == baseline.repo_commit`;
+the review verifier already requires that same commit in the receipt. A real temporary
+Git repository regression proves assembly succeeds at final commit A and refuses after
+an empty commit B, while ordinary non-preservation assembly remains unchanged. The
+original WITHHOLD receipt remains at
+`batch015/source-edit-preservation-feature-review/independent-code-review-withhold-ff4f51c9.json`
+outside the repository.
