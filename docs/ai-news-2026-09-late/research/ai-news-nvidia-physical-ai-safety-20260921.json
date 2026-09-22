@@ -496,6 +496,59 @@
       "研究紀錄 must_not_write：兩個官方頁對 Halos OS 的措辭不一致時以「還在檢驗」那一版為準，兩邊都要寫出來——正文第 8 段照做，維持。",
       "研究紀錄 unverified_or_excluded：不得請求部落格裡 Advantech 那個夾帶個人 email 的 outlook safelinks 轉址網址，也不得抄 ANAB PDF 上的聯絡人姓名與 email——本輪都沒有請求、沒有抄錄，查核報告裡也沒有。",
       "AI 垂直只有一個 callout、沒有投資免責段落——維持（內容包只有一個 callout）。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, did not write and did not run round 1)",
+      "checked_on": "2026-09-23",
+      "method": "重抓四條 sources 與兩條被排除的預測報告連結，全部用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同一主機間隔 ≥2 秒，UA／標頭／查詢字串沒有帶任何人的姓名或 email。bytes 與研究紀錄、第一輪完全相同：blogs.nvidia.com 200／121,824、safety-certification 200／665,291、halos/robotics 200／761,431、ANAB PDF 200／434,445（系統 python 的 pypdf 抽 6 頁／8,592 字元）；my.abiresearch.com 200／17,744（登入牆，頁面自印 Subscriber Content ✓ Full Reports）、omdia.tech.informa.com 200／221,965（頁面自印 A subscription is required to view this content）。範圍：第一輪改過的 13 條主張、第一輪新寫進去的 8 段字串逐字回一手來源、112 條 CONFIRMED 以 seed 20260923 抽樣三分之一（37 條）、研究紀錄 4＋38 條 verbatim_quote 與內容包 15 段英文引文的連續字串比對，合計 121 條。引文比對除了壓縮空白，另做一次「去掉所有空白」的比對，因為 nvidia.com 的行內 <a> 會在字中插入空白（例如 Agilit y、AVs ,），第一次比對的 7 個 MISS 全是這個原因，去空白後 0 失敗。",
+      "claims_checked": 121,
+      "changes": [
+        {
+          "claim": "第一輪把「ANAB 的證書開給 NVIDIA Corporation」補進正文第 9 段與 FAQ 第三題，但沒有跟到摘要第三句——摘要仍把 Type C 的登記直接掛在實驗室名下，與正文不一致（summary ⊆ 正文）。",
+          "before": "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構，登記類別是 Type C（second party），檢驗方式是審閱文件",
+          "after": "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構；ANAB 的證書開給 NVIDIA Corporation，登記類別是 Type C（second party），檢驗方式是審閱文件",
+          "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+        },
+        {
+          "claim": "同一個漏改：表格第三列的涵蓋對象只寫實驗室，第三欄卻掛著 ANAB 檔案上的登記類別。表格是讀者最會整段抄走的部分。",
+          "before": "[\"機構獲得認可\", \"NVIDIA 自家的 Halos AI Systems Inspection Lab\", ...]",
+          "after": "[\"機構獲得認可\", \"NVIDIA 自家的 Halos AI Systems Inspection Lab（證書開給 NVIDIA Corporation）\", ...]",
+          "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+        },
+        {
+          "claim": "協調者裁定的第二組措辭落差：機器人頁常見問題「Is the NVIDIA IGX SoC safety certified?」的答句寫 The NVIDIA IGX is a third-party assessed, safety-compliant System-on-a-Chip，與部落格的 designed to support … including IEC 61508 and ISO 13849 不一致。文章第 5 段要讀者記住 IGX 用的是「支援」而非已認證，而第 13 段又請讀者自己去看那一頁，不寫這一句，讀者照做就會看到相反的措辭。照 must_not_write 第 7 條兩邊都寫、以帶限定詞的版本為準，接在第一組落差後面一個子句。",
+          "before": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準。",
+          "after": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準；同一頁另稱 IGX 是「third-party assessed」（意為：經第三方評估）的晶片，與部落格「設計上支援」的措辭同樣有落差。",
+          "source_url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/"
+        },
+        {
+          "claim": "騰字數用的第一處重複（不是但書）：第 12 段句末把第 6 段的 level 4-ready 但書再講一次。但書原文留在第 6 段「還不是已上路載客的 4 級自駕車」，一個字都沒動。",
+          "before": "（第 12 段句末）還沒出貨——前面的「level 4-ready」車輛同樣是準備階段，非已載客上路的 4 級自駕車。",
+          "after": "（第 12 段句末）還沒出貨。",
+          "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+        },
+        {
+          "claim": "騰字數用的第二處重複：同一句裡「NVIDIA 自稱」與「這是廠商自己的說法」講同一件事。歸因留在「NVIDIA 自稱」，界線句「本站沒有比較其他公司的方案」保留。",
+          "before": "（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），這是廠商自己的說法，本站沒有比較其他公司的方案。",
+          "after": "（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），本站沒有比較其他公司的方案。",
+          "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+        }
+      ],
+      "open_questions": [
+        "第 8 段新增的那一句把「評估」帶進了正文（third-party assessed 的意譯）。新標題〈已認證、檢驗中與機構認可〉照協調者指示維持不動——標題的三種強度在正文與表格都指得出來，新增的子句是在陳述廠商兩個頁面的措辭落差，不是第四種強度。若協調者不希望正文出現「評估」兩個字，把意譯改成「經第三方查驗」即可，事實不變。",
+        "title_candidates[0] 仍是第一輪沒動的舊標題（含「評估」），第二輪同樣沒動，留給協調者。",
+        "Digit 型號的落差（部落格 its Digit 5 humanoid／機器人頁 Digit, Agility's humanoid）第二輪覆核仍然存在，維持第一輪的判斷：兩頁講同一台機器人，正文寫 Digit 5 可接受，但嚴格說未來式那一句沒有印型號。",
+        "第一輪說四頁搜價格字串 0 筆；第二輪實測兩個 nvidia.com 頁面各有 1 筆 pricing，出處是網站自己的地區切換視窗那句 Visit your regional NVIDIA website for local content, pricing, and where to buy…，與 Taiwan 出現的位置是同一塊版面。文章的說法（這不是產品發表、沒有價格）不受影響，不需要改字，但那個「0 筆」的說法本身要修正。",
+        "預測報告的取得狀態今天與第一輪相同：Omdia 200＋訂閱牆（A subscription is required to view this content）、ABI 200＋登入牆，牆上自印 Subscriber Content ✓ Full Reports。正文寫「兩份原始報告都要訂閱才讀得到」對得上；這是活資料，之後要再確認。"
+      ],
+      "coordinator_rulings": [
+        "指派訊息：第二組措辭落差「只有在能從別處刪掉重複、把字數騰出來時才可以加一個子句，正文必須 ≤3,000」。已加：刪掉兩處重複（44＋10 字）、加上 68 字的子句，段落字數 2,982 → 2,996，check_article.py 印 OK。刪掉的兩處都是重複敘述，沒有刪掉任何但書、限定詞或歸因。",
+        "指派訊息：新標題維持不動，並確認研究紀錄的 title 已同步——第二輪進場時就已經同步（check_article.py 第 305 行會比對），沒有再動。",
+        "DELTA-4-7 第 10 條：16:00 是佔位時刻，事件日維持 2026-09-21，不換算。第二輪重抓的 meta 與第一輪相同，維持。",
+        "指派表 A6：4,900 萬與 6,000 萬一律歸因 ABI Research／Omdia，標題與摘要不放——查核後仍成立。",
+        "研究紀錄 unverified_or_excluded：第二輪同樣沒有請求 Advantech 那個夾帶個人 email 的 safelinks 轉址網址，ANAB PDF 第 2 頁的聯絡人姓名與 email 沒有抄進任何檔案（本物件與查核報告裡都沒有）。"
+      ],
+      "verdict": "ok"
+    }
   }
 }

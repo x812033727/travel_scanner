@@ -36,7 +36,7 @@
           "items": [
             "2026 年 9 月 21 日，NVIDIA 在官方部落格說明實體 AI（自駕車與機器人）的安全，為什麼必須橫跨硬體、軟體、AI 行為、運作環境與部署生命週期，而不是部署前檢查一次就結束。",
             "自駕車端，TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與車用產品生命週期軟體流程認證到 ISO 26262 ASIL D；機器人端，TÜV Rheinland 目前還在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度，尚未完成。",
-            "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構，登記類別是 Type C（second party），檢驗方式是審閱文件，效期到 2027 年 1 月 2 日；NVIDIA 也說明，最終的系統級認證仍要由獨立第三方機構完成。",
+            "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構；ANAB 的證書開給 NVIDIA Corporation，登記類別是 Type C（second party），檢驗方式是審閱文件，效期到 2027 年 1 月 2 日；NVIDIA 也說明，最終的系統級認證仍要由獨立第三方機構完成。",
             "ANAB 的認可被 NVIDIA 說成在 80 個國家受到承認、包含中國，但查核到的四個官方頁面都沒有提到台灣，也無法從這句話推論台灣是否在其中。",
             "機器人端的 Halos Core for IGX 目前只開放已註冊的開發者早期存取，人形機器人 Digit 5 的安全系統整合也還在進行中，尚未出貨。"
           ]
@@ -73,7 +73,7 @@
           "rows": [
             ["已完成認證", "自駕車：DriveOS 6.0、車用產品生命週期軟體流程與車用工程流程", "DriveOS 6.0 與產品生命週期軟體流程通過 ISO 26262 ASIL D；車用工程流程通過 ISO/SAE 21434", "TÜV SÜD"],
             ["還在檢驗中", "機器人：IGX Thor、Halos OS、Holoscan Sensor Bridge", "檢驗功能安全認證準備度，尚未完成", "TÜV Rheinland"],
-            ["機構獲得認可", "NVIDIA 自家的 Halos AI Systems Inspection Lab", "認可為 ISO/IEC 17020 檢驗機構，登記類別 Type C（second party）", "ANAB"],
+            ["機構獲得認可", "NVIDIA 自家的 Halos AI Systems Inspection Lab（證書開給 NVIDIA Corporation）", "認可為 ISO/IEC 17020 檢驗機構，登記類別 Type C（second party）", "ANAB"],
             ["設計上支援", "機器人硬體 IGX Thor", "支援 IEC 61508、ISO 13849 等標準，非已取得認證", "NVIDIA 自述"]
           ],
           "caption": "NVIDIA 在 2026 年 9 月 21 日部落格文章、NVIDIA 官方頁面與 ANAB 認可範圍檔案裡，對 Halos 安全系統使用的四種不同說法整理，查核日 2026 年 9 月 23 日。"
@@ -89,7 +89,7 @@
         },
         {
           "type": "paragraph",
-          "text": "機器人端則是進行式：官方寫道「TÜV Rheinland is inspecting NVIDIA IGX Thor, Halos OS and Holoscan Sensor Bridge for functional-safety certification readiness」（意為：正在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度），還沒完成。NVIDIA 另一個機器人頁面卻把 Halos OS 描述成「safety-certified operating system foundation」（意為：已通過安全認證的作業系統基礎），與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準。"
+          "text": "機器人端則是進行式：官方寫道「TÜV Rheinland is inspecting NVIDIA IGX Thor, Halos OS and Holoscan Sensor Bridge for functional-safety certification readiness」（意為：正在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度），還沒完成。NVIDIA 另一個機器人頁面卻把 Halos OS 描述成「safety-certified operating system foundation」（意為：已通過安全認證的作業系統基礎），與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準；同一頁另稱 IGX 是「third-party assessed」（意為：經第三方評估）的晶片，與部落格「設計上支援」的措辭同樣有落差。"
         },
         {
           "type": "paragraph",
@@ -119,7 +119,7 @@
         },
         {
           "type": "paragraph",
-          "text": "這也不是事故或調查報導：四個來源裡沒有出現任何自駕車或機器人的事故、召回或主管機關調查。NVIDIA 自稱 Halos 是「the first and only full-stack safety system for physical AI」（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），這是廠商自己的說法，本站沒有比較其他公司的方案。"
+          "text": "這也不是事故或調查報導：四個來源裡沒有出現任何自駕車或機器人的事故、召回或主管機關調查。NVIDIA 自稱 Halos 是「the first and only full-stack safety system for physical AI」（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），本站沒有比較其他公司的方案。"
         },
         {
           "type": "heading",
@@ -128,7 +128,7 @@
         },
         {
           "type": "paragraph",
-          "text": "機器人端目前能用的有限：Halos Core for IGX 是「early access for registered developers」（意為：僅開放已註冊的開發者早期存取），不是公開上市產品；Digit 5 官方用未來式「will be the first production robot shipping with NVIDIA Halos OS」（意為：將會是第一台出貨時搭載 Halos OS 的量產機器人），還沒出貨——前面的「level 4-ready」車輛同樣是準備階段，非已載客上路的 4 級自駕車。"
+          "text": "機器人端目前能用的有限：Halos Core for IGX 是「early access for registered developers」（意為：僅開放已註冊的開發者早期存取），不是公開上市產品；Digit 5 官方用未來式「will be the first production robot shipping with NVIDIA Halos OS」（意為：將會是第一台出貨時搭載 Halos OS 的量產機器人），還沒出貨。"
         },
         {
           "type": "paragraph",
