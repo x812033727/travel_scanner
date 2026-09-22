@@ -19,11 +19,9 @@ from typing import Any
 
 from sqlalchemy import select
 
+from app.ai.jev import USD_PER_INPUT_TOKEN
 from app.db import SessionFactory
 from app.models import HotspotGuideAISearchRun
-
-# TypeSafe bills input tokens only, at $0.042 per million.
-USD_PER_INPUT_TOKEN = 0.042 / 1_000_000
 
 
 def _tally() -> dict[str, int]:
