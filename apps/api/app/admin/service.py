@@ -179,18 +179,22 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
     "ai_vendors": ProviderDefinition(
         "AI 供應商與金鑰",
         "OpenAI、Claude、MiniMax 與 Gemini 的 API 金鑰與官方 Base URL 集中在這裡，由行程規劃、"
-        "行程文字解析、景點介紹搜尋與 Gemini 文章搜尋共用；各功能只選供應商與模型。",
+        "行程文字解析、景點介紹搜尋與 Gemini 文章搜尋共用；各功能只選供應商與模型。"
+        "Jev 也放在這裡，但它是判斷模型而不是生成模型：只回傳 choice／score／noul 與信心值，"
+        "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。",
         (
             "openai_api_base_url",
             "anthropic_api_base_url",
             "minimax_api_base_url",
             "hotspot_guide_gemini_base_url",
+            "jev_api_base_url",
         ),
         (
             "openai_api_key",
             "anthropic_api_key",
             "minimax_api_key",
             "hotspot_guide_gemini_api_key",
+            "jev_api_key",
         ),
     ),
     "ai_planner": ProviderDefinition(
@@ -680,6 +684,7 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
                 (settings.anthropic_api_key, "Claude"),
                 (settings.minimax_api_key, "MiniMax"),
                 (settings.hotspot_guide_gemini_api_key, "Gemini"),
+                (settings.jev_api_key, "Jev"),
             )
         ]
         configured_names = [label for label, present in vendors if present]
@@ -1746,11 +1751,22 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
                 False,
             )
         )
-    if not probes:
+    # Jev publishes no model-listing endpoint, so the GET that proves every other key
+    # here has nothing to call: a 405 from a gateway would arrive before the key was
+    # ever read. One real noul question proves the key, the host, the model id and the
+    # response shape for about forty input tokens, and output is not billed at all.
+    jev_configured = bool(settings.jev_api_key)
+    if not probes and not jev_configured:
         raise ConnectionError("尚未設定任何 AI 金鑰")
     owns_client = client is None
     http = client or httpx.AsyncClient(timeout=10.0)
+    jev_result: str | BaseException | None = None
     try:
+        from app.ai.jev import probe as jev_probe
+
+        # Scheduled before the GETs are awaited, so the POST runs alongside them
+        # rather than after: the operator waits for the slowest vendor, not the sum.
+        jev_task = asyncio.ensure_future(jev_probe(settings, http)) if jev_configured else None
         responses = await asyncio.gather(
             *(
                 http.get(url, headers=headers, params=params)
@@ -1758,6 +1774,11 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
             ),
             return_exceptions=True,
         )
+        if jev_task is not None:
+            try:
+                jev_result = await jev_task
+            except Exception as exc:  # noqa: BLE001 -- reported, not handled
+                jev_result = exc
     finally:
         if owns_client:
             await http.aclose()
@@ -1780,6 +1801,13 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
             verified.append(f"{label} ✓（{model}）")
         else:
             verified.append(f"{label} ✓（金鑰有效，模型清單未列出 {model}）")
+    if jev_configured:
+        if isinstance(jev_result, BaseException):
+            # The exception type is the useful part and carries nothing secret:
+            # JevAuthError means the key, a timeout means the network.
+            failures.append(f"Jev 驗證失敗（{type(jev_result).__name__}）")
+        else:
+            verified.append(str(jev_result))
     if failures:
         raise ConnectionError("；".join(failures + verified))
     return "；".join(verified)

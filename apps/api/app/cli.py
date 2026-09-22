@@ -51,6 +51,7 @@ from app.hotspots.candidate_cli import import_candidates
 from app.hotspots.candidate_generation import generate_candidates
 from app.hotspots.cities import CITY_BY_CODE
 from app.hotspots.guide_review import review_pending_guides
+from app.hotspots.guide_shadow_cli import report_jev_shadow
 from app.hotspots.jobs import collect_once
 from app.hotspots.place_matching import (
     MatchReport,
@@ -758,6 +759,18 @@ def main() -> None:
     naver = subparsers.add_parser("verify-naver-maps")
     naver.add_argument("--strict", action="store_true")
     subparsers.add_parser("collect-hotspots")
+    shadow = subparsers.add_parser(
+        "jev-shadow-report",
+        help=(
+            "Summarise what the Jev shadow runs recorded: agreement with the live "
+            "relevance threshold, split by language, plus the disagreements to read by "
+            "hand. Reads only; sets no threshold for you."
+        ),
+    )
+    shadow.add_argument("--limit", type=int, default=200, help="How many recent runs to scan")
+    shadow.add_argument(
+        "--examples", type=int, default=20, help="How many disagreements to list"
+    )
     candidates = subparsers.add_parser(
         "import-hotspot-candidates",
         help="Cross-check a JSON list of place names and report or write what survives",
@@ -1225,6 +1238,9 @@ def main() -> None:
                 verbose=args.verbose,
             )
         )
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "jev-shadow-report":
+        outcome = asyncio.run(report_jev_shadow(limit=args.limit, examples=args.examples))
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "guides-links-check":
         outcome = asyncio.run(check_guide_links(locale=args.locale))
