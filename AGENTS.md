@@ -55,4 +55,5 @@ and `docs/` holds the long-form specifications. `architecture.md` describes the
 boundaries; `README.md` describes the product. `.agents/skills/` holds the skills Codex and
 Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`, and
 `npm run test:tools` keeps the two in step); start any article batch with the
-`content-pipeline` skill.
+`content-pipeline` skill, a production deploy with `deploy`, and board work with
+`task-board`.
