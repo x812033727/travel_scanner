@@ -1,7 +1,7 @@
 ---
 id: 2026-09-22-localize-jeju-car-rental-guide-in
 title: Localize Jeju car rental guide in five languages
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch011-jeju-author
@@ -29,7 +29,7 @@ needed without losing the published source, photos, credits, or factual limits.
       source titles, tables, link labels, descriptions and credits.
 - [x] The corrected `zh-TW` source and four translations have independent,
       hash-bound review and desktop/mobile diagram inspection.
-- [ ] A Jeju-only PR is open with passing scoped checks and no Nami/Seoul files.
+- [x] A Jeju-only PR is open with passing scoped checks and no Nami/Seoul files.
 
 ## Steps
 
@@ -37,7 +37,7 @@ needed without losing the published source, photos, credits, or factual limits.
       the exact source corrections.
 - [x] Translate four complete documents and four SVGs and verify all hashes.
 - [x] Run scoped lint, pipeline tests, pack tests, task checks, and render checks.
-- [ ] Open the Jeju-only PR; keep publication behind a later release gate.
+- [x] Open the Jeju-only PR; keep publication behind a later release gate.
 
 ## How to verify
 
@@ -80,3 +80,5 @@ and import dry-run are later release gates.
   Their candidate files remain on HOLD in the separate author worktree and are
   excluded from this PR. Do not merge, deploy, import or publish this PR before
   the earlier batch release gate and a fresh live version/visibility check.
+- PR: https://github.com/x812033727/travel_scanner/pull/643. Keep this task in
+  `review` until the PR is merged; `done` is reserved for the merge.
