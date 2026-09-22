@@ -1,7 +1,7 @@
 ---
 id: 2026-09-22-publish-reviewed-five-language-sapporo-itinerary
 title: Prepare reviewed five-language Sapporo itinerary PR
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch012-draft
@@ -23,15 +23,16 @@ The public Sapporo three-day guide only has a zh-TW document. The reviewed candi
 
 ## Definition of done
 
-- [ ] A narrow PR contains only this guide pack, four localized SVGs, and this task record, with full independent editorial approval tied to exact hashes.
-- [ ] Scoped tests and required CI pass; the PR description distinguishes repository content from live publication.
+- [x] Narrow draft PR #645 contains only this guide pack, four localized SVGs, and this task record; the reviewed Windows source bytes match the independent full editorial receipt.
+- [ ] An independent exact committed-LF byte/render review and all required CI pass before marking PR ready. The PR description distinguishes repository content from live publication.
 
 ## Steps
 
 - [x] Start from freshly fetched main `d52af4d95a40f5e353c567d366ee1b2b69dc5696` and claim the two-path scope.
 - [x] Verify the independent receipt and copy only the reviewed Sapporo pack and four SVGs byte for byte.
 - [x] Run scoped lint/tests, task check, and review diff.
-- [ ] Open PR, verify all CI, and mark task `review`.
+- [x] Open draft PR #645 and mark task `review`.
+- [ ] Verify final-head CI and independent LF artifact review before marking PR ready.
 
 ## How to verify
 
@@ -43,4 +44,5 @@ Run `python -m app.guides.pack_cli lint --slug sapporo-3-day-itinerary` from `ap
 - Independent source-only approval receipt SHA-256 `dbfc14b23d5d0768ada22757cc6663a66472d11b902eda28a84889515c6c665e` approves the one-pointer Tsudome correction. The previously published zh-TW normalized document is `9e332a1838281c3c50bc32fdf5d6ad81674ae163b47764355bdfc9843168b2a3` at article v2, locale/published v4. The reviewed local zh-TW candidate is `2777a791e06871e0fe191c46fe7ceb5620c223c4e31ef4dbf96ed491c34c5806`; a production write must recheck version/hash and create a guarded revision.
 - The Sapporo-only clean worktree was created from current main after PR #635 merged. Otaru is excluded because its separate candidate still has review blockers.
 - Verified the final full-review receipt file hash and exact candidate pack, all five normalized GuideDocument hashes, and four SVG hashes. The only normalized zh-TW delta from main/published v4 is `/blocks/22/text`.
-- Scoped pack lint exited 0. It reports inherited `no_summary` warnings and the full English body over the howto length guideline, with no errors. Focused guide content/link tests: 12 passed, 5 skipped. `npm run check:tasks` passed (668 files); `git diff --check` passed.
+- Scoped pack lint exited 0. It reports inherited `no_summary` warnings and the full English body over the howto length guideline, with no errors. Focused guide content/link tests: 12 passed, 5 skipped. `npm run check:tasks` passed (668 files).
+- Draft PR: https://github.com/x812033727/travel_scanner/pull/645. Git's LF normalization changed file-byte hashes but not text: each committed pack/SVG blob equals the independently reviewed Windows file after CRLF-to-LF conversion only. `git diff HEAD^ --check` warns about trailing spaces on blank lines in the four exact reviewed SVGs. Do not alter their bytes solely to silence that warning until an independent committed-blob review decides the disposition.
