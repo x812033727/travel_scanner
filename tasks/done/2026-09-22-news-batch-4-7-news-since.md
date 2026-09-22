@@ -134,9 +134,9 @@ scope:
 - [x] `check_article.py` 的 `RELATED` 接續號段：AI 171–176、科技 321–326、幣圈 217–219（`order_of()` 實測過）
 - [x] 三個索引**標題不改**，15 個連結由協調者在同一個 PR 用
       `python update_index.py ai tech crypto --locale=zh-TW` 補上（只動 zh-TW，`CITED` 全空）
-- [ ] PR 合併、部署後 `guides-import --locale zh-TW --publish --slug`（先 dry-run 核對計畫），
+- [x] PR 合併、部署後 `guides-import --locale zh-TW --publish --slug`（先 dry-run 核對計畫），
       正式站每篇 200、可索引、在 `life-zh-TW.xml`
-- [ ] 本票記下 slug 清單、dry-run／publish 輸出與驗證結果
+- [x] 本票記下 slug 清單、dry-run／publish 輸出與驗證結果
 
 ## Steps
 
@@ -150,7 +150,7 @@ scope:
 - [x] 30 份查核報告進 `factcheck-draft/`、`related` ×15、`pack_cli relink --apply`、`check_article.py` ×15、lint
 - [x] `_DRAWINGS` ×15、出圖、`check_article.py <slug> --assets`（另一位代理補齊；15 篇 `--assets` 全部 exit 0）
 - [x] 索引增補（`update_index.py ai tech crypto --locale=zh-TW`，先 `--dry-run`）
-- [ ] commit、PR，等站主明確選「合併並發布」→ 部署 → `guides-import` → 驗證 → 本票 done
+- [x] commit、PR，等站主明確選「合併並發布」→ 部署 → `guides-import` → 驗證 → 本票 done
 
 ## 進度（2026-09-23，協調者收尾）
 
