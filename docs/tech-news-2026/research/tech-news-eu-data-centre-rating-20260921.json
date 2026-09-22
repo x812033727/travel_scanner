@@ -659,6 +659,89 @@
       "checked_on 2026-09-23 在研究紀錄、內容包四條 source、正文第二段、表格 caption、圖說、FAQ、callout 七處一致，且與本輪重抓的台北日期相同，未更動。"
     ],
     "second_round_needed": true,
-    "second_round_note": "依 DELTA-4-7 第 12 條，第一輪一律要有第二輪。本輪改了 7 處事實（涉及摘要 3 句、正文 4 段、圖說、FAQ 2 題），其中「2027 年 8 月 15 日前」與「WUE 算法被改寫」兩處動到骨幹敘述，請第二輪逐字回規則本文與附件 PDF 複核，並複核本輪新寫進去的每一句。"
+    "second_round_note": "依 DELTA-4-7 第 12 條，第一輪一律要有第二輪。本輪改了 7 處事實（涉及摘要 3 句、正文 4 段、圖說、FAQ 2 題），其中「2027 年 8 月 15 日前」與「WUE 算法被改寫」兩處動到骨幹敘述，請第二輪逐字回規則本文與附件 PDF 複核，並複核本輪新寫進去的每一句。",
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2; did not write, did not do round 1)",
+      "checked_on": "2026-09-23",
+      "method": "sources[] 四條自行重抓（curl -sSL 帶 Mokaair-editorial 的 UA，同一主機間隔 2 秒，UA／標頭／查詢字串都沒有任何人的姓名、email 或個人資料，只做 GET）：全部 200，85,753／261,042／432,803／86,956 bytes，SHA-256 與第一輪留在 _raw 的副本逐位元組相同。PDF 用系統 python 的 pypdf 抽文字（2／15／12 頁），HTML 去 <!-- -->、去 script/style、去標籤、html.unescape、NBSP 正規化。覆核範圍：第一輪改動的 7 個事實（內容包 11 處、研究紀錄 4 處）逐字回 S2 第 1、2、3、5、6、7 條與 S3 附件一、二、三；第一輪新寫進去的每一句；第一輪列為 CONFIRMED 的 103 條中以固定亂數種子抽出的 34 條（三分之一）。另外自行重抓 press corner 網頁殼（200／22,157 bytes／去標籤 34 字元）與 Have your say 諮詢頁（200／4,055 bytes／去標籤 13 字元），兩個否定句今天仍然成立；四份 body 對 taiwan／china／japan／korea／india／asia／singapore／hong kong／non-EU／third countr 全部 0 次。63 條 verified_facts 的 verbatim_quote 以連續字串比對全部命中（沒有一條是 ...／…／| 拼接的引文），url 全部在 sources[] 內；sources[] 四條引文同樣命中。",
+      "claims_checked": 60,
+      "verdict": "changed",
+      "changes": [
+        {
+          "claim": "「500 kW 是既有通報制度就有的門檻」（正文第三節與 FAQ 第 2 題）",
+          "before": "評等制度涵蓋單一容量 500 kW 以上的資料中心——這是既有通報制度就有的門檻，不是這份規則新訂的。",
+          "after": "評等制度涵蓋單一容量 500 kW 以上的資料中心——這個數字印在新聞稿上；規則條文寫的是標籤發給已經完成通報的資料中心，沒有再印一次門檻。",
+          "why": "協調者裁定這句話必須靠 sources[] 四份文件之一。逐字複查：S2 全文「500」只出現一次，在新增的第 3 條第 5 項（less than 500 kW may voluntarily participate）；S3 附件完全沒有「500」；S4 沒有；S1 只印 will cover individual data centres with a capacity above 500 kW。四份都沒有把 500 kW 連到（EU）2024/1364 既有的通報義務，所以改寫成 S2 字面寫得出的說法（第 3 條第 1 項：標籤發給已依 2024/1364 完成通報的資料中心），並且不再用 kW 數字描述既有制度。DG ENER 研究頁依裁定維持不進 sources[]。",
+          "source_url": "https://energy.ec.europa.eu/document/download/b073ba9b-82a8-45cb-b8ba-78dad149e941_en?filename=C_2026_3472_1_EN_ACT_part1_v9.pdf"
+        },
+        {
+          "claim": "標籤效期的但書（第 3 條第 3 項後段）",
+          "before": "正文只寫「效期是從發出當年的 8 月 15 日到隔年 8 月 15 日」，沒有但書。",
+          "after": "……。會員國若沒有在 8 月 15 日前向歐洲資料庫表示境內通報已完成，該座資料中心的標籤效期會延長到通報補完、新標籤自動發出為止，最晚到當年 12 月 31 日。",
+          "why": "協調者裁定補一句。原文：Where a Member State … has not indicated to the European database by 15 August that the reporting … has been completed …, the validity of the label of that data centre shall be extended until the reporting has been completed and a new label has been automatically issued or, at the latest, until 31 December of the same calendar year。FAQ 第 3 題同步補一個短句，維持 FAQ 答案 ⊆ 正文。段落字數 2,840 → 2,955（上限 3,000）。",
+          "source_url": "https://energy.ec.europa.eu/document/download/b073ba9b-82a8-45cb-b8ba-78dad149e941_en?filename=C_2026_3472_1_EN_ACT_part1_v9.pdf"
+        },
+        {
+          "claim": "Teresa Ribera 的職銜與 Eurostat 的中文名",
+          "before": "執委會執行副主席 Teresa Ribera／用 Eurostat 的 NUTS3 區域代碼",
+          "after": "執委會「潔淨、公正與具競爭力轉型」執行副主席 Teresa Ribera／用歐盟統計局（Eurostat）的 NUTS3 區域代碼",
+          "why": "協調者裁定。新聞稿的署名逐字是 Teresa Ribera, Executive Vice-President for Clean, Just and Competitive Transition；Eurostat 依裁定在首次出現寫「歐盟統計局（Eurostat）」。",
+          "source_url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_26_1667/IP_26_1667_EN.pdf"
+        },
+        {
+          "claim": "國防與民防豁免的對象（第 5 條第 2 款 (a) 新增的段落）",
+          "before": "專門用於、或服務最終完全是為了支援會員國國防與民防的資料中心",
+          "after": "用於、或服務最終完全是為了支援會員國國防與民防的資料中心",
+          "why": "原文 If a data centre is used for, or provides its services exclusively with the final aim of, supporting the defence and civil protection of a Member State —— exclusively 只限定第二個分支。第一個分支寫成「專門用於」等於自己加了一個限定詞，把豁免範圍縮得比條文小。第二輪新發現，不在第一輪的清單裡。",
+          "source_url": "https://energy.ec.europa.eu/document/download/b073ba9b-82a8-45cb-b8ba-78dad149e941_en?filename=C_2026_3472_1_EN_ACT_part1_v9.pdf"
+        },
+        {
+          "claim": "研究紀錄 summary 仍寫著第一輪已從內容包移除的順序推論",
+          "before": "……兩院只能否決、不能修改條文，之後刊登歐盟官方公報，再過二十天才生效；",
+          "after": "……兩院只能否決、不能修改條文；規則第 7 條寫生效日是刊登歐盟官方公報之後的第二十日；",
+          "why": "第一輪把「審查期過後才刊登公報」從內容包三處拿掉，但研究紀錄自己的 summary 沒有跟著改；研究紀錄對後續階段有拘束力，留著會讓同一個推論被寫回去。順帶補上「兩個月審查期寫在新聞稿、不在條文裡」。",
+          "source_url": "https://energy.ec.europa.eu/document/download/b073ba9b-82a8-45cb-b8ba-78dad149e941_en?filename=C_2026_3472_1_EN_ACT_part1_v9.pdf"
+        },
+        {
+          "claim": "研究紀錄 verified_facts[30] 的推論句與 [27] 的引文範圍",
+          "before": "……「可以自願參加」評等制度。也就是 500 kW 這個門檻是既有通報制度的門檻，這次新增的是自願參加的路。",
+          "after": "……「可以自願參加」評等制度。規則本文全文只有這一處印出 500 kW，附件也沒有；「500 kW 是既有通報制度的門檻」這句話在 sources[] 四份文件裡都找不到（2026-09-23 第二輪逐字複查），正文不可以這樣寫。",
+          "why": "那一句超出它自己的 verbatim_quote，而且正是協調者裁定要拿掉的說法。verified_facts[27] 同時擴充成第 3 條第 3 項全文（verbatim_quote 換成完整的連續字串），因為正文現在寫了但書。",
+          "source_url": "https://energy.ec.europa.eu/document/download/b073ba9b-82a8-45cb-b8ba-78dad149e941_en?filename=C_2026_3472_1_EN_ACT_part1_v9.pdf"
+        },
+        {
+          "claim": "圖解第三格（協調者裁定第 4 點）",
+          "before": "diagram.nodes[2] = [\"2027年8月\", \"資料庫自動發標籤\"]",
+          "after": "diagram.nodes[2] = [\"2027年8月15日前\", \"資料庫自動發標籤\"]",
+          "why": "圖說與正文都已改成「2027 年 8 月 15 日前」，但 build_assets 畫的是 nodes、不是 caption；不改的話圖上第三格仍會寫成「2027年8月」。字寬 7.85（上限 9），2027／8／15 三個數字都在正文裡。",
+          "source_url": "https://energy.ec.europa.eu/document/download/b073ba9b-82a8-45cb-b8ba-78dad149e941_en?filename=C_2026_3472_1_EN_ACT_part1_v9.pdf"
+        }
+      ],
+      "recheck_of_round_one": [
+        "第 3 條第 1 項 By 15 August 2027 and every year thereafter →「2027 年 8 月 15 日前」：逐字命中，改對了（摘要、正文、FAQ、圖說四處一致）。",
+        "S3 附件三第 (3)(a) 點 point (b) is replaced by … WUE = WIN-FRE/EIT；WIN-FRE 是 Total freshwater input、EIT 是 Total energy consumption of information technology equipment（以 kWh 表示）→「淡水取水量除以資訊設備用電量」正確。附件三對 2024/1364 附件三只做兩件事（取代 (b)、新增 (e) LEEF），(a)（PUE）確實沒有被動到。",
+        "S2 全文「scrutiny」0 次 → 兩個月審查期歸給新聞稿是對的。",
+        "S2 第 7 條只印生效日的算法；四份文件都沒有印「刊登發生在審查期之後」→ 第一輪拆成兩件事是對的。",
+        "說明備忘錄的註腳 1、2 指向 IEA（key-questions-on-energy-and-ai），註腳 3 指向 electricity-data.eurelectric.org 的歐洲電力需求資料 →「3.2% 指向另一份統計」正確。",
+        "S1 印 around 68 TWh、S2 備忘錄印不帶 around 的 68 TWh → 歸給新聞稿的那句寫「約 68 TWh」正確。",
+        "S2 第 2 條 QR code 定義 links to the location … where this label is stored →「連回歐洲資料庫上這張標籤」正確。",
+        "抽樣的 34 條 CONFIRMED 主張（固定亂數種子）全部再確認一次，只有國防豁免那一條翻出新問題，已改。"
+      ],
+      "open_questions": [
+        "「above 500 kW」與「500 kW 以上」：新聞稿印 above 500 kW（>500），中文「以上」在台灣法制用語含本數（≥500）；S2 只印 less than 500 kW 可自願參加，剛好 500 kW 的情形四份文件都沒有交代。title／description／summary／正文四處都寫「500 kW 以上」，本輪未動，留給站主決定要不要一律改成「超過 500 kW」。",
+        "正文「PUE 那一點沒有動」逐字正確（附件三只取代 (b) 點），但同一份附件三另外取代了（EU）2024/1364 附件二的 (d) 總用電量與 (e) 資訊設備用電量兩項定義。要不要在正文加一句括號補這件事由協調者決定；本輪為了字數與可讀性沒有加。",
+        "研究紀錄 must_not_write 第 3 條仍寫著「500 kW 是既有通報制度的門檻」。那條禁止事項本身（不可把 500 kW 寫成這份規則新訂）仍然正確，本輪沒有動它；但它的理由句與協調者第 1 點裁定不一致，請站主決定要不要改寫。",
+        "diagram.nodes[0] 的 detail 是「執委會採授權規則」，讀起來像漏字（其他三格都通順）。那是圖上會畫出來的字，不是事實問題，本輪沒有動；若要改成「執委會通過授權規則」（9 字，上限 15）請協調者裁定。",
+        "摘要第 3 句寫「第一批標籤預計 2027 年 8 月 15 日前……」。第 3 條第 1 項是法定期限、不是預期；新聞稿的「預計」講的是 2027 年顯示第一批標籤。這個「預計」是往保守方向的限定詞，本輪保留。"
+      ],
+      "coordinator_rulings": [
+        "第 1 點：「500 kW 是既有門檻」必須靠四份來源。逐字複查後四份都撐不住，依裁定改寫成 S2 字面寫得出的說法並拿掉 kW 數字；DG ENER 研究頁維持不進 sources[]。",
+        "第 2 點：第 3 條第 3 項的效期但書補一句（正文第三節），FAQ 第 3 題同步補短句。段落字數 2,955／3,000。",
+        "第 3 點：Teresa Ribera 的職銜照新聞稿印的補上，Eurostat 首次出現寫「歐盟統計局（Eurostat）」。",
+        "第 4 點：圖上第三格必須是「2027 年 8 月 15 日前」——已把 diagram.nodes[2] 的標題改成「2027年8月15日前」，並在報告裡寫給繪圖的人。"
+      ],
+      "verdict_note": "第二輪查了 60 條（第一輪 7 個改動的 18 個落點 ＋ 抽樣 34 條 ＋ 8 項機械與界線檢查），改了 7 處：內容包 6 處（正文 4、FAQ 2）、研究紀錄 4 處。沒有 NOT FOUND。",
+      "result": "ok"
+    }
   }
 }
