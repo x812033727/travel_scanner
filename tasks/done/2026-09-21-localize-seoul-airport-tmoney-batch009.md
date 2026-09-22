@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-localize-seoul-airport-tmoney-batch009
 title: Localize Seoul airport and T-money guides in five languages
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-batch009-seoul
 claimed_at: 2026-09-21T20:04:19Z
 created_at: 2026-09-21T20:03:45Z
-completed_at:
+completed_at: 2026-09-22T07:15:28Z
 branch: codex/article-localization-batch-009-seoul
 depends_on: []
 scope:
@@ -37,7 +37,7 @@ and translated diagrams without exposing links to unpublished locale targets.
 - [x] Review live/repository differences and Seoul City 2026 Climate Card notice.
 - [x] Translate and render 8 missing locale documents and 8 SVG variants.
 - [x] Review exact fields, images, sources, links and source correction.
-- [ ] Run relevant pack/content checks, open PR after preceding batches.
+- [x] Run relevant pack/content checks, open PR after preceding batches.
 
 ## How to verify
 
@@ -248,3 +248,19 @@ document hashes against the pinned production snapshot before publication.
   first test invocation without this required setting errored at async fixture
   setup and is not counted as a pass. Task check passed with pre-existing stale
   and overlapping task warnings.
+
+### 2026-09-22 completed release and task handoff
+
+PR #642 is merged. Both guides were imported and published in all five locales at
+production checkout `7195fef5a6bfc4fdff50a1e9f8ff06bcc710bd47`. Batch009 manifest
+`be19510c836d9ebe3d95c8fc4b2723d376dfd0a9071fcdec6af5741d33b43cdd` completed
+10 draft and 10 publish operations, no pending intent, and an unchanged rerun.
+Five desktop plus five mobile cases per article passed body, images, canonical,
+hreflang and locale-link QA. Sitemap pagination terminated after 1000 + 820 rows
+for the combined008/009 release, with all target URLs in XML. Fresh backup was
+verified by pg_restore --list; health passed and the owned hold was cleared.
+
+Immutable shared release receipt: `C:/Users/x8120/.codex/article-localization-release/batch008-009-release-receipt-20260922.md`,
+SHA256 `96c8e7418ac40452e0fb6b498c0df09505f6ed926682f97ef4b22199b3f3cc33`. The earlier pending/rejected notes above are
+historical evidence; the approved v10 and completed production release supersede
+the pending status without erasing those findings. This closes this task only.

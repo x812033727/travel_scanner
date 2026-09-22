@@ -1,36 +1,35 @@
 ---
 id: 2026-09-12-attribute-affiliate-clicks-to-the-guide
 title: Attribute affiliate clicks to the guide article that placed them
-status: review
+status: blocked
 priority: P2
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T11:07:25Z
+owner:
+claimed_at:
 created_at: 2026-09-12T17:42:18Z
 completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+branch: codex/guide-diagram-dimensions
 depends_on:
   - 2026-09-12-guide-offer-content-block
 scope:
-  - apps/api/app/models.py
-  - apps/api/migrations/versions
-  - apps/api/app/affiliates/router.py
-  - apps/api/app/analytics/affiliates.py
-  - apps/api/tests/test_affiliates.py
-  - apps/api/tests/test_analytics_affiliates.py
-  - apps/web/components/destination-affiliate-options.tsx
-  - apps/web/components/destination-affiliate-options.test.tsx
-  - apps/web/components/admin-analytics-panel.tsx
-  - apps/web/components/admin-analytics-panel.test.tsx
-  - apps/web/components/guides/article.tsx
-  - apps/web/components/guides/article.test.tsx
-  - docs/affiliate-configuration.md
-  - apps/api/app/guides/service.py
-  - apps/api/tests/test_guide_partner_links.py
-  - docs/travel-guides.md
+  - tasks/open/2026-09-12-attribute-affiliate-clicks-to-the-guide.md
 ---
 
 # Attribute affiliate clicks to the guide article that placed them
+
+## 2026-09-22 remaining live acceptance handoff
+
+The implementation merged in PR #565 on 2026-09-19, commit
+`d11178863d1a2a35ddfff17be65bcc2a63514194`. A normal stale-claim takeover
+(without force) preserved the outstanding live acceptance instead of treating
+merged code as proof of production partner-click attribution.
+
+The owner-directed real partner click and corresponding analytics/ledger
+inspection described below remain unverified. This localization task did not
+generate a synthetic conversion or claim that acceptance passed. The task is
+retained as blocked pending that live acceptance/disposition, with scope narrowed
+to its own handoff record. Any implementation defect found by that acceptance
+needs a separately claimed scope; the merged implementation paths are released.
 
 ## Why
 

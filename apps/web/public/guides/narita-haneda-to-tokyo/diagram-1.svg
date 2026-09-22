@@ -8,8 +8,9 @@
   <!-- Narita routes -->
   <path d="M 300 300 C 620 300, 760 190, 1190 190" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
   <path d="M 1190 190 L 1310 190 L 1310 262" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 300 300 C 640 300, 760 380, 1190 380 L 1310 380 L 1310 470 L 1310 620" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 300 300 C 560 330, 900 470, 1270 470" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <path d="M 300 300 C 640 300, 760 380, 1190 380 L 1310 380 L 1270 470 L 1310 620" fill="none" stroke="#6B4A3A" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 300 300 C 620 320, 980 330, 1310 380" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
+  <path d="M 300 300 C 580 370, 940 585, 1310 620" fill="none" stroke="#B8442D" stroke-width="10" stroke-dasharray="22 16" stroke-linecap="round"/>
 
   <!-- Haneda routes -->
   <path d="M 300 700 C 700 700, 900 470, 1260 470" fill="none" stroke="#0D6B68" stroke-width="12" stroke-linecap="round"/>
@@ -30,24 +31,24 @@
   <g font-size="26" font-weight="700" fill="#102A2B">
     <circle cx="1190" cy="190" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
     <text x="1225" y="182">日暮里 Nippori</text>
-    <text x="1225" y="210" font-size="18" font-weight="400" fill="#5C6B6B">轉 JR 山手線 · 最快 36 分（上野 約 41 分）</text>
+    <text x="1020" y="218" font-size="18" font-weight="400" fill="#5C6B6B" xml:space="preserve"><tspan x="1020" y="218">轉 JR 山手線 · 最快 36 分</tspan><tspan x="1020" y="242">（上野 約 41 分）</tspan></text>
     <circle cx="1310" cy="262" r="16" fill="#FFFFFF" stroke="#0D6B68" stroke-width="8"/>
     <text x="1345" y="270">上野 Ueno</text>
     <circle cx="1310" cy="380" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
     <text x="1345" y="372">東京 Tokyo</text>
-    <text x="1345" y="400" font-size="18" font-weight="400" fill="#5C6B6B">N'EX 最快 53 分 · TYO-NRT 巴士 最快 65 分</text>
-    <circle cx="1270" cy="470" r="16" fill="#FFFFFF" stroke="#B8442D" stroke-width="8"/>
+    <text x="1345" y="400" font-size="18" font-weight="400" fill="#5C6B6B" xml:space="preserve"><tspan x="1345" y="400">N'EX 最快 53 分 · </tspan><tspan x="1345" y="424">TYO-NRT 巴士 最快 65 分</tspan></text>
+    <circle cx="1270" cy="470" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
     <text x="1345" y="478">品川 Shinagawa</text>
     <circle cx="1310" cy="620" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
     <text x="1345" y="628">新宿 Shinjuku</text>
     <circle cx="1270" cy="790" r="16" fill="#FFFFFF" stroke="#6B4A3A" stroke-width="8"/>
-    <text x="1345" y="798">浜松町 Hamamatsucho</text>
-    <text x="1345" y="826" font-size="18" font-weight="400" fill="#5C6B6B">單軌電車 最快 13 分 · 轉 JR 山手線</text>
+    <text x="1110" y="737">浜松町 Hamamatsucho</text>
+    <text x="1110" y="820" font-size="18" font-weight="400" fill="#5C6B6B">單軌電車 最快 13 分 · 轉 JR 山手線</text>
   </g>
 
   <!-- route labels -->
-  <g font-size="22" font-weight="700">
-    <text x="640" y="238" fill="#0D6B68">京成スカイライナー Keisei Skyliner</text>
+  <g font-size="22" font-weight="700" paint-order="stroke fill" stroke="#F7F1E8" stroke-width="7" stroke-linejoin="round">
+    <text x="600" y="255" fill="#0D6B68">京成スカイライナー Keisei Skyliner</text>
     <text x="640" y="424" fill="#6B4A3A">JR 成田エクスプレス N'EX</text>
     <text x="560" y="520" fill="#B8442D">リムジンバス Airport Limousine · 新宿、東京駅（依路況）</text>
     <text x="700" y="560" fill="#0D6B68">京急線 Keikyu · 品川 最快 14 分</text>
