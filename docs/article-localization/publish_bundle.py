@@ -9,7 +9,8 @@ automatic execution. The CLI requires PostgreSQL; tests exercise SQLite separate
 
 Manifest schema 1: baseline_sha256, articles (1..20) with slug, pack_path,
 pack_sha256, locales, publish_locales, hub, optional requires (slug, locale,
-document_sha256), optional source_corrections; assets with path and sha256.
+document_sha256), optional source_corrections or repository_preservations; assets
+with path and sha256.
 Paths are relative to --bundle. Only selected locales are written. Existing
 documents may change image src only unless an exact, independently reviewed
 old-to-new source correction is pinned. Repository-only articles remain drafts.
@@ -62,6 +63,12 @@ CORRECTION_SPEC = importlib.util.spec_from_file_location(
 )
 source_correction = importlib.util.module_from_spec(CORRECTION_SPEC)
 CORRECTION_SPEC.loader.exec_module(source_correction)
+PRESERVATION_SPEC = importlib.util.spec_from_file_location(
+    "article_localization_repository_preservation",
+    Path(__file__).with_name("repository_preservation.py"),
+)
+repository_preservation = importlib.util.module_from_spec(PRESERVATION_SPEC)
+PRESERVATION_SPEC.loader.exec_module(repository_preservation)
 
 PHASES = ("dry-run", "drafts", "publish-articles", "publish-hubs")
 LOCK_KEY = 817420260914
@@ -281,6 +288,80 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
                 source["source_document"] == source["locale_documents"][source["source_locale"]],
                 f"{slug}: corrected source document differs from locale",
             )
+        preservations = entry.get("repository_preservations", [])
+        require(isinstance(preservations, list), f"{slug}: invalid repository preservations")
+        preserved_locales = set()
+        for preservation in preservations:
+            require(
+                isinstance(preservation, dict)
+                and set(preservation)
+                == {
+                    "locale",
+                    "from_live_document_sha256",
+                    "to_repository_document_sha256",
+                    "repo_commit",
+                    "repo_pack_git_blob_sha1",
+                    "repo_pack_sha256",
+                    "review_path",
+                    "review_sha256",
+                },
+                f"{slug}: invalid repository preservation binding",
+            )
+            locale = preservation["locale"]
+            targets = source.get("target_locales")
+            batch = source.get("batch_locales")
+            publication_targets = source.get("publication_locales")
+            require(
+                isinstance(targets, list)
+                and isinstance(batch, list)
+                and isinstance(publication_targets, list)
+                and source["database"] is not None
+                and locale in source["locale_documents"]
+                and locale in source["database"]["locales"]
+                and locale not in selected
+                and locale not in publish
+                and locale not in targets
+                and locale not in batch
+                and locale not in publication_targets
+                and locale not in corrected_locales
+                and locale not in preserved_locales,
+                f"{slug}:{locale}: repository preservation must remain unselected",
+            )
+            preserved_locales.add(locale)
+            require(
+                preservation["review_path"]
+                == f"reviews/{slug}-{locale}-repository-preservation.json"
+                and bool(HASH.fullmatch(preservation["review_sha256"])),
+                f"{slug}:{locale}: invalid repository preservation review path/hash",
+            )
+            review_path = safe_path(root, preservation["review_path"])
+            require(
+                sha(review_path.read_bytes()) == preservation["review_sha256"],
+                f"{slug}:{locale}: repository preservation review SHA256 mismatch",
+            )
+            review = json.loads(review_path.read_bytes())
+            wanted = pack.locales[locale].model_dump(mode="json")
+            try:
+                binding = repository_preservation.verify_review(
+                    review, baseline_doc, source, locale, wanted, pack_raw
+                )
+            except (ValueError, KeyError, TypeError) as error:
+                raise Refused(f"{slug}:{locale}: invalid repository preservation") from error
+            require(
+                binding
+                == {
+                    key: preservation[key]
+                    for key in (
+                        "from_live_document_sha256",
+                        "to_repository_document_sha256",
+                        "repo_commit",
+                        "repo_pack_git_blob_sha1",
+                        "repo_pack_sha256",
+                    )
+                }
+                and preservation["repo_pack_sha256"] == entry["pack_sha256"],
+                f"{slug}:{locale}: repository preservation review binding mismatch",
+            )
         publication = source.get("publication_locales")
         require(
             isinstance(publication, list)
@@ -315,6 +396,8 @@ def verify_bundle(root: Path, baseline_path: Path, pinned_sha: str) -> Bundle:
                     == (pinned_locale["published_sha256"] or pinned_locale["draft_sha256"]),
                     f"{slug}:{locale}: baseline existing document differs from pinned version",
                 )
+            if locale in preserved_locales:
+                continue
             if locale not in selected:
                 require(
                     wanted == normalized(old_document),

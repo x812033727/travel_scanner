@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-authorize-reviewed-source-corrections-in-localization
 title: Authorize reviewed source corrections in localization releases
-status: review
+status: done
 priority: P1
 area: tools
 owner: codex-source-correction
 claimed_at: 2026-09-21T22:38:19Z
 created_at: 2026-09-21T22:38:13Z
-completed_at:
+completed_at: 2026-09-22T04:58:41Z
 branch: codex/article-localization-source-correction
 depends_on: []
 scope:
@@ -34,7 +34,7 @@ publication cannot apply that reviewed correction along with translations.
       published alongside selected translations with exact old/new hashes.
 - [x] Unreviewed edits, stale live versions, and unpublished editor drafts
       remain protected; re-running the same release does not add revisions.
-- [ ] PR CI passes; the tool-only PR is ready for review.
+- [x] PR CI passes; the tool-only PR is ready for review.
 
 ## Steps
 
@@ -66,3 +66,12 @@ Ruff and `npm run check:tasks` passed. Existing task-board warnings predate
 this task. Both independent batch009 source-correction receipts passed the
 exact validator against `baseline-reconciled-v9.json`, including 17/19 pointer
 changes and one source SVG binding per article.
+
+Root reconciliation on 2026-09-22 verified PR #637 merged as
+`86e0ce255f8712a2263cc0dcd8ead4a3ceb453eb` with 9/9 CI checks passing. The
+merged source-correction path was then exercised by the guarded batch 008/009
+production release. Its production receipt is
+`C:\Users\x8120\.codex\article-localization-release\batch008-009-release-receipt-20260922.md`
+(SHA-256 `96c8e7418ac40452e0fb6b498c0df09505f6ed926682f97ef4b22199b3f3cc33`),
+which records two reviewed zh-TW source corrections, eight new locales, clean
+journals, idempotent reruns and public QA.

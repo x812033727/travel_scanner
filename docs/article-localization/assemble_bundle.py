@@ -11,6 +11,7 @@ import hashlib
 import importlib.util
 import json
 import shutil
+import subprocess
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -30,6 +31,12 @@ CORRECTION_SPEC = importlib.util.spec_from_file_location(
 )
 source_correction = importlib.util.module_from_spec(CORRECTION_SPEC)
 CORRECTION_SPEC.loader.exec_module(source_correction)
+PRESERVATION_SPEC = importlib.util.spec_from_file_location(
+    "article_localization_repository_preservation",
+    Path(__file__).with_name("repository_preservation.py"),
+)
+repository_preservation = importlib.util.module_from_spec(PRESERVATION_SPEC)
+PRESERVATION_SPEC.loader.exec_module(repository_preservation)
 
 
 def read(path):
@@ -38,6 +45,22 @@ def read(path):
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def git_blob(revision, path):
+    try:
+        blob = subprocess.run(
+            ["git", "rev-parse", f"{revision}:{path}"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError) as error:
+        raise ValueError(f"Pinned Git pack is unavailable: {revision}:{path}") from error
+    if not repository_preservation.GIT_HASH.fullmatch(blob):
+        raise ValueError(f"Pinned Git pack has invalid blob id: {revision}:{path}")
+    return blob
 
 
 def write_text_lf(path, value):
@@ -300,7 +323,15 @@ def copy_pinned_asset(original, target, expected):
         )
 
 
-def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_correction_reviews=()):
+def assemble(
+    baseline_path,
+    work,
+    slugs,
+    output,
+    prior_manifests=(),
+    source_correction_reviews=(),
+    repository_preservation_reviews=(),
+):
     if not slugs or len(slugs) > 20 or len(slugs) != len(set(slugs)):
         raise ValueError("Choose one to twenty distinct article slugs")
     baseline = read(baseline_path)
@@ -319,8 +350,17 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
         if key in correction_inputs:
             raise ValueError(f"Repeated source correction review: {key}")
         correction_inputs[key] = (Path(path), review)
+    preservation_inputs = {}
+    for path in repository_preservation_reviews:
+        review = read(path)
+        key = (review.get("slug"), review.get("locale"))
+        if key in preservation_inputs:
+            raise ValueError(f"Repeated repository preservation review: {key}")
+        preservation_inputs[key] = (Path(path), review)
     used_corrections = set()
     corrections_by_slug = {}
+    used_preservations = set()
+    preservations_by_slug = {}
 
     def remember_asset(src, path, expected):
         if src in assets_to_copy and assets_to_copy[src][1] != expected:
@@ -329,8 +369,13 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
 
     for slug in slugs:
         article = articles[slug]
-        if sha(ROOT / article["pack_path"]) != article["pack_sha256"]:
+        repository_pack_path = ROOT / article["pack_path"]
+        repository_pack_raw = repository_pack_path.read_bytes()
+        if hashlib.sha256(repository_pack_raw).hexdigest() != article["pack_sha256"]:
             raise ValueError(f"Source pack changed: {slug}")
+        repository_pack = ArticlePack.model_validate_json(repository_pack_raw)
+        if repository_pack.slug != slug:
+            raise ValueError(f"Source pack slug changed: {slug}")
         translation_targets, publication_targets, targets = baseline_targets(article)
         if not targets and not any(key[0] == slug for key in correction_inputs):
             raise ValueError(f"Article has no missing locale or reviewed correction work: {slug}")
@@ -349,6 +394,43 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
                     )
         documents = copy.deepcopy(article["locale_documents"])
         selected = []
+        preservations = []
+        for locale in LOCALES:
+            key = (slug, locale)
+            if key not in preservation_inputs:
+                continue
+            if (
+                locale in targets
+                or locale in article.get("batch_locales", [])
+                or key in correction_inputs
+            ):
+                raise ValueError(
+                    f"Repository preservation overlaps selected/source-correction work: "
+                    f"{slug}:{locale}"
+                )
+            if locale not in repository_pack.locales:
+                raise ValueError(f"Repository preservation locale is absent: {slug}:{locale}")
+            path, review = preservation_inputs[key]
+            repository_document = repository_pack.locales[locale].model_dump(mode="json")
+            if git_blob(baseline["repo_commit"], article["pack_path"]) != (
+                repository_preservation.git_blob_sha1(repository_pack_raw)
+            ):
+                raise ValueError(f"Repository preservation pack is not at pinned Git commit: {slug}")
+            binding = repository_preservation.verify_review(
+                review,
+                baseline,
+                article,
+                locale,
+                repository_document,
+                repository_pack_raw,
+            )
+            relative = f"reviews/{slug}-{locale}-repository-preservation.json"
+            preservations.append(
+                {"locale": locale, **binding, "review_path": relative, "review_sha256": sha(path)}
+            )
+            documents[locale] = repository_document
+            used_preservations.add(key)
+        preservations_by_slug[slug] = preservations
         corrections = []
         for locale in LOCALES:
             key = (slug, locale)
@@ -410,6 +492,10 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
         if not selected:
             raise ValueError(f"Article has no reviewed changes to import: {slug}")
         pack = ArticlePack.model_validate({**article["metadata"], "locales": documents})
+        if preservations and pack.model_dump(mode="json") != repository_pack.model_dump(mode="json"):
+            raise ValueError(
+                f"Assembled pack differs from preservation-pinned repository pack: {slug}"
+            )
         for locale in selected:
             for src in image_sources(documents[locale]):
                 if src not in assets_to_copy:
@@ -423,6 +509,8 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
         packs.append((article, pack, selected))
     if used_corrections != set(correction_inputs):
         raise ValueError("Source correction review is outside the selected batch")
+    if used_preservations != set(preservation_inputs):
+        raise ValueError("Repository preservation review is outside the selected batch")
     requirements = hub_requirements(packs, articles, prior_manifests)
     # All source/review/dependency checks finish before writing a portable bundle.
     output.mkdir(parents=True)
@@ -436,10 +524,14 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
         relative = f"packs/{article['slug']}.json"
         path = output / relative
         path.parent.mkdir(exist_ok=True)
-        write_text_lf(
-            path,
-            json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n",
-        )
+        if preservations_by_slug[article["slug"]]:
+            expected = preservations_by_slug[article["slug"]][0]["repo_pack_sha256"]
+            copy_pinned_asset(ROOT / article["pack_path"], path, expected)
+        else:
+            write_text_lf(
+                path,
+                json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n",
+            )
         manifest["articles"].append(
             {
                 "slug": article["slug"],
@@ -454,6 +546,11 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
                     else {}
                 ),
                 **(
+                    {"repository_preservations": preservations_by_slug[article["slug"]]}
+                    if preservations_by_slug[article["slug"]]
+                    else {}
+                ),
+                **(
                     {"requires": requirements[article["slug"]]}
                     if article["slug"] in requirements
                     else {}
@@ -465,6 +562,11 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_corr
             destination = inside(output, correction["review_path"])
             destination.parent.mkdir(exist_ok=True)
             copy_pinned_asset(original, destination, correction["review_sha256"])
+        for preservation in preservations_by_slug[article["slug"]]:
+            original = preservation_inputs[(article["slug"], preservation["locale"])][0]
+            destination = inside(output, preservation["review_path"])
+            destination.parent.mkdir(exist_ok=True)
+            copy_pinned_asset(original, destination, preservation["review_sha256"])
     for src, (original, expected) in sorted(assets_to_copy.items()):
         relative = "public" + src
         target = inside(output, relative)
@@ -487,6 +589,9 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--prior-manifest", type=Path, action="append", default=[])
     parser.add_argument("--source-correction-review", type=Path, action="append", default=[])
+    parser.add_argument(
+        "--repository-preservation-review", type=Path, action="append", default=[]
+    )
     args = parser.parse_args()
     result = assemble(
         args.baseline,
@@ -495,6 +600,7 @@ def main():
         args.output,
         args.prior_manifest,
         args.source_correction_review,
+        args.repository_preservation_review,
     )
     print(
         json.dumps(
