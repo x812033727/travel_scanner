@@ -10,9 +10,10 @@ written to disk.
 Two passes, because the platform rows need merchant ids that only exist after the merchants
 are imported::
 
-    build_batches.py --candidates <BATCH>/candidates.json --merchants-out <BATCH>/merchants.json
+    catchtable_build_batches.py --candidates <BATCH>/candidates.json \
+        --merchants-out <BATCH>/merchants.json
     # import-trend-merchants --file ... --apply on the host, then export the worklist, then
-    build_batches.py --candidates <BATCH>/candidates.json --worklist worklist.json \
+    catchtable_build_batches.py --candidates <BATCH>/candidates.json --worklist worklist.json \
         --platform-out <BATCH>/platform-reviews.json
 
 ``--check`` alone validates and prints the summary. Rank numbers never leave the candidate
