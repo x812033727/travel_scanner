@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Noto Sans JP','Noto Sans KR','Noto Sans SC','Yu Gothic','Malgun Gothic','Microsoft YaHei',system-ui,sans-serif">
+  <title id="title">한국에서 쓸 앱: 길 찾기·택시 호출·길에서 택시 잡기</title>
+  <desc id="desc">“지금 무엇을 하려는가?”를 시작점으로 하는 세 갈래 결정 트리다. 첫째, 길 찾기와 환승에는 네이버 지도(네이버 지도) 또는 카카오맵(카카오맵)을 사용한다. 한국어 상호나 주소를 붙여 넣어 검색하고, 이용 노선·출구 번호·실시간 버스를 확인하며 출발 전에 목적지를 저장한다. 둘째, 택시를 호출할 때는 카카오 계정이 있고 인증을 확실히 받을 수 있는지 먼저 묻는다. 아니거나 불확실하면 k.ride(케이라이드)를 사용해 전화번호를 입력한 뒤 Google·Apple 또는 이메일로 인증하고 앱에 해외 카드를 등록한다. 카카오 계정이 있고 인증도 확실히 받을 수 있다면 카카오 T(카카오 T)를 사용한다. 카카오 계정이 필요하며 자동결제하거나 하차할 때 기사에게 현금·카드·T-money로 결제한다. 두 경로 모두 호출 전에 예상 요금을 확인하고 탑승 전에 차량 번호를 대조한다. 예비 앱은 TADA와 TABA다. 셋째, 길에서 택시를 잡을 때는 기사에게 한국어 주소를 보여 주고 하차 시 현금·신용카드·T-money로 결제한다. 서울 택시 요금과 심야 할증은 본문의 표를 참고하고, 기능과 결제 선택지는 앱의 최신 표시를 따른다.</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">한국에서 쓸 앱: 길 찾기·택시 호출·길에서 택시 잡기</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">지도 앱으로 경로 검색, 앱으로 호출, 길에서 승차</text>
+
+  <!-- root -->
+  <rect x="560" y="104" width="480" height="72" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="137" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">지금 무엇을 하려 하나요?</text>
+  <text x="800" y="164" font-size="16" fill="#5C6B6B" text-anchor="middle">필요한 기능을 골라 보세요</text>
+  <path d="M 800 176 L 800 198" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 260 198 L 1385 198" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 260 196 L 260 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 840 196 L 840 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1385 196 L 1385 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- branch headers -->
+  <rect x="40" y="222" width="440" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="252" font-size="22" font-weight="700" fill="#0B4F4D" text-anchor="middle">길 찾기·환승</text>
+  <text x="260" y="279" font-size="16" fill="#0B4F4D" text-anchor="middle">이동 경로와 환승 확인</text>
+
+  <rect x="520" y="222" width="640" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="840" y="252" font-size="22" font-weight="700" fill="#1F4E73" text-anchor="middle">택시 호출</text>
+  <text x="840" y="279" font-size="16" fill="#1F4E73" text-anchor="middle">앱으로 택시 부르기</text>
+
+  <rect x="1200" y="222" width="370" height="70" rx="14" fill="#FBEFE3" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="252" font-size="22" font-weight="700" fill="#8A4A14" text-anchor="middle">길에서 택시 잡기</text>
+  <text x="1385" y="279" font-size="16" fill="#8A4A14" text-anchor="middle">도로변에서 직접 택시 잡기</text>
+
+  <!-- left branch: maps -->
+  <path d="M 260 292 L 260 316" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="322" width="440" height="128" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="374" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">네이버 지도 Naver Map</text>
+  <text x="260" y="416" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">카카오맵 KakaoMap</text>
+  <path d="M 260 450 L 260 486" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="492" width="440" height="278" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="70" y="536" font-size="19" font-weight="700" fill="#102A2B">한국어 상호나 주소를 붙여 넣어 검색</text>
+  <text x="70" y="562" font-size="16" fill="#5C6B6B">한국어 이름 또는 주소로 찾기</text>
+  <text x="70" y="616" font-size="19" font-weight="700" fill="#102A2B">노선·출구·실시간 버스 도착 확인</text>
+  <text x="70" y="642" font-size="16" fill="#5C6B6B">탈 노선, 나갈 출구, 버스 도착 시간</text>
+  <text x="70" y="696" font-size="19" font-weight="700" fill="#102A2B">출발 전에 목적지 저장</text>
+  <text x="70" y="722" font-size="16" fill="#5C6B6B">갈 곳을 미리 즐겨찾기에 추가</text>
+
+  <!-- middle branch: ride-hailing -->
+  <path d="M 840 292 L 840 320" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <polygon points="840,324 1120,386 840,448 560,386" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="840" y="376" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Kakao 계정이 있고,</text>
+  <text x="840" y="401" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">인증도 확실히 받을 수 있나요?</text>
+  <text x="840" y="422" font-size="15" fill="#5C6B6B" text-anchor="middle">계정·인증 준비 완료?</text>
+  <path d="M 840 448 L 840 460" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 675 460 L 1005 460" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 675 458 L 675 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1005 458 L 1005 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="699" y="487" font-size="16" fill="#5C6B6B">아니요 / 불확실</text>
+  <text x="1029" y="487" font-size="16" fill="#5C6B6B">예</text>
+
+  <rect x="520" y="500" width="310" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="675" y="536" font-size="21" font-weight="700" fill="#1F4E73" text-anchor="middle">케이라이드 k.ride</text>
+  <text x="675" y="568" font-size="16" fill="#1F4E73" text-anchor="middle">전화번호 + Google·Apple</text>
+  <text x="675" y="594" font-size="16" fill="#1F4E73" text-anchor="middle">또는 이메일로 인증</text>
+  <text x="675" y="620" font-size="16" fill="#1F4E73" text-anchor="middle">앱에 해외 발행 카드 등록</text>
+
+  <rect x="850" y="500" width="310" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1005" y="536" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">카카오 T Kakao T</text>
+  <text x="1005" y="568" font-size="16" fill="#0B4F4D" text-anchor="middle">Kakao 계정 필요</text>
+  <text x="1005" y="594" font-size="16" fill="#0B4F4D" text-anchor="middle">자동결제 또는 하차 시 기사에게</text>
+  <text x="1005" y="620" font-size="16" fill="#0B4F4D" text-anchor="middle">현금·카드·T-money로 결제</text>
+
+  <path d="M 675 650 L 675 686" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1005 650 L 1005 686" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="520" y="692" width="640" height="80" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="840" y="724" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">호출 전 예상 요금, 탑승 전 차량 번호 확인</text>
+  <text x="840" y="754" font-size="16" fill="#5C6B6B" text-anchor="middle">요금을 확인하고 차량 번호를 대조하세요</text>
+  <text x="840" y="804" font-size="17" fill="#5C6B6B" text-anchor="middle">예비 앱: TADA·TABA</text>
+
+  <!-- right branch: street hail -->
+  <path d="M 1385 292 L 1385 316" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1200" y="322" width="370" height="128" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="378" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">한국어 주소를 기사에게 보여주기</text>
+  <text x="1385" y="410" font-size="16" fill="#5C6B6B" text-anchor="middle">목적지의 한국어 주소 제시</text>
+  <path d="M 1385 450 L 1385 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1200" y="500" width="370" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="548" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">하차 시 현금·카드</text>
+  <text x="1385" y="580" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">또는 T-money로 결제</text>
+  <text x="1385" y="618" font-size="16" fill="#5C6B6B" text-anchor="middle">현금·카드·T-money 중 선택</text>
+
+  <!-- footer -->
+  <text x="60" y="846" font-size="17" fill="#102A2B">서울 택시 요금과 심야 할증은 본문 표를 참고하세요. 기능과 결제 옵션은 현재 앱에서 확인하세요.</text>
+  <text x="1540" y="874" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 제작 2026</text>
+</svg>
