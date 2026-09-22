@@ -15,6 +15,7 @@ from app.ai.jev import (
     ChoiceQuestion,
     JevAuthError,
     JevClient,
+    JevQuestion,
     JevRequestInvalid,
     JevRequestTooLarge,
     NoulAnswer,
@@ -49,7 +50,7 @@ ANSWERS = {
     "usage": {"input_tokens": 392, "output_tokens": 65},
 }
 
-QUESTIONS = {
+QUESTIONS: dict[str, JevQuestion] = {
     "department": ChoiceQuestion(
         instructions="Which team should handle this",
         criteria={"billing": "payments", "technical": "bugs", "sales": "pricing"},

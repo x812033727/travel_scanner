@@ -7,11 +7,13 @@ the decision keeps its own answer and keeps going.
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, cast
 
 import httpx
 import pytest
+from redis.asyncio import Redis
 
+from app.ai.jev import JevRequestTooLarge
 from app.ai.jev import jev_client as real_jev_client
 from app.config import Settings
 from app.hotspots import ai_search
@@ -108,7 +110,7 @@ async def test_shadow_is_off_by_default_and_touches_nothing(monkeypatch) -> None
     assert Settings().jev_shadow_guide_assessment == "off"
     outcome = await ai_search._jev_shadow_assessment(
         Settings(),
-        redis,
+        cast("Redis", redis),
         locale="zh-TW",
         context={},
         by_id=by_id,
@@ -123,7 +125,7 @@ async def test_shadow_is_off_by_default_and_touches_nothing(monkeypatch) -> None
 async def test_a_missing_key_is_reported_rather_than_raised() -> None:
     outcome = await ai_search._jev_shadow_assessment(
         Settings(jev_shadow_guide_assessment="shadow", jev_api_key=None),
-        FakeRedis(),
+        cast("Redis", FakeRedis()),
         locale="zh-TW",
         context={},
         by_id=_inputs()[0],
@@ -226,7 +228,7 @@ async def test_an_oversized_batch_splits_instead_of_giving_up(monkeypatch) -> No
         async def ask(state: Any, questions: Any) -> Any:
             calls["n"] += 1
             if calls["n"] == 1:
-                raise ai_search.JevRequestTooLarge("too big; split the batch")
+                raise JevRequestTooLarge("too big; split the batch")
             return await original(state, questions)
 
         jev.ask = ask  # type: ignore[method-assign]
@@ -234,7 +236,7 @@ async def test_an_oversized_batch_splits_instead_of_giving_up(monkeypatch) -> No
         by_id, scores = _inputs()
         outcome = await ai_search._jev_shadow_assessment(
             settings,
-            FakeRedis(),
+            cast("Redis", FakeRedis()),
             locale="zh-TW",
             context={},
             by_id=by_id,
@@ -257,7 +259,7 @@ async def test_a_half_empty_answer_drops_only_the_rows_it_is_missing(monkeypatch
         scores.pop("c1")  # the assessor said nothing about this one
         outcome = await ai_search._jev_shadow_assessment(
             _shadow_settings(),
-            FakeRedis(),
+            cast("Redis", FakeRedis()),
             locale="zh-TW",
             context={},
             by_id=by_id,
@@ -282,7 +284,7 @@ async def test_the_inputs_the_run_still_needs_are_left_untouched(monkeypatch) ->
         monkeypatch.setattr(ai_search, "jev_client", lambda s, _c=None: real_jev_client(s, client))
         await ai_search._jev_shadow_assessment(
             _shadow_settings(),
-            FakeRedis(),
+            cast("Redis", FakeRedis()),
             locale="zh-TW",
             context={},
             by_id=by_id,
