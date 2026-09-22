@@ -168,17 +168,20 @@ entry alone. The state repeats every article as `{id, title, description}`, so o
 candidate really costs about 381 (travel) or 327 (life) tokens per request, and the token
 ceiling (80% of `JEV_MAX_STATE_TOKENS` = 19,200) binds before `--chunk-size 80` does. The
 shipped catalogue therefore plans 4 chunks for travel and 17 for life rather than the 3
-and 12 the plan predicted -- 5 and 18 calls per proposal, still about one cent and six
-cents. `test_the_shipped_catalogue_costs_what_the_plan_measured` pins both numbers, so
-the day someone shortens the option text or drops the duplication the test will say so.
+and 12 the plan predicted -- 5 and 18 calls per proposal, $0.0028 and $0.0130, against
+the $0.0025 and $0.008 the plan budgeted. `test_the_shipped_catalogue_costs_what_the_plan_measured`
+pins both numbers, so the day someone shortens the option text or drops the duplication
+the test will say so.
 
 **Measured dry runs** (2026-09-22, shipped corpus, no key needed):
 
 - `editorial --kind howto`: 146 documents, 5,030 units, 146 calls, about 1,622,957 input
   tokens, est. USD 0.0682. 355 of those units already carry a regex signal.
 - `overlap --kind howto --kind intel`: 167 candidates, 4 chunks (9,747 / 9,667 / 9,654 /
-  4,091 state tokens), 5 calls with the final round.
-- `overlap --kind life`: 922 candidates, 17 chunks.
+  4,091 state tokens), 5 calls with the final round, about 67,421 input tokens, est. USD
+  0.0028.
+- `overlap --kind life`: 922 candidates, 17 chunks, 18 calls, about 309,553 input
+  tokens, est. USD 0.0130.
 
 The whole corpus is 1,089 documents and about $0.50 for one editorial pass. That is why
 `--max-calls` defaults to 50 and why the intake use is `--slug` per batch.
