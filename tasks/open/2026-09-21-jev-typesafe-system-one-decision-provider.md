@@ -17,6 +17,10 @@ scope:
   - apps/api/tests/test_jev_client.py
   - apps/api/tests/test_ai_catalog.py
   - apps/api/tests/test_security_config.py
+  - apps/api/app/hotspots/ai_search.py
+  - apps/api/app/hotspots/guide_shadow_cli.py
+  - apps/api/app/cli.py
+  - apps/api/tests/test_jev_guide_shadow.py
   - .env.example
   - README.md
 ---
@@ -45,6 +49,8 @@ card is a separate task because its files are held by another claim (see Notes).
       types, and never puts the key in a URL.
 - [x] `jev-1.13.0` is selectable from the server-curated model catalog, and no
       generating code path can be pointed at it.
+- [x] Something actually calls Jev: the guide-candidate assessor is measured against
+      it, per language, while the existing threshold still decides every accept.
 - [ ] The key can be entered from the admin panel -- **not this task**, see
       `2026-09-21-jev-api-key-on-the-ai`.
 
@@ -57,6 +63,9 @@ card is a separate task because its files are held by another claim (see Notes).
 - [x] `apps/api/app/ai/jev.py`: `JevClient.ask`, `route`, `consume_jev_call`, `probe`.
 - [x] Tests: `test_jev_client.py`, plus the host-pinning case and the catalog cases.
 - [x] `.env.example` and `README.md`.
+- [x] First consumer, measuring only: `JEV_SHADOW_GUIDE_ASSESSMENT`,
+      `_jev_shadow_assessment` in `hotspots/ai_search.py`, and the `jev-shadow-report`
+      CLI that prints agreement per language.
 
 ## How to verify
 
@@ -119,7 +128,28 @@ about forty input tokens, and output is not billed.
   and `--force` would defeat the point of the board. Both blockers look already merged
   -- `ai_planner_user_budget` is in the panel and `apps/web/app/ads.txt/` exists -- so
   the unblock is for their owner to run `npm run tasks -- done <id>` on each.
-- **Nothing calls Jev yet, and that is the honest state of this branch.** The only
+- **The scope grew once, deliberately.** The shadow work below was added to this task
+  rather than filed as a second one: `hotspots/ai_search.py` and `cli.py` are held by
+  nobody, but `config.py` is held by *this* task, so a second task would have been
+  refused for overlapping its own predecessor. The rule exists to keep two agents on
+  two branches apart; this is one owner on one branch, so widening the declared scope
+  is more honest than `--force` and more useful than waiting for a merge.
+- **Why the measurement lives on the run and not in a new table.**
+  `HotspotGuideAISearchRun.result_json` is already serialised to the admin UI by
+  `_ai_search_payload` (`hotspots/admin_router.py:443`), so a `jev_shadow` block is
+  visible immediately with no migration. These numbers are a means, not a product:
+  they exist to set a threshold and should retire once it is set. A table would
+  outlive them.
+- **What the shadow pass may never do**, enforced by `tests/test_jev_guide_shadow.py`:
+  change an accept (it runs after `save_candidates` and writes only to
+  `result["jev_shadow"]`), raise anything into the run, or spend the guide search's
+  own budget. Off by default, and off means no client is constructed at all.
+- **Read it back with** `uv run python -m app.cli jev-shadow-report`. Look at
+  `by_detected_locale`, not `overall` -- TypeSafe claims English accuracy only, and the
+  per-language split is the one thing that could justify
+  `JEV_CJK_AUTOPILOT_ENABLED=true`. `disagreements` is there because a 95% agreement
+  rate that is wrong in one direction only looks identical to a good one.
+- **Nothing called Jev before this; that is no longer true.** The only
   importer of `app/ai/jev.py` is its own test. `probe` was written for the admin card's
   connection test, which is the blocked follow-up, so today `JEV_API_KEY` is read by
   `jev_client` and by nothing that runs. `route_answer` exists so that when the first
