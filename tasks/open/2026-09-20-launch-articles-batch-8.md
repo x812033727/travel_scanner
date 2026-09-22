@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-launch-articles-batch-8
 title: 撰寫並上線第八批旅遊文章：二十篇 zh-TW 攻略與情報
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-22T13:07:55Z
 created_at: 2026-09-20T02:32:43Z
 completed_at:
-branch:
+branch: claude/launch-articles-batch-8
 depends_on:
   - 2026-09-19-plan-articles-batch-8
 scope:
