@@ -122,7 +122,7 @@ uv run python -m app.guides.pack_cli lint --kind intel
 
 - 第一波七篇（寧平、頭頓、美山、慶良間、不開車玩沖繩、沖繩住宿稅、大叻）由七位 opus 撰稿代理各寫一篇（同時 ≤7），
   再各派一位新的 opus 查核代理逐條對官方頁。查核結果：美山 112 條／0 事實改動、頭頓 61／0、大叻 75／1、沖繩住宿稅 48／1、
-  寧平 90／2、不開車玩沖繩 76／2、慶良間 80／6（→ 第二輪）。除慶良間外六篇已 `pack_cli ingest` 進 repo。
+  寧平 90／2、不開車玩沖繩 76／2、慶良間 80／6（→ 第二輪：六筆全部確認，另一筆改動＝座間味泊位編號 No.6／No.7A 在官方頁與港區地圖都查不到，整篇移除；復原步驟在工作區 verify-2.md）。七篇全部 `pack_cli ingest` 進 repo，hero 全部 ≤200 KB。第一波完成 2026-09-23。
 - 讀者優先規則的裁決（描述只留一個查證戳記、開頭段最多一個出處語、標題與 summary 不寫自選數量）與規格差異都記在
   `docs/travel-guides-batch-8/ERRATA.md`（本票 scope 新增）。
 - 協調者工具在持久目錄 `C:\Users\x8120\mokaair-work\_tools\`（WRITER.md、VERIFIER.md、intake_check.py、shared_check.py、shrink_hero.py），
