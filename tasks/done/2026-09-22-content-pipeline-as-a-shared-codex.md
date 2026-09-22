@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-content-pipeline-as-a-shared-codex
 title: Content pipeline as a shared Codex/Claude skill
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1
 claimed_at: 2026-09-22T13:45:51Z
 created_at: 2026-09-22T13:45:45Z
-completed_at:
+completed_at: 2026-09-22T14:15:15Z
 branch: claude/skill-token-efficiency-16c9e3
 depends_on: []
 scope:
@@ -38,8 +38,9 @@ Codex 與 Claude Code 讀同一份。
       每個引用的 repo 路徑存在、沒有機器路徑與個人 email。
 - [x] 三個腳本（`intake_check.py`、`shared_check.py`、`verify_public.py`）對已上線的內容包跑得通，
       規則從 `app.guides` 匯入而不重抄。
-- [ ] 新開的 Claude Code 與 Codex session 各自看得到 `content-pipeline`（合併後在主 checkout 驗）。
-- [ ] Claude 端的記憶檔縮短、指向 skill（合併後做，不進 git）。
+- [ ] 新開的 Claude Code 與 Codex session 各自看得到 `content-pipeline`（合併後在主 checkout 驗；
+      Codex 只有桌面 app、這裡驗不到，留給站主）。
+- [x] Claude 端的記憶檔縮短、指向 skill（2026-09-22 已做：五條 hook 各縮成一行，38 KB 記憶檔改成歷史＋指標；不進 git）。
 
 ## Steps
 
@@ -49,10 +50,10 @@ Codex 與 Claude Code 讀同一份。
       `TEXT_RANGE`／`INTEL_TEXT_RANGE`，加 `lint_document` 與 `check_svg`／`missing_diagram_numbers`。
 - [x] `shared_check.py` 改讀 `--rules` JSON；`verify_public.py` 重寫成循序、1.3 秒間隔。
 - [x] `tools/skills.test.mjs`；AGENTS.md 加一句。
-- [ ] 開 PR、合併。
+- [x] 開 PR（#664）；票依板子慣例在 PR 內結案。
 - [ ] 合併後：主 checkout `git pull`，開新 Claude Code session 確認 `/content-pipeline`；
       開 Codex 確認 `$content-pipeline`，而且 worktree 裡只看到一個。
-- [ ] 合併後：縮短 Claude 記憶（內容產線、新聞第四批、韓國美食、AI 新聞批次、reader-first 五條 hook
+- [x] 縮短 Claude 記憶（內容產線、新聞第四批、韓國美食、AI 新聞批次、reader-first 五條 hook
       各一行；38 KB 記憶檔只留歷史與決定）。
 
 ## How to verify
