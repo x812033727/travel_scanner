@@ -1,7 +1,7 @@
 ---
 id: 2026-09-22-news-batch-4-7-news-since
 title: "News batch 4.7: news since 2026-09-20 for the three verticals (zh-TW only)"
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable-5-1
@@ -68,21 +68,36 @@ scope:
   - docs/crypto-news-2026/research/crypto-news-taiwan-deposit-token-pilot-20260922.json
   - docs/crypto-news-2026/research/crypto-news-sec-innovation-exemption-20260917.json
   - docs/crypto-news-2026/research/crypto-news-taiwan-vasp-tax-ruling-20260903.json
-  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-math-advisory-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-frontier-standards-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/ai-news-anthropic-life-sciences-verification-20260917.md
-  - docs/news-2026-batch-4/factcheck-draft/ai-news-meta-one-subscription-20260915.md
-  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-academy-paths-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/ai-news-nvidia-physical-ai-safety-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/tech-news-googlebook-launch-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/tech-news-eu-data-centre-rating-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/tech-news-cisa-kev-zyxel-gs1900-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/tech-news-meta-petal-subsea-cable-20260921.md
-  - docs/news-2026-batch-4/factcheck-draft/tech-news-enisa-threat-landscape-20260922.md
-  - docs/news-2026-batch-4/factcheck-draft/tech-news-moda-mydata-student-loan-20260917.md
-  - docs/news-2026-batch-4/factcheck-draft/crypto-news-taiwan-deposit-token-pilot-20260922.md
-  - docs/news-2026-batch-4/factcheck-draft/crypto-news-sec-innovation-exemption-20260917.md
-  - docs/news-2026-batch-4/factcheck-draft/crypto-news-taiwan-vasp-tax-ruling-20260903.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-math-advisory-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-math-advisory-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-frontier-standards-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-frontier-standards-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-anthropic-life-sciences-verification-20260917-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-anthropic-life-sciences-verification-20260917-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-meta-one-subscription-20260915-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-meta-one-subscription-20260915-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-academy-paths-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-openai-academy-paths-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-nvidia-physical-ai-safety-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/ai-news-nvidia-physical-ai-safety-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-googlebook-launch-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-googlebook-launch-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-eu-data-centre-rating-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-eu-data-centre-rating-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-cisa-kev-zyxel-gs1900-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-cisa-kev-zyxel-gs1900-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-meta-petal-subsea-cable-20260921-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-meta-petal-subsea-cable-20260921-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-enisa-threat-landscape-20260922-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-enisa-threat-landscape-20260922-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-moda-mydata-student-loan-20260917-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/tech-news-moda-mydata-student-loan-20260917-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/crypto-news-taiwan-deposit-token-pilot-20260922-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/crypto-news-taiwan-deposit-token-pilot-20260922-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/crypto-news-sec-innovation-exemption-20260917-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/crypto-news-sec-innovation-exemption-20260917-round2.md
+  - docs/news-2026-batch-4/factcheck-draft/crypto-news-taiwan-vasp-tax-ruling-20260903-round1.md
+  - docs/news-2026-batch-4/factcheck-draft/crypto-news-taiwan-vasp-tax-ruling-20260903-round2.md
 ---
 
 # News batch 4.7: news since 2026-09-20 for the three verticals (zh-TW only)
@@ -110,13 +125,14 @@ scope:
 
 ## Definition of done
 
-- [ ] 15 篇 zh-TW 內容包各有研究紀錄（各垂直 `research/<slug>.json`，4.5 的 schema，無 `translations`），
-      經撰稿、兩輪獨立查核，`check_article.py <slug>`（出圖後加 `--assets`，**不帶 `--full`**）全過，
-      `pack_cli lint --kind life` 0 error
-- [ ] 每篇一份查核報告 `docs/news-2026-batch-4/factcheck-draft/<slug>.md`（含「第二輪」一節），與內容包同一個 PR
-- [ ] 每篇在 `build_assets.py` 的 `_DRAWINGS` 有一個繪圖函式，hero 與內文圖出好
+- [x] 15 篇 zh-TW 內容包各有研究紀錄（各垂直 `research/<slug>.json`，4.5 的 schema，無 `translations`），
+      經撰稿、兩輪獨立查核，`check_article.py <slug>`（出圖後加 `--assets`，**不帶 `--full`**）15 篇全過；
+      `pack_cli lint --kind life`（15 篇加三個索引）0 error
+- [x] 每篇一份查核報告，**兩輪各一個檔**：`docs/news-2026-batch-4/factcheck-draft/<slug>-round1.md` 與
+      `<slug>-round2.md`（兩位查核代理各自獨立交件，合併成一個檔會動到他們寫的字），與內容包同一個 PR
+- [x] 每篇在 `build_assets.py` 的 `_DRAWINGS` 有一個繪圖函式，hero 與內文圖出好（另一位代理補齊，15／15）
 - [x] `check_article.py` 的 `RELATED` 接續號段：AI 171–176、科技 321–326、幣圈 217–219（`order_of()` 實測過）
-- [ ] 三個索引**標題不改**，15 個連結由協調者在同一個 PR 用
+- [x] 三個索引**標題不改**，15 個連結由協調者在同一個 PR 用
       `python update_index.py ai tech crypto --locale=zh-TW` 補上（只動 zh-TW，`CITED` 全空）
 - [ ] PR 合併、部署後 `guides-import --locale zh-TW --publish --slug`（先 dry-run 核對計畫），
       正式站每篇 200、可索引、在 `life-zh-TW.xml`
@@ -129,11 +145,54 @@ scope:
 - [x] 候選清單搬進 `docs/news-2026-batch-4/candidates-since-0920-{ai,tech,crypto}.md`
 - [x] `agents/DELTA-4-7.md`、`check_article.py` 的 `RELATED`（15 筆，`# 4.7`）
 - [x] 協調者的指派表 `C:\Users\x8120\mokaair-work\news47\ASSIGNMENTS.md`（每個 slug 一列，含一手來源與特殊指示）
-- [ ] 研究紀錄（opus ×15，分兩波）→ 寫進各垂直工作區的 `research/`
-- [ ] 撰稿（sonnet ×15）→ 查核第一輪（opus）→ 第二輪（opus，SECOND-ROUND）
-- [ ] `_DRAWINGS` ×15、出圖、`check_article.py <slug> --assets`、relink、lint
-- [ ] 索引增補（`update_index.py ai tech crypto --locale=zh-TW`，先 `--dry-run`）
+- [x] 研究紀錄（opus ×15，分兩波）→ 寫進各垂直工作區的 `research/`
+- [x] 撰稿（sonnet ×15）→ 查核第一輪（opus）→ 第二輪（opus，SECOND-ROUND）
+- [x] 30 份查核報告進 `factcheck-draft/`、`related` ×15、`pack_cli relink --apply`、`check_article.py` ×15、lint
+- [x] `_DRAWINGS` ×15、出圖、`check_article.py <slug> --assets`（另一位代理補齊；15 篇 `--assets` 全部 exit 0）
+- [x] 索引增補（`update_index.py ai tech crypto --locale=zh-TW`，先 `--dry-run`）
 - [ ] commit、PR，等站主明確選「合併並發布」→ 部署 → `guides-import` → 驗證 → 本票 done
+
+## 進度（2026-09-23，協調者收尾）
+
+15 篇都寫完、都經兩輪獨立查核，兩輪合計核對 **2,458 條主張、改了 290 處**。
+15 篇 `check_article.py <slug> --assets` 全部 exit 0；`pack_cli lint --kind life`（15 篇加三個索引）
+**0 error**、`raw_internal_url` 歸零；`tests/test_guides_content_pack.py` 與
+`tests/test_guides_content_links.py` 12 passed、5 skipped。
+
+| slug | order | zh-TW 段落字數 | 第一輪 主張／改動 | 第二輪 主張／改動 |
+| --- | --- | --- | --- | --- |
+| `ai-news-openai-math-advisory-20260921` | 171 | 2,352 | 101／13（另 8 處漏半形空格） | 45／3 |
+| `ai-news-openai-frontier-standards-20260921` | 172 | 2,888 | 109／18（CHANGED 22 條） | 60／8 |
+| `ai-news-anthropic-life-sciences-verification-20260917` | 173 | 2,946 | 130／10 | 49／8 |
+| `ai-news-meta-one-subscription-20260915` | 174 | 2,959 | 91／18（事實 11、讀者優先 7） | 62／12（事實 8、裁定 4） |
+| `ai-news-openai-academy-paths-20260921` | 175 | 2,734 | 96／14 | 72／6 |
+| `ai-news-nvidia-physical-ai-safety-20260921` | 176 | 2,996 | 124／8（CHANGED 12 條） | 121／5 |
+| `tech-news-googlebook-launch-20260921` | 321 | 2,769 | 104／12 | 88／9 |
+| `tech-news-eu-data-centre-rating-20260921` | 322 | 2,955 | 118／7（CHANGED 14 條） | 60／11 |
+| `tech-news-cisa-kev-zyxel-gs1900-20260921` | 323 | 2,516 | 106／6 | 42／14 |
+| `tech-news-meta-petal-subsea-cable-20260921` | 324 | 2,888 | 132／17 | 68／14 |
+| `tech-news-enisa-threat-landscape-20260922` | 325 | 2,710 | 98／14 | 62／7 |
+| `tech-news-moda-mydata-student-loan-20260917` | 326 | 2,984 | 121／12（CHANGED 11 條） | 48／6 |
+| `crypto-news-taiwan-deposit-token-pilot-20260922` | 217 | 2,040 | 103／8 | 42／8 |
+| `crypto-news-sec-innovation-exemption-20260917` | 218 | 2,974 | 63／4 | 27／2 |
+| `crypto-news-taiwan-vasp-tax-ruling-20260903` | 219 | 2,496 | 82／5 | 34／11 |
+
+協調者這一輪做的事（細節與裁決寫在 `HANDOVER.md` 第 1f 節）：
+
+- 30 份查核報告複製進 `docs/news-2026-batch-4/factcheck-draft/`（`<slug>-round1.md`／`-round2.md`），4.5 的 49 個檔原樣留著。
+- `related` ×15：只指同批同垂直的鄰近文章，每篇 2–4 篇，幣圈三篇互指；`pack_cli relink --apply` 轉掉 12 篇的 24 個生連結。
+- `update_index.py` 換成 4.7 的 `NEW`／`EDITS`（4.6 的表留成註解），`EXPANDED_ON` = 2026-09-23；
+  `--dry-run` 12 個 hunk，實跑後第二次跑如期拒絕（`zh-TW block 0: expected one '之後多次增補（最近一次 2026-09-22），' …, found 0`）；
+  三個索引 zh-TW +6／+6／+3 個區塊、來源沒動，en／ja／ko／zh-CN 逐 locale 與 `git show HEAD:` 位元組相同。
+- `pack_cli relink` 與 `update_index.py` 都用 `Path.write_text` 寫檔，在 Windows 上會把檔案變成 CRLF，
+  與 `.gitattributes` 的 `* text=auto eol=lf` 相反；這一輪把它們寫過的 15 個檔用位元組取代轉回 LF。
+
+**還開著的事：**
+
+- **Petal 的 Orange 問題已結案（協調者 2026-09-23）**：第二輪交的 `needs_owner` 由裁定收斂——
+  四處明確掛在「Meta 的貼文」名下的敘述保留，整段 P12 的具名引言不刪；沒有出處的 description、
+  summary 第 3 句與兩處「法國電信集團」維持刪除。內容包不需要再動。
+- 繪圖與 `_DRAWINGS` 由另一位代理補齊（15／15）；圖沒出完之前那兩個測試只會報 `image_missing`，沒有別的錯誤碼。
 
 ## How to verify
 
