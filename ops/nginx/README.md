@@ -44,13 +44,16 @@ what is enabled before it goes near the site file. It says which of these two ca
   enabled one is what made the 2026-09-12 rollout a no-op: its `EDIT` markers were edited,
   `nginx -t` passed, the reload succeeded, and nginx had not read a byte of it.
 
-In both cases the site's main `server {}` block needs these two lines. The example carries
-them; a host file merged before they existed does not. Why both, and what goes wrong without
-them, is under [the rate-limit log](#the-limits-apply-to-pages-but-not-to-assets) below.
+In both cases the site's main `server {}` block needs these four lines. The example carries
+them; a host file merged before they existed does not. Why the `error_log` pair, and what goes
+wrong without it, is under [the rate-limit log](#the-limits-apply-to-pages-but-not-to-assets)
+below; the `access_log` pair is under [crawl-control fetches](#crawl-control-fetches-are-visible).
 
 ```nginx
 error_log /var/log/nginx/error.log error;
 error_log /var/log/nginx/mokaair-limit.log warn;
+access_log /var/log/nginx/mokaair-limited.log mokaair_limited if=$mokaair_is_limited;
+access_log /var/log/nginx/mokaair-crawl.log combined if=$mokaair_is_crawl_control;
 ```
 
 Then:
@@ -265,7 +268,35 @@ sudo tail -n 20 /var/log/nginx/mokaair-limit.log
 ```
 
 A line there names the zone, the client address, the request and the host, but not the user
-agent; to see who a client address is, look it up in `access.log`.
+agent. `mokaair-limited.log` is the same events with the agent, written by the first of the
+two `access_log` lines above; do not reach for `access.log`, which this server no longer
+writes.
+
+### Crawl-control fetches are visible
+
+A server-level `access_log` replaces the inherited one rather than adding to it, so the moment
+`mokaair-limited.log` went into the server block this server stopped recording anything that
+was not refused. That is a deliberate trade for pages and a bad one for `/ads.txt`,
+`/robots.txt`, `/sitemap.xml`, `/llms.txt` and `/sitemaps/`: every question ever asked about
+those five is "did the crawler come, and what did it get". On 2026-09-22 AdSense reported this
+site's `ads.txt` as not found, every check from outside said the file was correct and fast, and
+the most recent fetch anyone could point at was nine days old -- there was no way to tell a
+failed crawl from a stale status. The second `access_log` line is that record; two directives
+at the same level both apply, so it adds a log rather than replacing the refusals one.
+
+```bash
+curl -s -o /dev/null -w '%{http_code}
+' https://example.com/ads.txt      # expect 200
+sudo tail -n 3 /var/log/nginx/mokaair-crawl.log                           # the fetch, with its User-Agent
+sudo grep ' /ads.txt ' /var/log/nginx/mokaair-crawl.log | grep -i google  # what Google actually got
+```
+
+`/ads.txt` has a `location` of its own for the same reason `/robots.txt` does: a 429 is not a
+"slow down" to Google's ads.txt fetcher, it is the site reporting that it has no `ads.txt` at
+all. It needs its own exemption rather than the crawler zone, because that fetcher is
+`Google-Adstxt`, whose addresses Google publishes in `special-crawlers.json` and not in the
+`googlebot.json` ranges `05-crawler-ranges.conf` is generated from -- so it is not a verified
+crawler here and would otherwise be counted in the page budget by address, like a visitor.
 
 ### The canonical-origin redirect still works
 
