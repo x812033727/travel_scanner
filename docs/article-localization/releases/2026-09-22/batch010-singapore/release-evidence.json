@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "batch": "010",
+  "released_on": "2026-09-22",
+  "scope": {
+    "slugs": [
+      "singapore-4-day-itinerary",
+      "singapore-changi-airport-mrt-simplygo-guide"
+    ],
+    "locales": ["zh-TW", "zh-CN", "en", "ja", "ko"],
+    "public_locale_pages": 10
+  },
+  "git": {
+    "pull_request": "https://github.com/x812033727/travel_scanner/pull/635",
+    "pull_request_head": "e93e0266cffb2ce8a1411a8bb424e860212a045c",
+    "merged_commit": "d52af4d95a40f5e353c567d366ee1b2b69dc5696",
+    "github_review_objects": 0,
+    "independent_review_is_external_hash_bound_evidence": true
+  },
+  "review_receipts": {
+    "independent_content": {
+      "path": "independent-content-review.json",
+      "sha256": "1fb7167c392307d19bbf84461107316bf5b594bd0e8cdc24d1604dd730412f57",
+      "decision": "approved",
+      "blocking_findings": 0,
+      "reviewed_at": "2026-09-22T08:12:24.03173+08:00"
+    },
+    "source_correction_itinerary": {
+      "path": "source-correction-itinerary.json",
+      "sha256": "7a7cd0fc6a60d38a818332c208fb74507d24ec508e224a920ade0126d1955c92",
+      "approved": true
+    },
+    "source_correction_changi": {
+      "path": "source-correction-changi.json",
+      "sha256": "9afa9f95b5aa9b32c55b168d391492e34a7e9b272108eb09118ba273d4bec293",
+      "approved": true,
+      "fare_boundary": "39.3–40.2 km is 256/206 cents; only over 40.2 km is 257/207 cents"
+    },
+    "numeric_equivalence": {
+      "path": "numeric-equivalence-review.json",
+      "sha256": "85b314e12f931e870baea76e85e6f415f1337cca2c4a7bdb4d948810e68b2e85",
+      "status": "approved_numeric_warning_equivalences",
+      "warnings": 115,
+      "approved_equivalent": 115,
+      "blocked": 0
+    },
+    "svg_inventory": {
+      "path": "svg-inventory.json",
+      "sha256": "0ff8e404b988c6c787dfe30008df7cdbf3691a400c10598997149e9c2a39ce99",
+      "localized_diagrams": 10,
+      "dimensions": "1600x900",
+      "alt_and_description_nonempty": true
+    },
+    "release_candidate_equivalence": {
+      "path": "release-candidate-equivalence.json",
+      "sha256": "30c279e82bdd05a661b76a90ba01177ceee17afd8b9e26d0dd9dfd02b39129dc",
+      "decision": "PASS_exact_v6_topics_order_only_candidate"
+    }
+  },
+  "release_bundle": {
+    "manifest_sha256": "f3aa4de95a19d5786c7764298c741327ed35672bb42d2153a1347d9dbdff9a21",
+    "baseline_sha256": "c7b385a94741bd7f9650b563db72f736dc9617b79c5b31d965edcb401b5074d1",
+    "zip_sha256": "ed54a35a9acd7eedcd18b989bfdbe32a3a532b67709969ac9fdc353d17f2afef",
+    "v6_change": "Only each pack's first two topic positions and corresponding manifest pack digests changed; all locale documents, 16 assets, reviews and baseline were unchanged."
+  },
+  "production_journal": {
+    "sha256": "579c08b92aaeecb9706f3ee17bd59b58e781576d88910d3461c33ee44b171771",
+    "first_event_at": "2026-09-22T10:01:42.951736+08:00",
+    "last_commit_at": "2026-09-22T10:04:59.369684+08:00",
+    "planned": {"drafts": 10, "publish_articles": 10, "publish_hubs": 0},
+    "committed": {"drafts": 10, "publish_articles": 10, "publish_hubs": 0},
+    "pending_operation": null,
+    "idempotent_rerun_changed_journal": false
+  },
+  "public_qa": {
+    "html": {
+      "sha256": "3f4ac4f3cc3d27517d5654420153cc06e14cd6f08795aad0b69bf9ec21b3ac15",
+      "pages": 10,
+      "errors": 0,
+      "checks": ["H1", "visible paragraph", "hero", "diagram", "canonical", "reciprocal hreflang", "same-language links"]
+    },
+    "browser": {
+      "sha256": "344f95ee2cf098e947ef30a50500b4f0aca676c2fc1157001db3699e429e86e9",
+      "desktop_mobile_cases": 20,
+      "errors": 0,
+      "images_loaded": true,
+      "document_overflow": false,
+      "mobile_diagrams_scrollable": true
+    },
+    "sitemap_api_unique_public_locales": 1828,
+    "sitemap_xml_unique_urls": 2386,
+    "checked_in_page_article_targets": 57,
+    "wrong_language_or_unpublished_targets": 0
+  },
+  "stale_claim_resolution": {
+    "pull_request_639": {
+      "url": "https://github.com/x812033727/travel_scanner/pull/639",
+      "merged_commit": "dc100ed26cbc956f6550368810e98efd3b5b511d",
+      "superseded_claims": [
+        "112 numeric warnings remained unresolved",
+        "two English SVG subtitle omissions remained",
+        "four condensed-duration fields awaited editorial review",
+        "the Singapore food-directory route remained an unresolved content gate"
+      ],
+      "resolution": "The v5 candidate fixed the two SVG omissions; the final independent numeric review approved 115 of 115 exact warnings with zero blockers; the public food-directory URLs were locale-correct and passed live link QA."
+    },
+    "pull_request_647": {
+      "url": "https://github.com/x812033727/travel_scanner/pull/647",
+      "observed_head": "02e0b608696d35e62f48f936e538abb5d5b5b6a7",
+      "accurate_claim": "PR #635 has zero GitHub review objects.",
+      "superseded_claims": [
+        "No independent editorial review exists",
+        "Nothing is live",
+        "The source correction is unapproved",
+        "Numeric, SVG and eligibility gates remain open"
+      ],
+      "resolution": "Independent review receipts predate publication, all 10 locale publications committed, and live HTML/browser/sitemap verification passed."
+    }
+  },
+  "public_urls": [
+    "https://mokaair.com/zh-TW/guides/howto/singapore-4-day-itinerary",
+    "https://mokaair.com/zh-CN/guides/howto/singapore-4-day-itinerary",
+    "https://mokaair.com/en/guides/howto/singapore-4-day-itinerary",
+    "https://mokaair.com/ja/guides/howto/singapore-4-day-itinerary",
+    "https://mokaair.com/ko/guides/howto/singapore-4-day-itinerary",
+    "https://mokaair.com/zh-TW/guides/howto/singapore-changi-airport-mrt-simplygo-guide",
+    "https://mokaair.com/zh-CN/guides/howto/singapore-changi-airport-mrt-simplygo-guide",
+    "https://mokaair.com/en/guides/howto/singapore-changi-airport-mrt-simplygo-guide",
+    "https://mokaair.com/ja/guides/howto/singapore-changi-airport-mrt-simplygo-guide",
+    "https://mokaair.com/ko/guides/howto/singapore-changi-airport-mrt-simplygo-guide"
+  ]
+}

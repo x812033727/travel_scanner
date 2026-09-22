@@ -1,0 +1,1073 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_numeric_token_warning_equivalence",
+  "status": "approved_numeric_warning_equivalences",
+  "candidate_commit": "a320aab66d174a1e699e32c4ae894fc92fb007a8",
+  "bundle_manifest_sha256": "e260504f0fa9ab7e87d912d6ef42bc75892f1af150c49f333a98c9c17e9b9024",
+  "author_disposition_sha256": "5a0b758d230ccfdf7b53bdd703b1a5444d55a76ecd7c7d73a837d05228144038",
+  "raw_warning_sha256": "466c52b0c861b397f63434d243621313d53d5e2022033e239f8c94f86d7f0d33",
+  "prior_classification_sha256": "7839067cbe4e9e1527af96c2b1b695af6a31a588ebb949c3c814c1fe13f2caaf",
+  "counts": {
+    "warnings": 115,
+    "approved_equivalent": 115,
+    "blocked": 0,
+    "direct_v5_rechecks": 25,
+    "exact_prior_hash_reuses": 90
+  },
+  "checks": {
+    "source_target_text_sha256": "all_match",
+    "document_and_svg_bundle_pointers": "all_match",
+    "bundle_locale_documents_match_frozen_worktree": "all_match",
+    "bundle_svg_text_matches_frozen_worktree": "all_match",
+    "missing_added_numeric_tokens": "all_match",
+    "url_and_code_changes": "none",
+    "semantic_numeric_values": "all_equivalent"
+  },
+  "calculations": [
+    "128–257 Singapore cents = SGD 1.28–2.57",
+    "6 × SGD 2.57 + SGD 0.60 = SGD 16.02 < SGD 17 one-day pass"
+  ],
+  "editorial_note": {
+    "row_id": 88,
+    "finding": "Japanese says mixed physical-card/mobile-wallet taps may create separate transactions, while zh-TW says they do. Both warn against mixing modes; the one-card instruction is retained. Official SimplyGo FAQ gives both a general may-result-in-multiple-charges rule and an example treated as separate transactions. This is a wording consideration, not a numeric-equivalence blocker.",
+    "official_source": "https://www.simplygo.com.sg/faqs/cards-and-charms/simplygo/contactless-bank-cards/"
+  },
+  "scope_limit": "Approves only 115 numeric-token warning dispositions, not full editorial/source-correction/deployment/production acceptance.",
+  "rows": [
+    {
+      "row_id": 1,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/description",
+      "source_sha256": "2072c84578374a602e92ffcc1da116624b10f81cbc18cecfe339e7518ee2c571",
+      "target_sha256": "1d3916c64cc7232f4a6c8711f3d40761953e4d7c930d8d53675952b7fccb1eae",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 2,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/0/text",
+      "source_sha256": "cc390b045ede335bedadd3cb1b1f9000ecc5044f07ede06bd2fc2ae7171faeb9",
+      "target_sha256": "893a5193b36a2aa507b21a1da598363cc7cb870e463eae27e5b68b53449643d5",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 3,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/2/inlines/0/text",
+      "source_sha256": "e686f35c5480bf0f081597ccf1755a47bc1737beffbb936a6eec7d9c58886cfc",
+      "target_sha256": "5407462a31fc34fbdcd2357df745ccf3f40ba01154b39ce5bc4de0d3cb9fa895",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 4,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/10/caption",
+      "source_sha256": "de501fb5c6ec29e945f31aafbdeed4e0b287575f43ed2771867fca73f9240a6c",
+      "target_sha256": "77153a90269aa0f1c35fd2eadad4839f7d6ade27fe35265ce755df95ffdc71bb",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 5,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/14/caption",
+      "source_sha256": "31d60e04b791f6a56e8616535ab6628e41ef44ab6e02d68fd6ba29b2b7bbe611",
+      "target_sha256": "2563ada6e9644b283203792c9261bd00e4d89c2d0693019439c4c92d45ed0e69",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 6,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/15/text",
+      "source_sha256": "1205b35c4647e685bc1f84d73ec453d663f80315fb42f5cdb22b6d505c8a8760",
+      "target_sha256": "c8bea0cc598a670a44ea23cfb3d95301c813e7470da68ad7cebed34c948dc8e4",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 7,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/18/text",
+      "source_sha256": "0cadd4fb7aa6bf68db57598feadb00044a7780029a2cae07234e54d6e8baf9e2",
+      "target_sha256": "3f7323078a304f705e3209e1ebd50fdab33893532c8b4e1f75778556e067fea0",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 8,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/22/text",
+      "source_sha256": "e3fc15f0bcc2c219862395ea413c4eb1252499b6b11ae1b1c6e72cca1f04877e",
+      "target_sha256": "1a572fcbab88035f9d9bfcbde1af9775bb11533fa10c11adb49a04123a21a12c",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 9,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/28/text",
+      "source_sha256": "fd8517d67cb36f514f08fc2c5535b97f6bf7ab110d3c8f05339b978c4d47c7ce",
+      "target_sha256": "6644c5c2b6bfa2b6be410055dd3fcd869359d363d12b71cc8687e269a9eb3f64",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 10,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/blocks/31/caption",
+      "source_sha256": "c5afee0c4e184e3cdb77e2c9b5fc3956084c081da70c646a77feebb99d1d5be1",
+      "target_sha256": "dc89f606e7ee97f7b8604b6beb6fadca5b7eed892632de48976b9c122ef5befc",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 11,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/sources/0/title",
+      "source_sha256": "751729cc5f71e2aad45906f660f8736b23a1874552b73617e8e109a9feec3fb1",
+      "target_sha256": "a3086b4090ae1938010a7fa4e9e373b3b767099609e18fb16631d24710f36c1b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 12,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/sources/13/title",
+      "source_sha256": "6739c384eab4e3b90cbd76a31c6fba151e78472dce54ede036dc5b22bfba3317",
+      "target_sha256": "bb97d6d1ad7dd2f8ed0ee7f6b3fcc721f171f8cc928274c5b7fff548ca57d70d",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 13,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/document/sources/19/title",
+      "source_sha256": "178382436b59dea4bba343cab595112ca7dca12fd40eb24c07f4f9442acf581e",
+      "target_sha256": "24ed487f06dfab06b61d7845ca5ea94c1b0e34a667277ac7e67318f38198339e",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 14,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/assets/0/text/0",
+      "source_sha256": "06e3be83575703960f73e1e5e54ef77c31c45f570a208340bfed5f5f176a5bd4",
+      "target_sha256": "d466dd462933906ddc77f023df5b40b702a4079f1f1c932961c8930f610894fe",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 15,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "en",
+      "pointer": "/assets/0/text/2",
+      "source_sha256": "d263668ca08c12d2a76c9a51612eaa4ce7a4d8d0b1c2ac357c3adab51b602f9e",
+      "target_sha256": "2f65a4fb7fd7c36cac04942494ed7d40404e3a7cc4507ad29b2d9e0a10cab358",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 16,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/title",
+      "source_sha256": "a0d6178fa1704b15fa405e10695d5ec31844d59b29038f204fe642dfa5485a9a",
+      "target_sha256": "8e719f82e0aedd942832b11c0e4d91d4f146413dd424a6c325d5b2e5cc2b61c6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 17,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/description",
+      "source_sha256": "2072c84578374a602e92ffcc1da116624b10f81cbc18cecfe339e7518ee2c571",
+      "target_sha256": "f574693cd307674e09bb2099cc554326634a90ac4f112692cce840477a9b018b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 18,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/0/text",
+      "source_sha256": "cc390b045ede335bedadd3cb1b1f9000ecc5044f07ede06bd2fc2ae7171faeb9",
+      "target_sha256": "5b96dfcd5b578474affda3282f2963102b2775fe610118fd970b0a727ba2ba65",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 19,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/4/rows/3/2",
+      "source_sha256": "c6e85ae2948adeb91e0ed65b00a249e88d379e44850e9ee9e02105a76c10792d",
+      "target_sha256": "548904af068a0142af42b9ef6022bfe68ae4c5fffdd120e47d74fd85ff8cc5c4",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 20,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/9/text",
+      "source_sha256": "4ffff5bd011b42100f9ed0661ee9802f347a397bdc8d8517fbfeab7939712217",
+      "target_sha256": "72b3a7e3414c4ad133a5c210692819938c60777e2c0129ca4f034f73d86a03ce",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 21,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/10/rows/0/3",
+      "source_sha256": "ab5c3b934bd24251265c80ddbd0cbc30683e7941f516b60a99108c7865788e81",
+      "target_sha256": "8f9ce6086d3b5737cb6d5034f4cae0ea3f1f8d919831e445305bb93da3696cf0",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 22,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/11/alt",
+      "source_sha256": "107de06224b36c8779c3b7ace1921447ae1089c1983be5fdce37f1e56659091f",
+      "target_sha256": "a81ae43001186518dcb173bd93a764684dc3d515604f738de7d34a5d05542cf7",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 23,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/11/caption",
+      "source_sha256": "6d53fa804efa0c13d2764184bdc4a2c35decefd7b78a74e86fcad6f23bd3fe41",
+      "target_sha256": "ad0a9cf239805af79782dca062ced1530afae215588f0d2c6757fd58e3966a44",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 24,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/11/description",
+      "source_sha256": "2f5d2d453635f6b08eac825a8b9f9f29e9e3c74d3fbd6e429cb19c4267439f02",
+      "target_sha256": "e97885ca6a09c2301d712f6fed69759adb132c380f87989089b949383512682e",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 25,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/14/caption",
+      "source_sha256": "31d60e04b791f6a56e8616535ab6628e41ef44ab6e02d68fd6ba29b2b7bbe611",
+      "target_sha256": "bf35014ccdebcde1af92aefb735b911e72b3416d89937210d247c982a9e32abf",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 26,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/14/rows/0/3",
+      "source_sha256": "3bd1fc4e43caf3fee20f89830cdcf001890f698fba85a024d4489c3bc706f083",
+      "target_sha256": "dba8df9ec85e6e94ef7534f76ff3831ffaf323278f1e42bd9adb0056c5c7d84d",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 27,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/14/rows/1/3",
+      "source_sha256": "531bd092c70eb8447220fba8d5ae7658f89af9cbc85ac398732f3688ff0aebd6",
+      "target_sha256": "d649293dea2a4bdd9cb7b10deb6877480714ef62cd6bfd2e1370ed10cab5364f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 28,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/15/text",
+      "source_sha256": "1205b35c4647e685bc1f84d73ec453d663f80315fb42f5cdb22b6d505c8a8760",
+      "target_sha256": "1def56d5394490645fa5f0776a3b7484a4b708865381e5861ddcb0b5ea2657c6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 29,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/17/title",
+      "source_sha256": "e81b483cf5d2983d5eedc973265d0484e76cbad7812f86396fb83ce986537bc0",
+      "target_sha256": "fb34959dcf8876a1ea2cb03487bc09295790b1a60fe329a16590277d56e1f839",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 30,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/18/text",
+      "source_sha256": "0cadd4fb7aa6bf68db57598feadb00044a7780029a2cae07234e54d6e8baf9e2",
+      "target_sha256": "9aa8f01c2204adf85739fc948eb8d8a57cc3d6cff9e48338825485a75678d5bd",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 31,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/27/text",
+      "source_sha256": "99a3b0e08ba7a46b75f6fb89d4788b94b3e8e675a58739b0c3bc8c2fa56b7c52",
+      "target_sha256": "150da99b57bfb166611d21d3cf003d470f1fe9b3749714b6fd3c354d4db85aa4",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 32,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/36/text",
+      "source_sha256": "fcc574020311aaf931897bc705adbd69f5ea2e2f9b62a49ec3b7963c36d623b0",
+      "target_sha256": "b75714c65da74a966ab014462e16c740500e6a688b3ff627b15e149b9c588984",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 33,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/37/inlines/0/text",
+      "source_sha256": "e97022c4ff946d4c8a694bf6de3ca7c1e49b43352456c0c859be8d93a415b264",
+      "target_sha256": "288933f432f02d43a6b321412e29778abe7d5eeffeecefa9bc0d930e00770c0f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 34,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/38/text",
+      "source_sha256": "b5a81ff72e700b8fe10a9fd72c4196f8d4366766378cc8b469b92e738691f42b",
+      "target_sha256": "16561b1f66a78bb19aa00fb637247fb99b2c59e8ff7d8ed4707aa99a6486d965",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 35,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/39/items/0",
+      "source_sha256": "f8eaaebb6d0b1aa4fb8870f664ce8cc8ffe0d7f996efad83a335cee80c1dd329",
+      "target_sha256": "e60d705541a0a7218b6d439ed98c09d540cd5aaea9b39b03ddc212e4ee2c2159",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 36,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/blocks/39/items/1",
+      "source_sha256": "4e00a0534b9f341e565e1b4b169c1f0486e1e395e5d2ee14c676ea0a055fbae8",
+      "target_sha256": "c86daaa21888850de392cc8c14680d5b4d1906a19ed99a41b0f6bcd871becd4f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 37,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/sources/0/title",
+      "source_sha256": "751729cc5f71e2aad45906f660f8736b23a1874552b73617e8e109a9feec3fb1",
+      "target_sha256": "b5a1b4196dc38e692740fab5b914fc88099a00274813f3a4ecb1719e418a0ee6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 38,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/sources/1/title",
+      "source_sha256": "76c366278179ff164db85aee03c6d155c747b0d04ce8dc67361288f25c678001",
+      "target_sha256": "a54730e788423e0dc307c77343a2a31ff029673442c7c930fdf2766246ca5bcc",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 39,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/sources/5/title",
+      "source_sha256": "8db5692711ddb3e5d33252675ddfdc6c0353c3a9d2c7fc2a746431715627628a",
+      "target_sha256": "228aca0df36595e033599d1a5e0bd116b39581941aa46b7033e384b5d7653e8a",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 40,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/document/sources/13/title",
+      "source_sha256": "6739c384eab4e3b90cbd76a31c6fba151e78472dce54ede036dc5b22bfba3317",
+      "target_sha256": "846350cc979e58a30babe60c0fcd3578aba645168db92aff5163fe740a8b3e42",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 41,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/assets/0/text/0",
+      "source_sha256": "06e3be83575703960f73e1e5e54ef77c31c45f570a208340bfed5f5f176a5bd4",
+      "target_sha256": "d410c6bf36d6af1802bd612deb469cc6d0879729c2fd7ce71cfb9e74fc3e9810",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 42,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ja",
+      "pointer": "/assets/0/text/2",
+      "source_sha256": "d263668ca08c12d2a76c9a51612eaa4ce7a4d8d0b1c2ac357c3adab51b602f9e",
+      "target_sha256": "aa7cb38bd36232f7eec28307f2df5093a3a6b7f1ad4c4a288d116bf1b04fe686",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 43,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/title",
+      "source_sha256": "a0d6178fa1704b15fa405e10695d5ec31844d59b29038f204fe642dfa5485a9a",
+      "target_sha256": "f0d9f8f1cfd7e5603774b5bb32b9ba83b5a7d79c50cd21581983380e365fd2a8",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 44,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/description",
+      "source_sha256": "2072c84578374a602e92ffcc1da116624b10f81cbc18cecfe339e7518ee2c571",
+      "target_sha256": "c2bcf09c013528ac4c6a2b2c91f7c11f24f498fc83c4299aeddfd77dc1f7cde8",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 45,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/0/text",
+      "source_sha256": "cc390b045ede335bedadd3cb1b1f9000ecc5044f07ede06bd2fc2ae7171faeb9",
+      "target_sha256": "0709adcc79de4b5562606cf3b19129e94d06ee01ffae1b07cf21323a1a395424",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 46,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/9/text",
+      "source_sha256": "4ffff5bd011b42100f9ed0661ee9802f347a397bdc8d8517fbfeab7939712217",
+      "target_sha256": "b4ad7fe9c800625154646d48c081879bc012561a2f9d69caf7584c27fbb6b99a",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 47,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/10/rows/0/3",
+      "source_sha256": "ab5c3b934bd24251265c80ddbd0cbc30683e7941f516b60a99108c7865788e81",
+      "target_sha256": "5a998f647036cd9ed1f1e2857adca5ca8affffa2b2f28d5c0ae26fd0bd1c3d93",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 48,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/11/alt",
+      "source_sha256": "107de06224b36c8779c3b7ace1921447ae1089c1983be5fdce37f1e56659091f",
+      "target_sha256": "4801dbd6cc54ced248f36b9ef715a31b5ca7f54a150f623a8a2718ffc8374190",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 49,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/11/description",
+      "source_sha256": "2f5d2d453635f6b08eac825a8b9f9f29e9e3c74d3fbd6e429cb19c4267439f02",
+      "target_sha256": "74971786da6fb420ca861e205c0aa03280a255ece82bc56c78d3fbf25c862760",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 50,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/14/rows/0/3",
+      "source_sha256": "3bd1fc4e43caf3fee20f89830cdcf001890f698fba85a024d4489c3bc706f083",
+      "target_sha256": "dd35b181af362a5d585437a0ee76956a0089c8c7c147364ffec9c13d5b191007",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 51,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/14/rows/1/3",
+      "source_sha256": "531bd092c70eb8447220fba8d5ae7658f89af9cbc85ac398732f3688ff0aebd6",
+      "target_sha256": "6d58b08a9613143a83c96d20922dd892ce547ca29140ddf65d32d7e627c8469d",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 52,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/17/title",
+      "source_sha256": "e81b483cf5d2983d5eedc973265d0484e76cbad7812f86396fb83ce986537bc0",
+      "target_sha256": "d17025fab10eb33b456ff2c6945593f7b28e78b6ae123fe42deb76457760e8c2",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 53,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/36/text",
+      "source_sha256": "fcc574020311aaf931897bc705adbd69f5ea2e2f9b62a49ec3b7963c36d623b0",
+      "target_sha256": "00c71a77fa7ae0f7e133b8aa6bb52c483e8bf67fdfe6dc9483e19ab21a8b18b4",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 54,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/37/inlines/0/text",
+      "source_sha256": "e97022c4ff946d4c8a694bf6de3ca7c1e49b43352456c0c859be8d93a415b264",
+      "target_sha256": "6ae96ea87502a4f96784d83b5da7d6dd7cb1e6096a9bc1a5f067143cd852417e",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 55,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/38/text",
+      "source_sha256": "b5a81ff72e700b8fe10a9fd72c4196f8d4366766378cc8b469b92e738691f42b",
+      "target_sha256": "f3a503fdb52f43ce30354b9085f300fa7ddd6ab6f9782e04c4f1356e6d87ac8a",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 56,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/39/items/0",
+      "source_sha256": "f8eaaebb6d0b1aa4fb8870f664ce8cc8ffe0d7f996efad83a335cee80c1dd329",
+      "target_sha256": "a297425b5e5e56514a0db003d71ff8c098d60c3e6786fb48ff8e22ba78d069c6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 57,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/blocks/39/items/1",
+      "source_sha256": "4e00a0534b9f341e565e1b4b169c1f0486e1e395e5d2ee14c676ea0a055fbae8",
+      "target_sha256": "2af657226ff4afe86df87aaff37930c7fde3512267ba032973a019c7577f3867",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 58,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/sources/0/title",
+      "source_sha256": "751729cc5f71e2aad45906f660f8736b23a1874552b73617e8e109a9feec3fb1",
+      "target_sha256": "61cf9b98db42916d4b27dac718cdc0fd15710f7155d09fc34bd14d0f251319c6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 59,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/document/sources/1/title",
+      "source_sha256": "76c366278179ff164db85aee03c6d155c747b0d04ce8dc67361288f25c678001",
+      "target_sha256": "2b6609a310543889ad3281aa1816fa28989433e37aafa9fc3b2aa9c2e64a15f2",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 60,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/assets/0/text/0",
+      "source_sha256": "06e3be83575703960f73e1e5e54ef77c31c45f570a208340bfed5f5f176a5bd4",
+      "target_sha256": "e55a7ae3eb9672db975a16f776fbb9eb2032b8d72c6b058a5d46c011fd1c4e99",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 61,
+      "slug": "singapore-4-day-itinerary",
+      "locale": "ko",
+      "pointer": "/assets/0/text/2",
+      "source_sha256": "d263668ca08c12d2a76c9a51612eaa4ce7a4d8d0b1c2ac357c3adab51b602f9e",
+      "target_sha256": "189eb0454a42b14a2d96bc655a1d168dd87de6565860e73df8191508c83855d6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 62,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/description",
+      "source_sha256": "7be71979c53a3849d54993cd08c18028a7ed4cdb28ccfff5afaaede98d3fc66f",
+      "target_sha256": "06369ceb2b2cfffd6f599e93ecebb4b2005795efa61323daf0d7b72c5ab9c3f6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 63,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/0/text",
+      "source_sha256": "50b890f05889907e77734fdc3069e8406e475e1a6c66a760187052a20825dbf3",
+      "target_sha256": "a7e970f26ac961b44cb761e7741b119898562a723b0ddcac168ddd9c222d7f6b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 64,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/15/text",
+      "source_sha256": "c6cb1fb215825f16f471ee53fadacc7b9f9ebd9660b7b642bfa78758bd2dff76",
+      "target_sha256": "53aed74bcf4cccdca0b8a681f2387c238e0d8733d9507d72f1109b483f095644",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 65,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/16/rows/0/2",
+      "source_sha256": "671ea8f0af91a71a3cf84b9a4f512e5ffb8d14f40ef6d3c710a981fe97a65484",
+      "target_sha256": "a3e6ac58edabdef26f905a1fac7ebd4a22d1f6bc46b628bb8d795466b5ac393b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 66,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/19/items/3",
+      "source_sha256": "77557aa480b690e72087505689172a4780de59dee8a87a4316402a0a307ef7eb",
+      "target_sha256": "d283e33b05ea6cacca921a333e8afa10ffaec54eef1118d1acb053011720763f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 67,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/24/text",
+      "source_sha256": "031f51790f9091d0830b9767d0c7d7a2b73b056e8d29794b1f2de6b461bf79b5",
+      "target_sha256": "becdbd23166f42fb56f73298015ea9d3a297b28fd743e6b5d9855bdbac5caf66",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 68,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/25/caption",
+      "source_sha256": "e0e15d7d59c7ffb8375a18a9b4ac8326208b4ddfcdfac0d89b70409a4fc89f9c",
+      "target_sha256": "50e4e5a25ddd060dead433408b8538a9158bb19d6de9c5b682169073767222f6",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 69,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/27/text",
+      "source_sha256": "cd6183e398f2160a6fbdf50e3277c236a5337832ba17475132fb8c33ced0b1c5",
+      "target_sha256": "a44397d067429625b2b0f883cd518d01a86bf664c329b794db59c5cc05f13e21",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 70,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/29/text",
+      "source_sha256": "0a3d0cd758393ca48b40480a857b48958992bbbac2f56646db0f3301f33020b5",
+      "target_sha256": "a158d911f2502a25c2dfd850dafe82acff4596e5d463a2788832d5c3d5557adc",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 71,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/blocks/31/text",
+      "source_sha256": "a5a6436344278f0874f2f8867bea5a8065f6c7cbd7d86bac1be597a2f982de27",
+      "target_sha256": "7fb33ab404caee78f46b310dfd74fb995dd26b2995039a158b743632efdb1872",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 72,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/sources/6/title",
+      "source_sha256": "a64cf1d39a24b1c6db4cf59d4b817425aa62ce7fba8553e85cb1123261bf1de0",
+      "target_sha256": "fd47db3f7e754b8b9a9e68d0fe1f7a36bb153a2dbd7d450ba3569f2288bf50ea",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 73,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/sources/11/title",
+      "source_sha256": "3068adfda4c53db26766cb992ac25a08bf3633b095e7690f778d9517a78bce31",
+      "target_sha256": "ec5dbd5b4c6929b5ec37f40ac5b0c02085a67c412223aa24067edbbf28edf25b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 74,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/document/sources/12/title",
+      "source_sha256": "a054fdafd5ae22179f1f2eaa5bcbc35f3c1f360d871ac5d610e9d3c71abc20fa",
+      "target_sha256": "e0c4255c82c37b959283373668560fdb093de1e05766adff3d84d575f773c795",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 75,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/assets/0/text/3",
+      "source_sha256": "24b5ba38127ed4458dd278987a2ef7bfd55a7ed7baeb7fc18f24c6dcd0863e43",
+      "target_sha256": "289ad9d90860df95e0d638e4462066e4ff14219aa8645af794410ac0705643d7",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 76,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/assets/0/text/7",
+      "source_sha256": "88bc180b30eadc794d84a0a8d6894402300e0e12e12d45c1df182b7eb52859b7",
+      "target_sha256": "0369ec5e473f210bf7de30b58fe36e5809d8f754410d5f9b362ababf721be2d4",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 77,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/assets/0/text/11",
+      "source_sha256": "2b7b0e1535c5c978bf3055822d431e1df6dceebc4fef2f837f86ef6981f72a19",
+      "target_sha256": "c69f71a91a14d197b8a76c81be9e5490964b473a921e4ce82511a03c39b61daa",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 78,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "en",
+      "pointer": "/assets/0/text/16",
+      "source_sha256": "c6f02ef0d3be840ebd0bb92a0d4c3f48598a5e625c37a67eba5c87101f5a7ea4",
+      "target_sha256": "79907a97681e19bcf40eb23092ab4fbd6202259e388e98b1b1028ae55c1ccdcc",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 79,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/description",
+      "source_sha256": "7be71979c53a3849d54993cd08c18028a7ed4cdb28ccfff5afaaede98d3fc66f",
+      "target_sha256": "a98d76676ff15253bf95d52d4204a9715909640dc5c658e0e4e46d7d8c970148",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 80,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/0/text",
+      "source_sha256": "50b890f05889907e77734fdc3069e8406e475e1a6c66a760187052a20825dbf3",
+      "target_sha256": "6ff85ae596a5cbb27a80ac201c67b32a423d784836bebe04dab947f3a74232e7",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 81,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/1/text",
+      "source_sha256": "7b6085d495343dbbf483f30bf3fe74153849a815c977145ec6991e8bc084579e",
+      "target_sha256": "d16203b7f024fb244aef4f7192ba2c7b3bb77321004ab6cc2fe5decf1fe7357d",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 82,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/2/rows/2/3",
+      "source_sha256": "4ccd43122dc16d44cc2ffb266e3ce82f662e0a78754b07e6e696c51ae27d1077",
+      "target_sha256": "3268c0a8cd33a87e2bd626f88bf83215e172b601b75244a5b18ee365b5a06c54",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 83,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/15/text",
+      "source_sha256": "c6cb1fb215825f16f471ee53fadacc7b9f9ebd9660b7b642bfa78758bd2dff76",
+      "target_sha256": "c5be25baeb44af19b82a298e741b64ee9ea781801788b6166ead3e5c438d0320",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 84,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/16/rows/0/2",
+      "source_sha256": "671ea8f0af91a71a3cf84b9a4f512e5ffb8d14f40ef6d3c710a981fe97a65484",
+      "target_sha256": "4f091e714af83792066655e14c9cac9ee8911b2956aa4eb2aacef0c3b6c99b8b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 85,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/16/rows/1/1",
+      "source_sha256": "f05f4e99da42e5b812dbb1ecebe1398a35e1f381011aadc58ba9064fc0891986",
+      "target_sha256": "3feac7b8dafadb8517329233623bf85e5182527cdf9b195409d5b3a7f2110635",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 86,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/16/rows/2/3",
+      "source_sha256": "566497de895b96a7b06cbf30d2983af6f5e7c58eb1dc754c46da210f7b89cd23",
+      "target_sha256": "a58bd4d8ae1d4cda1d745ecf4cedf5625b532e1811bf36219ae4faff3ea1fc2c",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 87,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/18/text",
+      "source_sha256": "92c4fe6d6a5ce44505d568e66ccc470b11474a1140c486e31ad0190c54af0433",
+      "target_sha256": "75b0b55d9f42644c2f72af69dedf99f80c1582e684bbd1dea370ddb143a38bfc",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 88,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/19/items/2",
+      "source_sha256": "a2502e92bc4deb4d50ea1a204abcb478a2f42fd5bc51d4b24a0356d6a3bc89db",
+      "target_sha256": "f22785bd7611dec0a4f0e0934c4c5a23d6e42f64e138c8300b442eac03af5f63",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 89,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/19/items/3",
+      "source_sha256": "77557aa480b690e72087505689172a4780de59dee8a87a4316402a0a307ef7eb",
+      "target_sha256": "e403afa65f0747fecb8025cecb95f50688d3adadf6e5fa939161f133ac49c230",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 90,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/26/text",
+      "source_sha256": "6b915ce52619241ca680853c21c643fa1758b9ced2e22814b024ba4ca2386875",
+      "target_sha256": "db744c3e173915693c9b413d009db56dbfc0ea3b60024914e7e8a78eb3620b07",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 91,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/27/text",
+      "source_sha256": "cd6183e398f2160a6fbdf50e3277c236a5337832ba17475132fb8c33ced0b1c5",
+      "target_sha256": "cb05b68b4be38d9107e4ff7510b3cacc2080ff36d8e8a6ddd8b932661c873c95",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 92,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/29/text",
+      "source_sha256": "0a3d0cd758393ca48b40480a857b48958992bbbac2f56646db0f3301f33020b5",
+      "target_sha256": "d7e957fd57d300f5aadd0918560ebe9da297e3620dce312b149a09cd2ac0b468",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 93,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/31/text",
+      "source_sha256": "a5a6436344278f0874f2f8867bea5a8065f6c7cbd7d86bac1be597a2f982de27",
+      "target_sha256": "ea1113ad33448de7e8eea35e57f6c52b1ed97972777706a60ef86c83c4948d8d",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 94,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/39/text",
+      "source_sha256": "0b7b7ac76fc60c06a8d7916cda467b38b0e1c22ace855c097fbfb3fbf7d830f8",
+      "target_sha256": "95fa4c5411857b334feaf67ae58be13069bf82dfb4675486de3b3699e84eb231",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 95,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/blocks/40/inlines/0/text",
+      "source_sha256": "a961ba292994db58e938f6588d1cd5d93b2ef92e263b6b828660fcc6c8719b21",
+      "target_sha256": "d037cd4d5beced0dcd6c5690b0793cf23a3cacbe6b27860c57a09878962e437c",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 96,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/document/sources/7/title",
+      "source_sha256": "35b15744a5bb2c00662d0860c4caae92c4237deea205ff51890bde92bfaecc9f",
+      "target_sha256": "b0532e8578d22c6f6a0041e94bb1dbc7304fec8af534a6af24dafdb762d6f405",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 97,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/assets/0/text/7",
+      "source_sha256": "88bc180b30eadc794d84a0a8d6894402300e0e12e12d45c1df182b7eb52859b7",
+      "target_sha256": "27fc86f27eac4eab306d5410bdc97fce7a55e8771fa209600e3cbf329140ba6c",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 98,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/assets/0/text/11",
+      "source_sha256": "2b7b0e1535c5c978bf3055822d431e1df6dceebc4fef2f837f86ef6981f72a19",
+      "target_sha256": "1ca14af437ea1cfedf1b6a562d414e422d22059e029223415265f2e7f2cfdc0d",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 99,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ja",
+      "pointer": "/assets/0/text/16",
+      "source_sha256": "c6f02ef0d3be840ebd0bb92a0d4c3f48598a5e625c37a67eba5c87101f5a7ea4",
+      "target_sha256": "c36c00f9c4c70d8a56b9a05a42b4f63a0c1c15a59849078a31b472cc13fe05f2",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 100,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/1/text",
+      "source_sha256": "7b6085d495343dbbf483f30bf3fe74153849a815c977145ec6991e8bc084579e",
+      "target_sha256": "a41897d278df49295b6b280cecb0c611e6f95e0e670c65c44dca228d02585f1c",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 101,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/15/text",
+      "source_sha256": "c6cb1fb215825f16f471ee53fadacc7b9f9ebd9660b7b642bfa78758bd2dff76",
+      "target_sha256": "a6cec5c2e186c26f263ab226698c92e50ab7b6d7884c3e1075db5aa85533845b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 102,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/16/rows/0/2",
+      "source_sha256": "671ea8f0af91a71a3cf84b9a4f512e5ffb8d14f40ef6d3c710a981fe97a65484",
+      "target_sha256": "ff0398cdd6baeffc335e5add8811eaa7e139cb9e7670274f5814b58469f86fdd",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 103,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/16/rows/1/1",
+      "source_sha256": "f05f4e99da42e5b812dbb1ecebe1398a35e1f381011aadc58ba9064fc0891986",
+      "target_sha256": "23698ce7d8e557efbb90c4e71355d6c02b8d6793d1db0bc3c7874d1c8d3f6ebf",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 104,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/16/rows/2/3",
+      "source_sha256": "566497de895b96a7b06cbf30d2983af6f5e7c58eb1dc754c46da210f7b89cd23",
+      "target_sha256": "775964c3c1f9f50e59d5f9b067019d51bfb8b82456ba1c48bc5431859a334cf5",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 105,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/18/text",
+      "source_sha256": "92c4fe6d6a5ce44505d568e66ccc470b11474a1140c486e31ad0190c54af0433",
+      "target_sha256": "3cb68b98accd80fa0fc56935d05fe7f38d686fe5b1af49f8acd73a48de941b9f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 106,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/19/items/3",
+      "source_sha256": "77557aa480b690e72087505689172a4780de59dee8a87a4316402a0a307ef7eb",
+      "target_sha256": "edc7a2cdde1c201fbea89471c7e36983e128a4ba5bd45401d02a6af89e8d9458",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 107,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/26/text",
+      "source_sha256": "6b915ce52619241ca680853c21c643fa1758b9ced2e22814b024ba4ca2386875",
+      "target_sha256": "14ae11f89ea96865fdfdb305f0d915b37cc5f50320b0146fc4549bc9e9c7bc90",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 108,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/27/text",
+      "source_sha256": "cd6183e398f2160a6fbdf50e3277c236a5337832ba17475132fb8c33ced0b1c5",
+      "target_sha256": "3a10770fe8e0070b67dc88aa506ce583aa5d41c764a51cd3a6f2a282191a511f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 109,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/29/text",
+      "source_sha256": "0a3d0cd758393ca48b40480a857b48958992bbbac2f56646db0f3301f33020b5",
+      "target_sha256": "996ed4c4cdb968f89ff774e99b277bff277c900afd810a37af9c6502dc3b541f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 110,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/39/text",
+      "source_sha256": "0b7b7ac76fc60c06a8d7916cda467b38b0e1c22ace855c097fbfb3fbf7d830f8",
+      "target_sha256": "c6623ff7aabfb0288d140de26a60347fe7cf09237a55a13c112ff3d148b4765b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 111,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/blocks/40/inlines/0/text",
+      "source_sha256": "a961ba292994db58e938f6588d1cd5d93b2ef92e263b6b828660fcc6c8719b21",
+      "target_sha256": "d0dd5f048b542247c3fcc48ce105c6b5a1f868ad952475bcfc1d4578a355062f",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 112,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/document/sources/7/title",
+      "source_sha256": "35b15744a5bb2c00662d0860c4caae92c4237deea205ff51890bde92bfaecc9f",
+      "target_sha256": "c4701b5cb4e82ceda655f52cd960f93b16d6913cfd5d3433d0d6c8188104b151",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 113,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/assets/0/text/7",
+      "source_sha256": "88bc180b30eadc794d84a0a8d6894402300e0e12e12d45c1df182b7eb52859b7",
+      "target_sha256": "e6eb20fd35857b330084474543cb5ed2478972fd88cd7927ca38cd44a633891b",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 114,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/assets/0/text/11",
+      "source_sha256": "2b7b0e1535c5c978bf3055822d431e1df6dceebc4fef2f837f86ef6981f72a19",
+      "target_sha256": "d5f9046f71aee7790223eb64d70d6a69a8c3fa16a60c7c3dd3d7be8075b23d02",
+      "numeric_disposition": "equivalent"
+    },
+    {
+      "row_id": 115,
+      "slug": "singapore-changi-airport-mrt-simplygo-guide",
+      "locale": "ko",
+      "pointer": "/assets/0/text/16",
+      "source_sha256": "c6f02ef0d3be840ebd0bb92a0d4c3f48598a5e625c37a67eba5c87101f5a7ea4",
+      "target_sha256": "7c88b7bec3e361ebdeb3bd234d3f4224cb287796a4af5fb22d45190dff8bf94d",
+      "numeric_disposition": "equivalent"
+    }
+  ]
+}
