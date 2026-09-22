@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Noto Sans JP','Noto Sans KR','Noto Sans SC','Yu Gothic','Malgun Gothic','Microsoft YaHei',system-ui,sans-serif">
+  <title id="title">韩国该用哪个 App：查路线、打车、路边拦车</title>
+  <desc id="desc">决策树，根节点是「你现在要做什么？」，分三支。第一支查路线、换乘：用 Naver Map（네이버 지도）或 KakaoMap（카카오맵），粘贴韩文店名或地址搜索，看搭哪一线、几号出口与公交实时到站信息，出发前先收藏目的地。第二支叫出租车：先问有没有 Kakao 账号、而且确定收得到验证；否或不确定就用 k.ride（케이라이드），输入电话号码再用 Google、Apple 或 Email 验证，App 内绑海外卡；是就用 Kakao T（카카오 T），要 Kakao 账号，自动付款或下车付司机现金、卡、T-money。两条路都要在打车前看预估车费，上车前核对车牌；备选方案是 TADA 与 TABA。第三支路边拦车：给司机看韩文地址，下车付现金、刷卡或 T-money。首尔出租车费与深夜加价见正文表格，功能与付款选项以 App 当下为准。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">韩国该用哪个 App：查路线、打车、路边拦车</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">路线搜索、App 打车或路边拦车</text>
+
+  <!-- root -->
+  <rect x="560" y="104" width="480" height="72" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="137" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">你现在要做什么？</text>
+  <text x="800" y="164" font-size="16" fill="#5C6B6B" text-anchor="middle">先选择当前需求</text>
+  <path d="M 800 176 L 800 198" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 260 198 L 1385 198" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 260 196 L 260 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 840 196 L 840 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1385 196 L 1385 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- branch headers -->
+  <rect x="40" y="222" width="440" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="252" font-size="22" font-weight="700" fill="#0B4F4D" text-anchor="middle">查路线、换乘</text>
+  <text x="260" y="279" font-size="16" fill="#0B4F4D" text-anchor="middle">搜索路线与换乘方式</text>
+
+  <rect x="520" y="222" width="640" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="840" y="252" font-size="22" font-weight="700" fill="#1F4E73" text-anchor="middle">叫出租车</text>
+  <text x="840" y="279" font-size="16" fill="#1F4E73" text-anchor="middle">用 App 打车</text>
+
+  <rect x="1200" y="222" width="370" height="70" rx="14" fill="#FBEFE3" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="252" font-size="22" font-weight="700" fill="#8A4A14" text-anchor="middle">路边拦车</text>
+  <text x="1385" y="279" font-size="16" fill="#8A4A14" text-anchor="middle">在路边直接拦出租车</text>
+
+  <!-- left branch: maps -->
+  <path d="M 260 292 L 260 316" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="322" width="440" height="128" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="374" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">네이버 지도 Naver Map</text>
+  <text x="260" y="416" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">카카오맵 KakaoMap</text>
+  <path d="M 260 450 L 260 486" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="492" width="440" height="278" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="70" y="536" font-size="19" font-weight="700" fill="#102A2B">粘贴韩文店名或地址搜索</text>
+  <text x="70" y="562" font-size="16" fill="#5C6B6B">使用韩文名称或地址</text>
+  <text x="70" y="616" font-size="19" font-weight="700" fill="#102A2B">查看线路、出口、公交实时到站</text>
+  <text x="70" y="642" font-size="16" fill="#5C6B6B">哪条线、几号出口、公交何时到</text>
+  <text x="70" y="696" font-size="19" font-weight="700" fill="#102A2B">出发前先收藏目的地</text>
+  <text x="70" y="722" font-size="16" fill="#5C6B6B">提前保存想去的地方</text>
+
+  <!-- middle branch: ride-hailing -->
+  <path d="M 840 292 L 840 320" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <polygon points="840,324 1120,386 840,448 560,386" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="840" y="376" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">有 Kakao 账号，而且</text>
+  <text x="840" y="401" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">确定能收到验证吗？</text>
+  <text x="840" y="422" font-size="15" fill="#5C6B6B" text-anchor="middle">账号与验证都准备好了吗？</text>
+  <path d="M 840 448 L 840 460" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 675 460 L 1005 460" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 675 458 L 675 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1005 458 L 1005 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="699" y="487" font-size="16" fill="#5C6B6B">否或不确定</text>
+  <text x="1029" y="487" font-size="16" fill="#5C6B6B">是</text>
+
+  <rect x="520" y="500" width="310" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="675" y="536" font-size="21" font-weight="700" fill="#1F4E73" text-anchor="middle">케이라이드 k.ride</text>
+  <text x="675" y="568" font-size="16" fill="#1F4E73" text-anchor="middle">电话号码＋Google、Apple</text>
+  <text x="675" y="594" font-size="16" fill="#1F4E73" text-anchor="middle">或 Email 验证</text>
+  <text x="675" y="620" font-size="16" fill="#1F4E73" text-anchor="middle">App 内绑定海外卡</text>
+
+  <rect x="850" y="500" width="310" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1005" y="536" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">카카오 T Kakao T</text>
+  <text x="1005" y="568" font-size="16" fill="#0B4F4D" text-anchor="middle">需要 Kakao 账号</text>
+  <text x="1005" y="594" font-size="16" fill="#0B4F4D" text-anchor="middle">自动付款，或下车时付给司机</text>
+  <text x="1005" y="620" font-size="16" fill="#0B4F4D" text-anchor="middle">现金、卡、T-money</text>
+
+  <path d="M 675 650 L 675 686" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1005 650 L 1005 686" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="520" y="692" width="640" height="80" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="840" y="724" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">打车前看预估车费，上车前核对车牌</text>
+  <text x="840" y="754" font-size="16" fill="#5C6B6B" text-anchor="middle">先确认车费，再核对车辆号码</text>
+  <text x="840" y="804" font-size="17" fill="#5C6B6B" text-anchor="middle">备选方案：TADA、TABA</text>
+
+  <!-- right branch: street hail -->
+  <path d="M 1385 292 L 1385 316" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1200" y="322" width="370" height="128" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="378" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">给司机看韩文地址</text>
+  <text x="1385" y="410" font-size="16" fill="#5C6B6B" text-anchor="middle">向司机出示韩文目的地地址</text>
+  <path d="M 1385 450 L 1385 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1200" y="500" width="370" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="548" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">下车付现金、刷卡</text>
+  <text x="1385" y="580" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">或使用 T-money</text>
+  <text x="1385" y="618" font-size="16" fill="#5C6B6B" text-anchor="middle">现金、卡或 T-money 付款</text>
+
+  <!-- footer -->
+  <text x="60" y="846" font-size="17" fill="#102A2B">首尔出租车费与深夜加价见正文表格；功能与付款选项以 App 当前显示为准。</text>
+  <text x="1540" y="874" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 制图 2026</text>
+</svg>
