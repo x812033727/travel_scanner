@@ -617,18 +617,25 @@
           "after": "Instagram 的 Restyle 與語音效果名列最主要的訂閱原因（原文是 among the top reasons，不是最高級）",
           "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
           "why": "同一條的 verbatim_quote 是對的，錯的是紀錄自己的白話敘述——第一輪在內容包改掉的那句最高級就是照它寫的，不改這裡下一位還會再犯。"
+        },
+        {
+          "claim": "「把三個方案併入同一品牌」的框架（協調者裁定，description／第一段／summary 第一條／§1 p3／本紀錄 summary 五處）",
+          "before": "把原本分開的 Instagram Plus、Facebook Plus、WhatsApp Plus 三個方案併入同一品牌，再加上兩種個人組合方案與四種創作者及商家方案",
+          "after": "Instagram Plus、Facebook Plus、WhatsApp Plus 今年稍早就以 Meta One 單一產品方案推出，這次在同一個名字下新增兩種個人組合方案與四種創作者及商家方案",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-meta-one-subscription-service-more-features-ai/",
+          "why": "公告寫的是 Earlier this year, we launched Meta One single product plans — Instagram Plus, Facebook Plus, and WhatsApp Plus——那三個方案今年稍早推出時就已經在 Meta One 這個名字底下，這一頁並沒有描述一次改名或併品牌的動作；這次新增的是個人組合與創作者商家方案。協調者 2026-09-23 裁定改掉這個框架，並要求本紀錄的 summary 一併改。§1 p3 同時把公告原文放進正文，讓讀者看得到依據；該段順手刪掉「公告也提醒讀者」，歸因數維持在兩個以內。"
         }
       ],
       "open_questions": [
-        "「把原本分開的三個方案併入同一品牌」這個框架：公告自己寫的是 Earlier this year, we launched Meta One single product plans — Instagram Plus, Facebook Plus, and WhatsApp Plus，也就是那三個方案今年稍早推出時就叫 Meta One 單一產品方案，這一頁並沒有描述一次「改名／併品牌」的動作；這次真正新增的是兩個個人組合與四個創作者商家方案。本紀錄的 summary 自己就是這樣寫的（「把原本分開賣的……併進同一個品牌」），第一輪也照它判 CONFIRMED，出現在 description、第一段、summary 第一條、§1 p3 四處。本輪沒有改（改要動四處、且紀錄具拘束力），請站主決定要不要改成「公告把這三個方案稱為 Meta One 單一產品方案，這次新增的是組合與商家方案」。",
+        "（已結案）「併入同一品牌」的框架已由協調者 2026-09-23 裁定拿掉，五處都照公告原文改寫，見 changes 最後一條。",
         "「兩種個人組合方案與四種創作者及商家方案」是依公告列出的方案名清點出來的分組數，公告沒有印。must_not_write 13 禁的是總數（例如「九個方案」）而不是分組數，且四階在公告裡逐行列名，本輪維持；若站主認為連分組數都要避開，§2 兩段與第一段要一起改。",
         "§2 p3 把 more access to Meta Business Agent 譯成「更多 Meta Business Agent 額度」。公告對 Expert／Max 寫的是 capacity（容量），對 Essential 寫的是 more access，兩個詞不同；本輪認為「額度」讀得通而未改，若要更貼字面可改成「更多 Meta Business Agent 的使用權限」。",
-        "正文 2,884 字（上限 3,000），比第一輪的 2,902 少 18 字，離上限還有 116 字；本輪沒有為了字數刪掉任何但書或限定詞，反而補回三處 may 與一處 and more。",
+        "正文 2,959 字（上限 3,000），離上限還有 41 字（協調者的改寫加了 75 字）；description 197 字；本輪沒有為了字數刪掉任何但書或限定詞，反而補回三處 may 與一處 and more。",
         "「9 月 16 日又改過一次」用的是頁面印出的美西日期（<time class=\"updated\">September 16, 2026），dateModified 換算台北是 9 月 17 日 04:22。本紀錄 must_not_write 7 與 unverified_or_excluded 3 指定的寫法就是「9 月 16 日」，本輪照紀錄維持；事件日不受影響。",
         "summary 第二條與 §3 p1 照「How to Get Started」那一句寫分組起始價（start at just），表格照每個方案自己標的價寫，FAQ4 解釋兩者差別——三處都對，但只看表格的讀者可能覺得與摘要不一致。要再明確只能加字，會吃掉 116 字的餘裕。"
       ],
       "verdict": "ok",
-      "self_check": "check_article.py ai-news-meta-one-subscription-20260915 → OK（exit 0，zh-TW paragraphs 2884）；pack_cli lint --kind life 只剩規格允許的 image_missing（圖未畫）與 raw_internal_url（未 relink）。"
+      "self_check": "check_article.py ai-news-meta-one-subscription-20260915 → OK（exit 0，zh-TW paragraphs 2959）；pack_cli lint --kind life 只剩規格允許的 image_missing（圖未畫）與 raw_internal_url（未 relink）。"
     }
   }
 }
