@@ -7,6 +7,7 @@ function that paints a PNG with Pillow.
 
 from __future__ import annotations
 
+import copy
 import io
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -53,6 +54,12 @@ GOOD_SVG = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"
   <text x="100" y="200" font-size="18"><tspan>06:30</tspan> 開始</text>
 </svg>
 """
+
+
+def body_svg(height: int = 1980) -> str:
+    return GOOD_SVG.replace('viewBox="0 0 1600 900"', f'viewBox="0 0 1600 {height}"').replace(
+        'height="900"', f'height="{height}"', 1
+    )
 
 
 def good_document(**overrides: object) -> dict[str, Any]:
@@ -248,6 +255,78 @@ def test_check_svg_holds_the_diagram_rules() -> None:
     assert errors(check_svg(GOOD_SVG.replace("<rect", "<style>@import 'x.css';</style><rect")))
 
 
+def test_body_svg_accepts_a_validated_variable_height_without_changing_the_default() -> None:
+    tall = body_svg()
+    assert check_svg(tall, body=True) == []
+    assert {problem.code for problem in errors(check_svg(tall))} == {"svg_viewbox"}
+
+
+@pytest.mark.parametrize(
+    ("mutated", "code"),
+    [
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 1600"'), "svg_viewbox"),
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 1600 NaN"'), "svg_viewbox"),
+        (
+            body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 1_600 1980"'),
+            "svg_viewbox",
+        ),
+        (
+            body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 １６００ 1980"'),
+            "svg_viewbox",
+        ),
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="1 0 1600 1980"'), "svg_viewbox"),
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 800 990"'), "svg_viewbox"),
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 1600 0"'), "svg_viewbox"),
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 1600 -1"'), "svg_viewbox"),
+        (body_svg().replace('viewBox="0 0 1600 1980"', 'viewBox="0 0 1600 1980.5"'), "svg_viewbox"),
+        (body_svg(4001), "svg_viewbox"),
+        (
+            body_svg().replace(' width="1600" height="1980"', "", 1),
+            "svg_dimensions",
+        ),
+        (body_svg().replace('width="1600"', 'width="1600px"', 1), "svg_dimensions"),
+        (body_svg().replace('width="1600"', 'width="1_600"', 1), "svg_dimensions"),
+        (body_svg().replace('width="1600"', 'width="１６００"', 1), "svg_dimensions"),
+        (body_svg().replace('height="1980"', 'height="1980px"', 1), "svg_dimensions"),
+        (
+            body_svg().replace(
+                'width="1600" height="1980"', 'width="800" height="990"', 1
+            ),
+            "svg_dimensions",
+        ),
+    ],
+)
+def test_body_svg_rejects_invalid_or_mismatched_dimensions(mutated: str, code: str) -> None:
+    assert code in {problem.code for problem in errors(check_svg(mutated, body=True))}
+
+
+def test_body_svg_keeps_the_legacy_fixed_viewbox_without_root_dimensions() -> None:
+    legacy = GOOD_SVG.replace(' width="1600" height="900"', "", 1)
+    assert check_svg(legacy, body=True) == []
+
+
+def test_body_svg_accepts_ascii_decimal_and_exponent_forms() -> None:
+    numeric = body_svg().replace(
+        'viewBox="0 0 1600 1980"', 'viewBox="+0.0 -0 1.6e3 1.980E+3"'
+    )
+    numeric = numeric.replace(
+        'width="1600" height="1980"', 'width="1600.0" height="198e1"', 1
+    )
+    assert check_svg(numeric, body=True) == []
+
+
+def test_tall_body_svg_keeps_the_existing_security_and_legibility_rules() -> None:
+    tall = body_svg()
+    broken = (
+        tall.replace('font-size="18"', 'font-size="14"')
+        .replace("<rect", '<foreignObject/><script/><image href="https://example.com/x"/><rect')
+        .replace("<defs>", "<style>@import 'x.css';</style><defs>")
+    )
+    codes = {problem.code for problem in errors(check_svg(broken, body=True))}
+    assert codes == {"svg_small_label", "svg_forbidden_element", "svg_external_reference"}
+    assert not errors(check_svg(tall.replace("url(#arrow)", "url(#gradient)"), body=True))
+
+
 def test_diagram_numbers_are_the_visible_labels_and_match_the_text_loosely() -> None:
     assert diagram_numbers(GOOD_SVG) == {"1,000", "06:30"}
     document = GuideDocument.model_validate(good_document())
@@ -409,6 +488,99 @@ def test_ingest_builds_the_pack_and_its_pictures(tmp_path: Path) -> None:
     # The written pack passes the same lint the repository's own test applies.
     findings = lint_all(content, public, kind="life")
     assert findings == {"chatgpt-beginner-guide": []}
+
+
+def test_ingest_preserves_tall_body_dimensions_for_every_shared_reference(
+    tmp_path: Path,
+) -> None:
+    workdir, content, public = tmp_path / "work", tmp_path / "content", tmp_path / "public"
+    workspace = _write_workspace(workdir)
+    pack = json.loads((workspace / "pack.json").read_text(encoding="utf-8"))
+    pack["locales"]["en"] = copy.deepcopy(pack["locales"]["zh-TW"])
+    (workspace / "pack.json").write_text(json.dumps(pack, ensure_ascii=False), encoding="utf-8")
+    (workspace / "diagram-1.svg").write_text(body_svg(), encoding="utf-8")
+
+    report = ingest(
+        workdir,
+        "chatgpt-beginner-guide",
+        content_dir=content,
+        public_dir=public,
+        renderer=fake_renderer,
+    )
+    assert report.ok, report.problems
+    written = json.loads((content / "chatgpt-beginner-guide.json").read_text(encoding="utf-8"))
+    for document in written["locales"].values():
+        diagram = next(block for block in document["blocks"] if block["type"] == "image")
+        assert (diagram["width"], diagram["height"]) == (1600, 1980)
+    with Image.open(public / "guides" / "chatgpt-beginner-guide" / "hero.jpg") as hero:
+        assert hero.size == (1600, 900)
+    assert not errors(lint_all(content, public)["chatgpt-beginner-guide"])
+
+
+@pytest.mark.parametrize(("width", "height"), [(1600, 900), (800, 990)])
+def test_lint_rejects_wrong_metadata_on_the_second_reference_to_a_shared_svg(
+    tmp_path: Path, width: int, height: int
+) -> None:
+    workdir, content, public = tmp_path / "work", tmp_path / "content", tmp_path / "public"
+    workspace = _write_workspace(workdir)
+    pack = json.loads((workspace / "pack.json").read_text(encoding="utf-8"))
+    pack["locales"]["en"] = copy.deepcopy(pack["locales"]["zh-TW"])
+    (workspace / "pack.json").write_text(json.dumps(pack, ensure_ascii=False), encoding="utf-8")
+    (workspace / "diagram-1.svg").write_text(body_svg(), encoding="utf-8")
+    report = ingest(
+        workdir,
+        "chatgpt-beginner-guide",
+        content_dir=content,
+        public_dir=public,
+        renderer=fake_renderer,
+    )
+    assert report.ok, report.problems
+    final_pack_path = content / "chatgpt-beginner-guide.json"
+    final_pack = json.loads(final_pack_path.read_text(encoding="utf-8"))
+    second = next(
+        block for block in final_pack["locales"]["en"]["blocks"] if block["type"] == "image"
+    )
+    second.update({"width": width, "height": height})
+    final_pack_path.write_text(json.dumps(final_pack, ensure_ascii=False), encoding="utf-8")
+
+    mismatches = [
+        problem
+        for problem in lint_all(content, public)["chatgpt-beginner-guide"]
+        if problem.code == "svg_dimensions_mismatch"
+    ]
+    assert len(mismatches) == 1
+    assert mismatches[0].message == (
+        f"en: diagram-1.svg declares {width}x{height}; the SVG is 1600x1980"
+    )
+
+
+def test_a_tall_body_dry_run_writes_nothing_and_a_tall_hero_is_still_rejected(
+    tmp_path: Path,
+) -> None:
+    workdir, content, public = tmp_path / "work", tmp_path / "content", tmp_path / "public"
+    workspace = _write_workspace(workdir)
+    (workspace / "diagram-1.svg").write_text(body_svg(), encoding="utf-8")
+    report = ingest(
+        workdir,
+        "chatgpt-beginner-guide",
+        content_dir=content,
+        public_dir=public,
+        renderer=fake_renderer,
+        dry_run=True,
+    )
+    assert report.ok and report.written == []
+    assert not content.exists() and not public.exists()
+
+    (workspace / "hero.svg").write_text(body_svg(), encoding="utf-8")
+    with pytest.raises(PackIngestError, match="must be '0 0 1600 900'"):
+        ingest(
+            workdir,
+            "chatgpt-beginner-guide",
+            content_dir=content,
+            public_dir=public,
+            renderer=fake_renderer,
+        )
+    assert not content.exists() and not public.exists()
 
 
 def test_ingest_fetches_a_commons_hero_and_photo_with_credit(tmp_path: Path) -> None:

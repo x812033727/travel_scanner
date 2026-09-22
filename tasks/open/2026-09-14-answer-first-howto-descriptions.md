@@ -1,55 +1,17 @@
 ---
 id: 2026-09-14-answer-first-howto-descriptions
 title: AIO: 68 how-to descriptions enumerate topics instead of answering
-status: review
+status: blocked
 priority: P3
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T11:15:21Z
+owner:
+claimed_at:
 created_at: 2026-09-14T13:48:24Z
 completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+branch: codex/article-localization-batch007-resume
 depends_on: []
 scope:
-  - apps/api/app/guides/content/busan-3-day-itinerary.json
-  - apps/api/app/guides/content/dmz-day-trip-from-seoul.json
-  - apps/api/app/guides/content/fuji-kawaguchiko-day-trip.json
-  - apps/api/app/guides/content/fukuoka-airport-to-hakata-tenjin.json
-  - apps/api/app/guides/content/gimhae-airport-to-busan.json
-  - apps/api/app/guides/content/hakone-day-trip-free-pass.json
-  - apps/api/app/guides/content/himeji-castle-day-trip.json
-  - apps/api/app/guides/content/hiroshima-miyajima-2-day.json
-  - apps/api/app/guides/content/incheon-airport-to-seoul.json
-  - apps/api/app/guides/content/japan-drugstore-shopping-list.json
-  - apps/api/app/guides/content/japan-entry-2026-visit-japan-web.json
-  - apps/api/app/guides/content/japan-esim-sim-wifi.json
-  - apps/api/app/guides/content/japan-ic-card-suica-icoca-guide.json
-  - apps/api/app/guides/content/japan-ski-season-2026-2027.json
-  - apps/api/app/guides/content/japan-winter-illumination-2026.json
-  - apps/api/app/guides/content/japan-year-end-new-year-2026-2027.json
-  - apps/api/app/guides/content/jeju-3-day-itinerary.json
-  - apps/api/app/guides/content/kamakura-enoshima-day-trip.json
-  - apps/api/app/guides/content/kobe-arima-day-trip.json
-  - apps/api/app/guides/content/korea-entry-2026-k-eta-e-arrival.json
-  - apps/api/app/guides/content/korea-esim-sim-wifi.json
-  - apps/api/app/guides/content/korea-money-exchange-wowpass-guide.json
-  - apps/api/app/guides/content/korea-olive-young-tax-refund-shopping.json
-  - apps/api/app/guides/content/nagoya-3-day-itinerary.json
-  - apps/api/app/guides/content/narita-haneda-to-tokyo.json
-  - apps/api/app/guides/content/new-chitose-airport-to-sapporo.json
-  - apps/api/app/guides/content/okinawa-4-day-itinerary.json
-  - apps/api/app/guides/content/osaka-kyoto-where-to-stay.json
-  - apps/api/app/guides/content/sapporo-snow-festival-2027.json
-  - apps/api/app/guides/content/seoul-4-day-itinerary.json
-  - apps/api/app/guides/content/seoul-palaces-hanbok-guide.json
-  - apps/api/app/guides/content/seoul-subway-t-money-guide.json
-  - apps/api/app/guides/content/suwon-hwaseong-day-trip.json
-  - apps/api/app/guides/content/takayama-shirakawago-day-trip.json
-  - apps/api/app/guides/content/tokyo-5-day-itinerary.json
-  - apps/api/app/guides/content/tokyo-disney-guide.json
-  - apps/api/app/guides/content/tokyo-transit-passes.json
-  - apps/api/app/guides/content/tokyo-where-to-stay.json
-  - apps/api/app/guides/content/yokohama-day-trip-from-tokyo.json
+  - tasks/open/2026-09-14-answer-first-howto-descriptions.md
 ---
 
 # AIO: 68 how-to descriptions enumerate topics instead of answering
@@ -206,3 +168,24 @@ python -m app.cli guides-import --actor-email <admin> --publish --slug busan-3-d
 Changing `description` changes the meta description and the JSON-LD `description` of these 39 pages
 at once, so the publish is a visible SEO change; the other 33 documents are
 `2026-09-19-aio-answer-first-descriptions-part-2`.
+
+### 2026-09-22 stale-claim handoff
+
+The actual repository edit merged as PR #565, commit
+`d11178863d1a2a35ddfff17be65bcc2a63514194` (2026-09-19T12:30:55Z);
+PR #552 in the historical branch name is unrelated. No open PR remains for
+this edit branch. After closing the completed batch009 and releasing the
+prior batch007 claim, normal stale takeover succeeded without --force.
+
+Repository editing is complete. Production import/publication of all 39
+answer-first descriptions is NOT verified by this handoff, so this task is
+blocked rather than done. Scope is now this task record: the outstanding
+step is a separately approved, version-bound production reconciliation,
+not further pack rewriting. Preserve all repository descriptions. Current
+localization batches translate from published source and must explicitly
+bind any unselected repository-only description in a preservation review.
+Do not use the historical bulk publish commands above without a new
+per-slug/per-locale inventory, source version/hash audit and dry run.
+
+The resumed batch007 owns its four packs and image paths. Later AIO work
+requiring repository edits must claim a new narrow scope before editing.

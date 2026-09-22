@@ -34,7 +34,14 @@ from app.foods.platform_review_import import apply_food_platform_reviews
 from app.foods.service import seed_food_catalog
 from app.foods.trend_import import DEFAULT_FILE as TREND_MERCHANTS_FILE
 from app.foods.trend_import import backfill_english_names, import_trend_merchants
-from app.guides.content_pack import ContentPackError, apply_import, load_packs, plan_import
+from app.guides.content_pack import (
+    ContentPackError,
+    apply_import,
+    load_packs,
+    load_publish_holds,
+    plan_import,
+    publish_holds_path,
+)
 from app.guides.links_cli import check_guide_links, rebuild_guide_links
 from app.guides.search_cli import reindex_guide_search, seed_guide_aliases
 from app.holidays.refresh import HolidaySourceError
@@ -128,6 +135,18 @@ async def import_guides(
     unknown = (locales or set()) - set(LOCALES)
     if unknown:
         raise SystemExit(f"Unknown locale(s): {', '.join(sorted(unknown))}")
+    # Naming a held slug and asking to publish it is not the accident the hold guards
+    # against, so it is refused outright rather than quietly skipped. A sweep over every
+    # pack still runs; it just leaves the held ones unpublished and says so in the report.
+    if publish and slugs:
+        held = {slug: reason for slug, reason in load_publish_holds().items() if slug in slugs}
+        if held:
+            lines = "\n".join(f"  {slug}: {reason}" for slug, reason in sorted(held.items()))
+            raise SystemExit(
+                "Refusing to publish; these slugs are held in "
+                f"{publish_holds_path().name}:\n{lines}\n"
+                "Remove the entry once the hold is cleared."
+            )
     try:
         packs = load_packs(directory, slugs=slugs)
     except ContentPackError as error:

@@ -1,22 +1,35 @@
 ---
 id: 2026-09-17-commons-non-ascii-filename-ingest
 title: 非 ASCII 檔名的 Commons 圖片 ingest 不進來：UnicodeEncodeError
-status: review
+status: blocked
 priority: P2
 area: api
-owner: claude-fable-5-1
-claimed_at: 2026-09-19T08:40:29Z
+owner:
+claimed_at:
 created_at: 2026-09-17T00:56:16Z
 completed_at:
-branch: claude/travel-scanner-pr-552-rpq36m
+branch: codex/guide-diagram-dimensions
 depends_on: []
 scope:
-  - apps/api/app/guides/pack_ingest.py
-  - apps/api/tests/test_guides_content_pack.py
-  - apps/api/tests/test_guides_pack_ingest.py
+  - tasks/open/2026-09-17-commons-non-ascii-filename-ingest.md
 ---
 
 # 非 ASCII 檔名的 Commons 圖片 ingest 不進來：UnicodeEncodeError
+
+## 2026-09-22 remaining validation handoff
+
+The implementation and regression tests merged in PR #561 on 2026-09-19,
+commit `f521b9023e5d0ea154b74ebc6f84c2bcf2f47913`. A normal stale-claim
+takeover (without force) was used to preserve this task as the unfinished
+validation record and release its obsolete implementation scopes.
+
+Still unverified: a real Commons `pack_cli ingest --dry-run` and the original
+preferred Sendai/Zuihoden photograph, whose exact filename was not recorded.
+The historical 429 observations below are not a claim of a current outage.
+The original photo identification and live validation evidence remain the
+handoff blocker; this task is not marked complete. Its current scope is its
+own record because the remaining work is validation and disposition. A new
+implementation defect, if found, must receive a separately claimed code scope.
 
 ## Why
 

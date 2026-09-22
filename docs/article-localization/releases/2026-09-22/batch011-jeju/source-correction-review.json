@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_read_only_source_correction_review",
+  "reviewed_at_utc": "2026-09-21T23:41:20.677384+00:00",
+  "decision": "approved_for_exact_source_corrections",
+  "release_approval": false,
+  "packet_path": "C:\\Users\\x8120\\.codex\\article-localization-release\\batch011-korea\\source-correction-review-request-v3.json",
+  "packet_sha256": "81ace8ad10a659cfd6ba5eddd3bfe99dfae02a1d7b2287aea238c8b6f3b14234",
+  "prior_v2_rejection_sha256": "e8a63a506eed1ff98bbcdecceae3e57b1f68f7b9fd0c611cc611f75f798345fb",
+  "base_repo_head": "2c3deadd2efa8ea0890d5c6650fc1aef28cf0394",
+  "live_snapshot_captured_at": "2026-09-20T16:18:51.544087+00:00",
+  "audits": [
+    {
+      "slug": "jeju-car-rental-guide",
+      "base_pack_sha256": "9657d37835c9bd07edd92f480e7148408a25ce77d2c8afe1bb53b5fd10e2ba48",
+      "candidate_pack_sha256": "8203ced993f6e3e0e24172136a48b69bf03ea3adacf5ee9d6c50f410ba7cdf14",
+      "published_version": 6,
+      "published_sha256": "2610fc945b0e6cb47ff4939c26a324737e5ed2b186b3b57ad458984f71d5ab31",
+      "changed_pointers": [
+        "/locales/zh-TW/blocks/13/description",
+        "/locales/zh-TW/blocks/8/text",
+        "/locales/zh-TW/sources/4/title",
+        "/locales/zh-TW/sources/5/title",
+        "/locales/zh-TW/sources/8",
+        "/locales/zh-TW/sources/9"
+      ],
+      "base_vs_live_empty_description_pointers": [
+        "/blocks/14/description",
+        "/blocks/17/description"
+      ]
+    },
+    {
+      "slug": "nami-island-petite-france-day-trip",
+      "base_pack_sha256": "621bcac67670dd60b48e9294ae28ec1a0ccba11aebabda4f6fd95094175e8ab3",
+      "candidate_pack_sha256": "92c11a0e438c384646eb2c5ddf3a1268ed4b110f83c23fa447d575d0e55ca2d5",
+      "published_version": 6,
+      "published_sha256": "e9e7db7d4e3776310ae21baa0b9d1b3b2570fba81eba45f785120b136651eb4f",
+      "changed_pointers": [
+        "/locales/zh-TW/blocks/24/text"
+      ],
+      "base_vs_live_empty_description_pointers": [
+        "/blocks/19/description",
+        "/blocks/22/description"
+      ]
+    },
+    {
+      "slug": "seoul-where-to-stay",
+      "base_pack_sha256": "3c45be4a292ad176e187171b69cc66e0542c1eba804f7a66798072a9c5e331d9",
+      "candidate_pack_sha256": "3c45be4a292ad176e187171b69cc66e0542c1eba804f7a66798072a9c5e331d9",
+      "published_version": 6,
+      "published_sha256": "288e9bc10a2b14dc8f34aa31316168befb1f224fade50b13b5865b541c810cd0",
+      "changed_pointers": [],
+      "base_vs_live_empty_description_pointers": [
+        "/blocks/10/description",
+        "/blocks/15/description"
+      ]
+    }
+  ],
+  "svg": {
+    "path": "apps/web/public/guides/jeju-car-rental-guide/diagram-1.svg",
+    "base_sha256": "95e21d110d2dc9cd4234a9880bd5a54eb8326dfd0ae882d0496ac0a8c4b7a5b9",
+    "candidate_sha256": "baf9e3a32cc75e52a243392320b516fdd5872ed1da4c8653c24e9d53386340a7",
+    "visible_insurance_lines": [
+      "    <text x=\"84\" y=\"720\">\u25cf \u96f6\u81ea\u8ca0\u984dCDW\uff0b\u570b\u7522\u8eca\uff1a\u514d\u505c\u99db\u8cbb</text>",
+      "    <text x=\"84\" y=\"756\">\u25cf Solati\u9664\u5916\uff1b\u542b\u8f2a\u80ce\u8f2a\u5708\uff0c\u5176\u9918\u770b\u5408\u7d04</text>"
+    ]
+  },
+  "verified_claims": [
+    {
+      "id": "jeju-zero-excess-condition",
+      "evidence_url": "https://lotterentacar.net/hp/eng/reservation/shortInfo/pay.do",
+      "finding": "Candidate now explicitly conditions Jeju downtime-compensation waiver on Zero Excess CDW enrollment, Korean-brand vehicle, and Hyundai Solati exclusion in body, image description, source title, SVG description, and visible SVG text."
+    },
+    {
+      "id": "jeju-insurance-scope",
+      "evidence_urls": [
+        "https://www.lotterentacar.net/hp/eng/carLife/jejuAuto.do",
+        "https://www.lotterentacar.net/hp/eng/info/engFaqList.do?mnCd=T2ME0401"
+      ],
+      "finding": "Jeju Auto House Full Exemption includes tire and wheel damage; imported-vehicle 300,000 KRW excess in FAQ is not applicable to Jeju. Candidate distinguishes competing official scope wording and directs reader to vehicle quote and agreement."
+    },
+    {
+      "id": "taiwan-idp",
+      "evidence_url": "https://lotterentacar.net/hp/eng/usertip/jeju-car-rental-guide.do",
+      "finding": "LOTTE acknowledges Taiwan-issued IDPs under bilateral agreement; added source title and URL match this claim."
+    },
+    {
+      "id": "nami-railpark",
+      "evidence_urls": [
+        "https://www.railpark.co.kr/course/gapyeong/schedule",
+        "https://www.railpark.co.kr/course/gimyujeong/schedule"
+      ],
+      "finding": "Gapyeong third departure is 13:30; both courses refund 50% for departure-day cancellation at least one hour before and none later/no-show. Changed paragraph correctly limits refund statement to departure day."
+    }
+  ],
+  "limits": [
+    "This approves only the exact source-correction fields and SVG hashes listed, not future translations or publication.",
+    "Earlier Rail Park cancellation windows are not summarized in the corrected paragraph; no full-policy approval is implied.",
+    "Gapyeong tourist-bus A/B image timetable and stop times were not visually rechecked; no such time was changed.",
+    "Formal pack lint and render assertions were author-reported, not independently rerun here. Fresh live-state check is required before publication."
+  ]
+}
