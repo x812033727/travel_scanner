@@ -1,0 +1,696 @@
+{
+  "slug": "ai-news-openai-frontier-standards-20260921",
+  "vertical": "ai",
+  "display_order": 172,
+  "event_date": "2026-09-21",
+  "event_date_basis": "頁面本身只印日期不印時刻：Next.js payload 的 publicationDateText 與 publicationDate 都是 \"September 21, 2026\"，全份 HTML 沒有 JSON-LD 的 datePublished／dateModified，也沒有 article:published_time；HTML 裡僅有的三個 ISO dateTime（2026-09-10T00:00:00-07:00、2026-09-16T09:00、2026-09-16T16:00:00Z）屬於頁尾 Keep reading 的三張卡片，不是這一篇。時刻另從 OpenAI 官方新聞 feed https://openai.com/news/rss.xml 取得：該篇 item 的 pubDate 是 \"Mon, 21 Sep 2026 10:00:00 GMT\"，換算台北時間為 2026 年 9 月 21 日 18 時，仍在 9 月 21 日之內，因此事件日 = 2026-09-21，與 ASSIGNMENTS.md 與 DELTA-4-7 第 5 條的表一致。這不是佔位時刻（10:00 GMT 不是 00:00／16:00 那種整點排程佔位的型態，同日其他四篇的 pubDate 分別是 00:00、07:00、12:00、12:00 GMT），而且換算後不跨日，所以沒有 4.6 第 7 條那類爭議。正文可以寫「台北時間 9 月 21 日晚上 6 點」，也可以只寫日期；slug 後綴、news_date、正文第一段一律 2026-09-21。",
+  "title": "OpenAI 主張美國帶頭訂前沿 AI 國際標準：兩個支柱與一條界線",
+  "title_candidates": [
+    "OpenAI 主張美國帶頭訂前沿 AI 國際標準：兩個支柱與一條界線",
+    "OpenAI 談前沿 AI 國際標準：標準不是許可證，各國自己決定要不要入法",
+    "OpenAI 公布國際標準主張：RSI 要怎麼管、名單上有哪些國家"
+  ],
+  "summary": "OpenAI 於 2026 年 9 月 21 日在官網 Global Affairs 分類發表〈Building standards for the next phase of AI〉，主張由美國帶頭、與世界各國合作制定前沿 AI 的全球技術標準，其中包含遞迴自我改進（RSI）。文章提出兩個支柱：一是借用各國已成立的 AI 安全研究所網絡，透過 CAISI 與各國產業機構讓國家標準與國際標準互補；二是共同量測與事故通報協定，內容涵蓋 RSI 相關進展的評估、自動化 AI 研究的人類監督時機，以及事故分級與通報門檻。文章同時劃出界線：這些技術標準不是許可證、不是強制上市前審查、也不是模型核准要求，各國政府自行決定要不要、以及如何把它們納入自己的法律體系。關於 RSI，OpenAI 寫的是「完全自主的 RSI 今天沒有發生，而且在能安全進行之前不應該做」。這是一份政策主張，沒有任何時程、主辦機構或文本，公告也沒有提到台灣。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "OpenAI：Building standards for the next phase of AI",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "publisher": "OpenAI（Global Affairs）",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:27+08:00",
+      "http_status": 200,
+      "bytes": 418012,
+      "verbatim_quote": "That is why we believe the United States should lead an effort to work together with countries around the world to develop global technical standards for frontier AI, including for RSI."
+    },
+    {
+      "title": "OpenAI 官方新聞頻道 RSS（本篇 item 的 pubDate 紀錄）",
+      "url": "https://openai.com/news/rss.xml",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:36+08:00",
+      "http_status": 200,
+      "bytes": 741570,
+      "verbatim_quote": "Mon, 21 Sep 2026 10:00:00 GMT"
+    },
+    {
+      "title": "NIST：International Network for Advanced AI Measurement, Evaluation, and Science Publishes Consensus Areas on Practices for Automated Evaluations",
+      "url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+      "publisher": "美國國家標準暨技術研究院（NIST）／Center for AI Standards and Innovation（CAISI）",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:29+08:00",
+      "http_status": 200,
+      "bytes": 85196,
+      "verbatim_quote": "The International Network was founded by the Center for AI Standards and Innovation (CAISI) in November 2024 and focuses on strengthening the science that underpins AI evaluation."
+    },
+    {
+      "title": "OpenAI：Research acceleration: The view inside OpenAI（公告點名的第一份貢獻）",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:32+08:00",
+      "http_status": 200,
+      "bytes": 2314636,
+      "verbatim_quote": "By sharing these early results and the methods behind them, we aim to inform the public, encourage a norm of public disclosure, and help the field move toward shared standards of measurement."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條來源都在 2026-09-23 台北時間 00:27–00:36 之間以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 重抓、同一主機間隔 ≥1 秒，並逐條讀到正文，不是只看狀態碼。原始 body 存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\ai-news-openai-frontier-standards-20260921\\（*.html 為原檔，*.txt 為抽取後的可讀文字）。(1) openai.com/index/building-standards-next-phase-ai/ 回 200／418,012 bytes，與 ASSIGNMENTS.md 探索紀錄的 bytes 完全相同；本輪沒有遇到 openai.com/index/* 的 403。抽取後正文 13,614 字元，五個小節標題依序是 RSI、International standards、(1) A mechanism that facilitates complementary national and international frontier standards、(2) Common measurements and incident reporting protocols for better collective action、The United States should lead。引用前先 replace('<!-- -->','') 再 html.unescape；所有 verbatim_quote 都已用程式確認是「去掉 <!-- --> 並 unescape 後的原始 HTML」的連續子字串，凡是跨 <a>／<strong> 標籤的句子一律裁短成不跨標籤的片段。(2) openai.com/news/rss.xml 回 200／741,570 bytes、1,215 個 item，其中 link 為 https://openai.com/index/building-standards-next-phase-ai 的那一則 pubDate 是 Mon, 21 Sep 2026 10:00:00 GMT、category 是 Global Affairs。(3) www.nist.gov 那一頁回 200／85,196 bytes，正文讀到（頁面自印 February 13, 2026 與 Released February 13, 2026）；這一頁是從一手來源正文裡「International Network for Advanced AI Measurement, Evaluation, and Science」的超連結點過去的，不是猜的網址。(4) openai.com/index/research-acceleration-view-inside-openai/ 回 200／2,314,636 bytes，頁面自印 September 6, 2026，文字段落讀得到，但頁內圖表由前端載入、只留「View methods」字樣，圖表數字沒有讀到。另外四個站內連結（/index/model-misalignment-reporting-framework/、/index/hugging-face-incident-and-the-road-ahead/、/collective-cyberdefense/、cdn.openai.com 的 a-blueprint-for-a-federal-framework.pdf）本輪刻意沒有抓，理由寫在 unverified_or_excluded。全程沒有使用 WebSearch，也沒有在任何請求的 UA、標頭、查詢字串或表單放入任何人的姓名或 email。",
+  "verified_facts": [
+    {
+      "fact": "OpenAI 在 2026 年 9 月 21 日於官網 Global Affairs 分類發表這篇文章；頁面只印日期、不印時刻。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 21, 2026"
+    },
+    {
+      "fact": "OpenAI 官方新聞 feed 把這一篇的發布時刻記為格林威治時間 2026 年 9 月 21 日 10 時，換算台北時間是同日 18 時。",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mon, 21 Sep 2026 10:00:00 GMT"
+    },
+    {
+      "fact": "全篇的核心主張：OpenAI 認為美國應該帶頭，與世界各國合作制定前沿 AI 的全球技術標準，其中包含 RSI。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "That is why we believe the United States should lead an effort to work together with countries around the world to develop global technical standards for frontier AI, including for RSI."
+    },
+    {
+      "fact": "OpenAI 對 RSI 現況的官方說法（語氣要照抄）：完全自主的 RSI 今天沒有發生，而且在能安全進行之前不應該做。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Fully autonomous RSI is not happening today, and we should not pursue it unless and until it can be done safely."
+    },
+    {
+      "fact": "OpenAI 對 RSI 的定義寫法：AI 系統承擔越多開發下一代 AI 的工作，就越可能推動一個遞迴自我改進的過程，即使人仍然參與其中。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As AI systems take on more of the work of developing successive generations of AI, they can increasingly drive a process of recursive self-improvement (RSI), even while people remain involved."
+    },
+    {
+      "fact": "OpenAI 寫出 RSI 若未謹慎進行的具體後果：人類可能失去對 AI 開發的實質控制，無法對自己已經看不懂的研究過程提供監督。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Done without appropriate care and caution, RSI could result in humans losing practical control over AI development, unable to provide oversight on research processes they no longer understand."
+    },
+    {
+      "fact": "OpenAI 也寫明 RSI 可能加速 AI 研究本身，超出集體理解進展、評估風險與維持有意義人類監督的能力。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "RSI has the ability to accelerate AI research itself, potentially beyond our collective ability to understand progress, assess risks, and maintain meaningful human oversight."
+    },
+    {
+      "fact": "OpenAI 主張：前沿 AI 開發的安全與資安實務國際標準，對於 pacing the frontier 的重要性可能不亞於對齊研究本身。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "International standards for safety and security practices in frontier AI development may be as important to pacing the frontier as alignment research itself."
+    },
+    {
+      "fact": "OpenAI 說明標準能做什麼：建立高品質證據的共同定義，以及技術防護嚴謹程度的共同基準。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Standards can create shared definitions of high-quality evidence and agreed-upon baselines for the rigor of technical safeguards."
+    },
+    {
+      "fact": "OpenAI 用一句話概括標準要回答的問題：在減輕災難性 AI 風險這件事上，做得好長什麼樣子。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In short, they help us answer the question, “What does good look like in the mitigation of catastrophic AI risk?”"
+    },
+    {
+      "fact": "需要國際努力才解得開的三個問題之一是分裂：各國的評估、通報要求與事故定義可能互相衝突，讓證據難以比較、新出現的能力難以理解、跨境風險難以回應。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Evaluations, reporting requirements, and incident definitions by different nations could conflict, making it harder to compare evidence, understand emerging capabilities, and respond to risks that cross borders."
+    },
+    {
+      "fact": "三個問題之二是集體行動：各國各自行動可能產生沒有任何一國想要的結果。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Each nation acting independently can produce outcomes that no nation wants."
+    },
+    {
+      "fact": "三個問題之三是能力分布不均：前沿開發活動與相關專業並不平均分布在世界各地。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The activity of frontier development and related expertise is not evenly distributed across the world."
+    },
+    {
+      "fact": "OpenAI 明寫這三個問題對開放模型與封閉模型都適用。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These challenges apply to both open and closed models."
+    },
+    {
+      "fact": "OpenAI 說明自己主張標準的理由是避免權力集中，並產生更好的實際結果。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our rationale for standards is rooted in avoiding the concentration of power, and producing better practical outcomes."
+    },
+    {
+      "fact": "OpenAI 同時寫明：任何做自動化 AI 研究或其他先進能力的 AI 實驗室，都必須依自我負責的基本原則與現行法律，為安全進行這件事負起責任。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "any AI lab that pursues automated AI research or other advanced capabilities must take accountability for doing so safely, in accordance with basic principles of self-responsibility and existing laws."
+    },
+    {
+      "fact": "OpenAI 自己寫明這個構想會隨時間大幅演變，但有兩個面向是必要的——這就是文章的兩個支柱。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "While we expect this concept to evolve substantially over time, two aspects will be essential."
+    },
+    {
+      "fact": "支柱一的標題：一個讓國家標準與國際標準互補的機制。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "(1) A mechanism that facilitates complementary national and international frontier standards"
+    },
+    {
+      "fact": "支柱一的做法：借用正在成形的 AI 安全研究所網絡；OpenAI 點名澳洲、加拿大、德國、法國、肯亞、日本、韓國、新加坡、印度與英國已經成立。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "such as those already established in Australia, Canada, Germany, France, Kenya, Japan, Korea, Singapore, India, and the United Kingdom"
+    },
+    {
+      "fact": "支柱一的兩個聚焦點：以能力基準衡量的前沿 AI 模型與開發者，以及自動化 AI 研究（含 RSI）的利益與風險管理。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "with a specific focus on (1) frontier AI models and developers, as measured by capability benchmarks; and (2) benefit-risk management for automated AI research, including RSI."
+    },
+    {
+      "fact": "OpenAI 主張美國可以接著 CAISI 創立的「International Network for Advanced AI Measurement, Evaluation, and Science」往下做。原句被超連結切成兩段，這是前半。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The United States can build upon CAISI’s creation of the"
+    },
+    {
+      "fact": "同一句的後半：OpenAI 寫這個網絡創立於 2024 年，目的是讓公共機構在 AI 量測、評估與科學上合作。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "in 2024, bringing together public institutions to cooperate on AI measurement, evaluation, and science."
+    },
+    {
+      "fact": "這個「國際網絡」確實存在，由 CAISI 在 2024 年 11 月創立、聚焦強化支撐 AI 評估的科學——這一條由 NIST 官方頁面證實，不是只有 OpenAI 的說法。",
+      "url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The International Network was founded by the Center for AI Standards and Innovation (CAISI) in November 2024 and focuses on strengthening the science that underpins AI evaluation."
+    },
+    {
+      "fact": "NIST 這一頁（自印 February 13, 2026）寫這個網絡由十個國家的政府機關組成，列出澳洲、加拿大、歐盟、法國、日本、肯亞、大韓民國、新加坡、英國與美國；這份清單和 OpenAI 文中那份 AI 安全研究所清單不相同。",
+      "url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It is comprised of government bodies from ten countries including Australia, Canada, the European Union, France, Japan, Kenya, the Republic of Korea, Singapore, the United Kingdom, and the United States."
+    },
+    {
+      "fact": "CAISI 設在 NIST 之內，2025 年 6 月由美國商務部長 Howard Lutnick 交付任務：發展量測與提升 AI 系統安全的指引與最佳實務，並協助產業發展自願性標準。",
+      "url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In June 2025, Secretary of Commerce Howard Lutnick charged the Center for AI Standards and Innovation (CAISI) within NIST with developing guidelines and best practices to measure and improve the security of AI systems and assist industry to develop voluntary standards."
+    },
+    {
+      "fact": "NIST 頁面自印的發布日期是 2026 年 2 月 13 日。",
+      "url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Released February 13, 2026"
+    },
+    {
+      "fact": "這個網絡目前在做的事情之一，是 2026 年 2 月 13 日公布一份自動化 AI 評估的關鍵實務與待解問題清單；CAISI 表示討論會繼續，包括在 India AI Impact Summit 上。",
+      "url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As International Network discussions continue, including at the India AI Impact Summit, CAISI will continue to advocate for U.S. interests and for international approaches to AI evaluation that reflect gold-standard measurement science."
+    },
+    {
+      "fact": "這條機制產出的標準要提供的是共同技術基礎：能力量測與評估、風險評估、防護是否足夠。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Standards developed by this effort would provide a common technical foundation for capability measurement and evaluation, risk assessment, and safeguard sufficiency."
+    },
+    {
+      "fact": "本篇最重要的界線：這些技術標準不是許可證、不是強制上市前審查、也不是 AI 模型的核准要求；各國政府自行決定要不要、以及如何把這些標準納入自己的法律體系。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These technical standards would not be licenses, mandatory prerelease review, or approval requirements for AI models. National governments would decide whether and how to incorporate these standards into their own legal systems."
+    },
+    {
+      "fact": "OpenAI 主張制定過程要諮詢開放模型與封閉模型開發者、獨立技術專家與學界，以支持有競爭力的 AI 生態系。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This work should also support a competitive AI ecosystem by consulting open model and closed model developers, independent technical experts, and academia."
+    },
+    {
+      "fact": "OpenAI 主張標準要透明制定，設計上不得圖利特定公司、國家或商業模式，包括不得讓新進者或開放權重開發者更難競爭。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Common standards should be developed transparently and designed so that they do not advantage particular companies, countries, or business models, including by making it harder for new entrants or open-weight developers to compete."
+    },
+    {
+      "fact": "OpenAI 主張標準讓實驗室以外的更多利害關係人有發言權，也提供一套不必依賴任何單一實驗室作法的公開原則。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Standards provide a way for more stakeholders outside of the labs to have a say in how this technology should unfold, and a visible set of principles that can be relied on irrespective of the specific practices of any particular lab."
+    },
+    {
+      "fact": "OpenAI 舉的類比是航空與金融穩定：各國發展出共同技術標準與可信賴的合作管道，同時沒有放棄國家主管權。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "this approach can draw lessons from areas such as aviation and financial stability, where countries have developed common technical standards and trusted channels for cooperation without giving up national authority."
+    },
+    {
+      "fact": "OpenAI 認為這件事也應該和既有與新興的標準組織密切合作。原句被超連結切開，這是不跨標籤的片段；被點名的依序是 ISO、Frontier Model Forum、Agentic AI Foundation、Open Secure AI Alliance。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It should also work closely with established and newer standards bodies such as "
+    },
+    {
+      "fact": "OpenAI 形容 Appia Foundation 在做的事：發展把國際標準與真實世界 AI 評估接起來的實務規格。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "which is developing practical specifications that connect international standards with real-world AI assessments."
+    },
+    {
+      "fact": "支柱二的標題：為了更好的集體行動而設的共同量測與事故通報協定。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "(2) Common measurements and incident reporting protocols for better collective action"
+    },
+    {
+      "fact": "OpenAI 寫明支柱二在管理 AI 研究自主程度與遞迴自我改進上特別關鍵。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "International AI standards will be particularly crucial in managing increasing autonomy in AI research and recursive self-improvement."
+    },
+    {
+      "fact": "支柱二的第一個標準方向：評估與 RSI 相關的 AI 進展，以及一家 AI 公司內部有多少研究是自動進行的。OpenAI 說自己近期的研究加速報告是這個方向的第一份貢獻。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Evaluation of RSI-relevant AI progress and the amount of autonomous research happening within an AI company."
+    },
+    {
+      "fact": "支柱二的第二個標準方向：對自動化 AI 研究的人類監督，包括哪些自動化研究流程應該立刻觸發人工檢視。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Human oversight over automated AI research, including what kinds of automated AI research processes should trigger immediate human review."
+    },
+    {
+      "fact": "支柱二的第三個標準方向：事故的分類、追蹤、通報與回應，例如共同的事故嚴重程度分級與通報門檻。OpenAI 說自己的失準通報框架是這個方向的早期貢獻。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Incident classification, tracking, reporting, and responding for alignment and automated AI research issues, such as common incident severity levels and reporting thresholds."
+    },
+    {
+      "fact": "OpenAI 被點名為第一份貢獻的那份報告確實存在，頁面自印 2026 年 9 月 6 日，標題是 Research acceleration: The view inside OpenAI。",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 6, 2026"
+    },
+    {
+      "fact": "那份報告自己寫明目的之一就是推動整個領域走向共同的量測標準，和這篇公告的支柱二對得起來。",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By sharing these early results and the methods behind them, we aim to inform the public, encourage a norm of public disclosure, and help the field move toward shared standards of measurement."
+    },
+    {
+      "fact": "那份報告也寫明 OpenAI 認為自己與其他公司「應該被要求」公開追蹤自己的 RSI 進展；這可與本篇「標準不是許可證」並置，顯示 OpenAI 主張的規範密度落在哪裡。",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we believe that we and other companies should be required to publicly track our progress toward RSI."
+    },
+    {
+      "fact": "除了標準之外，OpenAI 認為關鍵基礎設施營運者與各國政府應建立安全的溝通管道，分享國安疑慮、新出現的弱點與威脅，以及前沿 AI 安全的最佳實務。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In addition to these standards, we believe it will be important for critical infrastructure operators and governments worldwide to establish secure channels of communication to share national security concerns, emerging vulnerabilities and threats, and best practices in the fast-evolving field of frontier AI safety."
+    },
+    {
+      "fact": "OpenAI 對美中對話的措辭：兩國在這些領域的對話會是正面的一步，而且即將到來的會談時機正好。原文沒有寫日期、層級或與會者。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Dialogue between the United States and China in these areas would be a positive step, and upcoming talks are happening at an opportune time."
+    },
+    {
+      "fact": "OpenAI 對 pacing 的定義：不是維持某個預定速度，而是確保對齊研究與其部署走在能力前面。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pacing AI development is not about maintaining a predetermined speed."
+    },
+    {
+      "fact": "OpenAI 認為美國適合帶頭的理由：美國 AI 產業站在技術前沿，且在金融、貿易、國防、科技與資訊系統等關鍵領域仍具備全球網絡位置優勢。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The United States is well positioned to lead because its AI industry is at the technical frontier"
+    },
+    {
+      "fact": "OpenAI 把不帶頭的後果寫成二選一：美國要嘛形塑全球 AI 架構，要嘛眼看一個分裂、不均、充滿衝突的體系在自己周圍成形。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Leading now will determine whether the United States shapes the global AI framework or watches a fragmented, uneven, and conflict-ridden system take hold around it."
+    },
+    {
+      "fact": "全文的收尾主張：強健的國家治理，透過務實的國際合作連結起來，能通往更強的防護、持續的創新，以及廣泛取得 AI 的好處。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Strong national governance, connected through practical international cooperation, offers a path to stronger safeguards, continued innovation, and broad access to the benefits of AI."
+    },
+    {
+      "fact": "OpenAI 也點名既有的民主制度可以幫上忙：CAISI、州法，以及一套聯邦層級的 AI 框架。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Existing democratic institutions like the Center for AI Standards and Innovation (CAISI), state laws, and a federal framework for AI can all help with this"
+    },
+    {
+      "fact": "OpenAI 把「持續進展要安全又有益」拆成兩個並列條件：對齊研究的進展，以及跨實驗室、跨國家的共同標準。",
+      "url": "https://openai.com/index/building-standards-next-phase-ai/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Making continued AI progress safe and beneficial will require both advances in alignment research and shared standards to guide development across labs and countries."
+    }
+  ],
+  "not_said": [
+    "沒有任何時程：公告沒有寫這套國際標準什麼時候開始談、什麼時候要有第一版文本，也沒有任何截止日或啟動日。",
+    "沒有指定主辦機構：只寫「借用正在成形的 AI 安全研究所網絡」「透過 CAISI 與各國產業機構」，沒有說由誰主辦、誰擁有這套標準、誰負責維護。",
+    "沒有寫法律效力與違反後果：沒有寫標準是否具拘束力，也沒有寫不遵守會怎樣（全篇未見 binding、treaty 字樣）。",
+    "沒有給「前沿 AI 模型」的門檻：只寫「以能力基準衡量」，沒有任何算力、參數、營收或死傷金額的數字門檻。",
+    "沒有提到台灣：以這一頁的原始 HTML 查核到 2026-09-23，未見 Taiwan、Taipei 或台灣字樣；NIST 那一頁與研究加速那一頁也同樣未見。",
+    "沒有提到歐盟《人工智慧法》：公告全篇未見 EU AI Act、European Union、Europe 字樣（只有國家層級的德國、法國出現在 AI 安全研究所清單裡）。",
+    "沒有寫美中會談的日期、層級或與會者，只寫「即將到來的會談時機正好」。",
+    "沒有說 OpenAI 已經把這套構想正式提案給任何政府，也沒有說有任何政府已經回應或同意。",
+    "沒有經費、人力或預算數字，全篇沒有任何金額。",
+    "沒有宣布任何 ChatGPT 或其他產品端的變化，也沒有提到定價、方案或功能。",
+    "沒有說這套國際標準與 OpenAI 自己 2026 年 5 月 28 日的《前沿治理框架》是什麼關係。",
+    "沒有寫哪些現有標準會被取代或整併，也沒有寫各國現行規定要怎麼銜接。"
+  ],
+  "unverified_or_excluded": [
+    "OpenAI 列的十個「已經成立」的 AI 安全研究所（澳洲、加拿大、德國、法國、肯亞、日本、韓國、新加坡、印度、英國）本站沒有逐國查證機構是否存在、正式名稱為何；這是 OpenAI 的敘述，正文一律寫「OpenAI 點名」。",
+    "NIST 頁的十國成員清單（含歐盟與美國，但沒有德國與印度）是該頁 2026 年 2 月 13 日發布時的狀態；本站沒有查到更新版名冊，不可寫成「目前的成員」。兩份清單的差異本站只做並列，沒有查證原因。",
+    "ISO 委員會、Frontier Model Forum、Agentic AI Foundation、Open Secure AI Alliance、Appia Foundation 這五個組織的現況、成員與產出，本站都沒有查證，只寫「公告點名了它們」。",
+    "「informed democratic choices」連到 cdn.openai.com 的 a-blueprint-for-a-federal-framework.pdf，本輪沒有下載，PDF 內容一個字都不得引用。",
+    "「The recent call for collective action on cyber defense」連到 openai.com/collective-cyberdefense/，本輪沒有讀，內容不得引用。",
+    "「The Hugging Face Incident we disclosed」連到 openai.com/index/hugging-face-incident-and-the-road-ahead/，本輪沒有讀；事件本身不得在這篇展開（站上已有 ai-news-nvidia-hugging-face-20260903 寫過 Hugging Face 端的資安事件說明）。",
+    "「Our misalignment reporting framework」連到 openai.com/index/model-misalignment-reporting-framework/，本輪刻意沒有抓——那是第二個結尾連結那篇的題目，這篇只引本頁那一句。",
+    "研究加速報告頁的互動圖表由前端載入，本站只讀到文字段落；圖表內的數字、以及該報告文字段落裡的營運數字（每日 API 價格金額、代理與人力工作日比例、自動化研究員的時程目標）一律不得寫進這篇。",
+    "「As outlined recently by Sam Altman and Jakub Pachocki」所指的兩篇（/index/built-to-benefit-everyone-our-plan/、/index/an-alien-mind/）本輪沒有讀，三個目標只能照本頁的敘述寫，不可補充那兩篇的內容。",
+    "本站沒有查到任何政府、國際組織或其他實驗室對這份主張的回應；正文不得寫「獲得支持」「引發批評」這類轉述。",
+    "NIST 頁引用的英國 AISI 部落格（aisi.gov.uk）本輪沒有讀，該連結的內容不得引用。",
+    "OpenAI 寫國際網絡創立於「2024」，NIST 寫的是 2024 年 11 月；本站採 NIST 的月份，但沒有查證兩者是否指同一個成立時點以外的任何事。"
+  ],
+  "live_data_warnings": [
+    "openai.com/news/rss.xml 是活資料：2026-09-23 抓到 1,215 個 item，筆數與排序每天都會變。正文只能引用這一則的 pubDate（Mon, 21 Sep 2026 10:00:00 GMT），不可印 feed 的筆數，也不可寫「最新一則是⋯⋯」。",
+    "NIST 那一頁的成員國清單是 2026 年 2 月 13 日發布時的狀態，不是即時名冊；要寫就要一起寫上該頁日期，不可寫成「現在有十國」。",
+    "OpenAI 公告頁尾的「Keep reading」區塊（本輪抓到的是 9/16、9/16、9/10 三張卡片）會隨時間換內容，不屬於這篇，不得引用。",
+    "研究加速頁的圖表以 JavaScript 載入，每次抓到的 HTML 不保證一致；只引該頁的文字段落。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "ai-news-openai-misalignment-reports-20260917",
+      "title": "OpenAI 公布失準通報框架：6 份報告都出自訓練階段",
+      "already_says": "OpenAI 失準通報框架的內容、同日 6 份個案報告（全部出自強化學習訓練階段、5 份是內部未釋出模型）、2.15% 與 0.27% 兩個比率與 20% 抽樣、從內部提報到安全諮詢小組（SAG）的三條分軌流程，以及 OpenAI 表示重大事故應讓美國聯邦政府知道、正在研擬通報機制。",
+      "boundary": "那一篇寫「已經通報了什麼」。這一篇只能引本頁那一句（Our misalignment reporting framework is an early contribution），用一句話說明它被列為支柱二的早期貢獻，然後把連結交給讀者。不得重述 6 份報告、兩個比率、SAG、三條分軌，也不得重述框架本身的流程。"
+    },
+    {
+      "slug": "ai-news-pace-the-frontier-20260912",
+      "title": "Amodei 呼籲放慢前沿 AI：〈We Must Pace the Frontier〉的主張與界線",
+      "already_says": "Anthropic 執行長 Amodei 的個人倡議：pacing 的定義、三步驟計畫（常駐外部評估者、民主國家間協調共同安全標準與未受節制進展的速度上限、與威權國家政府協調）、遞迴自我改進的解釋，以及 Altman、Hassabis、Musk 在 X 上的回應（含 Altman 說 OpenAI 也會讓獨立評估者取得接近員工的存取權）。",
+      "boundary": "那一篇是「Anthropic 的主張」，而且已經把 RSI 是什麼、為什麼要放慢解釋過一輪。這一篇是 OpenAI 自己的公司立場與制度設計：不得重講 Amodei 的三步驟、常駐評估者承諾或三人回應，也不得把這一篇寫成「OpenAI 回應 Amodei」（本頁從頭到尾沒有提到 Amodei 或 Anthropic）。RSI 的解釋要短，只保留本頁原文的定義與「完全自主的 RSI 今天沒有發生」。兩篇都出現 pacing the frontier 這個詞，但這一篇要落在「制度長什麼樣」，不是「該不該放慢」。"
+    },
+    {
+      "slug": "ai-news-frontier-governance-20260528",
+      "title": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
+      "already_says": "OpenAI 2026 年 5 月 28 日的 22 頁《前沿治理框架》：同時對應加州《前沿人工智慧透明法》與歐盟《通用人工智慧行為準則》、50 人／10 億美元的風險門檻、四類風險三級分級、每 12 個月總檢視、加州每項違規 100 萬美元罰鍰上限，以及該文件未提到台灣。",
+      "boundary": "那一篇寫的是 OpenAI 對自己的內部框架與既有法規的對應。這一篇寫的是 OpenAI 對「國際之間」該建立什麼的主張：不得重述 50 人／10 億美元門檻、加州 SB 53、歐盟行為準則或四類風險分級。本頁提到 a federal framework for AI 時只能照原文一句帶過，不可以拿那一篇的內容來補。"
+    },
+    {
+      "slug": "ai-news-anthropic-pace-metrics-20260917",
+      "title": "Anthropic 公布三項前沿 AI 指標：26% 是「主導」不是「自主」",
+      "already_says": "Anthropic 公布研發自動化程度、代理人監督與安全算力占比三項指標，26%「主導」的定義與限制，以及這些數字目前由 Anthropic 自行量測、外部評估者還在建立中。",
+      "boundary": "那一篇已經把「用指標讓外界追蹤實驗室內部進度」這個做法講完了。這一篇提到支柱二第一項（評估 RSI 相關進展與公司內部自動化研究的量）時，不得拿 Anthropic 的 26%、6%、12% 來對照或補充，也不要把兩家的指標做比較——來源裡沒有這種比較。"
+    },
+    {
+      "slug": "ai-news-anthropic-accenture-evaluation-20260918",
+      "title": "Anthropic 與 Accenture 合作常駐評估：有了對象與金額，還沒有標準",
+      "already_says": "Anthropic 與 Accenture／Faculty 的常駐評估合作、兩家各自五年至少 10 億美元、非獨家，以及公告自陳常駐評估者的資訊範圍與回報方式都還沒有標準。",
+      "boundary": "那一篇的收尾正好是「還沒有標準」。這一篇不得接著寫「所以 OpenAI 來補這個標準」——兩份來源之間沒有這層因果，寫了就是編輯推論。也不得提 Accenture／Faculty 或那筆金額。"
+    },
+    {
+      "slug": "ai-news-nvidia-hugging-face-20260903",
+      "title": "NVIDIA 宣布收購 Hugging Face：公告之外，還有哪些沒說明？",
+      "already_says": "NVIDIA 收購 Hugging Face 的公告內容，以及末節整理的 Hugging Face 2026 年 7 月資安事件與其技術時間線。",
+      "boundary": "本頁有一句提到 The Hugging Face Incident we disclosed。這一篇最多照原文寫「OpenAI 說那起事件不是 RSI 直接造成的，但預示了缺乏防護與對齊時風險的樣子」，不得展開事件經過、時間線或收購案。"
+    },
+    {
+      "slug": "ai-regulation-eu-act-taiwan",
+      "title": "歐盟 AI 法案與台灣 AI 基本法：對使用者的影響",
+      "already_says": "歐盟《人工智慧法》的四層風險、第 50 條透明度義務與罰則，以及台灣《人工智慧基本法》民國 115 年 1 月 14 日公布全文 20 條、數位發展部的 AI 風險分類框架。",
+      "boundary": "這一篇寫「各國政府自行決定要不要把標準寫進自己的法律」時，不得順手解釋台灣或歐盟的法制現況——本紀錄的四條來源沒有一條提到台灣或歐盟 AI 法案。台灣的部分只能寫「以這幾條來源查核到 2026 年 9 月 23 日未見台灣」。"
+    },
+    {
+      "slug": "ai-news-eu-transparency-20260802",
+      "title": "歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？",
+      "already_says": "歐盟 AI 法案透明度要求自 2026 年 8 月 2 日適用、聊天機器人身分告知與深偽標示、台灣創作者該怎麼準備。",
+      "boundary": "同上：這一篇不碰歐盟規則，也不要把「國際標準」和「歐盟已經在管」混在一起寫。"
+    }
+  ],
+  "second_link": {
+    "slug": "ai-news-openai-misalignment-reports-20260917",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-openai-misalignment-reports-20260917",
+    "text": "OpenAI 公布失準通報框架：6 份報告都出自訓練階段",
+    "verified": "2026-09-23 確認 apps/api/app/guides/content/ai-news-openai-misalignment-reports-20260917.json 存在，locales 有 zh-TW／en／ja／ko／zh-CN，zh-TW 的 title 逐字為「OpenAI 公布失準通報框架：6 份報告都出自訓練階段」，與 DELTA-4-7 第 7 條的表完全相同；news_date 2026-09-17、display_order 163。link 的 text 照抄這一串，一個字都不要改。"
+  },
+  "editorial_brief": "角度：這是一份「要建立什麼制度」的政策主張，不是宣布、不是產品、也不是法規。第一段就要讓台灣讀者知道與自己的距離：OpenAI 主張由美國帶頭、由各國的 AI 安全研究所網絡承接，而 OpenAI 點名的十個國家與 NIST 頁上那個國際網絡的十個成員都沒有台灣；標準本身也明講不是許可證、不是上市前審查，各國自己決定要不要入法——換句話說，這件事今天不會改變任何人使用 ChatGPT 的方式，值得追的是「以後拿什麼標準衡量一家實驗室」。建議五節：(1) 9 月 21 日 OpenAI 主張了什麼、為什麼把 RSI 放在最前面（照抄那句「完全自主的 RSI 今天沒有發生，而且在能安全進行之前不應該做」的語氣）；(2) 支柱一：讓國家標準與國際標準互補的機制——AI 安全研究所網絡、CAISI 與 2024 年 11 月創立的國際網絡，這一節結尾放表格，把 OpenAI 的十國清單與 NIST 頁的十個成員並列，讓讀者自己看出兩份名單不一樣、也看出台灣都不在；(3) 支柱二：共同量測與事故通報協定的三個方向，以及 OpenAI 自己已經放上桌的兩份東西（研究加速報告一句、失準通報框架一句加連結），這一節結尾放插圖；(4) 這套標準「不是」什麼：不是許可證、不是強制上市前審查、不是核准要求，不得圖利特定公司／國家／商業模式、不得讓新進者與開放權重開發者更難競爭，並帶上航空與金融穩定的類比；(5) 現在還沒有的東西，與讀者可以自己怎麼追：沒有時程、沒有主辦機構、沒有法律效力、沒有門檻數字，要追就直接看 openai.com 的 Global Affairs 分類與 NIST／CAISI 的頁面。全篇一個 callout：這是一家公司的主張，不是已經成立的制度，公告未提到台灣，本站沒有實測。撰稿代理定稿後要把本紀錄的 `title` 改成內容包 zh-TW 的 title（逐字相同，check_article.py 會比對），`diagram.caption` 也要逐字等於內容包 image 的 caption。",
+  "must_not_write": [
+    "不要寫成「OpenAI 宣布／推出／成立了一套國際標準」。公告只是主張與構想，原文自己寫 while we expect this concept to evolve substantially over time；每個操作性句子都要帶狀態（主張、構想、建議）。",
+    "不要重講 ai-news-openai-misalignment-reports-20260917 的內容（6 份報告、2.15%／0.27%、20% 抽樣、SAG、三條分軌）。最多一句：OpenAI 把自己的失準通報框架列為支柱二的早期貢獻。",
+    "不要重講 ai-news-pace-the-frontier-20260912（Amodei 的三步驟、常駐評估者承諾、Altman／Hassabis／Musk 的回應），也不要把這篇寫成「OpenAI 回應 Amodei」——本頁從頭到尾沒有提到 Amodei 或 Anthropic。",
+    "不要重講 ai-news-frontier-governance-20260528（50 人／10 億美元門檻、加州 SB 53、歐盟行為準則、四類風險三級分級）。",
+    "不要展開 Hugging Face 事件，也不要提 NVIDIA 收購案。",
+    "不要把 OpenAI 那份「已經成立的 AI 安全研究所」十國清單，和 NIST 頁上國際網絡的十個成員清單混為一談或合併成一份。兩份不同：OpenAI 那份有德國與印度、沒有歐盟與美國；NIST 那份有歐盟與美國、沒有德國與印度。要並列就各自標明出處與日期。",
+    "不要寫「台灣沒有加入」「台灣被排除在外」「台灣還沒有 AI 安全研究所」。句型只能是「以這幾條來源查核到 2026 年 9 月 23 日，未見台灣」。",
+    "不要從這四條來源推論台灣的法制狀態，也不要順手解釋《人工智慧基本法》或歐盟《人工智慧法》——來源裡沒有，站上另有專文。",
+    "不要引用研究加速報告的任何營運數字（每日 API 價格金額、代理與人力工作日比例、自動化研究員的時程目標），也不要引用它圖表裡的數字。那是另一則新聞的題材，這篇最多兩句交代它是什麼、日期是 2026 年 9 月 6 日。",
+    "不要把 RSI 寫成「AI 有自我意識」「AI 失控」。照原文寫遞迴自我改進，並且一定要一起寫「完全自主的 RSI 今天沒有發生」這個限定。",
+    "不要寫「美中已經展開對話」「美中將於某日會談」。原文只寫即將到來的會談時機正好，沒有日期、層級或與會者。",
+    "不要把 CAISI 寫成監理機關、發照機關或主管機關。NIST 那一頁寫的是 CAISI 設在 NIST 之內、任務是發展指引與最佳實務並協助產業發展自願性標準。",
+    "不要寫任何投資、估值或購買相關的內容；topics 不加 finance，也不寫投資免責（照 ai.md，AI 篇只放一個一般 callout）。",
+    "正文與 callout 都不要出現「本文」；指涉自己寫「這一篇」，查核日寫成「這一篇的資料在 2026 年 9 月 23 日查核」。description 不寫查證流水帳，最多句尾帶一個「（2026 年 9 月查證）」。",
+    "標題與摘要不要放數字當賣點。這篇唯一穩的數字是國家數與日期，拿國家數當標題會被讀成「已經有十國簽了」。",
+    "不要把兩個支柱的順序或編號改寫成自己的分類。原文自己編了 (1)(2)，照原文的順序與意思寫。",
+    "不要寫「OpenAI 呼籲各國立法」。原文寫的正好相反：National governments would decide whether and how to incorporate these standards into their own legal systems。",
+    "不要把 ISO、Frontier Model Forum、Agentic AI Foundation、Open Secure AI Alliance、Appia Foundation 寫成「已經參與」或「已經合作」。原文寫的是 should also work closely with。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "前沿 AI 國際標準",
+  "diagram": {
+    "title": "OpenAI 的國際標準主張",
+    "caption": "整理自 OpenAI 2026 年 9 月 21 日〈Building standards for the next phase of AI〉，這一篇的資料在 2026 年 9 月 23 日查核。",
+    "nodes": [
+      ["起點", "RSI 尚未完全自主"],
+      ["支柱一", "國家與國際標準互補機制"],
+      ["支柱二", "共同量測與事故通報"],
+      ["界線", "不是許可證或審查"]
+    ]
+  },
+  "suggested_table": {
+    "caption": "兩份清單不是同一份；整理自 OpenAI 2026 年 9 月 21 日公告與 NIST 2026 年 2 月 13 日頁面，這一篇的資料在 2026 年 9 月 23 日查核。",
+    "header": ["清單", "出處與日期", "名單內容", "台灣"],
+    "rows": [
+      ["已成立的 AI 安全研究所", "OpenAI 公告，2026-09-21", "澳洲、加拿大、德國、法國、肯亞、日本、韓國、新加坡、印度、英國", "未見"],
+      ["國際網絡的政府成員", "NIST 頁面，2026-02-13", "澳洲、加拿大、歐盟、法國、日本、肯亞、大韓民國、新加坡、英國、美國", "未見"],
+      ["公告點名的標準組織", "OpenAI 公告，2026-09-21", "ISO、Frontier Model Forum、Agentic AI Foundation、Open Secure AI Alliance、Appia Foundation", "不適用"]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23 台北時間 01:08 把四條 sources 全部重抓一次：curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥2 秒，任何請求的 UA、標頭、查詢字串都沒有放入任何人的姓名或 email。四條都 200 並讀到正文（不是只看狀態碼）：building-standards-next-phase-ai 418,047 bytes、抽取後正文 13,601 字元、五個小節齊全；news/rss.xml 741,570 bytes、1,215 個 item，本篇那一則的 pubDate 是 Mon, 21 Sep 2026 10:00:00 GMT、category Global Affairs；NIST 那一頁 85,197 bytes，自印 February 13, 2026 與 Released February 13, 2026；research-acceleration-view-inside-openai 2,315,095 bytes，自印 September 6, 2026。本輪沒有遇到 openai.com/index/* 的 403。引文比對的方式與研究代理相同：把原始 HTML 去掉 <!-- --> 再 html.unescape，以連續字串比對；sources[] 四條與 verified_facts 51 條的 verbatim_quote 今天全部仍然命中（0 個 MISS）。內容包逐格拆成 109 條主張（title、description、每一段、summary 每一句、表格每一格與 caption、圖解 alt 與 caption、FAQ 每一題答句、callout、兩個結尾連結的 text、四條 sources），逐條回到原文核對。另外做了四個機械檢查：Taiwan／Taipei／台灣／EU AI Act／European Union／binding／treaty 的全文掃描、公告內所有超連結的 href 與錨文字對照（確認『Our recent report』就是研究加速報告、『Global Affairs』連到 /news/global-affairs/）、兩個結尾連結 text 與目標內容包 zh-TW title 的逐字比對、以及「本文」字樣與「官方」出現次數。",
+    "claims_checked": 109,
+    "verdict_counts": {
+      "confirmed": 85,
+      "changed": 22,
+      "not_found": 0,
+      "out_of_scope": 2
+    },
+    "changes": [
+      {
+        "claim": "兩個支柱的支柱一寫成「讓各國既有的 AI 安全研究所網絡與國際標準互補」（第一段、summary 第二句、description 三處）",
+        "before": "一是讓各國既有的 AI 安全研究所網絡與國際標準互補",
+        "after": "一是建立讓國家標準與國際標準互補的機制",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "支柱一的標題是 (1) A mechanism that facilitates complementary national and international frontier standards——互補的是「國家標準」與「國際標準」；AI 安全研究所網絡只是達成它的其中一種做法，而且原文寫 the emerging network（正在成形），不是「既有的網絡」。內文第二節的小標本來就寫對，這三處與它自相矛盾。"
+      },
+      {
+        "claim": "summary 第二句把支柱二寫成「用來管理自動化 AI 研究與 RSI 的風險」",
+        "before": "用來管理自動化 AI 研究與 RSI 的風險",
+        "after": "用來管理 AI 研究日益增加的自主程度與 RSI",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文是 International AI standards will be particularly crucial in managing increasing autonomy in AI research and recursive self-improvement。「風險管理」是支柱一第二個聚焦點（benefit-risk management）的字眼，不是支柱二的。"
+      },
+      {
+        "claim": "「美國要帶頭合作的技術標準，範圍必須包含 RSI 在內」",
+        "before": "範圍必須包含 RSI 在內",
+        "after": "範圍包含 RSI 在內",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文是 global technical standards for frontier AI, including for RSI，是範圍不是義務。"
+      },
+      {
+        "claim": "「超出集體理解進展、評估風險與維持有效監督的能力」",
+        "before": "維持有效監督的能力",
+        "after": "維持有意義人類監督的能力",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文是 maintain meaningful human oversight，「有效」不是 meaningful，也掉了 human。"
+      },
+      {
+        "claim": "把 pacing the frontier 譯成「放慢前沿發展」",
+        "before": "對放慢前沿發展的重要性可能不亞於對齊研究本身",
+        "after": "對調節前沿發展步調的重要性可能不亞於對齊研究本身",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "同一篇最後一節自己寫 Pacing AI development is not about maintaining a predetermined speed，譯成「放慢」與原文互相矛盾，也把 Anthropic 那一篇的主張安到 OpenAI 頭上。"
+      },
+      {
+        "claim": "支柱一段落把「其中一種做法」寫成唯一做法，並把 such as 的舉例清單寫成清單",
+        "before": "支柱一要借用的，是各國正在成形的 AI 安全研究所網絡：OpenAI 點名十個已經成立這類機構的國家（詳見下表），主張透過這個網絡，與 CAISI（AI 標準與創新中心）及各國產業機構合作，讓國家標準與國際標準互補。",
+        "after": "支柱一要怎麼做，OpenAI 只寫了其中一種做法：借用各國正在成形的 AI 安全研究所網絡，並舉例點名十個已經成立這類機構的國家（詳見下表），再透過 CAISI（AI 標準與創新中心）與各國產業機構促成標準制定，讓國家標準與國際標準互補。",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文：One way of accomplishing this would be to leverage the emerging network of AI safety institutes—such as those already established in ...—to facilitate standard setting through the CAISI and national industry bodies。三個限定詞都被刪掉了：One way、emerging、such as；而且是「透過 CAISI 與各國產業機構促成標準制定」，不是「與 CAISI 合作」。"
+      },
+      {
+        "claim": "Lutnick 2025 年 6 月交付任務的對象被寫成國際網絡",
+        "before": "聚焦強化支撐 AI 評估的科學，2025 年 6 月由美國商務部長 Howard Lutnick 交付任務：發展量測與提升 AI 系統安全的指引與最佳實務，並協助產業發展自願性標準。",
+        "after": "聚焦強化支撐 AI 評估的科學；CAISI 設在 NIST 之內，2025 年 6 月由美國商務部長 Howard Lutnick 交付任務，發展指引與最佳實務以量測並提升 AI 系統的資安，並協助產業發展自願性標準。",
+        "source_url": "https://www.nist.gov/news-events/news/2026/02/international-network-advanced-ai-measurement-evaluation-and-science",
+        "why": "NIST 原文是 Secretary of Commerce Howard Lutnick charged the Center for AI Standards and Innovation (CAISI) within NIST——被交付任務的是 CAISI，不是國際網絡；原文的受詞是 the security of AI systems（資安）。"
+      },
+      {
+        "claim": "表格第一列把 such as 的舉例清單標成「已成立的 AI 安全研究所」",
+        "before": "已成立的 AI 安全研究所",
+        "after": "已成立的 AI 安全研究所（舉例）",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文 such as those already established in ... 是舉例，表格欄名是「清單」，不加註會被讀成全清單。"
+      },
+      {
+        "claim": "表格第三列把 Appia Foundation 併進「公告點名的標準組織」",
+        "before": "公告點名的標準組織｜ISO、Frontier Model Forum、Agentic AI Foundation、Open Secure AI Alliance、Appia Foundation",
+        "after": "公告主張要合作的組織｜標準組織 ISO、Frontier Model Forum、Agentic AI Foundation、Open Secure AI Alliance；實作機構 Appia Foundation",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文把兩類分開：standards bodies such as ISO, the Frontier Model Forum, Agentic AI Foundation, and the Open Secure AI Alliance, as well as implementation focused organizations, like the Appia Foundation。另外原文是 should also work closely with（主張要合作），欄名寫「點名的標準組織」會被讀成已經在合作，與 must_not_write 第 17 條相牴觸。"
+      },
+      {
+        "claim": "「支柱二在管理 AI 研究自主程度與 RSI 上尤其關鍵」漏掉 increasing",
+        "before": "支柱二在管理 AI 研究自主程度與 RSI 上尤其關鍵",
+        "after": "支柱二在管理 AI 研究日益增加的自主程度與 RSI 上尤其關鍵",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "原文是 managing increasing autonomy in AI research。"
+      },
+      {
+        "claim": "「這三個方向，OpenAI 目前各放上桌一份自己的文件」",
+        "before": "這三個方向，OpenAI 目前各放上桌一份自己的文件：第一個方向的早期貢獻是",
+        "after": "這三個方向裡，OpenAI 目前為其中兩個各放上桌一份自己的文件：第一個方向的初步貢獻是",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "公告只替第一個方向（research acceleration 報告，an initial contribution）與第三個方向（misalignment reporting framework，an early contribution）點了文件；第二個方向（human oversight over automated AI research）原文沒有列任何貢獻。順帶把第一個方向的 initial 由「早期」改為「初步」，與第三個方向的 early 區分開。"
+      },
+      {
+        "claim": "「以這四條來源查核到 2026 年 9 月 23 日……未見台灣」與 callout 的「四條來源」",
+        "before": "以這幾條來源查核到 2026 年 9 月 23 日，未見台灣，也未見歐盟《人工智慧法》字樣。",
+        "after": "公告、NIST 那一頁與研究加速報告都未見台灣，公告也未見歐盟《人工智慧法》字樣。",
+        "source_url": "https://openai.com/news/rss.xml",
+        "why": "第四條來源是 openai.com/news/rss.xml 這個 1,215 筆的新聞 feed，裡面 Taiwan 出現 1 次（2025-06-01 的 Operation “Sneer Review” 那一則）、EU AI Act 出現 1 次（2026-07-31 的 Advancing responsible AI across Europe），都與本篇無關。「四條來源都未見台灣」因此不成立，範圍改寫成公告、NIST 頁與研究加速報告三份文件（研究紀錄 not_said 第 4 條本來就是這樣寫的）。FAQ 第五題與 callout 同步改。"
+      },
+      {
+        "claim": "「OpenAI 解釋，自己主張的『放慢腳步』（pacing）」",
+        "before": "OpenAI 解釋，自己主張的「放慢腳步」（pacing）不是維持預定速度",
+        "after": "OpenAI 解釋，自己說的「調節步調」（pacing）不是維持預定速度",
+        "source_url": "https://openai.com/index/building-standards-next-phase-ai/",
+        "why": "公告從頭到尾沒有寫要放慢；同一句原文就是在否定「速度」這個框架。"
+      }
+    ],
+    "open_questions": [
+      "研究紀錄自己的 summary 欄與 suggested_table 還留著修正前的說法（「借用各國已成立的 AI 安全研究所網絡」、表格第三列把 Appia Foundation 併進標準組織）。本輪只依規格改內容包與加這個 factcheck 物件，沒有動那兩欄；第二輪與協調者請以內容包為準，不要照 suggested_table 把內容包改回去。",
+      "第二段與 callout 各有一句「本站沒有做任何實測」「文中的規格與主張都是 OpenAI 自己的說法」。這是一篇政策主張，沒有任何「規格」；措辭是風格不是事實，本輪沒有改，留給協調者決定要不要拿掉「規格」二字。",
+      "第三節第一句「各國評估與通報要求可能互相衝突」壓掉了原文的第三項 incident definitions（Evaluations, reporting requirements, and incident definitions by different nations could conflict）。不是錯誤、只是壓縮，字數只剩 86 字餘裕所以沒有補回去。",
+      "讀者優先：全篇沒有「本文」，「官方」只出現 2 次（都是來源名「OpenAI 官方新聞頻道 RSS」）；但有五段各掛了兩到三次「OpenAI 主張／寫明／列出」。這是新聞主角本身，不是「官方表示」式的贅述，本輪沒有改寫，若協調者認為仍太密可在定稿時合併。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 5 條與 ASSIGNMENTS.md：display_order 172、事件日 2026-09-21，兩者與內容包一致，本輪不動。RSS 的 pubDate（Mon, 21 Sep 2026 10:00:00 GMT，台北 9/21 18:00）換算後不跨日，不是 4.6 第 7 條那種佔位時刻爭議。",
+      "ASSIGNMENTS.md A2 的分工：這一篇只寫「要建立什麼制度」。查核後確認內容包沒有越界——沒有重述失準通報框架的 6 份報告／兩個比率／SAG，沒有提 Amodei 或 Anthropic，沒有 50 人／10 億美元門檻，沒有展開 Hugging Face 事件，也沒有引用研究加速報告的營運數字。",
+      "ASSIGNMENTS.md A2 要求 RSI 的官方說法照抄語氣：內容包把英文原句與中文括號譯文並列，逐字比對無誤，本輪保留。",
+      "兩個結尾連結的 text 與目標內容包的 zh-TW title 逐字相同（索引與失準通報框架那篇都已存在於 worktree），check_article.py 對它們沒有 FAIL，本輪沒有動。",
+      "DELTA-4-7 第 12 條：第二輪必做。本輪改了 22 條主張、18 處文字。"
+    ],
+    "second_round": {
+      "checked_by": "獨立查核代理（第二輪），沒有參與撰稿，也沒有參與第一輪",
+      "checked_on": "2026-09-23",
+      "method": "四條 sources 全部自己重抓（2026-09-23 台北 01:29，curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同一主機間隔 ≥2 秒、UA/標頭/查詢字串都沒有任何人的姓名或 email），四條都 200 且讀到正文：公告 418,052 bytes（抽取後 13,985 字元，RSI／International standards／(1)／(2)／The United States should lead 五節齊全）、RSS 741,570 bytes（1,215 個 item）、NIST 85,196 bytes、研究加速報告 2,315,093 bytes；本輪同樣沒有遇到 openai.com/index/* 的 403。範圍照 FACTCHECK-47 的第二輪規定：第一輪改動的 22 條主張與 18 處文字逐處回原文重查，第一輪新寫進去的每一句逐句比對，再從第一輪 85 條 CONFIRMED 裡機械抽樣三分之一（每三條取一條，共 29 條）重查，另外自己新查 9 個面向。機械檢查：51 條 verbatim_quote 對今天抓到的正文做連續字串比對（正規化 NBSP／U+2011／彎引號後）全部命中、0 MISS；四份來源的關鍵字掃描（Taiwan／Taipei／台灣／臺灣／台北／EU AI Act／European Union／Europe／AI Act／binding／treaty）；兩個結尾連結的 text 與目標內容包 zh-TW title 逐字比對；每一段的歸因詞計數；段落字數與 description 字數。",
+      "claims_checked": 60,
+      "claims_checked_detail": "22 條第一輪改動過的主張＋29 條隨機抽樣的 CONFIRMED＋9 條第二輪自己新查的面向＝60 條；另有 51 條 verbatim_quote 的機械比對與 4 條來源的重抓，不計入這 60 條。",
+      "verdict_counts": {
+        "re_confirmed": 52,
+        "changed": 8,
+        "not_found": 0,
+        "out_of_scope": 0
+      },
+      "changes": [
+        {
+          "claim": "block[5]：把「完全自主的 RSI 今天沒有發生」那句寫成排在風險句「之後」。原文的順序相反——引句在前，Done without appropriate care and caution 那句在後，而「維持有意義人類監督」又來自更後面的 Collective action 條目。「接著」是對原文結構的錯誤描述。",
+          "before": "原文接著劃出現況的界線",
+          "after": "原文也劃出現況的界線",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[6]：三個問題的第一項壓掉了原文的 incident definitions（Evaluations, reporting requirements, and incident definitions by different nations could conflict）。第一輪把它列為 open question、理由是字數只剩 86 字餘裕；本輪刪掉 block[14] 的編輯自述後有餘裕，補回。",
+          "before": "各國評估與通報要求可能互相衝突",
+          "after": "各國評估、通報要求與事故定義可能互相衝突",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[14]：同一段把「失準通報框架是第三個方向的早期貢獻」講了兩次，中間夾著「這是另一篇文章的題目，這一篇只帶一句」這種編輯過程的自述（DELTA-4-7 第 14 條：查證紀律與編輯決定不要寫進正文），而且整段的歸因詞是 3 個（OpenAI 目前／那份報告寫明／OpenAI 把它列為），超過 FACTCHECK-47「任一段最多兩個」的上限。刪掉自述後歸因詞剩 2 個，事實一句不少（must_not_write 第 2 條本來就只允許一句）。",
+          "before": "；第三個方向的早期貢獻則是失準通報框架——這是另一篇文章的題目，這一篇只帶一句：OpenAI 把它列為支柱二的早期貢獻。",
+          "after": "；第三個方向的早期貢獻則是 OpenAI 的失準通報框架。",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[23]：原文是 ensuring that alignment research and deployment of that research stay ahead of capabilities——走在能力前面的是「對齊研究」與「對齊研究的部署」。寫成「對齊研究與部署」會被讀成「對齊研究與（產品）部署」，把 OpenAI 自己否定的速度框架又讀回來。",
+          "before": "而是讓對齊研究與部署走在能力前面",
+          "after": "而是讓對齊研究及其部署走在能力前面",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "表格第三列：原文是 standards bodies such as ISO...（舉例），與第一列十國那個 such as 同一種句型。第一輪替第一列加了「（舉例）」，第三列漏了，不加會被讀成「公告點的就這五個」。must_not_write 第 18 條也要求不得寫成已經參與。",
+          "before": "公告主張要合作的組織",
+          "after": "公告主張要合作的組織（舉例）",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[16] 圖解 alt：支柱一的字沿用第一輪修正前的說法「各國標準互補機制」，與修正後的正文、小標「支柱一：讓國家標準與國際標準互補」互相矛盾。原文互補的是 national 與 international frontier standards，不是「各國之間」。",
+          "before": "支柱一寫各國標準互補機制",
+          "after": "支柱一寫國家與國際標準互補機制",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "研究紀錄 diagram.nodes 的支柱一節點同上。這一欄是 build_assets.py 出圖時實際畫在圖上的字（DELTA-4-7 第 15 條，圖還沒畫），留著舊說法就會畫出與正文矛盾的圖，所以本輪一併改。summary 與 suggested_table 依協調者指示維持原狀、不得據以回改內容包。",
+          "before": "[\"支柱一\", \"各國標準互補機制\"]",
+          "after": "[\"支柱一\", \"國家與國際標準互補機制\"]",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        },
+        {
+          "claim": "block[1] 與 callout 各有一句把這份政策主張稱為「規格」。這是一篇政策主張，沒有任何規格；第一輪列為 open question 第 2 條，協調者裁定改成「標準」或「規範」。block[20] 的「實務規格」不動——那一處對應原文 practical specifications，是正確用法。",
+          "before": "以下規格與主張／文中的規格與主張",
+          "after": "以下標準與主張／文中的標準與主張",
+          "source_url": "https://openai.com/index/building-standards-next-phase-ai/"
+        }
+      ],
+      "open_questions": [
+        "block[1] 整段是「我們讀了哪幾頁」的查證紀律，DELTA-4-7 第 14 條說這不是內容；但它同時是本批所有文章的共同格式，而且 check_article.py 要求查核日出現在前兩段。本輪只把「規格」換成「標準」，沒有動段落結構——要不要全批一起改，是協調者的事。同段的「本站沒有做任何實測」對一篇政策主張也讀不太通。",
+        "FAQ 第一題仍寫「以這幾條來源查核到 2026 年 9 月 23 日，公告沒有寫啟動時間」。這一句的否定範圍本來就限縮在「公告」，不是第一輪修掉的那種四條來源全稱句，所以沒有改；但「這幾條來源」四個字在這裡是多餘的。",
+        "block[13] 第三個方向壓掉了原文的 for alignment and automated AI research issues（事故分類追蹤通報回應的適用範圍）。不是錯誤、只是壓縮，且改動會動到已經很滿的一段，本輪沒有補。",
+        "sources[3] 的標題寫「（公告點名的第一份貢獻）」。原文 initial contribution 掛在第一個方向、early contribution 掛在第三個方向，「第一份」指的是「第一個方向的那一份」而不是「時間上最早的那一份」，讀者看標題可能會誤解。屬於來源標題措辭，本輪沒有改。",
+        "summary 第五句後半「OpenAI 自己也說這個構想預期會隨時間大幅演變」只出現在 FAQ 第一題與 callout，沒有出現在任何正文段落。checker 的 body_without_summary 涵蓋 callout 所以不會 FAIL，事實本身也有 verbatim_quote 撐著（While we expect this concept to evolve substantially over time），本輪沒有為此加字。",
+        "研究紀錄的 summary 與 suggested_table 仍是第一輪修正前的說法（「借用各國已成立的 AI 安全研究所網絡」、第一列沒有「（舉例）」、第三列把 Appia Foundation 併進標準組織）。依協調者指示本輪不動，定稿一律以內容包為準。"
+      ],
+      "coordinator_rulings": [
+        "協調者裁定：把指涉這份政策主張的「規格」改成「標準」或「規範」。已改兩處（block[1]、callout），block[20] 對應原文 practical specifications 的「實務規格」保留。",
+        "協調者裁定：研究紀錄的 summary 與 suggested_table 已過時，內容包才是基準，不得回改。本輪據此保留那兩欄，只改 diagram.nodes（那一欄會被畫進圖裡）。",
+        "FACTCHECK-47 的歸因密度規則（開頭段最多一個、任一段最多兩個）是協調者核准的編輯，不是風格回報。逐段計數後只有 block[14] 超標（3 個），已改；block[10] 的三個標記裡有兩個是 must_not_write 第 6 條硬性要求的清單出處標示（NIST 頁面／OpenAI 文中），真正的「X 表示」只有一個，不動。開頭段的「OpenAI 提出」是新聞主角本身在做的動作，真正的歸因詞只有「文章同時寫明」一個。",
+        "第一輪把台灣／歐盟 AI 法案的否定句從「四條來源」限縮成三份文件，與 must_not_write 第 7 條規定的句型（「以這幾條來源查核到⋯⋯未見台灣」）字面不同。本輪重測確認第一輪是對的：RSS feed 裡 Taiwan 命中 1 次（2025-06-01 的中國影響力行動那則，寫的是 a Taiwanese social media influencer）、EU AI Act 命中 1 次（2026-07-31 的歐洲那則），四條全稱句站不住；限縮後的句子把三份文件逐一點名，比原句型更精確，維持第一輪的寫法。",
+        "事件日與 display_order 不動：RSS 的 pubDate 今天重抓仍是 Mon, 21 Sep 2026 10:00:00 GMT（台北 9/21 18:00，不跨日），category 仍是 Global Affairs，公告頁自印 September 21, 2026；slug 後綴、news_date 與第一段三者一致。",
+        "結論：ok。第二輪改了 8 處（其中 2 處是協調者指定的「規格」措辭），沒有一處推翻第一輪的判斷；第一輪那 18 處文字本輪逐處回原文重查，全部成立。"
+      ]
+    }
+  }
+}

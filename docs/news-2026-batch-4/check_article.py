@@ -145,6 +145,23 @@ RELATED: dict[str, str] = {
     "crypto-news-occ-three-trust-charters-20260918": "crypto-news-genius-act-occ-20260302",
     "crypto-news-eba-third-party-risk-20260918": "crypto-news-eba-psd2-mica-20260212",
     "crypto-news-sec-crypto-fraud-patterns-20260918": "crypto-news-sec-regulation-crypto-assets-20260821",
+    # 4.7（2026-09-20 起的新聞，只做 zh-TW，另補三則窗口外的舊件）：AI 171-176、科技 321-326、幣圈 217-219。
+    # 這裡的順序是站主圈選的順序，不是候選清單自己提的號碼（科技的 Petal 與 ENISA 因此對調）。
+    "ai-news-openai-math-advisory-20260921": "ai-news-pace-the-frontier-20260912",
+    "ai-news-openai-frontier-standards-20260921": "ai-news-openai-misalignment-reports-20260917",
+    "ai-news-anthropic-life-sciences-verification-20260917": "ai-news-anthropic-threat-report-20260910",
+    "ai-news-meta-one-subscription-20260915": "ai-news-meta-muse-spark-20260408",
+    "ai-news-openai-academy-paths-20260921": "ai-news-chatgpt-work-20260709",
+    "ai-news-nvidia-physical-ai-safety-20260921": "ai-news-frontier-governance-20260528",
+    "tech-news-googlebook-launch-20260921": "tech-news-windows-project-zenith-20260904",
+    "tech-news-eu-data-centre-rating-20260921": "tech-news-eu-cra-reporting-20260911",
+    "tech-news-cisa-kev-zyxel-gs1900-20260921": "tech-news-cisa-kev-linux-kernel-20260918",
+    "tech-news-meta-petal-subsea-cable-20260921": "tech-news-taiwan-matsu-cable-tm4-20260918",
+    "tech-news-enisa-threat-landscape-20260922": "tech-news-cisa-kev-linux-kernel-20260918",
+    "tech-news-moda-mydata-student-loan-20260917": "tech-news-taiwan-sovereign-ai-corpus-20260915",
+    "crypto-news-taiwan-deposit-token-pilot-20260922": "crypto-news-genius-act-occ-20260302",
+    "crypto-news-sec-innovation-exemption-20260917": "crypto-news-sec-regulation-crypto-assets-20260821",
+    "crypto-news-taiwan-vasp-tax-ruling-20260903": "crypto-news-taiwan-vasp-act-20260630",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

@@ -1,0 +1,593 @@
+{
+  "slug": "ai-news-openai-academy-paths-20260921",
+  "vertical": "ai",
+  "display_order": 175,
+  "event_date": "2026-09-21",
+  "event_date_basis": "公告頁 https://openai.com/index/expanding-openai-academy-with-new-learning-paths/ 於 2026-09-23 重抓（HTTP 200、420,276 bytes），署名區塊只印一行純文字日期 September 21, 2026，沒有印時刻、沒有時區，整頁也沒有 article:published_time、datePublished 或任何 JSON-LD 日期欄位。同站 RSS https://openai.com/news/rss.xml（2026-09-23 取得 HTTP 200、741,570 bytes）對這一篇的 <pubDate> 是 Mon, 21 Sep 2026 07:00:00 GMT，換算台北時間為 2026-09-21 15:00，仍是同一天，因此事件日 2026-09-21，不需要跨日換算，正文也不要寫發布時刻。注意：公告頁底部「Keep reading」卡片裡有 <time dateTime=\"2026-09-21T12:00\"> 與 <time dateTime=\"2026-09-17T00:00\">，那兩個屬於〈Advisory group on mathematics and artificial intelligence〉與〈Introducing Astra for Law〉兩篇別的文章，不是這一篇的時戳，不可以拿來當依據。",
+  "title": "OpenAI Academy 新增開發者、主管與師生課程：台灣也能免費修",
+  "title_candidates": [
+    "OpenAI Academy 新增開發者、主管與師生課程：台灣也能免費修",
+    "OpenAI Academy 擴充學習路徑：四條路線、免費自學、考 80 分拿徽章",
+    "OpenAI 擴充 Academy 課程：開發者、主管、教師與大學生各有一條路"
+  ],
+  "summary": "OpenAI 在 2026 年 9 月 21 日發布〈Expanding OpenAI Academy with new learning paths〉，替自家免費線上學習平台 OpenAI Academy 增開給開發者、主管、教師與大學生的課程，與既有的 Apply AI at Work 併成四條依角色分的學習路徑：Apply AI at Work（一般工作者）、Build with AI（開發者與技術團隊）、Lead AI Adoption（主管）、Teach and Learn with AI（教師與大學生）。每一門課附一份測驗，課程完成並通過測驗且分數達 80% 以上，就會由數位證書平台 Accredible 發出 OpenAI Academy 課程徽章。公告本身完全沒有提到開放地區與課程語言；OpenAI 說明中心的〈OpenAI Academy courses〉則明寫課程免費、全球皆可修，只要有 ChatGPT 帳號，而台灣在〈ChatGPT Supported Countries〉的清單上，因此台灣讀者可以註冊上課。唯一查到的地區限制不在課程本身，而在 AI for College Students 課程頁上的一個學生優惠：那份四個月 ChatGPT Work 免費方案只給「eligible U.S. college students」。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "OpenAI：Expanding OpenAI Academy with new learning paths",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:30+08:00",
+      "http_status": 200,
+      "bytes": 420276,
+      "verbatim_quote": "Today, we’re expanding OpenAI Academy with new courses for developers, leaders, educators, and college students."
+    },
+    {
+      "title": "OpenAI Help Center：OpenAI Academy courses",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:38+08:00",
+      "http_status": 200,
+      "bytes": 110103,
+      "verbatim_quote": "OpenAI Academy courses are available globally to anyone with a ChatGPT account."
+    },
+    {
+      "title": "OpenAI Help Center：ChatGPT Supported Countries",
+      "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:41+08:00",
+      "http_status": 200,
+      "bytes": 70123,
+      "verbatim_quote": "We provide below a list of the countries and territories in which we currently support access to ChatGPT."
+    },
+    {
+      "title": "OpenAI Academy：AI for College Students（課程頁）",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "publisher": "OpenAI Academy",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:33+08:00",
+      "http_status": 200,
+      "bytes": 296313,
+      "verbatim_quote": "To earn your OpenAI Academy course badge, you must complete this learning pathway. The pathway includes two required steps: completing the course and passing the assessment with a score of at least 80%."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條來源在 2026-09-23 都用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同主機間隔 ≥1 秒重抓，全部 HTTP 200 且讀到正文，原始檔留在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\ai-news-openai-academy-paths-20260921\\。取得配方：(1) 公告頁 primary.html 420,276 bytes，去掉 <!-- --> 與 script/style、剝標籤、html.unescape 後得 primary.txt 7,570 字；公告全文只有八段加五個小標，沒有影片、沒有圖表數字。注意公告頁每個外連前面帶一個看不見的 U+2060（word joiner）加「(opens in a new window)」，剝標籤後會黏成「Build with AI⁠(opens in a new window) pathway」，所以逐字引用時不要跨過那個標記，本紀錄的引文都已避開。(2) 說明中心 help-academy-courses.html 110,103 bytes → 13,919 字；它的課程表是 HTML 表格，剝標籤後同一列的儲存格會黏成一串（例如「Teach and learn with AIAI for Educators45 minLesson planning, activities, assessments, and communications.…」），本紀錄引用整列時就是這個黏合後的字串，查核者用同樣的剝標籤方式可以重現。(3) 支援國家頁 help-chatgpt-countries.html 70,123 bytes → 2,792 字、220 行；Taiwan 是「Supported countries & regions on web and mobile」清單裡的一個 <p>Taiwan</p> 項目（剝標籤後在第 194 行，前後是 Svalbard and Jan Mayen 與 Tajikistan）。(4) 課程頁 academy.openai.com 是 Next.js 應用，剝標籤只剩導覽殼（424 字），正文在 <script id=\"__NEXT_DATA__\"> 的 props.pageProps.data.course.course 裡：title、subTitle、duration、lessonsCount 與一段 rich-text description；把 description 的 JSON 攤平後得 course-college-students.desc.txt，本紀錄引用的就是它。另外讀到但沒有放進 sources[] 的官方頁（內容都被上面四條涵蓋，列在這裡供查核者交叉比對）：https://academy.openai.com/pages/courses （200／694,017 bytes，四條路徑的分組與『Every course includes an assessment, with official badges issued through Accredible.』）、https://academy.openai.com/ （200／829,058 bytes，首頁四張路徑卡）、https://academy.openai.com/public/courses/ai-for-educators-lc8j1 （200／295,814 bytes）、https://academy.openai.com/public/courses/ai-leadership-kaf7k （200／295,167 bytes）、https://openai.com/academy/ （200／392,619 bytes）、https://openai.com/news/rss.xml （200／741,570 bytes，取事件日）。openai.com/index/* 本輪沒有 403，help.openai.com 也沒有擋。",
+  "verified_facts": [
+    {
+      "fact": "公告的署名日期是 2026 年 9 月 21 日，頁面只印日期、沒有印時刻。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 21, 2026"
+    },
+    {
+      "fact": "這次擴充的對象是開發者、主管、教師與大學生，新課程與既有的 Apply AI at Work 併在一起。這是整篇公告的核心句。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, we’re expanding OpenAI Academy with new courses for developers, leaders, educators, and college students."
+    },
+    {
+      "fact": "Apply AI at Work 是既有的路徑，不是這次新增的；公告用 These join 交代它的既有地位，內容是打底、做出可重複的工作流程、指揮代理人做事。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These join Apply AI at Work, which helps people build foundational skills, create repeatable workflows, and direct work with agents."
+    },
+    {
+      "fact": "公告副標把這次的設計講成「依角色分的學習」，並說學完可以展示自己學到什麼。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Role-based learning helps employees, developers, leaders, educators, and students build practical AI skills and demonstrate what they’ve learned."
+    },
+    {
+      "fact": "課程徽章的取得條件在公告裡只寫「通過課程測驗」，細節（80% 與由誰發）要看說明中心與課程頁。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Course assessments give learners a way to demonstrate what they’ve learned. Learners earn an OpenAI Academy course badge by passing the course assessment."
+    },
+    {
+      "fact": "OpenAI 自己把「學習」定位成部署的一部分，這是公告解釋為什麼要做課程的那句話。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At OpenAI, we treat learning as part of deployment."
+    },
+    {
+      "fact": "課程的設計理念是「用 AI 學 AI」，學員在真實任務上練習下指令、補背景、檢查結果。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "courses are built around a simple idea: you should use AI to learn AI."
+    },
+    {
+      "fact": "Apply AI at Work 路徑的定位：把 AI 用在每天的工作上，先練基本功再變成可重複的流程。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "pathway helps people use AI more effectively in their everyday work."
+    },
+    {
+      "fact": "Apply AI at Work 的後段是指揮代理人做更大塊的工作，自己決定哪些交出去、在哪裡設檢查點與人工覆核。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As learners progress, they practice directing larger pieces of work with agents, deciding what to delegate and where to add checkpoints and human review."
+    },
+    {
+      "fact": "Build with AI 路徑是給開發者與技術團隊的，分成用 Codex 與用 OpenAI API 兩種取向。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "pathway is designed for developers and technical teams using Codex or building products with the OpenAI API."
+    },
+    {
+      "fact": "Build with AI 的目標是讓組織從試用走到可靠可用的系統。這是 OpenAI 自己的定位說法。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These courses are designed to help organizations move from experimentation to useful, reliable AI systems."
+    },
+    {
+      "fact": "Lead AI Adoption 的內容是 AI Leadership 這一門課，對象是負責策略、導入與變革管理的人，產出是一份初步的 AI 策略與導入藍圖。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "helps people responsible for strategy, adoption, and change management assess where AI could create business value."
+    },
+    {
+      "fact": "公告把教師與學生放在同一條路徑「Teach and Learn with AI」底下，這是原文的小標；AI for Educators 與 AI for College Students 是這條路徑裡的兩門課。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Educators and students: Teach and Learn with AI"
+    },
+    {
+      "fact": "教師課程要求學員用「自己有權使用的材料」來備課、出題或改寫給學生的溝通內容，並且明寫最後由教師決定哪些東西可以進課堂。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In AI for Educators, learners use materials they have permission to use to plan a class, create an activity or assessment, or adapt communications for students, teaching assistants, or colleagues."
+    },
+    {
+      "fact": "教師課程的責任歸屬寫得很直接：由教師決定哪些內容屬於自己的教學。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The educator decides what belongs in their teaching."
+    },
+    {
+      "fact": "大學生課程練的是整理讀物與期限做讀書計畫、分配小組角色、照作業要求檢查草稿、準備申請與面試。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Students practice organizing readings and deadlines into a study plan, assigning roles in a group project, reviewing a draft against assignment requirements, and preparing for applications or interviews."
+    },
+    {
+      "fact": "公告給組織的建議是把不同路徑搭起來用（新人訓練用 Apply AI at Work、技術團隊用 Build with AI、主管訓練放 AI Leadership），這是建議不是規定。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A company might use Apply AI at Work in employee onboarding, offer Build with AI courses to developers and technical teams, and include AI Leadership in an executive, Champion, or transformation program."
+    },
+    {
+      "fact": "課程會持續改版：OpenAI 說課程由內部各團隊共同做，並會隨模型、產品與指引改變而更新。這代表本篇寫的課程內容有時效。",
+      "url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The courses are shaped by teams across OpenAI and will continue to be updated as our models, products, and guidance change."
+    },
+    {
+      "fact": "開放地區的唯一官方說法在說明中心，不在公告：課程全球皆可修，只要有 ChatGPT 帳號。這一句是整篇文章回答「台灣能不能用」的依據。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI Academy courses are available globally to anyone with a ChatGPT account."
+    },
+    {
+      "fact": "課程免費、可自己安排進度，內容涵蓋職場應用、開發、導入領導與教學四個面向。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI Academy offers free, self-paced courses to help you build practical AI skills. Courses cover using AI at work, building with AI, leading AI adoption, and teaching and learning with AI."
+    },
+    {
+      "fact": "報名與進度要用 ChatGPT 帳號登入；課程本身掛在第三方平台 Gradual 上，報名與進度也由 Gradual 管理。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sign in with your ChatGPT account to enroll and save your progress. Courses are hosted on Gradual, which manages enrollment and progress tracking."
+    },
+    {
+      "fact": "課程免費而且不需要公司的工作區帳號，個人身分就能修。這對台灣個人讀者最重要。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Courses are free and do not require a workspace membership. Learners can access courses as individuals or through an organization."
+    },
+    {
+      "fact": "徽章的門檻是完成課程並且測驗考到 80% 以上；修完一條合格路徑的每一門課與測驗還可以拿到完課證書。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI Academy badges recognize that a learner completed a course and passed its respective assessment with a score of 80% or higher. Learners who complete every course and pass each assessment in an eligible pathway can also earn a certificate of completion."
+    },
+    {
+      "fact": "徽章與完課證書都不是證照，官方自己明寫不保證未來取得任何證照的資格。這一條是全篇最該寫清楚的界線。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These badges and certificates of completion are not certifications and do not guarantee eligibility for a future certification."
+    },
+    {
+      "fact": "測驗的形式：每份測驗 10 到 20 題，題目從該測驗的 50 題題庫抽出；沒過可以再考一次，題目重新隨機抽。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Assessments contain 10–20 questions. Questions are drawn from a bank of 50 questions for each assessment. If you do not pass, you can try again with a newly randomized selection of questions."
+    },
+    {
+      "fact": "AI Leadership、AI for Educators、AI for College Students 這三門是單獨的課，不構成可拿完課證書的路徑；能拿證書的路徑是 Foundations、Codex、API 三組。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AI Leadership, AI for Educators, and AI for College Students are standalone courses and do not form a pathway."
+    },
+    {
+      "fact": "課程表上教師課的預估時間是 45 分鐘、主題是備課與出題、產品對應 ChatGPT。引文是說明中心 HTML 表格同一列的儲存格剝標籤後黏成的字串。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Teach and learn with AIAI for Educators45 minLesson planning, activities, assessments, and communications."
+    },
+    {
+      "fact": "課程表上大學生課的預估時間是 45 分鐘、主題是讀書計畫、小組工作、寫作與求職準備。引文同樣是表格列剝標籤後的字串。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Teach and learn with AIAI for College Students45 minStudy planning, group work, writing, and career preparation."
+    },
+    {
+      "fact": "課程表上主管課 AI Leadership 的預估時間是 180 分鐘，而且官方自己標註它「不對應單一產品」。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Lead AI adoptionAI Leadership180 minBusiness priorities, governance, roadmaps, and adoption.Set priorities, align stakeholders, and create an initial AI strategy draft.No single product; AI strategy and adoption"
+    },
+    {
+      "fact": "課程表上入門課 AI Foundations 的預估時間是 60–75 分鐘，內容是 AI 基礎、提示詞、背景與負責任使用。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Apply AI at workAI Foundations60–75 minAI basics, prompting, context, and responsible use."
+    },
+    {
+      "fact": "表定時間是預估值，官方自己加了但書：實際花多久看學員跟著做多少練習。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Actual completion time may vary depending on how much learners choose to follow along with activities and exercises."
+    },
+    {
+      "fact": "報名步驟：到 academy.openai.com 用 ChatGPT 帳號登入、在側欄選 Courses、找到課程按 Go to course、在學習路徑頁按 Enroll now。可以不登入先瀏覽課程。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can browse available courses without signing in. To start a course and save your progress, you must sign in with a ChatGPT account."
+    },
+    {
+      "fact": "徽章由數位憑證平台 Accredible 發出與管理，而且綁在你註冊 Academy 或用 Sign in with ChatGPT 的那個 email 上，開始上課後帳號不能合併。這是讀者最容易踩到的坑。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI partners with Accredible, a digital credentialing platform, to issue and manage shareable OpenAI Academy badges."
+    },
+    {
+      "fact": "帳號綁定的細節：課程進度與徽章掛在你註冊 Academy 的 email、或用 Sign in with ChatGPT 時那個 ChatGPT 帳號的 email；開始上課之後目前無法合併或連結帳號。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Academy accounts cannot currently be linked or merged after you begin a course."
+    },
+    {
+      "fact": "企業想把課程匯入自家學習系統目前做不到，官方說正在做 SCORM 包，但沒有預計時程。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Academy course content cannot currently be exported from OpenAI Academy or imported into an organization's LMS. OpenAI is working to make SCORM packages available for organizations to deliver courses through their LMS. There is no estimated availability date yet."
+    },
+    {
+      "fact": "組織端的學習報表不是自助功能，要找 OpenAI 的客戶團隊問開放與取得方式。",
+      "url": "https://help.openai.com/en/articles/20001270-openai-academy-courses",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Reporting is available for organizations that want visibility into learner participation and course completion."
+    },
+    {
+      "fact": "OpenAI 說明中心公布的 ChatGPT 支援地區清單，是判斷「有沒有 ChatGPT 帳號可用」的官方依據。",
+      "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We provide below a list of the countries and territories in which we currently support access to ChatGPT."
+    },
+    {
+      "fact": "台灣列在那份「Supported countries & regions on web and mobile」清單裡（剝標籤後在第 194 行，前後分別是 Svalbard and Jan Mayen 與 Tajikistan）。配合上一條說明中心的「全球皆可修，只要有 ChatGPT 帳號」，台灣讀者可以註冊上課。",
+      "url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Taiwan"
+    },
+    {
+      "fact": "徽章門檻的另一個出處：課程頁自己寫「完成課程」與「測驗至少 80%」兩個必要步驟，與說明中心一致。",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To earn your OpenAI Academy course badge, you must complete this learning pathway. The pathway includes two required steps: completing the course and passing the assessment with a score of at least 80%."
+    },
+    {
+      "fact": "課程頁自己標的規格：45 分鐘、自訂進度、難度標為 Intermediate（中階），不是零基礎入門。",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Duration: 45 minutes"
+    },
+    {
+      "fact": "課程是自訂進度、進度自動儲存、可以分次上完。",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The course is self-paced, so you don’t need to finish it all at once. Your progress is automatically saved, and you can return when it suits you."
+    },
+    {
+      "fact": "大學生課程有前提：對象是已經有一些 ChatGPT 與提示詞經驗的大專學生，不需要用過 Projects 或 Work。想入門的人要先修 AI Foundations。",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This course is designed for higher education students who already have some experience using ChatGPT and writing prompts. No prior experience with Projects or Work is required."
+    },
+    {
+      "fact": "上課前要自己準備的東西：一個 ChatGPT 帳號，以及一份自己被允許使用的作業、專題或學習任務（也可以用課程提供的範例）。",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A permitted assignment, project, study task, or experience to work with, or the supplied example"
+    },
+    {
+      "fact": "全篇查到的唯一地區限制在這裡，而且限制的是優惠不是課程：四個月免費的 ChatGPT Work 學生方案只給「eligible U.S. college students」，期限寫 October 31（頁面沒有印年份），免費期後每月 20 美元續訂，可取消。",
+      "url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Eligible U.S. college students can get four months of ChatGPT Work for free to put what you learn in this course into practice. Claim the student offer by October 31; your subscription renews at $20/month after the free period unless you cancel."
+    }
+  ],
+  "not_said": [
+    "公告全篇沒有提到任何國家、地區或市場名稱，沒有寫「哪些國家先開放」，也沒有提到台灣。文章不可以從公告推論開放地區——開放地區的依據只有說明中心那一句「available globally to anyone with a ChatGPT account」。",
+    "公告與說明中心都沒有寫課程的語言。本站 2026-09-23 讀到的公告、課程目錄與三個課程頁全部是英文，但沒有任何官方頁面寫「課程只有英文」或「未來會出中文」，所以只能寫「以 2026 年 9 月 23 日查核，這幾頁沒有說明課程語言，讀到的課程說明都是英文」。",
+    "公告沒有寫課程免費。免費是說明中心寫的（Courses are free）；要講免費就引說明中心，不要說成公告宣布免費。",
+    "公告沒有寫測驗的及格分數、題數或補考規則，也沒有寫徽章由誰發。80%、10–20 題、50 題題庫、Accredible 全部來自說明中心與課程頁。",
+    "公告沒有寫任何學員人數、報名數、完成率或滿意度。課程頁的 enrollCount 是網頁上的即時計數，不是官方公布的統計。",
+    "公告沒有寫課程要上多久。時間是說明中心課程表的預估值，而且官方自己加了「實際時間依練習多寡而異」的但書。",
+    "公告沒有提到 OpenAI Certified（說明中心把它指到另一篇文章），也沒有說徽章等同任何證照。",
+    "沒有任何官方頁面寫台灣的學校、教育部或企業與 OpenAI Academy 有合作；不要寫「台灣的學校可以導入」這種未經證實的句子。",
+    "公告沒有承諾課程會一直免費或永久存在，只說會隨模型、產品與指引更新。",
+    "說明中心沒有寫沒有 ChatGPT 帳號的人可以修課，相反地明寫要用 ChatGPT 帳號登入才能開始上課與保存進度。"
+  ],
+  "unverified_or_excluded": [
+    "課程語言：academy.openai.com 的頁面原始碼裡有一段站台設定 \"defaultLocale\":\"en\",\"supportedLocales\":[\"en\",\"ja\",\"ko\",\"fr\"]，看起來是平台介面語言的設定。這是頁面內嵌的機器可讀設定、不是官方對外說明，也不等於課程內容的語言，**不可以寫進正文**，更不可以寫成「課程有英日韓法四種語言」或「沒有中文」。",
+    "AI for Educators（academy.openai.com/public/courses/ai-for-educators-lc8j1，200／295,814 bytes）與 AI Leadership（…/ai-leadership-kaf7k，200／295,167 bytes）兩個課程頁本輪也讀到了正文，內容與說明中心一致（教師課 45 分鐘、建議先修 AI Foundations；主管課標「~3 hours」、要先修 AI Foundations 或有同等經驗）。因為 sources[] 只留四條，這兩頁沒有列入，正文不要寫只有那兩頁才有的細節（例如教師課的 Northfield Mutual 個案、教師課要準備的教材清單）。",
+    "openai.com/academy/ 這個入口頁 2026-09-23 只列出 AI foundations、Applied AI foundations、Agents & workflows 三門課，沒有列出這次新增的路徑；這可能只是那一頁還沒更新，也可能有別的原因，本站查不到說明，所以不寫「官方入口頁沒更新」這種推論。",
+    "四條路徑各有幾門課：說明中心的表格列出 14 列課程，但那是本站自己數的，官方沒有印任何「共 N 門課」的數字。要寫門數就要明寫是編輯清點，或者乾脆列出課名不寫總數。",
+    "學生優惠的年份：課程頁只寫 Claim the student offer by October 31，沒有印年份，不可以自己補上 2026。也沒有任何官方頁面說台灣有對應的學生優惠，所以只能寫「這個優惠寫明只給美國的合格大學生」。",
+    "OpenAI Certified 是什麼、與 Academy 徽章差在哪：說明中心把它指向另一篇〈OpenAI Certified App〉的文章，本輪沒有取得那一頁，所以正文只能照說明中心寫「徽章與完課證書都不是證照」，不可以描述 OpenAI Certified 的內容、時程或費用。",
+    "課程在台灣的實際可用性沒有實測：本站沒有註冊帳號、沒有進到課程內頁，只讀到公開頁與官方說明。正文不可以寫「實際測試可以註冊」，只能寫官方說明怎麼寫。",
+    "Gradual（gradual.com）與 Accredible 兩家公司的背景、資料處理方式與所在地本輪沒有查證，正文只寫官方說明中心指出的角色分工（Gradual 管課程與報名、Accredible 發徽章），不要延伸描述這兩家公司。"
+  ],
+  "live_data_warnings": [
+    "說明中心頁首印的是相對時間「Updated: 2 days ago」（2026-09-23 讀取），支援國家頁印的是「Updated: last month」。這兩個字串會隨天數變動，**不可以換算成確定日期寫進正文**，也不要引用。",
+    "課程頁 __NEXT_DATA__ 裡的 enrollCount 是即時報名人數（2026-09-23 讀到 AI for College Students 815、AI for Educators 617、AI Leadership 1,479），每天都會變，正文與圖上一律不出現這些數字。",
+    "ChatGPT 支援地區清單是一份會改的名冊（2026-09-23 讀到 220 行的剝標籤結果）。正文只寫「以 2026 年 9 月 23 日查核，台灣在這份清單上」，不要寫清單共有幾個國家，也不要寫「一直都支援」。",
+    "academy.openai.com 首頁的活動列表（Upcoming Events）是滾動的排程資料，今天看到的場次下週就不同，不要寫進正文。",
+    "說明中心的課程表未來會隨課程增減而改。正文的表格 caption 要標查核日 2026 年 9 月 23 日，並在正文寫一句「課程與時間之後可能調整，以官方頁面為準」。"
+  ],
+  "overlaps_existing_article": [
+    "ai-news-chatgpt-work-20260709〈ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？〉——本篇的第二個結尾連結。那一篇已經把 ChatGPT Work 是什麼、怎麼交代跨檔案工作寫完，而且它的 sources[] 第二條就是 OpenAI Academy 的〈Get started with ChatGPT Work〉活動頁。本篇**不可以再解釋一次 ChatGPT Work 的功能**，只在提到 Agents and Workflows 課程對應 ChatGPT Work、以及學生優惠送的是 ChatGPT Work 時各帶一句，其餘交給連結。",
+    "ai-news-gemini-notebook-study-tools-20260918〈Gemini Notebook 開學工具上線：公司、學校與個人帳號各有各的條件〉——已經寫過「學生與教師用 AI 工具、帳號類型決定能用什麼」這個角度（Google 那邊）。本篇談的是課程與徽章，不是工具功能，**不要寫成兩家學習工具的比較**，也不要重述 Google 的條件。",
+    "ai-news-openai-australia-youth-safety-20260918〈OpenAI 發布澳洲青少年安全藍圖：六項支柱寫給澳洲，台灣家長現在有什麼〉——同樣是 OpenAI 的教育／青少年題材，也同樣用「這份公告寫給誰、台灣有什麼」的處理法。本篇沿用那個結構沒問題，但**不可以重述青少年安全藍圖的內容**。",
+    "ai-news-siri-ai-ios-27-20260914〈Siri AI 隨 iOS 27 推出：先上英文 beta，台灣 iPhone 使用者能用到什麼？〉與 ai-news-chatgpt-sponsored-agents-20260916〈ChatGPT 廣告新增 Sponsored Agents：美國測試中，台灣未列入開放名單〉——這兩篇是站上處理「開放地區」題目的既有寫法範例。本篇的結論相反（台灣可以用），**不要引用或比較這兩篇**，只是寫法可以參考。",
+    "ai-chat-prompt-basics〈提示詞入門：把問題問清楚的五個原則，改前改後對照著學〉、chatgpt-deep-research-guide、chatgpt-projects-guide、chatgpt-for-email-writing、chatgpt-for-resume-cover-letter、chatgpt-canvas-writing、claude-* 等教學文——這些內容包的 sources[] 已經引用 academy.openai.com 的 Prompting／Projects／Canvas 等教材頁，站上也已經有整套提示詞與工具教學。本篇是新聞，**不要變成提示詞教學或課程心得**，不要教讀者怎麼寫提示詞。",
+    "ai-energy-water-footprint〈AI 的用電與用水：一次對話的成本〉——正文提過 OpenAI Academy 有一篇〈Environmental Impact of AI〉教材。那是引用單一教材，與本篇的課程路徑無關，不必提。",
+    "ai-news-sources-to-follow〈追 AI 新聞的來源清單：只看官方一手來源〉——講的是追新聞的來源，不是學 AI 的課程，兩者不要混。",
+    "站上目前沒有任何一篇寫過 OpenAI Academy 的徽章、測驗、Accredible 或 Gradual（2026-09-23 以 grep 掃 apps/api/app/guides/content/ 全目錄確認：OpenAI Certified、Accredible、gradual.com 三個字串零命中）。**徽章與測驗機制是本篇真正沒人寫過的部分，應該是文章的重心。**"
+  ],
+  "editorial_brief": "讀者是台灣的一般上班族、老師與大學生。第一段就要把三件事講完：2026 年 9 月 21 日 OpenAI 擴充了自家的免費線上課程 OpenAI Academy、新課程照角色分成開發者／主管／教師與大學生、台灣現在就能註冊（官方說明寫全球皆可修，只要有 ChatGPT 帳號，而台灣在 ChatGPT 的支援地區清單上）。然後才講四條路徑分別在教什麼。\n第二個重心是徽章：完成課程加測驗考到 80% 以上會由 Accredible 寄信發徽章，可以貼到 LinkedIn；但官方自己寫得很白——徽章與完課證書都不是證照，也不保證未來任何證照的資格。台灣讀者最可能誤會的就是這一點，要寫清楚。\n第三個重心是「報名前要知道的四件事」：要 ChatGPT 帳號、帳號開始上課後不能合併（徽章綁 email）、教師與大學生課難度標 Intermediate 不是零基礎（入門要先修 AI Foundations）、四個月 ChatGPT Work 免費的學生優惠只給美國的合格大學生，台灣沒有。\n最後給「怎麼自己去官方頁查現況」：academy.openai.com 登入後在側欄 Courses 看課程與時間，說明中心那一篇有完整課程表與徽章補發流程。全篇不要寫成上課心得或推薦，本站沒有修過任何一門課；也不要寫訂閱建議與比價。語言問題照 not_said 的寫法處理：官方頁沒有說課程語言，查核當天讀到的都是英文。",
+  "must_not_write": [
+    "不要寫成「四條新路徑」。公告新增的是給開發者、主管、教師與大學生的課程，加上既有的 Apply AI at Work，網站上呈現的是**四條路徑**：Apply AI at Work（既有）、Build with AI、Lead AI Adoption、Teach and Learn with AI。AI for Educators 與 AI for College Students 是 Teach and Learn with AI 底下的**兩門課，不是兩條路徑**。指派表把它們列成路徑，以公告與課程目錄頁的原文為準。",
+    "不要寫「OpenAI 宣布課程在台灣上線」或「台灣開放」。公告沒有講任何地區。正確寫法是：公告沒有寫開放地區，但 OpenAI 說明中心寫課程全球皆可修、只要有 ChatGPT 帳號，而台灣在 ChatGPT 的支援地區清單上。",
+    "不要寫「課程有中文」「課程只有英文」「將推出中文版」。官方沒有說明課程語言，只能寫查核當天讀到的頁面都是英文。",
+    "不要把徽章寫成證照、認證、資格、學分或學位，不要用「認證課程」當標題或小標。官方明寫 badges and certificates of completion are not certifications。",
+    "不要寫「OpenAI Certified」的內容、費用或時程——那是另一件事，本輪沒有查到那一頁。",
+    "不要印任何報名人數、完課人數或「已有多少人上過」。那是網頁上的即時計數，不是官方公布的統計。",
+    "不要把說明中心頁首的「Updated: 2 days ago」「Updated: last month」換算成確定日期。",
+    "不要寫「共 14 門課」之類的總數而不註明是編輯清點；官方沒有印任何門數。要寫就明寫是本站依官方課程表清點。",
+    "不要把四個月免費的 ChatGPT Work 學生優惠寫成台灣讀者可以領。原文寫的是 eligible U.S. college students。也不要補上優惠期限的年份（頁面只寫 October 31）。",
+    "不要寫任何訂閱建議或比價（照 ai.md：不寫購買建議）。每月 20 美元可以照官方原文寫一次，要標明是美國學生優惠期滿後的續訂價、幣別是美元，並且不加任何「划不划算」的評語。",
+    "不要寫本站上過課、測過難度、或評論課程品質。本站沒有註冊、沒有修課。",
+    "不要重述 ChatGPT Work 的功能（ai-news-chatgpt-work-20260709 已經寫完，那是本篇的第二個結尾連結）。",
+    "不要寫「業界首創」「最完整」「唯一」這類最高級；也不要寫「取代學位」「等於實務經驗」這種推論。",
+    "不要把課程內容寫成提示詞教學。站上已有整套教學文，本篇是新聞。",
+    "不要寫台灣的學校、教育部或任何機構與 OpenAI Academy 有合作或導入計畫——沒有任何來源。",
+    "正文不要出現「本文」兩個字（DELTA-4-7 第 14 條）；指涉自己用「這一篇」。查核日那句寫成「這一篇的資料在 2026 年 9 月 23 日查核」。",
+    "不要每一句都掛「官方表示」。歸屬該做的地方（OpenAI 自己對課程效果的宣稱）做一次就好。"
+  ],
+  "second_link": {
+    "slug": "ai-news-chatgpt-work-20260709",
+    "text": "ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-chatgpt-work-20260709",
+    "verified": "2026-09-23 讀 apps/api/app/guides/content/ai-news-chatgpt-work-20260709.json，locales 有 zh-TW／en／ja／ko／zh-CN，zh-TW 的 title 逐字是「ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？」，news_date 2026-07-09、display_order 139。link text 照抄這一行，不要改寫。"
+  },
+  "hero_label": "照角色選路徑",
+  "diagram": {
+    "title": "四條路徑照角色分",
+    "caption": "OpenAI 於 2026 年 9 月 21 日公布的 OpenAI Academy 學習路徑整理：一般工作者、開發者、主管與師生各有一條路徑，資料查核日 2026 年 9 月 23 日。",
+    "nodes": [
+      ["一般工作者", "Apply AI at Work"],
+      ["開發者", "Build with AI"],
+      ["主管", "Lead AI Adoption"],
+      ["教師與學生", "Teach and Learn with AI"]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把內容包拆成 96 條可查的主張（title、description、5 句 summary、14 段正文、表格 16 格與 caption、圖解 caption、6 題 FAQ、callout、兩個結尾連結、4 條 sources），再用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同主機間隔 ≥1 秒，在 2026-09-23 重抓 sources[] 四條全部（公告 200／420,321 B、說明中心課程 200／110,050 B、支援地區 200／70,122 B、課程頁 200／296,459 B），剝 <!-- -->／script／style、html.unescape、去掉 U+2060 後逐句比對；課程頁是 Next.js 應用，正文從 <script id=\"__NEXT_DATA__\"> 的 props.pageProps.data.course.course 取出。所有英文引文以連續字串比對確認在今天的正文裡；兩個結尾連結逐字比對目標內容包的 zh-TW title。工具在 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\ai-news-openai-academy-paths-20260921\\。",
+    "claims_checked": 96,
+    "changes": [
+      {
+        "claim": "Apply AI at Work 這次有沒有變動",
+        "before": "Apply AI at Work（一般工作者路徑）是原本就有的路徑，這次沒有變動。",
+        "after": "Apply AI at Work（一般工作者路徑）是原本就有的路徑，這次新增的課程是加在它旁邊。",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "AI Leadership 的對象與學習目標出自哪一份文件",
+        "before": "OpenAI 說明中心的課程表列出預估時間 180 分鐘……目標是幫助負責策略、導入與變革管理的人評估 AI 能在哪裡創造商業價值，練習設定優先順序、對齊利害關係人，並做出一份初步的 AI 策略草案。",
+        "after": "（對象與商業價值那一段改掛回公告原文：連上商業優先順序、定義負責人與治理方式、做出初步的 AI 策略與導入藍圖；說明中心的課程表只承擔 180 分鐘、內容欄與「不對應單一產品」）",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "AI for Educators 的溝通對象清單",
+        "before": "或是改寫給學生與同事的溝通內容",
+        "after": "或是改寫給學生、教學助理與同事的溝通內容",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "AI for College Students 的初學者是否該先修 AI Foundations",
+        "before": "如果是完全沒用過 ChatGPT 的初學者，官方建議先修 AI Foundations。",
+        "after": "課程頁沒有列先修課程，講 AI 基礎與提示詞的入門課是 Apply AI at Work 路徑裡的 AI Foundations。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "FAQ 第三題同一件事",
+        "before": "如果是完全沒用過的初學者，官方建議先修 AI Foundations 這門入門課。",
+        "after": "課程頁沒有列先修課程；要從零開始的話，課程表裡講 AI 基礎與提示詞的是 AI Foundations。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "企業怎麼搭配路徑（方向寫反）",
+        "before": "新人訓練安排 Apply AI at Work，技術團隊上 Build with AI，主管訓練則放進 AI Leadership 所在的 Lead AI Adoption。",
+        "after": "新人訓練安排 Apply AI at Work，開發者與技術團隊上 Build with AI，主管、Champion 或轉型計畫裡則放 AI Leadership。",
+        "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+      },
+      {
+        "claim": "徽章不是什麼",
+        "before": "徽章由 Accredible 發出並管理，不是學分、學位或任何正式資格的替代。",
+        "after": "徽章由 Accredible 發出並管理，代表的是完成課程並通過測驗這兩件事。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "個人 vs 透過組織報名",
+        "before": "個人身分就能修，學校或公司的員工也是用個人身分報名。",
+        "after": "可以用個人身分修，也可以透過所屬的組織修。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "選錯帳號的後果",
+        "before": "選錯 email 就得從頭來過。",
+        "after": "選錯帳號，課程紀錄與徽章就會掛在那個 email 上。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "October 31 是什麼期限",
+        "before": "期限寫到 10 月 31 日（頁面沒有印年份）",
+        "after": "要在 10 月 31 日前領取（頁面沒有印年份）",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "summary 第五句對台灣的否定範圍",
+        "before": "免費期滿後每月 20 美元續訂，台灣沒有對應方案。",
+        "after": "免費期滿後每月 20 美元續訂，頁面沒有寫台灣有對應方案。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      },
+      {
+        "claim": "第二段的「沒有第三方測試可以對照」",
+        "before": "；規格、時程與價格數字都是 OpenAI 自己的說法，沒有第三方測試可以對照。",
+        "after": "；課程時間、測驗規則與學生優惠的價格都是 OpenAI 自己頁面上寫的。",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "語言那一句引到的頁面",
+        "before": "公告、課程目錄與課程頁讀到的內容都是英文。（正文與 FAQ 各一次）",
+        "after": "公告、說明中心的課程表與課程頁讀到的內容都是英文。（正文與 FAQ 各一次）",
+        "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+      },
+      {
+        "claim": "callout 裡寫給撰稿者的指示",
+        "before": "規格與價格數字一律是 OpenAI 自己的說法；四個月免費 ChatGPT Work 學生優惠期滿後的續訂價可以照官方原文引用，但不做划算與否的評語。",
+        "after": "課程時間與價格數字一律是 OpenAI 自己的說法。",
+        "source_url": "https://academy.openai.com/public/courses/ai-for-college-students-gxgmr"
+      }
+    ],
+    "open_questions": [
+      "課程頁上「Claim the student offer」的連結指向 https://chatgpt.com/students/2026/，網址裡帶 2026；頁面印出來的文字仍然只有 October 31、沒有年份。依研究紀錄的規定沒有把年份補進正文，但站主若要寫年份，需要先取得 chatgpt.com/students 那一頁作為來源。",
+      "「四條路徑」是依公告的四個角色小標與說明中心課程表的四個 Category 欄位清點的，官方沒有印出「四」這個字；研究紀錄的 must_not_write 第一條已裁定照四條寫，維持原狀。",
+      "第一段與第二段各有兩個以上的來源指示詞（公告／說明中心），在這一篇是承重的（公告沉默、說明中心才寫全球可修），沒有改成單一歸因。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 2 條：只做 zh-TW，自檢不帶 --full。",
+      "DELTA-4-7 第 10 條：事件日 2026-09-21，照公告署名日期；本輪重抓仍印 September 21, 2026。",
+      "研究紀錄 unverified_or_excluded 第 2 條：AI for Educators 與 AI Leadership 兩個課程頁不在 sources[]，只有那兩頁才有的細節不得進正文——撰稿把「建議先修 AI Foundations」寫進大學生那一節，已改掉。",
+      "研究紀錄 must_not_write 第 9 條：不補學生優惠的年份、不寫台灣可以領，已逐句核對。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, not the writer, not round 1)",
+      "checked_on": "2026-09-23",
+      "method": "第二輪自己重抓 sources[] 四條（curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同主機間隔 ≥1.2 秒，任何請求都沒有帶入姓名或 email）：公告 200／420,322 B、說明中心課程 200／110,051 B、支援地區 200／70,121 B、課程頁 200／296,427 B，四條都讀到正文；課程頁的正文從 <script id=\"__NEXT_DATA__\"> 的 props.pageProps.data.course.course 取，description 是 Slate 節點，另外攤平成純文字。範圍：第一輪改過的 14 處（15 次字串替換）逐句回一手來源重驗、第一輪新寫進去的每一句逐句回原文、再加 58 條原判 CONFIRMED 的（占 78 條的 74%），合計重查 72 條。研究紀錄 44 條 verified_facts 與 4 條 sources 的 verbatim_quote 全部用程式做連續字串比對，另比對正文裡三段英文引文。工具在 C:\\\\Users\\\\x8120\\\\mokaair-work\\\\news47\\\\_tools\\\\ai-news-openai-academy-paths-20260921-r2\\\\。",
+      "claims_rechecked": 72,
+      "round_1_changes_reverified": 14,
+      "changes": [
+        {
+          "claim": "AI for Educators 的內容欄「出題」",
+          "before": "備課、出題、評量與溝通內容（正文第 6 段與表格第 3 列各一次）",
+          "after": "備課、課堂活動、評量與溝通內容",
+          "why": "說明中心課程表寫的是 Lesson planning, activities, assessments, and communications；activities 是課堂活動，不是出題，而 assessments 已經譯成評量。公告同一節也寫 create an activity or assessment。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "測驗沒過可以重考幾次",
+          "before": "沒通過可以再考一次，題目會重新隨機抽。",
+          "after": "沒通過可以重考，題目會重新隨機抽。",
+          "why": "原文 If you do not pass, you can try again with a newly randomized selection of questions. 沒有寫只能再考一次；「再考一次」會被讀成只有一次補考機會。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "FAQ Q1 末句的否定範圍",
+          "before": "官方沒有另外說明台灣以外還有沒有其他限制。",
+          "after": "查核當天讀到的這幾頁，沒有再寫台灣還有什麼其他限制。",
+          "why": "「官方沒有」超出查核範圍（本篇只讀了四頁），而且「台灣以外」語意不清；照正文的寫法限縮到讀過的頁面與查核日。",
+          "source_url": "https://help.openai.com/en/articles/7947663-chatgpt-supported-countries"
+        },
+        {
+          "claim": "FAQ Q2 的題目仍在問學分",
+          "before": "課程徽章等於證照或學分嗎？",
+          "after": "課程徽章等於證照嗎？",
+          "why": "第一輪已把「不是學分、學位或任何正式資格的替代」從正文刪掉（無來源），FAQ 的題目與答句卻原封不動；credit 與 degree 在四條來源全文各出現 0 次。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "FAQ Q2 答句的學分／學位",
+          "before": "它們代表完成課程並通過測驗，不是學分或學位。",
+          "after": "它們代表的是完成課程並通過測驗這兩件事。",
+          "why": "同上；改成與正文一致的說法 Each badge recognizes that you completed a course and passed the assessment.，FAQ 答案回到正文的子集。",
+          "source_url": "https://help.openai.com/en/articles/20001270-openai-academy-courses"
+        },
+        {
+          "claim": "FAQ Q5 首句的否定範圍",
+          "before": "官方頁面沒有說明課程使用哪些語言。",
+          "after": "公告與說明中心都沒有說明課程使用哪些語言。",
+          "why": "「官方頁面」是不設限的否定；正文寫的是「公告與說明中心都沒有寫」，兩處改成同一個範圍。language 在公告與說明中心全文各 0 次。",
+          "source_url": "https://openai.com/index/expanding-openai-academy-with-new-learning-paths/"
+        }
+      ],
+      "round_1_changes_upheld": [
+        "「這次新增的課程是加在它旁邊」：These join Apply AI at Work… 逐字命中，公告沒有寫 Apply AI at Work 未改版。",
+        "AI Leadership 的對象與商業價值改掛回公告：helps people responsible for strategy, adoption, and change management assess where AI could create business value. 與 Learners connect an initiative to business priorities, define ownership and governance, and develop an initial AI strategy and roadmap for adoption. 兩句都在公告正文，說明中心課程表只承擔 180 min／內容欄／No single product。",
+        "「學生、教學助理與同事」：adapt communications for students, teaching assistants, or colleagues 逐字命中。",
+        "刪掉「官方建議先修 AI Foundations」：課程頁 __NEXT_DATA__ 的 prerequisiteCourses 是空陣列、整頁 AI Foundations 出現 0 次；改成「課程頁沒有列先修課程」與說明中心課程表的 AI Foundations 一列，兩者都撐得住。",
+        "「要在 10 月 31 日前領取」：Claim the student offer by October 31 是領取期限；頁面文字仍然沒有年份（超連結是 https://chatgpt.com/students/2026/，依裁定不進正文，第二輪維持不寫）。",
+        "企業搭配路徑的方向：A company might use Apply AI at Work in employee onboarding, offer Build with AI courses to developers and technical teams, and include AI Leadership in an executive, Champion, or transformation program. 與改後的正文一致。",
+        "「徽章……代表的是完成課程並通過測驗這兩件事」：Each badge recognizes that you completed a course and passed the assessment. 命中。",
+        "「可以用個人身分修，也可以透過所屬的組織修」：Learners can access courses as individuals or through an organization. 命中。",
+        "「選錯帳號，課程紀錄與徽章就會掛在那個 email 上」：If you use the wrong account, your course activity and OpenAI Academy badges will be associated with the email address for that account. 命中。",
+        "語言那一句改引「說明中心的課程表」：三個來源都在 sources[] 裡，而且今天讀到的都是英文。",
+        "summary 第五句「頁面沒有寫台灣有對應方案」：課程頁只寫 Eligible U.S. college students，沒有其他地區的方案。",
+        "第二段「課程時間、測驗規則與學生優惠的價格都是 OpenAI 自己頁面上寫的」：時間與測驗規則在說明中心、價格在課程頁，三者都是 OpenAI 自己的頁面。",
+        "callout 刪掉寫給撰稿者的指示，保留「課程時間與價格數字一律是 OpenAI 自己的說法。」"
+      ],
+      "checked_and_correct": [
+        "事件日鏈：公告署名區今天仍只印 September 21, 2026，slug 後綴 20260921＝news_date 2026-09-21＝正文第一段一致。",
+        "台灣那條鏈三段今天全部重抓命中：公告全文 countr／region／global／Taiwan 各 0 次（只有頁尾語系選單印 English United States）；說明中心 OpenAI Academy courses are available globally to anyone with a ChatGPT account.；支援地區頁第 194 行 Taiwan（前後 Svalbard and Jan Mayen、Tajikistan）。",
+        "表格 16 格逐格對說明中心課程表（AI Foundations 60–75 min、AI Leadership 180 min、AI for Educators 45 min、AI for College Students 45 min 與各自的 What's covered 欄）全部相符，內容欄的「出題」已於本輪改掉。",
+        "徽章規則：完成課程＋測驗 80% 以上、10–20 題、題庫 50 題、Accredible 發放與管理、eligible pathway 才有完課證書、三門獨立課不構成路徑——說明中心與課程頁兩處一致。",
+        "兩段英文引文（The educator decides what belongs in their teaching.／These badges and certificates of completion are not certifications and do not guarantee eligibility for a future certification.）與「Eligible U.S. college students」逐字命中。",
+        "課程頁：Level: Intermediate、designed for higher education students who already have some experience using ChatGPT and writing prompts、No prior experience with Projects or Work is required、four months of ChatGPT Work for free、$20/month after the free period unless you cancel——全部命中。",
+        "兩個結尾連結的 text 與目標內容包的 zh-TW title 用程式逐字比對，兩條都相同。",
+        "sources[] 四條的 title／url／checked_on 與研究紀錄一致，checked_on 2026-09-23 與表格 caption、圖解 caption 同日。",
+        "體例：全篇 0 個「本文」；description 199 字、句尾只有「（2026 年 9 月查證）」；title／description／summary 沒有清點數字；第一段一個歸因詞、其餘每段最多兩個；16 段正文合計 2,734 字（1,800–3,000）；沒有購買建議、比價或投資語氣，廠商宣稱都有歸因。",
+        "活資料仍未進正文：課程頁 enrollCount 今天讀到 824（第一輪 823、研究時 815），說明中心頁首 Updated: 2 days ago、支援地區頁 Updated: last month 都沒有被換算。"
+      ],
+      "quote_continuity_notes": [
+        "44 條 verified_facts 的 verbatim_quote 全部命中。其中 6 條（Gradual 那句、四列課程表、課程頁的 Duration: 45 minutes）在「標籤之間補空白」的剝法下對不上，是因為它們取自「標籤直接刪掉、不補分隔」的渲染：把空白全部去掉後 6 條都命中，四列課程表各自是同一列的儲存格依序相接，不是把不同段落拼在一起，所以不改。",
+        "sources[] 四條的 verbatim_quote 今天也全部命中。"
+      ],
+      "open_questions": [
+        "每月 20 美元在 summary 第五句與正文最後一段各出現一次；must_not_write 第 10 條寫「可以照官方原文寫一次」。兩處都是純事實、沒有划算與否的評語，而且 summary 必須是正文的子集，所以沒有動——若站主要嚴格照「一次」解，刪 summary 那一句的價格即可。",
+        "第一輪留下的學生優惠年份問題維持原樣：課程頁文字只有 October 31，超連結帶 2026；要寫年份得先把 chatgpt.com/students 那一頁抓下來並換掉 sources[] 其中一條。",
+        "summary 第四句的「60 到 75 分鐘」只出現在表格、沒有出現在任何一段正文。check_article.py 的 body_without_summary 把表格算進正文，所以自檢通過；若之後有人把這條規則收緊成「只看段落」，要把這個時間補進正文。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}
