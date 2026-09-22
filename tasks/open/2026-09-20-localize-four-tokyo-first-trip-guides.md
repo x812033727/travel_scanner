@@ -1,7 +1,7 @@
 ---
 id: 2026-09-20-localize-four-tokyo-first-trip-guides
 title: Localize four Tokyo first-trip guides and diagrams
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch007-resume
@@ -32,11 +32,18 @@ then hand off for independent review before any import or publication.
 
 ## Definition of done
 
-- [ ] Four full documents in each of the four missing languages, including title,
+- [x] Four full documents in each of the four missing languages, including title,
   description, every body block, tables, links, captions, alt text and source titles.
-- [ ] Four-language SVG variants for each diagram, rendered and checked for overflow.
-- [ ] Source versions and hashes pinned; no existing `zh-TW` prose or artwork replaced.
-- [ ] Independent editorial review completed before a separate release task uses the packs.
+- [x] Four-language SVG variants for each diagram, rendered and checked for overflow.
+- [x] Source versions and hashes pinned; no existing `zh-TW` prose was replaced. Original
+  Narita artwork has reviewed geometry/style corrections with all 25 strings preserved;
+  Transit has reviewed layout corrections and one explicit IC-card label correction below.
+- [x] Independent editorial and asset review completed before a separate release task uses
+  the packs.
+- [ ] Final Git-bound canonical wrapper, repository-description preservation receipt and
+  all required CI checks pass before the authorized production release.
+- [ ] Publish only the 16 missing locales, preserve the four existing zh-TW rows and verify
+  all five languages on desktop/mobile, including the two deployed original SVG corrections.
 
 ## Steps
 
@@ -146,3 +153,79 @@ Remaining: 100 source-driven translated leaf updates, 32 same-locale site-link
 rewrites, four transit price cards, and all 16 diagram visual repairs/reviews.
 Stay's sole unpublished repository /description edit must be preserved through
 the reviewed preservation path; no prior HOLD is promoted to PASS by this note.
+
+### 2026-09-22 initial reviewed integration
+
+- Integrated the 16 complete `en`, `ja`, `ko` and `zh-CN` documents into the four
+  existing packs. Each frozen document differs only at its independently reviewed
+  diagram `height` pointer; all other prose, numbers, URLs, credits, source dates and
+  document structure remain byte/model-bound to the reviewed draft.
+- Preserved every existing repository `zh-TW` GuideDocument and article metadata,
+  including the repository-only Tokyo stay description. No live source was copied
+  over that repository edit.
+- Added the 16 independently reviewed localized SVGs. At this checkpoint the existing
+  original asset changed was
+  `apps/web/public/guides/narita-haneda-to-tokyo/diagram-1.svg`: nine reviewed
+  geometry/style substitutions connect N'EX through Shinagawa, separate the Tokyo
+  and Shinjuku Airport Limousine branches, and move inherited off-canvas labels back
+  into the 1600x900 viewBox. Its title, description, all 25 decoded visible strings,
+  dimensions and source document remain unchanged.
+- Text review receipts:
+  `revised-text/root-narita-disney-text-delta-review.json` SHA-256
+  `043ab361ab2940127c5ebeeb57a682a3416fbaac7697dde445879635e86e1aca` and
+  `revised-text/independent-review-transit-stay-pass.json` SHA-256
+  `4e00cbaf21890667a20a300578979c146e40379ca25f80efec8ace052472e640`.
+- Initial asset/render receipt (Transit superseded by the final review below):
+  `revised-assets/independent-final-review/receipt.json` SHA-256
+  `54003aa4aaaaaf49a5e08e5da878aefc4ca1465370383a6f16af0640903c2357`.
+  It binds 17 SVGs, 68 independently viewed PNG renders and all 16 height pointers.
+- Structural integration audit:
+  `integration/integration-audit.json` SHA-256
+  `3ed336cbbcea3fb9500b98efaaf9cdf7316035cd251545c639bdad8c2530dd1e`.
+
+Still incomplete for the separate release sequence:
+
+- [ ] Independent review of the committed Git bytes and preservation freeze.
+- [ ] Pull request CI and merge.
+- [ ] Import/publish and production desktop/mobile browser QA.
+
+### 2026-09-22 final Transit review and scoped validation
+
+The original Transit SVG had inherited 13/14px labels and an overflowing IC-card
+banner. Its reviewed layout now fits all text inside the original 1600x900 canvas
+at a minimum 15px. One visible label in all five languages changed from the
+generic `180–330` subway-fare range to the source paragraph's advice to tap the IC
+card for each ride. Tokyo Metro's official regular-ticket page distinguishes
+paper fares from IC fares, so that range was inappropriate in the IC-card branch;
+the published prose never contained the range. The diagram correction neither
+changes the zh-TW GuideDocument nor rewrites its source-check dates.
+
+Root review also restored two source graph edges in each of the four translated
+diagrams: the starting banner to question 1, and the skip-JR-Pass result to
+question 2. All ten decision branches, the Tokyo-day return cue, all other text
+and existing geometry were checked. Earlier candidates and HOLD evidence remain
+outside Git. The final review binds all five assets and twenty desktop/mobile
+pan renders, and independently reruns the numeric guard over all eighteen final
+diagrams without exceptions.
+
+Evidence under `C:/Users/x8120/.codex/article-localization-release/batch007-resumption-20260922/`:
+
+- `revised-assets/transit-final-v4/root-independent-review-pass.json`, SHA-256
+  `908332306b40007b3c0ac94a53df47a36979258d26d6884f8229cfe5f06f3d43`.
+- `integration/root-final-transit-integration.json`, SHA-256
+  `085a65300e695eee8a704c2ef30d2e3493decb0655e3089b73c24e4f15f5bf65`.
+- `live-source-full-20260922T090401Z.json`, SHA-256
+  `fd5b140d099030ce3f17479e7ae72683b90aacab939b4aac670115a678896a54`.
+  All four published source versions and document hashes remain unchanged, with
+  draft, latest revision and published document identical for each zh-TW locale.
+
+Scoped lint passes using the independently reviewed diagram-dimension change in
+PR #658 (`6d7a932482f62ce607a82b86d183436a40012948`). Only the four complete English
+translations' advisory length warnings remain. The four repository zh-TW documents
+and article metadata are unchanged. Tokyo stay's sole live/repository difference
+remains `/description` and needs the final Git-bound preservation review.
+
+The final release must deploy and separately hash-check the original Narita and
+Transit SVGs; they are referenced by the unchanged zh-TW documents and are not
+selected locale-import operations. Complete canonical release and public browser
+acceptance remain outstanding.
