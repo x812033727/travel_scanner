@@ -401,8 +401,10 @@
     "method": "2026-09-23 01:03-01:04（台北）用規格指定的 Mokaair-editorial UA 自行重抓 sources[] 四條（同一主機間隔 ≥ 1 秒，任何請求都沒有帶入任何人的姓名、email 或個人資料），去掉 HTML 註解與 script／style 後 html.unescape 抽正文，再把 title／description／summary 五句／16 段正文／表格四列與 caption／圖解 caption／FAQ 五題／callout／兩個結尾連結／四條 sources 拆成 101 條主張逐條比對，英文引句用連續子字串比對（正規化 U+2011、彎引號、NBSP 後）。四條今天的結果：advisory 200／370,896 B／正文 4,942 字元；agmai 200／67,830 B／2,508 字元；mathandai 200／10,873 B／6,290 字元；navier 200／457,098 B／11,975 字元——四條都讀到正文，openai.com 本輪沒有 403。把撰稿代理 00:26-00:28 存下的 _raw 正文與我 01:03 的版本正規化空白後比對，四頁逐字相同，這段期間來源沒有改動。兩個結尾連結的 text 與目標內容包的 zh-TW title 用程式做字元級比對，兩條都完全相同。",
     "claims_checked": 101,
     "claims_confirmed": 87,
-    "claims_changed": 13,
-    "claims_not_found": 1,
+    "claims_changed": 11,
+    "claims_not_found": 2,
+    "claims_typography_only": 1,
+    "edits_applied": "13 筆事實／表述編輯（NOT FOUND 的「普林斯頓」散在 3 個位置）＋ 8 處漏空格",
     "changes": [
       {
         "claim": "標題把小組寫成 OpenAI 的小組",

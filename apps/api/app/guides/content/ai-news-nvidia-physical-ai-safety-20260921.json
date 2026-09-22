@@ -1,0 +1,207 @@
+{
+  "slug": "ai-news-nvidia-physical-ai-safety-20260921",
+  "kind": "life",
+  "destination_id": null,
+  "topics": ["ai", "ai-news"],
+  "valid_until": null,
+  "news_date": "2026-09-21",
+  "featured": false,
+  "display_order": 176,
+  "locales": {
+    "zh-TW": {
+      "title": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+      "description": "2026 年 9 月 21 日，NVIDIA 在官方部落格說明實體 AI（自駕車與機器人）的安全為什麼要橫跨硬體、軟體、AI 行為與運作環境。內容整理 Halos 安全系統目前哪些部分已完成第三方認證、哪些還在檢驗中，以及 ANAB 認可的檢驗實驗室屬於哪種類別、效期到何時（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/ai-news-nvidia-physical-ai-safety-20260921/hero.jpg",
+        "alt": "原創插圖：畫面由下而上排列四個長條色塊，依序代表硬體、軟體、驗證與部署四個安全層；最上方一個長條改用虛線外框，代表這一層目前只是檢驗報告，尚未等於最終的系統認證。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 21 日，NVIDIA 在官方部落格發表〈Why Deploying Physical AI at Scale Demands Safety at Every Layer〉，主張自駕車與機器人這類「實體 AI」的安全不能只靠部署前檢查一次，而要橫跨硬體到部署後的每個環節。這類機器愈來愈常出現在生活周遭，但這不是產品發表，沒有價格、上市日，四個官方來源都沒提到台灣；以下整理 Halos 安全系統目前由哪些機構檢驗到哪一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 23 日查核，依據 NVIDIA 官方部落格、AI Trust Center 的兩個 Halos 頁面，以及 ANAB 核發的 ISO/IEC 17020 認可證書與範圍檔案；規格與宣稱一律標明是 NVIDIA 自己的說法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 21 日，NVIDIA 在官方部落格說明實體 AI（自駕車與機器人）的安全，為什麼必須橫跨硬體、軟體、AI 行為、運作環境與部署生命週期，而不是部署前檢查一次就結束。",
+            "自駕車端，TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與相關工程流程認證到 ISO 26262 ASIL D；機器人端，TÜV Rheinland 目前還在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度，尚未完成。",
+            "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構，登記類別是 Type C（second party），檢驗方式是審閱文件，效期到 2027 年 1 月 2 日；NVIDIA 也說明，最終的系統級認證仍要由獨立第三方機構完成。",
+            "ANAB 的認可被 NVIDIA 說成在 80 個國家受到承認、包含中國，但查核到的四個官方頁面都沒有提到台灣，也無法從這句話推論台灣是否在其中。",
+            "機器人端的 Halos Core for IGX 目前只開放已註冊的開發者早期存取，人形機器人 Digit 5 的安全系統整合也還在進行中，尚未出貨。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼「部署前檢查一次」不夠"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 表示，安全必須橫跨「the hardware, software, AI, operating environment and deployment lifecycle」（意為：硬體、軟體、AI、運作環境與部署生命週期），理由有四個：環境動態，工廠倉庫無法只靠靜態分區控制；AI 行為需要保證機制，ISO/IEC TS 22440 才剛開始處理 AI 特有風險；部署持續進行，重大變更「may require additional safety testing」（意為：可能需要額外安全測試，非必然）；情境複雜度高，測試要搭配模擬與合成資料。"
+        },
+        {
+          "type": "paragraph",
+          "text": "市場研究機構 ABI Research 預測，到 2035 年前 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間全球約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下，ABI Research 原始報告要付費訂閱、Omdia 報告連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自駕車與機器人，安全積木各自擺在哪裡"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 表示，自駕車與機器人原則相通，但「the platforms, standards and evidence remain specific to each domain」（意為：平台、標準與證據各自不同）。自駕車端，Halos OS 建立在 ASIL-D 認證的 DriveOS 上；機器人端硬體 IGX Thor 帶專用功能安全島，「designed to support systems developed for standards including IEC 61508 and ISO 13849」（意為：設計上支援 IEC 61508 與 ISO 13849 等標準），用的是「支援」，非已取得認證。"
+        },
+        {
+          "type": "paragraph",
+          "text": "應用端，Geely、Isuzu、Nissan 與 Einride 正在 NVIDIA Hyperion 平台上打造「level 4-ready」（意為：具備 4 級自駕準備度）車輛，還不是已上路載客的 4 級自駕車；機器人端則有 Advantech 與 NexCOBOT 打造安全設計的 IGX 系統，Agility 正整合 IGX Thor 與 Halos Core 進人形機器人 Digit 5，都還是進行式。"
+        },
+        {
+          "type": "table",
+          "header": ["安全說法", "涵蓋對象", "目前狀態", "認定者"],
+          "rows": [
+            ["已完成認證", "自駕車：DriveOS 6.0 與相關工程流程", "通過 ISO 26262 ASIL D、ISO/SAE 21434", "TÜV SÜD"],
+            ["還在檢驗中", "機器人：IGX Thor、Halos OS、Holoscan Sensor Bridge", "檢驗功能安全認證準備度，尚未完成", "TÜV Rheinland"],
+            ["機構獲得認可", "NVIDIA 自家的 Halos AI Systems Inspection Lab", "認可為 ISO/IEC 17020 檢驗機構，登記類別 Type C（second party）", "ANAB"],
+            ["設計上支援", "機器人硬體 IGX Thor", "支援 IEC 61508、ISO 13849 等標準，非已取得認證", "NVIDIA 自述"]
+          ],
+          "caption": "NVIDIA 在 2026 年 9 月 21 日部落格文章、NVIDIA 官方頁面與 ANAB 認可範圍檔案裡，對 Halos 安全系統使用的四種不同說法整理，查核日 2026 年 9 月 23 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「檢驗中」與「已認證」是兩回事"
+        },
+        {
+          "type": "paragraph",
+          "text": "自駕車端已有完成式結果：NVIDIA 表示「TÜV SÜD certified NVIDIA’s Automotive Product Lifecycle software process and DriveOS 6.0 to ISO 26262 ASIL D」（意為：TÜV SÜD 已把 NVIDIA 的 Automotive Product Lifecycle 軟體流程與 DriveOS 6.0 認證到 ISO 26262 ASIL D），也把車用工程流程認證到 ISO/SAE 21434。"
+        },
+        {
+          "type": "paragraph",
+          "text": "機器人端則是進行式：官方寫道「TÜV Rheinland is inspecting NVIDIA IGX Thor, Halos OS and Holoscan Sensor Bridge for functional-safety certification readiness」（意為：正在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度），還沒完成。NVIDIA 另一個機器人頁面卻把 Halos OS 描述成「safety-certified operating system foundation」（意為：已通過安全認證的作業系統基礎），與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ANAB 認可的不是任何一輛車或機器人，而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab，讓它符合 ISO/IEC 17020、登記類別「TYPE C (SECOND PARTY) BODY」（意為：第二方型檢驗機構），檢驗方式是「review of documentation」（意為：審閱文件），效期到 2027 年 1 月 2 日。NVIDIA 表示，實驗室補充既有認證工作，最終系統級認證仍由獨立第三方機構完成——檢驗報告不等於系統認證。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-nvidia-physical-ai-safety-20260921/diagram-1.svg",
+          "alt": "四格圖解：由下而上分別是硬體層（晶片內建功能安全島）、軟體層（作業系統與安全防護）、驗證層（模擬與真實環境測試），最上方是檢驗報告，標示它不等於最終系統認證。",
+          "width": 1600,
+          "height": 900,
+          "caption": "NVIDIA 在 2026 年 9 月 21 日這篇文章裡列出的實體 AI 安全分層，以及檢驗報告與系統認證的分界，資料在 2026 年 9 月 23 日查核。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "誰需要這些證據，台灣讀者在哪裡"
+        },
+        {
+          "type": "paragraph",
+          "text": "NVIDIA 表示，製造商、主管機關、保險業者與職場安全團隊都需要證據，證明硬體、軟體、AI 行為與運作環境能在無人介入時安全運作；認證頁面稱 ANAB 認可「recognized in 80 countries, including China」（意為：在 80 個國家受到承認，包含中國），但沒列完整名單，四個官方頁面也沒有台灣敘述——頁面偶爾出現的「台灣 (Taiwan)」，其實是網站地區選單，無法從「包含中國」推論台灣在不在其中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這也不是事故或調查報導：四個來源裡沒有出現任何自駕車或機器人的事故、召回或主管機關調查。NVIDIA 自稱 Halos 是「the first and only full-stack safety system for physical AI」（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），這是廠商自己的說法，本站沒有比較其他公司的方案。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "現在能不能用，讀者可以怎麼自己查"
+        },
+        {
+          "type": "paragraph",
+          "text": "機器人端目前能用的有限：Halos Core for IGX 是「early access for registered developers」（意為：僅開放已註冊的開發者早期存取），不是公開上市產品；Digit 5 官方用未來式「will be the first production robot shipping with NVIDIA Halos OS」（意為：將會是第一台出貨時搭載 Halos OS 的量產機器人），還沒出貨——前面的「level 4-ready」車輛同樣是準備階段，非已載客上路的 4 級自駕車。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想自己核對的讀者，可到 NVIDIA AI Trust Center 的 Halos 頁面查目前元件，再從常見問題連到 ANAB 的證書與範圍檔案看版本號與效期；這四種強度——「已認證」「正在檢驗」「機構獲得認可」與「設計上支援」——值得記住，下次看到廠商的安全宣傳，可先問清楚是哪一種。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "NVIDIA Halos 的安全認證，現在到底通過了沒有？",
+              "answer": "要分自駕車與機器人兩邊看，不能一概而論。自駕車端，TÜV SÜD 已經把 NVIDIA 的 DriveOS 6.0 與相關工程流程認證到 ISO 26262 ASIL D，也把車用工程流程認證到 ISO/SAE 21434。機器人端則還在進行中：TÜV Rheinland 目前是在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的功能安全認證準備度，官方用的字是「正在檢驗」，不是「已經認證」。"
+            },
+            {
+              "question": "ANAB 認可是不是等於 NVIDIA 的產品通過官方安全認證？",
+              "answer": "不是。ANAB 認可的是 NVIDIA 自家的 Halos AI Systems Inspection Lab 這間檢驗實驗室本身，讓它成為符合 ISO/IEC 17020 的檢驗機構，不是替任何一輛車、一顆晶片或一台機器人核發安全認證。NVIDIA 官方也說明，這間實驗室的檢驗工作是要補充既有的認證流程，最終的系統級認證仍要由獨立的第三方機構完成。"
+            },
+            {
+              "question": "這間檢驗實驗室算是獨立第三方機構嗎？",
+              "answer": "依 ANAB 的證書檔案，這間實驗室登記的類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方；NVIDIA 官方也寫明，最終認證要由獨立第三方機構完成。這不代表檢驗結果不可信，只是登記類別與「獨立第三方」不是同一件事，可以理解成廠商自己先做一層檢驗把關，再交給外部機構做最後認證。"
+            },
+            {
+              "question": "文章提到的自駕車與工業機器人數量，是 NVIDIA 的目標嗎？",
+              "answer": "不是。這兩個數字分別來自市場研究機構 ABI Research（預測到 2035 年前有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下，兩份原始報告都讀不到，一份要付費訂閱、另一份的連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。"
+            },
+            {
+              "question": "機器人現在可以直接買來裝 NVIDIA 的安全系統嗎？",
+              "answer": "還不行，目前是開發階段。Halos Core for IGX 現在只開放已經註冊的開發者早期存取，支援 Linux 與 Linux 加 QNX 兩種組態；Agility 的人形機器人 Digit 5，官方寫的是「將會是」第一台出貨搭載 Halos OS 的量產機器人，代表現在還沒有出貨。文章也完全沒有提到價格、上市日或台灣供貨時程。"
+            },
+            {
+              "question": "台灣在 NVIDIA 這套安全系統的規劃裡嗎？",
+              "answer": "查核到的四個官方頁面都沒有提到台灣。NVIDIA 把 ANAB 的認可說成在 80 個國家受到承認、包含中國，但沒有列出完整的 80 國名單，也沒有另外提到台灣，因此無法判斷台灣在不在其中；頁面上偶爾出現的「台灣 (Taiwan)」字樣，其實是網站自己的地區選單，不是涵蓋範圍的說明。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "檢驗報告不等於系統認證",
+          "text": "NVIDIA 9 月 21 日的部落格文章不是產品發表，沒有價格、上市日或台灣供貨時程。文中提到的自駕車與工業機器人規模預測，都是 ABI Research 與 Omdia 兩家外部機構的說法，不是 NVIDIA 的承諾，原始報告查核當下都讀不到。安全用詞上，「已認證」「正在檢驗」「機構獲得認可」與「設計上支援」代表四種不同強度，請對照前文的分層說明，不要視為同一件事。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-frontier-governance-20260528"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
+          "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "Physical AI Safety Certification｜NVIDIA Halos AI Systems Inspection Lab（AI Trust Center）",
+          "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "ANAB Certificate of Accreditation and Scope of Accreditation to ISO/IEC 17020:2012 — NVIDIA Corporation（AI-3345，scope version 002）",
+          "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "NVIDIA Halos for Robotics（AI Trust Center）",
+          "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/",
+          "checked_on": "2026-09-23"
+        }
+      ]
+    }
+  }
+}

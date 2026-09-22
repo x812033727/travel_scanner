@@ -542,5 +542,56 @@
       ]
     ]
   },
-  "corrections_applied": []
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把 title、description、兩段前言、summary 四條、十六段正文、表格九格與 caption、圖解 caption、六題 FAQ 的答句、兩個 callout、兩個結尾連結文字與四條 sources 拆成 63 條可查主張逐條核對。四條來源今天全部自己重抓（curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥2 秒，UA／標頭／查詢字串未帶入任何人的姓名、email 或個人資料），全部 200 且 bytes 與本紀錄相同：聯邦公報全文 143,135、新聞稿 68,276、Atkins 66,064、Peirce 69,814。四個網址另以 pressreleases.rss（200／18,350／25 筆）與 statements.rss（200／11,584／25 筆）的 2026-09-17 條目 <link> 覆核，不是拼出來的。HTML 去 <!-- -->、html.unescape、去標籤後比對；聯邦公報 .txt 在約 72 欄硬斷行，所有比對都用空白摺疊後的連續子字串判定。本紀錄的 59 條 verbatim_quote（4 條 sources ＋ 55 條 verified_facts）全部是今天抓到的 body 的連續子字串，0 條落空；sources[] 四個網址與內容包一致，title 與內容包逐字相同。另實測：全文 DATES 出現 0 次、on or before 0 次、comments must be received 0 次（沒有截止日成立）；全文每一次 U.S. person 都只綁在 TSV 自己身上（受涵蓋業者與 TSV 參與者都沒有國籍條件）；全文沒有出現 CFTC／Commodity Futures／joint statement。兩個結尾連結的 text 以程式逐字元比對目標內容包現行的 zh-TW title，兩個都 IDENTICAL。改完後 check_article.py 印 OK（zh-TW paragraphs 2969），pack_cli lint 只剩兩筆預期中的 image_missing。腳本在 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\crypto-news-sec-innovation-exemption-20260917\\，報告在 C:\\Users\\x8120\\mokaair-work\\news47\\factcheck\\crypto-news-sec-innovation-exemption-20260917-round1.md。",
+    "claims_checked": 63,
+    "verdict_counts": {
+      "confirmed": 59,
+      "changed": 4,
+      "not_found": 0,
+      "out_of_scope_style": 3,
+      "fact_changes": 2
+    },
+    "changes": [
+      {
+        "claim": "免責 callout 第一句：指涉自己的用語",
+        "before": "這一篇說明的是法規、技術與產業運作，不推薦任何加密資產、交易所、錢包或發行方，……",
+        "after": "本文說明的是法規、技術與產業運作，不推薦任何加密資產、交易所、錢包或發行方，……",
+        "source_url": "docs/news-2026-batch-4/crypto.md（樣板）；已發布的 crypto-news-occ-three-trust-charters-20260918 等四個內容包"
+      },
+      {
+        "claim": "免責 callout 第二句：查核日那一句的指涉用語",
+        "before": "監理規定、登記狀態、上線時程與服務條件依主管機關與業者當期公告為準，這一篇查核日為 2026-09-23。",
+        "after": "監理規定、登記狀態、上線時程與服務條件依主管機關與業者當期公告為準，本文查核日為 2026-09-23。",
+        "source_url": "docs/news-2026-batch-4/crypto.md（樣板）；改完後 title 與 text 與樣板逐字相同（只有查核日不同）"
+      },
+      {
+        "claim": "第九段：TSV 的融資禁令範圍（事實變更）",
+        "before": "TSV 也不得從事融資活動，不能借貸證券或加密資產、不能質押，也不能為參與者購買提供信用。",
+        "after": "TSV 也不得從事融資活動，不能借入證券或加密資產、不能質押，也不能為參與者購買提供信用。",
+        "source_url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt（條件 J：a TSV cannot borrow, whether secured or unsecured, securities or non-security crypto assets on the TSV；只禁止借入，中文「借貸」讀成借出與借入，安靜放大了來源）"
+      },
+      {
+        "claim": "第十九段：意見的送件管道（事實變更）",
+        "before": "可透過 SEC 網路意見表單或紙本送交秘書長，送件須註明檔號 4-927。",
+        "after": "可透過 SEC 網路意見表單、電子郵件或紙本送交秘書長，送件須註明檔號 4-927。",
+        "source_url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt（第 VI 節：Electronic Comments 含 internet comment form 與 Send an email to …；Paper Comments 送 Secretary, Securities and Exchange Commission。原句把三缺一的清單寫成完整清單）"
+      }
+    ],
+    "open_questions": [
+      "正文「命令對『非證券加密資產』的定義，沿用的是 SEC 與 CFTC 今年 3 月作成的聯名解釋令」：命令註 6 只寫 Securities Exchange Act Release No. 11412 (Mar. 17, 2026), 91 FR 13714, 13716 (Mar. 23, 2026)，全文一次都沒有出現 CFTC。「聯名」為真（站上 crypto-news-sec-crypto-interpretation-20260323 的來源正是同一份 91 FR 13714，其 AGENCY 欄同列兩個機關），但支撐來自站內交叉引用與本紀錄的 overlaps_existing_article，不在本篇 sources[] 內。第一輪沒有改；若要求每一句都指得到本篇 sources[]，改成「沿用今年 3 月刊登的加密資產解釋令（91 FR 13714）」即可（字數 −5）。",
+      "第六段「委員個人的看法，第五節另有整理」：指的是本文第五個 H2 段落，算法正確；但第十九段用「第 VI 節」指命令自己的節次，同一篇裡兩種「節」並存，讀者可能誤讀成命令的第 V 節（其實是 Duration）。屬風格，第一輪沒有改。",
+      "字數只剩 31 字：改完後 zh-TW paragraphs 2969（上限 3000）。第二輪要補句子必須先想好從哪裡挪字，不可以刪但書或限定詞來湊。",
+      "本紀錄 F34 的事實句含「且不是認股權證與權利的」，但它的 verbatim_quote 只涵蓋第一層那句。該主張本身有支撐（註 71『Tier 2 NMS stock under the LULD Plan is NMS stock that is not Tier 1 NMS stock and is not rights and warrants.』與正文『Because the LULD Plan excludes rights and warrants …, Tokenized NMS Stock for purposes of the TSV Exemption excludes rights and warrants.』），只是引文沒選到那一段。第一輪沒有動 verified_facts。",
+      "圖還沒畫（DELTA-4-7 第 15 條，刻意）。圖上若要放數字，只能用 75／0.25%／250／2.5% 與 2031-09-17，而且第一層與第二層的上限必須成對出現。"
+    ],
+    "coordinator_rulings": [
+      "幣圈垂直的固定免責 callout 必須是 docs/news-2026-batch-4/crypto.md 的樣板逐字，與已發布的幣圈內容包一致（撰稿者依 DELTA-4-7 第 14 條把「本文」改成「這一篇」，這一段是該條的例外）。第一輪已還原兩處，並與 crypto-news-occ-three-trust-charters-20260918 的同一段做過正規化比對，除查核日外完全相同。",
+      "事件日＝2026-09-17（命令署期與豁免效期起算日）；2026-09-22 刊登聯邦公報（91 FR 60168-60184）是「現在可以寫了」的觸發，不是事件。第一輪逐條覆核：署期行、第 V 節、新聞稿電頭、三份聲明頁面自印日期全部是 9/17，內容包的 slug 尾碼／news_date／第一段三者一致。",
+      "效期一律寫 2026 年 9 月 17 日至 2031 年 9 月 17 日，不得寫成「刊登後五年」或 2031-09-22。第一輪查了全篇六處提到期限的地方，每一處寫的都是 9/17→9/17；標題的「效期五年」是區間長度，不是新聞稿那句 five years after publication 的概述。"
+    ]
+  }
 }

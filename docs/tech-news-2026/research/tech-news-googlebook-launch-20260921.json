@@ -564,5 +564,79 @@
         "官方沒說何時上市"
       ]
     ]
+  },
+  "factcheck":   {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23（台北）01:08 以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 逐條重抓 sources[] 四條，同一主機間隔 2 秒，UA／標頭／查詢字串／表單都沒有帶入任何人的姓名、email 或個人資料。四條全部 HTTP 200，bytes 與研究紀錄一位元組不差（376,349／380,829／372,293／385,384），且預購、外觀設計、內建智慧三份 body 與撰稿代理留存的原始檔逐位元組相同；5 月發表文只差一個 `days_since_published` 分析計數（132→133），正文未變。研究紀錄 59 條 verified_facts 的 verbatim_quote 今天全部仍是原頁（去 `<!-- -->`、html.unescape 後）的連續子字串，0 條落空。把內容包拆成 104 條可查主張（title、description、兩段前言、5 條 summary、16 段正文、表格 15 格＋caption、6 題 FAQ、callout、圖解 alt／caption、兩個結尾連結、四條 sources、slug／news_date／display_order／topics）逐條回一手來源。另以同一 UA 打了一次 https://blog.google/products-and-platforms/devices/googlebook/ （200／381,521 B）確認正文三度請讀者回去看的那個分類頁真的存在；該頁不是 sources[]，只用來驗證導引、沒有拿它補任何事實。",
+    "claims_checked": 104,
+    "changes": [
+      {
+        "claim": "12 個月 Google AI Pro 與一年 GeForce NOW 的隨附對象（summary 第 5 條、軟體生態段最後一段、FAQ 第 4 題，共三處）",
+        "before": "起價機型隨附 12 個月 Google AI Pro……並附贈一年 GeForce NOW",
+        "after": "每一台 Googlebook 都隨附 12 個月 Google AI Pro……每一台也都附贈一年 GeForce NOW",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "Googlebook OS 更新的涵蓋範圍（summary 第 5 條與正文，共兩處）",
+        "before": "最長 10 年的例行功能更新",
+        "after": "最長 10 年的例行功能更新與各項更新",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "機身材質（規格段）",
+        "before": "機身材質是鋁、鎂合金與碳纖維",
+        "after": "機身採用鋁、鎂合金與碳纖維等高階材質",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      },
+      {
+        "claim": "Acer 那款翻轉機的範圍（規格段與表格 Acer 列，共兩處）",
+        "before": "全系列唯一的翻轉機",
+        "after": "首波五款中唯一的翻轉機",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      },
+      {
+        "claim": "表格 Dell 列的官方描述",
+        "before": "外型大膽，強調高度與螢幕的平衡",
+        "after": "外型大膽，強調高度、重量與螢幕的平衡",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      },
+      {
+        "claim": "Gemini Spark 的定性（Gemini 功能段最後一段）",
+        "before": "闔上筆電之後，背景代理 Gemini Spark 還會繼續處理複雜的請求並完成任務。",
+        "after": "闔上筆電之後，Gemini Spark 還會在背景繼續處理複雜的請求並完成任務。",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/"
+      },
+      {
+        "claim": "離線觀看的適用對象（軟體生態段）",
+        "before": "串流服務則有 Netflix、HBO Max（支援離線觀看）等，這是官方舉例的清單",
+        "after": "串流服務則有 Netflix、HBO Max 等並支援離線觀看，以上都是官方舉例的清單",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "GeForce NOW 對應到哪一種遊戲（遊戲與開發者段）",
+        "before": "Google 表示每台都附贈一年 GeForce NOW，可用來玩數千款 Android 遊戲或 AAA 大作",
+        "after": "Google 表示機上有數千款 Android 遊戲可以玩，AAA 大作則靠每台隨附的一年 GeForce NOW",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "summary 第 3、4 條把廠商宣稱寫成事實（must_not_write 第 7 條：規格數字一律「Google 表示」）",
+        "before": "首波五款機型由 Acer……／Gemini 功能 Magic Pointer、Rambler、Create My Widget 都內建在 Googlebook 上……",
+        "after": "Google 表示首波五款機型由 Acer……／Google 表示 Gemini 功能 Magic Pointer、Rambler、Create My Widget 都內建在 Googlebook 上……",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      }
+    ],
+    "open_questions": [
+      "正文、FAQ 第 1 題與 callout 三處都請讀者之後自己去 blog.google 的 Googlebook 分類頁看有沒有更新。該頁 2026-09-23 以同一 UA 取得 200／381,521 B，但伺服器送出的 HTML 只列到 5 月那篇（position_maximum 為 1、找不到三篇 9 月文的標題或網址），其餘要靠頁面自己的 load-more 由瀏覽器補。導引本身沒有錯（分類頁確實存在、三篇 9 月文頁尾的 Posted in 都指向它），但用純抓取驗證不到「最新的會出現在那裡」。要不要改成請讀者直接回預購那一頁看『Pricing, availability, and pre-order details』，請協調者決定。",
+      "hero.alt（依科技垂直規格不查也不改）寫「七個色塊標示美國與另外六個上市市場」。研究紀錄 unverified_or_excluded 第 2 條與 must_not_write 第 21 條都明令「六」是編輯清點、來源沒印，圖上不得出現。alt 不是圖，但它描述的構圖會把這個清點數字畫進去——請繪圖／協調者確認主圖不要把六個市場數成一個數字（列出國名或不給總數都可以）。",
+      "研究紀錄 verified_facts 第 39 條自己就把離線觀看寫成「Netflix、HBO Max（支援離線觀看）」，草稿是照抄它的。原文 `watch shows on popular streaming platforms like Netflix and HBO Max with offline viewing supported` 掛的是整個串流子句。內容包已改成不指定單一平台；紀錄的那一條沒有動（那是撰稿當時的證據紀錄），請第二輪知悉。",
+      "正文兩處寫了查證紀律：「本站沒有查證其他廠商是否也有同等認證」（安全段）與「本站沒有另外測試驗證」（FAQ 第 5 題）。must_not_write 第 9 條要求把 Level 5 寫成宣稱、這兩句做到了，但 DELTA-4-7 第 14 條說查證紀律不要寫進正文。查核不改文風，留給審稿決定要不要精簡。全篇「官方」出現 32 次、「Google 表示」14 次（含本輪新增的 3 次），以 2,784 字的篇幅屬偏高但每一句都是廠商宣稱，沒有可刪的無歸因句。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 5 條：Googlebook 全站只寫這一篇（科技垂直），AI 垂直不寫；同日三篇官方文與 5 月發表文全進 sources[]，Magic Pointer／Rambler／Create My Widget 由這一篇交代。內容包照辦，四條 sources 齊備。",
+      "DELTA-4-7 第 11 條：blog.google 頁首「Read AI-generated summary」一律跳過。查核確認正文、摘要、FAQ、callout 都沒有出現該區塊獨有的 select countries 說法，四處市場名單全部來自正文的 Pricing, availability, and pre-order details 小節。",
+      "ASSIGNMENTS.md：時間線寫「5 月 12 日發表、9 月 21 日開放預購、10 月 4 日上架」，不可寫成 9/21 才發表。標題、description、第一段、FAQ 第 2 題與圖解四格都照此，無違反。",
+      "本輪沒有改標題，研究紀錄的 title 不動；checked_on 四處（內容包四條 sources、研究紀錄、第二段、表格 caption、圖解 caption）本來就一致且等於我今天重抓的日期 2026-09-23，依規格不動。"
+    ]
   }
 }
