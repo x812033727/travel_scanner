@@ -38,6 +38,7 @@ import urllib.error
 import urllib.request
 from collections.abc import Callable, Iterable, Iterator, Sequence
 from dataclasses import dataclass, field
+from decimal import Decimal, InvalidOperation
 from email.message import Message
 from glob import glob
 from pathlib import Path
@@ -52,6 +53,7 @@ from app.guides import admin_service
 from app.guides.autolink import SITE_LINK
 from app.guides.content_pack import ArticlePack, ContentPackError, load_packs
 from app.guides.schemas import (
+    MAX_IMAGE_SIDE,
     ArticleInline,
     CalloutBlock,
     CodeBlock,
@@ -390,6 +392,9 @@ def _finance_problems(document: GuideDocument, topics: Sequence[str]) -> list[Pr
 SVG_NS = "{http://www.w3.org/2000/svg}"
 _FONT_SIZE = re.compile(r"font-size\s*[:=]\s*[\"']?\s*(\d+(?:\.\d+)?)")
 _NUMBER = re.compile(r"\d+(?:[.,:]\d+)*")
+_SVG_NUMBER = re.compile(
+    r"[+-]?(?:(?:[0-9]+(?:\.[0-9]*)?)|(?:\.[0-9]+))(?:[eE][+-]?[0-9]+)?"
+)
 
 
 def _parse_svg(text: str) -> ElementTree.Element:
@@ -399,10 +404,128 @@ def _parse_svg(text: str) -> ElementTree.Element:
         raise PackIngestError(f"not well-formed XML: {error}") from error
 
 
-def check_svg(text: str) -> list[Problem]:
-    """A diagram that renders the same for every reader: the fixed viewBox, a title and a
-    description for assistive technology, nothing fetched from anywhere, no script, and no
-    label a phone cannot read."""
+def _svg_decimal(value: str | None) -> Decimal | None:
+    if value is None:
+        return None
+    stripped = value.strip()
+    # Decimal deliberately accepts Python conveniences such as underscores and Unicode
+    # decimal digits. Browsers' SVG number grammar does not, so validate its ASCII lexical
+    # form before using Decimal for exact numeric comparisons.
+    if _SVG_NUMBER.fullmatch(stripped) is None:
+        return None
+    try:
+        number = Decimal(stripped)
+    except InvalidOperation:
+        return None
+    return number if number.is_finite() else None
+
+
+def _body_svg_dimensions(root: ElementTree.Element) -> tuple[tuple[int, int] | None, list[Problem]]:
+    """Return a body diagram's exact dimensions after validating its coordinate space.
+
+    Body diagrams may grow vertically so translated labels stay readable. They keep the
+    established 1600 px width and use an integral height within the GuideDocument schema's
+    image bound. Explicit root dimensions must match the viewBox; accepting a matching aspect
+    ratio would let incorrect image metadata reserve the wrong amount of page space.
+    """
+    problems: list[Problem] = []
+    pieces = re.split(r"\s+", root.get("viewBox", "").strip())
+    viewbox: list[Decimal] = []
+    if len(pieces) == 4:
+        for piece in pieces:
+            value = _svg_decimal(piece)
+            if value is None:
+                break
+            viewbox.append(value)
+    if len(viewbox) != 4:
+        problems.append(
+            Problem(
+                "error",
+                "svg_viewbox",
+                "body diagram viewBox must contain four finite unitless numbers",
+            )
+        )
+        return None, problems
+    origin_x, origin_y, view_width, view_height = viewbox
+    if origin_x != 0 or origin_y != 0:
+        problems.append(
+            Problem("error", "svg_viewbox", "body diagram viewBox origin must be 0 0")
+        )
+    if view_width != HERO_SIZE[0]:
+        problems.append(
+            Problem(
+                "error",
+                "svg_viewbox",
+                f"body diagram viewBox width must be {HERO_SIZE[0]}",
+            )
+        )
+    if (
+        view_height <= 0
+        or view_height != view_height.to_integral_value()
+        or view_height > MAX_IMAGE_SIDE
+    ):
+        problems.append(
+            Problem(
+                "error",
+                "svg_viewbox",
+                f"body diagram viewBox height must be a positive integer up to {MAX_IMAGE_SIDE}",
+            )
+        )
+
+    raw_width = root.get("width")
+    raw_height = root.get("height")
+    # Older reviewed 1600x900 diagrams relied on viewBox alone, which is valid SVG and is
+    # already represented as 1600x900 in every pack. Preserve that exact legacy case while
+    # requiring explicit dimensions on every variable-height diagram and on newly authored
+    # fixed diagrams that provide either attribute.
+    legacy_fixed_without_root_size = (
+        raw_width is None
+        and raw_height is None
+        and view_width == HERO_SIZE[0]
+        and view_height == HERO_SIZE[1]
+    )
+    width = _svg_decimal(raw_width)
+    height = _svg_decimal(raw_height)
+    if not legacy_fixed_without_root_size and (width is None or height is None):
+        problems.append(
+            Problem(
+                "error",
+                "svg_dimensions",
+                "body diagram root width and height must be finite unitless numbers",
+            )
+        )
+    elif not legacy_fixed_without_root_size and (width != view_width or height != view_height):
+        problems.append(
+            Problem(
+                "error",
+                "svg_dimensions",
+                "body diagram root width and height must equal its viewBox dimensions",
+            )
+        )
+    if problems:
+        return None, problems
+    return (int(view_width), int(view_height)), []
+
+
+def _validated_body_svg_dimensions(text: str) -> tuple[int, int] | None:
+    """Return dimensions only when the SVG root and body coordinate-space rules pass."""
+    try:
+        root = _parse_svg(text)
+    except PackIngestError:
+        return None
+    if root.tag != f"{SVG_NS}svg":
+        return None
+    dimensions, problems = _body_svg_dimensions(root)
+    return dimensions if not problems else None
+
+
+def check_svg(text: str, *, body: bool = False) -> list[Problem]:
+    """Validate a safe, accessible diagram with readable labels.
+
+    The default keeps the fixed 1600x900 contract used by hero and series callers. ``body``
+    enables only the validated 1600px-wide, variable-height coordinate-space contract; title,
+    description, external-resource, script and minimum-label checks remain identical.
+    """
     problems: list[Problem] = []
     try:
         root = _parse_svg(text)
@@ -410,11 +533,19 @@ def check_svg(text: str) -> list[Problem]:
         return [Problem("error", "svg_invalid", str(error))]
     if root.tag != f"{SVG_NS}svg":
         return [Problem("error", "svg_invalid", "the root element is not <svg>")]
-    viewbox = re.sub(r"\s+", " ", root.get("viewBox", "").strip())
-    if viewbox != DIAGRAM_VIEWBOX:
-        problems.append(
-            Problem("error", "svg_viewbox", f"viewBox is '{viewbox}', must be '{DIAGRAM_VIEWBOX}'")
-        )
+    if body:
+        _dimensions, dimension_problems = _body_svg_dimensions(root)
+        problems.extend(dimension_problems)
+    else:
+        viewbox = re.sub(r"\s+", " ", root.get("viewBox", "").strip())
+        if viewbox != DIAGRAM_VIEWBOX:
+            problems.append(
+                Problem(
+                    "error",
+                    "svg_viewbox",
+                    f"viewBox is '{viewbox}', must be '{DIAGRAM_VIEWBOX}'",
+                )
+            )
     for name in ("title", "desc"):
         node = root.find(f"{SVG_NS}{name}")
         if node is None or not "".join(node.itertext()).strip():
@@ -864,14 +995,18 @@ def _stage_image_block(
         file = source / name
         if not file.is_file():
             raise PackIngestError(f"{name}: not in the workspace")
-        problems = check_svg(file.read_text(encoding="utf-8"))
+        text = file.read_text(encoding="utf-8")
+        problems = check_svg(text, body=True)
         if errors(problems):
             raise PackIngestError(f"{name}: " + "; ".join(p.message for p in errors(problems)))
+        dimensions = _validated_body_svg_dimensions(text)
+        if dimensions is None:
+            raise PackIngestError(f"{name}: has no validated body diagram dimensions")
         shutil.copyfile(file, staging / name)
         block.update(
             {
-                "width": HERO_SIZE[0],
-                "height": HERO_SIZE[1],
+                "width": dimensions[0],
+                "height": dimensions[1],
                 "credit": MOKAAIR_CREDIT.model_dump(mode="json"),
             }
         )
@@ -954,11 +1089,17 @@ def ingest(
                 if isinstance(block, dict) and block.get("type") == "image":
                     name = _image_name(str(block.get("src", "")))
                     if (staging / name).is_file() and name.endswith(".svg"):
+                        staged_text = (staging / name).read_text(encoding="utf-8")
+                        dimensions = _validated_body_svg_dimensions(staged_text)
+                        if dimensions is None:
+                            raise PackIngestError(
+                                f"{name}: staged SVG has no validated body diagram dimensions"
+                            )
                         block.update(
                             {
                                 "src": f"/guides/{slug}/{name}",
-                                "width": HERO_SIZE[0],
-                                "height": HERO_SIZE[1],
+                                "width": dimensions[0],
+                                "height": dimensions[1],
                                 "credit": MOKAAIR_CREDIT.model_dump(mode="json"),
                             }
                         )
@@ -1062,11 +1203,13 @@ def catalogue_slugs(markdown: str) -> set[str]:
     return {m.group(1) for line in markdown.splitlines() if (m := _CATALOGUE_ROW.match(line))}
 
 
-def _iter_svgs(pack: ArticlePack, public_dir: Path) -> Iterator[tuple[Locale, GuideDocument, Path]]:
+def _iter_svgs(
+    pack: ArticlePack, public_dir: Path
+) -> Iterator[tuple[Locale, GuideDocument, ImageBlock, Path]]:
     for locale, document in pack.locales.items():
         for block in document.blocks:
             if isinstance(block, ImageBlock) and block.src.endswith(".svg"):
-                yield locale, document, public_dir / block.src.lstrip("/")
+                yield locale, document, block, public_dir / block.src.lstrip("/")
 
 
 def lint_all(
@@ -1109,16 +1252,32 @@ def lint_all(
                 elif file.stat().st_size > IMAGE_HARD_CAP:
                     problems.append(Problem("error", "image_too_large", f"{locale}: {src}"))
         seen: set[Path] = set()
-        for locale, document, svg in _iter_svgs(pack, public_dir):
+        svg_cache: dict[Path, tuple[str, list[Problem], tuple[int, int] | None]] = {}
+        for locale, document, block, svg in _iter_svgs(pack, public_dir):
             if not svg.is_file():
                 continue
-            text = svg.read_text(encoding="utf-8")
-            if svg not in seen:
+            cached = svg_cache.get(svg)
+            if cached is None:
+                text = svg.read_text(encoding="utf-8")
+                svg_problems = check_svg(text, body=True)
+                dimensions = _validated_body_svg_dimensions(text)
+                svg_cache[svg] = (text, svg_problems, dimensions)
                 seen.add(svg)
                 problems.extend(
-                    Problem(p.level, p.code, f"{svg.name}: {p.message}") for p in check_svg(text)
+                    Problem(p.level, p.code, f"{svg.name}: {p.message}") for p in svg_problems
                 )
-            if not errors(check_svg(text)):
+            else:
+                text, svg_problems, dimensions = cached
+            if dimensions is not None and (block.width, block.height) != dimensions:
+                problems.append(
+                    Problem(
+                        "error",
+                        "svg_dimensions_mismatch",
+                        f"{locale}: {svg.name} declares {block.width}x{block.height}; "
+                        f"the SVG is {dimensions[0]}x{dimensions[1]}",
+                    )
+                )
+            if not errors(svg_problems):
                 missing = missing_diagram_numbers(text, document)
                 if missing:
                     problems.append(
