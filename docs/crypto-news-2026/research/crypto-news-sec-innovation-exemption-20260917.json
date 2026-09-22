@@ -1,0 +1,545 @@
+{
+  "slug": "crypto-news-sec-innovation-exemption-20260917",
+  "vertical": "crypto",
+  "display_order": 218,
+  "event_date": "2026-09-17",
+  "event_date_basis": "站主已裁定事件日為 2026-09-17，本輪查核逐一對上了四條一手證據，結論相同，沒有需要重新推導的地方。（1）聯邦公報全文在文號行下方單獨印一行署期「September 17, 2026.」；（2）命令第 V 節寫明豁免效期自 2026 年 9 月 17 日起算；（3）SEC 新聞稿 2026-90 的電頭是「Washington D.C., Sept. 17, 2026」，官方新聞稿 RSS 對這一則印的時間是 Thu, 17 Sep 2026 08:55:00 -0400，換算台北時間為 2026-09-17 20:55，仍在同一天；（4）三位委員的聲明頁都印 Sept. 17, 2026。刊登於聯邦公報是 2026-09-22（91 FR 60168-60184，Vol. 91 No. 182；文件於 9 月 21 日上午 8:45 歸檔），那是「現在全文讀得到、可以寫了」的觸發，不是事件本身。沒有佔位時刻需要處理：官方印的是 08:55，不是 00:00 或 16:00 這種整點排程值。",
+  "checked_on": "2026-09-23",
+  "title_candidates": [
+    "美國 SEC 發布創新豁免：代幣化美股可在許可場所鏈上交易，效期五年",
+    "SEC 用交易法第 36 條開一條窄路：代幣化 NMS 股票的交易所與自營商定義豁免",
+    "SEC 創新豁免：代幣化美股鏈上交易的六項條件、兩層上限與到期日"
+  ],
+  "summary": "2026 年 9 月 17 日，美國證券交易委員會（SEC）依《1934 年證券交易法》第 36(a)(1) 條作成一份附條件的臨時豁免命令（Release No. 34-106402、File No. 4-927），業界稱之為「創新豁免」（Innovation Exemption）。命令做兩件事：讓「代幣化證券交易場所」（Tokenized Securities Venue，TSV）不必被當成交易法第 3(a)(1) 條的「交易所」，以及讓在 TSV 的自動造市商流動性池裡以自有資金提供流動性的「受涵蓋業者」（Covered Firm）不必被當成第 3(a)(5) 條的「自營商」。豁免效期自 2026 年 9 月 17 日至 2031 年 9 月 17 日，附帶分層檔數與成交量上限、同權、發行人反對權、智能合約須部署在公開無許可帳本、原股停止交易時同步停止、交易資料公開等條件，並同時就十個問題徵詢意見、沒有訂截止日。命令於 2026 年 9 月 22 日刊登聯邦公報（91 FR 60168-60184）後全文才讀得到。",
+  "sources": [
+    {
+      "title": "Federal Register 全文：Order Granting Temporary Conditional Exemptive Relief, Pursuant to Section 36(a)(1) of the Securities Exchange Act of 1934 ..., and Request for Comment（91 FR 60168-60184；Release No. 34-106402；File No. 4-927）",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "publisher": "U.S. Government Publishing Office / Federal Register",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:08+08:00",
+      "http_status": 200,
+      "bytes": 143135,
+      "verbatim_quote": "Set to expire five years after publication, this Order is intended"
+    },
+    {
+      "title": "SEC 新聞稿 2026-90：SEC Issues “Innovation Exemption” to Facilitate the Trading of Tokenized NMS Stock and Request for Comment",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:09+08:00",
+      "http_status": 200,
+      "bytes": 68276,
+      "verbatim_quote": "The exemptions are set to expire five years after publication."
+    },
+    {
+      "title": "Statement on the Innovation Exemption: A Bridge Toward Durable Rulemaking（Chairman Paul S. Atkins，2026-09-17）",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:12+08:00",
+      "http_status": 200,
+      "bytes": 66064,
+      "verbatim_quote": "Earlier this week, Congress was unsuccessful in advancing the CLARITY Act"
+    },
+    {
+      "title": "Slumber Number: Innovation Exemption Statement（Commissioner Hester M. Peirce，2026-09-17）",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-slumber-number-innovation-exemption-statement-091726",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:10+08:00",
+      "http_status": 200,
+      "bytes": 69814,
+      "verbatim_quote": "This order is not about decentralized finance."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-23（台北）全部自己重抓，請求一律 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 1 秒以上，UA、標頭、查詢字串都沒有帶入任何人的姓名、email 或個人資料。抓下來的 body 都存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\crypto-news-sec-innovation-exemption-20260917\\，HTML 另存一份去標籤、去 <!-- --> 註解、html.unescape 之後的 .txt 供查核者比對。\n(1) 聯邦公報全文 .txt：200／143,135 bytes，存成 fr-fulltext.txt。body 開頭是 <html><head><title>Federal Register, Volume 91 Issue 182 (Tuesday, September 22, 2026)</title>，接 <pre> 內的 [Notices]、[Pages 60168-60184]、[FR Doc No: 2026-19388]，結尾是 J. Matthew DeLesDernier, Deputy Secretary 與 [FR Doc. 2026-19388 Filed 9-21-26; 8:45 am]，確定是正文不是殼。這份 .txt 在約 72 欄硬斷行、每行行尾帶一個空白，所以本紀錄引 S1 的 verbatim_quote 有兩種形態：單行內的連續子字串，或帶 \\n 的跨行連續子字串（兩種都在原檔逐字搜尋得到，已用程式逐條驗過）。\n(2) 新聞稿 HTML：200／68,276 bytes，0 次轉址。本輪 sec.gov 的 HTML 沒有 403（上一輪四種組合全擋），所以不必走 RSS 或 govinfo 的備援。網址不是拼出來的：先抓 https://www.sec.gov/news/pressreleases.rss（200／18,350 bytes，25 筆），其中 pubDate 為 Thu, 17 Sep 2026 08:55:00 -0400 的那一筆 <link> 就是這個網址。\n(3)(4) 兩份委員聲明也是同樣做法：先抓 https://www.sec.gov/news/statements.rss（200／11,584 bytes，25 筆），2026-09-17 當天共有七筆，其中三筆是創新豁免的聲明（Atkins 09:20:36、Peirce 09:10:12、Uyeda 09:00:23，皆 -0400），照 feed 上的 <link> 取得完整網址。Atkins 200／66,064 bytes、Peirce 200／69,814 bytes、Uyeda 200／67,006 bytes。\nPeirce 的網址尾碼與指派表寫的 peirce-slumber-number-innovation-exemption-statement-091726 完全相同，新聞稿與 Peirce 的 bytes 也與探索紀錄相同（68,276／69,814），三邊對得上。\nUyeda 的聲明讀了但沒有列進 sources[]（`check_article.py` 限制 2-4 條），見 unverified_or_excluded 第 1 條。",
+  "verified_facts": [
+    {
+      "fact": "命令的文號是 Release No. 34-106402、檔號 File No. 4-927，作成機關是美國證券交易委員會。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Release No. 34-106402; File No. 4-927]"
+    },
+    {
+      "fact": "命令的署期是 2026 年 9 月 17 日：聯邦公報全文在標題與文號之後單獨印一行署期。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 17, 2026."
+    },
+    {
+      "fact": "命令於 2026 年 9 月 22 日（星期二）刊登在聯邦公報第 91 卷第 182 期的 Notices，頁碼 60168 至 60184。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Federal Register Volume 91, Number 182 (Tuesday, September 22, 2026)]"
+    },
+    {
+      "fact": "聯邦公報全文自己印的頁碼範圍是 60168-60184。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[Pages 60168-60184]"
+    },
+    {
+      "fact": "這份文件在 2026 年 9 月 21 日上午 8 點 45 分歸檔，文件編號 2026-19388，隔天刊登。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "[FR Doc. 2026-19388 Filed 9-21-26; 8:45 am]"
+    },
+    {
+      "fact": "SEC 新聞稿的電頭是 2026 年 9 月 17 日華盛頓特區，編號 2026-90。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Washington D.C., Sept. 17, 2026"
+    },
+    {
+      "fact": "命令的法源是《1934 年證券交易法》第 36(a)(1) 條，該條授權委員會附條件或不附條件地豁免任何人、證券或交易。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It is hereby ordered that pursuant to section 36(a)(1) of the "
+    },
+    {
+      "fact": "兩項豁免分別針對交易法第 3(a)(1) 條的「交易所」定義與第 3(a)(5) 條的「自營商」定義。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "First, it exempts certain trading venues called Tokenized Securities Venues (“TSVs”) from the definition of “exchange” under Section 3(a)(1) of the Exchange Act. Second, it exempts certain liquidity providers—called “Covered Firms”—from the definition of “dealer” under Section 3(a)(5) of the Exchange Act."
+    },
+    {
+      "fact": "TSV 的定義是：把代幣化 NMS 股票的買方與賣方湊在一起的組織、團體或一群人，方式是（1）提供一個以上的 AMM 流動性池讓經許可的參與者互動並談定交易條件，以及（2）訂出誰可以在這些池子裡交易的標準。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A TSV is defined as an organization, association, or group of \npersons that brings together buyers and sellers of Tokenized NMS Stock \nby: (1) providing one or more AMM Liquidity Pool(s) for permissioned \nparticipants to interact and agree to terms of a trade and (2) setting \nstandards for persons to access trading on such AMM Liquidity Pool(s)."
+    },
+    {
+      "fact": "豁免效期是 2026 年 9 月 17 日至 2031 年 9 月 17 日；委員會得依交易法第 36 條修改期間或其他任何部分。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The exemptions are effective from September 17, 2026, until \nSeptember 17, 2031."
+    },
+    {
+      "fact": "命令的結論段寫的也是「到 2031 年 9 月 17 日為止」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Exchange Act that, until September 17, 2031, a Tokenized Securities"
+    },
+    {
+      "fact": "新聞稿的概述寫法是「刊登後五年到期」，與命令本文第 V 節寫的日期區間是同一件事的兩種寫法，命令本文自己在導言也用了同一個概述句。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The exemptions are set to expire five years after publication."
+    },
+    {
+      "fact": "命令導言把自己定位為過渡性、針對性的措施，用意是在委員會考慮是否要訂規則的期間先讓代幣化 NMS 股票能用分散式帳本技術交易。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Set to expire five years after publication, this Order is intended"
+    },
+    {
+      "fact": "條件一：TSV 用的智能合約必須可稽核、公開，並且部署在公開、無許可的分散式帳本上；命令對「無許可」的解釋是任何人不必取得授權就能讀取或寫入該帳本。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "smart contracts) used by a TSV must be auditable, public, and deployed \non a public, permissionless distributed ledger."
+    },
+    {
+      "fact": "條件二：TSV 本身必須是美國人（U.S. person），因而須遵守美國財政部外國資產控制辦公室（OFAC）執行的經濟與貿易制裁。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To be eligible for the TSV Exemption, a TSV must be a U.S."
+    },
+    {
+      "fact": "條件三：開始營運前至少 30 個日曆日，TSV 必須在自己的公開網站顯著位置刊出一份公告，內容要用淺白英文、清楚簡潔可理解。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To qualify for the TSV Exemption, at least 30 calendar days before "
+    },
+    {
+      "fact": "公告要載明的項目從 a 到 dd 共 30 項，涵蓋免責聲明、參與者資格、准入條件、代幣化方式、發行人反對、TSV 與其關係企業自己的交易活動、對不同參與者的差別待遇、費用、風險、系統防護、停止交易與「是否為該檔唯一或主要交易場所」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "dd. Exclusive or Predominant Venue for Trading of a Tokenized NMS "
+    },
+    {
+      "fact": "條件四：公告第 a 項要求 TSV 聲明自己就豁免下的活動沒有向委員會登記、委員會也沒有就公告內容的優劣或正確性表示意見，而且不受 Regulation ATS 第 301(b)(5) 條的公平取用要求與 Regulation NMS 拘束。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a. Disclaimer: State that: (i) the TSV is not registered with the "
+    },
+    {
+      "fact": "條件五：由不是發行人、也與發行人沒有關係的第三方所代幣化的股票，TSV 必須先書面通知該股票的發行人；自發行人收到通知起滿 30 個日曆日才能開始交易。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Trading of a Tokenized NMS Stock on the TSV may not commence until at \nleast 30 calendar days from the date when the issuer receives the "
+    },
+    {
+      "fact": "發行人若在收到通知起 30 個日曆日內書面表示反對，TSV 就不得讓該檔代幣化股票上架，並須在五個營業日內修正公開公告。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "following receipt of the Issuer Notice, written notice to the TSV that \nit objects to a Tokenized NMS Stock that was tokenized by a third party"
+    },
+    {
+      "fact": "Atkins 主席把「發行人必須有機會反對並阻止自家證券在 TSV 交易」列為關鍵條件之一。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Issuers must have the opportunity to object and prevent their security from trading on a TSV"
+    },
+    {
+      "fact": "Peirce 委員的說法是：不想讓自家股票在 TSV 交易的發行人可以選擇退出。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-slumber-number-innovation-exemption-statement-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Issuers who do not want their stock trading on TSVs can opt out."
+    },
+    {
+      "fact": "條件六：TSV 必須確認上架的代幣化 NMS 股票給予持有人與同類傳統 NMS 股票相同的權利與特權，命令舉的例子包括相同的公司權益、領取相同股利、行使相同表決權、清算時分得相同剩餘財產。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "trading on the TSV provides holders the same rights and privileges as \ndoes traditional NMS stock of an equivalent class."
+    },
+    {
+      "fact": "TSV 上不得辦理初級發行或首次發行；所有代幣化 NMS 股票的要約與銷售都必須依證券法登記或依豁免辦理。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "exemption from the registration requirements of the Securities Act. No \nprimary issuance or initial offerings of securities are permitted on a \nTSV under the TSV Exemption."
+    },
+    {
+      "fact": "條件七：原股在主要上市交易所停止交易（包含暫停與中止）時，TSV 必須同步停止該檔代幣化股票的交易，並立刻用平常的溝通管道通知參與者。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A TSV must stop trading in a Tokenized NMS Stock concurrently with "
+    },
+    {
+      "fact": "新聞稿把同步停止交易列為六項條件之一，用語與命令一致。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A TSV must stop trading in a tokenized NMS stock concurrently with any stoppage of trading in the underlying NMS stock on the primary listing exchange"
+    },
+    {
+      "fact": "條件八：TSV 必須公開自己與關係企業在該場所上的營運與交易活動；公告第 l 項要求載明 TSV 或其關係企業能不能直接或間接在場所上展示或輸入交易意向，以及以什麼身分為之。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "l. Trading Activities of the TSV and Its Affiliates: State whether "
+    },
+    {
+      "fact": "代幣化 NMS 股票分兩層，分層直接沿用「處理異常市場波動的全國市場系統計畫」（Limit Up-Limit Down Plan，LULD Plan）的第一層與第二層。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Tier 1 and Tier 2 Tokenized NMS Stock comprise the NMS stocks in Tier 1 "
+    },
+    {
+      "fact": "第一層的上限是 75 檔代號，且單檔不得超過前一個月該檔 NMS 股票日均成交股數的 0.25%。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Tier 1 Tokenized NMS Stock traded on a TSV under the TSV Exemption \ncannot exceed 75 symbols traded and 0.25 percent of the average daily \nshare volume during the prior month in the relevant NMS stock as \nreported by an effective transaction reporting plan."
+    },
+    {
+      "fact": "第二層的上限是 250 檔代號與 2.5%，比第一層寬，理由是流動性較低的股票比較容易碰到日均量上限。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "exceed 250 symbols traded and 2.5 percent of the average daily share "
+    },
+    {
+      "fact": "計算成交量與檔數時，TSV 必須把關係企業旗下 TSV 的數字合併計算，目的是避免業者切成多家 TSV 規避上限。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a TSV must aggregate its \ntrading volume with that of its affiliated TSVs for a given Tokenized \nNMS Stock."
+    },
+    {
+      "fact": "超過成交量上限採分階段處置：第一次超過不必採取任何行動，只要確保之後不再超過；之後每一次超過，都必須立即暫停該檔代幣化股票的交易三個月，並自超過當日起算三個月後才能恢復。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "immediately pause trading in such Tokenized NMS Stock for three "
+    },
+    {
+      "fact": "分階段處置只適用成交量上限，不適用檔數上限；超過檔數上限的 TSV 就不符合豁免條件。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The stepped compliance approach only applies with respect "
+    },
+    {
+      "fact": "命令寫明第一層代幣化 NMS 股票就是 LULD Plan 第一層裡的股票，範圍是 S&P 500 指數、Russell 1000 指數的成分股，以及該計畫認定合格的部分交易所交易產品（ETP）；第二層是其餘非第一層、且不是認股權證與權利的 NMS 股票。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "includes all Tokenized NMS Stock included in the S&P 500 Index, the \nRussell 1000 Index, and eligible ETPs as provided by the LULD Plan."
+    },
+    {
+      "fact": "命令自己聲明只是借用 LULD Plan 的分層方法來分類，沒有、也沒有提議要改動 LULD Plan。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "using the LULD Plan tiering methodology only to categorize Tokenized \nNMS Stock; the TSV Exemption does not in any way alter or modify, or \npropose to alter or modify, the LULD Plan."
+    },
+    {
+      "fact": "TSV 必須免費、公開提供以美元計價、機器可讀的交易資料，涵蓋過去 30 天的所有交易，且每筆交易發生後 10 分鐘內就要更新。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "for all transactions within the past thirty (30) days. The transaction \ndata must be updated within ten (10) minutes of the occurrence of any "
+    },
+    {
+      "fact": "交易資料至少要含代幣化股票與配對資產的代號、成交價、成交量、在 AMM 流動性池的成交時間、交易方向，另外還要提供流動性池與其智能合約位址、每日資產配對成交量，以及每日收盤時各配對的池子規模。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "transaction \\78\\ and include, at minimum, the following: (i) the "
+    },
+    {
+      "fact": "TSV 不得對外或對內聲稱自己已向委員會「登記」，也不得聲稱其代幣化股票等活動已獲委員會「核准」或「背書」；並且必須在公開公告中主動揭露自己沒有向委員會登記。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A TSV cannot make any statements--public or private--to the effect "
+    },
+    {
+      "fact": "TSV 不得從事融資活動：不得在場所上借貸證券或非證券加密資產，不得質押或安排質押，也不得為了讓參與者買代幣化股票而提供信用。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A TSV is not permitted to extend credit to a TSV Participant for "
+    },
+    {
+      "fact": "TSV 只能讓代幣化 NMS 股票與另一檔代幣化 NMS 股票、非證券加密資產（例如獲准發行人發行的支付型穩定幣）或代幣化貨幣市場基金成對交易；非證券加密資產與代幣化貨幣市場基金必須直接與代幣化股票配對才有資格在 TSV 上交易。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "First, a TSV can make available for trading only a Tokenized NMS "
+    },
+    {
+      "fact": "TSV 必須在豁免有效期間及期滿後三年保存全部帳簿與紀錄、存放在美國境內，並在委員會人員要求時立即以人類可讀與可用電子格式提供，還要同意隨時接受檢查。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A TSV must preserve all such books and records while the TSV "
+    },
+    {
+      "fact": "自營商定義的豁免對象是「受涵蓋業者」（Covered Firm）：在 AMM 流動性池中以自有資金提供代幣化 NMS 股票流動性，且可能另外從事報價給客戶、簽訂承諾資本協議等帶有自營特徵活動的流動性提供者。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Liquidity Pool that supplies liquidity in the form of Tokenized NMS "
+    },
+    {
+      "fact": "受涵蓋業者豁免同樣是臨時性的，五年期滿，與 TSV 豁免同步；援用豁免的參與者仍然完全受聯邦證券法的反詐欺與反操縱條文拘束。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Additionally, the Covered Firm Exemption is temporary, expiring at the "
+    },
+    {
+      "fact": "受涵蓋業者的條件包括：只能為自己的帳戶交易、不得持有或保管客戶資產、要保存足以支應交易虧損的流動資產等紀錄、在公開網站顯著揭露自己沒有登記為 broker-dealer，並書面通知委員會自己的角色。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Proprietary Accounts. A Covered Firm must provide liquidity through "
+    },
+    {
+      "fact": "命令寫明單純提供流動性本身不構成自營商活動，在沒有其他自營特徵的情況下，AMM 流動性池的流動性提供者通常屬於「交易人」而非「自營商」。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Liquidity provision alone does not constitute engaging in dealer "
+    },
+    {
+      "fact": "Atkins 主席強調，聯邦證券法的反詐欺與反操縱條文毫無例外地完全適用於這些市場的全部證券活動。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "without exception, the anti-fraud and anti-manipulation provisions of the federal securities laws apply in full to all securities activities in these markets"
+    },
+    {
+      "fact": "命令在第 VI 節就豁免的各個面向徵詢公眾意見，逐條列出十個問題，包含要不要永久化、期間長短是否恰當、分層與上限數字是否恰當、要不要開放交易代幣化 NMS 股票以外的證券等。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Commission solicits public comment on all aspects of the exemptions, "
+    },
+    {
+      "fact": "命令全文沒有 DATES 段、沒有截止日期句型，意見沒有訂截止日；意見可用委員會的網路意見表單或紙本寄送，並註明檔號 4-927。",
+      "url": "https://www.federalregister.gov/documents/full_text/text/2026/09/22/2026-19388.txt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "All submissions should refer to File Number 4-927. This file number "
+    },
+    {
+      "fact": "Atkins 主席把這件事放在立法未果的脈絡裡：他寫本週國會未能推進 CLARITY Act，所以委員會改在法定職權內往前走一步。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Earlier this week, Congress was unsuccessful in advancing the CLARITY Act"
+    },
+    {
+      "fact": "Atkins 主席同時寫明這只是過渡措施，之後必須有正式的規則制定接上。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-innovation-exemption-bridge-toward-durable-rulemaking-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "this interim measure must be followed by durable rulemaking"
+    },
+    {
+      "fact": "Peirce 委員寫明這份命令處理的不是去中心化金融：真正去中心化、由自動化軟體驅動的系統不會產生證券監理的核心疑慮，投資人要使用無許可的點對點智能合約並不需要這份豁免。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-slumber-number-innovation-exemption-statement-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This order is not about decentralized finance."
+    },
+    {
+      "fact": "Peirce 委員寫明，委員會不會因為誰援用了這些豁免就認定他們是「交易所」或「自營商」，這些角色該歸到哪個監理類別還言之過早，要先看誰用、怎麼用。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-slumber-number-innovation-exemption-statement-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It is too soon to tell."
+    },
+    {
+      "fact": "Peirce 委員寫明豁免對美國人開放，包含既有業者與新進者。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-slumber-number-innovation-exemption-statement-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The exemptions are available to U.S. persons, including incumbents and new entrants."
+    },
+    {
+      "fact": "Peirce 委員也寫明 TSV 模式只是其中一種做法，委員會對其他鏈上交易模式保持開放，而且能塞進現行交易法規定的模式可能根本不需要豁免。",
+      "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-slumber-number-innovation-exemption-statement-091726",
+      "is_vendor_claim": true,
+      "verbatim_quote": "And onchain trading models that can fit within current Exchange Act requirements may not need an exemption at all."
+    },
+    {
+      "fact": "新聞稿的第一段把這件事寫成：委員會發出一份命令，對代幣化證券交易場所給予臨時、附條件的豁免，使其得以用創新的許可式自動造市商與流動性池交易代幣化的全國市場系統股票。",
+      "url": "https://www.sec.gov/newsroom/press-releases/2026-90-sec-issues-innovation-exemption-facilitate-trading-tokenized-nms-stock-request-comment",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Securities and Exchange Commission today issued an order granting temporary, conditional exemptive relief to Tokenized Securities Venues"
+    }
+  ],
+  "not_said": [
+    "沒有任何一家場所已經開業的訊息。命令要求 TSV 開業前至少 30 個日曆日在自己網站刊出公告，但四條來源都沒有列出任何已經公告或已經開業的業者，也沒有任何名單頁。正文不可寫成「現在可以在鏈上買賣美股了」，只能寫「制度上開了門，還沒有任何場所公告開業（以這四份文件查核到 2026-09-23 未見）」。",
+    "沒有說台灣或任何非美國的投資人能不能參與。命令只對 TSV 本身要求必須是美國人，對「TSV 參與者」（使用者與流動性提供者）沒有訂國籍條件，而是把准入標準交給各 TSV 自己訂、並舉例說准入機制可以用來確認參與者不在制裁名單上。四份文件都沒有寫非美國人可不可以參加，這是本篇最該誠實交代的空白。",
+    "沒有點名任何一檔股票、任何一家業者、任何一條區塊鏈、任何一種穩定幣。支付型穩定幣只以「非證券加密資產的例子」出現，第一層的範圍是用 S&P 500、Russell 1000 這種指數名稱寫的，不是個股清單。",
+    "沒有表決票數。三位委員各發一份聲明、三份都支持，但四條來源都沒有印出表決結果或票數，不可寫成「三比零」「全體一致通過」或「無人反對」。",
+    "沒有意見徵詢的截止日。全文沒有 DATES 段落，也沒有「on or before」「comments must be received」這類句型，只寫了送件方式與檔號。不可以自己推算「刊登後 30 天」或任何期限。",
+    "沒有給 TSV 參與者 Regulation NMS 的鬆綁。命令要求 TSV 在公告裡聲明自己不受 Regulation NMS 拘束，但要不要給身為註冊券商的 TSV 參與者 Regulation NMS 的減輕，是第 7 題正在徵詢的問題，還沒有答案。",
+    "沒有提供投資公司法（Investment Company Act）的任何豁免；命令在註 22 明寫代幣化投資公司的活動可能另有該法的問題。",
+    "沒有說這份豁免會不會延長或永久化。第 2 題與第 9 題正是在問要不要永久化、期間是否恰當；命令只寫委員會得依第 36 條修改期間或其他部分。",
+    "沒有任何費用、報酬、收益或價格資訊。命令要求 TSV 在公告裡描述自己的收費，但沒有印出任何數字。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Uyeda 委員 2026-09-17 的〈Statement on the Innovation Exemption〉全部內容，包括他寫的「貨幣市場基金、指數型基金與 ETF 都是從 SEC 最初運用豁免權長出來的產品」這個歷史類比，以及他對條件清單的白話整理。",
+      "seen_where": "https://www.sec.gov/newsroom/speeches-statements/uyeda-statement-innovation-exemption-091726（2026-09-23 實際抓到，200／67,006 bytes，body 是聲明正文，已存 _raw/sec-uyeda.html 與 .txt）。",
+      "why_excluded": "`check_article.py` 限制 sources[] 為 2-4 條，四個位置已由聯邦公報全文、新聞稿、Atkins 與 Peirce 兩份聲明占滿。這份聲明讀過、內容與其他三條不衝突，但因為指不到 sources[]，它獨有的內容（尤其是貨幣市場基金／指數型基金／ETF 那個類比）一律不得下筆。"
+    },
+    {
+      "claim": "命令的 Fact Sheet（新聞稿 Resources 區的第二個連結）裡的任何內容。",
+      "seen_where": "新聞稿 HTML 裡的相對連結 /files/34-106402-fact-sheet.pdf。",
+      "why_excluded": "本輪沒有下載、沒有讀 body。沒有讀過的文件不得列進 sources[]，也不得據以下筆。"
+    },
+    {
+      "claim": "已收到的意見件數、意見內容，或任何「業界反應」。",
+      "seen_where": "新聞稿的 Order 連結指向 https://www.sec.gov/rules-regulations/2026/09/4-927，命令第 VI 節也說所有意見會公布在該頁。",
+      "why_excluded": "本輪沒有開這一頁，而且意見件數是活資料。正文只可以寫「意見會公布在委員會網站」這件制度事實，不可寫任何件數或內容。"
+    },
+    {
+      "claim": "LULD Plan 第一層與第二層的實際成分清單，或任何個股例子。",
+      "seen_where": "命令註 70、註 73 指向 https://www.luldplan.com/plans 的附錄 A。",
+      "why_excluded": "本輪沒有讀那一頁，而且逐檔清單會定期更新。命令自己寫的範圍描述（S&P 500、Russell 1000 與部分 ETP）可以寫，個股一律不寫（`crypto.md` 也不准點名標的）。"
+    },
+    {
+      "claim": "命令註 72 引用的 2025 年日均成交量數字（第一層 3,022,668 股、第二層 1,207,978 股）。",
+      "seen_where": "聯邦公報全文註 72，SEC 幕僚對 2025 年合併市場資料的分析。",
+      "why_excluded": "那是市場量體數字，屬 `crypto.md` 排除的行情類資訊；本篇只寫制度上的百分比與檔數上限。"
+    },
+    {
+      "claim": "CLARITY Act 的立法進度細節（哪一天、在哪一院、卡在哪個程序、後續會怎麼走）。",
+      "seen_where": "Atkins 聲明只有一句「Earlier this week, Congress was unsuccessful in advancing the CLARITY Act」。",
+      "why_excluded": "沒有任何一手來源可以支撐細節，也沒有國會官方頁在 sources[] 裡。正文最多照 Atkins 的說法寫「他表示本週國會未能推進 CLARITY Act」，不得補任何細節或推測。"
+    },
+    {
+      "claim": "有哪些業者打算申請、正在準備，或已經與 SEC 接觸成為 TSV。",
+      "seen_where": "四條來源都沒有名單；交易與市場部主任在新聞稿裡只說該部門準備好與有意經營 TSV 的各方合作。",
+      "why_excluded": "沒有任何一手來源印出名字或家數。"
+    },
+    {
+      "claim": "命令註腳引用的 2026-01-28〈Statement on Tokenized Securities〉與 2026-04-13 關於使用者介面的broker-dealer 登記幕僚聲明的內容。",
+      "seen_where": "聯邦公報全文註 2 與 Peirce 聲明註 1 各給了網址。",
+      "why_excluded": "本輪沒有取得這兩份文件的 body。而且命令自己在註 2 寫明幕僚聲明不是規則、沒有法律效力、委員會既未核准也未否決其內容——這一點如果要寫，只能引命令自己那句，不能引那兩份文件。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，看到的標題大概會是「美股可以上鏈交易了」。這一篇的工作就是把那句話拆開：SEC 在 2026 年 9 月 17 日開的是一條**很窄、有期限、隨時可收回**的路，而且路上一個人都還沒走。\n\n骨架建議：\n1. 這是什麼、什麼時候的事。第一段照 9 月 17 日寫，點出命令的兩個豁免（交易所定義、自營商定義）與它的法源（交易法第 36(a)(1) 條），並在同段或第二段交代 9 月 22 日刊登聯邦公報後全文才讀得到。第一段就要讓台灣讀者知道跟自己有沒有關係：場所必須是美國人、准入是許可式的，而命令沒有規定參與者的國籍——這一點是空白，不是開放，也不是禁止。\n2. 現在是什麼狀態。這是**已經生效的命令**，不是草案——這一點與站上八月那篇 Regulation Crypto Assets 正好相反，值得明講。但「生效」不等於「有人在用」：開業前要先在自己網站公告滿 30 天，查核到 9 月 23 日這四份文件都沒有列出任何一家場所。\n3. 管到誰、條件是什麼。把六項條件寫成讀者看得懂的話：只能交易與原股同權的代幣、第三方代幣化要先問過發行人而且發行人可以說不、智能合約要放在誰都看得到的公開帳本上、原股停牌時跟著停、要公開自己與關係企業的交易、檔數與成交量有上限。分層上限那一段要寫清楚分母（前一個月日均成交股數）與合併計算，以及第一次超量不罰、之後每次停三個月的分階段處置。\n4. 跟我有什麼關係、我怎麼自己查。這一節是本篇對讀者最有用的部分，而且全部指得到來源：（a）任何 TSV 都必須在自家網站把公告放在顯著位置，而且公告裡必須寫明自己**沒有**向 SEC 登記；（b）任何聲稱自己「已向 SEC 登記」或「經 SEC 核准」的說法，依命令本身就是不合規的；（c）交易資料必須免費公開、美元計價、機器可讀、涵蓋過去 30 天、每筆 10 分鐘內更新——讀者看得到的資訊量其實比很多人以為的多；（d）意見可以送，檔號 4-927，而且沒有截止日。\n5. 接下來會怎樣。十個問題在問要不要永久化、期間夠不夠、上限數字對不對；Atkins 寫本週國會未能推進 CLARITY Act、所以委員會先在職權內走一步，並且明說之後必須接上正式規則；Peirce 寫這不是在處理 DeFi、這些角色屬於哪一類還言之過早。三位委員的話都要標明是誰說的。\n\n語氣提醒（DELTA-4-7 第 14 條）：正文不要出現「本文」；不要把查證過程寫進正文；`description` 最多句尾帶一個「（2026 年 9 月查證）」。幣圈界線（`crypto.md`）：完全不碰行情、不點名任何標的、不寫費率比較，免責 callout 逐字照樣板、「不是投資建議」六個字不能動。\n\n一個容易寫歪的地方：新聞稿與命令導言都用「刊登後五年到期」的概述句，但命令第 V 節與結論寫的是 2026 年 9 月 17 日至 2031 年 9 月 17 日。要寫日期就寫後者。",
+  "must_not_write": [
+    "不可把事件日寫成 2026-09-22。命令署期、效期起算日、新聞稿電頭、三份委員聲明全都是 9 月 17 日；9 月 22 日刊登聯邦公報是「全文才讀得到」的觸發。第一段要照 9/17 寫，並在同段或第二段交代 9/22 刊登這件事。",
+    "不可把效期終點寫成 2031 年 9 月 22 日，也不可只寫「刊登後五年」。新聞稿與命令導言的「five years after publication」是概述句，命令第 V 節與結論寫的都是到 2031 年 9 月 17 日為止。要寫日期就寫 2026 年 9 月 17 日至 2031 年 9 月 17 日。",
+    "不可重講 `crypto-news-sec-regulation-crypto-assets-20260821`。那一篇是**證券法**的兩項募集豁免與投資契約安全港，狀態是**草案**；這一篇是**交易法第 36(a)(1) 條**的「交易所」與「自營商」定義豁免，狀態是**已生效的命令**。法源、處理的階段（募集 vs 次級市場交易）、狀態全都不同，不要混講，也不要把兩者寫成同一套制度的兩半。",
+    "不可寫成「SEC 核准／背書了代幣化股票交易」。命令明文禁止 TSV 作這種宣稱，並要求它公告自己沒有向委員會登記、委員會也沒有就公告內容表示意見。",
+    "不可寫成「美股現在可以在鏈上自由買賣」。這是給場所與流動性提供者的定義豁免，且要求許可式准入、有檔數與成交量上限、有同權與停牌同步等條件，查核到 2026-09-23 也沒有任何場所公告開業。",
+    "不可自行推算「最快某月某日可以開業」。命令只寫「開業前至少 30 個日曆日公告」與「第三方代幣化須自發行人收到通知起滿 30 個日曆日」，沒有任何具體日期。",
+    "不可把 0.25% 與 2.5% 寫成「可交易比例」而不交代分母。分母是**前一個月**該檔 NMS 股票的**日均成交股數**，而且 TSV 必須與關係企業旗下的 TSV 合併計算。",
+    "不可把「暫停三個月」寫成第一次超量就會發生。第一次超過成交量上限不必採取任何行動，之後每一次超過才必須立即暫停該檔三個月；而且這個分階段處置**不適用**檔數上限。",
+    "不可把 Tier 1／Tier 2 寫成 SEC 為這份命令新創的分級，也不可寫成命令改動了 LULD Plan——命令自己寫明只是借用分層方法，沒有、也沒有提議要改動該計畫。",
+    "不可寫成「DeFi 合法化」或「去中心化交易所可以做美股了」。Peirce 明寫這份命令不是在處理去中心化金融，而且 TSV 的定義核心就是「許可式准入」——有人決定誰能進來。",
+    "不可寫 Uyeda 委員聲明裡的內容（見 `unverified_or_excluded` 第 1 條），它不在 sources[] 裡。",
+    "不可寫任何價格、漲跌、市值、成交金額、報酬、手續費比較，不可點名任何股票、交易所、錢包、鏈或穩定幣品牌（`crypto.md` 的界線）。命令註 72 的 2025 年日均成交股數也不寫。",
+    "不可把 CLARITY Act 寫成「已經失敗」「被否決」「胎死腹中」。Atkins 的原句是本週國會未能推進，只能照這個程度寫，並歸因給他。",
+    "不可推測台灣投資人能不能參與。四份文件都沒有寫；要寫就寫「命令只要求場所本身是美國人，對參與者的國籍沒有規定，改由各場所自訂准入標準，這四份文件沒有交代非美國人可不可以參加」。",
+    "正文不要出現「本文」（DELTA-4-7 第 14 條）：指涉自己用「這一篇」。也不要每一句都掛「官方」「SEC 表示」——歸因該做，但委員個人聲明要標明是誰說的，命令本文的規定直接寫就好。",
+    "不可把委員的聲明寫成命令的內容。三份聲明是個人意見，「不是在處理 DeFi」「言之過早」「必須接上正式規則」這些話要標明是哪一位委員說的。"
+  ],
+  "live_data_warnings": [
+    "SEC 的新聞稿與聲明 RSS（pressreleases.rss、statements.rss）都只保留最近 25 筆、會滾動。本輪只拿它們取得 2026-09-17 那幾筆的正式網址，沒有引用 feed 上的任何清單、排序或筆數，正文也不要引。",
+    "意見徵詢沒有截止日，而且命令第 V 節寫明委員會得依交易法第 36 條修改期間或其他任何部分，第 VI 節也說會密切觀察使用情形。也就是說這份豁免的內容在五年內隨時可能變動，正文每一個「目前」都要繫在查核日 2026 年 9 月 23 日上。",
+    "TSV 的公開公告、交易資料頁與委員會的意見頁都是動態的：公告要在營運前 30 天出現、非重大變更每季更新、交易資料每 10 分鐘更新、意見頁會持續新增。這一篇不引用任何一家業者的頁面內容，也不寫任何家數、件數或「目前已有幾家」。",
+    "LULD Plan 附錄 A 的第一層合格 ETP 名單約每半年更新一次（命令註 70），所以「哪些股票落在第一層」會隨時間變動，不可寫成固定清單。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "crypto-news-sec-regulation-crypto-assets-20260821",
+      "says": "SEC 2026-08-21 刊登的 Regulation Crypto Assets 草案（91 FR 54510，146 頁）：證券法下的兩項募集豁免、投資契約安全港（Rule 400）與州法優先排除，尚未定案，意見期到 2026-10-20。",
+      "boundary": "那是**募集端**、**證券法**、**草案**；本篇是**次級市場交易端**、**交易法第 36(a)(1) 條**、**已生效的命令**。本篇最多用一句交代兩者是不同層的東西並指過去，不重講安全港或募集豁免的條件。這一篇也是本篇的第二個結尾連結。"
+    },
+    {
+      "slug": "crypto-news-sec-crypto-interpretation-20260323",
+      "says": "SEC 與 CFTC 2026 年 3 月的聯名解釋令，把加密資產分成五類，刊登當天生效（91 FR 13714）。",
+      "boundary": "本命令註 6 正是引這份解釋令來定義「非證券加密資產」。本篇只需一句「非證券加密資產的定義沿用今年 3 月那份解釋令」，不要重講五分類與投資契約怎麼開始結束。"
+    },
+    {
+      "slug": "crypto-news-sec-crypto-fraud-patterns-20260918",
+      "says": "SEC 執法處長 2026-09-18 演講講的兩種加密詐騙包裝，其中一段已經解釋過「流動性池正常情況下是交易雙方付手續費、資產得以買賣的機制」。",
+      "boundary": "本篇要解釋 AMM 流動性池怎麼定價（用池子裡兩種資產的數量比），但**不要重寫流動性池的基礎定義**，一句帶過即可；也完全不碰詐騙題材。"
+    },
+    {
+      "slug": "crypto-news-cftc-passive-software-20260917",
+      "says": "同一天（2026-09-17）CFTC 市場參與者部門把被動軟體提供者的無異議函擴大適用，十項條件劃界，並解釋無異議函與委員會規則的效力差異。",
+      "boundary": "同日、同樣是「不修法先開路」的工具，但機關不同、工具位階不同（部門層級的無異議函 vs 委員會作成的豁免命令）。最多一句對照，不可混為一談，也不要把無異議函那篇解釋過的效力差異再講一次。"
+    },
+    {
+      "slug": "crypto-news-occ-three-trust-charters-20260918",
+      "says": "OCC 2026-09-18 同日三份加密信託銀行決定，六項條件，並寫了「核准與可以開業之間的差距」。",
+      "boundary": "不同機關、不同題目。若要用到「拿到資格不等於明天就能開門」這個角度，最多一句並指過去，不要重講 OCC 的六項條件。"
+    },
+    {
+      "slug": "crypto-news-genius-act-occ-20260302",
+      "says": "OCC 的 GENIUS Act 支付型穩定幣規則草案：一比一準備金、兩個營業日贖回、定期申報。",
+      "boundary": "本命令只把「獲准支付穩定幣發行人發行的支付穩定幣」當成可與代幣化股票配對的非證券加密資產**例子**，並在註 24 引 GENIUS Act 的生效公式。穩定幣規則細節由那一篇（以及 FDIC、NCUA 兩篇）負責，本篇不展開，最多一句。"
+    },
+    {
+      "slug": "crypto-news-fdic-genius-act-20260410",
+      "says": "FDIC 的 GENIUS Act 實施草案，準備金存款的存款保險保給發行人、不穿透到持有人，並處理代幣化存款。",
+      "boundary": "代幣化存款與代幣化股票是兩回事，不要因為都有「代幣化」三個字就並列。本篇不提。"
+    },
+    {
+      "slug": "crypto-news-ncua-genius-act-20260518",
+      "says": "NCUA 的穩定幣標準草案，信用合作社只能透過子公司發行，代幣化股金與支付穩定幣在股金保險上的差別。",
+      "boundary": "同上，不提。"
+    },
+    {
+      "slug": "crypto-news-taiwan-vasp-act-20260630",
+      "says": "台灣《虛擬資產服務法》三讀通過：七種服務商、穩定幣許可與尚未定的施行日。",
+      "boundary": "如果要給台灣讀者一個對照點，只能寫「台灣走的是另一套制度，本站另有一篇」，不可把美國的定義豁免套到台灣，也不可暗示台灣會跟進。"
+    }
+  ],
+  "second_link": {
+    "slug": "crypto-news-sec-regulation-crypto-assets-20260821",
+    "text": "SEC 提出 Regulation Crypto Assets 草案：兩項募集豁免與一個安全港，尚未定案",
+    "url": "https://mokaair.com/zh-TW/life/crypto-news-sec-regulation-crypto-assets-20260821",
+    "verified": "2026-09-23 在 apps/api/app/guides/content/crypto-news-sec-regulation-crypto-assets-20260821.json 讀到 locales['zh-TW']['title'] 逐字等於上面的 text（display_order 203、news_date 2026-08-21），與 DELTA-4-7 第 7 條的表格一致。"
+  },
+  "hero_label": "暫時開一條窄路",
+  "diagram": {
+    "title": "創新豁免開了什麼門",
+    "caption": "美國 SEC 在 2026 年 9 月 17 日發布的創新豁免命令整理：誰能開場、能交易什麼、交易上限與到期安排，查核日 2026 年 9 月 23 日。",
+    "nodes": [
+      [
+        "誰能開場",
+        "美國人、先公告再開"
+      ],
+      [
+        "能交易什麼",
+        "與原股同權的代幣"
+      ],
+      [
+        "交易多少",
+        "分兩層限檔數與量"
+      ],
+      [
+        "到期怎麼辦",
+        "期滿前要另立規則"
+      ]
+    ]
+  },
+  "corrections_applied": []
+}
