@@ -44,6 +44,13 @@ refuse the three things one locale cannot decide on its own: an edit written for
 run does not touch, citing a source (the five locale documents of one index would end up
 citing different ones) and retitling. ``--dry-run`` prints the diff the run would write, and
 writes nothing.
+
+Batch 4.7 (the fifteen articles of 2026-09-20 onwards, with three earlier events written up
+late) is zh-TW only as well, and changes nothing in this script: the same three tables, the
+same flag, the same refusal on a second run. What it does change is the AI index's callout,
+which names the last event the series covers as well as the day it was last expanded -- the
+batch's newest AI article happened on 2026-09-21, so this time both dates in that sentence
+move, not only the second.
 """
 from __future__ import annotations
 
@@ -85,13 +92,13 @@ MAX_SOURCES = next(
 
 # The day this run expands the indexes: the one date the sentences below print, so the next
 # batch changes this constant and the same sentences instead of finding new ones to edit.
-EXPANDED_ON = "2026-09-22"
+EXPANDED_ON = "2026-09-23"
 EXPANDED = {
-    "zh-TW": "2026 年 9 月 22 日",
-    "en": "September 22, 2026",
-    "ja": "2026年9月22日",
-    "ko": "2026년 9월 22일",
-    "zh-CN": "2026 年 9 月 22 日",
+    "zh-TW": "2026 年 9 月 23 日",
+    "en": "September 23, 2026",
+    "ja": "2026年9月23日",
+    "ko": "2026년 9월 23일",
+    "zh-CN": "2026 年 9 月 23 日",
 }
 
 # vertical -> (slug, where to put the link). ``after`` is the existing slug to place the link
@@ -99,43 +106,76 @@ EXPANDED = {
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.6 (2026-09-22): the eleven articles of 2026-09-18, zh-TW only. The AI index lists by
-# month, so the four go after September's last link, in their ``display_order``; the tech and
-# crypto indexes group by topic and region, and this time every link joins a group the index
-# already has, so there is nothing for ``INSERT`` to place.
+# Batch 4.7 (2026-09-23): the twelve articles of the window that opened on 2026-09-20 and
+# three write-ups of earlier events, zh-TW only. The AI index lists by month, so the six go
+# after September's last link, in their ``display_order``; the tech and crypto indexes group
+# by topic and region, and every link joins a group those indexes already have, so ``INSERT``
+# again has nothing to place. Two rows anchor on a link this same run inserts, which the
+# table allows because it is applied in order.
 NEW: dict[str, list[tuple[str, object]]] = {
     "crypto": [
-        ("crypto-news-occ-three-trust-charters-20260918", "crypto-news-ncua-genius-act-20260518"),
-        ("crypto-news-sec-crypto-fraud-patterns-20260918", "crypto-news-cftc-passive-software-20260917"),
-        ("crypto-news-eba-third-party-risk-20260918", "crypto-news-eba-psd2-mica-20260212"),
+        # Taiwan's group, in the order a reader meets them: the act is already linked there,
+        # the FSC's deposit-token pilot says what the act does not reach, and the finance
+        # ministry's ruling taxes what it does.
+        ("crypto-news-taiwan-deposit-token-pilot-20260922", "crypto-news-taiwan-vasp-act-20260630"),
+        ("crypto-news-sec-innovation-exemption-20260917", "crypto-news-sec-regulation-crypto-assets-20260821"),
+        ("crypto-news-taiwan-vasp-tax-ruling-20260903", "crypto-news-taiwan-deposit-token-pilot-20260922"),
     ],
     "tech": [
-        ("tech-news-iphone-duo-dev-resources-20260918", "tech-news-iphone-duo-20260909"),
-        ("tech-news-windows-cloud-rebuild-20260918", "tech-news-windows-project-zenith-20260904"),
-        ("tech-news-npm-stage-only-tokens-20260918", "tech-news-app-store-bundles-multiseat-20260916"),
-        # The tech index has no developer group, and its one security group is the European
-        # Union's; CISA is a United States agency, so its Linux kernel advisory goes to
-        # platforms and software, behind the npm token change it reads next to. The owner can
-        # move it later: it is one row here and one link in the index.
-        ("tech-news-cisa-kev-linux-kernel-20260918", "tech-news-npm-stage-only-tokens-20260918"),
+        ("tech-news-googlebook-launch-20260921", "tech-news-iphone-duo-dev-resources-20260918"),
+        ("tech-news-eu-data-centre-rating-20260921", "tech-news-eu-cra-reporting-20260911"),
+        # Batch 4.6 put CISA's Linux kernel advisory in platforms and software because the
+        # index's only security group is the European Union's; the Zyxel advisory is the same
+        # mechanism one case later, so it follows it rather than opening a group of its own.
+        ("tech-news-cisa-kev-zyxel-gs1900-20260921", "tech-news-cisa-kev-linux-kernel-20260918"),
+        # Petal is a France-United States cable. It was placed beside the Matsu cables at
+        # first, as the index's other subsea-cable articles; the owner ruled on 2026-09-23
+        # that a group headed "Taiwan: telecommunications and digital policy" is the wrong
+        # home for it and moved it to the end of compute infrastructure, so the anchor here
+        # is that group's last link.
+        ("tech-news-meta-petal-subsea-cable-20260921", "tech-news-nvidia-mediatek-20260831"),
+        ("tech-news-enisa-threat-landscape-20260922", "tech-news-cisa-kev-zyxel-gs1900-20260921"),
+        ("tech-news-moda-mydata-student-loan-20260917", "tech-news-taiwan-sovereign-ai-corpus-20260915"),
     ],
     "ai": [
-        ("ai-news-anthropic-accenture-evaluation-20260918", "ai-news-google-cc-family-agent-20260918"),
-        ("ai-news-openai-australia-youth-safety-20260918", "ai-news-anthropic-accenture-evaluation-20260918"),
-        ("ai-news-gemini-notebook-study-tools-20260918", "ai-news-openai-australia-youth-safety-20260918"),
-        ("ai-news-kimi-k3-bedrock-20260918", "ai-news-gemini-notebook-study-tools-20260918"),
+        ("ai-news-openai-math-advisory-20260921", "ai-news-kimi-k3-bedrock-20260918"),
+        ("ai-news-openai-frontier-standards-20260921", "ai-news-openai-math-advisory-20260921"),
+        ("ai-news-anthropic-life-sciences-verification-20260917", "ai-news-openai-frontier-standards-20260921"),
+        ("ai-news-meta-one-subscription-20260915", "ai-news-anthropic-life-sciences-verification-20260917"),
+        ("ai-news-openai-academy-paths-20260921", "ai-news-meta-one-subscription-20260915"),
+        ("ai-news-nvidia-physical-ai-safety-20260921", "ai-news-openai-academy-paths-20260921"),
     ],
 }
+# What batch 4.6 (2026-09-22) added, kept for the record. Its comment said the same thing this
+# one does about CISA: the index has no security group outside the European Union's.
+#
+#     "crypto": [
+#         ("crypto-news-occ-three-trust-charters-20260918", "crypto-news-ncua-genius-act-20260518"),
+#         ("crypto-news-sec-crypto-fraud-patterns-20260918", "crypto-news-cftc-passive-software-20260917"),
+#         ("crypto-news-eba-third-party-risk-20260918", "crypto-news-eba-psd2-mica-20260212"),
+#     ],
+#     "tech": [
+#         ("tech-news-iphone-duo-dev-resources-20260918", "tech-news-iphone-duo-20260909"),
+#         ("tech-news-windows-cloud-rebuild-20260918", "tech-news-windows-project-zenith-20260904"),
+#         ("tech-news-npm-stage-only-tokens-20260918", "tech-news-app-store-bundles-multiseat-20260916"),
+#         ("tech-news-cisa-kev-linux-kernel-20260918", "tech-news-npm-stage-only-tokens-20260918"),
+#     ],
+#     "ai": [
+#         ("ai-news-anthropic-accenture-evaluation-20260918", "ai-news-google-cc-family-agent-20260918"),
+#         ("ai-news-openai-australia-youth-safety-20260918", "ai-news-anthropic-accenture-evaluation-20260918"),
+#         ("ai-news-gemini-notebook-study-tools-20260918", "ai-news-openai-australia-youth-safety-20260918"),
+#         ("ai-news-kimi-k3-bedrock-20260918", "ai-news-gemini-notebook-study-tools-20260918"),
+#     ],
 # vertical -> the articles whose first source the index cites. A source the index already
 # carries is skipped, not appended twice.
 #
-# Nothing this batch, and not because the sources are unsuitable. The AI index already cites
-# 19 of the 20 sources a document may carry and the tech index 17, so four more do not fit
-# either index. And citing is a five-locale act: the source list belongs to a locale document,
-# so a zh-TW-only run would leave the five documents of one index citing different sources,
-# which no later batch could put back without editing four locales it never read. The eleven
-# packs of this batch carry no other locale to cite from either. ``main`` refuses a non-empty
-# table unless all five locales are in the run.
+# Nothing this batch either, and not because the sources are unsuitable. The AI index already
+# cites 19 of the 20 sources a document may carry and the tech index 17, so six more do not
+# fit either index. And citing is a five-locale act: the source list belongs to a locale
+# document, so a zh-TW-only run would leave the five documents of one index citing different
+# sources, which no later batch could put back without editing four locales it never read.
+# The fifteen packs of this batch carry no other locale to cite from either. ``main`` refuses
+# a non-empty table unless all five locales are in the run.
 CITED: dict[str, list[str]] = {"crypto": [], "tech": [], "ai": []}
 
 # vertical -> locale -> new title. Empty leaves the title alone: none of the three titles
@@ -148,18 +188,19 @@ RETITLE: dict[str, dict[str, str]] = {
 
 # vertical -> locale -> (where, old, new). ``where`` is "description" or a block index.
 #
-# Batch 4.6 fills only the "zh-TW" row of each vertical, and leaves the four other locales
+# Batch 4.7 fills only the "zh-TW" row of each vertical, and leaves the four other locales
 # alone on purpose: every one of them states the day its own document was last expanded, and
 # that sentence stays true for as long as this run does not add anything to it. Each sentence
-# below is the one batch 4.5 wrote, so only the date moves. Nothing else changes -- the index
-# prose that introduces a batch by name (the AI index's second paragraph, the tech and crypto
-# group paragraphs) is five-locale text, and a sentence added to zh-TW alone would make the
-# five documents of one index describe different things. The block indexes are those of the
-# indexes as they read on 2026-09-22, before this run's links.
+# below is the one batch 4.6 left behind, so mostly only the date moves. Nothing else changes
+# -- the index prose that introduces a batch by name (the AI index's second paragraph, the
+# tech and crypto group paragraphs) is five-locale text, and a sentence added to zh-TW alone
+# would make the five documents of one index describe different things. The block indexes are
+# those of the indexes as they read on 2026-09-23, before this run's links; batch 4.6 appended
+# its links behind every prose block, so the three AI indexes below did not move.
 EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     "crypto": {
         "zh-TW": [
-            (1, "本索引於 2026 年 9 月 17 日查核，2026 年 9 月 18 日增補。", f"本索引於 2026 年 9 月 17 日查核，之後多次增補（最近一次 {EXPANDED['zh-TW']}）。"),
+            (1, "之後多次增補（最近一次 2026 年 9 月 22 日）。", f"之後多次增補（最近一次 {EXPANDED['zh-TW']}）。"),
         ],
         "en": [],
         "ja": [],
@@ -168,7 +209,7 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     },
     "tech": {
         "zh-TW": [
-            (1, "本索引於 2026 年 9 月 17 日查核，2026 年 9 月 18 日增補。", f"本索引於 2026 年 9 月 17 日查核，之後多次增補（最近一次 {EXPANDED['zh-TW']}）。"),
+            (1, "之後多次增補（最近一次 2026 年 9 月 22 日）。", f"之後多次增補（最近一次 {EXPANDED['zh-TW']}）。"),
         ],
         "en": [],
         "ja": [],
@@ -177,12 +218,13 @@ EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
     },
     "ai": {
         "zh-TW": [
-            (0, "之後多次增補（最近一次 2026-09-18），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
-            (24, "之後多次增補（最近一次 2026-09-18），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
+            (0, "之後多次增補（最近一次 2026-09-22），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
+            (24, "之後多次增補（最近一次 2026-09-22），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
             # The callout states both the last event the series covers and the day it was last
-            # expanded. The events still run to 2026-09-18 -- every article of this batch
-            # happened that day -- so only the second date moves.
-            (25, "最後增補於 2026-09-18。", f"最後增補於 {EXPANDED_ON}。"),
+            # expanded. Batch 4.6 moved only the second date because every one of its articles
+            # happened on 2026-09-18; this batch's newest AI article happened on 2026-09-21,
+            # so both move, in one replacement so the sentence is matched as it reads.
+            (25, "本輯收錄的事件到 2026-09-18 為止，最後增補於 2026-09-22。", f"本輯收錄的事件到 2026-09-21 為止，最後增補於 {EXPANDED_ON}。"),
         ],
         "en": [],
         "ja": [],
@@ -228,10 +270,10 @@ def _h(text: str) -> dict:
 # ``heading:<exact text>`` or ``paragraph:<opening text>``, with a leading ``<`` to insert
 # before it instead of after. Applied in order, before ``NEW``.
 #
-# Nothing this batch. Every one of the eleven links joins a group all three indexes already
-# have, and an inserted block is prose: written for zh-TW alone it would leave the five locale
-# documents of one index saying different things, which is the same reason ``EDITS`` adds no
-# sentence naming this batch's subjects.
+# Nothing this batch either. Every one of the fifteen links joins a group all three indexes
+# already have, and an inserted block is prose: written for zh-TW alone it would leave the
+# five locale documents of one index saying different things, which is the same reason
+# ``EDITS`` adds no sentence naming this batch's subjects.
 INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
     "crypto": {locale: [] for locale in LOCALES},
     "tech": {locale: [] for locale in LOCALES},
