@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-localize-llms-txt-evaluation-draft-only
 title: Draft llms.txt evaluation localization without publication
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-batch016-en-zhcn
 claimed_at: 2026-09-22T05:35:42Z
 created_at: 2026-09-22T05:35:38Z
-completed_at:
+completed_at: 2026-09-22T08:48:08Z
 branch: codex/article-localization-batch016-llms
 depends_on: []
 scope:
@@ -38,8 +38,8 @@ publication exclusion or treating repository presence as public state.
 - [x] The source pack and three source assets remain byte-for-byte unchanged.
 - [x] Four localized hero SVG/JPG pairs and four localized diagram SVGs pass
       independent text, desktop and actual-mobile visual review.
-- [x] The repository change remains a draft PR and the canonical wrapper remains
-      offline; no database write, import or publication is performed.
+- [x] The independently reviewed wrapper is imported through the authorized release
+      as five private drafts; no locale is published or included in a public sitemap.
 
 ## Steps
 
@@ -121,3 +121,31 @@ the exact pack, twelve localized assets and two task records before commit.
 - The semantic link issue now also has an unclaimed, dependency-gated follow-up:
   `2026-09-22-correct-llms-txt-evaluation-token-link`, whose scope is only its
   own task record until a future editor claims a separate source-correction scope.
+
+### Completed private-draft delivery — 2026-09-22
+
+The initial offline-only phase was extended by the coordinating release owner's
+authorized draft-import sequence. PR #655 was integrated unchanged into PR #654,
+which passed all nine CI checks and merged as
+`d5f03e679bef2102e843426c42f045aef4ae08c0`. The verified release imported exactly
+five v1 drafts, each with all 33 blocks and seven sources. There are five creation
+revisions, and every published version, timestamp and document hash remains null.
+The duplicate-topic publication exclusion still applies.
+
+Full article-component previews passed five-language desktop/mobile inspection.
+After import, ten signed-out browser cases, five public APIs, and complete API/XML
+sitemaps confirmed the article remained private. Database metadata and all five
+draft hashes matched the frozen bundle. Final host health and journals passed;
+the deployment hold was cleared after combined acceptance.
+
+External evidence under `C:/Users/x8120/.codex/article-localization-release/`:
+
+- `batch015-016-delivery-20260922.json`, SHA-256
+  `0c2e025e12c2f448491c11c7a40cd31e38346c72542bcd4e3b571eccfd6ff0af`.
+- `batch016-llms/privacy-after-import-20260922T0808/combined-acceptance.json`,
+  SHA-256 `53d1412505382f1ca85be76ca6ce08f8f159b565d07c3626d36b7b73867cabc8`.
+- Full preview root review SHA-256
+  `df60968a0c470514b4dda5a499ae622fe109c72ae29cd52a00c29e31ff19b8a9`.
+
+Browser checks used mobile viewport sizes rather than physical devices. The
+original token-link wording remains unchanged and tracked separately.
