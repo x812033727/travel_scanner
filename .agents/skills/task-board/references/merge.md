@@ -23,6 +23,7 @@ gh pr view <n> --json state -q .state                         # MERGED
 ```
 
 - 一次只跑一條 chain；要合併一組票時一條接一條。
+- push 之後 GitHub 要一兩分鐘才建立 check-run；那段期間 `gh pr checks --watch` 會立刻回「no checks reported」而不是等。腳本因此直接輪詢四個必要 check-run 直到 completed，不靠 `--watch`。
 - `--match-head-commit` 是必要的：PR 的作者 session 可能還在跑、還會推，GitHub 會拒絕而不是把沒測的 head 合進去。
 - `push` 與 `pull_request` 兩種事件都跑，同一個 job 會有兩列，看 head SHA 那一組。
 - 合併後 GitHub 自動刪遠端分支（repo 設定），本機分支留著沒關係。
