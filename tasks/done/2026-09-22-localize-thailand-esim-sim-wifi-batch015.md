@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-localize-thailand-esim-sim-wifi-batch015
 title: Localize Thailand eSIM SIM and WiFi guide in four missing languages
-status: review
+status: done
 priority: P1
 area: docs
 owner: codex-batch015-thailand-pin
 claimed_at: 2026-09-22T04:41:05Z
 created_at: 2026-09-22T04:41:04Z
-completed_at:
+completed_at: 2026-09-22T08:48:05Z
 branch: codex/article-localization-batch015-thailand
 depends_on: []
 scope:
@@ -34,9 +34,9 @@ description.
       metadata, preserve numeric branches and pass independent desktop/mobile render review.
 - [x] The repository-only zh-TW AIO description remains byte-for-byte represented by
       the final full pack; zh-TW is excluded from import and publication.
-- [ ] A narrow assembler/publisher guard independently proves full repository
+- [x] A narrow assembler/publisher guard independently proves full repository
       ArticlePack equality while source-version checks remain pinned to live zh-TW v8.
-- [ ] Scoped lint, review, canonical bundle, rerun/version-conflict tests and release
+- [x] Scoped lint, review, canonical bundle, rerun/version-conflict tests and release
       evidence pass before the draft PR advances to publication steps.
 
 ## Steps
@@ -44,10 +44,10 @@ description.
 - [x] Recheck current main, open PR file lists and active task scopes; claim the one-slug scope.
 - [x] Capture a fresh complete production source in one repeatable-read, read-only transaction.
 - [x] Freeze live/repository hash metadata and the exact `/description` divergence.
-- [ ] Land and independently validate the narrow four-locale publication guard.
+- [x] Land and independently validate the narrow four-locale publication guard.
 - [x] Draft and independently review the four documents and four SVGs.
-- [ ] Assemble, freeze and independently review the four-locale-only release wrapper.
-- [ ] Open/update the narrow draft PR, then follow the authorized guarded release sequence.
+- [x] Assemble, freeze and independently review the four-locale-only release wrapper.
+- [x] Open/update the narrow draft PR, then follow the authorized guarded release sequence.
 
 ## How to verify
 
@@ -115,3 +115,30 @@ source-version conflict tests.
   renders. Every prior WITHHOLD version and its evidence remains preserved outside Git.
 - Scoped `ArticlePack` validation and `pack_cli lint --slug thailand-esim-sim-wifi`
   pass with only the source-structure summary warnings and the English length guideline.
+
+### Completed release evidence — 2026-09-22
+
+PR #654 passed all nine CI checks and merged as
+`d5f03e679bef2102e843426c42f045aef4ae08c0`. Following a verified PostgreSQL backup,
+the exact release was deployed, dry-run checked, and the four target languages
+were imported and published. Each is published v2; the full original zh-TW v8 row
+and article metadata remained unchanged. The historical preservation HOLD above
+was resolved by the independently reviewed guard integrated from PR #652.
+
+Five-language desktop/mobile browser validation passed all ten cases, including
+body content, images, source details, canonical, hreflang and links. Root inspected
+all twenty public-page screenshots. API sitemap pagination returned 1,852 unique
+article-language rows; all occurred in the XML sitemap. Final host revision,
+journals and health passed, and the deployment hold was cleared at 08:29:07 UTC.
+
+External evidence under `C:/Users/x8120/.codex/article-localization-release/`:
+
+- `batch015-016-delivery-20260922.json`, SHA-256
+  `0c2e025e12c2f448491c11c7a40cd31e38346c72542bcd4e3b571eccfd6ff0af`.
+- `batch015/public-qa-after-publish-20260922T0808/root-visual-and-content-acceptance.json`,
+  SHA-256 `abbbcf196dc6bbe5b2217b9e1877dc956528f8d4975135d6026b63dae49283a2`.
+- Final release acceptance SHA-256
+  `edb3149129f54ba3441a84c7c20241d8ee3fe50e076375adab6fa86680583408`.
+
+Browser validation used desktop and mobile viewport sizes, not physical devices.
+The airplane-mode source observation remains in its separate follow-up task.

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-preserve-reviewed-unselected-repository-locale-edits
 title: Preserve reviewed unselected repository locale edits in localization bundles
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-source-preservation
 claimed_at: 2026-09-22T04:58:51Z
 created_at: 2026-09-22T04:40:57Z
-completed_at:
+completed_at: 2026-09-22T08:48:01Z
 branch: codex/article-localization-source-edit-preservation
 depends_on: []
 scope:
@@ -46,7 +46,7 @@ would weaken protection for selected locales and concurrent editor work.
 - [x] The assembled full ArticlePack must equal the final Git ArticlePack before its
       exact raw bytes are copied; deployed full-pack equality and all runtime guards
       remain unchanged.
-- [ ] Independent code review and draft pull request are complete.
+- [x] Independent code review and draft pull request are complete.
 
 ## Steps
 
@@ -56,7 +56,7 @@ would weaken protection for selected locales and concurrent editor work.
 - [x] Cover tamper, selected/target/source-correction overlap, final-pack source,
       metadata and target drift, runtime version conflict, deployed drift, rerun and
       backward compatibility.
-- [ ] Freeze for independent review, address findings, then open a draft PR.
+- [x] Freeze for independent review, address findings, then open a draft PR.
 
 ## How to verify
 
@@ -99,3 +99,19 @@ an empty commit B, while ordinary non-preservation assembly remains unchanged. T
 original WITHHOLD receipt remains at
 `batch015/source-edit-preservation-feature-review/independent-code-review-withhold-ff4f51c9.json`
 outside the repository.
+
+### Completed release evidence — 2026-09-22
+
+PR #652 was independently reviewed and integrated unchanged into PR #654, which
+passed all nine CI checks and merged as
+`d5f03e679bef2102e843426c42f045aef4ae08c0`. The guarded batch015 release exercised
+the preservation path: the full repository pack retained its description edit,
+while the complete published zh-TW v8 database row remained unchanged and only
+the four missing locales were imported and published. Production health, final
+journals and browser acceptance passed; the deployment hold was cleared.
+
+The external delivery record is
+`C:/Users/x8120/.codex/article-localization-release/batch015-016-delivery-20260922.json`
+(SHA-256 `0c2e025e12c2f448491c11c7a40cd31e38346c72542bcd4e3b571eccfd6ff0af`).
+Final acceptance SHA-256 is
+`edb3149129f54ba3441a84c7c20241d8ee3fe50e076375adab6fa86680583408`.
