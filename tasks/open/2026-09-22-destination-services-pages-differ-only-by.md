@@ -15,6 +15,7 @@ scope:
   - apps/web/components/travel-services/destination-services-page.test.tsx
   - apps/web/app/sitemaps/sitemap.ts
   - apps/web/app/sitemaps/sitemap.test.ts
+  - apps/web/e2e/seo.spec.ts
 ---
 
 # Destination services pages differ only by their title, so Google picks its own canonical
@@ -59,7 +60,9 @@ are the same page.
       route and its fallback re-export, so one edit covers every locale and every city.
 - [x] Take them out of `SITEMAP_ROUTES`. A sitemap that advertises a `noindex` page is the
       site contradicting itself, and Search Console reports it as such.
-- [x] Tests for both halves.
+- [x] Tests for both halves. `e2e/seo.spec.ts` counts the runtime sitemap's `<url>`
+      elements and had `5 * (7 + 33 + 33)` written into it; `npm run test:web` does not run
+      the Playwright suite, so CI caught this and the local checks did not.
 - [ ] Deploy, then confirm on the live site.
 
 ## How to verify
