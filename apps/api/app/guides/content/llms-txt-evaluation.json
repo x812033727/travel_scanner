@@ -297,6 +297,1154 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "What Is llms.txt? Limits to Know Before Organizing a Content Index",
+      "description": "llms.txt is a proposal for providing site context and entry points to documentation, not a pass that guarantees AI citations. Based on the latest v2 proposal, this guide explains Markdown summaries, link lists and subpaths; compares them with sitemap, robots.txt and login controls; and uses an original equipment-manual site example to set out a practical creation, testing and maintenance process, so maintainers can decide whether to invest based on actual usage needs.",
+      "hero": {
+        "src": "/guides/llms-txt-evaluation/hero-en.jpg",
+        "alt": "Original Mokaair artwork of folders, documents and a verification shield illustrating llms.txt documentation guidance, version synchronization and purpose checks.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "If a website tool reports that llms.txt is missing, does that mean "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " cannot see the content at all? Do not rush to install a plugin. This file can provide an organized entry point to documentation, but whether anyone uses it, whether its links are correct and whether its content stays updated are the starting points for assessing its value."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This article was checked on September 14, 2026, against the llms.txt v2 proposal and related official tool documentation. The equipment-manual website is an original example: no file was added to a real production website, and no AI search-ranking or citation-rate experiment was conducted."
+        },
+        {
+          "type": "heading",
+          "text": "It is a documentation-guide proposal, so first identify who will use it",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "llms.txt uses Markdown to provide site context, a short description and links to important documents, with the aim of helping agent tools find the information they need. It usually appears at /llms.txt, but it can also be placed at an applicable subpath. At the time of review, the official site still called it a proposal; do not claim that every AI product is required to adopt it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Consider a website that sells equipment for handmade projects. Its public manuals may be spread across installation, cleaning and consumables pages. If users often ask a tool to find manuals, a versioned, categorized entry point has a clear purpose. If the site has only simple introductory pages and no maintainable collection of documentation, the benefit of adding a list may be limited."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by listing the intended readers: an in-house customer-support assistant, a documentation tool used by customers, or a search platform. Then confirm whether that tool reads this kind of entry point or allows a user to provide the file explicitly. A publisher making a file available proves only that it exists on the supply side; it does not prove that every external system will look for it automatically."
+        },
+        {
+          "type": "heading",
+          "text": "Divide the roles of search indexing and access control",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A sitemap mainly supplies important URLs and related information to help search engines discover content; llms.txt is closer to a curated documentation guide. They can coexist, so do not delete a working sitemap simply because a new file has been created. A sitemap itself also does not guarantee that every URL will be crawled or indexed."
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt expresses crawling rules; it is not a login mechanism for protecting private information. llms.txt has no such access-control function either. If repair information in a manual is available only to particular partners, retain real authentication and access restrictions. Removing a URL from a list alone does not mean the information is protected."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Search's current official guidance says that Search itself does not use llms.txt or special AI text files for this kind of optimization. This does not rule out other tools using a guide; it shows that different products serve different purposes. Do not turn support by a documentation tool into a claim that Google will improve search rankings or citation opportunities."
+        },
+        {
+          "type": "heading",
+          "text": "Build the first version with a small set of useful documents",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First select the public documents readers actually need, then check their versions, URLs and titles. An equipment site could begin with getting-started manuals, cleaning procedures and consumables references for current models, while labeling discontinued models separately. Do not mechanically stuff every page on the site into the list and let advertising pages or old notices bury the important entry points."
+        },
+        {
+          "type": "paragraph",
+          "text": "The proposed format begins with an H1 site or project name, which is the only required part. You may then add a blockquote summary, supporting text and document link lists grouped under H2 headings. Give each link a short name that explains its purpose, then add one line of necessary conditions, such as the applicable equipment series, instead of copying the entire manual into the summary."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can start in a plain-text editor and save the file as llms.txt. In the example, the title can be written as “# 山角器材文件”, the summary can say that the documents are public operating instructions, and the documents below can be organized under “## 入門與保養”. These names are examples only; in a real implementation, replace them with your site's actual content and working URLs."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List the tool, the reader's task and the documents that can be public, then confirm the purpose of creating the file.",
+            "Organize the summary and link list around the actual versions, checking each document's content individually.",
+            "Provide the file and any necessary Markdown versions at the correct paths, then test that they can be read.",
+            "Assign an owner for updates and make link checking and version synchronization part of the documentation release process."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Understand v2 paths and document discovery",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The August 2026 v2 update explains that a file covers content below the path where it is located; when more than one file applies, the one with the more specific scope should be used. For example, a team that manages only /manuals/ can provide a guide at that path without claiming to manage the entire domain. Actual users must still confirm how their tools follow the proposal."
+        },
+        {
+          "type": "paragraph",
+          "text": "v2 also allows Markdown versions to be provided by appending or replacing a file extension, and proposes the alternate and describedby link relations to help documents be discovered. These are discovery methods in the proposal. They do not mean that adding .md to the end of any HTML URL automatically creates readable content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask developers to confirm that every listed path actually exists and returns the intended text, rather than the site's home page, an error page or a login form. If a content platform generates the file automatically, check that platform's own rules first. For example, a custom file in Mintlify overrides an automatically generated file with the same name, so maintainers need to understand how the two sources switch."
+        },
+        {
+          "type": "heading",
+          "text": "Test usability without treating a passed check as proof of exposure",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First open the file in an ordinary browser and spot-check the links, Traditional Chinese text and version information in each document category. Then explicitly provide the guide to the tool you intend to use, ask it to find the cleaning steps for a particular model and require it to cite the source. This tests whether the documentation entry point can complete the task; visibility in organic search is a different question."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Chrome's Lighthouse includes an llms.txt item in its agentic browsing checks. Its current official guidance says that server errors while retrieving the file are "
+            },
+            {
+              "type": "article",
+              "text": "flagged",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "; if no file is provided and the server returns 404, the check is not applicable because the file remains optional. Do not interpret this check as meaning that a missing file brings a search penalty."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Even when a tool reads the file successfully, confirm that its answer uses the correct model and the latest documentation. If it returns outdated material, check whether the guide contains old links, whether the text version lags behind and whether a cache is still serving earlier content. Saving the question, response and source makes investigation easier than recording only “test passed.”"
+        },
+        {
+          "type": "heading",
+          "text": "Include maintenance cost in the adoption decision",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Whenever a model is added, a safety notice changes or a document moves, check whether the guide also needs an update. The file can be generated alongside the source documents, but automation reduces operational work; it does not replace content review. If only the HTML is updated while the Markdown version remains on the old specification, the result is two conflicting sets of instructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some platforms also provide llms-full.txt, which combines more documentation into one body of content. It is not a required deliverable for every website. First confirm how much content the tool can handle and whether a complete collection is needed. An equipment site can usually test the important entry points first instead of maintaining a huge copy while the requirement is still unclear."
+        },
+        {
+          "type": "paragraph",
+          "text": "A decision record can include intended users, the number of documents, the person responsible for updates and the acceptance questions. If version synchronization cannot currently be maintained, improving the existing documentation structure first is also reasonable. If a specific tool has already been identified, test on a small scope whether it saves search time. Do not make an unprovable citation guarantee the sole reason for the investment."
+        },
+        {
+          "type": "image",
+          "src": "/guides/llms-txt-evaluation/diagram-1-en.svg",
+          "alt": "Four columns show defining the purpose, selecting documents, testing the entry point and maintaining synchronization, emphasizing that providing a file does not guarantee citations in AI search.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A guide has practical value to assess only when it has a clear user and can be kept up to date.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Main purpose",
+            "What it cannot guarantee on its own"
+          ],
+          "rows": [
+            [
+              "llms.txt",
+              "Organize context and entry points to selected documents",
+              "That every AI reads or cites them"
+            ],
+            [
+              "sitemap",
+              "Help search engines discover important URLs",
+              "That every URL is indexed"
+            ],
+            [
+              "robots.txt",
+              "Express site-crawling rules",
+              "That private data is protected by login"
+            ],
+            [
+              "Authentication and authorization",
+              "Restrict who can retrieve protected content",
+              "Search visibility for public content"
+            ]
+          ],
+          "caption": "Each item serves a different purpose. Keep existing site functions in place and add a documentation guide only for a clear need."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "After providing an entry point, maintain it",
+          "text": "Check separately that the file is readable, its links work and its content is current. If you cannot confirm which tools will use it, begin with a small test and do not promise search results in advance."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Distinguish the roles of search crawlers and AI page retrieval",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a sitemap and URL-submission workflow",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Track AI search visibility with traceable evidence",
+              "kind": "life",
+              "slug": "ai-search-tools-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "llms.txt v2 proposal and format",
+          "url": "https://llmstxt.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llms.txt v2 updates to paths and discovery methods",
+          "url": "https://llmstxt.org/changes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search guidance on special AI files",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse llms.txt check for agentic browsing",
+          "url": "https://developer.chrome.com/docs/lighthouse/agentic-browsing/llms-txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mintlify automatic and custom llms.txt files",
+          "url": "https://www.mintlify.com/docs/ai/llmstxt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google guidance on sitemap purposes and limitations",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google guidance on robots.txt purposes and limitations",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "llms.txtとは：コンテンツの案内を整える前に知っておきたい制約",
+      "description": "llms.txtはサイトの背景情報とドキュメントへの入口を提供する提案であり、AIによる引用を保証するものではありません。本記事では最新のv2提案に基づき、Markdownの概要、リンク一覧、サブパスの用途を説明し、sitemap、robots.txt、ログインによるアクセス制限との違いを比較します。架空の機材マニュアルサイトを独自の例として、作成・テスト・更新の手順を整理し、実際の利用目的に応じて導入を判断できるようにします。",
+      "hero": {
+        "src": "/guides/llms-txt-evaluation/hero-ja.jpg",
+        "alt": "Mokaairオリジナルのフォルダー、ドキュメント、確認用の盾の図。llms.txtによる文書案内、バージョンの同期、用途の確認を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "サイト診断ツールにllms.txtがないと表示されたら、"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "からコンテンツがまったく見えないということでしょうか。急いでプラグインを入れる必要はありません。このファイルは整理されたドキュメントへの入口を提供できますが、実際に利用されるか、リンクが正しいか、内容が更新され続けているかを確かめることが、価値を評価する出発点です。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事の確認日は2026年9月14日です。llms.txt v2の提案と関連する公式ツールのドキュメントに基づいて説明します。機材の操作マニュアルサイトは独自に作成した例です。実在する本番サイトにファイルを追加したり、AI検索の順位や引用率を実験したりしたものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "文書案内のための提案です。まず利用者を確認しましょう",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "llms.txtはMarkdownを使い、サイトの背景、簡単な説明、重要なドキュメントへのリンクを提供します。エージェントツールが必要な情報を見つけやすくすることが目的です。通常は /llms.txt に置かれますが、対象となるサブパスに置くこともできます。確認時点で公式サイトは引き続きこれを提案と呼んでおり、すべてのAI製品に採用が義務づけられていると説明すべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手作り用の機材を販売するサイトを例に考えます。公開マニュアルが設置、清掃、消耗品の各ページに分かれているかもしれません。利用者がよくツールにマニュアル探しを依頼するのであれば、バージョンや分類を整理した入口には明確な用途があります。一方、簡単な紹介ページしかなく、継続して管理できるドキュメント群もないサイトでは、一覧を追加する効果は限られる可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず想定する読み手を挙げます。自社のカスタマーサポート用アシスタントなのか、顧客が使うドキュメントツールなのか、検索プラットフォームなのかを整理しましょう。そのうえで、そのツールがこの形式の入口を読み取るか、または利用者がファイルを明示的に渡せるかを確認します。公開側がファイルを用意したという事実は、提供されていることしか示しません。すべての外部システムが自動で探しに来ることの証明にはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "検索インデックスやアクセス権限との役割の違い",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトマップは主に重要なURLと関連情報を提供し、検索エンジンによるコンテンツの発見を助けます。llms.txtは、選び抜いたドキュメントの案内に重点を置きます。両者は併用できるため、新しいファイルを作ったからといって、すでに機能しているsitemapを削除してはいけません。サイトマップ自体も、すべてのURLのクロールやインデックス登録を保証するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txtはクロールに関するルールを示すためのもので、非公開情報を保護するログインの仕組みではありません。llms.txtにも、このようなアクセス権限制御の機能はありません。マニュアルの修理情報を特定の取引先だけに公開する場合は、実際の認証とアクセス制限を維持する必要があります。URLを一覧から外しただけで、情報が保護されたと判断しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google検索の公式説明では現在、検索そのものはllms.txtや特別なAI用テキストファイルを、この種の最適化の手段として使用していません。これは、ほかのツールが文書案内を使う可能性を否定するものではなく、製品ごとに用途が異なることを示しています。ドキュメントツールによる対応を、そのままGoogleの検索順位や引用される可能性が高まるという話に広げないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "少数の有効なドキュメントから初版を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず読者が本当に必要とする公開ドキュメントを選び、バージョン、URL、タイトルを確認します。機材サイトなら、現行モデルの入門マニュアル、清掃手順、対応する消耗品の一覧から整理し、販売を終了したモデルは別途明示するとよいでしょう。サイト内の全ページを機械的に一覧へ詰め込み、広告ページや古い告知で重要な入口が埋もれる状態にしないことが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提案されている形式では、H1でサイト名またはプロジェクト名を記載して始めます。必須なのはこの部分だけです。その後に概要を示す引用文、補足の文章、H2で分類したドキュメントのリンク一覧を追加できます。各リンクには用途が分かる短い名前を付け、対象の機材シリーズなど、必要な条件を1行補います。概要にマニュアル全体をコピーする必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最初はプレーンテキストのエディターで作成し、llms.txtとして保存できます。この例では、タイトルを「# 山角器材文件」とし、概要で公開の使用説明書であることを伝え、その下に「## 入門與保養」という見出しでドキュメントを整理できます。これらの名称はあくまで例です。実際に作成する際は、自分のサイトにある本当のコンテンツと利用可能なURLに置き換えてください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "使用するツール、読者が行う作業、公開できるドキュメントを挙げ、作成の目的を確認する。",
+            "実際のバージョンに合わせて概要とリンク一覧を整理し、ドキュメントの内容を1件ずつ確認する。",
+            "正しいパスでファイルと必要なMarkdown版を提供し、読み取りをテストする。",
+            "更新担当者を決め、リンクの確認とバージョンの同期をドキュメント公開の手順に組み込む。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "v2におけるパスとドキュメントの発見方法を理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026年8月のv2更新では、ファイルが置かれたパス配下のコンテンツを対象とし、複数のファイルが適用される場合は、より対象範囲の具体的なものを使うと説明されています。たとえば /manuals/ だけを管理するチームは、そのパスに案内を用意できます。ドメイン全体を管理できると主張する必要はありません。実際の利用者は、ツールがこの提案にどのように従うのかを確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "v2では、拡張子を追加または置換してMarkdown版を提供する方法も認められています。また、alternateとdescribedbyのリンク関係を使い、ドキュメントの発見を助ける方法が提案されています。これらは提案上の発見方法であり、任意のHTMLのURLの末尾に .md を付ければ、読み取り可能なコンテンツが自動で生成されるという意味ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一覧に載せたパスが実際に存在し、返される内容が想定したテキストであって、サイトのホームページ、エラーページ、ログインフォームではないことを開発者に確認してもらいましょう。コンテンツプラットフォームで自動生成する場合は、まずそのプラットフォーム独自のルールを調べます。たとえばMintlifyでは、同名の自動生成ファイルをカスタムファイルが上書きするため、管理者は2つの生成元がどう切り替わるのかを理解しておく必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "使えるかをテストし、チェックの合格を露出の成果と混同しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず一般的なブラウザーでファイルを開き、各分類のドキュメントからリンク、繁体字中国語の表示、バージョン情報を抜き取り確認します。続いて利用予定のツールに、この案内を明示的に渡し、特定モデルの清掃手順を見つけて出典を示すよう依頼します。これはドキュメントの入口を使って目的の作業を達成できるかのテストであり、自然検索でどれだけ表示されるかとは別の問題です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ChromeのLighthouseには、エージェントによるブラウジングのチェック項目としてllms.txtがあります。公式説明では現在、ファイル取得時のサーバーエラーは"
+            },
+            {
+              "type": "article",
+              "text": "警告の対象",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "となります。一方、ファイルを提供しておらず404を返す場合は、依然として任意のファイルであるため、適用対象外です。この項目を、ファイルがないと検索上のペナルティーを受けるという意味に解釈しないでください。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールが読み取りに成功した場合も、回答が正しいモデルと最新のドキュメントを使っているかを確認する必要があります。古い情報が返された場合は、案内に古いリンクが混ざっていないか、テキスト版の更新が遅れていないか、キャッシュから以前の内容が返されていないかを調べます。質問、回答、出典を保存しておけば、単に「テスト合格」と記録するよりも原因を追いやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "導入の判断には維持管理のコストも含める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルを追加したとき、安全上の注意を変更したとき、ドキュメントを移動したときには、その都度、案内の更新が必要かを確認します。元のドキュメントと一緒にファイルを生成することもできますが、自動化が減らすのは操作の手間であり、内容の確認に代わるものではありません。HTMLだけが更新され、Markdown版が古い仕様のままなら、かえって矛盾する2つの説明が残ってしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一部のプラットフォームは、より多くのドキュメントを1つにまとめたllms-full.txtも提供しています。これは、すべてのサイトで必ず作るべき成果物ではありません。まず利用するツールが扱えるコンテンツ量と、全体をまとめたものが必要かを確認しましょう。機材サイトでは通常、重要な入口から試すことができます。需要がはっきりしない段階で、巨大な複製を維持することを避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "判断の記録には、想定利用者、ドキュメント数、更新担当者、受け入れ確認に使う質問を含めるとよいでしょう。現時点でバージョンを同期し続けられないのであれば、まず既存のドキュメント構成を改善するという判断も妥当です。利用するツールが明確なら、小さな範囲で情報を探す時間が短縮されるかを検証します。証明できない引用の保証だけを、導入する理由にしないでください。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/llms-txt-evaluation/diagram-1-ja.svg",
+          "alt": "用途の確認、ドキュメントの選定、入口のテスト、同期しながらの維持管理を4つの欄で示す図。ファイルの提供はAI検索での引用を保証しないことを強調しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "案内を使う人が明確で、継続して更新できてこそ、実用上の価値を評価できます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "主な用途",
+            "それだけでは保証できないこと"
+          ],
+          "rows": [
+            [
+              "llms.txt",
+              "背景情報と選定したドキュメントへの入口を整理する",
+              "すべてのAIが読み取り、引用すること"
+            ],
+            [
+              "sitemap",
+              "検索エンジンが重要なURLを見つけやすくする",
+              "すべてのURLがインデックスに登録されること"
+            ],
+            [
+              "robots.txt",
+              "サイトのクロールに関するルールを示す",
+              "非公開情報がログインによって保護されること"
+            ],
+            [
+              "認証と認可",
+              "保護されたコンテンツを取得できる人を制限する",
+              "公開コンテンツの検索での見つけやすさ"
+            ]
+          ],
+          "caption": "それぞれ用途が異なります。実装する際は既存のサイト機能を維持し、明確な必要性に応じてドキュメントの案内を追加します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "入口を提供したら、その入口を維持することも必要です",
+          "text": "ファイルが読めるか、リンクが有効か、内容が最新かは別々に確認します。どのツールが利用するか分からない場合は、まず小さな範囲で検証し、検索上の効果を事前に約束しないようにしましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索クローラーとAIによるページ取得の用途を見分ける",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトマップの作成とURL送信の手順を整える",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "追跡可能な証拠でAI検索での露出を観察する",
+              "kind": "life",
+              "slug": "ai-search-tools-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "llms.txt v2の提案と形式",
+          "url": "https://llmstxt.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llms.txt v2におけるパスと発見方法の更新",
+          "url": "https://llmstxt.org/changes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "特別なAI用ファイルに関するGoogle検索の説明",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouseのエージェントブラウジングにおけるllms.txtチェック",
+          "url": "https://developer.chrome.com/docs/lighthouse/agentic-browsing/llms-txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mintlifyの自動生成版とカスタム版のllms.txt",
+          "url": "https://www.mintlify.com/docs/ai/llmstxt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Googleによるサイトマップの用途と制約の説明",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Googleによるrobots.txtの用途と制約の説明",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "llms.txt란? 콘텐츠 안내 목록을 만들기 전에 알아둘 한계",
+      "description": "llms.txt는 웹사이트의 배경 정보와 문서 진입점을 제공하기 위한 제안이며, AI의 인용을 보장하는 통행증이 아닙니다. 이 글은 최신 v2 제안을 바탕으로 Markdown 요약, 링크 목록, 하위 경로의 용도를 설명하고 sitemap, robots.txt, 로그인 접근 권한과의 차이를 비교합니다. 직접 구성한 장비 설명서 웹사이트 사례로 작성·테스트·갱신 절차를 정리하여, 관리자가 실제 사용 목적에 따라 도입 여부를 판단할 수 있도록 돕습니다.",
+      "hero": {
+        "src": "/guides/llms-txt-evaluation/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 폴더, 문서, 확인용 방패 그림으로 llms.txt 문서 안내, 버전 동기화, 용도 확인을 설명합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "웹사이트 도구에 llms.txt가 없다고 표시되면 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "가 콘텐츠를 전혀 볼 수 없다는 뜻일까요? 서둘러 플러그인을 설치하지 마세요. 이 파일은 정리된 문서 진입점을 제공할 수 있지만, 실제로 누가 사용하는지, 링크가 정확한지, 내용이 계속 갱신되는지를 확인하는 것이 가치를 평가하는 출발점입니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글의 자료 확인일은 2026년 9월 14일이며, llms.txt v2 제안과 관련 도구의 공식 문서를 바탕으로 설명합니다. 장비 사용 설명서 웹사이트는 직접 만든 예시입니다. 실제 운영 중인 웹사이트에 파일을 추가하거나 AI 검색 순위 또는 인용률을 실험한 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "문서 안내를 위한 제안이므로, 먼저 누가 사용할지 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "llms.txt는 Markdown으로 웹사이트의 배경, 짧은 설명, 중요한 문서 링크를 제공하여 에이전트 도구가 필요한 자료를 찾도록 돕습니다. 보통 /llms.txt 에 두지만, 해당하는 하위 경로에 둘 수도 있습니다. 자료 확인 당시 공식 사이트는 여전히 이를 제안이라고 부르고 있으므로, 모든 AI 제품이 반드시 채택해야 한다고 설명해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수공예용 장비를 판매하는 웹사이트를 예로 들어 보겠습니다. 공개 설명서가 설치, 청소, 소모품 페이지에 나뉘어 있을 수 있습니다. 사용자가 도구에 설명서 찾기를 자주 요청한다면 버전과 분류를 정리한 진입점에 명확한 용도가 있습니다. 반대로 간단한 소개 페이지만 있고 지속적으로 관리할 문서 모음이 없다면, 목록을 추가하는 효과는 제한적일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 누가 읽을지 목록으로 정리하세요. 자체 고객 지원 도우미인지, 고객이 쓰는 문서 도구인지, 검색 플랫폼인지 구분합니다. 그다음 해당 도구가 이런 진입점을 읽는지, 또는 사용자가 파일을 명시적으로 제공할 수 있는지 확인합니다. 게시자가 파일을 제공한다는 사실은 제공 측에 파일이 존재한다는 것만 증명합니다. 모든 외부 시스템이 스스로 찾아온다는 뜻은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색 색인과 접근 권한의 역할을 구분하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트맵은 주로 중요한 URL과 관련 정보를 제공해 검색엔진이 콘텐츠를 발견하도록 돕습니다. llms.txt는 선별한 문서를 안내하는 데 더 가깝습니다. 둘은 함께 사용할 수 있으므로 새 파일을 만들었다고 기존에 잘 작동하던 sitemap을 삭제해서는 안 됩니다. 사이트맵 자체도 모든 URL의 크롤링이나 색인 등록을 보장하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt는 크롤링 규칙을 알리는 용도이며, 비공개 자료를 보호하는 로그인 장치가 아닙니다. llms.txt에도 이런 접근 권한 기능은 없습니다. 설명서의 수리 정보를 특정 협력사만 읽을 수 있어야 한다면 실제 인증과 접근 제한을 유지해야 합니다. 목록에서 URL을 지웠다는 이유만으로 자료가 보호된다고 판단하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 Google 검색의 공식 설명에 따르면, 검색 자체는 이런 최적화 수단으로 llms.txt나 특별한 AI용 텍스트 파일을 사용하지 않습니다. 그렇다고 다른 도구가 문서 안내를 활용할 가능성을 부정하는 것은 아닙니다. 제품마다 용도가 다르다는 뜻입니다. 문서 도구가 지원한다는 사실을 곧바로 Google 검색 순위나 인용 가능성이 높아진다는 주장으로 확대하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "유효한 문서 몇 개로 첫 버전을 만드세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 독자가 실제로 필요로 하는 공개 문서를 고르고 버전, URL, 제목을 확인합니다. 장비 웹사이트라면 현재 판매 중인 모델의 입문 설명서, 청소 절차, 소모품 대응표부터 정리하고, 판매가 종료된 모델은 따로 표시할 수 있습니다. 사이트의 모든 페이지를 기계적으로 목록에 넣어 광고 페이지나 오래된 공지가 중요한 진입점을 묻어 버리게 하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "제안된 형식은 H1으로 웹사이트 또는 프로젝트 이름을 적는 것으로 시작하며, 이 부분만 필수입니다. 이후 요약 인용문, 보충 설명, H2로 구분한 문서 링크 목록을 추가할 수 있습니다. 각 링크는 짧은 이름으로 용도를 설명하고, 적용되는 장비 시리즈 같은 필수 조건을 한 줄 덧붙입니다. 요약에 설명서 전체를 복사하지는 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 텍스트 편집기로 작성해 llms.txt로 저장하는 것부터 시작할 수 있습니다. 예시 제목은 ‘# 山角器材文件’로 적고, 요약에서 공개 사용 설명서임을 밝힌 다음, ‘## 入門與保養’ 아래에 문서를 정리할 수 있습니다. 이런 이름은 예시일 뿐입니다. 실제로 만들 때는 자신의 웹사이트에 있는 실제 콘텐츠와 작동하는 URL로 바꿔야 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "사용할 도구, 독자의 작업, 공개 가능한 문서를 나열해 제작 목적을 확인합니다.",
+            "실제 버전에 맞춰 요약과 링크 목록을 정리하고 문서 내용을 하나씩 확인합니다.",
+            "정확한 경로에 파일과 필요한 Markdown 버전을 제공한 뒤 읽기 테스트를 합니다.",
+            "갱신 담당자를 지정하고 링크 점검과 버전 동기화를 문서 공개 절차에 포함합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "v2의 경로와 문서 발견 방식을 이해하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026년 8월의 v2 업데이트는 파일이 놓인 경로 아래의 콘텐츠를 대상으로 하며, 적용 가능한 파일이 여러 개라면 더 구체적인 범위의 파일을 사용해야 한다고 설명합니다. 예를 들어 /manuals/ 만 관리하는 팀은 그 경로에 안내를 제공할 수 있으며, 도메인 전체를 관리할 수 있다고 주장할 필요가 없습니다. 실제 사용자는 도구가 이 제안을 어떻게 따르는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "v2는 확장자를 덧붙이거나 바꿔 Markdown 버전을 제공하는 방식도 허용하며, alternate 및 describedby 링크 관계로 문서 발견을 돕는 방법을 제안합니다. 이는 제안에 포함된 발견 방식일 뿐, 아무 HTML URL 뒤에 .md 를 붙이면 읽을 수 있는 콘텐츠가 자동으로 생성된다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "목록에 넣은 경로가 실제로 존재하고, 사이트 첫 화면이나 오류 페이지, 로그인 양식이 아니라 의도한 텍스트를 반환하는지 개발자에게 확인을 요청하세요. 콘텐츠 플랫폼이 자동으로 생성한다면 먼저 해당 플랫폼의 규칙을 확인합니다. 예를 들어 Mintlify에서는 사용자 지정 파일이 같은 이름의 자동 생성 파일을 덮어쓰므로, 관리자는 두 생성 방식이 어떻게 전환되는지 이해해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "사용 가능성을 테스트하고, 검사 통과를 노출 성과로 해석하지 마세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 일반 브라우저로 파일을 열고 각 문서 분류에서 링크, 번체 중국어 표시, 버전 정보를 표본 확인합니다. 그다음 사용할 도구에 이 안내를 명시적으로 제공하고, 특정 모델의 청소 절차를 찾아 출처를 밝히도록 요청합니다. 이는 문서 진입점으로 필요한 작업을 수행할 수 있는지 확인하는 테스트이며, 자연 검색에 얼마나 자주 나타나는지와는 별개입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Chrome의 Lighthouse에는 에이전트 브라우징 검사에 llms.txt 항목이 있습니다. 현재 공식 설명에 따르면 파일을 가져올 때 발생한 서버 오류는 "
+            },
+            {
+              "type": "article",
+              "text": "문제로 표시",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "됩니다. 파일을 제공하지 않아 404를 반환하는 경우는 여전히 선택 사항인 파일이므로 적용 대상이 아닙니다. 이 검사 항목을 파일이 없으면 검색상 불이익을 받는다는 뜻으로 해석하지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "도구가 파일을 성공적으로 읽더라도 답변이 올바른 모델과 최신 문서를 사용했는지 확인해야 합니다. 오래된 자료가 나온다면 안내에 옛 링크가 섞였는지, 텍스트 버전이 뒤처졌는지, 캐시가 이전 내용을 계속 제공하는지 확인합니다. 질문, 답변, 출처를 저장해 두면 ‘테스트 통과’만 기록하는 것보다 원인을 추적하기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "도입 여부를 판단할 때 유지 관리 비용도 고려하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델을 추가하거나 안전 안내를 수정하거나 문서를 옮길 때마다 안내 파일도 갱신해야 하는지 확인해야 합니다. 파일을 원본 문서와 함께 생성할 수 있지만, 자동화는 작업 비용을 줄일 뿐 내용 확인을 대신하지 않습니다. HTML만 갱신되고 Markdown 버전은 옛 사양에 머물면, 오히려 서로 모순되는 설명 두 개가 남게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일부 플랫폼은 여러 문서를 하나로 합친 llms-full.txt도 따로 제공합니다. 이것은 모든 웹사이트가 반드시 만들어야 하는 결과물이 아닙니다. 먼저 사용하는 도구가 처리할 수 있는 콘텐츠 양과 전체 문서 묶음이 필요한지 확인하세요. 장비 사이트는 대개 중요한 진입점부터 시험할 수 있으므로, 수요가 불분명한 단계에서 거대한 사본을 유지하는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "판단 기록에는 예상 사용자, 문서 수, 갱신 담당자, 검수에 사용할 질문을 포함할 수 있습니다. 현재 버전을 계속 동기화할 수 없다면 기존 문서 구조부터 개선하는 것도 합리적입니다. 사용할 도구가 명확하다면 작은 범위에서 자료를 찾는 시간이 줄어드는지 검증하세요. 증명할 수 없는 인용 보장만을 유일한 투자 이유로 삼지 마세요."
+        },
+        {
+          "type": "image",
+          "src": "/guides/llms-txt-evaluation/diagram-1-ko.svg",
+          "alt": "용도 확인, 문서 선정, 진입점 테스트, 동기화 유지 관리를 네 칸으로 보여 주며, 파일 제공이 AI 검색 인용을 보장하지 않는다는 점을 강조합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "안내를 사용할 대상이 명확하고 지속적으로 갱신할 수 있어야 실제 가치를 평가할 수 있습니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "주요 용도",
+            "그것만으로 보장할 수 없는 것"
+          ],
+          "rows": [
+            [
+              "llms.txt",
+              "배경과 선별한 문서 진입점 정리",
+              "모든 AI가 읽거나 인용하는 것"
+            ],
+            [
+              "sitemap",
+              "검색엔진이 중요한 URL을 발견하도록 지원",
+              "모든 URL의 색인 등록"
+            ],
+            [
+              "robots.txt",
+              "웹사이트 크롤링 규칙 전달",
+              "로그인으로 비공개 자료를 보호하는 것"
+            ],
+            [
+              "인증과 권한 부여",
+              "보호된 콘텐츠를 가져올 수 있는 대상 제한",
+              "공개 콘텐츠의 검색 노출"
+            ]
+          ],
+          "caption": "각 항목의 용도는 다릅니다. 구현할 때 기존 웹사이트 기능을 유지하고, 명확한 필요에 따라 문서 안내를 추가하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "진입점을 제공한 뒤에는 계속 관리해야 합니다",
+          "text": "파일을 읽을 수 있는지, 링크가 유효한지, 내용이 최신인지를 각각 확인해야 합니다. 어떤 도구가 사용할지 확인할 수 없다면 작은 범위부터 검증하고, 검색 효과를 미리 약속하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 크롤러와 AI 페이지 가져오기의 용도 구분하기",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트맵과 URL 제출 절차 만들기",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "추적 가능한 증거로 AI 검색 노출 관찰하기",
+              "kind": "life",
+              "slug": "ai-search-tools-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "llms.txt v2 제안과 형식",
+          "url": "https://llmstxt.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llms.txt v2 경로 및 발견 방식 업데이트",
+          "url": "https://llmstxt.org/changes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "특별한 AI 파일에 관한 Google 검색의 설명",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 에이전트 브라우징의 llms.txt 검사",
+          "url": "https://developer.chrome.com/docs/lighthouse/agentic-browsing/llms-txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mintlify의 자동 생성 및 사용자 지정 llms.txt",
+          "url": "https://www.mintlify.com/docs/ai/llmstxt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 사이트맵의 용도와 한계",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google robots.txt의 용도와 한계",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "llms.txt 是什么：整理内容索引前要了解的限制",
+      "description": "llms.txt 是提供网站背景与文档入口的提案，不是保证 AI 引用的通行证。本文依据最新 v2 提案，说明 Markdown 摘要、链接清单与子路径的用途，并比较它与 sitemap、robots.txt 及登录权限的差异。通过原创器材说明网站场景，整理创建、测试及更新流程，让维护者根据实际使用需求决定是否投入。",
+      "hero": {
+        "src": "/guides/llms-txt-evaluation/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创文件夹、文档与核验盾牌，说明 llms.txt 文档导读、版本同步与用途确认。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "网站工具显示缺少 llms.txt，是否意味着 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 完全看不到内容？先别急着安装插件。这个文件可以提供整理过的文档入口，但是否有人使用、链接是否正确，以及内容有没有持续更新，才是评估价值的起点。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本文查阅日期为 2026 年 9 月 14 日，依据 llms.txt v2 提案与相关官方工具文档说明。器材操作手册网站是原创示例，没有为任何正式网站新增文件，也没有进行 AI 搜索排名或引用率实验。"
+        },
+        {
+          "type": "heading",
+          "text": "它是一份导读提案，先确认谁会使用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "llms.txt 使用 Markdown，提供网站背景、简短说明及重要文档链接，目的是帮助代理工具找到所需资料。它通常位于 /llms.txt，也可以放在适用的子路径。查阅时官方仍将它称为提案，不应宣称所有 AI 产品都必须采用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以销售手作器材的网站为例，公开手册可能分散在安装、清洁与耗材页面。若用户经常请工具协助查找手册，一份标有版本并分类整理的入口就有明确用途；若网站只有简单介绍页，却没有可持续维护的文档集合，新增清单的收益可能有限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出预期读取者：是自家客服助手、客户使用的文档工具，还是搜索平台。再确认该工具是否会读取这种入口，或用户能否明确提供文件。发布者提供了文件，只能证明供应端存在，不能证明每个外部系统都会主动查找。"
+        },
+        {
+          "type": "heading",
+          "text": "区分搜索索引与访问权限的职责",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网站地图主要提供重要网址与相关信息，帮助搜索引擎发现内容；llms.txt 则更偏向经过挑选的导读。两者可以并存，不能因为创建了新文件就删除原本有效的 sitemap。网站地图本身也不保证每个网址都会被抓取或编入索引。"
+        },
+        {
+          "type": "paragraph",
+          "text": "robots.txt 用于表达抓取规则，并不是保护私人资料的登录机制；llms.txt 也没有这种权限功能。若手册中的维修信息只供特定合作方阅读，应保留实际的身份验证与访问限制。不要只是把网址从清单中移除，就认定资料已经受到保护。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 搜索官方目前说明，搜索本身不使用 llms.txt 或特殊 AI 文本文件作为这类优化方式。这不否定其他工具可能使用导读，而是说明不同产品的用途不同。不要把文档工具支持，直接延伸为 Google 会提高搜索排名或引用机会。"
+        },
+        {
+          "type": "heading",
+          "text": "用少量有效文档建立第一版",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先选出读者真正需要的公开文档，核对版本、网址与标题。器材网站可以先整理在售机型的入门手册、清洁流程及耗材对照，并另行标明已停售机型。不要把站内所有页面机械地塞进清单，让广告页或旧公告淹没重要入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提案格式以 H1 的网站或项目名称开头，这是唯一必填部分；之后可以加入摘要引文、补充文字，以及用 H2 区分的文档链接清单。每个链接用简短名称说明用途，再补一行必要条件，例如适用的器材系列，不要把整份手册复制到摘要中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先用纯文本编辑器编写并保存为 llms.txt。示例中的标题可以写成“# 山角器材文件”，摘要说明这是公开使用说明；下方以“## 入門與保養”整理文档。这些名称只是示例，正式制作时应换成自己网站的真实内容与可用网址。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出使用工具、读者任务与可公开文档，确认制作目的。",
+            "根据实际版本整理摘要和链接清单，逐一核对文档内容。",
+            "在正确路径提供文件与所需的 Markdown 版本，再测试读取。",
+            "指定更新负责人，把链接检查与版本同步纳入文档发布流程。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "理解 v2 的路径与文档发现方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "2026 年 8 月的 v2 更新说明，文件涵盖其所在路径下的内容；有多份文件适用时，应使用范围更具体的一份。例如，只管理 /manuals/ 的团队可以在该路径提供导读，不必声称自己能管理整个域名。实际用户仍须确认工具如何遵循提案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "v2 也允许通过附加或替换扩展名的方式提供 Markdown 版本，并提出使用 alternate 与 describedby 链接关系帮助发现文档。这些是提案中的发现方式，并不表示在任意 HTML 网址后加上 .md，就会自动生成可读内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "请开发者确认所列路径确实存在，且返回的是预期文本，而不是网站首页、错误页或登录表单。若使用内容平台自动生成，先查看平台自己的规则；例如，Mintlify 的自定义文件会覆盖同名自动文件，维护者就需要理解两个来源如何切换。"
+        },
+        {
+          "type": "heading",
+          "text": "测试可用性，不把通过检查当作曝光成效",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先用普通浏览器打开文件，抽查每一类文档的链接、繁体中文与版本信息。再向预定工具明确提供这份导读，请它找出某个型号的清洁步骤，并要求指出来源。这是在测试文档入口能否完成任务，与自然搜索中的出现率是不同的问题。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Chrome 的 Lighthouse 在代理浏览检查中有 llms.txt 项目。官方目前说明，获取文件时的服务器错误会被"
+            },
+            {
+              "type": "article",
+              "text": "标记",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "；未提供文件而返回 404 则不适用，因为该文件仍是选择性提供。不要把这项检查理解成缺少文件就会受到搜索处罚。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "即使工具读取成功，仍要核对答案是否使用正确机型与最新文档。若得到旧版资料，检查导读是否混入旧链接、文本版本是否落后，以及缓存是否仍在提供之前的内容。保存问题、回复及来源，比只记录“测试通过”更便于追查。"
+        },
+        {
+          "type": "heading",
+          "text": "把维护成本纳入是否采用的判断",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每次增加机型、修改安全提醒或移动文档，都应检查导读是否需要更新。可以让文件与原始文档一起生成，但自动化只会降低操作成本，不能代替内容确认。若只有 HTML 更新，Markdown 版本仍停留在旧规格，反而会留下两份相互矛盾的说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有些平台还提供 llms-full.txt，将更多文档合并成一份内容；这并非每个网站都必须制作的交付物。先确认使用工具能够处理的内容量，以及是否需要完整集合。器材网站通常可以先测试重要入口，避免在需求尚不明确时维护一份巨大的副本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "决策记录可以包含预期用户、文档数量、更新负责人及验收问题。如果目前无法保持版本同步，先改善原有文档结构也很合理；若已有明确的使用工具，则以小范围验证是否节省查找时间。不要把无法证明的引用保证作为唯一投入理由。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/llms-txt-evaluation/diagram-1-zh-cn.svg",
+          "alt": "四栏呈现确认用途、挑选文档、测试入口及同步维护，强调提供文件不保证 AI 搜索引用。",
+          "width": 1600,
+          "height": 900,
+          "caption": "导读有明确用户且能持续更新，才有可评估的实际价值。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "主要用途",
+            "无法单独保证的事"
+          ],
+          "rows": [
+            [
+              "llms.txt",
+              "整理背景与选定文档入口",
+              "所有 AI 都会读取或引用"
+            ],
+            [
+              "sitemap",
+              "帮助搜索引擎发现重要网址",
+              "每个网址都会编入索引"
+            ],
+            [
+              "robots.txt",
+              "表达网站抓取规则",
+              "私人资料受到登录保护"
+            ],
+            [
+              "身份验证与授权",
+              "限制谁能获取受保护内容",
+              "公开内容的搜索可见度"
+            ]
+          ],
+          "caption": "各项用途不同，实施时保留现有网站功能，再根据明确需求补充文档导读。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "提供入口后，还要维护入口",
+          "text": "应分别检查文件可读、链接有效与内容最新。若无法确认哪些工具会使用，先进行小范围验证，不要预先承诺搜索效果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "辨别搜索爬虫与 AI 抓取页面的用途",
+              "kind": "life",
+              "slug": "search-crawlers-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立网站地图与网址提交流程",
+              "kind": "life",
+              "slug": "sitemap-website-submission"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "用可追溯的证据观察 AI 搜索曝光",
+              "kind": "life",
+              "slug": "ai-search-tools-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "llms.txt v2 提案与格式",
+          "url": "https://llmstxt.org/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "llms.txt v2 路径与发现方式更新",
+          "url": "https://llmstxt.org/changes.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 搜索对特殊 AI 文件的说明",
+          "url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Lighthouse 代理浏览 llms.txt 检查",
+          "url": "https://developer.chrome.com/docs/lighthouse/agentic-browsing/llms-txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mintlify 自动与自定义 llms.txt",
+          "url": "https://www.mintlify.com/docs/ai/llmstxt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 网站地图用途与限制",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google robots.txt 用途与限制",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

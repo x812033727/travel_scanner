@@ -286,6 +286,85 @@ def reviewed_source_correction(bundle, *, approved=True, draft_hash=None):
     return baseline, pack, review, manifest, manifest_sha
 
 
+def reviewed_repository_preservation(bundle):
+    """Bind a live zh-TW source and a different final-Git repository description."""
+    baseline = json.loads(bundle.baseline_path.read_text("utf-8"))
+    baseline["repo_commit"] = "1" * 40
+    article = baseline["articles"][0]
+    targets = [locale for locale in driver.LOCALES if locale != "zh-TW"]
+    article.update(
+        {
+            "translation_missing_locales": targets,
+            "target_locales": targets,
+            "batch_locales": targets,
+        }
+    )
+    pack = json.loads((bundle.root / bundle.entries[0]["pack_path"]).read_text("utf-8"))
+    live = article["locale_documents"]["zh-TW"]
+    preserved = copy.deepcopy(live)
+    preserved["description"] = "Reviewed repository answer-first description"
+    pack["locales"]["zh-TW"] = preserved
+    entry = copy.deepcopy(bundle.manifest["articles"][0])
+    entry["locales"] = targets
+    entry["publish_locales"] = targets
+    pack_sha = write_json(bundle.root / entry["pack_path"], pack)
+    pack_raw = (bundle.root / entry["pack_path"]).read_bytes()
+    article["pack_sha256"] = pack_sha
+    pinned = article["database"]
+    old = pinned["locales"]["zh-TW"]
+    review = {
+        "schema_version": 1,
+        "status": "PASS",
+        "reviewer": "independent-editor",
+        "reviewed_at": "2026-09-22T04:45:00+00:00",
+        "reason": "Preserve reviewed repository description without publishing it",
+        "evidence_sha256": "e" * 64,
+        "slug": article["slug"],
+        "article_id": pinned["id"],
+        "article_version": pinned["version"],
+        "locale": "zh-TW",
+        "locale_id": old["id"],
+        "locale_version": old["version"],
+        "published_version": old["published_version"],
+        "live_published_sha256": old["published_sha256"],
+        "live_draft_sha256": old["draft_sha256"],
+        "baseline_source_sha256": article["source_sha256"],
+        "baseline_locale_sha256": driver.document_hash(live),
+        "repo_commit": baseline["repo_commit"],
+        "repo_pack_path": article["pack_path"],
+        "repo_pack_git_blob_sha1": driver.repository_preservation.git_blob_sha1(pack_raw),
+        "repo_pack_sha256": pack_sha,
+        "repo_document_sha256": driver.document_hash(preserved),
+        "changes": [
+            {
+                "pointer": "/description",
+                "before": live["description"],
+                "after": preserved["description"],
+            }
+        ],
+    }
+    review_path = f"reviews/{article['slug']}-zh-TW-repository-preservation.json"
+    review_sha = write_json(bundle.root / review_path, review)
+    entry["pack_sha256"] = pack_sha
+    entry["repository_preservations"] = [
+        {
+            "locale": "zh-TW",
+            "from_live_document_sha256": review["baseline_locale_sha256"],
+            "to_repository_document_sha256": review["repo_document_sha256"],
+            "repo_commit": review["repo_commit"],
+            "repo_pack_git_blob_sha1": review["repo_pack_git_blob_sha1"],
+            "repo_pack_sha256": pack_sha,
+            "review_path": review_path,
+            "review_sha256": review_sha,
+        }
+    ]
+    manifest = copy.deepcopy(bundle.manifest)
+    manifest["articles"] = [entry]
+    manifest["baseline_sha256"] = write_json(bundle.baseline_path, baseline)
+    manifest_sha = write_json(bundle.root / "release-manifest.json", manifest)
+    return baseline, pack, review, manifest, manifest_sha
+
+
 async def run(bundle, path, database, phase, actor_id=None):
     with driver.journal_lock(path.parent):
         return await driver.execute_phase(
@@ -423,6 +502,95 @@ async def test_reviewed_source_correction_stops_on_intervening_editor_draft(
     assert "en" not in after["locales"]
 
 
+async def test_reviewed_unselected_repository_description_never_writes_that_locale_and_reruns(
+    tmp_path, database, owner
+):
+    original, path, before = await case(tmp_path, database, owner)
+    _, _, review, _, manifest_sha = reviewed_repository_preservation(original)
+    bundle = driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    deploy_bundle(bundle)
+    assert (await run(bundle, path, database, "dry-run"))["status"] == "read_only"
+    journal = json.loads(path.read_text("utf-8"))
+    assert all(
+        operation["locale"] != "zh-TW"
+        for operations in journal["operations"].values()
+        for operation in operations
+    )
+    await run(bundle, path, database, "drafts")
+    await run(bundle, path, database, "publish-articles")
+    after = await state(database)
+    assert after["locales"]["zh-TW"] == before["test-guide"]["locales"]["zh-TW"]
+    assert set(after["locales"]) == set(driver.LOCALES)
+    assert all(after["locales"][locale]["published_version"] is not None for locale in driver.LOCALES)
+    revisions = await revision_count(database)
+    for phase in ("drafts", "publish-articles", "publish-hubs"):
+        await run(bundle, path, database, phase)
+    assert await state(database) == after
+    assert await revision_count(database) == revisions
+    assert review["repo_document_sha256"] != review["live_published_sha256"]
+
+
+@pytest.mark.parametrize("tamper", ["selected", "status", "pointer", "version", "blob"])
+async def test_repository_preservation_binding_tamper_refuses_before_write(
+    tmp_path, database, owner, tamper
+):
+    original, _, before = await case(tmp_path, database, owner)
+    baseline, _, review, manifest, _ = reviewed_repository_preservation(original)
+    entry = manifest["articles"][0]
+    preservation = entry["repository_preservations"][0]
+    if tamper == "selected":
+        entry["locales"].append("zh-TW")
+    elif tamper == "status":
+        review["status"] = "DESIGN_ALIGNED_NOT_IMPLEMENTATION_APPROVAL"
+    elif tamper == "pointer":
+        review["changes"][0]["pointer"] = "/title"
+    elif tamper == "version":
+        review["locale_version"] += 1
+    elif tamper == "blob":
+        preservation["repo_pack_git_blob_sha1"] = "f" * 40
+    if tamper in {"status", "pointer", "version"}:
+        preservation["review_sha256"] = write_json(
+            original.root / preservation["review_path"], review
+        )
+    manifest["baseline_sha256"] = write_json(original.baseline_path, baseline)
+    manifest_sha = write_json(original.root / "release-manifest.json", manifest)
+    with pytest.raises(driver.Refused):
+        driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    assert await state(database) == before["test-guide"]
+
+
+async def test_repository_preservation_stops_on_unselected_version_conflict(
+    tmp_path, database, owner
+):
+    original, path, before = await case(tmp_path, database, owner)
+    _, _, _, _, manifest_sha = reviewed_repository_preservation(original)
+    bundle = driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    deploy_bundle(bundle)
+    await run(bundle, path, database, "dry-run")
+    article_id = UUID(before["test-guide"]["id"])
+    changed = bundle.packs["test-guide"].locales["zh-TW"].model_copy(deep=True)
+    changed.description = "Concurrent editor draft"
+    async with database() as session:
+        await admin_service.save_draft(
+            session,
+            owner,
+            article_id,
+            "zh-TW",
+            DraftWrite(
+                expected_version=before["test-guide"]["locales"]["zh-TW"]["version"],
+                document=changed,
+            ),
+        )
+    with pytest.raises(driver.Refused, match="Concurrent/unexpected change"):
+        await run(bundle, path, database, "drafts")
+    after = await state(database)
+    assert "en" not in after["locales"]
+    assert (
+        after["locales"]["zh-TW"]["draft_sha256"]
+        != before["test-guide"]["locales"]["zh-TW"]["draft_sha256"]
+    )
+
+
 async def test_exact_reviewed_existing_unpublished_draft_is_published_without_overwrite(
     tmp_path, database, owner
 ):
@@ -509,6 +677,21 @@ async def test_deployed_pack_semantic_change_stops_before_database_write(
         pack["featured"] = True
     else:
         pack["locales"]["en"]["title"] = "Unreviewed title"
+    write_json(deployed, pack)
+    with pytest.raises(driver.Refused, match="deployed content pack mismatch"):
+        await run(bundle, path, database, "dry-run")
+    assert await state(database) == before["test-guide"]
+
+
+async def test_preservation_does_not_bless_another_deployed_description(
+    tmp_path, database, owner
+):
+    original, path, before = await case(tmp_path, database, owner)
+    _, _, _, _, manifest_sha = reviewed_repository_preservation(original)
+    bundle = driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    deployed = deploy_bundle(bundle) / "apps/api/app/guides/content/test-guide.json"
+    pack = json.loads(deployed.read_text("utf-8"))
+    pack["locales"]["zh-TW"]["description"] = "Different unreviewed deployed description"
     write_json(deployed, pack)
     with pytest.raises(driver.Refused, match="deployed content pack mismatch"):
         await run(bundle, path, database, "dry-run")
