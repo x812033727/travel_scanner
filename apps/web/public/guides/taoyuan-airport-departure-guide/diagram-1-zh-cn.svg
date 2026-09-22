@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans SC','Microsoft YaHei','PingFang SC',system-ui,sans-serif">
+  <title id="title">桃园机场出境流程图：适用于在台湾设有户籍并持中华民国护照的国民，经 A1/A3 或航站楼值机、安检、e-Gate、登机口及起飞倒推</title>
+  <desc id="desc">上半部分是两条出境路线。路线 A：从家前往机场捷运 A1 台北车站（B1，06:00–21:30）或 A3 新北产业园区站（1F，09:00–16:00）办理市区值机，再搭机场捷运去机场。路线 B：从家直接前往第一或第二航站楼值机并托运行李。两条路线在安检处汇合，接着通过自动通关 e-Gate，最后到登机口。下半部分是起飞前倒计时，刻度不按比例：起飞前 3 小时停止办理市区值机，0 为起飞；机场值机截止和登机口关闭时间依航空公司而定，不标具体数字。下方三个信息框：A1 可办理中华航空、华信航空、长荣航空、立荣航空、国泰航空、星宇航空，A3 可办理中华航空、华信航空、长荣航空、立荣航空、台湾虎航；两站都在起飞前 3 小时停止受理，推算 A1 只适用于 09:00 以后起飞。安检液体每个容器不超过 100 毫升，装入 1 升透明密封拉链袋，每人 1 袋；充电宝最多 2 个且只能随身携带，不得托运，机上不得使用或充电。e-Gate 适用于在台湾设有户籍、持中华民国护照的中华民国国民，须年满 10 岁且身高 120 厘米以上；第一次可以在闸门自助注册，注册加通关约 30 秒，注册后永久有效，更换护照也不必重新办理。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B" /></marker>
+    <marker id="arrowdark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B" /></marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">桃园机场出境流程与时间倒推</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">市区值机 · 安检 · e-Gate · 登机口</text>
+
+
+  <rect x="50" y="230" width="140" height="110" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4" />
+  <text x="120" y="280" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">家</text>
+  <text x="120" y="312" font-size="18" fill="#5C6B6B" text-anchor="middle">出发</text>
+  <path d="M 190 285 L 222 285" fill="none" stroke="#5C6B6B" stroke-width="4" />
+  <path d="M 222 193 L 222 445" fill="none" stroke="#5C6B6B" stroke-width="4" />
+  <path d="M 222 193 L 246 193" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 222 317 L 246 317" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 222 445 L 246 445" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+
+
+  <text x="250" y="124" font-size="18" font-weight="700" fill="#0D6B68">路线 A　市区预办登机</text>
+  <rect x="250" y="138" width="380" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+  <text x="440" y="172" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">A1 台北车站</text>
+  <text x="440" y="200" font-size="17" fill="#0B4F4D" text-anchor="middle">地下 1 层（B1）</text>
+  <text x="440" y="232" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">06:00–21:30</text>
+
+  <rect x="250" y="262" width="380" height="110" rx="14" fill="#F1E8E2" stroke="#6B4A3A" stroke-width="4" />
+  <text x="440" y="296" font-size="21" font-weight="700" fill="#4E3428" text-anchor="middle">A3 新北产业园区站</text>
+  <text x="440" y="324" font-size="17" fill="#4E3428" text-anchor="middle">1 楼（1F）</text>
+  <text x="440" y="356" font-size="21" font-weight="700" fill="#4E3428" text-anchor="middle">09:00–16:00</text>
+
+  <path d="M 630 193 L 686 193" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 630 317 L 686 317" fill="none" stroke="#6B4A3A" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="690" y="138" width="200" height="234" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4" />
+  <text x="790" y="236" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">搭机场捷运去机场</text>
+  <text x="790" y="266" font-size="17" fill="#5C6B6B" text-anchor="middle">桃园机场捷运</text>
+  <text x="790" y="294" font-size="16" fill="#5C6B6B" text-anchor="middle">只带随身行李</text>
+
+
+  <rect x="250" y="400" width="640" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4" />
+  <text x="570" y="438" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">路线 B　直接到第一或第二航站楼值机托运</text>
+  <text x="570" y="470" font-size="17" fill="#1F4E73" text-anchor="middle">值机与行李托运</text>
+
+
+  <path d="M 890 255 L 946 255" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 890 445 L 1045 445 L 1045 386" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="950" y="230" width="190" height="150" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4" />
+  <text x="1045" y="296" font-size="26" font-weight="700" fill="#8A2E1D" text-anchor="middle">安检</text>
+  <text x="1045" y="328" font-size="18" fill="#8A2E1D" text-anchor="middle">Security</text>
+
+  <path d="M 1140 305 L 1186 305" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="1190" y="230" width="170" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4" />
+  <text x="1275" y="296" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">自动通关</text>
+  <text x="1275" y="328" font-size="20" fill="#1F4E73" text-anchor="middle">e-Gate</text>
+
+  <path d="M 1360 305 L 1406 305" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="1410" y="230" width="150" height="150" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4" />
+  <text x="1485" y="296" font-size="24" font-weight="700" fill="#1E5A40" text-anchor="middle">登机口</text>
+  <text x="1485" y="328" font-size="18" fill="#1E5A40" text-anchor="middle">Gate</text>
+
+  <text x="1290" y="430" font-size="16" fill="#5C6B6B" text-anchor="middle">两条路线在安检汇合，再通过 e-Gate 出境</text>
+
+
+  <text x="60" y="524" font-size="20" font-weight="700" fill="#102A2B">起飞前倒计时</text>
+  <text x="1540" y="524" font-size="15" fill="#5C6B6B" text-anchor="end">刻度不按比例</text>
+  <path d="M 160 580 L 1510 580" fill="none" stroke="#102A2B" stroke-width="4" marker-end="url(#arrowdark)" />
+
+  <circle cx="520" cy="580" r="11" fill="#0D6B68" />
+  <text x="520" y="556" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">3 小时</text>
+  <text x="520" y="616" font-size="17" font-weight="700" fill="#0D6B68" text-anchor="middle">市区值机停止受理</text>
+  <text x="520" y="640" font-size="16" fill="#0B4F4D" text-anchor="middle">起飞前 3 小时</text>
+
+  <path d="M 960 562 L 960 598" fill="none" stroke="#8A8F8F" stroke-width="3" stroke-dasharray="6 5" />
+  <text x="960" y="616" font-size="16" fill="#5C6B6B" text-anchor="middle">值机截止：依航空公司</text>
+  <text x="960" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">请查航空公司</text>
+
+  <path d="M 1210 562 L 1210 598" fill="none" stroke="#8A8F8F" stroke-width="3" stroke-dasharray="6 5" />
+  <text x="1210" y="616" font-size="16" fill="#5C6B6B" text-anchor="middle">登机口关闭：依航空公司</text>
+  <text x="1210" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">请查航空公司</text>
+
+  <circle cx="1440" cy="580" r="11" fill="#102A2B" />
+  <text x="1440" y="556" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">0</text>
+  <text x="1440" y="616" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">起飞</text>
+  <text x="1440" y="640" font-size="16" fill="#5C6B6B" text-anchor="middle">登机牌时间</text>
+
+
+  <rect x="50" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4" />
+  <text x="74" y="706" font-size="19" font-weight="700" fill="#102A2B">市区预办登机</text>
+  <text x="74" y="738" font-size="17" fill="#0B4F4D">A1　06:00–21:30　华航 华信 长荣 立荣 国泰 星宇</text>
+  <text x="74" y="766" font-size="17" fill="#4E3428">A3　09:00–16:00　华航 华信 长荣 立荣 台湾虎航</text>
+  <text x="74" y="794" font-size="17" fill="#102A2B">两站均在起飞前 3 小时停止受理</text>
+  <text x="74" y="822" font-size="17" font-weight="700" fill="#0D6B68">A1 可用：09:00 以后起飞（推算）</text>
+
+  <rect x="557" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4" />
+  <text x="581" y="706" font-size="19" font-weight="700" fill="#102A2B">安检 Security</text>
+  <text x="581" y="738" font-size="17" fill="#102A2B">液体每个容器不超过 100 毫升</text>
+  <text x="581" y="766" font-size="17" fill="#102A2B">装入 1 升透明密封拉链袋，每人 1 袋</text>
+  <text x="581" y="794" font-size="17" font-weight="700" fill="#8A2E1D">充电宝最多 2 个，只能随身携带</text>
+  <text x="581" y="822" font-size="17" fill="#102A2B">不得托运，机上不得使用或充电</text>
+
+  <rect x="1064" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4" />
+  <text x="1088" y="698" font-size="15" font-weight="700" fill="#102A2B">自动通关 e-Gate（首次在闸门注册）</text>
+  <text x="1088" y="725" font-size="15" fill="#102A2B">具有台湾户籍的中华民国国民</text>
+  <text x="1088" y="748" font-size="15" fill="#102A2B">使用中华民国护照</text>
+  <text x="1088" y="772" font-size="15" fill="#102A2B">年满 10 岁、身高 120 厘米以上</text>
+  <text x="1088" y="797" font-size="16" font-weight="700" fill="#1F4E73">注册加通关约 30 秒</text>
+  <text x="1088" y="822" font-size="15" fill="#102A2B">永久有效，换护照无需重办</text>
+
+  <text x="1540" y="884" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 制图 2026</text>
+</svg>
