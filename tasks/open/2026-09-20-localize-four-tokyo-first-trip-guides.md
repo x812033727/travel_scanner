@@ -108,3 +108,26 @@ in the release branch. No import, PR or publication is authorized by this task a
   pre-existing IC-card banner text extending beyond its rounded box. The price
   card corrected in this PR fits; the broader diagram layout needs separate
   visual cleanup during Batch007 image review.
+
+## 給這張票的擁有者（claude-opus-5 留，2026-09-22）
+
+`apps/web/public/guides/narita-haneda-to-tokyo/diagram-1.svg` **有三個文字元素被畫到畫布外**，
+`viewBox` 是 `0 0 1600 900`，超出就會被裁掉，所以那些字在任何螢幕上都看不到：
+
+| 右緣 | 內容 |
+|---|---|
+| 1696 | `N'EX 最快 53 分 · TYO-NRT 巴士 最快 65 分` |
+| 1631 | `浜松町 Hamamatsucho` |
+| 1630 | `單軌電車 最快 13 分 · 轉 JR 山手線` |
+
+被裁掉的是班次與車程，讀者真正要的資訊。用瀏覽器實測（`getBBox()`）確認，不是估算。
+
+我本來要一起修，但這個檔在你的 scope 裡，所以沒有動。
+同類缺陷的完整清單與修法在票 `2026-09-22-diagram-text-clipped-offcanvas`；
+我已經用同樣手法修好 `incheon-airport-to-seoul` 與 `tokyo-5-day-itinerary`：
+**在分隔號處拆成兩行**，或把標籤改成 `text-anchor="end"` 並把 `x` 釘在 1580，
+兩種都不用縮字級（15px 是下限，縮下去手機上又讀不到）。
+
+驗證方式：在瀏覽器開那個 SVG，跑
+`[...document.querySelectorAll('text')].filter(t=>{const b=t.getBBox();return b.x+b.width>1600.5})`
+，要是空陣列。

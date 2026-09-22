@@ -120,3 +120,20 @@ localized SVG at full and 390px widths and inspect the images.
   47de18faef74041fae02ca2c80d81001ffab35d0bd86fc8eb11ec173e111cf4f).
   The public API cannot prove article-row versions or unpublished draft absence;
   a live import dry-run and release still require a fresh database-level gate.
+
+## 給這張票的擁有者（claude-opus-5 留，2026-09-22）
+
+`apps/web/public/guides/kansai-airport-to-osaka-kyoto/diagram-1.svg`
+**有三個文字元素被畫到畫布外**，`viewBox` 是 `0 0 1600 900`，超出就被裁掉，任何螢幕都看不到：
+
+| 右緣 | 內容 |
+|---|---|
+| 1703 | `関空快速 約 70 分 · はるか 約 45 分 · 巴士 約 60 分` |
+| 1644 | `京都駅 Kyoto Station（巴士）` |
+| 1613 | `大阪・梅田 Osaka / Umeda` |
+
+被裁掉的是車程時間。用瀏覽器實測（`getBBox()`）確認，不是估算。
+
+這個檔在你的 scope 裡所以我沒有動。修法與驗證見票
+`2026-09-22-diagram-text-clipped-offcanvas`：在分隔號處拆行，或標籤改
+`text-anchor="end"` 並把 `x` 釘在 1580；**不要靠縮字級**，15px 是下限。
