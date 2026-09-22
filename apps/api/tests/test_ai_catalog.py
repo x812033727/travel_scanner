@@ -20,6 +20,7 @@ def test_shipped_defaults_are_in_the_catalog() -> None:
         ("minimax_model", settings.minimax_model),
         ("hotspot_guide_gemini_model", settings.hotspot_guide_gemini_model),
         ("gemini_model", settings.gemini_model),
+        ("jev_model", settings.jev_model),
     ):
         assert value in [entry.id for entry in catalog.model_options(field)], field
 
@@ -61,3 +62,22 @@ def test_model_id_pattern_matches_the_security_audit_rule() -> None:
 def test_model_label_falls_back_to_the_raw_id() -> None:
     assert catalog.model_label("gemini", "gemini-3.8-flash") == "Gemini 3.8 Flash"
     assert catalog.model_label("gemini", "gemini-9-custom") == "gemini-9-custom"
+
+
+def test_jev_options_cannot_be_offered_to_a_generating_code_path() -> None:
+    """Jev returns decisions, never prose; no generating field may list its models."""
+    assert all(
+        "jev_structured_decision" in entry.capabilities
+        for entry in catalog.model_options("jev_model")
+    )
+    for field in (
+        "openai_model",
+        "anthropic_model",
+        "minimax_model",
+        "gemini_model",
+        "hotspot_guide_gemini_model",
+    ):
+        assert all(
+            "jev_structured_decision" not in entry.capabilities
+            for entry in catalog.model_options(field)
+        ), field

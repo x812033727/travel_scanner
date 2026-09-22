@@ -510,14 +510,42 @@ errors move to the next configured provider. If none succeeds, the server fills
 every day from the built-in destination catalog and labels the result as a
 fallback instead of returning an empty itinerary.
 
-AI keys and official Base URLs for OpenAI, Claude, MiniMax and Gemini live on one
-encrypted admin card (「AI 供應商與金鑰」). The trip planner and the hotspot guide
+AI keys and official Base URLs for OpenAI, Claude, MiniMax, Gemini and Jev live on
+one encrypted admin card (「AI 供應商與金鑰」). The trip planner and the hotspot guide
 search each pick a vendor and a model from a server-curated catalog (with a
 custom-id option), and guide search may override the planner's model per vendor;
 priority and timeouts stay on the feature cards. Only destination, dates, travelers,
 preferences, routing preference, notes, and preserved itinerary summaries are
 sent to a selected AI provider; account identity and email are excluded. Google
 Places optionally resolves up to 24 suggested locations after generation.
+
+Jev is the one vendor on that card that cannot write a sentence. TypeSafe's System
+One model answers questions -- pick one option, place the state on an ordered scale,
+or return the probability that a statement holds -- and every answer carries a
+calibrated confidence. It is deliberately absent from `AI_PLANNER_PRIORITY` and from
+every guide-search and introduction provider list, because a vendor on those lists
+that can never return a draft would fall through to the catalog forever. Its place is
+the work where a generating model is currently doing a classifier's job: filtering
+guide-article candidates, matching a food merchant to a platform listing, deciding
+whether a crawled page is a fare page at all.
+
+Two of TypeSafe's own published weaknesses bound that list. Jev reads dates as text
+rather than as ordered quantities, so date ordering, intervals and windows are
+unreliable; and it is not a calculator, does not count reliably, and its score levels
+are weakly calibrated numerically. Prices, durations, budgets and schedules therefore
+stay with the deterministic code that already owns them. TypeSafe also states that
+English is its primary training language and where accuracy is currently best, and
+publishes no figures for any other language, so `JEV_CJK_AUTOPILOT_ENABLED` ships
+false: until numbers from our own five-language content say otherwise, a confident
+answer about non-English content is flagged for review rather than acted on.
+
+The first place Jev is wired up is the hotspot guide search, and it is wired up
+watching. With `JEV_SHADOW_GUIDE_ASSESSMENT=shadow` each run asks Jev the same
+question its candidate assessor is already answering, records both answers on the run,
+and still accepts exactly what the existing relevance threshold accepts. Nothing about
+the search changes. `jev-shadow-report` reads the runs back and prints agreement
+overall and per language, plus the disagreements to look at by hand, which is what a
+threshold should be set from.
 
 `POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
 current trip version. The request accepts `scope=day` with `day_date`, or the
