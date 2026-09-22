@@ -1,0 +1,156 @@
+---
+id: 2026-09-21-localize-two-singapore-guides-in-batch
+title: Localize two Singapore guides in batch 010
+status: in-progress
+priority: P1
+area: docs
+owner: codex-batch010-singapore
+claimed_at: 2026-09-21T21:43:40Z
+created_at: 2026-09-21T21:43:34Z
+completed_at:
+branch: codex/article-localization-batch-010-singapore-candidate
+depends_on: []
+scope:
+  - apps/api/app/guides/content/singapore-4-day-itinerary.json
+  - apps/api/app/guides/content/singapore-changi-airport-mrt-simplygo-guide.json
+  - apps/web/public/guides/singapore-4-day-itinerary
+  - apps/web/public/guides/singapore-changi-airport-mrt-simplygo-guide
+---
+
+# Localize two Singapore guides in batch 010
+
+## Why
+
+The published `singapore-4-day-itinerary` and
+`singapore-changi-airport-mrt-simplygo-guide` each had only zh-TW. Their diagrams
+also contain Chinese labels. Batch 010 adds the missing zh-CN, en, ja and ko
+documents and localized diagrams without changing the visibility of either
+article. The itinerary pack summary lagged behind the published zh-TW revision;
+the published GuideDocument is the source of truth.
+
+## Definition of done
+
+- [ ] Both packs contain complete zh-TW, zh-CN, en, ja and ko documents, and
+      the corrected Changi zh-TW fare boundary has been approved as a new
+      versioned published source before the missing locales are imported.
+- [x] Each new locale has a language-specific diagram. Existing photographs,
+      author credits, licences and source URLs remain intact.
+- [x] Local pack lint and focused content/asset checks pass, and all ten
+      diagrams are rendered at desktop and 390px mobile width without label
+      overflow or overlap.
+- [ ] Independent editorial review accepts wording, eligibility, source facts
+      and image legibility.
+- [ ] Rebase on fresh main, recheck production version/visibility, then open
+      and complete the bounded PR. Publication is handled by the release task.
+
+## Steps
+
+- [x] Pin published zh-TW v8/v6 and compare with the repository packs.
+- [x] Translate all fields and source titles; localize explicit site URLs and
+      preserve article references, whose renderer links only published locales.
+- [x] Localize SVG labels and long descriptions; render/check desktop and mobile.
+- [x] Capture source, pack, locale and asset hashes in external QA receipts.
+- [ ] Have another reviewer inspect all eight documents and diagrams.
+
+## How to verify
+
+From this worktree, with the existing API virtual environment:
+
+```powershell
+cd apps/api
+& 'C:\Users\x8120\.codex\worktrees\c5d9\travel_scanㄐ\apps\api\.venv\Scripts\python.exe' -m app.guides.pack_cli lint --slug singapore-4-day-itinerary
+& 'C:\Users\x8120\.codex\worktrees\c5d9\travel_scanㄐ\apps\api\.venv\Scripts\python.exe' -m app.guides.pack_cli lint --slug singapore-changi-airport-mrt-simplygo-guide
+cd ../..
+npm run check:tasks
+git diff --check
+```
+
+The external review bundle is
+`C:\Users\x8120\.codex\article-localization-release\batch010-work\qa`.
+Its `content-audit.json` validates structure, provenance, source dates and
+URLs, source hashes, locale links, SVG references and critical numeric values.
+`metrics.json` and 32 screenshots cover the eight diagrams at desktop and
+three 390px scroll positions; text bounds and pairwise overlap are zero.
+
+## Notes
+
+- Read-only production snapshot:
+  `C:\Users\x8120\.codex\article-localization-release\batch010-inventory\production-source.json`;
+  inventory SHA-256
+  `259cd6fea752edf87360f8986b06d6fa284da97d815965627854bbc3537e1f29`.
+- Published source revisions: itinerary zh-TW v8
+  `2ef11f1818758f946708a5d9fb18ee9dd0d74be8569aadac08ad8aa38fdd0af3`;
+  Changi zh-TW v6
+  `4b147220af61ad0b8b0d17d46883b50a1f2bdb58c28338e2b6372589c2a93805`.
+- The itinerary's repository description was older than published; this
+  candidate copies the published document into zh-TW before adding locales.
+- Official source spot-checks: Changi train/taxi page, SimplyGo contactless
+  card FAQ and adult fares, Gardens by the Bay Flower Dome, and ICA SG Arrival
+  Card. Preserve the original checked-on dates in source records.
+- Only `singapore-hawker-first-visit` and
+  `singapore-gardens-indoor-outdoor` were published in all five locales at
+  inventory time. The renderer turns absent-locale `article` references into
+  plain text until their destinations are published. Explicit city and food
+  directory URLs use each actual locale route.
+- Both `pack_cli lint --slug` commands pass. They warn that the published
+  source had no summary block and the full English translations exceed the
+  advisory 6,000-character howto length; neither is a validation error.
+- `pytest tests/test_guides_content_pack.py -q` is not a clean scoped check in
+  this sparse worktree: SQLite import tests fail because the fixture lacks
+  `guide_article_aliases`, and catalogue-wide image checks fail because the
+  sparse worktree intentionally omits other articles' artwork. These failures
+  are not reported as passes. Re-run full CI after the final rebase/PR.
+- Candidate v2 corrects the English itinerary block 27 temporal cues: source
+  `下午` is now "In the afternoon" and `傍晚` is "At dusk". The original
+  candidate commit, manifest and review receipt remain as historical evidence;
+  v2 needs its own independent editorial review. The earlier 4px mobile-image
+  blocker used the older c5d9 ContentBlocks; re-evaluate it against the
+  deployed d862 code with 1180px SVG horizontal scrolling.
+- The first candidate started at `d8621daf47b7acd8fec617b735d76d9e79931268`;
+  the branch now includes main and PR #635 exists. Recheck fresh origin/main
+  and live versions/visibility before any production publication. No
+  production write has occurred.
+- PR #635 remains draft with auto-merge disabled. Independent v3 review
+  `C:\Users\x8120\.codex\article-localization-release\batch010-work\review-batch010-v3-preflight.json`
+  (SHA-256 `c9b3fb3ae3b5cac5eeea7cfc43f9b3edd0467b2c931f5be5f8501d8e4fa180d9`)
+  supersedes the prior editorial approval and returned 27 source-to-target
+  fields across 10 finding groups, including 13 numeric warning rows.
+  Corrected target wording is staged only against the hash-bound old fields;
+  no production import or deployment has occurred.
+- The published Changi zh-TW v6 fare table says `40.2 km 以上` at 257 cents.
+  SimplyGo's Adult Fares table instead places 39.3–40.2 km at 256 cents and
+  `Over 40.2 km` at 257 cents. The repository candidate now says
+  `超過 40.2 km` in zh-TW and `超过 40.2 km` in zh-CN. Independent source
+  correction review and a separate versioned zh-TW publication are mandatory
+  before translating/publishing from a repinned source. The already correct
+  en/ja/ko strict-`>` fields remain unchanged.
+- The v4 content-delta audit at
+  `C:\Users\x8120\.codex\article-localization-release\batch010-work\qa-v4\content-delta.json`
+  (SHA-256 `590129cedc3f7f72a4821193d5cd1272aa12b81a02cc063801758960abc6102f`)
+  compares the new candidate with frozen e0392c90. It confirms exactly 16 JSON
+  field changes (14 translated fields and two source-language fare labels),
+  exactly 10 SVG text-slot changes, and no changed source URLs, photo credits,
+  checked-on dates or unrelated article fields. All ten five-language SVGs
+  rendered at desktop and three 390px scroll positions; bounding-box and
+  pairwise-text overlap counts were zero. Pack lint passed with pre-existing
+  no-summary and English length advisories; independent editorial review is
+  still required.
+- Independent v4 editorial review rejected the candidate on four specific
+  findings (receipt `content-review-batch010-v4-rejected.json`, SHA-256
+  `df1afe795726e7439d1af7805b5267d2004630363215ebee72dd37823e225dc2`).
+  The staged v5 candidate narrows the 0.60 SGD daily card fee to foreign-issued
+  Mastercard/Visa in the fare table, comparison and remaining generic lead
+  translations; adds Mandai's 2026-07-01 Destination Pass entry-slot exemption
+  and the remaining single-ticket/member booking rule in all five languages;
+  limits Sultan Mosque's Friday restriction to walk-in visiting in all five
+  documents and SVGs; and removes two traditional `接著` forms from zh-CN.
+  The newly verified Mandai announcement replaces a redundant SimplyGo FAQ
+  entry in this itinerary's 20-source list; the direct transport guide link
+  and its own SimplyGo source remain. The changed mosque and fee source records
+  carry their 2026-09-22 verification dates. The v5 source corrections and
+  entire candidate still need independent review; this note is not approval.
+- Scoped pack lint passes for both v5 packs with only the pre-existing
+  `no_summary` and English how-to length advisories. The five changed itinerary
+  SVGs parse as XML and rendered at 1600px and at the 390px scrolled view;
+  measured text out-of-bounds and overlaps are zero. Compact render evidence
+  and metrics are at `P:\article-localization-batch010-v5\render`.
