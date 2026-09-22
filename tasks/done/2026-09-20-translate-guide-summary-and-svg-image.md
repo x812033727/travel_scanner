@@ -1,13 +1,13 @@
 ---
 id: 2026-09-20-translate-guide-summary-and-svg-image
 title: Translate guide summary and SVG image descriptions in article localization jobs
-status: review
+status: done
 priority: P1
 area: tools
 owner: codex-batch007-summary-tool
 claimed_at: 2026-09-20T13:17:13Z
 created_at: 2026-09-20T13:16:40Z
-completed_at:
+completed_at: 2026-09-21T23:03:00Z
 branch: codex/batch007-summary-description
 depends_on:
   - 2026-09-20-article-localization-verified-site-links
@@ -68,3 +68,6 @@ Playwright crawler test in this fresh worktree because `@playwright/test` is
 not installed here; CI installs dependencies and will run the full suite.
 Tooling PR #600 is open at authored head `bbd4951a`; no content was imported or
 published. Leave this task in review until the PR is merged.
+PR #600 merged on 2026-09-20 14:29:52 UTC as
+`97496c25df2de1293e64e04295e049039a415ec3`. The already completed task
+was archived after verifying that merge; the stale open copy was removed.
