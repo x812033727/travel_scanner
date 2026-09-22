@@ -55,6 +55,10 @@ VENDOR_MAX_STATE_TOKENS = 32_000
 MAX_CHOICE_OPTIONS = 255
 MIN_SCORE_LEVELS = 2
 MAX_SCORE_LEVELS = 10
+# TypeSafe bills input tokens only, at $0.042 per million; output is not billed at all.
+# It lives beside the vendor's other published numbers rather than beside one of the tools
+# that report a cost, because two tools with their own copy of a price eventually disagree.
+USD_PER_INPUT_TOKEN = 0.042 / 1_000_000
 
 
 class JevError(Exception):
