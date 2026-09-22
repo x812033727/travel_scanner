@@ -2,11 +2,19 @@
   "slug": "ai-news-nvidia-physical-ai-safety-20260921",
   "kind": "life",
   "destination_id": null,
-  "topics": ["ai", "ai-news"],
+  "topics": [
+    "ai",
+    "ai-news"
+  ],
   "valid_until": null,
   "news_date": "2026-09-21",
   "featured": false,
   "display_order": 176,
+  "related": [
+    "ai-news-openai-frontier-standards-20260921",
+    "ai-news-anthropic-life-sciences-verification-20260917",
+    "ai-news-openai-math-advisory-20260921"
+  ],
   "locales": {
     "zh-TW": {
       "title": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
@@ -69,12 +77,37 @@
         },
         {
           "type": "table",
-          "header": ["安全說法", "涵蓋對象", "目前狀態", "認定者"],
+          "header": [
+            "安全說法",
+            "涵蓋對象",
+            "目前狀態",
+            "認定者"
+          ],
           "rows": [
-            ["已完成認證", "自駕車：DriveOS 6.0、車用產品生命週期軟體流程與車用工程流程", "DriveOS 6.0 與產品生命週期軟體流程通過 ISO 26262 ASIL D；車用工程流程通過 ISO/SAE 21434", "TÜV SÜD"],
-            ["還在檢驗中", "機器人：IGX Thor、Halos OS、Holoscan Sensor Bridge", "檢驗功能安全認證準備度，尚未完成", "TÜV Rheinland"],
-            ["機構獲得認可", "NVIDIA 自家的 Halos AI Systems Inspection Lab（證書開給 NVIDIA Corporation）", "認可為 ISO/IEC 17020 檢驗機構，登記類別 Type C（second party）", "ANAB"],
-            ["設計上支援", "機器人硬體 IGX Thor", "支援 IEC 61508、ISO 13849 等標準，非已取得認證", "NVIDIA 自述"]
+            [
+              "已完成認證",
+              "自駕車：DriveOS 6.0、車用產品生命週期軟體流程與車用工程流程",
+              "DriveOS 6.0 與產品生命週期軟體流程通過 ISO 26262 ASIL D；車用工程流程通過 ISO/SAE 21434",
+              "TÜV SÜD"
+            ],
+            [
+              "還在檢驗中",
+              "機器人：IGX Thor、Halos OS、Holoscan Sensor Bridge",
+              "檢驗功能安全認證準備度，尚未完成",
+              "TÜV Rheinland"
+            ],
+            [
+              "機構獲得認可",
+              "NVIDIA 自家的 Halos AI Systems Inspection Lab（證書開給 NVIDIA Corporation）",
+              "認可為 ISO/IEC 17020 檢驗機構，登記類別 Type C（second party）",
+              "ANAB"
+            ],
+            [
+              "設計上支援",
+              "機器人硬體 IGX Thor",
+              "支援 IEC 61508、ISO 13849 等標準，非已取得認證",
+              "NVIDIA 自述"
+            ]
           ],
           "caption": "NVIDIA 在 2026 年 9 月 21 日部落格文章、NVIDIA 官方頁面與 ANAB 認可範圍檔案裡，對 Halos 安全系統使用的四種不同說法整理，查核日 2026 年 9 月 23 日。"
         },
@@ -170,14 +203,26 @@
           "text": "NVIDIA 9 月 21 日的部落格文章不是產品發表，沒有價格、上市日或台灣供貨時程。文中提到的自駕車與工業機器人規模預測，都是 ABI Research 與 Omdia 兩家外部機構的說法，不是 NVIDIA 的承諾，原始報告查核當下都讀不到。安全用詞上，「已認證」「正在檢驗」「機構獲得認可」與「設計上支援」代表四種不同強度，請對照前文的分層說明，不要視為同一件事。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-frontier-governance-20260528"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
+              "kind": "life",
+              "slug": "ai-news-frontier-governance-20260528"
+            }
+          ]
         }
       ],
       "sources": [

@@ -2,11 +2,20 @@
   "slug": "ai-news-anthropic-life-sciences-verification-20260917",
   "kind": "life",
   "destination_id": null,
-  "topics": ["ai", "software", "ai-news"],
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
   "valid_until": null,
   "news_date": "2026-09-17",
   "featured": false,
   "display_order": 173,
+  "related": [
+    "ai-news-openai-frontier-standards-20260921",
+    "ai-news-openai-math-advisory-20260921",
+    "ai-news-nvidia-physical-ai-safety-20260921"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Anthropic 生命科學驗證方案上線：通過驗證的團隊才鬆綁生物類限制",
@@ -77,12 +86,32 @@
         },
         {
           "type": "table",
-          "header": ["授權類型", "涵蓋範圍與續約週期", "適用模型／方案（依 9 月 17 日公告）"],
+          "header": [
+            "授權類型",
+            "涵蓋範圍與續約週期",
+            "適用模型／方案（依 9 月 17 日公告）"
+          ],
           "rows": [
-            ["標準用途 Standard Use", "整個團隊，一年續約一次", "Mythos 5.1、Opus 5、Sonnet 5"],
-            ["高風險用途 High-risk Use", "單一研究專案，六個月續約一次", "Opus 5、Sonnet 5 可用；Mythos 限少數機構"],
-            ["個人 Pro／Max 方案", "beta 階段不符資格", "Anthropic 說之後才會擴大"],
-            ["第三方平台", "尚未提供", "僅第一方 console／Enterprise／Team"]
+            [
+              "標準用途 Standard Use",
+              "整個團隊，一年續約一次",
+              "Mythos 5.1、Opus 5、Sonnet 5"
+            ],
+            [
+              "高風險用途 High-risk Use",
+              "單一研究專案，六個月續約一次",
+              "Opus 5、Sonnet 5 可用；Mythos 限少數機構"
+            ],
+            [
+              "個人 Pro／Max 方案",
+              "beta 階段不符資格",
+              "Anthropic 說之後才會擴大"
+            ],
+            [
+              "第三方平台",
+              "尚未提供",
+              "僅第一方 console／Enterprise／Team"
+            ]
           ],
           "caption": "Anthropic 生命科學驗證方案標準用途與高風險用途的授權條件整理，查核日 2026 年 9 月 23 日。"
         },
@@ -182,14 +211,26 @@
           "text": "生命科學驗證方案只開放通過驗證的團隊與機構；申請頁 9 月 23 日寫的資格是 Claude Enterprise 與 Team 方案，以及 Claude Platform（API），一般的 Free、Pro、Max 方案不符資格，第三方平台也還沒有這個選項。放寬的範圍綁定申請書登記的用途，資安分類器等其他防護不受影響。以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有說明任何國家或地區的開放條件，也沒有提到台灣；文中規格數字都是 Anthropic 自己的說法，本站沒有實測。"
         },
         {
-          "type": "link",
-          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰",
-          "url": "https://mokaair.com/zh-TW/life/ai-news-anthropic-threat-report-20260910"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰",
+              "kind": "life",
+              "slug": "ai-news-anthropic-threat-report-20260910"
+            }
+          ]
         }
       ],
       "sources": [

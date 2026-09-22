@@ -1214,6 +1214,130 @@ def _sec_innovation_exemption(accent: str) -> str:
     return b + circle(1380, 200, 16, accent, "none")
 
 
+def _taiwan_vasp_tax_ruling(accent: str) -> str:
+    # An official seal at the centre. Two coins cross from the left through an open, dashed gate
+    # -- exempt -- while a fee slip and an NFT hexagon on the right each still carry their own
+    # small solid tag, because the ruling leaves those two inside the tax net.
+    other = second_colour(accent)
+    b = coin(250, 330, 62, accent) + coin(250, 520, 62, other)
+    b += dashed(345, 425, 620, 425, accent, 10) + circle(620, 425, 15, accent, "none")
+    b += circle(800, 425, 125, "#FFFFFF", INK) + circle(800, 425, 55, PALE, INK)
+    b += line(915, 395, 1050, 300, other, 8) + line(915, 455, 1050, 560, accent, 8)
+    b += rect(1070, 210, 230, 150, "#FFFFFF", other, 16)
+    b += line(1100, 262, 1260, 262, "#C4CCCC", 10) + line(1100, 302, 1230, 302, "#C4CCCC", 10)
+    b += rect(1265, 188, 42, 42, other, "none", 10)
+    b += hexagon(1200, 570, 92, accent, PALE)
+    return b + rect(1250, 510, 42, 42, accent, "none", 10)
+
+
+def _moda_mydata_student_loan(accent: str) -> str:
+    # A loan application sheet on the left feeds into a hexagon platform node where identity is
+    # verified, and on to a bank on the right that receives the data directly; a small dashed
+    # ring above the platform stands for the record that deletes itself once it has been used.
+    other = second_colour(accent)
+    b = sheet(200, 260, 230, 320, other, rows=5)
+    b += arrow(460, 615, 420, other)
+    b += hexagon(770, 420, 130, accent, PALE) + circle(770, 420, 46, "#FFFFFF", accent)
+    b += f'<circle cx="900" cy="270" r="32" fill="none" stroke="{other}" stroke-width="6" stroke-dasharray="10 8"/>' + circle(900, 270, 7, other, "none")
+    b += arrow(935, 1085, 420, accent)
+    b += bank(1120, 300, 320, other)
+    return b
+
+
+def _eu_data_centre_rating(accent: str) -> str:
+    # Seven bars stacked like an energy label, shortest and palest at the top for the best class
+    # and longest at the bottom for the worst, pointing at a data centre drawn as a grid of racks
+    # -- the label rates what is already inside; it does not change it.
+    other = second_colour(accent)
+    b = ""
+    for i in range(7):
+        w = 150 + i * 55
+        y = 205 + i * 54
+        colour = accent if i % 2 == 0 else other
+        b += rect(220, y, w, 36, "#FFFFFF" if i % 2 else PALE, colour, 10)
+    b += arrow(760, 900, 428, other)
+    b += rect(940, 220, 400, 420, "#FFFFFF", INK, 20)
+    for r in range(4):
+        for c in range(3):
+            b += rect(970 + c * 128, 255 + r * 96, 98, 66, PALE if (r + c) % 2 == 0 else "#FFFFFF", accent if (r + c) % 2 == 0 else other, 10)
+    return b
+
+
+def _cisa_kev_zyxel_gs1900(accent: str) -> str:
+    # A switch's row of ports on the left leads to two checks in sequence -- model, then firmware
+    # version -- and on to the two channels the advisory itself names: a support contact and the
+    # vendor's own forum. No device brand, no CVE text, just the shape of a network switch.
+    other = second_colour(accent)
+    b = rect(200, 340, 420, 130, "#FFFFFF", INK, 16)
+    b += "".join(rect(230 + i * 55, 375, 34, 60, PALE, other, 6) for i in range(6))
+    b += arrow(660, 800, 405, other)
+    b += rect(820, 250, 190, 150, "#FFFFFF", accent, 18) + tick(915, 325, 46, accent)
+    b += rect(820, 460, 190, 150, "#FFFFFF", other, 18) + tick(915, 535, 46, other)
+    b += arrow(1050, 1180, 405, accent)
+    b += bubble(1210, 260, 210, 140, accent)
+    b += person(1300, 500, other)
+    return b
+
+
+def _nvidia_physical_ai_safety(accent: str) -> str:
+    # Three bands stacked bottom to top -- hardware, software, validation -- each safety layer
+    # resting on the one below it. To the right, a dashed inspection report and a solid
+    # certification seal sit apart on a broken line: one is not the other.
+    other = second_colour(accent)
+    b = rect(200, 470, 760, 110, "#FFFFFF", accent, 16)
+    b += "".join(rect(240 + i * 130, 500, 90, 50, PALE, accent, 10) for i in range(4))
+    b += rect(200, 340, 760, 110, "#FFFFFF", other, 16)
+    b += "".join(line(260 + i * 130, 370, 260 + i * 130, 420, other, 10) for i in range(4))
+    b += rect(200, 210, 760, 110, "#FFFFFF", accent, 16) + magnifier(830, 258, 34, accent) + circle(270, 265, 26, PALE, accent) + circle(350, 265, 26, "#FFFFFF", accent) + circle(430, 265, 26, PALE, accent)
+    b += f'<rect x="1060" y="220" width="230" height="150" rx="16" fill="{PALE}" stroke="{other}" stroke-width="6" stroke-dasharray="16 12"/>'
+    b += "".join(line(1090, 265 + i * 34, 1250, 265 + i * 34, other, 8) for i in range(3))
+    b += dashed(1175, 380, 1175, 470, INK, 8) + circle(1175, 425, 10, INK, "none")
+    b += tick(1175, 555, 66, accent)
+    return b
+
+
+def _meta_petal_subsea_cable(accent: str) -> str:
+    # Four cable cross-sections in a row, each a small grid of dots for its fibre-pair count --
+    # 8, 16, 24, 48 -- standing on steps of matching height: Marea, Amitie, Anjana and Petal,
+    # each generation denser than the last.
+    other = second_colour(accent)
+    gens = [(8, 4, 2), (16, 4, 4), (24, 6, 4), (48, 8, 6)]
+    b = ""
+    for i, (n, cols, rows) in enumerate(gens):
+        step_h = 70 + i * 55
+        x = 200 + i * 300
+        colour = accent if i == 3 else other
+        b += rect(x, 630 - step_h, 240, step_h, "#FFFFFF" if i % 2 else PALE, colour, 14)
+        gx = x + 120 - cols * 9
+        gy = 630 - step_h - rows * 18 - 26
+        b += "".join(circle(gx + (k % cols) * 18, gy + (k // cols) * 18, 6, colour, "none") for k in range(n))
+    return b
+
+
+def _enisa_threat_landscape(accent: str) -> str:
+    # A report carries a small dashed tag for the year its data actually covers -- not the year
+    # in its own name. A ring shows only a thin wedge coloured in: the slice of incidents a cause
+    # could even be assigned to, magnified into a second ring showing how much of just that
+    # sliver was one particular cause. To the right, one bar stands taller than the rest.
+    other = second_colour(accent)
+    b = sheet(200, 210, 260, 340, INK, rows=6)
+    b += f'<rect x="330" y="500" width="150" height="72" rx="12" fill="{PALE}" stroke="{other}" stroke-width="6" stroke-dasharray="12 10"/>'
+    cx, cy, r = 700, 380, 120
+    b += circle(cx, cy, r, PALE, other)
+    ang = math.radians(5.2 / 100 * 360)
+    ex, ey = cx + r * math.sin(ang), cy - r * math.cos(ang)
+    b += f'<path d="M{cx} {cy} L{cx} {cy - r} A{r} {r} 0 0 1 {ex:.1f} {ey:.1f} Z" fill="{accent}" stroke="{accent}" stroke-width="4" stroke-linejoin="round"/>'
+    b += dashed(cx + 15, cy - r + 15, 960, 195, other, 6)
+    scx, scy, sr = 1000, 230, 75
+    b += circle(scx, scy, sr, "#FFFFFF", accent)
+    ang2 = math.radians(60.4 / 100 * 360)
+    ex2, ey2 = scx + sr * math.sin(ang2), scy - sr * math.cos(ang2)
+    large2 = 1 if ang2 > math.pi else 0
+    b += f'<path d="M{scx} {scy} L{scx} {scy - sr} A{sr} {sr} 0 {large2} 1 {ex2:.1f} {ey2:.1f} Z" fill="{other}" stroke="{other}" stroke-width="4" stroke-linejoin="round"/>'
+    b += rect(1150, 560, 70, 90, PALE, other, 10) + rect(1240, 490, 70, 160, accent, "none", 10) + rect(1330, 585, 70, 65, PALE, other, 10)
+    return b
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -1291,6 +1415,13 @@ _DRAWINGS = {
     "tech-news-googlebook-launch-20260921": _googlebook_launch,
     "crypto-news-taiwan-deposit-token-pilot-20260922": _taiwan_deposit_token_pilot,
     "crypto-news-sec-innovation-exemption-20260917": _sec_innovation_exemption,
+    "crypto-news-taiwan-vasp-tax-ruling-20260903": _taiwan_vasp_tax_ruling,
+    "tech-news-moda-mydata-student-loan-20260917": _moda_mydata_student_loan,
+    "tech-news-eu-data-centre-rating-20260921": _eu_data_centre_rating,
+    "tech-news-cisa-kev-zyxel-gs1900-20260921": _cisa_kev_zyxel_gs1900,
+    "ai-news-nvidia-physical-ai-safety-20260921": _nvidia_physical_ai_safety,
+    "tech-news-meta-petal-subsea-cable-20260921": _meta_petal_subsea_cable,
+    "tech-news-enisa-threat-landscape-20260922": _enisa_threat_landscape,
 }
 
 

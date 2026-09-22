@@ -10,6 +10,10 @@
   "news_date": "2026-09-21",
   "featured": false,
   "display_order": 324,
+  "related": [
+    "tech-news-eu-data-centre-rating-20260921",
+    "tech-news-googlebook-launch-20260921"
+  ],
   "locales": {
     "zh-TW": {
       "title": "Meta 宣布 Petal 跨洋海纜：容量 1 Pbps，預計 2029 年啟用",
@@ -75,12 +79,37 @@
         },
         {
           "type": "table",
-          "header": ["海纜", "光纖對數", "容量", "時程"],
+          "header": [
+            "海纜",
+            "光纖對數",
+            "容量",
+            "時程"
+          ],
           "rows": [
-            ["Marea", "8 對", "官方未列出容量數字", "Meta 表示為其首條跨大西洋投資"],
-            ["Amitié", "16 對", "官方未列出容量數字", "接續 Marea 擴充對數"],
-            ["Anjana", "24 對", "0.5 Pbps", "Meta 表示為首條達此容量的跨大西洋系統"],
-            ["Petal", "2 芯，等效 48 對", "1 Pbps（Meta 表示）", "預計 2029 年啟用"]
+            [
+              "Marea",
+              "8 對",
+              "官方未列出容量數字",
+              "Meta 表示為其首條跨大西洋投資"
+            ],
+            [
+              "Amitié",
+              "16 對",
+              "官方未列出容量數字",
+              "接續 Marea 擴充對數"
+            ],
+            [
+              "Anjana",
+              "24 對",
+              "0.5 Pbps",
+              "Meta 表示為首條達此容量的跨大西洋系統"
+            ],
+            [
+              "Petal",
+              "2 芯，等效 48 對",
+              "1 Pbps（Meta 表示）",
+              "預計 2029 年啟用"
+            ]
           ],
           "caption": "整理自 Meta 工程部落格與住友電工聯合新聞稿：四條海纜的光纖對數與容量均為 Meta 或三家公司聯合新聞稿的說法，查核日 2026 年 9 月 23 日。"
         },
@@ -188,14 +217,26 @@
           "text": "這一篇整理自 Meta 工程部落格 2026 年 9 月 21 日發布的《Inside Petal》，以及住友電工 9 月 22 日在自己網站發布、由 Meta、NEC 與住友電工三家公司具名的聯合新聞稿，兩份文件都在 2026 年 9 月 23 日重新讀過。容量、倍數與世界第一的說法全部出自 Meta 或這份聯合新聞稿，這一篇沒有做獨立的技術驗證；兩份文件都沒有寫造價、登陸城市或確切的啟用月份，也都沒有提到台灣。想確認最新狀況，請直接查 Meta 工程部落格的 Connectivity 分類，或住友電工的新聞稿頁面。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "中華電信宣布臺馬第四海纜完工：近 14 億元、三路由備援與 1.9 Tbps",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-taiwan-matsu-cable-tm4-20260918"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "中華電信宣布臺馬第四海纜完工：近 14 億元、三路由備援與 1.9 Tbps",
+              "kind": "life",
+              "slug": "tech-news-taiwan-matsu-cable-tm4-20260918"
+            }
+          ]
         }
       ],
       "sources": [

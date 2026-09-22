@@ -2,11 +2,18 @@
   "slug": "tech-news-cisa-kev-zyxel-gs1900-20260921",
   "kind": "life",
   "destination_id": null,
-  "topics": ["tech", "tech-news"],
+  "topics": [
+    "tech",
+    "tech-news"
+  ],
   "valid_until": null,
   "news_date": "2026-09-21",
   "featured": false,
   "display_order": 323,
+  "related": [
+    "tech-news-enisa-threat-landscape-20260922",
+    "tech-news-moda-mydata-student-loan-20260917"
+  ],
   "locales": {
     "zh-TW": {
       "title": "CISA 把 Zyxel GS1900 交換器漏洞列入已遭利用清單：先對型號，再對韌體版本",
@@ -76,12 +83,32 @@
         },
         {
           "type": "table",
-          "header": ["日期", "是什麼", "管到誰"],
+          "header": [
+            "日期",
+            "是什麼",
+            "管到誰"
+          ],
           "rows": [
-            ["2026 年 6 月 16 日", "原廠公告首次發布，列出修補版本", "表中型號的使用者"],
-            ["2026 年 9 月 21 日", "CISA 列入 KEV 目錄", "公告對象是所有組織，要求對象是美國聯邦機關"],
-            ["2026 年 9 月 24 日", "KEV 目錄印的到期日（Due Date）", "美國聯邦文職行政部門（FCEB）機關"],
-            ["2026 年 9 月 23 日", "本站查核來源的日子", "無"]
+            [
+              "2026 年 6 月 16 日",
+              "原廠公告首次發布，列出修補版本",
+              "表中型號的使用者"
+            ],
+            [
+              "2026 年 9 月 21 日",
+              "CISA 列入 KEV 目錄",
+              "公告對象是所有組織，要求對象是美國聯邦機關"
+            ],
+            [
+              "2026 年 9 月 24 日",
+              "KEV 目錄印的到期日（Due Date）",
+              "美國聯邦文職行政部門（FCEB）機關"
+            ],
+            [
+              "2026 年 9 月 23 日",
+              "本站查核來源的日子",
+              "無"
+            ]
           ],
           "caption": "四個容易混在一起的日期整理，查核日 2026 年 9 月 23 日。"
         },
@@ -181,14 +208,26 @@
           "text": "這裡引用的四份來源都是 CISA 與 Zyxel 官方頁面，查核日為 2026 年 9 月 23 日；KEV 目錄的內容與「是否已知用於勒索軟體」欄位都可能隨時間更動，這裡寫的是查核當下的狀態。2026 年 9 月 24 日的期限拘束的是美國聯邦文職行政部門機關，不是台灣讀者。文中不含任何攻擊手法、入侵指標或嚴重度分數。本站沒有操作或測試任何一台交換器，也不建議讀者該不該更換或停用特定裝置，只整理官方公告寫了什麼、沒寫什麼。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-cisa-kev-linux-kernel-20260918"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單",
+              "kind": "life",
+              "slug": "tech-news-cisa-kev-linux-kernel-20260918"
+            }
+          ]
         }
       ],
       "sources": [

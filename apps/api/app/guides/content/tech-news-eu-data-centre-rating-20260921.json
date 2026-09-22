@@ -10,6 +10,11 @@
   "news_date": "2026-09-21",
   "featured": false,
   "display_order": 322,
+  "related": [
+    "tech-news-meta-petal-subsea-cable-20260921",
+    "tech-news-enisa-threat-landscape-20260922",
+    "tech-news-googlebook-launch-20260921"
+  ],
   "locales": {
     "zh-TW": {
       "title": "歐盟通過資料中心評等制度：A 到 G 七級，2027 年 8 月發第一批標籤",
@@ -84,12 +89,32 @@
         },
         {
           "type": "table",
-          "header": ["等級", "PUE 級距", "WUE 級距"],
+          "header": [
+            "等級",
+            "PUE 級距",
+            "WUE 級距"
+          ],
           "rows": [
-            ["A", "1.15 以下", "0.1 以下"],
-            ["B", "1.15 至 1.25", "0.1 至 0.2"],
-            ["D", "1.35 至 1.5", "0.4 至 0.6"],
-            ["G", "高於 1.9", "高於 1.0"]
+            [
+              "A",
+              "1.15 以下",
+              "0.1 以下"
+            ],
+            [
+              "B",
+              "1.15 至 1.25",
+              "0.1 至 0.2"
+            ],
+            [
+              "D",
+              "1.35 至 1.5",
+              "0.4 至 0.6"
+            ],
+            [
+              "G",
+              "高於 1.9",
+              "高於 1.0"
+            ]
           ],
           "caption": "依授權規則附件一整理，PUE 與 WUE 各分為 A 到 G 七級，表中僅列部分級距，完整級距見規則附件；查核日 2026 年 9 月 23 日。"
         },
@@ -189,14 +214,26 @@
           "text": "這一篇的資料在 2026 年 9 月 23 日查核，讀的是執委會 IP/26/1667 新聞稿的列印版全文、C(2026) 3472 final 授權規則本文與附件，以及歐盟能源總署同一天發布的最低效能標準諮詢公告。9 月 21 日只是執委會通過規則，2 個月審查期與公報刊登都還沒發生，第一批標籤預計 2027 年 8 月才會出現；這一篇不建議台灣業者或讀者該如何因應，也不比較資料中心或雲端服務。"
         },
         {
-          "type": "link",
-          "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-2026-index"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
         },
         {
-          "type": "link",
-          "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
-          "url": "https://mokaair.com/zh-TW/life/tech-news-eu-cra-reporting-20260911"
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
         }
       ],
       "sources": [
