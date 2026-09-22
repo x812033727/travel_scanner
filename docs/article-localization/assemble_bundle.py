@@ -25,6 +25,11 @@ PIPELINE_SPEC = importlib.util.spec_from_file_location(
 )
 pipeline = importlib.util.module_from_spec(PIPELINE_SPEC)
 PIPELINE_SPEC.loader.exec_module(pipeline)
+CORRECTION_SPEC = importlib.util.spec_from_file_location(
+    "article_localization_source_correction", Path(__file__).with_name("source_correction.py")
+)
+source_correction = importlib.util.module_from_spec(CORRECTION_SPEC)
+CORRECTION_SPEC.loader.exec_module(source_correction)
 
 
 def read(path):
@@ -46,9 +51,7 @@ def write_text_lf(path, value):
 
 def digest(document):
     return hashlib.sha256(
-        json.dumps(
-            document, ensure_ascii=False, sort_keys=True, separators=(",", ":")
-        ).encode()
+        json.dumps(document, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
 
 
@@ -73,15 +76,11 @@ def localize_links(document, locale, articles):
         target_slug = None
         if len(parts) == 3 and parts[1] == "life":
             target_slug = parts[2]
-        elif (
-            len(parts) == 4 and parts[1] == "guides" and parts[2] in {"howto", "intel"}
-        ):
+        elif len(parts) == 4 and parts[1] == "guides" and parts[2] in {"howto", "intel"}:
             target_slug = parts[3]
         if target_slug:
             if parsed.query or parsed.fragment:
-                raise ValueError(
-                    f"Review article query/fragment before rewriting: {node['url']}"
-                )
+                raise ValueError(f"Review article query/fragment before rewriting: {node['url']}")
             if target_slug not in articles:
                 raise ValueError(f"Unknown internal article: {node['url']}")
             reference = {
@@ -90,9 +89,7 @@ def localize_links(document, locale, articles):
                 "kind": articles[target_slug]["kind"],
                 "slug": target_slug,
             }
-            changes.append(
-                {"from": node["url"], "article": target_slug, "locale": locale}
-            )
+            changes.append({"from": node["url"], "article": target_slug, "locale": locale})
             return reference
         parts[0] = locale
         url = urlunsplit(parsed._replace(path="/" + "/".join(parts)))
@@ -110,17 +107,14 @@ def localize_links(document, locale, articles):
             )
         elif block["type"] == "rich_paragraph":
             block["inlines"] = [
-                link(node) if node["type"] == "link" else node
-                for node in block["inlines"]
+                link(node) if node["type"] == "link" else node for node in block["inlines"]
             ]
     return GuideDocument.model_validate(result).model_dump(mode="json"), changes
 
 
 def image_sources(document):
     sources = [document["hero"]["src"]] if document.get("hero") else []
-    return sources + [
-        block["src"] for block in document["blocks"] if block["type"] == "image"
-    ]
+    return sources + [block["src"] for block in document["blocks"] if block["type"] == "image"]
 
 
 def only_image_paths_changed(before, after):
@@ -146,9 +140,7 @@ def baseline_targets(article):
         "locale_provenance",
     )
     if any(field not in article for field in required):
-        raise ValueError(
-            f"Baseline predates split locale targets; rebuild it: {article['slug']}"
-        )
+        raise ValueError(f"Baseline predates split locale targets; rebuild it: {article['slug']}")
     documents = set(article["locale_documents"])
     published = set(article["published_locales"])
     translation_missing = [locale for locale in LOCALES if locale not in documents]
@@ -185,19 +177,12 @@ def reviewed_document(directory, article, locale):
     review = read(directory / "review.json")
     source = read(directory / "source.json")
     pipeline.verify_artifacts(directory, source, receipt)
-    if review.get("artifact_manifest_sha256") != receipt.get(
-        "artifact_manifest_sha256"
-    ):
-        raise ValueError(
-            f"Review is not bound to current artifacts: {article['slug']}:{locale}"
-        )
-    document = GuideDocument.model_validate(
-        read(directory / "document.json")
-    ).model_dump(mode="json")
-    rendered = (
-        receipt["status"] == "rendered"
-        and receipt.get("automated_layout_passed") is True
+    if review.get("artifact_manifest_sha256") != receipt.get("artifact_manifest_sha256"):
+        raise ValueError(f"Review is not bound to current artifacts: {article['slug']}:{locale}")
+    document = GuideDocument.model_validate(read(directory / "document.json")).model_dump(
+        mode="json"
     )
+    rendered = receipt["status"] == "rendered" and receipt.get("automated_layout_passed") is True
     review_only = (
         receipt["status"] == "pending_review"
         and source.get("mode") == "review-only"
@@ -211,9 +196,7 @@ def reviewed_document(directory, article, locale):
         or review.get("glyph_reviewed") is not True
     ):
         raise ValueError(f"Incomplete independent review: {article['slug']}:{locale}")
-    expected_source = article["locale_documents"].get(
-        locale, article["source_document"]
-    )
+    expected_source = article["locale_documents"].get(locale, article["source_document"])
     if source["source_sha256"] != digest(expected_source):
         raise ValueError(f"Translation source changed: {article['slug']}:{locale}")
     if (
@@ -223,9 +206,7 @@ def reviewed_document(directory, article, locale):
         raise ValueError(f"Reviewed document changed: {article['slug']}:{locale}")
     for src in receipt.get("raster_review_required", []):
         assessment = review.get("source_rasters", {}).get(src, {})
-        original = next(
-            (asset for asset in article["assets"] if asset["src"] == src), None
-        )
+        original = next((asset for asset in article["assets"] if asset["src"] == src), None)
         if (
             original is None
             or assessment.get("sha256") != original["sha256"]
@@ -233,8 +214,7 @@ def reviewed_document(directory, article, locale):
             or assessment.get("reusable_without_pixel_translation") is not True
             or not assessment.get("reason")
             or (
-                assessment.get("caption_review_required")
-                and not assessment.get("caption_reviewed")
+                assessment.get("caption_review_required") and not assessment.get("caption_reviewed")
             )
         ):
             raise ValueError(
@@ -266,18 +246,12 @@ def hub_requirements(packs, articles, prior_manifests=()):
     for article, pack, selected in packs:
         if article["status"] == "published":
             for locale in selected:
-                released[(pack.slug, locale)] = digest(
-                    pack.locales[locale].model_dump(mode="json")
-                )
+                released[(pack.slug, locale)] = digest(pack.locales[locale].model_dump(mode="json"))
     result = {}
     catalogue_root = ROOT / "apps/api/app/guides/series_data"
     catalogues = [read(path) for path in catalogue_root.glob("*.json")]
     for article, pack, selected in packs:
-        if (
-            article["slug"] not in HUBS
-            or article["status"] != "published"
-            or not selected
-        ):
+        if article["slug"] not in HUBS or article["status"] != "published" or not selected:
             continue
         referenced = set()
         catalogue_slugs = {
@@ -304,16 +278,10 @@ def hub_requirements(packs, articles, prior_manifests=()):
         for slug, locale in sorted(referenced):
             expected = released.get((slug, locale))
             if expected is None and locale in articles[slug]["published_locales"]:
-                expected = articles[slug]["database"]["locales"][locale][
-                    "published_sha256"
-                ]
+                expected = articles[slug]["database"]["locales"][locale]["published_sha256"]
             if expected is None:
-                raise ValueError(
-                    f"Hub requires an earlier reviewed release: {slug}:{locale}"
-                )
-            requirements.append(
-                {"slug": slug, "locale": locale, "document_sha256": expected}
-            )
+                raise ValueError(f"Hub requires an earlier reviewed release: {slug}:{locale}")
+            requirements.append({"slug": slug, "locale": locale, "document_sha256": expected})
         result[article["slug"]] = requirements
     return result
 
@@ -323,9 +291,7 @@ def copy_pinned_asset(original, target, expected):
     if sha(target) != expected:
         raise ValueError(f"Asset changed while copying reviewed bytes: {original.name}")
     if target.suffix.lower() == ".svg" and b"\r" in target.read_bytes():
-        raise ValueError(
-            f"Reviewed SVG must use LF line endings; re-render it: {original.name}"
-        )
+        raise ValueError(f"Reviewed SVG must use LF line endings; re-render it: {original.name}")
     if target.suffix.lower() == ".svg" and any(
         line.rstrip() != line for line in target.read_bytes().splitlines()
     ):
@@ -334,7 +300,7 @@ def copy_pinned_asset(original, target, expected):
         )
 
 
-def assemble(baseline_path, work, slugs, output, prior_manifests=()):
+def assemble(baseline_path, work, slugs, output, prior_manifests=(), source_correction_reviews=()):
     if not slugs or len(slugs) > 20 or len(slugs) != len(set(slugs)):
         raise ValueError("Choose one to twenty distinct article slugs")
     baseline = read(baseline_path)
@@ -342,12 +308,19 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
     if set(slugs) - articles.keys():
         raise ValueError("Selection includes articles outside the pinned baseline")
     if output.exists():
-        raise ValueError(
-            "Bundle output already exists; preserve it and use a new directory"
-        )
+        raise ValueError("Bundle output already exists; preserve it and use a new directory")
     packs = []
     assets_to_copy = {}
     transformations = []
+    correction_inputs = {}
+    for path in source_correction_reviews:
+        review = read(path)
+        key = (review.get("slug"), review.get("locale"))
+        if key in correction_inputs:
+            raise ValueError(f"Repeated source correction review: {key}")
+        correction_inputs[key] = (Path(path), review)
+    used_corrections = set()
+    corrections_by_slug = {}
 
     def remember_asset(src, path, expected):
         if src in assets_to_copy and assets_to_copy[src][1] != expected:
@@ -359,10 +332,42 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
         if sha(ROOT / article["pack_path"]) != article["pack_sha256"]:
             raise ValueError(f"Source pack changed: {slug}")
         translation_targets, publication_targets, targets = baseline_targets(article)
-        if not targets:
-            raise ValueError(f"Article has no missing locale work: {slug}")
+        if not targets and not any(key[0] == slug for key in correction_inputs):
+            raise ValueError(f"Article has no missing locale or reviewed correction work: {slug}")
+        for locale, document in article["locale_documents"].items():
+            if (slug, locale) in correction_inputs or article["database"] is None:
+                continue
+            pinned_locale = article["database"]["locales"].get(locale)
+            if pinned_locale is not None:
+                old_hash = pinned_locale["published_sha256"] or pinned_locale["draft_sha256"]
+                if (
+                    digest(GuideDocument.model_validate(document).model_dump(mode="json"))
+                    != old_hash
+                ):
+                    raise ValueError(
+                        f"Published/draft source differs without correction review: {slug}:{locale}"
+                    )
         documents = copy.deepcopy(article["locale_documents"])
         selected = []
+        corrections = []
+        for locale in LOCALES:
+            key = (slug, locale)
+            if key not in correction_inputs:
+                continue
+            path, review = correction_inputs[key]
+            if locale in targets:
+                raise ValueError(f"Source correction overlaps missing-locale job: {slug}:{locale}")
+            asset_hashes = {"public" + asset["src"]: asset["sha256"] for asset in article["assets"]}
+            binding = source_correction.verify_review(
+                review, article, locale, documents[locale], asset_hashes
+            )
+            relative = f"reviews/{slug}-{locale}.json"
+            corrections.append(
+                {"locale": locale, **binding, "review_path": relative, "review_sha256": sha(path)}
+            )
+            selected.append(locale)
+            used_corrections.add(key)
+        corrections_by_slug[slug] = corrections
         for locale in LOCALES:
             directory = work / slug / locale
             if locale in targets:
@@ -409,15 +414,15 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
             for src in image_sources(documents[locale]):
                 if src not in assets_to_copy:
                     path = inside(ROOT / "apps/web/public", src.lstrip("/"))
-                    original = next(
-                        (a for a in article["assets"] if a["src"] == src), None
-                    )
+                    original = next((a for a in article["assets"] if a["src"] == src), None)
                     if original is None or sha(path) != original["sha256"]:
                         raise ValueError(f"Unpinned source image: {src}")
                     remember_asset(src, path, original["sha256"])
                 if assets_to_copy[src][0].stat().st_size > 300_000:
                     raise ValueError(f"Image exceeds packaged-content limit: {src}")
         packs.append((article, pack, selected))
+    if used_corrections != set(correction_inputs):
+        raise ValueError("Source correction review is outside the selected batch")
     requirements = hub_requirements(packs, articles, prior_manifests)
     # All source/review/dependency checks finish before writing a portable bundle.
     output.mkdir(parents=True)
@@ -433,8 +438,7 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
         path.parent.mkdir(exist_ok=True)
         write_text_lf(
             path,
-            json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2)
-            + "\n",
+            json.dumps(pack.model_dump(mode="json"), ensure_ascii=False, indent=2) + "\n",
         )
         manifest["articles"].append(
             {
@@ -445,21 +449,29 @@ def assemble(baseline_path, work, slugs, output, prior_manifests=()):
                 "publish_locales": selected if article["status"] == "published" else [],
                 "hub": article["slug"] in HUBS,
                 **(
+                    {"source_corrections": corrections_by_slug[article["slug"]]}
+                    if corrections_by_slug[article["slug"]]
+                    else {}
+                ),
+                **(
                     {"requires": requirements[article["slug"]]}
                     if article["slug"] in requirements
                     else {}
                 ),
             }
         )
+        for correction in corrections_by_slug[article["slug"]]:
+            original = correction_inputs[(article["slug"], correction["locale"])][0]
+            destination = inside(output, correction["review_path"])
+            destination.parent.mkdir(exist_ok=True)
+            copy_pinned_asset(original, destination, correction["review_sha256"])
     for src, (original, expected) in sorted(assets_to_copy.items()):
         relative = "public" + src
         target = inside(output, relative)
         target.parent.mkdir(parents=True, exist_ok=True)
         copy_pinned_asset(original, target, expected)
         manifest["assets"].append({"path": relative, "sha256": expected})
-    write_text_lf(
-        output / "release-manifest.json", json.dumps(manifest, indent=2) + "\n"
-    )
+    write_text_lf(output / "release-manifest.json", json.dumps(manifest, indent=2) + "\n")
     write_text_lf(
         output / "link-transformations.json",
         json.dumps(transformations, ensure_ascii=False, indent=2) + "\n",
@@ -474,9 +486,15 @@ def main():
     parser.add_argument("--slug", action="append", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--prior-manifest", type=Path, action="append", default=[])
+    parser.add_argument("--source-correction-review", type=Path, action="append", default=[])
     args = parser.parse_args()
     result = assemble(
-        args.baseline, args.work, args.slug, args.output, args.prior_manifest
+        args.baseline,
+        args.work,
+        args.slug,
+        args.output,
+        args.prior_manifest,
+        args.source_correction_review,
     )
     print(
         json.dumps(

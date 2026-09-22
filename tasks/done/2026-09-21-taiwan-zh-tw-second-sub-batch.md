@@ -1,13 +1,13 @@
 ---
 id: 2026-09-21-taiwan-zh-tw-second-sub-batch
 title: Taiwan zh-TW second sub-batch: Taipei metro and Taoyuan airport
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-taiwan-zh-tw
 claimed_at: 2026-09-21T13:20:02Z
 created_at: 2026-09-21T13:19:57Z
-completed_at:
+completed_at: 2026-09-21T15:12:25Z
 branch: codex/taiwan-zh-tw-batch-002
 depends_on: []
 scope:
@@ -32,7 +32,7 @@ metadata, existing locales, image credits and live editorial revisions.
 - [x] Both zh-TW GuideDocuments cover every live source field and validate against the API schema.
 - [x] Both text-bearing SVGs are localized, rendered and visually reviewed at desktop and 390px.
 - [x] Independent editorial review approves facts, numbers, links, source records and artwork.
-- [ ] Only the missing zh-TW locales are imported and published after guarded PR, CI and release checks.
+- [x] Only the missing zh-TW locales are imported and published after guarded PR, CI and release checks.
 
 ## Steps
 
@@ -103,4 +103,34 @@ production version/hash guard and a slug-scoped import dry run.
   The hash-bound review receipt is
   `C:\Users\x8120\.codex\article-localization-taiwan-zh-tw\batch002\independent-review.json`,
   SHA-256 `f135e81463f57a2e117322496357e83dc5a06f85ec210244ca8db65dc1159ef3`.
-- No import, publication or production write has been performed for this batch.
+- Content PR #620 merged to main as
+  `bb53e361bb6c1ac35a00ac0f65e49c0b304ac034`. Exact-main CI run
+  `35612293976` completed successfully with API, web, containers and
+  full-stack-smoke jobs all green (4/4).
+- Publication used plan
+  `8537f1c625fdb5647664b95a788ec7bf890bc2e608bb7ef982956ed05c23a68e`
+  and manifest
+  `8b7d820cbd023a5176c1d705bf2a3f9cf835178438ab597c540e37379cbe4de3`.
+  The predeploy backup is a verified `pg_dump -Fc`
+  (`23f99d97fcb7b9f672a0c2257b66278b58637a007c020b18fbdd43dd06b5e7ba`);
+  the separate prepublication backup is also index-verified
+  (`9c1fa3069d59e9b77da05bce7d5efe714dfd30ef54664255a0e5707e3fd91493`).
+- Guarded phase receipts show dry run `old` for both operations with zero
+  writes, drafts `drafted` for both with two writes, publish `complete` for
+  both with two writes, and verify `complete` for both with zero writes. The
+  draft browser proof confirmed both real zh-TW routes were unavailable and
+  absent from all 2,361 public sitemap URLs before publication.
+- Final browser QA passed all 20 page checks (two slugs, five locales, desktop
+  and 390px mobile), including exact content and SVGs, canonical, reciprocal
+  hreflang, same-locale links and layout. It recorded 22 passing checks, 28
+  hash-bound evidence files and 2,363 sitemap locations. Browser receipt SHA-256
+  is `38827350c52eff6a6790bb20e13e60914c5fbdd89a98d6b9da370a4a558f0127`.
+- The release completed at `2026-09-21T15:08:26.317632+00:00`, then removed
+  the deployment hold. Final readiness reports database and Redis `ok` at
+  schema `0082_travel_food_subtopics`; all 10 containers are running with zero
+  restarts.
+- Two postdeploy log lines are accounted for. `destination stream closed early`
+  occurred only during browser QA and remains tracked by open task
+  `2026-09-12-community-smoke-econnreset-stays-unexplained-after`; the Otaru
+  `HTTPStatusError` came from a completed background hotspot collection and did
+  not affect this release.
