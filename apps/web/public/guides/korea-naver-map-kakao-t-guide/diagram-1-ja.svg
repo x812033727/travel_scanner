@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans','Noto Sans JP','Noto Sans KR','Noto Sans SC','Yu Gothic','Malgun Gothic','Microsoft YaHei',system-ui,sans-serif">
+  <title id="title">韓国で使うアプリ：経路検索・配車・流しのタクシー</title>
+  <desc id="desc">「今、何をしたい？」から3つに分岐する選択図。経路・乗り換えを調べる場合はNaver Map（네이버 지도）かKakaoMap（카카오맵）を使い、韓国語の店名・住所を貼り付けて、路線・出口・バスのリアルタイム到着情報を確認し、出発前に目的地を保存します。タクシーを呼ぶ場合は、Kakaoアカウントがあり、確実に認証を受けられるかを確認します。いいえ、または不明ならk.ride（케이라이드）を使い、電話番号を入力してGoogle・Apple・メールで認証し、アプリに海外発行カードを登録します。はいの場合はKakao T（카카오 T）を使います。Kakaoアカウントが必要で、自動決済か、降車時に運転手へ現金・カード・T-moneyで支払います。どちらも配車前に概算運賃、乗車前にナンバープレートを確認します。予備はTADAとTABA。流しのタクシーを拾う場合は韓国語の住所を運転手に見せ、降車時に現金・カード・T-moneyで支払います。ソウルの運賃と深夜割増は本文の表を参照し、機能と支払方法はその時点のアプリで確認してください。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B"/></marker>
+  </defs>
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">韓国で使うアプリ：経路検索・配車・流しのタクシー</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">地図で調べる、アプリで呼ぶ、道で拾う</text>
+
+  <!-- root -->
+  <rect x="560" y="104" width="480" height="72" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="800" y="137" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">今、何をしたい？</text>
+  <text x="800" y="164" font-size="16" fill="#5C6B6B" text-anchor="middle">必要なことから選ぼう</text>
+  <path d="M 800 176 L 800 198" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 260 198 L 1385 198" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 260 196 L 260 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 840 196 L 840 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1385 196 L 1385 216" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- branch headers -->
+  <rect x="40" y="222" width="440" height="70" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="252" font-size="22" font-weight="700" fill="#0B4F4D" text-anchor="middle">経路・乗り換えを調べる</text>
+  <text x="260" y="279" font-size="16" fill="#0B4F4D" text-anchor="middle">ルートと接続を確認</text>
+
+  <rect x="520" y="222" width="640" height="70" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="840" y="252" font-size="22" font-weight="700" fill="#1F4E73" text-anchor="middle">タクシーを呼ぶ</text>
+  <text x="840" y="279" font-size="16" fill="#1F4E73" text-anchor="middle">アプリで配車</text>
+
+  <rect x="1200" y="222" width="370" height="70" rx="14" fill="#FBEFE3" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="252" font-size="22" font-weight="700" fill="#8A4A14" text-anchor="middle">流しのタクシーを拾う</text>
+  <text x="1385" y="279" font-size="16" fill="#8A4A14" text-anchor="middle">道端で乗車</text>
+
+  <!-- left branch: maps -->
+  <path d="M 260 292 L 260 316" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="322" width="440" height="128" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="260" y="374" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">네이버 지도 Naver Map</text>
+  <text x="260" y="416" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">카카오맵 KakaoMap</text>
+  <path d="M 260 450 L 260 486" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="40" y="492" width="440" height="278" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="3"/>
+  <text x="70" y="536" font-size="19" font-weight="700" fill="#102A2B">韓国語の店名・住所を貼り付けて検索</text>
+  <text x="70" y="562" font-size="16" fill="#5C6B6B">韓国語の名前や住所を使う</text>
+  <text x="70" y="616" font-size="19" font-weight="700" fill="#102A2B">路線・出口・バス到着情報を確認</text>
+  <text x="70" y="642" font-size="16" fill="#5C6B6B">リアルタイムの到着情報も見る</text>
+  <text x="70" y="696" font-size="19" font-weight="700" fill="#102A2B">出発前に目的地を保存</text>
+  <text x="70" y="722" font-size="16" fill="#5C6B6B">行きたい場所をお気に入りへ</text>
+
+  <!-- middle branch: ride-hailing -->
+  <path d="M 840 292 L 840 320" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <polygon points="840,324 1120,386 840,448 560,386" fill="#FFFFFF" stroke="#102A2B" stroke-width="4"/>
+  <text x="840" y="376" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">Kakaoアカウントがあり、</text>
+  <text x="840" y="401" font-size="19" font-weight="700" fill="#102A2B" text-anchor="middle">確実に認証を受けられる？</text>
+  <text x="840" y="422" font-size="15" fill="#5C6B6B" text-anchor="middle">認証の準備はOK？</text>
+  <path d="M 840 448 L 840 460" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 675 460 L 1005 460" stroke="#5C6B6B" stroke-width="4" fill="none"/>
+  <path d="M 675 458 L 675 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1005 458 L 1005 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <text x="699" y="487" font-size="16" fill="#5C6B6B">いいえ・不明</text>
+  <text x="1029" y="487" font-size="16" fill="#5C6B6B">はい</text>
+
+  <rect x="520" y="500" width="310" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"/>
+  <text x="675" y="536" font-size="21" font-weight="700" fill="#1F4E73" text-anchor="middle">케이라이드 k.ride</text>
+  <text x="675" y="568" font-size="16" fill="#1F4E73" text-anchor="middle">電話番号＋Google・Apple</text>
+  <text x="675" y="594" font-size="16" fill="#1F4E73" text-anchor="middle">またはメールで認証</text>
+  <text x="675" y="620" font-size="15" fill="#1F4E73" text-anchor="middle">アプリに海外発行カードを登録</text>
+
+  <rect x="850" y="500" width="310" height="150" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"/>
+  <text x="1005" y="536" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">카카오 T Kakao T</text>
+  <text x="1005" y="568" font-size="16" fill="#0B4F4D" text-anchor="middle">Kakaoアカウントが必要</text>
+  <text x="1005" y="594" font-size="16" fill="#0B4F4D" text-anchor="middle">自動決済か、降車時に直接払い</text>
+  <text x="1005" y="620" font-size="16" fill="#0B4F4D" text-anchor="middle">現金・カード・T-money</text>
+
+  <path d="M 675 650 L 675 686" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 1005 650 L 1005 686" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="520" y="692" width="640" height="80" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4"/>
+  <text x="840" y="724" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">配車前に概算運賃、乗車前にナンバーを確認</text>
+  <text x="840" y="754" font-size="16" fill="#5C6B6B" text-anchor="middle">金額を見てから呼び、車両番号を照合</text>
+  <text x="840" y="804" font-size="17" fill="#5C6B6B" text-anchor="middle">予備：TADA・TABA</text>
+
+  <!-- right branch: street hail -->
+  <path d="M 1385 292 L 1385 316" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1200" y="322" width="370" height="128" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="378" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">韓国語の住所を見せる</text>
+  <text x="1385" y="410" font-size="16" fill="#5C6B6B" text-anchor="middle">運転手に韓国語の住所を提示</text>
+  <path d="M 1385 450 L 1385 494" stroke="#5C6B6B" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+  <rect x="1200" y="500" width="370" height="150" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"/>
+  <text x="1385" y="548" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">降車時に現金・カード</text>
+  <text x="1385" y="580" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle">またはT-moneyで支払い</text>
+  <text x="1385" y="618" font-size="16" fill="#5C6B6B" text-anchor="middle">現金・カード・T-moneyが選択肢</text>
+
+  <!-- footer -->
+  <text x="60" y="846" font-size="17" fill="#102A2B">ソウルの運賃と深夜割増は本文の表へ。機能と支払方法はその時点のアプリで確認。</text>
+  <text x="1540" y="874" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 作図 2026</text>
+</svg>
