@@ -20,12 +20,15 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from typing import Literal
 
-Vendor = Literal["openai", "anthropic", "minimax", "gemini"]
+Vendor = Literal["openai", "anthropic", "minimax", "gemini", "jev"]
 Capability = Literal[
     "responses_json_schema_strict",
     "anthropic_structured_output",
     "gemini_structured",
     "gemini_grounded",
+    # Jev answers choice/score/noul questions. It is the one capability here that
+    # cannot write a sentence, so no generating code path may ask for it.
+    "jev_structured_decision",
 ]
 ModelStatus = Literal["stable", "preview", "retired"]
 
@@ -46,6 +49,7 @@ class ModelEntry:
 _RESPONSES: frozenset[Capability] = frozenset({"responses_json_schema_strict"})
 _ANTHROPIC: frozenset[Capability] = frozenset({"anthropic_structured_output"})
 _GEMINI: frozenset[Capability] = frozenset({"gemini_structured", "gemini_grounded"})
+_JEV: frozenset[Capability] = frozenset({"jev_structured_decision"})
 
 MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
     "openai": (
@@ -141,6 +145,27 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
             "retired",
         ),
     ),
+    "jev": (
+        ModelEntry(
+            "jev-1.13.0",
+            "Jev 1.13.0",
+            _JEV,
+            "目前預設，已釘選版本。只回傳校準過的 choice／score／noul 判斷，不會生成文字。",
+        ),
+        ModelEntry(
+            "jev-latest",
+            "Jev Latest",
+            _JEV,
+            "永遠指向最新穩定版；官方建議正式環境釘選版本號而不是用這個別名。",
+        ),
+        ModelEntry(
+            "jev-preview",
+            "Jev Preview",
+            _JEV,
+            "最新一版，不保證是正式發行；可能隨時變動。",
+            "preview",
+        ),
+    ),
 }
 
 # Settings field -> (vendor, capability the code path behind that field needs).
@@ -156,6 +181,9 @@ MODEL_FIELDS: dict[str, tuple[Vendor, Capability]] = {
     "hotspot_guide_gemini_model": ("gemini", "gemini_grounded"),
     # The planner, the trip parser and the guide search send a Gemini responseSchema.
     "gemini_model": ("gemini", "gemini_structured"),
+    # Jev decides and never writes, so this field is deliberately absent from every
+    # planner and guide-search provider list.
+    "jev_model": ("jev", "jev_structured_decision"),
     "hotspot_guide_ai_gemini_model": ("gemini", "gemini_structured"),
     # The introduction writer runs through the same adapters as the guide search, so it
     # needs the same capabilities from each vendor.

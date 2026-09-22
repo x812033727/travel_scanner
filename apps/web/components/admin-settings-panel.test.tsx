@@ -251,18 +251,21 @@ const aiVendorsProvider = {
     anthropic_api_base_url: "https://api.anthropic.com/v1",
     minimax_api_base_url: "https://api.minimaxi.com/v1",
     hotspot_guide_gemini_base_url: "https://generativelanguage.googleapis.com",
+    jev_api_base_url: "https://api.typesafe.ai/v1",
   },
   config_sources: {
     openai_api_base_url: "environment",
     anthropic_api_base_url: "environment",
     minimax_api_base_url: "environment",
     hotspot_guide_gemini_base_url: "environment",
+    jev_api_base_url: "environment",
   },
   secrets: {
     openai_api_key: { configured: true, masked: "••••••••1234", source: "database" },
     anthropic_api_key: { configured: false, source: "none" },
     minimax_api_key: { configured: false, source: "none" },
     hotspot_guide_gemini_api_key: { configured: false, source: "none" },
+    jev_api_key: { configured: true, masked: "••••••••9012", source: "database" },
   },
 };
 
@@ -1399,6 +1402,22 @@ describe("AdminSettingsPanel", () => {
     expect(body.config).toEqual({ openai_api_base_url: "https://api.openai.com/v2" });
     expect(body.secrets).toEqual({ anthropic_api_key: "sk-ant-new" });
     expect((await screen.findByRole("status")).textContent).toContain("AI 供應商與金鑰 設定已加密儲存並立即套用。");
+  });
+
+  it("carries the Jev key on the shared card even though Jev writes nothing", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = (await screen.findByRole("heading", { name: "AI 供應商與金鑰" })).closest("section")!;
+    const key = within(section).getByLabelText("Jev API Key") as HTMLInputElement;
+    expect(key.placeholder).toContain("9012");
+    expect(within(section).getByLabelText(/^Jev API Base URL/)).toBeTruthy();
+
+    fireEvent.change(key, { target: { value: "jev-new-key" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(savedBody(fetchMock).secrets).toEqual({ jev_api_key: "jev-new-key" });
   });
 
   it("orders planner model dropdowns by the automatic priority and hides them for single vendors", async () => {
