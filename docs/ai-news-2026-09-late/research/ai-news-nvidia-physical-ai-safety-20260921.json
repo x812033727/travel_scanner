@@ -518,7 +518,7 @@
         {
           "claim": "協調者裁定的第二組措辭落差：機器人頁常見問題「Is the NVIDIA IGX SoC safety certified?」的答句寫 The NVIDIA IGX is a third-party assessed, safety-compliant System-on-a-Chip，與部落格的 designed to support … including IEC 61508 and ISO 13849 不一致。文章第 5 段要讀者記住 IGX 用的是「支援」而非已認證，而第 13 段又請讀者自己去看那一頁，不寫這一句，讀者照做就會看到相反的措辭。照 must_not_write 第 7 條兩邊都寫、以帶限定詞的版本為準，接在第一組落差後面一個子句。",
           "before": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準。",
-          "after": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準；同一頁另稱 IGX 是「third-party assessed」（意為：經第三方評估）的晶片，與部落格「設計上支援」的措辭同樣有落差。",
+          "after": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準；同一頁另稱 IGX 是「third-party assessed」（意為：經第三方查驗）的晶片，與部落格「設計上支援」的措辭同樣有落差。",
           "source_url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/"
         },
         {
@@ -535,7 +535,7 @@
         }
       ],
       "open_questions": [
-        "第 8 段新增的那一句把「評估」帶進了正文（third-party assessed 的意譯）。新標題〈已認證、檢驗中與機構認可〉照協調者指示維持不動——標題的三種強度在正文與表格都指得出來，新增的子句是在陳述廠商兩個頁面的措辭落差，不是第四種強度。若協調者不希望正文出現「評估」兩個字，把意譯改成「經第三方查驗」即可，事實不變。",
+        "（已由協調者裁定結案）第 8 段新增的子句原本把 third-party assessed 意譯成「經第三方評估」，把「評估」帶進了正文。協調者裁定改為「經第三方查驗」，正文的「評估」回到 0 次，標題的三種強度（已認證、檢驗中、機構認可）不變；意譯字數相同，段落仍是 2,996 字。",
         "title_candidates[0] 仍是第一輪沒動的舊標題（含「評估」），第二輪同樣沒動，留給協調者。",
         "Digit 型號的落差（部落格 its Digit 5 humanoid／機器人頁 Digit, Agility's humanoid）第二輪覆核仍然存在，維持第一輪的判斷：兩頁講同一台機器人，正文寫 Digit 5 可接受，但嚴格說未來式那一句沒有印型號。",
         "第一輪說四頁搜價格字串 0 筆；第二輪實測兩個 nvidia.com 頁面各有 1 筆 pricing，出處是網站自己的地區切換視窗那句 Visit your regional NVIDIA website for local content, pricing, and where to buy…，與 Taiwan 出現的位置是同一塊版面。文章的說法（這不是產品發表、沒有價格）不受影響，不需要改字，但那個「0 筆」的說法本身要修正。",
@@ -546,7 +546,8 @@
         "指派訊息：新標題維持不動，並確認研究紀錄的 title 已同步——第二輪進場時就已經同步（check_article.py 第 305 行會比對），沒有再動。",
         "DELTA-4-7 第 10 條：16:00 是佔位時刻，事件日維持 2026-09-21，不換算。第二輪重抓的 meta 與第一輪相同，維持。",
         "指派表 A6：4,900 萬與 6,000 萬一律歸因 ABI Research／Omdia，標題與摘要不放——查核後仍成立。",
-        "研究紀錄 unverified_or_excluded：第二輪同樣沒有請求 Advantech 那個夾帶個人 email 的 safelinks 轉址網址，ANAB PDF 第 2 頁的聯絡人姓名與 email 沒有抄進任何檔案（本物件與查核報告裡都沒有）。"
+        "協調者裁定（第二輪交付後）：third-party assessed 一律意譯為「經第三方查驗」，正文不得出現「評估」；標題的三種強度維持已認證、檢驗中、機構認可，正文 ≤3,000。已照做，段落字數維持 2,996，check_article.py 仍印 OK。",
+      "研究紀錄 unverified_or_excluded：第二輪同樣沒有請求 Advantech 那個夾帶個人 email 的 safelinks 轉址網址，ANAB PDF 第 2 頁的聯絡人姓名與 email 沒有抄進任何檔案（本物件與查核報告裡都沒有）。"
       ],
       "verdict": "ok"
     }

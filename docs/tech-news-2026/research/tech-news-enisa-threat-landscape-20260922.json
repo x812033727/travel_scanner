@@ -626,6 +626,85 @@
       "第二段仍留著「讀的是這則新聞稿、報告的出版品頁與報告全文 PDF」「本站沒有做任何測試」這類查證流水帳，與 DELTA-4-7 第 14 條（查證紀律不要寫進正文）相衝突。第一輪沒有動它，因為 check_article.py 要求查核日出現在前兩段，改寫整段屬於重寫不屬於改事實。請協調者決定要不要在審稿階段收掉。",
       "新聞稿「Additional resources」那一條的 href 仍然是一個含個人資料夾名稱的本機檔案路徑（ENISA 的貼上失誤）。第一輪照研究紀錄的規定沒有引用、沒有抄錄那個字串，也沒有寫進任何檔案。",
       "研究紀錄 verified_facts 第 3 條寫「每頁頁首印 TLP:CLEAR」，實際是 101 頁中的 100 頁（封底沒有）。內容包沒有用到這個說法，第一輪只記錄不修改。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "round-2 independent fact-check agent (Claude Opus 5, 1M context)；沒有參與撰稿，也沒有參與第一輪",
+      "checked_on": "2026-09-23",
+      "method": "2026-09-23（台北）自己重抓 sources[] 三條（`curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`，同一主機間隔 2 秒；任何請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的姓名、email 或其他個人資料）：新聞稿 200／62,053 bytes、出版品頁 200／52,427 bytes、報告 PDF 200／8,377,315 bytes，三個檔案的 md5 與撰稿代理 _raw 與第一輪 r1 目錄的副本都相同，沒有換版。PDF 沒有沿用任何既有的抽文字檔，改用系統 python 的 pypdf 6.16.2 自己逐頁重抽（101 頁、248,588 字元，逐頁存成 pdf_pages.json），HTML 自己去標籤、html.unescape、去 <!-- --> 後再檢索。查核範圍：第一輪改動的 14 處全部、第一輪新寫進內容包的每一句、以及用固定亂數種子從第一輪 76 條 CONFIRMED 裡抽出的三分之一（25 條：1、7、8、9、27、28、39、41、45、47、48、50、52、53、60、69、70、73、75、76、78、81、85、93、95），另加 verified_facts 全部 50 條 verbatim_quote 的連續字串比對與全篇的機械檢查。",
+      "claims_checked": 62,
+      "changes_made": 7,
+      "changes": [
+        {
+          "claim": "第二段的台灣句（第一輪新寫，未經他人查核）",
+          "before": "報告統計的是歐盟會員國與設在歐盟的組織，沒有任何台灣機關或企業的事件；新聞稿與出版品頁沒有提到台灣，報告全文只有一處寫到台灣——在直接取材自歐盟對外事務部（EEAS）資訊操弄報告的那一章，台灣與香港、新疆、西藏被列為中國相關敘事經常出現的題目。",
+          "after": "報告統計的是歐盟會員國與設在歐盟的組織，沒有任何台灣機關或企業的事件；報告談資訊操弄的那一章（內容取自歐盟對外事務部 EEAS 的資訊操弄報告）把台灣列為中國相關敘事經常出現的題目之一。",
+          "why": "協調者裁定：台灣只寫一句中性轉述、歸給報告的 FIMI 章、不做延伸，第二段除批次固定的查核日句以外不留查證流水帳。「新聞稿與出版品頁沒有提到台灣」「報告全文只有一處寫到台灣」兩句都是查證流水帳；而且 Taiwan 在報告裡出現的是兩次（同在第 78 頁同一段），「只有一處」的講法也不精確。FIMI 章的出處以報告自己的兩個寫法為準：第 74 頁「This section was directly drawn from the EEAS 4th report on Foreign Information Manipulation and Interference, published in March 2026」、第 9 頁「Incidents documented in the FIMI chapter were drawn from the European External Action Service's (EEAS) FIMI Threat Landscape 2025」。本輪重新檢索全文（大小寫不敏感）：Taiwan 2 次都在第 78 頁，Taipei／Chinese Taipei／Formosa 皆 0 次；新聞稿與出版品頁 0 次。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        },
+        {
+          "claim": "FAQ 第二題的台灣答句（第一輪新寫，未經他人查核）",
+          "before": "報告的統計範圍是歐盟會員國與設在歐盟的組織，沒有涵蓋台灣，也沒有任何台灣機關或企業的事件；新聞稿與出版品頁完全沒有提到台灣。報告全文提到台灣的地方只有一處：在直接取材自歐盟對外事務部（EEAS）資訊操弄報告的那一章，台灣與香港、新疆、西藏被列為中國相關敘事經常出現的題目——那是被討論的題目，不是被統計的事件。",
+          "after": "報告的統計範圍是歐盟會員國與設在歐盟的組織，沒有涵蓋台灣，也沒有任何台灣機關或企業的事件。報告談資訊操弄的那一章（內容取自歐盟對外事務部 EEAS 的資訊操弄報告）把台灣列為中國相關敘事經常出現的題目之一——那是被討論的題目，不是被統計的事件。",
+          "why": "同上，與第二段一致。FAQ 的答案仍然是正文的子集。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        },
+        {
+          "claim": "第一輪新補的但書：「這些改變都會影響報告裡的數字（報告同時寫明，這並沒有實質改變趨勢與排名）」",
+          "before": "新增了資料外洩與詐騙，這些改變都會影響報告裡的數字（報告同時寫明，這並沒有實質改變趨勢與排名）。",
+          "after": "新增了資料外洩與詐騙；報告同時寫明，追蹤範圍的擴大會影響報告裡的數字，但沒有實質改變前一版觀察到的趨勢與排名。",
+          "why": "但書本身查對了（第 9 頁「While this was observed to have an impact on the numbers presented in this report, it did not substantially change the trends and rankings observed in the previous iteration.」），但它的主詞是**前一句的「擴大追蹤的網路犯罪活動範圍」**，不是「這些改變」（曆年制＋六個月重疊＋擴大範圍）。原句把報告只說過一次的因果擴大到兩項改變上，也漏掉「observed in the previous iteration」這個限定。改寫後兩種讀法都成立。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        },
+        {
+          "claim": "8,257 起事件的三個資料管道",
+          "before": "資料來自三個管道：公開來源、歐盟會員國匿名分享的資訊，以及透過 ENISA Cyber Partnership Programme 取得的資訊；",
+          "after": "資料主要來自公開來源，另有歐盟會員國與 ENISA Cyber Partnership Programme 成員匿名分享的資訊；",
+          "why": "報告第 9 頁寫「collected and analysed 8 257 incidents, **mainly** based on information from open sources, as well as anonymised information shared by EU Member States (EU MSs) and members of the ENISA Cyber Partnership Programme」——句子是「主要靠公開來源」加「會員國與 CPP 成員匿名分享」，不是三個並列的管道，而且「mainly」這個限定詞被刪掉了。這一段講的是報告內頁的方法論（新聞稿沒有印 8,257），所以要照報告的寫法。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        },
+        {
+          "claim": "金錢動機活動 29.3% 沒有指明出自哪一章",
+          "before": "報告把以牟利為目的的活動（占所有紀錄事件 29.3%，特別是勒索軟體）稱為短期內衝擊最大的事件類型；",
+          "after": "報告的執行摘要把以牟利為目的的活動（占所有紀錄事件 29.3%，特別是勒索軟體）稱為短期內衝擊最大的事件類型；",
+          "why": "報告自己有兩個數字：第 7 頁執行摘要「Financially motivated activities (29.3% of all recorded incidents)」、第 13 頁第 1 章「financially motivated operations (29.2%)」（第 38 頁第 3 章另寫網路犯罪占 29.3%）。研究紀錄 unverified_or_excluded 第 5 條要求「寫『約 29%』或明寫是哪一章的數字」；表格 caption 已寫明出自執行摘要，正文這一句補上同樣的出處後，summary 與 FAQ 的同一個數字就有依據。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        },
+        {
+          "claim": "表格第一列備註「多屬短時間灌爆」",
+          "before": "[\"DDoS\", \"51.3%\", \"件數最多，多屬短時間灌爆，衝擊通常有限\"]",
+          "after": "[\"DDoS\", \"51.3%\", \"件數最多，報告寫這一類是低衝擊的攻擊\"]",
+          "why": "報告第 12 頁與新聞稿寫的是 low-impact（低衝擊），沒有為 ENISA 這份歐盟資料集印過任何「持續時間短」的描述。報告裡唯一講 DDoS 時長的是第 89 頁「In Q3, 71% of HTTP DDoS attacks and 89% of network-layer attacks **globally** ended in under 10 minutes」——那是全球資料、而且本篇刻意沒有引用第 89 頁。整篇文章在教讀者看範圍與分母，表格自己不能多加一個來源沒印的性質。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        },
+        {
+          "claim": "AI 那一段只取了報告的前半句",
+          "before": "而不是取得突破性的新能力。值得一提的是，ENISA 自己也在報告裡揭露：這份報告只在有限範圍內用 AI 支援資料蒐集與處理，所有產出都經過人員審閱驗證，",
+          "after": "而不是取得突破性的新能力——但緊接著的但書是，模型的進步已經被觀察到在加速漏洞的發掘與利用。值得一提的是，ENISA 自己也在報告裡揭露：這份報告只在有限範圍內用 AI 支援資料蒐集與處理，所有產出都經過領域專家審閱驗證，",
+          "why": "報告第 15 頁在「attackers primarily use consumer-grade AI tools to augment existing skills and adapt attack vectors rather than to achieve breakthrough capabilities」之後緊接著寫「While attackers primarily use AI to augment existing skills, model improvements have already been seen accelerating vulnerability discovery and exploitation.」。正文用「AI 的角色沒有那麼戲劇化」起頭卻只取前半句，等於把來源往單一方向加強。另外第 4 頁的免責聲明寫的是 subject-matter experts，改成「領域專家」比「人員」貼近原文。",
+          "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+        }
+      ],
+      "checked_and_correct": [
+        "第一輪 14 處改動逐條回一手來源複查，全部成立：C1（報告第 11 頁印 5.2%／60.4%，新聞稿印 5%／60%）、C2（Taiwan 只在第 78 頁、兩次）、C3（「To shape our understanding…」在新聞稿 4 次、出版品頁 3 次、報告 PDF **0 次**）、C4（第 9 頁的但書，但主詞要收窄，見 changes）、C5（第 90 頁的 48,000／22% 沒有印地理範圍；同章第 89 頁講 DDoS 才寫「At a global level」）、C6（該句在新聞稿的前言，<h1> 是「Exploring the evolution…」）、C7（第 7 頁 ideology 57.3%／financially motivated 29.3%／cyberespionage 5.9% 是動機軸，第 13 頁未授權存取 39.5% 裡 63.9% 是金錢動機，兩軸確實重疊）、C8（第 11 頁只寫 `(5.2%)`，沒寫基數）、C9（粒度／時序／部門歸類的但書在第 9 頁 Methodology，Appendix A 是執法行動、Appendix B 是可能性用語表；原文限定詞是 open-source reporting）、C10（expand the attack surface／new level of vigilance 在報告全文 0 次）、C11（第 8 頁同段先寫 highly likely，「轉趨謹慎」是外加的態度）、C12（第 2 頁 CC BY 4.0「provided appropriate credit is given and any changes are indicated」、第 3 頁封面圖版權屬 Shutterstock）、C13／C14（callout 的台灣句與 CVE 句）。",
+        "抽樣複查的 25 條 CONFIRMED 全部再次成立，包括：報告名稱 2026／資料 2025-01-01 至 12-31；同日發布（新聞稿 Sep 22,2026、出版品頁 Publication date: September 22, 2026）；範圍 EU MSs and EU-based organisations（第 10 頁）；六個月重疊與擴大追蹤範圍（第 9 頁）；DDoS 51.3%、未授權存取 39.5%（第 7、11、13 頁）；公共行政 31.8% 與該部門 81.8% 的意識形態 DDoS、公開對外網站與入口網站被反覆鎖定（第 20 頁）；國家關聯行動只有 20% 判定得出入侵途徑、其中 70% 是漏洞利用（第 60 頁）；71% 的漏洞把攻擊向量標為 Network、遠端利用風險（第 91 頁）；供應鏈與第三方、npm 與 Shai-Hulud、2026 年 3 月的套件管理器技術建議（第 12 頁）；威脅類別界線模糊（新聞稿）；第 4 頁的 AI 免責聲明；報告不新增法律義務（第 2 頁法律聲明、第 18–19 頁只把 NIS2 當比較對象）。",
+        "verified_facts 50 條的 verbatim_quote 全部用程式做連續字串比對（NFKC 正規化、彎引號與破折號統一、空白收斂）：49 條在本輪自抓的正文裡找得到連續字串，第 2 條是出版品頁的下載路徑，在 pub.html 原始碼裡找得到（去標籤後的可見文字裡當然沒有）。沒有一條是把不同段落拼起來的。",
+        "機械檢查：內容包 0 次「本文」；每段歸因短語 ≤2（最多的 P04、P07、P08、P10 各 2）；description 191 字、以「（2026 年 9 月查證）」收尾、沒有挑選數量；slug 尾碼 20260922 ＝ news_date ＝ 第一段「2026 年 9 月 22 日」；圖解 caption 與研究紀錄 diagram.caption 逐字相同；summary 與圖解節點的每個數字都出現在正文；正文 0 個 CVE 編號、0 個廠牌名；只有一個 info callout，沒有投資免責段落；兩個結尾連結的 text 與 tech-news-2026-index.json、tech-news-cisa-kev-linux-kernel-20260918.json 的 zh-TW title 程式比對 `==` 為 True；段落總字數 2,710（1,800–3,000）。",
+        "界線（tech.md）：沒有購買建議或推薦式比價；沒有沒歸因的廠商宣稱；沒有把 likely 的前瞻評估寫成已發生；沒有可操作的攻擊細節、入侵指標、CVE 編號或機型；沒有推定台灣可用或適用。"
+      ],
+      "left_for_the_owner": [
+        "台灣那一句照協調者裁定寫成一句中性轉述（第二段、FAQ 第二題、callout 各一處，用語一致）。若站主要再收，最多只能收到「統計範圍是歐盟會員國與設在歐盟的組織」為止；**不可以恢復「報告沒有提到台灣」**——本輪重抓、重抽、重新全文檢索的結果仍然是報告第 78 頁寫到台灣兩次。",
+        "「沒有任何台灣機關或企業的事件」是從報告自印的統計範圍（EU MSs and EU-based organisations）推得的，報告沒有逐筆列出受害組織，也不可能列（must_not_write 第 24 條）。這個推論 must_not_write 第 15 條已經明文允許，本輪照留；若站主要更保守，可改寫成「統計範圍限於歐盟會員國與設在歐盟的組織，台灣不在其中」。",
+        "報告自己有兩套數字：金錢動機 29.3%（第 7 頁執行摘要）對 29.2%（第 13 頁第 1 章）、網路間諜 5.9%（第 7 頁）對 6.3%（第 13 頁）。本篇只用 29.3% 並在正文與表格 caption 寫明出自執行摘要，沒有把差異寫進正文（unverified_or_excluded 第 5 條允許這個做法）。若站主希望正文點出這個內部不一致，要同時改 summary 第三句與 FAQ 第五題。",
+        "live_data_warnings 第 5 條把「vulnerability-lookup 的 CVE 統計」列為 ENISA 轉述的第三方數字。本輪逐字看過第 90 頁：腳註 627（vulnerability-lookup.org）掛在「未修補的老舊 IoT 與邊緣裝置」那一句，**48,000／22% 那一句沒有腳註**，新聞稿也是以 ENISA 自己的口吻寫。本篇因此照「報告另外統計了漏洞面」寫，沒有改成第三方轉述；若站主認為仍要歸因給 vulnerability-lookup，第 13 段要改寫。",
+        "第二段仍保留批次固定的查核日句（「這一篇的資料在 2026 年 9 月 23 日查核，讀的是……」，check_article.py 要求查核日出現在前兩段，4.7 十五篇同一個寫法）；其餘的查證流水帳本輪已清掉。",
+        "新聞稿「Additional resources」那一條的 href 仍是含個人資料夾名稱的本機檔案路徑（ENISA 的貼上失誤）。本輪同樣沒有引用、沒有抄錄那個字串到任何檔案或回報。"
+      ],
+      "coordinator_rulings": [
+        "台灣只寫一句中性轉述，歸給報告的 FIMI 章（報告自陳該章取自 EEAS 的 FIMI 報告）：台灣被列為中國相關敘事經常出現的題目之一，不做延伸，永遠不可以寫「報告沒有提到台灣」。",
+        "表格維持三列（動機／件數混軸），保留第三列的分類軸備註。",
+        "第二段的查核日句照批次格式保留，除此之外不留任何查證流水帳。"
+      ],
+      "verdict": "ok"
+    }
   }
 }
