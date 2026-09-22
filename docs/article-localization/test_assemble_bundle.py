@@ -68,9 +68,7 @@ def test_links_follow_publication_without_rewriting_code_or_sources():
         {"type": "link", "text": "External", "url": "https://example.org/zh-TW/docs"},
     ]
     immutable = copy.deepcopy(before)
-    result, changes = module.localize_links(
-        before, "ja", {"lesson-one": {"kind": "life"}}
-    )
+    result, changes = module.localize_links(before, "ja", {"lesson-one": {"kind": "life"}})
     assert before == immutable
     assert result["blocks"][1] == before["blocks"][1]
     assert result["sources"] == before["sources"]
@@ -146,17 +144,13 @@ def test_review_is_bound_to_document_and_asset_bytes(tmp_path):
     }
     for filename, content in data.items():
         (tmp_path / filename).write_text(json.dumps(content), encoding="utf-8")
-    binding = module.pipeline.bind_artifacts(
-        tmp_path, data["source.json"], "rendered", True
-    )
+    binding = module.pipeline.bind_artifacts(tmp_path, data["source.json"], "rendered", True)
     for filename in ["receipt.json", "review.json"]:
         data[filename].update(binding)
         (tmp_path / filename).write_text(json.dumps(data[filename]), encoding="utf-8")
     assert module.reviewed_document(tmp_path, article, "en")[0] == doc
     data["document.json"]["title"] = "Edited after review"
-    (tmp_path / "document.json").write_text(
-        json.dumps(data["document.json"]), encoding="utf-8"
-    )
+    (tmp_path / "document.json").write_text(json.dumps(data["document.json"]), encoding="utf-8")
     with pytest.raises(ValueError, match="staged artifact changed"):
         module.reviewed_document(tmp_path, article, "en")
 
@@ -196,15 +190,11 @@ def test_release_text_and_reviewed_svg_require_portable_lf_bytes(tmp_path):
 def test_large_or_duplicate_batch_is_refused_before_any_io(tmp_path):
     for slugs in (["same", "same"], [f"article-{i}" for i in range(21)], []):
         with pytest.raises(ValueError, match="one to twenty"):
-            module.assemble(
-                tmp_path / "missing.json", tmp_path, slugs, tmp_path / "output"
-            )
+            module.assemble(tmp_path / "missing.json", tmp_path, slugs, tmp_path / "output")
     assert not (tmp_path / "output").exists()
 
 
-def test_hub_requires_public_catalogue_lessons_even_without_body_links(
-    tmp_path, monkeypatch
-):
+def test_hub_requires_public_catalogue_lessons_even_without_body_links(tmp_path, monkeypatch):
     root = tmp_path / "apps/api/app/guides/series_data"
     root.mkdir(parents=True)
     (root / "gemini.json").write_text(
@@ -248,15 +238,11 @@ def test_hub_requires_public_catalogue_lessons_even_without_body_links(
         }
     )
     assert module.hub_requirements(packs, articles) == {
-        "gemini-guide": [
-            {"slug": "public-lesson", "locale": "en", "document_sha256": "a" * 64}
-        ],
+        "gemini-guide": [{"slug": "public-lesson", "locale": "en", "document_sha256": "a" * 64}],
     }
 
 
-def test_unchanged_reviewed_database_draft_is_selected_and_published(
-    tmp_path, monkeypatch
-):
+def test_unchanged_reviewed_database_draft_is_selected_and_published(tmp_path, monkeypatch):
     root = tmp_path / "repo"
     pack_path = root / "apps/api/app/guides/content/public-article.json"
     pack_path.parent.mkdir(parents=True)
@@ -298,14 +284,10 @@ def test_unchanged_reviewed_database_draft_is_selected_and_published(
                 "target_locales": ["en"],
                 "batch_locales": ["en"],
                 "locale_provenance": {
-                    locale: (
-                        "database-draft" if locale == "en" else "database-published"
-                    )
+                    locale: ("database-draft" if locale == "en" else "database-published")
                     for locale in module.LOCALES
                 },
-                "published_locales": [
-                    locale for locale in module.LOCALES if locale != "en"
-                ],
+                "published_locales": [locale for locale in module.LOCALES if locale != "en"],
                 "database": {"id": "article-id", "version": 7, "locales": {}},
                 "assets": [],
             }
@@ -337,6 +319,82 @@ def test_unchanged_reviewed_database_draft_is_selected_and_published(
         (tmp_path / "bundle/packs/public-article.json").read_text(encoding="utf-8")
     )
     assert assembled["locales"]["en"] == locale_documents["en"]
+
+    original = copy.deepcopy(locale_documents["zh-TW"])
+    corrected = copy.deepcopy(original)
+    corrected["title"] = "Reviewed source correction"
+    corrected["sources"].append(
+        {
+            "title": "Correction evidence",
+            "url": "https://example.org/correction",
+            "checked_on": "2026-09-22",
+        }
+    )
+    article = baseline["articles"][0]
+    article["source_document"] = corrected
+    article["source_sha256"] = module.digest(corrected)
+    article["locale_documents"]["zh-TW"] = corrected
+    old_hash = module.digest(original)
+    article["database"]["locales"]["zh-TW"] = {
+        "id": "locale-id",
+        "version": 6,
+        "published_version": 6,
+        "published_sha256": old_hash,
+        "draft_sha256": old_hash,
+    }
+    pack["locales"]["zh-TW"] = corrected
+    pack_path.write_text(json.dumps(pack), encoding="utf-8")
+    article["pack_sha256"] = module.sha(pack_path)
+    baseline_path.write_text(json.dumps(baseline), encoding="utf-8")
+    review = {
+        "schema_version": 1,
+        "approved": True,
+        "reviewer": "independent-editor",
+        "reason": "Verified source correction",
+        "evidence_sha256": "e" * 64,
+        "slug": "public-article",
+        "article_id": "article-id",
+        "article_version": 7,
+        "locale": "zh-TW",
+        "locale_version": 6,
+        "published_version": 6,
+        "published_sha256": old_hash,
+        "draft_sha256": old_hash,
+        "corrected_sha256": module.digest(corrected),
+        "old_document": original,
+        "changes": [
+            {"pointer": "/title", "before": original["title"], "after": corrected["title"]},
+            {"pointer": "/sources", "before": original["sources"], "after": corrected["sources"]},
+        ],
+        "assets": [],
+    }
+    review_path = tmp_path / "independent-source-review.json"
+    review_path.write_text(json.dumps(review), encoding="utf-8")
+    with pytest.raises(ValueError, match="without correction review"):
+        module.assemble(baseline_path, work, ["public-article"], tmp_path / "unreviewed-bundle")
+    assert not (tmp_path / "unreviewed-bundle").exists()
+    correction_manifest = module.assemble(
+        baseline_path,
+        work,
+        ["public-article"],
+        tmp_path / "corrected-bundle",
+        source_correction_reviews=[review_path],
+    )
+    entry = correction_manifest["articles"][0]
+    assert entry["locales"] == ["zh-TW", "en"]
+    assert entry["publish_locales"] == ["zh-TW", "en"]
+    assert entry["source_corrections"][0]["review_sha256"] == module.sha(review_path)
+    assert (
+        tmp_path / "corrected-bundle" / entry["source_corrections"][0]["review_path"]
+    ).read_bytes() == review_path.read_bytes()
+    overlapping = copy.deepcopy(review)
+    overlapping["changes"].append(
+        {"pointer": "/sources/0/title", "before": "Official source", "after": "Edited"}
+    )
+    with pytest.raises(ValueError, match="Overlapping"):
+        module.source_correction.verify_review(
+            overlapping, article, "zh-TW", corrected, {}
+        )
 
 
 def test_stale_baseline_without_split_targets_is_refused():

@@ -58,9 +58,7 @@ def owner(monkeypatch, actor):
     return actor
 
 
-async def case(
-    tmp_path, database, owner, *, new=False, images=False, order=100, slug="test-guide"
-):
+async def case(tmp_path, database, owner, *, new=False, images=False, order=100, slug="test-guide"):
     document = driver.normalized(
         guides.document(title="Original title", description="Original description")
     )
@@ -158,9 +156,7 @@ async def case(
                 "existing_locales": ["zh-TW"],
                 "missing_locales": [x for x in driver.LOCALES if x != "zh-TW"],
                 "published_locales": [] if new else ["zh-TW"],
-                "publication_locales": []
-                if new
-                else [x for x in driver.LOCALES if x != "zh-TW"],
+                "publication_locales": [] if new else [x for x in driver.LOCALES if x != "zh-TW"],
             }
         ],
     }
@@ -183,9 +179,7 @@ async def case(
             asset = f"public/guides/{slug}/{name}"
             (root / asset).parent.mkdir(parents=True, exist_ok=True)
             (root / asset).write_bytes(b"Reviewed image fixture")
-            assets.append(
-                {"path": asset, "sha256": driver.sha((root / asset).read_bytes())}
-            )
+            assets.append({"path": asset, "sha256": driver.sha((root / asset).read_bytes())})
     manifest = {
         "schema_version": 1,
         "baseline_sha256": baseline_sha,
@@ -233,6 +227,65 @@ def replace_bundle(bundle, *, manifest=None, baseline=None, pack=None):
     return replaced
 
 
+def reviewed_source_correction(bundle, *, approved=True, draft_hash=None):
+    """Build one exact, portable old-to-new zh-TW correction fixture."""
+    baseline = copy.deepcopy(bundle.baseline_path.read_text("utf-8"))
+    baseline = json.loads(baseline)
+    article = baseline["articles"][0]
+    original = article["locale_documents"]["zh-TW"]
+    corrected = copy.deepcopy(original)
+    corrected["title"] = "Corrected, independently reviewed source title"
+    article["source_document"] = corrected
+    article["source_sha256"] = driver.document_hash(corrected)
+    article["locale_documents"]["zh-TW"] = corrected
+    if draft_hash is not None:
+        article["database"]["locales"]["zh-TW"]["draft_sha256"] = draft_hash
+    pack = json.loads((bundle.root / bundle.entries[0]["pack_path"]).read_text("utf-8"))
+    pack["locales"]["zh-TW"] = corrected
+    pinned = article["database"]
+    old = pinned["locales"]["zh-TW"]
+    review = {
+        "schema_version": 1,
+        "approved": approved,
+        "reviewer": "independent-editor",
+        "reason": "Verified exact original title correction",
+        "evidence_sha256": "e" * 64,
+        "slug": article["slug"],
+        "article_id": pinned["id"],
+        "article_version": pinned["version"],
+        "locale": "zh-TW",
+        "locale_version": old["version"],
+        "published_version": old["published_version"],
+        "published_sha256": old["published_sha256"],
+        "draft_sha256": old["draft_sha256"],
+        "corrected_sha256": driver.document_hash(corrected),
+        "old_document": original,
+        "changes": [
+            {"pointer": "/title", "before": original["title"], "after": corrected["title"]}
+        ],
+        "assets": [],
+    }
+    manifest = copy.deepcopy(bundle.manifest)
+    entry = manifest["articles"][0]
+    entry["locales"] = ["zh-TW", "en"]
+    entry["publish_locales"] = ["zh-TW", "en"]
+    review_path = f"reviews/{article['slug']}-zh-TW.json"
+    review_sha = write_json(bundle.root / review_path, review)
+    entry["source_corrections"] = [
+        {
+            "locale": "zh-TW",
+            "from_published_sha256": old["published_sha256"],
+            "to_document_sha256": review["corrected_sha256"],
+            "review_path": review_path,
+            "review_sha256": review_sha,
+        }
+    ]
+    manifest["baseline_sha256"] = write_json(bundle.baseline_path, baseline)
+    entry["pack_sha256"] = write_json(bundle.root / entry["pack_path"], pack)
+    manifest_sha = write_json(bundle.root / "release-manifest.json", manifest)
+    return baseline, pack, review, manifest, manifest_sha
+
+
 async def run(bundle, path, database, phase, actor_id=None):
     with driver.journal_lock(path.parent):
         return await driver.execute_phase(
@@ -252,9 +305,7 @@ async def state(database, slug="test-guide"):
 
 async def revision_count(database):
     async with database() as session:
-        return await session.scalar(
-            select(func.count()).select_from(GuideArticleRevision)
-        )
+        return await session.scalar(select(func.count()).select_from(GuideArticleRevision))
 
 
 async def test_repository_only_five_drafts_never_become_public_and_order_survives(
@@ -287,11 +338,7 @@ async def test_only_authorized_missing_language_publishes_existing_text_is_untou
     await run(bundle, path, database, "publish-articles")
     after = await state(database)
     assert set(after["locales"]) == {"zh-TW", "en"}
-    assert (
-        after["locales"]["en"]["version"]
-        == after["locales"]["en"]["published_version"]
-        == 2
-    )
+    assert after["locales"]["en"]["version"] == after["locales"]["en"]["published_version"] == 2
     assert after["locales"]["zh-TW"] == before["test-guide"]["locales"]["zh-TW"]
     assert {k: v for k, v in after.items() if k != "locales"} == {
         k: v for k, v in before["test-guide"].items() if k != "locales"
@@ -301,6 +348,81 @@ async def test_only_authorized_missing_language_publishes_existing_text_is_untou
     assert await revision_count(database) == 4
 
 
+async def test_reviewed_source_correction_publishes_once_with_missing_translation(
+    tmp_path, database, owner
+):
+    original, path, before = await case(tmp_path, database, owner)
+    _, _, review, _, manifest_sha = reviewed_source_correction(original)
+    bundle = driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    deploy_bundle(bundle)
+    assert (await run(bundle, path, database, "dry-run"))["status"] == "read_only"
+    await run(bundle, path, database, "drafts")
+    mid = await state(database)
+    assert (
+        mid["locales"]["zh-TW"]["published_sha256"]
+        == before["test-guide"]["locales"]["zh-TW"]["published_sha256"]
+    )
+    assert mid["locales"]["zh-TW"]["draft_sha256"] == review["corrected_sha256"]
+    await run(bundle, path, database, "publish-articles")
+    after = await state(database)
+    assert after["locales"]["zh-TW"]["published_sha256"] == review["corrected_sha256"]
+    assert after["locales"]["en"]["published_version"] is not None
+    revisions = await revision_count(database)
+    await run(bundle, path, database, "drafts")
+    await run(bundle, path, database, "publish-articles")
+    assert await state(database) == after
+    assert await revision_count(database) == revisions
+
+
+@pytest.mark.parametrize("tamper", ["absent", "unapproved", "unlisted_text", "draft"])
+async def test_source_correction_requires_exact_clean_review(tmp_path, database, owner, tamper):
+    original, _, before = await case(tmp_path, database, owner)
+    _, pack, _, manifest, _ = reviewed_source_correction(
+        original,
+        approved=tamper != "unapproved",
+        draft_hash="f" * 64 if tamper == "draft" else None,
+    )
+    entry = manifest["articles"][0]
+    if tamper == "absent":
+        del entry["source_corrections"]
+    elif tamper == "unlisted_text":
+        pack["locales"]["zh-TW"]["description"] = "Unreviewed description"
+        entry["pack_sha256"] = write_json(original.root / entry["pack_path"], pack)
+    manifest_sha = write_json(original.root / "release-manifest.json", manifest)
+    with pytest.raises((driver.Refused, ValueError)):
+        driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    assert await state(database) == before["test-guide"]
+
+
+async def test_reviewed_source_correction_stops_on_intervening_editor_draft(
+    tmp_path, database, owner
+):
+    original, path, before = await case(tmp_path, database, owner)
+    _, _, _, _, manifest_sha = reviewed_source_correction(original)
+    bundle = driver.verify_bundle(original.root, original.baseline_path, manifest_sha)
+    deploy_bundle(bundle)
+    await run(bundle, path, database, "dry-run")
+    article_id = UUID(before["test-guide"]["id"])
+    async with database() as session:
+        changed = bundle.packs["test-guide"].locales["zh-TW"].model_copy(deep=True)
+        changed.title = "Another editor's draft"
+        await admin_service.save_draft(
+            session,
+            owner,
+            article_id,
+            "zh-TW",
+            DraftWrite(expected_version=2, document=changed),
+        )
+    with pytest.raises(driver.Refused, match="Concurrent/unexpected change"):
+        await run(bundle, path, database, "drafts")
+    after = await state(database)
+    assert (
+        after["locales"]["zh-TW"]["draft_sha256"]
+        != before["test-guide"]["locales"]["zh-TW"]["draft_sha256"]
+    )
+    assert "en" not in after["locales"]
+
+
 async def test_exact_reviewed_existing_unpublished_draft_is_published_without_overwrite(
     tmp_path, database, owner
 ):
@@ -308,9 +430,7 @@ async def test_exact_reviewed_existing_unpublished_draft_is_published_without_ov
     article_id = UUID(before["test-guide"]["id"])
     reviewed = bundle.packs["test-guide"].locales["en"]
     async with database() as session:
-        await admin_service.start_translation(
-            session, owner, article_id, "en", reviewed
-        )
+        await admin_service.start_translation(session, owner, article_id, "en", reviewed)
     actual = await state(database)
     baseline = json.loads(bundle.baseline_path.read_text("utf-8"))
     article = baseline["articles"][0]
@@ -355,9 +475,7 @@ async def test_deployed_hash_mismatch_stops_before_database_write(
         changed = deployed / "apps/web" / bundle.manifest["assets"][0]["path"]
     changed.write_bytes(b"unreviewed deployed bytes")
     with pytest.raises(driver.Refused, match="deployed .*SHA256 mismatch"):
-        await run(
-            bundle, path, database, "drafts" if timing == "before-write" else "dry-run"
-        )
+        await run(bundle, path, database, "drafts" if timing == "before-write" else "dry-run")
     assert await state(database) == before["test-guide"]
 
 
@@ -392,9 +510,7 @@ async def test_forged_journal_cannot_authorize_work(tmp_path, database, owner, f
     assert await state(database) == before["test-guide"]
 
 
-async def test_forged_journal_cannot_publish_repository_only_article(
-    tmp_path, database, owner
-):
+async def test_forged_journal_cannot_publish_repository_only_article(tmp_path, database, owner):
     bundle, path, _ = await case(tmp_path, database, owner, new=True)
     await run(bundle, path, database, "dry-run")
     journal = json.loads(path.read_text("utf-8"))
@@ -430,9 +546,7 @@ async def test_deployed_pack_is_rechecked_before_each_database_write(
         await original(*args, **kwargs)
         calls += 1
         if calls == 1:
-            deployed = (
-                bundle.root / "deployed/apps/api/app/guides/content/test-guide.json"
-            )
+            deployed = bundle.root / "deployed/apps/api/app/guides/content/test-guide.json"
             deployed.write_bytes(b"changed between writes")
 
     monkeypatch.setattr(driver, "write_operation", change_install_after_first_write)
@@ -464,9 +578,7 @@ def test_cli_requires_explicit_deployed_root(tmp_path, capsys):
 
 
 @pytest.mark.parametrize("timing", ["before_dry_run", "between_phases"])
-@pytest.mark.parametrize(
-    "change", ["version", "source_hash", "hidden", "expired", "locale_added"]
-)
+@pytest.mark.parametrize("change", ["version", "source_hash", "hidden", "expired", "locale_added"])
 async def test_source_version_visibility_drift_refuses_without_partial_language_creation(
     tmp_path,
     database,
@@ -492,9 +604,7 @@ async def test_source_version_visibility_drift_refuses_without_partial_language_
             )
         elif change == "source_hash":
             # Simulate corruption/legacy writes which did not advance the optimistic version.
-            changed = (
-                bundle.packs["test-guide"].locales["zh-TW"].model_dump(mode="json")
-            )
+            changed = bundle.packs["test-guide"].locales["zh-TW"].model_dump(mode="json")
             changed["title"] = "Changed source at same version"
             await session.execute(update(GuideArticleLocale).values(draft_json=changed))
             await session.commit()
@@ -581,9 +691,7 @@ async def test_lost_response_after_commit_reconciles_without_a_second_revision(
     after = await state(database)
     for locale, row in written["locales"].items():
         assert after["locales"][locale] == row
-    assert await revision_count(database) == (
-        5 if new else 4 if action == "publish_locale" else 3
-    )
+    assert await revision_count(database) == (5 if new else 4 if action == "publish_locale" else 3)
 
 
 async def test_failure_before_commit_retries_once_with_the_same_durable_intent(
@@ -648,9 +756,7 @@ async def test_existing_image_src_only_update_preserves_text_and_public_body_unt
     pack["locales"]["zh-TW"]["hero"]["src"] = "/guides/test-guide/hero-zh-tw.jpg"
     asset = "public/guides/test-guide/hero-zh-tw.jpg"
     (bundle.root / asset).write_bytes(b"Reviewed localized hero")
-    manifest["assets"] = [
-        row for row in manifest["assets"] if not row["path"].endswith("hero.jpg")
-    ]
+    manifest["assets"] = [row for row in manifest["assets"] if not row["path"].endswith("hero.jpg")]
     manifest["assets"].append(
         {"path": asset, "sha256": driver.sha((bundle.root / asset).read_bytes())}
     )
@@ -658,18 +764,12 @@ async def test_existing_image_src_only_update_preserves_text_and_public_body_unt
     await run(bundle, path, database, "dry-run")
     await run(bundle, path, database, "drafts")
     draft = (await state(database))["locales"]["zh-TW"]
-    assert (
-        draft["published_sha256"]
-        == before["test-guide"]["locales"]["zh-TW"]["published_sha256"]
-    )
+    assert draft["published_sha256"] == before["test-guide"]["locales"]["zh-TW"]["published_sha256"]
     assert draft["draft_sha256"] != draft["published_sha256"]
     await run(bundle, path, database, "publish-articles")
     after = (await state(database))["locales"]["zh-TW"]
     assert after["published_sha256"] == after["draft_sha256"]
-    assert (
-        after["published_at"]
-        == before["test-guide"]["locales"]["zh-TW"]["published_at"]
-    )
+    assert after["published_at"] == before["test-guide"]["locales"]["zh-TW"]["published_at"]
 
 
 async def test_existing_unpublished_edits_are_preserved_even_when_the_baseline_knows_them(
@@ -684,9 +784,7 @@ async def test_existing_unpublished_edits_are_preserved_even_when_the_baseline_k
             owner,
             UUID(before["test-guide"]["id"]),
             "zh-TW",
-            DraftWrite(
-                expected_version=2, document=GuideDocument.model_validate(changed)
-            ),
+            DraftWrite(expected_version=2, document=GuideDocument.model_validate(changed)),
         )
     actual = await state(database)
     baseline = json.loads(bundle.baseline_path.read_text("utf-8"))
@@ -712,9 +810,7 @@ async def test_publish_phase_order_actor_pin_and_changed_bundle_are_enforced(
         await run(bundle, path, database, "publish-articles")
     with pytest.raises(driver.Refused, match="actor is pinned"):
         await run(bundle, path, database, "drafts", actor_id=uuid4())
-    (bundle.root / bundle.manifest["articles"][0]["pack_path"]).write_text(
-        "{}", encoding="utf-8"
-    )
+    (bundle.root / bundle.manifest["articles"][0]["pack_path"]).write_text("{}", encoding="utf-8")
     with pytest.raises(driver.Refused, match="pack SHA256"):
         await run(bundle, path, database, "drafts")
 
@@ -763,30 +859,22 @@ async def test_same_stem_svg_source_is_allowed_but_unrelated_asset_is_refused(
         replace_bundle(bundle, manifest=manifest)
 
 
-async def test_deactivated_owner_stops_resume_without_exposing_identity(
-    tmp_path, database, owner
-):
+async def test_deactivated_owner_stops_resume_without_exposing_identity(tmp_path, database, owner):
     bundle, path, _ = await case(tmp_path, database, owner)
     await run(bundle, path, database, "dry-run")
     async with database() as session:
-        await session.execute(
-            update(User).where(User.id == owner.id).values(is_active=False)
-        )
+        await session.execute(update(User).where(User.id == owner.id).values(is_active=False))
         await session.commit()
     with pytest.raises(driver.Refused, match="No active configured owner") as failure:
         await run(bundle, path, database, "drafts")
     assert owner.email not in str(failure.value)
 
 
-async def test_hub_waits_for_exact_public_dependency_across_bundles(
-    tmp_path, database, owner
-):
+async def test_hub_waits_for_exact_public_dependency_across_bundles(tmp_path, database, owner):
     dependency, dep_path, _ = await case(tmp_path, database, owner, slug="part-one")
     bundle, path, _ = await case(tmp_path, database, owner, slug="series-hub")
     baseline = json.loads(bundle.baseline_path.read_text("utf-8"))
-    baseline["articles"].extend(
-        json.loads(dependency.baseline_path.read_text("utf-8"))["articles"]
-    )
+    baseline["articles"].extend(json.loads(dependency.baseline_path.read_text("utf-8"))["articles"])
     manifest = copy.deepcopy(bundle.manifest)
     manifest["articles"][0].update(
         {
@@ -796,9 +884,7 @@ async def test_hub_waits_for_exact_public_dependency_across_bundles(
                     "slug": "part-one",
                     "locale": "en",
                     "document_sha256": driver.document_hash(
-                        dependency.packs["part-one"]
-                        .locales["en"]
-                        .model_dump(mode="json")
+                        dependency.packs["part-one"].locales["en"].model_dump(mode="json")
                     ),
                 }
             ],
@@ -809,15 +895,11 @@ async def test_hub_waits_for_exact_public_dependency_across_bundles(
         await run(bundle, path, database, phase)
     with pytest.raises(driver.Refused, match="dependency is not published"):
         await run(bundle, path, database, "publish-hubs")
-    assert (await state(database, "series-hub"))["locales"]["en"][
-        "published_version"
-    ] is None
+    assert (await state(database, "series-hub"))["locales"]["en"]["published_version"] is None
     for phase in ["dry-run", "drafts", "publish-articles"]:
         await run(dependency, dep_path, database, phase)
     await run(bundle, path, database, "publish-hubs")
-    assert (await state(database, "series-hub"))["locales"]["en"][
-        "published_version"
-    ] == 2
+    assert (await state(database, "series-hub"))["locales"]["en"]["published_version"] == 2
 
 
 @pytest.mark.parametrize(
@@ -843,6 +925,4 @@ async def test_manifest_refuses_unapproved_scope_before_any_write(
     else:
         manifest["articles"] *= 21
     with pytest.raises(driver.Refused):
-        replace_bundle(
-            bundle, manifest=manifest, pack=None if violation == "unsafe_path" else pack
-        )
+        replace_bundle(bundle, manifest=manifest, pack=None if violation == "unsafe_path" else pack)
