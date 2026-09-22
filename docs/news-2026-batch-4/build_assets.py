@@ -1091,6 +1091,129 @@ def _sec_crypto_fraud_patterns(accent: str) -> str:
     return b
 
 
+# --- batch 4.7: the news since 2026-09-20 ---------------------------------------------------
+
+
+def _openai_math_advisory(accent: str) -> str:
+    # A dashed boundary on the left holds nine small circles -- the advisory group's own
+    # initial roster -- and one arrow leaves the boundary for the model on the right; nothing
+    # runs back the other way, because the group advises and the model's results are its own.
+    other = second_colour(accent)
+    b = f'<circle cx="460" cy="410" r="220" fill="none" stroke="{other}" stroke-width="8" stroke-dasharray="18 14"/>'
+    for i in range(9):
+        angle = math.radians(i * 40 - 90)
+        b += circle(round(460 + 150 * math.cos(angle)), round(410 + 150 * math.sin(angle)), 26, "#FFFFFF", other)
+    b += arrow(700, 1010, 410, other)
+    return b + circle(1180, 410, 170, "#FFFFFF", accent) + circle(1180, 410, 70, PALE, accent)
+
+
+def _anthropic_life_sciences_verification(accent: str) -> str:
+    # One shield, split down the middle: the left half's fence lines run unbroken -- the
+    # protections that do not change -- and two of the right half's lines have a gap cut into
+    # them, each gap with a small block standing beside it for the verified team let through.
+    other = second_colour(accent)
+    b = ward(800, 420, 1.1, other)
+    b += line(800, 210, 800, 660, INK, 8)
+    gaps = (1, 3)
+    for i in range(5):
+        y = 268 + i * 78
+        b += line(650, y, 788, y, accent, 10)
+        if i in gaps:
+            b += line(812, y, 862, y, accent, 10) + line(918, y, 950, y, accent, 10)
+        else:
+            b += line(812, y, 950, y, accent, 10)
+    for i in gaps:
+        y = 268 + i * 78
+        b += rect(970, y - 28, 56, 56, "#FFFFFF", other, 12)
+    return b
+
+
+def _openai_frontier_standards(accent: str) -> str:
+    # A hexagon node with two paths out: a dashed one to a ring of dots at uneven radii, the
+    # national standards still unmatched, and a solid one to a box split by one thick line, the
+    # boundary the article says these standards do not cross.
+    other = second_colour(accent)
+    b = hexagon(420, 430, 92, accent, PALE) + circle(420, 430, 30, "#FFFFFF", accent)
+    b += dashed(555, 385, 830, 305, other, 10)
+    for i in range(7):
+        angle = math.radians(i * 51 - 90)
+        radius = 90 + (i % 3) * 24
+        b += circle(round(960 + radius * math.cos(angle)), round(300 + radius * math.sin(angle)), 22, "#FFFFFF", other)
+    b += line(555, 475, 855, 560, accent, 10)
+    b += rect(870, 480, 320, 170, "#FFFFFF", accent, 20)
+    return b + line(900, 565, 1160, 565, INK, 14)
+
+
+def _openai_academy_paths(accent: str) -> str:
+    # One fork point, four spokes, four plain figures at the ends: a person for the general
+    # path, a code bracket for developers, a briefcase for managers, a book for teachers and
+    # students -- four roles, four destinations, nothing that names a course.
+    other = second_colour(accent)
+    b = circle(800, 430, 24, INK, "none")
+    for dx, dy in ((-1, -1), (1, -1), (-1, 1), (1, 1)):
+        b += line(800, 430, 800 + dx * 260, 430 + dy * 190, other, 10)
+    b += person(540, 240, accent)
+    b += rect(985, 205, 150, 110, "#FFFFFF", accent, 16)
+    b += f'<path d="M1010 260 L985 285 L1010 310" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += f'<path d="M1110 260 L1135 285 L1110 310" fill="none" stroke="{accent}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += rect(500, 570, 120, 90, "#FFFFFF", other, 14)
+    b += f'<path d="M530 570 q0 -34 30 -34 q30 0 30 34" fill="none" stroke="{other}" stroke-width="10"/>'
+    b += rect(985, 575, 100, 120, "#FFFFFF", other, 10) + rect(1095, 575, 100, 120, "#FFFFFF", other, 10) + line(1095, 575, 1095, 695, other, 6)
+    return b + line(1010, 615, 1080, 615, "#C4CCCC", 8) + line(1120, 615, 1190, 615, "#C4CCCC", 8)
+
+
+def _meta_one_subscription(accent: str) -> str:
+    # One steady circle for the core that stays free, and three squares growing step by step
+    # beside it for the three paid tiers stacked on top of it.
+    other = second_colour(accent)
+    b = circle(360, 430, 170, "#FFFFFF", accent) + circle(360, 430, 80, PALE, accent)
+    x = 640
+    for i, s in enumerate((110, 165, 230)):
+        b += rect(x, 430 - s / 2, s, s, "#FFFFFF" if i % 2 else PALE, other, 16)
+        x += s + 40
+    return b
+
+
+def _googlebook_launch(accent: str) -> str:
+    # A laptop outline on the left; on the right, one solid mark for the US launch date and one
+    # unbroken blob standing in for the markets that follow it -- deliberately not a row of
+    # separate icons the eye could count -- with Taiwan set apart as a lone dashed outline,
+    # left blank because the launch list does not reach it.
+    other = second_colour(accent)
+    b = monitor(200, 260, 460, 300)
+    b += circle(950, 340, 58, "#FFFFFF", accent) + circle(950, 340, 20, accent, "none")
+    b += line(1010, 340, 1090, 370, "#C4CCCC", 8)
+    b += f'<path d="M1090 320 Q1160 260 1250 290 Q1340 315 1330 400 Q1320 475 1230 495 Q1140 515 1090 450 Q1050 390 1090 320 Z" fill="#FFFFFF" stroke="{other}" stroke-width="8" stroke-linejoin="round"/>'
+    return b + f'<circle cx="1350" cy="610" r="56" fill="none" stroke="{INK}" stroke-width="8" stroke-dasharray="16 12"/>'
+
+
+def _taiwan_deposit_token_pilot(accent: str) -> str:
+    # A passbook on the left, a folder for the application in the middle, and a hexagon token
+    # on the right -- the folder sits between the two, because a filed application is all that
+    # has actually happened so far.
+    other = second_colour(accent)
+    b = rect(220, 250, 230, 340, "#FFFFFF", other, 20) + line(280, 250, 280, 590, "#C4CCCC", 6)
+    b += "".join(line(320, 310 + i * 55, 420, 310 + i * 55, "#C4CCCC", 12) for i in range(5))
+    b += rect(650, 360, 230, 190, "#FFFFFF", accent, 18) + rect(650, 330, 110, 45, "#FFFFFF", accent, 14)
+    b += line(690, 430, 830, 430, accent, 8) + line(690, 480, 800, 480, accent, 8)
+    b += hexagon(1220, 440, 130, other, PALE) + hexagon(1220, 440, 70, other, "#FFFFFF")
+    return b + line(880, 450, 1080, 450, "#C4CCCC", 8)
+
+
+def _sec_innovation_exemption(accent: str) -> str:
+    # A dashed doorway open only a crack, with a few hollow blocks waiting behind it -- venues
+    # that could apply, none open yet -- and above the frame a dashed line running out to the
+    # date the exemption itself expires.
+    other = second_colour(accent)
+    b = f'<rect x="620" y="230" width="360" height="420" rx="18" fill="none" stroke="{INK}" stroke-width="8" stroke-dasharray="20 14"/>'
+    b += f'<rect x="628" y="238" width="150" height="404" rx="14" fill="{PALE}" stroke="{other}" stroke-width="8" stroke-dasharray="18 14"/>'
+    b += f'<rect x="850" y="238" width="102" height="404" rx="14" fill="{PALE}" stroke="{other}" stroke-width="8" stroke-dasharray="18 14"/>'
+    for x, s in ((1050, 90), (1180, 110), (1330, 80)):
+        b += f'<rect x="{x}" y="{560 - s}" width="{s}" height="{s}" rx="14" fill="#FFFFFF" stroke="{accent}" stroke-width="6" stroke-dasharray="14 10"/>'
+    b += dashed(800, 200, 1380, 200, accent, 10)
+    return b + circle(1380, 200, 16, accent, "none")
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -1159,6 +1282,15 @@ _DRAWINGS = {
     "crypto-news-occ-three-trust-charters-20260918": _occ_three_trust_charters,
     "crypto-news-eba-third-party-risk-20260918": _eba_third_party_risk,
     "crypto-news-sec-crypto-fraud-patterns-20260918": _sec_crypto_fraud_patterns,
+    # 4.7
+    "ai-news-openai-math-advisory-20260921": _openai_math_advisory,
+    "ai-news-openai-frontier-standards-20260921": _openai_frontier_standards,
+    "ai-news-anthropic-life-sciences-verification-20260917": _anthropic_life_sciences_verification,
+    "ai-news-meta-one-subscription-20260915": _meta_one_subscription,
+    "ai-news-openai-academy-paths-20260921": _openai_academy_paths,
+    "tech-news-googlebook-launch-20260921": _googlebook_launch,
+    "crypto-news-taiwan-deposit-token-pilot-20260922": _taiwan_deposit_token_pilot,
+    "crypto-news-sec-innovation-exemption-20260917": _sec_innovation_exemption,
 }
 
 
