@@ -1,0 +1,523 @@
+{
+  "slug": "tech-news-enisa-threat-landscape-20260922",
+  "vertical": "tech",
+  "display_order": 325,
+  "event_date": "2026-09-22",
+  "event_date_basis": "新聞稿頁面自印「Press Release / Sep 22,2026」，同一個區塊的 HTML 標籤是 <time datetime=\"2026-09-22T13:02:38+03:00\">；+03:00 是雅典夏令時間，換算成台北時間是 2026-09-22 18:02:38，仍是同一天。13:02:38 不是 00:00 或 16:00 這類整點排程佔位時刻，所以不套用 DELTA-4-5 第 5 條與 DELTA-4-6 第 7 條的「佔位時刻不換算」判例。出版頁另外自印「Publication date: September 22, 2026」，報告 PDF 每一頁的頁首只印到月份（TLP:CLEAR | September 2026），封面印 SEPTEMBER 2026，沒有更細的日期可以推翻上面兩處。新聞稿頁沒有 dateModified，也沒有 JSON-LD。三處一致，事件日定為 2026-09-22（台北），與 slug 尾碼、news_date 相同。注意：報告名稱是「2026」，但它統計的資料年份是 2025 年——名稱年份與資料年份不可互換，見 must_not_write 第 1 條。",
+  "title": "ENISA 公布 2026 威脅全景報告：統計的是 2025 一整年的事件",
+  "title_candidates": [
+    "ENISA 公布 2026 威脅全景報告：統計的是 2025 一整年的事件",
+    "ENISA 威脅全景 2026 出爐：8,257 起事件、資料年份是 2025",
+    "歐盟 ENISA 發布 2026 威脅全景：報告名稱寫 2026，數字全來自 2025"
+  ],
+  "summary": "2026 年 9 月 22 日，歐盟網路安全局（ENISA）發布《ENISA Threat Landscape 2026》報告與同日的新聞稿。這一版最需要先講清楚的是年份：報告名稱寫 2026，但它分析的是 2025 年 1 月 1 日到 12 月 31 日之間的事件，共 8,257 起，資料來自公開來源、歐盟會員國匿名分享，以及 ENISA Cyber Partnership Programme 的成員。新聞稿的主軸是「數位相依關係擴大了攻擊面」：供應鏈與第三方服務被鎖定，一次入侵就可能擴散到下游。新聞稿裡最容易被讀錯的一句是「60% 利用漏洞」——它的分母不是全部入侵，而是 ENISA 判定得出入侵途徑的那一小部分未授權存取事件（新聞稿寫 5%，報告寫 5.2%，對應的比例是 60.4%）。其餘重點：以件數看，低衝擊的 DDoS 占 51.3%，但短期衝擊最大的是勒索軟體等金錢動機事件；公共行政仍是被鎖定最多的部門（31.8%），其中 81.8% 是意識形態驅動的 DDoS；2025 年新發布的 CVE 超過 4.8 萬個，比前一年增加 22%；ENISA 評估新興 AI 模型會愈來愈常被用來支援惡意行動，但 2025 年觀察到的多半仍是輔助角色。這份報告是情勢分析，不是法規，沒有替任何人新增義務，範圍也只涵蓋歐盟會員國與設在歐盟的組織，全文沒有提到台灣。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "ENISA press release: Exploring the evolution of the cyber threat landscape: How dependencies weaken our digital resilience",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "publisher": "ENISA（European Union Agency for Cybersecurity）",
+      "fetched_at": "2026-09-23T00:48:10+08:00",
+      "http_status": 200,
+      "bytes": 62053,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Across incidents of unauthorised access for which ENISA was able to identify an intrusion vector (5%), 60% were seen leveraging a vulnerability."
+    },
+    {
+      "title": "ENISA Threat Landscape 2026（出版品頁，印出出版日期並提供報告 PDF 下載連結）",
+      "url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026",
+      "publisher": "ENISA（European Union Agency for Cybersecurity）",
+      "fetched_at": "2026-09-23T00:48:57+08:00",
+      "http_status": 200,
+      "bytes": 52427,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "To shape our understanding of the cyber threat landscape and the dynamics at work, ENISA collected and analysed incidents and events observed from 1 January to 31 December 2025 for this new edition of the Threat Landscape."
+    },
+    {
+      "title": "ENISA Threat Landscape 2026（報告全文 PDF，101 頁，TLP:CLEAR，ISBN 978-92-9204-807-5）",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "publisher": "ENISA（European Union Agency for Cybersecurity）",
+      "fetched_at": "2026-09-23T00:49:28+08:00",
+      "http_status": 200,
+      "bytes": 8377315,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Across incidents of unauthorised access for which ENISA was able to identify an intrusion vector (5.2%), 60.4% were seen leveraging a vulnerability, while misconfiguration and accidental exposure remain a concern (20.7%)."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-23（台北）00:48–00:49 逐條抓取，同一主機之間間隔 2 秒，指令一律是 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`；請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的姓名、email 或其他個人資料。\n(1) 新聞稿：HTTP 200、62,053 bytes、0 次轉址，bytes 與 ASSIGNMENTS.md 的探索紀錄一位元組不差。body 是完整正文（Press Release 標記、Sep 22,2026、Lepassaar 的引述、五個小標、Analysis by threat categories 的五條清單都在）。\n(2) 出版品頁：HTTP 200、52,427 bytes、0 次轉址。這一頁是報告 PDF 的唯一官方入口，PDF 連結是從這一頁的 `btn-download-file` 與封面圖連結讀到的，不是猜的。\n(3) 報告 PDF：從 (2) 的連結取得，HTTP 200、8,377,315 bytes、Content-Type application/pdf、檔頭是 `%PDF-1.7`。用系統 `python`（pypdf 6.16.2，venv 裡沒有 pypdf）抽文字，101 頁、250,702 字元，存成 etl2026.txt（255,621 bytes）。\n原始 body 全部存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\tech-news-enisa-threat-landscape-20260922\\（press.html、pub.html、etl2026.pdf、etl2026.txt），查核代理可直接 diff。\n**verbatim_quote 的比對慣例**：HTML 來源先移除 `<!-- -->` 註解再 html.unescape，本紀錄所有 press/pub 引文都是處理後 body 的連續子字串（已逐條用 _tools/verify_quotes_enisa.py 驗過，全部 EXACT）。PDF 來源的引文是 pypdf 抽出文字的連續子字串，但 PDF 抽文字會在原句中間插入換行，因此比對時要先把 U+00A0 換成半形空格、再把連續空白摺成一個空格（驗證腳本的 norm()）。新聞稿本身也大量使用 U+00A0（例如「EUR 4\\u00a0billion」），選引文時已避開跨 NBSP 的片段。\n**PDF 圖表無法抽取**：報告有 58 張 Figure，pypdf 只抽得到圖說文字，圖內的數字抽不出來，所以只出現在圖裡的數字一律不得使用（見 unverified_or_excluded）。\n三條來源全部讀到正文，sourcing_verdict = full。指派表要求「報告 PDF 研究代理必須自己抓，沒抓到就不得引用報告內頁的任何數字」——PDF 已抓到並讀完，報告內頁的數字可以用，但必須照 must_not_write 的規矩與新聞稿的數字分開處理。\n**is_vendor_claim 的判準（本篇特別說明）**：ENISA 是歐盟機關不是廠商，但這份報告的每一個比例都是 ENISA 自己蒐集的資料集算出來的，外界無法獨立驗證，所以凡是「威脅情勢的統計與評估」一律標 is_vendor_claim=true，正文要寫成「ENISA 統計／ENISA 評估」；只有關於文件本身的事實（出版日期、頁數、ISBN、授權條款、新聞稿寫了哪句話）標 false。",
+  "verified_facts": [
+    {
+      "fact": "報告與新聞稿都在 2026 年 9 月 22 日發布。出版品頁自印的出版日期是 September 22, 2026。",
+      "url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 22, 2026"
+    },
+    {
+      "fact": "報告 PDF 是從出版品頁的下載連結取得的，檔名是 ENISA Threat Landscape 2026_Final.pdf，放在 ENISA 自己的 /sites/default/files/2026-09/ 目錄下。",
+      "url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026",
+      "is_vendor_claim": false,
+      "verbatim_quote": "/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+    },
+    {
+      "fact": "報告全文共 101 頁，每頁頁首印 TLP:CLEAR 與 September 2026；TLP:CLEAR 代表可自由公開流通。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "TLP:CLEAR | September 2026"
+    },
+    {
+      "fact": "報告的 ISBN 是 978-92-9204-807-5、DOI 是 10.2824/0806036。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ISBN 978-92-9204-807-5, DOI 10.2824/0806036"
+    },
+    {
+      "fact": "報告採 CC BY 4.0 授權，允許在標示來源並註明變更的前提下再利用；封面圖不在此列（版權屬 Shutterstock）。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the reuse of this document is authorised under the Creative Commons Attribution 4.0 International (CC BY 4.0) licence"
+    },
+    {
+      "fact": "【資料年份，第一個必寫前提】報告分析的是 2025 年 1 月 1 日到 12 月 31 日之間觀察到的事件，不是 2026 年的事件。新聞稿與出版品頁都用同一句話交代。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ENISA collected and analysed incidents and events observed from 1 January to 31 December 2025 for this new edition of the Threat Landscape."
+    },
+    {
+      "fact": "報告正文把資料期間講得更清楚：ETL 的觀察期已改成「曆年」，這一版與上一版（ETL 2025）有六個月重疊，所以有些趨勢是上一版已經寫過的。這是不可以拿兩版做年增／年減比較的官方理由。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The reporting period of the ETL has been updated to the calendar year, i.e. the analysis takes into consideration incidents recorded from 1 January 2025 to 31 December 2025; hence, this report presents an overlap of six months with the previous ETL, presenting trends already"
+    },
+    {
+      "fact": "第二個不可比較的理由：這一版擴大了追蹤的網路犯罪活動範圍（含資料外洩與詐騙），ENISA 自己說這會影響報告裡的數字，但沒有實質改變趨勢與排名。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For this ETL, ENISA also expanded the number of tracked cybercrime activities (including data breaches and fraud). While this was observed to have an impact on the numbers presented in this report, it did not substantially change the trends and rankings observed in the previous iteration."
+    },
+    {
+      "fact": "這一版共蒐集並分析 8,257 起事件。這個總數只出現在報告第 9 頁的方法論，新聞稿沒有印。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For the ETL 2026 report, ENISA analysts collected and analysed 8 257 incidents, mainly based on information from open sources, as well as anonymised information shared by EU Member States (EU MSs) and members of the ENISA Cyber Partnership Programme"
+    },
+    {
+      "fact": "資料來源有三類：公開來源、歐盟會員國匿名分享的資訊，以及透過 ENISA Cyber Partnership Programme 取得的資訊。新聞稿版本的說法。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Those events were gathered from open sources, as well as anonymised information shared by EU Member States and through the ENISA Cyber Partnership Programme."
+    },
+    {
+      "fact": "ENISA 自己寫明：公開來源與自願分享的資訊不構成威脅情勢的完整圖像。這句話是全篇最重要的限定詞，任何「歐盟的攻擊有幾成是……」的寫法都要繫著它。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ENISA appreciates that open sources and information shared voluntarily do not constitute a complete picture of the cyber threat landscape."
+    },
+    {
+      "fact": "ENISA 把這份報告定位成「主流趨勢的概觀、歐盟會員國與設在歐盟的組織所面對威脅的一張快照」，不是完整統計。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Hence, this report should be seen as an overview of prevailing trends, constituting a snapshot of threats faced by EU MSs and EU-based organisations."
+    },
+    {
+      "fact": "【60%／5% 的分母，第二個必寫前提，新聞稿版】新聞稿原句：在 ENISA 能判定入侵途徑的那些未授權存取事件裡（5%），60% 被觀察到是利用漏洞。分母是 5%，不是全部事件。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Across incidents of unauthorised access for which ENISA was able to identify an intrusion vector (5%), 60% were seen leveraging a vulnerability."
+    },
+    {
+      "fact": "【60%／5% 的分母，報告版】報告寫的是 5.2% 與 60.4%，同一句還寫了設定錯誤與意外暴露占 20.7%。新聞稿的 5%／60% 是報告 5.2%／60.4% 的四捨五入，兩者不衝突。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Across incidents of unauthorised access for which ENISA was able to identify an intrusion vector (5.2%), 60.4% were seen leveraging a vulnerability, while misconfiguration and accidental exposure remain a concern (20.7%)."
+    },
+    {
+      "fact": "報告另有一個獨立、可以拿來對照說明「分母問題」的例子：國家關聯入侵組織的事件裡，ENISA 只在 20% 的案例中判定得出初始入侵途徑，在那個子集合裡有 70% 是利用漏洞。兩個數字的結構完全一樣——比例高，但母數小。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "State-nexus intrusion sets were mostly reported to be relying on unauthorised access (81.7%) as well as phishing campaigns (12%). ENISA was able to identify an initial intrusion vector in only 20% of the recorded incidents. Within this subset, vulnerability exploitation was the most frequently observed intrusion vector, accounting for 70% of identified cases."
+    },
+    {
+      "fact": "新聞稿的主標主張：2026 年版威脅全景報告確認，數位相依關係擴大了攻擊面，需要新一層級的警覺才能有效預防與降低事故衝擊。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The 2026 ENISA Threat Landscape confirms that cyber dependencies expand the attack surface and require a new level of vigilance to effectively prevent and mitigate the impact of cyber incidents."
+    },
+    {
+      "fact": "報告正文對「相依關係」的具體描述：針對供應鏈與第三方的攻擊持續被觀察到，期間出現多起大規模或高衝擊的例子。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The targeting of cyber dependencies, including supply-chain attacks and third-party attacks continued to be observed, with several examples of large-scale and/or impactful incidents throughout the reporting period."
+    },
+    {
+      "fact": "報告點名了一個對開發者最有感的相依關係例子：熱門函式庫與 npm 套件遭入侵的情況增加，並舉 Shai-Hulud 行動為例；ENISA 於 2026 年 3 月發布了套件管理器安全使用的技術建議。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Of particular concern was the increase in compromises of popular libraries or npm packages, as seen with the Shai-Hulud campaign"
+    },
+    {
+      "fact": "以件數看，DDoS 是最多的事件類型（51.3%），其次是未授權存取（39.5%）。這是報告執行摘要的寫法。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "DDoS attacks (51.3%) and unauthorised access (39.5%) continued to account for a large share of the recorded activity affecting EU Member States and EU-based organisations."
+    },
+    {
+      "fact": "新聞稿同一件事的寫法：整體仍由低衝擊的 DDoS 主導，占 51% 的紀錄案例，主要由地緣政治發展與政治聲明之類的特定事件驅動。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": ", for 51% of recorded cases. These DDoS attacks were primarily shaped by geopolitical developments and driven by specific events such as political statements."
+    },
+    {
+      "fact": "「件數最多」與「衝擊最大」是兩件事：報告寫金錢動機的活動（占所有紀錄事件 29.3%），特別是勒索軟體，仍是短期內衝擊最大的事件。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Financially motivated activities (29.3% of all recorded incidents), particularly ransomware, remained the most impactful incidents in the short-term."
+    },
+    {
+      "fact": "新聞稿的同一句（更短）：勒索軟體仍是短期衝擊最大的事件類型。注意原文是 short-term impactful，不是「最常見」。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ransomware remains the most short-term impactful type of incident."
+    },
+    {
+      "fact": "以動機分類：報告第 1 章寫意識形態驅動占 57.3%、金錢動機占 29.2%、網路間諜占 6.3%；同一份報告的執行摘要寫 57.3%、29.3%、5.9%。兩處數字不一致（見 unverified_or_excluded）。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Based on assessed objectives, cyber activities targeting or impacting the EU mostly pertained to ideology-driven incidents (57.3%), followed by financially motivated operations (29.2%). Cyberespionage campaigns accounted for 6.3%."
+    },
+    {
+      "fact": "新聞稿版的動機分布：意識形態驅動 57%、將近 30% 是金錢動機。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "of incidents while almost 30% of them were financially motivated."
+    },
+    {
+      "fact": "【被鎖定最多的部門】報告：前五名是公共行政 31.8%、商業服務 8.5%、運輸 8%、製造 6.9%、金融／銀行 5.6%。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The top five targeted sectors in the EU include public administration (31.8%), business services (8.5%), transport (8%), manufacturing (6.9%) and finance/ banking (5.6%)."
+    },
+    {
+      "fact": "新聞稿版的同一組數字（四捨五入）：公共行政 32%，其他包含商業服務 8%、運輸 8%、製造 7%、金融／銀行 6%。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Other targeted sectors included business services (8%), transport (8%), manufacturing (7%) and finance/ banking (6%)."
+    },
+    {
+      "fact": "公共行政為什麼排第一：報告寫這個部門的威脅圖像主要被意識形態驅動的 DDoS 攻擊拉高，占該部門紀錄事件的 81.8%（新聞稿寫 82%）。也就是說，排名第一不等於「最容易被入侵」，而是「最常被灌爆網站」。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The threat picture is largely impacted by ideology-driven DDoS attacks which accounted for 81.8% of the recorded incidents"
+    },
+    {
+      "fact": "新聞稿版的 82%。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "largely impacted by ideology-driven DDoS attacks which accounted for 82%"
+    },
+    {
+      "fact": "被鎖定的組織裡，符合 NIS2 定義的「必要及重要實體」占全部紀錄事件的 73%。ENISA 用這個比例說明 NIS2 的涵蓋範圍抓對了對象。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Considering the total number of incidents, 73% of the targeted organisations are essential and important entities as per the NIS2 definition."
+    },
+    {
+      "fact": "報告版的同一句，並補上「紀錄的事件也包含非 NIS2 部門」這個限定詞。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "essential and important entities represent 73% of the total number of recorded events"
+    },
+    {
+      "fact": "【網路犯罪占比，以報告為準】報告第 3 章寫：網路犯罪在期間內仍是歐盟的主要威脅之一，占已辨識事件總數的 29.3%。新聞稿寫的是 36%，兩者不一致（見 unverified_or_excluded）。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cybercrime remained a main threat across the EU during the reporting period, representing 29.3% of the total number of events identified"
+    },
+    {
+      "fact": "【金錢動機事件的內部組成，以報告為準】2025 年金錢動機的通報裡，勒索軟體占 47.3%、資料外洩占 36%、詐騙與假冒占 13.3%。這三個比例的分母是「金錢動機的通報」，不是全部事件。新聞稿寫的是 40%／31%／19%，兩者不一致。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In 2025, ransomware (47.3%) and data breaches (36%) formed most of the recorded financially motivated claims, followed by fraud and Impersonation (13.3%)."
+    },
+    {
+      "fact": "新聞稿那一組不一致的數字原文（只供查核者比對，不得寫進正文）。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In 2025, the most recorded financially motivated activities included ransomware deployment for 40% of all analysed events, followed by data breaches for 31% of events and fraud and impersonation making the third largest category with 19%."
+    },
+    {
+      "fact": "【駭客行動主義】ENISA 在 2025 年記錄到 4,709 筆針對歐盟會員國的駭客行動主義「宣稱」，其中超過 89% 涉及 DDoS。注意原文是 claims（宣稱），不是已證實的攻擊成果。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ENISA recorded 4 709 hacktivist claims against EU MSs during the year, of which more than 89% involved DDoS."
+    },
+    {
+      "fact": "【漏洞總量】2025 年公布並取得 CVE 編號的新漏洞超過 4.8 萬個，比前一年增加 22%。這是全球的 CVE 發布量，不是歐盟的。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Overall, more than 48 thousand new vulnerabilities were published in 2025 with assigned Common Vulnerability and Exposure (CVE) Identifiers"
+    },
+    {
+      "fact": "新聞稿版的同一件事（22% 增幅的原句）。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "which were assigned Common Vulnerability and Exposure (CVE) Identifiers, translating into a 22% increase from the previous year."
+    },
+    {
+      "fact": "2025 年 CVE 的嚴重度分布：9% 為 Critical、30% High、49% Medium、3% Low，另有 9% 未評分。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "shows that 9% were Critical, 30% High, 49% Medium and 3% Low, while 9% remained unscored."
+    },
+    {
+      "fact": "71% 的已記載漏洞把攻擊向量標為 Network，也就是可能被遠端利用——對直接連上網際網路的裝置風險最高。這一句是全篇最能連到讀者「先更新對外服務」的官方依據。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When considering the attack surface, 71% of documented vulnerabilities mentioned Network as the attack vector"
+    },
+    {
+      "fact": "【AI 的角色，新聞稿版】ENISA 預期新興 AI 模型會愈來愈常被用來支援惡意行動。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Emerging AI models are expected to be increasingly used to support malicious operations."
+    },
+    {
+      "fact": "【AI 的角色，報告版的限定詞】2025 年的通報顯示，攻擊者主要使用消費級 AI 工具來增強既有技能與調整攻擊向量，而不是取得突破性的新能力。這一句是防止把 AI 寫得太可怕的關鍵限定詞。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Despite this activity, reporting over 2025 indicates that attackers primarily use consumer-grade AI tools to augment existing skills and adapt attack vectors rather than to achieve breakthrough capabilities."
+    },
+    {
+      "fact": "【AI 的前瞻評估】ENISA 評估 2026 年可能（likely）會看到攻擊鏈更多階段直接由 AI 驅動，並可能出現「人不在迴路內」的概念驗證。這是評估不是觀察，而且 likely 在報告的用語表裡有明確定義。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "it is also likely 2026 will see an increased number of the kill chain’s phases being directly enabled by AI, with possible experimentation of Human-out-of-the loop proof of concepts"
+    },
+    {
+      "fact": "報告附錄 B 定義了可能性用語的信心水準：HIGHLY LIKELY 代表高信心、機率大於 90%；LIKELY 是 60–90%；POSSIBLE 40–60%；PLAUSIBLE 10–40%；UNLIKELY 低於 10%。翻譯 ENISA 的預測句時要照這個尺度處理，不可以把 likely 寫成「一定會」。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "HIGHLY LIKELY High confidence. >90%"
+    },
+    {
+      "fact": "報告自己的 AI 使用揭露：AI 只在有限範圍內用於支援資料蒐集與處理，所有產出都經領域專家審閱驗證，報告內沒有使用 AI 生成的內容。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AI was used in a limited capacity to support collection and processing of data used in this report. All outputs were reviewed and validated by subject-matter experts. No AI-generated content was used in this report."
+    },
+    {
+      "fact": "ENISA 執行長 Juhan Lepassaar 的引述（新聞稿逐字）：威脅全景不只是一份威脅清單，分析點出的是威脅如何變得更互相牽連、威脅組織如何把影響擴散到更大範圍的數位服務與基礎設施。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The ENISA threat landscape is more than a list of cybersecurity threats affecting the EU and how they are distributed around sectors and entities."
+    },
+    {
+      "fact": "社交工程仍是常見的前置手法：在社交工程技術中，釣魚占 77.8%，其次是惡意垃圾郵件（malspam）13%。新聞稿另外提到 ClickFix 這類誘騙技術的使用增加。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Among social engineering techniques, phishing remains a prevalent intrusion vector (77.8%), followed by malicious spam (malspam), accounting for 13%."
+    },
+    {
+      "fact": "報告對線上投資詐騙的引述：歐洲銀行管理局（EBA）於 2025 年報告指出，單是線上投資詐騙在 2024 年就估計讓歐洲經濟區損失約 42 億歐元。這是 EBA 的估計、不是 ENISA 的統計，年份是 2024。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In 2025, the European Banking Authority reported that online investment fraud alone reportedly cost an estimated €4.2 billion across the European Economic Area (EEA) in 2024"
+    },
+    {
+      "fact": "新聞稿版的同一件事寫成 EUR 4 billion（與報告的 €4.2 billion 不一致，見 unverified_or_excluded）。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "online investment fraud alone reportedly cost an estimated EUR 4"
+    },
+    {
+      "fact": "報告另外交代了 NIS2 通報端的數字（腳註 79）：2025 年的事件、截至 2026 年 7 月 14 日止，依 NIS2 通報的事件共 1,954 件，其中「惡意行為」941 件，而這 941 件裡約 50% 的根本原因被通報為不明。",
+      "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In 2025 and as to the 14th of July 2026, a total of 1 954 events were reported under NIS2. “Malicious actions” accounted for 941"
+    },
+    {
+      "fact": "ENISA 自己把 ETL 2026 的結論與 NIS360 2026 對照：被鎖定的部門成熟度低於平均、關鍵性卻高於成熟度，包含健康、鐵路、海運、ICT 管理服務、太空、公共行政、飲用水與污水處理。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Targeted sectors had a maturity level assessed as lower-than-average, with criticality exceeding that level."
+    },
+    {
+      "fact": "新聞稿列出的五個重點裡還有一條：威脅類別之間的界線持續模糊，類似的技術、基礎設施與存取機制重複出現在網路犯罪、駭客行動主義與國家關聯的通報中，即使目的不同。",
+      "url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Similar techniques, infrastructures and access mechanisms appeared repeatedly across cybercrime, hacktivist and state-nexus reporting, despite differences in underlying objectives."
+    }
+  ],
+  "not_said": [
+    "三條來源（新聞稿、出版品頁、101 頁報告全文）都沒有提到台灣、台灣的機關或台灣的企業。報告的範圍是歐盟會員國與設在歐盟的組織。正文的否定句只能寫成「以 2026-09-23 查核，這份報告與新聞稿未見任何關於台灣的內容」，不可以寫成「台灣不受影響」或「ENISA 說台灣沒事」。",
+    "沒有任何一處替讀者或企業新增法律義務。這是情勢分析報告，不是法規、不是指引、不是預告。NIS2 的義務來自指令本身，不是來自這份報告；正文不可以寫成「新規上路」。",
+    "新聞稿沒有印出事件總數。8,257 這個數字只在報告第 9 頁的方法論一節。只讀新聞稿的人看不到它。",
+    "沒有說歐盟整體的事件數比前一年增加或減少。報告反而兩次說明為什麼不能這樣比（六個月重疊、擴大追蹤範圍）。全篇唯一的年增數字是 CVE 發布量的 22%，那是全球 CVE 的量不是歐盟事件量。",
+    "沒有給一般使用者的操作步驟或檢查清單。讀者能做的事要由這一篇自己推導，並且明說是編輯整理、不是 ENISA 的建議。",
+    "沒有點名任何一個廠牌的產品有漏洞，也沒有給任何 CVE 編號當作待修清單。這一點與 CISA KEV 那一類公告完全不同，不可以混寫。",
+    "沒有公布資料集原始檔、可下載的統計表或互動式儀表板。報告的比例只能照文字引用，圖表內的數字抽不出來。",
+    "沒有說 ENISA 會對任何組織採取行動、開罰或要求改善。ENISA 沒有這個權限，報告也沒有這樣寫。",
+    "出版品頁的 Language 區塊以 2026-09-23 查核只有 EN 一個連結；沒有說會不會出其他語言版本，也沒有日期。",
+    "新聞稿頁上「ENISA video on Threat Landscape 2026」與「ENISA Threat Landscape 2026 Booklet」兩項都標 coming soon，沒有給上線日期。",
+    "沒有把 2025 年任何一起具體事故寫成「歐盟最嚴重的資安事件」，也沒有排名任何一起個案。",
+    "沒有說 AI 已經自主發動過攻擊。報告寫的是 2025 年 AI 多半是輔助角色；Human-out-of-the-loop 是對 2026 年的 likely 評估，而且用「可能的實驗性概念驗證」（possible experimentation of proof of concepts）措辭。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "網路犯罪占全部事件的 36%（新聞稿）。",
+      "seen_where": "新聞稿 Analysis by threat categories 清單第一條：「Cybercrime remained a main threat across the EU and globally during the reporting period, covering 36% of total events.」",
+      "why_excluded": "報告第 3 章第 38 頁寫的是 29.3%（「representing 29.3% of the total number of events identified」），而且報告執行摘要的金錢動機占比也是 29.3%，與 36% 對不起來。36% 這個數字在報告裡對應到的是「資料外洩占金錢動機通報的 36%」，分母完全不同，看起來是新聞稿把兩個數字串錯。**一律以報告為準寫 29.3%（或約 29%），不得使用 36% 這個占比，也不得把兩套並列寫成「官方有兩種說法」。**"
+    },
+    {
+      "claim": "勒索軟體部署占「全部分析事件」的 40%、資料外洩 31%、詐騙與假冒 19%（新聞稿）。",
+      "seen_where": "新聞稿同一條清單：「the most recorded financially motivated activities included ransomware deployment for 40% of all analysed events, followed by data breaches for 31% of events and fraud and impersonation making the third largest category with 19%.」",
+      "why_excluded": "報告第 38 頁寫的是「In 2025, ransomware (47.3%) and data breaches (36%) formed most of the recorded financially motivated claims, followed by fraud and Impersonation (13.3%).」——三個數字都不一樣，而且分母是「金錢動機的通報」不是「全部分析事件」。新聞稿的分母敘述（of all analysed events）與報告不符。**這三個數字一律用報告的 47.3%／36%／13.3%，並且必須寫出分母是金錢動機的通報。**"
+    },
+    {
+      "claim": "國家關聯入侵組織「執行入侵行動占 87%」（新聞稿）。",
+      "seen_where": "新聞稿：「State-nexus intrusion sets were mostly reported carrying out intrusion operations (87%), as well as phishing campaigns (12%).」",
+      "why_excluded": "報告第 60 頁寫的是「relying on unauthorised access (81.7%) as well as phishing campaigns (12%)」。12% 一致，但 87% 與 81.7% 差 5 個百分點，而且用語從 unauthorised access 變成 intrusion operations。**不得使用 87%；要寫就寫報告的 81.7%，並照報告的用語寫「未授權存取」。**"
+    },
+    {
+      "claim": "線上投資詐騙在 EEA 造成 40 億歐元損失（新聞稿）。",
+      "seen_where": "新聞稿：「online investment fraud alone reportedly cost an estimated EUR 4 billion across the European Economic Area (EEA) in 2024.」報告第 38 頁寫 €4.2 billion，並加上「In 2025, the European Banking Authority reported」。",
+      "why_excluded": "兩邊金額不一致（40 億 vs 42 億），而且這是歐洲銀行管理局的估計、不是 ENISA 的統計。報告腳註 149 指向 ECB 網站的一份 PDF，本輪沒有下載閱讀。**要寫就照報告寫「EBA 於 2025 年報告、2024 年約 42 億歐元的估計」，並明寫是 EBA 的估計；不可以寫成 ENISA 統計，也不可以用 40 億這個數字。原始 EBA／ECB 文件未讀，不得引用其內頁任何內容。**"
+    },
+    {
+      "claim": "網路間諜占所有事件的比例。",
+      "seen_where": "報告執行摘要（第 7 頁）寫 5.9%，第 1 章（第 13 頁）寫 6.3%；同樣地，金錢動機執行摘要寫 29.3%、第 1 章寫 29.2%。",
+      "why_excluded": "同一份報告內部就不一致。**要寫就寫「約 6%」與「約 29%」，或明寫是哪一章的數字；不可以把 5.9% 或 6.3% 當成唯一數字印出來，也不可以寫成「官方數字有誤」。**"
+    },
+    {
+      "claim": "報告裡 58 張 Figure（圖 1–58）內的任何數字。",
+      "seen_where": "etl2026.txt 只抽得到圖說（例如「Figure 6 - Distribution of identified incidents in the EU per sector」），圖內的座標軸標籤與數值抽不出來。",
+      "why_excluded": "沒有讀到的數字不是事實。**只使用報告內文段落裡印出來的數字。**"
+    },
+    {
+      "claim": "ENISA NIS360 2026 報告的內容。",
+      "seen_where": "新聞稿有一段對照 NIS360，連到 https://www.enisa.europa.eu/enisa-nis360-2026；報告腳註 75 指向 https://www.enisa.europa.eu/sites/default/files/2026-05/ENISA%20NIS360%202026.pdf。",
+      "why_excluded": "本輪沒有抓取這兩個網址。**只能引用新聞稿與 ETL 2026 裡對 NIS360 的轉述（成熟度低於平均、關鍵性高於成熟度、七個部門名單），不得引用 NIS360 本身的任何數字或結論。**"
+    },
+    {
+      "claim": "新聞稿「Additional resources」區塊裡「2025 Annual Review: NIS2 Cybersecurity Incident Reporting」這一條的內容。",
+      "seen_where": "該連結的 href 不是公開網址，而是一個本機 Windows 檔案路徑（file 形式，內含某位人員的使用者資料夾名稱），在網際網路上打不開；這顯然是 ENISA 內容管理系統的貼上失誤。",
+      "why_excluded": "打不開的連結不能當來源。**不得引用、不得寫進正文、也不要把那個路徑字串抄進任何檔案或回報（裡面有個人資料）。**若日後要寫這份 NIS2 年度回顧，報告腳註 80 給了公開版網址 https://ec.europa.eu/newsroom/dae/redirection/document/132389，但本輪沒有抓取，同樣不得引用。"
+    },
+    {
+      "claim": "ENISA Cybersecurity Threat Landscape (CTL) 方法論文件的細節。",
+      "seen_where": "報告第 9 頁腳註 1 指向 https://www.enisa.europa.eu/publications/enisa-cybersecurity-threat-landscape-methodology；新聞稿也連了同一頁。",
+      "why_excluded": "本輪沒有抓取。方法論只能寫報告第 9–10 頁自己交代的那幾段（曆年觀察期、六個月重疊、擴大追蹤範圍、開放來源的偏誤、可能性用語表）。"
+    },
+    {
+      "claim": "ETL 2025（上一版）的 4,875 起事件與 2024-07-01 至 2025-06-30 的期間。",
+      "seen_where": "新聞稿與出版品頁的 Related content 區塊的摘要行印了這兩個數字。",
+      "why_excluded": "Related content 是動態區塊、而且是上一份出版品的摘要，本輪沒有抓取 ETL 2025 本身。**要寫「上一版期間不同所以不能比」時，引用 ETL 2026 報告第 9 頁自己那句「overlap of six months with the previous ETL」就夠了，不要引用 Related content 區塊的數字。**"
+    },
+    {
+      "claim": "ENISA 於 2026 年 3 月發布的套件管理器安全技術建議的內容。",
+      "seen_where": "報告第 12 頁提到「In March 2026, ENISA published a technical advisory for the secure use of package managers」，腳註 21 的網址在 PDF 抽文字時被截斷（只剩 `%20Package_Managers_Final.pdf` 尾段）。",
+      "why_excluded": "網址不完整、本輪沒有抓取，而且 RESEARCH.md 禁止猜網址。**只能寫報告提到「ENISA 在 2026 年 3 月發布過套件管理器的技術建議」這件事，不得寫它的內容，也不得放連結。**"
+    },
+    {
+      "claim": "Shai-Hulud 行動的規模、受害套件清單與時間點。",
+      "seen_where": "報告第 12 頁只用一句話舉例，腳註 19、20 指向第三方資安廠商的文章。",
+      "why_excluded": "第三方網站不是本站的一手來源（tech.md），本輪也沒有抓取。**只能照報告寫「ENISA 舉 Shai-Hulud 為例」，不得補任何細節。**"
+    },
+    {
+      "claim": "「ENISA ON AIR – Episode 2 on Threat Landscape 2026」podcast 的內容。",
+      "seen_where": "新聞稿連到 player.springcast.app 的嵌入播放器。",
+      "why_excluded": "音訊內容本輪沒有取得也無法逐字引用。"
+    }
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "tech-news-cisa-kev-linux-kernel-20260918",
+      "what_it_already_says": "美國 CISA 2026-09-18 同一天兩則公告，把三個 Linux 核心漏洞列入 KEV 目錄，並解釋 KEV 是什麼、BOD 26-04 的 9 月 21 日期限只約束美國聯邦機關、CISA 沒有點名任何廠牌機型。這是本篇的第二個結尾連結。**本篇不要重講 KEV 是什麼、也不要重講 BOD 26-04**；本篇的角色是「為什麼修補優先序比買設備重要」的統計面理由，一兩句帶到那篇即可。"
+    },
+    {
+      "slug": "tech-news-eu-cra-reporting-20260911",
+      "what_it_already_says": "歐盟《網路韌性法》第 14 條通報義務自 2026-09-11 適用、ENISA 同步啟用單一通報平台、24／72 小時的時限、第 16 條與第 15 條自願通報的狀態。**這篇已經把「ENISA 是什麼機關、它在歐盟資安法制裡的位置」寫完了**，本篇只需要一句帶過 ENISA 的身分，不要重寫 CRA 的義務與時程，也不可以把 ETL 報告寫成 CRA 通報資料的產物（ETL 主要是公開來源，CRA 通報是另一回事）。"
+    },
+    {
+      "slug": "ai-news-anthropic-threat-report-20260910",
+      "what_it_already_says": "Anthropic 2026-09-10 的威脅情報報告，整理 2025-12 到 2026-08 阻斷的七類 AI 濫用，以及一般人防範 AI 詐騙、保護帳號與 API 金鑰的做法。**「AI 被用於惡意行動」這個題目那篇已經從廠商視角寫過**；本篇談的是歐盟機關從 2025 年事件資料看到的同一件事，兩篇的觀察期、資料來源與結論強度都不同，要在本篇明講這個差別，不要重複那篇的七類清單與防範清單。"
+    },
+    {
+      "slug": "crypto-news-jfsa-cybersecurity-20260723",
+      "what_it_already_says": "日本金融廳委外的加密資產資安研究報告，重點是「報告不代表本廳見解」、四個日期不能互相代換。**「主管機關發布研究報告該怎麼讀」這個框架那篇寫過一次**；本篇可以用同樣的紀律，但不要重寫那套方法論的說明文字。"
+    },
+    {
+      "slug": "ai-news-project-glasswing-20260407",
+      "what_it_already_says": "AI 找到漏洞之後的維護流程與網站管理要點。本篇提到「漏洞利用是主要入侵途徑」時可以自然銜接，但不要重寫修補流程。"
+    },
+    {
+      "slug": "online-banking-security",
+      "what_it_already_says": "網銀與帳戶安全：裝置綁定、OTP、假客服與假冒機構的詐騙手法。**本篇談到詐騙與假冒（fraud and impersonation）時不要重寫這一套防詐內容**，連過去即可（但本篇的兩個結尾連結已固定，只能在正文自然提及，不另加連結）。"
+    },
+    {
+      "slug": "ai-account-security-2fa-api-keys",
+      "what_it_already_says": "兩步驟驗證、登入裝置清單與 API 金鑰的到期與撤銷。本篇談「釣魚仍是主要前置手法」時不要重寫這些操作步驟。"
+    },
+    {
+      "slug": "wordpress-security-basics",
+      "what_it_already_says": "WordPress 的帳號、更新、防護外掛與備份分工。本篇談「71% 的漏洞是網路攻擊向量、對外服務要優先更新」時不要重寫這一套維運步驟。"
+    },
+    {
+      "slug": "tech-news-cisa-kev-zyxel-gs1900-20260921",
+      "what_it_already_says": "**同批在寫、尚未發布（display_order 323）**：Zyxel GS1900 交換器的 CVE-2026-7273 列入 KEV、讀者自己查韌體版本。本篇與它的分工是「單一漏洞的個案與該做什麼」vs「一整年統計看到的優先序」，**本篇不得寫任何具體 CVE 編號或機型**，避免兩篇撞題。這一篇還沒發布，不可以在正文連結它。"
+    }
+  ],
+  "second_link": {
+    "slug": "tech-news-cisa-kev-linux-kernel-20260918",
+    "url": "https://mokaair.com/zh-TW/life/tech-news-cisa-kev-linux-kernel-20260918",
+    "text": "CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單",
+    "verified": "2026-09-23 確認 apps/api/app/guides/content/tech-news-cisa-kev-linux-kernel-20260918.json 存在，locales 只有 zh-TW（4.6 的 zh-TW-only 文章），zh-TW title 逐字為「CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單」，news_date 2026-09-18、display_order 318。與 DELTA-4-7 第 7 條表格的 text 逐字相同。link 的 text 照抄這一行，一個字都不要改；因為那篇是 zh-TW-only，本批不跑 --full，不會去比對譯文標題。"
+  },
+  "editorial_brief": "讀者是台灣一般讀者，看到「歐盟資安機關發布年度威脅報告」的第一個反應通常是「跟我有什麼關係」。這一篇的價值不在於把 ENISA 的數字搬過來，而在於教讀者怎麼讀這類報告——因為同樣的誤讀在台灣媒體引用國際資安報告時每年都會發生一次。\n骨架建議：\n第一段先把「這件事是什麼、對誰有效」說完：2026 年 9 月 22 日 ENISA 發布 ETL 2026 報告，範圍是歐盟會員國與設在歐盟的組織，台灣不在範圍內，這份報告也不替任何人新增義務；它的價值是一份 2025 年全年、8,257 起事件的公開統計，台灣的讀者與 IT 管理者可以拿它當作「該先修哪裡」的參考。\n第二段起把兩個陷阱當成主線寫，而不是當成注腳：\n（一）年份。報告叫 2026，數字全來自 2025 年 1 月 1 日到 12 月 31 日。而且 ENISA 自己說這一版與上一版有六個月重疊、又擴大了追蹤範圍，所以連 ENISA 都不建議拿兩版做年增減比較。一篇寫「今年歐盟的威脅」的報導，第一句就錯了。\n（二）分母。新聞稿那句「60% 是利用漏洞」單獨看會變成「六成的入侵是漏洞造成的」，但它的分母是 ENISA 判定得出入侵途徑的那 5%（報告寫 5.2%、60.4%）。報告裡還有一個結構一模一樣的例子可以對照：國家關聯事件只有 20% 判定得出途徑，那個子集合裡 70% 是漏洞。兩個例子擺在一起，讀者就懂了「比例很高」跟「母數很小」可以同時成立——這比講一次定義有效。\n中段可以帶出「件數最多」與「衝擊最大」是兩件事：DDoS 占 51.3% 但多半低衝擊，勒索軟體件數沒那麼多卻是短期衝擊最大。公共行政排第一（31.8%）也不是因為政府最容易被入侵，而是因為它最常被灌爆網站（該部門 81.8% 是意識形態驅動的 DDoS）。這個分辨對讀者判斷新聞標題很有用。\n對台灣讀者真的可以用的一段：2025 年新發布的 CVE 超過 4.8 萬個、年增 22%，其中 71% 標為可從網路攻擊——這是「先更新對外服務」這個老建議在今年的具體重量。可以自然銜接到 CISA KEV 那一篇（第二個結尾連結）：修補優先序怎麼決定，比再買一套設備重要。\n收尾寫 AI 那一段，但要壓住調子：ENISA 觀察到的 2025 年是「AI 主要是輔助、攻擊者多半用消費級工具增強既有技能」，對 2026 年的預測才是「攻擊鏈更多階段可能直接由 AI 驅動」，而且 likely 在報告裡有定義（60–90%）。順帶可以寫 ENISA 自己在報告裡揭露 AI 使用範圍這件事——一份談 AI 威脅的報告先交代自己怎麼用 AI，這個做法本身值得一提。\n最後給讀者自己查的方法：報告是 CC BY 4.0、TLP:CLEAR，任何人都可以從 ENISA 出版品頁直接下載 101 頁全文；想確認任何一個被引用的數字，翻到對應章節比新聞稿可靠——本篇自己就示範了新聞稿與報告對不起來的三處。\n【給撰稿的兩個機械提醒】(1) 圖上的數字必須逐字出現在正文：2025、8,257、60.4%、5.2%、31.8%，以及「1 月」「12 月」。少寫一個 check_article.py 就會報 number … is not in the zh-TW text。(2) 內容包 image 區塊的 caption 要與本紀錄 diagram.caption 一字不差（檢查器逐字比對）。",
+  "must_not_write": [
+    "【必寫前提一】不可以把資料年份寫成 2026 或「今年」。報告名稱是 ENISA Threat Landscape 2026，統計的是 2025 年 1 月 1 日到 12 月 31 日之間的事件。第一段就要把「報告年份 2026、資料年份 2025」分開講清楚。凡是「今年歐盟的威脅」「2026 年最常見的攻擊」這種句子一律不可出現。",
+    "【必寫前提二】「60% 是利用漏洞」不可以單獨出現，也不可以寫成「六成的入侵來自漏洞」。必須在同一句寫出分母：只有在 ENISA 判定得出入侵途徑的那一小部分未授權存取事件裡（新聞稿寫 5%、報告寫 5.2%），漏洞利用才占 60%（報告寫 60.4%）。缺了這個前提就是誤導，這是站主點名的兩件事之一。",
+    "不可以使用新聞稿的「網路犯罪占全部事件 36%」。報告寫 29.3%，以報告為準。也不可以把兩個數字並列寫成「官方有兩種說法」——正文只用報告的數字，差異寫在研究紀錄即可。",
+    "不可以使用新聞稿的「勒索軟體 40%／資料外洩 31%／詐騙與假冒 19%」。報告寫的是 47.3%／36%／13.3%，而且分母是「金錢動機的通報」不是「全部分析事件」。用報告的數字時必須寫出分母。",
+    "不可以使用新聞稿的「國家關聯入侵組織執行入侵行動占 87%」。報告寫的是未授權存取 81.7%。",
+    "不可以拿 ETL 2026 與 ETL 2025 做年增／年減比較，也不可以寫「比去年增加／減少」。ENISA 自己寫明兩版期間有六個月重疊，而且這一版擴大了追蹤的網路犯罪活動範圍。唯一可以寫的年增數字是 CVE 發布量 22%，而那是全球 CVE 數量、不是歐盟事件數。",
+    "不可以把 ENISA 的資料集寫成完整或具代表性的母體。報告自己寫「公開來源與自願分享的資訊不構成完整圖像」，並列出報導粒度、時序、部門歸類等偏誤。任何比例前面都要有「ENISA 統計的事件裡」這個限定。",
+    "不可以寫可操作的攻擊細節、入侵指標或惡意程式家族的技術步驟（tech.md）。ClickFix、device code phishing、smishing 只能寫成「這一類誘騙是要騙你自己動手」與讀者該怎麼提防，不寫步驟、不寫指令、不寫網域。",
+    "不可以寫「勒索軟體是最常見的攻擊」。件數最多的是 DDoS（51.3%）；勒索軟體是「短期衝擊最大」（most short-term impactful），這是兩件事。",
+    "不可以把「公共行政被鎖定最多」寫成「政府最容易被駭」。那 31.8% 裡有 81.8% 是意識形態驅動的 DDoS，也就是把網站灌爆，不是入侵。",
+    "不可以把 4,709 筆駭客行動主義「宣稱」（claims）寫成「攻擊成功」或「事件」。報告明寫 OT 相關的宣稱中已證實的實際破壞有限。",
+    "不可以把 ENISA 的預測寫成事實。報告用的是有定義的可能性用語（HIGHLY LIKELY >90%、LIKELY 60–90%、POSSIBLE 40–60%、PLAUSIBLE 10–40%、UNLIKELY <10%），翻譯時 likely 要寫成「ENISA 評估……可能」，不可以寫成「將會」「一定」。",
+    "不可以寫 AI 已經自主發動攻擊。報告寫 2025 年攻擊者主要用消費級 AI 工具增強既有技能、AI 多半是輔助角色；「攻擊鏈更多階段直接由 AI 驅動」「Human-out-of-the-loop 概念驗證」是對 2026 年的 likely 評估，而且原文寫的是 possible experimentation。",
+    "不可以寫這份報告帶來任何新的法遵義務、新規上路或新的通報要求。它是情勢分析，不是法規。NIS2 的義務來自指令本身。",
+    "不可以寫任何關於台灣的實質判斷。三條來源都沒提到台灣。要提台灣只能寫「這份報告的範圍是歐盟會員國與設在歐盟的組織，以 2026-09-23 查核未見任何關於台灣的內容」。不可以寫「台灣不受影響」「台灣情況類似」「台灣應比照辦理」。",
+    "不可以引用新聞稿裡「2025 Annual Review: NIS2 Cybersecurity Incident Reporting」那個連結。它的 href 是一個本機檔案路徑（含個人資料夾名稱），不是公開網址；不得引用、不得寫進正文、也不要把那個路徑抄進任何地方。",
+    "不可以把 EBA 的詐騙損失寫成 ENISA 的統計，也不可以用新聞稿的 40 億歐元。要寫就照報告寫「歐洲銀行管理局於 2025 年報告、2024 年線上投資詐騙在歐洲經濟區估計約 42 億歐元」，並明寫是 EBA 的估計。",
+    "不可以引用任何只出現在報告圖表（Figure 1–58）裡的數字——那些數字抽不出來，等於沒讀到。",
+    "不可以引用 NIS360 2026 報告本身的任何數字或結論（本輪未抓取）。只能引用新聞稿與 ETL 2026 對它的轉述。",
+    "不可以寫任何資安產品、服務或廠商的推薦與比較（tech.md：不寫購買建議）。",
+    "正文不要出現「本文」（DELTA-4-7 第 14 條）。指涉自己一律寫「這一篇」。第二段的查核句寫成「這一篇的資料在 2026 年 9 月 23 日查核」這類直接說話的句子。",
+    "不要每一句都掛「官方表示」。歸因要做，但一段裡重複掛「ENISA 表示」四五次就是被退稿過的寫法；同一段落內第二次以後可以用「報告寫」「這份報告的說法是」交替。",
+    "不可以寫「ENISA 首次」「史上最多」「最嚴重的一年」這類最高級。來源沒有這樣寫。",
+    "不可以寫具體事故的受害組織名稱。報告點名的是威脅組織與行動代號，不是受害者；本篇一律不寫任何組織名。"
+  ],
+  "live_data_warnings": [
+    "ENISA 新聞稿頁與出版品頁底部的 Related content（Publications／Events／News 三個分頁）是動態區塊，會隨新內容改變。本紀錄只使用正文、<time> 標籤與出版日期欄位，不引用這些區塊的任何清單、計數或摘要行。",
+    "報告 PDF 的網址是固定檔名（…_Final.pdf）。ENISA 的法律聲明明寫「ENISA has the right to alter, update or remove the publication or any of its contents」，所以同一個網址日後可能換成不同版本。引用頁碼與數字時要連同查核日 2026-09-23 一起寫；查核代理重抓時 bytes 若與 8,377,315 不同，要先確認是不是換版。",
+    "出版品頁的 Language 區塊以 2026-09-23 查核只有 EN 一個連結，這是活資料，日後可能增加語言版本；不要寫成「只有英文版」而要寫「以 2026-09-23 查核，出版頁只列出英文版」。",
+    "新聞稿頁上「ENISA video on Threat Landscape 2026」與「ENISA Threat Landscape 2026 Booklet」標示 coming soon，隨時可能變成實際連結；引用這兩項時要寫查核日。",
+    "報告裡引用的第三方數字（EBA 的 42 億歐元、vulnerability-lookup 的 CVE 統計、EEAS FIMI 威脅全景）都是 ENISA 引述他人的活資料，本站沒有向原始來源查證，一律歸因給報告轉述的那一方。",
+    "報告第 91 頁的 CVSS 分布與攻擊向量比例是 2025 年 CVE 資料的快照；CVE 資料本身會持續補評分，日後同樣的查詢不會得到一樣的比例。寫這組數字時要寫明是報告所載的 2025 年資料。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "算的是 2025 一整年",
+  "diagram": {
+    "title": "兩個分母與一個年份",
+    "caption": "ENISA 於 2026 年 9 月 22 日發布的威脅全景報告，四個容易被讀錯的前提：資料年份是 2025 年全年、共分析 8,257 起事件、「60.4% 利用漏洞」的分母只有 5.2%、被鎖定最多的是公共行政 31.8%，查核日 2026 年 9 月 23 日。",
+    "nodes": [
+      ["資料年份", "2025 年 1 到 12 月"],
+      ["事件總數", "8,257 起，非全貌"],
+      ["60.4% 的分母", "只有 5.2% 查得出"],
+      ["誰被鎖定", "公共行政 31.8%"]
+    ]
+  }
+}

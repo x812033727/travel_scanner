@@ -1,0 +1,219 @@
+{
+  "slug": "ai-news-anthropic-life-sciences-verification-20260917",
+  "kind": "life",
+  "destination_id": null,
+  "topics": ["ai", "software", "ai-news"],
+  "valid_until": null,
+  "news_date": "2026-09-17",
+  "featured": false,
+  "display_order": 173,
+  "locales": {
+    "zh-TW": {
+      "title": "Anthropic 生命科學驗證方案上線：通過驗證的團隊才鬆綁生物類限制",
+      "description": "2026 年 9 月 17 日，Anthropic 推出生命科學驗證方案（LSVP），讓通過驗證的團隊與機構以較寬鬆的防護，使用 Mythos、Opus 與 Sonnet 模型處理原本被擋下的生物相關工作。方案分標準用途與高風險用途，鬆綁範圍、續約週期與適用型號都不同，個人方案與第三方平台目前都還沒有支援（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/ai-news-anthropic-life-sciences-verification-20260917/hero.jpg",
+        "alt": "原創插圖：中央畫一個對半分開的盾牌圖案，左半邊維持完整的柵欄紋路，代表標準防護沒有改變；右半邊柵欄出現幾道缺口，代表對生物相關工作放寬的部分，缺口旁各站一個小方塊代表通過驗證的團隊，不畫任何商標或介面畫面。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 17 日，Anthropic 推出生命科學驗證方案（Life Sciences Verification Program，LSVP），讓通過驗證的生命科學專業人員以一組對生物相關工作較寬鬆的防護，使用 Mythos、Opus 與 Sonnet 模型——這些工作目前在一般開放的 Fable 模型上是被擋住的。這是給組織申請的 beta 方案，只開放團隊與機構，不是一般 Claude 使用者會遇到的變化；這則消息在前一輪整理時名額已滿，留到這一輪才補上，日期仍照事件發生的 9 月 17 日寫。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 23 日查核，依據 Anthropic 的公告頁、申請頁與威脅情報報告；本站沒有實測，不提供訂閱或申請建議，文中出現的規格與數字都是 Anthropic 自己的說法。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 17 日，Anthropic 推出生命科學驗證方案（LSVP），讓通過驗證的團隊與機構以較寬鬆的防護使用 Mythos、Opus 與 Sonnet 模型處理生物相關工作，目前只開放 beta 申請，個人的 Pro 與 Max 方案還不能用。",
+            "申請者要先通過研究資格、資安標準與研究倫理監督三項審查，才能申請標準用途或高風險用途兩種授權。",
+            "標準用途可涵蓋整個團隊、一年續約一次，適用 Mythos 5.1、Opus 5 與 Sonnet 5；高風險用途只適用單一研究專案，每六個月續約一次，且會移除阻擋生命科學請求的防護，資安分類器等其他防護不受影響。",
+            "LSVP 把防護從即時阻擋改成離線監測，代價是 LSVP 流量要保留 30 天資料，且由組織自己界定安全用途、管理員在期限內處置異常。",
+            "以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有說明開放地區，也沒有提到台灣。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 17 日發生了什麼：給誰用、現在在哪一步"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，生命科學驗證方案讓生命科學專業人員使用 Mythos、Opus 與 Sonnet 模型時，跨過一般開放模型針對生物相關工作設下的門檻；公告舉的例子有藥物開發、研究生物學、臨床開發與製造，原文用「像」帶出例子，不是完整清單。服務對象很廣，從學術實驗室到新創公司、藥廠等等都算在內。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要拿到存取權，申請者要先通過一次驗證：審查研究資格、資安標準與研究倫理監督三個項目，通過後才能申請標準用途或高風險用途，兩者可以並存。Anthropic 說明，已有數十個組織透過早期存取用過這個方案，9 月 17 日才對外開放申請；公司預期第一週再增數百個組織，之後幾週擴大到涵蓋多數生命科學社群，但這是官方當天寫下的預期，查核當天沒看到後續公布的實際數字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 把這個決定和自己稍早發布的威脅情報報告連在一起：報告顯示平台上出現愈來愈精密的濫用嘗試，其中包含可能支援生物武器開發的嘗試，因此近期模型上線時都帶了較嚴格的防護，限制大量兩用生物研究查詢——LSVP 要鬆綁的正是這一層。Anthropic 也提到，生物領域常常沒辦法只憑一個請求本身判斷是善意研究還是別有用心，所以最讓它擔心的情境，是本來合法的存取被人挪用或整個奪走，而不是請求的內容本身。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "兩種授權：鬆綁的範圍愈大，綁得愈窄"
+        },
+        {
+          "type": "paragraph",
+          "text": "通過驗證後，標準用途（Standard Use）授權可擴及整個團隊的日常多樣工作，一年續約一次；今天適用 Mythos 5.1、Opus 5 與 Sonnet 5，未來推出的新模型也會納入。Anthropic 說，涵蓋範圍從基礎科學、研發、供應鏈與製造，到臨床開發、品保、法規事務、投資與盡職調查都算，以「等等」收尾，不是完整清單；公司預期標準用途應能滿足大多數需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "部分工作誤用風險較高，需要額外審查，這時才輪到高風險用途（High-risk Use）：它是標準用途之外的附加授權，只適用單一研究專案，不是整個團隊，每六個月要續約一次。高風險用途會移除所有阻擋生命科學請求的防護，但資安分類器等其他防護不會跟著鬆動。公告給的情境是，一名做兩用研究的人員通常會有一個標準用途授權處理日常工作，外加一或多個綁定特定專案的高風險授權，例如研究某一類病毒載體如何被人體免疫路徑辨識。"
+        },
+        {
+          "type": "paragraph",
+          "text": "高風險用途目前可以用在 Claude Opus 5 與 Claude Sonnet 5 上；Claude Mythos 的高風險用途在這次發布時仍只開放給少數經過額外審查的機構，Anthropic 說正在與美國政府合作，希望之後能擴大提供。這些授權可以在多個產品介面使用，公告列出的包括 Claude Science、Claude.ai、Claude Code 與 API，同樣是舉例，不是完整清單。"
+        },
+        {
+          "type": "table",
+          "header": ["授權類型", "涵蓋範圍與續約週期", "適用模型／方案（查核日資訊）"],
+          "rows": [
+            ["標準用途 Standard Use", "整個團隊，一年續約一次", "Mythos 5.1、Opus 5、Sonnet 5"],
+            ["高風險用途 High-risk Use", "單一研究專案，六個月續約一次", "Opus 5、Sonnet 5 可用；Mythos 限少數機構"],
+            ["個人 Pro／Max 方案", "beta 階段不符資格", "Anthropic 說之後才會擴大"],
+            ["第三方平台", "尚未提供", "僅第一方 console／Enterprise／Team"]
+          ],
+          "caption": "Anthropic 生命科學驗證方案標準用途與高風險用途的授權條件整理，查核日 2026 年 9 月 23 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還沒放寬的部分：個人方案、Mythos 高風險與醫療資料"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個方案目前只給團隊與機構，個人的 Pro 與 Max 方案還用不到；Anthropic 說之後會逐步擴大到個人方案，但沒有給時間表。授權要怎麼切換也依介面而不同：API 與 Claude Science 可以在授權之間原生切換，Claude.ai 與 Claude Code 一開始只會套用一個預先選定的預設授權，唯一的例外是用 API 驗證方式登入 Claude Code 的情況。"
+        },
+        {
+          "type": "paragraph",
+          "text": "beta 階段還不支援已經簽署過 BAA（商業夥伴協議）的組織；手上有病患健康資訊（PHI）的客戶，要另外用沒有簽 BAA、非 HIPAA 的組織申請。發布當下，這個方案只在第一方的 console 提供 API 存取，以及 Claude for Enterprise 與 Team 方案裡可用，還沒有開放給第三方平台。"
+        },
+        {
+          "type": "paragraph",
+          "text": "值得留意的是，9 月 17 日的公告寫標準用途適用 Mythos 5.1、Opus 5 與 Sonnet 5；但同一個申請頁面在 2026 年 9 月 23 日查核時，寫的是 Mythos 5.1 用在生物與藥物開發、Opus 5.5 與 Sonnet 5 搭配調整過的生物安全分類器，兩處數字不同。申請頁沒印日期，看不出何時寫上去的，兩個時間點的說法要分開看，不能當成同一件事。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-anthropic-life-sciences-verification-20260917/diagram-1.svg",
+          "alt": "四格圖解：先通過研究資格、資安標準與研究倫理監督的驗證，再分成標準用途（整個團隊，一年續約）與高風險用途（單一專案，半年續約）兩條路徑，最後標示資安分類器等其他防護維持不變",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic 生命科學驗證方案兩種授權的對照：先通過研究資格、資安標準與研究倫理監督的審查，標準用途可涵蓋整個團隊、一年續約一次，高風險用途只適用單一研究專案、每半年續約，資安分類器等其他防護維持不變。資料查核日 2026 年 9 月 23 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "從即時擋下改成事後監看：代價是什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "LSVP 也改變了防護的運作方式：Anthropic 說明，一般情況下是每次請求就即時判斷要不要擋下，但嚴重的濫用常常分散在很多次請求、很多個工作階段裡進行，藉此避開偵測，所以在 LSVP 裡改成離線監測，也就是事後比對一段時間內的使用模式，而不是每一次都馬上判斷。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要做到這件事，Anthropic 要求 LSVP 流量保留 30 天資料；資料嚴格區隔，不能拿去訓練模型，Anthropic 生命科學研究團隊的成員也不能存取。設計原則是責任共擔：組織已先通過生命科學可信度與監督機制的審查，Anthropic 才放手讓組織自己界定，團隊或專案裡什麼用途算安全。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每個組織的存取權，綁定它在申請書上寫的用途；申請書只需要寫像職缺公告那樣的高層次說明，不能放進敏感資訊或智慧財產。Anthropic 會持續監測 LSVP 流量，找出超出申請書範圍的使用或模式，一旦發現未經授權的活動，會通知組織的管理員，由管理員在事先講好的時限內處理，而不是系統自動擋下。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "讀者自己查得到什麼、查不到什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有說明任何國家或地區的開放條件，也沒有提到台灣；台灣的生技公司、醫院或大學實驗室能不能申請、要不要符合額外條件，兩頁都沒有寫，不能用「Team 與 Enterprise 方案在台灣買得到」去推論這個方案在台灣是否開放。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告與申請頁也沒有交代審查要花多久、通過率多少，或者被拒絕之後能不能申訴；沒有寫高風險授權六個月到期後續約要不要重新審查，也沒有說專案結束後授權怎麼收回。Anthropic 只承諾未來幾個月會再說明新產品、研究合作與方案本身的改進，沒有給實際時間。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想申請的組織要由管理員在申請頁填表登記意願，Anthropic 再評估資格，填表本身不保證會拿到存取權。這個方案處理的兩用生物研究風險，正是 Anthropic 9 月稍早那份威脅情報報告點出的隱憂之一；報告寫了哪七類濫用、哪些 API 金鑰被盯上，以及一般人可以怎麼自保，另一篇已經整理過。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "生命科學驗證方案上線後，一般 Claude 使用者的生物類限制會跟著放寬嗎？",
+              "answer": "不會。這個方案只開放給通過驗證、申請到 LSVP 授權的團隊與機構，在他們登記的用途範圍內才適用；一般開放的 Fable 模型與其他一般帳號遇到的防護沒有任何改變。"
+            },
+            {
+              "question": "台灣的生技公司、醫院或大學實驗室可以申請嗎？",
+              "answer": "以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有寫任何國家或地區的開放條件，也沒有提到台灣，所以無法判斷台灣的申請人是否符合資格，只能等 Anthropic 進一步說明或直接向對方確認。"
+            },
+            {
+              "question": "標準用途跟高風險用途要怎麼選？",
+              "answer": "先看工作內容在不在標準用途涵蓋的範圍裡：標準用途一次授權給整個團隊、一年續約一次，能滿足大多數日常工作。如果工作屬於誤用風險較高、標準用途仍會擋下的項目，才需要另外申請高風險用途，這種授權只綁單一研究專案，每六個月要續約一次，而且只會移除生命科學相關的防護，資安分類器等其他防護照樣運作。"
+            },
+            {
+              "question": "通過驗證、拿到授權之後，是不是就完全不受監控了？",
+              "answer": "不是。Anthropic 把防護從每次請求即時阻擋，改成離線監測使用模式，換來的是 LSVP 流量要保留 30 天資料；一旦發現用途超出申請書登記的範圍，Anthropic 會通知組織的管理員，由管理員在約定的時限內處理，而不是完全沒有把關。"
+            },
+            {
+              "question": "9 月 17 日的公告寫 Opus 5，申請頁又寫 Opus 5.5，是同一件事嗎？",
+              "answer": "不完全是同一個時間點的資訊。9 月 17 日的公告裡，標準用途寫的是 Mythos 5.1、Opus 5 與 Sonnet 5；同一個申請頁面在 2026 年 9 月 23 日查核時，寫的是 Mythos 5.1 用在生物與藥物開發、Opus 5.5 與 Sonnet 5 搭配調整過的生物安全分類器。申請頁沒有印日期，看不出改動時間，兩處資訊要分開理解。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "這是給組織申請的 beta，不是一般帳號的改變",
+          "text": "生命科學驗證方案目前只開放通過驗證的團隊與機構，在 Team 與 Enterprise 方案申請；一般的 Free、Pro、Max 方案與第三方平台都還沒有這個選項。放寬的範圍綁定申請書登記的用途，資安分類器等其他防護不受影響。以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有說明任何國家或地區的開放條件，也沒有提到台灣；文中規格數字都是 Anthropic 自己的說法，本站沒有實測。"
+        },
+        {
+          "type": "link",
+          "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-2026-january-september-index"
+        },
+        {
+          "type": "link",
+          "text": "Anthropic 九月威脅情報報告：七類 AI 濫用與被盯上的 API 金鑰",
+          "url": "https://mokaair.com/zh-TW/life/ai-news-anthropic-threat-report-20260910"
+        }
+      ],
+      "sources": [
+        {
+          "title": "Introducing the Life Sciences Verification Program（Anthropic 官方公告，分類 Announcements，頁面自印 Sep 17, 2026）",
+          "url": "https://www.anthropic.com/news/life-sciences-verification-program",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "Anthropic Newsroom（新聞總覽頁，本篇標註 Sep 17, 2026）",
+          "url": "https://www.anthropic.com/news",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "Detecting and countering misuse of AI: September 2026（公告內文以 our recent threat report 連結指向這一頁）",
+          "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "Life Sciences Verification Program（官方申請頁）",
+          "url": "https://claude.com/form/life-sciences-verification-program",
+          "checked_on": "2026-09-23"
+        }
+      ]
+    }
+  }
+}
