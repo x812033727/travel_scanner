@@ -331,8 +331,8 @@
     },
     {
       "claim": "1 Pbps 的實際可用容量、開賣容量或初期點亮容量。",
-      "seen_where": "兩份來源都只寫設計容量。",
-      "why_excluded": "設計容量不等於啟用初期可用或可售容量，來源沒有寫，正文不可以暗示 2029 年一啟用就有 1 Pbps 在跑。"
+      "seen_where": "兩份來源只各給一個總容量數字——Meta 寫 Petal will deliver 1 Pbps，住友電工寫 aims to be the world’s first petabit-class optical submarine cable system；兩頁都沒有出現 design capacity 這個詞（2026-09-23 第二輪重抓後逐字確認）。",
+      "why_excluded": "這條纜要到 2029 年才預計啟用，這個數字不等於啟用初期可用或可售容量，來源沒有寫，正文不可以暗示 2029 年一啟用就有 1 Pbps 在跑；也不可以把它寫成「設計容量」——那是兩份來源都沒有用的詞（協調者 2026-09-23 裁定，第二輪已把內容包四處改成來源自己的說法）。"
     },
     {
       "claim": "把 Petal 的 1 Pbps 和臺馬第四海纜的 1.9 Tbps 相除或並列比較。",
@@ -574,6 +574,92 @@
       "本紀錄 verified_facts 裡「對世界第一用的是 aims to be，比 Meta 頁面的 will be 保守」這句只引了聯合稿兩種強度中的一種，會把第二輪帶往同一個錯誤；第一輪已把那一條的 fact 改寫成同時交代標題／首段的直述與規格段的 aims to be，verbatim_quote 未動。",
       "歸因密度（FACTCHECK-47 的讀者優先規則）：改前 P3／P10 各有 3 個歸因詞、P8 有「Meta 列出」＋「Meta 表示」＋新加的第三個；改後每一段正文都在 2 個以內，第一段 1 個。「本文」0 次、「正文」自我指涉 0 次。",
       "段落字數刻意停在 2908（上限 3000），留 92 字給第二輪；description 198（上限 200），若第二輪要加字要先減字。"
-    ]
+    ],
+    "second_round": {
+        "checked_by": "independent round-2 factcheck agent (did not write the draft, did not do round 1)",
+        "checked_on": "2026-09-23",
+        "method": "2026-09-23 台北 01:56 起自行重抓 sources[] 兩條（`curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`，同一主機間隔 ≥1 秒，UA／標頭／查詢字串未帶任何人的姓名或 email）：engineering.fb.com 200／100,217 bytes、sumitomoelectric.com 200／150,242 bytes，兩份正文都完整讀到，bytes 與第一輪相同。範圍照 agents/tech/SECOND-ROUND.md：第一輪改過的 20 條主張全數覆核、第一輪新寫進去的 12 個子句逐句回原文、第一輪判「確認」的 109 條取每三條一條（36 條）重驗，另加 41 條 verbatim_quote 的連續字串比對（3 條只差 HTML 連結邊界的空白，忽略空白後全數命中，0 個真問題）、兩個結尾連結與目標內容包 zh-TW title 的逐字比對（兩條都完全相同）、關鍵字清點（Meta 頁 Taiwan 0、operate 0、average 0、design capacity 0、Asia-Pacific 只出現在頁尾舊文清單、Marea 2 次且都沒有容量數字；住友電工頁 Orange 0、commercial 1、aims to be 1、fund and operate 1）。改了 14 處：協調者三項裁定 8 處、第二輪自己抓到的精確度問題 6 處。段落字數 2908 → 2888（上限 3000），description 198 → 195（上限 200）。",
+        "claims_checked": 115,
+        "changes": [
+          {
+            "claim": "「設計容量」是兩份來源都沒有的詞（description、第一段、summary 第 1 句、FAQ A3 共四處）",
+            "before": "Meta 表示設計容量達／可達／是 1 Pbps",
+            "after": "Meta 表示 Petal 將提供 1 Pbps",
+            "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+            "why": "原文是 Petal will deliver 1 Pbps (1 petabit per second or 1,000 terabits per second)；兩頁都沒有 design capacity。協調者 2026-09-23 裁定改用來源自己的說法。"
+          },
+          {
+            "claim": "description 把 Orange 併進「NEC、住友電工與 Orange 的分工」",
+            "before": "以及 NEC、住友電工與 Orange 的分工",
+            "after": "以及 NEC 與住友電工的分工",
+            "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+            "why": "三家公司的聯合新聞稿全文出現 Orange 0 次（本紀錄 not_said 第 14 條早已寫明）。協調者 2026-09-23 裁定：聯合稿沒有指名就刪。"
+          },
+          {
+            "claim": "summary 第 3 句把 Orange 排進聯合稿的三方分工",
+            "before": "住友電工提供 2 芯光纖，Orange 協助法國端登陸。",
+            "after": "住友電工提供 2 芯光纖。",
+            "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+            "why": "聯合稿原文只有 Meta will fund and operate the cable system. As part of this, NEC ... and Sumitomo Electric ... 三方；摘要沒有標明出處，會讓讀者以為 Orange 也寫在那份稿裡。"
+          },
+          {
+            "claim": "「法國電信集團 Orange」這個描述（P4、FAQ A5 兩處）",
+            "before": "法國電信集團 Orange",
+            "after": "Orange",
+            "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+            "why": "來源只寫 support on the French landing from Orange、landing party in France 與職稱 EVP, Orange International Networks，沒有「法國電信集團」這個描述（第一輪的開放問題 2）。"
+          },
+          {
+            "claim": "P3：Meta 內文寫 Petal 會做到 petabit「等級」容量",
+            "before": "內文寫 Petal 會是第一條在跨洋距離做到 petabit 等級容量的海纜",
+            "after": "內文寫 Petal 會是第一條在跨洋距離做到 petabit 容量的海纜",
+            "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+            "why": "內文原句是 will be the first subsea cable to deliver petabit capacity at transoceanic distances，沒有 -class；-Class 只出現在標題（Petabit-Class）。同一篇 P13 與 FAQ A6 引同一句時都沒有加「等級」，加了會自相矛盾。"
+          },
+          {
+            "claim": "P13／FAQ A6：聯合稿開頭那句被寫成「petabit 級」（兩處）",
+            "before": "世界第一個商用 petabit 級光纖海纜系統",
+            "after": "世界第一個商用 petabit 光纖海纜系統",
+            "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+            "why": "聯合稿首段是 the world’s first commercial petabit (*) optical submarine cable system（沒有 -class），規格段才是 aims to be the world’s first petabit-class。這兩句的強度對比正是那一段的主題，替首段補上「級」會把對比抹平。"
+          },
+          {
+            "claim": "P10：5.5 倍「回推不出 Marea 有多大」",
+            "before": "這個倍數只能當成 Meta 給的相對值，回推不出 Marea 有多大。",
+            "after": "這個倍數只能當成 Meta 給的相對值。",
+            "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+            "why": "第一輪新寫的句子。5.5 倍在算術上是除得回去的，「回推不出」本身不成立；真正的理由（頁面沒有印 Marea 的容量）同一句前半已經寫了，留著只會引讀者去試算。"
+          },
+          {
+            "claim": "P6：SDM 是在一條海纜裡增加「對」光纖",
+            "before": "在一條海纜裡塞進更多對光纖。",
+            "after": "在一條海纜裡塞進更多光纖。",
+            "source_url": "https://engineering.fb.com/2026/09/21/connectivity/petal-petabit-transoceanic-subsea-cable/",
+            "why": "原文 to increase the number of fibers within a subsea cable，單位是 fibers 不是 fiber pairs。"
+          },
+          {
+            "claim": "P11：聯合稿把分工寫得「更細」",
+            "before": "把三家公司的分工寫得比 Meta 的貼文更細：",
+            "after": "把三家公司的分工寫得比 Meta 的貼文更明確：",
+            "source_url": "https://sumitomoelectric.com/press/2026/09/prs040",
+            "why": "Meta 的貼文用三段加三段具名引言講合作方，敘述比聯合稿長；聯合稿贏在把「誰出資、誰營運、誰設計建造、誰供纖」寫成一句明確的分工，不是細節更多。"
+          }
+        ],
+        "open_questions": [
+          "協調者裁定 2（「聯合稿沒有指名 Orange 就刪」）與裁定 3（Meta 貼文裡的具名引言可用、註明出處即可）互相牴觸，也與本紀錄 must_not_write（「Orange 是法國端的登陸協助（Meta 的貼文寫的是 support on the French landing 與 landing party in France）」）與 unverified_or_excluded（「Orange 的說法只能引 Meta 頁面上那段具名引言，並寫明是『Meta 的頁面引述 Orange』」）牴觸。事實是：住友電工聯合稿全文 Orange 0 次，Meta 貼文 Orange 4 次（含 Jean-Louis Le Roux, EVP, Orange International Networks 的具名引言）。第二輪的處理是：沒有出處的兩處（description、summary）刪掉、沒有來源的「法國電信集團」描述刪掉，明確掛在「Meta 的貼文」名下的四處保留（P4 所在整節就是在講 Meta 那篇公告，P11、P12、FAQ A5 都逐字寫了「Meta 的貼文」）。若站主要的是字面上的全刪，還要再刪 P4 半句、P11 半句、整段 P12（Orange 主管的引言）與 FAQ A5 半句，約 120 字，並同步調整第四節的段數。",
+          "NEC 的兩個官方索引第二輪沒有重抓（第一輪 2026-09-23 00:52／00:53 皆 403，380／420 bytes）。文章目前沒有任何一句需要 NEC 自家頁支撐：NEC 的角色分別引自 Meta 貼文（統包供應商、負責製造與安裝最終產品）與聯合稿（2 芯系統的整體設計與建造）。協調者裁定 3 允許用 Meta 貼文裡那段掛 NEC 名義的具名引言，但文章沒有引，也不需要補。",
+          "P2 的「本站另外寫過台灣與馬祖之間的海纜備援」用的是「本站」不是「本文」，DELTA-4-7 第 14 條禁的是「本文」，第二輪未改；若站主連「本站」也不要，可改成「這個站上另外寫過」。",
+          "圖仍未畫：build_assets.py 的 _DRAWINGS 沒有這個 slug。第二輪沒有動任何數字，定稿數字仍是 8／16／24／48／0.5／1／2029；圖上不得出現 Marea 的容量或任何回推值。"
+        ],
+        "coordinator_rulings": [
+          "裁定 1（「設計容量」改用來源自己的說法）：已執行，四處全改成「Meta 表示 Petal 將提供 1 Pbps」，全篇「設計容量」0 次。本紀錄 unverified_or_excluded 裡那條「兩份來源都只寫設計容量」也已改寫，免得第三個人再被帶回同一個錯。",
+          "裁定 2（Orange）：部分執行，理由見 open_questions 第 1 條。",
+          "裁定 3（Meta 貼文裡掛 NEC 名義的引言可用、註明出處）：不需動用，文章沒有引那段引言，NEC 的兩句角色敘述各自有出處。",
+          "字數上限：段落 2888（≤3000）、description 195（≤200）、表格 caption 79（≤200），都還有餘裕。第二輪沒有為了字數刪掉任何但書、限定詞或歸因；刪掉的都是來源撐不住或重複的字。",
+          "界線再掃（tech 垂直）：topics 只有 tech／tech-news，沒有 finance；只有一個 info callout、沒有投資免責段落；沒有購買、升級或電信業者選擇建議；沒有推定台灣可用（第一段與 FAQ A2 都寫明不經過台灣、沒有提到台灣）；容量、倍數、「世界第一」全部掛在 Meta 或三家公司聯合新聞稿名下；沒有攻擊手法、沒有斷纜地緣政治；沒有與臺馬海纜的並列或倍數（「臺馬」與「1.9 Tbps」只出現在第二個結尾連結的逐字標題裡）。",
+          "歸因密度：改後第一段 1 個歸因詞、正文每段 ≤2 個；「本文」0 次、「正文」自我指涉 0 次；description 句尾只有「（2026 年 9 月查證）」。",
+          "日期一致性：slug 後綴 20260921 ＝ news_date 2026-09-21 ＝第一段「2026 年 9 月 21 日」；checked_on 2026-09-23 在內容包兩條 source、研究紀錄、第二段、表格 caption、圖說一致，第二輪未改。"
+        ]
+      }
   }
 }
