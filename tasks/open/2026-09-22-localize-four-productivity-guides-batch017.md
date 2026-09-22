@@ -44,7 +44,7 @@ metadata, sources, and existing image bytes unchanged.
       diagrams.
 - [x] Scoped pack lint, structural/protected-field/numeric/link audits,
       repository task checks, and a final diff review pass.
-- [ ] A reviewable draft pull request is opened with the exact Git bytes and
+- [x] A reviewable draft pull request is opened with the exact Git bytes and
       evidence attached. Import and publication remain separate release work.
 
 ## Steps
@@ -55,7 +55,9 @@ metadata, sources, and existing image bytes unchanged.
 - [x] Receive independent asset/content/layout review and apply only approved
       files to this claimed scope.
 - [x] Run scoped validation and freeze exact working-tree evidence.
-- [ ] Open a draft PR after the exact Git bytes are independently bound.
+- [x] Open draft PR #659 after the initial exact Git bytes were independently
+      bound; later review identified and independently closed the AI disclosure
+      translation gap before the required strict-main refresh.
 
 ## How to verify
 
@@ -103,4 +105,16 @@ paths, 19 visible SVG labels, and the 01–04 step numbers.
   rows; preserve their explicit independent review evidence.
 - Existing non-text hero JPGs are reusable. Keep the original zh-TW SVG and all
   four original hero JPG files unchanged.
+- Root's first canonical-wrapper review correctly put the batch on HOLD because
+  all 16 target documents retained two Traditional Chinese, reader-visible AI
+  disclosure leaves. The HOLD receipt is
+  `batch017-productivity/root-wrapper-review-HOLD-ai-disclosures-20260922.json`
+  SHA-256 `5741bed4ef6181c40b20fc635d8f40b97780ae08f0b0945d583310e2c469d057`.
+  The exact 32-leaf locale correction passed independent review in
+  `batch017-productivity/independent-ai-disclosure-v2-review/receipt-pass.json`
+  SHA-256 `859fae9d4f92a2cff778d4b1ceefdfc89751bfc3e052bbb306da097ba554098e`.
+  It changes only `hero.credit.author` and `hero.credit.license` for en, ja, ko,
+  and zh-CN, preserves Mokaair attribution and AI/non-photographic provenance,
+  and removes the 32 copied-disclosure validation errors. Existing approved
+  numeric-equivalence warnings remain explicit and are not called strict PASS.
 - Do not import, publish, deploy, or write production in this task.
