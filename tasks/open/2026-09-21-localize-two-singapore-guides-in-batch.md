@@ -135,3 +135,22 @@ three 390px scroll positions; text bounds and pairwise overlap are zero.
   pairwise-text overlap counts were zero. Pack lint passed with pre-existing
   no-summary and English length advisories; independent editorial review is
   still required.
+- Independent v4 editorial review rejected the candidate on four specific
+  findings (receipt `content-review-batch010-v4-rejected.json`, SHA-256
+  `df1afe795726e7439d1af7805b5267d2004630363215ebee72dd37823e225dc2`).
+  The staged v5 candidate narrows the 0.60 SGD daily card fee to foreign-issued
+  Mastercard/Visa in the fare table, comparison and remaining generic lead
+  translations; adds Mandai's 2026-07-01 Destination Pass entry-slot exemption
+  and the remaining single-ticket/member booking rule in all five languages;
+  limits Sultan Mosque's Friday restriction to walk-in visiting in all five
+  documents and SVGs; and removes two traditional `接著` forms from zh-CN.
+  The newly verified Mandai announcement replaces a redundant SimplyGo FAQ
+  entry in this itinerary's 20-source list; the direct transport guide link
+  and its own SimplyGo source remain. The changed mosque and fee source records
+  carry their 2026-09-22 verification dates. The v5 source corrections and
+  entire candidate still need independent review; this note is not approval.
+- Scoped pack lint passes for both v5 packs with only the pre-existing
+  `no_summary` and English how-to length advisories. The five changed itinerary
+  SVGs parse as XML and rendered at 1600px and at the 390px scrolled view;
+  measured text out-of-bounds and overlaps are zero. Compact render evidence
+  and metrics are at `P:\article-localization-batch010-v5\render`.
