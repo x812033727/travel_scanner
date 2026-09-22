@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans JP','Yu Gothic','Hiragino Sans',system-ui,sans-serif">
+  <title id="title">桃園空港での出国動線図。自宅から空港MRT A1・A3でインタウンチェックインする経路と、ターミナルで直接チェックインする経路が、保安検査・e-Gate・搭乗口へつながる。下段には出発までのカウントダウンを表示</title>
+  <desc id="desc">上段は出国の動線で、2つの経路があります。経路Aは自宅から空港MRT A1台北車站（B1、06:00–21:30）またはA3新北産業園区駅（1F、09:00–16:00）でインタウンチェックインを済ませ、空港MRTで空港へ向かう経路です。経路Bは自宅から第1または第2ターミナルへ直接向かい、チェックインと荷物の預け入れを行う経路です。両経路は保安検査で合流し、その後、自動出入国審査e-Gateを通って搭乗口へ進みます。下段は出発前のカウントダウンで、目盛りの間隔は時間に比例していません。出発3時間前にインタウンチェックインの受付が終了し、0が出発です。空港チェックイン締め切りと搭乗口閉鎖は航空会社によって異なるため、数値を示していません。下部には3つの情報枠があります。インタウンチェックインはA1でChina Airlines、Mandarin Airlines、EVA Air、UNI Air、Cathay Pacific、STARLUX Airlines、A3でChina Airlines、Mandarin Airlines、EVA Air、UNI Air、Tigerair Taiwanが利用でき、両駅とも出発3時間前に受付終了です。計算上、A1を利用できるのは09:00以降の出発便です。保安検査では液体を100ml以下の容器に入れ、1Lの透明な再封可能袋にまとめ、1人1袋までとします。モバイルバッテリーは2個までで機内持ち込みのみ、預け入れ不可、機内での使用と充電も禁止です。e-Gateのこの登録案内は、台湾に戸籍を持ち中華民国旅券を使う中華民国国民が対象で、10歳以上・身長120cm以上なら初回からゲートでセルフ登録でき、登録から審査通過まで約30秒です。登録は永久に有効です。</desc>
+  <rect width="1600" height="900" fill="#F7F1E8" />
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#5C6B6B" /></marker>
+    <marker id="arrowdark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B" /></marker>
+  </defs>
+
+  <text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">桃園空港の出国動線と時間の逆算</text>
+  <text x="60" y="84" font-size="18" fill="#5C6B6B">市内チェックイン・保安検査・e-Gate・搭乗口</text>
+
+
+  <rect x="50" y="230" width="140" height="110" rx="14" fill="#FFFFFF" stroke="#102A2B" stroke-width="4" />
+  <text x="120" y="280" font-size="28" font-weight="700" fill="#102A2B" text-anchor="middle">自宅</text>
+  <text x="120" y="312" font-size="18" fill="#5C6B6B" text-anchor="middle">出発</text>
+  <path d="M 190 285 L 222 285" fill="none" stroke="#5C6B6B" stroke-width="4" />
+  <path d="M 222 193 L 222 445" fill="none" stroke="#5C6B6B" stroke-width="4" />
+  <path d="M 222 193 L 246 193" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 222 317 L 246 317" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 222 445 L 246 445" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+
+
+  <text x="250" y="124" font-size="18" font-weight="700" fill="#0D6B68">ルートA　市内チェックイン</text>
+  <rect x="250" y="138" width="380" height="110" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+  <text x="440" y="172" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">A1 台北駅</text>
+  <text x="440" y="200" font-size="17" fill="#0B4F4D" text-anchor="middle">地下1階（B1）</text>
+  <text x="440" y="232" font-size="21" font-weight="700" fill="#0B4F4D" text-anchor="middle">06:00–21:30</text>
+
+  <rect x="250" y="262" width="380" height="110" rx="14" fill="#F1E8E2" stroke="#6B4A3A" stroke-width="4" />
+  <text x="440" y="296" font-size="21" font-weight="700" fill="#4E3428" text-anchor="middle">A3 新北産業園区駅</text>
+  <text x="440" y="324" font-size="17" fill="#4E3428" text-anchor="middle">1階（1F）</text>
+  <text x="440" y="356" font-size="21" font-weight="700" fill="#4E3428" text-anchor="middle">09:00–16:00</text>
+
+  <path d="M 630 193 L 686 193" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 630 317 L 686 317" fill="none" stroke="#6B4A3A" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="690" y="138" width="200" height="234" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4" />
+  <text x="790" y="236" font-size="22" font-weight="700" fill="#102A2B" text-anchor="middle">空港MRTで空港へ</text>
+  <text x="790" y="266" font-size="17" fill="#5C6B6B" text-anchor="middle">桃園空港MRT</text>
+  <text x="790" y="294" font-size="16" fill="#5C6B6B" text-anchor="middle">機内持込手荷物だけ</text>
+
+
+  <rect x="250" y="400" width="640" height="90" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4" />
+  <text x="570" y="438" font-size="18" font-weight="700" fill="#1F4E73" text-anchor="middle">ルートB　直接T1/T2でチェックイン</text>
+  <text x="570" y="470" font-size="17" fill="#1F4E73" text-anchor="middle">チェックイン・手荷物預け</text>
+
+
+  <path d="M 890 255 L 946 255" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <path d="M 890 445 L 1045 445 L 1045 386" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="950" y="230" width="190" height="150" rx="14" fill="#FBE9E4" stroke="#B8442D" stroke-width="4" />
+  <text x="1045" y="296" font-size="26" font-weight="700" fill="#8A2E1D" text-anchor="middle">保安検査</text>
+  <text x="1045" y="328" font-size="18" fill="#8A2E1D" text-anchor="middle">セキュリティ</text>
+
+  <path d="M 1140 305 L 1186 305" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="1190" y="230" width="170" height="150" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4" />
+  <text x="1275" y="296" font-size="19" font-weight="700" fill="#1F4E73" text-anchor="middle">自動化ゲート</text>
+  <text x="1275" y="328" font-size="20" fill="#1F4E73" text-anchor="middle">e-Gate</text>
+
+  <path d="M 1360 305 L 1406 305" fill="none" stroke="#5C6B6B" stroke-width="4" marker-end="url(#arrow)" />
+  <rect x="1410" y="230" width="150" height="150" rx="14" fill="#E6F2EC" stroke="#2E7D5B" stroke-width="4" />
+  <text x="1485" y="296" font-size="24" font-weight="700" fill="#1E5A40" text-anchor="middle">搭乗口</text>
+  <text x="1485" y="328" font-size="18" fill="#1E5A40" text-anchor="middle">ゲート</text>
+
+  <text x="1290" y="430" font-size="16" fill="#5C6B6B" text-anchor="middle">2ルートは保安検査で合流し、e-Gateへ</text>
+
+
+  <text x="60" y="524" font-size="20" font-weight="700" fill="#102A2B">出発時刻から逆算</text>
+  <text x="1540" y="524" font-size="15" fill="#5C6B6B" text-anchor="end">縮尺どおりではありません</text>
+  <path d="M 160 580 L 1510 580" fill="none" stroke="#102A2B" stroke-width="4" marker-end="url(#arrowdark)" />
+
+  <circle cx="520" cy="580" r="11" fill="#0D6B68" />
+  <text x="520" y="556" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">3時間</text>
+  <text x="520" y="616" font-size="17" font-weight="700" fill="#0D6B68" text-anchor="middle">市内チェックイン締切</text>
+  <text x="520" y="640" font-size="16" fill="#0B4F4D" text-anchor="middle">出発3時間前</text>
+
+  <path d="M 960 562 L 960 598" fill="none" stroke="#8A8F8F" stroke-width="3" stroke-dasharray="6 5" />
+  <text x="960" y="616" font-size="16" fill="#5C6B6B" text-anchor="middle">チェックイン締切：航空会社ごと</text>
+  <text x="960" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">航空会社で確認</text>
+
+  <path d="M 1210 562 L 1210 598" fill="none" stroke="#8A8F8F" stroke-width="3" stroke-dasharray="6 5" />
+  <text x="1210" y="616" font-size="16" fill="#5C6B6B" text-anchor="middle">搭乗口締切：航空会社ごと</text>
+  <text x="1210" y="640" font-size="15" fill="#5C6B6B" text-anchor="middle">航空会社で確認</text>
+
+  <circle cx="1440" cy="580" r="11" fill="#102A2B" />
+  <text x="1440" y="556" font-size="24" font-weight="700" fill="#102A2B" text-anchor="middle">0</text>
+  <text x="1440" y="616" font-size="17" font-weight="700" fill="#102A2B" text-anchor="middle">出発</text>
+  <text x="1440" y="640" font-size="16" fill="#5C6B6B" text-anchor="middle">搭乗券の時刻</text>
+
+
+  <rect x="50" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4" />
+  <text x="74" y="706" font-size="19" font-weight="700" fill="#102A2B">市内チェックイン</text>
+  <text x="74" y="738" font-size="15" fill="#0B4F4D">A1 06:00–21:30 · 中華/マンダリン/EVA/UNI/キャセイ/STARLUX</text>
+  <text x="74" y="766" font-size="15" fill="#4E3428">A3 09:00–16:00 · 中華/マンダリン/EVA/UNI/タイガーエア台湾</text>
+  <text x="74" y="794" font-size="17" fill="#102A2B">両駅とも出発3時間前に受付終了</text>
+  <text x="74" y="822" font-size="17" font-weight="700" fill="#0D6B68">A1：09:00以降の出発便（逆算）</text>
+
+  <rect x="557" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#B8442D" stroke-width="4" />
+  <text x="581" y="706" font-size="19" font-weight="700" fill="#102A2B">保安検査</text>
+  <text x="581" y="738" font-size="17" fill="#102A2B">液体は1容器100mL以下</text>
+  <text x="581" y="766" font-size="17" fill="#102A2B">1L透明再封袋・1人1袋</text>
+  <text x="581" y="794" font-size="17" font-weight="700" fill="#8A2E1D">モバイルバッテリー2個まで・機内持込のみ</text>
+  <text x="581" y="822" font-size="17" fill="#102A2B">預入不可・機内使用と充電も不可</text>
+
+  <rect x="1064" y="672" width="485" height="180" rx="14" fill="#FFFFFF" stroke="#2F6F9F" stroke-width="4" />
+  <text x="1088" y="698" font-size="15" font-weight="700" fill="#102A2B">e-Gate（初回はゲートで登録）</text>
+  <text x="1088" y="725" font-size="15" fill="#102A2B">台湾に戸籍を持つ中華民国国民</text>
+  <text x="1088" y="748" font-size="15" fill="#102A2B">中華民国旅券を使用</text>
+  <text x="1088" y="772" font-size="15" fill="#102A2B">10歳以上・身長120cm以上</text>
+  <text x="1088" y="797" font-size="16" font-weight="700" fill="#1F4E73">登録＋審査：約30秒</text>
+  <text x="1088" y="822" font-size="15" fill="#102A2B">登録は永久有効・旅券更新後も再登録不要</text>
+
+  <text x="1540" y="884" font-size="15" fill="#5C6B6B" text-anchor="end">© Mokaair 作図 2026</text>
+</svg>
