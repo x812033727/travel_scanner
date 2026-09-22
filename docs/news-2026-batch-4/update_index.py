@@ -1,9 +1,9 @@
-"""Add this batch's articles to their vertical's index, in place, in five languages.
+"""Add this batch's articles to their vertical's index, in place, in the locales it publishes.
 
-``update_index.py [crypto|tech|ai]...`` -- with no vertical named, every vertical that has
-something to add. Run once, after that vertical's packs carry all five locales. Every sentence
-edit is an exact replacement that must match once, so a second run fails instead of editing
-twice.
+``update_index.py [crypto|tech|ai]... [--locale=<locale>] [--dry-run]`` -- with no vertical
+named, every vertical that has something to add; with no locale named, all five. Run once,
+after that vertical's packs carry the locales the run edits. Every sentence edit is an exact
+replacement that must match once, so a second run fails instead of editing twice.
 
 Three things changed from batch 3:
 
