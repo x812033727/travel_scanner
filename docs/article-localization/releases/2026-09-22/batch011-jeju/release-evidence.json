@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "batch": "011",
+  "released_on": "2026-09-22",
+  "scope": {
+    "slugs": ["jeju-car-rental-guide"],
+    "excluded_slugs": ["nami-island-petite-france-day-trip", "seoul-where-to-stay"],
+    "locales": ["zh-TW", "zh-CN", "en", "ja", "ko"],
+    "public_locale_pages": 5
+  },
+  "git": {
+    "pull_request": "https://github.com/x812033727/travel_scanner/pull/643",
+    "reviewed_pull_request_head": "e1150216ff79f7e355ee3e0c7cd5ef0b4fe374a8",
+    "merged_commit": "222a6a0d385eae989c0736ae8ace2a0df066f1f1"
+  },
+  "review_receipts": {
+    "independent_content": {
+      "path": "independent-content-review.json",
+      "sha256": "51cf40b0f345948706ca91e7f2ae597f7c6cc8d43176782885d2babad241d7f7",
+      "decision": "approved_exact_frozen_jeju_v3_candidate",
+      "blocking_findings": 0,
+      "reviewed_at": "2026-09-22T00:42:36.399860+00:00"
+    },
+    "structural_qa": {
+      "path": "structural-qa.json",
+      "sha256": "f7a86e6a7bfc1e1810e84b958a509d70c9a748619c0616660444be903af29617"
+    },
+    "source_correction": {
+      "path": "source-correction-review.json",
+      "sha256": "773608f2f5a3f0d83151a3223db8eb657a76dadcebf55f38bcc3f059544265af",
+      "decision": "approved_for_exact_source_corrections",
+      "reviewed_at": "2026-09-21T23:41:20.677384+00:00"
+    },
+    "svg": {
+      "path": "svg-independent-review.json",
+      "sha256": "421e65ba10467c24b6a79f03691a16ba09af193e7b54d8924fe57366a21967fc",
+      "decision": "approved_exact_pr_643_lf_svg_assets_no_blockers",
+      "blocking_findings": 0,
+      "reviewed_at": "2026-09-22T01:46:30.990900+00:00"
+    },
+    "release_candidate_equivalence": {
+      "path": "release-candidate-equivalence.json",
+      "sha256": "abe48954ca9f5c1c0086ca3c845dd880ad9232678a03bdbbc4006cc8d243a774",
+      "decision": "PASS: v2 changes only topic positions and manifest pack digest; full ArticlePack model equals PR #643 head"
+    }
+  },
+  "release_bundle": {
+    "manifest_sha256": "c6051f2698e4355243f2e22a0fa62fbd60589ad7b05d53272763852f23d93eea",
+    "baseline_sha256": "b9153b9e6003cdfe11e083d7a12375886bd188785326fa78c29dfd083eb4e18b",
+    "zip_sha256": "7cdba2db826c723b9eb10e636a6a8568aba53ac6ffe55a81b64b34d1e0d22312",
+    "v2_change": "Only pack topic order and its manifest digest changed; all five documents, eight assets, source review and baseline were unchanged."
+  },
+  "production_journal": {
+    "sha256": "57b2791c6a39e18572ed0ff128f8b8fe4c27c392b09af6ec8afe8dd584c5aa5c",
+    "first_event_at": "2026-09-22T10:36:28.231441+08:00",
+    "last_commit_at": "2026-09-22T10:36:58.42095+08:00",
+    "planned": {"drafts": 5, "publish_articles": 5, "publish_hubs": 0},
+    "committed": {"drafts": 5, "publish_articles": 5, "publish_hubs": 0},
+    "pending_operation": null,
+    "idempotent_rerun_changed_journal": false
+  },
+  "public_qa": {
+    "html": {
+      "sha256": "4658ced165ae567b2832ff3d8094101c8c45f4180bad9f05a51eb789e281104f",
+      "pages": 5,
+      "errors": 0,
+      "checks": ["H1", "visible paragraph", "hero", "diagram", "canonical", "reciprocal hreflang", "same-language links"]
+    },
+    "browser": {
+      "sha256": "40a4bdcedb79ee6f33c366ba9a1b8d3fd601f1a98db906cf4b630775afcd8044",
+      "desktop_mobile_cases": 10,
+      "errors": 0,
+      "images_loaded": true,
+      "document_overflow": false,
+      "mobile_diagrams_scrollable": true
+    },
+    "sitemap_api_unique_public_locales": 1832,
+    "sitemap_xml_unique_urls": 2390,
+    "checked_in_page_article_targets": 25,
+    "wrong_language_or_unpublished_targets": 0
+  },
+  "public_urls": [
+    "https://mokaair.com/zh-TW/guides/howto/jeju-car-rental-guide",
+    "https://mokaair.com/zh-CN/guides/howto/jeju-car-rental-guide",
+    "https://mokaair.com/en/guides/howto/jeju-car-rental-guide",
+    "https://mokaair.com/ja/guides/howto/jeju-car-rental-guide",
+    "https://mokaair.com/ko/guides/howto/jeju-car-rental-guide"
+  ]
+}
