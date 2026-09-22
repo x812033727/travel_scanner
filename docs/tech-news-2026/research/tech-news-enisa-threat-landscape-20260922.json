@@ -10,7 +10,7 @@
     "ENISA 威脅全景 2026 出爐：8,257 起事件、資料年份是 2025",
     "歐盟 ENISA 發布 2026 威脅全景：報告名稱寫 2026，數字全來自 2025"
   ],
-  "summary": "2026 年 9 月 22 日，歐盟網路安全局（ENISA）發布《ENISA Threat Landscape 2026》報告與同日的新聞稿。這一版最需要先講清楚的是年份：報告名稱寫 2026，但它分析的是 2025 年 1 月 1 日到 12 月 31 日之間的事件，共 8,257 起，資料來自公開來源、歐盟會員國匿名分享，以及 ENISA Cyber Partnership Programme 的成員。新聞稿的主軸是「數位相依關係擴大了攻擊面」：供應鏈與第三方服務被鎖定，一次入侵就可能擴散到下游。新聞稿裡最容易被讀錯的一句是「60% 利用漏洞」——它的分母不是全部入侵，而是 ENISA 判定得出入侵途徑的那一小部分未授權存取事件（新聞稿寫 5%，報告寫 5.2%，對應的比例是 60.4%）。其餘重點：以件數看，低衝擊的 DDoS 占 51.3%，但短期衝擊最大的是勒索軟體等金錢動機事件；公共行政仍是被鎖定最多的部門（31.8%），其中 81.8% 是意識形態驅動的 DDoS；2025 年新發布的 CVE 超過 4.8 萬個，比前一年增加 22%；ENISA 評估新興 AI 模型會愈來愈常被用來支援惡意行動，但 2025 年觀察到的多半仍是輔助角色。這份報告是情勢分析，不是法規，沒有替任何人新增義務，範圍也只涵蓋歐盟會員國與設在歐盟的組織，全文沒有提到台灣。",
+  "summary": "2026 年 9 月 22 日，歐盟網路安全局（ENISA）發布《ENISA Threat Landscape 2026》報告與同日的新聞稿。這一版最需要先講清楚的是年份：報告名稱寫 2026，但它分析的是 2025 年 1 月 1 日到 12 月 31 日之間的事件，共 8,257 起，資料來自公開來源、歐盟會員國匿名分享，以及 ENISA Cyber Partnership Programme 的成員。新聞稿的主軸是「數位相依關係擴大了攻擊面」：供應鏈與第三方服務被鎖定，一次入侵就可能擴散到下游。新聞稿裡最容易被讀錯的一句是「60% 利用漏洞」——它的分母不是全部入侵，而是 ENISA 判定得出入侵途徑的那一小部分未授權存取事件（新聞稿寫 5%，報告寫 5.2%，對應的比例是 60.4%）。其餘重點：以件數看，低衝擊的 DDoS 占 51.3%，但短期衝擊最大的是勒索軟體等金錢動機事件；公共行政仍是被鎖定最多的部門（31.8%），其中 81.8% 是意識形態驅動的 DDoS；2025 年新發布的 CVE 超過 4.8 萬個，比前一年增加 22%；ENISA 評估新興 AI 模型會愈來愈常被用來支援惡意行動，但 2025 年觀察到的多半仍是輔助角色。這份報告是情勢分析，不是法規，沒有替任何人新增義務，範圍也只涵蓋歐盟會員國與設在歐盟的組織，沒有任何台灣機關或企業的事件（【2026-09-23 查核代理更正】報告第 78 頁的 FIMI 章仍提到台灣兩次，是敘事題目不是事件）。",
   "checked_on": "2026-09-23",
   "sources": [
     {
@@ -252,7 +252,7 @@
       "verbatim_quote": "ENISA recorded 4 709 hacktivist claims against EU MSs during the year, of which more than 89% involved DDoS."
     },
     {
-      "fact": "【漏洞總量】2025 年公布並取得 CVE 編號的新漏洞超過 4.8 萬個，比前一年增加 22%。這是全球的 CVE 發布量，不是歐盟的。",
+      "fact": "【漏洞總量】2025 年公布並取得 CVE 編號的新漏洞超過 4.8 萬個，比前一年增加 22%（報告第 90 頁第 7 章）。【2026-09-23 查核代理更正】報告沒有印出這個數字的地理範圍（同章寫 DDoS 時才有「At a global level」），所以不可以寫成「全球」；它與 ENISA 自己蒐集的歐盟事件數不同軸，這一點報告撐得住。",
       "url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf",
       "is_vendor_claim": true,
       "verbatim_quote": "Overall, more than 48 thousand new vulnerabilities were published in 2025 with assigned Common Vulnerability and Exposure (CVE) Identifiers"
@@ -349,12 +349,12 @@
     }
   ],
   "not_said": [
-    "三條來源（新聞稿、出版品頁、101 頁報告全文）都沒有提到台灣、台灣的機關或台灣的企業。報告的範圍是歐盟會員國與設在歐盟的組織。正文的否定句只能寫成「以 2026-09-23 查核，這份報告與新聞稿未見任何關於台灣的內容」，不可以寫成「台灣不受影響」或「ENISA 說台灣沒事」。",
+    "【2026-09-23 查核代理更正】新聞稿與出版品頁沒有提到台灣，報告也沒有記錄任何台灣機關或企業的事件（統計範圍是歐盟會員國與設在歐盟的組織），但**報告全文提到 Taiwan 兩次，都在第 78 頁（第 5 章 FIMI，該章直接取自 EEAS 2026 年 3 月的第四份 FIMI 報告）**：把台灣與香港、新疆、西藏列為中國相關敘事經常出現的題目。因此**不可以寫「這份報告沒有提到台灣」**；要寫只能照原文中性轉述「被列為敘事題目」，並且不做任何實質判斷，也不可以寫「台灣不受影響」或「ENISA 說台灣沒事」。",
     "沒有任何一處替讀者或企業新增法律義務。這是情勢分析報告，不是法規、不是指引、不是預告。NIS2 的義務來自指令本身，不是來自這份報告；正文不可以寫成「新規上路」。",
     "新聞稿沒有印出事件總數。8,257 這個數字只在報告第 9 頁的方法論一節。只讀新聞稿的人看不到它。",
-    "沒有說歐盟整體的事件數比前一年增加或減少。報告反而兩次說明為什麼不能這樣比（六個月重疊、擴大追蹤範圍）。全篇唯一的年增數字是 CVE 發布量的 22%，那是全球 CVE 的量不是歐盟事件量。",
+    "沒有說歐盟整體的事件數比前一年增加或減少。報告反而兩次說明為什麼不能這樣比（六個月重疊、擴大追蹤範圍）。全篇唯一的年增數字是 CVE 公布量的 22%（報告第 90 頁）。【2026-09-23 查核代理更正】報告沒有印出這個數字的地理範圍，不可以寫成「全球」；可寫的對比是「那是 CVE 編號的公布量，不是 ENISA 蒐集的歐盟事件數」。",
     "沒有給一般使用者的操作步驟或檢查清單。讀者能做的事要由這一篇自己推導，並且明說是編輯整理、不是 ENISA 的建議。",
-    "沒有點名任何一個廠牌的產品有漏洞，也沒有給任何 CVE 編號當作待修清單。這一點與 CISA KEV 那一類公告完全不同，不可以混寫。",
+    "【2026-09-23 查核代理更正】報告**有**點名設備廠牌（第 90 頁：D-Link、Zyxel、DASAN、Huawei、Realtek、Netgear 的未修補老舊 IoT／邊緣裝置），全文也含 38 組 CVE 編號。它沒有的是「待修清單」那種形式——不像 CISA KEV 是一份要求特定機關在期限前修補的目錄。本篇按 overlaps_existing_article 的分工不寫任何 CVE 編號或機型，但不可以寫成「ENISA 沒有點名任何廠牌」。",
     "沒有公布資料集原始檔、可下載的統計表或互動式儀表板。報告的比例只能照文字引用，圖表內的數字抽不出來。",
     "沒有說 ENISA 會對任何組織採取行動、開罰或要求改善。ENISA 沒有這個權限，報告也沒有這樣寫。",
     "出版品頁的 Language 區塊以 2026-09-23 查核只有 EN 一個連結；沒有說會不會出其他語言版本，也沒有日期。",
@@ -489,7 +489,7 @@
     "不可以把 ENISA 的預測寫成事實。報告用的是有定義的可能性用語（HIGHLY LIKELY >90%、LIKELY 60–90%、POSSIBLE 40–60%、PLAUSIBLE 10–40%、UNLIKELY <10%），翻譯時 likely 要寫成「ENISA 評估……可能」，不可以寫成「將會」「一定」。",
     "不可以寫 AI 已經自主發動攻擊。報告寫 2025 年攻擊者主要用消費級 AI 工具增強既有技能、AI 多半是輔助角色；「攻擊鏈更多階段直接由 AI 驅動」「Human-out-of-the-loop 概念驗證」是對 2026 年的 likely 評估，而且原文寫的是 possible experimentation。",
     "不可以寫這份報告帶來任何新的法遵義務、新規上路或新的通報要求。它是情勢分析，不是法規。NIS2 的義務來自指令本身。",
-    "不可以寫任何關於台灣的實質判斷。三條來源都沒提到台灣。要提台灣只能寫「這份報告的範圍是歐盟會員國與設在歐盟的組織，以 2026-09-23 查核未見任何關於台灣的內容」。不可以寫「台灣不受影響」「台灣情況類似」「台灣應比照辦理」。",
+    "不可以寫任何關於台灣的實質判斷。【2026-09-23 查核代理更正】報告第 78 頁提到台灣兩次（FIMI 章，直接取自 EEAS 報告），所以**不可以寫「這份報告沒有提到台灣」**；可以寫的是「統計範圍是歐盟會員國與設在歐盟的組織，沒有任何台灣機關或企業的事件」與照原文中性轉述的「台灣與香港、新疆、西藏被列為中國相關敘事經常出現的題目」。不可以寫「台灣不受影響」「台灣情況類似」「台灣應比照辦理」。",
     "不可以引用新聞稿裡「2025 Annual Review: NIS2 Cybersecurity Incident Reporting」那個連結。它的 href 是一個本機檔案路徑（含個人資料夾名稱），不是公開網址；不得引用、不得寫進正文、也不要把那個路徑抄進任何地方。",
     "不可以把 EBA 的詐騙損失寫成 ENISA 的統計，也不可以用新聞稿的 40 億歐元。要寫就照報告寫「歐洲銀行管理局於 2025 年報告、2024 年線上投資詐騙在歐洲經濟區估計約 42 億歐元」，並明寫是 EBA 的估計。",
     "不可以引用任何只出現在報告圖表（Figure 1–58）裡的數字——那些數字抽不出來，等於沒讀到。",
@@ -518,6 +518,114 @@
       ["事件總數", "8,257 起，非全貌"],
       ["60.4% 的分母", "只有 5.2% 查得出"],
       ["誰被鎖定", "公共行政 31.8%"]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "round-1 independent fact-check agent (Claude Opus 5, 1M context)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23（台北）01:31 用 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 重抓 sources[] 三條，同一主機間隔 2 秒；請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的姓名、email 或其他個人資料。新聞稿 200／62,053 bytes、出版品頁 200／52,427 bytes、報告 PDF 200／8,377,315 bytes，三個檔案的 md5 與撰稿代理 _raw 目錄裡的副本完全相同（沒有換版）。PDF 用系統 python 的 pypdf 重抽一次，101 頁、250,702 字元，與 _raw/etl2026.txt 逐位元組相同。把內容包的 title、description、summary 四句、19 段正文、表格九格與 caption、圖解 alt 與 caption、FAQ 七題、callout、兩個結尾連結、三條 sources 拆成 98 條可查主張，逐條回到今天自己抓的原文比對；報告的數字一律以 PDF 全文搜尋為準，新聞稿與報告不一致處照研究紀錄的裁定採用報告。",
+    "claims_checked": 98,
+    "changes": [
+      {
+        "claim": "description 把 60.4%／5.2% 這組數字說成新聞稿寫的",
+        "before": "新聞稿「60.4% 利用漏洞」的分母其實只有 5.2%",
+        "after": "報告「60.4% 利用漏洞」的分母其實只有 5.2%",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "第二段：三條來源都沒有提到台灣",
+        "before": "以 2026 年 9 月 23 日查核，這份報告與新聞稿都沒有提到台灣、台灣的機關或台灣的企業。",
+        "after": "報告統計的是歐盟會員國與設在歐盟的組織，沒有任何台灣機關或企業的事件；新聞稿與出版品頁沒有提到台灣，報告全文只有一處寫到台灣——在直接取材自歐盟對外事務部（EEAS）資訊操弄報告的那一章，台灣與香港、新疆、西藏被列為中國相關敘事經常出現的題目。",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "「2025 年 1 月 1 日到 12 月 31 日」那句話是新聞稿與報告本文共用的",
+        "before": "新聞稿與報告本文用的是同一句話交代",
+        "after": "新聞稿與出版品頁用的是同一句話交代",
+        "source_url": "https://www.enisa.europa.eu/publications/enisa-threat-landscape-2026"
+      },
+      {
+        "claim": "擴大追蹤範圍會影響數字（少了報告自己的但書）",
+        "before": "這些改變都會影響報告裡的數字。",
+        "after": "這些改變都會影響報告裡的數字（報告同時寫明，這並沒有實質改變趨勢與排名）。",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "CVE 年增 22% 被寫成「全球」的發布量（正文兩處＋callout 一處）",
+        "before": "是全球新發布的 CVE 數量成長 22%，那是全球的漏洞公告量，不是歐盟的事件數／因為它算的是全球的 CVE 發布量／除了全球 CVE 發布量的年增 22%",
+        "after": "是 2025 年新發布並取得 CVE 編號的漏洞成長 22%，那是漏洞公告的數量，不是 ENISA 蒐集的歐盟事件數／因為它算的是 CVE 編號的公布量／除了 CVE 公布量的年增 22%",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "「數位相依關係擴大攻擊面」那句話寫成新聞稿的標題",
+        "before": "新聞稿在標題主張：2026 年版威脅全景報告確認，",
+        "after": "新聞稿開頭第一句就主張：2026 年版威脅全景報告確認，",
+        "source_url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience"
+      },
+      {
+        "claim": "5.2% 被寫成「整體的 5.2%」（來源沒有印這個分母的基數）",
+        "before": "母數本身就只有整體的 5.2%",
+        "after": "母數本身只有 5.2%",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "蒐報偏誤寫成報告「在附錄裡承認」，並把限定詞擴及自願分享的資訊",
+        "before": "報告自己在附錄裡也承認，公開來源與自願分享的資訊本來就有蒐報粒度、時序與部門歸類上的偏誤。",
+        "after": "報告在方法論那一節也寫明，公開來源的通報本來就有蒐報粒度、時序與部門歸類上的偏誤。",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "「相依關係擴大攻擊面」被寫成報告開頭的主張",
+        "before": "這也呼應報告開頭的主張",
+        "after": "這也呼應新聞稿開頭的主張",
+        "source_url": "https://www.enisa.europa.eu/news/exploring-the-evolution-of-the-cyber-threat-landscape-how-dependencies-weaken-our-digital-resilience"
+      },
+      {
+        "claim": "把 ENISA 對 2026 年的評估說成「轉趨謹慎」",
+        "before": "對 2026 年，ENISA 的評估轉趨謹慎：報告寫「可能」",
+        "after": "對 2026 年，報告給的是一句有保留的預測：寫「可能」",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "表格把「金錢動機 29.3%」與 DDoS、未授權存取並列成同一軸的事件類型",
+        "before": "[\"金錢動機（含勒索軟體）\", \"29.3%\", \"件數不是最多，卻是短期衝擊最大的類型\"]",
+        "after": "[\"金錢動機的活動（含勒索軟體）\", \"29.3%\", \"依動機分類，與上兩列不同軸、會互相重疊；件數不是最多，卻是短期衝擊最大\"]",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "FAQ「台灣在這份報告裡嗎？」的答案",
+        "before": "以 2026 年 9 月 23 日查核，這份報告與新聞稿都沒有提到台灣、台灣的機關或台灣的企業。報告的範圍是歐盟會員國與設在歐盟的組織，沒有涵蓋台灣，……",
+        "after": "報告的統計範圍是歐盟會員國與設在歐盟的組織，沒有涵蓋台灣，也沒有任何台灣機關或企業的事件；新聞稿與出版品頁完全沒有提到台灣。報告全文提到台灣的地方只有一處：……那是被討論的題目，不是被統計的事件。",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "FAQ 把 CC BY 4.0 寫成「可以自由公開流通與再利用」，並說每個數字都能在報告裡核對",
+        "before": "報告採 CC BY 4.0 授權、標記 TLP:CLEAR，代表可以自由公開流通與再利用；……這一篇引用的每一個數字都可以自己翻到報告裡核對。",
+        "after": "報告標記 TLP:CLEAR、採 CC BY 4.0 授權，代表可以自由公開流通，再利用時要標示來源並註明有沒有改動（封面圖除外，版權屬第三方）；……這一篇引用的數字都可以自己翻到報告或新聞稿裡核對。",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "callout 的台灣句與全球 CVE 句",
+        "before": "範圍是歐盟會員國與設在歐盟的組織，以查核日未見任何關於台灣的內容。",
+        "after": "統計範圍是歐盟會員國與設在歐盟的組織，沒有任何台灣機關或企業的事件；報告全文只有資訊操弄那一章把台灣列為敘事題目之一。",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      },
+      {
+        "claim": "研究紀錄本身：not_said 第 1 條、第 4 條、第 6 條與 must_not_write 第 15 條、verified_facts 第 35 條",
+        "before": "三條來源都沒提到台灣／沒有點名任何一個廠牌的產品有漏洞，也沒有給任何 CVE 編號／那是全球 CVE 的量",
+        "after": "報告第 78 頁提到台灣兩次（FIMI 章）；報告第 90 頁點名六家設備廠牌、全文含 38 組 CVE 編號；報告沒有印出 CVE 統計的地理範圍",
+        "source_url": "https://www.enisa.europa.eu/sites/default/files/2026-09/ENISA%20Threat%20Landscape%202026_Final.pdf"
+      }
+    ],
+    "open_questions": [
+      "台灣那一處要不要寫進正文，是這一輪最大的判斷。研究紀錄原本寫「三條來源都沒提到台灣」並據此禁止任何台灣句；但報告第 78 頁（第 5 章 FIMI，ENISA 自己寫明整章直接取自 EEAS 2026 年 3 月的第四份 FIMI 報告）出現兩次 Taiwan：「The so-called big four topics (Taiwan, Hong Kong, Xinjiang and Tibet) featured heavily」與「Hong Kong, Taiwan and the situation in the South China Sea were used in conjunction with promoting China's concepts and views on sovereignty and territorial claims」。第一輪的處理是照原文中性轉述「被列為敘事題目」，不做任何實質判斷，也不引用該章的其他統計。若站主認為這一句政治敏感度過高、寧可整段不提台灣，請改寫成只講統計範圍（歐盟會員國與設在歐盟的組織），但**不可以恢復「報告沒有提到台灣」那句話**——它與全文檢索的結果相反。",
+      "報告把「60.4% 的分母 5.2%」寫成 `(5.2%)` 的括號，沒有寫這 5.2% 是「占全部事件」還是「占未授權存取事件」。同一份報告第 60 頁的對照例子寫的是「in only 20% of the recorded incidents」（分母寫得出來）。第一輪因此把正文的「整體的 5.2%」改成不指定基數的「5.2%」。若日後 ENISA 出勘誤或 Booklet 把分母寫明，這句要回來重寫。",
+      "表格第三列（金錢動機 29.3%）與前兩列不同分類軸，第一輪在備註寫明「會互相重疊」。若協調者希望表格只留同一軸的兩列，要同步改 summary 第三句與 FAQ 第五題，那兩處也用了 29.3%。"
+    ],
+    "coordinator_rulings": [
+      "第二段仍留著「讀的是這則新聞稿、報告的出版品頁與報告全文 PDF」「本站沒有做任何測試」這類查證流水帳，與 DELTA-4-7 第 14 條（查證紀律不要寫進正文）相衝突。第一輪沒有動它，因為 check_article.py 要求查核日出現在前兩段，改寫整段屬於重寫不屬於改事實。請協調者決定要不要在審稿階段收掉。",
+      "新聞稿「Additional resources」那一條的 href 仍然是一個含個人資料夾名稱的本機檔案路徑（ENISA 的貼上失誤）。第一輪照研究紀錄的規定沒有引用、沒有抄錄那個字串，也沒有寫進任何檔案。",
+      "研究紀錄 verified_facts 第 3 條寫「每頁頁首印 TLP:CLEAR」，實際是 101 頁中的 100 頁（封底沒有）。內容包沒有用到這個說法，第一輪只記錄不修改。"
     ]
   }
 }
