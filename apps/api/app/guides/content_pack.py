@@ -100,6 +100,35 @@ def default_directory() -> Path:
     return Path(str(files("app.guides").joinpath("content")))
 
 
+def publish_holds_path() -> Path:
+    return Path(str(files("app.guides").joinpath("publish_holds.json")))
+
+
+def load_publish_holds(path: Path | None = None) -> dict[str, str]:
+    """Slugs that must not be published yet, mapped to why.
+
+    A hold stops ``--publish`` only. The draft still imports: an unpublished draft is
+    invisible to readers, and blocking the import too would make an unrelated content run
+    fail on a slug it never meant to publish.
+
+    The list lives beside the packs rather than inside one because a pack is the thing under
+    review -- rewriting it must not silently drop the hold on it.
+    """
+    source = path or publish_holds_path()
+    if not source.is_file():
+        return {}
+    try:
+        raw = json.loads(source.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        raise ContentPackError(f"{source.name}: {error}") from error
+    if not isinstance(raw, dict) or not all(
+        isinstance(slug, str) and isinstance(reason, str) and reason.strip()
+        for slug, reason in raw.items()
+    ):
+        raise ContentPackError(f"{source.name}: expected an object of slug -> non-empty reason")
+    return dict(raw)
+
+
 def load_packs(
     directory: Path | None = None, *, slugs: set[str] | None = None
 ) -> list[ArticlePack]:
@@ -142,6 +171,8 @@ class ArticlePlan:
     article_id: UUID | None
     taxonomy: TaxonomyAction
     locales: list[LocalePlan]
+    # Why publication is withheld, when it is. Every ``LocalePlan.publish`` is already False.
+    publish_hold: str | None = None
 
 
 @dataclass
@@ -158,6 +189,7 @@ class ImportPlan:
                         {"locale": item.locale, "action": item.action, "publish": item.publish}
                         for item in entry.locales
                     ],
+                    **({"publish_hold": entry.publish_hold} if entry.publish_hold else {}),
                 }
                 for entry in self.articles
             ]
@@ -212,7 +244,9 @@ async def plan_import(
     plan is returned -- so a run with one bad pack writes nothing at all.
     """
     plan = ImportPlan()
+    holds = load_publish_holds()
     for pack in packs:
+        hold = holds.get(pack.slug)
         chosen = {
             locale: document
             for locale, document in pack.locales.items()
@@ -235,7 +269,8 @@ async def plan_import(
                     pack=pack,
                     article_id=None,
                     taxonomy="create",
-                    locales=[LocalePlan(locale, "create", True) for locale in chosen],
+                    locales=[LocalePlan(locale, "create", hold is None) for locale in chosen],
+                    publish_hold=hold,
                 )
             )
             continue
@@ -254,7 +289,7 @@ async def plan_import(
             wanted = document.model_dump(mode="json")
             row = rows.get(locale)
             if row is None:
-                locale_plans.append(LocalePlan(locale, "create", True))
+                locale_plans.append(LocalePlan(locale, "create", hold is None))
                 continue
             # Normalised on both sides: a row written before ``hero`` existed lacks the key,
             # and comparing raw JSON would report every old article as changed.
@@ -271,7 +306,11 @@ async def plan_import(
                 else None
             )
             locale_plans.append(
-                LocalePlan(locale, "unchanged" if current == wanted else "update", live != wanted)
+                LocalePlan(
+                    locale,
+                    "unchanged" if current == wanted else "update",
+                    hold is None and live != wanted,
+                )
             )
         plan.articles.append(
             ArticlePlan(
@@ -281,6 +320,7 @@ async def plan_import(
                 if _same_taxonomy(article, pack, destination, topics, aliases, related)
                 else "update",
                 locales=locale_plans,
+                publish_hold=hold,
             )
         )
     return plan
@@ -293,6 +333,8 @@ class ImportReport:
     unchanged: list[str] = field(default_factory=list)
     published: list[str] = field(default_factory=list)
     taxonomy_updated: list[str] = field(default_factory=list)
+    # slug -> why, for every article a publishing run imported but refused to publish.
+    publish_held: dict[str, str] = field(default_factory=dict)
     failed: str | None = None
 
     def as_dict(self) -> dict[str, Any]:
@@ -302,6 +344,7 @@ class ImportReport:
             "unchanged": self.unchanged,
             "published": self.published,
             "taxonomy_updated": self.taxonomy_updated,
+            "publish_held": self.publish_held,
             "failed": self.failed,
         }
 
@@ -392,6 +435,9 @@ async def _apply_article(
                 report.unchanged.append(_key(pack.slug, item.locale))
 
     if not publish:
+        return
+    if entry.publish_hold is not None:
+        report.publish_held[entry.pack.slug] = entry.publish_hold
         return
     for item in entry.locales:
         if not item.publish:
