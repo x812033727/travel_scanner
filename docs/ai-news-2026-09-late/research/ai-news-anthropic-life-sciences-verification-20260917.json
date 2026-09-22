@@ -47,15 +47,15 @@
       "title": "Life Sciences Verification Program（官方申請頁；公告內文的 apply here 與 submit an application here 都指向這個網址）",
       "url": "https://claude.com/form/life-sciences-verification-program",
       "publisher": "Anthropic（claude.com）",
-      "fetched_at": "2026-09-23T00:30:00+08:00",
+      "fetched_at": "2026-09-23T01:21:00+08:00",
       "http_status": 200,
-      "bytes": 441311,
+      "bytes": 441344,
       "checked_on": "2026-09-23",
-      "verbatim_quote": "LSVP is currently available to verified organizations on Team and Enterprise plans only. Free, Pro, and Max plans are not eligible at this time."
+      "verbatim_quote": "LSVP is currently available to verified organizations on Claude Enterprise and Team plans, and the Claude Platform (API). Free, Pro, and Max plans are not eligible at this time."
     }
   ],
   "sourcing_verdict": "full",
-  "sourcing_notes": "2026-09-23（台北）00:27–00:30 我用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐一抓四條來源，同一主機之間隔 ≥1 秒，請求的 UA、標頭、查詢字串都沒有帶任何人的姓名、email 或個人資料，也沒有填寫或送出申請表單（只做 GET）。四條的結果：(1) https://www.anthropic.com/news/life-sciences-verification-program → 200／173,464 bytes，正文從 'Today, we are introducing' 讀到 'in the coming months.'，五個小節（Verification and access types、Enabling trusted access through shared responsibility、How monitoring works in LSVP、What researchers are saying、Applications and availability、What comes next）全部讀到，不是導覽殼；上一輪探索紀錄是 173,407 bytes，差 57 bytes 出在頁尾 Related content 卡片換過內容（動態區塊，見 live_data_warnings）。(2) https://www.anthropic.com/news → 200／462,392 bytes，列表讀到 Sep 18, 2026 那筆為最新，本篇排在 Sep 17, 2026。(3) https://www.anthropic.com/threat-intelligence-report-september-2026 → 200／1,221,761 bytes，讀到 'Detecting and countering biological misuse of AI' 整節。(4) https://claude.com/form/life-sciences-verification-program → 200／441,311 bytes，讀到方案說明與資格說明；表單欄位沒有填。四個 HTML 原檔與抽出的純文字都存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\ai-news-anthropic-life-sciences-verification-20260917\\ （lsvp、news-index、threat-report、lsvp-form 各一組 .html 與 .txt）。verbatim_quote 的比對基準是 .txt：抽取方式為先把 '<!-- -->' 整串刪掉、再刪掉其他 HTML 註解，拿掉 <script> 與 <style> 的內容，把 <br> 與 </p></div></li></h1-6></tr></td></section> 換成換行，其餘標籤直接去掉，然後 html.unescape，再把連續空白與連續換行各壓成一個。唯一的例外是 event_date_basis 與 verified_facts 裡那條 publishedOn：它在 <script> 的 RSC payload 內，以反斜線跳脫的原樣存在於 news-index.html，比對要對 .html 而不是 .txt。第二條來源的 verbatim_quote 含一個換行，因為正規化把 <time> 與分類標籤接在同一行、標題落到下一行。",
+  "sourcing_notes": "2026-09-23（台北）00:27–00:30 我用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐一抓四條來源，同一主機之間隔 ≥1 秒，請求的 UA、標頭、查詢字串都沒有帶任何人的姓名、email 或個人資料，也沒有填寫或送出申請表單（只做 GET）。四條的結果：(1) https://www.anthropic.com/news/life-sciences-verification-program → 200／173,464 bytes，正文從 'Today, we are introducing' 讀到 'in the coming months.'，五個小節（Verification and access types、Enabling trusted access through shared responsibility、How monitoring works in LSVP、What researchers are saying、Applications and availability、What comes next）全部讀到，不是導覽殼；上一輪探索紀錄是 173,407 bytes，差 57 bytes 出在頁尾 Related content 卡片換過內容（動態區塊，見 live_data_warnings）。(2) https://www.anthropic.com/news → 200／462,392 bytes，列表讀到 Sep 18, 2026 那筆為最新，本篇排在 Sep 17, 2026。(3) https://www.anthropic.com/threat-intelligence-report-september-2026 → 200／1,221,761 bytes，讀到 'Detecting and countering biological misuse of AI' 整節。(4) https://claude.com/form/life-sciences-verification-program → 200／441,311 bytes，讀到方案說明與資格說明；表單欄位沒有填。四個 HTML 原檔與抽出的純文字都存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\ai-news-anthropic-life-sciences-verification-20260917\\ （lsvp、news-index、threat-report、lsvp-form 各一組 .html 與 .txt）。verbatim_quote 的比對基準是 .txt：抽取方式為先把 '<!-- -->' 整串刪掉、再刪掉其他 HTML 註解，拿掉 <script> 與 <style> 的內容，把 <br> 與 </p></div></li></h1-6></tr></td></section> 換成換行，其餘標籤直接去掉，然後 html.unescape，再把連續空白與連續換行各壓成一個。唯一的例外是 event_date_basis 與 verified_facts 裡那條 publishedOn：它在 <script> 的 RSC payload 內，以反斜線跳脫的原樣存在於 news-index.html，比對要對 .html 而不是 .txt。第二條來源的 verbatim_quote 含一個換行，因為正規化把 <time> 與分類標籤接在同一行、標題落到下一行。第二輪查核在 2026-09-23 01:21 用同一道指令重抓四條，得到 173,459／460,541／1,221,782／441,344 bytes；只有第四條的正文改過字（資格句由 'on Team and Enterprise plans only' 變成 'on Claude Enterprise and Team plans, and the Claude Platform (API)'），sources[3] 的 fetched_at、bytes 與 verbatim_quote 已同步改成 01:21 的版本，00:30 的 HTML 仍留在 _raw，兩個時點都可覆核。",
   "verified_facts": [
     {
       "fact": "Anthropic 公告的名稱與定位：Life Sciences Verification Program（LSVP），讓生命科學專業人員以「對生物相關工作較寬鬆」的一組防護使用 Mythos、Opus 與 Sonnet 模型。",
@@ -76,7 +76,7 @@
       "verbatim_quote": "The program is launching in beta, initially for teams and institutions. We will continue to improve the program and expand access to individual Pro and Max plans over time."
     },
     {
-      "fact": "LSVP 要解開的是「目前在一般開放的 Fable 模型上被擋住」的工作，公告舉的例子是藥物開發、研究生物學、臨床開發與製造。",
+      "fact": "LSVP 要解開的是「目前在一般開放的 Fable 模型上被擋住」的工作，公告舉的例子是藥物發現（drug discovery）、研究生物學、臨床開發與製造。協調者 2026-09-23 裁定 drug discovery 一律譯「藥物發現」，與 clinical development 的「臨床開發」區分。",
       "url": "https://www.anthropic.com/news/life-sciences-verification-program",
       "is_vendor_claim": true,
       "verbatim_quote": "The LSVP is designed to enable life science professionals to use our models across a wide range of tasks that are currently blocked in our generally available Fable models, like drug discovery, research biology, clinical development, and manufacturing."
@@ -292,10 +292,10 @@
       "verbatim_quote": "Here, we present five case studies of actors using our models in ways that could support biological weapons development."
     },
     {
-      "fact": "申請頁（2026-09-23 讀到）寫明資格：只開放 Team 與 Enterprise 方案上通過驗證的組織，Free、Pro、Max 目前不符資格。",
+      "fact": "申請頁寫明資格。2026-09-23 01:21 讀到的版本：開放 Claude Enterprise 與 Team 方案上通過驗證的組織，以及 Claude Platform（API）；Free、Pro、Max 目前不符資格。同日 00:30 讀到的版本寫的是 'on Team and Enterprise plans only'，當天改過字，兩份 HTML 都留著。",
       "url": "https://claude.com/form/life-sciences-verification-program",
       "is_vendor_claim": true,
-      "verbatim_quote": "LSVP is currently available to verified organizations on Team and Enterprise plans only. Free, Pro, and Max plans are not eligible at this time."
+      "verbatim_quote": "LSVP is currently available to verified organizations on Claude Enterprise and Team plans, and the Claude Platform (API). Free, Pro, and Max plans are not eligible at this time."
     },
     {
       "fact": "申請頁寫明由組織管理員填表登記意願，Anthropic 再評估資格；填表不保證取得存取權。",
@@ -310,7 +310,7 @@
       "verbatim_quote": "Completing this form does not guarantee your organization access to the program. If eligible, we’ll be in touch with more details. For more information or questions, please reach out to your account team."
     },
     {
-      "fact": "申請頁（2026-09-23）寫的模型與 9/17 公告不同：這裡寫 Mythos 5.1 用於生物與藥物開發，Opus 5.5 與 Sonnet 5 搭配精修過的生物安全分類器——公告當天寫的是 Opus 5。兩者要分開寫、各自標日期。",
+      "fact": "申請頁（2026-09-23）寫的模型與 9/17 公告不同：這裡寫 Mythos 5.1 用於生物與藥物發現（drug discovery），Opus 5.5 與 Sonnet 5 搭配精修過的生物安全分類器——公告當天寫的是 Opus 5。兩者要分開寫、各自標日期。",
       "url": "https://claude.com/form/life-sciences-verification-program",
       "is_vendor_claim": true,
       "verbatim_quote": "The Life Sciences Verification Program (beta), gives qualifying organizations expanded access to Mythos 5.1 for biology and drug discovery, and Opus 5.5 and Sonnet 5 with a refined bio safety classifier."
@@ -335,7 +335,7 @@
     {
       "claim": "台灣的生技公司、醫院或大學實驗室能不能申請、要不要另外符合什麼條件。",
       "seen_where": "公告頁與申請頁（2026-09-23 各自 200，完整讀到正文）全篇沒有任何地區條件的句子。",
-      "why_excluded": "沒有任何一手來源支持任何一個方向。正文只能寫「查核到 2026-09-23，官方頁未說明開放地區」，不得推測，也不得從「Team 與 Enterprise 方案在台灣買得到」推論出「台灣可以申請」。"
+      "why_excluded": "沒有任何一手來源支持任何一個方向。正文只能寫「查核到 2026-09-23，官方頁未說明開放地區」，不得推測。協調者 2026-09-23 裁定：不可以在正文帶入「Team 與 Enterprise 方案在台灣買得到」這個沒有來源的前提（原本寫在這一條裡），改成直接寫官方頁沒有交代哪些地區的組織可以申請。"
     },
     {
       "claim": "Xaira Therapeutics、Edison Scientific、Manifold Bio 三家已經是 LSVP 的使用者。",
@@ -442,7 +442,7 @@
   "live_data_warnings": [
     "https://www.anthropic.com/news 是會變動的列表頁：分頁、精選排列與最新一筆都會隨新公告改變。本紀錄只用它確認這一篇的標註日期與 publishedOn，不要引用它的筆數、排序或「最新一篇是什麼」。",
     "公告頁頁尾的 Related content 是動態區塊：2026-09-23 讀到的三張卡片是 Partnering with Accenture on embedded evaluation、Developing Enterprise Frontier Safeguards with our customers、Improving our alignment and security efforts。上一輪抓到 173,407 bytes、本輪 173,464 bytes，差的 57 bytes 就出在這一區。不要把 Related content 的內容寫進正文，也不要拿 bytes 當比對依據。",
-    "https://claude.com/form/life-sciences-verification-program 是沒有印任何日期的活頁面，而且是行銷／申請頁不是公告：上面的型號（現為 Mythos 5.1、Opus 5.5、Sonnet 5）與資格句（現為 Team 與 Enterprise）都可能隨時改。引用它的每一句都要寫「2026 年 9 月 23 日查核時」。",
+    "https://claude.com/form/life-sciences-verification-program 是沒有印任何日期的活頁面，而且是行銷／申請頁不是公告：上面的型號（現為 Mythos 5.1、Opus 5.5、Sonnet 5）與資格句（2026-09-23 01:21 為 Claude Enterprise 與 Team 方案，以及 Claude Platform（API）；同日 00:30 還是 Team 與 Enterprise plans only）都可能隨時改，本篇查核當天就改了一次。引用它的每一句都要寫「2026 年 9 月 23 日查核時」。",
     "威脅報告頁 1,221,761 bytes，含 Download report 與 Download IOCs 兩個下載按鈕；本輪只讀網頁正文，沒有下載 PDF 或 IOC 檔，不得引用報告 PDF 內頁的任何數字。",
     "公告內的 apply here 與 submit an application here 兩處連結目前都指向 https://claude.com/form/life-sciences-verification-program；連結目標日後可能改變，正文若要給讀者網址，要寫成「從公告頁的申請連結進入」而不是把網址當成永久路徑。",
     "站上既有的 claude-model-lineup-2026 的模型清單查核日是 2026-09-13，本篇查到的申請頁已出現 Opus 5.5，兩者會不一致。這是既有文章的時效問題，不在本篇處理範圍，正文不要去更正或提及那一篇的清單。"
@@ -562,6 +562,82 @@
       "ASSIGNMENTS A3「它引用的威脅報告正是第二個連結那篇」：公告 HTML 裡 recent threat report 的 href 確為 https://www.anthropic.com/threat-intelligence-report-september-2026；第二個結尾連結 text 與 ai-news-anthropic-threat-report-20260910 的 zh-TW title 逐字相同（程式比對 True）。",
       "DELTA-4-7 第 14 條（讀者優先）：全篇無「本文」；description 只在句尾帶「（2026 年 9 月查證）」；title／description／summary 無清點數字。正文只有 1 個「官方」。但第 3、4、6、8、16 段各有兩個以上歸因詞（Anthropic 表示／說明／公司預期／公告舉／公告列），依「≤1 attribution per paragraph」偏多——屬風格不屬事實，依查核規格『never restyle』未改，留給協調者或第二輪處理。",
       "AI 垂直界線：全篇無購買建議、無推薦式比價、無金額；廠商宣稱皆有歸因；beta、預期、尚未支援三種狀態都保留。只有一個 callout，沒有免責 callout。"
-    ]
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2)",
+      "checked_on": "2026-09-23",
+      "method": "2026-09-23 台北 01:21 以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓四條來源（同一主機間隔 ≥1 秒；UA、標頭、查詢字串都沒有帶任何人的姓名或 email；只做 GET，沒有填寫或送出表單），得到 200／173,459、200／460,541、200／1,221,782、200／441,344 bytes，四條都讀到正文。範圍照 agents/ai/SECOND-ROUND.md：第一輪改動的 10 條全部覆核、第一輪新寫進去的字句逐句回一手來源、以 random.seed(20260923) 從 119 條 CONFIRMED 抽出三分之一（39 條）重查，合計 49 條主張；另以程式對 47 條 verbatim_quote 做連續字串比對（含 ...／…／| 的引文逐片段看），並逐段盤點 17 個段落的歸因密度。",
+      "claims_checked": 49,
+      "changes": [
+        {
+          "claim": "申請頁的資格句（正文第 10 段，新增一句）",
+          "before": "（正文只寫到 9/17 公告當下的第一方 console／Enterprise／Team）",
+          "after": "申請頁 9 月 23 日寫的資格是 Claude Enterprise 與 Team 方案，以及 Claude Platform（API），Free、Pro、Max 方案不符資格。",
+          "source_url": "https://claude.com/form/life-sciences-verification-program"
+        },
+        {
+          "claim": "申請頁的資格句（callout）",
+          "before": "生命科學驗證方案目前只開放通過驗證的團隊與機構，在 Team 與 Enterprise 方案申請；一般的 Free、Pro、Max 方案與第三方平台都還沒有這個選項。",
+          "after": "生命科學驗證方案只開放通過驗證的團隊與機構；申請頁 9 月 23 日寫的資格是 Claude Enterprise 與 Team 方案，以及 Claude Platform（API），一般的 Free、Pro、Max 方案不符資格，第三方平台也還沒有這個選項。",
+          "source_url": "https://claude.com/form/life-sciences-verification-program"
+        },
+        {
+          "claim": "drug discovery 的譯法（正文第 3 段）",
+          "before": "公告舉的例子有藥物開發、研究生物學、臨床開發與製造",
+          "after": "公告舉的例子有藥物發現（drug discovery）、研究生物學、臨床開發與製造",
+          "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+        },
+        {
+          "claim": "drug discovery 的譯法（正文第 11 段）",
+          "before": "寫的是 Mythos 5.1 用在生物與藥物開發",
+          "after": "寫的是 Mythos 5.1 用在生物與藥物發現",
+          "source_url": "https://claude.com/form/life-sciences-verification-program"
+        },
+        {
+          "claim": "drug discovery 的譯法（FAQ 第 5 題）",
+          "before": "寫的是 Mythos 5.1 用在生物與藥物開發",
+          "after": "寫的是 Mythos 5.1 用在生物與藥物發現",
+          "source_url": "https://claude.com/form/life-sciences-verification-program"
+        },
+        {
+          "claim": "台灣段落的未查證前提（正文第 15 段）",
+          "before": "以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有說明任何國家或地區的開放條件，也沒有提到台灣；台灣的生技公司、醫院或大學實驗室能不能申請、要不要符合額外條件，兩頁都沒有寫，不能用「Team 與 Enterprise 方案在台灣買得到」去推論這個方案在台灣是否開放。",
+          "after": "以 2026 年 9 月 23 日查核，公告頁與申請頁都沒有交代哪些地區的組織可以申請，也沒有提到台灣；台灣的生技公司、醫院或大學實驗室能不能申請、要不要符合額外條件，這兩頁都沒有寫。",
+          "source_url": "https://claude.com/form/life-sciences-verification-program"
+        },
+        {
+          "claim": "高風險授權可用型號的時點（正文第 8 段）",
+          "before": "高風險用途目前可以用在 Claude Opus 5 與 Claude Sonnet 5 上",
+          "after": "高風險用途在 9 月 17 日當天可以用在 Claude Opus 5 與 Claude Sonnet 5 上",
+          "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+        },
+        {
+          "claim": "歸因密度與預期的時點（正文第 4 段）",
+          "before": "之後幾週擴大到涵蓋多數生命科學社群，但這是官方當天寫下的預期",
+          "after": "之後幾週擴大到涵蓋多數生命科學社群，但那是 9 月 17 日當天寫下的預期",
+          "source_url": "https://www.anthropic.com/news/life-sciences-verification-program"
+        }
+      ],
+      "record_edits": [
+        "sources[3]：verbatim_quote 換成 01:21 讀到的新資格句，fetched_at 改 2026-09-23T01:21:00+08:00、bytes 改 441344，sourcing_notes 補一句交代第二輪重抓的四個 bytes 與這一句的改動（協調者裁定 1）。",
+        "verified_facts[40]：fact 與 verbatim_quote 同步改成新資格句，並寫明同日 00:30 的舊句與兩份 HTML 都留著（協調者裁定 1）。",
+        "live_data_warnings[3]：資格句的現況改成新句子，並記下本篇查核當天就改過一次（協調者裁定 1）。",
+        "verified_facts[4]、verified_facts[43]：藥物開發改成藥物發現（drug discovery）（協調者裁定 2）。",
+        "unverified_or_excluded[1]：刪掉「Team 與 Enterprise 方案在台灣買得到」這個沒有來源的前提，改成直接寫官方頁沒有交代哪些地區的組織可以申請（協調者裁定 3）。"
+      ],
+      "open_questions": [
+        "verified_facts[37] 的 publishedOn 引文只在 news-index.html 的 RSC payload 裡以反斜線跳脫的原樣命中，對 .txt 或對 html.unescape 過的字串比對都會失敗。第二輪用原樣比對確認它在今天重抓的 HTML 裡仍然存在（True），record 自己也已經寫明「比對要對 .html」——之後若有第三輪跑通用的比對腳本，會再撞到同一個假陽性。",
+        "正文段落字數 2,869 → 2,946（上限 3,000），只剩 54 字的餘裕。若之後還要補句子，建議先精簡第 3 段「原文用「像」帶出例子，不是完整清單」與第 8 段「同樣是舉例，不是完整清單」其中一處的重複敘述，不要動但書或限定詞。",
+        "協調者裁定 2 的「藥物發現（drug discovery）」只在正文第 3 段第一次出現時帶英文，第 11 段與 FAQ 第 5 題只寫「藥物發現」，避免同一個詞在一篇裡帶三次英文。若站主要求三處都帶英文，再加 28 字即可（字數仍在上限內）。",
+        "Anthropic 新聞總覽頁今天的精選卡片仍是 2026-09-22 的 Introducing Claude Opus 5.5（第一輪已記）。這一篇沒有引用那一頁的卡片，正文「申請頁沒印日期」的說法不受影響；claude-model-lineup-2026 的時效問題照live_data_warnings 第 6 條另開維護票。"
+      ],
+      "coordinator_rulings": [
+        "裁定 1（申請頁 9/23 改字）：已重抓確認，sources[3] 與 verified_facts[40] 的 verbatim_quote 換成新句子，正文第 10 段與 callout 都改成含 Claude Platform（API）並標「申請頁 9 月 23 日」。表格第三欄與正文「發布當下」那一句仍屬 9/17 公告，維持不動。",
+        "裁定 2（drug discovery）：譯「藥物發現」，與 clinical development 的「臨床開發」區分；正文兩處、FAQ 一處、研究紀錄兩條事實都已改。",
+        "裁定 3（台灣方案供應的前提）：正文第 15 段的未查證前提已刪，改寫成官方頁沒有交代哪些地區的組織可以申請；研究紀錄 unverified_or_excluded 第 1 條同步改，避免下一輪再搬回來。",
+        "裁定 4（歸因密度）：逐段盤點 17 段——前言第一段 0 個歸因（≤1 合格），只有第 4 段 3 個（Anthropic 說明／公司預期／官方）超過「每段至多 2 個」，已把第三個改寫成日期直述；其餘各段為 0–2 個，全部合格，因此沒有再動。廠商宣稱的歸因一個都沒有刪。"
+      ],
+      "verdict": "第二輪重查 49 條主張，改 8 處（正文 6、FAQ 1、callout 1）與研究紀錄 7 處。其中 6 處是協調者裁定的落實，1 處是第二輪自己找到的日期歸屬錯誤（高風險授權「目前可以用在 Opus 5 與 Sonnet 5」的 today 其實是 9/17），1 處是歸因密度的風格調整。第一輪那 10 處改動經重抓原文覆核全部成立，沒有一處被推翻；隨機抽查的 39 條 CONFIRMED 也全部維持。骨幹敘述未動。"
+    }
   }
 }

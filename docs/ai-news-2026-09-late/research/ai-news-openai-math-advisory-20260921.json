@@ -35,7 +35,7 @@
       "verbatim_quote": "Although we will give advice, we do not have decision making power at any AI company, and the responsibility for the decisions made by any company will rest with that company."
     },
     {
-      "title": "A Severe Misalignment of AI in Mathematics（數學家公開信全文與連署名單）",
+      "title": "A Severe Misalignment of AI in Mathematics（數學家公開信全文）",
       "url": "https://mathandai.org/",
       "publisher": "Math and AI",
       "fetched_at": "2026-09-23T00:28+08:00",
@@ -523,6 +523,53 @@
     ],
     "coordinator_rulings": [],
     "verdict": "needs_second_round",
-    "verdict_note": "改了 13 處事實／表述（含一處 NOT FOUND 改寫）與 8 處漏空格，其中標題與「普林斯頓」動到了骨幹表述；依 DELTA-4-7 第 12 條，第二輪本來就必做。"
+    "verdict_note": "改了 13 處事實／表述（含一處 NOT FOUND 改寫）與 8 處漏空格，其中標題與「普林斯頓」動到了骨幹表述；依 DELTA-4-7 第 12 條，第二輪本來就必做。",
+    "second_round": {
+      "checked_by": "independent factcheck agent, round 2（未參與撰稿，也未參與第一輪）",
+      "checked_on": "2026-09-23",
+      "method": "2026-09-23 01:25–01:26（台北）自行以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 四條（同一主機間隔 ≥1 秒；任何請求的 UA、標頭、查詢字串都沒有帶入任何人的姓名、email 或個人資料；agmai.org 的 /input 表單與 mathandai.org 的 Endorsers 分頁一律未開啟、未填寫、未送出），用自己寫的抽字腳本（去 HTML 註解、去 script／style、html.unescape、正規化 U+2011／NBSP／彎引號）取正文：advisory 200／370,858 B／4,942 字元、navier 200／457,115 B／11,975 字元、agmai 200／67,954 B／2,508 字元、mathandai 200／10,873 B／6,290 字元——正文字數與第一輪完全相同，來源這兩小時內沒有改動。範圍：(a) 第一輪改動的 13 處逐條回一手來源；(b) 第一輪新寫進去的字（summary 2 的「OpenAI 表示」、P2／FAQ A5／callout 的「OpenAI 的兩份公告」與「四份／四個官方頁面」、callout 的「這一篇寫的是」）逐句回原文；(c) 以 random.seed(47) 從 87 條 CONFIRMED 抽出 29 條（第 2、3、4、5、8、11、17、20、36、37、38、40、42、45、50、53、55、59、60、63、64、65、68、71、76、80、81、84、100 條）重驗；(d) 32 條英文引句以連續子字串比對，全部命中且命中在正確的來源頁；(e) 機械掃描：Princeton／普林斯頓在四頁的正文與原始 HTML 皆 0 筆、Taiwan／Asia／Japan／Korea／China／countries 在四頁正文皆 0 筆（navier 唯一的 region 是 This central region shrinks 的流體描述）、九位成員名單兩頁逐行一致（唯一差異是 OpenAI 頁的錯字 Simons Institue，未被抄入）、九人中只有 Hairer 出現在宣言頁列出的名字裡、agmai.org 全站四節且站內連結只有 /input 與 ias.edu（確認尚未刊出任何建議）、內容包內 U+2011／NBSP／零寬字元／Institue 皆 0、CJK 與拉丁字母之間漏空格 0 處、兩個結尾連結 text 與目標內容包 zh-TW title 字元級相同、圖解 caption 與本紀錄 diagram.caption 逐字相同。另把第一輪自己留下的 dump.txt／dump-after.txt 逐行 diff，確認第一輪只動了它報告列出的那 13 處，沒有為了字數刪掉任何但書、限定詞或歸因。",
+      "claims_checked": 45,
+      "claims_confirmed": 42,
+      "claims_changed": 3,
+      "claims_not_found": 0,
+      "changes": [
+        {
+          "claim": "P12 結尾的編輯推論「顯示這場討論不是『支持顧問小組』與『連署公開信』兩個互斥的陣營」，以及把宣言頁上的名字稱為「連署人」「連署名單」",
+          "before": "值得一提的是，其中的 Martin Hairer 同時也是 9 月 11 日那封公開信的連署人之一（連署名單標註他是 2014 年費爾茲獎得主），顯示這場討論不是「支持顧問小組」與「連署公開信」兩個互斥的陣營。",
+          "after": "值得一提的是，其中的 Martin Hairer，名字也出現在 9 月 11 日那封公開信的頁面上，頁面在他的名字後面標註 2014 年費爾茲獎。",
+          "source_url": "https://mathandai.org/",
+          "why": "協調者裁定第 3、4 條。今天重抓 mathandai.org 確認：那 27 行名字的上方沒有任何標題（前一行還是宣言正文的最後一段），下方才是「Add your name／Endorse the Declaration」，另有獨立的 Endorsers 分頁（未開啟）——「連署人」「連署名單」是來源沒有印出的標籤。「不是兩個互斥陣營」是編輯推論，任何來源都沒有這樣寫，支撐它的只有 Hairer 一個重疊個案，依裁定刪除並改寫成純事實（Hairer 的名字出現在該頁上、該頁在他名字後標註 2014 年費爾茲獎，兩點都逐字核對過）。改寫後仍未印出任何人數。"
+        },
+        {
+          "claim": "description 把 OpenAI 自報的成果寫成事實",
+          "before": "起因是一個尚未發布的內部模型解出超過 100 題數學難題。",
+          "after": "起因是一個尚未發布的內部模型：OpenAI 表示它解出超過 100 題數學難題。",
+          "source_url": "https://openai.com/index/advisory-group-on-mathematics-and-ai/",
+          "why": "協調者裁定第 5 條。本紀錄把「超過 100 題」標為 is_vendor_claim: true，summary 第 2 句與正文第三段都有歸因，description 之前沒有。改後 166 字，仍在 120–200 區間，結尾維持「（2026 年 9 月查證）」。"
+        },
+        {
+          "claim": "sources[2] 的標題把宣言頁上的名字稱為「連署名單」",
+          "before": "A Severe Misalignment of AI in Mathematics（數學家公開信全文與連署名單）",
+          "after": "A Severe Misalignment of AI in Mathematics（數學家公開信全文）",
+          "source_url": "https://mathandai.org/",
+          "why": "與上面同一條裁定：來源沒有把那份名單標示為連署名單，published 的來源清單也不該用這個標籤。內容包與本紀錄兩邊同步改；check_article.py 只比對 sources 的 url，不比對標題。"
+        }
+      ],
+      "open_questions": [
+        "第一段仍把「解出 Navier–Stokes」與「超過 100 題」寫在「OpenAI 在官方網站公告」的框架裡，沒有另掛一次「OpenAI 表示」。協調者第 5 條裁定只點名 description，而 FACTCHECK-47 的歸因密度規則是「開頭段最多一個歸因語」，第一段已經有「OpenAI 在官方網站公告」，再加就超標，因此沒有動。若站主要求第一段也逐句歸因，要同時放寬那條密度規則。",
+        "P2、FAQ A5 與 callout 把 navier-stokes 那一頁也算成「OpenAI 的兩份公告」。那一頁的頁首分類印的是「Research Publication」（公告頁印的是「Company」），叫它「公告」是可通的中文說法但不是逐字對應；同一批文字在別處用的是精準的「四份官方頁面」。屬用字而非事實，未改，供站主決定要不要統一成「兩份官方頁面」。",
+        "「尚未發布的內部模型」的「尚未發布」是從 internal model 推出來的：兩頁都只寫 internal，not_said 也記著「沒有寫是否會對外發布」。本紀錄的 must_not_write 自己用的就是「至今未發布」，所以照留；但這是全篇唯一一個沒有逐字來源的限定詞。",
+        "agmai.org 的 /input 表單、mathandai.org 的 Endorsers 分頁兩輪都沒有開啟；「截至查核當天尚未刊出任何一份建議」只以首頁四節與站內連結為據。上線前若要更新狀態句，要再看一次那一頁。"
+      ],
+      "coordinator_rulings": [
+        "(1) 新標題「與 OpenAI 合作的數學顧問小組是獨立的：能公開意見，但不管內部進度」維持。已核對：本紀錄的 title 與內容包 zh-TW title 逐字相同（check_article.py 會比對），且 agmai.org 的「This group operates independently of any AI company」與公告頁的「we're working with mathematicians who have established an independent mathematics advisory group」都撐得住這個寫法。",
+        "(2)「高等研究院（Institute for Advanced Study）」不加「普林斯頓」維持。今天對四頁的正文與原始 HTML 搜尋 Princeton／普林斯頓皆 0 筆，公告頁只有 hosted at the Institute for Advanced Study。",
+        "(3) P12 的「不是兩個互斥陣營」已刪，改寫成事實敘述（見 changes 第 1 筆）。",
+        "(4) 宣言頁上的名字已改寫成「名字也出現在那封公開信的頁面上」，沒有人數、沒有「連署人」標籤；sources[2] 的標題也一併拿掉「連署名單」。",
+        "(5) description 已補上「OpenAI 表示」（見 changes 第 2 筆）。"
+      ],
+      "verdict": "ok",
+      "verdict_note": "三處都是協調者裁定要改的，沒有新發現的事實錯誤：第一輪的 13 處變更逐條回一手來源全部成立，抽查的 29 條 CONFIRMED 全部成立，32 條英文引句全部命中，機械掃描（Princeton／地區字詞／成員名單／漏空格／禁用字元／結尾連結／圖解 caption）全部乾淨。"
+    }
   }
 }

@@ -302,8 +302,8 @@
   "factcheck": {
     "checked_by": "independent factcheck agent (round 1)",
     "checked_on": "2026-09-23",
-    "method": "2026-09-23（台北）以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 把 sources[] 四條全部重抓一次並自行讀 body（同一主機間隔 ≥1 秒；任何請求都沒有帶入任何人的姓名、email 或個人資料）：moda 新聞稿 200／87,313 bytes、臺灣銀行就學貸款入口網 200／228,253 bytes（研究紀錄當天是 221,949 與 224,269，差異一樣來自輪播與 session 值，三段引用逐次比對都在）、MyData「現戶全戶戶籍資料」文件頁 200／1,168,126 bytes、MyData 首頁 200／199,195 bytes，四頁都是正文不是外殼。把 title、description、summary 四句、18 段正文、表格 12 格與 caption、圖解 caption、callout、6 題 FAQ、兩個結尾連結拆成 96 條主張逐條核對；正文所有「」引文以去空白後的字串比對回四份原文（19 條長引文 17 條命中，2 條落空的原因見 changes）；39 個欄位自行重數一次；入口網最新公告的日期自行重數一次。兩份 POST-only 的臺灣銀行 PDF 依 unverified_or_excluded 不當來源，內容一句都沒有用。",
-    "claims_checked": 96,
+    "method": "2026-09-23（台北）以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 把 sources[] 四條全部重抓一次並自行讀 body（同一主機間隔 ≥1 秒；任何請求都沒有帶入任何人的姓名、email 或個人資料）：moda 新聞稿 200／87,313 bytes、臺灣銀行就學貸款入口網 200／228,253 bytes（研究紀錄當天是 221,949 與 224,269，差異一樣來自輪播與 session 值，三段引用逐次比對都在）、MyData「現戶全戶戶籍資料」文件頁 200／1,168,126 bytes、MyData 首頁 200／199,195 bytes，四頁都是正文不是外殼。把 title、description、summary 四句、18 段正文、表格 12 格與 caption、圖解 caption、callout、6 題 FAQ、兩個結尾連結拆成 121 條主張逐條核對；正文所有「」引文以去空白後的字串比對回四份原文（19 條長引文 17 條命中，2 條落空的原因見 changes）；39 個欄位自行重數一次；入口網最新公告的日期自行重數一次。兩份 POST-only 的臺灣銀行 PDF 依 unverified_or_excluded 不當來源，內容一句都沒有用。",
+    "claims_checked": 121,
     "verdict": "confirmed_with_changes",
     "changes": [
       {
