@@ -6,9 +6,12 @@
     "transport",
     "budget"
   ],
+  "valid_until": null,
+  "news_date": null,
   "featured": true,
   "display_order": 60,
-  "valid_until": null,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "仁川機場到首爾市區交通攻略：AREX 直達／一般列車、機場巴士、深夜抵達怎麼辦",
@@ -31,8 +34,8 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "先看結論：四種方式怎麼選"
+          "text": "先看結論：四種方式怎麼選",
+          "level": 2
         },
         {
           "type": "table",
@@ -68,9 +71,9 @@
             [
               "深夜巴士 N6000／N6002／N6701／N6703",
               "江南、弘大、首爾站、東大門、COEX",
-              "官網標示 45 到 90 分",
+              "仁川機場官網路線圖：T1 到各終點約 70 到 90 分；T2 約 90 到 110 分",
               "17,000 到 18,000 韓元",
-              "23:00 之後才出關，鐵道已收班"
+              "直達列車末班後抵達、一般列車目的地或時刻不合行程的人；先查當日鐵道時刻"
             ],
             [
               "計程車／國際計程車",
@@ -88,7 +91,7 @@
           "alt": "仁川機場 T1、T2 到弘大入口、首爾站、明洞、江南的交通路線示意圖",
           "width": 1600,
           "height": 900,
-          "caption": "四種方式的路線與大約時間示意（2026 年 9 月查證）。",
+          "caption": "四種方式的路線與大約時間示意；深夜巴士時間以 T1 出發計，T2 約多 20 分（2026 年 9 月查證）。",
           "description": "機場鐵路 AREX 直達列車到首爾站；一般列車停弘大入口、孔德等站到首爾站；機場巴士到明洞、江南等地；深夜巴士 N 系列。",
           "credit": {
             "author": "Mokaair",
@@ -104,22 +107,22 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "AREX 機場鐵道：直達列車與一般列車"
+          "text": "AREX 機場鐵道：直達列車與一般列車",
+          "level": 2
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "直達列車：不停站、指定座位、13,000 韓元"
+          "text": "直達列車：不停站、指定座位、13,000 韓元",
+          "level": 3
         },
         {
           "type": "paragraph",
-          "text": "直達列車（직통열차）從 T2 出發，停 T1 後直奔首爾站，中途不停：T1 到首爾站 43 分、T2 到首爾站 51 分，全車指定座位，有行李架。2026 年 9 月官網時刻表：往首爾站的首班車 T2 05:16、T1 05:24，末班 23:00 從 T2 發車（約 8 分鐘後到 T1）；白天大約每 40 分鐘一班，等車時間可能比一般列車長，看好時刻再進月台。首爾站往機場的直達列車 06:00 首班、22:40 末班。\n票價成人 13,000 韓元、6 到 12 歲兒童 9,500 韓元，65 歲以上的敬老優惠只給韓國國民，外國旅客用不到。首爾站下車後 AREX 月台在地下深處，轉地鐵 1、4 號線要走一段路；住明洞的人在首爾站轉 4 號線，會賢、明洞就在下兩站。"
+          "text": "直達列車（직통열차）從 T2 出發，停 T1 後直奔首爾站，中途不停：T1 到首爾站 43 分、T2 到首爾站 51 分，全車指定座位，有行李架。2026 年 9 月官網時刻表：往首爾站的首班車 T2 05:16、T1 05:24，末班 22:40 從 T2 發車、22:48 從 T1 發車；白天大約每 40 分鐘一班，等車時間可能比一般列車長，看好時刻再進月台。首爾站往機場的直達列車 06:00 首班、23:00 末班。\n票價成人 13,000 韓元、6 到 12 歲兒童 9,500 韓元，65 歲以上的敬老優惠只給韓國國民，外國旅客用不到。首爾站下車後 AREX 月台在地下深處，轉地鐵 1、4 號線要走一段路；住明洞的人在首爾站轉 4 號線，會賢、明洞就在下兩站。"
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "一般列車：刷 T-money 就能搭，弘大最划算"
+          "text": "一般列車：刷 T-money 就能搭，弘大最划算",
+          "level": 3
         },
         {
           "type": "paragraph",
@@ -132,6 +135,7 @@
           "width": 1200,
           "height": 900,
           "caption": "首爾站的 AREX 月台在地下深處，轉地鐵 1、4 號線要預留步行時間。",
+          "description": "",
           "credit": {
             "author": "IRTC1015",
             "license": "Public domain",
@@ -140,8 +144,8 @@
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "怎麼買票：T-money、直達列車票、一回用票"
+          "text": "怎麼買票：T-money、直達列車票、一回用票",
+          "level": 3
         },
         {
           "type": "paragraph",
@@ -149,12 +153,12 @@
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
             "T-money 卡：機場與市區的 GS25、CU、7-ELEVEN 等便利商店與地鐵站服務台都有賣，空卡 3,000 到 5,000 韓元，先儲值 20,000 韓元左右夠用兩三天；地鐵站儲值機可加值，餘額退款超過 50,000 韓元只能到首爾站的 Tmoney Town 辦，一次不要儲太多。",
             "直達列車票：在 T1、T2 交通中心地下一樓的機場鐵道售票機或售票處購買，成人 13,000、兒童 9,500 韓元；官網列有合作平台的線上優惠票，優惠不能重複使用，依票面說明兌換。",
             "一般列車一回用票：售票機購買，比刷交通卡多 100 韓元，另加 500 韓元押金，到站後在退幣機退還。"
-          ]
+          ],
+          "ordered": false
         },
         {
           "type": "offer",
@@ -164,12 +168,12 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "機場巴士：行李多、飯店在站牌旁邊就選它"
+          "text": "機場巴士：行李多、飯店在站牌旁邊就選它",
+          "level": 2
         },
         {
           "type": "paragraph",
-          "text": "機場巴士（공항리무진）最大的好處是停在飯店門口，行李放車底不用扛。T1 在一樓入境大廳外的 1 到 14 號巴士站牌，T2 在交通中心地下一樓的巴士總站，站牌旁有售票處，車上也可以刷交通卡或付現金，座位先到先坐、不能網路訂位。往市區的主要路線票價都是成人 17,000、兒童 12,000 韓元（2026 年 9 月查證），白天大約 10 到 20 分鐘一班，各路線首末班時間以營運公司時刻表為準；塞車時明顯比鐵道慢，趕時間的人選鐵道。"
+          "text": "機場巴士（공항리무진）可停在飯店附近，行李可放車底。T1 由一樓入境大廳外的巴士站上車，T2 由交通中心地下一樓巴士總站上車。機場出發的購票、可否預訂與付款方式依路線及營運商而異，請先查當日營運商與機場告示，並依指定售票處或售票機取票；不要假定可在車上刷 T-money 或付現。6001／6015／6002 等日間路線的票價、站牌及首末班以各路線公告為準。塞車時可能明顯比鐵道慢，趕時間請比較實際班次與路況。"
         },
         {
           "type": "table",
@@ -214,6 +218,7 @@
           "width": 1200,
           "height": 900,
           "caption": "機場巴士車底可放大行李，飯店在站牌旁邊的人最適合。",
+          "description": "",
           "credit": {
             "author": "hyolee2",
             "license": "CC BY-SA 3.0",
@@ -222,37 +227,37 @@
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "深夜巴士：23:00 之後的四條路線"
+          "text": "深夜巴士：22:40 之後的四條路線",
+          "level": 3
         },
         {
           "type": "paragraph",
-          "text": "AREX 末班車 23:00 從 T2 發車，之後只剩深夜巴士與計程車。仁川機場官網列出四條往首爾的深夜巴士，票價成人 17,000 到 18,000、兒童 10,000 到 12,000 韓元，可刷交通卡；T1 在 3B 與 6A 號站牌上車，T2 在地下一樓巴士總站（N6701、N6703 在 18 到 19 號、N6002 在 24 號站牌）。T2 先發車，約 20 分鐘後到 T1，2026 年 9 月查證的發車時段如下："
+          "text": "22:40 是 T2 往首爾站 AREX 直達列車的末班（T1 於 22:48 發車），並非所有鐵道收班；一般列車其後仍有往首爾站的班次，較晚的班次可能只到數位媒體城。入境後請按 T1／T2、目的地及當日機場鐵道官方時刻表確認是否還有適用班次。若鐵道不合行程，再比較深夜巴士與計程車。仁川機場官網列出四條往首爾的深夜巴士，成人 17,000 到 18,000、兒童 10,000 到 12,000 韓元，票價及購票方式依營運商而異：N6000／N6002 在機場須先到售票處或售票機取票；N6701／N6703 也可依營運商規定用 TmoneyGO 購票。N6002 在 T1 一樓 6A、T2 地下一樓 30 號站牌上車；其他路線及站牌以機場當日看板為準。巴士由 T2 先發車、約 20 分後到 T1；下列是 2026 年 9 月核對的機場往市區發車時段，不是反方向時刻："
         },
         {
           "type": "list",
-          "ordered": false,
           "items": [
-            "N6000 往江南高速巴士客運站：經松亭站、鹽倉站，T2 23:50 到 04:00、T1 00:10 到 04:20 之間發車，到江南客運站約 70 分，成人 17,000、兒童 10,000 韓元。",
-            "N6002 往清涼里：經弘大入口（約 45 分）、光化門的四季飯店、興仁之門，T2 23:40 到 04:20、T1 00:00 到 03:20 之間發車，成人 18,000、兒童 12,000 韓元。",
-            "N6701 往東大門設計廣場：經麻浦站、首爾站（約 60 分）、乙支路入口，T2 23:30 到 04:20、T1 23:50 到 04:40 之間發車，成人 18,000、兒童 12,000 韓元。",
-            "N6703 往廣渡口站：經瑞來村、COEX（約 65 分）、樂天世界、江邊站，T2 23:20 到 04:30、T1 23:40 到 04:50 之間發車，成人 18,000、兒童 12,000 韓元。"
-          ]
+            "N6000 往江南高速巴士客運站：經松亭站、鹽倉站，T2 23:50 到 04:00、T1 00:10 到 04:20 之間發車；到江南客運站約 90 分（從 T2）或 70 分（從 T1），成人 17,000、兒童 10,000 韓元。",
+            "N6002 往清涼里：經弘大入口、光化門的四季飯店、興仁之門；T2 23:40 到 04:20、T1 00:00 到 04:40 之間往市區發車。到弘大入口約 65 分（從 T2）或 45 分（從 T1），成人 17,000、兒童 10,000 韓元；03:20 是清涼里往機場的反向出發時間。",
+            "N6701 往東大門設計廣場：經麻浦站、首爾站、乙支路入口；T2 23:30 到 04:20、T1 23:50 到 04:40 之間發車。到首爾站約 80 分（從 T2）或 60 分（從 T1），成人 18,000、兒童 12,000 韓元。",
+            "N6703 往廣渡口站：經瑞來村、COEX、樂天世界、江邊站；T2 23:20 到 04:30、T1 23:40 到 04:50 之間發車。到 COEX 約 85 分（從 T2）或 65 分（從 T1），成人 18,000、兒童 12,000 韓元。"
+          ],
+          "ordered": false
         },
         {
           "type": "callout",
           "tone": "warning",
           "title": "深夜出關先看時間再決定",
-          "text": "深夜巴士大約一小時才一班，錯過就是在機場多等一小時；三個人以上又住在江南或弘大以外的地方，直接搭計程車不一定比較貴。計程車 23:00 到 02:00 有 40% 深夜加成，22:00 到 23:00 與 02:00 到 04:00 加成 20%，機場高速公路過路費另計。"
+          "text": "深夜巴士大約一小時才一班，錯過就是在機場多等一小時；三個人以上又住在江南或弘大以外的地方，直接搭計程車不一定比較貴。仁川機場往首爾的普通（中型）計程車，22:00 到 23:00 深夜加成 20%、23:00 到 02:00 加成 40%、02:00 到 04:00 加成 20%；模範與大型計程車則在 22:00 到 04:00 加成 20%。機場高速公路過路費另計；預約的國際計程車採另列的均一價，不要把普通車費率套用到其他車種。"
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "計程車與國際計程車"
+          "text": "計程車與國際計程車",
+          "level": 2
         },
         {
           "type": "paragraph",
-          "text": "仁川機場的計程車乘車處在一樓：T1 的中型計程車在 5C、6C、6D，模範在 7C，大型在 8C；T2 往首爾的在 7C，模範與大型在 7D。中型計程車起跳 4,800 韓元、模範與大型（9 人座）7,000 韓元起跳，之後跳表再加機場高速公路過路費，深夜加成如上。\n不想跳表就用國際計程車（International Taxi）：提供英、日、中文服務，仁川機場到首爾依目的地分三個區均一價，中型 70,000、75,000、85,000 韓元，模範或大型 100,000、110,000、120,000 韓元，過路費另計；要在 24 小時前於官網、App 或電話 1644-2255 預約，落地後到 T1 4C、T2 3C 的國際計程車櫃檯報到，可付現金或刷卡。"
+          "text": "仁川機場的計程車乘車處在一樓：T1 的中型計程車在 5C、6C、6D，模範在 7C，大型在 8C；T2 往首爾的在 7C，模範與大型在 7D。中型計程車起跳 4,800 韓元、模範與大型（9 人座）7,000 韓元起跳，之後跳表再加機場高速公路過路費，深夜加成按前段的普通車與模範／大型車種時段分別計算。\n不想跳表就用國際計程車（International Taxi）：提供英、日、中文服務，仁川機場到首爾依目的地分 A 到 E 五個區均一價，中型依序為 70,000、75,000、85,000、90,000、95,000 韓元，模範或大型依序為 100,000、110,000、120,000、130,000、140,000 韓元，過路費另計；要在 24 小時前於官網、App 或電話 1644-2255 預約，落地後到 T1 4C、T2 3C 的國際計程車櫃檯報到，可付現金或刷卡。"
         },
         {
           "type": "rich_paragraph",
@@ -275,13 +280,13 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "住明洞、弘大、江南，各選哪種"
+          "text": "住明洞、弘大、江南，各選哪種",
+          "level": 2
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "住明洞：巴士到門口，或直達列車轉 4 號線"
+          "text": "住明洞：巴士到門口，或直達列車轉 4 號線",
+          "level": 3
         },
         {
           "type": "paragraph",
@@ -289,17 +294,17 @@
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "住弘大、延南洞：一般列車一班到底"
+          "text": "住弘大、延南洞：一般列車一班到底",
+          "level": 3
         },
         {
           "type": "paragraph",
-          "text": "弘大是 AREX 一般列車最直接的受惠區：T1 4,650、T2 5,250 韓元刷卡就到弘大入口站，沒有比這更便宜的走法，缺點只有車上沒行李架、尖峰時段擠。行李多可以搭 6002 巴士到弘大入口的飯店站牌；深夜就是 N6002，官網標示約 45 分到弘大。"
+          "text": "弘大可搭 AREX 一般列車直達：T1 4,650、T2 5,250 韓元刷交通卡到弘大入口站，車上沒有行李架，尖峰時段也較擠。行李多可查 6002 機場巴士是否停在飯店附近；深夜 N6002 官網路線圖估計到弘大入口約 45 分（T1 出發）或 65 分（T2 出發），仍須視交通情況調整。"
         },
         {
           "type": "heading",
-          "level": 3,
-          "text": "住江南：白天巴士，深夜 N6000"
+          "text": "住江南：白天巴士，深夜 N6000",
+          "level": 3
         },
         {
           "type": "paragraph",
@@ -307,12 +312,12 @@
         },
         {
           "type": "heading",
-          "level": 2,
-          "text": "回程小技巧：首爾站都心機場航廈"
+          "text": "回程小技巧：首爾站都心機場航廈",
+          "level": 2
         },
         {
           "type": "paragraph",
-          "text": "回程搭直達列車的人，可以在首爾站的都心機場航廈先辦登機手續、托運行李與出境審查，到機場後走專用通道進管制區。受理時間 05:20 到 19:00（出境審查 05:30 起），T1 航班要在起飛 3 小時前、T2 航班要在 3 小時 20 分前辦完，而且只有直達列車票的乘客能用。2026 年 9 月官網列的航空公司：T1 的濟州航空、德威航空、易斯達航空，T2 的大韓航空、韓亞航空、真航空、釜山航空、首爾航空（部分美國航線除外）；名單上沒有台灣籍航空公司，搭長榮、華航、星宇的人用不到。"
+          "text": "回程搭直達列車的人，可以在首爾站的都心機場航廈先辦登機手續、托運行李與出境審查，到機場後走專用通道進管制區。登機手續服務時間 05:20 到 19:00，但新件報到 18:50 截止；出境審查另於 05:30 到 19:00 辦理。T1 航班要在起飛 3 小時前、T2 航班要在 3 小時 20 分前辦完，而且只有直達列車票的乘客能用。2026 年 9 月官網列的航空公司：T1 的濟州航空、德威航空、易斯達航空，T2 的大韓航空、韓亞航空、真航空、釜山航空、首爾航空（部分美國航線除外）；實際執飛航空公司與航線仍須出發前向航空公司確認。名單上沒有台灣籍航空公司，搭長榮、華航、星宇的人用不到。"
         },
         {
           "type": "callout",
@@ -340,7 +345,7 @@
         {
           "title": "공항철도 직통열차 시간표",
           "url": "https://www.airportrailroad.com/train/express/info",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-22"
         },
         {
           "title": "공항철도 일반열차 운임",
@@ -360,7 +365,7 @@
         {
           "title": "공항철도 서울역 도심공항터미널",
           "url": "https://www.airportrailroad.com/train/express/city/info",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-22"
         },
         {
           "title": "인천공항 열차 안내（售票機位置）",
@@ -390,7 +395,7 @@
         {
           "title": "인천공항 택시／콜밴 안내",
           "url": "https://www.airport.kr/ap_ko/987/subview.do",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-22"
         },
         {
           "title": "공항리무진 6001 노선",
@@ -410,12 +415,1731 @@
         {
           "title": "International Taxi（首爾國際計程車均一價）",
           "url": "http://www.intltaxi.co.kr/",
-          "checked_on": "2026-09-13"
+          "checked_on": "2026-09-22"
         },
         {
           "title": "VisitKorea（韓國觀光公社）Transportation Cards：T-money",
           "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140663",
           "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도：仁川機場 T2 一般列車當日終點與時刻",
+          "url": "https://www.airportrailroad.com/train/normal/info/110/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항철도：仁川機場 T1 一般列車當日終點與時刻",
+          "url": "https://www.airportrailroad.com/train/normal/info/100/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항리무진：N6002 機場往市區站牌、票價與取票方式",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=82",
+          "checked_on": "2026-09-22"
+        }
+      ]
+    },
+    "en": {
+      "title": "Incheon Airport to Central Seoul: AREX Express and All-Stop Trains, Airport Buses, and Late-Night Arrivals",
+      "description": "AREX Express reaches Seoul Station from Incheon Airport in 43 minutes from T1 or 51 from T2 (13,000 won). For Hongdae, the All-Stop Train costs 4,650 won from T1 with T-money. Buses 6001/6015/6002 cost 17,000 won to Myeongdong, Seoul Station, or Hongdae. Compare four options, N6000 night buses, taxis, neighbourhood choices, and Seoul Station City Airport Terminal; official sites checked 2026/9.",
+      "hero": {
+        "src": "/guides/incheon-airport-to-seoul/hero.jpg",
+        "alt": "AREX airport train passing Gyeyang Station",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Takeshi Aida",
+          "license": "CC BY-SA 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX_2000%2C_Gyeyang_%2820240407%29_%2854219624992%29.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After landing at Incheon, your first decision is how to get into the city. The AREX airport railroad has Express and all-stop trains, airport buses run more than a dozen routes, and taxis include standard, deluxe, and international services. The easiest route depends on where your hotel is.\nThis guide puts the fares and travel times found on the airport railroad, Incheon Airport, and bus company websites in 2026/9 into one table. It then explains what to choose if you are staying in Myeongdong, Hongdae, or Gangnam, covers late-night arrivals, and shows how to use Seoul Station City Airport Terminal on the return trip."
+        },
+        {
+          "type": "heading",
+          "text": "At a glance: choosing among four options",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "Option",
+            "Destination",
+            "Travel time",
+            "Adult fare",
+            "Best for"
+          ],
+          "rows": [
+            [
+              "AREX Express train",
+              "Nonstop from T2 and T1 to Seoul Station",
+              "T1: 43 min; T2: 51 min",
+              "13,000 won (current website fare; list prices 18,500/19,100 won)",
+              "Stays near Seoul Station, KTX connections, or travelers wanting assigned seats and luggage racks"
+            ],
+            [
+              "AREX all-stop train",
+              "Stops along the line, including Hongik Univ., Gongdeok, and Seoul Station",
+              "Seoul Station to T1: 59 min; to T2: 66 min",
+              "T1 to Seoul Station: 4,750 won; T2 to Seoul Station: 5,350 won (transit card)",
+              "Stays along the line near Hongdae, Gongdeok, or Gimpo Airport, with light luggage"
+            ],
+            [
+              "Airport buses 6001/6015/6002",
+              "Hotel stops around Myeongdong, Seoul Station, Dongdaemun, and Hongdae",
+              "Not stated on the official website; much slower than rail in traffic",
+              "17,000 won (children 12,000)",
+              "Travelers with lots of luggage whose hotel is beside a bus stop"
+            ],
+            [
+              "Late-night buses N6000/N6002/N6701/N6703",
+              "Gangnam, Hongdae, Seoul Station, Dongdaemun, and COEX",
+              "Airport route diagrams: about 70 to 90 minutes from T1 to the termini, and about 90 to 110 minutes from T2",
+              "17,000 to 18,000 won",
+              "Travelers arriving after the Express last train when the all-stop train's time or destination does not fit; check the day's rail timetable first"
+            ],
+            [
+              "Taxi/international taxi",
+              "Direct to your hotel",
+              "Depends on traffic",
+              "Standard taxi meter starts at 4,800 won; international taxi fixed fares start at 70,000 won",
+              "Groups of three or four, late-night arrivals, or travelers with lots of luggage"
+            ]
+          ],
+          "caption": "Verified against the airport railroad, Incheon Airport, and Airport Limousine websites in 2026/9; fares are for one adult, one way."
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/diagram-1-en.svg",
+          "alt": "Diagram of routes from Incheon Airport T1 and T2 to Hongik Univ., Seoul Station, Myeongdong, and Gangnam",
+          "width": 1600,
+          "height": 900,
+          "caption": "Diagram of four transport options and approximate times. Night-bus times start at T1; allow about 20 more minutes from T2 (checked in 2026/9).",
+          "description": "The AREX Express runs to Seoul Station; the all-stop train calls at Hongik Univ., Gongdeok, and other stations before Seoul Station; airport buses serve Myeongdong, Gangnam, and other areas; and N-series buses run late at night.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Fares can change: check the official website",
+          "text": "The AREX Express website lists standard fares of 18,500 won from T1 and 19,100 won from T2. Tickets are currently sold at a discounted 13,000 won, but the website gives no end date for the offer, so check again before departure. The all-stop train shares the subway transit-card fare system. T-money costs 100 won less than a single-use ticket and avoids the 500 won deposit."
+        },
+        {
+          "type": "heading",
+          "text": "AREX airport railroad: Express and all-stop trains",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "Express train: nonstop, assigned seats, 13,000 won",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "The Express train departs T2, stops at T1, then runs nonstop to Seoul Station: 43 minutes from T1 or 51 minutes from T2. All seats are assigned, and there are luggage racks. The timetable on the official website in 2026/9 shows the first Seoul-bound departure at 05:16 from T2 and 05:24 from T1. The last departs T2 at 22:40 and T1 at 22:48. Trains run about every 40 minutes during the day, so your wait may be longer than for an all-stop train; check the timetable before entering the platform. From Seoul Station to the airport, the first Express leaves at 06:00 and the last at 23:00.\nFares are 13,000 won for adults and 9,500 won for children aged 6 to 12. The senior discount for people aged 65 and over applies only to Korean nationals, so foreign visitors cannot use it. At Seoul Station, the AREX platform is deep underground, and the transfer to subway lines 1 and 4 involves a walk. For Myeongdong, transfer to line 4 at Seoul Station; Hoehyeon and Myeongdong are the next two stops."
+        },
+        {
+          "type": "heading",
+          "text": "All-stop train: ride with T-money for the best value to Hongdae",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "The all-stop train is a commuter service that accepts T-money. From T2, it stops at T1, Airport Cargo Terminal, Unseo, Yeongjong, Cheongna International City, Geomam, Gyeyang, Gimpo Airport, Magongnaru, Digital Media City, Hongik Univ., and Gongdeok before Seoul Station. The official website gives 59 minutes from Seoul Station to T1 and 66 minutes to T2; the reverse trips take about the same time. Service operates from 05:20 to 00:00; consult the timetable for each station’s first and last trains.\nAdult fares with a transit card are 4,750 won from T1 to Seoul Station and 4,650 won to Hongik Univ. or Gongdeok; from T2, they are 5,350 won to Seoul Station and 5,250 won to Hongik Univ. or Gongdeok. A single-use transit card costs 100 won more, plus a 500 won deposit refunded at a deposit-return machine after your trip. The cars have no luggage racks, and carrying two large suitcases can be difficult during rush hour."
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-2.webp",
+          "alt": "AREX platform and full-height platform screen doors at Seoul Station",
+          "width": 1200,
+          "height": 900,
+          "caption": "The AREX platform at Seoul Station is deep underground; allow walking time to transfer to subway lines 1 and 4.",
+          "description": "",
+          "credit": {
+            "author": "IRTC1015",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX-Seoul_Stn-Platform.jpg"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "How to buy tickets: T-money, Express tickets, and single-use tickets",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Entrances for both trains are on the basement level of the transportation centers at T1 and T2. The Express has dedicated ticket machines and counters, assigned seats, and accepts cards or cash. For the all-stop train, tap T-money at the gate; if you do not have a card, buy one first at an airport convenience store. The Incheon Airport website also says to confirm fares and schedules with the airport railroad’s official website or customer service at 1599-7788."
+        },
+        {
+          "type": "list",
+          "items": [
+            "T-money card: Sold at GS25, CU, 7-ELEVEN, and other convenience stores at the airport and in the city, as well as subway station service counters. An empty card costs 3,000 to 5,000 won; loading around 20,000 won should cover two or three days. You can top up at subway station machines. For refunds of balances over 50,000 won, you must visit Tmoney Town at Seoul Station, so avoid loading too much at once.",
+            "Express train ticket: Buy at an airport railroad machine or counter on the basement level of the T1 or T2 transportation center. Adult tickets cost 13,000 won and children’s tickets 9,500 won. The official website lists discounted online tickets from partner platforms; discounts cannot be combined, and redemption follows the ticket instructions.",
+            "All-stop train single-use ticket: Buy from a ticket machine for 100 won more than the transit-card fare, plus a 500 won deposit. Reclaim the deposit at a return machine after arrival."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "offer",
+          "module": "transport",
+          "destination_id": null,
+          "heading": "Buy your AREX Express ticket or T-money in advance and head straight to the station after landing"
+        },
+        {
+          "type": "heading",
+          "text": "Airport bus: best with lots of luggage and a hotel beside a stop",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Airport limousine buses (공항리무진) can stop close to your hotel, and luggage goes under the bus. At T1, board outside the first-floor arrivals hall; at T2, use the bus terminal on basement level one of the transportation center. Ticketing, reservations and payment for airport departures vary by route and operator. Check the operator's current instructions and airport displays, and get a ticket at the designated counter or machine when required; do not assume you can tap T-money or pay cash on board. For daytime routes such as 6001/6015/6002, check each route's current fare, bay and first/last departure. Road traffic can make the bus much slower than rail, so compare actual departures and traffic if time matters."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Route",
+            "Main stops (airport to city)",
+            "Adult/child fare",
+            "Operator"
+          ],
+          "rows": [
+            [
+              "6001",
+              "Sinyongsan, Seoul Station, Myeongdong Station, Dongdaemun (Baiton Hotel)",
+              "17,000/12,000 won",
+              "Airport Limousine"
+            ],
+            [
+              "6015",
+              "Mapo Station, Gongdeok Station, Chungjeongno Station, Hoehyeon Station (Namdaemun Market), Myeongdong Station, Euljiro, Lotte Hotel",
+              "17,000/12,000 won",
+              "Airport Limousine"
+            ],
+            [
+              "6002",
+              "Hapjeong Station, Hongik Univ. (Mercure and L7 hotels), Jongno, Dongdaemun, Cheongnyangni",
+              "17,000/12,000 won",
+              "Airport Limousine"
+            ],
+            [
+              "6703",
+              "Gangnam and the COEX area",
+              "Check the operator’s announcement",
+              "KAL Limousine"
+            ]
+          ],
+          "caption": "Verified against the Airport Limousine website and Incheon Airport bus route listings in 2026/9; the fare for 6703 is omitted because it could not be read on the official website."
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-1.webp",
+          "alt": "Incheon Airport bus 6010 at a stop in central Seoul",
+          "width": 1200,
+          "height": 900,
+          "caption": "Airport buses store large luggage underneath and suit travelers staying beside a bus stop.",
+          "description": "",
+          "credit": {
+            "author": "hyolee2",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AIncheon_Airport_Limousine_6010.JPG"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Late-night buses: four routes after 22:40",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "22:40 is the last AREX Express departure from T2 toward Seoul Station (22:48 from T1), not the end of all rail service. All-stop trains still depart later for Seoul Station; still later trains may terminate at Digital Media City. After immigration, check the official AREX timetable for your day, T1/T2 and destination. If rail does not fit, compare night buses and taxis. Incheon Airport lists four night-bus routes to Seoul: adult fares are 17,000 to 18,000 won, and child fares 10,000 to 12,000 won. Ticketing varies by operator: at the airport, obtain a ticket from a counter or machine for N6000/N6002; for N6701/N6703, the operator also allows purchase through TmoneyGO. Board N6002 at T1 ground-floor bay 6A or T2 basement bay 30; check the airport displays for other routes and any bay changes. Buses leave T2 first and reach T1 about 20 minutes later. These airport-to-city departure windows were checked in 2026/9; they are not the reverse-direction times:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "N6000 to Gangnam Express Bus Terminal, via Songjeong and Yeomchang: airport-to-city departures run from 23:50 to 04:00 at T2 and 00:10 to 04:20 at T1. The terminal is about 90 minutes from T2 or 70 minutes from T1. Fare: 17,000 won adult, 10,000 won child.",
+            "N6002 to Cheongnyangni, via Hongik Univ., the Four Seasons Hotel near Gwanghwamun, and Heunginjimun: airport-to-city departures run from 23:40 to 04:20 at T2 and 00:00 to 04:40 at T1. Hongik Univ. is about 65 minutes from T2 or 45 minutes from T1. Fare: 17,000 won adult, 10,000 won child. 03:20 is a departure in the opposite direction, from Cheongnyangni toward the airport.",
+            "N6701 to Dongdaemun Design Plaza, via Mapo, Seoul Station and Euljiro Entrance: airport-to-city departures run from 23:30 to 04:20 at T2 and 23:50 to 04:40 at T1. Seoul Station is about 80 minutes from T2 or 60 minutes from T1. Fare: 18,000 won adult, 12,000 won child.",
+            "N6703 to Gwangnaru, via Seorae Village, COEX, Lotte World and Gangbyeon: airport-to-city departures run from 23:20 to 04:30 at T2 and 23:40 to 04:50 at T1. COEX is about 85 minutes from T2 or 65 minutes from T1. Fare: 18,000 won adult, 12,000 won child."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "After clearing immigration late at night, check the time first",
+          "text": "Late-night buses run roughly once an hour, so missing one can mean another hour at the airport. For a group of at least three staying outside Gangnam or Hongdae, a taxi may not cost more. For an ordinary (standard) taxi from Incheon Airport toward Seoul, the nighttime surcharge is 20% from 22:00 to 23:00, 40% from 23:00 to 02:00, and 20% from 02:00 to 04:00. Deluxe and large taxis instead have a 20% surcharge throughout 22:00 to 04:00. Airport expressway tolls are extra. Prebooked International Taxi uses the separate fixed fares below; do not apply standard-taxi rates to other taxi classes."
+        },
+        {
+          "type": "heading",
+          "text": "Regular and international taxis",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Taxi stands at Incheon Airport are on the ground floor. At T1, standard taxis use 5C, 6C, and 6D; deluxe taxis use 7C; and large taxis use 8C. At T2, Seoul-bound standard taxis use 7C, while deluxe and large taxis use 7D. Standard taxi meters start at 4,800 won; deluxe and large taxis (9 seats) start at 7,000 won. Metered charges and airport expressway tolls are added; nighttime surcharges follow the separate standard versus deluxe/large schedules above.\nFor a fixed fare, use International Taxi, which offers English, Japanese, and Chinese service. From Incheon Airport to Seoul, fixed fares depend on five destination zones A–E: 70,000, 75,000, 85,000, 90,000, or 95,000 won respectively for a standard taxi, and 100,000, 110,000, 120,000, 130,000, or 140,000 won respectively for a deluxe or large taxi. Tolls are extra. Reserve at least 24 hours ahead through the official website, app, or by calling 1644-2255. After landing, check in at the International Taxi counter at T1 4C or T2 3C; you can pay by cash or card."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For app-based rides, see "
+            },
+            {
+              "type": "article",
+              "text": "Korea Maps and Ride-Hailing Apps: Routes with Naver Map and Kakao Map, Choosing and Paying with k.ride or Kakao T, Seoul Taxi Fares and Late-Night Surcharges",
+              "kind": "howto",
+              "slug": "korea-naver-map-kakao-t-guide"
+            },
+            {
+              "type": "text",
+              "text": " for k.ride and Kakao T registration and payment, Seoul taxi fares, and late-night surcharges."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Which option suits Myeongdong, Hongdae, or Gangnam?",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "Staying in Myeongdong: bus to the door, or Express train and line 4",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Myeongdong has no AREX station. The easiest option is bus 6015 or 6001, which stops around Myeongdong Station, Lotte Hotel, and Hoehyeon Station (Namdaemun Market). For speed, take the Express train to Seoul Station and transfer to line 4 for Hoehyeon and Myeongdong, the next two stops. If you arrive late at night, take N6701, get off at Seoul Station or Euljiro Entrance, then walk or take a short taxi ride."
+        },
+        {
+          "type": "heading",
+          "text": "Staying in Hongdae or Yeonnam-dong: one all-stop train all the way",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "An AREX all-stop train reaches Hongik Univ. directly: the transit-card fare is 4,650 won from T1 or 5,250 won from T2. There is no luggage rack and peak-hour cars can be crowded. With more luggage, check whether airport bus 6002 stops near your hotel. For late-night N6002, the official route diagrams estimate about 45 minutes from T1 or 65 minutes from T2 to Hongik Univ.; allow for traffic."
+        },
+        {
+          "type": "heading",
+          "text": "Staying in Gangnam: bus by day, N6000 late at night",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "Gangnam is farthest from the airport and has no direct rail service. By day, bus 6703 to the COEX area is the most direct option. You can also take the Express train to Seoul Station and transfer to the subway, but the transfer and hauling luggage can take about as long as the bus. Late at night, N6000 serves Gangnam Express Bus Terminal and N6703 serves COEX and Lotte World; another option is an international taxi at its fixed fare."
+        },
+        {
+          "type": "heading",
+          "text": "Return-trip tip: Seoul Station City Airport Terminal",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If you are taking the Express train back, you can check in, drop your luggage, and clear departure screening at Seoul Station City Airport Terminal, then use a dedicated passage into the restricted area at the airport. Check-in service runs from 05:20 to 19:00, but reception for new check-ins closes at 18:50; departure screening separately runs from 05:30 to 19:00. You must finish at least 3 hours before a T1 flight or 3 hours 20 minutes before a T2 flight, and only passengers with Express train tickets can use the service. The airlines listed on the official website in 2026/9 were Jeju Air, T’way Air, and Eastar Jet at T1, and Korean Air, Asiana Airlines, Jin Air, Air Busan, and Air Seoul at T2 (excluding some US routes). Check the actual operating airline and route with the airline before departure. No Taiwan-based airlines were listed, so travelers flying EVA Air, China Airlines, or STARLUX cannot use it."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "T1 or T2?",
+          "text": "Both Express and all-stop trains depart T2 and call at T1 next. Buses also stop at both terminals: the basement bus terminal at T2 and outdoor ground-floor stops at T1. The airport railroad website lists Korean Air, Asiana Airlines, Jin Air, Air Busan, and Air Seoul at T2, and Jeju Air, T’way Air, and Eastar Jet at T1. For other airlines, check your ticket or the airline website so you get off at the right terminal."
+        },
+        {
+          "type": "link",
+          "text": "Seoul city guide: attractions, accommodation, and airport transport",
+          "url": "https://mokaair.com/en/destinations/seoul"
+        },
+        {
+          "type": "link",
+          "text": "Seoul food directory: local restaurants in Myeongdong, Hongdae, and Gangnam",
+          "url": "https://mokaair.com/en/foods?city=seoul"
+        }
+      ],
+      "sources": [
+        {
+          "title": "AREX Express Train Guide (fares and travel times)",
+          "url": "https://www.airportrailroad.com/train/express/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AREX Express Train Timetable",
+          "url": "https://www.airportrailroad.com/train/express/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "AREX All-Stop Train Fares",
+          "url": "https://www.airportrailroad.com/train/normal/fare",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AREX All-Stop Train Guide (travel times and ticketing)",
+          "url": "https://www.airportrailroad.com/train/normal/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AREX Homepage (operating hours)",
+          "url": "https://www.airportrailroad.com/main",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AREX Seoul Station City Airport Terminal",
+          "url": "https://www.airportrailroad.com/train/express/city/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "Incheon Airport Train Guide (ticket-machine locations)",
+          "url": "https://www.airport.kr/ap_ko/984/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Incheon Airport Bus Stop Guide (T1)",
+          "url": "https://www.airport.kr/ap_ko/974/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Incheon Airport Bus Route Search",
+          "url": "https://www.airport.kr/ap_ko/976/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Incheon Airport Seoul Late-Night Buses (T1)",
+          "url": "https://www.airport.kr/ap_ko/979/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Incheon Airport Seoul Late-Night Buses (T2)",
+          "url": "https://www.airport.kr/ap_ko/982/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Incheon Airport Taxi and Call Van Guide",
+          "url": "https://www.airport.kr/ap_ko/987/subview.do",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "Airport Limousine Route 6001",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=1",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Airport Limousine Route 6015",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=21",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "Airport Limousine Route 6002",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=2",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "International Taxi (fixed fares for Seoul)",
+          "url": "http://www.intltaxi.co.kr/",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "VisitKorea (Korea Tourism Organization) Transportation Cards: T-money",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140663",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AREX: current T2 all-stop timetable and train destinations",
+          "url": "https://www.airportrailroad.com/train/normal/info/110/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "AREX: current T1 all-stop timetable and train destinations",
+          "url": "https://www.airportrailroad.com/train/normal/info/100/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "Airport Limousine: N6002 airport-to-city bay, fares and ticket issue",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=82",
+          "checked_on": "2026-09-22"
+        }
+      ]
+    },
+    "ja": {
+      "title": "仁川空港からソウル市内への交通ガイド：AREX直通・普通列車、空港バス、深夜到着時の移動方法",
+      "description": "仁川空港からソウル駅へ最速なのはAREX直通列車。T1から43分、T2から51分で13,000ウォン。弘大に泊まるならT-moneyで乗る普通列車が最安で、T1から弘大入口まで4,650ウォン。明洞、ソウル駅、弘大へ向かう空港バス6001／6015／6002は17,000ウォン。四つの移動方法の比較表、N6000などの深夜バス、タクシーとインターナショナルタクシーの定額運賃、宿泊エリア別の選び方、帰路に使えるソウル駅都心空港ターミナルを紹介。2026/9に公式サイトで確認。",
+      "hero": {
+        "src": "/guides/incheon-airport-to-seoul/hero.jpg",
+        "alt": "桂陽駅を通過する空港鉄道AREXの列車",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Takeshi Aida",
+          "license": "CC BY-SA 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX_2000%2C_Gyeyang_%2820240407%29_%2854219624992%29.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "仁川に着いたら、最初に決めるのは市内への移動方法です。空港鉄道AREXには直通列車と普通列車があり、空港バスには十数路線があります。タクシーも一般、模範、インターナショナルタクシーに分かれ、ホテルの場所によって便利な方法は変わります。\nこの記事では、2026/9に空港鉄道、仁川空港、バス会社の公式サイトで確認した運賃と所要時間を表にまとめました。明洞、弘大、江南の宿泊エリア別の選び方に加え、深夜到着時の移動手段と、帰路にソウル駅都心空港ターミナルを利用する方法も紹介します。"
+        },
+        {
+          "type": "heading",
+          "text": "まず結論：四つの移動方法の選び方",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "交通手段",
+            "行き先",
+            "所要時間",
+            "大人運賃",
+            "向いている人"
+          ],
+          "rows": [
+            [
+              "AREX直通列車",
+              "T2、T1からソウル駅まで途中停車なし",
+              "T1から43分、T2から51分",
+              "13,000ウォン（公式サイトの現行運賃。定価は18,500／19,100ウォン）",
+              "ソウル駅周辺に泊まる人、KTXに乗り換える人、指定席と荷物置き場を使いたい人"
+            ],
+            [
+              "AREX普通列車",
+              "弘大入口、孔徳、ソウル駅を含む沿線各駅",
+              "ソウル駅からT1まで59分、T2まで66分",
+              "T1からソウル駅まで4,750ウォン、T2からソウル駅まで5,350ウォン（交通カード利用）",
+              "弘大、孔徳、金浦空港沿線に泊まり、荷物が少ない人"
+            ],
+            [
+              "空港バス6001／6015／6002",
+              "明洞、ソウル駅、東大門、弘大などのホテル付近",
+              "公式サイトに記載なし。渋滞時は鉄道より大幅に遅い",
+              "17,000ウォン（子ども12,000ウォン）",
+              "荷物が多く、ホテルがバス停のそばにある人"
+            ],
+            [
+              "深夜バスN6000／N6002／N6701／N6703",
+              "江南、弘大、ソウル駅、東大門、COEX",
+              "空港公式路線図による終点までの所要時間：T1 発は約 70～90 分、T2 発は約 90～110 分",
+              "17,000～18,000ウォン",
+              "直通列車の最終便後に到着し、一般列車の時刻や終点が旅程に合わない人。まず当日の鉄道時刻表を確認"
+            ],
+            [
+              "タクシー／インターナショナルタクシー",
+              "ホテルまで直行",
+              "道路状況による",
+              "一般タクシーは初乗り4,800ウォンからのメーター制。インターナショナルタクシーは定額70,000ウォンから",
+              "三～四人での移動、深夜到着、荷物が多い人"
+            ]
+          ],
+          "caption": "2026/9に空港鉄道、仁川空港、공항리무진の公式サイトで確認。運賃は大人片道。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/diagram-1-ja.svg",
+          "alt": "仁川空港のT1、T2から弘大入口、ソウル駅、明洞、江南への交通ルート図",
+          "width": 1600,
+          "height": 900,
+          "caption": "四つの交通手段と所要時間の目安。深夜バスの時間は T1 発が基準で、T2 発は約 20 分長くなります（2026/9 確認）。",
+          "description": "空港鉄道AREXの直通列車はソウル駅へ。普通列車は弘大入口、孔徳などに停車してソウル駅へ。空港バスは明洞、江南などへ向かい、深夜にはN系統のバスが運行します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "運賃は変わるため、出発前に公式サイトを確認",
+          "text": "AREX直通列車の公式サイトに記載された定価はT1が18,500ウォン、T2が19,100ウォンですが、現在は13,000ウォンの割引運賃で販売されています。公式サイトに割引期限の記載はないため、出発前に再確認してください。普通列車は地下鉄と共通の交通カード運賃です。T-moneyなら一回用乗車券より100ウォン安く、500ウォンの保証金も不要です。"
+        },
+        {
+          "type": "heading",
+          "text": "空港鉄道AREX：直通列車と普通列車",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "直通列車：途中停車なし、指定席、13,000ウォン",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "直通列車（직통열차）はT2を出発し、T1に停車した後、途中停車せずソウル駅へ向かいます。T1からソウル駅まで43分、T2からは51分。全席指定で荷物置き場があります。2026/9の公式時刻表では、ソウル駅行きの始発はT2が05:16、T1が05:24。最終はT2を22:40、T1を22:48に出発します。日中はおよそ40分間隔なので、普通列車より待ち時間が長くなることもあります。時刻を確認してからホームへ向かいましょう。ソウル駅発の空港行き直通列車は始発06:00、最終23:00です。\n運賃は大人13,000ウォン、6～12歳の子ども9,500ウォン。65歳以上の高齢者割引は韓国国民のみが対象で、外国人旅行者は利用できません。ソウル駅のAREXホームは地下深くにあり、地下鉄1・4号線への乗り換えには少し歩きます。明洞に泊まるなら、ソウル駅で4号線に乗り換えると、会賢、明洞は次の二駅です。"
+        },
+        {
+          "type": "heading",
+          "text": "普通列車：T-moneyで乗車でき、弘大行きにお得",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "普通列車（일반열차）はT-moneyで乗れる通勤列車です。T2を出発し、T1、空港貨物庁舎、雲西、永宗、青羅国際都市、黔岩、桂陽、金浦空港、麻谷ナル、デジタルメディアシティ、弘大入口、孔徳を経てソウル駅に向かいます。公式サイトによると、ソウル駅からT1まで59分、T2まで66分で、逆方向もおおむね同じです。運行時間は05:20～00:00。各駅の始発・最終は時刻表を確認してください。\n交通カード利用時の大人運賃は、T1からソウル駅まで4,750ウォン、弘大入口・孔徳まで4,650ウォン。T2からソウル駅までは5,350ウォン、弘大入口・孔徳までは5,250ウォンです。一回用交通カードは100ウォン高く、さらに500ウォンの保証金が必要ですが、降車後に返却機で払い戻せます。車内に荷物置き場はなく、混雑時に大きな荷物を二個持って乗るのは少し大変です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-2.webp",
+          "alt": "ソウル駅の空港鉄道ホームと全面式ホームドア",
+          "width": 1200,
+          "height": 900,
+          "caption": "ソウル駅のAREXホームは地下深くにあるため、地下鉄1・4号線への乗り換えには歩く時間を見込んでください。",
+          "description": "",
+          "credit": {
+            "author": "IRTC1015",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX-Seoul_Stn-Platform.jpg"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "きっぷの買い方：T-money、直通列車のきっぷ、一回用乗車券",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "どちらの列車の入口も、T1・T2交通センターの地下一階にあります。直通列車には専用の券売機と窓口があり、指定席のきっぷをカードまたは現金で購入できます。普通列車はT-moneyをタッチして入場します。カードがなければ、空港のコンビニで先に購入しましょう。仁川空港の公式サイトも、運賃と時刻は空港鉄道の公式サイトまたはカスタマーサービス1599-7788で確認するよう案内しています。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "T-moneyカード：空港や市内のGS25、CU、7-ELEVENなどのコンビニや地下鉄駅の案内所で購入できます。カード本体は3,000～5,000ウォン。最初に20,000ウォンほどチャージすれば二～三日は使えます。地下鉄駅のチャージ機で追加できますが、残額が50,000ウォンを超える場合の払い戻しはソウル駅のTmoney Townでのみ可能です。一度にチャージしすぎないようにしましょう。",
+            "直通列車のきっぷ：T1・T2交通センター地下一階の空港鉄道の券売機または窓口で購入できます。大人13,000ウォン、子ども9,500ウォン。公式サイトには提携プラットフォームのオンライン割引券も掲載されています。割引の併用はできないため、券面の案内に従って引き換えてください。",
+            "普通列車の一回用乗車券：券売機で購入します。交通カード利用より100ウォン高く、別途500ウォンの保証金が必要です。到着駅の返却機で保証金を受け取れます。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "offer",
+          "module": "transport",
+          "destination_id": null,
+          "heading": "AREX直通列車のきっぷかT-moneyを用意して、到着後すぐに乗車"
+        },
+        {
+          "type": "heading",
+          "text": "空港バス：荷物が多く、ホテルが停留所のそばなら便利",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "空港リムジンバス（공항리무진）はホテル近くに停まり、荷物を床下に預けられます。T1 は到着ロビーのある一階の屋外乗り場、T2 は交通センター地下一階のバスターミナルから乗車します。空港発便の切符購入、予約の可否、支払い方法は路線と運行会社によって異なります。当日の運行会社案内と空港表示を確認し、指定の窓口や券売機で必要な切符を受け取ってください。車内で T-money を使ったり現金で払ったりできるとは限りません。6001／6015／6002 など昼間の路線も、運賃、乗り場、始発・終発は各路線の公告を確認。道路渋滞で鉄道より大幅に遅くなる場合があるため、急ぐなら実際の便と交通状況を比べましょう。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "路線",
+            "主な停留所（空港発・市内行き）",
+            "大人／子ども運賃",
+            "運行会社"
+          ],
+          "rows": [
+            [
+              "6001",
+              "新龍山、ソウル駅、明洞駅、東大門（ベイトンホテル）",
+              "17,000／12,000ウォン",
+              "공항리무진"
+            ],
+            [
+              "6015",
+              "麻浦駅、孔徳駅、忠正路駅、会賢駅（南大門市場）、明洞駅、乙支路、ロッテホテル",
+              "17,000／12,000ウォン",
+              "공항리무진"
+            ],
+            [
+              "6002",
+              "合井駅、弘大入口（Mercure、L7ホテル）、鐘路、東大門、清凉里",
+              "17,000／12,000ウォン",
+              "공항리무진"
+            ],
+            [
+              "6703",
+              "江南、COEX周辺",
+              "運行会社の発表を確認",
+              "KAL 리무진"
+            ]
+          ],
+          "caption": "2026/9に공항리무진の公式サイトと仁川空港のバス路線表で確認。6703の運賃は公式サイトで確認できなかったため掲載していません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-1.webp",
+          "alt": "ソウル市内のバス停に停車する仁川空港バス6010",
+          "width": 1200,
+          "height": 900,
+          "caption": "空港バスは車両下部に大きな荷物を預けられるので、ホテルが停留所のそばにある人に便利です。",
+          "description": "",
+          "credit": {
+            "author": "hyolee2",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AIncheon_Airport_Limousine_6010.JPG"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "深夜バス：22:40以降に使える四路線",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "22:40 は T2 からソウル駅へ向かう AREX 直通列車の最終便（T1 発は 22:48）で、鉄道全体の運行終了ではありません。その後もソウル駅行きの一般列車があり、さらに遅い便はデジタルメディアシティ止まりの場合があります。入国後は当日の公式時刻表で T1／T2、行き先と利用できる便を確認してください。鉄道が旅程に合わない場合に深夜バスやタクシーを比較します。仁川空港の案内にはソウル方面の深夜バスが四路線あり、運賃は大人 17,000～18,000 ウォン、子ども 10,000～12,000 ウォン。購入方法は運行会社ごとに異なり、N6000／N6002 は空港の窓口または券売機で発券が必要です。N6701／N6703 は運行会社の規定により TmoneyGO でも購入できます。N6002 は T1 一階の 6A 番、T2 地下一階の 30 番乗り場から乗車。ほかの路線や乗り場の変更は当日の空港表示で確認してください。バスは T2 を先に出発し、約 20 分後に T1 に到着します。以下は 2026/9 に確認した空港発市内行きの発車時間帯で、逆方向の時刻ではありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "N6000 は松亭駅、塩倉駅経由で江南高速バスターミナルへ。空港発市内行きは T2 が 23:50～04:00、T1 が 00:10～04:20。終点まで T2 から約 90 分、T1 から約 70 分。大人 17,000 ウォン、子ども 10,000 ウォン。",
+            "N6002 は弘大入口、光化門のフォーシーズンズホテル、興仁之門経由で清凉里へ。空港発市内行きは T2 が 23:40～04:20、T1 が 00:00～04:40。弘大入口まで T2 から約 65 分、T1 から約 45 分。大人 17,000 ウォン、子ども 10,000 ウォン。03:20 は清凉里から空港へ向かう逆方向の発車時刻です。",
+            "N6701 は麻浦駅、ソウル駅、乙支路入口経由で東大門デザインプラザへ。空港発市内行きは T2 が 23:30～04:20、T1 が 23:50～04:40。ソウル駅まで T2 から約 80 分、T1 から約 60 分。大人 18,000 ウォン、子ども 12,000 ウォン。",
+            "N6703 は瑞来村、COEX、ロッテワールド、江辺駅経由で広渡口駅へ。空港発市内行きは T2 が 23:20～04:30、T1 が 23:40～04:50。COEX まで T2 から約 85 分、T1 から約 65 分。大人 18,000 ウォン、子ども 12,000 ウォン。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "深夜の入国後は時刻を見て判断",
+          "text": "深夜バスはおよそ一時間に一本なので、乗り遅れると空港でさらに一時間ほど待つことになります。三人以上で、宿泊先が江南や弘大以外なら、タクシーでも必ずしも割高とは限りません。仁川空港からソウル方面へ向かう一般（中型）タクシーの深夜割増は、22:00～23:00 が 20%、23:00～02:00 が 40%、02:00～04:00 が 20% です。模範・大型タクシーは 22:00～04:00 を通して 20% です。空港高速道路の通行料は別料金。予約制のインターナショナルタクシーは下記の別の定額運賃であり、一般車両の割増率をほかの車種に当てはめないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "タクシーとインターナショナルタクシー",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "仁川空港のタクシー乗り場は一階にあります。T1の一般タクシーは5C・6C・6D、模範タクシーは7C、大型タクシーは8C。T2のソウル行きは7C、模範・大型タクシーは7Dです。一般タクシーの初乗りは4,800ウォン、模範・大型（9人乗り）は7,000ウォンから。以降はメーター運賃と空港高速道路の通行料が加わり、深夜割増は前段に示した一般車両と模範・大型車両それぞれの時間帯で計算します。\nメーター運賃を避けたい場合は、英語・日本語・中国語で対応するインターナショナルタクシー（International Taxi）があります。仁川空港からソウルまで、目的地を A～E の五区域に分けた定額制で、一般車両は順に70,000・75,000・85,000・90,000・95,000ウォン、模範または大型車両は順に100,000・110,000・120,000・130,000・140,000ウォン。通行料は別です。利用するには24時間前までに公式サイト、App、または電話1644-2255で予約し、到着後にT1の4CまたはT2の3Cにあるインターナショナルタクシーのカウンターで受付をします。現金またはカードで支払えます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Appで配車する場合、k.rideとKakao Tの登録・支払い方法、ソウルのタクシー運賃と深夜割増については、"
+            },
+            {
+              "type": "article",
+              "text": "韓国の地図・配車Appガイド：Naver MapとKakao Mapでの経路検索、k.rideとKakao Tの選び方・支払い方法、ソウルのタクシー運賃と深夜割増",
+              "kind": "howto",
+              "slug": "korea-naver-map-kakao-t-guide"
+            },
+            {
+              "type": "text",
+              "text": "をご覧ください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "明洞・弘大・江南に泊まるなら、どれを選ぶ？",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "明洞に泊まる：ホテル近くまでバス、または直通列車から4号線へ",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "明洞にはAREXの駅がありません。最も手軽なのは6015または6001のバスで、明洞駅、ロッテホテル、会賢駅（南大門市場）周辺に停車します。早く着きたいなら直通列車でソウル駅へ行き、4号線に乗り換えます。会賢と明洞は次の二駅です。深夜到着ならN6701に乗り、ソウル駅か乙支路入口で降りて徒歩または短距離のタクシーで向かいます。"
+        },
+        {
+          "type": "heading",
+          "text": "弘大・延南洞に泊まる：普通列車で乗り換えなし",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "弘大入口駅には AREX 一般列車で直行できます。交通カードの運賃は T1 発 4,650 ウォン、T2 発 5,250 ウォン。車内に荷物棚はなく、ラッシュ時は混雑します。荷物が多い場合は、空港バス 6002 がホテル近くに停まるか確認してください。深夜の N6002 は、公式路線図では弘大入口まで T1 発で約 45 分、T2 発で約 65 分ですが、道路状況により変わります。"
+        },
+        {
+          "type": "heading",
+          "text": "江南に泊まる：日中はバス、深夜はN6000",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "江南は空港から最も遠く、鉄道の直通ルートはありません。日中は6703のバスでCOEX周辺へ向かうのが最も直接的です。直通列車でソウル駅へ行って地下鉄に乗り換える方法もありますが、乗り換えや荷物を運ぶ時間を含めると、バスとあまり変わらないこともあります。深夜は江南高速バスターミナル行きのN6000、COEXとロッテワールド行きのN6703があり、インターナショナルタクシーの定額運賃も選択肢です。"
+        },
+        {
+          "type": "heading",
+          "text": "帰りに便利：ソウル駅都心空港ターミナル",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "帰路に直通列車を利用する人は、ソウル駅の都心空港ターミナルで搭乗手続き、手荷物の預け入れ、出国審査を済ませ、空港到着後に専用通路から制限区域へ進めます。搭乗手続きのサービス時間は05:20～19:00ですが、新規受付は18:50で締め切ります。出国審査は別に05:30～19:00です。T1発の便は出発3時間前、T2発の便は3時間20分前までに手続きを終える必要があり、直通列車のきっぷを持つ人だけが利用できます。2026/9の公式サイトに掲載された航空会社は、T1がチェジュ航空、ティーウェイ航空、イースター航空、T2が大韓航空、アシアナ航空、ジンエアー、エアプサン、エアソウルです（一部の米国路線を除く）。実際の運航会社と路線が対象か、出発前に航空会社へ確認してください。台湾籍の航空会社は対象一覧にないため、エバー航空、チャイナエアライン、スターラックス航空の利用者は使えません。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "T1とT2、どちらを使う？",
+          "text": "直通列車も普通列車もT2から出発し、次にT1に停車します。バスも両ターミナルに停車し、T2の乗り場は地下一階のバスターミナル、T1は一階の屋外バス停です。空港鉄道の公式サイトでは、大韓航空、アシアナ航空、ジンエアー、エアプサン、エアソウルがT2、チェジュ航空、ティーウェイ航空、イースター航空がT1と案内されています。その他の航空会社は航空券や航空会社のサイトで利用ターミナルを確認し、降りる駅を間違えないようにしましょう。"
+        },
+        {
+          "type": "link",
+          "text": "ソウルの都市ガイド：観光スポット、宿泊、空港アクセスをまとめて確認",
+          "url": "https://mokaair.com/ja/destinations/seoul"
+        },
+        {
+          "type": "link",
+          "text": "ソウルのグルメ目録：明洞、弘大、江南の地元レストラン",
+          "url": "https://mokaair.com/ja/foods?city=seoul"
+        }
+      ],
+      "sources": [
+        {
+          "title": "공항철도 直通列車の案内（運賃、所要時間）",
+          "url": "https://www.airportrailroad.com/train/express/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 直通列車の時刻表",
+          "url": "https://www.airportrailroad.com/train/express/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항철도 普通列車の運賃",
+          "url": "https://www.airportrailroad.com/train/normal/fare",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 普通列車の案内（所要時間、きっぷの購入）",
+          "url": "https://www.airportrailroad.com/train/normal/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 トップページ（運行時間）",
+          "url": "https://www.airportrailroad.com/main",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 ソウル駅都心空港ターミナル",
+          "url": "https://www.airportrailroad.com/train/express/city/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "仁川空港 鉄道案内（券売機の場所）",
+          "url": "https://www.airport.kr/ap_ko/984/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川空港 バス乗り場の案内（T1）",
+          "url": "https://www.airport.kr/ap_ko/974/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川空港 バス路線検索",
+          "url": "https://www.airport.kr/ap_ko/976/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川空港 ソウル行き深夜バス（T1）",
+          "url": "https://www.airport.kr/ap_ko/979/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川空港 ソウル行き深夜バス（T2）",
+          "url": "https://www.airport.kr/ap_ko/982/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川空港 タクシー／コールバンの案内",
+          "url": "https://www.airport.kr/ap_ko/987/subview.do",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항리무진 6001路線",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=1",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항리무진 6015路線",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=21",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항리무진 6002路線",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=2",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "International Taxi（ソウルのインターナショナルタクシー定額運賃）",
+          "url": "http://www.intltaxi.co.kr/",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "VisitKorea（韓国観光公社）交通カード：T-money",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140663",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "AREX：仁川空港 T2 一般列車の当日運行時刻と行き先",
+          "url": "https://www.airportrailroad.com/train/normal/info/110/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "AREX：仁川空港 T1 一般列車の当日運行時刻と行き先",
+          "url": "https://www.airportrailroad.com/train/normal/info/100/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "空港リムジン：N6002 の空港発乗り場、運賃、発券方法",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=82",
+          "checked_on": "2026-09-22"
+        }
+      ]
+    },
+    "ko": {
+      "title": "인천공항에서 서울 시내까지: AREX 직통·일반열차, 공항버스와 심야 도착 교통편",
+      "description": "인천공항에서 서울역까지 가장 빠른 교통편은 AREX 직통열차로, T1에서는 43분, T2에서는 51분 걸리며 요금은 13,000원이다. 홍대에 묵는다면 T-money로 타는 일반열차가 가장 저렴하며 T1에서 홍대입구까지 4,650원이다. 6001／6015／6002 공항버스는 명동·서울역·홍대 방면으로 운행하며 17,000원이다. 교통편 네 가지 비교표, N6000 등 심야버스, 택시와 국제택시 정액요금, 숙소 지역별 선택법, 귀국 시 서울역 도심공항터미널 이용법을 담았다. 2026/9 공식 홈페이지 확인.",
+      "hero": {
+        "src": "/guides/incheon-airport-to-seoul/hero.jpg",
+        "alt": "계양역을 지나는 공항철도 AREX 열차",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Takeshi Aida",
+          "license": "CC BY-SA 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX_2000%2C_Gyeyang_%2820240407%29_%2854219624992%29.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "인천공항에 도착하면 가장 먼저 시내까지 어떻게 갈지 결정해야 한다. AREX 공항철도에는 직통열차와 일반열차가 있고, 공항버스 노선은 십여 개에 달한다. 택시도 일반·모범·국제택시로 나뉘어 숙소 위치에 따라 가장 편한 이동 방법이 달라진다.\n이 글에서는 2026/9 공항철도, 인천공항, 버스 회사 공식 홈페이지에서 확인한 요금과 소요 시간을 표로 정리했다. 이어 명동·홍대·강남 중 어디에 묵는지에 따라 교통편을 고르는 법과 심야 도착 시 선택지, 귀국할 때 서울역 도심공항터미널을 이용하는 법을 안내한다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 결론: 교통편 네 가지 중 무엇을 고를까",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "교통편",
+            "목적지",
+            "소요 시간",
+            "성인 요금",
+            "추천 대상"
+          ],
+          "rows": [
+            [
+              "AREX 직통열차",
+              "T2·T1에서 서울역까지 중간 정차 없이 운행",
+              "T1 43분, T2 51분",
+              "13,000원(현재 공식 홈페이지 요금; 정가 18,500／19,100원)",
+              "서울역 근처에 묵거나 KTX로 갈아타는 여행자, 지정 좌석과 짐칸을 원하는 여행자"
+            ],
+            [
+              "AREX 일반열차",
+              "홍대입구·공덕·서울역 등 노선의 모든 역",
+              "서울역에서 T1까지 59분, T2까지 66분",
+              "T1에서 서울역 4,750원, T2에서 서울역 5,350원(교통카드 이용)",
+              "홍대·공덕 또는 김포공항 노선 주변에 묵고 짐이 적은 여행자"
+            ],
+            [
+              "공항버스 6001／6015／6002",
+              "명동·서울역·동대문·홍대 등의 호텔 앞",
+              "공식 홈페이지에 미표기; 정체 시 철도보다 확연히 느림",
+              "17,000원(어린이 12,000원)",
+              "짐이 많고 호텔이 정류장 바로 옆인 여행자"
+            ],
+            [
+              "심야버스 N6000／N6002／N6701／N6703",
+              "강남·홍대·서울역·동대문·COEX",
+              "공항 공식 노선도 기준 목적지까지 T1 출발 약 70~90분, T2 출발 약 90~110분",
+              "17,000~18,000원",
+              "직통열차 막차 뒤 도착하고 일반열차의 시간이나 종착역이 일정에 맞지 않는 사람. 먼저 당일 철도 시간표를 확인"
+            ],
+            [
+              "택시／국제택시",
+              "호텔까지 바로 이동",
+              "교통 상황에 따라 다름",
+              "일반택시 기본요금 4,800원부터 미터기 요금; 국제택시 정액요금 70,000원부터",
+              "서너 명이 함께 이동하거나 심야에 도착하고 짐이 많은 여행자"
+            ]
+          ],
+          "caption": "2026/9 공항철도·인천공항·공항리무진 공식 홈페이지 확인. 요금은 성인 편도 기준."
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/diagram-1-ko.svg",
+          "alt": "인천공항 T1·T2에서 홍대입구·서울역·명동·강남까지의 교통 노선도",
+          "width": 1600,
+          "height": 900,
+          "caption": "네 교통수단의 노선과 대략적인 시간. 심야버스 시간은 T1 출발 기준이며 T2에서는 약 20분 더 걸린다(2026/9 확인).",
+          "description": "AREX 공항철도 직통열차는 서울역까지 운행한다. 일반열차는 홍대입구·공덕 등을 거쳐 서울역까지 가고, 공항버스는 명동·강남 등으로 운행한다. 심야에는 N 계열 버스가 있다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "요금은 바뀔 수 있으니 공식 홈페이지의 날짜 확인",
+          "text": "AREX 직통열차의 공식 홈페이지 표기 정가는 T1 18,500원, T2 19,100원이다. 현재는 할인 요금 13,000원에 판매하지만 공식 홈페이지에 할인 종료일이 없어 출발 전에 다시 확인해야 한다. 일반열차는 지하철과 같은 교통카드 요금 체계를 쓴다. T-money로 결제하면 일회용 승차권보다 100원 저렴하고 500원 보증금도 내지 않는다."
+        },
+        {
+          "type": "heading",
+          "text": "AREX 공항철도: 직통열차와 일반열차",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "직통열차: 중간 정차 없음, 지정 좌석, 13,000원",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "직통열차는 T2에서 출발해 T1에 정차한 뒤 중간 정차 없이 서울역으로 간다. T1에서 서울역까지 43분, T2에서는 51분 걸린다. 전 좌석 지정제이며 짐칸이 있다. 2026/9 공식 홈페이지 시간표 기준 서울역행 첫차는 T2 05:16, T1 05:24이며 막차는 T2에서 22:40, T1에서 22:48에 출발한다. 낮에는 약 40분 간격으로 운행하므로 일반열차보다 기다리는 시간이 길 수 있다. 시간을 확인하고 승강장으로 가자. 서울역 출발 공항행 직통열차는 첫차 06:00, 막차 23:00이다.\n성인 요금은 13,000원, 6~12세 어린이는 9,500원이다. 65세 이상 경로 우대는 한국 국민에게만 적용되어 외국인 여행자는 이용할 수 없다. 서울역 AREX 승강장은 지하 깊숙이 있어 지하철 1·4호선 환승에 시간이 걸린다. 명동에 묵는다면 서울역에서 4호선으로 갈아타면 회현과 명동이 다음 두 정거장이다."
+        },
+        {
+          "type": "heading",
+          "text": "일반열차: T-money로 탑승, 홍대행에 가장 유리",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "일반열차는 T-money로 탈 수 있는 통근열차다. T2에서 출발해 T1·공항화물청사·운서·영종·청라국제도시·검암·계양·김포공항·마곡나루·디지털미디어시티·홍대입구·공덕을 거쳐 서울역으로 간다. 공식 홈페이지 기준 서울역에서 T1까지 59분, T2까지 66분이며 반대 방향도 대체로 비슷하다. 운행 시간은 05:20~00:00이고 역별 첫차와 막차는 시간표를 확인해야 한다.\n교통카드 이용 시 성인 요금은 T1에서 서울역까지 4,750원, 홍대입구·공덕까지 4,650원이다. T2에서 서울역까지는 5,350원, 홍대입구·공덕까지는 5,250원이다. 일회용 교통카드를 사면 100원을 더 내고 보증금 500원도 추가로 내야 한다. 보증금은 도착 후 보증금 환급기에서 돌려받는다. 객실에 짐칸이 없고 출퇴근 시간에는 붐벼 큰 여행가방을 두 개 들고 타기에는 다소 힘들다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-2.webp",
+          "alt": "서울역 공항철도 승강장과 전면형 스크린도어",
+          "width": 1200,
+          "height": 900,
+          "caption": "서울역 AREX 승강장은 지하 깊숙이 있어 지하철 1·4호선으로 갈아탈 때 걸어갈 시간을 잡아야 한다.",
+          "description": "",
+          "credit": {
+            "author": "IRTC1015",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX-Seoul_Stn-Platform.jpg"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "승차권 구매법: T-money, 직통열차 승차권, 일회용 승차권",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "두 열차 모두 T1·T2 교통센터 지하에 승강장 입구가 있다. 직통열차는 전용 발매기와 매표소에서 승차권을 사며 좌석이 지정된다. 카드와 현금 모두 사용할 수 있다. 일반열차는 T-money를 찍고 바로 들어가면 된다. 카드가 없다면 공항 편의점에서 먼저 구매하자. 인천공항 공식 홈페이지도 요금과 시간표는 공항철도 공식 홈페이지 또는 고객센터 1599-7788을 기준으로 확인하라고 안내한다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "T-money 카드: 공항과 시내의 GS25·CU·7-ELEVEN 등 편의점, 지하철역 안내소에서 판매한다. 빈 카드는 3,000~5,000원이고 약 20,000원을 충전하면 이삼 일 정도 쓸 수 있다. 지하철역 충전기에서 충전할 수 있지만 잔액이 50,000원을 넘으면 서울역 Tmoney Town에서만 환불받을 수 있으니 한 번에 너무 많이 충전하지 말자.",
+            "직통열차 승차권: T1·T2 교통센터 지하의 공항철도 발매기나 매표소에서 구매한다. 성인 13,000원, 어린이 9,500원이다. 공식 홈페이지에는 제휴 플랫폼의 온라인 할인 승차권도 안내되어 있다. 할인은 중복 적용되지 않으며 승차권에 적힌 방법대로 교환한다.",
+            "일반열차 일회용 승차권: 발매기에서 구매한다. 교통카드 이용 요금보다 100원 비싸고 보증금 500원을 추가로 내며, 도착 후 보증금 환급기에서 돌려받는다."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "offer",
+          "module": "transport",
+          "destination_id": null,
+          "heading": "AREX 직통열차 승차권이나 T-money를 미리 준비해 도착 후 바로 탑승"
+        },
+        {
+          "type": "heading",
+          "text": "공항버스: 짐이 많고 호텔이 정류장 옆이라면 좋은 선택",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공항리무진 버스(공항리무진)는 호텔 근처에 정차하고 짐을 버스 아래에 실을 수 있다. T1은 입국장 밖 지상 승차장, T2는 교통센터 지하층 버스터미널에서 탄다. 공항 출발편의 발권, 예약 가능 여부, 결제 방식은 노선과 운영사마다 다르다. 당일 운영사 안내와 공항 전광판을 확인하고 필요하면 지정 매표소나 발권기에서 승차권을 받아야 한다. 차량에서 T-money를 찍거나 현금을 낼 수 있다고 가정하지 말자. 6001/6015/6002 등 주간 노선도 요금, 승차장, 첫차와 막차를 각 노선 공지에서 확인한다. 정체가 심하면 철도보다 훨씬 늦을 수 있으므로 급할 때는 실제 출발편과 교통 상황을 비교하자."
+        },
+        {
+          "type": "table",
+          "header": [
+            "노선",
+            "주요 정류장(공항에서 시내 방향)",
+            "성인／어린이 요금",
+            "운행사"
+          ],
+          "rows": [
+            [
+              "6001",
+              "신용산·서울역·명동역·동대문(바이튼호텔)",
+              "17,000／12,000원",
+              "공항리무진"
+            ],
+            [
+              "6015",
+              "마포역·공덕역·충정로역·회현역(남대문시장)·명동역·을지로·롯데호텔",
+              "17,000／12,000원",
+              "공항리무진"
+            ],
+            [
+              "6002",
+              "합정역·홍대입구(Mercure·L7 호텔)·종로·동대문·청량리",
+              "17,000／12,000원",
+              "공항리무진"
+            ],
+            [
+              "6703",
+              "강남·COEX 일대",
+              "운행사 공지 확인",
+              "KAL 리무진"
+            ]
+          ],
+          "caption": "2026/9 공항리무진 공식 홈페이지와 인천공항 버스 노선표 확인. 6703 요금은 공식 홈페이지에서 확인할 수 없어 싣지 않았다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-1.webp",
+          "alt": "서울 시내 정류장에 선 인천공항버스 6010번 차량",
+          "width": 1200,
+          "height": 900,
+          "caption": "공항버스는 아래 짐칸에 큰 여행가방을 실을 수 있어 호텔이 정류장 옆인 여행자에게 특히 편하다.",
+          "description": "",
+          "credit": {
+            "author": "hyolee2",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AIncheon_Airport_Limousine_6010.JPG"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "심야버스: 22:40 이후 이용할 수 있는 네 노선",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "22:40은 T2에서 서울역으로 가는 AREX 직통열차의 막차(T1에서는 22:48 출발)이지 모든 열차의 운행 종료가 아니다. 그 뒤에도 서울역까지 가는 일반열차가 있고 더 늦은 편은 디지털미디어시티에서 끝날 수 있다. 입국 후에는 당일 공항철도 공식 시간표에서 T1/T2, 목적지와 이용 가능한 열차를 확인하자. 철도가 일정에 맞지 않을 때 심야버스와 택시를 비교하면 된다. 인천공항은 서울행 심야버스 네 노선을 안내한다. 성인 요금은 17,000~18,000원, 어린이는 10,000~12,000원이며 운영사마다 발권 방식이 다르다. N6000/N6002는 공항 매표소나 발권기에서 먼저 표를 받아야 하고, N6701/N6703은 운영사 규정에 따라 TmoneyGO에서도 구매할 수 있다. N6002는 T1 지상층 6A번, T2 지하층 30번 승차장에서 탄다. 다른 노선과 승차장 변경 사항은 당일 공항 전광판을 확인하자. 버스는 T2에서 먼저 출발해 약 20분 뒤 T1에 도착한다. 아래는 2026/9에 확인한 공항에서 시내로 가는 출발 시간대이며 반대 방향 시각이 아니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "N6000은 송정역·염창역을 거쳐 강남고속버스터미널로 간다. 공항에서 시내로 가는 차는 T2 23:50~04:00, T1 00:10~04:20 사이에 출발한다. 터미널까지 T2 출발 약 90분, T1 출발 약 70분이다. 성인 17,000원, 어린이 10,000원.",
+            "N6002는 홍대입구, 광화문 포시즌스호텔, 흥인지문을 거쳐 청량리로 간다. 공항에서 시내로 가는 차는 T2 23:40~04:20, T1 00:00~04:40 사이에 출발한다. 홍대입구까지 T2 출발 약 65분, T1 출발 약 45분이다. 성인 17,000원, 어린이 10,000원. 03:20은 청량리에서 공항으로 가는 반대 방향 출발시각이다.",
+            "N6701은 마포역·서울역·을지로입구를 거쳐 동대문디자인플라자로 간다. 공항에서 시내로 가는 차는 T2 23:30~04:20, T1 23:50~04:40 사이에 출발한다. 서울역까지 T2 출발 약 80분, T1 출발 약 60분이다. 성인 18,000원, 어린이 12,000원.",
+            "N6703은 서래마을·COEX·롯데월드·강변역을 거쳐 광나루역으로 간다. 공항에서 시내로 가는 차는 T2 23:20~04:30, T1 23:40~04:50 사이에 출발한다. COEX까지 T2 출발 약 85분, T1 출발 약 65분이다. 성인 18,000원, 어린이 12,000원."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "심야 입국 수속을 마쳤다면 시간을 먼저 확인",
+          "text": "심야버스는 약 한 시간에 한 대여서 놓치면 공항에서 한 시간을 더 기다려야 한다. 세 명 이상이고 숙소가 강남이나 홍대 외 지역이라면 택시가 꼭 더 비싼 것은 아니다. 인천공항에서 서울로 가는 일반(중형)택시의 심야 할증은 22:00~23:00 20%, 23:00~02:00 40%, 02:00~04:00 20%다. 모범·대형택시는 22:00~04:00 내내 20%가 적용된다. 공항 고속도로 통행료는 별도다. 예약한 국제택시는 아래의 별도 정액요금을 적용하므로 일반택시 할증률을 다른 차종에 적용하지 말자."
+        },
+        {
+          "type": "heading",
+          "text": "택시와 국제택시",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "인천공항 택시 승차장은 지상층에 있다. T1의 일반택시는 5C·6C·6D, 모범택시는 7C, 대형택시는 8C에서 탄다. T2의 서울행 택시는 7C, 모범·대형택시는 7D에서 탄다. 일반택시 기본요금은 4,800원, 모범·대형택시(9인승)는 7,000원부터 시작한다. 이후 미터기 요금과 공항 고속도로 통행료가 더해지며 심야 할증은 앞에서 구분한 일반택시와 모범·대형택시의 시간대에 따라 계산한다.\n미터기 요금이 부담스럽다면 국제택시(International Taxi)를 이용할 수 있다. 영어·일본어·중국어 서비스를 제공한다. 인천공항에서 서울까지 목적지에 따라 A~E 다섯 구역으로 나뉘며 정액요금은 구역 순서대로 일반택시 70,000·75,000·85,000·90,000·95,000원, 모범·대형택시 100,000·110,000·120,000·130,000·140,000원이다. 통행료는 별도다. 공식 홈페이지, App 또는 전화 1644-2255로 24시간 전에 예약해야 한다. 도착 후 T1 4C 또는 T2 3C 국제택시 카운터에서 접수하고 현금이나 카드로 결제할 수 있다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "App으로 택시를 부를 계획이라면 k.ride와 Kakao T의 가입·결제 방법, 서울 택시 요금과 심야 할증은 "
+            },
+            {
+              "type": "article",
+              "text": "한국 지도·택시 호출 App 가이드: Naver Map·Kakao Map 경로 검색, k.ride·Kakao T 선택과 결제, 서울 택시 요금과 심야 할증",
+              "kind": "howto",
+              "slug": "korea-naver-map-kakao-t-guide"
+            },
+            {
+              "type": "text",
+              "text": "에서 확인하자."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "명동·홍대·강남 숙소별 교통편 선택",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "명동 숙소: 버스로 호텔 앞까지, 또는 직통열차에서 4호선으로 환승",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "명동에는 AREX 역이 없다. 가장 간편한 방법은 명동역·롯데호텔·회현역(남대문시장) 일대에 바로 서는 6015 또는 6001 버스다. 빨리 가고 싶다면 직통열차로 서울역까지 간 다음 4호선으로 갈아타 회현 또는 명동에서 내리면 된다. 심야에 도착한다면 N6701을 타고 서울역이나 을지로입구에서 내려 걷거나 택시로 짧게 이동하면 된다."
+        },
+        {
+          "type": "heading",
+          "text": "홍대·연남동 숙소: 일반열차로 환승 없이 이동",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "홍대입구역까지는 AREX 일반열차를 바로 탈 수 있다. 교통카드 요금은 T1에서 4,650원, T2에서 5,250원이다. 차량에 짐칸이 없고 출퇴근 시간에는 붐빌 수 있다. 짐이 많다면 공항버스 6002가 숙소 근처에 서는지 확인하자. 심야 N6002는 공식 노선도상 홍대입구까지 T1 출발 약 45분, T2 출발 약 65분이지만 교통 상황에 따라 달라진다."
+        },
+        {
+          "type": "heading",
+          "text": "강남 숙소: 낮에는 버스, 심야에는 N6000",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "강남은 공항에서 가장 멀고 철도로 바로 갈 수 없다. 낮에는 COEX 일대로 가는 6703 버스가 가장 간편하다. 직통열차로 서울역까지 간 뒤 지하철로 갈아탈 수도 있지만 환승하고 짐을 끄는 시간을 더하면 버스와 비슷하게 걸리는 경우가 많다. 심야에는 강남고속버스터미널행 N6000, COEX·롯데월드행 N6703이 있고 국제택시 정액요금도 선택할 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "귀국길 팁: 서울역 도심공항터미널",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "귀국길에 직통열차를 탄다면 서울역 도심공항터미널에서 미리 탑승 수속, 수하물 위탁, 출국 심사를 마치고 공항 도착 후 전용 통로로 보안구역에 들어갈 수 있다. 탑승 수속 운영 시간은 05:20~19:00이지만 신규 접수는 18:50에 마감한다. 출국 심사는 별도로 05:30~19:00에 운영된다. T1 항공편은 출발 3시간 전, T2 항공편은 출발 3시간 20분 전까지 수속을 마쳐야 하며 직통열차 승차권을 가진 승객만 이용할 수 있다. 2026/9 공식 홈페이지에 안내된 항공사는 T1의 제주항공·티웨이항공·이스타항공, T2의 대한항공·아시아나항공·진에어·에어부산·에어서울이다(일부 미국 노선 제외). 실제 운항 항공사와 노선의 이용 자격은 출발 전 해당 항공사에 확인해야 한다. 명단에 대만 항공사는 없으므로 에바항공·중화항공·스타럭스항공 승객은 이용할 수 없다."
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "T1일까, T2일까",
+          "text": "직통열차와 일반열차는 모두 T2에서 출발하며 T1이 다음 정차역이다. 버스도 두 터미널 모두에 정차한다. T2 정류장은 지하 버스터미널, T1 정류장은 지상층 야외에 있다. 공항철도 공식 홈페이지에는 대한항공·아시아나항공·진에어·에어부산·에어서울이 T2, 제주항공·티웨이항공·이스타항공이 T1을 이용한다고 안내되어 있다. 그 밖의 항공사는 항공권이나 항공사 웹사이트에서 터미널을 확인해 잘못 내리지 않도록 하자."
+        },
+        {
+          "type": "link",
+          "text": "서울 도시 가이드: 명소·숙소·공항 교통 한눈에 보기",
+          "url": "https://mokaair.com/ko/destinations/seoul"
+        },
+        {
+          "type": "link",
+          "text": "서울 맛집 목록: 명동·홍대·강남의 현지 식당",
+          "url": "https://mokaair.com/ko/foods?city=seoul"
+        }
+      ],
+      "sources": [
+        {
+          "title": "공항철도 직통열차 안내(요금·소요 시간)",
+          "url": "https://www.airportrailroad.com/train/express/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 직통열차 시간표",
+          "url": "https://www.airportrailroad.com/train/express/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항철도 일반열차 운임",
+          "url": "https://www.airportrailroad.com/train/normal/fare",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 일반열차 안내(소요 시간·승차권 구매)",
+          "url": "https://www.airportrailroad.com/train/normal/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 홈페이지(운행 시간)",
+          "url": "https://www.airportrailroad.com/main",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도 서울역 도심공항터미널",
+          "url": "https://www.airportrailroad.com/train/express/city/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "인천공항 열차 안내(발매기 위치)",
+          "url": "https://www.airport.kr/ap_ko/984/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "인천공항 버스 정류장 안내(T1)",
+          "url": "https://www.airport.kr/ap_ko/974/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "인천공항 버스 노선 검색",
+          "url": "https://www.airport.kr/ap_ko/976/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "인천공항 서울 심야버스(T1)",
+          "url": "https://www.airport.kr/ap_ko/979/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "인천공항 서울 심야버스(T2)",
+          "url": "https://www.airport.kr/ap_ko/982/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "인천공항 택시／콜밴 안내",
+          "url": "https://www.airport.kr/ap_ko/987/subview.do",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항리무진 6001 노선",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=1",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항리무진 6015 노선",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=21",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항리무진 6002 노선",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=2",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "International Taxi(서울 국제택시 정액요금)",
+          "url": "http://www.intltaxi.co.kr/",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "VisitKorea(한국관광공사) Transportation Cards: T-money",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140663",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "공항철도: 인천공항 T2 일반열차 당일 시간표 및 종착역",
+          "url": "https://www.airportrailroad.com/train/normal/info/110/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항철도: 인천공항 T1 일반열차 당일 시간표 및 종착역",
+          "url": "https://www.airportrailroad.com/train/normal/info/100/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "공항리무진: N6002 공항발 승차장, 요금과 발권 방법",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=82",
+          "checked_on": "2026-09-22"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "仁川机场到首尔市区交通攻略：AREX 直达／普通列车、机场巴士、深夜抵达怎么办",
+      "description": "仁川机场到首尔站最快的是 AREX 直达列车，T1 43 分钟、T2 51 分钟，13,000 韩元；住弘大搭普通列车刷 T-money 最便宜，T1 到弘大入口 4,650 韩元；6001／6015／6002 机场巴士到明洞、首尔站、弘大，17,000 韩元。附四种方式对比表、N6000 等深夜巴士、出租车与国际出租车固定价格、住宿区域怎么选，以及返程使用首尔站市区机场航站楼的方法；2026 年 9 月依据官网核实。",
+      "hero": {
+        "src": "/guides/incheon-airport-to-seoul/hero.jpg",
+        "alt": "机场铁路 AREX 列车驶过桂阳站",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Takeshi Aida",
+          "license": "CC BY-SA 2.0",
+          "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX_2000%2C_Gyeyang_%2820240407%29_%2854219624992%29.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "抵达仁川后，第一个决定就是怎么进市区。AREX 机场铁路分直达和普通两种列车，机场巴士有十几条线路，出租车又分普通、模范（豪华）和国际出租车。酒店位置不同，最顺路的方式也不同。\n这篇文章把 2026 年 9 月从机场铁路、仁川机场及巴士公司官网查到的票价和时间整理成一张表，再根据你住明洞、弘大还是江南说明该选哪种方式，最后补充深夜抵达的选择，以及返程使用首尔站市区机场航站楼的方法。"
+        },
+        {
+          "type": "heading",
+          "text": "先看结论：四种方式怎么选",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "到哪里",
+            "车程",
+            "成人票价",
+            "适合谁"
+          ],
+          "rows": [
+            [
+              "AREX 直达列车",
+              "从 T2、T1 直达首尔站，中途不停",
+              "T1 43 分钟、T2 51 分钟",
+              "13,000 韩元（官网当前票价；定价 18,500／19,100 韩元）",
+              "住首尔站周边、要转乘 KTX，或想要指定座位和行李架的人"
+            ],
+            [
+              "AREX 普通列车",
+              "沿线各站，包括弘大入口、孔德、首尔站",
+              "首尔站到 T1 59 分钟、到 T2 66 分钟",
+              "T1 到首尔站 4,750、T2 到首尔站 5,350 韩元（刷交通卡）",
+              "住弘大、孔德或金浦机场沿线，行李不多的人"
+            ],
+            [
+              "机场巴士 6001／6015／6002",
+              "明洞、首尔站、东大门、弘大等地的酒店门口",
+              "官网未标明，堵车时明显比铁路慢",
+              "17,000 韩元（儿童 12,000）",
+              "行李多、酒店就在站牌旁边的人"
+            ],
+            [
+              "深夜巴士 N6000／N6002／N6701／N6703",
+              "江南、弘大、首尔站、东大门、COEX",
+              "机场官方线路图：从 T1 到各终点约 70 至 90 分钟；从 T2 约 90 至 110 分钟",
+              "17,000 到 18,000 韩元",
+              "在直达列车末班后抵达，普通列车的时间或终点不合行程的人；先查当天铁路时刻表"
+            ],
+            [
+              "出租车／国际出租车",
+              "直达酒店",
+              "视路况而定",
+              "普通出租车起步价 4,800 韩元，按表计费；国际出租车固定价格 70,000 韩元起",
+              "三四人同行、深夜抵达或行李多的人"
+            ]
+          ],
+          "caption": "2026 年 9 月依据机场铁路、仁川机场与공항리무진官网核实；票价为成人单程。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/diagram-1-zh-cn.svg",
+          "alt": "仁川机场 T1、T2 到弘大入口、首尔站、明洞、江南的交通线路示意图",
+          "width": 1600,
+          "height": 900,
+          "caption": "四种方式的线路与大约时间示意；深夜巴士时间按从 T1 出发计算，从 T2 约多 20 分钟（2026 年 9 月核对）。",
+          "description": "机场铁路 AREX 直达列车到首尔站；普通列车停靠弘大入口、孔德等站后到首尔站；机场巴士到明洞、江南等地；另有 N 系列深夜巴士。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "票价会变，查看官网日期",
+          "text": "AREX 直达列车官网标明的定价是 18,500（T1）和 19,100（T2）韩元，目前以 13,000 韩元的优惠价销售。官网没有写优惠截止日期，出发前再确认一次。普通列车和地铁共用交通卡计费，刷 T-money 比买单程票便宜 100 韩元，也不用付 500 韩元押金。"
+        },
+        {
+          "type": "heading",
+          "text": "AREX 机场铁路：直达列车与普通列车",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "直达列车：中途不停、指定座位、13,000 韩元",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "直达列车从 T2 出发，停靠 T1 后直奔首尔站，中途不停：T1 到首尔站 43 分钟、T2 到首尔站 51 分钟。全车指定座位，设有行李架。2026 年 9 月官网时刻表显示：开往首尔站的首班车从 T2 05:16、T1 05:24 发车，末班车 22:40 从 T2、22:48 从 T1 发车；白天大约每 40 分钟一班，等车时间可能比普通列车长，进站前先看好时刻。首尔站开往机场的直达列车首班 06:00、末班 23:00。\n成人票价 13,000 韩元，6 到 12 岁儿童 9,500 韩元；65 岁以上的敬老优惠仅限韩国国民，外国旅客无法使用。在首尔站下车后，AREX 站台位于地下深处，转乘地铁 1、4 号线需要走一段路；住明洞的人可在首尔站转乘 4 号线，会贤、明洞就是接下来的两站。"
+        },
+        {
+          "type": "heading",
+          "text": "普通列车：刷 T-money 就能坐，去弘大最划算",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "普通列车是可以刷 T-money 的通勤电车，从 T2 出发，途经 T1、机场货物厅舍、云西、永宗、青罗国际都市、黔岩、桂阳、金浦机场、麻谷渡口、数码媒体城、弘大入口、孔德，抵达首尔站。官网标明首尔站到 T1 59 分钟、到 T2 66 分钟，反方向大致相同；运营时间为 05:20 到 00:00，各站首末班车以时刻表为准。\n刷交通卡的成人票价：T1 到首尔站 4,750 韩元，到弘大入口与孔德 4,650 韩元；T2 到首尔站 5,350 韩元，到弘大入口与孔德 5,250 韩元。购买单程交通卡要多付 100 韩元，另加 500 韩元押金，下车后可在退币机取回。车厢没有行李架，高峰时段人多，带两件大行李会有些吃力。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-2.webp",
+          "alt": "首尔站机场铁路站台与全高式站台门",
+          "width": 1200,
+          "height": 900,
+          "caption": "首尔站的 AREX 站台位于地下深处，转乘地铁 1、4 号线要预留步行时间。",
+          "description": "",
+          "credit": {
+            "author": "IRTC1015",
+            "license": "Public domain",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AAREX-Seoul_Stn-Platform.jpg"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "怎么买票：T-money、直达列车票、单程票",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "两种列车的入口都在 T1、T2 交通中心的地下一层。直达列车有专用售票机和售票处，实行指定座位，可刷卡或付现金；普通列车直接刷 T-money 进站，没有卡的话，先在机场的便利店买一张。仁川机场官网也提醒，票价和时刻以机场铁路官网或客服 1599-7788 的信息为准。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "T-money 卡：机场与市区的 GS25、CU、7-ELEVEN 等便利店和地铁站服务台都有卖，空卡 3,000 到 5,000 韩元。先充值约 20,000 韩元，够用两三天；地铁站充值机可加值。余额退款超过 50,000 韩元，只能到首尔站的 Tmoney Town 办理，一次不要充太多。",
+            "直达列车票：在 T1、T2 交通中心地下一层的机场铁路售票机或售票处购买，成人 13,000、儿童 9,500 韩元；官网列有合作平台的线上优惠票，优惠不能叠加使用，按票面说明兑换。",
+            "普通列车单程票：在售票机购买，比刷交通卡贵 100 韩元，另加 500 韩元押金，到站后可在退币机取回。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "offer",
+          "module": "transport",
+          "destination_id": null,
+          "heading": "提前买好 AREX 直达列车票或 T-money，落地直接进站"
+        },
+        {
+          "type": "heading",
+          "text": "机场巴士：行李多、酒店在站牌旁就选它",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "机场巴士（공항리무진）可停在酒店附近，行李可放在车底。T1 从一楼入境大厅外的巴士站上车，T2 从交通中心地下一楼的巴士总站上车。机场出发的购票、能否预订和付款方式因线路、运营商而异，请先看当天运营商说明和机场告示，并按要求到指定售票处或售票机取票；不要以为一定能在车上刷 T-money 或付现金。6001／6015／6002 等日间线路的票价、站台及首末班也以各线路公告为准。遇到堵车可能明显慢于铁路，赶时间应比较实际班次与路况。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "线路",
+            "主要停靠站（机场往市区）",
+            "成人／儿童票价",
+            "运营公司"
+          ],
+          "rows": [
+            [
+              "6001",
+              "新龙山、首尔站、明洞站、东大门（拜顿酒店）",
+              "17,000／12,000 韩元",
+              "공항리무진"
+            ],
+            [
+              "6015",
+              "麻浦站、孔德站、忠正路站、会贤站（南大门市场）、明洞站、乙支路、乐天酒店",
+              "17,000／12,000 韩元",
+              "공항리무진"
+            ],
+            [
+              "6002",
+              "合井站、弘大入口（Mercure、L7 酒店）、钟路、东大门、清凉里",
+              "17,000／12,000 韩元",
+              "공항리무진"
+            ],
+            [
+              "6703",
+              "江南、COEX 一带",
+              "以运营公司公告为准",
+              "KAL 리무진"
+            ]
+          ],
+          "caption": "2026 年 9 月依据공항리무진官网与仁川机场巴士线路表核实；6703 的票价无法从官网读取，因此未列出。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/incheon-airport-to-seoul/photo-1.webp",
+          "alt": "仁川机场巴士 6010 号车停在首尔市区站牌",
+          "width": 1200,
+          "height": 900,
+          "caption": "机场巴士车底可以放大行李，酒店就在站牌旁的人最适合乘坐。",
+          "description": "",
+          "credit": {
+            "author": "hyolee2",
+            "license": "CC BY-SA 3.0",
+            "source_url": "https://commons.wikimedia.org/wiki/File%3AIncheon_Airport_Limousine_6010.JPG"
+          }
+        },
+        {
+          "type": "heading",
+          "text": "深夜巴士：22:40 后的四条线路",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "22:40 是 AREX 直达列车从 T2 开往首尔站的末班（T1 于 22:48 发车），并非所有铁路停运；之后仍有开往首尔站的普通列车，更晚的班次可能只到数字媒体城。入境后请按 T1／T2、目的地和当天机场铁路官方时刻表确认可乘班次。若铁路不适合，再比较深夜巴士与出租车。仁川机场官网列有四条开往首尔的深夜巴士，成人票价为 17,000 至 18,000、儿童 10,000 至 12,000 韩元，购票方式因运营商而异：N6000／N6002 在机场须先到售票处或售票机取票；N6701／N6703 还可依运营商规定通过 TmoneyGO 购票。N6002 在 T1 一楼 6A、T2 地下一楼 30 号站台上车；其他线路及站台变更请看机场当天告示。巴士先从 T2 出发，约 20 分钟后到 T1。下列是 2026 年 9 月核对的机场开往市区的发车时段，不是反方向的时间："
+        },
+        {
+          "type": "list",
+          "items": [
+            "N6000 开往江南高速巴士客运站，途经松亭站、盐仓站。机场开往市区的班次在 T2 为 23:50 至 04:00，T1 为 00:10 至 04:20；到江南客运站从 T2 约 90 分钟、从 T1 约 70 分钟。成人 17,000、儿童 10,000 韩元。",
+            "N6002 开往清凉里，途经弘大入口、光化门四季酒店和兴仁之门；机场开往市区的班次在 T2 为 23:40 至 04:20，T1 为 00:00 至 04:40。到弘大入口从 T2 约 65 分钟、从 T1 约 45 分钟，成人 17,000、儿童 10,000 韩元；03:20 是清凉里开往机场的反方向发车时间。",
+            "N6701 开往东大门设计广场，途经麻浦站、首尔站和乙支路入口；机场开往市区的班次在 T2 为 23:30 至 04:20，T1 为 23:50 至 04:40。到首尔站从 T2 约 80 分钟、从 T1 约 60 分钟，成人 18,000、儿童 12,000 韩元。",
+            "N6703 开往广渡口站，途经瑞来村、COEX、乐天世界和江边站；机场开往市区的班次在 T2 为 23:20 至 04:30，T1 为 23:40 至 04:50。到 COEX 从 T2 约 85 分钟、从 T1 约 65 分钟，成人 18,000、儿童 12,000 韩元。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "深夜出关，先看时间再决定",
+          "text": "深夜巴士大约每小时才有一班，错过就得在机场多等一小时；如果三人以上同行，又住在江南或弘大以外的地方，直接坐出租车不一定更贵。从仁川机场开往首尔的普通（中型）出租车，22:00 至 23:00 加收 20%、23:00 至 02:00 加收 40%、02:00 至 04:00 加收 20% 的深夜附加费；模范（豪华）与大型出租车则在 22:00 至 04:00 加收 20%。机场高速公路通行费另计；预约的国际出租车实行下文另列的固定价格，不能把普通车费率套用于其他车型。"
+        },
+        {
+          "type": "heading",
+          "text": "出租车与国际出租车",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "仁川机场的出租车乘车处在一楼：T1 的普通出租车在 5C、6C、6D，模范（豪华）出租车在 7C，大型出租车在 8C；T2 开往首尔的出租车在 7C，模范（豪华）与大型出租车在 7D。普通出租车起步价 4,800 韩元，模范（豪华）与大型（9 座）出租车起步价 7,000 韩元，之后按表计费，另加机场高速公路通行费；深夜附加费须分别依上段普通车与模范（豪华）／大型车的时段计算。\n不想按表计费，可以选择国际出租车（International Taxi）：提供英语、日语和中文服务。仁川机场到首尔按目的地分为 A 到 E 五个区域，实行固定价格：普通车型依次为 70,000、75,000、85,000、90,000、95,000 韩元，模范（豪华）或大型车型依次为 100,000、110,000、120,000、130,000、140,000 韩元，通行费另计。需要提前 24 小时通过官网、App 或电话 1644-2255 预约；落地后到 T1 4C、T2 3C 的国际出租车柜台报到，可付现金或刷卡。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "如果用 App 叫车，关于 k.ride 与 Kakao T 的注册和付款、首尔出租车车费与深夜附加费，请看 "
+            },
+            {
+              "type": "article",
+              "text": "韩国地图与叫车 App 攻略：用 Naver Map、Kakao Map 查路线，k.ride 与 Kakao T 怎么选、怎么付款，首尔出租车车费与深夜附加费",
+              "kind": "howto",
+              "slug": "korea-naver-map-kakao-t-guide"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "住明洞、弘大、江南，分别选哪种方式",
+          "level": 2
+        },
+        {
+          "type": "heading",
+          "text": "住明洞：巴士到门口，或直达列车转乘 4 号线",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "明洞没有 AREX 车站。最省事的是坐 6015 或 6001 巴士，直接在明洞站、乐天酒店及会贤站（南大门市场）一带下车；想快一些，就搭直达列车到首尔站，再转乘 4 号线，经过会贤站到明洞站。深夜抵达可搭 N6701，在首尔站或乙支路入口下车后步行或坐一小段出租车。"
+        },
+        {
+          "type": "heading",
+          "text": "住弘大、延南洞：普通列车直达",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "前往弘大入口站可直接乘 AREX 普通列车：刷交通卡从 T1 为 4,650、从 T2 为 5,250 韩元。车上没有行李架，高峰时段可能拥挤。行李多可查 6002 机场巴士是否停在酒店附近；深夜 N6002 的官方线路图预计到弘大入口从 T1 约 45 分钟、从 T2 约 65 分钟，仍需视路况调整。"
+        },
+        {
+          "type": "heading",
+          "text": "住江南：白天坐巴士，深夜坐 N6000",
+          "level": 3
+        },
+        {
+          "type": "paragraph",
+          "text": "江南离机场最远，没有直达铁路。白天搭 6703 巴士到 COEX 一带最直接；也可以搭直达列车到首尔站再转地铁，但转乘和拖行李的时间加起来，往往与坐巴士差不多。深夜有 N6000 到江南高速巴士客运站、N6703 到 COEX 和乐天世界，另一选择是按固定价格收费的国际出租车。"
+        },
+        {
+          "type": "heading",
+          "text": "返程小技巧：首尔站市区机场航站楼",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "返程搭直达列车的人，可以先在首尔站的市区机场航站楼办理值机、托运行李和出境审查，到机场后走专用通道进入管制区。值机服务时间为 05:20 至 19:00，但新旅客报到于 18:50 截止；出境审查另于 05:30 至 19:00 办理。T1 航班须在起飞前 3 小时、T2 航班须在起飞前 3 小时 20 分钟办完，而且只有持直达列车票的乘客能使用。2026 年 9 月官网列出的航空公司：T1 的济州航空、德威航空、易斯达航空；T2 的大韩航空、韩亚航空、真航空、釜山航空、首尔航空（部分美国航线除外）；实际执飞航司与航线的资格仍须在出发前向航空公司核实。名单中没有台湾籍航空公司，乘坐长荣、华航、星宇航班的人无法使用。"
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "T1 还是 T2",
+          "text": "直达列车和普通列车都从 T2 发车，T1 是下一站；巴士也停靠两个航站楼，T2 的乘车处在地下一层巴士总站，T1 在一楼室外站牌。机场铁路官网把大韩航空、韩亚航空、真航空、釜山航空、首尔航空列在 T2，济州航空、德威航空、易斯达航空列在 T1；乘坐其他航空公司的旅客，请查看机票或航空公司网站确认航站楼，别下错站。"
+        },
+        {
+          "type": "link",
+          "text": "首尔城市页：景点、住宿、机场交通一站看",
+          "url": "https://mokaair.com/zh-CN/destinations/seoul"
+        },
+        {
+          "type": "link",
+          "text": "首尔美食目录：明洞、弘大、江南的当地餐厅",
+          "url": "https://mokaair.com/zh-CN/foods?city=seoul"
+        }
+      ],
+      "sources": [
+        {
+          "title": "机场铁路直达列车指南（票价、车程）",
+          "url": "https://www.airportrailroad.com/train/express/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场铁路直达列车时刻表",
+          "url": "https://www.airportrailroad.com/train/express/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "机场铁路普通列车票价",
+          "url": "https://www.airportrailroad.com/train/normal/fare",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场铁路普通列车指南（车程、购票）",
+          "url": "https://www.airportrailroad.com/train/normal/introduce",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场铁路首页（运营时间）",
+          "url": "https://www.airportrailroad.com/main",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场铁路首尔站市区机场航站楼",
+          "url": "https://www.airportrailroad.com/train/express/city/info",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "仁川机场列车指南（售票机位置）",
+          "url": "https://www.airport.kr/ap_ko/984/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川机场巴士站牌指南（T1）",
+          "url": "https://www.airport.kr/ap_ko/974/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川机场巴士线路查询",
+          "url": "https://www.airport.kr/ap_ko/976/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川机场开往首尔的深夜巴士（T1）",
+          "url": "https://www.airport.kr/ap_ko/979/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川机场开往首尔的深夜巴士（T2）",
+          "url": "https://www.airport.kr/ap_ko/982/subview.do",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "仁川机场出租车／预约厢型车指南",
+          "url": "https://www.airport.kr/ap_ko/987/subview.do",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "机场巴士 6001 线路",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=1",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场巴士 6015 线路",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=21",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场巴士 6002 线路",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=2",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "International Taxi（首尔国际出租车固定价格）",
+          "url": "http://www.intltaxi.co.kr/",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "VisitKorea（韩国观光公社）交通卡指南：T-money",
+          "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140663",
+          "checked_on": "2026-09-13"
+        },
+        {
+          "title": "机场铁路：仁川机场 T2 普通列车当天终点与时刻",
+          "url": "https://www.airportrailroad.com/train/normal/info/110/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "机场铁路：仁川机场 T1 普通列车当天终点与时刻",
+          "url": "https://www.airportrailroad.com/train/normal/info/100/0",
+          "checked_on": "2026-09-22"
+        },
+        {
+          "title": "机场巴士运营商：N6002 从机场前往市区的站台、票价与取票方式",
+          "url": "https://www.airportlimousine.co.kr/sub/sub01.php?cat_no=82",
+          "checked_on": "2026-09-22"
         }
       ]
     }
