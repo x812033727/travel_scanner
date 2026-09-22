@@ -11,7 +11,10 @@ completed_at:
 branch:
 depends_on: []
 scope:
-  - apps/web/app/(stay22-public)/[locale]/destinations/[destinationId]/services
+  - apps/web/components/travel-services/destination-services-page.tsx
+  - apps/web/components/travel-services/destination-services-page.test.tsx
+  - apps/web/app/sitemaps/sitemap.ts
+  - apps/web/app/sitemaps/sitemap.test.ts
 ---
 
 # Destination services pages differ only by their title, so Google picks its own canonical
@@ -40,23 +43,24 @@ are the same page.
 
 ## Definition of done
 
-- [ ] Either each city's services page carries content that is actually about that city, or
+- [x] Either each city's services page carries content that is actually about that city, or
       the route is deliberately kept out of the index and says so in its own code.
+      **The owner chose the second on 2026-09-22: `noindex, follow`, all of them.**
 - [ ] Search Console's duplicate count for `/destinations/*/services` falls to zero on a
       later crawl.
 
 ## Steps
 
-- [ ] Decide which way this goes. The two honest options:
-      **(a) give them content** -- a short city-specific introduction, what is worth booking
-      there, local transport notes -- if these pages are meant to rank; or
-      **(b) `noindex, follow`** if they are affiliate funnels reached from the destination
-      page, which spends the crawl budget on articles instead. (b) is cheaper and is what the
-      evidence suggests they are; (a) is only worth it if someone will write 23+ intros.
-- [ ] Apply to every locale, not just zh-TW -- the sample is zh-TW only because that is what
-      Google has crawled so far.
-- [ ] If (b): check the destination page still links to them, since a noindex page that
-      nothing links to is simply unreachable.
+- [x] Decide which way this goes. The owner picked `noindex` over writing 33 city
+      introductions: these are affiliate funnels reached from the destination page, and the
+      crawl budget is better spent on the articles.
+- [x] `robots: { index: false, follow: true }` in the shared `generateMetadata`
+      (`components/travel-services/destination-services-page.tsx`), which both the Stay22
+      route and its fallback re-export, so one edit covers every locale and every city.
+- [x] Take them out of `SITEMAP_ROUTES`. A sitemap that advertises a `noindex` page is the
+      site contradicting itself, and Search Console reports it as such.
+- [x] Tests for both halves.
+- [ ] Deploy, then confirm on the live site.
 
 ## How to verify
 
@@ -71,6 +75,15 @@ Search Console's 網頁索引狀態 report.
 
 ## Notes
 
+- `follow`, not `nofollow`: the outbound lodging links are the page's entire purpose, and the
+  destination page that links here stays indexable and carries the city-specific writing.
+- The self-canonical and the hreflang set are left in place. Google ignores both on a
+  `noindex` page, and the canonical still folds the query-string variants of the URL into the
+  clean one, which is worth keeping while the page is still reachable.
+- `apps/web/app/sitemaps/sitemap.ts` was inside the scope of
+  `2026-09-14-sitemap-lists-pet-friendly-places`, which had sat in `review` since
+  2026-09-19 with every box ticked. Its code (`petPlaceSitemapEntries`) is in `main`, so the
+  claim was stale bookkeeping holding a scope; it is archived into `tasks/done/`.
 - Found 2026-09-22 while reading Search Console for an unrelated ads.txt question. The same
   report's other rows are healthy: the 55 `noindex` pages are `/login`, `/account`, `/alerts`
   and filtered guide lists (all deliberate), the one 5xx (`/zh-CN/login?next=…`, crawled

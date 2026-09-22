@@ -56,9 +56,11 @@ type SitemapRoute = {
  * - an article hub in a language that has nothing published in it. Those pages exist and
  *   answer 200, but with one sentence saying the section is empty; `hub` below lists them
  *   per language instead of per route, and their own `generateMetadata` agrees.
- * - /destinations/osaka/services and /destinations/kyoto/services. The services page accepts
- *   CITIES as well as PUBLIC_DESTINATIONS. Those legacy single-city service views are distinct
- *   from the combined guide, but are not part of this public destination directory.
+ * - /destinations/{id}/services, every one of them. They carry `noindex` as of 2026-09-22:
+ *   the page is one template with the city's name in its title and nothing else, the lodging
+ *   arriving from Stay22 after hydration, so 23 of them collected "duplicate, Google chose a
+ *   different canonical" in Search Console. The destination page above is the indexable one
+ *   and links to its services page, which is how the crawler still reaches it.
  */
 export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   { path: "/", priority: 1.0, changeFrequency: "daily" },
@@ -84,17 +86,12 @@ export const SITEMAP_ROUTES: readonly SitemapRoute[] = [
   // listed as monthly below. Claiming daily for a page that changes when an editor publishes
   // would be the same invented signal the lastmod comment further down warns about.
   { path: "/life", priority: 0.6, changeFrequency: "weekly", hub: ["life"] },
-  // The guides are the destination-scoped content; the services pages are an affiliate lodging
-  // directory for the same city, so they rank below their own guide rather than beside it.
+  // The destination-scoped content. Their services pages used to follow them here and no
+  // longer do; see the note above.
   ...PUBLIC_DESTINATIONS.map((id) => ({
     path: `/destinations/${id}`,
     priority: 0.7,
     changeFrequency: "weekly" as const,
-  })),
-  ...PUBLIC_DESTINATIONS.map((id) => ({
-    path: `/destinations/${id}/services`,
-    priority: 0.4,
-    changeFrequency: "monthly" as const,
   })),
 ];
 
