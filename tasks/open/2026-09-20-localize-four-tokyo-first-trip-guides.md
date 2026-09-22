@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-localize-four-tokyo-first-trip-guides
 title: Localize four Tokyo first-trip guides and diagrams
-status: review
+status: in-progress
 priority: P1
 area: docs
-owner: codex-batch007-source-pr
-claimed_at: 2026-09-20T14:39:09Z
+owner: codex-batch007-resume
+claimed_at: 2026-09-22T07:16:19Z
 created_at: 2026-09-20T12:47:01Z
 completed_at:
-branch: codex/batch007-source-corrections
+branch: codex/article-localization-batch007-resume
 depends_on: []
 scope:
   - apps/api/app/guides/content/narita-haneda-to-tokyo.json
@@ -131,3 +131,18 @@ in the release branch. No import, PR or publication is authorized by this task a
 驗證方式：在瀏覽器開那個 SVG，跑
 `[...document.querySelectorAll('text')].filter(t=>{const b=t.getBBox();return b.x+b.width>1600.5})`
 ，要是空陣列。
+
+### 2026-09-22 resumed after source release
+
+Normal claim as `codex-batch007-resume` succeeded without --force after closing
+our completed batch009 and handing back the stale AIO edit task as a task-only
+blocked publication follow-up. All original provisional drafts remain on hold.
+Fresh read-only source receipt at 2026-09-22T06:35:52Z confirms all seven prior
+source findings are fixed live; Narita/Disney/transit are published zh-TW v8 and
+stay is v6. Source-readiness receipt SHA256
+`be24da5c0685cb96c55921b983674bbf24d5062df95b522bffd9bcd905d4f433`
+under `C:/Users/x8120/.codex/article-localization-release/batch007-resumption-20260922`.
+Remaining: 100 source-driven translated leaf updates, 32 same-locale site-link
+rewrites, four transit price cards, and all 16 diagram visual repairs/reviews.
+Stay's sole unpublished repository /description edit must be preserved through
+the reviewed preservation path; no prior HOLD is promoted to PASS by this note.
