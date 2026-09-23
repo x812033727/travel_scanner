@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-23-catchtable-seoul-1",
+  "destination": "seoul",
+  "scope": "最佳餐廳榜首爾區第 1–20 名 ＋ 候位榜首爾第 1–10 名（站主 2026-09-22 定）；第 21 名以後只是擷取當下順手留下的證據，不在本批範圍。",
+  "method": "本機內建瀏覽器渲染榜頁；兩個榜都是虛擬化清單，只用滾輪逐步捲動（每步 3 格、等 1 秒）並累積 DOM 內每張 <article> 的名次徽章與 /shop/ 連結；名次以徽章為準，任何一次擷取出現同名次不同 alias 或同 alias 不同名次即作廢重抓。",
+  "rankings": [
+    {
+      "page": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+      "captured_at": "2026-09-23T00:19:00+00:00",
+      "note": "重新載入後從頂端滾輪逐步下捲，2026-09-23T00:18–00:20Z 之間完成，零衝突。稍早（2026-09-22T23:58Z 前後）另一次擷取的第 17–19 名順序不同（gebang、noct、ilpyeonfnb），榜單會隨時間變動；本批以本次為準。",
+      "entries": [
+        {
+          "rank": 1,
+          "alias": "jejuoktop_bbq",
+          "label": "濟州屋塔黑石BBQ · 狎鷗亭 · 烤豬肉"
+        },
+        {
+          "rank": 2,
+          "alias": "bandb",
+          "label": "BORN&BRED 新館 · 麻藏 · 韓國牛肉套餐"
+        },
+        {
+          "rank": 3,
+          "alias": "suragejang",
+          "label": "Sura Gejang · 明洞 · 韓國料理"
+        },
+        {
+          "rank": 4,
+          "alias": "Y2F0Y2hfc1craGN3TWtJM1QzQ1BqQmRvMHdtdz09",
+          "label": "韓國酒吧安氏米酒 · 梨泰院 · 韓國傳統酒"
+        },
+        {
+          "rank": 5,
+          "alias": "ilpyeon__myeongdong",
+          "label": "一片里脊 明洞店 · 明洞 · 烤牛肉"
+        },
+        {
+          "rank": 6,
+          "alias": "Gebang_ss",
+          "label": "GEBANG SIKDANG 聖水店 · 聖水 · 韓國料理"
+        },
+        {
+          "rank": 7,
+          "alias": "zest_seoul",
+          "label": "ZEST · 清潭 · 雞尾酒/威士忌"
+        },
+        {
+          "rank": 8,
+          "alias": "FavoriteIksoen",
+          "label": "益善取向 · 鐘路 · 西餐"
+        },
+        {
+          "rank": 9,
+          "alias": "on65",
+          "label": "温6.5"
+        },
+        {
+          "rank": 10,
+          "alias": "sooksungdo",
+          "label": "熟成到 乙支路店 · 乙支路 · 烤豬肉"
+        },
+        {
+          "rank": 11,
+          "alias": "thewooga",
+          "label": "牛家 · 新沙 · 烤牛肉"
+        },
+        {
+          "rank": 12,
+          "alias": "sancheongstar",
+          "label": "山清炭火花園餐廳 乙支路2號店 · 乙支路"
+        },
+        {
+          "rank": 13,
+          "alias": "doseulbak",
+          "label": "DOSEULBAK · 狎鷗亭 · 韓國料理"
+        },
+        {
+          "rank": 14,
+          "alias": "koreahouse_kohojae",
+          "label": "韓國之家 古好齋 · 忠武路 · 咖啡館"
+        },
+        {
+          "rank": 15,
+          "alias": "samwongarden",
+          "label": "三元花園餐館 · 狎鷗亭 · 烤牛肉"
+        },
+        {
+          "rank": 16,
+          "alias": "jungsik",
+          "label": "JUNGSIK堂 · 清潭 · 韓國料理"
+        },
+        {
+          "rank": 17,
+          "alias": "ilpyeonfnb",
+          "label": "ilpyeon eel hongdae · 弘大 · 海鮮"
+        },
+        {
+          "rank": 18,
+          "alias": "gebang",
+          "label": "Gebangsikdang Nonhyeon · 清潭 · 韓國料理"
+        },
+        {
+          "rank": 19,
+          "alias": "DOBU",
+          "label": "到付"
+        },
+        {
+          "rank": 20,
+          "alias": "alice_cheongdam",
+          "label": "Alice 清潭 · 清潭 · 雞尾酒/威士忌"
+        },
+        {
+          "rank": 21,
+          "alias": "daowl",
+          "label": "Daol Charcoal Grill Restaurants | Myeongdong"
+        },
+        {
+          "rank": 22,
+          "alias": "noct",
+          "label": "NOCT · 龍山 · 餐酒館"
+        },
+        {
+          "rank": 23,
+          "alias": "evett",
+          "label": "Restaurant EVETT"
+        },
+        {
+          "rank": 24,
+          "alias": "ponobouno",
+          "label": "PONO BUONO"
+        }
+      ]
+    },
+    {
+      "page": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+      "captured_at": "2026-09-23T00:06:31+00:00",
+      "note": "從頂端逐步下捲兩步即取得第 1–20 名；第 1–4 名的卡片是帶 onclick 的 <a>，第一次渲染時沒有 href，第二次渲染才有。",
+      "entries": [
+        {
+          "rank": 1,
+          "alias": "london_bagel_museum_anguk",
+          "label": "Jongno · Cafe & Dessert · LONDON BAGEL MUSEUM 安國店 · 日均排隊人數 1,053人"
+        },
+        {
+          "rank": 2,
+          "alias": "artistbakery",
+          "label": "Jongno · Cafe & Dessert · ARTIST BAKERY 安國店 · 日均排隊人數 892人"
+        },
+        {
+          "rank": 3,
+          "alias": "jojokalguksu",
+          "label": "Seongsu · Noodle · JoJoKalguksu · 日均排隊人數 818人"
+        },
+        {
+          "rank": 4,
+          "alias": "buchonyukhoe",
+          "label": "Jongno · Meat, Meat dishes · Buchon Yukhoe · 日均排隊人數 839人"
+        },
+        {
+          "rank": 5,
+          "alias": "buchonyukhoe_annex",
+          "label": "Jongno · Meat, Meat dishes · Buchon Yukhoe, Annex · 682"
+        },
+        {
+          "rank": 6,
+          "alias": "ggupdang_seongsu",
+          "label": "Seongsu · Grilled Pork · 烤黨 聖水店 · 462"
+        },
+        {
+          "rank": 7,
+          "alias": "standardbreadss",
+          "label": "Seongsu · Bakery · Standard Bread 聖水 · 344"
+        },
+        {
+          "rank": 8,
+          "alias": "muguok_sungsu",
+          "label": "Seongsu · Chicken Dishes · Muguok, Sungsu · 347"
+        },
+        {
+          "rank": 9,
+          "alias": "AnmokSeongsu",
+          "label": "Seongsu · Korean · Anmok Seongsu · 407"
+        },
+        {
+          "rank": 10,
+          "alias": "sancheong_ej",
+          "label": "Euljiro · Grilled Pork · 山清炭火花園餐廳 乙支路店 · 1,248"
+        },
+        {
+          "rank": 11,
+          "alias": "london_bagel_museum_dosan",
+          "label": "Apgujeong · Cafe & Dessert · LONDON BAGEL MUSEUM 島山店 · 191"
+        },
+        {
+          "rank": 12,
+          "alias": "Goldpig",
+          "label": "Sindang · Grilled Pork · 金豬餐館 · 459"
+        },
+        {
+          "rank": 13,
+          "alias": "rafre_fruit",
+          "label": "Seongsu · Cafe & Dessert · RAFRE FRUIT · 221"
+        },
+        {
+          "rank": 14,
+          "alias": "muguok_",
+          "label": "Bukchon · Chicken · 無垢屋 · 297"
+        },
+        {
+          "rank": 15,
+          "alias": "sancheongstar",
+          "label": "Euljiro · Meat · 山清炭火花園餐廳 乙支路2號店 · 662"
+        },
+        {
+          "rank": 16,
+          "alias": "Hoisik",
+          "label": "Anguk · Chicken · Hoisik · 584"
+        },
+        {
+          "rank": 17,
+          "alias": "jojokal",
+          "label": "City Hall · Noodle · 朝朝刀切面 市廳店 · 375"
+        },
+        {
+          "rank": 18,
+          "alias": "ggupdang_sinsa",
+          "label": "Sinsa · Grilled Pork · 烤黨 · 239"
+        },
+        {
+          "rank": 19,
+          "alias": "jungdamunbossam_bukchon",
+          "label": "Bukchon · Jokbal,Bossam · 充滿感情的菜包肉 北村 · 146"
+        },
+        {
+          "rank": 20,
+          "alias": "jejuoktop_bbq",
+          "label": "Apgujeong · Grilled Pork · 濟州屋塔黑石BBQ · 187"
+        }
+      ]
+    }
+  ]
+}

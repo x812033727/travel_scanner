@@ -104,6 +104,18 @@
 所以第一批建議：**最佳餐廳榜的首爾區前 20 家加候位榜前 10 家**，量一次三個比例（有官方來源、
 能訂位、與既有目錄重複），再決定下一批怎麼切。這是建議，家數由站主定。
 
+**第一批量到的（2026-09-23，30 家，報告 `docs/catalog-content-reviews/catchtable-seoul-batch-1.md`）：**
+
+| 比例 | 值 | 意思 |
+| --- | ---: | --- |
+| 有官方來源 | 14/29 | 一半的店只有 Instagram；觀光局頁靠 Visit Seoul、KTO、江南區廳 Visit Gangnam、Taste of Seoul，官網靠母公司門市清單 |
+| 能線上訂位 | 22/30 | 最佳榜 20/20；候位榜 2/10——候位榜不是全候位 |
+| 與既有目錄重複 | 1/30 | 榜單找到的幾乎都是目錄沒有的店 |
+
+結論：**值得跑第二批**，切法建議「首爾最佳榜第 21–40 名 ＋ 釜山最佳榜前 20」（候位榜的來源命中率與訂位率都低，第二批不再從它取）；
+第二批開跑時把「操作步驟與指令」那一節升成 skill（判定規則在第一批已經改了三次，第二批之前不會再大改）。
+第一批 14 家建成 pending 之後全部卡在 Naver 精準頁，這一步不解決，第二批只是把佇列拉長。
+
 ## 操作步驟與指令
 
 | 步驟 | 雲端 session | 本機（站主的瀏覽器，或本機的 Claude Code／Codex） |
@@ -115,7 +127,7 @@
 給代理的硬規則（提示裡要帶，來源與指示衝突時來源贏並回報）：
 
 1. CatchTable、Naver、Google、Instagram 只當發現與定位，永不當來源。
-2. 只有渲染後看到店家自己的控制項才是可訂位；只有「登記遠端候位」是候位，存 `disabled`。
+2. 只有渲染後看到店家自己的控制項才是可訂位（有 `service-tab-DINING` 且點開有日期選擇）；只有候位分頁或「登記遠端候位」是候位，存 `disabled`。
 3. 不逆向 API、不繞過封鎖、不解驗證碼、不登入、不送任何訂位表單。
 4. 名次不寫進資料庫、不公開。
 5. 地址只從官方頁抄；座標、Naver 網址、審核狀態批次一律不寫。
@@ -129,16 +141,18 @@
 `app/foods/data/catchtable/<batch-id>`。
 
 ```bash
-# 去重用的目錄快照（主機；含 approved，因為重複最常發生在已公開的店）
+# 去重用的目錄快照（主機；含 approved，因為重複最常發生在已公開的店；--include-researched 讓 enrichment
+# 已結案的店也留在清單裡，否則去重會漏）。不帶 --out：它把 JSON 寫到 stdout，一次 SSH 直接接回本機。
+# 帶 --out 的話檔案落在 api 容器裡的 /tmp，主機上 cat 不到，要再 exec 一次 cat。
 docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
-  export-food-merchant-worklist --status all --destination seoul --out /tmp/seoul-all.json
+  export-food-merchant-worklist --status all --destination seoul --include-researched > seoul-all.json
 
 # 候選檔檢查與轉檔（任何機器，只用標準函式庫）
 <PY> ../../tools/catchtable_build_batches.py --candidates <BATCH>/candidates.json --check
 <PY> ../../tools/catchtable_build_batches.py --candidates <BATCH>/candidates.json --merchants-out <BATCH>/merchants.json
 # 店家套用後，用 worklist 補 merchant_id，再產平台列
 <PY> ../../tools/catchtable_build_batches.py --candidates <BATCH>/candidates.json \
-  --worklist /tmp/seoul-all.json --platform-out <BATCH>/platform-reviews.json
+  --worklist seoul-all.json --platform-out <BATCH>/platform-reviews.json
 
 # 本機用 repo 的解析器再驗一次匯入檔（不碰資料庫）
 <PY> -c "from pathlib import Path; from app.foods.trend_import import load_trend_merchants; print(len(load_trend_merchants(Path('<BATCH>/merchants.json'))))"
@@ -159,29 +173,47 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli \
 
 ## 本機瀏覽器：收集榜單、看店頁、找官方來源
 
-**榜頁抄清單。** 先捲到底讓清單全部載入，再在 DevTools Console 貼這段；它把頁面上所有
-`/shop/<alias>` 連結依 DOM 順序列出、去重、印成 JSON 並複製到剪貼簿：
+**榜頁抄清單。** 兩個榜都是**虛擬化清單**（2026-09-23 實測）：DOM 只保留視窗附近的十幾張
+`<article>`，捲到底之後榜首就從 DOM 消失，所以「先捲到底再一次抓所有連結」會漏掉前面的店。而且被回收再利用
+的卡片有時候只更新了名次徽章、內容（連結與圖片）還是舊的，用 `window.scrollTo`／`scrollBy` 跳著捲會撞到這種
+半更新狀態，同一個 alias 會出現在兩個名次。可靠的做法是**重新載入頁面、只用滾輪（真實 wheel 事件）每步捲三格、
+等一秒、掃一次 DOM 累積**，名次讀卡片左上角的徽章而不是 DOM 順序，任何一步出現「同名次不同 alias」或
+「同 alias 不同名次」就整份作廢重抓。首爾最佳榜的網址段是 `location-seoul`（從 `location-all` 點 SEOUL 分頁得到），
+候位榜第 1–4 名的卡片第一次渲染時是只有 onclick、沒有 `href` 的 `<a>`，再渲染一次就有了。
+
+在 DevTools Console 先貼這段定義累積器，然後**用滑鼠滾輪**往下捲，每捲三格就再執行一次 `__scan()`，
+直到你要的名次都齊、連續三步沒有新 alias 為止，最後印出結果：
 
 ```js
-(() => {
-  const seen = new Map();
-  for (const a of document.querySelectorAll('a[href*="/shop/"]')) {
-    const m = (a.getAttribute("href") || "").match(/\/shop\/([^/?#]+)/);
-    if (!m) continue;
-    const alias = decodeURIComponent(m[1]);
-    if (seen.has(alias)) continue;
-    const label = (a.innerText || a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 200);
-    seen.set(alias, { rank: seen.size + 1, alias, label });
+window.__r = { byRank: {}, byAlias: {}, conflicts: [] };
+window.__scan = () => {
+  for (const art of document.querySelectorAll("article")) {
+    // 最佳榜的徽章是 div.absolute.top-0.left-0 > span，候位榜是 div[class*="top-[0px]"][class*="left-[0px]"]
+    const badge = art.querySelector("div.absolute.top-0.left-0 span")
+      || art.querySelector('div[class*="top-[0px]"][class*="left-[0px]"]');
+    const a = art.querySelector('a[href*="/shop/"]');
+    const m = a ? (a.getAttribute("href") || "").match(/\/shop\/([^/?#]+)/) : null;
+    const alias = m ? decodeURIComponent(m[1]) : null;
+    const rank = badge && /^\d{1,3}$/.test(badge.textContent.trim()) ? Number(badge.textContent.trim()) : null;
+    if (rank == null || !alias) continue;
+    const label = (a.innerText || "").replace(/\s+/g, " ").trim().slice(0, 120);
+    if (window.__r.byRank[rank] && window.__r.byRank[rank].alias !== alias) window.__r.conflicts.push({ rank, was: window.__r.byRank[rank].alias, now: alias });
+    if (window.__r.byAlias[alias] != null && window.__r.byAlias[alias] !== rank) window.__r.conflicts.push({ alias, wasRank: window.__r.byAlias[alias], nowRank: rank });
+    if (!window.__r.byRank[rank]) window.__r.byRank[rank] = { rank, alias, label };
+    if (window.__r.byAlias[alias] == null) window.__r.byAlias[alias] = rank;
   }
-  const out = { page: location.href, captured_at: new Date().toISOString(), entries: [...seen.values()] };
-  console.log(JSON.stringify(out, null, 2));
-  if (typeof copy === "function") copy(JSON.stringify(out, null, 2));
-})();
+  const ranks = Object.keys(window.__r.byRank).map(Number).sort((x, y) => x - y);
+  return { n: ranks.length, max: ranks[ranks.length - 1], conflicts: window.__r.conflicts.length };
+};
+window.__scan();
+// 捲完之後：
+// JSON.stringify({ page: location.href, captured_at: new Date().toISOString(),
+//   entries: Object.values(window.__r.byRank).sort((x, y) => x.rank - y.rank), conflicts: window.__r.conflicts }, null, 2)
 ```
 
-貼進 `rankings.json` 之前對三件事：家數與畫面一致（多出來的通常是頁尾推薦或導覽列，刪掉）；`rank`
-是 DOM 順序，畫面有名次數字就照畫面改；`label` 只是幫你認店，店名、料理、區域以店頁為準。
-換城市或料理就是換路徑段，先在畫面上切一次再抄網址，不要猜。
+貼進 `rankings.json` 之前對三件事：`conflicts` 是空的；名次從 1 連續到你要的家數沒有缺；`label` 只是幫你認店，
+店名、料理、區域以店頁為準。榜單會隨時間變（2026-09-23 前後 20 分鐘的兩次擷取，第 17–19 名順序就不同），
+`captured_at` 就是證據，用擷取當下的名次，不補位、不事後對齊。換城市或料理就是換路徑段，先在畫面上切一次再抄網址，不要猜。
 
 **店頁怎麼看。** 開 `https://www.catchtable.net/zh-TW/shop/<alias>`，等它渲染完（空殼對不存在的
 alias 也回 200，真正的 404 是渲染後才出現）。
@@ -189,15 +221,32 @@ alias 也回 200，真正的 404 是渲染後才出現）。
 | 東西 | 在哪裡 | Console 幫手 |
 | --- | --- | --- |
 | 韓文店名（含分店名） | 標題底下的原文 | — |
-| 道路名地址、電話、營業時間 | 資訊分頁 | — |
+| 道路名地址、電話、營業時間、「網站」連結 | 資訊分頁，網址就是 `/zh-TW/shop/<alias>/info`；地址預設是翻譯過的，點「原文語言」才是韓文道路名地址 | `document.body.innerText.slice(document.body.innerText.indexOf("位置"), …)` |
 | 料理類型、區域 | 標題附近的標籤 | — |
 | 四語網址 | `hreflang` | `[...document.querySelectorAll('link[rel="alternate"]')].map(l => l.hreflang + " " + l.href)` |
-| 訂位控制項 | 頁面底部的固定列與日期選擇 | `[...document.querySelectorAll("button")].map(b => b.innerText.trim()).filter(Boolean)`；`document.querySelector('[data-testid="dock-waiting-btn"]')?.innerText` |
+| 訂位控制項 | 「首頁」分頁裡的服務區塊：同時提供訂位與候位的店有 `service-tab-toggle`，底下是 `service-tab-DINING`（預訂）與 `service-tab-WAITING_REMOTE`（候位）兩個分頁；點開 DINING 才會出現「日期 • 時間 • 人」、日期列與「尋找可用時間」 | `document.querySelector('[data-testid="service-tab-DINING"]')?.click()` 之後看 `document.body.innerText` 有沒有「日期 • 時間 • 人」與「尋找可用時間」；`document.querySelector('[data-testid="dock-waiting-btn"]')?.innerText` |
 
-判定：有「預訂」、日期與人數選擇、「尋找可用時間」→ `reservation`；只有 `dock-waiting-btn`
-「登記遠端候位」→ `waiting_only`；什麼控制項都沒有 → `none`；當天「今日公休」看不到控制項 →
-`unclear`，改天再開。平台 API 的 `serviceTypes` 單獨看會誤判（효뜨那筆含 `DINING_GLOBAL` 卻只能候位），
+判定：有 `service-tab-DINING`，點開後出現「日期 • 時間 • 人」與「尋找可用時間」（或沒有分頁切換、頁面直接就是
+這組控制項）→ `reservation`；沒有 DINING 分頁，只有 `service-tab-WAITING_REMOTE`／`waiting-remote-content`／
+`dock-waiting-btn` → `waiting_only`；什麼控制項都沒有 → `none`；頁面渲染後是 404 或身分對不上 → `unclear`。
+**2026-09-21 那條「有『預訂』且沒有候位鈕才算可訂位」的規則在雙服務的店會誤判**（熟成到 乙支路店兩個分頁都有，
+dock 按鈕也在），2026-09-23 起以 DINING 分頁為準。dock 按鈕上的「今日公休」只是現在不在營業時段（開店前也會
+顯示），不是公休日、也不是判定依據。平台 API 的 `serviceTypes` 單獨看會誤判（효뜨那筆含 `DINING_GLOBAL` 卻只能候位），
 一律以渲染後的控制項為準。
+
+**服務區塊是 lazy section，不捲到它就永遠不會渲染**（2026-09-23 三個代理都在這裡誤判成「被擋」）：初始畫面常常只有底部橘色
+「預訂」鈕或 `dock-waiting-btn`，要**逐步往下捲**（每步 500px、等 1 秒，最多 14 步）直到 `service-section-title`、`service-tab-toggle`
+或 `waiting-remote-content` 之一出現，區塊出現時頁面才會呼叫 `dayslot-enc`／`timeslot-enc`／`online-reservation-open-schedule`
+（訂位）這類 API。真實點一下底部「預訂」鈕也會捲到區塊，JS 的 `click()` 不會。候位制的店捲完可能還是只有 dock（區塊根本不掛載），
+那就是 `waiting_only`；區塊裡的 `service-tab-RESERVED_ENTRY`（優先入場）與 `waiting-onsite-content`（現場候位）都不是訂位。
+**而且只有前景分頁會掛載**：背景分頁裡 `IntersectionObserver` 的回呼不會觸發（複核者實測 1.5 秒 0 次），捲動也沒用，連訂位的 API 都不會發，
+任何店都只剩底部「預訂」鈕或 dock。`tabs_select` 也救不了：**整個瀏覽器面板收起來時，前景分頁的 `document.visibilityState` 一樣是 `hidden`**
+（`tabs_context` 會說 The Browser pane is currently hidden），所以只要沒有人正在看面板，任何分頁得到的「只有候位鈕」都不能算證據。
+可行的做法（2026-09-23 用已知可訂位的 산청숯불가든 을지로2호점 當對照組驗過）：在 Console 把 `window.IntersectionObserver` 包一層，
+讓新建立的觀察器在 `observe()` 後立刻收到一筆 `isIntersecting: true`，再點店頁自己的「菜單」→「首頁」分頁讓 LazySection 重新掛載，
+區塊就會照常渲染並向 CatchTable 取真實的服務資料（`dayslot-enc` 等）。這只是讓頁面自己的元件在隱藏面板裡照常渲染，不是繞過封鎖、
+不是逆向 API，做了要在報告揭露；`document.visibilityState` 要跟判定一起記，事後才分得清哪一次觀察可信。同一家店同一天兩種畫面（熟成到 乙支路店早上有雙分頁、
+兩小時後只剩 dock）多半就是這個原因，分不清就記 `unclear`，不硬判。
 
 **官方來源去哪找（依序）。** 來源要是講這家分店的頁，文字看得到、當天讀到，等級照
 `docs/korea-food-specials/README.md`：觀光局店家頁（Visit Seoul 的 `KOP…` 店家頁、VisitKorea 繁中站
