@@ -234,6 +234,902 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Your first WordPress site: from a test site to a public website",
+      "description": "Your first WordPress site needs more than a successful installation: its URL, content, email and backups must work too. Using a typical personal site, this guide covers accounts and information to prepare, automatic versus manual installation, basic admin settings, home-page and post organisation, and visitor tests before launch. The goal is a site someone else can maintain, not just a completion screen visible to its administrator.",
+      "hero": {
+        "src": "/guides/wordpress-first-site/hero-en.jpg",
+        "alt": "A website screen, article document and shield are connected, representing site setup, content organisation and checks before launch.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start with a small WordPress site that people can read, that you can update and that can be restored, then add features gradually. A successful installation only shows that the software is running. You still need to check separately whether readers can find posts, contact emails arrive and a broken site can be restored."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a personal website with its own domain to explain the sequence from preparing hosting to checking the site before launch. If you use WordPress.com, installation and hosting are provided by the service, so follow that platform’s setup process instead. The content organisation, visitor tests and handover checks below can still help you organise your site."
+        },
+        {
+          "type": "heading",
+          "text": "Keep control of the site before installing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use an email account you can continue to manage when registering hosting, a domain and the site administrator. It need not be the public contact address, and it should not be controlled only by a contractor. Keep a private management record of each service’s purpose, sign-in method and payer. Store passwords in a password manager, not in public website documentation or post drafts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm that the host provides the runtime environment, database and HTTPS needed by WordPress, and locate the provider’s installation and backup instructions. Use a protected test site while the final content is undecided. Asking search engines not to index a site is only a search setting: it does not prevent someone who knows the URL from opening it. Private materials therefore need separate access protection."
+        },
+        {
+          "type": "heading",
+          "text": "Choose an installation method and check the URL",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A host’s automatic installer will usually help create the database and configuration files. Before proceeding, check the selected domain, installation location and administrator details. If you want the site to appear directly at the home-page address, avoid accidentally installing it in an unnecessary folder. If the account already contains other sites, ensure this operation targets an empty location so existing files or data are not overwritten."
+        },
+        {
+          "type": "paragraph",
+          "text": "The main manual-installation steps are to obtain the official WordPress software, create a database and dedicated account, place the site files and enter the database connection details in the installer. The database password and site-administrator password serve different purposes and are not interchangeable. Afterwards, sign in to the dashboard and open a separate visitor window to confirm the home page is served from the intended URL."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm the domain and installation directory in the hosting control panel, and note whether existing sites will be affected.",
+            "Install using the host’s tool or official manual procedure, checking the database, administrator and contact email separately.",
+            "Sign in to the dashboard and open the public-facing home page; make sure it is not the host’s default page or a different test site.",
+            "Check the HTTPS URL and browser warnings. If there is an error, follow the host’s documentation to resolve certificate and domain-resolution issues first."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Complete the basic dashboard settings first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In General Settings, check the site title, site language, administration email and time zone. The time zone affects how you interpret scheduling and post times. If you maintain a site in Taiwan, choose a regional time zone appropriate to your situation and preview a scheduled post again. Changing the site-address fields can affect sign-in and resource paths. Do not edit them casually as ordinary text before confirming the domain and HTTPS."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, organise users and default content. Give people who edit posts a role sufficient for their work, and reserve administrator accounts for those who need to change settings. Review sample posts, sample pages and default comments, replacing them with your own content. Check the purpose and licence of theme demo materials too. Reviewing the defaults first makes the site’s state easier to understand than installing many plugins straight away."
+        },
+        {
+          "type": "heading",
+          "text": "Organise the home page, posts and basic navigation",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A personal site can start with information about you, your work or services, and contact details. A site with ongoing writing can start by organising post categories. Reading Settings lets you show recent posts on the home page or choose a static page. If you also need a separate posts-list page, assign the home page and posts page separately rather than making one page serve both purposes and confusing visitors about where they are."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a test post with real content, including paragraphs, headings, images and links. Give images alternative text that describes their purpose, and check on a phone that long titles, tables and navigation do not extend beyond the screen. A preview only shows the current editing state. When a post is saved as a draft, signed-out visitors generally cannot read it through a preview link, so check the real post URL before launch."
+        },
+        {
+          "type": "heading",
+          "text": "Test important features as a visitor",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Close the administrator dashboard and go through the site in a signed-out browser. Find a post from the home page, return from the post to its category and try the contact route. A form showing success and an email actually arriving are separate checkpoints. Submit test content and check both the inbox and spam folder; a thank-you message on screen is not proof of email delivery."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site includes sign-in, bookings or shopping, create a separate complete acceptance checklist. Passing checks for a general content site does not mean transaction workflows have passed. Avoid using real customer personal data in tests. Also ask at least one person who did not help build the site to read the main pages, and see whether they can explain in their own words what the site offers and what to do next."
+        },
+        {
+          "type": "heading",
+          "text": "Create a backup before going public",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before launch, save the site files, database and necessary settings, and confirm how to restore them. A hosting screen saying ‘backed up’ does not mean you know how to recover the site. Find a procedure you can actually follow, and record what is retained and where backups are stored. If an isolated test environment is available, verify the restored result there instead of using the live site for your first practice run."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, check the public site’s search visibility, domain, contact details and navigation, then remove access restrictions set only for testing. Keep a record of the launch-day settings. When later updating themes or plugins or adding features, handle one related group of changes at a time and revisit the visitor workflow. Completion means readers can use the site and a maintainer can take it over, not merely that the installer has finished."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-first-site/diagram-1-en.svg",
+          "alt": "Verify installation and URLs, organise content, test visitor actions, then confirm backups and public-access settings.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check successful installation, published content and reader access separately.",
+          "description": "Verify installation and URLs, organise content, test visitor actions, then confirm backups and public-access settings.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "What the administrator sees",
+            "What still needs checking for visitors"
+          ],
+          "rows": [
+            [
+              "Installation",
+              "Dashboard sign-in works",
+              "The correct domain shows the home page"
+            ],
+            [
+              "Posts",
+              "The preview looks correct",
+              "The public URL works without signing in"
+            ],
+            [
+              "Contact form",
+              "Submission success is displayed",
+              "The message arrives and can be replied to"
+            ],
+            [
+              "Search settings",
+              "Settings have been saved",
+              "Public pages have no test restrictions"
+            ],
+            [
+              "Backup",
+              "A backup file exists",
+              "The restore steps are known and content has been verified"
+            ]
+          ],
+          "caption": "Pre-launch checks for a personal content site; transaction features need their own complete acceptance tests."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Hiding from search does not lock a website",
+          "text": "Search visibility in Reading Settings is a request to search engines, not protection for private pages. If a test site contains unpublished information, use the host’s access protection and verify that visitors really cannot read it."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choosing a CMS or website platform: let your update workflow guide the choice",
+              "kind": "life",
+              "slug": "website-cms-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Enable HTTPS on your website: certificates, redirects and mixed-content checks",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Website maintenance: routine backups, updates and fault reporting",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Official WordPress installation instructions",
+          "url": "https://developer.wordpress.org/advanced-administration/before-install/howto-install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress General Settings documentation",
+          "url": "https://wordpress.org/documentation/article/settings-general-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress Reading Settings and search visibility",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Official WordPress getting-started workflow",
+          "url": "https://wordpress.org/documentation/article/get-started-with-wordpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "初めての WordPress 構築：テストサイトから公開サイトへ",
+      "description": "初めて WordPress を構築するときは、インストールの成功だけでなく、URL、コンテンツ、メール送信、バックアップが機能することも確認します。一般的な個人サイトを例に、準備するアカウントと情報、サーバーの自動インストールと手動導入の違い、管理画面の基本設定、ホームと記事の構成、公開前の訪問者テストを順番に整理します。管理者だけに見える完了画面ではなく、引き継いで運用できるサイトを目指します。",
+      "hero": {
+        "src": "/guides/wordpress-first-site/hero-ja.jpg",
+        "alt": "サイト画面、記事の文書、盾をつなぎ、サイト構築、内容の整理、公開前の確認を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WordPress では、まず読める、更新できる、復元できる小さなサイトを作り、徐々に機能を増やせます。インストールの成功はソフトウェアが動いているというだけです。読者が記事を見つけられるか、問い合わせメールが届くか、サイトが壊れたときに戻せるかは、それぞれ確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事は独自ドメインを使う個人サイトを例に、サーバーの準備から公開前の確認までの順序を説明します。WordPress.com を使う場合はサービス側がインストールとサーバー管理を行うので、そのプラットフォームの開設手順を参照してください。以下の内容構成、訪問者テスト、引き継ぎの確認は、その場合にもサイトを整理するために使えます。"
+        },
+        {
+          "type": "heading",
+          "text": "インストール前に管理権限を確保する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "継続して管理できるメールアドレスを用意し、サーバー、ドメイン、サイト管理者の登録に使ってください。公開用の連絡先と同じである必要はなく、外注先だけが管理する状態にもすべきではありません。各サービスの用途、ログイン方法、支払者を非公開の管理記録に残し、パスワードはパスワード管理ツールに保存します。公開するサイト資料や記事の下書きには置かないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サーバーに WordPress が必要とする実行環境、データベース、HTTPS があるか確認し、事業者のインストールとバックアップの説明を探します。本番の内容が決まるまでは、保護されたテストサイトを使ってください。検索エンジンにインデックスしないよう求めるのは検索上の設定にすぎず、URL を知る人の閲覧は防げません。非公開の素材には別途アクセス保護が必要です。"
+        },
+        {
+          "type": "heading",
+          "text": "インストール方法を選び、URL を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サーバーの自動インストール機能は通常、データベースや設定ファイルの作成を支援します。操作前に、選んだドメイン、インストール先、管理者情報をよく確認してください。ホームのURLで直接サイトを表示したい場合、不要なフォルダーへ誤って導入しないようにします。同じアカウントに別のサイトがある場合も、空の場所を対象にしていることを確認し、既存のファイルやデータを上書きしないようにしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動導入の基本は、公式 WordPress を取得し、データベースと専用アカウントを作り、サイトのファイルを配置した後、インストール画面でデータベース接続情報を入力する流れです。データベースのパスワードとサイト管理者のパスワードは用途が異なり、片方をもう片方として使うことはできません。完了したら管理画面へログインし、別の訪問者用ウィンドウで、予定したURLからホームが表示されることを確認します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サーバーの管理画面で今回使うドメインとインストール先を確認し、既存サイトへの影響を記録します。",
+            "サーバーのツールまたは公式の手動手順で導入し、データベース、管理者、連絡用メールを個別に確認します。",
+            "管理画面へログインし、公開側のホームを開いて、サーバーの初期画面や別のテストサイトではないことを確認します。",
+            "HTTPS のURLとブラウザーの警告を確認します。エラーがあれば、先にサーバーの文書に従って証明書や名前解決を修正します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "まず管理画面の基本設定を終える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般設定で、サイト名、サイトの言語、管理者メール、タイムゾーンを確認します。タイムゾーンは予約や記事の時刻の解釈に関わります。台湾でサイトを保守する場合も、利用状況に合う地域のタイムゾーンを選び、予約投稿をもう一度プレビューしてください。サイトアドレス欄の変更はログインやリソースのパスに影響する場合があります。ドメインと HTTPS を確認する前に、普通の文字欄のように気軽に変えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続いてユーザーと初期コンテンツを整理します。記事を編集する人には作業に必要な権限を与え、管理者アカウントは設定を扱う人に限ります。サンプル記事、サンプルページ、初期コメントを見直し、自分の内容へ置き換えてください。テーマの見本素材も用途とライセンスを確認します。初めから多くのプラグインを入れるより、初期項目を一通り確認する方がサイトの状態を把握しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "ホーム、記事、基本ナビゲーションを整える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "個人サイトなら、自己紹介、作品やサービス、連絡先から用意できます。継続して書くサイトなら、まず記事のカテゴリーを整理します。表示設定では、ホームに最新の記事を表示するか、固定ページを指定できます。別に記事一覧ページを設ける場合は、ホームと投稿ページをそれぞれ指定してください。同じページに両方の役割を持たせ、訪問者が現在地を理解しにくくなることを避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実際の内容を持つテスト記事を書き、段落、見出し、画像、リンクを入れます。画像には用途を説明する代替テキストを付け、長いタイトル、表、ナビゲーションが画面からはみ出さないかスマートフォンで確認してください。プレビューは編集中の状態が見えるというだけです。記事が下書きのままなら、未ログインの訪問者は通常プレビューリンクから読めません。公開前に実際の記事URLを確認しましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "訪問者として重要な機能を試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "管理画面を閉じ、ログアウトしたブラウザーでサイトをたどります。ホームから記事を探し、記事からカテゴリーへ戻り、問い合わせの入口も試してください。フォームの成功表示と、実際のメール受信は別の確認項目です。テスト内容を送信した後、受信箱と迷惑メールを確認します。お礼のメッセージが表示されただけで、メールが届いたと判断しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ログイン、予約、買い物の機能があるサイトでは、別途完全な受け入れ確認リストを作ります。一般的なコンテンツサイトの確認を、取引の流れまで合格したことにしてはいけません。テストには実際の顧客の個人情報を使わないようにします。また、構築に参加していない人を少なくとも一人選んで主要ページを読んでもらい、何を提供するサイトで、次に何をすればよいかを自分の言葉で説明できるか確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "バックアップを作ってから公開する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公開前にサイトのファイル、データベース、必要な設定を保存し、復元方法を確認します。サーバー画面に「バックアップ済み」と出ても、復旧方法を理解していることにはなりません。実行できる復元手順を探し、保存対象とバックアップの場所を記録してください。隔離されたテスト環境が使えるなら、そこで復元結果を確認し、本番サイトを初めての練習台にしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に本番サイトの検索エンジンへの表示設定、ドメイン、連絡先、ナビゲーションを確認し、テストのためだけに設けたアクセス制限を外します。公開当日の設定記録を残し、その後テーマやプラグインを更新したり機能を追加したりするときは、関連する変更をまとめて少しずつ行い、訪問者の流れを再確認してください。完成の基準は読者が使えて保守担当者が引き継げることであり、インストールの進行表示が終わることではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-first-site/diagram-1-ja.svg",
+          "alt": "インストールとURLを確かめ、内容を整理し、訪問者の操作を試してから、バックアップと公開設定を確認します。",
+          "width": 1600,
+          "height": 900,
+          "caption": "インストール成功、内容の公開、読者の利用可否を別々に確認します。",
+          "description": "インストールとURLを確かめ、内容を整理し、訪問者の操作を試してから、バックアップと公開設定を確認します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "管理者に見える結果",
+            "訪問者側でさらに確認すること"
+          ],
+          "rows": [
+            [
+              "インストール",
+              "管理画面へログインできる",
+              "正しいドメインでホームが表示される"
+            ],
+            [
+              "記事",
+              "プレビューが正常に見える",
+              "公開URLをログインなしで開ける"
+            ],
+            [
+              "問い合わせフォーム",
+              "送信成功と表示される",
+              "実際に受信し、返信できる"
+            ],
+            [
+              "検索設定",
+              "設定が保存されている",
+              "本番ページにテスト用の制限がない"
+            ],
+            [
+              "バックアップ",
+              "バックアップファイルがある",
+              "復元手順が分かり、内容を検証している"
+            ]
+          ],
+          "caption": "個人のコンテンツサイト向け公開前確認です。取引機能は別途、全体を検証してください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "検索から隠すことはサイトの施錠ではない",
+          "text": "表示設定の検索エンジンへの表示項目は、検索エンジンへの依頼であり、非公開ページを保護する機能ではありません。テストサイトに未公開情報がある場合は、サーバーのアクセス保護を使い、訪問者が本当に読めないことを確認してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CMS・サイト作成サービスの選び方：更新方法からサイトの置き場所を決める",
+              "kind": "life",
+              "slug": "website-cms-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトを HTTPS にする：証明書・転送・混在コンテンツの確認",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守で行うこと：バックアップ・更新・障害報告の日常管理",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 公式インストール手順",
+          "url": "https://developer.wordpress.org/advanced-administration/before-install/howto-install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 一般設定の文書",
+          "url": "https://wordpress.org/documentation/article/settings-general-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 表示設定と検索エンジンへの表示",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 公式スタートガイド",
+          "url": "https://wordpress.org/documentation/article/get-started-with-wordpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "첫 WordPress 사이트 만들기: 테스트 사이트에서 정식 공개까지",
+      "description": "첫 WordPress 사이트는 설치만 끝나서는 충분하지 않습니다. 주소, 콘텐츠, 이메일, 백업도 실제로 작동해야 합니다. 일반적인 개인 사이트를 예로 들어 미리 준비할 계정과 정보, 자동 설치와 수동 설치의 차이, 기본 관리자 설정, 홈과 글의 구성, 공개 전 방문자 테스트를 설명합니다. 관리 화면의 완료 표시를 넘어 다른 사람이 이어서 관리할 수 있는 사이트를 만드는 것이 목표입니다.",
+      "hero": {
+        "src": "/guides/wordpress-first-site/hero-ko.jpg",
+        "alt": "웹사이트 화면, 글 문서, 방패를 연결해 사이트 설정, 콘텐츠 정리, 공개 전 점검을 나타낸 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "첫 WordPress 사이트는 방문자가 읽을 수 있고, 관리자가 갱신할 수 있으며, 복원도 가능한 작은 사이트부터 시작한 뒤 기능을 늘리세요. 설치 성공은 소프트웨어가 실행된다는 뜻일 뿐입니다. 독자가 글을 찾을 수 있는지, 문의 이메일이 도착하는지, 사이트가 고장 났을 때 복원할 수 있는지는 각각 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 자체 도메인을 사용하는 개인 사이트를 기준으로 호스팅 준비부터 공개 전 확인까지의 순서를 설명합니다. WordPress.com을 사용한다면 서비스가 설치와 호스팅을 제공하므로 해당 플랫폼의 설정 절차를 따르세요. 아래의 콘텐츠 구성, 방문자 테스트, 인계 점검은 사이트를 정리할 때 그대로 참고할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "설치 전에 사이트를 계속 관리할 권한을 확보하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅, 도메인, 사이트 관리자 계정을 등록할 때는 본인이 계속 관리할 수 있는 이메일을 사용하세요. 공개용 연락처일 필요는 없으며 외주 담당자만 관리하는 주소여서도 안 됩니다. 각 서비스의 용도, 로그인 방법, 비용 납부자를 비공개 관리 기록에 남기세요. 비밀번호는 비밀번호 관리자에 보관하고 공개된 사이트 문서나 글 초안에 적지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅이 WordPress에 필요한 실행 환경, 데이터베이스, HTTPS를 제공하는지 확인하고 업체의 설치 및 백업 안내를 찾으세요. 최종 콘텐츠가 정해지기 전에는 접근이 보호된 테스트 사이트를 사용하세요. 검색 엔진에 색인하지 말라고 요청하는 설정은 검색 관련 설정일 뿐, 주소를 아는 사람이 사이트를 여는 것을 막지 못합니다. 비공개 자료에는 별도의 접근 보호가 필요합니다."
+        },
+        {
+          "type": "heading",
+          "text": "설치 방법을 정하고 주소를 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅의 자동 설치 도구는 보통 데이터베이스와 설정 파일 생성을 도와줍니다. 실행 전에 선택한 도메인, 설치 위치, 관리자 정보를 확인하세요. 사이트를 홈 주소에서 바로 보이게 하려면 불필요한 폴더에 잘못 설치하지 않도록 주의하세요. 같은 계정에 다른 사이트가 이미 있다면 빈 위치를 대상으로 하는 작업인지 확인하여 기존 파일이나 데이터를 덮어쓰지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "수동 설치의 핵심 순서는 공식 WordPress 소프트웨어 받기, 데이터베이스와 전용 계정 만들기, 사이트 파일 배치하기, 설치 화면에 데이터베이스 연결 정보 입력하기입니다. 데이터베이스 비밀번호와 사이트 관리자 비밀번호는 목적이 다르므로 서로 대신 사용할 수 없습니다. 설치 후에는 관리자 화면에 로그인하고 별도의 방문자 창을 열어 의도한 주소에서 홈이 표시되는지 확인하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "호스팅 관리 화면에서 도메인과 설치 디렉터리를 확인하고 기존 사이트에 영향을 주는지 기록하세요.",
+            "호스팅 도구나 공식 수동 절차로 설치하면서 데이터베이스, 관리자, 연락용 이메일을 각각 확인하세요.",
+            "관리자 화면에 로그인하고 방문자용 홈을 열어 호스팅 기본 페이지나 다른 테스트 사이트가 아닌지 확인하세요.",
+            "HTTPS 주소와 브라우저 경고를 확인하세요. 오류가 있다면 호스팅 문서에 따라 인증서와 도메인 연결 문제부터 해결하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "관리자 화면의 기본 설정부터 마무리하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 설정에서 사이트 제목, 사이트 언어, 관리용 이메일, 시간대를 확인하세요. 시간대는 예약 발행과 글 작성 시각을 해석하는 데 영향을 줍니다. 대만에서 사이트를 관리한다면 상황에 맞는 지역 시간대를 선택한 뒤 예약 글을 다시 미리 보세요. 사이트 주소 항목을 바꾸면 로그인과 리소스 경로에 영향을 줄 수 있으므로 도메인과 HTTPS를 확인하기 전에 일반 문구처럼 가볍게 수정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "다음으로 사용자와 기본 콘텐츠를 정리하세요. 글을 편집하는 사람에게는 업무에 필요한 역할을 부여하고, 관리자 계정은 설정을 바꿔야 하는 사람에게만 주세요. 샘플 글, 샘플 페이지, 기본 댓글을 검토하여 자신의 콘텐츠로 바꾸세요. 테마 데모 자료도 용도와 라이선스를 확인해야 합니다. 처음부터 플러그인을 많이 설치하기보다 기본 자료부터 검토하면 사이트 상태를 더 쉽게 파악할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "홈, 글, 기본 탐색 메뉴를 구성하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "개인 사이트라면 소개, 작품이나 서비스, 연락처부터 준비할 수 있고 글을 꾸준히 올리는 사이트라면 글 카테고리부터 정리할 수 있습니다. 읽기 설정에서는 홈에 최신 글을 표시하거나 정적 페이지를 선택할 수 있습니다. 별도의 글 목록 페이지도 필요하다면 홈과 글 페이지를 나누어 지정하세요. 한 페이지가 두 역할을 동시에 맡아 방문자가 위치를 혼동하게 하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "문단, 제목, 이미지, 링크를 포함한 실제 내용의 테스트 글을 작성하세요. 이미지에는 목적을 설명하는 대체 텍스트를 넣고 휴대전화에서 긴 제목, 표, 탐색 메뉴가 화면 밖으로 나가지 않는지 확인하세요. 미리 보기는 현재 편집 상태를 보여 줄 뿐입니다. 글을 초안으로 저장하면 로그아웃한 방문자는 보통 미리 보기 링크로 읽을 수 없으므로 공개 전에 실제 글 주소를 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "방문자 입장에서 중요한 기능을 시험하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "관리자 화면을 닫고 로그아웃 상태의 브라우저로 사이트를 돌아보세요. 홈에서 글을 찾고, 글에서 카테고리로 돌아간 다음 연락 경로도 시험하세요. 양식에 제출 성공이 표시되는 것과 이메일이 실제로 도착하는 것은 별개의 확인 항목입니다. 테스트 내용을 제출한 뒤 받은편지함과 스팸함을 모두 확인하세요. 화면의 감사 메시지만으로 이메일 수신이 증명되지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로그인, 예약, 쇼핑 기능이 있다면 별도의 완전한 인수 점검 목록을 만드세요. 일반 콘텐츠 사이트 점검을 통과했다고 거래 흐름까지 통과한 것은 아닙니다. 테스트에는 실제 고객의 개인정보를 사용하지 마세요. 사이트 제작에 참여하지 않은 사람도 적어도 한 명에게 주요 페이지를 읽어 달라고 부탁하고, 사이트가 무엇을 제공하며 다음에 무엇을 해야 하는지 자기 말로 설명할 수 있는지 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "공개하기 전에 백업을 남기세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 전에 사이트 파일, 데이터베이스, 필요한 설정을 저장하고 복원 방법을 확인하세요. 호스팅 화면에 ‘백업됨’이라고 표시되어도 복구 방법을 알고 있다는 뜻은 아닙니다. 실제로 따라 할 수 있는 절차를 찾고 보관 범위와 백업 위치를 기록하세요. 격리된 테스트 환경이 있다면 그곳에서 복원 결과를 확인하고 운영 사이트로 처음 연습하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 공개 사이트의 검색 노출 설정, 도메인, 연락처, 탐색 메뉴를 확인하고 테스트용으로만 설정했던 접근 제한을 해제하세요. 공개 당일의 설정도 기록해 두세요. 이후 테마나 플러그인을 갱신하거나 기능을 추가할 때는 관련된 변경을 한 묶음씩 처리하고 방문자 흐름을 다시 살펴보세요. 독자가 사용할 수 있고 유지 관리자가 인계받을 수 있어야 완료된 것이며, 설치 진행 표시가 끝난 것만으로는 충분하지 않습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-first-site/diagram-1-ko.svg",
+          "alt": "설치와 주소를 확인하고 콘텐츠를 구성한 뒤 방문자 동작을 시험하며 백업과 공개 설정을 점검하는 순서.",
+          "width": 1600,
+          "height": 900,
+          "caption": "설치 성공, 콘텐츠 발행, 독자의 접근 가능 여부를 각각 확인하세요.",
+          "description": "설치와 주소를 확인하고 콘텐츠를 구성한 뒤 방문자 동작을 시험하며 백업과 공개 설정을 점검하는 순서.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "점검 항목",
+            "관리자가 보는 상태",
+            "방문자를 위해 추가로 확인할 사항"
+          ],
+          "rows": [
+            [
+              "설치",
+              "관리자 화면에 로그인 가능",
+              "올바른 도메인에서 홈 표시"
+            ],
+            [
+              "글",
+              "미리 보기 정상",
+              "로그아웃 상태에서 공개 주소로 열림"
+            ],
+            [
+              "문의 양식",
+              "제출 성공 표시",
+              "메일이 도착하고 답장할 수 있음"
+            ],
+            [
+              "검색 설정",
+              "설정 저장 완료",
+              "공개 페이지에 테스트 제한이 남아 있지 않음"
+            ],
+            [
+              "백업",
+              "백업 파일 존재",
+              "복원 절차를 알고 콘텐츠도 검증함"
+            ]
+          ],
+          "caption": "개인 콘텐츠 사이트의 공개 전 점검이며 거래 기능은 별도의 완전한 인수 테스트가 필요합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "검색에서 숨겨도 사이트가 잠기지는 않습니다",
+          "text": "읽기 설정의 검색 노출 옵션은 검색 엔진에 보내는 요청이며 비공개 페이지를 보호하는 기능이 아닙니다. 테스트 사이트에 미공개 자료가 있다면 호스팅의 접근 보호를 사용하고 방문자가 실제로 읽을 수 없는지 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CMS와 웹사이트 플랫폼 선택: 콘텐츠를 갱신하는 방식부터 정하기",
+              "kind": "life",
+              "slug": "website-cms-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 HTTPS 활성화: 인증서, 리디렉션, 혼합 콘텐츠 확인",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지 관리: 정기 백업, 업데이트, 장애 보고",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 공식 설치 안내",
+          "url": "https://developer.wordpress.org/advanced-administration/before-install/howto-install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 일반 설정 문서",
+          "url": "https://wordpress.org/documentation/article/settings-general-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 읽기 설정과 검색 노출",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 공식 시작 절차",
+          "url": "https://wordpress.org/documentation/article/get-started-with-wordpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "第一个 WordPress 网站怎么做：从测试站到正式公开的顺序",
+      "description": "第一个 WordPress 网站不只是安装成功，还要让网址、内容、邮件与备份真正可用。本文以一般个人网站为例，整理先准备的账号与资料、自动和手动安装的差别、后台基本设置、首页与文章安排，以及上线前的访客测试，让网站可以交给别人继续维护，而不是只有管理员看见完成画面。",
+      "hero": {
+        "src": "/guides/wordpress-first-site/hero-zh-cn.jpg",
+        "alt": "网站画面、文章文件与盾牌相连，代表建站设置、内容整理与上线前检查。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "第一个 WordPress 网站建议从可阅读、可更新、可恢复的小型网站开始，再逐步增加功能。安装成功只代表软件已经运行；读者是否找得到文章、联系邮件是否送达、网站坏掉能不能恢复，都需要另外检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以拥有独立域名的个人网站为例，说明从准备主机到公开前验收的顺序。如果使用 WordPress.com，安装与托管由服务提供，应改依平台的设置流程操作；下面的内容组织、访客测试与交接检查仍可用来整理网站。"
+        },
+        {
+          "type": "heading",
+          "text": "安装前先保留网站控制权",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "注册主机、域名与网站管理员时，使用你能够持续管理的邮箱。它不必是公开联系地址，也不应只由外包人员掌握。用非公开的管理记录写下每项服务的用途、登录方式与付款人；密码则放在密码管理器，不要写进公开网站文档或文章草稿。"
+        },
+        {
+          "type": "paragraph",
+          "text": "确认主机提供 WordPress 所需的运行环境、数据库与 HTTPS，并找到服务方的安装和备份说明。正式内容尚未确定时，先使用受保护的测试站。要求搜索引擎不要索引网站只是搜索设置，不能阻止知道网址的人打开，因此私人资料仍需要另外设置访问保护。"
+        },
+        {
+          "type": "heading",
+          "text": "选择安装方式，再核对网址",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主机的自动安装工具通常会协助建立数据库与配置文件，但执行前仍要核对选用的域名、安装位置与管理员资料。若希望网站直接显示在首页地址，不要误装到多余的文件夹。已有其他网站的账号，要先确认这次操作针对空白位置，避免覆盖现有文件或数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手动安装的重点是取得官方 WordPress 软件、建立数据库与专用账号、放置网站文件，再于安装画面填写数据库连接资料。数据库密码与网站管理员密码用途不同，不能互相代替。安装后先登录后台，并另外用访客窗口确认首页出现在预期的网址。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "在主机后台确认域名与安装目录，并记录是否会影响既有网站。",
+            "依主机工具或官方手动步骤安装，分别核对数据库、管理员与联系邮箱。",
+            "登录后台并打开前台首页，确认不是主机默认页面或另一个测试站。",
+            "检查 HTTPS 网址与浏览器警告；有错误时先依主机文档处理证书与域名解析问题。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先完成后台基本设置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在常规设置中确认网站标题、网站语言、管理邮箱与时区。时区会影响你判断定时发布和文章时间；如果在台湾维护网站，可选择符合实际情况的地区时区，再预览一次定时文章。网站地址字段的变更可能影响登录与资源路径，在尚未确认域名和 HTTPS 前，不要把它当一般文字随意修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着整理用户与默认内容。负责编辑文章的人使用足够完成工作的角色，管理员账号留给需要修改设置的人。示例文章、示例页面与默认评论应逐项查看并替换为自己的内容；主题演示素材也要确认用途与授权。先了解默认资料，比马上安装大量插件更容易掌握网站状态。"
+        },
+        {
+          "type": "heading",
+          "text": "安排首页、文章与基本导航",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "个人网站可以先准备关于你、作品或服务、联系信息；持续写作的网站则先整理文章分类。阅读设置允许首页显示最新文章，或选择静态页面。如果同时需要独立文章列表页，应分别指定首页与文章页，不要让同一页面承担两个角色后又让读者迷失位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用真实内容写一篇测试文章，包含段落、标题、图片与链接。图片要有说明用途的替代文字，并在手机上检查长标题、表格与导航是否超出画面。预览只显示当前编辑状态；文章保存为草稿时，未登录访客通常不能通过预览链接阅读，上线前仍要检查实际文章网址。"
+        },
+        {
+          "type": "heading",
+          "text": "以访客身份测试重要功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "关闭管理员后台，以未登录的浏览器走一遍网站：从首页找文章、从文章回到分类，再尝试联系路径。表单显示提交成功与实际收到邮件是两个检查点，必须提交测试内容并查看收件箱和垃圾邮件夹，不能只凭画面上的感谢文字就认定邮件已送达。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若网站包含登录、预约或购物功能，要另外建立完整验收清单，不要把一般内容网站的检查当成交易流程已通过。测试时避免使用真实客户个人资料。也请至少一位没有参与制作的人阅读主要页面，看看对方能否用自己的话说出网站提供什么，以及接下来该做什么。"
+        },
+        {
+          "type": "heading",
+          "text": "公开之前先留好备份",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上线前保存网站文件、数据库与必要设置，并确认恢复方法。主机画面写着‘已备份’不代表你已经知道如何恢复；应找到实际能够执行的流程，记录保留范围与存放位置。如果有独立测试环境，先在隔离处验证恢复结果，不要拿正式网站练习第一次操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后确认公开网站的搜索可见性、域名、联系资料与导航，并解除仅为测试而设置的访问限制。上线当天保留设置记录，后续更新主题、插件或增加功能时，一次处理一组相关变更，再回看访客流程。读者可用、维护者可交接，才是完成，而不只是安装进度跑完。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-first-site/diagram-1-zh-cn.svg",
+          "alt": "先确认安装与网址，再整理内容、测试访客操作，最后检查备份与公开设置。",
+          "width": 1600,
+          "height": 900,
+          "caption": "安装成功、内容发布与读者可用，分别检查。",
+          "description": "先确认安装与网址，再整理内容、测试访客操作，最后检查备份与公开设置。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "管理员看到的状态",
+            "访客还需确认的结果"
+          ],
+          "rows": [
+            [
+              "安装",
+              "可登录后台",
+              "正确域名显示首页"
+            ],
+            [
+              "文章",
+              "预览正常",
+              "未登录也能打开公开网址"
+            ],
+            [
+              "联系表单",
+              "显示提交成功",
+              "实际收到并可回复邮件"
+            ],
+            [
+              "搜索设置",
+              "设置已保存",
+              "公开页面没有残留测试限制"
+            ],
+            [
+              "备份",
+              "有备份文件",
+              "知道恢复步骤并验证内容"
+            ]
+          ],
+          "caption": "个人内容网站上线前检查；交易功能另列完整验收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "隐藏搜索不等于网站上锁",
+          "text": "阅读设置里的搜索可见性是对搜索引擎的请求，不是保护私人页面的权限机制。测试站若包含未公开资料，应使用主机提供的访问保护，并确认访客确实无法阅读。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CMS 与建站平台怎么选：从内容更新方式决定工具",
+              "kind": "life",
+              "slug": "website-cms-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站启用 HTTPS：证书、跳转与混合内容检查",
+              "kind": "life",
+              "slug": "https-certificate-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护清单：定期备份、更新与故障回报",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 官方安装说明",
+          "url": "https://developer.wordpress.org/advanced-administration/before-install/howto-install/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 常规设置说明",
+          "url": "https://wordpress.org/documentation/article/settings-general-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 阅读设置与搜索可见性",
+          "url": "https://wordpress.org/documentation/article/settings-reading-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 官方入门流程",
+          "url": "https://wordpress.org/documentation/article/get-started-with-wordpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
