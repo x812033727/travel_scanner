@@ -33,7 +33,7 @@ beforeEach(() => {
 // Both first-party content sections are reached the same way and must hold the same line.
 describe.each([
   ["旅遊情報攻略", "/guides"],
-  ["生活分享", "/life"],
+  ["生活科技", "/life"],
 ])("reaching %s from the header", (name, href) => {
   it("is offered in the default mode", () => {
     render(<SiteNavigation />);
@@ -86,7 +86,7 @@ describe("the two sections side by side", () => {
       mocks.community.mockReturnValue(flags(mode.community));
       const { unmount } = render(<SiteNavigation />);
       expect(screen.getByRole("link", { name: "旅遊情報攻略" }).getAttribute("href")).toBe("/guides");
-      expect(screen.getByRole("link", { name: "生活分享" }).getAttribute("href")).toBe("/life");
+      expect(screen.getByRole("link", { name: "生活科技" }).getAttribute("href")).toBe("/life");
       unmount();
     }
   });
