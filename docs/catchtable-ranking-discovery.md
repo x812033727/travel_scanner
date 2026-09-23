@@ -141,6 +141,8 @@
 主機上的指令都在 `docker compose -f docker-compose.prod.yml exec -T api python -m app.cli …` 後面；
 本機檢查用 repo 的 venv python（`<PY>`），從 `apps/api` 跑。`<BATCH>` 是
 `app/foods/data/catchtable/<batch-id>`。
+一批跨兩個目的地時（第二批：首爾 21–40 加釜山 1–20），`rankings.json` 一份，`candidates-<destination>.json`、
+`merchants-<destination>.json`、`platform-reviews-<destination>.json` 各目的地一份，轉檔與匯入每個目的地各跑一次（佈局在資料目錄的 README）。
 
 ```bash
 # 去重用的目錄快照（主機；含 approved，因為重複最常發生在已公開的店；--include-researched 讓 enrichment

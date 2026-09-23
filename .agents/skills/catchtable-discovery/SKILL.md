@@ -70,6 +70,7 @@ curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/mercha
 - `naver.me` 短網址後台會退 422，要先解成 `https://map.naver.com/p/entry/place/<id>`；同一個 Naver id 不能給兩家店（園區內的第二間餐飲要有自己的條目）。
 - 來源網址只收 https（只有 http 的官網不算）；`notes` 1000 字、`quote` 300 字、分類至多 3 個，轉檔腳本會擋。
 - 匯入器的第二把去重鑰匙是 `(destination, local_name)`：分店名要寫進 `local_name`。
+- 轉檔腳本一個候選檔只吃一個 `destination`：一批跨兩個城市就寫 `candidates-<destination>.json` 各一份、轉檔與匯入各跑一次（佈局在 `apps/api/app/foods/data/catchtable/README.md`）。
 - 後台編輯器是 React 表單：文字欄用原生 value setter 加 `input`／`change` 事件、勾選框真點；關舊視窗與開新視窗之間等一秒。
 
 ## 這個 skill 的檔案
