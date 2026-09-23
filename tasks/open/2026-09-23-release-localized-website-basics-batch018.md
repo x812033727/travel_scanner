@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-website-basics-batch018
 title: Release localized website basics batch018
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-batch018
+claimed_at: 2026-09-23T07:56:10Z
 created_at: 2026-09-23T07:02:24Z
 completed_at:
-branch:
+branch: codex/article-localization-018-release-record
 depends_on:
   - 2026-09-22-localize-four-website-basics-guides-batch018
 scope:
@@ -66,3 +66,60 @@ Japanese number-format equivalences were explicitly reviewed; the strict field
 guard is not a zero-warning result. Existing source documents, metadata and twelve
 source images are preserved. No production work for this batch has been claimed
 as complete by this task.
+
+### 2026-09-23 release preparation
+
+PR #676 passed all eight checks at c9f9ea3c, but strict branch protection required
+synchronizing the newly merged CatchTable data PR #677. The current content head
+is e17895e3c12ce19fe421536dd2ba543afbdc233c, based on
+017caac57c5ced78e95a58acb03981cab9874f92. Its CI is running. The exact fourteen-file
+main delta changes only CatchTable data, documentation, skills and its task;
+all fifty-two content/asset files and twelve original images remain unchanged.
+The earlier reviewed c9f package remains preserved as historical evidence.
+
+The 2026-09-23T07:55:13Z read-only snapshot still shows four active articles at
+article v2 / zh-TW locale v4, equal draft/latest/published source documents, and
+no target locales. Independent local reviews cover the scoped driver, public
+capture readiness, and database acceptance validator. Actual PostgreSQL release
+safety CI ran 119 transactional SQLite/PostgreSQL tests successfully; its code
+dependencies are separately bound to the current content head. No production
+backup, deployment, import or publication for Batch018 has run yet.
+
+### 2026-09-23 guarded deployment and main advancement
+
+PR #676 passed all eight checks at e17895e3 and merged as
+5a1682a1c62280b99cf7e21f4f583c9cad78a470. The reviewed 478-file inner bundle
+and 486-file transport were frozen, independently reviewed and provisioned.
+The 08:34 UTC database backup passed `pg_restore --list` and remains preserved.
+The durable deployment worker then refused before calling the host deploy script:
+`Remote main does not equal reviewed target`. Its failed unit, logs, config,
+backup and owned hold are retained; no deployment or publisher operation ran.
+
+PR #679 had meanwhile merged as 38ebec88c91db6ae0f6c8cd812bf04c5e1da9c95.
+Its eight checks passed and tested/merged trees are identical. The four-path
+delta is two CatchTable JSON files plus documentation and a task; all 79 exact
+reviewed Git exports remain unchanged. A fresh 08:40 UTC read-only source export
+is identical to the pre-release rows, including article metadata and zh-TW.
+Recovery is being reviewed for a fresh target-specific root, preserving the
+inner bundle and old evidence, transferring only this task's exact owned hold
+under all four locks, and taking a fresh backup before deployment. Recovery,
+import/publication and public acceptance are not yet complete.
+
+Outside evidence: `batch018-web-basics/recovery-38ebec88/` contains the current
+target/CI review, read-only failed-host capture and root recovery authorization.
+The original release directory remains `mokaair-localization-018-5a1682a1c622`.
+
+At 09:01 UTC the independently reviewed recovery transport was provisioned at
+`mokaair-localization-018-38ebec88c91d`; the exact owned hold was atomically
+transferred under all four locks without removing the hold or changing old
+evidence. A separate fresh backup passed at 09:03 UTC. Its metadata and the
+three transfer records were captured read-only and prove the new backup follows
+the completed transfer. The durable deployment started at 09:03:32 UTC and is
+still running at this note. No content import/publication is claimed yet.
+
+Recovery review SHA256:
+`dde725bbcba973245d32c576b88316e5529119b1dc119b24e2f8c9ddfd9e9949`.
+Recovery transport SHA256:
+`fe46b12ec13da57f3f13bd0b745ce17414575486f88b207dca4b440e4d88c985`.
+Read-only transfer/new-backup capture SHA256:
+`08fbed90c47ad6261e7f46cf390356c8aaa7931c832cc24addf2ed71bd7961f4`.
