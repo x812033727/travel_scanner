@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-two-household-purchasing-guides-batch021
 title: Localize two household purchasing guides batch021
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-batch021
 claimed_at: 2026-09-23T10:51:19Z
 created_at: 2026-09-23T10:51:06Z
-completed_at:
+completed_at: 2026-09-23T11:52:51Z
 branch: codex/article-localization-batch021-household-purchasing
 depends_on: []
 scope:
@@ -27,14 +27,14 @@ The currently public gadget purchasing and household inventory articles have onl
 
 - [x] Eight complete translated documents and eight localized SVGs independently reviewed against the published source.
 - [x] Both original Traditional Chinese documents, article metadata and four original assets remain unchanged.
-- [ ] Content, image renders, scoped tests and final Git exports pass; open a batch PR with content and publication states reported separately.
+- [x] Content, image renders, scoped tests and final Git exports pass; open a batch PR with content and publication states reported separately.
 
 ## Steps
 
 - [x] Inventory the full published rows, source versions, existing translations, task conflicts and original assets.
 - [x] Claim the exact two-article scope in an isolated worktree.
 - [x] Author and independently review the complete four missing locales per article and SVG labels.
-- [ ] Integrate exact reviewed outputs, run checks, and open the content PR.
+- [x] Integrate exact reviewed outputs, run checks, and open the content PR.
 - [x] Create a separate release task for guarded import/publication and public acceptance.
 
 ## How to verify
@@ -63,3 +63,5 @@ Completed local content evidence (outside Git under `C:/Users/x8120/.codex/artic
 - The fresh 2026-09-23 11:47 UTC source refresh contains exactly the selected two articles and matches their full 10:35 rows: source SHA256 `4d49279676fcb389212b5f4519add66199fec17ccc78166de007ea6b9be4e57b`; comparison SHA256 `3af6beb7627520b094417147b356ecb68c6cd0908c4cb3270385f0838d826afa`.
 
 Release work is tracked separately in `2026-09-23-release-localized-household-purchasing-guides-batch021`. Local content completion does not claim CI, merge, deployment, import, publication or public browser acceptance.
+
+Content PR: https://github.com/x812033727/travel_scanner/pull/687. The content task is complete at authoring/review/local-validation scope. Required CI, actual merge, release artifacts and all production acceptance remain in the separate release task.
