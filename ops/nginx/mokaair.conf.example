@@ -99,6 +99,17 @@ server {
     # that Googlebot?" meant joining it to access.log by address and timestamp. One grep now.
     access_log /var/log/nginx/mokaair-limited.log mokaair_limited if=$mokaair_is_limited;
 
+    # And who came for the crawl-control files, which the line above cannot say because it
+    # only records refusals. Every one of those five paths is asked about in the same way --
+    # "did Google come, and what did it get" -- and on 2026-09-22 AdSense reported /ads.txt as
+    # not found while every check from outside said the file was fine, with nothing on this
+    # side to check it against: the last fetch anyone could point at was nine days old, from
+    # before the line above turned the rest of the log off. Two access_log directives at the
+    # same level both apply, so this adds a log rather than replacing that one.
+    # $mokaair_is_crawl_control is mapped in conf.d/mokaair-rate-limit.conf; `combined` is
+    # nginx's own format and carries the User-Agent.
+    access_log /var/log/nginx/mokaair-crawl.log combined if=$mokaair_is_crawl_control;
+
     client_max_body_size 6m;    # just above the app's own 5 MiB cap, so the app answers
     limit_conn mokaair_conns 20;
 
@@ -143,6 +154,17 @@ server {
     # /robots.txt or /sitemap.xml is a crawler losing its instructions for the whole site.
     # Exempt from the page budget for the same reason /_next/static/ is.
     location = /robots.txt {
+        include /etc/nginx/snippets/mokaair-proxy-headers.conf;
+        proxy_pass http://mokaair_web;
+    }
+
+    # Google fetches this to decide whether the site may sell its own inventory, and answers a
+    # failed fetch by reporting the site's ads.txt as missing -- the whole of AdSense's view
+    # of it is the last crawl. It also arrives outside the exemption above: the fetcher is
+    # Google-Adstxt, whose addresses are published in special-crawlers.json rather than the
+    # googlebot.json ranges 05-mokaair-crawler-ranges.conf is built from, so it is not a
+    # verified crawler here and would be counted in the page budget by address like a visitor.
+    location = /ads.txt {
         include /etc/nginx/snippets/mokaair-proxy-headers.conf;
         proxy_pass http://mokaair_web;
     }

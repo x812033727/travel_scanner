@@ -547,6 +547,27 @@ the search changes. `jev-shadow-report` reads the runs back and prints agreement
 overall and per language, plus the disagreements to look at by hand, which is what a
 threshold should be set from.
 
+The second is `pack_cli jev-review`, an offline production tool that reads content
+packs and writes none of them. `editorial` asks, once per text unit of an article,
+whether that unit addresses the editor or narrates how the article was researched
+instead of telling the traveller about the place; `overlap` asks whether a proposed
+article repeats one the catalogue already has; `compare` pairs two editorial reports
+and never connects at all. Run it from `apps/api` so `JEV_API_KEY` is read from the
+repository's own `.env`, and read `--dry-run` first: it prints the whole plan --
+documents, units, calls, estimated input tokens and dollars -- before anything is
+sent, and `--max-calls` refuses a plan bigger than it. In a report, `noul` is how
+strongly Jev holds the stated defect, `tier` is what `route_answer` allows (never
+`act` for Chinese while `JEV_CJK_AUTOPILOT_ENABLED` is false), and `signals` is a
+deterministic regex baseline -- `本文|這篇`, `官方頁(寫|說|的)|我們(就)?不標|不是我們加的`,
+`교통 정보|대표메뉴`, and more than 30% Hangul -- that the model has to beat to be worth
+its call: read `flagged_without_signal` before believing it does. Flags never change
+the exit code, and no pack is ever modified.
+
+Production has run the shadow measurement since 2026-09-22: the worker's env carries
+`JEV_SHADOW_GUIDE_ASSESSMENT=shadow` (the key stays on the admin card), so every admin
+guide search now records Jev's answer beside the assessor's, and `jev-shadow-report`
+is where those numbers are read back.
+
 `POST /api/v1/trips/{id}/itinerary/generate` requires `Idempotency-Key` and the
 current trip version. The request accepts `scope=day` with `day_date`, or the
 backward-compatible default `scope=trip`. Day scope leaves every other date

@@ -186,6 +186,143 @@ AI 索引把「2026-09-15 與 2026-09-18 兩度增補」改成「之後多次增
 - **fca-p2p**：第 4 節第 3 段「規範範圍還在擴大中」是編輯過場句（來源只印 `until October 2027`）。
 - **ko 的「가상자산／암호자산」**：perimeter 譯者用了「암호자산」，審稿統一成站上的「가상자산」；**ja 的「莒」**（西莒／莒光）與「虛擬資產服務法」的繁體字會被 `translation_checks.py` 的 cp932 檢查標出，是假陽性。
 
+## 1e. 9 月 18 日的十一篇（批次 4.6）：只做 zh-TW，索引連結另一張票
+
+PR #572（squash 為 `7f2c5478`）。站主 2026-09-20 決定**只做 zh-TW**：內容包只有 `zh-TW`、研究紀錄沒有 `translations`、
+沒有翻譯也沒有逐語審稿，自檢一律 `check_article.py`（**不帶 `--full`**——它只多四個譯文檢查，對 zh-TW-only 必然 FAIL）。
+規則差異寫在 [`agents/DELTA-4-6.md`](agents/DELTA-4-6.md)；9/19–20 是週末，19 個候選的事件日全部是 9/18。
+十一篇都經**兩輪**獨立查核（兩輪合計改 327 處，另有協調者 35 條裁決），`pack_cli lint --kind life` 0 error。
+`display_order` 依 `check_article.py` 的 `RELATED`：AI 167–170、科技 317–320、幣圈 214–216。
+
+| 垂直 | slug |
+| --- | --- |
+| AI | `ai-news-anthropic-accenture-evaluation-20260918`、`ai-news-openai-australia-youth-safety-20260918`、`ai-news-gemini-notebook-study-tools-20260918`、`ai-news-kimi-k3-bedrock-20260918` |
+| 科技 | `tech-news-npm-stage-only-tokens-20260918`、`tech-news-cisa-kev-linux-kernel-20260918`、`tech-news-windows-cloud-rebuild-20260918`、`tech-news-iphone-duo-dev-resources-20260918` |
+| 幣圈 | `crypto-news-occ-three-trust-charters-20260918`、`crypto-news-eba-third-party-risk-20260918`、`crypto-news-sec-crypto-fraud-patterns-20260918` |
+
+**2026-09-19T23:44Z 部署（log `deploy_20260919_234433.log`，無 migration）、`guides-import --locale zh-TW --publish --slug` ×11**
+（zh-TW create 11、update 0、published 11、`taxonomy_updated` 11、`failed: null`；先核對 dry-run 計畫才 `--publish`）。
+驗證：11 頁 `/zh-TW/life/<slug>` 皆 200、無 robots meta、`hero.jpg` 皆 200、都在 `life-zh-TW.xml` 與 `/feed.xml`；
+`guides-links-check --locale zh-TW` 的 19 筆 findings 與本批無關。主機輸出在 `/root/news46-20260920/`。
+
+原本要「更新既有文章」的兩則（馬祖 5G 示範、Apple 9/18 全球開賣）**在本批取消**：兩篇目標都是五語系、zh-TW 已頂 3,000 字、
+`sources` 已四條，DELTA-4-6 第 8 條在它們身上與 checker 互斥；改由票 `2026-09-19-multi-language-maintenance-update-for-two` 處理。
+
+**三個索引當天沒有動**（`update_index.py` 本來是五語機制：`NEW` 跨語系套用，`CITED` 加上去會超過來源上限）。
+zh-TW 的索引連結由票 `2026-09-19-4-6-11-zh-tw-update` 補上：`update_index.py` 學會 `--locale` 與 `--dry-run`，
+11 個連結只進 zh-TW 文件（AI +4、科技 +4、幣圈 +3）、三句 zh-TW 增補日期改寫，`CITED` 對這批全空
+（AI 索引已引 19/20 條、科技 17 條，而且單邊加來源會讓五語文件的來源清單不一致），en／ja／ko／zh-CN 一個位元組都沒動。
+科技索引 zh-TW 的 `_body_length` 因此從 5,994 越過 6,000 指引（6,163；是 warning 不是 error，其他四語早就超過）。
+
+## 1f. 9 月 20 日起的十五篇（批次 4.7）：只做 zh-TW，索引同一個 PR
+
+站主 2026-09-22 從三位探索代理交的 56 則候選裡圈選 15 篇。窗口是 2026-09-20 00:00 台北起，
+另加**三則前幾輪列過卻一直沒寫的補寫件**（Anthropic 生命科學驗證方案 09-17、Meta One 09-15、
+財政部台財稅字第 11504611390 號令 09-03）——這三篇的正文照自己的事件日寫，不寫成「最近」「本週」。
+規則差異在 [`agents/DELTA-4-7.md`](agents/DELTA-4-7.md)：沿用 4.6 的 **zh-TW only**（不翻譯、不逐語審稿、
+自檢一律**不帶 `--full`**），查核報告**恢復進 repo**（4.6 沒做），`display_order` 由 `check_article.py` 的
+`RELATED` 決定：AI 171–176、科技 321–326、幣圈 217–219。十五篇都經**兩輪**獨立查核，
+兩輪合計核對 2,458 條主張、改了 **290 處**；15 篇 `check_article.py <slug> --assets` 全部 exit 0，`pack_cli lint --kind life`（15 篇加三個索引）**0 error**。
+
+| slug | order | zh-TW 段落字數 | 第一輪 主張／改動 | 第二輪 主張／改動 |
+| --- | --- | --- | --- | --- |
+| `ai-news-openai-math-advisory-20260921` | 171 | 2,352 | 101／13（另 8 處漏半形空格） | 45／3 |
+| `ai-news-openai-frontier-standards-20260921` | 172 | 2,888 | 109／18（CHANGED 22 條） | 60／8 |
+| `ai-news-anthropic-life-sciences-verification-20260917` | 173 | 2,946 | 130／10 | 49／8 |
+| `ai-news-meta-one-subscription-20260915` | 174 | 2,959 | 91／18（事實 11、讀者優先 7） | 62／12（事實 8、裁定 4） |
+| `ai-news-openai-academy-paths-20260921` | 175 | 2,734 | 96／14 | 72／6 |
+| `ai-news-nvidia-physical-ai-safety-20260921` | 176 | 2,996 | 124／8（CHANGED 12 條） | 121／5 |
+| `tech-news-googlebook-launch-20260921` | 321 | 2,769 | 104／12 | 88／9 |
+| `tech-news-eu-data-centre-rating-20260921` | 322 | 2,955 | 118／7（CHANGED 14 條） | 60／11 |
+| `tech-news-cisa-kev-zyxel-gs1900-20260921` | 323 | 2,516 | 106／6 | 42／14 |
+| `tech-news-meta-petal-subsea-cable-20260921` | 324 | 2,888 | 132／17 | 68／14 |
+| `tech-news-enisa-threat-landscape-20260922` | 325 | 2,710 | 98／14 | 62／7 |
+| `tech-news-moda-mydata-student-loan-20260917` | 326 | 2,984 | 121／12（CHANGED 11 條） | 48／6 |
+| `crypto-news-taiwan-deposit-token-pilot-20260922` | 217 | 2,040 | 103／8 | 42／8 |
+| `crypto-news-sec-innovation-exemption-20260917` | 218 | 2,974 | 63／4 | 27／2 |
+| `crypto-news-taiwan-vasp-tax-ruling-20260903` | 219 | 2,496 | 82／5 | 34／11 |
+
+查核報告在 [`factcheck-draft/`](factcheck-draft)，**每篇兩個檔**（`<slug>-round1.md`、`<slug>-round2.md`）：
+4.1–4.5 是一個檔兩節，本批兩位查核代理各自獨立交件，合併成一個檔會動到他們寫的字。
+研究紀錄在各垂直工作區的 `research/`（[`../ai-news-2026-09-late/research/`](../ai-news-2026-09-late/research)、
+[`../tech-news-2026/research/`](../tech-news-2026/research)、[`../crypto-news-2026/research/`](../crypto-news-2026/research)）；
+候選清單原樣在 `candidates-since-0920-{ai,tech,crypto}.md`。
+
+`related` 由協調者補（撰稿代理沒有寫）：只指同批同垂直的鄰近文章，每篇 2–4 篇，幣圈三篇互指。
+`pack_cli relink --kind life --slug … --apply` 把 12 篇的兩個結尾連結轉成 `article` inline
+（另外三篇撰稿代理自己已經轉過），`raw_internal_url` 歸零。
+
+**三個索引在同一個 PR 原地增補**（4.6 是拆成另一張票才補的）：`update_index.py ai tech crypto --locale=zh-TW`，
+zh-TW 各 +6／+6／+3 個連結、三句增補日期改成 2026-09-23，`CITED`／`INSERT`／`RETITLE` 對本批全空，
+en／ja／ko／zh-CN **一個位元組都沒動**（逐 locale 與 `git show HEAD:` 比對過）。兩件與 4.6 不同的事：
+
+- AI 索引 callout 的「本輯收錄的事件到 2026-09-18 為止」**同時改成 2026-09-21**。那句話說的是「這個系列寫到哪一天的事」，
+  4.6 只需要動增補日是因為它十一篇的事件日全是 9/18；本批最新的 AI 事件是 9/21。
+- 科技索引 zh-TW 的 `_body_length` 從 6,163 再到 6,369（warning 不是 error，其他四語早就超過）。
+- **Petal 的連結先放進「台灣：電信與數位政策」（挨著兩條馬祖海纜），協調者 2026-09-23 裁定移走**：
+  法國—美國的海纜不屬於台灣政策，改放「運算基礎設施與半導體」該組最後（zh-TW 區塊 53 → 49）。
+  `update_index.py` 的 `NEW` 也跟著改成以 `tech-news-nvidia-mediatek-20260831` 為 anchor，重跑才會落在同一個位置。
+
+**兩個要記下來的裁決：**
+
+- **幣圈的固定免責 callout 逐字照 `crypto.md` 樣板，含「本文」二字**（協調者 2026-09-23，已寫進 DELTA-4-7 第 16 條）。
+  DELTA-4-7 第 14 條「正文不要出現本文」**不及於這個 callout**：它與已發布的四篇幣圈文章逐字相同、只換查核日，
+  單獨改一批會讓同一個系列的同一段話兩種寫法。SEC 創新豁免與財政部令兩篇的撰稿代理把它改成了「這一篇」，第一輪查核照裁決還原。
+- **ENISA 那篇的台灣句是本批唯一推翻研究紀錄前提的改動。** 研究紀錄的 `not_said` 與 `must_not_write` 都寫
+  「三條來源都沒有提到台灣」，第一輪對 101 頁報告全文做大小寫不敏感檢索，`Taiwan` 出現 **2 次**（都在 p.78，
+  取材自歐盟對外事務部資訊操弄報告的那一章，台灣與香港、新疆、西藏被列為中國相關敘事經常出現的題目）。
+  正文、FAQ 與 callout 三處都改成中性轉述：統計範圍不含台灣，但報告全文確實寫到台灣一次。研究紀錄已同步更正——
+  **不更正的話第二輪會照著把正文改回錯的那句。**
+
+**還沒做完的：**
+
+- **Petal 的 Orange 問題已結案（協調者 2026-09-23）：四處掛在「Meta 的貼文」名下的敘述保留。**
+  第二輪原本交的是 `needs_owner`，因為裁定 2（description 與 summary 裡沒有出處的 Orange 要刪）
+  與裁定 3（Meta 貼文裡的第三方具名內容可用）互相牴觸：住友電工聯合稿全文 `Orange` **0 次**、
+  Meta 貼文 **4 次**（含 `EVP, Orange International Networks` 的具名引言）。
+  第二輪做的那一半就是定案——刪掉沒有出處的 description、summary 第 3 句與兩處「法國電信集團」，
+  留下四處逐字寫明出處的敘述；**整段 P12 的具名引言不刪**。事實面本來就站得住（41 條逐字引文全數命中）。
+- **繪圖與 `_DRAWINGS` 由另一位代理補齊**，2026-09-23 收尾當天 15 篇的 `hero.jpg` 與 `diagram-1.svg` 都在，
+  `tests/test_guides_content_pack.py`、`tests/test_guides_content_links.py` 12 passed／5 skipped。
+  在那之前唯一的紅燈是那七篇的 `image_missing`，沒有別的錯誤碼——下一批若圖還沒出，看到同一組訊息就是同一件事。
+- **匯入發布**：PR 合併、部署後 `guides-import --locale zh-TW --publish --slug` ×18（15 篇 create、3 個索引 update），
+  **先核對 dry-run 計畫才 `--publish`**（4.6 的做法）；驗證 15 頁 `/zh-TW/life/<slug>` 皆 200、無 robots meta、
+  `hero.jpg` 200、都在 `life-zh-TW.xml` 與 `/feed.xml`。
+
+### 上線紀錄（2026-09-22 UTC）
+
+- PR #669 squash `05e57b48`（22:39Z）；部署 `deploy_20260922_225723.log`，23:00Z 上線（健康 3/3、alembic 0082 head、首頁 200／0.88 秒）；映像同時帶上 #665（共用 skill）與 #667（第八批第一波七篇）。
+- 匯入：主機腳本 `/root/news47-20260923/import.sh`（同一支腳本的 dryrun／publish／recheck 三模式，nohup 在主機背景跑；plink 的 stdin 轉送不可靠，腳本以 base64 夾在指令列傳上去）。dry-run 恰好 22 筆 zh-TW create（4.7 十五篇＋第八批 W1 七篇）＋ 3 筆索引 zh-TW update；站主同意後 publish：created 22、updated 3、published 25、taxonomy_updated 22、failed null（23:04Z）；發布前 `pg_dump` 782 MB；複核 dry-run 25 筆全 unchanged；`guides-links-rebuild` unresolved 0；`guides-links-check --locale zh-TW` 只有既有的 gemini-guide raw_url。
+- 公開驗證 `verify_public.py --from-report publish.json --sitemap`：25 頁 PASS（200、h1、canonical、無 noindex、圖片 200、sitemap 收錄）。
+- 主機留檔：`/root/news47-20260923/{dryrun,publish,recheck}.json`、`run.log`、`links-check.log`。
+
+## 1g. 次要新聞第一波（批次 4.4，2026-09-23）：8 月至 9 月初的六篇 AI 文章，只做 zh-TW
+
+站主 2026-09-23 圈選三個垂直的候選清單全收（29 篇，見 `agents/DELTA-4-4.md` 第 3 條），
+同日決定額度留給第八批旅遊文章：**4.4 只先做第一波六篇（AI #1–6），其餘 23 篇等週額度 9/27 重置後續**。
+流程同 4.7：每篇一位 opus 研究代理（`sourcing_verdict` 全 full；`ai-news-openai-cursor-wind-down-20260828` 的 OpenAI 頁
+研究與撰稿時連續回 500、引文對同日 07:14 的 200 副本核過，第二輪查核時頁面恢復、重驗 23 條引文後升 full）→ sonnet 撰稿 →
+兩輪各一位不同的 opus 查核 → 協調者裁決 → 繪圖 → relink → `update_index.py ai --locale=zh-TW`（依事件日插進 8 月與 9 月群，
+不接在 9 月末尾）。查核報告在 `factcheck-draft/<slug>-round1|2.md`。
+
+| slug | 事件日 | 第一輪 | 第二輪 | 定稿字數 |
+| --- | --- | --- | --- | --- |
+| `ai-news-gemini-student-offer-20260820` | 08-20 | 77 條／改 14 | 41 條／改 7 | 2,994 |
+| `ai-news-meta-muse-agent-20260909` | 09-09 | 131 條／改 10 | 63 條／改 11（＋4 項追加裁決） | 2,547 |
+| `ai-news-openai-cursor-wind-down-20260828` | 08-28 | 72 條／改 2 | 25 條／改 1 | 2,444 |
+| `ai-news-claude-text-watermark-20260815` | 08-15 | 96 條／改 9 | 36 條／改 8 | 2,892 |
+| `ai-news-openai-zero-data-retention-20260820` | 08-20 | 107 條／改 14 | 51 條／改 6 | 2,757 |
+| `ai-news-openai-hugging-face-incident-20260826` | 08-26 | 114 條／改 16 | 88 條／改 5 | 2,997 |
+
+**裁決（不再翻案）**：Google 學生方案只寫「不在排除名單、在供應清單上」，不寫「台灣一定符合資格」，`$165` 不加幣別；
+Muse 是產品、Muse Spark 是模型，區別只寫兩處；Cursor 篇的「本站也查看了…」與編輯紀律句整段刪除；浮水印篇「台灣不在管轄範圍」
+改成 Anthropic 自己的範圍句、偵測 API 不寫成台灣可申請；ZDR 篇「四份來源都沒有價格」改「沒有為這兩項標價」（資料駐留端點有 10% 加價）、
+兩個收回條款分述；Hugging Face 事故篇不寫任何攻擊手法，JFrog 通報日採技術報告 7/6 並註明公告時間線印 7/8，指向同批未寫的
+Anthropic 篇的連結整句刪除。
+
+**學到的**：同批互指的 `article` inline 只能指向同一個 PR 會上線的文章，波次拆開時要回頭刪；「四份來源都沒提到 X」這種否定句
+每一份都要 grep（地區、價格、ChatGPT 方案三個否定句在第二輪都被來源打臉，改成限縮到內文）；第一輪新寫的句子是第二輪最常翻案的地方。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）

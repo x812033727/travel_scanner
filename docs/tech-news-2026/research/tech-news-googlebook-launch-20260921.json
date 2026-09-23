@@ -1,0 +1,697 @@
+{
+  "slug": "tech-news-googlebook-launch-20260921",
+  "vertical": "tech",
+  "display_order": 321,
+  "event_date": "2026-09-21",
+  "event_date_basis": "同日三篇官方文的 JSON-LD 都印 \"datePublished\": \"2026-09-21T13:00:00+00:00\"，頁面自印的日期戳記都是 Sep 21, 2026；13:00Z 換算台北時間是 2026-09-21 21:00，仍是同一天，也不是 00:00／16:00 這類整點排程佔位時刻，因此不套用 DELTA-4-5 第 5 條與 DELTA-4-6 第 7 條的「佔位時刻不換算」判例，直接以 2026-09-21 為事件日。三篇的 dateModified 分別是 2026-09-21T13:00:00.607754+00:00（外觀設計）、2026-09-21T13:00:04.057275+00:00（預購）、2026-09-21T13:00:05.212466+00:00（內建智慧），都在發布後數秒內，不構成改版。作為背景的 5 月發表文另有一個日期落差要照站主的裁定寫：它的 JSON-LD 是 \"datePublished\": \"2026-05-12T17:00:00+00:00\"（台北 5 月 13 日 01:00），但頁面自印的日期戳記是 May 12, 2026，ASSIGNMENTS.md 也已把時間線定為「5 月 12 日發表、9 月 21 日開放預購、10 月 4 日上架」；撰稿一律照 5 月 12 日寫，不要換算成 5 月 13 日，也不要在正文寫出 17:00 這個時刻。該頁的 dateModified 是 2026-09-18T13:08:40.893997+00:00，那是 Google 自己回頭改頁面的時間，不是事件日，正文不得引用。",
+  "title": "Googlebook 開放預購：10 月 4 日起在美國上架，台灣不在名單上",
+  "title_candidates": [
+    "Googlebook 開放預購：10 月 4 日起在美國上架，台灣不在名單上",
+    "Google 的新筆電品類開放預購：上架的是哪幾個市場，台灣現在查得到什麼",
+    "Googlebook 預購開跑：Android 與 ChromeOS 合起來的筆電，以及官方沒寫的台灣時程"
+  ],
+  "summary": "2026 年 9 月 21 日，Google 在官方部落格同日發出三篇 Googlebook 的文章（預購、內建智慧、外觀設計），宣布這個在 5 月 12 日發表的新筆電品類開放預購。Google 表示 Googlebook 建在 Android 技術堆疊上、搭配來自 ChromeOS 的桌面基礎，作業系統稱為 Googlebook OS，首批由 Acer、ASUS、Dell、HP、Lenovo 製造，起價 $899。對台灣讀者最重要的是上市範圍：官方寫 10 月 4 日在美國上架、10 月 5 日在加拿大、英國、愛爾蘭、法國、德國、澳洲上架，台灣不在這份名單內，四篇官方文也沒有任何一句提到台灣的上市時程或售價。Magic Pointer、Rambler、Create My Widget 這三個 Gemini 功能由這一篇一併交代，AI 垂直不另開一篇。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "Googlebook: The laptop your Android phone has been waiting for（預購公告，作者 John Solomon, Vice President, General Manager, Laptops, Tablets & Android Enterprise）",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "publisher": "Google（The Keyword / blog.google）",
+      "fetched_at": "2026-09-23T00:09:20+08:00",
+      "http_status": 200,
+      "bytes": 376349,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Googlebook pre-orders begin September 21, and they'll be on shelves October 4."
+    },
+    {
+      "title": "Premium materials and striking design set Googlebook apart（外觀與規格，作者 John Maletis, Vice President, Laptops & Tablets）",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "publisher": "Google（The Keyword / blog.google）",
+      "fetched_at": "2026-09-23T00:09:28+08:00",
+      "http_status": 200,
+      "bytes": 380829,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "At launch, you can choose between Intel Core Ultra Series 3 and Snapdragon X Elite processors, which are paired with advanced NPUs running at over 45 TOPS of on-device AI power."
+    },
+    {
+      "title": "Googlebook’s built-in intelligence reinvents the way you use your laptop（Gemini 功能，作者 Alexander Kuscher, Senior Director, Laptops & Tablets）",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "publisher": "Google（The Keyword / blog.google）",
+      "fetched_at": "2026-09-23T00:09:24+08:00",
+      "http_status": 200,
+      "bytes": 372293,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "with an intelligence system that brings Gemini directly on your device. It anticipates what you need, simplifies your daily tasks, and proactively helps you get things done."
+    },
+    {
+      "title": "Introducing Googlebook, designed for Gemini Intelligence（2026-05-12 發表文，背景用，作者 Alex Kuscher, Senior Director, Laptops & Tablets）",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "publisher": "Google（The Keyword / blog.google）",
+      "fetched_at": "2026-09-23T00:09:35+08:00",
+      "http_status": 200,
+      "bytes": 385384,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Over 15 years ago, we introduced the Chromebook, a laptop built for a cloud-first world. Now, as we are moving from an operating system to an intelligence system, we see an opportunity to rethink laptops again."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-23（台北）00:09 我以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 逐條重抓四條 sources[]，同一主機之間間隔 2 秒，請求的 UA、標頭、查詢字串與表單都沒有帶入任何人的姓名、email 或其他個人資料。四條全部 HTTP 200，bytes 與 ASSIGNMENTS.md 的探索紀錄一位元組不差：預購 376,349、內建智慧 372,293、外觀設計 380,829、5 月發表 385,384。原始 body 存在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\tech-news-googlebook-launch-20260921\\（pre-order.html、intelligence.html、first-look.html、meet-may.html，另有同名 .txt 是去標籤後的純文字，供查核者 diff）。四篇都讀到了真正的正文，不是軟性 404 或 SPA 殼：判準是每篇都找得到自己的 rich-text 段落、作者職稱、Pricing/availability 小節與頁尾的 Related stories。本紀錄所有 verbatim_quote 都用同一支腳本驗過：把 raw HTML 去掉 `<!-- -->`、html.unescape 之後，每一句都是原始 body 的連續子字串（不是先去標籤再比對的寬鬆版本），因此引號內出現的標點一律是原頁的排版字元（’ 與 —），不要換成 ASCII。三處引文為了避開原頁的 `<b>` 標籤或 `<a href=\"https://googlebook.google/...\">Googlebook</a>` 連結而從句中切入（`Pick up exactly where you left off…`、`a baseline of 16GB…`、`includes 12 months of Google AI Pro…`），這是刻意的，不是抄漏。`googlebook.google` 與 5 月文提到的 `googlebook.com` 是行銷頁，照 tech.md 不得當能力宣稱來源，本次沒有請求也沒有引用。",
+  "verified_facts": [
+    {
+      "fact": "Googlebook 在 2026 年 9 月 21 日開放預購；Google 自己的頁面摘要寫預購從 9 月 21 日開始、10 月 4 日上架。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Googlebook pre-orders begin September 21, and they'll be on shelves October 4."
+    },
+    {
+      "fact": "預購文的日期戳記是 Sep 21, 2026。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sep 21, 2026"
+    },
+    {
+      "fact": "預購文的 JSON-LD 發布時間是 2026-09-21T13:00:00+00:00（台北 9 月 21 日 21:00）。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\": \"2026-09-21T13:00:00+00:00\""
+    },
+    {
+      "fact": "Google 把 Googlebook 定位成一個新的筆電品類，建在 Android 技術堆疊上、搭配來自 ChromeOS 的桌面基礎，並說它是為 Gemini Intelligence 設計、開箱就能與 Android 手機搭配。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "a new category of laptops designed for the way we work today — is now available for pre-order. Built on the Android technology stack and paired with desktop foundations from ChromeOS, Googlebook is designed for Gemini Intelligence and engineered to work with your Android phone right out of the box."
+    },
+    {
+      "fact": "上市範圍：10 月 4 日在美國上架，10 月 5 日在加拿大、英國、愛爾蘭、法國、德國、澳洲上架。預購通路是 Google Store、Best Buy 與其他部分零售商，官方沒有寫預購開放哪些國家。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "on the Google Store, Best Buy, and other select retailers. Devices arrive on shelves starting October 4 in the U.S., and October 5 in Canada, the U.K., Ireland, France, Germany, and Australia."
+    },
+    {
+      "fact": "同一份上市名單在外觀設計那篇也寫了一次，用字略有不同（Devices hit shelves on…），國家與日期完全相同，可交叉印證。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Devices hit shelves on October 4 in the U.S., and on October 5 in Canada, the U.K., Ireland, France, Germany, and Australia."
+    },
+    {
+      "fact": "內建智慧那篇同樣寫了第三次，國家與日期一致。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Devices hit shelves on October 4 in the U.S., and October 5 in Canada, the U.K., Ireland, France, Germany, and Australia."
+    },
+    {
+      "fact": "首批機種由 Acer、ASUS、Dell、HP、Lenovo 製造。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Acer, ASUS, Dell, HP, and Lenovo, offering you choices that fit your style."
+    },
+    {
+      "fact": "Google 表示首波推出五款旗艦機種、起價 $899。「five flagship models」這個數字是官方頁自己印的，不是編輯清點的。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Premium hardware shouldn’t be one-size-fits-all, so we’re launching five flagship models built with the world's best laptop makers, starting at $899."
+    },
+    {
+      "fact": "五款機種各自的定位（官方自己的一句話）：Acer 是全系列唯一的翻轉機。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Acer: The sole convertible in the lineup, it shifts from laptop to tablet with ease."
+    },
+    {
+      "fact": "ASUS 那款 Google 寫重 2.2 磅。這是廠商宣稱的重量，官方頁沒有給公制數字，也沒有寫是哪個組態。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ASUS: Feather-light at just 2.2 pounds, it’s the ultimate travel companion."
+    },
+    {
+      "fact": "Dell 那款官方只寫外型與平衡，沒有給任何規格數字。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Dell: Bold and flashy, its height, weight, and display are perfectly balanced."
+    },
+    {
+      "fact": "HP 那款官方只寫外型，沒有給任何規格數字。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "HP: Elegance defined, it’s as beautiful closed as it is open."
+    },
+    {
+      "fact": "Lenovo 那款是 15 吋螢幕。這是五款裡唯一一個官方印出螢幕尺寸的機種。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Lenovo: With a spacious 15-inch display built for productivity, it’s the ultimate workhorse."
+    },
+    {
+      "fact": "Google 表示上市時可選 Intel Core Ultra Series 3 或 Snapdragon X Elite 處理器，搭配算力超過 45 TOPS 的 NPU。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At launch, you can choose between Intel Core Ultra Series 3 and Snapdragon X Elite processors, which are paired with advanced NPUs running at over 45 TOPS of on-device AI power."
+    },
+    {
+      "fact": "Google 說合作的晶片廠有 Intel、Qualcomm 與 MediaTek 三家，但上市時可選的處理器只列了 Intel 與 Qualcomm 兩家的產品；MediaTek 的晶片沒有出現在上市清單裡。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We teamed up with Intel, Qualcomm, and MediaTek to ensure Googlebook keeps up with developers and creators alike."
+    },
+    {
+      "fact": "Google 表示全系列記憶體基線 16GB，部分機種上看 32GB。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "a baseline of 16GB of high-speed RAM across the entire portfolio, and some models go up to 32GB"
+    },
+    {
+      "fact": "Google 表示電池最長 14 小時影片播放、16 小時網頁瀏覽。原文是 up to，限定詞要跟著數字一起寫，官方頁沒有列測試機型、亮度或測試日期等條件。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "up to 14 hours of video playback and 16 hours of web browsing"
+    },
+    {
+      "fact": "預購那篇對電池的說法比較籠統，只寫 up to 14 hours of battery life，沒有分影片與瀏覽；兩篇並存時以外觀設計那篇的分項為準，並寫明兩種情境不同。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Under the hood, top-of-the-line processors from Intel and Qualcomm — paired with dedicated NPUs capable of over 45 TOPS — deliver snappy on-device performance and up to 14 hours of battery life."
+    },
+    {
+      "fact": "Google 表示材質是鋁、鎂合金與碳纖維。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Every Googlebook is made from premium materials like aluminum, magnesium alloy, and carbon fiber, making them exceptionally light, sleek, and durable."
+    },
+    {
+      "fact": "Google 表示觸控螢幕解析度最高 2.8K，亮度足以在直射陽光下的戶外檢視而不反光。外觀設計那篇沒有寫面板類型。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "They feature touchscreens with up to 2.8K resolution that are bright enough to view outdoors in direct sunlight without a glare."
+    },
+    {
+      "fact": "只有預購那篇把 2.8K 寫成 OLED（up to 2.8K OLED displays）；外觀設計那篇同一項規格沒有寫 OLED。要寫面板類型只能引預購那篇，並保留 up to。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You’ll find responsive touchscreens with up to 2.8K OLED displays, haptic glass trackpads, and backlit keyboards."
+    },
+    {
+      "fact": "Google 表示喇叭最多六顆、支援 Dolby Atmos 環繞音效，並搭配抑制背景噪音的麥克風。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "up to six speakers with Dolby Atmos surround sound, paired with studio-quality, background noise-canceling microphones"
+    },
+    {
+      "fact": "Glowbar 回歸：開機時會有動態、可掃出電量、還有其他花樣，Google 並表示會開放給開發者做自訂互動動畫。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re also opening Glowbar access to developers to build custom, interactive animations."
+    },
+    {
+      "fact": "預購那篇對 Glowbar 的描述多一項：跟 Gemini 講話時會有動畫反應。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Positioned cleanly on the exterior, it lights up at startup, sweeps to show your battery charge level, and reacts with playful animations when you talk to Gemini."
+    },
+    {
+      "fact": "與手機連動的第一件事是換機搬家：登入後 Android 手機的設定、已儲存的密碼、Wi-Fi 網路與訊息會一起帶過來，Google 表示這段傳輸有端對端加密。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When you sign in, your Android phone’s settings, saved passwords, Wi-Fi networks, and messages will move with you, backed by end-to-end encryption."
+    },
+    {
+      "fact": "手機連動功能之一 Continue On：在手機上開始的工作可以直接在筆電的工作列接著做。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Pick up exactly where you left off on your phone, right on your laptop."
+    },
+    {
+      "fact": "手機連動功能之二 Files：用 Googlebook 的檔案 App 直接檢視、搜尋、開啟手機上的檔案與照片，不用先傳檔或寄給自己。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Rather than hunting through downloads or emailing attachments to yourself, use your Googlebook’s Files app to view, search, and open files and photos from your phone."
+    },
+    {
+      "fact": "手機連動功能之三 Cast My Apps：把手機 App 串流到桌面視窗裡直接操作。官方舉的例子是叫外送與抓簡訊裡的一次性驗證碼。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cast My Apps lets you stream and interact with your phone’s apps in a desktop window without interrupting your workflow."
+    },
+    {
+      "fact": "Gemini 功能之一 Magic Pointer：晃一下游標就把 Gemini 叫到螢幕上正在看的東西旁邊；Google 明寫它只在被叫出來時才動作、也可以關掉。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Wiggle your cursor to bring Gemini directly to whatever’s on your screen. You can ask Gemini to organize a messy calendar or translate text without juggling multiple windows. Gemini only acts when you ask it to, and you can switch it off whenever you want."
+    },
+    {
+      "fact": "Magic Pointer 的隱私說法在內建智慧那篇講得更完整：只有在被晃動叫出來時才啟動，沒在用的時候是關著的。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "From day one, we built Magic Pointer with privacy at the core. It only springs into action when summoned by a wiggle, and stays off when you’re not using it."
+    },
+    {
+      "fact": "Google 表示 Magic Pointer 看得懂文字、圖片與脈絡。官方舉的三個例子之一是把可疑郵件交給 Gemini 判斷是不是垃圾信。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Hover over a suspicious email and ask Gemini to analyze the text and images to verify if it’s spam or a legitimate message."
+    },
+    {
+      "fact": "Gemini 功能之二 Rambler：語音口述整理成有標題、清單與重點的文字，鍵盤上位置就在 Quick Insert 鍵旁邊，官方說可以中途換語言。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Located right next to the Quick Insert key, Rambler turns spoken thoughts into organized, ready-to-share writing."
+    },
+    {
+      "fact": "Rambler 的多語能力在內建智慧那篇寫得最明確：原生支援多語、可以句子講到一半換語言；它還會整理成條列並自動加 emoji。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Rambler will take a disorganized verbal brain dump and clean up the errors, organize action items into structured bullet points, and even add relevant emoji. It’s also natively multilingual, so you can switch languages mid-sentence without losing a beat."
+    },
+    {
+      "fact": "Gemini 功能之三 Create My Widget：用白話描述需求就生出桌面小工具，官方說不需要寫程式。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Create My Widget on Googlebook lets you build your own widgets, with no coding experience required. Build bespoke widgets simply by describing what you want."
+    },
+    {
+      "fact": "Google 表示 Chrome 與 Android 上既有的 Gemini 功能（任務自動化、Gemini Live、依螢幕內容提出下一步建議）在 Googlebook 上開箱即有。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The powerful Gemini features that you know and use on Chrome and Android are available on Googlebook out of the box, including task automations, Gemini Live, and proactive suggestions that show your next move based on what’s on your screen."
+    },
+    {
+      "fact": "闔上筆電由 Gemini Spark 在背景處理複雜請求的說法，出處是內建智慧那篇。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You can even close your laptop while Gemini Spark works in the background to process complex requests and finish your tasks."
+    },
+    {
+      "fact": "軟體生態：桌面版 Chrome（可裝擴充功能）加上 Play 商店的 Android App，Google 說其中很多已針對大螢幕與鍵鼠最佳化。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "You get the desktop-class Chrome browser with extensions alongside millions of Android apps, many of them optimized for large screens, mouse and keyboard input."
+    },
+    {
+      "fact": "官方點名可以跑的原生創作工具與串流服務：Adobe Photoshop、Adobe Lightroom、CapCut，以及 Netflix、HBO Max（支援離線觀看）。這是 like 起頭的舉例清單，不是全清單。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Run native creative tools like Adobe Photoshop, Adobe Lightroom, and CapCut, or watch shows on popular streaming platforms like Netflix and HBO Max with offline viewing supported."
+    },
+    {
+      "fact": "遊戲：Google 說每一台都附一年 GeForce NOW，可用來玩 AAA 遊戲。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "explore thousands of Android games or play AAA titles with a complimentary year of GeForce NOW included with every purchase."
+    },
+    {
+      "fact": "開發者：每台內含 Antigravity（Google 自稱的 AI 代理開發平台），可在裝置上建置、測試、部署 App。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For builders and makers, Googlebook includes Antigravity, our AI agent development platform, allowing you to build, test, and deploy apps right on your device."
+    },
+    {
+      "fact": "開發者另有完整的 Linux 終端機環境，官方點名可以跑 Claude Code 或 Antigravity CLI。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Developers also have access to a full Linux terminal environment to run tools like Claude Code or Antigravity CLI and do serious agentic coding right on your Googlebook."
+    },
+    {
+      "fact": "安全架構沿用 ChromeOS，以 Google Titan 硬體信任根為錨點，加上縱深防禦與裝置端惡意程式偵測。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Googlebook is built on the same security architecture as ChromeOS, anchored with our Google Titan hardware root of trust, defense in-depth architecture, and on-device malware detection."
+    },
+    {
+      "fact": "Google 宣稱搭載筆電品類首見的 Level 5 安全認證 pKVM hypervisor。這是廠商的「首見」宣稱，本站沒有查證其他廠商是否也有，正文必須寫成「Google 表示」。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It also features a first for the laptop category: a Level 5 security-certified pKVM hypervisor."
+    },
+    {
+      "fact": "那個 hypervisor 的用途是隔離出一個含完整終端機的 Linux 環境，讓使用者跑 Linux 開發工具、拉程式碼儲存庫或執行自主代理。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This hypervisor powers an isolated Linux environment with a full terminal access, so you can safely run any Linux developer tools, pull code repositories, or execute autonomous agents."
+    },
+    {
+      "fact": "隨機附的訂閱：12 個月 Google AI Pro（含 5TB 雲端空間與 Gemini Advanced 工具），以及 3 個月的 YouTube Premium、Adobe Photoshop 等。作業系統更新的說法是「最長 10 年」（up to 10 years），不是保證 10 年。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "includes 12 months of Google AI Pro providing 5TB of cloud storage and our Gemini Advanced tools, plus 3 months of YouTube Premium, Adobe Photoshop, and more. Googlebook OS also comes with regular feature drops and updates for up to 10 years."
+    },
+    {
+      "fact": "「Googlebook OS」這個作業系統名稱出自同一段，是官方用字。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Googlebook OS also comes with regular feature drops and updates for up to 10 years."
+    },
+    {
+      "fact": "背景：5 月 12 日的發表文把 Googlebook 的緣起說成 Chromebook 的下一步——Chromebook 是十五年多前為雲端優先世界做的筆電，現在 Google 認為重點從作業系統轉到智慧系統，所以重新想像筆電。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Over 15 years ago, we introduced the Chromebook, a laptop built for a cloud-first world. Now, as we are moving from an operating system to an intelligence system, we see an opportunity to rethink laptops again."
+    },
+    {
+      "fact": "5 月發表文說 Googlebook 是把 Android（Play 商店的 App 與為智慧設計的現代作業系統）與 ChromeOS（瀏覽器）合起來。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re bringing together the best of Android, which comes with powerful apps on Google Play and a modern OS that’s designed for Intelligence, and ChromeOS, which comes with the world’s most popular browser."
+    },
+    {
+      "fact": "5 月發表文的日期戳記是 May 12, 2026，JSON-LD 是 2026-05-12T17:00:00+00:00。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\": \"2026-05-12T17:00:00+00:00\""
+    },
+    {
+      "fact": "5 月發表文當時只是預告，明講今年秋天才會有機器、之後再公布更多。9 月 21 日這三篇就是那個「之後」。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "and stay tuned as we will share more when devices become available this fall."
+    },
+    {
+      "fact": "5 月就點名了同一批代工夥伴 Acer、ASUS、Dell、HP 與 Lenovo，與 9 月的首批名單一致。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are working with industry leading partners like Acer, ASUS, Dell, HP and Lenovo to make the first Googlebooks and they’re just as excited as we are about them."
+    },
+    {
+      "fact": "Magic Pointer 早在 5 月發表文就出現，是這個品類一開始的主打功能。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are changing that with Magic Pointer on Googlebook, a feature we built"
+    },
+    {
+      "fact": "5 月發表文把 Magic Pointer 的共同開發者寫成 Google DeepMind 團隊（這串字是頁面上連到 deepmind.google 的連結文字）。9 月三篇沒有再提 DeepMind。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "with the Google DeepMind team"
+    },
+    {
+      "fact": "命名有變：5 月叫 Create your Widget，9 月的兩篇一律寫 Create My Widget。寫到這個功能要用 9 月的名字，回顧 5 月時才用舊名並註明。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re also bringing Create your Widget to Googlebooks, which lets you create custom widgets just by prompting."
+    },
+    {
+      "fact": "手機檔案存取的名稱也變了：5 月叫 Quick Access，9 月預購文改叫 Files（Googlebook 的檔案 App）。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With Quick Access, you can easily view, search or insert your phone’s files on your laptop — no transfers needed."
+    },
+    {
+      "fact": "5 月發表文解釋了為什麼選 Android 技術堆疊：Google 說這讓新功能能更快送到所有使用者手上，現在也包含筆電。",
+      "url": "https://blog.google/products-and-platforms/platforms/android/meet-googlebook/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Being built on part of the Android tech stack allows us to bring new innovations much faster to all our users, including now on laptops."
+    },
+    {
+      "fact": "blog.google 三篇 9 月文章頁首都有一塊 Google AI 生成的摘要，頁面自己標示它是生成式 AI 的實驗性產物——它不是編輯撰寫的內容，不可當成官方陳述引用。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Summaries were generated by Google AI. Generative AI is experimental."
+    },
+    {
+      "fact": "那塊 AI 摘要把上市範圍寫成 select countries，沒有列出國家——這正是 DELTA-4-7 第 11 條要跳過它的理由：抄摘要就會漏掉「台灣不在名單上」。",
+      "url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can pre-order the device now starting at $899, with units shipping to select countries beginning October 4."
+    }
+  ],
+  "not_said": [
+    "四篇官方文的正文沒有任何一句提到台灣、台灣的上市日、台灣的售價或台灣的預購通路。以 2026-09-23 查核，blog.google 這四頁未見任何台灣的上市說法。正文的否定句只能寫到「這幾頁沒有寫」，不可以寫成「Google 沒有要在台灣賣」或「台灣不會上市」。",
+    "頁面上會出現「台灣 (中文)」這幾個字，但那是 blog.google 頁尾的語言／地區版本選單（同一份清單裡還有 ประเทศไทย (ไทย)、Türkiye (Türkçe)、India、New Zealand 等），指的是部落格的在地化版本，不是產品上市地區。不可以拿它當台灣上市的任何依據。",
+    "官方沒有寫預購開放哪些國家。文章只寫「Pre-orders are now open on the Google Store, Best Buy, and other select retailers」。不可以寫「只有美國能預購」，也不可以寫「台灣可以預購」。",
+    "官方沒有標示 $899 的幣別代碼。四篇都只印 $899，沒有出現 USD 字樣；同一段裡唯一指名 10 月 4 日上架的市場是美國。不可以自行換算新台幣，也不可以替其他市場推估定價。",
+    "官方沒有寫五款機種各自的售價、組態對照或上市時間差。$899 是「起價」，官方沒有說是哪一款、哪個組態。",
+    "官方沒有寫台灣的保固、維修或支援管道。",
+    "官方沒有寫 Rambler 支援哪些語言、有沒有繁體中文；只寫 natively multilingual、可以句中換語言。不可以推論「支援中文」。",
+    "官方沒有寫 Magic Pointer、Rambler、Create My Widget 這些功能的開放地區或語言條件。",
+    "官方沒有寫 Gemini 功能需不需要另外付費，也沒有寫 12 個月 Google AI Pro 到期之後那些功能會不會受限。",
+    "官方沒有寫螢幕尺寸的完整對照，只在 Lenovo 那一款寫 15 吋。",
+    "官方沒有寫重量的公制數字，只有 ASUS 那款的 2.2 磅。",
+    "官方沒有寫 MediaTek 的晶片什麼時候會出現在 Googlebook 上，只把 MediaTek 列為合作對象。",
+    "官方沒有寫 Level 5 是哪一個認證體系的等級、由誰認證，也沒有連到認證文件。",
+    "官方沒有寫「最長 10 年」的更新從哪一天起算、涵蓋哪些機種、是安全更新還是功能更新全包。原文只寫 regular feature drops and updates for up to 10 years。",
+    "官方沒有寫 Continue On、Files、Cast My Apps 需要哪個 Android 版本或哪些手機機型。",
+    "官方沒有公布任何銷售、產能、出貨量或預購量的數字。",
+    "9 月三篇沒有再提 Google DeepMind；DeepMind 只出現在 5 月那篇。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "$899 等於「美金 899 元」。",
+      "seen_where": "四篇官方文都只印 $899，沒有 USD 或任何幣別代碼；同段唯一指名的 10 月 4 日市場是美國。",
+      "why_excluded": "幣別是推定不是官方文字。撰稿要寫幣別時，寫法定為：「官方標示的起價是 899 美元（頁面只印 $899，未標幣別代碼；同一段唯一指名 10 月 4 日上架的市場是美國）」，或乾脆照原樣寫 $899。一律不得換算或推估新台幣價格。"
+    },
+    {
+      "claim": "10 月 5 日上架的是「六個國家」。",
+      "seen_where": "加拿大、英國、愛爾蘭、法國、德國、澳洲六個名字是官方列的。",
+      "why_excluded": "「六」是編輯清點出來的數字，官方頁沒有印。正文要寫就明寫是編輯清點，或直接把六個名字列出來不給總數；圖上一律不得出現這個清點數字（DELTA-4-7 第 15 條）。"
+    },
+    {
+      "claim": "Googlebook 的行銷頁 googlebook.google（9 月三篇的連結目的地）與 googlebook.com（5 月文的連結目的地）上的規格、機型與定價。",
+      "seen_where": "9 月三篇內文的 Googlebook 一詞連到 https://googlebook.google/?utm_source=blog.google...；5 月文連到 https://googlebook.com/...。",
+      "why_excluded": "照 tech.md「產品行銷頁不能當作能力宣稱的來源」。本次沒有請求這兩個網域，也沒有引用任何來自它們的內容。撰稿不得引用，也不得寫「官網上有寫」。"
+    },
+    {
+      "claim": "Googlebook 與 Chromebook 的關係（取代／並存／停產）。",
+      "seen_where": "5 月文只寫 Chromebook 是十五年多前的產品、現在要重新想像筆電。",
+      "why_excluded": "四篇都沒有寫 Chromebook 會不會繼續賣、兩條產品線怎麼分工。不可以寫成「Googlebook 取代 Chromebook」或「Chromebook 要退場」。"
+    },
+    {
+      "claim": "Googlebook 與 Windows 筆電、Mac 的效能或續航比較。",
+      "seen_where": "無。四篇都沒有對照組。",
+      "why_excluded": "沒有一手來源，而且照 tech.md 不做推薦式比較。第二個結尾連結那篇（Project Zenith）是另一個「開發者筆電怎麼定義」的案例，只能當延伸閱讀，不可以寫成規格或價格的比較。"
+    },
+    {
+      "claim": "電池 14／16 小時的測試條件（機型、螢幕亮度、測試日期）。",
+      "seen_where": "外觀設計那篇只有 up to 14 hours of video playback and 16 hours of web browsing 一行，沒有註腳。",
+      "why_excluded": "官方頁沒有印任何測試條件。寫數字時 up to 的「最長」一定要跟著，並寫明官方沒有列測試條件。"
+    },
+    {
+      "claim": "Antigravity、Claude Code、Gemini Spark、GeForce NOW 這些名字背後的服務細節、費用或可用地區。",
+      "seen_where": "只在官方兩篇的功能敘述裡被點名。",
+      "why_excluded": "四篇都沒有寫它們的地區、費用或帳號條件。只能照官方原句寫「官方點名可以跑／隨機附贈」，不得延伸說明這些服務本身。"
+    },
+    {
+      "claim": "blog.google 頁首「Read AI-generated summary」那三種摘要（General summary／Bullet points／Basic explainer）的任何內容。",
+      "seen_where": "三篇 9 月文的頁首區塊，頁面自標 Summaries were generated by Google AI。",
+      "why_excluded": "DELTA-4-7 第 11 條明令跳過。它把上市範圍寫成 select countries，抄了就會漏掉台灣不在名單這件事。本紀錄只把它當「不要用的東西」列出來，撰稿一個字都不要引。"
+    }
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "tech-news-windows-project-zenith-20260904",
+      "what_it_already_says": "微軟 Project Zenith：為統一記憶體 64GB 以上、頻寬 250GB/s 以上的「開發者等級裝置」預載工具並調整介面預設。它已經把「廠商怎麼替筆電畫一條硬體門檻」寫完了，也是本篇的第二個結尾連結；本篇只能提一句當對照，不得重寫它的門檻數字或做規格比較。"
+    },
+    {
+      "slug": "tech-news-pixel-drop-20260915",
+      "what_it_already_says": "Google 9 月 Pixel Drop 的機型、地區語言條件與 Pixel Watch 5。它已經示範過「Google 的功能公告怎麼讀地區與語言限制」這件事，本篇不要重講方法論，直接講 Googlebook 自己的名單。"
+    },
+    {
+      "slug": "ai-news-google-assistant-gemini-20260904",
+      "what_it_already_says": "Google Assistant 退場、Gemini 在手機／手錶／車上接手，以及 Gemini 目前不支援的功能。Gemini 取代 Assistant 的來龍去脈已經寫過，本篇不要再解釋一次 Gemini 是什麼。"
+    },
+    {
+      "slug": "ai-news-gemini-spark-20260519",
+      "what_it_already_says": "Gemini Spark 與 Daily Brief 的背景代理架構與風險。本篇提到「闔上筆電讓 Gemini Spark 在背景跑」時，一句帶過即可，不要重寫 Spark 的架構分析。"
+    },
+    {
+      "slug": "gemini-plans-ai-pro-ultra-2026",
+      "what_it_already_says": "Google AI 各方案的功能、額度與台灣公開月費（2026-09-14 查證）。本篇提到隨機附 12 個月 Google AI Pro 時不要比價、不要重列方案內容。"
+    },
+    {
+      "slug": "gemini-in-chrome-guide",
+      "what_it_already_says": "Chrome 內建 Gemini 的網頁摘要與分頁比較教學。本篇寫「Chrome 與 Android 上既有的 Gemini 功能開箱即有」時，不要展開成教學。"
+    },
+    {
+      "slug": "tech-news-apple-september-hardware-20260909",
+      "what_it_already_says": "Apple 9 月硬體發表與台灣定價、預購時程。它是站上「硬體發表怎麼寫台灣定價」的既有範例；本篇的情況剛好相反（官方完全沒寫台灣），寫法可以對照它但不要引用它的數字。"
+    }
+  ],
+  "second_link": {
+    "slug": "tech-news-windows-project-zenith-20260904",
+    "url": "https://mokaair.com/zh-TW/life/tech-news-windows-project-zenith-20260904",
+    "text": "微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻",
+    "verified": "2026-09-23 確認 apps/api/app/guides/content/tech-news-windows-project-zenith-20260904.json 存在，locales 有 zh-TW/en/ja/ko/zh-CN，zh-TW title 逐字為「微軟發布 Project Zenith：Windows 開發機的統一記憶體與頻寬門檻」，news_date 2026-09-04、display_order 307。text 照抄這一行，一個字都不要改。"
+  },
+  "editorial_brief": "讀者是台灣一般讀者，看到「Google 出筆電了」第一個念頭是「我買得到嗎、什麼時候」。這一篇的骨架就照這個順序走：先講清楚 9 月 21 日發生的是「開放預購」不是「發表」（發表是 5 月 12 日），再講 10 月 4 日美國、10 月 5 日加拿大／英國／愛爾蘭／法國／德國／澳洲上架——然後在第一段就把台灣的狀況講白：台灣不在這份名單裡，官方也沒有說什麼時候輪到台灣。這不是壞消息式的結論，而是讓讀者省下去搜尋的時間，並知道之後可以自己去哪一頁看有沒有更新（blog.google 的 Googlebook 分類頁）。\n中段兩件事值得展開：一是這台機器「是什麼」——Google 把 Android 的 App 生態和 ChromeOS 的桌面與安全架構接在一起，做出一個叫 Googlebook OS 的東西，所以它跟 Android 手機的關係（設定搬家、Continue On、Files、Cast My Apps）才是賣點，而不是單純的規格；二是 Gemini 那三個功能（Magic Pointer、Rambler、Create My Widget）具體做什麼、以及官方對隱私講了什麼（Magic Pointer 只在被叫出來時才動、可以關掉）。AI 垂直不寫 Googlebook，所以這三個功能的完整交代就在這一篇。\n規格段落要短而準：五款機種、Acer／ASUS／Dell／HP／Lenovo、$899 起、Intel Core Ultra Series 3 或 Snapdragon X Elite、NPU 逾 45 TOPS、記憶體 16GB 起最高 32GB、最長 14 小時影片或 16 小時瀏覽、最長 10 年更新。每一個數字都要掛「Google 表示」，up to 一定要翻成「最長／最高」。安全那段最容易寫過頭：Titan 信任根與 pKVM 可以寫，但「筆電界首見的 Level 5 認證」是 Google 自己的宣稱，要寫成宣稱。\n結尾給讀者一件真的能做的事：官方頁在哪、怎麼自己確認有沒有新增市場。不要寫該不該買、不要比價、不要猜台灣時程。",
+  "must_not_write": [
+    "不可以寫成「Google 9 月 21 日發表 Googlebook」。9 月 21 日是開放預購；發表是 2026 年 5 月 12 日。時間線一律寫「5 月 12 日發表、9 月 21 日開放預購、10 月 4 日上架」。",
+    "不可以引用 blog.google 頁首「Read AI-generated summary」那塊 AI 生成摘要的任何一句。它把上市範圍寫成 select countries，抄了就會漏掉台灣不在名單上這件事（DELTA-4-7 第 11 條）。",
+    "不可以漏掉或淡化「台灣不在上市名單內、官方也沒有說台灣何時上市」。這是整篇對台灣讀者最重要的一句，要在第一段就出現。",
+    "不可以把「這幾頁沒有寫台灣」寫成「Google 沒有要在台灣賣」「台灣不會上市」「台灣確定沒有」。否定句一律限縮成「以 2026 年 9 月 23 日查核，這幾頁未見台灣的上市說法」。",
+    "不可以把頁尾語言選單裡的「台灣 (中文)」當成台灣上市的跡象或線索寫進正文。",
+    "不可以換算或推估新台幣售價，也不可以替台灣以外未列出的市場推估定價或上市日。",
+    "不可以把任何規格數字寫成事實。處理器、NPU TOPS、記憶體、電池、螢幕、喇叭、更新年限、安全認證，一律「Google 表示」。本站沒有實測。",
+    "不可以把 up to 吃掉。14 小時、16 小時、2.8K、32GB、10 年、45 TOPS 前面的 up to／over 一定要譯出來（最長／最高／超過）。",
+    "不可以把「筆電品類首見的 Level 5 安全認證 pKVM hypervisor」寫成事實或寫成「業界唯一」。照 BRIEF 不寫「第一」「唯一」，要寫「Google 表示這是筆電品類首見」。",
+    "不可以寫成「MediaTek 的晶片版本已經上市」。官方把 MediaTek 列為合作對象，但上市可選的處理器只有 Intel Core Ultra Series 3 與 Snapdragon X Elite。",
+    "不可以寫「每一款都是 2.8K OLED」。OLED 只出現在預購那篇的 up to 2.8K OLED displays；外觀設計那篇的同一項規格沒有寫 OLED，而且兩篇都用 up to。",
+    "不可以寫「五款機種都有 15 吋螢幕」或替沒寫規格的機種補規格。官方只給了 Acer（翻轉）、ASUS（2.2 磅）、Lenovo（15 吋）三項具體資訊，Dell 與 HP 只有形容詞。",
+    "不可以把 like／such as 起頭的舉例清單（Adobe Photoshop、Adobe Lightroom、CapCut、Netflix、HBO Max）寫成完整支援清單。",
+    "不可以寫「Rambler 支援繁體中文」。官方只寫 natively multilingual，沒有列語言。",
+    "不可以引用 googlebook.google 或 googlebook.com 這兩個行銷網域上的任何內容，也不可以寫「官網上寫著…」。本次沒有取得它們，照 tech.md 行銷頁不得當能力宣稱來源。",
+    "不可以寫購買建議、升級建議或「值不值得等」。不做推薦式的價格比較。",
+    "不可以寫成對 Chromebook 的取代或停產。四篇都沒有寫兩條產線的關係。",
+    "不可以在正文出現「本文」兩個字（DELTA-4-7 第 14 條）。指涉自己一律用「這一篇」，查核日那句寫成「這一篇的資料在 2026 年 9 月 23 日查核」這種直接說話的句子。",
+    "不可以把查證流水帳寫進正文。「我們讀了官方頁」不是內容；歸因該做，但規格段掛一次、宣稱句掛一次就夠，不要每句都掛一次「官方」。description 也不要寫成查核紀錄，最多句尾帶一個「（2026 年 9 月查證）」。",
+    "不可以描述任何商標圖示或介面截圖（Glowbar 可以寫它做什麼，但不要描述 Google 標誌長什麼樣）。",
+    "不可以在圖上放「六個國家」這種來源沒印的清點數字。"
+  ],
+  "live_data_warnings": [
+    "blog.google 的文章頁是動態頁面：頁尾的 Related stories、頁首的導覽分類與語言／地區選單都會隨網站內容改變。本紀錄只用正文與 JSON-LD，不引用這些區塊的任何清單或計數。",
+    "頁首的「Read AI-generated summary」是即時生成的區塊，同一個網址不同時間可能給出不同文字。本紀錄只把它引來說明「為什麼不能用它」，撰稿不得引用。",
+    "上市名單是會變動的資訊：Google 隨時可能追加市場。正文寫名單時要標明「以 2026 年 9 月 23 日查核」，並告訴讀者之後去 blog.google 的 Googlebook 分類頁自己看有沒有更新。",
+    "5 月那篇發表文的 dateModified 是 2026-09-18T13:08:40Z，代表 Google 在 9 月改過那一頁。本紀錄引用的是 2026-09-23 讀到的版本；若查核代理讀到不同文字，以重讀當天為準並在查核報告記下差異。",
+    "$899 是起價，Google 隨時可能調整或推出不同組態。寫價格時一定要帶查核日與「起價」兩個限定。",
+    "本紀錄的 diagram.caption 裡寫的是 2026 年 9 月 23 日。撰稿代理若在不同日期重抓來源，caption、內容包每條 source 的 checked_on、第二段的查核日那句與表格 caption 要一起改成自己實際重讀的那一天，四處保持一致。"
+  ],
+  "corrections_applied": [],
+  "hero_label": "預購開跑，台灣不在名單",
+  "diagram": {
+    "title": "時間線與上市名單",
+    "caption": "2026 年 9 月 21 日 Google 對 Googlebook 開放預購，與 5 月 12 日的發表文對照出來的時間線：預購開跑、10 月 4 日起在美國上架、10 月 5 日的其他市場，以及台灣不在官方列出的市場名單內，資料查核日 2026 年 9 月 23 日。",
+    "nodes": [
+      [
+        "5月12日",
+        "Google 發表新品類"
+      ],
+      [
+        "9月21日",
+        "開放預購，尚未上市"
+      ],
+      [
+        "10月4日",
+        "美國上架，5 日跟進"
+      ],
+      [
+        "台灣不在名單",
+        "官方沒說何時上市"
+      ]
+    ]
+  },
+  "factcheck":   {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23（台北）01:08 以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 逐條重抓 sources[] 四條，同一主機間隔 2 秒，UA／標頭／查詢字串／表單都沒有帶入任何人的姓名、email 或個人資料。四條全部 HTTP 200，bytes 與研究紀錄一位元組不差（376,349／380,829／372,293／385,384），且預購、外觀設計、內建智慧三份 body 與撰稿代理留存的原始檔逐位元組相同；5 月發表文只差一個 `days_since_published` 分析計數（132→133），正文未變。研究紀錄 59 條 verified_facts 的 verbatim_quote 今天全部仍是原頁（去 `<!-- -->`、html.unescape 後）的連續子字串，0 條落空。把內容包拆成 104 條可查主張（title、description、兩段前言、5 條 summary、16 段正文、表格 15 格＋caption、6 題 FAQ、callout、圖解 alt／caption、兩個結尾連結、四條 sources、slug／news_date／display_order／topics）逐條回一手來源。另以同一 UA 打了一次 https://blog.google/products-and-platforms/devices/googlebook/ （200／381,521 B）確認正文三度請讀者回去看的那個分類頁真的存在；該頁不是 sources[]，只用來驗證導引、沒有拿它補任何事實。",
+    "claims_checked": 104,
+    "changes": [
+      {
+        "claim": "12 個月 Google AI Pro 與一年 GeForce NOW 的隨附對象（summary 第 5 條、軟體生態段最後一段、FAQ 第 4 題，共三處）",
+        "before": "起價機型隨附 12 個月 Google AI Pro……並附贈一年 GeForce NOW",
+        "after": "每一台 Googlebook 都隨附 12 個月 Google AI Pro……每一台也都附贈一年 GeForce NOW",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "Googlebook OS 更新的涵蓋範圍（summary 第 5 條與正文，共兩處）",
+        "before": "最長 10 年的例行功能更新",
+        "after": "最長 10 年的例行功能更新與各項更新",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "機身材質（規格段）",
+        "before": "機身材質是鋁、鎂合金與碳纖維",
+        "after": "機身採用鋁、鎂合金與碳纖維等高階材質",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      },
+      {
+        "claim": "Acer 那款翻轉機的範圍（規格段與表格 Acer 列，共兩處）",
+        "before": "全系列唯一的翻轉機",
+        "after": "首波五款中唯一的翻轉機",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      },
+      {
+        "claim": "表格 Dell 列的官方描述",
+        "before": "外型大膽，強調高度與螢幕的平衡",
+        "after": "外型大膽，強調高度、重量與螢幕的平衡",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      },
+      {
+        "claim": "Gemini Spark 的定性（Gemini 功能段最後一段）",
+        "before": "闔上筆電之後，背景代理 Gemini Spark 還會繼續處理複雜的請求並完成任務。",
+        "after": "闔上筆電之後，Gemini Spark 還會在背景繼續處理複雜的請求並完成任務。",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/"
+      },
+      {
+        "claim": "離線觀看的適用對象（軟體生態段）",
+        "before": "串流服務則有 Netflix、HBO Max（支援離線觀看）等，這是官方舉例的清單",
+        "after": "串流服務則有 Netflix、HBO Max 等並支援離線觀看，以上都是官方舉例的清單",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "GeForce NOW 對應到哪一種遊戲（遊戲與開發者段）",
+        "before": "Google 表示每台都附贈一年 GeForce NOW，可用來玩數千款 Android 遊戲或 AAA 大作",
+        "after": "Google 表示機上有數千款 Android 遊戲可以玩，AAA 大作則靠每台隨附的一年 GeForce NOW",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+      },
+      {
+        "claim": "summary 第 3、4 條把廠商宣稱寫成事實（must_not_write 第 7 條：規格數字一律「Google 表示」）",
+        "before": "首波五款機型由 Acer……／Gemini 功能 Magic Pointer、Rambler、Create My Widget 都內建在 Googlebook 上……",
+        "after": "Google 表示首波五款機型由 Acer……／Google 表示 Gemini 功能 Magic Pointer、Rambler、Create My Widget 都內建在 Googlebook 上……",
+        "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+      }
+    ],
+    "open_questions": [
+      "正文、FAQ 第 1 題與 callout 三處都請讀者之後自己去 blog.google 的 Googlebook 分類頁看有沒有更新。該頁 2026-09-23 以同一 UA 取得 200／381,521 B，但伺服器送出的 HTML 只列到 5 月那篇（position_maximum 為 1、找不到三篇 9 月文的標題或網址），其餘要靠頁面自己的 load-more 由瀏覽器補。導引本身沒有錯（分類頁確實存在、三篇 9 月文頁尾的 Posted in 都指向它），但用純抓取驗證不到「最新的會出現在那裡」。要不要改成請讀者直接回預購那一頁看『Pricing, availability, and pre-order details』，請協調者決定。",
+      "hero.alt（依科技垂直規格不查也不改）寫「七個色塊標示美國與另外六個上市市場」。研究紀錄 unverified_or_excluded 第 2 條與 must_not_write 第 21 條都明令「六」是編輯清點、來源沒印，圖上不得出現。alt 不是圖，但它描述的構圖會把這個清點數字畫進去——請繪圖／協調者確認主圖不要把六個市場數成一個數字（列出國名或不給總數都可以）。",
+      "研究紀錄 verified_facts 第 39 條自己就把離線觀看寫成「Netflix、HBO Max（支援離線觀看）」，草稿是照抄它的。原文 `watch shows on popular streaming platforms like Netflix and HBO Max with offline viewing supported` 掛的是整個串流子句。內容包已改成不指定單一平台；紀錄的那一條沒有動（那是撰稿當時的證據紀錄），請第二輪知悉。",
+      "正文兩處寫了查證紀律：「本站沒有查證其他廠商是否也有同等認證」（安全段）與「本站沒有另外測試驗證」（FAQ 第 5 題）。must_not_write 第 9 條要求把 Level 5 寫成宣稱、這兩句做到了，但 DELTA-4-7 第 14 條說查證紀律不要寫進正文。查核不改文風，留給審稿決定要不要精簡。全篇「官方」出現 32 次、「Google 表示」14 次（含本輪新增的 3 次），以 2,784 字的篇幅屬偏高但每一句都是廠商宣稱，沒有可刪的無歸因句。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 5 條：Googlebook 全站只寫這一篇（科技垂直），AI 垂直不寫；同日三篇官方文與 5 月發表文全進 sources[]，Magic Pointer／Rambler／Create My Widget 由這一篇交代。內容包照辦，四條 sources 齊備。",
+      "DELTA-4-7 第 11 條：blog.google 頁首「Read AI-generated summary」一律跳過。查核確認正文、摘要、FAQ、callout 都沒有出現該區塊獨有的 select countries 說法，四處市場名單全部來自正文的 Pricing, availability, and pre-order details 小節。",
+      "ASSIGNMENTS.md：時間線寫「5 月 12 日發表、9 月 21 日開放預購、10 月 4 日上架」，不可寫成 9/21 才發表。標題、description、第一段、FAQ 第 2 題與圖解四格都照此，無違反。",
+      "本輪沒有改標題，研究紀錄的 title 不動；checked_on 四處（內容包四條 sources、研究紀錄、第二段、表格 caption、圖解 caption）本來就一致且等於我今天重抓的日期 2026-09-23，依規格不動。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2)",
+      "checked_on": "2026-09-23",
+      "method": "2026-09-23（台北）以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 自己重抓 sources[] 四條，同一主機間隔 2 秒，UA／標頭／查詢字串／表單都沒有帶入任何人的姓名、email 或個人資料；四條全部 200，bytes 376,349／380,829／372,293／385,384 與紀錄一致，且與第一輪的抓取逐位元組相同（5 月發表文與撰稿代理留存檔仍只差 days_since_published 132→133 的分析計數，正文未變）。59 條 verified_facts 的 verbatim_quote 對我自己的抓取做連續子字串比對：59／59 命中、0 落空，四條 sources 的 verbatim_quote 也全部命中；沒有任何引文含 `...`／`…`／`|`，不存在拼接段落的問題。把內容包拆成 88 條句級主張，覆核第一輪改動的 11 條（含它新寫的每一句）、依種子隨機抽驗其餘 77 條的三分之一（25 條），另獨立重抓一次 blog.google 的 Googlebook 分類頁（200／381,521 B）驗證協調者裁定一的前提。",
+      "claims_checked": 88,
+      "changes": [
+        {
+          "claim": "協調者裁定一：三處請讀者去 blog.google Googlebook 分類頁的導引，改成指向預購公告的 Pricing, availability, and pre-order details 小節（正文第一節、FAQ 第 1 題、callout，共三處）",
+          "before": "讀者之後可以自行到 blog.google 的 Googlebook 分類頁確認有沒有更新／可以直接到 Google 官方部落格的 Googlebook 分類頁查看有沒有更新（是否已有更新）",
+          "after": "上市名單就印在預購公告的 Pricing, availability, and pre-order details 一節，讀者之後可以回那一節確認有沒有更新／可以回到 Google 官方部落格的預購公告，上市名單就印在那一篇的 Pricing, availability, and pre-order details 一節",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        },
+        {
+          "claim": "協調者裁定二：hero.alt 不得帶清點數字（unverified_or_excluded 第 2 條、must_not_write 第 21 條）",
+          "before": "七個色塊標示美國與另外六個上市市場的相對位置",
+          "after": "美國與加拿大、英國、愛爾蘭、法國、德國、澳洲各以一個色塊標示相對位置",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+        },
+        {
+          "claim": "協調者裁定三之一：安全段末的查證紀律句（DELTA-4-7 第 14 條）",
+          "before": "筆電品類首見是 Google 自己的說法，本站沒有查證其他廠商是否也有同等認證。",
+          "after": "筆電品類首見是 Google 自己的說法。",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        },
+        {
+          "claim": "協調者裁定三之二：FAQ 第 5 題末的查證紀律句（DELTA-4-7 第 14 條）",
+          "before": "使用者也可以直接把它關掉；這是 Google 官方的說法，本站沒有另外測試驗證。",
+          "after": "使用者也可以直接把它關掉。",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/googlebook-built-in-intelligence/"
+        },
+        {
+          "claim": "Antigravity 的定性：原文 `our AI agent development platform` 的 our 是所有格，不是存疑的限定詞（第一輪把它列為文風建議、沒有改）",
+          "before": "開發者另外用得到 Antigravity 這個自稱的 AI 代理開發平台",
+          "after": "開發者另外用得到 Antigravity 這個 Google 自家的 AI 代理開發平台",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/pre-order-googlebook/"
+        },
+        {
+          "claim": "協調者追加裁定：刪掉第二段最後一句查證紀律，並把它承載的總括歸因移到最近一個原本沒有歸因的規格主張上",
+          "before": "以及 5 月 12 日的發表文；這一篇沒有實機測試，規格與功能一律是 Google 官方頁面自己的說法，也不提供購買或升級建議。／電池方面，外觀設計那篇寫最長 14 小時影片播放、16 小時網頁瀏覽，預購那篇的說法較籠統，只寫最長 14 小時電池續航，",
+          "after": "以及 5 月 12 日的發表文。／電池方面，Google 表示最長 14 小時影片播放、16 小時網頁瀏覽，這是外觀設計那篇的寫法；預購那篇較籠統，只寫最長 14 小時電池續航，",
+          "source_url": "https://blog.google/products-and-platforms/devices/googlebook/first-look-googlebook/"
+        }
+      ],
+      "open_questions": [
+        "（已結案）正文第二段的「這一篇沒有實機測試…」原本保留，協調者於本輪追加裁定刪除；刪除後逐段清點發現只有電池那一段沒有「Google 表示」，而 must_not_write 第 7 條把電池列進一律要掛歸因的清單，因此把歸因補在那裡。字數 2,806→2,769，check_article 與 lint 重跑結果不變。",
+        "verified_facts 第 39 條仍把離線觀看寫成「Netflix、HBO Max（支援離線觀看）」，第 10 條仍寫「Acer 是全系列唯一的翻轉機」。原文分別是 `...like Netflix and HBO Max with offline viewing supported` 與 `The sole convertible in the lineup`，內容包兩處都已由第一輪改正、第二輪覆核無誤；紀錄這兩條是撰稿當時的證據紀錄，兩輪都沒有動，留給協調者決定要不要加註。",
+        "blog.google 的 Googlebook 分類頁本身沒有問題（200／381,521 B、三篇 9 月文頁尾的 Posted in 都指向它），只是伺服器送出的 HTML 只含 5 月那一篇（三個 9 月 slug 與標題出現 0 次、position_maximum 為 1），其餘靠瀏覽器的 load-more。裁定一改指預購公告的 Pricing 小節後，正文已不再依賴它。"
+      ],
+      "coordinator_rulings": [
+        "裁定一（分類頁導引改指預購公告的 Pricing, availability, and pre-order details 小節）：已在正文第一節、FAQ 第 1 題與 callout 三處套用。我獨立重抓分類頁確認前提屬實——伺服器 HTML 只列到 5 月那篇；同時確認 `Pricing, availability, and pre-order details` 這個小節標題確實存在於預購、外觀設計、內建智慧三篇（5 月發表文沒有），上市名單與 $899 都印在那一節。",
+        "裁定二（hero.alt 不得出現「六個」）：已改為列出七個市場的名字、不給任何總數，「七個色塊」這個同義的清點數字也一併拿掉。hero_label、圖解四格與 diagram nodes 本來就沒有這個問題。",
+        "裁定三（刪掉兩句查證紀律）：已刪。安全段保留「筆電品類首見是 Google 自己的說法」以滿足 must_not_write 第 9 條；FAQ 第 5 題的答案本來就以「Google 說明」開頭，刪掉句尾後歸因仍在。改完全篇「本站」0 次、「本文」0 次。",
+        "第一輪的 12 處改動全部覆核：9 個事實／歸因問題逐條回到一手來源，全部成立，沒有一處需要回退。最關鍵的 `Starting at $899, every Googlebook includes 12 months of Google AI Pro` 另有旁證——預購文同一頁還有一句同構的 `Starting at $899, every Googlebook features premium materials like aluminum, magnesium alloy, and carbon fiber`，兩句都證明 every Googlebook 指全系列而不是起價那一款。"
+      ]
+    }
+  }
+}

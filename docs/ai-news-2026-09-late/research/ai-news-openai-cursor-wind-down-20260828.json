@@ -1,0 +1,366 @@
+{
+  "slug": "ai-news-openai-cursor-wind-down-20260828",
+  "vertical": "ai",
+  "display_order": 179,
+  "event_date": "2026-08-28",
+  "event_date_basis": "OpenAI 公告頁 https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/ 在標題上方印出「August 28, 2026」，分類標為「Company」，作者標為 OpenAI。該頁沒有任何 JSON-LD、datePublished、dateModified、article:published_time 或 publishedAt 字串（2026-09-23 對 370,301 bytes 原始碼逐一 grep，五個關鍵字全部 0 筆），頁面本身沒有印出任何時刻；頁內 RSC 酬載印的是 \"publicationDateText\":\"August 28, 2026\"。真實時刻取自 OpenAI 官方新聞 RSS https://openai.com/news/rss.xml（2026-09-23 08:21 台北自行抓取，HTTP 200、744,049 bytes、1,219 筆），該則的 <pubDate> 逐字為 Fri, 28 Aug 2026 06:00:00 GMT，換算台北為 2026-08-28 14:00，同日。這不是 00:00Z 或 16:00Z 的佔位時刻，依 DELTA-4-5 第 5–6 條要換算，換算後仍落在 8 月 28 日，與 DELTA-4-4 第 3 條表列的裁決「08-28T06:00Z → 台北同日」相同。另：官方 company sitemap https://openai.com/sitemap.xml/company/（2026-09-23 08:24 自行抓取，HTTP 200、1,286,214 bytes、265 筆 <loc>）為該網址標 lastmod 2026-09-22T22:06:15.347Z，那是頁面重新產生的時間，不是發布時間，不可拿來當事件日。",
+  "title": "OpenAI 將停供 Cursor 的模型：建議斷供日 11 月 12 日",
+  "title_candidates": [
+    "OpenAI 將停供 Cursor 的模型：建議斷供日 11 月 12 日",
+    "Cursor 被 SpaceX 買下之後：OpenAI 提出 11 月 12 日停供自家模型",
+    "用 Cursor 寫程式的人要記的一個日期：OpenAI 提的 11 月 12 日",
+    "OpenAI 為什麼停供 Cursor：合約的變更控制條款與最長通知期"
+  ],
+  "summary": "2026 年 8 月 28 日（台北時間當日 14:00，OpenAI 官方 RSS 的 pubDate 為 06:00 GMT），OpenAI 在官網公告，已通知 SpaceX 它打算終止提供 OpenAI 模型給 Cursor 的合約，並提出 2026 年 11 月 12 日為「建議斷供日」。通知的對象是 SpaceX，不是 Cursor：Cursor 在 2026 年 8 月 14 日由自家部落格宣布已正式被 SpaceX 收購，而 OpenAI 說與 Cursor 的客製合約讓它在控制權變更後有一段有限的時間可以取消。為什麼是 11 月 12 日，OpenAI 寫得很清楚：為了讓開發者透過 Cursor 保留模型存取的時間最大化，它用滿合約允許的最長通知期，並說「把合約取消押到我們能押的最晚日期」，同時不再提供未來的新模型給 Cursor。理由逐字是「我們無法確信 SpaceX 會在我們的服務條款內使用我們的技術，這是基於我們與 Elon Musk 旗下公司在合約上的經驗」，並舉了兩件事：Twitter（現屬 SpaceX）被收購後違反合約條款，以及 Musk 今年在宣誓下承認 xAI（現亦屬 SpaceX）違反 OpenAI 的服務條款。對既有使用者，OpenAI 只說最受影響的是在 Cursor 裡依賴 OpenAI 模型的開發者，會「不惜多做一些」來支援他們，沒有寫任何具體措施；公告也完全沒有點名 Cursor 的其他模型供應商、沒有提到任何國家或地區。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "Our decision on Cursor following its acquisition by SpaceX",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-23T09:36+08:00",
+      "http_status": 200,
+      "bytes": 372420,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Today, we notified SpaceX that we intend to wind down our contract providing OpenAI models to Cursor, with a proposed shutoff date of November 12, 2026."
+    },
+    {
+      "title": "News — Company announcements（OpenAI 官方公司公告清單，含本則卡片）",
+      "url": "https://openai.com/news/company-announcements/",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-23T08:38+08:00",
+      "http_status": 200,
+      "bytes": 423312,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Our decision on Cursor following its acquisition by SpaceX"
+    },
+    {
+      "title": "Cursor is now a part of SpaceX",
+      "url": "https://cursor.com/blog/joining-spacex",
+      "publisher": "Cursor（Anysphere, Inc.）",
+      "fetched_at": "2026-09-23T08:31+08:00",
+      "http_status": 200,
+      "bytes": 153547,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Cursor has officially been acquired by SpaceX. This completes the acquisition process that started in April, when we announced our partnership with SpaceXAI to accelerate our model training efforts."
+    },
+    {
+      "title": "Cursor 官方首頁（模型選單與供應商說明）",
+      "url": "https://cursor.com/",
+      "publisher": "Cursor（Anysphere, Inc.）",
+      "fetched_at": "2026-09-23T08:31+08:00",
+      "http_status": 200,
+      "bytes": 644897,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Choose between every cutting-edge model from OpenAI, Anthropic, Gemini, SpaceXAI, and Cursor."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "取得配方（全部 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥1.3 秒，任何請求都沒有帶任何人的姓名或 email）：(1) 官方 RSS https://openai.com/news/rss.xml → 2026-09-23 08:21 台北、HTTP 200、744,049 bytes、1,219 筆 item，本則的 <link> 逐字為 https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex（無尾斜線）、<pubDate> 為 Fri, 28 Aug 2026 06:00:00 GMT、<category> 為 Company、<description> 為 Our decision to wind down our contract providing OpenAI models to Cursor following its acquisition by SpaceX.。(2) 網址是官方指出的，不是猜的：robots.txt（98 bytes）指到 https://openai.com/sitemap.xml，其索引的 company 分冊 https://openai.com/sitemap.xml/company/（08:24、200、1,286,214 bytes）列出正規網址為帶尾斜線的 https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/，lastmod 2026-09-22T22:06:15.347Z。(3) **本則公告頁今天對本環境回 HTTP 500**：2026-09-23 08:22–08:50 之間以編輯 UA 對這條路由嘗試 22 次（含不帶尾斜線、/zh-Hant/、/ja-JP/、/en-US/ 四種路徑，以及 --http1.1、自訂 Accept 與 Accept-Language、先打首頁再帶 cookie jar、HEAD 各一次，其中 12 次是 retry.py 每 90 秒一次的連續重試，逐次紀錄在 _raw/ai-news-openai-cursor-wind-down-20260828/fetch-log.txt），全部回 9,262 bytes 的 Next.js 錯誤頁，回應標頭 x-matched-path: /500、x-vercel-cache: MISS、server: cloudflare、Age: 947。這不是機器人封鎖：同一 UA 同時段抓 https://openai.com/index/advisory-group-on-mathematics-and-ai/ 回 200、373,036 bytes（存成 probe-math-advisory.html），而退回 curl 預設 UA 抓本則反而回 403（9,939 bytes），證明編輯 UA 沒被擋、是這條路由本身在伺服器端壞掉。(4) 因此本記錄引用的正文，用的是同一天、同一條網址、由本批次探索代理於 2026-09-23 07:14 台北抓下的 HTTP 200 副本（370,301 bytes，與候選清單記的 bytes 一致），已複製為 _raw/ai-news-openai-cursor-wind-down-20260828/discovery-copy-0714.html。正文 16 句逐字引用全部以 _tools/ai-news-openai-cursor-wind-down-20260828/quotes.py 對該檔驗過（去 HTML 註解、去標籤、html.unescape、空白收斂後仍為連續子字串），0 failures；引用檔在 quotes-openai.txt。(5) 官方清單頁 https://openai.com/news/company-announcements/（08:38、200、423,312 bytes）今天仍印出這張卡片：「Our decision on Cursor following its acquisition by SpaceX」「Company Aug 28, 2026」，可獨立佐證標題、分類與日期。(6) Cursor 端：從 cursor.com 首頁（08:31、200、644,897 bytes）的導覽連到 /blog（08:31、200、413,424 bytes）與 /blog/joining-spacex（08:31、200、153,547 bytes），以及 /changelog（08:33、200、203,618 bytes）。(7) SpaceXAI 端：https://x.ai/news（08:41、200、271,663 bytes，抽出正文 12,289 字元）。判定 partial 的唯一理由就是第 (3) 點：撰稿代理與兩位查核代理必須自己再抓一次公告頁並讀到正文；若當天仍是 500，這一篇要等頁面恢復再寫，不可以只靠清單頁與 Cursor 的頁面把正文寫出來。一旦重抓成功，把本記錄 sources[0] 的 fetched_at 換成當天，並用 quotes-openai.txt 對新檔重驗一次（16 句應全數通過），verdict 即可改為 full。(8) 存檔清單（_raw/ai-news-openai-cursor-wind-down-20260828/）：discovery-copy-0714.html（本記錄引用的公告頁正文，370,301 bytes）、error-500-body.html（今天拿到的 500 頁，9,262 bytes）、fetch-log.txt（12 次連續重試紀錄）、openai-news-rss.xml、openai-news-company.html、openai-robots.txt、openai-sitemap.xml、openai-sitemap-company.xml、probe-math-advisory.html（同時段同 UA 的 200 對照組）、cursor-home.html、cursor-blog-index.html、cursor-joining-spacex.html、cursor-changelog.html、xai-news.html。腳本在 _tools/ai-news-openai-cursor-wind-down-20260828/（fetch.py、retry.py、text2.py、meta.py、rssitem.py、quotes.py 與兩份引用清單）。",
+  "verified_facts": [
+    {
+      "fact": "OpenAI 的公告頁在標題上方印出發布日 August 28, 2026，分類為 Company。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "August 28, 2026"
+    },
+    {
+      "fact": "OpenAI 表示，當天已通知 SpaceX，它打算終止提供 OpenAI 模型給 Cursor 的合約，建議斷供日為 2026 年 11 月 12 日。通知對象是 SpaceX，用詞是 intend to wind down 與 proposed shutoff date。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, we notified SpaceX that we intend to wind down our contract providing OpenAI models to Cursor, with a proposed shutoff date of November 12, 2026."
+    },
+    {
+      "fact": "OpenAI 說，為了讓開發者透過 Cursor 保留模型存取的時間最大化，它給的是合約所提供的最長通知期。這就是 11 月 12 日這個日期的由來。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To maximize the time that developers can retain access to our models through Cursor, we are giving the maximum notice provided by our contract."
+    },
+    {
+      "fact": "OpenAI 自述這個決定「極為艱難」，理由是它很在意自家模型能廣泛提供給開發者。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This decision was incredibly tough, as we care deeply about our models being broadly available for developers."
+    },
+    {
+      "fact": "OpenAI 寫出來的理由（本篇最關鍵的一句，正文要逐字引用原文）：它無法確信 SpaceX 會在 OpenAI 的服務條款內使用其技術，依據是它與 Elon Musk 旗下公司在合約上的經驗。注意原文此處用的是直式撇號（Musk's）。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are making this choice because we cannot be confident that SpaceX will use our technology within our terms of service, based on our experience with Elon Musk's companies violating contracts."
+    },
+    {
+      "fact": "OpenAI 說，要和 SpaceX 這種大型夥伴合作，它通常靠客製合約來確保對方遵守服務條款、並確保整合在規模化時的安全。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "To work with a large partner like SpaceX, we typically rely on custom contracts to ensure compliance with our terms of service and that the integration provides for safety at scale."
+    },
+    {
+      "fact": "OpenAI 舉的第一件事：Musk 收購 Twitter（頁面寫 Twitter 現在是 SpaceX 的一部分）之後，該公司違反了合約條款（頁面加註「還違反了其他許多合約」）。頁面把 broke 這個字連到一個外部網址。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "After Musk acquired Twitter, now part of SpaceX, the company broke"
+    },
+    {
+      "fact": "OpenAI 舉的第二件事：Musk 今年在宣誓下承認 xAI（頁面寫現在也是 SpaceX 的一部分）違反了 OpenAI 的服務條款，並加註那些條款與 xAI 自己的條款相似。頁面把 admitted 這個字連到一個外部網址。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "that xAI, now also part of SpaceX, had violated OpenAI’s terms of service (terms which are similar to xAI’s own)."
+    },
+    {
+      "fact": "合約機制：OpenAI 說它與 Cursor 的客製協議，讓它在控制權變更（change of control）之後有一段有限的時間窗可以取消合約。這解釋了為什麼是在收購完成之後才發通知。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our custom agreement with Cursor gives us a limited time window to cancel it after a change of control."
+    },
+    {
+      "fact": "OpenAI 說隨著 AI 能力進展，它對於確保「即將推出的模型 Astra」被依條款使用有了新層次的問責。（公告當日 Astra 尚未發布；頁面用 upcoming model。）",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As AI capabilities advance, we also have a new level of accountability to ensure our upcoming model, Astra"
+    },
+    {
+      "fact": "OpenAI 說它決定把合約取消押到能押的最晚日期，同時不提供未來的模型給 Cursor。「不供未來模型」與「11 月 12 日前仍可用現有模型」是同一句話的兩半。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Given all of this, we’ve decided to hold the contract cancellation to the latest date we can while not providing future models to Cursor."
+    },
+    {
+      "fact": "OpenAI 說它與 Cursor 合作了將近四年，對其團隊、產品與為開發者社群所做的一切有極大敬意。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’ve worked with Cursor for nearly four years and have enormous respect for their team, their product, and what they’ve built for the developer community."
+    },
+    {
+      "fact": "關於既有使用者，OpenAI 只寫了兩句：受這個決定影響最大的是在 Cursor 裡依賴 OpenAI 模型的開發者；OpenAI 在意他們在這段轉換期的體驗，並準備「不惜多做一些」來支援他們。沒有任何具體措施。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We know that the people most affected by this decision are the developers who rely on OpenAI models in Cursor."
+    },
+    {
+      "fact": "OpenAI 對開發者的承諾原文（除此之外沒有任何細節）。",
+      "url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We care about their experience in this transition and we’re ready to go above and beyond to support them."
+    },
+    {
+      "fact": "這則公告今天仍在 OpenAI 官方的公司公告清單頁上，卡片標示為 Company Aug 28, 2026，可獨立佐證標題、分類與日期。",
+      "url": "https://openai.com/news/company-announcements/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Our decision on Cursor following its acquisition by SpaceX"
+    },
+    {
+      "fact": "Cursor 自己的公告：2026 年 8 月 14 日，Cursor 宣布已正式被 SpaceX 收購，並說這完成了 4 月開始的收購程序，當時宣布的是與 SpaceXAI 的合作以加速模型訓練。公司法律主體是 Anysphere, Inc.（頁尾版權標示）。",
+      "url": "https://cursor.com/blog/joining-spacex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Cursor has officially been acquired by SpaceX. This completes the acquisition process that started in April, when we announced our partnership with SpaceXAI to accelerate our model training efforts."
+    },
+    {
+      "fact": "Cursor 那篇公告的日期與分類，頁面逐字印出。這比 OpenAI 的 8 月 28 日早兩週，是 OpenAI 所說「控制權變更」的時點。",
+      "url": "https://cursor.com/blog/joining-spacex",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Aug 14, 2026"
+    },
+    {
+      "fact": "Cursor 在同一篇說明合作的方向：與 SpaceX 一起可取得全世界最大的 GPU 機隊，藉此做出更強、也更省成本的模型。（本篇只用來說明收購的背景，不做能力評價。）",
+      "url": "https://cursor.com/blog/joining-spacex",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Together with SpaceX, we will push that ambition further. We will have access to the largest fleet of GPUs in the world, giving us the compute to build stronger models that are also more economical to run."
+    },
+    {
+      "fact": "查核當天（2026-09-23）的狀態：Cursor 官方首頁仍把 OpenAI 列在可選模型的供應商之一。這是查核當天的活資料，不是 OpenAI 公告說的內容。",
+      "url": "https://cursor.com/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Choose between every cutting-edge model from OpenAI, Anthropic, Gemini, SpaceXAI, and Cursor."
+    }
+  ],
+  "not_said": [
+    "OpenAI 的公告沒有寫合約的名稱、金額、簽訂時間、期間，也沒有寫合約涵蓋哪些模型或哪些版本。",
+    "沒有寫「合約允許的最長通知期」到底是幾天或幾個月，只寫它給的是合約提供的最長通知；11 月 12 日這個日期也沒有寫是怎麼從通知期算出來的。",
+    "沒有寫 11 月 12 日之後，既有的 Cursor 使用者會看到什麼：沒有寫訂閱怎麼計算、有沒有過渡期、正在進行中的工作階段會不會中斷、企業合約有沒有例外。",
+    "沒有寫「go above and beyond to support them」具體是什麼：沒有窗口、沒有折扣、沒有遷移工具、沒有時程。",
+    "沒有點名 Cursor 現在或將來還有哪些模型或哪些供應商，Anthropic、Google、SpaceXAI 等名字完全沒有出現在這則公告裡。",
+    "沒有寫這個決定是否可逆、SpaceX 若做了什麼會不會改變，也沒有寫 11 月 12 日這個日期會不會再往前或往後調。",
+    "沒有寫 SpaceX、Cursor 或 xAI 的任何回應，也沒有引用對方說法。",
+    "沒有指明「我們的服務條款」是哪一份文件：正文沒有連到 OpenAI 的 Terms of Use 或任何 API 條款頁，只有站台頁尾有 /policies/terms-of-use/ 的一般連結。",
+    "沒有寫 Musk 是在哪一個案件、哪一個程序裡宣誓作證，也沒有寫 xAI 具體做了什麼、違反了哪一條；頁面只寫 violated OpenAI’s terms of service。",
+    "沒有提到任何訴訟、法院判決、和解或賠償。",
+    "沒有寫 Astra 何時發布、規格如何，也沒有寫 Astra 會不會授權給任何第三方產品。",
+    "沒有寫 ChatGPT、Codex、API 的其他客戶或其他第三方整合會不會受到類似處理。",
+    "整篇公告沒有提到任何國家或地區，包括台灣；也沒有寫 11 月 12 日是哪一個時區的 11 月 12 日。",
+    "Cursor 的 8 月 14 日公告完全沒有提到 OpenAI（全文 grep 0 筆），也沒有寫收購後模型供應會不會改變。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "OpenAI 頁面上兩個外部連結的內容（broke 連到 nytimes.com 2023-04-27 的一篇、admitted 連到 forbes.com 2026-04-30 的一篇）",
+      "seen_where": "只在 OpenAI 公告頁的 <a href> 屬性上看到這兩個網址，本次沒有開啟、也沒有讀任何一頁",
+      "why_excluded": "第三方新聞網站一律不當來源（BRIEF）。正文只能寫「OpenAI 在這兩句話上各放了一個外部連結」這個事實，不可轉述連結內容，不可把兩家媒體寫進 sources，也不可從網址字串推論報導內容。"
+    },
+    {
+      "claim": "Cursor 目前的模型清單、用量池與方案價格",
+      "seen_where": "站上既有常青文章 cursor-editor-guide（2026-09-14 依 Cursor 官方文件與定價頁查證）已寫：Cursor Models 池收 Grok 4.6、Grok 4.5 與 Composer 2.5，Other Models 池收 OpenAI、Anthropic、Google 等第三方模型並按各家 API 價計費；另 ollama-with-code-editors 寫過自備金鑰只支援五家雲端供應商",
+      "why_excluded": "本篇沒有為這些數字重抓 cursor.com/pricing 或官方文件，且那是會變動的活資料。要提 Cursor 現在有哪些模型，只能引本記錄 sources[3]（cursor.com 首頁那一句，註明 2026-09-23 當天狀態），或用 inline article 連到既有文章並註明那一篇的查證日，不可自己另寫一份清單。"
+    },
+    {
+      "claim": "SpaceX、SpaceXAI 或 Cursor 對這項決定的回應",
+      "seen_where": "SpaceXAI 官方新聞頁 https://x.ai/news（2026-09-23 08:41、HTTP 200、271,663 bytes、正文 12,289 字元，最新一則 Sep 22, 2026、可見條目回溯到 Aug 21, 2026）全頁沒有出現 OpenAI 一詞；Cursor 官方部落格清單 https://cursor.com/blog（08:31、200、413,424 bytes，第一頁 12 篇，Sep 21 至 Jul 30）與 https://cursor.com/changelog（08:33、200、203,618 bytes，最新一筆 Sep 10, 2026）都沒有任何提到 OpenAI 或這項決定的條目",
+      "why_excluded": "讀不到不等於沒有發生。正文若要寫，只能寫成「本站在這幾個官方頁面上未查到相關說明（查核日 2026-09-23）」，不可寫「Cursor 沒有回應」「SpaceX 拒絕說明」。也不可去引用任何媒體對雙方說法的報導。"
+    },
+    {
+      "claim": "11 月 12 日之後會發生什麼、Cursor 會用什麼補上、開發者該換去哪個工具",
+      "seen_where": "沒有任何官方頁寫過",
+      "why_excluded": "全部是預測與選購建議，本批次一律不寫。文章只寫到「官方目前說到哪裡、讀者可以自己去哪一頁看最新狀態」。"
+    },
+    {
+      "claim": "OpenAI 是否對其他第三方產品發過同類通知、這是不是政策轉向",
+      "seen_where": "OpenAI 官方新聞 RSS 1,219 筆（2015-12-11 至 2026-09-22）裡，提到 Cursor、SpaceX、Musk 或 xAI 的只有 5 筆，2026-08-28 之後沒有任何續篇",
+      "why_excluded": "沒有任何官方頁支持「政策轉向」這種概括。正文不可把這件事寫成通例，也不可用 2024–2025 年那三則 Musk 相關公告（OpenAI and Elon Musk 等）去補敘訴訟史——那是另一個題目，本站也還沒寫過。"
+    }
+  ],
+  "editorial_brief": "這篇的主軸只有一條：這是一個「期限題」，不是一場口水戰。讀者要帶走的是三件事——(1) 事情是什麼：2026 年 8 月 28 日 OpenAI 通知 SpaceX，打算終止提供 OpenAI 模型給 Cursor 的合約，並提出 11 月 12 日為建議斷供日；用詞是 intend、proposed，不是既成事實。(2) 為什麼是這個日期：Cursor 在 8 月 14 日由 SpaceX 收購完成，OpenAI 說與 Cursor 的客製合約在控制權變更後給它一段有限的取消時間窗；它選擇用滿合約允許的最長通知期、把取消押到最晚，理由是讓開發者透過 Cursor 保留模型存取的時間最大化——所以 11 月 12 日是「最晚」而不是「最快」，同一句話的後半是未來的新模型不再供給 Cursor。(3) 理由與界線：OpenAI 逐字寫的是無法確信 SpaceX 會在其服務條款內使用其技術，依據是與 Musk 旗下公司的合約經驗，並舉了 Twitter 違約與 Musk 今年宣誓下承認 xAI 違反條款兩件事；這是 OpenAI 單方面的說法與舉證，正文一律用「OpenAI 表示」歸因，不可寫成已被認定的事實。對台灣讀者的關聯要誠實：公告沒有提到任何地區，所以沒有台灣特例；真正有用的是「你現在用不用得到、什麼時候會變、去哪一頁看」——查核當天（9 月 23 日）Cursor 官方首頁仍把 OpenAI 列為可選供應商之一，而 11 月 12 日還沒到。既有使用者的部分要寫得剛好：OpenAI 只承諾會支援受影響的開發者，一個具體措施都沒有寫，這個「沒有寫」本身就是讀者該知道的事。本站沒有實測、不做工具推薦、不比價，也不要把它寫成 OpenAI 對 Musk 的訴訟戰。",
+  "must_not_write": [
+    "不可寫「最近」「本週」「日前」「這幾天」：事件是 2026 年 8 月 28 日，距離發稿約一個月（DELTA-4-4 第 2 條）。要交代為什麼現在才寫，只准一句：「這一則在發布當時沒有排進本站的頭條批次，這一篇補上」。",
+    "不可把 11 月 12 日寫成「確定斷供日」「正式終止日」「生效日」：原文是 proposed shutoff date，動詞是 we intend to wind down，中文一律寫「建議斷供日／OpenAI 提出的斷供日」，並寫明截至查核日尚未到期。",
+    "不可寫「OpenAI 通知 Cursor」或「OpenAI 終止與 Cursor 的合作」：原文寫的是 notified SpaceX，合約是與 Cursor 的客製協議，通知的對象是收購方 SpaceX。",
+    "不可寫「11 月 12 日之後不能用 Cursor」「Cursor 會停止服務」：OpenAI 說的只有不再提供 OpenAI 模型給 Cursor，對 Cursor 產品本身沒有任何說法。",
+    "不可推測 Cursor 之後還有哪些模型、哪一家會補上、使用者的體驗會不會變差：這則公告沒有點名任何其他模型供應商。要寫 Cursor 目前的模型選單，只能引 cursor.com 首頁 2026-09-23 當天那一句並註明是查核當天狀態，或連到既有文章 cursor-editor-guide 並註明該篇查證日 2026-09-14。",
+    "不可把 nytimes.com 與 forbes.com 那兩個連結當成本站來源，也不可轉述、翻譯或概括它們的內容；最多只能寫「OpenAI 在這兩句話上各連了一篇外部報導」。",
+    "不可寫 Musk 或 xAI「被判違約」「遭裁定」：OpenAI 寫的是自己的經驗，以及 Musk 在宣誓下承認；頁面沒有提任何法院判決、和解或訴訟。",
+    "不可補寫違反了哪一條條款、xAI 做了什麼、Twitter 違反了哪一份合約：頁面只寫 violated OpenAI’s terms of service 與 broke the terms of our contract。",
+    "不可把本文寫成 OpenAI 與 Musk 的訴訟史或恩怨敘事，也不可引 2024–2025 年那幾則 OpenAI 的 Musk 相關公告：那是另一個題目，本站沒寫過，這則公告也完全沒提。",
+    "不可寫 OpenAI 會給既有使用者退款、補償、延長、遷移方案或任何具體支援：原文只有 we’re ready to go above and beyond to support them 這一句，沒有任何細節。",
+    "不可寫任何購買、改用或選邊的建議（例如叫讀者改用 Codex、Claude Code、Copilot），也不可做價格比較；AI 篇不帶 finance 主題、不寫投資或估值判斷。",
+    "不可把 Astra 與 Astral 混為一談：Astra 是 OpenAI 的模型（2026-09-03 已發布，見既有文章 ai-news-gpt-6-astra-20260903），Astral 是 OpenAI 於 2026-03-19 收購的 Python 工具公司（ai-news-openai-astral-20260319）。公告當天 Astra 還沒發布，寫「當時尚未推出的 Astra」才正確。",
+    "不可寫台灣（或任何國家）有不同待遇、不同日期或不同方案：公告沒有提到任何地區。",
+    "不可自行替 11 月 12 日補上時刻或時區：頁面只有日期。",
+    "不可寫「Cursor 沒有回應」「SpaceX 拒絕說明」：本站只能寫在 cursor.com 的部落格與 changelog、x.ai/news 上「未查到」相關說明，並註明查核日。",
+    "不可用「封殺」「報復」「開戰」「決裂」這類定性詞，也不可推測 OpenAI 的真正動機；一切照原文歸因給 OpenAI。",
+    "不可用探索或研究代理的抓取紀錄當成「今天的官方頁」：撰稿與查核當天要自己重抓公告頁（今天回 500），讀不到正文就不能用它撐任何句子。"
+  ],
+  "live_data_warnings": [
+    "建議斷供日 2026 年 11 月 12 日在查核日（2026-09-23）之後，事情還沒發生：正文所有句子都要寫成「截至 2026 年 9 月 23 日」的狀態，並提醒讀者日期可能改變。上線前要重讀公告頁與官方 RSS。",
+    "OpenAI 公告頁今天對本環境回 HTTP 500（08:22–08:50 共 22 次嘗試，含四種路徑與多種標頭組合；同一 UA 同時段讀其他 openai.com/index 頁為 200），但該網址仍在官方 sitemap（lastmod 2026-09-22T22:06:15.347Z）與 /news/company-announcements/ 清單上。撰稿與兩輪查核當天都要自己重抓；若仍讀不到正文，本篇要延後，不可改用媒體或封存站補。",
+    "OpenAI 官方 RSS（1,219 筆，2015-12-11 至 2026-09-22）在 2026-08-28 之後沒有任何提到 Cursor、SpaceX、Musk、xAI 的續篇；這是查核當天的結論，寫稿當天要重跑一次，若已有續篇（例如日期改變或決定取消），正文的狀態句要跟著改。",
+    "cursor.com 首頁那句「Choose between every cutting-edge model from OpenAI, Anthropic, Gemini, SpaceXAI, and Cursor.」是活資料，隨時可能改寫；引用時一定要寫明是 2026-09-23 當天讀到的，不可寫成「Cursor 一直都有 OpenAI 模型」。",
+    "Cursor 的部落格與 changelog（今天最新分別是 Sep 21 與 Sep 10）隨時可能補上與這件事有關的說明；寫稿當天要重看這兩個清單再下「未查到」的結論。",
+    "內容包的 sources[] 只能放撰稿當天自己重抓、並真的讀到正文的網址（BRIEF 第 7 條）；本記錄的 sources 順序是建議順序，公告頁若當天恢復就照這個順序寫，checked_on 一律改成當天。"
+  ],
+  "overlaps_existing_article": [
+    "ai-news-gpt-53-codex-20260205（display_order 124，本篇的第二個結尾連結）：已寫 GPT-5.3-Codex 發布與「AI 寫程式如何走向可交付的工作」，主題是 OpenAI 自家的寫程式模型。本篇只在結尾連過去，不要重講 Codex 的能力或用法。",
+    "ai-news-gpt-6-astra-20260903：已寫 GPT-6 Astra 在 2026-09-03 發布、從回答問題到完成電腦工作。本篇的公告在 8 月 28 日只稱 Astra 為 upcoming model，可用一句 inline article 連過去說明它後來已發布，不要重寫 Astra 的規格。",
+    "ai-news-openai-astral-20260319：寫的是 OpenAI 收購 Python 工具公司 Astral（uv、Ruff、ty），與本篇的 Astra 只是名稱相近。只有在避免混淆時才提，不要當成同一件事。",
+    "cursor-editor-guide（常青指南，2026-09-14 依 Cursor 官方文件與定價頁查證）：已寫 Cursor 的安裝、Tab／Chat／代理三種用法、規則檔、兩個模型用量池（Cursor Models 收 Grok 4.6／4.5 與 Composer 2.5；Other Models 收 OpenAI、Anthropic、Google 等第三方，按各家 API 價計費）、四層方案價格與隱私模式。本篇不重寫這些；需要交代「Cursor 裡的模型怎麼分」時用 inline article 連過去並註明該篇查證日。",
+    "ai-coding-tools-overview-2026：已寫 Claude Code、Codex、Gemini CLI、Cursor、Copilot 五個工具的入門門檻與適合誰。本篇不做工具比較、不給選購建議，最多一句連過去。",
+    "codex-ide-getting-started（display_order 114）：已寫 Codex 擴充可裝在 VS Code、Cursor、Windsurf。本篇不可寫成「改用 Codex」的教學或勸進。",
+    "ollama-with-code-editors：已寫 Cursor 的自備金鑰只列五家雲端供應商、且自備金鑰只對聊天模型有效，Tab 補全仍走內建模型。本篇不重述這些設定細節。",
+    "ai-model-release-timeline-2026、ai-news-sources-to-follow、grok-xai-guide：站上既有寫法把 xAI 標為「SpaceXAI（xAI）」，grok-xai-guide 還寫明官方頁面現在把公司名寫成 SpaceXAI LLC。本篇提到 xAI 時要沿用同一種寫法，不要另創譯名。",
+    "ai-news-pace-the-frontier-20260912：寫的是 Amodei 的放慢前沿主張與各方回應（來源含 Musk 的貼文）。本篇與它無關，不要把兩件事串成同一條敘事。",
+    "published-news-2026-09-23.md 的 114 篇裡，沒有任何一篇寫過 Cursor 被 SpaceX 收購、也沒有任何一篇寫過本則公告（grep Cursor 在 ai-news-*／tech-news-* 內容包為 0 筆），所以本篇是站上第一次寫這件事；收購本身只能用 Cursor 自己 8 月 14 日那篇當來源，一句帶過即可。"
+  ],
+  "second_link": {
+    "slug": "ai-news-gpt-53-codex-20260205",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-gpt-53-codex-20260205",
+    "text": "GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？",
+    "verified": true,
+    "verification_note": "2026-09-23 讀 apps/api/app/guides/content/ai-news-gpt-53-codex-20260205.json（66,145 bytes，locales 為 zh-TW／en／ja／ko／zh-CN，news_date 2026-02-05、display_order 124），locales['zh-TW']['title'] 逐字為「GPT-5.3-Codex 推出：AI 寫程式如何走向可交付的工作？」，與 ASSIGNMENTS-44.md 第 3 列指定的目標 slug 相同，link text 直接照抄即可（含結尾的全形問號）。"
+  },
+  "corrections_applied": [],
+  "hero_label": "OpenAI 建議斷供日",
+  "diagram": {
+    "title": "從收購到建議斷供日",
+    "caption": "圖解：2026 年 8 月 14 日 Cursor 由 SpaceX 收購完成，控制權變更讓 OpenAI 合約裡的取消條款生效；8 月 28 日 OpenAI 通知 SpaceX 要終止供應模型，並用滿合約允許的最長通知期，提出 11 月 12 日為建議斷供日，同時不再提供未來的新模型。",
+    "nodes": [
+      ["母公司換人", "8 月 14 日收購完成"],
+      ["取消條款生效", "變更控制權後可取消"],
+      ["發出終止通知", "8 月 28 日給最長通知"],
+      ["建議斷供日", "11 月 12 日停供模型"]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把內容包 zh-TW 拆成 72 條可查主張（title、description、hero_label、開頭兩段、summary 五條、正文每一段、表格四列與 caption、圖解 caption、FAQ 五題、callout、兩個結尾連結、sources 四條、研究紀錄 diagram 四格），每條回到本人 2026-09-23 自行 curl 抵下的一手頁面核對。UA 一律 Mokaair-editorial/1.0，請求不帶任何姓名或 email。引文比對用 _tools/ai-news-openai-cursor-wind-down-20260828-r1/quotes.py（去 HTML 註解、去標籤、html.unescape、空白收斂後做連續子字串比對）：紀錄的 23 條 verbatim_quote 全數通過（0 failures），內容包內嵌的兩句英文引文也逐字相符。",
+    "refetch_of_the_500_route": "公告頁 https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/ 今天對本環境仍回 HTTP 500：09:11:45、09:12:37、09:13:33、09:14:42 四次嘗試（其中 09:11:45→09:13:33→09:14:42 間隔 ≥ 60 秒）全部回 9,262 bytes 的 Next.js 錯誤頁，回應標頭 x-matched-path: /500、x-vercel-cache: MISS、cf-cache-status: DYNAMIC、Age: 3401；不帶尾斜線的規正網址也是 500。不是 UA 被擋：同一個 UA、同一分鐘讀 https://openai.com/index/advisory-group-on-mathematics-and-ai/ 回 200、373,080 bytes。官方清單頁 https://openai.com/news/company-announcements/（09:12:42、200、423,308 bytes）今天仍印出「Our decision on Cursor following its acquisition by SpaceX」「Company Aug 28, 2026」卡片，官方 RSS（09:15:36、200、744,049 bytes、1,219 筆）該則 pubDate 仍為 Fri, 28 Aug 2026 06:00:00 GMT（台北 08-28 14:00，同日）。因此 sourcing_verdict 維持 partial；本輪的正文引文核對仍以同一天 07:14 取得的 HTTP 200 副本（_raw/…/discovery-copy-0714.html，370,301 bytes）為準，並已向協調者回報。",
+    "claims_checked": 72,
+    "changes": [
+      {
+        "claim": "「不再供應未來新模型」的時間點",
+        "before": "也就是說，11 月 12 日之前，現有模型仍可透過 Cursor 使用；11 月 12 日之後，未來推出的新模型不會再供應給 Cursor，但公告沒有寫這個日期會不會再調整。",
+        "after": "這兩件事是同時的，不是先後：在建議斷供日之前，開發者仍可透過 Cursor 使用 OpenAI 的模型，但在這段期間，之後推出的新模型不會再提供給 Cursor；至於 11 月 12 日會不會再調整，公告沒有寫。",
+        "why": "原文是 Given all of this, we’ve decided to hold the contract cancellation to the latest date we can while not providing future models to Cursor.——while 是「同時」，不供新模型是拖到最晚這件事的交換條件，從公告當下起算，不是 11 月 12 日之後才發生；且 11 月 12 日之後公告提的是整份合約斷供，不只是「未來的新模型」。原句與前一句自相矛盾。",
+        "source_url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/"
+      },
+      {
+        "claim": "FAQ「OpenAI 是通知 Cursor 要終止合作嗎？」的取消權",
+        "before": "OpenAI 與 Cursor 之間的客製合約，因此在控制權變更後讓 OpenAI 有權選擇是否取消。",
+        "after": "而 OpenAI 與 Cursor 之間的客製合約，在控制權變更之後給 OpenAI 一段有限的時間可以取消。",
+        "why": "原文是 gives us a limited time window to cancel it after a change of control；「有權選擇是否取消」把 limited time window 這個限定詞安靜拿掉，正文同一件事寫對了（「有一段有限的時間窗」），FAQ 要一致。",
+        "source_url": "https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/"
+      }
+    ],
+    "open_questions": [
+      "公告頁今天仍 500：本輪四次重拓全數失敗，sourcing_verdict 維持 partial。依研究紀錄 must_not_write 最後一條與 live_data_warnings 第 2 條，這一篇要由協調者持留到頁面恢復；本輪已把所有引文對同一天 07:14 的 200 副本驗過（0 failures），頁面一恢復只需重跑 quotes.py 即可改 full。",
+      "正文「本站也查看了 Cursor 的部落格、changelog，以及 SpaceXAI 的官方新聞頁…都沒有查到」這一句所依據的三個網址（cursor.com/blog、cursor.com/changelog、x.ai/news）不在內容包的 sources[] 裡。本人今天三個都拓到了（全部 200，分別 413,424、203,618、271,663 bytes，正文 OpenAI 一詞均為 0 筆），句子本身是真的也是研究紀錄 unverified_or_excluded 核可的寫法，但依查核規格「每條主張要在 sources[] 找得到支撐」，這是一個缺口。請協調者裁定：把三個網址補進 sources[]，或把這句收成只提 sources[] 已有的頁面。本輪未自行更動 sources[]。",
+      "description、summary 第三條與 callout 都寫「11 月 12 日是合約允許的最長通知期」。原文實際寫的是 we are giving the maximum notice provided by our contract＋提出 proposed shutoff date of November 12, 2026，嚴格說 11 月 12 日是「用滿最長通知期得出的日期」而不等於通知期本身。因為協調者的派工說明也用同一種簡寫，本輪未改；若要精確可改成「這是用滿合約允許的最長通知期得出的日期」。",
+      "正文第二段寫「讀的是 OpenAI 這則公告的全文」。在公告頁 500 的前提下，這句成立的依據是同一天 07:14 的 200 副本；若協調者最後決定在頁面未恢復的狀態下上線，這句要一併重審。",
+      "可讀性（不是事實錯誤，本輪未改）：「讀不到不等於沒有發生，只能寫成目前查不到，不能寫成『沒有回應』或『拒絕說明』」把編輯台的查證紀律寫進了正文，是站上退過稿的同一種毛病；建議審稿改成「截至查核日，這三個官方頁面都沒有相關說明」就好。另開頭段的「截至查核日」出現在讀者還不知道查核日是哪一天之前。"
+    ],
+    "coordinator_rulings": [
+      "派工說明指定：公告頁若仍 500 則維持 partial，不自行改成 full，由協調者決定是否持留本篇。已照辦。",
+      "派工說明指定：Twitter 與 xAI 兩件事只能以歸因於 OpenAI 的轉述寫、且不超出研究紀錄。正文以「OpenAI 舉了兩個例子」開頭，並自己寫明公告沒有提任何法院判決或和解，符合。",
+      "派工說明指定：不得自創支援措施。正文、summary 與 FAQ 都只寫「沒有窗口、沒有折扣、沒有遷移工具、沒有時程」，與公告只有 go above and beyond 一句一致。"
+    ],
+    "checked_and_correct": [
+      "日期一致：slug 尾碼 20260828、news_date 2026-08-28、第一段「2026 年 8 月 28 日」、DELTA-4-4 第 3 條裡的 08-28T06:00Z → 台北同日，四者相符；display_order 179 也相符。",
+      "通知對象：全篇一律寫「通知 SpaceX」，沒有任何一處寫成通知 Cursor。",
+      "11 月 12 日全篇寫成「建議斷供日」，沒有「確定斷供日」「正式終止日」「生效日」任一種寫法。",
+      "理由句逐字：內容包引的 We are making this choice because… 與 Today, we notified SpaceX… 兩句與公告正文逐字相符（含 Musk's 的直式撇號），中文註解也忠於原意。",
+      "未點名其他模型供應商：公告全文 Anthropic、Gemini、Google、SpaceXAI、Grok、Claude、Copilot 均為 0 筆，正文兩處寫「沒有點名」屬實。",
+      "未提地區：公告全文 Taiwan、Europe、region 均為 0 筆，正文「沒有台灣特例」屬實。",
+      "未提具體支援：公告全文 refund、discount、migration、credit 均為 0 筆。",
+      "未提訴訟：公告全文 lawsuit、court、settlement 均為 0 筆，正文「沒有提到任何法院判決或和解」屬實。",
+      "「未查到回應」：本人今天自行拓 cursor.com/blog、cursor.com/changelog、x.ai/news 三頁（全 200），正文 OpenAI 一詞均為 0 筆；官方 RSS 1,219 筆裡 2026-08-28 之後沒有任何提到 Cursor、SpaceX、Musk、xAI 的續篇。",
+      "cursor.com 首頁今天（09:15:23、200、626,754 bytes）仍印出 Choose between every cutting-edge model from OpenAI, Anthropic, Gemini, SpaceXAI, and Cursor.，表格第四列與「現在是什麼狀態」一節屬實（檔案大小與研究當時不同，是活資料）。",
+      "cursor.com/blog/joining-spacex 今天（09:15:20、200、153,547 bytes）仍印 Aug 14, 2026 與 Cursor has officially been acquired by SpaceX.，收購日與表格第一列屬實。",
+      "兩個結尾連結的 text 與目標內容包現行 zh-TW title 逐字相符（程式比對）：ai-news-2026-january-september-index、ai-news-gpt-53-codex-20260205。",
+      "圖解 caption 與研究紀錄 diagram.caption 逐字相同；四個節點的日期與說法都能在正文找到。",
+      "可讀性規則：全篇無「本文」、無「最近」「本週」「日前」「這幾天」；description 以「（2026 年 9 月查證）」結尾；title、description、summary 沒有篩選篇數；段落字數 2,535、每節 2–3 段。",
+      "Astra：公告寫 upcoming model，正文寫「公告發布的 8 月 28 日尚未發布」正確；「已在 9 月 3 日發布」對得上既有文章 ai-news-gpt-6-astra-20260903 （news_date 2026-09-03），且沒有混成 Astral。",
+      "「收購完成兩週後、也就是 8 月 28 日」：8/14 → 8/28 恰好 14 天，兩個日期都是來源印出的，成立。"
+    ],
+    "verdict": "needs_second_round",
+      "second_round": {
+        "checked_by": "independent factcheck agent (round 2)",
+        "checked_on": "2026-09-23",
+        "method": "依 agents/ai/SECOND-ROUND.md：不重做全篇，範圍是（a）第一輪改動的兩處與它新寫進去的每一句（逐句拆成子句回來源核對）、（b）第一輪 70 條 confirmed 裡用種子亂數抽出的三分之一（23 條，種子為 slug，抽樣程式 _tools/ai-news-openai-cursor-wind-down-20260828-r2/sample.py，抽中 #2、#9、#10、#11、#12、#13、#16、#17、#25、#27、#28、#30、#33、#42、#45、#46、#48、#52、#55、#63、#64、#65、#67）、（c）協調者另外指定的三項裁定。四個來源今天全部由本人以 curl -sSL -A 'Mokaair-editorial/1.0' 重抓（同一主機間隔 ≥2 秒，請求不帶任何姓名或 email），另重抓官方 RSS 佐證事件日。引文比對用 _tools/…-r2/quotes2.py：紀錄的 23 條 verbatim_quote 全數通過（0 failures），而且這一次是對本人自己抓到的公告頁正文比對，不再依賴探索代理的副本。否定句用 _tools/…-r2/negatives.py 對公告正文（1,879 字元）逐組計數：調整／延期用語、退款折扣遷移補償、其他模型供應商、國家地區時區、訴訟判決和解、第三方回應六組全部 0 筆；intend、proposed、maximum notice、latest date、while not providing future models、limited time window、change of control、upcoming model, Astra 八個正面標記各 1 筆。兩個結尾連結用 _tools/…-r2/links2.py 對目標內容包現行 zh-TW title 逐字比對，皆相符。",
+        "refetch_of_the_500_route": "公告頁今天已經復原：本輪第一次嘗試 09:32:33（台北）即回 HTTP 200、372,450 bytes，間隔 3 分 44 秒後 09:36:17 再抓一次仍為 200、372,420 bytes（差 30 bytes 是 build nonce 一類的動態字串）。回應標頭的 x-matched-path 已從第一輪的 /500 變回真正的路由 /[locale]/[country]/[flags]/[...slug]，Age: 0。頁面內容是真的正文，不是 200 的錯誤頁：<title> 為 Our decision on Cursor following its acquisition by SpaceX | OpenAI，August 28, 2026、notified SpaceX、November 12, 2026、while not providing future models 等標記都在。因此第一輪與研究紀錄所說的條件已滿足：sourcing_verdict 由 partial 改為 full，sources[0] 的 fetched_at 與 bytes 換成本人今天成功抓到的那一次，本輪所有引文核對都改用這份自抓正文（不再使用 _raw/…/discovery-copy-0714.html）。佐證頁同樣今天自抓：官方清單頁 200、423,311 bytes（卡片與 Aug 28, 2026 仍在），cursor.com/blog/joining-spacex 200、153,547 bytes，cursor.com 首頁 200、626,754 bytes，官方 RSS 200、744,049 bytes、1,219 筆——該則 pubDate 逐字為 Fri, 28 Aug 2026 06:00:00 GMT、category 為 Company，且 1,219 筆裡提到 Cursor／SpaceX／Musk／xAI 的只有 5 筆，2026-08-28 之後沒有任何續篇。",
+        "claims_checked": 25,
+        "changes": [
+          {
+            "claim": "「現在是什麼狀態、讀者可以去哪裡查」一節的第二段（查證敘事＋編輯台紀律）",
+            "before": "本站也查看了 Cursor 的部落格、changelog，以及 SpaceXAI 的官方新聞頁，截至查核日都沒有查到任何與這項決定有關的說明；讀不到不等於沒有發生，只能寫成目前查不到，不能寫成「沒有回應」或「拒絕說明」。",
+            "after": "（整段刪除）",
+            "why": "協調者裁定（1）與（2）：前半句依據的三個網址（cursor.com/blog、cursor.com/changelog、x.ai/news）不在內容包 sources[] 裡，而且是查證過程的敘事；後半句是把編輯台的查證紀律寫進正文，是站上退過稿的同一種毛病。兩句合起來就是整段，故整段刪除，正文只寫 OpenAI 公告了什麼。刪除後這一節仍有兩段，前後文（首頁供應商現況 → 公告沒提任何地區）銜接完整，也不再有任何句子依賴 sources[] 以外的頁面，第一輪 open_questions 第 2 點隨之解消。",
+            "source_url": null
+          }
+        ],
+        "reverified": [
+          "第一輪第 1 處（骨幹）：while 的讀法對本人自抓的正文重核，成立。原文 Given all of this, we've decided to hold the contract cancellation to the latest date we can while not providing future models to Cursor.——while 無論讀成「同時」或「儘管」都是並行，不可能讀成「11 月 12 日之後才開始」，第一輪的更正正確。新寫的四個子句逐句有據：「在建議斷供日之前開發者仍可透過 Cursor 使用 OpenAI 模型」對應 To maximize the time that developers can retain access to our models through Cursor…；「在這段期間之後推出的新模型不會再提供給 Cursor」對應 while not providing future models to Cursor；「11 月 12 日會不會再調整，公告沒有寫」對應調整／延期用語全篇 0 筆。",
+          "第一輪第 2 處（FAQ 限定詞）：對應 Our custom agreement with Cursor gives us a limited time window to cancel it after a change of control.，「一段有限的時間可以取消」忠實，且與正文同一件事的寫法一致（FAQ 答案 ⊆ 正文）。",
+          "抽樣 23 條全部維持 confirmed，無新增更正。其中 #13（第二段說讀了四個頁面）在本輪由「附但書」升為無保留成立——四個頁面今天都由本人抓到 200 並讀到正文，公告頁全文也真的讀到了，第一輪 open_questions 第 4 點隨之解消。#2 由 RSS 的 pubDate Fri, 28 Aug 2026 06:00:00 GMT（台北 08-28 14:00，同日）重新確認；#25 的「4 月開始的收購程序」對應 Cursor 部落格 This completes the acquisition process that started in April…；#67 的連結文字逐字相符。",
+          "回掃第一輪有沒有為了字數刪掉但書或歸因：沒有。intend／proposed、「建議斷供日」、「截至查核日尚未到期」、「OpenAI 表示」等歸因與限定詞都還在；本輪唯一的刪除是協調者裁定的整段，刪的是查證敘事，不是任何但書。",
+          "界線重掃：topics 只有 ai／ai-news 不帶 finance；只有一個 info callout、沒有投資免責段；沒有訂閱、購買、升級、換工具或投資建議；沒有推定台灣可用；廠商宣稱全部歸因給 OpenAI；Astra 未與 Astral 混淆；沒有與站上既有文章矛盾。"
+        ],
+        "open_questions": [
+          "（沿用第一輪 open_questions 第 3 點，本輪仍未改）「11 月 12 日是合約允許的最長通知期」這個簡寫：原文是 we are giving the maximum notice provided by our contract 加上 proposed shutoff date of November 12, 2026，嚴格說 11 月 12 日是「用滿最長通知期得出的日期」，不等於通知期本身。這個寫法出現在 description、summary 第 3 條與 callout 三處，改一處就要改三處；它不是事實錯誤（讀者取走的意思——這是合約允許的最晚——是對的），且派工說明本身也用同一種簡寫，所以本輪不動，留給協調者決定要不要統一改成「用滿合約允許的最長通知期得出的日期」。",
+          "（純可讀性，未改）開頭第一段的「截至查核日」出現在讀者還不知道查核日是哪一天之前，下一段才交代 2026 年 9 月 23 日。屬於順序問題，不是事實問題。"
+        ],
+        "coordinator_rulings": [
+          "裁定（1）：刪掉正文「本站也查看了 Cursor 部落格、changelog 與 SpaceXAI 新聞頁…」這一句——那三頁不在 sources[] 裡，而且是查證過程的敘事。已執行。",
+          "裁定（2）：刪掉解釋編輯台紀律的那一句（「不能寫成『沒有回應』或『拒絕說明』」那種寫法）——正文只寫 OpenAI 公告了什麼。已執行。裁定（1）與（2）的兩句合起來就是同一整段，故整段移除，blocks 由 28 降為 27。",
+          "裁定（3）：保留第一輪關於 while 的更正。已對本人自抓的公告正文重核，維持不動。",
+          "連帶效果：第一輪 open_questions 第 2 點（那三個網址不在 sources[] 的缺口）由裁定（1）解消，sources[] 維持四條、未增刪；本輪沒有因此新增任何來源。"
+        ],
+        "verdict": "ok"
+      }
+  }
+}

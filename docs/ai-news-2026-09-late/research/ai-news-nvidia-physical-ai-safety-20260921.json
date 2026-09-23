@@ -1,0 +1,555 @@
+{
+  "slug": "ai-news-nvidia-physical-ai-safety-20260921",
+  "vertical": "ai",
+  "display_order": 176,
+  "event_date": "2026-09-21",
+  "event_date_basis": "2026-09-23 台北時間重抓 https://blogs.nvidia.com/blog/physical-ai-halos-safety/（HTTP 200、121,824 bytes）。頁面正文自印的日期是 September 21, 2026（日期後面接作者署名，署名不抄進紀錄）；HTML 的 article:published_time 是 2026-09-21T16:00:46+00:00、article:modified_time 是 2026-09-21T16:06:14+00:00，JSON-LD 的 datePublished／dateModified 與之相同。這個 16:00 是整點排程的佔位時刻，照 DELTA-4-7 第 10 條（沿用 OpenAI 00:00 與 4.6 第 7 條 Accenture 16:00 的判例）不換算台北時間——換算會變成 9/22 00:00，與頁面自印的 September 21, 2026 互相矛盾。事件日維持 2026-09-21，slug 後綴、news_date 與正文第一段三者都寫 2026 年 9 月 21 日。正文不得寫出任何發布時刻，也不得寫「台北時間 9 月 22 日凌晨」。",
+  "title": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
+  "title_candidates": [
+    "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+    "自駕車與機器人怎麼證明自己安全？NVIDIA 分層安全的現在進度",
+    "NVIDIA Halos 的安全分層：誰檢驗、檢驗到哪裡、哪些還沒完成",
+    "機器要在人身邊工作之前：NVIDIA 列出的安全證據與它的界線"
+  ],
+  "summary": "2026 年 9 月 21 日，NVIDIA 在官方部落格發表〈Why Deploying Physical AI at Scale Demands Safety at Every Layer〉，主張自駕車與機器人這類「實體 AI」的安全必須橫跨硬體、軟體、AI 行為、運作環境與部署生命週期，不是部署前檢查一次就結束。文章整理 NVIDIA Halos 在自駕車與機器人兩邊各涵蓋哪些元件、哪些公司在用，以及第三方機構做到哪一步：TÜV SÜD 已就 ISO 26262 ASIL D 認證 DriveOS 6.0 與相關流程，TÜV Rheinland 對機器人端的 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 還在「檢驗認證準備度」，而 ANAB 認可的是 NVIDIA 自家的 Halos AI Systems Inspection Lab 為 ISO/IEC 17020 檢驗機構。從 ANAB 自己的證書與認可範圍檔案可以查到，這間實驗室登記的是 TYPE C（second party）檢驗機構、認可效期到 2027 年 1 月 2 日，檢驗方式是審閱文件。這不是產品發表，沒有價格、沒有上市日，四個來源頁面都沒有提到台灣。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "publisher": "NVIDIA Blog",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:39:40+08:00",
+      "http_status": 200,
+      "bytes": 121824,
+      "verbatim_quote": "Physical AI safety means proving that AI-driven machines — AVs, humanoid robots, industrial robots and more — behave safely when their decisions turn into physical action."
+    },
+    {
+      "title": "Physical AI Safety Certification｜NVIDIA Halos AI Systems Inspection Lab（AI Trust Center）",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+      "publisher": "NVIDIA",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:43:54+08:00",
+      "http_status": 200,
+      "bytes": 665291,
+      "verbatim_quote": "The NVIDIA Halos AI Systems Inspection Lab is accredited for ISO/IEC 17020 by ANSI National Accreditation Board (ANAB), which is recognized in 80 countries, including China."
+    },
+    {
+      "title": "ANAB Certificate of Accreditation and Scope of Accreditation to ISO/IEC 17020:2012 — NVIDIA Corporation（AI-3345，scope version 002）",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "publisher": "ANSI National Accreditation Board (ANAB)",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:46:46+08:00",
+      "http_status": 200,
+      "bytes": 434445,
+      "verbatim_quote": "TYPE C (SECOND PARTY) BODY"
+    },
+    {
+      "title": "NVIDIA Halos for Robotics（AI Trust Center）",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/",
+      "publisher": "NVIDIA",
+      "checked_on": "2026-09-23",
+      "fetched_at": "2026-09-23T00:43:24+08:00",
+      "http_status": 200,
+      "bytes": 761431,
+      "verbatim_quote": "NVIDIA Halos Core for NVIDIA IGX is available in early access for registered developers in Linux and Linux plus QNX configurations to match your deployment requirements."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "全部請求都用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥1.3 秒，UA／查詢字串／標頭都沒有帶任何人的姓名、email 或個人資料。原始檔留在 C:\\Users\\x8120\\mokaair-work\\news47\\_raw\\ai-news-nvidia-physical-ai-safety-20260921\\（halos.html／halos-cert.html／halos-robotics.html／halos-av.html／igx.html／anab-scope.pdf／abi.html／omdia.html，以及 .txt 抽文字檔）。取得配方：(1) blogs.nvidia.com 那篇 2026-09-23 00:39 台北 HTTP 200／121,824 bytes，正文從 Physical AI is moving rapidly from research 一路到 Designing functional safety from the start is what separates a prototype from a scalable solution，逐段讀過；(2)(4) 兩個 AI Trust Center 頁是從第 (1) 篇正文裡的超連結進去的，不是猜網址，2026-09-23 00:43 台北各 HTTP 200／665,291 與 761,431 bytes，內容是真的 HTML 文字（抽出 23,803 與 36,411 字），不是 SPA 殼；(3) ANAB 的 PDF 是第 (2) 頁 FAQ 裡「Read the complete ANAB accreditation scope here」那個超連結的目標，2026-09-23 00:46 台北 HTTP 200／434,445 bytes，用系統 python 的 pypdf 抽出 6 頁文字。HTML 一律先刪 <!-- --> 註解、再 html.unescape、把 &nbsp; 換成空白才引用；PDF 的引用以 pypdf 抽出的文字為準。所有 verbatim_quote 都用「把連續空白壓成一個空白後的內文」核對過是連續子字串（PDF 的兩段跨行引用尤其如此），核對腳本 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\verify_quotes_nv.py。另外讀過但刻意不列進 sources[]（2–4 條上限）的官方頁：https://www.nvidia.com/en-us/ai-trust-center/halos/autonomous-vehicles/（00:42、200／789,849 bytes）與 https://www.nvidia.com/en-us/edge-computing/products/igx/（00:44、200／662,474 bytes），它們的內容只用來反查矛盾，記在 unverified_or_excluded，不得用來撐正文任何一句。",
+  "verified_facts": [
+    {
+      "fact": "事件日：NVIDIA 官方部落格這篇文章的頁面自印 2026 年 9 月 21 日。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 21, 2026"
+    },
+    {
+      "fact": "文章的主張：實體 AI 的安全是要證明「AI 驅動的機器把決策變成實際動作時仍然安全」，對象包含自駕車、人形機器人與工業機器人。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Physical AI safety means proving that AI-driven machines — AVs, humanoid robots, industrial robots and more — behave safely when their decisions turn into physical action."
+    },
+    {
+      "fact": "核心論點：安全必須橫跨硬體、軟體、AI、運作環境與部署生命週期，不是部署前檢查一次就結束。這是全篇最適合當骨架的一句。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "That requires safety across the hardware, software, AI, operating environment and deployment lifecycle — not a one-time check before deployment."
+    },
+    {
+      "fact": "兩個規模數字都是外部預測機構的：ABI Research 預測 2035 年前有 4,900 萬台 L3–L5 自駕車的裝機量，Omdia 估計 2026 到 2035 年間約部署 6,000 萬台工業機器人。兩家都不是 NVIDIA，也都不是承諾。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots will be deployed between 2026 and 2035."
+    },
+    {
+      "fact": "文章列出四個「新的安全模型」理由之一：環境是動態的，道路、工廠、倉庫沒辦法靠靜態分區或實體圍籬完全控制，系統要能察覺變化、調整行為並在意外時進入安全狀態。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Dynamic environments require context-aware safety. Roads, factories and warehouses cannot be fully controlled through static zones or physical barriers."
+    },
+    {
+      "fact": "AI 行為要有自己的保證機制，測試要用設計時、執行時與驗證時三種護欄；官方對 ISO/IEC TS 22440 用的是「新興標準」「開始處理」這種限定語氣，不是說已經有一套成熟標準。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Emerging standards such as ISO/IEC TS 22440 are beginning to address these AI-specific risks."
+    },
+    {
+      "fact": "部署是持續的，軟體與模型更新、新任務、運作條件改變都會發生；官方寫的是「重大變更『可能』需要額外的安全測試」，用的是 may，不是一定要。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Deployment is ongoing. AVs and robots evolve through software and model updates, new tasks and changing operating conditions. Material changes may require additional safety testing."
+    },
+    {
+      "fact": "第四個理由：場景的數量與複雜度使得實車測試必須搭配模擬、合成資料生成與場景重建。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The number and complexity of potential scenarios requires real-world testing to be combined with simulation, synthetic data generation and scenario reconstruction."
+    },
+    {
+      "fact": "NVIDIA 自稱 Halos 是實體 AI 的「第一個也是唯一」的全堆疊安全系統。這是廠商宣稱，一定要歸因，不能寫成本站認定的事實。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "NVIDIA Halos is the first and only full-stack safety system for physical AI, helping developers engineer safety across every layer of design, validation and deployment."
+    },
+    {
+      "fact": "自駕車與機器人共用原則，但平台、標準與證據各自不同——這句是解釋為什麼兩邊的認證進度不一樣的關鍵。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The principles are shared across AVs and robotics, while the platforms, standards and evidence remain specific to each domain."
+    },
+    {
+      "fact": "自駕車端的軟體基礎：Halos OS 建立在通過 ASIL-D 認證的 DriveOS 之上，Halos Core 與 Halos Middleware 負責系統隔離、監控與確定性通訊。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Operating system and middleware: Halos OS provides a unified software foundation built on ASIL-D certified DriveOS. Halos Core and Halos Middleware support system isolation, monitoring and deterministic communication."
+    },
+    {
+      "fact": "機器人端的硬體：IGX Thor 是工業級模組，把加速運算與功能安全放在同一個平台，帶一個專用的功能安全島；官方寫的是「設計上支援」IEC 61508 與 ISO 13849 等標準，而且用 including（不是完整清單），不是說已取得那些標準的認證。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Hardware: NVIDIA IGX Thor is an industrial-grade module that combines accelerated computing and functional safety on one platform with a dedicated Functional Safety Island. It’s designed to support systems developed for standards including IEC 61508 and ISO 13849."
+    },
+    {
+      "fact": "外部視角的安全：開源的 Halos Outside-In Safety Blueprint 用外部攝影機與視覺 AI 代理，把感知範圍延伸到車上／機上感測器之外，支援場域層級的監控。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Outside-in safety: The open source NVIDIA Halos Outside-In Safety Blueprint uses external cameras and vision AI agents to extend awareness beyond onboard sensors and support facility-level monitoring and functional safety use cases."
+    },
+    {
+      "fact": "自駕車陣營：Geely、Isuzu、Nissan（搭配 Wayve 軟體）與 Einride 在 NVIDIA Hyperion 上打造「level 4-ready」車輛——官方用的是 ready，不是已經上路的 L4。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In autonomous vehicles, Geely, Isuzu, Nissan (powered by Wayve software) and Einride are building level 4-ready vehicles on NVIDIA Hyperion, supported by Halos OS."
+    },
+    {
+      "fact": "檢驗實驗室的成員名單是舉例式的（include），不是全清單；名單裡有 AUMOVIO、Bosch、Gatik、Hesai、Lucid、MIRA、onsemi、PlusAI、Sony、Valeo、Wayve。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Members of the NVIDIA Halos AI Systems Inspection Lab include AUMOVIO, Bosch, Gatik, Hesai, Lucid, MIRA, onsemi, PlusAI, Sony, Valeo and Wayve, spanning autonomous-driving development, ADAS, sensors, silicon, systems integration, validation and safety assurance."
+    },
+    {
+      "fact": "機器人陣營：acontis 與 QNX 提供嵌入式軟體，Advantech 與 NexCOBOT 做符合安全設計的 IGX 系統，Infineon、NXP、STMicroelectronics 與 Texas Instruments 提供感測與安全微控制器等半導體技術，KION Group 在做自駕堆高機的功能安全代理，Agility 把 IGX Thor 與 Halos Core 整合進 Digit 5 人形機器人的安全系統（進行式，不是已出貨）。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In robotics, acontis and QNX provide the embedded software needed to run safety functions predictably, while Advantech and NexCOBOT build safety-designed NVIDIA IGX systems. Infineon, NXP, STMicroelectronics and Texas Instruments contribute sensor, safety-microcontroller and other semiconductor technologies. KION Group is developing functional safety agents for autonomous forklifts. Agility is integrating NVIDIA IGX Thor and Halos Core into the safety system for its Digit 5 humanoid."
+    },
+    {
+      "fact": "自駕車端的第三方結果（完成式）：TÜV SÜD 就 ISO 26262 ASIL D 認證了 NVIDIA 的 Automotive Product Lifecycle 軟體流程與 DriveOS 6.0，並就 ISO/SAE 21434 認證其車用工程流程；TÜV Rheinland 另外對 NVIDIA DRIVE AV 做了獨立的 UNECE 安全評估。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For AVs, TÜV SÜD certified NVIDIA’s Automotive Product Lifecycle software process and DriveOS 6.0 to ISO 26262 ASIL D, as well as NVIDIA’s automotive engineering processes to ISO/SAE 21434. TÜV Rheinland also performed an independent UNECE safety assessment of NVIDIA DRIVE AV."
+    },
+    {
+      "fact": "機器人端的第三方結果（進行式）：TÜV Rheinland 正在檢驗 IGX Thor、Halos OS 與 Holoscan Sensor Bridge 的「功能安全認證準備度」，建立在 TÜV SÜD 對 Thor SoC 與 Halos Core 就 ISO 26262 的檢驗之上。這一句是全篇最容易被寫成「已認證」的地方。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For robotics, TÜV Rheinland is inspecting NVIDIA IGX Thor, Halos OS and Holoscan Sensor Bridge for functional-safety certification readiness, building on TÜV SÜD’s inspection of the Thor SoC and Halos Core for ISO 26262."
+    },
+    {
+      "fact": "ANAB 認可的對象是 NVIDIA 自家的 Halos AI Systems Inspection Lab（認可它是 ISO/IEC 17020 檢驗機構），而這間實驗室出的是檢驗，最終的系統級認證仍由獨立第三方機構做——官方自己就是這樣寫的。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Across physical AI, ANAB has accredited the NVIDIA Halos AI Systems Inspection Lab as an ISO/IEC 17020 inspection body. The lab inspects scoped Halos integrations and helps companies prepare for final certification by independent third-party bodies."
+    },
+    {
+      "fact": "官方把「誰需要證據」講得很清楚：製造商、主管機關、保險業者與職場安全團隊都需要看到硬體、軟體、AI 行為與運作環境能在沒有人介入時一起安全運作的證據。這句可以當成讀者為什麼該在意的入口。",
+      "url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Across physical AI, manufacturers, regulators, insurers and workplace safety teams need evidence that hardware, software, AI behavior and operating environments can work together safely without human intervention."
+    },
+    {
+      "fact": "NVIDIA 在 AI Trust Center 自稱是第一家取得 ANAB 認可、據以設立 Halos AI Systems Inspection Lab 的公司。廠商宣稱，要歸因。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "NVIDIA is the first company accredited by the ANSI National Accreditation Board (ANAB) to establish the Halos AI Systems Inspection Lab, creating a unified framework for functional safety, cybersecurity, and AI compliance."
+    },
+    {
+      "fact": "ANAB 的認可被 NVIDIA 說成「在 80 個國家受到承認，包含中國」。這頁全篇沒有提到台灣，這個 80 國的清單也沒有列出來，所以不能推論台灣在不在內。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The NVIDIA Halos AI Systems Inspection Lab is accredited for ISO/IEC 17020 by ANSI National Accreditation Board (ANAB), which is recognized in 80 countries, including China."
+    },
+    {
+      "fact": "官方自己把檢驗實驗室定位成「補充」既有的認證工作，產出的是可用於後續認證活動的結構化文件成果，不是取代認證。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The Halos AI Systems Inspection Lab complements existing certification efforts by focusing on safer and more secure integration with Halos elements, providing structured documentation outcomes that can be used in follow-up certification activities."
+    },
+    {
+      "fact": "檢驗的標的是「生態系夥伴或 OEM 有沒有正確整合與運用 Halos 元件」，不是替對方的整車或整機背書。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The inspection focuses on verifying that ecosystem partners or OEMs have correctly integrated and applied NVIDIA Halos elements within a safer and more secure overall system."
+    },
+    {
+      "fact": "檢驗實驗室的範圍已經從自駕車擴到機器人（NVIDIA 自述），這一點在 ANAB 的認可範圍檔案裡也找得到對應（IGX 的 IEC 61508、ISO 13849 等項目）。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/physical-ai/safety-certification/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The NVIDIA Halos AI Systems Inspection Lab has now expanded from AVs to robotics."
+    },
+    {
+      "fact": "ANAB 官方檔案（不是 NVIDIA 的說法）：這張 ISO/IEC 17020 認可證書的持證者是 NVIDIA Corporation，登記的檢驗機構型態是 TYPE C（second party）。ISO/IEC 17020 的 Type C 不等於完全獨立的第三方，這是全篇最值得寫給讀者的一個界線。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "TYPE C (SECOND PARTY) BODY"
+    },
+    {
+      "fact": "ANAB 官方檔案：ISO/IEC 17020 認可自 2025 年 1 月 2 日起授予，證書編號 AI-3345。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ISO/IEC 17020 Accreditation Granted: 02 January 2025"
+    },
+    {
+      "fact": "ANAB 官方檔案：證書效期到 2027 年 1 月 2 日；這是會過期的東西，正文要寫成「以查核到 2026-09-23 的檔案為準」。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Certificate Expiry Date: 02 January 2027"
+    },
+    {
+      "fact": "ANAB 官方檔案：這份認可範圍是版本 002、最後更新於 2025 年 6 月 6 日，而且證書單獨存在無效，必須搭配現行的範圍文件一起看。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This Scope of Accreditation, version 002, was last updated on: 06 June 2025 and is valid only when accompanied by the Certificate."
+    },
+    {
+      "fact": "ANAB 官方檔案：檢驗方法寫得很具體——「以審閱文件的方式查驗受檢項目的符合性」。也就是說這是文件審查，不是替讀者想像中的實車或實機做撞擊或動作測試。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Verification of conformity of inspected items by review of documentation"
+    },
+    {
+      "fact": "ANAB 官方檔案：自駕車端的認可範圍是「受檢項目是否符合 NVIDIA DRIVE 的功能安全要求」，依據 ISO 26262 的指定部分；也就是對照的是 NVIDIA 自己的要求文件，不是直接發 ISO 26262 認證。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Conformity of the inspected items with NVIDIA DRIVE Functional Safety requirements"
+    },
+    {
+      "fact": "ANAB 官方檔案：機器人／機械端的認可範圍對照的是 NVIDIA IGX 的功能安全要求，依據的標準包含 IEC 61508 全七部（2010 年版）與 ISO 13849-1:2023、ISO 13849-2:2012，另有農林機械的 ISO 25119 與 ISO 18497 系列。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Conformity of the inspected items with NVIDIA IGX Functional Safety requirements"
+    },
+    {
+      "fact": "ANAB 官方檔案：AI 相關的檢驗依據寫的是 ISO/PAS 8800:2024（規範性）與 ISO/IEC TR 5469:2024（資訊性），不是部落格提到的 ISO/IEC TS 22440。兩者不可混寫。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ISO/PAS 8800:2024 (normative)"
+    },
+    {
+      "fact": "ANAB 官方檔案：法規面的檢驗依據列的是聯合國 UN-R 系列（包含 UN-R 157 附件 4 這類自動車道保持系統的規定）。",
+      "url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "UN-R 157 (Annex 4)"
+    },
+    {
+      "fact": "機器人端的可用狀態：Halos Core for IGX 目前是「早期存取」，只給已註冊的開發者，提供 Linux 與 Linux 加 QNX 兩種組態。這是判斷「現在能不能用」的關鍵句，部落格本身沒有寫。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "NVIDIA Halos Core for NVIDIA IGX is available in early access for registered developers in Linux and Linux plus QNX configurations to match your deployment requirements."
+    },
+    {
+      "fact": "機器人端的時態：Agility 的 Digit 官方寫的是「將會是第一台出貨時搭載 NVIDIA Halos OS 的量產機器人」，是未來式，不是已經在倉庫裡工作。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Digit, Agility's humanoid, will be the first production robot shipping with NVIDIA Halos OS."
+    },
+    {
+      "fact": "機器人端的硬體描述：IGX Thor 是建立在 NVIDIA Thor SoC 上的系統模組，帶專用的功能安全島（FSI）。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "System-on-Module (SoM) built on the NVIDIA Thor System-on-Chip (SoC), with a dedicated Functional Safety Island (FSI)."
+    },
+    {
+      "fact": "兩個官方頁對同一件事的說法不一致：機器人頁把 Halos OS 說成「safety-certified」的作業系統基礎，但 9/21 的部落格寫 TÜV Rheinland 還在檢驗 Halos OS 的認證準備度。撰稿時兩邊都要寫出來、各自標出處，不可以挑一個當定論，並以帶限定詞的那一版（還在檢驗）為準。",
+      "url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Halos OS is a safety-certified operating system foundation for robotics that runs on the NVIDIA IGX Thor platform, integrating Linux and QNX to deliver real-time control and safety extensions."
+    }
+  ],
+  "not_said": [
+    "沒有提到台灣。四個來源頁面都沒有任何與台灣有關的敘述：blogs.nvidia.com 那篇與 ANAB 的 PDF 完全沒有出現 Taiwan；兩個 nvidia.com 頁面出現的「台灣 (Taiwan)」與「Taiwan」只在網站自己的地區切換選單與一個國家下拉選單裡，不是內容。正文要寫「以查核到 2026 年 9 月 23 日的這幾頁未見台灣相關說明」，不可以寫成「NVIDIA 沒有在台灣做這件事」。",
+    "沒有說 ANAB 的認可在台灣是否被承認。官方只寫「在 80 個國家受承認，包含中國」，沒有列出那 80 國，也沒有提到台灣。不可以由「包含中國」推論台灣的情形，不論往哪個方向推論都不行。",
+    "沒有產品發表、沒有價格、沒有上市日、沒有台灣供貨時程。這是一篇論述與整理性質的官方文章，不是發表會稿。",
+    "沒有事故、召回、主管機關調查或任何負面事件。全篇沒有提到任何一起事故。",
+    "沒有出貨量、裝機量或客戶數。文章裡唯一的量化數字是 ABI Research 與 Omdia 的預測，NVIDIA 自己沒有給任何可查證的數量承諾。",
+    "沒有時程承諾。文章沒有說 IGX Thor、Halos OS 或 Holoscan Sensor Bridge 的功能安全認證會在什麼時候完成，也沒有說 Digit 5 什麼時候出貨。",
+    "沒有說 Halos 的元件在台灣可以買到或申請。機器人頁只寫 Halos Core for IGX 是早期存取、要註冊開發者身分，沒有寫地區條件。",
+    "沒有提到 OpenAI、Anthropic 或任何前沿模型公司的治理提案，也沒有回應任何人的標準倡議。不可以把這篇寫成對同一天 OpenAI 那篇標準文章的回應。",
+    "沒有說 Advantech、NexCOBOT 或名單上任何一家公司是哪一國的企業。部落格只寫它們在做什麼，沒有寫國籍或總部所在地。",
+    "沒有說檢驗實驗室的成員名單是完整的。官方用 include，是舉例。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "ABI Research「2035 年 4,900 萬台 L3–L5 自駕車」與 Omdia「2026–2035 年約 6,000 萬台工業機器人」兩份預測的原始內容、方法與定義。",
+      "seen_where": "部落格內文的超連結目標：https://my.abiresearch.com/research/15976/ 2026-09-23 00:45 台北回 HTTP 200 但只有 17,744 bytes，抽出來的文字是登入牆（Log in now to access / Subscriber Content 之類），沒有任何研究內容；https://omdia.tech.informa.com/om146251/robotics-hardware-market-forecast--2026 同一分鐘回 HTTP 403。",
+      "why_excluded": "兩份原始報告都讀不到，只有 NVIDIA 轉述。正文若要用這兩個數字，必須寫成「NVIDIA 這篇文章引述 ABI Research／Omdia 的預測」，並寫明原始報告需付費或無法公開讀取；不可以寫成 NVIDIA 的數字或業界共識。依指派表，標題與摘要一律不放這兩個數字。"
+    },
+    {
+      "claim": "ISO/IEC TS 22440 的實際內容、發布狀態與涵蓋範圍。",
+      "seen_where": "只出現在部落格一句話裡：Emerging standards such as ISO/IEC TS 22440 are beginning to address these AI-specific risks.",
+      "why_excluded": "本輪沒有讀 ISO 官方的標準頁，無法查證它處理什麼、到哪一個階段。正文只能照官方語氣寫「新興標準……開始處理」，不可以描述它的條文內容，也不可以說它已經生效或已被採用。附帶一提：ANAB 認可範圍裡的 AI 依據是 ISO/PAS 8800:2024 與 ISO/IEC TR 5469:2024，與 TS 22440 是不同的東西，不可混寫。"
+    },
+    {
+      "claim": "自駕車端更細的認證措辭差異（DriveOS 6.0 是 certified，Thor-X SoC 是 assessed as ASIL D conformant）。",
+      "seen_where": "https://www.nvidia.com/en-us/ai-trust-center/halos/autonomous-vehicles/ 2026-09-23 00:42 台北 HTTP 200／789,849 bytes，該頁寫 TÜV SÜD certified the core NVIDIA hardware and software process to Automotive Safety Integrity Level (ASIL) D. Under the ISO 26262 standard, NVIDIA DriveOS 6.0 is certified ASIL D conformant and Thor-X SoC is assessed as ASIL D conformant.",
+      "why_excluded": "這一頁讀到了，但 sources[] 只能放 2–4 條，已經放滿。正文因此只能照部落格那一句寫（TÜV SÜD certified … DriveOS 6.0 to ISO 26262 ASIL D），不可以把 Thor-X 或其他元件一起寫成「已取得認證」，也不可以引用這一頁的措辭。要用就要先把它換進 sources[]。"
+    },
+    {
+      "claim": "NVIDIA IGX 產品頁上的其他規格與第三方評估敘述。",
+      "seen_where": "https://www.nvidia.com/en-us/edge-computing/products/igx/ 2026-09-23 00:44 台北 HTTP 200／662,474 bytes，內容讀得到。",
+      "why_excluded": "同上，sources[] 已滿，而且這是產品行銷頁；能力宣稱不以行銷頁為據。正文不得引用。"
+    },
+    {
+      "claim": "Agility Robotics 對 Digit 5 的原廠說法。",
+      "seen_where": "部落格連到 https://www.agilityrobotics.com/content/agility-unveils-digit-5-humanoid-robot-built-for-cooperatively-safe-work-at-scale，本輪沒有抓取。",
+      "why_excluded": "沒有讀到 body 的頁面不得下筆。Digit 5 只能照 NVIDIA 兩個頁面寫（整合中、未來將是第一台出貨搭載 Halos OS 的量產機器人），不可以加上 Agility 自己的規格、時程或價格。"
+    },
+    {
+      "claim": "Halos Safety Evaluation Framework 技術白皮書的內容。",
+      "seen_where": "部落格連到 https://docs.nvidia.com/common/resources/Nvidia_Halos_Safety_Evaluation_Framework_Tech_Brief.pdf，本輪沒有下載。",
+      "why_excluded": "沒讀就不寫。正文只能照部落格那一句寫它「提供工具與指引，用來產生支持自駕車安全論證的證據」。"
+    },
+    {
+      "claim": "部落格裡 Advantech 那一個超連結的目標頁內容。",
+      "seen_where": "該 <a> 的 href 是一個 nam11.safelinks.protection.outlook.com 的轉址網址，查詢字串裡夾帶了一位個人的公司 email。",
+      "why_excluded": "**不可以請求這個網址**（會把個人 email 送進請求，違反批次規則），也不可以把它抄進研究紀錄、內容包或查核報告。本輪沒有抓它、也沒有抓它解碼後的目的地。Advantech 只能照部落格那一句寫。"
+    },
+    {
+      "claim": "Advantech、NexCOBOT 是台灣企業這件事。",
+      "seen_where": "四個來源頁面都沒有寫任何一家公司的國籍或總部；只有部落格寫它們 build safety-designed NVIDIA IGX systems。",
+      "why_excluded": "沒有官方來源支撐就不能寫。這是本篇最誘人的「台灣角度」，但要寫就必須另外取得那兩家公司官方頁並列進 sources[]，本輪沒有做。撰稿代理不可以憑印象補上「台灣的研華」這類敘述。"
+    },
+    {
+      "claim": "ISO/IEC 17020 的 Type A／B／C 定義本文。",
+      "seen_where": "ANAB 的 PDF 只印了 TYPE C (SECOND PARTY) BODY 這個登記類別，沒有解釋三種型態的差別；本輪沒有讀 ISO 的標準本文。",
+      "why_excluded": "正文可以寫「ANAB 的檔案把這間實驗室登記為 Type C（second party）檢驗機構」，以及「NVIDIA 自己也寫最終認證要由獨立第三方機構做」，但**不可以自行解釋 Type A／B／C 的定義**，也不可以寫成「所以它不公正」。要解釋就要先讀到標準本文或 ANAB 的說明頁。"
+    },
+    {
+      "claim": "ANAB 認可「在 80 個國家受承認」的那份國家清單。",
+      "seen_where": "只在 nvidia.com 的認證頁上出現一句話，沒有連結到清單，ANAB 的 PDF 裡也沒有國家清單。",
+      "why_excluded": "清單讀不到，所以只能原樣轉述 NVIDIA 的說法並標明是它說的，不可以推論任何特定國家或地區在不在內。"
+    },
+    {
+      "claim": "ANAB 那份 PDF 上的聯絡人姓名與 email。",
+      "seen_where": "PDF 第 2 頁的機構資料欄位。",
+      "why_excluded": "個人資料，不抄進任何檔案、不放進正文、不放進查核報告，也不得用於任何請求。查核代理重抓這份 PDF 時會看到，請一樣跳過。"
+    }
+  ],
+  "overlaps_existing_article": [
+    "ai-news-frontier-governance-20260528（本篇第二個結尾連結）：寫 OpenAI 前沿治理框架的 50 人、10 億美元風險門檻與三級風險分級，講的是前沿『模型』要不要受管；本篇講的是已經在路上跑、在廠裡動的機器要留下什麼安全證據。兩者都叫『治理』但層次完全不同，不可以重講那些門檻數字。",
+    "ai-news-openai-frontier-standards-20260921（同批 A2，尚未發布）：那篇寫 OpenAI 主張要建立什麼制度（兩個支柱、標準不是 license 也不是上市前審查、各國自行決定是否入法）。本篇的界線是：只寫實體機器這一側既有的標準與檢驗機制（ISO 26262、IEC 61508、ISO 13849、ISO/IEC 17020、UN-R），不談前沿模型的制度設計；也不可以寫成 NVIDIA 在回應 OpenAI，兩邊的頁面都沒有提到對方。若 A2 反過來引用本篇，由協調者處理，本篇不主動連過去。",
+    "ai-news-nvidia-hugging-face-20260903：同一家公司，但寫的是收購案的公告與未說明事項；本篇不重述併購，也不比較兩件事。",
+    "ai-news-nvidia-rubin-20260105：NVIDIA Rubin 在 CES 的算力世代；本篇不談算力規格與世代更替。",
+    "tech-news-nvidia-vera-rubin-20260915：AI Infra Summit 的電力效率與 DSX；資料中心題。同一天（9/21）NVIDIA 另有一則 DSX Ready 公告，站主已裁定本批不寫，本篇也不要提。",
+    "tech-news-nvidia-mediatek-20260831、tech-news-nvidia-cuda-q-20260914：分別是投資案與量子模擬工具，與本篇無內容重疊，列在這裡只是提醒不要為了『NVIDIA 最近做了什麼』而順帶回顧。",
+    "ai-news-eu-transparency-20260802：歐盟 AI 透明度規則寫的是生成內容與聊天機器人的標示義務，和功能安全是兩回事；不要把兩種『規則』混在一起講。",
+    "ai-news-openai-australia-youth-safety-20260918：同樣用『安全』兩個字，但那是青少年線上安全。本篇要在第一段就把『安全』的意思釘在『機器動起來會不會傷到人』上，避免讀者誤讀。",
+    "ai-news-kimi-k3-bedrock-20260918：提到第三方稽核與標準，但主題是雲端服務的資料落地；不重疊，也不要互相引用。"
+  ],
+  "second_link": {
+    "slug": "ai-news-frontier-governance-20260528",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-frontier-governance-20260528",
+    "text": "OpenAI 前沿治理框架公開：50 人、10 億美元門檻怎麼來、誰追得到",
+    "verified": "2026-09-23 直接讀 apps/api/app/guides/content/ai-news-frontier-governance-20260528.json：檔案存在，locales 有 zh-TW／en／ja／ko／zh-CN，news_date 2026-05-28、display_order 153，zh-TW title 逐字等於上面的 text。撰稿時照抄，一個字都不要改。"
+  },
+  "editorial_brief": "讀者是台灣一般讀者，他看到的畫面是『機器人要在人身邊工作了』，他真正想知道的是『誰替這些機器背書、背書到什麼程度』。這篇的骨架不是 Halos 有哪些元件（那是型錄），而是**同一件事有四種強度不同的說法，而官方在同一篇文章裡把四種都用上了**：已經認證（TÜV SÜD 對 DriveOS 6.0 就 ISO 26262 ASIL D）、還在檢驗（TÜV Rheinland 對 IGX Thor、Halos OS、Holoscan Sensor Bridge 的認證準備度）、認可一間檢驗機構（ANAB 對 NVIDIA 自家的 Halos AI Systems Inspection Lab，ISO/IEC 17020）、以及設計上支援某些標準（IGX Thor 對 IEC 61508、ISO 13849）。把這四個詞的差別講清楚，讀者就學會了看任何一家廠商的安全宣傳。第二個值得寫的是**檢驗實驗室的性質**：ANAB 自己的證書檔案把它登記成 Type C（second party）檢驗機構，檢驗方式是審閱文件，對照的是 NVIDIA 自己的安全要求文件，認可效期到 2027 年 1 月 2 日；NVIDIA 官方也寫最終的系統級認證仍由獨立第三方機構做。這不是在指控誰，而是把『檢驗報告』與『系統認證』分開。第三是**台灣讀者的位置**：四個頁面都沒有提到台灣，ANAB 認可被說成在 80 國受承認、只舉了中國當例子，台灣在不在內官方沒寫——照實寫『未見』，不要補、不要推論。第四是**怎麼自己查**：讀者可以到 NVIDIA AI Trust Center 的 Halos 頁看目前列出的元件與成員，並從那一頁的常見問題點進 ANAB 的證書與認可範圍檔案，自己看效期與涵蓋的標準。外部預測數字（ABI Research、Omdia）只放在『為什麼現在談這件事』那一段，一次講完，標題與摘要不放。全篇不出現『本文』，指涉自己用『這一篇』；不要每句都掛『官方』，歸因集中在第一次出現的地方；不寫購買建議、不比較廠牌、不寫攻擊手法。",
+  "must_not_write": [
+    "不可以把 9 月 21 日換算成 9 月 22 日。頁面時刻 16:00 是整點排程佔位（article:published_time 2026-09-21T16:00:46+00:00），依 DELTA-4-7 第 10 條不換算台北時間；正文第一段寫 2026 年 9 月 21 日，且不要寫出任何時刻。",
+    "不可以把 4,900 萬台自駕車或 6,000 萬台工業機器人寫成 NVIDIA 的數字、承諾或目標。它們是 ABI Research 與 Omdia 的預測，每次出現都要帶年份（2035 年／2026 至 2035 年）與機構名，而且原始報告本站讀不到（一個是登入牆、一個回 403），要在正文交代這一點。標題與摘要一律不放這兩個數字。",
+    "不可以把『TÜV Rheinland 正在檢驗（is inspecting）認證準備度』寫成『已通過認證』『已取得認證』。機器人端目前沒有完成的功能安全認證。",
+    "不可以把 ANAB 的認可寫成『NVIDIA 的產品通過 ANAB 認證』。ANAB 認可的是一間檢驗機構（NVIDIA 自家的 Halos AI Systems Inspection Lab）符合 ISO/IEC 17020，不是替任何車輛、晶片或機器人發認證。",
+    "不可以把 Halos AI Systems Inspection Lab 寫成『獨立第三方機構』。ANAB 的檔案登記的是 Type C（second party），NVIDIA 自己也寫最終認證由獨立第三方機構做。反過來也不可以寫成『所以不可信』或暗示造假——只陳述登記類別與官方自己的分工說法，不加價值判斷，也不自行解釋 Type A／B／C 的定義（本輪沒有讀標準本文）。",
+    "不可以寫『Halos 是唯一的實體 AI 全堆疊安全系統』。那是 NVIDIA 的宣稱（first and only），一定要寫成『NVIDIA 表示』；本站沒有比較過其他方案，也不要自己說它是第一或唯一。",
+    "不可以把機器人頁的『safety-certified operating system』當定論。同一天的部落格寫 Halos OS 在機器人端還在檢驗認證準備度；兩個官方頁措辭不一致，要兩邊都寫、各自標出處，並以帶限定詞的那一版為準。",
+    "不可以把『level 4-ready』寫成『已經是 L4 自駕車』，也不可以寫成這些車已經在載客或上路營運。",
+    "不可以說 Digit 5 已經在倉庫工作或已經出貨。官方是進行式與未來式：Agility 正在整合 IGX Thor 與 Halos Core，Digit 將會是第一台出貨搭載 Halos OS 的量產機器人。",
+    "不可以把 Halos Core for IGX 寫成已經公開提供。它是早期存取、限已註冊開發者，Outside-In Safety Blueprint 在機器人頁也寫是早期存取。",
+    "不可以把 IGX Thor『設計上支援 IEC 61508 與 ISO 13849』寫成『已符合』或『已認證』那些標準，也不可以把 including 那串標準當成完整清單。",
+    "不可以由『ANAB 的認可在 80 國受承認，包含中國』推論台灣在內或不在內，也不可以在正文裡對這句話做任何政治性的延伸。照實寫官方只舉了這一個例子、沒有提到台灣。",
+    "不可以寫 Advantech、NexCOBOT 是台灣公司。四個來源都沒有寫任何公司的國籍。",
+    "不可以把檢驗實驗室的成員名單寫成完整名單或數出家數（官方用 include），也不可以數 nvidia.com 頁面上的合作夥伴磚塊或引言數量——那是會變的版面。",
+    "不可以寫成產品發表稿：沒有價格、沒有上市日、沒有台灣供貨時程，也不要出現購買或選購建議。",
+    "不可以寫成 NVIDIA 在回應 OpenAI 同日的標準倡議，或把本篇與前沿模型治理混為一談（同批 A2 寫那一題）。",
+    "不可以描述任何攻擊手法或安全漏洞的利用方式；本篇談的是功能安全與認證機制。",
+    "不可以引用 ANAB PDF 裡的聯絡人姓名或 email，也不可以請求部落格裡那個 outlook safelinks 轉址網址（它的查詢字串夾帶個人 email）。",
+    "正文不要出現『本文』兩個字（DELTA-4-7 第 14 條）：查核日那句寫成『這一篇的資料在 2026 年 9 月 23 日查核』這類直接說話的句子。",
+    "不要每一句都掛『官方表示』。歸因要做，但集中在第一次出現與所有廠商宣稱處；不要把查證流水帳寫進正文或 description。"
+  ],
+  "live_data_warnings": [
+    "兩個 nvidia.com AI Trust Center 頁面是會持續改版的行銷頁（HTML 的 nv-pub-date 分別是 2026-06-22 與 2026-06-26），上面的成員磚塊、引言、常見問題與『早期存取』狀態都可能隨時改變。凡是取自這兩頁的敘述都要繫在 2026-09-23 這個查核日上，而且不要清點名單數量。",
+    "這兩頁的文字裡會抽出一長串國家名（含『台灣 (Taiwan)』與 Taiwan），那是網站自己的地區切換選單與表單的國家下拉，不是任何清單或涵蓋範圍。絕對不要把它讀成『台灣在名單上』，也不要引用或清點。",
+    "ANAB 的證書與認可範圍檔案是活的：檔名帶 06-06-2025、範圍是版本 002，證書效期到 2027 年 1 月 2 日，ANAB 也明寫證書必須搭配『現行的』範圍文件才有效。正文引用時要寫明是哪一版、查核日是哪一天，並提醒讀者自己去看時可能已經更新。",
+    "部落格頁尾的 Recent News 區塊是滾動的最新文章列表，會隨時間改變，不可引用、不可清點。",
+    "ABI Research 與 Omdia 的數字是有目標年份的預測（2035 年、2026–2035 年），不是現況統計，也不是會逐月更新的即時數據；寫的時候一定要帶年份，不可以寫成『目前有多少台』。",
+    "文章正文的超連結目標（例如 Halos 技術白皮書 PDF、GitHub 的 Outside-In Safety Blueprint）本輪沒有全部開啟，那些頁面的狀態可能與部落格的描述不同步。"
+  ],
+  "hero_label": "每一層都要留下證據",
+  "diagram": {
+    "title": "實體 AI 安全的四層證據",
+    "caption": "NVIDIA 在 2026 年 9 月 21 日這篇文章裡列出的實體 AI 安全分層，以及檢驗報告與系統認證的分界，資料在 2026 年 9 月 23 日查核。",
+    "nodes": [
+      [
+        "硬體層",
+        "晶片內建功能安全島"
+      ],
+      [
+        "軟體層",
+        "作業系統與安全防護"
+      ],
+      [
+        "驗證層",
+        "模擬與真實環境測試"
+      ],
+      [
+        "檢驗報告",
+        "不等於最終系統認證"
+      ]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "把標題、description、summary 五句、十三個段落、表格四列與 caption、圖解 caption 與 alt、六題 FAQ、callout、兩個結尾連結、四條 sources 與研究紀錄的 diagram／hero_label 拆成 124 條可查核主張，逐條回一手來源。四條 sources 於 2026-09-23 用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'（同一主機間隔 ≥1.5 秒、任何請求都沒有帶入姓名或 email）重抓：blogs.nvidia.com 200／121,824 bytes、safety-certification 200／665,291 bytes、halos/robotics 200／761,431 bytes、ANAB PDF 200／434,445 bytes（系統 python 的 pypdf 抽出 6 頁），四份都讀到正文，bytes 與研究紀錄一致。HTML 先刪 <!-- --> 註解、再 html.unescape、&nbsp; 換空白，所有引文以壓縮空白後的連續子字串比對：內容包裡 17 段英文引文全部命中、研究紀錄 4 條 sources 與 38 條 verified_facts 的 verbatim_quote 全部命中（0 失敗）。另外重抓了兩條被排除的預測報告連結（my.abiresearch.com 200／17,744 bytes 登入牆、omdia.tech.informa.com 200／221,965 bytes 訂閱牆），只用來核對正文對「讀不到」的描述，沒有拿來撐任何事實。核對腳本與原始檔留在 C:\\Users\\x8120\\mokaair-work\\news47\\_tools\\ai-news-nvidia-physical-ai-safety-20260921\\。",
+    "claims_checked": 124,
+    "changes": [
+      {
+        "claim": "標題把「評估」列為三種說法之一，但全篇只有標題出現這兩個字，正文與表格的四種說法是已認證／還在檢驗中／機構獲得認可／設計上支援。來源裡確實有一項評估（TÜV Rheinland 對 DRIVE AV 的 UNECE 安全評估），但這篇從頭到尾沒有寫它。",
+        "before": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+        "after": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "摘要第二句把 ISO 26262 ASIL D 的對象寫成「相關工程流程」；來源寫的是 Automotive Product Lifecycle 軟體流程與 DriveOS 6.0 取得 ASIL D，車用工程流程取得的是 ISO/SAE 21434。",
+        "before": "TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與相關工程流程認證到 ISO 26262 ASIL D",
+        "after": "TÜV SÜD 已把 NVIDIA 的 DriveOS 6.0 與車用產品生命週期軟體流程認證到 ISO 26262 ASIL D",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "表格第一列把兩個標準一起掛在「DriveOS 6.0 與相關工程流程」上，等於說 DriveOS 6.0 也通過了 ISO/SAE 21434；來源沒有這樣寫。",
+        "before": "[\"已完成認證\", \"自駕車：DriveOS 6.0 與相關工程流程\", \"通過 ISO 26262 ASIL D、ISO/SAE 21434\", \"TÜV SÜD\"]",
+        "after": "[\"已完成認證\", \"自駕車：DriveOS 6.0、車用產品生命週期軟體流程與車用工程流程\", \"DriveOS 6.0 與產品生命週期軟體流程通過 ISO 26262 ASIL D；車用工程流程通過 ISO/SAE 21434\", \"TÜV SÜD\"]",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "「市場研究機構」是四條來源都沒有的描述；「全球」也不在 Omdia 那句話裡（原文只寫 roughly 60 million industrial robots will be deployed between 2026 and 2035，沒有地理範圍）；「到 2035 年前」與原文的 By 2035 差一個字。另外 Omdia 報告連結 2026-09-23 本輪重抓回 HTTP 200／221,965 bytes（頁面寫 A subscription is required to view this content），不再是研究紀錄當時的 403，「被拒絕存取」已不成立；ABI 仍是登入牆。",
+        "before": "市場研究機構 ABI Research 預測，到 2035 年前 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間全球約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下，ABI Research 原始報告要付費訂閱、Omdia 報告連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "after": "ABI Research 預測，到 2035 年 L3 至 L5 自駕車裝機量將達 4,900 萬台；Omdia 估計，2026 到 2035 年間約部署 6,000 萬台工業機器人。這兩個數字是外部機構的預測，不是 NVIDIA 的承諾；查核當下兩份原始報告都要訂閱才讀得到，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "FAQ 第四題與正文同一組問題（機構描述、By 2035、Omdia 連結狀態）。",
+        "before": "這兩個數字分別來自市場研究機構 ABI Research（預測到 2035 年前有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下，兩份原始報告都讀不到，一份要付費訂閱、另一份的連結被拒絕存取，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "after": "這兩個數字分別來自 ABI Research（預測到 2035 年有 4,900 萬台 L3 至 L5 自駕車）與 Omdia（估計 2026 到 2035 年間約部署 6,000 萬台工業機器人），不是 NVIDIA 自己的承諾或出貨目標。查核當下兩份原始報告都要訂閱才讀得到，這裡引用的是 NVIDIA 部落格轉述的說法。",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      },
+      {
+        "claim": "ANAB 的證書與認可範圍檔案從頭到尾沒有出現 Halos AI Systems Inspection Lab 這個名字，持證者印的是 NVIDIA Corporation；把 Type C 的登記直接說成「這間實驗室的類別」少了一步。",
+        "before": "而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab，讓它符合 ISO/IEC 17020、登記類別「TYPE C (SECOND PARTY) BODY」",
+        "after": "而是 NVIDIA 自家的檢驗實驗室 Halos AI Systems Inspection Lab；ANAB 的證書開給 NVIDIA Corporation，符合 ISO/IEC 17020，登記類別是「TYPE C (SECOND PARTY) BODY」",
+        "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+      },
+      {
+        "claim": "FAQ 第三題同一件事。",
+        "before": "依 ANAB 的證書檔案，這間實驗室登記的類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方",
+        "after": "ANAB 的證書與認可範圍檔案開給的是 NVIDIA Corporation，登記的檢驗機構類別是 Type C（second party），也就是第二方型檢驗機構，不是完全獨立的第三方",
+        "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+      },
+      {
+        "claim": "研究紀錄的 title 跟著內容包的新標題（check_article.py 會比對兩者）。",
+        "before": "NVIDIA 談實體 AI 安全：認證、評估與檢驗中是三件不同的事",
+        "after": "NVIDIA 談實體 AI 安全：已認證、檢驗中與機構認可是三件不同的事",
+        "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+      }
+    ],
+    "open_questions": [
+      "title_candidates[0] 仍是研究代理原本提的舊標題（含「評估」），沒有動；要不要同步由協調者決定。第三個候選「NVIDIA Halos 的安全分層：誰檢驗、檢驗到哪裡、哪些還沒完成」也完全撐得住，若協調者偏好不用「認可／認證」這種形近詞可以換。",
+      "Digit 的型號：部落格寫 its Digit 5 humanoid，機器人頁那句未來式寫的是 Digit, Agility's humanoid（沒有 5）。正文與 FAQ 把未來式那句掛在「Digit 5」上，是兩頁合併的結果；兩頁講的是同一台機器人，但嚴格說機器人頁沒有印出型號。",
+      "機器人頁另有一句 The NVIDIA IGX is a third-party assessed, safety-compliant System-on-a-Chip，與部落格「designed to support standards including IEC 61508 and ISO 13849」是第二組措辭落差（第一組是 Halos OS 的 safety-certified）。這一輪沒有把它寫進正文，如果第二輪覺得該補，字數要從別處挪。",
+      "預測報告的取得狀態是活資料：ABI 是登入牆、Omdia 這一輪已從 403 變成 200＋訂閱牆。正文現在寫「都要訂閱才讀得到」，比寫死狀態碼耐放，但若之後再變動要再改。",
+      "全篇「官方」出現 16 次（正文、FAQ、callout 合計）。歸因密度規則（開頭段 ≤1、任一段 ≤2 個歸因語）是過的，但若協調者要進一步壓低「官方」的重複，那是文字調整、不是事實問題，這一輪沒有動。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-7 第 10 條：頁面時刻 16:00（article:published_time 2026-09-21T16:00:46+00:00）是整點排程佔位，不換算台北時間；事件日維持 2026-09-21。本輪重抓的 meta 與 JSON-LD 與研究紀錄一致，正文第一段、slug 後綴、news_date 三者都寫 9 月 21 日，沒有出現任何時刻——維持原判。",
+      "指派表 A6：4,900 萬台與 6,000 萬台一律歸因給 ABI Research 與 Omdia，標題與摘要不放這兩個數字——查核後仍然成立（標題、description、summary 都沒有這兩個數字）。",
+      "研究紀錄 must_not_write：兩個官方頁對 Halos OS 的措辭不一致時以「還在檢驗」那一版為準，兩邊都要寫出來——正文第 8 段照做，維持。",
+      "研究紀錄 unverified_or_excluded：不得請求部落格裡 Advantech 那個夾帶個人 email 的 outlook safelinks 轉址網址，也不得抄 ANAB PDF 上的聯絡人姓名與 email——本輪都沒有請求、沒有抄錄，查核報告裡也沒有。",
+      "AI 垂直只有一個 callout、沒有投資免責段落——維持（內容包只有一個 callout）。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, did not write and did not run round 1)",
+      "checked_on": "2026-09-23",
+      "method": "重抓四條 sources 與兩條被排除的預測報告連結，全部用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'、同一主機間隔 ≥2 秒，UA／標頭／查詢字串沒有帶任何人的姓名或 email。bytes 與研究紀錄、第一輪完全相同：blogs.nvidia.com 200／121,824、safety-certification 200／665,291、halos/robotics 200／761,431、ANAB PDF 200／434,445（系統 python 的 pypdf 抽 6 頁／8,592 字元）；my.abiresearch.com 200／17,744（登入牆，頁面自印 Subscriber Content ✓ Full Reports）、omdia.tech.informa.com 200／221,965（頁面自印 A subscription is required to view this content）。範圍：第一輪改過的 13 條主張、第一輪新寫進去的 8 段字串逐字回一手來源、112 條 CONFIRMED 以 seed 20260923 抽樣三分之一（37 條）、研究紀錄 4＋38 條 verbatim_quote 與內容包 15 段英文引文的連續字串比對，合計 121 條。引文比對除了壓縮空白，另做一次「去掉所有空白」的比對，因為 nvidia.com 的行內 <a> 會在字中插入空白（例如 Agilit y、AVs ,），第一次比對的 7 個 MISS 全是這個原因，去空白後 0 失敗。",
+      "claims_checked": 121,
+      "changes": [
+        {
+          "claim": "第一輪把「ANAB 的證書開給 NVIDIA Corporation」補進正文第 9 段與 FAQ 第三題，但沒有跟到摘要第三句——摘要仍把 Type C 的登記直接掛在實驗室名下，與正文不一致（summary ⊆ 正文）。",
+          "before": "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構，登記類別是 Type C（second party），檢驗方式是審閱文件",
+          "after": "NVIDIA 自家的 Halos AI Systems Inspection Lab 通過 ANAB 認可為 ISO/IEC 17020 檢驗機構；ANAB 的證書開給 NVIDIA Corporation，登記類別是 Type C（second party），檢驗方式是審閱文件",
+          "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+        },
+        {
+          "claim": "同一個漏改：表格第三列的涵蓋對象只寫實驗室，第三欄卻掛著 ANAB 檔案上的登記類別。表格是讀者最會整段抄走的部分。",
+          "before": "[\"機構獲得認可\", \"NVIDIA 自家的 Halos AI Systems Inspection Lab\", ...]",
+          "after": "[\"機構獲得認可\", \"NVIDIA 自家的 Halos AI Systems Inspection Lab（證書開給 NVIDIA Corporation）\", ...]",
+          "source_url": "https://search.anab.org/public/organization_files/NVIDIA-Corporation-Cert-and-Scope-File-06-06-2025_1749243349.pdf"
+        },
+        {
+          "claim": "協調者裁定的第二組措辭落差：機器人頁常見問題「Is the NVIDIA IGX SoC safety certified?」的答句寫 The NVIDIA IGX is a third-party assessed, safety-compliant System-on-a-Chip，與部落格的 designed to support … including IEC 61508 and ISO 13849 不一致。文章第 5 段要讀者記住 IGX 用的是「支援」而非已認證，而第 13 段又請讀者自己去看那一頁，不寫這一句，讀者照做就會看到相反的措辭。照 must_not_write 第 7 條兩邊都寫、以帶限定詞的版本為準，接在第一組落差後面一個子句。",
+          "before": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準。",
+          "after": "（第 8 段句末）與 9 月 21 日說法不一致，這裡以「正在檢驗」版本為準；同一頁另稱 IGX 是「third-party assessed」（意為：經第三方查驗）的晶片，與部落格「設計上支援」的措辭同樣有落差。",
+          "source_url": "https://www.nvidia.com/en-us/ai-trust-center/halos/robotics/"
+        },
+        {
+          "claim": "騰字數用的第一處重複（不是但書）：第 12 段句末把第 6 段的 level 4-ready 但書再講一次。但書原文留在第 6 段「還不是已上路載客的 4 級自駕車」，一個字都沒動。",
+          "before": "（第 12 段句末）還沒出貨——前面的「level 4-ready」車輛同樣是準備階段，非已載客上路的 4 級自駕車。",
+          "after": "（第 12 段句末）還沒出貨。",
+          "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+        },
+        {
+          "claim": "騰字數用的第二處重複：同一句裡「NVIDIA 自稱」與「這是廠商自己的說法」講同一件事。歸因留在「NVIDIA 自稱」，界線句「本站沒有比較其他公司的方案」保留。",
+          "before": "（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），這是廠商自己的說法，本站沒有比較其他公司的方案。",
+          "after": "（意為：實體 AI 的第一個、也是唯一的全堆疊安全系統），本站沒有比較其他公司的方案。",
+          "source_url": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/"
+        }
+      ],
+      "open_questions": [
+        "（已由協調者裁定結案）第 8 段新增的子句原本把 third-party assessed 意譯成「經第三方評估」，把「評估」帶進了正文。協調者裁定改為「經第三方查驗」，正文的「評估」回到 0 次，標題的三種強度（已認證、檢驗中、機構認可）不變；意譯字數相同，段落仍是 2,996 字。",
+        "title_candidates[0] 仍是第一輪沒動的舊標題（含「評估」），第二輪同樣沒動，留給協調者。",
+        "Digit 型號的落差（部落格 its Digit 5 humanoid／機器人頁 Digit, Agility's humanoid）第二輪覆核仍然存在，維持第一輪的判斷：兩頁講同一台機器人，正文寫 Digit 5 可接受，但嚴格說未來式那一句沒有印型號。",
+        "第一輪說四頁搜價格字串 0 筆；第二輪實測兩個 nvidia.com 頁面各有 1 筆 pricing，出處是網站自己的地區切換視窗那句 Visit your regional NVIDIA website for local content, pricing, and where to buy…，與 Taiwan 出現的位置是同一塊版面。文章的說法（這不是產品發表、沒有價格）不受影響，不需要改字，但那個「0 筆」的說法本身要修正。",
+        "預測報告的取得狀態今天與第一輪相同：Omdia 200＋訂閱牆（A subscription is required to view this content）、ABI 200＋登入牆，牆上自印 Subscriber Content ✓ Full Reports。正文寫「兩份原始報告都要訂閱才讀得到」對得上；這是活資料，之後要再確認。"
+      ],
+      "coordinator_rulings": [
+        "指派訊息：第二組措辭落差「只有在能從別處刪掉重複、把字數騰出來時才可以加一個子句，正文必須 ≤3,000」。已加：刪掉兩處重複（44＋10 字）、加上 68 字的子句，段落字數 2,982 → 2,996，check_article.py 印 OK。刪掉的兩處都是重複敘述，沒有刪掉任何但書、限定詞或歸因。",
+        "指派訊息：新標題維持不動，並確認研究紀錄的 title 已同步——第二輪進場時就已經同步（check_article.py 第 305 行會比對），沒有再動。",
+        "DELTA-4-7 第 10 條：16:00 是佔位時刻，事件日維持 2026-09-21，不換算。第二輪重抓的 meta 與第一輪相同，維持。",
+        "指派表 A6：4,900 萬與 6,000 萬一律歸因 ABI Research／Omdia，標題與摘要不放——查核後仍成立。",
+        "協調者裁定（第二輪交付後）：third-party assessed 一律意譯為「經第三方查驗」，正文不得出現「評估」；標題的三種強度維持已認證、檢驗中、機構認可，正文 ≤3,000。已照做，段落字數維持 2,996，check_article.py 仍印 OK。",
+      "研究紀錄 unverified_or_excluded：第二輪同樣沒有請求 Advantech 那個夾帶個人 email 的 safelinks 轉址網址，ANAB PDF 第 2 頁的聯絡人姓名與 email 沒有抄進任何檔案（本物件與查核報告裡都沒有）。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}
