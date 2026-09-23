@@ -1,14 +1,14 @@
 ---
 id: 2026-09-22-catchtable-ranking-discovery-batch-1
 title: CatchTable 排行榜反推首爾新店家：第一批（本機瀏覽器路線，沿用現有匯入指令）
-status: open
+status: in-progress
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-23T00:05:44Z
 created_at: 2026-09-22T15:26:39Z
 completed_at:
-branch:
+branch: claude/catchtable-ranking-discovery-batch-1-b4bef6
 depends_on: []
 scope:
   - apps/api/app/foods/data/catchtable
