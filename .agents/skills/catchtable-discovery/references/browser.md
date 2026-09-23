@@ -111,4 +111,5 @@ dock 的「今日公休」是「現在不在營業時段」，不是判定依據
 - 官方來源順序：觀光局店家頁（Visit Seoul `KOP…`／`ENP…`／`TCP…` 同尾碼同一頁；KTO 韓文 `detail/ms_detail.do?cotid=` 與英文 `contentsView.do?vcontsId=`；Visit Busan、Visit Jeju、`tour.daegu.go.kr`）→
   區廳（江南區 `visitgangnam.net`、首爾觀光財團 Taste of Seoul）→ 政府名冊 → 店家官網或母公司門市清單（要列這家分店的地址）。
   `korean.visitkorea.or.kr` 店家頁的地址是前端載入、內建瀏覽器導向會被彈回，改用英文站或 KTO 韓文的 `ms_detail` 網址。
+- `/info` 分頁「網站」欄的網址原樣記進 `catchtable.website`（Instagram、smartstore 也記）；找不到官方頁時 `merchant_platform` 來源只能是這家的 CatchTable 店頁／`/info`，或等於這個欄位的網址，引文仍要含店名與地址。
 - 分片檔每家寫完就覆寫；回報只回一張表。研究代理判訂位時分頁在背景，**一定要用上面的包裝片段**，否則會把可訂位的店看成候位。

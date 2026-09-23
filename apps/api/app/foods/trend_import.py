@@ -69,6 +69,9 @@ CURATED_MERCHANT_SLUGS = frozenset(CURATED_MERCHANTS_BY_SLUG)
 SOURCE_SCOPES: dict[str, str] = {
     "merchant_official": "merchant_website",
     "official_tourism": "merchant_listing",
+    # The shop's own page on a reservation platform, or the social account that page links
+    # to: weaker than the two above, shown separately on the public card (2026-09-23).
+    "merchant_platform": "merchant_listing",
 }
 SOURCE_CLAIMS: tuple[str, ...] = ("display_name", "address")
 MAX_CATEGORIES = 3

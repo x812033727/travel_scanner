@@ -91,7 +91,9 @@ FoodKind = Literal["main", "noodle_soup", "street_food", "dessert", "drink"]
 ReviewStatus = Literal["pending", "approved", "rejected", "disabled"]
 MapMatchStatus = Literal["unverified", "verified", "ambiguous", "disabled"]
 PlatformStatus = Literal["verified", "not_found", "ambiguous", "disabled"]
-MerchantSourceType = Literal["official_tourism", "merchant_official", "michelin_licensed"]
+MerchantSourceType = Literal[
+    "official_tourism", "merchant_official", "michelin_licensed", "merchant_platform"
+]
 MerchantSourceScope = Literal[
     "destination_context", "merchant_listing", "merchant_website", "coordinates"
 ]
@@ -193,6 +195,8 @@ class FoodMerchantSourcePayload(BaseModel):
             raise ValueError("米其林授權來源必須同時填寫年度與級別")
         if self.source_scope == "destination_context" and self.claims:
             raise ValueError("目的地背景來源不可佐證特定店家欄位")
+        if self.source_type == "merchant_platform" and self.source_scope != "merchant_listing":
+            raise ValueError("平台／社群登記來源只能佐證店家名錄（merchant_listing）")
         return self
 
 
