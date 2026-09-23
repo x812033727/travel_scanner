@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-hosting-transfer-guides-batch025
 title: Release localized hosting transfer guides batch025
-status: open
+status: in-progress
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: codex-batch025-release
+claimed_at: 2026-09-23T18:06:20Z
 created_at: 2026-09-23T17:43:35Z
 completed_at:
-branch:
+branch: codex/article-localization-025-release-record
 depends_on:
   - 2026-09-23-localize-four-hosting-transfer-guides-batch025
 scope:
