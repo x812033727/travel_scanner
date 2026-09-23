@@ -12,7 +12,7 @@ branch: claude/merchant-platform-sources
 depends_on: []
 scope:
   - apps/api/app/models.py
-  - apps/api/migrations/versions/0083_merchant_platform_source_type.py
+  - apps/api/migrations/versions/0083_merchant_platform_source.py
   - apps/api/app/foods/admin_router.py
   - apps/api/app/foods/trend_import.py
   - apps/api/tests/test_trend_import.py
@@ -85,3 +85,4 @@ python tools/catchtable_build_batches.py --candidates <一個含 merchant_platfo
 - 公開守門不改：任一 `is_current` 來源就算有來源；一家店只有 `merchant_platform` 來源時，核不核准仍是後台逐家的決定。
 - 座標規則不變：平台頁不是耐久座標來源。
 - 2026-09-23 實作：公開卡片的來源摘要「N 筆官方佐證」改成中性的「N 筆佐證」（五語系），否則只有平台來源的店會被標成官方。`mypy tests` 在 Windows 本機有一個既有的 `UnixStreamServer` 錯誤，與本票無關；migration 0083 的整合測試在本機無 PostgreSQL 時跳過，靠 CI 跑。
+- revision id 上限 32 字元（`alembic_version.version_num` 是 VARCHAR(32)，`tests/test_schema.py` 會擋）：原本的 `0083_merchant_platform_source_type` 34 字元讓 CI 的 api 與 full-stack-smoke 都紅，改成 `0083_merchant_platform_source`。

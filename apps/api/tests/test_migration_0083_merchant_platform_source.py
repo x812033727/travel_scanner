@@ -32,7 +32,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0083_merchant_platform_source_type"
+MIGRATION = "0083_merchant_platform_source"
 TABLE = "food_merchant_sources"
 CONSTRAINT = "ck_food_merchant_source_type"
 OLD_CHECK = "source_type IN ('official_tourism', 'merchant_official', 'michelin_licensed')"

@@ -1,6 +1,6 @@
 """Let a merchant source be the shop's own reservation-platform page or its linked social account.
 
-Revision ID: 0083_merchant_platform_source_type
+Revision ID: 0083_merchant_platform_source
 Revises: 0082_travel_food_subtopics
 
 ``food_merchant_sources.source_type`` has admitted ``official_tourism``, ``merchant_official``
@@ -20,7 +20,7 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0083_merchant_platform_source_type"
+revision: str = "0083_merchant_platform_source"
 down_revision: str | None = "0082_travel_food_subtopics"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
