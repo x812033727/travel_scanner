@@ -43,6 +43,7 @@ from app.models import (
     TravelServiceProduct,
     User,
 )
+from app.news_automation.models import NewsCandidate
 from app.problems import AppError
 from app.schema import expected_schema_revision
 
@@ -56,6 +57,10 @@ NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
     AdminNavigationItem(
         id="guides", group="content", href="/admin/guides", label_key="guides",
         capability="content.read",
+    ),
+    AdminNavigationItem(
+        id="news", group="content", href="/admin/news", label_key="news",
+        capability="content.read", badge_key="news_review_pending",
     ),
     AdminNavigationItem(
         id="hotspots", group="content", href="/admin/hotspots", label_key="hotspots",
@@ -161,6 +166,10 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
         ).label("hotels_pending"),
         _scalar_count(Job, Job.status == "pending").label("community_jobs_pending"),
         _scalar_count(
+            NewsCandidate,
+            NewsCandidate.status.in_(("manual_review", "shadow_review", "failed")),
+        ).label("news_review_pending"),
+        _scalar_count(
             DeploymentRun, DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES)
         ).label("deployments_active"),
         _scalar_count(ProviderHealth, ProviderHealth.status != "healthy").label(
@@ -180,6 +189,7 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             "merchants_pending",
             "guides_pending",
             "hotels_pending",
+            "news_review_pending",
         )
     )
     values["jobs_active"] = values["community_jobs_pending"]
@@ -189,7 +199,7 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
 
 async def pending_counts(session: AsyncSession) -> dict[str, int]:
     redis = get_redis()
-    cache_key = "admin:operations:pending:v1"
+    cache_key = "admin:operations:pending:v2"
     try:
         cached = await redis.get(cache_key)
         if cached:

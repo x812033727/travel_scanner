@@ -145,6 +145,23 @@ services:
       postgres: { condition: service_healthy }
       redis: { condition: service_healthy }
 
+  news-scheduler:
+    image: travel-scanner-api:${RELEASE_SHA:-local}
+    profiles: ["news"]
+    restart: unless-stopped
+    env_file: ${RUNTIME_ENV_FILE:-.env}
+    environment:
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
+    command: ["python", "-m", "app.news_automation.scheduler"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
   community-sweeper:
     image: travel-scanner-api:${RELEASE_SHA:-local}
     restart: unless-stopped
