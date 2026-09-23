@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-catchtable-5-naver-skill-naver
 title: CatchTable 兩批收尾：5 家只差座標或 Naver 條目的店，與 skill 的 Naver 分工修正
-status: open
+status: in-progress
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-23T10:23:33Z
 created_at: 2026-09-23T10:10:43Z
 completed_at:
-branch:
+branch: claude/catchtable-leftovers
 depends_on: []
 scope:
   - docs/catalog-content-reviews/catchtable-batch-2.md
