@@ -22,6 +22,9 @@ function upstreamTimeout(endpoint: string): number {
   return UPSTREAM_TIMEOUT_MS;
 }
 const SUPPORTED_LOCALES = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);
+const NEWS_ASSET = /^news-assets\/[a-z0-9][a-z0-9.-]{0,159}\.(?:webp|svg)$/;
+const NEWS_ASSET_TYPES = new Set(["image/webp", "image/svg+xml"]);
+const MAX_NEWS_ASSET_BYTES = 5 * 1024 * 1024;
 
 function problem(status: number, code: string, detail: string) {
   return NextResponse.json(
@@ -56,6 +59,26 @@ async function limitedResponseText(response: Response): Promise<string> {
     offset += chunk.byteLength;
   }
   return new TextDecoder().decode(result);
+}
+
+async function limitedResponseBytes(response: Response, maximum: number): Promise<Uint8Array> {
+  const declared = Number(response.headers.get("content-length") || 0);
+  if (Number.isFinite(declared) && declared > maximum) throw new Error("upstream_response_too_large");
+  if (!response.body) return new Uint8Array();
+  const reader = response.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > maximum) { await reader.cancel(); throw new Error("upstream_response_too_large"); }
+    chunks.push(value);
+  }
+  const result = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) { result.set(chunk, offset); offset += chunk.byteLength; }
+  return result;
 }
 
 async function proxy(request: NextRequest, context: Context) {
@@ -144,9 +167,12 @@ async function proxy(request: NextRequest, context: Context) {
   const quoteSearch = /^travel-services\/[a-f0-9-]+\/hotel-quotes$/.test(endpoint);
   const timeout = setTimeout(() => controller.abort(), verifyOffer ? Math.max(45_000, UPSTREAM_TIMEOUT_MS) : quoteSearch ? Math.max(30_000, UPSTREAM_TIMEOUT_MS) : upstreamTimeout(endpoint));
   let upstream: Response;
+  const newsAssetRequest = ["GET", "HEAD"].includes(request.method) && NEWS_ASSET.test(endpoint);
   try {
     upstream = await fetch(url, {
-      method: request.method,
+      // The API route deliberately exposes a GET-only asset read. Satisfy browser/CDN
+      // HEAD probes through the same validation path, then discard the body below.
+      method: request.method === "HEAD" && newsAssetRequest ? "GET" : request.method,
       headers,
       body,
       cache: "no-store",
@@ -171,6 +197,32 @@ async function proxy(request: NextRequest, context: Context) {
     // Server-sent events stay open by design, so the upstream deadline only covered the headers.
     clearTimeout(timeout);
     return preserveRequestId(new Response(upstream.body, { status: upstream.status, headers: { "Content-Type": "text/event-stream", "Cache-Control": "private, no-store", "X-Accel-Buffering": "no" } }), upstream);
+  }
+  const newsAsset = newsAssetRequest;
+  if (newsAsset && upstream.ok) {
+    const contentType = upstream.headers.get("content-type")?.split(";", 1)[0]?.toLowerCase() || "";
+    if (!NEWS_ASSET_TYPES.has(contentType)) {
+      clearTimeout(timeout);
+      return failure(502, "unsafe_upstream_content_type", "API 回傳了不允許的圖片格式");
+    }
+    try {
+      const bytes = await limitedResponseBytes(upstream, MAX_NEWS_ASSET_BYTES);
+      clearTimeout(timeout);
+      const body = new ArrayBuffer(bytes.byteLength);
+      new Uint8Array(body).set(bytes);
+      return preserveRequestId(new Response(request.method === "HEAD" ? null : body, {
+        status: upstream.status,
+        headers: {
+          "Content-Type": contentType,
+          "Cache-Control": upstream.headers.get("cache-control") || "public, max-age=31536000, immutable",
+          "ETag": upstream.headers.get("etag") || "",
+          "X-Content-Type-Options": "nosniff",
+        },
+      }), upstream);
+    } catch {
+      clearTimeout(timeout);
+      return failure(502, "upstream_response_too_large", "API 回應超過允許大小");
+    }
   }
   let text: string;
   try {
@@ -256,6 +308,7 @@ async function proxy(request: NextRequest, context: Context) {
 }
 
 export const GET = proxy;
+export const HEAD = proxy;
 export const POST = proxy;
 export const PUT = proxy;
 export const PATCH = proxy;

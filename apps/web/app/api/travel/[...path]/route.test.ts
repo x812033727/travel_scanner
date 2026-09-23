@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { NextRequest } from "next/server";
-import { POST } from "./route";
+import { GET, HEAD, POST } from "./route";
 import { preserveRequestId } from "./request-id";
 import { forwardedAnalyticsSession, renewedSession, stepUpSession, upstreamLocale } from "./proxy-context";
 
@@ -77,6 +77,69 @@ describe("travel BFF request tracing", () => {
     const response = preserveRequestId(new Response("{}"), upstream);
 
     expect(response.headers.get("x-request-id")).toBe("route-preview-7f98");
+  });
+});
+
+describe("news asset binary BFF", () => {
+  const path = ["news-assets", "0123456789abcdef0123456789abcdef-hero.webp"];
+
+  it("streams only the stable allow-listed image path with immutable cache headers", async () => {
+    const bytes = new Uint8Array([82, 73, 70, 70]);
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(bytes, {
+      headers: {
+        "Content-Type": "image/webp",
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "ETag": '"digest"',
+      },
+    })));
+    const response = await GET(
+      new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}`),
+      { params: Promise.resolve({ path }) },
+    );
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toBe("image/webp");
+    expect(response.headers.get("cache-control")).toContain("immutable");
+    expect(response.headers.get("x-content-type-options")).toBe("nosniff");
+    expect([...new Uint8Array(await response.arrayBuffer())]).toEqual([...bytes]);
+  });
+
+  it("answers HEAD through the validated GET path without returning image bytes", async () => {
+    let upstreamMethod = "";
+    vi.stubGlobal("fetch", vi.fn(async (_url: string, init?: RequestInit) => {
+      upstreamMethod = init?.method ?? "";
+      return new Response(new Uint8Array([82, 73, 70, 70]), {
+        headers: { "Content-Type": "image/webp" },
+      });
+    }));
+    const response = await HEAD(
+      new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}`, { method: "HEAD" }),
+      { params: Promise.resolve({ path }) },
+    );
+    expect(response.status).toBe(200);
+    expect(upstreamMethod).toBe("GET");
+    expect((await response.arrayBuffer()).byteLength).toBe(0);
+  });
+
+  it("refuses an unexpected upstream type and an oversized response", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => new Response("<script>", {
+      headers: { "Content-Type": "text/html" },
+    })));
+    const wrongType = await GET(
+      new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}`),
+      { params: Promise.resolve({ path }) },
+    );
+    expect(wrongType.status).toBe(502);
+    expect((await wrongType.json()).code).toBe("unsafe_upstream_content_type");
+
+    vi.stubGlobal("fetch", vi.fn(async () => new Response(new Uint8Array(), {
+      headers: { "Content-Type": "image/webp", "Content-Length": String(5 * 1024 * 1024 + 1) },
+    })));
+    const oversized = await GET(
+      new NextRequest(`https://mokaair.test/api/travel/${path.join("/")}`),
+      { params: Promise.resolve({ path }) },
+    );
+    expect(oversized.status).toBe(502);
+    expect((await oversized.json()).code).toBe("upstream_response_too_large");
   });
 });
 
