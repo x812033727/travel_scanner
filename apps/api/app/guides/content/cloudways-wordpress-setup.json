@@ -228,6 +228,878 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Building a site on Cloudways: servers, applications and account verification",
+      "description": "Cloudways manages servers, applications and projects separately, each with its own role and costs. This guide covers WordPress on Flexible: account activation, server creation, adding an application, connecting a domain and pre-launch checks. It explains why stopping a server may not stop charges, and how to verify official support channels and handle individual account-verification requests so that costs and maintenance responsibilities are clear before you start.",
+      "hero": {
+        "src": "/guides/cloudways-wordpress-setup/hero-en.jpg",
+        "alt": "Account documents, a cloud server and an application screen are connected; no provider brand imagery is used.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When you build a site on Cloudways, the server is the runtime environment, an application is a website inside it, and projects organize your work. Keeping these levels separate makes it easier to understand the difference between adding a website, adding a server and changing a plan. Do not let an installed WordPress site distract you from other resources in the account that are still generating charges."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide mainly follows the public documentation for Cloudways Flexible. Autonomous is a different product experience: check its own deployment and billing terms rather than applying Flexible server steps directly. No testing in a user's account was performed, and no speed ranking of cloud providers is offered. Choose according to your website's needs, available regions and actual account conditions."
+        },
+        {
+          "type": "heading",
+          "text": "Complete account activation and any individual verification requirements",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Register through the official Cloudways entry point, using an email account you can continue to receive messages at, and follow the required email or other activation steps on screen. If the account is awaiting verification, save the message and the time it appeared, then confirm the next step through official support. This status is unrelated to DNS settings; changing the website's domain will not remove an account-level restriction."
+        },
+        {
+          "type": "paragraph",
+          "text": "No single document checklist or approval time applicable to every new account was found, so there is no promise that sending a particular set of documents will guarantee approval. If you receive a request for additional documents, first use your official account to confirm that the request is genuine, how to submit them and what is necessary, then handle the individual case. Do not send identity documents to an old email address copied from an online article, or create false details or duplicate accounts to try to bypass verification."
+        },
+        {
+          "type": "heading",
+          "text": "Check the billing units and stopping conditions before creating resources",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways Flexible billing depends on the servers and add-ons you use, with charges calculated and invoiced under the applicable rules. Before creating anything, record the provider, size, region, estimated cost and extra services. A monthly estimate does not promise that multiple environments will cost the same total amount, nor does it remove storage, transfer or other applicable extras."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official billing documentation warns that stopping a server or leaving it unused may not stop charges; different infrastructure providers may retain resources such as disks and IP addresses. When ending a trial or removing an environment, save your data first, then follow the product's process to delete unused resources and disable paid add-ons, and check subsequent invoices. A website with no visitors is not evidence that it costs nothing."
+        },
+        {
+          "type": "heading",
+          "text": "Choose a server for the work your website needs to do",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In the Flexible server-creation flow, choose the application, provider, specifications and location. Start with the essential features and current data volume of your site; there is no need to choose the largest size immediately. If most readers are in Taiwan, include candidate regions in your tests, but remember that distance is only one factor. A region's name alone cannot guarantee actual loading speed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give servers, applications and projects distinct names, for example separating a live portfolio site from a test site. This reduces the chance of changing or deleting the wrong environment later. If you already have a server, first check which sites it hosts and its resource status, then decide whether to put the new application there or create a separate environment."
+        },
+        {
+          "type": "heading",
+          "text": "Add WordPress to the correct server",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the Cloudways documentation, to add an application to an existing Flexible server, open Servers, select the target server, then use Add App or the corresponding application-creation entry. Choose the WordPress type you need, enter an application name and project, and submit the request. If the platform warns that PHP or database requirements are not met, check compatibility first rather than immediately upgrading an environment that hosts other live sites."
+        },
+        {
+          "type": "paragraph",
+          "text": "After creation, open application management, review the access details and temporary URL, and confirm that the WordPress dashboard works. The hosting management account, application login and WordPress administrator are separate levels and should be stored separately. Also check the site's name, time zone, administrative email and content so that initial installation details do not become the live settings by default."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm that the account is usable and that you are using Flexible, and record server and add-on billing terms.",
+            "Create a server or choose to add an application to an existing one; check the location, specifications and effect on other sites.",
+            "Choose WordPress, assign recognizable application and project names, and wait for the platform's creation result.",
+            "Use the application access details to check the temporary site and dashboard, then organize live content, accounts and backup arrangements."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Connect the live domain through Domain Management",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways' launch documentation treats domain management and DNS configuration as separate steps. First add the name you intend to use in the application's Domain Management, then use the details supplied by the platform to configure records at the active DNS service. The domain registrar, DNS host and Cloudways may be different companies; confirm the correct management location before each change."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the existing records before making changes, especially email and service-verification records. Keep the intended use of the main domain, www and other subdomains consistent, then install a certificate covering the required names and check HTTPS. If the site connects but email or form notifications do not work, inspect the email service and the application's sending configuration separately. A page opening successfully does not mean every integration is complete."
+        },
+        {
+          "type": "heading",
+          "text": "Check the site before launch and plan how to leave",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "As a visitor who is not signed in, check the homepage, articles, navigation, search and contact flow, then review the main layouts on a phone. If you are migrating a site, also compare the old site's images, attachments and required URLs to ensure the new environment has not lost data. Keep a rollback plan and the original service until the main functions and the destinations of new data have been verified, then handle any shutdowns."
+        },
+        {
+          "type": "paragraph",
+          "text": "After launch, record the backup frequency, available restore points, who handles updates and who checks invoices. Even for a short test, schedule when to export data and remove resources so the test site does not stay in the account indefinitely. Platform management is complete only when you can explain which server hosts the site, who can restore it and how to end charges when you stop using it."
+        },
+        {
+          "type": "image",
+          "src": "/guides/cloudways-wordpress-setup/diagram-1-en.svg",
+          "alt": "Building on Cloudways involves checking four levels in order: account, server, application and live domain.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Each level needs an owner and a clear way to exit.",
+          "description": "Building on Cloudways involves checking four levels in order: account, server, application and live domain.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Level",
+            "What it handles",
+            "Common confusion"
+          ],
+          "rows": [
+            [
+              "Account",
+              "Activation, members and payment",
+              "Mistaking verification issues for site settings"
+            ],
+            [
+              "Server",
+              "Resources and runtime environment",
+              "Assuming that stopping operation stops billing"
+            ],
+            [
+              "Application",
+              "Site, domains and access details",
+              "Confusing an additional site with an additional server"
+            ],
+            [
+              "WordPress",
+              "Content, plugins and users",
+              "Confusing the hosting login with the site administrator"
+            ],
+            [
+              "Project",
+              "Organizing applications and work",
+              "Selecting the wrong live environment because names are similar"
+            ]
+          ],
+          "caption": "The focus is Flexible; consult the dedicated documentation for Autonomous."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Stopping a server may not stop charges",
+          "text": "Check the provider and product terms. Before ending use, save your data, follow the official process to remove unneeded billable resources, and check paid add-ons and the final invoice."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Checking HTTPS on Cloudways: DNS, certificates and renewal",
+              "kind": "life",
+              "slug": "cloudways-ssl-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Shared hosting, VPS and managed cloud hosting: how to choose for a small site",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudways: Launching a server and adding an application",
+          "url": "https://support.cloudways.com/en/articles/5124126-how-to-launch-server-and-add-an-application-on-the-cloudways-platform",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: Conditions for stopping billing",
+          "url": "https://support.cloudways.com/en/articles/5119650-how-do-i-stop-my-cloudways-billing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: Monthly and hourly billing explained",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: Taking a website live",
+          "url": "https://support.cloudways.com/en/articles/4805075-how-do-i-take-my-website-live-from-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: Getting started FAQs and support scope",
+          "url": "https://support.cloudways.com/en/articles/5245051-getting-started-faqs",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Cloudwaysでサイトを作る：サーバー・アプリケーション・アカウント認証",
+      "description": "Cloudwaysではサーバー、アプリケーション、プロジェクトを別々に管理します。初めて使うときは各階層の役割と費用を理解しましょう。FlexibleでWordPressを構築する流れを中心に、アカウントの有効化、サーバー作成、アプリケーション追加、ドメイン接続、公開前の確認を整理し、サーバーを停止しても課金が止まるとは限らない理由を説明します。アカウント認証を求められたときの公式窓口の確認と個別の対応も押さえ、利用前に費用と保守の責任を明確にします。",
+      "hero": {
+        "src": "/guides/cloudways-wordpress-setup/hero-ja.jpg",
+        "alt": "アカウントの書類、クラウドサーバー、アプリケーション画面をつないだ図。事業者のブランド画像は使用していません。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Cloudwaysでサイトを作る場合、サーバーは実行環境、アプリケーションはその中に置くサイト、プロジェクトは作業を整理する単位です。この階層を分けて考えると、サイトを追加すること、サーバーを増やすこと、プランを変更することの違いを理解しやすくなります。WordPressがインストール済みかどうかだけを見て、アカウント内で料金が発生し続けているリソースを見落とさないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここではCloudways Flexibleの公開ドキュメントを主に扱います。Autonomousは別の製品であり、導入方法と課金条件も専用の資料で確認してください。Flexibleのサーバー操作をそのまま当てはめることはできません。ユーザーアカウントでの実機検証は行っておらず、特定のクラウド事業者の速度ランキングも示していません。サイトの要件、利用可能なリージョン、実際のアカウント条件に基づいて選びましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "最初にアカウントの有効化と個別の認証を済ませる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudwaysの公式窓口から登録し、継続してメールを受け取れるアカウントを使って、画面の案内に従いメール認証など必要な有効化手続きを進めます。認証待ちと表示されたら、メッセージと発生時刻を保存し、公式サポートで次の対応を確認してください。この状態はDNS設定とは無関係です。サイトのドメインを変更しても、アカウント単位の制限は解除されません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "すべての新規アカウントに共通する必要書類一覧や承認までの時間は確認できないため、「この書類を送れば必ず通る」という方法は案内できません。追加書類を求められた場合は、まず公式アカウントを通じて依頼の真偽、提出方法、必要な範囲を確認し、その案件ごとに対応します。ネット記事に載る古いメールアドレスへ身分証を送ったり、虚偽情報や重複アカウントで認証を回避しようとしたりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "作成前に課金単位と料金が止まる条件を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways Flexibleの料金は利用するサーバーと追加サービスに関係し、それぞれのルールで計算されて請求されます。作成前に事業者、サイズ、リージョン、概算費用、追加サービスを記録してください。月額の見積もりは、複数の環境を作っても合計料金が変わらないという保証ではありません。ストレージや転送量など、適用される追加項目も見落とさないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式の請求資料では、サーバーを停止したり使わなくなったりしても、課金が止まるとは限らないと説明されています。基盤によってはディスクやIPなどのリソースが残るためです。試用を終えるときや環境を削除するときは、先にデータを保存し、製品の手順に従って不要なリソースを削除して有料の追加サービスを無効にしたうえで、その後の請求を確認しましょう。アクセスがないことは、料金が発生しない証拠にはなりません。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトの用途に合うサーバーを選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexibleのサーバー作成画面で、アプリケーション、事業者、スペック、設置場所を選びます。現在のサイトに必要な機能とデータ量から判断し、最初から最大スペックを選ぶ必要はありません。主な読者が台湾にいる場合は、候補のリージョンをテスト対象にできます。ただし地理的な距離は要因の一つにすぎず、リージョン名だけで実際の読み込み速度を保証することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サーバー、アプリケーション、プロジェクトには区別しやすい名前を付けましょう。たとえば公開用の作品サイトとテストサイトを別の名前にします。後で誤った環境を変更・削除するリスクを減らせます。既存サーバーがある場合は、そこで動くサイトとリソースの状態を先に確認し、新しいアプリケーションを追加するか、独立した環境を作るかを判断します。"
+        },
+        {
+          "type": "heading",
+          "text": "正しいサーバーにWordPressを追加する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudwaysの公式資料によると、既存のFlexibleサーバーへアプリケーションを追加するには、Serversを開き、対象サーバーを選んで、Add Appまたは対応する追加メニューを使います。必要なWordPressの種類を選び、アプリケーション名とプロジェクトを入力して作成を実行します。PHPやデータベースの要件を満たさないと表示された場合は、先に互換性を確認してください。他の本番サイトも動いている環境を、すぐにアップグレードしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作成後はアプリケーション管理画面でアクセス情報と仮URLを確認し、WordPressの管理画面が使えるかを確かめます。ホスティングの管理アカウント、アプリケーションへのログイン、WordPressの管理者は別の階層なので、分けて保管してください。サイト名、タイムゾーン、管理用メール、コンテンツも確認し、インストール時の初期情報をそのまま本番設定にしないようにしましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "アカウントが利用でき、Flexibleを選んでいることを確認し、サーバーと追加サービスの課金条件を記録する。",
+            "サーバーを作成するか既存サーバーでアプリケーション追加を選び、設置場所、スペック、他のサイトへの影響を確認する。",
+            "WordPressを選び、見分けやすいアプリケーション名とプロジェクト名を設定して、作成結果の通知を待つ。",
+            "アクセス情報を使って仮サイトと管理画面を確認し、本番のコンテンツ、アカウント、バックアップの運用を整える。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Domain Managementで本番ドメインを接続する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudwaysの公開手順では、ドメイン管理とDNS設定が分けられています。まずアプリケーションのDomain Managementに使用する名前を追加し、プラットフォームが示す情報に基づいて、有効なDNSサービスで名前解決を設定します。ドメイン登録事業者、DNS管理事業者、Cloudwaysはそれぞれ別会社の場合があります。変更するたびに、実際に担当する管理画面を確認しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更前に既存レコードを保存し、特にメールやサービス認証の項目を守ります。本番ドメイン、www、その他のサブドメインの使い方を統一し、必要な名前を含む証明書をインストールしてHTTPSを確認してください。サイトがつながってもメールやフォーム通知が正常でない場合は、メールサービスとアプリケーションの送信設定を別に調べます。ページが開くだけで、すべての連携が完成したとは判断できません。"
+        },
+        {
+          "type": "heading",
+          "text": "公開前に動作確認を行い、利用終了の方法も決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ログインしていない訪問者として、トップページ、記事、ナビゲーション、検索、問い合わせの流れを確認し、スマートフォンでも主要なレイアウトを見ます。移行する場合は、旧サイトの画像、添付ファイル、必要なURLも照合し、新しい環境でデータが欠けていないか確かめてください。主要機能と新しいデータの保存先・送信先を検証し終えるまでは、復旧手段と元のサービスを残し、その後で停止作業を進めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開後は、バックアップ頻度、利用可能な復元ポイント、更新担当、請求確認の担当者を記録します。短期テストであっても、データをいつ書き出し、いつリソースを削除するかを決め、テストサイトをアカウントに放置しないようにしましょう。どのサーバーにサイトがあり、誰が復元でき、利用終了時にどう料金を止めるかを説明できてこそ、プラットフォームの管理が整ったと言えます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/cloudways-wordpress-setup/diagram-1-ja.svg",
+          "alt": "Cloudwaysでの構築では、アカウント、サーバー、アプリケーション、本番ドメインの四つの階層を順に確認します。",
+          "width": 1600,
+          "height": 900,
+          "caption": "各階層に管理者と明確な利用終了の手順が必要です。",
+          "description": "Cloudwaysでの構築では、アカウント、サーバー、アプリケーション、本番ドメインの四つの階層を順に確認します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "階層",
+            "管理するもの",
+            "混同しやすい点"
+          ],
+          "rows": [
+            [
+              "アカウント",
+              "有効化、メンバー、支払い",
+              "認証の問題をサイト設定と取り違える"
+            ],
+            [
+              "サーバー",
+              "リソースと実行環境",
+              "稼働停止を課金停止だと思い込む"
+            ],
+            [
+              "アプリケーション",
+              "サイト、ドメイン、アクセス情報",
+              "サイト追加とサーバー追加を混同する"
+            ],
+            [
+              "WordPress",
+              "コンテンツ、プラグイン、ユーザー",
+              "ホスティングへのログインとサイト管理者を混同する"
+            ],
+            [
+              "プロジェクト",
+              "アプリケーションと作業の整理",
+              "似た名前で本番環境を取り違える"
+            ]
+          ],
+          "caption": "Flexibleを中心に扱います。Autonomousは専用資料を確認してください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "サーバーを止めても課金が止まるとは限らない",
+          "text": "事業者と製品の条件を確認しましょう。利用終了前にデータを保存し、公式手順で不要な課金対象リソースを削除して、有料の追加サービスと最終請求も確認してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "CloudwaysのHTTPS確認：DNS・証明書・更新",
+              "kind": "life",
+              "slug": "cloudways-ssl-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共有ホスティング・VPS・クラウド運用代行：小規模サイトの選び方",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudways：サーバーの作成とアプリケーションの追加",
+          "url": "https://support.cloudways.com/en/articles/5124126-how-to-launch-server-and-add-an-application-on-the-cloudways-platform",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：課金を停止する条件",
+          "url": "https://support.cloudways.com/en/articles/5119650-how-do-i-stop-my-cloudways-billing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：月額課金と時間課金の説明",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：サイトを公開する方法",
+          "url": "https://support.cloudways.com/en/articles/4805075-how-do-i-take-my-website-live-from-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：導入時のよくある質問とサポート範囲",
+          "url": "https://support.cloudways.com/en/articles/5245051-getting-started-faqs",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Cloudways로 사이트 만들기: 서버, 애플리케이션과 계정 인증",
+      "description": "Cloudways는 서버, 애플리케이션, 프로젝트를 따로 관리하므로 처음에는 각 계층의 역할과 비용부터 이해해야 합니다. Flexible에서 WordPress를 만드는 흐름을 중심으로 계정 활성화, 서버 생성, 애플리케이션 추가, 도메인 연결과 공개 전 점검을 정리하고, 서버를 중지해도 과금이 끝나지 않을 수 있는 이유를 설명합니다. 계정 인증을 요구받았을 때 공식 창구를 확인하고 개별 요구에 대응하는 방법도 살펴보며, 사용 전에 비용과 유지관리 책임을 명확히 합니다.",
+      "hero": {
+        "src": "/guides/cloudways-wordpress-setup/hero-ko.jpg",
+        "alt": "계정 서류, 클라우드 서버, 애플리케이션 화면을 연결한 그림으로, 공급업체의 브랜드 이미지는 사용하지 않았습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Cloudways에서 사이트를 만들 때 서버는 실행 환경이고, 애플리케이션은 그 안에 들어가는 웹사이트이며, 프로젝트는 작업을 정리하는 단위입니다. 이 계층을 구분하면 사이트 추가, 서버 추가, 요금제 변경의 차이를 이해하기 쉽습니다. WordPress가 설치되었다는 사실만 보고 계정 안에서 여전히 비용이 발생하는 리소스를 놓치지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 Cloudways Flexible의 공개 안내를 중심으로 설명합니다. Autonomous는 별도의 제품 경험이므로 자체 배포 방식과 과금 조건을 확인해야 하며, Flexible의 서버 절차를 그대로 적용할 수 없습니다. 사용자 계정에서 직접 시험하지 않았고 특정 클라우드 공급업체의 속도 순위도 제시하지 않습니다. 사이트 요구사항, 사용 가능한 리전과 실제 계정 조건에 따라 선택하세요."
+        },
+        {
+          "type": "heading",
+          "text": "계정 활성화와 개별 인증 요구부터 처리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 공식 경로에서 가입하고 계속 메일을 받을 수 있는 계정을 사용해 화면에 나오는 이메일 인증 등 필요한 활성화 절차를 완료하세요. 계정이 인증 대기 상태라면 안내 메시지와 발생 시각을 저장한 뒤 공식 지원 창구에서 다음 조치를 확인합니다. 이 상태는 DNS 설정과 관계없으며 사이트 도메인을 바꿔도 계정 수준의 제한이 해제되지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모든 신규 계정에 공통으로 적용되는 신분증 목록이나 승인 소요 시간은 확인되지 않았으므로, 특정 서류를 보내면 반드시 승인된다는 방법은 제시하지 않습니다. 추가 서류 요청을 받았다면 먼저 공식 계정을 통해 요청이 진짜인지, 제출 방법과 필요한 범위가 무엇인지 확인한 후 개별 사안에 맞춰 처리하세요. 인터넷 글에 있는 오래된 이메일 주소로 신분증을 보내거나 허위 정보 또는 중복 계정으로 인증을 우회하려 하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "생성 전에 과금 단위와 비용이 멈추는 조건 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways Flexible의 과금은 사용하는 서버와 추가 서비스에 따라 달라지며, 해당 규칙으로 계산한 비용이 청구됩니다. 생성 전에 공급업체, 크기, 리전, 예상 비용과 부가 서비스를 기록하세요. 월 예상 요금이 여러 환경을 만들어도 같은 총액만 낸다는 약속은 아닙니다. 저장 공간, 전송량 등 적용될 수 있는 추가 항목도 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 청구 문서는 서버를 중지하거나 사용하지 않아도 과금이 끝나지 않을 수 있다고 설명합니다. 인프라에 따라 디스크나 IP 같은 리소스가 남기 때문입니다. 체험을 끝내거나 환경을 없앨 때는 먼저 데이터를 저장하고 제품 절차에 따라 사용하지 않는 리소스를 삭제하고 유료 부가 서비스를 해제한 뒤 이후 청구서도 확인하세요. 방문자가 없다는 사실은 사이트 비용이 발생하지 않는다는 증거가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "사이트가 수행할 작업에 맞춰 서버 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Flexible 서버 생성 과정에서 애플리케이션, 공급업체, 사양과 위치를 선택합니다. 현재 사이트에 필요한 기능과 데이터 양을 기준으로 판단하고 처음부터 가장 큰 사양을 고를 필요는 없습니다. 주 독자가 대만에 있다면 후보 리전을 테스트에 포함할 수 있습니다. 다만 지리적 거리는 여러 요인 중 하나이므로 리전 이름만으로 실제 로딩 속도를 보장할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서버, 애플리케이션, 프로젝트에 서로 구분되는 이름을 붙이세요. 예를 들어 공개할 포트폴리오 사이트와 테스트 사이트의 이름을 다르게 정하면 나중에 잘못된 환경을 변경하거나 삭제할 위험이 줄어듭니다. 기존 서버가 있다면 먼저 어떤 사이트를 운영 중인지와 리소스 상태를 확인하고, 새 애플리케이션을 그곳에 넣을지 별도의 환경을 만들지 결정하세요."
+        },
+        {
+          "type": "heading",
+          "text": "올바른 서버에 WordPress 추가하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 공식 문서에 따르면 기존 Flexible 서버에 애플리케이션을 추가할 때 Servers에서 대상 서버를 선택한 후 Add App 또는 해당하는 추가 메뉴를 사용합니다. 필요한 WordPress 유형을 선택하고 애플리케이션 이름과 프로젝트를 입력해 생성을 요청하세요. PHP나 데이터베이스 조건이 맞지 않는다는 경고가 나오면 호환성부터 확인합니다. 다른 운영 사이트도 올라가 있는 환경을 곧바로 업그레이드하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "생성이 끝나면 애플리케이션 관리 페이지에서 접속 정보와 임시 URL을 살펴보고 WordPress 관리자 화면을 사용할 수 있는지 확인하세요. 호스팅 관리 계정, 애플리케이션 로그인, WordPress 관리자는 서로 다른 계층이므로 구분해 보관해야 합니다. 사이트 이름, 시간대, 관리 이메일과 콘텐츠도 점검해 설치 당시의 초기 정보를 그대로 운영 설정으로 사용하지 않도록 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "계정을 사용할 수 있고 Flexible을 선택했는지 확인한 뒤 서버와 부가 서비스의 과금 조건을 기록합니다.",
+            "서버를 생성하거나 기존 서버에서 애플리케이션 추가를 선택하고 위치, 사양과 다른 사이트에 미치는 영향을 확인합니다.",
+            "WordPress를 선택해 구분하기 쉬운 애플리케이션 및 프로젝트 이름을 설정하고 플랫폼의 생성 결과를 기다립니다.",
+            "애플리케이션 접속 정보로 임시 사이트와 관리자 화면을 확인한 뒤 운영 콘텐츠, 계정과 백업 계획을 정리합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Domain Management로 운영 도메인 연결하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways의 공개 안내는 도메인 관리와 DNS 설정을 구분합니다. 먼저 애플리케이션의 Domain Management에 사용할 이름을 추가한 뒤 플랫폼이 제공하는 정보에 따라 실제 DNS 서비스에서 레코드를 설정하세요. 도메인 등록업체, DNS 호스팅 업체와 Cloudways가 서로 다른 회사일 수 있으므로 변경할 때마다 실제 담당 관리 위치를 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변경 전에 기존 레코드, 특히 이메일과 서비스 인증 항목을 저장하세요. 운영 도메인, www, 다른 하위 도메인의 사용 방식을 일관되게 정한 후 필요한 이름을 포함하는 인증서를 설치하고 HTTPS를 점검합니다. 사이트는 연결되지만 이메일이나 양식 알림이 정상적으로 작동하지 않으면 이메일 서비스와 애플리케이션의 발송 설정을 별도로 살펴보세요. 웹페이지가 열린다고 모든 연동이 끝난 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "공개 전에 검수하고 이용 종료 방법도 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로그인하지 않은 방문자로서 홈페이지, 글, 탐색 메뉴, 검색과 문의 흐름을 확인하고 휴대전화에서도 주요 레이아웃을 살펴보세요. 사이트를 이전한다면 기존 사이트의 이미지, 첨부파일과 필요한 URL도 대조해 새 환경에 데이터가 빠지지 않았는지 확인합니다. 주요 기능과 새 데이터가 전달·저장되는 곳까지 검증할 때까지 되돌릴 방법과 기존 서비스를 유지한 뒤 후속 해지를 진행하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 후에는 백업 주기, 사용할 수 있는 복원 시점, 업데이트 책임자와 청구서 확인 담당자를 기록합니다. 짧은 테스트라도 데이터를 내보내고 리소스를 제거할 시점을 미리 정해 테스트 사이트를 계정에 끝없이 남겨두지 마세요. 사이트가 어느 서버에 있는지, 누가 복구할 수 있는지, 이용을 끝낼 때 비용을 어떻게 멈출지 설명할 수 있어야 플랫폼 관리가 제대로 이어진 것입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/cloudways-wordpress-setup/diagram-1-ko.svg",
+          "alt": "Cloudways 사이트 구축에서는 계정, 서버, 애플리케이션, 운영 도메인의 네 계층을 차례로 확인합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "각 계층에는 관리 담당자와 명확한 이용 종료 방법이 필요합니다.",
+          "description": "Cloudways 사이트 구축에서는 계정, 서버, 애플리케이션, 운영 도메인의 네 계층을 차례로 확인합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "계층",
+            "처리하는 일",
+            "흔한 혼동"
+          ],
+          "rows": [
+            [
+              "계정",
+              "활성화, 구성원과 결제",
+              "인증 문제를 사이트 설정 문제로 착각"
+            ],
+            [
+              "서버",
+              "리소스와 실행 환경",
+              "작동 중지가 과금 중지라고 착각"
+            ],
+            [
+              "애플리케이션",
+              "사이트, 도메인과 접속 정보",
+              "사이트 추가와 서버 추가를 혼동"
+            ],
+            [
+              "WordPress",
+              "콘텐츠, 플러그인과 사용자",
+              "호스팅 로그인과 사이트 관리자를 혼동"
+            ],
+            [
+              "프로젝트",
+              "애플리케이션과 작업 정리",
+              "비슷한 이름 때문에 잘못된 운영 환경 선택"
+            ]
+          ],
+          "caption": "Flexible 중심의 설명입니다. Autonomous는 전용 문서를 확인하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "서버를 중지해도 과금은 계속될 수 있습니다",
+          "text": "공급업체와 제품 조건을 확인하세요. 이용을 끝내기 전에 데이터를 저장하고 공식 절차에 따라 불필요한 과금 리소스를 제거한 뒤 유료 부가 서비스와 마지막 청구서도 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Cloudways HTTPS 점검: DNS, 인증서와 갱신",
+              "kind": "life",
+              "slug": "cloudways-ssl-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "공유 호스팅, VPS와 관리형 클라우드: 작은 사이트의 선택 순서",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudways: 서버 생성과 애플리케이션 추가",
+          "url": "https://support.cloudways.com/en/articles/5124126-how-to-launch-server-and-add-an-application-on-the-cloudways-platform",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: 과금 중지 조건",
+          "url": "https://support.cloudways.com/en/articles/5119650-how-do-i-stop-my-cloudways-billing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: 월별·시간별 과금 안내",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: 웹사이트 공개하기",
+          "url": "https://support.cloudways.com/en/articles/4805075-how-do-i-take-my-website-live-from-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: 시작하기 FAQ와 지원 범위",
+          "url": "https://support.cloudways.com/en/articles/5245051-getting-started-faqs",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Cloudways 建站：服务器、应用程序与账户验证",
+      "description": "Cloudways 将服务器、应用程序与项目分开管理，第一次使用时应先弄清楚每个层级及其费用。本文以 Flexible 的 WordPress 建站流程为主，整理账户激活、创建服务器、添加应用程序、连接域名与上线验收，并说明停机为什么不一定停止计费。遇到账户验证要求时，也提供确认官方渠道和处理个别要求的方法，帮助你在开始使用前明确成本与维护责任。",
+      "hero": {
+        "src": "/guides/cloudways-wordpress-setup/hero-zh-cn.jpg",
+        "alt": "账户文件、云服务器与应用界面相连，未使用供应商品牌图像。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "在 Cloudways 建站时，服务器是运行环境，应用程序是放在其中的网站，项目则用来整理工作。把这些层级分开，才能更容易理解添加一个网站、增加一台服务器与更换方案的区别。不要只看到 WordPress 已安装，就忽略账户里仍有哪些资源在持续产生费用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以 Cloudways Flexible 的公开教程为主。Autonomous 是另一种产品体验，应另查它自己的部署与计费条件，不能直接套用 Flexible 的服务器操作步骤。以下内容没有经过用户账户实测，也不提供特定云服务商的速度排名；你的选择应以网站需求、可用区域和实际账户条件为准。"
+        },
+        {
+          "type": "heading",
+          "text": "先完成账户激活与个别验证要求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从 Cloudways 官方入口注册，使用能持续接收邮件的账户，按照屏幕提示完成必要的电子邮件验证或其他激活程序。如果账户显示待验证，先保存提示与发生时间，再通过官方支持渠道确认下一步。这个状态与 DNS 设置无关，修改网站域名并不能解除账户层级的限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目前未找到能适用于所有新账户的统一证件清单或通过时间，因此不提供“寄出某几份文件就一定通过”的做法。如果收到补充材料要求，先通过官方账户确认要求是否真实、提交方式和必要范围，再按个别情况处理。不要按照网络文章里的旧邮箱地址发送证件，也不要编造资料或创建重复账户来尝试绕过验证。"
+        },
+        {
+          "type": "heading",
+          "text": "创建前先看计费单位与停止条件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways Flexible 的计费与使用的服务器及附加服务有关，费用按相应规则计算后出账。创建之前请记录供应商、大小、区域、预估费用和额外服务。月费估算并不意味着开设多个环境后仍只支付同一笔费用，也不能忽略存储、传输或其他可能适用的额外项目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方账务文件提醒，停止或不使用服务器未必会停止计费；不同基础设施仍可能保留磁盘、IP 等资源。结束试用或移除环境时，应先保存数据，再按照产品流程删除不再使用的资源、停用付费附加服务，并核对后续账单。不要把网站无人访问当成不会产生费用的证据。"
+        },
+        {
+          "type": "heading",
+          "text": "按网站的工作需求选择服务器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Flexible 的服务器创建流程中选择应用程序、供应商、配置和位置。先根据当前网站的必要功能与数据量判断，不必一开始就选择最大配置。如果读者主要在台湾，可以把候选区域列入测试，但地理距离只是因素之一，不能仅凭区域名称保证实际加载速度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "请为服务器、应用程序和项目起容易区分的名称，例如将正式作品站与测试站分开命名。这样可以降低日后调整或删除错误环境的风险。如果已有服务器，先确认它目前承载哪些网站和资源状态，再决定将新应用放进去，还是创建另一个独立环境。"
+        },
+        {
+          "type": "heading",
+          "text": "把 WordPress 添加到正确的服务器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "根据 Cloudways 官方文档，在现有 Flexible 服务器上添加应用时，进入 Servers、选择目标服务器，再使用 Add App 或相应的添加应用入口。选择所需的 WordPress 类型，填入应用名称和项目，再提交创建。如果平台提示 PHP 或数据库条件不满足，应先检查兼容性，不要直接升级承载其他正式网站的环境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "创建完成后，进入应用程序管理页面，查看访问信息与临时网址，确认 WordPress 后台可用。主机管理账户、应用程序登录与 WordPress 管理员属于不同层级，应分开保管。网站名称、时区、管理邮箱和内容也要核对，避免直接把安装时的初始信息当成正式设置。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认账户可用、当前选择的是 Flexible，并记录服务器与附加服务的计费条件。",
+            "创建服务器，或在现有服务器中选择添加应用，核对位置、配置及其对其他网站的影响。",
+            "选择 WordPress，设置容易辨认的应用与项目名称，等待平台返回创建结果。",
+            "利用应用访问信息检查临时网站与后台，再整理正式内容、账户和备份安排。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "通过 Domain Management 连接正式域名",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloudways 的上线文档将域名管理与 DNS 设置分开。先在应用程序的 Domain Management 中添加要使用的名称，再根据平台提供的信息，到当前有效的 DNS 服务配置解析。域名注册商、DNS 托管商与 Cloudways 可以是不同公司；每次修改都要确认真正负责的管理位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更改前保存原有记录，尤其是邮箱和服务验证项目。正式域名、www 或其他子域名的使用方式要一致，再安装覆盖所需名称的证书并检查 HTTPS。如果网站已连接，但邮件或表单通知不正常，应另外查看邮件服务与应用发信配置，不能因为网页能打开就认为所有集成都已完成。"
+        },
+        {
+          "type": "heading",
+          "text": "上线前验收，也安排退出方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以未登录访客的身份检查首页、文章、导航、搜索和联系流程，再用手机查看主要版面。如果是迁站，还要对照旧站的图片、附件和必要网址，确认新环境没有遗漏数据。先保留恢复方案与原服务，直到主要功能和新数据流向都验证完成，再处理后续停用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "上线后记录备份频率、可用还原点、更新责任人和账单检查人。如果只是短期测试，也要先安排何时导出数据和移除资源，不让测试站无限期留在账户里。能清楚说明网站放在哪台服务器、谁能还原，以及停止使用时如何结束费用，才算真正落实平台管理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/cloudways-wordpress-setup/diagram-1-zh-cn.svg",
+          "alt": "Cloudways 建站依次确认账户、服务器、应用程序与正式域名四个层级。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每个层级都有人管理，也有清楚的退出方式。",
+          "description": "Cloudways 建站依次确认账户、服务器、应用程序与正式域名四个层级。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "层级",
+            "处理什么",
+            "常见混淆"
+          ],
+          "rows": [
+            [
+              "账户",
+              "激活、成员与付款",
+              "把验证问题误当成网站设置"
+            ],
+            [
+              "服务器",
+              "资源与运行环境",
+              "把停止运行误认为停止计费"
+            ],
+            [
+              "应用程序",
+              "网站、域名及访问信息",
+              "混淆添加网站与添加服务器"
+            ],
+            [
+              "WordPress",
+              "内容、插件与用户",
+              "混淆主机登录与网站管理员"
+            ],
+            [
+              "项目",
+              "整理应用与工作",
+              "因名称相似而选错正式环境"
+            ]
+          ],
+          "caption": "本篇以 Flexible 为主；Autonomous 应查阅专属文档。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "停止服务器不一定停止收费",
+          "text": "请核对供应商与产品条件。结束使用前先保存数据，再按官方流程移除不需要的计费资源，并确认付费附加服务与最后账单。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Cloudways 的 HTTPS 检查：DNS、证书与续期",
+              "kind": "life",
+              "slug": "cloudways-ssl-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共享主机、VPS 与云端托管：小网站的选择顺序",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Cloudways：创建服务器与应用程序",
+          "url": "https://support.cloudways.com/en/articles/5124126-how-to-launch-server-and-add-an-application-on-the-cloudways-platform",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：停止计费的条件",
+          "url": "https://support.cloudways.com/en/articles/5119650-how-do-i-stop-my-cloudways-billing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：月计费与小时计费说明",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：网站正式上线",
+          "url": "https://support.cloudways.com/en/articles/4805075-how-do-i-take-my-website-live-from-cloudways",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：入门常见问题与支持范围",
+          "url": "https://support.cloudways.com/en/articles/5245051-getting-started-faqs",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
