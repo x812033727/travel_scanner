@@ -105,7 +105,10 @@ endpoints and no hold or pending release; SHA256
 
 Per-article completion states, public URLs, document/version hashes and evidence
 references are in `docs/article-localization/releases/batch021/evidence.json`
-(SHA256 `8e6d38820883a5acccb96b69505f3cc99165307e882134461bce56343173254e`).
+(Git LF bytes SHA256
+`7f098690f1b9cf63a7c8f11721bd369fc9f1d8d3551499f252bfcbadb7c33ff2`).
+The original Windows writer output has identical JSON and CRLF byte SHA256
+`8e6d38820883a5acccb96b69505f3cc99165307e882134461bce56343173254e`.
 Desktop/mobile acceptance means browser viewports, not physical devices; mobile
 diagram captures show a center pan. The existing desktop search placeholder/icon
 overlap remains a separate nonblocking task. This batch makes no whole-site draft
