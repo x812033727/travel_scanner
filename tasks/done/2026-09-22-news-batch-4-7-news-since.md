@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-news-batch-4-7-news-since
 title: "News batch 4.7: news since 2026-09-20 for the three verticals (zh-TW only)"
-status: review
+status: done
 priority: P2
 area: docs
 owner: claude-fable-5-1
 claimed_at: 2026-09-22T15:44:33Z
 created_at: 2026-09-22T15:44:03Z
-completed_at:
+completed_at: 2026-09-22T23:10:48Z
 branch: claude/news-batch-4-7-since-0920
 depends_on:
   - 2026-09-19-4-6-11-zh-tw-update
@@ -134,9 +134,9 @@ scope:
 - [x] `check_article.py` 的 `RELATED` 接續號段：AI 171–176、科技 321–326、幣圈 217–219（`order_of()` 實測過）
 - [x] 三個索引**標題不改**，15 個連結由協調者在同一個 PR 用
       `python update_index.py ai tech crypto --locale=zh-TW` 補上（只動 zh-TW，`CITED` 全空）
-- [ ] PR 合併、部署後 `guides-import --locale zh-TW --publish --slug`（先 dry-run 核對計畫），
+- [x] PR 合併、部署後 `guides-import --locale zh-TW --publish --slug`（先 dry-run 核對計畫），
       正式站每篇 200、可索引、在 `life-zh-TW.xml`
-- [ ] 本票記下 slug 清單、dry-run／publish 輸出與驗證結果
+- [x] 本票記下 slug 清單、dry-run／publish 輸出與驗證結果
 
 ## Steps
 
@@ -150,7 +150,7 @@ scope:
 - [x] 30 份查核報告進 `factcheck-draft/`、`related` ×15、`pack_cli relink --apply`、`check_article.py` ×15、lint
 - [x] `_DRAWINGS` ×15、出圖、`check_article.py <slug> --assets`（另一位代理補齊；15 篇 `--assets` 全部 exit 0）
 - [x] 索引增補（`update_index.py ai tech crypto --locale=zh-TW`，先 `--dry-run`）
-- [ ] commit、PR，等站主明確選「合併並發布」→ 部署 → `guides-import` → 驗證 → 本票 done
+- [x] commit、PR，等站主明確選「合併並發布」→ 部署 → `guides-import` → 驗證 → 本票 done
 
 ## 進度（2026-09-23，協調者收尾）
 
@@ -236,3 +236,10 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
   （少一個 `and` 回 400，會把整個機關掃成空白）。
 - **NCC 新聞稿仍是「未查到」**：官網是 Angular SPA，本輪改查行政院公報 09-21／09-22 兩期共 48 筆逐筆確認沒有 NCC 項目。
 - 探索代理的原始抓檔留在 `C:\Users\x8120\mokaair-work\news47\_raw\`、`_tools\`（不進 repo）。
+
+## 上線（2026-09-22 UTC）
+
+- PR #669 squash `05e57b48`（22:39Z）；部署 `deploy_20260922_225723.log`，23:00Z 上線（健康 3/3、alembic 0082 head、首頁 200／0.88 秒）；映像同時帶上 #665（共用 skill）與 #667（第八批第一波七篇）。
+- 匯入：主機腳本 `/root/news47-20260923/import.sh`（同一支腳本的 dryrun／publish／recheck 三模式，nohup 在主機背景跑；plink 的 stdin 轉送不可靠，腳本以 base64 夾在指令列傳上去）。dry-run 恰好 22 筆 zh-TW create（4.7 十五篇＋第八批 W1 七篇）＋ 3 筆索引 zh-TW update；站主同意後 publish：created 22、updated 3、published 25、taxonomy_updated 22、failed null（23:04Z）；發布前 `pg_dump` 782 MB；複核 dry-run 25 筆全 unchanged；`guides-links-rebuild` unresolved 0；`guides-links-check --locale zh-TW` 只有既有的 gemini-guide raw_url。
+- 公開驗證 `verify_public.py --from-report publish.json --sitemap`：25 頁 PASS（200、h1、canonical、無 noindex、圖片 200、sitemap 收錄）。
+- 主機留檔：`/root/news47-20260923/{dryrun,publish,recheck}.json`、`run.log`、`links-check.log`。

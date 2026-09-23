@@ -289,6 +289,13 @@ en／ja／ko／zh-CN **一個位元組都沒動**（逐 locale 與 `git show HEA
   **先核對 dry-run 計畫才 `--publish`**（4.6 的做法）；驗證 15 頁 `/zh-TW/life/<slug>` 皆 200、無 robots meta、
   `hero.jpg` 200、都在 `life-zh-TW.xml` 與 `/feed.xml`。
 
+### 上線紀錄（2026-09-22 UTC）
+
+- PR #669 squash `05e57b48`（22:39Z）；部署 `deploy_20260922_225723.log`，23:00Z 上線（健康 3/3、alembic 0082 head、首頁 200／0.88 秒）；映像同時帶上 #665（共用 skill）與 #667（第八批第一波七篇）。
+- 匯入：主機腳本 `/root/news47-20260923/import.sh`（同一支腳本的 dryrun／publish／recheck 三模式，nohup 在主機背景跑；plink 的 stdin 轉送不可靠，腳本以 base64 夾在指令列傳上去）。dry-run 恰好 22 筆 zh-TW create（4.7 十五篇＋第八批 W1 七篇）＋ 3 筆索引 zh-TW update；站主同意後 publish：created 22、updated 3、published 25、taxonomy_updated 22、failed null（23:04Z）；發布前 `pg_dump` 782 MB；複核 dry-run 25 筆全 unchanged；`guides-links-rebuild` unresolved 0；`guides-links-check --locale zh-TW` 只有既有的 gemini-guide raw_url。
+- 公開驗證 `verify_public.py --from-report publish.json --sitemap`：25 頁 PASS（200、h1、canonical、無 noindex、圖片 200、sitemap 收錄）。
+- 主機留檔：`/root/news47-20260923/{dryrun,publish,recheck}.json`、`run.log`、`links-check.log`。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）
