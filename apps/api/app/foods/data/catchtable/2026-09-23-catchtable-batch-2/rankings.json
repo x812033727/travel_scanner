@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-23-catchtable-batch-2",
+  "destinations": [
+    "seoul",
+    "busan"
+  ],
+  "scope": "首爾最佳餐廳榜第 21–40 名 ＋ 釜山最佳餐廳榜第 1–20 名（站主 2026-09-23 同意第一批報告的第二批建議；候位榜不再取）。第 19–20 名與第 21 名以後只是擷取當下順手留下的證據。",
+  "method": "本機內建瀏覽器渲染榜頁；滾輪每步三格、等一秒、掃一次 DOM 累積，名次讀卡片徽章，兩頁都零衝突（做法在 .agents/skills/catchtable-discovery/references/browser.md）。首爾榜與第一批（2026-09-23 00:19 UTC）相比第 17 名以後順序已變動：第一批的 alice_cheongdam 現在是第 21 名。",
+  "rankings": [
+    {
+      "page": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+      "captured_at": "2026-09-23T06:29:07+00:00",
+      "note": "本批範圍第 21–40 名；第 19–20 名（ilpyeonfnb、DOBU）第一批已收，只作對照。",
+      "entries": [
+        {
+          "rank": 19,
+          "alias": "ilpyeonfnb",
+          "label": "ilpyeon eel hongdae"
+        },
+        {
+          "rank": 20,
+          "alias": "DOBU",
+          "label": "到付"
+        },
+        {
+          "rank": 21,
+          "alias": "alice_cheongdam",
+          "label": "Alice 清潭"
+        },
+        {
+          "rank": 22,
+          "alias": "daowl",
+          "label": "Daol Charcoal Grill Restaurants | Myeongdong Korea"
+        },
+        {
+          "rank": 23,
+          "alias": "schedule_seongsu",
+          "label": "SCHEDULE 聖水"
+        },
+        {
+          "rank": 24,
+          "alias": "ponobouno",
+          "label": "PONO BUONO"
+        },
+        {
+          "rank": 25,
+          "alias": "sinsakkochgedang_apgujeong",
+          "label": "新沙花蟹堂 狎鷗亭羅德奧店"
+        },
+        {
+          "rank": 26,
+          "alias": "myeongdongeel",
+          "label": "Taecho Galbi"
+        },
+        {
+          "rank": 27,
+          "alias": "myeonseoul",
+          "label": "麵首爾"
+        },
+        {
+          "rank": 28,
+          "alias": "evett",
+          "label": "Restaurant EVETT"
+        },
+        {
+          "rank": 29,
+          "alias": "wootender",
+          "label": "Woo Tender"
+        },
+        {
+          "rank": 30,
+          "alias": "7th_door",
+          "label": "7th Door"
+        },
+        {
+          "rank": 31,
+          "alias": "choidot",
+          "label": "Choidot"
+        },
+        {
+          "rank": 32,
+          "alias": "woohwa_hongdae",
+          "label": "woohwa Hongdae Main Branch"
+        },
+        {
+          "rank": 33,
+          "alias": "confier",
+          "label": "Confier"
+        },
+        {
+          "rank": 34,
+          "alias": "vinho",
+          "label": "VINHO"
+        },
+        {
+          "rank": 35,
+          "alias": "kwonsooksoo",
+          "label": "Kwonsooksoo"
+        },
+        {
+          "rank": 36,
+          "alias": "bongsanjeongyuk",
+          "label": "Bongsan Jeongyuk"
+        },
+        {
+          "rank": 37,
+          "alias": "haechen_obu",
+          "label": "海天漁夫"
+        },
+        {
+          "rank": 38,
+          "alias": "allaprima",
+          "label": "alla prima"
+        },
+        {
+          "rank": 39,
+          "alias": "tonguidong_kukbingwan",
+          "label": "通義洞國賓館"
+        },
+        {
+          "rank": 40,
+          "alias": "deepin_oksu",
+          "label": "Deepin Oksu(Fresh Pasta&Wine)"
+        }
+      ]
+    },
+    {
+      "page": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+      "captured_at": "2026-09-23T06:29:15+00:00",
+      "note": "本批範圍第 1–20 名；第 21 名順手留下。",
+      "entries": [
+        {
+          "rank": 1,
+          "alias": "83haechi_gwanganri",
+          "label": "83獬豸 廣安裏店"
+        },
+        {
+          "rank": 2,
+          "alias": "cor_pasta_bar",
+          "label": "Cor Pasta Bar"
+        },
+        {
+          "rank": 3,
+          "alias": "sinsakkotgedang",
+          "label": "Sinsakkotgedang Haeundae"
+        },
+        {
+          "rank": 4,
+          "alias": "bandb_busan",
+          "label": "Busan Born and Bred The Steak House"
+        },
+        {
+          "rank": 5,
+          "alias": "pungcheonman_haeundae",
+          "label": "Pungcheonman Haeundae"
+        },
+        {
+          "rank": 6,
+          "alias": "ledorer",
+          "label": "Le DORER"
+        },
+        {
+          "rank": 7,
+          "alias": "sogonggan_dining",
+          "label": "牛功幹"
+        },
+        {
+          "rank": 8,
+          "alias": "corduroyfellaz_busan",
+          "label": "Corduroy Fellaz"
+        },
+        {
+          "rank": 9,
+          "alias": "jejugan_seomyun",
+          "label": "Jejugan Seomyun"
+        },
+        {
+          "rank": 10,
+          "alias": "gunamroast",
+          "label": "Gunam Roast"
+        },
+        {
+          "rank": 11,
+          "alias": "busan_kosaljip",
+          "label": "花肉店 田浦店"
+        },
+        {
+          "rank": 12,
+          "alias": "palate",
+          "label": "Palate"
+        },
+        {
+          "rank": 13,
+          "alias": "yulling",
+          "label": "yulling"
+        },
+        {
+          "rank": 14,
+          "alias": "arpkitchen",
+          "label": "ARP yeongdo"
+        },
+        {
+          "rank": 15,
+          "alias": "ushiya",
+          "label": "牛室"
+        },
+        {
+          "rank": 16,
+          "alias": "amassxsmugogae",
+          "label": "Smugogae"
+        },
+        {
+          "rank": 17,
+          "alias": "suksungdo_busan",
+          "label": "熟成到 廣安裏店"
+        },
+        {
+          "rank": 18,
+          "alias": "gwj",
+          "label": "圭牛正"
+        },
+        {
+          "rank": 19,
+          "alias": "solsot_gwangan",
+          "label": "Solsot Gwangan"
+        },
+        {
+          "rank": 20,
+          "alias": "haegong",
+          "label": "Yakitori-haegong"
+        },
+        {
+          "rank": 21,
+          "alias": "onjeong",
+          "label": "YAKITORI 溫情"
+        }
+      ]
+    }
+  ]
+}
