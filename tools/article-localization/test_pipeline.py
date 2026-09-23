@@ -814,6 +814,7 @@ class PipelineTests(unittest.TestCase):
             "/guides/howto",
             "/destinations/hanoi",
             "/destinations/singapore",
+            "/guides",
         )
         source["blocks"].extend(
             {
@@ -851,7 +852,7 @@ class PipelineTests(unittest.TestCase):
                 f"https://mokaair.com/{locale}/destinations/hanoi",
             )
             self.assertEqual(
-                document["blocks"][8]["url"],
+                document["blocks"][5 + len(routes)]["url"],
                 "https://example.com/zh-TW/guides/howto",
             )
             self.assertEqual(document["sources"][0], source["sources"][0])
@@ -893,6 +894,9 @@ class PipelineTests(unittest.TestCase):
             "http://mokaair.com/zh-TW/guides/howto",
             "https://www.mokaair.com/zh-TW/guides/howto",
             "https://mokaair.com./zh-TW/guides/howto",
+            "https://mokaair.com/zh-TW/guides?topic=rail",
+            "https://mokaair.com/zh-TW/guides#first",
+            "https://mokaair.com/zh-TW/guides/",
         ):
             with self.subTest(url=url), tempfile.TemporaryDirectory() as tmp:
                 source = sample()

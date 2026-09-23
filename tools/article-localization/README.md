@@ -81,11 +81,14 @@ Each job lives at `docs/article-localization/work/<slug>/<locale>/`:
   prose, placeholder markers, wrong scripts, and schema size violations fail.
 - `document.json`: schema-validated staged document; code, dates, metadata,
   structural links and identities are preserved. LinkBlock and rich-paragraph
-  link URLs to the three verified public same-site routes (`/guides/howto`,
-  `/destinations/hanoi`, `/destinations/singapore`) are mechanically changed to
-  the target locale. Those destinations returned 200 without redirects and had
+  link URLs to the four verified public same-site routes (`/guides/howto`,
+  `/destinations/hanoi`, `/destinations/singapore`, `/guides`) are mechanically changed to
+  the target locale. The first three destinations returned 200 without redirects and had
   matching `lang` and canonical in all five languages on 2026-09-20 (verification
   JSON SHA-256 `84dd8fcdd5102b61b314873a56096f91c5c9673c796b9cb1f8e495796d5a135f`).
+  The `/guides` index passed the same five-language browser checks on 2026-09-23
+  (`batch020-candidate-inventory/guides-root-public-route-v2-20260923.json`,
+  SHA-256 `2ccb48c9873e59db9a771142337b273f2ed5255e4e83f41af35b1490067a486e`).
   Other locale-prefixed Mokaair link routes, unapproved destination locales,
   aliases, and query/fragment variants stop materialization for review; external
   link URLs, source URLs and source check dates remain unchanged. Publication
