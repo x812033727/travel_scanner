@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-four-domain-billing-guides-batch023
 title: Localize four domain billing guides batch023
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-batch023
 claimed_at: 2026-09-23T14:05:15Z
 created_at: 2026-09-23T14:05:12Z
-completed_at:
+completed_at: 2026-09-23T15:14:09Z
 branch: codex/article-localization-batch023-domain-billing
 depends_on: []
 scope:
@@ -32,7 +32,7 @@ The four domain and billing guides previously had only Traditional Chinese docum
 - [x] All four scoped packs contain five complete language documents; original zh-TW models and metadata are preserved.
 - [x] Sixteen new documents and 48 localized assets received independent prose and visual review, with explicit image-description backfills and zero numeric guard exceptions.
 - [x] Scoped local validation passed and a separate release task records actual CI, merge, canonical freeze, deployment, import, publication and public acceptance as unfinished work.
-- [ ] A reviewable content PR is opened and its URL is recorded here.
+- [x] A reviewable content PR is opened and its URL is recorded here.
 
 ## Steps
 
@@ -41,7 +41,7 @@ The four domain and billing guides previously had only Traditional Chinese docum
 - [x] Independently review documents and renders before integrating exact approved artifacts.
 - [x] Run scoped pack, localization, API, publication, frontend, tool, task, lint, type and build checks.
 - [x] Create the separate unclaimed release task `2026-09-23-release-localized-domain-billing-guides-batch023`.
-- [ ] Open the content PR and record its actual URL; CI and production acceptance remain in the release task.
+- [x] Open the content PR and record its actual URL; CI and production acceptance remain in the release task.
 
 ## How to verify
 
@@ -71,3 +71,9 @@ Approved claim manifest SHA256 `7e500a035d7ebc5c17d9308c584b9f56cffd875a5672d4d9
 Shared scope scan covered 189 registered worktrees and 12,710 open task records, with no active scoped claims, translated candidates or open-PR path conflicts. Initial strict HOLD is preserved: four historical P: checkout anomalies were read-only triaged as missing-index/incomplete or task-only sparse checkouts, with no selected candidate files. Supplemental proof SHA256 `3cecf8a61aeebf328e373469abd6a93adb697775dff5f1f5fc59e4c44d8cd7f8`; no ownership override, index repair or cleanup occurred.
 
 Preserve original source facts and checked dates. Bluehost refund policy retrieval previously timed out, so no fresh verification is claimed. Related-article publication availability remains a release-time guard. Existing source corrections and other batches are outside this task.
+
+## Actual PR handoff
+
+- Content PR: https://github.com/x812033727/travel_scanner/pull/695, opened against main `ffa42476205f60e1e52c06f6600b51c9b26e572a` from reviewed content head `e76b08abb279b217303774b3bbe81a3dad91f557`. The exact 52 approved content bytes, 12 original assets, 20 models and 14 local-test dependency bytes were rechecked after merging known main. Task and diff checks passed.
+- All nine actual CI checks started on the initial head; no CI success, merge, import, publication or public acceptance is claimed by this completion. Those gates remain unchecked in the separate release task.
+- Final Git proof is recorded outside Git under `batch023-domain-billing/pr-handoff/`; the PR task-archive commit only records this completed content handoff.
