@@ -92,3 +92,6 @@ honest CI/release accounting and do not prove PostgreSQL execution.
 
 No batch019 deployment, import/publication or public browser verification has
 been completed or claimed by this task. This release task remains open/unclaimed.
+
+Content PR: [#680](https://github.com/x812033727/travel_scanner/pull/680).
+Required CI and merge are pending; recheck the exact final PR head before release.

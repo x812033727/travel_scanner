@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-four-digital-organization-guides-batch019
 title: Localize four digital organization guides batch019
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-batch019
 claimed_at: 2026-09-23T08:13:05Z
 created_at: 2026-09-23T08:12:54Z
-completed_at:
+completed_at: 2026-09-23T09:11:57Z
 branch: codex/article-localization-batch019-digital-organization
 depends_on: []
 scope:
@@ -36,7 +36,7 @@ article metadata, publication state, photographs or image provenance.
 - [x] Sixteen localized SVG diagrams match the source semantics and pass desktop
       and mobile render review; textless original hero JPGs are preserved.
 - [x] Independent content/image review binds the source and final artifact hashes.
-- [ ] Scoped pack/API/frontend/tool checks pass and the batch is submitted in a PR.
+- [x] Scoped pack/API/frontend/tool checks pass and the batch is submitted in a PR.
 - [x] A separate release task records CI, merge, guarded import/publication and
       real public browser acceptance before claiming the languages are live.
 
@@ -46,7 +46,7 @@ article metadata, publication state, photographs or image provenance.
 - [x] Claim exact four-article scope and split authorship into disjoint pairs.
 - [x] Review outside-only translation/image candidates before root integration.
 - [x] Preserve source models/assets and validate the exact integrated Git bytes.
-- [ ] Open the scoped PR and explicit remaining release task.
+- [x] Open the scoped PR and explicit remaining release task.
 
 ## How to verify
 
@@ -142,3 +142,11 @@ Remaining work is tracked by the separate open task
 `2026-09-23-release-localized-digital-organization-guides-batch019`.
 CI, merge, canonical release freeze, deployment, import/publication and actual
 public browser acceptance are not completed by this content-authoring task.
+
+Submitted as [PR #680](https://github.com/x812033727/travel_scanner/pull/680).
+Before submission, synchronized the approved documentation-only main commit
+24969fe4e4705545cd3ea5e05868e1e947c00248 recording batches 007/017. The twenty
+reviewed content files and eight original images remain exact hash matches;
+task validation and diff checks passed again. This task is closed inside its PR
+for completed content authoring and review. CI/merge and all release acceptance
+remain pending in the open dependent release task.
