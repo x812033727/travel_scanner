@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-release-localized-website-basics-batch018
 title: Release localized website basics batch018
-status: in-progress
+status: done
 priority: P1
 area: ops
 owner: codex-batch018
 claimed_at: 2026-09-23T07:56:10Z
 created_at: 2026-09-23T07:02:24Z
-completed_at:
+completed_at: 2026-09-23T09:37:25Z
 branch: codex/article-localization-018-release-record
 depends_on:
   - 2026-09-22-localize-four-website-basics-guides-batch018
@@ -25,24 +25,24 @@ Keep the remaining CI, deployment, import and public acceptance gates explicit.
 
 ## Definition of done
 
-- [ ] Exact content PR head passes required CI and is reviewed and merged.
-- [ ] Fresh live source/visibility/version inventory still permits missing-language
+- [x] Exact content PR head passes required CI and is reviewed and merged.
+- [x] Fresh live source/visibility/version inventory still permits missing-language
       publication for exactly the four slugs below; retain any concurrent edits.
-- [ ] Freeze reviewed canonical bundle, original/version hashes and image evidence.
-- [ ] Verify fresh database backup and deployment health under the existing owned
+- [x] Freeze reviewed canonical bundle, original/version hashes and image evidence.
+- [x] Verify fresh database backup and deployment health under the existing owned
       hold/locking protocol; deploy only the reviewed necessary code and images.
-- [ ] Dry-run and idempotent import/publish change only en, ja, ko and zh-CN.
-- [ ] All twenty five-language pages pass full-body/image/canonical/hreflang/link
-      checks and desktop/mobile visual review; unrelated drafts remain private.
-- [ ] Record per-article content/import/publication/browser evidence and release
+- [x] Dry-run and idempotent import/publish change only en, ja, ko and zh-CN.
+- [x] All twenty five-language pages pass full-body/image/canonical/hreflang/link
+      checks and desktop/mobile visual review; publisher scope excludes unrelated drafts.
+- [x] Record per-article content/import/publication/browser evidence and release
       only this task's owned hold after acceptance.
 
 ## Steps
 
-- [ ] Review final Git export and CI for the content PR.
-- [ ] Refresh source snapshot and assemble/review the exact release bundle.
-- [ ] Deploy, import and publish through the reviewed explicit-list publisher.
-- [ ] Complete database and public-browser acceptance and delivery receipt.
+- [x] Review final Git export and CI for the content PR.
+- [x] Refresh source snapshot and assemble/review the exact release bundle.
+- [x] Deploy, import and publish through the reviewed explicit-list publisher.
+- [x] Complete database and public-browser acceptance and delivery receipt.
 
 ## How to verify
 
@@ -123,3 +123,35 @@ Recovery transport SHA256:
 `fe46b12ec13da57f3f13bd0b745ce17414575486f88b207dca4b440e4d88c985`.
 Read-only transfer/new-backup capture SHA256:
 `08fbed90c47ad6261e7f46cf390356c8aaa7931c832cc24addf2ed71bd7961f4`.
+
+### 2026-09-23 completed production acceptance
+
+The guarded recovery deployment completed successfully at 09:06 UTC. Read-only
+dry-run, sixteen draft imports and sixteen article publications completed in
+sequence; the hub phase performed zero operations. Newly published locales are
+v2; four original zh-TW v4 full rows and all parent metadata remain unchanged.
+Independent review verified twenty complete models, all thirty-two committed
+journal operations, the actor, phase seals, transferred hold and fresh backup.
+
+All twenty URLs passed full-body/image/canonical/hreflang/internal-link checks in
+forty desktop/mobile viewport cases. Twenty expanded-content/source cases and
+all sixty public image SHA256 checks passed. Two independent reviewers actually
+viewed eighty original screenshots. Mobile diagram screenshots cover the center
+pan; complete labels are covered by desktop diagrams and frozen render evidence.
+The existing desktop search placeholder/icon overlap remains separately tracked.
+Sitemap pagination returned 1,000 + 928 unique rows, all covered by the XML sitemap.
+
+Final evidence was reviewed and staged before clearing this task's exact owned
+hold at 09:34 UTC. The 09:34:28 read-only host check showed clean deployed target
+38ebec88, no hold and all three health endpoints at 200. The old failed release
+directory and backup remain preserved. This receipt claims only these four
+already-public articles; it does not claim a new site-wide draft-visibility audit.
+
+Per-article results, timestamps and external SHA256 references are committed in
+docs/article-localization/releases/batch018/README.md and evidence.json.
+Final-evidence SHA256:
+`90f407364456a582b118c7c5b6f4697933bd0d840f5bccbbafd9dc824ba3f40a`.
+Final-acceptance SHA256:
+`0e340684df166e324e16aead8934100ba5531ff39aacb09c94b31977c8daaa2f`.
+Post-clear host SHA256:
+`cd7d6bb1e8e4d00df0fe9cb9ec91d98207d11b470bafcf9f7083dc679238d7b3`.
