@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-four-hosting-transfer-guides-batch025
 title: Localize four hosting transfer guides batch025
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-batch025
 claimed_at: 2026-09-23T16:32:28Z
 created_at: 2026-09-23T16:32:18Z
-completed_at:
+completed_at: 2026-09-23T17:53:41Z
 branch: codex/article-localization-batch025-hosting-transfer
 depends_on: []
 scope:
@@ -34,7 +34,7 @@ Four existing published guides have only Traditional Chinese. Add complete Engli
 - [x] Independent reviewers have read every translated field and actually viewed all desktop/mobile image previews; exact document, asset, render and review hashes are recorded.
 - [x] Structure, numbers, source URLs/dates, code/product terms, audience, credits and same-language structured links pass the strict field guard; any canonical image-description backfills have explicit target-only ledgers.
 - [x] Applicable scoped pack/API/publication/pipeline checks and frontend content tests, lint, i18n, types, build, tools and task checks have passing selected receipts. Record actual failures, retries, PostgreSQL/platform skips and editorial advisories without concealing them.
-- [ ] A content PR exists with its exact final head, honest local-validation results and current CI state. Create a separate release task for all remaining CI/merge/deploy/import/publish/browser work; this content task must not claim production completion.
+- [x] A content PR exists with its exact final head, honest local-validation results and current CI state. Create a separate release task for all remaining CI/merge/deploy/import/publish/browser work; this content task must not claim production completion.
 
 ## Sub-tasks
 
@@ -44,7 +44,7 @@ Four existing published guides have only Traditional Chinese. Add complete Engli
 - [x] Exchange independent prose and image reviews between authors, preserve superseded candidates and require exact final review pins before integration.
 - [x] Assemble an outside-repository candidate, independently verify all 52 eventual content paths, 20 models, 16 reviewed translations and 12 original assets, then apply only the approved candidate.
 - [x] Run the applicable local checks and preserve immutable command logs, selected receipts and final before/after source pins.
-- [ ] Open the content PR, file the separate release task and record its ID, then complete/archive this task only when its content acceptance and PR handoff are true.
+- [x] Open the content PR, file the separate release task and record its ID, then complete/archive this task only when its content acceptance and PR handoff are true.
 
 ## How to verify
 
@@ -78,7 +78,7 @@ Evidence outside the repository:
 - Fresh setup `setup-readonly-v1/receipt.json`, SHA256 `9cae6d6d73078ebacfded7a0b750d1e89d4ab4039d95ef4d4ecc2459ffe26d37`, preserved as its actual HOLD. Its only findings are four historical P: checkout states, resolved by `historical-checkout-triage.json`, SHA256 `52b2663d9e3f621d00eed58fdb8f63ed912c0d6939c996c44101110417cf73b7`. No ownership override, index repair or old-worktree mutation occurred.
 - The preflight read 193 registered worktrees, 13,383 open-task records and the fresh open PR file lists; there are no active scoped claims, existing translations, recent selected-content commits or PR conflicts. Two broad related tasks remain unclaimed. Refresh these facts at actual claim rather than interpreting this record as a permanent lock.
 
-Content and local acceptance completed; the PR handoff remains pending. The separate unclaimed release task is `2026-09-23-release-localized-hosting-transfer-guides-batch025`. CI, merge, deployment, import, publication and actual public acceptance remain open there.
+Content, independent review, local acceptance and the actual PR handoff are complete. The separate unclaimed release task is `2026-09-23-release-localized-hosting-transfer-guides-batch025`. CI, merge, deployment, import, publication and actual public acceptance remain open there.
 
 Actual content acceptance:
 
@@ -92,3 +92,12 @@ Actual content acceptance:
 - FastComet's three primary pages were readable; HostGator's four primary reads returned 403. Historic source dates remain unchanged; neither editorial review nor local checks claim fresh provider-account, payment, performance or physical-device testing.
 
 All relative evidence paths above are under `C:/Users/x8120/.codex/article-localization-release/batch025-hosting-transfer`. The original local summary is not evidence for any later merged HEAD; any post-merge checks receive separate receipts.
+
+
+Actual PR handoff:
+
+- Content PR: https://github.com/x812033727/travel_scanner/pull/700 (open, not merged or deployed). The created PR was attached to the Codex task. Its creation head was `332f82c34f1df9ed8e639e84be74fe3c00285d84`, base `81f9f338945de587f5d117029905eec4aeca1a1f`; this task/archive commit is documentation-only and the exact final PR head/tree is recorded in the outside final Git proof and GitHub checks. No future CI result is predeclared.
+- Fresh post-merge API/publication/task/diff checks all passed at `ef2223444db53481a9abbc42f6a408a918acfeb8`: API 64 passed / 5 PostgreSQL skipped; publication 83 passed / 59 PostgreSQL skipped. `postmerge-validation-v1/summary-pass.json`, SHA256 `b27af391a62e27fa60221426c6b152d7aeda74eee6a4c37e88569b866f0d28f0`, retains exact commands, logs, before/after content and original pins. The specified main `85b76908543e1fb59256a2c8ec30e9c3e8196275` introduced only batch024 content/docs/tasks relative to this claim baseline, with no runtime or test dependency change.
+- The subsequent authorized main advance to `81f9f338945de587f5d117029905eec4aeca1a1f` adds only the accepted batch023 release README/evidence and that release task's archive. No application/tool/test bytes changed. Task and diff checks were repeated successfully; the passing API/publication receipts remain explicitly bound to the earlier actual tested head.
+- Pre-PR Git proof `git-proof-prepr-332f82c3.json`, SHA256 `c8a1115d2c15e8781b1d34197776cbab846b911ab24896600df7a7e0d06cc2d1`, verifies exactly 52 content paths plus these two task records, all candidate and Git blob bytes, all 12 original assets, reversible original zh-TW/raw metadata, and dependency identity since the tested head. Fresh branch/remote/open-PR collision evidence found no competing content scope.
+- The separate release task stays open and unclaimed. Required CI, actual PostgreSQL evidence, merge, guarded production backup/deploy/import/publication and browser acceptance remain pending there. This content task's completion is limited to authored/reviewed/locally validated content and its reviewable PR.
