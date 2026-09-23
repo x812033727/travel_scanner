@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-23-catchtable-platform-tier-busan-platforms",
+  "researched_at": "2026-09-23T11:01:40+00:00",
+  "method": "CatchTable 榜單反推：本機瀏覽器渲染店頁判斷控制項；只有店家自己的訂位控制項算可訂位。",
+  "rules": "可訂位存 verified；只能候位或沒有控制項存 disabled；語言網址取自店頁 hreflang，沒有 ko。",
+  "records": [
+    {
+      "merchant_id": "318c37ec-6e61-4e9e-9af7-b6e803e729b0",
+      "slug": "busan-83haechi-gwanganri",
+      "name": "83해치 광안리점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/83haechi_gwanganri",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/83haechi_gwanganri",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/83haechi_gwanganri",
+        "ja": "https://www.catchtable.net/ja-JP/shop/83haechi_gwanganri"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 1 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列（23 已滿、24–25 關閉、26 起多日已滿）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 online-reservation-open-schedule、schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：/info 沒有「網站」欄、頁上外部連結 0 個，website 為 null（前兩批查到的 IG @83haechi.gwangalli 不在店頁上，不填）。/info 標題列只顯示 AI 翻譯的中文名「83獬豸 廣安裏店」，韓文原文名「83해치 광안리점」與拉丁名「83Haechi Gwanganlli」出現在店頁首頁的名稱列（與草稿 listed_name 一致），引文店名段因此抄 /info 可見的標題；韓文地址「부산광역시 수영구 민락본동로19번길 59 1층」與草稿一致。頁面其他資料：電話 +82-51-757-8377、每天 16:00–24:30（23:40 最後點餐）、簡介「83 Hatch 광안리的直營分店」。與前兩批差異：無，官網／觀光局頁仍無。分類依 listed_cuisine 烤豬肉與首頁簡介「主打國產熟成豬肉燒烤」→ bbq-grill；商圈 민락동 → gwangalli。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列（23 已滿、24–25 關閉、26 起多日已滿）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 online-reservation-open-schedule、schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/83haechi_gwanganri",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列（23 已滿、24–25 關閉、26 起多日已滿）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 online-reservation-open-schedule、schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/83haechi_gwanganri",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 1 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "2a921e28-bda2-4e15-8d4d-aa409337e6b6",
+      "slug": "busan-sinsakkotgedang",
+      "name": "신사꽃게당 부산 해운대점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/sinsakkotgedang",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/sinsakkotgedang",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/sinsakkotgedang",
+        "ja": "https://www.catchtable.net/ja-JP/shop/sinsakkotgedang"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 3 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–24 顯示「電話」、25–27 已滿、28 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：「網站」欄填的是 Naver 地圖店家頁連結（place 2051798505），依規則原樣照抄進 website，但它不是店家網站也不是來源；頁上沒有 IG 或官網。/info 標題列顯示店家登記的拉丁名「Sinsakkotgedang Haeundae」（這家沒有中文顯示名），韓文原文名「신사꽃게당 부산 해운대점」出現在店頁首頁名稱列，與草稿 listed_name 一致；韓文地址「부산광역시 해운대구 해운대해변로 257 하버타운 2층」與草稿一致。頁面其他資料：電話 +82-51-747-5222、每天 11:30–24:00（22:40 最後點餐）、簡介以「Kkotgedang」自稱，主打간장게장、꽃게찜、양념게장。與前兩批差異：無。分類 seafood；商圈 해운대 우동 → haeundae。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–24 顯示「電話」、25–27 已滿、28 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/sinsakkotgedang",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–24 顯示「電話」、25–27 已滿、28 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/sinsakkotgedang",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 3 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "dd09eed8-4bab-4e96-ab8c-fd5e7ae85285",
+      "slug": "busan-corduroyfellaz-busan",
+      "name": "코듀로이 펠라즈",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/corduroyfellaz_busan",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/corduroyfellaz_busan",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/corduroyfellaz_busan",
+        "ja": "https://www.catchtable.net/ja-JP/shop/corduroyfellaz_busan"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 8 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：「網站」欄是 Instagram https://www.instagram.com/corduroyfellaz_busan（帳號 corduroyfellaz_busan），原樣照抄進 website。/info 標題列顯示店家登記的拉丁名「Corduroy Fellaz」（沒有中文顯示名），韓文原文名「코듀로이 펠라즈」在店頁首頁名稱列，與草稿 listed_name 一致；韓文地址「부산광역시 수영구 민락본동로11번길 53 1층」與草稿一致。頁面其他資料：調酒吧（簡介講 Corduroy Fellows 精神與「從農場到吧台」調酒）、電話 +82-10-8128-5703、週日至週四 19:00–02:00、週五六 19:00–03:00、無兒童區、開瓶費每瓶 50,000 韓元。與前兩批差異：無。分類 izakaya-bar；商圈 민락동 → gwangalli。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/corduroyfellaz_busan",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/corduroyfellaz_busan",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 8 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "46881632-138c-49bb-bc05-32deeea4c1ab",
+      "slug": "busan-gunamroast",
+      "name": "구남로스 부산해운대본점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/gunamroast",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/gunamroast",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/gunamroast",
+        "ja": "https://www.catchtable.net/ja-JP/shop/gunamroast"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 10 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–30 可選、10/1 起已滿）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：/info 沒有「網站」欄、外部連結 0 個，website 為 null。/info 標題列顯示店家登記的拉丁名「Gunam Roast」（沒有中文顯示名；zh-TW 內文把店名 AI 翻成「九南路」，不採用），韓文原文名「구남로스 부산해운대본점」在店頁首頁名稱列，與草稿 listed_name 一致；韓文地址「부산광역시 해운대구 구남로12번길 12 팔레스오피스텔 1층」與草稿一致。頁面其他資料：韓牛＋濟州豬炭火烤肉、電話 +82-51-747-9293、每天 11:00–02:00、寵物友善、建築前有停車場。與前兩批差異：無。分類 bbq-grill；商圈 해운대 우동（구남로）→ haeundae。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–30 可選、10/1 起已滿）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/gunamroast",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–30 可選、10/1 起已滿）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/gunamroast",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 10 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "2ace9166-ea65-415c-9be7-c95192036a13",
+      "slug": "busan-busan-kosaljip",
+      "name": "꽃살집 전포점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/busan_kosaljip",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/busan_kosaljip",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/busan_kosaljip",
+        "ja": "https://www.catchtable.net/ja-JP/shop/busan_kosaljip"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 11 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 出現 online-reservation-open-schedule、schedule。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：「網站」欄是 Google 短網址 https://g.co/kgs/qEbjqEE（Google 商家知識面板連結，不是店家網站），依規則原樣照抄進 website。/info 標題列顯示 AI 翻譯的中文名「花肉店 田浦店」，韓文原文名「꽃살집 전포점」與拉丁名「Kosaljip Busan」在店頁首頁名稱列，與草稿 listed_name 一致，引文店名段抄 /info 可見的標題；韓文地址「부산광역시 부산진구 서전로46번길 64」與草稿一致。頁面其他資料：簡介「釜山高級韓牛的首選名店」、電話 +82-51-804-6864、週一至五與週日 12:00–22:00（21:05 最後點餐）、週六 12:00–22:30、全年無休、免開瓶費。與前兩批差異：無（第三方頁說的美國 Prime 牛與店頁「韓牛」仍不一致，未採任何一方）。分類 bbq-grill；商圈 전포동 → jeonpo。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 出現 online-reservation-open-schedule、schedule。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/busan_kosaljip",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 出現 online-reservation-open-schedule、schedule。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/busan_kosaljip",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 11 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f11629a1-c087-439b-afd7-2d6d4d470200",
+      "slug": "busan-ushiya",
+      "name": "우시야",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/ushiya",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/ushiya",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/ushiya",
+        "ja": "https://www.catchtable.net/ja-JP/shop/ushiya"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 15 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：/info 沒有「關於本店」也沒有「網站」欄、外部連結 0 個，website 為 null。/info 標題列顯示 AI 翻譯的中文名「牛室」，韓文原文名「우시야」與拉丁名「USHIYA」在店頁首頁名稱列（韓文名沒有分店字樣），與草稿 listed_name 一致，引文店名段抄 /info 可見的標題；韓文地址「부산광역시 해운대구 우동1로38번길 2 1층」與草稿一致。頁面其他資料：電話 +82-10-9947-6466、每天 17:00–01:00、開瓶費每人 10,000 韓元、首頁簡介「位於哈利丹街的牛肉おまかせ餐廳」。與前兩批差異：無。分類 bbq-grill＋fine-dining（牛肉 omakase）；商圈依店家自述的 해리단길 → haeridan（地址在 우동，若要照通則也可歸 haeundae）。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/ushiya",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/ushiya",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 15 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "1842ffbc-0097-4f6b-a2ec-8d3b0a487214",
+      "slug": "busan-amassxsmugogae",
+      "name": "스무고개",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/amassxsmugogae",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/amassxsmugogae",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/amassxsmugogae",
+        "ja": "https://www.catchtable.net/ja-JP/shop/amassxsmugogae"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 16 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 只記到 detail、schedule（沒等到 dayslot-enc），但訂位分頁與日期列都已渲染。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：/info 沒有「網站」欄、外部連結 0 個，website 為 null。/info 標題列顯示店家登記的拉丁名「Smugogae」（沒有中文顯示名），韓文原文名「스무고개」在店頁首頁名稱列，與草稿 listed_name 一致（頁上沒有「해운대점」字樣，local_name 照頁面），引文店名段抄 /info 可見的標題；韓文地址「부산광역시 해운대구 좌동순환로468번가길 81 1, 2층」與草稿一致。頁面其他資料：1 樓韓牛 omakase（吧檯、固定時段、14 歲以下不接待）、2 樓炭火燒烤、電話 +82-10-3590-5006、平日 11:30–15:00／17:00–21:30、週末 11:30–15:30／17:30–21:30、全年無休、店內有停車場。與前兩批差異：無。分類 bbq-grill＋fine-dining；商圈 해운대 좌동／중동 → haeundae。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 只記到 detail、schedule（沒等到 dayslot-enc），但訂位分頁與日期列都已渲染。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/amassxsmugogae",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 只記到 detail、schedule（沒等到 dayslot-enc），但訂位分頁與日期列都已渲染。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/amassxsmugogae",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 16 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "b14ccbb1-e4a7-448e-8522-20c0b52d4c77",
+      "slug": "busan-suksungdo-busan",
+      "name": "숙성도 광안리점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/suksungdo_busan",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/suksungdo_busan",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/suksungdo_busan",
+        "ja": "https://www.catchtable.net/ja-JP/shop/suksungdo_busan"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 17 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；資訊分頁底部另有「登記遠端候位」；api 只記到 detail、schedule。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：/info 沒有「網站」欄、外部連結 0 個，website 為 null（品牌站 suksungdo.kr 沒有出現在店頁上，本機也仍開不了）。/info 標題列顯示 AI 翻譯的中文名「熟成到 廣安裏店」（品牌在簡介裡自稱「熟成度」，顯示名不是店家原名，name_zh 用韓文），韓文原文名「숙성도 광안리점」與拉丁名「Sukseongdo Gwangalli」在店頁首頁名稱列，與草稿 listed_name 一致，引文店名段抄 /info 可見的標題；韓文地址「부산광역시 수영구 광안해변로 289」與草稿一致。頁面其他資料：熟成豬肉燒烤、電話 +82-70-7755-3699、每天 11:30–23:00（22:10 最後點餐）、無休、開瓶費每瓶 10,000 韓元、附近 5 處合作停車場 1 小時免費。與前兩批差異：無；與首爾 을지로점（第一批 alias sooksungdo）同品牌。分類 bbq-grill；商圈 광안리 → gwangalli。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；資訊分頁底部另有「登記遠端候位」；api 只記到 detail、schedule。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/suksungdo_busan",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；資訊分頁底部另有「登記遠端候位」；api 只記到 detail、schedule。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/suksungdo_busan",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 17 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f494d33d-d6df-4da2-8b1d-60ace4b6423d",
+      "slug": "busan-gwj",
+      "name": "규우정",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/gwj",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/gwj",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/gwj",
+        "ja": "https://www.catchtable.net/ja-JP/shop/gwj"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 18 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），非官方資料。2026-09-23 查看：/info 沒有「網站」欄、外部連結 0 個，website 為 null。/info 標題列顯示 AI 翻譯的中文名「圭牛正」，韓文原文名「규우정」與拉丁名「Gyuwoojeong」在店頁首頁名稱列，與草稿 listed_name 一致，引文店名段抄 /info 可見的標題；韓文地址「부산광역시 해운대구 해운대해변로298번길 24 팔레드시즈 2층」與草稿一致，是現址（Visit Busan 條目 uc_seq=1578 寫的 달맞이길 129 是舊址，第二批已判定不能當來源），address_local 依 /info。頁面其他資料：1++ 韓牛燒烤與韓式豬排骨、電話 +82-51-747-9229、週一至五午餐 11:00–15:00（14:30 最後點餐）／晚餐 17:00–22:00（21:00 最後點餐）、週六日 11:00–22:00、팔레드시즈 地下停車場、可帶寵物。與前兩批差異：來源改用平台層級，地址採現址。分類 bbq-grill；商圈 해운대 중동 → haeundae。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/gwj",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/gwj",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 18 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    }
+  ]
+}
