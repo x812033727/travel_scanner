@@ -152,6 +152,586 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Keep Buying Household Supplies You Already Have? Track Location, Quantity, and Restocking Status in a Simple Inventory Sheet",
+      "description": "Start with supplies you often buy twice, without building a warehouse system. Help everyone at home see where things are, how much remains, and who has already restocked, so the list better matches what is actually there.",
+      "hero": {
+        "src": "/guides/household-inventory-spreadsheet/hero.jpg",
+        "alt": "Household storage shelves, simple containers, and a clipboard with an abstract table (AI-generated illustrative artwork, not a photograph)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI-generated illustration",
+          "license": "AI-generated, not a photograph",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You still have cleaning supplies at home, but bring home another pack from the store. When a different item actually runs out, everyone assumes someone else bought it. The problem may simply be that the information is scattered. This guide shows how to design a household supplies sheet for a small selection of shared consumables. It does not cover commercial inventory, food safety assessments, or detailed cost accounting."
+        },
+        {
+          "type": "heading",
+          "text": "Start only with items you tend to buy twice",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose supplies you regularly replenish, such as toilet paper, trash bags, or dishwashing products, and record their generic names, specifications, storage locations, and available quantities. Use a consistent unit, such as packs, bottles, or boxes. Do not count an item in cases this week and individual sheets next week. List different specifications separately when they affect whether products can substitute for each other. Leave out details you do not need to track so that the sheet does not become difficult to fill in and quickly fall out of use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Sheets provides an official drop-down feature that can restrict cells to fixed options. It helps keep statuses such as “To buy,” “Bought, not put away,” and “Enough” consistent. The household still needs to agree on how the sheet works; adding a drop-down does not automatically tell it how much remains at home. If people do not normally open spreadsheets, start with a shared list instead. The key is making the place to update it easy to find."
+        },
+        {
+          "type": "image",
+          "src": "/guides/household-inventory-spreadsheet/diagram-1-en.svg",
+          "alt": "A four-step process: choose a few supplies, record storage locations, mark restocking status, and check before shopping",
+          "width": 1600,
+          "height": 900,
+          "caption": "Steps shown: 01 Choose a few supplies → 02 Record storage locations → 03 Mark restocking status → 04 Check before shopping. An editorially recommended sequence; the diagram does not represent geographic distance, a service guarantee, or measured results.",
+          "description": "Check in order: choose a few supplies, record storage locations, mark restocking status, and check before shopping. An editorial guide, not a map or measured timing.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Use location and status to answer different questions",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "Field",
+            "Example entry",
+            "Purpose"
+          ],
+          "rows": [
+            [
+              "Item and specification",
+              "Trash bags / small",
+              "Avoid buying the wrong size"
+            ],
+            [
+              "Storage location",
+              "Kitchen, lower shelf on the right",
+              "Check the actual supplies before buying"
+            ],
+            [
+              "Quantity on hand",
+              "One unopened pack",
+              "Keep the counting method consistent"
+            ],
+            [
+              "Restocking status",
+              "To buy",
+              "Identify the action needed"
+            ],
+            [
+              "Last checked",
+              "Date of an organizing session and who checked",
+              "Show whether the number may be out of date"
+            ]
+          ],
+          "caption": "These examples do not prescribe a standard inventory quantity for any household."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mark supplies that have been bought but are still in the car, entryway, or a package as “Bought, not put away,” so another shopper knows not to order more. Update the quantity and location after putting them away. This records more than simply checking off a shopping list and explains why the sheet shows stock that you cannot find in the cupboard. When updating together, agree on who changes each field so that one person does not replace another person's updated quantity with an old value."
+        },
+        {
+          "type": "heading",
+          "text": "Adjust the restocking threshold to how your household uses things",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Observe how often your household uses an item, how much storage space you have, and how easy it is to buy before deciding how much should remain when you restock. Avoid buying so much during a promotion that it takes space away from other everyday supplies. For items whose brands you often change, record the general requirements and specifications you cannot accept instead of tying the list to one product. If a particular size or consumable model is required, attach a photo of its label for checking rather than relying on memory."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "The numbers reflect the last check; the sheet is not a live sensor",
+          "text": "Take a quick look at the actual supplies before shopping, especially in shared storage areas or places where things have recently been moved. The check date helps identify numbers that need another look. Do not use the sheet as a substitute for observing what is there."
+        },
+        {
+          "type": "heading",
+          "text": "Remove unused fields regularly and keep information that prompts action",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After using the sheet for a while, look at which fields nobody fills in and which information really makes shopping easier. Removing unused fields is more practical than asking people to fill in a dozen or more details every time. Update locations while cleaning or reorganizing cupboards instead of waiting until something goes missing. If you store food or other items with special storage requirements, manage them separately according to their packaging and applicable guidance. Quantity alone cannot tell you whether an item is still suitable to use."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Start with a small selection of supplies you often buy twice.",
+            "Use consistent units and status names.",
+            "Update separately after buying, putting away, and using items.",
+            "Check outdated numbers against the actual supplies before shopping."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Cannot Find a Receipt After Photographing It? Build Searchable Purchase Records and Warranty Folders",
+              "kind": "life",
+              "slug": "digital-receipt-archive"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Sheets: Create an In-Cell Drop-Down List",
+          "url": "https://support.google.com/docs/answer/186103?hl=en-na",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "家にある日用品をまた買ってしまう？簡単な在庫表で場所・数量・補充状況を記録する",
+      "description": "倉庫の管理システムを作る必要はありません。重複して買いやすい日用品から記録し、保管場所、残量、誰が補充したかを家族で把握して、一覧と実物の食い違いを減らしましょう。",
+      "hero": {
+        "src": "/guides/household-inventory-spreadsheet/hero.jpg",
+        "alt": "家庭の収納棚、シンプルな容器、抽象的な表が描かれたクリップボード（AI生成のイメージイラスト、実写ではありません）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI生成のイメージイラスト",
+          "license": "AI生成、実写ではありません",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "家に掃除用品が残っているのに、店でまた買って帰る。一方、本当に切れた日用品は、誰もがほかの人が買ったと思っている。原因は、情報がまとまっていないだけかもしれません。ここでは、少数の共有消耗品に向けた家庭用品の表の作り方を紹介します。業務用の在庫管理、食品の安全性の判断、精密な原価計算は扱いません。"
+        },
+        {
+          "type": "heading",
+          "text": "重複して買いやすい品目だけから始める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "トイレットペーパー、ごみ袋、食器洗い用品など、よく補充する品目を選び、一般的な商品名、仕様、保管場所、使える数量を記録します。単位はパック、本、箱などに統一し、同じ品目を今週はケース、翌週は枚で数えることは避けましょう。仕様の違いによって代用できるかどうかが変わるものは、別の行にします。追跡する必要のない細かな情報は省き、入力が面倒ですぐに使われなくなる表にしないことが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Sheetsの公式プルダウン機能では、セルに入力する内容を決まった選択肢に制限できます。「購入予定」「購入済み・未収納」「十分にある」といった状態の表記をそろえるのに便利です。ただし、表の運用方法は家族で決める必要があり、プルダウンを付けても家に残っている数量が自動で分かるわけではありません。普段スプレッドシートを開かない場合は、共有リストから始めても構いません。更新する場所を見つけやすくすることが基本です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/household-inventory-spreadsheet/diagram-1-ja.svg",
+          "alt": "四段階の流れ：少数の用品を選ぶ、保管場所を記録する、補充状況を示す、買い物前に確認する",
+          "width": 1600,
+          "height": 900,
+          "caption": "図の手順：01 少数の用品を選ぶ → 02 保管場所を記録する → 03 補充状況を示す → 04 買い物前に確認する。編集部が勧める作業順序です。地理的な距離、サービスの保証、効果の実測を示す図ではありません。",
+          "description": "少数の用品を選ぶ、保管場所を記録する、補充状況を示す、買い物前に確認する、の順に確認します。編集部が整理した図であり、地図や実測時間を示すものではありません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "場所と状態で、それぞれ別の疑問を解決する",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "記入例",
+            "目的"
+          ],
+          "rows": [
+            [
+              "用品と仕様",
+              "ごみ袋／小サイズ",
+              "違うサイズの購入を防ぐ"
+            ],
+            [
+              "保管場所",
+              "キッチンの下段右側",
+              "購入前に実物を確認する"
+            ],
+            [
+              "現在の数量",
+              "未開封の一パック",
+              "数え方を統一する"
+            ],
+            [
+              "補充状況",
+              "購入予定",
+              "必要な行動を示す"
+            ],
+            [
+              "最終確認",
+              "整理した日付と確認した人",
+              "数量が古い情報かもしれないと分かるようにする"
+            ]
+          ],
+          "caption": "記入例は、家庭で持つべき標準的な在庫量を示すものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "購入済みでも車内、玄関、届いた荷物の中にある用品は、「購入済み・未収納」と記録しておくと、別の買い物担当者が再注文せずに済みます。収納してから、現在の数量と場所を更新しましょう。買い物リストの項目を消すだけより状況がよく分かり、表には在庫があるのに棚に見当たらない理由も把握できます。共同で更新するときは、誰がどの項目を変更するか決め、更新した数量を別の人が古い値に戻してしまうことを防ぎます。"
+        },
+        {
+          "type": "heading",
+          "text": "補充の目安は家庭の使い方に合わせる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "家庭での使用頻度、収納できる広さ、買い物のしやすさを観察してから、残りがどのくらいになったら補充するかを決めます。セールだからと大量に買い、ほかの日用品の場所まで埋めてしまわないようにしましょう。ブランドをよく変える品目は、特定の商品に固定せず、共通して必要な条件と受け入れられない仕様を記録できます。決まったサイズや消耗品の型番が必要な場合は、記憶に頼らず、照合できる表示の写真を添えておきます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "表の数字は前回確認した結果であり、リアルタイムのセンサーではない",
+          "text": "買い物の前に実物をさっと確認しましょう。特に、複数人で使う場所や、最近物を移動した場所は確認が必要です。確認日を見れば、どの数量を調べ直すべきか分かります。表を、実際の状況を観察することの代わりにしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "不要な項目を定期的に削り、行動につながる情報を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "しばらく使ったら、誰も入力していない項目と、買い物を本当に楽にした情報を確認します。毎回十数項目の入力を求めるより、役に立たない項目を削るほうが現実的です。掃除や棚の整理のついでに保管場所を更新し、次に見つからなくなるまで放置しないようにしましょう。食品など特別な保管条件がある物を扱う場合は、包装の表示や適用される指針に従って別途管理します。在庫の数量だけで、まだ使ってよいかを判断することはできません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "重複して買いやすい少数の日用品から始める。",
+            "単位と状態の名称を統一する。",
+            "購入後、収納後、使用後にそれぞれ更新する。",
+            "買い物の前に、古い数量を実物と照合する。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "撮影したレシートが見つからない？購入証明を検索できる保管方法と保証用フォルダーを作る",
+              "kind": "life",
+              "slug": "digital-receipt-archive"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Sheets：セル内にプルダウンリストを作成する",
+          "url": "https://support.google.com/docs/answer/186103?hl=en-na",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "집에 있는 생활용품을 또 사나요? 간단한 재고표에 보관 위치, 수량, 보충 상태를 기록하세요",
+      "description": "창고 관리 시스템을 만들 필요 없이 자주 중복 구매하는 용품부터 기록하세요. 어디에 있는지, 얼마나 남았는지, 누가 이미 보충했는지 가족이 알아볼 수 있게 하면 목록과 실제 물건이 맞지 않는 상황을 줄일 수 있습니다.",
+      "hero": {
+        "src": "/guides/household-inventory-spreadsheet/hero.jpg",
+        "alt": "가정용 수납 선반, 단순한 용기, 추상적인 표가 그려진 클립보드(AI 생성 일러스트, 실제 사진 아님)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 생성 일러스트",
+          "license": "AI 생성 이미지, 실제 사진 아님",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "집에 청소용품이 남아 있는데도 매장에 갔다가 또 사 옵니다. 다른 용품이 정말 떨어졌을 때는 모두 누군가 샀을 거라고 생각합니다. 문제는 정보가 한곳에 모여 있지 않다는 것일 수 있습니다. 이 글은 함께 쓰는 소수의 소모품을 위한 가정용품 표를 설계하는 방법을 보여 줍니다. 상업용 재고 관리, 식품 안전 판단, 정밀한 원가 계산은 다루지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "중복 구매하기 쉬운 품목부터 시작하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "화장지, 쓰레기봉투, 설거지용품처럼 자주 보충하는 품목을 고르고 일반적인 제품명, 규격, 보관 위치, 사용 가능한 수량을 기록하세요. 묶음, 병, 상자처럼 수량 단위를 고정하고, 같은 품목을 이번 주에는 박스로 다음 주에는 낱장으로 세지 마세요. 규격 차이에 따라 서로 대체할 수 있는지가 달라진다면 행을 나누세요. 추적할 필요가 없는 세부 정보는 일단 빼서, 작성하기 어려워 금방 쓰지 않게 되는 표가 되지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Sheets의 공식 드롭다운 기능은 셀에 입력할 값을 정해진 선택지로 제한할 수 있어, ‘구매 필요’, ‘구매 완료·정리 전’, ‘충분함’ 같은 상태를 통일하기에 좋습니다. 표를 어떻게 운영할지는 여전히 가족이 함께 정해야 합니다. 드롭다운이 있다고 집에 얼마나 남았는지 자동으로 알 수 있는 것은 아닙니다. 평소 스프레드시트를 열지 않는다면 공유 목록으로 시작해도 됩니다. 업데이트할 곳을 쉽게 찾을 수 있어야 한다는 것이 핵심입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/household-inventory-spreadsheet/diagram-1-ko.svg",
+          "alt": "네 단계 흐름: 소수의 용품 고르기, 보관 위치 기록하기, 보충 상태 표시하기, 장보기 전에 확인하기",
+          "width": 1600,
+          "height": 900,
+          "caption": "그림의 단계: 01 소수의 용품 고르기 → 02 보관 위치 기록하기 → 03 보충 상태 표시하기 → 04 장보기 전에 확인하기. 편집부가 권장하는 처리 순서이며, 지리적 거리, 서비스 보장, 효과 실측을 나타내지 않습니다.",
+          "description": "소수의 용품 고르기, 보관 위치 기록하기, 보충 상태 표시하기, 장보기 전에 확인하기 순서로 점검합니다. 편집부가 정리한 안내이며 지도나 실측 시간을 나타내지 않습니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "위치와 상태로 서로 다른 문제 해결하기",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "작성 예시",
+            "용도"
+          ],
+          "rows": [
+            [
+              "용품과 규격",
+              "쓰레기봉투 / 소형",
+              "다른 크기를 사는 실수 방지"
+            ],
+            [
+              "보관 위치",
+              "주방 아래쪽 오른편",
+              "구매 전에 실제 물건 확인"
+            ],
+            [
+              "현재 수량",
+              "미개봉 한 묶음",
+              "일관된 기준으로 수량 계산"
+            ],
+            [
+              "보충 상태",
+              "구매 필요",
+              "필요한 행동 표시"
+            ],
+            [
+              "마지막 확인",
+              "정리한 날짜와 확인한 사람",
+              "수량 정보가 오래되었을 가능성 파악"
+            ]
+          ],
+          "caption": "이 예시는 가정에서 보유해야 하는 표준 재고량을 뜻하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "샀지만 아직 차 안, 현관, 택배 상자에 있는 용품은 ‘구매 완료·정리 전’으로 표시하면 다른 구매 담당자가 다시 주문할 필요가 없다는 것을 알 수 있습니다. 제자리에 넣은 뒤 현재 수량과 위치를 업데이트하세요. 단순히 쇼핑 목록에 완료 표시를 하는 것보다 상황을 자세히 남길 수 있고, 표에는 재고가 있는데 수납장에서는 찾을 수 없는 이유도 알 수 있습니다. 함께 업데이트할 때는 누가 어느 항목을 수정할지 정해, 한 사람이 바꾼 수량을 다른 사람이 이전 값으로 되돌리지 않도록 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "보충 기준은 실제 사용 방식에 맞게 조정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "가족의 사용 빈도, 보관 공간, 구매 편의성을 먼저 살펴본 뒤 얼마나 남았을 때 보충할지 정하세요. 할인한다는 이유로 한꺼번에 너무 많이 사서 다른 생활용품을 둘 공간을 차지하지 않도록 합니다. 브랜드를 자주 바꾸는 품목은 특정 제품에 고정하지 말고 공통으로 필요한 조건과 받아들일 수 없는 규격을 적어도 됩니다. 특정 크기나 소모품 모델이 필요하다면 기억에 의존하지 말고 대조할 수 있는 표시 사진을 첨부하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "표의 숫자는 마지막으로 확인한 결과이며 실시간 센서가 아닙니다",
+          "text": "장보기 전에 실제 물건을 빠르게 확인하세요. 특히 여러 사람이 함께 쓰거나 최근에 물건을 옮긴 곳을 살펴보세요. 확인 날짜는 다시 확인해야 할 수량을 알려 줍니다. 표를 보는 것으로 현장 확인을 대신하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "주기적으로 항목을 줄이고 행동에 도움이 되는 정보 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "한동안 사용한 뒤 아무도 작성하지 않는 항목과 실제로 구매를 편하게 만든 정보가 무엇인지 살펴보세요. 매번 십여 가지 정보를 입력하라고 요구하는 것보다 쓸모없는 항목을 지우는 편이 현실적입니다. 청소하거나 수납장을 정리할 때 위치도 함께 업데이트하고, 다음에 물건을 찾지 못할 때까지 미루지 마세요. 식품이나 특별한 보관 조건이 있는 물건을 넣는다면 포장 표시와 적용되는 지침에 따라 별도로 관리해야 합니다. 재고 수량만 보고 여전히 사용해도 되는지 판단해서는 안 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "자주 중복 구매하는 소수의 용품부터 시작하세요.",
+            "단위와 상태 이름을 통일하세요.",
+            "구매 후, 제자리에 넣은 후, 사용한 후 각각 업데이트하세요.",
+            "장보기 전에 오래된 수량을 실제 물건과 대조하세요."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "촬영한 영수증을 찾지 못하나요? 구매 증빙을 검색하고 보증 자료를 보관할 폴더 만들기",
+              "kind": "life",
+              "slug": "digital-receipt-archive"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Sheets: 셀 내 드롭다운 목록 만들기",
+          "url": "https://support.google.com/docs/answer/186103?hl=en-na",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "家里用品总是重复买？用简单库存表记录位置、数量与补货状态",
+      "description": "先记录最容易重复购买的用品，不用做成仓库系统。让家人看得懂放在哪里、还有多少、谁已经补货，减少清单和实物对不上的情况。",
+      "hero": {
+        "src": "/guides/household-inventory-spreadsheet/hero.jpg",
+        "alt": "家庭储物架、简单容器和画有抽象表格的夹板（AI 生成示意插画，非实拍）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 生成示意图",
+          "license": "AI 生成，非实拍",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "家里明明还有清洁用品，逛商场时却又带一份回来；另一种用品真正用完时，大家又以为别人买了。问题可能只是信息没有放在一起。这篇示范一张家庭用品表的设计方法，适合少量共用耗材，不处理商用库存、食品安全判断或精密成本计算。"
+        },
+        {
+          "type": "heading",
+          "text": "只从容易重复购买的品类开始",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先挑卫生纸、垃圾袋、洗碗用品等自己经常补货的品类，记录商品通用名称、规格、存放位置和可用数量。数量单位固定，例如包、瓶或盒，不要同一品类这周记箱、下周记抽。不同规格会影响是否能互相替代，就分开列；不需要跟踪的细节先省略，避免表格难填而很快被放弃。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google Sheets 的官方下拉菜单功能可以限制单元格使用固定选项，适合让“待买”“已买待归位”“足够”这类状态保持一致。表格逻辑仍由家人共同决定，不是有下拉菜单就会自动知道家里剩多少。如果大家平常不打开电子表格，也可以先用共享清单，原则是更新入口要容易找到。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/household-inventory-spreadsheet/diagram-1-zh-cn.svg",
+          "alt": "四步流程：选少量用品、记存放位置、标补货状态、采购前核对",
+          "width": 1600,
+          "height": 900,
+          "caption": "图中步骤：01 选少量用品 → 02 记存放位置 → 03 标补货状态 → 04 采购前核对。编辑建议的处理顺序；示意图不代表地理距离、服务保证或效果实测。",
+          "description": "依次检查：选少量用品、记存放位置、标补货状态、采购前核对。编辑整理，非地图或实测时间。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "用位置与状态解决不同问题",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "字段",
+            "填写示例",
+            "用途"
+          ],
+          "rows": [
+            [
+              "用品与规格",
+              "垃圾袋／小型",
+              "避免买到不同尺寸"
+            ],
+            [
+              "存放位置",
+              "厨房下层右侧",
+              "买之前先查实物"
+            ],
+            [
+              "现有数量",
+              "未开封一包",
+              "固定计数口径"
+            ],
+            [
+              "补货状态",
+              "待买",
+              "指出需要采取的行动"
+            ],
+            [
+              "最后确认",
+              "某次整理日期与确认人",
+              "知道数字是否可能过时"
+            ]
+          ],
+          "caption": "示例不代表任何家庭应持有的标准库存量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已买但还在车上、玄关或包裹里的用品，可以标“已买待归位”，让另一位采购的人知道不用再下单。归位后再更新现有数量与位置。这比单纯勾掉购物清单更完整，也能看出为什么表格显示有库存，柜子里却找不到。共同更新时约定谁改哪一栏，避免一个人改数量、另一个人又把旧值填回去。"
+        },
+        {
+          "type": "heading",
+          "text": "补货门槛根据自己的使用方式调整",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先观察家庭使用频率、可存放空间和购买方便程度，再决定剩多少时补货。不要因为促销一次买很多，却占掉其他日用品的位置。常换品牌的品类可以记录通用需求与不能接受的规格，不必硬绑单一商品；需要特定尺寸或耗材型号时，附上可核对的标识照片，而不是靠记忆。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "表格数字是上次确认的结果，不是实时传感器",
+          "text": "准备采购时先快速看实物，特别是多人共用或最近挪动过的位置。确认日期能提醒你哪些数字需要再查，不要用表格代替对现场的观察。"
+        },
+        {
+          "type": "heading",
+          "text": "定期删字段，保留能带来行动的信息",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用一段时间后，看哪些字段没人填、哪些信息真正让采购变容易。没用途的字段删掉，比要求每次填十几项信息更实际。清洁或重新整理柜子时顺便更新位置，不要等下一次找不到才追查。如果要放食品或其他有特殊储存条件的物品，另外依包装与适用指南管理，不能只看库存数量判断是否仍适合使用。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "从少量经常重复购买的用品开始。",
+            "单位与状态名称固定。",
+            "购买、归位与使用后分别更新。",
+            "采购前用实物核对过时数字。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "收据拍完就找不到？建立购买凭证的搜索与保修文件夹",
+              "kind": "life",
+              "slug": "digital-receipt-archive"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Sheets：创建单元格下拉菜单",
+          "url": "https://support.google.com/docs/answer/186103?hl=en-na",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
