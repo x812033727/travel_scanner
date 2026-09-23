@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-reposition-the-site-as-a-travel
 title: Reposition the site as a travel and life guide for AdSense review
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-23T16:35:59Z
 created_at: 2026-09-23T16:34:36Z
-completed_at:
+completed_at: 2026-09-23T23:07:29Z
 branch: claude/confirm-failure-reason-dpoe3a
 depends_on: []
 scope:
@@ -85,7 +85,8 @@ curl -sL https://mokaair.com/zh-TW | grep -c 'href="/zh-TW/life/'
 ## Notes
 
 - 2026-09-23: code done on `claude/confirm-failure-reason-dpoe3a`; lint, i18n, typecheck and
-  `test:web` (3215 tests) pass. The Definition of done boxes wait on a deploy. The
+  `test:web` (3215 tests) pass. The Definition of done boxes wait on a deploy: after it, run the two curls under
+  How to verify. Closed in the PR per the task-board rule. The
   `生活分享` label also appeared in four navigation and llms.txt tests, now in scope.
 
 - Out of this task and left to the owner: the 關於 page body is a site page edited in the
