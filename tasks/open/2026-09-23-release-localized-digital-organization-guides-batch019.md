@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-digital-organization-guides-batch019
 title: Release localized digital organization guides batch019
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-batch019-release
+claimed_at: 2026-09-23T09:28:46Z
 created_at: 2026-09-23T09:06:20Z
 completed_at:
-branch:
+branch: codex/article-localization-019-release-record
 depends_on:
   - 2026-09-23-localize-four-digital-organization-guides-batch019
 scope:
@@ -91,7 +91,20 @@ five PostgreSQL skips and one Windows/Bash tool-test skip. Those skips require
 honest CI/release accounting and do not prove PostgreSQL execution.
 
 No batch019 deployment, import/publication or public browser verification has
-been completed or claimed by this task. This release task remains open/unclaimed.
+been completed or claimed by this task. The release is now claimed for preparation.
 
 Content PR: [#680](https://github.com/x812033727/travel_scanner/pull/680).
 Required CI and merge are pending; recheck the exact final PR head before release.
+
+### 2026-09-23 fresh release preparation
+
+Root claimed this release separately from the completed content-authoring task.
+At 09:28 UTC a fresh read-only production export confirmed all four complete
+article and source-locale rows are identical to the independently reviewed
+08:08 snapshot. No target locales have been created. New snapshot:
+`batch019-digital-organization/live-source-full-20260923T092820Z.json`, SHA256
+`123b135609fd189752ba5c228b7d91bbd156a5ce78f578d68eebb69e5de7c1c1`.
+
+The exact content PR head remains 2d0beedc53254ae34e22762cdc1ed10e93c6badd.
+Seven of eight CI checks have passed; API is still running at this note. No
+merge, production write or final release acceptance is claimed yet.
