@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-four-website-planning-guides-batch022
 title: Localize four website planning guides batch022
-status: review
+status: done
 priority: P1
 area: api
 owner: codex-batch022
 claimed_at: 2026-09-23T12:25:55Z
 created_at: 2026-09-23T12:25:52Z
-completed_at:
+completed_at: 2026-09-23T13:57:48Z
 branch: codex/article-localization-batch022-website-basics
 depends_on: []
 scope:
@@ -32,7 +32,7 @@ Four currently public website-planning articles from the original 626-article lo
 - [x] Sixteen complete language documents independently reviewed against the full current published source.
 - [x] Forty-eight localized assets (16 hero SVG originals, 16 rendered hero JPGs and 16 diagram SVGs) rendered and visually inspected for glyphs, overlap, overflow and mobile legibility.
 - [x] All four original Traditional Chinese documents, metadata and original assets remain unchanged.
-- [ ] Scoped content/tool/frontend checks pass and a batch PR is opened; publication remains a separate release task.
+- [x] Scoped content/tool/frontend checks pass and a batch PR is opened; publication remains a separate release task.
 
 ## Steps
 
@@ -40,7 +40,7 @@ Four currently public website-planning articles from the original 626-article lo
 - [x] Claim the exact four-article scope in an isolated worktree.
 - [x] Author missing languages and SVG text; render each language cover from the existing SVG.
 - [x] Independently review complete text, numbers, audience, links and all new renders.
-- [ ] Integrate exact reviewed bytes, run relevant checks and open the content PR.
+- [x] Integrate exact reviewed bytes, run relevant checks and open the content PR.
 - [x] Record a separate guarded release task for actual CI/merge/deployment/import/publication/browser acceptance.
 
 ## How to verify
@@ -67,4 +67,7 @@ Use the existing ArticlePack/GuideDocument and article-localization pipeline. Ve
 - Local `test-evidence/summary-pass.json` SHA256 `d4c6a3a05558e7ad867cd098958f79cbd2ed0b43a2a9f5d7086d4fc6802170bf`:16checksPASS; API64passed/5PostgreSQL-skipped; assembly/publication83passed/59PostgreSQL-skipped; web9files/333passed; pipeline32passed; render17passed; tools81passed/1WindowsBash-skipped. Pack lint, i18n, web lint, build, typecheck, task validation and diff check passed. PostgreSQL execution requires separately pinned actual CI evidence.
 - The first web attempt retained234completed tests/8files and a worker-startup timeout for the ninth file. It was not accepted as a complete pass. Only the web group was rerun with the same nine files and maxWorkers2; the complete333-test attempt passed. Both attempts and exact logs are preserved.
 - All24pack-lint advisories remain explicit:20missing-summary-block advisories inherited from source structure and4English body-length advisories (6092–6255characters against a6000guideline). These are nonfatal lint results; complete translated bodies were not shortened to silence them.
-- This task's completion boundary is reviewed content, local checks and an opened content PR. Actual CI, merge, frozen canonical bundle, backup/deployment,16draft imports/16publications,0hubs and public/browser acceptance are unfinished work in `2026-09-23-release-localized-website-planning-guides-batch022`; this content task makes none of those claims. PR creation remains unchecked until a real URL is recorded below.
+- This task's completion boundary is reviewed content, local checks and an opened content PR. Actual CI, merge, frozen canonical bundle, backup/deployment,16draft imports/16publications,0hubs and public/browser acceptance are unfinished work in `2026-09-23-release-localized-website-planning-guides-batch022`; this content task makes none of those claims. The real content PR is recorded below; no release completion is implied.
+
+- Content PR opened: https://github.com/x812033727/travel_scanner/pull/692 (reviewable, not draft). The opened head was `b510cc9f07da395a3584851d5295d7a63554edbc`, based on reviewed main `0d0e872f3c86c521c50e9694d6abec6455f45a11`. This task is archived because its explicit content/local-validation/PR definition of done is met; actual CI, merge and all production work remain open in the release task.
+- Post-merge actual Git proof `pr-handoff/final-git-proof-b510cc9f.json` SHA256 `b27c4f9fcb87a9ca3f8aac10993e8735d24467a1ab369f4195182a7a0536185e` verifies the 52 approved content/asset files, 12 original assets, all 20 full models, four byte-exact source reversals and 14 unchanged local-test dependencies. Task and diff checks passed after both main merges; upstream runtime code is unchanged, while CI trigger/data/content/docs updates are preserved.
