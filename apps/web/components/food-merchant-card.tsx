@@ -15,7 +15,12 @@ const distinctions = new Set([
   "bib_gourmand",
   "selected",
 ]);
-const sourceTypes = new Set(["official_tourism", "merchant_official", "michelin_licensed"]);
+const sourceTypes = new Set([
+  "official_tourism",
+  "merchant_official",
+  "michelin_licensed",
+  "merchant_platform",
+]);
 
 export function FoodMerchantCard({
   merchant,

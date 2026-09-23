@@ -96,7 +96,7 @@
 | --- | --- | --- |
 | `import` | 不在目錄裡，而且有官方來源 | `merchants.json` 一筆；套用後 `platform-reviews.json` 一筆 |
 | `duplicate` | 目錄裡已有這家店（`duplicate_of` 填目錄 slug） | 只產 `platform-reviews.json` 一筆，掛在既有店家上（補訂位連結） |
-| `no_official_source` | 店在 CatchTable 上，但找不到官網或觀光局講這家分店的頁 | 什麼都不產；留在候選檔等來源 |
+| `no_official_source` | 店在 CatchTable 上，找不到官網或觀光局講這家分店的頁，也不想（或不能）用 `merchant_platform` | 什麼都不產；留在候選檔等來源 |
 | `not_a_restaurant` | 榜上但不是餐飲店（酒吧以外的場館、快閃、已歇業） | 什麼都不產 |
 | `unclear` | 店頁看不到控制項（公休）或身分對不上，改天再開 | 什麼都不產；下一批再看 |
 
@@ -110,6 +110,7 @@
 - `booking_observation` 要寫日期、開的是哪個語言的店頁、看到哪個控制項、沒看到哪個。它會逐字進
   平台列的 evidence。
 - `listed_address` 只用來核對同店與找官方頁，**不會**寫進店家。
+- `website`（選填）：`/info` 分頁「網站」欄的網址原樣照抄（Instagram、smartstore、官網都照抄）；只有 `merchant_platform` 來源指向社群帳號時會用它核對責任鏈。
 
 ### `merchant`（`outcome` 是 `import` 時必填）
 
@@ -122,7 +123,7 @@
 | `local_name` | 韓文店名，含分店名（`본점`、`성수점`） |
 | `address_local` | 只在來源頁印了地址時填；否則省略 |
 | `category_slugs` | 1 到 3 個，`app/foods/category_catalog.py` 的 slug；第一個是主分類 |
-| `source.kind` | `merchant_official`（店家自己的站）或 `official_tourism`（觀光局／政府講這家分店的頁）；Instagram、Naver 部落格、CatchTable 本身都不算 |
+| `source.kind` | `merchant_official`（店家自己的站）、`official_tourism`（觀光局／政府講這家分店的頁），或 2026-09-23 起的較弱層級 `merchant_platform`：這個 alias 自己的 CatchTable 店頁（或 `/info` 分頁），或等於 `catchtable.website` 的社群帳號（店家自己在 `/info` 登記的）；其他平台、聚合站、社群網址一律擋。公開頁把 `merchant_platform` 標成「平台／社群登記」，不是「官方資料」；引文一樣要逐字、含店名與地址（`/info` 分頁點「原文語言」後的地址） |
 | `source.quote` | 逐字、看得到、300 字內 |
 
 ## 腳本怎麼轉

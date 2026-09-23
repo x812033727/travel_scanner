@@ -1252,7 +1252,8 @@ class FoodMerchantSource(Timestamped, Base):
             "merchant_id", "source_url", "edition_year", name="uq_food_merchant_source"
         ),
         CheckConstraint(
-            "source_type IN ('official_tourism', 'merchant_official', 'michelin_licensed')",
+            "source_type IN ('official_tourism', 'merchant_official', 'michelin_licensed', "
+            "'merchant_platform')",
             name="ck_food_merchant_source_type",
         ),
         CheckConstraint(
