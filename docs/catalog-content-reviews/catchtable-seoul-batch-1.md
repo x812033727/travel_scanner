@@ -176,6 +176,30 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   apply-
 | `apply-food-platform-reviews` | `would_create 15` | `created 15`（verified 12、disabled 3）；再跑 `unchanged 15` | 0 `skipped_admin_reviewed`，因為掛到的都是新列或沒審過的 rejected 列 |
 | 公開 API 首爾店家 | 29 | 29 | pending 不公開；帶 CatchTable 按鈕的仍是原本 3 家 |
 
+## 後台操作紀錄（第 7 步，2026-09-23 起，票 `2026-09-23-catchtable-seoul-1-naver-approval`）
+
+站主登入內建瀏覽器面板後由 session 代操作 `/zh-TW/admin/foods` 的「編輯地點與來源」，每家一次「儲存店家地點」，只寫座標欄位，
+審核狀態未動（auto 模式分類器曾把連續寫入擋下，站主在對話裡同意後放行）。座標來源優先用官方頁自己的 JSON-LD `GeoCoordinates`
+（`official_tourism`，來源網址就是那一頁），沒有的用 OpenStreetMap 上店家本身的節點（`admin_verified`，來源網址是節點永久連結）；
+Naver 與 Google 不當座標來源。座標佇列自 2026-09-19 起不再寫座標，只能手填。
+
+| slug | 座標 | 座標來源 | 依據 | Naver 精準頁 | 核准 |
+| --- | --- | --- | --- | --- | --- |
+| `seoul-bandb` | 37.566790, 127.044501 | `admin_verified` · [www.openstreetmap.org/node/13946958785](https://www.openstreetmap.org/node/13946958785) | OSM 節點「본앤브레드컴퍼니」，addr 마장로42길 1，與官方頁地址一致 | 待站主給 | — |
+| `seoul-anssi-makgeolli` | 37.538586, 126.987404 | `admin_verified` · [www.openstreetmap.org/node/8441101564](https://www.openstreetmap.org/node/8441101564) | 同門牌建物：OSM 節點 addr 회나무로 3（節點本身是同棟另一家店 포르게따），取建物位置 | 待站主給 | — |
+| `seoul-zest-seoul` | 37.525228, 127.040790 | `official_tourism` · [visitgangnam.net/places/zest](https://visitgangnam.net/places/zest) | 官方頁 JSON-LD GeoCoordinates | 待站主給 | — |
+| `seoul-thewooga` | 37.519566, 127.019091 | `official_tourism` · [visitgangnam.net/places/wooga](https://visitgangnam.net/places/wooga) | 官方頁 JSON-LD GeoCoordinates | 待站主給 | — |
+| `seoul-sancheongstar` | — | — | OSM 只有路段中心，官方頁沒有座標；先不填 | 待站主給 | — |
+| `seoul-koreahouse-kohojae` | 37.560203, 126.994684 | `admin_verified` · [www.openstreetmap.org/way/768500162](https://www.openstreetmap.org/way/768500162) | OSM「한국의집」園區（way），고호재在園區內소화당；addr 퇴계로36길 10 | 待站主給 | — |
+| `seoul-samwongarden` | 37.524930, 127.032530 | `official_tourism` · [visitgangnam.net/places/samwon-garden](https://visitgangnam.net/places/samwon-garden) | 官方頁 JSON-LD GeoCoordinates（OSM node/5585913921 37.5249856,127.0324446 相差 ~10 m，一致） | 待站主給 | — |
+| `seoul-jungsik` | 37.525658, 127.041081 | `official_tourism` · [visitgangnam.net/places/jungsik-seoul](https://visitgangnam.net/places/jungsik-seoul) | 官方頁 JSON-LD GeoCoordinates（OSM node/6601897949 정식당 37.5255927,127.0411030 一致） | 待站主給 | — |
+| `seoul-gebang` | 37.517279, 127.039439 | `admin_verified` · [www.openstreetmap.org/node/13946797914](https://www.openstreetmap.org/node/13946797914) | OSM 節點「게방식당」，addr 선릉로131길 17 | 待站主給 | — |
+| `seoul-alice-cheongdam` | 37.526662, 127.041050 | `admin_verified` · [www.openstreetmap.org/node/5552226222](https://www.openstreetmap.org/node/5552226222) | OSM 節點「앨리스 청담」，addr 도산대로55길 47 | 待站主給 | — |
+| `seoul-london-bagel-museum-anguk` | 37.579170, 126.986201 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147) | VisitKorea 英文頁（London Bagel Museum Anguk Main Store）JSON-LD GeoCoordinates | 待站主給 | — |
+| `seoul-ggupdang-seongsu` | 37.543223, 127.057650 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570) | VisitKorea 英文頁 JSON-LD GeoCoordinates（OSM 建物 way/801816488 37.5432168,127.0576395 一致） | 待站主給 | — |
+| `seoul-anmokseongsu` | 37.541197, 127.057959 | `admin_verified` · [www.openstreetmap.org/node/13946956920](https://www.openstreetmap.org/node/13946956920) | OSM 節點「(주)안목성수」，addr 뚝섬로13길 34 | 待站主給 | — |
+| `seoul-sancheong-ej` | 37.566125, 126.992229 | `admin_verified` · [www.openstreetmap.org/node/13851760765](https://www.openstreetmap.org/node/13851760765) | 同門牌建物：OSM 節點 addr 을지로 114-6（홍원빌딩，節點是同棟另一家店 물결）；OSM 另有「산청숯불가든 을지로」節點但門牌標 110-1，不採用 | 待站主給 | — |
+
 ## 這批踩到的陷阱（下一批別再踩）
 
 - **店頁的服務區塊是 lazy section。** 不往下捲就永遠不會渲染，畫面只剩底部「預訂」鈕或候位 dock。三個研究代理都把它當成
@@ -198,8 +222,9 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   apply-
 
 ## 還沒做完的
 
-- **站主動作（第 7 步）**：後台逐筆貼 14 家的 Naver 精準地點頁（清單見上一節）、跑座標佇列、核准；沒有這一步，這批只是審核佇列，
-  12 顆 verified 的訂位按鈕也不會出現在公開頁。
+- **第 7 步改由 session 代操作（2026-09-23 站主決定，票 `2026-09-23-catchtable-seoul-1-naver-approval`）**：Naver 精準頁的網址仍由站主查
+  （內建瀏覽器拒絕 `map.naver.com`，2026-09-23 再確認）並貼進對話；後台的逐筆填入、座標、核准由 session 在站主登入的面板裡做。
+  沒有這一步，這批只是審核佇列，12 顆 verified 的訂位按鈕也不會出現在公開頁。
 - `seoul-buchon-yukhoe`（rejected、沒地址、沒來源）現在多了一筆 `disabled` 的 CatchTable 列；候選檔 `buchonyukhoe` 的 notes 附了 VisitKorea 英文站的
   官方頁與地址，站主若要恢復那筆可直接用。
 - 15 家無來源的店留在候選檔：其中제주옥탑（只有 http 官網）與熟成到（`suksungdo.kr` 從本機解析不到）若能從韓國網路開到 https 頁，可補成 `import`；

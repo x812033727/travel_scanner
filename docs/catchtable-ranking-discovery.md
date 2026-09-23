@@ -69,7 +69,7 @@
 | 4 | 轉檔：`tools/catchtable_build_batches.py` 產 `merchants.json`；匯入後拿 worklist 的 merchant_id 再產 `platform-reviews.json` | 任何 session | 兩個匯入檔加一份報告 | 腳本零錯誤；dry-run 計畫與報告一致 |
 | 5 | PR：候選檔、兩個匯入檔、報告、票 | 任何 session | 合併 | CI 綠 |
 | 6 | 正式站匯入：兩支指令各自先 dry-run | 主機，站主同意後 | 新 pending 店家、平台列 | 計畫與實際一致 |
-| 7 | 站主動作：後台貼 Naver 精準頁、座標佇列驗證、核准 | 後台 | 公開店家 | 公開 API 查得到 |
+| 7 | 站主給 Naver 精準頁網址；session 在站主登入的後台逐筆填入、補座標、核准（2026-09-23 起） | 後台 | 公開店家 | 公開 API 查得到 |
 | 8 | 驗證與交接：公開 API 抽查、報告補數字、開後續票 | 任何 session | 票 done | 前後計數寫進報告 |
 
 第一批只做到第 6 步就算完成（第 7 步是站主的），報告要寫清楚：幾家進了 pending、幾家有訂位、
@@ -305,6 +305,11 @@ Jev（`apps/api/app/ai/jev.py`）只做判斷：選一個、放量表、回真�
 2. **Naver 精準頁怎麼進來**：A）站主在後台逐筆貼（第一批，不改程式）；B）候選檔多一欄
    `naver_map_url` 由站主填、匯入器寫進 `naver_map_url` 但 `map_match_status` 仍是 `unverified`
    （要改匯入器，違反「批次不寫地圖身分」的字面，需站主明確同意）。建議 A。
+   **2026-09-23 站主改成 A′**：Naver 精準頁的**查找**仍是站主（`map.naver.com` 在內建瀏覽器被安全政策拒絕，
+   2026-09-23 再確認，而且不繞道 Chrome 或 curl），站主把 14 條網址貼進對話；**後台的逐筆填入、座標、核准**
+   改由 session 在站主登入的內建瀏覽器面板裡代操作，每一步照後台既有的驗證走，核准前把要公開的清單給站主看過。
+   座標優先從官方頁自己印的座標來（Visit Gangnam、VisitKorea 頁面帶經緯度，`coordinate_source_type=official_tourism`），
+   其餘用 OpenStreetMap 上店家本身的節點（`admin_verified`，來源網址是節點永久連結）；座標佇列自 2026-09-19 起只寫 Google Place ID、不寫座標，幫不上忙。
 3. **只有官網、沒有觀光局頁的店要不要進目錄**：目錄本來就收 `merchant_official`（潮流街區 99 家
    多數如此），建議收；文章引用維持 A 級規則不變。
 4. **菜單按鈕**：建議不開欄位；要開就是獨立的 schema 票。
