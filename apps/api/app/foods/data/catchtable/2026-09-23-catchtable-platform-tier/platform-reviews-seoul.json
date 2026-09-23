@@ -1,0 +1,669 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-23-catchtable-platform-tier-seoul-platforms",
+  "researched_at": "2026-09-23T11:05:25+00:00",
+  "method": "CatchTable 榜單反推：本機瀏覽器渲染店頁判斷控制項；只有店家自己的訂位控制項算可訂位。",
+  "rules": "可訂位存 verified；只能候位或沒有控制項存 disabled；語言網址取自店頁 hreflang，沒有 ko。",
+  "records": [
+    {
+      "merchant_id": "a9e37e9c-16e2-429e-b45f-35e4d7451160",
+      "slug": "seoul-jejuoktop-bbq",
+      "name": "제주옥탑 블랙BBQ 압구정",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/jejuoktop_bbq",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/jejuoktop_bbq",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/jejuoktop_bbq",
+        "ja": "https://www.catchtable.net/ja-JP/shop/jejuoktop_bbq"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 1 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：有 service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有兩個「預訂」按鈕；另有「候位」分頁切換。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 10:54 UTC 查看。/info 的位置欄切成原文後為「서울특별시 강남구 언주로170길 34 1층」，電話 +82-10-2050-5341，每天 11:00–01:00（15:00–16:00 休息）；頁上沒有「網站」欄、也沒有任何外部連結，website 填 null。/info 的標題列只顯示 AI 翻譯的中文名「濟州屋塔黑石BBQ」，韓文店名「제주옥탑 블랙BBQ 압구정」與拉丁名「Jeju Oktap Black BBQ Apgujeong Bonjeom」出現在同一店頁首頁分頁的名稱列（英文 · 韓文），所以引文第一段照 /info 上看得到的中文標題逐字抄，第二段是韓文地址。店名、地址與第一批查證一致；前批找到的品牌站 jejurooftop.com 只有 http、主站 jejurooftop.co.kr 連不上，這批依規則不再找官方頁。/info 的 AI 翻譯把 옥탑 誤譯成八爪／章魚，不採用，name_zh 填韓文店名。分類 bbq-grill（烤豬肉／黑烤肉），狎鷗亭 → gangnam。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：有 service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有兩個「預訂」按鈕；另有「候位」分頁切換。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/jejuoktop_bbq",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：有 service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有兩個「預訂」按鈕；另有「候位」分頁切換。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/jejuoktop_bbq",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 1 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f9e788ad-ae12-4f38-bf68-9dac8412fba4",
+      "slug": "seoul-suragejang",
+      "name": "수라게장",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/suragejang",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/suragejang",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/suragejang",
+        "ja": "https://www.catchtable.net/ja-JP/shop/suragejang"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 3 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三…）與「尋找可用時間」，並彈出含月曆、人數（標籤寫「候位人數」）與時段（中午 11:00、11:30…）的選擇面板，有時段可選即為訂位而非候位；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 10:57 UTC 查看。/info 的位置欄切成原文後為「서울특별시 중구 명동10길 18 2층」（含 2 樓，與同棟 3 樓的 일편등심 명동점 區隔），電話 +82-2-3789-2749，全年無休。/info 沒有「網站」欄、沒有任何外部連結，website 填 null；只有注意事項文字寫「Instagram：@sura_gejang」，那是文字不是連結。/info 與首頁的標題列都顯示店家自登記的拉丁名「Sura Gejang」（name_en），韓文店名「수라게장」只在首頁分頁的名稱列出現，不在 /info 上，所以引文第一段照 /info 標題列的「Sura Gejang」逐字抄，第二段是韓文地址。店名、地址與第一批查證一致；前批的官網／觀光局搜尋全部 0 筆，這批依規則不再找。/info 簡介是簡體 AI 翻譯（自稱「御膳蟹酱明洞店」），不採用，name_zh 填韓文店名。分類 seafood＋home-style（醬蟹定食），明洞 → myeongdong。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三…）與「尋找可用時間」，並彈出含月曆、人數（標籤寫「候位人數」）與時段（中午 11:00、11:30…）的選擇面板，有時段可選即為訂位而非候位；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/suragejang",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三…）與「尋找可用時間」，並彈出含月曆、人數（標籤寫「候位人數」）與時段（中午 11:00、11:30…）的選擇面板，有時段可選即為訂位而非候位；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/suragejang",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 3 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "84c63dc5-2136-49f3-bcf0-f3e30a0e3794",
+      "slug": "seoul-ilpyeon-myeongdong",
+      "name": "일편등심 명동점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/ilpyeon__myeongdong",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/ilpyeon__myeongdong",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/ilpyeon__myeongdong",
+        "ja": "https://www.catchtable.net/ja-JP/shop/ilpyeon__myeongdong"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 5 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三…）與「尋找可用時間」，並彈出月曆＋人數＋時段選擇面板；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 10:58 UTC 查看。/info 的位置欄切成原文後為「서울특별시 중구 명동10길 18 3층」（含 3 樓，與同棟 2 樓的 수라게장 區隔），電話 +82-2-6092-1092，每天午餐 12:00–15:00、晚餐 17:00–24:00。/info 的「網站」欄是 Naver Place（https://m.place.naver.com/restaurant/1088892711/home），照抄進 website；沒有 Instagram 或自家網域。/info 標題列只顯示 AI 翻譯的中文名「一片里脊 明洞店」，韓文店名「일편등심 명동점」與店家自登記的羅馬拼音「Ilpyeondeungsim myeongdongjeom」只在首頁分頁的名稱列出現，不在 /info 上，所以引文第一段照 /info 標題列逐字抄，第二段是韓文地址。店名、地址與第一批查證一致；前批確認品牌沒有官網（ilpyeon.co.kr／.com 不存在），這批依規則不再找。/info 簡介 AI 翻譯自稱「一片沙朗」，不採用，name_zh 填韓文店名。分類 bbq-grill（韓牛烤肉），明洞 → myeongdong。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三…）與「尋找可用時間」，並彈出月曆＋人數＋時段選擇面板；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/ilpyeon__myeongdong",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三…）與「尋找可用時間」，並彈出月曆＋人數＋時段選擇面板；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/ilpyeon__myeongdong",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 5 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "9efe47f5-3038-4d6a-bf14-814f0906263b",
+      "slug": "seoul-gebang-ss",
+      "name": "게방식당 성수",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/Gebang_ss",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/Gebang_ss",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/Gebang_ss",
+        "ja": "https://www.catchtable.net/ja-JP/shop/Gebang_ss"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 6 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三、24 關閉…）與「尋找可用時間」，並彈出月曆＋人數＋時段選擇面板；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 10:59 UTC 查看。/info 的位置欄切成原文後為「서울특별시 성동구 아차산로 126 더리브 세종타워 지하 1층 B108호」，電話 +82-10-9834-1103，每週一公休（本週四至六 9/24–26 也標休息日，應是連假）。/info 沒有「網站」欄、沒有任何外部連結，website 填 null。/info 標題列顯示的是店家的中文顯示名「GEBANG SIKDANG 聖水店」，韓文店名「게방식당 성수」與拉丁名「Gebangsikdang Seongsu」只在首頁分頁的名稱列出現，不在 /info 上，所以引文第一段照 /info 標題列逐字抄，第二段是韓文地址。這是聖水分店，與目錄裡的 seoul-gebang（게방식당 본점，강남구 선릉로131길 17）同品牌不同分店，local_name 保留「성수」；前批查到 visitkorea 的 Gebang Sikdang 頁與品牌購物站都只寫江南本店，這批依規則不再找官方頁。店名、地址與第一批查證一致；name_zh 填韓文店名。分類 seafood＋home-style（醬蟹定食），聖水 → seongsu。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三、24 關閉…）與「尋找可用時間」，並彈出月曆＋人數＋時段選擇面板；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/Gebang_ss",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：初始畫面沒有 service-tab-DINING／WAITING_REMOTE，只有底部橘色「預訂」按鈕；真實點擊「預訂」後頁面展開單一服務訂位區（data-testid service-section-title），出現「日期 • 時間 • 人」日期列（23 週三、24 關閉…）與「尋找可用時間」，並彈出月曆＋人數＋時段選擇面板；沒有 dock-waiting-btn 或 waiting-remote-content。以 Escape 關閉面板，未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/Gebang_ss",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 6 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f8bd2d1c-0a89-4808-986a-71d6233f7cfb",
+      "slug": "seoul-favoriteiksoen",
+      "name": "익선취향",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/FavoriteIksoen",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/FavoriteIksoen",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/FavoriteIksoen",
+        "ja": "https://www.catchtable.net/ja-JP/shop/FavoriteIksoen"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 8 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」或「尋找可用時間」；只有 data-testid dock-waiting-btn（此刻顯示「今日公休」，是不在營業時段的狀態字，不是判定依據），資訊分頁也只有 dock-waiting-btn。店家備註寫「當日預約不接受，當天來訪請使用線上候位服務」。未點任何送出鈕。 2026-09-23 02:2x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn（此刻文字「今日公休」），沒有服務區塊、沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:0x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。研究者與稍早複查看到的「只有候位鈕」都是隱藏面板讓 lazy 區塊沒掛載，改判 reservation。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。） 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 11:00 UTC 查看。/info 的位置欄切成原文後為「서울특별시 종로구 수표로28길 17-32 1층」，電話 +82-507-1356-2866，每天 11:50–21:00（最後點餐 20:05），只在國定假日當天休息；注意事項寫「",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」或「尋找可用時間」；只有 data-testid dock-waiting-btn（此刻顯示「今日公休」，是不在營業時段的狀態字，不是判定依據），資訊分頁也只有 dock-waiting-btn。店家備註寫「當日預約不接受，當天來訪請使用線上候位服務」。未點任何送出鈕。 2026-09-23 02:2x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn（此刻文字「今日公休」），沒有服務區塊、沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:0x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。研究者與稍早複查看到的「只有候位鈕」都是隱藏面板讓 lazy 區塊沒掛載，改判 reservation。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/FavoriteIksoen",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」或「尋找可用時間」；只有 data-testid dock-waiting-btn（此刻顯示「今日公休」，是不在營業時段的狀態字，不是判定依據），資訊分頁也只有 dock-waiting-btn。店家備註寫「當日預約不接受，當天來訪請使用線上候位服務」。未點任何送出鈕。 2026-09-23 02:2x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn（此刻文字「今日公休」），沒有服務區塊、沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:0x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。研究者與稍早複查看到的「只有候位鈕」都是隱藏面板讓 lazy 區塊沒掛載，改判 reservation。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/FavoriteIksoen",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 8 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "6db851b0-63e8-4d58-96b3-3eb0994073f9",
+      "slug": "seoul-on65",
+      "name": "온6.5",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/on65",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/on65",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/on65",
+        "ja": "https://www.catchtable.net/ja-JP/shop/on65"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 9 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING／WAITING_REMOTE，沒有 dock-waiting-btn，只有底部橘色「預訂」按鈕；真實點擊「預訂」後（等 10 秒）彈出底部抽屜（MuiDrawer）：2026年九月月曆（23 日選取、24–30 可選）、「候位人數」1–32 人、時段位置顯示「已滿員」與「關閉」鈕；與其他家不同的是頁面內沒有展開「日期 • 時間 • 人」／「尋找可用時間」的內嵌區塊。月曆＋人數的訂位抽屜視為店家的訂位控制項，故記 reservation；未送出任何表單，以 Escape 關閉。 2026-09-23 02:2x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：內嵌的 service-section-title 出現，有「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面呼叫 dayslot-enc；判定 reservation 成立，不需改 unclear。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 11:01 UTC 查看。/info 的位置欄切成原文後為「서울특별시 종로구 북촌로1길 28 1층」，電話 +82-10-4278-2024，週一至五 17:30–23:00、週六日 15:00–23:00（最後點餐 21:40）；簡介寫「韓式塔帕斯泡菜酒吧，所有菜餚都用不同種類的泡菜製成」，入場需點一瓶酒、禁止兒童（包廂除外）。/info 的「網站」欄是 Instagram（https://www.instagram.com/on6.5_seoul/），照抄進 website；沒有自家網域。/info 標題列顯示 CatchTable 的簡體中文顯示名「温6.5」，韓文店名「온6.5」與拉丁名「On 6.5」只在首頁分頁的名稱列出現，不在 /info 上，所以引文第一段照 /info 標題列逐字抄「温6.5」，第二段是韓文地址。店名、地址與第一批查證一致；前批的觀光局／區廳搜尋全部 0 筆，這批依規則不再找。n",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING／WAITING_REMOTE，沒有 dock-waiting-btn，只有底部橘色「預訂」按鈕；真實點擊「預訂」後（等 10 秒）彈出底部抽屜（MuiDrawer）：2026年九月月曆（23 日選取、24–30 可選）、「候位人數」1–32 人、時段位置顯示「已滿員」與「關閉」鈕；與其他家不同的是頁面內沒有展開「日期 • 時間 • 人」／「尋找可用時間」的內嵌區塊。月曆＋人數的訂位抽屜視為店家的訂位控制項，故記 reservation；未送出任何表單，以 Escape 關閉。 2026-09-23 02:2x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：內嵌的 service-section-title 出現，有「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面呼叫 dayslot-enc；判定 reservation 成立，不需改 unclear。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/on65",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING／WAITING_REMOTE，沒有 dock-waiting-btn，只有底部橘色「預訂」按鈕；真實點擊「預訂」後（等 10 秒）彈出底部抽屜（MuiDrawer）：2026年九月月曆（23 日選取、24–30 可選）、「候位人數」1–32 人、時段位置顯示「已滿員」與「關閉」鈕；與其他家不同的是頁面內沒有展開「日期 • 時間 • 人」／「尋找可用時間」的內嵌區塊。月曆＋人數的訂位抽屜視為店家的訂位控制項，故記 reservation；未送出任何表單，以 Escape 關閉。 2026-09-23 02:2x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：內嵌的 service-section-title 出現，有「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面呼叫 dayslot-enc；判定 reservation 成立，不需改 unclear。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/on65",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 9 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "fc4d90c0-1b5d-48dd-a5ed-8519f3046bcc",
+      "slug": "seoul-sooksungdo",
+      "name": "숙성도 을지로점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/sooksungdo",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/sooksungdo",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/sooksungdo",
+        "ja": "https://www.catchtable.net/ja-JP/shop/sooksungdo"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 10 名（2026-09-23 擷取）。2026-09-23 約 01:10–01:17 UTC 兩次渲染 zh-TW 店頁（第二次等 10 秒並捲動）：都沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」或「尋找可用時間」，只有 data-testid dock-waiting-btn（顯示「今日公休」狀態字，第二次渲染店況列寫「營業中 • 21:40 最後點餐」），資訊分頁也只有 dock-waiting-btn。協調者稍早看到的是 DINING＋WAITING_REMOTE 雙分頁，與這裡的渲染結果不同，照本次渲染記 waiting_only，建議在營業時段再複核一次。未點任何送出鈕。 2026-09-23 02:1x UTC 再複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「今日公休」，沒有服務區塊。但同一人 2026-09-22 23:5x UTC 首次渲染同一頁時看到 service-tab-toggle 底下有 service-tab-DINING 與 WAITING_REMOTE，點開 DINING 有「日期 • 時間 • 人」與「尋找可用時間」。同一天三次觀察兩種結果，訂位區會時有時無，改記 unclear，下一批再看。 2026-09-23 03:0x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。先前的「只有候位鈕」是隱藏面板讓 lazy 區塊沒掛載，與 2026-09-22 23:5x 首次觀察一致，判 reservation。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向",
+      "booking_observation": "2026-09-23 約 01:10–01:17 UTC 兩次渲染 zh-TW 店頁（第二次等 10 秒並捲動）：都沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」或「尋找可用時間」，只有 data-testid dock-waiting-btn（顯示「今日公休」狀態字，第二次渲染店況列寫「營業中 • 21:40 最後點餐」），資訊分頁也只有 dock-waiting-btn。協調者稍早看到的是 DINING＋WAITING_REMOTE 雙分頁，與這裡的渲染結果不同，照本次渲染記 waiting_only，建議在營業時段再複核一次。未點任何送出鈕。 2026-09-23 02:1x UTC 再複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「今日公休」，沒有服務區塊。但同一人 2026-09-22 23:5x UTC 首次渲染同一頁時看到 service-tab-toggle 底下有 service-tab-DINING 與 WAITING_REMOTE，點開 DINING 有「日期 • 時間 • 人」與「尋找可用時間」。同一天三次觀察兩種結果，訂位區會時有時無，改記 unclear，下一批再看。 2026-09-23 03:0x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。先前的「只有候位鈕」是隱藏面板讓 lazy 區塊沒掛載，與 2026-09-22 23:5x 首次觀察一致，判 reservation。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/sooksungdo",
+          "role": "platform_page",
+          "observation": "2026-09-23 約 01:10–01:17 UTC 兩次渲染 zh-TW 店頁（第二次等 10 秒並捲動）：都沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」或「尋找可用時間」，只有 data-testid dock-waiting-btn（顯示「今日公休」狀態字，第二次渲染店況列寫「營業中 • 21:40 最後點餐」），資訊分頁也只有 dock-waiting-btn。協調者稍早看到的是 DINING＋WAITING_REMOTE 雙分頁，與這裡的渲染結果不同，照本次渲染記 waiting_only，建議在營業時段再複核一次。未點任何送出鈕。 2026-09-23 02:1x UTC 再複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「今日公休」，沒有服務區塊。但同一人 2026-09-22 23:5x UTC 首次渲染同一頁時看到 service-tab-toggle 底下有 service-tab-DINING 與 WAITING_REMOTE，點開 DINING 有「日期 • 時間 • 人」與「尋找可用時間」。同一天三次觀察兩種結果，訂位區會時有時無，改記 unclear，下一批再看。 2026-09-23 03:0x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。先前的「只有候位鈕」是隱藏面板讓 lazy 區塊沒掛載，與 2026-09-22 23:5x 首次觀察一致，判 reservation。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/sooksungdo",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 10 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "8865e3eb-2860-41e6-9116-45acef5c3aef",
+      "slug": "seoul-doseulbak",
+      "name": "도슬박",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/doseulbak",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/doseulbak",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/doseulbak",
+        "ja": "https://www.catchtable.net/ja-JP/shop/doseulbak"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 13 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換；服務區塊載入很慢（前 10 秒只有底部「預訂」鈕），約 20 秒後出現 service-section-title、「日期 • 時間 • 人」日期列（23 日可選、24–27 日「關閉」）與「尋找可用時間」，底部「預訂」鈕點開是含月曆、人數與時段（中午 11:30 … 晚上 7:30）的訂位面板；沒有候位控制項。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 11:03 UTC 查看。/info 的位置欄切成原文後為「서울특별시 강남구 압구정로42길 25-3 KH빌딩 1층」，電話 +82-10-3171-1141，午餐 11:30–15:00（最後點餐 13:50）、晚餐 17:30–22:00（最後點餐 20:50），每週日公休（本週四至日 9/24–27 也標休息日，應是連假）；簡介寫開放式廚房與吧檯座、晚間無兒童區限時 2 小時。/info 的「網站」欄是 Linktree（https://linktr.ee/doseulbak），照抄進 website；前批看過裡面只有 Kakao 頻道與 CatchTable 連結，沒有自家網域。/info 與首頁的標題列都顯示店家自登記的拉丁名「DOSEULBAK」（name_en），韓文店名「도슬박」只在首頁分頁的名稱列出現，不在 /info 上，所以引文第一段照 /info 標題列逐字抄「DOSEULBAK」，第二段是韓文地址。店名、地址與第一批查證一致；前批的觀光局／Visit Gangnam／서울미식 100선 都沒有，這批依規則不再找。name_zh 填韓文店名。分類：CatchTable 標「韓國料理」、簡介沒寫具體菜色，取最接近的 home-style（韓式），菜單分頁在隱藏面板下沒掛載沒能核對，協調者可視需要調整。狎鷗亭 → gangnam。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換；服務區塊載入很慢（前 10 秒只有底部「預訂」鈕），約 20 秒後出現 service-section-title、「日期 • 時間 • 人」日期列（23 日可選、24–27 日「關閉」）與「尋找可用時間」，底部「預訂」鈕點開是含月曆、人數與時段（中午 11:30 … 晚上 7:30）的訂位面板；沒有候位控制項。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/doseulbak",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換；服務區塊載入很慢（前 10 秒只有底部「預訂」鈕），約 20 秒後出現 service-section-title、「日期 • 時間 • 人」日期列（23 日可選、24–27 日「關閉」）與「尋找可用時間」，底部「預訂」鈕點開是含月曆、人數與時段（中午 11:30 … 晚上 7:30）的訂位面板；沒有候位控制項。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/doseulbak",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 13 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f9cab948-b45a-43eb-a7d6-fe6aec5212d5",
+      "slug": "seoul-ilpyeonfnb",
+      "name": "일편장어 홍대본점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/ilpyeonfnb",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/ilpyeonfnb",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/ilpyeonfnb",
+        "ja": "https://www.catchtable.net/ja-JP/shop/ilpyeonfnb"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 17 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁三次（各等 10 秒再輪詢 10–20 秒）：店名、介紹、菜單／照片／評論／資訊分頁都出來了，但服務區塊始終沒有渲染——沒有任何 data-testid（連 service-section-title 都沒有）、沒有「日期 • 時間 • 人」、沒有「尋找可用時間」、沒有候位字樣；只有底部 dock 一顆「預訂」鈕，點了之後再等 15 秒也沒有出現日期／人數面板或對話框。同一時段拿稍早渲染正常的 jungsik 店頁當對照也不再渲染服務區塊，等 60 秒後重試仍然如此，判定是工具被擋，不是店家沒有訂位；未送出任何表單。 2026-09-23 02:0x UTC 複查（claude-fable-5-1，同一分頁逐步往下捲讓 lazy 服務區塊載入）：出現 service-section-title、「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面呼叫 dayslot-enc；沒有候位分頁。研究者先前的「服務區塊不渲染」是沒有捲動到區塊位置，不是被擋。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 11:04 UTC 查看。/info 的位置欄切成原文後為「서울특별시 마포구 양화로16길 15 무광빌딩 2층 201호」，電話 +82-2-336-6716，每天 12:00–23:00（最後點餐 22:00）；簡介自述是弘大烤肉店 일편등심 的第二品牌，專做國產淡水鰻炭燒。/info 沒有「網站」欄、沒有任何外部連結，website 填 null。/info 與首頁的標題列都顯示店家自登記的英文名「ilpyeon eel hongdae」（name_en），首頁分頁的名稱列另有羅馬拼音「ilpyeonjangeo hongdaebonjeom · 일편장어 홍대본점」；韓文店名不在 /info 上，所以引文第一段照 /info 標題列逐字抄「ilpyeon eel hongdae」，第二段是韓文地址。店名、地址與第一批查證一致；前批確認只有 Instagram、姊妹店官網不提這家，這批依規則不",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁三次（各等 10 秒再輪詢 10–20 秒）：店名、介紹、菜單／照片／評論／資訊分頁都出來了，但服務區塊始終沒有渲染——沒有任何 data-testid（連 service-section-title 都沒有）、沒有「日期 • 時間 • 人」、沒有「尋找可用時間」、沒有候位字樣；只有底部 dock 一顆「預訂」鈕，點了之後再等 15 秒也沒有出現日期／人數面板或對話框。同一時段拿稍早渲染正常的 jungsik 店頁當對照也不再渲染服務區塊，等 60 秒後重試仍然如此，判定是工具被擋，不是店家沒有訂位；未送出任何表單。 2026-09-23 02:0x UTC 複查（claude-fable-5-1，同一分頁逐步往下捲讓 lazy 服務區塊載入）：出現 service-section-title、「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面呼叫 dayslot-enc；沒有候位分頁。研究者先前的「服務區塊不渲染」是沒有捲動到區塊位置，不是被擋。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/ilpyeonfnb",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁三次（各等 10 秒再輪詢 10–20 秒）：店名、介紹、菜單／照片／評論／資訊分頁都出來了，但服務區塊始終沒有渲染——沒有任何 data-testid（連 service-section-title 都沒有）、沒有「日期 • 時間 • 人」、沒有「尋找可用時間」、沒有候位字樣；只有底部 dock 一顆「預訂」鈕，點了之後再等 15 秒也沒有出現日期／人數面板或對話框。同一時段拿稍早渲染正常的 jungsik 店頁當對照也不再渲染服務區塊，等 60 秒後重試仍然如此，判定是工具被擋，不是店家沒有訂位；未送出任何表單。 2026-09-23 02:0x UTC 複查（claude-fable-5-1，同一分頁逐步往下捲讓 lazy 服務區塊載入）：出現 service-section-title、「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面呼叫 dayslot-enc；沒有候位分頁。研究者先前的「服務區塊不渲染」是沒有捲動到區塊位置，不是被擋。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/ilpyeonfnb",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 17 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "5d4d760b-16c6-4270-bb65-13b490a70ede",
+      "slug": "seoul-dobu",
+      "name": "도부(dobu)",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/DOBU",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/DOBU",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/DOBU",
+        "ja": "https://www.catchtable.net/ja-JP/shop/DOBU"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 19 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁兩次：店名、介紹、菜單／照片／評論／資訊分頁都出來，但服務區塊沒有渲染（沒有任何 data-testid、沒有「日期 • 時間 • 人」「尋找可用時間」或候位字樣），只有底部 dock 一顆「預訂」鈕，點了也沒有面板出現。同一時段拿稍早渲染正常的 jungsik 店頁當對照，也不再渲染服務區塊，等 60 秒後重試仍然如此，判定是工具被擋（服務區塊的資料在本工作階段載不進來），不是店家沒有訂位；未送出任何表單。 2026-09-23 02:1x UTC 複查（claude-fable-5-1，往下捲 14 步讓 lazy 服務區塊載入）：出現 service-section-title、「日期 • 時間 • 人」日期列與「尋找可用時間」，底部「預訂」鈕，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule；沒有候位分頁。先前的「服務區塊不渲染」是沒有捲動到區塊位置。 頁面有店家自己的訂位控制項，公開。 來源是店家自己在 CatchTable 登記的店頁 /info 分頁（平台層級 merchant_platform），2026-09-23 11:05 UTC 查看。/info 的位置欄切成原文後為「서울특별시 마포구 동교로51길 77-11 1층」，電話 +82-10-7709-7493，每天午餐 11:50–15:00、晚餐 17:00–23:00（最後點餐 21:00）；開瓶費說明寫午餐是季節性솥밥（火鍋飯）兩人套餐、晚餐以餐酒館形式營運需點酒。/info 沒有「網站」欄、沒有任何外部連結，website 填 null。/info 標題列只顯示 AI 翻譯的中文名「到付」，韓文店名「도부(dobu)」與拉丁名「dobu」只在首頁分頁的名稱列出現（dobu · 도부(dobu)），不在 /info 上，所以引文第一段照 /info 標題列逐字抄「到付」，第二段是韓文地址。店名（含括號內的 dobu，是店家登記的寫法）、地址與第一批查證一致；前批確認 dobu.co.kr 是同名口罩廠、觀光局與서울미식 100선 都沒有，這批依規則不再找。name_zh 填韓文店名。分類 i",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁兩次：店名、介紹、菜單／照片／評論／資訊分頁都出來，但服務區塊沒有渲染（沒有任何 data-testid、沒有「日期 • 時間 • 人」「尋找可用時間」或候位字樣），只有底部 dock 一顆「預訂」鈕，點了也沒有面板出現。同一時段拿稍早渲染正常的 jungsik 店頁當對照，也不再渲染服務區塊，等 60 秒後重試仍然如此，判定是工具被擋（服務區塊的資料在本工作階段載不進來），不是店家沒有訂位；未送出任何表單。 2026-09-23 02:1x UTC 複查（claude-fable-5-1，往下捲 14 步讓 lazy 服務區塊載入）：出現 service-section-title、「日期 • 時間 • 人」日期列與「尋找可用時間」，底部「預訂」鈕，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule；沒有候位分頁。先前的「服務區塊不渲染」是沒有捲動到區塊位置。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/DOBU",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁兩次：店名、介紹、菜單／照片／評論／資訊分頁都出來，但服務區塊沒有渲染（沒有任何 data-testid、沒有「日期 • 時間 • 人」「尋找可用時間」或候位字樣），只有底部 dock 一顆「預訂」鈕，點了也沒有面板出現。同一時段拿稍早渲染正常的 jungsik 店頁當對照，也不再渲染服務區塊，等 60 秒後重試仍然如此，判定是工具被擋（服務區塊的資料在本工作階段載不進來），不是店家沒有訂位；未送出任何表單。 2026-09-23 02:1x UTC 複查（claude-fable-5-1，往下捲 14 步讓 lazy 服務區塊載入）：出現 service-section-title、「日期 • 時間 • 人」日期列與「尋找可用時間」，底部「預訂」鈕，頁面呼叫 dayslot-enc 與 online-reservation-open-schedule；沒有候位分頁。先前的「服務區塊不渲染」是沒有捲動到區塊位置。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/DOBU",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 19 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "88980711-4f70-4bca-9c9f-0a08d59481fb",
+      "slug": "seoul-artistbakery",
+      "name": "아티스트베이커리 안국",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/artistbakery",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/artistbakery",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/artistbakery",
+        "ja": "https://www.catchtable.net/ja-JP/shop/artistbakery"
+      },
+      "review_note": "2026-09-23：CatchTable 候位榜 第 2 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」；首頁另有一則新聞「[優先預約使用資訊]」但頁上沒有任何訂位控制項。 2026-09-23 02:3x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-tab-toggle，底下是 service-tab-RESERVED_ENTRY（優先入場）與 service-tab-WAITING_REMOTE，沒有 service-tab-DINING、沒有日期選擇；優先入場不是訂位，維持 waiting_only。 只有候位或沒有訂位控制項，依 2026-09-11 規則存停用、不公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 10:54 UTC 看過：/info 的標題列只顯示中文顯示名「ARTIST BAKERY 安國店」，切成原文語言後的韓文地址是 서울특별시 종로구 율곡로 45 1층（與前兩批一致），沒有電話欄、沒有「網站」欄、頁上沒有任何外部連結，營業時間每天 07:30–20:00，「關於本店」寫法式長棍、鹹麵包與熱湯。韓文店名 아티스트베이커리 안국 出現在店頁「首頁」分頁的名稱列「Artist Bakery Anguk · 아티스트베이커리 안국」，不在 /info 分頁的可見文字裡，所以引文的店名段照 /info 上看得到的「ARTIST BAKERY 安國店」逐字抄，name_en 取名稱列的 Artist Bakery Anguk。安國／鍾路對不到首爾商圈鍵，district_key 留空；麵包店歸 desserts-sweets＋cafe-tea。訂位判定沿用第一批的 waiting_only（只有遠端候位與優先入場）。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」；首頁另有一則新聞「[優先預約使用資訊]」但頁上沒有任何訂位控制項。 2026-09-23 02:3x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-tab-toggle，底下是 service-tab-RESERVED_ENTRY（優先入場）與 service-tab-WAITING_REMOTE，沒有 service-tab-DINING、沒有日期選擇；優先入場不是訂位，維持 waiting_only。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/artistbakery",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」；首頁另有一則新聞「[優先預約使用資訊]」但頁上沒有任何訂位控制項。 2026-09-23 02:3x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-tab-toggle，底下是 service-tab-RESERVED_ENTRY（優先入場）與 service-tab-WAITING_REMOTE，沒有 service-tab-DINING、沒有日期選擇；優先入場不是訂位，維持 waiting_only。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/artistbakery",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+          "role": "ranking_page",
+          "observation": "第 2 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "d3a1cd41-b36b-4431-a579-8f38f59a89cf",
+      "slug": "seoul-jojokalguksu",
+      "name": "조조칼국수 성수점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/jojokalguksu",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/jojokalguksu",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/jojokalguksu",
+        "ja": "https://www.catchtable.net/ja-JP/shop/jojokalguksu"
+      },
+      "review_note": "2026-09-23：CatchTable 候位榜 第 3 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（此刻按鈕文字「今日公休」，只是不在候位時段），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:3x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「登記遠端候位」，沒有服務區塊、沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:1x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後只有 service-section-title、waiting-remote-content 與 waiting-remote-table-item，沒有 service-tab-toggle、沒有 DINING；維持 waiting_only。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。） 只有候位或沒有訂位控制項，依 2026-09-11 規則存停用、不公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 10:58 UTC 看過：/info 的標題列顯示登記的拉丁名「JoJoKalguksu」（沒有中文顯示名），切成原文語言後的韓文地址 서울특별시 성동구 성수일로8길 55 1층（與第一批一致），電話 +82-507-1472-4334，營業時間每天 10:00–21:30（21:00 最後點餐），「網站」欄是 Instagram 帳號 jojokalguksu（https://www.instagram.com/jojokalguksu），頁上沒有其他外部連結；「關於本店」寫這是繼市廳店後的第二家分店（聖水店），首頁簡介是海鮮刀削麵。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（此刻按鈕文字「今日公休」，只是不在候位時段），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:3x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「登記遠端候位」，沒有服務區塊、沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:1x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後只有 service-section-title、waiting-remote-content 與 waiting-remote-table-item，沒有 service-tab-toggle、沒有 DINING；維持 waiting_only。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/jojokalguksu",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（此刻按鈕文字「今日公休」，只是不在候位時段），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:3x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「登記遠端候位」，沒有服務區塊、沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:1x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後只有 service-section-title、waiting-remote-content 與 waiting-remote-table-item，沒有 service-tab-toggle、沒有 DINING；維持 waiting_only。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/jojokalguksu",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+          "role": "ranking_page",
+          "observation": "第 3 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "22993593-d81b-4b04-a553-b547e38b5584",
+      "slug": "seoul-buchonyukhoe-annex",
+      "name": "부촌육회 별관",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/buchonyukhoe_annex",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/buchonyukhoe_annex",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/buchonyukhoe_annex",
+        "ja": "https://www.catchtable.net/ja-JP/shop/buchonyukhoe_annex"
+      },
+      "review_note": "2026-09-23：CatchTable 候位榜 第 5 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:4x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-section-title 與 waiting-onsite-content（現場候位說明），dock 是「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。 只有候位或沒有訂位控制項，依 2026-09-11 規則存停用、不公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 10:59 UTC 看過：/info 的標題列顯示登記的拉丁名「Buchon Yukhoe, Annex」（沒有中文顯示名），切成原文語言後的韓文地址 서울 종로구 종로 200-4 1층（與第一批一致；本店 부촌육회 是 종로 200-12，門牌不同，這筆是別館、與目錄裡的本店不是同一家），電話 +82-2-2272-1831，營業時間每天 10:00–21:30（21:00 最後點餐），沒有「網站」欄、頁上沒有任何外部連結；「關於本店」寫 1956 年起三代傳承的육회（生拌牛肉）店、除總店外另有分店。韓文店名 부촌육회 별관 在店頁「首頁」分頁的名稱列，不在 /info 的可見文字裡，引文店名段照 /info 上看得到的「Buchon Yukhoe, Annex」逐字抄。鍾路（廣藏市場一帶）對不到首爾商圈鍵，district_key 留空；육회 → home-style。訂位判定沿用第一批的 waiting_only。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:4x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-section-title 與 waiting-onsite-content（現場候位說明），dock 是「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/buchonyukhoe_annex",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:4x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-section-title 與 waiting-onsite-content（現場候位說明），dock 是「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/buchonyukhoe_annex",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+          "role": "ranking_page",
+          "observation": "第 5 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "a41082f3-adb8-4bff-b84f-0d6a27db9cb8",
+      "slug": "seoul-standardbreadss",
+      "name": "스탠다드브레드 성수점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/standardbreadss",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/standardbreadss",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/standardbreadss",
+        "ja": "https://www.catchtable.net/ja-JP/shop/standardbreadss"
+      },
+      "review_note": "2026-09-23：CatchTable 候位榜 第 7 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:4x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:2x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後只有 service-section-title、waiting-remote-content 與 waiting-remote-table-item，沒有 DINING；維持 waiting_only。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。） 只有候位或沒有訂位控制項，依 2026-09-11 規則存停用、不公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:00 UTC 看過：/info 的標題列顯示中文顯示名「Standard Bread 聖水」，切成原文語言後的韓文地址 서울특별시 성동구 성수이로18길 37 국제주물 1층（與第一批一致），電話 +82-70-8835-5508，營業時間每天 09:00–21:00（20:30 最後點餐）、無休，「網站」欄是 Instagram 帳號 standardbread_official（https://www.instagram.com/standardbread_official/），頁上沒有其他外部連結；「關於本店」寫隨時有剛出爐熱麵包的烘焙坊、聖水店 9 月 12 日開幕。韓文店名 스탠다드브레드 성수",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:4x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:2x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後只有 service-section-title、waiting-remote-content 與 waiting-remote-table-item，沒有 DINING；維持 waiting_only。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/standardbreadss",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:4x UTC 複查（claude-fable-5-1，往下捲 14 步）：仍只有 dock-waiting-btn「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。 2026-09-23 03:2x UTC 最終複查（claude-fable-5-1）：服務區塊掛載後只有 service-section-title、waiting-remote-content 與 waiting-remote-table-item，沒有 DINING；維持 waiting_only。（瀏覽器面板隱藏、visibilityState=hidden；在 Console 把 IntersectionObserver 包一層讓 lazy 服務區塊掛載，再點「首頁」分頁重新掛載，區塊向 CatchTable 取回真實服務資料；沒有登入、沒有送出任何表單。）"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/standardbreadss",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+          "role": "ranking_page",
+          "observation": "第 7 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "2d1cceaa-e02e-4592-a088-f78d3b913787",
+      "slug": "seoul-muguok-sungsu",
+      "name": "무구옥 성수점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "disabled",
+      "canonical_url": "https://www.catchtable.net/shop/muguok_sungsu",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/muguok_sungsu",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/muguok_sungsu",
+        "ja": "https://www.catchtable.net/ja-JP/shop/muguok_sungsu"
+      },
+      "review_note": "2026-09-23：CatchTable 候位榜 第 8 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:5x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-section-title、waiting-remote-content 與 waiting-remote-table-item，dock「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。 只有候位或沒有訂位控制項，依 2026-09-11 規則存停用、不公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:01 UTC 看過：/info 的標題列顯示登記的拉丁名「Muguok, Sungsu」（沒有中文顯示名），切成原文語言後的韓文地址 서울특별시 성동구 아차산로11길 11 동성빌딩 103호（與第一批一致），沒有電話欄、沒有「網站」欄、沒有「關於本店」段、頁上沒有任何外部連結；營業時間每天 11:30–21:00、15:00–17:30 休息、最後點餐 14:00／20:00，此刻 dock 鈕顯示「今日公休」。韓文店名 무구옥 성수점 在店頁「首頁」分頁的名稱列，不在 /info 的可見文字裡，引文店名段照 /info 上看得到的「Muguok, Sungsu」逐字抄。首頁簡介（AI 翻譯前的英文原文）寫以安城傳統大鍋熬的雞湯做삼계백반（參雞白飯定食）的名店，菜系欄 Chicken Dishes，所以歸 hotpot-soup＋home-style。聖水 → district_key seongsu。訂位判定沿用第一批的 waiting_only。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:5x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-section-title、waiting-remote-content 與 waiting-remote-table-item，dock「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/muguok_sungsu",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁：唯一的 data-testid 是 dock-waiting-btn（按鈕文字「登記遠端候位」），沒有 service-tab-DINING、沒有 service-tab-WAITING_REMOTE、沒有「日期 • 時間 • 人」與「尋找可用時間」。 2026-09-23 02:5x UTC 複查（claude-fable-5-1，往下捲讓 lazy 服務區塊載入）：出現 service-section-title、waiting-remote-content 與 waiting-remote-table-item，dock「登記遠端候位」，沒有 DINING 分頁；維持 waiting_only。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/muguok_sungsu",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+          "role": "ranking_page",
+          "observation": "第 8 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "45c460b5-85f5-4abb-8ec0-2cd4ce3c13a5",
+      "slug": "seoul-ponobouno",
+      "name": "포노 부오노",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/ponobouno",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/ponobouno",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/ponobouno",
+        "ja": "https://www.catchtable.net/ja-JP/shop/ponobouno"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 24 名（2026-09-23 擷取）。2026-09-23 約 06:41 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」日期列（各日顯示已滿／關閉）與「尋找可用時間」，沒有 dock-waiting-btn；performance 資源只見 detail 與 schedule（這次沒抓到 dayslot-enc）。沒有登入、沒有送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:02 UTC 看過：/info 的標題列顯示登記的拉丁名「PONO BUONO」（沒有中文顯示名），切成原文語言後的韓文地址 서울특별시 강남구 도산대로45길 8-7 2층（與第二批一致），電話 +82-10-9617-4499，週一至三 18:00–24:00（21:45 最後點餐）、本週四至日（9/24–27）顯示休息日、固定每週日休；沒有「網站」欄、頁上沒有任何外部連結，只有注意事項最後一行純文字寫「Instagram: pono_buono」（不是連結，照規則 website 留 null）。設施欄寫必須點一瓶葡萄酒、包廂低消 ₩600,000、代客泊車、伺酒師。韓文店名 포노 부오노 在店頁「首頁」分頁的名稱列「PONO BUONO 포노 부오노」，不在 /info 的可見文字裡，引文店名段照 /info 上看得到的「PONO BUONO」逐字抄。狎鷗亭／新沙洞 → district_key gangnam；義大利菜（義大利麵為主、每桌須點酒）→ noodles＋fine-dining。訂位判定沿用第二批的 reservation。",
+      "booking_observation": "2026-09-23 約 06:41 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」日期列（各日顯示已滿／關閉）與「尋找可用時間」，沒有 dock-waiting-btn；performance 資源只見 detail 與 schedule（這次沒抓到 dayslot-enc）。沒有登入、沒有送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/ponobouno",
+          "role": "platform_page",
+          "observation": "2026-09-23 約 06:41 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」日期列（各日顯示已滿／關閉）與「尋找可用時間」，沒有 dock-waiting-btn；performance 資源只見 detail 與 schedule（這次沒抓到 dayslot-enc）。沒有登入、沒有送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/ponobouno",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 24 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "9785aa66-8cde-4cc1-ba38-d451135597f9",
+      "slug": "seoul-sinsakkochgedang-apgujeong",
+      "name": "신사꽃게당 압구정로데오점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/sinsakkochgedang_apgujeong",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/sinsakkochgedang_apgujeong",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/sinsakkochgedang_apgujeong",
+        "ja": "https://www.catchtable.net/ja-JP/shop/sinsakkochgedang_apgujeong"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 25 名（2026-09-23 擷取）。2026-09-23 約 06:44 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，沒有 dock-waiting-btn；performance 資源只見 detail 與 schedule（這次沒抓到 dayslot-enc）。沒有登入、沒有送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:03 UTC 看過：/info 的標題列顯示中文顯示名「新沙花蟹堂 狎鷗亭羅德奧店」（首頁標示為 AI 翻譯），切成原文語言後的韓文地址 서울특별시 강남구 도산대로49길 13 SMART EXCHANGE 지하1층（與第二批一致），電話 +82-2-543-3777，週一至三 11:30–23:30（22:50 最後點餐，其餘日子被截斷未抄），「網站」欄是 Instagram 帳號 kkotgedang_apgujung（https://www.instagram.com/kkotgedang_apgujung），頁上沒有其他外部連結；「關於本店」寫醬油醃蟹、辣醃蟹、醬油蝦與花蟹鍋，設施有代客泊車、開瓶費、包廂（訂金 ₩50,000）。韓文店名 신사꽃게당 압구정로데오점 在店頁「首頁」分頁的名稱列「Sinsa kkotgedang Apgujeong Rodeo branch · 신사꽃게당 압구정로데오점」，不在 /info 的可見文字裡，引文店名段照 /info 上看得到的中文顯示名逐字抄；name_zh 照規則填韓文（中文名是平台翻譯）。狎鷗亭 → district_key gangnam；醬蟹 → seafood。訂位判定沿用第二批的 reservation。",
+      "booking_observation": "2026-09-23 約 06:44 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，沒有 dock-waiting-btn；performance 資源只見 detail 與 schedule（這次沒抓到 dayslot-enc）。沒有登入、沒有送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/sinsakkochgedang_apgujeong",
+          "role": "platform_page",
+          "observation": "2026-09-23 約 06:44 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE，點開 DINING 出現「日期 • 時間 • 人」與「尋找可用時間」，沒有 dock-waiting-btn；performance 資源只見 detail 與 schedule（這次沒抓到 dayslot-enc）。沒有登入、沒有送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/sinsakkochgedang_apgujeong",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 25 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "1cdc3ff8-38ff-4fe8-9664-154365b4c397",
+      "slug": "seoul-myeongdongeel",
+      "name": "태초갈비 명동점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/myeongdongeel",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/myeongdongeel",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/myeongdongeel",
+        "ja": "https://www.catchtable.net/ja-JP/shop/myeongdongeel"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 26 名（2026-09-23 擷取）。2026-09-23 約 06:47 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」與「尋找可用時間」，沒有 dock-waiting-btn；頁面呼叫 online-reservation-open-schedule。沒有登入、沒有送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:04 UTC 看過：/info 的標題列顯示登記的拉丁名「Taecho Galbi」（沒有中文顯示名），切成原文語言後的韓文地址 서울특별시 중구 명동10길 18 6층 601호（與第二批一致），電話 +82-2-318-1092，營業時間每天 12:00–23:00（22:00 最後點餐），「網站」欄是 Instagram 帳號 techo_myeongdong（https://www.instagram.com/techo_myeongdong），頁上沒有其他外部連結；「關於本店」寫特製食譜的排骨與韓牛燒烤專門店，免開瓶費、有包廂與伺酒師。店頁「首頁」的名稱列是「Taecho Galbi / myeongdongjangeo · 태초갈비 명동점」：alias myeongdongeel 與次要拉丁名 myeongdongjangeo（명동장어）是這個店頁的舊登記名，身分以頁面現況的韓文名 태초갈비 명동점 為準，name_en 取現在顯示的 Taecho Galbi；韓文店名不在 /info 的可見文字裡，引文店名段照 /info 上看得到的「Taecho Galbi」逐字抄。明洞 → district_key myeongdong；갈비／韓牛燒烤 → bbq-grill。訂位判定沿用第二批的 reservation。",
+      "booking_observation": "2026-09-23 約 06:47 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」與「尋找可用時間」，沒有 dock-waiting-btn；頁面呼叫 online-reservation-open-schedule。沒有登入、沒有送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/myeongdongeel",
+          "role": "platform_page",
+          "observation": "2026-09-23 約 06:47 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」與「尋找可用時間」，沒有 dock-waiting-btn；頁面呼叫 online-reservation-open-schedule。沒有登入、沒有送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/myeongdongeel",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 26 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "61f67bf7-681c-4c1a-aedc-c9c9511a8c98",
+      "slug": "seoul-wootender",
+      "name": "우텐더",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/wootender",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/wootender",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/wootender",
+        "ja": "https://www.catchtable.net/ja-JP/shop/wootender"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 29 名（2026-09-23 擷取）。2026-09-23 約 07:00 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」日期列（25 日顯示關閉）與「尋找可用時間」，沒有 dock-waiting-btn；頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。沒有登入、沒有送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:05 UTC 看過：/info 的標題列顯示登記的拉丁名「Woo Tender」（沒有中文顯示名），切成原文語言後的韓文地址 서울특별시 강남구 압구정로42길 25-10 1층, 2층（與第二批一致），電話 +82-10-2055-3889，週一至四、六、日午餐 11:30–15:00、晚餐 17:00–22:30（21:30 最後點餐）、本週五 9/25 顯示休息日，「網站」欄是 https://wootender.modoo.at（Naver modoo 建站頁，照規則原樣抄；本環境封鎖 Naver 網域，沒有打開），頁上沒有其他外部連結；沒有「關於本店」段，設施欄寫代客泊車、開瓶費、一二樓包廂（低消 ₩400,000–500,000）。首頁簡介寫 NO.9 1++ 頂級韓牛餐廳。韓文店名 우텐더 在店頁「首頁」分頁的名稱列，不在 /info 的可見文字裡，引文店名段照 /info 上看得到的「Woo Tender」逐字抄。狎鷗亭／新沙洞 → district_key gangnam；韓牛烤肉 → bbq-grill。訂位判定沿用第二批的 reservation。",
+      "booking_observation": "2026-09-23 約 07:00 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」日期列（25 日顯示關閉）與「尋找可用時間」，沒有 dock-waiting-btn；頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。沒有登入、沒有送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/wootender",
+          "role": "platform_page",
+          "observation": "2026-09-23 約 07:00 UTC 渲染 zh-TW 店頁（visibilityState hidden；在 /info 分頁把 IntersectionObserver 包一層後點「首頁」讓 lazy 服務區塊掛載）：沒有 service-tab-toggle、沒有 DINING／WAITING 分頁切換，只有 service-section-title 的單一訂位區塊，出現「日期 • 時間 • 人」日期列（25 日顯示關閉）與「尋找可用時間」，沒有 dock-waiting-btn；頁面呼叫 dayslot-enc 與 online-reservation-open-schedule。沒有登入、沒有送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/wootender",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 29 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "d6444dc4-4f74-42b9-b5d0-94473cb07271",
+      "slug": "seoul-woohwa-hongdae",
+      "name": "우화 홍대본점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/woohwa_hongdae",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/woohwa_hongdae",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/woohwa_hongdae",
+        "ja": "https://www.catchtable.net/ja-JP/shop/woohwa_hongdae"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 32 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點首頁重新掛載）：沒有 service-tab 切換，testids 只有 service-section-title；正文有「預訂」鈕、「日期 • 時間 • 人」日曆（9/23 起每日都可選）與「尋找可用時間」鈕；api 出現 online-reservation-open-schedule、dayslot-enc；沒有 dock、沒有候位分頁。 頁面有店家自己的訂位控制項，公開。 來源是店家自己登記的 CatchTable 店頁 /info 分頁（平台層級，不是官方資料）。2026-09-23 11:05 UTC 看過：/info 的標題列顯示登記的拉丁名「woohwa Hongdae Main Branch」（小寫 w 是店家自己的寫法，沒有中文顯示名），切成原文語言後的韓文地址 서울특별시 마포구 홍익로5안길 24 2층（與第二批一致），沒有電話欄，營業時間每天 12:00–24:00，「網站」欄是 Instagram 帳號 woohwa__hongdae（https://www.instagram.com/woohwa__hongdae/），頁上沒有其他外部連結；「關於本店」寫弘大主街 2 樓、全程代烤服務、1++ No.9 韓牛、對面 Seogyo Plaza 第二停車場。韓文店名 우화 홍대본점 在店頁「首頁」分頁的名稱列，不在 /info 的可見文字裡，引文店名段照 /info 上看得到的「woohwa Hongdae Main Branch」逐字抄。與濟州的無限續盤品牌 woohwa.co.kr 無關（第二批已查）。西橋洞／弘大 → district_key hongdae；韓牛烤肉 → bbq-grill。訂位判定沿用第二批的 reservation。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點首頁重新掛載）：沒有 service-tab 切換，testids 只有 service-section-title；正文有「預訂」鈕、「日期 • 時間 • 人」日曆（9/23 起每日都可選）與「尋找可用時間」鈕；api 出現 online-reservation-open-schedule、dayslot-enc；沒有 dock、沒有候位分頁。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/woohwa_hongdae",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點首頁重新掛載）：沒有 service-tab 切換，testids 只有 service-section-title；正文有「預訂」鈕、「日期 • 時間 • 人」日曆（9/23 起每日都可選）與「尋找可用時間」鈕；api 出現 online-reservation-open-schedule、dayslot-enc；沒有 dock、沒有候位分頁。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/woohwa_hongdae",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+          "role": "ranking_page",
+          "observation": "第 32 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    }
+  ]
+}
