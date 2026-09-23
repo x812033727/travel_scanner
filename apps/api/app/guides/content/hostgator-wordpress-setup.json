@@ -235,6 +235,906 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Building a website with HostGator: installation, domain connection and handover",
+      "description": "Before building WordPress with HostGator, distinguish customer accounts, site administration, domain registration and DNS. Official documentation informs installation and domain connection steps, plus site acceptance, backup and handover checklists for small shops and creators in Taiwan. Check purchase and feature eligibility against your own plan: installation, backup generation or domain connection alone does not complete the launch.",
+      "hero": {
+        "src": "/guides/hostgator-wordpress-setup/hero-en.jpg",
+        "alt": "An original website-building illustration linking a website screen, a hosting server and maintenance documents.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On your first HostGator login, you may see entry points for billing, hosting, websites and domains at the same time. Each serves a different purpose: being able to pay a bill does not mean you can edit articles, and access to WordPress does not mean you control domain renewal. Map the relationships between accounts and services first; collaboration and troubleshooting will be much clearer later."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide focuses on creating a new WordPress website and follows HostGator's public instructions; no account was used for hands-on testing. Consider a handmade-goods studio preparing to launch: arrange its portfolio, contact details and responsibility for updates, then complete installation and connection step by step. If you are moving an operating store, you must also plan synchronization of the latest data and how long to retain the old site."
+        },
+        {
+          "type": "heading",
+          "text": "List who manages each service",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a service register covering the HostGator customer account, WordPress administrators, domain registrar, DNS service and email provider. For each, record the responsible person, account recovery method and expiry date. Keep passwords in a suitable password manager rather than the handover document itself. If a freelancer helps build the site, agree on account ownership and delivery arrangements in advance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before buying, list your expected website count, content storage, email, backups and assistance needs, and check initial payments, renewals and add-ons. If the studio currently needs only a portfolio, finish the presentation and inquiry journey first; a setup wizard offering store features is not a reason to activate payments as well. Fewer requirements make the first acceptance check easier to complete thoroughly."
+        },
+        {
+          "type": "heading",
+          "text": "Create WordPress from the customer portal",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The current official installation instructions start at Websites in the Customer Portal: click Add Site, choose WordPress, then click Start Setup after installation. If your account has several hosting plans, confirm which plan and location will receive the site. When the screens differ, consult the instructions and support for that plan instead of repeatedly installing to guess which entry point works."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following steps ask about the site's purpose, name, description and layout preferences, then apply the settings and open WordPress administration. These choices help create initial pages, but you must review the generated content individually. Do not publish sample addresses, services you do not offer or unverifiable customer reviews from a template. A template containing an image does not establish that its usage rights have been checked."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, add a real piece of content and try saving a draft, previewing, editing and publishing it, then confirm that you can sign in again. This tests the daily updating process rather than just the completion screen. Reserve administrator accounts for people who need administrative functions, and assign contributors the narrower permissions their work requires. Avoid sharing a single login among everyone."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sign in to Customer Portal, confirm the intended plan, then select WordPress through Websites → Add Site.",
+            "Wait for installation, open Start Setup and enter the site's real name and purpose.",
+            "Review the layout, pages and extra features, finish setup and enter WordPress.",
+            "Create test content, verify sign-in, preview and editing, and record the maintenance entry points."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Connecting a domain does not necessarily require changing registrar",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator's official explanation says that using its hosting does not require transferring your domain registration to it. A domain transfer changes the registrar relationship; changing nameservers or DNS records changes resolution. If your domain already renews with another company, connect the website according to your setup without also transferring the registrar just to launch it."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the current Websites interface, a site's Settings lets you connect or manage a domain under Site Information by entering the name you want to use. This associates the site within the platform; external DNS still needs configuration wherever resolution is actually managed. If using HostGator nameservers, read the values provided in your own account. If keeping external DNS, set the required records using the hosting details."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before changing nameservers, save the existing DNS configuration and identify records needed for email. The studio's inquiry mailbox may use a different provider, so a working homepage must not come at the cost of incoming email. Afterward, check the root domain, www, HTTPS and email separately, and retain the change time and previous values for troubleshooting. DNS caching takes time, but waiting will not automatically correct a wrong destination."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm backup contents and restoration methods",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator's backup documentation describes several tools, whose applicability depends on your plan and backup service. In your own account, confirm which data is included, how often backups are made, how long they are retained and how to download them. Website files, databases, email and external services may not be covered by the same backup. Record any missing coverage individually."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official guidance explains that restoring a full cPanel account backup requires the appropriate privileges or support assistance; not every user can restore one directly from the regular panel. Do not wait for a failure to ask how to use your downloaded files. Understand restoration eligibility, fees and compatibility first, then arrange a suitable practice restore in an isolated environment and record exactly which data was recovered."
+        },
+        {
+          "type": "paragraph",
+          "text": "Backup files may contain website data and configuration. Store downloads somewhere with restricted access, rather than in a publicly accessible website directory. Obtain a fresh backup before updating an important plugin or changing the layout. If the site continues to receive forms or orders, also understand how restoring an older backup would affect subsequently added data."
+        },
+        {
+          "type": "heading",
+          "text": "Test what visitors will actually do",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the site in a signed-out browser and on a phone, then move from the homepage to portfolio pages, the contact form and important links. Submit test form data and confirm it reaches the administration system or recipient, then delete unnecessary test records. Images should be clear without needless cropping, and button text should explain what clicking will do."
+        },
+        {
+          "type": "paragraph",
+          "text": "Group problems into four categories: content, WordPress, domain resolution and hosting services. Save the URL, time and error message. Give support the information it needs while redacting login passwords, keys and customer data. This makes it easier to identify who should handle the issue than simply saying “the website is broken,” and helps prevent several people from changing different settings simultaneously."
+        },
+        {
+          "type": "heading",
+          "text": "Leave a record the next person can use",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "At handover, have the new maintainer actually sign in, edit a passage, view form results and find the backup instructions. Record who handles updates, billing and the first contact during a failure, and which tasks cost extra. Do not leave administrator rights, domain renewal or image licensing as verbal agreements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, schedule regular checks of updates, backups, contact details and renewal reminders. When management changes, remove access that is no longer needed and update account contact information through the service's process. Keeping a website usable depends on a repeatable maintenance routine; initial installation simply provides a working starting point for that routine."
+        },
+        {
+          "type": "image",
+          "src": "/guides/hostgator-wordpress-setup/diagram-1-en.svg",
+          "alt": "A HostGator website checklist covering the four stages of accounts, installation, connection and maintenance.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Assign responsibility for every entry point, and know how to use every backup.",
+          "description": "A HostGator website checklist covering the four stages of accounts, installation, connection and maintenance.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Managed item",
+            "Main purpose",
+            "Confirm at handover"
+          ],
+          "rows": [
+            [
+              "Customer Portal",
+              "Plans, billing and website access",
+              "Account holder and renewal"
+            ],
+            [
+              "WordPress administration",
+              "Articles, layouts and users",
+              "Sign-in and editing permissions"
+            ],
+            [
+              "Domain registrar",
+              "Domain ownership and renewal",
+              "Contact details and expiry date"
+            ],
+            [
+              "DNS service",
+              "Website and email resolution",
+              "Previous records and management location"
+            ],
+            [
+              "Backup service",
+              "Data retention and recovery",
+              "Coverage and restoration method"
+            ]
+          ],
+          "caption": "One company may supply several services, but confirm management responsibilities separately."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Being able to download is not the same as being able to restore",
+          "text": "Confirm the backup format, restoration permissions and support terms first, and retain the necessary instructions. Do not test a backup's validity by overwriting the production site."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Before buying a domain: names, ownership and renewal management",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What website maintenance involves: a routine for backups, updates and issue reporting",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "HostGator: installing WordPress",
+          "url": "https://www.hostgator.com/help/article/how-to-install-wordpress-with-one-click",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator: connecting a domain in Websites",
+          "url": "https://www.hostgator.com/help/article/connect-a-domain-via-website-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator: domain transfers versus nameserver changes",
+          "url": "https://www.hostgator.com/help/article/transferring-a-domain-vs-changing-name-servers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator: generating and downloading website backups",
+          "url": "https://www.hostgator.com/help/article/how-to-generatedownload-a-full-backup",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "HostGator でサイトを作る：インストール、ドメイン接続、引き継ぎ",
+      "description": "HostGator で WordPress サイトを作る際は、顧客アカウント、サイト管理画面、ドメイン登録、DNS の管理場所を区別します。公式資料に基づくインストールと接続手順に加え、動作確認、バックアップ、引き継ぎのチェックリストを紹介し、台湾の小規模店舗や個人クリエイターが保守を続けられるサイトを作るのを支援します。購入条件と機能の利用資格は自分のプランで確認し、インストール、バックアップ作成、ドメイン接続のどれかだけで公開作業がすべて終わったと考えないようにします。",
+      "hero": {
+        "src": "/guides/hostgator-wordpress-setup/hero-ja.jpg",
+        "alt": "サイト画面、ホスティングサーバー、保守資料をつないだオリジナルのサイト制作イラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "HostGator に初めてログインすると、請求、ホスティング、サイト、ドメインなどの入口が一度に見つかることがあります。それぞれ役割が異なり、支払いができても記事を編集できるとは限らず、WordPress に入れてもドメインの更新を管理しているとは限りません。最初にアカウントとサービスの関係を図にすると、後の共同作業や障害対応が分かりやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい WordPress サイトの構築を中心に、HostGator の公開説明から手順を整理しています。アカウントにログインした実機検証は行っていません。開設準備中の手作り品の工房を例に、作品、連絡先、更新担当を決めてから、インストールと接続を順番に進めます。営業中のショップを移す場合は、最新データの同期と旧サイトの保持期間を別途計画する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "サービスごとの管理者を先に整理する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator の顧客アカウント、WordPress 管理者、ドメイン登録事業者、DNS サービス、メール事業者を一覧にします。各項目に担当者、アカウント復旧方法、有効期限を記載し、パスワードは引き継ぎ資料に直接書かず、適切なパスワード管理ツールに保存します。外部の制作者に依頼するなら、アカウント所有者と納品方法を事前に取り決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "購入前に必要なサイト数、コンテンツ容量、メール、バックアップ、支援内容をリスト化し、初回支払い、更新、追加料金を確認します。工房が当面作品紹介だけを必要としているなら、展示と問い合わせの経路を先に完成させましょう。設定ウィザードがショップ機能を提示しても、同時に決済を有効にする必要はありません。要件が少ない方が初回の確認を隅々まで行いやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "Customer Portal から WordPress を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現在の公式インストール資料では Customer Portal の Websites を開き、Add Site で WordPress を選択し、インストール後に Start Setup を押します。アカウントに複数のホスティングプランがある場合は、どのプランのどの場所に作るかを先に確認します。画面が異なるときは、そのプランの説明やサポートに従い、何度もインストールして有効な入口を推測しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "続く案内ではサイトの用途、名称、説明、レイアウトの好みを尋ねられ、設定を適用して WordPress 管理画面へ進みます。初期ページを作る助けにはなりますが、生成された内容は個別に確認が必要です。テンプレートの架空の住所、提供していないサービス、裏付けのない顧客レビューを公開してはいけません。テンプレートに画像があるだけで使用許諾を確認済みと考えることも避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完了後は実際のコンテンツを追加し、下書き保存、プレビュー、修正、公開を試してから、再ログインできるか確認します。これにより完了画面を見るだけでなく、日常の更新経路を検証できます。管理者アカウントは管理機能が必要な人に限定し、投稿を手伝う人には業務に応じた小さな権限を与え、全員で同じログイン情報を共有しないようにします。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Customer Portal にログインして対象プランを確認し、Websites → Add Site から WordPress を選びます。",
+            "インストールを待って Start Setup に進み、実際のサイト名と用途を入力します。",
+            "レイアウト、ページ、追加機能を確認し、設定完了後に WordPress へ進みます。",
+            "テスト用コンテンツを作り、ログイン、プレビュー、修正の流れを確認して保守の入口を記録します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "ドメイン接続のために登録事業者を移すとは限らない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator は、ホスティング利用のためにドメイン登録を移す必要はないと公式に説明しています。ドメイン移管は登録事業者との管理関係を変更し、ネームサーバーや DNS レコードの変更は名前解決を設定します。すでに他社でドメインを更新しているなら、自分の構成に合うサイト接続を行えば、開設のためだけに登録事業者も移す必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "現在の Websites ではサイトの Settings にある Site Information から、使いたいドメイン名を入力して接続や管理ができます。これはプラットフォーム内でのサイトとの関連付けであり、外部 DNS は実際に名前解決を管理する場所で設定する必要があります。HostGator のネームサーバーを使う場合は自分のアカウントに表示される値を読み取り、外部 DNS を残す場合はホスティング情報に従って必要なレコードを設定します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ネームサーバー変更前に既存の DNS 設定を保存し、メールに必要なレコードを確認します。工房の問い合わせ用メールは別の事業者が提供しているかもしれません。ホームページが開くことだけに気を取られ、受信を忘れてはいけません。変更後はルートドメイン、www、HTTPS、メールをそれぞれ確認し、変更時刻と元の値を残します。名前解決のキャッシュには時間がかかりますが、間違った接続先は待っても自動的には直りません。"
+        },
+        {
+          "type": "heading",
+          "text": "バックアップの内容と復元方法を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator のバックアップ資料には複数のツールがあり、適用方法はプランと利用するバックアップサービスによって異なります。自分のアカウントで、対象データ、作成頻度、保持期間、ダウンロード方法を確認します。サイトファイル、データベース、メール、外部サービスが同じバックアップに入るとは限らないため、不足する部分を項目ごとに記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式説明では、cPanel アカウント全体のバックアップ復元には相応の権限やサポート対応が必要で、すべてのユーザーが通常のパネルから直接復元できるわけではないとされています。事故が起きてからダウンロード済みファイルの使い方を尋ねることは避けましょう。復元資格、費用、互換性の条件を理解してから、隔離環境で適切な練習を行い、復元できたデータを明確に記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "バックアップファイルにはサイトデータや設定が含まれる可能性があります。ダウンロード後はアクセスを制限した場所に保存し、公開閲覧できるサイトのディレクトリには置かないようにします。重要なプラグインの更新やレイアウト変更の前には新しいバックアップを取得します。フォームや注文を継続的に受け付けるサイトでは、古いバックアップを戻した際に、その後の新規データがどうなるかも把握します。"
+        },
+        {
+          "type": "heading",
+          "text": "訪問者が実際に行う操作で確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ログインしていないブラウザーとスマートフォンでサイトを開き、ホームページから作品ページ、問い合わせフォーム、重要なリンクへ進みます。フォームにはテストデータを送信し、管理画面や受信者に届いたことを確認してから不要なテスト記録を削除します。画像は不要に切り取られず見やすい状態にし、ボタンの文字はクリック後に起きることを示すようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題をコンテンツ、WordPress、ドメインの名前解決、ホスティングサービスの四種類に分け、URL、発生時刻、エラーメッセージを保存します。サポートには必要な情報を渡し、ログインパスワード、キー、顧客データは隠します。「サイトが壊れた」とだけ伝えるより担当者を特定しやすくなり、複数の人が異なる設定を同時に変えることも避けられます。"
+        },
+        {
+          "type": "heading",
+          "text": "引き継ぐ人が使える記録を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "納品時には、引き継ぐ人に実際にログインし、文章を修正し、フォームの結果を見て、バックアップの説明を探してもらいます。更新担当、支払い担当、障害時の最初の連絡先、別料金になる作業を項目ごとに記録します。管理権限、ドメイン更新、画像の使用許諾を口約束だけにしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に更新、バックアップ、連絡先、更新期限通知を定期的に確認する予定を立てます。担当者が変わったら不要なアクセス権を削除し、サービスの手順に従ってアカウントの連絡情報を更新します。サイトを使い続けるには、繰り返せる保守手順が必要です。最初のインストールは、その手順を実行できる出発点にすぎません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hostgator-wordpress-setup/diagram-1-ja.svg",
+          "alt": "アカウント、インストール、接続、保守の四段階を示す HostGator サイト制作チェック図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "すべての入口に担当者を置き、すべてのバックアップの使い方を把握しましょう。",
+          "description": "アカウント、インストール、接続、保守の四段階を示す HostGator サイト制作チェック図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "管理項目",
+            "主な用途",
+            "引き継ぎ時の確認"
+          ],
+          "rows": [
+            [
+              "Customer Portal",
+              "プラン・請求・サイトの入口",
+              "アカウント所有者と更新"
+            ],
+            [
+              "WordPress 管理画面",
+              "記事・レイアウト・ユーザー",
+              "ログインと編集権限"
+            ],
+            [
+              "ドメイン登録事業者",
+              "ドメイン保有と更新",
+              "連絡先と有効期限"
+            ],
+            [
+              "DNS サービス",
+              "サイトとメールの名前解決",
+              "元のレコード値と管理場所"
+            ],
+            [
+              "バックアップサービス",
+              "データ保存と復元",
+              "対象範囲と復元方法"
+            ]
+          ],
+          "caption": "同じ会社が複数のサービスを提供していても、管理責任はそれぞれ確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "ダウンロードできても自分で復元できるとは限らない",
+          "text": "バックアップ形式、復元権限、サポート条件を先に確認し、必要な操作資料を保存します。バックアップの有効性を試すために本番サイトを直接上書きしないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメイン購入前に知ること：名前、所有者、更新管理",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守で行うこと：バックアップ、更新、障害報告の日常手順",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "HostGator：WordPress のインストール",
+          "url": "https://www.hostgator.com/help/article/how-to-install-wordpress-with-one-click",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator：Websites でのドメイン接続",
+          "url": "https://www.hostgator.com/help/article/connect-a-domain-via-website-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator：ドメイン移管とネームサーバー変更の違い",
+          "url": "https://www.hostgator.com/help/article/transferring-a-domain-vs-changing-name-servers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator：サイトのバックアップ作成とダウンロード",
+          "url": "https://www.hostgator.com/help/article/how-to-generatedownload-a-full-backup",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "HostGator 사이트 구축 안내: 설치, 도메인 연결과 인수인계",
+      "description": "HostGator로 WordPress 사이트를 만들 때는 고객 계정, 사이트 관리자 화면, 도메인 등록과 DNS의 관리 위치부터 구분해야 합니다. 공식 문서에 따라 설치와 도메인 연결 절차를 정리하고 사이트 검수, 백업 확인과 인수인계 목록을 제공해 대만의 소규모 상점과 개인 창작자가 지속적으로 관리할 사이트를 만들도록 돕습니다. 구매 및 기능 이용 자격은 자신의 요금제를 기준으로 확인하세요. 설치 완료, 백업 생성이나 도메인 연결 중 한 단계만으로 공개 준비 전체가 끝났다고 판단하지 않습니다.",
+      "hero": {
+        "src": "/guides/hostgator-wordpress-setup/hero-ko.jpg",
+        "alt": "웹사이트 화면, 호스팅 서버와 유지 관리 문서를 연결한 자체 제작 사이트 구축 일러스트입니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "HostGator에 처음 로그인하면 청구, 호스팅, 웹사이트와 도메인 메뉴가 동시에 보일 수 있습니다. 각 메뉴는 서로 다른 업무를 처리합니다. 결제할 수 있다고 글을 편집할 수 있는 것은 아니며, WordPress에 접근한다고 도메인 갱신을 관리하는 것도 아닙니다. 계정과 서비스의 관계를 먼저 그려 두면 나중에 협업하거나 장애를 해결할 때 훨씬 명확해집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 WordPress 사이트 구축을 중심으로 HostGator의 공개 설명에 따라 절차를 정리했으며, 계정에 로그인해 실측하지는 않았습니다. 사이트를 준비하는 수공예 작업실을 예로 들면 작품, 연락처와 업데이트 책임을 정한 뒤 설치와 연결을 차례로 진행합니다. 운영 중인 상점을 이전하려는 경우에는 최신 데이터 동기화와 기존 사이트 유지 기간을 따로 계획해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "누가 어떤 서비스를 관리하는지 먼저 정리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 표를 만들어 HostGator 고객 계정, WordPress 관리자, 도메인 등록업체, DNS 서비스와 이메일 공급업체를 기록하세요. 각 항목에는 담당자, 계정 복구 방법과 만료일을 적고, 비밀번호는 인수인계 문서에 직접 쓰지 말고 적절한 비밀번호 관리 도구에 보관합니다. 외주 제작자가 돕는 경우에는 계정 소유자와 인도 방법을 미리 합의해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "구매 전에 예상 사이트 수, 콘텐츠 용량, 이메일, 백업과 지원 요구를 목록으로 만들고 첫 결제, 갱신과 추가 옵션을 대조하세요. 작업실에 지금 필요한 것이 작품 소개뿐이라면 전시와 문의 흐름부터 완성할 수 있습니다. 설정 마법사가 상점 기능을 제공한다고 결제까지 동시에 활성화할 필요는 없습니다. 요구 사항이 적으면 첫 검수를 더 철저히 완료하기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "고객 포털에서 WordPress 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 공식 설치 문서는 Customer Portal의 Websites에서 Add Site를 누르고 WordPress를 선택한 뒤, 설치 후 Start Setup을 누르는 순서입니다. 계정에 여러 호스팅 요금제가 있다면 어느 요금제의 어느 위치에 사이트가 생성되는지 먼저 확인하세요. 화면이 다르면 해당 요금제 설명과 지원을 기준으로 하고, 어느 메뉴가 작동하는지 추측하려고 설치를 반복하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어지는 안내에서는 사이트 용도, 이름, 설명과 레이아웃 취향을 묻고 설정을 적용한 뒤 WordPress 관리자 화면으로 이동합니다. 이런 선택은 초기 페이지를 만드는 데 도움이 되지만 생성된 콘텐츠는 하나씩 검토해야 합니다. 템플릿의 예시 주소, 제공하지 않는 서비스나 입증할 수 없는 고객 후기를 공개하지 마세요. 템플릿에 이미지가 있다는 사실만으로 사용 허가가 확인됐다고 판단해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "완료 후에는 실제 콘텐츠를 추가해 초안 저장, 미리보기, 수정과 게시를 시도하고 다시 로그인할 수 있는지 확인하세요. 완료 화면만 보는 대신 일상적인 업데이트 경로를 검증할 수 있습니다. 관리자 계정은 관리 기능이 필요한 사람에게만 제공하고, 게시를 돕는 사람은 업무에 필요한 더 좁은 권한을 배정해 모두가 같은 로그인 정보를 공유하지 않도록 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Customer Portal에 로그인해 대상 요금제를 확인하고 Websites → Add Site에서 WordPress를 선택합니다.",
+            "설치가 끝나면 Start Setup으로 들어가 실제 사이트 이름과 용도를 입력합니다.",
+            "레이아웃, 페이지와 추가 기능을 검토하고 설정을 마친 뒤 WordPress로 이동합니다.",
+            "테스트 콘텐츠를 만들고 로그인·미리보기·수정 흐름을 확인한 뒤 유지 관리 경로를 기록합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "도메인 연결이 꼭 등록업체 이전을 뜻하지는 않습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator는 호스팅 서비스를 사용하기 위해 도메인 등록을 이전할 필요가 없다고 공식적으로 설명합니다. 도메인 이전은 등록업체의 관리 관계를 바꾸는 작업이고, 네임서버나 DNS 레코드 변경은 이름 해석을 설정하는 작업입니다. 이미 다른 회사에서 도메인을 갱신하고 있다면 자신의 구성에 맞게 사이트를 연결하면 되며, 개설을 위해 등록업체까지 동시에 이전할 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 Websites의 사이트 Settings에서 Site Information을 통해 도메인을 연결하거나 관리할 수 있으며, 화면 안내에 따라 사용할 이름을 입력합니다. 이는 플랫폼 내부의 사이트 연결 설정이고, 외부 DNS는 실제로 이름 해석을 관리하는 위치에서 여전히 설정해야 합니다. HostGator 네임서버를 사용한다면 자신의 계정에 제공된 값을 확인하고, 외부 DNS를 유지한다면 호스팅 정보를 따라 필요한 레코드를 설정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "네임서버를 변경하기 전에 기존 DNS 설정을 저장하고 이메일에 필요한 레코드를 확인하세요. 작업실의 문의 메일은 다른 공급업체가 제공할 수 있으므로 홈페이지가 열린다는 이유로 메일 수신을 놓치면 안 됩니다. 완료 후에는 루트 도메인, www, HTTPS와 이메일을 각각 점검하고 변경 시각과 원래 값을 보관해 문제를 추적하세요. DNS 캐시에는 시간이 필요하지만 잘못된 대상은 기다린다고 자동으로 고쳐지지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "백업 내용과 복원 방법 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator의 백업 문서에는 여러 도구가 있으며, 적용 방식은 요금제와 사용하는 백업 서비스에 따라 다릅니다. 자신의 계정에서 어떤 데이터가 포함되는지, 생성 주기, 보관 기간과 다운로드 방법을 확인하세요. 사이트 파일, 데이터베이스, 이메일과 외부 서비스가 같은 백업에 모두 포함되는 것은 아니므로 빠진 부분을 항목별로 기록해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 안내에 따르면 전체 cPanel 계정 백업을 복원하려면 해당 권한이나 지원팀의 처리가 필요하며, 모든 사용자가 일반 패널에서 바로 복원할 수 있는 것은 아닙니다. 문제가 생긴 후에야 다운로드한 파일의 사용법을 묻지 마세요. 복원 자격, 비용과 호환 조건을 먼저 이해하고 격리된 환경에서 적합한 연습을 진행한 뒤, 어떤 데이터가 복구됐는지 분명히 기록합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "백업 파일에는 사이트 데이터와 설정이 들어 있을 수 있으므로 다운로드한 뒤 접근이 제한된 장소에 보관하고 공개적으로 열람 가능한 사이트 디렉터리에 남겨 두지 마세요. 중요한 플러그인 업데이트나 레이아웃 변경 전에는 새 백업을 확보합니다. 폼이나 주문을 계속 받는 사이트라면 이전 백업으로 돌아갈 때 이후 추가된 데이터에 어떤 영향이 있는지도 알아야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "방문자가 실제로 하는 일로 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로그아웃한 브라우저와 휴대전화로 사이트를 열고 홈페이지에서 작품 페이지, 연락 폼과 중요한 링크로 이동해 보세요. 폼에는 테스트 데이터를 제출해 관리자 화면이나 수신자에게 실제로 도착했는지 확인한 뒤 불필요한 테스트 기록을 삭제합니다. 이미지는 불필요하게 잘리지 않고 알아보기 쉬워야 하며, 버튼 문구는 누른 뒤 어떤 일이 생기는지 설명해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문제를 콘텐츠, WordPress, 도메인 이름 해석과 호스팅 서비스의 네 범주로 나눠 URL, 발생 시각과 오류 메시지를 저장하세요. 지원 요청에는 필요한 정보를 제공하되 로그인 비밀번호, 키와 고객 데이터는 가립니다. ‘사이트가 고장 났다’고만 설명하는 것보다 담당자를 찾기 쉽고, 여러 사람이 동시에 서로 다른 설정을 바꾸는 일도 줄일 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "다음 담당자가 이어받을 수 있는 기록 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트를 인도할 때는 인수자가 직접 로그인하고 문장 일부를 수정하며 폼 결과와 백업 설명을 찾아보게 하세요. 누가 업데이트를 맡는지, 누가 요금을 처리하는지, 장애 때 누구에게 먼저 연락하는지, 어떤 작업에 추가 비용이 드는지 항목별로 기록합니다. 관리 권한, 도메인 갱신이나 이미지 사용 허가를 구두 약속으로만 남기지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 업데이트, 백업, 연락처와 갱신 알림을 정기적으로 점검할 일정을 마련하세요. 관리자가 바뀌면 불필요한 접근 권한을 제거하고 서비스 절차에 따라 계정 연락처를 갱신합니다. 웹사이트를 계속 사용할 수 있게 하는 것은 반복 가능한 유지 관리 과정입니다. 첫 설치는 이 과정을 실행할 수 있는 출발점을 마련할 뿐입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/hostgator-wordpress-setup/diagram-1-ko.svg",
+          "alt": "계정, 설치, 연결과 유지 관리의 네 단계로 구성된 HostGator 사이트 구축 점검도입니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "모든 진입 경로에는 담당자가 있어야 하고, 모든 백업의 사용법을 알아야 합니다.",
+          "description": "계정, 설치, 연결과 유지 관리의 네 단계로 구성된 HostGator 사이트 구축 점검도입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "관리 항목",
+            "주요 용도",
+            "인수인계 때 확인"
+          ],
+          "rows": [
+            [
+              "Customer Portal",
+              "요금제·청구·사이트 접근",
+              "계정 소유자와 갱신"
+            ],
+            [
+              "WordPress 관리자 화면",
+              "게시물·레이아웃·사용자",
+              "로그인과 편집 권한"
+            ],
+            [
+              "도메인 등록업체",
+              "도메인 보유와 갱신",
+              "연락처와 만료일"
+            ],
+            [
+              "DNS 서비스",
+              "사이트와 이메일 이름 해석",
+              "기존 레코드 값과 관리 위치"
+            ],
+            [
+              "백업 서비스",
+              "데이터 보관과 복구",
+              "대상 범위와 복원 방법"
+            ]
+          ],
+          "caption": "같은 회사가 여러 서비스를 제공하더라도 관리 책임은 각각 확인해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "다운로드할 수 있다고 직접 복원할 수 있는 것은 아닙니다",
+          "text": "백업 형식, 복원 권한과 지원 조건을 먼저 확인하고 필요한 사용 설명을 보관하세요. 백업이 유효한지 검증하려고 운영 사이트를 직접 덮어쓰지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인 구매 전 알아둘 것: 이름, 소유자와 갱신 관리",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지 관리 업무: 백업, 업데이트와 장애 보고의 일상 일정",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "HostGator: WordPress 설치",
+          "url": "https://www.hostgator.com/help/article/how-to-install-wordpress-with-one-click",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator: Websites에서 도메인 연결",
+          "url": "https://www.hostgator.com/help/article/connect-a-domain-via-website-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator: 도메인 이전과 네임서버 변경의 차이",
+          "url": "https://www.hostgator.com/help/article/transferring-a-domain-vs-changing-name-servers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator: 사이트 백업 생성 및 다운로드",
+          "url": "https://www.hostgator.com/help/article/how-to-generatedownload-a-full-backup",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "HostGator 建站指南：安装、域名连接与交接",
+      "description": "使用 HostGator 搭建 WordPress 网站，应先分清客户账号、网站后台、域名注册与 DNS 的管理位置。本文根据官方文档整理安装与域名连接步骤，并提供网站验收、备份确认及交接清单，帮助台湾小店或个人创作者建立能够持续维护的网站。购买与功能资格以自己的套餐为准，不把安装完成、备份生成或域名连接等单一步骤当成全部上线工作。",
+      "hero": {
+        "src": "/guides/hostgator-wordpress-setup/hero-zh-cn.jpg",
+        "alt": "网站画面、主机与维护文档串联的原创建站插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "第一次登录 HostGator，容易同时看到账单、主机、网站和域名等入口。这些入口各自处理不同工作：能缴费不代表可以编辑文章，能进入 WordPress 也不代表掌握域名续费。先画出账号与服务的关系，日后找人协作或处理故障时会清楚得多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以新建 WordPress 网站为主，根据 HostGator 的公开说明整理流程，没有登录账号实测。以准备开站的手作工作室为例，先安排作品、联系方式及更新责任，再逐项完成安装与连接；如果要迁移正在营业的商店，还需另外规划最新数据同步及旧站保留时间。"
+        },
+        {
+          "type": "heading",
+          "text": "先列出谁管理哪些服务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建立一张服务表，记录 HostGator 客户账号、WordPress 管理员、域名注册商、DNS 服务与邮件供应商。每项填写负责人、找回账号的方式和到期日，密码则放在合适的密码管理工具中，不直接写进交接文档。如果网站由外包人员协助制作，应事先约定账号持有人与交付方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "购买前把预计的网站数量、内容容量、邮箱、备份及协助需求写成清单，核对首次付款、续费和附加服务。手作工作室如果目前只需要作品介绍，可以先完成展示与咨询流程，不必因为设置向导提供商店功能就同时启用收款。需求少一些，初次验收也更容易做完整。"
+        },
+        {
+          "type": "heading",
+          "text": "从客户入口创建 WordPress",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方当前的安装文档从 Customer Portal 的 Websites 进入，点击 Add Site 选择 WordPress，安装后再点击 Start Setup。如果账号有多个主机套餐，先确认网站将建立在哪个套餐与位置；画面不同时，以该套餐的说明及支持为准，不要反复安装来猜测哪个入口有效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "后续引导会询问网站用途、名称、说明与版面偏好，再应用设置并进入 WordPress 后台。这些选择有助于建立初始页面，但生成的内容仍需逐项检查。不要公开模板中的示例地址、没有提供的服务或无法证实的客户评价，也不要把模板中出现图片当成已确认授权。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后先新增一篇真实内容，尝试保存草稿、预览、修改及发布，再确认自己能够重新登录。这能验证日常更新路径，而不只是看到完成画面。管理员账号保留给需要管理功能的人，协助发布内容的人则按工作需要分配较小权限，避免所有人共用同一组登录信息。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登录 Customer Portal，确认目标套餐，再由 Websites → Add Site 选择 WordPress。",
+            "等待安装完成，进入 Start Setup，填写真实的网站名称与用途。",
+            "检查版面、页面及附加功能，完成设置后进入 WordPress。",
+            "创建测试内容并验证登录、预览与修改流程，记录维护入口。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "域名连接网站，不一定要迁移注册商",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator 官方说明，使用主机服务不要求把域名注册迁入。域名转移处理注册商管理关系；更改名称服务器或 DNS 记录则处理解析。如果域名已在其他公司续费，只要按照自己的架构完成网站连接，就不必为了开站而同时处理注册商转移。"
+        },
+        {
+          "type": "paragraph",
+          "text": "当前 Websites 中的网站 Settings 可以从 Site Information 连接或管理域名，按照画面输入要使用的名称。这是平台内的网站对应关系，外部 DNS 仍需在真正管理解析的位置设置。使用 HostGator 名称服务器时，读取自己账号提供的值；保留外部 DNS 时，按照主机信息设置所需记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更改名称服务器前，保存既有 DNS 设置并确认邮件所需记录。工作室的咨询邮箱可能由其他供应商提供，不能只顾首页可以打开而遗漏收信。完成后分别检查根域名、www、HTTPS 与邮件，保留修改时间和原值，便于定位问题。解析缓存需要时间，但错误的目标不会因为等待而自动修正。"
+        },
+        {
+          "type": "heading",
+          "text": "备份要确认内容与恢复方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "HostGator 的备份文档列有多种工具，适用方式取决于套餐及使用的备份服务。请在自己的账号中确认备份包含哪些数据、多久生成一次、保留多久以及如何下载。网站文件、数据库、邮件和外部服务不一定由同一份备份覆盖，应逐项记录缺少的部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方指出，恢复完整 cPanel 账号备份需要相应权限或支持团队处理，并非所有用户都能在普通面板中直接恢复。因此不要等到出事才询问如何使用下载的文件。先了解恢复资格、费用和兼容条件，再在隔离环境中安排合适的演练；演练结果要写清楚恢复了哪些数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "备份文件可能包含网站数据与设置，下载后应放在有访问限制的位置，避免留在可公开浏览的网站目录中。准备更新重要插件或更换版面前，再取得新的备份。如果网站会持续收到表单或订单，也要知道恢复旧备份会如何影响后来新增的数据。"
+        },
+        {
+          "type": "heading",
+          "text": "以访客真正会做的事情验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用未登录的浏览器与手机打开网站，从首页走到作品页、联系表单及重要链接。表单要提交测试数据，确认后台或收件人确实收到，再删除不需要的测试记录。图片要清晰且没有不必要的裁切，按钮文字应说明点击后会发生什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把问题分为内容、WordPress、域名解析及主机服务四类，保存网址、发生时间和错误信息。向支持团队求助时提供必要信息，遮蔽登录密码、密钥及客户数据。这样比只描述“网站坏了”更有助于找到负责人，也能避免多个人同时修改不同设置。"
+        },
+        {
+          "type": "heading",
+          "text": "交接时留下一份能够接手的记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "交付网站时，让接手人实际完成登录、修改一段文字、查看表单结果及找到备份说明。逐项记录谁负责更新、谁处理账务、故障时先联系谁，以及哪些工作需要另外付费。不要把管理权限、域名续费或图片授权留在口头约定中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后安排定期检查更新、备份、联系方式与续费提醒。如果更换管理人员，应移除不再需要的访问权限，并按照服务流程更新账号联系信息。网站能够持续使用，依靠的是可重复的维护流程；首次安装只是为这套流程提供一个可以操作的起点。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hostgator-wordpress-setup/diagram-1-zh-cn.svg",
+          "alt": "账号、安装、连接与维护四个阶段的 HostGator 建站检查图。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每个入口都要有人负责，每份备份都要知道如何使用。",
+          "description": "账号、安装、连接与维护四个阶段的 HostGator 建站检查图。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "管理项目",
+            "主要用途",
+            "交接时确认"
+          ],
+          "rows": [
+            [
+              "Customer Portal",
+              "套餐、账务与网站入口",
+              "账号持有人与续费"
+            ],
+            [
+              "WordPress 后台",
+              "文章、版面与用户",
+              "登录与编辑权限"
+            ],
+            [
+              "域名注册商",
+              "域名持有与续费",
+              "联系信息及到期日"
+            ],
+            [
+              "DNS 服务",
+              "网站与邮件解析",
+              "记录原值与管理位置"
+            ],
+            [
+              "备份服务",
+              "数据保存与恢复",
+              "覆盖范围及恢复方式"
+            ]
+          ],
+          "caption": "同一家公司可能提供多项服务，管理责任仍应分别确认。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "能下载，不等于能自行恢复",
+          "text": "先确认备份格式、恢复权限及支持条件，保存必要的操作说明。不要在正式站直接尝试覆盖，以验证备份是否有效。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "买域名前先做的功课：名称、持有人与续费管理",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护要做什么：备份、更新与故障反馈的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "HostGator：安装 WordPress",
+          "url": "https://www.hostgator.com/help/article/how-to-install-wordpress-with-one-click",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator：在 Websites 连接域名",
+          "url": "https://www.hostgator.com/help/article/connect-a-domain-via-website-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator：域名转移与名称服务器的区别",
+          "url": "https://www.hostgator.com/help/article/transferring-a-domain-vs-changing-name-servers",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "HostGator：创建与下载网站备份",
+          "url": "https://www.hostgator.com/help/article/how-to-generatedownload-a-full-backup",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

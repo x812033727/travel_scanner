@@ -231,6 +231,890 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "What to check before building or migrating a website with SiteGround",
+      "description": "A new SiteGround website and a migration of existing WordPress need different preparation. Check the plan, backups and test environment before buying. Using official documentation, this guide covers new-site setup, Migrator and Staging, plus content, email and user-flow checks before switching over. A timeline should preserve the old site and a recovery path, so a completed copy is not mistaken for a completed migration or used to overwrite newer orders on the live site.",
+      "hero": {
+        "src": "/guides/siteground-wordpress-setup/hero-en.jpg",
+        "alt": "An original migration illustration connecting a source folder, a destination server and a website screen.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before using SiteGround, decide whether you are building a website from scratch or moving a WordPress site that people already use. A new site mainly needs content and management arrangements; a migration also involves existing data, update timing and switch-over risks. Both can begin with the platform's tools, but the same completion message cannot stand in for all acceptance checks."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article follows SiteGround's public documentation for new websites, WordPress Migrator and Staging; it does not report hands-on account testing. If your site continually takes orders, accepts member registrations or collects forms, pay particular attention to data that keeps changing during migration. Assign responsibility for final synchronization and the switch before starting, so new data is not missed."
+        },
+        {
+          "type": "heading",
+          "text": "Check the tools and resources you need before buying",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List the number of websites, file and database sizes, required plugins, mailboxes, backups and testing needs, then compare them with the current plans. Staging, on-demand backups and collaboration permissions may depend on the plan. Check current product documentation and your account rather than assuming that every feature on the platform overview is included in every plan."
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing costs, record the initial payment, renewals, extras and required labor separately. If you need official migration assistance, first confirm its scope, the information to provide and the fee. Ask whether email, external services and custom programs are included. A migration should let your existing work continue, not merely deliver a new homepage that looks similar."
+        },
+        {
+          "type": "heading",
+          "text": "Create a new website with the setup wizard",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For the current initial setup, go to Websites in the Client Area and select Finish Site Setup, then confirm the domain and WordPress. To add another site, use New Website and select WordPress, then follow the screens to set the location, domain and administrator details. Buying a domain and using one you already own are different options. Decide which you need rather than buying another name simply to proceed to the next step."
+        },
+        {
+          "type": "paragraph",
+          "text": "After creation, enter the WordPress dashboard and complete the homepage, main content and contact information before working on navigation and appearance. For a tutoring website, for example, start with subjects, lesson arrangements and an enquiry form. Do not add student results or reviews for which you have no real information. Installation provides a starting point for content; you still need to verify the public information and image usage rights."
+        },
+        {
+          "type": "heading",
+          "text": "Prepare both source and destination before migration",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For an existing site, first obtain restorable file and database backups and record the current URLs, plugins, scheduled tasks, email and important integrations. Confirm that the source can install a suitable migration plugin and that the destination host has enough resources. If the source is a restricted platform, a multisite network or a special structure, check tool compatibility and limitations first, and use official assistance if necessary."
+        },
+        {
+          "type": "paragraph",
+          "text": "In SiteGround's official process, open WordPress and then Migrator in the destination's Site Tools. Select the target domain and path to generate a Migration Token, then enter it in the SiteGround Migrator plugin on the source site. First confirm that the target location has no content you need to keep. Treat the token as sensitive information and use it only for the corresponding migration."
+        },
+        {
+          "type": "paragraph",
+          "text": "When migration finishes, inspect the copy using the official preview or test method, and keep the old site for the time being. A successful copy does not automatically prove that email, domain registration or all external services have moved too. Check how the site's outgoing mail, scheduled tasks and cache configuration work in the new environment. Matching the article count alone is not enough to finish acceptance checks."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Back up the source site and list plugins, data, email and features that are still generating new content.",
+            "Generate a token for the intended destination in Site Tools under WordPress → Migrator.",
+            "Install the official Migrator plugin on the source WordPress site, confirm the destination, submit the migration and save the result.",
+            "Preview the new site and sample its data and functions before arranging final synchronization, the DNS switch and how long to retain the old service."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Staging is for testing changes, not a permanently synchronized live site",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Eligible accounts can create a test copy in Site Tools under WordPress and Staging. The official documentation explains that the tool copies website files and the database, so the test environment may also contain production data. Restrict access and review external integrations. Give it a name that clearly describes its purpose, such as testing a new layout, instead of creating several indistinguishable 'new websites'."
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGround's documentation states that Staging copies disable the default WordPress cron functionality to reduce duplicated automated actions. This does not mean that every third-party external call is prevented. Still check payments, newsletters, Webhooks and external schedulers, using test mode or test credentials where needed. Do not make a real charge in a copy merely because its URL contains staging."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before moving tested changes back to the live site, understand which files or database tables deployment will update. If the live site received new orders during testing, overwriting it directly with the old database could lose them. Someone who understands the data structure should confirm the appropriate deployment scope and synchronization method. Obtain a fresh backup before operating; a one-click deployment is not free of data risks."
+        },
+        {
+          "type": "heading",
+          "text": "Check data and functions when switching to production",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Agree on a cutoff point for data updates before the switch. If necessary, pause workflows that create new data, then complete final synchronization. Configure DNS according to your domain and DNS services, preserve the original values and a recovery method, and check that email records were not accidentally changed. Once the production domain reaches the new site, recheck HTTPS, the root domain, www and important deep links."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a signed-out browser and a phone to test the main visitor flows, including articles, images, search, forms and login. For a migrated site, also verify recently added data rather than sampling only old articles. If there is a store, use the platform's testing procedures to check checkout, notifications and dashboard data. Reaching the homepage does not establish that the whole business workflow has recovered."
+        },
+        {
+          "type": "heading",
+          "text": "Keep the old site until handover conditions are clear",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After confirming that the new site is stable, arrange cancellation of the old service under the original provider's conditions. First check whether mailboxes, backups or other websites still depend on that plan, and save the necessary data. If you need to revert the new site, specify how to handle content added after the switch. Changing DNS back does not automatically make all the data consistent."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, create a management sheet naming the people responsible for Site Tools, WordPress, the domain, DNS, backups and renewals. Record the migration and acceptance methods used this time. These records will help with the next update or migration without starting the investigation from scratch. Tools can shorten copying time; continued maintenance still requires clear responsibilities, preserved data and verifiable completion criteria."
+        },
+        {
+          "type": "image",
+          "src": "/guides/siteground-wordpress-setup/diagram-1-en.svg",
+          "alt": "A SiteGround migration proceeds through source backup, copying with the tool, preview testing and the production switch, retaining verification evidence at each stage.",
+          "width": 1600,
+          "height": 900,
+          "caption": "After copying succeeds, check the newest data and actual functions too.",
+          "description": "A SiteGround migration proceeds through source backup, copying with the tool, preview testing and the production switch, retaining verification evidence at each stage.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Task",
+            "Tool or method",
+            "Additional checks required"
+          ],
+          "rows": [
+            [
+              "Create a new website",
+              "Website setup wizard",
+              "Content, domain and visitor flows"
+            ],
+            [
+              "Migrate WordPress",
+              "Migrator and destination token",
+              "Data completeness, email and external integrations"
+            ],
+            [
+              "Test changes",
+              "Staging copy",
+              "Access restrictions and test mode"
+            ],
+            [
+              "Deploy tested changes",
+              "Applicable deployment process",
+              "Whether new production data is preserved"
+            ],
+            [
+              "End the old service",
+              "Original provider's cancellation procedure",
+              "Mailboxes, backups and other dependencies"
+            ]
+          ],
+          "caption": "After a tool completes one operation, verify the services and data it did not handle."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A test copy may be older than the live data",
+          "text": "Stores, membership sites and forms keep creating data. Before deployment, confirm what will be overwritten and how final synchronization will work. Keep a fresh backup and avoid directly replacing the live site with an old copy."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Everyday website maintenance: backups, updates and fault reporting",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Checking DNS settings: from A and CNAME to email records",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "SiteGround: create a new website",
+          "url": "https://www.siteground.com/tutorials/getting-started/start-new-website/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround: automatic WordPress migration",
+          "url": "https://www.siteground.com/tutorials/wordpress/wordpress-automatic-migrator",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround: create a Staging copy",
+          "url": "https://www.siteground.com/tutorials/staging/create-staging",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround: Site Tools features",
+          "url": "https://www.siteground.com/site-tools",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "SiteGroundでサイトを作成・移行する前に確認したいこと",
+      "description": "SiteGroundで新規サイトを作る場合と、既存のWordPressを移行する場合では準備が異なります。購入前にプラン、バックアップ、テスト環境を確認しましょう。公式文書をもとに新規設定、Migrator、Stagingの用途と、本番切り替え前に確認するコンテンツ・メール・操作の流れを整理します。旧サイトと復旧手段を残す日程表を作り、コピー完了を移行完了と捉えたり、新しい注文を受け続ける本番サイトに古いテストデータを上書きしたりしないようにします。",
+      "hero": {
+        "src": "/guides/siteground-wordpress-setup/hero-ja.jpg",
+        "alt": "移行元のフォルダー、移行先のサーバー、サイト画面をつないだオリジナルの移行イラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "SiteGroundを使う前に、今回はゼロからサイトを作るのか、それともすでに利用者がいるWordPressを移すのかを決めます。新規サイトは主にコンテンツと管理方法の整理が必要ですが、移行では既存データ、更新時点、切り替えのリスクも扱います。どちらもプラットフォームのツールから始められますが、同じ完了メッセージだけですべての確認が済んだとは考えられません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事はSiteGroundの新規サイト、WordPress Migrator、Stagingに関する公開文書に基づく説明で、アカウントにログインした実機検証ではありません。継続的に注文、会員登録、フォームを受け付けるサイトでは、移行中もデータが変わり続ける点に特に注意してください。最終同期と切り替えの担当者を先に決めることで、新しいデータの取りこぼしを防ぎやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "購入前に必要なツールとリソースを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト数、ファイルとデータベースの容量、必要なプラグイン、メールボックス、バックアップ、テストの要件を列挙し、現行プランと照合します。Staging、必要な時点でのバックアップ作成、共同作業の権限などは、プランによって利用条件が異なる場合があります。最新の製品説明とアカウントの内容を確認し、紹介ページの全機能がすべてのプランに含まれるとは考えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "費用を比べるときは、初回支払、更新、追加サービス、必要な人手を分けて記録します。公式の移行支援が必要なら、対象範囲、提出する情報、料金を先に確認し、メール、外部サービス、独自プログラムまで含むかも尋ねます。移行の目的は元の業務を続けられることであり、見た目が似た新しいトップページを手に入れることだけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "新規サイトは設定ウィザードで作成する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現在の初回設定では、Client AreaのWebsitesからFinish Site Setupを選び、ドメインとWordPressを確認します。別のサイトを追加する場合はNew WebsiteからWordPressを選び、画面に従って設置先、ドメイン、管理者情報を設定します。ドメインを購入する選択肢と、すでに持っているドメインを使う選択肢は別です。次へ進むためだけに別の名前を買わず、どちらが必要か先に確認しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作成後はWordPressの管理画面に入り、トップページ、主要コンテンツ、連絡先を整えてから、ナビゲーションと外観を調整します。家庭教師のサイトなら、まず科目、授業方法、問い合わせフォームを用意し、実際の情報がない生徒の成績や口コミを追加しないようにします。インストール手順が提供するのはコンテンツの出発点であり、公開情報と画像の利用権は自分で確認する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "移行前に移行元と移行先を準備する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "既存サイトでは、復元可能なファイルとデータベースのバックアップを先に取得し、現在のURL、プラグイン、定期処理、メール、重要な連携を記録します。移行元に適切な移行プラグインを導入でき、移行先のサーバーにも十分なリソースがあることを確認してください。制限のあるプラットフォーム、マルチサイトネットワーク、特殊な構成が移行元なら、ツールの互換性と制約を調べ、必要に応じて公式支援を利用します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGroundの公式手順では、移行先のSite ToolsでWordPress、Migratorを開き、移行先ドメインとパスを選んでMigration Tokenを発行します。それを移行元サイトのSiteGround Migratorプラグインに入力します。移行先に残すべきコンテンツがないことを先に確認し、トークンは機密情報として扱い、対応する移行作業だけに使ってください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移行が完了したら、公式のプレビューやテスト方法でコピーを確認し、旧サイトは当面残します。コピーの成功は、メール、ドメイン登録、すべての外部サービスまで移ったことを自動で証明するものではありません。従来の送信メール、定期処理、キャッシュ設定が新環境でどう動くかも確認し、記事数が一致しただけで検証を終えないようにします。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "移行元をバックアップし、プラグイン、データ、メール、現在も新しいコンテンツを生成する機能を一覧にする。",
+            "Site ToolsのWordPress → Migratorで、移行先に対応するトークンを発行する。",
+            "移行元WordPressに公式Migratorプラグインを導入し、移行先を確認して移行を送信し、結果を保存する。",
+            "新サイトをプレビューしてデータと機能を抽出確認した後、最終同期、DNS切り替え、旧サービスの保存期間を決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Stagingは変更を試す場所で、常時同期された本番サイトではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "利用条件を満たすアカウントでは、Site ToolsのWordPress、Stagingからテスト用コピーを作成できます。公式文書ではサイトのファイルとデータベースをコピーすると説明されているため、テスト環境にも本番データが含まれる可能性があります。アクセスを制限し、外部連携を見直してください。「新レイアウトのテスト」など用途が分かる名前を付け、見分けのつかない「新サイト」をいくつも作らないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGroundの文書によると、StagingのコピーではWordPress標準のcron機能が無効になり、自動処理の重複を減らします。ただし、すべての第三者サービスへの外部呼び出しが止まるという意味ではありません。決済、メールマガジン、Webhook、外部の定期実行を確認し、必要ならテストモードやテスト用認証情報を使用します。URLにstagingが含まれるという理由だけで、コピー上で実際の課金を行わないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト済みの変更を本番へ反映する前に、デプロイでどのファイルやデータベースのテーブルが更新されるか理解します。テスト中に本番で新しい注文を受けていた場合、古いデータベースをそのまま上書きすると失われる恐れがあります。データ構造を理解する人が適切な反映範囲と同期方法を確認し、操作前に新しいバックアップを取得してください。ワンクリックのデプロイでも、データのリスクがないわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "本番切り替えではデータと機能を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "切り替え前にデータ更新の締め切り時点を決め、必要に応じて新しいデータを生む処理を一時停止してから最終同期を行います。自分のドメインとDNSサービスに合わせて設定し、元の値と復旧方法を残すとともに、メール用レコードを誤って変更していないか確認します。本番ドメインが新サイトへつながったら、HTTPS、ルートドメイン、www、重要な深い階層へのリンクを再確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "未ログインのブラウザーとスマートフォンで、記事、画像、検索、フォーム、ログインなど主要な訪問者の操作を試します。移行したサイトでは、古い記事だけでなく直近に追加したデータも照合してください。ショップがある場合は、プラットフォームのテスト手順に従って購入手続き、通知、管理画面のデータを確認します。トップページが開けることだけで、業務の流れ全体が復旧したとは考えないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "引き継ぎ条件が明確になるまで旧サイトを残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新サイトが安定していると確認してから、元の提供元の条件に従って旧サービスの停止を手配します。旧プランにメールボックス、バックアップ、他のサイトが依存していないか先に確認し、必要なデータを保存してください。新サイトを元に戻す場合も、切り替え後に追加されたコンテンツをどう扱うか明確にします。DNSを戻すだけで、すべてのデータが自動で一致するとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に管理表を作り、Site Tools、WordPress、ドメイン、DNS、バックアップ、更新の担当者と、今回使った移行・検証方法を記録します。次の更新や移行で一から調べ直す手間を減らせます。ツールはコピー時間を短縮できますが、継続的な保守には明確な責任、データ保存、検証可能な完了条件が必要です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/siteground-wordpress-setup/diagram-1-ja.svg",
+          "alt": "SiteGroundの移行を、移行元バックアップ、ツールでのコピー、プレビューテスト、本番切り替えの順に進め、各段階の検証資料を保存する図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "コピー成功後も、最新データと実際の機能を確認します。",
+          "description": "SiteGroundの移行を、移行元バックアップ、ツールでのコピー、プレビューテスト、本番切り替えの順に進め、各段階の検証資料を保存する図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "ツール・方法",
+            "別途確認すること"
+          ],
+          "rows": [
+            [
+              "新規サイト作成",
+              "サイト設定ウィザード",
+              "コンテンツ、ドメイン、訪問者の操作"
+            ],
+            [
+              "WordPressの移行",
+              "Migratorと移行先トークン",
+              "データの完全性、メール、外部連携"
+            ],
+            [
+              "変更のテスト",
+              "Stagingのコピー",
+              "アクセス制限とテストモード"
+            ],
+            [
+              "テスト成果の反映",
+              "適切なデプロイ手順",
+              "本番の新しいデータが残るか"
+            ],
+            [
+              "旧サービスの終了",
+              "元の提供元の停止手続き",
+              "メール、バックアップ、その他の依存関係"
+            ]
+          ],
+          "caption": "ツールで一つの操作が終わっても、対象外のサービスやデータを確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "テスト用コピーは本番データより古い可能性がある",
+          "text": "ショップ、会員、フォームのサイトではデータが継続的に増えます。反映前に上書き範囲と最終同期の方法を確認し、新しいバックアップを確保してください。古いコピーをそのまま本番に上書きしないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守で行うこと：バックアップ、更新、障害報告の日常的な管理",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS設定の確認方法：A・CNAMEからメール用レコードまで",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "SiteGround：新規サイトの作成",
+          "url": "https://www.siteground.com/tutorials/getting-started/start-new-website/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround：WordPressの自動移行",
+          "url": "https://www.siteground.com/tutorials/wordpress/wordpress-automatic-migrator",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround：Stagingコピーの作成",
+          "url": "https://www.siteground.com/tutorials/staging/create-staging",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround：Site Toolsの機能",
+          "url": "https://www.siteground.com/site-tools",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "SiteGround에서 사이트를 만들거나 이전하기 전에 확인할 사항",
+      "description": "SiteGround에서 새 사이트를 만드는 일과 기존 WordPress를 이전하는 일은 준비가 다릅니다. 구매 전에 요금제, 백업과 테스트 환경을 확인하세요. 이 글은 공식 문서에 따라 새 사이트 설정, Migrator와 Staging의 용도 및 정식 전환 전에 확인할 콘텐츠·이메일·사용자 흐름을 정리합니다. 일정표에 기존 사이트와 복구 방법을 남겨, 복사 완료를 이전 완료로 오해하거나 새 주문이 계속 들어오는 운영 사이트에 오래된 테스트 데이터를 덮어쓰지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/siteground-wordpress-setup/hero-ko.jpg",
+        "alt": "원본 폴더, 대상 서버와 웹사이트 화면을 연결한 오리지널 사이트 이전 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "SiteGround를 사용하기 전에 이번 작업이 처음부터 새 웹사이트를 만드는 것인지, 이미 사용자가 있는 WordPress를 옮기는 것인지 결정하세요. 새 사이트는 주로 콘텐츠와 관리 방식을 정리하면 되지만, 이전 작업은 기존 데이터, 업데이트 시점과 전환 위험도 다뤄야 합니다. 둘 다 플랫폼 도구로 시작할 수 있어도 같은 완료 메시지만으로 모든 검수를 마쳤다고 볼 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 SiteGround의 새 사이트, WordPress Migrator와 Staging 공개 문서에 따른 설명이며 계정에 로그인해 실측한 결과가 아닙니다. 계속 주문을 받거나 회원 가입 또는 폼 제출을 받는 사이트라면 이전 중에도 데이터가 변한다는 점에 특히 주의하세요. 최종 동기화와 전환을 누가 맡을지 먼저 정해야 새 데이터를 놓치지 않을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "구매 전에 필요한 도구와 자원 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트 수, 파일과 데이터베이스 크기, 필수 플러그인, 메일함, 백업과 테스트 요구사항을 적고 현재 요금제와 비교합니다. Staging, 필요할 때 만드는 백업, 협업 권한 등의 기능은 요금제에 따라 달라질 수 있습니다. 현재 제품 설명과 계정 내용을 확인하고, 플랫폼 소개 페이지의 모든 기능이 모든 요금제에 포함된다고 생각하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "비용을 비교할 때는 최초 결제, 갱신, 추가 구매와 필요한 인력을 나누어 기록하세요. 공식 이전 지원이 필요하다면 적용 범위, 제출할 정보와 비용부터 확인하고 이메일, 외부 서비스나 특수 프로그램이 포함되는지도 물어보세요. 이전의 목표는 기존 업무를 이어갈 수 있도록 하는 것이지 비슷해 보이는 새 홈페이지만 받는 것이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "설정 마법사로 새 웹사이트 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 최초 설정은 Client Area의 Websites에서 Finish Site Setup을 선택한 뒤 도메인과 WordPress를 확인하는 방식입니다. 다른 사이트를 추가할 때는 New Website에서 WordPress를 선택하고 화면에 따라 위치, 도메인과 관리자 정보를 설정합니다. 도메인을 구매하는 선택과 이미 보유한 도메인을 쓰는 선택은 다릅니다. 다음 단계로 넘어가려고 이름을 하나 더 사지 않도록 먼저 어떤 선택이 필요한지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "생성 후 WordPress 관리자 화면에서 홈페이지, 주요 콘텐츠와 연락 정보를 먼저 완성하고 탐색 메뉴와 디자인을 정리합니다. 과외 서비스 사이트라면 과목, 수업 방식과 문의 폼부터 제공할 수 있습니다. 실제 자료가 없는 학생 성적이나 후기를 넣을 필요는 없습니다. 설치 과정은 콘텐츠의 출발점을 제공할 뿐이며, 공개 정보와 이미지 사용 권한은 직접 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "이전 전에 원본과 대상 준비하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 사이트는 먼저 복원 가능한 파일 및 데이터베이스 백업을 확보하고 현재 URL, 플러그인, 예약 작업, 이메일과 중요한 연동을 기록합니다. 원본 사이트에 적합한 이전 플러그인을 설치할 수 있는지, 대상 호스팅에 자원이 충분한지 확인하세요. 원본이 제한된 플랫폼, 멀티사이트 네트워크나 특수 구조라면 도구의 호환성과 제약을 먼저 확인하고 필요할 때 공식 지원 방식을 이용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGround 공식 절차에서는 대상의 Site Tools에서 WordPress, Migrator로 들어가 대상 도메인과 경로를 정한 뒤 Migration Token을 생성합니다. 이를 원본 사이트의 SiteGround Migrator 플러그인에 입력합니다. 대상 위치에 보존해야 할 콘텐츠가 없는지 먼저 확인하고, 토큰은 민감한 정보로 취급해 해당 이전 과정에서만 사용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전이 끝나면 공식 미리보기 또는 테스트 방식으로 복사본을 점검하고 기존 사이트는 당분간 남겨 둡니다. 복사가 성공했다고 이메일, 도메인 등록이나 모든 외부 서비스까지 이전됐다는 뜻은 아닙니다. 기존 발신 메일, 예약 작업과 캐시 설정이 새 환경에서 어떻게 작동하는지도 확인해야 합니다. 글 수가 같다는 이유만으로 검수를 끝내지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "원본 사이트를 백업하고 플러그인, 데이터, 이메일과 여전히 새 콘텐츠를 생성하는 기능을 목록으로 만듭니다.",
+            "Site Tools의 WordPress → Migrator에서 해당 대상을 위한 이전 토큰을 생성합니다.",
+            "원본 WordPress에 공식 Migrator 플러그인을 설치하고 대상을 확인한 뒤 이전을 제출하고 결과를 저장합니다.",
+            "새 사이트를 미리 보고 데이터와 기능을 표본 점검한 다음 최종 동기화, DNS 전환과 기존 서비스 유지 기간을 정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Staging은 변경 시험용이며 항상 동기화되는 운영 사이트가 아닙니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이용 조건에 맞는 계정은 Site Tools의 WordPress, Staging에서 테스트 복사본을 만들 수 있습니다. 공식 문서는 이 도구가 사이트 파일과 데이터베이스를 복사한다고 설명하므로 테스트 환경에도 운영 데이터가 들어갈 수 있습니다. 접근을 제한하고 외부 연동을 검토하세요. 새 레이아웃 테스트처럼 목적을 분명하게 표시하는 이름을 붙이고, 구분하기 어려운 '새 사이트'를 여러 개 만들지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGround 문서에 따르면 Staging 복사본은 중복 자동 동작을 줄이기 위해 WordPress의 기본 cron 기능을 비활성화합니다. 그렇다고 모든 타사 외부 호출이 발생하지 않는다는 뜻은 아닙니다. 결제, 뉴스레터, Webhook과 외부 예약 작업을 확인하고 필요하면 테스트 모드나 테스트 인증 정보를 사용하세요. URL에 staging이 들어간다는 이유만으로 복사본에서 실제 결제를 실행하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시험한 변경을 운영 사이트에 반영하기 전에 배포가 어떤 파일이나 데이터베이스 테이블을 갱신하는지 이해해야 합니다. 테스트 기간에 운영 사이트가 새 주문을 받았다면 오래된 데이터베이스로 곧바로 덮어쓸 경우 누락될 수 있습니다. 데이터 구조를 이해하는 사람이 적절한 배포 범위와 동기화 방식을 확인하고 작업 전에 새 백업을 확보해야 합니다. 원클릭 배포를 데이터 위험이 없는 작업으로 여기지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "정식 전환 시 데이터와 기능 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "전환 전에 데이터 업데이트의 마감 시점을 정하고, 필요하면 새 데이터를 만드는 흐름을 잠시 멈춘 뒤 최종 동기화를 마칩니다. 자신의 도메인과 DNS 서비스에 맞게 설정하고 원래 값과 복구 방법을 남기며, 이메일 레코드가 잘못 변경되지 않았는지도 확인하세요. 정식 도메인이 새 사이트로 연결되면 HTTPS, 루트 도메인, www와 중요한 하위 페이지 링크를 다시 검사합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로그아웃한 브라우저와 휴대전화로 글, 이미지, 검색, 폼과 로그인 등 주요 방문자 흐름을 시험합니다. 이전한 사이트는 오래전 글만 표본으로 볼 것이 아니라 최근 추가된 데이터도 대조해야 합니다. 쇼핑몰이 있다면 플랫폼의 테스트 절차에 따라 결제, 알림과 관리자 데이터를 확인하세요. 홈페이지에 접속된다고 전체 운영 흐름이 복구된 것으로 보지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "인계 조건이 명확해질 때까지 기존 사이트 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 사이트가 안정적임을 확인한 뒤 원래 제공업체의 조건에 따라 기존 서비스 중단을 진행합니다. 메일함, 백업이나 다른 사이트가 기존 요금제에 여전히 의존하는지 먼저 조사하고 필요한 데이터를 보관하세요. 새 사이트를 되돌려야 할 때는 전환 후 추가된 콘텐츠를 어떻게 처리할지도 분명히 해야 합니다. DNS만 되돌리면 모든 데이터가 자동으로 일치한다고 가정할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 관리표에 Site Tools, WordPress, 도메인, DNS, 백업과 갱신 담당자를 적고 이번에 사용한 이전 및 검수 방식을 기록합니다. 이 자료는 다음 업데이트나 이전 때 처음부터 조사하지 않도록 도와줍니다. 도구는 복사 시간을 줄여 주지만 지속적인 유지보수에는 명확한 책임, 데이터 보존과 검증 가능한 완료 조건이 필요합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/siteground-wordpress-setup/diagram-1-ko.svg",
+          "alt": "SiteGround 이전을 원본 백업, 도구로 복사, 미리보기 테스트, 정식 전환 순서로 진행하며 각 단계에서 검증 자료를 보존하는 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "복사가 성공한 뒤에도 최신 데이터와 실제 기능을 확인하세요.",
+          "description": "SiteGround 이전을 원본 백업, 도구로 복사, 미리보기 테스트, 정식 전환 순서로 진행하며 각 단계에서 검증 자료를 보존하는 도해.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업",
+            "도구 또는 방식",
+            "별도로 확인할 사항"
+          ],
+          "rows": [
+            [
+              "새 웹사이트 만들기",
+              "사이트 설정 마법사",
+              "콘텐츠, 도메인과 방문자 흐름"
+            ],
+            [
+              "WordPress 이전",
+              "Migrator와 대상 토큰",
+              "데이터 완전성, 이메일과 외부 연동"
+            ],
+            [
+              "변경 테스트",
+              "Staging 복사본",
+              "접근 제한과 테스트 모드"
+            ],
+            [
+              "테스트 결과 배포",
+              "적합한 배포 절차",
+              "운영 사이트의 새 데이터 보존 여부"
+            ],
+            [
+              "기존 서비스 종료",
+              "원래 제공업체의 중단 절차",
+              "메일함, 백업과 기타 의존 관계"
+            ]
+          ],
+          "caption": "도구가 한 작업을 마친 뒤에도 처리하지 않은 서비스와 데이터를 검증해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "테스트 복사본이 운영 데이터보다 오래됐을 수 있습니다",
+          "text": "쇼핑몰, 회원과 폼을 사용하는 사이트는 계속 새 데이터가 생깁니다. 배포 전에 덮어쓸 범위와 최종 동기화 방식을 확인하고 새 백업을 보관하세요. 오래된 복사본으로 운영 사이트를 직접 덮어쓰지 않도록 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지보수: 백업, 업데이트와 장애 보고의 일상 관리",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 설정 확인: A, CNAME부터 이메일 레코드까지",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "SiteGround: 새 웹사이트 만들기",
+          "url": "https://www.siteground.com/tutorials/getting-started/start-new-website/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround: WordPress 자동 이전",
+          "url": "https://www.siteground.com/tutorials/wordpress/wordpress-automatic-migrator",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround: Staging 복사본 만들기",
+          "url": "https://www.siteground.com/tutorials/staging/create-staging",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround: Site Tools 기능",
+          "url": "https://www.siteground.com/site-tools",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "SiteGround 建站与搬站前需要确认的事项",
+      "description": "SiteGround 新建网站与搬移现有 WordPress 的准备工作不同，购买前应先确认方案、备份及测试环境。本文根据官方文档整理新站设置、Migrator 搬移与 Staging 的用途，说明正式切换前要验证哪些内容、邮件与交互流程。你可以用一份时间表保留旧站及恢复方式，避免把复制完成当成搬站完成，或将过时的测试数据直接覆盖到持续收到新订单的正式网站。",
+      "hero": {
+        "src": "/guides/siteground-wordpress-setup/hero-zh-cn.jpg",
+        "alt": "源文件夹、目标主机与网站画面相连的原创搬站插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "使用 SiteGround 前，先决定这次是从零建立网站，还是搬走已经有人使用的 WordPress。新站主要整理内容与管理方式，搬站则还要处理现有数据、更新时点与切换风险。两者都能从平台工具开始，但不能用同一个完成提示当作全部验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文根据 SiteGround 的新站、WordPress Migrator 与 Staging 公开文档说明，没有登录账号实测。如果你经营的是持续接单、接受会员注册或收集表单的网站，请特别注意数据在搬移期间仍会变化；先安排谁负责最后同步与切换，才能避免遗漏新数据。"
+        },
+        {
+          "type": "heading",
+          "text": "购买前先核对工具与资源需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "请列出网站数量、文件与数据库大小、必要插件、邮箱、备份及测试需求，再对照当前方案。Staging、按需创建备份或协作权限等功能可能受方案影响，应查看当前产品说明与账号内容，不把平台介绍页上的所有功能视为每个方案都包含。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较费用时，分开记录首次付款、续费、加购及所需人力。如果搬站需要官方协助，先确认适用范围、需要交付的资料与费用，也要问清楚是否包含邮件、外部服务及特殊程序。网站搬移的目标应是原本的工作可以延续，而不只是拿到一个看起来相似的新首页。"
+        },
+        {
+          "type": "heading",
+          "text": "新网站按照设置向导建立",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "目前首次设置可从 Client Area 的 Websites 选择 Finish Site Setup，再确认域名及 WordPress；另外新增网站则从 New Website 选择 WordPress，按画面设置位置、域名与管理员资料。购买域名与使用已经持有的域名是不同选项，先确认自己需要哪一种，避免为了继续下一步而多买一个名称。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立后进入 WordPress 后台，先完成首页、主要内容及联系方式，再处理导航与外观。以家教服务网站为例，可以先提供科目、授课方式和咨询表单，不必加入没有真实资料的学生成绩或评价。安装流程提供的是内容起点，仍需由你确认公开信息与图片使用权。"
+        },
+        {
+          "type": "heading",
+          "text": "搬站前先准备源站与目标站",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "现有网站要先取得可恢复的文件及数据库备份，记录当前网址、插件、定时任务、邮件与重要集成。确认源站能够安装适用的迁移插件，目标主机也有足够资源。如果源站是受限制的平台、多站点网络或特殊结构，先查看工具兼容性及限制，必要时改用官方协助方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGround 官方流程是在目标的 Site Tools 中进入 WordPress、Migrator，选定目标域名及路径后生成 Migration Token，再将它输入源站的 SiteGround Migrator 插件。请先确认目标位置没有需要保留的内容，并把令牌视为敏感资料，只在对应的迁移流程中使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "迁移完成后，使用官方提供的预览或测试方式检查副本，暂时保留旧站。复制成功不会自动证明邮件、域名注册或所有外部服务都已经搬好。还要确认网站原本的发信、定时任务及缓存配置在新环境中如何运行，不能只因为文章数量相同就结束验收。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "备份源网站，列出插件、数据、邮件及仍在产生新内容的功能。",
+            "在 Site Tools 的 WordPress → Migrator 生成对应目标的迁移令牌。",
+            "在源 WordPress 中安装官方 Migrator 插件，核对目标并提交迁移，保存结果。",
+            "先预览新站、抽查数据与功能，再安排最后同步、DNS 切换与旧服务保留时间。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Staging 用来测试修改，不是永久同步的正式站",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "符合条件的账号可在 Site Tools 的 WordPress、Staging 中建立测试副本。官方文档说明工具会复制网站文件和数据库，因此测试环境也可能包含正式数据，应限制访问并检查外部集成。名称应清楚标明用途，例如测试新版面，而不是建立多个难以区分的“新网站”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "SiteGround 文档提到，Staging 副本会停用 WordPress 默认定时任务，以减少重复自动操作；这不代表所有第三方外部调用都不会发生。仍要核对付款、邮件订阅、Webhook 与外部定时任务，必要时使用测试模式或测试凭据。不要只因为网址中含有 staging，就在副本中执行真实收款。"
+        },
+        {
+          "type": "paragraph",
+          "text": "准备把测试变更带回正式站时，先了解部署会更新哪些文件或数据表。如果正式站在测试期间收到新订单，直接用旧数据库覆盖可能造成遗漏。应由了解数据结构的人确认适合的部署范围及同步方式，并在操作前取得新的备份，而不是把一键部署当作没有数据风险的操作。"
+        },
+        {
+          "type": "heading",
+          "text": "正式切换要有数据与功能验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "切换前约定数据更新的截止点，必要时暂停会产生新数据的流程，再完成最后同步。根据自己的域名与 DNS 服务设置解析，保留原值与恢复方式，也要确认邮件记录没有被误改。正式域名接到新站后，再检查 HTTPS、根域名、www 及重要的深层页面链接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用未登录的浏览器及手机测试主要访客流程，包括文章、图片、搜索、表单与登录。搬站的网站还应核对最近新增的数据，而不只是抽查很久以前的文章。如果有商店，按平台测试程序验证结账、通知及后台数据，不把能进入首页视为整个经营流程已经恢复。"
+        },
+        {
+          "type": "heading",
+          "text": "保留旧站，直到交接条件明确",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "确认新站稳定后，再按原服务商的条件安排旧服务停用。先检查是否仍有邮箱、备份或其他网站依赖旧方案，并保存必要数据。如果新站需要恢复到旧环境，也要清楚说明如何处理切换后新增的内容，不能只把 DNS 改回去就假定所有数据会自动一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后建立管理表，列出 Site Tools、WordPress、域名、DNS、备份与续费负责人，记录这次使用的迁移及验收方式。这些资料能帮助下一次更新或搬移，不必从头追查。工具可以缩短复制时间，持续维护仍需要清楚的责任、数据保存及可验证的完成条件。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/siteground-wordpress-setup/diagram-1-zh-cn.svg",
+          "alt": "SiteGround 搬站依次进行源站备份、工具复制、预览测试及正式切换，各阶段保留验证资料。",
+          "width": 1600,
+          "height": 900,
+          "caption": "复制成功之后，还要确认最新数据与实际功能。",
+          "description": "SiteGround 搬站依次进行源站备份、工具复制、预览测试及正式切换，各阶段保留验证资料。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "工具或方式",
+            "需要另行验证"
+          ],
+          "rows": [
+            [
+              "新建网站",
+              "网站设置向导",
+              "内容、域名与访客流程"
+            ],
+            [
+              "搬移 WordPress",
+              "Migrator 与目标令牌",
+              "数据完整性、邮件及外部集成"
+            ],
+            [
+              "测试变更",
+              "Staging 副本",
+              "访问限制与测试模式"
+            ],
+            [
+              "部署测试成果",
+              "适用的部署流程",
+              "正式站的新数据是否得到保留"
+            ],
+            [
+              "结束旧服务",
+              "原服务商的停用程序",
+              "邮箱、备份及其他依赖"
+            ]
+          ],
+          "caption": "工具完成单一操作后，仍需验证它没有处理的服务与数据。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "测试副本可能比正式数据旧",
+          "text": "商店、会员和表单网站会持续新增数据。部署前确认覆盖范围与最后同步方式，保留新的备份，避免把旧副本直接覆盖到正式站。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护要做什么：备份、更新与故障报告的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 设置怎么查：从 A、CNAME 到邮件记录",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "SiteGround：建立新网站",
+          "url": "https://www.siteground.com/tutorials/getting-started/start-new-website/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround：WordPress 自动迁移",
+          "url": "https://www.siteground.com/tutorials/wordpress/wordpress-automatic-migrator",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround：建立 Staging 副本",
+          "url": "https://www.siteground.com/tutorials/staging/create-staging",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SiteGround：Site Tools 功能",
+          "url": "https://www.siteground.com/site-tools",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

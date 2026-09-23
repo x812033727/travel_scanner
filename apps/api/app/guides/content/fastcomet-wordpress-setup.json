@@ -226,6 +226,870 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "How to evaluate FastComet hosting: resources, backups and WordPress installation",
+      "description": "Evaluate FastComet beyond introductory pricing: site counts, resources, backup retention and restoration. Using official plans and instructions, this guide covers pre-purchase questions, Softaculous installation, launch checks and conflicting official descriptions. Add existing content, email and future needs to the checklist to choose for your own site, without relying on untested speed rankings or a single promotional figure.",
+      "hero": {
+        "src": "/guides/fastcomet-wordpress-setup/hero-en.jpg",
+        "alt": "An original illustration showing hosting resources, a backup folder and a website screen side by side.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Before choosing FastComet, turn “I want to build a website” into requirements you can check: how many sites, how many images, whether you need forms or email, and who will handle backups. This tells you more about whether a plan fits than an inexpensive monthly price does. Compare current plan names so that you do not use allowances from older products."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses the example of a small photography portfolio site. Its workflow comes from public documentation; no account was purchased and no performance testing was carried out. The photography scenario is hypothetical: portfolio images use storage, inquiry forms depend on email delivery, and a future client area adds administration. Completing requirements in stages makes acceptance checks easier than pursuing every feature from the start."
+        },
+        {
+          "type": "heading",
+          "text": "Estimate resources from your actual content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimate the size of your current files, database and email, then allow reasonable room for growth. An image-based website should not upload every original camera file to its public pages. Create appropriately sized display versions and store originals separately. This reduces transfer and storage demands, and keeps mobile visitors from downloading data they do not need."
+        },
+        {
+          "type": "paragraph",
+          "text": "FastComet's plan table lists website counts, storage, CPU, memory and other resources. These measure different things: permission to host multiple sites does not mean unlimited resources. Visitor estimates on the page cannot guarantee the same performance for your particular plugin combination. Ask what happens if you exceed an allowance, then monitor actual resource records after you start using the service."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use essential requirements as eligibility thresholds. For example, if you need two independent sites, first exclude plans that do not support that number. Then compare upgrade options and costs for the remaining requirements. Do not buy every add-on for an uncertain long-term idea, but do check which data you can export if you upgrade or leave later."
+        },
+        {
+          "type": "heading",
+          "text": "Check backup retention for your specific plan",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "On the source check date, the official plan table distinguished the number of daily backups by plan, while the backup service overview described an “up to” limit. An overview cannot replace the terms of an individual plan. Before purchasing, confirm the retention count, backup frequency, coverage and restoration access. If pages disagree, ask support for a clear written answer about the plan you intend to buy."
+        },
+        {
+          "type": "paragraph",
+          "text": "The number of backups does not mean you can restore any point in time. Suppose ten new inquiries arrive today after yesterday's backup: restoring yesterday's website data may not include them. If another service provides email, check its retention separately. A photography studio can manage original photos, website content and client correspondence separately, instead of assuming a hosting backup covers the entire workflow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask concrete questions such as “How do I restore an individual piece of content, a database or the whole account?” and confirm permissions and fees. After obtaining a backup, test what it can restore in an isolated environment and record the results. Offsite backups from the host add another layer of storage, but you should still know how to retrieve important data if your account is disabled or you cannot sign in."
+        },
+        {
+          "type": "heading",
+          "text": "Create a new site with Softaculous",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The official tutorial opens Softaculous from the Software section of cPanel, then finds WordPress and its installation settings. Check the domain, protocol and installation directory first, especially whether a website already occupies the destination. If the homepage should be at the domain root, do not accidentally leave an extra name in the directory field. For a test site, choose a clearly separate location."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a dedicated administrator account with a strong password and an email address you can receive messages at. The installer may offer additional features, automatic updates and backup options. Understand each before selecting it, and avoid installing multiple plugins for the same job. Save the website and administration addresses after installation, then verify that you can sign in, create a draft and preview content."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sign in to your hosting account and confirm the intended plan and cPanel entry point.",
+            "Find Softaculous under Software, select WordPress and check the installation location.",
+            "Enter administrator and site details, review additional options, then start installation.",
+            "Test sign-in, drafts and previews before configuring the production domain and HTTPS."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Test a complete visitor journey after installation",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a photography site, the first acceptance journey can be “browse the portfolio, view services, send an inquiry.” Prepare a few photos whose usage rights you have confirmed, add suitable alternative text and truthful descriptions, and check loading and layout on a phone. After submitting the form, confirm that the notification actually arrives and the submission record can be found, rather than relying only on a success message."
+        },
+        {
+          "type": "paragraph",
+          "text": "When connecting the domain, identify the service that actually manages DNS and preserve existing records needed for email. Once HTTPS is configured, check the root domain, www, images and important internal pages so that the homepage is not the only page using the right address. If you retain a test site, restrict access and use test data; do not upload private client photos to an unprotected copy."
+        },
+        {
+          "type": "heading",
+          "text": "Collect comparable evidence before diagnosing performance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site feels slow, record the time, page, device and whether you were signed in, then compare these with hosting resource and error logs. Oversized images, external fonts, plugin queries and cache settings can all affect the experience. Do not assume that changing hosting plans solves the problem, or that a single homepage speed test represents the whole site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by comparing the same page before and after adjusting its images, then check that important forms and the administration area still work. When contacting support, provide the specific page and reproducible steps, without sending customer data or passwords. FastComet's speed was not measured for this guide; any performance judgment should rest on your own configuration and actual tests."
+        },
+        {
+          "type": "heading",
+          "text": "Keep renewal and exit terms together",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The official pricing page distinguishes promotional initial-term pricing from regular renewal prices. Calculate the total payment using the term, currency, taxes and add-ons at checkout, rather than recording only a converted monthly price. Set a renewal reminder and check whether your domain, email and backups are billed separately. This helps explain any year-on-year increase in website costs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, save the plan details, support replies and management checklist. If you migrate later, obtain a usable backup, plan data synchronization and confirm email dependencies before ending the old service. Evidence of a suitable host is that it meets your needs and has clear management arrangements; the number of advertised features cannot replace that acceptance record."
+        },
+        {
+          "type": "image",
+          "src": "/guides/fastcomet-wordpress-setup/diagram-1-en.svg",
+          "alt": "An original diagram checking resource needs, backup terms, installation location and the visitor journey in sequence.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Plan specifications show what you can buy; acceptance checks show whether you can get the work done.",
+          "description": "An original diagram checking resource needs, backup terms, installation location and the visitor journey in sequence.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Confirm with the provider",
+            "Your acceptance checks"
+          ],
+          "rows": [
+            [
+              "Resource allowances",
+              "Site, storage and computing limits",
+              "Actual usage and peak records"
+            ],
+            [
+              "Backups",
+              "Retention count, scope and restore terms",
+              "Recoverable data and missing parts"
+            ],
+            [
+              "Installation",
+              "Tools and plan eligibility",
+              "Sign-in, drafts and publication"
+            ],
+            [
+              "Connection",
+              "Domain and certificate settings",
+              "Website, images and email"
+            ],
+            [
+              "Costs",
+              "Initial term, renewal and add-ons",
+              "Total payment and expiry reminders"
+            ]
+          ],
+          "caption": "Confirm the terms first, then test them against real website tasks."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "“Up to” is not a promise for every plan",
+          "text": "If the backup or resource overview differs from the plan table, save the page date and ask which conditions apply to your plan. Until confirmed, do not enter the highest specification in your purchasing comparison."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "The differences between shared hosting, VPS and managed cloud hosting",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "A routine for everyday website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "FastComet: plan and resource comparison",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet: offsite backup service",
+          "url": "https://www.fastcomet.com/offsite-backup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet: Softaculous installation tutorial",
+          "url": "https://www.fastcomet.com/tutorials/cpanel/softaculous",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "FastComet のホスティングを検討する：リソース、バックアップ、WordPress のインストール",
+      "description": "FastComet を検討するときは、初回料金に加えてサイト数、リソースの割り当て、バックアップの保持と復元方法も確認します。公式プランと操作資料に基づき、購入前の質問、Softaculous でのインストール、公開時の確認事項を整理し、公式ページ間で説明が異なる場合の照合方法も紹介します。現在のコンテンツ、メール、将来の要件をチェックリストに記入し、未検証の速度ランキングや単一の宣伝数値ではなく、自分のサイトに合わせてプランを選べます。",
+      "hero": {
+        "src": "/guides/fastcomet-wordpress-setup/hero-ja.jpg",
+        "alt": "ホスティングのリソース、バックアップ用フォルダー、サイト画面を並べたオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "FastComet を選ぶ前に、「サイトを作りたい」を確認可能な要件に置き換えます。必要なサイト数と画像量、フォームやメールの有無、バックアップ担当者を整理しましょう。安い月額料金を見るよりも、プランが適しているかを判断しやすくなります。比較には現在のプラン名を使い、旧製品の割り当てと取り違えないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "小規模な写真ポートフォリオサイトを準備する場面を例に、公開資料に基づく手順を紹介します。アカウントの購入や性能の実測はしていません。写真の事例は仮の要件です。作品画像は容量を使い、問い合わせフォームはメール送信に関係し、将来の顧客専用エリアは管理作業を増やします。最初から全機能を求めるより、要件を段階的に満たす方が確認しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "実際のコンテンツからリソースを見積もる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現在のファイル、データベース、メールのおおよその容量を計算し、妥当な成長分を確保します。画像中心のサイトでも、カメラの元ファイルをすべて公開ページにアップロードするべきではありません。表示寸法に合った画像を作り、原本は別に保存できます。転送と保存の負担を減らし、スマートフォンの訪問者が不要なデータをダウンロードすることも避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FastComet のプラン表にはサイト数、ストレージ、CPU、メモリなどが掲載されています。それぞれ測るものが異なり、「複数サイトを置ける」はリソースが無制限という意味ではありません。ページの訪問者数の目安も、特定のプラグイン構成で同じ性能が出る保証にはなりません。上限超過時の対応を確認し、利用後は実際のリソース記録を観察します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "必須条件を選別の基準にします。たとえば独立したサイトが二つ必要なら、まずサイト数が足りないプランを除外します。残りの項目についてアップグレード方法と費用を比較しましょう。未確定の遠い将来の構想のためにすべての追加機能を買う必要はありませんが、将来のアップグレードや他社への移行で何をエクスポートできるかは確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "バックアップの保持条件は自分のプランで確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "資料確認日の公式プラン表では日次バックアップの保存数がプラン別に示され、バックアップサービスの紹介ページでは「最大」という表現が使われていました。このような概要は個別プランの条件に代わるものではありません。購入前に保存数、頻度、対象範囲、復元への入口を確認します。ページ間で説明が異なる場合は、購入予定のプランに対する明確な回答をサポートに残してもらいましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "バックアップの回数が多くても、任意の時点へ復元できるとは限りません。昨日のバックアップ後、今日新たに十件の問い合わせがあったとすると、昨日のサイトデータを戻してもそれらは含まれない可能性があります。メールを別サービスで運用しているなら、その保存方法も別途確認します。写真スタジオでは作品の原本、サイト内容、顧客とのやり取りを分けて管理し、ホスティングのバックアップだけで業務全体を保護できると思い込まないことが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "バックアップについては「個別のコンテンツ、データベース、アカウント全体をそれぞれどう復元するか」と具体的に質問し、権限と費用を確認します。入手したバックアップは隔離環境で復元可能な範囲を試し、結果を記録します。ホスティング会社の遠隔地バックアップは保存先を増やせますが、アカウント停止時やログイン不能時にも重要なデータを取り出す方法を把握しておく必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "Softaculous で新しいサイトを作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公式チュートリアルでは cPanel の Software から Softaculous を開き、WordPress を選んでインストール設定へ進みます。まずドメイン、プロトコル、インストール先ディレクトリを照合し、その場所に既存サイトがないかを特に確認します。ホームページをドメイン直下に置くなら、ディレクトリ欄に余計な名前を残さないようにします。テストサイトなら、明確に分離した配置先を使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理者には専用アカウントと強固なパスワードを使い、自分が受信できるメールアドレスを登録します。インストーラーが追加機能、自動更新、バックアップ設定を提示する場合は、項目を理解してから選択し、同じ仕事をするプラグインを重複させないようにします。完了後にサイトと管理画面の入口を保存し、ログイン、下書きの作成、プレビューができることを確認します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "自分のホスティングアカウントにログインし、対象プランと cPanel の入口を確認します。",
+            "Software で Softaculous を開き、WordPress を選んでインストール先を照合します。",
+            "管理者とサイトの情報を入力し、追加オプションを確認してインストールを開始します。",
+            "ログイン、下書き、プレビューをテストしてから、本番ドメインと HTTPS を設定します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "インストール後に訪問者の一連の行動を試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "写真サイトなら「作品を見る、サービスを確認する、問い合わせる」を最初の確認経路にできます。使用権を確認した写真を数枚用意し、適切な代替テキストと事実に即した説明を付け、スマートフォンで読み込みとレイアウトを確認します。フォーム送信後は成功表示だけで判断せず、通知が実際に届き、送信記録を見つけられることを確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドメイン接続時には DNS を実際に管理するサービスを確認し、既存のメール用レコードを残します。HTTPS 設定後はルートドメイン、www、画像、重要な下層ページを調べ、正しいアドレスがホームページだけで使われている状態を避けます。テストサイトを残す場合はアクセスを制限し、テストデータを使います。公開したくない顧客写真を保護のない複製サイトに置かないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "性能の問題は比較できる記録を先に残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトが遅いと感じたら、時刻、ページ、端末、ログインの有無を記録し、ホスティングのリソースとエラーログを照合します。大きすぎる画像、外部フォント、プラグインのクエリ、キャッシュ設定はいずれも体感速度に影響します。プラン変更だけで解決したと思い込んだり、一度のホームページ速度測定でサイト全体を評価したりしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず同じページで画像調整の前後を比較し、重要なフォームと管理画面が正常かを確認できます。サポートへは具体的なページと再現手順を伝え、顧客データやパスワードを送らないようにします。ここでは FastComet の速度を実測していません。性能の判断は自分の設定と実際のテストに基づいて行います。"
+        },
+        {
+          "type": "heading",
+          "text": "更新と解約・移行の条件も一緒に保存する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公式料金ページは初回のキャンペーン料金と通常の更新料金を区別しています。換算した月額だけでなく、決済時の契約期間、通貨、税金、追加機能から支払総額を整理します。更新期限の通知を設定し、利用中のドメイン、メール、バックアップが別項目で請求されるかも確認すれば、サイト費用が毎年増える理由を把握できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後にプランの明細、サポートの回答、管理チェックリストを保存します。将来サイトを移す際は、使えるバックアップを取得し、データ同期を計画してメールの依存関係を確認してから旧サービスを終了します。適切なホスティングを選べた根拠は、要件を満たし管理方法が明確なことです。宣伝ページの機能数は、この確認記録の代わりにはなりません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/fastcomet-wordpress-setup/diagram-1-ja.svg",
+          "alt": "リソース要件、バックアップ条件、インストール先、訪問者の行動を順に確認するオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "プラン仕様は買えるものを示し、受け入れ確認は仕事を完了できるかを示します。",
+          "description": "リソース要件、バックアップ条件、インストール先、訪問者の行動を順に確認するオリジナル図解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "提供会社への確認",
+            "自分で行う確認"
+          ],
+          "rows": [
+            [
+              "リソースの割り当て",
+              "サイト数・容量・計算資源の制限",
+              "実使用量とピーク時の記録"
+            ],
+            [
+              "バックアップ",
+              "保存数・範囲・復元条件",
+              "復元できるデータと不足部分"
+            ],
+            [
+              "インストール",
+              "ツールとプランの適用条件",
+              "ログイン・下書き・公開"
+            ],
+            [
+              "接続",
+              "ドメインと証明書の設定",
+              "サイト・画像・メール"
+            ],
+            [
+              "費用",
+              "初回・更新・追加機能",
+              "支払総額と期限通知"
+            ]
+          ],
+          "caption": "条件を確認した後、実際のサイト業務で動作を確かめます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "「最大」は全プランへの約束ではない",
+          "text": "バックアップやリソースの説明がプラン表と異なる場合はページの日付を保存し、自分のプランへの適用条件を問い合わせます。確認できるまでは、最上位の仕様を購入比較表に記入しないようにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共有ホスティング、VPS、マネージドクラウドの違い",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "日々のサイト保守の組み立て方",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "FastComet：プランとリソースの比較",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet：遠隔地バックアップサービス",
+          "url": "https://www.fastcomet.com/offsite-backup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet：Softaculous のインストール手順",
+          "url": "https://www.fastcomet.com/tutorials/cpanel/softaculous",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "FastComet 호스팅 평가 방법: 리소스, 백업과 WordPress 설치",
+      "description": "FastComet 호스팅을 검토할 때는 첫 구매 가격뿐 아니라 웹사이트 수, 리소스 할당량, 백업 보관과 복원 방법도 살펴야 합니다. 공식 요금제와 사용 문서를 바탕으로 구매 전 질문, Softaculous 설치와 공개 전 확인 사항을 정리하고, 공식 페이지마다 설명이 다를 때 대조하는 방법도 안내합니다. 현재 콘텐츠, 이메일과 향후 요구 사항을 목록에 적고, 실측하지 않은 속도 순위나 홍보 수치 하나에 의존하지 않고 자신의 사이트에 맞는 요금제를 판단할 수 있습니다.",
+      "hero": {
+        "src": "/guides/fastcomet-wordpress-setup/hero-ko.jpg",
+        "alt": "호스팅 리소스, 백업 폴더와 웹사이트 화면을 나란히 배치한 자체 제작 일러스트입니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "FastComet을 선택하기 전에 ‘웹사이트를 만들고 싶다’를 확인 가능한 요구 사항으로 바꾸세요. 사이트와 이미지가 얼마나 필요한지, 폼과 이메일을 사용할지, 누가 백업을 맡을지 정리합니다. 저렴한 월 요금을 보는 것보다 요금제가 적합한지 판단하는 데 도움이 됩니다. 비교할 때는 현재 요금제 이름을 사용해 이전 제품의 할당량과 혼동하지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "작은 사진 포트폴리오 사이트를 준비하는 상황을 예로 들어 공개 문서에 따른 절차를 설명합니다. 계정을 구매하거나 성능을 실측하지는 않았습니다. 사진 사례는 가상의 요구 사항입니다. 작품 이미지는 저장 공간을 사용하고, 문의 폼은 이메일 발송과 관련되며, 나중에 고객 전용 공간을 추가하면 관리 업무도 늘어납니다. 처음부터 모든 기능을 추구하기보다 요구 사항을 단계별로 완성하면 검수하기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "실제 콘텐츠로 리소스 추정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 파일, 데이터베이스와 이메일의 대략적인 용량을 계산하고 합리적인 성장 여유를 확보하세요. 이미지 중심 사이트라도 카메라 원본 파일을 모두 공개 화면에 올려서는 안 됩니다. 표시 크기에 맞는 버전을 만들고 원본은 별도로 보관할 수 있습니다. 전송과 저장 부담을 줄이고, 휴대전화로 보는 방문자가 불필요한 데이터를 내려받지 않도록 해 줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "FastComet 요금제 표에는 웹사이트 수, 저장 공간, CPU, 메모리와 기타 리소스가 나옵니다. 각 항목이 측정하는 대상은 다르며, ‘여러 사이트를 운영할 수 있다’는 말이 리소스 무제한을 뜻하지는 않습니다. 페이지에 제시된 예상 방문자 수도 특정 플러그인 조합에서 같은 성능을 보장하지 않습니다. 한도를 초과했을 때 처리 방식을 문의하고, 사용 후에는 실제 리소스 기록을 관찰하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "반드시 충족해야 할 조건을 선택 기준으로 삼으세요. 예를 들어 독립된 사이트 두 개가 필요하다면 사이트 수가 부족한 요금제를 먼저 제외합니다. 나머지 항목은 업그레이드 방식과 비용을 비교합니다. 아직 확정되지 않은 먼 미래의 구상 때문에 추가 기능을 모두 살 필요는 없지만, 나중에 업그레이드하거나 다른 서비스로 옮길 때 어떤 데이터를 내보낼 수 있는지는 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "백업 보관 조건은 자신의 요금제로 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "자료 확인일의 공식 요금제 표는 일일 백업 보관 수를 요금제별로 구분했으며, 백업 서비스 페이지는 ‘최대’라는 표현으로 서비스를 소개했습니다. 이런 개요가 개별 요금제 조건을 대신할 수는 없습니다. 구매 전에 보관 수, 백업 주기, 대상 범위와 복원 진입 경로를 확인하세요. 페이지 설명이 서로 다르면 구매하려는 요금제에 대해 지원팀의 명확한 답변을 기록으로 남겨 달라고 요청합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "백업 횟수가 많다고 어느 시점으로든 복구할 수 있는 것은 아닙니다. 어제 백업한 뒤 오늘 문의 열 건이 새로 들어왔다고 가정하면, 어제의 사이트 데이터를 복원했을 때 이 문의들은 포함되지 않을 수 있습니다. 다른 서비스가 이메일을 제공한다면 보관 방식도 따로 확인해야 합니다. 사진 스튜디오는 작품 원본, 사이트 콘텐츠와 고객 연락 내역을 나눠 관리해 호스팅 백업 하나가 전체 업무를 포괄한다고 오해하지 않도록 할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "백업을 문의할 때는 ‘개별 콘텐츠, 데이터베이스, 계정 전체를 각각 어떻게 복원하나요?’처럼 구체적으로 묻고 권한과 비용을 확인하세요. 백업을 확보하면 격리된 환경에서 복원 가능한 범위를 시험하고 결과를 기록합니다. 호스팅 업체의 외부 장소 백업은 보관 계층을 더해 주지만, 계정이 비활성화되거나 로그인할 수 없을 때 중요한 데이터를 가져오는 방법도 알아야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "Softaculous로 새 사이트 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 안내에서는 cPanel의 Software 영역에서 Softaculous를 열고 WordPress를 찾아 설치 설정으로 들어갑니다. 도메인, 프로토콜과 설치 디렉터리를 먼저 대조하고, 특히 대상 위치에 기존 사이트가 있는지 확인하세요. 홈페이지를 도메인 루트에 두려면 디렉터리 칸에 불필요한 이름을 남기지 않도록 합니다. 테스트 사이트라면 명확히 구분된 위치를 사용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "관리자 정보에는 전용 계정과 강력한 비밀번호를 사용하고, 자신이 메일을 받을 수 있는 주소를 입력하세요. 설치 도구가 추가 기능, 자동 업데이트와 백업 옵션을 제공할 수 있으므로 항목을 이해한 뒤 선택하고, 같은 일을 처리하는 플러그인을 여러 개 설치하지 않도록 합니다. 완료 후 사이트와 관리 화면 주소를 저장하고 로그인, 초안 작성과 미리보기가 되는지 먼저 확인하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "자신의 호스팅 계정에 로그인해 대상 요금제와 cPanel 진입 경로를 확인합니다.",
+            "Software에서 Softaculous를 찾고 WordPress를 선택한 뒤 설치 위치를 대조합니다.",
+            "관리자와 사이트 정보를 입력하고 추가 옵션을 검토한 뒤 설치를 시작합니다.",
+            "로그인, 초안과 미리보기를 시험한 뒤 정식 도메인과 HTTPS를 설정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "설치 후 방문자의 전체 이용 흐름 시험하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사진 사이트는 ‘작품 보기, 서비스 확인, 문의 보내기’를 첫 검수 경로로 삼을 수 있습니다. 사용 권한을 확인한 사진 몇 장을 준비하고 적절한 대체 텍스트와 사실에 맞는 설명을 추가한 뒤, 휴대전화에서 로딩과 레이아웃을 확인하세요. 폼을 제출하면 성공 메시지만 보지 말고 실제로 알림이 도착하고 제출 기록을 찾을 수 있는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도메인을 연결할 때는 DNS를 실제로 관리하는 서비스를 확인하고 기존 이메일에 필요한 레코드를 보존하세요. HTTPS 설정 후 루트 도메인, www, 이미지와 중요한 내부 페이지를 점검해 홈페이지만 올바른 주소를 쓰는 상황을 피합니다. 테스트 사이트를 유지한다면 접근을 제한하고 테스트 데이터를 사용하세요. 공개하고 싶지 않은 고객 사진을 보호되지 않은 복사본에 올려서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "성능 문제는 비교 가능한 기록부터 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트가 느리다고 느껴지면 발생 시각, 페이지, 기기와 로그인 여부를 기록하고 호스팅 리소스 및 오류 기록과 대조하세요. 너무 큰 이미지, 외부 글꼴, 플러그인 쿼리와 캐시 설정 모두 체감 속도에 영향을 줄 수 있습니다. 호스팅 요금제를 바꿨다는 이유만으로 해결됐다고 가정하거나, 홈페이지 속도 측정 한 번으로 전체 사이트를 대표해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 페이지에서 이미지 조정 전후를 먼저 비교한 다음 주요 폼과 관리자 화면이 정상인지 살펴볼 수 있습니다. 지원이 필요하면 구체적인 페이지와 재현 절차를 제공하되 고객 데이터나 비밀번호는 보내지 마세요. 여기서는 FastComet 속도를 측정하지 않았습니다. 성능 판단은 자신의 설정과 실제 테스트를 근거로 해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "갱신과 서비스 종료 조건도 함께 보관하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 가격 페이지는 첫 계약 기간의 할인 가격과 일반 갱신 가격을 구분합니다. 환산한 월 요금만 적지 말고 결제 시점의 계약 기간, 통화, 세금과 추가 기능으로 총 결제액을 정리하세요. 갱신 알림을 설정하고 사용 중인 도메인, 이메일과 백업이 별도 항목으로 청구되는지도 확인하면 사이트 비용이 해마다 늘어나는 이유를 파악할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 요금제 명세, 지원팀 답변과 관리 목록을 보관하세요. 나중에 사이트를 옮긴다면 사용 가능한 백업을 확보하고 데이터 동기화를 계획하며 이메일 의존 관계를 확인한 뒤 기존 서비스를 종료합니다. 적합한 호스팅을 골랐다는 증거는 요구 사항이 충족되고 관리 방법이 명확하다는 것입니다. 홍보 페이지의 기능 수가 이 검수 기록을 대신할 수는 없습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/fastcomet-wordpress-setup/diagram-1-ko.svg",
+          "alt": "리소스 요구, 백업 조건, 설치 위치와 방문자 흐름을 차례대로 확인하는 자체 제작 도해입니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "요금제 사양은 무엇을 살 수 있는지, 검수는 업무를 완수할 수 있는지 알려 줍니다.",
+          "description": "리소스 요구, 백업 조건, 설치 위치와 방문자 흐름을 차례대로 확인하는 자체 제작 도해입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "점검 항목",
+            "공급업체에 확인",
+            "직접 검수할 내용"
+          ],
+          "rows": [
+            [
+              "리소스 할당량",
+              "사이트·용량·연산 제한",
+              "실제 사용량과 피크 기록"
+            ],
+            [
+              "백업",
+              "보관 수·범위·복원 조건",
+              "복구 가능한 데이터와 빠진 부분"
+            ],
+            [
+              "설치",
+              "도구와 요금제 적용 조건",
+              "로그인·초안·게시"
+            ],
+            [
+              "연결",
+              "도메인과 인증서 설정",
+              "사이트·이미지·이메일"
+            ],
+            [
+              "비용",
+              "첫 기간·갱신·추가 기능",
+              "총 결제액과 만료 알림"
+            ]
+          ],
+          "caption": "조건을 확인한 뒤 실제 사이트 업무로 검수하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "‘최대’는 모든 요금제에 대한 약속이 아닙니다",
+          "text": "백업이나 리소스 소개가 요금제 표와 다르면 페이지 날짜를 보관하고 자신의 요금제에 적용되는 조건을 문의하세요. 확인하기 전에는 최고 사양을 구매 비교표에 넣지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "공유 호스팅, VPS와 관리형 클라우드의 차이",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "일상적인 웹사이트 유지 관리 일정",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "FastComet: 요금제 및 리소스 비교",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet: 외부 장소 백업 서비스",
+          "url": "https://www.fastcomet.com/offsite-backup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet: Softaculous 설치 안내",
+          "url": "https://www.fastcomet.com/tutorials/cpanel/softaculous",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "如何评估 FastComet 主机：资源、备份与 WordPress 安装",
+      "description": "评估 FastComet 主机时，除了首次购买价格，也要看网站数量、资源配额、备份保留与恢复方法。本文根据官方套餐和操作文档整理购买前的问题、Softaculous 安装及上线验收，并说明官方页面描述不同时如何核对。你可以把现有内容、邮件及未来需求填入清单，根据自己的网站选择套餐，不依据未经实测的速度排名或单一宣传数字下结论。",
+      "hero": {
+        "src": "/guides/fastcomet-wordpress-setup/hero-zh-cn.jpg",
+        "alt": "资源主机、备份文件夹与网站画面并列的原创插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "选择 FastComet 前，先把“想搭建一个网站”改写为可核对的需求：需要几个网站、多少图片、是否收集表单、有没有邮箱，以及谁负责备份。这些信息比看到便宜的月费更能帮助你判断套餐是否合适。比较时也要使用当前的套餐名称，避免对照到早期产品的配额。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以准备建立小型摄影作品网站的情境为例，流程根据公开文档整理，没有购买账号或进行性能实测。摄影案例是假设需求：作品图片占用容量，咨询表单影响发信，日后增设客户专区又会增加管理工作。分阶段完成需求，比一开始追求所有功能更容易验收。"
+        },
+        {
+          "type": "heading",
+          "text": "用实际内容估算资源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先计算现有文件、数据库及邮件的大致容量，再预留合理的增长空间。图片网站不应直接把相机原始文件全部上传到前台；可以根据展示尺寸制作合适的版本，原始文件另行保存。这样可以降低传输与存储负担，也让使用手机的访客不必下载不需要的数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "FastComet 套餐表列有网站数量、存储、CPU、内存及其他资源项目。各字段衡量的内容不同，“可放多个网站”不能理解为资源无限。页面列出的访客估计也无法保证你的特定插件组合有同样表现；应询问超额处理方式，并在使用后观察实际资源记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把必须满足的条件设为门槛，例如需要两个独立网站，就先排除不符合网站数量要求的套餐。其余项目再比较升级方式与费用。不要为了尚未确定的远期构想一次购买所有附加服务，但也要确认日后升级或迁出时可以导出哪些数据。"
+        },
+        {
+          "type": "heading",
+          "text": "备份保留条件要核对到自己的套餐",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "查阅当天的官方套餐表按套餐区分每日备份数量，备份服务页面则用“最多”的方式介绍服务。这类概述不能直接取代个别套餐条件。购买前应确认保留数量、备份频率、覆盖范围与恢复入口；如果页面说法不同，请支持团队针对你要购买的套餐留下明确答复。"
+        },
+        {
+          "type": "paragraph",
+          "text": "备份次数也不等于任何时间点都能恢复。假设昨天备份后，今天新增十封咨询，恢复昨天的网站数据可能不包含它们；如果邮件由其他服务提供，还要另外确认保存方式。摄影工作室可以把作品原文件、网站内容和客户往来分开管理，避免以为一份主机备份能覆盖整个工作流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "询问备份时，具体提出“我需要恢复单篇内容、数据库或整个账号，分别怎么做”，并确认权限及费用。取得备份后，在隔离环境中测试可恢复的范围并记录结果。主机商提供异地备份可以增加一层保存，但你仍应知道账号停用或无法登录时如何取得重要数据。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Softaculous 建立新站",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方教程在 cPanel 的 Software 区域使用 Softaculous，找到 WordPress 后进入安装设置。先核对域名、协议及安装目录，特别注意目标位置是否已有网站。如果希望首页位于域名根目录，不要在目录字段中意外留下额外名称；如果是测试站，则使用明确区隔的位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "创建管理员信息时使用独立账号和强密码，填写自己能接收邮件的邮箱。安装工具可能提供附加功能、自动更新及备份选项，逐项理解后再选择，避免安装多个处理相同工作的插件。完成后保存网站与管理入口，先验证可以登录、创建草稿和预览内容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登录自己的主机账号，确认目标套餐与 cPanel 入口。",
+            "在 Software 找到 Softaculous，选择 WordPress 并核对安装位置。",
+            "填写管理员与网站信息，检查附加选项后开始安装。",
+            "完成登录、草稿与预览测试，再设置正式域名及 HTTPS。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "安装后先完成一条完整访客流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "摄影网站可以用“浏览作品、查看服务、发送咨询”作为第一条验收路径。准备几张已确认使用权的照片，补充适当的替代文字与真实说明，再用手机检查加载与版面。表单提交后，要确认通知实际到达并能找到提交记录，而不只是看到成功提示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "连接域名时，确认真正管理 DNS 的服务位置，保留原有邮件所需记录。完成 HTTPS 后检查根域名、www、图片和重要内页，避免只有首页使用正确网址。如果保留测试站，应限制访问并使用测试数据，不把不希望公开的客户照片上传到没有保护的副本。"
+        },
+        {
+          "type": "heading",
+          "text": "性能问题先留下可比较的数据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果觉得网站慢，记录发生时间、页面、设备与是否登录，再对照主机资源及错误记录。图片过大、外部字体、插件查询与缓存设置都可能影响体感。不要只更换主机套餐就假定问题已解决，也不要用一次首页测速代表整个网站的情况。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先比较同一页面调整图片前后的结果，再观察重要表单与后台是否正常。如果需要支持，提供明确页面及可复现步骤，避免发送客户数据或密码。本文没有测量 FastComet 的速度，任何性能判断都应建立在你自己的设置与实际测试之上。"
+        },
+        {
+          "type": "heading",
+          "text": "把续费与退出条件一起保存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "官方价格页面区分首期促销价与普通续费价。请根据结账时的合同期限、币种、税费和附加服务整理总付款，而不只记录折算后的月费。另设续费提醒，确认使用中的域名、邮箱与备份是否由不同项目收费，才能避免网站费用逐年增加却不知道原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后保存套餐明细、支持答复及管理清单。如果日后迁站，先取得可用备份、安排数据同步并确认邮件依赖关系，再结束原服务。选择合适主机的证据，是需求得到满足且管理方式清楚；宣传页上的功能数量不能代替这份验收记录。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/fastcomet-wordpress-setup/diagram-1-zh-cn.svg",
+          "alt": "依次核对资源需求、备份条件、安装位置及访客流程的原创图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "套餐规格回答能买到什么，验收回答能否完成工作。",
+          "description": "依次核对资源需求、备份条件、安装位置及访客流程的原创图解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "向供应商核对",
+            "自己的验收"
+          ],
+          "rows": [
+            [
+              "资源配额",
+              "网站、容量及运算限制",
+              "实际用量与峰值记录"
+            ],
+            [
+              "备份",
+              "保留数量、范围与恢复条件",
+              "可恢复的数据及缺失部分"
+            ],
+            [
+              "安装",
+              "工具与套餐适用性",
+              "登录、草稿及发布"
+            ],
+            [
+              "连接",
+              "域名与证书设置",
+              "网站、图片及邮件"
+            ],
+            [
+              "费用",
+              "首期、续费及附加服务",
+              "总付款与到期提醒"
+            ]
+          ],
+          "caption": "先确认条件，再用实际网站工作验收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "“最多”不是每个套餐的承诺",
+          "text": "备份或资源介绍如果与套餐表不同，保存页面日期并询问自己套餐的适用条件。确认之前，不要把最高规格填入购买比较表。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共享主机、VPS 与云端托管的区别",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "FastComet：套餐与资源比较",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet：异地备份服务",
+          "url": "https://www.fastcomet.com/offsite-backup",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet：Softaculous 安装教程",
+          "url": "https://www.fastcomet.com/tutorials/cpanel/softaculous",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
