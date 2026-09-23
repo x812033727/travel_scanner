@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<!-- 縮圖範本：1280x720。存成 <WORKDIR>/slides/thumbnail.html（或 thumbnail-a.html、thumbnail-b.html）。
+     最多 6 個大字＋一個主體；右下角會被影片長度蓋住，不放字。渲染後縮到 320 寬看一次。 -->
+<style>
+  :root {
+    --bg: #0f1419;
+    --fg: #ffffff;
+    --accent: #ffb020;
+    --font: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  }
+  html, body { margin: 0; width: 1280px; height: 720px; overflow: hidden; background: var(--bg); font-family: var(--font); }
+  .text { position: absolute; left: 64px; top: 72px; width: 720px; }
+  .big { font-size: 150px; line-height: 1.05; font-weight: 900; color: var(--fg); -webkit-text-stroke: 4px #000; paint-order: stroke fill; }
+  .big em { font-style: normal; color: var(--accent); }
+  .tag { display: inline-block; margin-top: 28px; padding: 10px 24px; font-size: 44px; font-weight: 800; background: var(--accent); color: #000; border-radius: 10px; }
+  /* 視覺主體：主講者去背照、產品介面截圖或一張對比圖，放右側 */
+  .subject { position: absolute; right: 40px; top: 60px; width: 440px; height: 520px; border-radius: 24px; background: #1c242e; display: flex; align-items: center; justify-content: center; color: #9aa5b1; font-size: 36px; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div class="big">第一名<br><em>≠</em>最好用</div>
+    <div class="tag">AI 模型怎麼挑</div>
+  </div>
+  <div class="subject">主體圖</div>
+</body>
+</html>
