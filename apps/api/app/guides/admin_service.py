@@ -8,7 +8,7 @@ editor can recover from rather than a silently overwritten draft.
 
 from __future__ import annotations
 
-from collections.abc import Iterator
+from collections.abc import Iterator, Mapping
 from datetime import UTC, datetime
 from typing import Any, cast
 from uuid import UUID, uuid4
@@ -82,6 +82,7 @@ from app.guides.service import (
     kind_filter,
 )
 from app.guides.taxonomy import topic_option
+from app.i18n import LOCALES as SITE_LOCALES
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
 from app.problems import AppError
@@ -674,6 +675,130 @@ async def publish_locale(
         "published",
         reason=payload.reason,
     )
+
+
+async def publish_bundle(
+    session: AsyncSession,
+    actor: User | None,
+    article_id: UUID,
+    documents: Mapping[Locale, GuideDocument],
+    expected_versions: Mapping[Locale, int],
+    *,
+    reason: str,
+    automation_metadata: Mapping[str, Any] | None = None,
+) -> dict[Locale, int]:
+    """Publish all five translations in one transaction.
+
+    Calling the single-locale function five times would commit five times and could expose
+    a partial bundle. Every pointer, revision, search row, inline-link row and audit row
+    below shares one commit. ``actor`` is nullable so an automated publication is recorded
+    as a system action rather than impersonating an administrator.
+    """
+
+    required = set(SITE_LOCALES)
+    if set(documents) != required or set(expected_versions) != required:
+        raise AppError(422, "guide_bundle_incomplete", "五個語言版本必須一起發布")
+    article = await _find_article(session, article_id)
+    if not article.is_active:
+        raise AppError(409, "guide_article_inactive", "這篇文章已下架，請先重新啟用")
+    if not article_is_live(article):
+        raise AppError(409, "guide_article_expired", "這篇文章的有效期限已過，請先更新期限")
+
+    rows = {
+        cast(Locale, row.locale): row
+        for row in await session.scalars(
+            select(GuideArticleLocale)
+            .where(GuideArticleLocale.article_id == article.id)
+            .with_for_update()
+        )
+    }
+    if set(rows) != required:
+        raise AppError(422, "guide_bundle_incomplete", "五個語言版本必須一起發布")
+
+    now = datetime.now(UTC)
+    published_versions: dict[Locale, int] = {}
+    metadata = dict(automation_metadata or {})
+    try:
+        for locale in SITE_LOCALES:
+            row = rows[locale]
+            document = documents[locale]
+            expected = expected_versions[locale]
+            _validate_document(document, article.destination_id)
+            encoded = document.model_dump(mode="json")
+            new_version = expected + 1
+            published_at = row.published_at or now
+            changed = await session.scalar(
+                update(GuideArticleLocale)
+                .where(
+                    GuideArticleLocale.id == row.id,
+                    GuideArticleLocale.version == expected,
+                )
+                .values(
+                    version=new_version,
+                    draft_json=encoded,
+                    published_version=new_version,
+                    published_at=published_at,
+                    updated_at=now,
+                )
+                .returning(GuideArticleLocale.id)
+                .execution_options(synchronize_session=False)
+            )
+            if changed is None:
+                raise AppError(
+                    409,
+                    "guide_version_conflict",
+                    f"{locale} 版本已被更新，整批未發布",
+                )
+            await search.index_locale(
+                session,
+                article.id,
+                locale,
+                document,
+                version=new_version,
+                published_at=published_at,
+            )
+            unresolved_links = await links.materialize_inline(session, article.id, locale, document)
+            revision_id = uuid4()
+            session.add(
+                GuideArticleRevision(
+                    id=revision_id,
+                    article_locale_id=row.id,
+                    version=new_version,
+                    action="published",
+                    document_json=encoded,
+                    created_by_user_id=actor.id if actor else None,
+                    created_at=now,
+                )
+            )
+            session.add(
+                AdminAuditLog(
+                    actor_user_id=actor.id if actor else None,
+                    action="guide_article_published",
+                    target=_target(article.id, locale),
+                    metadata_json={
+                        **metadata,
+                        "article_id": str(article.id),
+                        "locale": locale,
+                        "revision_id": str(revision_id),
+                        "before_version": expected,
+                        "version": new_version,
+                        "previous_published_version": row.published_version,
+                        "published_version": new_version,
+                        "reason": reason,
+                        "document_sha256": document_hash(encoded),
+                        "operator_confirmed": actor is not None,
+                        "system_actor": actor is None,
+                        "atomic_bundle": True,
+                        "unresolved_links": unresolved_links,
+                    },
+                )
+            )
+            published_versions[locale] = new_version
+        await session.commit()
+    except Exception:
+        await session.rollback()
+        raise
+    return published_versions
 
 
 async def unpublish_locale(

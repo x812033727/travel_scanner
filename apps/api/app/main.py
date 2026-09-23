@@ -51,6 +51,8 @@ from app.middleware import (
     RequestBodyLimitMiddleware,
     RequestContextMiddleware,
 )
+from app.news_automation.router import admin_router as admin_news_router
+from app.news_automation.router import public_router as news_assets_router
 from app.places.router import public_router as public_places_router
 from app.places.router import router as places_router
 from app.problems import AppError, app_error_handler, validation_error_handler
@@ -130,6 +132,8 @@ app.include_router(ui_text_runtime_router, prefix="/api/v1")
 app.include_router(admin_ui_text_router, prefix="/api/v1")
 app.include_router(admin_guides_router, prefix="/api/v1")
 app.include_router(guides_public_router, prefix="/api/v1")
+app.include_router(admin_news_router, prefix="/api/v1")
+app.include_router(news_assets_router, prefix="/api/v1")
 app.include_router(admin_site_pages_router, prefix="/api/v1")
 app.include_router(site_pages_public_router, prefix="/api/v1")
 app.include_router(ads_router, prefix="/api/v1")
