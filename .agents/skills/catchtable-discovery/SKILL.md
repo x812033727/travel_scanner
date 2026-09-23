@@ -14,7 +14,7 @@ metadata:
 
 ## 不變的規矩
 
-1. **CatchTable、Naver、Google、Instagram 只當發現與定位，永不當來源；名次只留在候選檔。** 進目錄要有官方頁（觀光局／政府／店家官網）講這家分店。
+1. **CatchTable、Naver、Google、Instagram 只當發現與定位，不當官方來源；名次只留在候選檔。** 進目錄優先要官方頁（觀光局／政府／店家官網）講這家分店；都沒有時（2026-09-23 起）可用 `merchant_platform`：這個 alias 自己的 CatchTable 店頁或 `/info` 分頁，或 `/info`「網站」欄指向的社群帳號（候選檔要記 `catchtable.website`），公開頁另標「平台／社群登記」。
 2. **只有渲染後看到店家自己的訂位控制項才算可訂位**（`service-tab-DINING` 點開有日期選擇），候位、優先入場都存 `disabled`。
 3. **兩個瀏覽器都開不了 Naver**（Anthropic 端安全政策，內建瀏覽器與 Chrome 同樣拒絕），不繞道 curl；Naver 精準頁由站主在自己的 Naver 地圖依地址挑選、
    貼短網址，session 只讀 `naver.me` 的轉址標頭取 id。經營者官網自己放的 Naver 短網址可以直接用。

@@ -114,7 +114,7 @@ describe("FoodMerchantCard", () => {
     expect(screen.getByRole("link", { name: /官方網站/ }).getAttribute("href")).toBe(
       "https://hankookjib.example/",
     );
-    fireEvent.click(screen.getByText("來源：1 筆官方佐證"));
+    fireEvent.click(screen.getByText("來源：1 筆佐證"));
     expect(screen.getByRole("link", { name: "Michelin Guide Seoul" })).toBeTruthy();
     expect(screen.getByText("米其林（授權）")).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "只看飯食／粥品" }));
@@ -123,6 +123,32 @@ describe("FoodMerchantCard", () => {
     expect(onSelectArea).toHaveBeenCalledWith("seoul-myeongdong");
     const addToTrip = screen.getByRole("button", { name: "加入行程" });
     expect(addToTrip.hasAttribute("disabled")).toBe(false);
+  });
+
+  it("labels a platform-registered source as such, not as an official record", async () => {
+    renderCard({
+      ...merchant,
+      sources: [
+        {
+          source_type: "merchant_platform",
+          source_scope: "merchant_listing",
+          title: "CatchTable：신사꽃게당 압구정로데오점",
+          url: "https://www.catchtable.net/zh-TW/shop/sinsakkochgedang_apgujeong/info",
+          claims: ["display_name", "address"],
+          edition_year: null,
+          distinction: null,
+          last_verified_at: "2026-09-23T00:00:00Z",
+        },
+      ],
+    });
+
+    expect(await screen.findByRole("heading", { name: "Hankook Jib" })).toBeTruthy();
+    fireEvent.click(screen.getByText("來源：1 筆佐證"));
+    expect(screen.getByText("平台／社群登記")).toBeTruthy();
+    expect(screen.queryByText("官方")).toBeNull();
+    expect(
+      screen.getByRole("link", { name: "CatchTable：신사꽃게당 압구정로데오점" }).getAttribute("href"),
+    ).toContain("/shop/sinsakkochgedang_apgujeong/info");
   });
 
   it("never renders unsafe map or website links", async () => {
