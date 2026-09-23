@@ -106,46 +106,53 @@ EXPANDED = {
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.7 (2026-09-23): the twelve articles of the window that opened on 2026-09-20 and
-# three write-ups of earlier events, zh-TW only. The AI index lists by month, so the six go
-# after September's last link, in their ``display_order``; the tech and crypto indexes group
-# by topic and region, and every link joins a group those indexes already have, so ``INSERT``
-# again has nothing to place. Two rows anchor on a link this same run inserts, which the
-# table allows because it is applied in order.
+# Batch 4.4 wave 1 (2026-09-23): six AI articles about August and early-September events that the
+# batch-4 discovery had left unwritten (secondary news), zh-TW only. The AI index lists by month,
+# so each link goes into its month group by event date -- after the existing link whose event
+# date precedes it (the batch-4.3 practice), not at the end of September. The tech and crypto
+# indexes get nothing this run; their 4.4 articles are deferred. Rows may anchor on a link this
+# same run inserts, because the table is applied in order.
 NEW: dict[str, list[tuple[str, object]]] = {
-    "crypto": [
-        # Taiwan's group, in the order a reader meets them: the act is already linked there,
-        # the FSC's deposit-token pilot says what the act does not reach, and the finance
-        # ministry's ruling taxes what it does.
-        ("crypto-news-taiwan-deposit-token-pilot-20260922", "crypto-news-taiwan-vasp-act-20260630"),
-        ("crypto-news-sec-innovation-exemption-20260917", "crypto-news-sec-regulation-crypto-assets-20260821"),
-        ("crypto-news-taiwan-vasp-tax-ruling-20260903", "crypto-news-taiwan-deposit-token-pilot-20260922"),
-    ],
-    "tech": [
-        ("tech-news-googlebook-launch-20260921", "tech-news-iphone-duo-dev-resources-20260918"),
-        ("tech-news-eu-data-centre-rating-20260921", "tech-news-eu-cra-reporting-20260911"),
-        # Batch 4.6 put CISA's Linux kernel advisory in platforms and software because the
-        # index's only security group is the European Union's; the Zyxel advisory is the same
-        # mechanism one case later, so it follows it rather than opening a group of its own.
-        ("tech-news-cisa-kev-zyxel-gs1900-20260921", "tech-news-cisa-kev-linux-kernel-20260918"),
-        # Petal is a France-United States cable. It was placed beside the Matsu cables at
-        # first, as the index's other subsea-cable articles; the owner ruled on 2026-09-23
-        # that a group headed "Taiwan: telecommunications and digital policy" is the wrong
-        # home for it and moved it to the end of compute infrastructure, so the anchor here
-        # is that group's last link.
-        ("tech-news-meta-petal-subsea-cable-20260921", "tech-news-nvidia-mediatek-20260831"),
-        ("tech-news-enisa-threat-landscape-20260922", "tech-news-cisa-kev-zyxel-gs1900-20260921"),
-        ("tech-news-moda-mydata-student-loan-20260917", "tech-news-taiwan-sovereign-ai-corpus-20260915"),
-    ],
+    "crypto": [],
+    "tech": [],
     "ai": [
-        ("ai-news-openai-math-advisory-20260921", "ai-news-kimi-k3-bedrock-20260918"),
-        ("ai-news-openai-frontier-standards-20260921", "ai-news-openai-math-advisory-20260921"),
-        ("ai-news-anthropic-life-sciences-verification-20260917", "ai-news-openai-frontier-standards-20260921"),
-        ("ai-news-meta-one-subscription-20260915", "ai-news-anthropic-life-sciences-verification-20260917"),
-        ("ai-news-openai-academy-paths-20260921", "ai-news-meta-one-subscription-20260915"),
-        ("ai-news-nvidia-physical-ai-safety-20260921", "ai-news-openai-academy-paths-20260921"),
+        # August: 08-02 EU transparency, 08-06 free/thinking already sit here; 08-15, 08-20, 08-20
+        # follow the 08-06 link, then 08-26 (Gemini Live already there) and 08-28.
+        ("ai-news-claude-text-watermark-20260815", "ai-news-chatgpt-free-thinking-20260806"),
+        ("ai-news-gemini-student-offer-20260820", "ai-news-claude-text-watermark-20260815"),
+        ("ai-news-openai-zero-data-retention-20260820", "ai-news-gemini-student-offer-20260820"),
+        ("ai-news-openai-hugging-face-incident-20260826", "ai-news-gemini-live-20260826"),
+        ("ai-news-openai-cursor-wind-down-20260828", "ai-news-openai-hugging-face-incident-20260826"),
+        # September: 09-09 goes after the 09-08 Images 2.5 link and before the 09-10 group.
+        ("ai-news-meta-muse-agent-20260909", "ai-news-chatgpt-images-25-20260908"),
     ],
 }
+# What batch 4.7 (2026-09-23) added, kept for the record: the twelve articles of the window that
+# opened on 2026-09-20 and three write-ups of earlier events, zh-TW only; the AI links went after
+# September's last link in display_order, the tech and crypto links joined existing groups
+# (Petal at the end of compute infrastructure by the owner's ruling).
+#
+#     "crypto": [
+#         ("crypto-news-taiwan-deposit-token-pilot-20260922", "crypto-news-taiwan-vasp-act-20260630"),
+#         ("crypto-news-sec-innovation-exemption-20260917", "crypto-news-sec-regulation-crypto-assets-20260821"),
+#         ("crypto-news-taiwan-vasp-tax-ruling-20260903", "crypto-news-taiwan-deposit-token-pilot-20260922"),
+#     ],
+#     "tech": [
+#         ("tech-news-googlebook-launch-20260921", "tech-news-iphone-duo-dev-resources-20260918"),
+#         ("tech-news-eu-data-centre-rating-20260921", "tech-news-eu-cra-reporting-20260911"),
+#         ("tech-news-cisa-kev-zyxel-gs1900-20260921", "tech-news-cisa-kev-linux-kernel-20260918"),
+#         ("tech-news-meta-petal-subsea-cable-20260921", "tech-news-nvidia-mediatek-20260831"),
+#         ("tech-news-enisa-threat-landscape-20260922", "tech-news-cisa-kev-zyxel-gs1900-20260921"),
+#         ("tech-news-moda-mydata-student-loan-20260917", "tech-news-taiwan-sovereign-ai-corpus-20260915"),
+#     ],
+#     "ai": [
+#         ("ai-news-openai-math-advisory-20260921", "ai-news-kimi-k3-bedrock-20260918"),
+#         ("ai-news-openai-frontier-standards-20260921", "ai-news-openai-math-advisory-20260921"),
+#         ("ai-news-anthropic-life-sciences-verification-20260917", "ai-news-openai-frontier-standards-20260921"),
+#         ("ai-news-meta-one-subscription-20260915", "ai-news-anthropic-life-sciences-verification-20260917"),
+#         ("ai-news-openai-academy-paths-20260921", "ai-news-meta-one-subscription-20260915"),
+#         ("ai-news-nvidia-physical-ai-safety-20260921", "ai-news-openai-academy-paths-20260921"),
+#     ],
 # What batch 4.6 (2026-09-22) added, kept for the record. Its comment said the same thing this
 # one does about CISA: the index has no security group outside the European Union's.
 #
@@ -198,33 +205,15 @@ RETITLE: dict[str, dict[str, str]] = {
 # those of the indexes as they read on 2026-09-23, before this run's links; batch 4.6 appended
 # its links behind every prose block, so the three AI indexes below did not move.
 EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
-    "crypto": {
-        "zh-TW": [
-            (1, "之後多次增補（最近一次 2026 年 9 月 22 日）。", f"之後多次增補（最近一次 {EXPANDED['zh-TW']}）。"),
-        ],
-        "en": [],
-        "ja": [],
-        "ko": [],
-        "zh-CN": [],
-    },
-    "tech": {
-        "zh-TW": [
-            (1, "之後多次增補（最近一次 2026 年 9 月 22 日）。", f"之後多次增補（最近一次 {EXPANDED['zh-TW']}）。"),
-        ],
-        "en": [],
-        "ja": [],
-        "ko": [],
-        "zh-CN": [],
-    },
+    "crypto": {"zh-TW": [], "en": [], "ja": [], "ko": [], "zh-CN": []},
+    "tech": {"zh-TW": [], "en": [], "ja": [], "ko": [], "zh-CN": []},
     "ai": {
         "zh-TW": [
-            (0, "之後多次增補（最近一次 2026-09-22），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
-            (24, "之後多次增補（最近一次 2026-09-22），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
-            # The callout states both the last event the series covers and the day it was last
-            # expanded. Batch 4.6 moved only the second date because every one of its articles
-            # happened on 2026-09-18; this batch's newest AI article happened on 2026-09-21,
-            # so both move, in one replacement so the sentence is matched as it reads.
-            (25, "本輯收錄的事件到 2026-09-18 為止，最後增補於 2026-09-22。", f"本輯收錄的事件到 2026-09-21 為止，最後增補於 {EXPANDED_ON}。"),
+            (0, "之後多次增補（最近一次 2026-09-23），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
+            (24, "之後多次增補（最近一次 2026-09-23），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
+            # The callout's first date (the newest event the series covers) stays 2026-09-21:
+            # this run's newest article happened on 2026-09-09. Only the expansion date moves.
+            (25, "最後增補於 2026-09-23。", f"最後增補於 {EXPANDED_ON}。"),
         ],
         "en": [],
         "ja": [],
