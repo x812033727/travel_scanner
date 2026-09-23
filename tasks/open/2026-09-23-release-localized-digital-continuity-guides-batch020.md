@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-digital-continuity-guides-batch020
 title: Release localized digital continuity guides batch020
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-batch020-release
+claimed_at: 2026-09-23T10:37:19Z
 created_at: 2026-09-23T10:25:20Z
 completed_at:
-branch:
+branch: codex/article-localization-020-release-record
 depends_on:
   - 2026-09-23-localize-four-digital-continuity-guides-batch020
 scope:
