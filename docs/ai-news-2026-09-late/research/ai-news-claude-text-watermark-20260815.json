@@ -1,0 +1,583 @@
+{
+  "slug": "ai-news-claude-text-watermark-20260815",
+  "vertical": "ai",
+  "display_order": 180,
+  "event_date": "2026-08-15",
+  "event_date_basis": "文章頁 https://www.anthropic.com/news/claude-text-watermark（2026-09-23 08:20 台北重抓，HTTP 200、193,936 bytes）在 h1 底下只印出「Aug 14, 2026」，沒有任何時刻；對 193,936 bytes 原始碼 grep 「datePublished」「dateModified」「application/ld+json」「article:published_time」四個字串合計 0 筆，「publishedOn」在文章頁上也是 0 筆。時刻只存在於新聞索引 https://www.anthropic.com/news（同日 08:20 重抓，HTTP 200、463,036 bytes，站上沒有 feed）的 RSC payload：把跳脫還原後可讀到 \"publishedOn\":\"2026-08-14T19:16:00.000Z\",\"slug\":{\"_type\":\"slug\",\"current\":\"claude-text-watermark\"}，同一段的 \"title\" 逐字為 How Claude’s text watermark works；同一份索引的 HTML 清單也把 /news/claude-text-watermark 標成 <time>Aug 14, 2026</time>。19:16 是真實時刻，不是 DELTA-4-5 第 5–6 條說的 00:00／16:00 佔位值，因此換算台北時間：2026-08-14T19:16Z + 8 小時 = 2026-08-15 03:16（台北），事件日採 2026-08-15，與 DELTA-4-4 第 3 條表列「RSC publishedOn 08-14T19:16Z → 台北 08-15（換算）」一致。這是跨日案例，正文必須兩個日期都寫：官方頁面自己印的是 Aug 14, 2026，台北時間則落在 2026-08-15 凌晨 3:16。另外頁尾有「Updated Sep 1, 2026: Provided up to date information on the watermarking detection API.」——那是更新日，不是事件日，正文提到偵測 API 時要一併寫出這個更新日並歸因。",
+  "title_candidates": [
+    "Claude 的文字浮水印怎麼運作：不加隱藏字元，也查不出是誰寫的",
+    "為了歐盟 AI 法案，Claude 開始在文字裡留浮水印：一般人查得到嗎？",
+    "Claude 文字浮水印上路：改的是選字的隨機來源，不是在文字裡藏東西",
+    "文字浮水印不是你看得到的那種：Claude 的做法、限制與誰能檢驗"
+  ],
+  "title": "Claude 文字浮水印上路：改的是選字的隨機來源，不是在文字裡藏東西",
+  "summary": "台北時間 2026 年 8 月 15 日凌晨（Anthropic 官方頁面自己印的日期是 2026 年 8 月 14 日），Anthropic 在官網發表〈How Claude’s text watermark works〉，說明未來的 Claude 模型產生的文字會帶浮水印，並寫明這是為了遵守歐盟 AI 法案。做法是 Google DeepMind 在 2024 年《Nature》論文提出的 SynthID-Text 的一個版本：大型語言模型逐字生成時，遇到「換哪個字意思都差不多」的低風險選擇，本來由亂數決定，浮水印改成由一把金鑰加上前面幾個字來決定，於是整段文字留下一個讀者看不出、但持有金鑰者可檢出的樣式。Anthropic 逐條寫出它不做的事：文字裡不會多出任何東西、沒有隱藏字元、不需要額外 token 因此不會比較貴、不帶任何身分資訊、無法回溯到特定個人、組織或對話，也不改變輸出的著作歸屬或使用者依條款享有的權利。法源面，Anthropic 寫明自己與其他多家主要 AI 模型供應商、合計約 190 個簽署者於 2026 年 7 月簽了歐盟《AI 生成內容透明度行為準則》；歐盟執委會 2026 年 7 月 31 日的公告則寫明約 190 個組織在義務生效前簽署，且 AI 法案的標記義務自 2026 年 8 月 2 日生效。檢驗面對台灣讀者是壞消息：Anthropic 說偵測 API 目前是私有預覽，只開放給歐盟法規要求的合資格組織（例如主管機關、執法機關、媒體、事實查核者、獨立研究者、教育機構與歐盟公民社會團體）以及同樣負有查驗義務的企業，一般使用者拿不到；頁面另寫明 Anthropic 因為還沒有穩定的分區做法，發布時是全球一律套用。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "How Claude’s text watermark works",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "publisher": "Anthropic",
+      "fetched_at": "2026-09-23T08:20+08:00",
+      "http_status": 200,
+      "bytes": 193936,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Future Claude models will generate text that contains a watermark. This is a way of determining the likelihood that Claude was involved in writing the text, and we, along with several other major AI providers, are implementing this change to comply with the EU AI Act."
+    },
+    {
+      "title": "Strong backing for the Code of Practice on Transparency of AI-generated Content",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "publisher": "European Commission（Shaping Europe’s digital future）",
+      "fetched_at": "2026-09-23T08:22+08:00",
+      "http_status": 200,
+      "bytes": 94826,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "About 190 organisations signed the Code of Practice on Transparency of AI-generated Content ahead of the entry into application of the legal obligations."
+    },
+    {
+      "title": "Scalable watermarking for identifying large language model outputs",
+      "url": "https://www.nature.com/articles/s41586-024-08025-4",
+      "publisher": "Nature（Google DeepMind 等作者）",
+      "fetched_at": "2026-09-23T08:22+08:00",
+      "http_status": 200,
+      "bytes": 427057,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Here we describe SynthID-Text, a production-ready text watermarking scheme that preserves text quality and enables high detection accuracy, with minimal latency overhead."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "三條全部在 2026-09-23 08:20–08:22（台北）親自以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓，同一主機間隔 ≥1 秒，任何請求的 UA、查詢字串與標頭都沒有帶入任何人的姓名、email 或個人資料。原始 HTML 與抽出的純文字存在 C:\\Users\\x8120\\mokaair-work\\news44\\_raw\\ai-news-claude-text-watermark-20260815\\（claude-text-watermark.html／.txt、eu-code-of-practice.html／.txt、synthid-nature.html／.txt、news-index.html），抽字腳本與引文驗證腳本在 _tools\\ai-news-claude-text-watermark-20260815\\（extract.py、find_slug.py、dedupe.py、verify_quotes.py）。抽字方式：先刪 <script>／<style>，再刪 <!-- -->，區塊標籤換行後去標籤、html.unescape、壓空白。取得配方逐條說明：(1) Anthropic 的網址不可用猜的——直接猜 /news/how-claude-s-text-watermark-works 回 HTTP 404（59,419 bytes 的錯誤頁），正確網址是從官方索引 https://www.anthropic.com/news 的 RSC payload 與 HTML 清單中讀到的 /news/claude-text-watermark；該索引無 RSS。文章頁 200、193,936 bytes，抽出正文 15,376 字元，從 h1「How Claude’s text watermark works」到頁尾註腳與「Updated Sep 1, 2026」都讀到，不是導覽殼。(2) 歐盟頁是從 Anthropic 正文裡「190 total signatories」那個超連結直接跟過去的，沒有猜網址；200、94,826 bytes，抽出 9,252 字元，讀到「Publication 31 July 2026」、正文六段、簽署者名單與頁尾「Last update 17 September 2026」。這個網址不在 digital-strategy 的 press corner，不需要列印 PDF 端點。(3) Nature 論文是從 Anthropic 正文的「SynthID-Text paper」「Nature paper」兩個連結跟過去的；curl 會被加上 ?error=cookies_not_supported&code=… 的查詢字串後回 200、427,057 bytes，抽出 71,581 字元，摘要（Abstract）全文、作者列表與「Published: 23 October 2024」都讀到。(4) 本紀錄引用的 45 條英文引文已用 verify_quotes.py 逐條驗證為對應純文字檔的連續子字串，45 條全過、0 條落空。注意：文章頁的 <title> 與 og:title 用的是「How Claude’s text watermarking works」（watermarking），h1 與索引標題用的是「How Claude’s text watermark works」（watermark），引用標題時以 h1 為準。頁面使用 U+2019 彎引號與 U+2014 破折號，逐字引用時不要換成 ASCII。",
+  "verified_facts": [
+    {
+      "fact": "Anthropic 表示未來的 Claude 模型產生的文字會帶浮水印，用途是判斷 Claude 參與寫作的可能性，並寫明這項改動是為了遵守歐盟 AI 法案。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Future Claude models will generate text that contains a watermark. This is a way of determining the likelihood that Claude was involved in writing the text, and we, along with several other major AI providers, are implementing this change to comply with the EU AI Act."
+    },
+    {
+      "fact": "Anthropic 寫明文字裡不會多出任何東西，也沒有隱藏字元。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Nothing is added to the text and there are no hidden characters;"
+    },
+    {
+      "fact": "Anthropic 寫明浮水印不需要額外 token，也不會比較貴。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Watermarking doesn’t require extra tokens, and will not be more expensive;"
+    },
+    {
+      "fact": "Anthropic 寫明浮水印不帶任何身分資訊，無法回溯到特定個人、組織或對話。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Watermarking carries no identifying information and can’t be traced to a specific person, organization, or chat;"
+    },
+    {
+      "fact": "Anthropic 寫明讀者分辨不出帶浮水印與不帶浮水印的文字。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The difference between watermarked and un-watermarked text will not be distinguishable to readers;"
+    },
+    {
+      "fact": "Anthropic 寫明技術原理：利用「換哪個字都差不多」的低風險選擇留下一個讀者看不出、但持有金鑰者可檢出的樣式。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Watermarking uses low-stakes choices like these—which occur many times over a piece of generated text—to leave a pattern in Claude’s responses. That pattern is undetectable to the reader, but is detectable to anyone who has a key that encodes it."
+    },
+    {
+      "fact": "Anthropic 寫明採用的是 Google DeepMind 於 2024 年《Nature》論文發表的 SynthID-Text 手法的一個版本。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude’s text watermark is a version of the SynthID-Text approach published by Google DeepMind in a Nature paper in 2024."
+    },
+    {
+      "fact": "Anthropic 寫明這一類手法可追溯到 Scott Aaronson 於 2022 年的提案，共同的設計原則是浮水印只改變選字所用的隨機性來源。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It belongs to a family of approaches that go back to a proposal by Scott Aaronson in 2022, all of which share the same design principle that we described above—the watermark only changes the source of the randomness used to pick among words."
+    },
+    {
+      "fact": "《Nature》論文的標題為 Scalable watermarking for identifying large language model outputs，頁面標示 Published: 23 October 2024。",
+      "url": "https://www.nature.com/articles/s41586-024-08025-4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Published: 23 October 2024"
+    },
+    {
+      "fact": "《Nature》論文摘要寫明 SynthID-Text 不影響 LLM 訓練、只改動取樣程序，偵測時不需要用到底層的 LLM。",
+      "url": "https://www.nature.com/articles/s41586-024-08025-4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SynthID-Text does not affect LLM training and modifies only the sampling procedure; watermark detection is computationally efficient, without using the underlying LLM."
+    },
+    {
+      "fact": "《Nature》論文摘要寫明標準基準測試與人類並排評分顯示 LLM 能力沒有改變。",
+      "url": "https://www.nature.com/articles/s41586-024-08025-4",
+      "is_vendor_claim": false,
+      "verbatim_quote": "standard benchmarks and human side-by-side ratings indicate no change in LLM capabilities"
+    },
+    {
+      "fact": "Anthropic 表示浮水印不影響 Claude 輸出的品質。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Watermarking does not impact the quality of Claude’s output."
+    },
+    {
+      "fact": "Anthropic 寫明使用金鑰只能回答「這段文字有多大可能部分由 Claude 寫成」，不能確認文字是人寫的，也分辨不出是不是別的 AI 寫的。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Using our key, one can only answer the question “What is the likelihood this was partly written by Claude?” It doesn’t confirm whether the text was human-written, and it can’t tell whether the text was written by a different AI"
+    },
+    {
+      "fact": "Anthropic 寫明短樣本偵測效果不好，段落越長對 Claude 參與的信心越高。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Detecting a watermark also doesn’t work well on small samples, where there are fewer word choices and thus less information to go on. As a passage increases in length, confidence about Claude’s involvement increases too."
+    },
+    {
+      "fact": "Anthropic 寫明在事實性段落上浮水印較稀疏，因為可選的字較少。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Watermarking is sparser on factual passages where there are fewer choices that can be made without decreasing the accuracy of the text."
+    },
+    {
+      "fact": "Anthropic 寫明程式碼多半必須精確，因此帶的浮水印通常比其他文字型態少；但程式碼註解這類有自由選擇餘地的地方仍可帶浮水印。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "code—which in very many cases has to be exact—has generally less watermarking than some other forms of text."
+    },
+    {
+      "fact": "Anthropic 寫明程式碼註解等可任意選詞之處仍可使用浮水印，但對實際產出的程式碼影響極小。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Having said that, in areas where there is an arbitrary choice between particular words or terms within the code, the watermark can be used, such as comments within code."
+    },
+    {
+      "fact": "Anthropic 寫明浮水印只套用在 Claude 自己選的字上；Claude 校對人寫的文字時，因為幾乎每個字都是人寫的，可供浮水印附著的地方很少。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The watermark only applies to words Claude chooses."
+    },
+    {
+      "fact": "Anthropic 表示浮水印對模型速度影響極小，且因為不產生額外 token，供應與使用的價格相同。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "No. Watermarking has a negligible impact on the speed of models, and because it produces no extra tokens, the model is the same price to serve and use."
+    },
+    {
+      "fact": "Anthropic 寫明浮水印與其金鑰都不含任何可還原使用者、其組織或其與 Claude 對話內容的資訊。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "There’s nothing in the watermark, or its key, that would allow anyone to recover any information about the user, their organization, or their chats with Claude."
+    },
+    {
+      "fact": "Anthropic 寫明自己與其他多家主要 AI 模型供應商、合計約 190 個簽署者，於 2026 年 7 月簽署歐盟《AI 生成內容透明度行為準則》，該準則要求 AI 系統供應商使用「標記」AI 生成文字的方法。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re implementing watermarking to comply with the EU AI Act. Anthropic, along with several other major AI model providers and around 190 total signatories, signed the EU Code of Practice on Transparency of AI-Generated Content in July 2026."
+    },
+    {
+      "fact": "Anthropic 寫明發布時全球一律套用浮水印，理由是還沒有穩定的分區做法，並說會繼續評估不同做法、有進展會再說明。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re applying watermarking globally at launch because we don't yet have a durable way to scope it by region."
+    },
+    {
+      "fact": "Anthropic 寫明自 8 月 2 日起，歐盟要求服務其市場的 AI 供應商標記 AI 生成內容，其他主要模型開發商簽了同一份行為準則，也會各自實作自己的浮水印。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As of August 2, the EU requires AI providers serving its market to mark AI-generated content. Other major model developers have signed the same Code of Practice and will be implementing their own watermarks."
+    },
+    {
+      "fact": "歐盟執委會 2026 年 7 月 31 日的公告寫明約 190 個組織在法定義務開始適用之前簽署了《AI 生成內容透明度行為準則》。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "About 190 organisations signed the Code of Practice on Transparency of AI-generated Content ahead of the entry into application of the legal obligations."
+    },
+    {
+      "fact": "歐盟執委會寫明這是發生在 AI 法案標記義務於 2026 年 8 月 2 日生效之前。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This preceded the entry into force of the AI Act’s marking obligations on August 2, 2026."
+    },
+    {
+      "fact": "歐盟執委會列出的第 1 節簽署例子包含 Anthropic、Google、Meta、Microsoft、Mistral、Open AI 等。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Several well-established and prominent AI companies have committed to adhering to the code. Examples for Section 1 include: Aleph Alpha, Anthropic, Black Forest Labs, Cohere, Google, Meta, Microsoft, Mistral, Open AI, Synthesia."
+    },
+    {
+      "fact": "歐盟執委會寫明該準則分成兩節，分別對應生成式 AI 系統的供應商與部署者。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The code covers obligations for both providers and deployers of generative AI systems with 2 sections dedicated to each of them."
+    },
+    {
+      "fact": "歐盟執委會寫明法定義務只適用於 AI 系統的供應商，但第 1 節也可由提供標記與偵測方案者簽署。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Although the legal obligation applies only to providers of AI systems, Section 1 can also be signed by providers of marking and detection solutions"
+    },
+    {
+      "fact": "歐盟執委會寫明簽署者將受邀參與兩個將於 2026 年 9 月成立的工作小組。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Signatories will also be invited to collaborate in the two task forces, to be launched in September 2026."
+    },
+    {
+      "fact": "Anthropic 寫明偵測 API 目前是私有預覽（private preview），只開放給歐盟法律要求的合資格組織，頁面舉例包含主管機關、執法機關、媒體、事實查核者、獨立研究者、教育機構與歐盟公民社會團體。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are releasing a detection API in private preview. It is currently available to eligible organizations as required under EU law (such as regulators, law enforcement, media, fact-checkers, independent researchers, educational organizations, and EU civil society groups)."
+    },
+    {
+      "fact": "Anthropic 寫明偵測 API 也開放給同樣依該法負有查驗浮水印義務的企業，並計畫日後擴大開放。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It is also available for enterprises who are similarly obligated to verify watermarking for their own compliance with the Act. We plan to expand access to the detection API over time."
+    },
+    {
+      "fact": "Anthropic 寫明 Claude 產生支援格式的檔案（例如 .png、.jpg、.svg）時，會在檔案中繼資料附上一則經加密簽章的內容憑證，註明該檔案由 Claude 製作或處理，採用的是 C2PA 這個開放產業標準。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When Claude produces a file of a supported type (such as a .png, .jpg, or .svg), it will attach a content credential in the form of a small, cryptographically signed note in the file’s metadata, saying that the file was made or processed with Claude."
+    },
+    {
+      "fact": "Anthropic 寫明中繼資料標籤與浮水印非常不同：檔案本身沒有任何改變，不是嵌入也不是隱藏。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This metadata label is very different from a watermark. Nothing in the file changes—it is not embedded or hidden."
+    },
+    {
+      "fact": "Anthropic 寫明輕度編輯多半不會完全移除浮水印，逐字全部重寫則會；並補一句，在後者的情況下該文字是否還算 AI 生成本身就有爭議。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Light editing probably won’t remove the watermark completely; a complete rewrite where every word is replaced will."
+    },
+    {
+      "fact": "Anthropic 寫明浮水印只能判斷 Claude 在某個時點很可能參與了該內容，無法分辨「Claude 寫的」與「Claude 大幅編輯過」。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A watermark can only determine that Claude was likely involved with the content at some point. It cannot distinguish “Claude wrote this” from “Claude heavily edited this.”"
+    },
+    {
+      "fact": "Anthropic 寫明 Claude 產生的翻譯會帶浮水印，因為翻譯的每個字都是 Claude 選的。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Yes. A translation produced by Claude carries a watermark, because in this case every word is chosen by Claude."
+    },
+    {
+      "fact": "Anthropic 寫明歐盟法律對 2026 年 8 月 2 日之前推出的 Anthropic 模型設有過渡期，Anthropic 正在為那些模型加上浮水印，未來幾個月陸續推出。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The EU law includes a transition period for Anthropic models launched before August 2, 2026, and we’re working to add watermarking for those models as well. This will be rolled out over the coming months."
+    },
+    {
+      "fact": "Anthropic 寫明浮水印不改變輸出的所有權或著作歸屬，也不改變使用者依其條款享有的權利；只有 Claude 參與處理該內容或檔案時才會加上浮水印。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A watermark only helps test whether Claude might have produced or processed the content. It doesn’t say anything about ownership or authorship, and doesn’t change a user’s rights under our terms."
+    },
+    {
+      "fact": "Anthropic 寫明第三方 AI 偵測軟體（頁面舉例 Pangram）用的是不同方法，因為那些業者沒有 Anthropic 的金鑰，它們看的是行文上的「痕跡」，與檢查浮水印本質不同。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AI detection software uses a different method, because the companies that provide it don’t have our key."
+    },
+    {
+      "fact": "該頁面在事件日之後有一次更新，頁尾逐字印出更新日與更新內容。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Updated Sep 1, 2026: Provided up to date information on the watermarking detection API."
+    },
+    {
+      "fact": "文章頁在標題下方印出的日期為 Aug 14, 2026。",
+      "url": "https://www.anthropic.com/news/claude-text-watermark",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Aug 14, 2026"
+    },
+    {
+      "fact": "歐盟執委會該頁標示的發布日為 2026 年 7 月 31 日。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Publication 31 July 2026"
+    },
+    {
+      "fact": "歐盟執委會寫明該準則仍開放簽署，網頁上的簽署者名單會持續更新。",
+      "url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The code remains open for signature and the list of signatories below will be updated."
+    }
+  ],
+  "not_said": [
+    "Anthropic 這一頁沒有指名任何一個具體的 Claude 模型帶或不帶浮水印——原文只寫 Future Claude models，全篇正文（第 15–94 行的抽出文字）沒有出現 Mythos、Fable、Opus、Sonnet、Haiku 任何一個模型名（頁尾導覽列的模型名不算正文）。正文不可以寫「某某模型從某日起帶浮水印」。",
+    "沒有寫浮水印從哪一天開始實際生效、哪一個模型是第一個帶浮水印的，也沒有寫舊模型的補做在哪一天完成；只寫 over the coming months。",
+    "沒有區分 claude.ai 消費者產品、Claude Code 與 API 各自的適用範圍；原文一律寫 Claude and its outputs，全篇沒有出現 Claude Code。不可寫「API 輸出不受影響」或「只有網頁版才有」。",
+    "沒有提供任何偵測準確率、誤判率、最少字數門檻或信心分數的數字；全篇正文沒有任何百分比符號。不可寫「準確率九成」「至少要 300 字」這類數字。",
+    "沒有寫使用者可以關閉、退出或以參數停用浮水印；全篇正文沒有出現 opt、disable、turn off 任何一個字。也不可反過來斷言「一定不能關」，只能寫這一頁沒有說明。",
+    "沒有提到台灣，也沒有提到台灣的任何法規或主管機關；全篇正文沒有出現 Taiwan。",
+    "沒有寫偵測 API 的價格、申請條件細節、審核時程或私有預覽何時結束；只寫 We plan to expand access to the detection API over time。",
+    "沒有寫 Anthropic 會不會公開金鑰或交給第三方，也沒有寫金鑰輪替或外洩時如何處理。",
+    "沒有寫浮水印會不會跟著 Claude 在網頁或應用程式裡的摘要、標題等短輸出走（只以「短樣本偵測效果不好」概括），也沒有寫多輪對話中哪些片段算 Claude 選的字。",
+    "沒有寫 C2PA 內容憑證支援的完整檔案格式清單；原文用的是 such as .png, .jpg, or .svg，這是舉例不是全清單。",
+    "Anthropic 說會提供自己的 C2PA 檢查工具（we’ll be providing our own where you can drop a file and check），但沒有寫網址、也沒有寫上線日期；查核當天不可寫成「已經可以用」。",
+    "歐盟執委會那一頁沒有寫 Anthropic 或任何個別業者要用哪一種標記技術，也沒有背書 SynthID-Text；技術選擇是 Anthropic 自己的說法。",
+    "歐盟執委會那一頁沒有寫違反標記義務的罰則、主管機關的查核方式或適用的過渡期長度。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Anthropic 官方索引頁 https://www.anthropic.com/news 的 RSC payload 與其中的 publishedOn 時刻",
+      "seen_where": "2026-09-23 08:20 台北抓取，HTTP 200、463,036 bytes，存為 _raw/.../news-index.html；還原跳脫後讀到 \"publishedOn\":\"2026-08-14T19:16:00.000Z\",\"slug\":{\"_type\":\"slug\",\"current\":\"claude-text-watermark\"}，HTML 清單同時印出 Aug 14, 2026",
+      "why_excluded": "它只是事件日的來源與正確網址的來源，讀者不會需要點進去，因此列在 event_date_basis 與 sourcing_notes 而不放進 sources[]（sources 只放文章會引用內容的頁）。正文不可以把 19:16Z 這個時刻寫成「官方頁面上印的時間」——頁面上沒有印時刻。"
+    },
+    {
+      "claim": "偵測 API 的申請入口",
+      "seen_where": "Anthropic 正文「You can register interest in access here.」的 here 連到 https://forms.gle/9tGA33hPJJwtHsMk9（一個 Google 表單短網址）",
+      "why_excluded": "沒有開啟該表單（避免對第三方表單發出請求，也不會在任何請求中帶入個人資料），因此無法查證表單內容、欄位或是否仍開放。正文可以寫「官方頁面上有一個登記興趣的連結」，但不可以描述表單內容、不可以貼出該網址、更不可以建議讀者去填。"
+    },
+    {
+      "claim": "歐盟簽署者名單的現行筆數（頁面印出 Section 1 signatories: 95、Section 2 signatories: 192）",
+      "seen_where": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content 的名單區塊，頁尾另印 Last update 17 September 2026",
+      "why_excluded": "活資料。頁面自己寫名單會持續更新，而且兩節可由同一個組織重複簽署，95 + 192 ≠ 190，相加是錯的。正文只能寫執委會原文的「約 190 個組織、截至 2026 年 7 月底」，並寫明那是當時的數字；要寫 95／192 就必須同時寫出查核日與「兩節可重複簽署，不可相加」。"
+    },
+    {
+      "claim": "〈How Claude’s text watermark works〉的標題到底是 watermark 還是 watermarking",
+      "seen_where": "同一頁的 <title> 與 og:title 為「How Claude’s text watermarking works」，h1 與 /news 索引的標題為「How Claude’s text watermark works」",
+      "why_excluded": "兩者並存，無法判定何者為官方正式標題。正文引用英文原標題時一律採 h1 與索引一致的「How Claude’s text watermark works」，不要提這個不一致（對讀者無意義），但查核者要知道兩個字串都存在。"
+    },
+    {
+      "claim": "SynthID-Text 論文中「近 2,000 萬則 Gemini 回應」的實驗規模",
+      "seen_where": "https://www.nature.com/articles/s41586-024-08025-4 摘要：we conducted a live experiment that assessed feedback from nearly 20 million Gemini responses",
+      "why_excluded": "論文原文的參考文獻編號直接貼在 Gemini 後面（抽出文字為 Gemini6 responses），逐字引用會帶進編號；且這是 Google 的實驗規模，與 Anthropic 的實作無直接關係。若要寫進正文必須歸因給《Nature》論文並寫明是 Google DeepMind 在 Gemini 上做的，不得寫成 Anthropic 的測試數字。"
+    },
+    {
+      "claim": "Anthropic 內部測試的結果細節",
+      "seen_where": "Anthropic 原文 In internal testing, we’ve seen no impact of watermarking on the content, level of creativity, or readability of Claude’s text.",
+      "why_excluded": "純廠商宣稱，沒有公開任何方法、樣本數或報告。要寫必須整句歸因為「Anthropic 表示」，且不得寫成已驗證的事實，也不得與《Nature》論文的第三方結果混為一談。"
+    }
+  ],
+  "editorial_brief": "主軸有三條，缺一條這篇就白寫。(1) 這是什麼：Claude 的文字浮水印不是你看得到的那種浮水印，它不在文字裡加東西、沒有隱藏字元、不多花 token，改的只是「遇到換哪個字都差不多時，由誰來擲骰子」——本來是亂數，現在是金鑰加上前面幾個字。用 Anthropic 自己那個擲骰子改用圓周率數字的比喻，讀者就懂了。(2) 為什麼現在做：法源是歐盟 AI 法案，標記義務 2026 年 8 月 2 日生效，Anthropic 與約 190 個簽署者在 2026 年 7 月簽了《AI 生成內容透明度行為準則》，其他大廠簽了同一份、也會各自實作。這裡必須把「歐盟的法」與「台灣讀者會被影響」接起來：Anthropic 寫明因為還沒有穩定的分區做法，發布時全球一律套用——所以台灣使用者拿到的 Claude 文字同樣帶浮水印，即使台灣沒有這條法。(3) 讀者能做什麼、不能做什麼：不能自己查。偵測 API 是私有預覽，只給歐盟法規要求的合資格組織（主管機關、執法機關、媒體、事實查核者、獨立研究者、教育機構、歐盟公民社會團體）與同樣有查驗義務的企業；第三方偵測工具（頁面舉 Pangram）用的是完全不同的方法，因為它們沒有金鑰。就算查得到，浮水印也只能說「Claude 很可能參與過」，分不出是寫的還是大幅編輯的，短文、事實性段落、程式碼、校對後的文字都可能查不出來，逐字重寫則會消失。最後要清楚切開兩件常被混為一談的事：文字用浮水印（不改內容），圖檔用 C2PA 內容憑證（寫在中繼資料、檔案本身不變），站上已有專篇講 C2PA，這裡帶過連過去就好。",
+  "must_not_write": [
+    "不可寫「最近」「本週」「近日」「日前」「這幾天」：事件日是 2026 年 8 月 15 日（台北），距離查核日 2026 年 9 月 23 日已一個多月。需要交代為什麼現在才寫時，只准一句：「這一則在發布當時沒有排進本站的頭條批次，這一篇補上」。",
+    "不可只寫一個日期：官方頁面自己印的是 Aug 14, 2026，本站採用的事件日是台北時間 2026 年 8 月 15 日（凌晨 3 時 16 分），正文必須兩個都寫並說明是時差造成的。也不可把 2026-08-15 說成「官方公布日期」。",
+    "不可把 19:16Z 寫成「官方頁面上標示的發布時刻」：文章頁上完全沒有印時刻，該時刻只存在於 anthropic.com/news 索引的內部資料。",
+    "不可寫「浮水印是藏在文字裡的隱形字元／零寬字元／特殊符號」：Anthropic 逐條否認，原文為 Nothing is added to the text and there are no hidden characters。",
+    "不可寫「用記事本、Word 或某某線上工具就能看出浮水印」，也不可教任何「去除浮水印」的做法。",
+    "不可寫「可以查出是誰用 Claude 寫的」「可以回溯到某個帳號或某段對話」：原文明寫不帶身分資訊、無法回溯到特定個人、組織或對話。",
+    "不可寫「Claude 寫的文章一定查得出來」：短樣本、事實性段落、程式碼、僅校對的文字都可能查不出來；逐字全部重寫會讓浮水印消失。",
+    "不可把浮水印寫成「證明這篇不是人寫的」或「證明抄襲」：原文只能回答「有多大可能部分由 Claude 寫成」，不能確認是人寫的，也分不出別的 AI。",
+    "不可寫「台灣的老師／編輯可以申請偵測 API 來抓學生用 AI」：偵測 API 是私有預覽，開放對象是歐盟法律要求的合資格組織與同樣有查驗義務的企業，頁面沒有說台灣機構符不符合，也沒有寫申請條件細節。",
+    "不可貼出或引導讀者去填 Anthropic 頁面上那個 forms.gle 的登記表單，也不可描述表單內容（本次未開啟該表單）。",
+    "不可把 C2PA 內容憑證寫成浮水印：原文明寫兩者非常不同，檔案本身沒有任何改變、不是嵌入也不是隱藏。反過來也不可寫成「圖片也有浮水印」。",
+    "不可寫「.png、.jpg、.svg 是全部支援的格式」：原文用的是 such as，這是舉例。",
+    "不可指名任何具體 Claude 模型（Mythos、Fable、Opus、Sonnet、Haiku）帶或不帶浮水印，也不可寫某個模型從某日開始帶——原文只寫 Future Claude models 與「8 月 2 日前推出的模型有過渡期、未來幾個月陸續補上」。",
+    "不可寫「使用者可以關閉浮水印」或「一定不能關」：這一頁沒有寫，句型只能是「以 2026 年 9 月 23 日查核到的官方頁面未見說明」。",
+    "不可寫任何偵測準確率、誤判率或最少字數門檻的數字：這一頁沒有任何這類數字。",
+    "不可把「約 190 個簽署者」寫成現在式的精確人數，也不可把歐盟頁面上的 Section 1（95）與 Section 2（192）相加——同一組織可簽兩節，相加是錯的。要寫就寫執委會原文的「截至 2026 年 7 月底約 190 個組織」。",
+    "不可把歐盟 AI 法案的標記義務寫成台灣人的義務，也不可寫成「台灣也要這樣標」：本站已有一篇專門講這個界線，這篇只需一句帶過並連過去。",
+    "不可把 Anthropic 的內部測試結果寫成已驗證的事實，一律寫「Anthropic 表示」；《Nature》論文的第三方結果要分開歸因給 Google DeepMind 的論文，不可混成同一句。",
+    "不可寫「這是第一個／唯一一個文字浮水印」：原文自己寫這一類手法可追溯到 2022 年 Scott Aaronson 的提案，其他大廠也會各自實作。",
+    "不可再從頭解釋一次歐盟 AI 法案的透明度義務、聊天機器人告知義務或深偽標示——那是 ai-news-eu-transparency-20260802 與 ai-regulation-eu-act-taiwan 的內容，重講會變成重複文章。",
+    "不可再從頭解釋一次 C2PA／內容憑證怎麼查、怎麼會在轉檔時消失——那是 ai-image-watermark-c2pa 與 ai-term-content-credentials 的內容。",
+    "不寫購買建議、不比較訂閱方案、不寫「所以你應該改用哪個 AI」。"
+  ],
+  "live_data_warnings": [
+    "Anthropic 這一頁是活文件：頁尾已經有「Updated Sep 1, 2026: Provided up to date information on the watermarking detection API.」。撰稿與兩輪查核都要重抓，特別看偵測 API 那一段是否從 private preview 變成公開、以及是否新增了模型名稱或生效日期；若有變動，正文的狀態句要跟著改，並寫明更新日。",
+    "偵測 API 的狀態（private preview、開放對象清單）是本篇對讀者最重要的一句，也是最可能先變的一句。上線前必須重看，不可沿用本紀錄的描述而不重抓。",
+    "舊模型補做浮水印的進度是「未來幾個月陸續推出」，查核當天沒有任何完成日期。若之後官方補上時程，正文的寫法要改；在沒有新資訊前，一律寫「官方只寫未來幾個月陸續推出」。",
+    "Anthropic 說會提供自己的 C2PA 檢查工具但未給網址與日期。撰稿當天要重看這一句，若已上線且官方頁給了網址才可以寫，否則只能寫「官方表示會提供，查核當天尚未看到入口」。",
+    "歐盟那一頁的簽署者名單是活資料：頁面自己寫會持續更新，頁尾印 Last update 17 September 2026，名單區塊印 Section 1 signatories: 95、Section 2 signatories: 192。正文引用的「約 190 個組織」要綁定「截至 2026 年 7 月底」這個時點，不要當成現在式。",
+    "Nature 的頁面在 curl 下會被加上 ?error=cookies_not_supported&code=… 的查詢字串（每次的 code 不同）再回 200。內容包 sources 裡要寫乾淨的 https://www.nature.com/articles/s41586-024-08025-4，不要把那串查詢字串寫進去。"
+  ],
+  "overlaps_existing_article": [
+    "ai-news-eu-transparency-20260802（display_order 100，news_date 2026-08-02，本篇的第二個結尾連結）：已寫歐盟 AI 法案透明度規則自 2026 年 8 月 2 日適用，並用一般讀者看得懂的方式分清楚聊天機器人的身分告知、深偽的可見標示與「機器可讀標記」三層，說明供應商與部署者義務不同，最後給台灣創作者保留製作紀錄與查核發布平台要求的做法。以 2026-09-23 對該內容包全文檢查，「浮水印」「watermark」「SynthID」「C2PA」「Claude」出現次數全部為 0——它只說了「有機器可讀標記這種東西」，完全沒有說是怎麼做的、是誰做的。本篇正是那一篇的下一步：同一條法，某一家供應商實際怎麼實作。本篇不可重講該篇的三層架構與供應商／部署者之分，一句帶過並連過去即可。",
+    "ai-regulation-eu-act-taiwan（常青篇）：已寫歐盟 AI 法案 Regulation (EU) 2024/1689 的生效日與 2026 年 8 月 2 日適用、第 50 條要求生成內容帶機器可讀標記、以及台灣人工智慧基本法（民國 115 年 1 月 14 日公布、20 條）的對照，「8 月 2 日」在該篇出現 11 次。本篇不可再做一次法規比對，也不可重述條號。",
+    "ai-image-watermark-c2pa（常青篇）：已寫 AI 圖片的可見浮水印、SynthID 這類隱形浮水印、C2PA 內容憑證與 IPTC 中繼資料的差別，示範用 Verify、Inspect 與 Gemini 三個入口查一張圖，並說明截圖與轉檔為什麼會讓標示消失（「浮水印」38 次、SynthID 16 次、C2PA 18 次）。本篇提到 Claude 產生的圖檔走 C2PA 時，只寫 Anthropic 這一頁說了什麼，不重講怎麼查、也不重講轉檔會消失。",
+    "ai-term-content-credentials（常青術語篇）：已寫內容憑證／C2PA 記錄製作與編輯歷程、有效與失效各代表什麼，並已區分「來源憑證」與「浮水印」。本篇不可再定義一次內容憑證。",
+    "ai-detection-tools-reliability（常青篇）：已整理 GPTZero、Turnitin、OpenAI、SynthID 與 C2PA 官方頁自己寫的限制與誤判，包含 300 字門檻、改寫後失效、OpenAI 下架文字分類器等（SynthID 11 次、C2PA 8 次）。本篇談「浮水印查不查得出來」時只寫 Anthropic 這一頁的說法，不要把該篇的數字與門檻搬過來，也不要重做偵測工具比較。",
+    "ai-generated-content-disclosure（常青篇）：已寫 YouTube、Meta、TikTok 的標示規範與台灣現行法的狀態，並已說明 C2PA／SynthID 這類技術訊號「不等於你做了揭露」。本篇不談平台揭露義務。",
+    "ai-news-frontier-governance-20260528（display_order 153）：寫的是 OpenAI 前沿治理框架對應加州法與歐盟《通用人工智慧行為準則》，「行為準則」出現 8 次——但那是 GPAI 的行為準則，與本篇的《AI 生成內容透明度行為準則》是不同文件，正文提到行為準則時要寫全名以免讀者混淆，也不要互相引用。",
+    "ai-news-gemini-38-live-20260915（display_order 159）：內文有一句「發表文說 Google AI 產品生成的語音都會加上 SynthID 浮水印」。那是 Google 的語音浮水印，與本篇的 Claude 文字浮水印是不同公司、不同模態，不重疊，但不要寫成「Google 也做了同一件事」。",
+    "ai-term-deepfake（常青術語篇）：已寫來源紀錄可包含中繼資料、簽章或浮水印，並引 NIST 報告區分來源追蹤與內容偵測。本篇不重講深偽判讀。"
+  ],
+  "second_link": {
+    "slug": "ai-news-eu-transparency-20260802",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-eu-transparency-20260802",
+    "text": "歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？",
+    "verified": true,
+    "verification_note": "2026-09-23 讀 apps/api/app/guides/content/ai-news-eu-transparency-20260802.json（68,207 bytes，locales 為 zh-TW／en／ja／ko／zh-CN，news_date 2026-08-02、display_order 100、topics ai,ai-news），locales['zh-TW']['title'] 逐字為「歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？」（結尾是全形問號 U+FF1F），link text 直接照抄即可。同時核對 docs/news-2026-batch-4/check_article.py 第 170 行的 RELATED 對照為 \"ai-news-claude-text-watermark-20260815\": \"ai-news-eu-transparency-20260802\"，與 ASSIGNMENTS-44.md 第 4 列一致。"
+  },
+  "hero_label": "Claude 文字浮水印",
+  "diagram": {
+    "title": "浮水印標在哪、誰查得到",
+    "caption": "圖解：歐盟 AI 法案自 2026 年 8 月 2 日起要求標記 AI 生成內容，Anthropic 的做法是改變選字的隨機來源，文字裡不加字元、不多花 token、不含身分資訊，而檢驗用的偵測 API 只開放給合資格組織。資料查核日 2026 年 9 月 23 日。",
+    "nodes": [
+      [
+        "歐盟 AI 法案",
+        "8 月 2 日起要標記"
+      ],
+      [
+        "選字的隨機性",
+        "改由金鑰決定"
+      ],
+      [
+        "不加字不加錢",
+        "也不含身分資訊"
+      ],
+      [
+        "偵測 API",
+        "只開放合資格組織"
+      ]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-23",
+    "method": "三條 sources[] 於 2026-09-23 台北時間 09:1x 以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 自行重抓，同一主機間隔 ≥1 秒，任何請求的 UA、查詢字串與標頭都沒有帶入姓名、email 或個人資料：Anthropic 文章頁 HTTP 200／193,936 bytes（與研究代理 08:20 的抓取同大小，內容未變）、歐盟執委會頁 HTTP 200／94,826 bytes、Nature 論文 HTTP 200／427,071 bytes（curl 被加上 ?error=cookies_not_supported&code=… 的隨機查詢字串，故比研究代理多 14 bytes）。另外自行重抓 https://www.anthropic.com/news 索引（HTTP 200／463,036 bytes）核對事件日：RSC payload 讀到 \"publishedOn\":\"2026-08-14T19:16:00.000Z\" 與 slug current claude-text-watermark，HTML 清單印 <time>Aug 14, 2026</time>，換算台北 2026-08-15 03:16，與 slug 尾碼、news_date、DELTA-4-4 第 3 條一致。抽字腳本刪 <script>／<style>／<!-- -->、區塊標籤換行後去標籤、html.unescape、壓空白，Anthropic 15,349 字元（h1 到頁尾註腳全在，不是導覽殼）、歐盟 9,065 字元、Nature 72,105 字元。工具與原始檔在 C:\\…\\news44\\_tools\\ai-news-claude-text-watermark-20260815-r1\\。",
+    "claims_checked": 96,
+    "changes": [
+      {
+        "claim": "開頭段的歸因密度（FACTCHECK-44：開頭段最多一個歸因語）；英文原標題的撇號要照頁面的 U+2019。",
+        "before": "……；Anthropic 表示，這項改動與其他多家主要 AI 模型供應商一起進行，目的是遵守歐盟 AI 法案的規定。（並以 ASCII ' 寫〈How Claude's text watermark works〉）",
+        "after": "……；這項改動與其他多家主要 AI 模型供應商一起進行，目的是遵守歐盟 AI 法案的規定。（標題改用頁面自己的 U+2019）",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "description 說偵測 API 開放給「歐盟法規指定的」合資格組織。",
+        "before": "偵測 API 只開放給歐盟法規指定的合資格組織",
+        "after": "偵測 API 是私有預覽，只開放給歐盟法規要求的合資格組織",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "summary 第 4 條把全球套用推論成「台灣使用者的 Claude 文字同樣會帶有浮水印」。原文只寫 Future Claude models，且 8 月 2 日前推出的模型還在補做。",
+        "before": "台灣使用者的 Claude 文字同樣會帶有浮水印。",
+        "after": "台灣使用者不會因為不在歐盟而被排除在外。",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "正文第二節第三段同一個範圍誇大；並把歐盟法案寫成「台灣沒有這條法規」。",
+        "before": "換句話說，即使台灣沒有這條法規，只要是用 Claude 生成文字，同樣會帶有浮水印——",
+        "after": "換句話說，台灣不在這條歐盟法規的管轄範圍內，但只要用到帶浮水印的 Claude 模型，產生的文字一樣會有浮水印——",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "「逐字全部重寫，浮水印就會消失」漏掉 Anthropic 緊接著的但書，讀起來像去除浮水印的做法。",
+        "before": "但如果整段文字被逐字全部重寫，浮水印就會消失；",
+        "after": "但如果整段文字被逐字全部重寫，浮水印就會消失，同時補了一句：真到那一步，這段文字還算不算 AI 生成本身就有爭議；",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "「原文一律寫「Claude 及其輸出」」——該片語在正文只出現一次；同段的範圍誇大同上。",
+        "before": "原文一律寫「Claude 及其輸出」……只要文字由 Claude 生成，理論上都適用同一套浮水印規則；",
+        "after": "公告談的是「Claude 及其輸出」……文字由帶浮水印的 Claude 模型生成時，適用的就是同一套規則；",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "「這條歐盟法規本身管的是聊天機器人怎麼告知身分、深偽內容怎麼標示，跟這裡…是兩件事」——兩份來源都沒有這樣界定；標記義務正是同一套透明度規則的一部分，Anthropic 自己就是引它來做浮水印。",
+        "before": "這條歐盟法規本身管的是聊天機器人怎麼告知身分、深偽內容怎麼標示，跟這裡「某一家供應商實際怎麼做標記」是兩件事，本站已有專篇整理前者，不在這裡重講一次。",
+        "after": "歐盟這套透明度規則的全貌，以及台灣讀者該怎麼看待它，本站已有專篇整理；這裡談的是其中一家供應商實際怎麼做標記，不重講一次。",
+        "source_url": "https://digital-strategy.ec.europa.eu/en/news/strong-backing-code-practice-transparency-ai-generated-content"
+      },
+      {
+        "claim": "FAQ 第 3 題同一個範圍誇大。",
+        "before": "也就是說，只要文字由 Claude 生成，理論上台灣使用者同樣會受影響，即使台灣目前沒有這條法規。",
+        "after": "也就是說，台灣使用者不會因為不在歐盟而被排除，用到帶浮水印的 Claude 模型時，產出的文字一樣會帶浮水印。",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      },
+      {
+        "claim": "FAQ 第 4 題用「有相當機率」這個數字型說法（頁面沒有任何機率數字），且漏掉頁面自己寫的界線：分不出「Claude 寫的」與「Claude 大幅編輯過的」。",
+        "before": "只代表 Claude 有相當機率參與了這段文字……短樣本、事實性段落、程式碼、逐字重寫過的文字，都可能查不出來。",
+        "after": "只代表 Claude 很可能在某個時點參與過這段文字，分不出是 Claude 寫的還是 Claude 大幅編輯過的……短樣本、事實性段落、程式碼都可能查不出來，逐字重寫的文字則會查不出來。",
+        "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+      }
+    ],
+    "open_questions": [
+      "正文「浮水印只用在文字上」是綜合兩段的合理讀法，頁面本身沒有一句明講浮水印只限文字；它只說支援格式的檔案改附 C2PA 內容憑證、而且「非常不同」。若協調者要更保守，可改成「這一頁講的浮水印是文字用的」。",
+      "正文保留了「頁面上另外留了一個登記使用偵測 API 興趣的連結」。頁面原文確有 You can register interest in access here.，本輪依規定未開啟該 forms.gle 連結，因此無法確認表單是否仍開放；若協調者認為連提一句都可能引導讀者去填，可整句刪除。",
+      "開頭段保留研究紀錄核定的「台北時間 8 月 15 日凌晨 3 時 16 分」。該時刻已由我自行重抓 anthropic.com/news 的 RSC payload 核實（08-14T19:16:00.000Z），但文章頁本身沒有印時刻，索引頁也不在 sources[]；若協調者要讓每個數字都落在 sources[] 內，就把「3 時 16 分」刪成「凌晨」。"
+    ],
+    "coordinator_rulings": [
+      "事件日：文章頁 h1 下印 Aug 14, 2026，索引 RSC publishedOn 2026-08-14T19:16:00.000Z → 台北 2026-08-15 03:16。slug 尾碼、news_date、開頭段三處一致，兩個日期都有寫，符合 DELTA-4-4 第 3 條。",
+      "禁用語：全篇沒有「最近」「本週」「日前」「這幾天」「近日」，也沒有「本文」；DELTA-4-4 第 2 條核定的補寫句逐字出現一次。",
+      "沒有任何模型名（Mythos／Fable／Opus／Sonnet／Haiku）、沒有任何百分比或準確率數字——與來源一致：Anthropic 正文同樣 0 筆。",
+      "偵測 API 三處（summary、正文、FAQ 5）都寫私有預覽、只給合資格組織與有查驗義務的企業，沒有任何一處暗示台灣讀者可以申請；description 本輪補上「私有預覽」後四處一致。",
+      "歐盟透明度那一篇是連過去而不是重講：正文只留一句導引，結尾連結文字與目標內容包的 zh-TW title 逐字相同。",
+      "兩個結尾連結都以程式逐字比對過：索引篇「2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用」與歐盟篇「歐盟 AI 透明度規則上路：聊天機器人與生成內容如何標示？」都與目標內容包的 zh-TW title 完全相同，且兩個目標檔案都已存在。",
+      "AI 垂直只有一個 callout，沒有投資免責段落；全篇沒有購買建議或訂閱比較。",
+      "活資料：歐盟頁面上的 Section 1 signatories 95、Section 2 signatories 192 沒有被寫進正文，正文用的是執委會原文「By the end of July 2026, about 190 organisations」並綁定 7 月底時點——正確。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2; did not write the draft and did not run round 1)",
+      "checked_on": "2026-09-23",
+      "method": "三條 sources[] 於 2026-09-23 台北時間 09:20 自行重抓，同一主機間隔 ≥1 秒，任何請求的 UA、查詢字串與標頭都沒有帶入姓名、email 或任何個人資料：Anthropic 文章頁 HTTP 200／193,936 bytes、歐盟執委會頁 HTTP 200／94,826 bytes、Nature 論文 HTTP 200／427,071 bytes（curl 被加上 ?error=cookies_not_supported&code=… 的隨機查詢字串）。三份抽出的純文字字元數與第一輪完全相同（15,349／9,065／72,105），頁面自第一輪後未再變動；三頁都讀得到正文（Anthropic 讀到 h1 到頁尾註腳與「Updated Sep 1, 2026」、執委會讀到「Publication 31 July 2026」與六段正文、Nature 讀到標題、「Published: 23 October 2024」與 Abstract 全文）。做法：(1) 用程式把內容包拆成 87 條可查證主張（title／description 每句／每段每句／summary 每條／表格每列與 caption／圖解 caption／FAQ 每句／callout 每句／兩個結尾連結／三條 sources），以固定種子 20260923 抽出三分之一（29 條），與第一輪改過或新寫的 14 條合併，共 36 條逐條回到我自己抓的正文核對。(2) 研究紀錄全部 46 條 verbatim_quote 以程式做連續字串比對：45 條整句命中，第 21 條（verified_facts[20]）唯一落空的差異是我的抽字器在 </a> 後多插一個空格（原始 HTML 為 signatories</a>,），逐字核對 HTML 後判定引文正確，46/46 通過。(3) 否定句以程式回掃：兩份來源 taiwan 皆 0 筆、Anthropic 正文（第 10–68 行）opt／disable／turn off 皆 0 筆、模型名（Mythos／Fable／Opus／Sonnet／Haiku）與 Claude Code 皆 0 筆、百分比符號 0 筆、Claude and its outputs 出現 1 次、claude.ai 0 筆。(4) 兩個結尾連結以程式與目標內容包的 zh-TW title 逐字比對，兩條皆完全相同。(5) 段落字數、description 長度、歸因密度、禁用語、summary 與 FAQ 是否為正文子集皆以程式檢查。工具與抓取檔在 C:\\…\\news44\\_tools\\ai-news-claude-text-watermark-20260815-r2\\。",
+      "claims_checked": 36,
+      "changes": [
+        {
+          "claim": "開頭段的「凌晨 3 時 16 分」：該分鐘數只存在於 anthropic.com/news 索引的 RSC payload，而索引刻意不在 sources[] 裡；協調者裁定刪到「凌晨」。事件日兩個日期仍都寫，slug 尾碼／news_date／開頭段仍一致。",
+          "before": "換算成台北時間則落在 2026 年 8 月 15 日凌晨 3 時 16 分。",
+          "after": "換算成台北時間則落在 2026 年 8 月 15 日凌晨。",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "登記偵測 API 興趣的那一句（第一輪的 open question 2）：協調者裁定整句刪除，任何形式都不得提到那個 forms.gle 連結。",
+          "before": "跟拿金鑰核對浮水印本質上是兩回事。頁面上另外留了一個登記使用偵測 API 興趣的連結，但沒有寫申請條件或審核時程。",
+          "after": "跟拿金鑰核對浮水印本質上是兩回事。",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "上一條的連動：頁面其實印了 You can register interest in access here.，所以「要怎麼申請，頁面沒有寫」在刪掉前一句之後就站不住；改成頁面真正沒寫的兩件事（資格條件與時程）。",
+          "before": "至於這個範圍以外的人要怎麼申請，頁面沒有寫，只表示之後會逐步擴大開放。",
+          "after": "至於這個範圍以外的人要符合什麼條件、什麼時候排得到，頁面沒有寫，只表示之後會逐步擴大開放。",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "「浮水印只用在文字上」（第一輪的 open question 1）是綜合讀法，頁面沒有一句這樣寫；協調者裁定改成不帶絕對「只」字的寫法。",
+          "before": "浮水印只用在文字上；Claude 產生圖檔（例如 .png、.jpg 這類格式）時走的是另一套機制，叫 C2PA 內容憑證",
+          "after": "文字輸出用的是上面說的這套浮水印機制；Claude 產生圖檔（例如 .png、.jpg 這類格式）時走的是另一套機制，叫 C2PA 內容憑證",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "第一輪新寫的「台灣不在這條歐盟法規的管轄範圍內」是對法規適用範圍的斷言，兩份來源都沒有這樣寫（taiwan 皆 0 筆）。Anthropic 自己印的範圍句是 the EU requires AI providers serving its market to mark AI-generated content，改用它。",
+          "before": "換句話說，台灣不在這條歐盟法規的管轄範圍內，但只要用到帶浮水印的 Claude 模型",
+          "after": "換句話說，這條規定管的是在歐盟市場提供服務的 AI 供應商，但只要用到帶浮水印的 Claude 模型",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "第一輪把官方的界線「分不出 Claude wrote this 與 Claude heavily edited this」只寫進 FAQ 第 4 題，正文完全沒有這句——違反「FAQ 的答案 ⊆ 正文」。把它補進正文第四節第一段（FAQ 不動）。",
+          "before": "Anthropic 寫明，用金鑰只能回答「這段文字有多大可能部分由 Claude 寫成」，不能確認文字是不是人寫的",
+          "after": "Anthropic 寫明，用金鑰只能回答「這段文字有多大可能部分由 Claude 寫成」，也就是 Claude 很可能在某個時點參與過，但分不出是 Claude 寫的還是 Claude 大幅編輯過的；這個結果不能確認文字是不是人寫的",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "summary 第 4 條漏掉原文的限定詞 at launch（正文第二節第三段有寫「發布時」，summary 沒有）。原文同一段還接著寫 we will continue to evaluate different approaches，少了限定詞會讀成永久政策。",
+          "before": "因為還沒有穩定的分區做法，Anthropic 選擇全球一律套用",
+          "after": "因為還沒有穩定的分區做法，Anthropic 發布時選擇全球一律套用",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        },
+        {
+          "claim": "表格「適用範圍」列同一個限定詞缺漏。",
+          "before": "全球一律套用，因為還沒有穩定的分區做法",
+          "after": "發布時全球一律套用，因為還沒有穩定的分區做法",
+          "source_url": "https://www.anthropic.com/news/claude-text-watermark"
+        }
+      ],
+      "open_questions": [
+        "description 寫「偵測 API 是私有預覽，只開放給歐盟法規要求的合資格組織」，省略了原文另外列的第二類對象（It is also available for enterprises who are similarly obligated…）。正文第三節第一段與 FAQ 第 5 題兩處都寫全了兩類，description 目前 183 字元、上限 200，塞不下完整的第二類。本輪判定為可接受的濃縮，未改；若站主要求四處字面完全一致，需要重寫 description。",
+        "偵測 API 的狀態仍是本篇最可能先過期的一句。本輪 2026-09-23 重抓時仍為 private preview，開放對象清單與第一輪一字未改，頁尾仍是 Updated Sep 1, 2026。上線前若又隔了一段時間，這一句與「舊模型未來幾個月陸續補上」都要再重抓一次。",
+        "sources[].checked_on 三處維持 2026-09-23（撰稿者實際讀到來源的那一天），本輪沒有因為重查而更動；title 未變動，因此研究紀錄的 title 也未動。",
+        "刪掉登記興趣那一句之後，正文第三節第二段只剩一句（105 字元）。規格管的是每節 2–4 段，不是每段幾句，check_article.py 通過；若編輯覺得太短，可由協調者決定要不要把第三方偵測工具那一句拆成兩句。"
+      ],
+      "coordinator_rulings": [
+        "裁定一（已套用）：「浮水印只用在文字上」改成不帶絕對「只」字的寫法，寫成文字輸出用這套機制、圖片另走 C2PA 中繼資料憑證。現行句為「文字輸出用的是上面說的這套浮水印機制；Claude 產生圖檔（例如 .png、.jpg 這類格式）時走的是另一套機制，叫 C2PA 內容憑證……」，對應原文 When Claude produces a file of a supported type (such as a .png, .jpg, or .svg), it will attach a content credential… 與 This metadata label is very different from a watermark.",
+        "裁定二（已套用）：刪除登記使用偵測 API 興趣那一句，任何形式都不得出現 forms.gle 的引用。全篇 grep forms.gle／登記／表單皆為 0 筆。這條裁定推翻研究紀錄 unverified_or_excluded 第 2 項「正文可以寫『官方頁面上有一個登記興趣的連結』」的許可。",
+        "裁定三（已套用）：「凌晨 3 時 16 分」改為「台北時間 8 月 15 日凌晨」，因為分鐘數來自 /news 索引，而索引不在 sources[] 裡。這條裁定推翻研究紀錄 must_not_write 第 2 項要求寫出「凌晨 3 時 16 分」的部分；該項的其餘要求（兩個日期都要寫、說明是時差造成的）仍然遵守：開頭段仍同時有 2026 年 8 月 14 日與 2026 年 8 月 15 日，slug 尾碼 20260815 ＝ news_date ＝ 開頭段 ＝ DELTA-4-4 第 3 條表列。",
+        "第一輪九處改動逐條覆核：七處維持（歸因密度與 U+2019 撇號、description 的「私有預覽／要求」、summary 第 4 條與 FAQ 第 3 題的範圍限縮、逐字重寫的但書、「公告談的是」、歐盟那一篇的導引句），兩處再改（第一輪新寫的「台灣不在這條歐盟法規的管轄範圍內」改用 Anthropic 自己的市場範圍句；FAQ 第 4 題新寫的官方界線補進正文）。",
+        "研究紀錄 46 條 verbatim_quote 以程式對我自己抓的正文做連續字串比對，46/46 通過（其中 1 條的落空是抽字器在 </a> 後多插空格造成，已回原始 HTML 確認引文逐字正確）。",
+        "界線再掃：topics 為 ai／software／ai-news，不帶 finance；只有一個一般 callout、沒有投資免責段落；沒有購買、訂閱、升級或投資建議；沒有推定台灣讀者可以申請偵測 API（FAQ 第 5 題開頭直接寫「不行」）；廠商宣稱都有歸因；沒有重寫既有 AI 文章（C2PA 與歐盟透明度兩處都只導引不重講）。",
+        "reader-first 與機械規則：全篇無「最近」「本週」「日前」「這幾天」「近日」「本文」（本站 5 次）；description 以「（2026 年 9 月查證）」收尾、183 字元；title／description／summary 無篩選筆數；歸因密度開頭段 1 個、每個正文段 ≤2 個（第 14 段為「Anthropic 特別強調」與「官方頁面寫明」兩個）；段落總字數 2,892（1,800–3,000）。",
+        "兩個結尾連結以程式與目標內容包的 zh-TW title 逐字比對：ai-news-2026-january-september-index 與 ai-news-eu-transparency-20260802 兩條都完全相同，兩個目標檔案都存在，check_article.py 沒有留下任何允許的 FAIL。"
+      ],
+      "self_check": "PYTHONUTF8=1 PYTHONIOENCODING=utf-8 ./.venv/Scripts/python.exe ../../docs/news-2026-batch-4/check_article.py ai-news-claude-text-watermark-20260815 → OK ai-news-claude-text-watermark-20260815 zh-TW paragraphs 2892（exit 0）；./.venv/Scripts/python.exe -m app.guides.pack_cli lint --kind life --slug ai-news-claude-text-watermark-20260815 → 只有 raw_internal_url 警告與兩筆 image_missing（exit 1，繪圖與 relink 之前的預期狀態）。",
+      "verdict": "ok"
+    }
+  }
+}

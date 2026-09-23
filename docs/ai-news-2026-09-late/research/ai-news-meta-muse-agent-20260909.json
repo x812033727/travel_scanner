@@ -1,0 +1,693 @@
+{
+  "slug": "ai-news-meta-muse-agent-20260909",
+  "vertical": "ai",
+  "display_order": 178,
+  "event_date": "2026-09-09",
+  "event_date_basis": "Meta Newsroom 的公告頁 https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/ 在 JSON-LD 與 og 標籤裡逐字印出 \"datePublished\":\"2026-09-08T19:00:51+00:00\" 與 article:published_time content=\"2026-09-08T19:00:51+00:00\"（2026-09-23 對抓下來的 646,535 bytes 原始碼 grep，兩個欄位各 1 筆、值相同，沒有 dateModified）。這是真實時刻不是 00:00／16:00 佔位值，依 DELTA-4-5 第 5–6 條要換算台北時間：2026-09-08T19:00:51Z ＝ 台北 2026-09-09T03:00:51+08:00，因此事件日為 2026-09-09，與 slug 尾碼、指派表與 DELTA-4-4 第 3 條表列一致。頁面本身在標題下方印的是美國日期 September 8, 2026，正文要兩個日期都交代（官方印 9 月 8 日、台北時間為 9 月 9 日凌晨）。附帶一個可查的觀察：這個站的日期區塊是「發布日 更新日」兩個日期相連排版——同頁 Related News 區塊把 Muse Spark 那篇印成「April 8, 2026 May 12, 2026」、把 Muse Image 印成「July 7, 2026 July 29, 2026」（站上既有文章也寫過 Muse Spark 有 5 月 12 日的更新），而本篇印的是「September 8, 2026 September 8, 2026」，兩個日期相同，可證截至 2026-09-23 查核當天這一頁發布後沒有被改寫過。",
+  "title": "Meta 推出 Muse 個人 AI 代理：只在美國上線，連外都要 Sentinel 核可",
+  "title_candidates": [
+    "Meta 推出 Muse 個人 AI 代理：只在美國上線，連外都要 Sentinel 核可",
+    "Muse 不是 Muse Spark：Meta 這次發表的是會動手的代理，不是模型",
+    "會替你寄信、下單的 AI 代理：Meta 用一台專屬虛擬機和一個 Sentinel 管住它",
+    "Meta Muse 上線美國：官方怎麼說它的安全設計，台灣現在還用不到"
+  ],
+  "summary": "2026 年 9 月 9 日（台北時間；Meta 官方頁面印的是美國時間 9 月 8 日），Meta 在 Newsroom 發表個人 AI 代理 Muse。要先分清楚兩件事：站上 2026 年 4 月已經寫過的 Muse Spark 是「模型」，這次發表的 Muse 是「產品」——一個會自己開瀏覽器、填表單、寄信與結帳的代理，官方說它由 Muse Spark 驅動。Meta 把安全架構寫得比一般發表稿細：每個使用者和自己的 Muse 共用一台雲端專屬虛擬機 Muse Secure VM，代理與資料都放在裡面；同一台機器上另有一個在系統層與 Muse 隔開的 Sentinel 代理，官方原文是「Nothing Muse does reaches the internet unless the Sentinel approves it」——Muse 只能提出動作，能不能連外、能不能動第三方服務由 Sentinel 決定，必要時再問使用者。憑證與密碼存在 Muse 看不到的儲存區，結帳走 Stripe 的 Link 產生一次性卡號，寄信與付款這類動作前會跳出確認。Meta 自己也寫「Muse isn’t immune to attack」，並說提示詞注入在整個業界仍是未解問題。對台灣讀者最關鍵的一句在公告最後：Muse 是 rolling out in the US，只在美國於 iOS、Android 與 muse.ai 推出，眼鏡是 coming soon；官方只寫「大部分需求免費、想做更多有訂閱方案」，四個官方頁面沒有印出任何一個價格。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "Introducing Muse: The World’s First Personal AI Agent Built for Everyone（Meta Newsroom 發表稿，含 Takeaways、How It Works、Built to be Private, Safe, and Secure、Looking Ahead 全文）",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "publisher": "Meta Newsroom",
+      "fetched_at": "2026-09-23T08:20+08:00",
+      "http_status": 200,
+      "bytes": 646535,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Nothing Muse does reaches the internet unless the Sentinel approves it, and it asks the person for permission when needed."
+    },
+    {
+      "title": "How We Built Safety Into Muse（Meta AI Research 技術長文，作者 Tarek Sheasha，20 分鐘閱讀；Muse Secure VM、Sentinel、最小權限、提示詞注入防禦、瀏覽器、付款、Bug Bounty、Muse Confidential VM、資料政策）",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "publisher": "Meta AI Research",
+      "fetched_at": "2026-09-23T08:24+08:00",
+      "http_status": 200,
+      "bytes": 189321,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Sentinel is a separate host-side agent from your Muse. It is the sole permission authority for approval to perform actions with connectors to third-party services and for all egress over the network. Muse proposes actions, but only Sentinel can grant permission to perform action."
+    },
+    {
+      "title": "How We Designed Muse（Meta 產品設計說明，作者 Mona Sarantakos with Christine Awad；系統提示詞第一句、背景執行與透明度、Goals 分頁、確定性控制與 human-in-the-loop、Artifacts）",
+      "url": "https://introducing.muse.ai/",
+      "publisher": "Meta",
+      "fetched_at": "2026-09-23T08:24+08:00",
+      "http_status": 200,
+      "bytes": 44788,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Our human-in-the-loop feature checks in with you on critical actions, like writing an email or making a purchase."
+    },
+    {
+      "title": "Introducing Muse Spark 1.3（Meta AI Research，驅動 Muse 的模型本身；發布日、供應管道與安全面的說明）",
+      "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "publisher": "Meta AI Research",
+      "fetched_at": "2026-09-23T08:28+08:00",
+      "http_status": 200,
+      "bytes": 189877,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Muse Spark 1.3 is available today in Muse Code and in Meta Model API."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條全部在 2026-09-23 08:20–08:28（台北）以 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 親自抓取，同一主機間隔 ≥2 秒，任何請求的 UA、標頭、查詢字串都沒有帶入任何人的姓名、email 或個人資料，也沒有填寫或送出任何表單。原始 HTML 存在 C:\\Users\\x8120\\mokaair-work\\news44\\_raw\\ai-news-meta-muse-agent-20260909\\（muse.html、security.html、designed.html、spark13.html、muse-ai-home.html），同目錄的同名 .txt 是抽字後的正文（先移除 <!-- --> 註解與 script／style／noscript，再 html.unescape，再把 NBSP 正規化成半形空白、U+2011 正規化成一般連字號、移除零寬字元）。抽字腳本、連結清單腳本與引句驗證腳本在 C:\\Users\\x8120\\mokaair-work\\news44\\_tools\\ai-news-meta-muse-agent-20260909\\。取得配方與必須知道的細節：(1) 主來源 about.fb.com 那一頁 HTTP 200、646,535 bytes、抽出正文 12,018 字元、439 行，正文從第 234 行「Introducing Muse…」起到第 271 行的 Categories／Tags 止；候選清單記錄的 675,748 bytes 與今天的 646,535 bytes 不同，最可能是 WordPress 站每次建置的資產清單不同（正文與 datePublished 都與候選清單所記一致），但探索代理當時沒有存下 body，所以我無法逐字 diff，只能說我今天讀到的是完整正文。(2) 另外三條都不是猜出來的網址，是從主來源正文的超連結點進去的：security.muse.ai（連結文字 How We Built Safety Into Muse）以 301/302 轉到 https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse，introducing.muse.ai（連結文字 How We Designed Muse）轉到 https://introducing.muse.ai/，research.meta.ai/blog/introducing-muse-spark-1-3 是正文「powered by Muse Spark」那個超連結的目標；sources[] 一律寫 curl -L 之後的最終網址。(3) 抽出正文長度：security 24,938 字元（128 行）、designed 9,029 字元（48 行）、spark13 10,558 字元（85 行），三頁都讀到完整正文（security 讀到結尾的註腳 1 與頁尾模型清單，designed 讀到「Ready to try Muse?」，spark13 讀到 Looking Forward）。(4) 所有 verbatim_quote 都用腳本對抽出的正文做連續子字串比對，全部命中；其中 security 那一條「we’re opening this bug bounty program to anyone who responsibly discloses issues」與 muse.ai 首頁那條「with 1Password integration coming soon」在原始 HTML 裡被行內標籤切開，只在抽出的正文中連續，查核代理若直接對 HTML 搜尋會誤判為 NOT FOUND。(5) 主來源正文「Muse is rolling out in the US on iOS, Android, and muse.ai, and coming soon to AI glasses.」這一句裡的 muse.ai 是超連結，抽字後會變成「and muse.ai , and coming soon」（多一個空格），所以我把這一句拆成兩段引；完整不帶多餘空白的版本只存在於頁面的 JSON-LD articleBody 與 og 描述裡。(6) 這一頁另外內嵌一段 ElevenLabs 朗讀用的文字，會把 US 寫成 you-ess、AI 寫成 ay-eye（grep 'you-ess' 可見），那是語音正規化字串不是正文，不可引用。(7) 頁尾的「United States (English)」「Canada (English)」是 Meta 站的地區／語系選單，不是文章內容；語系選單只提供英文、葡萄牙文、德文、法文、日文、韓文與兩種西班牙文，沒有任何中文版。",
+  "verified_facts": [
+    {
+      "fact": "Meta 在 2026 年 9 月 8 日（美國時間，台北時間 9 月 9 日凌晨 3 點）於 Newsroom 發表 Muse，標題自稱是全世界第一個為所有人打造的個人 AI 代理。這個「第一」是 Meta 自己的標題用字，本站不得當成事實敘述。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Introducing Muse: The World’s First Personal AI Agent Built for Everyone"
+    },
+    {
+      "fact": "頁面在標題下方印出的日期是 September 8, 2026。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 8, 2026"
+    },
+    {
+      "fact": "Muse 的定位：一個安全、私密的個人 AI 代理，會主動協助使用者達成目標並提出建議。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, Meta is introducing Muse, a secure, private personal AI agent that proactively helps with people’s goals and suggests ideas."
+    },
+    {
+      "fact": "Meta 對「代理」與「問答助手」的區分寫得很明白：Muse 不只是回答問題，而是實際把事情做掉。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Muse is a personal AI agent. It doesn’t just answer questions, it actually does the work."
+    },
+    {
+      "fact": "Muse 跑在 Muse Secure VM 上；官方對它的定義是一台專用虛擬機，同時容納代理本身與使用者的資料。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "a dedicated, virtual machine (VM) that houses both the agent and a person’s data"
+    },
+    {
+      "fact": "使用 Muse 的方式：在 Muse 應用程式裡，或直接在 WhatsApp 裡，像傳訊息給人一樣跟它說話。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse is designed around the way people already communicate, so talking to it works just like messaging another person, in the Muse app or directly in WhatsApp."
+    },
+    {
+      "fact": "Muse 能做的事包括寄電子郵件、訂行程這類任務，也包括比較大的目標。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It can handle tasks, like sending an email or booking travel, and it can take on big audacious goals."
+    },
+    {
+      "fact": "耗時較久的任務，Muse 會在使用者關掉應用程式之後繼續做，遇到變化或需要核可（例如寄信、付款之前）時才回來找人。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For tasks that take more time, Muse keeps working after people close the app, and comes back when something changes or when it needs approval, like before it sends an email or makes a purchase."
+    },
+    {
+      "fact": "付款：Muse 可以用 Stripe 打造的 Link 結帳。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When it comes time to pay, Muse can checkout with Link built by Stripe"
+    },
+    {
+      "fact": "Shop Pay 與 1Password 支援都還沒上線，官方用字是 coming soon。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Shop Pay is coming soon as another way to pay, along with 1Password support so Muse can use logins a person already has."
+    },
+    {
+      "fact": "Meta 宣稱 Muse Secure VM 具備其他代理都沒有提供的隱私、安全與資安保護。這是廠商比較性宣稱，本站沒有實測，不得寫成事實。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Muse Secure VM has first-of-its-kind privacy, safety, and security protections engineered into it that no other agent provides:"
+    },
+    {
+      "fact": "每個人的 Muse 跑在自己的雲端專屬電腦上，與其他人的代理隔離；使用者連接的各項服務的資料與憑證也存在那裡。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse runs on its own dedicated computer in the cloud, contained so no one else’s agent can reach it. That is where Muse lives and where the data and credentials for any service a person connects are securely stored."
+    },
+    {
+      "fact": "Sentinel 是跑在同一台機器上、在系統層與 Muse 隔開的另一個代理。這是本篇最核心的一句：Muse 做的任何事，沒有經過 Sentinel 核可都不能連上網際網路，必要時 Sentinel 會向使用者徵詢同意。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A separate Sentinel agent runs on that same machine, kept apart from Muse at the system level. Nothing Muse does reaches the internet unless the Sentinel approves it, and it asks the person for permission when needed."
+    },
+    {
+      "fact": "Muse 看不到使用者的密碼與付款方式；使用者交出的憑證會進入安全儲存區，Muse 用得到但看不到，連使用者自己在瀏覽器裡打進去的密碼也一樣。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse has no visibility into people’s passwords or payment methods. Any credentials a person shares go into secure storage, so Muse can use them without seeing them, including passwords a person types into the browser themselves."
+    },
+    {
+      "fact": "敏感動作（寄信、付款）之前 Muse 會先問使用者；Muse 也會提供完整的稽核軌跡，列出做過什麼與打算做什麼。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse checks with the person before sensitive actions like sending an email or making a purchase. Muse shows people a complete audit trail of everything it has done and plans to do."
+    },
+    {
+      "fact": "使用者自己選擇 Muse 要連哪些應用程式、給到什麼程度的存取權；以電子郵件為例，可以只讓它讀信，也可以讓它代為寄信。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "People choose which apps Muse connects to and exactly how much access it gets."
+    },
+    {
+      "fact": "使用者隨時可以改權限或中斷某項服務，也可以選擇不讓自己與 Muse 的互動被用來訓練 Meta 的 AI 模型（也就是預設會被用來訓練，要自己去關）。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "People can change access or disconnect a service whenever they want. People can also opt out of their interactions being used to train Meta’s AI models."
+    },
+    {
+      "fact": "Meta 表示 Muse 不會把使用者的對話或虛擬機裡的資料分享給 Meta 的廣告系統。注意這是「不分享給廣告系統」，不是「不影響你看到的廣告」——見後面安全長文那一條。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Muse doesn’t share a person’s conversations or the data in their VM with Meta’s ad systems."
+    },
+    {
+      "fact": "Muse Confidential VM 還沒推出：官方寫的是今年稍晚會推出，屆時整台虛擬機（含資料與對話）會用只有使用者持有的金鑰加密，連 Meta 都存取不了。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Later this year, Meta will introduce Muse Confidential VM, where the whole VM, including a person’s data and conversations with Muse, is encrypted with a key only they hold, so not even Meta can access it."
+    },
+    {
+      "fact": "上線地區：只在美國推出，平台是 iOS、Android 與 muse.ai 網站，AI 眼鏡是 coming soon。官方原句因 muse.ai 是超連結而被切開，前半段逐字如引句。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse is rolling out in the US on iOS, Android, and"
+    },
+    {
+      "fact": "價格：官方只寫「大部分需求免費，想做更多的人有訂閱方案」，整頁沒有印出任何金額、幣別、方案名稱或方案內容。這是上一條同一句的後半段。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "free for most of what people need, with subscription plans for people who want to do more."
+    },
+    {
+      "fact": "Meta 把 Muse 定位成第一步，不是完整方案。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse is a first step: an agent that takes on more of the work so people can focus on what matters to them."
+    },
+    {
+      "fact": "Meta 宣稱 Muse 是為全世界數十億人打造、沒有學習曲線、不需技術經驗就能用。這是廠商宣稱，且與「只在美國推出」同時存在於同一頁，正文要並陳。",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Unlike other agents, Muse was built to work for billions of people worldwide, so there’s no learning curve."
+    },
+    {
+      "fact": "安全長文與發表稿同一天（September 8, 2026）發布，標示 20 分鐘閱讀，作者是 Meta Superintelligence Labs 的 Tarek Sheasha；文章開頭明講所描述的是「上線當下」的系統。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The following describes the system at launch."
+    },
+    {
+      "fact": "Meta 的威脅模型假設：無論核心模型多強，這種代理都會犯錯、也會經由它讀到的資料被攻擊，所以系統是「假設代理已經被攻陷」來設計的——harness 跑在自己的隔離單元裡、看不到真正的憑證、每一次與外界的互動都要經過 Muse 無法繞過的 Sentinel。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "the harness runs in its own isolated cell, it doesn’t see real credentials, and every interaction with the outside world runs through a Sentinel which the agent can’t override"
+    },
+    {
+      "fact": "Muse Secure VM 的正確心智模型：官方明講它是「同一台機器上兩個互相隔離的安全域」，不是「一個有 root 權限的 LLM 代理」。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The right mental model is two isolated security domains on one box, not an LLM powered agent with root."
+    },
+    {
+      "fact": "每台虛擬機是一個獨立的 Linux 主機，帶一個瀏覽器，以及足以做實際工作（編譯代理自己寫的程式、開發技能、處理並行子代理與排程）的儲存、CPU 與記憶體。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Each Virtual Machine(VM) is an isolated linux box with a browser and enough storage, CPU, and memory to do real work"
+    },
+    {
+      "fact": "Sentinel 的權責範圍在技術文裡寫得比發表稿更精確：它是與 Muse 分離的主機端代理，是第三方服務連接器動作與所有網路對外流量的唯一許可權威；Muse 只能提出動作，只有 Sentinel 能給許可。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sentinel is a separate host-side agent from your Muse. It is the sole permission authority for approval to perform actions with connectors to third-party services and for all egress over the network. Muse proposes actions, but only Sentinel can grant permission to perform action."
+    },
+    {
+      "fact": "憑證的做法：代理端只拿得到「替身」權杖，真正的憑證由 Sentinel 在網路邊界才換上去，所以代理從頭到尾看不到真的權杖——官方說這讓「用提示詞注入誘導代理吐出金鑰」變得沒有意義。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The agent never sees real tokens, which means any attempt to coerce the agent to reveal the actual secrets via prompt-injection or otherwise is futile."
+    },
+    {
+      "fact": "電子郵件連接器有額外處理：會用確定性過濾器加上一個分類模型，濾掉一次性驗證碼、密碼重設連結與登入魔術連結，避免代理（或操控代理的人）拿信箱去重設其他網站的密碼。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "So Muse’s email connector filters out one-time tokens, password reset links, and login magic links via both deterministic filters and a classifier model."
+    },
+    {
+      "fact": "瀏覽器是一個跑在虛擬化層後面的真實、最新版 Chromium；使用者看得到 Muse 在瀏覽器裡做什麼，也可以隨時接手。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse has a real up-to-date Chromium based browser running behind a virtualization layer. Users can see what Muse is doing in the browser and take over at any time."
+    },
+    {
+      "fact": "驅動瀏覽器的子代理看到的是頁面的無障礙樹快照，不是原始 DOM。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The sub-agent, which drives the Browser, sees an accessibility tree snapshot of the page"
+    },
+    {
+      "fact": "付款時會產生一次性卡號送給商家，而不是使用者真正的信用卡號。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When making a payment, a single-use card number is issued, and that’s what gets passed through to the merchant’s website, rather than your regular credit card."
+    },
+    {
+      "fact": "一次性卡號的三個限制：綁定該商家、綁定該金額、只在有限期間內有效。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The credential is tied to that particular merchant, a particular dollar amount, and only valid for a limited period of time."
+    },
+    {
+      "fact": "Bug bounty 從發表當天起對所有人開放；獎金上限 300,000 美元，其中影響單一使用者的成功提示詞注入上限 130,000 美元。「up to」是上限不是實付金額。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The program awards up to $300,000 for valid reports, including up to $130,000 for successful prompt injection attempts that affect one user."
+    },
+    {
+      "fact": "Meta 自己承認的界線，是全篇最該寫進正文的一句：Muse 並非不會被攻擊，提示詞注入在整個業界仍是未解問題，Muse 有時候就是會犯錯。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse isn’t immune to attack. Prompt injection remains an open problem in the industry"
+    },
+    {
+      "fact": "今天的架構下 Meta 看得到資料：官方寫現行架構只是以作業政策限制 Meta 員工存取，並不阻止 Meta 在支援、維安或營運服務所需時存取資料。這一句直接限定了發表稿那句「不分享給廣告系統」的範圍。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It restricts access to your data by Meta personnel through operational policies. It does not prevent Meta from accessing data when necessary to support, secure or operate the service."
+    },
+    {
+      "fact": "Muse Confidential VM 的目標是以密碼學且可驗證的方式讓 Meta 無法存取虛擬機內資料；目前在少數受信任測試者手上，設計與原始碼已開始提供給外部稽核者，官方用字是「plan to deliver this capability later this year」。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Muse Confidential VM is intended to cryptographically and verifiably prevent Meta from accessing data in your VM."
+    },
+    {
+      "fact": "廣告的但書：Meta 說 Muse 上網時「看起來會像是你自己的活動」，所以請 Muse 去某個服飾網站買東西、訂餐廳或在 Marketplace 找商品，仍可能間接影響你看到的廣告。正文寫「不分享給廣告系統」時必須同時寫這一句。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "When Muse browses the internet, it will appear as your activity"
+    },
+    {
+      "fact": "訓練資料的處理：對話與工具呼叫的軌跡預設會被用來訓練模型，但在使用前會先做去識別化處理，移除主要的個人可識別資訊。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": true,
+      "verbatim_quote": "these trajectories are sanitized to remove key personally identifiable information before being used in training"
+    },
+    {
+      "fact": "完全不想被拿去訓練的人，可以在 Muse 設定裡用一個開關關掉。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you do not want your data to be used in model training at all, you can opt-out via a simple switch in Muse settings."
+    },
+    {
+      "fact": "在提示詞注入這項能力上，Meta 說 Muse Spark 1.3 接近業界最佳（SOTA）。這是廠商自報，沒有第三方數據。",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Muse Spark 1.3 is close to SOTA on this capability."
+    },
+    {
+      "fact": "Muse 的系統提示詞第一句被官方公開寫出來：「你的目的是讓使用者的生活更好。」",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your purpose is to make your user’s life better."
+    },
+    {
+      "fact": "Muse 有自己的電腦，含檔案系統與終端機，可以自己寫程式、做出任務需要的工具。",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse has its own computer, with a file system and a terminal, so it can write its own code and build the tools a task needs."
+    },
+    {
+      "fact": "它也有一個完整的網頁瀏覽器，可以搜尋、瀏覽網站、填表單、完成訂位與購買這類交易。",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It also has access to a full web browser, so it can search, navigate sites, fill out forms, and complete transactions, like booking and purchasing."
+    },
+    {
+      "fact": "Muse 會主動傳訊息給使用者，不需要使用者先開口。",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse is also proactive. It can send you messages without you prompting it."
+    },
+    {
+      "fact": "有兩個地方 Meta 認為對話介面不夠、非用確定性的 UI 不可：帶明確接受／拒絕按鈕的核可卡片，以及憑證的安全儲存。",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we were deliberate about where deterministic UI is non-negotiable: structured approval cards with clear accept/reject actions, and secure storage for your credentials"
+    },
+    {
+      "fact": "human-in-the-loop 的設計理由與預設值：設計團隊說要避免「橫幅盲視」（什麼都按同意），所以預設放行一般網頁瀏覽、遇到難以復原的動作才停下來問，而且這個預設可以由使用者調鬆或調緊。",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "So the default allows for standard browsing of the web and stops for anything hard to undo."
+    },
+    {
+      "fact": "設計團隊自己說這還很早期，並要使用者花時間熟悉設定與控制項。",
+      "url": "https://introducing.muse.ai/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It’s important to be thoughtful about how you use Muse, so take the time to familiarize yourself with our settings and controls."
+    },
+    {
+      "fact": "Muse Spark 1.3 這個模型是 2026 年 9 月 2 日發布的，比 Muse 這個產品早六天，是另一則獨立事件。",
+      "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 2, 2026"
+    },
+    {
+      "fact": "模型與產品是兩件事的最直接證據：Muse Spark 1.3 提供的管道是 Muse Code 與 Meta Model API（開發者用），而 Muse 是消費者用的代理產品。",
+      "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Muse Spark 1.3 is available today in Muse Code and in Meta Model API."
+    },
+    {
+      "fact": "Meta 說 Muse Spark 1.3 在代理與寫程式任務上的表現有提升。",
+      "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re excited to release Muse Spark 1.3, which delivers improved performance across agentic and coding tasks."
+    },
+    {
+      "fact": "Meta 說 1.3 在對抗性輸入與提示詞注入上的抵抗力有改善，對「不可逆動作」的判斷也更準。仍是廠商自報，沒有公布可查的第三方測試。",
+      "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Muse Spark 1.3 shows stronger adversarial robustness, with improved resistance to adversarial inputs and prompt injections."
+    },
+    {
+      "fact": "Muse Spark 的開放權重版本目前只是路線圖上的項目，還沒發生。",
+      "url": "https://research.meta.ai/blog/introducing-muse-spark-1-3",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We have an exciting roadmap lined up, including bigger models, the Muse Spark open weights release, and more."
+    }
+  ],
+  "not_said": [
+    "四個官方頁面都沒有印出任何價格、幣別、方案名稱、方案內容或免費層的用量上限；只有一句「大部分需求免費、想做更多有訂閱方案」。以 2026-09-23 查核，四頁全文搜尋 $、USD、month、price、pricing 都找不到任何與 Muse 訂閱有關的金額。",
+    "四個官方頁面的文章內文都沒有提到台灣，也沒有寫美國以外的任何上線地區、開放時程、等候名單或申請方式；正文裡唯一的地區字串是發表稿的 rolling out in the US。Meta Newsroom 頁尾的地區與語系選單另外印出十一個項目（2026-09-23 對抽出正文第 427–437 行清點）：United States (English)、Brazil (Português)、Germany (Deutsch)、France (Français)、Japan (日本語)、Korea (한국어)、Latin America (Español)、Spain (Español)、Canada (English)、EMEA (English)、India (English)；頁首的語系列另有 Japanese、Korean 等選項。那些是站台導覽，不是文章內容，不可當成上線地區的證據（must_not_write 第 17 條）；因此正文的否定句一律寫「這四頁的內文」而不是「這四頁」。",
+    "沒有任何一頁寫 AI 眼鏡的支援時間、支援哪幾款眼鏡，也沒有寫 Muse Confidential VM 的確切日期（只有「later this year」與「plan to deliver」）。",
+    "沒有任何一頁列出「上線時到底有哪些連接器」的完整清單；官方只舉了 email、calendar、Instagram、Facebook，以及 your car or your home 這種例子，而且用的是 like（舉例），不是全清單。",
+    "沒有任何一頁寫 Muse 支援哪些語言，也沒有寫是否支援繁體中文。Meta Newsroom 這一頁本身的語系選單只有英文、葡萄牙文、德文、法文、日文、韓文與兩種西班牙文，沒有中文版。",
+    "沒有任何一頁寫使用 Muse 的年齡限制、是否需要 Facebook 或 Instagram 帳號、是否需要 WhatsApp 帳號。",
+    "沒有任何一頁寫使用者數、等候名單人數、測試者人數或已開放的比例；Muse Confidential VM 只寫「a small group of trusted testers」，沒有數字。",
+    "沒有任何一頁提供非 Meta 的第三方測試、稽核報告或評測數據來佐證這套安全架構；安全長文只說已開始把 Muse Confidential VM 的設計與原始碼提供給外部稽核者，並承諾上線後會有可供任何人檢視的持續稽核——查核當天還沒有任何稽核結果可讀。",
+    "沒有任何一頁寫 Sentinel 本身是不是一個語言模型、它的誤判率、它被繞過的機率，也沒有寫 Sentinel 出錯時的責任歸屬。",
+    "沒有任何一頁寫 Muse 與 Meta One 訂閱服務的關係；Meta One 的公告與 Muse 的公告互不提及對方。",
+    "沒有任何一頁寫使用者停用 Muse、刪除帳號之後虛擬機裡的資料會怎麼處理，也沒有寫資料保留期限。",
+    "沒有任何一頁寫 Muse 能不能讀取使用者的 WhatsApp 訊息。官方只寫「可以在 WhatsApp 裡跟 Muse 對話」，那是聊天入口，不是說 WhatsApp 是一個連接器。",
+    "以 2026-09-23 對四頁查核，未見任何關於資費、退款、購買保障理賠流程的敘述；Link 的購買保障內容只有 Meta 轉述的一行，細節在 Stripe／Link 自己的頁面（本次未取用）。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "muse.ai 產品首頁的內容（Muse Secure VM 的產品說明、「Muse app on mobile, Mac, or directly in WhatsApp」的 Mac 版本、「with 1Password integration coming soon」、Link 購買保障是 AI 代理首例）",
+      "seen_where": "https://muse.ai/（2026-09-23 08:24 以 curl -sSL 抓取，轉址後最終網址 https://muse.ai/?aymh_complete=1，HTTP 200、108,257 bytes，抽出正文 3,110 字元，raw 存為 _raw/.../muse-ai-home.html）",
+      "why_excluded": "sources 上限四條，而且這一頁是產品行銷頁、實質內容與 Newsroom 發表稿重疊；另外它是一個登入牆（頁面上有「Mobile number or email (required)」欄位），我只讀取頁面、沒有輸入任何資料、沒有點任何按鈕、沒有送出任何表單。正文不得引用只有這一頁才有的內容——特別是「Mac」這個桌面版說法（Newsroom 只寫 iOS、Android 與 muse.ai）與這一頁對 Link 保障的措辭。"
+    },
+    {
+      "claim": "Link 購買保障的具體內容（損壞遺失、降價、免費退貨、退貨保證的實際條款與理賠方式）",
+      "seen_where": "Newsroom 發表稿把 Link’s purchase protections 連到 https://support.link.com/questions/what-s-covered-with-protections（第三方頁）",
+      "why_excluded": "那是 Stripe／Link 的頁面，不是 Meta 的一手公告，本次沒有取用。正文只能照 Meta 的措辭轉述（且要歸因給 Meta），不可描述保障條款細節、理賠流程或適用範圍，也不可把它寫成對台灣使用者有效的保障。"
+    },
+    {
+      "claim": "Muse Spark 1.3 的評測數據與基準分數",
+      "seen_where": "https://research.meta.ai/blog/introducing-muse-spark-1-3 的「For more details about our evaluations, see our report.」有一個 report 超連結",
+      "why_excluded": "沒有點開、沒有讀。正文一律不得寫任何 benchmark 名稱或分數。該頁正文自己印出的「~20% fewer tool calls and ~25% fewer tokens」是 Meta 工程師內部比較、且帶波浪號，與本篇主題（代理產品與安全架構）無關，也不寫。"
+    },
+    {
+      "claim": "Muse Image（2026 年 7 月 7 日）與 Muse Code、Meta Model API、Muse Glimmer 的內容",
+      "seen_where": "Newsroom 發表稿頁尾 Related News 區塊列出 Muse Image；安全長文與 Spark 1.3 頁的頁尾列出 Muse Code、Meta Model API 與歷代 Muse Spark",
+      "why_excluded": "都不是本篇事件，本次沒有逐篇取用。Muse Glimmer 與 Llama 的關係站上既有文章已經寫過（見 overlaps）。正文提到「Muse 是一個系列名稱」時最多一句帶過，不得展開介紹任何一個。"
+    },
+    {
+      "claim": "台灣是否真的連不上、註冊會不會被擋、用 VPN 會怎樣",
+      "seen_where": "無",
+      "why_excluded": "本站沒有帳號、沒有註冊、沒有實測，也不會為了測試去註冊或繞過地區限制。正文只能寫官方頁面寫的「rolling out in the US」，不可寫「台灣連不上」「註冊會被擋」這類未經驗證的操作結論，更不可提供任何繞過地區限制的方法。"
+    },
+    {
+      "claim": "Muse 與 Meta One 訂閱的關係、Muse 的訂閱方案是不是 Meta One",
+      "seen_where": "無（兩邊公告互不提及）",
+      "why_excluded": "沒有任何官方頁面把兩者連在一起。正文一律不得推論、不得暗示，連「可能是」都不要寫。"
+    },
+    {
+      "claim": "Meta Newsroom 頁面內嵌的 ElevenLabs 朗讀字串",
+      "seen_where": "muse.html 內含一段語音合成用的正規化文字，會把 US 寫成 you-ess、AI 寫成 ay-eye",
+      "why_excluded": "那是語音朗讀的發音正規化，不是文章正文。查核代理對原始 HTML 搜尋時會撞到，必須知道它不是引用來源。"
+    },
+    {
+      "claim": "探索代理當時記錄的 675,748 bytes 與今天的 646,535 bytes 之間的正文差異",
+      "seen_where": "候選清單 docs/news-2026-batch-4/candidates-secondary-2026-ai.md 第 32 與 69 列",
+      "why_excluded": "探索當時沒有把 body 存下來，無法逐字 diff。可以確認的是 datePublished 與候選清單記錄的完全相同（2026-09-08T19:00:51Z），且頁面自己印的「發布日 更新日」兩個日期都是 September 8, 2026（同站其他文章有更新時兩個日期會不同），所以判斷正文沒有被改寫；bytes 差異最可能來自站方每次建置的資產清單。正文不得寫成「官方更新過這一頁」。"
+    }
+  ],
+  "live_data_warnings": [
+    "四個頁面都是活文件。Meta Newsroom 這個站在文章有事後更新時，會把標題下的日期印成「發布日 更新日」兩個不同日期（同頁 Related News 的 Muse Spark 就是「April 8, 2026 May 12, 2026」）。撰稿與查核當天都要重看一次這兩個日期：只要第二個日期不再是 September 8, 2026，就表示這一頁被改過，引句要重驗。",
+    "「rolling out in the US」「coming soon to AI glasses」「Shop Pay is coming soon」「1Password support」都是會過期的狀態句。正文每一句都要帶查核日，寫成「以官方頁面查核到 2026 年 9 月 23 日為止」。",
+    "Muse Confidential VM 寫的是「later this year」（2026 年內）。這篇上線後不久就可能過期；正文要寫成「官方寫的是今年稍晚，查核當天尚未推出」，不要寫成未來式的承諾。",
+    "安全長文自己說描述的是「the system at launch」，並預告會隨威脅情勢調整。架構細節（Sentinel 的權責、bug bounty 金額上限、資料政策）都可能改，引用時一律綁查核日。",
+    "Muse Spark 的版本號會往前走（頁尾同時列出 Muse Spark、1.1、1.2，正文講的是 1.3）。正文不要寫「最新版模型」或「目前最強」，只寫查核當天的版本號與 Meta 自己的措辭。",
+    "muse.ai 是登入牆，內容隨時可能改版，而且本篇沒有把它列進 sources；查核代理不必為了驗證去註冊或送出任何表單。"
+  ],
+  "overlaps_existing_article": [
+    "ai-news-meta-muse-spark-20260408（display_order 131，本篇的第二個結尾連結）：已寫 Muse Spark 這個「模型」——2026 年 4 月 8 日由 Meta Superintelligence Labs 發表的原生多模態推理模型、5 月 12 日更新後擴展到社群軟體與智慧眼鏡（眼鏡首波只有美國與加拿大）、用它辨識社群貼文裡的戶外裝備要注意什麼、如何分辨創作者原文與助手生成內容、以及不能從模型名稱推定私訊存取範圍。本篇寫的是「產品」Muse 這個代理，不是模型：不要重講 Muse Spark 是什麼、不要重講那些社群使用情境與裝備辨識的提醒，模型只在「Muse 由 Muse Spark 驅動、1.3 版在 9 月 2 日發布」這一點帶到，並連過去。這正是本篇與那一篇唯一的重疊點，開篇就要把「模型 vs 產品」講清楚，因為兩篇的標題都有 Muse。",
+    "ai-news-meta-one-subscription-20260915（174）：已寫 Meta One 訂閱服務（2026 年 9 月 15 日）——官方說核心體驗維持免費、付費解鎖更多 Meta AI 媒體生成（含用 Muse 模型生成影片與 Instagram 的 Restyle）、價格與供應可能因地區而異、公告全文未提台灣。本篇提到 Muse 的「subscription plans」時，絕對不可以說那是 Meta One，也不要重講 Meta One 的免費付費界線；兩則公告互不提及對方。",
+    "ai-news-google-cc-family-agent-20260918（166）：已寫 Google Labs 的個人 AI 代理 CC 擴大成一家最多 6 人共用、有自己的 Google 帳號，並寫了官方列出的美國與 18 歲以上條件。題材同屬「個人代理、只開美國」，本篇最多用一句對照（同一段時間兩家都在推個人代理、都只開美國），不要重新介紹 CC 是什麼。",
+    "ai-news-openai-agents-api-20260910（145）：已寫 OpenAI Agents API 公開 beta，是給開發者的代理框架，並寫了資料落地只支援美國、不支援零資料保留、委託前該問的權限與停止機制。那一篇的讀者是會委託外包做自動化的人，本篇的讀者是一般使用者；不要重講 Agents API 的計費與資料落地。",
+    "ai-prompt-injection-explained（常青教學）：已抄出 OWASP 與 OpenAI／Anthropic／Google 官方頁對直接注入與間接注入的定義原文、官方舉例與官方寫出來的緩解措施，也整理了 AI 瀏覽器、代理讀信、MCP 工具、客服機器人四個入口。本篇不要從頭解釋提示詞注入是什麼，只寫 Meta 在 Muse 上怎麼處理它（Sentinel、替身權杖、無障礙樹而非 DOM、信件連接器過濾、分類器），並以一句連過去。",
+    "claude-in-chrome-browser-agent（常青教學）：已寫瀏覽器代理怎麼逐站授權、看得到什麼、會停在哪裡等你，以及提示詞注入為什麼是主要風險。本篇不要重講瀏覽器代理的一般風險。",
+    "ai-browsers-guide（常青教學）：已整理 Comet、Dia、Chrome 的 Gemini、Edge 的 Copilot 模式與 Brave Leo 的代理功能，並拆解提示詞注入、密碼付款、隱私設定三類風險。本篇不要寫成 AI 瀏覽器比較。",
+    "meta-ai-whatsapp-instagram（常青教學）：已寫 Meta AI 在 WhatsApp、Instagram、Messenger、Facebook 與 meta.ai 的五個入口、台灣能不能用要看哪一頁、端對端加密不涵蓋你和 Meta AI 的對話、以及四種現在就能做的限制。本篇寫「在 WhatsApp 裡跟 Muse 對話」時，必須說清楚那不是既有的 Meta AI，也不要重講 Meta AI 的入口與隱私設定。",
+    "llama-models-explained（常青教學）：已寫 Llama 與 Muse 系列的關係——Muse Spark 沒有公開權重、只有私有 API 預覽，Muse Glimmer 30B 走 Apache 2.0，Meta 目前主推 Muse 系列。本篇提到「Muse Spark 的開放權重版本還在路線圖上」時不要展開，那一篇已經把授權這條線寫完了。",
+    "ai-model-release-timeline-2026 與 ai-model-comparison-table-2026（常青對照表）：時間軸與規格表都已經收了 Meta 的模型發布。本篇是產品新聞，不要列模型規格、不要做跨家比較。",
+    "站上目前沒有任何一篇寫過 Muse 這個代理產品、Muse Secure VM、Sentinel 或 Muse Confidential VM（2026-09-23 對 apps/api/app/guides/content/ 以 Sentinel、Muse Secure、Confidential VM 三組關鍵字 grep，命中檔案數皆為 0）。這一整塊都是新的，可以寫，而且是本篇的主體。"
+  ],
+  "second_link": {
+    "slug": "ai-news-meta-muse-spark-20260408",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-meta-muse-spark-20260408",
+    "text": "Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？",
+    "verified": true,
+    "verification_note": "2026-09-23 讀 apps/api/app/guides/content/ai-news-meta-muse-spark-20260408.json（72,621 bytes，locales 為 zh-TW／en／ja／ko／zh-CN，news_date 2026-04-08、display_order 131），locales['zh-TW']['title'] 逐字為「Meta Muse Spark 登場：社群裡的 AI 助手如何改變搜尋與提問？」（39 個字元，以 Python repr 逐字元核對），與 check_article.py 的 RELATED 第 168 行 \"ai-news-meta-muse-agent-20260909\": \"ai-news-meta-muse-spark-20260408\" 以及指派表第 2 列相符，link text 直接照抄即可。"
+  },
+  "corrections_applied": [],
+  "editorial_brief": "主軸只有一條，而且必須在標題與第一段就解決：這次發表的 Muse 是一個「會動手做事的產品」，不是站上四月寫過的 Muse Spark「模型」。兩篇的標題都有 Muse，讀者最容易在這裡搞混，所以開篇要一句話切開（模型是引擎，Muse 是整台車），然後把三件事講到讀者不會誤會——(1) 它到底會做什麼：自己開瀏覽器、填表單、寄信、下單、談價，關掉 App 還會繼續跑，做完會主動回來找你；(2) Meta 怎麼管住它：每個人一台專屬的雲端 Linux 虛擬機 Muse Secure VM，代理與資料都在裡面；同一台機器上有一個在系統層隔開的 Sentinel，Muse 只能「提出」動作，連外與動第三方服務的許可權在 Sentinel 手上，必要時再問你；密碼與卡號存在 Muse 看不到的地方，付款用一次性卡號，寄信與付款前跳確認卡片；(3) 界線在哪：Meta 自己就寫 Muse 不是攻不破、提示詞注入在業界仍是未解問題，而且「今天的架構並不阻止 Meta 在支援、維安或營運需要時存取你的資料」——能做到「連 Meta 都看不到」的 Muse Confidential VM 還沒推出。有一個很容易漏但對讀者最有價值的對照：發表稿說「不會把你的對話或虛擬機資料分享給 Meta 的廣告系統」，安全長文卻同時寫「Muse 上網看起來會像是你自己的活動」，所以請它去買東西仍可能間接影響你看到的廣告——這兩句要放在同一段，不可以只寫前面那句。對台灣讀者的關聯要誠實到近乎冷淡：這是一篇「你現在用不到，但值得先看懂」的文章。官方寫的是 rolling out in the US，只有 iOS、Android 與 muse.ai，眼鏡 coming soon，四個官方頁面沒有台灣、沒有亞洲、沒有任何其他國家，也沒有印出任何價格。真正能給台灣讀者帶走的是一組判斷標準：以後不管哪一家推出「會替你做事」的代理，都可以照 Muse 這套去問——它跑在哪裡、誰決定它能不能連外、我的密碼它看不看得到、哪些動作會先問我、有沒有完整紀錄可查、資料會不會拿去訓練與能不能關、廠商自己看不看得到。最後補一句為什麼現在才寫：照 DELTA-4-4 第 2 條，只准寫「這一則在發布當時沒有排進本站的頭條批次，這一篇補上」。標題方面，研究紀錄的 title 欄與內容包的 zh-TW title 必須逐字相同（check_article.py 會比對），撰稿代理若改用其他候選，要同步改這一份的 title。",
+  "must_not_write": [
+    "不可把這件事寫成「最近」「本週」「日前」「這幾天」：事件日是 2026 年 9 月 9 日（台北），距離撰稿已經兩週。要交代為什麼現在才整理，只准寫「這一則在發布當時沒有排進本站的頭條批次，這一篇補上」這一句（DELTA-4-4 第 2 條）。",
+    "不可把 Muse 與 Muse Spark 混為一談。Muse 是代理產品，Muse Spark 是驅動它的模型（1.3 版在 2026 年 9 月 2 日另外發布、走 Muse Code 與 Meta Model API）；也不可把 Muse 寫成 Muse Image、Muse Code、Muse Glimmer 或 Meta AI。站上 ai-news-meta-muse-spark-20260408 寫的是模型那一篇，不要重講它的內容。",
+    "不可寫或暗示台灣讀者現在可以使用、可以下載、可以註冊、可以排隊等候。官方原文是 rolling out in the US；四個官方頁面完全沒有提到台灣、亞洲或美國以外任何國家。也不可寫「預計何時來台灣」「應該很快會開放」——沒有任何一頁寫過時程，推測即是捏造。",
+    "不可寫任何價格、幣別、方案名稱、免費層用量上限或「一個月多少錢」。四個官方頁面一個金額都沒有印。只能照原文寫「官方表示大部分需求免費、想做更多的人有訂閱方案，但沒有公布任何價格」。",
+    "不可把 Muse 的訂閱方案寫成 Meta One，或說兩者有關；兩則官方公告互不提及對方（見 not_said 與 overlaps）。",
+    "不可把 Meta 的安全宣稱寫成已經驗證的事實。本站沒有實測，也沒有第三方稽核報告可讀；「Muse Secure VM 有其他代理都沒有的保護」「Muse Spark 1.3 接近 SOTA」「一次性卡號讓攻擊者拿了也沒用」全部是廠商說法，一律用「Meta 表示／官方寫的是」歸因。",
+    "不可寫成「Meta 看不到你的資料」「你的資料連 Meta 都拿不到」。安全長文明寫現行架構只用作業政策限制員工存取，並不阻止 Meta 在支援、維安或營運需要時存取；能做到 Meta 看不到的 Muse Confidential VM 是「later this year」的計畫，查核當天尚未推出，也還沒有任何稽核結果。",
+    "不可只寫「不會把對話分享給 Meta 廣告系統」而漏掉安全長文那個但書：Muse 上網時會被視為使用者本人的活動，所以請它買東西、訂餐廳仍可能間接影響看到的廣告。兩句一定要同段出現。",
+    "不可寫「你的資料不會被拿去訓練」。預設會：軌跡會先去識別化再用於訓練，要完全不被使用必須自己去設定裡關掉那個開關。反過來也不可寫成「Meta 會直接拿你的原始對話訓練」。",
+    "不可寫 Sentinel 能保證安全、能擋下所有攻擊，或把它寫成防毒軟體、防火牆。官方的定位是「連接器動作與所有對外流量的唯一許可權威」，而且 Meta 自己寫 Muse isn’t immune to attack、提示詞注入在業界仍是未解問題。這一句一定要寫進正文，不可以為了讀起來漂亮而省略。",
+    "不可寫攻擊手法、繞過方式或任何可操作的注入範例。資安題目只寫影響範圍與使用者該注意什麼（BRIEF 與 DELTA 的資安規則）。bug bounty 的 30 萬美元與 13 萬美元只能寫成「上限」（官方用字是 awards up to），不可寫成已經付出的金額或行情。",
+    "不可寫 Shop Pay、1Password、AI 眼鏡已經可用：三者官方用字都是 coming soon。也不可寫 Muse Spark 已經開放權重——那只是 Spark 1.3 頁面路線圖上的項目。",
+    "不可列出「Muse 支援哪些連接器」的清單並當成完整清單。官方只用 like 舉了 email、calendar、Instagram、Facebook 與「你的車、你的家」，那是舉例不是全清單。",
+    "不可寫 Muse 會讀取或代收使用者的 WhatsApp 訊息。官方只寫「可以在 WhatsApp 裡跟 Muse 對話」，那是聊天入口；也不可把它寫成既有的 Meta AI in WhatsApp（站上另有專文）。",
+    "不可使用「首度」「第一個」「唯一」「史上」「最強」這類最高級當本站的敘述。頁面標題自稱 The World’s First Personal AI Agent、Link 保障自稱 the first AI agent covered、Muse Spark 自稱 Meta’s most capable model to date——這三個都只能寫成「Meta 自稱」「官方標題寫的是」。",
+    "不可引用只出現在 muse.ai 首頁的說法（例如 Mac 桌面版、1Password integration coming soon 的那一句、該頁對 Link 保障的措辭）：那一頁沒有列進 sources。也不可描述 muse.ai 的登入欄位、不可教讀者怎麼註冊、不可提供任何繞過地區限制的方法。",
+    "不可引用頁面內嵌的 ElevenLabs 朗讀字串（把 US 寫成 you-ess、AI 寫成 ay-eye 的那一段），也不可把頁尾地區選單的「United States (English)」「Canada (English)」當成上線地區的證據。",
+    "不可寫 Link 購買保障的條款細節、理賠流程或適用範圍，更不可寫它對台灣使用者有效：那些在 Stripe／Link 自己的頁面，本次沒有取用。",
+    "不可寫任何 benchmark 名稱或分數，也不要引用 Spark 1.3 頁上「~20% fewer tool calls、~25% fewer tokens」那組 Meta 工程師內部比較數字——與本篇主題無關。",
+    "不可寫這一頁事後被官方更新過：查核當天頁面印的兩個日期都是 September 8, 2026。bytes 與探索紀錄不同是建置差異，不是改稿。",
+    "不可寫購買建議、訂閱建議或「值不值得」；AI 篇不帶 finance 主題、沒有投資免責 callout，只放一個一般 callout。",
+    "正文不要出現「本文」，指涉自己一律用「這一篇」；查證紀律不要寫進正文，「官方表示」只在需要歸屬廠商宣稱時使用，不要每一句都掛一次。"
+  ],
+  "hero_label": "只在美國上線的個人代理",
+  "diagram": {
+    "title": "Muse 想連外，要先過誰",
+    "caption": "圖解：Meta 官方說明的 Muse 權限流程——代理與資料放在同一台專屬虛擬機裡，Muse 只能提出動作，連外與動第三方服務由系統層隔開的 Sentinel 決定，寄信與付款這類動作會再問使用者一次。",
+    "nodes": [
+      [
+        "專屬虛擬機",
+        "代理與資料都在裡面"
+      ],
+      [
+        "Muse",
+        "提出動作，不能自己連外"
+      ],
+      [
+        "Sentinel",
+        "唯一核可者，可問使用者"
+      ],
+      [
+        "使用者",
+        "寄信、付款前先問過"
+      ]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "independent round-1 factcheck agent (Claude Opus 5)",
+    "checked_on": "2026-09-23",
+    "method": "2026-09-23 台北 09:03 把 sources[] 四條全部用 curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓一次，同一主機間隔 2 秒，任何請求的 UA、標頭、查詢字串都沒有帶入任何人的姓名、email 或個人資料，也沒有填寫或送出任何表單；四條都 HTTP 200，bytes 分別為 646,535／189,320／189,791／44,788，以與研究紀錄相同的抽字配方（移除 <!-- -->、script／style／noscript，html.unescape，NBSP 與 U+2011 正規化，去零寬字元）抽出正文後，字元數 12,018／24,938／10,558／9,029 與研究紀錄逐一相同，四頁都讀到完整正文。以抽出的正文做連續子字串比對驗證每一條 verbatim_quote，全部命中；title、description、summary、每一個 block、表格每一格與 caption、圖解 caption、FAQ 每一題、callout、兩個結尾連結、sources、hero_label 與 diagram 四格共 131 條主張逐條對回原文。兩個結尾連結的文字逐字比對目標內容包的 zh-TW title，皆相同。",
+    "claims_checked": 131,
+    "changes": [
+      {
+        "claim": "第一段：「四份官方頁面也都沒有提到台灣、亞洲或其他任何地區」",
+        "before": "2026 年 9 月 9 日（台北時間；Meta 官方頁面印的是美國時間 9 月 8 日）……台灣讀者現階段還用不到，四份官方頁面也都沒有提到台灣、亞洲或其他任何地區。",
+        "after": "2026 年 9 月 9 日（台北時間，美國時間 9 月 8 日）……台灣讀者現階段還用不到。（否定句移到第二段並改寫成「這四頁沒有提到台灣、亞洲或美國以外的任何國家」）",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "claim": "第二段把讀了哪四份文件、有沒有註冊實測寫進正文（DELTA-4-7 第 14 條：查證紀律不是內容）",
+        "before": "這一篇的資料在 2026 年 9 月 23 日查核，讀的是 Meta Newsroom 發表稿、Meta AI Research 的安全長文、Muse 的產品設計說明，以及驅動 Muse 的模型 Muse Spark 1.3 發表稿，共四份官方文件；本站沒有註冊、沒有實測 Muse，也不提供任何購買或訂閱建議。",
+        "after": "以下寫的是 2026 年 9 月 23 日查核當天的狀態，依據是 Meta 的四份官方頁面；這四頁沒有提到台灣、亞洲或美國以外的任何國家。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "claim": "「這是官方自己的用詞，這一篇不會照抄成本站的事實敘述」是編務自述，不是讀者要的內容",
+        "before": "Meta 在發表稿的標題自稱……這是官方自己的用詞，這一篇不會照抄成本站的事實敘述；同一篇稿子也寫道……這句宣稱與只在美國上線同時出現在同一頁，值得放在一起看。",
+        "after": "Meta 在發表稿的標題自稱……稿子裡也寫 Muse 是為全世界數十億人打造、沒有學習門檻。這兩句宣稱與「只在美國推出」印在同一頁，值得放在一起看。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "claim": "一次性卡號的說法是 Meta 對自家機制的描述，原句是「送到商家網站的是一次性卡號」而不是「不會把卡號交給店家」",
+        "before": "Muse 可以用 Stripe 打造的 Link 產生一次性卡號完成付款，不會把使用者真正的信用卡號交給店家。",
+        "after": "Muse 可以用 Stripe 打造的 Link 完成付款；Meta 說送到商家網站的是一組一次性卡號，不是使用者平常那張信用卡。",
+        "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+      },
+      {
+        "claim": "1Password 寫成「登入代填」；官方只寫「so Muse can use logins a person already has」，沒有說代填表單",
+        "before": "1Password 的登入代填也是 coming soon（表格同欄寫「1Password 登入代填」）",
+        "after": "讓 Muse 沿用使用者既有登入資訊的 1Password 支援也是 coming soon（表格改「1Password 登入支援」）",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "claim": "表格第三欄標「官方用字」，但多數格是中文轉述；caption 只列兩份來源，第一列的用字出自產品設計說明",
+        "before": "header「功能／現況／官方用字」；caption「整理自 Meta Newsroom 發表稿與 Meta AI Research 安全長文，查核日 2026 年 9 月 23 日。」",
+        "after": "header「功能／現況／官方說法」；caption「整理自 Meta Newsroom 發表稿、Meta AI Research 安全長文與 Muse 產品設計說明，查核日 2026 年 9 月 23 日。」",
+        "source_url": "https://introducing.muse.ai/"
+      },
+      {
+        "claim": "Bug 懸賞「對所有人開放」漏掉 responsibly disclose 的條件；「官方訂的上限」多一次歸因",
+        "before": "Bug 懸賞從發表當天起對所有人開放，成功回報最高上限是 300,000 美元……這兩個數字都是官方訂的上限，不是已經付出的金額。",
+        "after": "Bug 懸賞從發表當天起開放給任何循負責任揭露程序回報問題的人，有效回報最高上限是 300,000 美元……這兩個數字都是上限，不是已經付出的金額。",
+        "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+      },
+      {
+        "claim": "訓練與 Meta 存取寫成一段時，同一段落掛了三個歸因詞；拆成兩段後每個限定詞都保住自己的歸因",
+        "before": "（一段）資料訓練也是預設同意：……官方寫會先做去識別化處理再使用……至於 Meta 自己看不看得到……官方寫的是今年稍晚推出……",
+        "after": "（兩段）第一段講訓練預設與關閉開關，「官方寫的是會先做去識別化處理再使用」；第二段講 Meta 仍可存取與 Muse Confidential VM 的時程。",
+        "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+      },
+      {
+        "claim": "「入口只有這幾個」是封閉清單斷言；「台灣讀者現階段也沒有管道可以申請或排隊等候」是未經驗證的操作結論（研究紀錄 unverified_or_excluded 第 5 條）",
+        "before": "官方原文是 Muse is rolling out in the US……入口只有這幾個，而且只在美國；……台灣讀者現階段也沒有管道可以申請或排隊等候。",
+        "after": "發表稿的原文是 Muse is rolling out in the US……列出的入口只有這幾個，而且只在美國；……整頁沒有印出任何金額、幣別或方案名稱，四頁也都沒有寫美國以外的開放時程、等候名單或申請方式。",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      },
+      {
+        "claim": "研究紀錄 hero_label「美國先上線」暗示其他地區排在後面，四頁都沒有寫任何美國以外的時程",
+        "before": "美國先上線的個人代理",
+        "after": "只在美國上線的個人代理",
+        "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+      }
+    ],
+    "open_questions": [
+      "P12 的英文引句 Muse isn't immune to attack 用的是半形撇號，頁面上是 U+2019。repo 兩種寫法都有（多數內容包用半形），判為排版正規化、未改；協調者若要統一請一次處理全批。",
+      "「模型 vs 產品」目前出現在標題以外的四個地方（H2 標題、summary 第 2 點、內文一段兩句、FAQ 第 1 題）。與已發布的 ai-news-meta-muse-spark-20260408 的實質重疊只有「Muse Spark 是模型」一句加那個 inline 連結，沒有重講該篇的內容，所以沒有動；若協調者認定「一句帶過」包含 summary 與 FAQ，請指示要刪哪一處。",
+      "P9 的「Meta 把安全架構寫得比一般發表稿詳細很多」是本站對其他發表稿的比較，沒有來源可查，但也不是關於 Muse 的事實主張，判為語氣未改。",
+      "P11 把 surrogate token 譯成「替身憑證」；安全長文原文是 surrogate token，由 Sentinel 在網路邊界換成 real credential。語意不差，未改。"
+    ],
+    "coordinator_rulings": [
+      "事件日：JSON-LD 與 og 都印 2026-09-08T19:00:51+00:00（各 1 筆、無 dateModified），換算台北 2026-09-09T03:00:51+08:00，與 slug 尾碼、news_date、DELTA-4-4 第 3 條表列一致；正文兩個日期都在第一段。頁面標題下印的兩個日期都是 September 8, 2026，表示這一頁到 2026-09-23 為止沒有被改寫過。",
+      "價格：四頁全文搜尋金額，只有安全長文的 bug bounty 兩筆（$300,000／$130,000），沒有任何與 Muse 訂閱有關的金額、幣別或方案名稱；內容包也沒有寫任何價格。",
+      "驅動 Muse 的模型版本：發表稿只寫 powered by Muse Spark，但安全長文在講 Muse 自己的模型層防禦與瀏覽器子代理時兩次點名 Muse Spark 1.3（「Muse Spark 1.3 is close to SOTA on this capability.」「Driving the web browser … is something the Muse Spark 1.3 model is particularly good at.」），因此「驅動它的版本是 1.3」有官方頁面支撐，維持原句。",
+      "AI 篇只有一個一般 callout、沒有投資免責 callout，pack 符合；全篇沒有購買建議、沒有推薦式比價、沒有 benchmark 名稱或分數、沒有 Meta One 的關聯、沒有 muse.ai 首頁獨有的說法（Mac 版、1Password integration coming soon）、沒有繞過地區限制的方法。",
+      "自檢：check_article.py ai-news-meta-muse-agent-20260909 → OK（zh-TW paragraphs 2531），exit 0；pack_cli lint --kind life --slug … → exit 1，只有預期中的 image_missing×2 與 raw_internal_url×1。"
+    ],
+    "second_round": {
+      "checked_by": "independent round-2 factcheck agent (Claude Opus 5), did not write the draft and was not round 1",
+      "checked_on": "2026-09-23",
+      "method": "2026-09-23 台北 09:25–09:26 自己把 sources[] 四條再抓一次（curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間雔 2 秒，任何請求的 UA、標頭、查詢字串都沒有帶入任何人的姓名、email 或個人資料，沒有填寫或送出任何表單、沒有註冊 muse.ai）：四條皆 HTTP 200，以相同抽字配方抽出正文後字元數 12,018／24,938／10,558／9,029，與研究紀錄和第一輪逐一相同。54 條 verbatim_quote 全部以程式對我自己抽出的正文做連續子字串比對，全數命中，且沒有任何一條帶 ...／…／| 的拼接引文。覆核範圍：第一輪改過的 10 處與它新寫進去的每一句（逐句回來源原文）、從 117 條 CONFIRMED 中以定種隨機抽出的 39 條（seed 20260923）、以及四頁的金額與地區名重掃、兩個結尾連結對目標內容包 zh-TW title 的逐字比對、checked_on 四處一致性、summary 數字⊆正文、段落歸因密度與段落字數。",
+      "claims_checked": 63,
+      "changes": [
+        {
+          "claim": "第二段（第一輪新寫）「這四頁沒有提到台灣、亞洲或美國以外的任何國家」",
+          "before": "這四頁沒有提到台灣、亞洲或美國以外的任何國家。",
+          "after": "這四頁的內文沒有提到台灣，也沒有寫美國以外的任何上線地區。",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+        },
+        {
+          "claim": "FAQ 2 的同一個過寬否定句",
+          "before": "四份官方頁面都沒有提到台灣、亞洲或其他地區，也沒有寫任何開放時程。",
+          "after": "四份官方頁面的內文都沒有提到台灣，也沒有寫美國以外的上線地區或開放時程。",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+        },
+        {
+          "claim": "訓練資料「去識別化處理」比來源強；原文的限定詞 key 被丟掉",
+          "before": "官方寫的是會先做去識別化處理再使用",
+          "after": "官方寫的是會先移除主要的個人識別資訊再使用",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "claim": "bug bounty 條件（第一輪新寫）寫成「循負責任揭露程序」，原文是副詞不是一套程序",
+          "before": "開放給任何循負責任揭露程序回報問題的人",
+          "after": "開放給任何願意負責任揭露問題的人",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "claim": "「四頁也都沒有寫美國以外的開放時程、等候名單或申請方式」（第一輪新寫）沒有限定對象",
+          "before": "四頁也都沒有寫美國以外的開放時程、等候名單或申請方式。",
+          "after": "四頁也都沒有寫 Muse 在美國以外的開放時程、等候名單或申請方式。",
+          "source_url": "https://research.meta.ai/blog/introducing-muse-spark-1-3"
+        },
+        {
+          "claim": "「界線在哪裡」第一段挂了四個歸因詞（安全長文自己劃出界線、文中寫、並且說、同一篇文章也提到）",
+          "before": "安全長文自己劃出界線：文中寫「Muse 不是攻不破的」……並且說……同一篇文章也提到，",
+          "after": "安全長文自己劃出界線：「Muse 不是攻不破的」……提示詞注入……同一篇文章寫，（限定詞一個都沒删）",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "claim": "同一份安全長文在正文裡被叫成「技術長文」，而正文又寫只有四份文件",
+          "before": "；技術長文另外補充，代理端拿到的其實是替身憑證",
+          "after": "；安全長文另外補充，代理端拿到的其實是替身憑證",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "claim": "協調者裁示 1：英文逐字引句用頁面自己的撇號 U+2019（內文引句）",
+          "before": "（原文 Muse isn't immune to attack）",
+          "after": "（原文 Muse isn’t immune to attack）",
+          "source_url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse"
+        },
+        {
+          "claim": "協調者裁示 1：sources[0] 的標題照頁面 <title> 的撇號",
+          "before": "Introducing Muse: The World's First Personal AI Agent Built for Everyone",
+          "after": "Introducing Muse: The World’s First Personal AI Agent Built for Everyone",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+        },
+        {
+          "claim": "協調者裁示 2：模型與產品的區別退出 H2 標題",
+          "before": "Muse 不是 Muse Spark：代理與模型的差別",
+          "after": "Meta 這次發表的 Muse 是什麼",
+          "source_url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/"
+        },
+        {
+          "claim": "協調者裁示 2：模型與產品的區別退出 summary",
+          "before": "驅動 Muse 的是 4 月已經介紹過的模型 Muse Spark，9 月 2 日發布的 1.3 版是目前這一版，兩者是模型與產品的關係。",
+          "after": "Meta 表示 Muse 由 Muse Spark 驅動，目前這一版是 9 月 2 日另外發表的 1.3，那是一次獨立的模型更新。",
+          "source_url": "https://research.meta.ai/blog/introducing-muse-spark-1-3"
+        }
+      ],
+      "open_questions": [
+        "P9 「Meta 把安全架構寫得比一般發表稿詳細很多」是本站對「一般發表稿」的比較，四頁都沒有來源可查；第一輪已提出、協調者未裁示，第二輪同樣不自行更動。若要拿掉，建議改成「Meta 另寫了一篇安全長文講架構」這種可查證的寫法。",
+        "安全長文有兩段寫 bug bounty：開頭摘要那段寫 up to $300,000、其中 up to $130,000 對影響單一使用者的提示詞注入；正文那段只寫 up to $300,000、based on demonstrated impact，沒有 130,000。文章用的是摘要那一段，正確；若日後要補上 based on demonstrated impact 這個條件，請協調者決定。",
+        "surrogate token 譯「替身憑證」（研究紀錄 overlaps 第 5 條用的是「替身權杖」）。同一句裡 real credential 也譯「憑證」，對應關係與原文一致，語意不差，未改；若要全批統一譯詞請一次處理。",
+        "Meta Newsroom 頁頁尾的地區選單實際列出 Canada、Japan、Korea、India、Brazil、Germany、France（不只研究紀錄 not_said 第 2 條寫的 Canada／United States）；已按 must_not_write 第 17 條將正文的否定句限縮到「內文」。研究紀錄 not_said 第 2 條的措辭建議協調者一併修正。"
+      ],
+      "coordinator_rulings": [
+        "裁示 1（已套用）：英文逐字引句一律用頁面自己的撇號 U+2019，與研究紀錄 verbatim_quote 一致。內容包原本有兩個半形撇號（正文的 Muse isn't immune to attack、sources[0] 的 World's），兩個都改成 U+2019；頁面的 <title> 與內文確實都是 U+2019（今日自行抓文驗證）。改完全文 ASCII 撇號 0 個。",
+        "裁示 2（已套用）：「 Muse 是產品、Muse Spark 是模型」只留兩處——帶 article inline 的那一句內文（「Muse Spark 是模型，Muse 是建立在模型之上、會實際動手做事的產品」）與 FAQ 第 1 題；H2 標題改成「Meta 這次發表的 Muse 是什麼」，summary 第 2 點改成只講「Muse 由 Muse Spark 驅動、這一版是 9 月 2 日的 1.3」。改完機械比對：只剩 block[4]（內文）與 block[26]（FAQ）兩處，summary 裡的 9、2、1.3 仍都出現在正文。",
+        "事件日獨立複核：今天自行抓的 HTML 裡 datePublished 2026-09-08T19:00:51+00:00 出現 2 次、og article:published_time 同值 1 次、dateModified 0 次，頁面自印「September 8, 2026 September 8, 2026」；換算台北 2026-09-09T03:00:51+08:00，與 slug 尾碼、news_date、DELTA-4-4 第 3 條一致。安全長文 datePublished 2026-09-08（同一天），所以「Bug 懸賞從發表當天起」成立；Spark 1.3 頁 datePublished 2026-09-02，支持「9 月 2 日」。",
+        "價格：四頁重新搜 $、USD、price、pricing、subscription、per month，只有安全長文的 bug bounty 兩筆金額、發表稿的 free for most of what people need 與 subscription plans 一句，沒有任何金額、幣別或方案名稱；內容包也沒有寫。",
+        "界線重掃：不帶 finance 主題、只有一個一般 callout、沒有投資免責 callout；沒有購買、訂閱、升級建議；沒有推定台灣可用、沒有繞過地區限制的方法、沒有 benchmark 名稱或分數、沒有 Meta One 的關聯、沒有 muse.ai 首頁獨有的說法；廠商宣稱全部有歸因，全篇 0 個「本文」、0 個「最近／本週／日前」。",
+        "自檢（第二輪改完，含追加裁示）：check_article.py → OK（zh-TW paragraphs 2547）、exit 0；pack_cli lint --kind life --slug … → exit 1，只有預期中的 image_missing×2 與 raw_internal_url×1。",
+      "追加裁示 1（已套用）：「Meta 把安全架構寫得比一般發表稿詳細很多」沒有來源，改成可查證的事實陳述「Meta 另外發表了一篇安全長文說明這套架構」（歸因、不做比較）。依據：發表稿正文的 How We Built Safety Into Muse 超連結轉到 research.meta.ai 那一頁，其 JSON-LD datePublished 為 2026-09-08，與發表稿同一天（2026-09-23 自行重抓核對）。",
+      "追加裁示 2（已套用）：bug bounty 補上安全長文正文那段的條件 based on demonstrated impact，正文寫成「金額依實際影響而定」，300,000 與 130,000 兩個數字仍維持上限框架（awards up to）、並保留「不是已經付出的金額」。該段歸因詞仍為兩個。",
+      "追加裁示 3（已套用）：surrogate token 內容包一律譯「替身權杖」，與研究紀錄 overlaps 第 5 條一致；同一句裡 real credential 仍譯「憑證」，正好對應原文 surrogate token → real credential 的區別。內容包現在 0 個「替身憑證」。",
+      "追加裁示 4（已套用）：研究紀錄 not_said 第 2 條改寫：否定句限定在「四頁的文章內文」，並把頁尾地區選單的十一個項目列齊（United States、Brazil、Germany、France、Japan、Korea、Latin America、Spain、Canada、EMEA、India），而不是原先只寫的 Canada／United States。"
+      ]
+    }
+  }
+}
