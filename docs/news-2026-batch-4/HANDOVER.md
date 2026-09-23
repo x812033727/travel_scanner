@@ -296,6 +296,33 @@ en／ja／ko／zh-CN **一個位元組都沒動**（逐 locale 與 `git show HEA
 - 公開驗證 `verify_public.py --from-report publish.json --sitemap`：25 頁 PASS（200、h1、canonical、無 noindex、圖片 200、sitemap 收錄）。
 - 主機留檔：`/root/news47-20260923/{dryrun,publish,recheck}.json`、`run.log`、`links-check.log`。
 
+## 1g. 次要新聞第一波（批次 4.4，2026-09-23）：8 月至 9 月初的六篇 AI 文章，只做 zh-TW
+
+站主 2026-09-23 圈選三個垂直的候選清單全收（29 篇，見 `agents/DELTA-4-4.md` 第 3 條），
+同日決定額度留給第八批旅遊文章：**4.4 只先做第一波六篇（AI #1–6），其餘 23 篇等週額度 9/27 重置後續**。
+流程同 4.7：每篇一位 opus 研究代理（`sourcing_verdict` 全 full；`ai-news-openai-cursor-wind-down-20260828` 的 OpenAI 頁
+研究與撰稿時連續回 500、引文對同日 07:14 的 200 副本核過，第二輪查核時頁面恢復、重驗 23 條引文後升 full）→ sonnet 撰稿 →
+兩輪各一位不同的 opus 查核 → 協調者裁決 → 繪圖 → relink → `update_index.py ai --locale=zh-TW`（依事件日插進 8 月與 9 月群，
+不接在 9 月末尾）。查核報告在 `factcheck-draft/<slug>-round1|2.md`。
+
+| slug | 事件日 | 第一輪 | 第二輪 | 定稿字數 |
+| --- | --- | --- | --- | --- |
+| `ai-news-gemini-student-offer-20260820` | 08-20 | 77 條／改 14 | 41 條／改 7 | 2,994 |
+| `ai-news-meta-muse-agent-20260909` | 09-09 | 131 條／改 10 | 63 條／改 11（＋4 項追加裁決） | 2,547 |
+| `ai-news-openai-cursor-wind-down-20260828` | 08-28 | 72 條／改 2 | 25 條／改 1 | 2,444 |
+| `ai-news-claude-text-watermark-20260815` | 08-15 | 96 條／改 9 | 36 條／改 8 | 2,892 |
+| `ai-news-openai-zero-data-retention-20260820` | 08-20 | 107 條／改 14 | 51 條／改 6 | 2,757 |
+| `ai-news-openai-hugging-face-incident-20260826` | 08-26 | 114 條／改 16 | 88 條／改 5 | 2,997 |
+
+**裁決（不再翻案）**：Google 學生方案只寫「不在排除名單、在供應清單上」，不寫「台灣一定符合資格」，`$165` 不加幣別；
+Muse 是產品、Muse Spark 是模型，區別只寫兩處；Cursor 篇的「本站也查看了…」與編輯紀律句整段刪除；浮水印篇「台灣不在管轄範圍」
+改成 Anthropic 自己的範圍句、偵測 API 不寫成台灣可申請；ZDR 篇「四份來源都沒有價格」改「沒有為這兩項標價」（資料駐留端點有 10% 加價）、
+兩個收回條款分述；Hugging Face 事故篇不寫任何攻擊手法，JFrog 通報日採技術報告 7/6 並註明公告時間線印 7/8，指向同批未寫的
+Anthropic 篇的連結整句刪除。
+
+**學到的**：同批互指的 `article` inline 只能指向同一個 PR 會上線的文章，波次拆開時要回頭刪；「四份來源都沒提到 X」這種否定句
+每一份都要 grep（地區、價格、ChatGPT 方案三個否定句在第二輪都被來源打臉，改成限縮到內文）；第一輪新寫的句子是第二輪最常翻案的地方。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）
