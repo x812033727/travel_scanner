@@ -1,14 +1,14 @@
 ---
 id: 2026-09-20-localize-four-tokyo-first-trip-guides
 title: Localize four Tokyo first-trip guides and diagrams
-status: review
+status: done
 priority: P1
 area: docs
 owner: codex-batch007-resume
-claimed_at: 2026-09-22T07:16:19Z
+claimed_at: 2026-09-23T07:31:00Z
 created_at: 2026-09-20T12:47:01Z
-completed_at:
-branch: codex/article-localization-batch007-resume
+completed_at: 2026-09-23T07:41:10Z
+branch: codex/localization-007-017-release-evidence
 depends_on: []
 scope:
   - apps/api/app/guides/content/narita-haneda-to-tokyo.json
@@ -22,6 +22,36 @@ scope:
 ---
 
 # Localize four Tokyo first-trip guides and diagrams
+
+## 2026-09-23 completed release checkpoint
+
+The separately authorized release is complete. [Batch007/017 release record](../../docs/article-localization/releases/batch007-017/README.md)
+lists every article and five public URLs; its compact evidence index pins the
+external full receipts. Earlier HOLD and outstanding notes below are historical
+checkpoints and do not override this completed release result.
+
+- [x] PR #660 merged after all eight exact-head CI checks passed; final Git-bound
+  release expectations and required preservation reviews were accepted.
+- [x] All 16 missing en/ja/ko/zh-CN documents in Batch007 were imported and
+  published on 2026-09-23; all four pre-existing zh-TW rows and article metadata
+  remain unchanged.
+- [x] All 20 public URLs in this batch passed five-language desktop/mobile
+  browser, body/image, canonical/hreflang, link and expanded-description/source
+  checks, with independent screenshot review.
+- [x] A fresh verified backup preceded publication; the existing deployed
+  `6b2339ec89eda90ad37c9e99009723dfca89ba4a` was adopted without redeployment or
+  application restart. Final acceptance cleared the release hold; the subsequent
+  read-only snapshot confirmed a clean same-revision host and three HTTP 200
+  health responses.
+
+Final evidence SHA256:
+`8aaa3d308786e1d8486fed7940330f681ece154964d7d0522c0f48161e13d4ec`.
+Final acceptance SHA256:
+`933c778a81f70205f70927798283744c4eb7da1bdc42b253c9295c6a000fec56`.
+Post-clear host evidence SHA256:
+`1d607d92816b1d73c63a265c8aeb116c83b56c75a44da981fe2629874c3e3b51`.
+The existing global search-placeholder icon issue remains tracked separately;
+this completion does not cover the remaining site-wide localization backlog.
 
 ## Why
 
@@ -40,9 +70,9 @@ then hand off for independent review before any import or publication.
   Transit has reviewed layout corrections and one explicit IC-card label correction below.
 - [x] Independent editorial and asset review completed before a separate release task uses
   the packs.
-- [ ] Final Git-bound canonical wrapper, repository-description preservation receipt and
+- [x] Final Git-bound canonical wrapper, repository-description preservation receipt and
   all required CI checks pass before the authorized production release.
-- [ ] Publish only the 16 missing locales, preserve the four existing zh-TW rows and verify
+- [x] Publish only the 16 missing locales, preserve the four existing zh-TW rows and verify
   all five languages on desktop/mobile, including the two deployed original SVG corrections.
 
 ## Steps
@@ -185,9 +215,9 @@ the reviewed preservation path; no prior HOLD is promoted to PASS by this note.
 
 Still incomplete for the separate release sequence:
 
-- [ ] Independent review of the committed Git bytes and preservation freeze.
-- [ ] Pull request CI and merge.
-- [ ] Import/publish and production desktop/mobile browser QA.
+- [x] Independent review of the committed Git bytes and preservation freeze.
+- [x] Pull request CI and merge.
+- [x] Import/publish and production desktop/mobile browser QA.
 
 ### 2026-09-22 final Transit review and scoped validation
 
