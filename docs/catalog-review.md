@@ -212,6 +212,10 @@ platforms and social networks are never stored as sources (`PLATFORM_HOSTS` in
 `app/foods/enrichment.py`). Durable facts still come from the merchant's own site
 (`merchant_official` / `merchant_website`), a tourism-board or government page about
 that one merchant (`official_tourism` / `merchant_listing`) or Wikimedia.
+A fourth kind, `merchant_platform` / `merchant_listing` (2026-09-23), is the shop's own
+reservation-platform page or the social account that page links to; only the CatchTable
+converter and the admin form may write it, enrichment proposals still refuse platform hosts,
+and the public card labels it as a platform listing rather than an official source.
 
 ### What the worker does
 
