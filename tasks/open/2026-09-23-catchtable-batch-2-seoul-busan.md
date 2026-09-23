@@ -29,7 +29,7 @@ scope:
 
 ## Definition of done
 
-- [ ] `.agents/skills/catchtable-discovery/`（與 `.claude/skills/` 的逐字複本）：SKILL.md 主幹、榜頁收集片段、店頁判定片段（lazy section、隱藏面板的
+- [x] `.agents/skills/catchtable-discovery/`（與 `.claude/skills/` 的逐字複本）：SKILL.md 主幹、榜頁收集片段、店頁判定片段（lazy section、隱藏面板的
       IntersectionObserver 包裝）、匯入與後台步驟、Naver 分工；`npm run test:tools` 過。
 - [ ] `apps/api/app/foods/data/catchtable/2026-09-23-catchtable-batch-2/` 有 `rankings.json`、`candidates.json`、`merchants.json`、`platform-reviews.json`，
       `--check` 零錯誤，兩個匯入檔各自過 repo 解析器。
@@ -39,17 +39,18 @@ scope:
 
 ## Steps
 
-- [ ] 升 skill（先做，之後照 skill 跑）。
-- [ ] 收集：`location-seoul` 第 21–40 名、`location-busan` 第 1–20 名，滾輪逐步累積、名次讀徽章、零衝突。
-- [ ] 去重：主機 worklist（seoul＋busan，`--include-researched`）＋ repo 內平台列的 CatchTable alias。
-- [ ] 逐店查證：研究代理各一個分頁；訂位判定在隱藏面板要用 IntersectionObserver 包裝並記 visibilityState；來源照設計文件順序（釜山：Visit Busan、KTO、區廳）。
+- [x] 升 skill（先做，之後照 skill 跑）。
+- [x] 收集：`location-seoul` 第 21–40 名、`location-busan` 第 1–20 名，滾輪逐步累積、名次讀徽章、零衝突。
+- [x] 去重：主機 worklist（seoul＋busan，`--include-researched`）＋ repo 內平台列的 CatchTable alias。
+- [x] 逐店查證：研究代理各一個分頁；訂位判定在隱藏面板要用 IntersectionObserver 包裝並記 visibilityState；來源照設計文件順序（釜山：Visit Busan、KTO、區廳）。
 - [ ] 複核抽三分之一 → 轉檔 → PR 一 → 部署 → 店家 dry-run／apply → worklist → 平台列 stdin dry-run／apply → PR 二。
 - [ ] 第 7 步：座標 → 站主貼 Naver 短網址 → 後台逐家一次儲存「已驗證＋核准＋啟用」→ 公開 API 驗證 → 報告 → `done`。
 
 ## How to verify
 
 ```bash
-python tools/catchtable_build_batches.py --candidates apps/api/app/foods/data/catchtable/2026-09-23-catchtable-batch-2/candidates.json --check
+python tools/catchtable_build_batches.py --candidates apps/api/app/foods/data/catchtable/2026-09-23-catchtable-batch-2/candidates-seoul.json --check
+python tools/catchtable_build_batches.py --candidates apps/api/app/foods/data/catchtable/2026-09-23-catchtable-batch-2/candidates-busan.json --check
 npm run test:tools && npm run check:tasks
 curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/merchants?destination_id=busan&limit=50" | python -m json.tool | grep -c catchtable_global
 ```
@@ -58,3 +59,4 @@ curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/mercha
 
 - 第一批留下的兩家（산청 2 號店缺座標、고호재的 Naver 頁與韓國之家相同）不在本票；由站主決定。
 - 2026-09-23 去重快照：worklist seoul 51 列（approved 41、rejected 7、pending 3）、busan 18 列（approved 15、rejected 3）。
+- 2026-09-23 研究結果：首爾 21–40 → import 14、duplicate 1（alice_cheongdam）、no_official_source 5；釜山 1–20 → import 11、no_official_source 9；40 家全部 reservation。轉檔腳本一個候選檔只吃一個 destination，所以候選檔與匯入檔按城市分兩份（資料目錄 README 有寫）。

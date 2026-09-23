@@ -87,13 +87,15 @@ dock 的「今日公休」是「現在不在營業時段」，不是判定依據
 
 ## 資訊分頁：地址、電話、網站
 
-`navigate` 到 `/zh-TW/shop/<alias>/info`，等「位置」出現，點「原文語言」切成韓文道路名地址：
+`navigate` 到 `/zh-TW/shop/<alias>/info`，等「位置」出現，點「原文語言」切成韓文道路名地址（點了之後韓文地址才會進 innerText）：
 
 ```js
 (async () => {
   const wait = ms => new Promise(r => setTimeout(r, ms));
   for (let i = 0; i < 20 && !/位置/.test(document.body.innerText); i++) await wait(500);
-  const toggle = [...document.querySelectorAll("button, span, div")].find(e => e.children.length === 0 && (e.innerText || "").trim() === "原文語言");
+  // 開關是 <button> 內的 <span>地址 原文語言</span>，不是獨立元素：找文字節點再點最近的 button
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let node, toggle = null;
+  while ((node = walker.nextNode())) { if (/原文語言/.test(node.textContent)) { toggle = node.parentElement.closest("button") || node.parentElement; break; } }
   if (toggle) { toggle.click(); await wait(800); }
   const t = document.body.innerText.replace(/\n+/g, " | "); const i = t.indexOf("位置");
   return { info: t.slice(Math.max(0, i - 50), i + 1200),
