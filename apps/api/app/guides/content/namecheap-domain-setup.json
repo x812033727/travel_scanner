@@ -217,6 +217,834 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Setting up a Namecheap domain: connecting it to a website and email after registration",
+      "description": "After buying a Namecheap domain, identify its DNS manager to connect your website and email. Official documentation explains Nameservers, Advanced DNS and Mail Settings, with two routes: change nameservers or keep the current DNS. This guide provides preparation checks, step-by-step verification and fault-reporting details for people using different domain, hosting and email providers, helping prevent accidental deletion of existing email records while bringing a website online.",
+      "hero": {
+        "src": "/guides/namecheap-domain-setup/hero-en.jpg",
+        "alt": "An original illustration linking a domain document, DNS servers and a website screen.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Namecheap may be where you bought the domain, but it is not necessarily where its DNS records are currently managed. An absent button for adding records after you sign in does not necessarily mean the account is broken. First check which nameservers the domain uses, then make changes at the service that actually handles DNS resolution. Finding the correct place matters more than repeatedly adding the same record."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide describes procedures from public official documentation. It does not sign in to your account for you or claim to have tested a particular hosting service. The example scenario keeps the domain at Namecheap, the website at another host and email with a separate provider. Obtain every IP address, target hostname and verification value from your own providers; do not copy someone else's examples directly."
+        },
+        {
+          "type": "heading",
+          "text": "Find the domain you want to manage in Domain List",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the official website yourself, sign in and enter Domain List. Find the full domain name and select Manage. Check its spelling and extension first, then review expiration, renewal and contact details. If a friend or vendor registered it for you, clarify the registrant and management permissions first. Do not share their primary account just to continue setup; use the authorization method the service permits or complete a formal handover."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before editing, record the existing Nameservers and the records used by the website, email and other verification services. You can export them or save a clearly readable list. Do not put passwords, payment details or secret verification keys into a public document. If you do not know what a TXT record is for, check the original service before deciding whether to keep it, rather than deleting a verification setting that is still used as if it were clutter."
+        },
+        {
+          "type": "heading",
+          "text": "Choose between changing DNS hosting and editing records",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the web host requires you to use its nameservers, selecting them under Nameservers delegates DNS hosting to that service. Namecheap's documentation provides Custom DNS for entering third-party nameservers. This changes where you must manage records afterward, so first make sure the new service has the website, email and necessary verification records ready."
+        },
+        {
+          "type": "paragraph",
+          "text": "The other option is to keep the current DNS service and create website records using the host's supplied details. Both approaches can connect a website, but the management location and migration work differ. If existing email works and you only want to change the website, ask the host whether you can update only the relevant records. That usually makes the scope of the change easier to define, although suitability still depends on the service's conditions."
+        },
+        {
+          "type": "heading",
+          "text": "Check the conditions for using Advanced DNS",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to Namecheap, the corresponding Host Records are managed in its Advanced DNS when the domain uses BasicDNS, PremiumDNS or FreeDNS. If it uses third-party nameservers or Namecheap's hosting nameservers, manage records in the relevant DNS or hosting control panel instead. If there is no add button, check this condition first."
+        },
+        {
+          "type": "paragraph",
+          "text": "When creating a record, check Type, Host, Value and TTL field by field. An A record's value is an IPv4 address, while CNAME points to another hostname. If the host requires separate settings for the root domain and www, configure both. Follow the interface's rules for the Host field; do not treat the https prefix or page path of a full URL as part of a DNS name."
+        },
+        {
+          "type": "paragraph",
+          "text": "A new domain may already have parking-page or redirect records. If there is a conflict, first establish whether the record is the one you intend to replace, then remove or update it. Do not clear all records and start guessing again. In particular, aliases and other record types at the same name have compatibility restrictions. If the provider's requirements are unclear, give support the complete record types to check."
+        },
+        {
+          "type": "heading",
+          "text": "Configure email using the receiving provider's information",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail Settings serve a different purpose from website records. For example, Microsoft's official Microsoft 365 instructions require domain verification first, followed by MX and other records using information from the admin center. For custom email records at Namecheap, the document specifies Custom MX. Obtain target values from your own tenant instead of copying values shown in tutorial images."
+        },
+        {
+          "type": "paragraph",
+          "text": "MX determines where incoming email is delivered, but an MX record alone does not mean that a mailbox exists or that sending authentication is complete. Add SPF, DKIM or other records as required by the email provider, and confirm the migration plan for the old mailbox first. If SPF is already configured, combine the actual sending sources and official requirements appropriately; do not add another conflicting configuration just because another tutorial shows one."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Request the required records separately from the website and email providers, noting each record's purpose, name, type, value and priority.",
+            "Identify where DNS is currently managed and save the original settings. If changing nameservers, prepare the complete record set in the new zone first.",
+            "Enter and save each item, then compare it against the original requirement. Avoid deleting unrelated entries as an incidental part of the same operation.",
+            "Query website and email records, then actually test opening the site, receiving email from outside and sending email out. Record the results in the change log."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Verify DNS and website status separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A successful save means only that the interface accepted the settings. DNS resolution may still be affected by existing caches, and different networks may see an update at different times. Record the change time, previous TTL and query results rather than repeatedly switching nameservers and hoping for success. The official documentation gives general timing guidance; it cannot guarantee that every visitor will see the new value in the same minute."
+        },
+        {
+          "type": "paragraph",
+          "text": "If DNS points to the expected destination but the page still shows an error, next check whether the host has added the domain, whether the website software is ready and whether the HTTPS certificate covers that name. If the website works but email does not arrive, inspect email records, whether the mailbox has been created and the email provider's error messages. Checking these layers separately avoids blaming every problem on DNS not having updated yet."
+        },
+        {
+          "type": "heading",
+          "text": "Provide support with information it can assess",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Provide the affected domain, the time and time zone of the problem, expected behavior, current nameservers, and the record types and values returned by queries. Mask account, billing and unrelated information in screenshots. A description such as ‘The root domain opens, but www shows a certificate error’ helps support identify the right scope more readily than ‘The website is broken.’"
+        },
+        {
+          "type": "paragraph",
+          "text": "After finishing, keep a final configuration record and responsibility list as the starting point for adding a subdomain or changing email services next time. Include only necessary information in the management register; you do not need to reorganize the entire account every time. If you changed the DNS hosting service, update the handover document too, so the next maintainer knows where to edit and does not use an old interface that no longer takes effect."
+        },
+        {
+          "type": "image",
+          "src": "/guides/namecheap-domain-setup/diagram-1-en.svg",
+          "alt": "First inventory the current setup, then choose between changing nameservers and editing existing records, and finally verify the website and email separately.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Even after saving the settings, verify the actual website and mailboxes.",
+          "description": "First inventory the current setup, then choose between changing nameservers and editing existing records, and finally verify the website and email separately.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Need",
+            "Main location",
+            "Check first"
+          ],
+          "rows": [
+            [
+              "Move DNS management to another provider",
+              "Nameservers",
+              "The new service has all necessary records ready"
+            ],
+            [
+              "Edit website records at Namecheap",
+              "Advanced DNS",
+              "The domain currently uses an eligible Namecheap DNS service"
+            ],
+            [
+              "Switch to a chosen receiving email service",
+              "MX and other settings in the active DNS service",
+              "Mailboxes and migration arrangements are ready"
+            ],
+            [
+              "Website still fails despite correct DNS",
+              "Hosting and certificate management",
+              "Domain binding, website software and HTTPS"
+            ]
+          ],
+          "caption": "Use the current nameservers to identify where DNS management actually takes effect."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Preserve email information before changing nameservers",
+          "text": "The website and mailboxes can use different providers. When moving DNS management, also check MX, sending authentication and other service records. Copying only the website's A record is not enough."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Before buying a domain: choosing a name, establishing ownership and managing renewals",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Checking DNS settings: from A and CNAME to email records",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Namecheap: connecting a domain to hosting",
+          "url": "https://www.namecheap.com/support/knowledgebase/article/9837/46/how-to-connect-a-domain-to-a-server-or-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap: conditions for managing Host Records",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/323/2214/why-cant-i-modify-email-domain-redirect-and-host-records-in-my-namecheap-account/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft: connecting Microsoft 365 DNS at Namecheap",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/dns/create-dns-records-at-namecheap?view=o365-worldwide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Namecheapのドメイン設定：登録後にウェブサイトとメールへ接続する方法",
+      "description": "Namecheapでドメインを購入した後は、DNSを誰が管理しているか確認してから、ウェブサイトとメールを正しく接続します。公式ドキュメントに基づき、Nameservers、Advanced DNS、Mail Settingsの役割と、ネームサーバーを変更する方法・現在のDNSを維持する方法を整理します。設定前の確認表、項目ごとの検証方法、不具合を報告するときの情報も紹介します。ドメイン、ホスティング、メールを別々の事業者から購入した人向けで、サイトを公開するための操作で既存のメールレコードを誤って消すのを防ぎます。",
+      "hero": {
+        "src": "/guides/namecheap-domain-setup/hero-ja.jpg",
+        "alt": "ドメインの書類、DNSサーバー、ウェブサイト画面をつないだオリジナルの模式図。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Namecheapはドメインを購入した場所であっても、現在DNSレコードを管理している場所とは限りません。ログイン後にレコード追加ボタンが見つからなくても、アカウントの不具合とは限らないのです。まずそのドメインが使うネームサーバーを確認し、実際に名前解決を担当するサービスで変更します。同じデータを何度も追加するより、正しい管理場所を見つけることが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この解説は公開された公式ドキュメントを基に手順を整理したもので、あなたのアカウントへ代わりにログインしたり、特定のホスティングを実機検証したと主張したりするものではありません。以下では、ドメインはNamecheap、サイトは別のホスティング会社、メールはさらに別の提供元という状況を想定します。IP、接続先名、検証値はすべて自分のサービスから取得し、他人の例をそのままコピーしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "Domain Listで管理するドメインを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自分で公式サイトを開いてログインし、Domain Listで完全なドメイン名を探してManageを選びます。先に綴りと末尾を確認してから、期限、更新、連絡先情報を見ます。友人や業者が代行した場合は、登録者と管理権限を先に明確にしてください。設定を進めるためだけに相手の主アカウントを共有せず、サービスが認める権限付与方法を使うか、正式な引き継ぎを行います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更を始める前に、現在のNameserversと、サイト、メール、その他の認証に使うレコードを記録します。エクスポート機能を使うか、読みやすい一覧を保存してもかまいません。パスワード、支払い情報、認証用の秘密鍵を公開文書にまとめないでください。TXTレコードの用途が不明なら、元のサービスを調べてから残すかどうかを判断し、使用中の認証設定を不要なものと誤認して削除しないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "DNSの管理先を変えるか、レコードだけを変えるか選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ホスティング会社から自社のネームサーバーを使うよう指定された場合、Nameserversで指定されたDNSホスティングを選ぶことになります。Namecheapのドキュメントでは、他社ネームサーバーの入力にCustom DNSを使います。これにより、その後のレコード管理場所が変わるため、先に新サービス側でサイト、メール、必要な認証情報の準備が整っているか確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "もうひとつの方法は、現在のDNSを維持し、ホスティング会社の情報に基づいてサイト用レコードを作ることです。どちらでもサイトを接続できますが、管理場所と移行作業は異なります。既存のメールが正常でサイトだけを変えたい場合は、関連レコードだけ変更できるかホスティング会社に相談すると、今回の変更範囲を定めやすくなります。ただし、利用できるかどうかはサービス条件で判断します。"
+        },
+        {
+          "type": "heading",
+          "text": "Advanced DNSを使える条件を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Namecheapの説明によると、BasicDNS、PremiumDNS、FreeDNSを使うドメインでは、対応するHost RecordsをAdvanced DNSで管理します。他社ネームサーバーやNamecheapのホスティング用ネームサーバーを使う場合は、該当するDNSまたはホスティング管理画面で処理します。追加ボタンがないときは、まずこの条件を確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "レコード作成時はType、Host、Value、TTLを欄ごとに照合します。Aレコードの値はIPv4アドレス、CNAMEは別のホスト名を指します。ルートドメインとwwwを別々に設定するよう指定された場合は、両方を処理してください。Host欄は画面の規則に従い、完全なURLのhttps部分やページのパスまでDNS名として入力しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しいドメインには、最初からパーキングページや転送用のレコードがある場合があります。競合があれば、それが今回置き換える対象かどうか確認してから削除または更新します。全レコードを消して推測で作り直さないでください。特に同じ名前のエイリアスと他のレコードには共存上の制約があるため、提供元の要求が不明なら、レコードの種類を省略せずサポートに確認してもらいます。"
+        },
+        {
+          "type": "heading",
+          "text": "メールは受信サービスの情報で設定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail Settingsはサイト用レコードとは用途が異なります。たとえばMicrosoft 365の公式手順では、ドメイン検証を済ませてから、管理センターの情報でMXなどを設定します。Namecheapで独自のメールレコードを使う場合はCustom MXを選ぶよう指定されています。接続先の値は自分のテナントから取得し、解説画像の値を写さないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MXはメールの配送先を決めますが、MXがあるだけでメールボックスの作成や送信認証が完了したことにはなりません。メール事業者の指示に従ってSPF、DKIMなどを設定し、旧メールボックスの移行計画も先に確認します。すでにSPF設定がある場合は、実際の送信元と公式の要件を適切に統合し、別の解説を見たからといって競合する設定を追加しないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイトとメールの提供元から必要なレコードをそれぞれ取得し、用途、名前、種類、値、優先順位を記録します。",
+            "現在のDNS管理場所を確認して元の設定を保存します。ネームサーバーを変更するなら、先に新ゾーンの全レコードを準備します。",
+            "項目ごとに入力して保存し、元の要求と照合します。同じ操作のついでに無関係な項目まで削除しないようにします。",
+            "サイトとメールのレコードを問い合わせ、実際にサイト表示、外部からの受信、外部への送信をテストし、変更記録に結果を残します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "検証時はDNSとサイトの状態を分けて見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "保存成功は、管理画面が設定を受け付けたことだけを意味します。名前解決には既存のキャッシュが影響し、ネットワークによって更新を確認できる時刻が異なる場合があります。変更時刻、変更前のTTL、問い合わせ結果を記録し、運任せにネームサーバーを何度も切り替えないでください。公式ドキュメントの時間説明は一般的な目安であり、すべての訪問者が同じ分に新しい値を見ることを保証するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "名前解決が意図した接続先を返しているのにエラーページが出るなら、次はホスティング側にドメインが登録されているか、サイトのプログラムが準備できているか、HTTPS証明書がその名前を対象としているかを確認します。サイトは正常なのにメールを受信できない場合は、メールレコード、メールボックスの作成状態、メール事業者のエラーメッセージを見ます。層を分けて調べれば、すべてをDNSの反映待ちのせいにせずに済みます。"
+        },
+        {
+          "type": "heading",
+          "text": "サポートが判断できる報告情報を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "影響を受けるドメイン、発生時刻とタイムゾーン、期待する動作、現在のネームサーバー、問い合わせで得たレコードの種類と値を伝えます。画像ではアカウント、請求、無関係な情報を隠してかまいません。「ルートドメインは開くが、wwwは証明書エラーになる」と説明した方が、「サイトが壊れた」だけより、対応範囲を見つけやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作業後は最終設定と担当範囲の一覧を残すと、次回サブドメインを追加したりメールを変更したりするときの出発点になります。管理表には必要な情報だけを載せ、毎回アカウント全体を整理し直す必要はありません。今回DNSの管理サービスを変更したなら引き継ぎ資料も更新し、次の保守担当者が、すでに反映されなくなった古い画面ではなく、正しい場所で変更できるようにします。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/namecheap-domain-setup/diagram-1-ja.svg",
+          "alt": "現状を確認してからネームサーバー変更または既存レコード編集を選び、最後にサイトとメールを別々に検証する流れ。",
+          "width": 1600,
+          "height": 900,
+          "caption": "設定を保存した後も、実際のサイトとメールボックスを検証します。",
+          "description": "現状を確認してからネームサーバー変更または既存レコード編集を選び、最後にサイトとメールを別々に検証する流れ。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "必要な作業",
+            "主な場所",
+            "先に確認すること"
+          ],
+          "rows": [
+            [
+              "他社にDNS管理を移す",
+              "Nameservers",
+              "新サービスに必要な全レコードを準備済み"
+            ],
+            [
+              "Namecheapでサイト用レコードを変える",
+              "Advanced DNS",
+              "対応するNamecheap DNSを現在使用中"
+            ],
+            [
+              "指定の受信サービスに変える",
+              "有効なDNSのMXなどの設定",
+              "メールボックスと移行計画が準備済み"
+            ],
+            [
+              "サイトの名前解決は正しいのに開かない",
+              "ホスティングと証明書の管理",
+              "ドメインの紐付け、プログラム、HTTPS"
+            ]
+          ],
+          "caption": "現在のネームサーバーを基準に、実際に反映される管理場所を判断します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "ネームサーバー変更前にメール情報を保存する",
+          "text": "サイトとメールボックスは別の提供元を使えます。DNS管理場所を移すときは、MX、送信認証、他サービスのレコードも確認し、サイトのAレコードだけをコピーして終わらせないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメイン購入前の準備：名前・登録者・更新管理",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS設定の調べ方：A・CNAMEからメール用レコードまで",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Namecheap：ドメインとホスティングの接続",
+          "url": "https://www.namecheap.com/support/knowledgebase/article/9837/46/how-to-connect-a-domain-to-a-server-or-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap：Host Recordsを管理できる条件",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/323/2214/why-cant-i-modify-email-domain-redirect-and-host-records-in-my-namecheap-account/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：NamecheapでMicrosoft 365のDNSを接続する",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/dns/create-dns-records-at-namecheap?view=o365-worldwide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Namecheap 도메인 설정: 등록 후 웹사이트와 이메일 연결하기",
+      "description": "Namecheap에서 도메인을 구매한 뒤에는 DNS를 누가 관리하는지 확인해야 웹사이트와 이메일을 올바르게 연결할 수 있습니다. 공식 문서를 바탕으로 Nameservers, Advanced DNS, Mail Settings의 역할과 네임서버를 바꾸는 방법, 기존 DNS를 유지하는 방법을 정리합니다. 설정 전 확인표, 항목별 검증 방법과 장애를 알릴 때 필요한 정보도 제공합니다. 도메인, 호스팅, 이메일을 서로 다른 업체에서 구매한 사람에게 적합하며, 웹사이트를 공개하려다가 기존 이메일 레코드를 실수로 삭제하는 일을 예방하는 데도 도움이 됩니다.",
+      "hero": {
+        "src": "/guides/namecheap-domain-setup/hero-ko.jpg",
+        "alt": "도메인 문서, DNS 서버와 웹사이트 화면을 연결한 자체 제작 개념도.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Namecheap이 도메인을 구매한 곳이더라도 현재 DNS 레코드를 관리하는 곳은 아닐 수 있습니다. 로그인 후 레코드 추가 버튼을 찾지 못했다고 해서 반드시 계정에 문제가 있는 것은 아닙니다. 먼저 도메인이 어느 네임서버를 사용하는지 확인하고 실제로 이름 해석을 담당하는 서비스에서 수정하세요. 같은 정보를 반복해서 추가하는 것보다 올바른 관리 위치를 찾는 일이 중요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 안내는 공개된 공식 문서를 바탕으로 절차를 정리했으며, 사용자를 대신해 계정에 로그인하거나 특정 호스팅을 실제로 테스트했다고 주장하지 않습니다. 아래에서는 도메인은 Namecheap에 두고, 웹사이트는 다른 호스팅 업체에, 이메일은 별도 제공업체에 두는 상황을 설명합니다. 모든 IP, 대상 이름, 검증 값은 자신의 제공업체에서 받아야 하며 다른 사람의 예시를 그대로 복사해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "Domain List에서 관리할 도메인 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 공식 사이트를 열어 로그인하고 Domain List에서 전체 도메인을 찾은 뒤 Manage를 선택합니다. 철자와 확장자를 먼저 대조한 다음 만료일, 갱신, 연락처 정보를 확인하세요. 친구나 업체가 대신 등록했다면 등록자와 관리 권한을 먼저 명확히 해야 합니다. 설정을 계속하려고 상대방의 주 계정을 공유하지 말고 서비스에서 허용하는 권한 부여 방법을 사용하거나 정식 인계를 완료합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수정하기 전에 현재 Nameservers와 웹사이트, 이메일, 기타 검증에 사용하는 레코드를 기록합니다. 내보내기 기능을 쓰거나 읽기 쉬운 목록을 저장해도 됩니다. 비밀번호, 결제 정보, 비밀 검증 키를 공개 문서에 함께 넣지 마세요. TXT 레코드의 용도가 불분명하면 원래 서비스를 확인한 뒤 유지 여부를 결정해야 하며, 아직 사용하는 검증 설정을 불필요한 항목으로 생각해 지우지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "DNS 관리 서비스를 바꿀지 레코드만 바꿀지 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅 업체가 자사의 네임서버를 사용하라고 요구하면 Nameservers에서 지정된 DNS 호스팅 서비스를 선택하는 것입니다. Namecheap 문서는 타사 네임서버를 입력하는 방법으로 Custom DNS를 제공합니다. 이 설정은 이후 레코드를 관리할 위치를 바꾸므로, 먼저 새 서비스에 웹사이트, 이메일, 필요한 검증 정보가 모두 준비되었는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 방법은 현재 DNS를 유지하고 호스팅 업체가 제공한 정보로 웹사이트 레코드를 만드는 것입니다. 두 방식 모두 웹사이트를 연결할 수 있지만 관리 위치와 이전 작업은 다릅니다. 기존 이메일이 정상이고 웹사이트만 바꾸려면 관련 레코드만 조정할 수 있는지 호스팅 업체에 먼저 물어보세요. 대체로 이번 변경의 범위를 정하기가 더 쉽지만, 적용 가능 여부는 서비스 조건에 따라 판단해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "Advanced DNS 사용 조건 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Namecheap 설명에 따르면 도메인이 BasicDNS, PremiumDNS 또는 FreeDNS를 사용할 때 해당 Host Records를 Advanced DNS에서 관리합니다. 타사 네임서버나 Namecheap의 호스팅 네임서버를 사용한다면 해당 DNS 또는 호스팅 관리 화면에서 레코드를 처리해야 합니다. 추가 버튼이 보이지 않으면 이 조건부터 다시 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "레코드를 만들 때 Type, Host, Value, TTL을 필드별로 확인합니다. A 레코드 값은 IPv4 주소이며, CNAME은 다른 호스트 이름을 가리킵니다. 호스팅 업체가 루트 도메인과 www를 별도로 설정하라고 하면 둘 다 처리해야 합니다. Host 필드는 화면의 규칙에 따라 작성하고, 전체 URL의 https 부분이나 페이지 경로를 DNS 이름에 함께 넣지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 도메인에는 원래 파킹 페이지나 리디렉션 레코드가 있을 수 있습니다. 충돌이 생기면 그것이 이번에 교체할 항목인지 먼저 확인한 뒤 삭제하거나 갱신합니다. 모든 레코드를 지운 후 다시 추측해서 만들지 마세요. 특히 같은 이름의 별칭과 다른 레코드는 함께 사용할 때 제약이 있으므로, 제공업체의 요구가 불분명하면 레코드 유형을 빠짐없이 지원 담당자에게 전달해 확인받습니다."
+        },
+        {
+          "type": "heading",
+          "text": "수신 이메일 서비스의 정보로 이메일 설정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail Settings는 웹사이트 레코드와 용도가 다릅니다. 예를 들어 Microsoft 365 공식 안내는 도메인 검증을 마친 뒤 관리 센터에서 제공하는 정보로 MX 등의 레코드를 설정하도록 합니다. Namecheap에서 사용자 지정 이메일 레코드를 사용할 때는 문서에 따라 Custom MX를 선택합니다. 대상 값은 자신의 테넌트에서 가져와야 하며 안내 이미지에 나온 값을 그대로 복사해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "MX는 이메일이 배달되는 위치를 결정하지만, MX만 있다고 메일함이 만들어졌거나 발신 인증이 완료된 것은 아닙니다. 이메일 업체의 요구에 따라 SPF, DKIM 또는 다른 레코드를 처리하고 기존 메일함의 이전 계획부터 확인하세요. 이미 SPF 설정이 있다면 실제 발신 출처와 공식 요구를 적절히 통합해야 합니다. 다른 안내에 나온다는 이유로 서로 충돌하는 설정을 추가하지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "웹사이트와 이메일 제공업체에 각각 필요한 레코드를 요청하고, 용도, 이름, 유형, 값, 우선순위를 표시합니다.",
+            "현재 DNS 관리 위치를 확인하고 원래 설정을 저장합니다. 네임서버를 바꿀 예정이라면 새 영역에 전체 레코드를 먼저 준비합니다.",
+            "항목별로 입력하고 저장한 뒤 원래 요구 사항과 대조합니다. 같은 작업을 하면서 관련 없는 항목까지 지우지 않도록 합니다.",
+            "웹사이트와 이메일 레코드를 조회한 다음 사이트 열기, 외부에서 오는 메일 수신, 외부로 보내기를 실제로 테스트하고 결과를 변경 기록에 남깁니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "검증할 때 DNS와 웹사이트 상태 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 성공은 관리 화면이 설정을 받아들였다는 뜻일 뿐입니다. 이름 해석은 기존 캐시의 영향을 받을 수 있어 네트워크마다 변경을 확인하는 시간이 다를 수 있습니다. 변경 시간, 이전 TTL, 조회 결과를 기록하고, 운에 맡겨 네임서버를 연속으로 바꾸지 마세요. 공식 문서의 시간 설명은 일반적인 안내이며 모든 방문자가 같은 분에 새 값을 보게 된다는 보장은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이름 해석이 예상한 위치를 가리키는데 화면에는 여전히 오류가 나온다면, 다음으로 호스팅에 해당 도메인이 추가되었는지, 웹사이트 프로그램이 준비되었는지, HTTPS 인증서가 그 이름을 포함하는지 확인합니다. 웹사이트는 정상인데 이메일을 받지 못하면 이메일 레코드, 메일함 생성 상태, 이메일 업체의 오류 메시지를 확인하세요. 이렇게 계층별로 점검하면 모든 문제를 DNS가 아직 갱신되지 않은 탓으로 돌리는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "지원 담당자가 판단할 수 있는 정보 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "문제가 생긴 도메인, 발생 시간과 시간대, 예상 동작, 현재 네임서버, 조회된 레코드 유형과 값을 제공합니다. 스크린샷에서는 계정, 청구 정보와 관련 없는 내용을 가려도 됩니다. ‘루트 도메인은 열리는데 www에서 인증서 오류가 난다’고 설명하면 ‘사이트가 고장 났다’고만 쓰는 것보다 상대방이 올바른 처리 범위를 찾기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업 후 최종 설정과 담당 목록을 남겨 두면 다음에 하위 도메인을 추가하거나 이메일 서비스를 바꿀 때 출발점으로 삼을 수 있습니다. 관리표에는 필요한 정보만 넣고 매번 계정 전체를 다시 정리할 필요는 없습니다. 이번에 DNS 호스팅 서비스를 바꾸었다면 인계 문서도 갱신해 다음 유지보수 담당자가 어디에서 수정해야 하는지 알게 하세요. 더 이상 적용되지 않는 옛 화면에서 수정하는 일을 막을 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/namecheap-domain-setup/diagram-1-ko.svg",
+          "alt": "현재 상태를 파악하고 네임서버 변경 또는 기존 레코드 수정 중 하나를 선택한 뒤 웹사이트와 이메일을 각각 검증하는 흐름.",
+          "width": 1600,
+          "height": 900,
+          "caption": "설정을 저장한 뒤에도 실제 웹사이트와 메일함을 검증해야 합니다.",
+          "description": "현재 상태를 파악하고 네임서버 변경 또는 기존 레코드 수정 중 하나를 선택한 뒤 웹사이트와 이메일을 각각 검증하는 흐름.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "필요한 작업",
+            "주요 위치",
+            "먼저 확인할 사항"
+          ],
+          "rows": [
+            [
+              "DNS 관리를 다른 업체로 변경",
+              "Nameservers",
+              "새 서비스에 필요한 전체 레코드가 준비됨"
+            ],
+            [
+              "Namecheap에서 웹사이트 레코드 수정",
+              "Advanced DNS",
+              "현재 지원되는 Namecheap DNS를 사용 중임"
+            ],
+            [
+              "지정한 수신 이메일 서비스로 변경",
+              "유효한 DNS의 MX 등 설정",
+              "메일함과 이전 계획이 준비됨"
+            ],
+            [
+              "웹사이트 이름 해석은 맞지만 열리지 않음",
+              "호스팅과 인증서 관리",
+              "도메인 연결, 프로그램과 HTTPS"
+            ]
+          ],
+          "caption": "현재 네임서버를 기준으로 실제로 적용되는 관리 위치를 판단합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "네임서버를 바꾸기 전에 이메일 정보 보관하기",
+          "text": "웹사이트와 메일함은 서로 다른 제공업체를 사용할 수 있습니다. DNS 관리 위치를 옮길 때 MX, 발신 인증과 다른 서비스 레코드도 함께 확인해야 하며, 웹사이트의 A 레코드만 복사해서는 안 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인 구매 전 준비: 이름, 등록자와 갱신 관리",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 설정 확인: A, CNAME부터 이메일 레코드까지",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Namecheap: 도메인과 호스팅 연결",
+          "url": "https://www.namecheap.com/support/knowledgebase/article/9837/46/how-to-connect-a-domain-to-a-server-or-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap: Host Records를 관리할 수 있는 조건",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/323/2214/why-cant-i-modify-email-domain-redirect-and-host-records-in-my-namecheap-account/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft: Namecheap에서 Microsoft 365 DNS 연결",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/dns/create-dns-records-at-namecheap?view=o365-worldwide",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Namecheap 域名设置：注册后如何连接网站与邮箱",
+      "description": "在 Namecheap 买好域名后，还要确认 DNS 由谁管理，才能正确连接网站与邮箱。本文依据官方文档说明 Nameservers、Advanced DNS 与 Mail Settings 的分工，整理更换名称服务器及保留原 DNS 的两条路线，并提供设置前清单、逐项验证方法与故障反馈资料。适合域名、主机和邮件分别向不同供应商购买的人，也能帮助你避免为了让网站上线而误删原本的邮件记录。",
+      "hero": {
+        "src": "/guides/namecheap-domain-setup/hero-zh-cn.jpg",
+        "alt": "域名文件、DNS 服务器与网站画面相连的原创示意图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Namecheap 可以是购买域名的地方，但不一定是当前管理 DNS 记录的地方。登录后找不到新增记录按钮，未必是账号故障；先看这个域名使用哪一组名称服务器，再到真正负责解析的服务修改。找对位置，比反复新增同一条数据更重要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依据官方公开文档整理操作，没有代替你登录账号，也没有宣称实际测试特定主机。以下以域名留在 Namecheap、网站放在另一家主机、邮箱另有供应商的场景说明。所有 IP、目标名称与验证值，都应向自己的服务商获取，不能直接照抄别人的示例。"
+        },
+        {
+          "type": "heading",
+          "text": "在 Domain List 确认你要管理的域名",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自行打开官方网站登录，进入 Domain List，找到完整域名后选择 Manage。先核对拼写与后缀，再查看到期、续费和联系资料。如果由朋友或厂商代办，请先明确注册人与管理权限，不要为了继续设置就共用对方的主账号；使用服务允许的授权方式或完成正式交接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开始修改前，记录现有 Nameservers，以及网站、邮箱和其他验证使用的记录。可以使用导出功能，或保存清晰可读的清单；不要把密码、付款资料及验证密钥一起放进公开文档。如果不确定某条 TXT 的用途，先查原服务，再决定是否保留，避免把仍在使用的验证设置当成垃圾删除。"
+        },
+        {
+          "type": "heading",
+          "text": "先选择更换 DNS，还是只改记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果主机商要求你使用它的名称服务器，便是在 Nameservers 设置中采用指定的 DNS 托管服务。Namecheap 文档提供 Custom DNS 作为输入第三方名称服务器的方式。这会改变后续应到哪里管理记录，因此要先在新服务中确认网站、邮件和必要验证资料都已安排妥当。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一条路线是保留当前 DNS，按主机商提供的信息建立网站记录。两种方式都可能连接网站，但管理位置及迁移工作不同。如果现有邮件运行正常，而你只想更换网站，先询问主机商能否只调整相关记录，通常比较容易界定本次变更的范围；是否适用仍需根据服务条件判断。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 Advanced DNS 时确认适用条件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "根据 Namecheap 说明，域名使用 BasicDNS、PremiumDNS 或 FreeDNS 时，才是在其 Advanced DNS 中管理对应的 Host Records。使用第三方名称服务器，或使用 Namecheap 的主机名称服务器时，记录应在相应的 DNS 或主机管理界面中处理。没有新增按钮时，请先回头确认这一点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立记录时逐字段核对 Type、Host、Value 与 TTL。A 记录的值是 IPv4 地址，CNAME 则指向另一个主机名称；主机商要求根域名与 www 分别设置时，两者都要处理。Host 字段按界面规则填写，不要把完整网址的 https 开头或页面路径一起当成 DNS 名称。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新域名原先可能有停放页或重定向记录。遇到冲突时，先确认它是否就是本次要替换的项目，再移除或更新；不要把所有记录清空后重新猜测。尤其同一名称的别名与其他记录存在兼容限制，如果不确定供应商的要求，将完整的记录类型交给支持人员核对。"
+        },
+        {
+          "type": "heading",
+          "text": "邮件要依据收信服务的资料设置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail Settings 与网站记录的用途不同。以 Microsoft 365 的官方指引为例，它会要求完成域名验证，再依据管理中心提供的资料设置 MX 等记录；在 Namecheap 使用自定义邮件记录时，文档指定选择 Custom MX。你的目标值应取自自己的租户账号，不能照抄教程图片中的值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MX 决定邮件投递方向，但只有 MX 不代表邮箱已建立，也不代表发信验证已完整。请按邮件商要求处理 SPF、DKIM 或其他记录，并先确认旧邮箱的迁移安排。如果当前已有 SPF 设置，应整合实际发信来源及官方要求，不要看到另一份教程就额外新增一份互相冲突的设置。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "向网站与邮件供应商分别索取所需记录，标明用途、名称、类型、值及优先级。",
+            "确认当前 DNS 管理位置，保存原设置；如果要更换名称服务器，先准备新区域的完整记录。",
+            "逐项填入并保存，对照原需求检查，避免在同一次操作中顺手删除无关项目。",
+            "查询网站与邮件记录，再实际测试打开网站、接收外部邮件及对外发送邮件；将结果写入变更记录。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "验证时将 DNS 与网站状态分开看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "保存成功只代表界面接受了设置。解析还可能受到现有缓存的影响，各网络看到更新的时间未必相同。请记录修改时间、原 TTL 及查询结果，不要连续切换名称服务器碰运气。官方文档提供的是一般时间说明，不能保证每位访客都会在同一分钟看到新值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果解析已指向预期位置，但画面仍是错误页，下一步要检查主机是否已添加这个域名、网站程序是否就绪，以及 HTTPS 证书是否涵盖该名称。如果网站正常但收不到邮件，则查看邮件记录、邮箱建立状态及邮件商的错误信息。这样分层检查，能避免把所有问题都归因于 DNS 还没更新。"
+        },
+        {
+          "type": "heading",
+          "text": "留下客服能判断的反馈资料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "请提供受影响的域名、发生时间与时区、预期行为、当前名称服务器，以及查询到的记录类型和值。截图可以遮住账号、账务及无关信息。描述“根域名可以打开，www 显示证书错误”，会比只写“网站坏了”更容易让对方找到正确的处理范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后保留一份最终设置与责任清单，下次新增子域名或更换邮箱时就有起点。管理表只需放必要资料，不必每次都重新整理整个账户。如果本次曾更改 DNS 托管服务，也请更新交接文档，让下一位维护者知道应到哪里修改，避免改到已不生效的旧界面。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/namecheap-domain-setup/diagram-1-zh-cn.svg",
+          "alt": "先盘点现状，再选择更换名称服务器或修改现有记录，最后分别验证网站与邮箱。",
+          "width": 1600,
+          "height": 900,
+          "caption": "设置已保存后，仍要验证实际的网站与邮箱。",
+          "description": "先盘点现状，再选择更换名称服务器或修改现有记录，最后分别验证网站与邮箱。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "需求",
+            "主要位置",
+            "先确认"
+          ],
+          "rows": [
+            [
+              "改由另一家管理 DNS",
+              "Nameservers",
+              "新服务已备妥全部必要记录"
+            ],
+            [
+              "在 Namecheap 修改网站记录",
+              "Advanced DNS",
+              "当前使用适用的 Namecheap DNS"
+            ],
+            [
+              "改用指定收信服务",
+              "生效的 DNS 的 MX 等设置",
+              "邮箱及迁移安排已就绪"
+            ],
+            [
+              "网站解析正确仍无法打开",
+              "主机与证书管理",
+              "域名绑定、程序和 HTTPS"
+            ]
+          ],
+          "caption": "以当前名称服务器判断真正生效的管理位置。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "更换名称服务器前先保留邮件资料",
+          "text": "网站与邮箱可以使用不同供应商。移动 DNS 管理位置时，必须一并检查 MX、发信验证及其他服务记录，不能只复制网站的 A 记录。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "购买域名前先做的准备：名称、持有人与续费管理",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 设置怎么查：从 A、CNAME 到邮件记录",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Namecheap：连接域名与主机",
+          "url": "https://www.namecheap.com/support/knowledgebase/article/9837/46/how-to-connect-a-domain-to-a-server-or-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap：可管理 Host Records 的条件",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/323/2214/why-cant-i-modify-email-domain-redirect-and-host-records-in-my-namecheap-account/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：在 Namecheap 连接 Microsoft 365 DNS",
+          "url": "https://learn.microsoft.com/en-us/microsoft-365/admin/dns/create-dns-records-at-namecheap?view=o365-worldwide",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
