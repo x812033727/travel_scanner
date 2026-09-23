@@ -29,21 +29,21 @@ Four existing published guides have only Traditional Chinese. Add complete Engli
 
 ## Definition of done
 
-- [ ] All four scoped packs contain five complete GuideDocuments, with all 16 new translations complete and original zh-TW/raw pack metadata unchanged.
-- [ ] All 48 new images are present: 16 hero SVGs, 16 1600×900 hero JPGs and 16 diagram SVGs; all 12 original image files remain byte-identical.
-- [ ] Independent reviewers have read every translated field and actually viewed all desktop/mobile image previews; exact document, asset, render and review hashes are recorded.
-- [ ] Structure, numbers, source URLs/dates, code/product terms, audience, credits and same-language structured links pass the strict field guard; any canonical image-description backfills have explicit target-only ledgers.
-- [ ] Applicable scoped pack/API/publication/pipeline checks and frontend content tests, lint, i18n, types, build, tools and task checks have passing selected receipts. Record actual failures, retries, PostgreSQL/platform skips and editorial advisories without concealing them.
+- [x] All four scoped packs contain five complete GuideDocuments, with all 16 new translations complete and original zh-TW/raw pack metadata unchanged.
+- [x] All 48 new images are present: 16 hero SVGs, 16 1600×900 hero JPGs and 16 diagram SVGs; all 12 original image files remain byte-identical.
+- [x] Independent reviewers have read every translated field and actually viewed all desktop/mobile image previews; exact document, asset, render and review hashes are recorded.
+- [x] Structure, numbers, source URLs/dates, code/product terms, audience, credits and same-language structured links pass the strict field guard; any canonical image-description backfills have explicit target-only ledgers.
+- [x] Applicable scoped pack/API/publication/pipeline checks and frontend content tests, lint, i18n, types, build, tools and task checks have passing selected receipts. Record actual failures, retries, PostgreSQL/platform skips and editorial advisories without concealing them.
 - [ ] A content PR exists with its exact final head, honest local-validation results and current CI state. Create a separate release task for all remaining CI/merge/deploy/import/publish/browser work; this content task must not claim production completion.
 
 ## Sub-tasks
 
-- [ ] Reconfirm the pinned source/claim baseline in the isolated worktree and record the actual claim receipt.
-- [ ] Author pair A: `domain-registrar-transfer` and `siteground-wordpress-setup`, four new languages per article, eight complete documents and 24 localized assets.
-- [ ] Author pair B: `fastcomet-wordpress-setup` and `hostgator-wordpress-setup`, four new languages per article, eight complete documents and 24 localized assets.
-- [ ] Exchange independent prose and image reviews between authors, preserve superseded candidates and require exact final review pins before integration.
-- [ ] Assemble an outside-repository candidate, independently verify all 52 eventual content paths, 20 models, 16 reviewed translations and 12 original assets, then apply only the approved candidate.
-- [ ] Run the applicable local checks and preserve immutable command logs, selected receipts and final before/after source pins.
+- [x] Reconfirm the pinned source/claim baseline in the isolated worktree and record the actual claim receipt.
+- [x] Author pair A: `domain-registrar-transfer` and `siteground-wordpress-setup`, four new languages per article, eight complete documents and 24 localized assets.
+- [x] Author pair B: `fastcomet-wordpress-setup` and `hostgator-wordpress-setup`, four new languages per article, eight complete documents and 24 localized assets.
+- [x] Exchange independent prose and image reviews between authors, preserve superseded candidates and require exact final review pins before integration.
+- [x] Assemble an outside-repository candidate, independently verify all 52 eventual content paths, 20 models, 16 reviewed translations and 12 original assets, then apply only the approved candidate.
+- [x] Run the applicable local checks and preserve immutable command logs, selected receipts and final before/after source pins.
 - [ ] Open the content PR, file the separate release task and record its ID, then complete/archive this task only when its content acceptance and PR handoff are true.
 
 ## How to verify
@@ -78,4 +78,17 @@ Evidence outside the repository:
 - Fresh setup `setup-readonly-v1/receipt.json`, SHA256 `9cae6d6d73078ebacfded7a0b750d1e89d4ab4039d95ef4d4ecc2459ffe26d37`, preserved as its actual HOLD. Its only findings are four historical P: checkout states, resolved by `historical-checkout-triage.json`, SHA256 `52b2663d9e3f621d00eed58fdb8f63ed912c0d6939c996c44101110417cf73b7`. No ownership override, index repair or old-worktree mutation occurred.
 - The preflight read 193 registered worktrees, 13,383 open-task records and the fresh open PR file lists; there are no active scoped claims, existing translations, recent selected-content commits or PR conflicts. Two broad related tasks remain unclaimed. Refresh these facts at actual claim rather than interpreting this record as a permanent lock.
 
-Authoring, independent review, integration, local checks and PR acceptance are pending when this body is prepared. Actual claim/PR/test/release-task references must be added only after those events occur.
+Content and local acceptance completed; the PR handoff remains pending. The separate unclaimed release task is `2026-09-23-release-localized-hosting-transfer-guides-batch025`. CI, merge, deployment, import, publication and actual public acceptance remain open there.
+
+Actual content acceptance:
+
+- Claim HEAD `1b01c6075886e49294832dc25dbf948f58c1aa08`; claim receipt `68618a3ecdab893b34aa9193f62eadca57cd6b5d588204a4c2907b1b00b84413`.
+- Pair A independent final review `independent-pair-a-review-v1/receipt-pass-v2.json`, SHA256 `a7f2ffb21abc0cbf41e242cde54e8c4eca5ea4dc4916581c989f67cda96e759f`. Pair B independent final review `independent-fastcomet-hostgator-review-v1/receipt-pass.json`, SHA256 `394132a86257e7182e2116614722f8d9346af642d16671d99876a8ae55e9712d`. Together they cover all 16 full translations, 48 assets, 1,336 strict fields and zero numeric exceptions, with actual desktop/mobile image views and fresh SVG layout/font checks.
+- Pair A's superseded HOLD remains preserved; its only required final correction was the SiteGround English diagram label from `Test access limits` to `Test environment limits`, with a bounded font adjustment and newly viewed renders. The other 23 pair assets and all eight documents were unchanged. Pair B uses exact independently approved translations of the source SVG accessible titles. No arbitrary title shortening or numeric exception was introduced.
+- Outside candidate `integration-candidate-v1/integration-manifest.json`, SHA256 `32ec0073524abf41f116df8032d317e865dc8d82398f75e12b0f9fee16d2e927`; independent integration review `baaaf32b7b7ec84c454ab94b9203819c6365bb1ab2312740f71d8d92193dc2d0` passed 1,992 checks. It verifies exact 52 paths, 20 models, 12 original assets, reversible raw source/metadata preservation, 36 conditional links and 32 accessible-title ledger rows. All 16 description backfills are explicit and target-only.
+- The historical v1 assembler rejected noncanonical inventory ordering before producing output. The reviewed v2 validates four unique canonical slug identities without requiring the historical list order; actual source-schema checks and normal/optimized positive/negative guards passed. Original inventories and failed-attempt evidence remain preserved.
+- Applied receipt `integration-applied.json`, SHA256 `87d73e6aa82c1b7a4cb5b0a8a0b212b84cd17fc18bcd587344af206e5f67e811`; no files beyond the reviewed 52 content paths were applied.
+- Immutable local summary `test-evidence/summary-pass.json`, SHA256 `e2dd24527777c04fdeb83b44fe2b9b8c2fb252539cbfaef0e285107a9492c3de`, binds the 16 actual selected commands in seven groups to HEAD `1b01c6075886e49294832dc25dbf948f58c1aa08`. All selected attempts passed with no failed/incomplete attempt. Results: four pack lints with 24 retained editorial advisories; API 64 passed / 5 PostgreSQL skipped; publication 83 passed / 59 PostgreSQL skipped; nine frontend files / 333 tests; pipeline 32; render integrity/layout 17; tools 87 with zero platform skips; lint, i18n, types, production build, tasks and diff checks passed. The 64 PostgreSQL skips retain their actual reasons and require separately pinned actual CI. Node 24.19.0 and Git Bash were used, with web tests completed before the production build. Every command preserved all content, original images and guarded dependencies.
+- FastComet's three primary pages were readable; HostGator's four primary reads returned 403. Historic source dates remain unchanged; neither editorial review nor local checks claim fresh provider-account, payment, performance or physical-device testing.
+
+All relative evidence paths above are under `C:/Users/x8120/.codex/article-localization-release/batch025-hosting-transfer`. The original local summary is not evidence for any later merged HEAD; any post-merge checks receive separate receipts.
