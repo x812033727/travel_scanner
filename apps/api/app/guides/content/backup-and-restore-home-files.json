@@ -151,6 +151,586 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Home File Backups Need More Than a Sync Check: Test a Restore to Know You Can Recover",
+      "description": "Distinguish original files, synchronized copies, and recoverable versions. From listing important files and backup locations to restoring a sample, build a way to protect your data that you can actually use.",
+      "hero": {
+        "src": "/guides/backup-and-restore-home-files/hero.jpg",
+        "alt": "A laptop, external hard drive, duplicate folders, and a paper-cut cloud (AI-generated illustrative artwork, not a photograph)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI-generated illustration",
+          "license": "AI-generated, not a photograph",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A sync icon beside a file can make everything seem safe. But synchronization keeps locations consistent, while a backup must answer a different question: if an original disappears or is changed incorrectly, is there a copy you can recover? This guide focuses on personal and household files. It does not cover company backup policies or treat cloud storage capacity as a guarantee of safety."
+        },
+        {
+          "type": "heading",
+          "text": "Start by listing data you cannot obtain again",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Begin with files you created, family photos, and important records. Separate what you can download again from what exists only in your possession. Record where those files are now, which accounts they use, and whether anyone else needs access. You do not have to finish organizing every folder before starting a backup. Once you can identify the important originals, create a second copy you can check, then improve the organization gradually."
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft's backup guidance distinguishes the purposes of Windows Backup, File History, and system recovery. Before choosing a tool, read what data it actually protects, where it stores that data, and how to restore it. Do not assume a settings backup or system restore point includes copies of every file. If files exist only in the cloud and download on demand to the device, also confirm that your chosen tool obtains their actual contents, rather than merely seeing their names."
+        },
+        {
+          "type": "image",
+          "src": "/guides/backup-and-restore-home-files/diagram-1-en.svg",
+          "alt": "A four-step process: list important data, check copies, test a sample restore, and check again regularly",
+          "width": 1600,
+          "height": 900,
+          "caption": "Steps shown: 01 List important data → 02 Check copies → 03 Test a restore → 04 Check again regularly. An editorially recommended sequence; the diagram does not represent geographic distance, a service guarantee, or measured results.",
+          "description": "Check in order: list important data, check copies, test a sample restore, and check again regularly. An editorial guide, not a map or measured timing.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Check location, versions, and accounts separately",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "Question",
+            "What to confirm",
+            "Common misconception"
+          ],
+          "rows": [
+            [
+              "Where is it stored?",
+              "Whether another device or service holds the complete data",
+              "Another folder on the same drive is enough"
+            ],
+            [
+              "Which version can you recover?",
+              "Conditions for retaining versions and deleted files",
+              "Successful synchronization means changes can always be undone"
+            ],
+            [
+              "Who can read it?",
+              "The account and any required unlocking method",
+              "If you remember how to sign in, others must be able to access it too"
+            ],
+            [
+              "How do you restore it?",
+              "The actual steps and destination",
+              "Seeing a backup screen makes a test unnecessary"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "If every copy depends on the same device or account, a device failure, theft, or inability to sign in may leave all of them inaccessible. Arrange copies in different locations as needed and keep the necessary recovery methods available. For sensitive data, consider permissions and encryption as well. Do not put private information in a publicly shared folder just to make backup convenient. Specific retention periods depend on the product and account plan you use."
+        },
+        {
+          "type": "heading",
+          "text": "Restore a sample into a separate folder",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First choose a test file with no sensitive content, let it go through the normal backup process, and restore a copy to a separate folder so you do not overwrite the original. Open it and check that text, images, or attachments are complete. For photos, check whether their dimensions and capture information meet your needs. Then verify a sample of the data that really matters, recording the test date, backup source, and restore result. These records are more useful than assuming a backup probably exists."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not practice deletion on your only original",
+          "text": "Use a newly created test file to try recovery, or first confirm that you have a readable, independent copy. Restore to a new location and compare the contents. Do not overwrite all the data you are currently using."
+        },
+        {
+          "type": "heading",
+          "text": "Make checks a habit you can sustain",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Whenever you add a device, move folders, or change accounts, check again that the affected data is still covered by your backup. Make backup drives easy to identify, and do not use them interchangeably with USB drives for temporary file transfers. When using an external device, follow the tool's instructions to finish and eject it. For shared household data, write a short access guide, but do not put every password in the same unprotected file."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List important data and its original locations.",
+            "Read the tool's scope, retention conditions, and restore method.",
+            "Restore to an independent location, open the files, and check them.",
+            "Check again after changes to devices or the data's organization."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize Phone Photos: Preserve Them First, Remove Duplicates, Then Make Albums You Will Revisit",
+              "kind": "life",
+              "slug": "phone-photo-declutter-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft: Backup, Restore, and Recovery in Windows",
+          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft: Backup and Restore with File History",
+          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "家庭のファイルは同期完了だけで安心しない：復元を試して、取り戻せるか確かめる",
+      "description": "元のファイル、同期したコピー、復元できるバージョンを区別しましょう。重要なファイルの一覧と保存先の確認から、サンプルの復元テストまで、自分で実際に使えるデータ保護の方法を整えます。",
+      "hero": {
+        "src": "/guides/backup-and-restore-home-files/hero.jpg",
+        "alt": "ノートパソコン、外付けハードディスク、複製したフォルダと切り絵の雲（AI生成のイメージイラスト、実写ではありません）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI生成のイメージイラスト",
+          "license": "AI生成、実写ではありません",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ファイルの横に同期アイコンがあると、もう万全だと思いがちです。しかし同期は複数の場所の状態をそろえる仕組みであり、バックアップには別の問いへの答えが必要です。元のファイルが消えたり、内容を誤って変更したりしたとき、取り戻せるコピーがあるでしょうか。本稿は個人と家庭のファイルを対象とし、会社のバックアップ方針は扱いません。クラウドの容量の大きさも、安全性の保証とは考えません。"
+        },
+        {
+          "type": "heading",
+          "text": "二度と入手できないデータを先に挙げる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自分で作ったファイル、家族の写真、重要な記録から始め、再ダウンロードできるものと、自分の手元にしかないものを分けます。今どこにあるか、どのアカウントを使うか、ほかにアクセスが必要な人はいるかを記録しましょう。フォルダを完全に整理してからでなければバックアップできないわけではありません。重要な元ファイルを特定できたら、まず照合できる別のコピーを作り、分類は徐々に改善できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft のバックアップ案内では、Windows Backup、File History、システムの回復などの用途が区別されています。ツールを選ぶ前に、実際にどのデータを保護し、どこに保存し、どう復元するのかを読みましょう。設定のバックアップやシステムの復元ポイントがあれば、すべてのファイルのコピーもあるとは限りません。ファイルがクラウドだけにあり、端末には必要に応じてダウンロードされる場合は、選んだツールがファイル名を見るだけでなく、実際の内容を取得しているかも確認します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/backup-and-restore-home-files/diagram-1-ja.svg",
+          "alt": "四つの手順：重要なデータを挙げる、コピーを確認する、サンプルを復元する、定期的に再確認する",
+          "width": 1600,
+          "height": 900,
+          "caption": "図の手順：01 重要なデータを挙げる → 02 コピーを確認する → 03 サンプルを復元する → 04 定期的に再確認する。編集部が勧める作業順序です。地理的な距離、サービスの保証、効果の実測を示す図ではありません。",
+          "description": "順に確認：重要なデータを挙げる、コピーを確認する、サンプルを復元する、定期的に再確認する。編集部による整理であり、地図や実測時間ではありません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "保存場所、バージョン、アカウントを分けて確認する",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認する問い",
+            "確かめること",
+            "よくある思い違い"
+          ],
+          "rows": [
+            [
+              "どこに保存されているか",
+              "別の端末やサービスに完全なデータがあるか",
+              "同じディスクの別フォルダで十分"
+            ],
+            [
+              "どの版まで戻せるか",
+              "バージョンや削除済みデータの保持条件",
+              "同期に成功すればいつでも取り消せる"
+            ],
+            [
+              "誰が読み取れるか",
+              "アカウントと必要なロック解除方法",
+              "自分がログイン方法を覚えていれば、ほかの人も取得できる"
+            ],
+            [
+              "どう復元するか",
+              "実際の操作と復元先",
+              "バックアップ画面があれば試す必要はない"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "複数のコピーがすべて同じ端末やアカウントに依存していると、端末の故障、盗難、ログイン不能によって、どれも取得できなくなる可能性があります。必要に応じて別の場所にもコピーを用意し、必要な回復手段を保存しておきましょう。機密性のあるデータでは、権限と暗号化も一緒に検討します。バックアップを楽にするために、私的なデータを公開共有フォルダへ置かないでください。具体的な保持期間は、利用する製品とアカウントのプランによります。"
+        },
+        {
+          "type": "heading",
+          "text": "サンプルを別のフォルダへ復元する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず機密情報を含まないテスト用ファイルを選び、通常のバックアップ処理を通してから、別のフォルダへコピーを復元します。元のファイルを上書きしないためです。開いて、文字、画像、添付内容がすべて残っているか確認しましょう。写真は、画像サイズや撮影情報が必要な状態で残っているかも調べられます。その後、本当に重要なデータからもサンプルを選んで検証し、テスト日、バックアップ元、復元結果を記録します。「たぶんバックアップがある」という思い込みより、この記録のほうが役に立ちます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "唯一の元ファイルで削除の練習をしない",
+          "text": "復元を試すときは新しく作ったテスト用ファイルを使うか、読み取り可能な独立したコピーがあることを先に確認します。新しい場所へ復元して内容を照合し、現在使っているデータを丸ごと上書きしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "無理なく続く確認の習慣にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "端末の追加、フォルダの移動、アカウントの変更を行ったら、そのデータが引き続きバックアップ対象かを確認します。バックアップ用ディスクは見分けられるようにし、一時的なファイル交換用のUSBメモリと兼用しないようにしましょう。外付け機器は、ツールの案内に従って処理を完了し、取り出します。家族で使うデータには短いアクセス手順書を用意できますが、すべてのパスワードを同じ保護されていないファイルにまとめて置かないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "重要なデータと元の保存場所を一覧にする。",
+            "ツールの対象範囲、保持条件、復元方法を確認する。",
+            "独立した場所へ復元し、開いて内容を照合する。",
+            "端末やデータ構成が変わったら再確認する。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "スマホ写真を整理する順番：まず保管し、重複を削除して、見返したくなるアルバムを作る",
+              "kind": "life",
+              "slug": "phone-photo-declutter-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft：Windows のバックアップ、復元、回復の方法",
+          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：File History によるバックアップと復元",
+          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "가정용 파일 백업, 동기화 완료만 믿지 마세요: 복원을 해 봐야 되찾을 수 있는지 압니다",
+      "description": "원본 파일, 동기화된 사본, 복구할 수 있는 버전을 구분하세요. 중요한 파일 목록과 백업 위치부터 표본 복원 점검까지, 자신이 실제로 사용할 수 있는 데이터 보호 방법을 마련합니다.",
+      "hero": {
+        "src": "/guides/backup-and-restore-home-files/hero.jpg",
+        "alt": "노트북, 외장 하드 드라이브, 복제된 폴더와 종이 공예 구름(AI 생성 예시 일러스트, 실제 사진 아님)",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 생성 일러스트",
+          "license": "AI 생성 이미지, 실제 사진 아님",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "파일 옆에 동기화 아이콘이 있으면 모든 준비가 끝났다고 생각하기 쉽습니다. 하지만 동기화의 목적은 여러 위치의 상태를 일치시키는 것이고, 백업은 다른 질문에 답해야 합니다. 원본이 사라지거나 내용을 잘못 바꿨을 때 되찾을 수 있는 사본이 있는지입니다. 이 글은 개인과 가정의 파일을 다룹니다. 회사의 백업 정책은 다루지 않으며, 클라우드 저장 공간의 크기를 안전성의 보장으로 보지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "다시 구할 수 없는 데이터부터 목록으로 만드세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 작성한 파일, 가족사진, 중요한 기록부터 시작해 다시 내려받을 수 있는 것과 자신에게만 있는 것을 구분하세요. 현재 어디에 있는지, 어떤 계정을 사용하는지, 다른 사람도 접근해야 하는지 적어 둡니다. 폴더 정리가 완벽하게 끝날 때까지 백업을 미룰 필요는 없습니다. 중요한 원본을 식별할 수 있다면 먼저 대조할 수 있는 별도 사본을 만들고, 분류는 차차 개선하면 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft의 백업 안내는 Windows Backup, File History, 시스템 복구 등의 용도를 구분합니다. 도구를 고르기 전에 실제로 어떤 데이터를 보호하는지, 어디에 저장하는지, 어떻게 복원하는지 읽어 보세요. 설정 백업이나 시스템 복원 지점이 있다고 해서 모든 파일의 사본이 있다고 생각하면 안 됩니다. 파일이 클라우드에만 있고 기기에서는 필요할 때 내려받는 상태라면, 선택한 도구가 파일 이름만 보는 것이 아니라 실제 내용까지 가져오는지도 확인해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/backup-and-restore-home-files/diagram-1-ko.svg",
+          "alt": "네 단계 흐름: 중요한 데이터 목록 만들기, 사본 확인, 표본 복원 점검, 정기적인 재점검",
+          "width": 1600,
+          "height": 900,
+          "caption": "그림의 단계: 01 중요한 데이터 목록 → 02 사본 확인 → 03 표본 복원 점검 → 04 정기적인 재점검. 편집부가 권하는 작업 순서이며, 지리적 거리나 서비스 보장, 효과 실측을 나타내지 않습니다.",
+          "description": "순서대로 확인: 중요한 데이터 목록 만들기, 사본 확인, 표본 복원 점검, 정기적인 재점검. 편집부가 정리한 안내이며 지도나 실측 시간이 아닙니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "위치, 버전, 계정을 따로 확인하세요",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "질문",
+            "확인할 내용",
+            "흔한 오해"
+          ],
+          "rows": [
+            [
+              "어디에 저장되어 있나요",
+              "다른 기기나 서비스에 완전한 데이터가 있는지",
+              "같은 디스크의 다른 폴더면 충분하다"
+            ],
+            [
+              "어느 버전으로 돌아갈 수 있나요",
+              "버전과 삭제된 데이터의 보관 조건",
+              "동기화만 성공하면 언제든 되돌릴 수 있다"
+            ],
+            [
+              "누가 읽을 수 있나요",
+              "계정과 필요한 잠금 해제 방법",
+              "내가 로그인 방법을 기억하면 다른 사람도 접근할 수 있다"
+            ],
+            [
+              "어떻게 복원하나요",
+              "실제 조작 방법과 복원 대상 위치",
+              "백업 화면이 있으면 시험할 필요가 없다"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 사본이 모두 같은 기기나 계정에 의존하면 기기 고장, 도난, 로그인 불가 상황에서 한꺼번에 접근할 수 없게 될 수 있습니다. 필요에 따라 서로 다른 위치에 사본을 두고, 필요한 복구 방법을 보관하세요. 민감한 데이터라면 권한과 암호화도 함께 고려해야 합니다. 백업을 편하게 하려고 사적인 데이터를 공개 공유 폴더에 넣지 마세요. 구체적인 보관 기간은 사용하는 제품과 계정 요금제에 따라 달라집니다."
+        },
+        {
+          "type": "heading",
+          "text": "표본을 다른 폴더에 복원하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 민감한 내용이 없는 테스트 파일을 골라 정상적인 백업 과정을 거치게 한 뒤, 원본을 덮어쓰지 않도록 별도 폴더에 사본을 복원합니다. 파일을 열어 글, 이미지, 첨부 내용이 온전히 남아 있는지 확인하세요. 사진은 크기와 촬영 정보가 필요한 조건에 맞는지도 살펴볼 수 있습니다. 이어서 실제로 중요한 데이터에서도 표본을 뽑아 검증하고, 테스트 날짜, 백업 출처, 복원 결과를 기록합니다. 이런 기록은 '아마 백업이 있을 것'이라는 생각보다 유용합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "유일한 원본으로 삭제 연습을 하지 마세요",
+          "text": "복구를 시험할 때는 새로 만든 테스트 파일을 사용하거나, 읽을 수 있는 독립된 사본이 있는지 먼저 확인하세요. 새 위치에 복원한 뒤 내용을 대조하고, 현재 사용하는 데이터를 통째로 덮어쓰지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "지속할 수 있는 점검 습관을 만드세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 기기를 추가하거나 폴더를 옮기거나 계정을 바꿀 때마다 해당 데이터가 여전히 백업 범위에 포함되는지 다시 확인하세요. 백업 디스크는 쉽게 구분할 수 있게 하고, 임시 파일 교환용 USB 메모리와 섞어 쓰지 마세요. 외장 기기는 도구의 안내에 따라 작업을 마치고 꺼냅니다. 가족이 함께 쓰는 데이터에는 짧은 접근 안내를 작성할 수 있지만, 모든 비밀번호를 보호되지 않은 같은 파일에 그대로 넣어 두지는 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "중요한 데이터와 원래 위치를 목록으로 만드세요.",
+            "도구의 대상 범위, 보관 조건, 복원 방법을 자세히 읽으세요.",
+            "독립된 위치에 복원하고 열어서 내용을 대조하세요.",
+            "기기나 데이터 구조가 바뀌면 다시 점검하세요."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "휴대폰 사진 정리 순서: 먼저 보관하고, 중복을 지운 뒤, 다시 볼 앨범을 만드세요",
+              "kind": "life",
+              "slug": "phone-photo-declutter-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft: Windows 백업, 복원 및 복구 방법",
+          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft: File History로 백업 및 복원",
+          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "家庭文件备份别只看同步完成：做一次还原，才知道能不能找回",
+      "description": "把原文件、同步副本与可恢复版本分清楚。从重要文件清单、备份位置，到抽样还原的检查，建立自己真正能使用的数据保护方式。",
+      "hero": {
+        "src": "/guides/backup-and-restore-home-files/hero.jpg",
+        "alt": "笔记本电脑、外接硬盘、文件夹副本与纸雕云朵（AI 生成示意插画，非实拍）",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair · AI 生成示意图",
+          "license": "AI 生成，非实拍",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "文件旁边有同步图标，容易让人以为已经万无一失。但同步的用途是让不同位置保持一致，备份则要回答另一个问题：原文件不见或内容改错时，有没有一份可以找回。这篇聚焦个人与家庭文件，不讨论公司备份政策，也不把云端容量大小当作安全程度的保证。"
+        },
+        {
+          "type": "heading",
+          "text": "先列出无法重新取得的数据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从自己写的文件、家庭照片和重要记录开始，区分哪些可以重新下载、哪些只有自己手上这一份。记下它们目前在哪里、使用什么账号，以及是否有其他人需要访问。备份不用等文件夹完全整理好才开始；只要能辨识重要原文件，就可以先建立第二份可核对的副本，再逐步改善分类。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Microsoft 的备份说明区分 Windows Backup、File History 与系统恢复等用途。选择工具前，要读清它实际保护哪些数据、存到哪里以及如何还原，不把设置备份或系统还原点当成所有文件都有副本。如果文件只在云端、设备上处于按需下载状态，也要确认选定工具是否真正取得内容，而不只是看到文件名。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/backup-and-restore-home-files/diagram-1-zh-cn.svg",
+          "alt": "四步骤流程：列重要数据、确认副本、还原抽查、定期再查",
+          "width": 1600,
+          "height": 900,
+          "caption": "图中步骤：01 列重要数据 → 02 确认副本 → 03 还原抽查 → 04 定期再查。编辑建议的处理顺序；示意图不代表地理距离、服务保证或效果实测。",
+          "description": "依次检查：列重要数据、确认副本、还原抽查、定期再查。编辑整理，非地图或实测时间。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "把位置、版本与账号分开检查",
+          "level": 2
+        },
+        {
+          "type": "table",
+          "header": [
+            "问题",
+            "要确认的内容",
+            "常见误解"
+          ],
+          "rows": [
+            [
+              "存在哪里",
+              "另一个设备或服务是否有完整数据",
+              "同一硬盘里的另一个文件夹就足够"
+            ],
+            [
+              "可以回到哪一版",
+              "版本与删除内容的保留条件",
+              "同步成功就永远能撤销"
+            ],
+            [
+              "谁能读取",
+              "账号与必要的解锁方式",
+              "记得如何登录就代表其他人也能访问"
+            ],
+            [
+              "如何还原",
+              "实际操作与目标位置",
+              "有备份界面就不用尝试"
+            ]
+          ],
+          "caption": ""
+        },
+        {
+          "type": "paragraph",
+          "text": "不同副本如果都依赖同一台设备或同一个账号，设备故障、失窃或无法登录时，仍可能一起失去访问能力。可以按需要安排不同位置的副本，并保存必要的恢复方式。涉及敏感数据时，权限与加密也要一起考虑；不要为了方便备份，就把私密数据放进公开共享文件夹。具体保留期限以所用产品与账号方案为准。"
+        },
+        {
+          "type": "heading",
+          "text": "抽样还原到另一个文件夹",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先选择不含敏感内容的测试文件，让它经过正常备份，再把副本还原到独立文件夹，避免覆盖原文件。打开后检查文字、图片或附件是否完整；照片可以检查尺寸和拍摄信息是否符合需要。接着再从真正重要的数据中抽样验证，记下测试日期、备份来源与还原结果。这些记录比“应该有备份”更有用。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "别用唯一原文件做删除演练",
+          "text": "测试恢复时使用新建的测试文件，或先确认有可读取的独立副本。还原到新位置后核对内容，不要直接把正在使用的数据全部覆盖。"
+        },
+        {
+          "type": "heading",
+          "text": "把检查安排成能够坚持的习惯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每次增加新设备、移动文件夹或变更账号后，重新确认相关数据是否仍在备份范围内。备份磁盘要容易辨认，不与临时交换文件的 U 盘混用；使用外接设备时，按照工具指引完成操作并退出。家庭共同使用的数据，可以写一份简短的访问说明，但不要把所有密码直接放在同一份未受保护的文件里。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出重要数据与原始位置。",
+            "读清工具范围、保留条件与还原方式。",
+            "在独立位置还原，打开后核对内容。",
+            "设备或数据结构变动后重新检查。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "手机照片整理顺序：先保留，再删重复，最后做真正会翻的相册",
+              "kind": "life",
+              "slug": "phone-photo-declutter-workflow"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Microsoft：Windows 备份、还原与恢复方式",
+          "url": "https://support.microsoft.com/en-US/Windows/Experience/Backup-Recovery/backup-restore-and-recovery-in-windows",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Microsoft：File History 备份及还原",
+          "url": "https://support.microsoft.com/en-au/windows/backup-and-restore-with-file-history-7bf065bf-f1ea-0a78-c1cf-7dcf51cc8bfc",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
