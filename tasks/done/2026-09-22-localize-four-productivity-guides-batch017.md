@@ -1,14 +1,14 @@
 ---
 id: 2026-09-22-localize-four-productivity-guides-batch017
 title: Localize four productivity guides batch017
-status: review
+status: done
 priority: P1
 area: docs
 owner: codex-batch017
-claimed_at: 2026-09-22T08:32:10Z
+claimed_at: 2026-09-23T07:31:02Z
 created_at: 2026-09-22T08:32:08Z
-completed_at:
-branch: codex/article-localization-batch017-productivity
+completed_at: 2026-09-23T07:41:13Z
+branch: codex/localization-007-017-release-evidence
 depends_on: []
 scope:
   - apps/api/app/guides/content/email-triage-three-actions.json
@@ -22,6 +22,36 @@ scope:
 ---
 
 # Localize four productivity guides batch017
+
+## 2026-09-23 completed release checkpoint
+
+The separately authorized release is complete. [Batch007/017 release record](../../docs/article-localization/releases/batch007-017/README.md)
+lists every article and five public URLs; its compact evidence index pins the
+external full receipts. Earlier HOLD and outstanding notes below are historical
+checkpoints and do not override this completed release result.
+
+- [x] PR #659 merged after all eight exact-head CI checks passed; final Git-bound
+  release expectations and required preservation reviews were accepted.
+- [x] All 16 missing en/ja/ko/zh-CN documents in Batch017 were imported and
+  published on 2026-09-23; all four pre-existing zh-TW rows and article metadata
+  remain unchanged.
+- [x] All 20 public URLs in this batch passed five-language desktop/mobile
+  browser, body/image, canonical/hreflang, link and expanded-description/source
+  checks, with independent screenshot review.
+- [x] A fresh verified backup preceded publication; the existing deployed
+  `6b2339ec89eda90ad37c9e99009723dfca89ba4a` was adopted without redeployment or
+  application restart. Final acceptance cleared the release hold; the subsequent
+  read-only snapshot confirmed a clean same-revision host and three HTTP 200
+  health responses.
+
+Final evidence SHA256:
+`8aaa3d308786e1d8486fed7940330f681ece154964d7d0522c0f48161e13d4ec`.
+Final acceptance SHA256:
+`933c778a81f70205f70927798283744c4eb7da1bdc42b253c9295c6a000fec56`.
+Post-clear host evidence SHA256:
+`1d607d92816b1d73c63a265c8aeb116c83b56c75a44da981fe2629874c3e3b51`.
+The existing global search-placeholder icon issue remains tracked separately;
+this completion does not cover the remaining site-wide localization backlog.
 
 ## Why
 
