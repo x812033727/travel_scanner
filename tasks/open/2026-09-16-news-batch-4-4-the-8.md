@@ -127,3 +127,11 @@ scope:
 - 探索代理的原始抓檔與腳本留在 `C:\Users\x8120\mokaair-work\news44\`（不進 repo）；指派表 `news44/ASSIGNMENTS-44.md`。
 - 4.7 的教訓照 DELTA-4-7 第 11、13 條；本輪新增的網路坑在 DELTA-4-4 第 6 條。
 - 不做的「改維護票」項目列在 DELTA-4-4 第 5 條，要做另開票。
+
+## 進度（2026-09-23，第一波六篇）
+
+- 站主決定：候選全收 29 篇，但額度先給第八批；本波只做 AI #1–6，其餘 23 篇 9/27 週額度重置後續（研究 W2 從 #7 起）。
+- 六篇研究（全 full）→ 撰稿 → 兩輪查核完成，兩輪合計 597 條主張、103 處改動；裁決與數字在 HANDOVER §1g；報告 12 份在 `factcheck-draft/`。
+- 索引：`update_index.py ai --locale=zh-TW`（EXPANDED_ON 2026-09-23）把六個連結依事件日插進 8 月群（08-15、08-20、08-20、08-26、08-28）與 9 月群（09-09）；
+  en／ja／ko／zh-CN 逐位元不變；第二次執行拒絕。科技與幣圈索引本波未動。
+- relink 六篇（10 個連結轉 article inline）。繪圖：`build_assets.py` `# 4.4` 區六個函式；AI 整垂直重跑出 manifest 與 sheet。
