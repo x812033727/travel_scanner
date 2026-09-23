@@ -215,13 +215,19 @@ alias 也回 200，真正的 404 是渲染後才出現）。
 | 訂位控制項 | 「首頁」分頁裡的服務區塊：同時提供訂位與候位的店有 `service-tab-toggle`，底下是 `service-tab-DINING`（預訂）與 `service-tab-WAITING_REMOTE`（候位）兩個分頁；點開 DINING 才會出現「日期 • 時間 • 人」、日期列與「尋找可用時間」 | `document.querySelector('[data-testid="service-tab-DINING"]')?.click()` 之後看 `document.body.innerText` 有沒有「日期 • 時間 • 人」與「尋找可用時間」；`document.querySelector('[data-testid="dock-waiting-btn"]')?.innerText` |
 
 判定：有 `service-tab-DINING`，點開後出現「日期 • 時間 • 人」與「尋找可用時間」（或沒有分頁切換、頁面直接就是
-這組控制項；只提供訂位的店初始畫面常常只有底部橘色「預訂」鈕，**點一下那顆鈕**訂位區（`service-section-title`
-與日期列）才會展開，這一下不會送出任何東西；服務區塊有時要 10–20 秒才渲染，等它）→ `reservation`；沒有 DINING 分頁，只有 `service-tab-WAITING_REMOTE`／`waiting-remote-content`／
+這組控制項）→ `reservation`；沒有 DINING 分頁，只有 `service-tab-WAITING_REMOTE`／`waiting-remote-content`／
 `dock-waiting-btn` → `waiting_only`；什麼控制項都沒有 → `none`；頁面渲染後是 404 或身分對不上 → `unclear`。
 **2026-09-21 那條「有『預訂』且沒有候位鈕才算可訂位」的規則在雙服務的店會誤判**（熟成到 乙支路店兩個分頁都有，
 dock 按鈕也在），2026-09-23 起以 DINING 分頁為準。dock 按鈕上的「今日公休」只是現在不在營業時段（開店前也會
 顯示），不是公休日、也不是判定依據。平台 API 的 `serviceTypes` 單獨看會誤判（효뜨那筆含 `DINING_GLOBAL` 卻只能候位），
 一律以渲染後的控制項為準。
+
+**服務區塊是 lazy section，不捲到它就永遠不會渲染**（2026-09-23 三個代理都在這裡誤判成「被擋」）：初始畫面常常只有底部橘色
+「預訂」鈕或 `dock-waiting-btn`，要**逐步往下捲**（每步 500px、等 1 秒，最多 14 步）直到 `service-section-title`、`service-tab-toggle`
+或 `waiting-remote-content` 之一出現，區塊出現時頁面才會呼叫 `dayslot-enc`／`timeslot-enc`／`online-reservation-open-schedule`
+（訂位）這類 API。真實點一下底部「預訂」鈕也會捲到區塊，JS 的 `click()` 不會。候位制的店捲完可能還是只有 dock（區塊根本不掛載），
+那就是 `waiting_only`；區塊裡的 `service-tab-RESERVED_ENTRY`（優先入場）與 `waiting-onsite-content`（現場候位）都不是訂位。
+同一家店同一天可能兩種畫面都出現過（熟成到 乙支路店早上有雙分頁、兩小時後只剩 dock），那就記 `unclear`，不硬判。
 
 **官方來源去哪找（依序）。** 來源要是講這家分店的頁，文字看得到、當天讀到，等級照
 `docs/korea-food-specials/README.md`：觀光局店家頁（Visit Seoul 的 `KOP…` 店家頁、VisitKorea 繁中站

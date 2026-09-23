@@ -77,10 +77,20 @@ CatchTable、Naver、Google、Instagram、米其林只當發現與定位。進�
 
 ## 這批踩到的陷阱（下一批別再踩）
 
-- 虛擬化清單：捲到底再抓會漏掉榜首；`scrollTo` 跳著捲會撞到「徽章更新了、內容還是舊的」的回收卡片，同一家店出現在兩個名次。
-  只用滾輪逐步捲＋累積＋衝突檢查才乾淨。
-- 候位榜第 1–4 名的卡片第一次渲染時是沒有 `href` 的 `<a>`，`a[href*="/shop/"]` 從第 5 名開始；再渲染一次就有了。
+- **店頁的服務區塊是 lazy section。** 不往下捲就永遠不會渲染，畫面只剩底部「預訂」鈕或候位 dock。三個研究代理都把它當成
+  「被擋」（其中一個還做了對照組、等了 60 秒），四家可訂位的店先被記成 `unclear`。正確做法：每步 500px、等 1 秒、最多 14 步，
+  直到 `service-section-title`／`service-tab-toggle`／`waiting-remote-content` 出現；區塊出現時頁面才會呼叫 `dayslot-enc`、
+  `timeslot-enc`、`online-reservation-open-schedule`。30 家全部重查後才定案。
+- **同一家店同一天可能兩種畫面。** 熟成到 乙支路店 08:30 KST 有訂位＋候位雙分頁與日期選擇，兩小時後三次都只剩候位 dock；記 `unclear`，
+  不硬判。
+- **`RESERVED_ENTRY`（優先入場）不是訂位。** ARTIST BAKERY 的區塊有 `service-tab-RESERVED_ENTRY` 與候位分頁、沒有 DINING，仍是 `waiting_only`；
+  `waiting-onsite-content`（現場候位）同理。
+- 榜頁是虛擬化清單：捲到底再抓會漏掉榜首；`scrollTo` 跳著捲會撞到「徽章更新了、內容還是舊的」的回收卡片，同一家店出現在兩個名次。
+  只用滾輪逐步捲＋累積＋衝突檢查才乾淨；候位榜第 1–4 名的卡片第一次渲染時是沒有 `href` 的 `<a>`。
 - `export-food-merchant-worklist --out /tmp/x.json` 的檔案落在 api 容器裡，主機上 `cat` 不到；不帶 `--out` 直接讀 stdout。
+- 來源網址只收 https：제주옥탑的品牌站只有 http（https 握手失敗），地址電話都對得上也只能記 `no_official_source`。
+- `korean.visitkorea.or.kr` 的店家頁地址是前端動態載入、內建瀏覽器導向會被彈回原頁，用英文站（`english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=…`）
+  或 KTO 韓文頁的 `detail/ms_detail.do?cotid=…` 形式。
 - 榜單會隨時間變：相隔 20 分鐘的兩次擷取，第 17–19 名順序不同。`captured_at` 是證據，用擷取當下的名次，不補位。
 
 ## 還沒做完的

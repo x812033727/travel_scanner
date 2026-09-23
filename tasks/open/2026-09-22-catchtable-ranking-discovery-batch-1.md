@@ -51,9 +51,9 @@ scope:
 
 - [x] 和站主定範圍。站主 2026-09-22 定：最佳餐廳榜的首爾區前 20 家加候位榜前 10 家。
 - [x] 本機瀏覽器：兩個榜頁各跑一次設計文件「本機瀏覽器」一節的片段，對過家數與名次，存 `rankings.json`（2026-09-23，見 Notes：清單是虛擬化的，片段改成邊捲邊累積）。
-- [ ] 主機匯出 `export-food-merchant-worklist --status all --destination seoul`，加 repo 內
+- [x] 主機匯出 `export-food-merchant-worklist --status all --destination seoul`，加 repo 內
       `apps/api/app/foods/data/platform_reviews/` 三個檔裡的 CatchTable 網址，標每個 alias 是 new 還是 duplicate_of。
-- [ ] 本機瀏覽器逐店：店頁（韓文名、地址、hreflang、訂位控制項）＋官方來源（VisitSeoul 店家頁、
+- [x] 本機瀏覽器逐店：店頁（韓文名、地址、hreflang、訂位控制項）＋官方來源（VisitSeoul 店家頁、
       VisitKorea、區廳名錄、官網），照資料目錄 README 填 `candidates.json`，每家寫完就存。
 - [ ] 換人抽三分之一的 `import` 重開店頁與官方頁。
 - [ ] `catchtable_build_batches.py --merchants-out`；本機用 `load_trend_merchants` 再驗；PR 一（候選檔、merchants.json、報告初稿）。
@@ -84,6 +84,19 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli export-f
 pending 店家不出現在公開 API；公開的訂位按鈕要等站主貼 Naver 精準頁並核准後才會出現。
 
 ## Notes
+
+- 2026-09-23 第一批實作（claude-fable-5-1，本機 Claude Code，內建瀏覽器）。範圍：最佳榜首爾區 1–20 ＋ 候位榜 1–10，兩榜無重複，共 30 家。
+  結果：`import` 14、`duplicate` 1（`buchonyukhoe` → 目錄裡 rejected 的 `seoul-buchon-yukhoe`）、`no_official_source` 15；
+  訂位判定 30 家裡 `reservation` 14、`waiting_only` 14、`unclear` 2（`sooksungdo` 同一天兩種畫面、`ilpyeonfnb` 之外皆已複查）。
+  主機 `import-trend-merchants --file /dev/stdin` 唯讀 dry-run：`would_create 14`、0 skipped（stdin 餵法可用，省一次部署）。
+- **榜頁是虛擬化清單**：捲到底再抓會漏掉榜首；`scrollTo` 跳著捲會撞到「徽章更新了、內容還是舊的」的回收卡片。
+  只用滾輪逐步捲＋每步累積＋名次讀徽章＋衝突檢查才乾淨；候位榜第 1–4 名首次渲染是沒有 href 的 `<a>`。片段已改進設計文件。
+- **店頁服務區塊是 lazy section**：不往下捲就不會渲染，三個研究代理都把它當成「被擋」，四家可訂位的店先被記成 `unclear`、
+  一家候位店的判定也差點漏掉分頁；全部 30 家用「每步 500px、最多 14 步、直到區塊出現」重查一次才定案。規則已寫進設計文件。
+- `export-food-merchant-worklist --out /tmp/x.json` 的檔案落在 api 容器裡，主機 `cat` 不到；不帶 `--out` 直接讀 stdout，並加 `--include-researched`。
+- 來源網址只收 https：`jejuoktop_bbq` 的品牌站只有 http（https 握手失敗），只能記 `no_official_source`。
+- 江南區廳的 `visitgangnam.net`、首爾觀光財團的 Taste of Seoul（`*.tasteofseoul.visitseoul.net`）、母公司門市清單（`sgfco.kr`）都當過來源；
+  `korean.visitkorea.or.kr` 店家頁的地址是前端動態載入、內建瀏覽器導向會被彈回，本批改用英文站或 KTO 韓文頁的替代網址。
 
 - 2026-09-22 環境實測（claude-fable-5-1）：雲端容器 `curl` 榜頁得到 7,056 bytes 的 SPA 空殼；
   `api.catchtable.net` 的搜尋與店家 API 都是 Cloudflare 403 封鎖頁，帶完整瀏覽器標頭也一樣；
