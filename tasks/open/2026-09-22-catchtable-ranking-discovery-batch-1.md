@@ -87,7 +87,7 @@ pending 店家不出現在公開 API；公開的訂位按鈕要等站主貼 Nave
 
 - 2026-09-23 第一批實作（claude-fable-5-1，本機 Claude Code，內建瀏覽器）。範圍：最佳榜首爾區 1–20 ＋ 候位榜 1–10，兩榜無重複，共 30 家。
   結果：`import` 14、`duplicate` 1（`buchonyukhoe` → 目錄裡 rejected 的 `seoul-buchon-yukhoe`）、`no_official_source` 15；
-  訂位判定 30 家裡 `reservation` 14、`waiting_only` 14、`unclear` 2（`sooksungdo` 同一天兩種畫面、`ilpyeonfnb` 之外皆已複查）。
+  訂位判定 30 家裡 `reservation` 22、`waiting_only` 8（最終版：全部 30 家在同一分頁用 IntersectionObserver 包裝讓 lazy 區塊掛載後重看，見報告「陷阱」）。
   主機 `import-trend-merchants --file /dev/stdin` 唯讀 dry-run：`would_create 14`、0 skipped（stdin 餵法可用，省一次部署）。
 - **榜頁是虛擬化清單**：捲到底再抓會漏掉榜首；`scrollTo` 跳著捲會撞到「徽章更新了、內容還是舊的」的回收卡片。
   只用滾輪逐步捲＋每步累積＋名次讀徽章＋衝突檢查才乾淨；候位榜第 1–4 名首次渲染是沒有 href 的 `<a>`。片段已改進設計文件。

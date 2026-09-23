@@ -104,6 +104,18 @@
 所以第一批建議：**最佳餐廳榜的首爾區前 20 家加候位榜前 10 家**，量一次三個比例（有官方來源、
 能訂位、與既有目錄重複），再決定下一批怎麼切。這是建議，家數由站主定。
 
+**第一批量到的（2026-09-23，30 家，報告 `docs/catalog-content-reviews/catchtable-seoul-batch-1.md`）：**
+
+| 比例 | 值 | 意思 |
+| --- | ---: | --- |
+| 有官方來源 | 14/29 | 一半的店只有 Instagram；觀光局頁靠 Visit Seoul、KTO、江南區廳 Visit Gangnam、Taste of Seoul，官網靠母公司門市清單 |
+| 能線上訂位 | 22/30 | 最佳榜 20/20；候位榜 2/10——候位榜不是全候位 |
+| 與既有目錄重複 | 1/30 | 榜單找到的幾乎都是目錄沒有的店 |
+
+結論：**值得跑第二批**，切法建議「首爾最佳榜第 21–40 名 ＋ 釜山最佳榜前 20」（候位榜的來源命中率與訂位率都低，第二批不再從它取）；
+第二批開跑時把「操作步驟與指令」那一節升成 skill（判定規則在第一批已經改了三次，第二批之前不會再大改）。
+第一批 14 家建成 pending 之後全部卡在 Naver 精準頁，這一步不解決，第二批只是把佇列拉長。
+
 ## 操作步驟與指令
 
 | 步驟 | 雲端 session | 本機（站主的瀏覽器，或本機的 Claude Code／Codex） |
@@ -227,7 +239,14 @@ dock 按鈕也在），2026-09-23 起以 DINING 分頁為準。dock 按鈕上的
 或 `waiting-remote-content` 之一出現，區塊出現時頁面才會呼叫 `dayslot-enc`／`timeslot-enc`／`online-reservation-open-schedule`
 （訂位）這類 API。真實點一下底部「預訂」鈕也會捲到區塊，JS 的 `click()` 不會。候位制的店捲完可能還是只有 dock（區塊根本不掛載），
 那就是 `waiting_only`；區塊裡的 `service-tab-RESERVED_ENTRY`（優先入場）與 `waiting-onsite-content`（現場候位）都不是訂位。
-同一家店同一天可能兩種畫面都出現過（熟成到 乙支路店早上有雙分頁、兩小時後只剩 dock），那就記 `unclear`，不硬判。
+**而且只有前景分頁會掛載**：背景分頁裡 `IntersectionObserver` 的回呼不會觸發（複核者實測 1.5 秒 0 次），捲動也沒用，連訂位的 API 都不會發，
+任何店都只剩底部「預訂」鈕或 dock。`tabs_select` 也救不了：**整個瀏覽器面板收起來時，前景分頁的 `document.visibilityState` 一樣是 `hidden`**
+（`tabs_context` 會說 The Browser pane is currently hidden），所以只要沒有人正在看面板，任何分頁得到的「只有候位鈕」都不能算證據。
+可行的做法（2026-09-23 用已知可訂位的 산청숯불가든 을지로2호점 當對照組驗過）：在 Console 把 `window.IntersectionObserver` 包一層，
+讓新建立的觀察器在 `observe()` 後立刻收到一筆 `isIntersecting: true`，再點店頁自己的「菜單」→「首頁」分頁讓 LazySection 重新掛載，
+區塊就會照常渲染並向 CatchTable 取真實的服務資料（`dayslot-enc` 等）。這只是讓頁面自己的元件在隱藏面板裡照常渲染，不是繞過封鎖、
+不是逆向 API，做了要在報告揭露；`document.visibilityState` 要跟判定一起記，事後才分得清哪一次觀察可信。同一家店同一天兩種畫面（熟成到 乙支路店早上有雙分頁、
+兩小時後只剩 dock）多半就是這個原因，分不清就記 `unclear`，不硬判。
 
 **官方來源去哪找（依序）。** 來源要是講這家分店的頁，文字看得到、當天讀到，等級照
 `docs/korea-food-specials/README.md`：觀光局店家頁（Visit Seoul 的 `KOP…` 店家頁、VisitKorea 繁中站
