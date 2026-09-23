@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-household-purchasing-guides-batch021
 title: Release localized household purchasing guides batch021
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-batch021-release
+claimed_at: 2026-09-23T11:56:24Z
 created_at: 2026-09-23T11:50:02Z
 completed_at:
-branch:
+branch: codex/article-localization-021-release-record
 depends_on:
   - 2026-09-23-localize-two-household-purchasing-guides-batch021
 scope:
