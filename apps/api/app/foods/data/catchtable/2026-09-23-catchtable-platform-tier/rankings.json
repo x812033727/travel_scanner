@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-23-catchtable-platform-tier",
+  "destinations": [
+    "seoul",
+    "busan"
+  ],
+  "scope": "前兩批 29 家 no_official_source 的店，依 2026-09-23 新開的 merchant_platform 來源層級重判（來源＝店家自己登記的 CatchTable 店頁 /info 分頁）。",
+  "method": "不重抓榜單；榜單證據沿用第一批（2026-09-23 00:19 UTC）與第二批（06:29 UTC）的擷取。訂位判定沿用前兩批（IntersectionObserver 包裝、記 visibilityState）。",
+  "rankings": [
+    {
+      "page": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+      "captured_at": "2026-09-23T00:19:00+00:00",
+      "note": "沿用 2026-09-23-catchtable-seoul-1 的擷取；只列這批重判的店。",
+      "entries": [
+        {
+          "rank": 1,
+          "alias": "jejuoktop_bbq",
+          "label": "濟州屋塔黑石BBQ · 狎鷗亭 · 烤豬肉"
+        },
+        {
+          "rank": 3,
+          "alias": "suragejang",
+          "label": "Sura Gejang · 明洞 · 韓國料理"
+        },
+        {
+          "rank": 5,
+          "alias": "ilpyeon__myeongdong",
+          "label": "一片里脊 明洞店 · 明洞 · 烤牛肉"
+        },
+        {
+          "rank": 6,
+          "alias": "Gebang_ss",
+          "label": "GEBANG SIKDANG 聖水店 · 聖水 · 韓國料理"
+        },
+        {
+          "rank": 8,
+          "alias": "FavoriteIksoen",
+          "label": "益善取向 · 鐘路 · 西餐"
+        },
+        {
+          "rank": 9,
+          "alias": "on65",
+          "label": "温6.5"
+        },
+        {
+          "rank": 10,
+          "alias": "sooksungdo",
+          "label": "熟成到 乙支路店 · 乙支路 · 烤豬肉"
+        },
+        {
+          "rank": 13,
+          "alias": "doseulbak",
+          "label": "DOSEULBAK · 狎鷗亭 · 韓國料理"
+        },
+        {
+          "rank": 17,
+          "alias": "ilpyeonfnb",
+          "label": "ilpyeon eel hongdae · 弘大 · 海鮮"
+        },
+        {
+          "rank": 19,
+          "alias": "DOBU",
+          "label": "到付"
+        },
+        {
+          "rank": 24,
+          "alias": "ponobouno",
+          "label": "PONO BUONO"
+        }
+      ]
+    },
+    {
+      "page": "https://www.catchtable.net/zh-TW/top-list/waiting/seoul/all",
+      "captured_at": "2026-09-23T00:06:31+00:00",
+      "note": "沿用 2026-09-23-catchtable-seoul-1 的擷取；只列這批重判的店。",
+      "entries": [
+        {
+          "rank": 2,
+          "alias": "artistbakery",
+          "label": "Jongno · Cafe & Dessert · ARTIST BAKERY 安國店 · 日均排隊人數 892人"
+        },
+        {
+          "rank": 3,
+          "alias": "jojokalguksu",
+          "label": "Seongsu · Noodle · JoJoKalguksu · 日均排隊人數 818人"
+        },
+        {
+          "rank": 5,
+          "alias": "buchonyukhoe_annex",
+          "label": "Jongno · Meat, Meat dishes · Buchon Yukhoe, Annex · 682"
+        },
+        {
+          "rank": 7,
+          "alias": "standardbreadss",
+          "label": "Seongsu · Bakery · Standard Bread 聖水 · 344"
+        },
+        {
+          "rank": 8,
+          "alias": "muguok_sungsu",
+          "label": "Seongsu · Chicken Dishes · Muguok, Sungsu · 347"
+        }
+      ]
+    },
+    {
+      "page": "https://www.catchtable.net/zh-TW/ranking/location/location-seoul",
+      "captured_at": "2026-09-23T06:29:07+00:00",
+      "note": "沿用 2026-09-23-catchtable-batch-2 的擷取；只列這批重判的店。",
+      "entries": [
+        {
+          "rank": 19,
+          "alias": "ilpyeonfnb",
+          "label": "ilpyeon eel hongdae"
+        },
+        {
+          "rank": 20,
+          "alias": "DOBU",
+          "label": "到付"
+        },
+        {
+          "rank": 24,
+          "alias": "ponobouno",
+          "label": "PONO BUONO"
+        },
+        {
+          "rank": 25,
+          "alias": "sinsakkochgedang_apgujeong",
+          "label": "新沙花蟹堂 狎鷗亭羅德奧店"
+        },
+        {
+          "rank": 26,
+          "alias": "myeongdongeel",
+          "label": "Taecho Galbi"
+        },
+        {
+          "rank": 29,
+          "alias": "wootender",
+          "label": "Woo Tender"
+        },
+        {
+          "rank": 32,
+          "alias": "woohwa_hongdae",
+          "label": "woohwa Hongdae Main Branch"
+        }
+      ]
+    },
+    {
+      "page": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+      "captured_at": "2026-09-23T06:29:15+00:00",
+      "note": "沿用 2026-09-23-catchtable-batch-2 的擷取；只列這批重判的店。",
+      "entries": [
+        {
+          "rank": 1,
+          "alias": "83haechi_gwanganri",
+          "label": "83獬豸 廣安裏店"
+        },
+        {
+          "rank": 3,
+          "alias": "sinsakkotgedang",
+          "label": "Sinsakkotgedang Haeundae"
+        },
+        {
+          "rank": 8,
+          "alias": "corduroyfellaz_busan",
+          "label": "Corduroy Fellaz"
+        },
+        {
+          "rank": 10,
+          "alias": "gunamroast",
+          "label": "Gunam Roast"
+        },
+        {
+          "rank": 11,
+          "alias": "busan_kosaljip",
+          "label": "花肉店 田浦店"
+        },
+        {
+          "rank": 15,
+          "alias": "ushiya",
+          "label": "牛室"
+        },
+        {
+          "rank": 16,
+          "alias": "amassxsmugogae",
+          "label": "Smugogae"
+        },
+        {
+          "rank": 17,
+          "alias": "suksungdo_busan",
+          "label": "熟成到 廣安裏店"
+        },
+        {
+          "rank": 18,
+          "alias": "gwj",
+          "label": "圭牛正"
+        }
+      ]
+    }
+  ]
+}
