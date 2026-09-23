@@ -222,6 +222,854 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Managing a Gandi domain: registration, DNS and renewal checks",
+      "description": "Gandi keeps registration, DNS, email and renewal settings in separate places. Based on current official documentation, this guide covers post-purchase checks, LiveDNS records, backups, transfers and what the 2026 Classic DNS migration means for existing users. Check your own account and build a domain register others can take over, avoiding outdated tutorial nameservers and the assumption that paying means your website and email are fully configured.",
+      "hero": {
+        "src": "/guides/gandi-domain-management/hero-en.jpg",
+        "alt": "A domain document, backup folder and calculator symbolize registration management, DNS backups and renewal.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The first step in managing a Gandi domain is to identify the role of every item in your account. Domain registration handles the name and expiration date, DNS records determine how the website and email are resolved, and the email service has its own content and billing. Even when they appear in the same account, one working correctly does not mean that everything is ready."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide is for people taking over an existing domain or preparing to connect a new domain to a website. The procedures are based on public official documentation checked on 2026-9-14. Gandi is gradually migrating Classic DNS to LiveDNS, so the guide starts with checking the current situation, then sets out the order for routine changes, renewals and transfers."
+        },
+        {
+          "type": "heading",
+          "text": "Check the basic information when registering or taking over a domain",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before buying, use the official domain search to check the name, extension, availability and full checkout total. Record the initial registration period, renewal cost and extra services separately; do not base today's budget on prices or included benefits from years ago. When buying for a studio or company, first establish which organization's details and management account to use, then complete the order."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you already own the domain, open the specific name through DOMAIN or the domain list and check its expiration date, registrant and contact information. If a reseller manages the domain, some operations and renewal notices may be handled through that reseller, so confirm who is responsible. Have the person taking over sign in themselves and find the support channel, rather than receiving only a website password without the ability to manage the actual domain."
+        },
+        {
+          "type": "heading",
+          "text": "Check the current DNS migration status first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "On 2026-8-24, Gandi announced that domains using Classic DNS would gradually move to LiveDNS. In most cases, Gandi would copy the records and then switch the nameservers; special configurations may be handled separately. This is the provider's migration plan. It does not establish that your account has already switched, and the announcement's expectation of no interruption is not a result tested for this guide."
+        },
+        {
+          "type": "paragraph",
+          "text": "Look at the actual settings in the domain's Nameservers section and compare them with the official notices you received. If an old tutorial tells you to enter Classic DNS names, stop copying it and check the new documentation. The announcement says that domains previously sharing a single Classic DNS zone will each receive their own copy after migration. When you later change one domain, do not assume that the others will update automatically."
+        },
+        {
+          "type": "heading",
+          "text": "Edit records in the DNS service that is actually in use",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When the domain uses Gandi LiveDNS, manage its records under DNS Records. If its nameservers point to another company, make changes at that service instead; old records left in Gandi may not be publicly effective. Confirm this prerequisite before adding or editing anything to avoid repeatedly saving changes in the wrong interface."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official documentation provides a form-based mode and a text mode. Beginners should check each record's name, type, value and TTL individually. Text mode edits the entire zone and requires familiarity with the format. When your web host supplies A, AAAA or CNAME records, enter the details it actually requires rather than putting a full web page path into DNS. Obtain email records such as MX and TXT separately from your email provider."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before making changes, save a backup according to the LiveDNS documentation or export the DNS records. Restoring an entire zone can also revert entries added later, so compare the differences first even if only one setting is wrong. A backup file helps reconstruct the configuration, but it is not a backup of website files or email and cannot restore deleted website content."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Select the correct domain, inspect Nameservers, and identify the DNS service currently answering public queries.",
+            "Save the original records and the time of the change. Mark the entries you intend to modify and whether they serve the website or email.",
+            "Update records using the specific details supplied by each provider. After saving, compare every field and preserve other settings that are still in use.",
+            "Query the DNS results, then test website pages and incoming and outgoing email. If something is wrong, first distinguish a DNS issue from a hosting or mailbox issue."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Check payment and notifications alongside automatic renewal",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandi's official renewal documentation explains that you can adjust automatic renewal in the information section of the domain's Overview. In your own account, check whether it is enabled, which payment source applies and whether that source is usable. A previous successful payment does not guarantee that the next one will work. Expired payment methods, spending limits and account information problems are all worth resolving well before expiration."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check renewal of the domain separately from other services. Extending the domain does not prove that email, hosting or additional services have also been extended; paying an email bill does not mean that the domain has been renewed either. After completing the order, check the processing result and updated expiration information, save the receipt and update your management register. If a reseller is responsible, ask them to confirm that the renewal actually completed."
+        },
+        {
+          "type": "heading",
+          "text": "Check extension rules and service dependencies before transferring",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before moving a domain to another registrar, check the procedure that applies to its extension and current status. Gandi's documentation says that the usual authorization code is available under the domain's Transfer out section, but some extensions use a different process. Consult the official documentation of both the current and new registrar for eligibility, required details, fees and timing. Do not assume that every domain can be transferred out immediately."
+        },
+        {
+          "type": "paragraph",
+          "text": "Treat the transfer authorization code as sensitive information and use it only within the trusted new registrar's process. Before changing registrars, also check whether DNS, email or other services depend on the original account. A domain transfer does not itself move website data or email. Arrange these dependencies separately and confirm that the new environment works before dealing with the old services, reducing the chance of something being missed during the handover."
+        },
+        {
+          "type": "heading",
+          "text": "Leave a traceable starting point for future management",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep a short record for each domain, including the registrant, purpose, expiration date, DNS service, website location and responsible person. For each change, add the reason, old value, new value, time and verification result; store passwords and authorization codes securely elsewhere. Even for someone with only one website, this register can reduce the time spent rediscovering their own settings half a year later."
+        },
+        {
+          "type": "paragraph",
+          "text": "When a problem occurs, describe it in reproducible terms, such as ‘After changing DNS, the website works but email from external senders bounces,’ and attach the relevant records and error messages. Do not change every setting at once. Identify the affected service and where it is managed, preserve the original values and a way to revert, and give support or the next maintainer a clear basis for continuing the work."
+        },
+        {
+          "type": "image",
+          "src": "/guides/gandi-domain-management/diagram-1-en.svg",
+          "alt": "Gandi domain management is organized into three lists: asset details, DNS records, and renewals and transfers, each with information to retain.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check the current state first, then follow the current official documentation.",
+          "description": "Gandi domain management is organized into three lists: asset details, DNS records, and renewals and transfers, each with information to retain.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Task",
+            "Where or what to check",
+            "Evidence of completion"
+          ],
+          "rows": [
+            [
+              "Register or take over",
+              "Registrant, account and order",
+              "The responsible person can sign in and view the domain"
+            ],
+            [
+              "Change DNS records",
+              "Active Nameservers and DNS Records",
+              "Query results and website and email acceptance checks"
+            ],
+            [
+              "Renew",
+              "Overview, payment and order",
+              "Renewal processing result and expiration information"
+            ],
+            [
+              "Transfer out",
+              "Transfer out and extension rules",
+              "Confirmation from the new registrar and checks of dependent services"
+            ]
+          ],
+          "caption": "Completing a task verifies only that task's state; other services still need separate checks."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A DNS backup is not a website backup",
+          "text": "A DNS backup records where services point. Website code, databases and email each need their own backup method. Check all three separately before transferring or disabling services."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Checking DNS settings: from A and CNAME to email records",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What happens when a domain or hosting expires: checks before renewal or shutdown",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gandi: announcement of the Classic DNS migration to LiveDNS",
+          "url": "https://news.gandi.net/en/2026/08/end-of-classic-dns-migration-to-livedns/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi: editing, backing up and exporting DNS records",
+          "url": "https://docs.gandi.net/en/domain_names/common_operations/dns_records.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi: automatic renewal",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001598709148-Automatic-renewal",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi: finding the transfer authorization code",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001653984412-Where-to-find-the-authorization-code-for-a-transfer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Gandiのドメイン管理：登録・DNS・更新の確認事項",
+      "description": "Gandiでドメインを管理する場合、登録、DNS、メール、更新の設定場所はそれぞれ異なります。現行の公式ドキュメントに基づき、購入後の確認方法、LiveDNSレコードの管理、バックアップと移管の手順を整理し、2026年のClassic DNS移行告知が既存ユーザーにとって何を意味するかを説明します。自分のアカウントの状態に合わせて確認し、引き継げるドメイン管理表を作りましょう。古い解説のネームサーバーをそのまま使ったり、支払い完了をウェブサイトとメールの設定完了と思い込んだりするのを防げます。",
+      "hero": {
+        "src": "/guides/gandi-domain-management/hero-ja.jpg",
+        "alt": "ドメインの書類、バックアップ用フォルダー、計算機で、登録管理・DNSバックアップ・更新を表した図。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gandiのドメイン管理では、まずアカウント内の各項目の役割を区別します。ドメイン登録は名前と有効期限、DNSレコードはウェブサイトやメールの名前解決を扱い、メールサービスには別のコンテンツと課金があります。同じアカウントに表示されていても、どれかが正常に動くだけで、すべての準備が整ったとは判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "既存ドメインを引き継ぐ人や、新しいドメインをウェブサイトにつなぐ準備をする人向けの解説です。操作は公開された公式ドキュメントに基づき、確認日は2026年9月14日です。GandiはClassic DNSからLiveDNSへの段階的な移行を進めているため、まず現状の確認方法を説明し、その後に日常的な変更、更新、移管の作業順序を整理します。"
+        },
+        {
+          "type": "heading",
+          "text": "登録・引き継ぎ時に基本情報を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "購入前に公式のドメイン検索から、名前、末尾の種類、登録可能かどうか、決済総額を確認します。初回登録期間、更新料金、追加サービスは分けて記録し、何年も前の価格や特典を現在の予算の根拠にしないでください。事務所や会社のために購入する場合は、使用する組織情報と管理アカウントを先に決めてから注文します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "すでにドメインを持っている場合は、DOMAINまたはドメイン一覧から対象を開き、有効期限、登録者、連絡先情報を確認します。リセラー経由で管理されているドメインでは、一部の操作や更新通知をリセラーが扱う場合があるため、担当者も確認してください。引き継ぐ人が自分でログインし、サポート窓口を見つけられることを確認しましょう。ウェブサイトのパスワードだけを受け取り、肝心のドメインを管理できない状態を避けられます。"
+        },
+        {
+          "type": "heading",
+          "text": "現在のDNS移行状況を先に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandiは2026年8月24日、Classic DNSを使うドメインを段階的にLiveDNSへ移行すると告知しました。大半はGandiがレコードをコピーしてからネームサーバーを切り替え、特殊な設定は個別に扱う場合があります。これは提供元の移行計画であり、自分のアカウントの切り替えが完了した証拠ではありません。告知にある「中断を見込まない」という説明も、この解説で実測した結果ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドメインのNameservers欄で実際の設定を確認し、受信した公式通知と照合してください。古い解説でClassic DNSの名前を入力するよう案内されていたら、そのまま写さず新しいドキュメントを確認します。告知によると、複数のドメインが同じClassic DNSゾーンを共有していた場合、移行後はドメインごとにコピーが作られます。その後、あるドメインを変更しても、他のドメインへ自動的に反映されるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "実際に有効なDNSサービスでレコードを変更する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandi LiveDNSを使うドメインは、そのドメインのDNS Recordsでレコードを管理できます。ネームサーバーが他社を指している場合は、そちらのサービスで変更します。Gandiに残る古いレコードが外部に反映されるとは限りません。この前提を確認してから追加や変更に進むと、間違った画面で何度も保存する手間を省けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式ドキュメントでは通常の入力フォームとテキストモードが案内されています。初心者はレコードごとに名前、種類、値、TTLを確認する方法が適しています。テキストモードはゾーン全体を編集するため、形式の理解が必要です。ホスティング会社からA、AAAA、CNAMEを指定されたら、実際の指示に従い、ウェブページの完全なパスをDNSに入力しないでください。メール用のMXやTXTなどは、メールサービスから別途取得します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更前にLiveDNSのドキュメントに従ってバックアップを保存するか、DNSレコードをエクスポートできます。ゾーン全体を復元すると、後から追加した項目まで以前の状態に戻ることがあるため、問題がある設定だけに見えても、先に差分を比較してください。バックアップファイルは設定の再構築に役立ちますが、ウェブサイトのファイルやメールのバックアップではなく、削除されたサイト内容は復元できません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "正しいドメインを選び、Nameserversを見て、現在どのDNSサービスが外部からの問い合わせに応答しているか確認します。",
+            "元のレコードと変更時刻を保存し、今回変更する項目と、ウェブサイト用かメール用かを記録します。",
+            "各サービスから提供された個別の情報でレコードを更新し、保存後に各欄を照合します。引き続き使う他の設定は残します。",
+            "名前解決結果を問い合わせ、サイトのページとメールの送受信をテストします。異常があれば、名前解決、ホスティング、メールボックスのどこに問題があるかを先に切り分けます。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "自動更新と併せて支払い・通知を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandiの公式更新ドキュメントでは、ドメインのOverview内の情報欄から自動更新を調整できると説明されています。自分のアカウントで有効かどうか、使用する支払い元とその利用可否を確認してください。以前支払えたからといって、次回も必ず成功するとは限りません。支払い手段の期限切れ、利用限度額、アカウント情報の問題は、有効期限より十分前に解消しておきましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ドメインと他のサービスの更新は別々に確認します。ドメインの期限が延びても、メール、ホスティング、追加サービスの期限も延びた証拠にはなりません。逆に、メール料金を払ってもドメインが更新されたとは限りません。注文後は処理結果と新しい期限情報を確認し、領収書を保存して管理表を更新します。リセラーが担当する場合は、実際に完了したかを確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "移管前にドメイン末尾の規則とサービスの依存関係を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "別のレジストラへドメインを移す前に、そのドメイン末尾と現在の状態に適用される手続きを確認します。Gandiのドキュメントでは、一般的な認証コードはドメインのTransfer outから取得できますが、一部の末尾では手続きが異なるとされています。現在と移管先のレジストラ双方の公式ドキュメントで、移管条件、必要情報、費用、日程を確認し、どのドメインでもすぐに転出できるとは考えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移管用の認証コードは機密情報として扱い、信頼できる移管先レジストラの手続きでのみ使います。レジストラを変える前に、DNS、メール、その他のサービスが元のアカウントに依存していないかも確認してください。ドメイン移管そのものは、サイトのデータやメールを移動しません。依存する作業を分けて計画し、新環境で利用できると確認してから旧サービスを処理すると、引き継ぎの抜け漏れを減らせます。"
+        },
+        {
+          "type": "heading",
+          "text": "次回の管理に向けて経緯を追える記録を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ドメインごとに、登録者、用途、有効期限、DNSサービス、サイトの置き場所、担当者を簡単に記録しておくと便利です。変更のたびに理由、変更前の値、変更後の値、時刻、検証結果を追加し、パスワードと認証コードは別の安全な場所に保管します。サイトがひとつだけでも、この表があれば、半年後に自分の設定を調べ直す時間を減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "問題が起きたら、「DNS変更後、サイトは正常だが外部からのメールが差し戻される」のように再現できる言葉で状況を書き、関連レコードとエラーメッセージを添えます。すべての設定を一度に変更しないでください。影響を受けているサービスと管理場所を特定し、元の値と戻し方を残すと、サポートや次の保守担当者が作業を引き継げます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gandi-domain-management/diagram-1-ja.svg",
+          "alt": "Gandiのドメイン管理を資産情報、DNSレコード、更新・移管の三つのリストに分け、それぞれ保存すべき情報を示した図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "まず現在の状態を確認し、現行の公式ドキュメントに従って操作します。",
+          "description": "Gandiのドメイン管理を資産情報、DNSレコード、更新・移管の三つのリストに分け、それぞれ保存すべき情報を示した図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "確認する場所・情報",
+            "完了を示す証拠"
+          ],
+          "rows": [
+            [
+              "登録・引き継ぎ",
+              "登録者、アカウント、注文",
+              "本人がログインしてドメインを確認できる"
+            ],
+            [
+              "DNSレコードの変更",
+              "有効なNameserversとDNS Records",
+              "問い合わせ結果とサイト・メールの動作確認"
+            ],
+            [
+              "更新",
+              "Overview、支払い、注文",
+              "更新の処理結果と期限情報"
+            ],
+            [
+              "転出",
+              "Transfer outとドメイン末尾の規則",
+              "移管先の確認と依存サービスの点検"
+            ]
+          ],
+          "caption": "ある作業の完了が証明するのは、その作業の状態だけです。他のサービスは別途確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "DNSバックアップをサイトのバックアップと混同しない",
+          "text": "DNSバックアップに記録されるのはサービスの接続先です。サイトのプログラム、データベース、メールには、それぞれのバックアップ方法が必要です。移管やサービス停止の前に、三者を分けて確認してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS設定の調べ方：A・CNAMEからメール用レコードまで",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメインやホスティングの期限が切れるとどうなる？更新・停止前の確認表",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gandi：Classic DNSからLiveDNSへの移行告知",
+          "url": "https://news.gandi.net/en/2026/08/end-of-classic-dns-migration-to-livedns/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi：DNSレコードの変更・バックアップ・エクスポート",
+          "url": "https://docs.gandi.net/en/domain_names/common_operations/dns_records.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi：自動更新",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001598709148-Automatic-renewal",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi：移管用認証コードの取得場所",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001653984412-Where-to-find-the-authorization-code-for-a-transfer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Gandi 도메인 관리: 등록, DNS와 갱신 확인",
+      "description": "Gandi에서 도메인을 관리할 때 등록, DNS, 이메일, 갱신은 각각 설정 위치가 다릅니다. 현재 공식 문서를 바탕으로 구매 후 확인 방법, LiveDNS 레코드 관리, 백업과 이전 절차를 정리하고, 2026년 Classic DNS 이전 공지가 기존 사용자에게 어떤 의미인지 설명합니다. 자신의 계정 상태에 따라 항목별로 확인하고 다른 사람에게 인계할 수 있는 도메인 관리표를 만들어 보세요. 오래된 안내의 네임서버를 그대로 사용하거나 결제 완료를 웹사이트와 이메일 설정 완료로 오해하는 일을 줄일 수 있습니다.",
+      "hero": {
+        "src": "/guides/gandi-domain-management/hero-ko.jpg",
+        "alt": "도메인 문서, 백업 폴더와 계산기로 등록 관리, DNS 백업과 갱신을 나타낸 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gandi 도메인 관리의 첫 단계는 계정 안의 각 항목이 어떤 역할을 하는지 구분하는 것입니다. 도메인 등록은 이름과 만료일을, DNS 레코드는 웹사이트와 이메일의 이름 해석을 담당하며, 이메일 서비스에는 별도의 데이터와 요금이 있습니다. 같은 계정에 표시되더라도 어느 한 항목이 정상적으로 작동한다는 이유만으로 모든 준비가 끝났다고 판단해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 도메인을 인계받거나 새 도메인을 웹사이트에 연결하려는 사람을 위한 안내입니다. 절차는 공개된 공식 문서에 근거하며 확인일은 2026년 9월 14일입니다. Gandi가 Classic DNS를 LiveDNS로 단계적으로 이전하고 있으므로, 먼저 현재 상태를 확인하는 방법을 설명한 뒤 일상적인 변경, 갱신, 등록기관 이전의 작업 순서를 정리합니다."
+        },
+        {
+          "type": "heading",
+          "text": "등록하거나 인계받을 때 기본 정보부터 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "구매를 준비할 때는 공식 도메인 검색에서 이름, 확장자, 등록 가능 여부와 전체 결제 금액을 확인합니다. 최초 등록 기간, 갱신 비용, 추가 서비스는 각각 기록하고, 여러 해 전의 가격이나 제공 혜택으로 현재 예산을 잡지 마세요. 스튜디오나 회사 대신 구매한다면 어떤 조직 정보와 관리 계정을 사용할지 먼저 정한 다음 주문을 완료합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미 도메인을 보유하고 있다면 DOMAIN 또는 도메인 목록에서 해당 이름으로 들어가 만료일, 등록자와 연락처 정보를 확인합니다. 리셀러가 도메인을 관리하는 경우 일부 작업과 갱신 알림이 리셀러를 통해 처리될 수 있으므로 담당자를 따로 확인해야 합니다. 인계받는 사람이 직접 로그인하고 지원 창구를 찾도록 하세요. 웹사이트 비밀번호만 전달받고 실제 도메인은 관리할 수 없는 상황을 피할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "현재 DNS 이전 상태 먼저 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandi는 2026년 8월 24일, Classic DNS를 사용하는 도메인을 LiveDNS로 단계적으로 옮긴다고 공지했습니다. 대부분은 Gandi가 레코드를 복사한 뒤 네임서버를 전환하며, 특수한 설정은 별도로 처리될 수 있습니다. 이는 제공업체의 이전 계획일 뿐, 자신의 계정이 이미 전환되었다는 증거가 아닙니다. 공지에서 예상한 무중단 상태도 이 안내를 위해 실제로 테스트한 결과로 받아들여서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도메인의 Nameservers 영역에서 실제 설정을 보고 받은 공식 알림과 대조하세요. 오래된 안내에서 Classic DNS 이름을 입력하라고 하면 그대로 따라 하지 말고 새 문서를 확인합니다. 공지에 따르면 여러 도메인이 하나의 Classic DNS 영역을 공유한 경우, 이전 후에는 도메인마다 복사본이 만들어집니다. 이후 한 도메인의 설정을 바꿀 때 다른 도메인도 자동으로 바뀐다고 가정해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "실제로 사용 중인 DNS 서비스에서 레코드 수정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "도메인이 Gandi LiveDNS를 사용한다면 해당 도메인의 DNS Records에서 레코드를 관리할 수 있습니다. 네임서버가 다른 회사를 가리킨다면 그 서비스에서 수정해야 하며, Gandi에 남은 옛 레코드는 외부에 적용되지 않을 수 있습니다. 추가하거나 수정하기 전에 이 전제부터 확인하면 잘못된 화면에서 반복해서 저장하는 시간을 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 문서는 일반 입력 양식과 텍스트 모드를 제공합니다. 처음 사용하는 사람은 레코드마다 이름, 유형, 값, TTL을 확인하는 편이 좋습니다. 텍스트 모드는 전체 영역을 편집하므로 형식에 익숙해야 합니다. 웹 호스팅 업체가 A, AAAA 또는 CNAME을 제공하면 실제 요구에 맞게 입력하고, 웹페이지의 전체 경로를 DNS에 넣지 마세요. 이메일용 MX와 TXT 등은 이메일 제공업체에서 따로 받습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변경 전에 LiveDNS 문서에 따라 백업을 저장하거나 DNS 레코드를 내보낼 수 있습니다. 전체 영역을 복원하면 나중에 추가한 항목도 예전 상태로 돌아갈 수 있으므로, 문제가 있는 설정이 하나뿐이어도 먼저 차이를 비교하세요. 백업 파일은 설정 재구성에 도움이 되지만 웹사이트 파일이나 이메일의 백업은 아니며, 삭제한 웹사이트 콘텐츠를 복원할 수 없습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "올바른 도메인을 선택하고 Nameservers를 확인해 현재 어느 DNS 서비스가 외부 조회에 응답하는지 파악합니다.",
+            "원래 레코드와 변경 시간을 보관하고, 이번에 수정할 항목이 웹사이트용인지 이메일용인지 표시합니다.",
+            "각 제공업체가 준 개별 정보로 레코드를 갱신합니다. 저장한 뒤 각 필드를 대조하고, 계속 사용하는 다른 설정은 유지합니다.",
+            "이름 해석 결과를 조회한 다음 웹사이트 페이지와 이메일 수신·발신을 테스트합니다. 이상이 있으면 먼저 DNS, 호스팅, 메일함 중 어디의 문제인지 구분합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "자동 갱신과 함께 결제 및 알림 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandi 공식 갱신 문서에서는 도메인의 Overview 정보 영역에서 자동 갱신을 조정할 수 있다고 설명합니다. 자신의 계정에서 활성화 여부, 적용되는 결제 수단과 사용 가능 상태를 확인하세요. 이전에 결제한 적이 있다는 이유만으로 다음 결제도 성공한다고 생각해서는 안 됩니다. 결제 수단의 유효기간, 한도, 계정 정보 문제는 만료일 전에 여유 있게 해결해 두는 것이 좋습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도메인 갱신과 다른 서비스의 갱신은 따로 확인합니다. 도메인 기간이 연장되어도 이메일, 호스팅, 추가 서비스까지 연장되었다는 뜻은 아닙니다. 반대로 이메일 요금을 냈다고 도메인이 갱신되는 것도 아닙니다. 주문 후 처리 결과와 새로운 만료 정보를 확인하고 영수증을 저장한 다음 관리표를 갱신하세요. 리셀러가 담당한다면 실제로 완료되었는지 그쪽에 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "이전 전에 확장자 규칙과 서비스 의존 관계 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 등록기관으로 도메인을 옮기기 전에 해당 확장자와 현재 상태에 적용되는 절차를 확인합니다. Gandi 문서에 따르면 일반적인 인증 코드는 도메인의 Transfer out에서 받을 수 있지만, 일부 확장자는 방법이 다릅니다. 현재 등록기관과 새 등록기관의 공식 문서에서 이전 자격, 필요한 정보, 비용과 일정을 확인하세요. 모든 도메인을 즉시 이전할 수 있다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 인증 코드는 민감한 정보로 다루고 신뢰할 수 있는 새 등록기관의 절차에서만 사용합니다. 등록기관을 바꾸기 전에는 DNS, 이메일 또는 다른 서비스가 기존 계정에 의존하는지도 확인해야 합니다. 도메인 이전 자체가 웹사이트 데이터나 이메일을 옮겨 주지는 않습니다. 이런 의존 관계를 별도로 계획하고 새 환경에서 사용할 수 있음을 확인한 뒤 기존 서비스를 처리하면 인계 과정의 누락을 줄일 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "다음 관리를 위해 경위를 추적할 수 있는 기록 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "각 도메인에 등록자, 용도, 만료일, DNS 서비스, 웹사이트 위치와 담당자를 담은 간단한 기록을 남기는 것을 권합니다. 변경할 때마다 이유, 이전 값, 새 값, 시간과 검증 결과를 추가하고, 비밀번호와 인증 코드는 별도의 안전한 장소에 보관합니다. 웹사이트가 하나뿐이어도 이 표가 있으면 반년 뒤 자신의 설정을 다시 파악하는 시간을 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문제가 생기면 ‘DNS를 바꾼 뒤 웹사이트는 정상인데 외부에서 보낸 이메일이 반송된다’처럼 재현 가능한 문장으로 현상을 적고 관련 레코드와 오류 메시지를 첨부하세요. 모든 설정을 한꺼번에 바꾸지 마세요. 영향을 받은 서비스와 관리 위치를 먼저 찾고 원래 값과 되돌리는 방법을 남겨야 지원 담당자나 다음 유지보수 담당자가 이어서 처리할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/gandi-domain-management/diagram-1-ko.svg",
+          "alt": "Gandi 도메인 관리를 자산 정보, DNS 레코드, 갱신과 이전의 세 목록으로 나누고 각 목록에 보관할 정보를 보여 주는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "현재 상태부터 확인한 다음 최신 공식 문서에 따라 작업하세요.",
+          "description": "Gandi 도메인 관리를 자산 정보, DNS 레코드, 갱신과 이전의 세 목록으로 나누고 각 목록에 보관할 정보를 보여 주는 그림.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업",
+            "확인할 위치 또는 정보",
+            "완료를 입증하는 자료"
+          ],
+          "rows": [
+            [
+              "등록 또는 인계",
+              "등록자, 계정과 주문",
+              "본인이 로그인해 도메인을 볼 수 있음"
+            ],
+            [
+              "DNS 레코드 변경",
+              "유효한 Nameservers와 DNS Records",
+              "조회 값 및 웹사이트·이메일 동작 확인"
+            ],
+            [
+              "갱신",
+              "Overview, 결제와 주문",
+              "갱신 처리 결과와 만료 정보"
+            ],
+            [
+              "다른 등록기관으로 이전",
+              "Transfer out과 확장자 규칙",
+              "새 등록기관의 확인 및 의존 서비스 점검"
+            ]
+          ],
+          "caption": "작업 하나를 완료해도 확인되는 것은 해당 작업의 상태뿐입니다. 다른 서비스는 별도로 확인해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "DNS 백업을 웹사이트 백업으로 생각하지 마세요",
+          "text": "DNS 백업은 서비스가 가리키는 위치를 기록합니다. 웹사이트 프로그램, 데이터베이스와 이메일에는 각각 별도의 백업 방법이 필요합니다. 서비스를 이전하거나 중단하기 전에 세 가지를 나누어 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 설정 확인: A, CNAME부터 이메일 레코드까지",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인이나 호스팅이 만료되면: 갱신·중단 전 확인표",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gandi: Classic DNS에서 LiveDNS로의 이전 공지",
+          "url": "https://news.gandi.net/en/2026/08/end-of-classic-dns-migration-to-livedns/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi: DNS 레코드 수정, 백업과 내보내기",
+          "url": "https://docs.gandi.net/en/domain_names/common_operations/dns_records.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi: 자동 갱신",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001598709148-Automatic-renewal",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi: 이전 인증 코드를 찾는 위치",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001653984412-Where-to-find-the-authorization-code-for-a-transfer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Gandi 域名管理：注册、DNS 与续费检查",
+      "description": "使用 Gandi 管理域名时，注册、DNS、邮箱与续费各有不同的设置位置。本文依据当前官方文档整理购买后的核对方法、LiveDNS 记录管理、备份和转移流程，并说明 2026 年 Classic DNS 迁移公告对现有用户的意义。你可以根据自己的账户状态逐项确认，建立可交接的域名管理表，避免沿用旧教程的名称服务器，或把付款完成误认为网站和邮件都已设置好。",
+      "hero": {
+        "src": "/guides/gandi-domain-management/hero-zh-cn.jpg",
+        "alt": "域名文件、备份文件夹与费用计算器，象征注册管理、DNS 备份及续费。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Gandi 域名管理的第一步，是辨认账户中每个项目的作用。域名注册处理名称与到期日，DNS 记录决定网站和邮件的解析，邮箱服务则另有自己的内容与计费。即使它们出现在同一个账户中，也不应把其中一项正常运行视为全部都已完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文适合接手现有域名，或准备把新域名连接到网站的人。操作依据为官方公开文档，查证日期为 2026 年 9 月 14 日。Gandi 正逐步将 Classic DNS 迁移至 LiveDNS，因此先说明如何确认现状，再整理日常修改、续费与转移的工作顺序。"
+        },
+        {
+          "type": "heading",
+          "text": "注册与接手时先核对基本资料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "准备购买时，从官方域名搜索入口确认名称、后缀、可注册状态与完整结账金额。将首次注册期限、续费费用及附加服务分开记录，不要以多年前的价格或赠送内容作为今天的预算。如果是替工作室或公司购买，先确认应使用哪个组织的信息与管理账户，再完成订单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已经持有域名的人，可以从 DOMAIN 或域名列表进入指定名称，核对到期日、持有人及联系信息。如果域名由经销商代管，部分操作与续费通知可能经由对方处理，应另外确认负责人。建议让接手者亲自登录并找到支持入口，避免只收到一份网站密码，却无法管理真正的域名。"
+        },
+        {
+          "type": "heading",
+          "text": "先了解当前的 DNS 迁移状态",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandi 在 2026 年 8 月 24 日公告，使用 Classic DNS 的域名将逐步转到 LiveDNS，多数情况下由官方复制记录后切换名称服务器；特殊设置可能另行处理。这是供应商的迁移安排，不能据此宣称你的账户已完成切换，也不能把公告预期的不中断，当成这篇教程的实测结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "请在域名的 Nameservers 区域查看实际设置，再核对收到的官方通知。旧教程如果让你填入 Classic DNS 名称，先停止照抄并查看新文档。如果多个域名原先共用同一个 Classic DNS 区域，公告说明迁移后会各自复制一份；后续修改某个域名时，不能假设其他域名也会同步更新。"
+        },
+        {
+          "type": "heading",
+          "text": "在实际生效的 DNS 服务中修改记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "域名使用 Gandi LiveDNS 时，可在该域名的 DNS Records 中管理记录。如果名称服务器指向另一家公司，则应到那个服务修改，留在 Gandi 的旧记录未必对外生效。先确认这个前提，再处理新增或修改，能节省在错误界面中反复保存的时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方文档提供常规表单与文本模式。初次使用者宜逐条核对名称、类型、值及 TTL；文本模式可以编辑整个区域，需要熟悉格式。网站主机商提供 A、AAAA 或 CNAME 时，应按实际要求填入，不要把网页的完整路径写进 DNS。邮件使用的 MX 与 TXT 等记录，则另外向邮件服务商获取。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修改前可根据 LiveDNS 文档保存备份，或导出 DNS 记录。请注意，还原整个区域可能将后来新增的项目一并改回，因此即使只有一条设置有问题，也要先比较差异。备份文件可协助重建设置，但它不是网站文件或邮件备份，不能用来还原已删除的网站内容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选取正确域名，查看 Nameservers，确认当前是哪个 DNS 服务对外回答查询。",
+            "保存原记录及变更时间，标记本次要修改的项目与网站或邮件用途。",
+            "根据各服务商提供的具体资料更新记录，保存后逐字段比对，保留其他仍在使用的设置。",
+            "查询解析结果，再测试网站页面与邮件收发；如果有异常，先判断是解析、主机还是邮箱问题。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "自动续费要配合付款与通知检查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Gandi 官方续费文档说明，可从域名 Overview 的信息区域调整自动续费。请在自己的账户中确认是否启用、适用的付款来源及可用状态，不要将曾经付过款视为下一次一定能成功。付款工具过期、额度或账户资料问题，都值得在到期前提前排除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "将域名与其他服务的续费分开核对。域名续期，不会自动证明邮箱、主机或附加服务都已延长；反过来，付了邮箱账单也不代表域名已续费。完成订单后，查看处理结果与新的到期信息，保存收据，再更新管理表。如果由经销商负责，请向对方确认实际完成状态。"
+        },
+        {
+          "type": "heading",
+          "text": "转移前先查后缀规则与服务依赖",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "准备把域名转移到另一家注册商时，先查看该后缀与当前状态适用的流程。Gandi 文档指出，常见授权码可从域名的 Transfer out 中获取，但部分后缀有不同做法。请依据当前及新注册商的官方文档核对资格、必要资料、费用与时间安排，不要预设每一种域名都能立即转出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "转移授权码应视为敏感信息，仅在可信任的新注册商流程中使用。更换注册商前，也要检查 DNS、邮箱或其他服务是否依赖原账户。域名转移本身不会搬走网站数据或邮件；将这些依赖分开安排，并在新环境中确认可用后再处理旧服务，能降低交接时遗漏的可能性。"
+        },
+        {
+          "type": "heading",
+          "text": "让下次管理有可追溯的起点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "建议每个域名保留一份简短记录，包含持有人、用途、到期日、DNS 服务、网站位置及负责人。每次变更再加上原因、原值、新值、时间与验证结果；密码和授权码另行安全保存。对只有一个网站的人来说，这份表格也能减少半年后重新研究自己设置的时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "遇到问题时，把现象写成可以复现的句子，例如“更换 DNS 后网站正常，但外部邮件退回”，再附上相关记录与错误信息。不要一次改动所有设置。先找到受影响的服务及管理位置，保留原值与恢复方式，才能让客服或下一位维护者继续处理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/gandi-domain-management/diagram-1-zh-cn.svg",
+          "alt": "Gandi 域名管理分为资产资料、解析记录与续费转移三张清单，各有需要保存的信息。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先核对当前状态，再依据现行官方文档操作。",
+          "description": "Gandi 域名管理分为资产资料、解析记录与续费转移三张清单，各有需要保存的信息。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "核对位置或资料",
+            "完成的证据"
+          ],
+          "rows": [
+            [
+              "注册或接手",
+              "注册人、账号与订单",
+              "本人能登录并查看域名"
+            ],
+            [
+              "修改解析",
+              "生效的 Nameservers 与 DNS Records",
+              "查询值及网站、邮箱验收"
+            ],
+            [
+              "续费",
+              "Overview、付款与订单",
+              "续费处理结果和到期信息"
+            ],
+            [
+              "转出",
+              "Transfer out 与后缀规则",
+              "新注册商确认及依赖服务检查"
+            ]
+          ],
+          "caption": "完成一项工作，只验证该项状态；其他服务仍需另行确认。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要把 DNS 备份当成网站备份",
+          "text": "DNS 备份记录服务的指向；网站程序、数据库与邮件需要各自的备份方式。转移或停用服务前，请将三者分开确认。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 设置怎么查：从 A、CNAME 到邮件记录",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "域名或主机到期会怎样：续费与停用前的检查表",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Gandi：Classic DNS 迁移至 LiveDNS 公告",
+          "url": "https://news.gandi.net/en/2026/08/end-of-classic-dns-migration-to-livedns/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi：修改、备份与导出 DNS 记录",
+          "url": "https://docs.gandi.net/en/domain_names/common_operations/dns_records.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi：自动续费",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001598709148-Automatic-renewal",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Gandi：获取转移授权码",
+          "url": "https://helpdesk.gandi.net/hc/en-us/articles/14001653984412-Where-to-find-the-authorization-code-for-a-transfer",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
