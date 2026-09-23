@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "batch_id": "2026-09-23-catchtable-batch-2-busan-platforms",
+  "researched_at": "2026-09-23T07:50:00+00:00",
+  "method": "CatchTable 榜單反推：本機瀏覽器渲染店頁判斷控制項；只有店家自己的訂位控制項算可訂位。",
+  "rules": "可訂位存 verified；只能候位或沒有控制項存 disabled；語言網址取自店頁 hreflang，沒有 ko。",
+  "records": [
+    {
+      "merchant_id": "f399ea80-74f5-44d9-9141-4083b2610dfd",
+      "slug": "busan-cor-pasta-bar",
+      "name": "코르 파스타 바",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/cor_pasta_bar",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/cor_pasta_bar",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/cor_pasta_bar",
+        "ja": "https://www.catchtable.net/ja-JP/shop/cor_pasta_bar"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 2 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–24 已滿、25 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是釜山市官方觀光網 비짓부산（visitbusan.net，頁尾 Copyright Busan Metropolitan City）「부산에가면 › 음식」的店家頁 uc_seq=1820：頁名「코르 파스타 바」、介紹段、이용안내（대표 메뉴 보타르가 ￦28,000／뇨끼 ￦25,000、주소 부산진구 동성로 25번길13 2F、전화번호 0507-1474-4570、월요일 휴무、12:00-14:30 / 17:00-21:00）都是伺服器端輸出、渲染後可見；引文是頁名與介紹到주소列相接（頁名與介紹之間隔著評分／조회統計，用「…」接）。路名地址與 CatchTable 資訊分頁的 부산광역시 부산진구 동성로25번길 13 2층 一致，判定同店（電話不同：來源列 0507-1474-4570 安心號碼、CatchTable 列 +82-10-8131-1030）。address_local 照來源頁寫法（只有區＋路名，沒有市名）。visitbusan.net 站內檢索「코르 파스타」音식 1 筆即此頁；繁中站同店頁 https://www.visitbusan.net/zht/index.do?menuCd=DOM_000000601002001000&uc_seq=1820&lang_cd=cnb（頁名「Cor pasta bar」，地址「釜山鎮區東城路25號街13 2F」、電話 +82-507-1474-4570、週一",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–24 已滿、25 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/cor_pasta_bar",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–24 已滿、25 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/cor_pasta_bar",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 2 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "cd1234cb-54eb-4292-b2d8-bd9d5ef95afd",
+      "slug": "busan-bandb-busan",
+      "name": "본앤브레드 부산",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/bandb_busan",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/bandb_busan",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/bandb_busan",
+        "ja": "https://www.catchtable.net/ja-JP/shop/bandb_busan"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 4 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。資訊分頁註明韓牛品嚐菜單（맡김차림）要提前一天用電子郵件或 CatchTable 預約。 頁面有店家自己的訂位控制項，公開。 來源是본앤브레드品牌官網 bandb.co.kr「OUR RESTAURANT › KOREA › 본앤브레드 부산」頁（https 直接 200；只有站根 https://www.bandb.co.kr/ 會 301 轉到 http 首頁，深層頁不會），頁面 Location 區塊逐字列「본앤브레드 부산／Busan, Haeundae-gu, Haeundaehaebyeon-ro, 296／+82 507 1445 2401／12:00 ~ 22:00」，之後還印同一個 gmail 訂位信箱，與 CatchTable 資訊分頁「關於本店」寫的信箱相同；門牌 296 與 CatchTable 韓文地址 해운대해변로 296 파라다이스호텔부산 본관 지하 1층 一致，判定同店。來源頁地址只有羅馬字、沒有韓文，依規則不填 address_local；韓文地址見 listed_address。第二個官方佐證：파라다이스호텔 부산 官網 DINING「BORN & BRED 본앤브레드」頁 https://www.busanparadisehotel.co.kr/front/facility/dineBorn（위치 본관 B1、連락처 051-749-2400 / 051-741-2340，後者即 CatchTable 電話 +82-51-741-2340；頁尾 (주",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。資訊分頁註明韓牛品嚐菜單（맡김차림）要提前一天用電子郵件或 CatchTable 預約。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/bandb_busan",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。資訊分頁註明韓牛品嚐菜單（맡김차림）要提前一天用電子郵件或 CatchTable 預約。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/bandb_busan",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 4 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "4cc704c0-f3de-44b5-9ac0-2e922d6e6a30",
+      "slug": "busan-pungcheonman-haeundae",
+      "name": "풍천만민물장어 해운대중동본점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/pungcheonman_haeundae",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/pungcheonman_haeundae",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/pungcheonman_haeundae",
+        "ja": "https://www.catchtable.net/ja-JP/shop/pungcheonman_haeundae"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 5 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是韓國觀光公社 VisitKorea 英文站的店家頁（頁首標題「Pungcheonman Minmul Jangeo (풍천만민물장어)」，Address 欄印英文行「22 Dalmaji-gil, Haeundae-gu, Busan」與韓文行「부산광역시 해운대구 달맞이길 22 (중동) 1층」；引文是頁首標題與 Address 欄的兩行地址相接，中間隔著簡介、菜單與「Address／Directions」標籤，用「…」接）。地址與 CatchTable 韓文地址 달맞이길 22 1층 一致，判定同店；電話不同（KTO 頁 Inquiries +82-51-921-9292，CatchTable 列手機 +82-10-4239-9293）。同頁 JSON-LD geo：lat 35.16202889246875、lng 129.167251541874，postalCode 48099；「Website」欄只列 Naver 部落格 blog.naver.com/pusan8484（不是來源）。KTO 韓文站同店頁 https://korean.visitkorea.or.kr/detail/ms_detail.do?cotid=089983f8-a8dc-429d-b7c8-a2d2c69bf530（簡介是靜態 HTML，但주소欄是前端載入、curl 抓不到）。visitbusan.net「풍천만」音식 0 筆（統合檢索 1 筆是「순사이쿠보",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/pungcheonman_haeundae",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 起每天可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/pungcheonman_haeundae",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 5 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "c5befefa-7701-48ca-be26-b717818f2886",
+      "slug": "busan-ledorer",
+      "name": "르도헤",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/ledorer",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/ledorer",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/ledorer",
+        "ja": "https://www.catchtable.net/ja-JP/shop/ledorer"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 6 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–26 已滿、27 可選、28–29 關閉…）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是釜山市官方觀光網 비짓부산「부산에가면 › 음식」店家頁 uc_seq=1843（站內檢索「르도헤」音식 2 筆：此頁與 menuCd=DOM_000000201002002001&uc_seq=1588 的另一則），頁名「르도헤」、介紹、이용안내（Dinner course ￦210,000／Lunch course ￦120,000、주소 해운대구 마린시티3로 37 213,214호、전화번호 051-747-8522、화·수요일 휴무、12:30-14:30 / 17:00-22:00）都是伺服器端輸出；引文是頁名與介紹到전화번호列相接（頁名與介紹之間隔著評分／조회統計，用「…」接）。地址與 CatchTable 韓文地址 마린시티3로 37 한일오르듀 213호 同路名門牌，電話與 CatchTable 注意事項的 051-747-8522 一致，判定同店。address_local 照來源寫法（只有區＋路名）。第二個官方佐證：店家官網 https://www.ledorer.com/（CatchTable「網站」欄列 http 版；https 直接 200，Wix 站）頁尾逐字「부산 해운대구 마린시티3로 37 213, 214호／#213, #214, 37, MARINE CITY 3-RO, HAEUNDAE-GU, BUSAN, 48118／+82 051 747 8522／상호명 르도헤」。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–26 已滿、27 可選、28–29 關閉…）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/ledorer",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23–26 已滿、27 可選、28–29 關閉…）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/ledorer",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 6 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "d1319d3d-e9a3-4520-884c-9a0c7e87fdbf",
+      "slug": "busan-sogonggan-dining",
+      "name": "소공간",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/sogonggan_dining",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/sogonggan_dining",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/sogonggan_dining",
+        "ja": "https://www.catchtable.net/ja-JP/shop/sogonggan_dining"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 7 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 可選、24–25 關閉、26 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是釜山市官方觀光網 비짓부산「부산에가면 › 음식」店家頁 uc_seq=1846（站內檢索「소공간」音식 1 筆即此頁），頁名「소공간」、介紹、이용안내（Dinner(11 course) ￦182,000／Lunch(8 course) ￦92,000、주소 해운대구 해운대해변로 298번길 47, 4층、전화번호 010-5191-9002、화요일 휴무、12:00-15:00 / 18:00-21:30）都是伺服器端輸出；引文是頁名與介紹到전화번호列相接（頁名與介紹之間隔著評分／조회統計，用「…」接）。地址與 CatchTable 韓文地址 해운대해변로298번길 47 4층 一致、電話與 CatchTable +82-10-5191-9002 一致，判定同店。address_local 照來源寫法（只有區＋路名）。name_zh「小空間」取自 비짓부산繁中站同店頁 https://www.visitbusan.net/zht/index.do?menuCd=DOM_000000601002001000&uc_seq=1846&lang_cd=cnb（頁名「小空間」，地址「海雲台區海雲台海邊路298號街47，4層」、電話 +82-507-1315-9100、週二休息），韓文頁也把店名解釋為「작은 공간(小空間)」與「소(牛)」；CatchTable 顯示名「牛功幹」不是官方頁寫的中文名，不採用；店頁三語名列「牛功",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 可選、24–25 關閉、26 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/sogonggan_dining",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：沒有 service-tab-DINING／WAITING_REMOTE 分頁切換（唯一 data-testid 是 service-section-title），主區直接出現「日期 • 時間 • 人」日期列（23 可選、24–25 關閉、26 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 dayslot-enc 與 online-reservation-open-schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/sogonggan_dining",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 7 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f9788bb7-9d39-4125-8371-f491d31a4b3f",
+      "slug": "busan-jejugan-seomyun",
+      "name": "제줏간 부산서면점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/jejugan_seomyun",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/jejugan_seomyun",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/jejugan_seomyun",
+        "ja": "https://www.catchtable.net/ja-JP/shop/jejugan_seomyun"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 9 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列（23 顯示「電話」、24 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 online-reservation-open-schedule、schedule。未送出任何表單。 頁面有店家自己的訂位控制項，公開。 來源是제줏간加盟品牌官網 jejusgan.com（站名「성산 제줏간」，imweb 站）「매장안내」門市清單：以關鍵字 서면 篩選後（同清單第 3 頁也有）逐字列「부산서면점／부산광역시 부산진구 중앙대로691번가길 11／0507-1351-0374」，路名門牌與 CatchTable 韓文地址 중앙대로691번가길 11 1층 一致，判定同店（電話不同：官網列 0507 安心號碼、CatchTable 列 +82-51-945-0092）。address_local 照門市清單寫法（沒有樓層）。品牌全名是「성산 제줏간」，CatchTable 店名寫「제줏간 부산서면점」（三語名列「Jejugan Seomyun 제줏간 부산서면점」），local_name 取 CatchTable 含分店的寫法；注意韓文是 제줏간（有 ㅅ 받침），搜「제주간」會找不到。官網沒有中文名，name_zh 用韓文原名。visitbusan.net「제줏간」「제주간」音식與統合檢索都 0 筆；korean.visitkorea.or.kr 0 筆。CatchTable「網站」欄只列 Instagram jejugan_seomyeon（不是來源）。分類：濟州黑豬教차熟成烤豬肉→bbq-grill。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列（23 顯示「電話」、24 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 online-reservation-open-schedule、schedule。未送出任何表單。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/jejugan_seomyun",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState hidden，IntersectionObserver 包裝後點「首頁」重新掛載）：有 service-tab-toggle、service-tab-DINING 與 service-tab-WAITING_REMOTE 兩個分頁；點開 DINING 後出現「日期 • 時間 • 人」日期列（23 顯示「電話」、24 起可選）與「尋找可用時間」，頁上有「預訂」鈕，沒有 dock-waiting-btn；api 出現 online-reservation-open-schedule、schedule。未送出任何表單。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/jejugan_seomyun",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 9 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "394b5f41-981d-42f4-a2cd-bc88816ccfa4",
+      "slug": "busan-palate",
+      "name": "팔레트",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/palate",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/palate",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/palate",
+        "ja": "https://www.catchtable.net/ja-JP/shop/palate"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 12 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（多日顯示「已滿」／「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。 頁面有店家自己的訂位控制項，公開。 米其林一星（CatchTable 店頁標示，僅作背景）。Visit Busan 站內搜尋「팔레트」有 3 筆음식條目都是同一家（地址、電話 051-626-2364 一致）：uc_seq=1599（本記錄來源；店名與地址在同一區塊可逐字引用，但營業時間與休日是舊資料，只寫週二休）、uc_seq=2344（「프렌치쿠킹 테크닉…김재훈 셰프…주소 해운대구 달맞이길65번길 154, 3층…휴무일 월, 화요일 휴무」，頁內嵌 lat 35.156513／lng 129.17834，落在달맞이길，可供後台補座標）、uc_seq=1811（「주소 부산 해운대구 달맞이길65번길 154 3층…휴무일 월, 화요일」）；後兩筆的月、火休與 CatchTable 一致。注意 1599 與 1811 兩頁內嵌的 lat/lng 是 35.131638／129.11977，落在南區용호동一帶，與地址不符，不要沿用。부산시英文報 busan.go.kr/bige/food/view?dataNo=72161「Bite Into Busan ⑥ Contemporary Cuisine」也列 Palate（3F, 154 Dalmaji-gil 65beon-gil, Haeundae-gu）；店家官網 https://www.palatebusan.com/ 頁腳有同一英文地址與電話，可作備援來源。官方頁沒有中文名，name_zh 填韓文原名 팔레트。CatchTable 資訊分頁「網站」欄是 Instagram @palat",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（多日顯示「已滿」／「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/palate",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（多日顯示「已滿」／「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/palate",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 12 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "f7d65d34-5a88-4f66-b5da-87603356919a",
+      "slug": "busan-yulling",
+      "name": "율링",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/yulling",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/yulling",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/yulling",
+        "ja": "https://www.catchtable.net/ja-JP/shop/yulling"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 13 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（週三顯示「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。 頁面有店家自己的訂位控制項，公開。 米其林指南推薦（CatchTable 店頁標示，僅作背景）。Visit Busan 站內搜尋「율링」1 筆음식條目（uc_seq=1596）：地址 달맞이길62번길 28 (중동) 與 CatchTable 資訊分頁一致（CatchTable 多寫「미포오션사이드호텔 2층」），週三休也與店頁「今日（周三）• 休息日」一致；頁內嵌 lat 35.158867／lng 129.1706（미포，可供後台補座標）。Visit Busan 描述為「한우 다이닝 레스토랑…한식에 재패니즈 프렌치가 가미된 한우 오마카세」，故主分類 fine-dining、次分類 bbq-grill。官方頁沒有中文名，name_zh 填韓文原名；店頁三語列「yulling 율링」，name_en 取 yulling。CatchTable 資訊分頁電話 +82-10-5751-3323（手機），Visit Busan 為 051-741-3323，兩者皆出現在店頁停車說明（▶停車諮詢電話 051-741-3323），視為同一家。資訊分頁沒有「網站」欄；Instagram @yulling_official 只當線索。VisitKorea 韓文站搜尋 율링 0 筆。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（週三顯示「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/yulling",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（週三顯示「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/yulling",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 13 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "c8b82d7d-e2a0-40b9-b1e5-ddf95d2ba957",
+      "slug": "busan-arpkitchen",
+      "name": "아르프 영도",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/arpkitchen",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/arpkitchen",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/arpkitchen",
+        "ja": "https://www.catchtable.net/ja-JP/shop/arpkitchen"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 14 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列（23 日「已滿」）與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 出現 online-reservation-open-schedule、schedule。 頁面有店家自己的訂位控制項，公開。 米其林必比登（CatchTable 店頁標示；Visit Busan 文章也寫 2024 미쉐린 가이드 빕 구르망，僅作背景）。Visit Busan 站內搜尋「아르프」2 筆都是推薦여행文章，沒有음식條目；採用 uc_seq=2183（미식투어）：이용안내的地址 태종로99번길 35 1층 與 CatchTable 資訊分頁一致，休日「매주 목요일」與店頁週四「營業時間請諮詢門店」／25 日「關閉」相符；頁內嵌 lat 35.093033／lng 129.0418（영도 봉래동，可供後台補座標）。文章寫的「홈페이지」其實是 CatchTable 的店頁連結，店家沒有自己的網站；CatchTable 資訊分頁「網站」欄是 Instagram @arp_kitchen，皆非來源。Visit Busan 稱店名「아르프」，CatchTable 韓文名「아르프 영도」（三語列「ARP yeongdo 아르프 영도」），local_name 取含分店的後者。分類：官方描述是 100% 비건 레스토랑，代表菜 고사리 파스타、참나물 파스타（義大利麵），客單價 ₩10,000～40,000，不是 tasting-menu fine dining，故依規則義大利麵→noodles；沒有素食專屬分類，若之後新增再改。電話：Visit Busan 0507-1342-1372、CatchTable +82-10-4361-1368，地址與店名一致視為同一家。Vi",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列（23 日「已滿」）與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 出現 online-reservation-open-schedule、schedule。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/arpkitchen",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：testids 有 service-tab-toggle、service-tab-DINING、service-tab-WAITING_REMOTE、service-section-title；點 DINING 後出現「日期 • 時間 • 人」日期列（23 日「已滿」）與「尋找可用時間」，頁面上有「預訂」與「候位」鈕；api 出現 online-reservation-open-schedule、schedule。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/arpkitchen",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 14 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "20bb4482-dbc3-4d6a-b5c5-c399233dfa84",
+      "slug": "busan-solsot-gwangan",
+      "name": "솔솥 광안리점",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/solsot_gwangan",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/solsot_gwangan",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/solsot_gwangan",
+        "ja": "https://www.catchtable.net/ja-JP/shop/solsot_gwangan"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 19 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（24 日「已滿」、25–26 日「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。 頁面有店家自己的訂位控制項，公開。 솥밥 連鎖 솔솥 的釜山광안점。來源是品牌加盟站 solsot.co.kr 首頁的「매장안내」門市表（伺服器端渲染，列 81 家分店，每列：編號／분점명／地址），第 57 列「부산 광안점 부산 수영구 광남로 78」與 CatchTable 資訊分頁的 광남로 78 1층 一致；門市表沒有獨立網址（同頁錨點），故 source.url 用首頁。品牌站稱「부산 광안점」，CatchTable 韓文名「솔솥 광안리점」（三語列「Solsot Gwangan 솔솥 광안리점」），local_name 取後者，另有同品牌「솔솥 부산해운대점」（alias solsot_haeundae，해리단길）不是本店。分類：솥밥（石鍋飯）→ rice-dishes，家常風小菜配菜 → home-style 為次分類。官方頁沒有中文名，name_zh 填韓文原名。電話 +82-51-978-4595，週五、六（9/25–26）休息日；資訊分頁「網站」欄是 Instagram @solsot_gwangan，不是來源。Visit Busan 與 VisitKorea 韓文站搜尋「솔솥」都 0 筆。頁面沒有 JSON-LD 座標。",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（24 日「已滿」、25–26 日「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/solsot_gwangan",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列（24 日「已滿」、25–26 日「關閉」）與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/solsot_gwangan",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 19 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    },
+    {
+      "merchant_id": "83c4d8ba-9cdf-4004-9425-cd94d10aa35b",
+      "slug": "busan-haegong",
+      "name": "야키토리 해공",
+      "country_code": "KR",
+      "provider": "catchtable_global",
+      "status": "verified",
+      "canonical_url": "https://www.catchtable.net/shop/haegong",
+      "localized_urls": {
+        "zh-TW": "https://www.catchtable.net/zh-TW/shop/haegong",
+        "zh-CN": "https://www.catchtable.net/zh-CN/shop/haegong",
+        "ja": "https://www.catchtable.net/ja-JP/shop/haegong"
+      },
+      "review_note": "2026-09-23：CatchTable 最佳餐廳榜 第 20 名（2026-09-23 擷取）。2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。 頁面有店家自己的訂位控制項，公開。 米其林指南推薦（CatchTable 店頁標示，僅作背景）。Visit Busan 站內搜尋「해공」有 2 筆음식條目都是本店：uc_seq=1563（本記錄來源；店名與地址同一區塊可逐字引用，寫「야키토리해공」不空格，電話 0507-1479-8334 是安心號碼，頁內嵌 lat 35.158237／lng 129.12712）與 uc_seq=2362（menuCd DOM_000000201002001000，「야키토리 해공…주소 수영구 민락본동로 19번길 30-5, 1층 전화번호 051-758-8333 휴무일 일요일 휴무」，電話與 CatchTable 資訊分頁 +82-51-758-8333 相同；同 uc_seq 有英文頁 /en/index.do?menuCd=DOM_000000301002001000&uc_seq=2362&lang_cd=en「Yakitori HAEGONG (야키토리 해공）」，lat 35.158234／lng 129.1271）。兩頁地址都與 CatchTable 一致，週日休也一致。district_key 取 gwangalli：地址在민락동（광안리 해변東端的민락 一帶），對照表沒有민락동專屬鍵，若站主認為不該併入광안리請改 null。分類：燒鳥／串燒（토종닭 야키토리 오마카세 ￦59,000）→ izakaya-bar。官方頁沒有中文名，name_zh 填韓文原名；店頁三語列「Yakitori-haegong 야키토리 해공」，name_en 取 Yakitori Haego",
+      "booking_observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。",
+      "evidence": [
+        {
+          "url": "https://www.catchtable.net/zh-TW/shop/haegong",
+          "role": "platform_page",
+          "observation": "2026-09-23 渲染 zh-TW 店頁（visibilityState visible，IntersectionObserver 包裝後從 /info 點首頁重新掛載）：沒有 service-tab 分頁切換，testids 只有 service-section-title；訂位區塊直接掛載，出現「日期 • 時間 • 人」日期列與「尋找可用時間」，頁面上有「預訂」鈕；api 出現 dayslot-enc、online-reservation-open-schedule。沒有候位控制項。"
+        },
+        {
+          "url": "https://www.catchtable.net/ja-JP/shop/haegong",
+          "role": "locale_variant",
+          "observation": "店頁 hreflang：ja 對 /ja-JP/、zh-Hans 對 /zh-CN/、zh-Hant 對 /zh-TW/、x-default 對無前綴；沒有韓文版。"
+        },
+        {
+          "url": "https://www.catchtable.net/zh-TW/ranking/location/location-busan",
+          "role": "ranking_page",
+          "observation": "第 20 名，2026-09-23 擷取；名次只作發現用，不公開。"
+        }
+      ]
+    }
+  ]
+}

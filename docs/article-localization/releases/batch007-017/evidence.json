@@ -1,0 +1,590 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETED_RELEASE_RECORD",
+  "release_date": "2026-09-23",
+  "timezone": "Asia/Taipei",
+  "scope": {
+    "articles": 8,
+    "new_translations": 32,
+    "public_language_urls": 40,
+    "desktop_mobile_cases": 80,
+    "expanded_description_source_cases": 40,
+    "original_screenshots": 160,
+    "supplement_screenshots": 24
+  },
+  "deployed_revision": "6b2339ec89eda90ad37c9e99009723dfca89ba4a",
+  "activation": {
+    "existing_deployed_revision_adopted": true,
+    "deployment_performed": false,
+    "application_containers_restarted": false
+  },
+  "pull_requests": [
+    {
+      "number": 660,
+      "url": "https://github.com/x812033727/travel_scanner/pull/660",
+      "state": "MERGED",
+      "head": "4c0ea8acba14697b76bb7bac1ab4b3bb1dc94f27",
+      "merge_commit": "f25b261a154ad2579f3c8aeae12e0cd9dde0e899",
+      "merged_at": "2026-09-22T09:53:43Z",
+      "successful_checks": 8,
+      "merge_ref": "pr660_merge",
+      "ci_ref": "pr660_ci"
+    },
+    {
+      "number": 659,
+      "url": "https://github.com/x812033727/travel_scanner/pull/659",
+      "state": "MERGED",
+      "head": "63da4b01e0f6cffe252456de238b3cef31e5d0cc",
+      "merge_commit": "7d1f5d6569a13bfa1862c5603bd251260e35efe3",
+      "merged_at": "2026-09-22T10:20:28Z",
+      "successful_checks": 8,
+      "merge_ref": "pr659_merge",
+      "ci_ref": "pr659_ci"
+    }
+  ],
+  "external_archive_root": "C:\\Users\\x8120\\.codex\\article-localization-release",
+  "evidence_storage": "Raw receipts, snapshots, journals, backups and screenshots remain outside Git; paths below resolve relative to external_archive_root. SHA256 pins bind exact bytes.",
+  "evidence": {
+    "final_evidence": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/final-evidence.json",
+      "sha256": "8aaa3d308786e1d8486fed7940330f681ece154964d7d0522c0f48161e13d4ec",
+      "json_pointers": [
+        "/scope",
+        "/articles",
+        "/phase_receipts",
+        "/sitemap",
+        "/visual_dispositions"
+      ]
+    },
+    "final_acceptance": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/final-acceptance.json",
+      "sha256": "933c778a81f70205f70927798283744c4eb7da1bdc42b253c9295c6a000fec56",
+      "json_pointers": [
+        "/status",
+        "/evidence/0",
+        "/journals",
+        "/health_accepted"
+      ]
+    },
+    "hold_clear": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/clear-host-20260923T072631331709Z.receipt.json",
+      "sha256": "3ab3c120c99df08f93e6b97233e6d43d9a1b6a66330772870b2da145b08b244e",
+      "json_pointers": [
+        "/result/status",
+        "/result/acceptance_sha256",
+        "/result/health"
+      ]
+    },
+    "post_clear_host": {
+      "archive_path": "batch007-017-release-protocol/host-readonly-20260923T072803435831Z.json",
+      "sha256": "1d607d92816b1d73c63a265c8aeb116c83b56c75a44da981fe2629874c3e3b51",
+      "json_pointers": [
+        "/captured_at",
+        "/host_repository",
+        "/hold",
+        "/health"
+      ]
+    },
+    "pr660_merge": {
+      "archive_path": "batch007-resumption-20260922/pr660-merge.json",
+      "sha256": "6193eca91e573daa08c439496395bb86b150b479aed5dde560295df1dfb13ee0"
+    },
+    "pr660_ci": {
+      "archive_path": "batch007-resumption-20260922/pr660-green-exact-4c0ea8ac.json",
+      "sha256": "9af01f300bd7ec0034c7e5eba6b41ecc3ecd06731c66d49fb1ce4ce12bb43725"
+    },
+    "pr659_merge": {
+      "archive_path": "batch007-017-release-protocol/pr659-merge-7d1f5d65.json",
+      "sha256": "506d325cacf1d5dc4cff78105b0eb7117d299101f6e913b91c871ae20900a8cc"
+    },
+    "pr659_ci": {
+      "archive_path": "batch017-productivity/pr659-green-final-63da4b01.json",
+      "sha256": "80938f75c580fc7235f7784f78e678592648a8e1a665f5745c378aad8d8e2d11"
+    },
+    "database_acceptance": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/database-acceptance.json",
+      "sha256": "8a2ad7e5072b956c7fe6c253b6871366d8e2842c6552638cb7dcf120e06235b3"
+    },
+    "independent_database_journal": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/independent-database-journal-acceptance.json",
+      "sha256": "4bb7b9ce47c6e90065e5bf16088bd092dca0dbe76a2218f3894ee5b80b3b9b5a"
+    },
+    "verify_host": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/verify-host-20260923T065911171112Z.receipt.json",
+      "sha256": "c3d4dff4134699677d956ab2d5f13466ca7f4479469d632387079ad1c830901a"
+    },
+    "visual_007": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/independent-public-visual-007/receipt-pass-final.json",
+      "sha256": "d2bd49d273a786786b3eaeb085261250da4f28ed65415a4c133f1b16cd0b21c0"
+    },
+    "browser_007": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/public-qa-007/results.json",
+      "sha256": "34dbd9b0e86db7df5f44d9e04587201de69ec300dc7ed28d2dea762ed8afb278"
+    },
+    "details_007": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/public-qa-007/expanded-description-and-sources.json",
+      "sha256": "3a3315448f2bca2f05a84bb7f3d440e99fba670edadb644c0b4f8cbd756da19b"
+    },
+    "visual_017": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/independent-public-visual-017/receipt-pass-final.json",
+      "sha256": "23120f8118f67f4007bbafab57b5f40ce4055bfdccf4c1eb4bd4d03beddedd47"
+    },
+    "browser_017": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/public-qa-017/results.json",
+      "sha256": "c1eea4031e45fb9763139fa89fef9a3f4acda6059dc591b9127fcbf4a4fdf90a"
+    },
+    "details_017": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/public-qa-017/expanded-description-and-sources.json",
+      "sha256": "56ac16df6422a44876ad89abfb1cebf67a569f0b521b546ca97cff76a5df8943"
+    },
+    "navigation_v2": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/stable-navigation-supplement-v2/results.json",
+      "sha256": "a413bec47a924196f25bf8e503c41ae0b0629f658d5fad1496987ed2fa363ac6"
+    },
+    "navigation_v3": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/stable-navigation-supplement-v3/results.json",
+      "sha256": "ef2d9173e6b3943122d102420b4716f343812f4e8bd3d1a9d0c7d3644f41e61d"
+    },
+    "transport_review": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/independent-final-transport-review.json",
+      "sha256": "c483cd36e7c0d0a7d5751ddaab57eb8f7c10c5a0251ef4b8f1ce049f75aa7df7"
+    },
+    "staging_helper_review": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/root-independent-staging-helper-review.json",
+      "sha256": "8f310c74d5e419d3caed3115e523697d431fae3035514f8ea3c65457e3b992bc"
+    },
+    "phase_adopt-deployed-host-20260923T065201078991Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/adopt-deployed-host-20260923T065201078991Z.receipt.json",
+      "sha256": "c00cae1ccfed0200bf90decf0eb371f3fc7769e7ed0ec2f5c6b1bed0216f4d2f",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_backup-host-20260923T065113436186Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/backup-host-20260923T065113436186Z.receipt.json",
+      "sha256": "f8814e153d676094854a4e4cdc12bb47fa4f37658cc028ba329883426d0e6758",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_drafts-007-20260923T065422142401Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/drafts-007-20260923T065422142401Z.receipt.json",
+      "sha256": "81614fa6aafd45f6a29d516a247968a09cc2d5eb240481f9363df65dff85d5d0",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_drafts-017-20260923T065528260223Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/drafts-017-20260923T065528260223Z.receipt.json",
+      "sha256": "401cc01c9720121c2ed4dc2fc1f58c92e2fc7dc41ba24928d76d8d9663e93eed",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_dry-run-007-20260923T065231729890Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/dry-run-007-20260923T065231729890Z.receipt.json",
+      "sha256": "a8716c75adc865790c96181ad89cc0b56e50f6f4535885a81334a36973f87068",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_dry-run-017-20260923T065346281761Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/dry-run-017-20260923T065346281761Z.receipt.json",
+      "sha256": "e600b82af9707aa2f0436cdb8b7ef987e124f124931a018f5e01ec1510def993",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_publish-articles-007-20260923T065611048971Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/publish-articles-007-20260923T065611048971Z.receipt.json",
+      "sha256": "090111b7997dbc5d634a769ecf923e938969b204d697568c6415a3ef9f00d5fa",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_publish-articles-017-20260923T065711782464Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/publish-articles-017-20260923T065711782464Z.receipt.json",
+      "sha256": "b44aa6593fe85f25a5bd7c535311d3ca01282ccefd0e8c7b93cf9c6fd2c8874c",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_publish-hubs-007-20260923T065755604868Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/publish-hubs-007-20260923T065755604868Z.receipt.json",
+      "sha256": "c59802cd045efe3fc9e2c5153939614c145ce659ed057a099440ab3563d7c97b",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_publish-hubs-017-20260923T065838667408Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/publish-hubs-017-20260923T065838667408Z.receipt.json",
+      "sha256": "9617bb0beb2c218f06ea8a9d61002402966730c94021812fb478556b4756994e",
+      "json_pointers": [
+        "/result"
+      ]
+    },
+    "phase_verify-host-20260923T065911171112Z": {
+      "archive_path": "mokaair-localization-007-017-6b2339ec89ed/verify-host-20260923T065911171112Z.receipt.json",
+      "sha256": "c3d4dff4134699677d956ab2d5f13466ca7f4479469d632387079ad1c830901a",
+      "json_pointers": [
+        "/result"
+      ]
+    }
+  },
+  "phase_receipts": [
+    {
+      "phase": "adopt-deployed",
+      "evidence_ref": "phase_adopt-deployed-host-20260923T065201078991Z",
+      "final_evidence_pointer": "/phase_receipts/0",
+      "status": "adopted_already_deployed"
+    },
+    {
+      "phase": "backup",
+      "evidence_ref": "phase_backup-host-20260923T065113436186Z",
+      "final_evidence_pointer": "/phase_receipts/1",
+      "status": "backup_verified"
+    },
+    {
+      "phase": "drafts",
+      "evidence_ref": "phase_drafts-007-20260923T065422142401Z",
+      "final_evidence_pointer": "/phase_receipts/2",
+      "status": "complete"
+    },
+    {
+      "phase": "drafts",
+      "evidence_ref": "phase_drafts-017-20260923T065528260223Z",
+      "final_evidence_pointer": "/phase_receipts/3",
+      "status": "complete"
+    },
+    {
+      "phase": "dry-run",
+      "evidence_ref": "phase_dry-run-007-20260923T065231729890Z",
+      "final_evidence_pointer": "/phase_receipts/4",
+      "status": "read_only"
+    },
+    {
+      "phase": "dry-run",
+      "evidence_ref": "phase_dry-run-017-20260923T065346281761Z",
+      "final_evidence_pointer": "/phase_receipts/5",
+      "status": "read_only"
+    },
+    {
+      "phase": "publish-articles",
+      "evidence_ref": "phase_publish-articles-007-20260923T065611048971Z",
+      "final_evidence_pointer": "/phase_receipts/6",
+      "status": "complete"
+    },
+    {
+      "phase": "publish-articles",
+      "evidence_ref": "phase_publish-articles-017-20260923T065711782464Z",
+      "final_evidence_pointer": "/phase_receipts/7",
+      "status": "complete"
+    },
+    {
+      "phase": "publish-hubs",
+      "evidence_ref": "phase_publish-hubs-007-20260923T065755604868Z",
+      "final_evidence_pointer": "/phase_receipts/8",
+      "status": "complete"
+    },
+    {
+      "phase": "publish-hubs",
+      "evidence_ref": "phase_publish-hubs-017-20260923T065838667408Z",
+      "final_evidence_pointer": "/phase_receipts/9",
+      "status": "complete"
+    },
+    {
+      "phase": "verify",
+      "evidence_ref": "phase_verify-host-20260923T065911171112Z",
+      "final_evidence_pointer": "/phase_receipts/10",
+      "status": "verified"
+    }
+  ],
+  "articles": [
+    {
+      "slug": "narita-haneda-to-tokyo",
+      "batch": "007",
+      "title_zhTW": "成田・羽田機場到東京市區交通全攻略：Skyliner、N'EX、京急、利木津巴士怎麼選",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/0",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/guides/howto/narita-haneda-to-tokyo",
+        "zh-CN": "https://mokaair.com/zh-CN/guides/howto/narita-haneda-to-tokyo",
+        "en": "https://mokaair.com/en/guides/howto/narita-haneda-to-tokyo",
+        "ja": "https://mokaair.com/ja/guides/howto/narita-haneda-to-tokyo",
+        "ko": "https://mokaair.com/ko/guides/howto/narita-haneda-to-tokyo"
+      },
+      "locale_versions_pointer": "/articles/0/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:56:24.680007+00:00",
+        "2026-09-23T06:56:30.305429+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 8,
+        "published_version": 8,
+        "document_sha256": "2e0ca040205b8b33f7e4c42d13441611a8240201a23d35772b47196b7943480a"
+      }
+    },
+    {
+      "slug": "tokyo-disney-guide",
+      "batch": "007",
+      "title_zhTW": "東京迪士尼樂園、海洋攻略：票價、夢幻泉鄉 Fantasy Springs、尊享卡 DPA 與預約等候卡怎麼用，第一次去選哪個園",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/1",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/guides/howto/tokyo-disney-guide",
+        "zh-CN": "https://mokaair.com/zh-CN/guides/howto/tokyo-disney-guide",
+        "en": "https://mokaair.com/en/guides/howto/tokyo-disney-guide",
+        "ja": "https://mokaair.com/ja/guides/howto/tokyo-disney-guide",
+        "ko": "https://mokaair.com/ko/guides/howto/tokyo-disney-guide"
+      },
+      "locale_versions_pointer": "/articles/1/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:56:30.606351+00:00",
+        "2026-09-23T06:56:31.561515+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 8,
+        "published_version": 8,
+        "document_sha256": "1baa48a0173d0ca00497eb87e5bf75bf2ef2f5672cd71e8244e20ce421e099ea"
+      }
+    },
+    {
+      "slug": "tokyo-transit-passes",
+      "batch": "007",
+      "title_zhTW": "東京交通票券怎麼選：Suica／Welcome Suica、Tokyo Subway Ticket、JR Pass 值不值得",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/2",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/guides/howto/tokyo-transit-passes",
+        "zh-CN": "https://mokaair.com/zh-CN/guides/howto/tokyo-transit-passes",
+        "en": "https://mokaair.com/en/guides/howto/tokyo-transit-passes",
+        "ja": "https://mokaair.com/ja/guides/howto/tokyo-transit-passes",
+        "ko": "https://mokaair.com/ko/guides/howto/tokyo-transit-passes"
+      },
+      "locale_versions_pointer": "/articles/2/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:56:31.904255+00:00",
+        "2026-09-23T06:56:32.876896+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 8,
+        "published_version": 8,
+        "document_sha256": "07d4ec1f43a7e613cbc882ee748d7d11347bfe1dea2bbd97592b8be21cd3af10"
+      }
+    },
+    {
+      "slug": "tokyo-where-to-stay",
+      "batch": "007",
+      "title_zhTW": "東京住哪一區：新宿、上野、東京車站、澀谷、淺草、池袋、銀座七區比較，機場交通、宿泊稅、行李寄送一次看",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/3",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/guides/howto/tokyo-where-to-stay",
+        "zh-CN": "https://mokaair.com/zh-CN/guides/howto/tokyo-where-to-stay",
+        "en": "https://mokaair.com/en/guides/howto/tokyo-where-to-stay",
+        "ja": "https://mokaair.com/ja/guides/howto/tokyo-where-to-stay",
+        "ko": "https://mokaair.com/ko/guides/howto/tokyo-where-to-stay"
+      },
+      "locale_versions_pointer": "/articles/3/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:56:33.229816+00:00",
+        "2026-09-23T06:56:34.485504+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 6,
+        "published_version": 6,
+        "document_sha256": "189f9d0c5228b21315a15dea4cca631e3c5307bdccb643de83cf093739b7238a"
+      }
+    },
+    {
+      "slug": "email-triage-three-actions",
+      "batch": "017",
+      "title_zhTW": "收件匣不必清到零：用待辦、等待與歸檔處理電子郵件",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/4",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/email-triage-three-actions",
+        "zh-CN": "https://mokaair.com/zh-CN/life/email-triage-three-actions",
+        "en": "https://mokaair.com/en/life/email-triage-three-actions",
+        "ja": "https://mokaair.com/ja/life/email-triage-three-actions",
+        "ko": "https://mokaair.com/ko/life/email-triage-three-actions"
+      },
+      "locale_versions_pointer": "/articles/4/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:57:25.473829+00:00",
+        "2026-09-23T06:57:26.033586+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 6,
+        "published_version": 6,
+        "document_sha256": "1980337d4a80c32364badac93c25e2cae3c040c6e0f7d8889562f9b2b3977763"
+      }
+    },
+    {
+      "slug": "meeting-notes-action-template",
+      "batch": "017",
+      "title_zhTW": "會議筆記怎麼寫才有人接手：把決定、負責人與下一步留下來",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/5",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/meeting-notes-action-template",
+        "zh-CN": "https://mokaair.com/zh-CN/life/meeting-notes-action-template",
+        "en": "https://mokaair.com/en/life/meeting-notes-action-template",
+        "ja": "https://mokaair.com/ja/life/meeting-notes-action-template",
+        "ko": "https://mokaair.com/ko/life/meeting-notes-action-template"
+      },
+      "locale_versions_pointer": "/articles/5/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:57:26.233825+00:00",
+        "2026-09-23T06:57:26.857650+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 6,
+        "published_version": 6,
+        "document_sha256": "3b38731d2006d6b40fd727a053b0e7f312d4ac5b3cfc9fc490f0d6a7fe609889"
+      }
+    },
+    {
+      "slug": "notification-focus-boundaries",
+      "batch": "017",
+      "title_zhTW": "通知一直打斷你？先分例外，再設定真正用得上的專注時段",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/6",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/notification-focus-boundaries",
+        "zh-CN": "https://mokaair.com/zh-CN/life/notification-focus-boundaries",
+        "en": "https://mokaair.com/en/life/notification-focus-boundaries",
+        "ja": "https://mokaair.com/ja/life/notification-focus-boundaries",
+        "ko": "https://mokaair.com/ko/life/notification-focus-boundaries"
+      },
+      "locale_versions_pointer": "/articles/6/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:57:27.045444+00:00",
+        "2026-09-23T06:57:27.557567+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 6,
+        "published_version": 6,
+        "document_sha256": "e7e4c9524503ce9f23f93caa23770da88164846d23dec84f94a89f91c746f430"
+      }
+    },
+    {
+      "slug": "weekly-review-reset-routine",
+      "batch": "017",
+      "title_zhTW": "每週回顧怎麼開始：整理承諾、刪減待辦，為下週留出空間",
+      "evidence_ref": "final_evidence",
+      "json_pointer": "/articles/7",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/weekly-review-reset-routine",
+        "zh-CN": "https://mokaair.com/zh-CN/life/weekly-review-reset-routine",
+        "en": "https://mokaair.com/en/life/weekly-review-reset-routine",
+        "ja": "https://mokaair.com/ja/life/weekly-review-reset-routine",
+        "ko": "https://mokaair.com/ko/life/weekly-review-reset-routine"
+      },
+      "locale_versions_pointer": "/articles/7/locale_versions",
+      "new_locale_and_published_version": 2,
+      "new_publication_window_utc": [
+        "2026-09-23T06:57:27.730933+00:00",
+        "2026-09-23T06:57:28.307657+00:00"
+      ],
+      "original_zhTW": {
+        "locale_version": 6,
+        "published_version": 6,
+        "document_sha256": "f2e19522af1d703bcaac11bceb8a857a94071156185f20abce1d747d7a8a6e95"
+      }
+    }
+  ],
+  "backup": {
+    "status": "backup_verified",
+    "host_backup_receipt_sha256": "b447e5852b89a578e486ddfa1fee4fd2de252ac35a08c6f0cccbaf8a8fdaa0c7",
+    "detail_pointer": "final_evidence#/phase_receipts/1"
+  },
+  "post_release": {
+    "hold_cleared": true,
+    "hold_clear_ref": "hold_clear",
+    "fresh_host_ref": "post_clear_host",
+    "host_captured_at": "2026-09-23T07:28:05.068107+00:00",
+    "host_repository_clean": true,
+    "health_200_count": 3
+  },
+  "sitemap": {
+    "pages": [
+      1000,
+      912
+    ],
+    "unique_article_locale_urls": 1912,
+    "all_in_xml": true
+  },
+  "visual_dispositions": [
+    "All160 original screenshots and24 supplemental screenshots were independently viewed.",
+    "V1 supplement was a failed harness-selector attempt and is excluded from acceptance.",
+    "Three v2 diagram images were captured before lazy loading; only v3 decoded-image replacements support image acceptance for those cases.",
+    "Previously reported missing Japanese desktop theme/language controls was independently rechecked and withdrawn."
+  ],
+  "known_nonblocking_findings": [
+    {
+      "task": "2026-09-22-fix-desktop-global-search-placeholder-icon",
+      "finding": "Existing global desktop search icon overlaps placeholder; recorded separately from article localization."
+    }
+  ],
+  "limitations": [
+    "Desktop/mobile refer to browser viewports, not physical-device execution.",
+    "This receipt accepts only these8articles/32newtranslations, not the remaining site-wide localization backlog.",
+    "final-evidence.json predates hold clearing; hold_clear and post_clear_host are the explicit later evidence."
+  ]
+}
