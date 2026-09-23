@@ -155,6 +155,27 @@ CatchTable、Naver、Google、Instagram、米其林只當發現與定位。進�
 | `seoul-anmokseongsu` | 안목(安木) 성수점 | 서울특별시 성동구 뚝섬로13길 34 1층 |
 | `seoul-sancheong-ej` | 산청숯불가든 을지로 | 서울특별시 중구 을지로 114-6 홍원빌딩 1층 |
 
+## 站主同意後在主機上跑的（2026-09-23）
+
+部署 `9063f351`（PR #671）之後，兩支匯入指令各自先 dry-run、站主在對話裡同意後才 `--apply`；平台列的檔案不在部署裡，
+用 stdin 餵給容器（`--file /dev/stdin`），省了第二次部署。
+
+```bash
+# 店家：部署後從主機上的檔案 dry-run，與報告一致（would_create 14、0 skipped）後 --apply
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   import-trend-merchants --file app/foods/data/catchtable/2026-09-23-catchtable-seoul-1/merchants.json [--apply]
+# worklist：拿新店家的 merchant_id（不帶 --out，直接讀 stdout）
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   export-food-merchant-worklist --status all --destination seoul --include-researched > seoul-after.json
+# 平台列：本機轉檔後從 stdin 餵入，dry-run 全部 would_create 後 --apply
+docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   apply-food-platform-reviews --file /dev/stdin [--apply] < platform-reviews.json
+```
+
+| 計數 | 之前 | 之後 | 說明 |
+| --- | ---: | ---: | --- |
+| 首爾 worklist 列數（all） | 37 | 51 | 29 approved、7 rejected 不變；pending 1 → 15 |
+| `import-trend-merchants` | `would_create 14` | `created 14`；再跑 `skipped_existing_slug 14` | 新列全部 pending／unverified、沒座標；既有列沒被動到 |
+| `apply-food-platform-reviews` | `would_create 15` | `created 15`（verified 12、disabled 3）；再跑 `unchanged 15` | 0 `skipped_admin_reviewed`，因為掛到的都是新列或沒審過的 rejected 列 |
+| 公開 API 首爾店家 | 29 | 29 | pending 不公開；帶 CatchTable 按鈕的仍是原本 3 家 |
+
 ## 這批踩到的陷阱（下一批別再踩）
 
 - **店頁的服務區塊是 lazy section。** 不往下捲就永遠不會渲染，畫面只剩底部「預訂」鈕或候位 dock。三個研究代理都把它當成
@@ -177,11 +198,11 @@ CatchTable、Naver、Google、Instagram、米其林只當發現與定位。進�
 
 ## 還沒做完的
 
-- 站主動作（第 7 步）：後台逐筆貼 14 家的 Naver 精準地點頁、跑座標佇列、核准；沒有這一步，這批只是審核佇列。
-- `seoul-buchon-yukhoe`（rejected、沒地址、沒來源）：候選檔 `buchonyukhoe` 的 notes 附了 VisitKorea 英文站的官方頁與地址，站主若要恢復那筆可直接用；
-  平台列會先掛上去（`disabled`）。
-- 15 家無來源的店：其中 4 家有官網但不能用（제주옥탑只有 http；jejurooftop.co.kr 與 suksungdo.kr 從本機連不上；정식당 jungsik.kr 只有 http，
-  但它有 Visit Gangnam 頁所以無妨）。若能從韓國網路開到 https 頁，제주옥탑與熟成到可以補成 `import`；建議的 slug／商圈／分類都在各自 notes。
-- 票 `2026-09-21-catchtable-apply-and-daerim` 的 A 項（`daelimchanggobar`）不在這兩個榜的範圍內，這批沒收；留給那張票或第二批。
-- 第二批的切法與要不要升 skill：見設計文件「漏斗」一節。
-
+- **站主動作（第 7 步）**：後台逐筆貼 14 家的 Naver 精準地點頁（清單見上一節）、跑座標佇列、核准；沒有這一步，這批只是審核佇列，
+  12 顆 verified 的訂位按鈕也不會出現在公開頁。
+- `seoul-buchon-yukhoe`（rejected、沒地址、沒來源）現在多了一筆 `disabled` 的 CatchTable 列；候選檔 `buchonyukhoe` 的 notes 附了 VisitKorea 英文站的
+  官方頁與地址，站主若要恢復那筆可直接用。
+- 15 家無來源的店留在候選檔：其中제주옥탑（只有 http 官網）與熟成到（`suksungdo.kr` 從本機解析不到）若能從韓國網路開到 https 頁，可補成 `import`；
+  建議的 slug／商圈／分類在各自 notes。
+- 票 `2026-09-21-catchtable-apply-and-daerim` 的 A 項（`daelimchanggobar`）不在這兩個榜的範圍內，本批沒收；它需要自己的官方來源與 Naver 網址，留在那張票。
+- 第二批：首爾最佳榜第 21–40 名 ＋ 釜山最佳榜前 20，開跑時把操作步驟升成 skill（見設計文件「漏斗」一節）。
