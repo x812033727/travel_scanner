@@ -1,0 +1,665 @@
+{
+  "slug": "ai-news-openai-zero-data-retention-20260820",
+  "vertical": "ai",
+  "display_order": 181,
+  "event_date": "2026-08-20",
+  "event_date_basis": "OpenAI 的公告頁 https://openai.com/index/offering-zero-data-retention-for-frontier-models/ 在標題上方逐字印出「OpenAI August 19, 2026」（作者名與日期相連排版），分類標為「Company Safety」，頁面本身沒有印出任何時刻。2026-09-23 08:20（台北）抓下的 423,863 bytes 原始碼裡，以 datePublished、dateModified、article:published_time、publishedAt、2026-08 五個關鍵字逐一 grep 全部 0 筆，頁面唯一的結構化日期欄位是 Next.js RSC payload 裡的 \\\"publicationDateText\\\":\\\"August 19, 2026\\\"（純文字，無時刻）。真正的時刻來自 OpenAI 官方 RSS：2026-09-23 08:26（台北）以同一支 UA 抓 https://openai.com/news/rss.xml（HTTP 200、744,049 bytes、1,219 個 item，最舊一筆是 2015-12-11），其中 link 為 https://openai.com/index/offering-zero-data-retention-for-frontier-models 的那個 item 印的是 <pubDate>Wed, 19 Aug 2026 19:00:00 GMT</pubDate>。19:00Z 是有秒數的真實時刻、不是 00:00 或 16:00 的佔位值，依 DELTA-4-5 第 5–6 條要換算：2026-08-19T19:00Z ＋8 小時 ＝ 台北 2026-08-20 03:00，跨日。事件日採 2026-08-20，與 DELTA-4-4 第 3 條協調者裁定的一致（該表寫「08-19T19:00Z → 台北 08-20（換算）」）。因此 slug 尾碼、news_date 與正文第一段的日期都是 2026-08-20，但頁面自己印的是 August 19, 2026——正文兩個日期都要寫，並說明這是時區差。另注意：本頁另有一則 2026-09-22 的更新（見 live_data_warnings），那是更新日，不是事件日。",
+  "title": "OpenAI 為前沿模型提供零資料保留：內容留在客戶自己的雲端，只回傳訊號",
+  "title_candidates": [
+    "OpenAI 把零資料保留延伸到前沿模型：內容留在客戶自己的雲端，只回傳訊號",
+    "零資料保留怎麼同時做安全監控：OpenAI 預覽 Private Safety Processing",
+    "「不留提示與回覆」的界線在哪：OpenAI 的零資料保留有四個例外",
+    "資料不落 OpenAI 手上也能查濫用：一篇看懂私密安全處理與它的門檻"
+  ],
+  "summary": "台北時間 2026 年 8 月 20 日凌晨 3 點（OpenAI 頁面自己印的是美國時間 8 月 19 日），OpenAI 發布〈Offering Zero Data Retention for frontier models〉，預覽一項叫 Private Safety Processing（私密安全處理，簡稱 PSP）的機制。它要解決的矛盾很具體：零資料保留（Zero Data Retention，ZDR）承諾「請求處理完就不保留提示與回覆」，但 OpenAI 表示，隨著模型接下更長、更複雜的任務，有些嚴重風險只有把多次互動放在一起看才看得出來，而現有相容 ZDR 的安全系統是逐次互動分開評估的。PSP 的做法是：受審查的紀錄加密後寫進「客戶自己控制的儲存空間」（自備 AWS S3 bucket 或 Azure Blob container），OpenAI 手上只留索引與操作中繼資料、沒有內容副本；解密與自動審查在一個關掉人員存取的硬體證明執行環境裡進行，離開審查流程的只有預先定義、範圍受限的安全訊號與操作中繼資料。觸發時 OpenAI 收到的是「活動類型」這種窄訊號，OpenAI 表示人員即使在被標記時也拿不到客戶內容。公告當時 PSP 只在早期客戶測試，並預告 9 月開始推出、同時發布技術白皮書；同一頁在 2026 年 9 月 22 日追加更新，寫已開始分階段推給 API 客戶。要注意的是這整套都在 API 這一側：依 OpenAI 的資料控制文件，ZDR 是要事先經 OpenAI 核准的 API 組織／專案層級設定，而且是逐個端點列資格——本站另一篇寫過的 Agents API（/v1/agents）在 2026 年 9 月 23 日重查時，ZDR 欄位仍然是 No。",
+  "checked_on": "2026-09-23",
+  "sources": [
+    {
+      "title": "Offering Zero Data Retention for frontier models",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-23T08:20+08:00",
+      "http_status": 200,
+      "bytes": 423863,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Zero Data Retention gives eligible API customers a clear promise: OpenAI does not retain their prompts or model responses after a request is processed."
+    },
+    {
+      "title": "Data controls in the OpenAI platform",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-23T08:25+08:00",
+      "http_status": 200,
+      "bytes": 615506,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "Currently, these controls are subject to prior approval by OpenAI and acceptance of additional requirements. Approved customers may select between Modified Abuse Monitoring or Zero Data Retention for their API Organization or project."
+    },
+    {
+      "title": "ZDR with Private Safety Processing (PSP)",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-23T08:22+08:00",
+      "http_status": 200,
+      "bytes": 460634,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "ZDR with PSP enables offline, automated safety review without OpenAI retaining customer prompts or responses."
+    },
+    {
+      "title": "OpenAI News RSS（取事件時刻）",
+      "url": "https://openai.com/news/rss.xml",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-23T08:26+08:00",
+      "http_status": 200,
+      "bytes": 744049,
+      "checked_on": "2026-09-23",
+      "verbatim_quote": "<pubDate>Wed, 19 Aug 2026 19:00:00 GMT</pubDate>"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "四條都在 2026-09-23 08:20–08:26（台北）以 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 自行重抓，同一主機間隔 ≥1 秒，請求裡沒有任何人的姓名、email 或個人資料。原始檔存在 C:\\Users\\x8120\\mokaair-work\\news44\\_raw\\ai-news-openai-zero-data-retention-20260820\\（zdr.html、your-data.html、psp-guide.html、news-rss.xml，另有 psp-guide.md、your-data.md 與 psp-whitepaper.pdf）。抽字腳本在 _tools\\ai-news-openai-zero-data-retention-20260820\\extract.py（去 <!-- -->、script、style，再 html.unescape、NBSP→空格、U+2011→'-'），本紀錄所有 verbatim_quote 都用 checkquotes.py 對抽出的正文逐條比對過，53 條（sources 4 條＋verified_facts 49 條）全中、0 miss；驗證腳本 validate.py 同時檢查每一條 verified_facts 的 url 都在 sources[] 裡。四條都確認讀到正文而非外殼：(1) 公告頁抽出 8,344 字元正文，含三個小節標題、2026-09-22 的更新區塊與 CSAM 註腳；(2) your-data 抽出 61,802 字元，含 27 列的端點資格表與資料落地表；(3) psp-guide 抽出 29,850 字元，含三項原則、兩段架構、AWS／Azure 設定與客戶持續責任；(4) RSS 有 1,219 個 item，最新一筆到 2026-09（不是維護頁）。兩份開發者文件的頁面自己寫「Markdown versions of documentation pages are available by appending `.md` to the page URL」，因此另外抓了同路徑的 .md（psp-guide.md 24,849 bytes、your-data.md 79,683 bytes）當成同一份文件的乾淨版對照，內容一致；sources[] 登記的是給讀者看的 HTML 正式網址。openai.com/index/* 的 403 沒有發生，一次就過。注意 bytes 與探索代理 2026-09-22 記的 452,080 不同（我今天是 423,863）——差異在 Next.js 的 RSC payload 與導覽外殼，正文與 09-22 更新區塊都在，逐字比對過公告內文沒有少任何一段。",
+  "verified_facts": [
+    {
+      "fact": "公告頁在標題上方印出發布日 August 19, 2026，分類為 Company 與 Safety。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "OpenAI August 19, 2026"
+    },
+    {
+      "fact": "OpenAI 官方 RSS 為這篇印出的發布時刻是 2026-08-19 19:00:00 GMT，換算台北時間是 2026-08-20 03:00，跨日。",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": false,
+      "verbatim_quote": "<pubDate>Wed, 19 Aug 2026 19:00:00 GMT</pubDate>"
+    },
+    {
+      "fact": "RSS 的摘要把這篇定位成「重申 ZDR」＋「預覽 PSP」兩件事。",
+      "url": "https://openai.com/news/rss.xml",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI reaffirms Zero Data Retention for eligible API customers and previews Private Safety Processing for advanced AI safety without compromising data privacy."
+    },
+    {
+      "fact": "公告頁的副標逐字說明本文的性質是「預覽」，且 PSP 與 ZDR 相容。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Previewing Private Safety Processing, which strengthens safeguards across interactions while remaining compatible with ZDR."
+    },
+    {
+      "fact": "OpenAI 對 ZDR 的定義：給「合資格的 API 客戶」的承諾，請求處理完之後不保留其提示與模型回覆。這是 API 客戶層級的控制，公告全篇沒有出現 ChatGPT 消費者方案。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Zero Data Retention gives eligible API customers a clear promise: OpenAI does not retain their prompts or model responses after a request is processed."
+    },
+    {
+      "fact": "同一段另寫兩件事：客戶內容不提供給 OpenAI 人員審閱（此處掛註腳 1），以及企業客戶資料除非明確選擇加入否則不用於訓練模型。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "enterprise customer data is not used to train our models unless customers explicitly opt-in"
+    },
+    {
+      "fact": "註腳 1 是 ZDR 的例外：依法通報疑似兒童性虐待素材（CSAM），被分類器標記的圖片即使在 ZDR 部署下仍會保留供人工審查與通報。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Images flagged for potential CSAM will continue to be retained for manual review and reporting purposes, even in Zero Data Retention deployments, as they are today."
+    },
+    {
+      "fact": "OpenAI 給出的問題陳述：現有相容 ZDR 的安全系統是逐次互動分開評估，而 PSP 要在不讓 OpenAI 人員接觸內容的前提下辨識跨互動的樣式。這句是本篇對 PSP 的定義句。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Today, we\u2019re previewing Private Safety Processing, which is designed to identify patterns across related interactions without giving OpenAI personnel access to the underlying content."
+    },
+    {
+      "fact": "內容放哪裡有兩種：ZDR 部署下留在客戶自己控制的基礎設施；另一種是存在 OpenAI 基礎設施、用客戶控制的金鑰加密——後者在 2026-08-19 的公告上寫的是「正在開發中的選項」。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "For ZDR deployments, customer content remains on infrastructure the customer controls. We are also developing an option in which content is stored on OpenAI infrastructure, encrypted with keys controlled by the customer."
+    },
+    {
+      "fact": "兩種情況下，自動化系統都只回傳有限的安全訊號，不把底層提示或回覆暴露給 OpenAI 人員。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In both cases, automated systems can identify potential misuse and return limited safety signals without exposing the underlying prompts or responses to OpenAI personnel."
+    },
+    {
+      "fact": "OpenAI 指出，近期有些前沿模型的部署要求客戶允許供應商為了安全監控而保留敏感內容，而這對許多組織與其安全義務相衝突——這是 PSP 的動機。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Some recent frontier-model deployments have required customers to allow their AI provider to retain sensitive content for safety monitoring. For many organizations, such requirements conflict with their security obligations or commitments to the people they serve."
+    },
+    {
+      "fact": "OpenAI 一句話說明目的：做 PSP 是為了能繼續提供 ZDR。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Private Safety Processing is designed so we can continue to offer ZDR."
+    },
+    {
+      "fact": "用 OpenAI 提供的儲存時，客戶內容以客戶控制的金鑰加密，OpenAI 人員沒有那些金鑰的副本、因此拿不到內容（這是公告頁的說法；開發者文件對金鑰的描述更細，見下方 EKM 條）。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With OpenAI-provided storage, customer content is encrypted using keys controlled by the customer. OpenAI personnel do not have a copy of those keys, so they cannot access the underlying content."
+    },
+    {
+      "fact": "偵測到風險時 OpenAI 收到的是一個「範圍狹窄、標示活動類型」的訊號，可用來判斷是否需要執法動作；即使被標記，OpenAI 人員仍拿不到客戶內容。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "When a risk is identified, OpenAI receives a narrowly defined signal indicating the type of activity involved, similar to our existing safety systems today."
+    },
+    {
+      "fact": "客戶被標記或被處分後，是用自己系統裡的資訊去查；要申訴、澄清或協助調查時，是「客戶選擇」分享資訊給 OpenAI，不是 OpenAI 自己去看。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Customers can investigate alerts and enforcement decisions using information available in their own systems."
+    },
+    {
+      "fact": "2026-08-19 公告當時的狀態：PSP 正在與早期客戶測試中。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Private Safety Processing is currently being tested with early customers."
+    },
+    {
+      "fact": "公告當時的時程預告：9 月開始推出 PSP 並發布一份技術白皮書。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We plan to start rolling out Private Safety Processing, and share a technical white paper, in September."
+    },
+    {
+      "fact": "同一頁在 2026-09-22 追加更新：已開始把 PSP 推給 API 客戶，存取權分階段開放。這是更新日，不是事件日。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Update on September 22, 2026: We are rolling out Private Safety Processing to API customers, with access expanding in phases."
+    },
+    {
+      "fact": "09-22 更新把 PSP 的定位寫得更白：它讓 OpenAI 能在前沿模型變得更強的同時繼續提供 ZDR。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Private Safety Processing enables us to continue offering ZDR as frontier models become more capable."
+    },
+    {
+      "fact": "公告頁列出四個一起做的客戶名稱（版面上是一排客戶標記）：Glean、Databricks、Abridge、Microsoft。",
+      "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Glean Databricks Abridge Microsoft"
+    },
+    {
+      "fact": "API 的預設值：所有 API 功能都會產生濫用監控紀錄，預設最多保存 30 天，除非法律要求更長、或為保護服務與第三方免於傷害而有合理必要。ZDR 是把客戶內容排除在這類紀錄外的選項。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By default, abuse monitoring logs are generated for all API feature usage and retained for up to 30 days, unless longer retention is required by law, or is reasonably necessary to protect our services or any third party from harm."
+    },
+    {
+      "fact": "誰有資格、怎麼申請：ZDR 與 Modified Abuse Monitoring 目前都要 OpenAI 事先核准並接受額外條件；核准後可在 API 組織或專案層級二選一。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Currently, these controls are subject to prior approval by OpenAI and acceptance of additional requirements. Approved customers may select between Modified Abuse Monitoring or Zero Data Retention for their API Organization or project."
+    },
+    {
+      "fact": "官方指定的申請管道只有一條：聯絡 OpenAI 業務團隊詢問資格。文件沒有公開的線上申請表或資格門檻數字。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Get in touch with our sales team to learn more about these offerings and inquire about eligibility."
+    },
+    {
+      "fact": "核准之後才會在後台看到設定入口：Settings → Organization → Data controls 底下會出現 Data Retention 分頁，可在組織層級與專案層級分別設定。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Once your organization has been approved for data retention controls"
+    },
+    {
+      "fact": "ZDR 與 Modified Abuse Monitoring 的差別：ZDR 同樣把客戶內容排除在濫用監控紀錄外，另外還改變端點行為（/v1/responses 與 chat/completions 的 store 參數一律視為 false）。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Zero Data Retention excludes customer content from abuse monitoring logs in the same way as Modified Abuse Monitoring."
+    },
+    {
+      "fact": "ZDR 的資格是逐個端點列的，不是逐個模型。表格欄位依序是：端點、資料是否用於訓練、濫用監控保存期、應用狀態保存期、是否符合 ZDR 資格、是否符合 Private Retention with PSP 與 Safety Retention 資格。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Endpoint Data used for training Abuse monitoring retention Application state retention Zero Data Retention eligible Private Retention with PSP and Safety Retention eligible"
+    },
+    {
+      "fact": "2026-09-23 重查，Agents API 的端點 /v1/agents 在資格表上仍是「ZDR 資格：No」，且 Private Retention with PSP 與 Safety Retention 也是 No；該列的應用狀態保存期是「Until deleted」、濫用監控 30 天。這與本站既有的 Agents API 那篇一致，PSP 沒有改變這一格。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "/v1/agents No 30 days Until deleted No No"
+    },
+    {
+      "fact": "PSP 在資料控制文件裡的定位：讓 OpenAI 能做自動化安全監控，同時保住 ZDR 的保護；本頁列出的端點與功能限制仍然適用。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "enables OpenAI to perform automated safety monitoring while preserving Zero Data Retention protections. Endpoint and feature limitations listed on this page still apply."
+    },
+    {
+      "fact": "用 PSP 的客戶必須自己架設客戶控制的儲存空間，並符合開發者指南寫的額外技術與營運要求——不是後台按一個開關。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Customers using Zero Data Retention with Private Safety Processing must configure customer-controlled storage and meet additional technical and operational requirements"
+    },
+    {
+      "fact": "ZDR／MAM 有兩個文件上寫明的收回條款（Private Retention with PSP、Safety Retention）：OpenAI 保留把特定模型對特定客戶取消 ZDR／MAM 資格的權利，會事先以書面通知受影響客戶。公告頁完全沒有提到這件事。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we reserve the right to make models ineligible for Zero Data Retention or Modified Abuse Monitoring for specific customers, as notified in advance to the impacted customers in writing."
+    },
+    {
+      "fact": "CSAM 例外在資料控制文件也再寫一次，而且涵蓋 ZDR、Modified Abuse Monitoring 與 Private Retention with PSP 三種設定：分類器判定可能是 CSAM 的圖片仍會保留供人工審查。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "If the classifier detects potential CSAM content, the image will be retained for manual review, even if Zero Data Retention, Modified Abuse Monitoring, or Private Retention with PSP is enabled."
+    },
+    {
+      "fact": "另一個具體限制：/v1/videos 端點目前對 MAM 或 ZDR 的請求是被擋住的，要用得把該專案的保留設定改成 None。",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "is_vendor_claim": true,
+      "verbatim_quote": "is currently blocked for MAM or ZDR requests"
+    },
+    {
+      "fact": "開發者指南對 PSP 的一句話定義：在 OpenAI 不保留客戶提示與回覆的前提下，做離線的自動化安全審查。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ZDR with PSP enables offline, automated safety review without OpenAI retaining customer prompts or responses."
+    },
+    {
+      "fact": "三項原則之一：客戶內容存在客戶控制的儲存空間。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Customer content is stored in customer-controlled storage."
+    },
+    {
+      "fact": "三項原則之二（無人工審閱）：安全審查不得成為 OpenAI 人員閱讀受保護客戶內容的新管道；加密內容在一個關閉人員存取、具硬體證明的安全執行環境裡解密。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Encrypted customer content is decrypted in an approved, hardware-attested safety runtime that disables human access."
+    },
+    {
+      "fact": "離開 PSP 受保護審查流程的明文資料只有兩類：範圍受限的安全訊號，以及操作中繼資料。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Only bounded safety signals and operational metadata leave the PSP protected review in plaintext."
+    },
+    {
+      "fact": "三項原則之三（僅供安全用途）：存在客戶儲存空間的內容不得用於訓練模型，也不得提供給 OpenAI 內部其他團隊或其夥伴。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Customer content cannot be used to train models or be made available to other groups within OpenAI or its partners."
+    },
+    {
+      "fact": "被挑出來留存審查，不等於已經違規：文件明寫「referral 不構成政策違規的認定」。挑選方式是安全分類器的 referral 或經核准的抽樣政策。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "A referral does not establish a policy violation."
+    },
+    {
+      "fact": "OpenAI 手上留的是什麼：一份含操作中繼資料與儲存位置參照的索引，不是內容副本。加密與寫入是非同步的，不會卡住推論。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI keeps an index with operational metadata and a storage reference, not a copy of the content."
+    },
+    {
+      "fact": "保存期是 30 天，而且是寫進客戶自己的區域雲端儲存空間（TTL 30 天）；客戶端的生命週期規則也被要求不得提早刪除這些紀錄。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ZDR with PSP encrypts the records and writes them to your regional cloud storage with a TTL of 30 days."
+    },
+    {
+      "fact": "每一筆留存在客戶儲存空間的紀錄都是雙層加密：內層是 OpenAI 管理的 HPKE，把解密限制在授權的安全審查執行環境。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI-managed HPKE encryption: The inner encryption layer restricts decryption of customer content to the authorized Safety Review Runtime."
+    },
+    {
+      "fact": "外層才是客戶自管的 Enterprise Key Management（EKM）：啟用 EKM 時，OpenAI 的內層解密金鑰不足以解開紀錄，還需要客戶的金鑰授權。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "OpenAI’s inner decryption key is not enough to decrypt a stored record when EKM is enabled: your customer-managed key authorization is also required."
+    },
+    {
+      "fact": "EKM 是官方「建議」啟用，不是強制條件——所以「金鑰由客戶控制」這句話只有在客戶自己開了 EKM 時才完全成立。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We recommend enabling EKM for this additional control."
+    },
+    {
+      "fact": "撤銷金鑰授權的效果有界線：能阻止之後解密已留存的紀錄，但不會刪除那些紀錄，也不會推翻已完成的處理。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Revoking that authorization prevents decryption of retained records, but does not delete them or undo completed processing."
+    },
+    {
+      "fact": "要用 PSP，客戶得把自己的 AWS S3 bucket 或 Azure Blob container 接到一個 OpenAI 專案，再由組織管理員在後台或 Management API 註冊並驗證。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Connect your own AWS S3 bucket or Azure Blob container to an OpenAI project."
+    },
+    {
+      "fact": "開始前的第一步是人工核准：要請你的 OpenAI 聯絡窗口核准你的組織。沒有自助開通。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ask your OpenAI contact to approve your organization."
+    },
+    {
+      "fact": "客戶要持續承擔的責任被列成五條，其中一條是把加密紀錄至少留 30 天，另外還要維持儲存與金鑰授權、修好設定問題、回應安全疑慮通知。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Retain encrypted records for at least 30 days"
+    },
+    {
+      "fact": "退場也不是刪掉設定就算：文件寫刪除儲存註冊不會刪掉雲端物件，也不等於完成下架流程，要先聯絡支援。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Deleting a storage registration doesn\u2019t delete cloud objects or complete offboarding."
+    },
+    {
+      "fact": "後台顯示 Validated 只代表某一次檢查通過，不保證儲存空間即時連線正常；Refresh 也不會重跑驗證。",
+      "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Validated records a successful check, not continuous storage health."
+    }
+  ],
+  "not_said": [
+    "公告頁沒有列出任何一個模型名稱，也沒有說哪些模型符合 ZDR 資格。標題雖然寫 frontier models，但四份來源裡沒有任何一份把 ZDR 資格按模型列出（唯一的例外是資料控制文件的 /v1/images 一節列了相容 ZDR 的影像模型）。不可以寫「GPT-6 系列可用 ZDR」這類句子。",
+    "公告頁沒有寫 PSP 或 ZDR 要不要另外收費，也沒有寫客戶自備 S3／Blob 儲存空間的成本由誰負擔。四份來源都沒有價格。",
+    "公告頁沒有提到 ChatGPT 的任何方案（Plus、Business、Enterprise、Edu），整篇只談 API 客戶；標籤也只有 2026 與 API Platform。不可以寫成「ChatGPT 用戶的隱私升級」。",
+    "沒有寫分階段推出的階段怎麼分、下一階段是誰、什麼時候全面開放。09-22 的更新只寫 with access expanding in phases。",
+    "沒有寫台灣、亞洲或任何地區的供應狀況；公告頁完全沒有提資料落地（data residency）。資料落地是另一份文件的另一組規則，不要混為一談。",
+    "沒有任何第三方稽核、認證或外部驗證的佐證；四份來源裡沒有審計報告。所有「人員拿不到內容」的敘述都是 OpenAI 自己的說法。",
+    "公告頁沒有寫「安全訊號」具體有哪些欄位、分幾類；開發者指南也只寫是 predefined、bounded 的訊號與 output schema，沒有列出清單。",
+    "公告頁沒有提到 Private Retention with PSP（前身 Eyes Off）與 Safety Retention 這兩個把模型對特定客戶取消 ZDR／MAM 資格的條款；那是資料控制文件才有的內容。",
+    "公告頁沒有寫 PSP 在被標記之後 OpenAI 會採取什麼處分、申訴要多久、有沒有救濟時限，只寫訊號「可用來判斷是否需要執法動作」。",
+    "沒有寫 PSP 是否適用於 ChatGPT Enterprise 或任何非 API 的產品，也沒有寫 Agents API 會不會因為 PSP 而變成 ZDR 可用（以 2026-09-23 查核，資料控制表上 /v1/agents 仍是 No）。",
+    "開發者指南沒有印出「最後更新日」，所以不能寫「這份文件更新於某日」；只能寫本站的查核日。",
+    "四份來源都沒有說 ZDR 等於「OpenAI 完全不保留任何資料」：濫用監控紀錄以外的應用狀態（application state）在不符資格的端點上仍可能保存，CSAM 圖片仍會保留，PSP 的加密紀錄也會在客戶自己的儲存空間留 30 天。",
+    "沒有寫客戶若不接受 PSP 會怎樣（能不能繼續用原本的 ZDR、還是會失去某些模型），四份來源都沒有這個分支。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "PSP 技術白皮書已經發布，標示「Published September 22, 2026」，共 36 頁，目錄含架構、加密、機密運算、界線、客戶可見性與 Appendix A 等節。",
+      "seen_where": "https://openaiassets.blob.core.windows.net/$web/pdf/c7284810-2252-462f-803e-075b0c95bccb/psp-whitepaper.pdf（2026-09-23 08:27 台北以同一支 UA 抓取，HTTP 200、application/pdf、14,146,661 bytes；PDF 中繼資料 CreationDate 與 ModDate 都是 D:20260922122511Z；用系統 python 的 pypdf 抽出第 1 頁逐字為 Private Safety Processing Overview / Technical White Paper / Published September 22, 2026）。連結來自開發者指南本身，不是猜的網址。存成 _raw\\...\\psp-whitepaper.pdf。",
+      "why_excluded": "sources[] 上限四條，已被公告頁、資料控制文件、PSP 開發者指南與官方 RSS 佔滿，白皮書的內容在開發者指南裡都有對應敘述，邊際資訊少。若協調者要把「白皮書 9 月 22 日發布、兌現了公告的承諾」寫進正文，必須把這條換進 sources[]（建議換掉 RSS 那條，並把事件時刻的依據寫在 event_date_basis）。未換進來之前，正文不得寫白皮書的頁數、出版日或任何內容。"
+    },
+    {
+      "claim": "PSP 的安全審查在 Azure／AWS 的機密運算環境裡跑、金鑰保管庫設定、attestation 與 secure key release 的細節。",
+      "seen_where": "白皮書目錄第 18–19 頁（Confidential Computing、Attestations、Secure Key Release、Key Vault Configuration）。",
+      "why_excluded": "只讀到目錄與前三頁，沒有逐字讀那幾節的正文；而且這是給資安工程師的細節，不是本站讀者需要的。正文只能寫開發者指南逐字寫過的「hardware-attested safety runtime that disables human access」，不得再往下推論用的是哪家雲、哪種晶片或哪種認證。"
+    },
+    {
+      "claim": "ZDR 的申請門檻（例如最低用量、企業規模、產業別）與核准所需時間。",
+      "seen_where": "資料控制文件只寫 Eligible customers、prior approval by OpenAI、acceptance of additional requirements，以及請洽業務團隊。",
+      "why_excluded": "官方沒有公布門檻或時程。正文只能寫「要事先經 OpenAI 核准、管道是聯絡業務團隊」，不得估計或暗示一般開發者能不能申請到。"
+    },
+    {
+      "claim": "OpenAI 提供儲存（content stored on OpenAI infrastructure, encrypted with customer-controlled keys）這個選項目前的狀態。",
+      "seen_where": "公告頁 2026-08-19 寫 We are also developing an option…；今天的 PSP 開發者指南寫的是 Customer content is stored in customer-controlled storage，並要求客戶自備 AWS S3 或 Azure Blob。",
+      "why_excluded": "兩份官方文件的描述不一致（公告說在開發、指南的操作流程只給自備儲存一條路），而且沒有任何一頁寫這個選項有沒有上線。正文要寫成「公告當時寫成開發中的選項；以 2026-09-23 查核，開發者指南的設定流程只寫自備 AWS S3 或 Azure Blob」，不得二選一當成事實。"
+    },
+    {
+      "claim": "Glean 的資安長 Sunil Agrawal 對這件事的評語（公告頁上有一段引述）。",
+      "seen_where": "公告頁抽出的正文最後一段：「Enterprise AI adoption depends solely on customer control of data…」—Sunil Agrawal, Chief Information Security Officer, Glean。",
+      "why_excluded": "這是合作客戶的推薦語，屬於行銷素材，本站不轉述客戶對供應商的正面評價。四個客戶名稱（Glean、Databricks、Abridge、Microsoft）可以寫，但要寫明是 OpenAI 頁面自己列的合作客戶，不得引述評語。"
+    },
+    {
+      "claim": "把 PSP 的 AWS／Azure 設定步驟（bucket 生命週期規則、IAM 信任政策、Azure 角色指派、OpenAI 的 principal ARN 與應用程式 ID）寫進正文。",
+      "seen_where": "PSP 開發者指南的 Set Up and Verify Storage 一節，含具體的 ARN 與 application id。",
+      "why_excluded": "本站讀者是一般讀者，不是雲端管理員；而且照抄識別碼等於把一份操作手冊搬過來，會過期也容易被誤用。正文只能寫到「要組織管理員用自己的雲端帳號建立儲存空間、設定 30 天生命週期規則、註冊後驗證通過才會生效」這個層級，不得列出任何 ARN、應用程式 ID 或 curl 指令。"
+    }
+  ],
+  "editorial_brief": "主軸一句話：ZDR 不是「什麼都不留」，而是「留什麼、留在誰家、誰看得到」被重新畫了一條線——PSP 就是這條線的新版本。正文要把四件事講清楚，而且都要有台灣讀者的落點。(1) 事件與時差：台北時間 2026 年 8 月 20 日凌晨 3 點發布，OpenAI 頁面自己印的是 8 月 19 日，兩個日期都寫，並說明這是同一則公告的時區差；同一頁在 9 月 22 日追加更新說已開始分階段推給 API 客戶，更新日要另外寫明並歸因。(2) ZDR 現在涵蓋什麼：這是 API 客戶層級（組織或專案）的控制，不是 ChatGPT 的功能；要事先經 OpenAI 核准、管道只有聯絡業務團隊；資格是逐個端點列的而不是逐個模型，聊天、回應、嵌入、語音、影像生成等端點列為符合資格，而對話、討論串、向量庫、檔案、批次、影片與代理端點列為不符合。(3) PSP 是什麼：逐字翻 OpenAI 自己的定義句——設計目的是在不讓 OpenAI 人員接觸底層內容的前提下，辨識跨多次互動的樣式；機制是加密紀錄寫進客戶自己的雲端儲存、在關掉人員存取的硬體證明環境裡自動審查、只回傳範圍受限的安全訊號與操作中繼資料；被挑出來審查不等於已違規。(4) 界線與代價：客戶要自備 AWS S3 或 Azure Blob、要把紀錄至少留 30 天、要維持金鑰授權，撤銷授權能擋住之後解密但不會刪掉紀錄；CSAM 圖片是明文的例外；另有兩個公告頁沒提、但文件寫著的收回條款（Private Retention with PSP 與 Safety Retention），OpenAI 保留把特定模型對特定客戶取消 ZDR 資格的權利。讀者落點：台灣的個人使用者現在什麼都不用做，這是企業與開發團隊在簽約、做資安評估時才會碰到的東西；真正可操作的是「怎麼自己去官方頁查現況」——資料控制文件的端點表是活的，今天的 No 明天可能變。與 Agents API 那篇的分工見 overlaps_existing_article，該篇已經解釋過 ZDR 的基本定義與 Agents API 的取捨，本篇用一句帶過並連過去，重點放在 PSP 這個新機制。",
+  "must_not_write": [
+    "不可以把這件事寫成「最近」「本週」「日前」「近日」。事件日是 2026 年 8 月 20 日（台北），距離查核日一個月。要交代為什麼現在才寫，只准一句：「這一則在發布當時沒有排進本站的頭條批次，這一篇補上」。",
+    "不可以只寫 8 月 19 日或只寫 8 月 20 日。OpenAI 頁面印的是 August 19, 2026，官方 RSS 的時刻是 19:00 GMT，換算台北是 8 月 20 日凌晨 3 點；正文要同時寫出兩個日期並說明是時區差。",
+    "不可以把 2026 年 9 月 22 日的更新寫成事件日或發布日。那是同一頁後來追加的更新區塊，要寫明「這一頁在 9 月 22 日追加更新」並歸因。",
+    "不可以寫 ZDR 等於「OpenAI 完全不留資料」「資料不出門」。四份來源都不支持：不符 ZDR 資格的端點仍可能保存應用狀態、CSAM 圖片仍會保留供人工審查、PSP 的加密紀錄會在客戶自己的儲存空間留 30 天。",
+    "不可以寫「OpenAI 看不到內容」。官方原文限定在 OpenAI personnel（人員），而且明講有範圍受限的安全訊號與操作中繼資料會以明文離開審查流程。要寫成「OpenAI 表示人員拿不到內容，離開的只有受限的安全訊號與操作中繼資料」。",
+    "不可以寫 PSP 已經全面開放或人人可用。公告當時是 preview、只與早期客戶測試；09-22 的更新寫的是分階段推給 API 客戶（with access expanding in phases），沒有完成日。狀態一律寫成「預覽、分階段開放」。",
+    "不可以寫這是 ChatGPT 使用者的隱私升級，或寫成 Plus／Business／Enterprise 方案的功能。公告全篇只談 API 客戶，標籤只有 2026 與 API Platform。",
+    "不可以列出「哪些模型支援 ZDR」。四份來源沒有按模型列的 ZDR 資格表（只有 /v1/images 一節列了相容的影像模型）。標題的 frontier models 不等於可以點名 GPT-6 或任何型號。",
+    "不可以寫「金鑰完全由客戶掌握」而不加條件。開發者指南寫的是兩層加密：內層是 OpenAI 管理的 HPKE，外層才是客戶自管的 EKM，而且 EKM 是官方「建議」啟用、不是強制。要寫明兩層與 EKM 是建議項。",
+    "不可以把 30 天寫成「OpenAI 保留 30 天」。PSP 的 30 天是紀錄寫進客戶自己的區域雲端儲存空間的 TTL，客戶被要求不得提早刪；OpenAI 手上留的是索引與操作中繼資料，不是內容副本。API 濫用監控紀錄預設最多 30 天是另一件事，兩者不要混寫。",
+    "不可以寫「被 PSP 挑中就是違規」。開發者指南逐字寫 A referral does not establish a policy violation。",
+    "不可以把 AWS／Azure 的設定步驟寫成教學，也不可以抄任何 ARN、應用程式 ID、bucket 名稱或 curl 指令進正文。只寫到「要組織管理員自備儲存空間、設 30 天生命週期規則、註冊後要驗證通過」這個層級。",
+    "不可以把後台顯示 Validated 說成連線正常。開發者指南明寫 Validated 只代表某次檢查通過，不保證即時連線健康，Refresh 也不會重跑驗證。",
+    "不可以重寫本站既有的〈OpenAI Agents API 公開 beta〉那篇的內容：ZDR 的基本定義、濫用監控預設 30 天、Agents API 的計費與資料落地取捨都已經寫過。本篇提到 Agents API 時只能是一句「以 2026 年 9 月 23 日查核，資料控制表上 /v1/agents 的 ZDR 欄位仍是 No」，並連到那篇。",
+    "不可以寫台灣的供應情形、價格或上市時間。四份來源都沒有；要寫就寫「官方未說明」。",
+    "不可以寫「業界首創」「唯一」「最安全」「從未」。官方沒有這樣寫，本站也沒有實測。",
+    "不可以把 OpenAI 的說法當成已驗證的事實。四份來源裡沒有任何第三方稽核，所有機制描述都要歸因（「OpenAI 表示」「依 OpenAI 的開發者文件」）。",
+    "不可以引述 Glean 資安長在公告頁上的推薦語，也不可以寫成第三方背書。四個客戶名稱可以寫，但要寫明是 OpenAI 自己列的合作客戶。",
+    "不可以寫成投資或採購建議，不做估值判斷，不比較各家供應商誰比較值得買。",
+    "不可以描述任何商標圖示或介面截圖；後台路徑可以用文字寫（Settings → Organization → Data controls），但不要描述畫面長相。"
+  ],
+  "live_data_warnings": [
+    "公告頁是活文件：2026-08-19 發布後已經疊了一次 2026-09-22 的更新（把「9 月會開始推出」改成「已在分階段推出」）。撰稿與兩輪查核當天都要重抓，若又多了一則更新，正文與 sources 的 checked_on 都要跟著改。",
+    "本次抓到的 bytes 是 423,863，探索代理 2026-09-22 記的是 452,080。差異在 Next.js 的 RSC payload 與導覽外殼，不是正文改動（公告內文與 09-22 更新區塊逐字比對過都在）。查核者不要拿 bytes 不同當成頁面被改的證據，要比對正文。",
+    "developers.openai.com 的兩份文件都沒有印出最後更新日，屬於隨時會變的活文件。端點資格表（尤其 /v1/agents 那一列的 No）是 2026-09-23 的快照，正文寫這一格時一定要帶查核日。",
+    "資料控制文件裡的模型清單（資料落地各區域支援的 snapshot、/v1/images 相容 ZDR 的影像模型）會隨新模型發布而變，本篇不要抄任何型號清單。",
+    "公告頁底部那排合作客戶（Glean、Databricks、Abridge、Microsoft）是版面素材，隨時可能增減；要寫就寫明是查核當天頁面上列的四家。",
+    "PSP 技術白皮書的網址帶一段 UUID（c7284810-…），OpenAI 換版時網址可能改；正文不要印這個網址，要讀者自己查就指向開發者指南。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "ai-news-openai-agents-api-20260910",
+      "note": "display_order 145、news_date 2026-09-10，本篇的第二個結尾連結。這是最重要的重疊：該篇已經寫過「ZDR 是什麼」的完整定義（API 使用預設會產生濫用監控紀錄、可能含提示與回應、預設最多保存 30 天、經 OpenAI 事先核准的客戶可用 ZDR 把客戶內容排除在外），也已經寫死 Agents API 的兩個限制——資料落地目前只支援美國、不支援 ZDR，而且「選擇自架沙箱並不會讓 Agents API 符合 ZDR 資格」；該篇的圖解四格就是「落地只支援美國、不支援 ZDR、監控紀錄 30 天、狀態保存到刪除」。該篇的 sources 第四條與本篇第二條是同一份文件（https://developers.openai.com/api/docs/guides/your-data）。分工：ZDR 的基本定義與 Agents API 的取捨都歸那篇，本篇不重寫；本篇只用一句寫「以 2026-09-23 重查，資料控制表上 /v1/agents 的 ZDR 欄位仍是 No，PSP 沒有改變這一格」，其餘連過去。"
+    },
+    {
+      "slug": "ai-news-gpt-live-1-api-20260910",
+      "note": "display_order 157。已寫 GPT-Live 1 的錄音規則，並提過「如果專案啟用了 Zero Data Retention（資料零保留），錄音設定一律視為關閉，下載與分叉也就不可用」、留存的錄音 30 天到期。本篇不要再舉語音端點當 ZDR 的例子，避免與那篇的 FAQ 重覆。"
+    },
+    {
+      "slug": "ai-news-astra-for-law-20260917",
+      "note": "display_order 165。寫 Astra for Law 時提過「API 端零資料保留，ChatGPT Enterprise 用量預設不納入人工審閱」，是把 ZDR 當成合資格事務所的條款之一帶過，沒有解釋機制。本篇可以不提 Astra；若要提，只能寫成「同一套 ZDR 條款也出現在其他公告」，不要重述法律工具那篇的內容。"
+    },
+    {
+      "slug": "ai-news-kimi-k3-bedrock-20260918",
+      "note": "display_order 170。寫 AWS Bedrock 上的 Kimi K3 時，把 AWS 的「推論請求一律零資料保留、零操作員存取」當成廠商宣稱照實轉述，並註明四份來源沒有第三方稽核。那是 AWS 的說法、不是 OpenAI 的 ZDR，兩者不可混為一談；本篇不要拿它做橫向比較。"
+    },
+    {
+      "slug": "ai-news-firefox-smart-window-mistral-20260916",
+      "note": "display_order 162。提過 Mistral 等合作夥伴同意採用「零資料保留」的做法，並指出那三頁沒有寫涵蓋範圍與保留時間。那是另一家公司對另一個產品的說法，本篇不要引用，也不要寫成「各家都有 ZDR」。"
+    },
+    {
+      "slug": "ai-news-chatgpt-storage-scale-20260911",
+      "note": "display_order 158。寫 OpenAI 的 Habitat 儲存架構，來源之一同樣是 https://openai.com/news/rss.xml。主題是基礎設施規模，不是資料保留政策，內容不重疊；但兩篇都用同一個 RSS 取事件時刻，做法一致可互相佐證。"
+    },
+    {
+      "slug": "notion-ai-guide / ai-note-taking-workflow / openrouter-multi-model-api / mistral-le-chat-guide / ollama-with-code-editors",
+      "note": "五篇常青指南都提過「供應商採零資料保留」或 ZDR（Notion 寫 Enterprise 方案另加 LLM 供應商零資料保留、OpenRouter 有 ZDR 文件、Mistral 有 ZDR 說明、Cursor 自備金鑰時 ZDR 政策不適用）。都是別家產品的政策敘述，與本篇的 OpenAI API ZDR 不同；本篇不要引用，也不要把它們寫成同一套規則。",
+      "is_news": false
+    },
+    {
+      "slug": "（全站 grep 結果）",
+      "note": "2026-09-23 對 apps/api/app/guides/content/ 全目錄 grep「Private Safety Processing」得到 0 筆，grep「零資料保留｜Zero Data Retention｜ZDR」得到上列十篇。也就是說 PSP 這個機制本站從未寫過，這是本篇唯一不重疊的核心；ZDR 的定義則已被 Agents API 那篇寫滿，務必不要重寫。",
+      "is_news": false
+    }
+  ],
+  "second_link": {
+    "slug": "ai-news-openai-agents-api-20260910",
+    "url": "https://mokaair.com/zh-TW/life/ai-news-openai-agents-api-20260910",
+    "text": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置",
+    "verified": true,
+    "verification_note": "2026-09-23 讀 apps/api/app/guides/content/ai-news-openai-agents-api-20260910.json，locales['zh-TW']['title'] 逐字為「OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置」（47 字），display_order 145、news_date 2026-09-10、topics ai/software/ai-news。docs/news-2026-batch-4/check_article.py 的 RELATED 第 171 行把 ai-news-openai-zero-data-retention-20260820 指向這個 slug，與 ASSIGNMENTS-44.md 第 5 列一致。"
+  },
+  "corrections_applied": [],
+  "hero_label": "私密安全處理預覽",
+  "diagram": {
+    "title": "內容留客戶端，只回訊號",
+    "caption": "圖解：依 OpenAI 公告與開發者文件整理的私密安全處理四個環節——加密紀錄寫進客戶自己的雲端儲存並留 30 天、在關閉人員存取的執行環境裡自動審查、只回傳範圍受限的安全訊號、金鑰授權由客戶掌握（要另外開啟 EKM）。2026 年 9 月 23 日查核。",
+    "nodes": [
+      ["客戶自控儲存", "加密紀錄留 30 天"],
+      ["安全執行環境", "自動解密、人員進不去"],
+      ["有限安全訊號", "只回傳活動類型"],
+      ["客戶掌握金鑰", "要另開 EKM，授權可撤銷"]
+    ]
+  },
+  "factcheck": {
+    "checked_by": "round-1 independent factcheck agent (Claude Opus 5)",
+    "checked_on": "2026-09-23",
+    "method": "把內容包拆成 107 條可查主張（title、description、第一、二段、summary 五條、五節正文每一句、表格 12 格與 caption、圖說、FAQ 五題、callout、兩個結尾連結文字、四條 sources、日期一致性），再用 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`（同主機間隔 ≥2 秒、請求裡沒有任何個人資料）在 2026-09-23 09:11–09:12（台北）重抓四條來源並讀 body：公告頁 HTTP 200／423,817 bytes（抽出 8,344 字元正文，逐字含 August 19, 2026、09-22 更新區塊、CSAM 註腳、四家客戶），資料控制文件 200／615,506 bytes（.md 版 79,683 bytes，含 27 列端點資格表與資料落地表），PSP 開發者指南 200／460,634 bytes（.md 版 24,849 bytes，含三項原則、雙層加密、設定與客戶責任），官方 RSS 200／744,049 bytes／1,219 個 item。兩份開發者文件另抓同路徑 .md 當乾淨對照，bytes 與研究紀錄所記完全相同。第二個結尾連結與索引連結的文字用程式對目標內容包的 zh-TW title 做逐字比對，兩條都相同。",
+    "claims_checked": 107,
+    "changes": [
+      {
+        "claim": "標題把 ZDR 說成「延伸到前沿模型」",
+        "before": "OpenAI 把零資料保留延伸到前沿模型：內容留在客戶自己的雲端，只回傳訊號",
+        "after": "OpenAI 為前沿模型提供零資料保留：內容留在客戶自己的雲端，只回傳訊號",
+        "note": "公告頁自己的標題是 Offering Zero Data Retention for frontier models，內文寫的是 Private Safety Processing is designed so we can continue to offer ZDR（為了「繼續」提供 ZDR）。四份來源沒有任何一份把 ZDR 資格按模型列出，「延伸到前沿模型」會讀成模型層級的資格變動，正是 not_said 與 must_not_write 第 8 條禁止的推論。研究紀錄的 title 已同步。",
+        "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+      },
+      {
+        "claim": "「有些嚴重風險只有把多次互動放在一起看才看得出來」（第一段與第一節各一次）",
+        "before": "有些嚴重風險只有把多次互動放在一起看才看得出來",
+        "after": "有些嚴重風險可能只有把多次互動放在一起看才看得出來",
+        "note": "原文是 some serious risks may only become visible across multiple interactions，may 被刪掉會把「可能」寫成「一定」。",
+        "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+      },
+      {
+        "claim": "公告當時的時程預告",
+        "before": "OpenAI 表示計畫 9 月推出並發布技術白皮書",
+        "after": "OpenAI 表示計畫 9 月開始推出並發布技術白皮書",
+        "note": "原文是 We plan to start rolling out Private Safety Processing, and share a technical white paper, in September，start 被刪掉會讀成 9 月就全部推完。",
+        "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+      },
+      {
+        "claim": "「公告全篇沒有提到 ChatGPT 的任何方案」（summary 第二條與第二節第一段）",
+        "before": "公告全篇沒有提到 ChatGPT 的任何方案",
+        "after": "公告內文沒有提到 ChatGPT 的任何方案",
+        "note": "公告頁的頁尾導覽逐字列有 ChatGPT Business、ChatGPT Enterprise、ChatGPT for Education 三個連結（頁面外殼，不是公告內文）。否定句要限縮在內文才站得住。",
+        "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+      },
+      {
+        "claim": "FAQ 第一題：「公告頁與資料控制文件完全沒有出現 Plus、Business、Enterprise 或 Edu 這些 ChatGPT 方案」",
+        "before": "不是。四份官方來源都只談 API 客戶，公告頁與資料控制文件完全沒有出現 Plus、Business、Enterprise 或 Edu 這些 ChatGPT 方案；",
+        "after": "不是。公告內文與兩份開發者文件都只談 API 客戶，沒有出現 Plus、Business、Enterprise 或 Edu 這些 ChatGPT 方案；",
+        "note": "同上：公告頁的頁尾有 ChatGPT Business／Enterprise／for Education。兩份開發者文件今天全文 grep「ChatGPT」為 0 筆，這一半是對的。",
+        "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+      },
+      {
+        "claim": "「四份官方來源都沒有提到台灣、亞洲或任何特定地區」（第五節第一段與 FAQ 第五題）",
+        "before": "四份官方來源都沒有提到 ChatGPT 的任何方案，也沒有提到台灣、亞洲或任何特定地區。",
+        "after": "公告與兩份開發者文件從頭到尾只談 API 客戶，沒有出現任何 ChatGPT 方案，也沒有出現台灣。",
+        "note": "資料控制文件的 Data residency controls 一節逐列印出美國、歐洲（EEA＋瑞士）、澳洲、加拿大、日本、印度、新加坡、南韓、英國、阿聯十個區域與各自的網域前綴，PSP 指南也寫 approved US or EU storage region，「沒有提到亞洲或任何特定地區」與來源直接相反。台灣則是三份文件都查無（各 0 筆），改寫成只講台灣。FAQ 第五題同句一併改。",
+        "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+      },
+      {
+        "claim": "端點資格表上「符合 ZDR 資格」的那幾格",
+        "before": "聊天、回應、嵌入與影像生成等端點列為符合 ZDR 資格，",
+        "after": "聊天、回應、嵌入與影像生成等端點列為符合 ZDR 資格（多數還註明另有限制），",
+        "note": "表上 /v1/chat/completions、/v1/responses、/v1/images/generations、/v1/images/edits 四格印的是 Yes, see below for limitations，只有 /v1/embeddings 是單獨的 Yes。原句把但書刪掉了。",
+        "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+      },
+      {
+        "claim": "加密內容在哪裡解密",
+        "before": "加密內容只在一個經核准、關閉人員存取的硬體證明安全執行環境裡解密",
+        "after": "加密內容在一個經核准、關閉人員存取的硬體證明安全執行環境裡解密",
+        "note": "指南的原句是 Encrypted customer content is decrypted in an approved, hardware-attested safety runtime that disables human access，沒有 only；別處講唯一性時用的是 is designed to be the only workload that can decrypt，是設計目標而不是斷言。",
+        "source_url": "https://developers.openai.com/api/docs/guides/private-safety-processing"
+      },
+      {
+        "claim": "雙層是加密還是金鑰授權（summary 第四條與第四節第二段）",
+        "before": "金鑰授權分兩層，不是客戶完全獨力掌握",
+        "after": "加密分兩層，不是客戶完全獨力掌握",
+        "note": "指南寫的是 Each stored record is doubly encrypted（內層 OpenAI-managed HPKE、外層客戶自管 EKM）。EKM 沒開時只有一層，說成「金鑰授權分兩層」與同篇 FAQ 第四題的「加密分兩層」也不一致。",
+        "source_url": "https://developers.openai.com/api/docs/guides/private-safety-processing"
+      },
+      {
+        "claim": "表格 CSAM 那一列說的「三種設定」",
+        "before": "三種設定都一樣：疑似兒少性剝削素材的圖片仍保留供人工審查",
+        "after": "不論哪一種設定：疑似兒少性剝削素材的圖片仍保留供人工審查",
+        "note": "資料控制文件列舉的三種是 Zero Data Retention、Modified Abuse Monitoring、Private Retention with PSP，不是表格自己的三列（MAM、ZDR、ZDR 搭配 PSP）。公告頁的註腳則寫 even in Zero Data Retention deployments，所以「不論哪一種設定」兩份來源都撐得住。",
+        "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+      },
+      {
+        "claim": "圖說第四個環節「金鑰授權由客戶掌握」",
+        "before": "只回傳範圍受限的安全訊號、金鑰授權由客戶掌握。2026 年 9 月 23 日查核。",
+        "after": "只回傳範圍受限的安全訊號、金鑰授權由客戶掌握（要另外開啟 EKM）。2026 年 9 月 23 日查核。",
+        "note": "外層的客戶自管金鑰是 EKM，指南寫的是 We recommend enabling EKM for this additional control（建議、非強制）；沒開 EKM 時只剩 OpenAI 管理的 HPKE 內層。研究紀錄的 diagram.caption 與第四格節點同步改成「要另開 EKM，授權可撤銷」。",
+        "source_url": "https://developers.openai.com/api/docs/guides/private-safety-processing"
+      },
+      {
+        "claim": "兩個收回條款只寫了「取消資格」，沒寫後果",
+        "before": "OpenAI 保留取消特定客戶特定模型零資料保留資格的權利，會事先書面通知。",
+        "after": "OpenAI 保留取消特定客戶特定模型零資料保留資格的權利，會事先書面通知；真的走到那一步，內容會改留在 OpenAI 的加密紀錄裡，後者還可能對疑似違規的內容做人工審閱。",
+        "note": "Private Retention with PSP 那一節寫 customer content will be retained in encrypted abuse monitoring logs in OpenAI-managed infrastructure；Safety Retention 那一節寫 we may retain and human review customer content when using these models that our classifiers detect as potentially violating our Usage Policies or your agreement。這是全篇「人員拿不到內容」的唯一一個文件寫明的例外，原稿漏掉。",
+        "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+      },
+      {
+        "claim": "第一段的歸因密度（讀者優先規則：開頭段最多一個歸因語）",
+        "before": "官方頁面印的發布日期是美國時間 2026 年 8 月 19 日",
+        "after": "這一頁印的發布日期是美國時間 2026 年 8 月 19 日",
+        "note": "第一段原本有「官方頁面印的」與「OpenAI 表示」兩個歸因語。頁面印了什麼是可驗證的事實，不需要歸因語；「OpenAI 表示」留著（廠商宣稱必須歸因）。",
+        "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+      },
+      {
+        "claim": "第二段把查證流水帳寫進正文，並用「文中」指涉自己",
+        "before": "這一篇的資料在 2026 年 9 月 23 日查核，讀的是 OpenAI 這則公告、兩份開發者文件與官方新聞 RSS；這一則在發布當時沒有排進本站的頭條批次，這一篇補上。機制的說法一律以官方原文為準，本站沒有獨立驗證或測試文中提到的任何數字，也不是安全稽核報告。",
+        "after": "這一篇的資料在 2026 年 9 月 23 日查核；這一則在發布當時沒有排進本站的頭條批次，這一篇補上。機制的說法一律以 OpenAI 的官方原文為準，沒有獨立驗證或測試，也不是安全稽核報告。",
+        "note": "DELTA-4-7 第 14 條：查證紀律不要寫進正文，來源清單讀者在 sources 就看得到；「文中」是指涉自己的寫法，規格要求用「這一篇」。查核日留著（自檢要求前兩段出現）。",
+        "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+      }
+    ],
+    "open_questions": [
+      "與〈OpenAI Agents API 公開 beta〉的重疊：must_not_write 第 14 條寫「ZDR 的基本定義、濫用監控預設 30 天」歸那篇，但本篇第二節仍逐字引了 ZDR 的定義句、也寫了濫用監控預設最多 30 天。查核者判斷這兩句在本篇有獨立用途（定義句是這則公告的核心引文；30 天是為了和 PSP 的 30 天 TTL 做區隔，正文也明講「是兩回事」），所以沒有刪，留給協調者決定要不要再壓縮。Agents API 只在正文被提到一次（/v1/agents 仍是 No），第二個結尾連結是規格要求的結構，不算重述。",
+      "PSP 技術白皮書（2026-09-22 發布）仍在 unverified_or_excluded，沒有進 sources[]，所以正文一個字都沒寫到它。公告頁承諾的「9 月發布白皮書」已經兌現，這是可寫的後續；若協調者要寫，依研究紀錄的規定要把白皮書換進 sources[]（建議換掉 RSS 那條，並把事件時刻依據寫進 event_date_basis）。",
+      "描述與第一段寫「OpenAI 頁面印的是美國時間 8 月 19 日」。頁面本身只印 August 19, 2026、沒有印時區，「美國時間」是從 RSS 的 19:00 GMT 推出來的（當下美東 15:00、美西 12:00，確實還是 8 月 19 日）。推論成立但不是頁面逐字，留給協調者決定要不要改成不帶時區的寫法。",
+      "資料控制文件的 /v1/videos 那一列是 ZDR 資格 No，而且文件另寫 v1/videos is currently blocked for MAM or ZDR requests。正文的不符合清單（對話、討論串、向量庫、檔案、批次）用「等端點」收尾，沒有列到影片；不是錯，但如果協調者想讓清單更貼近表格，影片是最值得補的一格。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-4 第 3 條：事件日 2026-08-20（08-19T19:00Z 換算台北）。今天重抓 RSS 逐字確認 <pubDate>Wed, 19 Aug 2026 19:00:00 GMT</pubDate>，slug 尾碼、news_date 2026-08-20、第一段三者一致，頁面自印的 August 19, 2026 也在正文寫出來並說明是時區差。",
+      "DELTA-4-4 第 2 條：不可寫「最近」「本週」「日前」，補寫理由只准一句。全篇 grep 四個詞都是 0 筆，補寫那一句逐字照規格。",
+      "DELTA-4-6 第 1 條：只做 zh-TW，自檢不帶 --full。",
+      "must_not_write 第 6 條：狀態一律寫成「預覽、分階段開放」；正文與 callout 都照這個寫法，09-22 更新明寫是更新日、不是發布日。"
+    ],
+    "second_round": {
+      "checked_by": "round-2 independent factcheck agent (Claude Opus 5, 1M context); did not write the draft and did not run round 1",
+      "checked_on": "2026-09-23",
+      "method": "自行重抓四條來源（2026-09-23 09:35–09:36 台北，`curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'`，同主機間隔 2 秒，UA／標頭／查詢字串裡沒有任何個人資料）：公告頁 200／423,823 bytes（抽出 8,344 字元正文，與第一輪相同）、資料控制文件 200／615,506 bytes（.md 版 79,683 bytes）、PSP 開發者指南 200／460,634 bytes（.md 版 24,849 bytes）、官方 RSS 200／744,049 bytes／1,219 個 item。四條都讀到正文。範圍：第一輪改動的 17 個表列項目（14 處改）、第一輪新寫進去的那一句、以及確認條目中隨機取的三分之一（33 條），共 51 條主張逐條回一手來源；另外把研究紀錄全部 49 條 verbatim_quote 用程式對今天抓到的正文做連續字串比對（含 `...`／`|` 的逐片段檢查），49 條全部命中。",
+      "claims_checked": 51,
+      "changes": [
+        {
+          "claim": "協調者裁定 1：ZDR 的定義與濫用監控預設 30 天的背景，已由已發布的〈OpenAI Agents API 公開 beta〉涵蓋，壓成一句並帶既有的 article 連結",
+          "before": "第二節第一段整段逐字引 ZDR 定義（英文原句＋中譯）＋第三段句尾「文件也寫明，除非法律要求或為保護服務與第三方而有必要，濫用監控紀錄預設最多保存 30 天——跟後面 PSP 的 30 天保留期是兩回事。」＋第四節後面獨立的 /v1/agents rich_paragraph",
+          "after": "第二節第一段改成一句 rich_paragraph：「零資料保留是 API 客戶層級的控制：OpenAI 承諾請求處理完不留提示與回覆，客戶內容也排除在預設最多留 30 天的濫用監控紀錄外；加上查核到 2026 年 9 月 23 日、資料控制表上 /v1/agents 仍不符資格（私密安全處理沒有改變這一格），這幾件事本站在〈OpenAI Agents API 公開 beta…〉都寫過了。」既有的 article inline 移到這一句；第四節那個獨立段落刪除，第三段句尾的 30 天背景刪除。段數：第二節仍 3 段、第四節從 4 段變 3 段。「預設」「最多」兩個限定詞都留著。",
+          "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+        },
+        {
+          "claim": "協調者裁定 4：不符 ZDR 資格的端點清單補上 /v1/videos",
+          "before": "對話、討論串、向量庫、檔案與批次等端點列為不符合。",
+          "after": "對話、討論串、向量庫、檔案、批次與影片等端點列為不符合。",
+          "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+        },
+        {
+          "claim": "協調者裁定 3：頁面只印 August 19, 2026、沒有印時區，不得斷言「美國時間」（描述、summary 第一條、第一段共三處）",
+          "before": "（台北時間；OpenAI 頁面印的是美國時間 8 月 19 日）／這一頁印的發布日期是美國時間 2026 年 8 月 19 日",
+          "after": "（台北時間；OpenAI 頁面印的日期是 8 月 19 日）／這一頁印的發布日期是 2026 年 8 月 19 日",
+          "source_url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/"
+        },
+        {
+          "claim": "第一輪新寫的那一句（兩個收回條款的後果）把兩條混成一條，並刪掉「除非法律要求否則排除人工審閱」這個但書",
+          "before": "會事先書面通知；真的走到那一步，內容會改留在 OpenAI 的加密紀錄裡，後者還可能對疑似違規的內容做人工審閱。",
+          "after": "會事先書面通知；走到這一步，前者是內容改留在 OpenAI 的加密濫用監控紀錄裡、但除非法律要求否則排除人工審閱，後者是在調查或預防重大風險有合理必要時，可能對分類器判定疑似違規的內容做人工審閱。",
+          "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+        },
+        {
+          "claim": "第五節第一段的否定句沒有跟著第一輪 C4／C5 一起限縮到「內文」",
+          "before": "公告與兩份開發者文件從頭到尾只談 API 客戶，沒有出現任何 ChatGPT 方案",
+          "after": "公告與兩份開發者文件的內文從頭到尾只談 API 客戶，沒有出現任何 ChatGPT 方案",
+          "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+        },
+        {
+          "claim": "「四份來源都沒有價格」與來源相反（第一輪判為確認）",
+          "before": "官方沒有寫 PSP 或 ZDR 是否收費、儲存空間成本由誰負擔，四份來源都沒有價格；",
+          "after": "官方沒有寫 PSP 或 ZDR 是否收費、儲存空間成本由誰負擔，四份來源都沒有為這兩項標價；",
+          "source_url": "https://developers.openai.com/api/docs/guides/your-data"
+        }
+      ],
+      "open_questions": [
+        "第二節現在以一句「本站已經寫過」的指路句開頭，是裁定 1 的結果。那一句仍自己交代了三個事實（不留提示與回覆、排除在濫用監控紀錄外、/v1/agents 仍不符資格），不點連結的讀者不會漏掉；若協調者覺得一節以指路句開頭太像導流，可以把它改放到第二節末尾，段數不受影響。",
+        "正文字數從 2,983 掉到 2,757（下限 1,800、上限 3,000），裁定 1 空出來的 200 多字沒有補寫新內容。可補而沒補的候選只有兩個：濫用監控 30 天的兩個但書（已依裁定 1 歸給另一篇），以及 /v1/videos 連 ZDR 請求都被擋住這個細節（研究紀錄 verified_facts 第 32 條）。",
+        "PSP 技術白皮書依裁定 2 不進 sources[]，正文仍一個字都沒寫；但資料控制文件的「Private Retention with PSP」一節現在直接連到白皮書的第 35 頁（Appendix A），所以那份白皮書已經是官方文件鏈的一部分。若日後要寫，仍需照研究紀錄的規定換一條 sources[]。",
+        "圖還沒畫。第四格的文字依裁定 5 維持「要另開 EKM，授權可撤銷」，圖說也維持「（要另外開啟 EKM）」，構圖請照這一格，不要畫成「金鑰完全由客戶掌握」。"
+      ],
+      "coordinator_rulings": [
+        "裁定 1（ZDR 定義與濫用監控 30 天背景壓成一句、帶既有 article inline）：已執行。逐字引的 ZDR 定義句與中譯刪除，30 天背景從第二節第三段刪除，第四節那個獨立的 /v1/agents rich_paragraph 併入新的一句並移到第二節開頭。must_not_write 第 14 條仍成立：Agents API 全篇只被提到這一次並連過去。",
+        "裁定 2（PSP 白皮書不進 sources[]）：已遵守。sources[] 仍是四條、全部 2026-09-23 重抓 200 且讀到正文；正文與研究紀錄的正文欄位都沒有寫到白皮書。",
+        "裁定 3（不得斷言美國時區）：已執行，三處「美國時間」全部改掉，全篇 grep「美國時間」為 0 筆。must_not_write 第 2 條仍成立：兩個日期都在（頁面印的 8 月 19 日、台北的 8 月 20 日），並說明是時區差。",
+        "裁定 4（補上 /v1/videos）：已執行，用裁定 1 空出來的字數。正文 2,757 字，未超過 3,000。",
+        "裁定 5（圖說與第四格節點「要另外開啟 EKM」維持第一輪的寫法）：已遵守，圖說、研究紀錄 diagram.caption 與 nodes 第四格都沒有動。"
+      ],
+      "verdict": "ok"
+    }
+  }
+}

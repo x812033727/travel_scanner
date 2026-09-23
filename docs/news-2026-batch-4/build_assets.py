@@ -1338,6 +1338,117 @@ def _enisa_threat_landscape(accent: str) -> str:
     return b
 
 
+# --- batch 4.4 wave 1: the AI secondary news of 2026-08-01 to 2026-09-15 --------------------
+
+
+def _gemini_student_offer(accent: str) -> str:
+    # The free year as a ring broken into four stretches. The last one stops short of closing,
+    # and a thin line carries on from where it stops to a coin: the offer does not end on a
+    # date, it ends by turning into a charge.
+    other = second_colour(accent)
+    cx, cy, r = 700, 425, 215
+    b = circle(cx, cy, 122, PALE, accent)
+    for start, end in ((186, 264), (276, 354), (6, 60), (96, 174)):
+        sx, sy = cx + r * math.sin(math.radians(start)), cy - r * math.cos(math.radians(start))
+        ex, ey = cx + r * math.sin(math.radians(end)), cy - r * math.cos(math.radians(end))
+        b += (f'<path d="M{sx:.1f} {sy:.1f} A{r} {r} 0 0 1 {ex:.1f} {ey:.1f}" fill="none" '
+              f'stroke="{accent}" stroke-width="20" stroke-linecap="round"/>')
+    stop_x, stop_y = cx + r * math.sin(math.radians(60)), cy - r * math.cos(math.radians(60))
+    b += circle(round(stop_x), round(stop_y), 18, other, "none")
+    b += line(round(stop_x) + 26, round(stop_y) - 4, 1150, 322, other, 8)
+    return b + coin(1252, 315, 82, other)
+
+
+def _meta_muse_agent(accent: str) -> str:
+    # A map reduced to its regions: one of them carries the accent, because the agent ships in
+    # one country only, and every other one stays grey. Above that block the agent itself, a
+    # plain box, with a dashed gate across its way out and the approver standing on the far side
+    # of that gate -- nothing leaves without passing it. No outline of anywhere: a country drawn
+    # this flat reads as a creature, and a wrong map is worse than none.
+    other = second_colour(accent)
+    b = "".join(rect(x, y, w, h, "#C4CCCC", "none", 28)
+                for x, y, w, h in ((206, 438, 186, 142), (418, 500, 128, 116),
+                                   (572, 430, 158, 152), (752, 486, 120, 132)))
+    b += rect(920, 410, 402, 232, PALE, accent, 40)
+    b += rect(1050, 196, 152, 152, "#FFFFFF", accent, 26) + rect(1088, 234, 76, 76, PALE, "none", 14)
+    b += f'<path d="M1016 160 L1016 390" fill="none" stroke="{INK}" stroke-width="10" stroke-dasharray="20 16"/>'
+    return b + tick(906, 272, 72, other)
+
+
+def _openai_cursor_wind_down(accent: str) -> str:
+    # The notice runs right to left, from the side that sent it to the side that received it,
+    # with an hourglass sitting on it for the notice period the contract allows. The party the
+    # notice is actually about is the dashed box off to one side, pointing at the line it is
+    # not a party to.
+    other = second_colour(accent)
+    b = line(1180, 425, 948, 425, other, 24) + line(752, 425, 510, 425, other, 24)
+    b += rect(232, 286, 278, 278, "#FFFFFF", other, 30) + rect(274, 328, 194, 194, PALE, "none", 20)
+    b += rect(1180, 330, 192, 192, accent, "none", 26)
+    b += (f'<path d="M760 322 L940 322 L868 425 L940 528 L760 528 L832 425 Z" fill="#FFFFFF" '
+          f'stroke="{accent}" stroke-width="8" stroke-linejoin="round"/>')
+    b += (f'<path d="M802 382 L898 382 L850 425 Z" fill="{accent}" stroke="{accent}" stroke-width="4" '
+          f'stroke-linejoin="round"/>')
+    b += (f'<path d="M789 486 L911 486 L940 528 L760 528 Z" fill="{accent}" stroke="{accent}" '
+          f'stroke-width="4" stroke-linejoin="round"/>')
+    b += line(850, 428, 850, 486, accent, 8)
+    b += line(748, 322, 952, 322, accent, 12) + line(748, 528, 952, 528, accent, 12)
+    b += (f'<rect x="556" y="556" width="132" height="132" rx="22" fill="#FFFFFF" stroke="{accent}" '
+          f'stroke-width="6" stroke-dasharray="20 14"/>')
+    return b + line(622, 556, 622, 466, accent, 10) + (
+        f'<path d="M594 494 L622 454 L650 494" fill="none" stroke="{accent}" stroke-width="10" '
+        f'stroke-linecap="round" stroke-linejoin="round"/>')
+
+
+def _claude_text_watermark(accent: str) -> str:
+    # A run of text drawn as plain strokes, with a few of the strokes replaced by a very small
+    # key. Nothing is added to the line and nothing sits between the strokes: the mark is in
+    # which stroke was chosen, which is why the keys stand where strokes would have stood.
+    other = second_colour(accent)
+    b = rect(200, 285, 1206, 300, "#FFFFFF", other, 38)
+    keyed = {5, 12, 19, 25}
+    for i in range(30):
+        x = 252 + i * 38
+        if i not in keyed:
+            b += line(x, 340, x, 530, "#C4CCCC", 14)
+    for i in sorted(keyed):
+        x = 252 + i * 38
+        b += circle(x, 396, 16, "#FFFFFF", accent) + circle(x, 396, 5, accent, "none")
+        b += line(x, 412, x, 486, accent, 9)
+        b += line(x, 458, x + 16, 458, accent, 8) + line(x, 482, x + 13, 482, accent, 8)
+    return b
+
+
+def _openai_hugging_face_incident(accent: str) -> str:
+    # The dashed box is the boundary the evaluation was supposed to keep everything inside. The
+    # population sits within it; one of them is drawn on the edge itself, in the gap it left in
+    # that edge, and again outside, larger, where it reached what the boundary was meant to keep
+    # it away from. No technique, no target, just the crossing.
+    other = second_colour(accent)
+    b = dashed(220, 232, 1000, 232, INK, 8) + dashed(220, 642, 1000, 642, INK, 8)
+    b += dashed(220, 232, 220, 642, INK, 8)
+    b += dashed(1000, 232, 1000, 382, INK, 8) + dashed(1000, 478, 1000, 642, INK, 8)
+    spots = ((318, 322), (476, 288), (628, 350), (792, 300), (366, 470), (540, 448),
+             (712, 506), (884, 452), (302, 592), (472, 586), (674, 598), (852, 596))
+    b += "".join(circle(x, y, 27, "#FFFFFF", other) for x, y in spots)
+    b += circle(1000, 430, 32, PALE, accent)
+    b += dashed(1046, 430, 1172, 430, accent, 8)
+    return b + circle(1272, 430, 76, "#FFFFFF", accent) + circle(1272, 430, 30, accent, "none")
+
+
+def _openai_zero_data_retention(accent: str) -> str:
+    # The records never leave the box on the left, which is the customer's own storage, packed
+    # to its edges. One thin line leaves it, and what it reaches is a single small mark: the
+    # signal is the only thing that gets out, and there is no second route between the two.
+    other = second_colour(accent)
+    b = rect(300, 220, 440, 440, "#FFFFFF", accent, 32)
+    b += "".join(rect(338 + c * 52, 258 + r * 52, 36, 36, PALE, "none", 8)
+                 for r in range(7) for c in range(7))
+    b += line(740, 440, 1180, 440, other, 6)
+    b += (f'<path d="M1255 358 L1337 440 L1255 522 L1173 440 Z" fill="{PALE}" stroke="{other}" '
+          f'stroke-width="8" stroke-linejoin="round"/>')
+    return b + circle(1255, 440, 26, other, "none")
+
+
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
@@ -1422,6 +1533,13 @@ _DRAWINGS = {
     "ai-news-nvidia-physical-ai-safety-20260921": _nvidia_physical_ai_safety,
     "tech-news-meta-petal-subsea-cable-20260921": _meta_petal_subsea_cable,
     "tech-news-enisa-threat-landscape-20260922": _enisa_threat_landscape,
+    # 4.4
+    "ai-news-claude-text-watermark-20260815": _claude_text_watermark,
+    "ai-news-gemini-student-offer-20260820": _gemini_student_offer,
+    "ai-news-openai-zero-data-retention-20260820": _openai_zero_data_retention,
+    "ai-news-openai-hugging-face-incident-20260826": _openai_hugging_face_incident,
+    "ai-news-openai-cursor-wind-down-20260828": _openai_cursor_wind_down,
+    "ai-news-meta-muse-agent-20260909": _meta_muse_agent,
 }
 
 

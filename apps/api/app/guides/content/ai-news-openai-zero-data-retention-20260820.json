@@ -1,0 +1,217 @@
+{
+  "slug": "ai-news-openai-zero-data-retention-20260820",
+  "kind": "life",
+  "destination_id": null,
+  "topics": ["ai", "software", "ai-news"],
+  "valid_until": null,
+  "news_date": "2026-08-20",
+  "featured": false,
+  "display_order": 181,
+  "locales": {
+    "zh-TW": {
+      "title": "OpenAI 為前沿模型提供零資料保留：內容留在客戶自己的雲端，只回傳訊號",
+      "description": "2026 年 8 月 20 日（台北時間；OpenAI 頁面印的日期是 8 月 19 日），OpenAI 發布私密安全處理（Private Safety Processing）預覽，作為零資料保留的延伸：受審查的紀錄加密後留在客戶自己的雲端，OpenAI 只留索引，官方表示人員拿不到內容。這是 API 客戶的資料控制功能，不是 ChatGPT 的功能（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/ai-news-openai-zero-data-retention-20260820/hero.jpg",
+        "alt": "原創插圖：左側一個方形代表客戶自己的雲端儲存，內部畫滿排列整齊的小方塊代表加密紀錄；一條細線從方形延伸到右側一個小菱形，代表只有範圍受限的安全訊號流向外部，方形與菱形之間沒有其他連線，畫面不含任何商標或人像。",
+        "width": 1600,
+        "height": 900,
+        "credit": {"author": "Mokaair", "license": "© Mokaair", "source_url": null}
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 8 月 20 日凌晨（台北時間），OpenAI 發布〈Offering Zero Data Retention for frontier models〉，預覽私密安全處理（Private Safety Processing，簡稱 PSP）機制；這一頁印的發布日期是 2026 年 8 月 19 日，換算時區後在台北跨過午夜到隔天凌晨 3 點。這是 API 客戶才會碰到的資料控制設定，一般在台灣用 ChatGPT 的個人使用者現在不需要為此做任何事。零資料保留（Zero Data Retention，簡稱 ZDR）承諾請求處理完就不留存提示與回覆，OpenAI 表示，模型接下的任務越長、越複雜，有些嚴重風險可能只有把多次互動放在一起看才看得出來。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 23 日查核；這一則在發布當時沒有排進本站的頭條批次，這一篇補上。機制的說法一律以 OpenAI 的官方原文為準，沒有獨立驗證或測試，也不是安全稽核報告。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 8 月 20 日（台北時間；OpenAI 頁面印的日期是 8 月 19 日），OpenAI 發布私密安全處理（Private Safety Processing，簡稱 PSP）預覽，做為零資料保留（ZDR）的延伸機制。",
+            "ZDR 是 API 客戶層級的控制，要先經 OpenAI 核准，資格是逐個端點列出，不是逐個模型；公告內文沒有提到 ChatGPT 的任何方案。",
+            "PSP 的做法是：受審查的紀錄加密後寫進客戶自己的雲端儲存（AWS S3 或 Azure Blob），OpenAI 只留索引與中繼資料，在關閉人員存取的安全執行環境裡自動審查，只回傳範圍受限的安全訊號。",
+            "客戶要付出代價：加密紀錄至少留 30 天，加密分兩層，外層由客戶自管的 EKM 是官方建議啟用、不是強制，撤銷授權能擋住之後解密但不會刪除紀錄。",
+            "公告當時 PSP 只與早期客戶測試，2026 年 9 月 22 日追加更新，寫已經開始分階段推給 API 客戶，官方沒有寫完成時程。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼要多一層私密安全處理"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個機制想解決的矛盾，OpenAI 寫得很白：現有相容 ZDR 的安全系統是逐次互動分開評估，但模型接下的任務越來越長、越來越複雜，有些嚴重風險可能只有把多次互動放在一起看才看得出來。官方也提到背景：近期有些前沿模型的部署要求客戶允許供應商為了安全監控而保留敏感內容，這與許多組織自己的安全義務互相衝突。"
+        },
+        {
+          "type": "paragraph",
+          "text": "OpenAI 把 PSP 的設計目的寫成一句話：\"designed to identify patterns across related interactions without giving OpenAI personnel access to the underlying content\"（設計目的是辨識跨多次相關互動的樣式，同時不讓 OpenAI 人員接觸底層內容）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告當時，PSP 還在與早期客戶測試中，OpenAI 表示計畫 9 月開始推出並發布技術白皮書。同一頁在 2026 年 9 月 22 日追加更新，寫已開始把 PSP 推給 API 客戶、存取權限分階段開放；這是後來加上的更新，不是公告本身的發布日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "零資料保留現在管到什麼"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "text", "text": "零資料保留是 API 客戶層級的控制：OpenAI 承諾請求處理完不留提示與回覆，客戶內容也排除在預設最多留 30 天的濫用監控紀錄外；加上查核到 2026 年 9 月 23 日、資料控制表上 /v1/agents 仍不符資格（私密安全處理沒有改變這一格），這幾件事本站在"},
+            {"type": "article", "text": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置", "kind": "life", "slug": "ai-news-openai-agents-api-20260910"},
+            {"type": "text", "text": "都寫過了。"}
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "要用 ZDR，申請管道只有聯絡 OpenAI 業務團隊詢問資格，得先經核准，文件沒有公開申請表或門檻數字。核准之後，才會在後台的 Settings → Organization → Data controls 底下看到 Data Retention 分頁，可分別在組織與專案層級設定零資料保留或 Modified Abuse Monitoring（調整後的濫用監控）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資格是逐個 API 端點列出，不是逐個模型：依資料控制文件的端點資格表，聊天、回應、嵌入與影像生成等端點列為符合 ZDR 資格（多數還註明另有限制），對話、討論串、向量庫、檔案、批次與影片等端點列為不符合。"
+        },
+        {
+          "type": "table",
+          "header": ["控制選項", "對客戶內容做什麼", "目前的限制"],
+          "rows": [
+            ["Modified Abuse Monitoring", "把客戶內容排除在濫用監控紀錄外", "要先經 OpenAI 核准"],
+            ["零資料保留（ZDR）", "同上，並讓部分端點的 store 參數視為 false", "資格逐端點列，不是逐模型"],
+            ["ZDR 搭配私密安全處理", "加密紀錄寫進客戶自己的雲端儲存，離線自動審查", "客戶要自備 AWS S3 或 Azure Blob，紀錄留 30 天"],
+            ["CSAM 例外", "不論哪一種設定：疑似兒少性剝削素材的圖片仍保留供人工審查", "不受上述任何一種控制影響"]
+          ],
+          "caption": "整理自 OpenAI 資料控制文件與私密安全處理開發者指南；查核日 2026 年 9 月 23 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "私密安全處理怎麼運作"
+        },
+        {
+          "type": "paragraph",
+          "text": "開發者指南把 PSP 的做法整理成三項原則。第一項是客戶內容存在客戶控制的儲存空間：要用 PSP，客戶得先經 OpenAI 核准組織資格，再把自備的 AWS S3 bucket 或 Azure Blob container 接到一個 OpenAI 專案，註冊並完成驗證；文件提醒，Validated 只代表某次檢查通過，不保證即時連線正常，重新整理也不會重跑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二項原則是沒有人工審閱：安全審查不能成為 OpenAI 人員閱讀受保護客戶內容的新管道，加密內容在一個經核准、關閉人員存取的硬體證明安全執行環境裡解密；離開審查流程的明文資料只有兩類，範圍受限的安全訊號與操作中繼資料。文件也講清楚，被分類器或抽樣政策挑出來送審，不代表已經構成政策違規。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三項原則是內容只能用於安全目的：存在客戶儲存空間裡的內容不能用來訓練模型，也不能提供給 OpenAI 內部其他團隊或合作夥伴；OpenAI 手上留的是一份含操作中繼資料與儲存位置參照的索引，不是內容的副本，而且加密與寫入是非同步進行，不會卡住模型的推論。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-openai-zero-data-retention-20260820/diagram-1.svg",
+          "alt": "原創插圖：四個方框橫向排列並以箭頭相連，依序代表客戶自控儲存、安全執行環境、有限安全訊號與客戶掌握金鑰四個環節，箭頭方向由左至右呈現資料處理的流程，不含任何商標或人像。",
+          "width": 1600,
+          "height": 900,
+          "caption": "圖解：依 OpenAI 公告與開發者文件整理的私密安全處理四個環節——加密紀錄寫進客戶自己的雲端儲存並留 30 天、在關閉人員存取的執行環境裡自動審查、只回傳範圍受限的安全訊號、金鑰授權由客戶掌握（要另外開啟 EKM）。2026 年 9 月 23 日查核。",
+          "credit": {"author": "Mokaair", "license": "© Mokaair", "source_url": null}
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "客戶要付出的代價與界線"
+        },
+        {
+          "type": "paragraph",
+          "text": "加密紀錄的保存期寫得很明確：PSP 會把紀錄加密後寫進客戶自己的區域雲端儲存空間，保留期限（TTL）是 30 天，客戶端的生命週期規則不能提早刪除。這跟前面提到的濫用監控紀錄保存期是兩回事，不要混為一談。"
+        },
+        {
+          "type": "paragraph",
+          "text": "加密分兩層，不是客戶完全獨力掌握：內層是 OpenAI 管理的 HPKE 加密，把解密限制在經授權的安全審查執行環境；外層才是客戶自己管理的 Enterprise Key Management（企業金鑰管理，簡稱 EKM），官方寫的是「建議」啟用，非強制。只有開了 EKM，「金鑰由客戶掌握」才成立；撤銷授權能擋住之後解密，但不會刪除紀錄或推翻已完成的處理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料控制文件還寫了兩個公告頁沒提的收回條款：Private Retention with PSP（私密保留）與 Safety Retention（安全性保留）。OpenAI 保留取消特定客戶特定模型零資料保留資格的權利，會事先書面通知；走到這一步，前者是內容改留在 OpenAI 的加密濫用監控紀錄裡、但除非法律要求否則排除人工審閱，後者是在調查或預防重大風險有合理必要時，可能對分類器判定疑似違規的內容做人工審閱。「人員拿不到內容」這類說法都是官方自己的敘述，四份來源沒有第三方稽核佐證。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "這件事跟一般讀者的關係"
+        },
+        {
+          "type": "paragraph",
+          "text": "這整件事都在 API 這一側，是企業與開發團隊才會碰到的設定。一般在台灣用 ChatGPT 的個人使用者，現在不需要做任何事：公告與兩份開發者文件的內文從頭到尾只談 API 客戶，沒有出現任何 ChatGPT 方案，也沒有出現台灣。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方沒有寫 PSP 或 ZDR 是否收費、儲存空間成本由誰負擔，四份來源都沒有為這兩項標價；分階段推出的細節，9 月 22 日更新也只寫「存取權限分階段開放」，沒有完成時程。公告頁列出的合作客戶——Glean、Databricks、Abridge 與 Microsoft——是 OpenAI 自己列出的名單，不是第三方背書。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資料控制文件的端點資格表是會變動的活文件，兩份開發者頁面都沒有印出最後更新日；以上是 2026 年 9 月 23 日查核當天的狀態。之後如果要確認某個端點符不符合 ZDR 資格，或想申請這項功能，直接查 OpenAI 官方文件、聯絡業務團隊，會比記住今天的內容更準。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "零資料保留是 ChatGPT 的功能嗎？",
+              "answer": "不是。公告內文與兩份開發者文件都只談 API 客戶，沒有出現 Plus、Business、Enterprise 或 Edu 這些 ChatGPT 方案；零資料保留是 API 組織或專案層級的控制。"
+            },
+            {
+              "question": "開啟私密安全處理之後，OpenAI 就完全看不到我的資料嗎？",
+              "answer": "官方的說法限定在「人員」：OpenAI 表示人員拿不到底層內容，但離開審查流程的仍有範圍受限的安全訊號與操作中繼資料，而且加密後的紀錄會在客戶自己的雲端儲存空間留 30 天，不是完全不落地、也不是完全不保留。"
+            },
+            {
+              "question": "現在能不能申請用零資料保留或私密安全處理？",
+              "answer": "官方寫的申請方式只有聯絡 OpenAI 業務團隊詢問資格，核准之後才會在後台看到設定選項；官方沒有公布門檻或審核所需時間，私密安全處理在查核當下也還是預覽、分階段開放的狀態。"
+            },
+            {
+              "question": "金鑰是不是完全由客戶自己掌握？",
+              "answer": "要看有沒有另外開啟 Enterprise Key Management（EKM）。加密分兩層，內層是 OpenAI 管理的金鑰，外層才是客戶自管的 EKM，官方文件寫的是建議啟用、不是強制；沒開 EKM 的話，金鑰就不是完全由客戶一方掌握。"
+            },
+            {
+              "question": "這跟台灣的讀者有什麼關係？",
+              "answer": "查核到 2026 年 9 月 23 日為止，公告與兩份開發者文件都沒有提到台灣，這整套設定也只有簽 API 合約、做資安評估的企業與開發團隊才會碰到；一般在台灣使用 ChatGPT 的個人使用者，現在不需要做任何事。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "私密安全處理是預覽階段，不是稽核報告",
+          "text": "這裡整理的私密安全處理與零資料保留，內容來自 OpenAI 的公告頁與兩份開發者文件；2026 年 8 月 19 日公告當時是預覽、只與早期客戶測試，9 月 22 日追加更新為分階段推給 API 客戶，官方沒有寫全面開放的時間表。所有「人員拿不到內容」「金鑰由客戶掌握」之類的說法都是 OpenAI 自己的敘述，四份來源裡沒有第三方稽核或認證；資料控制表上的端點資格是 2026 年 9 月 23 日查核當天的快照，之後可能改變，請以官方頁面的最新內容為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "article", "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用", "kind": "life", "slug": "ai-news-2026-january-september-index"}
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {"type": "article", "text": "OpenAI Agents API 公開 beta：委託 AI 自動化前，先看懂計費與資料位置", "kind": "life", "slug": "ai-news-openai-agents-api-20260910"}
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Offering Zero Data Retention for frontier models",
+          "url": "https://openai.com/index/offering-zero-data-retention-for-frontier-models/",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "Data controls in the OpenAI platform",
+          "url": "https://developers.openai.com/api/docs/guides/your-data",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "ZDR with Private Safety Processing (PSP)",
+          "url": "https://developers.openai.com/api/docs/guides/private-safety-processing",
+          "checked_on": "2026-09-23"
+        },
+        {
+          "title": "OpenAI News RSS（取事件時刻）",
+          "url": "https://openai.com/news/rss.xml",
+          "checked_on": "2026-09-23"
+        }
+      ]
+    }
+  }
+}
