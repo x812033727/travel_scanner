@@ -50,7 +50,7 @@
 
 | 規則 | 定於 | 對這條管線的意思 |
 | --- | --- | --- |
-| Google／Naver／米其林與訂位平台只當定位與發現，永不當來源 | 2026-09-12，`apps/api/app/foods/enrichment.py` 的 `PLATFORM_HOSTS` | CatchTable 找到的店，仍要有官網或觀光局頁才能建店家；沒有就停在候選檔的 `no_official_source` |
+| Google／Naver／米其林與訂位平台只當定位與發現，永不當**官方**來源 | 2026-09-12，`apps/api/app/foods/enrichment.py` 的 `PLATFORM_HOSTS` | AI 補齊與人工提案照擋。2026-09-23 站主加開較弱層級 `merchant_platform`（票 `2026-09-23-merchant-platform`）：店家自己登記的 CatchTable 店頁、或它 `/info`「網站」欄指向的社群帳號，可由轉檔腳本（帶責任鏈檢查）與後台建成來源，公開頁標「平台／社群登記」；沒有這條鏈的仍停在 `no_official_source` |
 | 只有真的能訂位的平台頁才公開；只能候位存 `disabled` | 2026-09-11，`docs/food-reservation-platforms.md` | 判斷看店家自己的控制項（「預訂」、日期人數、「尋找可用時間」），不整頁搜關鍵字；頁尾「如果您喜歡」會列別家店 |
 | 批次與 AI 永不寫座標、地圖身分、審核狀態 | 2026-09-12，`docs/catalog-review.md` | 匯入器只建 pending 列；Naver 精準頁與核准是後台的事 |
 | 韓國的精準地圖身分只認 Naver 地點頁 | `apps/api/app/foods/publication.py` | 每家新店都欠站主一次貼網址 |
@@ -85,7 +85,7 @@
 | 道路名地址 | **官方頁**（官網或觀光局） | `food_merchants.address` | CatchTable 的地址只用來核對同店 |
 | 商圈 | 地址對 `apps/api/app/foods/area_catalog.py` 的 `terms` | `area_id`（`area_source=admin`） | 對不到就留空，不硬塞 |
 | 分類（至多 3） | 官方頁的菜色描述；CatchTable 的料理類型只當提示 | `food_merchant_categories` | slug 見 `apps/api/app/foods/category_catalog.py`；韓式家常大多是 `home-style`、`hotpot-soup`、`bbq-grill` |
-| 來源 | 官網（`merchant_official`）或觀光局店家頁（`official_tourism`） | `food_merchant_sources` | 必須是講**這家分店**的頁；品牌總站要有分店資訊才算 |
+| 來源 | 官網（`merchant_official`）或觀光局店家頁（`official_tourism`）；都沒有時可用店家自己的 CatchTable 店頁或它指向的社群帳號（`merchant_platform`，2026-09-23） | `food_merchant_sources` | 必須是講**這家分店**的頁；品牌總站要有分店資訊才算；`merchant_platform` 的責任鏈規則在資料目錄 README |
 | 座標 | 不從 CatchTable 來 | 之後由 `fill-food-merchant-coordinates` 讀官方頁 JSON-LD，或座標佇列 | `DURABLE_COORDINATE_SOURCES` 不含平台 |
 | Naver 精準頁 | 站主 | 後台 | 批次不寫 |
 | 名次 | 榜頁 | 只在候選檔的 `ranking_evidence` | 不落地、不公開 |

@@ -25,7 +25,7 @@ type MerchantClaim =
   "display_name" | "address" | "official_website" | "coordinates";
 type MerchantSource = {
   id?: string;
-  source_type: "official_tourism" | "merchant_official" | "michelin_licensed";
+  source_type: "official_tourism" | "merchant_official" | "michelin_licensed" | "merchant_platform";
   source_scope:
     | "destination_context"
     | "merchant_listing"
@@ -1498,6 +1498,9 @@ export function AdminFoodMerchantsPanel({
                           <option value="merchant_official">{ta("foodMerchantsPanel.sourceTypeMerchantOfficial")}</option>
                           <option value="official_tourism">
                             {ta("foodMerchantsPanel.sourceTypeOfficialTourism")}
+                          </option>
+                          <option value="merchant_platform">
+                            {ta("foodMerchantsPanel.sourceTypeMerchantPlatform")}
                           </option>
                           {source.source_type === "michelin_licensed" && (
                             <option value="michelin_licensed">
