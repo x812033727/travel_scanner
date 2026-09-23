@@ -4,12 +4,21 @@ on:
   pull_request:
     paths:
       - '.github/workflows/article-localization.yml'
+      # Content imports and API/schema changes share the publication contracts.
+      - 'apps/api/**'
+      - 'apps/web/package.json'
+      - 'package.json'
+      - 'package-lock.json'
       - 'tools/article-localization/**'
       - 'docs/article-localization/**'
   push:
     branches: [main]
     paths:
       - '.github/workflows/article-localization.yml'
+      - 'apps/api/**'
+      - 'apps/web/package.json'
+      - 'package.json'
+      - 'package-lock.json'
       - 'tools/article-localization/**'
       - 'docs/article-localization/**'
 

@@ -57,7 +57,22 @@ def test_a_valid_row_parses_into_the_shape_production_holds() -> None:
     assert SOURCE_SCOPES == {
         "merchant_official": "merchant_website",
         "official_tourism": "merchant_listing",
+        "merchant_platform": "merchant_listing",
     }
+
+
+def test_the_platform_tier_parses_as_a_listing_scope() -> None:
+    """merchant_platform (2026-09-23): the shop's own reservation-platform page or the social
+    account it links to; it lands in the same listing scope as a tourism page."""
+    listing = parse_merchant(
+        _row(
+            source_kind="merchant_platform",
+            source_url="https://www.catchtable.net/shop/sinsakkochgedang_apgujeong/info",
+        ),
+        row=1,
+    )
+    assert listing.source_kind == "merchant_platform"
+    assert listing.source_scope == "merchant_listing"
 
 
 @pytest.mark.parametrize(
@@ -120,7 +135,9 @@ def test_the_committed_batch_is_valid_and_points_at_seeded_areas_and_categories(
     assert not any(m.area_slug in AREA_SEEDS_BY_SLUG for m in merchants)
     assert all(slug in CATEGORY_SEEDS_BY_SLUG for m in merchants for slug in m.category_slugs)
     assert all(m.source_url.startswith("https://") for m in merchants)
-    assert {m.source_kind for m in merchants} == set(SOURCE_SCOPES)
+    # The sweep predates merchant_platform (2026-09-23), so it covers the two official kinds.
+    assert {m.source_kind for m in merchants} == {"merchant_official", "official_tourism"}
+    assert {m.source_kind for m in merchants} <= set(SOURCE_SCOPES)
     # The file is what ships in the wheel and what production imported: keep it tidy.
     raw = json.loads(DEFAULT_FILE.read_text(encoding="utf-8"))
     assert [row["slug"] for row in raw] == [m.slug for m in merchants]

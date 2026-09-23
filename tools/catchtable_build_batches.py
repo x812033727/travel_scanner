@@ -43,7 +43,10 @@ LOCALE_PREFIXES = {"zh-TW": "/zh-TW", "zh-CN": "/zh-CN", "ja": "/ja-JP"}
 OUTCOMES = ("import", "duplicate", "no_official_source", "not_a_restaurant", "unclear")
 BOOKINGS = ("reservation", "waiting_only", "none", "unclear")
 BOOKING_STATUS = {"reservation": "verified", "waiting_only": "disabled", "none": "disabled"}
-SOURCE_KINDS = ("merchant_official", "official_tourism")
+# merchant_platform (2026-09-23) is the weaker tier: the shop's own CatchTable page, or the
+# social account that page's "website" field points to. It is the only kind allowed to sit
+# on a platform host, and only when _is_own_platform_page can prove the chain of custody.
+SOURCE_KINDS = ("merchant_official", "official_tourism", "merchant_platform")
 MAX_CATEGORIES = 3
 MAX_QUOTE = 300
 MAX_NOTE = 1000
@@ -134,6 +137,19 @@ def slug_for(destination: str, alias: str) -> str:
 def shop_url(alias: str, locale: str | None = None) -> str:
     prefix = LOCALE_PREFIXES[locale] if locale else ""
     return f"{CATCHTABLE_HOST}{prefix}/shop/{alias}"
+
+
+def _is_own_platform_page(url: str, record: dict[str, Any]) -> bool:
+    """This alias's own CatchTable shop page (any locale, optionally /info), or the exact URL
+    the researcher copied from the /info tab's website field into ``catchtable.website``."""
+    alias = str(record.get("alias", ""))
+    own = {shop_url(alias)} | {shop_url(alias, locale) for locale in LOCALE_PREFIXES}
+    own |= {f"{page}/info" for page in list(own)}
+    if url.rstrip("/") in own:
+        return True
+    catchtable = record.get("catchtable")
+    website = catchtable.get("website") if isinstance(catchtable, dict) else None
+    return isinstance(website, str) and website.strip() == url
 
 
 def _check_localized(
@@ -246,19 +262,26 @@ def _check_merchant(
             "about this branch)"
         )
         source = {}
+    kind = _text(source.get("kind"), f"{where}.source.kind", problems, required=True, limit=32)
+    if kind is not None and kind not in SOURCE_KINDS:
+        problems.append(f"{where}.source.kind: must be one of {list(SOURCE_KINDS)}")
     url = _text(source.get("url"), f"{where}.source.url", problems, required=True, limit=2048)
     if url:
         if not url.startswith("https://"):
             problems.append(f"{where}.source.url: must be https")
+        elif kind == "merchant_platform":
+            if not _is_own_platform_page(url, record):
+                problems.append(
+                    f"{where}.source.url: a merchant_platform source must be this alias's own "
+                    "CatchTable page (or its /info tab), or exactly the URL recorded in "
+                    "catchtable.website"
+                )
         elif _is_platform(url):
             problems.append(
                 f"{where}.source.url: {_host(url)} is a platform, aggregator or social site "
                 "and is never a source"
             )
     _text(source.get("title"), f"{where}.source.title", problems, required=True)
-    kind = _text(source.get("kind"), f"{where}.source.kind", problems, required=True, limit=32)
-    if kind is not None and kind not in SOURCE_KINDS:
-        problems.append(f"{where}.source.kind: must be one of {list(SOURCE_KINDS)}")
     _text(source.get("quote"), f"{where}.source.quote", problems, required=True, limit=MAX_QUOTE)
     return {
         "slug": slug,
