@@ -1,7 +1,7 @@
 ---
 id: 2026-09-23-catchtable-seoul-1-naver-approval
 title: CatchTable 第一批 14 家：Naver 精準頁、座標與核准（後台操作）
-status: in-progress
+status: blocked
 priority: P2
 area: ops
 owner: claude-fable-5-1
@@ -33,7 +33,7 @@ Naver 精準地點頁＋耐久座標＋核准（`publishable_merchant_filters()`
 
 ## Steps
 
-- [ ] 站主在面板登入後台；站主提供 14 條 Naver 精準頁網址。
+- [ ] 站主在面板登入後台（已於 2026-09-23 登入）；站主提供 13 條 Naver 精準頁網址（安目的已從經營者官網取得）。
 - [ ] 逐家：後台填 `naver_map_url` → 座標 → 檢查分類／來源／地址 → 記錄。（2026-09-23：13 家座標已存，見報告「後台操作紀錄」；Naver 網址等站主）
 - [ ] 清單給站主看 → 核准 → 公開 API 驗證（`destination_id=seoul`，四種 `X-Travel-Locale`）。
 - [ ] 報告補紀錄，`done`。
@@ -51,3 +51,7 @@ curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/mercha
 - 2026-09-23 後台寫入的機制：編輯視窗是 React 表單，文字欄用原生 value setter＋`input`／`change` 事件、勾選框用真實 click；
   「關閉舊視窗」與「開新視窗」不能在同一個事件裡做（React 會合併成關閉），中間要等一秒。連續儲存會被 auto 模式分類器擋（Modify Shared Resources），
   站主在對話裡同意後同一個動作才放行。
+- **2026-09-23 卡住的原因（blocked）**：13 家的 Naver 精準頁網址沒有正當管道可取得。內建瀏覽器對 `map.naver.com` 與 `search.naver.com`
+  都回 safety restrictions；官網／母公司網站掃過只有킴푸드放 Naver 短網址；WebSearch 拿不到 id。站主把網址貼進對話後接著做：填網址 → 已驗證 →
+  核准啟用（核准與連續寫入都會被 auto 模式分類器擋，站主在對話同意後同一動作放行）。
+- 2026-09-23 已完成：13 家座標；안목 성수점 Naver `2073097145`（經營者官網短網址轉址目標）→ 已驗證 → 04:31 UTC 核准啟用，公開 API 首爾 29 → 30 家。

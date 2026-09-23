@@ -183,6 +183,10 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   apply-
 （`official_tourism`，來源網址就是那一頁），沒有的用 OpenStreetMap 上店家本身的節點（`admin_verified`，來源網址是節點永久連結）；
 Naver 與 Google 不當座標來源。座標佇列自 2026-09-19 起不再寫座標，只能手填。
 
+**Naver 精準頁的來源只有一種成立**：經營者或官方頁自己放的 Naver 連結（只讀短網址的轉址標頭取 id，不載入地圖頁）。內建瀏覽器對 `map.naver.com`
+與 `search.naver.com` 都回「not allowed due to safety restrictions」（2026-09-23 再確認），不繞道 Chrome 或 curl；WebSearch 限定 Naver 網域時幾乎沒有結果，
+不限網域只回第三方目錄（다이닝코드、식신、Triple），拿不到店家 id。14 家官網與母公司網站掃過，只有킴푸드放了 Naver 短網址。**其餘 13 家的 Naver 網址要站主提供**。
+
 | slug | 座標 | 座標來源 | 依據 | Naver 精準頁 | 核准 |
 | --- | --- | --- | --- | --- | --- |
 | `seoul-bandb` | 37.566790, 127.044501 | `admin_verified` · [www.openstreetmap.org/node/13946958785](https://www.openstreetmap.org/node/13946958785) | OSM 節點「본앤브레드컴퍼니」，addr 마장로42길 1，與官方頁地址一致 | 待站主給 | — |
@@ -197,7 +201,7 @@ Naver 與 Google 不當座標來源。座標佇列自 2026-09-19 起不再寫座
 | `seoul-alice-cheongdam` | 37.526662, 127.041050 | `admin_verified` · [www.openstreetmap.org/node/5552226222](https://www.openstreetmap.org/node/5552226222) | OSM 節點「앨리스 청담」，addr 도산대로55길 47 | 待站主給 | — |
 | `seoul-london-bagel-museum-anguk` | 37.579170, 126.986201 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147) | VisitKorea 英文頁（London Bagel Museum Anguk Main Store）JSON-LD GeoCoordinates | 待站主給 | — |
 | `seoul-ggupdang-seongsu` | 37.543223, 127.057650 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570) | VisitKorea 英文頁 JSON-LD GeoCoordinates（OSM 建物 way/801816488 37.5432168,127.0576395 一致） | 待站主給 | — |
-| `seoul-anmokseongsu` | 37.541197, 127.057959 | `admin_verified` · [www.openstreetmap.org/node/13946956920](https://www.openstreetmap.org/node/13946956920) | OSM 節點「(주)안목성수」，addr 뚝섬로13길 34 | 待站主給 | — |
+| `seoul-anmokseongsu` | 37.541197, 127.057959 | `admin_verified` · [www.openstreetmap.org/node/13946956920](https://www.openstreetmap.org/node/13946956920) | OSM 節點「(주)안목성수」，addr 뚝섬로13길 34 | `2073097145`：經營者官網 kimfood.co.kr 品牌頁「성수점」旁的短網址 `naver.me/5QiPD9S9`，只讀其 307 轉址目標取得（另兩條短網址分別指向釜山西面店與江南驛三店，互相印證） | 2026-09-23 04:31 UTC 核准並啟用；公開 API 首爾 29 → 30 家，帶 Naver 連結與座標，無訂位按鈕（候位制） |
 | `seoul-sancheong-ej` | 37.566125, 126.992229 | `admin_verified` · [www.openstreetmap.org/node/13851760765](https://www.openstreetmap.org/node/13851760765) | 同門牌建物：OSM 節點 addr 을지로 114-6（홍원빌딩，節點是同棟另一家店 물결）；OSM 另有「산청숯불가든 을지로」節點但門牌標 110-1，不採用 | 待站主給 | — |
 
 ## 這批踩到的陷阱（下一批別再踩）
