@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-website-planning-guides-batch022
 title: Release localized website planning guides batch022
-status: open
+status: in-progress
 priority: P1
 area: ops
-owner:
-claimed_at:
+owner: codex-batch022-release
+claimed_at: 2026-09-23T14:03:17Z
 created_at: 2026-09-23T13:47:27Z
 completed_at:
-branch:
+branch: codex/article-localization-022-release-record
 depends_on:
   - 2026-09-23-localize-four-website-planning-guides-batch022
 scope:
