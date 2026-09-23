@@ -176,9 +176,31 @@
 最佳榜 21–40 的來源命中率比 1–20 高（首爾這段有 Taste of Seoul 名單與 KTO 專題撐著，fine dining 佔比也高）；釜山一半沒有來源，
 缺口集中在連鎖分店與酒吧（Visit Busan 不收）以及三個查不了的區廳站。候位榜這批沒取，所以第二批沒有 `waiting_only`。
 
-## 站主同意後在主機上跑的
+## 站主同意後在主機上跑的（2026-09-23，PR #677 合併後）
 
-（待補：兩個城市的店家 dry-run／apply 計數、worklist、平台列 stdin dry-run／apply 計數。）
+站主決定**不另外部署**（這個 PR 只有資料與文件），兩支匯入指令都用 `--file /dev/stdin` 從本機的檔案餵入，內容就是 main 上的檔案；
+每一步一次 SSH。
+
+```bash
+# 店家：先 dry-run（首爾 would_create 14、釜山 11、0 skipped，與報告一致），站主同意後 --apply（created 14／11）
+<SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli import-trend-merchants --file /dev/stdin [--apply]" < merchants-<destination>.json
+# worklist：兩個城市一起匯出到 stdout（94 列：首爾 approved 41／pending 17／rejected 7，釜山 approved 15／pending 11／rejected 3）
+<SSH> "… export-food-merchant-worklist --status all --destination seoul --destination busan --include-researched" > worklist2-after.json
+# 平台列：本機轉檔（首爾 15、釜山 11）→ stdin dry-run → --apply
+<SSH> "… apply-food-platform-reviews --file /dev/stdin [--apply]" < platform-reviews-<destination>.json
+```
+
+| 步驟 | 首爾 | 釜山 |
+| --- | --- | --- |
+| 店家 dry-run | would_create 14 | would_create 11 |
+| 店家 `--apply` | created 14（pending／inactive／unverified、無座標、無 Naver） | created 11（同） |
+| 平台列 dry-run | would_create 14 ＋ **would_update 1**（`seoul-alice-cheongdam`，第一批已建成 verified） | would_create 11 |
+| 平台列 `--apply` | created 14、全 verified（alice 那列從檔案移除，不更新第一批的列） | created 11、全 verified |
+| 再跑一次 | 店家 skipped_existing_slug 14；平台列 unchanged 14 | 店家 skipped_existing_slug 11；平台列 unchanged 11 |
+| 公開 API（zh-TW） | 仍 41 家（pending 不公開，預期） | 仍 15 家 |
+
+站主的同意條件是「平台列 dry-run 全部 would_create 才套用」；首爾多出來的 `would_update` 是第 21 名 `alice_cheongdam` 的列：第一批已建成 verified、
+網址與狀態都一樣，只有備註與證據會被改寫，所以從 `platform-reviews-seoul.json` 移除那一筆（檔案的 `rules` 有註明），不動第一批的列。
 
 ## 後台操作紀錄（第 7 步）
 
