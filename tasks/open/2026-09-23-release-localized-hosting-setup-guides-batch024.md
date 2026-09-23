@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-hosting-setup-guides-batch024
 title: Release localized hosting setup guides batch024
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: codex-batch024-release
+claimed_at: 2026-09-23T16:43:03Z
 created_at: 2026-09-23T16:19:58Z
 completed_at:
-branch:
+branch: codex/article-localization-024-release-record
 depends_on:
   - 2026-09-23-localize-four-hosting-setup-guides-batch024
 scope:
