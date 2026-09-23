@@ -1,14 +1,14 @@
 ---
 id: 2026-09-23-release-localized-domain-billing-guides-batch023
 title: Release localized domain billing guides batch023
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: codex-batch023-release
+claimed_at: 2026-09-23T15:19:57Z
 created_at: 2026-09-23T15:11:16Z
 completed_at:
-branch:
+branch: codex/article-localization-023-release-record
 depends_on:
   - 2026-09-23-localize-four-domain-billing-guides-batch023
 scope:
