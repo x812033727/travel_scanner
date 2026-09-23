@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-ai-hourly-news-automation
 title: AI hourly multilingual news automation
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex
 claimed_at: 2026-09-23T12:30:56Z
 created_at: 2026-09-23T12:28:42Z
-completed_at:
+completed_at: 2026-09-23T14:53:04Z
 branch: codex/ai-news-automation
 depends_on: []
 scope:
@@ -51,24 +51,24 @@ routes it to an admin review queue.
 
 ## Definition of done
 
-- [ ] Enabled sources can be scheduled hourly without overlapping scans; hostile URLs,
+- [x] Enabled sources can be scheduled hourly without overlapping scans; hostile URLs,
       redirects, robots failures and unsupported bodies fail closed.
-- [ ] Candidates retain evidence, deterministic duplicate keys, stage attempts and
+- [x] Candidates retain evidence, deterministic duplicate keys, stage attempts and
       five-locale drafts; no failed stage can become published.
-- [ ] Jev act/confirm/hold/error outcomes map to shadow/manual/published exactly as the
+- [x] Jev act/confirm/hold/error outcomes map to shadow/manual/published exactly as the
       approved state machine requires, and five locales publish in one transaction.
-- [ ] Administrators can manage sources/settings and review, retry, reject or publish a
+- [x] Administrators can manage sources/settings and review, retry, reject or publish a
       candidate from `/admin/news`; the navigation badge shows pending review work.
-- [ ] Brand assets have stable same-origin URLs and the BFF streams only allowed image
+- [x] Brand assets have stable same-origin URLs and the BFF streams only allowed image
       content types; the feature and all vertical auto-publish switches ship off.
-- [ ] Focused API and web tests cover security, idempotency, rollback and review flows.
+- [x] Focused API and web tests cover security, idempotency, rollback and review flows.
 
 ## Steps
 
-- [ ] Add schema, state machine, safe fetch/feed parsing, scheduler/jobs and AI/Jev stages.
-- [ ] Add atomic guide bundle publication, admin API, asset endpoint and audit metadata.
-- [ ] Add the five-language admin workspace, review badge and binary asset proxy.
-- [ ] Add disabled scheduler services, focused tests and repository checks.
+- [x] Add schema, state machine, safe fetch/feed parsing, scheduler/jobs and AI/Jev stages.
+- [x] Add atomic guide bundle publication, admin API, asset endpoint and audit metadata.
+- [x] Add the five-language admin workspace, review badge and binary asset proxy.
+- [x] Add disabled scheduler services, focused tests and repository checks.
 
 ## How to verify
 
@@ -89,3 +89,6 @@ npm run check:tasks
   models and localized copy live inside the new module instead.
 - No production deploy, migration, source activation or auto-publish activation is part
   of this task.
+- Final verification: API `4128 passed, 368 skipped`; Web full suite `3212 passed`;
+  focused news/BFF suite `30 passed`; Ruff, API mypy, Web lint/typecheck, i18n and task
+  checks passed. Migration `0083:0084` offline SQL generation passed.
