@@ -263,6 +263,1018 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Changing domain registrars: transfer locks, authorization codes and keeping DNS working",
+      "description": "Moving a domain to another registrar changes who manages its registration; it does not automatically move your website or email. This guide covers eligibility, common locks, authorization codes and the application process. DNS, nameserver and email checks help users in Taiwan hand over domains such as .com, while reminding them to check the separate rules for .tw and other extensions.",
+      "hero": {
+        "src": "/guides/domain-registrar-transfer/hero-en.jpg",
+        "alt": "An original illustration of a document, a management shield and a server, representing authorization, administrative handover and continued DNS service.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If you want to manage your domains in one account or move to a registrar that is easier to use, you usually do not need to rebuild your entire website. This work primarily hands the domain's registration management to another service. Your existing web host and mailboxes can remain where they are, provided the relevant DNS services continue to work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Divide this handover into two checklists: one for who manages the domain, when it expires and how it renews; another for where the name currently directs website and email traffic. Check both, so you do not end up seeing the domain in your new account while customers cannot open your site or send you email."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm that a registrar transfer is what you need",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Changing web hosts, changing DNS hosting, changing the domain registrant and transferring to another registrar are different operations. If you only want the existing domain to use a new host, you may only need to adjust the website's DNS records. A registrar transfer is appropriate when you want to manage the same domain on another platform. Confirm your purpose first to avoid starting unnecessary changes at the same time."
+        },
+        {
+          "type": "paragraph",
+          "text": "The new registrar must also support your domain extension and its current status. Alongside the transfer-in fee, check subsequent renewals, currency, payment methods and DNS features. Some services impose their own conditions on nameserver use. Comparing only the first year's price does not establish that every existing setting can remain after the transfer."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Identify the current registrar, domain extension, expiration date and management account.",
+            "Confirm that the new registrar accepts the domain, and read its transfer-in and renewal conditions.",
+            "Decide whether DNS will change at the same time; if so, schedule a separate DNS handover."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Check eligibility and the reason for a lock, not just the unlock button",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For generic top-level domains covered by ICANN policy, the official policy in effect on the verification date still listed sixty-day restrictions related to initial registration, a previous registrar transfer and certain changes of registrant. The conditions and available options differ between these situations. Simply reaching sixty days is not the sole test that guarantees every domain can be transferred."
+        },
+        {
+          "type": "paragraph",
+          "text": "A normal transfer lock that the registrant can remove is also different from restrictions caused by policy, disputes or other domain statuses. Check the reason shown in the account and the date on which transfer becomes possible; ask the existing registrar to explain any inconsistent information. If you are already preparing a transfer, do not casually change registrant details without reading the consequences: some changes can trigger a new lock."
+        },
+        {
+          "type": "paragraph",
+          "text": "The ICANN process in this article cannot be applied directly to every country-code domain. For .tw, .台灣 and other extensions, check the current rules of the registry and the registrar handling the request. If a domain is expired, in redemption or in dispute, first establish how that status must be handled, then plan the transfer. Do not wait for the website to stop working before trying a registrar change as the remedy."
+        },
+        {
+          "type": "heading",
+          "text": "Save DNS settings and email dependencies before transferring",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the nameservers, website A or AAAA records, CNAME records, email MX records and related TXT records in a readable list. Include subdomains and verification records too. This list is your handover baseline: record each current value, its purpose and the responsible service. A screenshot of the homepage alone cannot later tell you which email verification record was missed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keeping the same nameserver names does not guarantee that the old registrar will continue providing DNS after the domain leaves. Namecheap's official transfer-in guidance, for example, distinguishes externally hosted DNS from the old registrar's default DNS. Ask the original service whether DNS will remain available after transfer. If DNS must change, create and verify the complete set of records before arranging the registration transfer."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a domain with DNSSEC enabled or custom nameservers, separately record those settings and follow both providers' handover documentation. Do not treat switching off every security feature as a universal step. Understand which setting needs updating, when to verify it and how to restore normal protection. If you are unfamiliar with the process, give both support teams the settings list to check."
+        },
+        {
+          "type": "heading",
+          "text": "Get the authorization code, then apply through the new registrar",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An authorization code may be called an Auth-Code, AuthInfo, EPP code or transfer code. It helps confirm authorization for the transfer. Obtain it through the existing registrar's account process, and remove the transfer lock you are allowed to change when required. Enter the code only in the verified official transfer-in interface of the new registrar. Do not include it in public screenshots or ordinary collaboration documents."
+        },
+        {
+          "type": "paragraph",
+          "text": "Enter the complete domain at the new registrar, check the spelling and extension, then enter the authorization code and confirm the payment items. During transfer, you may need to respond to confirmations or exceptions. Sign in directly to the official account to check the status, and ensure the current contact email can receive messages. If an email does not arrive, check spam and account notifications before repeatedly submitting the application."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Sign in to the existing registrar, confirm eligibility, obtain the authorization code and remove the transfer lock as instructed.",
+            "Sign in to the new registrar's transfer-in page and check the domain, hosting conditions, fees and application summary.",
+            "After submitting, save the order or case identifier and track the status and required confirmations on both sides."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Handle waiting and failures according to the actual status",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Payment completed, application submitted and registrar changed are different states. Do not close the old account just because a payment was charged, or cancel and restart merely because nothing changed for one day. Monitor the expected processing time shown by the service. If it is exceeded, give support the case number, status and error message so they can investigate the same application."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the authorization code is reported as incorrect, check for extra spaces, whether you are using the latest generated code and whether it belongs to the correct domain. For a lock, registrant confirmation or domain-status issue, address that specific cause; generating another code may not help. Unless the official procedure requires it, do not submit transfer-in requests for the same domain to several registrars at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the existing website or mailbox suddenly stops working during transfer, check DNS responses and the original DNS service's status before investigating the web host. A registration transfer is not a deployment of website content; evidence of failures differs between the two. Keep the time of the outage and a change log to help identify whether the problem lies in the application, DNS handover or another service."
+        },
+        {
+          "type": "heading",
+          "text": "After completion, check management, DNS and billing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Confirm that the new registrar account can manage the domain, and use the applicable official lookup service to check the registrar status. Then check the nameservers and important records, open the website from different networks, and send an email from an external mailbox and reply to it. A transfer-completion notice confirms the registration handover; it does not replace website and email acceptance checks."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recheck the expiration date, automatic renewal, payment method, contact details and account protection. Whether the transfer-in fee extends the registration, by how much, and what exceptions apply after a recent renewal all depend on the domain and service conditions. Do not state that a transfer always adds one free year. Put the next renewal date in your calendar and keep the payment and transfer records."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, list any hosting, DNS, email or other domains that still remain in the old account. Stop only the items you no longer need so that you do not cancel services still in use. Keep an updated domain-handover sheet: the next person taking over will then know who is responsible for the registrar, DNS and web hosting."
+        },
+        {
+          "type": "image",
+          "src": "/guides/domain-registrar-transfer/diagram-1-en.svg",
+          "alt": "An original four-step diagram: confirm transfer eligibility, save the DNS and email checklist, apply with an authorization code, then verify registration management, the website and email.",
+          "width": 1600,
+          "height": 900,
+          "caption": "After the transfer completes, check every service that depends on the domain.",
+          "description": "An original four-step diagram: confirm transfer eligibility, save the DNS and email checklist, apply with an authorization code, then verify registration management, the website and email.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item to hand over",
+            "Where to check",
+            "Evidence of completion"
+          ],
+          "rows": [
+            [
+              "Registration management",
+              "New registrar and official lookup",
+              "The correct domain is managed by the new service"
+            ],
+            [
+              "Transfer eligibility",
+              "Existing registrar status and applicable policy",
+              "Restrictions are understood and application conditions are met"
+            ],
+            [
+              "DNS resolution",
+              "Nameservers and record list",
+              "Website and subdomains resolve correctly"
+            ],
+            [
+              "Email",
+              "MX, verification records and actual mailboxes",
+              "External incoming mail and replies succeed"
+            ],
+            [
+              "Renewal and access",
+              "Billing settings in the new account",
+              "Expiration, payment and the new responsible person are confirmed"
+            ]
+          ],
+          "caption": "Keep separate records for the registrar transfer and service acceptance checks."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not leave planning until the last day",
+          "text": "A transfer may require resolving a lock, confirming contact details or handling a payment exception. Check expiration status and allow time to act. An expired domain must be handled under its applicable rules; submitting a transfer request does not automatically restore a website."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Domain registration and management basics",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understanding DNS records and faults",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Domain and hosting renewal checklist",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICANN: current Transfer Policy",
+          "url": "https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ICANN: transfer FAQs for domain registrants",
+          "url": "https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap: nameservers and DNS when transferring in",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/257/83/will-the-nameservers-associated-with-my-domain-be-transferred-over/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare: registrar transfer-in prerequisites",
+          "url": "https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TWNIC: domain policy directory",
+          "url": "https://www.twnic.tw/dnservice/policy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ドメインのレジストラ変更：移管ロック、認証コード、DNSの継続を確認する",
+      "description": "ドメインのレジストラを変更すると、登録を管理するサービスが変わります。Webサイトのサーバーやメールまで自動で移るわけではありません。移管条件、主なロック理由、認証コードの取得と申請手順を整理し、DNS設定・ネームサーバー・送受信の確認表で、台湾の利用者が.comなどの管理を引き継ぐ準備を支援します。.twなどは、それぞれに適用される規則の確認も必要です。",
+      "hero": {
+        "src": "/guides/domain-registrar-transfer/hero-ja.jpg",
+        "alt": "書類、管理を表す盾、サーバーを並べ、認証、管理の引き継ぎ、名前解決の継続を示すオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ドメインを一つのアカウントでまとめて管理したい、あるいは操作しやすいレジストラに変えたい場合、通常はWebサイト全体を作り直す必要はありません。主に行うのは、ドメイン登録の管理を別のサービスに引き継ぐことです。関連するDNSサービスが継続して動作すれば、既存のWebサーバーやメールボックスは元の場所に残せます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎは二つの確認表に分けると整理できます。一つはドメインの管理者、有効期限、更新方法。もう一つは、その名前が現在Webサイトやメールをどこへ向けているかです。両方を確認すれば、新しいアカウントにドメインは表示されるのに、顧客がサイトを開けず、メールも送れないといった事態を避けやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "必要なのがレジストラ移管か確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サーバーの変更、DNS管理サービスの変更、ドメイン登録者の変更、別のレジストラへの移管は、それぞれ異なる操作です。既存のドメインを新しいサーバーに接続するだけなら、Webサイト用のDNS設定変更で済む場合があります。同じドメインを別の管理プラットフォームに移したいときに、レジストラ移管を検討します。目的を先に確認し、不要な変更を同時に始めないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しいレジストラが、利用中のドメインの末尾と現在の状態に対応していることも必要です。移管料金だけでなく、その後の更新、通貨、支払方法、DNS機能も確認します。ネームサーバーの利用方法に独自の条件を設けるサービスもあります。初年度の価格だけを比べて、移管後も既存の設定をすべて維持できるとは考えないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "現在のレジストラ、ドメインの末尾、有効期限、管理アカウントを確認する。",
+            "新しいレジストラが対象ドメインを受け入れることを確認し、移管と更新の条件を読む。",
+            "DNSも同時に変更するか決める。変更する場合は、名前解決の引き継ぎを別途計画する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "解除ボタンだけでなく、移管条件とロック理由を見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ICANNのポリシーが適用される一般的なトップレベルドメインを例にすると、確認日時点で有効な公式ポリシーには、新規登録後、前回のレジストラ移管後、特定の登録者変更後に関する六十日の制限が記載されています。それぞれ条件や選択可能な対応が異なるため、「六十日経過した」ことだけで、あらゆるドメインが必ず移管可能になるとは判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登録者が通常の操作で解除できる移管ロックと、ポリシー、紛争、その他の状態による制限も別です。アカウントに表示される理由と移管可能日を確認し、情報が食い違う場合は現在のレジストラに説明を求めます。すでに移管を準備しているなら、影響を読まずについでに登録者情報を変更しないでください。変更内容によっては新たなロックが発生します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事のICANNの手順を、すべての国別コードドメインにそのまま適用することはできません。.tw、.台灣などは、管理機関と受付レジストラの現行規則を確認してください。有効期限切れ、復旧期間、紛争などの状態なら、まずその状態に必要な対処を把握してから移管を計画します。サイトが停止してから、レジストラ変更で解決しようとしないことが大切です。"
+        },
+        {
+          "type": "heading",
+          "text": "移管前にDNS設定とメールの依存関係を保存する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ネームサーバー、Webサイト用のAまたはAAAAレコード、CNAME、メール用のMX、関連するTXTレコードを読みやすい一覧として保存します。サブドメインや認証用レコードも含めてください。この一覧が引き継ぎの基準になるため、現在値、用途、担当サービスを記録します。トップページのスクリーンショットだけでは、後からどのメール認証レコードが抜けたのか判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ネームサーバー名が変わらなくても、移管元のレジストラが移管後もDNSを提供し続けるとは限りません。例えばNamecheapの公式移管案内では、外部で管理するDNSと、移管元レジストラの標準DNSを区別しています。元のサービスに、移管後も名前解決を利用できるか確認しましょう。DNSを変更する必要があれば、完全なレコードを先に作成して検証し、その後に登録管理の移管を進めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DNSSECを有効にしているドメインや独自のネームサーバーを使うドメインは、それらの設定も別途記録し、新旧サービスの文書に従って引き継ぎます。すべてのセキュリティ機能を無条件で無効にすることを共通手順にしないでください。何を更新し、いつ確認し、どう通常の保護状態に戻すかを理解しておきます。不慣れであれば設定一覧を両方のサポートに提示し、確認を依頼します。"
+        },
+        {
+          "type": "heading",
+          "text": "認証コードを取得し、新しいレジストラで申請する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "認証コードはAuth-Code、AuthInfo、EPP code、transfer codeなどと呼ばれ、移管の権限確認に使われます。現在のレジストラのアカウント手順で取得し、必要に応じて操作可能な移管ロックを解除します。コードを入力するのは、正規のものと確認できた新しいレジストラの公式移管画面だけにしてください。公開するスクリーンショットや一般的な共同作業文書に載せないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しいレジストラでドメイン名を省略せず入力し、綴りと末尾を確認してから認証コードを入力し、支払項目を確認します。移管中は通知への確認操作や例外対応が必要になる場合があります。公式アカウントへ直接ログインして状態を確認し、現在の連絡先メールで受信できるようにしておきましょう。メールが届かない場合は、迷惑メールやアカウント内通知を確認し、申請を何度も送信しないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "現在のレジストラにログインし、移管条件を確認して認証コードを取得し、手順に従って移管ロックを解除する。",
+            "新しいレジストラの移管画面にログインし、ドメイン、管理サービスの条件、料金、申請内容を確認する。",
+            "送信後は注文番号や案件番号を保存し、両サービスの状態と必要な確認操作を追跡する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "実際の状態に応じて待機や失敗に対応する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "支払完了、申請送信済み、レジストラ変更済みは、それぞれ異なる状態です。課金されたからといって元のアカウントを閉じたり、一日変化がないだけで取り消して最初からやり直したりしないでください。サービスが示す処理見込み時間を基準に確認します。時間を超えた場合は案件番号、状態、エラーメッセージを伝え、サポートが同じ申請を調べられるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "認証コードが誤っていると表示されたら、余分な空白がないか、最新のコードを使っているか、正しいドメインの欄に入力したかを確認します。ロック、登録者の確認、ドメインの状態が原因なら、その原因に対応してください。コードを再発行するだけでは解決しない場合があります。公式手順で必要とされない限り、同じドメインの移管を複数のレジストラへ同時に申請しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移管中に既存のサイトやメールが突然使えなくなった場合、まずDNS応答と元のDNSサービスの状態を確認し、その後にサーバーを調べます。登録管理の移管はWebサイトのコンテンツのデプロイではなく、障害を示す証拠も異なります。発生時刻と変更履歴を残すと、申請、DNSの引き継ぎ、その他のサービスのどこに問題があるか判断しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "完了後に管理、名前解決、請求を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新しいレジストラのアカウントで対象ドメインを管理できることを確認し、適切な公式照会サービスでレジストラの状態も確かめます。次にネームサーバーと重要なレコードを確認し、異なるネットワークからサイトを開き、外部のメールボックスから送信して返信も試します。移管完了通知が示すのは登録管理の引き継ぎであり、サイトとメールの動作確認を代替するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有効期限、自動更新、支払方法、連絡先、アカウント保護を再確認します。移管料金に登録期間の延長が含まれるか、どれだけ延長されるか、更新直後の移管にどんな例外があるかは、ドメインとサービスの条件ごとに確認してください。「必ず一年無料で追加される」と一般化しないことが大切です。次回更新日をカレンダーに登録し、支払と移管の記録を保存します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、元のアカウントに残るサーバー、DNS、メール、他のドメインを整理します。不要になった項目だけを停止し、利用中のサービスまでまとめて解約しないようにしてください。更新したドメイン引き継ぎ表を残しておけば、後で担当者が交代しても、レジストラ、DNS、Webサーバーをそれぞれ誰が担当しているか分かります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/domain-registrar-transfer/diagram-1-ja.svg",
+          "alt": "移管条件の確認、DNSとメールの一覧保存、認証コードによる申請、登録管理・サイト・メールの検証という四段階を示すオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "移管が完了しても、ドメインに依存する各サービスを確認します。",
+          "description": "移管条件の確認、DNSとメールの一覧保存、認証コードによる申請、登録管理・サイト・メールの検証という四段階を示すオリジナル図解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "引き継ぐ項目",
+            "確認する場所",
+            "完了を示す証拠"
+          ],
+          "rows": [
+            [
+              "登録管理",
+              "新しいレジストラと公式照会",
+              "正しいドメインを新サービスで管理できる"
+            ],
+            [
+              "移管条件",
+              "元のレジストラの状態と適用ポリシー",
+              "制限の理由が明確で申請条件を満たす"
+            ],
+            [
+              "DNSの名前解決",
+              "ネームサーバーとレコード一覧",
+              "サイトとサブドメインを正しく名前解決できる"
+            ],
+            [
+              "メール",
+              "MX、認証設定、実際のメールボックス",
+              "外部からの受信と返信に成功する"
+            ],
+            [
+              "更新と権限",
+              "新アカウントの請求設定",
+              "有効期限、支払、引き継ぎ担当者を確認済み"
+            ]
+          ],
+          "caption": "レジストラ移管とサービスの動作確認は、別々に記録します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "最終日まで準備を先延ばしにしない",
+          "text": "移管ではロック、連絡先の確認、支払の例外に対応する必要が生じる場合があります。有効期限の状態を先に確認し、対応時間を確保しましょう。期限切れドメインには適用される規則に従って対処し、移管申請を送ればサイトが自動で復旧するとは考えないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメイン登録と管理の基本",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNSレコードと障害の見分け方",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメインとサーバーの更新チェックリスト",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICANN：現行のTransfer Policy",
+          "url": "https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ICANN：ドメイン登録者向け移管FAQ",
+          "url": "https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap：移管時のネームサーバーとDNS",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/257/83/will-the-nameservers-associated-with-my-domain-be-transferred-over/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare：レジストラへの移管前提条件",
+          "url": "https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TWNIC：ドメイン関連ポリシーの案内",
+          "url": "https://www.twnic.tw/dnservice/policy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "도메인 등록기관 변경: 이전 잠금, 인증 코드와 DNS 유지 확인",
+      "description": "도메인 등록기관을 바꾸면 도메인 등록을 관리하는 서비스가 달라집니다. 웹 호스팅과 이메일까지 자동으로 옮겨지지는 않습니다. 이 글은 이전 자격, 주요 잠금 사유, 인증 코드 발급과 신청 절차를 정리합니다. DNS 설정, 네임서버, 이메일 송수신 점검표로 대만 사용자가 .com 등의 관리 권한을 인계하도록 돕고, .tw 등에는 별도 규칙을 확인해야 함을 설명합니다.",
+      "hero": {
+        "src": "/guides/domain-registrar-transfer/hero-ko.jpg",
+        "alt": "인증, 관리 인계와 DNS의 지속적인 작동을 나타내는 문서, 관리 방패, 서버 카드의 오리지널 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "도메인을 한 계정에서 모아 관리하거나 사용하기 편한 등록기관으로 바꾸고 싶다고 해서 보통 웹사이트 전체를 다시 만들 필요는 없습니다. 핵심은 도메인 등록 관리 관계를 다른 서비스에 넘기는 것입니다. 관련 DNS 서비스가 계속 작동한다면 기존 웹 호스팅과 메일함은 각각 원래 위치에 둘 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이번 인계를 두 개의 목록으로 나누어 보세요. 하나는 누가 도메인을 관리하는지, 언제 만료되는지, 어떻게 갱신하는지이고, 다른 하나는 현재 이 이름이 웹사이트와 이메일을 어디로 연결하는지입니다. 두 목록을 모두 확인해야 새 계정에 도메인은 보이지만 고객은 사이트를 열거나 메일을 보내지 못하는 상황을 피할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "정말 필요한 작업이 등록기관 이전인지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅 변경, DNS 관리 서비스 변경, 도메인 등록자 변경, 다른 등록기관으로의 이전은 서로 다른 작업입니다. 기존 도메인을 새 호스팅에 연결하려는 것이라면 웹사이트의 DNS 설정만 조정하면 될 수도 있습니다. 같은 도메인을 다른 관리 플랫폼에서 관리하려는 경우에 등록기관 이전 절차를 진행합니다. 목적을 먼저 확인해 불필요한 변경을 동시에 시작하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 등록기관이 해당 도메인 확장자와 현재 상태를 지원해야 합니다. 이전 수수료뿐 아니라 이후 갱신, 통화, 결제 방법과 DNS 기능도 확인하세요. 네임서버 사용에 자체 조건을 두는 서비스도 있습니다. 첫해 가격만 비교하고 이전 후에도 기존 설정을 모두 유지할 수 있다고 가정해서는 안 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "현재 등록기관, 도메인 확장자, 만료일과 관리 계정을 확인합니다.",
+            "새 등록기관이 해당 도메인을 받는지 확인하고 이전 및 갱신 조건을 읽습니다.",
+            "DNS도 함께 바꿀지 결정합니다. 바꾼다면 DNS 인계를 별도로 계획합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "잠금 해제 버튼뿐 아니라 자격과 잠금 사유 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ICANN 정책이 적용되는 일반 최상위 도메인을 예로 들면, 확인일에 유효한 공식 정책에는 최초 등록 후, 이전 등록기관 이전 후, 특정 등록자 변경 후와 관련된 육십 일 제한이 명시되어 있습니다. 각 상황의 조건과 선택 가능한 조치는 서로 다릅니다. 단순히 육십 일이 지났다는 사실만으로 모든 도메인을 반드시 이전할 수 있다고 판단해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "등록자가 일반적으로 해제할 수 있는 이전 잠금은 정책, 분쟁이나 다른 상태로 인한 제한과도 다릅니다. 계정에 표시되는 사유와 이전 가능한 날짜를 먼저 확인하고, 정보가 서로 다르면 기존 등록기관에 설명을 요청하세요. 이미 이전을 준비하고 있다면 영향을 읽지 않은 채 등록자 정보까지 덧붙여 변경하지 마세요. 일부 변경은 새로운 잠금을 유발할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글의 ICANN 절차를 모든 국가 코드 도메인에 그대로 적용할 수는 없습니다. .tw, .台灣 또는 다른 확장자는 관리기관과 신청을 받는 등록기관의 현행 규칙을 확인해야 합니다. 만료, 복구 기간 또는 분쟁 상태라면 그 상태를 어떻게 처리해야 하는지 먼저 파악한 뒤 이전을 계획하세요. 웹사이트가 멈춘 뒤에야 등록기관 변경으로 해결하려 하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "이전 전에 DNS와 이메일 의존 관계 저장하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "네임서버, 웹사이트 A 또는 AAAA 레코드, CNAME, 이메일 MX와 관련 TXT 레코드를 읽기 쉬운 목록으로 저장합니다. 하위 도메인과 인증 레코드도 포함하세요. 이 목록은 인계 기준이므로 현재 값, 용도와 담당 서비스를 기록합니다. 홈페이지 화면만 캡처하면 나중에 어떤 이메일 인증 레코드가 누락됐는지 알 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "네임서버 이름이 그대로라고 해서 기존 등록기관이 도메인 이전 후에도 DNS를 계속 제공한다는 보장은 없습니다. 예를 들어 Namecheap의 공식 이전 안내는 외부에서 관리하는 DNS와 기존 등록기관의 기본 DNS를 구분합니다. 이전 후에도 DNS를 유지하는지 원래 서비스에 먼저 확인하세요. DNS 변경이 필요하다면 전체 레코드를 만들고 검증한 뒤 등록 관리 이전을 진행해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "DNSSEC을 사용하거나 사용자 지정 네임서버를 쓰는 도메인은 관련 설정도 따로 기록하고 새 서비스와 기존 서비스의 문서에 따라 인계합니다. 모든 보안 기능을 일괄적으로 끄는 일을 공통 절차로 삼지 마세요. 어떤 항목을 갱신해야 하는지, 언제 검증하고 어떻게 정상적인 보호 상태로 복구할지 알아야 합니다. 익숙하지 않다면 설정 목록을 양쪽 지원팀에 제공해 확인을 요청하세요."
+        },
+        {
+          "type": "heading",
+          "text": "인증 코드를 받은 뒤 새 등록기관에서 신청하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "인증 코드는 Auth-Code, AuthInfo, EPP code 또는 transfer code라고도 하며, 이전 권한을 확인하는 데 사용됩니다. 기존 등록기관의 계정 절차로 발급받고 필요할 때 해제 가능한 이전 잠금을 해제합니다. 코드는 정식 서비스임을 확인한 새 등록기관의 공식 이전 화면에만 입력하세요. 공개 스크린샷이나 일반 협업 문서에 넣지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 등록기관에서 전체 도메인 이름을 입력하고 철자와 확장자를 확인한 뒤 인증 코드를 입력하고 결제 항목을 검토합니다. 이전 중에는 안내에 따른 확인이나 예외 처리가 필요할 수 있습니다. 공식 계정에 직접 로그인해 상태를 확인하고 현재 연락 이메일로 수신할 수 있는지 확인하세요. 메일이 오지 않으면 스팸함과 계정 알림부터 살펴보고 신청을 연속으로 다시 보내지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "기존 등록기관에 로그인해 자격을 확인하고 인증 코드를 발급받은 뒤 절차에 따라 이전 잠금을 해제합니다.",
+            "새 등록기관의 이전 페이지에 로그인해 도메인, 관리 서비스 조건, 비용과 신청 요약을 확인합니다.",
+            "제출 후 주문 또는 문의 식별번호를 저장하고 양쪽의 상태와 필요한 확인 절차를 추적합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "실제 상태에 맞춰 대기와 실패 처리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "결제 완료, 신청 제출, 등록기관 변경 완료는 서로 다른 상태입니다. 결제됐다는 이유로 기존 계정을 닫거나 하루 동안 변화가 없다는 이유로 취소하고 다시 시작하지 마세요. 서비스가 표시하는 예상 처리 시간을 기준으로 지켜보세요. 시간이 지났다면 문의 번호, 상태와 오류 메시지를 제공해 지원팀이 같은 신청 건을 찾을 수 있게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인증 코드 오류가 표시되면 불필요한 공백이 있는지, 가장 최근에 발급한 코드를 쓰는지, 올바른 도메인에 입력했는지 확인합니다. 잠금, 등록자 확인 또는 도메인 상태가 원인이라면 해당 원인을 처리해야 합니다. 코드를 새로 발급해도 해결되지 않을 수 있습니다. 공식 절차상 필요한 경우가 아니라면 같은 도메인의 이전을 여러 등록기관에 동시에 신청하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 도중 기존 웹사이트나 메일함이 갑자기 작동하지 않으면 DNS 응답과 원래 DNS 서비스의 상태를 먼저 확인한 뒤 호스팅을 점검합니다. 등록 이전은 웹사이트 콘텐츠 배포가 아니므로 장애를 판단하는 증거도 다릅니다. 장애 발생 시각과 변경 기록을 남기면 신청, DNS 인계 또는 다른 서비스 중 어디에서 문제가 생겼는지 파악하는 데 도움이 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "완료 후 관리, DNS와 결제 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 등록기관 계정에서 해당 도메인을 관리할 수 있는지 확인하고, 적절한 공식 조회 서비스로 등록기관 상태를 검증합니다. 이어서 네임서버와 중요한 레코드를 확인하고, 다른 네트워크에서 웹사이트를 열며 외부 메일함에서 메일을 보낸 뒤 답장도 해봅니다. 이전 완료 안내는 등록 관리 인계를 증명할 뿐 웹사이트와 이메일 검수를 대신하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "만료일, 자동 갱신, 결제 방법, 연락 정보와 계정 보호를 다시 확인합니다. 이전 요금에 등록 기간 연장이 포함되는지, 얼마나 연장되는지, 갱신 직후 이전에 어떤 예외가 있는지는 도메인과 서비스 조건에 따라 확인해야 합니다. 무조건 일 년을 더 준다고 일반화하지 마세요. 다음 갱신일을 달력에 기록하고 결제 및 이전 기록을 보관합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 기존 계정에 남아 있는 호스팅, DNS, 이메일이나 다른 도메인을 정리합니다. 더 이상 필요 없는 항목만 중단해 아직 쓰는 서비스까지 함께 취소하지 않도록 하세요. 갱신한 도메인 인계표를 남기면 나중에 담당자가 바뀌더라도 등록기관, DNS와 웹 호스팅을 누가 맡는지 분명히 알 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/domain-registrar-transfer/diagram-1-ko.svg",
+          "alt": "이전 자격 확인, DNS와 이메일 목록 저장, 인증 코드로 신청, 등록 관리·웹사이트·이메일 검증의 네 단계를 보여주는 오리지널 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "이전이 끝난 뒤에도 도메인에 의존하는 모든 서비스를 확인하세요.",
+          "description": "이전 자격 확인, DNS와 이메일 목록 저장, 인증 코드로 신청, 등록 관리·웹사이트·이메일 검증의 네 단계를 보여주는 오리지널 도해.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "인계할 항목",
+            "확인 위치",
+            "완료 증거"
+          ],
+          "rows": [
+            [
+              "등록 관리",
+              "새 등록기관과 공식 조회",
+              "올바른 도메인을 새 서비스에서 관리함"
+            ],
+            [
+              "이전 자격",
+              "기존 등록기관 상태와 적용 정책",
+              "제한 사유가 명확하고 신청 조건을 충족함"
+            ],
+            [
+              "DNS 확인",
+              "네임서버와 레코드 목록",
+              "웹사이트와 하위 도메인이 정상 해석됨"
+            ],
+            [
+              "이메일",
+              "MX, 인증 설정과 실제 메일함",
+              "외부 메일 수신과 답장이 성공함"
+            ],
+            [
+              "갱신과 권한",
+              "새 계정의 결제 설정",
+              "만료일, 결제와 인계 담당자를 확인함"
+            ]
+          ],
+          "caption": "등록기관 이전과 서비스 검수는 각각 기록을 남깁니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "마지막 날까지 미루지 마세요",
+          "text": "이전 중에는 잠금, 연락 확인이나 결제 예외를 처리해야 할 수 있습니다. 만료 상태를 먼저 확인하고 처리 시간을 확보하세요. 이미 만료된 도메인은 적용 규칙에 따라 처리해야 하며, 이전 신청만 보내면 웹사이트가 자동으로 복구된다고 가정해서는 안 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인 등록과 관리의 기초",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 레코드와 장애 이해하기",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인과 호스팅 갱신 점검표",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICANN: 현행 Transfer Policy",
+          "url": "https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ICANN: 도메인 등록자 대상 이전 FAQ",
+          "url": "https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap: 이전 시 네임서버와 DNS",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/257/83/will-the-nameservers-associated-with-my-domain-be-transferred-over/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare: 등록기관 이전 사전 요구사항",
+          "url": "https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TWNIC: 도메인 관련 정책 안내",
+          "url": "https://www.twnic.tw/dnservice/policy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "域名更换注册商：转移锁、授权码与 DNS 持续运行",
+      "description": "域名更换注册商，转移的是注册管理关系，网站主机与邮件不会因此自动搬家。本文整理转移资格、常见锁定原因、授权码获取与申请流程，并用 DNS 保存、域名服务器及邮件收发验收表，帮助台湾用户安排 .com 等域名的管理交接，也提醒 .tw 等域名应核对各自适用的规则。",
+      "hero": {
+        "src": "/guides/domain-registrar-transfer/hero-zh-cn.jpg",
+        "alt": "原创文件、管理盾牌与主机图卡，表示授权、管理交接及域名解析持续运行。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "想把域名集中在同一个账号管理，或改用操作更方便的注册商，通常不需要重建整个网站。这项工作主要是把域名的注册管理关系交给另一家服务，原本的网站主机与邮箱可以各自保留在原处，前提是相关解析服务能够持续运行。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把这次交接分成两张清单：一张是谁管理域名、何时到期以及如何续费；另一张是这个名称目前把网站和邮件指向哪里。两张都核对完，才不至于出现新账号中看得到域名，客户却无法打开网站或发送邮件的情况。"
+        },
+        {
+          "type": "heading",
+          "text": "确认需要的是注册商转移",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更换主机、变更 DNS 托管、更改域名注册人以及转到另一家注册商，都是不同操作。如果只是让原域名使用新主机，可能只需要调整网站解析；如果要把同一个域名放到另一个管理平台，才进入注册商转移流程。先确认目的，避免同时启动不必要的变更。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新注册商也必须支持你的域名后缀与当前状态。除了转入费用，还要检查之后的续费、币种、支付方式及 DNS 功能。有些服务对域名服务器的使用方式有自己的条件，不能只比较第一年的价格，就假定转入后能保持原有的全部设置。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "查明当前注册商、域名后缀、到期日与管理账号。",
+            "确认新注册商接受该域名，并阅读转入与续费条件。",
+            "决定这次是否同时更换 DNS；如果要更换，另行安排解析交接。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "查看资格与锁定原因，不只寻找解锁按钮",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以适用 ICANN 政策的通用顶级域名为例，查证日的官方生效政策仍列有首次注册后、上次注册商转移后，以及特定注册人变更后的六十天相关限制。各情形的条件与可选择的安排不同，不能把“满六十天”当作所有域名都一定可以转移的唯一判断标准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通常可由注册人解除的转移锁，与政策、争议或其他状态造成的限制也不同。先查看账号显示的原因与可转移日期，信息不一致时请原注册商说明。如果已经在准备转移，不要在未阅读影响的情况下顺手更改注册人资料；某些变更可能触发新的锁定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文的 ICANN 流程不能直接套用于所有国家和地区代码域名。.tw、.台灣 或其他后缀，应核对管理机构与受理注册商的现行规则。遇到到期、赎回或争议状态时，先弄清该状态的处理方式，再安排转移，不要等网站停摆后才尝试通过更换注册商解决。"
+        },
+        {
+          "type": "heading",
+          "text": "转移前保存 DNS 与邮件依赖关系",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把域名服务器、网站 A 或 AAAA 记录、CNAME、邮件 MX 及相关 TXT 记录保存成可读清单，子域名与验证记录也要列入。这份清单是交接基准，应记录当前值、用途与负责的服务。只截取首页画面，日后就无法知道遗漏了哪条邮件验证记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "域名服务器名称保持不变，不代表原注册商一定会在域名转出后继续提供 DNS。Namecheap 的官方转入说明就区分了外部托管与原注册商默认 DNS 的情况。先向原服务确认转出后是否保留解析；如果需要更换 DNS，应先建立完整记录并验证，再安排注册管理转移。"
+        },
+        {
+          "type": "paragraph",
+          "text": "已经启用 DNSSEC 或使用自定义域名服务器的域名，还要单独记录相关设置，并依照新旧服务的文档交接。不要把一律关闭所有安全功能当作通用步骤；要知道哪一项需要更新、何时验证，以及如何恢复正常保护。如果不熟悉，可以把设置清单交给双方客服确认。"
+        },
+        {
+          "type": "heading",
+          "text": "取得授权码，再向新注册商提出申请",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "授权码可能称为 Auth-Code、AuthInfo、EPP code 或 transfer code，用于协助确认转移授权。依照原注册商的账号流程获取，并在需要时解除可操作的转移锁。授权码应只填入已经确认的新注册商官方转入界面，不要放进公开截图或普通协作文档。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在新注册商处输入完整域名，核对拼写与后缀，再填入授权码并确认付款项目。转移期间可能需要根据通知确认或处理异常，请直接登录官方账号查看状态，并确保当前联系邮箱能够收信。没有收到邮件时，先检查垃圾邮件和账号内通知，不要连续重复提交申请。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "登录原注册商，确认资格、取得授权码，并按流程解除转移锁。",
+            "登录新注册商的转入页面，核对域名、托管条件、费用及申请摘要。",
+            "提交后保存订单或工单编号，跟踪双方状态与必要的确认操作。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "根据实际状态处理等待与失败",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "付款完成、申请已提交与注册商已变更，是不同状态。不要看到扣款就关闭旧账号，也不要因为一天没有变化就取消重来。按照服务显示的预计处理时间观察；超过时间时提供工单编号、状态与错误信息，让客服能够找到同一笔申请。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果显示授权码错误，确认是否有多余空格、是否使用最新生成的代码，以及是否填入了正确的域名。如果是锁定、注册人确认或域名状态问题，应处理对应原因，重新生成授权码不一定有用。除非官方流程要求，否则不要同时向多家注册商提交同一域名的转入申请。"
+        },
+        {
+          "type": "paragraph",
+          "text": "转移过程中，如果既有网站或邮箱突然失效，先检查 DNS 响应与原解析服务状态，再检查主机服务。注册转移不是网站内容部署，两者的故障证据不同。保留故障发生时间与修改记录，有助于判断问题出在申请、DNS 交接还是其他服务。"
+        },
+        {
+          "type": "heading",
+          "text": "完成后检查管理、解析与账务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "确认新注册商账号能够管理该域名，并通过适用的官方查询服务核对注册商状态。接着检查域名服务器与重要记录，用不同网络打开网站，再从外部邮箱发信并回复。转入完成通知只证明注册管理已交接，不能替代网站和邮件验收。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重新核对到期日、自动续费、付款方式、联系信息与账号保护。转入费是否增加注册期限、增加多少，以及刚续费后转移的例外，都要依照域名及服务条件确认，不把“一定再送一年”写成通则。把下次续费日期记入日历，并保留付款与转移记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后整理旧账号中仍有哪些主机、DNS、邮件或其他域名。只停止不再需要的项目，避免把仍在使用的服务一起取消。保留一份更新后的域名交接表，日后更换管理人员时，就能明确知道注册商、解析与网站主机分别由谁负责。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/domain-registrar-transfer/diagram-1-zh-cn.svg",
+          "alt": "原创四步骤图解：确认转移资格，保存 DNS 与邮件清单，使用授权码申请，再验证注册管理和网站邮件。",
+          "width": 1600,
+          "height": 900,
+          "caption": "转移完成后，仍要确认每一项依赖域名的服务。",
+          "description": "原创四步骤图解：确认转移资格，保存 DNS 与邮件清单，使用授权码申请，再验证注册管理和网站邮件。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "需要交接的项目",
+            "确认位置",
+            "完成证据"
+          ],
+          "rows": [
+            [
+              "注册管理",
+              "新注册商与官方查询",
+              "正确域名已由新服务管理"
+            ],
+            [
+              "转移资格",
+              "原注册商状态与适用政策",
+              "限制原因清楚且符合申请条件"
+            ],
+            [
+              "DNS 解析",
+              "域名服务器及记录清单",
+              "网站与子域名正常解析"
+            ],
+            [
+              "电子邮件",
+              "MX、验证与实际邮箱",
+              "外部发入及回复成功"
+            ],
+            [
+              "续费与权限",
+              "新账号账务设置",
+              "到期日、付款与接手人已确认"
+            ]
+          ],
+          "caption": "注册商转移与服务验收分别留下记录。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不要等到最后一天才安排",
+          "text": "转移可能需要处理锁定、联系确认或付款异常。先核对到期状态并留出处理时间；已经到期的域名要按其适用规则处理，不能假定提交转移申请就会自动恢复网站。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "域名注册与管理基础",
+              "kind": "life",
+              "slug": "domain-registration-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "识别 DNS 记录与故障",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "域名与主机续费清单",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "ICANN：现行 Transfer Policy",
+          "url": "https://www.icann.org/en/contracted-parties/accredited-registrars/resources/domain-name-transfers/policy",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "ICANN：域名注册人转移常见问题",
+          "url": "https://www.icann.org/resources/pages/name-holder-faqs-2017-10-10-en",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Namecheap：转入时的域名服务器与 DNS",
+          "url": "https://www.namecheap.com/support/knowledgebase/article.aspx/257/83/will-the-nameservers-associated-with-my-domain-be-transferred-over/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudflare：注册商转入前置要求",
+          "url": "https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TWNIC：域名相关政策入口",
+          "url": "https://www.twnic.tw/dnservice/policy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
