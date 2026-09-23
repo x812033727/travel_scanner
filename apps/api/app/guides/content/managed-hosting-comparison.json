@@ -235,6 +235,906 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Comparing WordPress hosting: assess providers with one requirements worksheet",
+      "description": "To compare WordPress hosting, align site content, service responsibilities and billing periods before interpreting plan differences. This guide offers a worksheet and verification process, separates official specifications from your own measurements and unresolved conditions, and covers renewal, backups, support and exit costs. It is for users in Taiwan choosing their first host or considering a different provider, without ranking services by a single speed test or promotional monthly price.",
+      "hero": {
+        "src": "/guides/managed-hosting-comparison/hero-en.jpg",
+        "alt": "An original comparison illustration combining a requirements document, hosting equipment and a budget calculator.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Hosting comparisons often put unlike things side by side: an introductory monthly equivalent paid several years upfront versus monthly payments, or an empty site versus one full of images and plugins. Even a tidy table may not answer which plan suits your site. Align the units of measurement and actual work requirements before comparing."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is an evaluation method, not a provider performance test or a brand ranking. Use the same worksheet for your current host and two candidate plans, then ask each provider's support team about unresolved points. The result should be a record explaining your trade-offs, rather than just a total score that appears objective."
+        },
+        {
+          "type": "heading",
+          "text": "Write down the requirements you cannot do without",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Describe requirements through real site tasks: posting new articles each week, receiving visitor inquiries, keeping existing mailboxes or providing member login. Then list site counts, file and database sizes, required plugins and expected update frequency. If reliable traffic records are unavailable, mark them unknown rather than inventing monthly visitor figures to fill the worksheet."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sort requirements into essential, acceptable alternatives and not currently needed. For example, a community-class site may need a registration form but no online payments. Verify submission and notifications first, rather than using the highest ecommerce tier as the common starting point. If a plan cannot support a required plugin or let you export data, resolve that gap before comparing prices and speed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also establish who handles maintenance: can you manage updates, failures and restoration, or do you need provider assistance? Products bearing the same managed label may offer different support scopes. Ask specifically who deals with plugin conflicts, backup restoration and migration. A tick in a feature table does not mean someone takes responsibility for the whole task."
+        },
+        {
+          "type": "heading",
+          "text": "Keep official specifications separate from unknown conditions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Fill out identical fields for each candidate plan, including site limits, resource allowances, data-center options, backups, staging, email and support. Add the official URL and date consulted beside each entry, and mark unclear items as awaiting confirmation. A blank does not mean included for free, and another plan's specifications should not fill missing information."
+        },
+        {
+          "type": "paragraph",
+          "text": "FastComet's public plan table, for example, lists site counts, storage and backup retention by plan, while Cloudways billing documentation distinguishes products and billing methods. These sources can help you design worksheet fields; they cannot directly establish that one provider must be better. Recheck the actual product, plan and checkout terms selected for this purchase."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask support questions with a concrete scenario, such as: if an update prevents site login, which backup will you restore, and is there an extra charge? Keep the written answer and identify the applicable plan. One quick reply establishes only what happened in that interaction, not a guarantee of long-term support quality. If you never contacted support, do not describe someone else's experience as your own."
+        },
+        {
+          "type": "heading",
+          "text": "Run limited tests on matching copies of the same site",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If you have legitimate access to test accounts, make copies with the same content, theme and plugins, and align PHP, caching and other important settings. Record differences you cannot eliminate, such as data centers, platform caching or resource limits. Remove personal information from test data, and disable real payments and unnecessary notifications on test sites."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose the home page, a typical article and an interactive page rather than testing only the simplest blank page. Record the tool, time, test location, device type and login state, and repeat observations under similar conditions. Do not send large volumes of requests to sites without permission just to measure hosting. Load testing requires separate service permission and an agreed scope of impact."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Screen for essential requirements first and select two to three specific, comparable plans.",
+            "Copy the same site without sensitive data, recording versions, caching and differences that cannot be aligned.",
+            "Test several page types under similar conditions and keep every result, not just the best run.",
+            "Verify forms, login, backups and management workflows, then add the results to the requirements worksheet."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Understand what a speed report covers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's PageSpeed Insights provides both lab and real-user data. Lab data comes from tests under controlled conditions; real-user data reflects users' devices, networks and visit contexts. Their purposes differ. If they disagree, inspect the source and scope of each dataset instead of choosing only the more attractive number for your table."
+        },
+        {
+          "type": "paragraph",
+          "text": "Real-user data may be absent when there are too few samples, or it may fall back to the entire site's origin level. Its reporting period is also different from the test you just ran. Missing data on a new site does not prove the host is slow, and historical data after migration cannot immediately be treated as the new host's isolated performance. Record whether the data concerns one URL or the site level, and avoid comparing different scopes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The overall performance score includes effects from page content and frontend design, so it cannot be attributed to hosting alone. Images, fonts, third-party scripts and cache hits can change results. If the copies still use different plugins or layouts, correct the test conditions first. If that is impossible, state the limitations rather than claiming a fair speed comparison."
+        },
+        {
+          "type": "heading",
+          "text": "Compare total costs over the same period",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a common period, such as two or three years, and list the first term, renewals, required extras, migration and maintenance hours separately. Keep foreign-currency amounts in their original currency. If converting to New Taiwan dollars, state the exchange-rate date and that the result is an estimate. Promotions may require long prepayment, so compare both total payments and their timing, not just the average monthly amount."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose two fictional plans each charge six thousand for hosting over the same period, but one also requires a backup add-on costing two thousand in the same currency. They cannot be described as the same price. If the other takes more of your maintenance time, list that time estimate separately too. This example only illustrates how to complete the worksheet: it is not a provider quote and does not set a universal hourly value for everyone's time."
+        },
+        {
+          "type": "heading",
+          "text": "Explain the trade-offs and set a review point",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First confirm that all essential requirements are met, then consider whether extra convenience is worth paying for. You might record: we currently choose plan A because its backup and collaboration features better match our work; if membership features grow, reassess resources. This is more useful than declaring A permanently first. Someone taking over can see both the reasoning and the changes that would invalidate it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, record how to leave: how files, databases, domains, email and paid plugins can be transferred. Hosting can change with your needs, provided you control the data and administration. Updating the same worksheet before renewal makes decisions more consistent than starting over with a new recommendation ranking each time."
+        },
+        {
+          "type": "image",
+          "src": "/guides/managed-hosting-comparison/diagram-1-en.svg",
+          "alt": "A hosting comparison diagram covering essential requirements, tests under matching conditions, total costs over a shared period and an exit plan.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A comparison with clear conditions can be updated as your needs change.",
+          "description": "A hosting comparison diagram covering essential requirements, tests under matching conditions, total costs over a shared period and an exit plan.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Comparison field",
+            "Common basis needed",
+            "Evidence"
+          ],
+          "rows": [
+            [
+              "Requirements",
+              "Site count and essential features",
+              "Your own requirements list"
+            ],
+            [
+              "Responsibility",
+              "Scope of updates, backups and failures",
+              "Official documentation and written replies"
+            ],
+            [
+              "Performance",
+              "Content, settings and test context",
+              "Complete results and limitations"
+            ],
+            [
+              "Costs",
+              "Billing period and required extras",
+              "Checkout terms and renewal information"
+            ],
+            [
+              "Exit",
+              "Data and account portability",
+              "Export and migration procedures"
+            ]
+          ],
+          "caption": "Mark items you cannot verify as unknown; do not guess them into strengths or weaknesses."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Make the comparison repeatable",
+          "text": "Keep the specific plans, consultation dates, test conditions and unresolved items. Update the same worksheet when needs or prices change; do not turn one evaluation into a permanent ranking."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "How to plan a website budget",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "The differences between shared hosting, VPS and managed hosting",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: understanding PageSpeed Insights data",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: differences between lab and real-user data",
+          "url": "https://web.dev/articles/lab-and-field-data-differences",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet: plan comparison fields",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: monthly and hourly billing",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress サーバーの比較方法：同じ要件表で事業者を評価する",
+      "description": "WordPress のホスティングを比較するときは、サイト内容、サービスの責任範囲、課金期間をそろえてからプランの違いを読み解きます。記入できる要件表と確認手順を示し、公式仕様、自分で測定した結果、未確認の条件を区別するとともに、更新、バックアップ、サポート、移転時の費用を整理します。初めての契約や事業者変更を考える台湾の利用者向けに、一度の速度測定や販促月額だけで順位を決めない方法を説明します。",
+      "hero": {
+        "src": "/guides/managed-hosting-comparison/hero-ja.jpg",
+        "alt": "要件文書、サーバー、予算計算機を組み合わせたオリジナルの比較イラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ホスティング比較では、条件の異なるものを並べがちです。数年分を前払いする初回の月額換算と月払い、空白サイトと画像やプラグインが多いサイトなどです。表が整っていても、自分のサイトに適したプランはどれかという疑問に答えられないことがあります。比較の前に測定単位と実際の作業要件をそろえましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここで示すのは評価方法であり、事業者の性能を実測した結果やブランドの順位ではありません。同じ表で現在の契約と二つの候補を評価し、不明点を各社のサポートに確認できます。最終的に残すのは、客観的に見える総合点だけでなく、取捨選択の理由を説明できる記録です。"
+        },
+        {
+          "type": "heading",
+          "text": "欠かせない要件を書き出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "毎週の記事追加、訪問者の問い合わせ送信、既存メールの維持、会員ログインなど、実際の作業で要件を表します。さらにサイト数、ファイルとデータベースの容量、必須プラグイン、更新頻度を挙げます。信頼できるアクセス記録がなければ不明と記し、表を埋めるために月間訪問者数を作り上げないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要件を必須、代替案でもよいもの、今は不要なものに分けます。地域の講座サイトに申込フォームは必要でもオンライン決済が不要なら、まず送信と通知を確認し、最上位の電子商取引プランを共通の出発点にしないようにします。必須プラグインやデータの持ち出しに対応しないプランは、その不足を解決してから価格や速度を比較します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保守の担当も確認します。自分で更新、障害対応、復元を扱えるのか、事業者の支援が必要なのかを整理しましょう。同じ「マネージド」という名称でも支援範囲は異なる場合があります。プラグインの競合、バックアップからの復元、移行を誰が行うか具体的に質問し、機能表のチェックだけで作業全体を任せられると考えないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "公式仕様と未確認の条件を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト数上限、リソース枠、データセンターの選択肢、バックアップ、検証環境、メール、サポートなど、候補ごとに同じ欄を埋めます。情報の横に公式 URL と閲覧日を添え、不明な項目には要確認と記します。空欄を無料で含まれるという意味に解釈したり、別プランの仕様で補ったりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば FastComet の公開プラン表ではサイト数、容量、バックアップ保持がプラン別に示され、Cloudways の課金説明では製品や課金方式を区別しています。これらは比較項目を作る参考になりますが、どの会社が必ず優れているかを直接示すものではありません。その都度選ぶ製品、プラン、決済条件を改めて確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サポートには状況を含む質問をします。例えば、更新後にログインできなくなった場合、どのデータを復元し、追加料金が発生するのか、と尋ねます。書面の返答を保存し、適用プランを記録してください。一度の素早い返答が示すのはその応対だけであり、長期的な品質の保証にはなりません。自分で連絡していないのに他人の体験を自分のものとして書くことも避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "同じサイトの複製で限定的に試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "適法に使えるテストアカウントがあれば、同じ内容、テーマ、プラグインの複製を作り、PHP、キャッシュなど重要な設定をそろえます。データセンター、基盤内蔵キャッシュ、リソース制限など統一できない違いも記録します。テストデータから個人情報を除き、テストサイトでは本物の決済と不要な通知を停止してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "単純な空白ページだけでなく、ホーム、通常の記事、操作を伴うページを選びます。ツール、時刻、測定場所、端末種別、ログイン状態を記録し、近い条件で数回観察します。ホスティングの測定を理由に、許可のないサイトへ大量のリクエストを送らないでください。負荷試験にはサービス側の別途許可と影響範囲の調整が必要です。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "必須条件で先に絞り込み、比較できる具体的なプランを二つから三つ選びます。",
+            "機密情報を含まない同じサイトを複製し、バージョン、キャッシュ、統一できない違いを記録します。",
+            "近い条件で複数のページを測定し、最良の一回だけでなく各回の結果を保存します。",
+            "フォーム、ログイン、バックアップ、管理手順を確認し、結果を要件表に戻します。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "速度レポートの対象範囲を理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の PageSpeed Insights はラボデータと実際の利用者のデータを提供します。前者は条件を制御した試験、後者は利用者の端末、ネットワーク、訪問状況を反映します。用途が異なるため、差があれば情報源と対象範囲を確かめ、見栄えのよい数値だけを比較表に貼らないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実利用データはサンプル不足で表示されなかったり、サイト全体のオリジン単位に切り替わったりします。集計期間も直前の試験一回とは異なります。新規サイトにデータがなくてもサーバーが遅いとは限らず、移行後の過去データをすぐに新サーバーだけの性能とみなすこともできません。単一 URL かサイト単位かを記録し、異なる範囲を比較しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "総合性能スコアにはページ内容やフロントエンド設計の影響も含まれ、サーバーだけに原因を求められません。画像、フォント、第三者のプログラム、キャッシュの命中も結果を変えます。複製同士でプラグインやレイアウトが違うなら、先に条件を直します。直せなければ制約を結論に書き、公平な速度比較を行ったとは主張しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "同じ期間の総費用を比べる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "共通期間を二年または三年などに決め、初回、更新、必須の追加購入、移転、保守時間を別々に記入します。外貨費用は元の通貨額を残し、新台湾ドルに換算する場合は為替レートの日付と概算であることを示します。販促には長期前払いが必要な場合があるため、月平均額だけでなく支払総額と支払時期も確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "架空の二つのプランで、同じ期間のホスティング料金が同じ通貨単位でどちらも六千でも、一方に二千の必須バックアップ追加費用があれば同額とは書けません。他方で自分の保守時間が多く必要なら、その時間の見積もりも別に載せます。これは表の記入方法を示すだけの例であり、事業者の見積もりではありません。全員の時間価値を表す固定時給を決めるものでもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "取捨選択の理由と再評価の時点を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "必須要件がすべて満たされることを確認してから、追加の便利さに費用を払う価値を比べます。例えば「必要なバックアップと共同作業機能が合うため現在はプラン甲を選ぶ。会員機能が増えたらリソースを再評価する」と記せます。甲が永久に一位だと断言するより、引継ぎ先に判断根拠と結論が変わる条件が伝わります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、ファイル、データベース、ドメイン、メール、有料プラグインをどう引き継げるか、移転方法を記録します。データと管理権を把握していれば、必要に応じてホスティングを変えられます。契約更新前に同じ表の条件を見直すほうが、そのたびに新しいおすすめ順位から始めるより一貫性を保てます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/managed-hosting-comparison/diagram-1-ja.svg",
+          "alt": "必須要件、同じ条件での試験、共通期間の総費用、移転計画という順序でホスティングを比較する図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "条件を説明できる比較なら、要件の変化に合わせて更新できます。",
+          "description": "必須要件、同じ条件での試験、共通期間の総費用、移転計画という順序でホスティングを比較する図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "そろえる基準",
+            "根拠"
+          ],
+          "rows": [
+            [
+              "要件",
+              "サイト数と必須機能",
+              "自分の要件一覧"
+            ],
+            [
+              "責任",
+              "更新、バックアップ、障害の範囲",
+              "公式資料と書面の返答"
+            ],
+            [
+              "性能",
+              "内容、設定、試験状況",
+              "すべての結果と制約"
+            ],
+            [
+              "費用",
+              "課金期間と必須の追加購入",
+              "決済条件と更新説明"
+            ],
+            [
+              "移転",
+              "データとアカウントの可搬性",
+              "書き出しと移転の手順"
+            ]
+          ],
+          "caption": "調べても分からない項目は不明とし、推測で長所や短所にしないでください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "やり直せる比較にする",
+          "text": "具体的なプラン、閲覧日、試験条件、未確認事項を保存します。要件や価格が変わったら同じ表を更新し、一度の評価を永久の順位にしないようにしましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト制作予算の立て方",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共有サーバー、VPS、マネージドの違い",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：PageSpeed Insights のデータ説明",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：ラボデータと実利用データの違い",
+          "url": "https://web.dev/articles/lab-and-field-data-differences",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet：プラン比較項目",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：月単位と時間単位の課金",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 호스팅 비교 방법: 같은 요구 사항 표로 업체 평가하기",
+      "description": "WordPress 호스팅을 비교할 때는 사이트 콘텐츠, 서비스 책임과 과금 기간부터 맞춰야 요금제 차이를 이해할 수 있습니다. 직접 채울 수 있는 요구 사항 표와 검증 절차를 제시하고 공식 사양, 직접 측정한 결과, 아직 확인하지 못한 조건을 구분하며 갱신, 백업, 지원과 이전 비용도 정리합니다. 첫 호스팅을 고르거나 업체 변경을 고려하는 대만 사용자를 위한 방법으로, 한 번의 속도 측정이나 할인 월 요금만으로 순위를 정하지 않습니다.",
+      "hero": {
+        "src": "/guides/managed-hosting-comparison/hero-ko.jpg",
+        "alt": "요구 사항 문서, 서버와 예산 계산기를 함께 그린 자체 제작 비교 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "호스팅 비교에서는 서로 다른 조건을 한데 놓기 쉽습니다. 여러 해를 선납하는 첫 구매 월 환산 요금과 매월 결제하는 요금, 빈 사이트와 이미지와 플러그인이 가득한 사이트를 비교하는 식입니다. 표가 깔끔해도 내 사이트에 어떤 요금제가 맞는지 답하지 못할 수 있습니다. 비교 전에 측정 단위와 실제 작업 요구부터 맞추세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "여기서 제공하는 것은 평가 방법이며, 업체 성능을 직접 시험하거나 브랜드 순위를 매긴 결과가 아닙니다. 같은 표로 현재 호스팅과 두 후보 요금제를 평가하고 미확인 사항을 각 업체 지원팀에 물어볼 수 있습니다. 결과는 객관적으로 보이는 총점 하나가 아니라 선택의 이유와 절충점을 설명하는 기록이어야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "반드시 필요한 요구 사항부터 적기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "매주 새 글 올리기, 방문자 문의 접수, 기존 이메일 유지, 회원 로그인 제공처럼 실제 사이트 작업으로 요구를 설명하세요. 사이트 수, 파일과 데이터베이스 크기, 필수 플러그인과 예상 업데이트 빈도도 적습니다. 신뢰할 만한 트래픽 기록이 없다면 모름으로 표시하세요. 표를 채우려고 월 방문자 수를 만들어 낼 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "요구 사항을 필수, 대안 수용 가능, 당장은 불필요로 나누세요. 지역 강좌 사이트에 신청 양식은 필요하지만 온라인 결제는 없다면 제출과 알림부터 검증하고 최고급 전자상거래 요금제를 공통 출발점으로 삼지 않는 편이 좋습니다. 필수 플러그인이나 데이터 반출을 지원하지 않는 요금제라면 가격과 속도를 비교하기 전에 그 부족한 부분부터 해결해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "유지 관리 담당자도 확인하세요. 업데이트, 장애와 복원을 직접 처리할 수 있는지, 업체 도움이 필요한지 정리합니다. 이름에 똑같이 관리형이라는 표현이 있어도 지원 범위는 다를 수 있습니다. 플러그인 충돌, 백업 복원과 사이트 이전을 각각 누가 처리하는지 구체적으로 질문하세요. 기능표의 체크 표시만 보고 전체 작업을 누군가 맡아 준다고 판단하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "공식 사양과 미확인 조건 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "후보 요금제마다 사이트 한도, 자원 할당량, 데이터센터 선택, 백업, 시험 환경, 이메일과 지원 등 같은 항목을 채우세요. 정보 옆에는 공식 URL과 열람 날짜를 적고 불분명한 내용은 확인 필요로 표시합니다. 빈칸을 무료 포함으로 해석하거나 다른 요금제 사양으로 부족한 정보를 채우지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 FastComet의 공개 요금제 표에는 사이트 수, 용량과 백업 보관이 요금제별로 표시되고, Cloudways의 과금 설명은 제품과 결제 방식을 구분합니다. 이런 자료는 비교 항목을 만드는 데 도움이 되지만 어느 업체가 무조건 더 좋다는 결론으로 바로 바꿀 수는 없습니다. 실제로 선택하는 제품, 요금제와 결제 조건을 다시 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트 후 사이트에 로그인할 수 없다면 어떤 데이터를 복원하고 추가 비용이 있는지처럼 상황을 포함한 질문을 지원팀에 하세요. 서면 답변과 적용 요금제를 보관합니다. 한 번 답변이 빨랐다는 사실은 그때의 상호작용만 보여 줄 뿐 장기적인 지원 품질을 보장하지 않습니다. 직접 연락하지 않았다면 남의 지원 경험을 자신의 경험처럼 적어서도 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "같은 사이트 복사본으로 제한된 시험하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "합법적으로 사용할 수 있는 시험 계정이 있다면 콘텐츠, 테마와 플러그인이 같은 복사본을 만들고 PHP, 캐시와 주요 설정을 맞출 수 있습니다. 데이터센터, 플랫폼 내장 캐시나 자원 제한처럼 없앨 수 없는 차이도 기록하세요. 시험 데이터에서는 개인정보를 제거하고 시험 사이트의 실제 결제와 불필요한 알림을 꺼야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 단순한 빈 페이지뿐 아니라 홈, 일반 글과 상호작용 페이지를 선택하세요. 도구, 시각, 시험 위치, 기기 유형과 로그인 여부를 적고 비슷한 조건에서 여러 번 관찰합니다. 호스팅을 측정한다는 이유로 허가받지 않은 사이트에 대량 요청을 보내지 마세요. 부하 시험에는 별도의 서비스 허가와 영향 범위 조율이 필요합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "필수 조건으로 먼저 거른 뒤 비교 가능한 구체적 요금제를 두 개에서 세 개 고릅니다.",
+            "민감한 데이터가 없는 같은 사이트를 복사하고 버전, 캐시와 맞출 수 없는 차이를 기록합니다.",
+            "비슷한 조건으로 여러 페이지를 시험하고 가장 좋은 한 번만이 아니라 매번의 결과를 보관합니다.",
+            "양식, 로그인, 백업과 관리 절차를 검증한 뒤 결과를 요구 사항 표에 반영합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "속도 보고서가 다루는 범위 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 PageSpeed Insights는 실험실 데이터와 실제 사용자 데이터를 함께 제공합니다. 전자는 통제된 조건의 시험에서 나오고 후자는 사용자 기기, 네트워크와 방문 상황을 반영합니다. 용도가 다르므로 차이가 나면 데이터 출처와 범위부터 확인하고 더 좋아 보이는 숫자만 비교표에 붙이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 사용자 데이터는 표본이 부족하면 없을 수 있고 사이트 전체의 출처인 오리진 수준으로 대체될 수도 있습니다. 집계 기간도 방금 실행한 시험 한 번과 다릅니다. 새 사이트에 데이터가 없다고 호스팅이 느리다는 뜻은 아니며, 이전 직후의 과거 데이터를 곧바로 새 호스팅만의 성능으로 볼 수도 없습니다. 단일 URL인지 사이트 수준인지 기록해 서로 다른 범위를 비교하지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "종합 성능 점수에는 페이지 콘텐츠와 프런트엔드 설계의 영향도 포함되므로 호스팅만의 결과로 볼 수 없습니다. 이미지, 글꼴, 외부 프로그램과 캐시 적중도 결과를 바꿉니다. 두 복사본에 플러그인이나 배치 차이가 남아 있다면 시험 조건부터 수정하세요. 수정할 수 없다면 결론에 한계를 밝히고 공정한 속도 비교를 했다고 주장하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "같은 기간의 총비용 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공통 기간을 이 년 또는 삼 년처럼 정하고 첫 계약, 갱신, 필수 추가 구매, 이전과 유지 관리 시간을 따로 적으세요. 외화 비용은 원래 통화 금액을 남기고 신대만달러로 환산한다면 적용 환율 날짜와 추정치라는 점을 표시합니다. 할인에는 장기 선납이 필요할 수 있으므로 월평균 금액뿐 아니라 총결제액과 결제 시점도 봐야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가상의 두 요금제에서 같은 기간의 호스팅 비용이 모두 육천이라고 해도, 한쪽에 같은 통화로 이천의 필수 백업 추가 비용이 든다면 같은 가격이라고 적을 수 없습니다. 다른 쪽에 더 많은 유지 관리 시간이 필요하다면 시간 추정치도 따로 적어야 합니다. 이 예시는 표 작성 방법만 설명하며 실제 업체 견적이 아니고, 모든 사람의 시간 비용을 대표하는 고정 시급을 정한 것도 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "선택의 이유와 재평가 시점을 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "필수 요구 사항이 모두 충족되는지 확인한 뒤 추가 편의에 돈을 낼 가치가 있는지 비교하세요. 필요한 백업과 협업 기능이 작업에 더 잘 맞아 현재는 요금제 갑을 선택하되 회원 기능이 늘면 자원을 재평가한다고 적을 수 있습니다. 갑이 영원히 최고라고 선언하는 대신 이렇게 쓰면 인계받는 사람이 판단 근거와 결론을 바꾸게 될 변화를 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 파일, 데이터베이스, 도메인, 이메일과 유료 플러그인을 어떻게 인계할 수 있는지 떠나는 방법을 기록하세요. 데이터와 관리 권한을 확보하고 있다면 필요에 따라 호스팅을 바꿀 수 있습니다. 갱신 전에 같은 표의 조건을 업데이트하는 편이 매번 새로운 추천 순위에서 다시 시작하는 것보다 일관성을 유지하기 쉽습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/managed-hosting-comparison/diagram-1-ko.svg",
+          "alt": "필수 요구 사항, 같은 조건의 시험, 공통 기간의 총비용과 이전 계획에 따라 호스팅을 비교하는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "조건을 설명할 수 있는 비교라야 요구가 달라졌을 때 업데이트할 수 있습니다.",
+          "description": "필수 요구 사항, 같은 조건의 시험, 공통 기간의 총비용과 이전 계획에 따라 호스팅을 비교하는 그림.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "비교 항목",
+            "맞춰야 할 기준",
+            "근거"
+          ],
+          "rows": [
+            [
+              "요구 사항",
+              "사이트 수와 필수 기능",
+              "자신의 요구 사항 목록"
+            ],
+            [
+              "책임",
+              "업데이트, 백업과 장애 범위",
+              "공식 문서와 서면 답변"
+            ],
+            [
+              "성능",
+              "콘텐츠, 설정과 시험 상황",
+              "전체 결과와 한계"
+            ],
+            [
+              "비용",
+              "과금 기간과 필수 추가 구매",
+              "결제 조건과 갱신 설명"
+            ],
+            [
+              "이전",
+              "데이터와 계정의 이동 가능성",
+              "내보내기와 이전 절차"
+            ]
+          ],
+          "caption": "확인하지 못한 항목은 모름으로 표시하고 추측으로 장점이나 단점을 만들지 마세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "다시 수행할 수 있는 비교여야 합니다",
+          "text": "구체적 요금제, 열람 날짜, 시험 조건과 미확인 사항을 보관하세요. 요구나 가격이 바뀌면 같은 표를 업데이트하고 한 번의 평가를 영구 순위로 만들지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 예산을 세우는 방법",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "공유 호스팅, VPS와 관리형 호스팅의 차이",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: PageSpeed Insights 데이터 설명",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev: 실험실 데이터와 실제 사용자 데이터의 차이",
+          "url": "https://web.dev/articles/lab-and-field-data-differences",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet: 요금제 비교 항목",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways: 월 단위와 시간 단위 과금",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 主机怎么比较：用同一张需求表评估供应商",
+      "description": "比较 WordPress 主机时，先统一网站内容、服务责任与计费期间，才能看懂套餐差异。本文提供可直接填写的需求表与验证流程，说明如何区分官方规格、自己测量的结果及尚未确认的条件，也整理续约、备份、支持与迁出成本。适合正在挑选第一个主机或考虑更换供应商的台湾用户，不以一次测速或促销月费决定排名。",
+      "hero": {
+        "src": "/guides/managed-hosting-comparison/hero-zh-cn.jpg",
+        "alt": "由需求文档、服务器与预算计算器组成的原创比较插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "主机比较经常把不同的东西放在一起：一边是多年预付的首购月费，另一边是逐月付款；一边只有空白网站，另一边装满图片和插件。即使表格很整齐，也可能无法回答哪个套餐适合自己的网站。比较之前，先对齐测量单位与工作需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文提供评估方法，没有开展供应商性能实测，也不替任何品牌排名。你可以用同一份表评估当前主机及两个候选套餐，再请各家支持团队回答未确认事项。结果应是能解释取舍的选择记录，而不只是一个看似客观的总分。"
+        },
+        {
+          "type": "heading",
+          "text": "先写出不可缺少的需求",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用实际网站工作描述需求，例如每周新增文章、让访客提交咨询、维持现有邮箱，或提供会员登录。再列出网站数量、文件与数据库大小、必要插件及预计更新频率。没有可靠流量记录时可先写未知，不必为填满表格而编造月访客数。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把需求分成必要、可接受替代及暂时不需要三类。假设社区课程网站需要报名表单，却没有在线收款，就应先验证提交与通知，不必把电商最高级套餐当成共同起点。若某套餐不支持必要插件或数据迁出，应先处理缺口，再比较价格与速度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "还要确认谁负责维护：你能否处理更新、故障和恢复，还是需要供应商协助。名称同样含“托管”的产品，支持范围未必相同。具体询问插件冲突、备份恢复和迁站分别由谁处理，避免看到功能表上一个勾号就认定整件事都有人负责。"
+        },
+        {
+          "type": "heading",
+          "text": "把官方规格与未知条件分开",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每个候选套餐填写相同字段，包括网站上限、资源配额、数据中心选项、备份、测试环境、邮件与支持。资料旁附上官方网址及查阅日期，不清楚的项目写待确认。不要把空白理解为免费包含，也不要用另一个套餐的规格补齐缺失信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 FastComet 公开套餐表为例，网站数量、容量与备份保留会按套餐列出；Cloudways 的计费说明则区分不同产品及计费方式。这些资料能帮助设计字段，不能直接推导出哪家一定更好。应按自己当次选定的产品、套餐及结账条件重新核对。"
+        },
+        {
+          "type": "paragraph",
+          "text": "向支持团队提出带场景的问题，例如更新后网站无法登录时会恢复哪份数据、是否额外收费。保存书面答复并标明适用套餐。一次回复快只能说明那次互动的情况，不能写成长期客服表现的保证；没有实际联系过，也不能把他人的客服体验写成自己的。"
+        },
+        {
+          "type": "heading",
+          "text": "用相同网站副本开展有限测试",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若有合法可用的测试账号，可建立内容、主题和插件相同的副本，对齐 PHP、缓存及其他重要设置。记录无法消除的差异，例如数据中心、平台内置缓存或资源限制。测试数据应去除个人信息，测试站也要关闭真实收款与不必要的通知。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选择首页、普通文章和一个交互页面，不要只测最简单的空白页。记录工具、时间、测试位置、设备类型与是否登录，在相近条件下重复观察数次。不要为了测量主机而向未获允许的网站发送大量请求；负载测试需另外取得服务许可，并安排影响范围。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "先筛选必要条件，选出可比较的两到三个具体套餐。",
+            "复制不含敏感数据的相同网站，记录版本、缓存与无法统一的差异。",
+            "在相近条件下测试多种页面，保存每次结果，不只挑最好的一次。",
+            "验证表单、登录、备份与管理流程，再将结果放回需求表。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "读懂测速报告的范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的 PageSpeed Insights 同时提供实验室数据与真实用户数据。前者来自受控条件下的测试，后者反映用户设备、网络与访问场景。两者用途不同，出现差异时先查看数据来源与范围，不应只挑较好看的数字贴到比较表中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "真实用户数据可能因样本不足而缺失，或回退到整个网站层级；统计期间也不等于刚才的那次测试。新站没有数据不代表主机慢，迁站后的历史数据也不能马上视为新主机的纯粹表现。记录看到的是单个网址还是网站层级，避免比较不同范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整体性能分数包含页面内容与前端设计的影响，不能单独归因于主机。图片、字体、第三方程序或缓存命中都可能改变结果。两个副本若仍有不同插件或布局，应先修正测试条件；无法修正时，就在结论中写明限制，不要宣称已完成公平的速度评比。"
+        },
+        {
+          "type": "heading",
+          "text": "比较同一期间的总成本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以选择两年或三年作为共同期间，分别填入首期、续约、必要加购、转移与维护工时。外币费用保留原币金额，若换算新台币，标注所用汇率的日期及估算性质。促销可能要求长期预付，因此同时看总付款与付款时间，不只看平均月费。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设两个虚构套餐在同一期间的主机费都是六千元，但其中一个还需两千元的必要备份加购，就不能写成同价。若另一个需要投入更多维护时间，也应另列工时估算。这只是说明填表方法的例子，不是任何供应商报价，也没有设定代表所有人时间成本的固定时薪。"
+        },
+        {
+          "type": "heading",
+          "text": "用取舍解释选择，保留重新评估时点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先确认必要需求全部满足，再比较额外便利是否值得付费。可以记录为目前选择套餐甲，是因为需要的备份与协作功能更符合工作；若会员功能增加，则重新评估资源，而不是宣称甲永远第一。这样接手者能了解判断依据，以及什么变化会让结论失效。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后记录迁出方式：文件、数据库、域名、邮件和付费插件如何交接。主机选择可随需求调整，前提是掌握数据及管理权。续约前再用相同表格更新条件，比每次从新的推荐排行榜重新开始更容易保持一致。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/managed-hosting-comparison/diagram-1-zh-cn.svg",
+          "alt": "依需求门槛、同条件测试、期间总成本及迁出方案进行主机比较的图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "能说清条件的比较，才可以随需求更新。",
+          "description": "依需求门槛、同条件测试、期间总成本及迁出方案进行主机比较的图解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "比较字段",
+            "需要相同的基准",
+            "证据"
+          ],
+          "rows": [
+            [
+              "需求",
+              "网站数量与必要功能",
+              "自己的需求清单"
+            ],
+            [
+              "责任",
+              "更新、备份及故障范围",
+              "官方文档与书面答复"
+            ],
+            [
+              "性能",
+              "内容、设置与测试场景",
+              "完整结果与限制"
+            ],
+            [
+              "费用",
+              "计费期间及必要加购",
+              "结账条件与续约说明"
+            ],
+            [
+              "迁出",
+              "数据与账号的可携性",
+              "导出与转移流程"
+            ]
+          ],
+          "caption": "没查到的项目标记未知，不要靠推测补成优点或缺点。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "比较结果要能重做",
+          "text": "保存具体套餐、查阅日期、测试条件与未确认事项。需求或价格改变时更新同一张表，不要把一次评估写成永久排名。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建站预算怎么编",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "共享主机、VPS 与托管的差异",
+              "kind": "life",
+              "slug": "hosting-types-explained"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：PageSpeed Insights 数据说明",
+          "url": "https://developers.google.com/speed/docs/insights/v5/about",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "web.dev：实验室数据与真实用户数据的差异",
+          "url": "https://web.dev/articles/lab-and-field-data-differences",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "FastComet：套餐比较字段",
+          "url": "https://www.fastcomet.com/pricing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Cloudways：按月与按小时计费",
+          "url": "https://support.cloudways.com/en/articles/12157984-understanding-monthly-vs-hourly-billing-on-cloudways",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
