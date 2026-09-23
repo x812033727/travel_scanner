@@ -29,7 +29,7 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[2]
 LOCALES = ("zh-TW", "zh-CN", "en", "ja", "ko")
-# These exact public destinations returned 200 without redirects, with matching
+# The how-to, Hanoi and Singapore destinations returned 200 without redirects, with matching
 # html lang and canonical in all five locales on 2026-09-20. Review evidence:
 # article-localization-batch-006/link-route-verification.json
 # SHA-256 84dd8fcdd5102b61b314873a56096f91c5c9673c796b9cb1f8e495796d5a135f.
@@ -39,6 +39,10 @@ VERIFIED_PUBLIC_SITE_LINK_LOCALES = {
     "/guides/howto": frozenset(LOCALES),
     "/destinations/hanoi": frozenset(LOCALES),
     "/destinations/singapore": frozenset(LOCALES),
+    # Five-locale 200, lang/canonical and no-redirect check on 2026-09-23:
+    # batch020-candidate-inventory/guides-root-public-route-v2-20260923.json
+    # SHA-256 2ccb48c9873e59db9a771142337b273f2ed5255e4e83f41af35b1490067a486e.
+    "/guides": frozenset(LOCALES),
 }
 AI_HERO_AUTHOR = "Mokaair · AI 生成示意圖"
 AI_HERO_LICENSE_DESCRIPTION = "AI 生成，非實拍"
