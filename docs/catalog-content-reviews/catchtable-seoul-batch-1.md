@@ -183,26 +183,30 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli   apply-
 （`official_tourism`，來源網址就是那一頁），沒有的用 OpenStreetMap 上店家本身的節點（`admin_verified`，來源網址是節點永久連結）；
 Naver 與 Google 不當座標來源。座標佇列自 2026-09-19 起不再寫座標，只能手填。
 
+**結果（2026-09-23 05:4x UTC）**：14 家裡 **12 家已公開**（公開 API 首爾 29 → 41 家），其中 10 家的 CatchTable 訂位按鈕已出現
+（帶 CatchTable 按鈕的首爾店家 3 → 13）、2 家候位制無按鈕；**2 家未公開**：산청숯불가든 을지로 2호점（沒有耐久座標）、한국의집 고호재
+（Naver 頁與 `seoul-korea-house` 相同）。訂位網址依語言切換驗過：zh-TW `/zh-TW/`、zh-CN `/zh-CN/`、ja `/ja-JP/`、ko 無前綴。
+
 **Naver 精準頁的來源只有一種成立**：經營者或官方頁自己放的 Naver 連結（只讀短網址的轉址標頭取 id，不載入地圖頁）。內建瀏覽器對 `map.naver.com`
 與 `search.naver.com` 都回「not allowed due to safety restrictions」（2026-09-23 再確認），不繞道 Chrome 或 curl；WebSearch 限定 Naver 網域時幾乎沒有結果，
-不限網域只回第三方目錄（다이닝코드、식신、Triple），拿不到店家 id。14 家官網與母公司網站掃過，只有킴푸드放了 Naver 短網址。**其餘 13 家的 Naver 網址要站主提供**。
+不限網域只回第三方目錄（다이닝코드、식신、Triple），拿不到店家 id。14 家官網與母公司網站掃過，只有킴푸드放了 Naver 短網址。**其餘 13 家的 Naver 網址由站主 2026-09-23 貼來（短網址）**，session 只讀轉址標頭取 id；身分靠站主依地址挑選，session 沒有再開 Naver 頁核對。
 
 | slug | 座標 | 座標來源 | 依據 | Naver 精準頁 | 核准 |
 | --- | --- | --- | --- | --- | --- |
-| `seoul-bandb` | 37.566790, 127.044501 | `admin_verified` · [www.openstreetmap.org/node/13946958785](https://www.openstreetmap.org/node/13946958785) | OSM 節點「본앤브레드컴퍼니」，addr 마장로42길 1，與官方頁地址一致 | 待站主給 | — |
-| `seoul-anssi-makgeolli` | 37.538586, 126.987404 | `admin_verified` · [www.openstreetmap.org/node/8441101564](https://www.openstreetmap.org/node/8441101564) | 同門牌建物：OSM 節點 addr 회나무로 3（節點本身是同棟另一家店 포르게따），取建物位置 | 待站主給 | — |
-| `seoul-zest-seoul` | 37.525228, 127.040790 | `official_tourism` · [visitgangnam.net/places/zest](https://visitgangnam.net/places/zest) | 官方頁 JSON-LD GeoCoordinates | 待站主給 | — |
-| `seoul-thewooga` | 37.519566, 127.019091 | `official_tourism` · [visitgangnam.net/places/wooga](https://visitgangnam.net/places/wooga) | 官方頁 JSON-LD GeoCoordinates | 待站主給 | — |
-| `seoul-sancheongstar` | — | — | OSM 只有路段中心，官方頁沒有座標；先不填 | 待站主給 | — |
-| `seoul-koreahouse-kohojae` | 37.560203, 126.994684 | `admin_verified` · [www.openstreetmap.org/way/768500162](https://www.openstreetmap.org/way/768500162) | OSM「한국의집」園區（way），고호재在園區內소화당；addr 퇴계로36길 10 | 待站主給 | — |
-| `seoul-samwongarden` | 37.524930, 127.032530 | `official_tourism` · [visitgangnam.net/places/samwon-garden](https://visitgangnam.net/places/samwon-garden) | 官方頁 JSON-LD GeoCoordinates（OSM node/5585913921 37.5249856,127.0324446 相差 ~10 m，一致） | 待站主給 | — |
-| `seoul-jungsik` | 37.525658, 127.041081 | `official_tourism` · [visitgangnam.net/places/jungsik-seoul](https://visitgangnam.net/places/jungsik-seoul) | 官方頁 JSON-LD GeoCoordinates（OSM node/6601897949 정식당 37.5255927,127.0411030 一致） | 待站主給 | — |
-| `seoul-gebang` | 37.517279, 127.039439 | `admin_verified` · [www.openstreetmap.org/node/13946797914](https://www.openstreetmap.org/node/13946797914) | OSM 節點「게방식당」，addr 선릉로131길 17 | 待站主給 | — |
-| `seoul-alice-cheongdam` | 37.526662, 127.041050 | `admin_verified` · [www.openstreetmap.org/node/5552226222](https://www.openstreetmap.org/node/5552226222) | OSM 節點「앨리스 청담」，addr 도산대로55길 47 | 待站主給 | — |
-| `seoul-london-bagel-museum-anguk` | 37.579170, 126.986201 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147) | VisitKorea 英文頁（London Bagel Museum Anguk Main Store）JSON-LD GeoCoordinates | 待站主給 | — |
-| `seoul-ggupdang-seongsu` | 37.543223, 127.057650 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570) | VisitKorea 英文頁 JSON-LD GeoCoordinates（OSM 建物 way/801816488 37.5432168,127.0576395 一致） | 待站主給 | — |
-| `seoul-anmokseongsu` | 37.541197, 127.057959 | `admin_verified` · [www.openstreetmap.org/node/13946956920](https://www.openstreetmap.org/node/13946956920) | OSM 節點「(주)안목성수」，addr 뚝섬로13길 34 | `2073097145`：經營者官網 kimfood.co.kr 品牌頁「성수점」旁的短網址 `naver.me/5QiPD9S9`，只讀其 307 轉址目標取得（另兩條短網址分別指向釜山西面店與江南驛三店，互相印證） | 2026-09-23 04:31 UTC 核准並啟用；公開 API 首爾 29 → 30 家，帶 Naver 連結與座標，無訂位按鈕（候位制） |
-| `seoul-sancheong-ej` | 37.566125, 126.992229 | `admin_verified` · [www.openstreetmap.org/node/13851760765](https://www.openstreetmap.org/node/13851760765) | 同門牌建物：OSM 節點 addr 을지로 114-6（홍원빌딩，節點是同棟另一家店 물결）；OSM 另有「산청숯불가든 을지로」節點但門牌標 110-1，不採用 | 待站主給 | — |
+| `seoul-bandb` | 37.566790, 127.044501 | `admin_verified` · [www.openstreetmap.org/node/13946958785](https://www.openstreetmap.org/node/13946958785) | OSM 節點「본앤브레드컴퍼니」，addr 마장로42길 1，與官方頁地址一致 | `1151270351`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/F42MaoTT`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-anssi-makgeolli` | 37.538586, 126.987404 | `admin_verified` · [www.openstreetmap.org/node/8441101564](https://www.openstreetmap.org/node/8441101564) | 同門牌建物：OSM 節點 addr 회나무로 3（節點本身是同棟另一家店 포르게따），取建物位置 | `37704375`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/FCA8TNH5`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-zest-seoul` | 37.525228, 127.040790 | `official_tourism` · [visitgangnam.net/places/zest](https://visitgangnam.net/places/zest) | 官方頁 JSON-LD GeoCoordinates | `1723660386`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/Gxk1ZyTB`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-thewooga` | 37.519566, 127.019091 | `official_tourism` · [visitgangnam.net/places/wooga](https://visitgangnam.net/places/wooga) | 官方頁 JSON-LD GeoCoordinates | `36802965`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/IGJy29Ox`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-sancheongstar` | — | — | OSM 只有路段中心，官方頁沒有座標；未填 | `1069950349`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/5chuomKS`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 未核准：沒有耐久座標（Naver 網址已存、地圖狀態待驗證） |
+| `seoul-koreahouse-kohojae` | 37.560203, 126.994684 | `admin_verified` · [www.openstreetmap.org/way/768500162](https://www.openstreetmap.org/way/768500162) | OSM「한국의집」園區（way），고호재在園區內소화당；addr 퇴계로36길 10 | 站主貼的 `naver.me/FafyrZiR` 轉址到 `11715055`，**與目錄裡 `seoul-korea-house` 的 Naver 頁相同**；後台地圖身分必須唯一，未填 | 未核准：고호재在 Naver 沒有獨立條目（或站主找的是韓國之家主頁），要有自己的 Naver 頁才能公開 |
+| `seoul-samwongarden` | 37.524930, 127.032530 | `official_tourism` · [visitgangnam.net/places/samwon-garden](https://visitgangnam.net/places/samwon-garden) | 官方頁 JSON-LD GeoCoordinates（OSM node/5585913921 37.5249856,127.0324446 相差 ~10 m，一致） | `11718583`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/IItcNTPO`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-jungsik` | 37.525658, 127.041081 | `official_tourism` · [visitgangnam.net/places/jungsik-seoul](https://visitgangnam.net/places/jungsik-seoul) | 官方頁 JSON-LD GeoCoordinates（OSM node/6601897949 정식당 37.5255927,127.0411030 一致） | `13320884`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/xv3DHt17`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-gebang` | 37.517279, 127.039439 | `admin_verified` · [www.openstreetmap.org/node/13946797914](https://www.openstreetmap.org/node/13946797914) | OSM 節點「게방식당」，addr 선릉로131길 17 | `793407871`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/FgHDsrNh`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-alice-cheongdam` | 37.526662, 127.041050 | `admin_verified` · [www.openstreetmap.org/node/5552226222](https://www.openstreetmap.org/node/5552226222) | OSM 節點「앨리스 청담」，addr 도산대로55길 47 | `36508403`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/5VmQfZQC`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-london-bagel-museum-anguk` | 37.579170, 126.986201 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191147) | VisitKorea 英文頁（London Bagel Museum Anguk Main Store）JSON-LD GeoCoordinates | `1466975947`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/xNLZDTek`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；候位制、無訂位按鈕 |
+| `seoul-ggupdang-seongsu` | 37.543223, 127.057650 | `official_tourism` · [english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570](https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=191570) | VisitKorea 英文頁 JSON-LD GeoCoordinates（OSM 建物 way/801816488 37.5432168,127.0576395 一致） | `1739440199`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/FZ275oxv`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
+| `seoul-anmokseongsu` | 37.541197, 127.057959 | `admin_verified` · [www.openstreetmap.org/node/13946956920](https://www.openstreetmap.org/node/13946956920) | OSM 節點「(주)안목성수」，addr 뚝섬로13길 34 | `2073097145`：經營者官網 kimfood.co.kr 品牌頁「성수점」旁的短網址 `naver.me/5QiPD9S9`，只讀其 307 轉址目標取得 | 2026-09-23 04:31 UTC 核准並啟用；候位制、無訂位按鈕 |
+| `seoul-sancheong-ej` | 37.566125, 126.992229 | `admin_verified` · [www.openstreetmap.org/node/13851760765](https://www.openstreetmap.org/node/13851760765) | 同門牌建物：OSM 節點 addr 을지로 114-6（홍원빌딩，節點是同棟另一家店 물결）；OSM 另有「산청숯불가든 을지로」節點但門牌標 110-1，不採用 | `1850187827`：站主 2026-09-23 在自己的 Naver 地圖依地址挑選、貼來的短網址 `naver.me/FjbnfDAA`（只讀 307 轉址目標；session 的兩個瀏覽器都無法開 Naver） | 2026-09-23 05:2x–05:4x UTC 已驗證＋核准＋啟用（一次儲存，後台發布檢查通過）；CatchTable 訂位按鈕已出現 |
 
 ## 這批踩到的陷阱（下一批別再踩）
 
@@ -226,12 +230,10 @@ Naver 與 Google 不當座標來源。座標佇列自 2026-09-19 起不再寫座
 
 ## 還沒做完的
 
-- **第 7 步改由 session 代操作（2026-09-23 站主決定，票 `2026-09-23-catchtable-seoul-1-naver-approval`）**：Naver 精準頁的網址仍由站主查
-  （內建瀏覽器拒絕 `map.naver.com`，2026-09-23 再確認）並貼進對話；後台的逐筆填入、座標、核准由 session 在站主登入的面板裡做。
-  沒有這一步，這批只是審核佇列，12 顆 verified 的訂位按鈕也不會出現在公開頁。
-- `seoul-buchon-yukhoe`（rejected、沒地址、沒來源）現在多了一筆 `disabled` 的 CatchTable 列；候選檔 `buchonyukhoe` 的 notes 附了 VisitKorea 英文站的
-  官方頁與地址，站主若要恢復那筆可直接用。
-- 15 家無來源的店留在候選檔：其中제주옥탑（只有 http 官網）與熟成到（`suksungdo.kr` 從本機解析不到）若能從韓國網路開到 https 頁，可補成 `import`；
-  建議的 slug／商圈／分類在各自 notes。
-- 票 `2026-09-21-catchtable-apply-and-daerim` 的 A 項（`daelimchanggobar`）不在這兩個榜的範圍內，本批沒收；它需要自己的官方來源與 Naver 網址，留在那張票。
-- 第二批：首爾最佳榜第 21–40 名 ＋ 釜山最佳榜前 20，開跑時把操作步驟升成 skill（見設計文件「漏斗」一節）。
+- **산청숯불가든 을지로 2호점**：Naver 網址已存（`1069950349`），差耐久座標。OSM 只有路段中心、官方頁沒有座標；站主在後台填座標（來源要 https）就能核准。
+- **한국의집 고호재**：座標與來源齊備，但 Naver 只有韓國之家主頁（`11715055`，已被 `seoul-korea-house` 使用）。若 Naver 上有「고호재」獨立條目就填它；沒有的話
+  維持 pending，或由站主決定改掛在 `seoul-korea-house` 底下不另建店家。
+- `seoul-buchon-yukhoe`（rejected）多了一筆 `disabled` 的 CatchTable 列；候選檔 `buchonyukhoe` 的 notes 附了 VisitKorea 英文站的官方頁，站主若要恢復那筆可直接用。
+- 15 家無來源的店留在候選檔；제주옥탑（只有 http 官網）與熟成到（`suksungdo.kr` 解析不到）若能從韓國網路開到 https 頁，可補成 `import`。
+- 票 `2026-09-21-catchtable-apply-and-daerim` 的 A 項（`daelimchanggobar`）不在這兩個榜的範圍內，留在那張票。
+- 第二批：首爾最佳榜第 21–40 名 ＋ 釜山最佳榜前 20，開跑時把操作步驟升成 skill（見設計文件「漏斗」一節）；Naver 網址這一步照這次的分工（站主貼短網址、session 填後台）。
