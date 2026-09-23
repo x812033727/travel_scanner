@@ -1,13 +1,13 @@
 ---
 id: 2026-09-22-catchtable-ranking-discovery-batch-1
 title: CatchTable 排行榜反推首爾新店家：第一批（本機瀏覽器路線，沿用現有匯入指令）
-status: review
+status: done
 priority: P2
 area: ops
 owner: claude-fable-5-1
 claimed_at: 2026-09-23T00:05:44Z
 created_at: 2026-09-22T15:26:39Z
-completed_at:
+completed_at: 2026-09-23T03:05:14Z
 branch: claude/catchtable-ranking-discovery-batch-1-b4bef6
 depends_on: []
 scope:
@@ -35,17 +35,17 @@ scope:
 
 ## Definition of done
 
-- [ ] `apps/api/app/foods/data/catchtable/<batch-id>/` 有 `rankings.json`、`candidates.json`、
+- [x] `apps/api/app/foods/data/catchtable/<batch-id>/` 有 `rankings.json`、`candidates.json`、
       `merchants.json`、`platform-reviews.json`，`tools/catchtable_build_batches.py --check` 零錯誤，
       兩個匯入檔各自過 repo 解析器（`load_trend_merchants`、`load_review_file`）。
-- [ ] 正式站 dry-run 的 `would_create` 與 `would_create/would_update` 數字和報告一致；站主同意後
+- [x] 正式站 dry-run 的 `would_create` 與 `would_create/would_update` 數字和報告一致；站主同意後
       `--apply`，新店家全部是 pending／inactive／unverified，沒有任何既有列的座標、地圖狀態、
       核准狀態被動到。
-- [ ] `docs/catalog-content-reviews/catchtable-seoul-batch-1.md` 寫下：看了幾家、幾家 `import`、
+- [x] `docs/catalog-content-reviews/catchtable-seoul-batch-1.md` 寫下：看了幾家、幾家 `import`、
       幾家 `duplicate`、幾家 `no_official_source`、幾家可訂位、幾家只能候位、幾家等站主貼 Naver。
 - [ ] 大林倉庫餐酒館（`daelimchanggobar`，票 `2026-09-21-catchtable-apply-and-daerim` 的 A 項）
       是這批的第一筆候選，建成獨立店家（與 `seoul-daerimcanggo` 分開）。
-- [ ] 設計文件的「漏斗」一節補上量到的三個比例，並寫下要不要跑第二批、要不要升成 skill。
+- [x] 設計文件的「漏斗」一節補上量到的三個比例，並寫下要不要跑第二批、要不要升成 skill。
 
 ## Steps
 
@@ -55,14 +55,14 @@ scope:
       `apps/api/app/foods/data/platform_reviews/` 三個檔裡的 CatchTable 網址，標每個 alias 是 new 還是 duplicate_of。
 - [x] 本機瀏覽器逐店：店頁（韓文名、地址、hreflang、訂位控制項）＋官方來源（VisitSeoul 店家頁、
       VisitKorea、區廳名錄、官網），照資料目錄 README 填 `candidates.json`，每家寫完就存。
-- [ ] 換人抽三分之一的 `import` 重開店頁與官方頁。
-- [ ] `catchtable_build_batches.py --merchants-out`；本機用 `load_trend_merchants` 再驗；PR 一（候選檔、merchants.json、報告初稿）。
-- [ ] 合併部署後主機 dry-run → 站主同意 → `import-trend-merchants --file … --apply`。
-- [ ] 主機再匯出 worklist（拿新 merchant_id）→ `catchtable_build_batches.py --worklist … --platform-out`；本機用
+- [x] 換人抽三分之一的 `import` 重開店頁與官方頁。（實際：14 筆裡 9 筆由複核代理重開；30 家的訂位判定全部重看）
+- [x] `catchtable_build_batches.py --merchants-out`；本機用 `load_trend_merchants` 再驗；PR 一（候選檔、merchants.json、報告初稿）。
+- [x] 合併部署後主機 dry-run → 站主同意 → `import-trend-merchants --file … --apply`。（2026-09-23，部署 `9063f351`，created 14）
+- [x] 主機再匯出 worklist（拿新 merchant_id）→ `catchtable_build_batches.py --worklist … --platform-out`；本機用
       `load_review_file` 再驗；PR 二（platform-reviews.json、報告補數字）。
-- [ ] 主機 dry-run → 站主同意 → `apply-food-platform-reviews --file … --apply`；`skipped_admin_reviewed`
+- [x] 主機 dry-run → 站主同意 → `apply-food-platform-reviews --file … --apply`；`skipped_admin_reviewed`
       的列記進報告交後台。
-- [ ] 報告補前後計數；把「等 Naver」的清單交給站主；下一批的切法寫進 Notes；`release` 或 `done`。
+- [x] 報告補前後計數；把「等 Naver」的清單交給站主；下一批的切法寫進 Notes；`release` 或 `done`。
 
 ## How to verify
 
@@ -98,6 +98,13 @@ pending 店家不出現在公開 API；公開的訂位按鈕要等站主貼 Nave
 - 江南區廳的 `visitgangnam.net`、首爾觀光財團的 Taste of Seoul（`*.tasteofseoul.visitseoul.net`）、母公司門市清單（`sgfco.kr`）都當過來源；
   `korean.visitkorea.or.kr` 店家頁的地址是前端動態載入、內建瀏覽器導向會被彈回，本批改用英文站或 KTO 韓文頁的替代網址。
 
+- 2026-09-23 上線紀錄：PR #671 合併（`9063f351`）並部署後，`import-trend-merchants` dry-run `would_create 14` → `--apply` `created 14`；
+  worklist 37 → 51 列（pending 1 → 15）；`platform-reviews.json`（15 筆：verified 12、disabled 3）用 `--file /dev/stdin` 餵入，dry-run 全 `would_create`
+  → `--apply` `created 15`；兩支再跑一次分別是 `skipped_existing_slug 14` 與 `unchanged 15`；公開 API 首爾仍 29 家。細節在報告「站主同意後在主機上跑的」。
+- **DoD 沒打勾的那一項（大林倉庫餐酒館）**：`daelimchanggobar` 不在最佳榜前 24 也不在候位榜前 20，本批的候選檔只收榜上的店（轉檔腳本要求每筆有榜頁名次），
+  硬塞會捏造名次。它需要自己的官方來源與 Naver 網址，留在票 `2026-09-21-catchtable-apply-and-daerim`。
+- 下一批的切法：首爾最佳榜第 21–40 名 ＋ 釜山最佳榜前 20（候位榜來源命中率 4/10、訂位率 2/10，不再取）；開跑時把設計文件「操作步驟與指令」升成 skill。
+  先決條件是站主把這批 14 家的 Naver 精準頁貼完，否則佇列只會拉長。
 - 2026-09-22 環境實測（claude-fable-5-1）：雲端容器 `curl` 榜頁得到 7,056 bytes 的 SPA 空殼；
   `api.catchtable.net` 的搜尋與店家 API 都是 Cloudflare 403 封鎖頁，帶完整瀏覽器標頭也一樣；
   headless Chromium 開榜頁是 `ERR_CERT_AUTHORITY_INVALID`（代理重簽憑證不在信任庫，規則是不可關驗證）。
