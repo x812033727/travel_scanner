@@ -30,7 +30,9 @@ React 表單的寫法：文字欄與下拉用原生 value setter 加 `input`／`
 ## Naver 精準頁的分工
 
 - Naver 地圖與搜尋在內建瀏覽器和 Chrome 都被 Anthropic 端安全政策拒絕，站主的授權與手動開頁都改變不了，也不用 curl 繞。
-- 給站主每家的搜尋連結 `https://map.naver.com/p/search/<店名 地址（percent-encoded）>`，請站主依**地址**挑店、貼店家頁網址或「分享→複製連結」的 `naver.me` 短網址。
+- 給站主一張「編號｜店名｜地址」的表請站主自己在 Naver 地圖搜，依**地址**挑店、按「分享→複製連結」回貼 `naver.me` 短網址，一行一家寫「編號 短網址」。
+  不要給 percent-encoded 的 `map.naver.com/p/search/…` 連結：第二批的 MD 檔裡這種連結在站主那邊打不開，站主最後還是自己搜。
+  同園區的另一間餐飲（例如 한국의집 的 고호재）要請站主搜那間的名字，搜主體名字只會得到主頁、與既有店家撞號。
 - session 只讀短網址的轉址標頭：`curl -sS -I -A "<UA>" https://naver.me/<code>` 的 `location:` 就是 `map.naver.com/p/entry/place/<id>?…`，去掉查詢字串。
 - 經營者官網自己放的 Naver 短網址（例如品牌頁分店旁）可以直接用，身分由官網背書。
 - 解出來的 id 要對照目錄裡既有的 `naver_map_url`（worklist 有），撞到就是同一個地點，不能再建一家。
