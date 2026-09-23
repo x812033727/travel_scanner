@@ -215,7 +215,8 @@ alias 也回 200，真正的 404 是渲染後才出現）。
 | 訂位控制項 | 「首頁」分頁裡的服務區塊：同時提供訂位與候位的店有 `service-tab-toggle`，底下是 `service-tab-DINING`（預訂）與 `service-tab-WAITING_REMOTE`（候位）兩個分頁；點開 DINING 才會出現「日期 • 時間 • 人」、日期列與「尋找可用時間」 | `document.querySelector('[data-testid="service-tab-DINING"]')?.click()` 之後看 `document.body.innerText` 有沒有「日期 • 時間 • 人」與「尋找可用時間」；`document.querySelector('[data-testid="dock-waiting-btn"]')?.innerText` |
 
 判定：有 `service-tab-DINING`，點開後出現「日期 • 時間 • 人」與「尋找可用時間」（或沒有分頁切換、頁面直接就是
-這組控制項）→ `reservation`；沒有 DINING 分頁，只有 `service-tab-WAITING_REMOTE`／`waiting-remote-content`／
+這組控制項；只提供訂位的店初始畫面常常只有底部橘色「預訂」鈕，**點一下那顆鈕**訂位區（`service-section-title`
+與日期列）才會展開，這一下不會送出任何東西；服務區塊有時要 10–20 秒才渲染，等它）→ `reservation`；沒有 DINING 分頁，只有 `service-tab-WAITING_REMOTE`／`waiting-remote-content`／
 `dock-waiting-btn` → `waiting_only`；什麼控制項都沒有 → `none`；頁面渲染後是 404 或身分對不上 → `unclear`。
 **2026-09-21 那條「有『預訂』且沒有候位鈕才算可訂位」的規則在雙服務的店會誤判**（熟成到 乙支路店兩個分頁都有，
 dock 按鈕也在），2026-09-23 起以 DINING 分頁為準。dock 按鈕上的「今日公休」只是現在不在營業時段（開店前也會
