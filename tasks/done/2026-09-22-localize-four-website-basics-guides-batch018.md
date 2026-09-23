@@ -61,7 +61,7 @@ Use the isolated API runtime and run `python -m app.guides.pack_cli lint --slug`
 for each exact slug, `npm run check:tasks` and `git diff --check`. Verify every
 protected field and image reference against the pinned source; perform independent
 full-body and actual rendered image review, then guarded canonical publisher tests
-and production browser acceptance before marking this task done.
+and production browser acceptance before marking the dependent release task done.
 
 ## Notes
 
