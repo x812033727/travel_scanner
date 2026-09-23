@@ -15,6 +15,7 @@ scope:
   - apps/web/app/[locale]/page.test.tsx
   - apps/web/components/home-guides.tsx
   - apps/web/components/home-guides.test.tsx
+  - apps/web/components/guides/card.tsx
   - apps/web/components/guides-navigation.test.tsx
   - apps/web/components/mobile-nav.test.tsx
   - apps/web/components/site-footer.test.tsx
@@ -101,3 +102,7 @@ curl -sL https://mokaair.com/zh-TW | grep -c 'href="/zh-TW/life/'
 - Article dates stay as published. Back-dating was considered and rejected: Google dates a
   page by its first crawl (the sitemap was first read 2026-09-21), so it would not help and
   reads as manipulation.
+- CI `web` (e2e/readability.spec.ts, /zh-TW) failed on the new section: the `GuideCard`
+  kind badge set `text-[var(--fg)]`, a token no stylesheet defines, so it inherited
+  `--muted` at 3.54:1 on `--line`. `card.tsx` now uses `--ink`. The same undefined token is
+  in four other badges; filed as `2026-09-23-guide-badges-use-the-undefined-fg`.
