@@ -52,6 +52,17 @@ describe("AdminNav", () => {
     expect(screen.queryByRole("link", { name: "guides" })).toBeNull();
   });
 
+  it("shows the news review badge with isolated localized copy", () => {
+    renderNav(bootstrap([
+      { key: "dashboard", href: "/admin", group: "overview" },
+      { key: "news", href: "/admin/news", group: "content", badge_key: "news_review_pending" },
+    ], { pending_counts: { news_review_pending: 7 } }), "news");
+    const link = screen.getByRole("link", { name: /AI 自動新聞/ });
+    expect(link.getAttribute("href")).toBe("/admin/news");
+    expect(link.getAttribute("aria-current")).toBe("page");
+    expect(link.textContent).toContain("7");
+  });
+
   it("marks the current destination and preserves backend labels", () => {
     renderNav(bootstrap([
       { key: "dashboard", href: "/admin", group: "overview" },

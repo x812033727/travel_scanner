@@ -33,6 +33,9 @@ def test_navigation_registry_has_stable_unique_destinations() -> None:
     # The web fallback list has carried /admin/guides since PR #398, but the layout trusts
     # this registry whenever the API answers, so a missing row made the page "forbidden".
     assert "/admin/guides" in hrefs
+    assert "/admin/news" in hrefs
+    news = next(item for item in operations_service.NAVIGATION_REGISTRY if item.id == "news")
+    assert news.badge_key == "news_review_pending"
     assert all(item.href.startswith("/admin") for item in operations_service.NAVIGATION_REGISTRY)
 
 
