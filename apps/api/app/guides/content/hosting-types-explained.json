@@ -213,6 +213,818 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Shared Hosting, VPS, and Managed Cloud: How a Small Website Should Choose",
+      "description": "Shared hosting, VPS, and managed cloud services often share one price list, but the terms may describe resource allocation or maintenance responsibility. This guide uses a small site to compare storage, memory, transfer, backups, and support. Find the real constraint before adjusting settings, upgrading a plan, or moving hosts. You do not need to memorize specifications first: take this concrete checklist to a provider.",
+      "hero": {
+        "src": "/guides/hosting-types-explained/hero-en.jpg",
+        "alt": "Article data, a server, and a shield connected to represent website needs, hosting resources, and management responsibility.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When choosing hosting, separate two questions first: what resources the website receives and who keeps the service running. VPS describes a virtual-server arrangement, while managed service describes work that a provider takes responsibility for; both can apply at the same time. Seeing the words “cloud” or “managed” therefore does not reveal the full specifications or division of responsibility."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide starts with article sites, portfolios, and small-shop introductions. No plan name alone guarantees speed or search ranking. Compare the site's work, visitor patterns, maintenance capacity, and payment terms together, or you may buy what looks like an upgrade without solving the real problem."
+        },
+        {
+          "type": "heading",
+          "text": "With shared hosting, confirm the management scope first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Shared hosting usually lets multiple websites use the same pool of server resources and management environment. Users commonly manage the website, database, files, and sometimes included mailboxes through a control panel. This does not mean the site must be slow, but an “unlimited traffic” label does not remove every other limit. Check the plan documents for resource, process, and acceptable-use conditions."
+        },
+        {
+          "type": "paragraph",
+          "text": "For one content site, first confirm whether the installation, HTTPS, backup, restore, and support processes are sufficient. Ask which data counts toward storage, whether the database has a separate limit, what happens when traffic increases, and whether the required software or scheduled tasks are allowed. These conditions describe your future work better than a website-count headline. If the existing site has separate email or backup services, list them separately and determine which must move with the host."
+        },
+        {
+          "type": "heading",
+          "text": "A VPS provides a virtual-server environment",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A VPS is a virtual private server, usually an independently manageable virtual environment divided from physical infrastructure. Depending on the service, you can install and configure the system, but you may also need to maintain the operating system, web server, database, security updates, and backups yourself. Renting a VPS does not mean that a specialist is already maintaining a WordPress website for you."
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing VPS plans, examine CPU type, network transfer, backups, and support scope as well as memory and storage. The same virtual CPU count does not guarantee the same operating conditions. Product documents should explain whether processor time is shared and whether the plan suits sustained or occasional workloads. This guide provides no untested performance ranking and does not treat provider specifications as a guarantee of visitor experience."
+        },
+        {
+          "type": "heading",
+          "text": "Ask exactly what a managed service handles",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A managed service may help with installation, monitoring, updates, caching, or backups, but its boundary differs by provider. Some services mainly maintain the server; others focus on a particular application. Third-party plugin conflicts, custom development, or content changes may not be included. Compare management as a responsibility table instead of writing “included” in one cell and assuming every problem is covered."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask providers through concrete situations: which logs will support inspect when the site fails, how quickly a backup can be obtained, who performs a restore, and who renews certificates. If you mainly want to write, reduced maintenance work may be valuable. If you need special software and system settings, also check whether the management service limits the control you need."
+        },
+        {
+          "type": "heading",
+          "text": "Read resource specifications through the site's workload",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage must cover software, images, databases, logs, and backups, not only the images on public pages. Memory relates to concurrent work and database and plugin needs. Network transfer measures data actually downloaded and is different from connection bandwidth. When a plan compresses these ideas into a short label, read the detailed explanation before comparing it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not estimate every workload from monthly page views alone. The same number of visitors can create different server work when they read cacheable articles, sign in as members, search large datasets, or use a dynamic checkout. List which pages need real-time computation and which content can be cached, then examine current errors, resource use, and peaks to identify what actually needs more capacity."
+        },
+        {
+          "type": "heading",
+          "text": "When the website slows down, find the bottleneck first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before moving to a larger host, determine whether every page is slow or only certain articles, the admin area, or forms. Large images, third-party scripts, repeated queries, a broken cache, and insufficient hosting resources can all feel like a slow website, but they require different remedies. Test the same set of pages under similar conditions with one measurement method, and keep before-and-after results instead of declaring success from one unusually fast reading."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the evidence shows sustained resource shortage, ask exactly what an upgrade changes, whether downtime is required, and whether you can return to the old plan. Keep a migration or restore route as well. A provider's one-click upgrade does not remove the need to check every application. After the upgrade, verify the website, mail, scheduled tasks, and required integrations to confirm that the added resources solved the original problem."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Inventory the site type, required software, data volume, and current maintenance owner, then write down the non-negotiable conditions.",
+            "Compare resources, backups, support, usage limits, and full payment terms item by item instead of copying the marketing headline.",
+            "Test the candidate or current environment with the main visitor flows and record speed, errors, and resource use.",
+            "Confirm upgrade, restore, and exit routes, then choose a service you can continue to manage."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Let maintenance capacity grow with the hosting",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Without systems-maintenance experience, a low-cost VPS can convert a financial cost into time spent on installation, maintenance, and failures. When someone already manages the environment, a configurable service may fit better. Evaluate maintenance hours together with service fees; do not choose an environment you cannot take over merely because its specification table shows larger numbers."
+        },
+        {
+          "type": "paragraph",
+          "text": "As the website grows, revisit its data and workflows rather than treating the first choice as permanent. Retain control of the domain and accounts, obtainable backups, and essential configuration records. Then a future resource increase, move to managed service, or provider change can begin with known conditions instead of first recovering lost passwords and website data."
+        },
+        {
+          "type": "image",
+          "src": "/guides/hosting-types-explained/diagram-1-en.svg",
+          "alt": "A hosting comparison that checks resource conditions first, then maintenance responsibility, and finally validates real website flows.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Find the constraint before discussing an upgrade; a product name does not guarantee speed.",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Area",
+            "Question to ask",
+            "Evidence to inspect"
+          ],
+          "rows": [
+            [
+              "Resources",
+              "What does the site receive, and where are the limits?",
+              "CPU, memory, storage, and transfer documents"
+            ],
+            [
+              "Management",
+              "Who updates, monitors, and restores?",
+              "Managed-service scope and support terms"
+            ],
+            [
+              "Performance",
+              "Has the reason for slowness been identified?",
+              "Measurements and logs under fixed conditions"
+            ],
+            [
+              "Scaling",
+              "What changes with an upgrade, and can you exit?",
+              "Downtime, rollback, and billing terms"
+            ]
+          ],
+          "caption": "Hosting comparison fields; VPS describes an environment and managed service describes responsibility, so both may apply together."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Unlimited traffic still comes with usage terms",
+          "text": "A plan's traffic statement does not answer its memory, process, database, or backup limits. Ask about each required task and mark any capability without written evidence as pending confirmation."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "How to budget for a website: separate the first year, renewals, and maintenance",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What website maintenance includes: routine backups, updates, and incident reporting",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS: Web-hosting services and resource concepts",
+          "url": "https://aws.amazon.com/what-is/web-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS: VPS and management models",
+          "url": "https://aws.amazon.com/what-is/vps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DigitalOcean: Virtual-server products and resource types",
+          "url": "https://www.digitalocean.com/products/droplets",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "共有ホスティング、VPS、マネージドクラウド：小規模サイトの選び方",
+      "description": "共有ホスティング、VPS、マネージドクラウドは同じ料金表に並びますが、資源配分を表す言葉と保守責任を表す言葉が混在しています。本稿では小規模サイトを例に違いを説明し、容量、メモリ、転送量、バックアップ、サポートの比べ方を整理します。サイトの本当の制約を見つけてから、設定改善、プラン変更、ホスト移転のどれが必要か判断します。仕様を先に暗記しなくても、この具体的なチェックリストを事業者との相談に使えます。",
+      "hero": {
+        "src": "/guides/hosting-types-explained/hero-ja.jpg",
+        "alt": "記事データ、サーバー、盾がつながり、サイトの要件、ホスティング資源、管理責任を表している。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ホスティングを選ぶときは、サイトがどの資源を得るかと、誰がサービスを正常に保つかをまず分けて考えます。VPSは仮想サーバーの構成を表し、マネージドサービスは保守作業の一部を事業者が担うことを表します。両方が同時に成り立つ場合もあります。そのため「クラウド」や「マネージド」という名前だけでは、完全な仕様や責任範囲は分かりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本稿は記事、作品、小規模店舗の紹介サイトなどを出発点に、ホスティングを選ぶ順序を説明します。プラン名だけで速度や検索順位が保証されることはありません。サイトの処理、訪問者の状況、保守人員、支払い条件を一緒に比べなければ、アップグレードに見えても実際の問題が残るプランを買うことがあります。"
+        },
+        {
+          "type": "heading",
+          "text": "共有ホスティングでは最初に管理範囲を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "共有ホスティングでは通常、複数のサイトが同じサーバー資源群と管理環境を利用します。利用者はコントロールパネルからサイト、データベース、ファイル、場合によっては付属メールボックスを管理します。共有だから必ず遅いとは限りませんが、「転送量無制限」という表示でほかの制限がなくなるわけでもありません。資源、実行プロセス、利用方針はプラン資料で確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "コンテンツサイトが一つなら、インストール、HTTPS、バックアップ、復元、サポートの手順が十分か最初に確認します。容量に含まれるデータ、データベースの別上限、アクセス増加時の対応、必要なプログラムや定期処理の可否を尋ねてください。これらの条件は、設置できるサイト数だけを比べるより、将来の作業に近い情報です。元のサイトに別のメールやバックアップサービスがある場合も分けて列挙し、ホスト変更時に何を一緒に移すか確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "VPSが提供するのは仮想サーバー環境",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "VPSは仮想専用サーバーで、通常は物理基盤上に分けられた、独立して管理できる仮想環境です。サービス条件に応じてシステムを導入・設定できますが、OS、ウェブサーバー、データベース、セキュリティ更新、バックアップを自分で扱う必要もあります。VPSを借りても、専門家がWordPressサイトを保守してくれるサービスを得たことにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "VPSを比べるときは、メモリとストレージだけでなく、CPUの種類、ネットワーク転送、バックアップ、サポート範囲も確認します。仮想CPU数が同じでも、実際の動作条件が同じとは限りません。処理時間を共有するか、継続負荷と一時的な需要のどちらに向くかは製品資料で確認します。本稿は未検証の性能順位を示さず、事業者の仕様を訪問者体験の保証とは扱いません。"
+        },
+        {
+          "type": "heading",
+          "text": "マネージドサービスの担当範囲を具体的に聞く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "マネージドサービスは導入、監視、更新、キャッシュ、バックアップを支援することがありますが、範囲は事業者ごとに異なります。主にサーバーを保守するサービスも、特定アプリに重点を置くサービスもあります。外部プラグインの競合、独自開発、コンテンツ変更は含まれないことがあります。比較時は「あり」と一欄に書いて全問題が対象だと考えず、責任表に分けてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "具体的な状況で事業者に尋ねられます。サイトでエラーが出たときにどのログを調べるか、バックアップをいつ受け取れるか、誰が復元するか、誰が証明書を更新するかです。執筆に集中したいなら、保守作業を減らすことに価値がある場合があります。特殊なプログラムやシステム設定が必要なら、管理サービスが必要な操作を制限しないかも確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトの処理量から資源仕様を読む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ストレージは公開ページの画像だけでなく、プログラム、画像、データベース、ログ、バックアップを含めて考えます。メモリは同時処理、データベース、プラグインの要件に関係します。ネットワーク転送量は実際にダウンロードされたデータ量で、接続帯域幅とは別の概念です。プランがこれらを短い名称にまとめている場合、詳しい説明を読んでから比べます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "月間ページビューだけですべての負荷を見積もらないでください。同じ訪問者数でも、キャッシュできる記事を読む場合と、会員ログイン、大量データの検索、動的決済ではサーバーの仕事が異なることがあります。リアルタイム処理が必要なページとキャッシュできる内容を列挙し、現在のエラー、資源使用量、ピークを見て、実際に何を増やすべきか判断します。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトが遅いときは先にボトルネックを探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "大きなホストへ移る前に、すべてのページが遅いのか、特定の記事、管理画面、フォームだけなのかを確認します。大きな画像、外部スクリプト、重複クエリ、機能しないキャッシュ、ホスティング資源不足はいずれも遅く感じる原因ですが、対処法は異なります。同じページ群を近い条件と同じ測定方法で試し、改善前後の結果を残し、一度だけ速かった数字で成功と発表しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "資源不足が継続しているとデータで分かったら、アップグレードで何が変わるか、停止時間が必要か、元のプランへ戻れるかを尋ねます。移行または復元方法も残してください。ワンクリックのアップグレードでも、すべてのアプリを確認しなくてよいわけではありません。変更後にサイト、メール送信、定期処理、必要な連携を検証し、追加資源が元の問題を解決したか確認します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイト種類、必要なプログラム、データ量、現在の保守担当者を整理し、欠かせない条件を書く。",
+            "資源、バックアップ、サポート、利用制限、支払い条件全体を項目ごとに比べ、宣伝ページの見出しだけを書き写さない。",
+            "主要な訪問者の流れで候補または現環境を試し、速度、エラー、資源使用量を記録する。",
+            "アップグレード、復元、退出方法を確認し、継続して管理できるサービスを選ぶ。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "保守人員もホスティングと一緒に育てる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "システム保守の経験がなければ、低価格VPSは金銭支出を導入、保守、障害対応の時間へ置き換えることがあります。環境の管理者がいるなら、自分で構成できるサービスが合う場合もあります。保守時間とサービス料金を一緒に評価し、仕様表の大きな数字だけで自分が引き継げない環境を選ばないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトが成長したら、最初の選択を永久の決定とせず、データと手順を見直せば十分です。ドメインとアカウントの管理権、取得できるバックアップ、必要な設定記録を保ってください。将来、資源追加、マネージドサービスへの変更、事業者移転をするとき、失ったパスワードやサイトデータを探すところではなく、既知の条件から始められます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hosting-types-explained/diagram-1-ja.svg",
+          "alt": "ホスティング比較で、最初に資源条件、次に保守責任を確認し、最後に実際のサイト動線で検証する。",
+          "width": 1600,
+          "height": 900,
+          "caption": "制約を見つけてからアップグレードを考える。名称だけでは速度を保証しません。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "観点",
+            "尋ねること",
+            "確認する資料"
+          ],
+          "rows": [
+            [
+              "資源",
+              "サイトが得るものと制限は何か",
+              "CPU、メモリ、容量、転送量の資料"
+            ],
+            [
+              "管理",
+              "誰が更新・監視・復元するか",
+              "管理範囲とサポート説明"
+            ],
+            [
+              "性能",
+              "遅い原因を特定したか",
+              "同じ条件での測定と記録"
+            ],
+            [
+              "拡張",
+              "アップグレードで何が変わり、退出できるか",
+              "停止、復旧、料金条件"
+            ]
+          ],
+          "caption": "ホスティングの比較項目。VPSは環境、マネージドサービスは責任を表すため、両方が同時に成り立ちます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "転送量無制限でも利用条件を読む",
+          "text": "プランの転送量説明だけでは、メモリ、プロセス、データベース、バックアップの制限は分かりません。必要な作業ごとに尋ね、書面の根拠がない機能は確認待ちにします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト予算の組み方：初年度、更新、保守を分けて計算する",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守の内容：バックアップ、更新、障害報告の日常手順",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS：ウェブホスティングのサービスと資源の概念",
+          "url": "https://aws.amazon.com/what-is/web-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS：VPSと管理方式",
+          "url": "https://aws.amazon.com/what-is/vps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DigitalOcean：仮想サーバー製品と資源の種類",
+          "url": "https://www.digitalocean.com/products/droplets",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "공유 호스팅, VPS, 관리형 클라우드: 소규모 웹사이트 선택 순서",
+      "description": "공유 호스팅, VPS, 관리형 클라우드는 같은 요금표에 자주 나열되지만 어떤 용어는 자원 배분을, 다른 용어는 유지관리 책임을 설명합니다. 이 글은 소규모 웹사이트를 기준으로 차이를 설명하고 저장 공간, 메모리, 전송량, 백업, 지원을 비교하는 방법을 정리합니다. 사이트의 실제 제약을 먼저 찾고 설정 개선, 요금제 업그레이드, 호스팅 이전 중 무엇이 필요한지 판단합니다. 사양을 먼저 외울 필요 없이 이 구체적인 체크리스트로 서비스 제공업체와 논의할 수 있습니다.",
+      "hero": {
+        "src": "/guides/hosting-types-explained/hero-ko.jpg",
+        "alt": "글 데이터, 서버, 방패가 연결되어 웹사이트 요구, 호스팅 자원, 관리 책임을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "호스팅을 고를 때는 먼저 웹사이트가 어떤 자원을 받는지와 누가 서비스를 정상적으로 유지할지를 구분하십시오. VPS는 가상 서버 구성을 설명하고 관리형 서비스는 일부 관리 업무를 공급자가 맡는다는 뜻이므로 두 조건이 동시에 적용될 수 있습니다. 따라서 ‘클라우드’나 ‘관리형’이라는 이름만으로 전체 사양과 책임 범위를 알 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 글, 작품, 소규모 매장 소개 사이트를 출발점으로 호스팅 선택 순서를 설명합니다. 요금제 이름만으로 속도나 검색 순위를 보장하는 방식은 없습니다. 웹사이트 작업, 방문자 상황, 유지관리 인력, 결제 조건을 함께 비교해야 겉보기에는 업그레이드지만 실제 문제는 남는 상품을 피할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "공유 호스팅은 먼저 관리 범위를 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공유 호스팅에서는 일반적으로 여러 웹사이트가 같은 서버 자원과 관리 환경을 사용합니다. 사용자는 제어판으로 사이트, 데이터베이스, 파일, 경우에 따라 포함된 메일함을 관리합니다. 공유 환경이라고 반드시 느린 것은 아니지만 ‘트래픽 무제한’이라는 표시가 다른 제한까지 없애는 것도 아닙니다. 자원, 실행 프로세스, 사용 정책은 요금제 문서에서 확인하십시오."
+        },
+        {
+          "type": "paragraph",
+          "text": "콘텐츠 사이트 하나를 운영한다면 설치, HTTPS, 백업, 복원, 지원 절차가 충분한지 먼저 확인하십시오. 어떤 데이터가 공간에 포함되는지, 데이터베이스에 별도 한도가 있는지, 트래픽 증가 시 어떤 일이 생기는지, 필요한 프로그램이나 예약 작업을 허용하는지 물어보십시오. 이런 구체적 조건이 설치 가능한 사이트 수만 비교하는 것보다 향후 업무에 더 가깝습니다. 기존 사이트에 별도 이메일과 백업 서비스가 있다면 따로 적고 호스팅 이전 시 어떤 항목을 함께 옮겨야 하는지 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "VPS가 제공하는 것은 가상 서버 환경",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "VPS는 가상 사설 서버로, 보통 물리 인프라에서 나누어 독립적으로 관리할 수 있는 가상 환경입니다. 서비스 조건에 따라 시스템을 설치하고 설정할 수 있지만 운영체제, 웹 서버, 데이터베이스, 보안 업데이트, 백업을 직접 처리해야 할 수도 있습니다. VPS 한 대를 빌렸다고 전문가가 관리하는 WordPress 웹사이트를 얻는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "VPS를 비교할 때는 메모리와 저장 공간뿐 아니라 CPU 유형, 네트워크 전송, 백업, 지원 범위도 살펴보십시오. 가상 CPU 수가 같아도 실제 동작 조건이 같다는 뜻은 아닙니다. 처리 시간을 공유하는지, 지속 부하와 일시적 수요 중 어디에 맞는지는 제품 문서에서 확인해야 합니다. 이 글은 시험하지 않은 성능 순위를 제공하지 않으며 공급자 사양을 방문자 경험의 보장으로 취급하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "관리형 서비스의 처리 범위를 분명히 묻기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "관리형 서비스는 설치, 모니터링, 업데이트, 캐시, 백업을 도울 수 있지만 경계는 공급자마다 다릅니다. 주로 서버를 관리하는 서비스도 있고 특정 애플리케이션에 집중하는 서비스도 있습니다. 외부 플러그인 충돌, 맞춤 개발, 콘텐츠 변경은 포함되지 않을 수 있습니다. 비교할 때 한 칸에 ‘있음’이라고 적고 모든 문제가 해결된다고 보지 말고 책임표로 나누십시오."
+        },
+        {
+          "type": "paragraph",
+          "text": "구체적인 상황으로 공급자에게 질문할 수 있습니다. 사이트 오류가 날 때 어떤 로그를 확인해 주는지, 백업을 얼마나 빨리 받을 수 있는지, 누가 복원하는지, 인증서 갱신은 누가 맡는지 물어보십시오. 글쓰기에 집중하려면 관리형 서비스가 줄여 주는 업무가 가치 있을 수 있습니다. 특수 프로그램과 시스템 설정이 필요하다면 관리 서비스가 필요한 조작을 제한하지 않는지도 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "웹사이트 작업량을 기준으로 자원 사양 읽기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 공간은 공개 페이지의 이미지만이 아니라 프로그램, 이미지, 데이터베이스, 로그, 백업까지 고려해야 합니다. 메모리는 동시 작업과 데이터베이스 및 플러그인 요구에 관련됩니다. 네트워크 전송량은 실제로 다운로드된 데이터양이며 연결 대역폭과는 다른 개념입니다. 요금제가 이런 항목을 짧은 이름 하나로 묶었다면 자세한 설명을 확인한 뒤 비교하십시오."
+        },
+        {
+          "type": "paragraph",
+          "text": "월간 페이지 조회 수만으로 모든 부하를 추정하지 마십시오. 같은 수의 방문자라도 캐시 가능한 글을 읽는 경우와 회원 로그인, 대량 데이터 검색, 동적 결제는 서버 작업이 다를 수 있습니다. 실시간 연산이 필요한 페이지와 캐시 가능한 콘텐츠를 구분하고 현재 오류, 자원 사용량, 피크 상황을 살펴야 실제로 무엇을 늘릴지 판단할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "웹사이트가 느리면 먼저 병목 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "더 큰 호스팅으로 바꾸기 전에 모든 페이지가 느린지, 특정 글이나 관리자 화면, 양식만 느린지 살펴보십시오. 큰 이미지, 외부 스크립트, 반복 쿼리, 작동하지 않는 캐시, 호스팅 자원 부족은 모두 사이트가 느리게 느껴지는 원인이지만 해결 방식은 다릅니다. 같은 페이지 묶음을 비슷한 조건과 동일한 측정 방식으로 시험하고 개선 전후 결과를 남겨 한 번 빠르게 나온 수치만으로 성공을 선언하지 마십시오."
+        },
+        {
+          "type": "paragraph",
+          "text": "자료에서 자원이 계속 부족하다고 확인되면 업그레이드로 어떤 조건이 바뀌는지, 중단 시간이 필요한지, 원래 요금제로 돌아갈 수 있는지 물어보십시오. 이전 또는 복원 방법도 보관합니다. 공급자의 원클릭 업그레이드가 모든 애플리케이션 점검을 없애 주지는 않습니다. 업그레이드 후 웹사이트, 메일 발송, 예약 작업, 필요한 연동을 검증해 추가 자원이 원래 문제를 해결했는지 확인하십시오."
+        },
+        {
+          "type": "list",
+          "items": [
+            "웹사이트 유형, 필수 프로그램, 데이터양, 현재 유지관리 담당자를 파악하고 빠질 수 없는 조건을 적습니다.",
+            "자원, 백업, 지원, 사용 제한, 전체 결제 조건을 항목별로 비교하고 홍보 페이지 제목만 옮겨 적지 않습니다.",
+            "주요 방문자 흐름으로 후보 또는 현재 환경을 시험하고 속도, 오류, 자원 사용량을 기록합니다.",
+            "업그레이드, 복원, 종료 방법을 확인한 뒤 지속적으로 관리할 수 있는 서비스를 선택합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "유지관리 역량도 호스팅과 함께 키우기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "시스템 유지관리 경험이 없다면 저렴한 VPS가 금전 지출을 설치, 관리, 장애 처리 시간으로 바꿀 수 있습니다. 이미 환경을 관리할 사람이 있다면 직접 구성할 수 있는 서비스가 더 알맞을 수 있습니다. 유지관리 시간과 서비스 비용을 함께 평가하고 사양표의 큰 숫자만 보고 직접 인계받을 수 없는 환경을 선택하지 마십시오."
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트가 성장하면 첫 선택을 영구 결정으로 보지 말고 데이터와 절차를 다시 살피면 됩니다. 도메인과 계정 통제권, 확보할 수 있는 백업, 필요한 설정 기록을 유지하십시오. 그러면 향후 자원을 늘리거나 관리형 서비스를 쓰거나 공급자를 바꿀 때 잃어버린 비밀번호와 사이트 자료부터 찾지 않고 알려진 조건에서 시작할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/hosting-types-explained/diagram-1-ko.svg",
+          "alt": "호스팅을 비교할 때 자원 조건을 먼저 확인하고 관리 책임을 살핀 뒤 실제 웹사이트 흐름으로 검증한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "제약을 먼저 찾고 업그레이드를 논의하십시오. 이름 자체가 속도를 보장하지는 않습니다.",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "관점",
+            "물어볼 질문",
+            "확인할 자료"
+          ],
+          "rows": [
+            [
+              "자원",
+              "사이트가 무엇을 받고 한계는 어디인가",
+              "CPU, 메모리, 공간, 전송 문서"
+            ],
+            [
+              "관리",
+              "누가 업데이트, 모니터링, 복원을 맡는가",
+              "관리 범위와 지원 설명"
+            ],
+            [
+              "성능",
+              "느린 원인을 확인했는가",
+              "고정 조건의 측정과 기록"
+            ],
+            [
+              "확장",
+              "업그레이드로 무엇이 바뀌며 종료할 수 있는가",
+              "중단, 복구, 결제 조건"
+            ]
+          ],
+          "caption": "호스팅 비교 항목입니다. VPS는 환경을, 관리형 서비스는 책임을 설명하므로 두 조건이 함께 적용될 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "트래픽 무제한이어도 사용 조건을 읽으세요",
+          "text": "요금제의 트래픽 설명만으로 메모리, 프로세스, 데이터베이스, 백업 제한을 알 수는 없습니다. 필요한 작업별로 질문하고 서면 근거가 없는 기능은 확인 대기로 표시하십시오."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 예산 짜는 법: 첫해, 갱신, 유지관리 비용 나누기",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지관리 항목: 백업, 업데이트, 장애 보고의 일상 절차",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS: 웹 호스팅 서비스와 자원 개념",
+          "url": "https://aws.amazon.com/what-is/web-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS: VPS와 관리 방식",
+          "url": "https://aws.amazon.com/what-is/vps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DigitalOcean: 가상 서버 제품과 자원 유형",
+          "url": "https://www.digitalocean.com/products/droplets",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "共享主机、VPS 和云托管：小型网站的选择顺序",
+      "description": "共享主机、VPS 和云托管经常出现在同一张价目表上，但有些术语描述资源分配，有些描述维护责任。本文用小型网站的需求说明这些名词的差别，整理空间、内存、流量、备份和支持的比较方法，带你先找出网站真正的限制，再判断应该改善设置、升级方案还是更换主机。无需先背规格，也能用一份具体清单与服务商讨论。",
+      "hero": {
+        "src": "/guides/hosting-types-explained/hero-zh-cn.jpg",
+        "alt": "文章资料、服务器和保护盾牌相连，表达网站需求、主机资源和管理责任。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "选择主机时，先分清两件事：网站获得什么资源，以及谁负责让服务保持正常。VPS 描述虚拟服务器的安排，托管则描述由服务商承担部分管理工作，两者可以同时存在。因此，看到“云端”或“托管”名称，还不能知道完整规格和责任范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以文章、作品和小店介绍等网站为出发点，说明选择主机的顺序。没有一种方案能够只凭名称保证速度或搜索排名；你需要把网站工作、访客情况、维护人力和付款条件一起比较，才能避免买到看似升级、实际问题仍然存在的方案。"
+        },
+        {
+          "type": "heading",
+          "text": "共享主机适合先确认管理范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "共享主机通常让多个网站使用同一套服务器资源和管理环境。对用户而言，重点往往是通过控制面板管理网站、数据库、文件及可能包含的邮箱。你不必因此假设网站一定很慢，也不能因为标注不限流量就忽略其他限制；资源、运行进程或使用政策仍应查看方案文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果你只有一个内容网站，先确认安装、HTTPS、备份、恢复和支持流程是否足够。请问清空间包含哪些资料、数据库是否另有上限、流量增加后会发生什么，以及是否允许所需程序或定时任务。这些具体条件，比只比较能架设几个网站更接近你日后会遇到的工作。如果原网站另有邮箱和备份服务，也请分开列出，确认更换主机时哪些项目需要一起迁移。"
+        },
+        {
+          "type": "heading",
+          "text": "VPS 提供的是虚拟服务器环境",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "VPS 是虚拟专用服务器，通常是在物理基础设施上划分出的可独立管理虚拟环境。你可以按照服务条件安装和设置系统，但也可能需要自行处理操作系统、Web 服务器、数据库、安全更新和备份。租用一台 VPS，并不等于已经获得由专人维护的 WordPress 网站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较 VPS 时，除了内存和存储空间，也要查看 CPU 类型、网络传输、备份和支持范围。虚拟 CPU 数量相同，实际运行条件未必相同；是否共享处理器时间、适合持续负载还是偶发需求，需要查看产品文件。本文不提供未经实测的性能排名，也不把服务商规格当成访客体验的保证。"
+        },
+        {
+          "type": "heading",
+          "text": "托管服务要问清具体处理范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "托管可能协助安装、监控、更新、缓存或备份，但每家服务的边界不同。有的主要维护服务器，有的更专注于特定应用程序；第三方插件冲突、程序定制或内容修改未必包含在内。比较时请把托管列成责任表，不要只在一栏写“有”就认为所有问题都有人解决。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以用几个具体情境询问服务商：网站出现错误时会协助查看哪种日志、多久能取得备份、由谁执行恢复、由谁处理证书更新。如果你主要希望专心写作，托管服务减少的工作量可能有价值；如果需要特殊程序和系统设置，也要确认管理服务是否会限制你需要的操作空间。"
+        },
+        {
+          "type": "heading",
+          "text": "用网站工作量解读资源规格",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "存储空间要考虑程序、图片、数据库、日志和备份，不只计算公开页面的图片。内存则与同时处理的工作、数据库和插件需求有关。网络传输量是实际下载的数据量，与连接带宽的概念不同。若方案把这些项目混成一个简短名称，请查看详细说明后再比较。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只用每月浏览量估算所有负载。相同数量的访客，阅读可缓存文章与登录会员、搜索大量资料或动态结账，对服务器产生的工作可能不同。先列出哪些页面需要实时运算、哪些内容可以缓存，再查看当前错误、资源使用和高峰情况，才有依据判断真正需要增加什么。"
+        },
+        {
+          "type": "heading",
+          "text": "网站变慢时先寻找瓶颈",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更换更大主机之前，先观察是所有页面都慢，还是只有特定文章、后台或表单较慢。大图片、第三方脚本、重复查询、失效缓存和主机资源不足，都可能让人觉得网站慢，但处理方法不同。请固定同一组页面、相近条件和测量方法，保留改善前后的结果，避免只挑一次较快的数字就宣布升级成功。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果资料显示资源持续不足，再询问升级会改变哪些条件、是否需要停机，以及能否回到原方案。同时保留迁移或恢复方式。服务商提供一键升级并不代表所有应用程序都无需检查；升级后仍应验证网站、邮件发送、定时任务和必要集成，确认新增资源解决了原本的问题。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "盘点网站类型、必要程序、数据量和当前维护负责人，写出不可缺少的条件。",
+            "逐项比较资源、备份、支持、使用限制和完整付款条件，不只抄宣传页标题。",
+            "用主要访客流程测试候选或现有环境，记录速度、错误和资源使用。",
+            "确认升级、恢复和退出方式，再选择你有能力持续管理的服务。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "让维护人力与主机一起成长",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "没有系统维护经验时，低价 VPS 可能把金钱支出转成安装、维护和故障处理时间；已经有人管理环境时，可以自行配置的服务则可能更符合需求。请把维护工时和服务费用放在一起评估，不必为了规格表上的大数字选择自己无法接手的环境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网站成长后，重新查看资料和流程即可，不必把第一次选择当成永久决定。你应保留域名与账号控制权、可取得的备份及必要设置记录。这样日后无论是增加资源、改用托管还是更换服务商，都能从已知条件开始，而不是先找回丢失的密码和网站资料。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/hosting-types-explained/diagram-1-zh-cn.svg",
+          "alt": "比较主机时先检查资源条件，再确认维护责任，最后以网站实际流程验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先找限制，再谈升级；名称本身不能保证速度。",
+          "description": "",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方面",
+            "要问的问题",
+            "要看的资料"
+          ],
+          "rows": [
+            [
+              "资源",
+              "网站获得什么、限制在哪里",
+              "CPU、内存、空间和传输文件"
+            ],
+            [
+              "管理",
+              "谁更新、谁监控、谁恢复",
+              "托管范围和支持说明"
+            ],
+            [
+              "性能",
+              "是否已确认变慢原因",
+              "固定条件下的测量和记录"
+            ],
+            [
+              "扩展",
+              "升级改变什么、能否退出",
+              "停机、回退和计费条件"
+            ]
+          ],
+          "caption": "主机比较字段；VPS 与托管分别描述环境和责任，可以同时存在。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "不限流量仍要阅读使用条件",
+          "text": "方案的流量说明不会自动回答内存、进程、数据库或备份限制。对照必要工作逐项询问，没有书面依据的功能先列为待确认。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "如何编制建站预算：把首年、续费和维护分开计算",
+              "kind": "life",
+              "slug": "website-budget-worksheet"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护要做什么：备份、更新和故障报告的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "AWS：网站主机的服务和资源概念",
+          "url": "https://aws.amazon.com/what-is/web-hosting/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "AWS：VPS 和管理方式",
+          "url": "https://aws.amazon.com/what-is/vps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "DigitalOcean：虚拟主机产品和资源类型",
+          "url": "https://www.digitalocean.com/products/droplets",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
