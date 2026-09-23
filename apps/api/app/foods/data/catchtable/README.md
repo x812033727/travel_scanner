@@ -9,6 +9,10 @@
 | `merchants.json` | `tools/catchtable_build_batches.py` | `import-trend-merchants --file` 的輸入 |
 | `platform-reviews.json` | `tools/catchtable_build_batches.py`（要先有 worklist） | `apply-food-platform-reviews --file` 的輸入 |
 
+一批跨兩個目的地時（第二批是首爾第 21–40 名加釜山第 1–20 名），`rankings.json` 仍是一份、兩頁都放進去，其餘三個檔以目的地分開：
+`candidates-<destination>.json`、`merchants-<destination>.json`、`platform-reviews-<destination>.json`，各自的 `batch_id` 是
+`<batch-id>-<destination>`；轉檔腳本一次只吃一個目的地，兩個目的地各跑一次。
+
 沒有任何程式會自動掃這個目錄；兩支匯入指令都要明確帶 `--file`，而且先 dry-run。設計、邊界與操作
 步驟在 `docs/catchtable-ranking-discovery.md`。名次只留在 `candidates.json` 的 `ranking_evidence`，
 不落地、不公開。

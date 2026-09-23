@@ -118,6 +118,16 @@
 （2026-09-23 更新：Naver 這一步用「站主在自己的 Naver 地圖挑選並貼短網址、session 讀轉址取 id 並填後台」的分工，14 家裡 12 家當天公開；
 剩兩家分別卡座標與 Naver 條目重複。）
 
+**第二批量到的（2026-09-23，40 家，報告 `docs/catalog-content-reviews/catchtable-batch-2.md`）：**
+
+| 比例 | 首爾最佳榜 21–40 | 釜山最佳榜 1–20 | 意思 |
+| --- | ---: | ---: | --- |
+| 有官方來源 | 14/19 | 11/20 | 首爾這段有 Taste of Seoul 名單、KTO 專題與 fine dining 官網撐著；釜山靠 Visit Busan，連鎖分店與酒吧它不收，三個區廳站在這個環境連不上 |
+| 能線上訂位 | 20/20 | 20/20 | 最佳榜兩批合計 60/60，候位榜才有 waiting_only |
+| 與既有目錄重複 | 1/20 | 0/20 | 首爾的 1 家是第一批建的 alice_cheongdam（榜單位移） |
+
+第三批若要跑，最佳榜往下（首爾 41–60）與濟州、大邱的前 20 都可以照 skill 直接開；釜山的無來源清單等區廳站能連上再復活。
+
 ## 操作步驟與指令
 
 | 步驟 | 雲端 session | 本機（站主的瀏覽器，或本機的 Claude Code／Codex） |
@@ -141,6 +151,8 @@
 主機上的指令都在 `docker compose -f docker-compose.prod.yml exec -T api python -m app.cli …` 後面；
 本機檢查用 repo 的 venv python（`<PY>`），從 `apps/api` 跑。`<BATCH>` 是
 `app/foods/data/catchtable/<batch-id>`。
+一批跨兩個目的地時（第二批：首爾 21–40 加釜山 1–20），`rankings.json` 一份，`candidates-<destination>.json`、
+`merchants-<destination>.json`、`platform-reviews-<destination>.json` 各目的地一份，轉檔與匯入每個目的地各跑一次（佈局在資料目錄的 README）。
 
 ```bash
 # 去重用的目錄快照（主機；含 approved，因為重複最常發生在已公開的店；--include-researched 讓 enrichment
