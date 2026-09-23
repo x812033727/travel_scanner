@@ -13,9 +13,10 @@ import { MokaairLogo } from "@/components/mokaair-logo";
 import { Link, usePathname } from "@/i18n/navigation";
 import { fallbackAdminNavigation, visibleAdminNavigation, type AdminBootstrap, type AdminNavigationItem } from "@/lib/admin-operations";
 import { adminOperationsCopy } from "@/lib/admin-operations-copy";
+import { adminNewsCopy } from "@/lib/admin-news-copy";
 
 const icons: Record<string, typeof LayoutDashboard> = {
-  dashboard: LayoutDashboard, guides: Newspaper, hotspots: Database, foods: Soup, hotels: Hotel,
+  dashboard: LayoutDashboard, guides: Newspaper, news: Newspaper, hotspots: Database, foods: Soup, hotels: Hotel,
   catalogReview: BookOpenCheck, travelServices: ClipboardCheck, community: UsersRound,
   pets: PawPrint, partners: BriefcaseBusiness, analytics: BarChart3, users: UsersRound,
   usage: BarChart3, audit: ShieldCheck, layout: Settings2, uiText: Languages,
@@ -62,6 +63,7 @@ function useDrawerFocus(open: boolean, container: React.RefObject<HTMLElement | 
 export function AdminNav({ current }: { current?: string } = {}) {
   const locale = useLocale();
   const copy = adminOperationsCopy(locale);
+  const newsCopy = adminNewsCopy(locale);
   const sitePagesTitle = useTranslations("admin.sitePages")("title");
   // Destinations the inline copy table predates (guides) are named by the message catalog.
   const navigationCopy = useTranslations("admin.navigation");
@@ -92,7 +94,8 @@ export function AdminNav({ current }: { current?: string } = {}) {
     try { window.localStorage.setItem("admin-sidebar-collapsed", next ? "1" : "0"); } catch { /* storage may be blocked */ }
   }
 
-  const label = (item: AdminNavigationItem) => item.key === "sitePages" ? sitePagesTitle
+  const label = (item: AdminNavigationItem) => item.key === "news" ? newsCopy.nav
+    : item.key === "sitePages" ? sitePagesTitle
     : item.label || copy.nav[item.key] || (navigationCopy.has(item.key) ? navigationCopy(item.key) : item.key);
   const term = query.trim().toLocaleLowerCase(locale);
   const filtered = links.filter((item) => !term || label(item).toLocaleLowerCase(locale).includes(term));
