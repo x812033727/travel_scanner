@@ -244,6 +244,942 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Using WordPress admin: dividing content, design and administrator duties",
+      "description": "Taking over a WordPress site? Learn daily tasks: posts, pages, images, design and settings that need an administrator. This guide maps common menus and default roles, with steps to record changes, preview, publish and report faults so small teams can divide work clearly. Interfaces vary by theme, plugin and permissions; check the environment when a feature is missing instead of raising everyone's access.",
+      "hero": {
+        "src": "/guides/wordpress-admin-basics/hero-en.jpg",
+        "alt": "Original illustration of three work icons: a content document, a website layout and an administration shield.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When taking over WordPress admin, you do not need to learn every button on the first day. Identify three daily tasks, such as updating announcements, correcting contact details and checking comments, and learn the relevant menus through those tasks. Separating content work from site-wide settings helps avoid changing the whole website just to revise a short passage."
+        },
+        {
+          "type": "paragraph",
+          "text": "Consider two people maintaining a club website together: one prepares event posts, and the other checks and publishes them. The workflow is based on official WordPress documentation, and the role descriptions assume a default single-site installation. Plugins, custom permissions and a Multisite network can change actual capabilities, so verify them against the site's current settings."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm the website and account first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After signing in, check the URL, site name and current account. Similar-looking production and test sites are easy to confuse when you are busy; give the test site a clear label and use separate bookmarks. Even when entering WordPress through a hosting platform, confirm that you selected the correct website before making changes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The administration area usually has a top toolbar, a navigation menu and a main workspace. The Dashboard shows content activity and site information, but some messages come from plugins or vendors. Before acting on promotions, installation prompts or warnings, identify their source and whether they are needed. Not every notice is an urgent requirement from WordPress core."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a feature is missing, check your role, theme and plugins first. Some screens have adjustable display options, and block themes and classic themes may use different appearance controls. When sending a screenshot to the administrator, explain the task you need to perform. That makes it easier to find an appropriate solution than simply asking for every permission."
+        },
+        {
+          "type": "heading",
+          "text": "Find content controls by task",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Posts suit content published over time, such as club event news. Pages suit more stable site information, such as how to join and contact details. The Media Library manages uploaded files, while Comments handles reader responses. Learn these four areas first, then explore categories, excerpts and other settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before each edit, locate the right item by title, status or date, then open the editor. If titles are similar, check the URL and content before changing anything. Bulk editing saves time, but applying it to everything is unsuitable when you are new to the site. First check its effect on an item that will not disrupt operations, so you understand the scope."
+        },
+        {
+          "type": "paragraph",
+          "text": "When the club changes an event venue, correct the event page first, then check whether related announcements also need updating. Renaming an image in the Media Library does not change text inside the image. Nor should you update only the homepage excerpt while leaving old details on the full page. List every location that needs updating to avoid conflicting information."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish individual content from site-wide design",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Body blocks in the post editor mainly affect that post. With a block theme, the Site Editor can manage templates, styles and shared structures. Changes to a header, footer or shared style may affect many pages. Before editing, identify whether you have selected post content, a template or a shared component, and review the change list when saving."
+        },
+        {
+          "type": "paragraph",
+          "text": "A site with a classic theme may use Customize, Widgets or the theme's own settings to change its appearance. A missing Site Editor does not mean the installation is broken; check the theme type first. If a page-builder plugin is installed, learn which pages it controls so mixing editing methods does not damage existing layouts."
+        },
+        {
+          "type": "paragraph",
+          "text": "For people who are not responsible for design, a useful initial agreement is to edit only content and images, leaving fonts, site-wide colors, navigation and templates to designated staff. This is a suggestion for dividing work, not a rule that content editors can never adjust design. When needs change, agree on specific permissions and acceptance checks."
+        },
+        {
+          "type": "heading",
+          "text": "Assign roles by responsibility, not seniority",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Among the default roles, an Administrator manages a single site; an Editor can manage and publish posts, including those by other authors; an Author primarily manages and publishes their own posts; and a Contributor can prepare their own posts but cannot publish them. A Subscriber mainly manages their profile. This is an overview of default capabilities; plugins or administrators may alter them on an actual site."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the club requires every announcement to be reviewed, do not automatically assign the Author role just because a colleague writes content: Authors can publish their own posts by default. First list the required capabilities, including uploading media, editing others' content, publishing and deleting. Then choose an appropriate role or reviewed permission configuration."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give everyone their own account to support suspension, handover and accountability. If someone temporarily helps configure a plugin, agree to review whether they still need those permissions once the work is finished. Before deleting a user, resolve ownership of their content so you do not accidentally delete both a departing person's account and their posts. Keep a backup and obtain administrator confirmation when needed."
+        },
+        {
+          "type": "heading",
+          "text": "Use a consistent process for each change",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Record what you intend to change, its original value and the expected result, then make a limited change. Save and preview content as a draft first where appropriate; remember that updates to already-public posts affect visitors. If a page has forms, buttons or external links, test the associated workflow as well as its layout, confirming the destination and how data are received."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before changing plugins, themes or site-wide settings, confirm the backup and recovery method, and test on a staging site where appropriate. Avoid changing several dependent components at once, which makes faults hard to trace. Recording the time and items changed also helps other administrators avoid working on the same area simultaneously."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm the site, account, content URL and purpose; retain the original values or necessary backup.",
+            "Make the smallest relevant change and check whether it affects one item or the whole site.",
+            "Preview desktop and mobile layouts, and test links, forms and the signed-out state.",
+            "Submit for review or publish according to your permissions, record the result and notify the person taking over."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Read Site Health and report problems",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Health under Tools provides status checks and environment information to help you understand versions, plugins and settings. Its Info screen displays information; it is not a place to change every server setting. For recommended improvements, first understand the impact and who is responsible. Having no warnings does not replace testing forms, sign-in and content functionality."
+        },
+        {
+          "type": "paragraph",
+          "text": "When reporting a problem, include the URL, time, steps taken, error message and affected scope, with passwords and personal information redacted. If it started just after an update, include the updated items and backup location. This record gives the next person known facts to work from instead of making them guess which buttons you pressed."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-admin-basics/diagram-1-en.svg",
+          "alt": "Original diagram dividing WordPress work into content updates, site-wide design and account administration.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Understand the scope of a change before deciding who should make and verify it.",
+          "description": "Original diagram dividing WordPress work into content updates, site-wide design and account administration.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Daily task",
+            "Where to start",
+            "What to check"
+          ],
+          "rows": [
+            [
+              "Add an announcement",
+              "Posts",
+              "Status, publishing permissions and URL"
+            ],
+            [
+              "Correct contact details",
+              "Pages",
+              "Consistency across related pages"
+            ],
+            [
+              "Replace an image",
+              "Media and the content editor",
+              "Where it is used and its license"
+            ],
+            [
+              "Change site-wide design",
+              "Appearance or Site Editor",
+              "Effects on shared templates"
+            ],
+            [
+              "Adjust permissions",
+              "Users",
+              "Required capabilities and content ownership"
+            ],
+            [
+              "Check environment information",
+              "Tools → Site Health",
+              "Diagnostics are not all settings"
+            ]
+          ],
+          "caption": "Menu names can vary by theme, plugin and permissions; start with the purpose of the task."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Check visibility and capability separately",
+          "text": "Hiding a menu does not necessarily remove a permission, and seeing an option does not mean you should use it. Have the administrator check the actual capabilities, then test the workflow with the relevant account."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Building your first WordPress site",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Planning website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Administration Screens",
+          "url": "https://wordpress.org/documentation/article/administration-screens/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Roles and Capabilities",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Site Editor",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Site Health Screen",
+          "url": "https://wordpress.org/documentation/article/site-health-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress 管理画面の使い方：コンテンツ・外観・管理者の役割分担",
+      "description": "WordPress サイトを引き継いだら、投稿、固定ページ、画像、外観の変更と、管理者の確認が必要な設定を日常業務から覚えましょう。よく使う画面と初期設定の権限グループの違いを整理し、変更前の記録、プレビューと公開、不具合報告の手順を示して、小規模チームの分担を明確にします。画面はテーマ、プラグイン、権限で変わるため、機能が見つからないときは全員の権限を上げる前に環境を確認します。",
+      "hero": {
+        "src": "/guides/wordpress-admin-basics/hero-ja.jpg",
+        "alt": "コンテンツの文書、サイトのレイアウト、管理用の盾という三種類の作業アイコンを描いたオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WordPress の管理画面を引き継いでも、初日からすべてのボタンを覚える必要はありません。お知らせの更新、連絡先の修正、コメントの確認など、毎日行う三つの作業を挙げ、その作業を通じて操作場所を覚えましょう。コンテンツの作業とサイト全体の設定を分けると、短い文章を直すつもりでサイト全体を変えてしまう事態を減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここでは二人で団体のサイトを管理し、一人がイベントの記事を準備し、もう一人が確認して公開する例を考えます。手順は WordPress の公式資料に基づき、権限グループの説明は初期設定の単一サイトを前提としています。プラグイン、独自の権限設定、マルチサイトでは実際にできることが変わるため、現在のサイト設定で確かめてください。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトとログイン中のアカウントを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ログイン後は、URL、サイト名、使用中のアカウントを確認します。本番とテストのサイトが似ていると、忙しいときに取り違えやすくなります。テストサイトの名前に目立つ目印を付け、ブックマークも分けましょう。ホスティングサービスから WordPress に入る場合も、正しいサイトを選んだことを確認し、ログインできただけで変更を始めないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理画面には通常、上部のツールバー、ナビゲーションメニュー、主な作業領域があります。ダッシュボードではコンテンツの動きやサイト情報を見られますが、一部の通知はプラグインや事業者が表示しています。宣伝、インストールの案内、警告を見たら、まず発信元と必要性を見極め、すべてを WordPress 本体からの緊急の要求だと思わないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "機能が表示されない場合は、自分の権限グループ、テーマ、プラグインを先に確認します。表示オプションを変えられる画面もあり、ブロックテーマとクラシックテーマでは外観の操作場所も異なることがあります。管理者にスクリーンショットを渡すときは、単に「全部の権限をください」と頼むより、行いたい作業を伝えたほうが適切な方法を見つけやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "作業に応じてコンテンツの入口を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿は団体のイベント情報など、時系列で継続して公開する内容に向いています。固定ページは参加方法や連絡先など、比較的変化の少ないサイト情報に向いています。メディアライブラリではアップロードしたファイルを、コメントでは読者の返信を管理します。まずこの四つの入口を理解し、その後にカテゴリー、抜粋、その他の設定を覚えていきましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "変更のたびに、タイトル、状態、日付を使って正しい項目を探してからエディターを開きます。似た名前の記事があれば、URL と内容を確認してから編集してください。一括編集は時間を節約できますが、引き継いだ直後にすべての項目へ適用するのは適切ではありません。まず運営に影響しない一件で結果を確認し、操作の範囲を理解します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "団体のイベント会場が変わったら、イベントページの文章を直し、関連のお知らせも更新が必要か確認します。メディアライブラリで画像の名前だけ変えても、画像内の文字は変わりません。トップページの抜粋だけを更新して、詳細ページに古い情報を残すことも避けましょう。同時に直す場所を一覧にすると、情報の食い違いを防げます。"
+        },
+        {
+          "type": "heading",
+          "text": "個別の内容とサイト全体の外観を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿エディターの本文ブロックは、主にその投稿の内容を扱います。一方、ブロックテーマのサイトエディターでは、テンプレート、スタイル、共通の構造を管理できます。ヘッダー、フッター、共通スタイルの変更は多数のページに影響することがあります。編集前に、選択中なのが投稿内容、テンプレート、共通部品のどれかを確認し、保存時も変更一覧を点検します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "クラシックテーマのサイトでは、カスタマイズ、ウィジェット、テーマ独自の設定で外観を変える場合があります。サイトエディターが見つからなくても、インストールの故障とは限りません。まずテーマの種類を確認してください。ページビルダーのプラグインを使っている場合は、どのページをそれで管理しているかも把握し、編集方法を混在させて既存のレイアウトを壊さないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "デザイン担当者以外は、最初は文章と画像だけを変更し、フォント、サイト全体の色、ナビゲーション、テンプレートは指定の担当者に任せると決めてもよいでしょう。これは業務分担の提案であり、コンテンツ編集者が今後もデザインを変えてはいけないという意味ではありません。必要が変わったら、権限と確認方法を改めて明確にします。"
+        },
+        {
+          "type": "heading",
+          "text": "役職の上下ではなく責任に応じて権限を割り当てる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初期設定の権限グループでは、管理者は単一サイトの管理を担当し、編集者は他の執筆者の記事も含めて管理・公開できます。投稿者は主に自分の記事を管理・公開し、寄稿者は自分の原稿を準備できますが、自分で公開はできません。購読者は主にプロフィールを管理します。これは標準の能力の概要であり、実際のサイトではプラグインや管理者が変更している場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "団体がすべてのお知らせに事前確認を求めるなら、執筆を担当するという理由だけで投稿者の権限を付けないでください。投稿者は標準で自分の記事を公開できるためです。まずメディアのアップロード、他人の内容の編集、公開、削除など、必要な能力を列挙し、適切な権限グループか、確認済みの個別権限設定を選びます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "利用停止、引き継ぎ、責任の確認がしやすいよう、各自が自分のアカウントを使います。一時的にプラグイン設定を手伝ってもらう場合は、作業後も同じ権限が必要か確認すると決めておきます。ユーザーを削除する前にはコンテンツの所有者を整理し、退職者のアカウントと記事を誤って一緒に消さないでください。必要に応じてバックアップを残し、管理者が確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "変更のたびに同じ手順を使う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "変更する内容、元の値、期待する結果を書き留めてから、狭い範囲で編集します。コンテンツはまず下書き保存とプレビューができますが、すでに公開済みの記事を更新すると訪問者にも反映されます。フォーム、ボタン、外部リンクがあるページでは、見た目だけでなく実際の操作も試し、移動先とデータの受け取り方を確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグイン、テーマ、サイト全体の設定を変えるときは、先にバックアップと復旧方法を確認し、適切な場合はテストサイトで検証します。依存し合う複数の部品を同時に変えると、不具合の原因を特定しにくくなります。変更日時と項目を記録すると、他の管理者が同じ場所を同時に操作することも避けやすくなります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイト、アカウント、対象 URL、変更目的を確認し、元の値や必要なバックアップを保存する。",
+            "最小限の範囲で変更し、単一の内容とサイト全体のどちらに影響するか確認する。",
+            "パソコンとスマートフォンの表示をプレビューし、リンク、フォーム、未ログイン状態を試す。",
+            "権限に従ってレビュー依頼または公開を行い、結果を記録して引き継ぎ担当者に知らせる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "サイトヘルスと不具合報告の見方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ツール内のサイトヘルスでは、状態チェックと環境情報から、バージョン、プラグイン、設定を把握できます。情報画面はデータを表示する場所であり、すべてのサーバー設定を直接変更する場所ではありません。改善の提案があれば、まず影響と担当者を確認します。警告がないことも、フォーム、ログイン、コンテンツの実機能テストの代わりにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不具合を報告するときは、URL、発生時刻、操作手順、エラーメッセージ、影響範囲を伝え、パスワードや個人情報は隠します。更新直後に起きた場合は、更新した項目とバックアップの場所も添えてください。記録があれば、引き継ぐ人は押したボタンを推測し直す必要がなく、確認済みの事実から対処を始められます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-admin-basics/diagram-1-ja.svg",
+          "alt": "コンテンツ更新、サイト全体の外観、アカウント管理という三種類の WordPress 作業を分けたオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "影響する範囲を把握してから、変更と確認の担当者を決めます。",
+          "description": "コンテンツ更新、サイト全体の外観、アカウント管理という三種類の WordPress 作業を分けたオリジナル図解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "日常の作業",
+            "最初に開く場所",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "お知らせを追加",
+              "投稿",
+              "状態・公開権限・URL"
+            ],
+            [
+              "連絡先を修正",
+              "固定ページ",
+              "関連ページも更新されているか"
+            ],
+            [
+              "画像を差し替え",
+              "メディアとコンテンツエディター",
+              "使用箇所とライセンス"
+            ],
+            [
+              "サイト全体の外観を変更",
+              "外観またはサイトエディター",
+              "共通テンプレートへの影響"
+            ],
+            [
+              "権限を調整",
+              "ユーザー",
+              "必要な能力と内容の所有者"
+            ],
+            [
+              "環境情報を確認",
+              "ツール → サイトヘルス",
+              "診断情報は設定のすべてではない"
+            ]
+          ],
+          "caption": "入口の名前はテーマ、プラグイン、権限で異なる場合があるため、作業の目的から判断します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "見えることと操作できることを別々に確認",
+          "text": "メニューを隠しても、権限がなくなるとは限りません。また、項目が見えるからといって使うべきだとも限りません。管理者が実際の能力設定を確認し、該当アカウントで作業手順を試してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "初めての WordPress サイト作成",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守の作業計画",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：管理画面",
+          "url": "https://wordpress.org/documentation/article/administration-screens/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：権限グループと能力",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：サイトエディター",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：サイトヘルス画面",
+          "url": "https://wordpress.org/documentation/article/site-health-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 관리자 화면 사용법: 콘텐츠, 디자인, 관리자의 업무 구분",
+      "description": "WordPress 사이트를 인수했다면 글 작성, 페이지 수정, 이미지 관리, 디자인 변경과 관리자 확인이 필요한 설정을 일상 업무부터 익히세요. 자주 쓰는 메뉴와 기본 역할의 차이, 변경 전 기록, 미리 보기와 게시, 오류 보고 절차를 정리해 소규모 팀의 분담을 명확히 합니다. 화면은 테마, 플러그인, 권한에 따라 달라집니다. 기능이 보이지 않으면 모두의 권한을 높이기 전에 환경부터 확인하세요.",
+      "hero": {
+        "src": "/guides/wordpress-admin-basics/hero-ko.jpg",
+        "alt": "콘텐츠 문서, 웹사이트 배치, 관리 방패라는 세 가지 업무 아이콘을 그린 자체 제작 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WordPress 관리자 화면을 인수한 첫날부터 모든 버튼을 알 필요는 없습니다. 공지 업데이트, 연락처 수정, 댓글 확인처럼 매일 할 세 가지 일을 찾고 그 업무를 따라 메뉴를 익히세요. 콘텐츠 작업과 사이트 전체 설정을 구분하면 짧은 문장을 고치려다가 사이트 전체를 바꾸는 일을 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 사람이 함께 동호회 사이트를 관리하며 한 사람은 행사 원고를 준비하고 다른 사람은 확인 후 게시하는 상황을 예로 듭니다. 절차는 WordPress 공식 문서를 바탕으로 정리했으며, 역할 설명은 기본 단일 사이트 설치를 기준으로 합니다. 플러그인, 사용자 지정 권한, 멀티사이트 네트워크에서는 실제 기능 권한이 달라질 수 있으므로 현재 사이트 설정으로 검증해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "어느 사이트와 계정인지 먼저 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로그인한 뒤 URL, 사이트 이름, 현재 계정을 확인하세요. 운영 사이트와 테스트 사이트가 비슷하면 바쁠 때 혼동하기 쉽습니다. 테스트 사이트 이름에 눈에 띄는 표시를 넣고 북마크도 구분할 수 있습니다. 호스팅 플랫폼을 통해 WordPress에 들어가더라도 올바른 사이트를 선택했는지 확인하고, 로그인에 성공했다는 이유만으로 수정부터 시작하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "관리자 화면에는 보통 상단 도구 모음, 탐색 메뉴, 주 작업 영역이 있습니다. 알림판에서 콘텐츠 활동과 사이트 정보를 볼 수 있지만 일부 메시지는 플러그인이나 공급업체에서 보냅니다. 프로모션, 설치 안내, 경고를 보면 출처와 필요성을 먼저 확인하고, 모든 알림을 즉시 처리해야 하는 WordPress 코어의 요구로 여기지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "어떤 기능이 나타나지 않으면 자신의 역할, 테마, 플러그인부터 확인하세요. 화면 옵션을 조정할 수 있는 화면도 있고, 블록 테마와 클래식 테마의 디자인 메뉴가 다를 수도 있습니다. 관리자에게 스크린샷을 전달할 때는 단순히 모든 권한을 열어 달라고 하기보다 하려는 작업을 설명해야 적절한 방법을 찾기 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "업무에 맞는 콘텐츠 메뉴 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글은 동호회 행사 소식처럼 시간 순서로 계속 게시하는 콘텐츠에 적합합니다. 페이지는 가입 방법이나 연락처처럼 비교적 안정적인 사이트 정보에 적합합니다. 미디어 라이브러리는 업로드한 파일을 관리하고 댓글 메뉴는 독자의 답글을 처리합니다. 먼저 이 네 가지 메뉴를 이해한 다음 카테고리, 요약문과 다른 설정을 차근차근 익히세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "수정할 때마다 제목, 상태, 날짜로 올바른 콘텐츠를 찾은 뒤 편집기를 여세요. 비슷한 제목의 글이 있으면 URL과 내용을 확인한 후 수정합니다. 일괄 편집은 시간을 절약하지만 인수 직후 모든 항목에 바로 적용하기에는 적합하지 않습니다. 먼저 운영에 영향을 주지 않는 항목 하나에서 결과를 확인해 작업 범위를 이해하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "동호회의 행사 장소가 바뀌면 행사 페이지의 문구부터 수정하고 관련 공지도 업데이트해야 하는지 확인하세요. 미디어 라이브러리에서 이미지 이름만 바꿔도 이미지 속 글자가 바뀔 것이라 기대하지 마세요. 첫 화면 요약만 고치고 상세 페이지에 이전 정보를 남겨서도 안 됩니다. 함께 바꿀 위치를 목록으로 정리하면 정보가 서로 모순되는 일을 막을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "개별 콘텐츠와 사이트 전체 디자인 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 편집기의 본문 블록은 주로 해당 글을 다룹니다. 반면 블록 테마의 사이트 편집기는 템플릿, 스타일, 공통 구조를 관리할 수 있습니다. 머리글, 바닥글, 공통 스타일을 바꾸면 여러 페이지에 영향을 줄 수 있습니다. 수정 전에 선택한 대상이 글 내용인지, 템플릿인지, 공통 구성 요소인지 확인하고 저장할 때도 변경 목록을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "클래식 테마 사이트는 사용자 정의하기, 위젯, 테마 자체 설정으로 디자인을 바꿀 수 있습니다. 사이트 편집기가 보이지 않는다고 설치가 손상된 것은 아니므로 테마 유형부터 확인하세요. 페이지 빌더 플러그인을 쓴다면 어떤 페이지를 그 도구로 관리하는지도 알아두어야 합니다. 다른 편집 방식을 섞어 기존 배치를 손상시키지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "디자인 담당자가 아니라면 우선 콘텐츠와 이미지만 수정하고 글꼴, 사이트 전체 색상, 탐색 메뉴, 템플릿 변경은 지정된 담당자에게 맡기기로 합의할 수 있습니다. 이는 업무 분담 제안이지 콘텐츠 편집자는 영원히 디자인을 바꾸면 안 된다는 뜻이 아닙니다. 요구가 달라지면 권한과 검수 방법을 다시 명확하게 정하세요."
+        },
+        {
+          "type": "heading",
+          "text": "직급이 아니라 책임에 따라 역할 배정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기본 역할에서 관리자는 단일 사이트 관리를 맡습니다. 편집자는 다른 작성자의 글을 포함해 관리하고 게시할 수 있고, 글쓴이는 주로 자신의 글을 관리하고 게시합니다. 기여자는 자신의 원고를 준비할 수 있지만 직접 게시할 수 없습니다. 구독자는 주로 자신의 프로필을 관리합니다. 이는 기본 기능 권한의 개요이며 실제 사이트에서는 플러그인이나 관리자가 조정했을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "동호회가 모든 공지를 사전 검토하려면, 동료가 집필을 맡았다는 이유만으로 글쓴이 역할을 자동 부여해서는 안 됩니다. 글쓴이는 기본적으로 자신의 글을 게시할 수 있기 때문입니다. 먼저 미디어 업로드, 타인의 콘텐츠 편집, 게시, 삭제 등 필요한 기능을 나열한 뒤 적절한 역할이나 검토된 권한 설정을 선택하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "계정 정지, 인수인계, 책임 추적을 위해 각자 자신의 계정을 사용하세요. 누군가 일시적으로 플러그인 설정을 돕는다면 작업 완료 후에도 같은 권한이 필요한지 확인하기로 합의합니다. 사용자를 삭제하기 전에 콘텐츠 소유자를 처리해 퇴사자 계정과 글을 함께 잘못 삭제하지 않도록 하세요. 필요하면 백업을 남기고 관리자가 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "변경할 때마다 일정한 절차 사용하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "무엇을 바꿀지, 원래 값과 기대 결과는 무엇인지 기록한 뒤 작은 범위부터 수정하세요. 콘텐츠는 초안을 저장하고 미리 볼 수 있지만, 이미 공개된 글을 업데이트하면 방문자에게 적용된다는 점을 기억해야 합니다. 폼, 버튼, 외부 링크가 있는 페이지는 배치뿐 아니라 실제 이용 절차도 진행해 목적지와 데이터 수신 방식을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인, 테마, 사이트 전체 설정을 바꿀 때는 백업과 복구 방법을 먼저 확인하고, 적합한 경우 테스트 사이트에서 검증하세요. 서로 의존하는 여러 구성 요소를 동시에 바꾸면 오류 원인을 알아내기 어렵습니다. 변경 시각과 항목을 기록하면 다른 관리자가 같은 영역을 동시에 작업하는 것도 피하기 쉽습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "사이트, 계정, 콘텐츠 URL, 변경 목적을 확인하고 원래 값이나 필요한 백업을 보관합니다.",
+            "최소 범위로 수정하고 개별 콘텐츠와 전체 사이트 중 어디에 영향을 주는지 확인합니다.",
+            "데스크톱과 모바일을 미리 보고 링크, 폼, 로그아웃 상태를 테스트합니다.",
+            "권한에 따라 검토를 요청하거나 게시하고 결과를 기록해 인계받을 담당자에게 알립니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "사이트 건강 확인과 오류 보고",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "도구 메뉴의 사이트 건강은 상태 점검과 환경 정보를 제공해 버전, 플러그인, 설정을 파악하도록 돕습니다. 정보 화면은 데이터를 보여주는 곳이며 모든 서버 설정을 직접 바꾸는 곳은 아닙니다. 개선 권고가 보이면 영향과 담당자를 먼저 파악하세요. 경고가 없더라도 폼, 로그인, 콘텐츠의 실제 기능 테스트를 대신할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "문제를 보고할 때는 URL, 발생 시각, 작업 순서, 오류 메시지, 영향 범위를 제공하고 암호와 개인정보는 가리세요. 업데이트 직후 문제가 생겼다면 업데이트 항목과 백업 위치도 첨부합니다. 이 기록이 있으면 인계받는 사람이 어떤 버튼을 눌렀는지 다시 추측하지 않고 확인된 사실부터 대응할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-admin-basics/diagram-1-ko.svg",
+          "alt": "콘텐츠 업데이트, 사이트 전체 디자인, 계정 관리라는 세 종류의 WordPress 업무를 나눈 자체 제작 도식.",
+          "width": 1600,
+          "height": 900,
+          "caption": "영향 범위를 먼저 파악한 뒤 수정과 검수를 맡을 사람을 정하세요.",
+          "description": "콘텐츠 업데이트, 사이트 전체 디자인, 계정 관리라는 세 종류의 WordPress 업무를 나눈 자체 제작 도식.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "일상 업무",
+            "먼저 찾을 메뉴",
+            "유의할 점"
+          ],
+          "rows": [
+            [
+              "공지 추가",
+              "글",
+              "상태, 게시 권한, URL"
+            ],
+            [
+              "연락처 수정",
+              "페이지",
+              "관련 페이지도 함께 갱신되는지"
+            ],
+            [
+              "이미지 교체",
+              "미디어와 콘텐츠 편집기",
+              "사용 위치와 라이선스"
+            ],
+            [
+              "사이트 전체 디자인 변경",
+              "디자인 또는 사이트 편집기",
+              "공통 템플릿에 미치는 영향"
+            ],
+            [
+              "권한 조정",
+              "사용자",
+              "필요한 기능과 콘텐츠 소유자"
+            ],
+            [
+              "환경 정보 확인",
+              "도구 → 사이트 건강",
+              "진단 정보가 모든 설정은 아님"
+            ]
+          ],
+          "caption": "메뉴 이름은 테마, 플러그인, 권한에 따라 다를 수 있으므로 작업 목적부터 판단하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "보이는 것과 실행 가능한 것을 따로 검증",
+          "text": "메뉴를 숨긴다고 권한이 제거되는 것은 아니며, 어떤 항목이 보인다고 반드시 사용해야 하는 것도 아닙니다. 관리자가 실제 기능 권한을 확인한 다음 해당 계정으로 작업 흐름을 테스트하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "처음 만드는 WordPress 사이트",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 유지보수 업무 계획하기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 관리자 화면",
+          "url": "https://wordpress.org/documentation/article/administration-screens/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 역할과 기능 권한",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 사이트 편집기",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 사이트 건강 화면",
+          "url": "https://wordpress.org/documentation/article/site-health-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 后台怎么用：内容、外观与管理员的工作分界",
+      "description": "刚接手 WordPress 网站，可以先从日常工作认识后台：在哪里写文章、改页面、处理图片、调整外观，以及哪些设置需要管理员确认。本指南整理常见入口与默认角色的差异，提供修改前记录、预览发布和故障报告步骤，帮助小型团队建立清晰分工。界面会随主题、插件和权限改变，找不到功能时先确认环境，避免直接提高所有人的权限。",
+      "hero": {
+        "src": "/guides/wordpress-admin-basics/hero-zh-cn.jpg",
+        "alt": "以内容文档、网站布局和管理盾牌表示三种工作的原创插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "接手 WordPress 后台时，不需要第一天就认识每个按钮。先找出自己每天会做的三件事，例如更新公告、修正联系信息和检查评论，再沿着这些工作认识入口。把内容工作与全站设置分开，能减少为了一小段文字而改到整个网站的情况。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以两人共同维护社团网站为例：一人准备活动稿件，另一人确认后发布。流程依据 WordPress 官方文档整理，角色说明以默认的单站安装为基础；插件、自定义权限和多站点网络可能改变实际能力，应以网站当前设置验证。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认自己在哪个网站和账号",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "登录后先核对网址、网站名称和当前账号。正式站与测试站如果外观相似，最容易在忙碌时弄错；可以在测试站名称中加上明显标记，并使用不同的书签。从主机平台进入 WordPress 也要确认选的是正确网站，不要因为成功登录就开始修改。"
+        },
+        {
+          "type": "paragraph",
+          "text": "后台通常有上方工具栏、导航菜单和主要工作区。仪表盘可以看到内容活动及网站信息，但其中有些消息来自插件或供应商。看到促销、安装提示或警告时，先辨认来源和必要性，不要把所有通知都当成必须立即处理的 WordPress 核心要求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果某个功能没有出现，先核对自己的角色、使用的主题和插件。有些画面可以调整显示选项，区块主题与经典主题的外观入口也可能不同。把截图交给管理员确认时，说明你要完成的工作，比只要求“帮我开启全部权限”更容易找到合适的做法。"
+        },
+        {
+          "type": "heading",
+          "text": "根据工作找到内容入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章适合按时间持续发布的内容，例如社团活动消息；页面适合网站中较稳定的信息，例如加入方式和联系资料。媒体库管理上传文件，评论区则处理读者回复。先建立这四个入口的概念，再逐步认识分类、摘要和其他设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次修改先用标题、状态或日期找到正确内容，再打开编辑器。如果文章名称相似，确认网址和内容后才动手。批量编辑可以节省时间，但初次接手不适合直接应用到所有项目；先在一条不影响运营的内容上确认结果，了解操作范围。"
+        },
+        {
+          "type": "paragraph",
+          "text": "社团更新活动地点时，可以先改正活动页面中的文字，再检查相关公告是否也需要更新。不要只修改媒体库图片的名称就期待图内文字一起改变，也不要只更换首页摘要而让详细页保留旧资料。把需要同步的地方列出来，更新才不会互相矛盾。"
+        },
+        {
+          "type": "heading",
+          "text": "分清单篇内容与全站外观",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章编辑器中的正文区块主要处理该篇内容；区块主题的网站编辑器则可以管理模板、样式和共用结构。调整页眉、页脚或共用样式，可能影响很多页面。修改前先看清当前选中的是文章内容、模板还是共用组件，保存时也核对变更清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用经典主题的网站，可能通过自定义、工具小部件或主题自身的设置调整外观。找不到网站编辑器不代表安装损坏，先确认主题类型。如果网站使用页面构建器插件，也应知道哪些页面由它管理，避免混用不同编辑方式后破坏现有布局。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不是设计负责人的成员，可以先约定只修改内容和图片，涉及字体、全站颜色、导航或模板的变更则交给指定人员。这是工作分工建议，并不是说内容编辑者永远不能调整设计；当需求改变时，再安排明确的权限和验收方式。"
+        },
+        {
+          "type": "heading",
+          "text": "按责任配置角色，不按职称高低",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "默认角色中，管理员负责单站管理；编辑可以管理并发布包括其他作者在内的文章；作者主要管理和发布自己的文章；贡献者可以准备自己的稿件，但不能自行发布。订阅者主要管理个人资料。这些是默认能力的概述，实际站点仍可能被插件或管理员调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果社团希望所有公告都先审稿，不能只因同事负责写作就自动给予作者角色，因为作者默认可以发布自己的文章。应先列出需要的能力：能否上传媒体、编辑他人内容、发布和删除，再确认合适的角色或经过审核的权限设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每人使用自己的账号，方便处理停权、交接和责任追踪。如果需要某人暂时协助设置插件，约定工作完成后检查是否仍需要相同权限。删除用户前要处理其内容归属，不能把离职账号和文章一起误删；必要时先保留备份并由管理员确认。"
+        },
+        {
+          "type": "heading",
+          "text": "建立每次修改的固定步骤",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先写下要改什么、原本的值和预期结果，再进行小范围修改。内容可以先保存草稿和预览；现有公开文章则要注意更新会对访客生效。页面涉及表单、按钮或外部链接时，除了看布局，也要实际走一遍对应流程，确认目标页面和数据接收方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要变更插件、主题或全站设置时，先确认备份和恢复方法，适合的情况先在测试站验证。不要同时更换多个互相依赖的组件，否则出错时很难辨认原因。记录修改时间和项目，也能帮助其他管理员避免同时操作同一区域。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认网站、账号、内容网址和修改目的，保存原值或必要的备份。",
+            "以最小范围完成修改，核对涉及单篇还是全站的影响。",
+            "预览桌面和手机版，测试链接、表单及未登录状态。",
+            "根据权限送审或发布，记录结果并通知负责接手的人。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "怎么看网站健康和报告故障",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "工具中的网站健康提供状态检查和环境信息，可帮助了解版本、插件及设置。信息页显示资料，并不是直接修改所有服务器设置的地方。看到建议改进的项目时，先了解影响和负责人；没有警告也不能代替表单、登录和内容的实际功能测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "报告问题时提供网址、发生时间、操作步骤、错误消息和影响范围，并遮蔽密码和个人信息。如果问题在刚更新后出现，附上更新项目和备份位置。这份记录能让接手者从已知事实开始处理，而不必重新猜测你按过哪些按钮。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-admin-basics/diagram-1-zh-cn.svg",
+          "alt": "将 WordPress 工作分为内容更新、全站外观和账号管理三类的原创分工图。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先了解影响范围，再决定由谁修改和验收。",
+          "description": "将 WordPress 工作分为内容更新、全站外观和账号管理三类的原创分工图。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "日常工作",
+            "先找的入口",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "新增公告",
+              "文章",
+              "状态、发布权限和网址"
+            ],
+            [
+              "修正联系信息",
+              "页面",
+              "相关页面是否同步"
+            ],
+            [
+              "更换图片",
+              "媒体和内容编辑器",
+              "使用位置和授权"
+            ],
+            [
+              "更改全站外观",
+              "外观或网站编辑器",
+              "共用模板的影响"
+            ],
+            [
+              "调整权限",
+              "用户",
+              "需要的能力和内容归属"
+            ],
+            [
+              "查看环境信息",
+              "工具 → 网站健康",
+              "诊断信息不等于全部设置"
+            ]
+          ],
+          "caption": "入口名称可能因主题、插件和权限而不同，先根据工作目的判断。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "能看见和能操作要分开验证",
+          "text": "隐藏菜单不一定等于移除权限，看到某个选项也不代表应该使用它。由管理员核对真正的能力设置，再用对应账号测试工作流程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次搭建 WordPress",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护工作怎么安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：管理界面",
+          "url": "https://wordpress.org/documentation/article/administration-screens/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：角色与能力",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：网站编辑器",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：网站健康界面",
+          "url": "https://wordpress.org/documentation/article/site-health-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

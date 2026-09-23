@@ -25,27 +25,49 @@ scope:
 
 ## Scope and source
 
-Four existing public zh-TW lifestyle articles: `wordpress-admin-basics`, `wordpress-ftp-file-management`, `wordpress-local-development`, `wordpress-website-backup`. Add complete en, ja, ko and zh-CN documents and their editable SVG cover/diagram plus raster cover, preserving original zh-TW bodies and 12 original assets. Exact scope: 4 packs, 16 new documents, 32 SVGs and 16 JPEGs (52 content paths).
+Add complete English, Japanese, Korean and Simplified Chinese to four existing published Traditional Chinese guides. The content scope is 4 ArticlePacks, 16 new GuideDocuments and 48 localized assets: 16 editable hero SVGs, 16 1600×900 hero JPGs and 16 diagram SVGs. All four original zh-TW documents, original raw pack metadata and 12 original assets remain unchanged. The reviewed integration contains exactly 52 content paths and 20 full language models.
 
-Fresh read-only production snapshot at 2026-09-23T17:49:33Z confirms article version 2, zh-TW draft/published version 4, no target-language rows, and full normalized source models/metadata equal repository main `81f9f338945de587f5d117029905eec4aeca1a1f`. Source includes 118 blocks, 21 source citations and 328 document/SVG fields per target language. Current source date remains 2026-09-14; code, commands, paths, URLs, product names and numeric conditions remain exact.
+| Article | Source blocks | Sources | Image block index | New documents | New assets |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `wordpress-admin-basics` | 30 | 4 | 25 | 4 | 12 |
+| `wordpress-ftp-file-management` | 30 | 6 | 25 | 4 | 12 |
+| `wordpress-local-development` | 29 | 4 | 24 | 4 | 12 |
+| `wordpress-website-backup` | 29 | 7 | 24 | 4 | 12 |
 
-## Definition of done
+Image block indexes are zero-based. The four originals contain 118 blocks and 21 source citations. Fresh read-only production snapshot `2026-09-23T17:49:33Z` recorded article v2 and zh-TW draft/published v4, with all target-language rows absent. Full normalized source models and metadata matched main `81f9f338945de587f5d117029905eec4aeca1a1f`; the isolated claim HEAD was `d0299b21a95905dc8ac3651b25d32a0f6dbe88dc`. These are historical source facts, not a current release authorization.
 
-- [x] Inventory repository originals, current full live source and local active scopes; claim an isolated worktree.
-- [ ] Review primary references and source illustrations; preserve role/site-type, host-key/protocol, operating-system and backup-scope conditions. Preserve distinct short SVG accessible titles with explicit translation ledgers.
-- [ ] Author all 16 complete documents and 48 localized assets; no summaries, placeholders or copied source prose.
-- [ ] Independently review all translated fields, full models, numeric/code/URL preservation and original-file hashes; render every SVG/JPEG and check desktop/mobile geometry, fonts and glyphs.
-- [ ] Keep structured article links conditional on actual publication of the same language. Unpublished targets remain non-clickable; do not rewrite original source links.
-- [ ] Integrate exact reviewed files; run scoped pack/API/publication/frontend/tools/lint/type/i18n/build/task checks and required CI.
-- [ ] Open a scoped content PR, and create a separate release task for guarded deployment/dry run/16 missing-locale imports/publications and public browser verification.
+## Definition of done and actual progress
 
-## Evidence and ownership
+- [x] Inventory the repository originals, full live source and active scopes; claim an isolated worktree.
+- [x] Read the 21 official source references and source illustrations. Preserve default single-site versus multisite roles, block-theme limitations, host-key verification, SFTP/FTPS distinctions, host/plan qualifications, Windows/MAMP settings, WXR limitations and backup/restore exclusions.
+- [x] Author all 16 complete documents and 48 localized assets, including source titles, provenance, alt text, captions and accessible SVG text; preserve original source dates and audience.
+- [x] Complete independent reciprocal full-field and actual image reviews. Verify 1,312 strict fields, code/commands/paths/URLs/numbers, font coverage and desktop/mobile layouts, with zero numeric exceptions. Both reviewers actually viewed 42 source/render image files per pair; mobile four-pan rendering is local Chromium evidence, not physical-device acceptance.
+- [x] Preserve 32 structured ArticleInline link instances. Existing runtime resolution requires the same-language target to be actually published and otherwise renders nonclickable text. No route rewrite or current-publication assumption was introduced.
+- [x] Record 32 translations of the original short SVG accessible titles and 16 target-only canonical description backfills. Preserve all source accessible titles and the original empty source image descriptions.
+- [x] Independently verify the outside integration candidate and apply the exact approved 52 content files. Original raw packs are byte-recoverable by reversing only the inserted target locales, and all 12 original assets remain byte-identical.
+- [x] Complete selected local pack/API/publication/pipeline/frontend/tools/lint/i18n/type/build/task/diff checks and bind the actual summary, attempts, skips and advisories to the tested claim HEAD.
+- [x] Create the separate open/unclaimed release task for remaining CI, merge, deployment, import, publication and public acceptance.
+- [ ] Open the scoped content PR with exact head and honest local results; retain this content task in progress until the actual PR handoff.
 
-Evidence archive: `C:/Users/x8120/.codex/article-localization-release/batch026-wordpress-operations/`.
-Candidate inventory: `../batch026-candidate-inventory-v1/candidate-manifest.json`, SHA256 `e5a74830d7c067658651362bf4a31614b16db0aad5b9665e65562e2bc86c412f`.
-Root full source comparison: `../batch026-candidate-inventory-v1/root-fresh-source-review.json`, SHA256 `1388b1378e44fafbf9b5bf6aac4ffff6e57d67caaf5b4962edc468c9d928caef`.
-Snapshot SHA256: `55b9441834486b77c7abb6852a6b9f2b4d825aefa27194b5a6e2f3884bbb756c`.
+## Validation and release handoff
 
-Root owns integration/PR/release coordination. Authorized Codex subagents author disjoint pairs outside the repository and cross-review before integration. Primary-source review and original-image visual inspection remain pending; saved inventories are not completion evidence. No production mutation is performed by this task; a merged pack is not imported/published content.
+All seven local groups and 16 selected commands passed at claim HEAD `d0299b21a95905dc8ac3651b25d32a0f6dbe88dc`, with no failed or incomplete attempts. Results: four pack lints; API 64 passed / 5 PostgreSQL skipped; publication/assembly 83 passed / 59 PostgreSQL skipped; frontend 333 tests in nine files; pipeline 32; render integrity/layout 17; tools 87 with zero skips; i18n, web lint, typecheck, build, task and diff checks passed. The 64 PostgreSQL cases require isolated integration services and were not executed locally. All actual skip reasons and 24 pack-lint advisory rows remain in the immutable summary. A fresh real PostgreSQL release-safety CI result is still required. Do not reattribute these local receipts to a later main merge without a separate applicability check.
 
-Previously discovered incorrect AI glossary links in other website articles are excluded and separately filed in `2026-09-23-correct-five-unrelated-ai-glossary-links-before`; existing cable and URL-parameter corrections remain separate.
+Local summary: `test-evidence/summary-pass.json`, SHA256 `c33f006afa69f0558ceea7abe79f17b021524b24df069d480d29206532f28b14`. The root-reported cached main for the next handoff is `0f9eb1dc02cb5663a0ae3590422e4764c269bde8`; no main merge, final content head, PR creation or CI result is asserted by this documentation preparation.
+
+Release task created through the task CLI: `2026-09-23-release-localized-wordpress-operations-guides-batch026`, open and unclaimed. Its repository scope is `docs/article-localization/releases/batch026`. Required CI, actual PostgreSQL evidence, merge, fresh backup, guarded deployment, dry run, 16 draft creations, 16 article publications, journal/database acceptance and five-language public browser verification remain open there. This content work has not deployed, imported or published batch026.
+
+## Evidence and limitations
+
+Evidence archive: `C:/Users/x8120/.codex/article-localization-release/batch026-wordpress-operations/`. Keep detailed evidence outside Git; use its immutable references for the handoff.
+
+- Source snapshot SHA256: `55b9441834486b77c7abb6852a6b9f2b4d825aefa27194b5a6e2f3884bbb756c`; fresh source comparison: `1388b1378e44fafbf9b5bf6aac4ffff6e57d67caaf5b4962edc468c9d928caef`.
+- Admin/SFTP independent review: `independent-admin-sftp-review-v1/receipt-pass.json`, SHA256 `afb04be1e367cff62f0c3129e7f6856d26d33364a9cc7a37df8361a44971fd52`.
+- Local-development/backup independent review: `independent-local-backup-review-v1/receipt-pass.json`, SHA256 `1669d12cfbce43163d814d6e3156e41d3ccaeaef2ec813241b6435fe32d138f0`.
+- Integration manifest: `integration-candidate-v1/integration-manifest.json`, SHA256 `c294be54bdcfa1e4e954f153aa398624c1ce6132aa646b6fd00622bac6a6516f`.
+- Independent integration review: `independent-integration-review-v1/receipt-pass.json`, SHA256 `9bbed398ba2d7580d5a96bcc4a242de0e3dd232e3dd7ee2e6363359540d7c606`, 1,988 checks and 1,312 strict fields.
+- Applied integration: `integration-applied.json`, SHA256 `c19fe2c4738b0d6aeb3a01c3f978ddaf46e93da607116288829273436fb32012`.
+
+All original `checked_on: 2026-09-14` dates and source URLs remain intact; new source reading is separately recorded. No hosting account, installed MAMP/WordPress instance, real backup/restore, paid plan or physical mobile device was operated for editorial acceptance. The authors recorded 20 editorial advisory rows in their jobs; repository pack lint independently records 24 advisory rows across the complete five-language packs. These are separate actual counts.
+
+Previously identified incorrect AI glossary links in other articles remain excluded and tracked by `2026-09-23-correct-five-unrelated-ai-glossary-links-before`. Cable and URL-parameter/source corrections remain separate. Root owns repository integration/PR/release coordination; disjoint outside-repository authoring and reciprocal review do not authorize an unrelated source change.
