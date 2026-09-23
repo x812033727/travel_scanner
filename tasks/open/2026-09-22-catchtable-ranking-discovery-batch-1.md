@@ -49,8 +49,8 @@ scope:
 
 ## Steps
 
-- [ ] 和站主定範圍。建議：最佳餐廳榜的首爾區前 20 家加候位榜前 10 家；家數由站主定。
-- [ ] 本機瀏覽器：兩個榜頁各跑一次設計文件「本機瀏覽器」一節的片段，對過家數與名次，存 `rankings.json`。
+- [x] 和站主定範圍。站主 2026-09-22 定：最佳餐廳榜的首爾區前 20 家加候位榜前 10 家。
+- [x] 本機瀏覽器：兩個榜頁各跑一次設計文件「本機瀏覽器」一節的片段，對過家數與名次，存 `rankings.json`（2026-09-23，見 Notes：清單是虛擬化的，片段改成邊捲邊累積）。
 - [ ] 主機匯出 `export-food-merchant-worklist --status all --destination seoul`，加 repo 內
       `apps/api/app/foods/data/platform_reviews/` 三個檔裡的 CatchTable 網址，標每個 alias 是 new 還是 duplicate_of。
 - [ ] 本機瀏覽器逐店：店頁（韓文名、地址、hreflang、訂位控制項）＋官方來源（VisitSeoul 店家頁、
