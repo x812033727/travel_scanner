@@ -1,0 +1,484 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETED_RELEASE_RECORD",
+  "release_date": "2026-09-23",
+  "timezone": "Asia/Taipei",
+  "scope": {
+    "articles": 4,
+    "new_translations": 16,
+    "draft_operations": 16,
+    "article_publish_operations": 16,
+    "hub_publish_operations": 0,
+    "public_language_urls": 20,
+    "desktop_mobile_cases": 40,
+    "expanded_description_source_cases": 20,
+    "original_screenshots": 80,
+    "supplement_screenshots": 0,
+    "localized_assets": 48,
+    "preserved_original_assets": 12
+  },
+  "deployed_revision": "38ebec88c91db6ae0f6c8cd812bf04c5e1da9c95",
+  "activation": {
+    "deployment_performed": true,
+    "first_attempt_stopped_before_host_deploy": true,
+    "reviewed_owned_hold_transferred_atomically": true,
+    "new_backup_verified_after_transfer": true,
+    "hold_cleared_after_acceptance": true,
+    "post_clear_health": [
+      200,
+      200,
+      200
+    ],
+    "post_clear_checked_at": "2026-09-23T09:34:28.469109+00:00"
+  },
+  "pull_requests": [
+    {
+      "number": 676,
+      "head": "e17895e3c12ce19fe421536dd2ba543afbdc233c",
+      "merge_commit": "5a1682a1c62280b99cf7e21f4f583c9cad78a470",
+      "successful_checks": 8,
+      "state": "MERGED"
+    },
+    {
+      "number": 679,
+      "merge_commit": "38ebec88c91db6ae0f6c8cd812bf04c5e1da9c95",
+      "successful_checks": 8,
+      "state": "MERGED",
+      "relationship": "Already merged target advancement; 79 release Git exports unchanged"
+    }
+  ],
+  "external_archive_root": "C:\\Users\\x8120\\.codex\\article-localization-release",
+  "evidence_storage": "Raw DB rows, actor identifiers, journals, backups and screenshots stay outside Git. Archive paths and SHA256 pins resolve exact evidence.",
+  "evidence": {
+    "final_evidence": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/final-evidence.json",
+      "sha256": "90f407364456a582b118c7c5b6f4697933bd0d840f5bccbbafd9dc824ba3f40a",
+      "json_pointers": [
+        "/scope",
+        "/articles",
+        "/journals",
+        "/recovery",
+        "/content_and_ci",
+        "/visual_dispositions"
+      ]
+    },
+    "final_acceptance": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/final-acceptance.json",
+      "sha256": "0e340684df166e324e16aead8934100ba5531ff39aacb09c94b31977c8daaa2f",
+      "json_pointers": [
+        "/status",
+        "/evidence/0",
+        "/journals",
+        "/health_accepted"
+      ]
+    },
+    "hold_clear": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/clear-host-20260923T093409540139Z.receipt.json",
+      "sha256": "744f5eb7d0bec7b6400994d57a3189741afde004fbf6345797f974611910117c",
+      "json_pointers": [
+        "/result/status",
+        "/result/acceptance_sha256",
+        "/result/health"
+      ]
+    },
+    "post_clear_host": {
+      "archive_path": "batch007-017-release-protocol/host-readonly-20260923T093426449278Z.json",
+      "sha256": "cd7d6bb1e8e4d00df0fe9cb9ec91d98207d11b470bafcf9f7083dc679238d7b3",
+      "json_pointers": [
+        "/captured_at",
+        "/host_repository",
+        "/hold",
+        "/health"
+      ]
+    },
+    "staged_acceptance": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/acceptance-stage-20260923T093356006604Z.receipt.json",
+      "sha256": "5df83632b5d668d9869648b12d5f900a68883ff1222172b2f716e3be923df7db",
+      "json_pointers": [
+        "/status",
+        "/files"
+      ]
+    },
+    "database_acceptance": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/database-acceptance.json",
+      "sha256": "6aecc89889c6babd7bb2da6d3f6db3f37de769d9a3d328b19eb3d3c66c861333"
+    },
+    "independent_database_journal_recovery": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/independent-database-journal-recovery-acceptance.json",
+      "sha256": "740b72f46b49ee30fdf4578ef2214310cf09f0a0e6dd2a91d3d4c51175c0ef43"
+    },
+    "independent_transfer_backup": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/independent-recovery-transfer-backup-supplement.json",
+      "sha256": "388b54654826026d6673c5ae781383500504e9017461427e9005311ac7997b7d"
+    },
+    "transport_review": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/independent-final-transport-review.json",
+      "sha256": "dde725bbcba973245d32c576b88316e5529119b1dc119b24e2f8c9ddfd9e9949"
+    },
+    "verify_host": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/verify-host-20260923T091127991107Z.receipt.json",
+      "sha256": "2f06e5a94bdedfba56d38c871f0320043d043eab27dbafff33b2957a19ba7131"
+    },
+    "browser_cases": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/public-qa-v1/results.json",
+      "sha256": "aa52f807d28ffd661b87c34713cc130dbfd48a965e8fa7961d76cb054129c2f4"
+    },
+    "expanded_sources": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/public-details-v1/expanded-description-and-sources.json",
+      "sha256": "51b76cca6bb0ec7b57682943cf44ef2a938b5929788204cc68ba04365eff023f"
+    },
+    "all60_image_bytes": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/public-assets-all60.json",
+      "sha256": "a030bfa6204af883af3be9a89e42a5ac46c565fc664269fc7877f993f3cc5dc7"
+    },
+    "visual_domain_hosting": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/public-visual-domain-hosting-v1/independent-visual-receipt.json",
+      "sha256": "e8ad129a0e03b9b0f9e14bfdcb0d1344317eb236f96e6032bfcd948f00b4b0e4"
+    },
+    "visual_cms_maintenance": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/public-visual-cms-maintenance-v1/receipt-pass.json",
+      "sha256": "9b3443f9fd920b6a5498d171754135f3245a5c769196cfedbe842df4b2df43b2"
+    },
+    "host_phase_capture": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/host-capture/capture.json",
+      "sha256": "7534642012d18774162ad0fa3598b485e0a77283652ceeaed7cc74779d77d450"
+    },
+    "successful_background_poll": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/background-poll-20260923T090731548502Z.receipt.json",
+      "sha256": "53b971a8274d4c66c67075e8686ffb3e47dce5ec6f3c7a0713eccbd56e2e2074"
+    },
+    "new_backup": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/backup-host-20260923T090256155044Z.receipt.json",
+      "sha256": "0361c8c30cdc0c9742e1a0059c2935d2b068d0e3140e5b9f27101e89d02f5a91"
+    },
+    "dry_run": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/dry-run-018-20260923T090739640743Z.receipt.json",
+      "sha256": "8e729a8ce237c7a8506b146155d98d050bae2d3de3a16275e97dd157f38e791e"
+    },
+    "drafts": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/drafts-018-20260923T090801931179Z.receipt.json",
+      "sha256": "989076c56a7885a8024d8d630580aaa7685d718b5733a663ec2895109f2dde0e"
+    },
+    "publish_articles": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/publish-articles-018-20260923T091002419190Z.receipt.json",
+      "sha256": "3e71ce3260fa071d2fba07f309f3d4945b8c33a82ca72fab6ecc8148dce0cae1"
+    },
+    "publish_hubs": {
+      "archive_path": "mokaair-localization-018-38ebec88c91d/publish-hubs-018-20260923T091109591254Z.receipt.json",
+      "sha256": "601a4b671d2718e2c48cac611d4b8b8c40aaf6837883c5d7814f51d9a6c29acc"
+    },
+    "pr676_ci": {
+      "archive_path": "batch018-web-basics/pr676-green-exact-e17895e3.json",
+      "sha256": "2e21071e0f32ec5ac0880a356e38cfaf0f673899db81d403cf861652198bc3e8"
+    },
+    "pr676_merge": {
+      "archive_path": "batch018-web-basics/pr676-merge.json",
+      "sha256": "ef034c04bee83a4a7a537718c7192a0a0ccf247230dde013e86cc20e3a3f3349"
+    },
+    "pr679_ci_merge": {
+      "archive_path": "batch018-web-basics/recovery-38ebec88/pr679-merged-green.json",
+      "sha256": "22f1afe4dd7ebfc8b252f7776187b83e0991508ca53fb87bad79c04aac4d56c2"
+    },
+    "root_content_freeze": {
+      "archive_path": "batch018-web-basics/root-final-inputs-e17895e3.json",
+      "sha256": "d7b01d589a0cc6008f5e661094d80f14f27318e85e16edfc26f9a4a8d61bc5c3"
+    },
+    "root_recovery": {
+      "archive_path": "batch018-web-basics/recovery-38ebec88/root-recovery-authorization.json",
+      "sha256": "41f84c1c353f1fb85479d8a95e75a0460ffb2f21d4ac335dc6758f430434a6b0"
+    },
+    "failed_attempt": {
+      "archive_path": "batch018-web-basics/recovery-38ebec88/failed-host-capture.json",
+      "sha256": "c8a6e160a04c7d98fff7b0b53d8165a5ed195288b5ce171b787cee0c3ff330d2"
+    },
+    "postgres_release_safety": {
+      "archive_path": "batch018-web-basics/postgres-release-safety-20260923/receipt-e17895e3.json",
+      "sha256": "add174b6da696e7f528a131f98c2bb2335e031612ded8da896bdcc91f520aefb"
+    }
+  },
+  "articles": [
+    {
+      "slug": "domain-registration-guide",
+      "batch": "018",
+      "title_zhTW": "買網域前先做的功課：名稱、持有人與續約管理",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE_VIEWPORTS",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/domain-registration-guide",
+        "en": "https://mokaair.com/en/life/domain-registration-guide",
+        "ja": "https://mokaair.com/ja/life/domain-registration-guide",
+        "ko": "https://mokaair.com/ko/life/domain-registration-guide",
+        "zh-CN": "https://mokaair.com/zh-CN/life/domain-registration-guide"
+      },
+      "locale_versions": [
+        {
+          "locale": "zh-TW",
+          "locale_version": 4,
+          "published_version": 4,
+          "published_at": "2026-09-15T12:33:42.521120+00:00",
+          "document_sha256": "51d2ed2a07046f6f2565a8785bfab77d327aad6e2888aa25adecfeb121cd2605"
+        },
+        {
+          "locale": "en",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:11.521917+00:00",
+          "document_sha256": "3087698d1b110423e2bb9d2115165d5a23d615ba51a7d8b3632002452aeb928f"
+        },
+        {
+          "locale": "ja",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:11.819549+00:00",
+          "document_sha256": "01010601b7fba81be129afbf68f71b4d1603d7bbf74509473319f486adabee83"
+        },
+        {
+          "locale": "ko",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:12.010893+00:00",
+          "document_sha256": "89a9fd98e353678e3f6968740746e378d96192e2522bc0ab9cf93dc56e3c63d6"
+        },
+        {
+          "locale": "zh-CN",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:12.215208+00:00",
+          "document_sha256": "9b7a672bc112f73409be8fca982d49cc6ebc2a2dfe7b16103fc7b10bf7ccc048"
+        }
+      ],
+      "detailed_evidence": {
+        "ref": "final_evidence",
+        "json_pointer": "/articles/0"
+      }
+    },
+    {
+      "slug": "hosting-types-explained",
+      "batch": "018",
+      "title_zhTW": "共享主機、VPS 與雲端代管：小網站的選擇順序",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE_VIEWPORTS",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/hosting-types-explained",
+        "en": "https://mokaair.com/en/life/hosting-types-explained",
+        "ja": "https://mokaair.com/ja/life/hosting-types-explained",
+        "ko": "https://mokaair.com/ko/life/hosting-types-explained",
+        "zh-CN": "https://mokaair.com/zh-CN/life/hosting-types-explained"
+      },
+      "locale_versions": [
+        {
+          "locale": "zh-TW",
+          "locale_version": 4,
+          "published_version": 4,
+          "published_at": "2026-09-15T12:33:44.181539+00:00",
+          "document_sha256": "36a08c4871454a44e57650fbca4d614957eafe6d3ec772665a46ffbb62f71f9c"
+        },
+        {
+          "locale": "en",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:12.413733+00:00",
+          "document_sha256": "bb214ab3533820df460778ead42b608ba6f1814297f5269d132587bb316ea4a5"
+        },
+        {
+          "locale": "ja",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:12.624374+00:00",
+          "document_sha256": "9bdc2244315c5ce05eb5af51a8285935249cb8a8478a2552b889f296e25c06f8"
+        },
+        {
+          "locale": "ko",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:12.839961+00:00",
+          "document_sha256": "69bb158df3380d9429427788fcb6e4fe4836b6b5f416f4402d05594b79a4af79"
+        },
+        {
+          "locale": "zh-CN",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:13.081750+00:00",
+          "document_sha256": "bf18cd4fe6a5586e950a296eb27526ecbbcb8f74f7451288a99aae25034a2558"
+        }
+      ],
+      "detailed_evidence": {
+        "ref": "final_evidence",
+        "json_pointer": "/articles/1"
+      }
+    },
+    {
+      "slug": "website-cms-choice",
+      "batch": "018",
+      "title_zhTW": "CMS 與架站平台怎麼選：從更新方式決定網站的家",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE_VIEWPORTS",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/website-cms-choice",
+        "en": "https://mokaair.com/en/life/website-cms-choice",
+        "ja": "https://mokaair.com/ja/life/website-cms-choice",
+        "ko": "https://mokaair.com/ko/life/website-cms-choice",
+        "zh-CN": "https://mokaair.com/zh-CN/life/website-cms-choice"
+      },
+      "locale_versions": [
+        {
+          "locale": "zh-TW",
+          "locale_version": 4,
+          "published_version": 4,
+          "published_at": "2026-09-15T12:33:49.767755+00:00",
+          "document_sha256": "ee8b87324b7a5fe0c9a82d7c0dde0251b0411b14a79cee3115db91216da89d4a"
+        },
+        {
+          "locale": "en",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:13.300362+00:00",
+          "document_sha256": "5acd21517550c1c37b63fa58fe23f10ee9e593a444a84b6047ce628bff8346b1"
+        },
+        {
+          "locale": "ja",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:13.498414+00:00",
+          "document_sha256": "80ff9f3f42f0e0eaf237b5cb72b7c8fa65b7cd8fd4bd3450b9da61790cfcfe14"
+        },
+        {
+          "locale": "ko",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:13.710158+00:00",
+          "document_sha256": "c1f886c4329a0c615cc7fd3e42ffc9ef3b69d17756df63ce24276ef4e2766b59"
+        },
+        {
+          "locale": "zh-CN",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:13.913066+00:00",
+          "document_sha256": "10aba1a7b80a41d8f3bc87a1f8994b26232a132c50fe59acac072e6aa2471052"
+        }
+      ],
+      "detailed_evidence": {
+        "ref": "final_evidence",
+        "json_pointer": "/articles/2"
+      }
+    },
+    {
+      "slug": "website-maintenance-routine",
+      "batch": "018",
+      "title_zhTW": "網站維護要做什麼：備份、更新與故障回報的日常安排",
+      "content": "COMPLETE_FOUR_NEW_LOCALES",
+      "draft_import": "COMPLETE_FOUR_NEW_LOCALES",
+      "public_publication": "COMPLETE_FIVE_LOCALES",
+      "browser_verification": "PASS_FIVE_LOCALES_DESKTOP_AND_MOBILE_VIEWPORTS",
+      "original_zhTW_unchanged": true,
+      "article_metadata_unchanged": true,
+      "public_urls": {
+        "zh-TW": "https://mokaair.com/zh-TW/life/website-maintenance-routine",
+        "en": "https://mokaair.com/en/life/website-maintenance-routine",
+        "ja": "https://mokaair.com/ja/life/website-maintenance-routine",
+        "ko": "https://mokaair.com/ko/life/website-maintenance-routine",
+        "zh-CN": "https://mokaair.com/zh-CN/life/website-maintenance-routine"
+      },
+      "locale_versions": [
+        {
+          "locale": "zh-TW",
+          "locale_version": 4,
+          "published_version": 4,
+          "published_at": "2026-09-15T12:33:49.924768+00:00",
+          "document_sha256": "016eae713351d316ffc2e3bf46b018c7c50669878ba4a1e9dd0850b523ee8103"
+        },
+        {
+          "locale": "en",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:14.136391+00:00",
+          "document_sha256": "fc0731c11bbb6a4ea47414f863ce11efc87f46161a64c7f67415b01e89f9b5b1"
+        },
+        {
+          "locale": "ja",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:14.368540+00:00",
+          "document_sha256": "373841e5c47e7120c910bfd627d527548c4275eb44aa2cbf3da4e2220a55c07b"
+        },
+        {
+          "locale": "ko",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:14.599441+00:00",
+          "document_sha256": "ff2b895fbb2659976b94d1771e9994ea00d1e5132bf54ab8f3b026862269bd9d"
+        },
+        {
+          "locale": "zh-CN",
+          "locale_version": 2,
+          "published_version": 2,
+          "published_at": "2026-09-23T09:10:14.835941+00:00",
+          "document_sha256": "529afb50b8443a75d5b961c9b7fd1b7a24f54f8e4e007b3c203c962a7d1a8d42"
+        }
+      ],
+      "detailed_evidence": {
+        "ref": "final_evidence",
+        "json_pointer": "/articles/3"
+      }
+    }
+  ],
+  "sitemap": {
+    "pages": [
+      1000,
+      928
+    ],
+    "pagination": [
+      {
+        "request_cursor": null,
+        "count": 1000,
+        "next_cursor": "WyJjcnlwdG8tbmV3cy1jZnRjLXBhc3NpdmUtc29mdHdhcmUtMjAyNjA5MTciLCJlbiJd"
+      },
+      {
+        "request_cursor": "WyJjcnlwdG8tbmV3cy1jZnRjLXBhc3NpdmUtc29mdHdhcmUtMjAyNjA5MTciLCJlbiJd",
+        "count": 928,
+        "next_cursor": null
+      }
+    ],
+    "entries": 1928,
+    "unique": 1928,
+    "complete": true,
+    "terminal_next_cursor": null,
+    "xml_children": 11,
+    "xml_urls": 2329,
+    "coverage": {
+      "api_rows": 1928,
+      "matched_xml_urls": 1928,
+      "all_api_guides_in_xml": true
+    }
+  },
+  "reviewed_numeric_equivalences": {
+    "ja": {
+      "website-cms-choice": 4,
+      "website-maintenance-routine": 1
+    },
+    "ko": 0
+  },
+  "known_nonblocking_tasks": [
+    "2026-09-22-fix-desktop-global-search-placeholder-icon"
+  ],
+  "limitations": [
+    "Desktop/mobile mean browser viewports, not physical-device execution.",
+    "Screenshot observation covers top and diagram viewports; full body and source checks are bound separately to the public QA and expanded-content reports.",
+    "Only these four already-public articles and sixteen new locale publications are accepted. No site-wide draft-visibility or remaining-localization completion assertion is made.",
+    "Latest revision body is represented by its exported hash/action/actor; full draft and published models were compared by the separately pinned DB reviewer.",
+    "Original failed release evidence remains preserved.",
+    "The final evidence precedes hold clearing; subsequent status is recorded by hold_clear and post_clear_host."
+  ]
+}
