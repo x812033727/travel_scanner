@@ -97,3 +97,82 @@ exercise) and check the admin affiliate report's by-article row.
 - Namecheap pays on domains too, so the domain guides are candidates once the brand
   guides are done. Nine packs have `domain` in the slug; two of them are in this scope.
   The other seven are not; add them in a follow-up.
+
+### 2026-09-24 placement plan, ready before the links exist
+
+Prepared while the ticket waits on the owner, so that the owner's links are the only
+missing piece. Rule, from decision D2 in `docs/monetization-alternatives.md`:
+
+- Link only the brand the article teaches, once per locale.
+- Put the link at the end of the section where the reader decides what to buy. It goes after
+  a paragraph and before the next section's heading.
+- Nothing in the article text changes.
+
+The five locales of every pack below have identical block structures (checked 2026-09-24), so
+one index works for all of them. Insert the new block at 0-based position `after + 1` in
+`locales.<locale>.blocks`.
+
+| Pack | Batch | After block | Before the heading (zh-TW / en) |
+| --- | --- | --- | --- |
+| `hostinger-wordpress-setup` | 1 | 4 | 從 Websites 新增 WordPress / Add WordPress from Websites |
+| `siteground-wordpress-setup` | 1 | 4 | 新網站依設定精靈建立 / Create a new website with the setup wizard |
+| `hosting-com-wordpress-setup` | 1 | 7 | cPanel 與 Webuzo 依自己的入口安裝 / Install through your own cPanel or Webuzo |
+| `namecheap-domain-setup` | 1 | 1 | 在 Domain List 確認你要管理的網域 / Find the domain you want to manage in Domain List |
+| `fastcomet-wordpress-setup` | later | 9 | 用 Softaculous 建立新站 / Create a new site with Softaculous |
+| `hostgator-wordpress-setup` | later | 4 | 從客戶入口建立 WordPress / Create WordPress from the customer portal |
+| `bluehost-wordpress-setup` | later | 4 | 從 Websites 建立正確的 WordPress 網站 / Create the correct WordPress site from Websites |
+| `bluehost-domain-billing` | later | 7 | 註冊前核對拼法，完成後再驗證 / Check spelling before registration, then verify |
+| `cloudways-wordpress-setup` | later | 7 | 依網站工作選擇伺服器 / Choose a server for the work your website does |
+| `cloudways-ssl-setup` | none | | Written for people who already run Cloudways; no buying step, zh-TW only |
+| `managed-hosting-comparison` | only if both | 20 | 用取捨說明選擇，保留重新評估時點 / Explain the trade-offs and set a review date |
+
+- **The comparison** names FastComet and Cloudways only as examples (twice each). Link both, or
+  neither: only when both programmes are joined, as two blocks. Two links stay within the
+  three-per-article limit.
+- **`namecheap-domain-setup`** is for readers who already registered, so its purchase intent is
+  low. The link sits right after the introduction, for readers who still need a domain.
+- **Generic domain guides are not candidates.** For example, `domain-registration-guide`,
+  `domain-registrar-transfer` and `gandi-domain-management` do not teach Namecheap, and D2 keeps
+  a brand link out of an article about something else. This replaces the earlier note that
+  called them candidates.
+
+**Block text.** `label` is at most 80 characters and `note` at most 200. The component adds
+the badge (合作連結 / Affiliate link …) and the brand name, and the article's opening
+disclosure switches to `partnerDisclosure` automatically. Hosting brands:
+
+| Locale | `label` | `note` |
+| --- | --- | --- |
+| zh-TW | 到 {Brand} 官網查看主機方案 | 先照上面的清單核對需求，再比較首期與續約價格。 |
+| zh-CN | 前往 {Brand} 官网查看主机方案 | 先按上面的清单核对需求，再比较首期与续约价格。 |
+| en | See {Brand} hosting plans | Check your needs against the list above, then compare the first-term and renewal prices. |
+| ja | {Brand} の公式サイトでプランを見る | 上のリストで必要な条件を確認してから、初回と更新時の料金を比べてください。 |
+| ko | {Brand} 공식 사이트에서 요금제 보기 | 위 목록으로 필요한 조건을 먼저 확인한 뒤, 첫 결제와 갱신 가격을 비교하세요. |
+
+Namecheap (after the introduction):
+
+| Locale | `label` | `note` |
+| --- | --- | --- |
+| zh-TW | 還沒有網域：到 Namecheap 查詢 | 註冊前先確認拼法、持有人資料與續約價格。 |
+| zh-CN | 还没有域名：到 Namecheap 查询 | 注册前先确认拼写、持有人资料与续费价格。 |
+| en | No domain yet? Search on Namecheap | Before registering, check the spelling, the owner details and the renewal price. |
+| ja | ドメインがまだなら Namecheap で検索 | 登録前に、つづり・登録者情報・更新料金を確認してください。 |
+| ko | 도메인이 아직 없다면 Namecheap에서 검색 | 등록 전에 철자, 소유자 정보, 갱신 가격을 확인하세요. |
+
+These strings still go through the per-locale review in skill `content-pipeline`. They are
+a draft, not a reviewed translation.
+
+**Owner's sign-up checklist, batch 1.** The official pages are in section 9 of the document.
+
+1. For each of Hostinger (affiliate programme), SiteGround, hosting.com (FirstPromoter) and
+   Namecheap (Impact):
+   - Apply on the official affiliate page.
+   - Promoting site: `https://mokaair.com`.
+   - Method: content website with tutorials; no paid search and no brand-keyword ads.
+2. Payout and tax:
+   - PayPal is the simplest everywhere.
+   - Impact pays by wire in TWD.
+   - US programmes ask for a W-8BEN; the owner signs it personally.
+3. Once approved, generate one link to the brand's home or plans page and send the full URL.
+   Do not send Hostinger's `REFERRALCODE` customer-referral link: its terms forbid websites,
+   and `content_links.py` rejects it.
+4. Then: `npm run tasks -- status 2026-09-24-hosting-affiliate-links-in-the-hosting open`.
