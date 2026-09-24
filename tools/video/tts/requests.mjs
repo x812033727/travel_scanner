@@ -38,6 +38,36 @@ export function spokenParts(text, lexicon) {
 
 const partsLength = (parts) => parts.reduce((sum, part) => sum + part.text.length, 0);
 
+// Mirrors VOICE_PREFIX and LONG_PAUSE_FROM_MS in apps/api/app/video_speech/gemini.py.
+export const GEMINI_VOICE_PREFIX = "gemini:";
+const LONG_PAUSE_FROM_MS = 600;
+
+/**
+ * The voice part of a request body. Azure takes a voice name and a rate; Gemini takes a
+ * prefixed voice, a written style and optionally a model, and no rate (its pace is in the style).
+ */
+export function voiceFields(voice) {
+  if (voice.provider === "gemini") {
+    return {
+      voice: `${GEMINI_VOICE_PREFIX}${voice.name}`,
+      ...(voice.style ? { style: voice.style } : {}),
+      ...(voice.model ? { model: voice.model } : {}),
+    };
+  }
+  return { voice: voice.name, rate: voice.rate ?? "+0%" };
+}
+
+/** The transcript the server sends Gemini; its length is what the Gemini month counts. */
+export function geminiText(segments) {
+  let text = "";
+  for (const segment of segments) {
+    for (const part of segment.parts) text += (part.alias || part.text).replace(/[<>]/g, " ");
+    if (segment.break_after_ms >= LONG_PAUSE_FROM_MS) text += " <long pause> ";
+    else if (segment.break_after_ms > 0) text += " <short pause> ";
+  }
+  return text.trim();
+}
+
 /** Every request for a video, in narration order. */
 export function planRequests(doc, lexicon) {
   const requests = [];
@@ -47,7 +77,7 @@ export function planRequests(doc, lexicon) {
     const flush = () => {
       if (!chunk.length) return;
       const segments = chunk.map((line, index) => ({ parts: line.parts, break_after_ms: index < chunk.length - 1 ? SPLIT_BREAK_MS : 0 }));
-      const body = { voice: doc.voice.name, rate: doc.voice.rate ?? "+0%", segments };
+      const body = { ...voiceFields(doc.voice), segments };
       const key = createHash("sha256").update(JSON.stringify([chunk.map((line) => line.id), body])).digest("hex").slice(0, 16);
       requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, lines: chunk, body, key });
       chunk = [];
@@ -66,8 +96,12 @@ export function planRequests(doc, lexicon) {
   return requests;
 }
 
-/** Billable characters the server will count for a request: its SSML inside <voice>. */
+/**
+ * Billable characters the server will count for a request: for Azure its SSML inside <voice>,
+ * for Gemini the characters of the transcript.
+ */
 export function billableForRequest(body) {
+  if (body.voice.startsWith(GEMINI_VOICE_PREFIX)) return geminiText(body.segments).length;
   let markup = 0;
   for (const segment of body.segments) {
     for (const part of segment.parts) {

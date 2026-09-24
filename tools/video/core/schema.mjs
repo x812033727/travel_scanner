@@ -25,7 +25,11 @@ export const TEMPLATES = [
   "outro",
 ];
 export const THUMBNAIL_TEMPLATES = ["thumb"];
-export const VOICE_PROVIDERS = ["azure"];
+export const VOICE_PROVIDERS = ["azure", "gemini"];
+// Mirrors the model list and the voice-name pattern in apps/api/app/video_speech/gemini.py.
+export const GEMINI_MODELS = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts"];
+const GEMINI_VOICE = /^[A-Za-z][A-Za-z0-9_-]{1,79}$/;
+const STYLE_MAX = 400;
 export const MAX_PAUSE_MS = 5000;
 export const DEFAULT_TARGET_MINUTES = [8, 12];
 
@@ -50,7 +54,7 @@ const TOP_KEYS = new Set([
   "assets",
   "scenes",
 ]);
-const VOICE_KEYS = new Set(["provider", "name", "rate", "lang"]);
+const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
 const YOUTUBE_KEYS = new Set([
   "category_id",
   "made_for_kids",
@@ -94,6 +98,22 @@ function validateVoice(voice, errors) {
   if (!isText(voice.name)) errors.push({ path: "voice.name", message: "must name the voice, e.g. zh-TW-HsiaoChenNeural" });
   if (voice.rate !== undefined && !RATE.test(voice.rate)) {
     errors.push({ path: "voice.rate", message: 'must look like "+5%" or "-10%"' });
+  }
+  if (voice.provider === "gemini") {
+    if (isText(voice.name) && !GEMINI_VOICE.test(voice.name)) {
+      errors.push({ path: "voice.name", message: "a Gemini voice is a name like Sulafat or a voice_... id, without the gemini: prefix" });
+    }
+    if (voice.rate !== undefined) {
+      errors.push({ path: "voice.rate", message: "Gemini takes its pace from voice.style; remove rate" });
+    }
+    if (voice.model !== undefined && !GEMINI_MODELS.includes(voice.model)) {
+      errors.push({ path: "voice.model", message: `must be one of ${GEMINI_MODELS.join(", ")}` });
+    }
+  } else if (voice.style !== undefined || voice.model !== undefined) {
+    errors.push({ path: "voice", message: "style and model are for Gemini voices only" });
+  }
+  if (voice.style !== undefined && !(isText(voice.style) && voice.style.length <= STYLE_MAX)) {
+    errors.push({ path: "voice.style", message: `must be text of at most ${STYLE_MAX} characters` });
   }
   if (voice.lang !== undefined && voice.lang !== NARRATION_LOCALE) {
     errors.push({ path: "voice.lang", message: `narration is ${NARRATION_LOCALE}; omit the field or set it to that` });

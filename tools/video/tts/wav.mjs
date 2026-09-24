@@ -71,6 +71,62 @@ export function encodeWav(samples, sampleRate = SAMPLE_RATE) {
   return Buffer.concat([header, body]);
 }
 
+// Zero crossings of the interpolating sinc on each side. 16 keeps the passband flat to about
+// 90% of the source Nyquist frequency (10.8 kHz for 24 kHz speech), which is all a voice uses.
+const HALF_WIDTH = 16;
+
+/**
+ * Upsample by a whole factor with a Blackman-windowed sinc, one filter row per output phase.
+ * Every row sums to one and phase 0 is the identity, so the original samples come through
+ * unchanged and silence stays silence.
+ */
+export function upsample(samples, factor) {
+  if (!Number.isInteger(factor) || factor < 1) throw new WavError(`cannot upsample by ${factor}`);
+  if (factor === 1) return samples;
+  const taps = 2 * HALF_WIDTH;
+  const rows = [];
+  for (let phase = 0; phase < factor; phase++) {
+    const row = new Float64Array(taps);
+    let sum = 0;
+    for (let index = 0; index < taps; index++) {
+      const distance = phase / factor - (index - HALF_WIDTH + 1);
+      const sinc = distance === 0 ? 1 : Math.sin(Math.PI * distance) / (Math.PI * distance);
+      const x = distance / HALF_WIDTH;
+      const window = Math.abs(x) >= 1 ? 0 : 0.42 + 0.5 * Math.cos(Math.PI * x) + 0.08 * Math.cos(2 * Math.PI * x);
+      row[index] = sinc * window;
+      sum += row[index];
+    }
+    for (let index = 0; index < taps; index++) row[index] /= sum;
+    rows.push(row);
+  }
+  const out = new Int16Array(samples.length * factor);
+  const last = samples.length - 1;
+  for (let at = 0; at < samples.length; at++) {
+    for (let phase = 0; phase < factor; phase++) {
+      const row = rows[phase];
+      let value = 0;
+      for (let index = 0; index < taps; index++) {
+        const source = at + index - HALF_WIDTH + 1;
+        if (source >= 0 && source <= last) value += samples[source] * row[index];
+      }
+      out[at * factor + phase] = Math.max(-32768, Math.min(32767, Math.round(value)));
+    }
+  }
+  return out;
+}
+
+/**
+ * A server WAV on the narration grid. Gemini speaks at 24 kHz; the timeline is 48 kHz, so a mono
+ * 16-bit clip at a rate that divides 48,000 is upsampled. Anything else is returned as is, for
+ * `requireNarrationFormat` to refuse with a clear message.
+ */
+export function toNarrationRate(buffer) {
+  const wav = parseWav(buffer);
+  if (wav.sampleRate === SAMPLE_RATE) return buffer;
+  if (wav.channels !== 1 || wav.bitsPerSample !== 16 || wav.sampleRate < 8000 || SAMPLE_RATE % wav.sampleRate !== 0) return buffer;
+  return encodeWav(upsample(wav.samples, SAMPLE_RATE / wav.sampleRate));
+}
+
 export function concatSamples(parts) {
   const total = parts.reduce((sum, part) => sum + part.length, 0);
   const out = new Int16Array(total);
