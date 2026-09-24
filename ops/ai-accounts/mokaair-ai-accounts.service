@@ -28,7 +28,10 @@ PrivateDevices=true
 ProtectSystem=strict
 # The CLIs live under /root/.local; the logins live under /var/lib.
 ProtectHome=read-only
-ReadWritePaths=/run/mokaair-ai-accounts /var/lib/mokaair-ai-accounts
+# `-`: systemd builds the namespace for ExecStartPre too, before that step has created
+# the socket directory, and a missing path fails the start with 226/NAMESPACE (seen on
+# the first start, 2026-09-24). By the time ExecStart runs the directory exists.
+ReadWritePaths=-/run/mokaair-ai-accounts /var/lib/mokaair-ai-accounts
 ProtectKernelTunables=true
 ProtectKernelModules=true
 ProtectKernelLogs=true
