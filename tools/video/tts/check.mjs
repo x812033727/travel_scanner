@@ -15,13 +15,17 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
-import { judgeLines, transcribeClip } from "./client.mjs";
+import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 // Mirrors JudgeIn's max_length in apps/api/app/video_speech/schemas.py.
 export const MAX_JUDGE_LINES = 40;
 export const DEFAULT_THRESHOLD = 0.5;
+// A line Gemini will not transcribe even after the client's retries is skipped, not fatal: the
+// first pilot run stopped at line 40 of 157 on one such line. This many in a row means Gemini
+// itself is down, and the run stops instead of spending minutes of retries on every line left.
+export const GIVE_UP_AFTER = 3;
 const TRANSCRIBE_RATE = 16_000;
 const CHECK_FILE = path.join("review", "check.json");
 const FLAGS_FILE = path.join("review", "check-flags.json");
@@ -72,6 +76,9 @@ export async function checkAudio(args, ctx, options) {
   const results = {};
 
   let transcribed = 0;
+  let failedInARow = 0;
+  let gaveUp = false;
+  const unchecked = new Map();
   for (const { scene, line } of eachLine(doc)) {
     if (stopRequested(workdir)) {
       ctx.stdout.write("STOP found; transcripts so far are saved\n");
@@ -86,7 +93,21 @@ export async function checkAudio(args, ctx, options) {
     if (!entry) {
       const samples = requireNarrationFormat(parseWav(bytes));
       const wav = encodeWav(downsample(samples, Math.round(48_000 / TRANSCRIBE_RATE)), TRANSCRIBE_RATE);
-      const heard = await transcribeClip({ ...options, wav });
+      let heard;
+      try {
+        heard = await transcribeClip({ ...options, wav });
+      } catch (error) {
+        // The owner's problems (token, key) stop the run; so does anything that is not the service.
+        if (!(error instanceof SpeechError) || error.who !== "service") throw error;
+        unchecked.set(line.id, error.message);
+        failedInARow += 1;
+        if (failedInARow >= GIVE_UP_AFTER) {
+          gaveUp = true;
+          break;
+        }
+        continue;
+      }
+      failedInARow = 0;
       transcribed += 1;
       entry = { scene: scene.id, clip, heard, noul: null };
     }
@@ -122,16 +143,28 @@ export async function checkAudio(args, ctx, options) {
   const flagsFile = path.join(workdir, FLAGS_FILE);
   const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, `Jev ${entry.noul.toFixed(2)}: heard 「${entry.heard}」`]));
   atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), notes }, null, 2)}\n`);
-  recordStage(workdir, "check-audio", { lines: entries.length, exact, judged: entries.length - exact, flagged: flagged.length, transcribed, jev_calls: jevCalls }, ctx.now());
+  const total = [...eachLine(doc)].length;
+  const missing = total - entries.length;
+  recordStage(
+    workdir,
+    "check-audio",
+    { lines: total, exact, judged: entries.length - exact, flagged: flagged.length, unchecked: missing, transcribed, jev_calls: jevCalls },
+    ctx.now(),
+  );
 
-  ctx.stdout.write(`${entries.length} lines: ${exact} match the script word for word, ${entries.length - exact - flagged.length} judged fine by Jev, ${flagged.length} flagged (below ${threshold})\n`);
+  ctx.stdout.write(`${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${entries.length - exact - flagged.length} judged fine by Jev, ${flagged.length} flagged (below ${threshold})\n`);
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
   for (const [id, entry] of flagged) {
     ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}\n`);
   }
   if (flagged.length) {
     ctx.stdout.write(`next: fix the dictionary or the line, then node tools/video/cli.mjs tts --slug ${doc.slug} --redo ${flagsFile}\n`);
-    return EXIT.lint;
   }
-  return EXIT.ok;
+  if (missing) {
+    const why = gaveUp ? `Gemini failed ${GIVE_UP_AFTER} lines in a row, so the run stopped` : "Gemini would not transcribe them";
+    ctx.stdout.write(`${missing} lines not checked yet (${why}); run check-audio again later, finished lines are kept\n`);
+    for (const [id, message] of unchecked) ctx.stdout.write(`  ${id}  ${message}\n`);
+    return EXIT.external;
+  }
+  return flagged.length ? EXIT.lint : EXIT.ok;
 }
