@@ -177,6 +177,10 @@ fi
 chown root:root "${ENV_FILE}"
 chmod 0600 "${ENV_FILE}"
 if [[ -n "${RUNTIME_ENV}" ]]; then
+  # Appending to a file without a final newline would glue the new line onto its last one.
+  if [[ -s "${RUNTIME_ENV}" && -n "$(tail -c1 "${RUNTIME_ENV}")" ]]; then
+    printf '\n' >>"${RUNTIME_ENV}"
+  fi
   key_line="$(grep '^AI_ACCOUNTS_AGENT_HMAC_KEY=' "${ENV_FILE}")"
   if grep -q '^AI_ACCOUNTS_AGENT_HMAC_KEY=' "${RUNTIME_ENV}"; then
     python3 - "${RUNTIME_ENV}" "${key_line}" <<'PY'
