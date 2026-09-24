@@ -119,6 +119,13 @@ class Settings(BaseSettings):
     deploy_agent_hmac_key: str | None = None
     deploy_agent_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
     deploy_cooldown_seconds: int = Field(default=300, ge=0, le=3_600)
+    # /admin/ai-accounts: the host agent in ops/ai-accounts signs root's Claude Code and
+    # Codex CLIs in to subscription accounts. The socket path is fixed by its systemd unit.
+    ai_accounts_enabled: bool = False
+    ai_accounts_agent_socket: str = "/run/mokaair-ai-accounts/agent.sock"
+    ai_accounts_agent_hmac_key: str | None = None
+    # Starting a login runs a CLI on the host; the web proxy allows 30 s for these routes.
+    ai_accounts_agent_timeout_seconds: float = Field(default=25.0, gt=0, le=28)
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
@@ -638,6 +645,15 @@ class Settings(BaseSettings):
         )
 
     @property
+    def ai_accounts_configured(self) -> bool:
+        return bool(
+            self.ai_accounts_enabled
+            and self.ai_accounts_agent_hmac_key
+            and len(self.ai_accounts_agent_hmac_key) >= 32
+            and self.ai_accounts_agent_socket.startswith("/")
+        )
+
+    @property
     def amadeus_base_url(self) -> str:
         return (
             "https://api.amadeus.com"
@@ -781,6 +797,14 @@ class Settings(BaseSettings):
                 errors.append(
                     "DEPLOY_AGENT_SOCKET must use the systemd-managed "
                     "/run/travel-scanner-deployer/deployer.sock path"
+                )
+        if self.ai_accounts_enabled:
+            if not self.ai_accounts_agent_hmac_key or len(self.ai_accounts_agent_hmac_key) < 32:
+                errors.append("AI_ACCOUNTS_AGENT_HMAC_KEY must be set to at least 32 characters")
+            if self.ai_accounts_agent_socket != "/run/mokaair-ai-accounts/agent.sock":
+                errors.append(
+                    "AI_ACCOUNTS_AGENT_SOCKET must use the systemd-managed "
+                    "/run/mokaair-ai-accounts/agent.sock path"
                 )
         pinned_endpoints = {
             "OPENAI_API_BASE_URL": (self.openai_api_key, "openai_api_base_url"),
