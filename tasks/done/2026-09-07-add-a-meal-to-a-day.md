@@ -1,13 +1,13 @@
 ---
 id: 2026-09-07-add-a-meal-to-a-day
 title: 行程裡新增一餐：四個 trip-selections 端點接受 mode: replace_meal|append
-status: review
+status: done
 priority: P3
 area: api
 owner: claude-fable-5-1
 claimed_at: 2026-09-19T11:10:01Z
 created_at: 2026-09-07T00:45:41Z
-completed_at:
+completed_at: 2026-09-24T07:36:17Z
 branch: claude/travel-scanner-pr-552-rpq36m
 depends_on: []
 scope:
@@ -118,3 +118,11 @@ npm run check:i18n && npm run typecheck:web && npm run lint:web
   - `cd apps/web && npx vitest run components/travel-card-actions.test.tsx components/frontend-plan-action.test.tsx`
     與整套 `npm run test:web`（290 檔／3197 測試）
   - `npm run check:i18n && npm run typecheck:web && npm run lint:web`
+
+### 2026-09-24 標記完成（由站主授權，非原持有者）
+
+- 證據：程式隨 PR #565 於 2026-09-19 合併（commit `d1117886`，標題含「加入一餐」）；
+  `mealOccupied` 等文案在五份 `apps/web/messages/*/common.json` 都在 main 上。
+- 票停在 review 五天、持有者 claude-fable-5-1，一直佔住 `common.json`，擋住
+  `2026-09-24-reader-support-link-at-the-end`。站主 2026-09-24 同意由 claude-opus-5-5 代為結案。
+- 清單全部已勾，沒有未完成項目要交代去向。
