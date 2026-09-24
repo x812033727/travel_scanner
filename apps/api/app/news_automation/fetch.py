@@ -165,13 +165,22 @@ class SafeNewsFetcher:
                         if declared_size > MAX_RESPONSE_BYTES:
                             raise UnsafeNewsUrl("news source response is too large")
                     body = bytearray()
+                    # aiter_bytes() already undoes gzip/br, and the limit applies to the
+                    # decoded size, so a small compressed bomb stops at 2 MB too.
                     async for chunk in streamed.aiter_bytes():
                         body.extend(chunk)
                         if len(body) > MAX_RESPONSE_BYTES:
                             raise UnsafeNewsUrl("news source response is too large")
+                    # The rebuilt response holds decoded bytes. Keeping Content-Encoding
+                    # would make httpx decode them a second time (DecodingError on every
+                    # compressed page, which is nearly every real site).
                     response = httpx.Response(
                         streamed.status_code,
-                        headers=streamed.headers,
+                        headers=[
+                            (name, value)
+                            for name, value in streamed.headers.multi_items()
+                            if name.lower() not in {"content-encoding", "content-length"}
+                        ],
                         content=bytes(body),
                         request=streamed.request,
                     )

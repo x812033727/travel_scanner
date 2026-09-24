@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
@@ -680,3 +681,33 @@ async def test_a_feed_link_that_redirects_to_a_seen_page_files_nothing_new() -> 
         statuses = list(await session.scalars(select(NewsCandidate.status)))
     assert statuses == ["discovered"]
     await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_compressed_responses_are_decoded_exactly_once() -> None:
+    feed = (
+        b"<rss><channel><item><title>Compressed release</title>"
+        b"<link>https://example.com/a</link></item></channel></rss>"
+    )
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(
+                200,
+                content=gzip.compress(b"User-agent: *\nAllow: /"),
+                headers={"Content-Encoding": "gzip", "Content-Type": "text/plain"},
+                request=request,
+            )
+        return httpx.Response(
+            200,
+            content=gzip.compress(feed),
+            headers={"Content-Encoding": "gzip", "Content-Type": "application/rss+xml"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    fetched = await fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    assert fetched.body == feed
+    assert parse_entries(fetched.body, "rss", fetched.url, {})[0].title == "Compressed release"
+    await client.aclose()
