@@ -724,3 +724,39 @@ async def test_two_pages_of_one_website_stop_at_the_evidence_gate(
     assert stored is not None and stored.error_code == "news_evidence_insufficient"
     # Nothing was spent on a candidate that cannot pass.
     duplicate_check.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_a_restarting_news_worker_recovers_every_in_flight_candidate_at_once(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    from app.news_automation import worker
+
+    # A file, not memory: recover_interrupted disposes the engine it is given.
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'news.db'}")
+    tables = cast(list[Table], [model.__table__ for model in NEWS_TABLES])
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    now = datetime.now(UTC)
+    async with factory() as session:
+        # Cut off two minutes ago by a deploy: far younger than the scheduler's 70 minutes.
+        interrupted = await seed_candidate(
+            session, status="locale_review", processing_started_at=now - timedelta(minutes=2)
+        )
+        waiting = await seed_candidate(session)
+        interrupted_id, waiting_id = interrupted.id, waiting.id
+    monkeypatch.setattr(worker, "SessionFactory", factory)
+    monkeypatch.setattr(worker, "engine", engine)
+
+    recovered = await worker.recover_interrupted()
+
+    async with factory() as session:
+        statuses = {
+            row.id: (row.status, row.error_code)
+            for row in await session.scalars(select(NewsCandidate))
+        }
+    await engine.dispose()
+    assert recovered == [interrupted_id]
+    assert statuses[interrupted_id] == ("failed", "news_processing_stale")
+    assert statuses[waiting_id] == ("discovered", None)

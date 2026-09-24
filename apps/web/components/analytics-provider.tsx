@@ -6,6 +6,7 @@ import Script from "next/script";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ANALYTICS_SESSION_KEY, type AnalyticsEventName } from "@/lib/analytics";
 import { isPrivateRoute } from "@/lib/private-routes";
+import { useThirdPartyAudience } from "@/lib/third-party-audience";
 
 type Config = { first_party_enabled: boolean; ga4_enabled: boolean; ga4_measurement_id?: string | null };
 type PendingEvent = {
@@ -70,6 +71,11 @@ function initializeGa4(measurementId: string) {
   window.gtag("config", measurementId, { send_page_view: false, page_location: cleanLocation, allow_google_signals: false, allow_ad_personalization_signals: false });
 }
 
+function sendGa4Event(name: AnalyticsEventName, path: string, language: string) {
+  const mapped = { registration_completed: "sign_up", search_completed: "search", outbound_click: "click", page_view: "page_view", discover_requested: "generate_lead", login_resumed: "login" }[name];
+  window.gtag?.("event", mapped, { page_path: path, page_location: `${location.origin}${path}`, language, transport_type: "beacon" });
+}
+
 export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const locale = useLocale();
@@ -79,8 +85,11 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   const lastPage = useRef<string | null>(null);
   const ga4Started = useRef(false);
   // gtag.js is a third-party script: it stays off private pages (`lib/private-routes.ts`), and
-  // a document that starts on one only brings it in once the reader reaches a public page.
-  const privateRoute = isPrivateRoute(pathname);
+  // a document that starts on one only brings it in once the reader reaches a public page. It
+  // never loads for an administrator, and waits while a signed-in reader's role is unknown
+  // (`lib/third-party-audience.ts`).
+  const audience = useThirdPartyAudience();
+  const ga4Allowed = audience === "allowed" && !isPrivateRoute(pathname);
   // The ID is admin-controlled: only a well-formed GA4 measurement ID may reach the script URL.
   const measurementId = config?.ga4_enabled && /^G-[A-Z0-9]{4,20}$/.test(config.ga4_measurement_id || "")
     ? config.ga4_measurement_id
@@ -97,11 +106,14 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   }, [config, pathname]);
 
   // Before the page-view effect below, so the first page view already finds `window.gtag`.
+  // When GA4 starts later than that (a signed-in reader, cleared once `/auth/me` answers), the
+  // page view already sent first-party is sent to GA4 as well, once.
   useEffect(() => {
-    if (!measurementId || privateRoute || ga4Started.current || privacyOptOut()) return;
+    if (!measurementId || !ga4Allowed || ga4Started.current || privacyOptOut()) return;
     ga4Started.current = true;
     initializeGa4(measurementId);
-  }, [measurementId, privateRoute]);
+    if (lastPage.current) sendGa4Event("page_view", lastPage.current, allowedLocales.has(locale) ? locale : "zh-TW");
+  }, [ga4Allowed, locale, measurementId]);
 
   const flush = useCallback((keepalive = false) => {
     if (!config?.first_party_enabled || queue.current.length === 0 || privacyOptOut()) return;
@@ -132,11 +144,10 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       queue.current.push(event);
       queueMicrotask(() => flush());
     }
-    if (config.ga4_enabled && config.ga4_measurement_id && window.gtag && !isPrivateRoute(pathname)) {
-      const mapped = { registration_completed: "sign_up", search_completed: "search", outbound_click: "click", page_view: "page_view", discover_requested: "generate_lead", login_resumed: "login" }[name];
-      window.gtag("event", mapped, { page_path: path, page_location: `${location.origin}${path}`, language: event.locale, transport_type: "beacon" });
+    if (config.ga4_enabled && config.ga4_measurement_id && window.gtag && ga4Allowed) {
+      sendGa4Event(name, path, event.locale);
     }
-  }, [config, flush, locale, pathname]);
+  }, [config, flush, ga4Allowed, locale, pathname]);
 
   useEffect(() => {
     if (!config) return;
@@ -182,7 +193,7 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   }, [flush]);
 
   return <>
-    {measurementId && !privacyOptOut() && !privateRoute && <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />}
+    {measurementId && !privacyOptOut() && ga4Allowed && <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />}
     {children}
   </>;
 }

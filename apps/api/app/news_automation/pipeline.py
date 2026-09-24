@@ -816,14 +816,19 @@ async def process_candidate(
 
 
 async def recover_stalled_candidates(
-    session: AsyncSession, *, now: datetime | None = None, limit: int = 20
+    session: AsyncSession,
+    *,
+    now: datetime | None = None,
+    limit: int = 20,
+    older_than: timedelta = STALE_AFTER,
 ) -> list[UUID]:
     """Fail candidates whose job died mid-pipeline and return the ones to run again.
 
     A worker stopped by a deploy or by the job timeout leaves its candidate in an
     in-flight status that nothing moves on. It keeps holding a concurrency slot, so with
     the default of one per vertical the whole vertical stops and every other candidate
-    defers forever.
+    defers forever. The scheduler waits ``STALE_AFTER`` because a job may still be
+    running; the news worker passes ``older_than=0`` when it starts, when none can be.
     """
 
     current = now or datetime.now(UTC)
@@ -833,7 +838,7 @@ async def recover_stalled_candidates(
             .where(
                 NewsCandidate.status.in_(ACTIVE_STATUSES),
                 func.coalesce(NewsCandidate.processing_started_at, NewsCandidate.updated_at)
-                < current - STALE_AFTER,
+                <= current - older_than,
             )
             .order_by(NewsCandidate.processing_started_at, NewsCandidate.id)
             .limit(limit)
