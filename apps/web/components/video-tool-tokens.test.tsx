@@ -37,8 +37,8 @@ describe("VideoToolTokens", () => {
     expect(await screen.findByText("筆電")).toBeTruthy();
     expect(screen.queryByTestId("new-video-tool-token")).toBeNull();
 
-    fireEvent.change(screen.getByRole("textbox"), { target: { value: "工作站" } });
-    fireEvent.submit(screen.getByRole("textbox").closest("form")!);
+    fireEvent.change(screen.getByLabelText("名稱"), { target: { value: "工作站" } });
+    fireEvent.submit(screen.getByLabelText("名稱").closest("form")!);
     expect((await screen.findByTestId("new-video-tool-token")).textContent).toBe(secret);
     await waitFor(() => expect(screen.getByText("工作站")).toBeTruthy());
 
@@ -68,5 +68,93 @@ describe("VideoToolTokens", () => {
     expect(await screen.findByText("筆電")).toBeTruthy();
     expect(screen.queryByRole("textbox")).toBeNull();
     expect(screen.queryByRole("button", { name: /撤銷|revoke/i })).toBeNull();
+  });
+});
+
+describe("VideoToolTokens pairing", () => {
+  const pending = {
+    user_code: "BCDF-GHJK",
+    client_name: "工作室筆電",
+    client_ip: "203.0.113.9",
+    created_at: "2026-09-24T05:00:00Z",
+    expires_at: "2026-09-24T05:10:00Z",
+    status: "pending",
+  };
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    window.history.replaceState(null, "", "/");
+  });
+
+  it("opens the pairing from the link login prints, and allows it only on a click", async () => {
+    window.history.replaceState(null, "", "/zh-TW/admin/settings?provider=azure_speech&video_pairing=BCDFGHJK");
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((url: string, init?: RequestInit) => {
+      calls.push(`${init?.method ?? "GET"} ${url}`);
+      if (url.endsWith("/pairings/BCDFGHJK")) return json(pending);
+      if (url.endsWith("/pairings/BCDFGHJK/approve")) return json({ ...pending, status: "approved" });
+      return json([existing]);
+    }));
+    render(<VideoToolTokens canManage />);
+    const card = await screen.findByTestId("video-tool-pairing");
+    expect(card.textContent).toContain("BCDF-GHJK");
+    expect(card.textContent).toContain("工作室筆電");
+    expect(card.textContent).toContain("203.0.113.9");
+    expect((screen.getByLabelText("驗證碼") as HTMLInputElement).value).toBe("BCDFGHJK");
+    expect(screen.getByText(/只允許你自己剛剛在終端機上看到的驗證碼/)).toBeTruthy();
+    expect(calls.some((call) => call.startsWith("POST"))).toBe(false);
+
+    fireEvent.click(screen.getByRole("button", { name: "允許" }));
+    expect(await screen.findByText(/已允許/)).toBeTruthy();
+    expect(calls).toContain(`POST ${ENDPOINT}/pairings/BCDFGHJK/approve`);
+    expect(screen.queryByRole("button", { name: "允許" })).toBeNull();
+  });
+
+  it("looks up a typed code and can deny it", async () => {
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((url: string, init?: RequestInit) => {
+      calls.push(`${init?.method ?? "GET"} ${url}`);
+      if (url.endsWith("/pairings/BCDFGHJK")) return json(pending);
+      if (url.endsWith("/pairings/BCDFGHJK/deny")) return json({ ...pending, status: "denied" });
+      return json([existing]);
+    }));
+    render(<VideoToolTokens canManage />);
+    await screen.findByText("筆電");
+    fireEvent.change(screen.getByLabelText("驗證碼"), { target: { value: "bcdf-ghjk" } });
+    fireEvent.click(screen.getByRole("button", { name: "查詢" }));
+    await screen.findByTestId("video-tool-pairing");
+    fireEvent.click(screen.getByRole("button", { name: "拒絕" }));
+    expect(await screen.findByText(/已拒絕/)).toBeTruthy();
+    expect(calls).toContain(`POST ${ENDPOINT}/pairings/BCDFGHJK/deny`);
+    expect(calls.some((call) => call.endsWith("/approve"))).toBe(false);
+  });
+
+  it("explains a malformed code without asking the server, and shows the server's refusal", async () => {
+    const fetchMock = vi.fn((url: string) => {
+      if (url.includes("/pairings/")) return json({ title: "請求未完成", status: 404, code: "video_pairing_not_found", detail: "找不到這組驗證碼" }, 404);
+      return json([existing]);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<VideoToolTokens canManage />);
+    await screen.findByText("筆電");
+    fireEvent.change(screen.getByLabelText("驗證碼"), { target: { value: "ABC" } });
+    fireEvent.click(screen.getByRole("button", { name: "查詢" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("8 個英文字母");
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/pairings/"))).toBe(false);
+
+    fireEvent.change(screen.getByLabelText("驗證碼"), { target: { value: "BCDF-GHJK" } });
+    fireEvent.click(screen.getByRole("button", { name: "查詢" }));
+    await waitFor(() => expect(screen.getByRole("alert").textContent).toContain("找不到這組驗證碼"));
+    expect(screen.queryByTestId("video-tool-pairing")).toBeNull();
+  });
+
+  it("offers no pairing to an admin who cannot manage settings, even from the link", async () => {
+    window.history.replaceState(null, "", "/zh-TW/admin/settings?video_pairing=BCDFGHJK");
+    const fetchMock = vi.fn<(url: string) => Promise<Response>>(() => json([existing]));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<VideoToolTokens canManage={false} />);
+    await screen.findByText("筆電");
+    expect(screen.queryByLabelText("驗證碼")).toBeNull();
+    expect(fetchMock.mock.calls.some(([url]) => String(url).includes("/pairings/"))).toBe(false);
   });
 });
