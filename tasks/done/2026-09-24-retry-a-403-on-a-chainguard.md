@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-retry-a-403-on-a-chainguard
 title: Retry a 403 on a Chainguard blob or config download in pull-images.sh
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T16:24:48Z
 created_at: 2026-09-24T16:24:38Z
-completed_at:
+completed_at: 2026-09-24T16:30:07Z
 branch: claude/ci-pull-retry-cgr-403
 depends_on: []
 scope:
