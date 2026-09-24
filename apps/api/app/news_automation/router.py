@@ -18,6 +18,7 @@ from app.news_automation.schemas import (
     CandidateAction,
     CandidateDetail,
     CandidatePage,
+    CandidateStatus,
     SettingsView,
     SettingsWrite,
     SourcePatch,
@@ -100,12 +101,14 @@ async def candidates(
     session: Session,
     page: int = Query(default=1, ge=1),
     limit: int = Query(default=25, ge=1, le=100),
-    status: str | None = Query(default=None, max_length=24),
+    # Repeatable (?status=manual_review&status=failed) so the review list can ask for
+    # exactly the statuses a person acts on instead of the newest rows of every kind.
+    status: Annotated[list[CandidateStatus] | None, Query()] = None,
     vertical: Vertical | None = None,
 ) -> CandidatePage:
     del user
     return await service.list_candidates(
-        session, page=page, limit=limit, status=status, vertical=vertical
+        session, page=page, limit=limit, status=list(status or []), vertical=vertical
     )
 
 
