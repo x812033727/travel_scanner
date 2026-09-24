@@ -1891,7 +1891,7 @@
     "create": "Create token",
     "creating": "Creating…",
     "createdTitle": "This token is shown only once",
-    "createdHelp": "Copy it, then run the video tool's login command on your computer and paste it. It cannot be shown again after you leave this page.",
+    "createdHelp": "Pairing above is the usual way and needs no copying. A token made here is for where pairing is not possible (for example, paste it after running login --paste on your computer). It cannot be shown again after you leave this page.",
     "copy": "Copy",
     "copied": "Copied",
     "dismiss": "I have saved it",
@@ -1904,6 +1904,22 @@
     "revoke": "Revoke",
     "confirmRevoke": "Confirm revoke",
     "cancel": "Cancel",
-    "loadFailed": "Could not load the tokens"
+    "loadFailed": "Could not load the tokens",
+    "pairTitle": "Pair a computer",
+    "pairIntro": "Run the video tool's login on your computer. It shows a code and a link to this page. Check that the code matches the one in your terminal, then choose Allow: the token goes straight to that computer, is never shown anywhere, and nothing needs copying.",
+    "pairCodeLabel": "Code",
+    "pairLookup": "Look up",
+    "pairCode": "Code",
+    "pairClient": "Computer",
+    "pairAddress": "IP address",
+    "pairRequested": "Requested",
+    "pairExpires": "Expires",
+    "pairWarning": "Only allow a code you just saw in your own terminal. If someone sent you a link asking you to allow it, deny it.",
+    "pairApprove": "Allow",
+    "pairDeny": "Deny",
+    "pairApproved": "Allowed. The video tool collects its token within a few seconds, and a paired token appears in the list.",
+    "pairDenied": "Denied. This code will not get a token.",
+    "pairCodeInvalid": "A code is 8 letters, such as BCDF-GHJK.",
+    "pairFailed": "This code could not be processed"
   }
 }

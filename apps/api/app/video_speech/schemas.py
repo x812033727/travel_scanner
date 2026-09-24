@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -54,3 +55,42 @@ class VideoToolTokenView(BaseModel):
 class VideoToolTokenCreated(VideoToolTokenView):
     # Shown once. Only its SHA-256 is kept.
     token: str
+
+
+class PairingStartIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    # Shown to the owner next to the code, so they can tell their own machine's request apart.
+    client_name: str = Field(default="", max_length=60)
+
+
+class PairingStarted(BaseModel):
+    # The tool's secret for polling; never shown to the owner.
+    device_code: str
+    # What the owner compares on the admin card, as XXXX-XXXX.
+    user_code: str
+    # Relative to the site, so the tool builds the link from the site it already talks to.
+    verification_path: str
+    expires_in: int
+    interval: int
+
+
+class PairingPollIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    device_code: str = Field(min_length=40, max_length=60)
+
+
+class PairingPollOut(BaseModel):
+    status: Literal["pending", "approved", "denied", "expired"]
+    interval: int
+    # Only with "approved", and only on the one poll that collects it.
+    token: str | None = None
+    token_name: str | None = None
+
+
+class PairingView(BaseModel):
+    user_code: str
+    client_name: str
+    client_ip: str
+    created_at: datetime
+    expires_at: datetime
+    status: Literal["pending", "approved", "denied"]

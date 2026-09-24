@@ -10,6 +10,7 @@ import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
+import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
 import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
@@ -29,7 +30,7 @@ function clientOptions(ctx, credentials) {
 function requireCredentials(ctx) {
   const credentials = readCredentials({ env: ctx.env, home: ctx.home });
   if (!credentials.token) {
-    throw new SpeechError("no video tool token yet: create one on the admin card 「Azure 語音（影片旁白）」, then run `node tools/video/cli.mjs login`", { who: "owner" });
+    throw new SpeechError("no video tool token yet: run `node tools/video/cli.mjs login` and allow it on the admin card 「Azure 語音（影片旁白）」", { who: "owner" });
   }
   return credentials;
 }
@@ -51,12 +52,39 @@ async function readSecret(ctx, prompt) {
   return answer.trim();
 }
 
+/**
+ * Pair with the site: print a code and a link to the admin card, wait for the owner to allow it,
+ * and collect the token. The token is never printed, so this is safe to run for someone else.
+ */
+async function pairedToken(site, name, ctx) {
+  const fetchImpl = ctx.fetch ?? globalThis.fetch;
+  const started = await startPairing({ site, clientName: name ?? defaultClientName(), fetchImpl });
+  const minutes = Math.round(started.expires_in / 60);
+  ctx.stdout.write(
+    `Open this link where you are signed in to the admin, check that the code matches, and choose 允許 (allow):\n` +
+      `  ${site}${started.verification_path}\n` +
+      `  code: ${started.user_code} (valid for ${minutes} minutes)\n` +
+      `waiting for the owner to allow it...\n`,
+  );
+  const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
+  const paired = await waitForPairing({ site, started, fetchImpl, sleep, now: ctx.now });
+  ctx.stdout.write(`allowed; the admin card lists this token as 「${paired.token_name}」\n`);
+  return paired.token;
+}
+
 async function login(args, ctx) {
-  const values = parseArgs({ args, options: { site: { type: "string" }, "token-file": { type: "string" } }, strict: true }).values;
+  const values = parseArgs({
+    args,
+    options: { site: { type: "string" }, "token-file": { type: "string" }, paste: { type: "boolean" }, name: { type: "string" } },
+    strict: true,
+  }).values;
   const current = readCredentials({ env: {}, home: ctx.home });
   const site = (values.site ?? current.site).replace(/\/+$/, "");
   if (!validSite(`${site}/`)) throw new UsageError(`${site} is not an https site address`);
-  const token = values["token-file"] ? readFileSync(values["token-file"], "utf8").trim() : await readSecret(ctx, "Paste the video tool token from the admin card (input is hidden): ");
+  let token;
+  if (values["token-file"]) token = readFileSync(values["token-file"], "utf8").trim();
+  else if (values.paste) token = await readSecret(ctx, "Paste the video tool token from the admin card (input is hidden): ");
+  else token = await pairedToken(site, values.name, ctx);
   if (!TOKEN_PATTERN.test(token)) throw new UsageError("that does not look like a video tool token; it starts with mkv_");
   const status = await speechStatus(clientOptions(ctx, { site, token }));
   const file = writeCredentials({ site, token }, { home: ctx.home });
