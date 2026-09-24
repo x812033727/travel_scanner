@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-travelpayouts-drive-loads-on-share-token
 title: Travelpayouts Drive loads on share token pages
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T02:25:06Z
 created_at: 2026-09-24T00:30:03Z
-completed_at:
+completed_at: 2026-09-24T02:47:50Z
 branch: claude/third-party-scripts-private-routes
 depends_on: []
 scope:

@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-third-party-scripts-on-privileged-routes
 title: Affiliate and analytics scripts load on admin and account pages
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T02:24:54Z
 created_at: 2026-09-23T15:57:48Z
-completed_at:
+completed_at: 2026-09-24T02:47:48Z
 branch: claude/third-party-scripts-private-routes
 depends_on: []
 scope:
