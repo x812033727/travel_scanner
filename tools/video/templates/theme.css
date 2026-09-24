@@ -1,0 +1,182 @@
+/*
+ * Mokaair dark theme for 1920x1080 video slides.
+ *
+ * The site's diagram palette (docs/life-ai-series-brief.md section 6) turned around: the
+ * site's text colour becomes the ground, its paper colour the text, and the teal accent is
+ * lifted so it still reads on the dark ground. Orange marks the one word that matters.
+ * Nothing important goes in the bottom 12%: YouTube's controls and captions live there.
+ */
+:root {
+  --ground: #0e2627;
+  --ground-2: #143637;
+  --panel: #173d3e;
+  --panel-edge: rgba(247, 241, 232, 0.14);
+  --paper: #f7f1e8;
+  --muted: #a8bcb8;
+  --faint: #6f8a86;
+  --teal: #4fc1b5;
+  --teal-deep: #0d6b68;
+  --orange: #f0a04b;
+  --red: #e0775e;
+  --code-ground: #081819;
+  --font: "Noto Sans TC Variable", sans-serif;
+  --mono: "JetBrains Mono Variable", "Noto Sans TC Variable", monospace;
+  --safe-x: 96px;
+  --safe-top: 64px;
+  --safe-bottom: 132px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  width: var(--width, 1920px);
+  height: var(--height, 1080px);
+  overflow: hidden;
+  background:
+    radial-gradient(1200px 800px at 12% 8%, rgba(79, 193, 181, 0.13), transparent 60%),
+    radial-gradient(900px 700px at 95% 100%, rgba(240, 160, 75, 0.08), transparent 60%),
+    linear-gradient(160deg, var(--ground-2), var(--ground) 55%);
+  color: var(--paper);
+  font-family: var(--font);
+  font-weight: 450;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  line-break: strict;
+}
+body::before {
+  /* A faint dot grid, so large empty areas do not look flat after YouTube's compression. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(247, 241, 232, 0.07) 1.5px, transparent 1.6px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, black, transparent 85%);
+}
+em { font-style: normal; color: var(--orange); }
+/* An emphasised phrase is one idea: never split it across lines. */
+.t-title em, .t-big em, .t-chapter em, .heading em, .thumb em { white-space: nowrap; }
+
+.chrome-chapter {
+  position: absolute; top: var(--safe-top); left: var(--safe-x);
+  display: flex; align-items: center; gap: 16px;
+  padding: 10px 26px 10px 18px;
+  border: 2px solid var(--panel-edge); border-radius: 999px;
+  font-size: 30px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em;
+}
+.chrome-chapter::before { content: ""; width: 14px; height: 14px; border-radius: 4px; background: var(--teal); }
+.chrome-brand {
+  position: absolute; top: calc(var(--safe-top) + 12px); right: var(--safe-x);
+  font-size: 26px; font-weight: 700; letter-spacing: 0.32em; color: var(--faint);
+}
+
+/* The area templates draw in: under the chapter label, above YouTube's controls. */
+.content {
+  position: absolute;
+  top: 170px; left: var(--safe-x); right: var(--safe-x); bottom: var(--safe-bottom);
+  display: flex; flex-direction: column;
+}
+.heading { font-size: 66px; font-weight: 800; line-height: 1.2; margin: 0 0 40px; max-height: 170px; text-wrap: balance; }
+.fit { overflow: hidden; }
+[data-hidden] { visibility: hidden; }
+
+/* Entrances. The renderer freezes these at chosen times with the Web Animations API. */
+@keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+@keyframes glow { from { opacity: 0; transform: scale(1.06); } to { opacity: 1; transform: none; } }
+.enter { animation: rise 300ms cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 70ms); }
+.enter.mark { animation-name: glow; }
+
+/* title */
+.t-title { justify-content: center; align-items: center; text-align: center; gap: 36px; }
+.t-title .tag { font-size: 36px; font-weight: 700; color: var(--ground); background: var(--orange); padding: 10px 30px; border-radius: 999px; }
+.t-title h1 { margin: 0; font-size: 112px; font-weight: 850; line-height: 1.15; max-width: 1600px; max-height: 400px; text-wrap: balance; }
+.t-title .rule { width: 160px; height: 8px; border-radius: 4px; background: var(--teal); }
+.t-title .subtitle { font-size: 46px; color: var(--muted); max-width: 1500px; max-height: 150px; text-wrap: balance; }
+
+/* chapter */
+.t-chapter { justify-content: center; gap: 12px; }
+.t-chapter .number { font-size: 220px; font-weight: 850; line-height: 1; color: transparent; -webkit-text-stroke: 4px var(--teal); }
+.t-chapter h2 { margin: 0; font-size: 104px; font-weight: 850; line-height: 1.15; max-height: 260px; }
+.t-chapter .subtitle { font-size: 44px; color: var(--muted); max-height: 130px; margin-top: 16px; }
+
+/* bullets */
+.t-bullets ol { list-style: none; margin: 0; padding: 0 0 0 8px; display: flex; flex-direction: column; justify-content: center; gap: 40px; flex: 1; }
+.t-bullets li { display: flex; align-items: flex-start; gap: 36px; font-size: 58px; font-weight: 650; line-height: 1.3; }
+.t-bullets li .fit { max-height: 160px; }
+.t-bullets .n {
+  flex: none; width: 76px; height: 76px; margin-top: -2px; border-radius: 50%;
+  background: var(--teal); color: var(--ground); font-size: 40px; font-weight: 850;
+  display: flex; align-items: center; justify-content: center;
+}
+.t-bullets .note { font-size: 36px; color: var(--muted); }
+
+/* compare */
+.t-compare .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin: auto 0; }
+.card { background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 28px; padding: 48px 52px 56px; min-height: 380px; max-height: 620px; overflow: hidden; }
+.card h3 { margin: 0 0 30px; font-size: 56px; font-weight: 800; }
+.card.left h3 { color: var(--teal); }
+.card.right h3 { color: var(--orange); }
+.card ul { margin: 0; padding: 0 0 0 1.1em; font-size: 46px; line-height: 1.45; }
+.card li + li { margin-top: 16px; }
+.t-compare .verdict { margin-bottom: 8px; font-size: 44px; font-weight: 700; text-align: center; }
+
+/* steps */
+.t-steps .flow { display: flex; align-items: stretch; gap: 0; margin: auto 0; }
+.t-steps .step { flex: 1 1 0; min-width: 0; min-height: 360px; max-height: 600px; background: var(--panel); border: 2px solid var(--panel-edge); border-radius: 28px; padding: 44px 40px; overflow: hidden; }
+.t-steps .arrow { flex: none; width: 72px; display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 56px; font-weight: 800; }
+.t-steps .num { font-size: 34px; font-weight: 800; color: var(--teal); letter-spacing: 0.08em; }
+.t-steps .step h3 { margin: 18px 0 20px; font-size: 50px; font-weight: 800; line-height: 1.25; }
+.t-steps .step p { margin: 0; font-size: 36px; color: var(--muted); line-height: 1.5; }
+
+/* table */
+.t-table table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 38px; }
+.t-table th { text-align: left; font-weight: 700; color: var(--muted); padding: 18px 28px; border-bottom: 3px solid var(--teal-deep); }
+.t-table td { padding: 20px 28px; border-bottom: 2px solid var(--panel-edge); line-height: 1.3; }
+.t-table td:first-child { font-weight: 700; }
+.t-table tr.hot td { background: rgba(240, 160, 75, 0.14); color: var(--paper); }
+.t-table tr.hot td:first-child { box-shadow: inset 8px 0 0 var(--orange); }
+
+/* code */
+.t-code .panel { background: var(--code-ground); border: 2px solid var(--panel-edge); border-radius: 24px; padding: 36px 0; overflow: hidden; flex: 1; min-height: 0; }
+.t-code .label { font-family: var(--mono); font-size: 24px; color: var(--faint); padding: 0 44px 18px; }
+.t-code pre { margin: 0; font-family: var(--mono); font-size: 34px; line-height: 1.55; white-space: pre; }
+.t-code .ln { display: block; padding: 0 44px; }
+.t-code .ln::before { content: attr(data-n); display: inline-block; width: 2.4em; color: var(--faint); }
+.t-code .ln.hot { background: rgba(79, 193, 181, 0.16); box-shadow: inset 6px 0 0 var(--teal); }
+.t-code .caption { margin-top: 26px; font-size: 34px; color: var(--muted); }
+
+/* big */
+.t-big { justify-content: center; align-items: center; text-align: center; gap: 26px; }
+.t-big .kicker { font-size: 44px; font-weight: 700; color: var(--orange); letter-spacing: 0.06em; }
+.t-big .word { font-size: 190px; font-weight: 900; line-height: 1.08; max-width: 1700px; max-height: 440px; text-wrap: balance; }
+.t-big .sub { font-size: 48px; color: var(--muted); max-width: 1500px; max-height: 140px; text-wrap: balance; }
+
+/* diagram and screenshot */
+.t-diagram .frame, .t-screenshot .frame { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.t-diagram .paper { background: #f7f1e8; border-radius: 26px; padding: 18px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); height: 100%; aspect-ratio: 16 / 9; }
+.t-diagram img { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* An inlined diagram fills its paper and is set in the slide font, whatever its own attributes say. */
+.t-diagram .paper svg { width: 100%; height: 100%; display: block; }
+.t-diagram .paper svg, .t-diagram .paper svg * { font-family: var(--font) !important; }
+.t-screenshot .shot { position: relative; height: 100%; border-radius: 22px; overflow: hidden; border: 2px solid var(--panel-edge); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4); }
+.t-screenshot img { height: 100%; display: block; }
+.t-screenshot .box { position: absolute; border: 6px solid var(--orange); border-radius: 14px; box-shadow: 0 0 0 9999px rgba(8, 24, 25, 0.35), 0 0 40px rgba(240, 160, 75, 0.6); }
+.caption-line { margin-top: 22px; font-size: 34px; color: var(--muted); text-align: center; }
+
+/* outro */
+.t-outro { justify-content: center; gap: 30px; }
+.t-outro h2 { margin: 0; font-size: 96px; font-weight: 850; line-height: 1.15; max-height: 240px; }
+.t-outro .cta { font-size: 48px; color: var(--paper); max-height: 140px; }
+.t-outro ul { margin: 10px 0 0; padding: 0; list-style: none; font-size: 38px; color: var(--muted); }
+.t-outro li + li { margin-top: 10px; }
+.t-outro .site { margin-top: 30px; font-size: 56px; font-weight: 800; color: var(--teal); letter-spacing: 0.02em; }
+
+/* thumbnail, 1280x720 */
+.thumb { position: absolute; inset: 0; padding: 64px 72px; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.thumb .tag { align-self: flex-start; font-size: 40px; font-weight: 800; color: var(--ground); background: var(--orange); padding: 8px 28px; border-radius: 999px; }
+.thumb h1 { margin: 0; font-size: 136px; font-weight: 900; line-height: 1.1; max-height: 460px; text-wrap: balance; }
+.thumb .sub { font-size: 44px; font-weight: 700; color: var(--muted); max-height: 120px; }
+.thumb .brand { position: absolute; left: 72px; bottom: 48px; font-size: 30px; font-weight: 800; letter-spacing: 0.3em; color: var(--teal); }
+.thumb { padding-right: 340px; }
+/* A ring and a dot on the right, so the text side reads first and the frame is not half empty. */
+.thumb-art { position: absolute; right: -200px; top: 100px; width: 520px; height: 520px; border-radius: 50%; border: 44px solid rgba(79, 193, 181, 0.28); }
+.thumb-art::after { content: ""; position: absolute; right: 300px; top: 10px; width: 120px; height: 120px; border-radius: 50%; background: var(--orange); }
