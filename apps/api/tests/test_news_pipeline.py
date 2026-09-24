@@ -690,3 +690,37 @@ def test_a_reply_that_failed_validation_is_not_rerun_by_rq_but_outages_are(
         except Exception as escaped:  # noqa: BLE001 - the test records what RQ would see
             raised.append(type(escaped).__name__)
     assert raised == ["ConnectError"]
+
+
+@pytest.mark.asyncio
+async def test_two_pages_of_one_website_stop_at_the_evidence_gate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        candidate = await seed_candidate(session)
+        for path in ("release", "related"):
+            session.add(
+                NewsEvidence(
+                    candidate_id=candidate.id,
+                    role="evidence",
+                    is_first_party=True,
+                    url=f"https://www.official.example/{path}",
+                    title=path,
+                    content_hash=path * 8,
+                    excerpt="Official text.",
+                )
+            )
+        await session.commit()
+        candidate_id = candidate.id
+    duplicate_check = AsyncMock()
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+    assert result == "manual_review"
+    assert stored is not None and stored.error_code == "news_evidence_insufficient"
+    # Nothing was spent on a candidate that cannot pass.
+    duplicate_check.assert_not_awaited()

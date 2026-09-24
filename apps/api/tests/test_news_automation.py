@@ -28,6 +28,8 @@ from app.news_automation.models import (
 from app.news_automation.policy import (
     content_fingerprint,
     event_date_problems,
+    evidence_site,
+    evidence_sufficient,
     gate_result,
     normalized_title,
     transition_allowed,
@@ -711,3 +713,110 @@ async def test_compressed_responses_are_decoded_exactly_once() -> None:
     assert fetched.body == feed
     assert parse_entries(fetched.body, "rss", fetched.url, {})[0].title == "Compressed release"
     await client.aclose()
+
+
+def test_pages_of_one_website_are_one_source() -> None:
+    def row(url: str, first_party: bool = False, role: str = "evidence") -> NewsEvidence:
+        return NewsEvidence(
+            role=role, url=url, is_first_party=first_party, title="t", content_hash="h", excerpt="e"
+        )
+
+    assert evidence_site("https://WWW.Apple.com/newsroom/a") == "apple.com"
+    # An announcement and its own related page: one website, not corroboration.
+    assert not evidence_sufficient(
+        [row("https://www.apple.com/newsroom/a", True), row("https://apple.com/newsroom/b", True)]
+    )
+    assert evidence_sufficient(
+        [row("https://www.apple.com/newsroom/a", True), row("https://www.theverge.com/story")]
+    )
+    # Two websites but no first-party page, or a lead-only second site.
+    assert not evidence_sufficient(
+        [row("https://www.theverge.com/story"), row("https://techcrunch.com/story")]
+    )
+    assert not evidence_sufficient(
+        [row("https://openai.com/index/a", True), row("https://lead.example/x", role="lead_only")]
+    )
+
+
+@pytest.mark.asyncio
+async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    press = NewsSource(
+        name="Press",
+        url="https://press.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/news",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = (
+        b"<rss><channel><item><title>Story</title>"
+        b"<link>https://press.example/story</link></item></channel></rss>"
+    )
+    article = (
+        b"<html><main>Report."
+        b'<a href="https://press.example/related">related</a>'
+        b'<a href="https://www.press.example/other">same site</a>'
+        b'<a href="https://press.example/wp-content/uploads/photo.JPG">photo</a>'
+        b'<a href="https://official.example/assets/chart.png">chart</a>'
+        b'<a href="https://official.example/announcement">announcement</a>'
+        b"</main></html>"
+    )
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            official = b"<html><main>Official text.</main></html>"
+            body = article if url.endswith("/story") else official
+            return FetchResult(url=url, status_code=200, content_type="text/html", body=body)
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([press, official])
+        await session.commit()
+        await scan_source(session, press.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(press)
+        evidence = sorted(await session.scalars(select(NewsEvidence.url)))
+        status = press.last_status
+    await engine.dispose()
+
+    assert requested == [
+        "https://press.example/feed",
+        "https://press.example/story",
+        "https://official.example/announcement",
+    ]
+    assert evidence == ["https://official.example/announcement", "https://press.example/story"]
+    assert status == "succeeded"
