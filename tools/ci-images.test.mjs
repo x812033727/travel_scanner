@@ -212,6 +212,22 @@ function pull({ behaviour, images = ["quay.io/minio/minio:RELEASE.2025-09-07T16-
 
 const RESET = `echo 'Error response from daemon: Get "https://quay.io/v2/": read tcp 10.1.0.253:39838->3.14.204.72:443: read: connection reset by peer' >&2; exit 1`;
 
+/** Shell that fails the first call with `message` and pulls on every call after it. */
+const failOnce = (message) => `if [ "$calls" -eq 1 ]; then echo '${message}' >&2; exit 1; fi\necho "$3"`;
+const failAlways = (message) => `echo '${message}' >&2; exit 1`;
+
+// cgr.dev on 2026-09-24, run 36021704422: the manifest was served, then the config blob came
+// back as an HTML 403 page, which dockerd prints as `denied:`. Seven other jobs pulled the same
+// digest between 15:37 and 15:40.
+const CONFIG_403 =
+  'error pulling image configuration: download failed after attempts=1: denied: <!doctype html><meta charset="utf-8"><meta name=viewport content="width=device-width, initial-scale=1"><title>403</title>403 Forbidden';
+// The same failure through the containerd image store, which prints the blob URL instead.
+const BLOB_403 =
+  "failed to copy: httpReadSeeker: failed open: unexpected status code https://cgr.dev/v2/chainguard/minio/blobs/sha256:346be9cc3f4743f7e57bce36d4037f165ab44f7a0d14920739c8839189cd36d7: 403 Forbidden";
+// quay.io on 2026-09-24, once MinIO's repositories wanted a login.
+const QUAY_401 = "Error response from daemon: unauthorized: access to the requested resource is not authorized";
+const CHAINGUARD = ["cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1"];
+
 test("pull-images.sh", { skip: bashUnavailable() }, async (t) => {
   await t.test("pulls each image once when the registry answers", () => {
     const result = pull({ behaviour: 'echo "$3"', images: ["nginx:1.28-alpine", "axllent/mailpit:latest"] });
@@ -239,6 +255,51 @@ test("pull-images.sh", { skip: bashUnavailable() }, async (t) => {
     assert.equal(result.calls.length, 1);
     assert.match(result.output, /::error::docker pull quay\.io\/minio\/minio:\S+ was refused/);
     assert.doesNotMatch(result.output, /::warning::/);
+  });
+
+  await t.test("retries a 403 on a blob or config download, though docker calls it denied", async (t) => {
+    for (const [store, message] of [
+      ["dockerd", CONFIG_403],
+      ["containerd", BLOB_403],
+    ]) {
+      await t.test(store, () => {
+        const result = pull({ behaviour: failOnce(message), images: CHAINGUARD });
+        assert.equal(result.status, 0, result.output);
+        assert.equal(result.calls.length, 2);
+        assert.ok(result.output.includes(message), "docker's own output is printed");
+        assert.match(
+          result.output,
+          /::warning::docker pull cgr\.dev\/chainguard\/minio@\S+ got a 403 on a blob download after the manifest was served \(attempt 1\/5/,
+        );
+        assert.doesNotMatch(result.output, /::error::/);
+      });
+    }
+  });
+
+  await t.test("gives up on a blob 403 that every attempt gets, and says what that means", () => {
+    const result = pull({ behaviour: failAlways(CONFIG_403), images: CHAINGUARD, env: { PULL_ATTEMPTS: "3" } });
+    assert.equal(result.status, 1, result.output);
+    assert.equal(result.calls.length, 3);
+    assert.match(result.output, /::warning::.*attempt 2\/3/);
+    assert.match(
+      result.output,
+      /::error::docker pull \S+ failed 3 times \(last exit 1\), the last a 403 on a blob download; .* stopped serving this image's content anonymously/,
+    );
+  });
+
+  await t.test("does not retry a 401, on the manifest or on a blob", async (t) => {
+    for (const [where, message] of [
+      ["manifest", QUAY_401],
+      ["blob", BLOB_403.replace("403 Forbidden", "401 Unauthorized")],
+    ]) {
+      await t.test(where, () => {
+        const result = pull({ behaviour: failAlways(message) });
+        assert.equal(result.status, 1, result.output);
+        assert.equal(result.calls.length, 1);
+        assert.match(result.output, /::error::docker pull \S+ was refused/);
+        assert.doesNotMatch(result.output, /::warning::/);
+      });
+    }
   });
 
   await t.test("gives up after PULL_ATTEMPTS transient failures", () => {

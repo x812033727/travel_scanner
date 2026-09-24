@@ -15,6 +15,15 @@
 # 2026-09-24), will not come back, and waiting would only turn a one-second failure into a
 # three-minute one.
 #
+# One kind of "denied" is retried all the same. dockerd prints any HTTP 403 as `denied: <body>`,
+# including one on a blob after the registry has already served the manifest. On 2026-09-24
+# cgr.dev answered the config blob of the pinned MinIO digest with an HTML 403 page ("error
+# pulling image configuration: download failed after attempts=1: denied: <!doctype html>...403
+# Forbidden"), while seven other jobs pulled the same digest between 15:37 and 15:40 and the
+# full-stack-smoke job of the same run pulled it 38 seconds later. So a 403 on a blob or config
+# download is retried like a 502; `unauthorized` (a 401, quay.io's answer) and a denial of the
+# manifest or token are still refusals.
+#
 # Usage: bash tools/ci/pull-images.sh IMAGE [IMAGE...]
 #   PULL_ATTEMPTS     tries per image, default 5
 #   PULL_RETRY_DELAY  base backoff in seconds, multiplied by the attempt number; default 10.
@@ -57,16 +66,32 @@ for image in "$@"; do
     if [ "$status" -eq 0 ]; then
       break
     fi
-    if grep -Eqi 'denied|unauthorized|manifest unknown|not found|repository does not exist' "$output"; then
+    # dockerd's own image store names the step ("error pulling image configuration", "download
+    # failed after attempts=N") and says `denied:`; the containerd image store prints the blob
+    # URL and `403 Forbidden`. A 401 says neither, so it stays a refusal below.
+    blob_denied=false
+    if grep -Eqi '(error pulling image configuration|download failed after attempts|/blobs/sha256:).*(denied|403 Forbidden)' "$output"; then
+      blob_denied=true
+    elif grep -Eqi 'denied|unauthorized|manifest unknown|not found|repository does not exist' "$output"; then
       echo "::error::docker pull $image was refused (exit $status); a refusal is not retried"
       exit 1
     fi
     if [ "$attempt" -ge "$attempts" ]; then
-      echo "::error::docker pull $image failed $attempts times (last exit $status)"
+      hint=""
+      if [ "$blob_denied" = true ]; then
+        # A 403 on the blobs of every attempt is the one case the manifest does not reveal: the
+        # registry no longer serving this digest's content anonymously.
+        hint=", the last a 403 on a blob download; if every attempt above got one, the registry has stopped serving this image's content anonymously"
+      fi
+      echo "::error::docker pull $image failed $attempts times (last exit $status)$hint"
       exit 1
     fi
     wait_seconds=$((attempt * delay))
-    echo "::warning::docker pull $image failed (attempt $attempt/$attempts, exit $status); retrying in ${wait_seconds}s"
+    what="failed"
+    if [ "$blob_denied" = true ]; then
+      what="got a 403 on a blob download after the manifest was served"
+    fi
+    echo "::warning::docker pull $image $what (attempt $attempt/$attempts, exit $status); retrying in ${wait_seconds}s"
     sleep "$wait_seconds"
     attempt=$((attempt + 1))
   done
