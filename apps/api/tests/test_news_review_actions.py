@@ -1,0 +1,306 @@
+"""What an editor can do with a news candidate in each state, and where the pipeline
+parks a candidate that stopped before its five-locale article existed."""
+
+from __future__ import annotations
+
+from datetime import timedelta
+from unittest.mock import AsyncMock, Mock
+from uuid import uuid4
+
+import pytest
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.config import get_settings
+from app.guides.models import GuideArticle, GuideArticleLocale
+from app.models import AdminAuditLog, User
+from app.news_automation import ai, pipeline, service
+from app.news_automation.duplicates import DUPLICATE_UNCERTAIN, closest_titles
+from app.news_automation.models import (
+    LOCALES,
+    NewsAssessment,
+    NewsAutomationSettings,
+    NewsCandidate,
+    NewsEvidence,
+)
+from app.news_automation.schemas import CandidateAction, EditorialDraft, VerificationResult
+from app.problems import AppError
+from tests.test_news_pipeline import (
+    EVENT_DAY,
+    FIRST_PARTY_URL,
+    LEAD_URL,
+    SLUG,
+    TODAY,
+    database,
+    news_document,
+    seed_candidate,
+    seed_published_news,
+)
+
+EDITOR = User(id=uuid4(), email="editor@example.com", password_hash="unused")
+ACTION = CandidateAction(reason="Checked by hand")
+STATUSES = (
+    "discovered",
+    "drafting",
+    "shadow_review",
+    "manual_review",
+    "needs_evidence",
+    "needs_redraft",
+    "published",
+    "duplicate",
+    "rejected",
+    "failed",
+)
+RETRYABLE = {"manual_review", "shadow_review", "needs_evidence", "needs_redraft", "failed"}
+REJECTABLE = RETRYABLE | {"duplicate"}
+
+
+async def add_evidence(session: AsyncSession, candidate: NewsCandidate) -> None:
+    for url, first_party in ((FIRST_PARTY_URL, True), (LEAD_URL, False)):
+        session.add(
+            NewsEvidence(
+                candidate_id=candidate.id,
+                role="evidence",
+                is_first_party=first_party,
+                url=url,
+                title="Release",
+                source_date=EVENT_DAY,
+                content_hash=("f" if first_party else "e") * 64,
+                excerpt="The model shipped today.",
+            )
+        )
+    await session.commit()
+
+
+async def add_article(session: AsyncSession, candidate: NewsCandidate) -> None:
+    article = GuideArticle(id=uuid4(), slug=SLUG, kind="life", news_date=EVENT_DAY)
+    session.add(article)
+    for locale in LOCALES:
+        session.add(
+            GuideArticleLocale(
+                article_id=article.id,
+                locale=locale,
+                draft_json=news_document(f"Edited {locale}").model_dump(mode="json"),
+            )
+        )
+    candidate.guide_article_id = article.id
+    await session.commit()
+
+
+def eligible_draft() -> EditorialDraft:
+    return EditorialDraft.model_validate(
+        {
+            "eligible": True,
+            "exclusion_reason": "",
+            "vertical": "ai",
+            "event_date": EVENT_DAY.isoformat(),
+            "slug": SLUG,
+            "topics": ["ai-news"],
+            "claims": [{"claim": "The model shipped.", "source_urls": [FIRST_PARTY_URL]}],
+            "document": news_document("模型發布").model_dump(mode="json"),
+        }
+    )
+
+
+@pytest.mark.parametrize("status", STATUSES)
+@pytest.mark.asyncio
+async def test_retry_and_reject_accept_exactly_the_statuses_a_person_can_act_on(
+    status: str,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        retried = (await seed_candidate(session, status=status)).id
+        rejected = (await seed_candidate(session, status=status)).id
+        outcomes: dict[str, str] = {}
+        for name, action, candidate_id in (
+            ("retry", service.retry_candidate, retried),
+            ("reject", service.reject_candidate, rejected),
+        ):
+            try:
+                detail = await action(session, EDITOR, candidate_id, ACTION)
+                outcomes[name] = detail.status
+            except AppError as problem:
+                await session.rollback()
+                assert problem.status == 409
+                outcomes[name] = "refused"
+    await engine.dispose()
+    assert outcomes["retry"] == ("discovered" if status in RETRYABLE else "refused")
+    assert outcomes["reject"] == ("rejected" if status in REJECTABLE else "refused")
+
+
+@pytest.mark.parametrize(
+    ("status", "error_code"),
+    [
+        ("manual_review", "news_jev_manual"),
+        ("manual_review", "news_evidence_changed"),
+        ("needs_redraft", "news_verification_failed"),
+        ("shadow_review", None),
+        ("failed", DUPLICATE_UNCERTAIN),
+    ],
+)
+@pytest.mark.asyncio
+async def test_not_a_duplicate_only_answers_an_uncertain_duplicate_check(
+    status: str, error_code: str | None
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_candidate(session, status=status)
+        candidate.error_code = error_code
+        await session.commit()
+        with pytest.raises(AppError) as refused:
+            await service.clear_duplicate_candidate(session, EDITOR, candidate.id, ACTION)
+    await engine.dispose()
+    assert refused.value.code == "news_candidate_not_duplicate_uncertain"
+
+
+@pytest.mark.asyncio
+async def test_not_a_duplicate_without_an_article_starts_a_new_draft() -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_candidate(session, status="manual_review")
+        candidate.error_code = DUPLICATE_UNCERTAIN
+        candidate.evidence_hash = "a" * 64
+        await session.commit()
+
+        detail = await service.clear_duplicate_candidate(session, EDITOR, candidate.id, ACTION)
+        answers = list(
+            await session.scalars(
+                select(NewsAssessment).where(NewsAssessment.candidate_id == candidate.id)
+            )
+        )
+        actions = list(await session.scalars(select(AdminAuditLog.action)))
+    await engine.dispose()
+    assert (detail.status, detail.error_code) == ("discovered", None)
+    assert [
+        (row.assessment_type, row.provider, row.verdict, row.evidence_hash, row.reasons_json)
+        for row in answers
+    ] == [("duplicate", "human", "pass", "a" * 64, ["Checked by hand"])]
+    assert actions == ["news_candidate_duplicate_cleared"]
+
+
+@pytest.mark.asyncio
+async def test_not_a_duplicate_with_an_article_reverifies_the_edited_drafts() -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_candidate(session, status="manual_review")
+        candidate.error_code = DUPLICATE_UNCERTAIN
+        await add_article(session, candidate)
+
+        detail = await service.clear_duplicate_candidate(session, EDITOR, candidate.id, ACTION)
+        stored = await session.get(NewsCandidate, candidate.id)
+    await engine.dispose()
+    assert detail.status == "discovered"
+    assert detail.error_code == pipeline.REVERIFY_MARKER
+    assert stored is not None
+    assert set(stored.draft_bundle_json) == set(LOCALES)
+    assert stored.draft_bundle_json["en"]["title"] == "Edited en"
+
+
+@pytest.mark.asyncio
+async def test_an_uncertain_duplicate_cleared_by_an_editor_is_not_sent_to_jev_again(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        candidate = await seed_candidate(session)
+        await add_evidence(session, candidate)
+        # Something to compare with, or the check is skipped as trivially distinct.
+        await seed_published_news(
+            session, "ai-news-earlier-release-20260901", TODAY, {"en": "An earlier release"}
+        )
+        candidate_id = candidate.id
+
+    duplicate_check = AsyncMock(return_value=("manual", 0.5, ["semantic_duplicate_uncertain"]))
+    draft = AsyncMock(return_value=(eligible_draft(), {}, "writer"))
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    monkeypatch.setattr(ai, "draft_article", draft)
+    monkeypatch.setattr(
+        ai,
+        "verify_article",
+        AsyncMock(return_value=(VerificationResult(verdict="manual"), {}, "checker")),
+    )
+
+    async with factory() as session:
+        first = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        held = await session.get(NewsCandidate, candidate_id)
+        assert held is not None
+        assert (first, held.error_code) == ("manual_review", DUPLICATE_UNCERTAIN)
+        await service.clear_duplicate_candidate(session, EDITOR, candidate_id, ACTION)
+    async with factory() as session:
+        second = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+    await engine.dispose()
+
+    duplicate_check.assert_awaited_once()
+    draft.assert_awaited_once()
+    # It went on to the draft and stopped at verification, which has no article yet.
+    assert second == "needs_redraft"
+
+
+@pytest.mark.parametrize(
+    ("has_article", "expected"), [(False, "needs_redraft"), (True, "manual_review")]
+)
+@pytest.mark.asyncio
+async def test_a_verifier_rejection_waits_for_a_redraft_unless_an_article_can_be_fixed(
+    monkeypatch: pytest.MonkeyPatch, has_article: bool, expected: str
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        candidate = await seed_candidate(session)
+        await add_evidence(session, candidate)
+        if has_article:
+            await add_article(session, candidate)
+        candidate_id = candidate.id
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.0, []))
+    )
+    monkeypatch.setattr(
+        ai, "draft_article", AsyncMock(return_value=(eligible_draft(), {}, "writer"))
+    )
+    monkeypatch.setattr(
+        ai,
+        "verify_article",
+        AsyncMock(return_value=(VerificationResult(verdict="manual"), {}, "checker")),
+    )
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+    assert result == expected
+    assert stored is not None
+    assert (stored.status, stored.error_code) == (expected, "news_verification_failed")
+
+
+@pytest.mark.asyncio
+async def test_the_detail_lists_the_closest_titles_only_while_a_duplicate_is_uncertain() -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        yesterday = TODAY - timedelta(days=1)
+        for index, title in enumerate(
+            ("Chip maker opens a factory", "Model release notes", "Weather satellite launch")
+        ):
+            await seed_published_news(
+                session, f"ai-news-story-{index}-{yesterday:%Y%m%d}", yesterday, {"en": title}
+            )
+        waiting = await seed_candidate(session, status="manual_review")
+        waiting.error_code = DUPLICATE_UNCERTAIN
+        held = await seed_candidate(session, status="manual_review")
+        held.error_code = "news_jev_manual"
+        await session.commit()
+
+        waiting_detail = await service.candidate_detail(session, waiting.id)
+        held_detail = await service.candidate_detail(session, held.id)
+    await engine.dispose()
+    # seed_candidate titles every candidate "Model release", the held one included.
+    assert waiting_detail.similar_titles[:2] == ["Model release", "Model release notes"]
+    assert held_detail.similar_titles == []
+
+
+def test_closest_titles_rank_by_likeness_and_ignore_case() -> None:
+    titles = ["Weather report", "OPENAI SHIPS A NEW MODEL", "OpenAI ships new models to Europe"]
+    assert closest_titles("OpenAI ships a new model", titles, limit=2) == [
+        "OPENAI SHIPS A NEW MODEL",
+        "OpenAI ships new models to Europe",
+    ]

@@ -45,8 +45,14 @@ export type NewsSettings = {
   updated_at: string;
 };
 
+export const newsCandidateStatuses = [
+  "discovered", "drafting", "verifying", "locale_review", "jev_review", "shadow_review",
+  "manual_review", "needs_evidence", "needs_redraft", "published", "duplicate", "rejected", "failed",
+] as const;
+export type NewsCandidateStatus = typeof newsCandidateStatuses[number];
+
 export type NewsCandidateSummary = {
-  id: string; vertical: NewsVertical; status: string; source_title: string; canonical_url: string;
+  id: string; vertical: NewsVertical; status: NewsCandidateStatus; source_title: string; canonical_url: string;
   event_date: string | null; would_publish: boolean | null; human_decision: "publish" | "reject" | null;
   error_code: string | null; error_detail: string | null; guide_article_id: string | null;
   created_at: string; updated_at: string;
@@ -78,6 +84,8 @@ export type NewsCandidate = NewsCandidateSummary & {
   evidence: NewsEvidence[]; assessments: NewsAssessment[]; runs: NewsRun[];
   documents: Partial<Record<NewsLocale, GuideDocument>>; claim_ledger: Array<Record<string, unknown>>;
   lint: Record<string, string[]>; human_reason: string | null; human_major_error: boolean;
+  // The closest known titles, filled only while a duplicate check waits for an editor.
+  similar_titles?: string[];
 };
 
 export type NewsStats = {

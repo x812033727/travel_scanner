@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-keep-every-news-review-item-reachable
 title: Keep every news review item reachable in the admin queue
-status: open
+status: done
 priority: P2
 area: web
 owner:
 claimed_at:
 created_at: 2026-09-24T00:27:56Z
-completed_at:
+completed_at: 2026-09-24T11:22:09Z
 branch:
 depends_on: []
 scope:
@@ -30,15 +30,15 @@ shadow period with hourly scans this happens within days.
 
 ## Definition of done
 
-- [ ] The review list shows every candidate that needs a person, however many other
+- [x] The review list shows every candidate that needs a person, however many other
       candidates exist, with paging.
-- [ ] Status filters (review, failed, published, duplicate/rejected) are available and
+- [x] Status filters (review, failed, published, duplicate/rejected) are available and
       survive a reload through the URL, like the other admin workspaces.
 
 ## Steps
 
-- [ ] Accept several statuses in `GET /admin/news/candidates` (e.g. repeated `status`).
-- [ ] Request the reviewable statuses from the workspace and add paging and filters.
+- [x] Accept several statuses in `GET /admin/news/candidates` (e.g. repeated `status`).
+- [x] Request the reviewable statuses from the workspace and add paging and filters.
 
 ## How to verify
 
@@ -56,3 +56,8 @@ npm run test:web -- admin-news-workspace
 
 - Found while hardening the news automation (task
   2026-09-24-harden-hourly-news-automation-before-first).
+- 2026-09-24 done inside task 2026-09-24-make-the-news-review-queue-actionable: every
+  list pages 50 rows at a time with 上一頁／下一頁, the page kept in `?page=` and reset
+  when the list changes; the filters are 待審查 / 需重寫 / 缺證據 / 已發布 / 已退件 in
+  `?queue=`. No API change was needed: `GET /admin/news/candidates` already took `page`
+  and repeated `status`.

@@ -15,13 +15,17 @@ from app.guides.models import (
     GuideArticleLocale,
     GuideArticleRevision,
     GuideArticleTopic,
-    GuideSearchEntry,
     GuideTopic,
 )
 from app.guides.schemas import GuideDocument, SourceRef
 from app.i18n import Locale
 from app.news_automation import ai
 from app.news_automation.assets import ensure_assets, mark_assets_public
+from app.news_automation.duplicates import (
+    DUPLICATE_UNCERTAIN,
+    cleared_by_editor,
+    known_titles,
+)
 from app.news_automation.fetch import RedisHostRateLimiter
 from app.news_automation.models import (
     LOCALES,
@@ -58,8 +62,6 @@ MAX_AUTOMATIC_RECOVERIES = 2
 # A discovered candidate this old with the switch on was never picked up: the switch was
 # off when its job ran, or the enqueue after the scan failed.
 ORPHAN_AFTER = timedelta(hours=2)
-# Published news the duplicate check compares against.
-DUPLICATE_WINDOW = timedelta(days=30)
 TOPIC_BY_VERTICAL = {"ai": "ai-news", "tech": "tech-news", "crypto": "crypto"}
 TARGET_LOCALES: tuple[Locale, ...] = ("zh-CN", "en", "ja", "ko")
 TOPIC_LINK_TEXT: dict[Locale, str] = {
@@ -124,7 +126,26 @@ async def _finish_run(
 
 
 async def _manual(session: AsyncSession, candidate: NewsCandidate, code: str, detail: str) -> None:
-    candidate.status = "manual_review"
+    await _hold(session, candidate, "manual_review", code, detail)
+
+
+async def _needs_redraft(
+    session: AsyncSession, candidate: NewsCandidate, code: str, detail: str
+) -> None:
+    """Stop before the five-locale article exists: an editor has nothing to publish or
+    fix here, only a new draft or a rejection, so it stays out of manual review.
+
+    A re-verified candidate already has its article, which the editor can fix in the
+    guide editor and verify again, so that one still goes to manual review."""
+
+    status = "manual_review" if candidate.guide_article_id is not None else "needs_redraft"
+    await _hold(session, candidate, status, code, detail)
+
+
+async def _hold(
+    session: AsyncSession, candidate: NewsCandidate, status: str, code: str, detail: str
+) -> None:
+    candidate.status = status
     candidate.error_code = code
     candidate.error_detail = detail[:4000]
     await session.commit()
@@ -210,44 +231,6 @@ def _topic_linked(document: GuideDocument, vertical: str, locale: Locale) -> Gui
             LinkBlock(type="link", text=TOPIC_LINK_TEXT[locale], url=target).model_dump(mode="json")
         )
     return GuideDocument.model_validate(encoded)
-
-
-async def _known_titles(session: AsyncSession, candidate: NewsCandidate) -> list[str]:
-    """Recent news titles of the same vertical: published articles first, including the
-    ones written by hand, then other automation candidates."""
-
-    cutoff = datetime.now(UTC).date() - DUPLICATE_WINDOW
-    published: dict[UUID, str] = {}
-    rows = await session.execute(
-        select(GuideSearchEntry.article_id, GuideSearchEntry.locale, GuideSearchEntry.title)
-        .join(GuideArticle, GuideArticle.id == GuideSearchEntry.article_id)
-        .where(
-            GuideArticle.slug.like(f"{candidate.vertical}-news-%"),
-            GuideArticle.is_active.is_(True),
-            GuideArticle.news_date >= cutoff,
-            GuideSearchEntry.locale.in_(("en", "zh-TW")),
-        )
-        .order_by(GuideArticle.news_date.desc(), GuideArticle.id)
-        .limit(80)
-    )
-    for article_id, locale, title in rows:
-        if article_id == candidate.guide_article_id:
-            continue
-        # Sources are mostly English, so the English title is the closer comparison.
-        if locale == "en" or article_id not in published:
-            published[article_id] = title
-    candidates = await session.scalars(
-        select(NewsCandidate.source_title)
-        .where(
-            NewsCandidate.id != candidate.id,
-            NewsCandidate.vertical == candidate.vertical,
-            NewsCandidate.status.in_(("manual_review", "shadow_review", "published")),
-        )
-        .order_by(NewsCandidate.created_at.desc())
-        .limit(30)
-    )
-    titles = list(dict.fromkeys([*list(published.values())[:40], *candidates]))
-    return titles[: ai.MAX_DUPLICATE_TITLES]
 
 
 async def _save_guide_bundle(
@@ -386,32 +369,35 @@ async def process_candidate(
             await session.commit()
             return "needs_evidence"
 
-        recent_titles = await _known_titles(session, candidate)
-        duplicate, confidence, duplicate_reasons = await ai.jev_duplicate_check(
-            redis,
-            environment,
-            candidate.source_title,
-            "\n".join(row.excerpt for row in evidence),
-            recent_titles,
-        )
-        session.add(
-            NewsAssessment(
-                candidate_id=candidate.id,
-                assessment_type="duplicate",
-                verdict="duplicate"
-                if duplicate == "duplicate"
-                else "manual"
-                if duplicate == "manual"
-                else "pass",
-                confidence=confidence,
-                provider="jev",
-                model=environment.jev_model,
-                reasons_json=duplicate_reasons,
-                details_json={},
-                evidence_hash=candidate.evidence_hash,
-                prompt_version=candidate.prompt_version,
+        if await cleared_by_editor(session, candidate):
+            # An editor already answered an uncertain check for this evidence.
+            duplicate = "distinct"
+        else:
+            duplicate, confidence, duplicate_reasons = await ai.jev_duplicate_check(
+                redis,
+                environment,
+                candidate.source_title,
+                "\n".join(row.excerpt for row in evidence),
+                await known_titles(session, candidate),
             )
-        )
+            session.add(
+                NewsAssessment(
+                    candidate_id=candidate.id,
+                    assessment_type="duplicate",
+                    verdict="duplicate"
+                    if duplicate == "duplicate"
+                    else "manual"
+                    if duplicate == "manual"
+                    else "pass",
+                    confidence=confidence,
+                    provider="jev",
+                    model=environment.jev_model,
+                    reasons_json=duplicate_reasons,
+                    details_json={},
+                    evidence_hash=candidate.evidence_hash,
+                    prompt_version=candidate.prompt_version,
+                )
+            )
         if duplicate == "duplicate":
             candidate.status = "duplicate"
             _clear_reverify_marker(candidate)
@@ -421,7 +407,7 @@ async def process_candidate(
             await _manual(
                 session,
                 candidate,
-                "news_duplicate_uncertain",
+                DUPLICATE_UNCERTAIN,
                 "Semantic duplicate check was uncertain.",
             )
             return "manual_review"
@@ -473,14 +459,14 @@ async def process_candidate(
                 }
             )
             if unsupported_claim_urls:
-                await _manual(
+                await _needs_redraft(
                     session,
                     candidate,
                     "news_claim_source_invalid",
                     "Claim ledger cited non-evidence URLs: "
                     + "; ".join(unsupported_claim_urls[:5]),
                 )
-                return "manual_review"
+                return candidate.status
             document = _source_locked(draft.document, evidence)
             draft_slug = draft.slug
             draft_event_date = draft.event_date
@@ -494,13 +480,13 @@ async def process_candidate(
             ],
         )
         if date_problems:
-            await _manual(
+            await _needs_redraft(
                 session,
                 candidate,
                 "news_event_date_invalid",
                 "; ".join(date_problems),
             )
-            return "manual_review"
+            return candidate.status
         candidate.status = "verifying"
         await session.commit()
 
@@ -544,13 +530,13 @@ async def process_candidate(
             await session.commit()
             break
         if not verification_passed:
-            await _manual(
+            await _needs_redraft(
                 session,
                 candidate,
                 "news_verification_failed",
                 "Independent verification did not pass.",
             )
-            return "manual_review"
+            return candidate.status
 
         candidate.status = "locale_review"
         await session.commit()
@@ -654,13 +640,13 @@ async def process_candidate(
                 break
             documents[locale] = localized
             if not locale_passed:
-                await _manual(
+                await _needs_redraft(
                     session,
                     candidate,
                     "news_locale_review_failed",
                     f"{locale} review did not pass.",
                 )
-                return "manual_review"
+                return candidate.status
 
         documents = await ensure_assets(session, candidate, documents)
         problems: dict[str, list[str]] = {
@@ -677,13 +663,13 @@ async def process_candidate(
             locale: item.model_dump(mode="json") for locale, item in documents.items()
         }
         if any(problems.values()):
-            await _manual(
+            await _needs_redraft(
                 session,
                 candidate,
                 "news_hard_checks_failed",
                 "One or more locales failed hard checks.",
             )
-            return "manual_review"
+            return candidate.status
 
         article, versions = await _save_guide_bundle(
             session, candidate, draft_slug, draft_event_date, documents
@@ -799,6 +785,8 @@ async def process_candidate(
             "published",
             "manual_review",
             "shadow_review",
+            "needs_evidence",
+            "needs_redraft",
             "duplicate",
             "rejected",
         }:

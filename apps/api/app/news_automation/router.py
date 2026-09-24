@@ -138,6 +138,16 @@ async def verify_candidate(
     return result
 
 
+@admin_router.post("/candidates/{candidate_id}/not-duplicate", response_model=CandidateDetail)
+async def clear_duplicate_candidate(
+    candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
+) -> CandidateDetail:
+    result = await service.clear_duplicate_candidate(session, user, candidate_id, payload)
+    row = await session.get(NewsCandidate, candidate_id)
+    jobs.enqueue_candidate(candidate_id, retry_count=row.retry_count if row else 0)
+    return result
+
+
 @admin_router.post("/candidates/{candidate_id}/reject", response_model=CandidateDetail)
 async def reject_candidate(
     candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
