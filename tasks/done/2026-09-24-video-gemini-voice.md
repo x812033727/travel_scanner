@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-gemini-voice
 title: 影片旁白加上 Gemini 語音：用網站的 Gemini 金鑰合成、可指定語氣
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T07:31:27Z
 created_at: 2026-09-24T07:31:25Z
-completed_at:
+completed_at: 2026-09-24T07:47:19Z
 branch: claude/video-gemini
 depends_on: []
 scope:
