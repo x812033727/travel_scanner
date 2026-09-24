@@ -104,10 +104,14 @@ reply, and the dropped bounds are written into the field descriptions.
 
 ## When a job dies
 
-A candidate's job has a 60-minute RQ timeout, and a deploy restarts the worker. A
-candidate left in `drafting`, `verifying`, `locale_review` or `jev_review` for more than
-70 minutes is marked `failed` with `news_processing_stale` (a `stale-recovery` run is
-recorded) and re-queued, at most twice; after that it waits for 「重新執行」. A stalled
+Every deploy restarts the worker, which cuts off the candidate it was working on. When
+the news worker starts, every candidate still in `drafting`, `verifying`, `locale_review`
+or `jev_review` is marked `failed` with `news_processing_stale` (a `stale-recovery` run is
+recorded) and re-queued at once: there is one news worker, so nothing can still be
+running. The scheduler applies the same recovery to anything in flight for more than 70
+minutes (the job timeout is 60). A candidate is re-queued this way at most twice; after
+that it waits for 「重新執行」. Until it is recovered, an interrupted candidate holds a
+concurrency slot, and with both slots held every other candidate only defers. A stalled
 re-verification keeps its marker, so the rerun re-checks the edited drafts instead of
 writing new ones. `discovered` candidates older than two hours are re-queued while the
 scanner is enabled.
