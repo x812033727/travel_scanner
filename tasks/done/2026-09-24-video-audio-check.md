@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-audio-check
 title: 旁白自動檢查：Gemini 轉寫每句、Jev 判斷有沒有唸錯
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T10:43:09Z
 created_at: 2026-09-24T10:43:08Z
-completed_at:
+completed_at: 2026-09-24T10:57:04Z
 branch: claude/video-audio-check
 depends_on: []
 scope:
