@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-render-slides
 title: 影片產線 T3：Mokaair 深色投影片版型與 Playwright 截圖
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T01:06:48Z
 created_at: 2026-09-24T00:41:03Z
-completed_at:
+completed_at: 2026-09-24T01:51:46Z
 branch: claude/video-render-slides
 depends_on:
   - 2026-09-24-video-tooling-core
