@@ -139,6 +139,8 @@ async def test_responses_adapter_repairs_invalid_json_once(
         if calls == 1:
             return httpx.Response(200, json={"output_text": "not-json"})
         assert "Repair the previous invalid JSON" in body["input"]
+        # The retry says what failed, not only that something did.
+        assert "Invalid JSON" in body["input"]
         return httpx.Response(
             200,
             json={

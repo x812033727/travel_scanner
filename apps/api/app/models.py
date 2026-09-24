@@ -2156,6 +2156,25 @@ class ProviderConfig(Timestamped, Base):
     last_test_message: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
+class VideoToolToken(Timestamped, Base):
+    """A credential the local video pipeline presents to synthesize narration, and nothing else.
+
+    Only the SHA-256 of the token is stored; the owner sees the token once, when it is made.
+    """
+
+    __tablename__ = "video_tool_tokens"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    name: Mapped[str] = mapped_column(String(80))
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    # The first characters of the token, so the list can tell tokens apart.
+    token_prefix: Mapped[str] = mapped_column(String(16))
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    last_used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
 class SitePage(Timestamped, Base):
     __tablename__ = "site_pages"
     __table_args__ = (

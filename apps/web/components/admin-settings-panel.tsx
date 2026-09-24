@@ -11,6 +11,7 @@ import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigat
 import { adminSettingsCopy } from "@/lib/admin-settings-copy";
 import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
+import { VideoToolTokens } from "@/components/video-tool-tokens";
 import { domainSettingsDependencies, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
 
 type Scalar = string | number | boolean;
@@ -107,6 +108,7 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   ai_planner: "ai",
   ai_guide_search: "ai",
   hotspot_intros: "ai",
+  azure_speech: "ai",
   google_maps: "maps",
   naver_maps: "maps",
   navitime: "maps",
@@ -246,6 +248,10 @@ const fieldMeta: Record<string, FieldMeta> = {
   travel_impact_cache_ttl_seconds: { localized: true, type: "number" },
   navitime_api_base_url: { localized: true, type: "url" },
   navitime_monthly_request_limit: { localized: true, type: "number" },
+  azure_speech_region: { localized: true },
+  azure_speech_voices: { localized: true },
+  azure_speech_monthly_character_limit: { localized: true, type: "number" },
+  azure_speech_timeout_seconds: { localized: true, type: "number" },
   ekispert_api_base_url: { localized: true, type: "url" },
   ekispert_search_type: { localized: true, options: [{ value: "plain" }, { value: "departure" }] },
   ekispert_monthly_request_limit: { localized: true, type: "number" },
@@ -301,6 +307,7 @@ const secretLabels: Record<string, { label?: string; help?: string; localized?: 
   anthropic_api_key: { localized: true },
   minimax_api_key: { localized: true },
   jev_api_key: { localized: true },
+  azure_speech_key: { localized: true },
   google_maps_api_key: { localized: true },
   next_public_google_maps_browser_key: { localized: true },
   naver_maps_client_id: { localized: true },
@@ -384,13 +391,15 @@ const auditActionKeys: Record<string, string> = {
   system_settings_updated: "system_settings_updated",
   provider_settings_updated: "provider_settings_updated",
   provider_connection_tested: "provider_connection_tested",
+  video_tool_token_created: "video_tool_token_created",
+  video_tool_token_revoked: "video_tool_token_revoked",
   "admin_role.updated": "admin_role_updated",
 };
 function auditActionName(t: Translator, action: string): string {
   const key = auditActionKeys[action];
   return key ? t(`settingsPanel.auditActions.${key}`) : action;
 }
-const usageOperationKeys = new Set(["places_autocomplete", "place_details", "places_text_search", "places_photo", "routes", "weather_current", "weather_daily_forecast", "local_search", "geocode", "directions", "route_transit", "search_course", "search_pub_trans_path", "search_list", "videos_list"]);
+const usageOperationKeys = new Set(["places_autocomplete", "place_details", "places_text_search", "places_photo", "routes", "weather_current", "weather_daily_forecast", "local_search", "geocode", "directions", "route_transit", "search_course", "search_pub_trans_path", "search_list", "videos_list", "synthesis"]);
 function usageOperationName(t: Translator, operation: string): string {
   return usageOperationKeys.has(operation) ? t(`settingsPanel.usageOperations.${operation}`) : operation;
 }
@@ -559,7 +568,7 @@ const navitimeUsageTone: UsageTone = { border: "border-sky-200", bg: "bg-sky-50"
 const ekispertUsageTone: UsageTone = { border: "border-indigo-200", bg: "bg-indigo-50", text: "text-indigo-800", bar: "bg-indigo-600", tableBorder: "border-indigo-100" };
 const odsayUsageTone: UsageTone = { border: "border-fuchsia-200", bg: "bg-fuchsia-50", text: "text-fuchsia-800", bar: "bg-fuchsia-600", tableBorder: "border-fuchsia-100" };
 
-function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, progressLabel, limitLabel, remainingLabel, note, tone, period = "month" }: {
+function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, progressLabel, limitLabel, remainingLabel, note, tone, period = "month", unit }: {
   usage: ProviderUsage;
   refreshing: boolean;
   onRefresh: () => void;
@@ -571,25 +580,29 @@ function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, pro
   note: string;
   tone: UsageTone;
   period?: "month" | "day";
+  // What `used` counts when it is not requests, e.g. billable characters for speech.
+  unit?: string;
 }) {
   const t = useTranslations("admin");
   const { numberFormat } = useFormatters();
+  const unitLabel = unit ?? t("settingsPanel.siteRequests");
+  const countLabel = unit ?? t("settingsPanel.periodRequests", { period: t(period === "day" ? "settingsPanel.periodDay" : "settingsPanel.periodMonth") });
   const hasLimit = usage.monthly_limit > 0;
   const width = hasLimit ? Math.min(100, Math.max(0, usage.percentage || 0)) : 0;
   return <div className={`mt-6 rounded-2xl border ${tone.border} ${tone.bg} p-5`} aria-label={ariaLabel}>
     <div className="flex flex-wrap items-start justify-between gap-4">
-      <div><p className={`flex items-center gap-2 text-sm font-bold ${tone.text}`}><Gauge size={17} />{title}</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">{t("settingsPanel.siteRequests")}</span></p> : <p className="mt-2 font-semibold text-amber-800">{t("settingsPanel.usageUnavailable")}</p>}</div>
+      <div><p className={`flex items-center gap-2 text-sm font-bold ${tone.text}`}><Gauge size={17} />{title}</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">{unitLabel}</span></p> : <p className="mt-2 font-semibold text-amber-800">{t("settingsPanel.usageUnavailable")}</p>}</div>
       <button type="button" onClick={onRefresh} disabled={refreshing} className={`flex items-center gap-2 rounded-xl border ${tone.border} bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50`}><RefreshCw size={15} className={refreshing ? "animate-spin" : ""} />{t("settingsPanel.refreshUsage")}</button>
     </div>
     {usage.available && <>
       <dl className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{t("settingsPanel.periodRequests", { period: t(period === "day" ? "settingsPanel.periodDay" : "settingsPanel.periodMonth") })}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{countLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
         <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{limitLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.monthly_limit) : t("settingsPanel.notSet")}</dd></div>
         <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{remainingLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.remaining || 0) : "—"}</dd></div>
       </dl>
       {hasLimit && <div className="mt-4 h-2 overflow-hidden rounded-full bg-white" role="progressbar" aria-label={progressLabel} aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={Math.min(usage.used || 0, usage.monthly_limit)}><div className={`h-full rounded-full ${(usage.percentage || 0) >= 100 ? "bg-red-500" : (usage.percentage || 0) >= 75 ? "bg-amber-500" : tone.bar}`} style={{ width: `${width}%` }} /></div>}
       <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">{t("settingsPanel.breakdown")}</summary><dl className="mt-3 grid gap-2 sm:grid-cols-3">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-xs text-[var(--muted)]">{usageOperationName(t, operation)}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
-      {usage.monthly_history.length > 0 && <div className={`mt-4 overflow-x-auto rounded-xl border ${tone.tableBorder} bg-white`}><table className="admin-responsive-table min-w-[32rem] w-full text-left text-sm"><thead className={`${tone.bg} text-xs text-[var(--muted)]`}><tr><th className="px-3 py-2 font-semibold">{t("settingsPanel.thMonth")}</th><th className="px-3 py-2 font-semibold">{t("settingsPanel.thRequests")}</th><th className="px-3 py-2 font-semibold">{limitLabel}</th><th className="px-3 py-2 font-semibold">{t("settingsPanel.thRemaining")}</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td data-label={t("settingsPanel.thRequests")} className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td data-label={limitLabel} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td data-label={t("settingsPanel.thRemaining")} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>}
+      {usage.monthly_history.length > 0 && <div className={`mt-4 overflow-x-auto rounded-xl border ${tone.tableBorder} bg-white`}><table className="admin-responsive-table min-w-[32rem] w-full text-left text-sm"><thead className={`${tone.bg} text-xs text-[var(--muted)]`}><tr><th className="px-3 py-2 font-semibold">{t("settingsPanel.thMonth")}</th><th className="px-3 py-2 font-semibold">{unit ?? t("settingsPanel.thRequests")}</th><th className="px-3 py-2 font-semibold">{limitLabel}</th><th className="px-3 py-2 font-semibold">{t("settingsPanel.thRemaining")}</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td data-label={unit ?? t("settingsPanel.thRequests")} className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td data-label={limitLabel} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td data-label={t("settingsPanel.thRemaining")} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>}
     </>}
     <p className="mt-4 text-xs leading-5 text-[var(--muted)]">{note}</p>
   </div>;
@@ -608,6 +621,13 @@ function NavitimeUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; 
 function EkispertUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
   const t = useTranslations("admin");
   return <MonthlyUsagePanel {...props} title={t("settingsPanel.ekispertTitle")} ariaLabel={t("settingsPanel.ekispertAria")} progressLabel={t("settingsPanel.ekispertProgress")} limitLabel={t("settingsPanel.monthlyCap")} remainingLabel={t("settingsPanel.capRemaining")} tone={ekispertUsageTone} note={t("settingsPanel.ekispertNote")} />;
+}
+
+const azureSpeechUsageTone: UsageTone = { border: "border-teal-200", bg: "bg-teal-50", text: "text-teal-800", bar: "bg-teal-600", tableBorder: "border-teal-100" };
+
+function AzureSpeechUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
+  const t = useTranslations("admin");
+  return <MonthlyUsagePanel {...props} title={t("settingsPanel.azureSpeechTitle")} ariaLabel={t("settingsPanel.azureSpeechAria")} progressLabel={t("settingsPanel.azureSpeechProgress")} limitLabel={t("settingsPanel.monthlyCap")} remainingLabel={t("settingsPanel.capRemaining")} tone={azureSpeechUsageTone} note={t("settingsPanel.azureSpeechNote")} unit={t("settingsPanel.billableCharacters")} />;
 }
 
 function OdsayUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
@@ -1072,6 +1092,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         {provider.provider === "navitime" && usage && <NavitimeUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "ekispert" && usage && <EkispertUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "odsay" && usage && <OdsayUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "azure_speech" && usage && <AzureSpeechUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "azure_speech" && <VideoToolTokens canManage={manage.allowed} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         <fieldset disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="min-w-0 disabled:opacity-70">

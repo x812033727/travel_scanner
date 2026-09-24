@@ -544,6 +544,22 @@
     "hotspot_guide_gemini_model": {
       "label": "Gemini 模型",
       "help": "Flash 級能產生景點候選名單，但接地列出文章來源時較弱；Pro 級對新申請的金鑰可能不可用，請以連線測試結果為準。"
+    },
+    "azure_speech_region": {
+      "label": "區域",
+      "help": "建立 Speech 資源時選的 Azure 區域代碼，例如 eastasia（東亞）；金鑰與區域要來自同一個資源。"
+    },
+    "azure_speech_voices": {
+      "label": "允許的聲音",
+      "help": "影片工具可以使用的聲音，以逗號分隔。台灣口音：zh-TW-HsiaoChenNeural、zh-TW-YunJheNeural、zh-TW-HsiaoYuNeural；多語聲音會自動改講台灣國語。"
+    },
+    "azure_speech_monthly_character_limit": {
+      "label": "每月計費字元上限",
+      "help": "以 UTC 按月計算；一個中文字算兩個字元，SSML 標記也算。預設 450,000，低於免費層的 500,000；0 表示只計數不限制。"
+    },
+    "azure_speech_timeout_seconds": {
+      "label": "單次合成逾時（秒）",
+      "help": "伺服器等 Azure 回傳一段旁白的最長時間。"
     }
   },
   "hotspotTabs": {
@@ -1351,6 +1367,10 @@
     "hotspot_guide_gemini_api_key": {
       "label": "Gemini API Key",
       "help": "用於多語文章搜尋與景點候選名單產生；只在伺服器端加密保存。"
+    },
+    "azure_speech_key": {
+      "label": "Speech 金鑰",
+      "help": "Azure 入口網站 → Speech 資源 → 金鑰與端點的「金鑰 1」。只存在伺服器，不會傳給影片工具。"
     }
   },
   "settingsPanel": {
@@ -1364,7 +1384,9 @@
       "system_settings_updated": "更新系統設定",
       "provider_settings_updated": "更新供應商設定",
       "provider_connection_tested": "執行連線測試",
-      "admin_role_updated": "更新管理員權限"
+      "admin_role_updated": "更新管理員權限",
+      "video_tool_token_created": "建立影片工具權杖",
+      "video_tool_token_revoked": "撤銷影片工具權杖"
     },
     "usageOperations": {
       "places_autocomplete": "地點自動完成",
@@ -1381,7 +1403,8 @@
       "search_course": "Ekispert 路線查詢",
       "search_pub_trans_path": "ODsay 大眾運輸查詢",
       "search_list": "影片搜尋（search.list）",
-      "videos_list": "影片詳細資料（videos.list）"
+      "videos_list": "影片詳細資料（videos.list）",
+      "synthesis": "合成請求"
     },
     "googleUsageLabel": "Google Maps 本月用量",
     "googleUsageTitle": "Google API 每月用量",
@@ -1479,7 +1502,12 @@
     "auditSystemHint": "只記錄異動欄位、操作者與公開註冊結果，不記錄敏感設定內容。",
     "auditProviderHint": "只記錄變更欄位名稱、操作者與測試結果，不記錄金鑰內容。",
     "auditEmpty": "尚無管理操作紀錄。",
-    "testResult": "{message}（{latency} ms）"
+    "testResult": "{message}（{latency} ms）",
+    "azureSpeechTitle": "Azure 語音本月用量",
+    "azureSpeechAria": "Azure 語音本月計費字元",
+    "azureSpeechProgress": "Azure 語音月用量",
+    "azureSpeechNote": "以 UTC 按月統計伺服器送出的計費字元（每個中文字算兩個，含 SSML 標記）；Azure 拒絕的請求會退回。實際帳單以 Azure 入口網站為準。",
+    "billableCharacters": "計費字元"
   },
   "uiText": {
     "eyebrow": "SYSTEM ADMIN",
@@ -1854,5 +1882,28 @@
       "no_result": "找不到結果",
       "not_found": "店家不存在"
     }
+  },
+  "videoTools": {
+    "title": "影片工具權杖",
+    "intro": "本機的影片工具帶著這組權杖，請伺服器用上面的金鑰合成旁白。權杖只能用來合成語音，可以隨時撤銷；伺服器只存它的雜湊值。",
+    "nameLabel": "名稱",
+    "namePlaceholder": "例如：我的筆電",
+    "create": "建立權杖",
+    "creating": "建立中…",
+    "createdTitle": "新的權杖只會顯示這一次",
+    "createdHelp": "複製後，在本機執行影片工具的 login 指令並貼上。離開這個頁面後就看不到了。",
+    "copy": "複製",
+    "copied": "已複製",
+    "dismiss": "我已經存好了",
+    "empty": "還沒有權杖。",
+    "prefix": "開頭",
+    "createdAt": "建立於",
+    "lastUsed": "最後使用",
+    "never": "尚未使用",
+    "revoked": "已撤銷",
+    "revoke": "撤銷",
+    "confirmRevoke": "確定撤銷",
+    "cancel": "取消",
+    "loadFailed": "無法載入權杖清單"
   }
 }
