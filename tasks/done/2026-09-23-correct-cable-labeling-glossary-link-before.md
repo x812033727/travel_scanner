@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-correct-cable-labeling-glossary-link-before
 title: Correct cable labeling glossary link before localization
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-cable-source-correction
 claimed_at: 2026-09-23T11:02:46Z
 created_at: 2026-09-23T10:40:33Z
-completed_at:
+completed_at: 2026-09-24T05:23:52Z
 branch: codex/fix-cable-label-glossary-link
 depends_on: []
 scope:
@@ -50,3 +50,12 @@ The separate household-inventory candidate is article v2 / zh-TW v6; do not gene
 - Independent review: `cable-source-correction/independent-review-v1/receipt-pass.json`, SHA256 `1de9a3d614cc2621d4edf702c51bc6126d6f6511344a2fe5c8e25fafe89e466c`. The existing source-correction validator accepted the bound approval and rejected ten stale, extra-change or unpublished-edit variants. Actual inline materialization was checked with mocked database boundaries; it retains the relevant gadget article link and drops the removed Token relation.
 - Compatible correction approval: `source-correction-approval.json`, SHA256 `599af8ad587bd6ca8dbc0f2529e9fe225eea2170443b992db51250bf8100e479`. The optional standalone `pack_cli autolink` command is not part of import/publication and must not be applied to this corrected pack.
 - Pending: PR/CI, actual guarded publication through existing revision services, and fresh public source verification. Recheck the full live row immediately before any source write. Do not translate this article from the old baseline.
+
+### 2026-09-24 標記完成（由站主授權，非原持有者）
+
+站主在對話中指示由 Claude 結案這張票（原持有者 `codex-cable-source-correction`），並選擇「結案＋另開發布票」。
+
+- repo 端已完成：PR #690 合併為 `b626f310`（2026-09-23 14:11 UTC）。它就是上面四個已勾項目的成果，只改了 `/blocks/2/inlines/1`。
+- 正式站**尚未**修正：2026-09-24 05:00 UTC 查 `GET https://mokaair.com/api/travel/guides/life/desk-cable-charging-organization?locale=zh-TW`，`document.blocks[2].inlines[1]` 仍是 `{"type":"article","text":"標記","kind":"life","slug":"ai-term-token"}`，`article_links` 仍含 `ai-term-token`。
+- 兩個沒勾的項目（透過既有 revision 服務發布、發布後重新匯出並釘成翻譯基準）原封不動移到 `2026-09-24-publish-cable-labeling-source-correction`。上面的證據、雜湊與「不要跑 `pack_cli autolink`」的警告，那張票都指回這裡。
+- 結案的目的是解除這張票對 `apps/api/app/guides/content/desk-cable-charging-organization.json` 的 scope 鎖；新票沿用同一條 scope，所以同一時間仍只有一張票能改這個檔。
