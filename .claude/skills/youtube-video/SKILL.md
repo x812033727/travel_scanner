@@ -1,30 +1,43 @@
 ---
 name: youtube-video
-description: 製作 YouTube 教學與解說影片的完整流程：選題與格式（觀點解說、更新彙整、操作教學）、查核、口播稿、畫面腳本、字卡與縮圖、螢幕錄影、剪輯交接、標題說明章節字幕，到上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、做縮圖、排章節時間、寫影片說明或上字幕時，先讀這個 skill。Produce YouTube tutorial and explainer videos in the style of Traditional Chinese AI and tech channels, from topic and format choice through fact checks, the spoken script, the shot list, slides and thumbnail, screen recording, editor handover, title, description, chapters and captions, to the pre-upload checklist. Use it to make a video, turn a Mokaair article into one, write a narration script or storyboard, build a thumbnail, time chapters, or write the description and subtitles. Not for writing site articles (content-pipeline).
+description: 製作 YouTube 教學與解說影片的完整流程，分兩條路線。全自動：AI 撰稿與查核、伺服器用 Azure 合成台灣口音旁白、深色投影片版型、ffmpeg 合成、五語 CC，工具在 tools/video。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。兩條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce YouTube tutorial and explainer videos for the Mokaair channel on two routes. Fully automated, with an agent-written and fact-checked script, server-side Azure Taiwanese Mandarin narration, dark slide templates, ffmpeg assembly and five-language captions through tools/video; or recorded by the owner, with a spoken script, shot list, slides, screen recording and editor handover. Both cover topic and format, fact checks, visuals and thumbnail, chapters, captions, the upload package and the pre-upload checklist. Not for writing site articles (content-pipeline).
 metadata:
-  short-description: YouTube 影片：選題、口播稿、畫面、縮圖、上架
+  short-description: YouTube 影片：全自動或人工錄製，從選題到上架
 ---
 
 # YouTube 影片製作（youtube-video）
 
-目標是像「AI 模型這麼多，到底該怎麼挑？」（觀點解說）和「Claude Code 近期更新彙整」（更新彙整＋示範）那樣的中文科技影片：一個人對著鏡頭或配音講，畫面是字卡、截圖、螢幕錄影交錯，每一段都回答一個觀眾真的會問的問題。代理負責**企劃、查核、稿子、畫面素材、上架文字**；錄音、錄影、剪輯與按下「發布」是站主的事。
+目標是像「AI 模型這麼多，到底該怎麼挑？」（觀點解說）和「Claude Code 近期更新彙整」（更新彙整＋示範）那樣的中文科技影片：畫面是字卡、截圖、螢幕錄影交錯，每一段都回答一個觀眾真的會問的問題。代理負責**企劃、查核、稿子、畫面素材、上架文字**；按下「發布」永遠是站主的事。
 
-路徑都相對於 repo 根目錄 `<ROOT>`；一支影片一個工作目錄 `<WORKDIR>`，開在 repo 外（影片與音檔絕不進 git）。`<KIT>` 是 `python3 <ROOT>/.agents/skills/youtube-video/scripts/video_kit.py`，只用標準函式庫，任何 python 3.10+ 都能跑。
+路徑都相對於 repo 根目錄 `<ROOT>`；一支影片一個工作目錄，開在 repo 外（影片與音檔絕不進 git，repo 是公開的）。
 
 ## 什麼時候用、什麼時候不用
 
 - 用：從零做一支影片；把站上的 AI／科技文章（`docs/claude-code-series`、`docs/ai-workflow-series`、各期 AI 新聞）改成影片；只要口播稿、分鏡、縮圖或上架文字其中一項。
 - 不用：寫或發布網站文章（content-pipeline）；影片裡要提到的事實還沒查過又趕著要稿子——先查，不然就不做。
 
-## 先選格式，再讀對應的 reference
+## 先選路線
+
+| 路線 | 成品 | 誰做什麼 | 從哪裡開始 |
+| --- | --- | --- | --- |
+| **全自動** | 深色投影片＋台灣口音合成旁白＋五語 CC，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
+| **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
+
+站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
+
+## 再讀對應的 reference
 
 | 你要做的 | 讀 |
 | --- | --- |
 | 決定是哪一種影片、每段多長 | `.agents/skills/youtube-video/references/formats.md` |
-| 寫口播稿（口語、節奏、開場 30 秒） | `.agents/skills/youtube-video/references/script-writing.md` |
+| 寫口播稿（口語、節奏、開場 30 秒；給 TTS 唸的寫法在最後一節） | `.agents/skills/youtube-video/references/script-writing.md` |
 | 字卡、截圖、螢幕錄影、縮圖 | `.agents/skills/youtube-video/references/visuals.md` |
-| 標題、說明、章節、字幕、揭露、上架檢查 | `.agents/skills/youtube-video/references/publish.md` |
-| 稿子的格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
+| 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
+| 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
+| 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑 | `.agents/skills/youtube-video/references/automated.md` |
+| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`） |
+| 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
+| 全自動的設計理由、YouTube 與 Azure 的官方規則 | `docs/videos/DESIGN.md` |
 
 ## 不變的規矩
 
@@ -36,8 +49,31 @@ metadata:
 6. **只用有授權的素材**：音樂用 YouTube 音效庫或已購授權；別人的影片、截圖、Logo 只在評論必要時短暫引用並標出處；縮圖不用別人的照片。
 7. **上架是站主的動作。** 代理不登入 YouTube、不按發布、不改公開狀態；交出上架包，列出需要站主決定的欄位（付費宣傳、合成內容揭露、兒童設定）。
 8. **檔案先落地**：每完成一段稿子就存檔，session 被切斷時留下的是檔案，不是對話。
+9. **金鑰與權杖不經過代理。** Azure 語音的金鑰由站主填在正式站後台；本機工具用的影片工具權杖，由站主自己在終端機執行 `login` 存起來。權杖不能出現在對話、檔案或指令參數裡。
 
-## 主幹
+## 全自動路線
+
+工具是 `node <ROOT>/tools/video/cli.mjs <子指令>`，每個子指令都讀 `docs/videos/` 底下這支影片的 `video.json`，產物寫到 `<VIDEO_WORKDIR>/<SLUG>/`（`<VIDEO_WORKDIR>` 預設在使用者家目錄下，用 `--workdir` 或環境變數 `VIDEO_WORKDIR` 改）。完整步驟、一次性設定與坑都在 `automated.md`，這裡只列骨架。
+
+| # | 階段 | 誰 | 關卡 |
+| --- | --- | --- | --- |
+| 1 | 企劃：`brief.md`，含「站主觀點」「觀眾看完能做到的事」與 2–3 個大綱 | 企劃代理（`prompts/planner.md`） | **站主選大綱**（有選項的提問）→ `approve --gate outline` |
+| 2 | 撰稿：`video.json`＋`claims.md`，新英文詞補進發音字典 | 撰稿代理（`prompts/writer-video.md`） | `lint` 零錯誤 |
+| 3 | 查核：換人；改超過 3 個事實就第二輪再換人 | 查核代理（`prompts/verifier-video.md`） | `verify-1.md` 完成 |
+| 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 協調者套用修正、`lint` 再過 |
+| 5 | `tts`：先 `--dry-run` 看字數與額度，再實際合成 | 工具 | 時間軸寫出、章節時間檢查過 |
+| 6 | `review` → 站主聽 `review/audio.html`，唸錯的匯出 `flags.json` → 補字典 → `tts --redo` | 站主 | **站主聽過** → `approve --gate audio` |
+| 7 | `render` → `assemble` → CC 翻譯與 `captions` | 工具、翻譯代理 | 聯絡表看過；`checks.json` 全過；沒有過期翻譯 |
+| 8 | `review` → 站主看 `review/final.html` | 站主 | **站主看完全片** → `approve --gate final` |
+| 9 | `package` → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」，檢查後自己按公開 | 站主 | 影片 ID 寫回 `video.json` |
+
+`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕。
+
+## 人工錄製路線
+
+一支影片一個工作目錄 `<WORKDIR>`，開在 repo 外。`<KIT>` 是 `python3 <ROOT>/.agents/skills/youtube-video/scripts/video_kit.py`，只用標準函式庫，任何 python 3.10+ 都能跑。
+
+### 主幹
 
 | # | 階段 | 產出（都在 `<WORKDIR>`） | 關卡 |
 | --- | --- | --- | --- |
@@ -50,7 +86,7 @@ metadata:
 | 6 | 上架包：標題 3 案、說明、實際章節時間、標籤、字幕稿、置頂留言 | `upload.md`、`transcript.txt` | `<KIT> metadata --chapters` 用剪完的時間重產；publish.md 的清單全打勾 |
 | 7 | 上架後：確認章節有出現、字幕有同步、連結可點；有錯就更正並記在 `ERRATA.md` | — | 站主確認 |
 
-## 指令
+### 指令
 
 ```bash
 # 從站上的文章起一份稿子骨架（標題變章節、段落變素材註解、表格變字卡建議、來源帶過來）
@@ -71,4 +107,5 @@ metadata:
 
 ## 交接
 
-停手前把 `brief.md` 最上面的狀態行改成目前階段（例如「階段 3：字卡做了 5／8 張，縮圖未做」），並列出下一步。站主要的只有三樣東西：讀稿機文字、分鏡表與素材、上架包。
+- 全自動：狀態由 `status --slug <SLUG>` 從檔案算出來，不必另外記。停手前在票的 Notes 寫下目前階段、等站主的是哪一個關卡、有沒有沒解決的查核項目。**不要改 `brief.md`**：大綱的核准綁它的雜湊，改一個字就要重新核准。
+- 人工錄製：停手前把 `brief.md` 最上面的狀態行改成目前階段（例如「階段 3：字卡做了 5／8 張，縮圖未做」），並列出下一步。站主要的只有三樣東西：讀稿機文字、分鏡表與素材、上架包。
