@@ -24,6 +24,7 @@ CandidateStatus = Literal[
     "jev_review",
     "shadow_review",
     "manual_review",
+    "needs_evidence",
     "published",
     "duplicate",
     "rejected",

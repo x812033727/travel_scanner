@@ -127,3 +127,36 @@ async def test_post_publication_major_error_disables_vertical_autopilot(
     assert candidate.human_decision == "reject"
     assert candidate.human_major_error is True
     session.commit.assert_awaited_once()
+
+
+@pytest.mark.asyncio
+async def test_candidate_list_takes_repeated_statuses_and_refuses_unknown_ones(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from app.news_automation.schemas import CandidatePage
+
+    async def user() -> User:
+        viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
+        viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
+        return viewer
+
+    async def session() -> object:
+        yield AsyncMock()
+
+    listing = AsyncMock(return_value=CandidatePage(candidates=[], total=0, page=1, pages=1))
+    monkeypatch.setattr(service, "list_candidates", listing)
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(router.admin_router, prefix="/api/v1")
+    app.dependency_overrides[current_user] = user
+    app.dependency_overrides[get_session] = session
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        listed = await client.get(
+            "/api/v1/admin/news/candidates",
+            params=[("status", "manual_review"), ("status", "needs_evidence")],
+        )
+        refused = await client.get("/api/v1/admin/news/candidates", params={"status": "bogus"})
+    assert listed.status_code == 200
+    assert listing.await_args is not None
+    assert listing.await_args.kwargs["status"] == ["manual_review", "needs_evidence"]
+    assert refused.status_code == 422

@@ -375,14 +375,16 @@ async def process_candidate(
             [{"url": row.url, "content_hash": row.content_hash} for row in evidence]
         )
         if not evidence_sufficient(usable):
-            await _manual(
-                session,
-                candidate,
-                "news_evidence_insufficient",
+            # Not an editor's work item: there is no draft to review and nothing a person
+            # can fix from /admin/news, so it stays out of the manual review queue.
+            candidate.status = "needs_evidence"
+            candidate.error_code = "news_evidence_insufficient"
+            candidate.error_detail = (
                 "Evidence from at least two different websites, one of them first-party, "
-                "is required.",
+                "is required."
             )
-            return "manual_review"
+            await session.commit()
+            return "needs_evidence"
 
         recent_titles = await _known_titles(session, candidate)
         duplicate, confidence, duplicate_reasons = await ai.jev_duplicate_check(
