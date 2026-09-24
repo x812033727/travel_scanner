@@ -40,10 +40,25 @@ class AgentConfig:
     # Reading Codex limits can refresh the account's tokens; doing that every minute next
     # to an interactive session invites "refresh token already used", so read it rarely.
     codex_cache_seconds: float = 300.0
+    # Claude usage comes from a short interactive session (see ClaudeAccounts.refresh_usage).
+    # A page view starts one when the snapshot is older than max_age; the refresh button
+    # can start one sooner, but never more than once per min_interval; a probe that found
+    # nothing is not retried by page views for retry.
+    claude_usage_max_age_seconds: float = 1800.0
+    claude_usage_min_interval_seconds: float = 60.0
+    claude_usage_retry_seconds: float = 300.0
+    # How long a probe waits for the status line before sending one message, and after it.
+    claude_usage_quiet_seconds: float = 15.0
+    claude_usage_message_seconds: float = 40.0
 
     @property
     def home_path(self) -> Path:
         return self.state_root / "home"
+
+    @property
+    def usage_probe_path(self) -> Path:
+        # One folder for every probe, so Claude asks to trust it once per account.
+        return self.home_path / "usage-probe"
 
     def slot_path(self, tool: str, slot: str) -> Path:
         if tool not in TOOLS or slot not in SLOTS:

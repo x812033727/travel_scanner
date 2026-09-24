@@ -27,10 +27,10 @@ const ADMIN_PAGES = [
 ] as const;
 
 const ROLE_NAVIGATION = {
-  viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments", "/admin/ai-accounts"].includes(path)),
+  viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments"].includes(path)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
   content: ["/admin", "/admin/guides", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
-  operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit"],
+  operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit", "/admin/ai-accounts"],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],
   owner: [...ADMIN_PAGES],

@@ -168,6 +168,61 @@ async def test_the_transcribe_endpoint_takes_a_wav_and_maps_upstream_failures(
         rejected.status_code == 502
         and rejected.json()["code"] == "video_speech_upstream_rejected_key"
     )
+    outcome["error"] = SpeechUpstreamError(503, "Gemini answered HTTP 503 UNAVAILABLE")
+    overloaded = await _post("transcribe", {"audio": audio})
+    assert overloaded.status_code == 503 and overloaded.headers["retry-after"] == "20"
+    assert overloaded.json()["code"] == "video_speech_upstream_busy"
+    assert "HTTP 503 UNAVAILABLE" in overloaded.json()["detail"]
+    outcome["error"] = SpeechUpstreamError(400, "Gemini answered HTTP 400 INVALID_ARGUMENT")
+    refused = await _post("transcribe", {"audio": audio})
+    assert refused.status_code == 502 and refused.json()["code"] == "video_speech_upstream_failed"
+    assert "HTTP 400 INVALID_ARGUMENT" in refused.json()["detail"]
+
+
+@pytest.mark.asyncio
+async def test_transcription_failures_carry_the_upstream_status_and_are_logged(
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    answers = [
+        httpx.Response(
+            503,
+            json={
+                "error": {
+                    "code": 503,
+                    "message": "The model is overloaded.",
+                    "status": "UNAVAILABLE",
+                }
+            },
+            headers={"Retry-After": "7"},
+        ),
+        httpx.Response(500, text="<html>oops</html>"),
+        httpx.Response(200, json={"candidates": [{"finishReason": "SAFETY"}]}),
+    ]
+    settings = Settings(hotspot_guide_gemini_api_key="site-key")
+    caplog.set_level("WARNING", logger="app.video_speech.checking")
+    async with httpx.AsyncClient(
+        transport=httpx.MockTransport(lambda _request: answers.pop(0))
+    ) as client:
+        with pytest.raises(SpeechUpstreamError) as overloaded:
+            await checking.transcribe(settings, WAV, client)
+        with pytest.raises(SpeechUpstreamError) as failed:
+            await checking.transcribe(settings, WAV, client)
+        with pytest.raises(SpeechUpstreamError) as blocked:
+            await checking.transcribe(settings, WAV, client)
+    assert (overloaded.value.status, str(overloaded.value)) == (
+        503,
+        "Gemini answered HTTP 503 UNAVAILABLE",
+    )
+    assert overloaded.value.retry_after == "7"
+    assert str(failed.value) == "Gemini answered HTTP 500"
+    assert blocked.value.status == 502 and "SAFETY" in str(blocked.value)
+    logged = [record.getMessage() for record in caplog.records]
+    assert logged[:2] == [
+        "Gemini transcription answered HTTP 503 UNAVAILABLE",
+        "Gemini transcription answered HTTP 500 -",
+    ]
+    assert "SAFETY" in logged[2]
+    assert all("site-key" not in message for message in logged)
 
 
 @pytest.mark.asyncio

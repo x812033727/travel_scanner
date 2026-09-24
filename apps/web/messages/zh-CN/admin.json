@@ -19,7 +19,7 @@
     "analytics": "流量与分析",
     "deployments": "部署中心",
     "uiText": "前台文案",
-    "aiAccounts": "AI 账号"
+    "aiAccounts": "AI 设置"
   },
   "providerTabs": {
     "label": "API 供应商设置分页",
@@ -985,7 +985,7 @@
     "resetsAt": "{time} 重置",
     "resetDone": "已重置",
     "snapshotAge": "更新于 {relative}",
-    "snapshotMissing": "在 SSH 用一次 Claude 之后，这里就会显示剩余额度。",
+    "snapshotMissing": "还没取得这个账号的额度，主机会自动读取；也可以点「刷新」。",
     "recorderMissing": "这个账号的状态栏没有接上额度记录器；重新登录或重启主机代理即可修复。",
     "usageUnavailable": "读不到额度：{detail}",
     "loginTitleCodex": "登录 Codex（账号 {slot}）",
@@ -1012,7 +1012,21 @@
     "fallbackCodex": "网页登录一直失败的话，也可以在主机上运行 codex-{slot} login --device-auth。",
     "cancelLogin": "取消登录",
     "done": "完成",
-    "closeError": "关闭错误信息"
+    "closeError": "关闭错误信息",
+    "usageRefreshing": "正在更新额度…"
+  },
+  "aiSettings": {
+    "tabLabel": "AI 设置分页",
+    "tabs": {
+      "subscriptions": "订阅账号",
+      "api": "API 密钥与模型"
+    },
+    "hints": {
+      "subscriptions": "给你在主机上用的 Claude Code 与 Codex：走订阅、不另外计费，每个工具最多五个账号。网站功能不会用到这些账号。",
+      "api": "给网站的 AI 功能用（行程规划、每小时新闻、景点与文章介绍、语音）：按 API 用量计费，密钥只存在后端并加密保存。"
+    },
+    "movedNotice": "AI 服务的密钥与模型已经移到「AI 设置」，和订阅账号放在一起。",
+    "movedLink": "前往 AI 设置"
   },
   "pageHeaders": {
     "dashboard": {
@@ -1040,8 +1054,8 @@
       "description": "只部署已通过 CI 的最新 main；由受限主机代理执行备份、migration、健康检查与应用程序回退。"
     },
     "aiAccounts": {
-      "title": "AI 账号（Claude Code／Codex）",
-      "description": "把主机上的 Claude Code 与 Codex 登录到你的订阅账号，每个工具最多五个，并查看各账号的剩余额度。登录凭证只留在主机上，网页拿不到。"
+      "title": "AI 设置",
+      "description": "AI 相关的设置都在这里：主机上 Claude Code 与 Codex 使用的订阅账号，以及网站 AI 功能使用的 API 密钥与模型。"
     }
   },
   "usersPanel": {

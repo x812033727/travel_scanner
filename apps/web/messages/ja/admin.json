@@ -19,7 +19,7 @@
     "analytics": "トラフィック分析",
     "deployments": "デプロイセンター",
     "uiText": "フロント文言",
-    "aiAccounts": "AI アカウント"
+    "aiAccounts": "AI 設定"
   },
   "providerTabs": {
     "label": "API プロバイダー設定タブ",
@@ -985,7 +985,7 @@
     "resetsAt": "{time} にリセット",
     "resetDone": "リセット済み",
     "snapshotAge": "{relative}に更新",
-    "snapshotMissing": "SSH で Claude を一度使うと、ここに残りの利用枠が表示されます。",
+    "snapshotMissing": "このアカウントの利用枠はまだありません。ホストが自動で読み取ります。「再読み込み」でも取得できます。",
     "recorderMissing": "このアカウントのステータスラインが利用枠の記録につながっていません。再ログインするか、ホストのエージェントを再起動すると直ります。",
     "usageUnavailable": "利用枠を読み取れません：{detail}",
     "loginTitleCodex": "Codex にログイン（アカウント {slot}）",
@@ -1012,7 +1012,21 @@
     "fallbackCodex": "ここでのログインが失敗し続ける場合は、ホストで codex-{slot} login --device-auth を実行することもできます。",
     "cancelLogin": "ログインをキャンセル",
     "done": "完了",
-    "closeError": "エラーメッセージを閉じる"
+    "closeError": "エラーメッセージを閉じる",
+    "usageRefreshing": "利用枠を更新しています…"
+  },
+  "aiSettings": {
+    "tabLabel": "AI 設定のタブ",
+    "tabs": {
+      "subscriptions": "サブスクリプションのアカウント",
+      "api": "API キーとモデル"
+    },
+    "hints": {
+      "subscriptions": "ホストで使う Claude Code と Codex 用です。サブスクリプションで動き追加の課金はなく、ツールごとに最大 5 アカウントです。サイトの機能はこれらのアカウントを使いません。",
+      "api": "サイトの AI 機能（旅程作成、毎時ニュース、スポットと記事の紹介、音声）用です。API の利用量で課金され、キーはサーバー側にだけ暗号化して保存されます。"
+    },
+    "movedNotice": "AI サービスのキーとモデルは「AI 設定」に移り、サブスクリプションのアカウントと一緒になりました。",
+    "movedLink": "AI 設定を開く"
   },
   "pageHeaders": {
     "dashboard": {
@@ -1040,8 +1054,8 @@
       "description": "CI を通過した最新の main のみをデプロイします。制限されたホストエージェントがバックアップ、マイグレーション、ヘルスチェック、アプリのロールバックを実行します。"
     },
     "aiAccounts": {
-      "title": "AI アカウント（Claude Code／Codex）",
-      "description": "ホスト上の Claude Code と Codex をサブスクリプションのアカウントでログインさせ（各ツール最大 5 つ）、アカウントごとの残りの利用枠を確認します。認証情報はホストにだけ残り、このページには渡りません。"
+      "title": "AI 設定",
+      "description": "AI に関する設定をここにまとめています。ホストの Claude Code と Codex が使うサブスクリプションのアカウントと、サイトの AI 機能が使う API キーとモデルです。"
     }
   },
   "usersPanel": {

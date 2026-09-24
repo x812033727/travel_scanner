@@ -10,7 +10,7 @@ const OWNER_NAVIGATION = [
 
 const ownerPassword = "isolated-admin-workspace-password-123";
 const ROLE_NAVIGATION: Record<string, string[]> = {
-  viewer: OWNER_NAVIGATION.filter((href) => !["/admin/database", "/admin/deployments", "/admin/ai-accounts"].includes(href)),
+  viewer: OWNER_NAVIGATION.filter((href) => !["/admin/database", "/admin/deployments"].includes(href)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
   content: [
     "/admin", "/admin/guides", "/admin/news", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
@@ -19,6 +19,7 @@ const ROLE_NAVIGATION: Record<string, string[]> = {
   operations: [
     "/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings",
     "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit",
+    "/admin/ai-accounts",
   ],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],

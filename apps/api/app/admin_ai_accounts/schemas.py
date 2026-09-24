@@ -50,6 +50,7 @@ class AiAccountSlot(_AgentModel):
     usage: AiUsage | None = None
     usage_error: str | None = Field(default=None, max_length=500)
     recorder_installed: bool | None = None
+    usage_refreshing: bool | None = None
     checked_at: int | None = None
     error: str | None = Field(default=None, max_length=500)
     login: AiLoginSession | None = None

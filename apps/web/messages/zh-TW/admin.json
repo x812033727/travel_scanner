@@ -19,7 +19,7 @@
     "analytics": "流量與分析",
     "deployments": "部署中心",
     "uiText": "前台文案",
-    "aiAccounts": "AI 帳號"
+    "aiAccounts": "AI 設定"
   },
   "providerTabs": {
     "label": "API 供應商設定分頁",
@@ -985,7 +985,7 @@
     "resetsAt": "{time} 重置",
     "resetDone": "已重置",
     "snapshotAge": "更新於 {relative}",
-    "snapshotMissing": "在 SSH 用一次 Claude 之後，這裡就會顯示剩餘額度。",
+    "snapshotMissing": "還沒取得這個帳號的額度，主機會自動讀取；也可以按「重新整理」。",
     "recorderMissing": "這個帳號的狀態列沒有接上額度紀錄器；重新登入或重啟主機代理即可修復。",
     "usageUnavailable": "讀不到額度：{detail}",
     "loginTitleCodex": "登入 Codex（帳號 {slot}）",
@@ -1012,7 +1012,21 @@
     "fallbackCodex": "網頁登入一直失敗的話，也可以在主機上執行 codex-{slot} login --device-auth。",
     "cancelLogin": "取消登入",
     "done": "完成",
-    "closeError": "關閉錯誤訊息"
+    "closeError": "關閉錯誤訊息",
+    "usageRefreshing": "正在更新額度…"
+  },
+  "aiSettings": {
+    "tabLabel": "AI 設定分頁",
+    "tabs": {
+      "subscriptions": "訂閱帳號",
+      "api": "API 金鑰與模型"
+    },
+    "hints": {
+      "subscriptions": "給你在主機上用的 Claude Code 與 Codex：走訂閱、不另外計費，每個工具最多五個帳號。網站功能不會用到這些帳號。",
+      "api": "給網站的 AI 功能用（行程規劃、每小時新聞、景點與文章介紹、語音）：依 API 用量計費，金鑰只存在後端並加密保存。"
+    },
+    "movedNotice": "AI 服務的金鑰與模型已經搬到「AI 設定」，和訂閱帳號放在一起。",
+    "movedLink": "前往 AI 設定"
   },
   "pageHeaders": {
     "dashboard": {
@@ -1040,8 +1054,8 @@
       "description": "只部署已通過 CI 的最新 main；由受限主機代理執行備份、migration、健康檢查與應用程式回退。"
     },
     "aiAccounts": {
-      "title": "AI 帳號（Claude Code／Codex）",
-      "description": "把主機上的 Claude Code 與 Codex 登入你的訂閱帳號，每個工具最多五個，並查看各帳號的剩餘額度。登入憑證只留在主機上，網頁拿不到。"
+      "title": "AI 設定",
+      "description": "AI 相關的設定都在這裡：主機上 Claude Code 與 Codex 使用的訂閱帳號，以及網站 AI 功能使用的 API 金鑰與模型。"
     }
   },
   "usersPanel": {

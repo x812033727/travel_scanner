@@ -138,10 +138,12 @@ NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
         id="audit", group="system", href="/admin/audit", label_key="audit",
         capability="audit.read",
     ),
-    # Signs root's Claude Code and Codex CLIs in on the host: owner only, like the router.
+    # AI settings: the site's AI keys and models (settings.read, like /admin/settings) and
+    # the host's subscription accounts, a tab the page shows the owner only because its
+    # routes require roles.manage.
     AdminNavigationItem(
         id="ai_accounts", group="system", href="/admin/ai-accounts", label_key="aiAccounts",
-        capability="roles.manage",
+        capability="settings.read",
     ),
 )
 
@@ -170,9 +172,11 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             TravelServiceProduct.status == "pending",
         ).label("hotels_pending"),
         _scalar_count(Job, Job.status == "pending").label("community_jobs_pending"),
+        # The same statuses as the 待審查 list on /admin/news: candidates waiting for a
+        # person's decision. Failed and stopped-before-draft ones have their own list.
         _scalar_count(
             NewsCandidate,
-            NewsCandidate.status.in_(("manual_review", "shadow_review", "failed")),
+            NewsCandidate.status.in_(("manual_review", "shadow_review")),
         ).label("news_review_pending"),
         _scalar_count(
             DeploymentRun, DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES)

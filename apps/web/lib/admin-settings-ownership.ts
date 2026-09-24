@@ -26,7 +26,21 @@ export function settingsOwner(provider: string, kind: SettingsFieldKind, field?:
   return provider === "runtime" ? "system" : provider === "layout" ? "layout" : "providers";
 }
 
+// The AI category of shared providers (vendor keys, feature models, speech) lives on the
+// AI settings page next to the host's subscription accounts, not on /admin/settings.
+export const AI_SETTINGS_PATH = "/admin/ai-accounts";
+export const AI_SETTINGS_PROVIDERS: readonly string[] = ["ai_vendors", "ai_planner", "ai_guide_search", "hotspot_intros", "azure_speech", "gemini_guides"];
+
+export function isAiSettingsProvider(provider: string): boolean {
+  return AI_SETTINGS_PROVIDERS.includes(provider);
+}
+
 export function settingsHref(scope: AdminSettingsScope, provider: string, field?: string): string {
+  if (scope === "providers" && isAiSettingsProvider(provider)) {
+    const params = new URLSearchParams({ tab: "api", provider });
+    if (field) params.set("field", field);
+    return `${AI_SETTINGS_PATH}?${params}`;
+  }
   const domain = isDomainSettingsScope(scope);
   const pathname = domain ? `/admin/${scope}` : scope === "providers" ? "/admin/settings" : `/admin/${scope}-settings`;
   const params = new URLSearchParams(domain ? { tab: "settings", provider } : { provider });

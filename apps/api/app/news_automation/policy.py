@@ -42,14 +42,15 @@ ALLOWED_TRANSITIONS: Mapping[str, frozenset[str]] = {
     "discovered": frozenset(
         {"drafting", "manual_review", "needs_evidence", "duplicate", "failed"}
     ),
-    "drafting": frozenset({"verifying", "manual_review", "failed"}),
-    "verifying": frozenset({"locale_review", "manual_review", "failed"}),
-    "locale_review": frozenset({"jev_review", "manual_review", "failed"}),
+    "drafting": frozenset({"verifying", "manual_review", "needs_redraft", "failed"}),
+    "verifying": frozenset({"locale_review", "manual_review", "needs_redraft", "failed"}),
+    "locale_review": frozenset({"jev_review", "manual_review", "needs_redraft", "failed"}),
     "jev_review": frozenset({"shadow_review", "manual_review", "published", "failed"}),
     "shadow_review": frozenset({"published", "rejected", "drafting"}),
     "manual_review": frozenset({"published", "rejected", "drafting"}),
     # A retry puts it back to discovered; nothing here can be published.
     "needs_evidence": frozenset({"discovered", "rejected"}),
+    "needs_redraft": frozenset({"discovered", "rejected"}),
     "failed": frozenset({"drafting", "rejected"}),
     "duplicate": frozenset({"rejected"}),
     "published": frozenset(),

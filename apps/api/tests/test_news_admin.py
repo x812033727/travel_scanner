@@ -12,7 +12,7 @@ from httpx import ASGITransport, AsyncClient
 from app.auth.service import current_user
 from app.db import get_session
 from app.models import User
-from app.news_automation import assets, router, service
+from app.news_automation import assets, jobs, router, service
 from app.news_automation.models import NewsAsset, NewsAutomationSettings, NewsCandidate
 from app.news_automation.schemas import CandidateAction, StatsView
 from app.problems import AppError, app_error_handler
@@ -160,3 +160,73 @@ async def test_candidate_list_takes_repeated_statuses_and_refuses_unknown_ones(
     assert listing.await_args is not None
     assert listing.await_args.kwargs["status"] == ["manual_review", "needs_evidence"]
     assert refused.status_code == 422
+
+
+@pytest.mark.asyncio
+async def test_not_a_duplicate_needs_content_manage_and_queues_the_candidate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from datetime import UTC, datetime
+
+    from app.news_automation.schemas import CandidateDetail
+
+    holder = {"roles": frozenset({"viewer"})}
+    candidate_id = uuid4()
+
+    async def user() -> User:
+        editor = User(id=uuid4(), email="editor@example.com", password_hash="unused")
+        editor._admin_roles_cache = holder["roles"]  # type: ignore[attr-defined]
+        return editor
+
+    database = AsyncMock()
+    database.get.return_value = NewsCandidate(id=candidate_id, retry_count=3)
+
+    async def session() -> object:
+        yield database
+
+    now = datetime.now(UTC)
+    detail = CandidateDetail(
+        id=candidate_id,
+        vertical="ai",
+        status="discovered",
+        source_title="Model release",
+        canonical_url="https://official.example/release",
+        event_date=None,
+        would_publish=None,
+        human_decision=None,
+        error_code=None,
+        error_detail=None,
+        guide_article_id=None,
+        created_at=now,
+        updated_at=now,
+        evidence=[],
+        assessments=[],
+        runs=[],
+        documents={},
+        claim_ledger=[],
+        lint={},
+        human_reason=None,
+        human_major_error=False,
+    )
+    cleared = AsyncMock(return_value=detail)
+    enqueue = Mock(return_value="job")
+    monkeypatch.setattr(service, "clear_duplicate_candidate", cleared)
+    monkeypatch.setattr(jobs, "enqueue_candidate", enqueue)
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(router.admin_router, prefix="/api/v1")
+    app.dependency_overrides[current_user] = user
+    app.dependency_overrides[get_session] = session
+    url = f"/api/v1/admin/news/candidates/{candidate_id}/not-duplicate"
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        forbidden = await client.post(url, json={"reason": "Different event"})
+        holder["roles"] = frozenset({"content"})
+        allowed = await client.post(url, json={"reason": "Different event"})
+    assert forbidden.status_code == 403
+    assert allowed.status_code == 200
+    assert allowed.json()["similar_titles"] == []
+    cleared.assert_awaited_once()
+    assert cleared.await_args is not None
+    assert cleared.await_args.args[2] == candidate_id
+    assert cleared.await_args.args[3].reason == "Different event"
+    enqueue.assert_called_once_with(candidate_id, retry_count=3)
