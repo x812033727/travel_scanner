@@ -46,6 +46,27 @@ describe("AnalyticsProvider", () => {
     await waitFor(() => expect(pageViews()).toEqual([expected]));
   });
 
+  it("keeps gtag.js off a private page but still sends the first-party view", async () => {
+    navigation.pathname = "/zh-TW/trips/550e8400-e29b-41d4-a716-446655440000";
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      void init;
+      if (String(input).endsWith("/analytics/config")) return new Response(JSON.stringify({ first_party_enabled: true, ga4_enabled: true, ga4_measurement_id: "G-ABCD1234" }));
+      return new Response(JSON.stringify({ accepted: 1, enabled: true }), { status: 202 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const view = render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(fetchMock.mock.calls.some(([url]) => String(url).endsWith("/analytics/events"))).toBe(true));
+    const gtagScript = () => view.container.querySelector('script[data-src^="https://www.googletagmanager.com/"]');
+    expect(gtagScript()).toBeNull();
+    expect(window.dataLayer).toBeUndefined();
+
+    // Reaching a public page in the same document is where GA4 may start.
+    navigation.pathname = "/zh-TW/hotspots";
+    view.rerender(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(gtagScript()).not.toBeNull());
+    expect((window.dataLayer || []).some((row) => row[0] === "config")).toBe(true);
+  });
+
   it("counts a second long-slug article as its own page view", async () => {
     // Both slugs used to become `/life/:id`, and the repeat guard then dropped the second view.
     navigation.pathname = "/zh-TW/life/claude-code-first-project-setup";

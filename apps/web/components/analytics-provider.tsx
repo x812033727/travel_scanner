@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ANALYTICS_SESSION_KEY, type AnalyticsEventName } from "@/lib/analytics";
+import { isPrivateRoute } from "@/lib/private-routes";
 
 type Config = { first_party_enabled: boolean; ga4_enabled: boolean; ga4_measurement_id?: string | null };
 type PendingEvent = {
@@ -76,18 +77,31 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   const queue = useRef<PendingEvent[]>([]);
   const campaign = useRef<{ utm_source?: string; utm_medium?: string; utm_campaign?: string } | null>(null);
   const lastPage = useRef<string | null>(null);
+  const ga4Started = useRef(false);
+  // gtag.js is a third-party script: it stays off private pages (`lib/private-routes.ts`), and
+  // a document that starts on one only brings it in once the reader reaches a public page.
+  const privateRoute = isPrivateRoute(pathname);
+  // The ID is admin-controlled: only a well-formed GA4 measurement ID may reach the script URL.
+  const measurementId = config?.ga4_enabled && /^G-[A-Z0-9]{4,20}$/.test(config.ga4_measurement_id || "")
+    ? config.ga4_measurement_id
+    : null;
 
   useEffect(() => {
     if (config || privacyOptOut() || !sanitizedPath(pathname)) return;
     fetch("/api/travel/analytics/config", { cache: "no-store" })
       .then((response) => response.ok ? response.json() as Promise<Config> : null)
       .then((value) => {
-        if (!value) return;
-        if (value.ga4_enabled && value.ga4_measurement_id) initializeGa4(value.ga4_measurement_id);
-        setConfig(value);
+        if (value) setConfig(value);
       })
       .catch(() => undefined);
   }, [config, pathname]);
+
+  // Before the page-view effect below, so the first page view already finds `window.gtag`.
+  useEffect(() => {
+    if (!measurementId || privateRoute || ga4Started.current || privacyOptOut()) return;
+    ga4Started.current = true;
+    initializeGa4(measurementId);
+  }, [measurementId, privateRoute]);
 
   const flush = useCallback((keepalive = false) => {
     if (!config?.first_party_enabled || queue.current.length === 0 || privacyOptOut()) return;
@@ -118,7 +132,7 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       queue.current.push(event);
       queueMicrotask(() => flush());
     }
-    if (config.ga4_enabled && config.ga4_measurement_id && window.gtag) {
+    if (config.ga4_enabled && config.ga4_measurement_id && window.gtag && !isPrivateRoute(pathname)) {
       const mapped = { registration_completed: "sign_up", search_completed: "search", outbound_click: "click", page_view: "page_view", discover_requested: "generate_lead", login_resumed: "login" }[name];
       window.gtag("event", mapped, { page_path: path, page_location: `${location.origin}${path}`, language: event.locale, transport_type: "beacon" });
     }
@@ -167,12 +181,8 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
     return () => { window.clearInterval(timer); window.removeEventListener("pagehide", pageHide); };
   }, [flush]);
 
-  // The ID is admin-controlled: only a well-formed GA4 measurement ID may reach the script URL.
-  const measurementId = config?.ga4_enabled && /^G-[A-Z0-9]{4,20}$/.test(config.ga4_measurement_id || "")
-    ? config.ga4_measurement_id
-    : null;
   return <>
-    {measurementId && !privacyOptOut() && <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />}
+    {measurementId && !privacyOptOut() && !privateRoute && <Script src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`} strategy="afterInteractive" />}
     {children}
   </>;
 }
