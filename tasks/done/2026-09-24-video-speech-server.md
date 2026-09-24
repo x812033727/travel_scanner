@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-speech-server
 title: 影片旁白：後台 Azure 語音卡、伺服器代為合成、影片工具權杖
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T02:00:00Z
 created_at: 2026-09-24T02:00:00Z
-completed_at:
+completed_at: 2026-09-24T02:33:08Z
 branch: claude/video-speech-server
 depends_on: []
 scope:
@@ -88,6 +88,7 @@ npx vitest run --root apps/web components/video-tool-tokens.test.tsx app/api/vid
 - **為什麼不讓工具送 SSML**：伺服器能完整控制送出的內容（不會有 `<audio src>` 之類連外的元素），計費字元也能從伺服器自己組的字串精確算出。
 - **一次最多 1,500 字**：48 kHz PCM 每分鐘約 5.8 MB，1,500 字大約 5.5 分鐘、32 MB。較長的場景由 T2 的本機工具拆開送。
 - **速率限制**：每組權杖每分鐘 120 次；每位管理員每小時最多建立 10 組權杖；同時有效的權杖最多 10 組。
+- **沒勾的「部署後在後台設定」**：合併後，先取得站主同意再部署（skill `deploy`）。站主在後台填金鑰、跑連線測試、建立權杖，這些是 T2 開工的第一步，記在 T2 的票裡；這張票隨 PR #709 結案。
 - **T2（`2026-09-24-video-tts-azure`）要改的地方**：
   - 不再直接呼叫 Azure，改送 `POST {site}/api/video/speech`，body 是 `{voice, rate, segments:[{parts:[{text, alias?}], break_after_ms}]}`。
   - 權杖用 `cli.mjs login` 存在工作區的 `.secrets/`。
