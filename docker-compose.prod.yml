@@ -55,6 +55,8 @@ services:
     ports: ["127.0.0.1:8090:8000"]
     volumes:
       - /run/travel-scanner-deployer:/run/travel-scanner-deployer:ro
+      # The AI accounts agent (ops/ai-accounts); the same travel-api group opens it.
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]

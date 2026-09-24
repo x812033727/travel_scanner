@@ -51,6 +51,7 @@ export const fallbackAdminNavigation: AdminNavigationItem[] = [
   { key: "database", href: "/admin/database", group: "system", capability: "database.read" },
   { key: "deployments", href: "/admin/deployments", group: "system", capability: "deploy.read" },
   { key: "audit", href: "/admin/audit", group: "system", capability: "audit.read" },
+  { key: "aiAccounts", href: "/admin/ai-accounts", group: "system", capability: "roles.manage" },
 ];
 
 const validGroups = new Set<AdminNavGroup>(["overview", "content", "community", "operations", "system"]);
@@ -75,7 +76,7 @@ function navigation(value: unknown): AdminNavigationItem[] {
       provider_settings: "providers", usage_settings: "usage", layout_settings: "layout",
       ui_text: "uiText", site_pages: "sitePages", system_settings: "system", petFriendly: "pets",
       providerSettings: "providers", usageSettings: "usage", layoutSettings: "layout",
-      systemSettings: "system",
+      systemSettings: "system", ai_accounts: "aiAccounts",
     };
     const key = typeof rawKey === "string" ? aliases[rawKey] ?? rawKey : rawKey;
     if (typeof key !== "string" || typeof row.href !== "string" || !row.href.startsWith("/admin")) return [];

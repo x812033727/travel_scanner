@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  BarChart3, BookOpenCheck, BriefcaseBusiness, ChevronRight, ClipboardCheck,
+  BarChart3, BookOpenCheck, Bot, BriefcaseBusiness, ChevronRight, ClipboardCheck,
   Database, Hotel, KeyRound, Languages, LayoutDashboard, Menu, Newspaper, PanelLeftClose,
   PanelLeftOpen, PawPrint, Rocket, Settings2, ShieldCheck, Soup, UsersRound, X,
 } from "lucide-react";
@@ -21,6 +21,7 @@ const icons: Record<string, typeof LayoutDashboard> = {
   pets: PawPrint, partners: BriefcaseBusiness, analytics: BarChart3, users: UsersRound,
   usage: BarChart3, audit: ShieldCheck, layout: Settings2, uiText: Languages,
   system: Settings2, providers: KeyRound, database: Database, deployments: Rocket,
+  aiAccounts: Bot,
 };
 const groups = ["overview", "content", "community", "operations", "system"] as const;
 

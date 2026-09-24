@@ -400,6 +400,9 @@ async def test_cli_legacy_revoke_preserves_explicit_privileged_roles(
         ("POST", "/api/v1/admin/database/backups", "database.maintain"),
         ("GET", "/api/v1/admin/deployments", "deploy.read"),
         ("POST", "/api/v1/admin/deployments", "deploy.execute"),
+        # Owner only; the router also requires roles.manage itself.
+        ("GET", "/api/v1/admin/ai-accounts", "roles.manage"),
+        ("POST", "/api/v1/admin/ai-accounts/claude/b/login", "roles.manage"),
         ("POST", "/api/v1/admin/unknown-mutation", "roles.manage"),
         ("GET", "/api/v1/admin/unknown-read", "roles.manage"),
     ],
