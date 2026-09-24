@@ -44,6 +44,10 @@ from app.problems import AppError
 from app.site_pages.schemas import LinkBlock
 
 ACTIVE_STATUSES = ("drafting", "verifying", "locale_review", "jev_review")
+# Set by an administrator's re-verify. It stays on the candidate until the run reaches an
+# outcome, so a rerun after a crash or a stalled worker re-verifies the edited drafts
+# instead of drafting new ones over them.
+REVERIFY_MARKER = "news_reverify_requested"
 ClaimOutcome = Literal["claimed", "disabled", "skipped", "deferred"]
 # RQ kills a candidate job after 60 minutes; nothing legitimate is still in flight after 70.
 STALE_AFTER = timedelta(minutes=70)
@@ -166,14 +170,18 @@ async def _claim_capacity(
         return "deferred", None
     candidate.status = "drafting"
     candidate.processing_started_at = datetime.now(UTC)
-    reverify_requested = candidate.error_code == "news_reverify_requested"
-    if not reverify_requested:
+    if candidate.error_code != REVERIFY_MARKER:
         candidate.error_code = None
     candidate.error_detail = None
     candidate.prompt_version = settings.prompt_version
     candidate.policy_version = settings.policy_version
     await session.commit()
     return "claimed", settings
+
+
+def _clear_reverify_marker(candidate: NewsCandidate) -> None:
+    if candidate.error_code == REVERIFY_MARKER:
+        candidate.error_code = None
 
 
 def _source_locked(document: GuideDocument, evidence: list[NewsEvidence]) -> GuideDocument:
@@ -401,6 +409,7 @@ async def process_candidate(
         )
         if duplicate == "duplicate":
             candidate.status = "duplicate"
+            _clear_reverify_marker(candidate)
             await session.commit()
             return "duplicate"
         if duplicate == "manual":
@@ -413,7 +422,7 @@ async def process_candidate(
             return "manual_review"
         await session.commit()
 
-        reverify_requested = candidate.error_code == "news_reverify_requested"
+        reverify_requested = candidate.error_code == REVERIFY_MARKER
         reverify_documents: dict[Locale, GuideDocument] | None = None
         if reverify_requested:
             reverify_documents = {
@@ -430,7 +439,6 @@ async def process_candidate(
                 raise AppError(409, "news_draft_unavailable", "候選草稿資料不完整")
             draft_slug = article_for_slug.slug
             draft_event_date = candidate.event_date
-            candidate.error_code = None
         else:
             active_run = await _start_run(
                 session,
@@ -743,11 +751,13 @@ async def process_candidate(
             or not gate.eligible
         ):
             candidate.status = "shadow_review"
+            _clear_reverify_marker(candidate)
             await session.commit()
             return "shadow_review"
 
         await mark_assets_public(session, candidate.id)
         candidate.status = "published"
+        _clear_reverify_marker(candidate)
         candidate.published_at = datetime.now(UTC)
         audit(
             session,
@@ -788,8 +798,9 @@ async def process_candidate(
             "rejected",
         }:
             candidate.status = "failed"
-            candidate.error_code = type(error).__name__[:64]
-            candidate.error_detail = str(error)[:4000]
+            if candidate.error_code != REVERIFY_MARKER:
+                candidate.error_code = type(error).__name__[:64]
+            candidate.error_detail = f"{type(error).__name__}: {error}"[:4000]
         if active_run is not None:
             run = await session.get(NewsPipelineRun, active_run.id)
             if run is not None:
@@ -865,7 +876,7 @@ async def recover_stalled_candidates(
         row.status = "failed"
         # A stalled re-verification keeps its marker, so the rerun re-verifies the edited
         # drafts instead of writing new ones over them.
-        if row.error_code != "news_reverify_requested":
+        if row.error_code != REVERIFY_MARKER:
             row.error_code = "news_processing_stale"
         row.error_detail = f"The worker stopped while this candidate was in {stalled_in}."
         if recoveries < MAX_AUTOMATIC_RECOVERIES:

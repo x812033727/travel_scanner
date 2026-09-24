@@ -20,7 +20,12 @@ Enqueue = Callable[[UUID], Awaitable[None]]
 # What one unreachable, refused or unreadable page raises: HTTP status and transport
 # errors, DNS and socket failures (OSError, TimeoutError included) and the fetcher's
 # UnsafeNewsUrl (a ValueError). Anything else is a bug and still fails the scan.
-PAGE_ERRORS: tuple[type[Exception], ...] = (httpx.HTTPError, OSError, ValueError)
+PAGE_ERRORS: tuple[type[Exception], ...] = (
+    httpx.HTTPError,
+    httpx.InvalidURL,
+    OSError,
+    ValueError,
+)
 MAX_REPORTED_SKIPS = 5
 
 
@@ -182,6 +187,10 @@ async def scan_source(
                 )
             except PAGE_ERRORS as error:
                 skipped.append(f"{entry.url} ({type(error).__name__})")
+                continue
+            # Feed links that redirect (tracking, feed proxies) only match after the
+            # fetch; without this the same page files a new "duplicate" every hour.
+            if detail.url != entry.url and await _already_seen(session, detail.url):
                 continue
             detail_source = by_host.get(_host(detail.url), source)
             page_title, article_text, links = extract_article(

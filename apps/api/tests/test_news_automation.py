@@ -573,3 +573,110 @@ async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> N
         await fetcher.fetch("https://example.com/private/c", allowed_hosts={"example.com"})
     assert robots_reads == ["example.com"]
     await client.aclose()
+
+
+def test_a_malformed_href_is_dropped_instead_of_failing_the_page() -> None:
+    _, _, links = extract_article(
+        b'<main>Body <a href="https://[broken/path">bad</a>'
+        b'<a href="https://official.example/facts">good</a></main>',
+        "https://lead.example/story",
+    )
+    assert links == ["https://official.example/facts"]
+    rows = parse_entries(
+        b'<a href="https://[broken">A sufficiently long headline</a>'
+        b'<a href="/news/ok">Another sufficiently long headline</a>',
+        "html",
+        "https://example.com/",
+        {},
+    )
+    assert [row.url for row in rows] == ["https://example.com/news/ok"]
+
+
+@pytest.mark.asyncio
+async def test_robots_txt_outage_is_a_retryable_http_error_and_is_not_remembered() -> None:
+    robots_status = [503]
+    robots_reads = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal robots_reads
+        if request.url.path == "/robots.txt":
+            robots_reads += 1
+            status = robots_status[0]
+            return httpx.Response(status, text="User-agent: *\nAllow: /", request=request)
+        return httpx.Response(
+            200, content=b"<html></html>", headers={"Content-Type": "text/html"}, request=request
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with pytest.raises(httpx.HTTPStatusError):
+        await fetcher.fetch("https://example.com/a", allowed_hosts={"example.com"})
+    robots_status[0] = 200
+    fetched = await fetcher.fetch("https://example.com/a", allowed_hosts={"example.com"})
+    assert fetched.status_code == 200
+    # Three attempts on the outage, one read after it.
+    assert robots_reads == 4
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_a_feed_link_that_redirects_to_a_seen_page_files_nothing_new() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Lead",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    listing = (
+        b"<rss><channel><item><title>Story</title>"
+        b"<link>https://example.com/track?id=1</link></item></channel></rss>"
+    )
+    edition = ["first"]
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            # The tracking link lands on the article, whose sidebar text drifts.
+            body = f"<html><main>Report, {edition[0]} edition.</main></html>".encode()
+            return FetchResult(
+                url="https://example.com/story",
+                status_code=200,
+                content_type="text/html",
+                body=body,
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        edition[0] = "second"
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        statuses = list(await session.scalars(select(NewsCandidate.status)))
+    assert statuses == ["discovered"]
+    await engine.dispose()

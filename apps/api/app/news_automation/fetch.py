@@ -188,6 +188,9 @@ class SafeNewsFetcher:
         robots_url = urlunsplit(("https", parsed.netloc, "/robots.txt", "", ""))
         if robots_url not in self._robots:
             response = await self._request(robots_url, allowed_hosts, {"Accept": "text/plain"})
+            if response.status_code == 429 or response.status_code >= 500:
+                # The host is briefly unavailable; that is not a refusal to remember.
+                response.raise_for_status()
             parser: RobotFileParser | None = None
             if 200 <= response.status_code < 300:
                 body = response.content[:256_000].decode("utf-8", errors="replace")

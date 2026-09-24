@@ -30,7 +30,7 @@ from app.guides.models import (
 from app.guides.schemas import GuideDocument
 from app.i18n import Locale
 from app.models import AdminAuditLog
-from app.news_automation import ai, jobs, pipeline, service
+from app.news_automation import ai, jobs, pipeline, scheduler, service
 from app.news_automation.models import (
     NewsAssessment,
     NewsAsset,
@@ -560,3 +560,61 @@ def test_the_news_queue_has_its_own_worker_in_the_news_profile() -> None:
         service_block = compose.split("  news-worker:", 1)[1].split("\n\n", 1)[0]
         assert 'profiles: ["news"]' in service_block, name
         assert '"app.news_automation.worker"' in service_block, name
+
+
+@pytest.mark.asyncio
+async def test_a_failed_reverification_keeps_its_marker_so_the_rerun_does_not_redraft(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        candidate = await seed_candidate(session)
+        candidate.error_code = pipeline.REVERIFY_MARKER
+        # Only zh-TW is present, so the re-verification raises inside the pipeline.
+        candidate.draft_bundle_json = {"zh-TW": news_document("Edited").model_dump(mode="json")}
+        for url, first_party in ((FIRST_PARTY_URL, True), (LEAD_URL, False)):
+            session.add(
+                NewsEvidence(
+                    candidate_id=candidate.id,
+                    role="evidence",
+                    is_first_party=first_party,
+                    url=url,
+                    title="Release",
+                    content_hash=("f" if first_party else "e") * 64,
+                    excerpt="The model shipped.",
+                )
+            )
+        await session.commit()
+        candidate_id = candidate.id
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.0, []))
+    )
+    draft = AsyncMock()
+    monkeypatch.setattr(ai, "draft_article", draft)
+    async with factory() as session:
+        with pytest.raises(Exception, match="五個語言"):
+            await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    assert stored is not None
+    assert stored.status == "failed"
+    assert stored.error_code == pipeline.REVERIFY_MARKER
+    draft.assert_not_awaited()
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_scheduler_queues_claimed_scans_even_when_the_sweep_fails(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    source_id = uuid4()
+    queued: list[UUID] = []
+    monkeypatch.setattr(scheduler, "SessionFactory", FakeSessionFactory)
+    monkeypatch.setattr(scheduler, "claim_due_sources", AsyncMock(return_value=[source_id]))
+    monkeypatch.setattr(
+        scheduler, "recover_stalled_candidates", AsyncMock(side_effect=RuntimeError("db blip"))
+    )
+    monkeypatch.setattr(scheduler, "enqueue_source_scan", queued.append)
+    monkeypatch.setattr(scheduler, "enqueue_candidate_once", Mock())
+    assert await scheduler.tick() == 1
+    assert queued == [source_id]

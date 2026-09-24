@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-harden-hourly-news-automation-before-first
 title: Harden hourly news automation before first activation
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5.5
 claimed_at: 2026-09-24T00:03:26Z
 created_at: 2026-09-24T00:03:16Z
-completed_at:
+completed_at: 2026-09-24T00:46:56Z
 branch: claude/ai-hourly-news-refinement-d2d87f
 depends_on: []
 scope:
@@ -129,5 +129,17 @@ npm run check:tasks
   `GuideDocument`), 2026-09-24-attach-a-second-evidence-source-to (first-party feeds
   rarely yield a second evidence page), 2026-09-24-keep-every-news-review-item-reachable
   (the review list is the newest 100 candidates filtered in the browser).
-- Not done here, needs the site owner: adding `--profile news` to
-  `/root/deploy-travel-scanner.sh`, keys, sources, and turning the scanner on.
+- An independent review of the first commit found, and the second commit fixes: a
+  malformed href (`https://[broken`) made `urljoin` raise outside the page isolation;
+  a robots.txt 429/5xx was cached as "disallowed" and so dropped the first-party
+  evidence for good (it is now a retryable HTTP error and is not cached); a stalled or
+  crashed re-verification lost its marker, so the rerun would have redrafted over the
+  editor's five locales (the marker now stays until an outcome); feed links that
+  redirect were never recognised as seen; and a failing sweep could drop the minute's
+  claimed scans and stop the scheduler loop.
+- Still known: a feed whose links always redirect is refetched every hour (one page
+  per entry) because the pre-redirect URL is not stored; the orphan sweep keys on
+  `updated_at`, so with a long backlog a queued candidate may get one extra job an hour
+  (it returns `skipped`).
+- The owner chose (2026-09-24) to add `--profile news` to
+  `/root/deploy-travel-scanner.sh` and keep the scanner switch off until sources are set.
