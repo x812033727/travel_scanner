@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.news_automation.feeds import extract_article, parse_entries
 from app.news_automation.fetch import SafeNewsFetcher
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
-from app.news_automation.policy import content_fingerprint, normalized_title
+from app.news_automation.policy import content_fingerprint, evidence_site, normalized_title
 from app.news_automation.schemas import Vertical
 from app.news_automation.service import settings_row
 
@@ -27,6 +27,31 @@ PAGE_ERRORS: tuple[type[Exception], ...] = (
     ValueError,
 )
 MAX_REPORTED_SKIPS = 5
+# Links that are plainly not articles. Apple Newsroom's first scan fetched 76 image links
+# as evidence, each one a robots check and a rate-limited request that then failed.
+NON_ARTICLE_SUFFIXES = (
+    ".jpg",
+    ".jpeg",
+    ".png",
+    ".gif",
+    ".webp",
+    ".avif",
+    ".svg",
+    ".ico",
+    ".bmp",
+    ".tif",
+    ".tiff",
+    ".mp4",
+    ".m4v",
+    ".mov",
+    ".webm",
+    ".mp3",
+    ".m4a",
+    ".wav",
+    ".pdf",
+    ".zip",
+    ".gz",
+)
 
 
 def _host(url: str) -> str:
@@ -114,6 +139,15 @@ async def _already_seen(session: AsyncSession, url: str) -> bool:
             select(NewsCandidate.id).where(NewsCandidate.canonical_url == url).limit(1)
         )
     ) is not None
+
+
+def _corroborating_link(link: str, primary: str) -> bool:
+    """A link worth fetching as a second source: an article on another website."""
+    if urlsplit(link).path.casefold().endswith(NON_ARTICLE_SUFFIXES):
+        return False
+    # Pages of the primary page's own site are not a second source (owner decision,
+    # 2026-09-24), so they are not fetched at all.
+    return evidence_site(link) != evidence_site(primary)
 
 
 def _transient(error: Exception) -> bool:
@@ -231,6 +265,7 @@ async def scan_source(
                         or linked_source.role != "evidence"
                         or link in seen_urls
                         or len(linked_rows) >= 4
+                        or not _corroborating_link(link, canonical)
                     ):
                         continue
                     try:
@@ -251,8 +286,13 @@ async def scan_source(
                     linked_title, linked_text, _ = extract_article(
                         linked.body, linked.url, linked_source.config_json
                     )
-                    # Two links that redirect to one page would repeat an evidence URL.
-                    if not linked_text.strip() or linked.url in seen_urls:
+                    # Two links that redirect to one page would repeat an evidence URL,
+                    # and a redirect can land back on the primary page's own site.
+                    if (
+                        not linked_text.strip()
+                        or linked.url in seen_urls
+                        or not _corroborating_link(linked.url, canonical)
+                    ):
                         continue
                     seen_urls.update({link, linked.url})
                     linked_rows.append(

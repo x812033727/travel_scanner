@@ -31,6 +31,8 @@ from app.news_automation.models import (
 from app.news_automation.policy import (
     document_fingerprint,
     evidence_fingerprint,
+    evidence_site_count,
+    evidence_sufficient,
     gate_result,
     hard_policy_problems,
 )
@@ -660,10 +662,12 @@ async def publish_candidate(
             "news_evidence_changed",
             f"來源內容或來源政策已變更，請重新查核：{'; '.join(evidence_reasons[:3])}",
         )
-    if len([item for item in evidence if item.role == "evidence"]) < 2 or not any(
-        item.is_first_party for item in evidence
-    ):
-        raise AppError(422, "news_evidence_insufficient", "發布需要兩個證據來源及一個第一方來源")
+    if not evidence_sufficient(evidence):
+        raise AppError(
+            422,
+            "news_evidence_insufficient",
+            "發布需要兩個不同網站的證據，其中一個是第一方來源",
+        )
     locale_rows = list(
         await session.scalars(
             select(GuideArticleLocale).where(GuideArticleLocale.article_id == row.guide_article_id)
@@ -683,7 +687,7 @@ async def publish_candidate(
             document,
             cast(Vertical, row.vertical),
             locale,
-            source_count=len([item for item in evidence if item.role == "evidence"]),
+            source_count=evidence_site_count(evidence),
         )
         for locale, document in documents.items()
     }
