@@ -1,7 +1,8 @@
 import { render, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-vi.mock("next/navigation", () => ({ usePathname: () => "/zh-TW/hotspots" }));
+const navigation = vi.hoisted(() => ({ pathname: "/zh-TW/hotspots" }));
+vi.mock("next/navigation", () => ({ usePathname: () => navigation.pathname }));
 vi.mock("next/script", () => ({ default: (props: { src?: string }) => <script data-src={props.src} /> }));
 
 import { AnalyticsProvider } from "./analytics-provider";
@@ -14,6 +15,49 @@ describe("AnalyticsProvider", () => {
     window.gtag = undefined;
     document.cookie = "travel_oauth_registered=; path=/; max-age=0";
     Object.defineProperty(navigator, "doNotTrack", { configurable: true, value: null });
+    navigation.pathname = "/zh-TW/hotspots";
+  });
+
+  function firstPartyOnly() {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      void init;
+      if (String(input).endsWith("/analytics/config")) return new Response(JSON.stringify({ first_party_enabled: true, ga4_enabled: false }));
+      return new Response(JSON.stringify({ accepted: 1, enabled: true }), { status: 202 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const pageViews = () => fetchMock.mock.calls
+      .filter(([url]) => String(url).endsWith("/analytics/events"))
+      .flatMap(([, init]) => JSON.parse(String(init?.body)).events)
+      .filter((event: { name: string }) => event.name === "page_view")
+      .map((event: { path: string }) => event.path);
+    return pageViews;
+  }
+
+  it.each([
+    ["/zh-TW/life/claude-code-first-project-setup", "/zh-TW/life/claude-code-first-project-setup"],
+    ["/en/guides/howto/tokyo-where-to-stay-first-trip", "/en/guides/howto/tokyo-where-to-stay-first-trip"],
+    ["/zh-TW/share/claude-code-first-project-setup", "/zh-TW/share/:id"],
+    ["/zh-TW/life/AbCdEfGhIjKlMnOpQrStUv_", "/zh-TW/life/:id"],
+    ["/zh-TW/trips/550e8400-e29b-41d4-a716-446655440000", "/zh-TW/trips/:id"],
+  ])("reports %s as %s", async (pathname, expected) => {
+    navigation.pathname = pathname;
+    const pageViews = firstPartyOnly();
+    render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(pageViews()).toEqual([expected]));
+  });
+
+  it("counts a second long-slug article as its own page view", async () => {
+    // Both slugs used to become `/life/:id`, and the repeat guard then dropped the second view.
+    navigation.pathname = "/zh-TW/life/claude-code-first-project-setup";
+    const pageViews = firstPartyOnly();
+    const view = render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(pageViews()).toHaveLength(1));
+    navigation.pathname = "/zh-TW/life/codex-cli-install-windows-guide";
+    view.rerender(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(pageViews()).toEqual([
+      "/zh-TW/life/claude-code-first-project-setup",
+      "/zh-TW/life/codex-cli-install-windows-guide",
+    ]));
   });
 
   it("queues denied consent before GA4 config and sends a sanitized page view", async () => {

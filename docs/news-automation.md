@@ -36,9 +36,12 @@ retry, re-verify) wait in Redis until `news-worker` starts.
 4. **Draft → verify → translate → locale review**, each a recorded pipeline run. The
    writer and the fact-checker are separate settings; the checker gets a fresh request with
    no authoring trace. Translation is one call per locale.
-5. **Hard checks** (summary, FAQ, SVG diagram, topic link, crypto disclaimer, forbidden
+5. **Images.** A hero, a social card and a diagram per locale are rendered locally (no
+   source image is copied). They go to the community S3 bucket when one is configured,
+   otherwise into `news_assets.content`; `/guides/news-assets/<file>` serves either.
+6. **Hard checks** (summary, FAQ, SVG diagram, topic link, crypto disclaimer, forbidden
    purchase/trading/exploit wording, guide lint) on all five locales.
-6. **Jev** decides each locale. Evidence is re-fetched; any change sends the candidate to
+7. **Jev** decides each locale. Evidence is re-fetched; any change sends the candidate to
    review. With every locale approved and the category's gate open, the bundle publishes
    atomically; otherwise it waits in `shadow_review`.
 
