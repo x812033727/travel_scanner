@@ -4,7 +4,7 @@ import asyncio
 import hashlib
 import io
 from html import escape
-from typing import cast
+from typing import TYPE_CHECKING, cast
 from uuid import UUID
 
 from botocore.exceptions import BotoCoreError, ClientError
@@ -18,6 +18,9 @@ from app.guides.schemas import GuideDocument, HeroImage, ImageBlock, ImageCredit
 from app.i18n import Locale
 from app.news_automation.models import NewsAsset, NewsCandidate
 from app.problems import AppError
+
+if TYPE_CHECKING:
+    from mypy_boto3_s3 import S3Client
 
 PUBLIC_PREFIX = "/guides/news-assets"
 MAX_PUBLIC_ASSET_BYTES = 5 * 1024 * 1024
@@ -62,6 +65,10 @@ def render_brand_raster(vertical: str, size: tuple[int, int]) -> bytes:
     draw = ImageDraw.Draw(image)
     for index in range(7):
         inset = 45 + index * 58
+        # Seven rings fit the 1600x900 hero; on the 1200x630 social card the later ones
+        # would invert (y1 < y0), which PIL rejects, so a ring that no longer fits ends it.
+        if inset >= min(width, height) // 2 - 20:
+            break
         color = tuple(min(255, channel + 18 + index * 7) for channel in base)
         draw.rounded_rectangle(
             (inset, inset, width - inset, height - inset),
@@ -125,10 +132,24 @@ def render_diagram(title: str, vertical: str, locale: Locale) -> bytes:
     return svg.encode()
 
 
-async def _put(key: str, body: bytes, content_type: str) -> None:
+def object_storage() -> S3Client | None:
+    """The S3 client, or None on a host without object storage configured."""
+    try:
+        return storage()
+    except AppError:
+        return None
+
+
+async def _put(key: str, body: bytes, content_type: str) -> bytes | None:
+    """Store an image in S3 and return None, or return the bytes for the database row when
+    the host has no object storage. Before this, every candidate failed at this step on
+    such a host, after all of its model calls had been spent."""
+    client = object_storage()
+    if client is None:
+        return body
     try:
         await asyncio.to_thread(
-            storage().put_object,
+            client.put_object,
             Bucket=get_settings().community_s3_bucket,
             Key=key,
             Body=body,
@@ -137,6 +158,7 @@ async def _put(key: str, body: bytes, content_type: str) -> None:
         )
     except (BotoCoreError, ClientError) as error:
         raise AppError(503, "news_asset_storage_unavailable", "新聞圖片儲存暫時無法使用") from error
+    return None
 
 
 async def ensure_assets(
@@ -167,8 +189,9 @@ async def ensure_assets(
         locale_suffix = f"-{LOCALE_TOKEN[locale]}" if locale else ""
         filename = f"{candidate.id.hex}-{variant}{locale_suffix}.{suffix}"
         key = f"news/{candidate.id}/{filename}"
-        await _put(key, body, content_type)
+        inline = await _put(key, body, content_type)
         if found is not None:
+            found.content = inline
             found.storage_key = key
             found.public_filename = filename
             found.content_type = content_type
@@ -189,6 +212,7 @@ async def ensure_assets(
             size=len(body),
             width=width,
             height=height,
+            content=inline,
         )
         session.add(row)
         existing[(variant, locale)] = row
@@ -271,6 +295,16 @@ async def public_asset(session: AsyncSession, filename: str) -> tuple[bytes, str
     )
     if row is None or row.content_type not in ALLOWED_CONTENT_TYPES:
         raise AppError(404, "news_asset_not_found", "找不到新聞圖片")
+    if row.content is not None:
+        body = row.content
+    else:
+        body = await _object_body(row)
+    if len(body) > MAX_PUBLIC_ASSET_BYTES or hashlib.sha256(body).hexdigest() != row.sha256:
+        raise AppError(404, "news_asset_not_found", "找不到新聞圖片")
+    return body, row.content_type, row.sha256
+
+
+async def _object_body(row: NewsAsset) -> bytes:
     try:
         response = await asyncio.to_thread(
             storage().get_object,
@@ -279,10 +313,8 @@ async def public_asset(session: AsyncSession, filename: str) -> tuple[bytes, str
         )
         if int(response.get("ContentLength", MAX_PUBLIC_ASSET_BYTES + 1)) > MAX_PUBLIC_ASSET_BYTES:
             raise AppError(404, "news_asset_not_found", "找不到新聞圖片")
-        body = await asyncio.to_thread(response["Body"].read, MAX_PUBLIC_ASSET_BYTES + 1)
+        body: bytes = await asyncio.to_thread(response["Body"].read, MAX_PUBLIC_ASSET_BYTES + 1)
         response["Body"].close()
     except (BotoCoreError, ClientError) as error:
         raise AppError(503, "news_asset_storage_unavailable", "新聞圖片儲存暫時無法使用") from error
-    if len(body) > MAX_PUBLIC_ASSET_BYTES or hashlib.sha256(body).hexdigest() != row.sha256:
-        raise AppError(404, "news_asset_not_found", "找不到新聞圖片")
-    return body, row.content_type, row.sha256
+    return body

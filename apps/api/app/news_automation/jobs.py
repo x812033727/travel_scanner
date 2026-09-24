@@ -10,10 +10,10 @@ from rq import Queue, Retry
 from sqlalchemy import select
 
 from app.admin.service import load_runtime_settings
-from app.community.media import storage
 from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.infra import get_redis
+from app.news_automation.assets import object_storage
 from app.news_automation.fetch import RedisHostRateLimiter, SafeNewsFetcher
 from app.news_automation.models import NewsAsset, NewsCandidate, NewsEvidence
 from app.news_automation.pipeline import process_candidate
@@ -169,16 +169,24 @@ async def cleanup_retention() -> dict[str, int]:
                 )
             )
         )
-        client = storage()
+        # Built only when an asset actually lives in S3: on a host without object
+        # storage the old unconditional client failed this job every day.
+        client = None
         for asset in assets:
-            try:
-                await asyncio.to_thread(
-                    client.delete_object,
-                    Bucket=get_settings().community_s3_bucket,
-                    Key=asset.storage_key,
-                )
-            except (BotoCoreError, ClientError):
-                continue
+            if asset.content is not None:
+                asset.content = None
+            else:
+                client = client or object_storage()
+                if client is None:
+                    continue
+                try:
+                    await asyncio.to_thread(
+                        client.delete_object,
+                        Bucket=get_settings().community_s3_bucket,
+                        Key=asset.storage_key,
+                    )
+                except (BotoCoreError, ClientError):
+                    continue
             asset.deleted_at = datetime.now(UTC)
             deleted_assets += 1
         evidence = await session.scalars(
