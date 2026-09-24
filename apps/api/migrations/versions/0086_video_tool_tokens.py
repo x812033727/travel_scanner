@@ -1,7 +1,7 @@
 """Tokens the local video pipeline uses to have this server synthesize narration.
 
-Revision ID: 0085_video_tool_tokens
-Revises: 0084_ai_news_automation
+Revision ID: 0086_video_tool_tokens
+Revises: 0085_news_asset_inline_content
 
 The pipeline in tools/video runs on the site owner's computer, while the Azure Speech key
 stays in the encrypted provider settings here. A token lets that one tool call
@@ -10,7 +10,7 @@ once when it is made, and revoking it is a timestamp rather than a delete so the
 trail keeps what existed.
 
 0001 still calls the current ``Base.metadata.create_all``, so a fresh database already has
-this table while one upgrading from 0084 does not; the create is guarded, as in 0053.
+this table while one upgrading from 0085 does not; the create is guarded, as in 0053.
 """
 
 from collections.abc import Sequence
@@ -19,8 +19,8 @@ import sqlalchemy as sa
 from alembic import op
 from sqlalchemy.dialects import postgresql
 
-revision: str = "0085_video_tool_tokens"
-down_revision: str | None = "0084_ai_news_automation"
+revision: str = "0086_video_tool_tokens"
+down_revision: str | None = "0085_news_asset_inline_content"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

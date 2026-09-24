@@ -17,7 +17,7 @@ scope:
   - apps/api/app/admin/service.py
   - apps/api/app/providers/usage_meter.py
   - apps/api/app/main.py
-  - apps/api/migrations/versions/0085_video_tool_tokens.py
+  - apps/api/migrations/versions/0086_video_tool_tokens.py
   - apps/api/tests/test_video_speech.py
   - apps/api/tests/test_admin_provider_settings.py
   - apps/web/app/api/video
@@ -64,7 +64,7 @@ scope:
 ## Steps
 
 - [x] `apps/api/app/video_speech/`：`ssml.py`（組 SSML、計費字元）、`azure.py`（合成、列出聲音）、`tokens.py`（產生、雜湊、驗證）、`schemas.py`、`admin_api.py`（兩個 router）。
-- [x] `VideoToolToken` 模型與遷移 `0085_video_tool_tokens`（只存 SHA-256，撤銷只寫時間戳）。
+- [x] `VideoToolToken` 模型與遷移 `0086_video_tool_tokens`（原本是 0085，和同時合併的 `0085_news_asset_inline_content` 撞號，改號接在它後面）（只存 SHA-256，撤銷只寫時間戳）。
 - [x] `config.py`：`azure_speech_*` 欄位。區域同時用 before-validator 和 pattern 檢查，因為主機名稱由區域組成；空字串視為「未設定」，所以 `.env.example` 的空值不會讓 API 起不來。
 - [x] `usage_meter.py`：`reserve_azure_speech_characters`（一次預留 N 個字元，超過預算就拒絕，Redis 失敗時也拒絕）、`release_…`、`azure_speech_usage_snapshot`（以 UTC 按月）。
 - [x] `admin/service.py`：卡片定義、區域與聲音的欄位檢查、就緒狀態、連線測試、用量、稽核動作篩選。
