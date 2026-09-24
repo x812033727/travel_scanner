@@ -67,3 +67,21 @@ YouTube 要自動產生章節列，說明欄的時間戳必須：第一個是 `0
 - 發布後 24 小時內看一次：章節列有沒有出現、字幕有沒有同步、說明欄連結可點。
 - 留言裡指出的錯誤：確認後在置頂留言與說明欄更正，記進 `<WORKDIR>/ERRATA.md`；嚴重錯誤由站主決定是否重剪。
 - 對應文章若要嵌入影片，另開一張票給 content-pipeline 處理，不在這個 skill 裡改文章。
+
+## 全自動路線的上架包
+
+全自動路線不用手寫 `upload.md`。站主核准成片之後，`node tools/video/cli.mjs package --slug <SLUG>` 會把要上傳的東西放進 `<VIDEO_WORKDIR>/<SLUG>/upload/`：
+
+- `final.mp4`、`thumbnail.jpg`
+- `captions/<語系>.srt`
+- `description.<語系>.txt`：第一行是標題，後面是說明，章節、文章連結、參考資料都已經組好
+- `metadata.json`、`UPLOAD.md`
+
+`UPLOAD.md` 就是這份清單的自動版本，請站主照著做。
+
+- **API 上傳會被鎖成私人**：YouTube 規定，沒通過稽核的 API 專案用 `videos.insert` 上傳的影片會被鎖成私人，而且不能申訴。所以 mp4 一律由站主在 Studio 上傳，先設成「私人」。其他語系的標題、說明和字幕，之後由 `youtube-sync` 用 API 補上（還沒做好之前，就在 Studio 手動上傳 SRT）。
+- **非原創內容政策**：YouTube 會停止營利「用模板量產、沒有創作者觀點」的 AI 內容。全自動影片最容易踩到這一條，所以每支影片都要做到：
+  - `brief.md` 的「站主觀點」由站主確認過；
+  - 至少有一段實際示範或實算；
+  - 版型的順序不要和其他支雷同，lint 會警告。
+- **AI 揭露**：通用的 TTS 聲音唸投影片，依 YouTube 說明推論不需要揭露；如果複製的是別人的真人聲音，就一定要揭露。判斷交給站主。
