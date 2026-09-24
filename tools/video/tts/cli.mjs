@@ -11,7 +11,7 @@ import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash }
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
-import { MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts } from "./requests.mjs";
+import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
 import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
@@ -98,10 +98,37 @@ function loadLexicon(root) {
   return readJson(lexiconFile(root), emptyLexicon());
 }
 
+/**
+ * Why the server cannot narrate with this request voice right now, or null. Azure voices must be
+ * on the admin card's allowlist; Gemini voices ("gemini:<name>") need only the site's Gemini key.
+ */
+function voiceProblem(status, voice) {
+  if (voice.startsWith(GEMINI_VOICE_PREFIX)) {
+    return status.gemini_configured ? null : "the site has no Gemini key yet (admin: API 與供應商設定 → AI 服務)";
+  }
+  if (!status.configured) return "the admin card 「Azure 語音（影片旁白）」 has no key or region yet";
+  return status.voices.includes(voice) ? null : `voice ${voice} is not on the admin card's allowlist`;
+}
+
+/** Characters left this month for the provider a voice belongs to, or null when unlimited or unknown. */
+function remainingFor(status, voice) {
+  if (voice.startsWith(GEMINI_VOICE_PREFIX)) {
+    return status.gemini_monthly_limit > 0 && status.gemini_used !== null ? status.gemini_monthly_limit - status.gemini_used : null;
+  }
+  return status.monthly_limit > 0 ? status.remaining : null;
+}
+
 async function audition(args, ctx) {
   const values = parseArgs({
     args,
-    options: { "text-file": { type: "string" }, voices: { type: "string" }, rate: { type: "string", default: "+0%" }, workdir: { type: "string" } },
+    options: {
+      "text-file": { type: "string" },
+      voices: { type: "string" },
+      rate: { type: "string", default: "+0%" },
+      style: { type: "string" },
+      model: { type: "string" },
+      workdir: { type: "string" },
+    },
     strict: true,
   }).values;
   if (!values["text-file"]) throw new UsageError("audition needs --text-file: a UTF-8 file with the sample narration");
@@ -110,23 +137,27 @@ async function audition(args, ctx) {
   const credentials = requireCredentials(ctx);
   const options = clientOptions(ctx, credentials);
   const status = await speechStatus(options);
-  if (!status.configured) throw new SpeechError("the admin card 「Azure 語音（影片旁白）」 has no key or region yet", { who: "owner" });
   const voices = values.voices ? values.voices.split(",").map((voice) => voice.trim()).filter(Boolean) : status.voices;
-  const refused = voices.filter((voice) => !status.voices.includes(voice));
-  if (refused.length) throw new SpeechError(`not on the admin card's allowlist: ${refused.join(", ")}`, { who: "owner" });
+  const problems = voices.map((voice) => voiceProblem(status, voice)).filter(Boolean);
+  if (problems.length) throw new SpeechError([...new Set(problems)].join("; "), { who: "owner" });
   const stamp = ctx.now().toISOString().replace(/[:.]/g, "-");
   const out = path.join(resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home }), "_audition", stamp);
   mkdirSync(out, { recursive: true });
   const parts = spokenParts(text, loadLexicon(ctx.root));
+  // "gemini:Sulafat" is not a valid Windows file name.
+  const fileName = (voice) => `${voice.replace(/[^A-Za-z0-9_.-]/g, "-")}.wav`;
   let billable = 0;
   for (const voice of voices) {
-    const result = await synthesize({ ...options, body: { voice, rate: values.rate, segments: [{ parts, break_after_ms: 0 }] } });
+    const fields = voice.startsWith(GEMINI_VOICE_PREFIX)
+      ? voiceFields({ provider: "gemini", name: voice.slice(GEMINI_VOICE_PREFIX.length), style: values.style, model: values.model })
+      : voiceFields({ provider: "azure", name: voice, rate: values.rate });
+    const result = await synthesize({ ...options, body: { ...fields, segments: [{ parts, break_after_ms: 0 }] } });
     requireNarrationFormat(parseWav(result.wav));
     billable += result.billable;
-    writeFileSync(path.join(out, `${voice}.wav`), result.wav);
-    ctx.stdout.write(`${voice}: ${path.join(out, `${voice}.wav`)}\n`);
+    writeFileSync(path.join(out, fileName(voice)), result.wav);
+    ctx.stdout.write(`${voice}: ${path.join(out, fileName(voice))}\n`);
   }
-  const rows = voices.map((voice) => `<li><p>${escapeHtml(voice)}</p><audio controls preload="none" src="${encodeURIComponent(voice)}.wav"></audio></li>`).join("");
+  const rows = voices.map((voice) => `<li><p>${escapeHtml(voice)}</p><audio controls preload="none" src="${encodeURIComponent(fileName(voice))}"></audio></li>`).join("");
   writeFileSync(
     path.join(out, "index.html"),
     `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>試聽</title><style>body{font-family:system-ui,sans-serif;margin:2rem;max-width:48rem}li{margin:1rem 0}audio{width:100%}</style><h1>旁白試聽</h1><p>${escapeHtml(text)}</p><ol>${rows}</ol></html>\n`,
@@ -154,6 +185,7 @@ async function tts(args, ctx) {
     return EXIT.lint;
   }
   const { doc, lexicon } = project;
+  const voice = voiceFields(doc.voice).voice;
   const requests = planRequests(doc, lexicon);
   const estimate = requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
@@ -170,7 +202,9 @@ async function tts(args, ctx) {
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
       const status = await speechStatus(clientOptions(ctx, credentials));
-      ctx.stdout.write(`server: ${status.configured ? "configured" : "NOT configured"}; this month ${status.used ?? "?"} of ${status.monthly_limit || "unlimited"}; voice ${doc.voice.name} ${status.voices.includes(doc.voice.name) ? "allowed" : "NOT allowed"}\n`);
+      const problem = voiceProblem(status, voice);
+      const remaining = remainingFor(status, voice);
+      ctx.stdout.write(`server: voice ${voice} ${problem ? `NOT ready: ${problem}` : "ready"}; ${remaining === null ? "no monthly limit" : `${remaining} characters left this month`}\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before synthesizing\n");
     }
@@ -181,10 +215,11 @@ async function tts(args, ctx) {
   const options = clientOptions(ctx, credentials);
   if (pending.length) {
     const status = await speechStatus(options);
-    if (!status.configured) throw new SpeechError("the admin card 「Azure 語音（影片旁白）」 has no key or region yet", { who: "owner" });
-    if (!status.voices.includes(doc.voice.name)) throw new SpeechError(`voice ${doc.voice.name} is not on the admin card's allowlist`, { who: "owner" });
-    if (status.remaining !== null && status.monthly_limit > 0 && pendingEstimate > status.remaining) {
-      throw new SpeechError(`about ${pendingEstimate} billable characters needed, ${status.remaining} left this month`, { code: "video_speech_budget_exhausted" });
+    const problem = voiceProblem(status, voice);
+    if (problem) throw new SpeechError(problem, { who: "owner" });
+    const remaining = remainingFor(status, voice);
+    if (remaining !== null && pendingEstimate > remaining) {
+      throw new SpeechError(`about ${pendingEstimate} billable characters needed, ${remaining} left this month`, { code: "video_speech_budget_exhausted" });
     }
   }
   mkdirSync(audioDir, { recursive: true });

@@ -44,6 +44,9 @@ ODSAY_BILLING_TIMEZONE = ZoneInfo("Asia/Seoul")
 ODSAY_OPERATIONS = ("search_pub_trans_path",)
 YOUTUBE_OPERATIONS = ("search_list", "videos_list")
 AZURE_SPEECH_PROVIDER = "azure_speech"
+# Gemini narration shares the speech meter under its own key; ``total`` counts the text
+# characters sent, since Gemini bills tokens that cannot be known before the call.
+GEMINI_SPEECH_PROVIDER = "gemini_speech"
 # Azure bills speech per calendar month in UTC; ``total`` counts billable characters and the
 # operation field counts requests.
 AZURE_SPEECH_BILLING_TIMEZONE = ZoneInfo("UTC")
@@ -992,8 +995,8 @@ async def odsay_usage_snapshot(
     )
 
 
-def _azure_speech_usage_key(now: datetime) -> str:
-    return f"provider-usage:{AZURE_SPEECH_PROVIDER}:{now:%Y-%m}"
+def _speech_usage_key(now: datetime, provider: str = AZURE_SPEECH_PROVIDER) -> str:
+    return f"provider-usage:{provider}:{now:%Y-%m}"
 
 
 def _azure_speech_expiry(billing_month: datetime) -> datetime:
@@ -1008,6 +1011,7 @@ async def reserve_azure_speech_characters(
     characters: int,
     monthly_budget: int,
     *,
+    provider: str = AZURE_SPEECH_PROVIDER,
     now: datetime | None = None,
 ) -> bool:
     """Atomically reserve billable characters against the calendar-month budget.
@@ -1021,7 +1025,7 @@ async def reserve_azure_speech_characters(
         raise ValueError("characters must not be negative")
     observed_at = now or datetime.now(UTC)
     billing_month = observed_at.astimezone(AZURE_SPEECH_BILLING_TIMEZONE)
-    key = _azure_speech_usage_key(billing_month)
+    key = _speech_usage_key(billing_month, provider)
     try:
         async with redis.pipeline(transaction=True) as pipeline:
             while True:
@@ -1047,11 +1051,14 @@ async def release_azure_speech_characters(
     redis: Redis,
     characters: int,
     *,
+    provider: str = AZURE_SPEECH_PROVIDER,
     now: datetime | None = None,
 ) -> None:
-    """Give back a reservation whose request Azure refused, so it does not count as billed."""
+    """Give back a reservation whose request was refused, so it does not count as billed."""
     observed_at = now or datetime.now(UTC)
-    key = _azure_speech_usage_key(observed_at.astimezone(AZURE_SPEECH_BILLING_TIMEZONE))
+    key = _speech_usage_key(
+        observed_at.astimezone(AZURE_SPEECH_BILLING_TIMEZONE), provider
+    )
     try:
         async with redis.pipeline(transaction=False) as pipeline:
             pipeline.hincrby(key, "total", -characters)
@@ -1065,13 +1072,14 @@ async def azure_speech_usage_snapshot(
     redis: Redis,
     monthly_limit: int = 0,
     *,
+    provider: str = AZURE_SPEECH_PROVIDER,
     history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
     now: datetime | None = None,
 ) -> ProviderUsageSnapshot:
     """Billable characters this UTC month, as counted before each request is sent."""
     return await _monthly_request_snapshot(
         redis,
-        key_for=_azure_speech_usage_key,
+        key_for=lambda moment: _speech_usage_key(moment, provider),
         operations=AZURE_SPEECH_OPERATIONS,
         billing_timezone=AZURE_SPEECH_BILLING_TIMEZONE,
         billing_timezone_name="UTC",

@@ -540,6 +540,13 @@ class Settings(BaseSettings):
     # 500,000 so a month of videos cannot turn into a bill.
     azure_speech_monthly_character_limit: int = Field(default=450_000, ge=0, le=100_000_000)
     azure_speech_timeout_seconds: float = Field(default=90.0, ge=5, le=280)
+    # Gemini narration uses the site's Gemini key (hotspot_guide_gemini_*). Its month counts
+    # the text characters sent: 300,000 is about a hundred 10-minute videos, roughly US$13 at
+    # the 2026 price of gemini-3.8-flash-tts.
+    video_speech_gemini_monthly_character_limit: int = Field(
+        default=300_000, ge=0, le=100_000_000
+    )
+    video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None

@@ -20,16 +20,27 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
+from app.config import Settings
 from app.db import get_session
 from app.infra import client_ip, enforce_named_rate_limit, get_redis
 from app.models import AdminAuditLog, VideoToolToken
 from app.problems import AppError
 from app.providers.usage_meter import (
+    GEMINI_SPEECH_PROVIDER,
     azure_speech_usage_snapshot,
     release_azure_speech_characters,
     reserve_azure_speech_characters,
 )
 from app.video_speech.azure import OUTPUT_FORMAT, AzureSpeech, SpeechUpstreamError
+from app.video_speech.gemini import (
+    DEFAULT_GEMINI_TTS_MODEL,
+    GEMINI_TTS_MODELS,
+    PREBUILT_VOICES,
+    VOICE_PREFIX,
+    GeminiSpeech,
+    gemini_voice,
+    speech_text,
+)
 from app.video_speech.pairing import (
     PAIRING_TTL_SECONDS,
     POLL_INTERVAL_SECONDS,
@@ -265,7 +276,13 @@ async def speech_status(tool: VideoTool, session: Session) -> SpeechStatus:
     _ = tool
     settings = await load_runtime_settings(session)
     limit = settings.azure_speech_monthly_character_limit
-    usage = await azure_speech_usage_snapshot(get_redis(), limit)
+    redis = get_redis()
+    usage = await azure_speech_usage_snapshot(redis, limit)
+    gemini_limit = settings.video_speech_gemini_monthly_character_limit
+    gemini_usage = await azure_speech_usage_snapshot(
+        redis, gemini_limit, provider=GEMINI_SPEECH_PROVIDER
+    )
+    gemini_ready = bool(settings.hotspot_guide_gemini_api_key)
     return SpeechStatus(
         configured=settings.azure_speech_configured,
         region=settings.azure_speech_region,
@@ -275,6 +292,80 @@ async def speech_status(tool: VideoTool, session: Session) -> SpeechStatus:
         monthly_limit=limit,
         used=usage.used,
         remaining=usage.remaining,
+        gemini_configured=gemini_ready,
+        gemini_models=list(GEMINI_TTS_MODELS) if gemini_ready else [],
+        gemini_voices=[f"{VOICE_PREFIX}{name}" for name in PREBUILT_VOICES] if gemini_ready else [],
+        gemini_monthly_limit=gemini_limit,
+        gemini_used=gemini_usage.used,
+    )
+
+
+async def _synthesize_with_gemini(
+    payload: SpeechRequest, voice: str, segments: tuple[Segment, ...], settings: Settings
+) -> Response:
+    """The same contract as Azure's path: WAV back, characters counted against a month."""
+    key = settings.hotspot_guide_gemini_api_key
+    if not key:
+        raise AppError(
+            503,
+            "video_speech_not_configured",
+            "網站的 Gemini 金鑰還沒設定：請在「API 與供應商設定 → AI 服務」填 Gemini 金鑰",
+        )
+    if not voice:
+        raise AppError(422, "video_speech_voice_not_allowed", "Gemini 聲音名稱的格式不對")
+    model = payload.model or DEFAULT_GEMINI_TTS_MODEL
+    if model not in GEMINI_TTS_MODELS:
+        raise AppError(
+            422,
+            "video_speech_model_not_allowed",
+            f"Gemini 語音模型只能是 {'、'.join(GEMINI_TTS_MODELS)}",
+        )
+    text = speech_text(segments)
+    characters = len(text)
+    limit = settings.video_speech_gemini_monthly_character_limit
+    redis = get_redis()
+    if not await reserve_azure_speech_characters(
+        redis, characters, limit, provider=GEMINI_SPEECH_PROVIDER
+    ):
+        raise AppError(
+            429,
+            "video_speech_budget_exhausted",
+            f"本月的 Gemini 語音字數預算（{limit} 字）不夠這次的 {characters} 字；"
+            "可調高 VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT，或等下個月",
+        )
+    speech = GeminiSpeech(
+        base_url=settings.hotspot_guide_gemini_base_url,
+        key=key,
+        timeout_seconds=settings.video_speech_gemini_timeout_seconds,
+    )
+    try:
+        audio = await speech.synthesize(text, voice, payload.style, model)
+    except SpeechUpstreamError as error:
+        await release_azure_speech_characters(redis, characters, provider=GEMINI_SPEECH_PROVIDER)
+        if error.status == 429:
+            raise AppError(
+                429,
+                "video_speech_upstream_busy",
+                "Gemini 語音暫時忙碌或達到用量上限，請稍後重試",
+                headers={"Retry-After": error.retry_after or "10"},
+            ) from error
+        if error.status in {401, 403}:
+            raise AppError(
+                502,
+                "video_speech_upstream_rejected_key",
+                "Gemini 拒絕了網站的金鑰（金鑰的 API 或 IP 限制可能不包含語音）",
+            ) from error
+        if error.status in {400, 404}:
+            raise AppError(
+                422,
+                "video_speech_rejected",
+                "Gemini 無法用這個聲音或模型合成這段內容",
+            ) from error
+        raise AppError(502, "video_speech_upstream_failed", "Gemini 語音暫時無法使用") from error
+    return Response(
+        content=audio,
+        media_type="audio/wav",
+        headers={"X-Billable-Characters": str(characters), "Cache-Control": "no-store"},
     )
 
 
@@ -282,6 +373,25 @@ async def speech_status(tool: VideoTool, session: Session) -> SpeechStatus:
 async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Session) -> Response:
     _ = tool
     settings = await load_runtime_settings(session)
+    characters_of_text = sum(
+        len(part.text) for segment in payload.segments for part in segment.parts
+    )
+    if characters_of_text > MAX_REQUEST_CHARACTERS:
+        raise AppError(
+            413,
+            "video_speech_request_too_long",
+            f"一次最多 {MAX_REQUEST_CHARACTERS} 字；這次 {characters_of_text} 字，請分段送出",
+        )
+    segments = tuple(
+        Segment(
+            parts=tuple(Part(text=part.text, alias=part.alias) for part in segment.parts),
+            break_after_ms=segment.break_after_ms,
+        )
+        for segment in payload.segments
+    )
+    voice = gemini_voice(payload.voice)
+    if voice is not None:
+        return await _synthesize_with_gemini(payload, voice, segments, settings)
     if not (
         settings.azure_speech_configured
         and settings.azure_speech_key
@@ -299,22 +409,6 @@ async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Se
             "video_speech_voice_not_allowed",
             f"聲音 {payload.voice} 不在後台允許的清單裡",
         )
-    characters_of_text = sum(
-        len(part.text) for segment in payload.segments for part in segment.parts
-    )
-    if characters_of_text > MAX_REQUEST_CHARACTERS:
-        raise AppError(
-            413,
-            "video_speech_request_too_long",
-            f"一次最多 {MAX_REQUEST_CHARACTERS} 字；這次 {characters_of_text} 字，請分段送出",
-        )
-    segments = tuple(
-        Segment(
-            parts=tuple(Part(text=part.text, alias=part.alias) for part in segment.parts),
-            break_after_ms=segment.break_after_ms,
-        )
-        for segment in payload.segments
-    )
     document, billed = build_ssml(payload.voice, segments, payload.rate)
     characters = billable_characters(billed)
     limit = settings.azure_speech_monthly_character_limit

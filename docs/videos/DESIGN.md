@@ -88,6 +88,17 @@
 - `GET /api/video/speech/status` 回傳允許的聲音、上限與本月用量。
 - 程式在 `apps/api/app/video_speech/` 與 `apps/web/app/api/video/`（`speech/`、`pairings/`）。
 
+**第二個聲音供應商：Gemini**（2026-09-24 加入）。站主試聽 Azure 七個聲音後，覺得最好的 Ava 仍然「語調太平、像在念稿」，所以加上 Gemini 的模型式語音來比較：
+- 用網站已存的 Gemini 金鑰（`hotspot_guide_gemini_*`，AI 行程規劃與文章搜尋也用這把），站主不用新開帳號。這把金鑰限了伺服器的 IP，所以在 AI Studio 裡試不了，只能經伺服器。
+- `video.json` 寫 `"voice": {"provider": "gemini", "name": "Sulafat", "style": "…"}`；送到伺服器的聲音名稱是 `gemini:Sulafat`。
+  - `style` 是一句文字，描述要怎麼唸（例如「輕鬆、像跟朋友解釋」）。
+  - 沒有 `rate`，語速寫在 `style` 裡。
+  - `model` 可選 `gemini-3.8-flash-tts`（預設）或 `gemini-3.8-flash-lite-tts`。
+- 沒有 SSML：術語的唸法直接換進文字裡；句間停頓寫成 Gemini 的 `<long pause>`／`<short pause>` 標籤；文字裡的角括號一律拿掉，避免被當成標籤。
+- Gemini 回傳 24 kHz，本機工具用視窗化 sinc 內插升到 48 kHz，時間軸與後面的步驟都不用改。
+- 每月用量以送出的文字字數計，和 Azure 分開算，預設上限 30 萬字（`VIDEO_SPEECH_GEMINI_MONTHLY_CHARACTER_LIMIT`）。後台卡片還沒有這一欄。
+- 2026-09-24 在 AI Studio 的聲音庫篩選「Chinese」，找不到任何聲音；口音選單也沒有台灣。台灣腔只能靠 `style`，或之後用「聲音設計」造一個。
+
 每個場景送一次請求，句間固定停頓，再在 Node 裡找靜音切段。逐句分開合成會讓每句語調重新起頭，聽起來像在念清單；切段對不上時，該場景退回逐句合成。一次最多 1,500 字，更長的場景由工具拆開。發音一律用 `<sub alias>`（也就是 part 的 `alias`）；zh-TW 的 `<phoneme>` 音標集沒有官方文件，不用。
 
 **畫面**：HTML 版型，由 Playwright 截 1920×1080 PNG。repo 已有這個做法（`tools/claude-code-series/render-art.mjs`）。一個投影片狀態一張，逐條出現的轉場用 Web Animations 固定時間點截短影格。字型用根目錄 devDependencies 的 `@fontsource-variable/noto-sans-tc`、`@fontsource-variable/jetbrains-mono`（OFL），由 `page.route` 從本機提供，所有網路請求都擋掉。不用 Remotion：它不支援 Windows ARM64（arm64 Node 會直接拒絕），公司規模大了還要授權費。

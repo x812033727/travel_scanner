@@ -22,8 +22,14 @@ class SpeechSegmentIn(BaseModel):
 
 class SpeechRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
-    voice: str = Field(min_length=3, max_length=80)
+    # An Azure voice name, or "gemini:<voice>" for Gemini.
+    voice: str = Field(min_length=3, max_length=90)
+    # Azure only; Gemini takes its pace from the style.
     rate: str = Field(default="+0%", pattern=r"^[+-]\d{1,2}%$")
+    # Gemini only: how to deliver, e.g. "relaxed, like explaining to a friend".
+    style: str | None = Field(default=None, min_length=1, max_length=400)
+    # Gemini only: one of GEMINI_TTS_MODELS; the default model when omitted.
+    model: str | None = Field(default=None, min_length=3, max_length=60)
     segments: list[SpeechSegmentIn] = Field(min_length=1, max_length=200)
 
 
@@ -36,6 +42,13 @@ class SpeechStatus(BaseModel):
     monthly_limit: int
     used: int | None
     remaining: int | None
+    # Gemini narration: available when the site's Gemini key is set. Its month counts text
+    # characters, separately from Azure's billable characters.
+    gemini_configured: bool = False
+    gemini_models: list[str] = []
+    gemini_voices: list[str] = []
+    gemini_monthly_limit: int = 0
+    gemini_used: int | None = None
 
 
 class VideoToolTokenCreate(BaseModel):

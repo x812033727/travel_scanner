@@ -3,6 +3,8 @@
 // Failures are sorted by who can fix them, which is what the CLI's exit code reports: the owner
 // (a revoked token, the card not filled in, a voice not on the allowlist), the service (budget
 // spent, Azure down), or nobody right now (throttling, retried with the server's Retry-After).
+import { toNarrationRate } from "./wav.mjs";
+
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
 
 export class SpeechError extends Error {
@@ -73,5 +75,6 @@ export async function synthesize({ body, ...options }) {
     path: "speech",
     init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) },
   });
-  return { wav: Buffer.from(await response.arrayBuffer()), billable: Number(response.headers.get("x-billable-characters") || 0) };
+  // Gemini voices come back at 24 kHz; everything downstream works on the 48 kHz grid.
+  return { wav: toNarrationRate(Buffer.from(await response.arrayBuffer())), billable: Number(response.headers.get("x-billable-characters") || 0) };
 }
