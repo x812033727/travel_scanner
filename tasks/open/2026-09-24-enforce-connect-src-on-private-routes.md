@@ -1,74 +1,95 @@
 ---
 id: 2026-09-24-enforce-connect-src-on-private-routes
-title: Enforce connect-src on private routes
-status: open
+title: Administrators never load third-party scripts (was: enforce connect-src on private routes)
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-24T05:09:19Z
 created_at: 2026-09-24T02:30:51Z
 completed_at:
-branch:
+branch: claude/admins-skip-third-party-scripts
 depends_on:
   - 2026-09-23-third-party-scripts-on-privileged-routes
 scope:
-  - apps/web/lib/csp.ts
-  - apps/web/lib/csp.test.ts
-  - apps/web/proxy.ts
+  - apps/web/lib/third-party-audience.ts
+  - apps/web/components/third-party-audience.tsx
+  - apps/web/components/third-party-audience.test.tsx
+  - apps/web/components/travelpayouts-drive.tsx
+  - apps/web/components/travelpayouts-drive.test.tsx
+  - apps/web/components/analytics-provider.tsx
+  - apps/web/components/analytics-provider.test.tsx
+  - apps/web/app/[locale]/layout.tsx
 ---
 
-# Enforce connect-src on private routes
+# Administrators never load third-party scripts (was: enforce connect-src on private routes)
 
 ## Why
 
-The follow-up step of `2026-09-23-third-party-scripts-on-privileged-routes`, filed on its
-own so it is not lost when that ticket closes.
+The residual risk after `2026-09-23-third-party-scripts-on-privileged-routes` (security review
+2026-09-23, finding M2) is a vendor script on a *public* page running in a signed-in
+administrator's browser. Cookies follow the request, not the page. So that script can call
+`/api/travel/admin/...` same-origin with the owner's session and read the answer. No vendor
+compromise is known; this is the blast radius if one happens.
 
-That ticket keeps Travelpayouts Drive and GA4's `gtag.js` out of every document that shows
-a private page (`apps/web/lib/private-routes.ts`). It does not close the whole exposure.
-A vendor script running on a *public* page, in the browser of a signed-in owner, can still
-call `/api/travel/admin/...` same-origin with the owner's cookies. Cookies follow the request
-URL, not the page. It can then send the answer anywhere, because `connect-src` is only
-Report-Only (`apps/web/lib/csp.ts`, `buildStrictContentSecurityPolicy`). An enforced
-`connect-src` stops that last step, the exfiltration.
+**This ticket was first filed as "enforce `connect-src` on private routes", and that premise
+was wrong.** Found 2026-09-24 when starting the work:
 
-The private routes are the right place to start. After the 2026-09-23 change no
-third-party script runs in their documents, so their legitimate connections are the site
-itself plus the few first-party integrations those pages use. `csp.ts` explains why
-enforcing `connect-src` site-wide is not safe yet: it names no Google Maps host, and no
-local run can prove the map works.
+- After PR #711 no third-party script runs in a private document at all. `script-src` is
+  already enforced (nonce + `'strict-dynamic'`), so an injected script does not run either.
+  A `connect-src` on private routes would guard against a risk that is essentially gone.
+- The remaining risk plays out in a public document. Enforcing `connect-src` there would
+  still have to allow GA and Travelpayouts' own hosts, and a compromised vendor script can
+  send the data to those.
+- Inventory for the record: of the private pages, only a trip's map (Google Maps JS,
+  `components/route-map.tsx`; Naver Maps) connects to another origin. Everything else is
+  same-origin. The site has no CSP report endpoint (`report-uri`, `report-to`), so
+  Report-Only violations reach nobody.
+
+What closes the risk is the owner's decision of 2026-09-24: an administrator's browser never
+loads Travelpayouts Drive or GA4's `gtag.js`, on any page. Ordinary readers are unaffected.
 
 ## Definition of done
 
-- [ ] Documents for the sections in `PRIVATE_SECTIONS` (`lib/private-routes.ts`) get an
-      enforced `connect-src` that lists only what those pages actually connect to.
-- [ ] Nothing on those pages breaks in production: trips (maps, routes), account, admin,
-      LINE linking, share.
-- [ ] `csp.test.ts` pins the enforced directive for a private route and proves public
-      routes are unchanged.
+- [x] With an administrator signed in, no page (public or private) requests `emrldtp.cc` or
+      `googletagmanager.com`.
+- [x] Signed-out readers load both scripts on public pages as before. Signed-in readers who
+      are not administrators do too, once `/auth/me` has answered.
+- [x] Tests prove the admin, unknown-role and late-clearance cases.
 
 ## Steps
 
-- [ ] List every `connect-src` origin the private sections hit. **Nothing collects the
-      Report-Only violations today**: there is no `report-uri`, `report-to` or
-      `Reporting-Endpoints` anywhere in `csp.ts`, `proxy.ts` or `next.config.ts` (checked
-      2026-09-24), so they only reach each visitor's own console. Either add a small
-      first-party report endpoint first and collect for a week, or walk every private page
-      in production with DevTools open, including a trip with a real map key.
-- [ ] Build the enforced directive from that list. `proxy.ts` already knows the path
-      (`adsenseRequestGate` is the precedent for a per-route policy).
-- [ ] Watch the planner's map and route calls closely; Google Maps hosts are the known gap.
+- [x] `lib/third-party-audience.ts`: a document-level state (`pending`, `allowed`, `blocked`)
+      that both script components read. It is a module store because both sit above the
+      session provider in the layout. `blocked` is final for the document: the session
+      provider remounts on sign-out, so component state would forget it.
+- [x] `components/third-party-audience.tsx` inside `HeaderSessionProvider` sets it from
+      `/auth/me`. On an ads document, which never asks `/auth/me`, a session cookie means
+      `blocked`.
+- [x] `TravelpayoutsDrive` and `AnalyticsProvider` load only when `allowed`. GA4 starting late
+      sends the page view first-party analytics already counted, once.
+- [x] Tests; full web checks.
 
 ## How to verify
 
 ```bash
-cd apps/web && npx vitest run lib/csp.test.ts && npx playwright test e2e/csp.spec.ts --project=desktop-chromium
+cd apps/web && npx vitest run components/third-party-audience.test.tsx components/travelpayouts-drive.test.tsx components/analytics-provider.test.tsx
 ```
 
-In production, open a trip with the map and the admin console with DevTools open: no CSP
-violation in the console.
+On production after a deploy:
+
+1. Signed out: an article page loads `emrldtp.cc` and `gtag.js`.
+2. Signed in as the administrator (the owner signs in inside the browser): the same article
+   and the home page load neither.
 
 ## Notes
 
-- Filed 2026-09-24 while closing `2026-09-23-third-party-scripts-on-privileged-routes`
-  (security review 2026-09-23, finding M2).
+- Considered and not chosen, 2026-09-24:
+  - Enforcing `connect-src` on private routes (above).
+  - Dropping the scripts for every signed-in reader. That would also shield members' trips
+    from a compromised vendor, but costs Drive link conversion and GA for all members. The
+    owner chose administrators only; revisit if members' data becomes the concern.
+- 2026-09-24: done on `claude/admins-skip-third-party-scripts`. Full web checks pass (300 files,
+  3,274 tests; lint, typecheck, i18n). The admin, unknown-role and late-clearance tests fail on the
+  pre-change components. The production check as an administrator needs the owner to sign in inside
+  a browser; it is listed under How to verify and reported in the session, not assumed here.
