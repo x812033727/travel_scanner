@@ -9,9 +9,12 @@ from redis.asyncio import Redis
 from sqlalchemy import and_, case, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
+from app.ai.catalog import MODEL_CATALOG, Capability
 from app.guides import admin_service
 from app.guides.models import GuideArticleLocale
 from app.guides.schemas import GuideDocument
+from app.hotspots.ai_search import research_model
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
 from app.news_automation.assets import mark_assets_public
@@ -39,6 +42,8 @@ from app.news_automation.schemas import (
     CandidateSummary,
     EvidenceView,
     GateView,
+    ModelOptionView,
+    ProviderName,
     RunView,
     SettingsView,
     SettingsWrite,
@@ -50,6 +55,31 @@ from app.news_automation.schemas import (
 )
 from app.news_automation.validation import revalidate_evidence, validate_source_configuration
 from app.problems import AppError
+
+# The news stages run through the guide-search adapters in app.hotspots.ai_search, so a
+# vendor's dropdown offers the catalog models that can serve that adapter.
+MODEL_CAPABILITY: dict[ProviderName, Capability] = {
+    "openai": "responses_json_schema_strict",
+    "anthropic": "anthropic_structured_output",
+    "minimax": "responses_json_schema_strict",
+    "gemini": "gemini_structured",
+}
+
+
+def model_options() -> dict[ProviderName, list[ModelOptionView]]:
+    return {
+        provider: [
+            ModelOptionView(
+                value=entry.id,
+                label=entry.label,
+                description=entry.note,
+                status=entry.status,
+            )
+            for entry in MODEL_CATALOG[provider]
+            if capability in entry.capabilities
+        ]
+        for provider, capability in MODEL_CAPABILITY.items()
+    }
 
 
 def audit(
@@ -292,6 +322,9 @@ async def settings_view(session: AsyncSession) -> SettingsView:
     gates = {
         vertical: await gate_for(session, row, vertical) for vertical in ("ai", "tech", "crypto")
     }
+    # An empty model means the guide search's model for that vendor, else the planner's,
+    # as configured in the admin AI settings; the job resolves it the same way.
+    runtime = await load_runtime_settings(session)
     return SettingsView(
         enabled=row.enabled,
         mode=cast(Any, row.mode),
@@ -311,6 +344,10 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         prompt_version=row.prompt_version,
         policy_version=row.policy_version,
         gates=gates,
+        model_options=model_options(),
+        default_models={
+            provider: research_model(runtime, provider) for provider in MODEL_CAPABILITY
+        },
         updated_at=row.updated_at,
     )
 

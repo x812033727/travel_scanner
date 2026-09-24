@@ -11,6 +11,9 @@ const english = {
   enabled: "Enabled", disabled: "Disabled", gate: "Activation gate", eligible: "Eligible", notEligible: "Not eligible",
   confidence: "Confidence", status: "Status", error: "Could not complete the request.", saved: "Saved.",
   majorError: "Major factual or licensing error", incident: "Report published major error", noDocument: "No draft exists for this locale.",
+  writer: "Writing model", verifier: "Fact-checking model", provider: "Vendor", model: "Model",
+  defaultModel: "Default", customModel: "Custom…", customModelLabel: "Custom model ID",
+  previewModel: "preview", retiredModel: "retired",
 };
 type Copy = typeof english;
 const catalog: Record<string, Copy> = {
@@ -28,6 +31,9 @@ const catalog: Record<string, Copy> = {
     enabled: "啟用", disabled: "停用", gate: "啟用門檻", eligible: "已達標", notEligible: "未達標",
     confidence: "信心", status: "狀態", error: "操作未完成。", saved: "已儲存。",
     majorError: "重大事實或授權錯誤", incident: "回報發布後重大錯誤", noDocument: "這個語系尚無草稿。",
+    writer: "撰稿模型", verifier: "查核模型", provider: "供應商", model: "模型",
+    defaultModel: "預設", customModel: "自訂…", customModelLabel: "自訂模型 ID",
+    previewModel: "預覽版", retiredModel: "已停用",
   },
   "zh-CN": {
     ...english, nav: "AI 自动新闻", title: "AI 每小时自动新闻", description: "管理来源、五语草稿、证据、Jev 判断与受控发布。",
@@ -39,6 +45,9 @@ const catalog: Record<string, Copy> = {
     role: "角色", vertical: "分类", interval: "间隔（分钟）", add: "新增", scanNow: "立即扫描", validate: "验证来源", enabled: "启用", disabled: "停用",
     gate: "启用门槛", eligible: "已达标", notEligible: "未达标", confidence: "置信度", status: "状态", error: "操作未完成。",
     saved: "已保存。", majorError: "重大事实或授权错误", incident: "报告发布后重大错误", noDocument: "此语言尚无草稿。",
+    writer: "撰稿模型", verifier: "核查模型", provider: "供应商", model: "模型",
+    defaultModel: "默认", customModel: "自定义…", customModelLabel: "自定义模型 ID",
+    previewModel: "预览版", retiredModel: "已停用",
   },
   ja: {
     ...english, nav: "AI 自動ニュース", title: "AI 時間別自動ニュース", description: "情報源、5言語原稿、証拠、Jev判断、安全な公開を管理します。",
@@ -50,6 +59,9 @@ const catalog: Record<string, Copy> = {
     format: "形式", role: "役割", vertical: "分類", interval: "間隔（分）", add: "追加", scanNow: "今すぐスキャン", validate: "情報源を検証", enabled: "有効", disabled: "無効",
     gate: "有効化ゲート", eligible: "達成", notEligible: "未達", confidence: "信頼度", status: "状態", error: "処理を完了できませんでした。",
     saved: "保存しました。", majorError: "重大な事実・ライセンス誤り", incident: "公開後の重大エラーを報告", noDocument: "この言語の原稿はありません。",
+    writer: "執筆モデル", verifier: "検証モデル", provider: "ベンダー", model: "モデル",
+    defaultModel: "既定", customModel: "カスタム…", customModelLabel: "カスタムモデル ID",
+    previewModel: "プレビュー", retiredModel: "提供終了",
   },
   ko: {
     ...english, nav: "AI 자동 뉴스", title: "AI 시간별 자동 뉴스", description: "소스, 5개 언어 초안, 근거, Jev 판단과 안전한 게시를 관리합니다.",
@@ -61,6 +73,9 @@ const catalog: Record<string, Copy> = {
     format: "형식", role: "역할", vertical: "분류", interval: "간격(분)", add: "추가", scanNow: "지금 스캔", validate: "소스 검증", enabled: "활성", disabled: "비활성",
     gate: "활성화 기준", eligible: "충족", notEligible: "미충족", confidence: "신뢰도", status: "상태", error: "요청을 완료하지 못했습니다.",
     saved: "저장했습니다.", majorError: "중대한 사실 또는 라이선스 오류", incident: "게시 후 중대 오류 신고", noDocument: "이 언어 초안이 없습니다.",
+    writer: "작성 모델", verifier: "검증 모델", provider: "공급업체", model: "모델",
+    defaultModel: "기본값", customModel: "직접 입력…", customModelLabel: "직접 입력한 모델 ID",
+    previewModel: "프리뷰", retiredModel: "지원 종료",
   },
 };
 

@@ -1,0 +1,176 @@
+{
+  "reviewed_on": "2026-09-24",
+  "sources": [
+    {
+      "name": "OpenAI News",
+      "url": "https://openai.com/news/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Company announcements; about 2 a day. Press articles link here as the primary source."
+    },
+    {
+      "name": "Google AI blog",
+      "url": "https://blog.google/technology/ai/rss/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Google product and research AI announcements on blog.google."
+    },
+    {
+      "name": "Google DeepMind blog",
+      "url": "https://deepmind.google/blog/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Model and research releases; a few a week."
+    },
+    {
+      "name": "Anthropic news",
+      "url": "https://www.anthropic.com/news",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"include_path_prefixes": ["/news/"], "minimum_title_length": 12},
+      "note": "No RSS feed; the news index page is read as an HTML listing."
+    },
+    {
+      "name": "Hugging Face blog",
+      "url": "https://huggingface.co/blog/feed.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Open-model releases; many posts are tutorials the writer will decline."
+    },
+    {
+      "name": "NVIDIA blog",
+      "url": "https://blogs.nvidia.com/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "mixed",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "AI and hardware announcements; the vertical is chosen per story."
+    },
+    {
+      "name": "Apple Newsroom",
+      "url": "https://www.apple.com/newsroom/rss-feed.rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Apple product and platform announcements."
+    },
+    {
+      "name": "Microsoft official blog",
+      "url": "https://blogs.microsoft.com/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "mixed",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Company announcements. The separate AI feed (blogs.microsoft.com/ai/feed/) answered 4xx on 2026-09-24."
+    },
+    {
+      "name": "Ethereum Foundation blog",
+      "url": "https://blog.ethereum.org/feed.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Protocol upgrades and network announcements; low volume."
+    },
+    {
+      "name": "CFTC press releases",
+      "url": "https://www.cftc.gov/RSS/RSSGP/rssgp.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "US derivatives regulator; most releases are not about crypto and are declined by the writer. SEC press releases were left out: their pages extract to a 248-character access notice."
+    },
+    {
+      "name": "TechCrunch AI",
+      "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Press; roughly 15 stories a day."
+    },
+    {
+      "name": "Ars Technica AI",
+      "url": "https://arstechnica.com/ai/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Press; a few stories a day. The main feeds.arstechnica.com feed is refused by robots.txt."
+    },
+    {
+      "name": "The Verge AI",
+      "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Press; the feed only carries the latest ten stories."
+    },
+    {
+      "name": "CoinDesk",
+      "url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Press; much of it is market commentary, which the writer declines."
+    },
+    {
+      "name": "The Block",
+      "url": "https://www.theblock.co/rss.xml",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Press; policy and industry coverage."
+    }
+  ]
+}

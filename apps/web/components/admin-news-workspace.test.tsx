@@ -37,6 +37,18 @@ const settings = {
   auto_publish_tech: false, auto_publish_crypto: false, prompt_version: "news-v1",
   policy_version: "news-policy-v1", updated_at: "2026-09-23T10:00:00Z",
   gates: Object.fromEntries(["ai", "tech", "crypto"].map((vertical) => [vertical, { vertical, days: 0, labelled_candidates: 0, agreements: 0, agreement_rate: 0, serious_false_positives: 0, eligible: false, reasons: ["shadow_days:0/14"] }])),
+  model_options: {
+    openai: [
+      { value: "gpt-6-astra", label: "GPT-6 Astra", description: "Strongest.", status: "stable" },
+      { value: "gpt-5.6-terra", label: "GPT-5.6 Terra", description: "Balanced default.", status: "stable" },
+    ],
+    anthropic: [
+      { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" },
+      { value: "claude-next", label: "Claude Next", description: null, status: "preview" },
+    ],
+    minimax: [], gemini: [],
+  },
+  default_models: { openai: "gpt-5.6-terra", anthropic: "claude-sonnet-5", minimax: "MiniMax-M3", gemini: "gemini-3.8-flash" },
 };
 
 beforeEach(() => {
@@ -49,7 +61,7 @@ beforeEach(() => {
     }
     if (url.includes("/admin/news/candidates?")) return Response.json({ candidates: [summary], total: 1, page: 1, pages: 1 });
     if (url.endsWith("/admin/news/sources")) return Response.json([]);
-    if (url.endsWith("/admin/news/settings")) return Response.json(settings);
+    if (url.endsWith("/admin/news/settings")) return Response.json(init?.method === "PUT" ? { ...settings, ...JSON.parse(String(init.body)) } : settings);
     if (url.endsWith("/admin/news/stats")) return Response.json({ pending_review: 1, failed: 0, published: 3, queue_by_status: { manual_review: 1 } });
     return Response.json({ detail: "not found" }, { status: 404 });
   }));
@@ -70,6 +82,33 @@ describe("AdminNewsWorkspace", () => {
       `/api/travel/admin/news/candidates/${summary.id}/publish`,
       expect.objectContaining({ method: "POST" }),
     ));
+  });
+
+  it("picks writer and checker models from dropdowns built on the server catalog", async () => {
+    window.history.replaceState(null, "", "/zh-TW/admin/news?tab=settings");
+    render(<AdminNewsWorkspace />);
+    const [writerModel, verifierModel] = await screen.findAllByLabelText("模型") as HTMLSelectElement[];
+    const labels = (select: HTMLSelectElement) => Array.from(select.options).map((option) => option.text);
+    expect(labels(writerModel)).toEqual(["預設 · GPT-5.6 Terra", "GPT-6 Astra", "GPT-5.6 Terra", "自訂…"]);
+    expect(screen.getAllByText("Balanced default.")).toHaveLength(2);
+
+    fireEvent.change(writerModel, { target: { value: "gpt-6-astra" } });
+    expect(writerModel.value).toBe("gpt-6-astra");
+    fireEvent.change(verifierModel, { target: { value: "__custom__" } });
+    fireEvent.change(screen.getByLabelText("模型 · 自訂模型 ID"), { target: { value: " gpt-7-preview " } });
+
+    const [writerVendor] = screen.getAllByLabelText("供應商") as HTMLSelectElement[];
+    fireEvent.change(writerVendor, { target: { value: "anthropic" } });
+    const [writerAfterSwitch] = screen.getAllByLabelText("模型") as HTMLSelectElement[];
+    expect(writerAfterSwitch.value).toBe("");
+    expect(labels(writerAfterSwitch)).toEqual(["預設 · Claude Sonnet 5", "Claude Sonnet 5", "Claude Next (預覽版)", "自訂…"]);
+
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetch).toHaveBeenCalledWith("/api/travel/admin/news/settings", expect.objectContaining({ method: "PUT" })));
+    const put = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === "PUT");
+    const body = JSON.parse(String(put?.[1]?.body)) as Record<string, unknown>;
+    expect(body).toMatchObject({ writer_provider: "anthropic", writer_model: null, verifier_provider: "openai", verifier_model: "gpt-7-preview" });
+    for (const readOnly of ["gates", "updated_at", "model_options", "default_models"]) expect(body).not.toHaveProperty(readOnly);
   });
 
   it("keeps a complete local copy catalog in every site locale", () => {

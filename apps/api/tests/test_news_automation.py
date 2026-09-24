@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gzip
 from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
@@ -451,3 +452,262 @@ async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     current, reasons = await revalidate_evidence(session, [evidence], fetcher=fetcher)
     assert not current
     assert reasons == [f"source_content_changed:{evidence.url}"]
+
+
+@pytest.mark.asyncio
+async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    lead = NewsSource(
+        name="Lead",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/news",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = b"<rss><channel>" + b"".join(
+        f"<item><title>Story {name}</title><link>https://example.com/{name}</link></item>".encode()
+        for name in ("a", "broken", "c", "d")
+    ) + b"</channel></rss>"
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url,
+                    status_code=200,
+                    content_type="application/rss+xml",
+                    body=listing,
+                    etag='"listing"',
+                )
+            if url.endswith("/broken"):
+                raise httpx.ConnectError("connection refused")
+            if url == "https://official.example/facts":
+                raise UnsafeNewsUrl("robots.txt did not permit this fetch")
+            if url == "https://official.example/down":
+                raise httpx.ConnectTimeout("official site timed out")
+            primary = "down" if url.endswith("/d") else "facts"
+            body = (
+                f"<html><main>Distinct report for {url}."
+                f'<a href="https://official.example/{primary}">primary</a></main></html>'
+            )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([lead, official])
+        await session.commit()
+        first = await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        status, error, etag = lead.last_status, lead.last_error or "", lead.etag
+        requested.clear()
+        second = await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        urls = set(await session.scalars(select(NewsCandidate.canonical_url)))
+    assert first == 2
+    assert urls == {"https://example.com/a", "https://example.com/c"}
+    assert status == "partial"
+    assert "https://example.com/broken (ConnectError)" in error
+    # A refused primary page is left out; one that timed out holds the whole entry back.
+    assert "https://official.example/facts (UnsafeNewsUrl)" in error
+    assert "https://official.example/down (ConnectTimeout)" in error
+    # The listing validators are kept back so the skipped entries are tried again.
+    assert etag is None
+    assert second == 0
+    assert requested == [
+        "https://example.com/feed",
+        "https://example.com/broken",
+        "https://example.com/d",
+        "https://official.example/down",
+    ]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> None:
+    robots_reads: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            robots_reads.append(request.headers["host"])
+            return httpx.Response(200, text="User-agent: *\nDisallow: /private", request=request)
+        return httpx.Response(
+            200, content=b"<html></html>", headers={"Content-Type": "text/html"}, request=request
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    for path in ("/a", "/b"):
+        await fetcher.fetch(f"https://example.com{path}", allowed_hosts={"example.com"})
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch("https://example.com/private/c", allowed_hosts={"example.com"})
+    assert robots_reads == ["example.com"]
+    await client.aclose()
+
+
+def test_a_malformed_href_is_dropped_instead_of_failing_the_page() -> None:
+    _, _, links = extract_article(
+        b'<main>Body <a href="https://[broken/path">bad</a>'
+        b'<a href="https://official.example/facts">good</a></main>',
+        "https://lead.example/story",
+    )
+    assert links == ["https://official.example/facts"]
+    rows = parse_entries(
+        b'<a href="https://[broken">A sufficiently long headline</a>'
+        b'<a href="/news/ok">Another sufficiently long headline</a>',
+        "html",
+        "https://example.com/",
+        {},
+    )
+    assert [row.url for row in rows] == ["https://example.com/news/ok"]
+
+
+@pytest.mark.asyncio
+async def test_robots_txt_outage_is_a_retryable_http_error_and_is_not_remembered() -> None:
+    robots_status = [503]
+    robots_reads = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal robots_reads
+        if request.url.path == "/robots.txt":
+            robots_reads += 1
+            status = robots_status[0]
+            return httpx.Response(status, text="User-agent: *\nAllow: /", request=request)
+        return httpx.Response(
+            200, content=b"<html></html>", headers={"Content-Type": "text/html"}, request=request
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with pytest.raises(httpx.HTTPStatusError):
+        await fetcher.fetch("https://example.com/a", allowed_hosts={"example.com"})
+    robots_status[0] = 200
+    fetched = await fetcher.fetch("https://example.com/a", allowed_hosts={"example.com"})
+    assert fetched.status_code == 200
+    # Three attempts on the outage, one read after it.
+    assert robots_reads == 4
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_a_feed_link_that_redirects_to_a_seen_page_files_nothing_new() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Lead",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    listing = (
+        b"<rss><channel><item><title>Story</title>"
+        b"<link>https://example.com/track?id=1</link></item></channel></rss>"
+    )
+    edition = ["first"]
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            # The tracking link lands on the article, whose sidebar text drifts.
+            body = f"<html><main>Report, {edition[0]} edition.</main></html>".encode()
+            return FetchResult(
+                url="https://example.com/story",
+                status_code=200,
+                content_type="text/html",
+                body=body,
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        edition[0] = "second"
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        statuses = list(await session.scalars(select(NewsCandidate.status)))
+    assert statuses == ["discovered"]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_compressed_responses_are_decoded_exactly_once() -> None:
+    feed = (
+        b"<rss><channel><item><title>Compressed release</title>"
+        b"<link>https://example.com/a</link></item></channel></rss>"
+    )
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(
+                200,
+                content=gzip.compress(b"User-agent: *\nAllow: /"),
+                headers={"Content-Encoding": "gzip", "Content-Type": "text/plain"},
+                request=request,
+            )
+        return httpx.Response(
+            200,
+            content=gzip.compress(feed),
+            headers={"Content-Encoding": "gzip", "Content-Type": "application/rss+xml"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    fetched = await fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    assert fetched.body == feed
+    assert parse_entries(fetched.body, "rss", fetched.url, {})[0].title == "Compressed release"
+    await client.aclose()

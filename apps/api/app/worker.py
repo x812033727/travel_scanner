@@ -17,7 +17,8 @@ QUEUE_NAMES = (
     "travel-services",
     "auth-revocations",
     "community",
-    "news",
+    # "news" has its own worker (app.news_automation.worker): one candidate can hold a
+    # worker for an hour, which must not happen to the process serving search.
 )
 
 
