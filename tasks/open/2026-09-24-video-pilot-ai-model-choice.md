@@ -14,6 +14,7 @@ depends_on:
 scope:
   - docs/videos/ai-model-choice
   - docs/videos/lexicon.json
+  - docs/videos/README.md
 ---
 
 # 影片產線 T6：試作影片〈AI 模型怎麼挑〉
@@ -32,6 +33,8 @@ scope:
 
 ## Steps
 
+- [ ] 站主的一次性設定（`.agents/skills/youtube-video/references/automated.md` §一次性設定）：後台填 Azure 金鑰與區域、連線測試、建立影片工具權杖，站主自己跑 `node tools/video/cli.mjs login`。
+- [ ] 用 `audition` 讓站主比較頻道聲音（曉臻、雲哲、曉雨，以及 Ava、Andrew 講台灣國語），選定後寫進 `docs/videos/README.md` 的聲音表。
 - [ ] 企劃代理 → 站主選大綱。
 - [ ] 撰稿代理（sonnet）→ 查核代理（opus，換人）→ 聽眾優先審稿。
 - [ ] 價格類事實在錄製當天重新查官方頁（文章是 2026-09-19 的數字）。
