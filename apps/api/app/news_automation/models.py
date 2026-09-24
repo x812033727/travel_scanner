@@ -35,6 +35,8 @@ CANDIDATE_STATUSES = (
     "manual_review",
     # Stopped at the evidence gate before any model call; not an editor's work item.
     "needs_evidence",
+    # Stopped before a five-locale article existed: only a new draft or a rejection helps.
+    "needs_redraft",
     "published",
     "duplicate",
     "rejected",

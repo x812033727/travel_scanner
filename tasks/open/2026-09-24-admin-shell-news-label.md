@@ -104,3 +104,4 @@ grep -n '"news"' apps/web/components/admin-nav.tsx apps/web/components/admin-she
   - 另外 `2026-09-07-contextual-travel-services`、`2026-09-07-mokaair-community-web`、`2026-09-09-site-experience-settings` 的 scope 都含 `admin-nav.tsx` 或 `apps/web/messages`，`2026-09-07-merchant-style-discovery`、`2026-09-14-preview-never-charged` 含 `admin.json`。這些票目前都沒人認領，但這張票 in-progress 的期間，它們一樣 claim 不了。
 - `useLocale` 在測試裡固定是 zh-TW（`vitest.setup.tsx:59`），另外四個語系靠 `check:i18n` 的鍵一致性檢查和上面那行 node 命令確認。
 - jsdom 不套 CSS，所以單元測試抓得到 `.admin-topbar-mobile-title`，不論視窗寬度。斷點行為只能在部署後的步驟 4 用瀏覽器看。
+- 2026-09-24（task 2026-09-24-make-the-news-review-queue-actionable）：`/admin/news` 的文案搬進 `apps/web/lib/admin-news-messages/*.json`，`admin-news-copy.ts` 只剩載入器。`nav` 還在，只是改由 JSON 提供；照本票拿掉時，要刪五個 JSON 的 `nav`，`admin-news-workspace.test.tsx` 的目錄測試也有一行 `expect(adminNewsCopy(locale).nav)` 要跟著改。

@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminNewsWorkspace } from "./admin-news-workspace";
 import { adminNewsCopy } from "@/lib/admin-news-copy";
@@ -9,11 +9,13 @@ vi.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: vi.fn() }),
 }));
 
-const summary = {
+type Row = Record<string, unknown> & { id: string; source_title: string };
+
+const summary: Row = {
   id: "00000000-0000-4000-8000-000000000001", vertical: "ai", status: "manual_review",
   source_title: "Official AI API update", canonical_url: "https://example.com/news",
   event_date: "2026-09-23", would_publish: false, human_decision: null, error_code: "news_jev_manual",
-  error_detail: "English locale requested confirmation.", guide_article_id: "00000000-0000-4000-8000-000000000002",
+  error_detail: "At least one locale was not approved by Jev.", guide_article_id: "00000000-0000-4000-8000-000000000002",
   created_at: "2026-09-23T10:00:00Z", updated_at: "2026-09-23T11:00:00Z",
 };
 const document = {
@@ -21,14 +23,16 @@ const document = {
   blocks: [{ type: "paragraph", text: "這是完整文章內容。" }],
   sources: [{ title: "Official", url: "https://example.com/release", checked_on: "2026-09-23" }],
 };
-const detail = {
-  ...summary,
-  evidence: [{ id: "e1", role: "evidence", is_first_party: true, url: "https://example.com/release", title: "Official release", retrieved_at: "2026-09-23T10:00:00Z", source_date: "2026-09-23", content_hash: "a".repeat(64), excerpt: "Verified evidence excerpt." }],
-  assessments: [{ id: "a1", assessment_type: "jev", locale: "en", verdict: "manual", confidence: 0.75, provider: "jev", model: "jev", reasons: [], details: { tier: "confirm" }, created_at: "2026-09-23T11:00:00Z" }],
-  runs: [{ id: "r1", stage: "jev", status: "succeeded", attempt: 1, provider: "jev", model: "jev", input_tokens: 20, output_tokens: 0, error_code: null, error_detail: null, metadata: {}, started_at: "2026-09-23T11:00:00Z", finished_at: "2026-09-23T11:00:01Z" }],
-  documents: Object.fromEntries(["zh-TW", "zh-CN", "en", "ja", "ko"].map((locale) => [locale, { ...document, title: `${document.title} ${locale}` }])),
-  claim_ledger: [], lint: {}, human_reason: null, human_major_error: false,
-};
+function detailOf(row: Row) {
+  return {
+    ...row,
+    evidence: [{ id: "e1", role: "evidence", is_first_party: true, url: "https://example.com/release", title: "Official release", retrieved_at: "2026-09-23T10:00:00Z", source_date: "2026-09-23", content_hash: "a".repeat(64), excerpt: "Verified evidence excerpt." }],
+    assessments: [{ id: "a1", assessment_type: "jev", locale: "en", verdict: "manual", confidence: 0.75, provider: "jev", model: "jev", reasons: ["quota_unavailable"], details: { tier: "confirm" }, created_at: "2026-09-23T11:00:00Z" }],
+    runs: [{ id: "r1", stage: "jev", status: "succeeded", attempt: 1, provider: "jev", model: "jev", input_tokens: 20, output_tokens: 0, error_code: null, error_detail: null, metadata: {}, started_at: "2026-09-23T11:00:00Z", finished_at: "2026-09-23T11:00:01Z" }],
+    documents: row.guide_article_id ? Object.fromEntries(["zh-TW", "zh-CN", "en", "ja", "ko"].map((locale) => [locale, { ...document, title: `${document.title} ${locale}` }])) : {},
+    claim_ledger: [], lint: {}, human_reason: null, human_major_error: false, similar_titles: [] as string[],
+  };
+}
 const settings = {
   enabled: false, mode: "shadow", writer_provider: "openai", writer_model: null,
   verifier_provider: "openai", verifier_model: null, global_concurrency: 2,
@@ -36,7 +40,7 @@ const settings = {
   min_human_agreement: 0.95, jev_act_confidence: 0.9, auto_publish_ai: false,
   auto_publish_tech: false, auto_publish_crypto: false, prompt_version: "news-v1",
   policy_version: "news-policy-v1", updated_at: "2026-09-23T10:00:00Z",
-  gates: Object.fromEntries(["ai", "tech", "crypto"].map((vertical) => [vertical, { vertical, days: 0, labelled_candidates: 0, agreements: 0, agreement_rate: 0, serious_false_positives: 0, eligible: false, reasons: ["shadow_days:0/14"] }])),
+  gates: Object.fromEntries(["ai", "tech", "crypto"].map((vertical) => [vertical, { vertical, days: 0, labelled_candidates: 3, agreements: 2, agreement_rate: 0.6667, serious_false_positives: 0, eligible: false, reasons: ["shadow_days:0/14"] }])),
   model_options: {
     openai: [
       { value: "gpt-6-astra", label: "GPT-6 Astra", description: "Strongest.", status: "stable" },
@@ -51,37 +55,153 @@ const settings = {
   default_models: { openai: "gpt-5.6-terra", anthropic: "claude-sonnet-5", minimax: "MiniMax-M3", gemini: "gemini-3.8-flash" },
 };
 
+// What the stubbed API answers; tests replace rows, details or paging before rendering.
+let rows: Row[] = [];
+let details: Record<string, ReturnType<typeof detailOf>> = {};
+let pages = 1;
+
+function serveRows(...next: Row[]) {
+  rows = next;
+  details = Object.fromEntries(next.map((row) => [row.id, detailOf(row)]));
+}
+
 beforeEach(() => {
   window.history.replaceState(null, "", "/zh-TW/admin/news?tab=review");
+  serveRows(summary);
+  pages = 1;
   vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
-    if (url.endsWith(`/admin/news/candidates/${summary.id}`)) return Response.json(detail);
-    if (url.includes(`/admin/news/candidates/${summary.id}/publish`) && init?.method === "POST") {
-      return Response.json({ ...detail, status: "published", human_decision: "publish" });
+    const action = url.match(/\/admin\/news\/candidates\/([0-9a-f-]{36})\/([a-z-]+)$/);
+    if (action && init?.method === "POST") {
+      const status = action[2] === "reject" ? "rejected" : action[2] === "publish" ? "published" : "discovered";
+      return Response.json({ ...details[action[1]], status });
     }
-    if (url.includes("/admin/news/candidates?")) return Response.json({ candidates: [summary], total: 1, page: 1, pages: 1 });
+    const one = url.match(/\/admin\/news\/candidates\/([0-9a-f-]{36})$/);
+    if (one) return Response.json(details[one[1]]);
+    if (url.includes("/admin/news/candidates?")) return Response.json({ candidates: rows, total: rows.length * pages, page: 1, pages });
     if (url.endsWith("/admin/news/sources")) return Response.json([]);
     if (url.endsWith("/admin/news/settings")) return Response.json(init?.method === "PUT" ? { ...settings, ...JSON.parse(String(init.body)) } : settings);
-    if (url.endsWith("/admin/news/stats")) return Response.json({ pending_review: 1, failed: 0, published: 3, queue_by_status: { manual_review: 1 } });
+    if (url.endsWith("/admin/news/stats")) return Response.json({ pending_review: 1, failed: 0, published: 3, queue_by_status: { manual_review: 1, needs_redraft: 2, failed: 1 }, pipeline_runs: 4, pipeline_failures: 1, input_tokens: 10, output_tokens: 5 });
     return Response.json({ detail: "not found" }, { status: 404 });
   }));
 });
 afterEach(() => vi.unstubAllGlobals());
 
+const posts = () => vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST").map(([url]) => String(url));
+const listCalls = () => vi.mocked(fetch).mock.calls.map(([url]) => String(url)).filter((url) => url.includes("/admin/news/candidates?"));
+const actionButtons = () => ["五語發布", "重新查核", "不是重複，繼續寫", "重新執行", "退件", "回報發布後重大錯誤"]
+  .filter((name) => screen.queryByRole("button", { name }));
+
 describe("AdminNewsWorkspace", () => {
-  it("shows the review badge data, five locales, evidence and audited publish action", async () => {
+  it("explains a Jev hold in Chinese and publishes it with an audited reason", async () => {
     render(<AdminNewsWorkspace />);
     expect(await screen.findByRole("heading", { name: "AI 每小時自動新聞" })).toBeTruthy();
     fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
     expect(await screen.findByText(/Official release/)).toBeTruthy();
+    expect(screen.getAllByText("待你判斷").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Jev 保留：有語系沒通過").length).toBeGreaterThan(0);
+    expect(screen.getByText(/五語草稿已經寫好，但 Jev 對至少一個語系有保留/)).toBeTruthy();
+    expect(screen.getByText("AI 自動發布門檻：已判斷 3／50 筆，和 Jev 一致 67%")).toBeTruthy();
+    expect(screen.getByText("Jev 終審: 需要人判斷 (需人確認)")).toBeTruthy();
+    expect(screen.getByText("Jev 今日額度已用完")).toBeTruthy();
     expect(screen.getAllByRole("button").filter((button) => ["zh-TW", "zh-CN", "en", "ja", "ko"].includes(button.textContent || ""))).toHaveLength(5);
-    expect(screen.getByRole("link", { name: /開啟文章編輯器 · zh-TW/ }).getAttribute("href")).toContain(`article=${summary.guide_article_id}`);
-    fireEvent.change(screen.getByLabelText("必填原因"), { target: { value: "人工確認來源與五語完整" } });
+    expect(screen.getByRole("link", { name: /開啟文章編輯器 · zh-TW/ }).getAttribute("href")).toContain(`article=${String(summary.guide_article_id)}`);
+    expect(actionButtons()).toEqual(["五語發布", "重新查核", "退件"]);
+    expect((screen.getByRole("button", { name: "五語發布" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(screen.getByText("先選或填寫原因，按鈕才能按。")).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "內容正確，可以發布" }));
+    expect((screen.getByLabelText(/原因（必填/) as HTMLTextAreaElement).value).toBe("內容正確，可以發布");
     fireEvent.click(screen.getByRole("button", { name: "五語發布" }));
     await waitFor(() => expect(fetch).toHaveBeenCalledWith(
       `/api/travel/admin/news/candidates/${summary.id}/publish`,
       expect.objectContaining({ method: "POST" }),
     ));
+    expect(await screen.findByText("五個語系都已發布。")).toBeTruthy();
+  });
+
+  it("offers not-a-duplicate with the closest titles for an uncertain duplicate check", async () => {
+    const waiting = { ...summary, id: "00000000-0000-4000-8000-000000000011", source_title: "OpenAI ships a model", error_code: "news_duplicate_uncertain", guide_article_id: null };
+    serveRows(waiting);
+    details[waiting.id] = { ...detailOf(waiting), similar_titles: ["OpenAI ships a new model", "A weather satellite"] };
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /OpenAI ships a model/ }));
+    expect(await screen.findByText("最像的既有標題")).toBeTruthy();
+    expect(screen.getByText("OpenAI ships a new model")).toBeTruthy();
+    expect(actionButtons()).toEqual(["不是重複，繼續寫", "退件"]);
+    fireEvent.change(screen.getByLabelText(/原因（必填/), { target: { value: "不同的發布" } });
+    fireEvent.click(screen.getByRole("button", { name: "不是重複，繼續寫" }));
+    await waitFor(() => expect(posts()).toEqual([`/api/travel/admin/news/candidates/${waiting.id}/not-duplicate`]));
+    expect(await screen.findByText(/已記下「不是重複」/)).toBeTruthy();
+  });
+
+  it.each([
+    ["needs_redraft", "news_verification_failed", null, ["重新執行", "退件"]],
+    ["failed", "ValidationError", null, ["重新執行", "退件"]],
+    ["failed", "news_processing_stale", "00000000-0000-4000-8000-000000000002", ["重新查核", "重新執行", "退件"]],
+    ["needs_evidence", "news_evidence_insufficient", null, ["退件"]],
+    ["manual_review", "news_evidence_changed", "00000000-0000-4000-8000-000000000002", ["退件"]],
+    ["manual_review", "news_verification_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
+    ["published", null, "00000000-0000-4000-8000-000000000002", ["回報發布後重大錯誤"]],
+    ["rejected", null, null, []],
+  ])("shows only the buttons that work for %s / %s", async (status, errorCode, articleId, expected) => {
+    const row = { ...summary, status, error_code: errorCode, guide_article_id: articleId };
+    serveRows(row);
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
+    await screen.findByText(/Official release/);
+    expect(actionButtons().sort()).toEqual([...expected].sort());
+  });
+
+  it("rejects the ticked rows of a list one by one and reports the result", async () => {
+    window.history.replaceState(null, "", "/zh-TW/admin/news?tab=review&queue=redraft");
+    const first = { ...summary, id: "00000000-0000-4000-8000-000000000021", status: "needs_redraft", error_code: "news_verification_failed", guide_article_id: null, source_title: "First stopped story" };
+    const second = { ...first, id: "00000000-0000-4000-8000-000000000022", source_title: "Second stopped story" };
+    serveRows(first, second);
+    vi.stubGlobal("confirm", vi.fn(() => true));
+    render(<AdminNewsWorkspace />);
+    expect(await screen.findByText(/AI 在寫出五語草稿前就停下了，沒有可以發布的草稿/)).toBeTruthy();
+    expect(listCalls().at(-1)).toContain("status=needs_redraft&status=failed");
+    fireEvent.click(screen.getByRole("checkbox", { name: "選取 First stopped story" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "選取 Second stopped story" }));
+    expect(screen.getByText("已選 2 筆")).toBeTruthy();
+    const reject = screen.getByRole("button", { name: "退件所選" }) as HTMLButtonElement;
+    expect(reject.disabled).toBe(true);
+    fireEvent.click(screen.getByRole("button", { name: "舊聞，已經過時" }));
+    fireEvent.click(reject);
+    await waitFor(() => expect(posts()).toEqual([
+      `/api/travel/admin/news/candidates/${first.id}/reject`,
+      `/api/travel/admin/news/candidates/${second.id}/reject`,
+    ]));
+    expect(confirm).toHaveBeenCalledWith("確定退件 2 筆？退件後不能復原。");
+    expect(await screen.findByText("已退件 2 筆。")).toBeTruthy();
+    const bodies = vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST").map(([, init]) => JSON.parse(String(init?.body)) as { reason: string });
+    expect(bodies.map((body) => body.reason)).toEqual(["舊聞，已經過時", "舊聞，已經過時"]);
+  });
+
+  it("asks the API only for the statuses of the chosen list and pages through it", async () => {
+    pages = 3;
+    render(<AdminNewsWorkspace />);
+    await screen.findByRole("button", { name: /Official AI API update/ });
+    expect(listCalls().at(-1)).toContain("status=manual_review&status=shadow_review");
+    expect(listCalls().at(-1)).not.toContain("failed");
+    expect(listCalls().at(-1)).toContain("page=1");
+    fireEvent.click(screen.getByRole("button", { name: "下一頁" }));
+    await waitFor(() => expect(listCalls().at(-1)).toContain("page=2"));
+    expect(new URL(window.location.href).searchParams.get("page")).toBe("2");
+
+    const filters = screen.getByRole("group", { name: "候選篩選" });
+    fireEvent.click(within(filters).getByRole("button", { name: /缺證據/ }));
+    await waitFor(() => expect(listCalls().at(-1)).toContain("status=needs_evidence"));
+    expect(listCalls().at(-1)).toContain("page=1");
+    expect(screen.getByText(/系統之後不會自己補證據/)).toBeTruthy();
+    const url = new URL(window.location.href);
+    expect(url.searchParams.get("queue")).toBe("evidence");
+    expect(url.searchParams.get("page")).toBeNull();
+    expect(within(filters).getByRole("button", { name: /需重寫 · 3/ })).toBeTruthy();
+    fireEvent.click(within(filters).getByRole("button", { name: /已退件/ }));
+    await waitFor(() => expect(listCalls().at(-1)).toContain("status=rejected&status=duplicate"));
+    expect(screen.queryByRole("checkbox")).toBeNull();
   });
 
   it("picks writer and checker models from dropdowns built on the server catalog", async () => {
@@ -111,25 +231,20 @@ describe("AdminNewsWorkspace", () => {
     for (const readOnly of ["gates", "updated_at", "model_options", "default_models"]) expect(body).not.toHaveProperty(readOnly);
   });
 
-  it("asks the API only for the statuses of the chosen list", async () => {
-    render(<AdminNewsWorkspace />);
-    await screen.findByRole("button", { name: /Official AI API update/ });
-    const listCalls = () => vi.mocked(fetch).mock.calls.map(([url]) => String(url)).filter((url) => url.includes("/admin/news/candidates?"));
-    expect(listCalls().at(-1)).toContain("status=manual_review&status=shadow_review&status=failed");
-    expect(listCalls().at(-1)).not.toContain("needs_evidence");
-    fireEvent.click(screen.getByRole("button", { name: /缺證據/ }));
-    await waitFor(() => expect(listCalls().at(-1)).toContain("status=needs_evidence"));
-    expect(screen.getByText(/只有單一網站的證據/)).toBeTruthy();
-    expect(new URL(window.location.href).searchParams.get("queue")).toBe("evidence");
-  });
-
-  it("keeps a complete local copy catalog in every site locale", () => {
-    const keys = Object.keys(adminNewsCopy("en")).sort();
+  it("keeps a complete copy catalog in every site locale", () => {
+    const flatten = (value: unknown, prefix = ""): Array<[string, unknown]> =>
+      value && typeof value === "object" && !Array.isArray(value)
+        ? Object.entries(value).flatMap(([key, child]) => flatten(child, `${prefix}${key}.`))
+        : Array.isArray(value)
+          ? value.map((child, index) => [`${prefix}${index}`, child] as [string, unknown])
+          : [[prefix, value]];
+    const keys = flatten(adminNewsCopy("en")).map(([key]) => key).sort();
     for (const locale of ["zh-TW", "zh-CN", "ja", "ko"]) {
-      const copy = adminNewsCopy(locale);
-      expect(Object.keys(copy).sort()).toEqual(keys);
-      expect(Object.values(copy).every((value) => value.trim())).toBe(true);
-      expect(copy.nav).not.toBe("AI News");
+      const entries = flatten(adminNewsCopy(locale));
+      expect(entries.map(([key]) => key).sort()).toEqual(keys);
+      expect(entries.every(([, value]) => typeof value === "string" && value.trim())).toBe(true);
+      expect(adminNewsCopy(locale).nav).not.toBe("AI News");
+      expect(adminNewsCopy(locale).statuses.needs_redraft).not.toBe("Needs redraft");
     }
   });
 });

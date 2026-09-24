@@ -34,20 +34,28 @@ retry, re-verify) wait in Redis until `news-worker` starts.
 2. **Evidence gate.** Evidence from at least two different websites (host without
    `www.`), one of them first-party, or the candidate stops before any model call with
    status `needs_evidence` (`news_evidence_insufficient`). That status is not manual
-   review: it has its own 「缺證據」 list in `/admin/news`, where a candidate can be
-   rejected or run again. Pages of one website are one source (owner decision,
-   2026-09-24); the same rule applies to a manual publish.
+   review: it has its own 「缺證據」 list in `/admin/news`. Evidence is only gathered at
+   the first scan, so running such a candidate again cannot help; it is there to be
+   rejected. Pages of one website are one source (owner decision, 2026-09-24); the same
+   rule applies to a manual publish.
 3. **Duplicate check.** Jev compares the story with the same category's news published in
    the last 30 days — hand-written articles included — and with other candidates.
-   Uncertain goes to review.
+   Uncertain goes to review (`news_duplicate_uncertain`), where an editor answers it with
+   「不是重複，繼續寫」: the answer is stored as a duplicate assessment for that evidence,
+   and the rerun skips Jev.
 4. **Draft → verify → translate → locale review**, each a recorded pipeline run. The
    writer and the fact-checker are separate settings; the checker gets a fresh request with
-   no authoring trace. Translation is one call per locale.
+   no authoring trace. Translation is one call per locale. A claim citing a page outside
+   the evidence, an impossible event date, a failed fact check or a failed locale review
+   stops the candidate with status `needs_redraft`: nothing is saved as an article yet, so
+   a new draft or a rejection are the only moves. (A re-verified article that fails again
+   goes back to manual review instead, where it can still be edited.)
 5. **Images.** A hero, a social card and a diagram per locale are rendered locally (no
    source image is copied). They go to the community S3 bucket when one is configured,
    otherwise into `news_assets.content`; `/guides/news-assets/<file>` serves either.
 6. **Hard checks** (summary, FAQ, SVG diagram, topic link, crypto disclaimer, forbidden
-   purchase/trading/exploit wording, guide lint) on all five locales.
+   purchase/trading/exploit wording, guide lint) on all five locales. A failure also ends
+   in `needs_redraft`; the five-locale article is saved only after this step.
 7. **Jev** decides each locale. Evidence is re-fetched; any change sends the candidate to
    review. With every locale approved and the category's gate open, the bundle publishes
    atomically; otherwise it waits in `shadow_review`.
@@ -104,6 +112,39 @@ reply, and the dropped bounds are written into the field descriptions.
 6. **Automatic mode**, per category, only once its gate shows 已達標. Reporting a major
    error on a published candidate turns that category's autopilot off again.
 
+## The review queue
+
+`/admin/news` splits candidates into lists by what a person can do with them. Each list
+asks the API for its own statuses, pages 50 at a time and keeps its place in the URL
+(`?queue=`, `?page=`). Selecting a candidate shows a 「下一步」 box that says in words what
+happened and offers only the buttons that can work for it. Every action takes a reason,
+which goes into the audit log; common reasons are one click away.
+
+| List | Statuses | What to do |
+| --- | --- | --- |
+| 待審查 | `manual_review`, `shadow_review` | Decide. These are the only rows the sidebar badge and the 「等你判斷」 card count. |
+| 需重寫 | `needs_redraft`, `failed` | Run one again (a whole new draft, spends model calls) or tick several and reject them. |
+| 缺證據 | `needs_evidence` | Reject; a rerun cannot add a second website. |
+| 已發布 | `published` | Report a major error if one turns up; that category's autopilot switches off. |
+| 已退件 | `rejected`, `duplicate` | Nothing; for reference. |
+
+Inside 待審查:
+
+- `shadow_review` — Jev approved all five locales; only shadow mode kept it from
+  publishing. Publish or reject.
+- `news_jev_manual` — the article is complete but Jev held at least one locale. Publish,
+  fix it in the guide editor and 「重新查核」, or reject.
+- `news_duplicate_uncertain` — compare with the five closest known titles shown beside
+  it; 「不是重複，繼續寫」 or reject.
+- `news_evidence_changed` — reject (see Known limits).
+- Any other code on an article that already exists — a re-verification that failed; fix
+  it in the guide editor and re-verify, or reject.
+
+Only decisions on candidates that reached Jev (`shadow_review`, `news_jev_manual`,
+`news_evidence_changed`) count toward the category's gate; rejecting from 需重寫 or 缺證據
+is housekeeping. Rejecting several rows sends one audited reject per candidate, in order;
+a row that moved on in the meantime is reported and the rest go through.
+
 ## When a job dies
 
 Every deploy restarts the worker, which cuts off the candidate it was working on. When
@@ -119,6 +160,10 @@ writing new ones. `discovered` candidates older than two hours are re-queued whi
 scanner is enabled.
 
 ## Known limits
+
+- A candidate held with `news_evidence_changed` cannot be published or rerun into
+  shape: stored evidence hashes are never refreshed, so every attempt finds the same
+  change. Reject it; later coverage arrives as a new candidate.
 
 - Gemini cannot yet serve as writer or checker: the shared `gemini_response_schema`
   keeps only the first option of an `anyOf`, which collapses the block union.

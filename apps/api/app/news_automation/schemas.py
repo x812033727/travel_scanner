@@ -25,6 +25,7 @@ CandidateStatus = Literal[
     "shadow_review",
     "manual_review",
     "needs_evidence",
+    "needs_redraft",
     "published",
     "duplicate",
     "rejected",
@@ -259,6 +260,9 @@ class CandidateDetail(CandidateSummary):
     lint: dict[str, Any]
     human_reason: str | None
     human_major_error: bool
+    # Filled only while the semantic duplicate check is waiting for an editor: the known
+    # titles closest to this one, so "not a duplicate" can be answered by eye.
+    similar_titles: list[str] = Field(default_factory=list)
 
 
 class CandidateAction(StrictModel):

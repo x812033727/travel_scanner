@@ -6,13 +6,15 @@ import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-act
 import { ContentBlocks } from "@/components/content-blocks";
 import { Button, Empty, Tabs, fieldClass, panelClass } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
-import { adminNewsCopy } from "@/lib/admin-news-copy";
+import { adminNewsCopy, fillNewsCopy } from "@/lib/admin-news-copy";
 import {
   newsLocales,
   newsProviderLabels,
   newsProviders,
   type NewsCandidate,
   type NewsCandidatePage,
+  type NewsCandidateStatus,
+  type NewsCandidateSummary,
   type NewsLocale,
   type NewsModelOption,
   type NewsProvider,
@@ -21,31 +23,95 @@ import {
   type NewsStats,
   type NewsVertical,
 } from "@/lib/admin-news";
-import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
+import { adminNavigate, useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 import { splitGuideBlocks } from "@/lib/guides";
 
 const tabs = ["review", "sources", "settings", "runs"] as const;
-// The review list asks the API for exactly these statuses. Fetching the newest rows of
-// every status and filtering here let candidates nobody acts on (83 needs_evidence rows
-// on the first production day) push the ones waiting for a person out of the list.
-const queueViews = ["review", "published", "evidence"] as const;
+// Each list asks the API for exactly these statuses. Fetching the newest rows of every
+// status and filtering here let candidates nobody acts on push the ones waiting for a
+// person out of the list. The review list holds only what needs a person's decision: on the
+// first production day most of it was candidates that stopped before any draft existed.
+const queueViews = ["review", "redraft", "evidence", "published", "closed"] as const;
 type QueueView = typeof queueViews[number];
-const queueStatuses: Record<QueueView, readonly string[]> = {
-  review: ["manual_review", "shadow_review", "failed"],
-  published: ["published"],
+const queueStatuses: Record<QueueView, readonly NewsCandidateStatus[]> = {
+  review: ["manual_review", "shadow_review"],
+  redraft: ["needs_redraft", "failed"],
   evidence: ["needs_evidence"],
+  published: ["published"],
+  closed: ["rejected", "duplicate"],
 };
-const statusTone: Record<string, string> = {
+// Lists whose rows can be ticked and rejected together; rejecting spends no model calls.
+const bulkViews: readonly QueueView[] = ["review", "redraft", "evidence"];
+const pageSize = 50;
+const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
   manual_review: "bg-amber-100 text-amber-900",
   shadow_review: "bg-sky-100 text-sky-900",
   published: "bg-emerald-100 text-emerald-900",
   failed: "bg-red-100 text-red-900",
   needs_evidence: "bg-stone-100 text-stone-800",
+  needs_redraft: "bg-orange-100 text-orange-900",
+  rejected: "bg-stone-100 text-stone-800",
+  duplicate: "bg-stone-100 text-stone-800",
 };
+
+// What happened to a candidate, which decides the explanation and the buttons it gets.
+type Situation =
+  | "shadow" | "jevHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
+  | "failed" | "needsEvidence" | "published" | "closed" | "working";
+type Action = "publish" | "verify" | "notDuplicate" | "retry" | "reject" | "incident";
+const actionPath: Record<Action, string> = {
+  publish: "publish", verify: "verify", notDuplicate: "not-duplicate", retry: "retry",
+  reject: "reject", incident: "major-error",
+};
+// Only the buttons that can work for the situation, so none sit greyed out unexplained.
+const situationActions: Record<Situation, readonly Action[]> = {
+  shadow: ["publish", "verify", "reject"],
+  jevHold: ["publish", "verify", "reject"],
+  fixArticle: ["verify", "reject"],
+  duplicate: ["notDuplicate", "reject"],
+  // Stored evidence hashes are never refreshed, so publish and reruns fail the same way.
+  evidenceChanged: ["reject"],
+  redraft: ["retry", "reject"],
+  failed: ["retry", "verify", "reject"],
+  // Evidence is only gathered at the first scan; a rerun cannot add a second website.
+  needsEvidence: ["reject"],
+  published: ["incident"],
+  closed: [],
+  working: [],
+};
+const primaryActions: readonly Action[] = ["publish", "notDuplicate", "incident"];
+
+function situationOf(candidate: NewsCandidateSummary): Situation {
+  switch (candidate.status) {
+    case "shadow_review": return "shadow";
+    case "manual_review":
+      if (candidate.error_code === "news_duplicate_uncertain") return "duplicate";
+      if (candidate.error_code === "news_evidence_changed") return "evidenceChanged";
+      if (candidate.error_code === "news_jev_manual") return "jevHold";
+      return candidate.guide_article_id ? "fixArticle" : "redraft";
+    case "needs_redraft": return "redraft";
+    case "failed": return "failed";
+    case "needs_evidence": return "needsEvidence";
+    case "published": return "published";
+    case "rejected":
+    case "duplicate": return "closed";
+    default: return "working";
+  }
+}
+
+function availableActions(candidate: NewsCandidateSummary): Action[] {
+  return situationActions[situationOf(candidate)].filter(
+    (action) => action !== "verify" || Boolean(candidate.guide_article_id),
+  );
+}
 
 function problemMessage(problem: unknown, fallback: string) {
   return problem instanceof Error && problem.message ? problem.message : fallback;
+}
+
+function named(names: Record<string, string>, key: string) {
+  return names[key] ?? key;
 }
 
 const customModel = "__custom__";
@@ -87,7 +153,9 @@ export function AdminNewsWorkspace() {
   const copy = adminNewsCopy(locale);
   const manage = useAdminActionGuard("content.manage");
   const [tab, setTab] = useAdminQueryState("tab", tabs, "review");
-  const [queueView, setQueueView] = useAdminQueryState("queue", queueViews, "review");
+  const [queueView] = useAdminQueryState("queue", queueViews, "review");
+  const [pageValue, setPage] = useAdminQueryValue("page", "", (value) => /^[1-9]\d{0,4}$/.test(value));
+  const page = Number(pageValue || "1");
   const [selected, setSelected] = useAdminQueryValue("candidate", "", (value) => /^[0-9a-f-]{36}$/.test(value));
   const [previewLocale, setPreviewLocale] = useState<NewsLocale>("zh-TW");
   const [candidates, setCandidates] = useState<NewsCandidatePage>();
@@ -98,6 +166,10 @@ export function AdminNewsWorkspace() {
   const [stats, setStats] = useState<NewsStats>();
   const [reason, setReason] = useState("");
   const [majorError, setMajorError] = useState(false);
+  // Ticked rows belong to one list page; moving to another list or page drops them.
+  const listKey = `${queueView}:${page}`;
+  const [ticked, setTicked] = useState<{ key: string; ids: string[] }>({ key: "", ids: [] });
+  const [bulkReason, setBulkReason] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
@@ -122,13 +194,13 @@ export function AdminNewsWorkspace() {
 
   useEffect(() => {
     const controller = new AbortController();
-    const query = new URLSearchParams({ limit: "100" });
+    const query = new URLSearchParams({ limit: String(pageSize), page: String(page) });
     for (const status of queueStatuses[queueView]) query.append("status", status);
     api<NewsCandidatePage>(`/admin/news/candidates?${query}`, { signal: controller.signal })
-      .then((page) => { if (!controller.signal.aborted) setCandidates(page); })
+      .then((result) => { if (!controller.signal.aborted) setCandidates(result); })
       .catch((problem) => { if (!controller.signal.aborted) setError(problemMessage(problem, copy.error)); });
     return () => controller.abort();
-  }, [copy.error, queueView, reload]);
+  }, [copy.error, queueView, page, reload]);
 
   useEffect(() => {
     if (!selected) return;
@@ -140,11 +212,32 @@ export function AdminNewsWorkspace() {
   }, [copy.error, reload, selected]);
 
   const queue = candidates?.candidates ?? [];
+  const pages = candidates?.pages ?? 1;
   const queueCount = (view: QueueView) =>
     queueStatuses[view].reduce((total, status) => total + (stats?.queue_by_status[status] ?? 0), 0);
   const queueLabel: Record<QueueView, string> = {
-    review: copy.reviewView, published: copy.publishedView, evidence: copy.evidenceView,
+    review: copy.reviewView, redraft: copy.redraftView, evidence: copy.evidenceView,
+    published: copy.publishedView, closed: copy.closedView,
   };
+  const queueHint: Partial<Record<QueueView, string>> = {
+    review: copy.reviewHint, redraft: copy.redraftHint, evidence: copy.evidenceHint, closed: copy.closedHint,
+  };
+  const selectable = bulkViews.includes(queueView) && manage.allowed;
+  const tickedIds = ticked.key === listKey ? ticked.ids.filter((id) => queue.some((item) => item.id === id)) : [];
+  const statusName = (status: string) => named(copy.statuses, status);
+  const holdName = (item: NewsCandidateSummary) => item.error_code ? named(copy.holds, item.error_code) : "";
+
+  function chooseView(view: QueueView) {
+    const target = new URL(window.location.href);
+    target.searchParams.set("queue", view);
+    target.searchParams.delete("page");
+    adminNavigate(target);
+  }
+
+  function tick(id: string, on: boolean) {
+    const others = tickedIds.filter((value) => value !== id);
+    setTicked({ key: listKey, ids: on ? [...others, id] : others });
+  }
 
   async function run(work: () => Promise<void>) {
     if (!manage.allowed || busy) return;
@@ -154,12 +247,43 @@ export function AdminNewsWorkspace() {
     finally { setBusy(false); }
   }
 
-  const action = (name: "retry" | "verify" | "reject" | "publish" | "major-error") => run(async () => {
-    if (!detail || !reason.trim()) { setError(copy.reason); return; }
-    const value = await api<NewsCandidate>(`/admin/news/candidates/${detail.id}/${name}`, {
+  const doneMessage: Record<Action, string> = {
+    publish: copy.donePublish, verify: copy.doneVerify, notDuplicate: copy.doneNotDuplicate,
+    retry: copy.doneRetry, reject: copy.doneReject, incident: copy.doneIncident,
+  };
+  const actionLabel: Record<Action, string> = {
+    publish: copy.publish, verify: copy.verify, notDuplicate: copy.notDuplicate,
+    retry: copy.retry, reject: copy.reject, incident: copy.incident,
+  };
+
+  const act = (name: Action) => run(async () => {
+    if (!detail || !reason.trim()) { setError(copy.reasonFirst); return; }
+    const value = await api<NewsCandidate>(`/admin/news/candidates/${detail.id}/${actionPath[name]}`, {
       method: "POST", body: JSON.stringify({ reason: reason.trim(), major_error: majorError }),
     });
-    setDetail(value); setReason(""); setMajorError(false); setNotice(copy.saved);
+    setDetail(value); setReason(""); setMajorError(false); setNotice(doneMessage[name]);
+  });
+
+  // One request per candidate through the audited single reject, in order; a refusal for
+  // one row (it moved on meanwhile) does not stop the others.
+  const rejectTicked = () => run(async () => {
+    const ids = tickedIds;
+    const why = bulkReason.trim();
+    if (!ids.length || !why) return;
+    if (!window.confirm(fillNewsCopy(copy.bulkConfirm, { count: ids.length }))) return;
+    const refused: string[] = [];
+    for (const id of ids) {
+      try {
+        await api<NewsCandidate>(`/admin/news/candidates/${id}/reject`, {
+          method: "POST", body: JSON.stringify({ reason: why, major_error: false }),
+        });
+      } catch {
+        refused.push(queue.find((item) => item.id === id)?.source_title ?? id);
+      }
+    }
+    setTicked({ key: listKey, ids: [] }); setBulkReason("");
+    setNotice(fillNewsCopy(copy.bulkDone, { done: ids.length - refused.length }));
+    if (refused.length) setError(fillNewsCopy(copy.bulkFailed, { failed: refused.length, titles: refused.join(" · ") }));
   });
 
   const addSource = () => run(async () => {
@@ -203,9 +327,12 @@ export function AdminNewsWorkspace() {
   const contentBlocks = document
     ? splitGuideBlocks(document.blocks).flatMap((segment) => segment.blocks)
     : [];
+  const situation = detail ? situationOf(detail) : "working";
+  const actions = detail ? availableActions(detail) : [];
+  const gate = detail && settings ? settings.gates[detail.vertical] : undefined;
 
   return <div className="space-y-6">
-    <header><p className="text-sm font-bold uppercase tracking-[.14em] text-[var(--teal)]">NEWS AUTOMATION</p>
+    <header><p className="text-sm font-bold uppercase tracking-[.14em] text-[var(--teal)]">{copy.kicker}</p>
       <h1 className="mt-2 text-3xl font-bold md:text-4xl">{copy.title}</h1>
       <p className="mt-3 max-w-4xl leading-7 text-[var(--muted)]">{copy.description}</p></header>
     <AdminReadOnlyNotice capability="content.manage" />
@@ -215,25 +342,77 @@ export function AdminNewsWorkspace() {
       {[[copy.pending, stats?.pending_review ?? 0], [copy.failed, stats?.failed ?? 0], [copy.published, stats?.published ?? 0]].map(([label, value]) =>
         <div key={String(label)} className={panelClass}><p className="text-sm text-[var(--muted)]">{label}</p><p className="mt-1 text-3xl font-bold">{value}</p></div>)}
     </div>
-    {stats && <p className="text-sm text-[var(--muted)]">Pipeline runs: {stats.pipeline_runs} · failed: {stats.pipeline_failures} · tokens: {stats.input_tokens}/{stats.output_tokens}</p>}
+    {stats && <p className="text-sm text-[var(--muted)]">{fillNewsCopy(copy.runsSummary, { runs: stats.pipeline_runs, failures: stats.pipeline_failures, input: stats.input_tokens, output: stats.output_tokens })}</p>}
     <Tabs value={tab} onChange={(value) => setTab(value as typeof tab)} label={copy.title}
       items={tabs.map((value) => ({ value, label: copy[value] }))}>
-      {tab === "review" && <div className="grid gap-5 xl:grid-cols-[22rem_minmax(0,1fr)]">
+      {tab === "review" && <div className="grid grid-cols-1 gap-5 xl:grid-cols-[24rem_minmax(0,1fr)]">
         <section className={`${panelClass} space-y-2`} aria-label={copy.review}>
           <div className="flex flex-wrap gap-2" role="group" aria-label={copy.queueFilter}>
-            {queueViews.map((view) => <Button key={view} secondary={queueView !== view} aria-pressed={queueView === view} onClick={() => setQueueView(view)}>{`${queueLabel[view]} · ${queueCount(view)}`}</Button>)}
+            {queueViews.map((view) => <Button key={view} secondary={queueView !== view} aria-pressed={queueView === view} onClick={() => chooseView(view)}>{`${queueLabel[view]} · ${queueCount(view)}`}</Button>)}
           </div>
-          {queueView === "evidence" && <p className="text-xs leading-5 text-[var(--muted)]">{copy.evidenceHint}</p>}
-          {!queue.length ? <Empty>{copy.empty}</Empty> : queue.map((item) => <button type="button" key={item.id}
-            onClick={() => setSelected(item.id)} className={`w-full rounded-xl border p-3 text-left ${selected === item.id ? "border-[var(--teal)]" : "border-[var(--line)]"}`}>
-            <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{item.status}</span>
-            <strong className="mt-2 block">{item.source_title}</strong><span className="mt-1 block text-xs text-[var(--muted)]">{item.vertical.toUpperCase()} · {item.event_date ?? item.created_at.slice(0, 10)}</span>
-          </button>)}
+          {queueHint[queueView] && <p className="text-xs leading-5 text-[var(--muted)]">{queueHint[queueView]}</p>}
+          {selectable && queue.length > 0 && <div className="space-y-2 rounded-xl bg-[var(--paper)] p-3">
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <Button secondary onClick={() => setTicked({ key: listKey, ids: tickedIds.length === queue.length ? [] : queue.map((item) => item.id) })}>
+                {tickedIds.length === queue.length ? copy.clearSelection : copy.selectPage}
+              </Button>
+              {tickedIds.length > 0 && <span>{fillNewsCopy(copy.selectedCount, { count: tickedIds.length })}</span>}
+            </div>
+            {tickedIds.length > 0 && <>
+              <label className="block text-sm font-semibold">{copy.bulkReason}<input className={fieldClass} value={bulkReason} onChange={(event) => setBulkReason(event.target.value)} /></label>
+              <div className="flex flex-wrap gap-2">{copy.quickReasonList.map((value) => <button type="button" key={value} className="rounded-full border border-[var(--line)] px-3 py-1 text-xs" onClick={() => setBulkReason(value)}>{value}</button>)}</div>
+              <Button disabled={busy || !bulkReason.trim()} onClick={() => void rejectTicked()}>{copy.bulkReject}</Button>
+            </>}
+          </div>}
+          {!queue.length ? <Empty>{copy.empty}</Empty> : queue.map((item) => <div key={item.id}
+            className={`flex items-start gap-3 rounded-xl border p-3 ${selected === item.id ? "border-[var(--teal)]" : "border-[var(--line)]"}`}>
+            {selectable && <input type="checkbox" className="mt-1 h-5 w-5 shrink-0" aria-label={fillNewsCopy(copy.selectRow, { title: item.source_title })}
+              checked={tickedIds.includes(item.id)} onChange={(event) => tick(item.id, event.target.checked)} />}
+            <button type="button" onClick={() => setSelected(item.id)} className="min-w-0 flex-1 text-left">
+              <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{statusName(item.status)}</span>
+              {holdName(item) && <span className="mt-2 block text-sm font-semibold">{holdName(item)}</span>}
+              <strong className="mt-1 block">{item.source_title}</strong>
+              <span className="mt-1 block text-xs text-[var(--muted)]">{item.vertical.toUpperCase()} · {item.event_date ?? item.created_at.slice(0, 10)}</span>
+            </button>
+          </div>)}
+          {pages > 1 && <div className="flex flex-wrap items-center justify-between gap-2 pt-2 text-sm">
+            <Button secondary disabled={page <= 1} onClick={() => setPage(page - 1 > 1 ? String(page - 1) : "")}>{copy.previousPage}</Button>
+            <span>{fillNewsCopy(copy.pageOf, { page, pages, total: candidates?.total ?? 0 })}</span>
+            <Button secondary disabled={page >= pages} onClick={() => setPage(String(page + 1))}>{copy.nextPage}</Button>
+          </div>}
         </section>
-        {!detail ? <Empty>{copy.empty}</Empty> : <section className="space-y-5">
-          <div className={panelClass}><div className="flex flex-wrap items-center gap-2"><span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[detail.status] ?? "bg-[var(--paper)]"}`}>{detail.status}</span><strong>{detail.source_title}</strong></div>
+        {!detail ? <Empty>{copy.pickOne}</Empty> : <section className="space-y-5">
+          <div className={panelClass}><div className="flex flex-wrap items-center gap-2"><span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[detail.status] ?? "bg-[var(--paper)]"}`}>{statusName(detail.status)}</span><strong>{detail.source_title}</strong></div>
             <a href={detail.canonical_url} target="_blank" rel="noopener noreferrer" className="mt-2 block break-all text-sm text-[var(--teal)] underline">{detail.canonical_url}</a>
-            {detail.error_code && <p className="mt-3 text-sm text-red-700">{detail.error_code}: {detail.error_detail}</p>}
+            {detail.error_code && <p className="mt-3 text-sm font-semibold text-red-700">{holdName(detail)}</p>}
+            {detail.error_detail && <p className="mt-1 break-words text-xs text-[var(--muted)]">{detail.error_detail}</p>}
+          </div>
+          <div className={`${panelClass} space-y-3`}>
+            <h2 className="text-xl font-bold">{copy.nextStep}</h2>
+            <p className="leading-7">{copy.next[situation]}</p>
+            {(situation === "shadow" || situation === "jevHold") && gate && settings && <p className="text-sm text-[var(--muted)]">
+              {fillNewsCopy(copy.gateProgress, { vertical: detail.vertical.toUpperCase(), labelled: gate.labelled_candidates, min: settings.min_shadow_candidates, rate: (gate.agreement_rate * 100).toFixed(0) })}
+            </p>}
+            {situation === "duplicate" && <div>
+              <h3 className="font-semibold">{copy.similarTitles}</h3>
+              {detail.similar_titles?.length
+                ? <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm">{detail.similar_titles.map((title) => <li key={title}>{title}</li>)}</ol>
+                : <p className="mt-2 text-sm text-[var(--muted)]">{copy.noSimilarTitles}</p>}
+            </div>}
+            {actions.length > 0 && <div className="space-y-3 border-t border-[var(--line)] pt-3">
+              <label className="block font-semibold">{copy.reason}<textarea className={fieldClass} value={reason} onChange={(event) => setReason(event.target.value)} rows={2} /></label>
+              <div className="flex flex-wrap items-center gap-2 text-xs" role="group" aria-label={copy.quickReasons}>
+                <span className="text-[var(--muted)]">{copy.quickReasons}</span>
+                {copy.quickReasonList.map((value) => <button type="button" key={value} className="rounded-full border border-[var(--line)] px-3 py-1" onClick={() => setReason(value)}>{value}</button>)}
+              </div>
+              {(actions.includes("publish") || actions.includes("incident")) && <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={majorError} onChange={(event) => setMajorError(event.target.checked)} />{copy.majorError}</label>}
+              <div className="flex flex-wrap items-center gap-2">
+                {actions.map((name) => <Button key={name} secondary={!primaryActions.includes(name)}
+                  disabled={!manage.allowed || busy || !reason.trim() || (name === "incident" && !majorError)}
+                  onClick={() => void act(name)}>{actionLabel[name]}</Button>)}
+                {!reason.trim() && <span className="text-xs text-[var(--muted)]">{copy.reasonFirst}</span>}
+              </div>
+            </div>}
           </div>
           <div className={panelClass}><h2 className="text-xl font-bold">{copy.evidence}</h2><div className="mt-3 space-y-3">{detail.evidence.map((item) => <article key={item.id} className="rounded-xl bg-[var(--paper)] p-3">
             <p className="font-semibold">{item.title} · {item.is_first_party ? copy.firstParty : item.role === "lead_only" ? copy.leadOnly : copy.evidence}</p>
@@ -242,17 +421,14 @@ export function AdminNewsWorkspace() {
           </article>)}</div></div>
           <div className="grid gap-5 lg:grid-cols-2">
             <div className={panelClass}><h2 className="text-xl font-bold">{copy.claims}</h2>{detail.claim_ledger.length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">—</p> : <ol className="mt-3 list-decimal space-y-3 pl-5 text-sm">{detail.claim_ledger.map((claim, index) => <li key={`${index}-${String(claim.claim ?? "")}`}><p>{String(claim.claim ?? "")}</p><p className="mt-1 break-all text-xs text-[var(--muted)]">{Array.isArray(claim.source_urls) ? claim.source_urls.join(" · ") : ""}</p></li>)}</ol>}</div>
-            <div className={panelClass}><h2 className="text-xl font-bold">{copy.checks}</h2>{Object.keys(detail.lint).length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">—</p> : <div className="mt-3 space-y-3">{Object.entries(detail.lint).map(([lintLocale, problems]) => <article key={lintLocale}><h3 className="font-semibold">{lintLocale}</h3>{problems.length === 0 ? <p className="text-sm text-emerald-700">0 errors</p> : <ul className="list-disc pl-5 text-sm text-red-700">{problems.map((problem) => <li key={problem}>{problem}</li>)}</ul>}</article>)}</div>}</div>
+            <div className={panelClass}><h2 className="text-xl font-bold">{copy.checks}</h2>{Object.keys(detail.lint).length === 0 ? <p className="mt-3 text-sm text-[var(--muted)]">—</p> : <div className="mt-3 space-y-3">{Object.entries(detail.lint).map(([lintLocale, problems]) => <article key={lintLocale}><h3 className="font-semibold">{lintLocale}</h3>{problems.length === 0 ? <p className="text-sm text-emerald-700">{copy.noErrors}</p> : <ul className="list-disc pl-5 text-sm text-red-700">{problems.map((problem) => <li key={problem}>{problem}</li>)}</ul>}</article>)}</div>}</div>
           </div>
           <div className={panelClass}><h2 className="text-xl font-bold">{copy.preview}</h2><div className="mt-3 flex flex-wrap gap-2">{newsLocales.map((value) => <Button key={value} secondary={previewLocale !== value} onClick={() => setPreviewLocale(value)}>{value}</Button>)}</div>
             {!document ? <p className="mt-4 text-[var(--muted)]">{copy.noDocument}</p> : <article className="mt-5 space-y-4"><h2 className="text-2xl font-bold">{document.title}</h2><p className="text-[var(--muted)]">{document.description}</p><ContentBlocks blocks={contentBlocks} labels={labels} locale={previewLocale} />
               <h3 className="font-bold">{copy.source}</h3><ul className="list-disc pl-5 text-sm">{document.sources.map((item) => <li key={item.url}><a href={item.url} target="_blank" rel="noopener noreferrer" className="text-[var(--teal)] underline">{item.title}</a></li>)}</ul></article>}
             {detail.guide_article_id && <div className="mt-4 flex flex-wrap gap-2">{newsLocales.map((value) => <Link key={value} href={`/admin/guides?article=${detail.guide_article_id}&lang=${value}`} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold">{copy.openEditor} · {value}</Link>)}</div>}
           </div>
-          <div className={panelClass}><h2 className="text-xl font-bold">{copy.assessments}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.status}</th><th className="p-2">Locale</th><th className="p-2">{copy.confidence}</th><th className="p-2">Model</th><th className="p-2">{copy.reason}</th></tr></thead><tbody>{detail.assessments.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="p-2">{item.assessment_type}: {item.verdict}{typeof item.details.tier === "string" ? ` (${item.details.tier})` : ""}</td><td className="p-2">{item.locale ?? "—"}</td><td className="p-2">{item.confidence?.toFixed(3) ?? "—"}</td><td className="p-2">{item.provider ?? "—"} {item.model ?? ""}</td><td className="min-w-64 p-2">{item.reasons.join(" · ") || "—"}</td></tr>)}</tbody></table></div></div>
-          <div className={panelClass}><label className="font-semibold">{copy.reason}<textarea className={fieldClass} value={reason} onChange={(event) => setReason(event.target.value)} rows={3} /></label><label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" checked={majorError} onChange={(event) => setMajorError(event.target.checked)} />{copy.majorError}</label>
-            <div className="mt-4 flex flex-wrap gap-2">{detail.status === "published" ? <Button disabled={!manage.allowed || busy || !reason.trim() || !majorError} onClick={() => void action("major-error")}>{copy.incident}</Button> : <><Button secondary disabled={!manage.allowed || busy || !reason.trim()} onClick={() => void action("retry")}>{copy.retry}</Button><Button secondary disabled={!manage.allowed || busy || !reason.trim() || !detail.guide_article_id} onClick={() => void action("verify")}>{copy.verify}</Button><Button secondary disabled={!manage.allowed || busy || !reason.trim()} onClick={() => void action("reject")}>{copy.reject}</Button><Button disabled={!manage.allowed || busy || !reason.trim() || !detail.guide_article_id} onClick={() => void action("publish")}>{copy.publish}</Button></>}</div>
-          </div>
+          <div className={panelClass}><h2 className="text-xl font-bold">{copy.assessments}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.status}</th><th className="p-2">{copy.locale}</th><th className="p-2">{copy.confidence}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.reasons}</th></tr></thead><tbody>{detail.assessments.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="min-w-40 p-2">{named(copy.assessmentTypes, item.assessment_type)}: {named(copy.verdicts, item.verdict)}{typeof item.details.tier === "string" ? ` (${named(copy.tiers, item.details.tier)})` : ""}</td><td className="p-2">{item.locale ?? "—"}</td><td className="p-2">{item.confidence?.toFixed(3) ?? "—"}</td><td className="p-2">{item.provider === "human" ? copy.assessmentTypes.human : `${item.provider ?? "—"} ${item.model ?? ""}`}</td><td className="min-w-40 p-2">{item.reasons.map((value) => named(copy.reasonCodes, value)).join(" · ") || "—"}</td></tr>)}</tbody></table></div></div>
         </section>}
       </div>}
       {tab === "sources" && <div className="space-y-5"><section className={panelClass}><h2 className="text-xl font-bold">{copy.addSource}</h2><div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -266,7 +442,7 @@ export function AdminNewsWorkspace() {
         <label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" checked={sourceDraft.firstParty} disabled={sourceDraft.role !== "evidence"} onChange={(event) => setSourceDraft({ ...sourceDraft, firstParty: event.target.checked })} />{copy.firstParty}</label><Button className="mt-3" disabled={!manage.allowed || busy || !sourceDraft.name || !sourceDraft.url} onClick={() => void addSource()}>{copy.add}</Button></section>
         <section className="grid gap-3">{sources.map((item) => <article key={item.id} className={panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className="mt-2 text-sm text-red-700">{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
       {tab === "settings" && settings && <section className={`${panelClass} space-y-5`}><label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={settings.enabled} onChange={(event) => setSettings({ ...settings, enabled: event.target.checked })} />{copy.enable}</label>
-        <label>Mode<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
+        <label>{copy.mode}<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
         <div className="grid gap-3 md:grid-cols-2">{(["writer", "verifier"] as const).map((kind) => {
           const provider = settings[`${kind}_provider`];
           return <fieldset key={kind} className="space-y-3 rounded-xl border border-[var(--line)] p-4">
@@ -279,9 +455,9 @@ export function AdminNewsWorkspace() {
         <div className="grid gap-3 md:grid-cols-2">{(["global_concurrency", "per_vertical_concurrency", "min_shadow_days", "min_shadow_candidates"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
         <div className="grid gap-3 md:grid-cols-2">{(["min_human_agreement", "jev_act_confidence"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" min={0} max={1} step="0.01" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
         <div className="grid gap-3 md:grid-cols-2">{(["prompt_version", "policy_version"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} /></label>)}</div>
-        <div className="grid gap-3 md:grid-cols-3">{(["ai", "tech", "crypto"] as NewsVertical[]).map((vertical) => { const gate = settings.gates[vertical]; const key = `auto_publish_${vertical}` as const; return <article key={vertical} className="rounded-xl border border-[var(--line)] p-4"><h3 className="font-bold">{vertical.toUpperCase()} · {copy.gate}</h3><p className={`mt-2 text-sm font-semibold ${gate.eligible ? "text-emerald-700" : "text-amber-700"}`}>{gate.eligible ? copy.eligible : copy.notEligible}</p><p className="mt-1 text-sm">{gate.days}d · {gate.labelled_candidates} · {(gate.agreement_rate * 100).toFixed(1)}% · {gate.serious_false_positives} serious</p>{gate.reasons.length > 0 && <ul className="mt-2 list-disc pl-5 text-xs text-[var(--muted)]">{gate.reasons.map((value) => <li key={value}>{value}</li>)}</ul>}<label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" disabled={!gate.eligible || settings.mode !== "automatic"} checked={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.checked })} />Auto publish</label></article>; })}</div>
+        <div className="grid gap-3 md:grid-cols-3">{(["ai", "tech", "crypto"] as NewsVertical[]).map((vertical) => { const gateView = settings.gates[vertical]; const key = `auto_publish_${vertical}` as const; return <article key={vertical} className="rounded-xl border border-[var(--line)] p-4"><h3 className="font-bold">{vertical.toUpperCase()} · {copy.gate}</h3><p className={`mt-2 text-sm font-semibold ${gateView.eligible ? "text-emerald-700" : "text-amber-700"}`}>{gateView.eligible ? copy.eligible : copy.notEligible}</p><p className="mt-1 text-sm">{gateView.days}d · {gateView.labelled_candidates} · {(gateView.agreement_rate * 100).toFixed(1)}% · {gateView.serious_false_positives} {copy.serious}</p>{gateView.reasons.length > 0 && <ul className="mt-2 list-disc pl-5 text-xs text-[var(--muted)]">{gateView.reasons.map((value) => <li key={value}>{value}</li>)}</ul>}<label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" disabled={!gateView.eligible || settings.mode !== "automatic"} checked={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.checked })} />{copy.autoPublish}</label></article>; })}</div>
         <Button disabled={!manage.allowed || busy} onClick={() => void saveSettings()}>{copy.save}</Button></section>}
-      {tab === "runs" && (!detail ? <Empty>{copy.empty}</Empty> : <section className={panelClass}><h2 className="text-xl font-bold">{copy.runs}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">Stage</th><th className="p-2">{copy.status}</th><th className="p-2">Attempt</th><th className="p-2">Model</th><th className="p-2">Tokens</th></tr></thead><tbody>{detail.runs.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="p-2">{item.stage}</td><td className="p-2">{item.status}{item.error_code ? ` · ${item.error_code}` : ""}</td><td className="p-2">{item.attempt}</td><td className="p-2">{item.provider ?? "—"} {item.model ?? ""}</td><td className="p-2">{item.input_tokens}/{item.output_tokens}</td></tr>)}</tbody></table></div></section>)}
+      {tab === "runs" && (!detail ? <Empty>{copy.pickOne}</Empty> : <section className={panelClass}><h2 className="text-xl font-bold">{copy.runs}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.stage}</th><th className="p-2">{copy.status}</th><th className="p-2">{copy.attempt}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.tokens}</th></tr></thead><tbody>{detail.runs.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="p-2">{item.stage}</td><td className="p-2">{item.status}{item.error_code ? ` · ${item.error_code}` : ""}</td><td className="p-2">{item.attempt}</td><td className="p-2">{item.provider ?? "—"} {item.model ?? ""}</td><td className="p-2">{item.input_tokens}/{item.output_tokens}</td></tr>)}</tbody></table></div></section>)}
     </Tabs>
   </div>;
 }

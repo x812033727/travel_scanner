@@ -18,6 +18,11 @@ from app.hotspots.ai_search import research_model
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
 from app.news_automation.assets import mark_assets_public
+from app.news_automation.duplicates import (
+    DUPLICATE_UNCERTAIN,
+    HUMAN_PROVIDER,
+    similar_titles,
+)
 from app.news_automation.fetch import RedisHostRateLimiter
 from app.news_automation.models import (
     LOCALES,
@@ -474,6 +479,9 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
         for locale, document in row.draft_bundle_json.items()
         if locale in LOCALES
     }
+    waiting_on_duplicate = (
+        row.status == "manual_review" and row.error_code == DUPLICATE_UNCERTAIN
+    )
     return CandidateDetail(
         **candidate_summary(row).model_dump(),
         evidence=[
@@ -528,6 +536,7 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
         lint=row.lint_json,
         human_reason=row.human_reason,
         human_major_error=row.human_major_error,
+        similar_titles=await similar_titles(session, row) if waiting_on_duplicate else [],
     )
 
 
@@ -541,6 +550,7 @@ async def reject_candidate(
         "manual_review",
         "shadow_review",
         "needs_evidence",
+        "needs_redraft",
         "failed",
         "duplicate",
     }:
@@ -579,13 +589,15 @@ async def retry_candidate(
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review", "needs_evidence", "failed"}:
+    if row.status not in {
+        "manual_review",
+        "shadow_review",
+        "needs_evidence",
+        "needs_redraft",
+        "failed",
+    }:
         raise AppError(409, "news_candidate_not_retryable", "這個候選目前不能重跑")
-    row.status = "discovered"
-    row.error_code = None
-    row.error_detail = None
-    row.retry_count += 1
-    row.human_reason = payload.reason
+    _queue_new_draft(row, payload.reason)
     audit(
         session,
         actor,
@@ -606,6 +618,78 @@ async def reverify_candidate(
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if row.status not in {"manual_review", "shadow_review", "failed"}:
         raise AppError(409, "news_candidate_not_retryable", "這個候選目前不能重新查核")
+    await _queue_reverify(session, row, payload.reason)
+    audit(
+        session,
+        actor,
+        "news_candidate_reverify_requested",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        retry_count=row.retry_count,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+async def clear_duplicate_candidate(
+    session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
+) -> CandidateDetail:
+    """An editor answers an uncertain duplicate check with "not a duplicate".
+
+    The answer is stored as a duplicate assessment for the current evidence, which the
+    pipeline honours instead of asking Jev again, and the candidate carries on: from its
+    article when it already has one (like a re-verify), otherwise from a new draft.
+    """
+
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if row.status != "manual_review" or row.error_code != DUPLICATE_UNCERTAIN:
+        raise AppError(
+            409, "news_candidate_not_duplicate_uncertain", "這個候選沒有在等待重複判定"
+        )
+    session.add(
+        NewsAssessment(
+            candidate_id=row.id,
+            assessment_type="duplicate",
+            verdict="pass",
+            provider=HUMAN_PROVIDER,
+            reasons_json=[payload.reason],
+            details_json={},
+            evidence_hash=row.evidence_hash,
+            prompt_version=row.prompt_version,
+            created_by_user_id=actor.id,
+        )
+    )
+    from_article = row.guide_article_id is not None
+    if from_article:
+        await _queue_reverify(session, row, payload.reason)
+    else:
+        _queue_new_draft(row, payload.reason)
+    audit(
+        session,
+        actor,
+        "news_candidate_duplicate_cleared",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        from_article=from_article,
+        retry_count=row.retry_count,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+def _queue_new_draft(row: NewsCandidate, reason: str) -> None:
+    row.status = "discovered"
+    row.error_code = None
+    row.error_detail = None
+    row.retry_count += 1
+    row.human_reason = reason
+
+
+async def _queue_reverify(session: AsyncSession, row: NewsCandidate, reason: str) -> None:
+    """Run the edited guide drafts through the checks again instead of drafting anew."""
+
     if row.guide_article_id is None:
         raise AppError(409, "news_draft_unavailable", "候選尚未建立可編輯的五語草稿")
     locale_rows = list(
@@ -624,17 +708,7 @@ async def reverify_candidate(
     row.error_code = "news_reverify_requested"
     row.error_detail = None
     row.retry_count += 1
-    row.human_reason = payload.reason
-    audit(
-        session,
-        actor,
-        "news_candidate_reverify_requested",
-        f"news-candidate:{row.id}",
-        reason=payload.reason,
-        retry_count=row.retry_count,
-    )
-    await session.commit()
-    return await candidate_detail(session, row.id)
+    row.human_reason = reason
 
 
 async def publish_candidate(

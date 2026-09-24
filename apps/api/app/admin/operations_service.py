@@ -172,9 +172,11 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             TravelServiceProduct.status == "pending",
         ).label("hotels_pending"),
         _scalar_count(Job, Job.status == "pending").label("community_jobs_pending"),
+        # The same statuses as the 待審查 list on /admin/news: candidates waiting for a
+        # person's decision. Failed and stopped-before-draft ones have their own list.
         _scalar_count(
             NewsCandidate,
-            NewsCandidate.status.in_(("manual_review", "shadow_review", "failed")),
+            NewsCandidate.status.in_(("manual_review", "shadow_review")),
         ).label("news_review_pending"),
         _scalar_count(
             DeploymentRun, DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES)
