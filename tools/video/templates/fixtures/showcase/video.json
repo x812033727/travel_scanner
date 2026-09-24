@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "slug": "template-showcase",
+  "format": "slides",
+  "target_minutes": [0.5, 5],
+  "voice": { "provider": "azure", "name": "zh-TW-HsiaoChenNeural" },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "版型展示：每一種投影片長什麼樣子",
+    "description": "這支只用來看版型：每一種投影片各出現一次，逐條出現的效果也都有。",
+    "tags": ["版型展示"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "tag": "AI 模型怎麼挑", "headline": "第一名**不一定**最好用", "sub": "三個問題幫你決定" } },
+  "sources": [{ "title": "範例來源", "url": "https://example.com/models", "checked_on": "2026-09-24" }],
+  "scenes": [
+    {
+      "id": "opening",
+      "chapter": "開場",
+      "template": "title",
+      "data": { "tag": "AI 工具教學", "title": "AI 模型這麼多，**到底該怎麼挑**？", "subtitle": "排行榜第一名，不一定最適合你的工作" },
+      "lines": [{ "id": "sa01", "text": "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？" }]
+    },
+    {
+      "id": "part-one",
+      "chapter": "三個問題",
+      "template": "chapter",
+      "data": { "title": "先問自己三個問題", "subtitle": "做什麼、等多久、付多少" },
+      "lines": [{ "id": "sa02", "text": "與其追排行榜，不如先問自己三個問題。" }]
+    },
+    {
+      "id": "three-questions",
+      "template": "bullets",
+      "data": { "title": "挑模型之前，先回答這三題", "items": ["你要它做什麼工作？", "你能等它想多久？", "你每個月願意付多少？"], "note": "三題都答完，再去看排行榜" },
+      "lines": [
+        { "id": "sa03", "text": "第一題，你要它做什麼工作。", "reveal": 1 },
+        { "id": "sa04", "text": "第二題，你能等它想多久。", "reveal": 1 },
+        { "id": "sa05", "text": "第三題，你每個月願意付多少。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "keyword",
+      "template": "big",
+      "data": { "kicker": "排行榜常見的考題", "text": "MMLU-Pro", "sub": "考的是知識題，不是你每天的工作" },
+      "lines": [{ "id": "sa06", "text": "很多排行榜看的是知識題，跟你每天要做的工作不一定有關。" }]
+    },
+    {
+      "id": "flagship-vs-small",
+      "chapter": "比一比",
+      "template": "compare",
+      "data": {
+        "title": "旗艦模型和小模型差在哪",
+        "left": { "heading": "旗艦模型", "points": ["難題答得好", "比較慢", "每次呼叫比較貴"] },
+        "right": { "heading": "小模型", "points": ["簡單工作夠用", "回得很快", "便宜很多"] },
+        "verdict": "先用小模型，答不好再換旗艦"
+      },
+      "lines": [
+        { "id": "sa07", "text": "旗艦模型難題答得好，但比較慢也比較貴。", "reveal": 1 },
+        { "id": "sa08", "text": "小模型回得快又便宜，簡單的工作其實就夠用。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "cascade",
+      "template": "steps",
+      "data": {
+        "title": "級聯：先便宜、再升級",
+        "steps": [
+          { "title": "小模型先答", "detail": "大部分請求在這裡就結束" },
+          { "title": "自己打分數", "detail": "用你的評測集判斷夠不夠好" },
+          { "title": "不夠才升級", "detail": "只有難題交給旗艦模型" }
+        ]
+      },
+      "lines": [
+        { "id": "sa09", "text": "第一步，讓小模型先答。", "reveal": 1 },
+        { "id": "sa10", "text": "第二步，用你自己的評測集打分數。", "reveal": 1 },
+        { "id": "sa11", "text": "第三步，不夠好的才交給旗艦模型。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "numbers",
+      "template": "table",
+      "data": {
+        "title": "延遲要看 p95，不是平均",
+        "columns": ["流程", "平均", "p95"],
+        "rows": [["單一旗艦", "4.1 秒", "9.8 秒"], ["級聯", "1.6 秒", "7.2 秒"], ["並行互審", "5.3 秒", "8.4 秒"]],
+        "highlight": 1
+      },
+      "lines": [
+        { "id": "sa12", "text": "看延遲要看 p95，也就是最慢的那百分之五。" },
+        { "id": "sa13", "text": "級聯的平均最快，但最慢的時候也要七秒多。" }
+      ]
+    },
+    {
+      "id": "api-call",
+      "chapter": "動手試",
+      "template": "code",
+      "data": {
+        "title": "同一個問題，換一個模型",
+        "language": "python",
+        "code": "response = client.messages.create(\n    model=MODEL,\n    max_tokens=512,\n    messages=[{\"role\": \"user\", \"content\": question}],\n)\nprint(response.content[0].text)\n",
+        "highlight": [2],
+        "caption": "只要改 model 這一行，就能比較不同模型"
+      },
+      "lines": [{ "id": "sa14", "text": "用 API 比較模型很簡單，只要改掉模型名稱那一行。" }]
+    },
+    {
+      "id": "cost-diagram",
+      "template": "diagram",
+      "data": { "svg": "apps/web/public/guides/ai-workflow-cost-quality-latency/diagram-1.svg", "caption": "三種流程處理同一個請求的成本估算" },
+      "lines": [{ "id": "sa15", "text": "這張圖把三種流程的成本放在一起比。" }]
+    },
+    {
+      "id": "screen",
+      "template": "screenshot",
+      "data": { "title": "看回答要看這裡", "image": "apps/web/public/guides/codex-first-project/reference-1280.png", "highlight": { "x": 8, "y": 12, "w": 40, "h": 30 }, "caption": "畫面為範例" },
+      "lines": [
+        { "id": "sa16", "text": "打開畫面之後，先看這一區。" },
+        { "id": "sa17", "text": "框起來的地方，就是模型實際的回答。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "closing",
+      "chapter": "結論",
+      "template": "outro",
+      "data": { "title": "先問三個問題，再看排行榜", "cta": "完整比較表與計算方式在說明欄的文章裡", "lines": ["做什麼：決定要多聰明", "等多久：決定要多快", "付多少：決定用哪一級"] },
+      "lines": [{ "id": "sa18", "text": "先問三個問題，再看排行榜，你會發現選擇清楚很多。" }]
+    }
+  ]
+}
