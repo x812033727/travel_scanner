@@ -69,9 +69,11 @@
 
 | 項目 | 值 |
 | --- | --- |
-| 供應商 | Azure 語音，由正式站伺服器代為合成（金鑰在後台「API 與供應商設定 → AI 服務 → Azure 語音（影片旁白）」） |
-| 頻道聲音 | **還沒選**。第一支影片開工前，用 `audition` 讓站主聽同一段旁白比較：曉臻、雲哲、曉雨，以及 Ava、Andrew 講台灣國語。選定後寫在這裡，之後每支影片都用同一個聲音 |
-| 語速 | `+0%`；稿子的長度以每分鐘 250 字估計 |
+| 供應商 | Gemini 語音（`gemini-3.8-flash-tts`），由正式站伺服器用網站的 Gemini 金鑰代為合成；Azure 語音仍可用 |
+| 頻道聲音 | **Sulafat**（溫暖女聲），站主 2026-09-24 選定。在 `video.json` 寫 `"voice": {"provider": "gemini", "name": "Sulafat", "style": "…"}` |
+| 語氣（`style`） | `Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.` |
+| 語速 | 由語氣描述決定（沒有 `rate`）。試聽樣稿 101 字唸 16.6 秒，約每分鐘 360 字；工具的長度估計仍用每分鐘 250 字，會高估（票 `2026-09-24-video-speaking-rate`） |
+| 怎麼選出來的 | 2026-09-24 先聽 Azure 7 聲，最好的 Ava（多語，+5%）被嫌「語調太平、像在念稿」；再聽 Gemini 5 聲（Sulafat、Kore、Achird、Sadaltager、Zubenelgenubi），選 Sulafat。Gemini 的聲音庫沒有台灣口音的聲音，台灣腔靠語氣描述 |
 | 停頓 | 句與句之間 0.3 秒，換場景多 0.7 秒；單句可以用 `pause_after_ms` 改 |
 
 ## 說明欄
