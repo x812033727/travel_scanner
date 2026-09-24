@@ -137,6 +137,13 @@ npm run check:tasks
   editor's five locales (the marker now stays until an outcome); feed links that
   redirect were never recognised as seen; and a failing sweep could drop the minute's
   claimed scans and stop the scheduler loop.
+- Probing real feeds with the validation code found the worst bug last:
+  `SafeNewsFetcher` rebuilt each streamed response with its `Content-Encoding` header
+  after `aiter_bytes()` had already decoded it, so every gzip/br page raised
+  `DecodingError`. 22 of 22 candidate feeds failed before the fix, 19 of 22 passed
+  after it (Microsoft AI blog 4xx, Meta AI blog unreadable detail pages, the Ars
+  Technica feedburner host refused by robots). SEC press releases validate but their
+  pages extract to 248 characters (an access notice), so SEC is not a usable source.
 - Still known: a feed whose links always redirect is refetched every hour (one page
   per entry) because the pre-redirect URL is not stored; the orphan sweep keys on
   `updated_at`, so with a long backlog a queued candidate may get one extra job an hour
