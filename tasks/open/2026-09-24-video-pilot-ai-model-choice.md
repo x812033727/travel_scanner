@@ -1,14 +1,14 @@
 ---
 id: 2026-09-24-video-pilot-ai-model-choice
 title: 影片產線 T6：試作影片〈AI 模型怎麼挑〉
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-24T06:12:08Z
 created_at: 2026-09-24T00:41:17Z
 completed_at:
-branch:
+branch: claude/video-pilot
 depends_on:
   - 2026-09-24-video-skill-automated
 scope:
@@ -33,8 +33,8 @@ scope:
 
 ## Steps
 
-- [ ] 站主的一次性設定（`.agents/skills/youtube-video/references/automated.md` §一次性設定）：後台填 Azure 金鑰與區域、連線測試、建立影片工具權杖，站主自己跑 `node tools/video/cli.mjs login`。
-- [ ] 用 `audition` 讓站主比較頻道聲音（曉臻、雲哲、曉雨，以及 Ava、Andrew 講台灣國語），選定後寫進 `docs/videos/README.md` 的聲音表。
+- [x] 站主的一次性設定：後台填好 Azure 金鑰與區域；權杖改用配對取得（#717），2026-09-24 代理跑 `login`、站主按「允許」。
+- [ ] 用 `audition` 讓站主比較頻道聲音，選定後寫進 `docs/videos/README.md` 的聲音表。2026-09-24 第一輪 7 個聲音：站主選 Ava（多語，講台灣國語），語速 +5%，但嫌「語調太平、像在念稿」→ 正在查 Azure HD 聲音、Gemini TTS 等更自然的選項，再試聽一輪。
 - [ ] 企劃代理 → 站主選大綱。
 - [ ] 撰稿代理（sonnet）→ 查核代理（opus，換人）→ 聽眾優先審稿。
 - [ ] 價格類事實在錄製當天重新查官方頁（文章是 2026-09-19 的數字）。
@@ -51,3 +51,4 @@ node tools/video/cli.mjs status --slug ai-model-choice --workdir <VIDEO_WORKDIR>
 ## Notes
 
 - 營利政策的對策：至少一段用當天官方定價實算三種流程的成本，不只是念重點。
+- 2026-09-24 claude-opus-5-5 認領。第一次真合成的數字：101 字樣稿、7 個聲音，共 1,282 計費字元；Ava 原速 19.9 秒，約每分鐘 300 字，比工具估計的 250 字快。8–12 分鐘的片要 2,400–3,400 字旁白。之後 `DEFAULT_CPM` 或 `video.json` 應該能依聲音設定語速，否則 lint 的長度估計會偏長。
