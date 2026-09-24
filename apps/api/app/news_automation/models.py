@@ -13,6 +13,7 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    LargeBinary,
     String,
     Text,
     UniqueConstraint,
@@ -323,5 +324,9 @@ class NewsAsset(Base):
     width: Mapped[int] = mapped_column(Integer)
     height: Mapped[int] = mapped_column(Integer)
     is_public: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    # The image itself on a host without object storage (the production host has none);
+    # None when it lives in S3 under storage_key. A candidate's seven images are a few
+    # hundred kilobytes, and retention clears them with the rest of its unpublished assets.
+    content: Mapped[bytes | None] = mapped_column(LargeBinary, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
