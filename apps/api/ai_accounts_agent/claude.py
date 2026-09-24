@@ -1,11 +1,15 @@
 import contextlib
+import json
 import os
 import re
+import select
 import signal
 import subprocess
 import sys
 import threading
+import time
 from collections.abc import Mapping, Sequence
+from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -28,9 +32,30 @@ from ai_accounts_agent.sessions import (
     Finalizer,
     LoginError,
 )
-from ai_accounts_agent.statusline import read_snapshot, recorder_installed
+from ai_accounts_agent.statusline import (
+    SNAPSHOT_NAME,
+    atomic_write_text,
+    read_snapshot,
+    recorder_installed,
+)
 
 AUTHORIZE_HOSTS = ("claude.com", "claude.ai", "anthropic.com")
+# Screens a probe may meet before the prompt, matched with whitespace removed: the TUI
+# spaces words with cursor moves, so the screen reads "Yes,Itrustthisfolder". Each gets
+# answered once. The trust prompt defaults to "No, exit", so it needs Down first; the
+# theme picker and notice pages keep their defaults.
+_FIRST_RUN_SCREENS: tuple[tuple[str, re.Pattern[str], tuple[bytes, ...]], ...] = (
+    ("trust", re.compile(r"trustthisfolder", re.IGNORECASE), (b"\x1b[B", b"\r")),
+    ("theme", re.compile(r"syntaxtheme|choosethetextstyle", re.IGNORECASE), (b"\r",)),
+    ("notice", re.compile(r"entertocontinue", re.IGNORECASE), (b"\r",)),
+)
+# The TUI's own login picker: seen when a config directory has credentials but never
+# finished onboarding. A probe gives up rather than start a sign-in.
+_LOGIN_PROMPT = re.compile(r"selectloginmethod|claudeaccountwithsubscription", re.IGNORECASE)
+SCREEN_SETTLE_SECONDS = 0.8
+# Only sent when the status line has not reported usage on its own; a one-word answer from
+# the smallest model is the cheapest request that yields an API response.
+PROBE_MESSAGE = "Reply with the single word: ok"
 # `claude auth login` prints the authorize URL as an OSC 8 hyperlink; its target survives
 # any wrapping of the visible text, so read it from there first.
 _OSC8_TARGET = re.compile(r"\x1b\]8;[^;\x07\x1b]*;(https://[^\x07\x1b]+)(?:\x07|\x1b\\)")
@@ -79,6 +104,46 @@ def _open_terminal() -> tuple[int, int]:
         struct.pack("HHHH", TERMINAL_ROWS, TERMINAL_COLUMNS, 0, 0),
     )
     return controller, terminal
+
+
+def mark_onboarding_done(config_dir: Path) -> bool:
+    """Record first-run setup as done for an account signed in with `claude auth login`.
+
+    That command saves the login but leaves `hasCompletedOnboarding` unset, so the next
+    interactive start shows the login picker as if nobody were signed in (seen on the
+    host, 2026-09-24). Only these two keys change; returns True when the file did.
+    """
+    path = config_dir / ".claude.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        mode = path.stat().st_mode & 0o777
+    except (OSError, ValueError):
+        return False
+    if not isinstance(data, dict) or data.get("hasCompletedOnboarding") is True:
+        return False
+    data["hasCompletedOnboarding"] = True
+    version = data.get("firstStartVersion")
+    if isinstance(version, str):
+        data.setdefault("lastOnboardingVersion", version)
+    atomic_write_text(path, json.dumps(data, indent=2, ensure_ascii=False) + "\n", mode)
+    return True
+
+
+def _stop_session(process: subprocess.Popen[bytes]) -> None:
+    """End a CLI started in its own session, and everything it started."""
+    if process.poll() is not None:
+        return
+    if sys.platform == "win32":
+        process.kill()
+        return
+    for signum in (signal.SIGTERM, signal.SIGKILL):
+        try:
+            os.killpg(process.pid, signum)
+        except ProcessLookupError:
+            return
+        with contextlib.suppress(subprocess.TimeoutExpired):
+            process.wait(3)
+            return
 
 
 class ClaudeLogin:
@@ -217,19 +282,7 @@ class ClaudeLogin:
 
     def _stop(self) -> None:
         """End the CLI; its side of the terminal closing lets the reader finish."""
-        if self._process.poll() is not None:
-            return
-        if sys.platform == "win32":
-            self._process.kill()
-            return
-        for signum in (signal.SIGTERM, signal.SIGKILL):
-            try:
-                os.killpg(self._process.pid, signum)
-            except ProcessLookupError:
-                return
-            with contextlib.suppress(subprocess.TimeoutExpired):
-                self._process.wait(3)
-                return
+        _stop_session(self._process)
 
 
 class ClaudeAccounts:
@@ -270,6 +323,110 @@ class ClaudeAccounts:
             "usage": {"source": "snapshot", **snapshot} if snapshot is not None else None,
             "recorder_installed": recorder_installed(path, self.config.recorder_for(slot)),
         }
+
+    def refresh_usage(self, slot: str) -> bool:
+        """Open Claude Code once so its status line records this account's plan usage.
+
+        Claude Code reports usage only to the status line of an interactive session. On
+        the host it arrives within a couple of seconds of start, before any message, so
+        this usually costs nothing; a one-word request is the fallback. `--restricted`
+        leaves out the owner's settings (hooks, push notifications, Remote Control) and
+        the tools that run code; the recorder comes in through `--settings`. Returns True
+        when a new snapshot was written.
+        """
+        if sys.platform == "win32":
+            return False
+        config_dir = self.config.slot_path("claude", slot)
+        snapshot = config_dir / SNAPSHOT_NAME
+
+        def stamp() -> int | None:
+            try:
+                return snapshot.stat().st_mtime_ns
+            except OSError:
+                return None
+
+        before = stamp()
+        mark_onboarding_done(config_dir)
+        probe_dir = self.config.usage_probe_path
+        probe_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+        settings = json.dumps(
+            {"statusLine": {"type": "command", "command": self.config.recorder_for(slot)}}
+        )
+        command = [
+            *self.config.claude_command,
+            "--restricted",
+            "--strict-mcp-config",
+            "--model",
+            "haiku",
+            "--settings",
+            settings,
+        ]
+        environment = {**self.environment(slot), "TERM": "xterm-256color"}
+        controller, terminal = _open_terminal()
+        try:
+            process = subprocess.Popen(  # noqa: S603 - fixed argv, shell=False
+                command,
+                stdin=terminal,
+                stdout=terminal,
+                stderr=terminal,
+                cwd=probe_dir,
+                env=environment,
+                start_new_session=True,
+                close_fds=True,
+            )
+        except OSError as exc:
+            os.close(controller)
+            raise CliError(f"cannot start claude: {exc.strerror}") from exc
+        finally:
+            os.close(terminal)
+        output = bytearray()
+        answered: set[str] = set()
+        started = last_output = time.monotonic()
+        message_at = started + self.config.claude_usage_quiet_seconds
+        give_up_at = message_at + self.config.claude_usage_message_seconds
+        messaged = False
+        try:
+            while True:
+                if stamp() != before:
+                    return True
+                now = time.monotonic()
+                if process.poll() is not None or now >= give_up_at:
+                    return False
+                if not messaged and now >= message_at:
+                    messaged = True
+                    os.write(controller, PROBE_MESSAGE.encode())
+                    time.sleep(0.5)  # The TUI reads a burst ending in Enter as a paste.
+                    os.write(controller, b"\r")
+                    output.clear()
+                ready, _, _ = select.select([controller], [], [], 0.25)
+                if ready:
+                    try:
+                        chunk = os.read(controller, 65536)
+                    except OSError:
+                        return stamp() != before
+                    output.extend(chunk)
+                    del output[:-MAX_OUTPUT_BYTES]
+                    last_output = time.monotonic()
+                    continue
+                # Read a screen only once it has settled; the TUI draws in bursts.
+                if not output or time.monotonic() - last_output < SCREEN_SETTLE_SECONDS:
+                    continue
+                screen = "".join(
+                    _TERMINAL_ESCAPES.sub("", output.decode("utf-8", errors="replace")).split()
+                )
+                output.clear()
+                if _LOGIN_PROMPT.search(screen):
+                    return False  # Not really signed in; a probe must never start a login.
+                for name, pattern, keys in _FIRST_RUN_SCREENS:
+                    if name not in answered and pattern.search(screen):
+                        answered.add(name)
+                        for key in keys:
+                            os.write(controller, key)
+                            time.sleep(0.3)
+                        break
+        finally:
+            _stop_session(process)
+            os.close(controller)
 
     def start_login(self, slot: str, finalize: Finalizer) -> ClaudeLogin:
         return ClaudeLogin(

@@ -138,10 +138,12 @@ NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
         id="audit", group="system", href="/admin/audit", label_key="audit",
         capability="audit.read",
     ),
-    # Signs root's Claude Code and Codex CLIs in on the host: owner only, like the router.
+    # AI settings: the site's AI keys and models (settings.read, like /admin/settings) and
+    # the host's subscription accounts, a tab the page shows the owner only because its
+    # routes require roles.manage.
     AdminNavigationItem(
         id="ai_accounts", group="system", href="/admin/ai-accounts", label_key="aiAccounts",
-        capability="roles.manage",
+        capability="settings.read",
     ),
 )
 

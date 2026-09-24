@@ -95,10 +95,10 @@ type Draft = { base: ProviderView; enabled: boolean; config: Record<string, stri
 // treating a currency/profile update as a login. Logout releases the old key.
 const routeDrafts = new WeakMap<object, Map<AdminSettingsScope, Record<string, Draft>>>();
 type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" | "inheritGuideSearch" };
-type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
+export type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
 
 const providerCategories: ProviderCategory[] = ["auth", "ai", "maps", "content", "travelData", "affiliate", "other"];
-const providerCategoryOf: Record<string, ProviderCategory> = {
+export const providerCategoryOf: Record<string, ProviderCategory> = {
   google_login: "auth",
   line_login: "auth",
   apple_login: "auth",
@@ -133,6 +133,16 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   booking: "affiliate",
   skyscanner_affiliate: "affiliate",
 };
+
+// /admin/settings shows every category but AI; the AI settings page shows only AI, next
+// to the host's subscription accounts. Callers pass these constants, so the arrays keep
+// their identity across renders.
+export const SETTINGS_PAGE_CATEGORIES: readonly ProviderCategory[] = providerCategories.filter((category) => category !== "ai");
+export const AI_PAGE_CATEGORIES: readonly ProviderCategory[] = ["ai"];
+
+function shownIn(categories: readonly ProviderCategory[] | undefined, provider: string) {
+  return !categories || categories.includes(providerCategoryOf[provider] || "other");
+}
 
 const fieldMeta: Record<string, FieldMeta> = {
   auth_google_client_id: { localized: true },
@@ -721,7 +731,7 @@ function loadFailure(reason: unknown): LoadFailure {
   };
 }
 
-export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField }: { scope?: AdminSettingsScope; provider?: string; field?: string }) {
+export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField, categories }: { scope?: AdminSettingsScope; provider?: string; field?: string; categories?: readonly ProviderCategory[] }) {
   const t = useTranslations("admin");
   const copy = adminSettingsCopy(useLocale());
   const budgetCopy = adminCatalogBudgetCopy(useLocale());
@@ -766,8 +776,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       }
       return fresh;
     });
-    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout")?.provider);
-  }, [scope, sessionIdentity]);
+    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider))?.provider);
+  }, [categories, scope, sessionIdentity]);
   const applySnapshotRef = useRef(applySnapshot);
   useEffect(() => { applySnapshotRef.current = applySnapshot; }, [applySnapshot]);
 
@@ -820,9 +830,9 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
 
   useEffect(() => {
     if (!snapshot) return;
-    const defaultProvider = snapshot.providers.find((item) => item.provider !== "runtime" && item.provider !== "layout")?.provider;
+    const defaultProvider = snapshot.providers.find((item) => item.provider !== "runtime" && item.provider !== "layout" && shownIn(categories, item.provider))?.provider;
     const requested = linkedProvider || urlProvider;
-    const name = requested === "__audit" || snapshot.providers.some((item) => item.provider === requested)
+    const name = requested === "__audit" || snapshot.providers.some((item) => item.provider === requested && shownIn(categories, item.provider))
       ? requested
       : scope === "providers" ? defaultProvider : requested;
     const field = linkedField ?? urlField;
@@ -840,7 +850,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       (target.querySelector<HTMLElement>("input, select, button, a, h2") || target).focus();
     });
     return () => cancelAnimationFrame(frame);
-  }, [snapshot, scope, linkedProvider, linkedField, activePanel, urlProvider, urlField]);
+  }, [snapshot, scope, categories, linkedProvider, linkedField, activePanel, urlProvider, urlField]);
 
   function retryLoad() {
     setLoadError(undefined);
@@ -972,7 +982,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       || Object.keys(provider.config).some((field) => settingsOwner(provider.provider, "config", field) === scope);
     if (scope === "system") return provider.provider === "runtime";
     if (scope === "layout") return provider.provider === "layout";
-    return provider.provider !== "runtime" && provider.provider !== "layout";
+    return provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider);
   });
   const visibleAudit = snapshot.audit.filter((item) => visibleProviders.some((provider) => provider.provider === item.target));
   const sharedDependencies = isDomainSettingsScope(scope)

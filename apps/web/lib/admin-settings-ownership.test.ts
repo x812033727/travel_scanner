@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { adminSettingsCopy } from "./admin-settings-copy";
-import { settingsHref, settingsOwner, type AdminSettingsScope } from "./admin-settings-ownership";
+import { AI_SETTINGS_PROVIDERS, isAiSettingsProvider, settingsHref, settingsOwner, type AdminSettingsScope } from "./admin-settings-ownership";
 
 describe("single-owner provider settings registry", () => {
   it.each([
@@ -48,6 +48,14 @@ describe("single-owner provider settings registry", () => {
     expect(settingsHref("system", "runtime")).toBe("/admin/system-settings?provider=runtime");
     expect(settingsHref("layout", "layout")).toBe("/admin/layout-settings?provider=layout");
     expect(settingsHref("hotels", "booking_demand", "booking_demand_env")).toBe("/admin/hotels?tab=settings&provider=booking_demand&section=providers&field=booking_demand_env");
+  });
+
+  it("sends shared AI providers to the AI settings page and keeps their domain links", () => {
+    expect(settingsHref("providers", "ai_vendors", "anthropic_api_key")).toBe("/admin/ai-accounts?tab=api&provider=ai_vendors&field=anthropic_api_key");
+    expect(settingsHref("providers", "gemini_guides")).toBe("/admin/ai-accounts?tab=api&provider=gemini_guides");
+    expect(settingsHref("hotspots", "ai_guide_search")).toBe("/admin/hotspots?tab=settings&provider=ai_guide_search");
+    for (const provider of AI_SETTINGS_PROVIDERS) expect(isAiSettingsProvider(provider)).toBe(true);
+    expect(isAiSettingsProvider("google_maps")).toBe(false);
   });
 
   it("provides ownership, unsaved and conflict copy in all five locales", () => {

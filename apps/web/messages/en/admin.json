@@ -19,7 +19,7 @@
     "analytics": "Traffic & analytics",
     "deployments": "Deployments",
     "uiText": "Site copy",
-    "aiAccounts": "AI accounts"
+    "aiAccounts": "AI settings"
   },
   "providerTabs": {
     "label": "API provider settings tabs",
@@ -985,7 +985,7 @@
     "resetsAt": "Resets {time}",
     "resetDone": "Reset",
     "snapshotAge": "Updated {relative}",
-    "snapshotMissing": "Remaining quota shows up here after Claude has been used once over SSH.",
+    "snapshotMissing": "No quota for this account yet; the host reads it on its own, or press Refresh.",
     "recorderMissing": "This account's status line is not connected to the quota recorder; signing in again or restarting the host agent fixes it.",
     "usageUnavailable": "Quota could not be read: {detail}",
     "loginTitleCodex": "Sign in to Codex (account {slot})",
@@ -1012,7 +1012,21 @@
     "fallbackCodex": "If signing in here keeps failing, run codex-{slot} login --device-auth on the host instead.",
     "cancelLogin": "Cancel sign-in",
     "done": "Done",
-    "closeError": "Close the error message"
+    "closeError": "Close the error message",
+    "usageRefreshing": "Updating quota…"
+  },
+  "aiSettings": {
+    "tabLabel": "AI settings tabs",
+    "tabs": {
+      "subscriptions": "Subscription accounts",
+      "api": "API keys and models"
+    },
+    "hints": {
+      "subscriptions": "For the Claude Code and Codex you use on the host: billed to subscriptions, nothing extra, up to five accounts per tool. The site's features never use these accounts.",
+      "api": "For the site's AI features (trip planning, hourly news, place and article introductions, speech): billed by API usage; keys are stored encrypted on the server only."
+    },
+    "movedNotice": "The AI services' keys and models have moved to AI settings, next to the subscription accounts.",
+    "movedLink": "Open AI settings"
   },
   "pageHeaders": {
     "dashboard": {
@@ -1040,8 +1054,8 @@
       "description": "Only the newest main that passed CI ships. A restricted host agent runs the backup, the migration, the health checks and the application rollback."
     },
     "aiAccounts": {
-      "title": "AI accounts (Claude Code / Codex)",
-      "description": "Sign the host's Claude Code and Codex in to your subscription accounts, up to five per tool, and see how much quota each has left. Credentials stay on the host; this page never sees them."
+      "title": "AI settings",
+      "description": "Everything AI in one place: the subscription accounts the host's Claude Code and Codex use, and the API keys and models the site's AI features use."
     }
   },
   "usersPanel": {
