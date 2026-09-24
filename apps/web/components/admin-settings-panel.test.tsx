@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { AdminSettingsPanel } from "./admin-settings-panel";
+import { AI_PAGE_CATEGORIES, AdminSettingsPanel, SETTINGS_PAGE_CATEGORIES, providerCategoryOf } from "./admin-settings-panel";
+import { AI_SETTINGS_PROVIDERS } from "@/lib/admin-settings-ownership";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import type { AdminBootstrap } from "@/lib/admin-operations";
@@ -420,6 +421,26 @@ afterEach(() => {
 });
 
 describe("AdminSettingsPanel", () => {
+  it("keeps the AI cards on the AI settings page and everything else on /admin/settings", async () => {
+    stubAiFetch(aiSnapshot);
+    const settingsPage = render(<AdminSettingsPanel categories={SETTINGS_PAGE_CATEGORIES} />);
+    expect(await screen.findByRole("tab", { name: /地圖與路線/ })).toBeTruthy();
+    expect(screen.queryByRole("tab", { name: /AI 服務/ })).toBeNull();
+    settingsPage.unmount();
+
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel categories={AI_PAGE_CATEGORIES} provider="google_maps" />);
+    // A link to a card outside the page's categories opens the page's first card instead.
+    expect(await screen.findByRole("heading", { name: "AI 供應商與金鑰" })).toBeTruthy();
+    expect(screen.getByRole("tab", { name: /AI 服務/ })).toBeTruthy();
+    expect(screen.queryByRole("tab", { name: /地圖與路線/ })).toBeNull();
+  });
+
+  it("files every AI-category provider under the AI settings page links", () => {
+    const aiProviders = Object.entries(providerCategoryOf).filter(([, category]) => category === "ai").map(([provider]) => provider);
+    expect([...aiProviders].sort()).toEqual([...AI_SETTINGS_PROVIDERS].sort());
+  });
+
   it("waits for a session-bound settings snapshot before accepting the first budget edit", async () => {
     sessionIdentity.status = "loading";
     const data = { ...snapshot, providers: [{ ...geminiProvider, config: { ...geminiProvider.config, catalog_review_max_calls: 80 } }] };

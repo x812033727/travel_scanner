@@ -21,6 +21,7 @@ from ai_accounts_agent.claude import (
     ClaudeLogin,
     extract_authorize_url,
     is_authorize_url,
+    mark_onboarding_done,
 )
 from ai_accounts_agent.codex import CodexAccounts, is_verification_url, usage_windows
 from ai_accounts_agent.config import STATUSLINE_RECORDER, AgentConfig, parse_emails
@@ -136,8 +137,40 @@ FAKE_CLAUDE = textwrap.dedent(
             sys.exit(0)
         sys.stdout.write("OAuth error: Invalid code\\r\\n")
         sys.exit(1)
+    elif "--restricted" in sys.argv:
+        # An interactive session as a usage probe meets it: first-run screens, then the
+        # status line reporting plan usage through the command passed with --settings.
+        import subprocess, time
+        settings = json.loads(sys.argv[sys.argv.index("--settings") + 1])
+        state_file = os.path.join(home, ".claude.json")
+        state = json.load(open(state_file)) if os.path.exists(state_file) else {}
+        def show(text):
+            sys.stdout.write(text)
+            sys.stdout.flush()
+        if not state.get("hasCompletedOnboarding"):
+            show("Select login method:\\r\\n 1. Claude account with subscription\\r\\n")
+            time.sleep(30)
+            sys.exit(1)
+        if os.path.exists(os.path.join(home, "fake-theme")):
+            show("Choose the text style that looks best\\r\\nSyntax theme: Monokai\\r\\n")
+            sys.stdin.readline()
+        show("Quick safety check: Is this a project you trust?\\r\\n No, exit\\r\\n"
+             " Yes, I trust this folder\\r\\n")
+        if "\\x1b[B" not in sys.stdin.readline():
+            sys.exit(1)
+        if os.path.exists(os.path.join(home, "fake-needs-message")):
+            show("> ")
+            if "single word" not in sys.stdin.readline():
+                sys.exit(1)
+        payload = {"rate_limits": {
+            "five_hour": {"used_percentage": 12, "resets_at": 1790300000},
+            "seven_day": {"used_percentage": 87, "resets_at": 1790539200}}}
+        subprocess.run(settings["statusLine"]["command"], shell=True,
+                       input=json.dumps(payload).encode(), capture_output=True)
+        time.sleep(30)
     """
 )
+STATUSLINE_PY = Path(statusline.__file__).resolve()
 
 
 def make_config(tmp_path: Path, **overrides: Any) -> AgentConfig:
@@ -154,6 +187,10 @@ def make_config(tmp_path: Path, **overrides: Any) -> AgentConfig:
         "url_timeout_seconds": 10.0,
         "command_timeout_seconds": 10.0,
         "code_exchange_timeout_seconds": 10.0,
+        # The recorder as the host runs it, so a probe's status line lands in the slot.
+        "statusline_command": f'"{sys.executable}" "{STATUSLINE_PY}"',
+        "claude_usage_quiet_seconds": 3.0,
+        "claude_usage_message_seconds": 10.0,
     }
     values.update(overrides)
     return AgentConfig(**values)
@@ -548,14 +585,23 @@ def test_login_sessions_expire_and_stop_the_cli() -> None:
 class RecordingAccounts:
     """An Accounts stand-in whose logins finish as soon as the test says so."""
 
-    def __init__(self, email: str) -> None:
+    def __init__(self, email: str, auth_method: str = "claude.ai") -> None:
         self.email = email
+        self.auth_method = auth_method
         self.signed_in = False
         self.logouts = 0
         self.finalize: Finalizer | None = None
+        self.usage: dict[str, Any] | None = None
+        self.refreshes: list[str] = []
+        self.release = threading.Event()
+        self.release.set()
 
     def status(self, slot: str) -> dict[str, Any]:
-        return {"logged_in": self.signed_in, "email": self.email if self.signed_in else None}
+        return {
+            "logged_in": self.signed_in,
+            "email": self.email if self.signed_in else None,
+            "auth_method": self.auth_method if self.signed_in else None,
+        }
 
     def start_login(self, slot: str, finalize: Finalizer) -> LoginHandle:
         self.finalize = finalize
@@ -566,10 +612,123 @@ class RecordingAccounts:
         self.signed_in = False
 
     def details(self, slot: str) -> dict[str, Any]:
-        return {}
+        return {"usage": self.usage}
 
     def has_credentials(self, slot: str) -> bool:
         return self.signed_in
+
+    def refresh_usage(self, slot: str) -> bool:
+        self.refreshes.append(slot)
+        self.release.wait(5)
+        return True
+
+
+def test_page_views_probe_claude_usage_only_when_due(tmp_path: Path) -> None:
+    now = [1_790_000_000.0]
+    config = make_config(tmp_path, claude_cache_seconds=0.0)
+    claude, codex = RecordingAccounts("a@x.test"), RecordingAccounts("c@x.test", "chatgpt")
+    application = AgentApplication(config, claude=claude, codex=codex, clock=lambda: now[0])
+    claude.signed_in = codex.signed_in = True
+    claude.release.clear()
+
+    first = application.overview(fresh=False)
+    # Every signed-in Claude slot without a snapshot starts one probe; Codex never does.
+    assert all(slot_of(first, "claude", slot)["usage_refreshing"] for slot in "abcde")
+    assert slot_of(first, "codex", "a")["usage_refreshing"] is False
+    wait_until(lambda: len(claude.refreshes) == 5)
+    application.overview(fresh=True)
+    assert len(claude.refreshes) == 5  # Still running: no second probe.
+    claude.release.set()
+    wait_until(lambda: not application.usage_refreshing("e"))
+
+    now[0] += 30
+    application.overview(fresh=True)
+    assert len(claude.refreshes) == 5  # The button, but inside min_interval.
+    now[0] += 60
+    claude.usage = {"source": "snapshot", "recorded_at": int(now[0]) - 60, "windows": []}
+    application.overview(fresh=False)
+    assert len(claude.refreshes) == 5  # A page view, and the snapshot is young.
+    application.overview(fresh=True)
+    wait_until(lambda: len(claude.refreshes) == 10)  # The button forces one.
+
+
+def test_api_billed_claude_accounts_are_never_probed(tmp_path: Path) -> None:
+    config = make_config(tmp_path)
+    claude = RecordingAccounts("a@x.test", auth_method="console")
+    application = AgentApplication(config, claude=claude, codex=RecordingAccounts("c@x.test"))
+    claude.signed_in = True
+    overview = application.overview(fresh=True)
+    assert slot_of(overview, "claude", "a")["usage_refreshing"] is False
+    assert claude.refreshes == []
+
+
+def test_a_finished_login_probes_its_account_at_once(tmp_path: Path) -> None:
+    config = make_config(tmp_path)
+    claude = RecordingAccounts("a@x.test")
+    application = AgentApplication(config, claude=claude, codex=RecordingAccounts("c@x.test"))
+    claude.signed_in = True
+    assert application.finalize("claude", "b") is None
+    wait_until(lambda: claude.refreshes == ["b"])
+
+
+def test_onboarding_is_marked_done_without_touching_anything_else(tmp_path: Path) -> None:
+    state = tmp_path / ".claude.json"
+    original = {"firstStartVersion": "2.1.259", "oauthAccount": {"x": 1}}
+    state.write_text(json.dumps(original), "utf-8")
+    assert mark_onboarding_done(tmp_path)
+    data = json.loads(state.read_text("utf-8"))
+    assert data == {
+        "firstStartVersion": "2.1.259",
+        "oauthAccount": {"x": 1},
+        "hasCompletedOnboarding": True,
+        "lastOnboardingVersion": "2.1.259",
+    }
+    assert not mark_onboarding_done(tmp_path)
+    state.write_text("not json", "utf-8")
+    assert not mark_onboarding_done(tmp_path)
+    assert not mark_onboarding_done(tmp_path / "missing")
+
+
+def _probe_slot(config: AgentConfig, slot: str, *markers: str) -> Path:
+    home = config.slot_path("claude", slot)
+    home.mkdir(parents=True, exist_ok=True)
+    (home / ".claude.json").write_text(json.dumps({"firstStartVersion": "2.1.259"}), "utf-8")
+    for marker in markers:
+        (home / marker).write_text("", "utf-8")
+    return home
+
+
+@posix_only
+def test_usage_probe_walks_first_run_screens_and_records_usage(tmp_path: Path) -> None:
+    config = make_config(tmp_path)
+    home = _probe_slot(config, "b", "fake-theme")
+    assert ClaudeAccounts(config).refresh_usage("b") is True
+    snapshot = statusline.read_snapshot(home)
+    assert snapshot is not None
+    assert [(w["window_minutes"], w["used_percent"]) for w in snapshot["windows"]] == [
+        (300, 12.0),
+        (10080, 87.0),
+    ]
+    assert json.loads((home / ".claude.json").read_text("utf-8"))["hasCompletedOnboarding"]
+
+
+@posix_only
+def test_usage_probe_sends_one_message_when_the_status_line_stays_quiet(tmp_path: Path) -> None:
+    config = make_config(tmp_path, claude_usage_quiet_seconds=2.0)
+    home = _probe_slot(config, "c", "fake-needs-message")
+    assert ClaudeAccounts(config).refresh_usage("c") is True
+    assert statusline.read_snapshot(home) is not None
+
+
+@posix_only
+def test_usage_probe_never_starts_a_sign_in(tmp_path: Path) -> None:
+    config = make_config(tmp_path, claude_usage_quiet_seconds=20.0)
+    home = config.slot_path("claude", "d")
+    home.mkdir(parents=True, exist_ok=True)  # No .claude.json: the TUI asks for a login.
+    started = time.monotonic()
+    assert ClaudeAccounts(config).refresh_usage("d") is False
+    assert time.monotonic() - started < 15
+    assert statusline.read_snapshot(home) is None
 
 
 def test_finalize_accepts_listed_accounts_and_undoes_others(tmp_path: Path) -> None:

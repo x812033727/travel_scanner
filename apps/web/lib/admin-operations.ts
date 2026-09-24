@@ -51,7 +51,7 @@ export const fallbackAdminNavigation: AdminNavigationItem[] = [
   { key: "database", href: "/admin/database", group: "system", capability: "database.read" },
   { key: "deployments", href: "/admin/deployments", group: "system", capability: "deploy.read" },
   { key: "audit", href: "/admin/audit", group: "system", capability: "audit.read" },
-  { key: "aiAccounts", href: "/admin/ai-accounts", group: "system", capability: "roles.manage" },
+  { key: "aiAccounts", href: "/admin/ai-accounts", group: "system", capability: "settings.read" },
 ];
 
 const validGroups = new Set<AdminNavGroup>(["overview", "content", "community", "operations", "system"]);

@@ -209,9 +209,15 @@ def default_line(payload: Any) -> str:
 def config_dir_for(
     argv: Sequence[str], environ: Mapping[str, str], state_root: Path = STATE_ROOT
 ) -> Path | None:
-    if len(argv) > 1:
-        return state_root / argv[1] if argv[1] in RECORDED_SLOTS else None
     value = environ.get("CLAUDE_CONFIG_DIR")
+    if len(argv) > 1:
+        if argv[1] not in RECORDED_SLOTS:
+            return None
+        # The session's own config directory when it is that slot's (the agent's probes,
+        # the shell functions); the fixed path when the session came through /root/.claude.
+        if value and Path(value).name == argv[1]:
+            return Path(value)
+        return state_root / argv[1]
     return Path(value) if value else None
 
 

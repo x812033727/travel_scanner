@@ -52,10 +52,27 @@ or `config.toml` and A's MCP servers.
   accounts, so each account's status line runs `statusline-record claude-<slot>`. That
   records the latest numbers in `mokaair-usage.json` and prints a short line, or the
   owner's own status line command if one was configured before; that command is kept in
-  `mokaair-statusline-chain.json`. The page shows when the snapshot was taken. The agent
-  re-points the status line at the recorder whenever it starts, and after every login.
-  A `statusLine` in a project's `.claude/settings.json` still overrides it for that
-  project.
+  `mokaair-statusline-chain.json`. The agent re-points the status line at the recorder
+  whenever it starts, and after every login. A `statusLine` in a project's
+  `.claude/settings.json` still overrides it for that project.
+- **Claude, read automatically:** sessions over SSH keep the numbers current, and the agent
+  fills the gaps itself. When the page is opened and an account's snapshot is missing or
+  older than 30 minutes, when the refresh button is pressed (at most once a minute per
+  account), and right after a login, it opens Claude Code once in a pseudo-terminal in
+  `/var/lib/mokaair-ai-accounts/home/usage-probe`:
+  - `--restricted` loads none of the owner's settings, so no hooks, push notifications or
+    Remote Control session, and no tool that runs code. The recorder comes in through
+    `--settings`, and `--model haiku` keeps the fallback cheap.
+  - It answers the first-run screens it knows: the theme picker (Enter), notice pages
+    (Enter) and the folder trust prompt (Down, Enter; the default is "No, exit"). It gives
+    up at the login picker rather than start a sign-in.
+  - Usage usually arrives within about 2 seconds, before any message. If nothing has
+    arrived after 15 seconds, it sends one one-word message and waits up to 40 more.
+  - An account signed in with `claude auth login` never finished onboarding, and the TUI
+    then shows the login picker. The agent sets `hasCompletedOnboarding` (and
+    `lastOnboardingVersion`) in that account's `.claude.json` after a login and before a
+    probe, and changes nothing else in the file.
+  - Accounts on API billing are never probed.
 
 ## Install
 

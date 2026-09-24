@@ -79,6 +79,22 @@ describe("AdminAiAccountsPanel", () => {
     expect(screen.getAllByText("會使用下一個空位：帳號 C")).toHaveLength(1);
   });
 
+  it("shows a quota being read and polls until it arrives", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    const reading = withSlots(account("claude", "b", { logged_in: true, auth_method: "claude.ai", email: "b@example.com", plan: "max", usage_refreshing: true }));
+    const soon = Math.round(Date.now() / 1000) + 3_600;
+    const done = withSlots(account("claude", "b", { logged_in: true, auth_method: "claude.ai", email: "b@example.com", plan: "max", usage: { source: "snapshot", recorded_at: soon - 3_600, windows: [{ window_minutes: 10080, used_percent: 87, resets_at: soon }] } }));
+    const fetchMock = vi.fn().mockImplementationOnce(() => response(reading)).mockImplementation(() => response(done));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminAiAccountsPanel />);
+    await act(async () => { await vi.advanceTimersByTimeAsync(10); });
+    const card = await screen.findByRole("article", { name: "Claude Code 帳號 B" });
+    expect(within(card).getByText("正在更新額度…")).toBeTruthy();
+    expect(within(card).queryByText(/還沒取得這個帳號的額度/)).toBeNull();
+    await act(async () => { await vi.advanceTimersByTimeAsync(4_100); });
+    await waitFor(() => expect(within(screen.getByRole("article", { name: "Claude Code 帳號 B" })).getByText("剩餘 13%")).toBeTruthy());
+  });
+
   it("explains a disabled page and an unreachable agent", async () => {
     vi.stubGlobal("fetch", vi.fn(() => response(overview({ enabled: false, agent_reachable: false, slots: [] }))));
     const { unmount } = render(<AdminAiAccountsPanel />);

@@ -12,7 +12,7 @@ type LoginStatus = "pending" | "verifying" | "succeeded" | "failed" | "cancelled
 type Login = { id: string; tool: Tool; slot: Slot; kind: "device_code" | "paste_code"; status: LoginStatus; url?: string | null; user_code?: string | null; error?: string | null; expires_at: number };
 type UsageWindow = { window_minutes?: number | null; used_percent: number; resets_at?: number | null };
 type Usage = { source: "live" | "snapshot"; recorded_at?: number | null; windows: UsageWindow[] };
-export type AiAccount = { tool: Tool; slot: Slot; is_default: boolean; logged_in: boolean | null; auth_method?: string | null; email?: string | null; organization?: string | null; plan?: string | null; email_allowed?: boolean | null; usage?: Usage | null; usage_error?: string | null; recorder_installed?: boolean | null; checked_at?: number | null; error?: string | null; login?: Login | null };
+export type AiAccount = { tool: Tool; slot: Slot; is_default: boolean; logged_in: boolean | null; auth_method?: string | null; email?: string | null; organization?: string | null; plan?: string | null; email_allowed?: boolean | null; usage?: Usage | null; usage_error?: string | null; recorder_installed?: boolean | null; usage_refreshing?: boolean | null; checked_at?: number | null; error?: string | null; login?: Login | null };
 export type AiAccountsOverview = { enabled: boolean; agent_reachable: boolean; agent_error?: string | null; slots: AiAccount[]; defaults: Partial<Record<Tool, Slot>>; allowlist_configured: boolean };
 
 const TOOLS: Tool[] = ["claude", "codex"];
@@ -25,6 +25,7 @@ const ACTIVE = new Set<LoginStatus>(["pending", "verifying"]);
 const CODE_PATTERN = /^[A-Za-z0-9._~#-]{10,1024}$/;
 const REFRESH_MS = 60_000;
 const LOGIN_POLL_MS = 3_000;
+const USAGE_POLL_MS = 4_000;
 type Translator = ReturnType<typeof useTranslations>;
 
 const loginOpen = (account: AiAccount) => Boolean(account.login && ACTIVE.has(account.login.status));
@@ -103,7 +104,8 @@ function AccountCard({ account, now, busy, onLogin, onLogout, onDefault }: CardP
     {apiBilling && <p className="mt-2 flex items-center gap-1 text-xs font-bold text-amber-800"><AlertTriangle size={13} />{t("apiBilling")}</p>}
     {account.error && <p className="mt-2 text-xs text-red-700">{account.error}</p>}
     {signedIn && account.usage?.windows.length ? <UsageBars usage={account.usage} now={now} /> : null}
-    {signedIn && account.tool === "claude" && !account.usage && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
+    {signedIn && account.usage_refreshing && <p role="status" className="mt-3 flex items-center gap-1.5 text-xs text-[var(--muted)]"><LoaderCircle size={13} className="animate-spin motion-reduce:animate-none" />{t("usageRefreshing")}</p>}
+    {signedIn && account.tool === "claude" && !account.usage && !account.usage_refreshing && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
     {signedIn && account.tool === "claude" && account.recorder_installed === false && <p className="mt-2 text-xs text-amber-800">{t("recorderMissing")}</p>}
     {signedIn && account.usage_error && <p className="mt-2 text-xs text-amber-800">{t("usageUnavailable", { detail: account.usage_error })}</p>}
     <div className="mt-auto flex flex-wrap gap-2 pt-5">
@@ -206,6 +208,15 @@ export function AdminAiAccountsPanel() {
     const timer = setInterval(() => void load(), REFRESH_MS);
     return () => { clearTimeout(first); clearInterval(timer); };
   }, [load]);
+
+  // The host reads Claude usage in the background (a few seconds per account); poll
+  // until every card has its numbers.
+  const readingUsage = Boolean(overview?.slots.some((account) => account.usage_refreshing));
+  useEffect(() => {
+    if (!readingUsage) return;
+    const timer = setTimeout(() => void load(), USAGE_POLL_MS);
+    return () => clearTimeout(timer);
+  }, [readingUsage, overview, load]);
 
   const loginId = login?.id;
   const loginActive = login ? ACTIVE.has(login.status) : false;
