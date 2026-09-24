@@ -1,0 +1,99 @@
+{
+  "slug": "desk-cable-charging-organization",
+  "locale": "zh-TW",
+  "ticket": "2026-09-24-publish-cable-labeling-source-correction",
+  "previous_ticket": "2026-09-23-correct-cable-labeling-glossary-link-before",
+  "repository_correction": {
+    "pr": 690,
+    "commit": "b626f310",
+    "changed_path": "/blocks/2/inlines/1"
+  },
+  "production_code": {
+    "live_head": "b6dcfb81",
+    "contains_b626f310": true
+  },
+  "before": {
+    "checked_at": "2026-09-24T05:00Z",
+    "published_version": 6,
+    "blocks_2_inlines_1": {
+      "type": "article",
+      "text": "標記",
+      "kind": "life",
+      "slug": "ai-term-token"
+    },
+    "only_non_metadata_difference_from_pack": "/blocks/2/inlines/1"
+  },
+  "backup": {
+    "kind": "pg_dump -Fc (whole database)",
+    "file": "/root/travel_scanner_precable_20260924T061209Z.dump",
+    "bytes": 143274356,
+    "toc_readable": true
+  },
+  "import": {
+    "dry_run_before": {
+      "taxonomy": "unchanged",
+      "zh-TW": {
+        "action": "update",
+        "publish": true
+      }
+    },
+    "publish_report": {
+      "created": [],
+      "updated": [
+        "desk-cable-charging-organization:zh-TW"
+      ],
+      "unchanged": [],
+      "published": [
+        "desk-cable-charging-organization:zh-TW"
+      ],
+      "taxonomy_updated": [],
+      "publish_held": {},
+      "failed": null
+    },
+    "dry_run_after": {
+      "taxonomy": "unchanged",
+      "zh-TW": {
+        "action": "unchanged",
+        "publish": false
+      }
+    },
+    "links_rebuild": {
+      "materialized": 2032,
+      "dropped": 0,
+      "unavailable": 0,
+      "unresolved": []
+    },
+    "links_check_zh_TW": {
+      "exit": 1,
+      "findings": [
+        {
+          "source": "gemini-guide",
+          "problem": "raw_url",
+          "note": "pre-existing in the repository pack since #534; unrelated to this article"
+        }
+      ]
+    }
+  },
+  "after": {
+    "checked_at": "2026-09-24T06:20Z",
+    "published_version": 8,
+    "blocks_2_inlines_1": {
+      "type": "text",
+      "text": "標記"
+    },
+    "article_links_contains_ai_term_token": false,
+    "ai_term_token_backlinks_list_this_article": false,
+    "published_locales": [
+      "zh-TW"
+    ],
+    "public_page_status": 200
+  },
+  "baseline": {
+    "file": "published-zh-TW.json",
+    "file_sha256": "cb167ca844dbe7dd3b3bce75f8224b9fe319c9dd8a15c6e924af5e611628ceb8",
+    "normalized_document_hash_live": "b67d107a9413dbf52e5729d0c543cbb9698524feeb332f67c6df8b0de8e3619c",
+    "normalized_document_hash_pack": "b67d107a9413dbf52e5729d0c543cbb9698524feeb332f67c6df8b0de8e3619c",
+    "equal": true,
+    "normalization": "GuideDocument.model_validate(...).model_dump(mode=json) after dropping version/published_at/modified_at from the public document, then app.guides.service.document_hash"
+  }
+}
