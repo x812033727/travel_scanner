@@ -1,0 +1,47 @@
+# claims — ai-model-choice
+
+一行一個可查核的主張。官方網址都在 2026-09-24（今天）用 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 重新打開核對過，內容與來源文章 `ai-workflow-cost-quality-latency`（查證於 2026-09-18）一致。
+
+c1｜Claude Opus 5 標準價：輸入每百萬 token 5 美元、輸出 25 美元｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene cost-table, cascade-math
+
+c2｜Claude Sonnet 5 標準價：輸入每百萬 token 2 美元、輸出 10 美元｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene cost-table
+
+c3｜Gemini 3.5 Flash-Lite 付費層標準價：輸入每百萬 token 0.30 美元、輸出 2.50 美元｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-24｜scene cost-table, cascade-math
+
+c4｜gpt-6-astra 標準價（短上下文）：輸入每百萬 token 10 美元、輸出 50 美元｜https://platform.openai.com/docs/pricing｜2026-09-24｜scene cost-table
+
+c5｜Claude Opus 5.5 是 Anthropic 目前定價頁上最新、標成「For long-running agentic coding and knowledge work」的旗艦等級模型，比 Claude Opus 5 更晚上架｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene opus-5-5
+
+c6｜單一旗艦（1 次 Claude Opus 5）在共同假設下一次請求成本約 0.03 美元、每萬次約 300 美元｜計算自 c1 ＋ c9 的假設｜2026-09-24｜scene cost-table
+
+c7｜級聯（Gemini 3.5 Flash-Lite 先答，其中 30% 再加 1 次 Claude Opus 5）在共同假設下平均一次成本約 0.0114 美元、每萬次約 114 美元，比單一旗艦省約 62%｜計算自 c1 ＋ c3 ＋ c9 ＋ c10｜2026-09-24｜scene cost-table, cascade-math
+
+c8｜並行互審（Claude Opus 5 與 gpt-6-astra 同答，Claude Sonnet 5 評審）在共同假設下一次成本約 0.1004 美元、每萬次約 1,004 美元｜計算自 c1 ＋ c2 ＋ c4 ＋ c9｜2026-09-24｜scene cost-table
+
+c9｜共同假設：一次請求平均輸入 3,000 個 token、輸出 600 個 token｜沿用來源文章 ai-workflow-cost-quality-latency 的示範假設，非官方數字、非量到的真實流量｜2026-09-24｜scene cost-table, cascade-math
+
+c10｜級聯的升級比例假設為 30%｜沿用來源文章 ai-workflow-cost-quality-latency 的示範假設，非官方數字、非量到的真實流量｜2026-09-24｜scene cost-table, cascade-math
+
+c11｜級聯的尾端（p95）延遲可能比單一旗艦更慢，前提是升級會多打一次呼叫、且輕量模型單次回應比旗艦快｜沿用來源文章 ai-workflow-cost-quality-latency 的推論，非官方數字、本站沒有實測｜2026-09-24｜scene latency-table
+
+c12｜MMLU-Pro 是一個涵蓋多學科、題目量大的知識型基準測驗，設計上比原始 MMLU 更難、答案選項更多，用來評估模型的廣泛知識與推理能力，不針對特定實務工作｜https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro｜2026-09-24｜scene mmlu-pro
+
+## 與企劃不同的地方
+
+- 大綱 A 在「為什麼你會困惑」用 Opus 5.5 當「新模型剛上架」的例子；企劃書「示範或實算」段落另外提到 Opus 5.5 標準價比 Opus 5 便宜的發現，但那個發現是選項 C 專屬（brief.md 明寫「只在選項 C 用到，不影響上面主表」）。本片走選項 A，所以只用 Opus 5.5「是最新旗艦、才剛上架」這件事（c5），沒有用它比 Opus 5 便宜的價格比較，避免在旁白或字卡暗示這個選項 A 沒有查證過的價差結論。
+- 主表（cost-table 場景）的欄位用「流程／呼叫組成／一次請求／每萬次」四欄，對應企劃書「示範或實算」段落給的簡表；沒有另外放來源文章原表的「標準價」「延遲的形狀」兩欄，那兩項改成獨立的 latency-table 場景與口播說明，字卡才放得下。
+- 企劃書第 6 章的畫面清單只寫 `table`、`code`、`diagram` 三個場景；實際腳本在 code 場景（cascade-math）之後、diagram 之前的順序照企劃排列，內容一致，只是每個場景的口播行數比企劃書描述的更多，用來把「示範或實算」段落的假設、算法、換算都講清楚。
+
+## 我懷疑但沒動的事
+
+- 「並行互審比單一旗艦貴三倍以上」這個講法（cost-table 場景的口播）是 0.1004 美元 ÷ 0.03 美元 ≈ 3.35 倍，直接算出來的比例，不是來源文章白紙黑字寫的倍數（來源文章只寫「是單一旗艦的三倍以上」），但算法一致，沒有另外動它。
+- latency-table 場景把「p95」翻成口播「最慢的那百分之五」，這是我自己選的白話講法，來源文章原文只說「p95 是第 95 百分位數」，語意一致但沒有逐字照抄，沒有另外查證這個講法本身。
+- MMLU-Pro 的說明（c12）引用的是資料集官方頁面而非某一篇論文，頁面上的介紹文字本身沒有標注查證或發表日期；因為它是穩定的資料集描述而非會過期的價格或版本號，沒有另外去找論文版本核對。
+
+## 進度
+
+- 大綱：選項 A，8 章／17 個場景，已依 brief.md 的章節與版型逐一對應。
+- video.json：17 個場景、157 行旁白、2,939 個原始字元，`lint` 0 errors／1 warning（開場鉤子在 250 字／分鐘的保守估計下約 31 秒，超出 30 秒門檻；以頻道實際語速 300 字／分鐘換算約 29.4 秒，在門檻內，判定為估計法造成的警告，不修改內容）。
+- 發音字典：新增 `AI`、`Opus`、`MMLU-Pro`、`p95`、`token` 五個詞，已列在 lexicon.json。
+- claims.md：12 條可查核主張，全部在 2026-09-24 當天重新打開官方頁核對過。
+- 尚未進行：fact-check（verify-1.md，由另一個代理做）、聽眾優先審稿、`tts` 正式合成、`render`、`assemble`、字幕、站主核准與上架。
