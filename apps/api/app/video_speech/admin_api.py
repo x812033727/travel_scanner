@@ -10,15 +10,19 @@ take no token: they are how the tool gets one, and an admin's click is what auth
 
 from __future__ import annotations
 
+import base64
+import binascii
 from datetime import UTC, datetime
 from typing import Annotated
 from uuid import UUID, uuid4
 
+import httpx
 from fastapi import APIRouter, Depends, Header, Request, Response
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai.jev import JevError
 from app.auth.service import AdminUser
 from app.config import Settings
 from app.db import get_session
@@ -32,6 +36,7 @@ from app.providers.usage_meter import (
     reserve_azure_speech_characters,
 )
 from app.video_speech.azure import OUTPUT_FORMAT, AzureSpeech, SpeechUpstreamError
+from app.video_speech.checking import CheckUnavailable, judge, transcribe
 from app.video_speech.gemini import (
     DEFAULT_GEMINI_TTS_MODEL,
     GEMINI_TTS_MODELS,
@@ -54,6 +59,9 @@ from app.video_speech.pairing import (
     start_pairing,
 )
 from app.video_speech.schemas import (
+    JudgeIn,
+    JudgeOut,
+    JudgeResult,
     PairingPollIn,
     PairingPollOut,
     PairingStarted,
@@ -61,6 +69,8 @@ from app.video_speech.schemas import (
     PairingView,
     SpeechRequest,
     SpeechStatus,
+    TranscribeIn,
+    TranscribeOut,
     VideoToolTokenCreate,
     VideoToolTokenCreated,
     VideoToolTokenView,
@@ -451,6 +461,61 @@ async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Se
         media_type="audio/wav",
         headers={"X-Billable-Characters": str(characters), "Cache-Control": "no-store"},
     )
+
+
+TRANSCRIBE_REQUESTS_PER_HOUR = 1200
+MAX_CLIP_BYTES = 2_000_000
+
+
+@speech_router.post("/speech/transcribe", response_model=TranscribeOut)
+async def transcribe_narration(
+    payload: TranscribeIn, tool: VideoTool, session: Session
+) -> TranscribeOut:
+    """One narrated line back as text, so the tool can check it against the script."""
+    await enforce_named_rate_limit(
+        "video_transcribe", str(tool.id), limit=TRANSCRIBE_REQUESTS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        wav = base64.b64decode(payload.audio, validate=True)
+    except (binascii.Error, ValueError) as error:
+        raise AppError(422, "video_transcribe_bad_audio", "音檔不是有效的 base64") from error
+    if len(wav) > MAX_CLIP_BYTES or not wav.startswith(b"RIFF"):
+        raise AppError(422, "video_transcribe_bad_audio", "只收 2 MB 以內的 WAV 音檔")
+    settings = await load_runtime_settings(session)
+    try:
+        text = await transcribe(settings, wav)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except SpeechUpstreamError as error:
+        if error.status == 429:
+            raise AppError(
+                429,
+                "video_speech_upstream_busy",
+                "Gemini 暫時忙碌，請稍後重試",
+                headers={"Retry-After": error.retry_after or "10"},
+            ) from error
+        if error.status in {401, 403}:
+            raise AppError(
+                502, "video_speech_upstream_rejected_key", "Gemini 拒絕了網站的金鑰"
+            ) from error
+        raise AppError(502, "video_speech_upstream_failed", "Gemini 暫時無法轉寫") from error
+    return TranscribeOut(text=text)
+
+
+@speech_router.post("/speech/judge", response_model=JudgeOut)
+async def judge_narration(payload: JudgeIn, tool: VideoTool, session: Session) -> JudgeOut:
+    """Jev's judgement of whether each transcript says the script's words; one Jev call."""
+    _ = tool
+    settings = await load_runtime_settings(session)
+    lines = [line.model_dump() for line in payload.lines]
+    try:
+        verdicts = await judge(settings, get_redis(), lines)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except (JevError, httpx.HTTPError) as error:
+        raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
+    results = [JudgeResult(id=line["id"], noul=verdicts[line["id"]]) for line in lines]
+    return JudgeOut(results=results)
 
 
 # The owner lands on the Azure Speech card with the code filled in, and still compares it with

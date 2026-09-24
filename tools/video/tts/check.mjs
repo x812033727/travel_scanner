@@ -1,0 +1,137 @@
+// `check-audio`: every narrated line back to text, and Jev's judgement where it differs.
+//
+// The site owner asked for Jev, not a person, to decide whether the narration says what the
+// script says. Jev reads text only, so the server transcribes each line's clip (Gemini, the site's
+// key) and this tool compares the transcript with the script itself. Lines that match once
+// punctuation, spacing and case are ignored pass without Jev; the rest go to Jev in one call per
+// scene, and every line Jev doubts lands in a flags file that `tts --redo` takes as it is.
+// Transcripts are cached by the clip's hash, so a rerun after `tts --redo` only redoes those lines.
+import { createHash } from "node:crypto";
+import { existsSync, readFileSync } from "node:fs";
+import path from "node:path";
+import { parseArgs } from "node:util";
+
+import { emptyLexicon } from "../core/lexicon.mjs";
+import { atomicWrite, lexiconFile, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { eachLine, spokenText } from "../core/schema.mjs";
+import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
+import { judgeLines, transcribeClip } from "./client.mjs";
+import { spokenParts } from "./requests.mjs";
+import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
+
+// Mirrors JudgeIn's max_length in apps/api/app/video_speech/schemas.py.
+export const MAX_JUDGE_LINES = 40;
+export const DEFAULT_THRESHOLD = 0.5;
+const TRANSCRIBE_RATE = 16_000;
+const CHECK_FILE = path.join("review", "check.json");
+const FLAGS_FILE = path.join("review", "check-flags.json");
+
+/** The text with only its words left: NFKC, lower case, no punctuation, symbols or spaces. */
+export function comparable(text) {
+  return String(text).normalize("NFKC").toLowerCase().replace(/[\p{P}\p{S}\p{Z}\s]/gu, "");
+}
+
+/** How a line was meant to sound: the dictionary's spoken forms in place of its terms. */
+export function spokenForm(line, lexicon) {
+  return spokenParts(spokenText(line), lexicon)
+    .map((part) => part.alias || part.text)
+    .join("");
+}
+
+/** Whether a transcript already says the line, before any judgement is needed. */
+export function matches(heard, line, lexicon) {
+  const said = comparable(heard);
+  return [line.text, spokenText(line), spokenForm(line, lexicon)].some((form) => comparable(form) === said);
+}
+
+const clipHash = (bytes) => createHash("sha256").update(bytes).digest("hex").slice(0, 16);
+
+export async function checkAudio(args, ctx, options) {
+  const { EXIT } = ctx;
+  const values = parseArgs({
+    args,
+    options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" }, threshold: { type: "string" }, force: { type: "boolean" } },
+    strict: true,
+  }).values;
+  if (!values.slug && !values.file) throw new UsageError("check-audio needs --slug (or --file for an example outside docs/videos)");
+  const threshold = values.threshold === undefined ? DEFAULT_THRESHOLD : Number(values.threshold);
+  if (!(threshold > 0 && threshold < 1)) throw new UsageError("--threshold must be between 0 and 1");
+  const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  if (lintProject(project).errors.length) {
+    ctx.stdout.write(`${project.doc.slug} has lint errors; run lint first\n`);
+    return EXIT.lint;
+  }
+  const { doc } = project;
+  const lexicon = project.lexicon ?? readJson(lexiconFile(ctx.root), emptyLexicon());
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  if (!timeline) throw new UsageError(`no narration yet: run tts --slug ${doc.slug} first`);
+  const audioDir = path.join(workdir, ARTIFACTS.audio);
+  const cacheFile = path.join(workdir, CHECK_FILE);
+  const cache = readJson(cacheFile, { lines: {} });
+  const results = {};
+
+  let transcribed = 0;
+  for (const { scene, line } of eachLine(doc)) {
+    if (stopRequested(workdir)) {
+      ctx.stdout.write("STOP found; transcripts so far are saved\n");
+      return EXIT.ok;
+    }
+    const file = path.join(audioDir, `${line.id}.wav`);
+    if (!existsSync(file)) throw new UsageError(`no clip for line ${line.id}: run tts --slug ${doc.slug}`);
+    const bytes = readFileSync(file);
+    const clip = clipHash(bytes);
+    const cached = cache.lines[line.id];
+    let entry = !values.force && cached?.clip === clip && typeof cached.heard === "string" ? cached : null;
+    if (!entry) {
+      const samples = requireNarrationFormat(parseWav(bytes));
+      const wav = encodeWav(downsample(samples, Math.round(48_000 / TRANSCRIBE_RATE)), TRANSCRIBE_RATE);
+      const heard = await transcribeClip({ ...options, wav });
+      transcribed += 1;
+      entry = { scene: scene.id, clip, heard, noul: null };
+    }
+    entry.intended = spokenText(line);
+    entry.spoken_form = spokenForm(line, lexicon);
+    entry.match = matches(entry.heard, line, lexicon);
+    results[line.id] = entry;
+    cache.lines[line.id] = entry;
+    atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+  }
+
+  // Jev looks only at lines whose transcript differs and has not been judged for this clip.
+  const toJudge = Object.entries(results).filter(([, entry]) => !entry.match && typeof entry.noul !== "number");
+  const byScene = new Map();
+  for (const [id, entry] of toJudge) {
+    if (!byScene.has(entry.scene)) byScene.set(entry.scene, []);
+    byScene.get(entry.scene).push({ id, intended: entry.intended, spoken_form: entry.spoken_form, heard: entry.heard });
+  }
+  let jevCalls = 0;
+  for (const lines of byScene.values()) {
+    for (let start = 0; start < lines.length; start += MAX_JUDGE_LINES) {
+      const batch = lines.slice(start, start + MAX_JUDGE_LINES);
+      const verdicts = await judgeLines({ ...options, lines: batch });
+      jevCalls += 1;
+      for (const { id } of batch) results[id].noul = verdicts.get(id) ?? 0;
+      atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
+    }
+  }
+
+  const entries = Object.entries(results);
+  const exact = entries.filter(([, entry]) => entry.match).length;
+  const flagged = entries.filter(([, entry]) => !entry.match && entry.noul < threshold);
+  const flagsFile = path.join(workdir, FLAGS_FILE);
+  const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, `Jev ${entry.noul.toFixed(2)}: heard 「${entry.heard}」`]));
+  atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), notes }, null, 2)}\n`);
+  recordStage(workdir, "check-audio", { lines: entries.length, exact, judged: entries.length - exact, flagged: flagged.length, transcribed, jev_calls: jevCalls }, ctx.now());
+
+  ctx.stdout.write(`${entries.length} lines: ${exact} match the script word for word, ${entries.length - exact - flagged.length} judged fine by Jev, ${flagged.length} flagged (below ${threshold})\n`);
+  ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
+  for (const [id, entry] of flagged) {
+    ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}\n`);
+  }
+  if (flagged.length) {
+    ctx.stdout.write(`next: fix the dictionary or the line, then node tools/video/cli.mjs tts --slug ${doc.slug} --redo ${flagsFile}\n`);
+    return EXIT.lint;
+  }
+  return EXIT.ok;
+}

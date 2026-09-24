@@ -25,6 +25,7 @@ export const AREAS = {
   login: ["tts", "2026-09-24-video-tts-azure"],
   tts: ["tts", "2026-09-24-video-tts-azure"],
   audition: ["tts", "2026-09-24-video-tts-azure"],
+  "check-audio": ["tts", "2026-09-24-video-audio-check"],
   render: ["render", "2026-09-24-video-render-slides"],
   assemble: ["assemble", "2026-09-24-video-assemble-package"],
   review: ["review", "2026-09-24-video-assemble-package"],
@@ -44,6 +45,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   captions --slug S [--workdir D]                  caption files for every current locale
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
+  check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
 

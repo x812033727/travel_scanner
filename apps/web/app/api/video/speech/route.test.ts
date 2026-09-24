@@ -1,7 +1,9 @@
 import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { POST as judge } from "./judge/route";
 import { POST } from "./route";
 import { GET } from "./status/route";
+import { POST as transcribe } from "./transcribe/route";
 
 const TOKEN = `mkv_${"a".repeat(43)}`;
 
@@ -70,5 +72,22 @@ describe("video speech proxy", () => {
     vi.stubGlobal("fetch", fetchMock);
     const response = await GET(new NextRequest("https://mokaair.com/api/video/speech/status", { headers: { Authorization: `Bearer ${TOKEN}` } }));
     expect(await response.json()).toEqual({ configured: true });
+  });
+
+  it("lets a transcription carry a clip, while speech keeps its smaller cap", async () => {
+    const fetchMock = vi.fn(async (url: string) => {
+      expect(url).toMatch(/\/api\/v1\/video\/speech\/(transcribe|judge)$/);
+      return new Response('{"text":"你好"}', { status: 200, headers: { "Content-Type": "application/json" } });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const clip = `{"audio":"${"A".repeat(1024 * 1024)}"}`;
+    const headers = { Authorization: `Bearer ${TOKEN}` };
+    const transcribed = await transcribe(new NextRequest("https://mokaair.com/api/video/speech/transcribe", { method: "POST", headers, body: clip }));
+    expect(transcribed.status).toBe(200);
+    const judged = await judge(new NextRequest("https://mokaair.com/api/video/speech/judge", { method: "POST", headers, body: '{"lines":[]}' }));
+    expect(judged.status).toBe(200);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const tooBig = await POST(new NextRequest("https://mokaair.com/api/video/speech", { method: "POST", headers, body: clip }));
+    expect(tooBig.status).toBe(413);
   });
 });
