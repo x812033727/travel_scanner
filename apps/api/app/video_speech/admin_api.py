@@ -36,7 +36,7 @@ from app.providers.usage_meter import (
     reserve_azure_speech_characters,
 )
 from app.video_speech.azure import OUTPUT_FORMAT, AzureSpeech, SpeechUpstreamError
-from app.video_speech.checking import judge, transcribe
+from app.video_speech.checking import CheckUnavailable, judge, transcribe
 from app.video_speech.gemini import (
     DEFAULT_GEMINI_TTS_MODEL,
     GEMINI_TTS_MODELS,
@@ -484,6 +484,8 @@ async def transcribe_narration(
     settings = await load_runtime_settings(session)
     try:
         text = await transcribe(settings, wav)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
     except SpeechUpstreamError as error:
         if error.status == 429:
             raise AppError(
@@ -508,6 +510,8 @@ async def judge_narration(payload: JudgeIn, tool: VideoTool, session: Session) -
     lines = [line.model_dump() for line in payload.lines]
     try:
         verdicts = await judge(settings, get_redis(), lines)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
     except (JevError, httpx.HTTPError) as error:
         raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
     results = [JudgeResult(id=line["id"], noul=verdicts[line["id"]]) for line in lines]

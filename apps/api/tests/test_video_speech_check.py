@@ -15,8 +15,8 @@ from app.ai.jev import JevError, NoulAnswer
 from app.config import Settings
 from app.main import app
 from app.models import VideoToolToken
-from app.problems import AppError
 from app.video_speech.azure import SpeechUpstreamError
+from app.video_speech.checking import CheckUnavailable
 from app.video_speech.gemini import wav_from_pcm
 
 WAV = wav_from_pcm(b"\x01\x00" * 800, 16_000)
@@ -45,7 +45,7 @@ async def test_transcription_sends_the_clip_to_the_text_model_with_the_site_key(
     assert part["mime_type"] == "audio/wav" and base64.b64decode(part["data"]) == WAV
     assert "Traditional Chinese" in seen["body"]["system_instruction"]["parts"][0]["text"]
 
-    with pytest.raises(AppError) as missing:
+    with pytest.raises(CheckUnavailable) as missing:
         await checking.transcribe(Settings(), WAV)
     assert missing.value.code == "video_speech_not_configured"
 
@@ -103,7 +103,7 @@ async def test_judge_asks_jev_once_for_all_lines_and_spends_one_call(
         return False
 
     monkeypatch.setattr(checking, "consume_jev_call", spent_out)
-    with pytest.raises(AppError) as exhausted:
+    with pytest.raises(CheckUnavailable) as exhausted:
         await checking.judge(Settings(jev_api_key="k"), object(), lines)  # type: ignore[arg-type]
     assert exhausted.value.code == "jev_budget_exhausted" and fake.closed
 
@@ -158,6 +158,10 @@ async def test_the_transcribe_endpoint_takes_a_wav_and_maps_upstream_failures(
         "transcribe", {"audio": base64.b64encode(b"ID3" + b"\x00" * 100).decode()}
     )
     assert not_wav.status_code == 422 and not_wav.json()["code"] == "video_transcribe_bad_audio"
+    outcome["error"] = CheckUnavailable(503, "video_speech_not_configured", "no key")
+    unconfigured = await _post("transcribe", {"audio": audio})
+    assert unconfigured.status_code == 503
+    assert unconfigured.json()["code"] == "video_speech_not_configured"
     outcome["error"] = SpeechUpstreamError(403, "no")
     rejected = await _post("transcribe", {"audio": audio})
     assert (

@@ -24,7 +24,6 @@ from redis.asyncio import Redis
 from app.ai.jev import JevClient, NoulQuestion, consume_jev_call, jev_client
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
-from app.problems import AppError
 from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
 
 TRANSCRIBE_INSTRUCTIONS = (
@@ -43,6 +42,19 @@ JUDGE_INSTRUCTIONS = (
     "transcriber could pick for the same sound. Answer no if a word is missing, added, or "
     "replaced by a different word, or if a term is read as something else."
 )
+
+
+class CheckUnavailable(Exception):
+    """Why a check cannot run right now. The video tool's router turns it into its error; these
+    endpoints are operator surfaces, like the rest of ``admin_api``."""
+
+    def __init__(self, status: int, code: str, detail: str) -> None:
+        super().__init__(detail)
+        self.status = status
+        self.code = code
+        self.detail = detail
+
+
 JUDGE_CRITERIA = {
     "yes": "the recording says the intended words; any difference is only in how they are written",
     "no": "a word is missing, added, replaced, or read as something else",
@@ -55,7 +67,7 @@ async def transcribe(
     """The words in one clip, as Gemini hears them."""
     key = settings.hotspot_guide_gemini_api_key
     if not key:
-        raise AppError(
+        raise CheckUnavailable(
             503,
             "video_speech_not_configured",
             "網站的 Gemini 金鑰還沒設定：請在「API 與供應商設定 → AI 服務」填 Gemini 金鑰",
@@ -123,7 +135,7 @@ async def judge(
     jev: JevClient = jev_client(settings, client)
     try:
         if not await consume_jev_call(redis, settings):
-            raise AppError(
+            raise CheckUnavailable(
                 429,
                 "jev_budget_exhausted",
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查",
