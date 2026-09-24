@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-skill-automated
 title: 影片產線 T5：youtube-video skill 加上全自動路線
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T03:38:20Z
 created_at: 2026-09-24T00:41:16Z
-completed_at:
+completed_at: 2026-09-24T03:55:10Z
 branch: claude/video-skill
 depends_on:
   - 2026-09-24-video-tts-azure
