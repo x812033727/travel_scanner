@@ -15,7 +15,11 @@ from typing import Any, TypeVar
 import httpx
 from pydantic import BaseModel, ValidationError
 
-from app.ai.structured_output import extract_json_document, gemini_output_text
+from app.ai.structured_output import (
+    extract_json_document,
+    gemini_output_text,
+    repair_instruction,
+)
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
@@ -79,7 +83,6 @@ class GeminiStructuredProvider:
             {"role": "user", "parts": [{"text": json.dumps(payload, ensure_ascii=False)}]}
         ]
         usage: dict[str, int] = {"input_tokens": 0, "output_tokens": 0, "thought_tokens": 0}
-        previous = ""
         for attempt in range(2):
             body = await self._send(instructions, turns, response_schema)
             metadata = body.get("usageMetadata")
@@ -90,18 +93,16 @@ class GeminiStructuredProvider:
             document = extract_json_document(gemini_output_text(body))
             try:
                 return model_type.model_validate_json(document), usage
-            except ValidationError:
+            except ValidationError as error:
                 if attempt == 1:
                     raise
-                previous = document
                 turns = [
                     {
                         "role": "user",
                         "parts": [
                             {
                                 "text": json.dumps(payload, ensure_ascii=False)
-                                + "\nRepair the previous invalid JSON and match the schema"
-                                + f" exactly: {previous}"
+                                + repair_instruction(document, error)
                             }
                         ],
                     }

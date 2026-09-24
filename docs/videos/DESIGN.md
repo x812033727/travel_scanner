@@ -74,7 +74,15 @@
 
 **影音同步靠構造保證，不靠抽查。**48,000 Hz ÷ 30 fps = 每格 1,600 個取樣。每句音檔加上句後停頓，一起補靜音到整格，所以每一句都從某一格的開頭開始，整條旁白與畫面沒有任何捨入誤差可以累積。字幕（毫秒精度）在句子的語音範圍內依「唸出來的長度」分段。
 
-**語音**：Azure 即時 REST，輸出 `riff-48khz-16bit-mono-pcm`。每個場景送一次 SSML、句間固定停頓，再在 Node 裡找靜音切段。逐句分開合成會讓每句語調重新起頭，聽起來像在念清單。切段對不上時，該場景退回逐句合成。發音一律用 `<sub alias>`；zh-TW 的 `<phoneme>` 音標集沒有官方文件，不用。
+**語音**：Azure 即時 REST，輸出 `riff-48khz-16bit-mono-pcm`，但**不是本機直接呼叫**。
+
+- 2026-09-24 站主決定：Azure 金鑰存在正式站後台的「Azure 語音（影片旁白）」卡，永遠不離開伺服器。
+- 本機工具帶著同一張卡上建立的「影片工具權杖」，呼叫 `POST https://mokaair.com/api/video/speech`。
+- 送出的是結構化的句子：`{voice, rate, segments:[{parts:[{text, alias?}], break_after_ms}]}`。伺服器組 SSML、算計費字元、向每月預算預留字元，再呼叫 Azure，最後回傳 WAV。
+- `GET /api/video/speech/status` 回傳允許的聲音、上限與本月用量。
+- 程式在 `apps/api/app/video_speech/` 與 `apps/web/app/api/video/speech/`。
+
+每個場景送一次請求，句間固定停頓，再在 Node 裡找靜音切段。逐句分開合成會讓每句語調重新起頭，聽起來像在念清單；切段對不上時，該場景退回逐句合成。一次最多 1,500 字，更長的場景由工具拆開。發音一律用 `<sub alias>`（也就是 part 的 `alias`）；zh-TW 的 `<phoneme>` 音標集沒有官方文件，不用。
 
 **畫面**：HTML 版型，由 Playwright 截 1920×1080 PNG。repo 已有這個做法（`tools/claude-code-series/render-art.mjs`）。一個投影片狀態一張，逐條出現的轉場用 Web Animations 固定時間點截短影格。字型用根目錄 devDependencies 的 `@fontsource-variable/noto-sans-tc`、`@fontsource-variable/jetbrains-mono`（OFL），由 `page.route` 從本機提供，所有網路請求都擋掉。不用 Remotion：它不支援 Windows ARM64（arm64 Node 會直接拒絕），公司規模大了還要授權費。
 
@@ -125,7 +133,8 @@
 | 票 | 內容 | scope |
 | --- | --- | --- |
 | `video-tooling-core` | 格式、lint、時間軸、字幕、狀態、核准、CLI | `tools/video/cli.mjs`、`tools/video/core`、`package.json`、這份文件 |
-| `video-tts-azure` | Azure TTS、選聲、靜音切段 | `tools/video/tts` |
+| `video-speech-server` | 後台 Azure 語音卡、伺服器代為合成、影片工具權杖 | `apps/api/app/video_speech`、`apps/web/app/api/video`、後台設定面板 |
+| `video-tts-azure` | 本機 TTS 用戶端（經伺服器）、選聲、靜音切段 | `tools/video/tts` |
 | `video-render-slides` | 版型與截圖 | `tools/video/templates`、`tools/video/render` |
 | `video-assemble-package` | ffmpeg、審看頁、上傳包、CI 煙霧測試 | `tools/video/assemble`、`review`、`package` |
 | `video-skill-automated` | skill 加全自動路線、頻道規格 | `.agents/skills/youtube-video`、`docs/videos/README.md` |
@@ -136,7 +145,7 @@
 
 ## 站主要先準備的東西
 
-1. Azure Speech 資源（免費層 F0），金鑰與區域設成本機環境變數 `AZURE_SPEECH_KEY`、`AZURE_SPEECH_REGION`，由站主自己設定。
+1. Azure Speech 資源（免費層 F0）。金鑰與區域填在後台「API 與供應商設定 → AI 服務 → Azure 語音」，按連線測試；再在同一張卡建立一組影片工具權杖，用本機工具的 `login` 存起來。
 2. 安裝 ffmpeg：`winget install BtbN.FFmpeg.GPL`。
 3. 試聽後選定頻道聲音。
 4. YouTube 頻道完成手機驗證（自訂縮圖需要）。
