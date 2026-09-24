@@ -1,0 +1,50 @@
+[Unit]
+Description=Mokaair AI CLI account agent (Claude Code and Codex subscription logins)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Root, because the CLIs and their logins belong to root's SSH sessions. The capability
+# set below is empty, so root here only reaches files it owns and cannot undo the
+# filesystem protections with a remount.
+User=root
+WorkingDirectory=/opt/mokaair-ai-accounts
+EnvironmentFile=/etc/travel-scanner/ai-accounts.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+# /run is tmpfs: recreate the socket directory with the group the API container joins.
+# `+` runs these two with full privileges; the agent itself has none.
+ExecStartPre=+/bin/sh -c 'install -d -m 0750 -o root -g travel-api /run/mokaair-ai-accounts'
+ExecStart=/usr/bin/python3 -m ai_accounts_agent
+ExecStartPost=+/bin/sh -c 'for i in $(seq 1 100); do [ -S /run/mokaair-ai-accounts/agent.sock ] && exec chgrp travel-api /run/mokaair-ai-accounts/agent.sock; sleep 0.1; done; echo "agent.sock never appeared" >&2; exit 1'
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+CapabilityBoundingSet=
+PrivateTmp=true
+# Keeps /dev/ptmx and /dev/pts, which the Claude login needs.
+PrivateDevices=true
+ProtectSystem=strict
+# The CLIs live under /root/.local; the logins live under /var/lib.
+ProtectHome=read-only
+ReadWritePaths=/run/mokaair-ai-accounts /var/lib/mokaair-ai-accounts
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictRealtime=true
+# node and Bun enumerate interfaces over netlink at startup.
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+SystemCallArchitectures=native
+LockPersonality=true
+# No MemoryDenyWriteExecute: the Codex node wrapper and the Bun-built Claude binary JIT.
+# No RuntimeDirectory: it deletes the socket directory on stop and strands the API
+# container's bind mount on a directory that no longer exists.
+
+[Install]
+WantedBy=multi-user.target
