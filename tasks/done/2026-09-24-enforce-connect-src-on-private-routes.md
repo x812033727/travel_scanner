@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-enforce-connect-src-on-private-routes
 title: Administrators never load third-party scripts (was: enforce connect-src on private routes)
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T05:09:19Z
 created_at: 2026-09-24T02:30:51Z
-completed_at:
+completed_at: 2026-09-24T05:26:47Z
 branch: claude/admins-skip-third-party-scripts
 depends_on:
   - 2026-09-23-third-party-scripts-on-privileged-routes
