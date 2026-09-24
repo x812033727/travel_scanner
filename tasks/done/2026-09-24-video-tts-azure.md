@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-tts-azure
 title: 影片產線 T2：台灣口音 TTS 用戶端（經伺服器合成）與選聲
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T02:42:18Z
 created_at: 2026-09-24T00:41:02Z
-completed_at:
+completed_at: 2026-09-24T02:50:56Z
 branch: claude/video-tts
 depends_on:
   - 2026-09-24-video-tooling-core
