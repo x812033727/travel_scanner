@@ -35,6 +35,7 @@ scope:
   - tools/e2e-runtime-api.mjs
   - apps/web/e2e/admin-operations.spec.ts
   - apps/web/e2e/admin-operations-full-stack.spec.ts
+  - apps/web/e2e/admin-domains.spec.ts
   - ops/ai-accounts/README.md
 ---
 
