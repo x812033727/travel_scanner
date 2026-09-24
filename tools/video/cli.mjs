@@ -22,6 +22,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 
 // Stage commands built outside the core: command -> [directory, ticket that builds it].
 export const AREAS = {
+  login: ["tts", "2026-09-24-video-tts-azure"],
   tts: ["tts", "2026-09-24-video-tts-azure"],
   audition: ["tts", "2026-09-24-video-tts-azure"],
   render: ["render", "2026-09-24-video-render-slides"],
@@ -42,10 +43,11 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    record the owner's approval of the file as it is now
   captions --slug S [--workdir D]                  caption files for every current locale
 
+  login                                            save the video tool token made on the admin card
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
 
---workdir defaults to $VIDEO_WORKDIR; the video's files go in <workdir>/<slug>/, outside the repository.
+--workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing.
 `;
 
