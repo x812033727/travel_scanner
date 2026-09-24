@@ -367,3 +367,6 @@ class CodexAccounts:
 
     def details(self, slot: str) -> dict[str, Any]:
         return {}  # Codex usage is read live with the status.
+
+    def refresh_usage(self, slot: str) -> bool:
+        return False  # Nothing to refresh apart from the status itself.
