@@ -16,6 +16,7 @@ probabilities rather than acting on them; the owner still approves the narration
 from __future__ import annotations
 
 import base64
+import logging
 from typing import Any
 
 import httpx
@@ -25,6 +26,8 @@ from app.ai.jev import JevClient, NoulQuestion, consume_jev_call, jev_client
 from app.ai.structured_output import gemini_output_text
 from app.config import Settings
 from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
+
+logger = logging.getLogger(__name__)
 
 TRANSCRIBE_INSTRUCTIONS = (
     "Transcribe this Mandarin narration word for word in Traditional Chinese characters as "
@@ -102,18 +105,42 @@ async def transcribe(
             headers={"x-goog-api-key": key, "User-Agent": USER_AGENT},
         )
     except httpx.HTTPError as error:
+        logger.warning("Gemini transcription unreachable: %s", type(error).__name__)
         raise SpeechUpstreamError(502, f"Gemini unreachable: {type(error).__name__}") from error
     finally:
         if owned:
             await http.aclose()
+    # The first pilot run lost lines to 502s nobody could explain, because the upstream status
+    # was dropped here. Gemini's error status ("UNAVAILABLE", "INVALID_ARGUMENT") names the cause
+    # without echoing the request, so it goes in the log and in the message.
     if response.status_code != 200:
+        reason = _error_status(response)
+        logger.warning(
+            "Gemini transcription answered HTTP %s %s", response.status_code, reason or "-"
+        )
         raise SpeechUpstreamError(
             response.status_code,
-            f"Gemini answered HTTP {response.status_code}",
+            f"Gemini answered HTTP {response.status_code} {reason}".strip(),
             response.headers.get("Retry-After"),
         )
     payload = response.json()
-    return gemini_output_text(payload if isinstance(payload, dict) else {}).strip()
+    try:
+        return gemini_output_text(payload if isinstance(payload, dict) else {}).strip()
+    except ValueError as error:
+        # Blocked, cut off or empty: no transcript to compare, which is not the same as a
+        # transcript that differs from the script.
+        logger.warning("Gemini transcription came back without text: %s", error)
+        raise SpeechUpstreamError(502, f"Gemini returned no transcript: {error}") from error
+
+
+def _error_status(response: httpx.Response) -> str:
+    try:
+        payload = response.json()
+    except ValueError:
+        return ""
+    error = payload.get("error") if isinstance(payload, dict) else None
+    status = error.get("status") if isinstance(error, dict) else None
+    return status if isinstance(status, str) and status.isupper() and len(status) <= 40 else ""
 
 
 def judge_questions(line_ids: list[str]) -> dict[str, NoulQuestion]:

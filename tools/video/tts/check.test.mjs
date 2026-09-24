@@ -7,7 +7,7 @@ import { EXIT, main } from "../cli.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
-import { comparable, matches, spokenForm } from "./check.mjs";
+import { comparable, GIVE_UP_AFTER, matches, spokenForm } from "./check.mjs";
 import { concatSamples, downsample, encodeWav } from "./wav.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -43,8 +43,8 @@ test("downsampling keeps what 16 kHz can carry and removes what it cannot", () =
 });
 
 /** A site that synthesizes tones, transcribes clips in narration order, and judges with Jev. */
-function site({ heardFor, noul }) {
-  const calls = { speech: 0, transcribe: [], judge: [] };
+function site({ heardFor, noul, fails = () => false }) {
+  const calls = { speech: 0, transcribe: [], judge: [], failed: 0 };
   const tone = (milliseconds) => sine(SAMPLE_RATE, 440, milliseconds / 1000);
   const quiet = (milliseconds) => new Int16Array(Math.round((milliseconds / 1000) * SAMPLE_RATE));
   const fetchImpl = async (url, init) => {
@@ -55,6 +55,13 @@ function site({ heardFor, noul }) {
     if (url.endsWith("/speech/transcribe")) {
       const wav = Buffer.from(body.audio, "base64");
       assert.equal(wav.readUInt32LE(24), 16_000, "clips go out at 16 kHz");
+      if (fails()) {
+        calls.failed += 1;
+        return Response.json(
+          { code: "video_speech_upstream_busy", detail: "Gemini 暫時無法轉寫（Gemini answered HTTP 503 UNAVAILABLE），請稍後重試" },
+          { status: 503, headers: { "Retry-After": "20" } },
+        );
+      }
       calls.transcribe.push(wav.length);
       return Response.json({ text: heardFor(calls.transcribe.length - 1) });
     }
@@ -112,7 +119,7 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
   assert.deepEqual(flags.flags, [wrong]);
   assert.match(flags.notes[wrong], /Jev 0\.08/);
-  assert.match(first.out.stdout, new RegExp(`${lines.length} lines: ${lines.length - 1} match`));
+  assert.match(first.out.stdout, new RegExp(`${lines.length} of ${lines.length} lines checked: ${lines.length - 1} match`));
   assert.match(first.out.stdout, /--redo/);
 
   const again = context(box, server.fetchImpl);
@@ -123,4 +130,45 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   const forced = context(box, server.fetchImpl);
   await main(["check-audio", "--slug", box.slug, "--force"], forced.ctx);
   assert.equal(server.calls.transcribe.length, lines.length * 2);
+});
+
+test("check-audio skips a line Gemini will not transcribe, keeps the rest, and picks it up on the next run", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  // Requests arrive in narration order; the second line's five tries are requests 1 to 5.
+  let failing = new Set();
+  let request = 0;
+  const server = site({ heardFor: (count) => spokenText(lines[count < 1 ? count : count + 1]), noul: () => 0.95, fails: () => failing.has(request++) });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  failing = new Set([1, 2, 3, 4, 5]);
+  const first = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], first.ctx), EXIT.external, first.out.stderr);
+  assert.equal(server.calls.failed, 5, "the client's five tries, then the line is skipped");
+  assert.equal(server.calls.transcribe.length, lines.length - 1);
+  assert.match(first.out.stdout, new RegExp(`${lines.length - 1} of ${lines.length} lines checked: ${lines.length - 1} match`));
+  assert.ok(first.out.stdout.includes(`${lines[1].id}  Gemini 暫時無法轉寫（Gemini answered HTTP 503 UNAVAILABLE）`), first.out.stdout);
+  assert.match(first.out.stdout, /1 lines not checked yet/);
+
+  const recovered = site({ heardFor: () => spokenText(lines[1]), noul: () => 0.95 });
+  const retry = context(box, recovered.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], retry.ctx), EXIT.ok, retry.out.stdout);
+  assert.equal(recovered.calls.transcribe.length, 1, "only the skipped line is transcribed again");
+});
+
+test("check-audio stops when Gemini fails line after line, instead of retrying every line left", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  let down = false;
+  const server = site({ heardFor: (count) => spokenText(lines[count % lines.length]), noul: () => 0.95, fails: () => down });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+  assert.ok(lines.length > GIVE_UP_AFTER, "the fixture has lines left after the give-up point");
+
+  down = true;
+  const run = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.external);
+  assert.equal(server.calls.failed, GIVE_UP_AFTER * 5, "five tries for each line before it gives up");
+  assert.match(run.out.stdout, new RegExp(`Gemini failed ${GIVE_UP_AFTER} lines in a row`));
 });

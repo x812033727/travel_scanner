@@ -498,7 +498,18 @@ async def transcribe_narration(
             raise AppError(
                 502, "video_speech_upstream_rejected_key", "Gemini 拒絕了網站的金鑰"
             ) from error
-        raise AppError(502, "video_speech_upstream_failed", "Gemini 暫時無法轉寫") from error
+        if error.status in {500, 503, 504}:
+            # Overloaded or failing on Google's side: worth another try after a real pause,
+            # not the tool's one-to-sixteen-second backoff.
+            raise AppError(
+                503,
+                "video_speech_upstream_busy",
+                f"Gemini 暫時無法轉寫（{error}），請稍後重試",
+                headers={"Retry-After": error.retry_after or "20"},
+            ) from error
+        raise AppError(
+            502, "video_speech_upstream_failed", f"Gemini 暫時無法轉寫（{error}）"
+        ) from error
     return TranscribeOut(text=text)
 
 
