@@ -630,9 +630,12 @@ def test_news_replies_drop_imagery_the_model_should_not_supply() -> None:
             "slug": SLUG,
             "topics": ["ai-news"],
             "claims": [{"claim": "Shipped.", "source_urls": [FIRST_PARTY_URL]}],
+            # Also seen: sources repeated beside the document, and an unknown document key.
+            "sources": [{"title": "Official", "url": FIRST_PARTY_URL}],
             "document": {
                 "title": "Release",
                 "description": "What changed.",
+                "summary": "Not a GuideDocument field.",
                 # As on the first production run: the source site's logo as the hero.
                 "hero": {
                     "src": "https://blog.google/static/images/google-logo.svg",

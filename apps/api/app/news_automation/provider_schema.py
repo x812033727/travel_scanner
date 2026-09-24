@@ -21,6 +21,8 @@ from typing import Any, ClassVar
 
 from pydantic import BaseModel, ConfigDict, model_validator
 
+from app.guides.schemas import GuideDocument
+
 # Bounds neither provider enforces through the schema. Pydantic still does.
 MOVED_TO_DESCRIPTION = frozenset(
     {
@@ -44,6 +46,7 @@ PORTABLE_FORMATS = frozenset({"date", "date-time", "time"})
 # Blocks a news reply may not bring: the pipeline renders its own artwork (assets.py) and
 # a news article carries no commercial blocks.
 MODEL_EXCLUDED_BLOCKS = frozenset({"image", "offer", "partner_link"})
+DOCUMENT_KEYS = frozenset(GuideDocument.model_fields)
 
 
 def portable_json_schema(schema: dict[str, Any]) -> dict[str, Any]:
@@ -106,15 +109,24 @@ class ProviderReply(BaseModel):
 
     @model_validator(mode="before")
     @classmethod
-    def drop_model_imagery(cls, data: Any) -> Any:
+    def tidy_model_reply(cls, data: Any) -> Any:
+        """Drop what the pipeline supplies itself or never reads, before strict validation.
+
+        Besides the imagery, a key the reply or its document does not define is dropped:
+        the same run failed a draft that repeated ``sources`` beside ``document`` (the
+        pipeline replaces an article's sources with the evidence list anyway). Anything
+        deeper stays strict and goes to the adapter's repair round.
+        """
         if not isinstance(data, dict):
             return data
-        cleaned = dict(data)
+        cleaned = {key: value for key, value in data.items() if key in cls.model_fields}
         for field in cls.document_fields:
             document = cleaned.get(field)
             if not isinstance(document, dict):
                 continue
-            document = {**document, "hero": None}
+            document = {
+                key: value for key, value in document.items() if key in DOCUMENT_KEYS
+            } | {"hero": None}
             blocks = document.get("blocks")
             if isinstance(blocks, list):
                 document["blocks"] = [

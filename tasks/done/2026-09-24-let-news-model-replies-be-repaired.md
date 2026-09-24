@@ -76,3 +76,6 @@ and none is retried by RQ (one `run_candidate` job per failure in the worker log
   writer and the candidate generator; their tests still pass and they gain the same
   error detail.
 - Candidates that already failed this way can be rerun from /admin/news (「重新執行」).
+- A fourth failure shape arrived while the PR was open: a draft that repeated `sources`
+  beside `document` (`extra_forbidden`). Keys the reply or its document does not define
+  are now dropped before validation too; deeper structure stays strict.
