@@ -561,6 +561,14 @@
     "azure_speech_timeout_seconds": {
       "label": "合成のタイムアウト（秒）",
       "help": "サーバーが Azure からナレーション 1 回分の返答を待つ最長時間。"
+    },
+    "video_speech_gemini_monthly_character_limit": {
+      "label": "Gemini ナレーションの月間文字数上限",
+      "help": "チャンネルの声が Gemini（例：Sulafat）の場合に、1 か月に送信できる文字数の上限です。UTC の月単位で数え、超えると送信せずに拒否します。既定値は 300,000（10 分の動画約 100 本分）、0 は数えるだけで制限しません。"
+    },
+    "jev_daily_call_budget": {
+      "label": "Jev の 1 日あたり呼び出し回数",
+      "help": "ニュース自動化、スポット紹介の Jev シャドー評価、ナレーション検査で共有する 1 日の上限です。UTC の日単位で数え、使い切るとその日は Jev を呼び出しません。既定値は 200。"
     }
   },
   "hotspotTabs": {
