@@ -76,7 +76,7 @@ def _current(row: NewsSource) -> dict[str, Any]:
     }
 
 
-async def _actor(session: AsyncSession, email: str) -> User | None:
+async def admin_actor(session: AsyncSession, email: str) -> User | None:
     """An active administrator, or an owner listed in ADMIN_EMAILS (as the admin bootstrap
     treats them even when users.is_admin was never backfilled)."""
     normalized = email.strip().casefold()
@@ -200,7 +200,7 @@ async def run(path: Path, *, apply: bool, actor_email: str | None) -> dict[str, 
             if apply:
                 if not actor_email:
                     raise SystemExit("--actor-email is required with --apply")
-                actor = await _actor(session, actor_email)
+                actor = await admin_actor(session, actor_email)
                 if actor is None:
                     raise SystemExit("The actor must be an active administrator")
                 # Detached, its loaded id survives the rollback a refused source causes.

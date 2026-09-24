@@ -80,7 +80,13 @@ reply, and the dropped bounds are written into the field descriptions.
    `blogs.microsoft.com`.
 4. **Settings.** Pick the writer and checker from the dropdowns (「預設」 follows the admin
    AI settings; 「自訂…」 accepts any id matching `[A-Za-z0-9._:-]{1,128}`). Turn on
-   「啟用掃描」 with mode 「影子模式」. Changing a vendor, model or prompt/policy version
+   「啟用掃描」 with mode 「影子模式」. Without the admin page, the host can do the same:
+   `python -m app.news_automation.settings_cli` (inside the api container) prints the
+   settings, which vendor keys and Jev are configured (present/missing only) and the
+   source counts; add `--enable --writer-provider … --verifier-provider …` to see the
+   change and `--apply --actor-email <admin>` to make it. It refuses to switch the
+   scanner on while the chosen vendors lack a key, either is Gemini, or Jev is missing,
+   and never touches mode or auto-publish. Changing a vendor, model or prompt/policy version
    resets every category to shadow mode and restarts its clock.
 5. **Shadow period.** Review what arrives. Every publish/reject on a candidate that
    reached Jev counts toward the category's gate: at least 14 days, 50 labelled

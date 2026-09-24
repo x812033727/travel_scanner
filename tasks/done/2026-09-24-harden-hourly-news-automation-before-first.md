@@ -16,6 +16,7 @@ scope:
   - apps/api/tests/test_news_automation.py
   - apps/api/tests/test_news_pipeline.py
   - apps/api/tests/test_news_sources_cli.py
+  - apps/api/tests/test_news_settings_cli.py
   - docker-compose.yml
   - docker-compose.prod.yml
   - docs/news-automation.md
@@ -153,6 +154,12 @@ npm run check:tasks
   refused source disabled with the reason, and snapshots rows and detaches the actor
   because a refused validation rolls the session back (an expired row read afterwards is
   blocking IO on asyncpg; a test drives `run()` with a persisted admin to pin it).
+- The owner then asked for the scanner switch to be turned on after the deploy, still
+  with Chrome unavailable. `python -m app.news_automation.settings_cli` shows the settings,
+  key readiness (present/missing only) and source counts, and applies `--enable` and the
+  vendor choice through `service.update_settings`; it refuses to enable while a chosen
+  vendor has no key, is Gemini, or Jev is missing, since every candidate would otherwise
+  fail after spending its Jev calls.
 - Still known: a feed whose links always redirect is refetched every hour (one page
   per entry) because the pre-redirect URL is not stored; the orphan sweep keys on
   `updated_at`, so with a long backlog a queued candidate may get one extra job an hour
