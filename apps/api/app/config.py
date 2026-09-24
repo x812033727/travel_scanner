@@ -512,6 +512,34 @@ class Settings(BaseSettings):
     # belongs here later; the enum exists now so adding it is not a type change. Same
     # reasoning as public_read_rate_limit_mode: move on evidence, not on principle.
     jev_shadow_guide_assessment: Literal["off", "shadow"] = "off"
+    # Azure AI Speech narrates the YouTube videos the local pipeline in tools/video builds
+    # (docs/videos/DESIGN.md). The key stays on this server: the pipeline sends sentences to
+    # POST /api/v1/video/speech with a video tool token and gets audio back. The endpoint host
+    # is built from the region, which is why the region is pattern-checked and no base URL is
+    # stored.
+    azure_speech_region: str | None = Field(default=None, pattern=r"^[a-z][a-z0-9]{1,31}$")
+    azure_speech_key: str | None = None
+
+    @field_validator("azure_speech_region", mode="before")
+    @classmethod
+    def empty_azure_speech_region(cls, value: object) -> object:
+        # An empty AZURE_SPEECH_REGION= (as in .env.example) means "not set", not a bad region.
+        if isinstance(value, str):
+            return value.strip().lower() or None
+        return value
+
+    # Voices the pipeline may ask for: Taiwan Mandarin, and the multilingual voices that can
+    # speak it through <lang xml:lang="zh-TW">.
+    azure_speech_voices: str = (
+        "zh-TW-HsiaoChenNeural,zh-TW-YunJheNeural,zh-TW-HsiaoYuNeural,"
+        "en-US-AvaMultilingualNeural,en-US-AndrewMultilingualNeural,"
+        "en-US-BrianMultilingualNeural,en-US-EmmaMultilingualNeural"
+    )
+    # Billable characters per UTC month; Azure counts a Chinese character twice and bills the
+    # SSML markup too. 0 counts without blocking. The default stays under the free tier's
+    # 500,000 so a month of videos cannot turn into a bill.
+    azure_speech_monthly_character_limit: int = Field(default=450_000, ge=0, le=100_000_000)
+    azure_speech_timeout_seconds: float = Field(default=90.0, ge=5, le=280)
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
@@ -671,6 +699,15 @@ class Settings(BaseSettings):
     @property
     def jev_configured(self) -> bool:
         return bool(self.jev_api_key and self.jev_api_base_url)
+
+    @property
+    def azure_speech_configured(self) -> bool:
+        return bool(self.azure_speech_key and self.azure_speech_region)
+
+    @property
+    def azure_speech_voice_list(self) -> tuple[str, ...]:
+        voices = (voice.strip() for voice in self.azure_speech_voices.split(","))
+        return tuple(voice for voice in voices if voice)
 
     @property
     def naver_maps_configured(self) -> bool:

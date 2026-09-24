@@ -544,6 +544,22 @@
     "hotspot_guide_gemini_model": {
       "label": "Gemini モデル",
       "help": "Flash 系はスポット候補の生成に向きますが、根拠付きの記事ソース列挙は苦手です。Pro 系は新しい API キーでは使えないことがあるため、接続テストの結果を基準にしてください。"
+    },
+    "azure_speech_region": {
+      "label": "リージョン",
+      "help": "Speech リソース作成時に選んだ Azure のリージョンコード（例：eastasia）。キーとリージョンは同じリソースのものを使います。"
+    },
+    "azure_speech_voices": {
+      "label": "使用できる音声",
+      "help": "動画ツールが使える音声をカンマ区切りで。台湾華語：zh-TW-HsiaoChenNeural、zh-TW-YunJheNeural、zh-TW-HsiaoYuNeural。多言語音声は自動で台湾華語に切り替わります。"
+    },
+    "azure_speech_monthly_character_limit": {
+      "label": "月間課金文字数の上限",
+      "help": "UTC の月単位で数えます。中国語の漢字は 1 文字を 2 文字として、SSML のマークアップも数えます。既定値 450,000 は無料枠 500,000 未満です。0 は上限なしで計数のみ。"
+    },
+    "azure_speech_timeout_seconds": {
+      "label": "合成のタイムアウト（秒）",
+      "help": "サーバーが Azure からナレーション 1 回分の返答を待つ最長時間。"
     }
   },
   "hotspotTabs": {
@@ -1351,6 +1367,10 @@
     "hotspot_guide_gemini_api_key": {
       "label": "Gemini API Key",
       "help": "多言語の記事検索とスポット候補生成に使い、サーバー側で暗号化して保存します。"
+    },
+    "azure_speech_key": {
+      "label": "Speech キー",
+      "help": "Azure ポータル → Speech リソース → キーとエンドポイントの「キー 1」。サーバーにだけ保存され、動画ツールには送られません。"
     }
   },
   "settingsPanel": {
@@ -1364,7 +1384,9 @@
       "system_settings_updated": "システム設定を更新",
       "provider_settings_updated": "プロバイダー設定を更新",
       "provider_connection_tested": "接続テストを実行",
-      "admin_role_updated": "管理者権限を更新"
+      "admin_role_updated": "管理者権限を更新",
+      "video_tool_token_created": "動画ツールのトークンを作成",
+      "video_tool_token_revoked": "動画ツールのトークンを失効"
     },
     "usageOperations": {
       "places_autocomplete": "地点オートコンプリート",
@@ -1381,7 +1403,8 @@
       "search_course": "Ekispert 経路検索",
       "search_pub_trans_path": "ODsay 公共交通検索",
       "search_list": "動画検索（search.list）",
-      "videos_list": "動画詳細（videos.list）"
+      "videos_list": "動画詳細（videos.list）",
+      "synthesis": "合成リクエスト"
     },
     "googleUsageLabel": "Google Maps 今月の利用量",
     "googleUsageTitle": "Google API 月間利用量",
@@ -1479,7 +1502,12 @@
     "auditSystemHint": "変更した項目・操作者・公開登録の結果だけを記録し、機密設定の内容は記録しません。",
     "auditProviderHint": "変更した項目名・操作者・テスト結果だけを記録し、キーの内容は記録しません。",
     "auditEmpty": "管理操作の記録はまだありません。",
-    "testResult": "{message}（{latency} ms）"
+    "testResult": "{message}（{latency} ms）",
+    "azureSpeechTitle": "Azure 音声の今月の利用量",
+    "azureSpeechAria": "Azure 音声の今月の課金文字数",
+    "azureSpeechProgress": "Azure 音声の月間利用量",
+    "azureSpeechNote": "サーバーが送った課金文字数を UTC の月単位で集計します（漢字は 2 文字、SSML マークアップを含む）。Azure が拒否したリクエストは差し戻します。実際の請求は Azure ポータルをご確認ください。",
+    "billableCharacters": "課金文字"
   },
   "uiText": {
     "eyebrow": "SYSTEM ADMIN",
@@ -1854,5 +1882,28 @@
       "no_result": "結果が見つかりません",
       "not_found": "店舗が存在しません"
     }
+  },
+  "videoTools": {
+    "title": "動画ツールのトークン",
+    "intro": "ローカルの動画ツールはこのトークンを使い、上のキーでサーバーにナレーションを合成させます。トークンは音声合成にしか使えず、いつでも失効できます。サーバーにはハッシュ値だけが保存されます。",
+    "nameLabel": "名前",
+    "namePlaceholder": "例：自分のノート PC",
+    "create": "トークンを作成",
+    "creating": "作成中…",
+    "createdTitle": "このトークンは一度しか表示されません",
+    "createdHelp": "コピーして、パソコンで動画ツールの login コマンドを実行して貼り付けてください。このページを離れると再表示できません。",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "dismiss": "保存しました",
+    "empty": "トークンはまだありません。",
+    "prefix": "先頭",
+    "createdAt": "作成日時",
+    "lastUsed": "最終使用",
+    "never": "未使用",
+    "revoked": "失効済み",
+    "revoke": "失効",
+    "confirmRevoke": "失効を確定",
+    "cancel": "キャンセル",
+    "loadFailed": "トークン一覧を読み込めません"
   }
 }
