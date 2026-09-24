@@ -23,10 +23,11 @@ const ADMIN_PAGES = [
   "/admin/database",
   "/admin/deployments",
   "/admin/audit",
+  "/admin/ai-accounts",
 ] as const;
 
 const ROLE_NAVIGATION = {
-  viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments"].includes(path)),
+  viewer: ADMIN_PAGES.filter((path) => !["/admin/database", "/admin/deployments", "/admin/ai-accounts"].includes(path)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
   content: ["/admin", "/admin/guides", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services", "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit"],
   operations: ["/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings", "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit"],
@@ -185,6 +186,8 @@ async function isolateAdmin(page: Page, role = "owner") {
       response = { enabled: false, agent_connected: false, deployed_sha: "6eacb821", target_sha: "6eacb821", update_available: false, ci_status: "success", commits: [], checks: [], active_run: null, last_success: null };
     } else if (path === "/admin/deployments") {
       response = { items: [] };
+    } else if (path === "/admin/ai-accounts") {
+      response = { enabled: false, agent_reachable: false, agent_error: null, slots: [], defaults: {}, allowlist_configured: false };
     } else if (path === "/admin/analytics/dashboard") {
       response = { range: "30d", timezone: "Asia/Taipei", source: "raw", summary: { previous: {}, changes: {} }, timeseries: [], funnel: [], top_pages: [], referrers: [], utm_sources: [], devices: [], locales: [], countries: [], heatmap: [], authoritative: {}, data_quality: { ga4_enabled: false, ga4_configured: false, tracking_started_at: null, last_event_at: null, last_rollup_day: null, country_coverage_percent: 0, bots_excluded: true, raw_retention_days: 90, rollup_retention_months: 24 } };
     } else if (path === "/admin/provider-settings") {

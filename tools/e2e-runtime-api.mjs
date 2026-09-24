@@ -102,6 +102,7 @@ const adminNavigation = [
   ["database", "system", "/admin/database", "database.read"],
   ["deployments", "system", "/admin/deployments", "deploy.read"],
   ["audit", "system", "/admin/audit", "audit.read"],
+  ["ai_accounts", "system", "/admin/ai-accounts", "roles.manage"],
 ].map(([id, group, href, capability, badge_key]) => ({
   id, group, href, label_key: id, capability, ...(badge_key ? { badge_key } : {}),
 }));
