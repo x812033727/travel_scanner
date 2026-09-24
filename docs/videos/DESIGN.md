@@ -77,10 +77,16 @@
 **語音**：Azure 即時 REST，輸出 `riff-48khz-16bit-mono-pcm`，但**不是本機直接呼叫**。
 
 - 2026-09-24 站主決定：Azure 金鑰存在正式站後台的「Azure 語音（影片旁白）」卡，永遠不離開伺服器。
-- 本機工具帶著同一張卡上建立的「影片工具權杖」，呼叫 `POST https://mokaair.com/api/video/speech`。
+- 本機工具帶著「影片工具權杖」呼叫 `POST https://mokaair.com/api/video/speech`。
+- 權杖靠**配對**取得，沒有人需要複製它（2026-09-24 站主決定）。流程仿 RFC 8628：
+  1. `login` 開一個配對，印出驗證碼與後台卡片的連結。
+  2. 站主在卡片上核對驗證碼、按「允許」。
+  3. 工具用只有它知道的 device code 輪詢，只領一次權杖，直接寫進本機檔案，不印在畫面上，所以代理可以替站主跑。
+  - 配對紀錄只放 Redis 10 分鐘。權杖在工具來領的那一刻才產生，所以明文權杖從來不落地。
+  - 卡片上的「建立權杖」按鈕仍保留，給不能配對的場合（`login --paste`）。
 - 送出的是結構化的句子：`{voice, rate, segments:[{parts:[{text, alias?}], break_after_ms}]}`。伺服器組 SSML、算計費字元、向每月預算預留字元，再呼叫 Azure，最後回傳 WAV。
 - `GET /api/video/speech/status` 回傳允許的聲音、上限與本月用量。
-- 程式在 `apps/api/app/video_speech/` 與 `apps/web/app/api/video/speech/`。
+- 程式在 `apps/api/app/video_speech/` 與 `apps/web/app/api/video/`（`speech/`、`pairings/`）。
 
 每個場景送一次請求，句間固定停頓，再在 Node 裡找靜音切段。逐句分開合成會讓每句語調重新起頭，聽起來像在念清單；切段對不上時，該場景退回逐句合成。一次最多 1,500 字，更長的場景由工具拆開。發音一律用 `<sub alias>`（也就是 part 的 `alias`）；zh-TW 的 `<phoneme>` 音標集沒有官方文件，不用。
 
@@ -139,13 +145,14 @@
 | `video-assemble-package` | ffmpeg、審看頁、上傳包、CI 煙霧測試 | `tools/video/assemble`、`review`、`package` |
 | `video-skill-automated` | skill 加全自動路線、頻道規格 | `.agents/skills/youtube-video`、`docs/videos/README.md` |
 | `video-pilot-ai-model-choice` | 試作影片 | `docs/videos/ai-model-choice`、`docs/videos/lexicon.json` |
+| `video-tool-pairing` | 在後台按「允許」配對本機工具，不必複製權杖 | `apps/api/app/video_speech`、`apps/web/app/api/video/pairings`、權杖卡片、`tools/video/tts` |
 | `video-captions-i18n` | 五語系 CC | `tools/video/i18n` |
 | `video-youtube-sync` | API 同步 | `tools/video/youtube` |
 | `video-screencast-steps`、`video-terminal-template`、`video-obs-import` | 第三期：螢幕操作、模擬終端機、OBS 匯入 | 各自的 `tools/video/<area>` |
 
 ## 站主要先準備的東西
 
-1. Azure Speech 資源（免費層 F0）。金鑰與區域填在後台「API 與供應商設定 → AI 服務 → Azure 語音」，按連線測試；再在同一張卡建立一組影片工具權杖，用本機工具的 `login` 存起來。
+1. Azure Speech 資源（免費層 F0）。金鑰與區域填在後台「API 與供應商設定 → AI 服務 → Azure 語音」，按連線測試。之後本機工具的 `login`（誰跑都可以）會印出一個連結與驗證碼，站主在卡片上核對後按「允許」一次即可。
 2. 安裝 ffmpeg：`winget install BtbN.FFmpeg.GPL`。
 3. 試聽後選定頻道聲音。
 4. YouTube 頻道完成手機驗證（自訂縮圖需要）。

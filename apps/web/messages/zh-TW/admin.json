@@ -1891,7 +1891,7 @@
     "create": "建立權杖",
     "creating": "建立中…",
     "createdTitle": "新的權杖只會顯示這一次",
-    "createdHelp": "複製後，在本機執行影片工具的 login 指令並貼上。離開這個頁面後就看不到了。",
+    "createdHelp": "一般請改用上面的配對，不必複製權杖。這裡建立的權杖給不能配對的情況用（例如在本機執行 login --paste 後貼上）。離開這個頁面後就看不到了。",
     "copy": "複製",
     "copied": "已複製",
     "dismiss": "我已經存好了",
@@ -1904,6 +1904,22 @@
     "revoke": "撤銷",
     "confirmRevoke": "確定撤銷",
     "cancel": "取消",
-    "loadFailed": "無法載入權杖清單"
+    "loadFailed": "無法載入權杖清單",
+    "pairTitle": "配對本機工具",
+    "pairIntro": "在本機執行影片工具的 login，它會顯示一組驗證碼和這個頁面的連結。核對驗證碼和終端機上的一樣，再按「允許」：權杖會直接交給那台電腦，不會顯示在任何地方，也不必複製。",
+    "pairCodeLabel": "驗證碼",
+    "pairLookup": "查詢",
+    "pairCode": "驗證碼",
+    "pairClient": "電腦",
+    "pairAddress": "來源 IP",
+    "pairRequested": "要求於",
+    "pairExpires": "到期",
+    "pairWarning": "只允許你自己剛剛在終端機上看到的驗證碼。如果是別人傳連結來請你按「允許」，請按「拒絕」。",
+    "pairApprove": "允許",
+    "pairDeny": "拒絕",
+    "pairApproved": "已允許。本機工具會在幾秒內自己取得權杖，清單會多一組配對產生的權杖。",
+    "pairDenied": "已拒絕，這組驗證碼拿不到權杖。",
+    "pairCodeInvalid": "驗證碼是 8 個英文字母，例如 BCDF-GHJK。",
+    "pairFailed": "無法處理這組驗證碼"
   }
 }
