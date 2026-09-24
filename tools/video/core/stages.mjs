@@ -38,10 +38,10 @@ export function localeTexts(doc, translations) {
  * and current. A locale with missing or stale lines is reported and not written: a caption track
  * that silently skips sentences is worse than none.
  */
-export function runCaptions({ slug, root, workdir, now = new Date() }) {
-  const project = loadProject({ slug, root });
+export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
+  const project = loadProject({ slug, file, root });
   const lint = lintProject(project);
-  if (lint.errors.length) throw new StageError(`${slug} has ${lint.errors.length} lint errors; run lint first`, "lint");
+  if (lint.errors.length) throw new StageError(`${project.doc.slug} has ${lint.errors.length} lint errors; run lint first`, "lint");
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const speech = speechHash(project.doc, project.lexicon);
   if (!timeline) throw new StageError("no timeline.json yet; run tts first", "order");
