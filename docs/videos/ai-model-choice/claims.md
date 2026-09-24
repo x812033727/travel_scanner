@@ -6,11 +6,11 @@ c1｜Claude Opus 5 標準價：輸入每百萬 token 5 美元、輸出 25 美元
 
 c2｜Claude Sonnet 5 標準價：輸入每百萬 token 2 美元、輸出 10 美元｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene cost-table
 
-c3｜Gemini 3.5 Flash-Lite 付費層標準價：輸入每百萬 token 0.30 美元、輸出 2.50 美元｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-24｜scene cost-table, cascade-math
+c3｜Gemini 3.5 Flash-Lite 付費層標準價：輸入每百萬 token 0.30 美元、輸出 2.50 美元（定價頁 Last updated 2026-09-23 UTC）｜https://ai.google.dev/gemini-api/docs/pricing｜2026-09-24｜scene cost-table（含 3c4s）, cascade-math
 
 c4｜gpt-6-astra 標準價（短上下文）：輸入每百萬 token 10 美元、輸出 50 美元｜https://platform.openai.com/docs/pricing｜2026-09-24｜scene cost-table
 
-c5｜Claude Opus 5.5 是 Anthropic 目前定價頁上最新、標成「For long-running agentic coding and knowledge work」的旗艦等級模型，比 Claude Opus 5 更晚上架｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene opus-5-5
+c5｜Claude Opus 5.5 於 2026-09-22 發布（型號頁標 Latest、Released September 22, 2026），說明為「For long-running agentic coding and knowledge work」，標準價 4／20 美元；同日起 Claude Opus 5 列在 Legacy models (still available)。Anthropic 頁面沒有用 flagship 稱呼任何型號，陣容最上層是 Claude Fable 5.1（10／50 美元，延遲 Slower）｜https://platform.claude.com/docs/en/models/opus-5-5/overview 、https://platform.claude.com/docs/en/about-claude/models/overview｜2026-09-24｜scene opus-5-5
 
 c6｜單一旗艦（1 次 Claude Opus 5）在共同假設下一次請求成本約 0.03 美元、每萬次約 300 美元｜計算自 c1 ＋ c9 的假設｜2026-09-24｜scene cost-table
 
@@ -22,15 +22,22 @@ c9｜共同假設：一次請求平均輸入 3,000 個 token、輸出 600 個 to
 
 c10｜級聯的升級比例假設為 30%｜沿用來源文章 ai-workflow-cost-quality-latency 的示範假設，非官方數字、非量到的真實流量｜2026-09-24｜scene cost-table, cascade-math
 
-c11｜級聯的尾端（p95）延遲可能比單一旗艦更慢，前提是升級會多打一次呼叫、且輕量模型單次回應比旗艦快｜沿用來源文章 ai-workflow-cost-quality-latency 的推論，非官方數字、本站沒有實測｜2026-09-24｜scene latency-table
+c11｜級聯的尾端（p95）延遲可能比單一旗艦更慢，前提是升級會多打一次呼叫、且輕量模型單次回應比旗艦快；來源文章說的是多數請求（p50）較快，不是平均值較快；並行互審每一筆都是「取較慢的一個，再加一次評審」｜沿用來源文章 ai-workflow-cost-quality-latency 的推論，非官方數字、本站沒有實測｜2026-09-24｜scene latency-table（含 md5s）
 
-c12｜MMLU-Pro 是一個涵蓋多學科、題目量大的知識型基準測驗，設計上比原始 MMLU 更難、答案選項更多，用來評估模型的廣泛知識與推理能力，不針對特定實務工作｜https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro｜2026-09-24｜scene mmlu-pro
+c12｜MMLU-Pro 是 TIGER-Lab 發布的多學科基準：約 12,000 題、14 個學科、每題 10 個選項；論文摘要說它在「mostly knowledge-driven」的 MMLU 之上加入「more challenging, reasoning-focused questions」，所以字卡不叫它「知識題」；資料集頁連到它自己的公開排行榜｜https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro 、https://arxiv.org/abs/2406.01574｜2026-09-24｜scene mmlu-pro
 
 ## 與企劃不同的地方
 
 - 大綱 A 在「為什麼你會困惑」用 Opus 5.5 當「新模型剛上架」的例子；企劃書「示範或實算」段落另外提到 Opus 5.5 標準價比 Opus 5 便宜的發現，但那個發現是選項 C 專屬（brief.md 明寫「只在選項 C 用到，不影響上面主表」）。本片走選項 A，所以只用 Opus 5.5「是最新旗艦、才剛上架」這件事（c5），沒有用它比 Opus 5 便宜的價格比較，避免在旁白或字卡暗示這個選項 A 沒有查證過的價差結論。
 - 主表（cost-table 場景）的欄位用「流程／呼叫組成／一次請求／每萬次」四欄，對應企劃書「示範或實算」段落給的簡表；沒有另外放來源文章原表的「標準價」「延遲的形狀」兩欄，那兩項改成獨立的 latency-table 場景與口播說明，字卡才放得下。
 - 企劃書第 6 章的畫面清單只寫 `table`、`code`、`diagram` 三個場景；實際腳本在 code 場景（cascade-math）之後、diagram 之前的順序照企劃排列，內容一致，只是每個場景的口播行數比企劃書描述的更多，用來把「示範或實算」段落的假設、算法、換算都講清楚。
+
+## 查核第 1 輪（2026-09-24，見 verify-1.md）
+
+- 3c4s：「輸入輸出都只要幾毛錢等級」與官方價不符（Gemini 3.5 Flash-Lite 輸出每百萬 token 2.50 美元），改成「每百萬 token 輸入只要三毛，輸出兩塊半美元」。
+- md5s：來源文章的推論是多數請求（p50）較快，不是平均較快；「平均最快」改成「多數請求最快」。
+- latency-table 第三列：並行互審每一筆都要加評審時間，不是只有 p95 才加；改成「兩個取較慢，再加評審／同樣要加一次評審」。
+- mmlu-pro.data.sub：「知識題」改成「跨學科難題」（企劃書大綱原本寫「知識題」，官方說明優先）。
 
 ## 我懷疑但沒動的事
 
