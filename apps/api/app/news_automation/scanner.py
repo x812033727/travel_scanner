@@ -5,6 +5,7 @@ from datetime import UTC, datetime, timedelta
 from urllib.parse import urlsplit
 from uuid import UUID
 
+import httpx
 from sqlalchemy import or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -16,6 +17,16 @@ from app.news_automation.schemas import Vertical
 from app.news_automation.service import settings_row
 
 Enqueue = Callable[[UUID], Awaitable[None]]
+# What one unreachable, refused or unreadable page raises: HTTP status and transport
+# errors, DNS and socket failures (OSError, TimeoutError included) and the fetcher's
+# UnsafeNewsUrl (a ValueError). Anything else is a bug and still fails the scan.
+PAGE_ERRORS: tuple[type[Exception], ...] = (
+    httpx.HTTPError,
+    httpx.InvalidURL,
+    OSError,
+    ValueError,
+)
+MAX_REPORTED_SKIPS = 5
 
 
 def _host(url: str) -> str:
@@ -95,6 +106,29 @@ async def _enabled_sources(session: AsyncSession) -> list[NewsSource]:
     return list(await session.scalars(select(NewsSource).where(NewsSource.enabled.is_(True))))
 
 
+async def _already_seen(session: AsyncSession, url: str) -> bool:
+    # A feed lists the same entries for days. Refetching each of them every hour costs
+    # two requests per entry and, when the page text drifts, files a new "duplicate".
+    return (
+        await session.scalar(
+            select(NewsCandidate.id).where(NewsCandidate.canonical_url == url).limit(1)
+        )
+    ) is not None
+
+
+def _transient(error: Exception) -> bool:
+    """A failure worth retrying next hour: timeouts, resets, DNS, 429 and 5xx."""
+    if isinstance(error, httpx.HTTPStatusError):
+        return error.response.status_code == 429 or error.response.status_code >= 500
+    return isinstance(error, (httpx.TransportError, OSError))
+
+
+def _skip_note(skipped: list[str]) -> str:
+    shown = "; ".join(skipped[:MAX_REPORTED_SKIPS])
+    more = len(skipped) - MAX_REPORTED_SKIPS
+    return f"Skipped {len(skipped)} page(s): {shown}" + (f"; and {more} more" if more > 0 else "")
+
+
 async def scan_source(
     session: AsyncSession,
     source_id: UUID,
@@ -113,6 +147,9 @@ async def scan_source(
     allowed_hosts = set(by_host)
     allowed_redirects = {host for item in all_sources for host in item.allowed_redirect_hosts_json}
     created_ids: list[UUID] = []
+    # One unreachable article or linked page is skipped and reported, never allowed to
+    # roll back the whole scan: the same entry would then break every later scan too.
+    skipped: list[str] = []
     now = datetime.now(UTC)
     try:
         listing = await fetcher.fetch(
@@ -140,11 +177,21 @@ async def scan_source(
         for entry in entries[:maximum]:
             if _host(entry.url) not in allowed_hosts | allowed_redirects:
                 continue
-            detail = await fetcher.fetch(
-                entry.url,
-                allowed_hosts=allowed_hosts,
-                allowed_redirect_hosts=allowed_redirects,
-            )
+            if await _already_seen(session, entry.url):
+                continue
+            try:
+                detail = await fetcher.fetch(
+                    entry.url,
+                    allowed_hosts=allowed_hosts,
+                    allowed_redirect_hosts=allowed_redirects,
+                )
+            except PAGE_ERRORS as error:
+                skipped.append(f"{entry.url} ({type(error).__name__})")
+                continue
+            # Feed links that redirect (tracking, feed proxies) only match after the
+            # fetch; without this the same page files a new "duplicate" every hour.
+            if detail.url != entry.url and await _already_seen(session, detail.url):
+                continue
             detail_source = by_host.get(_host(detail.url), source)
             page_title, article_text, links = extract_article(
                 detail.body, detail.url, detail_source.config_json
@@ -173,6 +220,55 @@ async def scan_source(
                 .order_by(NewsCandidate.created_at.desc())
                 .limit(1)
             )
+            linked_rows: list[NewsEvidence] = []
+            deferred = False
+            if not exact_duplicate_id:
+                seen_urls = {canonical}
+                for link in links:
+                    linked_source = by_host.get(_host(link))
+                    if (
+                        linked_source is None
+                        or linked_source.role != "evidence"
+                        or link in seen_urls
+                        or len(linked_rows) >= 4
+                    ):
+                        continue
+                    try:
+                        linked = await fetcher.fetch(
+                            link,
+                            allowed_hosts=allowed_hosts,
+                            allowed_redirect_hosts=allowed_redirects,
+                        )
+                    except PAGE_ERRORS as error:
+                        skipped.append(f"{link} ({type(error).__name__})")
+                        if _transient(error):
+                            # A primary source that is briefly down would leave the candidate
+                            # short of evidence for good; nothing is stored, so the whole
+                            # entry is tried again on the next scan.
+                            deferred = True
+                            break
+                        continue
+                    linked_title, linked_text, _ = extract_article(
+                        linked.body, linked.url, linked_source.config_json
+                    )
+                    # Two links that redirect to one page would repeat an evidence URL.
+                    if not linked_text.strip() or linked.url in seen_urls:
+                        continue
+                    seen_urls.update({link, linked.url})
+                    linked_rows.append(
+                        NewsEvidence(
+                            role="evidence",
+                            is_first_party=linked_source.is_first_party,
+                            url=linked.url,
+                            title=(linked_title or linked_source.name)[:500],
+                            etag=linked.etag,
+                            last_modified=linked.last_modified,
+                            content_hash=content_fingerprint(linked_text),
+                            excerpt=linked_text[:8000],
+                        )
+                    )
+            if deferred:
+                continue
             vertical: Vertical = (
                 classify_vertical(title, body_text)
                 if source.vertical == "mixed"
@@ -213,47 +309,19 @@ async def scan_source(
                     excerpt=body_text[:8000],
                 )
             )
+            for row in linked_rows:
+                row.candidate_id = candidate.id
+                session.add(row)
             if exact_duplicate_id:
                 continue
-            used = {canonical}
-            for link in links:
-                linked_source = by_host.get(_host(link))
-                if (
-                    linked_source is None
-                    or linked_source.role != "evidence"
-                    or link in used
-                    or len(used) >= 5
-                ):
-                    continue
-                linked = await fetcher.fetch(
-                    link,
-                    allowed_hosts=allowed_hosts,
-                    allowed_redirect_hosts=allowed_redirects,
-                )
-                linked_title, linked_text, _ = extract_article(
-                    linked.body, linked.url, linked_source.config_json
-                )
-                if not linked_text.strip():
-                    continue
-                used.add(link)
-                session.add(
-                    NewsEvidence(
-                        candidate_id=candidate.id,
-                        role="evidence",
-                        is_first_party=linked_source.is_first_party,
-                        url=linked.url,
-                        title=(linked_title or linked_source.name)[:500],
-                        etag=linked.etag,
-                        last_modified=linked.last_modified,
-                        content_hash=content_fingerprint(linked_text),
-                        excerpt=linked_text[:8000],
-                    )
-                )
             created_ids.append(candidate.id)
-        source.etag = listing.etag
-        source.last_modified = listing.last_modified
-        source.last_status = "succeeded"
-        source.last_error = None
+        if not skipped:
+            # Keeping the old validators after a skip makes the next scan read the listing
+            # again (a 304 would hide the skipped entries); seen entries cost one query.
+            source.etag = listing.etag
+            source.last_modified = listing.last_modified
+        source.last_status = "partial" if skipped else "succeeded"
+        source.last_error = _skip_note(skipped)[:4000] if skipped else None
         source.consecutive_failures = 0
         await session.commit()
     except Exception as error:
