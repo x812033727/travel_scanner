@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-tooling-core
 title: 影片產線 T1：tools/video 核心（schema、lint、時間軸、字幕、狀態）
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T00:43:30Z
 created_at: 2026-09-24T00:41:01Z
-completed_at:
+completed_at: 2026-09-24T01:01:52Z
 branch: claude/youtube-tutorial-video-workflow-b12539
 depends_on: []
 scope:
