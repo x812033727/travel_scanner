@@ -544,6 +544,22 @@
     "hotspot_guide_gemini_model": {
       "label": "Gemini model",
       "help": "Flash-tier models build hotspot candidate lists well but are weaker at listing grounded article sources; Pro-tier models may be unavailable to new API keys, so rely on the connection test."
+    },
+    "azure_speech_region": {
+      "label": "Region",
+      "help": "The Azure region code chosen when the Speech resource was created, e.g. eastasia. The key and the region must come from the same resource."
+    },
+    "azure_speech_voices": {
+      "label": "Allowed voices",
+      "help": "Voices the video tool may use, comma-separated. Taiwan Mandarin: zh-TW-HsiaoChenNeural, zh-TW-YunJheNeural, zh-TW-HsiaoYuNeural; multilingual voices are switched to Taiwan Mandarin automatically."
+    },
+    "azure_speech_monthly_character_limit": {
+      "label": "Monthly billable-character limit",
+      "help": "Counted per UTC month; a Chinese character counts twice and SSML markup counts too. The default 450,000 stays under the free tier's 500,000; 0 counts without limiting."
+    },
+    "azure_speech_timeout_seconds": {
+      "label": "Synthesis timeout (seconds)",
+      "help": "How long the server waits for Azure to return one stretch of narration."
     }
   },
   "hotspotTabs": {
@@ -1351,6 +1367,10 @@
     "hotspot_guide_gemini_api_key": {
       "label": "Gemini API Key",
       "help": "Used for multilingual article search and hotspot candidate generation; encrypted on the server."
+    },
+    "azure_speech_key": {
+      "label": "Speech key",
+      "help": "Azure portal → Speech resource → Keys and Endpoint, “KEY 1”. It stays on the server and is never sent to the video tool."
     }
   },
   "settingsPanel": {
@@ -1364,7 +1384,9 @@
       "system_settings_updated": "Updated system settings",
       "provider_settings_updated": "Updated provider settings",
       "provider_connection_tested": "Ran a connection test",
-      "admin_role_updated": "Updated administrator rights"
+      "admin_role_updated": "Updated administrator rights",
+      "video_tool_token_created": "Created a video tool token",
+      "video_tool_token_revoked": "Revoked a video tool token"
     },
     "usageOperations": {
       "places_autocomplete": "Place autocomplete",
@@ -1381,7 +1403,8 @@
       "search_course": "Ekispert route search",
       "search_pub_trans_path": "ODsay transit search",
       "search_list": "Video search (search.list)",
-      "videos_list": "Video details (videos.list)"
+      "videos_list": "Video details (videos.list)",
+      "synthesis": "Synthesis requests"
     },
     "googleUsageLabel": "Google Maps usage this month",
     "googleUsageTitle": "Google API monthly usage",
@@ -1479,7 +1502,12 @@
     "auditSystemHint": "Records only the changed fields, the actor and the resulting registration state, never sensitive values.",
     "auditProviderHint": "Records only the changed field names, the actor and test results, never key material.",
     "auditEmpty": "No admin activity yet.",
-    "testResult": "{message} ({latency} ms)"
+    "testResult": "{message} ({latency} ms)",
+    "azureSpeechTitle": "Azure speech this month",
+    "azureSpeechAria": "Azure speech billable characters this month",
+    "azureSpeechProgress": "Azure speech monthly usage",
+    "azureSpeechNote": "Billable characters the server sent, per UTC month (a Chinese character counts twice, SSML markup included); requests Azure refused are given back. Azure's portal has the actual bill.",
+    "billableCharacters": "billable characters"
   },
   "uiText": {
     "eyebrow": "SYSTEM ADMIN",
@@ -1854,5 +1882,28 @@
       "no_result": "No result found",
       "not_found": "Merchant does not exist"
     }
+  },
+  "videoTools": {
+    "title": "Video tool tokens",
+    "intro": "The local video tool presents one of these tokens to have the server narrate with the key above. A token can only synthesize speech and can be revoked at any time; the server stores only its hash.",
+    "nameLabel": "Name",
+    "namePlaceholder": "e.g. my laptop",
+    "create": "Create token",
+    "creating": "Creating…",
+    "createdTitle": "This token is shown only once",
+    "createdHelp": "Copy it, then run the video tool's login command on your computer and paste it. It cannot be shown again after you leave this page.",
+    "copy": "Copy",
+    "copied": "Copied",
+    "dismiss": "I have saved it",
+    "empty": "No tokens yet.",
+    "prefix": "Starts with",
+    "createdAt": "Created",
+    "lastUsed": "Last used",
+    "never": "Never",
+    "revoked": "Revoked",
+    "revoke": "Revoke",
+    "confirmRevoke": "Confirm revoke",
+    "cancel": "Cancel",
+    "loadFailed": "Could not load the tokens"
   }
 }

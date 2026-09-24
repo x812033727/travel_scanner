@@ -43,6 +43,11 @@ ODSAY_PROVIDER = "odsay"
 ODSAY_BILLING_TIMEZONE = ZoneInfo("Asia/Seoul")
 ODSAY_OPERATIONS = ("search_pub_trans_path",)
 YOUTUBE_OPERATIONS = ("search_list", "videos_list")
+AZURE_SPEECH_PROVIDER = "azure_speech"
+# Azure bills speech per calendar month in UTC; ``total`` counts billable characters and the
+# operation field counts requests.
+AZURE_SPEECH_BILLING_TIMEZONE = ZoneInfo("UTC")
+AZURE_SPEECH_OPERATIONS = ("synthesis",)
 
 
 @dataclass(frozen=True)
@@ -984,4 +989,94 @@ async def odsay_usage_snapshot(
         period_kind="day",
         billing_timezone="Asia/Seoul",
         pricing_region="kr",
+    )
+
+
+def _azure_speech_usage_key(now: datetime) -> str:
+    return f"provider-usage:{AZURE_SPEECH_PROVIDER}:{now:%Y-%m}"
+
+
+def _azure_speech_expiry(billing_month: datetime) -> datetime:
+    _, period_end = _month_window(billing_month)
+    return datetime.combine(
+        period_end + timedelta(days=1), time.min, tzinfo=AZURE_SPEECH_BILLING_TIMEZONE
+    ) + timedelta(days=GOOGLE_USAGE_RETENTION_DAYS)
+
+
+async def reserve_azure_speech_characters(
+    redis: Redis,
+    characters: int,
+    monthly_budget: int,
+    *,
+    now: datetime | None = None,
+) -> bool:
+    """Atomically reserve billable characters against the calendar-month budget.
+
+    Every other meter here counts one unit per call; speech is billed by the character, so
+    this one refuses a request that would carry the month past the budget rather than one
+    that starts after it. A budget of zero counts without blocking; Redis failures fail
+    closed, because an unmetered request is exactly what the budget exists to prevent.
+    """
+    if characters < 0:
+        raise ValueError("characters must not be negative")
+    observed_at = now or datetime.now(UTC)
+    billing_month = observed_at.astimezone(AZURE_SPEECH_BILLING_TIMEZONE)
+    key = _azure_speech_usage_key(billing_month)
+    try:
+        async with redis.pipeline(transaction=True) as pipeline:
+            while True:
+                try:
+                    await pipeline.watch(key)
+                    current_value = await cast(Awaitable[Any], pipeline.hget(key, "total"))
+                    if monthly_budget > 0 and int(current_value or 0) + characters > monthly_budget:
+                        return False
+                    pipeline.multi()  # type: ignore[no-untyped-call]
+                    pipeline.hincrby(key, "total", characters)
+                    pipeline.hincrby(key, "operation:synthesis", 1)
+                    pipeline.hsetnx(key, "tracking_started_at", observed_at.isoformat())
+                    pipeline.expireat(key, _azure_speech_expiry(billing_month))
+                    await pipeline.execute()
+                    return True
+                except WatchError:
+                    continue
+    except RedisError:
+        return False
+
+
+async def release_azure_speech_characters(
+    redis: Redis,
+    characters: int,
+    *,
+    now: datetime | None = None,
+) -> None:
+    """Give back a reservation whose request Azure refused, so it does not count as billed."""
+    observed_at = now or datetime.now(UTC)
+    key = _azure_speech_usage_key(observed_at.astimezone(AZURE_SPEECH_BILLING_TIMEZONE))
+    try:
+        async with redis.pipeline(transaction=False) as pipeline:
+            pipeline.hincrby(key, "total", -characters)
+            pipeline.hincrby(key, "operation:synthesis", -1)
+            await pipeline.execute()
+    except RedisError:
+        return
+
+
+async def azure_speech_usage_snapshot(
+    redis: Redis,
+    monthly_limit: int = 0,
+    *,
+    history_months: int = GOOGLE_USAGE_HISTORY_MONTHS,
+    now: datetime | None = None,
+) -> ProviderUsageSnapshot:
+    """Billable characters this UTC month, as counted before each request is sent."""
+    return await _monthly_request_snapshot(
+        redis,
+        key_for=_azure_speech_usage_key,
+        operations=AZURE_SPEECH_OPERATIONS,
+        billing_timezone=AZURE_SPEECH_BILLING_TIMEZONE,
+        billing_timezone_name="UTC",
+        pricing_region="global",
+        monthly_limit=monthly_limit,
+        history_months=history_months,
+        now=now,
     )
