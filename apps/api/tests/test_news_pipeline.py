@@ -618,3 +618,75 @@ async def test_scheduler_queues_claimed_scans_even_when_the_sweep_fails(
     monkeypatch.setattr(scheduler, "enqueue_candidate_once", Mock())
     assert await scheduler.tick() == 1
     assert queued == [source_id]
+
+
+def test_news_replies_drop_imagery_the_model_should_not_supply() -> None:
+    draft = EditorialDraft.model_validate(
+        {
+            "eligible": True,
+            "exclusion_reason": "",
+            "vertical": "ai",
+            "event_date": EVENT_DAY.isoformat(),
+            "slug": SLUG,
+            "topics": ["ai-news"],
+            "claims": [{"claim": "Shipped.", "source_urls": [FIRST_PARTY_URL]}],
+            # Also seen: sources repeated beside the document, and an unknown document key.
+            "sources": [{"title": "Official", "url": FIRST_PARTY_URL}],
+            "document": {
+                "title": "Release",
+                "description": "What changed.",
+                "summary": "Not a GuideDocument field.",
+                # As on the first production run: the source site's logo as the hero.
+                "hero": {
+                    "src": "https://blog.google/static/images/google-logo.svg",
+                    "alt": "logo",
+                    "width": 100,
+                    "height": 100,
+                },
+                "blocks": [
+                    {"type": "paragraph", "text": "Body."},
+                    {
+                        "type": "image",
+                        "src": "https://example.com/photo.jpg",
+                        "alt": "photo",
+                        "width": 10,
+                        "height": 10,
+                    },
+                ],
+                "sources": [],
+            },
+        }
+    )
+    assert draft.document.hero is None
+    assert [block.type for block in draft.document.blocks] == ["paragraph"]
+    assert LocaleReviewResult.model_validate(
+        {"verdict": "pass", "issues": [], "corrected_document": None}
+    ).corrected_document is None
+
+
+def test_a_reply_that_failed_validation_is_not_rerun_by_rq_but_outages_are(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import httpx
+
+    def invalid() -> None:
+        LocalizedDocument.model_validate({"document": None})
+
+    errors: list[Exception] = []
+    try:
+        invalid()
+    except ValidationError as error:
+        errors.append(error)
+    errors.append(httpx.ConnectError("provider unreachable"))
+    raised: list[str] = []
+    monkeypatch.setattr(jobs, "SessionFactory", FakeSessionFactory)
+    monkeypatch.setattr(jobs, "load_runtime_settings", AsyncMock(return_value=get_settings()))
+    monkeypatch.setattr(jobs, "get_redis", Mock())
+    monkeypatch.setattr(jobs, "_close_resources", AsyncMock())
+    for error in errors:
+        monkeypatch.setattr(jobs, "process_candidate", AsyncMock(side_effect=error))
+        try:
+            jobs.run_candidate(str(uuid4()))
+        except Exception as escaped:  # noqa: BLE001 - the test records what RQ would see
+            raised.append(type(escaped).__name__)
+    assert raised == ["ConnectError"]

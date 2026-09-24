@@ -271,6 +271,8 @@ class Claim(StrictModel):
 
 
 class EditorialDraft(ProviderReply):
+    document_fields = ("document",)
+
     eligible: bool
     exclusion_reason: str = Field(default="", max_length=1000)
     vertical: Vertical
@@ -282,6 +284,8 @@ class EditorialDraft(ProviderReply):
 
 
 class VerificationResult(ProviderReply):
+    document_fields = ("corrected_document",)
+
     verdict: Literal["pass", "revise", "manual"]
     issues: list[str] = Field(default_factory=list, max_length=30)
     corrected_document: GuideDocument | None = None
@@ -294,12 +298,16 @@ class VerificationResult(ProviderReply):
 
 
 class LocalizedDocument(ProviderReply):
+    document_fields = ("document",)
+
     # One locale per call: four documents in one reply outran the request timeout, and
     # a keyed map has no schema a strict provider accepts.
     document: GuideDocument
 
 
 class LocaleReviewResult(ProviderReply):
+    document_fields = ("corrected_document",)
+
     verdict: Literal["pass", "revise", "manual"]
     issues: list[str] = Field(default_factory=list, max_length=30)
     corrected_document: GuideDocument | None = None

@@ -27,6 +27,7 @@ from app.ai.structured_output import (
     ensure_response_completed,
     extract_json_document,
     gemini_response_schema,
+    repair_instruction,
     responses_output_text,
     schema_instructions,
 )
@@ -161,13 +162,12 @@ class ResponsesResearchProvider:
         payload: dict[str, Any],
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
+        failure: ValidationError | None = None
         system_prompt = _with_schema(instructions, schema)
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
-            if attempt:
-                user_input += (
-                    "\nRepair the previous invalid JSON and match the schema exactly: " + previous
-                )
+            if attempt and failure is not None:
+                user_input += repair_instruction(previous, failure)
             response = await self._client.post(
                 f"{self.base_url}/responses",
                 headers={"Authorization": f"Bearer {self.api_key}"},
@@ -193,8 +193,9 @@ class ResponsesResearchProvider:
             previous = extract_json_document(responses_output_text(body))
             try:
                 parsed = schema.model_validate_json(previous)
-            except ValidationError:
+            except ValidationError as error:
                 if attempt == 0:
+                    failure = error
                     continue
                 raise
             raw_usage = body.get("usage")
@@ -237,13 +238,12 @@ class AnthropicResearchProvider:
         payload: dict[str, Any],
     ) -> tuple[TModel, dict[str, int]]:
         previous = ""
+        failure: ValidationError | None = None
         system_prompt = _with_schema(instructions, schema)
         for attempt in range(2):
             user_input = json.dumps(payload, ensure_ascii=False)
-            if attempt:
-                user_input += (
-                    "\nRepair the previous invalid JSON and match the schema exactly: " + previous
-                )
+            if attempt and failure is not None:
+                user_input += repair_instruction(previous, failure)
             response = await self._client.post(
                 f"{self.base_url}/messages",
                 headers={
@@ -266,8 +266,9 @@ class AnthropicResearchProvider:
             previous = extract_json_document(anthropic_output_text(body))
             try:
                 parsed = schema.model_validate_json(previous)
-            except ValidationError:
+            except ValidationError as error:
                 if attempt == 0:
+                    failure = error
                     continue
                 raise
             raw_usage = body.get("usage")
