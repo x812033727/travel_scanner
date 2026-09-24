@@ -25,14 +25,19 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    replay of every missed hour). Entries whose URL was already seen are not fetched again.
    Each new entry's page is fetched through `SafeNewsFetcher` (HTTPS only, allow-listed
    hosts, public IPs pinned against DNS rebinding, robots.txt honoured and read once per
-   host per scan, 2 MB limit). Links from the article to other *enabled evidence* sources
-   are fetched as additional evidence. A page that fails is skipped and listed on the
-   source (`partial`), and the listing's ETag is kept back so the next scan tries it again.
-2. **Duplicate check.** Exact URL, title or content matches are closed at once. Otherwise
-   Jev compares the story with the same category's news published in the last 30 days —
-   hand-written articles included — and with other candidates. Uncertain goes to review.
-3. **Evidence gate.** At least two `evidence` rows, one of them first-party, or the
-   candidate goes to manual review (`news_evidence_insufficient`).
+   host per scan, 2 MB limit). Links from the article to articles on *other websites* that
+   are enabled evidence sources are fetched as additional evidence; links to the page's
+   own site and to images, video, audio, PDFs or archives are not fetched. A page that
+   fails is skipped and listed on the source (`partial`), and the listing's ETag is kept
+   back so the next scan tries it again. Exact URL, title or content matches are closed as
+   duplicates at once.
+2. **Evidence gate.** Evidence from at least two different websites (host without
+   `www.`), one of them first-party, or the candidate goes to manual review
+   (`news_evidence_insufficient`) before any model call. Pages of one website are one
+   source (owner decision, 2026-09-24); the same rule applies to a manual publish.
+3. **Duplicate check.** Jev compares the story with the same category's news published in
+   the last 30 days — hand-written articles included — and with other candidates.
+   Uncertain goes to review.
 4. **Draft → verify → translate → locale review**, each a recorded pipeline run. The
    writer and the fact-checker are separate settings; the checker gets a fresh request with
    no authoring trace. Translation is one call per locale.
@@ -76,11 +81,11 @@ reply, and the dropped bounds are written into the field descriptions.
    disable or edit any of them. A source is `evidence` or `lead_only` (discovery only,
    never counted as evidence), optionally first-party, and may list redirect hosts and
    parser settings (`items_path`, `article_ids`, `include_path_prefixes`,
-   `max_entries_per_scan`, …). The evidence gate needs two evidence pages including a
-   first-party one, and the scanner only finds the second page through the article's own
-   links, so the list pairs press feeds with the first-party hosts they cite. Hosts match
-   exactly: a link to `www.microsoft.com` does not count for a source on
-   `blogs.microsoft.com`.
+   `max_entries_per_scan`, …). The evidence gate needs pages from two websites including
+   a first-party one, and the scanner only finds the second page through the article's
+   own links, so the list pairs press feeds with the first-party hosts they cite. A link
+   is followed only when its host is exactly a source's host: a link to
+   `www.microsoft.com` does not reach a source on `blogs.microsoft.com`.
 4. **Settings.** Pick the writer and checker from the dropdowns (「預設」 follows the admin
    AI settings; 「自訂…」 accepts any id matching `[A-Za-z0-9._:-]{1,128}`). Turn on
    「啟用掃描」 with mode 「影子模式」. Without the admin page, the host can do the same:

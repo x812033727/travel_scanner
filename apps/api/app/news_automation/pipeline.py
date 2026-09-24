@@ -35,6 +35,8 @@ from app.news_automation.policy import (
     document_fingerprint,
     event_date_problems,
     evidence_fingerprint,
+    evidence_site_count,
+    evidence_sufficient,
     hard_policy_problems,
 )
 from app.news_automation.schemas import Vertical
@@ -372,12 +374,13 @@ async def process_candidate(
         candidate.evidence_hash = evidence_fingerprint(
             [{"url": row.url, "content_hash": row.content_hash} for row in evidence]
         )
-        if len(usable) < 2 or not any(row.is_first_party for row in usable):
+        if not evidence_sufficient(usable):
             await _manual(
                 session,
                 candidate,
                 "news_evidence_insufficient",
-                "At least two evidence sources including one first-party source are required.",
+                "Evidence from at least two different websites, one of them first-party, "
+                "is required.",
             )
             return "manual_review"
 
@@ -663,7 +666,7 @@ async def process_candidate(
                 item,
                 cast(Vertical, candidate.vertical),
                 locale,
-                source_count=len(usable),
+                source_count=evidence_site_count(usable),
             )
             for locale, item in documents.items()
         }

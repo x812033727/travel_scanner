@@ -4,9 +4,10 @@ import hashlib
 import json
 import re
 import unicodedata
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from datetime import UTC, date, datetime
-from typing import Any
+from typing import Any, Protocol
+from urllib.parse import urlsplit
 
 from app.guides.pack_ingest import lint_document
 from app.guides.schemas import CalloutBlock, FaqBlock, GuideDocument, ImageBlock, SummaryBlock
@@ -50,6 +51,32 @@ ALLOWED_TRANSITIONS: Mapping[str, frozenset[str]] = {
     "published": frozenset(),
     "rejected": frozenset(),
 }
+
+
+class EvidenceLike(Protocol):
+    role: str
+    url: str
+    is_first_party: bool
+
+
+def evidence_site(url: str) -> str:
+    """The website a page belongs to: its host, without a leading ``www.``."""
+    host = (urlsplit(url).hostname or "").casefold().rstrip(".")
+    return host.removeprefix("www.")
+
+
+def evidence_site_count(rows: Iterable[EvidenceLike]) -> int:
+    return len({evidence_site(row.url) for row in rows if row.role == "evidence"})
+
+
+def evidence_sufficient(rows: Iterable[EvidenceLike]) -> bool:
+    """Two evidence pages from two different websites, one of them first-party.
+
+    Pages of one website are one source (owner decision, 2026-09-24): an announcement and
+    its own related pages do not corroborate each other.
+    """
+    usable = [row for row in rows if row.role == "evidence"]
+    return evidence_site_count(usable) >= 2 and any(row.is_first_party for row in usable)
 
 
 def transition_allowed(current: str, target: str) -> bool:
@@ -166,7 +193,7 @@ def hard_policy_problems(
     ):
         problems.append("news_topic_link: the localized dynamic topic link is required")
     if source_count < 2:
-        problems.append("news_sources: at least two evidence sources are required")
+        problems.append("news_sources: evidence from at least two websites is required")
     text = _visible_text(document)
     if vertical == "crypto":
         marker = CRYPTO_MARKERS[locale].casefold()
