@@ -17,9 +17,9 @@ field's description so the model still reads it.
 from __future__ import annotations
 
 import json
-from typing import Any
+from typing import Any, ClassVar
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, model_validator
 
 # Bounds neither provider enforces through the schema. Pydantic still does.
 MOVED_TO_DESCRIPTION = frozenset(
@@ -41,6 +41,9 @@ MOVED_TO_DESCRIPTION = frozenset(
 DROPPED = frozenset({"default", "title", "discriminator", "examples"})
 # String formats both providers document.
 PORTABLE_FORMATS = frozenset({"date", "date-time", "time"})
+# Blocks a news reply may not bring: the pipeline renders its own artwork (assets.py) and
+# a news article carries no commercial blocks.
+MODEL_EXCLUDED_BLOCKS = frozenset({"image", "offer", "partner_link"})
 
 
 def portable_json_schema(schema: dict[str, Any]) -> dict[str, Any]:
@@ -96,6 +99,31 @@ class ProviderReply(BaseModel):
     """
 
     model_config = ConfigDict(extra="forbid")
+    # GuideDocument fields of this reply. Their hero and image blocks are dropped before
+    # validation: the first production run failed a whole candidate because the writer
+    # put the source site's logo in as the hero, which only self-hosted images may be.
+    document_fields: ClassVar[tuple[str, ...]] = ()
+
+    @model_validator(mode="before")
+    @classmethod
+    def drop_model_imagery(cls, data: Any) -> Any:
+        if not isinstance(data, dict):
+            return data
+        cleaned = dict(data)
+        for field in cls.document_fields:
+            document = cleaned.get(field)
+            if not isinstance(document, dict):
+                continue
+            document = {**document, "hero": None}
+            blocks = document.get("blocks")
+            if isinstance(blocks, list):
+                document["blocks"] = [
+                    block
+                    for block in blocks
+                    if not (isinstance(block, dict) and block.get("type") in MODEL_EXCLUDED_BLOCKS)
+                ]
+            cleaned[field] = document
+        return cleaned
 
     @classmethod
     def model_json_schema(cls, *args: Any, **kwargs: Any) -> dict[str, Any]:

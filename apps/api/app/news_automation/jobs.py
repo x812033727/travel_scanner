@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
 from botocore.exceptions import BotoCoreError, ClientError
+from pydantic import ValidationError
 from redis import Redis as SyncRedis
 from rq import Queue, Retry
 from sqlalchemy import select
@@ -18,6 +20,8 @@ from app.news_automation.fetch import RedisHostRateLimiter, SafeNewsFetcher
 from app.news_automation.models import NewsAsset, NewsCandidate, NewsEvidence
 from app.news_automation.pipeline import process_candidate
 from app.news_automation.scanner import scan_source
+
+logger = logging.getLogger(__name__)
 
 
 def _queue() -> tuple[SyncRedis, Queue]:
@@ -127,9 +131,21 @@ def run_candidate(candidate_id: str) -> None:
                 # Model keys and ids live in the admin AI settings (provider_configs) as
                 # well as the environment; the hotspot AI tasks read them the same way.
                 environment = await load_runtime_settings(session)
-                result = await process_candidate(
-                    session, get_redis(), environment, UUID(candidate_id)
-                )
+                try:
+                    result = await process_candidate(
+                        session, get_redis(), environment, UUID(candidate_id)
+                    )
+                except (ValidationError, ValueError) as error:
+                    # A model reply that failed validation after its repair round (or came
+                    # back incomplete) fails the same way on a rerun, and RQ's retry would
+                    # rerun every stage. The candidate is already marked failed with the
+                    # reason, and an editor can run it again from /admin/news.
+                    logger.warning(
+                        "news candidate %s failed without retry: %s",
+                        candidate_id,
+                        type(error).__name__,
+                    )
+                    return
                 # Only a full concurrency slot comes back in a minute. "disabled" waits for
                 # the orphan sweep once the switch is on again; "skipped" means another
                 # job already owns or finished the candidate.
