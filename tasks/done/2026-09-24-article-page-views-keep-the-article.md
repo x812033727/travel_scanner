@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-article-page-views-keep-the-article
 title: Article page views keep the article slug
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T01:05:06Z
 created_at: 2026-09-24T00:29:57Z
-completed_at:
+completed_at: 2026-09-24T01:13:19Z
 branch: claude/article-pageviews-keep-slug
 depends_on: []
 scope:
