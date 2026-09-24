@@ -8,6 +8,7 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
+import { checkAudio } from "./check.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
@@ -264,6 +265,7 @@ export async function run(command, args, ctx) {
   try {
     if (command === "login") return await login(args, ctx);
     if (command === "audition") return await audition(args, ctx);
+    if (command === "check-audio") return await checkAudio(args, ctx, clientOptions(ctx, requireCredentials(ctx)));
     return await tts(args, ctx);
   } catch (error) {
     if (!(error instanceof SpeechError)) throw error;

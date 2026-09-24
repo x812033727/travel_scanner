@@ -53,7 +53,10 @@ async function call({ site, token, path, init, fetchImpl, sleep, attempts }) {
     const problem = await problemOf(response);
     const message = problem.detail || `HTTP ${response.status}`;
     if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new SpeechError(message, { status: response.status, code: problem.code, who: "owner" });
-    if (problem.code === "video_speech_budget_exhausted") throw new SpeechError(message, { status: response.status, code: problem.code });
+    // A spent budget stays spent for the rest of the month (speech) or day (Jev): do not retry.
+    if (problem.code === "video_speech_budget_exhausted" || problem.code === "jev_budget_exhausted") {
+      throw new SpeechError(message, { status: response.status, code: problem.code });
+    }
     last = new SpeechError(message, { status: response.status, code: problem.code });
     if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
     await sleep(retryDelayMs(response, attempt));
@@ -66,6 +69,23 @@ const defaults = (options) => ({ fetchImpl: globalThis.fetch, sleep: (ms) => new
 export async function speechStatus(options) {
   const response = await call({ ...defaults(options), path: "speech/status", init: { method: "GET" } });
   return response.json();
+}
+
+const postJson = (options, path, body) =>
+  call({ ...defaults(options), path, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
+
+/** The words in one clip, as the server's transcriber hears them. */
+export async function transcribeClip({ wav, ...options }) {
+  const response = await postJson(options, "speech/transcribe", { audio: Buffer.from(wav).toString("base64") });
+  const body = await response.json();
+  return typeof body.text === "string" ? body.text : "";
+}
+
+/** Jev's probability, per line id, that each transcript says its intended words; one Jev call. */
+export async function judgeLines({ lines, ...options }) {
+  const response = await postJson(options, "speech/judge", { lines });
+  const body = await response.json();
+  return new Map((body.results ?? []).map((result) => [result.id, Number(result.noul)]));
 }
 
 /** Synthesize one request body; resolves to the WAV bytes and the billable characters charged. */

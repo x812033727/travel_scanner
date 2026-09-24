@@ -116,6 +116,37 @@ export function upsample(samples, factor) {
 }
 
 /**
+ * Downsample by a whole factor: a Blackman-windowed sinc low-pass at the new Nyquist frequency,
+ * then every factor-th sample. Used to send clips for transcription at a third of the size.
+ */
+export function downsample(samples, factor) {
+  if (!Number.isInteger(factor) || factor < 1) throw new WavError(`cannot downsample by ${factor}`);
+  if (factor === 1) return samples;
+  const half = HALF_WIDTH * factor;
+  const taps = new Float64Array(2 * half + 1);
+  let sum = 0;
+  for (let offset = -half; offset <= half; offset++) {
+    const t = offset / factor;
+    const sinc = t === 0 ? 1 : Math.sin(Math.PI * t) / (Math.PI * t);
+    const x = offset / half;
+    taps[offset + half] = sinc * (0.42 + 0.5 * Math.cos(Math.PI * x) + 0.08 * Math.cos(2 * Math.PI * x));
+    sum += taps[offset + half];
+  }
+  for (let index = 0; index < taps.length; index++) taps[index] /= sum;
+  const out = new Int16Array(Math.floor(samples.length / factor));
+  for (let at = 0; at < out.length; at++) {
+    const center = at * factor;
+    let value = 0;
+    for (let offset = -half; offset <= half; offset++) {
+      const source = center - offset;
+      if (source >= 0 && source < samples.length) value += samples[source] * taps[offset + half];
+    }
+    out[at] = Math.max(-32768, Math.min(32767, Math.round(value)));
+  }
+  return out;
+}
+
+/**
  * A server WAV on the narration grid. Gemini speaks at 24 kHz; the timeline is 48 kHz, so a mono
  * 16-bit clip at a rate that divides 48,000 is upsampled. Anything else is returned as is, for
  * `requireNarrationFormat` to refuse with a clear message.

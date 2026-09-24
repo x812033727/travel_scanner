@@ -107,3 +107,36 @@ class PairingView(BaseModel):
     created_at: datetime
     expires_at: datetime
     status: Literal["pending", "approved", "denied"]
+
+
+class TranscribeIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    # One narrated line as a base64 WAV; the tool sends 16 kHz mono, a few seconds long.
+    audio: str = Field(min_length=64, max_length=2_800_000)
+
+
+class TranscribeOut(BaseModel):
+    text: str
+
+
+class JudgeLineIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    id: str = Field(pattern=r"^[a-z0-9]{4,8}$")
+    intended: str = Field(min_length=1, max_length=400)
+    spoken_form: str = Field(min_length=1, max_length=400)
+    heard: str = Field(max_length=800)
+
+
+class JudgeIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    lines: list[JudgeLineIn] = Field(min_length=1, max_length=40)
+
+
+class JudgeResult(BaseModel):
+    id: str
+    # Jev's probability that the recording says the intended words.
+    noul: float
+
+
+class JudgeOut(BaseModel):
+    results: list[JudgeResult]
