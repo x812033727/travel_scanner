@@ -2,6 +2,7 @@
 // generated (audio, frames, video, approvals) is in <VIDEO_WORKDIR>/<slug>/, a durable directory
 // outside the repository: the repository is public and the files are large.
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -23,10 +24,21 @@ export function isInside(child, parent) {
   return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }
 
+/** Where videos go when neither --workdir nor VIDEO_WORKDIR says otherwise. */
+export function defaultWorkBase(home = os.homedir()) {
+  return path.join(home, "mokaair-work", "videos");
+}
+
+/** The directory every video's work directory sits in. */
+export function resolveWorkBase({ flag, env = process.env, root = ROOT, home } = {}) {
+  const base = path.resolve(flag ?? env[WORKDIR_ENV] ?? defaultWorkBase(home));
+  if (isInside(base, root)) throw new UsageError(`the work directory ${base} is inside the repository; generated media must stay out of git`);
+  return base;
+}
+
 /** The video's own work directory, <base>/<slug>, refusing anything inside the repository. */
-export function resolveWorkdir({ flag, env = process.env, slug, root = ROOT }) {
-  const base = flag ?? env[WORKDIR_ENV];
-  if (!base) throw new UsageError(`pass --workdir <dir> or set ${WORKDIR_ENV}: a durable directory outside the repository`);
+export function resolveWorkdir({ flag, env = process.env, slug, root = ROOT, home }) {
+  const base = resolveWorkBase({ flag, env, root, home });
   const workdir = path.resolve(base, slug);
   if (isInside(workdir, root)) throw new UsageError(`the work directory ${workdir} is inside the repository; generated media must stay out of git`);
   return workdir;
