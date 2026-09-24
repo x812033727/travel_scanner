@@ -2,21 +2,31 @@ from __future__ import annotations
 
 import asyncio
 from datetime import UTC, datetime
+from uuid import UUID
 
 from redis import Redis
 from rq import Queue, Retry
 
 from app.config import get_settings
 from app.db import SessionFactory, engine
-from app.news_automation.jobs import enqueue_source_scan
+from app.news_automation.jobs import enqueue_candidate_once, enqueue_source_scan
+from app.news_automation.pipeline import orphaned_candidates, recover_stalled_candidates
 from app.news_automation.scanner import claim_due_sources
 
 
 async def tick() -> int:
     async with SessionFactory() as session:
         source_ids = await claim_due_sources(session)
+        recovered = await recover_stalled_candidates(session)
+        orphaned = await orphaned_candidates(session)
     for source_id in source_ids:
         await asyncio.to_thread(enqueue_source_scan, source_id)
+    rerun: list[tuple[UUID, str]] = [
+        *((candidate_id, "recovered") for candidate_id in recovered),
+        *((candidate_id, "orphaned") for candidate_id in orphaned),
+    ]
+    for candidate_id, reason in rerun:
+        await asyncio.to_thread(enqueue_candidate_once, candidate_id, reason)
     return len(source_ids)
 
 

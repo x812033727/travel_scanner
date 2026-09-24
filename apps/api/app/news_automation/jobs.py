@@ -9,6 +9,7 @@ from redis import Redis as SyncRedis
 from rq import Queue, Retry
 from sqlalchemy import select
 
+from app.admin.service import load_runtime_settings
 from app.community.media import storage
 from app.config import get_settings
 from app.db import SessionFactory, engine
@@ -61,6 +62,32 @@ def enqueue_candidate(candidate_id: UUID, retry_count: int = 0) -> str:
         connection.close()
 
 
+def enqueue_candidate_once(candidate_id: UUID, reason: str) -> str | None:
+    """Queue one run per candidate, reason and hour; the scheduler calls this every minute.
+
+    RQ pushes a re-used job id onto the queue a second time instead of refusing it, so an
+    existing job is checked first.
+    """
+
+    connection, queue = _queue()
+    try:
+        slot = int(datetime.now(UTC).timestamp() // 3600)
+        job_id = f"news-candidate-{candidate_id}-{reason}-{slot}"
+        if queue.fetch_job(job_id) is not None:
+            return None
+        job = queue.enqueue(
+            "app.news_automation.jobs.run_candidate",
+            str(candidate_id),
+            job_id=job_id,
+            job_timeout=3_600,
+            result_ttl=86_400,
+            failure_ttl=604_800,
+        )
+        return str(job.id)
+    finally:
+        connection.close()
+
+
 async def _enqueue_candidate_async(candidate_id: UUID) -> None:
     await asyncio.to_thread(enqueue_candidate, candidate_id)
 
@@ -97,9 +124,15 @@ def run_candidate(candidate_id: str) -> None:
     async def run() -> None:
         try:
             async with SessionFactory() as session:
+                # Model keys and ids live in the admin AI settings (provider_configs) as
+                # well as the environment; the hotspot AI tasks read them the same way.
+                environment = await load_runtime_settings(session)
                 result = await process_candidate(
-                    session, get_redis(), get_settings(), UUID(candidate_id)
+                    session, get_redis(), environment, UUID(candidate_id)
                 )
+                # Only a full concurrency slot comes back in a minute. "disabled" waits for
+                # the orphan sweep once the switch is on again; "skipped" means another
+                # job already owns or finished the candidate.
                 if result == "deferred":
                     connection, queue = _queue()
                     try:

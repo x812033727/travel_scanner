@@ -115,6 +115,9 @@ class SafeNewsFetcher:
         self._resolver = resolver
         self._distributed_rate_limiter = rate_limiter
         self._rates: dict[str, _HostRate] = {}
+        # One scan reads many pages from few hosts, so robots.txt is read once per host
+        # for the life of this fetcher (one scan job). None records "not readable".
+        self._robots: dict[str, RobotFileParser | None] = {}
 
     async def close(self) -> None:
         if self._external_client is None:
@@ -183,14 +186,17 @@ class SafeNewsFetcher:
     async def _robots_allowed(self, url: str, allowed_hosts: set[str]) -> bool:
         parsed = urlsplit(url)
         robots_url = urlunsplit(("https", parsed.netloc, "/robots.txt", "", ""))
-        response = await self._request(robots_url, allowed_hosts, {"Accept": "text/plain"})
-        if response.status_code < 200 or response.status_code >= 300:
-            return False
-        body = response.content[:256_000].decode("utf-8", errors="replace")
-        parser = RobotFileParser()
-        parser.set_url(robots_url)
-        parser.parse(body.splitlines())
-        return parser.can_fetch(USER_AGENT, url)
+        if robots_url not in self._robots:
+            response = await self._request(robots_url, allowed_hosts, {"Accept": "text/plain"})
+            parser: RobotFileParser | None = None
+            if 200 <= response.status_code < 300:
+                body = response.content[:256_000].decode("utf-8", errors="replace")
+                parser = RobotFileParser()
+                parser.set_url(robots_url)
+                parser.parse(body.splitlines())
+            self._robots[robots_url] = parser
+        cached = self._robots[robots_url]
+        return cached is not None and cached.can_fetch(USER_AGENT, url)
 
     async def fetch(
         self,

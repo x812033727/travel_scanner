@@ -451,3 +451,125 @@ async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     current, reasons = await revalidate_evidence(session, [evidence], fetcher=fetcher)
     assert not current
     assert reasons == [f"source_content_changed:{evidence.url}"]
+
+
+@pytest.mark.asyncio
+async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    lead = NewsSource(
+        name="Lead",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/news",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = b"<rss><channel>" + b"".join(
+        f"<item><title>Story {name}</title><link>https://example.com/{name}</link></item>".encode()
+        for name in ("a", "broken", "c", "d")
+    ) + b"</channel></rss>"
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url,
+                    status_code=200,
+                    content_type="application/rss+xml",
+                    body=listing,
+                    etag='"listing"',
+                )
+            if url.endswith("/broken"):
+                raise httpx.ConnectError("connection refused")
+            if url == "https://official.example/facts":
+                raise UnsafeNewsUrl("robots.txt did not permit this fetch")
+            if url == "https://official.example/down":
+                raise httpx.ConnectTimeout("official site timed out")
+            primary = "down" if url.endswith("/d") else "facts"
+            body = (
+                f"<html><main>Distinct report for {url}."
+                f'<a href="https://official.example/{primary}">primary</a></main></html>'
+            )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([lead, official])
+        await session.commit()
+        first = await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        status, error, etag = lead.last_status, lead.last_error or "", lead.etag
+        requested.clear()
+        second = await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        urls = set(await session.scalars(select(NewsCandidate.canonical_url)))
+    assert first == 2
+    assert urls == {"https://example.com/a", "https://example.com/c"}
+    assert status == "partial"
+    assert "https://example.com/broken (ConnectError)" in error
+    # A refused primary page is left out; one that timed out holds the whole entry back.
+    assert "https://official.example/facts (UnsafeNewsUrl)" in error
+    assert "https://official.example/down (ConnectTimeout)" in error
+    # The listing validators are kept back so the skipped entries are tried again.
+    assert etag is None
+    assert second == 0
+    assert requested == [
+        "https://example.com/feed",
+        "https://example.com/broken",
+        "https://example.com/d",
+        "https://official.example/down",
+    ]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> None:
+    robots_reads: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            robots_reads.append(request.headers["host"])
+            return httpx.Response(200, text="User-agent: *\nDisallow: /private", request=request)
+        return httpx.Response(
+            200, content=b"<html></html>", headers={"Content-Type": "text/html"}, request=request
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    for path in ("/a", "/b"):
+        await fetcher.fetch(f"https://example.com{path}", allowed_hosts={"example.com"})
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch("https://example.com/private/c", allowed_hosts={"example.com"})
+    assert robots_reads == ["example.com"]
+    await client.aclose()

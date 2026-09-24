@@ -7,8 +7,10 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.ai.catalog import ModelStatus, valid_model_id
 from app.guides.schemas import GuideDocument
 from app.i18n import Locale
+from app.news_automation.provider_schema import ProviderReply
 
 Vertical = Literal["ai", "tech", "crypto"]
 SourceVertical = Literal["ai", "tech", "crypto", "mixed"]
@@ -137,6 +139,18 @@ class SettingsWrite(StrictModel):
     prompt_version: str = Field(min_length=1, max_length=32)
     policy_version: str = Field(min_length=1, max_length=32)
 
+    @field_validator("writer_model", "verifier_model")
+    @classmethod
+    def model_id(cls, value: str | None) -> str | None:
+        # A Gemini model id is interpolated into the request path (security audit R2-25),
+        # so a stored id is held to the same pattern as the admin AI settings.
+        cleaned = (value or "").strip()
+        if not cleaned:
+            return None
+        if not valid_model_id(cleaned):
+            raise ValueError("model ids may contain letters, digits, dot, underscore, colon and -")
+        return cleaned
+
     @model_validator(mode="after")
     def concurrency_order(self) -> Self:
         if self.per_vertical_concurrency > self.global_concurrency:
@@ -155,8 +169,19 @@ class GateView(StrictModel):
     reasons: list[str]
 
 
+class ModelOptionView(StrictModel):
+    value: str
+    label: str
+    description: str | None
+    status: ModelStatus
+
+
 class SettingsView(SettingsWrite):
     gates: dict[Vertical, GateView]
+    # The admin model dropdowns: catalog models each vendor's news adapter can drive,
+    # and the model an empty choice falls back to.
+    model_options: dict[ProviderName, list[ModelOptionView]]
+    default_models: dict[ProviderName, str]
     updated_at: datetime
 
 
@@ -245,7 +270,7 @@ class Claim(StrictModel):
     source_urls: list[str] = Field(min_length=1, max_length=4)
 
 
-class EditorialDraft(StrictModel):
+class EditorialDraft(ProviderReply):
     eligible: bool
     exclusion_reason: str = Field(default="", max_length=1000)
     vertical: Vertical
@@ -256,7 +281,7 @@ class EditorialDraft(StrictModel):
     document: GuideDocument
 
 
-class VerificationResult(StrictModel):
+class VerificationResult(ProviderReply):
     verdict: Literal["pass", "revise", "manual"]
     issues: list[str] = Field(default_factory=list, max_length=30)
     corrected_document: GuideDocument | None = None
@@ -268,17 +293,13 @@ class VerificationResult(StrictModel):
         return self
 
 
-class TranslationBundle(StrictModel):
-    documents: dict[Locale, GuideDocument]
-
-    @model_validator(mode="after")
-    def four_targets_only(self) -> Self:
-        if set(self.documents) != {"zh-CN", "en", "ja", "ko"}:
-            raise ValueError("translations must contain zh-CN, en, ja and ko")
-        return self
+class LocalizedDocument(ProviderReply):
+    # One locale per call: four documents in one reply outran the request timeout, and
+    # a keyed map has no schema a strict provider accepts.
+    document: GuideDocument
 
 
-class LocaleReviewResult(StrictModel):
+class LocaleReviewResult(ProviderReply):
     verdict: Literal["pass", "revise", "manual"]
     issues: list[str] = Field(default_factory=list, max_length=30)
     corrected_document: GuideDocument | None = None

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
-from typing import Any, cast
+from datetime import UTC, datetime, timedelta
+from typing import Any, Literal, cast
 from uuid import UUID, uuid4
 
 from redis.asyncio import Redis
@@ -15,6 +15,7 @@ from app.guides.models import (
     GuideArticleLocale,
     GuideArticleRevision,
     GuideArticleTopic,
+    GuideSearchEntry,
     GuideTopic,
 )
 from app.guides.schemas import GuideDocument, SourceRef
@@ -43,6 +44,16 @@ from app.problems import AppError
 from app.site_pages.schemas import LinkBlock
 
 ACTIVE_STATUSES = ("drafting", "verifying", "locale_review", "jev_review")
+ClaimOutcome = Literal["claimed", "disabled", "skipped", "deferred"]
+# RQ kills a candidate job after 60 minutes; nothing legitimate is still in flight after 70.
+STALE_AFTER = timedelta(minutes=70)
+STALE_RECOVERY_STAGE = "stale-recovery"
+MAX_AUTOMATIC_RECOVERIES = 2
+# A discovered candidate this old with the switch on was never picked up: the switch was
+# off when its job ran, or the enqueue after the scan failed.
+ORPHAN_AFTER = timedelta(hours=2)
+# Published news the duplicate check compares against.
+DUPLICATE_WINDOW = timedelta(days=30)
 TOPIC_BY_VERTICAL = {"ai": "ai-news", "tech": "tech-news", "crypto": "crypto"}
 TARGET_LOCALES: tuple[Locale, ...] = ("zh-CN", "en", "ja", "ko")
 TOPIC_LINK_TEXT: dict[Locale, str] = {
@@ -115,11 +126,18 @@ async def _manual(session: AsyncSession, candidate: NewsCandidate, code: str, de
 
 async def _claim_capacity(
     session: AsyncSession, candidate: NewsCandidate
-) -> NewsAutomationSettings | None:
+) -> tuple[ClaimOutcome, NewsAutomationSettings | None]:
+    # Re-read the candidate under a row lock: a retry, a sweep or a deferral for the same
+    # candidate must see the status the first job committed, not the one it loaded.
+    # Candidate before settings is the order report_major_error takes the same locks in.
+    await session.refresh(candidate, with_for_update=True)
     settings = await settings_row(session, lock=True)
-    if not settings.enabled or candidate.status not in {"discovered", "failed"}:
+    if not settings.enabled:
         await session.rollback()
-        return None
+        return "disabled", None
+    if candidate.status not in {"discovered", "failed"}:
+        await session.rollback()
+        return "skipped", None
     global_active = int(
         await session.scalar(
             select(func.count())
@@ -145,7 +163,7 @@ async def _claim_capacity(
         or vertical_active >= settings.per_vertical_concurrency
     ):
         await session.rollback()
-        return None
+        return "deferred", None
     candidate.status = "drafting"
     candidate.processing_started_at = datetime.now(UTC)
     reverify_requested = candidate.error_code == "news_reverify_requested"
@@ -155,7 +173,7 @@ async def _claim_capacity(
     candidate.prompt_version = settings.prompt_version
     candidate.policy_version = settings.policy_version
     await session.commit()
-    return settings
+    return "claimed", settings
 
 
 def _source_locked(document: GuideDocument, evidence: list[NewsEvidence]) -> GuideDocument:
@@ -182,6 +200,44 @@ def _topic_linked(document: GuideDocument, vertical: str, locale: Locale) -> Gui
             LinkBlock(type="link", text=TOPIC_LINK_TEXT[locale], url=target).model_dump(mode="json")
         )
     return GuideDocument.model_validate(encoded)
+
+
+async def _known_titles(session: AsyncSession, candidate: NewsCandidate) -> list[str]:
+    """Recent news titles of the same vertical: published articles first, including the
+    ones written by hand, then other automation candidates."""
+
+    cutoff = datetime.now(UTC).date() - DUPLICATE_WINDOW
+    published: dict[UUID, str] = {}
+    rows = await session.execute(
+        select(GuideSearchEntry.article_id, GuideSearchEntry.locale, GuideSearchEntry.title)
+        .join(GuideArticle, GuideArticle.id == GuideSearchEntry.article_id)
+        .where(
+            GuideArticle.slug.like(f"{candidate.vertical}-news-%"),
+            GuideArticle.is_active.is_(True),
+            GuideArticle.news_date >= cutoff,
+            GuideSearchEntry.locale.in_(("en", "zh-TW")),
+        )
+        .order_by(GuideArticle.news_date.desc(), GuideArticle.id)
+        .limit(80)
+    )
+    for article_id, locale, title in rows:
+        if article_id == candidate.guide_article_id:
+            continue
+        # Sources are mostly English, so the English title is the closer comparison.
+        if locale == "en" or article_id not in published:
+            published[article_id] = title
+    candidates = await session.scalars(
+        select(NewsCandidate.source_title)
+        .where(
+            NewsCandidate.id != candidate.id,
+            NewsCandidate.vertical == candidate.vertical,
+            NewsCandidate.status.in_(("manual_review", "shadow_review", "published")),
+        )
+        .order_by(NewsCandidate.created_at.desc())
+        .limit(30)
+    )
+    titles = list(dict.fromkeys([*list(published.values())[:40], *candidates]))
+    return titles[: ai.MAX_DUPLICATE_TITLES]
 
 
 async def _save_guide_bundle(
@@ -291,9 +347,9 @@ async def process_candidate(
     candidate = await session.get(NewsCandidate, candidate_id)
     if candidate is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    settings = await _claim_capacity(session, candidate)
+    outcome, settings = await _claim_capacity(session, candidate)
     if settings is None:
-        return "deferred"
+        return outcome
 
     active_run: NewsPipelineRun | None = None
     try:
@@ -317,18 +373,7 @@ async def process_candidate(
             )
             return "manual_review"
 
-        recent_titles = list(
-            await session.scalars(
-                select(NewsCandidate.source_title)
-                .where(
-                    NewsCandidate.id != candidate.id,
-                    NewsCandidate.vertical == candidate.vertical,
-                    NewsCandidate.status.in_(("manual_review", "shadow_review", "published")),
-                )
-                .order_by(NewsCandidate.created_at.desc())
-                .limit(40)
-            )
-        )
+        recent_titles = await _known_titles(session, candidate)
         duplicate, confidence, duplicate_reasons = await ai.jev_duplicate_check(
             redis,
             environment,
@@ -497,20 +542,21 @@ async def process_candidate(
         candidate.status = "locale_review"
         await session.commit()
         if reverify_documents is None:
-            active_run = await _start_run(
-                session,
-                candidate,
-                "translation",
-                provider=settings.writer_provider,
-                model=settings.writer_model,
-            )
-            translations, usage, model = await ai.translate_article(environment, settings, document)
-            await _finish_run(session, active_run, usage=usage, model=model)
-            active_run = None
-            documents: dict[Locale, GuideDocument] = {
-                "zh-TW": document,
-                **translations.documents,
-            }
+            documents: dict[Locale, GuideDocument] = {"zh-TW": document}
+            for target in TARGET_LOCALES:
+                active_run = await _start_run(
+                    session,
+                    candidate,
+                    f"translation-{target}",
+                    provider=settings.writer_provider,
+                    model=settings.writer_model,
+                )
+                translated, usage, model = await ai.translate_article(
+                    environment, settings, document, target
+                )
+                await _finish_run(session, active_run, usage=usage, model=model)
+                active_run = None
+                documents[target] = translated.document
         else:
             documents = {**reverify_documents, "zh-TW": document}
         documents = {
@@ -753,3 +799,101 @@ async def process_candidate(
                 run.finished_at = datetime.now(UTC)
         await session.commit()
         raise
+
+
+async def recover_stalled_candidates(
+    session: AsyncSession, *, now: datetime | None = None, limit: int = 20
+) -> list[UUID]:
+    """Fail candidates whose job died mid-pipeline and return the ones to run again.
+
+    A worker stopped by a deploy or by the job timeout leaves its candidate in an
+    in-flight status that nothing moves on. It keeps holding a concurrency slot, so with
+    the default of one per vertical the whole vertical stops and every other candidate
+    defers forever.
+    """
+
+    current = now or datetime.now(UTC)
+    rows = list(
+        await session.scalars(
+            select(NewsCandidate)
+            .where(
+                NewsCandidate.status.in_(ACTIVE_STATUSES),
+                func.coalesce(NewsCandidate.processing_started_at, NewsCandidate.updated_at)
+                < current - STALE_AFTER,
+            )
+            .order_by(NewsCandidate.processing_started_at, NewsCandidate.id)
+            .limit(limit)
+            .with_for_update(skip_locked=True)
+        )
+    )
+    rerun: list[UUID] = []
+    for row in rows:
+        stalled_in = row.status
+        for run in await session.scalars(
+            select(NewsPipelineRun).where(
+                NewsPipelineRun.candidate_id == row.id, NewsPipelineRun.status == "running"
+            )
+        ):
+            run.status = "failed"
+            run.error_code = "news_processing_stale"
+            run.error_detail = "The worker stopped before this stage finished."
+            run.finished_at = current
+        recoveries = int(
+            await session.scalar(
+                select(func.count())
+                .select_from(NewsPipelineRun)
+                .where(
+                    NewsPipelineRun.candidate_id == row.id,
+                    NewsPipelineRun.stage == STALE_RECOVERY_STAGE,
+                )
+            )
+            or 0
+        )
+        session.add(
+            NewsPipelineRun(
+                candidate_id=row.id,
+                stage=STALE_RECOVERY_STAGE,
+                status="failed",
+                attempt=recoveries + 1,
+                idempotency_key=f"{row.id}:{STALE_RECOVERY_STAGE}:{recoveries + 1}",
+                error_code="news_processing_stale",
+                error_detail=f"Stalled in {stalled_in}.",
+                started_at=current,
+                finished_at=current,
+            )
+        )
+        row.status = "failed"
+        # A stalled re-verification keeps its marker, so the rerun re-verifies the edited
+        # drafts instead of writing new ones over them.
+        if row.error_code != "news_reverify_requested":
+            row.error_code = "news_processing_stale"
+        row.error_detail = f"The worker stopped while this candidate was in {stalled_in}."
+        if recoveries < MAX_AUTOMATIC_RECOVERIES:
+            rerun.append(row.id)
+    await session.commit()
+    return rerun
+
+
+async def orphaned_candidates(
+    session: AsyncSession, *, now: datetime | None = None, limit: int = 20
+) -> list[UUID]:
+    """Discovered candidates that no queued job will pick up."""
+
+    settings = await settings_row(session)
+    if not settings.enabled:
+        await session.rollback()
+        return []
+    current = now or datetime.now(UTC)
+    ids = list(
+        await session.scalars(
+            select(NewsCandidate.id)
+            .where(
+                NewsCandidate.status == "discovered",
+                NewsCandidate.updated_at < current - ORPHAN_AFTER,
+            )
+            .order_by(NewsCandidate.updated_at, NewsCandidate.id)
+            .limit(limit)
+        )
+    )
+    await session.rollback()
+    return ids
