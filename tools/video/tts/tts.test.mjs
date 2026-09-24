@@ -227,13 +227,83 @@ test("audition writes one clip per allowed voice and a page to compare them", as
   assert.equal(await main(["audition", "--text-file", sample, "--voices", "en-GB-SoniaNeural"], refused.ctx), EXIT.owner);
 });
 
-test("login checks the token against the server before saving it", async () => {
+test("login --paste checks the token against the server before saving it", async () => {
   const box = sandbox();
   const server = fakeServer();
   const { ctx, out } = capture({ root: box.root, env: {}, home: box.base, fetch: server.fetchImpl, readSecret: async () => TOKEN });
-  assert.equal(await main(["login"], ctx), EXIT.ok);
+  assert.equal(await main(["login", "--paste"], ctx), EXIT.ok);
   assert.equal(readCredentials({ env: {}, home: box.base }).token, TOKEN);
   assert.match(out.stdout, /speech configured/);
   const bad = capture({ root: box.root, env: {}, home: box.base, readSecret: async () => "nope" });
-  assert.equal(await main(["login"], bad.ctx), EXIT.usage);
+  assert.equal(await main(["login", "--paste"], bad.ctx), EXIT.usage);
+});
+
+/** A site that answers "pending" a few times, then the given final poll answer. */
+function pairingServer({ pendingPolls = 2, final = { status: "approved", token: TOKEN, token_name: "配對：影片工具" } } = {}) {
+  const speech = fakeServer();
+  const calls = [];
+  let polls = 0;
+  const fetchImpl = async (url, init) => {
+    calls.push({ url, init });
+    if (url.endsWith("/api/video/pairings")) {
+      return Response.json(
+        { device_code: "d".repeat(43), user_code: "BCDF-GHJK", verification_path: "/zh-TW/admin/settings?provider=azure_speech&video_pairing=BCDFGHJK", expires_in: 600, interval: 5 },
+        { status: 201 },
+      );
+    }
+    if (url.endsWith("/api/video/pairings/poll")) {
+      polls += 1;
+      return Response.json(polls <= pendingPolls ? { status: "pending", interval: 5, token: null } : { interval: 5, ...final });
+    }
+    return speech.fetchImpl(url, init);
+  };
+  return { calls, fetchImpl };
+}
+
+test("login pairs by default: it prints the code and link, never the token, and saves it", async () => {
+  const box = sandbox();
+  const server = pairingServer();
+  const slept = [];
+  const { ctx, out } = capture({ root: box.root, env: {}, home: box.base, fetch: server.fetchImpl, sleep: async (value) => slept.push(value) });
+  assert.equal(await main(["login", "--name", "工作室筆電"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /code: BCDF-GHJK/);
+  assert.match(out.stdout, /https:\/\/mokaair\.com\/zh-TW\/admin\/settings\?provider=azure_speech&video_pairing=BCDFGHJK/);
+  assert.ok(!out.stdout.includes(TOKEN) && !out.stderr.includes(TOKEN), "the token is never printed");
+  assert.equal(readCredentials({ env: {}, home: box.base }).token, TOKEN);
+  assert.deepEqual(slept, [5000, 5000, 5000]);
+  const start = server.calls.find((call) => call.url.endsWith("/api/video/pairings"));
+  assert.deepEqual(JSON.parse(start.init.body), { client_name: "工作室筆電" });
+  assert.equal(new Headers(start.init.headers).get("authorization"), null);
+  const polls = server.calls.filter((call) => call.url.endsWith("/pairings/poll"));
+  assert.ok(polls.every((call) => JSON.parse(call.init.body).device_code === "d".repeat(43)));
+});
+
+test("a denied or expired pairing needs the owner and saves nothing", async () => {
+  const box = sandbox();
+  const denied = capture({ root: box.root, env: {}, home: box.base, fetch: pairingServer({ final: { status: "denied" } }).fetchImpl });
+  assert.equal(await main(["login"], denied.ctx), EXIT.owner);
+  assert.match(denied.out.stderr, /denied/);
+  assert.equal(readCredentials({ env: {}, home: box.base }).token, null);
+
+  // The clock runs out while the owner has not answered.
+  let clock = Date.parse("2026-09-24T05:00:00Z");
+  const expired = capture({
+    root: box.root,
+    env: {},
+    home: box.base,
+    fetch: pairingServer({ pendingPolls: 1000 }).fetchImpl,
+    now: () => new Date(clock),
+    sleep: async (value) => {
+      clock += value;
+    },
+  });
+  assert.equal(await main(["login"], expired.ctx), EXIT.owner);
+  assert.match(expired.out.stderr, /expired/);
+});
+
+test("login explains a site that does not offer pairing yet", async () => {
+  const box = sandbox();
+  const old = capture({ root: box.root, env: {}, home: box.base, fetch: async () => new Response("not found", { status: 404 }) });
+  assert.equal(await main(["login"], old.ctx), EXIT.external);
+  assert.match(old.out.stderr, /--paste/);
 });

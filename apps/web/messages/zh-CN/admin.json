@@ -1891,7 +1891,7 @@
     "create": "创建令牌",
     "creating": "创建中…",
     "createdTitle": "新的令牌只会显示这一次",
-    "createdHelp": "复制后，在本机运行视频工具的 login 命令并粘贴。离开这个页面后就看不到了。",
+    "createdHelp": "一般请改用上面的配对，不用复制令牌。这里创建的令牌给无法配对的情况用（例如在本机运行 login --paste 后粘贴）。离开这个页面后就看不到了。",
     "copy": "复制",
     "copied": "已复制",
     "dismiss": "我已经保存好了",
@@ -1904,6 +1904,22 @@
     "revoke": "撤销",
     "confirmRevoke": "确定撤销",
     "cancel": "取消",
-    "loadFailed": "无法加载令牌列表"
+    "loadFailed": "无法加载令牌列表",
+    "pairTitle": "配对本机工具",
+    "pairIntro": "在本机运行视频工具的 login，它会显示一组验证码和这个页面的链接。核对验证码和终端里的一样，再点「允许」：令牌会直接交给那台电脑，不会显示在任何地方，也不用复制。",
+    "pairCodeLabel": "验证码",
+    "pairLookup": "查询",
+    "pairCode": "验证码",
+    "pairClient": "电脑",
+    "pairAddress": "来源 IP",
+    "pairRequested": "请求于",
+    "pairExpires": "到期",
+    "pairWarning": "只允许你自己刚刚在终端里看到的验证码。如果是别人发链接来请你点「允许」，请点「拒绝」。",
+    "pairApprove": "允许",
+    "pairDeny": "拒绝",
+    "pairApproved": "已允许。本机工具会在几秒内自己取得令牌，列表里会多一个配对产生的令牌。",
+    "pairDenied": "已拒绝，这组验证码拿不到令牌。",
+    "pairCodeInvalid": "验证码是 8 个英文字母，例如 BCDF-GHJK。",
+    "pairFailed": "无法处理这组验证码"
   }
 }

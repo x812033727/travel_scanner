@@ -43,7 +43,7 @@ Usage: node tools/video/cli.mjs <command> [options]
                                                    record the owner's approval of the file as it is now
   captions --slug S [--workdir D]                  caption files for every current locale
 
-  login                                            save the video tool token made on the admin card
+  login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
 
