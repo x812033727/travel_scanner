@@ -49,5 +49,10 @@ npm run test:web -- admin-news-workspace
 
 ## Notes
 
+- 2026-09-24 (task 2026-09-24-keep-news-candidates-without-enough-evidence): the API now
+  takes a repeatable `status` and the workspace asks for exactly the statuses of the
+  chosen list (待審查 / 已發布 / 缺證據, kept in `?queue=`), so rows of other statuses no
+  longer crowd the review list. Paging beyond 100 rows is what remains here.
+
 - Found while hardening the news automation (task
   2026-09-24-harden-hourly-news-automation-before-first).

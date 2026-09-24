@@ -424,12 +424,12 @@ async def list_candidates(
     *,
     page: int,
     limit: int,
-    status: str | None = None,
+    status: list[str] | None = None,
     vertical: Vertical | None = None,
 ) -> CandidatePage:
     criteria: list[Any] = []
     if status:
-        criteria.append(NewsCandidate.status == status)
+        criteria.append(NewsCandidate.status.in_(status))
     if vertical:
         criteria.append(NewsCandidate.vertical == vertical)
     total = int(
@@ -537,7 +537,13 @@ async def reject_candidate(
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review", "failed", "duplicate"}:
+    if row.status not in {
+        "manual_review",
+        "shadow_review",
+        "needs_evidence",
+        "failed",
+        "duplicate",
+    }:
         raise AppError(409, "news_candidate_not_reviewable", "這個候選目前不能退件")
     row.status = "rejected"
     row.human_decision = "reject"
@@ -573,7 +579,7 @@ async def retry_candidate(
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review", "failed"}:
+    if row.status not in {"manual_review", "shadow_review", "needs_evidence", "failed"}:
         raise AppError(409, "news_candidate_not_retryable", "這個候選目前不能重跑")
     row.status = "discovered"
     row.error_code = None
