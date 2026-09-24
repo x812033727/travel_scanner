@@ -1,0 +1,20 @@
+#!/bin/sh
+# claude-a … claude-e and codex-a … codex-e: run the CLI signed in to that account.
+# install.sh links each name to this script; the name picks the account.
+set -eu
+name=$(basename "$0")
+root=/var/lib/mokaair-ai-accounts
+case "$name" in
+  claude-[a-e])
+    export CLAUDE_CONFIG_DIR="$root/$name"
+    exec "${MOKAAIR_CLAUDE_BIN:-/root/.local/bin/claude}" "$@"
+    ;;
+  codex-[a-e])
+    export CODEX_HOME="$root/$name"
+    exec "${MOKAAIR_CODEX_BIN:-/usr/local/bin/codex}" "$@"
+    ;;
+  *)
+    echo "run this as claude-a … claude-e or codex-a … codex-e" >&2
+    exit 2
+    ;;
+esac
