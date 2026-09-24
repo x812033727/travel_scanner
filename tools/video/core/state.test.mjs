@@ -24,7 +24,9 @@ test("the work directory is <base>/<slug> and never inside the repository", () =
   const box = sandbox();
   assert.equal(resolveWorkdir({ flag: box.work, slug: "a", root: box.root }), path.join(box.work, "a"));
   assert.equal(resolveWorkdir({ env: { VIDEO_WORKDIR: box.work }, slug: "a", root: box.root }), path.join(box.work, "a"));
-  assert.throws(() => resolveWorkdir({ env: {}, slug: "a", root: box.root }), UsageError);
+  // With neither, videos go under the home directory, so nobody has to set a variable first.
+  assert.equal(resolveWorkdir({ env: {}, slug: "a", root: box.root, home: box.base }), path.join(box.base, "mokaair-work", "videos", "a"));
+  assert.throws(() => resolveWorkdir({ env: {}, slug: "a", root: box.root, home: box.root }), UsageError);
   assert.throws(() => resolveWorkdir({ flag: path.join(box.root, "tmp"), slug: "a", root: box.root }), /inside the repository/);
   assert.ok(isInside(path.join(box.root, "x", "y"), box.root));
   assert.ok(!isInside(box.work, box.root));
