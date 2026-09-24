@@ -11,8 +11,9 @@
 # The workflows call this in its own early step and then `docker run --pull=never`. If the pull
 # list and a run line drift apart, the run fails loudly with "No such image" instead of quietly
 # going back to a single unretried pull. A refusal is not retried: a tag that is gone, or a
-# registry that now wants a login (Docker Hub for minio/minio on 2026-09-11), will not come
-# back, and waiting would only turn a one-second failure into a three-minute one.
+# registry that now wants a login (Docker Hub for minio/minio on 2026-09-11, quay.io on
+# 2026-09-24), will not come back, and waiting would only turn a one-second failure into a
+# three-minute one.
 #
 # Usage: bash tools/ci/pull-images.sh IMAGE [IMAGE...]
 #   PULL_ATTEMPTS     tries per image, default 5

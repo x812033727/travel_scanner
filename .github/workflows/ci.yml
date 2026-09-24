@@ -35,8 +35,11 @@ jobs:
         ports: ["6379:6379"]
     defaults: { run: { working-directory: apps/api } }
     env:
-      # Named once so the pull and the run cannot name different tags.
-      MINIO_IMAGE: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+      # Named once so the pull and the run cannot name different tags. MinIO's own images need
+      # a login now (Docker Hub since 2026-09-11, quay.io since 2026-09-24), so this is
+      # Chainguard's public build of the same server, pinned by digest: its free tier only
+      # publishes :latest. It runs as uid 65532, hence the tmpfs at /data where it runs.
+      MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       # `docker run` pulls a missing image exactly once. A single 502, 504, connection reset or
@@ -78,7 +81,7 @@ jobs:
       - run: uv run alembic upgrade head
       - name: Start private S3 integration companion
         run: |
-          docker run --pull=never -d --name community-test-storage -p 127.0.0.1:9000:9000 \
+          docker run --pull=never -d --name community-test-storage -p 127.0.0.1:9000:9000 --tmpfs /data \
             -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
             "$MINIO_IMAGE" server /data
           for attempt in {1..30}; do
@@ -228,7 +231,8 @@ jobs:
       COMMUNITY_SMTP_PORT: "1025"
       COMMUNITY_SMTP_STARTTLS: "false"
       COMMUNITY_MAIL_FROM: Mokaair CI <accounts@example.test>
-      MINIO_IMAGE: quay.io/minio/minio:RELEASE.2025-09-07T16-13-09Z
+      # Chainguard's MinIO pinned by digest; see the api job.
+      MINIO_IMAGE: cgr.dev/chainguard/minio@sha256:bd014394a80898e68c149f2311fdf8d5a2c2f3bb2c33b9327ae6d02b4b065ae1
       MAILPIT_IMAGE: axllent/mailpit:latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -270,7 +274,7 @@ jobs:
           echo $! > "$RUNNER_TEMP/travel-web.pid"
       - name: Start community test services and bootstrap test administrator
         run: |
-          docker run --pull=never -d --name community-browser-storage -p 127.0.0.1:9000:9000 \
+          docker run --pull=never -d --name community-browser-storage -p 127.0.0.1:9000:9000 --tmpfs /data \
             -e MINIO_ROOT_USER=community-test -e MINIO_ROOT_PASSWORD=community-test-only-password \
             -e MINIO_API_CORS_ALLOW_ORIGIN=http://localhost:3000 \
             "$MINIO_IMAGE" server /data
