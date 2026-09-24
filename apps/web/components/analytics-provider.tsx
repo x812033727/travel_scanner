@@ -42,8 +42,14 @@ function sessionId() {
   return value;
 }
 
+// A published article's slug is public and is the one long segment the reports must tell
+// apart, so these two shapes keep it; any other long segment may be a share token or an id.
+// The API's `normalize_path` (apps/api/app/analytics/service.py) applies the same rule.
+const articlePath = /^\/(?:(?:en|ja|ko|zh-TW|zh-CN)\/)?(?:guides\/(?:intel|howto)|life)\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/;
+
 function sanitizedPath(pathname: string) {
   if (/\/(?:[^/]+\/)?admin(?:\/|$)/.test(pathname)) return null;
+  if (articlePath.test(pathname)) return pathname.slice(0, 512);
   return pathname.replace(/[0-9a-f]{8}-[0-9a-f-]{27,}/gi, ":id").replace(/[A-Za-z0-9_-]{20,}/g, ":id").slice(0, 512);
 }
 
