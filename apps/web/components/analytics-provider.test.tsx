@@ -1,5 +1,6 @@
-import { render, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { act, render, waitFor } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { resetThirdPartyAudience, setThirdPartyAudience } from "@/lib/third-party-audience";
 
 const navigation = vi.hoisted(() => ({ pathname: "/zh-TW/hotspots" }));
 vi.mock("next/navigation", () => ({ usePathname: () => navigation.pathname }));
@@ -8,6 +9,11 @@ vi.mock("next/script", () => ({ default: (props: { src?: string }) => <script da
 import { AnalyticsProvider } from "./analytics-provider";
 
 describe("AnalyticsProvider", () => {
+  beforeEach(() => {
+    // A signed-out reader, unless a case says otherwise.
+    setThirdPartyAudience("allowed");
+  });
+
   afterEach(() => {
     vi.unstubAllGlobals();
     sessionStorage.clear();
@@ -16,6 +22,42 @@ describe("AnalyticsProvider", () => {
     document.cookie = "travel_oauth_registered=; path=/; max-age=0";
     Object.defineProperty(navigator, "doNotTrack", { configurable: true, value: null });
     navigation.pathname = "/zh-TW/hotspots";
+    resetThirdPartyAudience();
+  });
+
+  function withGa4() {
+    const fetchMock = vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      void init;
+      if (String(input).endsWith("/analytics/config")) return new Response(JSON.stringify({ first_party_enabled: true, ga4_enabled: true, ga4_measurement_id: "G-ABCD1234" }));
+      return new Response(JSON.stringify({ accepted: 1, enabled: true }), { status: 202 });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const sentFirstParty = () => fetchMock.mock.calls.some(([url]) => String(url).endsWith("/analytics/events"));
+    return sentFirstParty;
+  }
+
+  it("never loads gtag.js for an administrator, and still counts the view first-party", async () => {
+    resetThirdPartyAudience();
+    setThirdPartyAudience("blocked");
+    const sentFirstParty = withGa4();
+    const view = render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(sentFirstParty()).toBe(true));
+    expect(view.container.querySelector('script[data-src^="https://www.googletagmanager.com/"]')).toBeNull();
+    expect(window.dataLayer).toBeUndefined();
+  });
+
+  it("starts GA4 once a signed-in reader clears, and sends that page's view to it once", async () => {
+    resetThirdPartyAudience();
+    const sentFirstParty = withGa4();
+    const view = render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+    await waitFor(() => expect(sentFirstParty()).toBe(true));
+    expect(window.dataLayer).toBeUndefined();
+
+    act(() => setThirdPartyAudience("allowed"));
+    await waitFor(() => expect(view.container.querySelector('script[data-src^="https://www.googletagmanager.com/"]')).not.toBeNull());
+    const pageViews = (window.dataLayer || []).filter((row) => row[0] === "event" && row[1] === "page_view");
+    expect(pageViews).toHaveLength(1);
+    expect(pageViews[0][2]).toMatchObject({ page_path: "/zh-TW/hotspots" });
   });
 
   function firstPartyOnly() {
