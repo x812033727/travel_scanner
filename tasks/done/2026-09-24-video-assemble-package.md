@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-assemble-package
 title: 影片產線 T4：ffmpeg 合成、審看頁與上傳包
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T03:08:01Z
 created_at: 2026-09-24T00:41:03Z
-completed_at:
+completed_at: 2026-09-24T03:27:58Z
 branch: claude/video-assemble
 depends_on:
   - 2026-09-24-video-tooling-core
