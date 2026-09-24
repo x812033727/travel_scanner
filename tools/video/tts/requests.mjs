@@ -88,7 +88,10 @@ export function planRequests(doc, lexicon) {
       const length = partsLength(parts);
       if (length > MAX_REQUEST_CHARACTERS) throw new Error(`line ${line.id} has ${length} characters; the server takes ${MAX_REQUEST_CHARACTERS} at once`);
       if (characters + length > MAX_REQUEST_CHARACTERS) flush();
-      chunk.push({ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))) });
+      // A clip stays current while its own words and the voice stay the same, whatever its
+      // neighbours do, so an edit to one line retakes that line alone.
+      const key = createHash("sha256").update(JSON.stringify([voiceFields(doc.voice), parts])).digest("hex").slice(0, 16);
+      chunk.push({ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key });
       characters += length;
     }
     flush();

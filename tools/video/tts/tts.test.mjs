@@ -5,7 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
-import { sandbox } from "../core/fixtures/load.mjs";
+import { fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { SAMPLES_PER_FRAME, SAMPLE_RATE } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { credentialsFile, readCredentials, writeCredentials } from "./credentials.mjs";
@@ -183,19 +183,56 @@ test("tts writes frame-aligned narration and a timeline, then only redoes what c
   const synthesized = server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length;
   assert.equal(synthesized, 3, "one request per scene");
 
+  // A cache from before clips had their own keys holds the request key; it still counts, and is
+  // rewritten to the clip's key so the edit below keeps the rest of the scene.
+  const cacheFile = path.join(box.workdir, "audio", "cache.json");
+  const requestKeys = Object.fromEntries(planRequests(JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8")), fixtureLexicon()).flatMap((request) => request.lines.map((line) => [line.id, request.key])));
+  writeFileSync(cacheFile, JSON.stringify({ lines: requestKeys }));
   const second = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
   await main(["tts", "--slug", box.slug], second.ctx);
   assert.equal(server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length, synthesized, "nothing to redo");
+  assert.notDeepEqual(JSON.parse(readFileSync(cacheFile, "utf8")).lines, requestKeys, "old keys rewritten");
 
   const file = path.join(box.dir, "video.json");
   writeFileSync(file, readFileSync(file, "utf8").replace("第二個問題是", "第二個問題則是"));
   const third = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
   await main(["tts", "--slug", box.slug], third.ctx);
-  assert.equal(server.calls.filter((call) => call.url.endsWith("/api/video/speech")).length, synthesized + 1, "only the changed scene");
+  const speech = server.calls.filter((call) => call.url.endsWith("/api/video/speech"));
+  assert.equal(speech.length, synthesized + 1, "only the changed scene");
+  assert.equal(JSON.parse(speech.at(-1).init.body).segments.length, 1, "and in it only the changed line");
 
   const status = capture({ root: box.root, env, home: box.base });
   await main(["status", "--slug", box.slug], status.ctx);
   assert.match(status.out.stdout, /\[x\] narration synthesized/);
+});
+
+test("tts --redo retakes only the flagged line and keeps the rest of its scene", async () => {
+  const box = sandbox();
+  const server = fakeServer();
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const first = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stderr);
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  const scene = timeline.lines.find((line, index, all) => all.filter((other) => other.scene === line.scene).length > 1).scene;
+  const [kept, flagged] = timeline.lines.filter((line) => line.scene === scene);
+  const clip = (id) => readFileSync(path.join(box.workdir, "audio", `${id}.wav`));
+  const keptBefore = clip(kept.id);
+  const speechCalls = () => server.calls.filter((call) => call.url.endsWith("/api/video/speech"));
+  const before = speechCalls().length;
+
+  const flags = path.join(box.work, "flags.json");
+  writeFileSync(flags, JSON.stringify({ flags: [flagged.id] }));
+  const redo = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug, "--redo", flags], redo.ctx), EXIT.ok, redo.out.stderr);
+  const retakes = speechCalls().slice(before);
+  assert.equal(retakes.length, 1, "one request, for the flagged line alone");
+  assert.equal(JSON.parse(retakes[0].init.body).segments.length, 1);
+  assert.match(redo.out.stdout, /1 of \d+ lines retaken/);
+  assert.deepEqual(clip(kept.id), keptBefore, "the line that passed keeps its take");
+
+  const again = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  await main(["tts", "--slug", box.slug], again.ctx);
+  assert.equal(speechCalls().length, before + 1, "the retake counts as current afterwards");
 });
 
 test("tts without a token, or against an unconfigured card, needs the owner", async () => {

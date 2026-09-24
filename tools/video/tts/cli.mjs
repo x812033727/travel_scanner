@@ -13,7 +13,7 @@ import { SpeechError, speechStatus, synthesize } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
 import { defaultClientName, startPairing, waitForPairing } from "./pairing.mjs";
 import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRequests, spokenParts, voiceFields } from "./requests.mjs";
-import { buildNarration, flaggedLines, synthesizeRequest } from "./synthesis.mjs";
+import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 const FREE_TIER = 500_000;
@@ -193,10 +193,26 @@ async function tts(args, ctx) {
   const cache = readCache(workdir);
   const redo = values.redo ? flaggedLines(readJson(path.resolve(values.redo))) : new Set();
   const audioDir = path.join(workdir, ARTIFACTS.audio);
-  const current = (request) =>
-    !values.force && !request.lines.some((line) => redo.has(line.id)) && request.lines.every((line) => cache.lines[line.id] === request.key && existsSync(path.join(audioDir, `${line.id}.wav`)));
+  // A clip is current when its line's own key matches, or the key of the request it came from
+  // (caches written before clips had their own keys).
+  const clipCurrent = (request, line) =>
+    !values.force && [line.key, request.key].includes(cache.lines[line.id]) && existsSync(path.join(audioDir, `${line.id}.wav`));
+  const current = (request) => !request.lines.some((line) => redo.has(line.id)) && request.lines.every((line) => clipCurrent(request, line));
+  // When part of a scene is still current, only the rest is retaken, each line on its own: a whole
+  // scene again would re-roll every line that already passed the check, and Gemini's takes differ
+  // from one request to the next. A scene with nothing current is synthesized whole.
+  const retakes = (request) => {
+    const stale = request.lines.filter((line) => redo.has(line.id) || !clipCurrent(request, line));
+    return stale.length && stale.length < request.lines.length ? stale : null;
+  };
+  const estimateFor = (request) => {
+    const lines = retakes(request);
+    return lines ? lines.reduce((sum, line) => sum + billableForRequest(lineBody(request, line)), 0) : billableForRequest(request.body);
+  };
   const pending = requests.filter((request) => !current(request));
-  const pendingEstimate = pending.reduce((sum, request) => sum + billableForRequest(request.body), 0);
+  const pendingEstimate = pending.reduce((sum, request) => sum + estimateFor(request), 0);
+  // Record current clips under their own keys, so a later edit elsewhere in the scene keeps them.
+  const migrated = requests.flatMap((request) => request.lines.filter((line) => clipCurrent(request, line) && cache.lines[line.id] !== line.key));
 
   if (values["dry-run"]) {
     ctx.stdout.write(`${requests.length} requests, ${pending.length} to synthesize; about ${pendingEstimate} billable characters now (${estimate} for the whole video, ${((estimate / FREE_TIER) * 100).toFixed(1)}% of the free tier)\n`);
@@ -224,6 +240,10 @@ async function tts(args, ctx) {
     }
   }
   mkdirSync(audioDir, { recursive: true });
+  if (migrated.length) {
+    for (const line of migrated) cache.lines[line.id] = line.key;
+    atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+  }
   let billable = 0;
   const fallbacks = [];
   for (const request of pending) {
@@ -231,15 +251,18 @@ async function tts(args, ctx) {
       ctx.stdout.write(`stopped by the STOP file; ${pending.indexOf(request)} of ${pending.length} requests done, rerun to continue\n`);
       return EXIT.ok;
     }
-    const result = await synthesizeRequest(request, (body) => synthesize({ ...options, body }));
+    const send = (body) => synthesize({ ...options, body });
+    const lines = retakes(request);
+    const result = lines ? { ...(await synthesizeLines(request, lines, send)), fallback: false } : await synthesizeRequest(request, send);
     billable += result.billable;
     if (result.fallback) fallbacks.push(request.id);
     for (const [id, clip] of result.clips) {
       atomicWrite(path.join(audioDir, `${id}.wav`), encodeWav(clip));
-      cache.lines[id] = request.key;
+      cache.lines[id] = request.lines.find((line) => line.id === id).key;
     }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
-    ctx.stdout.write(`${request.id}: ${request.lines.length} lines${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
+    const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
+    ctx.stdout.write(`${request.id}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
 
   const clips = new Map();

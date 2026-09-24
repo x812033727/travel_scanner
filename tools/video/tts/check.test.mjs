@@ -7,7 +7,7 @@ import { EXIT, main } from "../cli.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
-import { comparable, GIVE_UP_AFTER, matches, spokenForm } from "./check.mjs";
+import { comparable, GIVE_UP_AFTER, matchKind, matches, reading, spokenForm } from "./check.mjs";
 import { concatSamples, downsample, encodeWav } from "./wav.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -28,6 +28,20 @@ test("comparison ignores punctuation, spacing and case, and knows the dictionary
   assert.ok(!matches("用 AI 調模型", line, lexicon));
   const said = { id: "p5vs", text: "2026/9/24 上架", say: "二〇二六年九月二十四日上架", say_for: "x" };
   assert.ok(matches("二〇二六年九月二十四日上架", said, lexicon));
+});
+
+test("same-sound characters and added filler words pass without Jev; a different sound or tone does not", () => {
+  const lexicon = { schema_version: 1, terms: {} };
+  const line = (text) => ({ id: "k7p2", text });
+  // Pairs the pilot's transcripts produced on 2026-09-24.
+  assert.equal(matchKind("重要的是你知道他考的不是你的工作", line("重要的是，你知道它考的不是你的工作。"), lexicon), "sound");
+  assert.equal(matchKind("吉蓮大多數只要一次", line("級聯大多數只要一次。"), lexicon), "sound");
+  assert.equal(matchKind("三成的升級比例啊，是示範用的假設", line("三成的升級比例，是示範用的假設。"), lexicon), "filler");
+  assert.equal(matchKind("極廉平均下來啊，大約一分錢誒", line("級聯平均下來，大約一分錢。"), lexicon), "sound");
+  assert.equal(matchKind("單一期間就是一次呼叫的時間", line("單一旗艦，就是一次呼叫的時間。"), lexicon), null, "旗 qí and 期 qī differ in tone");
+  assert.equal(matchKind("先用小模型，答不好再換旗艦咒語", line("先用小模型，答不好再換旗艦救援。"), lexicon), null);
+  assert.equal(matchKind("那我我自己實際上怎麼用", line("那我自己，實際上怎麼用？"), lexicon), null, "a repeated word is not a filler");
+  assert.equal(reading("它"), reading("他"));
 });
 
 test("downsampling keeps what 16 kHz can carry and removes what it cannot", () => {

@@ -20,13 +20,25 @@ export async function synthesizeRequest(request, synthesize) {
   if (pieces && plausibleSplit(pieces.map((piece) => piece.length), request.lines.map((line) => line.weight))) {
     return { clips: new Map(request.lines.map((line, index) => [line.id, pieces[index]])), billable, fallback: false };
   }
+  const single = await synthesizeLines(request, request.lines, synthesize);
+  return { clips: single.clips, billable: billable + single.billable, fallback: true };
+}
+
+/** The request body for one of a request's lines on its own. */
+export function lineBody(request, line) {
+  return { ...request.body, segments: [{ parts: line.parts, break_after_ms: 0 }] };
+}
+
+/** Each line on a request of its own: the fallback for a bad split, and how `tts --redo` retakes lines. */
+export async function synthesizeLines(request, lines, synthesize) {
   const clips = new Map();
-  for (const line of request.lines) {
-    const single = await synthesize({ ...request.body, segments: [{ parts: line.parts, break_after_ms: 0 }] });
+  let billable = 0;
+  for (const line of lines) {
+    const single = await synthesize(lineBody(request, line));
     billable += single.billable;
     clips.set(line.id, trimSilence(requireNarrationFormat(parseWav(single.wav))));
   }
-  return { clips, billable, fallback: true };
+  return { clips, billable };
 }
 
 /** Each line's clip followed by silence up to its end frame: the whole narration, frame-exact. */
