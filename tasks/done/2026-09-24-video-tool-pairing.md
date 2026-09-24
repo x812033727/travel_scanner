@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-tool-pairing
 title: 影片工具在後台按允許就配對，不必複製權杖
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T04:27:55Z
 created_at: 2026-09-24T04:27:47Z
-completed_at:
+completed_at: 2026-09-24T04:50:00Z
 branch: claude/video-pairing
 depends_on: []
 scope:
@@ -61,6 +61,8 @@ node tools/video/cli.mjs login        # 部署後：站主在後台按「允許�
 ```
 
 ## Notes
+
+- 沒勾的兩項（合併部署、實際配對一次）在合併之後才能做。由開這張票的同一個 session 接著做，結果寫在 PR 留言。
 
 - 後台連結用 `/zh-TW/admin/settings?provider=azure_speech&video_pairing=<code>`。`provider` 參數讓設定頁直接打開 Azure 語音卡，不用新增後台頁面（新後台頁要改四處，見記憶 guides-admin-visibility）。
 - 驗證碼只用 20 個子音字母、8 碼（不會拼出單字，也沒有 0/O、1/I 的混淆）。開配對以來源 IP 限制每小時 10 次，輪詢以 device code 限制每分鐘 30 次。
