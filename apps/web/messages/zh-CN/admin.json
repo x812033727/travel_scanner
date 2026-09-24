@@ -561,6 +561,14 @@
     "azure_speech_timeout_seconds": {
       "label": "单次合成超时（秒）",
       "help": "服务器等待 Azure 返回一段旁白的最长时间。"
+    },
+    "video_speech_gemini_monthly_character_limit": {
+      "label": "Gemini 旁白每月字数上限",
+      "help": "频道声音使用 Gemini（例如 Sulafat）时，每月最多发送的文字字数；按 UTC 自然月计算，超过即拒绝、不会发送。默认 300,000，约一百个 10 分钟的视频；0 表示只计数不限制。"
+    },
+    "jev_daily_call_budget": {
+      "label": "Jev 每日调用次数",
+      "help": "新闻自动化、景点介绍的 Jev 影子评估与视频旁白检查共用的每日上限，按 UTC 日计算；用完当天就不再调用 Jev。默认 200。"
     }
   },
   "hotspotTabs": {

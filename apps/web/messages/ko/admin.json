@@ -561,6 +561,14 @@
     "azure_speech_timeout_seconds": {
       "label": "합성 제한 시간(초)",
       "help": "서버가 Azure로부터 내레이션 한 구간을 받을 때까지 기다리는 최대 시간입니다."
+    },
+    "video_speech_gemini_monthly_character_limit": {
+      "label": "Gemini 내레이션 월간 글자 수 한도",
+      "help": "채널 음성이 Gemini(예: Sulafat)일 때 한 달에 보낼 수 있는 최대 글자 수입니다. UTC 월 기준으로 세며, 넘으면 보내지 않고 거부합니다. 기본값 300,000(10분 영상 약 100편), 0은 세기만 하고 제한하지 않습니다."
+    },
+    "jev_daily_call_budget": {
+      "label": "Jev 하루 호출 횟수",
+      "help": "뉴스 자동화, 명소 소개의 Jev 섀도 평가, 내레이션 검사가 함께 쓰는 하루 한도로, UTC 날짜 기준으로 셉니다. 다 쓰면 그날은 Jev를 더 호출하지 않습니다. 기본값 200."
     }
   },
   "hotspotTabs": {

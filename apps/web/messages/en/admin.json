@@ -561,6 +561,14 @@
     "azure_speech_timeout_seconds": {
       "label": "Synthesis timeout (seconds)",
       "help": "How long the server waits for Azure to return one stretch of narration."
+    },
+    "video_speech_gemini_monthly_character_limit": {
+      "label": "Gemini narration monthly character limit",
+      "help": "When the channel voice is a Gemini voice (such as Sulafat), the most text characters sent per month, counted by UTC month; requests over it are refused before anything is sent. Default 300,000, about a hundred 10-minute videos; 0 counts without limiting."
+    },
+    "jev_daily_call_budget": {
+      "label": "Jev calls per day",
+      "help": "Daily limit shared by the news automation, the Jev shadow assessment of place guides and the narration check, counted by UTC day; once spent, Jev is not called again that day. Default 200."
     }
   },
   "hotspotTabs": {

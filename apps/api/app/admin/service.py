@@ -183,13 +183,15 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "OpenAI、Claude、MiniMax 與 Gemini 的 API 金鑰與官方 Base URL 集中在這裡，由行程規劃、"
         "行程文字解析、景點介紹搜尋與 Gemini 文章搜尋共用；各功能只選供應商與模型。"
         "Jev 也放在這裡，但它是判斷模型而不是生成模型：只回傳 choice／score／noul 與信心值，"
-        "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。",
+        "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。"
+        "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。",
         (
             "openai_api_base_url",
             "anthropic_api_base_url",
             "minimax_api_base_url",
             "hotspot_guide_gemini_base_url",
             "jev_api_base_url",
+            "jev_daily_call_budget",
         ),
         (
             "openai_api_key",
@@ -203,12 +205,15 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "Azure 語音（影片旁白）",
         "YouTube 教學影片的台灣口音旁白。金鑰只存在這台伺服器：本機的影片工具帶著下方建立的"
         "「影片工具權杖」送出句子，由伺服器呼叫 Azure 後把音檔傳回。每月上限以 Azure 的計費字元計算"
-        "（一個中文字算兩個，SSML 標記也算），預設 450,000，低於免費層的 500,000。",
+        "（一個中文字算兩個，SSML 標記也算），預設 450,000，低於免費層的 500,000。"
+        "頻道聲音若選 Gemini（例如 Sulafat），用的是「AI 供應商與金鑰」裡的 Gemini 金鑰，"
+        "另有自己的每月字數上限（以送出的文字字數計）。",
         (
             "azure_speech_region",
             "azure_speech_voices",
             "azure_speech_monthly_character_limit",
             "azure_speech_timeout_seconds",
+            "video_speech_gemini_monthly_character_limit",
         ),
         ("azure_speech_key",),
     ),
