@@ -111,6 +111,18 @@ describe("AdminNewsWorkspace", () => {
     for (const readOnly of ["gates", "updated_at", "model_options", "default_models"]) expect(body).not.toHaveProperty(readOnly);
   });
 
+  it("asks the API only for the statuses of the chosen list", async () => {
+    render(<AdminNewsWorkspace />);
+    await screen.findByRole("button", { name: /Official AI API update/ });
+    const listCalls = () => vi.mocked(fetch).mock.calls.map(([url]) => String(url)).filter((url) => url.includes("/admin/news/candidates?"));
+    expect(listCalls().at(-1)).toContain("status=manual_review&status=shadow_review&status=failed");
+    expect(listCalls().at(-1)).not.toContain("needs_evidence");
+    fireEvent.click(screen.getByRole("button", { name: /缺證據/ }));
+    await waitFor(() => expect(listCalls().at(-1)).toContain("status=needs_evidence"));
+    expect(screen.getByText(/只有單一網站的證據/)).toBeTruthy();
+    expect(new URL(window.location.href).searchParams.get("queue")).toBe("evidence");
+  });
+
   it("keeps a complete local copy catalog in every site locale", () => {
     const keys = Object.keys(adminNewsCopy("en")).sort();
     for (const locale of ["zh-TW", "zh-CN", "ja", "ko"]) {
