@@ -14,6 +14,8 @@ const english = {
   writer: "Writing model", verifier: "Fact-checking model", provider: "Vendor", model: "Model",
   defaultModel: "Default", customModel: "Custom…", customModelLabel: "Custom model ID",
   previewModel: "preview", retiredModel: "retired",
+  reviewView: "To review", publishedView: "Published", evidenceView: "Needs evidence", queueFilter: "Candidate filter",
+  evidenceHint: "Evidence from one website only, so no model was run. Reject it, or run it again once another website covers the story.",
 };
 type Copy = typeof english;
 const catalog: Record<string, Copy> = {
@@ -34,6 +36,8 @@ const catalog: Record<string, Copy> = {
     writer: "撰稿模型", verifier: "查核模型", provider: "供應商", model: "模型",
     defaultModel: "預設", customModel: "自訂…", customModelLabel: "自訂模型 ID",
     previewModel: "預覽版", retiredModel: "已停用",
+    reviewView: "待審查", publishedView: "已發布", evidenceView: "缺證據", queueFilter: "候選篩選",
+    evidenceHint: "只有單一網站的證據，所以沒有交給 AI 處理。可以退件，或等其他網站也報導後重新執行。",
   },
   "zh-CN": {
     ...english, nav: "AI 自动新闻", title: "AI 每小时自动新闻", description: "管理来源、五语草稿、证据、Jev 判断与受控发布。",
@@ -48,6 +52,8 @@ const catalog: Record<string, Copy> = {
     writer: "撰稿模型", verifier: "核查模型", provider: "供应商", model: "模型",
     defaultModel: "默认", customModel: "自定义…", customModelLabel: "自定义模型 ID",
     previewModel: "预览版", retiredModel: "已停用",
+    reviewView: "待审核", publishedView: "已发布", evidenceView: "缺证据", queueFilter: "候选筛选",
+    evidenceHint: "只有单一网站的证据，所以没有交给 AI 处理。可以退回，或等其他网站也报道后重新运行。",
   },
   ja: {
     ...english, nav: "AI 自動ニュース", title: "AI 時間別自動ニュース", description: "情報源、5言語原稿、証拠、Jev判断、安全な公開を管理します。",
@@ -62,6 +68,8 @@ const catalog: Record<string, Copy> = {
     writer: "執筆モデル", verifier: "検証モデル", provider: "ベンダー", model: "モデル",
     defaultModel: "既定", customModel: "カスタム…", customModelLabel: "カスタムモデル ID",
     previewModel: "プレビュー", retiredModel: "提供終了",
+    reviewView: "要確認", publishedView: "公開済み", evidenceView: "証拠不足", queueFilter: "候補の絞り込み",
+    evidenceHint: "証拠が1つのサイトだけなので、AI では処理していません。却下するか、他のサイトも報じてから再実行してください。",
   },
   ko: {
     ...english, nav: "AI 자동 뉴스", title: "AI 시간별 자동 뉴스", description: "소스, 5개 언어 초안, 근거, Jev 판단과 안전한 게시를 관리합니다.",
@@ -76,6 +84,8 @@ const catalog: Record<string, Copy> = {
     writer: "작성 모델", verifier: "검증 모델", provider: "공급업체", model: "모델",
     defaultModel: "기본값", customModel: "직접 입력…", customModelLabel: "직접 입력한 모델 ID",
     previewModel: "프리뷰", retiredModel: "지원 종료",
+    reviewView: "검토 대상", publishedView: "게시됨", evidenceView: "근거 부족", queueFilter: "후보 필터",
+    evidenceHint: "근거가 한 사이트뿐이라 AI로 처리하지 않았습니다. 거절하거나 다른 사이트도 보도한 뒤 다시 실행하세요.",
   },
 };
 

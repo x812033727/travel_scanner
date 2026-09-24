@@ -33,6 +33,8 @@ CANDIDATE_STATUSES = (
     "jev_review",
     "shadow_review",
     "manual_review",
+    # Stopped at the evidence gate before any model call; not an editor's work item.
+    "needs_evidence",
     "published",
     "duplicate",
     "rejected",

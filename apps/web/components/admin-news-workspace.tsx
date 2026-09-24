@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
 import { ContentBlocks } from "@/components/content-blocks";
@@ -26,11 +26,22 @@ import { api } from "@/lib/api";
 import { splitGuideBlocks } from "@/lib/guides";
 
 const tabs = ["review", "sources", "settings", "runs"] as const;
+// The review list asks the API for exactly these statuses. Fetching the newest rows of
+// every status and filtering here let candidates nobody acts on (83 needs_evidence rows
+// on the first production day) push the ones waiting for a person out of the list.
+const queueViews = ["review", "published", "evidence"] as const;
+type QueueView = typeof queueViews[number];
+const queueStatuses: Record<QueueView, readonly string[]> = {
+  review: ["manual_review", "shadow_review", "failed"],
+  published: ["published"],
+  evidence: ["needs_evidence"],
+};
 const statusTone: Record<string, string> = {
   manual_review: "bg-amber-100 text-amber-900",
   shadow_review: "bg-sky-100 text-sky-900",
   published: "bg-emerald-100 text-emerald-900",
   failed: "bg-red-100 text-red-900",
+  needs_evidence: "bg-stone-100 text-stone-800",
 };
 
 function problemMessage(problem: unknown, fallback: string) {
@@ -76,6 +87,7 @@ export function AdminNewsWorkspace() {
   const copy = adminNewsCopy(locale);
   const manage = useAdminActionGuard("content.manage");
   const [tab, setTab] = useAdminQueryState("tab", tabs, "review");
+  const [queueView, setQueueView] = useAdminQueryState("queue", queueViews, "review");
   const [selected, setSelected] = useAdminQueryValue("candidate", "", (value) => /^[0-9a-f-]{36}$/.test(value));
   const [previewLocale, setPreviewLocale] = useState<NewsLocale>("zh-TW");
   const [candidates, setCandidates] = useState<NewsCandidatePage>();
@@ -98,16 +110,25 @@ export function AdminNewsWorkspace() {
   useEffect(() => {
     const controller = new AbortController();
     Promise.all([
-      api<NewsCandidatePage>("/admin/news/candidates?limit=100", { signal: controller.signal }),
       api<NewsSource[]>("/admin/news/sources", { signal: controller.signal }),
       api<NewsSettings>("/admin/news/settings", { signal: controller.signal }),
       api<NewsStats>("/admin/news/stats", { signal: controller.signal }),
-    ]).then(([queue, sourceRows, configuration, totals]) => {
+    ]).then(([sourceRows, configuration, totals]) => {
       if (controller.signal.aborted) return;
-      setCandidates(queue); setSources(sourceRows); setSettings(configuration); setStats(totals);
+      setSources(sourceRows); setSettings(configuration); setStats(totals);
     }).catch((problem) => { if (!controller.signal.aborted) setError(problemMessage(problem, copy.error)); });
     return () => controller.abort();
   }, [copy.error, reload]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const query = new URLSearchParams({ limit: "100" });
+    for (const status of queueStatuses[queueView]) query.append("status", status);
+    api<NewsCandidatePage>(`/admin/news/candidates?${query}`, { signal: controller.signal })
+      .then((page) => { if (!controller.signal.aborted) setCandidates(page); })
+      .catch((problem) => { if (!controller.signal.aborted) setError(problemMessage(problem, copy.error)); });
+    return () => controller.abort();
+  }, [copy.error, queueView, reload]);
 
   useEffect(() => {
     if (!selected) return;
@@ -118,10 +139,12 @@ export function AdminNewsWorkspace() {
     return () => controller.abort();
   }, [copy.error, reload, selected]);
 
-  const queue = useMemo(
-    () => candidates?.candidates.filter((item) => ["manual_review", "shadow_review", "failed", "published"].includes(item.status)) ?? [],
-    [candidates],
-  );
+  const queue = candidates?.candidates ?? [];
+  const queueCount = (view: QueueView) =>
+    queueStatuses[view].reduce((total, status) => total + (stats?.queue_by_status[status] ?? 0), 0);
+  const queueLabel: Record<QueueView, string> = {
+    review: copy.reviewView, published: copy.publishedView, evidence: copy.evidenceView,
+  };
 
   async function run(work: () => Promise<void>) {
     if (!manage.allowed || busy) return;
@@ -197,6 +220,10 @@ export function AdminNewsWorkspace() {
       items={tabs.map((value) => ({ value, label: copy[value] }))}>
       {tab === "review" && <div className="grid gap-5 xl:grid-cols-[22rem_minmax(0,1fr)]">
         <section className={`${panelClass} space-y-2`} aria-label={copy.review}>
+          <div className="flex flex-wrap gap-2" role="group" aria-label={copy.queueFilter}>
+            {queueViews.map((view) => <Button key={view} secondary={queueView !== view} aria-pressed={queueView === view} onClick={() => setQueueView(view)}>{`${queueLabel[view]} · ${queueCount(view)}`}</Button>)}
+          </div>
+          {queueView === "evidence" && <p className="text-xs leading-5 text-[var(--muted)]">{copy.evidenceHint}</p>}
           {!queue.length ? <Empty>{copy.empty}</Empty> : queue.map((item) => <button type="button" key={item.id}
             onClick={() => setSelected(item.id)} className={`w-full rounded-xl border p-3 text-left ${selected === item.id ? "border-[var(--teal)]" : "border-[var(--line)]"}`}>
             <span className={`rounded-full px-2 py-1 text-xs font-bold ${statusTone[item.status] ?? "bg-[var(--paper)]"}`}>{item.status}</span>

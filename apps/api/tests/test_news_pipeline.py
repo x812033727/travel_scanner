@@ -720,8 +720,10 @@ async def test_two_pages_of_one_website_stop_at_the_evidence_gate(
         result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
         stored = await session.get(NewsCandidate, candidate_id)
     await engine.dispose()
-    assert result == "manual_review"
-    assert stored is not None and stored.error_code == "news_evidence_insufficient"
+    # Kept out of the manual review queue: there is nothing for an editor to review.
+    assert result == "needs_evidence"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("needs_evidence", "news_evidence_insufficient")
     # Nothing was spent on a candidate that cannot pass.
     duplicate_check.assert_not_awaited()
 
@@ -760,3 +762,22 @@ async def test_a_restarting_news_worker_recovers_every_in_flight_candidate_at_on
     assert recovered == [interrupted_id]
     assert statuses[interrupted_id] == ("failed", "news_processing_stale")
     assert statuses[waiting_id] == ("discovered", None)
+
+
+@pytest.mark.asyncio
+async def test_the_review_list_asks_for_exactly_the_statuses_it_shows() -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        for status in ("manual_review", "needs_evidence", "needs_evidence", "failed", "published"):
+            await seed_candidate(session, status=status)
+        review = await service.list_candidates(
+            session, page=1, limit=25, status=["manual_review", "shadow_review", "failed"]
+        )
+        evidence = await service.list_candidates(
+            session, page=1, limit=25, status=["needs_evidence"]
+        )
+        everything = await service.list_candidates(session, page=1, limit=25)
+    await engine.dispose()
+    assert sorted(row.status for row in review.candidates) == ["failed", "manual_review"]
+    assert evidence.total == 2
+    assert everything.total == 5

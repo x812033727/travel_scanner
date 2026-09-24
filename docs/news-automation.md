@@ -32,9 +32,11 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    back so the next scan tries it again. Exact URL, title or content matches are closed as
    duplicates at once.
 2. **Evidence gate.** Evidence from at least two different websites (host without
-   `www.`), one of them first-party, or the candidate goes to manual review
-   (`news_evidence_insufficient`) before any model call. Pages of one website are one
-   source (owner decision, 2026-09-24); the same rule applies to a manual publish.
+   `www.`), one of them first-party, or the candidate stops before any model call with
+   status `needs_evidence` (`news_evidence_insufficient`). That status is not manual
+   review: it has its own 「缺證據」 list in `/admin/news`, where a candidate can be
+   rejected or run again. Pages of one website are one source (owner decision,
+   2026-09-24); the same rule applies to a manual publish.
 3. **Duplicate check.** Jev compares the story with the same category's news published in
    the last 30 days — hand-written articles included — and with other candidates.
    Uncertain goes to review.
