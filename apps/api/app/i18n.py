@@ -147,6 +147,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "That partner offer could not be found",
         "affiliate_partner_not_found": "That partner could not be found",
         "affiliate_source_invalid": "Choose a search or a saved trip first",
+        "ai_accounts_agent_invalid_response": "The AI accounts agent returned a malformed response",
+        "ai_accounts_agent_unavailable": "The AI accounts agent is unavailable right now",
+        "ai_accounts_disabled": "AI account management is not enabled",
         "ai_planner_unavailable": (
             "The AI planner is temporarily unavailable and did not read your description. Try "
             "again shortly"
@@ -350,6 +353,11 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "提携オファーが見つかりません",
         "affiliate_partner_not_found": "提携先が見つかりません",
         "affiliate_source_invalid": "検索か保存済みの旅程を指定してください",
+        "ai_accounts_agent_invalid_response": (
+            "AI アカウントエージェントの応答形式が正しくありません"
+        ),
+        "ai_accounts_agent_unavailable": "AI アカウントエージェントに現在接続できません",
+        "ai_accounts_disabled": "AI アカウント管理は有効になっていません",
         "ai_planner_unavailable": (
             "AI プランナーが一時的に利用できず、入力内容は読み取られませんでした。"
             "しばらくしてからお試しください"
@@ -539,6 +547,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "제휴 상품을 찾을 수 없습니다",
         "affiliate_partner_not_found": "제휴 업체를 찾을 수 없습니다",
         "affiliate_source_invalid": "검색 또는 저장된 여행을 먼저 지정해 주세요",
+        "ai_accounts_agent_invalid_response": "AI 계정 에이전트의 응답 형식이 올바르지 않습니다",
+        "ai_accounts_agent_unavailable": "지금은 AI 계정 에이전트에 연결할 수 없습니다",
+        "ai_accounts_disabled": "AI 계정 관리가 활성화되지 않았습니다",
         "ai_planner_unavailable": (
             "AI 플래너를 일시적으로 사용할 수 없어 입력한 "
             "설명을 읽지 못했습니다. 잠시 후 다시 시도해 "
@@ -744,6 +755,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "找不到合作方案",
         "affiliate_partner_not_found": "找不到合作平台",
         "affiliate_source_invalid": "请指定搜索或已保存旅程",
+        "ai_accounts_agent_invalid_response": "AI 账号代理的回应格式不正确",
+        "ai_accounts_agent_unavailable": "AI 账号代理目前无法连接",
+        "ai_accounts_disabled": "AI 账号管理尚未启用",
         "ai_planner_unavailable": "AI 规划暂时无法使用，这次没有读到你的描述，请稍后再试",
         "alert_exists": "这个项目已经建立价格通知",
         "alert_limit_reached": "已达 20 笔价格通知上限",
