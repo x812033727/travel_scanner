@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-plan-revenue-channels-other-than-adsense
 title: Plan revenue channels other than AdSense
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T00:27:09Z
 created_at: 2026-09-24T00:26:50Z
-completed_at:
+completed_at: 2026-09-24T00:44:23Z
 branch: claude/adsense-alternatives-plan-ce49cf
 depends_on: []
 scope:
