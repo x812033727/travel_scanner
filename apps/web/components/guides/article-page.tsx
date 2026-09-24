@@ -290,6 +290,7 @@ export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRou
     term: { card: t("guides.termCard"), readMore: t("guides.termReadMore") },
     summary: t("guides.summary"),
     faq: t("guides.faq"),
+    support: { text: t("guides.supportText"), action: t("guides.supportAction"), newTab: ts("newTab") },
   };
   const hero = state.document.hero;
   const copy = seriesCopy(locale);
