@@ -12,6 +12,7 @@ from app.admin.user_router import router as admin_user_router
 from app.ads.router import router as ads_router
 from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
+from app.ai_accounts.router import router as ai_accounts_router
 from app.alerts.router import router as alerts_router
 from app.analytics.discovery import router as discovery_metrics_router
 from app.analytics.router import admin_router as admin_analytics_router
@@ -129,6 +130,7 @@ app.include_router(admin_security_router, prefix="/api/v1")
 app.include_router(admin_user_router, prefix="/api/v1")
 app.include_router(database_admin_router, prefix="/api/v1")
 app.include_router(deployments_router, prefix="/api/v1")
+app.include_router(ai_accounts_router, prefix="/api/v1")
 app.include_router(runtime_router, prefix="/api/v1")
 app.include_router(ui_text_runtime_router, prefix="/api/v1")
 app.include_router(admin_ui_text_router, prefix="/api/v1")

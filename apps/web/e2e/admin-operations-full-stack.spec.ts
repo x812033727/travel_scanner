@@ -5,12 +5,12 @@ const OWNER_NAVIGATION = [
   "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/users",
   "/admin/analytics", "/admin/partners", "/admin/settings", "/admin/usage-settings",
   "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/database",
-  "/admin/deployments", "/admin/audit",
+  "/admin/deployments", "/admin/audit", "/admin/ai-accounts",
 ];
 
 const ownerPassword = "isolated-admin-workspace-password-123";
 const ROLE_NAVIGATION: Record<string, string[]> = {
-  viewer: OWNER_NAVIGATION.filter((href) => !["/admin/database", "/admin/deployments"].includes(href)),
+  viewer: OWNER_NAVIGATION.filter((href) => !["/admin/database", "/admin/deployments", "/admin/ai-accounts"].includes(href)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
   content: [
     "/admin", "/admin/guides", "/admin/news", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
