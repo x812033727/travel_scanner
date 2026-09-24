@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-ai-cost-article-opus-55
 title: 文章〈成本、品質、延遲〉的成本試算改用 Claude Opus 5.5
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5
 claimed_at: 2026-09-24T08:10:38Z
 created_at: 2026-09-24T08:08:40Z
-completed_at:
+completed_at: 2026-09-24T08:22:20Z
 branch: claude/ai-cost-article-opus-55
 depends_on: []
 scope:
