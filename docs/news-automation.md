@@ -58,13 +58,26 @@ reply, and the dropped bounds are written into the field descriptions.
    (one duplicate check, five locale decisions) from `JEV_DAILY_CALL_BUDGET` (default
    200). When the budget runs out, candidates fall back to manual review rather than
    failing.
-3. **Sources.** Add them disabled, run 「驗證來源」, then enable. A source is `evidence` or
-   `lead_only` (discovery only, never counted as evidence), optionally first-party, and
-   may list redirect hosts and parser settings (`items_path`, `article_ids`,
-   `include_path_prefixes`, …). The evidence gate needs two evidence pages including a
+3. **Sources.** The reviewed list lives in `apps/api/app/news_automation/sources.json`
+   (each entry carries a `note` on why it is there). Load it on the host, dry run first:
+
+   ```bash
+   docker compose -f docker-compose.prod.yml exec -T api python -m app.news_automation.sources_cli
+   docker compose -f docker-compose.prod.yml exec -T api python -m app.news_automation.sources_cli --apply --actor-email <admin email>
+   ```
+
+   The dry run validates every source from the host and writes nothing. `--apply` creates
+   or updates each source through the same service as `/admin/news` (validation, audit
+   row); a source that fails validation is kept, disabled, with the reason. Sources in the
+   database but not in the file are listed and left alone, and `/admin/news` can still
+   disable or edit any of them. A source is `evidence` or `lead_only` (discovery only,
+   never counted as evidence), optionally first-party, and may list redirect hosts and
+   parser settings (`items_path`, `article_ids`, `include_path_prefixes`,
+   `max_entries_per_scan`, …). The evidence gate needs two evidence pages including a
    first-party one, and the scanner only finds the second page through the article's own
-   links, so pair press sources that link to primary announcements with the matching
-   first-party hosts.
+   links, so the list pairs press feeds with the first-party hosts they cite. Hosts match
+   exactly: a link to `www.microsoft.com` does not count for a source on
+   `blogs.microsoft.com`.
 4. **Settings.** Pick the writer and checker from the dropdowns (「預設」 follows the admin
    AI settings; 「自訂…」 accepts any id matching `[A-Za-z0-9._:-]{1,128}`). Turn on
    「啟用掃描」 with mode 「影子模式」. Changing a vendor, model or prompt/policy version

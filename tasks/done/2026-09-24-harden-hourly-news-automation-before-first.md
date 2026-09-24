@@ -15,6 +15,7 @@ scope:
   - apps/api/app/worker.py
   - apps/api/tests/test_news_automation.py
   - apps/api/tests/test_news_pipeline.py
+  - apps/api/tests/test_news_sources_cli.py
   - docker-compose.yml
   - docker-compose.prod.yml
   - docs/news-automation.md
@@ -144,6 +145,14 @@ npm run check:tasks
   after it (Microsoft AI blog 4xx, Meta AI blog unreadable detail pages, the Ars
   Technica feedburner host refused by robots). SEC press releases validate but their
   pages extract to 248 characters (an access notice), so SEC is not a usable source.
+- Sources: Claude in Chrome was not connected when the owner asked for sources to be set
+  up, so the list became a reviewed file (`app/news_automation/sources.json`, 15 feeds,
+  each validated from a workstation on 2026-09-24) plus an importer,
+  `python -m app.news_automation.sources_cli` (dry run by default; `--apply
+  --actor-email`). It writes through `service.create_source`/`update_source`, keeps a
+  refused source disabled with the reason, and snapshots rows and detaches the actor
+  because a refused validation rolls the session back (an expired row read afterwards is
+  blocking IO on asyncpg; a test drives `run()` with a persisted admin to pin it).
 - Still known: a feed whose links always redirect is refetched every hour (one page
   per entry) because the pre-redirect URL is not stored; the orphan sweep keys on
   `updated_at`, so with a long backlog a queued candidate may get one extra job an hour
