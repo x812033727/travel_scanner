@@ -1,7 +1,9 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useSyncExternalStore } from "react";
+import { isPrivateRoute } from "@/lib/private-routes";
 import { TRAVELPAYOUTS_DRIVE_SCRIPT_URL } from "@/lib/travelpayouts-drive";
 
 const optimizerBypassAttributes = {
@@ -25,13 +27,16 @@ function subscribeToPrivacySignals() {
 }
 
 export function TravelpayoutsDrive({ enabled }: { enabled: boolean }) {
+  const pathname = usePathname();
   const mayLoad = useSyncExternalStore(
     subscribeToPrivacySignals,
     () => enabled && !privacyOptOut(),
     () => false,
   );
 
-  if (!mayLoad) return null;
+  // Never on a private page: a share link's token or a trip is readable by any script in the
+  // document. `PrivateRouteIsolation` covers arriving there after the script already ran.
+  if (!mayLoad || isPrivateRoute(pathname)) return null;
 
   return (
     <Script
