@@ -1,14 +1,14 @@
 ---
 id: 2026-09-24-stop-treating-images-and-same-site
 title: Stop treating images and same-site pages as news evidence
-status: open
+status: done
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5.5
+claimed_at: 2026-09-24T04:10:05Z
 created_at: 2026-09-24T02:40:18Z
-completed_at:
-branch:
+completed_at: 2026-09-24T04:10:26Z
+branch: claude/news-evidence-distinct-sites
 depends_on: []
 scope:
   - apps/api/app/news_automation/scanner.py
@@ -39,22 +39,22 @@ decision that has not been made explicitly.
 
 ## Definition of done
 
-- [ ] Links that are plainly not articles (image, video, audio, PDF and archive
+- [x] Links that are plainly not articles (image, video, audio, PDF and archive
       extensions, and paths under upload/media folders) are dropped before any request.
-- [ ] Skipping such links does not mark a scan `partial`.
-- [ ] The site owner has decided whether a second page on the primary page's own host
+- [x] Skipping such links does not mark a scan `partial`.
+- [x] The site owner has decided whether a second page on the primary page's own host
       counts toward the evidence gate, and the scanner and the gate implement that
       decision (for example: same-host links are kept as context but the gate needs a
       second host).
-- [ ] The docs describe the rule.
+- [x] The docs describe the rule.
 
 ## Steps
 
-- [ ] Filter non-article links in `scan_source` (and add a test with an article that
+- [x] Filter non-article links in `scan_source` (and add a test with an article that
       links to images and a same-site page).
-- [ ] Put the same-host question to the owner with numbers from production: how many
+- [x] Put the same-host question to the owner with numbers from production: how many
       candidates pass the gate only because of a same-host page.
-- [ ] Implement the decision in the gate (`process_candidate`'s evidence check and
+- [x] Implement the decision in the gate (`process_candidate`'s evidence check and
       `publish_candidate`) and the scanner.
 
 ## How to verify
@@ -72,3 +72,13 @@ reports no skipped image pages.
   `last_error` notes on the sources show the image URLs.
 - A candidate's evidence rows keep their host, so the production numbers for the
   same-host question can be read from `news_evidence` without a code change.
+- Owner decision (2026-09-24, after the first production numbers: only 1 of about 60
+  processed candidates had stopped at the evidence gate): pages of one website do not
+  count as a second source. A website is the host without a leading `www.`; separate
+  hosts of one company (blog.google, deepmind.google) are separate websites.
+- Implemented as `evidence_site` / `evidence_sufficient` in `policy.py`, used by the
+  pipeline gate (before any model call), by `publish_candidate`, and for the hard
+  checks' source count. The scanner no longer fetches same-site links at all, so they
+  are not kept as context either; and it drops image, video, audio, PDF and archive
+  links by extension. Candidates already holding only same-site evidence stop at the
+  gate when next processed, and a manual publish of one is refused.
