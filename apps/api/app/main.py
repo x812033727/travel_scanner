@@ -9,10 +9,10 @@ from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
 from app.admin.security_router import router as admin_security_router
 from app.admin.user_router import router as admin_user_router
+from app.admin_ai_accounts.router import router as ai_accounts_router
 from app.ads.router import router as ads_router
 from app.affiliates.router import router as affiliates_router
 from app.ai.router import router as ai_router
-from app.ai_accounts.router import router as ai_accounts_router
 from app.alerts.router import router as alerts_router
 from app.analytics.discovery import router as discovery_metrics_router
 from app.analytics.router import admin_router as admin_analytics_router

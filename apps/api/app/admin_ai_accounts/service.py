@@ -3,8 +3,8 @@ from typing import Any
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai_accounts.agent import AiAccountsAgentClient
-from app.ai_accounts.schemas import (
+from app.admin_ai_accounts.agent import AiAccountsAgentClient
+from app.admin_ai_accounts.schemas import (
     TERMINAL_LOGIN_STATUSES,
     AiAccountsOverview,
     AiLoginSession,

@@ -11,7 +11,7 @@ completed_at: 2026-09-24T09:00:29Z
 branch: claude/ai-accounts-admin
 depends_on: []
 scope:
-  - apps/api/app/ai_accounts
+  - apps/api/app/admin_ai_accounts
   - apps/api/app/config.py
   - apps/api/app/main.py
   - apps/api/app/admin/operations_service.py

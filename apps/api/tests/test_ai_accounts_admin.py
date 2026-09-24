@@ -12,8 +12,8 @@ import httpx
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-import app.ai_accounts.router as router_module
-from app.ai_accounts.agent import AiAccountsAgentClient
+import app.admin_ai_accounts.router as router_module
+from app.admin_ai_accounts.agent import AiAccountsAgentClient
 from app.auth.service import current_user
 from app.config import get_settings
 from app.db import get_session

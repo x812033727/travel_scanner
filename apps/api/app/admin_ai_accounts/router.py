@@ -4,8 +4,8 @@ from fastapi import APIRouter, Depends, Request, status
 from fastapi import Path as PathParam
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.ai_accounts import service
-from app.ai_accounts.schemas import (
+from app.admin_ai_accounts import service
+from app.admin_ai_accounts.schemas import (
     AiAccountsOverview,
     AiDefaultRequest,
     AiDefaults,

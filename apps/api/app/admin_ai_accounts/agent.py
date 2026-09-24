@@ -8,7 +8,7 @@ from uuid import uuid4
 import httpx
 from pydantic import BaseModel
 
-from app.ai_accounts.schemas import (
+from app.admin_ai_accounts.schemas import (
     AgentOverview,
     AiDefaults,
     AiLoginSession,
