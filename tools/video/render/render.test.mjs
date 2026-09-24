@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { estimateTimeline } from "../core/timeline.mjs";
 import { resolveRequest } from "./browser.mjs";
@@ -72,6 +73,20 @@ test("template data problems are labelled with the scene", () => {
   doc.scenes[2].data.items = "not a list";
   delete doc.thumbnail.data.headline;
   assert.deepEqual(renderProblems(doc).map((problem) => problem.path), ["scenes[2] (three-questions).data", "thumbnail"]);
+});
+
+test("with the repository root, diagrams are inlined and asset bytes are part of the key", () => {
+  const root = fileURLToPath(new URL("../../../", import.meta.url));
+  const plan = renderPlan(showcase, "t", root);
+  const diagram = plan.scenes.find((scene) => scene.id === "cost-diagram").states[0];
+  assert.match(diagram.html, /<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg" viewBox="0 0 1600 900"/);
+  assert.doesNotMatch(diagram.html, /<img src=[^>]*diagram-1\.svg/);
+  assert.match(diagram.text, /三種流程的成本估算/, "the diagram's words go through the font coverage check");
+  assert.notEqual(diagram.key, renderPlan(showcase, "t").scenes.find((scene) => scene.id === "cost-diagram").states[0].key);
+  assert.deepEqual(renderProblems(showcase, root), []);
+  const missing = structuredClone(showcase);
+  missing.scenes.find((scene) => scene.id === "screen").data.image = "apps/web/public/nope.png";
+  assert.match(renderProblems(missing, root)[0].message, /apps\/web\/public\/nope\.png does not exist/);
 });
 
 test("frame paths are relative with forward slashes", () => {

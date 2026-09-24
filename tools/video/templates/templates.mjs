@@ -109,6 +109,28 @@ export const TEMPLATE_SPECS = {
   },
 };
 
+/**
+ * An SVG file's markup made fit to inline: prolog and doctype dropped, the root's fixed size
+ * removed so the slide sizes it. Article diagrams already pass check_svg; this is for anything else.
+ */
+export function inlineSvg(markup) {
+  return String(markup)
+    .replace(/^﻿/, "")
+    .replace(/<\?xml[\s\S]*?\?>/, "")
+    .replace(/<!DOCTYPE[\s\S]*?>/i, "")
+    .replace(/<svg\b([^>]*)>/, (_, attributes) => `<svg${attributes.replace(/\s(width|height)="[^"]*"/g, "")}>`)
+    .trim();
+}
+
+export function svgProblems(markup) {
+  const text = String(markup);
+  const problems = [];
+  if (!/<svg\b/.test(text)) problems.push("the file is not an SVG");
+  if (/<script\b|<foreignObject\b|\son[a-z]+\s*=|javascript:/i.test(text)) problems.push("the SVG contains script, an event handler or foreignObject");
+  if (/(?:href|src)\s*=\s*["']https?:|url\(\s*["']?https?:|@import/i.test(text)) problems.push("the SVG loads something from the network");
+  return problems;
+}
+
 /** Everything wrong with a scene's data for its template, reveals included. */
 export function sceneProblems(scene) {
   const spec = TEMPLATE_SPECS[scene.template];
@@ -197,7 +219,10 @@ const RENDERERS = {
     ].join("");
   },
   diagram(data, state) {
-    return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "paper", 1)}><img src="${assetUrl(data.svg)}" alt=""></div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
+    // Inline, so the SVG's text is set in the bundled font like the rest of the slide; an <img>
+    // would use whatever fonts the machine has, and CI has none for Chinese.
+    const art = state.svg ? inlineSvg(state.svg) : `<img src="${assetUrl(data.svg)}" alt="">`;
+    return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "paper", 1)}>${art}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
   },
   screenshot(data, state) {
     const box = data.highlight

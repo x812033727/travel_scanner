@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, escapeHtml, richText, sceneProblems, slideHtml, TEMPLATE_SPECS, thumbnailHtml, thumbnailProblems, visibility, visibleText } from "./templates.mjs";
+import { assetUrl, escapeHtml, inlineSvg, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, thumbnailHtml, thumbnailProblems, visibility, visibleText } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -82,6 +82,18 @@ test("the chapter label is drawn when given and the brand always is", () => {
   const html = slideHtml(scene("numbers"), state({ chapter: "比一比" }));
   assert.match(html, /<div class="chrome-chapter">比一比<\/div><div class="chrome-brand">MOKAAIR<\/div>/);
   assert.doesNotMatch(slideHtml(scene("numbers"), state({ chapter: null })), /chrome-chapter/);
+});
+
+test("an inlined SVG loses its prolog and fixed size; scripts and network loads are refused", () => {
+  const svg = '<?xml version="1.0"?><!DOCTYPE svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900"><text>圖</text></svg>';
+  assert.equal(inlineSvg(svg), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><text>圖</text></svg>');
+  assert.deepEqual(svgProblems(svg), []);
+  assert.equal(svgProblems('<svg><script>x()</script></svg>').length, 1);
+  assert.equal(svgProblems('<svg><rect onload="x()"/></svg>').length, 1);
+  assert.equal(svgProblems('<svg><image href="https://example.com/a.png"/></svg>').length, 1);
+  assert.deepEqual(svgProblems("not svg"), ["the file is not an SVG"]);
+  const html = slideHtml(scene("cost-diagram"), state({ svg }));
+  assert.match(html, /<div class="paper enter" style="--i:1"><svg xmlns/);
 });
 
 test("the thumbnail is its own 1280x720 page", () => {

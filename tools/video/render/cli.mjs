@@ -54,12 +54,12 @@ export async function run(command, args, ctx) {
     return EXIT.lint;
   }
   const { doc } = project;
-  const dataProblems = renderProblems(doc);
+  const dataProblems = renderProblems(doc, ctx.root);
   if (dataProblems.length) {
     print(ctx.stdout, "ERROR", dataProblems);
     return EXIT.lint;
   }
-  const plan = renderPlan(doc, themeHash());
+  const plan = renderPlan(doc, themeHash(), ctx.root);
   const glyphs = coverageProblems(plan, bundledCoverage());
   if (glyphs.length) {
     print(ctx.stdout, "ERROR", glyphs);
