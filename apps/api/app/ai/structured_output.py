@@ -13,7 +13,7 @@ import json
 import re
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError
 
 _FENCED_BLOCK = re.compile(r"```(?:[A-Za-z0-9_-]+)?[ \t]*\r?\n?(.*?)```", re.DOTALL)
 
@@ -92,6 +92,30 @@ def anthropic_output_text(body: dict[str, Any]) -> str:
     if not joined:
         raise ValueError("AI 沒有回傳內容")
     return joined
+
+
+MAX_REPAIR_ERRORS = 8
+
+
+def repair_instruction(previous: str, error: ValidationError) -> str:
+    """The retry prompt after a reply failed validation: what was wrong, then the reply.
+
+    Told only "repair the JSON", a model mostly repeats the mistake. The first production
+    news run failed three candidates this way: a summary item of 326 characters against
+    a limit of 300, an invented hero image, and a missing comma.
+    """
+    problems = []
+    for item in error.errors()[:MAX_REPAIR_ERRORS]:
+        location = ".".join(str(part) for part in item.get("loc", ())) or "(root)"
+        problems.append(f"- {location}: {item.get('msg', '')}")
+    return (
+        "\nRepair the previous invalid JSON and match the schema exactly. "
+        "It failed validation:\n"
+        + "\n".join(problems)
+        + "\nKeep everything that was valid and change only what these errors name."
+        + "\nPrevious JSON: "
+        + previous
+    )
 
 
 def schema_instructions(schema: type[BaseModel]) -> str:
