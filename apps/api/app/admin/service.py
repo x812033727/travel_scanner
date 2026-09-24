@@ -52,6 +52,7 @@ from app.providers.flightaware import FlightAwareProvider
 from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
 from app.providers.usage_meter import (
+    azure_speech_usage_snapshot,
     ekispert_usage_snapshot,
     google_maps_usage_snapshot,
     naver_maps_usage_snapshot,
@@ -68,6 +69,7 @@ from app.trips.routing import (
     OdsayRouteProvider,
     RoutePoint,
 )
+from app.video_speech.azure import AzureSpeech, SpeechUpstreamError
 from app.weather.google import GoogleWeatherService
 from app.weather.met_norway import MetNorwayWeatherService
 
@@ -196,6 +198,19 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "hotspot_guide_gemini_api_key",
             "jev_api_key",
         ),
+    ),
+    "azure_speech": ProviderDefinition(
+        "Azure 語音（影片旁白）",
+        "YouTube 教學影片的台灣口音旁白。金鑰只存在這台伺服器：本機的影片工具帶著下方建立的"
+        "「影片工具權杖」送出句子，由伺服器呼叫 Azure 後把音檔傳回。每月上限以 Azure 的計費字元計算"
+        "（一個中文字算兩個，SSML 標記也算），預設 450,000，低於免費層的 500,000。",
+        (
+            "azure_speech_region",
+            "azure_speech_voices",
+            "azure_speech_monthly_character_limit",
+            "azure_speech_timeout_seconds",
+        ),
+        ("azure_speech_key",),
     ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
@@ -876,6 +891,16 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             "ready" if configured else "not_configured",
             f"Ekispert 憑證已設定（{mode}模式）" if configured else "缺少 Ekispert API key",
         )
+    if provider == "azure_speech":
+        configured = settings.azure_speech_configured
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"Azure 語音已設定（{settings.azure_speech_region}，"
+            f"{len(settings.azure_speech_voice_list)} 個允許的聲音）"
+            if configured
+            else "缺少 Azure Speech 金鑰或區域",
+        )
     if provider == "odsay":
         configured = settings.odsay_configured
         return (
@@ -1009,7 +1034,7 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
     "ai_vendors", "ai_planner", "ai_guide_search", "hotspot_intros",
     "google_maps", "naver_maps", "youtube_guides", "brave_guides", "gemini_guides",
     "amadeus", "skyscanner", "duffel", "flightaware", "google_travel_impact",
-    "booking_demand", "met_norway", "ekispert", "odsay", "navitime",
+    "booking_demand", "met_norway", "ekispert", "odsay", "navitime", "azure_speech",
     "travelpayouts", "kkday", "klook", "airalo", "trip_com", "agoda", "booking",
     "skyscanner_affiliate",
 })
@@ -1114,6 +1139,14 @@ async def settings_snapshot(
         if redis is not None
         else None
     )
+    azure_speech_usage = (
+        await azure_speech_usage_snapshot(
+            redis,
+            monthly_limit=effective.azure_speech_monthly_character_limit,
+        )
+        if redis is not None
+        else None
+    )
     youtube_usage = (
         await youtube_usage_snapshot(
             redis,
@@ -1205,6 +1238,8 @@ async def settings_snapshot(
                     if provider == "ekispert" and ekispert_usage is not None
                     else ProviderUsageView(**asdict(odsay_usage))
                     if provider == "odsay" and odsay_usage is not None
+                    else ProviderUsageView(**asdict(azure_speech_usage))
+                    if provider == "azure_speech" and azure_speech_usage is not None
                     else ProviderUsageView(**asdict(youtube_usage))
                     if provider == "youtube_guides" and youtube_usage is not None
                     else None
@@ -1236,6 +1271,8 @@ async def settings_snapshot(
                         [
                             "provider_settings_updated",
                             "provider_connection_tested",
+                            "video_tool_token_created",
+                            "video_tool_token_revoked",
                             "system_settings_updated",
                             "layout_settings_updated",
                             "ui_text_updated",
@@ -1312,6 +1349,31 @@ def _validate_provider_values(
                 "ga4_measurement_id 必須是有效的 G-... Measurement ID",
             )
         merged["ga4_measurement_id"] = measurement_id
+    if "azure_speech_region" in merged:
+        # The region names the endpoint host, so it is lower-cased and pattern-checked here as
+        # well as in Settings: "East Asia" or a URL pasted by mistake is refused, not built into
+        # a hostname.
+        region = str(merged["azure_speech_region"] or "").strip().lower()
+        if region and not re.fullmatch(r"[a-z][a-z0-9]{1,31}", region):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "azure_speech_region 必須是 Azure 區域代碼，例如 eastasia",
+            )
+        merged["azure_speech_region"] = region or None
+    if "azure_speech_voices" in merged:
+        voices = [voice.strip() for voice in str(merged["azure_speech_voices"] or "").split(",")]
+        voices = [voice for voice in voices if voice]
+        if not voices or not all(
+            re.fullmatch(r"[a-z]{2,3}-[A-Z][A-Za-z]{1,3}-[A-Za-z0-9]+Neural", voice)
+            for voice in voices
+        ):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "azure_speech_voices 必須是以逗號分隔的 Azure 聲音名稱，例如 zh-TW-HsiaoChenNeural",
+            )
+        merged["azure_speech_voices"] = ",".join(voices)
     if "adsense_publisher_id" in merged:
         publisher_id = str(merged["adsense_publisher_id"] or "").strip()
         if publisher_id and not re.fullmatch(r"ca-pub-[0-9]{16}", publisher_id):
@@ -2011,6 +2073,27 @@ async def _test_provider(
         if not odsay_probe.route_available:
             raise ConnectionError("ODsay 可連線，但未回傳首爾站→景福宮的測試路線")
         return "ODsay 韓國大眾運輸路線驗證成功"
+    if provider == "azure_speech":
+        if not (settings.azure_speech_key and settings.azure_speech_region):
+            raise ConnectionError("缺少 Azure Speech 金鑰或區域")
+        # Listing voices costs no characters, and it proves the key, the region and the
+        # voice allowlist in one call.
+        speech = AzureSpeech(
+            region=settings.azure_speech_region,
+            key=settings.azure_speech_key,
+            timeout_seconds=settings.azure_speech_timeout_seconds,
+        )
+        try:
+            listed = await speech.voices()
+        except SpeechUpstreamError as error:
+            raise ConnectionError(f"Azure 語音連線失敗（HTTP {error.status}）") from error
+        available = {str(voice.get("ShortName")) for voice in listed if isinstance(voice, dict)}
+        missing = [voice for voice in settings.azure_speech_voice_list if voice not in available]
+        if missing:
+            raise ConnectionError(f"Azure 語音可連線，但這個區域沒有：{'、'.join(missing)}")
+        return (
+            f"Azure 語音連線成功，允許的 {len(settings.azure_speech_voice_list)} 個聲音都可用"
+        )
     if provider == "navitime":
         gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
         navitime_probe = await NavitimeRouteProvider(settings, None, redis).probe(

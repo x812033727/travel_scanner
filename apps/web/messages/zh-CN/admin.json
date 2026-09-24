@@ -544,6 +544,22 @@
     "hotspot_guide_gemini_model": {
       "label": "Gemini 模型",
       "help": "Flash 级能生成景点候选名单，但接地列出文章来源时较弱；Pro 级对新申请的密钥可能不可用，请以连接测试结果为准。"
+    },
+    "azure_speech_region": {
+      "label": "区域",
+      "help": "创建 Speech 资源时选择的 Azure 区域代码，例如 eastasia（东亚）；密钥与区域要来自同一个资源。"
+    },
+    "azure_speech_voices": {
+      "label": "允许的声音",
+      "help": "视频工具可以使用的声音，以逗号分隔。台湾口音：zh-TW-HsiaoChenNeural、zh-TW-YunJheNeural、zh-TW-HsiaoYuNeural；多语声音会自动改说台湾国语。"
+    },
+    "azure_speech_monthly_character_limit": {
+      "label": "每月计费字符上限",
+      "help": "按 UTC 月计算；一个中文字算两个字符，SSML 标记也算。默认 450,000，低于免费层的 500,000；0 表示只计数不限制。"
+    },
+    "azure_speech_timeout_seconds": {
+      "label": "单次合成超时（秒）",
+      "help": "服务器等待 Azure 返回一段旁白的最长时间。"
     }
   },
   "hotspotTabs": {
@@ -1351,6 +1367,10 @@
     "hotspot_guide_gemini_api_key": {
       "label": "Gemini API Key",
       "help": "用于多语文章搜索与景点候选名单生成；只在服务器端加密保存。"
+    },
+    "azure_speech_key": {
+      "label": "Speech 密钥",
+      "help": "Azure 门户 → Speech 资源 → 密钥和终结点的“密钥 1”。只存在服务器，不会发给视频工具。"
     }
   },
   "settingsPanel": {
@@ -1364,7 +1384,9 @@
       "system_settings_updated": "更新系统设置",
       "provider_settings_updated": "更新供应商设置",
       "provider_connection_tested": "执行连接测试",
-      "admin_role_updated": "更新管理员权限"
+      "admin_role_updated": "更新管理员权限",
+      "video_tool_token_created": "创建视频工具令牌",
+      "video_tool_token_revoked": "撤销视频工具令牌"
     },
     "usageOperations": {
       "places_autocomplete": "地点自动完成",
@@ -1381,7 +1403,8 @@
       "search_course": "Ekispert 路线查询",
       "search_pub_trans_path": "ODsay 公共交通查询",
       "search_list": "视频搜索（search.list）",
-      "videos_list": "视频详细资料（videos.list）"
+      "videos_list": "视频详细资料（videos.list）",
+      "synthesis": "合成请求"
     },
     "googleUsageLabel": "Google Maps 本月用量",
     "googleUsageTitle": "Google API 每月用量",
@@ -1479,7 +1502,12 @@
     "auditSystemHint": "只记录变更字段、操作者与公开注册结果，不记录敏感设置内容。",
     "auditProviderHint": "只记录变更字段名称、操作者与测试结果，不记录密钥内容。",
     "auditEmpty": "尚无管理操作记录。",
-    "testResult": "{message}（{latency} ms）"
+    "testResult": "{message}（{latency} ms）",
+    "azureSpeechTitle": "Azure 语音本月用量",
+    "azureSpeechAria": "Azure 语音本月计费字符",
+    "azureSpeechProgress": "Azure 语音月用量",
+    "azureSpeechNote": "按 UTC 月统计服务器发出的计费字符（每个中文字算两个，含 SSML 标记）；Azure 拒绝的请求会退回。实际账单以 Azure 门户为准。",
+    "billableCharacters": "计费字符"
   },
   "uiText": {
     "eyebrow": "SYSTEM ADMIN",
@@ -1854,5 +1882,28 @@
       "no_result": "找不到结果",
       "not_found": "店家不存在"
     }
+  },
+  "videoTools": {
+    "title": "视频工具令牌",
+    "intro": "本机的视频工具带着这个令牌，请服务器用上面的密钥合成旁白。令牌只能用来合成语音，可以随时撤销；服务器只保存它的哈希值。",
+    "nameLabel": "名称",
+    "namePlaceholder": "例如：我的笔记本",
+    "create": "创建令牌",
+    "creating": "创建中…",
+    "createdTitle": "新的令牌只会显示这一次",
+    "createdHelp": "复制后，在本机运行视频工具的 login 命令并粘贴。离开这个页面后就看不到了。",
+    "copy": "复制",
+    "copied": "已复制",
+    "dismiss": "我已经保存好了",
+    "empty": "还没有令牌。",
+    "prefix": "开头",
+    "createdAt": "创建于",
+    "lastUsed": "最后使用",
+    "never": "尚未使用",
+    "revoked": "已撤销",
+    "revoke": "撤销",
+    "confirmRevoke": "确定撤销",
+    "cancel": "取消",
+    "loadFailed": "无法加载令牌列表"
   }
 }
