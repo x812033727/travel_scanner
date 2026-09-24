@@ -10,7 +10,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "AI 模型這麼多，到底該怎麼挑？排行榜第一名不一定適合你",
-    "description": "新模型幾乎每週上架，排行榜也跟著換第一名，你真的每次都要跟著換嗎？這支影片給正在用 ChatGPT、Claude、Gemini 這類工具或 API 做產品功能的你，一套判斷方法。\n\n影片用「做什麼、能等多久、付多少」三個問題，帶你判斷該用單一旗艦模型、先便宜後升級的級聯，還是兩個模型同答、第三個模型評審的並行互審。實際算給你看：同一組假設下，單一旗艦一次請求約 0.03 美元，級聯平均約 0.0114 美元，並行互審約 0.1004 美元；金額以 2026 年 9 月官方定價頁標準價計算，30% 升級比例與 3,000／600 個輸入輸出 token 是示範用的假設，不是量到的真實流量。\n\n我的看法是：排行榜每週換第一名，不該是你換模型的理由。大部分工作用得到的其實是先便宜後升級的級聯，並行互審則該留給真的輸不起的決定。完整算式、比較表與延遲推論的前提，都在說明欄的文章連結裡。",
+    "description": "新模型幾乎每週上架，排行榜也跟著換第一名，你真的每次都要跟著換嗎？這支影片給正在用 ChatGPT、Claude、Gemini 這類工具或 API 做產品功能的你，一套判斷方法。\n\n影片用「做什麼、能等多久、付多少」三個問題，帶你判斷該用單一旗艦模型、先便宜後升級的級聯，還是兩個模型同答、第三個模型評審的並行互審。實際算給你看：同一組假設下，單一旗艦（Claude Opus 5.5）一次請求約 0.024 美元，級聯（Gemini 3.5 Flash-Lite 先答）平均約 0.0096 美元，並行互審（再加 gpt-6-astra 同答、Claude Sonnet 5 評審）約 0.0944 美元；金額以 2026 年 9 月官方定價頁標準價計算，30% 升級比例與 3,000／600 個輸入輸出 token 是示範用的假設，不是量到的真實流量。\n\n我的看法是：排行榜每週換第一名，不該是你換模型的理由。大部分工作用得到的其實是先便宜後升級的級聯，並行互審則該留給真的輸不起的決定。完整算式、比較表與延遲推論的前提，都在說明欄的文章連結裡。",
     "tags": ["AI模型", "模型選擇", "Claude", "Gemini", "GPT", "API費用", "AI工具教學", "級聯", "多模型互審", "LLM"],
     "video_id": null
   },
@@ -18,10 +18,11 @@
   "sources": [
     { "title": "Pricing - Claude Platform Docs", "url": "https://platform.claude.com/docs/en/about-claude/pricing", "checked_on": "2026-09-24" },
     { "title": "Gemini Developer API pricing", "url": "https://ai.google.dev/gemini-api/docs/pricing", "checked_on": "2026-09-24" },
-    { "title": "Pricing | OpenAI API", "url": "https://platform.openai.com/docs/pricing", "checked_on": "2026-09-24" }
+    { "title": "Pricing | OpenAI API", "url": "https://developers.openai.com/api/docs/pricing", "checked_on": "2026-09-24" },
+    { "title": "Claude Opus 5.5 - Claude Platform Docs", "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview", "checked_on": "2026-09-24" }
   ],
   "assets": [
-    { "path": "apps/web/public/guides/ai-workflow-cost-quality-latency/diagram-1.svg", "source": "Mokaair", "license": "© Mokaair" }
+    { "path": "docs/videos/ai-model-choice/cost-flows.svg", "source": "Mokaair，改自文章 ai-workflow-cost-quality-latency 的 diagram-1.svg，金額改用 Claude Opus 5.5 重算", "license": "© Mokaair" }
   ],
   "scenes": [
     { "id": "hook", "chapter": "開場", "template": "title", "data": { "tag": "AI 工具教學", "title": "AI 模型這麼多，到底該怎麼挑？", "subtitle": "排行榜第一名，不一定是你要的答案" }, "lines": [
@@ -38,7 +39,7 @@
       { "id": "quyz", "text": "答案很簡單，是因為太多事同時在發生。" }
     ] },
     { "id": "opus-5-5", "template": "big", "data": { "kicker": "這幾週剛發生的事", "text": "Opus 5.5", "sub": "才上架沒多久的新型號" }, "lines": [
-      { "id": "ne4z", "text": "這幾週，又有一個新旗艦剛上架。" },
+      { "id": "ne4z", "text": "這幾週，又有一個新的大型模型剛上架。" },
       { "id": "ce66", "text": "它的名字是 Opus 5.5，才推出沒多久。" },
       { "id": "9rtn", "text": "你可能都還沒摸熟上一個型號。" },
       { "id": "ztd6", "text": "而且這不是唯一的新聞，幾乎每一家都在更新。" },
@@ -133,20 +134,20 @@
       { "id": "85qa", "text": "延遲的形狀，跟成本一樣，值得分開看。" },
       { "id": "xj6a", "text": "最慢的那百分之五叫 p95；級聯在這裡比較慢，是我的推論。" }
     ], "claims": ["c11"] },
-    { "id": "cost-table", "chapter": "第三題：付多少", "template": "table", "data": { "title": "三種流程，各要付多少", "columns": ["流程", "呼叫組成", "一次請求", "每萬次"], "rows": [["單一旗艦", "1 次旗艦模型", "0.03 美元", "300 美元"], ["級聯", "小模型先答，三成再升級", "平均 0.0114 美元", "平均 114 美元"], ["並行互審", "兩個模型同答，第三個評審", "0.1004 美元", "1,004 美元"]], "highlight": 1 }, "lines": [
+    { "id": "cost-table", "chapter": "第三題：付多少", "template": "table", "data": { "title": "三種流程，各要付多少", "columns": ["流程", "呼叫組成", "一次請求", "每萬次"], "rows": [["單一旗艦", "Opus 5.5 答一次", "0.024 美元", "240 美元"], ["級聯", "小模型先答，三成再升級", "平均 0.0096 美元", "平均 96 美元"], ["並行互審", "兩個模型同答，第三個評審", "0.0944 美元", "944 美元"]], "highlight": 1 }, "lines": [
       { "id": "necg", "text": "那換算成錢，三種做法差多少？" },
       { "id": "c8pa", "text": "先講清楚，這裡固定一組假設，方便比較。" },
       { "id": "j5xm", "text": "每次請求，模型要讀進去的字，會被切成 token。" },
       { "id": "qrhy", "text": "平均一次送出三千個 token，收到六百個。" },
       { "id": "jq27", "text": "這三千跟六百，是示範用的數字，不是規定。" },
       { "id": "j8hk", "text": "你可以照自己實際的用量，換成自己的數字。" },
-      { "id": "zi3w", "text": "單一旗艦最簡單，一次大約三分錢美金。", "reveal": 1 },
-      { "id": "cqc2", "text": "級聯平均下來，大約一分錢出頭。", "reveal": 1 },
-      { "id": "gr8m", "text": "並行互審要三次呼叫，大約一毛錢。", "reveal": 1 },
-      { "id": "y3wa", "text": "算下來，級聯比一路用旗艦，省六成以上。" },
+      { "id": "zi3w", "text": "單一旗艦最簡單，一次大約兩分半美金。", "reveal": 1 },
+      { "id": "cqc2", "text": "級聯平均下來，大約一分錢。", "reveal": 1 },
+      { "id": "gr8m", "text": "並行互審要三次呼叫，將近一毛錢。", "reveal": 1 },
+      { "id": "y3wa", "text": "算下來，級聯比一路用旗艦，省了六成。" },
       { "id": "r5g8", "text": "三成的升級比例，是示範用的假設，不是量到的真實流量。" },
       { "id": "xwj3", "text": "換算成一萬次請求，差距會更明顯。" },
-      { "id": "7ake", "text": "單一旗艦要三百美元，級聯只要一百多美元。" },
+      { "id": "7ake", "text": "單一旗艦要兩百四十美元，級聯不到一百美元。" },
       { "id": "fwvj", "text": "旗艦模型的官方定價，輸入比輸出便宜很多。" },
       { "id": "3c4s", "text": "便宜的小模型，每百萬 token 輸入只要三毛，輸出兩塊半美元。" },
       { "id": "quy9", "text": "把這兩種價差放進級聯，才會省下這麼多。" },
@@ -159,12 +160,12 @@
       { "id": "rnz4", "text": "再加上第三個模型讀完兩份答案，才能給分數。" },
       { "id": "3h3e", "text": "這三種做法沒有絕對的好壞，只有適不適合。" }
     ], "claims": ["c1", "c2", "c3", "c4", "c6", "c7", "c8", "c9", "c10"] },
-    { "id": "cascade-math", "template": "code", "data": { "code": "small_model = 0.30*3000/1e6 + 2.50*600/1e6\n            = 0.0024\n\nupgrade = 30% * 0.03\n        = 0.0090\n\ncascade_avg = 0.0024 + 0.0090 = 0.0114", "highlight": [7], "caption": "級聯平均一次 0.0114 美元" }, "lines": [
+    { "id": "cascade-math", "template": "code", "data": { "code": "small_model = 0.30*3000/1e6 + 2.50*600/1e6\n            = 0.0024\n\nupgrade = 30% * 0.024\n        = 0.0072\n\ncascade_avg = 0.0024 + 0.0072 = 0.0096", "highlight": [7], "caption": "級聯平均一次 0.0096 美元" }, "lines": [
       { "id": "ercp", "text": "這一步的算式，其實只有兩段。" },
       { "id": "pwwg", "text": "先問一次小模型，幾乎不用什麼錢。" },
       { "id": "7b9y", "text": "把三成升級的機率，乘上旗艦的價錢。" },
       { "id": "dxn5", "text": "兩個數字加起來，就是級聯平均要付的錢。" },
-      { "id": "nshw", "text": "換算下來，比一路用旗艦，省了六成以上。" },
+      { "id": "nshw", "text": "換算下來，比一路用旗艦，省了六成。" },
       { "id": "wj6a", "text": "你也可以換成自己的比例，重新算一次。" },
       { "id": "wkwi", "text": "小模型的價錢，跟旗艦比，幾乎可以忽略。" },
       { "id": "vaaj", "text": "真正花錢的，是那三成被升級的部分。" },
@@ -173,7 +174,7 @@
       { "id": "z3jf", "text": "官方定價頁的數字，會隨時間更新，記得回去核對。" },
       { "id": "9m9t", "text": "這一步做完，你就有自己的成本估算了。" }
     ], "claims": ["c1", "c3", "c7", "c9", "c10"] },
-    { "id": "cost-diagram", "template": "diagram", "data": { "svg": "apps/web/public/guides/ai-workflow-cost-quality-latency/diagram-1.svg", "caption": "價格：2026 年 9 月官方定價頁標準價" }, "lines": [
+    { "id": "cost-diagram", "template": "diagram", "data": { "svg": "docs/videos/ai-model-choice/cost-flows.svg", "caption": "價格：2026 年 9 月官方定價頁標準價，旗艦以 Claude Opus 5.5 計" }, "lines": [
       { "id": "edir", "text": "這張圖，把三種流程放在一起比。" },
       { "id": "5ban", "text": "價格是 2026 年 9 月，官方定價頁的標準價。" },
       { "id": "4q66", "text": "你可以照著這個算法，換成自己的用量重算一次。" },
@@ -189,7 +190,7 @@
       { "id": "dz86", "text": "我的看法是，先把三個量分開算一次。" },
       { "id": "5r6c", "text": "第一，成本、品質、延遲，先分開算，不要混在一起比。", "reveal": 1 },
       { "id": "cf48", "text": "第二，大部分工作，我會用先便宜後升級的級聯。", "reveal": 1 },
-      { "id": "gixy", "text": "換算下來，平均成本能省六成以上。" },
+      { "id": "gixy", "text": "換算下來，平均成本大約能省六成。" },
       { "id": "kny9", "text": "第三，並行互審，我只留給真的輸不起的決定。", "reveal": 1 },
       { "id": "jb3x", "text": "例如要對外發出去的文件，多花一份評審的錢很值得。" },
       { "id": "rup3", "text": "排行榜換第一名，不該是你換模型的理由。" },

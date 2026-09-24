@@ -2,7 +2,7 @@
 
 一行一個可查核的主張。官方網址都在 2026-09-24（今天）用 `curl -sSL -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'` 重新打開核對過，內容與來源文章 `ai-workflow-cost-quality-latency`（查證於 2026-09-18）一致。
 
-c1｜Claude Opus 5 標準價：輸入每百萬 token 5 美元、輸出 25 美元｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene cost-table, cascade-math
+c1｜Claude Opus 5.5 標準價：輸入每百萬 token 4 美元、輸出 20 美元（站主 2026-09-24 決定成本表的旗艦改用 Opus 5.5；原稿用的 Opus 5 是 5／25 美元）｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene cost-table, cascade-math
 
 c2｜Claude Sonnet 5 標準價：輸入每百萬 token 2 美元、輸出 10 美元｜https://platform.claude.com/docs/en/about-claude/pricing｜2026-09-24｜scene cost-table
 
@@ -12,11 +12,11 @@ c4｜gpt-6-astra 標準價（短上下文）：輸入每百萬 token 10 美元�
 
 c5｜Claude Opus 5.5 於 2026-09-22 發布（型號頁標 Latest、Released September 22, 2026），說明為「For long-running agentic coding and knowledge work」，標準價 4／20 美元；同日起 Claude Opus 5 列在 Legacy models (still available)。Anthropic 頁面沒有用 flagship 稱呼任何型號，陣容最上層是 Claude Fable 5.1（10／50 美元，延遲 Slower）｜https://platform.claude.com/docs/en/models/opus-5-5/overview 、https://platform.claude.com/docs/en/about-claude/models/overview｜2026-09-24｜scene opus-5-5
 
-c6｜單一旗艦（1 次 Claude Opus 5）在共同假設下一次請求成本約 0.03 美元、每萬次約 300 美元｜計算自 c1 ＋ c9 的假設｜2026-09-24｜scene cost-table
+c6｜單一旗艦（1 次 Claude Opus 5.5）在共同假設下一次請求成本 0.012＋0.012＝0.024 美元、每萬次 240 美元｜計算自 c1 ＋ c9 的假設｜2026-09-24｜scene cost-table
 
-c7｜級聯（Gemini 3.5 Flash-Lite 先答，其中 30% 再加 1 次 Claude Opus 5）在共同假設下平均一次成本約 0.0114 美元、每萬次約 114 美元，比單一旗艦省約 62%｜計算自 c1 ＋ c3 ＋ c9 ＋ c10｜2026-09-24｜scene cost-table, cascade-math
+c7｜級聯（Gemini 3.5 Flash-Lite 先答，其中 30% 再加 1 次 Claude Opus 5.5）在共同假設下平均一次成本 0.0024＋0.3×0.024＝0.0096 美元、每萬次 96 美元，比單一旗艦省 60%｜計算自 c1 ＋ c3 ＋ c9 ＋ c10｜2026-09-24｜scene cost-table, cascade-math
 
-c8｜並行互審（Claude Opus 5 與 gpt-6-astra 同答，Claude Sonnet 5 評審）在共同假設下一次成本約 0.1004 美元、每萬次約 1,004 美元｜計算自 c1 ＋ c2 ＋ c4 ＋ c9｜2026-09-24｜scene cost-table
+c8｜並行互審（Claude Opus 5.5 與 gpt-6-astra 同答，Claude Sonnet 5 評審）在共同假設下一次成本 0.024＋0.06＋0.0104＝0.0944 美元、每萬次 944 美元，約為單一旗艦的 3.9 倍；評審那一步 0.0104 美元沿用來源文章的算法，Sonnet 5 價格沒變｜計算自 c1 ＋ c2 ＋ c4 ＋ c9｜2026-09-24｜scene cost-table
 
 c9｜共同假設：一次請求平均輸入 3,000 個 token、輸出 600 個 token｜沿用來源文章 ai-workflow-cost-quality-latency 的示範假設，非官方數字、非量到的真實流量｜2026-09-24｜scene cost-table, cascade-math
 
@@ -38,6 +38,15 @@ c12｜MMLU-Pro 是 TIGER-Lab 發布的多學科基準：約 12,000 題、14 個�
 - md5s：來源文章的推論是多數請求（p50）較快，不是平均較快；「平均最快」改成「多數請求最快」。
 - latency-table 第三列：並行互審每一筆都要加評審時間，不是只有 p95 才加；改成「兩個取較慢，再加評審／同樣要加一次評審」。
 - mmlu-pro.data.sub：「知識題」改成「跨學科難題」（企劃書大綱原本寫「知識題」，官方說明優先）。
+
+## 改用 Opus 5.5 重算（2026-09-24，站主決定）
+
+- 查核第 1 輪指出：成本表的「單一旗艦」其實是 Opus 5，但前兩場把 Opus 5.5 介紹成新型號，觀眾會以為 0.03 美元是 Opus 5.5 的價錢。站主選擇整張表改用 Opus 5.5 重算。
+- 金額：單一旗艦 0.024、級聯 0.0096（省 60%）、並行互審 0.0944 美元；口播改成「兩分半」「一分錢」「將近一毛錢」「省了六成」「兩百四十美元／不到一百美元」。
+- 圖解改用 `cost-flows.svg`：複製自來源文章的 `diagram-1.svg`，只換三個金額（卡片等寬，不是比例長條）。
+- `ne4z` 不再說「新旗艦」：Anthropic 沒有把 Opus 5.5 叫旗艦，陣容最上層是 Fable 5.1。
+- 企劃書與站主觀點寫的是「省六成以上」（Opus 5 的 62%）；改算後正好六成，口播照新數字說，企劃書不改，因為大綱核准綁它的雜湊。
+- OpenAI 定價頁的來源網址改成轉址後的 `developers.openai.com/api/docs/pricing`，並把 Opus 5.5 的型號頁加進 `sources`。
 
 ## 我懷疑但沒動的事
 
