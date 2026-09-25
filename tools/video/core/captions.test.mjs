@@ -1,7 +1,22 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { buildCues, checkCues, displayText, LOCALE_RULES, measure, MIN_CUE_MS, parseSrt, splitText, timePieces, toSrt, toVtt, wrapCue } from "./captions.mjs";
+import {
+  buildCues,
+  checkCues,
+  displayText,
+  fits,
+  joinPieces,
+  LOCALE_RULES,
+  measure,
+  MIN_CUE_MS,
+  parseSrt,
+  splitText,
+  timePieces,
+  toSrt,
+  toVtt,
+  wrapCue,
+} from "./captions.mjs";
 import { fixture } from "./fixtures/load.mjs";
 import { eachLine } from "./schema.mjs";
 import { estimateTimeline, frameToMs } from "./timeline.mjs";
@@ -30,6 +45,52 @@ test("a clause too long for one cue is cut, but never inside a Latin word or num
   assert.ok(pieces.length >= 2);
   assert.ok(pieces.some((piece) => piece.includes("Claude-Opus-5.5")));
   assert.ok(pieces.some((piece) => piece.includes("20260924")));
+});
+
+test("a line just over one cue is cut evenly, not into a full cue and a scrap", () => {
+  const text = "The prices are the standard rates from the official pricing pages as of September 2026.";
+  const pieces = splitText(text, en);
+  assert.equal(pieces.length, 2);
+  assert.equal(pieces.join(" "), text);
+  for (const piece of pieces) assert.ok(piece.length > 30, piece);
+});
+
+test("a Korean line short enough by count but not by word wrap becomes two cues that each wrap in two lines", () => {
+  const ko = LOCALE_RULES.ko;
+  const text = "지난달에 겨우 모델 하나 정했는데, 이번 달엔 또 바뀌었습니다.";
+  assert.ok(measure(text, ko) <= ko.maxChars * ko.maxLines);
+  assert.equal(fits(text, ko), false);
+  const pieces = splitText(text, ko);
+  assert.deepEqual(pieces, ["지난달에 겨우 모델 하나 정했는데,", "이번 달엔 또 바뀌었습니다."]);
+  for (const piece of pieces) assert.equal(wrapCue(piece, ko).split("\n").length <= ko.maxLines, true);
+});
+
+test("merging a piece that would flash past keeps the space and never makes a cue that cannot fit", () => {
+  const ko = LOCALE_RULES.ko;
+  assert.equal(joinPieces("둘째,", "저는 씁니다.", ko), "둘째, 저는 씁니다.");
+  assert.equal(joinPieces("第一句，", "第二句", zh), "第一句，第二句");
+  const room = timePieces(["둘째,", "저는 대부분 작업에 저렴하게 시작해"], 0, 3000, ko);
+  assert.deepEqual(room.map((cue) => cue.text), ["둘째, 저는 대부분 작업에 저렴하게 시작해"]);
+  const full = "I start most work on a small model and step up to the flagship only when needed.";
+  assert.equal(fits(joinPieces("Second,", full, en), en), false);
+  const kept = timePieces(["Second,", full], 0, 4000, en);
+  assert.deepEqual(kept.map((cue) => cue.text), ["Second,", full]);
+  const merged = timePieces(["September", "2026."], 0, 1500, en);
+  assert.deepEqual(merged.map((cue) => cue.text), ["September 2026."]);
+});
+
+test("every cue of a real translation wraps into at most two lines with its spaces intact", () => {
+  const ko = LOCALE_RULES.ko;
+  const lines = [
+    "리더보드 1위만 보면 정확하긴 해도 여러분에게 맞다는 보장은 없습니다.",
+    "둘째, 저는 대부분 작업에 저렴하게 시작해 승급하는 캐스케이드를 씁니다.",
+    "병렬 교차 검토가 비싼 건 두 모델이 각각 한 번씩 답해야 하기 때문입니다.",
+  ];
+  for (const text of lines) {
+    const cues = timePieces(splitText(text, ko), 0, 4500, ko).map((cue) => wrapCue(displayText(cue.text, ko), ko));
+    assert.equal(cues.join(" ").replace(/\n/g, " "), text);
+    for (const cue of cues) assert.ok(cue.split("\n").length <= ko.maxLines, cue);
+  }
 });
 
 test("wrapCue breaks near the middle, after punctuation, into lines that fit", () => {
