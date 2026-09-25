@@ -1040,14 +1040,61 @@
     "tabLabel": "AI 設定のタブ",
     "tabs": {
       "subscriptions": "サブスクリプションのアカウント",
-      "api": "API キーとモデル"
+      "api": "API キー",
+      "models": "機能別モデル"
     },
     "hints": {
       "subscriptions": "ホストで使う Claude Code、Codex、Antigravity 用です。サブスクリプションで動き追加の課金はなく、ツールごとに最大 5 アカウントです。サイトの機能では、動画自動化の原稿作成だけが Claude のアカウントを借ります。",
-      "api": "サイトの AI 機能（旅程作成、毎時ニュース、スポットと記事の紹介、音声）用です。API の利用量で課金され、キーはサーバー側にだけ暗号化して保存されます。"
+      "api": "サイトの AI 機能で使うキーと音声です。API の利用量で課金され、キーはサーバー側で暗号化して保存します。各機能のモデルは「機能別モデル」で選びます。",
+      "models": "AI を呼び出すサイトの機能はすべて、ここでベンダーとモデルを選びます。各機能のページは現在の選択を表示し、ここへリンクします。"
     },
     "movedNotice": "AI サービスのキーとモデルは「AI 設定」に移り、サブスクリプションのアカウントと一緒になりました。",
-    "movedLink": "AI 設定を開く"
+    "movedLink": "AI 設定を開く",
+    "overview": {
+      "title": "各機能がいま使っているモデル",
+      "help": "空欄の選択は一つ上の階層のモデルを引き継ぎます。表には実際に使われるモデルを表示しています。「接続方法」はいまの課金方法、最後の列は API キーでしか動かない機能を示します。",
+      "refresh": "再読み込み",
+      "missing": "読み込めませんでした：{sources}（権限がない可能性があります）",
+      "sources": {
+        "providers": "API 設定",
+        "news": "ニュース設定",
+        "video": "動画設定"
+      },
+      "columns": {
+        "feature": "機能",
+        "model": "ベンダーとモデル",
+        "connection": "接続方法",
+        "support": "サブスクリプション"
+      },
+      "features": {
+        "planner": "AI 旅程作成と旅程の解析",
+        "guideSearch": "スポット AI 検索",
+        "intros": "スポット紹介の執筆",
+        "geminiSearch": "Gemini 多言語記事検索とカタログ審査",
+        "newsWriter": "ニュース執筆",
+        "newsVerifier": "ニュース検証",
+        "newsEditor": "ニュースの最終修正",
+        "video": "動画 · {stage}"
+      },
+      "plannerAuto": "自動フォールバック",
+      "plannerFallback": "内蔵フォールバックのみ",
+      "plannerDisabled": "実際の AI をオフ",
+      "inherits": "「{source}」のモデルを引き継ぐ",
+      "connection": {
+        "apiKey": "API キー",
+        "subscription": "サブスクリプションアカウント",
+        "subscriptionFallback": "サブスクリプション（使い切ると MiniMax）",
+        "none": "AI を呼び出さない"
+      },
+      "support": {
+        "apiKeyOnly": "API キーのみ",
+        "claudeSubscription": "Claude はサブスクリプションを使えます（「API キー」で Claude の接続方法を切り替え）",
+        "claudeCode": "「Claude Code」を選ぶとサブスクリプション",
+        "geminiApiKeyOnly": "Gemini は API キーのみ（Antigravity のサブスクリプションはホストでの手動利用専用）"
+      },
+      "edit": "変更",
+      "open": "機能を開く"
+    }
   },
   "pageHeaders": {
     "dashboard": {
@@ -2172,6 +2219,10 @@
     "usage": "今月（UTC）の使用量：API のトークン {tokens} / {tokenBudget}、サブスクリプションのトークン {planTokens}、下書き {drafts} / {draftBudget} 本、モデル呼び出し {calls} 回（うち失敗 {failed} 回）。",
     "subscription": "サブスクリプション",
     "agentOff": "ホストのエージェントが未設定",
-    "subscriptionHelp": "サブスクリプションアカウントは、5 時間または週の枠が上の割合に達するとスキップされます。すべてのアカウントが達したら、ワーカーは枠のリセットを待ち、自動で API キーに切り替えることはありません。Codex は対象外です。コマンドラインからコマンド実行の機能を無効にできないためです。"
+    "subscriptionHelp": "サブスクリプションアカウントは、5 時間または週の枠が上の割合に達するとスキップされます。すべてのアカウントが達したら、ワーカーは枠のリセットを待ち、自動で API キーに切り替えることはありません。Codex は対象外です。コマンドラインからコマンド実行の機能を無効にできないためです。",
+    "modelsManaged": "各段階のモデルは「AI 設定 › 機能別モデル」でまとめて選びます。",
+    "editModels": "AI 設定で変更",
+    "saveModels": "動画のモデルを保存",
+    "openVideos": "動画設定を開く"
   }
 }

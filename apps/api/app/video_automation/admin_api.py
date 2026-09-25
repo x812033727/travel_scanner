@@ -23,8 +23,10 @@ from app.problems import AppError
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
 from app.video_automation.schemas import (
+    SettingsSave,
     SettingsView,
     SettingsWrite,
+    StageModelsWrite,
     StageRunIn,
     StageRunOut,
     TopicsOut,
@@ -55,14 +57,33 @@ async def get_video_automation_settings(user: ContentReader, session: Session) -
     return await service.settings_view(session)
 
 
-@admin_router.put("/settings", response_model=SettingsView)
-async def put_video_automation_settings(
-    payload: SettingsWrite, user: SettingsManager, session: Session
-) -> SettingsView:
+async def _save(session: AsyncSession, user: User, payload: SettingsWrite) -> SettingsView:
     problems = service.settings_problems(payload, await load_runtime_settings(session))
     if problems:
         raise AppError(422, "video_automation_settings_invalid", "；".join(problems))
     return await service.update_settings(session, user, payload)
+
+
+@admin_router.put("/settings", response_model=SettingsView)
+async def put_video_automation_settings(
+    payload: SettingsSave, user: SettingsManager, session: Session
+) -> SettingsView:
+    values = payload.model_dump()
+    if payload.stage_models is None:
+        # The stage models are chosen on the AI settings page; keep the stored ones.
+        current = service.settings_values(await service.settings_row(session))
+        values["stage_models"] = current.model_dump()["stage_models"]
+    return await _save(session, user, SettingsWrite.model_validate(values))
+
+
+@admin_router.put("/settings/models", response_model=SettingsView)
+async def put_video_automation_models(
+    payload: StageModelsWrite, user: SettingsManager, session: Session
+) -> SettingsView:
+    """Change only the stage models, from the AI settings page."""
+    current = service.settings_values(await service.settings_row(session)).model_dump()
+    merged = SettingsWrite.model_validate({**current, **payload.model_dump()})
+    return await _save(session, user, merged)
 
 
 @tool_router.get("/settings", response_model=ToolSettingsView)
