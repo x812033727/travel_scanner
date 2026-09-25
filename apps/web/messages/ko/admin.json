@@ -974,6 +974,7 @@
     "allowlistMissing": "호스트에 로그인을 허용할 계정(AI_ACCOUNTS_ALLOWED_EMAILS)이 아직 설정되지 않아 어떤 계정으로든 로그인할 수 있습니다.",
     "sshHintClaude": "SSH에서 claude를 입력하면 기본 계정을 씁니다. claude-a부터 claude-e로 계정을 지정할 수 있습니다.",
     "sshHintCodex": "SSH에서 codex를 입력하면 기본 계정을 씁니다. codex-a부터 codex-e로 계정을 지정할 수 있습니다.",
+    "sshHintAgy": "SSH에서 agy를 입력하면 기본 계정을 씁니다. agy-a부터 agy-e로 계정을 지정할 수 있습니다.",
     "slotTitle": "계정 {slot}",
     "default": "기본",
     "notSignedIn": "로그인 안 됨",
@@ -1001,8 +1002,12 @@
     "snapshotMissing": "이 계정의 사용량이 아직 없습니다. 호스트가 자동으로 읽어 오며, 새로 고침을 눌러도 됩니다.",
     "recorderMissing": "이 계정의 상태 표시줄이 사용량 기록기에 연결되어 있지 않습니다. 다시 로그인하거나 호스트 에이전트를 재시작하면 고쳐집니다.",
     "usageUnavailable": "사용량을 읽을 수 없습니다: {detail}",
+    "agyUsageSetup": "이 계정은 Antigravity 첫 실행 설정을 마치지 않았습니다. 호스트에서 agy-{slot}을 한 번 실행해 설정을 마치면 사용량이 표시됩니다.",
+    "agyUsageSignedOut": "호스트의 Antigravity가 이 계정을 로그아웃 상태로 봅니다. 다시 로그인해 주세요.",
+    "agyUsageUnreadable": "Antigravity 사용량 페이지를 읽을 수 없습니다. 호스트에서 agy-{slot}을 실행하고 /usage를 입력하면 확인할 수 있습니다.",
     "loginTitleCodex": "Codex 로그인 (계정 {slot})",
     "loginTitleClaude": "Claude Code 로그인 (계정 {slot})",
+    "loginTitleAgy": "Antigravity 로그인 (계정 {slot})",
     "closeLogin": "로그인 창 닫기",
     "openLoginPage": "로그인 페이지 열기",
     "codexStep1": "OpenAI 기기 로그인 페이지를 열고 사용할 ChatGPT 계정으로 로그인합니다.",
@@ -1012,6 +1017,8 @@
     "copied": "복사됨",
     "claudeStep1": "Claude 인증 페이지를 열고 사용할 계정으로 로그인한 뒤 승인합니다.",
     "claudeStep2": "승인하면 표시되는 코드를 복사해 여기에 붙여 넣습니다:",
+    "agyStep1": "Google 로그인 페이지를 열고 Google AI Pro 또는 Ultra를 구독 중인 계정을 골라 Antigravity의 접근을 허용합니다.",
+    "agyStep2": "완료하면 인증 코드(보통 4/로 시작)가 표시됩니다. 복사해 여기에 붙여 넣습니다:",
     "submitCode": "코드 보내기",
     "waitingBrowser": "브라우저에서 로그인을 마치기를 기다리는 중…",
     "waitingCode": "코드를 기다리는 중…",
@@ -1023,6 +1030,7 @@
     "expired": "로그인 시간이 초과되었습니다. 다시 시작하세요.",
     "fallbackClaude": "여기서 로그인이 계속 실패하면 호스트에서 claude-{slot} auth login을 실행해도 됩니다.",
     "fallbackCodex": "여기서 로그인이 계속 실패하면 호스트에서 codex-{slot} login --device-auth를 실행해도 됩니다.",
+    "fallbackAgy": "여기서 로그인이 계속 실패하면 호스트에서 agy-{slot}을 실행하고 화면에서 Google OAuth를 골라 로그인해도 됩니다.",
     "cancelLogin": "로그인 취소",
     "done": "완료",
     "closeError": "오류 메시지 닫기",
@@ -1035,7 +1043,7 @@
       "api": "API 키와 모델"
     },
     "hints": {
-      "subscriptions": "호스트에서 쓰는 Claude Code와 Codex용입니다. 구독으로 동작해 추가 요금이 없고 도구별로 최대 다섯 계정입니다. 사이트 기능은 이 계정들을 쓰지 않습니다.",
+      "subscriptions": "호스트에서 쓰는 Claude Code, Codex, Antigravity용입니다. 구독으로 동작해 추가 요금이 없고 도구별로 최대 다섯 계정입니다. 사이트 기능 중에서는 동영상 자동화의 원고 작성만 Claude 계정을 빌려 씁니다.",
       "api": "사이트의 AI 기능(여행 일정, 매시간 뉴스, 장소와 글 소개, 음성)용입니다. API 사용량으로 과금되며 키는 서버에만 암호화해 저장합니다."
     },
     "movedNotice": "AI 서비스의 키와 모델은 구독 계정과 함께 ‘AI 설정’으로 옮겼습니다.",
@@ -1068,7 +1076,7 @@
     },
     "aiAccounts": {
       "title": "AI 설정",
-      "description": "AI 관련 설정을 한곳에 모았습니다. 호스트의 Claude Code와 Codex가 쓰는 구독 계정, 그리고 사이트 AI 기능이 쓰는 API 키와 모델입니다."
+      "description": "AI 관련 설정을 한곳에 모았습니다. 호스트의 Claude Code, Codex, Antigravity가 쓰는 구독 계정, 그리고 사이트 AI 기능이 쓰는 API 키와 모델입니다."
     },
     "videos": {
       "title": "영상 검토",

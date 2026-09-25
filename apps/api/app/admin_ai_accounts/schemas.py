@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-Tool = Literal["claude", "codex"]
+Tool = Literal["claude", "codex", "agy"]
 Slot = Literal["a", "b", "c", "d", "e"]
 LoginStatus = Literal["pending", "verifying", "succeeded", "failed", "cancelled", "expired"]
 TERMINAL_LOGIN_STATUSES: frozenset[str] = frozenset({"succeeded", "failed", "cancelled", "expired"})
@@ -14,6 +14,8 @@ class _AgentModel(BaseModel):
 
 
 class AiUsageWindow(_AgentModel):
+    # Antigravity reports a window per model group (Gemini, and the others on Ultra).
+    label: str | None = Field(default=None, max_length=80)
     window_minutes: int | None = None
     used_percent: float = Field(ge=0, le=100)
     resets_at: int | None = None
@@ -72,9 +74,10 @@ class AiAccountsOverview(BaseModel):
 
 
 class AiLoginCodeRequest(BaseModel):
-    # What the Claude callback page shows: base64url pieces joined by `#`. The agent checks
-    # the same pattern before it types anything into the CLI.
-    code: str = Field(min_length=10, max_length=1024, pattern=r"^\s*[A-Za-z0-9._~#-]+\s*$")
+    # What the callback pages show: Claude's is base64url pieces joined by `#`, Google's
+    # carries a `/` (`4/0A…`). No whitespace inside, so nothing typed into a CLI can be a
+    # keystroke of its own; the agent checks each tool's own pattern before typing it.
+    code: str = Field(min_length=10, max_length=1024, pattern=r"^\s*[A-Za-z0-9._~#/+-]+\s*$")
 
 
 class AiDefaultRequest(BaseModel):

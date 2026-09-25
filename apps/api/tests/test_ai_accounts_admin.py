@@ -251,6 +251,50 @@ async def test_pasted_code_is_trimmed_forwarded_and_never_recorded(
 
 
 @pytest.mark.asyncio
+async def test_antigravity_logins_take_a_google_code_and_labelled_windows(
+    ai_app: dict[str, Any],
+) -> None:
+    agent = ai_app["agent"]
+    google = "https://accounts.google.com/o/oauth2/auth?client_id=x"
+    agent.routes[("POST", "/v1/accounts/agy/a/login")] = (
+        201,
+        login(tool="agy", slot="a", kind="paste_code", url=google, user_code=None),
+    )
+    agent.routes[("POST", f"/v1/logins/{LOGIN_ID}/code")] = (
+        202,
+        login("verifying", tool="agy", slot="a", kind="paste_code"),
+    )
+    usage = {
+        "source": "snapshot",
+        "recorded_at": 1790000000,
+        "windows": [{"label": "Gemini Models", "window_minutes": 300, "used_percent": 20}],
+    }
+    agent.routes[("GET", "/v1/accounts")] = (
+        200,
+        {
+            "slots": [slot("agy", "a", logged_in=True, auth_method="google", usage=usage)],
+            "defaults": {"claude": "a", "codex": "a", "agy": "a"},
+            "allowlist_configured": True,
+        },
+    )
+    async with _client() as client:
+        started = await client.post(f"{BASE}/agy/a/login")
+        assert (started.status_code, started.json()["url"]) == (201, google)
+        code = await client.post(
+            f"{BASE}/logins/{LOGIN_ID}/code", json={"code": " 4/0AVGzR1Bq-example_code "}
+        )
+        assert code.status_code == 202
+        overview = (await client.get(BASE)).json()
+    assert agent.calls[1] == (
+        "POST",
+        f"/v1/logins/{LOGIN_ID}/code",
+        {"code": "4/0AVGzR1Bq-example_code"},
+    )
+    assert overview["defaults"]["agy"] == "a"
+    assert overview["slots"][0]["usage"]["windows"][0]["label"] == "Gemini Models"
+
+
+@pytest.mark.asyncio
 async def test_agent_refusals_keep_their_status_and_code(ai_app: dict[str, Any]) -> None:
     ai_app["agent"].routes[("POST", f"/v1/logins/{LOGIN_ID}/code")] = (
         409,

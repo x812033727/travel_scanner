@@ -974,6 +974,7 @@
     "allowlistMissing": "主機還沒設定允許登入的帳號（AI_ACCOUNTS_ALLOWED_EMAILS），目前登入任何帳號都會被接受。",
     "sshHintClaude": "在 SSH 輸入 claude 會用預設帳號；claude-a 到 claude-e 可以指定帳號。",
     "sshHintCodex": "在 SSH 輸入 codex 會用預設帳號；codex-a 到 codex-e 可以指定帳號。",
+    "sshHintAgy": "在 SSH 輸入 agy 會用預設帳號；agy-a 到 agy-e 可以指定帳號。",
     "slotTitle": "帳號 {slot}",
     "default": "預設",
     "notSignedIn": "未登入",
@@ -1001,8 +1002,12 @@
     "snapshotMissing": "還沒取得這個帳號的額度，主機會自動讀取；也可以按「重新整理」。",
     "recorderMissing": "這個帳號的狀態列沒有接上額度紀錄器；重新登入或重啟主機代理即可修復。",
     "usageUnavailable": "讀不到額度：{detail}",
+    "agyUsageSetup": "這個帳號還沒完成 Antigravity 的首次設定。在主機上執行一次 agy-{slot} 完成設定，之後就讀得到額度。",
+    "agyUsageSignedOut": "主機上的 Antigravity 認為這個帳號沒有登入，請重新登入。",
+    "agyUsageUnreadable": "讀不到 Antigravity 的額度頁；可以在主機上執行 agy-{slot}，輸入 /usage 查看。",
     "loginTitleCodex": "登入 Codex（帳號 {slot}）",
     "loginTitleClaude": "登入 Claude Code（帳號 {slot}）",
+    "loginTitleAgy": "登入 Antigravity（帳號 {slot}）",
     "closeLogin": "關閉登入視窗",
     "openLoginPage": "開啟登入頁",
     "codexStep1": "打開 OpenAI 的裝置登入頁，登入要使用的 ChatGPT 帳號。",
@@ -1012,6 +1017,8 @@
     "copied": "已複製",
     "claudeStep1": "打開 Claude 的授權頁，登入要使用的帳號並按下授權。",
     "claudeStep2": "授權後頁面會顯示一段代碼，複製後貼在這裡：",
+    "agyStep1": "打開 Google 登入頁，選擇有 Google AI Pro 或 Ultra 訂閱的帳號，並允許 Antigravity 存取。",
+    "agyStep2": "完成後頁面會顯示一段授權碼（通常以 4/ 開頭），複製後貼在這裡：",
     "submitCode": "送出代碼",
     "waitingBrowser": "等你在瀏覽器完成登入…",
     "waitingCode": "等你貼上代碼…",
@@ -1023,6 +1030,7 @@
     "expired": "登入逾時，請重新開始。",
     "fallbackClaude": "網頁登入一直失敗的話，也可以在主機上執行 claude-{slot} auth login。",
     "fallbackCodex": "網頁登入一直失敗的話，也可以在主機上執行 codex-{slot} login --device-auth。",
+    "fallbackAgy": "網頁登入一直失敗的話，也可以在主機上執行 agy-{slot}，在畫面裡選 Google OAuth 登入。",
     "cancelLogin": "取消登入",
     "done": "完成",
     "closeError": "關閉錯誤訊息",
@@ -1035,7 +1043,7 @@
       "api": "API 金鑰與模型"
     },
     "hints": {
-      "subscriptions": "給你在主機上用的 Claude Code 與 Codex：走訂閱、不另外計費，每個工具最多五個帳號。網站功能不會用到這些帳號。",
+      "subscriptions": "給你在主機上用的 Claude Code、Codex 與 Antigravity：走訂閱、不另外計費，每個工具最多五個帳號。網站功能裡只有影片自動化的撰稿會借用 Claude 帳號。",
       "api": "給網站的 AI 功能用（行程規劃、每小時新聞、景點與文章介紹、語音）：依 API 用量計費，金鑰只存在後端並加密保存。"
     },
     "movedNotice": "AI 服務的金鑰與模型已經搬到「AI 設定」，和訂閱帳號放在一起。",
@@ -1068,7 +1076,7 @@
     },
     "aiAccounts": {
       "title": "AI 設定",
-      "description": "AI 相關的設定都在這裡：主機上 Claude Code 與 Codex 使用的訂閱帳號，以及網站 AI 功能使用的 API 金鑰與模型。"
+      "description": "AI 相關的設定都在這裡：主機上 Claude Code、Codex 與 Antigravity 使用的訂閱帳號，以及網站 AI 功能使用的 API 金鑰與模型。"
     },
     "videos": {
       "title": "影片審核",

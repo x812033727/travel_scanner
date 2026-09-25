@@ -974,6 +974,7 @@
     "allowlistMissing": "ホストにログインを許可するアカウント（AI_ACCOUNTS_ALLOWED_EMAILS）がまだ設定されていないため、どのアカウントでもログインできます。",
     "sshHintClaude": "SSH で claude と入力するとデフォルトのアカウントを使います。claude-a〜claude-e でアカウントを指定できます。",
     "sshHintCodex": "SSH で codex と入力するとデフォルトのアカウントを使います。codex-a〜codex-e でアカウントを指定できます。",
+    "sshHintAgy": "SSH で agy と入力するとデフォルトのアカウントを使います。agy-a〜agy-e でアカウントを指定できます。",
     "slotTitle": "アカウント {slot}",
     "default": "デフォルト",
     "notSignedIn": "未ログイン",
@@ -1001,8 +1002,12 @@
     "snapshotMissing": "このアカウントの利用枠はまだありません。ホストが自動で読み取ります。「再読み込み」でも取得できます。",
     "recorderMissing": "このアカウントのステータスラインが利用枠の記録につながっていません。再ログインするか、ホストのエージェントを再起動すると直ります。",
     "usageUnavailable": "利用枠を読み取れません：{detail}",
+    "agyUsageSetup": "このアカウントは Antigravity の初回設定が終わっていません。ホストで agy-{slot} を一度実行して設定を終えると、利用枠が表示されます。",
+    "agyUsageSignedOut": "ホストの Antigravity はこのアカウントをログインしていないと見なしています。もう一度ログインしてください。",
+    "agyUsageUnreadable": "Antigravity の利用枠ページを読み取れません。ホストで agy-{slot} を実行し、/usage と入力すると確認できます。",
     "loginTitleCodex": "Codex にログイン（アカウント {slot}）",
     "loginTitleClaude": "Claude Code にログイン（アカウント {slot}）",
+    "loginTitleAgy": "Antigravity にログイン（アカウント {slot}）",
     "closeLogin": "ログイン画面を閉じる",
     "openLoginPage": "ログインページを開く",
     "codexStep1": "OpenAI のデバイスログインページを開き、使用する ChatGPT アカウントでログインします。",
@@ -1012,6 +1017,8 @@
     "copied": "コピーしました",
     "claudeStep1": "Claude の認可ページを開き、使用するアカウントでログインして認可します。",
     "claudeStep2": "認可後に表示されるコードをコピーして、ここに貼り付けます：",
+    "agyStep1": "Google のログインページを開き、Google AI Pro または Ultra を契約しているアカウントを選んで Antigravity へのアクセスを許可します。",
+    "agyStep2": "完了すると認可コード（多くは 4/ で始まります）が表示されます。コピーしてここに貼り付けます：",
     "submitCode": "コードを送信",
     "waitingBrowser": "ブラウザでのログイン完了を待っています…",
     "waitingCode": "コードの貼り付けを待っています…",
@@ -1023,6 +1030,7 @@
     "expired": "ログインの有効期限が切れました。もう一度始めてください。",
     "fallbackClaude": "ここでのログインが失敗し続ける場合は、ホストで claude-{slot} auth login を実行することもできます。",
     "fallbackCodex": "ここでのログインが失敗し続ける場合は、ホストで codex-{slot} login --device-auth を実行することもできます。",
+    "fallbackAgy": "ここでのログインが失敗し続ける場合は、ホストで agy-{slot} を実行し、画面で Google OAuth を選んでログインすることもできます。",
     "cancelLogin": "ログインをキャンセル",
     "done": "完了",
     "closeError": "エラーメッセージを閉じる",
@@ -1035,7 +1043,7 @@
       "api": "API キーとモデル"
     },
     "hints": {
-      "subscriptions": "ホストで使う Claude Code と Codex 用です。サブスクリプションで動き追加の課金はなく、ツールごとに最大 5 アカウントです。サイトの機能はこれらのアカウントを使いません。",
+      "subscriptions": "ホストで使う Claude Code、Codex、Antigravity 用です。サブスクリプションで動き追加の課金はなく、ツールごとに最大 5 アカウントです。サイトの機能では、動画自動化の原稿作成だけが Claude のアカウントを借ります。",
       "api": "サイトの AI 機能（旅程作成、毎時ニュース、スポットと記事の紹介、音声）用です。API の利用量で課金され、キーはサーバー側にだけ暗号化して保存されます。"
     },
     "movedNotice": "AI サービスのキーとモデルは「AI 設定」に移り、サブスクリプションのアカウントと一緒になりました。",
@@ -1068,7 +1076,7 @@
     },
     "aiAccounts": {
       "title": "AI 設定",
-      "description": "AI に関する設定をここにまとめています。ホストの Claude Code と Codex が使うサブスクリプションのアカウントと、サイトの AI 機能が使う API キーとモデルです。"
+      "description": "AI に関する設定をここにまとめています。ホストの Claude Code、Codex、Antigravity が使うサブスクリプションのアカウントと、サイトの AI 機能が使う API キーとモデルです。"
     },
     "videos": {
       "title": "動画レビュー",

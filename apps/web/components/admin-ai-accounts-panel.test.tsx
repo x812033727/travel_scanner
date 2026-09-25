@@ -5,13 +5,13 @@ import { AdminAiAccountsPanel, nextFreeSlot, visibleAccounts, type AiAccount, ty
 const NOW = Date.parse("2026-09-24T09:00:00Z");
 const seconds = (offset: number) => Math.round(NOW / 1000) + offset;
 
-function account(tool: "claude" | "codex", slot: "a" | "b" | "c" | "d" | "e", values: Partial<AiAccount> = {}): AiAccount {
+function account(tool: "claude" | "codex" | "agy", slot: "a" | "b" | "c" | "d" | "e", values: Partial<AiAccount> = {}): AiAccount {
   return { tool, slot, is_default: slot === "a", logged_in: false, ...values };
 }
 
 function overview(values: Partial<AiAccountsOverview> = {}): AiAccountsOverview {
-  const slots = (["claude", "codex"] as const).flatMap((tool) => (["a", "b", "c", "d", "e"] as const).map((slot) => account(tool, slot)));
-  return { enabled: true, agent_reachable: true, slots, defaults: { claude: "a", codex: "a" }, allowlist_configured: true, ...values };
+  const slots = (["claude", "codex", "agy"] as const).flatMap((tool) => (["a", "b", "c", "d", "e"] as const).map((slot) => account(tool, slot)));
+  return { enabled: true, agent_reachable: true, slots, defaults: { claude: "a", codex: "a", agy: "a" }, allowlist_configured: true, ...values };
 }
 
 function withSlots(...changes: AiAccount[]) {
@@ -156,6 +156,54 @@ describe("AdminAiAccountsPanel", () => {
     await waitFor(() => expect(within(dialog).getByText("正在驗證…")).toBeTruthy());
     const post = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/code"));
     expect(JSON.parse(String(post?.[1]?.body))).toEqual({ code: "AbC_-123.~#state-Part" });
+  });
+
+  it("shows Antigravity quota per model group and why it could not be read", async () => {
+    vi.spyOn(Date, "now").mockReturnValue(NOW);
+    const state = withSlots(
+      account("agy", "a", { logged_in: true, auth_method: "google", email: "owner@example.com", plan: "Ultra", usage: { source: "snapshot", recorded_at: seconds(-60), windows: [{ label: "Gemini Models", window_minutes: 300, used_percent: 20, resets_at: seconds(6_720) }, { label: "Gemini Models", window_minutes: 10080, used_percent: 50, resets_at: seconds(421_200) }] } }),
+      account("agy", "b", { logged_in: true, auth_method: "google", email: "b@example.com", usage_error: "setup_needed" }),
+    );
+    vi.stubGlobal("fetch", vi.fn(() => response(state)));
+    render(<AdminAiAccountsPanel />);
+    const section = await screen.findByRole("region", { name: "Antigravity" });
+    expect(within(section).getByText("在 SSH 輸入 agy 會用預設帳號；agy-a 到 agy-e 可以指定帳號。")).toBeTruthy();
+    const first = within(section).getByRole("article", { name: "Antigravity 帳號 A" });
+    expect(within(first).getByText("Ultra")).toBeTruthy();
+    expect(within(first).getByText("Gemini Models · 5 小時額度")).toBeTruthy();
+    expect(within(first).getByText("剩餘 80%")).toBeTruthy();
+    expect(within(first).getByText("Gemini Models · 每週額度")).toBeTruthy();
+    expect(within(first).queryByText("這個帳號走 API 計費，不是訂閱")).toBeNull();
+    const second = within(section).getByRole("article", { name: "Antigravity 帳號 B" });
+    expect(within(second).getByText(/在主機上執行一次 agy-b 完成設定/)).toBeTruthy();
+    expect(within(second).queryByText(/還沒取得這個帳號的額度/)).toBeNull();
+  });
+
+  it("takes a Google code with its slash for an Antigravity login", async () => {
+    const google = "https://accounts.google.com/o/oauth2/auth?client_id=x&redirect_uri=https%3A%2F%2Fantigravity.google%2Foauth-callback";
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.endsWith("/admin/ai-accounts/agy/a/login")) return response(login({ tool: "agy", slot: "a", kind: "paste_code", url: google, user_code: null }), 201);
+      if (url.endsWith("/code") && init?.method === "POST") return response(login({ tool: "agy", slot: "a", kind: "paste_code", status: "verifying", url: null, user_code: null }), 202);
+      if (url.includes("/admin/ai-accounts")) return response(overview());
+      throw new Error(`unexpected ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminAiAccountsPanel />);
+    const card = await screen.findByRole("article", { name: "Antigravity 帳號 A" });
+    fireEvent.click(within(card).getByRole("button", { name: "登入" }));
+    const dialog = await screen.findByRole("dialog", { name: "登入 Antigravity（帳號 A）" });
+    expect(within(dialog).getByText(/選擇有 Google AI Pro 或 Ultra 訂閱的帳號/)).toBeTruthy();
+    expect(within(dialog).getByRole("link", { name: /開啟登入頁/ }).getAttribute("href")).toBe(google);
+    const field = within(dialog).getByLabelText("完成後頁面會顯示一段授權碼（通常以 4/ 開頭），複製後貼在這裡：");
+    const submit = within(dialog).getByRole("button", { name: "送出代碼" });
+    fireEvent.change(field, { target: { value: "4/0A code with spaces" } });
+    expect((submit as HTMLButtonElement).disabled).toBe(true);
+    fireEvent.change(field, { target: { value: " 4/0AVGzR1Bq-example_code " } });
+    fireEvent.click(submit);
+    await waitFor(() => expect(within(dialog).getByText("正在驗證…")).toBeTruthy());
+    const post = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/code"));
+    expect(JSON.parse(String(post?.[1]?.body))).toEqual({ code: "4/0AVGzR1Bq-example_code" });
   });
 
   it("asks before signing out and switches the default", async () => {
