@@ -19,7 +19,8 @@
     "analytics": "트래픽 및 분석",
     "deployments": "배포 센터",
     "uiText": "프런트 문구",
-    "aiAccounts": "AI 설정"
+    "aiAccounts": "AI 설정",
+    "videos": "영상 검토"
   },
   "providerTabs": {
     "label": "API 공급자 설정 탭",
@@ -1056,6 +1057,10 @@
     "aiAccounts": {
       "title": "AI 설정",
       "description": "AI 관련 설정을 한곳에 모았습니다. 호스트의 Claude Code와 Codex가 쓰는 구독 계정, 그리고 사이트 AI 기능이 쓰는 API 키와 모델입니다."
+    },
+    "videos": {
+      "title": "영상 검토",
+      "description": "영상 도구가 만든 기획, 내레이션, 완성 영상이 여기서 결정을 기다립니다. 구성을 고르고, 내레이션을 듣고, 완성 영상을 본 뒤 업로드해도 되는지 확인하세요. YouTube 업로드와 공개는 계속 YouTube Studio에서 직접 합니다."
     }
   },
   "usersPanel": {
@@ -2012,5 +2017,62 @@
     "pairDenied": "거부했습니다. 이 코드로는 토큰을 받을 수 없습니다.",
     "pairCodeInvalid": "확인 코드는 영문자 8자입니다(예: BCDF-GHJK).",
     "pairFailed": "이 코드를 처리하지 못했습니다"
+  },
+  "videoReviews": {
+    "listTitle": "영상",
+    "empty": "아직 검토를 요청한 영상이 없습니다",
+    "emptyDetail": "영상 도구가 검토를 요청하면 여기에 표시됩니다.",
+    "loadError": "영상을 불러오지 못했습니다",
+    "retry": "다시 시도",
+    "pending": "결정 대기 {count}건",
+    "noPendingShort": "결정 대기 없음",
+    "progress": "진행 {done}/{total}",
+    "lastSynced": "마지막 동기화 {time}",
+    "back": "영상 목록으로",
+    "checklist": "진행",
+    "noPending": "결정을 기다리는 항목이 없습니다.",
+    "history": "지난 결정",
+    "youtube": "YouTube 영상 {id}",
+    "previewsGone": "게시되어 미리보기를 삭제했습니다.",
+    "gates": {
+      "outline": "구성",
+      "audio": "내레이션",
+      "final": "완성 영상",
+      "publish": "업로드 확인"
+    },
+    "statuses": {
+      "pending": "결정 대기",
+      "approved": "승인됨",
+      "rejected": "반려됨",
+      "superseded": "새 버전으로 대체됨"
+    },
+    "submittedAt": "요청 {time}",
+    "decidedAt": "결정 {time}",
+    "choice": "안 {key} 선택",
+    "chooseOption": "구성 하나 고르기",
+    "option": "안 {key}",
+    "hook": "도입부",
+    "brief": "기획서 전문",
+    "narration": "내레이션",
+    "check": "Jev 확인",
+    "checkSummary": "{lines}문장: {exact}문장 글자 그대로 일치, {alike}문장 동음 글자나 간투사만 다름, {judged}문장 Jev가 문제없다고 판단, {flagged}문장 표시됨.",
+    "flaggedLines": "표시된 문장",
+    "script": "원고",
+    "heard": "들린 내용",
+    "preview": "미리보기(720p)",
+    "checks": "자동 검사",
+    "checksOk": "모두 통과",
+    "chapters": "챕터",
+    "contactSheet": "전체 화면",
+    "metadata": "5개 언어 제목과 설명",
+    "uploadChecklist": "업로드 전 확인",
+    "note": "의견(반려 시 필수)",
+    "notePlaceholder": "예: 도입부가 너무 김, 3장의 숫자를 다시 확인",
+    "approve": "승인",
+    "approveOutline": "이 구성으로",
+    "approvePublish": "업로드해도 됨",
+    "reject": "반려",
+    "saving": "보내는 중…",
+    "decideError": "보내지 못했습니다: {message}"
   }
 }
