@@ -77,6 +77,10 @@ class NewsAutomationSettings(Timestamped, Base):
             "verifier_provider IN ('openai','anthropic','minimax','gemini')",
             name="ck_news_verifier_provider",
         ),
+        CheckConstraint(
+            "editor_provider IN ('openai','anthropic','minimax','gemini')",
+            name="ck_news_editor_provider",
+        ),
         CheckConstraint("global_concurrency BETWEEN 1 AND 8", name="ck_news_global_concurrency"),
         CheckConstraint(
             "per_vertical_concurrency BETWEEN 1 AND 4",
@@ -101,6 +105,12 @@ class NewsAutomationSettings(Timestamped, Base):
     writer_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
     verifier_provider: Mapped[str] = mapped_column(String(16), default="openai")
     verifier_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    # The final editor checks each translated locale against the evidence before Jev's last
+    # call (owner decision, 2026-09-25; migration 0094).
+    editor_provider: Mapped[str] = mapped_column(String(16), default="anthropic")
+    editor_model: Mapped[str | None] = mapped_column(
+        String(128), nullable=True, default="claude-opus-5-5"
+    )
     global_concurrency: Mapped[int] = mapped_column(Integer, default=2)
     per_vertical_concurrency: Mapped[int] = mapped_column(Integer, default=1)
     min_shadow_days: Mapped[int] = mapped_column(Integer, default=14)
