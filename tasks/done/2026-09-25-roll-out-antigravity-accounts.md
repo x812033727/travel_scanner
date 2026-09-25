@@ -1,14 +1,14 @@
 ---
 id: 2026-09-25-roll-out-antigravity-accounts
 title: Roll out Antigravity accounts on the host and check the first sign-in
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5.5
 claimed_at: 2026-09-25T13:53:30Z
 created_at: 2026-09-25T12:52:52Z
-completed_at:
-branch: claude/antigravity-token-file
+completed_at: 2026-09-25T14:38:16Z
+branch: claude/antigravity-quota-page
 depends_on:
   - 2026-09-25-antigravity-subscription-accounts
 scope:
@@ -37,13 +37,13 @@ Every host step needs the owner's approval (see the `deploy` skill and
 
 ## Definition of done
 
-- [ ] /admin/ai-accounts shows an Antigravity section, and account A is signed in from the
-      page with one of the owner's Google accounts.
-- [ ] The card shows the email and the quota windows, matching what `/usage` shows in
-      `agy-a` over SSH (compare the percentages and refresh times; they must not be
-      inverted between "left" and "used").
-- [ ] `agy` over SSH starts on the default account without asking to sign in, and git inside
-      it still sees `/root/.gitconfig`.
+- [x] /admin/ai-accounts shows an Antigravity section, and account A is signed in from the
+      page with one of the owner's Google accounts (x812…, Google AI Pro).
+- [x] The card shows the email and the quota windows, matching what `/usage` shows in
+      `agy-a` over SSH: the page's figures are the share left, and the probe now reads them
+      as such, per group and window, with refresh times.
+- [x] `agy` over SSH starts on the default account without asking to sign in (the owner ran
+      `agy-a` and finished onboarding), and git inside it sees `/root/.gitconfig`.
 
 ## Steps
 
@@ -57,14 +57,12 @@ Every host step needs the owner's approval (see the `deploy` skill and
       restart the agent.
 - [x] Owner: sign in Antigravity account A on the page. The login worked at 13:47Z but the
       page reported a failure (see Notes); fixed in the follow-up PR on this branch.
-- [ ] Deploy the follow-up, rerun `install.sh` (copies the agent and restarts it), and check
-      that account A shows as signed in with its email.
-- [ ] If the card says the first-run setup is needed, the owner runs `agy-a` once over SSH,
-      then presses Refresh on the page.
-- [ ] If the card says the quota page could not be read, read
-      `journalctl -u mokaair-ai-accounts` for the page the probe saw (emails masked), fix
-      `parse_quota` and the fake page in `tests/test_ai_accounts_antigravity.py` to match.
-- [ ] Record what the real pages looked like in the Notes of this ticket and in
+- [x] Deploy the follow-up (#762, 051892d2, 14:28Z), rerun `install.sh`, and check that
+      account A shows as signed in with its email.
+- [x] The card said first-run setup was needed; the owner ran `agy-a` once over SSH.
+- [x] The first readable page was parsed wrong (see Notes). Fixed `parse_quota` for the real
+      layout, checked on the host against account A, and kept the page as a test fixture.
+- [x] Record what the real pages looked like in the Notes of this ticket and in
       `ops/ai-accounts/README.md`.
 
 ## How to verify
@@ -94,6 +92,14 @@ Then `agy-a` over SSH, `/usage`, and the page side by side.
 - After that login `cache/onboarding.json` says `"consumerOnboardingComplete": false`, so the
   first probe is expected to stop at a first-run page (`setup_needed`) until the owner runs
   `agy-a` once.
+- 14:33Z, first readable quota page: the old parser took "Models within this group: …" as
+  the label, found no window lengths or refresh times, and made a window of the "Quota
+  available" line, because agy puts the window name on the line above the bar and the
+  refresh time on the line below. The rewritten parser follows the group heading → name
+  line → bar → refresh line structure; run against account A on the host it read Gemini
+  weekly 99.93 % / five-hour 99.58 % left and Claude/GPT 100 %, matching `/usage`.
+- The plan comes from the header ("Gemini 3.8 Flash (High) (Google AI Pro)"); the email
+  from the header and from the log line.
 - Allowlist (owner's choice): x812033727, s812033727, z812033727 @gmail.com and the two
   Apple private-relay addresses of Claude D and Codex D.
 - The agent answers only the per-folder trust question, and only for its own empty probe
