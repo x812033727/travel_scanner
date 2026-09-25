@@ -7,8 +7,11 @@ import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths
 import { ARTIFACTS, loadProject } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
 import { audioReviewHtml, finalReviewHtml } from "./pages.mjs";
+import { reviewPull, reviewPush } from "./sync.mjs";
 
 export async function run(command, args, ctx) {
+  if (command === "review-push") return reviewPush(args, ctx);
+  if (command === "review-pull") return reviewPull(args, ctx);
   const { EXIT } = ctx;
   const values = parseArgs({ args, options: { slug: { type: "string" }, file: { type: "string" }, workdir: { type: "string" } }, strict: true }).values;
   if (!values.slug && !values.file) throw new UsageError("review needs --slug (or --file for an example outside docs/videos)");
