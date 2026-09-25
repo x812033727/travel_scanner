@@ -57,17 +57,17 @@ metadata:
 
 | # | 階段 | 誰 | 關卡 |
 | --- | --- | --- | --- |
-| 1 | 企劃：`brief.md`，含「站主觀點」「觀眾看完能做到的事」與 2–3 個大綱 | 企劃代理（`prompts/planner.md`） | **站主選大綱**（有選項的提問）→ `approve --gate outline` |
+| 1 | 企劃：`brief.md`，含「站主觀點」「觀眾看完能做到的事」與 2–3 個大綱 | 企劃代理（`prompts/planner.md`） | `review-push` → **站主在 `/admin/videos` 選大綱** → `review-pull` |
 | 2 | 撰稿：`video.json`＋`claims.md`，新英文詞補進發音字典 | 撰稿代理（`prompts/writer-video.md`） | `lint` 零錯誤 |
 | 3 | 查核：換人；改超過 3 個事實就第二輪再換人 | 查核代理（`prompts/verifier-video.md`） | `verify-1.md` 完成 |
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 協調者套用修正、`lint` 再過 |
 | 5 | `tts`：先 `--dry-run` 看字數與額度，再實際合成 | 工具 | 時間軸寫出、章節時間檢查過 |
-| 6 | `review` → 站主聽 `review/audio.html`，唸錯的匯出 `flags.json` → 補字典 → `tts --redo` | 站主 | **站主聽過** → `approve --gate audio` |
+| 6 | `check-audio`（Jev 判斷）→ 被標的句子 `tts --redo` → `review-push` | 工具、站主 | **站主在 `/admin/videos` 核准旁白** → `review-pull` |
 | 7 | `render` → `assemble` → CC 翻譯與 `captions` | 工具、翻譯代理 | 聯絡表看過；`checks.json` 全過；沒有過期翻譯 |
-| 8 | `review` → 站主看 `review/final.html` | 站主 | **站主看完全片** → `approve --gate final` |
-| 9 | `package` → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」，檢查後自己按公開 | 站主 | 影片 ID 寫回 `video.json` |
+| 8 | `review-push` 送 720p 成片 | 站主 | **站主在 `/admin/videos` 看完全片** → `review-pull` |
+| 9 | `package` → `review-push` 送上架確認 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」，檢查後自己按公開 | 站主 | 站主按「確認可以上架」；影片 ID 寫回 `video.json` |
 
-`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕。
+`status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。
 
 ## 人工錄製路線
 
