@@ -37,7 +37,7 @@ metadata:
 | # | 階段 | 做什麼 | 關卡 |
 | --- | --- | --- | --- |
 | 1 | 預檢 | `host-preflight.sh`（唯讀）：暫停檔、被規則 1 標記的目錄、24 小時內動過的發布目錄、鎖、live HEAD 對 origin/main、磁碟 | 沒有暫停檔、沒有 FLAGGED、鎖是空的；否則進 preflight.md 的判斷 |
-| 2 | 決定 | 站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold` | 用有選項的提問，不接受一句「好」 |
+| 2 | 決定 | 先看要不要部署：預檢加 `--dry-run`，別的 session 常部署，main 可能早就 live，那就不必問。要的話：站主要部署什麼（哪個 PR／SHA）、要不要 `--force`、要不要 `--ignore-hold` | 用有選項的提問，不接受一句「好」 |
 | 3 | 部署 | `host-deploy.sh`（背景），或站主自己跑一行 | `DEPLOY_EXIT=0`、腳本自己的 3/3 健康檢查過 |
 | 4 | 驗證 | `alembic current`、內部 `/health` 與 `/ready`、首頁 200 且 < 1 s、容器映像是 `:local`、抓一個 diff 加進的字串證明新程式在跑 | 全部成立才算部署完成 |
 | 5 | 收尾 | 把 SHA、耗時、有無 migration 寫進票或交接；內容匯入交給內容線；大功能上線後做 `post-deploy.md` 的三個問題 | 票或記憶有紀錄 |
