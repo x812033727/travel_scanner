@@ -77,10 +77,60 @@ class VoiceOptionsView(StrictModel):
     azure: list[str]
 
 
+class UsageView(StrictModel):
+    # Since the first of this month (UTC): what the budgets on this page are measured against.
+    tokens: int
+    token_budget: int
+    drafts: int
+    draft_budget: int
+    calls: int
+    failed_calls: int
+
+
 class SettingsView(SettingsWrite):
     # The dropdowns: catalog models each vendor can serve, whether the site has that vendor's
     # key, and the voices the narration server accepts.
     model_options: dict[ProviderName, list[ModelOptionView]]
     configured_providers: list[ProviderName]
     voice_options: VoiceOptionsView
+    usage: UsageView | None = None
     updated_at: datetime | None
+
+
+SLUG_PATTERN = r"^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$"
+
+
+class StageRunIn(StrictModel):
+    stage: Stage
+    slug: str = Field(pattern=SLUG_PATTERN)
+    # The stage's prompt (the skill's references/prompts/*.md with the video's context) and
+    # its inputs. The model is not the caller's to choose: the stage's setting decides.
+    instructions: str = Field(min_length=1, max_length=60_000)
+    payload: dict[str, object]
+    max_output_tokens: int = Field(default=16_000, ge=1_000, le=32_000)
+
+
+class StageRunOut(StrictModel):
+    # The whole output file (brief.md, video.json, a report…), exactly as it should be saved.
+    text: str
+    provider: ProviderName
+    model: str
+    input_tokens: int
+    output_tokens: int
+    usage: UsageView
+
+
+class TopicView(StrictModel):
+    source: Literal["site", "search"]
+    title: str
+    summary: str
+    url: str
+    # The site article's slug, so a video can point back to it; None for a search result.
+    slug: str | None = None
+    date: str | None = None
+
+
+class TopicsOut(StrictModel):
+    topics: list[TopicView]
+    # Why a source returned nothing: off in the settings, no key, or the day's budget used.
+    notes: list[str]

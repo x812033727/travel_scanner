@@ -27,6 +27,7 @@ const view = {
   },
   configured_providers: ["anthropic", "gemini"],
   voice_options: { gemini: ["Sulafat", "Kore"], gemini_models: ["gemini-3.8-flash-tts"], azure: [] },
+  usage: { tokens: 1500, token_budget: 20_000_000, drafts: 1, draft_budget: 8, calls: 3, failed_calls: 1 },
   updated_at: "2026-09-25T08:00:00Z",
 };
 
@@ -79,5 +80,6 @@ describe("AdminVideoSettings", () => {
     expect(await screen.findByText(/要有「管理設定」權限才能修改/)).toBeTruthy();
     expect(screen.getByRole("button", { name: "儲存設定" })).toHaveProperty("disabled", true);
     expect(screen.getAllByRole("option", { name: "OpenAI (沒有金鑰)" }).length).toBe(STAGES.length);
+    expect(screen.getByText(/1 \/ 8 支草稿，呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
   });
 });
