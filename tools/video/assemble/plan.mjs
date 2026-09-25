@@ -13,7 +13,16 @@ export const HEIGHT = 1080;
 export const LOUDNESS = { integrated: -14, truePeak: -1, range: 11 };
 export const LOUDNESS_TOLERANCE = 1;
 // A frame showing its intended image scores about 47 dB; the neighbouring image scores 34 or less.
-export const MIN_PSNR = 40;
+// A slide dense with small text (a table, a comparison) scores about 40 after encoding even when it
+// is right, so a fixed 40 failed the pilot's four densest slides. Above CLEAR_PSNR a frame passes,
+// below MIN_PSNR it fails, and between the two it must look most like its intended image, by
+// PSNR_MARGIN, among the scene's images.
+export const CLEAR_PSNR = 44;
+export const MIN_PSNR = 35;
+export const PSNR_MARGIN = 3;
+// AAC codes 1,024-sample frames: priming and the padded last frame leave the encoded stream up to
+// three of them longer than the narration. It is never shorter, so shorter means a real gap.
+export const AAC_PADDING_SECONDS = (3 * 1024) / 48_000;
 // Part of every segment's cache key: change an encoder setting and every segment is redone.
 export const ENCODER_VERSION = "x264-high-crf18-stillimage-g60-bf2-bt709-v2";
 
@@ -179,7 +188,8 @@ export function checkProbe(probe, { frames }) {
     if (Number(audio.sample_rate) !== 48000) problems.push(`audio at ${audio.sample_rate} Hz`);
     if (audio.channels !== 2) problems.push(`${audio.channels} audio channels, expected stereo`);
     const videoSeconds = frames / FPS;
-    if (Math.abs(Number(audio.duration) - videoSeconds) > 1 / FPS + 0.03) {
+    const longer = Number(audio.duration) - videoSeconds;
+    if (longer < -1 / FPS || longer > 1 / FPS + AAC_PADDING_SECONDS) {
       problems.push(`audio lasts ${Number(audio.duration).toFixed(3)} s, video ${videoSeconds.toFixed(3)} s`);
     }
   }
@@ -202,4 +212,24 @@ export function segmentSamples(scene) {
   const images = scene.entries.flatMap((entry) => Array.from({ length: entry.frames }, () => entry.file));
   const frames = [...new Set([0, 1, images.length - 1])].filter((n) => n >= 0 && n < images.length);
   return frames.map((n) => ({ n, file: images[n] }));
+}
+
+/** The scene's other held images (stills, not one-frame transitions) a frame could show instead. */
+export function rivalImages(scene, file) {
+  return [...new Set(scene.entries.filter((entry) => entry.frames > 1 && entry.file !== file).map((entry) => entry.file))];
+}
+
+/**
+ * Why a sampled frame does not show its image, or null. `rivals` maps each rival image to the
+ * frame's PSNR against it, measured only when `psnr` falls between MIN_PSNR and CLEAR_PSNR.
+ */
+export function sampleProblem(sample, psnr, rivals = {}) {
+  const label = `scene ${sample.scene} frame ${sample.n}`;
+  if (psnr >= CLEAR_PSNR) return null;
+  if (psnr < MIN_PSNR) return `${label} does not show ${sample.file} (PSNR ${psnr.toFixed(1)} dB)`;
+  const [closest, score] = Object.entries(rivals).sort(([, a], [, b]) => b - a)[0] ?? [];
+  if (closest !== undefined && psnr - score < PSNR_MARGIN) {
+    return `${label} looks as much like ${closest} (${score.toFixed(1)} dB) as like ${sample.file} (${psnr.toFixed(1)} dB)`;
+  }
+  return null;
 }
