@@ -31,6 +31,7 @@ from app.ai.structured_output import (
     responses_output_text,
     schema_instructions,
 )
+from app.ai.subscription import SubscriptionResearchProvider, on_subscription, vendor_ready
 from app.config import Settings
 from app.hotspots.guides import (
     BraveGuideProvider,
@@ -346,6 +347,29 @@ def research_provider(
             else settings.hotspot_guide_ai_max_output_tokens,
         )
 
+    if on_subscription(settings, name):
+        if not settings.ai_accounts_configured:
+            raise AppError(
+                503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定"
+            )
+        chosen_model, chosen_timeout, _tokens = settings_for("anthropic")
+        return SubscriptionResearchProvider(
+            settings,
+            chosen_model,
+            chosen_timeout,
+            # MiniMax on its own model, never the Claude model name this feature asked for.
+            fallback=(
+                lambda: research_provider(
+                    settings,
+                    "minimax",
+                    client,
+                    timeout_seconds=timeout_seconds,
+                    max_output_tokens=max_output_tokens,
+                )
+            )
+            if settings.minimax_api_key
+            else None,
+        )
     if name == "openai" and settings.openai_api_key:
         return ResponsesResearchProvider(
             "openai",
@@ -380,12 +404,7 @@ def research_provider(
 
 
 def configured_research_providers(settings: Settings) -> dict[str, bool]:
-    return {
-        "minimax": bool(settings.minimax_api_key),
-        "openai": bool(settings.openai_api_key),
-        "anthropic": bool(settings.anthropic_api_key),
-        "gemini": bool(settings.hotspot_guide_gemini_api_key),
-    }
+    return {name: vendor_ready(settings, name) for name in AI_PROVIDER_NAMES}
 
 
 def research_model(settings: Settings, name: AIProviderName) -> str:

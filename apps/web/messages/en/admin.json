@@ -570,6 +570,18 @@
     "jev_daily_call_budget": {
       "label": "Jev calls per day",
       "help": "Daily limit shared by the news automation, the Jev shadow assessment of place guides and the narration check, counted by UTC day; once spent, Jev is not called again that day. Default 200."
+    },
+    "anthropic_connection": {
+      "label": "Claude connection",
+      "help": "With \"Subscription accounts\", the Claude calls of guide search, place introductions, introduction review, Simplified names and AI news run on the Claude subscription accounts signed in under AI accounts on the host, not on an API key; when every account is at its cap they use MiniMax. The trip planner and trip text parsing still use the API key only. Only the owner can switch this.",
+      "options": {
+        "api_key": "API key",
+        "subscription": "Subscription accounts (Claude Code on the host)"
+      }
+    },
+    "ai_subscription_max_usage_percent": {
+      "label": "Subscription usage cap (%)",
+      "help": "Once an account's 5-hour or weekly usage reaches this share, the site stops using it and leaves the rest to the owner; when every account is past it, calls use MiniMax. Default 80."
     }
   },
   "hotspotTabs": {

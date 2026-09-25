@@ -23,6 +23,8 @@ T = TypeVar("T", bound=BaseModel)
 
 # A prompt run writes a whole script on the host; the agent itself stops it at 900 s.
 RUN_TIMEOUT_SECONDS = 960.0
+# How long the agent may hold a run while every account with room runs another prompt.
+RUN_QUEUE_SECONDS = 60.0
 
 
 class AgentRunResult(BaseModel):
@@ -125,12 +127,20 @@ class AiAccountsAgentClient:
         return await self._request("PUT", f"/v1/defaults/{tool}", AiDefaults, {"slot": slot})
 
     async def run_prompt(
-        self, *, model: str, system: str, prompt: str, max_usage_percent: int
+        self,
+        *,
+        model: str,
+        system: str,
+        prompt: str,
+        max_usage_percent: int,
+        timeout_seconds: float = RUN_TIMEOUT_SECONDS - 60,
+        queue_seconds: float = RUN_QUEUE_SECONDS,
     ) -> AgentRunResult:
         """One prompt on the Claude account with the most room; the agent turns every tool off.
 
         Refusals come back as AppError with the agent's code: ``subscription_quota_paused``
-        (429, with the reset time in the detail), ``subscription_not_signed_in`` (409),
+        (429, with the reset time in the detail), ``subscription_busy`` (503, every account with
+        room stayed busy for ``queue_seconds``), ``subscription_not_signed_in`` (409),
         ``subscription_run_failed`` (502).
         """
         payload = {
@@ -139,8 +149,13 @@ class AiAccountsAgentClient:
             "system": system,
             "prompt": prompt,
             "max_usage_percent": max_usage_percent,
-            "timeout_seconds": RUN_TIMEOUT_SECONDS - 60,
+            "timeout_seconds": timeout_seconds,
+            "queue_seconds": queue_seconds,
         }
         return await self._request(
-            "POST", "/v1/runs", AgentRunResult, payload, read_timeout=RUN_TIMEOUT_SECONDS
+            "POST",
+            "/v1/runs",
+            AgentRunResult,
+            payload,
+            read_timeout=timeout_seconds + queue_seconds + 60,
         )

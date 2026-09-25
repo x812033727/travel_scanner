@@ -570,6 +570,18 @@
     "jev_daily_call_budget": {
       "label": "Jev 每日呼叫次數",
       "help": "新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用的每日上限，以 UTC 日計算；用完當天就不再呼叫 Jev。預設 200。"
+    },
+    "anthropic_connection": {
+      "label": "Claude 連線方式",
+      "help": "選「訂閱帳號」時，攻略搜尋、景點介紹、介紹審查、簡體名稱與 AI 新聞的 Claude 呼叫都改由主機上「AI 帳號」登入的 Claude 訂閱帳號執行，不用 API 金鑰；每個帳號都到上限時改用 MiniMax。行程規劃與行程文字解析仍只用 API 金鑰。只有站主能切換。",
+      "options": {
+        "api_key": "API 金鑰",
+        "subscription": "訂閱帳號（主機 Claude Code）"
+      }
+    },
+    "ai_subscription_max_usage_percent": {
+      "label": "訂閱帳號用量上限（%）",
+      "help": "帳號的 5 小時或每週用量到這個百分比，網站就不再用它，留給站主自己用；全部帳號都到上限時改用 MiniMax。預設 80。"
     }
   },
   "hotspotTabs": {

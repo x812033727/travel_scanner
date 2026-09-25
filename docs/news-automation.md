@@ -85,7 +85,12 @@ reply, and the dropped bounds are written into the field descriptions.
    「AI 供應商與金鑰」 (or the environment). Each candidate spends up to two Jev calls
    (the duplicate check and the zh-TW draft) from `JEV_DAILY_CALL_BUDGET` (default 200).
    When the budget runs out, the duplicate check answers "uncertain" and the candidate
-   waits in manual review rather than failing.
+   waits in manual review rather than failing. Claude needs no key when the owner sets
+   「Claude 連線方式」 on that card to 訂閱帳號: every stage then runs on the Claude
+   subscription accounts signed in at `/admin/ai-accounts`, through the host agent that
+   the news-worker reaches over its socket (`app/ai/subscription.py`). A stage waits up to
+   two minutes for a busy account. When every account is at the card's usage cap, the
+   stage falls back to MiniMax, and its run records MiniMax's model.
 3. **Sources.** The reviewed list lives in `apps/api/app/news_automation/sources.json`
    (each entry carries a `note` on why it is there). Load it on the host, dry run first:
 
