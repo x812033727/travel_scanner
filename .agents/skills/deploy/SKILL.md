@@ -1,6 +1,6 @@
 ---
 name: deploy
-description: 把 travel_scanner 部署到唯一的正式主機 mokaair.com：先做主機預檢（暫停檔、未啟用的分階段發布、鎖、磁碟），在背景跑一次性的部署腳本，驗證健康與 migration，處理回滾與清理，並照顧 auto 模式分類器與 SSH 的限制。要重新部署、部署某個已合併的 PR、看部署為什麼被拒絕（exit 3、暫停檔）、判斷一個分階段發布是活的還是被遺棄的、清掉暫停檔、做部署後稽核、查主機磁碟或容器狀態時，先讀這個 skill。Deploy travel_scanner to the single production host. Covers the host preflight (hold file, stranded staged releases, locks, disk), running the one-shot deploy script in the background, health and migration checks, rollback and cleanup, and the permission-classifier and SSH constraints. Use it for any redeploy, a refused deploy, judging or clearing a hold, and post-deploy checks. Not for content imports (that is content-pipeline) and not for writing nginx config.
+description: 把 travel_scanner 部署到唯一的正式主機 mokaair.com：先做主機預檢（暫停檔、未啟用的分階段發布、鎖、磁碟），在背景跑一次性的部署腳本，驗證健康與 migration，處理回滾與清理，並照顧 auto 模式分類器與 SSH 的限制。要重新部署、部署某個已合併的 PR、看部署為什麼被拒絕（exit 3、暫停檔）、判斷一個分階段發布是活的還是被遺棄的、清掉暫停檔、做部署後稽核、查主機磁碟或容器狀態時，先讀這個 skill。Deploy travel_scanner to the production host with preflight, background deploy, health checks, rollback and hold handling.
 metadata:
   short-description: 正式站部署：預檢、部署、驗證、回滾
 ---

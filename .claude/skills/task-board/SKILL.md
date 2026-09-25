@@ -1,6 +1,6 @@
 ---
 name: task-board
-description: travel_scanner 的任務看板與 PR 循環：從 tasks/open 挑票、先查有沒有別的 session 在做（分支、worktree、遠端、開著的 PR）、claim 並開分支、在 PR 裡結案、在嚴格的分支保護下 rebase 與合併（四個必要檢查、squash、--match-head-commit）、讀 CI 失敗與已知 flake、整理卡在 review 的票與過期認領。要接下一張票、開票、認領或釋出票、開 PR、合併 PR、處理 BEHIND／DIRTY、判斷某張票或分支是否已經落地、做看板總整理時，先讀這個 skill。The tasks/ queue and pull-request loop for travel_scanner. Pick a ticket, check who else is on it (branches, worktrees, remote heads, open PRs), claim with a branch, close the ticket inside its PR, rebase and squash-merge under strict branch protection, read CI failures and known flakes, and sweep tickets stuck in review or stale claims. Use it whenever the work is to take, file, claim, release or close a task, open or land a PR, or prove that work already landed. Not for deploying (deploy) or writing articles (content-pipeline).
+description: travel_scanner 的任務看板與 PR 循環：從 tasks/open 挑票、先查有沒有別的 session 在做（分支、worktree、遠端、開著的 PR）、claim 並開分支、在 PR 裡結案、在嚴格的分支保護下 rebase 與合併（四個必要檢查、squash、--match-head-commit）、讀 CI 失敗與已知 flake、整理卡在 review 的票與過期認領。要接下一張票、開票、認領或釋出票、開 PR、合併 PR、處理 BEHIND／DIRTY、判斷某張票或分支是否已經落地、做看板總整理時，先讀這個 skill。Take, claim, file and close tasks in tasks/, and open, rebase and merge their pull requests under branch protection.
 metadata:
   short-description: 任務看板：挑票、認領、開 PR、合併
 ---

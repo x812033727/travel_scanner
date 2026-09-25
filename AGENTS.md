@@ -56,4 +56,9 @@ boundaries; `README.md` describes the product. `.agents/skills/` holds the skill
 Claude Code share (Claude reads the byte-identical copy under `.claude/skills/`, and
 `npm run test:tools` keeps the two in step); start any article batch with the
 `content-pipeline` skill, a production deploy with `deploy`, and board work with
-`task-board`.
+`task-board`. The others: `article-localization` (translating published articles),
+`catalog-import` (host data CLIs), `catchtable-discovery`, `hotspot-review` (review
+queues, Place IDs, coordinates), `prod-host-ops` (nginx, admin settings, host CLIs),
+`backend-conventions` (migrations, session helpers, admin pages), `dev-and-ci` (local
+checks, CI failures, Dependabot), `web-i18n-e2e` (messages and Playwright) and
+`youtube-video`. Read the matching skill before re-deriving a workflow from the docs.
