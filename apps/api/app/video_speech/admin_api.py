@@ -483,7 +483,7 @@ async def transcribe_narration(
         raise AppError(422, "video_transcribe_bad_audio", "只收 2 MB 以內的 WAV 音檔")
     settings = await load_runtime_settings(session)
     try:
-        text = await transcribe(settings, wav)
+        text = await transcribe(settings, wav, terms=payload.terms)
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
     except SpeechUpstreamError as error:

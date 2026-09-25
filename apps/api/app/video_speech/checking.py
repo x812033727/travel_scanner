@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import base64
 import logging
+from collections.abc import Sequence
 from typing import Any
 
 import httpx
@@ -34,6 +35,12 @@ TRANSCRIBE_INSTRUCTIONS = (
     "used in Taiwan. Write English words and acronyms as Latin letters the way they are spoken "
     "(for example AI, GPT, p95). Write numbers the way they are spoken. Do not correct, "
     "summarize or add anything. Output only the transcript."
+)
+# Speech recognisers take a phrase list for the same reason: a short English word inside
+# Mandarin ("Go", "Plus") is heard as whichever Chinese character sounds like it.
+TERMS_HINT = (
+    " This line may say these English words; when you hear one, write it exactly as listed "
+    "rather than as Chinese characters that sound like it: {terms}."
 )
 
 JUDGE_INSTRUCTIONS = (
@@ -65,9 +72,12 @@ JUDGE_CRITERIA = {
 
 
 async def transcribe(
-    settings: Settings, wav: bytes, client: httpx.AsyncClient | None = None
+    settings: Settings,
+    wav: bytes,
+    client: httpx.AsyncClient | None = None,
+    terms: Sequence[str] = (),
 ) -> str:
-    """The words in one clip, as Gemini hears them."""
+    """The words in one clip, as Gemini hears them; ``terms`` are English words it may say."""
     key = settings.hotspot_guide_gemini_api_key
     if not key:
         raise CheckUnavailable(
@@ -79,8 +89,11 @@ async def transcribe(
     http = client or httpx.AsyncClient(
         timeout=settings.video_speech_gemini_timeout_seconds, trust_env=False
     )
+    instructions = TRANSCRIBE_INSTRUCTIONS
+    if terms:
+        instructions += TERMS_HINT.format(terms=", ".join(terms))
     body = {
-        "system_instruction": {"parts": [{"text": TRANSCRIBE_INSTRUCTIONS}]},
+        "system_instruction": {"parts": [{"text": instructions}]},
         "contents": [
             {
                 "role": "user",

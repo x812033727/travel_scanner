@@ -74,9 +74,13 @@ export async function speechStatus(options) {
 const postJson = (options, path, body) =>
   call({ ...defaults(options), path, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
 
-/** The words in one clip, as the server's transcriber hears them. */
-export async function transcribeClip({ wav, ...options }) {
-  const response = await postJson(options, "speech/transcribe", { audio: Buffer.from(wav).toString("base64") });
+/**
+ * The words in one clip, as the server's transcriber hears them. `terms` are the English words
+ * the line says; a server from before they existed refuses the field, so it goes only when set.
+ */
+export async function transcribeClip({ wav, terms = [], ...options }) {
+  const request = { audio: Buffer.from(wav).toString("base64"), ...(terms.length ? { terms } : {}) };
+  const response = await postJson(options, "speech/transcribe", request);
   const body = await response.json();
   return typeof body.text === "string" ? body.text : "";
 }
