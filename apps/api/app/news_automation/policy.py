@@ -58,6 +58,13 @@ ALLOWED_TRANSITIONS: Mapping[str, frozenset[str]] = {
 }
 
 
+# Manual-review holds that are steps of the workflow rather than problems: a verified
+# Traditional Chinese draft waiting for the owner's decision, and a checked five-locale
+# article (re-verified in the editor) waiting for the publish button.
+ZH_DRAFT_READY = "news_zh_draft_ready"
+READY_TO_PUBLISH = "news_ready_to_publish"
+
+
 class EvidenceLike(Protocol):
     role: str
     url: str
@@ -74,11 +81,19 @@ def evidence_site_count(rows: Iterable[EvidenceLike]) -> int:
     return len({evidence_site(row.url) for row in rows if row.role == "evidence"})
 
 
+def evidence_present(rows: Iterable[EvidenceLike]) -> bool:
+    """At least one evidence page, which is all a draft for the owner needs (owner
+    decision, 2026-09-25): every enabled source is an official or trusted feed, and a
+    person confirms each single-source article before it is translated and published."""
+    return any(row.role == "evidence" for row in rows)
+
+
 def evidence_sufficient(rows: Iterable[EvidenceLike]) -> bool:
     """Two evidence pages from two different websites, one of them first-party.
 
     Pages of one website are one source (owner decision, 2026-09-24): an announcement and
-    its own related pages do not corroborate each other.
+    its own related pages do not corroborate each other. Since 2026-09-25 this only
+    guards automatic publication; a person may publish a single-source article.
     """
     usable = [row for row in rows if row.role == "evidence"]
     return evidence_site_count(usable) >= 2 and any(row.is_first_party for row in usable)
@@ -197,8 +212,8 @@ def hard_policy_problems(
         isinstance(block, LinkBlock) and block.url == topic_url for block in document.blocks
     ):
         problems.append("news_topic_link: the localized dynamic topic link is required")
-    if source_count < 2:
-        problems.append("news_sources: evidence from at least two websites is required")
+    if source_count < 1:
+        problems.append("news_sources: evidence from at least one website is required")
     text = _visible_text(document)
     if vertical == "crypto":
         marker = CRYPTO_MARKERS[locale].casefold()

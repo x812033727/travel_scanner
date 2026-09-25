@@ -57,15 +57,21 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
+  | "zhDraft" | "translationHold" | "readyToPublish"
   | "shadow" | "jevHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "working";
-type Action = "publish" | "verify" | "notDuplicate" | "retry" | "reject" | "incident";
+type Action = "approve" | "publish" | "verify" | "notDuplicate" | "retry" | "reject" | "incident";
 const actionPath: Record<Action, string> = {
-  publish: "publish", verify: "verify", notDuplicate: "not-duplicate", retry: "retry",
-  reject: "reject", incident: "major-error",
+  approve: "approve", publish: "publish", verify: "verify", notDuplicate: "not-duplicate",
+  retry: "retry", reject: "reject", incident: "major-error",
 };
 // Only the buttons that can work for the situation, so none sit greyed out unexplained.
 const situationActions: Record<Situation, readonly Action[]> = {
+  // A verified Traditional Chinese draft: the owner confirms before anything is translated.
+  zhDraft: ["approve", "retry", "reject"],
+  // Confirmed, then a translation or a check stopped it: run the second stage again.
+  translationHold: ["approve", "reject"],
+  readyToPublish: ["publish", "verify", "reject"],
   shadow: ["publish", "verify", "reject"],
   jevHold: ["publish", "verify", "reject"],
   fixArticle: ["verify", "reject"],
@@ -73,14 +79,14 @@ const situationActions: Record<Situation, readonly Action[]> = {
   // Stored evidence hashes are never refreshed, so publish and reruns fail the same way.
   evidenceChanged: ["reject"],
   redraft: ["retry", "reject"],
-  failed: ["retry", "verify", "reject"],
-  // Evidence is only gathered at the first scan; a rerun cannot add a second website.
+  failed: ["approve", "retry", "verify", "reject"],
+  // Only lead-only pages: a rerun cannot find a page to cite.
   needsEvidence: ["reject"],
   published: ["incident"],
   closed: [],
   working: [],
 };
-const primaryActions: readonly Action[] = ["publish", "notDuplicate", "incident"];
+const primaryActions: readonly Action[] = ["approve", "publish", "notDuplicate", "incident"];
 
 function situationOf(candidate: NewsCandidateSummary): Situation {
   switch (candidate.status) {
@@ -88,7 +94,10 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
     case "manual_review":
       if (candidate.error_code === "news_duplicate_uncertain") return "duplicate";
       if (candidate.error_code === "news_evidence_changed") return "evidenceChanged";
+      if (candidate.error_code === "news_zh_draft_ready") return "zhDraft";
+      if (candidate.error_code === "news_ready_to_publish") return "readyToPublish";
       if (candidate.error_code === "news_jev_manual") return "jevHold";
+      if (candidate.human_decision === "publish") return "translationHold";
       return candidate.guide_article_id ? "fixArticle" : "redraft";
     case "needs_redraft": return "redraft";
     case "failed": return "failed";
@@ -101,9 +110,12 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
 }
 
 function availableActions(candidate: NewsCandidateSummary): Action[] {
-  return situationActions[situationOf(candidate)].filter(
-    (action) => action !== "verify" || Boolean(candidate.guide_article_id),
-  );
+  return situationActions[situationOf(candidate)].filter((action) => {
+    if (action === "verify") return Boolean(candidate.guide_article_id);
+    // A failed run can resume translating only after the owner confirmed publication.
+    if (action === "approve" && candidate.status === "failed") return candidate.human_decision === "publish";
+    return true;
+  });
 }
 
 function problemMessage(problem: unknown, fallback: string) {
@@ -248,13 +260,19 @@ export function AdminNewsWorkspace() {
   }
 
   const doneMessage: Record<Action, string> = {
-    publish: copy.donePublish, verify: copy.doneVerify, notDuplicate: copy.doneNotDuplicate,
-    retry: copy.doneRetry, reject: copy.doneReject, incident: copy.doneIncident,
+    approve: copy.doneApprove, publish: copy.donePublish, verify: copy.doneVerify,
+    notDuplicate: copy.doneNotDuplicate, retry: copy.doneRetry, reject: copy.doneReject,
+    incident: copy.doneIncident,
   };
   const actionLabel: Record<Action, string> = {
-    publish: copy.publish, verify: copy.verify, notDuplicate: copy.notDuplicate,
-    retry: copy.retry, reject: copy.reject, incident: copy.incident,
+    approve: copy.approve, publish: copy.publish, verify: copy.verify,
+    notDuplicate: copy.notDuplicate, retry: copy.retry, reject: copy.reject,
+    incident: copy.incident,
   };
+  // Confirming again resumes the translations of a draft the owner already confirmed.
+  const labelFor = (name: Action) =>
+    name === "approve" && detail?.human_decision === "publish" ? copy.retranslate : actionLabel[name];
+  const draftJev = detail?.assessments.filter((item) => item.assessment_type === "jev" && item.locale === "zh-TW").at(-1);
 
   const act = (name: Action) => run(async () => {
     if (!detail || !reason.trim()) { setError(copy.reasonFirst); return; }
@@ -390,7 +408,10 @@ export function AdminNewsWorkspace() {
           <div className={`${panelClass} space-y-3`}>
             <h2 className="text-xl font-bold">{copy.nextStep}</h2>
             <p className="leading-7">{copy.next[situation]}</p>
-            {(situation === "shadow" || situation === "jevHold") && gate && settings && <p className="text-sm text-[var(--muted)]">
+            {situation === "zhDraft" && draftJev && <p className="text-sm">
+              {fillNewsCopy(copy.jevOnDraft, { tier: typeof draftJev.details.tier === "string" ? named(copy.tiers, draftJev.details.tier) : named(copy.verdicts, draftJev.verdict), confidence: draftJev.confidence?.toFixed(2) ?? "—" })}
+            </p>}
+            {(situation === "zhDraft" || situation === "shadow" || situation === "jevHold") && gate && settings && <p className="text-sm text-[var(--muted)]">
               {fillNewsCopy(copy.gateProgress, { vertical: detail.vertical.toUpperCase(), labelled: gate.labelled_candidates, min: settings.min_shadow_candidates, rate: (gate.agreement_rate * 100).toFixed(0) })}
             </p>}
             {situation === "duplicate" && <div>
@@ -409,7 +430,7 @@ export function AdminNewsWorkspace() {
               <div className="flex flex-wrap items-center gap-2">
                 {actions.map((name) => <Button key={name} secondary={!primaryActions.includes(name)}
                   disabled={!manage.allowed || busy || !reason.trim() || (name === "incident" && !majorError)}
-                  onClick={() => void act(name)}>{actionLabel[name]}</Button>)}
+                  onClick={() => void act(name)}>{labelFor(name)}</Button>)}
                 {!reason.trim() && <span className="text-xs text-[var(--muted)]">{copy.reasonFirst}</span>}
               </div>
             </div>}
