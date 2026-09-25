@@ -319,7 +319,7 @@ async def _synthesize_with_gemini(
         raise AppError(
             503,
             "video_speech_not_configured",
-            "網站的 Gemini 金鑰還沒設定：請在「API 與供應商設定 → AI 服務」填 Gemini 金鑰",
+            "網站的 Gemini 金鑰還沒設定：請在「AI 設定 → API 金鑰」填 Gemini 金鑰",
         )
     if not voice:
         raise AppError(422, "video_speech_voice_not_allowed", "Gemini 聲音名稱的格式不對")
@@ -411,7 +411,7 @@ async def synthesize_speech(payload: SpeechRequest, tool: VideoTool, session: Se
             503,
             "video_speech_not_configured",
             "後台的 Azure 語音還沒設定或已停用："
-            "請在「API 與供應商設定 → AI 服務 → Azure 語音」填金鑰與區域",
+            "請在「AI 設定 → API 金鑰 → Azure 語音」填金鑰與區域",
         )
     if payload.voice not in settings.azure_speech_voice_list:
         raise AppError(

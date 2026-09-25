@@ -122,14 +122,56 @@ class SourceView(SourceWrite):
     updated_at: datetime
 
 
-class SettingsWrite(StrictModel):
-    enabled: bool
-    mode: Literal["shadow", "automatic"] = "shadow"
+def _clean_model_id(value: str | None) -> str | None:
+    # A Gemini model id is interpolated into the request path (security audit R2-25),
+    # so a stored id is held to the same pattern as the admin AI settings.
+    cleaned = (value or "").strip()
+    if not cleaned:
+        return None
+    if not valid_model_id(cleaned):
+        raise ValueError("model ids may contain letters, digits, dot, underscore, colon and -")
+    return cleaned
+
+
+_MODEL_KEYS = (
+    "writer_provider",
+    "writer_model",
+    "verifier_provider",
+    "verifier_model",
+    "editor_provider",
+    "editor_model",
+)
+
+
+class ModelsWrite(StrictModel):
+    """The writer, verifier and final editor models, chosen on the AI settings page."""
+
     writer_provider: ProviderName
     writer_model: str | None = Field(default=None, max_length=128)
     verifier_provider: ProviderName
     verifier_model: str | None = Field(default=None, max_length=128)
-    editor_provider: ProviderName = "anthropic"
+    editor_provider: ProviderName
+    editor_model: str | None = Field(default=None, max_length=128)
+
+    @field_validator("writer_model", "verifier_model", "editor_model")
+    @classmethod
+    def model_id(cls, value: str | None) -> str | None:
+        return _clean_model_id(value)
+
+
+class SettingsWrite(StrictModel):
+    enabled: bool
+    mode: Literal["shadow", "automatic"] = "shadow"
+    # The models are chosen on the AI settings page (PUT /settings/models). A settings
+    # save that leaves them out keeps the stored choice, so the news page cannot put
+    # back a model it loaded before the owner changed it there.
+    writer_provider: ProviderName | None = None
+    writer_model: str | None = Field(default=None, max_length=128)
+    verifier_provider: ProviderName | None = None
+    verifier_model: str | None = Field(default=None, max_length=128)
+    # The editor keeps #763's defaults for callers that build settings from scratch (the
+    # settings CLI); a save still keeps the stored editor unless it sends one.
+    editor_provider: ProviderName | None = "anthropic"
     editor_model: str | None = Field(default="claude-opus-5-5", max_length=128)
     global_concurrency: int = Field(ge=1, le=8)
     per_vertical_concurrency: int = Field(ge=1, le=4)
@@ -146,20 +188,19 @@ class SettingsWrite(StrictModel):
     @field_validator("writer_model", "verifier_model", "editor_model")
     @classmethod
     def model_id(cls, value: str | None) -> str | None:
-        # A Gemini model id is interpolated into the request path (security audit R2-25),
-        # so a stored id is held to the same pattern as the admin AI settings.
-        cleaned = (value or "").strip()
-        if not cleaned:
-            return None
-        if not valid_model_id(cleaned):
-            raise ValueError("model ids may contain letters, digits, dot, underscore, colon and -")
-        return cleaned
+        return _clean_model_id(value)
 
     @model_validator(mode="after")
     def concurrency_order(self) -> Self:
         if self.per_vertical_concurrency > self.global_concurrency:
             raise ValueError("per-vertical concurrency cannot exceed global concurrency")
+        for key in ("writer_provider", "verifier_provider", "editor_provider"):
+            if key in self.model_fields_set and getattr(self, key) is None:
+                raise ValueError(f"{key} cannot be empty")
         return self
+
+    def sent_models(self) -> set[str]:
+        return {key for key in _MODEL_KEYS if key in self.model_fields_set}
 
 
 class GateView(StrictModel):
@@ -181,6 +222,9 @@ class ModelOptionView(StrictModel):
 
 
 class SettingsView(SettingsWrite):
+    writer_provider: ProviderName
+    verifier_provider: ProviderName
+    editor_provider: ProviderName
     gates: dict[Vertical, GateView]
     # The admin model dropdowns: catalog models each vendor's news adapter can drive,
     # and the model an empty choice falls back to.
