@@ -57,7 +57,7 @@ const statusTone: Partial<Record<NewsCandidateStatus, string>> = {
 
 // What happened to a candidate, which decides the explanation and the buttons it gets.
 type Situation =
-  | "zhDraft" | "translationHold" | "readyToPublish"
+  | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
   | "shadow" | "jevHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "working";
 type Action = "approve" | "publish" | "verify" | "notDuplicate" | "retry" | "reject" | "incident";
@@ -72,6 +72,9 @@ const situationActions: Record<Situation, readonly Action[]> = {
   // Confirmed, then a translation or a check stopped it: run the second stage again.
   translationHold: ["approve", "reject"],
   readyToPublish: ["publish", "verify", "reject"],
+  // The five-locale article is saved; the final editor or Jev's last call held it back.
+  finalEditHold: ["publish", "verify", "reject"],
+  jevFinalHold: ["publish", "verify", "reject"],
   shadow: ["publish", "verify", "reject"],
   jevHold: ["publish", "verify", "reject"],
   fixArticle: ["verify", "reject"],
@@ -97,6 +100,8 @@ function situationOf(candidate: NewsCandidateSummary): Situation {
       if (candidate.error_code === "news_zh_draft_ready") return "zhDraft";
       if (candidate.error_code === "news_ready_to_publish") return "readyToPublish";
       if (candidate.error_code === "news_jev_manual") return "jevHold";
+      if (candidate.error_code === "news_final_edit_hold") return "finalEditHold";
+      if (candidate.error_code === "news_jev_final_hold") return "jevFinalHold";
       if (candidate.human_decision === "publish") return "translationHold";
       return candidate.guide_article_id ? "fixArticle" : "redraft";
     case "needs_redraft": return "redraft";
@@ -272,7 +277,7 @@ export function AdminNewsWorkspace() {
   // Confirming again resumes the translations of a draft the owner already confirmed.
   const labelFor = (name: Action) =>
     name === "approve" && detail?.human_decision === "publish" ? copy.retranslate : actionLabel[name];
-  const draftJev = detail?.assessments.filter((item) => item.assessment_type === "jev" && item.locale === "zh-TW").at(-1);
+  const draftJev = detail?.assessments.filter((item) => item.assessment_type === "jev" && item.locale === "zh-TW" && item.details.stage !== "final").at(-1);
 
   const act = (name: Action) => run(async () => {
     if (!detail || !reason.trim()) { setError(copy.reasonFirst); return; }
@@ -412,7 +417,7 @@ export function AdminNewsWorkspace() {
               {fillNewsCopy(copy.jevOnDraft, { tier: typeof draftJev.details.tier === "string" ? named(copy.tiers, draftJev.details.tier) : named(copy.verdicts, draftJev.verdict), confidence: draftJev.confidence?.toFixed(2) ?? "—" })}
             </p>}
             {(situation === "zhDraft" || situation === "shadow" || situation === "jevHold") && gate && settings && <p className="text-sm text-[var(--muted)]">
-              {fillNewsCopy(copy.gateProgress, { vertical: detail.vertical.toUpperCase(), labelled: gate.labelled_candidates, min: settings.min_shadow_candidates, rate: (gate.agreement_rate * 100).toFixed(0) })}
+              {fillNewsCopy(copy.agreementProgress, { vertical: detail.vertical.toUpperCase(), labelled: gate.labelled_candidates, rate: (gate.agreement_rate * 100).toFixed(0) })}
             </p>}
             {situation === "duplicate" && <div>
               <h3 className="font-semibold">{copy.similarTitles}</h3>
@@ -449,7 +454,7 @@ export function AdminNewsWorkspace() {
               <h3 className="font-bold">{copy.source}</h3><ul className="list-disc pl-5 text-sm">{document.sources.map((item) => <li key={item.url}><a href={item.url} target="_blank" rel="noopener noreferrer" className="text-[var(--teal)] underline">{item.title}</a></li>)}</ul></article>}
             {detail.guide_article_id && <div className="mt-4 flex flex-wrap gap-2">{newsLocales.map((value) => <Link key={value} href={`/admin/guides?article=${detail.guide_article_id}&lang=${value}`} className="inline-flex min-h-11 items-center rounded-xl border border-[var(--line)] px-3 font-semibold">{copy.openEditor} · {value}</Link>)}</div>}
           </div>
-          <div className={panelClass}><h2 className="text-xl font-bold">{copy.assessments}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.status}</th><th className="p-2">{copy.locale}</th><th className="p-2">{copy.confidence}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.reasons}</th></tr></thead><tbody>{detail.assessments.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="min-w-40 p-2">{named(copy.assessmentTypes, item.assessment_type)}: {named(copy.verdicts, item.verdict)}{typeof item.details.tier === "string" ? ` (${named(copy.tiers, item.details.tier)})` : ""}</td><td className="p-2">{item.locale ?? "—"}</td><td className="p-2">{item.confidence?.toFixed(3) ?? "—"}</td><td className="p-2">{item.provider === "human" ? copy.assessmentTypes.human : `${item.provider ?? "—"} ${item.model ?? ""}`}</td><td className="min-w-40 p-2">{item.reasons.map((value) => named(copy.reasonCodes, value)).join(" · ") || "—"}</td></tr>)}</tbody></table></div></div>
+          <div className={panelClass}><h2 className="text-xl font-bold">{copy.assessments}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.status}</th><th className="p-2">{copy.locale}</th><th className="p-2">{copy.confidence}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.reasons}</th></tr></thead><tbody>{detail.assessments.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="min-w-40 p-2">{named(copy.assessmentTypes, item.assessment_type)}{typeof item.details.stage === "string" && item.details.stage in copy.assessmentStages ? `・${named(copy.assessmentStages, item.details.stage)}` : ""}: {named(copy.verdicts, item.verdict)}{typeof item.details.tier === "string" ? ` (${named(copy.tiers, item.details.tier)})` : ""}</td><td className="p-2">{item.locale ?? "—"}</td><td className="p-2">{item.confidence?.toFixed(3) ?? "—"}</td><td className="p-2">{item.provider === "human" ? copy.assessmentTypes.human : `${item.provider ?? "—"} ${item.model ?? ""}`}</td><td className="min-w-40 p-2">{item.reasons.map((value) => named(copy.reasonCodes, value)).join(" · ") || "—"}</td></tr>)}</tbody></table></div></div>
         </section>}
       </div>}
       {tab === "sources" && <div className="space-y-5"><section className={panelClass}><h2 className="text-xl font-bold">{copy.addSource}</h2><div className="mt-4 grid gap-3 md:grid-cols-2">
@@ -464,7 +469,7 @@ export function AdminNewsWorkspace() {
         <section className="grid gap-3">{sources.map((item) => <article key={item.id} className={panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className="mt-2 text-sm text-red-700">{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
       {tab === "settings" && settings && <section className={`${panelClass} space-y-5`}><label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={settings.enabled} onChange={(event) => setSettings({ ...settings, enabled: event.target.checked })} />{copy.enable}</label>
         <label>{copy.mode}<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
-        <div className="grid gap-3 md:grid-cols-2">{(["writer", "verifier"] as const).map((kind) => {
+        <div className="grid gap-3 md:grid-cols-3">{(["writer", "verifier", "editor"] as const).map((kind) => {
           const provider = settings[`${kind}_provider`];
           return <fieldset key={kind} className="space-y-3 rounded-xl border border-[var(--line)] p-4">
             <legend className="px-1 font-bold">{copy[kind]}</legend>
@@ -473,10 +478,11 @@ export function AdminNewsWorkspace() {
               fallback={settings.default_models?.[provider]} copy={copy} onChange={(value) => setSettings({ ...settings, [`${kind}_model`]: value })} />
           </fieldset>;
         })}</div>
-        <div className="grid gap-3 md:grid-cols-2">{(["global_concurrency", "per_vertical_concurrency", "min_shadow_days", "min_shadow_candidates"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
-        <div className="grid gap-3 md:grid-cols-2">{(["min_human_agreement", "jev_act_confidence"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" min={0} max={1} step="0.01" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
+        <div className="grid gap-3 md:grid-cols-2">{(["global_concurrency", "per_vertical_concurrency"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
+        <div className="grid gap-3 md:grid-cols-2">{(["jev_act_confidence"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" min={0} max={1} step="0.01" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
         <div className="grid gap-3 md:grid-cols-2">{(["prompt_version", "policy_version"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} /></label>)}</div>
-        <div className="grid gap-3 md:grid-cols-3">{(["ai", "tech", "crypto"] as NewsVertical[]).map((vertical) => { const gateView = settings.gates[vertical]; const key = `auto_publish_${vertical}` as const; return <article key={vertical} className="rounded-xl border border-[var(--line)] p-4"><h3 className="font-bold">{vertical.toUpperCase()} · {copy.gate}</h3><p className={`mt-2 text-sm font-semibold ${gateView.eligible ? "text-emerald-700" : "text-amber-700"}`}>{gateView.eligible ? copy.eligible : copy.notEligible}</p><p className="mt-1 text-sm">{gateView.days}d · {gateView.labelled_candidates} · {(gateView.agreement_rate * 100).toFixed(1)}% · {gateView.serious_false_positives} {copy.serious}</p>{gateView.reasons.length > 0 && <ul className="mt-2 list-disc pl-5 text-xs text-[var(--muted)]">{gateView.reasons.map((value) => <li key={value}>{value}</li>)}</ul>}<label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" disabled={!gateView.eligible || settings.mode !== "automatic"} checked={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.checked })} />{copy.autoPublish}</label></article>; })}</div>
+        <p className="text-sm text-[var(--muted)]">{copy.agreementHint}</p>
+        <div className="grid gap-3 md:grid-cols-3">{(["ai", "tech", "crypto"] as NewsVertical[]).map((vertical) => { const gateView = settings.gates[vertical]; const key = `auto_publish_${vertical}` as const; return <article key={vertical} className="rounded-xl border border-[var(--line)] p-4"><h3 className="font-bold">{vertical.toUpperCase()} · {copy.agreement}</h3><p className="mt-1 text-sm">{gateView.days}d · {gateView.labelled_candidates} · {(gateView.agreement_rate * 100).toFixed(1)}% · {gateView.serious_false_positives} {copy.serious}</p><label className="mt-3 flex min-h-11 items-center gap-2"><input type="checkbox" disabled={settings.mode !== "automatic"} checked={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.checked })} />{copy.autoPublish}</label></article>; })}</div>
         <Button disabled={!manage.allowed || busy} onClick={() => void saveSettings()}>{copy.save}</Button></section>}
       {tab === "runs" && (!detail ? <Empty>{copy.pickOne}</Empty> : <section className={panelClass}><h2 className="text-xl font-bold">{copy.runs}</h2><div className="mt-3 overflow-x-auto"><table className="w-full text-left text-sm"><thead><tr><th className="p-2">{copy.stage}</th><th className="p-2">{copy.status}</th><th className="p-2">{copy.attempt}</th><th className="p-2">{copy.model}</th><th className="p-2">{copy.tokens}</th></tr></thead><tbody>{detail.runs.map((item) => <tr key={item.id} className="border-t border-[var(--line)]"><td className="p-2">{item.stage}</td><td className="p-2">{item.status}{item.error_code ? ` · ${item.error_code}` : ""}</td><td className="p-2">{item.attempt}</td><td className="p-2">{item.provider ?? "—"} {item.model ?? ""}</td><td className="p-2">{item.input_tokens}/{item.output_tokens}</td></tr>)}</tbody></table></div></section>)}
     </Tabs>
