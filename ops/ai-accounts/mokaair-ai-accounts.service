@@ -14,7 +14,10 @@ EnvironmentFile=/etc/travel-scanner/ai-accounts.env
 Environment=PYTHONDONTWRITEBYTECODE=1
 # /run is tmpfs: recreate the socket directory with the group the API container joins.
 # `+` runs these two with full privileges; the agent itself has none.
-ExecStartPre=+/bin/sh -c 'install -d -m 0750 -o root -g travel-api /run/mokaair-ai-accounts'
+# The previous run's socket is removed first. Otherwise ExecStartPost finds it, gives it the
+# group, and the agent then replaces it with a root:root socket the API cannot open (every
+# restart did that until 2026-09-25).
+ExecStartPre=+/bin/sh -c 'install -d -m 0750 -o root -g travel-api /run/mokaair-ai-accounts && rm -f /run/mokaair-ai-accounts/agent.sock'
 ExecStart=/usr/bin/python3 -m ai_accounts_agent
 ExecStartPost=+/bin/sh -c 'for i in $(seq 1 100); do [ -S /run/mokaair-ai-accounts/agent.sock ] && exec chgrp travel-api /run/mokaair-ai-accounts/agent.sock; sleep 0.1; done; echo "agent.sock never appeared" >&2; exit 1'
 Restart=on-failure
