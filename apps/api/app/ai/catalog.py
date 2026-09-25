@@ -63,7 +63,7 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
             "gpt-6-sol",
             "GPT-6 Sol",
             _RESPONSES,
-            "GPT-6 主力，價格是 GPT-5.6 Sol 的一半；適合複雜任務、新聞撰稿與查核。",
+            "目前預設；GPT-6 主力，價格是 GPT-5.6 Sol 的一半，適合複雜任務、新聞撰稿與查核。",
         ),
         ModelEntry(
             "gpt-6-luna",
@@ -81,7 +81,7 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
             "gpt-5.6-terra",
             "GPT-5.6 Terra",
             _RESPONSES,
-            "目前預設；智慧與成本的平衡。",
+            "前一代的平衡款；智慧與成本的平衡。",
         ),
         ModelEntry(
             "gpt-5.6-luna",

@@ -102,6 +102,7 @@ def test_news_offers_claude_opus_5_5_for_writing_and_fact_checking() -> None:
 
 
 def test_openai_dropdowns_offer_gpt_6_sol_and_luna_after_astra() -> None:
+    assert Settings.model_fields["openai_model"].default == "gpt-6-sol"
     offered = [option.value for option in news_model_options()["openai"]]
     assert offered[:3] == ["gpt-6-astra", "gpt-6-sol", "gpt-6-luna"]
     assert {"gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"} <= set(offered)

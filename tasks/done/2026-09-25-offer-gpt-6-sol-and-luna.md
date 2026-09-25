@@ -13,6 +13,9 @@ depends_on: []
 scope:
   - apps/api/app/ai/catalog.py
   - apps/api/tests/test_ai_catalog.py
+  - apps/api/app/config.py
+  - .env.example
+  - apps/api/tests/test_admin_provider_settings.py
 ---
 
 # Offer GPT-6 Sol and Luna in the admin model dropdowns
@@ -48,7 +51,7 @@ follow GPT-6 Astra.
 
 ## Notes
 
-- There is no GPT-6 Terra; GPT-5.6 Terra stays the shipped default (`OPENAI_MODEL`).
-  GPT-6 Sol costs the same input and less output than Terra, so switching the default is
-  a reasonable follow-up, but it is the owner's call and changes the planner's behaviour.
+- There is no GPT-6 Terra. On 2026-09-25 the owner chose GPT-6 Sol as the new shipped
+  default (`OPENAI_MODEL`, was GPT-5.6 Terra): same input price, cheaper output. A value
+  saved on `/admin/settings` or set in the host's `.env` still wins over the code default.
 - `gpt-5.6-cyber` exists too but is a cybersecurity model and is left out.

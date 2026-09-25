@@ -238,7 +238,7 @@ class Settings(BaseSettings):
     ai_planner_ip_budget: int = Field(default=120, ge=1, le=10_000)
     ai_planner_user_budget_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
     openai_api_base_url: str = "https://api.openai.com/v1"
-    openai_model: str = "gpt-5.6-terra"
+    openai_model: str = "gpt-6-sol"
     openai_api_key: str | None = None
     anthropic_api_base_url: str = "https://api.anthropic.com/v1"
     anthropic_model: str = "claude-sonnet-5"
