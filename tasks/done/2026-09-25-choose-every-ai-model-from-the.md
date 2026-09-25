@@ -109,6 +109,10 @@ there shows up on `/admin/news?tab=settings` and in the table at once.
   the URL without the admin location event, so the settings panel never switched cards.
 - The in-app browser pane was hidden, so `requestAnimationFrame` never ran there and the card
   switch could not be seen; `admin-ai-settings.test.tsx` covers it in jsdom instead.
+- The first CI run failed `admin-domains.spec.ts`: its isolated fixture answers every unknown
+  GET with a list-shaped 200, and the overview read `stage_models` off it and crashed the page.
+  The overview and both editors now check the payload shape (`isNewsSettings`,
+  `isVideoSettings`) and list the source as unreadable instead.
 - Local Playwright could not run: `npm ci` moved Playwright past the installed browser build.
   CI runs `admin-domains.spec.ts`, whose redirect URL now names `tab=models`.
 - Gemini and subscriptions: on 2026-09-25 the owner asked whether Gemini could use the

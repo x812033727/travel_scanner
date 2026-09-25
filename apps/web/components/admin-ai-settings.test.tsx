@@ -20,8 +20,9 @@ let settings = { encryption_source: "SETTINGS_ENCRYPTION_KEY", providers: [] as 
 function stubFetch() {
   const fetchMock = vi.fn((input: RequestInfo | URL) => {
     const url = String(input);
-    // The models tab also reads the news and video settings; each loads on its own.
-    if (url.includes("/admin/news/") || url.includes("/admin/video-automation/")) return Promise.resolve(new Response(JSON.stringify({ detail: "forbidden" }), { status: 403, headers: { "Content-Type": "application/json" } }));
+    // The models tab also reads the news and video settings; each loads on its own. Answer
+    // them like the isolated e2e fixture does, with a list-shaped 200 that is not settings.
+    if (url.includes("/admin/news/") || url.includes("/admin/video-automation/")) return Promise.resolve(new Response(JSON.stringify({ items: [], total: 0, page: 1, pages: 0 }), { status: 200, headers: { "Content-Type": "application/json" } }));
     const body = url.includes("/admin/ai-accounts") ? accounts : settings;
     return Promise.resolve(new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } }));
   });
@@ -91,5 +92,6 @@ describe("AdminAiSettings", () => {
     expect(window.location.search).toBe("?tab=models&provider=ai_guide_search&field=hotspot_guide_ai_default_provider");
     expect(await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).toBeTruthy();
     expect(screen.getByRole("tab", { name: "各功能模型" }).getAttribute("aria-selected")).toBe("true");
+    expect(screen.getByText(/讀不到：新聞設定、影片設定/)).toBeTruthy();
   });
 });

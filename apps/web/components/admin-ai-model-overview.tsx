@@ -45,6 +45,17 @@ export type OverviewRow = {
 
 type Translate = (key: string, values?: Record<string, string>) => string;
 
+// A reader may get another page's error body, or an older server's shape; a row is only built
+// from a settings payload that has the fields it reads.
+export function isNewsSettings(value: unknown): value is NewsSettings {
+  const settings = value as NewsSettings | null;
+  return typeof settings === "object" && settings !== null && (["writer_provider", "verifier_provider", "editor_provider"] as const).every((key) => typeof settings[key] === "string");
+}
+export function isVideoSettings(value: unknown): value is VideoSettingsView {
+  const stages = (value as VideoSettingsView | null)?.stage_models;
+  return typeof stages === "object" && stages !== null && STAGES.every((stage) => typeof stages[stage]?.provider === "string");
+}
+
 function text(value: unknown): string {
   return value == null ? "" : String(value).trim();
 }
@@ -117,7 +128,7 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
   }
 
   const news = sources.news;
-  if (news) {
+  if (isNewsSettings(news)) {
     for (const kind of ["writer", "verifier", "editor"] as const) {
       const provider = news[`${kind}_provider`];
       const options = news.model_options?.[provider] ?? [];
@@ -132,12 +143,12 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
   }
 
   const video = sources.video;
-  if (video) {
+  if (isVideoSettings(video)) {
     for (const stage of STAGES) {
       const choice = video.stage_models[stage];
       rows.push({
         key: `video-${stage}`, feature: t("overview.features.video", { stage: stageName(stage) }), vendor: videoProviderLabels[choice.provider],
-        model: video.model_options[choice.provider]?.find((option) => option.value === choice.model)?.label ?? choice.model,
+        model: video.model_options?.[choice.provider]?.find((option) => option.value === choice.model)?.label ?? choice.model,
         connection: choice.provider === "claude_code" ? "subscription" : "apiKey", support: "claudeCode", gemini: choice.provider === "gemini", edit: "#ai-models-video", open: "/admin/videos?tab=settings",
       });
     }
@@ -172,8 +183,14 @@ export function AdminAiModelOverview({ refresh = 0 }: { refresh?: number }) {
     ]).then(([providers, news, video]) => {
       if (!live) return;
       const value = <T,>(result: PromiseSettledResult<T>) => result.status === "fulfilled" ? result.value : undefined;
-      setSources({ providers: value(providers), news: value(news), video: value(video) });
-      setMissing(([["providers", providers], ["news", news], ["video", video]] as const).filter(([, result]) => result.status === "rejected").map(([name]) => name));
+      const snapshot = value(providers);
+      const loaded = {
+        providers: Array.isArray(snapshot?.providers) ? snapshot : undefined,
+        news: isNewsSettings(value(news)) ? value(news) : undefined,
+        video: isVideoSettings(value(video)) ? value(video) : undefined,
+      };
+      setSources(loaded);
+      setMissing((["providers", "news", "video"] as const).filter((name) => !loaded[name]));
     });
     return () => { live = false; };
   }, [refresh, tick]);

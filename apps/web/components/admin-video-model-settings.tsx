@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
+import { isVideoSettings } from "@/components/admin-ai-model-overview";
 import { AdminErrorState } from "@/components/admin-ui";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { PROVIDERS, STAGES, providerLabels, type Provider, type VideoSettings, type VideoSettingsView } from "@/components/admin-video-settings";
@@ -26,9 +27,13 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
   const [busy, setBusy] = useState(false);
   const show = useCallback((value: VideoSettingsView) => { setView(value); setDraft(value.stage_models); }, []);
   const load = useCallback(() => {
-    api<VideoSettingsView>("/admin/video-automation/settings").then((value) => { show(value); setError(""); })
+    api<VideoSettingsView>("/admin/video-automation/settings").then((value) => {
+      if (!isVideoSettings(value)) throw new Error(t("loadError"));
+      show(value);
+      setError("");
+    })
       .catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
-  }, [show]);
+  }, [show, t]);
   useEffect(load, [load]);
 
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;

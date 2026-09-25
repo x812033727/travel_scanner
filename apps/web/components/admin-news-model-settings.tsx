@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
+import { isNewsSettings } from "@/components/admin-ai-model-overview";
 import { AdminErrorState } from "@/components/admin-ui";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
@@ -74,9 +75,13 @@ export function AdminNewsModelSettings({ onSaved }: { onSaved?: (settings: NewsS
   const [busy, setBusy] = useState(false);
   const show = useCallback((value: NewsSettings) => { setSettings(value); setDraft(newsModels(value)); }, []);
   const load = useCallback(() => {
-    api<NewsSettings>("/admin/news/settings").then((value) => { show(value); setError(""); })
+    api<NewsSettings>("/admin/news/settings").then((value) => {
+      if (!isNewsSettings(value)) throw new Error(copy.error);
+      show(value);
+      setError("");
+    })
       .catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
-  }, [show]);
+  }, [copy.error, show]);
   useEffect(load, [load]);
 
   if (error) return <AdminErrorState title={copy.modelsTitle} detail={error} retry={load} retryLabel={copy.retry} />;

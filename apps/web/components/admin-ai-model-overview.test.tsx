@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { overviewRows, type OverviewSources } from "./admin-ai-model-overview";
+import { isNewsSettings, isVideoSettings, overviewRows, type OverviewSources } from "./admin-ai-model-overview";
 import type { VideoSettingsView } from "./admin-video-settings";
 import type { NewsSettings } from "@/lib/admin-news";
 
@@ -75,6 +75,16 @@ describe("overviewRows", () => {
     expect(rows.find((item) => item.key === "news-writer")).toMatchObject({ edit: "#ai-models-news", open: "/admin/news?tab=settings" });
     expect(rows.find((item) => item.key === "video-writer")).toMatchObject({ edit: "#ai-models-video", open: "/admin/videos?tab=settings", model: "GPT-6 Sol", feature: "overview.features.video(writer)" });
     expect(rows.every((item) => item.open)).toBe(true);
+  });
+
+  it("ignores a settings answer that is not settings, such as a list or an error body", () => {
+    const list = { items: [], total: 0, page: 1, pages: 0 } as unknown;
+    const rows = overviewRows({ providers: providers(), news: list as NewsSettings, video: list as VideoSettingsView }, t, stage);
+    expect(rows.some((item) => item.key.startsWith("news-") || item.key.startsWith("video-"))).toBe(false);
+    expect(isVideoSettings({ stage_models: { writer: { provider: "openai", model: "x" } } })).toBe(false);
+    expect(isVideoSettings(video)).toBe(true);
+    expect(isNewsSettings({ detail: "forbidden" })).toBe(false);
+    expect(isNewsSettings(news)).toBe(true);
   });
 
   it("leaves out what a reader cannot load and a planner that calls no AI", () => {
