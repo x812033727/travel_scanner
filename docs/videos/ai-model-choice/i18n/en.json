@@ -1,0 +1,656 @@
+{
+  "title": "So Many AI Models, How Do You Choose? The Leaderboard's #1 Isn't Always Right for You",
+  "description": "New models launch almost every week, and the leaderboard gets a new #1 right along with them — do you really need to switch every time? This video gives you a decision framework, for anyone building product features with tools or APIs like ChatGPT, Claude, or Gemini.\n\nUsing three questions — what the task is, how long you can wait, and how much you'll pay — the video walks you through choosing between a single flagship model, a cascade that starts cheap and escalates, or parallel cross-review where two models answer and a third judges. I run the actual numbers: under the same assumptions, a single flagship (Claude Opus 5.5) costs about $0.024 per request; the cascade (Gemini 3.5 Flash-Lite answers first) averages about $0.0096; and parallel cross-review (adding gpt-6-astra to answer alongside it, with Claude Sonnet 5 as judge) costs about $0.0944. Amounts are calculated from the official pricing pages' standard rates as of September 2026; the 30% escalation rate and the 3,000/600 input/output tokens are demo assumptions, not measured real-world traffic.\n\nMy take: a new #1 on the leaderboard every week shouldn't be your reason to switch models. Most work actually calls for the cheap-first, escalate-later cascade, and parallel cross-review should be reserved for decisions you really can't afford to get wrong. The full math, comparison tables, and the assumptions behind the latency reasoning are all in the article linked below.",
+  "tags": [
+    "AI models",
+    "Model selection",
+    "Claude",
+    "Gemini",
+    "GPT",
+    "API costs",
+    "AI tools tutorial",
+    "LLM cascade",
+    "Multi-model review",
+    "LLM"
+  ],
+  "chapters": {
+    "hook": "Intro",
+    "why-confused-chapter": "Why It Feels Confusing",
+    "myth-chapter": "A Common Misconception",
+    "three-questions-chapter": "Ask Three Questions First",
+    "cascade-steps": "Q2: How Long Can You Wait?",
+    "cost-table": "Q3: How Much Will You Pay?",
+    "my-approach-chapter": "My Approach",
+    "outro": "Conclusion"
+  },
+  "lines": {
+    "b9ft": {
+      "source_hash": "200ac11e58fe",
+      "text": "New models launch almost weekly, and the leaderboard's #1 keeps changing."
+    },
+    "2vbi": {
+      "source_hash": "6ecf6c2baa99",
+      "text": "Just last month you picked a model, and this month the winds shifted again."
+    },
+    "8cj7": {
+      "source_hash": "89b56a72d943",
+      "text": "Do you really have to switch models every single time too?"
+    },
+    "xkmj": {
+      "source_hash": "260a40a9c66a",
+      "text": "Actually, no — you don't need to chase every leaderboard update."
+    },
+    "qc9n": {
+      "source_hash": "0457380bfa14",
+      "text": "Just ask yourself three questions, and you can decide for yourself."
+    },
+    "qj4b": {
+      "source_hash": "64821c29208f",
+      "text": "What's the task, how long can you wait, and how much are you willing to pay."
+    },
+    "5n7w": {
+      "source_hash": "4ed81bc07628",
+      "text": "This video will show you how to ask those questions and do the math yourself."
+    },
+    "gtr2": {
+      "source_hash": "acd0dac7ff80",
+      "text": "Let's first look at where this confusion actually comes from."
+    },
+    "quyz": {
+      "source_hash": "222548a35e23",
+      "text": "The answer is simple: too many things are happening at once."
+    },
+    "ne4z": {
+      "source_hash": "483fd88c2b5e",
+      "text": "Just these past few weeks, another big new model launched."
+    },
+    "ce66": {
+      "source_hash": "9a01bbebdaf4",
+      "text": "It's called Opus 5.5, and it's barely been out."
+    },
+    "9rtn": {
+      "source_hash": "d716442b09bc",
+      "text": "You probably haven't even gotten used to the last one yet."
+    },
+    "ztd6": {
+      "source_hash": "ac8bc7bf3b46",
+      "text": "And it's not the only news — almost every company is updating right now."
+    },
+    "2eqp": {
+      "source_hash": "58020936a6f8",
+      "text": "That pace is the real reason you feel confused."
+    },
+    "s5gb": {
+      "source_hash": "ae2d36779a49",
+      "text": "Just remembering every model's name is already exhausting."
+    },
+    "ixaq": {
+      "source_hash": "018af9ccc4c5",
+      "text": "Every time a new one launches, the company says it's smarter and cheaper."
+    },
+    "bmvs": {
+      "source_hash": "820f2d505822",
+      "text": "But you have to verify those claims yourself, not just take their word for it."
+    },
+    "uu64": {
+      "source_hash": "7d73323f1a96",
+      "text": "This video will show you how to verify that, instead of just accepting it."
+    },
+    "scmm": {
+      "source_hash": "43f585c2e640",
+      "text": "Re-checking whether it's worth switching every single time is exhausting."
+    },
+    "qakx": {
+      "source_hash": "4c9f5fc9a058",
+      "text": "That anxiety actually has a solution."
+    },
+    "6k8v": {
+      "source_hash": "d0d7f3f7245b",
+      "text": "The chaos comes from three things happening at once."
+    },
+    "dzyc": {
+      "source_hash": "42c49e4de392",
+      "text": "First, new models launch almost every week."
+    },
+    "m4yz": {
+      "source_hash": "3f517518dc82",
+      "text": "Second, each company has several tiers, and flagships alone span generations."
+    },
+    "mz8p": {
+      "source_hash": "cf1c7c7c599c",
+      "text": "Third, a leaderboard score reflects neither your work nor your budget."
+    },
+    "n6u2": {
+      "source_hash": "623bb6fc6cad",
+      "text": "Stack all three, and no wonder the choices feel endless."
+    },
+    "a9jg": {
+      "source_hash": "c4a7bad4cce0",
+      "text": "But really, you don't need to memorize every single name."
+    },
+    "nzty": {
+      "source_hash": "94683f46a60c",
+      "text": "You just need one set of questions you can apply to any new model."
+    },
+    "fjhb": {
+      "source_hash": "6f37a48af8c0",
+      "text": "See these three clearly first, and you'll know what's confusing you."
+    },
+    "w9br": {
+      "source_hash": "87364d631a20",
+      "text": "Once it's clear, choosing is actually simpler than you think."
+    },
+    "7pqk": {
+      "source_hash": "c55fceded245",
+      "text": "What you need to remember isn't the model name — it's the order you judge things in."
+    },
+    "fmyv": {
+      "source_hash": "491fd9cdea98",
+      "text": "So what's the mistake most people make?"
+    },
+    "7nzr": {
+      "source_hash": "1be15ee6348d",
+      "text": "The most common one is looking only at the leaderboard rank."
+    },
+    "sb9i": {
+      "source_hash": "5809a9f358a5",
+      "text": "Leaderboards compare models on tests like MMLU-Pro."
+    },
+    "jfv6": {
+      "source_hash": "c08d4d62ebef",
+      "text": "It tests very broad knowledge across many subjects."
+    },
+    "v42i": {
+      "source_hash": "78cfb22855f3",
+      "text": "But that's not what you do every day."
+    },
+    "y3by": {
+      "source_hash": "d59b3bbe6815",
+      "text": "Leaderboards usually haven't tested your actual work."
+    },
+    "fz27": {
+      "source_hash": "934e8e5a9e1b",
+      "text": "A high score doesn't mean it's the best fit for the task in front of you."
+    },
+    "agqj": {
+      "source_hash": "8ceedfbb9adf",
+      "text": "Just as topping an exam doesn't make someone best at handling your case."
+    },
+    "b5k7": {
+      "source_hash": "4a20b40943c6",
+      "text": "These tests have huge numbers of questions covering a wide range of subjects."
+    },
+    "y2fa": {
+      "source_hash": "2b01f292afb8",
+      "text": "But you only care about one thing: whether it does your task well."
+    },
+    "kct2": {
+      "source_hash": "cd73796b492e",
+      "text": "New to the acronym? It won't affect your judgment."
+    },
+    "wxvj": {
+      "source_hash": "03f33901e65e",
+      "text": "What matters is knowing it's not testing your work."
+    },
+    "hcie": {
+      "source_hash": "cba27a4df3b7",
+      "text": "Next time you see news that some model scored #1, you'll think one step further."
+    },
+    "spqb": {
+      "source_hash": "902bf1830585",
+      "text": "The leaderboard's #1 is accurate, sure, but not necessarily right for you."
+    },
+    "b5mr": {
+      "source_hash": "b28fa1084cc4",
+      "text": "And it's usually more expensive — not necessarily a price you can afford."
+    },
+    "q4dz": {
+      "source_hash": "0992095f4a07",
+      "text": "Ask yourself three questions first, and you'll get the answer you actually need."
+    },
+    "3f2z": {
+      "source_hash": "56415155e440",
+      "text": "You can answer these three yourself — no need to wait for someone's ranking."
+    },
+    "6kfq": {
+      "source_hash": "bb453976dd23",
+      "text": "If you're handling huge volumes of customer messages every day, the answer is different."
+    },
+    "7ftp": {
+      "source_hash": "63c9ebe4ead1",
+      "text": "If you're writing a document meant for public release, the answer is different again."
+    },
+    "d7va": {
+      "source_hash": "c4c8a1f8c61d",
+      "text": "A leaderboard score only answers half the question."
+    },
+    "254u": {
+      "source_hash": "803cd3e0964e",
+      "text": "Only you know the answer to the other half."
+    },
+    "4ieq": {
+      "source_hash": "f3b319fd51dc",
+      "text": "Leaderboards are for comparing on one kind of task, not for every situation."
+    },
+    "55mr": {
+      "source_hash": "35fd95d5c86d",
+      "text": "That's also why the same #1 model isn't necessarily right for everyone."
+    },
+    "ghdy": {
+      "source_hash": "132b7e3b6863",
+      "text": "The answer isn't the same model — it's the same set of questions."
+    },
+    "cxuj": {
+      "source_hash": "28c0d9b64c82",
+      "text": "So let's get right into it — how do you ask the first question?"
+    },
+    "2h65": {
+      "source_hash": "8c5af5ff2d22",
+      "text": "Three questions, one at a time."
+    },
+    "5vuj": {
+      "source_hash": "6c00e778ba63",
+      "text": "Flagship models handle hard problems well, but they're slower and more expensive."
+    },
+    "gtbn": {
+      "source_hash": "b0fee3f50d48",
+      "text": "For genuinely hard tasks, you still need it to step in."
+    },
+    "esy5": {
+      "source_hash": "aa4e177b52e5",
+      "text": "Small models respond fast and cheap, and they're plenty for simple work."
+    },
+    "vvgx": {
+      "source_hash": "4f0756fa2552",
+      "text": "Most requests don't actually need flagship-level power at all."
+    },
+    "yj8y": {
+      "source_hash": "b05e08bbad70",
+      "text": "If you're doing routine work like summarizing or classifying, a small model is usually enough."
+    },
+    "wags": {
+      "source_hash": "46fc8193880e",
+      "text": "If you're working on legal documents or debugging code, that's when the flagship comes in."
+    },
+    "jkgk": {
+      "source_hash": "94abd49ae47c",
+      "text": "First figure out clearly whether your task is actually hard."
+    },
+    "7c4n": {
+      "source_hash": "f818939545e1",
+      "text": "Only hard tasks are worth paying the flagship price for."
+    },
+    "6gb8": {
+      "source_hash": "3914931ec9a5",
+      "text": "This question decides whether you pay extra for intelligence."
+    },
+    "q6wc": {
+      "source_hash": "a31f37327423",
+      "text": "Answer this, and you'll know if you really need a flagship."
+    },
+    "n7d8": {
+      "source_hash": "ad52cfa60eaf",
+      "text": "Start with the small model, and bring in the flagship only if it fails."
+    },
+    "wiiq": {
+      "source_hash": "e7fc726caf4b",
+      "text": "So how long are you willing to wait for the model to think?"
+    },
+    "q8jz": {
+      "source_hash": "11e86f18a736",
+      "text": "The answer lies in the cascade approach: the small model answers first."
+    },
+    "afyf": {
+      "source_hash": "70b976612ea4",
+      "text": "Then that answer gets scored, to see if it's good enough."
+    },
+    "7imm": {
+      "source_hash": "2a044fd95551",
+      "text": "Only if the score falls short does it get escalated to the flagship model."
+    },
+    "zqvx": {
+      "source_hash": "2673520538d0",
+      "text": "This way, most requests never even touch the flagship model."
+    },
+    "kgpy": {
+      "source_hash": "3aec5f48eee6",
+      "text": "Only the small share that's genuinely answered poorly waits for a second round."
+    },
+    "gzsw": {
+      "source_hash": "e6b5ff11b9c4",
+      "text": "This sounds simple, but the effect is significant."
+    },
+    "xzu8": {
+      "source_hash": "c7173ca31091",
+      "text": "Because most requests never needed flagship-level judgment to begin with."
+    },
+    "938h": {
+      "source_hash": "211c1c2627b7",
+      "text": "For the user, most of the time there's no noticeable difference."
+    },
+    "q5hx": {
+      "source_hash": "40ef8c9ffebe",
+      "text": "But scoring that answer also takes a bit of time."
+    },
+    "b3z3": {
+      "source_hash": "9f7ec4d40832",
+      "text": "A single flagship model takes just one call's worth of time."
+    },
+    "j9je": {
+      "source_hash": "1b8bb29b075e",
+      "text": "The cascade needs one call most of the time; escalated ones stack up to two."
+    },
+    "gnsn": {
+      "source_hash": "2ee0e18d9fce",
+      "text": "Parallel cross-review waits on two calls together, plus one more for the judge."
+    },
+    "md5s": {
+      "source_hash": "548710514b17",
+      "text": "Fastest for most requests doesn't mean fastest for the slowest ones."
+    },
+    "bikj": {
+      "source_hash": "7e37385c1758",
+      "text": "That sounds a little counterintuitive, but the logic is simple."
+    },
+    "586z": {
+      "source_hash": "544dc1da7915",
+      "text": "Escalated requests effectively wait for one extra call."
+    },
+    "7ywx": {
+      "source_hash": "8ef62b6a052f",
+      "text": "So don't just look at the average — look at the slowest requests."
+    },
+    "7fkj": {
+      "source_hash": "8d33e640d67e",
+      "text": "If your product can't afford to keep users waiting, this matters a lot."
+    },
+    "85qa": {
+      "source_hash": "b25d65122247",
+      "text": "The shape of latency is worth looking at separately, just like cost."
+    },
+    "xj6a": {
+      "source_hash": "d3e49f686fb4",
+      "text": "The slowest 5% is called p95; the cascade being slower here is my own inference."
+    },
+    "necg": {
+      "source_hash": "2d9fca3312fb",
+      "text": "So in dollar terms, how different are the three approaches?"
+    },
+    "c8pa": {
+      "source_hash": "4ca377b75821",
+      "text": "To be clear, I'm fixing one set of assumptions so it's easy to compare."
+    },
+    "j5xm": {
+      "source_hash": "f39cd773010e",
+      "text": "For every request, the text the model reads gets split into tokens."
+    },
+    "qrhy": {
+      "source_hash": "b06a7c71753c",
+      "text": "On average, each request sends 3,000 tokens and receives 600 back."
+    },
+    "jq27": {
+      "source_hash": "1273a7daffbd",
+      "text": "The 3,000 and 600 are demo numbers, not a rule."
+    },
+    "j8hk": {
+      "source_hash": "a9b03607e6fc",
+      "text": "You can swap in your own numbers based on your actual usage."
+    },
+    "zi3w": {
+      "source_hash": "a93e98538e71",
+      "text": "A single flagship is the simplest: under 3 cents per request."
+    },
+    "cqc2": {
+      "source_hash": "52bdf5c54dae",
+      "text": "The cascade averages out to about 1 cent."
+    },
+    "gr8m": {
+      "source_hash": "be6846927b47",
+      "text": "Parallel cross-review needs three calls, close to 10 cents."
+    },
+    "y3wa": {
+      "source_hash": "0e44c30688c1",
+      "text": "Work it out, and the cascade saves about 60% over using the flagship the whole way."
+    },
+    "r5g8": {
+      "source_hash": "b14a00f9ace3",
+      "text": "That 30% escalation rate is a demo assumption, not measured real traffic."
+    },
+    "xwj3": {
+      "source_hash": "6944493cc340",
+      "text": "Scale that to 10,000 requests, and the gap gets much more obvious."
+    },
+    "7ake": {
+      "source_hash": "d893052cf7e5",
+      "text": "A single flagship costs $240; the cascade is under $100."
+    },
+    "fwvj": {
+      "source_hash": "4c097c0fea71",
+      "text": "The flagship's official pricing makes input much cheaper than output."
+    },
+    "3c4s": {
+      "source_hash": "150d380dc3e4",
+      "text": "The cheap small model is just $0.30 per million input tokens and $2.50 for output."
+    },
+    "quy9": {
+      "source_hash": "4ce31ad2b056",
+      "text": "Putting both of those price gaps into the cascade is what saves you this much."
+    },
+    "n74c": {
+      "source_hash": "cdf1f8c22d0f",
+      "text": "If you're making 10,000 calls a day, the gap over a year is huge."
+    },
+    "59f5": {
+      "source_hash": "e9213e502330",
+      "text": "This assumption comes from a demo in another article on our site."
+    },
+    "zmm5": {
+      "source_hash": "3c093de895f0",
+      "text": "You can measure your actual usage with the provider's own token counter."
+    },
+    "99au": {
+      "source_hash": "09d407c7b04d",
+      "text": "Amounts go to four decimal places so they're easy to compare."
+    },
+    "hp3f": {
+      "source_hash": "d3fd9e36a436",
+      "text": "The numbers look tiny, but multiply by call volume and you'll feel it."
+    },
+    "nqci": {
+      "source_hash": "1a5cea3d1a7f",
+      "text": "Parallel cross-review is more expensive because two models each answer once."
+    },
+    "rnz4": {
+      "source_hash": "bef61cbb521a",
+      "text": "Plus a third model has to read both answers before it can give a score."
+    },
+    "3h3e": {
+      "source_hash": "63de46308ae2",
+      "text": "None of these three approaches is absolutely better — it's just about fit."
+    },
+    "ercp": {
+      "source_hash": "29b5d09303ac",
+      "text": "This calculation really only has two parts."
+    },
+    "pwwg": {
+      "source_hash": "431180a1a327",
+      "text": "Ask the small model once first — it costs almost nothing."
+    },
+    "7b9y": {
+      "source_hash": "9d10160f9999",
+      "text": "Multiply the 30% escalation probability by the flagship's price."
+    },
+    "dxn5": {
+      "source_hash": "616c4fc5cdab",
+      "text": "Add the two numbers together, and that's the cascade's average cost."
+    },
+    "nshw": {
+      "source_hash": "b8c4e661a036",
+      "text": "Work it out, and that's about 60% cheaper than using the flagship the whole way."
+    },
+    "wj6a": {
+      "source_hash": "cbf76def6bd3",
+      "text": "You can swap in your own ratio and run the numbers again."
+    },
+    "wkwi": {
+      "source_hash": "4f30ae91d578",
+      "text": "The small model's price is only a tenth of the flagship's."
+    },
+    "vaaj": {
+      "source_hash": "a180fe190826",
+      "text": "What actually costs money is that 30% that gets escalated."
+    },
+    "tz5m": {
+      "source_hash": "32db1f52a3e4",
+      "text": "The math looks simple, but the whole approach is built into it."
+    },
+    "dnig": {
+      "source_hash": "8d1e22cc1b50",
+      "text": "Just plug in your own prices and ratio, and you can recalculate."
+    },
+    "z3jf": {
+      "source_hash": "0d2d3cd9b7b4",
+      "text": "The numbers on the official pricing page update over time, so check back."
+    },
+    "9m9t": {
+      "source_hash": "18fe585e8b6a",
+      "text": "Once you've done this step, you have your own cost estimate."
+    },
+    "edir": {
+      "source_hash": "8be6f4f9557d",
+      "text": "This diagram puts all three workflows side by side for comparison."
+    },
+    "5ban": {
+      "source_hash": "92ea443c79c8",
+      "text": "The prices are the standard rates from the official pricing pages as of September 2026."
+    },
+    "4q66": {
+      "source_hash": "fd44fee12c6e",
+      "text": "You can follow this same method and recalculate with your own usage."
+    },
+    "4uyj": {
+      "source_hash": "5293d921cd04",
+      "text": "Remember to swap in your own input and output counts, not the numbers shown here."
+    },
+    "qfq9": {
+      "source_hash": "51ad77cdf1a1",
+      "text": "All three workflows in the diagram are calculated from the same set of assumptions."
+    },
+    "2bxn": {
+      "source_hash": "5b27f37ce2d1",
+      "text": "The description below has a full article you can check against."
+    },
+    "z3m3": {
+      "source_hash": "eadfba9b8aeb",
+      "text": "So how do I actually use this myself?"
+    },
+    "n7mh": {
+      "source_hash": "b3cd03f72d71",
+      "text": "The answer is simple — I also break it into three steps."
+    },
+    "dz86": {
+      "source_hash": "847bc9def594",
+      "text": "My take is: work out the three factors separately first."
+    },
+    "5r6c": {
+      "source_hash": "1d85b4c9c39a",
+      "text": "First, calculate cost, quality, and latency separately — don't mix them together."
+    },
+    "cf48": {
+      "source_hash": "2e44c5981b4f",
+      "text": "Second, for most work, I use the cascade — cheap first, escalate later."
+    },
+    "gixy": {
+      "source_hash": "d5d42195ad8d",
+      "text": "Work it out, and the average cost drops by about 60%."
+    },
+    "kny9": {
+      "source_hash": "9c17dec9737c",
+      "text": "Third, I save parallel cross-review for decisions I can't afford to get wrong."
+    },
+    "jb3x": {
+      "source_hash": "7c0e7dee486e",
+      "text": "For example, on documents going out to the public, the extra review cost is worth it."
+    },
+    "rup3": {
+      "source_hash": "1a8b62e8ed3b",
+      "text": "A new #1 on the leaderboard shouldn't be your reason to switch models."
+    },
+    "wr7k": {
+      "source_hash": "5a668a175392",
+      "text": "This is just how I do it — adjust the ratios to fit your own situation."
+    },
+    "ym6c": {
+      "source_hash": "eebd60018bc3",
+      "text": "When I wire up models myself day to day, I follow this same order too."
+    },
+    "r4u8": {
+      "source_hash": "e7c6392eeba6",
+      "text": "Ask if the task is hard first, then if you can wait, and only then how much it costs."
+    },
+    "29zb": {
+      "source_hash": "86bd194bca3e",
+      "text": "This order is more practical than checking the leaderboard first."
+    },
+    "8ubp": {
+      "source_hash": "0a31bf35bd62",
+      "text": "I go through these three steps myself every time I start a new project."
+    },
+    "4nqz": {
+      "source_hash": "e48d9dca2ed2",
+      "text": "No need to copy me, but I'd do the math once before deciding."
+    },
+    "b6u2": {
+      "source_hash": "25c119ce20b5",
+      "text": "Once you've done the math once, you won't panic next time a new model shows up."
+    },
+    "66eq": {
+      "source_hash": "671cc300d1e8",
+      "text": "So, should you switch AI models to keep up?"
+    },
+    "ax8x": {
+      "source_hash": "d1791d561b7a",
+      "text": "Ask these three first, and the answer comes naturally."
+    },
+    "becu": {
+      "source_hash": "2c940c359ec9",
+      "text": "The task decides how smart it needs to be."
+    },
+    "pj2d": {
+      "source_hash": "eac7ebe0ee6d",
+      "text": "How long you can wait decides how fast you need it."
+    },
+    "zvcp": {
+      "source_hash": "809a26293c24",
+      "text": "How much you'll pay decides which tier you use."
+    },
+    "36p3": {
+      "source_hash": "435c5b899f3a",
+      "text": "Writing down these three answers beats chasing the weekly leaderboard."
+    },
+    "8bci": {
+      "source_hash": "504d40e0faac",
+      "text": "Next time a new model launches, you'll know whether to switch."
+    },
+    "t4g8": {
+      "source_hash": "66080a3ed5cf",
+      "text": "You can still check the leaderboard, just don't treat it as the only standard."
+    },
+    "pkyh": {
+      "source_hash": "8f59cabbc322",
+      "text": "Ask your own three questions first, and the answer will surface."
+    },
+    "2fhy": {
+      "source_hash": "1f5859d1e335",
+      "text": "I've put the full math and table in the article linked below."
+    },
+    "acnk": {
+      "source_hash": "e7f7a79554db",
+      "text": "Thanks for watching this far — see you in the next video."
+    },
+    "mezu": {
+      "source_hash": "15981b8e8c16",
+      "text": "Here's to paying a little less in unnecessary model fees."
+    }
+  }
+}

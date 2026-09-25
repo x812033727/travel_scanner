@@ -45,7 +45,13 @@ scope:
 - [ ] 價格類事實在錄製當天重新查官方頁（文章是 2026-09-19 的數字）。
 - [x] tts（Sulafat，157 句，約 10 分鐘）。
 - [x] 旁白檢查：站主 2026-09-24 決定「正確與否給 Jev 判斷」，不自己試聽 → `check-audio`（#732、#736）。2026-09-25 結果 157 句全數通過，0 句被標。
-- [ ] 站主核准旁白（`approve --gate audio`）→ render → assemble → CC → package。
+- [x] 站主核准旁白（2026-09-25「核准，依 Jev 的結果」，`approve --gate audio`）→ render → assemble（#743 之後檢查全過）。
+- [x] CC 五語系（2026-09-25）。
+  - en、ja、ko、zh-CN 由 sonnet 用 `i18n-sheet` 翻譯，opus 逐語審稿、只交修正清單，修正共 73 處（en 33、ja 19、ko 17、zh-CN 4 句 7 欄）。
+  - `i18n-merge` 四語都乾淨，譯文在 `docs/videos/ai-model-choice/i18n/`。
+  - 第一次 `captions` 有 16 句英韓字幕排成三行、字詞黏在一起，#749 修好後 0 句。
+  - 剩下的提醒只有閱讀速度：en 22 句略超過每秒 20 字；ja 31 句超過每秒 8 字（8.2–11），這是審稿代理刻意保留的取捨。
+- [ ] 成片送「影片審核」（`review-push`，#747）→ 站主在 `/admin/videos` 看完全片 → `review-pull` → package。
 - [ ] 站主上傳、確認。
 
 ## How to verify

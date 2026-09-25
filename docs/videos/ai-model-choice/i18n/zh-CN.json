@@ -1,0 +1,656 @@
+{
+  "title": "AI 模型这么多，到底该怎么选？排行榜第一名不一定适合你",
+  "description": "新模型几乎每周都会上线，排行榜也跟着换第一名，你真的每次都要跟着换吗？这期视频是给正在用 ChatGPT、Claude、Gemini 这类工具或 API 做产品功能的你，一套判断方法。\n\n视频用「做什么、能等多久、付多少」三个问题，带你判断该用单一旗舰模型、先便宜后升级的级联，还是两个模型同时作答、第三个模型评审的并行互审。实际算给你看：同一组假设下，单一旗舰（Claude Opus 5.5）一次请求约 0.024 美元，级联（Gemini 3.5 Flash-Lite 先答）平均约 0.0096 美元，并行互审（再加 gpt-6-astra 同答、Claude Sonnet 5 评审）约 0.0944 美元；金额按 2026 年 9 月官方定价页标准价计算，30% 升级比例与 3,000／600 个输入输出 token 是演示用的假设，不是实测到的真实流量。\n\n我的看法是：排行榜每周换第一名，不该是你换模型的理由。大部分工作真正用得到的其实是先便宜后升级的级联，并行互审则该留给真的输不起的决定。完整算式、对比表与延迟推论的前提，都在简介里的文章链接中。",
+  "tags": [
+    "AI模型",
+    "模型选择",
+    "Claude",
+    "Gemini",
+    "GPT",
+    "API费用",
+    "AI工具教程",
+    "级联",
+    "多模型互审",
+    "LLM"
+  ],
+  "chapters": {
+    "hook": "开场",
+    "why-confused-chapter": "为什么你会困惑",
+    "myth-chapter": "常见的误解",
+    "three-questions-chapter": "先问三个问题",
+    "cascade-steps": "第二题：能等多久",
+    "cost-table": "第三题：付多少",
+    "my-approach-chapter": "我的做法",
+    "outro": "结论"
+  },
+  "lines": {
+    "b9ft": {
+      "source_hash": "200ac11e58fe",
+      "text": "新模型几乎每周上线，排行榜跟着换第一名。"
+    },
+    "2vbi": {
+      "source_hash": "6ecf6c2baa99",
+      "text": "上个月你才选定一个型号，这个月风向又变了。"
+    },
+    "8cj7": {
+      "source_hash": "89b56a72d943",
+      "text": "你也要每次都跟着换掉现在用的模型吗？"
+    },
+    "xkmj": {
+      "source_hash": "260a40a9c66a",
+      "text": "其实不用，你不需要追着每一次排行榜跑。"
+    },
+    "qc9n": {
+      "source_hash": "0457380bfa14",
+      "text": "你只要先问自己三个问题，就能自己判断。"
+    },
+    "qj4b": {
+      "source_hash": "64821c29208f",
+      "text": "做什么、能等多久、愿意付多少。"
+    },
+    "5n7w": {
+      "source_hash": "4ed81bc07628",
+      "text": "这期视频，就是教你怎么问、怎么自己算清楚。"
+    },
+    "gtr2": {
+      "source_hash": "acd0dac7ff80",
+      "text": "先看看，你的困惑到底是从哪里来的。"
+    },
+    "quyz": {
+      "source_hash": "222548a35e23",
+      "text": "答案很简单，是因为太多事同时在发生。"
+    },
+    "ne4z": {
+      "source_hash": "483fd88c2b5e",
+      "text": "这几周，又有一个新的大型模型刚上线。"
+    },
+    "ce66": {
+      "source_hash": "9a01bbebdaf4",
+      "text": "它的名字是 Opus 5.5，才推出没多久。"
+    },
+    "9rtn": {
+      "source_hash": "d716442b09bc",
+      "text": "你可能都还没摸熟上一个型号。"
+    },
+    "ztd6": {
+      "source_hash": "ac8bc7bf3b46",
+      "text": "而且这不是唯一的新闻，几乎每一家都在更新。"
+    },
+    "2eqp": {
+      "source_hash": "58020936a6f8",
+      "text": "这种速度，才是你困惑的真正原因。"
+    },
+    "s5gb": {
+      "source_hash": "ae2d36779a49",
+      "text": "光是记住每一个名字，就已经很累了。"
+    },
+    "ixaq": {
+      "source_hash": "018af9ccc4c5",
+      "text": "每次出新款，官方都会说这次更聪明、更便宜。"
+    },
+    "bmvs": {
+      "source_hash": "820f2d505822",
+      "text": "但聪明和便宜，你要自己验证，不能只听官方说法。"
+    },
+    "uu64": {
+      "source_hash": "7d73323f1a96",
+      "text": "这期视频，会教你怎么验证，而不是照单全收。"
+    },
+    "scmm": {
+      "source_hash": "43f585c2e640",
+      "text": "每次都要重新确认，值不值得换，其实很累。"
+    },
+    "qakx": {
+      "source_hash": "4c9f5fc9a058",
+      "text": "这种焦虑，其实有解法。"
+    },
+    "6k8v": {
+      "source_hash": "d0d7f3f7245b",
+      "text": "乱，来自三件事一起发生。"
+    },
+    "dzyc": {
+      "source_hash": "42c49e4de392",
+      "text": "第一，新模型几乎每周都有新款上线。"
+    },
+    "m4yz": {
+      "source_hash": "3f517518dc82",
+      "text": "第二，同一家还分好几个等级，光旗舰就有好几代。"
+    },
+    "mz8p": {
+      "source_hash": "cf1c7c7c599c",
+      "text": "第三，排行榜的分数，不代表你的工作，也不代表你的预算。"
+    },
+    "n6u2": {
+      "source_hash": "623bb6fc6cad",
+      "text": "这三件事叠在一起，难怪你会觉得选不完。"
+    },
+    "a9jg": {
+      "source_hash": "c4a7bad4cce0",
+      "text": "但其实，你不需要记住每一个名字。"
+    },
+    "nzty": {
+      "source_hash": "94683f46a60c",
+      "text": "你只需要一套问法，套在任何一个新模型上。"
+    },
+    "fjhb": {
+      "source_hash": "6f37a48af8c0",
+      "text": "先把这三件事看清楚，才知道自己在乱什么。"
+    },
+    "w9br": {
+      "source_hash": "87364d631a20",
+      "text": "看清楚之后，选择其实比你想的简单。"
+    },
+    "7pqk": {
+      "source_hash": "c55fceded245",
+      "text": "你要记住的，不是型号，是判断的顺序。"
+    },
+    "fmyv": {
+      "source_hash": "491fd9cdea98",
+      "text": "那大家常犯的误解，又是什么？"
+    },
+    "7nzr": {
+      "source_hash": "1be15ee6348d",
+      "text": "最常见的一种，就是只看排行榜的名次。"
+    },
+    "sb9i": {
+      "source_hash": "5809a9f358a5",
+      "text": "排行榜比的，是像 MMLU-Pro 这种考题。"
+    },
+    "jfv6": {
+      "source_hash": "c08d4d62ebef",
+      "text": "考的是很广的知识，横跨很多学科。"
+    },
+    "v42i": {
+      "source_hash": "78cfb22855f3",
+      "text": "但那不是你每天在做的事。"
+    },
+    "y3by": {
+      "source_hash": "d59b3bbe6815",
+      "text": "你的工作，排行榜通常没有考过。"
+    },
+    "fz27": {
+      "source_hash": "934e8e5a9e1b",
+      "text": "分数高，不代表它最适合你手上的任务。"
+    },
+    "agqj": {
+      "source_hash": "8ceedfbb9adf",
+      "text": "就像考试考第一名，不代表最会处理你的个案。"
+    },
+    "b5k7": {
+      "source_hash": "4a20b40943c6",
+      "text": "这类考题题目很多，涵盖的学科也很广。"
+    },
+    "y2fa": {
+      "source_hash": "2b01f292afb8",
+      "text": "但你只在乎一件事，自己的任务做得好不好。"
+    },
+    "kct2": {
+      "source_hash": "cd73796b492e",
+      "text": "就算你没听过这个缩写，也不影响你判断。"
+    },
+    "wxvj": {
+      "source_hash": "03f33901e65e",
+      "text": "重要的是，你知道它考的不是你的工作。"
+    },
+    "hcie": {
+      "source_hash": "cba27a4df3b7",
+      "text": "下次再看到某某模型考第一名的新闻，你就会多想一步。"
+    },
+    "spqb": {
+      "source_hash": "902bf1830585",
+      "text": "只看排行榜第一名，准是准，但不一定适合你。"
+    },
+    "b5mr": {
+      "source_hash": "b28fa1084cc4",
+      "text": "而且通常比较贵，不一定是你付得起的价钱。"
+    },
+    "q4dz": {
+      "source_hash": "0992095f4a07",
+      "text": "先问自己三题，才问得到真正要的答案。"
+    },
+    "3f2z": {
+      "source_hash": "56415155e440",
+      "text": "这三题，你自己就能回答，不用等别人帮你排名。"
+    },
+    "6kfq": {
+      "source_hash": "bb453976dd23",
+      "text": "如果你每天要处理大量客服消息，答案就不一样。"
+    },
+    "7ftp": {
+      "source_hash": "63c9ebe4ead1",
+      "text": "如果你在写要对外发布的文件，答案又不一样。"
+    },
+    "d7va": {
+      "source_hash": "c4c8a1f8c61d",
+      "text": "排行榜的分数，只回答了一半的问题。"
+    },
+    "254u": {
+      "source_hash": "803cd3e0964e",
+      "text": "另一半，只有你自己知道答案。"
+    },
+    "4ieq": {
+      "source_hash": "f3b319fd51dc",
+      "text": "排行榜适合比较同一种任务，不适合套到所有情境。"
+    },
+    "55mr": {
+      "source_hash": "35fd95d5c86d",
+      "text": "这也是为什么，同一个第一名，未必人人都该用。"
+    },
+    "ghdy": {
+      "source_hash": "132b7e3b6863",
+      "text": "答案不是同一个模型，是同一套问法。"
+    },
+    "cxuj": {
+      "source_hash": "28c0d9b64c82",
+      "text": "那就直接来问，第一题怎么问。"
+    },
+    "2h65": {
+      "source_hash": "8c5af5ff2d22",
+      "text": "三个问题，一题一题来。"
+    },
+    "5vuj": {
+      "source_hash": "6c00e778ba63",
+      "text": "旗舰模型难题答得好，但比较慢也比较贵。"
+    },
+    "gtbn": {
+      "source_hash": "b0fee3f50d48",
+      "text": "遇到真正困难的任务，还是需要它出马。"
+    },
+    "esy5": {
+      "source_hash": "aa4e177b52e5",
+      "text": "小模型回得快又便宜，简单工作其实够用。"
+    },
+    "vvgx": {
+      "source_hash": "4f0756fa2552",
+      "text": "大部分请求，其实根本用不到旗舰等级。"
+    },
+    "yj8y": {
+      "source_hash": "b05e08bbad70",
+      "text": "如果你在做的是摘要、分类这种例行工作，小模型通常就够。"
+    },
+    "wags": {
+      "source_hash": "46fc8193880e",
+      "text": "如果你在做的是法律文件或程序调试，才轮到旗舰上场。"
+    },
+    "jkgk": {
+      "source_hash": "94abd49ae47c",
+      "text": "先问清楚，你的工作到底难不难。"
+    },
+    "7c4n": {
+      "source_hash": "f818939545e1",
+      "text": "难的任务，才值得多付旗舰的价钱。"
+    },
+    "6gb8": {
+      "source_hash": "3914931ec9a5",
+      "text": "这一题，决定你要不要为聪明多付钱。"
+    },
+    "q6wc": {
+      "source_hash": "a31f37327423",
+      "text": "先问完这一题，才知道你到底需不需要旗舰。"
+    },
+    "n7d8": {
+      "source_hash": "ad52cfa60eaf",
+      "text": "先用小模型，答不好再换旗舰救援。"
+    },
+    "wiiq": {
+      "source_hash": "e7fc726caf4b",
+      "text": "那你能等模型，想多久？"
+    },
+    "q8jz": {
+      "source_hash": "11e86f18a736",
+      "text": "答案在级联这个做法里，小模型先回答。"
+    },
+    "afyf": {
+      "source_hash": "70b976612ea4",
+      "text": "接着给这个答案打分数，看它够不够好。"
+    },
+    "7imm": {
+      "source_hash": "2a044fd95551",
+      "text": "分数不够，才升级给旗舰模型救援。"
+    },
+    "zqvx": {
+      "source_hash": "2673520538d0",
+      "text": "这样一来，大部分请求都碰不到旗舰模型。"
+    },
+    "kgpy": {
+      "source_hash": "3aec5f48eee6",
+      "text": "只有真的答不好的那一小部分，才会多等一次。"
+    },
+    "gzsw": {
+      "source_hash": "e6b5ff11b9c4",
+      "text": "这个做法听起来简单，效果却很明显。"
+    },
+    "xzu8": {
+      "source_hash": "c7173ca31091",
+      "text": "因为多数请求，本来就不需要旗舰等级的判断力。"
+    },
+    "938h": {
+      "source_hash": "211c1c2627b7",
+      "text": "对用户来说，大部分时候感觉不出差别。"
+    },
+    "q5hx": {
+      "source_hash": "40ef8c9ffebe",
+      "text": "但这个判断分数的动作，也要花一点时间。"
+    },
+    "b3z3": {
+      "source_hash": "9f7ec4d40832",
+      "text": "单一旗舰模型，就是一次调用的时间。"
+    },
+    "j9je": {
+      "source_hash": "1b8bb29b075e",
+      "text": "级联大多数只要一次，被升级的要叠加两次。"
+    },
+    "gnsn": {
+      "source_hash": "2ee0e18d9fce",
+      "text": "并行互审两个一起等，还要再加一次评审。"
+    },
+    "md5s": {
+      "source_hash": "548710514b17",
+      "text": "多数请求最快的做法，最慢的时候不一定最快。"
+    },
+    "bikj": {
+      "source_hash": "7e37385c1758",
+      "text": "这听起来有点违反直觉，但逻辑很简单。"
+    },
+    "586z": {
+      "source_hash": "544dc1da7915",
+      "text": "被升级的那些请求，等于多等了一次调用。"
+    },
+    "7ywx": {
+      "source_hash": "8ef62b6a052f",
+      "text": "所以你不能只看平均值，要看最慢的那一段。"
+    },
+    "7fkj": {
+      "source_hash": "8d33e640d67e",
+      "text": "如果你的产品不能让用户久等，这一点特别重要。"
+    },
+    "85qa": {
+      "source_hash": "b25d65122247",
+      "text": "延迟的形状，跟成本一样，值得分开看。"
+    },
+    "xj6a": {
+      "source_hash": "d3e49f686fb4",
+      "text": "最慢的那百分之五叫 p95；级联在这里比较慢，是我的推论。"
+    },
+    "necg": {
+      "source_hash": "2d9fca3312fb",
+      "text": "那换算成钱，三种做法差多少？"
+    },
+    "c8pa": {
+      "source_hash": "4ca377b75821",
+      "text": "先讲清楚，这里固定一组假设，方便比较。"
+    },
+    "j5xm": {
+      "source_hash": "f39cd773010e",
+      "text": "每次请求，模型要读进去的字，会被切成 token。"
+    },
+    "qrhy": {
+      "source_hash": "b06a7c71753c",
+      "text": "平均一次送出三千个 token，收到六百个。"
+    },
+    "jq27": {
+      "source_hash": "1273a7daffbd",
+      "text": "这三千和六百，是演示用的数字，不是规定。"
+    },
+    "j8hk": {
+      "source_hash": "a9b03607e6fc",
+      "text": "你可以照自己实际的用量，换成自己的数字。"
+    },
+    "zi3w": {
+      "source_hash": "a93e98538e71",
+      "text": "单一旗舰最简单，一次还不到三美分。"
+    },
+    "cqc2": {
+      "source_hash": "52bdf5c54dae",
+      "text": "级联平均下来，大约一美分。"
+    },
+    "gr8m": {
+      "source_hash": "be6846927b47",
+      "text": "并行互审要三次调用，将近十美分。"
+    },
+    "y3wa": {
+      "source_hash": "0e44c30688c1",
+      "text": "算下来，级联比全程用旗舰，省了六成。"
+    },
+    "r5g8": {
+      "source_hash": "b14a00f9ace3",
+      "text": "三成的升级比例，是演示用的假设，不是实测到的真实流量。"
+    },
+    "xwj3": {
+      "source_hash": "6944493cc340",
+      "text": "换算成一万次请求，差距会更明显。"
+    },
+    "7ake": {
+      "source_hash": "d893052cf7e5",
+      "text": "单一旗舰要两百四十美元，级联不到一百美元。"
+    },
+    "fwvj": {
+      "source_hash": "4c097c0fea71",
+      "text": "旗舰模型的官方定价，输入比输出便宜很多。"
+    },
+    "3c4s": {
+      "source_hash": "150d380dc3e4",
+      "text": "便宜的小模型，每百万 token 输入只要 0.30 美元，输出 2.50 美元。"
+    },
+    "quy9": {
+      "source_hash": "4ce31ad2b056",
+      "text": "把这两种价差放进级联，才会省下这么多。"
+    },
+    "n74c": {
+      "source_hash": "cdf1f8c22d0f",
+      "text": "如果你一天调用一万次，一年下来差距非常大。"
+    },
+    "59f5": {
+      "source_hash": "e9213e502330",
+      "text": "这个假设，来自站上另一篇文章的示范。"
+    },
+    "zmm5": {
+      "source_hash": "3c093de895f0",
+      "text": "实际用量，你可以用官方的计数工具量出来。"
+    },
+    "99au": {
+      "source_hash": "09d407c7b04d",
+      "text": "金额都算到小数点后四位，方便比较。"
+    },
+    "hp3f": {
+      "source_hash": "d3fd9e36a436",
+      "text": "表格上的数字看起来很小，乘上调用次数就很明显了。"
+    },
+    "nqci": {
+      "source_hash": "1a5cea3d1a7f",
+      "text": "并行互审比较贵，因为它要两个模型各回答一次。"
+    },
+    "rnz4": {
+      "source_hash": "bef61cbb521a",
+      "text": "再加上第三个模型读完两份答案，才能给分数。"
+    },
+    "3h3e": {
+      "source_hash": "63de46308ae2",
+      "text": "这三种做法没有绝对的好坏，只有适不适合。"
+    },
+    "ercp": {
+      "source_hash": "29b5d09303ac",
+      "text": "这一步的算式，其实只有两段。"
+    },
+    "pwwg": {
+      "source_hash": "431180a1a327",
+      "text": "先问一次小模型，几乎不用什么钱。"
+    },
+    "7b9y": {
+      "source_hash": "9d10160f9999",
+      "text": "把三成升级的概率，乘上旗舰的价钱。"
+    },
+    "dxn5": {
+      "source_hash": "616c4fc5cdab",
+      "text": "两个数字加起来，就是级联平均要付的钱。"
+    },
+    "nshw": {
+      "source_hash": "b8c4e661a036",
+      "text": "换算下来，比全程用旗舰，省了六成。"
+    },
+    "wj6a": {
+      "source_hash": "cbf76def6bd3",
+      "text": "你也可以换成自己的比例，重新算一次。"
+    },
+    "wkwi": {
+      "source_hash": "4f30ae91d578",
+      "text": "小模型的价钱，只有旗舰的十分之一。"
+    },
+    "vaaj": {
+      "source_hash": "a180fe190826",
+      "text": "真正花钱的，是那三成被升级的部分。"
+    },
+    "tz5m": {
+      "source_hash": "32db1f52a3e4",
+      "text": "算式看起来简单，但背后就是这整套逻辑。"
+    },
+    "dnig": {
+      "source_hash": "8d1e22cc1b50",
+      "text": "你只要换上自己的价钱和比例，就能重算。"
+    },
+    "z3jf": {
+      "source_hash": "0d2d3cd9b7b4",
+      "text": "官方定价页的数字，会随时间更新，记得回去核对。"
+    },
+    "9m9t": {
+      "source_hash": "18fe585e8b6a",
+      "text": "这一步做完，你就有自己的成本估算了。"
+    },
+    "edir": {
+      "source_hash": "8be6f4f9557d",
+      "text": "这张图，把三种流程放在一起比。"
+    },
+    "5ban": {
+      "source_hash": "92ea443c79c8",
+      "text": "价格是 2026 年 9 月，官方定价页的标准价。"
+    },
+    "4q66": {
+      "source_hash": "fd44fee12c6e",
+      "text": "你可以照着这个算法，换成自己的用量重算一次。"
+    },
+    "4uyj": {
+      "source_hash": "5293d921cd04",
+      "text": "记得换成你自己的输入输出数量，不是套用这里的数字。"
+    },
+    "qfq9": {
+      "source_hash": "51ad77cdf1a1",
+      "text": "图上三种流程，都是同一组假设算出来的。"
+    },
+    "2bxn": {
+      "source_hash": "5b27f37ce2d1",
+      "text": "下面的简介，有完整的文章可以对照。"
+    },
+    "z3m3": {
+      "source_hash": "eadfba9b8aeb",
+      "text": "那我自己，实际上怎么用？"
+    },
+    "n7mh": {
+      "source_hash": "b3cd03f72d71",
+      "text": "答案很简单，我也是分三个步骤。"
+    },
+    "dz86": {
+      "source_hash": "847bc9def594",
+      "text": "我的看法是，先把三个量分开算一次。"
+    },
+    "5r6c": {
+      "source_hash": "1d85b4c9c39a",
+      "text": "第一，成本、质量、延迟，先分开算，不要混在一起比。"
+    },
+    "cf48": {
+      "source_hash": "2e44c5981b4f",
+      "text": "第二，大部分工作，我会用先便宜后升级的级联。"
+    },
+    "gixy": {
+      "source_hash": "d5d42195ad8d",
+      "text": "换算下来，平均成本大约能省六成。"
+    },
+    "kny9": {
+      "source_hash": "9c17dec9737c",
+      "text": "第三，并行互审，我只留给真的输不起的决定。"
+    },
+    "jb3x": {
+      "source_hash": "7c0e7dee486e",
+      "text": "例如要对外发出去的文件，多花一份评审的钱很值得。"
+    },
+    "rup3": {
+      "source_hash": "1a8b62e8ed3b",
+      "text": "排行榜换第一名，不该是你换模型的理由。"
+    },
+    "wr7k": {
+      "source_hash": "5a668a175392",
+      "text": "这是我自己的用法，你可以照你的情况调整比例。"
+    },
+    "ym6c": {
+      "source_hash": "eebd60018bc3",
+      "text": "我平常自己接入模型，也是照这个顺序判断。"
+    },
+    "r4u8": {
+      "source_hash": "e7c6392eeba6",
+      "text": "先问工作难不难，再问能不能等，最后才问要花多少。"
+    },
+    "29zb": {
+      "source_hash": "86bd194bca3e",
+      "text": "这个顺序，比先看排行榜更实际。"
+    },
+    "8ubp": {
+      "source_hash": "0a31bf35bd62",
+      "text": "这三步，我自己每次接新项目都会走一遍。"
+    },
+    "4nqz": {
+      "source_hash": "e48d9dca2ed2",
+      "text": "你不用照抄，但建议先算过一次再决定。"
+    },
+    "b6u2": {
+      "source_hash": "25c119ce20b5",
+      "text": "算过一次之后，下次看到新模型就不会慌。"
+    },
+    "66eq": {
+      "source_hash": "671cc300d1e8",
+      "text": "所以，你要不要跟着换 AI 模型？"
+    },
+    "ax8x": {
+      "source_hash": "d1791d561b7a",
+      "text": "先把这三个问题问完，你自然有答案。"
+    },
+    "becu": {
+      "source_hash": "2c940c359ec9",
+      "text": "做什么，决定要多聪明。"
+    },
+    "pj2d": {
+      "source_hash": "eac7ebe0ee6d",
+      "text": "能等多久，决定要多快。"
+    },
+    "zvcp": {
+      "source_hash": "809a26293c24",
+      "text": "付多少，决定用哪一级。"
+    },
+    "36p3": {
+      "source_hash": "435c5b899f3a",
+      "text": "三个答案写下来，比追每周的排行榜更有用。"
+    },
+    "8bci": {
+      "source_hash": "504d40e0faac",
+      "text": "下次再看到新模型上线，你就知道要不要换。"
+    },
+    "t4g8": {
+      "source_hash": "66080a3ed5cf",
+      "text": "排行榜还是可以看，但别把它当成唯一标准。"
+    },
+    "pkyh": {
+      "source_hash": "8f59cabbc322",
+      "text": "先问完你自己的三个问题，答案自然浮现。"
+    },
+    "2fhy": {
+      "source_hash": "1f5859d1e335",
+      "text": "完整算式和对比表，我放在简介的文章里了。"
+    },
+    "acnk": {
+      "source_hash": "e7f7a79554db",
+      "text": "谢谢你看到这里，我们下期视频见。"
+    },
+    "mezu": {
+      "source_hash": "15981b8e8c16",
+      "text": "祝你少缴一点不必要的模型费用。"
+    }
+  }
+}
