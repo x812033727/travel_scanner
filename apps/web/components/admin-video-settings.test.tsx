@@ -19,8 +19,9 @@ const view = {
   voice: { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" },
   target_minutes_min: 8, target_minutes_max: 12, caption_locales: ["en", "ja", "ko", "zh-CN"],
   max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2,
-  auto_approve_audio: true,
+  subscription_max_usage_percent: 80, auto_approve_audio: true,
   model_options: {
+    claude_code: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
     anthropic: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
     openai: [], minimax: [],
     gemini: [{ value: "gemini-3.8-flash", label: "Gemini 3.8 Flash", description: null, status: "stable" }],
@@ -79,7 +80,9 @@ describe("AdminVideoSettings", () => {
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSettings /></AdminOperationsProvider>);
     expect(await screen.findByText(/要有「管理設定」權限才能修改/)).toBeTruthy();
     expect(screen.getByRole("button", { name: "儲存設定" })).toHaveProperty("disabled", true);
-    expect(screen.getAllByRole("option", { name: "OpenAI (沒有金鑰)" }).length).toBe(STAGES.length);
+    expect(screen.getAllByRole("option", { name: "OpenAI API (沒有金鑰)" }).length).toBe(STAGES.length);
+    expect(screen.getAllByRole("option", { name: "Claude Code (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
     expect(screen.getByText(/1 \/ 8 支草稿，呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
+    expect(screen.getByRole("spinbutton", { name: /訂閱帳號用到幾 %/ })).toHaveProperty("value", "80");
   });
 });

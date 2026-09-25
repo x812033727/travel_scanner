@@ -12,6 +12,8 @@ from app.video_automation.schemas import UsageView
 
 # A draft is counted when its planning stage first succeeds in the month.
 DRAFT_STAGE = "planner"
+# Runs on the Claude subscription accounts; the plan pays for them, not the token budget.
+SUBSCRIPTION_PROVIDER = "claude_code"
 
 
 def month_start(now: datetime | None = None) -> datetime:
@@ -23,10 +25,13 @@ async def usage_view(
     session: AsyncSession, row: VideoAutomationSettings, now: datetime | None = None
 ) -> UsageView:
     since = month_start(now)
-    tokens, calls, failed = (
+    spent = VideoAiRun.input_tokens + VideoAiRun.output_tokens
+    on_plan = VideoAiRun.provider == SUBSCRIPTION_PROVIDER
+    tokens, plan_tokens, calls, failed = (
         await session.execute(
             select(
-                func.coalesce(func.sum(VideoAiRun.input_tokens + VideoAiRun.output_tokens), 0),
+                func.coalesce(func.sum(case((on_plan, 0), else_=spent)), 0),
+                func.coalesce(func.sum(case((on_plan, spent), else_=0)), 0),
                 func.count(VideoAiRun.id),
                 func.coalesce(func.sum(case((VideoAiRun.status == "failed", 1), else_=0)), 0),
             ).where(VideoAiRun.created_at >= since)
@@ -42,6 +47,7 @@ async def usage_view(
     return UsageView(
         tokens=int(tokens or 0),
         token_budget=row.monthly_token_budget_millions * 1_000_000,
+        subscription_tokens=int(plan_tokens or 0),
         drafts=int(drafts or 0),
         draft_budget=row.max_drafts_per_month,
         calls=int(calls or 0),
@@ -64,9 +70,12 @@ async def slug_has_draft(session: AsyncSession, slug: str, now: datetime | None 
     return found is not None
 
 
-def budget_problem(usage: UsageView, *, new_draft: bool) -> str | None:
-    """Why a call may not run now, in the owner's words; None when it may."""
-    if usage.tokens >= usage.token_budget:
+def budget_problem(usage: UsageView, *, new_draft: bool, billed: bool = True) -> str | None:
+    """Why a call may not run now, in the owner's words; None when it may.
+
+    The token budget limits API-billed calls only (``billed``); the draft count limits all.
+    """
+    if billed and usage.tokens >= usage.token_budget:
         return (
             f"本月模型 token 已用 {usage.tokens:,}，達到上限 {usage.token_budget:,}；"
             "可以在影片審核的設定分頁調高"

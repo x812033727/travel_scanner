@@ -7,7 +7,10 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_vali
 
 from app.ai.catalog import ModelStatus
 
-ProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
+# "claude_code": the Claude subscription accounts the host's AI accounts agent manages; the
+# others are the site's API keys.
+ProviderName = Literal["claude_code", "openai", "anthropic", "minimax", "gemini"]
+ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
 CaptionLocale = Literal["en", "ja", "ko", "zh-CN"]
 TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
@@ -48,6 +51,9 @@ class SettingsWrite(StrictModel):
     monthly_token_budget_millions: int = Field(ge=1, le=500)
     max_verify_rounds: int = Field(ge=1, le=5)
     max_retake_rounds: int = Field(ge=0, le=5)
+    # A subscription account at or above this share of its 5-hour or weekly window is skipped;
+    # when every account is, the pipeline waits for a window to reset.
+    subscription_max_usage_percent: int = Field(default=80, ge=10, le=100)
     auto_approve_audio: bool
 
     @model_validator(mode="after")
@@ -79,8 +85,11 @@ class VoiceOptionsView(StrictModel):
 
 class UsageView(StrictModel):
     # Since the first of this month (UTC): what the budgets on this page are measured against.
+    # `tokens` are the API-billed ones the token budget limits; subscription runs are counted
+    # apart, since the plan, not the site, pays for them.
     tokens: int
     token_budget: int
+    subscription_tokens: int = 0
     drafts: int
     draft_budget: int
     calls: int

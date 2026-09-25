@@ -9,7 +9,9 @@ import { api } from "@/lib/api";
 
 // apps/api/app/video_automation/schemas.py. The worker on the host reads the same values with
 // its video tool token (docs/videos/AUTOMATION.md).
-export const PROVIDERS = ["anthropic", "openai", "gemini", "minimax"] as const;
+// claude_code: the Claude subscription accounts the host's AI accounts agent signs in; the rest
+// are the site's API keys.
+export const PROVIDERS = ["claude_code", "anthropic", "openai", "gemini", "minimax"] as const;
 export const STAGES = ["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"] as const;
 export const CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
 type Provider = (typeof PROVIDERS)[number];
@@ -35,9 +37,10 @@ export type VideoSettings = {
   monthly_token_budget_millions: number;
   max_verify_rounds: number;
   max_retake_rounds: number;
+  subscription_max_usage_percent: number;
   auto_approve_audio: boolean;
 };
-type Usage = { tokens: number; token_budget: number; drafts: number; draft_budget: number; calls: number; failed_calls: number };
+type Usage = { tokens: number; token_budget: number; subscription_tokens?: number; drafts: number; draft_budget: number; calls: number; failed_calls: number };
 type SettingsView = VideoSettings & {
   model_options: Record<Provider, ModelOption[]>;
   configured_providers: Provider[];
@@ -46,11 +49,11 @@ type SettingsView = VideoSettings & {
   updated_at: string | null;
 };
 
-const providerLabels: Record<Provider, string> = { anthropic: "Anthropic Claude", openai: "OpenAI", gemini: "Google Gemini", minimax: "MiniMax" };
+const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
 const numberFields = {
   schedule: [["draft_interval_hours", 6, 720], ["topics_per_run", 1, 3], ["max_waiting_drafts", 1, 10]],
   length: [["target_minutes_min", 3, 30], ["target_minutes_max", 3, 30]],
-  budget: [["max_drafts_per_month", 0, 60], ["monthly_token_budget_millions", 1, 500], ["max_verify_rounds", 1, 5], ["max_retake_rounds", 0, 5]],
+  budget: [["max_drafts_per_month", 0, 60], ["monthly_token_budget_millions", 1, 500], ["subscription_max_usage_percent", 10, 100], ["max_verify_rounds", 1, 5], ["max_retake_rounds", 0, 5]],
 } as const;
 type NumberField = (typeof numberFields)[keyof typeof numberFields][number][0];
 
@@ -63,7 +66,7 @@ const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "auto_approve_audio",
+  "max_retake_rounds", "subscription_max_usage_percent", "auto_approve_audio",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The body the API's SettingsWrite accepts (it refuses unknown fields): the view without its options. */
@@ -147,7 +150,7 @@ export function AdminVideoSettings() {
             <select className={fieldClass} value={choice.provider} disabled={disabled} onChange={(event) => {
               const provider = event.target.value as Provider;
               edit({ stage_models: { ...draft.stage_models, [stage]: { provider, model: view.model_options[provider]?.[0]?.value ?? "" } } });
-            }}>{PROVIDERS.map((provider) => <option key={provider} value={provider}>{providerLabels[provider]}{view.configured_providers.includes(provider) ? "" : ` (${t("noKey")})`}</option>)}</select>
+            }}>{PROVIDERS.map((provider) => <option key={provider} value={provider}>{providerLabels[provider]}{provider === "claude_code" ? ` (${t("subscription")})` : ""}{view.configured_providers.includes(provider) ? "" : ` (${t(provider === "claude_code" ? "agentOff" : "noKey")})`}</option>)}</select>
           </label>
           <label className="block text-sm">{t("model")}
             <select className={fieldClass} value={choice.model} disabled={disabled} onChange={(event) => edit({ stage_models: { ...draft.stage_models, [stage]: { ...choice, model: event.target.value } } })}>
@@ -199,9 +202,11 @@ export function AdminVideoSettings() {
       {view.usage && <p className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">{t("usage", {
         tokens: view.usage.tokens.toLocaleString(), tokenBudget: view.usage.token_budget.toLocaleString(),
         drafts: view.usage.drafts, draftBudget: view.usage.draft_budget, calls: view.usage.calls, failed: view.usage.failed_calls,
+        planTokens: (view.usage.subscription_tokens ?? 0).toLocaleString(),
       })}</p>}
       <div className="grid gap-3 md:grid-cols-2">{numberFields.budget.map(numberInput)}</div>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("budgetHelp")}</p>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("subscriptionHelp")}</p>
     </section>
 
     <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-gates">

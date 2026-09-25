@@ -2088,7 +2088,7 @@
     "onePerLine": "1 行に 1 つの語句を書いてください。",
     "topicSources": "テーマの取得元",
     "modelsTitle": "各ステップの AI モデル",
-    "modelsHelp": "サイトの「AI サービス」にある API キーを使い、使用量に応じて課金されます。「キーなし」と表示されたベンダーは、先に AI サービスの設定でキーを入力してください。",
+    "modelsHelp": "「Claude Code（サブスクリプション）」はホストでサインインした Claude のサブスクリプションアカウントで実行され、追加料金はかからず、プランの上限の範囲で動きます。その他はサイトの「AI サービス」にある API キーを使い、使用量に応じて課金されます。「キーなし」のベンダーは先にキーを入力してください。",
     "provider": "ベンダー",
     "model": "モデル",
     "noKey": "キーなし",
@@ -2123,7 +2123,8 @@
       "monthly_token_budget_millions": "1 か月のモデルのトークン上限（百万）",
       "max_verify_rounds": "1 本あたりのファクトチェックの最大回数",
       "max_retake_rounds": "ナレーション録り直しの最大回数",
-      "auto_approve_audio": "Jev がすべての文を正しく読めていると判断したら、ナレーションを自動で承認"
+      "auto_approve_audio": "Jev がすべての文を正しく読めていると判断したら、ナレーションを自動で承認",
+      "subscription_max_usage_percent": "サブスクリプションアカウントを止める使用率（5 時間または週の枠、%）"
     },
     "stages": {
       "planner": "企画（テーマと構成案）",
@@ -2139,6 +2140,9 @@
       "ko": "韓国語",
       "zh-CN": "簡体字中国語"
     },
-    "usage": "今月（UTC）の使用量：トークン {tokens} / {tokenBudget}、下書き {drafts} / {draftBudget} 本、モデル呼び出し {calls} 回（うち失敗 {failed} 回）。"
+    "usage": "今月（UTC）の使用量：API のトークン {tokens} / {tokenBudget}、サブスクリプションのトークン {planTokens}、下書き {drafts} / {draftBudget} 本、モデル呼び出し {calls} 回（うち失敗 {failed} 回）。",
+    "subscription": "サブスクリプション",
+    "agentOff": "ホストのエージェントが未設定",
+    "subscriptionHelp": "サブスクリプションアカウントは、5 時間または週の枠が上の割合に達するとスキップされます。すべてのアカウントが達したら、ワーカーは枠のリセットを待ち、自動で API キーに切り替えることはありません。Codex は対象外です。コマンドラインからコマンド実行の機能を無効にできないためです。"
   }
 }

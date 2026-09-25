@@ -17,15 +17,16 @@ def utcnow() -> datetime:
 
 
 # The writing stages, each run with its own vendor and model. Defaults follow the owner's
-# 2026-09-25 choice: Sonnet writes, Opus checks, as on the first three videos.
+# 2026-09-25 choices: Sonnet writes, Opus checks, as on the first three videos, on the Claude
+# subscription accounts the host signs in (the owner read the providers' terms themselves).
 STAGES = ("planner", "writer", "verifier", "listener", "translator", "caption_reviewer")
 DEFAULT_STAGE_MODELS: dict[str, dict[str, str]] = {
-    "planner": {"provider": "anthropic", "model": "claude-sonnet-5"},
-    "writer": {"provider": "anthropic", "model": "claude-sonnet-5"},
-    "verifier": {"provider": "anthropic", "model": "claude-opus-5-5"},
-    "listener": {"provider": "anthropic", "model": "claude-opus-5-5"},
-    "translator": {"provider": "anthropic", "model": "claude-sonnet-5"},
-    "caption_reviewer": {"provider": "anthropic", "model": "claude-opus-5-5"},
+    "planner": {"provider": "claude_code", "model": "claude-sonnet-5"},
+    "writer": {"provider": "claude_code", "model": "claude-sonnet-5"},
+    "verifier": {"provider": "claude_code", "model": "claude-opus-5-5"},
+    "listener": {"provider": "claude_code", "model": "claude-opus-5-5"},
+    "translator": {"provider": "claude_code", "model": "claude-sonnet-5"},
+    "caption_reviewer": {"provider": "claude_code", "model": "claude-opus-5-5"},
 }
 # The channel voice the owner picked on 2026-09-24 (docs/videos/README.md).
 DEFAULT_VOICE: dict[str, Any] = {
@@ -69,6 +70,10 @@ class VideoAutomationSettings(Base):
         ),
         CheckConstraint("max_verify_rounds BETWEEN 1 AND 5", name="ck_video_automation_verify"),
         CheckConstraint("max_retake_rounds BETWEEN 0 AND 5", name="ck_video_automation_retakes"),
+        CheckConstraint(
+            "subscription_max_usage_percent BETWEEN 10 AND 100",
+            name="ck_video_automation_subscription_cap",
+        ),
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
@@ -97,6 +102,9 @@ class VideoAutomationSettings(Base):
     monthly_token_budget_millions: Mapped[int] = mapped_column(Integer, default=20)
     max_verify_rounds: Mapped[int] = mapped_column(Integer, default=3)
     max_retake_rounds: Mapped[int] = mapped_column(Integer, default=2)
+    subscription_max_usage_percent: Mapped[int] = mapped_column(
+        Integer, default=80, server_default="80"
+    )
     # Gates: outline, final cut and publishing always wait for the owner.
     auto_approve_audio: Mapped[bool] = mapped_column(Boolean, default=True)
     updated_by_user_id: Mapped[UUID | None] = mapped_column(

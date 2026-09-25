@@ -2088,7 +2088,7 @@
     "onePerLine": "每行一個詞或短語。",
     "topicSources": "題目來源",
     "modelsTitle": "各階段的 AI 模型",
-    "modelsHelp": "用網站「AI 服務」裡的 API 金鑰，按用量計費。標示「沒有金鑰」的廠商要先在 AI 服務設定填金鑰才能用。",
+    "modelsHelp": "「Claude Code（訂閱帳號）」用主機上登入的 Claude 訂閱帳號執行，不另外計費，額度由訂閱方案決定；其他選項用網站「AI 服務」裡的 API 金鑰，按用量計費。標示「沒有金鑰」的廠商要先填金鑰才能用。",
     "provider": "廠商",
     "model": "模型",
     "noKey": "沒有金鑰",
@@ -2123,7 +2123,8 @@
       "monthly_token_budget_millions": "每月模型 token 上限（百萬）",
       "max_verify_rounds": "每支最多查核幾輪",
       "max_retake_rounds": "旁白最多重錄幾輪",
-      "auto_approve_audio": "旁白由 Jev 判斷每一句都唸對時，自動核准"
+      "auto_approve_audio": "旁白由 Jev 判斷每一句都唸對時，自動核准",
+      "subscription_max_usage_percent": "訂閱帳號用到幾 % 就先停（5 小時或每週額度）"
     },
     "stages": {
       "planner": "企劃（選題與大綱）",
@@ -2139,6 +2140,9 @@
       "ko": "韓文",
       "zh-CN": "簡體中文"
     },
-    "usage": "本月（UTC）已用 {tokens} / {tokenBudget} 個 token，產生 {drafts} / {draftBudget} 支草稿，呼叫模型 {calls} 次（其中 {failed} 次失敗）。"
+    "usage": "本月（UTC）API 已用 {tokens} / {tokenBudget} 個 token，訂閱帳號用了 {planTokens} 個 token；產生 {drafts} / {draftBudget} 支草稿，呼叫模型 {calls} 次（其中 {failed} 次失敗）。",
+    "subscription": "訂閱帳號",
+    "agentOff": "主機代理未設定",
+    "subscriptionHelp": "訂閱帳號在 5 小時或每週額度用到上面的百分比時會先跳過；每個帳號都到了，工人就等額度重置再繼續，不會自動改用 API 金鑰。Codex 不提供：它的指令列關不掉執行指令的能力。"
   }
 }
