@@ -29,6 +29,8 @@ export const AREAS = {
   render: ["render", "2026-09-24-video-render-slides"],
   assemble: ["assemble", "2026-09-24-video-assemble-package"],
   review: ["review", "2026-09-24-video-assemble-package"],
+  "review-push": ["review", "2026-09-25-video-tool-pushes-reviews-and-pulls"],
+  "review-pull": ["review", "2026-09-25-video-tool-pushes-reviews-and-pulls"],
   "i18n-sheet": ["i18n", "2026-09-24-video-captions-i18n"],
   "i18n-merge": ["i18n", "2026-09-24-video-captions-i18n"],
   package: ["package", "2026-09-24-video-assemble-package"],
@@ -42,8 +44,10 @@ Usage: node tools/video/cli.mjs <command> [options]
   status   --slug S [--workdir D]                  where the video is, and the next command
   lint     --slug S | --file F [--json]            check video.json, brief.md, dictionary, YouTube limits
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
-  approve  --slug S --gate outline|audio|final [--workdir D] [--note T]
+  approve  --slug S --gate outline|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
+  review-push --slug S [--gate G]                  report the video to /admin/videos and submit the next gate
+  review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
   captions --slug S [--workdir D]                  caption files for every current locale
   i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
