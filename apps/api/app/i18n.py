@@ -1962,6 +1962,9 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "This news image is unavailable or has not been published",
         "news_asset_storage_unavailable": "News image storage is temporarily unavailable",
         "news_candidate_not_found": "This news candidate could not be found",
+        "news_candidate_not_approvable": (
+            "This candidate has no verified Traditional Chinese draft to confirm"
+        ),
         "news_candidate_not_publishable": "This candidate is not ready for publication",
         "news_candidate_not_published": "Only a published candidate can report this incident",
         "news_candidate_not_duplicate_uncertain": (
@@ -1998,6 +2001,9 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "このニュース画像は利用できないか、まだ公開されていません",
         "news_asset_storage_unavailable": "ニュース画像の保存先を一時的に利用できません",
         "news_candidate_not_found": "このニュース候補が見つかりません",
+        "news_candidate_not_approvable": (
+            "この候補には確認できる検証済みの繁体字中国語原稿がありません"
+        ),
         "news_candidate_not_publishable": "この候補はまだ公開できません",
         "news_candidate_not_published": "公開後の重大エラーは公開済み候補でのみ報告できます",
         "news_candidate_not_duplicate_uncertain": "この候補は重複判定待ちではありません",
@@ -2030,6 +2036,7 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "이 뉴스 이미지를 사용할 수 없거나 아직 게시되지 않았습니다",
         "news_asset_storage_unavailable": "뉴스 이미지 저장소를 일시적으로 사용할 수 없습니다",
         "news_candidate_not_found": "이 뉴스 후보를 찾을 수 없습니다",
+        "news_candidate_not_approvable": "이 후보에는 확인할 검증된 번체 중국어 초안이 없습니다",
         "news_candidate_not_publishable": "이 후보는 아직 게시할 수 없습니다",
         "news_candidate_not_published": "게시 후 중대 오류는 게시된 후보에서만 신고할 수 있습니다",
         "news_candidate_not_duplicate_uncertain": "이 후보는 중복 판정을 기다리고 있지 않습니다",
@@ -2064,6 +2071,7 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "找不到新聞圖片，或圖片尚未發布",
         "news_asset_storage_unavailable": "新聞圖片儲存暫時無法使用",
         "news_candidate_not_found": "找不到新聞候選",
+        "news_candidate_not_approvable": "這個候選沒有可以確認的已查核繁中草稿",
         "news_candidate_not_publishable": "這個候選目前不能發布",
         "news_candidate_not_published": "只有已發布候選可回報重大錯誤",
         "news_candidate_not_duplicate_uncertain": "這個候選沒有在等待重複判定",
@@ -2096,6 +2104,7 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "找不到新闻图片，或图片尚未发布",
         "news_asset_storage_unavailable": "新闻图片存储暂时无法使用",
         "news_candidate_not_found": "找不到新闻候选",
+        "news_candidate_not_approvable": "这个候选没有可以确认的已核查繁中草稿",
         "news_candidate_not_publishable": "这个候选目前不能发布",
         "news_candidate_not_published": "只有已发布候选可报告重大错误",
         "news_candidate_not_duplicate_uncertain": "这个候选没有在等待重复判定",

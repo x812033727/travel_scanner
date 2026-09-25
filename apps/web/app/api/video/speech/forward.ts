@@ -25,7 +25,7 @@ export function problem(status: number, code: string, detail: string) {
   );
 }
 
-export async function forwardToSpeech(request: NextRequest, path: string, method: "GET" | "POST", maxBodyBytes = MAX_BODY_BYTES) {
+export async function forwardToSpeech(request: NextRequest, path: string, method: "GET" | "POST", maxBodyBytes = MAX_BODY_BYTES, timeoutMs = TIMEOUT_MS) {
   const authorization = request.headers.get("authorization") ?? "";
   if (!TOKEN.test(authorization)) {
     return problem(401, "video_tool_token_invalid", "缺少或格式不對的影片工具權杖");
@@ -39,7 +39,7 @@ export async function forwardToSpeech(request: NextRequest, path: string, method
     }
   }
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
     const upstream = await fetch(`${base}/api/v1/video/${path}`, {

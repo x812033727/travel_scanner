@@ -34,10 +34,11 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    ZH_DRAFT_READY,
     document_fingerprint,
     evidence_fingerprint,
+    evidence_present,
     evidence_site_count,
-    evidence_sufficient,
     gate_result,
     hard_policy_problems,
 )
@@ -685,6 +686,8 @@ def _queue_new_draft(row: NewsCandidate, reason: str) -> None:
     row.error_detail = None
     row.retry_count += 1
     row.human_reason = reason
+    # A new draft replaces the one the owner may have confirmed.
+    row.human_decision = None
 
 
 async def _queue_reverify(session: AsyncSession, row: NewsCandidate, reason: str) -> None:
@@ -711,17 +714,105 @@ async def _queue_reverify(session: AsyncSession, row: NewsCandidate, reason: str
     row.human_reason = reason
 
 
-async def publish_candidate(
-    session: AsyncSession,
-    actor: User,
-    candidate_id: UUID,
-    payload: CandidateAction,
-    redis: Redis | None = None,
+async def approve_candidate(
+    session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
 ) -> CandidateDetail:
+    """The owner confirms a Traditional Chinese draft for publication (2026-09-25).
+
+    The candidate is queued again; the pipeline then translates the other four locales,
+    reviews and checks them, saves the article and publishes it. The same action runs the
+    second stage again when it stopped on a translation or a check.
+    """
+
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review"} or row.guide_article_id is None:
+    confirmed = row.human_decision == "publish"
+    waiting = row.status == "manual_review" and row.error_code == ZH_DRAFT_READY
+    stalled = (
+        confirmed
+        and row.status in {"manual_review", "failed"}
+        and row.error_code != "news_evidence_changed"
+    )
+    if not (waiting or stalled) or not await verified_zh_draft(session, row):
+        raise AppError(409, "news_candidate_not_approvable", "這個候選目前不能確認發布")
+    if not confirmed:
+        row.human_decision = "publish"
+        row.human_major_error = False
+        session.add(
+            NewsAssessment(
+                candidate_id=row.id,
+                assessment_type="human",
+                verdict="publish",
+                reasons_json=[payload.reason],
+                details_json={"stage": "zh_draft"},
+                evidence_hash=row.evidence_hash,
+                prompt_version=row.prompt_version,
+                created_by_user_id=actor.id,
+            )
+        )
+    row.human_reason = payload.reason
+    row.status = "discovered"
+    row.error_code = None
+    row.error_detail = None
+    row.retry_count += 1
+    audit(
+        session,
+        actor,
+        "news_candidate_publish_confirmed",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        again=confirmed,
+        retry_count=row.retry_count,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+async def verified_zh_draft(session: AsyncSession, row: NewsCandidate) -> GuideDocument | None:
+    """The stored Traditional Chinese draft, when a passing verification matches it."""
+
+    encoded = row.draft_bundle_json.get("zh-TW")
+    if not encoded:
+        return None
+    document = GuideDocument.model_validate(encoded)
+    verification = await _latest_pass(session, row, "verification")
+    if verification is None or verification.details_json.get(
+        "document_sha256"
+    ) != document_fingerprint(document):
+        return None
+    return document
+
+
+async def _latest_pass(
+    session: AsyncSession, row: NewsCandidate, assessment_type: str
+) -> NewsAssessment | None:
+    return cast(
+        NewsAssessment | None,
+        await session.scalar(
+            select(NewsAssessment)
+            .where(
+                NewsAssessment.candidate_id == row.id,
+                NewsAssessment.assessment_type == assessment_type,
+                NewsAssessment.verdict == "pass",
+                NewsAssessment.evidence_hash == row.evidence_hash,
+            )
+            .order_by(NewsAssessment.created_at.desc())
+        ),
+    )
+
+
+async def publication_bundle(
+    session: AsyncSession, row: NewsCandidate, redis: Redis | None = None
+) -> tuple[dict[Locale, GuideDocument], dict[Locale, int]]:
+    """Every check a publication needs, on the saved five-locale article.
+
+    Shared by the publish button and the pipeline's second stage. A person decides to
+    publish in both, so one evidence page is enough; automatic publication asks for two
+    websites before it gets here.
+    """
+
+    if row.guide_article_id is None:
         raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
     evidence = list(
         await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == row.id))
@@ -742,12 +833,8 @@ async def publish_candidate(
             "news_evidence_changed",
             f"來源內容或來源政策已變更，請重新查核：{'; '.join(evidence_reasons[:3])}",
         )
-    if not evidence_sufficient(evidence):
-        raise AppError(
-            422,
-            "news_evidence_insufficient",
-            "發布需要兩個不同網站的證據，其中一個是第一方來源",
-        )
+    if not evidence_present(evidence):
+        raise AppError(422, "news_evidence_insufficient", "發布至少需要一個來源的證據")
     locale_rows = list(
         await session.scalars(
             select(GuideArticleLocale).where(GuideArticleLocale.article_id == row.guide_article_id)
@@ -773,16 +860,7 @@ async def publish_candidate(
     }
     if any(problems.values()):
         raise AppError(422, "news_hard_checks_failed", "硬性格式或政策檢查未通過")
-    latest_verification = await session.scalar(
-        select(NewsAssessment)
-        .where(
-            NewsAssessment.candidate_id == row.id,
-            NewsAssessment.assessment_type == "verification",
-            NewsAssessment.verdict == "pass",
-            NewsAssessment.evidence_hash == row.evidence_hash,
-        )
-        .order_by(NewsAssessment.created_at.desc())
-    )
+    latest_verification = await _latest_pass(session, row, "verification")
     if latest_verification is None:
         raise AppError(409, "news_verification_required", "請先重新查核後再發布")
     if latest_verification.details_json.get("document_sha256") != document_fingerprint(
@@ -814,12 +892,59 @@ async def publish_candidate(
     versions = {cast(Locale, item.locale): item.version for item in locale_rows}
     if set(versions) != set(LOCALES):
         raise AppError(422, "news_locale_bundle_incomplete", "五個語言版本必須完整")
+    return documents, versions
+
+
+async def publish_news_bundle(
+    session: AsyncSession,
+    row: NewsCandidate,
+    actor: User | None,
+    documents: dict[Locale, GuideDocument],
+    versions: dict[Locale, int],
+    *,
+    reason: str,
+    metadata: dict[str, Any],
+) -> None:
+    """Publish the checked five-locale article; ``publish_bundle`` commits."""
+
+    if row.guide_article_id is None:
+        raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
     await mark_assets_public(session, row.id)
     row.status = "published"
+    row.published_at = datetime.now(UTC)
+    await admin_service.publish_bundle(
+        session,
+        actor,
+        row.guide_article_id,
+        documents,
+        versions,
+        reason=reason,
+        automation_metadata={
+            "candidate_id": str(row.id),
+            "evidence_sha256": row.evidence_hash,
+            "prompt_version": row.prompt_version,
+            "policy_version": row.policy_version,
+            **metadata,
+        },
+    )
+
+
+async def publish_candidate(
+    session: AsyncSession,
+    actor: User,
+    candidate_id: UUID,
+    payload: CandidateAction,
+    redis: Redis | None = None,
+) -> CandidateDetail:
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if row.status not in {"manual_review", "shadow_review"} or row.guide_article_id is None:
+        raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
+    documents, versions = await publication_bundle(session, row, redis)
     row.human_decision = "publish"
     row.human_reason = payload.reason
     row.human_major_error = payload.major_error
-    row.published_at = datetime.now(UTC)
     session.add(
         NewsAssessment(
             candidate_id=row.id,
@@ -832,20 +957,14 @@ async def publish_candidate(
             created_by_user_id=actor.id,
         )
     )
-    await admin_service.publish_bundle(
+    await publish_news_bundle(
         session,
+        row,
         actor,
-        row.guide_article_id,
         documents,
         versions,
         reason=payload.reason,
-        automation_metadata={
-            "candidate_id": str(row.id),
-            "evidence_sha256": row.evidence_hash,
-            "prompt_version": row.prompt_version,
-            "policy_version": row.policy_version,
-            "human_override": True,
-        },
+        metadata={"human_override": True},
     )
     return await candidate_detail(session, row.id)
 

@@ -231,7 +231,38 @@ services:
     depends_on:
       - api
 
+  video-worker:
+    # The video pipeline running from the owner's settings on /admin/videos
+    # (docs/videos/AUTOMATION.md). It holds only a video tool token, paired once from its log;
+    # the AI keys stay in api. It reaches the site through the web container, not nginx.
+    image: travel-scanner-video-worker:${RELEASE_SHA:-local}
+    build:
+      context: .
+      dockerfile: ops/video/Dockerfile
+    profiles: ["video"]
+    init: true
+    restart: unless-stopped
+    environment:
+      VIDEO_INTERNAL_SITE: http://web:3000
+      VIDEO_WORKER_INTERVAL_SECONDS: "300"
+    volumes:
+      - video_work:/var/lib/mokaair/video-work
+      - video_home:/var/lib/mokaair/video-home
+      - video_docs:/opt/mokaair/docs/videos
+    # Chromium renders the slides; Docker's 64 MB /dev/shm makes it crash on 1080p pages.
+    shm_size: "1gb"
+    mem_limit: 3g
+    read_only: true
+    tmpfs: ["/tmp:size=512m"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    depends_on:
+      - web
+
 volumes:
   postgres_data:
   redis_data:
   video_reviews:
+  video_work:
+  video_home:
+  video_docs:
