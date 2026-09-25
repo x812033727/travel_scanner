@@ -19,7 +19,8 @@
     "analytics": "トラフィック分析",
     "deployments": "デプロイセンター",
     "uiText": "フロント文言",
-    "aiAccounts": "AI 設定"
+    "aiAccounts": "AI 設定",
+    "videos": "動画レビュー"
   },
   "providerTabs": {
     "label": "API プロバイダー設定タブ",
@@ -1056,6 +1057,10 @@
     "aiAccounts": {
       "title": "AI 設定",
       "description": "AI に関する設定をここにまとめています。ホストの Claude Code と Codex が使うサブスクリプションのアカウントと、サイトの AI 機能が使う API キーとモデルです。"
+    },
+    "videos": {
+      "title": "動画レビュー",
+      "description": "動画ツールが作った企画、ナレーション、完成動画がここであなたの判断を待っています。構成を選び、ナレーションを聞き、完成動画を見て、アップロードしてよいか確認してください。YouTube へのアップロードと公開は、引き続き YouTube Studio であなたが行います。"
     }
   },
   "usersPanel": {
@@ -2012,5 +2017,62 @@
     "pairDenied": "拒否しました。このコードではトークンを受け取れません。",
     "pairCodeInvalid": "確認コードは英字 8 文字です（例：BCDF-GHJK）。",
     "pairFailed": "このコードを処理できませんでした"
+  },
+  "videoReviews": {
+    "listTitle": "動画",
+    "empty": "まだ提出された動画はありません",
+    "emptyDetail": "動画ツールがレビューに出すと、ここに表示されます。",
+    "loadError": "動画を読み込めませんでした",
+    "retry": "再試行",
+    "pending": "判断待ち {count} 件",
+    "noPendingShort": "判断待ちなし",
+    "progress": "進捗 {done}/{total}",
+    "lastSynced": "最終同期 {time}",
+    "back": "動画一覧に戻る",
+    "checklist": "進捗",
+    "noPending": "判断待ちの項目はありません。",
+    "history": "過去の判断",
+    "youtube": "YouTube 動画 {id}",
+    "previewsGone": "公開済みのため、プレビューは削除されました。",
+    "gates": {
+      "outline": "構成",
+      "audio": "ナレーション",
+      "final": "完成動画",
+      "publish": "アップロード確認"
+    },
+    "statuses": {
+      "pending": "判断待ち",
+      "approved": "承認済み",
+      "rejected": "差し戻し",
+      "superseded": "新しい版に置き換え"
+    },
+    "submittedAt": "提出 {time}",
+    "decidedAt": "判断 {time}",
+    "choice": "案 {key} を選択",
+    "chooseOption": "構成を一つ選ぶ",
+    "option": "案 {key}",
+    "hook": "冒頭",
+    "brief": "企画書の全文",
+    "narration": "ナレーション",
+    "check": "Jev の確認",
+    "checkSummary": "{lines} 文：{exact} 文が一字一句一致、{alike} 文は同音の字か間投詞だけの違い、{judged} 文は Jev が問題なしと判断、{flagged} 文に印。",
+    "flaggedLines": "印の付いた文",
+    "script": "台本",
+    "heard": "聞き取り",
+    "preview": "プレビュー（720p）",
+    "checks": "自動チェック",
+    "checksOk": "すべて合格",
+    "chapters": "チャプター",
+    "contactSheet": "全画面",
+    "metadata": "5 言語のタイトルと説明",
+    "uploadChecklist": "アップロード前の確認",
+    "note": "コメント（差し戻す場合は必須）",
+    "notePlaceholder": "例：冒頭が長すぎる、第 3 章の数字を再確認",
+    "approve": "承認",
+    "approveOutline": "この構成にする",
+    "approvePublish": "アップロードしてよい",
+    "reject": "差し戻す",
+    "saving": "送信中…",
+    "decideError": "送信できませんでした：{message}"
   }
 }
