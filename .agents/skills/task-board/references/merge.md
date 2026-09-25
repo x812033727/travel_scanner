@@ -28,7 +28,7 @@ gh pr view <n> --json state -q .state                         # MERGED
 - 反過來，腳本等的時候 GitHub 自己把 main merge 進 PR：`ci.yml` 的 `concurrency: ci-pr-<n>` 會取消舊 head 的 run，`api`／`web` 變 **cancelled**，腳本報 `required checks failed: api web`、exit 4；另一種是舊 head 已綠、新 head 還在跑，`mergeStateStatus=BLOCKED` → exit 7。分辨法：結論是 `cancelled` 而非 `failure`，而且 `headRefOid` 已不是腳本等的那個。修法：worktree 裡 `git merge --ff-only origin/<branch>` 再重跑。忙的日子多數 PR 都會碰到。
 - push 之後 GitHub 要一兩分鐘才建立 check-run；那段期間 `gh pr checks --watch` 會立刻回「no checks reported」而不是等。腳本因此直接輪詢四個必要 check-run 直到 completed，不靠 `--watch`。
 - `--match-head-commit` 是必要的：PR 的作者 session 可能還在跑、還會推，GitHub 會拒絕而不是把沒測的 head 合進去。
-- `push` 與 `pull_request` 兩種事件都跑，同一個 job 會有兩列，看 head SHA 那一組。
+- PR 分支只跑 `pull_request`（`push` 只在 `main` 跑），同一個 PR 新的 push 會取消舊 run；被取消的舊 run 結論是 `cancelled`，看 head SHA 那一組。
 - 合併後 GitHub 自動刪遠端分支（repo 設定），本機分支留著沒關係。
 
 ## rebase 與同步的坑
