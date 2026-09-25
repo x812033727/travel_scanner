@@ -1,5 +1,6 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { AdminNewsModelSettings } from "./admin-news-model-settings";
 import { AdminNewsWorkspace } from "./admin-news-workspace";
 import { adminNewsCopy } from "@/lib/admin-news-copy";
 
@@ -81,6 +82,7 @@ beforeEach(() => {
     if (one) return Response.json(details[one[1]]);
     if (url.includes("/admin/news/candidates?")) return Response.json({ candidates: rows, total: rows.length * pages, page: 1, pages });
     if (url.endsWith("/admin/news/sources")) return Response.json([]);
+    if (url.endsWith("/admin/news/settings/models") && init?.method === "PUT") return Response.json({ ...settings, ...JSON.parse(String(init.body)) });
     if (url.endsWith("/admin/news/settings")) return Response.json(init?.method === "PUT" ? { ...settings, ...JSON.parse(String(init.body)) } : settings);
     if (url.endsWith("/admin/news/stats")) return Response.json({ pending_review: 1, failed: 0, published: 3, queue_by_status: { manual_review: 1, needs_redraft: 2, failed: 1 }, pipeline_runs: 4, pipeline_failures: 1, input_tokens: 10, output_tokens: 5 });
     return Response.json({ detail: "not found" }, { status: 404 });
@@ -269,15 +271,31 @@ describe("AdminNewsWorkspace", () => {
     expect(screen.queryByRole("checkbox")).toBeNull();
   });
 
-  it("picks writer and checker models from dropdowns built on the server catalog", async () => {
+  it("shows the news models read-only, links to AI settings and leaves them out of a save", async () => {
     window.history.replaceState(null, "", "/zh-TW/admin/news?tab=settings");
     render(<AdminNewsWorkspace />);
+    expect(await screen.findByText(/統一在「AI 設定 › 各功能模型」選擇/)).toBeTruthy();
+    expect(screen.queryByLabelText("模型")).toBeNull();
+    expect(screen.getAllByText(/OpenAI · 預設 · GPT-5\.6 Terra/)).toHaveLength(2);
+    expect(screen.getByText(/Anthropic Claude · Claude Next/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "到 AI 設定修改" }).getAttribute("href")).toBe("/admin/ai-accounts?tab=models&section=news");
+
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetch).toHaveBeenCalledWith("/api/travel/admin/news/settings", expect.objectContaining({ method: "PUT" })));
+    const put = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === "PUT");
+    const body = JSON.parse(String(put?.[1]?.body)) as Record<string, unknown>;
+    for (const left of ["gates", "updated_at", "model_options", "default_models", "writer_provider", "writer_model", "verifier_provider", "verifier_model", "editor_provider", "editor_model"]) expect(body).not.toHaveProperty(left);
+  });
+
+  it("picks the writer, checker and final editor models on the AI settings page", async () => {
+    render(<AdminNewsModelSettings />);
     const [writerModel, verifierModel, editorModel] = await screen.findAllByLabelText("模型") as HTMLSelectElement[];
     expect(screen.getByRole("group", { name: "最終修改模型" })).toBeTruthy();
     expect(editorModel.value).toBe("claude-next");
     const labels = (select: HTMLSelectElement) => Array.from(select.options).map((option) => option.text);
     expect(labels(writerModel)).toEqual(["預設 · GPT-5.6 Terra", "GPT-6 Astra", "GPT-5.6 Terra", "自訂…"]);
     expect(screen.getAllByText("Balanced default.")).toHaveLength(2);
+    expect(screen.getByText(/回到影子模式/)).toBeTruthy();
 
     fireEvent.change(writerModel, { target: { value: "gpt-6-astra" } });
     expect(writerModel.value).toBe("gpt-6-astra");
@@ -290,12 +308,11 @@ describe("AdminNewsWorkspace", () => {
     expect(writerAfterSwitch.value).toBe("");
     expect(labels(writerAfterSwitch)).toEqual(["預設 · Claude Sonnet 5", "Claude Sonnet 5", "Claude Next (預覽版)", "自訂…"]);
 
-    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
-    await waitFor(() => expect(fetch).toHaveBeenCalledWith("/api/travel/admin/news/settings", expect.objectContaining({ method: "PUT" })));
+    fireEvent.click(screen.getByRole("button", { name: "儲存新聞模型" }));
+    await waitFor(() => expect(fetch).toHaveBeenCalledWith("/api/travel/admin/news/settings/models", expect.objectContaining({ method: "PUT" })));
     const put = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === "PUT");
-    const body = JSON.parse(String(put?.[1]?.body)) as Record<string, unknown>;
-    expect(body).toMatchObject({ writer_provider: "anthropic", writer_model: null, verifier_provider: "openai", verifier_model: "gpt-7-preview", editor_provider: "anthropic", editor_model: "claude-next" });
-    for (const readOnly of ["gates", "updated_at", "model_options", "default_models"]) expect(body).not.toHaveProperty(readOnly);
+    expect(JSON.parse(String(put?.[1]?.body))).toEqual({ writer_provider: "anthropic", writer_model: null, verifier_provider: "openai", verifier_model: "gpt-7-preview", editor_provider: "anthropic", editor_model: "claude-next" });
+    expect(await screen.findByText("已儲存。")).toBeTruthy();
   });
 
   it("keeps a complete copy catalog in every site locale", () => {
