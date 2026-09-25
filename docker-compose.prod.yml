@@ -57,6 +57,8 @@ services:
       - /run/travel-scanner-deployer:/run/travel-scanner-deployer:ro
       # The AI accounts agent (ops/ai-accounts); the same travel-api group opens it.
       - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+      # Previews for /admin/videos (app/video_reviews/storage.py): the site has no object store.
+      - video_reviews:/var/lib/mokaair/video-reviews
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
@@ -232,3 +234,4 @@ services:
 volumes:
   postgres_data:
   redis_data:
+  video_reviews:
