@@ -1,13 +1,13 @@
 ---
 id: 2026-09-25-antigravity-subscription-accounts
 title: Sign the host's Antigravity CLI (agy) in to subscription accounts from AI settings
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5.5
 claimed_at: 2026-09-25T12:18:47Z
 created_at: 2026-09-25T12:18:33Z
-completed_at:
+completed_at: 2026-09-25T13:00:12Z
 branch: claude/antigravity-subscription-quota-2ecb59
 depends_on: []
 scope:
