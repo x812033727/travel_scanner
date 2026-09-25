@@ -33,6 +33,9 @@ docker compose -f docker-compose.prod.yml exec -T api python -m app.cli guides-i
 - 在 `apps/api/app/guides/publish_holds.json` 裡的 slug 帶 `--publish` 會整批拒絕；先清 hold 或拿掉那個 slug。
 - dry-run 回 `{dry_run, articles: [{slug, taxonomy, locales: [{locale, action, publish}]}]}`；publish 回 `{created, updated, unchanged, published, taxonomy_updated, failed}`。兩者形狀不同，別拿同一段程式比。
 - 五語系文章的 `--locale` 要列全；更新既有文章（`update`）與新文章同一次 `--slug` 匯入。
+- 3c 之前把 3b 重跑一次，輸出存檔後和給站主看的那份 `cmp`；腳本裡先斷言預期的數量（例如「12 篇／60 個 create／沒有別的 slug」），不符就不發布。
+- dry-run 對已發布的文章只說 `update`，不說改了什麼。發布更正前，把公開 API 回的 `document` 與內容包做 diff；兩邊都先過 `GuideDocument`（`apps/api/app/guides/schemas.py`）正規化，否則 `null` 與缺欄位會變成假差異。
+- 站主選了「先 pg_dump 再發布 N 篇」這類選項後，一支 `plink -m` 腳本可以一次跑完：`pg_dump -Fc` 到 `/root/travel_scanner_precable_<ts>.dump`、`exec -T api printenv ADMIN_EMAILS` 取 actor、帶 `--slug` 的 `--publish`、links rebuild／check、再一次 dry-run。
 - 匯入完再跑一次 3b 的 dry-run：應全部 `unchanged`。
 
 ## 4. 連結
@@ -51,7 +54,9 @@ cd apps/api && <PY> <ROOT>/.agents/skills/content-pipeline/scripts/verify_public
 每篇：200、h1 等於內容包標題、canonical 正確、沒有 noindex、hero 與每張圖解 200、在 sitemap 裡。網址形狀：生活分享 `/<locale>/life/<slug>`，其餘 `/<locale>/guides/<kind>/<slug>`；分類頁 `/<locale>/guides/topics/<topic>`。
 
 - 正式站有讀取限流：腳本循序、每次間隔 1.3 秒以上；不要多執行緒。
-- `SITEMAP_LIMIT` 是 1,000 列，超過會靜默掉最舊的：上線前後各數一次。
+- `/sitemap.xml` 是 sitemap index（#531），沒有 1,000 列上限了；`--sitemap` 仍要逐篇確認在裡面。
+- 別用「這篇文章目前看不到」（`unavailableTitle`）判斷有沒有上線：每一頁的 HTML 都內嵌這串字。看標題或 robots。
+- 系列的公開 API 是 `/api/travel/guides/series?locale=zh-TW` 與 `/api/travel/guides/series/<series_slug>`；`/api/v1/guides/series` 在公開網域是 404。
 - 麵包屑取 `topics[0]`（依 display_order）：文章掛子主題就只掛子主題，否則料理名不會出現。
 - 隨機抽三篇的外部連結（Naver 等）在真實瀏覽器打開確認。遇到機器人驗證就停手，不繞過。
 
