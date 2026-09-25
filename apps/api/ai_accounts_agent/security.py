@@ -19,6 +19,10 @@ _UNNAMED_SECRETS = (
     re.compile(r"(?i)authorization:\s*[^\s]+(?:\s+[^\s]+)?"),
     re.compile(r"\beyJ[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*"),
     re.compile(r"\bsk-[A-Za-z0-9_-]{16,}"),
+    # Google: access tokens, refresh tokens and the authorization codes agy takes.
+    re.compile(r"\bya29\.[A-Za-z0-9._-]+"),
+    re.compile(r"\b1//[A-Za-z0-9._-]{10,}"),
+    re.compile(r"\b4/[0-9A-Za-z][A-Za-z0-9._-]{10,}"),
 )
 _CONTROL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f]")
 

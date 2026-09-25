@@ -322,8 +322,8 @@ def test_overview_lists_every_slot_without_starting_clis_for_empty_ones(
     application = AgentApplication(config)
     status, overview = signed(application, "GET", "/v1/accounts")
     assert status == 200
-    assert len(overview["slots"]) == 10
-    assert overview["defaults"] == {"claude": "a", "codex": "a"}
+    assert len(overview["slots"]) == 15
+    assert overview["defaults"] == {"claude": "a", "codex": "a", "agy": "a"}
     assert overview["allowlist_configured"] is False
     claude_a = slot_of(overview, "claude", "a")
     # The missing binary was never run: an empty slot is signed out without a CLI call.
@@ -337,6 +337,7 @@ def test_routes_reject_unknown_slots_methods_and_logins(tmp_path: Path) -> None:
     assert signed(application, "POST", "/v1/accounts/claude/f/login")[0] == 404
     assert signed(application, "GET", "/v1/accounts/claude/a/login")[0] == 404
     assert signed(application, "POST", "/v1/accounts/gemini/a/login")[0] == 404
+    assert signed(application, "PUT", "/v1/defaults/gemini", {"slot": "a"})[0] == 404
     assert signed(application, "GET", f"/v1/logins/{uuid4().hex}")[0] == 404
     status, payload = signed(application, "POST", f"/v1/logins/{uuid4().hex}/code", {"code": "x"})
     assert (status, payload["code"]) == (404, "login_not_found")
@@ -347,7 +348,9 @@ def test_default_slot_is_written_for_the_shell_to_read(tmp_path: Path) -> None:
     application = AgentApplication(config)
     status, payload = signed(application, "PUT", "/v1/defaults/codex", {"slot": "c"})
     assert status == 200
-    assert payload["defaults"] == {"claude": "a", "codex": "c"}
+    assert payload["defaults"] == {"claude": "a", "codex": "c", "agy": "a"}
+    agy_default = signed(application, "PUT", "/v1/defaults/agy", {"slot": "b"})[1]
+    assert agy_default["defaults"]["agy"] == "b"
     assert config.default_path("codex").read_text(encoding="utf-8") == "c\n"
     assert signed(application, "PUT", "/v1/defaults/codex", {"slot": "z"})[0] == 422
     overview = signed(application, "GET", "/v1/accounts")[1]
@@ -661,7 +664,7 @@ def test_page_views_probe_claude_usage_only_when_due(tmp_path: Path) -> None:
     application.overview(fresh=True)
     assert len(claude.refreshes) == 5  # Still running: no second probe.
     claude.release.set()
-    wait_until(lambda: not application.usage_refreshing("e"))
+    wait_until(lambda: not application.usage_refreshing("claude", "e"))
 
     now[0] += 30
     application.overview(fresh=True)
@@ -764,6 +767,36 @@ def test_finalize_accepts_listed_accounts_and_undoes_others(tmp_path: Path) -> N
     assert stranger.logouts == 1
     owner.signed_in = False
     assert application.finalize("claude", "b") == NOT_SIGNED_IN
+
+
+def test_finalize_undoes_a_login_whose_account_cannot_be_named(tmp_path: Path) -> None:
+    config = make_config(tmp_path, allowed_emails=frozenset({"owner@x.test"}))
+    nameless = RecordingAccounts("")
+    application = AgentApplication(config, agy=nameless)
+    nameless.signed_in = True
+    rejection = application.finalize("agy", "a")
+    assert rejection is not None and "did not report" in rejection
+    assert nameless.logouts == 1
+    # Without a list there is nothing to check the account against.
+    (tmp_path / "open").mkdir()
+    open_config = make_config(tmp_path / "open")
+    unnamed = RecordingAccounts("", auth_method="google")
+    unnamed.signed_in = True
+    assert AgentApplication(open_config, agy=unnamed).finalize("agy", "a") is None
+
+
+def test_antigravity_subscriptions_are_probed_like_claude(tmp_path: Path) -> None:
+    config = make_config(tmp_path)
+    agy = RecordingAccounts("g@x.test", auth_method="google")
+    application = AgentApplication(config, agy=agy)
+    agy.signed_in = True
+    agy.release.clear()
+    overview = application.overview(fresh=False)
+    assert slot_of(overview, "agy", "a")["usage_refreshing"] is True
+    wait_until(lambda: len(agy.refreshes) == 5)
+    agy.release.set()
+    wait_until(lambda: not application.usage_refreshing("agy", "e"))
+    assert application.finalize("agy", "b") is None
 
 
 # --- status line --------------------------------------------------------------------
