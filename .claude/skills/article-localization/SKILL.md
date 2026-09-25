@@ -7,6 +7,8 @@ metadata:
 
 # 既有文章補語系（article-localization）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/article-localization/` 底下；`.claude/skills/article-localization/` 只放這份 SKILL.md 的逐字複本。
+
 對象是**已經在正式站**的文章（通常只有 zh-TW），要補 en、ja、ko、zh-CN 四語並上線。寫新文章、新聞批次的五語翻譯走 skill `content-pipeline`；部署本身走 skill `deploy`；票與 PR 的循環走 skill `task-board`。規則全文在 `tools/article-localization/README.md`，這裡只放流程、關卡、指令與去哪裡讀。`<ROOT>` 是 repo（或 worktree）根目錄，`<WORK>` 是 repo 外的持久工作目錄，`<SSH>` 是你自己開到主機 root shell 的前綴。`<BASELINE>` 與 `<JOBS>` 是 `pipeline.py` 的預設值：`docs/article-localization/` 底下的 `baseline.json` 與 `work/`。
 
 ## 先選路線
