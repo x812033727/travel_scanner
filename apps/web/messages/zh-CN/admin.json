@@ -19,7 +19,8 @@
     "analytics": "流量与分析",
     "deployments": "部署中心",
     "uiText": "前台文案",
-    "aiAccounts": "AI 设置"
+    "aiAccounts": "AI 设置",
+    "videos": "视频审核"
   },
   "providerTabs": {
     "label": "API 供应商设置分页",
@@ -1056,6 +1057,10 @@
     "aiAccounts": {
       "title": "AI 设置",
       "description": "AI 相关的设置都在这里：主机上 Claude Code 与 Codex 使用的订阅账号，以及网站 AI 功能使用的 API 密钥与模型。"
+    },
+    "videos": {
+      "title": "视频审核",
+      "description": "视频工具做好的企划、旁白和成片都在这里等你决定：选大纲、听旁白、看成片，最后确认可以上架。上传到 YouTube 和点公开，仍由你在 YouTube Studio 自己操作。"
     }
   },
   "usersPanel": {
@@ -2012,5 +2017,62 @@
     "pairDenied": "已拒绝，这组验证码拿不到令牌。",
     "pairCodeInvalid": "验证码是 8 个英文字母，例如 BCDF-GHJK。",
     "pairFailed": "无法处理这组验证码"
+  },
+  "videoReviews": {
+    "listTitle": "视频",
+    "empty": "还没有视频送审",
+    "emptyDetail": "视频工具送审之后，视频会出现在这里。",
+    "loadError": "读取不到视频资料",
+    "retry": "重试",
+    "pending": "{count} 项待决定",
+    "noPendingShort": "没有待决定",
+    "progress": "进度 {done}/{total}",
+    "lastSynced": "最后同步 {time}",
+    "back": "回到视频列表",
+    "checklist": "进度",
+    "noPending": "目前没有等你决定的项目。",
+    "history": "过去的决定",
+    "youtube": "YouTube 视频 {id}",
+    "previewsGone": "已上架，预览文件已删除。",
+    "gates": {
+      "outline": "大纲",
+      "audio": "旁白",
+      "final": "成片",
+      "publish": "上架确认"
+    },
+    "statuses": {
+      "pending": "待决定",
+      "approved": "已批准",
+      "rejected": "已退回",
+      "superseded": "已被新版取代"
+    },
+    "submittedAt": "送审 {time}",
+    "decidedAt": "决定于 {time}",
+    "choice": "选了方案 {key}",
+    "chooseOption": "选一个大纲",
+    "option": "方案 {key}",
+    "hook": "开场",
+    "brief": "企划书全文",
+    "narration": "旁白",
+    "check": "Jev 检查",
+    "checkSummary": "{lines} 句：{exact} 句逐字相符、{alike} 句只差同音字或语气词、{judged} 句 Jev 判定没问题、{flagged} 句被标记。",
+    "flaggedLines": "被标记的句子",
+    "script": "稿子",
+    "heard": "听到",
+    "preview": "成片预览（720p）",
+    "checks": "自动检查",
+    "checksOk": "全部通过",
+    "chapters": "章节",
+    "contactSheet": "所有画面",
+    "metadata": "五语种标题与说明",
+    "uploadChecklist": "上架前检查",
+    "note": "意见（退回时必填）",
+    "notePlaceholder": "例如：开场太长、第三章的数字请再查一次",
+    "approve": "批准",
+    "approveOutline": "用这个大纲",
+    "approvePublish": "确认可以上架",
+    "reject": "退回",
+    "saving": "提交中…",
+    "decideError": "没有提交：{message}"
   }
 }

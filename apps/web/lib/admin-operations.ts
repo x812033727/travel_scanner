@@ -32,6 +32,7 @@ export const fallbackAdminNavigation: AdminNavigationItem[] = [
   { key: "dashboard", href: "/admin", group: "overview", capability: "dashboard.read" },
   { key: "guides", href: "/admin/guides", group: "content", capability: "content.read" },
   { key: "news", href: "/admin/news", group: "content", capability: "content.read", badge_key: "news_review_pending" },
+  { key: "videos", href: "/admin/videos", group: "content", capability: "content.read", badge_key: "video_reviews_pending" },
   { key: "hotspots", href: "/admin/hotspots", group: "content", capability: "content.read" },
   { key: "foods", href: "/admin/foods", group: "content", capability: "content.read" },
   { key: "hotels", href: "/admin/hotels", group: "content", capability: "content.read" },

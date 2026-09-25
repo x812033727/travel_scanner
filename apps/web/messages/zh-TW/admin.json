@@ -19,7 +19,8 @@
     "analytics": "流量與分析",
     "deployments": "部署中心",
     "uiText": "前台文案",
-    "aiAccounts": "AI 設定"
+    "aiAccounts": "AI 設定",
+    "videos": "影片審核"
   },
   "providerTabs": {
     "label": "API 供應商設定分頁",
@@ -1056,6 +1057,10 @@
     "aiAccounts": {
       "title": "AI 設定",
       "description": "AI 相關的設定都在這裡：主機上 Claude Code 與 Codex 使用的訂閱帳號，以及網站 AI 功能使用的 API 金鑰與模型。"
+    },
+    "videos": {
+      "title": "影片審核",
+      "description": "影片工具做好的企劃、旁白與成片都在這裡等你決定：選大綱、聽旁白、看成片，最後確認可以上架。上傳到 YouTube 和按下公開，仍由你在 YouTube Studio 自己操作。"
     }
   },
   "usersPanel": {
@@ -2012,5 +2017,62 @@
     "pairDenied": "已拒絕，這組驗證碼拿不到權杖。",
     "pairCodeInvalid": "驗證碼是 8 個英文字母，例如 BCDF-GHJK。",
     "pairFailed": "無法處理這組驗證碼"
+  },
+  "videoReviews": {
+    "listTitle": "影片",
+    "empty": "還沒有影片送審",
+    "emptyDetail": "影片工具送審之後，影片會出現在這裡。",
+    "loadError": "讀不到影片資料",
+    "retry": "重試",
+    "pending": "{count} 項待決定",
+    "noPendingShort": "沒有待決定",
+    "progress": "進度 {done}／{total}",
+    "lastSynced": "最後同步 {time}",
+    "back": "回到影片清單",
+    "checklist": "進度",
+    "noPending": "目前沒有等你決定的項目。",
+    "history": "過去的決定",
+    "youtube": "YouTube 影片 {id}",
+    "previewsGone": "已上架，預覽檔已刪除。",
+    "gates": {
+      "outline": "大綱",
+      "audio": "旁白",
+      "final": "成片",
+      "publish": "上架確認"
+    },
+    "statuses": {
+      "pending": "待決定",
+      "approved": "已核准",
+      "rejected": "已退回",
+      "superseded": "已被新版取代"
+    },
+    "submittedAt": "送審 {time}",
+    "decidedAt": "決定於 {time}",
+    "choice": "選了選項 {key}",
+    "chooseOption": "選一個大綱",
+    "option": "選項 {key}",
+    "hook": "開場",
+    "brief": "企劃書全文",
+    "narration": "旁白",
+    "check": "Jev 檢查",
+    "checkSummary": "{lines} 句：{exact} 句逐字相符、{alike} 句只差同音字或語氣詞、{judged} 句 Jev 判定沒問題、{flagged} 句被標記。",
+    "flaggedLines": "被標記的句子",
+    "script": "稿子",
+    "heard": "聽到",
+    "preview": "成片預覽（720p）",
+    "checks": "自動檢查",
+    "checksOk": "全部通過",
+    "chapters": "章節",
+    "contactSheet": "所有畫面",
+    "metadata": "五語系標題與說明",
+    "uploadChecklist": "上架前檢查",
+    "note": "意見（退回時必填）",
+    "notePlaceholder": "例如：片頭太長、第三章的數字請再查一次",
+    "approve": "核准",
+    "approveOutline": "用這個大綱",
+    "approvePublish": "確認可以上架",
+    "reject": "退回",
+    "saving": "送出中…",
+    "decideError": "沒有送出：{message}"
   }
 }

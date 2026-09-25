@@ -29,6 +29,8 @@ export const AREAS = {
   render: ["render", "2026-09-24-video-render-slides"],
   assemble: ["assemble", "2026-09-24-video-assemble-package"],
   review: ["review", "2026-09-24-video-assemble-package"],
+  "i18n-sheet": ["i18n", "2026-09-24-video-captions-i18n"],
+  "i18n-merge": ["i18n", "2026-09-24-video-captions-i18n"],
   package: ["package", "2026-09-24-video-assemble-package"],
   "youtube-sync": ["youtube", "2026-09-24-video-youtube-sync"],
 };
@@ -43,6 +45,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   approve  --slug S --gate outline|audio|final [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
   captions --slug S [--workdir D]                  caption files for every current locale
+  i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
+  i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
   check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ
