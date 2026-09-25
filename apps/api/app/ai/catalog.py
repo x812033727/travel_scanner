@@ -79,11 +79,19 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
         ),
     ),
     "anthropic": (
+        # Opus 5.5 always thinks and rejects temperature and forced tool_choice; every
+        # Anthropic path here sends only output_config.format and reads text blocks.
+        ModelEntry(
+            "claude-opus-5-5",
+            "Claude Opus 5.5",
+            _ANTHROPIC,
+            "推理最強，價格比 Opus 5 低；thinking 無法關閉。適合新聞撰稿與查核、完整行程規劃。",
+        ),
         ModelEntry(
             "claude-opus-5",
             "Claude Opus 5",
             _ANTHROPIC,
-            "推理最強、成本最高；適合完整行程規劃。",
+            "前一代 Opus，成本最高；適合完整行程規劃。",
         ),
         ModelEntry(
             "claude-sonnet-5",

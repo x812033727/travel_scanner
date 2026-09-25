@@ -1,5 +1,17 @@
+import json
+
+import httpx
+import pytest
+from pydantic import BaseModel
+
 from app.ai import catalog
 from app.config import Settings
+from app.hotspots.ai_search import AnthropicResearchProvider
+from app.news_automation.service import model_options as news_model_options
+
+# What an Anthropic request here may carry. Claude Opus 5.5 answers 400 to temperature,
+# top_p, top_k, a disabled or budgeted `thinking`, and a forced `tool_choice`.
+ANTHROPIC_REQUEST_KEYS = {"model", "max_tokens", "system", "messages", "output_config"}
 
 
 def test_every_catalog_id_is_a_valid_model_id_and_unique_per_vendor() -> None:
@@ -81,3 +93,47 @@ def test_jev_options_cannot_be_offered_to_a_generating_code_path() -> None:
             "jev_structured_decision" not in entry.capabilities
             for entry in catalog.model_options(field)
         ), field
+
+
+def test_news_offers_claude_opus_5_5_for_writing_and_fact_checking() -> None:
+    offered = [option.value for option in news_model_options()["anthropic"]]
+    assert offered[0] == "claude-opus-5-5"
+    assert "claude-opus-5" in offered
+
+
+class _Reply(BaseModel):
+    value: str
+
+
+@pytest.mark.asyncio
+async def test_the_anthropic_request_is_one_opus_5_5_accepts_and_thinking_is_skipped() -> None:
+    sent: list[dict[str, object]] = []
+
+    def answer(request: httpx.Request) -> httpx.Response:
+        sent.append(json.loads(request.content))
+        return httpx.Response(
+            200,
+            json={
+                # Opus 5.5 always thinks; the block comes back with empty text by default.
+                "content": [
+                    {"type": "thinking", "thinking": "", "signature": "sig"},
+                    {"type": "text", "text": '{"value": "ok"}'},
+                ],
+                "stop_reason": "end_turn",
+                "usage": {"input_tokens": 12, "output_tokens": 3},
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(answer))
+    provider = AnthropicResearchProvider(
+        "https://api.anthropic.test/v1", "test-key", "claude-opus-5-5", 5.0, 32_000, client
+    )
+    try:
+        reply, usage = await provider.structured(_Reply, "reply", "Answer.", {"q": "ping"})
+    finally:
+        await client.aclose()
+
+    assert reply.value == "ok"
+    assert usage == {"input_tokens": 12, "output_tokens": 3}
+    assert set(sent[0]) <= ANTHROPIC_REQUEST_KEYS
+    assert sent[0]["model"] == "claude-opus-5-5"
