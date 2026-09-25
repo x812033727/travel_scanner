@@ -35,6 +35,7 @@ export type NewsSettings = {
   enabled: boolean; mode: "shadow" | "automatic";
   writer_provider: NewsProvider; writer_model: string | null;
   verifier_provider: NewsProvider; verifier_model: string | null;
+  editor_provider: NewsProvider; editor_model: string | null;
   global_concurrency: number; per_vertical_concurrency: number; min_shadow_days: number;
   min_shadow_candidates: number; min_human_agreement: number; jev_act_confidence: number;
   auto_publish_ai: boolean; auto_publish_tech: boolean; auto_publish_crypto: boolean;

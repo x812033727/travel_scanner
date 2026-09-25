@@ -104,12 +104,24 @@ async def test_switching_on_goes_through_the_service_and_is_refused_without_keys
             actor_email="owner@example.com",
         )
 
+    # The final editor's vendor (Claude by default) needs to be callable too.
+    editor_blocked = await settings_cli.run(
+        enable=True,
+        writer_provider="minimax",
+        writer_model=None,
+        verifier_provider="minimax",
+        verifier_model=None,
+        apply=False,
+        actor_email=None,
+    )
+    assert editor_blocked["blockers"] == ["editor vendor anthropic has no API key configured"]
     applied = await settings_cli.run(
         enable=True,
         writer_provider="minimax",
         writer_model=None,
         verifier_provider="minimax",
         verifier_model=None,
+        editor_provider="minimax",
         apply=True,
         actor_email="owner@example.com",
     )
@@ -120,11 +132,12 @@ async def test_switching_on_goes_through_the_service_and_is_refused_without_keys
 
     assert applied["applied"] is True
     assert row is not None
-    assert (row.enabled, row.mode, row.writer_provider, row.verifier_provider) == (
-        True,
-        "shadow",
-        "minimax",
-        "minimax",
-    )
+    assert (
+        row.enabled,
+        row.mode,
+        row.writer_provider,
+        row.verifier_provider,
+        row.editor_provider,
+    ) == (True, "shadow", "minimax", "minimax", "minimax")
     assert not (row.auto_publish_ai or row.auto_publish_tech or row.auto_publish_crypto)
     assert audits == ["news_settings_updated"]
