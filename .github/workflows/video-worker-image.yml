@@ -1,0 +1,37 @@
+name: Video worker image
+
+# The host runs the video pipeline in its own image (ops/video/Dockerfile, docs/videos/AUTOMATION.md).
+# Build it the way compose does, then build its `smoke` target, which runs the example video
+# through render, assemble and package inside the image as the worker user, so a missing font,
+# codec or browser shows up here instead of on the host.
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/video-worker-image.yml'
+      - 'ops/video/**'
+      - 'tools/video/**'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/video-worker-image.yml'
+      - 'ops/video/**'
+      - 'tools/video/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: video-worker-image-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Build the worker image, as compose does
+        run: DOCKER_BUILDKIT=1 docker build -f ops/video/Dockerfile -t video-worker:ci .
+      - name: Run the example through render, assemble and package inside it
+        run: DOCKER_BUILDKIT=1 docker build -f ops/video/Dockerfile --target smoke --progress plain .
