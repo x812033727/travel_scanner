@@ -83,7 +83,7 @@ async def transcribe(
         raise CheckUnavailable(
             503,
             "video_speech_not_configured",
-            "網站的 Gemini 金鑰還沒設定：請在「API 與供應商設定 → AI 服務」填 Gemini 金鑰",
+            "網站的 Gemini 金鑰還沒設定：請在「AI 設定 → API 金鑰」填 Gemini 金鑰",
         )
     owned = client is None
     http = client or httpx.AsyncClient(

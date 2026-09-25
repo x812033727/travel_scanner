@@ -19,6 +19,7 @@ from app.news_automation.schemas import (
     CandidateDetail,
     CandidatePage,
     CandidateStatus,
+    ModelsWrite,
     SettingsView,
     SettingsWrite,
     SourcePatch,
@@ -93,6 +94,11 @@ async def put_settings(
     payload: SettingsWrite, user: ContentManager, session: Session
 ) -> SettingsView:
     return await service.update_settings(session, user, payload)
+
+
+@admin_router.put("/settings/models", response_model=SettingsView)
+async def put_models(payload: ModelsWrite, user: ContentManager, session: Session) -> SettingsView:
+    return await service.update_models(session, user, payload)
 
 
 @admin_router.get("/candidates", response_model=CandidatePage)

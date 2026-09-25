@@ -5,24 +5,23 @@ import { useLocale } from "next-intl";
 import { AdminReadOnlyNotice, useAdminActionGuard } from "@/components/admin-action-guard";
 import { ContentBlocks } from "@/components/content-blocks";
 import { Button, Empty, Tabs, fieldClass, panelClass } from "@/components/community/ui";
+import { newsModelLabel } from "@/components/admin-news-model-settings";
 import { Link } from "@/i18n/navigation";
 import { adminNewsCopy, fillNewsCopy } from "@/lib/admin-news-copy";
 import {
   newsLocales,
   newsProviderLabels,
-  newsProviders,
   type NewsCandidate,
   type NewsCandidatePage,
   type NewsCandidateStatus,
   type NewsCandidateSummary,
   type NewsLocale,
-  type NewsModelOption,
-  type NewsProvider,
   type NewsSettings,
   type NewsSource,
   type NewsStats,
   type NewsVertical,
 } from "@/lib/admin-news";
+import { aiModelsHref } from "@/lib/admin-settings-ownership";
 import { adminNavigate, useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 import { splitGuideBlocks } from "@/lib/guides";
@@ -129,40 +128,6 @@ function problemMessage(problem: unknown, fallback: string) {
 
 function named(names: Record<string, string>, key: string) {
   return names[key] ?? key;
-}
-
-const customModel = "__custom__";
-
-type Copy = ReturnType<typeof adminNewsCopy>;
-
-// Keyed by vendor at the call site, so switching vendors also leaves "custom" mode.
-function NewsModelField({ label, value, options, fallback, copy, onChange }: {
-  label: string; value: string | null; options: NewsModelOption[]; fallback: string | undefined;
-  copy: Copy; onChange: (value: string | null) => void;
-}) {
-  const [customChosen, setCustomChosen] = useState(false);
-  const selected = options.find((option) => option.value === value);
-  const custom = customChosen || (value !== null && !selected);
-  const optionLabel = (option: NewsModelOption) => option.status === "stable"
-    ? option.label
-    : `${option.label} (${option.status === "preview" ? copy.previewModel : copy.retiredModel})`;
-  const fallbackLabel = options.find((option) => option.value === fallback)?.label ?? fallback;
-  const description = selected?.description ?? (value === null
-    ? options.find((option) => option.value === fallback)?.description
-    : undefined);
-  return <div>
-    <label className="block">{label}<select className={fieldClass} value={custom ? customModel : value ?? ""} onChange={(event) => {
-      const next = event.target.value;
-      setCustomChosen(next === customModel);
-      if (next !== customModel) onChange(next || null);
-    }}>
-      <option value="">{fallbackLabel ? `${copy.defaultModel} · ${fallbackLabel}` : copy.defaultModel}</option>
-      {options.map((option) => <option key={option.value} value={option.value}>{optionLabel(option)}</option>)}
-      <option value={customModel}>{copy.customModel}</option>
-    </select></label>
-    {custom && <input className={`${fieldClass} font-mono text-sm`} aria-label={`${label} · ${copy.customModelLabel}`} placeholder="model-id" value={value ?? ""} onChange={(event) => onChange(event.target.value.trim() || null)} />}
-    {description && <p className="mt-1 text-xs text-[var(--muted)]">{description}</p>}
-  </div>;
 }
 
 export function AdminNewsWorkspace() {
@@ -335,7 +300,8 @@ export function AdminNewsWorkspace() {
   const saveSettings = () => run(async () => {
     if (!settings) return;
     const payload: Record<string, unknown> = { ...settings };
-    for (const readOnly of ["gates", "updated_at", "model_options", "default_models"]) delete payload[readOnly];
+    // The models are saved from the AI settings page; leaving them out keeps what is stored.
+    for (const readOnly of ["gates", "updated_at", "model_options", "default_models", "writer_provider", "writer_model", "verifier_provider", "verifier_model", "editor_provider", "editor_model"]) delete payload[readOnly];
     setSettings(await api<NewsSettings>("/admin/news/settings", {
       method: "PUT", body: JSON.stringify(payload),
     }));
@@ -469,15 +435,11 @@ export function AdminNewsWorkspace() {
         <section className="grid gap-3">{sources.map((item) => <article key={item.id} className={panelClass}><div className="flex flex-wrap items-start justify-between gap-3"><div><h3 className="font-bold">{item.name}</h3><a href={item.url} target="_blank" rel="noopener noreferrer" className="break-all text-sm text-[var(--teal)] underline">{item.url}</a><p className="mt-2 text-sm text-[var(--muted)]">{item.vertical} · {item.role} · {item.last_status} · {item.scan_interval_minutes}m</p>{item.last_error && <p className="mt-2 text-sm text-red-700">{item.last_error}</p>}</div><div className="flex gap-2"><Button secondary disabled={!manage.allowed || busy} onClick={() => void run(async () => { await api(`/admin/news/sources/${item.id}/${item.enabled ? "scan" : "validate"}`, { method: "POST" }); })}>{item.enabled ? copy.scanNow : copy.validate}</Button><Button disabled={!manage.allowed || busy} onClick={() => void patchSource(item, !item.enabled)}>{item.enabled ? copy.disabled : copy.enabled}</Button></div></div></article>)}</section></div>}
       {tab === "settings" && settings && <section className={`${panelClass} space-y-5`}><label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={settings.enabled} onChange={(event) => setSettings({ ...settings, enabled: event.target.checked })} />{copy.enable}</label>
         <label>{copy.mode}<select className={fieldClass} value={settings.mode} onChange={(event) => setSettings({ ...settings, mode: event.target.value as NewsSettings["mode"] })}><option value="shadow">{copy.shadow}</option><option value="automatic">{copy.automatic}</option></select></label>
-        <div className="grid gap-3 md:grid-cols-3">{(["writer", "verifier", "editor"] as const).map((kind) => {
-          const provider = settings[`${kind}_provider`];
-          return <fieldset key={kind} className="space-y-3 rounded-xl border border-[var(--line)] p-4">
-            <legend className="px-1 font-bold">{copy[kind]}</legend>
-            <label className="block">{copy.provider}<select className={fieldClass} value={provider} onChange={(event) => setSettings({ ...settings, [`${kind}_provider`]: event.target.value as NewsProvider, [`${kind}_model`]: null })}>{newsProviders.map((value) => <option key={value} value={value}>{newsProviderLabels[value]}</option>)}</select></label>
-            <NewsModelField key={provider} label={copy.model} value={settings[`${kind}_model`]} options={settings.model_options?.[provider] ?? []}
-              fallback={settings.default_models?.[provider]} copy={copy} onChange={(value) => setSettings({ ...settings, [`${kind}_model`]: value })} />
-          </fieldset>;
-        })}</div>
+        <div className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">
+          <p className="leading-6 text-[var(--muted)]">{copy.modelsManaged}</p>
+          <dl className="mt-2 grid gap-1 md:grid-cols-3">{(["writer", "verifier", "editor"] as const).map((kind) => <div key={kind}><dt className="inline font-semibold">{copy[kind]}</dt><dd className="inline"> · {newsProviderLabels[settings[`${kind}_provider`]]} · {newsModelLabel(settings, kind, copy)}</dd></div>)}</dl>
+          <Link href={aiModelsHref("news")} className="mt-2 inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline">{copy.editModels}</Link>
+        </div>
         <div className="grid gap-3 md:grid-cols-2">{(["global_concurrency", "per_vertical_concurrency"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
         <div className="grid gap-3 md:grid-cols-2">{(["jev_act_confidence"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} type="number" min={0} max={1} step="0.01" value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: Number(event.target.value) })} /></label>)}</div>
         <div className="grid gap-3 md:grid-cols-2">{(["prompt_version", "policy_version"] as const).map((key) => <label key={key}>{key}<input className={fieldClass} value={settings[key]} onChange={(event) => setSettings({ ...settings, [key]: event.target.value })} /></label>)}</div>

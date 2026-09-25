@@ -5,6 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminErrorState } from "@/components/admin-ui";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
+import { Link } from "@/i18n/navigation";
+import { aiModelsHref } from "@/lib/admin-settings-ownership";
 import { api } from "@/lib/api";
 
 // apps/api/app/video_automation/schemas.py. The worker on the host reads the same values with
@@ -14,8 +16,8 @@ import { api } from "@/lib/api";
 export const PROVIDERS = ["claude_code", "anthropic", "openai", "gemini", "minimax"] as const;
 export const STAGES = ["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"] as const;
 export const CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
-type Provider = (typeof PROVIDERS)[number];
-type Stage = (typeof STAGES)[number];
+export type Provider = (typeof PROVIDERS)[number];
+export type Stage = (typeof STAGES)[number];
 type CaptionLocale = (typeof CAPTION_LOCALES)[number];
 type ModelOption = { value: string; label: string; description: string | null; status: string };
 type Voice = { provider: "azure" | "gemini"; name: string; style: string | null; model: string | null; rate: string };
@@ -41,7 +43,7 @@ export type VideoSettings = {
   auto_approve_audio: boolean;
 };
 type Usage = { tokens: number; token_budget: number; subscription_tokens?: number; drafts: number; draft_budget: number; calls: number; failed_calls: number };
-type SettingsView = VideoSettings & {
+export type VideoSettingsView = VideoSettings & {
   model_options: Record<Provider, ModelOption[]>;
   configured_providers: Provider[];
   voice_options: { gemini: string[]; gemini_models: string[]; azure: string[] };
@@ -49,7 +51,7 @@ type SettingsView = VideoSettings & {
   updated_at: string | null;
 };
 
-const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
+export const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
 const numberFields = {
   schedule: [["draft_interval_hours", 6, 720], ["topics_per_run", 1, 3], ["max_waiting_drafts", 1, 10]],
   length: [["target_minutes_min", 3, 30], ["target_minutes_max", 3, 30]],
@@ -70,14 +72,21 @@ const SETTINGS_KEYS = [
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The body the API's SettingsWrite accepts (it refuses unknown fields): the view without its options. */
-export function settingsBody(view: SettingsView | VideoSettings): VideoSettings {
+export function settingsBody(view: VideoSettingsView | VideoSettings): VideoSettings {
   return Object.fromEntries(SETTINGS_KEYS.map((key) => [key, view[key]])) as VideoSettings;
+}
+
+/** What the settings tab saves: the stage models are chosen on the AI settings page and left out. */
+export function saveBody(draft: VideoSettings, scope: string, avoid: string): Omit<VideoSettings, "stage_models"> {
+  const rest: Partial<VideoSettings> = { ...draft };
+  delete rest.stage_models;
+  return { ...(rest as Omit<VideoSettings, "stage_models">), topic_scope: linesToList(scope), topic_avoid: linesToList(avoid) };
 }
 
 export function AdminVideoSettings() {
   const t = useTranslations("admin.videoSettings");
   const manage = useAdminActionGuard("settings.manage");
-  const [view, setView] = useState<SettingsView | null>(null);
+  const [view, setView] = useState<VideoSettingsView | null>(null);
   const [draft, setDraft] = useState<VideoSettings | null>(null);
   const [scope, setScope] = useState("");
   const [avoid, setAvoid] = useState("");
@@ -85,14 +94,14 @@ export function AdminVideoSettings() {
   const [saveError, setSaveError] = useState("");
   const [saved, setSaved] = useState(false);
   const [busy, setBusy] = useState(false);
-  const show = useCallback((value: SettingsView) => {
+  const show = useCallback((value: VideoSettingsView) => {
     setView(value);
     setDraft(settingsBody(value));
     setScope(value.topic_scope.join("\n"));
     setAvoid(value.topic_avoid.join("\n"));
   }, []);
   const load = useCallback(() => {
-    api<SettingsView>("/admin/video-automation/settings").then((value) => { show(value); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
+    api<VideoSettingsView>("/admin/video-automation/settings").then((value) => { show(value); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
   }, [show]);
   useEffect(load, [load]);
 
@@ -111,7 +120,7 @@ export function AdminVideoSettings() {
     setBusy(true);
     setSaveError("");
     try {
-      show(await api<SettingsView>("/admin/video-automation/settings", { method: "PUT", body: JSON.stringify({ ...draft, topic_scope: linesToList(scope), topic_avoid: linesToList(avoid) }) }));
+      show(await api<VideoSettingsView>("/admin/video-automation/settings", { method: "PUT", body: JSON.stringify(saveBody(draft, scope, avoid)) }));
       setSaved(true);
     } catch (problem) {
       setSaveError(problem instanceof Error ? problem.message : t("saveError"));
@@ -138,28 +147,15 @@ export function AdminVideoSettings() {
       </fieldset>
     </section>
 
-    <section className={`${panelClass} grid gap-4`} aria-labelledby="video-settings-models">
+    <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-models">
       <h2 id="video-settings-models" className="text-xl font-bold">{t("modelsTitle")}</h2>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("modelsHelp")}</p>
-      <div className="grid gap-3 md:grid-cols-2">{STAGES.map((stage) => {
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("modelsManaged")}</p>
+      <dl className="grid gap-1 text-sm md:grid-cols-2">{STAGES.map((stage) => {
         const choice = draft.stage_models[stage];
-        const options = view.model_options[choice.provider] ?? [];
-        return <fieldset key={stage} className="grid gap-2 rounded-xl border border-[var(--line)] p-4">
-          <legend className="px-1 font-bold">{t(`stages.${stage}`)}</legend>
-          <label className="block text-sm">{t("provider")}
-            <select className={fieldClass} value={choice.provider} disabled={disabled} onChange={(event) => {
-              const provider = event.target.value as Provider;
-              edit({ stage_models: { ...draft.stage_models, [stage]: { provider, model: view.model_options[provider]?.[0]?.value ?? "" } } });
-            }}>{PROVIDERS.map((provider) => <option key={provider} value={provider}>{providerLabels[provider]}{provider === "claude_code" ? ` (${t("subscription")})` : ""}{view.configured_providers.includes(provider) ? "" : ` (${t(provider === "claude_code" ? "agentOff" : "noKey")})`}</option>)}</select>
-          </label>
-          <label className="block text-sm">{t("model")}
-            <select className={fieldClass} value={choice.model} disabled={disabled} onChange={(event) => edit({ stage_models: { ...draft.stage_models, [stage]: { ...choice, model: event.target.value } } })}>
-              {options.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
-            </select>
-          </label>
-          {options.find((option) => option.value === choice.model)?.description && <p className="text-xs leading-5 text-[var(--muted)]">{options.find((option) => option.value === choice.model)?.description}</p>}
-        </fieldset>;
-      })}</div>
+        const label = view.model_options[choice.provider]?.find((option) => option.value === choice.model)?.label ?? choice.model;
+        return <div key={stage}><dt className="inline font-semibold">{t(`stages.${stage}`)}</dt><dd className="inline"> · {providerLabels[choice.provider]} · {label}</dd></div>;
+      })}</dl>
+      <Link href={aiModelsHref("video")} className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline">{t("editModels")}</Link>
     </section>
 
     <section className={`${panelClass} grid gap-4`} aria-labelledby="video-settings-video">

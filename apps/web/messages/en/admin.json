@@ -1040,14 +1040,61 @@
     "tabLabel": "AI settings tabs",
     "tabs": {
       "subscriptions": "Subscription accounts",
-      "api": "API keys and models"
+      "api": "API keys",
+      "models": "Models by feature"
     },
     "hints": {
       "subscriptions": "For the Claude Code, Codex and Antigravity you use on the host: billed to subscriptions, nothing extra, up to five accounts per tool. Of the site's features, only video automation's writing borrows the Claude accounts.",
-      "api": "For the site's AI features (trip planning, hourly news, place and article introductions, speech): billed by API usage; keys are stored encrypted on the server only."
+      "api": "Keys and speech for the site's AI features, billed by API usage; keys are stored encrypted on the server only. Which model each feature uses is under Models by feature.",
+      "models": "Every site feature that calls AI picks its vendor and model here; the feature pages only show the current choice and link back."
     },
     "movedNotice": "The AI services' keys and models have moved to AI settings, next to the subscription accounts.",
-    "movedLink": "Open AI settings"
+    "movedLink": "Open AI settings",
+    "overview": {
+      "title": "The model each feature uses now",
+      "help": "An empty choice inherits the model one level up; the table shows the model that will actually run. Connection is how the calls are paid for today; the last column marks features that only work with an API key.",
+      "refresh": "Refresh",
+      "missing": "Could not read: {sources} (you may lack permission)",
+      "sources": {
+        "providers": "API settings",
+        "news": "news settings",
+        "video": "video settings"
+      },
+      "columns": {
+        "feature": "Feature",
+        "model": "Vendor and model",
+        "connection": "Connection",
+        "support": "Subscription"
+      },
+      "features": {
+        "planner": "AI trip planner and trip parsing",
+        "guideSearch": "Place AI search",
+        "intros": "Place introductions",
+        "geminiSearch": "Gemini multilingual article search and catalog review",
+        "newsWriter": "News writer",
+        "newsVerifier": "News fact-checker",
+        "newsEditor": "News final editor",
+        "video": "Video · {stage}"
+      },
+      "plannerAuto": "Automatic fallback",
+      "plannerFallback": "Built-in fallback only",
+      "plannerDisabled": "Real AI off",
+      "inherits": "Inherits the {source} model",
+      "connection": {
+        "apiKey": "API key",
+        "subscription": "Subscription accounts",
+        "subscriptionFallback": "Subscription accounts (MiniMax when used up)",
+        "none": "No AI calls"
+      },
+      "support": {
+        "apiKeyOnly": "API key only",
+        "claudeSubscription": "Claude can use the subscription (switch the Claude connection under API keys)",
+        "claudeCode": "Uses the subscription with Claude Code",
+        "geminiApiKeyOnly": "Gemini runs on the API key only (the Antigravity subscriptions are for manual use on the host)"
+      },
+      "edit": "Change",
+      "open": "Open feature"
+    }
   },
   "pageHeaders": {
     "dashboard": {
@@ -2172,6 +2219,10 @@
     "usage": "This month (UTC): {tokens} of {tokenBudget} API tokens used and {planTokens} tokens on the subscription accounts; {drafts} of {draftBudget} drafts made, {calls} model calls ({failed} failed).",
     "subscription": "subscription",
     "agentOff": "host agent not set up",
-    "subscriptionHelp": "A subscription account is skipped once its 5-hour or weekly window reaches the percentage above; when every account has, the worker waits for a window to reset and never switches to an API key on its own. Codex is not offered: its command line cannot turn off running commands."
+    "subscriptionHelp": "A subscription account is skipped once its 5-hour or weekly window reaches the percentage above; when every account has, the worker waits for a window to reset and never switches to an API key on its own. Codex is not offered: its command line cannot turn off running commands.",
+    "modelsManaged": "The model of each stage is chosen under AI settings › Models by feature.",
+    "editModels": "Change in AI settings",
+    "saveModels": "Save video models",
+    "openVideos": "Open video settings"
   }
 }
