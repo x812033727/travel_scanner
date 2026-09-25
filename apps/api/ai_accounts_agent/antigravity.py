@@ -96,7 +96,9 @@ LOG_FILES_READ = 20
 
 _EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+")
 _LOGGED_EMAIL = re.compile(r"authenticated successfully as (\S+@\S+)")
-_PLAN = re.compile(r"\b(?:Google\s+AI\s+)?(Ultra|Pro|Free|Standard|Business|Enterprise)\b")
+# The header names the tier next to the model: "Gemini 3.8 Flash (High) (Google AI Pro)".
+_PLAN = re.compile(r"\bGoogle\s+AI\s+(Ultra|Pro|Plus|Free)\b|\((Free|Standard)\)")
+_ACRONYMS = frozenset({"GPT", "AI", "OSS", "API"})
 # Screens matched with whitespace removed and lower-cased (the TUI spaces words with
 # cursor moves).
 _LOGIN_PICKER = "selectloginmethod"
@@ -179,56 +181,76 @@ def _words(text: str) -> str:
     return " ".join(_GLYPHS.sub(" ", text).split())
 
 
+def _group_name(line: str) -> str | None:
+    """A model group heading ("GEMINI MODELS", "CLAUDE AND GPT MODELS"), made readable."""
+    words = line.strip()
+    if not re.fullmatch(r"[A-Z][A-Z0-9 &/+.-]{2,60}", words) or not re.search(r"[A-Z]{3}", words):
+        return None
+    named = []
+    for word in words.split():
+        if word in _ACRONYMS:
+            named.append(word)
+        elif word in ("AND", "OR"):
+            named.append(word.lower())
+        else:
+            named.append(word.capitalize())
+    return " ".join(named)
+
+
 def parse_quota(lines: Sequence[str], now: float) -> list[dict[str, Any]]:
     """Read the quota windows off the rendered "Models & Quota" page.
 
-    Every row with a percentage is a window. Its label is the row's own words when it
-    names something beyond the window length, otherwise the nearest heading above it (a
-    model group). A row that says "used" is taken as used; anything else as the remaining
-    share, which is what the CLI's quota service reports (``remaining_fraction``).
+    agy 1.2.11 draws each model group as an upper-case heading, then per window a name line
+    ("Weekly Limit Remaining"), a bar with the percentage, and a line saying when it
+    refreshes ("Refreshes in 167h 57m", or "Quota available" when nothing is used). The
+    figure is the share left unless its name line (or its own row) says "used". A row that
+    carries its name, figure and refresh time on one line is read the same way.
     """
+    start = next((index for index, line in enumerate(lines) if "models & quota" in line.lower()), 0)
     windows: list[dict[str, Any]] = []
-    heading: str | None = None
-    for line in lines:
+    group: str | None = None
+    pending: str | None = None  # The name line of the window whose figure comes next.
+    last: dict[str, Any] | None = None  # The window a following refresh line belongs to.
+    for line in lines[start:]:
+        heading = _group_name(line)
+        if heading is not None:
+            group, pending, last = heading, None, None
+            continue
         percent = _PERCENT.search(line)
-        disabled = re.search(r"\bdisabled\b", line, re.IGNORECASE) is not None
-        if percent is None:
-            words = _words(line)
-            # A row without a figure ("Weekly limit  Disabled") is not a group heading.
-            if (
-                words
-                and len(words) <= 60
-                and not disabled
-                and not _REFRESH.search(line)
-                and _window_minutes(words) is None
-            ):
-                heading = words
-            continue
-        if disabled:
-            continue
-        value = max(0.0, min(100.0, float(percent.group(1))))
-        lowered = line.lower()
-        used = value if re.search(r"\bused\b", lowered) else 100.0 - value
         refresh = _REFRESH.search(line)
-        seconds = _duration_seconds(refresh.group(1)) if refresh else None
-        before = line[: percent.start()]
-        if refresh is not None and refresh.start() < percent.start():
-            before = line[: refresh.start()]
-        own = _words(re.sub(r"(?i)\b(?:used|remaining|left|available|quota|usage)\b", " ", before))
-        minutes = _window_minutes(line) or (_window_minutes(heading) if heading else None)
-        # The row names a model group unless all it says is how long its window is.
-        label = own if own and _window_minutes(own) is None else heading
-        key = (label, minutes)
-        if any((window["label"], window["window_minutes"]) == key for window in windows):
+        if percent is None:
+            if refresh is not None and last is not None and last["resets_at"] is None:
+                seconds = _duration_seconds(refresh.group(1))
+                last["resets_at"] = int(now + seconds) if seconds is not None else None
+            elif re.search(r"\blimit\b", line, re.IGNORECASE) or _window_minutes(line):
+                pending = line
             continue
-        windows.append(
-            {
-                "label": label[:80] if label else None,
-                "window_minutes": minutes,
-                "used_percent": round(used, 1),
-                "resets_at": int(now + seconds) if seconds is not None else None,
-            }
+        if re.search(r"\bdisabled\b", line, re.IGNORECASE):
+            pending = None
+            continue
+        name = f"{pending or ''} {line}"
+        value = max(0.0, min(100.0, float(percent.group(1))))
+        used = value if re.search(r"\bused\b", name, re.IGNORECASE) else 100.0 - value
+        seconds = _duration_seconds(refresh.group(1)) if refresh else None
+        before = line[: min(percent.start(), refresh.start() if refresh else len(line))]
+        own = _words(
+            re.sub(r"(?i)\b(?:used|remaining|left|available|quota|usage|limit)\b", " ", before)
         )
+        minutes = _window_minutes(name)
+        label = group or (own if own and _window_minutes(own) is None else None)
+        pending = None
+        if any(
+            (window["label"], window["window_minutes"]) == (label, minutes) for window in windows
+        ):
+            last = None
+            continue
+        last = {
+            "label": label[:80] if label else None,
+            "window_minutes": minutes,
+            "used_percent": round(used, 2),
+            "resets_at": int(now + seconds) if seconds is not None else None,
+        }
+        windows.append(last)
     return windows
 
 
@@ -290,14 +312,11 @@ def email_from_logs(data_dir: Path) -> str | None:
 
 
 def _header_account(lines: Sequence[str]) -> tuple[str | None, str | None]:
-    """The email and plan tier the TUI header shows, when it shows them."""
-    for line in lines[:15]:
-        match = _EMAIL.search(line)
-        if match is None:
-            continue
-        plan = _PLAN.search(line[match.end() :]) or _PLAN.search(line[: match.start()])
-        return match.group(0), plan.group(1) if plan else None
-    return None, None
+    """The email and plan tier the TUI header shows (its first lines), when it shows them."""
+    header = lines[:15]
+    email = next((match.group(0) for line in header if (match := _EMAIL.search(line))), None)
+    plan = next((match for line in header if (match := _PLAN.search(line))), None)
+    return email, (plan.group(1) or plan.group(2)) if plan else None
 
 
 def saved_login(data_dir: Path) -> bool:
