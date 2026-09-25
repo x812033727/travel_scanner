@@ -213,8 +213,8 @@ for (const theme of ["light", "dark"] as const) {
     await page.goto("/zh-TW/admin/hotspots?tab=review&section=ai&run=budget-run");
     await expect(page.getByText("新工作呼叫上限 80 次；共用每日上限 300 次。")).toBeVisible();
     await page.getByRole("link", { name: "設定審核呼叫上限" }).click();
-    // The AI cards live on the AI settings page; the old /admin/settings link redirects there.
-    await expect(page).toHaveURL(/admin\/ai-accounts\?tab=api&provider=gemini_guides&field=catalog_review_max_calls/);
+    // Every card that picks a model lives on the AI settings page's models tab.
+    await expect(page).toHaveURL(/admin\/ai-accounts\?tab=models&provider=gemini_guides&field=catalog_review_max_calls/);
     const input = page.getByRole("spinbutton", { name: /目錄審核每個工作累計呼叫上限/ });
     await expect(input).toHaveValue("80");
     await expect(input).toHaveAttribute("min", "1");
