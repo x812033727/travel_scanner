@@ -25,6 +25,8 @@ const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,58}[a-z0-9])?$/;
 const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 export const MAX_LINT_FIXES = 3;
 export const MAX_REPLANS = 2;
+export const MAX_STAGE_FAILURES = 2;
+const OUTPUT_INVALID = "video_ai_output_invalid";
 const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
@@ -144,7 +146,9 @@ async function report(ctx, api, state, stage) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
-  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: checklistFrom(status.steps), ...(guide ? { source_guide: guide } : {}) });
+  // The page has no field for why a video stopped; the checklist is what the owner reads.
+  const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: `卡住，需要人處理：${state.blocked}`.slice(0, 120), done: false }] : [];
+  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: [...blocked, ...checklistFrom(status.steps)], ...(guide ? { source_guide: guide } : {}) });
 }
 
 export class Automation {
@@ -155,6 +159,10 @@ export class Automation {
     this.read = pageReader({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => ctx.now().getTime() });
     this.refs = null;
     this.log = (text) => ctx.stdout.write(`${text}\n`);
+    // Set when a unit could not move and trying again at once would only repeat it: `auto`
+    // ends the run, and the worker tries again on its next round.
+    this.halted = false;
+    this.lastAnswer = null;
   }
 
   get workBase() {
@@ -174,11 +182,52 @@ export class Automation {
   async stage(stage, slug, payload, maxOutputTokens) {
     const answer = await this.api.run(stage, slug, INSTRUCTIONS[stage], payload, maxOutputTokens);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
+    this.lastAnswer = answer.text;
     try {
       return parseAnswer(answer.text);
     } catch (error) {
-      throw new AutomationError(`${stage} answered something that is not JSON: ${error.message}`, { code: "video_ai_output_invalid" });
+      const invalid = new AutomationError(`${stage} answered something that is not JSON: ${error.message}`, { code: OUTPUT_INVALID });
+      invalid.stage = stage;
+      throw invalid;
     }
+  }
+
+  /** Save the last stage's answer as it came, so a person can see why it was unusable. */
+  keepAnswer(dir, what) {
+    if (typeof this.lastAnswer !== "string") return null;
+    const name = `${what.replace(/[^a-z0-9-]+/gi, "-")}-${this.ctx.now().toISOString().replace(/[:.]/g, "-")}.txt`;
+    mkdirSync(path.join(dir, "answers"), { recursive: true });
+    writeFileSync(path.join(dir, "answers", name), this.lastAnswer);
+    this.lastAnswer = null;
+    return path.join("answers", name);
+  }
+
+  /** Nothing moved and nothing was wrong with the video (a service was down): end this run. */
+  later(line) {
+    this.halted = true;
+    return line;
+  }
+
+  /**
+   * A stage gave nothing usable. Keep what it said and end this run; after the second time in a
+   * row the video is blocked, since a third try of the same payload would most likely fail the
+   * same way. On 2026-09-25 a writer that kept answering without a script was asked six times
+   * in two minutes, about 106,000 subscription tokens, before the worker was stopped by hand.
+   */
+  async retryLater(state, what, why) {
+    const workdir = this.workdir(state.slug);
+    state.failures = { ...(state.failures ?? {}), [what]: (state.failures?.[what] ?? 0) + 1 };
+    const kept = this.keepAnswer(workdir, what);
+    saveState(workdir, state);
+    this.halted = true;
+    const detail = `${why}${kept ? `; the answer is in ${kept}` : ""}`;
+    if (state.failures[what] >= MAX_STAGE_FAILURES) return this.block(state, `${what} failed ${state.failures[what]} times in a row: ${detail}`);
+    return `${state.slug}: ${what} gave nothing usable (${detail}); the next run tries once more`;
+  }
+
+  /** A stage worked: its count of failures in a row starts again. */
+  cleared(state, what) {
+    if (state.failures?.[what]) delete state.failures[what];
   }
 
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
@@ -193,7 +242,13 @@ export class Automation {
     }
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "active") continue;
-      const done = await this.advance(state);
+      let done;
+      try {
+        done = await this.advance(state);
+      } catch (error) {
+        if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+        return this.retryLater(state, error.stage, error.message);
+      }
       if (done) return done;
     }
     if (this.due()) return this.draft();
@@ -276,12 +331,23 @@ export class Automation {
     let plan = null;
     let problem = null;
     for (let attempt = 0; attempt < 2 && !plan; attempt++) {
-      const answer = await this.stage("planner", draftSlug, this.planPayload({ topics, topic_notes: notes, ...(problem ? { previous_problem: problem } : {}) }, earlier));
+      let answer;
+      try {
+        answer = await this.stage("planner", draftSlug, this.planPayload({ topics, topic_notes: notes, ...(problem ? { previous_problem: problem } : {}) }, earlier));
+      } catch (error) {
+        if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+        problem = error.message;
+        continue;
+      }
       problem = planProblem(answer, taken, usedGuides);
       if (!problem) plan = answer;
     }
+    // Written whatever came of it: a failed draft waits for the next interval like a good one.
     atomicWrite(path.join(this.workBase, GLOBAL_FILE), `${JSON.stringify({ last_draft_at: this.ctx.now().toISOString() }, null, 2)}\n`);
-    if (!plan) return `draft: the planner's brief was not usable (${problem}); trying again after the next interval`;
+    if (!plan) {
+      const kept = this.keepAnswer(this.workBase, "planner");
+      return this.later(`draft: the planner's brief was not usable (${problem}${kept ? `; the answer is in ${kept}` : ""}); trying again after the next interval`);
+    }
     const dir = docDir(plan.slug, this.ctx.root);
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
@@ -428,7 +494,8 @@ export class Automation {
     state.replans += 1;
     state.notes.push(`outline sent back: ${note}`);
     saveState(this.workdir(state.slug), state);
-    if (problem) return `${state.slug}: the re-planned brief was not usable (${problem})`;
+    if (problem) return this.retryLater(state, "planner", `the re-planned brief was not usable (${problem})`);
+    this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
     state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
     state.source_guide = answer.source_guide ?? state.source_guide;
@@ -502,7 +569,9 @@ export class Automation {
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
-    if (problem) return `${state.slug}: script drafted but ${problem}; the next run tries again`;
+    if (problem) return this.retryLater(state, "writer", `the script ${problem}`);
+    this.cleared(state, "writer");
+    saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "fact-checked");
     return `${state.slug}: script drafted and passes lint`;
   }
@@ -515,19 +584,17 @@ export class Automation {
     const urls = [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])];
     const sources = await readSources(this.read, urls);
     const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources }, 32_000);
-    if (typeof answer.report !== "string") return `${state.slug}: fact-check round ${round} returned no report; the next run tries again`;
+    if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     state.verify_rounds = round;
     const changed = Number(answer.changed_facts) || 0;
     if (answer.video) {
       const problem = await this.saveAndLint(state, { video: answer.video });
-      if (problem) {
-        saveState(this.workdir(state.slug), state);
-        return `${state.slug}: fact-check round ${round} changed ${changed} facts but ${problem}`;
-      }
+      if (problem) return this.retryLater(state, "verifier", `fact-check round ${round} changed ${changed} facts but ${problem}`);
     }
     state.verified = changed <= 3 || round >= this.settings.max_verify_rounds;
+    this.cleared(state, "verifier");
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: fact-check round ${round}, ${changed} facts changed${state.verified ? "" : "; another round follows"}`;
   }
@@ -538,8 +605,9 @@ export class Automation {
     const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) }, 32_000);
     const problem = await this.saveAndLint(state, answer);
     state.listener_done = !problem;
+    if (problem) return this.retryLater(state, "listener", `the listener edit ${problem}`);
+    this.cleared(state, "listener");
     saveState(this.workdir(state.slug), state);
-    if (problem) return `${state.slug}: listener edit ${problem}`;
     return `${state.slug}: listener edit, ${(answer.edits ?? []).length} changes`;
   }
 
@@ -567,9 +635,9 @@ export class Automation {
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
-    if (check.code === 4) return `${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)}); the next run tries again`;
+    if (check.code === 4) return this.later(`${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)}); the next run tries again`);
     const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "audio"]);
-    if (pushed.code !== 0) return `${state.slug}: could not send the narration for review: ${pushed.out.trim()}`;
+    if (pushed.code !== 0) return this.later(`${state.slug}: could not send the narration for review: ${pushed.out.trim()}`);
     await this.pull(state.slug);
     return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}) and sent for review`;
   }
@@ -587,12 +655,14 @@ export class Automation {
       if (!sheet) return this.block(state, `no ${locale} worksheet was written`);
       if (sheetDone(sheet)) continue;
       const translated = await this.stage("translator", state.slug, { locale, worksheet: sheet, video }, 32_000);
-      if (!translated.worksheet?.lines) return `${state.slug}: ${locale} translation returned no worksheet; the next run tries again`;
+      if (!translated.worksheet?.lines) return this.retryLater(state, "translator", `the ${locale} translation returned no worksheet`);
       writeFileSync(sheetFile, `${JSON.stringify(translated.worksheet, null, 2)}\n`);
       const reviewed = await this.stage("caption_reviewer", state.slug, { locale, worksheet: translated.worksheet, video }, 32_000);
       if (reviewed.worksheet?.lines) writeFileSync(sheetFile, `${JSON.stringify(reviewed.worksheet, null, 2)}\n`);
       const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
-      if (merged.code !== 0) return `${state.slug}: ${locale} captions do not merge yet: ${merged.out.trim().split("\n").slice(-2).join(" ")}`;
+      if (merged.code !== 0) return this.retryLater(state, "translator", `the ${locale} captions do not merge: ${merged.out.trim().split("\n").slice(-2).join(" ")}`);
+      this.cleared(state, "translator");
+      saveState(workdir, state);
       return `${state.slug}: ${locale} captions translated and reviewed`;
     }
     const result = await run(ctx, ["captions", "--slug", state.slug]);
@@ -604,7 +674,7 @@ export class Automation {
     const review = await this.decision(state, gate, file);
     if (!review) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate]);
-      if (pushed.code !== 0) return `${state.slug}: could not send the ${gate} for review: ${pushed.out.trim()}`;
+      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the ${gate} for review: ${pushed.out.trim()}`);
       return `${state.slug}: ${gate} sent to /admin/videos`;
     }
     if (review.status === "approved") {

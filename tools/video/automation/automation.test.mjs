@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -298,6 +298,36 @@ test("a video the owner drops is left alone, frees its place and keeps its topic
   const payload = site.calls.run[planned].payload;
   assert.ok(payload.earlier_videos.some((video) => video.slug === slug && video.dropped === true));
   assert.deepEqual(payload.used_guides, ["chatgpt-ads-status"], "its article still counts as used");
+});
+
+test("a writer that answers without a script is asked once a run, and the video is blocked the second time", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const answers = { ...answersFor(slug), writer: () => ({ note: "The sources have no official page." }) };
+  const site = fakeSite({ answers });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx, out } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+  const writers = () => site.calls.run.filter((call) => call.stage === "writer").length;
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /chose outline B/);
+  assert.match(out.stdout, /writer gave nothing usable \(the script the answer has no video object; the answer is in answers[\\/]writer-/);
+  assert.equal(writers(), 1, "one try in a run, not forty");
+  const state = automatedVideos(box.work)[0];
+  assert.deepEqual([state.status, state.failures], ["active", { writer: 1 }]);
+  const [kept] = readdirSync(path.join(box.work, slug, "answers"));
+  assert.match(readFileSync(path.join(box.work, slug, "answers", kept), "utf8"), /no official page/);
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(writers(), 2);
+  assert.equal(automatedVideos(box.work)[0].status, "blocked");
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：writer failed 2 times in a row/);
+  assert.equal(await main(["auto"], ctx), EXIT.ok);
+  assert.equal(writers(), 2, "a blocked video is not asked again");
 });
 
 test("an outline sent back is re-planned with the owner's note, and a spent budget stops auto for the owner", async () => {
