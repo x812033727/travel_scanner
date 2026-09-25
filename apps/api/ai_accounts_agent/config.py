@@ -6,10 +6,11 @@ DEFAULT_SOCKET_PATH = Path("/run/mokaair-ai-accounts/agent.sock")
 DEFAULT_STATE_ROOT = Path("/var/lib/mokaair-ai-accounts")
 DEFAULT_CLAUDE_BIN = "/root/.local/bin/claude"
 DEFAULT_CODEX_BIN = "/usr/local/bin/codex"
+DEFAULT_AGY_BIN = "/root/.local/bin/agy"
 # Installed by ops/ai-accounts/install.sh; runs statusline.py with the host python3.
 STATUSLINE_RECORDER = "/usr/local/lib/mokaair-ai-accounts/statusline-record"
 
-TOOLS: tuple[str, ...] = ("claude", "codex")
+TOOLS: tuple[str, ...] = ("claude", "codex", "agy")
 # Up to five accounts per tool; the page lists the signed-in ones and offers the next
 # free slot for another.
 SLOTS: tuple[str, ...] = ("a", "b", "c", "d", "e")
@@ -28,6 +29,7 @@ class AgentConfig:
     # through the current interpreter on any platform.
     claude_command: tuple[str, ...] = (DEFAULT_CLAUDE_BIN,)
     codex_command: tuple[str, ...] = (DEFAULT_CODEX_BIN,)
+    agy_command: tuple[str, ...] = (DEFAULT_AGY_BIN,)
     statusline_command: str = STATUSLINE_RECORDER
     # Accounts a login may end on. Empty means any; the host keeps this list, so a
     # compromised API container cannot sign root's CLIs into an account of its own.
@@ -40,6 +42,8 @@ class AgentConfig:
     # Reading Codex limits can refresh the account's tokens; doing that every minute next
     # to an interactive session invites "refresh token already used", so read it rarely.
     codex_cache_seconds: float = 300.0
+    # The Antigravity status comes from files, so it is cheap to read.
+    agy_cache_seconds: float = 30.0
     # Claude usage comes from a short interactive session (see ClaudeAccounts.refresh_usage).
     # A page view starts one when the snapshot is older than max_age; the refresh button
     # can start one sooner, but never more than once per min_interval; a probe that found
@@ -50,6 +54,13 @@ class AgentConfig:
     # How long a probe waits for the status line before sending one message, and after it.
     claude_usage_quiet_seconds: float = 15.0
     claude_usage_message_seconds: float = 40.0
+    # agy starts a language server before its TUI: the sign-in URL and the first screen
+    # take a few seconds (under ten on the host). The probe lets the TUI settle, opens the
+    # quota page, and gives the page a moment to reload the numbers before reading it.
+    agy_start_timeout_seconds: float = 30.0
+    agy_usage_start_seconds: float = 4.0
+    agy_usage_page_seconds: float = 2.0
+    agy_usage_timeout_seconds: float = 60.0
 
     @property
     def home_path(self) -> Path:
@@ -89,12 +100,14 @@ class AgentConfig:
                 raise RuntimeError(f"{name} is fixed by systemd at {fixed}")
         claude_bin = os.environ.get("AI_ACCOUNTS_CLAUDE_BIN", DEFAULT_CLAUDE_BIN)
         codex_bin = os.environ.get("AI_ACCOUNTS_CODEX_BIN", DEFAULT_CODEX_BIN)
-        for binary in (claude_bin, codex_bin):
+        agy_bin = os.environ.get("AI_ACCOUNTS_AGY_BIN", DEFAULT_AGY_BIN)
+        for binary in (claude_bin, codex_bin, agy_bin):
             if not binary.startswith("/"):
                 raise RuntimeError(f"CLI paths must be absolute: {binary}")
         return cls(
             hmac_key=key,
             claude_command=(claude_bin,),
             codex_command=(codex_bin,),
+            agy_command=(agy_bin,),
             allowed_emails=parse_emails(os.environ.get("AI_ACCOUNTS_ALLOWED_EMAILS", "")),
         )

@@ -1,6 +1,6 @@
 #!/bin/sh
-# claude-a … claude-e and codex-a … codex-e: run the CLI signed in to that account.
-# install.sh links each name to this script; the name picks the account.
+# claude-a … claude-e, codex-a … codex-e and agy-a … agy-e: run the CLI signed in to that
+# account. install.sh links each name to this script; the name picks the account.
 set -eu
 name=$(basename "$0")
 root=/var/lib/mokaair-ai-accounts
@@ -13,8 +13,15 @@ case "$name" in
     export CODEX_HOME="$root/$name"
     exec "${MOKAAIR_CODEX_BIN:-/usr/local/bin/codex}" "$@"
     ;;
+  agy-[a-e])
+    # agy keeps its login under ~/.gemini/antigravity-cli and has no switch to move it, so
+    # each account is a home of its own. The session bus points at nothing: a keyring would
+    # hold one login for every account, and without one agy keeps it in the account's file.
+    export HOME="$root/$name" DBUS_SESSION_BUS_ADDRESS="unix:path=/dev/null/mokaair-no-keyring"
+    exec "${MOKAAIR_AGY_BIN:-/root/.local/bin/agy}" "$@"
+    ;;
   *)
-    echo "run this as claude-a … claude-e or codex-a … codex-e" >&2
+    echo "run this as claude-a … claude-e, codex-a … codex-e or agy-a … agy-e" >&2
     exit 2
     ;;
 esac

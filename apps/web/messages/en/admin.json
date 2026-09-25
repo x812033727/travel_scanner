@@ -962,6 +962,7 @@
     "allowlistMissing": "The host has no list of allowed accounts (AI_ACCOUNTS_ALLOWED_EMAILS) yet, so a login to any account is accepted.",
     "sshHintClaude": "Over SSH, claude uses the default account; claude-a to claude-e pick one.",
     "sshHintCodex": "Over SSH, codex uses the default account; codex-a to codex-e pick one.",
+    "sshHintAgy": "Over SSH, agy uses the default account; agy-a to agy-e pick one.",
     "slotTitle": "Account {slot}",
     "default": "Default",
     "notSignedIn": "Not signed in",
@@ -989,8 +990,12 @@
     "snapshotMissing": "No quota for this account yet; the host reads it on its own, or press Refresh.",
     "recorderMissing": "This account's status line is not connected to the quota recorder; signing in again or restarting the host agent fixes it.",
     "usageUnavailable": "Quota could not be read: {detail}",
+    "agyUsageSetup": "This account has not finished Antigravity's first-run setup. Run agy-{slot} once on the host to finish it; the quota shows up after that.",
+    "agyUsageSignedOut": "Antigravity on the host sees this account as signed out; sign in again.",
+    "agyUsageUnreadable": "Antigravity's quota page could not be read; run agy-{slot} on the host and type /usage to see it.",
     "loginTitleCodex": "Sign in to Codex (account {slot})",
     "loginTitleClaude": "Sign in to Claude Code (account {slot})",
+    "loginTitleAgy": "Sign in to Antigravity (account {slot})",
     "closeLogin": "Close the sign-in window",
     "openLoginPage": "Open the sign-in page",
     "codexStep1": "Open the OpenAI device sign-in page and sign in to the ChatGPT account to use.",
@@ -1000,6 +1005,8 @@
     "copied": "Copied",
     "claudeStep1": "Open the Claude authorization page, sign in to the account to use and authorize.",
     "claudeStep2": "The page then shows a code. Copy it and paste it here:",
+    "agyStep1": "Open the Google sign-in page, choose the account with Google AI Pro or Ultra and allow Antigravity access.",
+    "agyStep2": "The page then shows an authorization code (it usually starts with 4/). Copy it and paste it here:",
     "submitCode": "Submit code",
     "waitingBrowser": "Waiting for you to finish in the browser…",
     "waitingCode": "Waiting for the code…",
@@ -1011,6 +1018,7 @@
     "expired": "The sign-in timed out; start again.",
     "fallbackClaude": "If signing in here keeps failing, run claude-{slot} auth login on the host instead.",
     "fallbackCodex": "If signing in here keeps failing, run codex-{slot} login --device-auth on the host instead.",
+    "fallbackAgy": "If signing in here keeps failing, run agy-{slot} on the host and choose Google OAuth there.",
     "cancelLogin": "Cancel sign-in",
     "done": "Done",
     "closeError": "Close the error message",
@@ -1023,7 +1031,7 @@
       "api": "API keys and models"
     },
     "hints": {
-      "subscriptions": "For the Claude Code and Codex you use on the host: billed to subscriptions, nothing extra, up to five accounts per tool. The site's features never use these accounts.",
+      "subscriptions": "For the Claude Code, Codex and Antigravity you use on the host: billed to subscriptions, nothing extra, up to five accounts per tool. Of the site's features, only video automation's writing borrows the Claude accounts.",
       "api": "For the site's AI features (trip planning, hourly news, place and article introductions, speech): billed by API usage; keys are stored encrypted on the server only."
     },
     "movedNotice": "The AI services' keys and models have moved to AI settings, next to the subscription accounts.",
@@ -1056,7 +1064,7 @@
     },
     "aiAccounts": {
       "title": "AI settings",
-      "description": "Everything AI in one place: the subscription accounts the host's Claude Code and Codex use, and the API keys and models the site's AI features use."
+      "description": "Everything AI in one place: the subscription accounts the host's Claude Code, Codex and Antigravity use, and the API keys and models the site's AI features use."
     },
     "videos": {
       "title": "Video reviews",

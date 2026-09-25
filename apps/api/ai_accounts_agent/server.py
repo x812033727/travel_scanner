@@ -12,6 +12,8 @@ from http.server import BaseHTTPRequestHandler
 from typing import Any, Protocol
 from urllib.parse import parse_qs, urlsplit
 
+from ai_accounts_agent.antigravity import SUBSCRIPTION_METHOD as AGY_SUBSCRIPTION
+from ai_accounts_agent.antigravity import AntigravityAccounts
 from ai_accounts_agent.claude import ClaudeAccounts, mark_onboarding_done
 from ai_accounts_agent.codex import CodexAccounts
 from ai_accounts_agent.config import SLOTS, TOOLS, AgentConfig
@@ -36,12 +38,17 @@ from ai_accounts_agent.statusline import atomic_write_text, ensure_statusline
 
 Response = tuple[int, dict[str, Any]]
 
-_TOOL_SLOT = r"(claude|codex)/([a-e])"
+_TOOLS = "|".join(TOOLS)
+_TOOL_SLOT = rf"({_TOOLS})/([a-e])"
 _LOGIN_ID = r"([0-9a-f]{32})"
 # A slow CLI turns into "still checking" for its card instead of a timeout for the page;
 # the check keeps running and fills the cache for the next read.
 OVERVIEW_DEADLINE_SECONDS = 12.0
 ERROR_CACHE_SECONDS = 10.0
+# Tools whose usage a short interactive session reads, and the sign-in that has a plan to
+# read: an API-billed Claude account has no subscription windows. Codex reads its limits
+# live in its status check instead.
+PROBED_USAGE = {"claude": "claude.ai", "agy": AGY_SUBSCRIPTION}
 
 
 class Accounts(Protocol):
@@ -117,6 +124,7 @@ class AgentApplication:
         *,
         claude: Accounts | None = None,
         codex: Accounts | None = None,
+        agy: Accounts | None = None,
         clock: Callable[[], float] = time.time,
     ) -> None:
         self.config = config
@@ -125,13 +133,14 @@ class AgentApplication:
         self.accounts: dict[str, Accounts] = {
             "claude": claude or ClaudeAccounts(config),
             "codex": codex or CodexAccounts(config),
+            "agy": agy or AntigravityAccounts(config),
         }
         self.logins = LoginRegistry(config.login_ttl_seconds, clock)
         self.cache = StatusCache(clock)
         self.executor = ThreadPoolExecutor(max_workers=len(TOOLS) * len(SLOTS) * 2)
         self._usage_lock = threading.Lock()
-        self._usage_running: set[str] = set()
-        self._usage_attempts: dict[str, float] = {}
+        self._usage_running: set[tuple[str, str]] = set()
+        self._usage_attempts: dict[tuple[str, str], float] = {}
         # One prompt run at a time: two at once would share one account's usage window.
         self._run_lock = threading.Lock()
         self._prepare_state()
@@ -152,11 +161,11 @@ class AgentApplication:
     # --- account state -------------------------------------------------------------
 
     def ttl_for(self, tool: str) -> float:
-        return (
-            self.config.claude_cache_seconds
-            if tool == "claude"
-            else self.config.codex_cache_seconds
-        )
+        return {
+            "claude": self.config.claude_cache_seconds,
+            "codex": self.config.codex_cache_seconds,
+            "agy": self.config.agy_cache_seconds,
+        }[tool]
 
     def check(self, tool: str, slot: str) -> dict[str, Any]:
         signed_out: dict[str, Any] = {
@@ -224,38 +233,48 @@ class AgentApplication:
             "login": session.view(now) if session is not None else None,
         }
         view.update(self.accounts[tool].details(slot))
-        view["usage_refreshing"] = tool == "claude" and self.usage_refreshing(slot)
+        view["usage_refreshing"] = self.usage_refreshing(tool, slot)
         return view
 
-    # --- Claude usage ----------------------------------------------------------------
+    # --- plan usage (Claude, Antigravity) ---------------------------------------------
 
-    def usage_refreshing(self, slot: str) -> bool:
+    def usage_refreshing(self, tool: str, slot: str) -> bool:
         with self._usage_lock:
-            return slot in self._usage_running
+            return (tool, slot) in self._usage_running
 
     def maybe_refresh_usage(
-        self, slot: str, status: dict[str, Any], *, force: bool, after_login: bool = False
+        self,
+        tool: str,
+        slot: str,
+        status: dict[str, Any],
+        *,
+        force: bool,
+        after_login: bool = False,
     ) -> bool:
-        """Start a background usage probe for a signed-in Claude subscription when due.
+        """Start a background usage probe for a signed-in subscription when due.
 
         A page view starts one when the snapshot is missing or older than max_age; the
         refresh button and a finished login start one regardless, but no account is
         probed more than once per min_interval, and a page view does not retry a probe
         that found nothing for retry seconds. Returns whether a probe is running.
         """
-        if status.get("logged_in") is not True or status.get("auth_method") != "claude.ai":
+        method = PROBED_USAGE.get(tool)
+        if method is None:
             return False
-        if not after_login and self.logins.active_for("claude", slot) is not None:
-            return False  # A probe and `claude auth login` must not share the directory.
+        if status.get("logged_in") is not True or status.get("auth_method") != method:
+            return False
+        if not after_login and self.logins.active_for(tool, slot) is not None:
+            return False  # A probe and a sign-in must not share the account's directory.
+        key = (tool, slot)
         now = self.clock()
         with self._usage_lock:
-            if slot in self._usage_running:
+            if key in self._usage_running:
                 return True
-            last = self._usage_attempts.get(slot)
+            last = self._usage_attempts.get(key)
             if last is not None and now - last < self.config.claude_usage_min_interval_seconds:
                 return False
             if not force:
-                usage = self.accounts["claude"].details(slot).get("usage")
+                usage = self.accounts[tool].details(slot).get("usage")
                 recorded = usage.get("recorded_at") if isinstance(usage, dict) else None
                 if (
                     isinstance(recorded, int | float)
@@ -264,19 +283,21 @@ class AgentApplication:
                     return False
                 if last is not None and now - last < self.config.claude_usage_retry_seconds:
                     return False
-            self._usage_running.add(slot)
-            self._usage_attempts[slot] = now
-        self.executor.submit(self._refresh_usage, slot)
+            self._usage_running.add(key)
+            self._usage_attempts[key] = now
+        self.executor.submit(self._refresh_usage, tool, slot)
         return True
 
-    def _refresh_usage(self, slot: str) -> None:
+    def _refresh_usage(self, tool: str, slot: str) -> None:
         try:
             # Whatever breaks, the page shows the last snapshot and its age.
             with contextlib.suppress(Exception):
-                self.accounts["claude"].refresh_usage(slot)
+                self.accounts[tool].refresh_usage(slot)
         finally:
+            # A probe can learn the account's email and plan (Antigravity's header).
+            self.cache.invalidate((tool, slot))
             with self._usage_lock:
-                self._usage_running.discard(slot)
+                self._usage_running.discard((tool, slot))
 
     def overview(self, fresh: bool) -> dict[str, Any]:
         keys = [(tool, slot) for tool in TOOLS for slot in SLOTS]
@@ -294,8 +315,7 @@ class AgentApplication:
                     "logged_in": None,
                     "error": "still checking this account; refresh in a moment",
                 }
-            if key[0] == "claude":
-                self.maybe_refresh_usage(key[1], status, force=fresh)
+            self.maybe_refresh_usage(key[0], key[1], status, force=fresh)
             slots.append(self.slot_view(key[0], key[1], status))
         return {
             "slots": slots,
@@ -322,14 +342,19 @@ class AgentApplication:
                 f"{status.get('email')} is not in AI_ACCOUNTS_ALLOWED_EMAILS on the host, "
                 "so it was signed out again"
             )
+        if self.config.allowed_emails and not status.get("email"):
+            # An account the list cannot be checked against must not stand either.
+            with contextlib.suppress(CliError):
+                self.accounts[tool].logout(slot)
+            self.cache.invalidate(key)
+            return "the CLI did not report which account signed in, so it was signed out again"
         if tool == "claude":
             with contextlib.suppress(OSError):
                 ensure_statusline(self.config.slot_path(tool, slot), self.config.recorder_for(slot))
             with contextlib.suppress(OSError):
                 mark_onboarding_done(self.config.slot_path(tool, slot))
         self.cache.put(key, status, self.ttl_for(tool))
-        if tool == "claude":
-            self.maybe_refresh_usage(slot, status, force=True, after_login=True)
+        self.maybe_refresh_usage(tool, slot, status, force=True, after_login=True)
         return None
 
     def start_login(self, tool: str, slot: str) -> Response:
@@ -441,7 +466,7 @@ class AgentApplication:
                     if session is None:
                         return _problem(HTTPStatus.NOT_FOUND, "login_not_found", "login not found")
                     return HTTPStatus.OK, session.view(self.clock())
-            elif match := re.fullmatch(r"/v1/defaults/(claude|codex)", route):
+            elif match := re.fullmatch(rf"/v1/defaults/({_TOOLS})", route):
                 if method == "PUT":
                     return self.set_default(match.group(1), body)
             return _problem(HTTPStatus.NOT_FOUND, "not_found", "endpoint not found")
