@@ -19,6 +19,7 @@ from app.video_automation.schemas import (
     SettingsWrite,
     VoiceOptionsView,
 )
+from app.video_automation.usage import usage_view
 from app.video_speech.gemini import GEMINI_TTS_MODELS, PREBUILT_VOICES
 
 # The stages run through the same vendor adapters as the news writer and verifier
@@ -106,6 +107,7 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         model_options=model_options(),
         configured_providers=configured_providers(runtime),
         voice_options=voice_options(runtime),
+        usage=await usage_view(session, row),
         updated_at=row.updated_at,
     )
 

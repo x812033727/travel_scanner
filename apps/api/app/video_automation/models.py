@@ -4,9 +4,9 @@ import copy
 from collections.abc import Callable
 from datetime import UTC, datetime
 from typing import Any
-from uuid import UUID
+from uuid import UUID, uuid4
 
-from sqlalchemy import JSON, Boolean, CheckConstraint, DateTime, ForeignKey, Integer
+from sqlalchemy import JSON, Boolean, CheckConstraint, DateTime, ForeignKey, Index, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db import Base
@@ -106,3 +106,32 @@ class VideoAutomationSettings(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=utcnow, onupdate=utcnow
     )
+
+
+class VideoAiRun(Base):
+    """One model call a video stage made through the server: what it cost and whether it worked.
+
+    The month's token budget and draft count are sums over these rows, so a call that failed
+    upstream is kept too, with the tokens the vendor reported (usually none).
+    """
+
+    __tablename__ = "video_ai_runs"
+    __table_args__ = (
+        CheckConstraint("status IN ('ok', 'failed')", name="ck_video_ai_run_status"),
+        Index("ix_video_ai_runs_created", "created_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(80), index=True)
+    stage: Mapped[str] = mapped_column(String(32))
+    provider: Mapped[str] = mapped_column(String(16))
+    model: Mapped[str] = mapped_column(String(128))
+    status: Mapped[str] = mapped_column(String(16))
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    input_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    duration_ms: Mapped[int] = mapped_column(Integer, default=0)
+    token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)

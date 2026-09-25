@@ -37,10 +37,12 @@ export type VideoSettings = {
   max_retake_rounds: number;
   auto_approve_audio: boolean;
 };
+type Usage = { tokens: number; token_budget: number; drafts: number; draft_budget: number; calls: number; failed_calls: number };
 type SettingsView = VideoSettings & {
   model_options: Record<Provider, ModelOption[]>;
   configured_providers: Provider[];
   voice_options: { gemini: string[]; gemini_models: string[]; azure: string[] };
+  usage?: Usage | null;
   updated_at: string | null;
 };
 
@@ -194,6 +196,10 @@ export function AdminVideoSettings() {
 
     <section className={`${panelClass} grid gap-4`} aria-labelledby="video-settings-budget">
       <h2 id="video-settings-budget" className="text-xl font-bold">{t("budgetTitle")}</h2>
+      {view.usage && <p className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">{t("usage", {
+        tokens: view.usage.tokens.toLocaleString(), tokenBudget: view.usage.token_budget.toLocaleString(),
+        drafts: view.usage.drafts, draftBudget: view.usage.draft_budget, calls: view.usage.calls, failed: view.usage.failed_calls,
+      })}</p>}
       <div className="grid gap-3 md:grid-cols-2">{numberFields.budget.map(numberInput)}</div>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("budgetHelp")}</p>
     </section>
