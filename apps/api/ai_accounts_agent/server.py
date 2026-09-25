@@ -215,6 +215,14 @@ class AgentApplication:
             return SLOTS[0]
         return value if value in SLOTS else SLOTS[0]
 
+    def current_slot(self, tool: str) -> str:
+        """Whose turn it is for prompt runs; the default account until a run moves it on."""
+        try:
+            value = self.config.current_path(tool).read_text(encoding="utf-8").strip()
+        except OSError:
+            return self.default_slot(tool)
+        return value if value in SLOTS else self.default_slot(tool)
+
     def email_allowed(self, email: str | None) -> bool | None:
         if not self.config.allowed_emails or not email:
             return None
@@ -328,6 +336,7 @@ class AgentApplication:
         return {
             "slots": slots,
             "defaults": {tool: self.default_slot(tool) for tool in TOOLS},
+            "current": {tool: self.current_slot(tool) for tool in TOOLS},
             "allowlist_configured": bool(self.config.allowed_emails),
         }
 
@@ -412,6 +421,8 @@ class AgentApplication:
         if slot not in SLOTS:
             return _problem(HTTPStatus.UNPROCESSABLE_ENTITY, "slot_invalid", "unknown slot")
         atomic_write_text(self.config.default_path(tool), f"{slot}\n", 0o600)
+        # Choosing the default also restarts the turns there.
+        atomic_write_text(self.config.current_path(tool), f"{slot}\n", 0o600)
         return HTTPStatus.OK, {"defaults": {name: self.default_slot(name) for name in TOOLS}}
 
     # --- prompt runs (ai_accounts_agent.runs) ---------------------------------------
@@ -423,11 +434,12 @@ class AgentApplication:
             with self._runs_changed:
                 now = self.clock()
                 resting = {slot for slot, until in self._runs_resting.items() if until > now}
+                current = self.current_slot("claude")
                 try:
                     slot = pick_slot(
                         slots,
                         request.max_usage_percent,
-                        self.default_slot("claude"),
+                        current,
                         busy=self._runs_busy,
                         resting=resting,
                     )
@@ -437,6 +449,10 @@ class AgentApplication:
                         raise
                     self._runs_changed.wait(timeout=min(RUN_WAIT_POLL_SECONDS, left))
                     continue
+                if slot != current and current not in self._runs_busy:
+                    # The current account is full or signed out, so the turn passes on. A busy
+                    # one keeps its turn, and this run just goes beside it.
+                    atomic_write_text(self.config.current_path("claude"), f"{slot}\n", 0o600)
                 self._runs_busy.add(slot)
                 return slot
 

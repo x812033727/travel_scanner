@@ -20,6 +20,7 @@ and `/` (Google).
 | `/var/lib/mokaair-ai-accounts/codex-a` … `codex-e` | One `CODEX_HOME` per account |
 | `/var/lib/mokaair-ai-accounts/agy-a` … `agy-e` | One `HOME` per Antigravity account |
 | `/var/lib/mokaair-ai-accounts/default-claude`, `default-codex`, `default-agy` | The default slot letter |
+| `/var/lib/mokaair-ai-accounts/current-claude` | The slot whose turn it is for prompt runs (see below) |
 | `/root/.claude`, `/root/.claude.json`, `/root/.codex`, `/root/.gemini/antigravity-cli` | Links to account A |
 | `/opt/mokaair-ai-accounts/ai_accounts_agent` | The agent (copied from `apps/api`) |
 | `/etc/travel-scanner/ai-accounts.env` | `AI_ACCOUNTS_AGENT_HMAC_KEY`, `AI_ACCOUNTS_ALLOWED_EMAILS` |
@@ -154,13 +155,18 @@ Claude's quota appears after the next Claude session on the host has made its fi
 ## Prompt runs
 
 `POST /v1/runs` (`ai_accounts_agent/runs.py`) runs one prompt through `claude -p` with every
-tool turned off, on the signed-in Claude subscription account with the most room below the
-caller's usage cap. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
+tool turned off, on the signed-in Claude subscription account whose turn it is, as long as it
+is below the caller's usage cap. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
 「Claude 連線方式」 on the AI vendors card to 訂閱帳號, every other site feature that calls
 Claude uses it too (`apps/api/app/ai/subscription.py`): guide search, introductions,
 introduction review, Simplified names and the news stages. The trip planner and the trip
 text parser do not; a reader cannot wait for a CLI.
 
+- The accounts take turns in slot order (A -> B -> C -> D -> E -> A). One account keeps
+  every run until it reaches the cap or a run reports its limit; then the next signed-in slot
+  with room takes over, and `current-claude` records it, so a restart keeps the turn. Setting
+  the default account on /admin/ai-accounts restarts the turns there. An account whose turn
+  has passed is not used again until the turn comes round to it.
 - Each account runs one prompt at a time. Runs on different accounts go side by side, and
   a request waits up to its `queue_seconds` for a busy account before it is refused as
   `subscription_busy`.
