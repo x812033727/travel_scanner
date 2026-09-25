@@ -1,13 +1,18 @@
 import { describe, expect, it } from "vitest";
 import { adminSettingsCopy } from "./admin-settings-copy";
-import { AI_SETTINGS_PROVIDERS, isAiSettingsProvider, settingsHref, settingsOwner, type AdminSettingsScope } from "./admin-settings-ownership";
+import { AI_KEY_PROVIDERS, AI_MODEL_PROVIDERS, AI_SETTINGS_PROVIDERS, aiModelsHref, aiSettingsTab, isAiSettingsProvider, settingsHref, settingsOwner, type AdminSettingsScope } from "./admin-settings-ownership";
 
 describe("single-owner provider settings registry", () => {
   it.each([
     ["layout", "hotspots_enabled", "hotspots"],
     ["runtime", "hotel_provider_mode", "hotels"],
     ["hotspot_guides", "hotspot_guide_backfill_batch_size", "hotspots"],
-    ["ai_guide_search", "hotspot_guide_ai_default_provider", "hotspots"],
+    ["ai_guide_search", "hotspot_guide_ai_daily_run_limit", "hotspots"],
+    // Every model choice is made on the AI settings page, which shows the shared provider cards.
+    ["ai_guide_search", "hotspot_guide_ai_default_provider", "providers"],
+    ["ai_guide_search", "hotspot_guide_ai_openai_model", "providers"],
+    ["hotspot_intros", "hotspot_intro_ai_default_provider", "providers"],
+    ["hotspot_intros", "hotspot_intro_ai_gemini_model", "providers"],
     ["hotspot_intros", "hotspot_intro_ai_daily_call_budget", "hotspots"],
     ["google_maps", "restaurant_aggregate_monthly_budget", "foods"],
     ["google_maps", "restaurant_scan_enabled", "foods"],
@@ -52,7 +57,12 @@ describe("single-owner provider settings registry", () => {
 
   it("sends shared AI providers to the AI settings page and keeps their domain links", () => {
     expect(settingsHref("providers", "ai_vendors", "anthropic_api_key")).toBe("/admin/ai-accounts?tab=api&provider=ai_vendors&field=anthropic_api_key");
-    expect(settingsHref("providers", "gemini_guides")).toBe("/admin/ai-accounts?tab=api&provider=gemini_guides");
+    expect(settingsHref("providers", "gemini_guides")).toBe("/admin/ai-accounts?tab=models&provider=gemini_guides");
+    expect(settingsHref("providers", "ai_planner", "openai_model")).toBe("/admin/ai-accounts?tab=models&provider=ai_planner&field=openai_model");
+    expect(aiModelsHref("news")).toBe("/admin/ai-accounts?tab=models&section=news");
+    expect([...AI_KEY_PROVIDERS, ...AI_MODEL_PROVIDERS].sort()).toEqual([...AI_SETTINGS_PROVIDERS].sort());
+    for (const provider of AI_MODEL_PROVIDERS) expect(aiSettingsTab(provider)).toBe("models");
+    for (const provider of AI_KEY_PROVIDERS) expect(aiSettingsTab(provider)).toBe("api");
     expect(settingsHref("hotspots", "ai_guide_search")).toBe("/admin/hotspots?tab=settings&provider=ai_guide_search");
     for (const provider of AI_SETTINGS_PROVIDERS) expect(isAiSettingsProvider(provider)).toBe(true);
     expect(isAiSettingsProvider("google_maps")).toBe(false);
@@ -64,7 +74,7 @@ describe("single-owner provider settings registry", () => {
     for (const locale of locales) {
       const copy = adminSettingsCopy(locale);
       expect(Object.values(copy.scopes).every(Boolean)).toBe(true);
-      expect(copy.leave && copy.unsaved && copy.reload && copy.discard && copy.shared).toBeTruthy();
+      expect(copy.leave && copy.unsaved && copy.reload && copy.discard && copy.shared && copy.aiSettings).toBeTruthy();
     }
   });
 });

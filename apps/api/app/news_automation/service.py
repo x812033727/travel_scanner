@@ -51,6 +51,7 @@ from app.news_automation.schemas import (
     EvidenceView,
     GateView,
     ModelOptionView,
+    ModelsWrite,
     ProviderName,
     RunView,
     SettingsView,
@@ -362,6 +363,20 @@ async def settings_view(session: AsyncSession) -> SettingsView:
     )
 
 
+async def update_models(session: AsyncSession, actor: User, payload: ModelsWrite) -> SettingsView:
+    """Change only the writer, verifier and final editor models, through a settings save."""
+    current = await settings_view(session)
+    if payload.model_dump() == current.model_dump(include=set(ModelsWrite.model_fields)):
+        return current
+    settings = SettingsWrite.model_validate(
+        {
+            **current.model_dump(include=set(SettingsWrite.model_fields)),
+            **payload.model_dump(),
+        }
+    )
+    return await update_settings(session, actor, settings)
+
+
 async def update_settings(
     session: AsyncSession, actor: User, payload: SettingsWrite
 ) -> SettingsView:
@@ -376,8 +391,19 @@ async def update_settings(
         "prompt_version": row.prompt_version,
         "policy_version": row.policy_version,
     }
-    major_change = any(getattr(payload, key) != value for key, value in before.items())
     values = payload.model_dump()
+    # Models left out of the payload keep their stored value (see SettingsWrite).
+    for key in (
+        "writer_provider",
+        "writer_model",
+        "verifier_provider",
+        "verifier_model",
+        "editor_provider",
+        "editor_model",
+    ):
+        if key not in payload.sent_models():
+            values[key] = before[key]
+    major_change = any(values[key] != value for key, value in before.items())
     # The owner removed the shadow gate on 2026-09-25: the final editor and Jev's last call
     # decide each article, so auto-publish no longer waits for labelled days, and a model
     # change no longer switches it off. The agreement figures still restart, for reference.
