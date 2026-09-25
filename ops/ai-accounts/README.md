@@ -101,6 +101,11 @@ and puts it back if that one does not finish.
   picker (`signed_out`), at a first-run page (`setup_needed`), or when it finds no quota
   rows (`unreadable`); in the last case it writes the page it saw, emails masked, to the
   journal (`journalctl -u mokaair-ai-accounts`) so the parser can follow a layout change.
+  What agy 1.2.11 draws (read on the host, 2026-09-25): an upper-case heading per model
+  group (`GEMINI MODELS`, `CLAUDE AND GPT MODELS`), then per window a name line (`Weekly
+  Limit Remaining`, `Five Hour Limit Remaining`), a bar with the share **left**
+  (`[████] 99.93%`) and `Refreshes in 167h 57m`, or `Quota available` when nothing is used.
+  `tests/test_ai_accounts_antigravity.py` keeps that page as `HOST_QUOTA_PAGE`.
 - **Antigravity sign-in and email:** the TUI opens on "Select login method"; the agent
   picks Google OAuth, hands the `accounts.google.com` URL to the page, types the code the
   owner pastes, and takes the saved token file as success. agy has no status command, so
