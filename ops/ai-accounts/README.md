@@ -151,6 +151,25 @@ cd /opt/mokaair-ai-accounts && python3 -m ai_accounts_agent.client GET /v1/accou
 Then open `/admin/ai-accounts`. Account A should show the existing Claude and Codex logins.
 Claude's quota appears after the next Claude session on the host has made its first request.
 
+## Prompt runs
+
+`POST /v1/runs` (`ai_accounts_agent/runs.py`) runs one prompt through `claude -p` with every
+tool turned off, on the signed-in Claude subscription account with the most room below the
+caller's usage cap. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
+「Claude 連線方式」 on the AI vendors card to 訂閱帳號, every other site feature that calls
+Claude uses it too (`apps/api/app/ai/subscription.py`): guide search, introductions,
+introduction review, Simplified names and the news stages. The trip planner and the trip
+text parser do not; a reader cannot wait for a CLI.
+
+- Each account runs one prompt at a time. Runs on different accounts go side by side, and
+  a request waits up to its `queue_seconds` for a busy account before it is refused as
+  `subscription_busy`.
+- A run that hits a usage limit rests that account for 30 minutes and moves on to the next
+  one. When every account is at the cap, the answer is `subscription_quota_paused`, and the
+  site falls back to MiniMax if it has the key.
+- Codex is not offered. `codex exec` has no switch that removes its shell, and its read-only
+  sandbox still reads the site's `.env`.
+
 ## Trust boundary
 
 - The agent runs as root with an empty capability set, `ProtectSystem=strict`, and write
@@ -161,6 +180,9 @@ Claude's quota appears after the next Claude session on the host has made its fi
   cancel logins, sign accounts out and change the default. They cannot sign root's CLIs
   in to an account of their own while `AI_ACCOUNTS_ALLOWED_EMAILS` is set. Treat the key
   like the deployment agent's.
+- The API, worker and news-worker containers mount the socket, because all three run
+  prompts. A prompt can spend quota on the owner's accounts but can do nothing on the host:
+  Claude Code runs with no tools, in an empty folder, with a fresh environment.
 - The page never receives a token. It sees emails, plans, quota percentages, the sign-in
   URL and the Codex device code, and the last two only while a login is open.
 

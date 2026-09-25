@@ -45,6 +45,10 @@ _LOGIN_ID = r"([0-9a-f]{32})"
 # the check keeps running and fills the cache for the next read.
 OVERVIEW_DEADLINE_SECONDS = 12.0
 ERROR_CACHE_SECONDS = 10.0
+# A prompt waiting for a busy account looks again this often, besides when a run ends.
+RUN_WAIT_POLL_SECONDS = 5.0
+# An account whose run hit its limit is skipped this long, while its usage snapshot catches up.
+RUN_REST_SECONDS = 1_800.0
 # Tools whose usage a short interactive session reads, and the sign-in that has a plan to
 # read: an API-billed Claude account has no subscription windows. Codex reads its limits
 # live in its status check instead.
@@ -141,8 +145,12 @@ class AgentApplication:
         self._usage_lock = threading.Lock()
         self._usage_running: set[tuple[str, str]] = set()
         self._usage_attempts: dict[tuple[str, str], float] = {}
-        # One prompt run at a time: two at once would share one account's usage window.
-        self._run_lock = threading.Lock()
+        # One prompt per account at a time, so two runs never share one usage window; runs on
+        # different accounts go side by side.
+        self._runs_changed = threading.Condition()
+        self._runs_busy: set[str] = set()
+        # Accounts whose run hit the limit, until when: the usage snapshot lags behind.
+        self._runs_resting: dict[str, float] = {}
         self._prepare_state()
 
     def _prepare_state(self) -> None:
@@ -408,18 +416,61 @@ class AgentApplication:
 
     # --- prompt runs (ai_accounts_agent.runs) ---------------------------------------
 
+    def _claim_run_slot(self, request: RunRequest) -> str:
+        deadline = time.monotonic() + request.queue_seconds
+        while True:
+            slots = self.overview(False)["slots"]
+            with self._runs_changed:
+                now = self.clock()
+                resting = {slot for slot, until in self._runs_resting.items() if until > now}
+                try:
+                    slot = pick_slot(
+                        slots,
+                        request.max_usage_percent,
+                        self.default_slot("claude"),
+                        busy=self._runs_busy,
+                        resting=resting,
+                    )
+                except RunRefused as exc:
+                    left = deadline - time.monotonic()
+                    if exc.code != "subscription_busy" or left <= 0:
+                        raise
+                    self._runs_changed.wait(timeout=min(RUN_WAIT_POLL_SECONDS, left))
+                    continue
+                self._runs_busy.add(slot)
+                return slot
+
+    def _release_run_slot(self, slot: str, *, spent: bool) -> None:
+        with self._runs_changed:
+            self._runs_busy.discard(slot)
+            if spent:
+                self._runs_resting[slot] = self.clock() + RUN_REST_SECONDS
+            self._runs_changed.notify_all()
+        if spent:
+            # Probe it now, so the picks after the rest see the spent window in its usage.
+            self.maybe_refresh_usage("claude", slot, self.status("claude", slot), force=True)
+
     def run_prompt(self, body: bytes) -> Response:
         try:
             request = RunRequest.parse(_json_object(body))
-            with self._run_lock:
-                slots = self.overview(False)["slots"]
-                slot = pick_slot(slots, request.max_usage_percent, self.default_slot("claude"))
-                result = run_claude(self.config, slot, request)
+            while True:
+                slot = self._claim_run_slot(request)
+                spent = False
+                try:
+                    result = run_claude(self.config, slot, request)
+                except RunRefused as exc:
+                    # This account is spent; the next pick skips it and tries another one.
+                    spent = exc.code == "subscription_quota_paused"
+                    if not spent:
+                        raise
+                    continue
+                finally:
+                    self._release_run_slot(slot, spent=spent)
+                return HTTPStatus.OK, result
         except RunRefused as exc:
             return exc.status, {"code": exc.code, "detail": exc.detail, **exc.extra}
         except CliError as exc:
             return _problem(HTTPStatus.BAD_GATEWAY, "subscription_run_failed", sanitize(str(exc)))
-        return HTTPStatus.OK, result
 
     # --- routing -------------------------------------------------------------------
 

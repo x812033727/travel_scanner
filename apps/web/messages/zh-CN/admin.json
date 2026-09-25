@@ -570,6 +570,18 @@
     "jev_daily_call_budget": {
       "label": "Jev 每日调用次数",
       "help": "新闻自动化、景点介绍的 Jev 影子评估与视频旁白检查共用的每日上限，按 UTC 日计算；用完当天就不再调用 Jev。默认 200。"
+    },
+    "anthropic_connection": {
+      "label": "Claude 连接方式",
+      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审核、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥；每个账号都到上限时改用 MiniMax。行程规划与行程文字解析仍只用 API 密钥。只有站长能切换。",
+      "options": {
+        "api_key": "API 密钥",
+        "subscription": "订阅账号（主机 Claude Code）"
+      }
+    },
+    "ai_subscription_max_usage_percent": {
+      "label": "订阅账号用量上限（%）",
+      "help": "账号的 5 小时或每周用量达到这个百分比，网站就不再用它，留给站长自己用；所有账号都到上限时改用 MiniMax。默认 80。"
     }
   },
   "hotspotTabs": {
