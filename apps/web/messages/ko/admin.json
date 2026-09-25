@@ -570,6 +570,18 @@
     "jev_daily_call_budget": {
       "label": "Jev 하루 호출 횟수",
       "help": "뉴스 자동화, 명소 소개의 Jev 섀도 평가, 내레이션 검사가 함께 쓰는 하루 한도로, UTC 날짜 기준으로 셉니다. 다 쓰면 그날은 Jev를 더 호출하지 않습니다. 기본값 200."
+    },
+    "anthropic_connection": {
+      "label": "Claude 연결 방식",
+      "help": "\"구독 계정\"을 고르면 가이드 검색, 명소 소개, 소개 검토, 간체 이름, AI 뉴스의 Claude 호출이 API 키 대신 호스트의 \"AI 계정\"에서 로그인한 Claude 구독 계정으로 실행됩니다. 모든 계정이 한도에 이르면 MiniMax를 씁니다. 일정 작성과 일정 텍스트 분석은 계속 API 키만 씁니다. 사이트 소유자만 바꿀 수 있습니다.",
+      "options": {
+        "api_key": "API 키",
+        "subscription": "구독 계정(호스트의 Claude Code)"
+      }
+    },
+    "ai_subscription_max_usage_percent": {
+      "label": "구독 사용 한도(%)",
+      "help": "계정의 5시간 또는 주간 사용량이 이 비율에 이르면 사이트는 그 계정을 쓰지 않고 나머지를 소유자에게 남깁니다. 모든 계정이 한도를 넘으면 MiniMax를 씁니다. 기본값 80."
     }
   },
   "hotspotTabs": {

@@ -35,6 +35,7 @@ from app.admin.schemas import (
 )
 from app.ai import catalog
 from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
+from app.auth.service import cached_admin_capabilities
 from app.config import (
     OFFICIAL_PROVIDER_HOSTS,
     Settings,
@@ -93,6 +94,11 @@ SITE_VISIBILITY_FIELDS = (
     "airline_fares_enabled",
     "pricing_enabled",
 )
+
+# Settings that put the owner's personal subscription accounts to work for the site.
+OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
+    "ai_vendors": ("anthropic_connection", "ai_subscription_max_usage_percent"),
+}
 
 # Rows that are never disabled: a disabled row nulls its secrets, and these hold
 # settings every feature shares rather than one provider that can be switched off.
@@ -184,8 +190,13 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "行程文字解析、景點介紹搜尋與 Gemini 文章搜尋共用；各功能只選供應商與模型。"
         "Jev 也放在這裡，但它是判斷模型而不是生成模型：只回傳 choice／score／noul 與信心值，"
         "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。"
-        "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。",
+        "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。"
+        "Claude 可以改走主機上「AI 帳號」登入的訂閱帳號（只有站主能切換）：各功能照樣選 Claude "
+        "與模型，實際由用量最低、還沒到上限的帳號執行；每個帳號都到上限時改用 MiniMax。"
+        "行程規劃與行程文字解析仍只用 Claude 的 API 金鑰。",
         (
+            "anthropic_connection",
+            "ai_subscription_max_usage_percent",
             "openai_api_base_url",
             "anthropic_api_base_url",
             "minimax_api_base_url",
@@ -697,14 +708,17 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         message = f"目前開放 {visible}／{len(SITE_VISIBILITY_FIELDS)} 個前台模組"
         return True, "ready", message
     if provider == "ai_vendors":
+        from app.ai.subscription import on_subscription, vendor_ready
+
+        claude = "Claude（訂閱帳號）" if on_subscription(settings, "anthropic") else "Claude"
         vendors = [
-            (label, bool(value))
-            for value, label in (
-                (settings.openai_api_key, "OpenAI"),
-                (settings.anthropic_api_key, "Claude"),
-                (settings.minimax_api_key, "MiniMax"),
-                (settings.hotspot_guide_gemini_api_key, "Gemini"),
-                (settings.jev_api_key, "Jev"),
+            (label, ready)
+            for ready, label in (
+                (vendor_ready(settings, "openai"), "OpenAI"),
+                (vendor_ready(settings, "anthropic"), claude),
+                (vendor_ready(settings, "minimax"), "MiniMax"),
+                (vendor_ready(settings, "gemini"), "Gemini"),
+                (bool(settings.jev_api_key), "Jev"),
             )
         ]
         configured_names = [label for label, present in vendors if present]
@@ -748,23 +762,19 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else "尚未在「AI 供應商與金鑰」設定真實 AI 金鑰，建立行程時會使用內建備援",
         )
     if provider == "ai_guide_search":
+        from app.ai.subscription import vendor_ready
         from app.hotspots.ai_search import research_model
 
         selected = settings.hotspot_guide_ai_default_provider
         model = research_model(settings, selected)
-        key = {
-            "openai": settings.openai_api_key,
-            "anthropic": settings.anthropic_api_key,
-            "minimax": settings.minimax_api_key,
-            "gemini": settings.hotspot_guide_gemini_api_key,
-        }[selected]
+        vendor = vendor_ready(settings, selected)
         sources = bool(
             settings.hotspot_guide_brave_enabled
             and settings.hotspot_guide_brave_api_key
             or settings.hotspot_guide_youtube_enabled
             and settings.hotspot_guide_youtube_api_key
         )
-        configured = bool(key and sources)
+        configured = vendor and sources
         return (
             configured,
             "ready" if configured else "not_configured",
@@ -773,17 +783,12 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else f"預設 {selected}（{model}）；請設定它的金鑰並啟用至少一個搜尋來源",
         )
     if provider == "hotspot_intros":
+        from app.ai.subscription import vendor_ready
         from app.hotspots.intro_generation import intro_model
 
         selected = settings.hotspot_intro_ai_default_provider
         model = intro_model(settings, selected)
-        key = {
-            "openai": settings.openai_api_key,
-            "anthropic": settings.anthropic_api_key,
-            "minimax": settings.minimax_api_key,
-            "gemini": settings.hotspot_guide_gemini_api_key,
-        }[selected]
-        configured = bool(key)
+        configured = vendor_ready(settings, selected)
         return (
             configured,
             "ready" if configured else "not_configured",
@@ -1416,6 +1421,7 @@ def _validate_provider_values(
         },
         "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "hotspot_intro_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
+        "anthropic_connection": {"api_key", "subscription"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -1578,6 +1584,18 @@ async def update_provider_settings(
         )
         session.add(row)
     previous_config = dict(row.config or {})
+    owner_fields = [
+        field
+        for field in OWNER_ONLY_CONFIG_FIELDS.get(provider, ())
+        if field in payload.config and payload.config[field] != previous_config.get(field)
+    ]
+    if owner_fields and "roles.manage" not in cached_admin_capabilities(actor):
+        await session.rollback()
+        raise AppError(
+            403,
+            "admin_capability_required",
+            "Claude 訂閱帳號是站主個人的帳號，只有站主能切換或調整上限",
+        )
     row.config = _validate_provider_values(provider, previous_config, payload)
     stored = _merge_secret_values(decrypt_secrets(row.secret_config_encrypted), payload.secrets)
     row.secret_config_encrypted = encrypt_secrets(stored)
@@ -1766,6 +1784,20 @@ def _listed_model_ids(response: httpx.Response) -> set[str] | None:
     return ids
 
 
+async def _test_claude_subscription(settings: Settings) -> tuple[bool, str]:
+    """Whether a Claude account on the host can take the site's calls, without running one."""
+    from app.admin_ai_accounts.agent import AiAccountsAgentClient
+    from app.ai.subscription import subscription_summary
+
+    if not settings.ai_accounts_configured:
+        return False, "Claude 設為訂閱帳號，但這台伺服器還沒設定 AI 帳號代理"
+    try:
+        overview = await AiAccountsAgentClient(settings).overview()
+    except AppError as error:
+        return False, f"Claude 訂閱帳號：{error.detail}"
+    return subscription_summary(overview, settings.ai_subscription_max_usage_percent)
+
+
 async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None = None) -> str:
     """Probe every configured AI vendor with its cheapest authenticated call.
 
@@ -1773,7 +1805,10 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     models endpoint, so a 404/405 from it counts as configured-but-unverified; only an
     auth or transport failure fails the test.
     """
+    from app.ai.subscription import on_subscription
+
     probes: list[tuple[str, str, dict[str, str], dict[str, str] | None, str, bool]] = []
+    subscription = on_subscription(settings, "anthropic")
     if settings.openai_api_key:
         probes.append(
             (
@@ -1785,7 +1820,7 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
                 False,
             )
         )
-    if settings.anthropic_api_key:
+    if settings.anthropic_api_key and not subscription:
         probes.append(
             (
                 "Claude",
@@ -1823,7 +1858,7 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     # ever read. One real noul question proves the key, the host, the model id and the
     # response shape for about forty input tokens, and output is not billed at all.
     jev_configured = bool(settings.jev_api_key)
-    if not probes and not jev_configured:
+    if not probes and not jev_configured and not subscription:
         raise ConnectionError("尚未設定任何 AI 金鑰")
     owns_client = client is None
     http = client or httpx.AsyncClient(timeout=10.0)
@@ -1851,6 +1886,9 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
             await http.aclose()
     verified: list[str] = []
     failures: list[str] = []
+    if subscription:
+        ready, message = await _test_claude_subscription(settings)
+        (verified if ready else failures).append(message)
     for (label, _url, _headers, _params, model, tolerant), response in zip(
         probes, responses, strict=True
     ):

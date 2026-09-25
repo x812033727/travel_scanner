@@ -77,6 +77,11 @@ services:
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
       REDIS_URL: ${REDIS_URL:?set REDIS_URL}
     command: ["python", "-m", "app.worker"]
+    # Guide search and introductions run Claude on the host's subscription accounts when the
+    # AI vendors card says so (app/ai/subscription.py); only the agent's socket is mounted.
+    volumes:
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+    group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
     depends_on:
@@ -178,6 +183,11 @@ services:
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
       REDIS_URL: ${REDIS_URL:?set REDIS_URL}
     command: ["python", "-m", "app.news_automation.worker"]
+    # The news stages run Claude on the host's subscription accounts when the AI vendors card
+    # says so (app/ai/subscription.py); only the agent's socket is mounted.
+    volumes:
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+    group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
     depends_on:

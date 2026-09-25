@@ -17,6 +17,11 @@ agent runs as root:
   empty one under the state root, deleted afterwards, and no session is kept.
 - An account whose 5-hour or weekly window is at or above the caller's cap is skipped; when all
   are, nothing runs and the answer says when the earliest window resets.
+
+The owner widened this on 2026-09-25 to every site feature that uses Claude (news, guide search,
+introductions), so runs from several callers overlap: each account runs one prompt at a time, a
+caller waits a bounded time for one to free up, and an account whose run hits its limit rests
+while the request moves on to the next one.
 """
 
 from __future__ import annotations
@@ -26,6 +31,7 @@ import shutil
 import subprocess
 import time
 import uuid
+from collections.abc import Collection
 from dataclasses import dataclass
 from typing import Any
 
@@ -33,6 +39,9 @@ from ai_accounts_agent.config import SLOTS, AgentConfig
 from ai_accounts_agent.runner import CliError, cli_environment, parse_json_object
 
 RUN_TIMEOUT_SECONDS = 900.0
+# How long a request may wait for an account that is running someone else's prompt.
+DEFAULT_QUEUE_SECONDS = 60.0
+MAX_QUEUE_SECONDS = 900.0
 MAX_PROMPT_CHARS = 3_000_000
 MAX_SYSTEM_CHARS = 100_000
 MODEL_PATTERN = re.compile(r"[A-Za-z0-9._:-]{1,64}")
@@ -59,6 +68,7 @@ class RunRequest:
     prompt: str
     max_usage_percent: int
     timeout_seconds: float
+    queue_seconds: float = DEFAULT_QUEUE_SECONDS
 
     @classmethod
     def parse(cls, payload: dict[str, Any] | None) -> RunRequest:
@@ -71,6 +81,7 @@ class RunRequest:
         model, system, prompt = payload.get("model"), payload.get("system"), payload.get("prompt")
         cap = payload.get("max_usage_percent", 80)
         timeout = payload.get("timeout_seconds", RUN_TIMEOUT_SECONDS)
+        queue = payload.get("queue_seconds", DEFAULT_QUEUE_SECONDS)
         if not isinstance(model, str) or not MODEL_PATTERN.fullmatch(model):
             raise RunRefused(422, "run_invalid", "model must be a model name")
         if not isinstance(system, str) or not 0 < len(system) <= MAX_SYSTEM_CHARS:
@@ -83,7 +94,15 @@ class RunRequest:
             raise RunRefused(
                 422, "run_invalid", f"timeout_seconds must be 30 to {RUN_TIMEOUT_SECONDS:.0f}"
             )
-        return cls(model, system, prompt, cap, float(timeout))
+        if (
+            not isinstance(queue, int | float)
+            or isinstance(queue, bool)
+            or not 0 <= queue <= MAX_QUEUE_SECONDS
+        ):
+            raise RunRefused(
+                422, "run_invalid", f"queue_seconds must be 0 to {MAX_QUEUE_SECONDS:.0f}"
+            )
+        return cls(model, system, prompt, cap, float(timeout), float(queue))
 
 
 def _peak(slot: dict[str, Any]) -> tuple[float | None, str | None]:
@@ -98,15 +117,27 @@ def _peak(slot: dict[str, Any]) -> tuple[float | None, str | None]:
     return peak, resets
 
 
-def pick_slot(slots: list[dict[str, Any]], cap: int, default: str | None) -> str:
+def pick_slot(
+    slots: list[dict[str, Any]],
+    cap: int,
+    default: str | None,
+    *,
+    busy: Collection[str] = (),
+    resting: Collection[str] = (),
+) -> str:
     """The signed-in Claude subscription with the most room below ``cap``.
 
     An account whose usage is not known yet is tried after every known one; that is the state
-    right after sign-in, before the first usage probe has run.
+    right after sign-in, before the first usage probe has run. ``busy`` accounts are running
+    another prompt: when only they have room, the answer is ``subscription_busy`` and the caller
+    may wait. ``resting`` accounts hit their limit in a run the usage snapshot has not caught
+    up with yet, and count as spent.
     """
     known: list[tuple[float, int, str]] = []
     unknown: list[str] = []
     blocked: list[str] = []
+    waiting = False
+    spent = False
     for slot in slots:
         if slot.get("tool") != "claude" or slot.get("logged_in") is not True:
             continue
@@ -114,25 +145,36 @@ def pick_slot(slots: list[dict[str, Any]], cap: int, default: str | None) -> str
             continue
         name = str(slot.get("slot"))
         peak, resets = _peak(slot)
-        if peak is None:
-            unknown.append(name)
-        elif peak >= cap:
+        if name in resting:
+            spent = True
+        elif peak is not None and peak >= cap:
+            spent = True
             if resets:
                 blocked.append(resets)
+        elif name in busy:
+            waiting = True
+        elif peak is None:
+            unknown.append(name)
         else:
             known.append((peak, 0 if name == default else 1, name))
     if known:
         return min(known)[2]
     if unknown:
         return sorted(unknown, key=lambda name: (name != default, SLOTS.index(name)))[0]
-    if blocked:
-        earliest = min(blocked)
+    if waiting:
+        raise RunRefused(
+            503,
+            "subscription_busy",
+            "every Claude account with room is running another prompt; try again shortly",
+        )
+    if spent:
+        earliest = min(blocked) if blocked else None
         raise RunRefused(
             429,
             "subscription_quota_paused",
-            f"every Claude account is at or above {cap}% of a usage window; "
-            f"the earliest resets at {earliest}",
-            {"resets_at": earliest},
+            f"every Claude account is at or above {cap}% of a usage window"
+            + (f"; the earliest resets at {earliest}" if earliest else ""),
+            {"resets_at": earliest} if earliest else {},
         )
     raise RunRefused(
         409, "subscription_not_signed_in", "no Claude subscription account is signed in"

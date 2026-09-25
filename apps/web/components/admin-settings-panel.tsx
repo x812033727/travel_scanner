@@ -204,6 +204,8 @@ const fieldMeta: Record<string, FieldMeta> = {
   minimax_api_base_url: { label: "MiniMax API Base URL", type: "url" },
   jev_api_base_url: { label: "Jev API Base URL", type: "url" },
   jev_daily_call_budget: { localized: true, type: "number" },
+  anthropic_connection: { localized: true, options: [{ value: "api_key" }, { value: "subscription" }] },
+  ai_subscription_max_usage_percent: { localized: true, type: "number" },
   minimax_model: { localized: true, allowCustom: true },
   gemini_model: { localized: true, allowCustom: true },
   travel_provider_mode: { localized: true, options: [{ value: "amadeus", label: "Amadeus" }, { value: "mock" }, { value: "disabled" }] },

@@ -304,3 +304,14 @@ def test_compose_mounts_the_socket_the_settings_expect() -> None:
     compose = (repository / "docker-compose.prod.yml").read_text(encoding="utf-8")
     socket_dir = Path(get_settings().ai_accounts_agent_socket).parent.as_posix()
     assert f"{socket_dir}:{socket_dir}:ro" in compose
+
+
+def test_the_workers_that_run_claude_reach_the_agent_and_nothing_else_on_the_host() -> None:
+    repository = Path(__file__).resolve().parents[3]
+    compose = (repository / "docker-compose.prod.yml").read_text(encoding="utf-8")
+    socket_dir = Path(get_settings().ai_accounts_agent_socket).parent.as_posix()
+    for service in ("worker", "news-worker"):
+        block = compose.split(f"\n  {service}:\n", 1)[1].split("\n\n", 1)[0]
+        assert f"{socket_dir}:{socket_dir}:ro" in block, service
+        assert "group_add:" in block, service
+        assert "travel-scanner-deployer" not in block, f"{service} must not reach the deployer"

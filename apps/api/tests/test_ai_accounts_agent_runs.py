@@ -21,7 +21,8 @@ from ai_accounts_agent.server import AgentApplication
 KEY = "k" * 64
 
 # Records what it was given in the account folder, then answers like `claude -p --output-format
-# json`. The prompt decides the outcome: LIMIT answers as a spent window, FAIL exits with an error.
+# json`. The prompt decides the outcome: LIMIT answers as a spent window, FAIL exits with an error;
+# a file named "spent" in the account folder makes that account answer as spent.
 FAKE_CLAUDE = textwrap.dedent(
     """
     import json, os, sys
@@ -36,7 +37,7 @@ FAKE_CLAUDE = textwrap.dedent(
     if "FAIL" in prompt:
         print("boom: model overloaded", file=sys.stderr)
         sys.exit(1)
-    if "LIMIT" in prompt:
+    if "LIMIT" in prompt or os.path.exists(os.path.join(folder, "spent")):
         spent = {"type": "result", "is_error": True, "result": "You've hit your weekly limit"}
         print(json.dumps(spent))
         sys.exit(1)
@@ -88,6 +89,9 @@ def _request(prompt: str = '{"brief": "…"}', **changes: Any) -> RunRequest:
         {"max_usage_percent": True},
         {"timeout_seconds": 5},
         {"timeout_seconds": 10_000},
+        {"queue_seconds": -1},
+        {"queue_seconds": 10_000},
+        {"queue_seconds": True},
     ],
 )
 def test_a_run_request_must_name_claude_a_model_and_sane_limits(changes: dict[str, Any]) -> None:
@@ -240,3 +244,58 @@ def test_the_runs_route_picks_an_account_runs_once_and_pauses_when_all_are_spent
     assert body["resets_at"] == "2026-09-25T12:00:00Z"
     status, body = _signed(application, {**run, "tool": "codex"})
     assert status == 422 and body["code"] == "run_tool_not_offered"
+
+
+def test_a_busy_account_is_waited_for_and_a_resting_one_counts_as_spent() -> None:
+    assert pick_slot([_slot("a", 10), _slot("b", 50)], 80, "a", busy={"a"}) == "b"
+    with pytest.raises(RunRefused) as busy:
+        pick_slot([_slot("a", 10), _slot("b", 90)], 80, "a", busy={"a"})
+    assert (busy.value.status, busy.value.code) == (503, "subscription_busy")
+    with pytest.raises(RunRefused) as spent:
+        pick_slot([_slot("a", 10)], 80, "a", resting={"a"})
+    assert (spent.value.status, spent.value.code) == (429, "subscription_quota_paused")
+    assert "resets_at" not in spent.value.extra, "no reset time is known for a resting account"
+    assert pick_slot([_slot("a", 10), _slot("b", 60)], 80, "a", resting={"a"}) == "b"
+
+
+def test_a_run_that_hits_the_limit_moves_on_to_the_next_account_and_rests_the_first(
+    tmp_path: Path,
+) -> None:
+    config = _config(tmp_path)
+    (config.slot_path("claude", "a") / "spent").write_text("", encoding="utf-8")
+    run = {"tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}"}
+    application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b", "a had the most room but its run hit the limit"
+    assert "a" in application._runs_resting and not application._runs_busy
+    (config.slot_path("claude", "b") / "last-run.json").unlink()
+    (config.slot_path("claude", "a") / "last-run.json").unlink()
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b"
+    assert not (config.slot_path("claude", "a") / "last-run.json").exists(), "a is resting"
+
+
+def test_a_request_gives_up_when_every_account_with_room_stays_busy(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    run = {
+        "tool": "claude",
+        "model": "claude-opus-5-5",
+        "system": "Write.",
+        "prompt": "{}",
+        "queue_seconds": 0,
+    }
+    application = AgentApplication(config, claude=Accounts({"b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
+    application._runs_busy.add("b")
+    status, body = _signed(application, run)
+    assert (status, body["code"]) == (503, "subscription_busy")
+    assert not (config.slot_path("claude", "b") / "last-run.json").exists()
+
+
+def test_two_runs_on_different_accounts_go_side_by_side(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
+    first = application._claim_run_slot(_request())
+    second = application._claim_run_slot(_request())
+    assert {first, second} == {"a", "b"}
+    application._release_run_slot(first, spent=False)
+    assert application._claim_run_slot(_request()) == first
