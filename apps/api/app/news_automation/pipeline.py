@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
 from typing import Any, Literal, cast
 from uuid import UUID, uuid4
 
@@ -9,7 +9,6 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
-from app.guides import admin_service
 from app.guides.models import (
     GuideArticle,
     GuideArticleLocale,
@@ -19,14 +18,15 @@ from app.guides.models import (
 )
 from app.guides.schemas import GuideDocument, SourceRef
 from app.i18n import Locale
+from app.models import User
 from app.news_automation import ai
-from app.news_automation.assets import ensure_assets, mark_assets_public
+from app.news_automation import service as news_service
+from app.news_automation.assets import ensure_assets
 from app.news_automation.duplicates import (
     DUPLICATE_UNCERTAIN,
     cleared_by_editor,
     known_titles,
 )
-from app.news_automation.fetch import RedisHostRateLimiter
 from app.news_automation.models import (
     LOCALES,
     NewsAssessment,
@@ -36,16 +36,18 @@ from app.news_automation.models import (
     NewsPipelineRun,
 )
 from app.news_automation.policy import (
+    READY_TO_PUBLISH,
+    ZH_DRAFT_READY,
     document_fingerprint,
     event_date_problems,
     evidence_fingerprint,
+    evidence_present,
     evidence_site_count,
     evidence_sufficient,
     hard_policy_problems,
 )
 from app.news_automation.schemas import Vertical
 from app.news_automation.service import audit, gate_for, settings_row
-from app.news_automation.validation import revalidate_evidence
 from app.problems import AppError
 from app.site_pages.schemas import LinkBlock
 
@@ -138,7 +140,10 @@ async def _needs_redraft(
     A re-verified candidate already has its article, which the editor can fix in the
     guide editor and verify again, so that one still goes to manual review."""
 
-    status = "manual_review" if candidate.guide_article_id is not None else "needs_redraft"
+    # A confirmed draft stopped in stage two keeps the owner's confirmation: the same
+    # action runs the translations again instead of drafting anew.
+    kept = candidate.guide_article_id is not None or candidate.human_decision == "publish"
+    status = "manual_review" if kept else "needs_redraft"
     await _hold(session, candidate, status, code, detail)
 
 
@@ -331,12 +336,47 @@ async def _save_guide_bundle(
     return article, versions
 
 
+class _Runs:
+    """The pipeline run in progress, so a failure can be recorded against it."""
+
+    def __init__(self, session: AsyncSession, candidate: NewsCandidate) -> None:
+        self.session = session
+        self.candidate = candidate
+        self.active: NewsPipelineRun | None = None
+
+    async def start(self, stage: str, *, provider: str | None, model: str | None) -> None:
+        self.active = await _start_run(
+            self.session, self.candidate, stage, provider=provider, model=model
+        )
+
+    async def finish(
+        self,
+        *,
+        usage: dict[str, int] | None = None,
+        model: str | None = None,
+        metadata: dict[str, Any] | None = None,
+    ) -> None:
+        assert self.active is not None
+        await _finish_run(self.session, self.active, usage=usage, model=model, metadata=metadata)
+        self.active = None
+
+
 async def process_candidate(
     session: AsyncSession,
     redis: Redis,
     environment: Settings,
     candidate_id: UUID,
 ) -> str:
+    """Run one candidate as far as it can go without a person.
+
+    Stage one (owner decision, 2026-09-25): any source's article that is not a duplicate is
+    drafted in Traditional Chinese, fact-checked against its evidence and assessed by Jev,
+    then waits for the owner as ``news_zh_draft_ready``. Stage two runs once the owner has
+    confirmed publication: the other four locales are translated and reviewed, the article
+    is checked, saved and published. A re-verification of edited drafts runs the checks of
+    both stages on the editor's text.
+    """
+
     candidate = await session.get(NewsCandidate, candidate_id)
     if candidate is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
@@ -344,7 +384,7 @@ async def process_candidate(
     if settings is None:
         return outcome
 
-    active_run: NewsPipelineRun | None = None
+    runs = _Runs(session, candidate)
     try:
         evidence = list(
             await session.scalars(
@@ -357,17 +397,39 @@ async def process_candidate(
         candidate.evidence_hash = evidence_fingerprint(
             [{"url": row.url, "content_hash": row.content_hash} for row in evidence]
         )
-        if not evidence_sufficient(usable):
-            # Not an editor's work item: there is no draft to review and nothing a person
-            # can fix from /admin/news, so it stays out of the manual review queue.
+        if not evidence_present(usable):
+            # Only lead-only pages: nothing a draft could cite.
             candidate.status = "needs_evidence"
             candidate.error_code = "news_evidence_insufficient"
-            candidate.error_detail = (
-                "Evidence from at least two different websites, one of them first-party, "
-                "is required."
-            )
+            candidate.error_detail = "No evidence page from an evidence source was found."
             await session.commit()
             return "needs_evidence"
+
+        reverify_requested = candidate.error_code == REVERIFY_MARKER
+        if (
+            not reverify_requested
+            and candidate.human_decision == "publish"
+            and "zh-TW" in candidate.draft_bundle_json
+        ):
+            # Stage two: the owner confirmed this verified Traditional Chinese draft.
+            confirmed = GuideDocument.model_validate(candidate.draft_bundle_json["zh-TW"])
+            if candidate.event_date is None:
+                raise AppError(409, "news_draft_unavailable", "候選草稿資料不完整")
+            return await _second_stage(
+                session,
+                redis,
+                environment,
+                settings,
+                candidate,
+                evidence,
+                usable,
+                runs,
+                document=confirmed,
+                slug=await _drafted_slug(session, candidate),
+                event_date=candidate.event_date,
+                localized=None,
+                automatic=False,
+            )
 
         if await cleared_by_editor(session, candidate):
             # An editor already answered an uncertain check for this evidence.
@@ -413,7 +475,6 @@ async def process_candidate(
             return "manual_review"
         await session.commit()
 
-        reverify_requested = candidate.error_code == REVERIFY_MARKER
         reverify_documents: dict[Locale, GuideDocument] | None = None
         if reverify_requested:
             reverify_documents = {
@@ -431,16 +492,12 @@ async def process_candidate(
             draft_slug = article_for_slug.slug
             draft_event_date = candidate.event_date
         else:
-            active_run = await _start_run(
-                session,
-                candidate,
-                "draft",
-                provider=settings.writer_provider,
-                model=settings.writer_model,
+            await runs.start(
+                "draft", provider=settings.writer_provider, model=settings.writer_model
             )
             draft, usage, model = await ai.draft_article(environment, settings, candidate, evidence)
-            await _finish_run(session, active_run, usage=usage, model=model)
-            active_run = None
+            # Stage two builds the article under this address after the owner confirms.
+            await runs.finish(usage=usage, model=model, metadata={"slug": draft.slug})
             if not draft.eligible:
                 candidate.status = "rejected"
                 candidate.error_code = "news_not_eligible"
@@ -473,11 +530,7 @@ async def process_candidate(
         date_problems = event_date_problems(
             draft_event_date,
             draft_slug,
-            [
-                row.source_date or row.retrieved_at.date()
-                for row in evidence
-                if row.role == "evidence"
-            ],
+            [row.source_date or row.retrieved_at.date() for row in usable],
         )
         if date_problems:
             await _needs_redraft(
@@ -492,9 +545,7 @@ async def process_candidate(
 
         verification_passed = False
         for verification_round in range(2):
-            active_run = await _start_run(
-                session,
-                candidate,
+            await runs.start(
                 f"verification-{verification_round + 1}",
                 provider=settings.verifier_provider,
                 model=settings.verifier_model,
@@ -502,8 +553,7 @@ async def process_candidate(
             result, usage, model = await ai.verify_article(
                 environment, settings, document, evidence
             )
-            await _finish_run(session, active_run, usage=usage, model=model)
-            active_run = None
+            await runs.finish(usage=usage, model=model)
             session.add(
                 NewsAssessment(
                     candidate_id=candidate.id,
@@ -538,159 +588,39 @@ async def process_candidate(
             )
             return candidate.status
 
-        candidate.status = "locale_review"
-        await session.commit()
-        if reverify_documents is None:
-            documents: dict[Locale, GuideDocument] = {"zh-TW": document}
-            for target in TARGET_LOCALES:
-                active_run = await _start_run(
-                    session,
-                    candidate,
-                    f"translation-{target}",
-                    provider=settings.writer_provider,
-                    model=settings.writer_model,
-                )
-                translated, usage, model = await ai.translate_article(
-                    environment, settings, document, target
-                )
-                await _finish_run(session, active_run, usage=usage, model=model)
-                active_run = None
-                documents[target] = translated.document
-        else:
-            documents = {**reverify_documents, "zh-TW": document}
-        documents = {
-            locale: _topic_linked(item, candidate.vertical, locale)
-            for locale, item in documents.items()
-        }
-        document = documents["zh-TW"]
-        session.add(
-            NewsAssessment(
-                candidate_id=candidate.id,
-                assessment_type="locale_review",
-                locale="zh-TW",
-                verdict="pass",
-                provider=settings.verifier_provider,
-                model=settings.verifier_model,
-                reasons_json=[],
-                details_json={
-                    "basis": "verified_source_locale",
-                    "document_sha256": document_fingerprint(document),
-                },
-                evidence_hash=candidate.evidence_hash,
-                prompt_version=candidate.prompt_version,
-            )
-        )
-        for locale in TARGET_LOCALES:
-            localized = _source_locked(documents[locale], evidence)
-            locale_passed = False
-            for review_round in range(2):
-                active_run = await _start_run(
-                    session,
-                    candidate,
-                    f"locale-{locale}-{review_round + 1}",
-                    provider=settings.verifier_provider,
-                    model=settings.verifier_model,
-                )
-                locale_result, usage, model = await ai.review_locale(
-                    environment, settings, document, locale, localized
-                )
-                await _finish_run(session, active_run, usage=usage, model=model)
-                active_run = None
-                if locale_result.verdict == "pass":
-                    locale_passed = True
-                    session.add(
-                        NewsAssessment(
-                            candidate_id=candidate.id,
-                            assessment_type="locale_review",
-                            locale=locale,
-                            verdict="pass",
-                            provider=settings.verifier_provider,
-                            model=model,
-                            reasons_json=[],
-                            details_json={
-                                "round": review_round + 1,
-                                "document_sha256": document_fingerprint(localized),
-                            },
-                            evidence_hash=candidate.evidence_hash,
-                            prompt_version=candidate.prompt_version,
-                        )
-                    )
-                    break
-                if (
-                    locale_result.verdict == "revise"
-                    and review_round == 0
-                    and locale_result.corrected_document
-                ):
-                    localized = _source_locked(locale_result.corrected_document, evidence)
-                    continue
-                session.add(
-                    NewsAssessment(
-                        candidate_id=candidate.id,
-                        assessment_type="locale_review",
-                        locale=locale,
-                        verdict="manual",
-                        provider=settings.verifier_provider,
-                        model=model,
-                        reasons_json=locale_result.issues,
-                        details_json={"round": review_round + 1},
-                        evidence_hash=candidate.evidence_hash,
-                        prompt_version=candidate.prompt_version,
-                    )
-                )
-                break
-            documents[locale] = localized
-            if not locale_passed:
-                await _needs_redraft(
-                    session,
-                    candidate,
-                    "news_locale_review_failed",
-                    f"{locale} review did not pass.",
-                )
-                return candidate.status
-
-        documents = await ensure_assets(session, candidate, documents)
-        problems: dict[str, list[str]] = {
-            locale: hard_policy_problems(
-                item,
-                cast(Vertical, candidate.vertical),
-                locale,
-                source_count=evidence_site_count(usable),
-            )
-            for locale, item in documents.items()
-        }
-        candidate.lint_json = problems
-        candidate.draft_bundle_json = {
-            locale: item.model_dump(mode="json") for locale, item in documents.items()
-        }
-        if any(problems.values()):
-            await _needs_redraft(
+        if reverify_documents is not None:
+            return await _second_stage(
                 session,
+                redis,
+                environment,
+                settings,
                 candidate,
-                "news_hard_checks_failed",
-                "One or more locales failed hard checks.",
+                evidence,
+                usable,
+                runs,
+                document=document,
+                slug=draft_slug,
+                event_date=draft_event_date,
+                localized=reverify_documents,
+                automatic=False,
             )
-            return candidate.status
 
-        article, versions = await _save_guide_bundle(
-            session, candidate, draft_slug, draft_event_date, documents
-        )
+        # End of stage one: keep the verified draft for the owner and ask Jev about it.
+        candidate.draft_bundle_json = {"zh-TW": document.model_dump(mode="json")}
+        candidate.lint_json = {}
         candidate.status = "jev_review"
         await session.commit()
-        active_run = await _start_run(
-            session, candidate, "jev", provider="jev", model=environment.jev_model
+        await runs.start("jev-zh-TW", provider="jev", model=environment.jev_model)
+        decisions = await ai.jev_assessments(
+            redis, environment, settings, candidate, {"zh-TW": document}, locales=("zh-TW",)
         )
-        decisions = await ai.jev_assessments(redis, environment, settings, candidate, documents)
-        jev_run_id = active_run.id
-        await _finish_run(
-            session,
-            active_run,
+        await runs.finish(
             usage={
                 "input_tokens": sum(item.usage.get("input_tokens", 0) for item in decisions),
                 "output_tokens": sum(item.usage.get("output_tokens", 0) for item in decisions),
             },
             metadata={"tiers": {item.locale: item.tier for item in decisions}},
         )
-        active_run = None
         for decision in decisions:
             session.add(
                 NewsAssessment(
@@ -707,77 +637,43 @@ async def process_candidate(
                     prompt_version=candidate.prompt_version,
                 )
             )
-        candidate.would_publish = all(item.tier == "act" for item in decisions)
-        evidence_current, evidence_reasons = await revalidate_evidence(
-            session, evidence, rate_limiter=RedisHostRateLimiter(redis)
+        candidate.would_publish = bool(decisions) and all(
+            item.tier == "act" for item in decisions
         )
-        latest_hash = evidence_fingerprint(
-            [{"url": row.url, "content_hash": row.content_hash} for row in evidence]
-        )
-        if not evidence_current or latest_hash != candidate.evidence_hash:
-            candidate.would_publish = False
-            await _manual(
-                session,
-                candidate,
-                "news_evidence_changed",
-                "Evidence changed before publication: " + "; ".join(evidence_reasons[:3]),
-            )
-            return "manual_review"
-        if not candidate.would_publish:
-            await _manual(
-                session,
-                candidate,
-                "news_jev_manual",
-                "At least one locale was not approved by Jev.",
-            )
-            return "manual_review"
 
         fresh_settings = await settings_row(session)
         gate = await gate_for(session, fresh_settings, cast(Vertical, candidate.vertical))
-        automatic = bool(getattr(fresh_settings, f"auto_publish_{candidate.vertical}"))
         if (
-            not fresh_settings.enabled
-            or fresh_settings.mode != "automatic"
-            or not automatic
-            or not gate.eligible
+            fresh_settings.enabled
+            and fresh_settings.mode == "automatic"
+            and bool(getattr(fresh_settings, f"auto_publish_{candidate.vertical}"))
+            and gate.eligible
+            and candidate.would_publish
+            # A single-source article always waits for a person.
+            and evidence_sufficient(usable)
         ):
-            candidate.status = "shadow_review"
-            _clear_reverify_marker(candidate)
-            await session.commit()
-            return "shadow_review"
-
-        await mark_assets_public(session, candidate.id)
-        candidate.status = "published"
-        _clear_reverify_marker(candidate)
-        candidate.published_at = datetime.now(UTC)
-        audit(
+            return await _second_stage(
+                session,
+                redis,
+                environment,
+                settings,
+                candidate,
+                evidence,
+                usable,
+                runs,
+                document=document,
+                slug=draft_slug,
+                event_date=draft_event_date,
+                localized=None,
+                automatic=True,
+            )
+        await _manual(
             session,
-            None,
-            "news_candidate_auto_published",
-            f"news-candidate:{candidate.id}",
-            candidate_id=str(candidate.id),
-            article_id=str(article.id),
-            model=environment.jev_model,
-            prompt_version=candidate.prompt_version,
-            evidence_sha256=candidate.evidence_hash,
+            candidate,
+            ZH_DRAFT_READY,
+            "A verified Traditional Chinese draft is waiting for the owner's decision.",
         )
-        await admin_service.publish_bundle(
-            session,
-            None,
-            article.id,
-            documents,
-            versions,
-            reason="Jev approved all five locales and the vertical gate was enabled.",
-            automation_metadata={
-                "candidate_id": str(candidate.id),
-                "pipeline_run_id": str(jev_run_id),
-                "model": environment.jev_model,
-                "prompt_version": candidate.prompt_version,
-                "policy_version": candidate.policy_version,
-                "evidence_sha256": candidate.evidence_hash,
-            },
-        )
-        return "published"
+        return "manual_review"
     except Exception as error:
         await session.rollback()
         candidate = await session.get(NewsCandidate, candidate_id)
@@ -794,8 +690,8 @@ async def process_candidate(
             if candidate.error_code != REVERIFY_MARKER:
                 candidate.error_code = type(error).__name__[:64]
             candidate.error_detail = f"{type(error).__name__}: {error}"[:4000]
-        if active_run is not None:
-            run = await session.get(NewsPipelineRun, active_run.id)
+        if runs.active is not None:
+            run = await session.get(NewsPipelineRun, runs.active.id)
             if run is not None:
                 run.status = "failed"
                 run.error_code = type(error).__name__[:64]
@@ -803,6 +699,231 @@ async def process_candidate(
                 run.finished_at = datetime.now(UTC)
         await session.commit()
         raise
+
+
+async def _drafted_slug(session: AsyncSession, candidate: NewsCandidate) -> str:
+    """The article address the writer chose in stage one, kept on its draft run."""
+
+    metadata = await session.scalar(
+        select(NewsPipelineRun.metadata_json)
+        .where(
+            NewsPipelineRun.candidate_id == candidate.id,
+            NewsPipelineRun.stage == "draft",
+            NewsPipelineRun.status == "succeeded",
+        )
+        .order_by(NewsPipelineRun.started_at.desc())
+        .limit(1)
+    )
+    slug = metadata.get("slug") if isinstance(metadata, dict) else None
+    if not isinstance(slug, str) or not slug:
+        raise AppError(409, "news_draft_unavailable", "候選草稿資料不完整")
+    return slug
+
+
+async def _approver(session: AsyncSession, candidate: NewsCandidate) -> User | None:
+    """The administrator who confirmed publication, for the audit rows and revisions."""
+
+    user_id = await session.scalar(
+        select(NewsAssessment.created_by_user_id)
+        .where(
+            NewsAssessment.candidate_id == candidate.id,
+            NewsAssessment.assessment_type == "human",
+            NewsAssessment.verdict == "publish",
+        )
+        .order_by(NewsAssessment.created_at.desc())
+        .limit(1)
+    )
+    return await session.get(User, user_id) if user_id is not None else None
+
+
+async def _second_stage(
+    session: AsyncSession,
+    redis: Redis,
+    environment: Settings,
+    settings: NewsAutomationSettings,
+    candidate: NewsCandidate,
+    evidence: list[NewsEvidence],
+    usable: list[NewsEvidence],
+    runs: _Runs,
+    *,
+    document: GuideDocument,
+    slug: str,
+    event_date: date,
+    localized: dict[Locale, GuideDocument] | None,
+    automatic: bool,
+) -> str:
+    """Translate (or take the editor's translations), review, check, save and publish."""
+
+    candidate.status = "locale_review"
+    await session.commit()
+    if localized is None:
+        documents: dict[Locale, GuideDocument] = {"zh-TW": document}
+        for target in TARGET_LOCALES:
+            await runs.start(
+                f"translation-{target}",
+                provider=settings.writer_provider,
+                model=settings.writer_model,
+            )
+            translated, usage, model = await ai.translate_article(
+                environment, settings, document, target
+            )
+            await runs.finish(usage=usage, model=model)
+            documents[target] = translated.document
+    else:
+        documents = {**localized, "zh-TW": document}
+    documents = {
+        locale: _topic_linked(item, candidate.vertical, locale)
+        for locale, item in documents.items()
+    }
+    document = documents["zh-TW"]
+    session.add(
+        NewsAssessment(
+            candidate_id=candidate.id,
+            assessment_type="locale_review",
+            locale="zh-TW",
+            verdict="pass",
+            provider=settings.verifier_provider,
+            model=settings.verifier_model,
+            reasons_json=[],
+            details_json={
+                "basis": "verified_source_locale",
+                "document_sha256": document_fingerprint(document),
+            },
+            evidence_hash=candidate.evidence_hash,
+            prompt_version=candidate.prompt_version,
+        )
+    )
+    for locale in TARGET_LOCALES:
+        translated_document = _source_locked(documents[locale], evidence)
+        locale_passed = False
+        for review_round in range(2):
+            await runs.start(
+                f"locale-{locale}-{review_round + 1}",
+                provider=settings.verifier_provider,
+                model=settings.verifier_model,
+            )
+            locale_result, usage, model = await ai.review_locale(
+                environment, settings, document, locale, translated_document
+            )
+            await runs.finish(usage=usage, model=model)
+            if locale_result.verdict == "pass":
+                locale_passed = True
+                session.add(
+                    NewsAssessment(
+                        candidate_id=candidate.id,
+                        assessment_type="locale_review",
+                        locale=locale,
+                        verdict="pass",
+                        provider=settings.verifier_provider,
+                        model=model,
+                        reasons_json=[],
+                        details_json={
+                            "round": review_round + 1,
+                            "document_sha256": document_fingerprint(translated_document),
+                        },
+                        evidence_hash=candidate.evidence_hash,
+                        prompt_version=candidate.prompt_version,
+                    )
+                )
+                break
+            if (
+                locale_result.verdict == "revise"
+                and review_round == 0
+                and locale_result.corrected_document
+            ):
+                translated_document = _source_locked(locale_result.corrected_document, evidence)
+                continue
+            session.add(
+                NewsAssessment(
+                    candidate_id=candidate.id,
+                    assessment_type="locale_review",
+                    locale=locale,
+                    verdict="manual",
+                    provider=settings.verifier_provider,
+                    model=model,
+                    reasons_json=locale_result.issues,
+                    details_json={"round": review_round + 1},
+                    evidence_hash=candidate.evidence_hash,
+                    prompt_version=candidate.prompt_version,
+                )
+            )
+            break
+        documents[locale] = translated_document
+        if not locale_passed:
+            await _needs_redraft(
+                session,
+                candidate,
+                "news_locale_review_failed",
+                f"{locale} review did not pass.",
+            )
+            return candidate.status
+
+    documents = await ensure_assets(session, candidate, documents)
+    problems: dict[str, list[str]] = {
+        locale: hard_policy_problems(
+            item,
+            cast(Vertical, candidate.vertical),
+            locale,
+            source_count=evidence_site_count(usable),
+        )
+        for locale, item in documents.items()
+    }
+    candidate.lint_json = problems
+    candidate.draft_bundle_json = {
+        locale: item.model_dump(mode="json") for locale, item in documents.items()
+    }
+    if any(problems.values()):
+        await _needs_redraft(
+            session,
+            candidate,
+            "news_hard_checks_failed",
+            "One or more locales failed hard checks.",
+        )
+        return candidate.status
+
+    await _save_guide_bundle(session, candidate, slug, event_date, documents)
+    confirmed = candidate.human_decision == "publish"
+    if not confirmed and not automatic:
+        # An edited article nobody has confirmed yet waits for the publish button.
+        _clear_reverify_marker(candidate)
+        await _manual(
+            session,
+            candidate,
+            READY_TO_PUBLISH,
+            "The checked five-locale article is waiting for the publish button.",
+        )
+        return "manual_review"
+    try:
+        checked, versions = await news_service.publication_bundle(session, candidate, redis)
+    except AppError as problem:
+        if problem.code != "news_evidence_changed":
+            raise
+        await _manual(session, candidate, "news_evidence_changed", problem.detail)
+        return "manual_review"
+    _clear_reverify_marker(candidate)
+    if confirmed:
+        actor = await _approver(session, candidate)
+        reason = candidate.human_reason or "The owner confirmed publication."
+        metadata: dict[str, Any] = {"human_override": True, "confirmed_stage": "zh_draft"}
+    else:
+        actor = None
+        reason = "Jev approved the Traditional Chinese draft and the vertical gate was enabled."
+        metadata = {"model": environment.jev_model}
+        audit(
+            session,
+            None,
+            "news_candidate_auto_published",
+            f"news-candidate:{candidate.id}",
+            candidate_id=str(candidate.id),
+            article_id=str(candidate.guide_article_id),
+            model=environment.jev_model,
+            prompt_version=candidate.prompt_version,
+            evidence_sha256=candidate.evidence_hash,
+        )
+    await news_service.publish_news_bundle(
+        session, candidate, actor, checked, versions, reason=reason, metadata=metadata
+    )
+    return "published"
 
 
 async def recover_stalled_candidates(

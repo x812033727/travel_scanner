@@ -23,6 +23,7 @@ from app.news_automation.models import (
     NewsCandidate,
     NewsEvidence,
 )
+from app.news_automation.policy import ZH_DRAFT_READY, document_fingerprint
 from app.news_automation.schemas import CandidateAction, EditorialDraft, VerificationResult
 from app.problems import AppError
 from tests.test_news_pipeline import (
@@ -304,3 +305,101 @@ def test_closest_titles_rank_by_likeness_and_ignore_case() -> None:
         "OPENAI SHIPS A NEW MODEL",
         "OpenAI ships new models to Europe",
     ]
+
+
+async def verified_zh_draft(session: AsyncSession, candidate: NewsCandidate) -> None:
+    """Give a candidate a stored zh-TW draft and the passing verification that matches it."""
+
+    document = news_document("模型發布")
+    candidate.draft_bundle_json = {"zh-TW": document.model_dump(mode="json")}
+    candidate.evidence_hash = "a" * 64
+    session.add(
+        NewsAssessment(
+            candidate_id=candidate.id,
+            assessment_type="verification",
+            verdict="pass",
+            details_json={"document_sha256": document_fingerprint(document)},
+            evidence_hash="a" * 64,
+            prompt_version="news-v1",
+        )
+    )
+    await session.commit()
+
+
+@pytest.mark.asyncio
+async def test_confirming_a_verified_chinese_draft_queues_the_translations() -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_candidate(session, status="manual_review")
+        candidate.error_code = ZH_DRAFT_READY
+        await verified_zh_draft(session, candidate)
+
+        detail = await service.approve_candidate(session, EDITOR, candidate.id, ACTION)
+        human = list(
+            await session.scalars(
+                select(NewsAssessment).where(
+                    NewsAssessment.candidate_id == candidate.id,
+                    NewsAssessment.assessment_type == "human",
+                )
+            )
+        )
+        actions = list(await session.scalars(select(AdminAuditLog.action)))
+    await engine.dispose()
+    assert (detail.status, detail.human_decision, detail.error_code) == (
+        "discovered",
+        "publish",
+        None,
+    )
+    assert [(row.verdict, row.created_by_user_id) for row in human] == [("publish", EDITOR.id)]
+    assert actions == ["news_candidate_publish_confirmed"]
+
+
+@pytest.mark.parametrize(
+    ("status", "error_code", "decision", "verified"),
+    [
+        ("manual_review", ZH_DRAFT_READY, None, False),
+        ("manual_review", "news_jev_manual", None, True),
+        ("manual_review", DUPLICATE_UNCERTAIN, None, True),
+        ("manual_review", "news_evidence_changed", "publish", True),
+        ("needs_redraft", "news_verification_failed", None, True),
+        ("published", None, "publish", True),
+    ],
+)
+@pytest.mark.asyncio
+async def test_confirmation_needs_a_chinese_draft_waiting_for_it(
+    status: str, error_code: str | None, decision: str | None, verified: bool
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_candidate(session, status=status)
+        candidate.error_code = error_code
+        candidate.human_decision = decision
+        if verified:
+            await verified_zh_draft(session, candidate)
+        else:
+            await session.commit()
+        with pytest.raises(AppError) as refused:
+            await service.approve_candidate(session, EDITOR, candidate.id, ACTION)
+    await engine.dispose()
+    assert refused.value.code == "news_candidate_not_approvable"
+
+
+@pytest.mark.asyncio
+async def test_a_confirmed_draft_that_failed_can_be_confirmed_again_and_retry_forgets_it() -> (
+    None
+):
+    engine, factory = await database()
+    async with factory() as session:
+        stalled = await seed_candidate(session, status="failed")
+        stalled.human_decision = "publish"
+        await verified_zh_draft(session, stalled)
+        again = await service.approve_candidate(session, EDITOR, stalled.id, ACTION)
+
+        redraft = await seed_candidate(session, status="manual_review")
+        redraft.error_code = ZH_DRAFT_READY
+        redraft.human_decision = "publish"
+        await session.commit()
+        retried = await service.retry_candidate(session, EDITOR, redraft.id, ACTION)
+    await engine.dispose()
+    assert (again.status, again.human_decision) == ("discovered", "publish")
+    assert (retried.status, retried.human_decision) == ("discovered", None)

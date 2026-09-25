@@ -89,7 +89,7 @@ afterEach(() => vi.unstubAllGlobals());
 
 const posts = () => vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST").map(([url]) => String(url));
 const listCalls = () => vi.mocked(fetch).mock.calls.map(([url]) => String(url)).filter((url) => url.includes("/admin/news/candidates?"));
-const actionButtons = () => ["五語發布", "重新查核", "不是重複，繼續寫", "重新執行", "退件", "回報發布後重大錯誤"]
+const actionButtons = () => ["確認發布，翻譯其他語言", "重新翻譯並發布", "五語發布", "重新查核", "不是重複，繼續寫", "重新執行", "退件", "回報發布後重大錯誤"]
   .filter((name) => screen.queryByRole("button", { name }));
 
 describe("AdminNewsWorkspace", () => {
@@ -144,13 +144,46 @@ describe("AdminNewsWorkspace", () => {
     ["manual_review", "news_verification_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
     ["published", null, "00000000-0000-4000-8000-000000000002", ["回報發布後重大錯誤"]],
     ["rejected", null, null, []],
+    ["manual_review", "news_zh_draft_ready", null, ["確認發布，翻譯其他語言", "重新執行", "退件"]],
+    ["manual_review", "news_ready_to_publish", "00000000-0000-4000-8000-000000000002", ["五語發布", "重新查核", "退件"]],
   ])("shows only the buttons that work for %s / %s", async (status, errorCode, articleId, expected) => {
-    const row = { ...summary, status, error_code: errorCode, guide_article_id: articleId };
+    const row = { ...summary, status, error_code: errorCode, guide_article_id: articleId, human_decision: null };
     serveRows(row);
     render(<AdminNewsWorkspace />);
     fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
     await screen.findByText(/Official release/);
     expect(actionButtons().sort()).toEqual([...expected].sort());
+  });
+
+  it.each([
+    ["manual_review", "news_locale_review_failed", ["重新翻譯並發布", "退件"]],
+    ["failed", "ValidationError", ["重新翻譯並發布", "重新執行", "退件"]],
+  ])("offers to translate again once publication is confirmed (%s / %s)", async (status, errorCode, expected) => {
+    serveRows({ ...summary, status, error_code: errorCode, guide_article_id: null, human_decision: "publish" });
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
+    await screen.findByText(/Official release/);
+    expect(actionButtons().sort()).toEqual([...expected].sort());
+  });
+
+  it("confirms a Chinese draft and says the translations have started", async () => {
+    const draft = { ...summary, error_code: "news_zh_draft_ready", guide_article_id: null, human_decision: null };
+    serveRows(draft);
+    details[draft.id] = {
+      ...detailOf(draft),
+      documents: { "zh-TW": { ...document, title: "繁中草稿標題" } },
+      assessments: [{ id: "j1", assessment_type: "jev", locale: "zh-TW", verdict: "pass", confidence: 0.93, provider: "jev", model: "jev", reasons: [], details: { tier: "act" }, created_at: "2026-09-25T01:00:00Z" }],
+    };
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /Official AI API update/ }));
+    expect(await screen.findByText("繁中草稿標題")).toBeTruthy();
+    expect(screen.getAllByText("繁中草稿待確認").length).toBeGreaterThan(0);
+    expect(screen.getByText(/繁中草稿已經寫好，也通過查核模型對照原文的查核/)).toBeTruthy();
+    expect(screen.getByText("Jev 對這份繁中稿的判斷：可自動處理（信心 0.93）")).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "內容正確，可以發布" }));
+    fireEvent.click(screen.getByRole("button", { name: "確認發布，翻譯其他語言" }));
+    await waitFor(() => expect(posts()).toEqual([`/api/travel/admin/news/candidates/${draft.id}/approve`]));
+    expect(await screen.findByText(/已確認發布，正在翻譯另外四語/)).toBeTruthy();
   });
 
   it("rejects the ticked rows of a list one by one and reports the result", async () => {
@@ -194,7 +227,7 @@ describe("AdminNewsWorkspace", () => {
     fireEvent.click(within(filters).getByRole("button", { name: /缺證據/ }));
     await waitFor(() => expect(listCalls().at(-1)).toContain("status=needs_evidence"));
     expect(listCalls().at(-1)).toContain("page=1");
-    expect(screen.getByText(/系統之後不會自己補證據/)).toBeTruthy();
+    expect(screen.getByText(/沒有可以引用的證據頁/)).toBeTruthy();
     const url = new URL(window.location.href);
     expect(url.searchParams.get("queue")).toBe("evidence");
     expect(url.searchParams.get("page")).toBeNull();

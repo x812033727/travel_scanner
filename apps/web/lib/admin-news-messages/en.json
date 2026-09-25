@@ -99,9 +99,9 @@
   "evidenceView": "Needs evidence",
   "publishedView": "Published",
   "closedView": "Rejected",
-  "reviewHint": "Only candidates that need your decision: a finished five-language draft, or a duplicate check Jev could not settle.",
+  "reviewHint": "Candidates waiting for your decision: Chinese drafts to confirm, duplicate checks Jev could not settle, and confirmed stories stuck in translation or checks.",
   "redraftHint": "The AI stopped before a five-language draft existed, so there is nothing to publish. Run one again to draft it anew (spends model calls), or tick several and reject them together.",
-  "evidenceHint": "Evidence from one website only, so no model was run. The system does not look for more evidence later and running it again does not help; reject them. Coverage from another website arrives as a new candidate.",
+  "evidenceHint": "Only lead-only pages, so there is nothing a draft could cite and no model was run. Reject them; coverage from an evidence source arrives as a new candidate.",
   "closedHint": "Rejected candidates and duplicates, for reference only.",
   "selectRow": "Select {title}",
   "selectPage": "Select this page",
@@ -143,7 +143,9 @@
     "news_not_eligible": "Not newsworthy, according to the AI",
     "news_processing_stale": "Interrupted while processing",
     "news_exact_duplicate": "Same as an earlier candidate",
-    "news_reverify_requested": "Waiting to be re-verified"
+    "news_reverify_requested": "Waiting to be re-verified",
+    "news_zh_draft_ready": "Chinese draft waiting for you",
+    "news_ready_to_publish": "Five languages ready to publish"
   },
   "next": {
     "shadow": "Jev approved all five languages; it was not published only because the scanner runs in shadow mode. Read the preview, then publish or reject it. Your decision is compared with Jev's for the auto-publish gate.",
@@ -153,10 +155,13 @@
     "evidenceChanged": "A source page changed after the article was checked, so it cannot be published, and running it again gives the same result. Reject it; later coverage arrives as a new candidate.",
     "redraft": "The AI stopped before a five-language draft existed (reason above), so there is nothing to publish or edit. Run it again to draft the whole article anew (spends model calls), or reject it.",
     "failed": "Processing hit an error (message above). Run it again, or reject it.",
-    "needsEvidence": "Only one website backs this story, so no model was run. The system does not look for more evidence later and running it again does not help: reject it. Coverage from another website arrives as a new candidate.",
+    "needsEvidence": "Only lead-only pages back this story, so there is nothing a draft could cite and no model was run. Reject it; coverage from an evidence source arrives as a new candidate.",
     "published": "Published. If you find a major factual or licensing error, tick the box below and report it: auto-publishing for this category switches off at once.",
     "closed": "Rejected or a duplicate. Nothing to do.",
-    "working": "The AI is still working on this candidate. It appears under To review, Needs redraft or Needs evidence when it finishes."
+    "working": "The AI is still working on this candidate. It appears under To review, Needs redraft or Needs evidence when it finishes.",
+    "zhDraft": "The Traditional Chinese draft is written and passed the fact check against its source. Read the preview: to publish, press Confirm, translate and publish, and the other four languages are translated, checked and published by themselves; otherwise reject it, or run it again for a new draft. Your decision is compared with Jev's for the auto-publish gate.",
+    "translationHold": "You confirmed publication, but a translation or a check did not pass (reason above). Press Translate again and publish to try once more, or reject it.",
+    "readyToPublish": "The edited five-language article passed every check. Publish it if it is right, or reject it."
   },
   "assessmentTypes": {
     "duplicate": "Duplicate check",
@@ -181,5 +186,9 @@
   "reasonCodes": {
     "quota_unavailable": "Jev's quota for today is used up",
     "semantic_duplicate_uncertain": "Unsure whether it repeats a story"
-  }
+  },
+  "approve": "Confirm, translate and publish",
+  "retranslate": "Translate again and publish",
+  "doneApprove": "Publication confirmed. The other four languages are being translated; it publishes by itself when they pass, or comes back here if something fails.",
+  "jevOnDraft": "Jev on this Chinese draft: {tier} (confidence {confidence})"
 }
