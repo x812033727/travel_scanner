@@ -1,7 +1,7 @@
 """The news final editor: a third model that checks each of the five locales before Jev.
 
 Revision ID: 0094_news_final_editor
-Revises: 0092_video_subscription_limit
+Revises: 0093_video_project_dropped
 
 The owner decided on 2026-09-25 that a final editor checks every translated locale against
 the evidence before Jev makes the last call, and that it runs on Claude Opus 5.5 by default
@@ -18,7 +18,7 @@ import sqlalchemy as sa
 from alembic import op
 
 revision: str = "0094_news_final_editor"
-down_revision: str | None = "0092_video_subscription_limit"
+down_revision: str | None = "0093_video_project_dropped"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

@@ -72,5 +72,4 @@ final-edit-* and jev-final.
 
 ## Notes
 
-- Migration number: PR #759 claims 0093. This one is 0094, with down_revision 0092 until
-  #759 merges; re-point it before merging whichever goes second.
+- Migration number: PR #759 took 0093; this one is 0094 on top of it.
