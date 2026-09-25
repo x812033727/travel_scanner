@@ -194,6 +194,11 @@ export async function main(argv, overrides = {}) {
   }
 }
 
+// No top-level await here: `auto` runs sub-commands through `main` by importing this module
+// (automation/flow.mjs), and importing a module that is still awaiting at its top level never
+// settles. The worker's `auto` hung that way on its first approved gate (exit 13, 2026-09-25).
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  process.exitCode = await main(process.argv.slice(2));
+  main(process.argv.slice(2)).then((code) => {
+    process.exitCode = code;
+  });
 }
