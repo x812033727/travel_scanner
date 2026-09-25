@@ -7,6 +7,8 @@ metadata:
 
 # 正式站營運（prod-host-ops）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/prod-host-ops/` 底下；`.claude/skills/prod-host-ops/` 只放這份 SKILL.md 的逐字複本。
+
 部署之外、碰正式站的事都在這裡：看、改、證明。**連線、SSH 批次、auto 模式分類器會擋什麼，全部照 skill `deploy`**（`.agents/skills/deploy/SKILL.md` 的「不變的規矩」與 `.agents/skills/deploy/references/pitfalls.md`），這裡不重抄。`<SSH>` 同 deploy：你自己開到主機 root shell 的前綴。主機上 repo 在 `/root/travel_scanner`，compose 指令都在那個目錄以 `docker compose -f docker-compose.prod.yml` 執行。
 
 ## 不變的規矩
