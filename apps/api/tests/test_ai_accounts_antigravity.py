@@ -12,6 +12,7 @@ from ai_accounts_agent.antigravity import (
     ACCOUNT_NAME,
     CODE_PATTERN,
     DATA_DIR,
+    LEGACY_TOKEN_NAME,
     TOKEN_NAME,
     AntigravityAccounts,
     email_from_logs,
@@ -19,6 +20,9 @@ from ai_accounts_agent.antigravity import (
     is_authorize_url,
     mask_emails,
     parse_quota,
+    saved_login,
+    set_aside_login,
+    settle_set_aside_login,
 )
 from ai_accounts_agent.config import AgentConfig
 from ai_accounts_agent.screen import Screen
@@ -43,7 +47,7 @@ FAKE_AGY = textwrap.dedent(
     home = os.environ["HOME"]
     data = os.path.join(home, ".gemini", "antigravity-cli")
     os.makedirs(data, exist_ok=True)
-    token = os.path.join(data, "jetski-standalone-oauth-token")
+    token = os.path.join(data, "antigravity-oauth-token")
 
     def show(text):
         sys.stdout.write(text)
@@ -266,6 +270,33 @@ def test_status_details_and_logout_read_and_clear_the_files(tmp_path: Path) -> N
     assert not (home / ACCOUNT_NAME).exists()
 
 
+def test_the_older_token_name_counts_and_signing_out_removes_both(tmp_path: Path) -> None:
+    config = agy_config(tmp_path)
+    accounts = AntigravityAccounts(config)
+    data = config.slot_path("agy", "b") / DATA_DIR
+    data.mkdir(parents=True)
+    (data / LEGACY_TOKEN_NAME).write_text("{}", "utf-8")
+    assert accounts.has_credentials("b")
+    (data / TOKEN_NAME).write_text("{}", "utf-8")
+    accounts.logout("b")
+    assert not (data / TOKEN_NAME).exists() and not (data / LEGACY_TOKEN_NAME).exists()
+
+
+def test_a_login_moved_aside_comes_back_unless_a_new_one_stands(tmp_path: Path) -> None:
+    data = tmp_path / DATA_DIR
+    data.mkdir(parents=True)
+    (data / TOKEN_NAME).write_text("old", "utf-8")
+    set_aside_login(data)
+    assert not saved_login(data)
+    settle_set_aside_login(data)
+    assert (data / TOKEN_NAME).read_text("utf-8") == "old"
+    set_aside_login(data)
+    (data / TOKEN_NAME).write_text("new", "utf-8")
+    settle_set_aside_login(data)
+    assert (data / TOKEN_NAME).read_text("utf-8") == "new"
+    assert sorted(path.name for path in data.iterdir()) == [TOKEN_NAME]
+
+
 def test_environment_gives_each_account_its_own_home_and_no_keyring(tmp_path: Path) -> None:
     config = agy_config(tmp_path)
     environment = AntigravityAccounts(config).environment("c")
@@ -308,6 +339,22 @@ def test_page_login_picks_google_takes_the_code_and_reads_the_quota(tmp_path: Pa
         ("Gemini Models", 300, 20.0),
         ("Gemini Models", 10_080, 50.0),
     ]
+
+
+@posix_only
+def test_signing_in_again_sets_the_saved_login_aside_until_it_ends(tmp_path: Path) -> None:
+    # On the host (2026-09-25) a second login on a signed-in account never showed a URL:
+    # agy opened on its TUI, and the page got a 503 after the API's timeout.
+    config = agy_config(tmp_path)
+    token = sign_in_on_disk(config, "b", "old@x.test") / DATA_DIR / TOKEN_NAME
+    application = AgentApplication(config)
+    started = time.monotonic()
+    status, login = signed(application, "POST", "/v1/accounts/agy/b/login")
+    assert (status, login["url"]) == (201, GOOGLE_URL)
+    assert time.monotonic() - started < 10
+    assert not token.exists()
+    signed(application, "POST", f"/v1/logins/{login['id']}/cancel")
+    assert token.read_text("utf-8") == "{}"
 
 
 @posix_only

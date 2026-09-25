@@ -54,10 +54,12 @@ class AgentConfig:
     # How long a probe waits for the status line before sending one message, and after it.
     claude_usage_quiet_seconds: float = 15.0
     claude_usage_message_seconds: float = 40.0
-    # agy starts a language server before its TUI: the sign-in URL and the first screen
-    # take a few seconds (under ten on the host). The probe lets the TUI settle, opens the
-    # quota page, and gives the page a moment to reload the numbers before reading it.
-    agy_start_timeout_seconds: float = 30.0
+    # agy starts a language server before its TUI; on the host the sign-in URL is there in
+    # under a second. The wait must stay under the API's agent timeout (25 s): a login that
+    # never shows a URL then ends as this agent's error, not as a 503 for the page. The probe
+    # lets the TUI settle, opens the quota page, and gives the page a moment to reload the
+    # numbers before reading it.
+    agy_start_timeout_seconds: float = 15.0
     agy_usage_start_seconds: float = 4.0
     agy_usage_page_seconds: float = 2.0
     agy_usage_timeout_seconds: float = 60.0

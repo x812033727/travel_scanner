@@ -7,9 +7,13 @@ What the host showed on 2026-09-25 (agy 1.2.11), and what this module relies on:
   authorization code below". Google's callback page (antigravity.google/oauth-callback)
   shows the code, which carries a `/` (`4/0A…`).
 - The login is kept in the Secret Service keyring when one answers, otherwise in
-  ``~/.gemini/antigravity-cli/jetski-standalone-oauth-token``. The keyring is shared by
+  ``~/.gemini/antigravity-cli/antigravity-oauth-token`` (seen after the first real login on
+  the host; older versions used ``jetski-standalone-oauth-token``). The keyring is shared by
   every account of a user, so the agent and the shell commands point the session bus at
   nothing: each account then always keeps its own file.
+- A home that already holds a login opens straight on the TUI, never on the login picker,
+  so signing in again moves the saved login aside first and puts it back if the new one
+  does not finish.
 - The CLI has no switch for its data folder; ``~/.gemini/antigravity-cli`` follows HOME.
   Each account slot is therefore a HOME of its own.
 - There is no status command. The language server logs "OAuth: authenticated successfully
@@ -61,10 +65,15 @@ from ai_accounts_agent.sessions import (
 from ai_accounts_agent.statusline import SNAPSHOT_NAME, atomic_write_text
 
 DATA_DIR = Path(".gemini") / "antigravity-cli"
-TOKEN_NAME = "jetski-standalone-oauth-token"  # noqa: S105 - a file name
+# Where agy 1.2.11 saves the login without a keyring, and the name older versions used.
+TOKEN_NAME = "antigravity-oauth-token"  # noqa: S105 - a file name
+LEGACY_TOKEN_NAME = "jetski-standalone-oauth-token"  # noqa: S105 - a file name
+TOKEN_NAMES = (TOKEN_NAME, LEGACY_TOKEN_NAME)
 # The CLI keeps other per-account state next to the token with the same prefix (its user
 # tier, when the keyring is away); signing out removes all of it.
 TOKEN_PREFIX = "jetski-standalone-"  # noqa: S105 - a file name prefix
+# A login moved aside while the account signs in again.
+SET_ASIDE_SUFFIX = ".mokaair-previous"
 ACCOUNT_NAME = "mokaair-account.json"
 # A session bus address that fails at once: the keyring lookup errors and the CLI falls
 # back to the token file in this account's home. Also used by ops/ai-accounts.
@@ -291,11 +300,38 @@ def _header_account(lines: Sequence[str]) -> tuple[str | None, str | None]:
     return None, None
 
 
+def saved_login(data_dir: Path) -> bool:
+    return any((data_dir / name).exists() for name in TOKEN_NAMES)
+
+
+def set_aside_login(data_dir: Path) -> None:
+    """Move a saved login out of agy's way, so it opens on the login picker."""
+    for name in TOKEN_NAMES:
+        path = data_dir / name
+        if path.exists():
+            os.replace(path, data_dir / f"{name}{SET_ASIDE_SUFFIX}")
+
+
+def settle_set_aside_login(data_dir: Path) -> None:
+    """After a sign-in ends: a new login stands, or the one moved aside comes back."""
+    keep_new = saved_login(data_dir)
+    for name in TOKEN_NAMES:
+        aside = data_dir / f"{name}{SET_ASIDE_SUFFIX}"
+        with contextlib.suppress(OSError):
+            if not aside.exists():
+                continue
+            if keep_new:
+                aside.unlink()
+            else:
+                os.replace(aside, data_dir / name)
+
+
 class AntigravityLogin:
     """Drives `agy`'s own sign-in in a pseudo-terminal.
 
     The TUI stays open after the login is saved, so the saved token decides the outcome:
-    once it appears the CLI is stopped and the finalizer checks the account.
+    once it appears the CLI is stopped and the finalizer checks the account. However it
+    ends, a login moved aside for this sign-in is dropped or put back.
     """
 
     kind = "paste_code"
@@ -312,7 +348,7 @@ class AntigravityLogin:
     ) -> None:
         self.user_code: str | None = None
         self._home = home
-        self._token = home / DATA_DIR / TOKEN_NAME
+        self._data = home / DATA_DIR
         self._exchange_timeout = exchange_timeout
         self._finalize = finalize
         self._lock = threading.Lock()
@@ -416,18 +452,18 @@ class AntigravityLogin:
         time.sleep(TYPE_PAUSE_SECONDS)
         self._press_enter()
         deadline = time.monotonic() + self._exchange_timeout
-        while time.monotonic() < deadline and not self._token.exists():
+        while time.monotonic() < deadline and not saved_login(self._data):
             if self._process.poll() is not None or self.state()[0] != VERIFYING:
                 break
             time.sleep(0.25)
-        if self._token.exists():
+        if saved_login(self._data):
             email_deadline = time.monotonic() + EMAIL_WAIT_SECONDS
-            data_dir = self._home / DATA_DIR
-            while time.monotonic() < email_deadline and email_from_logs(data_dir) is None:
+            while time.monotonic() < email_deadline and email_from_logs(self._data) is None:
                 time.sleep(0.25)
         # The account must not be checked, or probed, while this CLI still holds its home.
         self._stop()
         rejection = self._finalize()
+        settle_set_aside_login(self._data)
         with self._lock:
             if self._status == VERIFYING:
                 if rejection is None:
@@ -449,9 +485,12 @@ class AntigravityLogin:
 
     def cancel(self) -> None:
         with self._lock:
-            if self._status in (PENDING, VERIFYING):
+            active = self._status in (PENDING, VERIFYING)
+            if active:
                 self._status, self._error = CANCELLED, None
         self._stop()
+        if active:
+            settle_set_aside_login(self._data)
 
     def _stop(self) -> None:
         _stop_session(self._process)
@@ -476,7 +515,7 @@ class AntigravityAccounts:
         )
 
     def has_credentials(self, slot: str) -> bool:
-        return (self.home(slot) / DATA_DIR / TOKEN_NAME).exists()
+        return saved_login(self.home(slot) / DATA_DIR)
 
     def _account(self, slot: str) -> dict[str, Any]:
         return read_json(self.home(slot) / ACCOUNT_NAME) or {}
@@ -642,22 +681,33 @@ class AntigravityAccounts:
     def start_login(self, slot: str, finalize: Finalizer) -> AntigravityLogin:
         home = self.home(slot)
         home.mkdir(mode=0o700, parents=True, exist_ok=True)
-        return AntigravityLogin(
-            self.config.agy_command,
-            self.environment(slot),
-            home,
-            url_timeout=self.config.agy_start_timeout_seconds,
-            exchange_timeout=self.config.code_exchange_timeout_seconds,
-            finalize=finalize,
-        )
+        # Signing in again: agy would open on the TUI of the saved login.
+        set_aside_login(home / DATA_DIR)
+        try:
+            return AntigravityLogin(
+                self.config.agy_command,
+                self.environment(slot),
+                home,
+                url_timeout=self.config.agy_start_timeout_seconds,
+                exchange_timeout=self.config.code_exchange_timeout_seconds,
+                finalize=finalize,
+            )
+        except LoginError:
+            settle_set_aside_login(home / DATA_DIR)
+            raise
 
     def logout(self, slot: str) -> None:
         """Forget the account on this host. The CLI's own `/logout` needs its TUI; removing
         the saved login is what it does locally."""
         home = self.home(slot)
+        data = home / DATA_DIR
         try:
-            for path in (home / DATA_DIR).glob(f"{TOKEN_PREFIX}*"):
-                path.unlink(missing_ok=True)
+            for name in TOKEN_NAMES:
+                (data / name).unlink(missing_ok=True)
+            for path in data.glob(f"{TOKEN_PREFIX}*"):
+                # A login moved aside by a sign-in in progress is that sign-in's to settle.
+                if not path.name.endswith(SET_ASIDE_SUFFIX):
+                    path.unlink(missing_ok=True)
             (home / ACCOUNT_NAME).unlink(missing_ok=True)
             (home / SNAPSHOT_NAME).unlink(missing_ok=True)
         except OSError as exc:
