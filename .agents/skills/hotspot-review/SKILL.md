@@ -7,6 +7,8 @@ metadata:
 
 # 景點待審（hotspot-review）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/hotspot-review/` 底下；`.claude/skills/hotspot-review/` 只放這份 SKILL.md 的逐字複本。
+
 這個 skill 只放規矩、流程與去哪裡讀；細節在 `references/`。寫入一律走後台（`/zh-TW/admin/hotspots`、`/zh-TW/admin/foods`）或它背後的 BFF 端點 `/api/travel/admin/...`（API 本身是 `/api/v1/admin/...`），用已登入的管理員身分；CLI 在主機的 api 容器裡跑，`<SSH>` 與 `<COMPOSE>` 的寫法見 skill `deploy`（`<COMPOSE>` ＝ `docker compose -f docker-compose.prod.yml`）。
 
 ## 先認清佇列卡在哪
