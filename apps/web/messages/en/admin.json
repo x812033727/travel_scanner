@@ -2088,7 +2088,7 @@
     "onePerLine": "One word or phrase per line.",
     "topicSources": "Where topics come from",
     "modelsTitle": "AI model for each stage",
-    "modelsHelp": "Uses the site's API keys under AI services, billed by use. A vendor marked \"no key\" needs its key entered in the AI services settings first.",
+    "modelsHelp": "\"Claude Code (subscription)\" runs on the Claude subscription accounts signed in on the host, with no extra charge, within the plan's limits; the other choices use the site's API keys under AI services, billed by use. A vendor marked \"no key\" needs its key entered first.",
     "provider": "Vendor",
     "model": "Model",
     "noKey": "no key",
@@ -2123,7 +2123,8 @@
       "monthly_token_budget_millions": "Monthly model token limit (millions)",
       "max_verify_rounds": "Most fact-check rounds per video",
       "max_retake_rounds": "Most narration retake rounds",
-      "auto_approve_audio": "Approve the narration automatically when Jev finds every line read correctly"
+      "auto_approve_audio": "Approve the narration automatically when Jev finds every line read correctly",
+      "subscription_max_usage_percent": "Pause a subscription account at this % of its 5-hour or weekly window"
     },
     "stages": {
       "planner": "Planning (topic and outline)",
@@ -2139,6 +2140,9 @@
       "ko": "Korean",
       "zh-CN": "Simplified Chinese"
     },
-    "usage": "This month (UTC): {tokens} of {tokenBudget} tokens used, {drafts} of {draftBudget} drafts made, {calls} model calls ({failed} failed)."
+    "usage": "This month (UTC): {tokens} of {tokenBudget} API tokens used and {planTokens} tokens on the subscription accounts; {drafts} of {draftBudget} drafts made, {calls} model calls ({failed} failed).",
+    "subscription": "subscription",
+    "agentOff": "host agent not set up",
+    "subscriptionHelp": "A subscription account is skipped once its 5-hour or weekly window reaches the percentage above; when every account has, the worker waits for a window to reset and never switches to an API key on its own. Codex is not offered: its command line cannot turn off running commands."
   }
 }

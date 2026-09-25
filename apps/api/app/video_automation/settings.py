@@ -13,6 +13,7 @@ from app.config import Settings
 from app.models import AdminAuditLog, User
 from app.video_automation.models import VideoAutomationSettings
 from app.video_automation.schemas import (
+    ApiProviderName,
     ModelOptionView,
     ProviderName,
     SettingsView,
@@ -24,7 +25,7 @@ from app.video_speech.gemini import GEMINI_TTS_MODELS, PREBUILT_VOICES
 
 # The stages run through the same vendor adapters as the news writer and verifier
 # (app.hotspots.ai_search), so a vendor offers the catalog models that can drive them.
-MODEL_CAPABILITY: dict[ProviderName, Capability] = {
+MODEL_CAPABILITY: dict[ApiProviderName, Capability] = {
     "openai": "responses_json_schema_strict",
     "anthropic": "anthropic_structured_output",
     "minimax": "responses_json_schema_strict",
@@ -33,21 +34,31 @@ MODEL_CAPABILITY: dict[ProviderName, Capability] = {
 AUTO_APPROVED_NOTE = "Jev 判斷每一句都唸對了，依設定自動核准"
 
 
+def _options(entries: Any, capability: Capability | None) -> list[ModelOptionView]:
+    return [
+        ModelOptionView(
+            value=entry.id, label=entry.label, description=entry.note, status=entry.status
+        )
+        for entry in entries
+        if (capability is None or capability in entry.capabilities) and entry.status != "retired"
+    ]
+
+
 def model_options() -> dict[ProviderName, list[ModelOptionView]]:
-    return {
-        provider: [
-            ModelOptionView(
-                value=entry.id, label=entry.label, description=entry.note, status=entry.status
-            )
-            for entry in MODEL_CATALOG[provider]
-            if capability in entry.capabilities and entry.status != "retired"
-        ]
-        for provider, capability in MODEL_CAPABILITY.items()
+    options: dict[ProviderName, list[ModelOptionView]] = {
+        # Claude Code takes the same model names as the API; it runs them on the subscription.
+        "claude_code": _options(MODEL_CATALOG["anthropic"], None),
     }
+    for provider, capability in MODEL_CAPABILITY.items():
+        options[provider] = _options(MODEL_CATALOG[provider], capability)
+    return options
 
 
 def configured_providers(runtime: Settings) -> list[ProviderName]:
-    keys: dict[ProviderName, str | None] = {
+    keys: dict[ProviderName, str | bool | None] = {
+        # Whether the host agent is reachable is only known when a stage runs; configured here
+        # means the API has what it needs to ask it.
+        "claude_code": runtime.ai_accounts_configured,
         "openai": runtime.openai_api_key,
         "anthropic": runtime.anthropic_api_key,
         "minimax": runtime.minimax_api_key,
@@ -95,6 +106,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         monthly_token_budget_millions=row.monthly_token_budget_millions,
         max_verify_rounds=row.max_verify_rounds,
         max_retake_rounds=row.max_retake_rounds,
+        subscription_max_usage_percent=row.subscription_max_usage_percent,
         auto_approve_audio=row.auto_approve_audio,
     )
 

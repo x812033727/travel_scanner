@@ -9,10 +9,13 @@
 | 在哪裡跑 | 正式站主機 |
 | 後台設定 | 各階段的 AI 模型、草稿排程與題材、成片參數、預算上限，都放在「影片審核」頁的「設定」分頁 |
 | 關卡 | 選大綱、看成片、確認上架仍然等站主按；**旁白由 Jev 判斷，全數通過就自動核准** |
-| 寫稿的模型 | 用網站後台的 API 金鑰，按用量計費。預設 Claude Sonnet 5 寫、Claude Opus 5.5 查核 |
+| 寫稿的模型 | **主機上登入的 Claude 訂閱帳號（Claude Code）**，預設 Claude Sonnet 5 寫、Claude Opus 5.5 查核。每個階段也可以改用網站的 API 金鑰 |
 | 題目來源 | 先看站上已查證的新聞與已發布的文章，不夠再用 Brave 搜尋補 |
 
-**為什麼不用主機上已登入的 Claude Code／Codex 訂閱帳號**：`/admin/ai-accounts` 管的是站主個人的訂閱。把網站自己的自動化功能放到個人訂閱上違反 Anthropic 與 OpenAI 的消費者條款，而且額度用完就整個停（見 `tasks/done/2026-09-24-refresh-claude-plan-usage-automatically-from.md`）。所以寫稿與查核走 `ai_vendors` 的 API 金鑰，跟每小時自動新聞相同。
+**訂閱帳號**：
+- 站主先決定用 API 金鑰，後來改成用 `/admin/ai-accounts` 管的 Claude 訂閱帳號。之前提醒過：2026-09-24 的票（`tasks/done/2026-09-24-refresh-claude-plan-usage-automatically-from.md`）記錄，網站自己的功能放在個人訂閱上，可能違反 Anthropic 與 OpenAI 的消費者條款，而且額度用完就會整個停住。站主 2026-09-25 表示自己看過條款，決定用訂閱全自動。
+- 額度那一點的處理：每個階段開始前先看各帳號 5 小時與每週額度的用量，超過設定的百分比（預設 80%）就跳過那個帳號。全部帳號都超過就等額度重置，不會自己改用 API 金鑰。
+- **只提供 Claude Code**：`claude -p --tools ""` 可以關掉所有工具，只收文字、只回文字。`codex exec` 沒有關掉 shell 的開關，read-only 沙箱仍然讀得到這個服務能讀的所有檔案，包括網站的 `.env`；工人又會把網頁內容送進提示詞，所以 Codex 不提供。
 
 ## 架構
 
@@ -21,7 +24,9 @@
                                       │
 video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   每 5 分鐘：GET /video/automation/next ──> 這一輪該做什麼（新草稿？哪支影片的下一步？）
-  文字階段 ──> POST /video/ai/run（伺服器用該階段設定的模型；金鑰不出伺服器）
+  文字階段 ──> POST /video/automation/run（伺服器照該階段的設定）
+                 ├─ 訂閱：API ──HMAC──> 主機的 AI 帳號代理（ai_accounts_agent.runs）──> claude -p --tools ""
+                 └─ API 金鑰：API 直接呼叫廠商（金鑰不出 API 容器）
   查核     ──> 工人自己抓 claims.md 列的網址（Mokaair-editorial UA），把頁面文字交給查核模型
   旁白     ──> 既有的 /video/speech、/video/speech/transcribe、/video/speech/judge
   畫面／成片／字幕 ──> 容器裡的 tools/video（render、assemble、captions）
@@ -44,12 +49,13 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | | 題材範圍（關鍵詞清單） | AI、科技、AI 工具教學 |
 | | 要避開的題材 | 投資建議、醫療建議、選舉政治 |
 | | 題目來源：站上新聞與文章／Brave 搜尋 | 都開 |
-| 各階段模型 | 企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿，各選「廠商＋模型」（只列有金鑰、且支援結構化輸出的） | 企劃、撰稿、翻譯：Claude Sonnet 5；查核、聽眾審稿、字幕審稿：Claude Opus 5.5 |
+| 各階段模型 | 企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿，各選「Claude Code（訂閱帳號）」或某家 API 的模型 | 全部用 Claude Code 訂閱帳號；企劃、撰稿、翻譯用 Claude Sonnet 5，查核、聽眾審稿、字幕審稿用 Claude Opus 5.5 |
 | 成片參數 | 旁白聲音、風格、語速 | Gemini Sulafat，沿用 `docs/videos/README.md` |
 | | 目標長度（分鐘） | 8–12 |
 | | 字幕語系 | en、ja、ko、zh-CN |
 | 預算 | 每月最多幾支草稿 | 8 |
-| | 每月模型 token 上限（百萬） | 20 |
+| | 每月模型 token 上限（百萬），只算 API 金鑰的呼叫 | 20 |
+| | 訂閱帳號用到幾 % 就先停（5 小時或每週額度） | 80 |
 | | 每支最多查核幾輪、旁白最多重錄幾輪 | 3、2 |
 | | 旁白每月字數、Jev 每日次數 | 沿用既有欄位，這裡只顯示用量 |
 | 關卡 | 旁白 Jev 全數通過就自動核准 | 開 |
@@ -68,7 +74,14 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 安全與成本
 
-- `/video/ai/run` 只接受設定裡列出的階段名稱，模型由伺服器依設定決定，不能由工人指定；每次呼叫記下階段、模型、token 數與影片代號，超過每月上限就回 429。
+- `/video/automation/run` 只接受設定裡列出的階段名稱，模型由伺服器依設定決定，工人不能指定。每次呼叫都記下階段、模型、token 數與影片代號。上限有兩個，超過都回 429：
+  - 每月 token 上限，只算 API 金鑰的呼叫；
+  - 每月草稿數，訂閱與 API 都算。
+- 訂閱帳號的執行一律經過主機的 AI 帳號代理，帶 HMAC 簽章，走 Unix socket。
+  - 代理用 `--tools ""` 關掉所有工具，也不載入任何 MCP、不留 session。
+  - 執行環境從零建立，帶不到代理的金鑰；工作資料夾用完就刪。
+  - 同一時間只跑一個。
+  - 工人容器碰不到帳號的登入憑證。
 - 工人抓網頁只用 `Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)` 當 User-Agent，每個網域間隔至少 1 秒，不登入任何網站。
 - 工人容器照其他服務的加固方式：`cap_drop: ALL`、`no-new-privileges`、非 root 使用者、唯讀根目錄加上工作區 volume。
 - 模型費用粗估：一支影片大約 40 萬輸入、10 萬輸出 token（企劃、撰稿、兩輪查核、聽眾審稿、四語翻譯與審稿）。實際數字在第一支自動影片之後記進這份文件。

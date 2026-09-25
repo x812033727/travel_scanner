@@ -16,6 +16,7 @@ from ai_accounts_agent.claude import ClaudeAccounts, mark_onboarding_done
 from ai_accounts_agent.codex import CodexAccounts
 from ai_accounts_agent.config import SLOTS, TOOLS, AgentConfig
 from ai_accounts_agent.runner import CliError
+from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude
 from ai_accounts_agent.security import (
     NONCE_HEADER,
     SIGNATURE_HEADER,
@@ -131,6 +132,8 @@ class AgentApplication:
         self._usage_lock = threading.Lock()
         self._usage_running: set[str] = set()
         self._usage_attempts: dict[str, float] = {}
+        # One prompt run at a time: two at once would share one account's usage window.
+        self._run_lock = threading.Lock()
         self._prepare_state()
 
     def _prepare_state(self) -> None:
@@ -378,6 +381,21 @@ class AgentApplication:
         atomic_write_text(self.config.default_path(tool), f"{slot}\n", 0o600)
         return HTTPStatus.OK, {"defaults": {name: self.default_slot(name) for name in TOOLS}}
 
+    # --- prompt runs (ai_accounts_agent.runs) ---------------------------------------
+
+    def run_prompt(self, body: bytes) -> Response:
+        try:
+            request = RunRequest.parse(_json_object(body))
+            with self._run_lock:
+                slots = self.overview(False)["slots"]
+                slot = pick_slot(slots, request.max_usage_percent, self.default_slot("claude"))
+                result = run_claude(self.config, slot, request)
+        except RunRefused as exc:
+            return exc.status, {"code": exc.code, "detail": exc.detail, **exc.extra}
+        except CliError as exc:
+            return _problem(HTTPStatus.BAD_GATEWAY, "subscription_run_failed", sanitize(str(exc)))
+        return HTTPStatus.OK, result
+
     # --- routing -------------------------------------------------------------------
 
     def handle(self, method: str, path: str, body: bytes, headers: Any) -> Response:
@@ -400,6 +418,8 @@ class AgentApplication:
             if method == "GET" and route == "/v1/accounts":
                 fresh = parse_qs(parts.query).get("fresh") == ["1"]
                 return HTTPStatus.OK, self.overview(fresh)
+            if method == "POST" and route == "/v1/runs":
+                return self.run_prompt(body)
             if match := re.fullmatch(rf"/v1/accounts/{_TOOL_SLOT}/login", route):
                 if method == "POST":
                     return self.start_login(match.group(1), match.group(2))
@@ -449,6 +469,8 @@ class UnixHTTPServer(socketserver.ThreadingMixIn, _UnixStreamServer):  # type: i
 
 
 MAX_BODY_BYTES = 16_384
+# A prompt run carries the source pages a fact-check reads.
+RUN_MAX_BODY_BYTES = 4 * 1024 * 1024
 
 
 def make_handler(application: AgentApplication) -> type[BaseHTTPRequestHandler]:
@@ -464,7 +486,8 @@ def make_handler(application: AgentApplication) -> type[BaseHTTPRequestHandler]:
             if length < 0:
                 self._respond(*_problem(400, "invalid_content_length", "bad Content-Length"))
                 return
-            if length > MAX_BODY_BYTES:
+            limit = RUN_MAX_BODY_BYTES if urlsplit(self.path).path == "/v1/runs" else MAX_BODY_BYTES
+            if length > limit:
                 self._respond(*_problem(413, "request_too_large", "request body too large"))
                 return
             body = self.rfile.read(length) if length else b""

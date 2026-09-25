@@ -25,11 +25,16 @@ from app.config import Settings
 from app.db import SessionFactory, engine, get_session
 from app.models import VideoToolToken
 from app.problems import AppError, app_error_handler
-from app.video_automation.models import VideoAiRun, VideoAutomationSettings
+from app.video_automation.models import DEFAULT_STAGE_MODELS, VideoAiRun, VideoAutomationSettings
 from app.video_automation.schemas import StageRunIn, UsageView
 from app.video_speech import admin_api as speech_api
 
 KEYS = Settings(anthropic_api_key="a", hotspot_guide_gemini_api_key="g")
+# The API-key path; the defaults run on the subscription (test_video_automation_subscription.py).
+API_MODELS = {
+    stage: {"provider": "anthropic", "model": choice["model"]}
+    for stage, choice in DEFAULT_STAGE_MODELS.items()
+}
 
 
 def _usage(**changes: int) -> UsageView:
@@ -119,7 +124,9 @@ async def test_a_stage_runs_with_the_model_its_setting_names_and_is_recorded(
 async def test_a_stage_missing_from_the_settings_uses_the_default_model(
     stage: dict[str, Any],
 ) -> None:
-    row = VideoAutomationSettings(stage_models={}, monthly_token_budget_millions=20)
+    empty = VideoAutomationSettings(stage_models={})
+    assert ai.stage_choice(empty, "writer") == ("claude_code", "claude-sonnet-5")
+    row = VideoAutomationSettings(stage_models=API_MODELS, monthly_token_budget_millions=20)
     await ai.run_stage(_session(), KEYS, row, _request("writer"), None)
     assert stage["asked"][0] == "anthropic"
     assert stage["asked"][1]["model"] == "claude-sonnet-5"
@@ -129,7 +136,7 @@ async def test_a_stage_missing_from_the_settings_uses_the_default_model(
 async def test_budgets_and_missing_keys_stop_a_stage_before_any_model_is_called(
     stage: dict[str, Any],
 ) -> None:
-    row = VideoAutomationSettings(stage_models={}, monthly_token_budget_millions=20)
+    row = VideoAutomationSettings(stage_models=API_MODELS, monthly_token_budget_millions=20)
     stage["usage"] = _usage(tokens=20_000_000)
     with pytest.raises(ai.StageFailed) as spent:
         await ai.run_stage(_session(), KEYS, row, _request(), None)
@@ -188,7 +195,7 @@ async def test_a_failed_call_is_recorded_and_explained(
 ) -> None:
     stage["provider"] = FakeProvider(error)
     session = _session()
-    row = VideoAutomationSettings(stage_models={}, monthly_token_budget_millions=20)
+    row = VideoAutomationSettings(stage_models=API_MODELS, monthly_token_budget_millions=20)
     with pytest.raises(ai.StageFailed) as failed:
         await ai.run_stage(session, KEYS, row, _request(), None)
     assert (failed.value.status, failed.value.code, failed.value.retry_after) == (
