@@ -34,7 +34,7 @@ metadata:
 | 3 | 逐店查證 | 研究代理各一個分頁、各 10 家：店頁（身分、hreflang、訂位判定）→ `/info` 分頁（韓文地址、網站）→ 官方來源；每家寫完就存分片檔；另一個代理抽三分之一複核 | 每筆 `import` 有 https 官方來源與逐字引文；訂位判定有「區塊本體」證據 |
 | 4 | 轉檔 | `catchtable_build_batches.py --check` → `--merchants-out`；本機用 `load_trend_merchants` 再驗 | 零錯誤 |
 | 5 | PR 一 | 候選檔、`merchants.json`、報告初稿、票的 Notes；`merge-when-green` | CI 綠 |
-| 6 | 正式站 | 部署（skill `deploy`）→ 店家 dry-run 對報告 → `--apply` → 再匯出 worklist → `--platform-out` → 平台列以 stdin 餵入 dry-run → `--apply` | 再跑一次分別是 `skipped_existing_slug`／`unchanged` |
+| 6 | 正式站 | 部署（skill `deploy`）→ 店家 dry-run 對報告 → `--apply` → 再匯出 worklist → `--platform-out` → 平台列以 stdin 餵入 dry-run → `--apply` | 平台 dry-run 全是 `would_create` 才套用（前一批出現過的店會是 `would_update`：從檔案拿掉，不覆寫前一批的列）；再跑一次分別是 `skipped_existing_slug`／`unchanged` |
 | 7 | 公開 | 後台逐家：座標 → Naver 精準頁（站主貼）→ 一次儲存「已驗證＋核准＋啟用」→ 公開 API 驗證；細節在 `.agents/skills/catchtable-discovery/references/admin.md` | 公開 API 家數與按鈕數對得上報告 |
 | 8 | 收尾 | PR 二（平台列檔、報告數字、`done`）；報告寫三個比例（有官方來源、能訂位、與目錄重複）與未公開的原因 | 票在 done、數字在報告 |
 
@@ -59,7 +59,11 @@ metadata:
 <PY> -c "from pathlib import Path; from app.foods.platform_review_import import load_review_file; print(len(load_review_file(Path('<BATCH>/platform-reviews.json')).records))"
 <SSH> "cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli apply-food-platform-reviews --file /dev/stdin [--apply]" < <BATCH>/platform-reviews.json
 
-# 公開 API 驗證（X-Travel-Locale 只吃 en/ja/ko/zh-TW/zh-CN；limit 上限低於 100）
+# 輸出在哪：import-trend-merchants 的 dry-run 看 stdout 的 outcomes；apply-food-platform-reviews 的逐列結果在 stderr，
+# stdout 只有 actions／statuses／skipped 摘要。兩者都能從 stdin 餵檔（不必部署），稽核紀錄不會記檔名。
+
+# 公開 API 驗證（X-Travel-Locale 只吃 en/ja/ko/zh-TW/zh-CN，ja-JP 會安靜回退成 zh-TW；limit 最多 50；
+# 這支沒有 country_code 參數，會被忽略，用 destination_id）
 curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/merchants?destination_id=seoul&limit=50" | python -m json.tool | grep -c catchtable_global
 ```
 
@@ -68,6 +72,7 @@ curl -s -H 'X-Travel-Locale: zh-TW' "https://mokaair.com/api/travel/foods/mercha
 - 榜頁是虛擬化清單：捲到底再抓會漏掉榜首；`scrollTo` 跳著捲會撞到回收卡片；候位榜第 1–4 名首次渲染沒有 `href`。
 - 店頁服務區塊是 lazy section，**面板隱藏或分頁在背景時永遠不掛載**，看到的「只有候位鈕」不算證據；正面證據可信、缺席不可信。做法在 references/browser.md。
 - `naver.me` 短網址後台會退 422，要先解成 `https://map.naver.com/p/entry/place/<id>`；同一個 Naver id 不能給兩家店（園區內的第二間餐飲要有自己的條目）。
+- 店頁網址：`catchtable.co.kr` 是韓國內需站，不收；`/ja/` 會 404 並轉到 `/zh-TW/ja/shop/…`，日文是 `/ja-JP/`。`canonical_url` 存無前綴的網址，語系版本放 `localized_urls`；拿 `/zh-TW/` 當 canonical 會讓其他語系的公開按鈕都顯示外語提示。
 - 來源網址只收 https（只有 http 的官網不算）；`notes` 1000 字、`quote` 300 字、分類至多 3 個，轉檔腳本會擋。
 - 匯入器的第二把去重鑰匙是 `(destination, local_name)`：分店名要寫進 `local_name`。
 - 轉檔腳本一個候選檔只吃一個 `destination`：一批跨兩個城市就寫 `candidates-<destination>.json` 各一份、轉檔與匯入各跑一次（佈局在 `apps/api/app/foods/data/catchtable/README.md`）。
