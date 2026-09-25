@@ -24,6 +24,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai.subscription import vendor_ready
 from app.config import Settings
 from app.db import SessionFactory, engine
 from app.models import User
@@ -39,13 +40,9 @@ UNSUPPORTED_FOR_NEWS = frozenset({"gemini"})
 
 
 def readiness(runtime: Settings) -> dict[str, bool]:
-    keys = {
-        "openai": runtime.openai_api_key,
-        "anthropic": runtime.anthropic_api_key,
-        "minimax": runtime.minimax_api_key,
-        "gemini": runtime.hotspot_guide_gemini_api_key,
-    }
-    return {**{name: bool(value) for name, value in keys.items()}, "jev": runtime.jev_configured}
+    # Claude counts as ready on the host's subscription accounts too (app.ai.subscription).
+    ready: dict[str, bool] = {name: vendor_ready(runtime, name) for name in PROVIDERS}
+    return {**ready, "jev": runtime.jev_configured}
 
 
 def blockers(payload: SettingsWrite, ready: dict[str, bool]) -> list[str]:
