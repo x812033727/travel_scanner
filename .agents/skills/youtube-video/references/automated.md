@@ -4,8 +4,10 @@
 
 1. 選大綱
 2. 聽旁白
-3. 看成片
+3. 看成片、確認可以上架
 4. 在 YouTube Studio 按公開
+
+前三個都在網站後台的「影片審核」頁（`/admin/videos`）做：工具用 `review-push` 把該關的東西送上去（企劃與選項、旁白與 Jev 檢查、720p 成片與五語系標題、上傳檢查表），站主在頁面上核准或退回，工具再用 `review-pull` 讀回。核准綁定檔案雜湊，檔案改過就要重新送審。對話裡的提問只在後台頁用不了時當備援。
 
 為什麼這樣設計、YouTube 與 Azure 的規則，寫在 `docs/videos/DESIGN.md`；頻道的版型、配色與聲音寫在 `docs/videos/README.md`。這份只寫**怎麼做**。
 
@@ -25,17 +27,17 @@
 | # | 階段 | 誰 | 產出 | 關卡 |
 | --- | --- | --- | --- | --- |
 | 0 | 認領票、開工作區 | 協調者 | — | 票已認領 |
-| 1 | 企劃（提示 `.agents/skills/youtube-video/references/prompts/planner.md`） | 企劃代理（sonnet） | `<VIDEO_DOCS>/brief.md` | 站主從 2–3 個大綱選一個，用有選項的提問；選完執行 `approve --gate outline` |
+| 1 | 企劃（提示 `.agents/skills/youtube-video/references/prompts/planner.md`） | 企劃代理（sonnet） | `<VIDEO_DOCS>/brief.md` | `review-push` 送企劃；站主在 `/admin/videos` 從 2–3 個大綱選一個；`review-pull` 記下核准 |
 | 2 | 撰稿（提示 `.agents/skills/youtube-video/references/prompts/writer-video.md`） | 撰稿代理（sonnet） | `video.json`、`claims.md`、發音字典新增的詞 | `lint` 零錯誤 |
 | 3 | 查核（提示 `.agents/skills/youtube-video/references/prompts/verifier-video.md`） | **另一個**代理（opus） | `verify-1.md` | 改超過 3 個事實，就換人再查一輪，寫 `verify-2.md` |
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 修正清單 | 協調者套用後再跑 `lint` |
 | 5 | `tts` | 工具 | 每句的音檔、`narration.wav`、`timeline.json` | 先跑 `--dry-run` 看字數與額度 |
-| 6 | `review`，站主聽 `review/audio.html` | 站主 | `flags.json`（有唸錯時） | 唸錯的詞補進發音字典，再跑 `tts --redo flags.json`；全對就執行 `approve --gate audio` |
+| 6 | `check-audio`（Gemini 轉寫、Jev 判斷），再 `review-push` 送旁白 | 工具、站主 | `review/check-flags.json` | 被標的句子補字典或改措辭，`tts --redo review/check-flags.json` 只重錄那幾句；站主在 `/admin/videos` 核准旁白，`review-pull` 記下 |
 | 7 | `render` | 工具 | `frames/`、`contact-sheet.png`、`thumbnail.jpg` | 看聯絡表；版面錯誤就縮短文字 |
 | 8 | `assemble` | 工具 | `final.mp4`、`checks.json` | 自動檢查全過 |
 | 9 | CC 翻譯（五語系；做法見票 `2026-09-24-video-captions-i18n`）與 `captions` | 翻譯與審稿代理、工具 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/*.srt` | 沒有過期的翻譯 |
-| 10 | `review`，站主看 `review/final.html` | 站主 | — | 站主回覆可以之後，執行 `approve --gate final` |
-| 11 | `package` | 工具 | `upload/`（含 `UPLOAD.md`） | 核准的成片必須和目前的 `final.mp4` 一致 |
+| 10 | `review-push` 送成片（720p 預覽、聯絡表、縮圖、五語系標題說明） | 站主 | — | 站主在 `/admin/videos` 看完核准，`review-pull` 記下 |
+| 11 | `package`，再 `review-push` 送上架確認 | 工具、站主 | `upload/`（含 `UPLOAD.md`） | 核准的成片必須和目前的 `final.mp4` 一致；站主按「確認可以上架」，`review-pull` 記下 |
 | 12 | 站主照 `UPLOAD.md` 在 Studio 上傳成私人，檢查後自己按公開 | 站主 | YouTube 影片 | 影片 ID 寫回 `video.json` 的 `youtube.video_id` |
 
 隨時可以跑 `node tools/video/cli.mjs status --slug <SLUG>`，它會列出 12 步做到哪裡，並印出下一個該跑的指令。它判斷的依據是比對各檔案裡記下的雜湊，不看紀錄：腳本改過，舊的旁白就不算完成。
@@ -52,7 +54,9 @@ node tools/video/cli.mjs review   --slug <SLUG>
 node tools/video/cli.mjs render   --slug <SLUG> [--channel msedge]
 node tools/video/cli.mjs assemble --slug <SLUG>
 node tools/video/cli.mjs captions --slug <SLUG>
-node tools/video/cli.mjs approve  --slug <SLUG> --gate outline|audio|final --note "<站主怎麼回答的>"
+node tools/video/cli.mjs review-push --slug <SLUG> [--gate outline|audio|final|publish]   # 送審到 /admin/videos
+node tools/video/cli.mjs review-pull --slug <SLUG>              # 讀回站主的決定，核准才寫進 approvals.json
+node tools/video/cli.mjs approve  --slug <SLUG> --gate outline|audio|final|publish --note "<站主怎麼回答的>"   # 後台頁不能用時的備援
 node tools/video/cli.mjs package  --slug <SLUG>
 node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整條流程的冒煙測試
 ```

@@ -14,6 +14,8 @@ export const GATES = {
   outline: ({ docDir }) => path.join(docDir, "brief.md"),
   audio: ({ workdir }) => path.join(workdir, "timeline.json"),
   final: ({ workdir }) => path.join(workdir, "final.mp4"),
+  // The owner's "this may be uploaded", given on /admin/videos to the package `package` wrote.
+  publish: ({ workdir }) => path.join(workdir, "upload", "metadata.json"),
 };
 
 export const approvalsFile = (workdir) => path.join(workdir, "approvals.json");
