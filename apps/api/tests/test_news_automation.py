@@ -11,6 +11,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.db import Base
+from app.guides.schemas import GuideDocument
 from app.news_automation.feeds import extract_article, parse_entries
 from app.news_automation.fetch import (
     MAX_RESPONSE_BYTES,
@@ -28,9 +29,11 @@ from app.news_automation.models import (
 from app.news_automation.policy import (
     content_fingerprint,
     event_date_problems,
+    evidence_present,
     evidence_site,
     evidence_sufficient,
     gate_result,
+    hard_policy_problems,
     normalized_title,
     transition_allowed,
 )
@@ -736,6 +739,30 @@ def test_pages_of_one_website_are_one_source() -> None:
     assert not evidence_sufficient(
         [row("https://openai.com/index/a", True), row("https://lead.example/x", role="lead_only")]
     )
+
+
+def test_one_evidence_page_is_enough_to_draft_and_to_pass_the_source_check() -> None:
+    """Owner decision, 2026-09-25: a single official or trusted source is drafted for a
+    person to confirm; only automatic publication still asks for two websites."""
+
+    def row(url: str, role: str = "evidence") -> NewsEvidence:
+        return NewsEvidence(
+            role=role, url=url, is_first_party=True, title="t", content_hash="h", excerpt="e"
+        )
+
+    assert evidence_present([row("https://www.apple.com/newsroom/a")])
+    assert not evidence_present([row("https://lead.example/x", role="lead_only")])
+    assert not evidence_present([])
+    document = GuideDocument.model_validate(
+        {"title": "T", "description": "D", "blocks": [{"type": "paragraph", "text": "Body."}]}
+    )
+
+    def source_problems(count: int) -> list[str]:
+        problems = hard_policy_problems(document, "ai", "zh-TW", source_count=count)
+        return [problem for problem in problems if problem.startswith("news_sources")]
+
+    assert source_problems(1) == []
+    assert source_problems(0) == ["news_sources: evidence from at least one website is required"]
 
 
 @pytest.mark.asyncio
