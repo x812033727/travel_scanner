@@ -103,6 +103,16 @@ test("a planner's brief must have a new slug, the owner's sections and two optio
   assert.equal(planProblem({ ...plan, source_guide: "chatgpt-ads-status" }, new Set(), used), null);
 });
 
+test("the CLI entry does not await at its top level, so auto can run sub-commands through it", () => {
+  // flow.mjs runs review-pull, tts and the rest by importing ../cli.mjs. When cli.mjs is the
+  // process entry and still awaiting main() at its top level, that import never settles and Node
+  // exits with 13. Only the real entry shows it; these tests import cli.mjs as a plain module.
+  const source = readFileSync(path.join(ROOT, "tools", "video", "cli.mjs"), "utf8");
+  const entry = source.slice(source.indexOf("if (process.argv[1]"));
+  assert.ok(entry.length > 0, "cli.mjs still starts main when run directly");
+  assert.doesNotMatch(entry, /\bawait\b/);
+});
+
 test("a worksheet is done only when every line, chapter, title, description and tag is filled", () => {
   const sheet = { lines: [{ id: "k7p2", todo: false, text: "Hi" }], chapters: [{ scene: "hook", text: "Intro" }], title: { text: "T" }, description: { text: "D" }, tags: { text: ["ai"] } };
   assert.equal(sheetDone(sheet), true);
