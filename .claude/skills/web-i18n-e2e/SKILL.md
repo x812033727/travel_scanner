@@ -7,6 +7,8 @@ metadata:
 
 # 介面文案與 e2e（web-i18n-e2e）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/web-i18n-e2e/` 底下；`.claude/skills/web-i18n-e2e/` 只放這份 SKILL.md 的逐字複本。
+
 這個 skill 只放流程、指令與去哪裡讀。規則的來源是程式本身：`tools/check-i18n.mjs`、`tools/json-duplicate-keys.mjs`、`apps/web/playwright.config.ts`、`tools/e2e-runtime-api.mjs`，後台文案覆寫的規格在 `docs/ui-text-overrides.md`。指令都從 repo 根目錄或 `apps/web` 跑，照每段寫的。
 
 ## 不變的規矩
