@@ -1,10 +1,10 @@
 // Caption cues and the SRT / WebVTT files YouTube accepts (support.google.com/youtube/answer/2734698).
 //
-// Captions are the only thing that subdivides a line. A long line is cut at punctuation into
-// cues that fit the locale's line length, and the line's speech time is shared among them in
-// proportion to how long each piece takes to say. Each locale cuts its own translation inside
-// the same line window, so locales never need the same number of cues: English word order makes
-// a one-to-one split with Chinese impossible to keep natural.
+// Captions are the only thing that subdivides a line. A long line is cut into the fewest cues
+// that fit the locale's lines, preferably where a clause ends, and the line's speech time is
+// shared among them in proportion to how long each piece takes to say. Each locale cuts its own
+// translation inside the same line window, so locales never need the same number of cues:
+// English word order makes a one-to-one split with Chinese impossible to keep natural.
 import { frameToMs, samplesToMs, spokenUnits } from "./timeline.mjs";
 
 // Starting values from common subtitle guidelines (characters per line, lines per cue, reading
@@ -22,10 +22,12 @@ export const MIN_CUE_MS = 900;
 export const LINGER_MS = 400;
 
 const WIDE = /[ᄀ-ᅟ⺀-꓏가-힣豈-﫿︰-﹏＀-｠￠-￦]/u;
-// Where a clause ends: after Chinese punctuation anywhere, after ASCII punctuation only when a
-// space or the end follows, so "5.5" and "Node.js" stay whole.
-const CLAUSE_END = /[，。！？；：、]+\s*|[,.!?;:]+(?:\s+|$)/gu;
 const TRAILING = /[，。、；：,;:\s]+$/u;
+// A cue that ends on one of these ends a clause; a cue must never start with one.
+const ENDS_CLAUSE = /[，。！？；：、,.!?;:—]$/u;
+const OPENS_BADLY = /^[，。！？；：、,.!?;:）」』)\]]/u;
+// Chinese and Japanese break between characters but never inside a Latin word or a number.
+const CJK_TOKEN = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*|\s+|./gsu;
 
 /** Display width in the locale's units: CJK locales count half-width characters as half. */
 export function measure(text, rules) {
@@ -35,66 +37,81 @@ export function measure(text, rules) {
   return width;
 }
 
-function hardSplit(text, cap, rules) {
+function tokens(text, rules) {
+  return rules.words ? text.split(/(\s+)/).filter(Boolean) : (text.match(CJK_TOKEN) ?? []);
+}
+
+// The last resort, for text with no break that fits: fill each piece up to the width.
+function hardSplit(text, width, rules) {
   const pieces = [];
-  if (rules.words) {
-    let current = "";
-    for (const word of text.split(/(\s+)/)) {
-      if (current && measure(current + word, rules) > cap && current.trim()) {
-        pieces.push(current.trim());
-        current = word.trimStart();
-      } else {
-        current += word;
-      }
-    }
-    if (current.trim()) pieces.push(current.trim());
-    return pieces;
-  }
-  // Never cut inside a Latin word or a number.
-  const tokens = text.match(/[A-Za-z0-9][A-Za-z0-9.+#'_-]*|\s+|./gsu) ?? [];
   let current = "";
-  for (const token of tokens) {
-    if (current && measure(current + token, rules) > cap) {
-      pieces.push(current);
+  for (const token of tokens(text, rules)) {
+    if (current.trim() && measure(`${current}${token}`.trim(), rules) > width) {
+      pieces.push(current.trim());
       current = token.trimStart();
     } else {
       current += token;
     }
   }
-  if (current) pieces.push(current);
-  return pieces;
-}
-
-export function clauses(text) {
-  const result = [];
-  let start = 0;
-  for (const match of text.matchAll(CLAUSE_END)) {
-    const end = match.index + match[0].length;
-    result.push(text.slice(start, end));
-    start = end;
-  }
-  if (start < text.length) result.push(text.slice(start));
-  return result;
-}
-
-/** Cut one line's text into cue-sized pieces, preferring clause boundaries. */
-export function splitText(text, rules) {
-  const cap = rules.maxChars * rules.maxLines;
-  const clean = text.trim();
-  if (measure(clean, rules) <= cap) return [clean];
-  const parts = clauses(clean).flatMap((clause) => (measure(clause, rules) > cap ? hardSplit(clause, cap, rules) : [clause]));
-  const pieces = [];
-  let current = "";
-  for (const clause of parts) {
-    if (current && measure(current + clause, rules) > cap) {
-      pieces.push(current.trim());
-      current = clause;
-    } else {
-      current += clause;
-    }
-  }
   if (current.trim()) pieces.push(current.trim());
   return pieces;
+}
+
+/** Join two pieces of one line again, keeping the space between words in word-based locales. */
+export function joinPieces(first, second, rules) {
+  return rules.words && first && second ? `${first.trimEnd()} ${second.trimStart()}` : `${first}${second}`;
+}
+
+/**
+ * Whether the text can be shown as one cue: laid out greedily, it takes at most maxLines lines of
+ * maxChars. Greedy layout uses the fewest lines, so wrapCue can always find a break when this holds.
+ */
+export function fits(text, rules) {
+  let lines = 1;
+  let current = "";
+  for (const token of tokens(text.trim(), rules)) {
+    if (current.trim() && measure(`${current}${token}`.trim(), rules) > rules.maxChars) {
+      lines += 1;
+      current = token.trimStart();
+    } else {
+      current += token;
+    }
+  }
+  return lines <= rules.maxLines;
+}
+
+/**
+ * Cut one line's text into cue-sized pieces: the fewest cues that fit, as even in length as
+ * possible, preferring to cut where a clause ends. Every piece fits in the locale's cue.
+ */
+export function splitText(text, rules) {
+  const clean = text.trim();
+  if (fits(clean, rules)) return [clean];
+  const parts = tokens(clean, rules);
+  const piece = (from, to) => parts.slice(from, to).join("").trim();
+  const cap = rules.maxChars * rules.maxLines;
+  // Cutting mid-clause costs about as much as leaving one cue a quarter of the others' length.
+  const midClause = (cap * cap) / 4;
+  // best[to] = the cheapest way to cut parts[0..to): fewest cues first, then the most even.
+  const best = [{ count: 0, cost: 0, from: -1 }];
+  for (let to = 1; to <= parts.length; to++) {
+    best[to] = null;
+    if (!parts[to - 1].trim() || (to < parts.length && OPENS_BADLY.test(piece(to, parts.length)))) continue;
+    for (let from = to - 1; from >= 0; from--) {
+      const text = piece(from, to);
+      if (!text || !best[from]) continue;
+      if (!fits(text, rules)) break;
+      const size = measure(text, rules);
+      const count = best[from].count + 1;
+      const cost = best[from].cost + size * size + (to < parts.length && !ENDS_CLAUSE.test(text) ? midClause : 0);
+      const current = best[to];
+      if (!current || count < current.count || (count === current.count && cost < current.cost)) best[to] = { count, cost, from };
+    }
+  }
+  if (!best[parts.length]) return hardSplit(clean, cap, rules);
+  const pieces = [];
+  for (let to = parts.length; to > 0; to = best[to].from) pieces.unshift(piece(best[to].from, to));
+  return pieces.filter(Boolean);
 }
 
 /**
@@ -136,20 +153,30 @@ function weight(text) {
 }
 
 /**
- * Share [startMs, endMs] among the pieces by spoken weight. Pieces that would be shorter than
- * MIN_CUE_MS are merged with their neighbour.
+ * Share [startMs, endMs] among the pieces by spoken weight. A piece that would be shorter than
+ * MIN_CUE_MS is merged with a neighbour, when `rules` are given only if the merged cue still fits;
+ * a short piece with no neighbour it fits with stays short rather than wrapping onto a third line.
  */
-export function timePieces(pieces, startMs, endMs) {
+export function timePieces(pieces, startMs, endMs, rules = null) {
   let entries = pieces.map((text) => ({ text, weight: weight(text) }));
   const span = Math.max(0, endMs - startMs);
   const duration = (entry, total) => (span * entry.weight) / total;
+  const merged = (first, second) => (rules ? joinPieces(first.text, second.text, rules) : `${first.text}${second.text}`);
   for (;;) {
     const total = entries.reduce((sum, entry) => sum + entry.weight, 0);
-    const short = entries.findIndex((entry) => duration(entry, total) < MIN_CUE_MS);
+    const short = entries.findIndex((entry) => !entry.settled && duration(entry, total) < MIN_CUE_MS);
     if (short < 0 || entries.length === 1) break;
-    const other = short === entries.length - 1 ? short - 1 : short + 1;
+    const neighbours = [short + 1, short - 1].filter((index) => index >= 0 && index < entries.length);
+    const other = neighbours.find((index) => {
+      const [first, second] = [Math.min(short, index), Math.max(short, index)];
+      return !rules || fits(merged(entries[first], entries[second]), rules);
+    });
+    if (other === undefined) {
+      entries[short].settled = true;
+      continue;
+    }
     const [first, second] = [Math.min(short, other), Math.max(short, other)];
-    entries.splice(first, 2, { text: `${entries[first].text}${entries[second].text}`, weight: entries[first].weight + entries[second].weight });
+    entries.splice(first, 2, { text: merged(entries[first], entries[second]), weight: entries[first].weight + entries[second].weight });
   }
   const total = entries.reduce((sum, entry) => sum + entry.weight, 0);
   let cursor = startMs;
@@ -179,7 +206,7 @@ export function buildCues(timeline, texts, locale) {
     const start = frameToMs(line.start_frame);
     const speechEnd = start + samplesToMs(line.audio_samples);
     const end = Math.min(frameToMs(line.end_frame), speechEnd + LINGER_MS);
-    for (const cue of timePieces(splitText(text, rules), start, end)) {
+    for (const cue of timePieces(splitText(text, rules), start, end, rules)) {
       cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
     }
   }
