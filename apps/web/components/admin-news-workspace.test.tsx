@@ -35,7 +35,8 @@ function detailOf(row: Row) {
 }
 const settings = {
   enabled: false, mode: "shadow", writer_provider: "openai", writer_model: null,
-  verifier_provider: "openai", verifier_model: null, global_concurrency: 2,
+  verifier_provider: "openai", verifier_model: null, editor_provider: "anthropic",
+  editor_model: "claude-next", global_concurrency: 2,
   per_vertical_concurrency: 1, min_shadow_days: 14, min_shadow_candidates: 50,
   min_human_agreement: 0.95, jev_act_confidence: 0.9, auto_publish_ai: false,
   auto_publish_tech: false, auto_publish_crypto: false, prompt_version: "news-v1",
@@ -101,7 +102,7 @@ describe("AdminNewsWorkspace", () => {
     expect(screen.getAllByText("待你判斷").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Jev 保留：有語系沒通過").length).toBeGreaterThan(0);
     expect(screen.getByText(/五語草稿已經寫好，但 Jev 對至少一個語系有保留/)).toBeTruthy();
-    expect(screen.getByText("AI 自動發布門檻：已判斷 3／50 筆，和 Jev 一致 67%")).toBeTruthy();
+    expect(screen.getByText("AI 和 Jev 的一致率（參考）：你判斷過 3 筆，一致 67%")).toBeTruthy();
     expect(screen.getByText("Jev 終審: 需要人判斷 (需人確認)")).toBeTruthy();
     expect(screen.getByText("Jev 今日額度已用完")).toBeTruthy();
     expect(screen.getAllByRole("button").filter((button) => ["zh-TW", "zh-CN", "en", "ja", "ko"].includes(button.textContent || ""))).toHaveLength(5);
@@ -118,6 +119,37 @@ describe("AdminNewsWorkspace", () => {
       expect.objectContaining({ method: "POST" }),
     ));
     expect(await screen.findByText("五個語系都已發布。")).toBeTruthy();
+  });
+
+  it("shows what Jev's last call held and still lets the owner publish the saved article", async () => {
+    const held = { ...summary, id: "00000000-0000-4000-8000-000000000021", source_title: "A held release", error_code: "news_jev_final_hold", human_decision: "publish" };
+    serveRows(held);
+    details[held.id] = {
+      ...detailOf(held),
+      assessments: [
+        { id: "f1", assessment_type: "locale_review", locale: "ja", verdict: "pass", confidence: null, provider: "anthropic", model: "claude-opus-5-5", reasons: [], details: { stage: "final_edit", revised: true }, created_at: "2026-09-23T11:00:00Z" },
+        { id: "f2", assessment_type: "jev", locale: "ja", verdict: "manual", confidence: 0.8, provider: "jev", model: "jev", reasons: [], details: { tier: "confirm", stage: "final" }, created_at: "2026-09-23T11:01:00Z" },
+      ] as unknown as ReturnType<typeof detailOf>["assessments"],
+    };
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A held release/ }));
+    expect((await screen.findAllByText("Jev 最後一關保留")).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Jev 最後一關對至少一個語系沒有放行/)).toBeTruthy();
+    expect(screen.getByText("翻譯審查・最終修改: 通過")).toBeTruthy();
+    expect(screen.getByText("Jev 終審・最後一關: 需要人判斷 (需人確認)")).toBeTruthy();
+    expect(actionButtons()).toEqual(["五語發布", "重新查核", "退件"]);
+  });
+
+  it("lets auto-publish be switched on in automatic mode without a gate", async () => {
+    window.history.replaceState(null, "", "/zh-TW/admin/news?tab=settings");
+    render(<AdminNewsWorkspace />);
+    const [aiSwitch] = await screen.findAllByRole("checkbox", { name: "自動發布" }) as HTMLInputElement[];
+    expect(aiSwitch.disabled).toBe(true);
+    expect(screen.getByText(/自動發布不再看這些數字/)).toBeTruthy();
+    expect(screen.queryByText("未達標")).toBeNull();
+    expect(screen.queryByText("shadow_days:0/14")).toBeNull();
+    fireEvent.change(screen.getByLabelText("模式"), { target: { value: "automatic" } });
+    expect(aiSwitch.disabled).toBe(false);
   });
 
   it("offers not-a-duplicate with the closest titles for an uncertain duplicate check", async () => {
@@ -240,7 +272,9 @@ describe("AdminNewsWorkspace", () => {
   it("picks writer and checker models from dropdowns built on the server catalog", async () => {
     window.history.replaceState(null, "", "/zh-TW/admin/news?tab=settings");
     render(<AdminNewsWorkspace />);
-    const [writerModel, verifierModel] = await screen.findAllByLabelText("模型") as HTMLSelectElement[];
+    const [writerModel, verifierModel, editorModel] = await screen.findAllByLabelText("模型") as HTMLSelectElement[];
+    expect(screen.getByRole("group", { name: "最終修改模型" })).toBeTruthy();
+    expect(editorModel.value).toBe("claude-next");
     const labels = (select: HTMLSelectElement) => Array.from(select.options).map((option) => option.text);
     expect(labels(writerModel)).toEqual(["預設 · GPT-5.6 Terra", "GPT-6 Astra", "GPT-5.6 Terra", "自訂…"]);
     expect(screen.getAllByText("Balanced default.")).toHaveLength(2);
@@ -260,7 +294,7 @@ describe("AdminNewsWorkspace", () => {
     await waitFor(() => expect(fetch).toHaveBeenCalledWith("/api/travel/admin/news/settings", expect.objectContaining({ method: "PUT" })));
     const put = vi.mocked(fetch).mock.calls.find(([, init]) => init?.method === "PUT");
     const body = JSON.parse(String(put?.[1]?.body)) as Record<string, unknown>;
-    expect(body).toMatchObject({ writer_provider: "anthropic", writer_model: null, verifier_provider: "openai", verifier_model: "gpt-7-preview" });
+    expect(body).toMatchObject({ writer_provider: "anthropic", writer_model: null, verifier_provider: "openai", verifier_model: "gpt-7-preview", editor_provider: "anthropic", editor_model: "claude-next" });
     for (const readOnly of ["gates", "updated_at", "model_options", "default_models"]) expect(body).not.toHaveProperty(readOnly);
   });
 

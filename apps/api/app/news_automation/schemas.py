@@ -129,6 +129,8 @@ class SettingsWrite(StrictModel):
     writer_model: str | None = Field(default=None, max_length=128)
     verifier_provider: ProviderName
     verifier_model: str | None = Field(default=None, max_length=128)
+    editor_provider: ProviderName = "anthropic"
+    editor_model: str | None = Field(default="claude-opus-5-5", max_length=128)
     global_concurrency: int = Field(ge=1, le=8)
     per_vertical_concurrency: int = Field(ge=1, le=4)
     min_shadow_days: int = Field(ge=1, le=90)
@@ -141,7 +143,7 @@ class SettingsWrite(StrictModel):
     prompt_version: str = Field(min_length=1, max_length=32)
     policy_version: str = Field(min_length=1, max_length=32)
 
-    @field_validator("writer_model", "verifier_model")
+    @field_validator("writer_model", "verifier_model", "editor_model")
     @classmethod
     def model_id(cls, value: str | None) -> str | None:
         # A Gemini model id is interpolated into the request path (security audit R2-25),
