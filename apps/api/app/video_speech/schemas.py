@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Literal
+from typing import Annotated, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+
+# One Latin-script word from the pronunciation dictionary, as the script spells it: "Go",
+# "MMLU-Pro", "p95". No spaces and only a few joiners, so a hint cannot carry a sentence.
+HintTerm = Annotated[
+    str, StringConstraints(min_length=1, max_length=40, pattern=r"^[A-Za-z0-9][A-Za-z0-9.+#'_-]*$")
+]
 
 
 class SpeechPartIn(BaseModel):
@@ -113,6 +119,9 @@ class TranscribeIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     # One narrated line as a base64 WAV; the tool sends 16 kHz mono, a few seconds long.
     audio: str = Field(min_length=64, max_length=2_800_000)
+    # The English words the line says. Without them the transcriber hears a lone "Go" in
+    # Mandarin as 狗 or 各, and the check flags a line the voice read correctly.
+    terms: list[HintTerm] = Field(default_factory=list, max_length=20)
 
 
 class TranscribeOut(BaseModel):

@@ -10,7 +10,11 @@
 // Two differences never reach Jev. Jev documents no accuracy for Chinese, and on the pilot it
 // doubted 它 heard as 他 and 級聯 heard as 吉蓮. So a transcript that reads the same, tones
 // included, passes as "same sound". The owner kept the filler words the conversational voice adds
-// (啊, 喔, 欸…) on 2026-09-25, so a transcript that differs only by those passes as "filler".
+// (啊, 喔, 欸, 齁, a closing 耶 or 餒…) on 2026-09-25, so a transcript that differs only by those
+// passes as "filler".
+//
+// The transcriber is told which English words each line says. Without that, the ChatGPT video's
+// lone "Go" came back as 狗, 各, 購 or 夠 on 2026-09-25, and Jev flagged eleven lines for it.
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -49,8 +53,22 @@ export function spokenForm(line, lexicon) {
     .join("");
 }
 
-// Interjections the voice adds on its own. 耶 and 吧 are left out: both are also parts of words.
-const FILLERS = /[啊喔哦欸誒嗯呃]/gu;
+// Interjections the voice adds on its own. 耶 and 餒 count only when added at the end of a line
+// (好耶, 氣餒 are words); 吧 is left out, since the script uses it as a particle too.
+const FILLERS = /[啊喔哦欸誒嗯呃齁]/gu;
+const CLOSING_PARTICLES = /[耶餒]+$/u;
+// Latin-script words, as the transcriber's hint list takes them: one word each.
+const LATIN_WORD = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*/g;
+// Mirrors TranscribeIn.terms' max_length in apps/api/app/video_speech/schemas.py.
+export const MAX_HINT_TERMS = 20;
+
+/** The English words a line says, spelled as the script spells them, for the transcriber. */
+export function hintTerms(line) {
+  const words = (spokenText(line).match(LATIN_WORD) ?? [])
+    .map((word) => word.replace(/[.'_-]+$/, ""))
+    .filter((word) => /[A-Za-z]/.test(word) && word.length <= 40);
+  return [...new Set(words)].slice(0, MAX_HINT_TERMS);
+}
 
 /** How a text is read aloud, tone by tone: 它 and 他 read the same, 旗 and 期 do not. */
 export function reading(text) {
@@ -67,10 +85,11 @@ export function matchKind(heard, line, lexicon) {
   const said = comparable(heard);
   if (forms.some((form) => comparable(form) === said)) return "exact";
   const bare = (text) => comparable(text).replace(FILLERS, "");
-  const saidBare = bare(heard);
-  if (forms.some((form) => bare(form) === saidBare)) return "filler";
-  const saidReading = reading(saidBare);
-  if (forms.some((form) => reading(bare(form)) === saidReading)) return "sound";
+  // A closing particle comes off what was heard only, so a script ending in 氣餒 still needs it.
+  const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, "")];
+  if (forms.some((form) => saidBare.includes(bare(form)))) return "filler";
+  const saidReadings = saidBare.map(reading);
+  if (forms.some((form) => saidReadings.includes(reading(bare(form))))) return "sound";
   return null;
 }
 
@@ -119,13 +138,16 @@ export async function checkAudio(args, ctx, options) {
     const bytes = readFileSync(file);
     const clip = clipHash(bytes);
     const cached = cache.lines[line.id];
-    let entry = !values.force && cached?.clip === clip && typeof cached.heard === "string" ? cached : null;
+    const terms = hintTerms(line);
+    // A transcript made with other hints (or none, before hints existed) is made again.
+    const sameHints = (cached?.terms ?? []).join(" ") === terms.join(" ");
+    let entry = !values.force && cached?.clip === clip && sameHints && typeof cached.heard === "string" ? cached : null;
     if (!entry) {
       const samples = requireNarrationFormat(parseWav(bytes));
       const wav = encodeWav(downsample(samples, Math.round(48_000 / TRANSCRIBE_RATE)), TRANSCRIBE_RATE);
       let heard;
       try {
-        heard = await transcribeClip({ ...options, wav });
+        heard = await transcribeClip({ ...options, wav, terms });
       } catch (error) {
         // The owner's problems (token, key) stop the run; so does anything that is not the service.
         if (!(error instanceof SpeechError) || error.who !== "service") throw error;
@@ -139,7 +161,7 @@ export async function checkAudio(args, ctx, options) {
       }
       failedInARow = 0;
       transcribed += 1;
-      entry = { scene: scene.id, clip, heard, noul: null };
+      entry = { scene: scene.id, clip, terms, heard, noul: null };
     }
     entry.intended = spokenText(line);
     entry.spoken_form = spokenForm(line, lexicon);
