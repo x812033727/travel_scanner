@@ -24,7 +24,12 @@ from ai_accounts_agent.claude import (
     mark_onboarding_done,
 )
 from ai_accounts_agent.codex import CodexAccounts, is_verification_url, usage_windows
-from ai_accounts_agent.config import STATUSLINE_RECORDER, AgentConfig, parse_emails
+from ai_accounts_agent.config import (
+    DEFAULT_SOCKET_PATH,
+    STATUSLINE_RECORDER,
+    AgentConfig,
+    parse_emails,
+)
 from ai_accounts_agent.runner import CliError
 from ai_accounts_agent.security import NonceCache, sanitize, signature_for, verify_request
 from ai_accounts_agent.server import AgentApplication, UnixHTTPServer, make_handler
@@ -284,6 +289,23 @@ def test_config_from_env_requires_a_key_and_fixed_paths(
     config = AgentConfig.from_env()
     assert config.allowed_emails == {"owner@example.com", "b@x.test"}
     assert parse_emails("") == frozenset()
+
+
+def test_unit_hands_the_api_the_socket_it_actually_serves() -> None:
+    """Two start-up races the host hit on 2026-09-24/25, pinned in the unit file."""
+    repository = Path(__file__).resolve().parents[3]
+    unit = (repository / "ops" / "ai-accounts" / "mokaair-ai-accounts.service").read_text(
+        encoding="utf-8"
+    )
+    socket = DEFAULT_SOCKET_PATH.as_posix()
+    start_pre = next(line for line in unit.splitlines() if line.startswith("ExecStartPre="))
+    # A stale socket would take the chgrp meant for the new one (API: permission denied).
+    assert f"rm -f {socket}" in start_pre
+    start_post = next(line for line in unit.splitlines() if line.startswith("ExecStartPost="))
+    assert f"chgrp travel-api {socket}" in start_post
+    # The directory does not exist yet when systemd builds ExecStartPre's namespace.
+    assert f"ReadWritePaths=-{DEFAULT_SOCKET_PATH.parent.as_posix()} " in unit
+    assert "MemoryDenyWriteExecute" not in unit.replace("# No MemoryDenyWriteExecute", "")
 
 
 def test_statusline_recorder_path_matches_the_config() -> None:
