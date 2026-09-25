@@ -35,7 +35,7 @@
 | 6 | `check-audio`（Gemini 轉寫、Jev 判斷），再 `review-push` 送旁白 | 工具、站主 | `review/check-flags.json` | 被標的句子補字典或改措辭，`tts --redo review/check-flags.json` 只重錄那幾句；站主在 `/admin/videos` 核准旁白，`review-pull` 記下 |
 | 7 | `render` | 工具 | `frames/`、`contact-sheet.png`、`thumbnail.jpg` | 看聯絡表；版面錯誤就縮短文字 |
 | 8 | `assemble` | 工具 | `final.mp4`、`checks.json` | 自動檢查全過 |
-| 9 | CC 翻譯（五語系；做法見票 `2026-09-24-video-captions-i18n`）與 `captions` | 翻譯與審稿代理、工具 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/*.srt` | 沒有過期的翻譯 |
+| 9 | CC 翻譯：`i18n-sheet` 出底稿 → 每個語系一個翻譯代理（`prompts/caption-translate.md`，sonnet）填 → `i18n-merge` → 另一個審稿代理（`prompts/caption-review.md`，opus）只交修正清單 → 協調者改底稿再 merge → `captions` | 翻譯與審稿代理、工具 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/*.srt` | `i18n-merge` 沒有列出問題；lint 沒有過期或缺漏的翻譯 |
 | 10 | `review-push` 送成片（720p 預覽、聯絡表、縮圖、五語系標題說明） | 站主 | — | 站主在 `/admin/videos` 看完核准，`review-pull` 記下 |
 | 11 | `package`，再 `review-push` 送上架確認 | 工具、站主 | `upload/`（含 `UPLOAD.md`） | 核准的成片必須和目前的 `final.mp4` 一致；站主按「確認可以上架」，`review-pull` 記下 |
 | 12 | 站主照 `UPLOAD.md` 在 Studio 上傳成私人，檢查後自己按公開 | 站主 | YouTube 影片 | 影片 ID 寫回 `video.json` 的 `youtube.video_id` |
@@ -53,6 +53,8 @@ node tools/video/cli.mjs tts      --slug <SLUG> [--dry-run] [--redo flags.json]
 node tools/video/cli.mjs review   --slug <SLUG>
 node tools/video/cli.mjs render   --slug <SLUG> [--channel msedge]
 node tools/video/cli.mjs assemble --slug <SLUG>
+node tools/video/cli.mjs i18n-sheet --slug <SLUG> [--locale en,ja]   # 翻譯底稿在 <VIDEO_WORKDIR>/<SLUG>/i18n/，只標出缺漏或過期的句子
+node tools/video/cli.mjs i18n-merge --slug <SLUG> [--locale en,ja]   # 底稿寫回 i18n/<語系>.json，雜湊由工具算
 node tools/video/cli.mjs captions --slug <SLUG>
 node tools/video/cli.mjs review-push --slug <SLUG> [--gate outline|audio|final|publish]   # 送審到 /admin/videos
 node tools/video/cli.mjs review-pull --slug <SLUG>              # 讀回站主的決定，核准才寫進 approvals.json

@@ -31,6 +31,8 @@ export const AREAS = {
   review: ["review", "2026-09-24-video-assemble-package"],
   "review-push": ["review", "2026-09-25-video-tool-pushes-reviews-and-pulls"],
   "review-pull": ["review", "2026-09-25-video-tool-pushes-reviews-and-pulls"],
+  "i18n-sheet": ["i18n", "2026-09-24-video-captions-i18n"],
+  "i18n-merge": ["i18n", "2026-09-24-video-captions-i18n"],
   package: ["package", "2026-09-24-video-assemble-package"],
   "youtube-sync": ["youtube", "2026-09-24-video-youtube-sync"],
 };
@@ -47,6 +49,8 @@ Usage: node tools/video/cli.mjs <command> [options]
   review-push --slug S [--gate G]                  report the video to /admin/videos and submit the next gate
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
   captions --slug S [--workdir D]                  caption files for every current locale
+  i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
+  i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
   check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ

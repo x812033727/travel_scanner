@@ -35,7 +35,7 @@ metadata:
 | 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
 | 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
 | 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑 | `.agents/skills/youtube-video/references/automated.md` |
-| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`） |
+| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`caption-translate.md`、`caption-review.md`） |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
 | 全自動的設計理由、YouTube 與 Azure 的官方規則 | `docs/videos/DESIGN.md` |
 
