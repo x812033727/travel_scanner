@@ -1040,14 +1040,61 @@
     "tabLabel": "AI 設定分頁",
     "tabs": {
       "subscriptions": "訂閱帳號",
-      "api": "API 金鑰與模型"
+      "api": "API 金鑰",
+      "models": "各功能模型"
     },
     "hints": {
       "subscriptions": "給你在主機上用的 Claude Code、Codex 與 Antigravity：走訂閱、不另外計費，每個工具最多五個帳號。網站功能裡只有影片自動化的撰稿會借用 Claude 帳號。",
-      "api": "給網站的 AI 功能用（行程規劃、每小時新聞、景點與文章介紹、語音）：依 API 用量計費，金鑰只存在後端並加密保存。"
+      "api": "網站 AI 功能用的金鑰與語音：依 API 用量計費，金鑰只存在後端並加密保存。各功能選哪個模型在「各功能模型」。",
+      "models": "網站每個會呼叫 AI 的功能都在這裡選廠商與模型；功能頁只顯示目前的選擇並連回這裡。"
     },
     "movedNotice": "AI 服務的金鑰與模型已經搬到「AI 設定」，和訂閱帳號放在一起。",
-    "movedLink": "前往 AI 設定"
+    "movedLink": "前往 AI 設定",
+    "overview": {
+      "title": "各功能目前用的模型",
+      "help": "空白的選擇會沿用上一層的模型，表中已經算出實際會用的那一個。「連線方式」是現在實際怎麼付費；「能不能走訂閱」標出只能用 API 金鑰的功能。",
+      "refresh": "重新整理",
+      "missing": "讀不到：{sources}（可能沒有權限）",
+      "sources": {
+        "providers": "API 設定",
+        "news": "新聞設定",
+        "video": "影片設定"
+      },
+      "columns": {
+        "feature": "功能",
+        "model": "廠商與模型",
+        "connection": "連線方式",
+        "support": "能不能走訂閱"
+      },
+      "features": {
+        "planner": "AI 行程規劃與行程解析",
+        "guideSearch": "景點 AI 搜尋",
+        "intros": "景點介紹撰寫",
+        "geminiSearch": "Gemini 多語文章搜尋與目錄審查",
+        "newsWriter": "新聞撰稿",
+        "newsVerifier": "新聞查核",
+        "newsEditor": "新聞最終修改",
+        "video": "影片 · {stage}"
+      },
+      "plannerAuto": "自動備援",
+      "plannerFallback": "只用內建備援",
+      "plannerDisabled": "停用真實 AI",
+      "inherits": "沿用「{source}」的模型",
+      "connection": {
+        "apiKey": "API 金鑰",
+        "subscription": "訂閱帳號",
+        "subscriptionFallback": "訂閱帳號（額度用完改 MiniMax）",
+        "none": "不呼叫 AI"
+      },
+      "support": {
+        "apiKeyOnly": "只能用 API 金鑰",
+        "claudeSubscription": "選 Claude 時可走訂閱（在「API 金鑰」切換 Claude 連線方式）",
+        "claudeCode": "選「Claude Code」時走訂閱",
+        "geminiApiKeyOnly": "Gemini 只能用 API 金鑰（Antigravity 訂閱只供主機上手動使用）"
+      },
+      "edit": "修改",
+      "open": "前往功能"
+    }
   },
   "pageHeaders": {
     "dashboard": {
@@ -2172,6 +2219,10 @@
     "usage": "本月（UTC）API 已用 {tokens} / {tokenBudget} 個 token，訂閱帳號用了 {planTokens} 個 token；產生 {drafts} / {draftBudget} 支草稿，呼叫模型 {calls} 次（其中 {failed} 次失敗）。",
     "subscription": "訂閱帳號",
     "agentOff": "主機代理未設定",
-    "subscriptionHelp": "訂閱帳號在 5 小時或每週額度用到上面的百分比時會先跳過；每個帳號都到了，工人就等額度重置再繼續，不會自動改用 API 金鑰。Codex 不提供：它的指令列關不掉執行指令的能力。"
+    "subscriptionHelp": "訂閱帳號在 5 小時或每週額度用到上面的百分比時會先跳過；每個帳號都到了，工人就等額度重置再繼續，不會自動改用 API 金鑰。Codex 不提供：它的指令列關不掉執行指令的能力。",
+    "modelsManaged": "各階段用哪個模型，統一在「AI 設定 › 各功能模型」選擇。",
+    "editModels": "到 AI 設定修改",
+    "saveModels": "儲存影片模型",
+    "openVideos": "前往影片設定"
   }
 }
