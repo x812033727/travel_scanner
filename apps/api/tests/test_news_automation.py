@@ -27,6 +27,7 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    auto_evidence_ok,
     content_fingerprint,
     event_date_problems,
     evidence_present,
@@ -739,6 +740,14 @@ def test_pages_of_one_website_are_one_source() -> None:
     assert not evidence_sufficient(
         [row("https://openai.com/index/a", True), row("https://lead.example/x", role="lead_only")]
     )
+    # Automatic publication (owner decision, 2026-09-25): two websites, or the company's own
+    # announcement on its own; a single third-party website still waits for a person.
+    assert auto_evidence_ok([row("https://www.apple.com/newsroom/a", True)])
+    assert auto_evidence_ok(
+        [row("https://www.apple.com/newsroom/a", True), row("https://www.theverge.com/story")]
+    )
+    assert not auto_evidence_ok([row("https://www.theverge.com/story")])
+    assert not auto_evidence_ok([row("https://openai.com/index/a", True, role="lead_only")])
 
 
 def test_one_evidence_page_is_enough_to_draft_and_to_pass_the_source_check() -> None:

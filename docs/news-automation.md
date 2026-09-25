@@ -2,8 +2,9 @@
 
 `apps/api/app/news_automation` finds news on allow-listed sources every hour, drafts a
 Traditional Chinese article from the evidence, has a second model check it, translates it
-into the other four site languages, asks Jev whether each locale is ready, and then either
-parks the five-locale bundle for review or, once a category has earned it, publishes it.
+into the other four site languages, has a third model (the final editor) check every locale
+against the evidence, asks Jev whether each locale is ready, and then publishes it or parks
+it for review.
 Everything ships switched off. This page is the order in which to switch it on and what
 each switch does.
 
@@ -13,7 +14,7 @@ each switch does.
 | --- | --- | --- |
 | `news-scheduler` | compose profile `news`, `app.news_automation.scheduler` | Once a minute: queues a scan for every due source, fails candidates whose job died (see below), re-queues orphaned ones, queues the daily retention cleanup |
 | `news-worker` | compose profile `news`, `app.news_automation.worker` | The only consumer of the `news` RQ queue. The general `worker` does not read it, so a candidate's hour of model calls never blocks search or trip routing |
-| `/admin/news` | web | Sources, settings, the review queue, runs and the per-category activation gates |
+| `/admin/news` | web | Sources, settings, the review queue, runs, and the per-category auto-publish switches with Jev's agreement figures |
 | Admin AI settings | `/admin/settings` → AI 服務 | API keys and the default model per vendor. The news jobs read them the same way the hotspot AI tasks do (`load_runtime_settings`) |
 
 Nothing runs while the `news` profile is down: jobs queued from `/admin/news` (scan now,
@@ -34,8 +35,10 @@ retry, re-verify) wait in Redis until `news-worker` starts.
 2. **Evidence gate.** At least one page from an evidence source (owner decision,
    2026-09-25: every enabled source is an official or trusted feed, and a person confirms
    each story before it is translated). Only a candidate with nothing but `lead_only` pages
-   stops before any model call, with status `needs_evidence`. Two websites (host without
-   `www.`), one of them first-party, are still required for *automatic* publication.
+   stops before any model call, with status `needs_evidence`. *Automatic* publication
+   needs two websites (host without `www.`) or a first-party page (owner decision,
+   2026-09-25: a company's own announcement may go out on its own, reported as its
+   statement).
 3. **Duplicate check.** Jev compares the story with the same category's news published in
    the last 30 days — hand-written articles included — and with other candidates.
    Uncertain goes to review (`news_duplicate_uncertain`), where an editor answers it with
@@ -47,28 +50,42 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    fact-checker, in a fresh request with no authoring trace, checks it against the
    evidence; a claim citing a page outside the evidence, an impossible event date or a
    failed check stops it with status `needs_redraft`. Jev then answers once, about the
-   zh-TW draft only (`would_publish`, for the gate). The candidate waits in manual review as
+   zh-TW draft only (`would_publish`). The candidate waits in manual review as
    `news_zh_draft_ready` with only the zh-TW draft stored; nothing is translated, drawn
    or saved as an article. The writer's slug is kept on its `draft` pipeline run.
 5. **The owner confirms** with 「確認發布，翻譯其他語言」 (`POST …/approve`): a human
    `publish` decision and assessment, an audit row, and the candidate is queued again.
-6. **Stage two: translate, check, publish.** One translation call per locale, a locale
-   review of each, images (a hero, a social card and a diagram per locale, rendered
+6. **Stage two: translate, final edit, check, Jev's last call, publish.** One
+   translation call per locale and a locale review of each. Then the final editor
+   (`editor_provider`/`editor_model`, default Claude Opus 5.5) reads each of the five
+   locales with the evidence and the verified zh-TW text (`final-edit-<locale>` runs). It
+   makes the text clear for general readers, removes notes meant for editors, and may not
+   add a fact; it passes a locale, returns a corrected one (kept, with the sources locked
+   to the evidence, and recorded as that locale's review, and as the zh-TW verification
+   when it is zh-TW), or holds it as `news_final_edit_hold`. Then images (a hero, a social
+   card and a diagram per locale, rendered
    locally, stored in S3 or `news_assets.content`), hard checks on all five locales
    (summary, FAQ, SVG diagram, topic link, crypto disclaimer, forbidden
-   purchase/trading/exploit wording, guide lint, at least one source website), then the
-   article is saved and published through the same checks as the publish button
+   purchase/trading/exploit wording, guide lint, at least one source website), and the
+   article is saved. **Jev's last call** (`jev-final`) asks about all five saved locales;
+   only `act` on every one publishes, through the same checks as the publish button
    (`service.publication_bundle`): evidence re-fetched and unchanged, verification and
-   locale reviews matching the current text. A failed locale review or hard check keeps
-   the confirmation and waits in manual review for 「重新翻譯並發布」; changed evidence can
-   only be rejected.
-7. **Automatic mode** skips step 5 only when the category's gate is open, auto-publish is
-   on for it, Jev answered `act` for the zh-TW draft and the evidence comes from two
-   websites; anything else waits for a person.
+   locale reviews matching the current text. Anything else waits as
+   `news_jev_final_hold`, and a Jev quota that ran out counts as anything else. Both holds
+   keep the saved article, so 「五語發布」 still publishes it as a person's decision. A
+   failed locale review or hard check keeps the confirmation and waits in manual review
+   for 「重新翻譯並發布」; changed evidence can only be rejected.
+7. **Automatic mode** skips step 5 when auto-publish is on for the category, Jev answered
+   `act` for the zh-TW draft, and the evidence is two websites or a first-party page;
+   anything else waits for a person. There is no shadow gate any more (owner decision,
+   2026-09-25, knowing that Jev publishes no accuracy figures for CJK text): the final
+   editor and Jev's last call guard every article. A candidate uses up to seven Jev calls
+   (duplicate check, zh-TW draft, five locales) from `JEV_DAILY_CALL_BUDGET`.
 
 An edited article (「重新查核」 in the guide editor) runs the fact check, the locale reviews
-and the hard checks again on the editor's text; a confirmed one then publishes, an
-unconfirmed one waits as `news_ready_to_publish` for 「五語發布」.
+and the hard checks again on the editor's text, but neither the final editor nor Jev's last
+call: a person's edits are not rewritten. A confirmed one then publishes, an unconfirmed
+one waits as `news_ready_to_publish` for 「五語發布」.
 
 The schemas the model stages send are rewritten by `provider_schema.py` into the subset
 OpenAI strict mode and Anthropic structured outputs both accept (every property required,
@@ -111,21 +128,22 @@ reply, and the dropped bounds are written into the field descriptions.
    own links, so the list pairs press feeds with the first-party hosts they cite. A link
    is followed only when its host is exactly a source's host: a link to
    `www.microsoft.com` does not reach a source on `blogs.microsoft.com`.
-4. **Settings.** Pick the writer and checker from the dropdowns (「預設」 follows the admin
-   AI settings; 「自訂…」 accepts any id matching `[A-Za-z0-9._:-]{1,128}`). Turn on
-   「啟用掃描」 with mode 「影子模式」. Without the admin page, the host can do the same:
+4. **Settings.** Pick the writer, checker and final editor from the dropdowns (「預設」
+   follows the admin AI settings; 「自訂…」 accepts any id matching `[A-Za-z0-9._:-]{1,128}`).
+   Turn on 「啟用掃描」. Without the admin page, the host can do the same:
    `python -m app.news_automation.settings_cli` (inside the api container) prints the
    settings, which vendor keys and Jev are configured (present/missing only) and the
-   source counts; add `--enable --writer-provider … --verifier-provider …` to see the
-   change and `--apply --actor-email <admin>` to make it. It refuses to switch the
-   scanner on while the chosen vendors lack a key, either is Gemini, or Jev is missing,
-   and never touches mode or auto-publish. Changing a vendor, model or prompt/policy version
-   resets every category to shadow mode and restarts its clock.
-5. **Shadow period.** Review what arrives. Every publish/reject on a candidate that
-   reached Jev counts toward the category's gate: at least 14 days, 50 labelled
-   candidates, 95 % agreement with Jev and no major error.
-6. **Automatic mode**, per category, only once its gate shows 已達標. Reporting a major
-   error on a published candidate turns that category's autopilot off again.
+   source counts; add `--enable --writer-provider … --verifier-provider …
+   --editor-provider …` to see the change and `--apply --actor-email <admin>` to make it.
+   It refuses to switch the scanner on while a chosen vendor cannot be called, one is
+   Gemini, or Jev is missing, and never touches mode or auto-publish. Changing a vendor,
+   model or prompt/policy version restarts the agreement figures; it no longer switches
+   auto-publish off.
+5. **Automatic mode.** Set the mode to 「自動模式」 and tick 「自動發布」 for each category.
+   From then on a candidate that passes every stage publishes itself; the rest wait in the
+   review queue. The agreement figures on each card (days, labelled candidates, agreement
+   with Jev) are for reference only. Reporting a major error on a published candidate
+   turns that category's auto-publish off again.
 
 ## The review queue
 
