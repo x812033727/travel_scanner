@@ -1247,7 +1247,7 @@ async def test_ai_vendors_connection_test_probes_each_configured_vendor() -> Non
     def handler(request: httpx.Request) -> httpx.Response:
         seen.append((request.url.host, request.url.path, dict(request.headers)))
         if request.url.host == "api.openai.com":
-            return httpx.Response(200, json={"data": [{"id": "gpt-5.6-terra"}]})
+            return httpx.Response(200, json={"data": [{"id": "gpt-6-sol"}]})
         if request.url.host == "api.anthropic.com":
             return httpx.Response(200, json={"data": [{"id": "claude-opus-5"}]})
         if request.url.host == "api.minimaxi.com":
@@ -1262,7 +1262,7 @@ async def test_ai_vendors_connection_test_probes_each_configured_vendor() -> Non
     )
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
         message = await admin_service._test_ai_vendors(settings, client)
-    assert "OpenAI ✓（gpt-5.6-terra）" in message
+    assert "OpenAI ✓（gpt-6-sol）" in message
     assert "金鑰有效，模型清單未列出 claude-sonnet-5" in message
     assert "MiniMax 已設定" in message
     assert "Gemini ✓（gemini-3.8-flash）" in message
