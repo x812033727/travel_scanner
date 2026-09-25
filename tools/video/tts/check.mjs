@@ -6,10 +6,17 @@
 // punctuation, spacing and case are ignored pass without Jev; the rest go to Jev in one call per
 // scene, and every line Jev doubts lands in a flags file that `tts --redo` takes as it is.
 // Transcripts are cached by the clip's hash, so a rerun after `tts --redo` only redoes those lines.
+//
+// Two differences never reach Jev. Jev documents no accuracy for Chinese, and on the pilot it
+// doubted 它 heard as 他 and 級聯 heard as 吉蓮. So a transcript that reads the same, tones
+// included, passes as "same sound". The owner kept the filler words the conversational voice adds
+// (啊, 喔, 欸…) on 2026-09-25, so a transcript that differs only by those passes as "filler".
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
+
+import { pinyin } from "pinyin-pro";
 
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -42,10 +49,33 @@ export function spokenForm(line, lexicon) {
     .join("");
 }
 
-/** Whether a transcript already says the line, before any judgement is needed. */
-export function matches(heard, line, lexicon) {
+// Interjections the voice adds on its own. 耶 and 吧 are left out: both are also parts of words.
+const FILLERS = /[啊喔哦欸誒嗯呃]/gu;
+
+/** How a text is read aloud, tone by tone: 它 and 他 read the same, 旗 and 期 do not. */
+export function reading(text) {
+  return pinyin(comparable(text), { toneType: "num", type: "array", nonZh: "consecutive", v: true }).join(" ");
+}
+
+/**
+ * Whether a transcript already says the line, before any judgement is needed, and how:
+ * "exact" word for word, "filler" apart from interjections, "sound" apart from characters that
+ * read the same; null when only a judgement can tell.
+ */
+export function matchKind(heard, line, lexicon) {
+  const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
   const said = comparable(heard);
-  return [line.text, spokenText(line), spokenForm(line, lexicon)].some((form) => comparable(form) === said);
+  if (forms.some((form) => comparable(form) === said)) return "exact";
+  const bare = (text) => comparable(text).replace(FILLERS, "");
+  const saidBare = bare(heard);
+  if (forms.some((form) => bare(form) === saidBare)) return "filler";
+  const saidReading = reading(saidBare);
+  if (forms.some((form) => reading(bare(form)) === saidReading)) return "sound";
+  return null;
+}
+
+export function matches(heard, line, lexicon) {
+  return matchKind(heard, line, lexicon) !== null;
 }
 
 const clipHash = (bytes) => createHash("sha256").update(bytes).digest("hex").slice(0, 16);
@@ -113,7 +143,8 @@ export async function checkAudio(args, ctx, options) {
     }
     entry.intended = spokenText(line);
     entry.spoken_form = spokenForm(line, lexicon);
-    entry.match = matches(entry.heard, line, lexicon);
+    entry.match_kind = matchKind(entry.heard, line, lexicon);
+    entry.match = entry.match_kind !== null;
     results[line.id] = entry;
     cache.lines[line.id] = entry;
     atomicWrite(cacheFile, `${JSON.stringify(cache, null, 2)}\n`);
@@ -138,8 +169,10 @@ export async function checkAudio(args, ctx, options) {
   }
 
   const entries = Object.entries(results);
-  const exact = entries.filter(([, entry]) => entry.match).length;
+  const exact = entries.filter(([, entry]) => entry.match_kind === "exact").length;
+  const alike = entries.filter(([, entry]) => entry.match && entry.match_kind !== "exact").length;
   const flagged = entries.filter(([, entry]) => !entry.match && entry.noul < threshold);
+  const judgedFine = entries.length - exact - alike - flagged.length;
   const flagsFile = path.join(workdir, FLAGS_FILE);
   const notes = Object.fromEntries(flagged.map(([id, entry]) => [id, `Jev ${entry.noul.toFixed(2)}: heard 「${entry.heard}」`]));
   atomicWrite(flagsFile, `${JSON.stringify({ slug: doc.slug, speech_hash: timeline.speech_hash, flags: flagged.map(([id]) => id), notes }, null, 2)}\n`);
@@ -148,11 +181,13 @@ export async function checkAudio(args, ctx, options) {
   recordStage(
     workdir,
     "check-audio",
-    { lines: total, exact, judged: entries.length - exact, flagged: flagged.length, unchecked: missing, transcribed, jev_calls: jevCalls },
+    { lines: total, exact, alike, judged: judgedFine + flagged.length, flagged: flagged.length, unchecked: missing, transcribed, jev_calls: jevCalls },
     ctx.now(),
   );
 
-  ctx.stdout.write(`${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${entries.length - exact - flagged.length} judged fine by Jev, ${flagged.length} flagged (below ${threshold})\n`);
+  ctx.stdout.write(
+    `${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev, ${flagged.length} flagged (below ${threshold})\n`,
+  );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
   for (const [id, entry] of flagged) {
     ctx.stdout.write(`  ${id}  Jev ${entry.noul.toFixed(2)}\n    script: ${entry.intended}\n    heard:  ${entry.heard}\n`);
