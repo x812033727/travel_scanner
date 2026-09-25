@@ -12,6 +12,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from datetime import UTC, datetime
 from typing import Any
+from uuid import uuid4
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -19,6 +20,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
+from app.video_automation.settings import AUTO_APPROVED_NOTE, auto_approves_audio
 from app.video_reviews.schemas import (
     DecisionIn,
     ProjectIn,
@@ -199,6 +201,7 @@ async def submit_review(
             review.status = "superseded"
             review.updated_at = now
     review = VideoReview(
+        id=uuid4(),
         project_id=project.id,
         gate=payload.gate,
         content_sha256=payload.content_sha256,
@@ -211,6 +214,20 @@ async def submit_review(
         updated_at=now,
     )
     session.add(review)
+    # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
+    # passed every line and the setting is on, the review is decided as it arrives.
+    if payload.gate == "audio" and await auto_approves_audio(session, payload.payload):
+        review.status = "approved"
+        review.note = AUTO_APPROVED_NOTE
+        review.decided_at = now
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action="video_review_auto_approved",
+                target=f"video_review:{review.id}",
+                metadata_json={"slug": slug, "gate": review.gate, "sha256": review.content_sha256},
+            )
+        )
     project.last_synced_at = now
     await session.commit()
     store.keep_only(slug, kept_files([*reviews, review]))
