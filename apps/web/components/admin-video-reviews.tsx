@@ -5,8 +5,9 @@ import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
-import { Button } from "@/components/community/ui";
-import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
+import { AdminVideoSettings } from "@/components/admin-video-settings";
+import { Button, Tabs } from "@/components/community/ui";
+import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 
 // What the video pipeline reports (apps/api/app/video_reviews/schemas.py). Payloads come from
@@ -203,22 +204,20 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   </section>;
 }
 
-export function AdminVideoReviews() {
+function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
-  const [slug, setSlug] = useAdminQueryValue("video", "", (value) => SLUG.test(value));
   const [projects, setProjects] = useState<ProjectSummary[] | null>(null);
   const [error, setError] = useState("");
   const load = useCallback(() => {
     api<ProjectSummary[]>("/admin/videos").then((value) => { setProjects(value); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
   }, []);
-  useEffect(() => { if (!slug) load(); }, [slug, load]);
-  if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} />;
+  useEffect(load, [load]);
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
   if (projects && projects.length === 0) return <AdminEmptyState title={t("empty")} detail={t("emptyDetail")} />;
-  return <ul className="mt-6 grid gap-4" aria-label={t("listTitle")}>
+  return <ul className="grid gap-4" aria-label={t("listTitle")}>
     {(projects ?? []).map((project) => <li key={project.slug}>
-      <button type="button" onClick={() => setSlug(project.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
+      <button type="button" onClick={() => onOpen(project.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
         <span className="flex flex-wrap items-center gap-3"><Clapperboard aria-hidden size={20} className="text-[var(--teal)]" /><span className="text-lg font-bold">{project.title}</span>
           <AdminStatusPill status={project.pending ? "pending" : "inactive"}>{project.pending ? t("pending", { count: project.pending }) : t("noPendingShort")}</AdminStatusPill>
         </span>
@@ -226,4 +225,19 @@ export function AdminVideoReviews() {
       </button>
     </li>)}
   </ul>;
+}
+
+const TABS = ["reviews", "settings"] as const;
+
+export function AdminVideoReviews() {
+  const t = useTranslations("admin.videoReviews");
+  const [slug, setSlug] = useAdminQueryValue("video", "", (value) => SLUG.test(value));
+  const [tab, setTab] = useAdminQueryState("tab", TABS, "reviews");
+  if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} />;
+  return <div className="mt-6">
+    <Tabs value={tab} onChange={(value) => setTab(value as (typeof TABS)[number])} label={t("tabsLabel")}
+      items={[{ value: "reviews", label: t("tabReviews") }, { value: "settings", label: t("tabSettings") }]}>
+      {tab === "reviews" ? <ProjectList onOpen={setSlug} /> : <AdminVideoSettings />}
+    </Tabs>
+  </div>;
 }

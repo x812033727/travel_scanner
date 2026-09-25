@@ -21,6 +21,8 @@ from app.config import get_settings
 from app.db import Base
 from app.guides.models import (
     GuideArticle,
+    GuideArticleAlias,
+    GuideArticleLink,
     GuideArticleLocale,
     GuideArticleRevision,
     GuideArticleTopic,
@@ -29,7 +31,7 @@ from app.guides.models import (
 )
 from app.guides.schemas import GuideDocument
 from app.i18n import Locale
-from app.models import AdminAuditLog
+from app.models import AdminAuditLog, User
 from app.news_automation import ai, jobs, pipeline, scheduler, service
 from app.news_automation.models import (
     NewsAssessment,
@@ -42,6 +44,7 @@ from app.news_automation.models import (
 )
 from app.news_automation.provider_schema import portable_json_schema
 from app.news_automation.schemas import (
+    CandidateAction,
     EditorialDraft,
     LocaleReviewResult,
     LocalizedDocument,
@@ -174,7 +177,10 @@ NEWS_TABLES = (
     GuideTopic,
     GuideArticleTopic,
     GuideSearchEntry,
+    GuideArticleAlias,
+    GuideArticleLink,
     AdminAuditLog,
+    User,
 )
 
 
@@ -257,30 +263,71 @@ async def seed_published_news(
     await session.commit()
 
 
+async def seed_single_source_candidate(session: AsyncSession) -> NewsCandidate:
+    """A candidate whose only evidence is its own first-party page."""
+
+    session.add(NewsAutomationSettings(id=1, enabled=True))
+    session.add(GuideTopic(slug="ai-news", section="life", names_json={"zh-TW": "AI 新聞"}))
+    candidate = await seed_candidate(session)
+    session.add(
+        NewsEvidence(
+            candidate_id=candidate.id,
+            role="evidence",
+            is_first_party=True,
+            url=FIRST_PARTY_URL,
+            title="Release",
+            source_date=EVENT_DAY,
+            content_hash="f" * 64,
+            excerpt="The model shipped today.",
+        )
+    )
+    await session.commit()
+    return candidate
+
+
+def stage_one_mocks(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
+    draft = EditorialDraft.model_validate(
+        {
+            "eligible": True,
+            "exclusion_reason": "",
+            "vertical": "ai",
+            "event_date": EVENT_DAY.isoformat(),
+            "slug": SLUG,
+            "topics": ["ai-news"],
+            "claims": [{"claim": "The model shipped.", "source_urls": [FIRST_PARTY_URL]}],
+            "document": news_document("模型發布").model_dump(mode="json"),
+        }
+    )
+    jev_locales: list[tuple[Locale, ...]] = []
+
+    async def jev(*args: Any, **kwargs: Any) -> list[ai.JevLocaleDecision]:
+        locales = kwargs.get("locales", ("zh-TW", "zh-CN", "en", "ja", "ko"))
+        jev_locales.append(tuple(locales))
+        return [ai.JevLocaleDecision(locale, "act", 0.97, [], {}) for locale in locales]
+
+    mocks: dict[str, Any] = {
+        "draft": AsyncMock(return_value=(draft, {}, "writer-model")),
+        "translate": AsyncMock(),
+        "jev_locales": jev_locales,
+    }
+    monkeypatch.setattr(ai, "draft_article", mocks["draft"])
+    monkeypatch.setattr(
+        ai,
+        "verify_article",
+        AsyncMock(return_value=(VerificationResult(verdict="pass"), {}, "checker")),
+    )
+    monkeypatch.setattr(ai, "translate_article", mocks["translate"])
+    monkeypatch.setattr(ai, "jev_assessments", jev)
+    return mocks
+
+
 @pytest.mark.asyncio
-async def test_pipeline_translates_each_locale_and_checks_published_news_for_duplicates(
+async def test_stage_one_drafts_a_single_source_story_in_chinese_and_waits_for_the_owner(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     engine, factory = await database()
     async with factory() as session:
-        session.add(NewsAutomationSettings(id=1, enabled=True))
-        session.add(
-            GuideTopic(slug="ai-news", section="life", names_json={"zh-TW": "AI 新聞"})
-        )
-        candidate = await seed_candidate(session)
-        for url, first_party in ((FIRST_PARTY_URL, True), (LEAD_URL, False)):
-            session.add(
-                NewsEvidence(
-                    candidate_id=candidate.id,
-                    role="evidence",
-                    is_first_party=first_party,
-                    url=url,
-                    title="Release",
-                    source_date=EVENT_DAY,
-                    content_hash=("f" if first_party else "e") * 64,
-                    excerpt="The model shipped today.",
-                )
-            )
+        candidate = await seed_single_source_candidate(session)
         await seed_published_news(
             session,
             "ai-news-manual-story-20260920",
@@ -301,78 +348,149 @@ async def test_pipeline_translates_each_locale_and_checks_published_news_for_dup
         compared.append(list(args[4]))
         return "distinct", 0.01, []
 
-    draft = EditorialDraft.model_validate(
-        {
-            "eligible": True,
-            "exclusion_reason": "",
-            "vertical": "ai",
-            "event_date": EVENT_DAY.isoformat(),
-            "slug": SLUG,
-            "topics": ["ai-news"],
-            "claims": [{"claim": "The model shipped.", "source_urls": [FIRST_PARTY_URL]}],
-            "document": news_document("模型發布").model_dump(mode="json"),
-        }
-    )
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    mocks = stage_one_mocks(monkeypatch)
+
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate.id)
+        stored = await session.get(NewsCandidate, candidate.id)
+        draft_run = await session.scalar(
+            select(NewsPipelineRun).where(
+                NewsPipelineRun.candidate_id == candidate.id, NewsPipelineRun.stage == "draft"
+            )
+        )
+        articles = list(await session.scalars(select(GuideArticle.slug)))
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("manual_review", "news_zh_draft_ready")
+    assert set(stored.draft_bundle_json) == {"zh-TW"}
+    assert stored.would_publish is True
+    # One evidence website is enough to draft; nothing is translated before the owner says so.
+    mocks["translate"].assert_not_awaited()
+    assert mocks["jev_locales"] == [("zh-TW",)]
+    assert draft_run is not None and draft_run.metadata_json == {"slug": SLUG}
+    assert SLUG not in articles
+    assert compared == [["A hand-written AI story"]]
+
+
+@pytest.mark.asyncio
+async def test_stage_two_translates_and_publishes_once_the_owner_confirms(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+        session.add(owner)
+        await session.commit()
+        candidate_id, owner_id = candidate.id, owner.id
+
+    duplicate_check = AsyncMock(return_value=("distinct", 0.01, []))
+    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
+    mocks = stage_one_mocks(monkeypatch)
     translated: list[Locale] = []
 
     async def translate(*args: Any) -> tuple[LocalizedDocument, dict[str, int], str]:
         locale = cast(Locale, args[3])
         translated.append(locale)
-        document = news_document(f"Release {locale}")
-        return LocalizedDocument(document=document), {"output_tokens": 10}, "writer-model"
+        return LocalizedDocument(document=news_document(f"Release {locale}")), {}, "writer"
 
     async def identity_assets(_session: Any, _candidate: Any, documents: Any) -> Any:
         return documents
 
-    monkeypatch.setattr(ai, "jev_duplicate_check", duplicate_check)
-    monkeypatch.setattr(ai, "draft_article", AsyncMock(return_value=(draft, {}, "writer-model")))
-    monkeypatch.setattr(
-        ai,
-        "verify_article",
-        AsyncMock(return_value=(VerificationResult(verdict="pass"), {}, "checker")),
-    )
     monkeypatch.setattr(ai, "translate_article", translate)
     monkeypatch.setattr(
         ai,
         "review_locale",
         AsyncMock(return_value=(LocaleReviewResult(verdict="pass"), {}, "checker")),
     )
-    monkeypatch.setattr(
-        ai,
-        "jev_assessments",
-        AsyncMock(
-            return_value=[
-                ai.JevLocaleDecision(locale, "act", 0.97, [], {})
-                for locale in ("zh-TW", "zh-CN", "en", "ja", "ko")
-            ]
-        ),
-    )
     monkeypatch.setattr(pipeline, "ensure_assets", identity_assets)
     monkeypatch.setattr(pipeline, "hard_policy_problems", lambda *_args, **_kwargs: [])
-    monkeypatch.setattr(pipeline, "revalidate_evidence", AsyncMock(return_value=(True, [])))
+    monkeypatch.setattr(service, "hard_policy_problems", lambda *_args, **_kwargs: [])
+    monkeypatch.setattr(service, "revalidate_evidence", AsyncMock(return_value=(True, [])))
 
     async with factory() as session:
-        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate.id)
-        stored = await session.get(NewsCandidate, candidate.id)
-        stages = list(
-            await session.scalars(
-                select(NewsPipelineRun.stage).where(NewsPipelineRun.candidate_id == candidate.id)
-            )
+        assert await pipeline.process_candidate(
+            session, Mock(), get_settings(), candidate_id
+        ) == "manual_review"
+        owner_row = await session.get(User, owner_id)
+        assert owner_row is not None
+        await service.approve_candidate(
+            session, owner_row, candidate_id, CandidateAction(reason="Worth publishing")
         )
-        locales = set(await session.scalars(select(GuideArticleLocale.locale)))
-
-    assert result == "shadow_review"
-    assert stored is not None and stored.would_publish is True
-    assert translated == ["zh-CN", "en", "ja", "ko"]
-    assert [stage for stage in stages if stage.startswith("translation")] == [
-        "translation-zh-CN",
-        "translation-en",
-        "translation-ja",
-        "translation-ko",
-    ]
-    assert locales == {"zh-TW", "zh-CN", "en", "ja", "ko"}
-    assert compared == [["A hand-written AI story"]]
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        published = {
+            row.locale: row.published_version
+            for row in await session.scalars(select(GuideArticleLocale))
+        }
     await engine.dispose()
+
+    assert result == "published"
+    assert stored is not None
+    assert (stored.status, stored.human_decision) == ("published", "publish")
+    assert translated == ["zh-CN", "en", "ja", "ko"]
+    assert set(published) == {"zh-TW", "zh-CN", "en", "ja", "ko"}
+    assert all(version is not None for version in published.values())
+    # Stage two neither checks for duplicates again nor redrafts, and Jev only saw zh-TW.
+    duplicate_check.assert_awaited_once()
+    mocks["draft"].assert_awaited_once()
+    assert mocks["jev_locales"] == [("zh-TW",)]
+
+
+@pytest.mark.asyncio
+async def test_a_confirmed_draft_whose_translation_fails_keeps_the_confirmation(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+        session.add(owner)
+        await session.commit()
+        candidate_id, owner_id = candidate.id, owner.id
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    stage_one_mocks(monkeypatch)
+    monkeypatch.setattr(
+        ai,
+        "translate_article",
+        AsyncMock(
+            return_value=(LocalizedDocument(document=news_document("Release")), {}, "writer")
+        ),
+    )
+    monkeypatch.setattr(
+        ai,
+        "review_locale",
+        AsyncMock(return_value=(LocaleReviewResult(verdict="manual"), {}, "checker")),
+    )
+
+    async with factory() as session:
+        await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        owner_row = await session.get(User, owner_id)
+        assert owner_row is not None
+        await service.approve_candidate(
+            session, owner_row, candidate_id, CandidateAction(reason="Worth publishing")
+        )
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assert stored is not None
+        held = (stored.error_code, stored.human_decision)
+        # The same action may run stage two again.
+        again = await service.approve_candidate(
+            session, owner_row, candidate_id, CandidateAction(reason="Try the translation again")
+        )
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert held == ("news_locale_review_failed", "publish")
+    assert again.status == "discovered"
 
 
 @pytest.mark.asyncio
@@ -693,25 +811,24 @@ def test_a_reply_that_failed_validation_is_not_rerun_by_rq_but_outages_are(
 
 
 @pytest.mark.asyncio
-async def test_two_pages_of_one_website_stop_at_the_evidence_gate(
+async def test_only_lead_only_pages_stop_at_the_evidence_gate(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     engine, factory = await database()
     async with factory() as session:
         session.add(NewsAutomationSettings(id=1, enabled=True))
         candidate = await seed_candidate(session)
-        for path in ("release", "related"):
-            session.add(
-                NewsEvidence(
-                    candidate_id=candidate.id,
-                    role="evidence",
-                    is_first_party=True,
-                    url=f"https://www.official.example/{path}",
-                    title=path,
-                    content_hash=path * 8,
-                    excerpt="Official text.",
-                )
+        session.add(
+            NewsEvidence(
+                candidate_id=candidate.id,
+                role="lead_only",
+                is_first_party=False,
+                url="https://lead.example/rumour",
+                title="Rumour",
+                content_hash="l" * 64,
+                excerpt="Someone heard something.",
             )
+        )
         await session.commit()
         candidate_id = candidate.id
     duplicate_check = AsyncMock()
@@ -720,11 +837,10 @@ async def test_two_pages_of_one_website_stop_at_the_evidence_gate(
         result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
         stored = await session.get(NewsCandidate, candidate_id)
     await engine.dispose()
-    # Kept out of the manual review queue: there is nothing for an editor to review.
     assert result == "needs_evidence"
     assert stored is not None
     assert (stored.status, stored.error_code) == ("needs_evidence", "news_evidence_insufficient")
-    # Nothing was spent on a candidate that cannot pass.
+    # Nothing was spent on a candidate a draft could not cite.
     duplicate_check.assert_not_awaited()
 
 
