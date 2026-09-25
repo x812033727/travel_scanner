@@ -36,18 +36,20 @@ from app.news_automation.models import (
     NewsPipelineRun,
 )
 from app.news_automation.policy import (
+    FINAL_EDIT_HOLD,
+    JEV_FINAL_HOLD,
     READY_TO_PUBLISH,
     ZH_DRAFT_READY,
+    auto_evidence_ok,
     document_fingerprint,
     event_date_problems,
     evidence_fingerprint,
     evidence_present,
     evidence_site_count,
-    evidence_sufficient,
     hard_policy_problems,
 )
 from app.news_automation.schemas import Vertical
-from app.news_automation.service import audit, gate_for, settings_row
+from app.news_automation.service import audit, settings_row
 from app.problems import AppError
 from app.site_pages.schemas import LinkBlock
 
@@ -641,16 +643,16 @@ async def process_candidate(
             item.tier == "act" for item in decisions
         )
 
+        # No shadow gate any more (owner decision, 2026-09-25): the final editor and Jev's
+        # last call on all five locales guard what goes out on its own.
         fresh_settings = await settings_row(session)
-        gate = await gate_for(session, fresh_settings, cast(Vertical, candidate.vertical))
         if (
             fresh_settings.enabled
             and fresh_settings.mode == "automatic"
             and bool(getattr(fresh_settings, f"auto_publish_{candidate.vertical}"))
-            and gate.eligible
             and candidate.would_publish
-            # A single-source article always waits for a person.
-            and evidence_sufficient(usable)
+            # Two websites, or the company's own announcement; anything else waits for a person.
+            and auto_evidence_ok(usable)
         ):
             return await _second_stage(
                 session,
@@ -858,6 +860,15 @@ async def _second_stage(
             )
             return candidate.status
 
+    final_holds: list[str] = []
+    if localized is None:
+        # The owner's final editor reads every locale against the evidence (2026-09-25). An
+        # editor's own changes in the guide editor (``localized``) are never rewritten.
+        final_holds = await _final_edit(
+            session, environment, settings, candidate, evidence, runs, documents
+        )
+        document = documents["zh-TW"]
+
     documents = await ensure_assets(session, candidate, documents)
     problems: dict[str, list[str]] = {
         locale: hard_policy_problems(
@@ -883,6 +894,24 @@ async def _second_stage(
 
     await _save_guide_bundle(session, candidate, slug, event_date, documents)
     confirmed = candidate.human_decision == "publish"
+    if final_holds:
+        await _manual(
+            session,
+            candidate,
+            FINAL_EDIT_HOLD,
+            f"The final editor held {', '.join(final_holds)}; see its issues below.",
+        )
+        return "manual_review"
+    if localized is None and (confirmed or automatic):
+        held = await _jev_final(session, redis, environment, settings, candidate, runs, documents)
+        if held:
+            await _manual(
+                session,
+                candidate,
+                JEV_FINAL_HOLD,
+                f"Jev's last call did not approve {', '.join(held)} for publication.",
+            )
+            return "manual_review"
     if not confirmed and not automatic:
         # An edited article nobody has confirmed yet waits for the publish button.
         _clear_reverify_marker(candidate)
@@ -907,8 +936,8 @@ async def _second_stage(
         metadata: dict[str, Any] = {"human_override": True, "confirmed_stage": "zh_draft"}
     else:
         actor = None
-        reason = "Jev approved the Traditional Chinese draft and the vertical gate was enabled."
-        metadata = {"model": environment.jev_model}
+        reason = "The final editor and Jev's last call approved all five locales."
+        metadata = {"model": environment.jev_model, "editor_model": settings.editor_model}
         audit(
             session,
             None,
@@ -924,6 +953,118 @@ async def _second_stage(
         session, candidate, actor, checked, versions, reason=reason, metadata=metadata
     )
     return "published"
+
+
+async def _final_edit(
+    session: AsyncSession,
+    environment: Settings,
+    settings: NewsAutomationSettings,
+    candidate: NewsCandidate,
+    evidence: list[NewsEvidence],
+    runs: _Runs,
+    documents: dict[Locale, GuideDocument],
+) -> list[str]:
+    """Run the final editor over each locale in place; return the locales it held."""
+
+    source = documents["zh-TW"]
+    held: list[str] = []
+    for locale in ("zh-TW", *TARGET_LOCALES):
+        await runs.start(
+            f"final-edit-{locale}", provider=settings.editor_provider, model=settings.editor_model
+        )
+        edit, usage, model = await ai.final_edit(
+            environment, settings, source, locale, documents[locale], evidence
+        )
+        await runs.finish(usage=usage, model=model)
+        revised = edit.verdict == "revise" and edit.corrected_document is not None
+        if revised and edit.corrected_document is not None:
+            documents[locale] = _topic_linked(
+                _source_locked(edit.corrected_document, evidence), candidate.vertical, locale
+            )
+        passed = edit.verdict == "pass" or revised
+        fingerprint = document_fingerprint(documents[locale])
+        details: dict[str, Any] = {
+            "stage": "final_edit",
+            "revised": revised,
+            "document_sha256": fingerprint,
+        }
+        session.add(
+            NewsAssessment(
+                candidate_id=candidate.id,
+                assessment_type="locale_review",
+                locale=locale,
+                verdict="pass" if passed else "manual",
+                provider=settings.editor_provider,
+                model=model,
+                reasons_json=edit.issues,
+                details_json=details,
+                evidence_hash=candidate.evidence_hash,
+                prompt_version=candidate.prompt_version,
+            )
+        )
+        if revised and locale == "zh-TW":
+            # The published zh-TW text is the editor's, checked against the same evidence;
+            # publication looks for a verification of exactly that text.
+            session.add(
+                NewsAssessment(
+                    candidate_id=candidate.id,
+                    assessment_type="verification",
+                    verdict="pass",
+                    provider=settings.editor_provider,
+                    model=model,
+                    reasons_json=edit.issues,
+                    details_json=details,
+                    evidence_hash=candidate.evidence_hash,
+                    prompt_version=candidate.prompt_version,
+                )
+            )
+        if not passed:
+            held.append(locale)
+        await session.commit()
+    return held
+
+
+async def _jev_final(
+    session: AsyncSession,
+    redis: Redis,
+    environment: Settings,
+    settings: NewsAutomationSettings,
+    candidate: NewsCandidate,
+    runs: _Runs,
+    documents: dict[Locale, GuideDocument],
+) -> list[str]:
+    """Jev's last call on the saved five locales; return the ones it did not approve."""
+
+    candidate.status = "jev_review"
+    await session.commit()
+    await runs.start("jev-final", provider="jev", model=environment.jev_model)
+    decisions = await ai.jev_assessments(redis, environment, settings, candidate, documents)
+    await runs.finish(
+        usage={
+            "input_tokens": sum(item.usage.get("input_tokens", 0) for item in decisions),
+            "output_tokens": sum(item.usage.get("output_tokens", 0) for item in decisions),
+        },
+        metadata={"tiers": {item.locale: item.tier for item in decisions}},
+    )
+    for decision in decisions:
+        session.add(
+            NewsAssessment(
+                candidate_id=candidate.id,
+                assessment_type="jev",
+                locale=decision.locale,
+                verdict="pass" if decision.tier == "act" else "manual",
+                confidence=decision.confidence,
+                provider="jev",
+                model=environment.jev_model,
+                reasons_json=decision.reasons,
+                details_json={"tier": decision.tier, "stage": "final"},
+                evidence_hash=candidate.evidence_hash,
+                prompt_version=candidate.prompt_version,
+            )
+        )
+    await session.commit()
+    approved = {item.locale for item in decisions if item.tier == "act"}
+    return [locale for locale in ("zh-TW", *TARGET_LOCALES) if locale not in approved]
 
 
 async def recover_stalled_candidates(

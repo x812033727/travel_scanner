@@ -44,7 +44,6 @@
   "nextStep": "Next step",
   "similarTitles": "Closest existing titles",
   "noSimilarTitles": "No story of this category from the last 30 days to compare with.",
-  "gateProgress": "{vertical} auto-publish gate: {labelled}/{min} decided, {rate}% agree with Jev",
   "doneRetry": "Queued for a new draft. When it finishes it appears under To review, Needs redraft or Needs evidence.",
   "doneVerify": "Queued for re-verification. When it finishes it appears under To review or Needs redraft.",
   "doneNotDuplicate": "Recorded as not a duplicate; drafting has started. When it finishes it appears under To review or Needs redraft.",
@@ -70,9 +69,6 @@
   "validate": "Validate source",
   "enabled": "Enabled",
   "disabled": "Disabled",
-  "gate": "Activation gate",
-  "eligible": "Eligible",
-  "notEligible": "Not eligible",
   "confidence": "Confidence",
   "status": "Status",
   "locale": "Locale",
@@ -99,7 +95,7 @@
   "evidenceView": "Needs evidence",
   "publishedView": "Published",
   "closedView": "Rejected",
-  "reviewHint": "Candidates waiting for your decision: Chinese drafts to confirm, duplicate checks Jev could not settle, and confirmed stories stuck in translation or checks.",
+  "reviewHint": "Candidates waiting for your decision: zh-TW drafts to confirm, possible duplicates Jev could not judge, confirmed stories stopped at translation or a check, and articles the final editor or Jev's last call held.",
   "redraftHint": "The AI stopped before a five-language draft existed, so there is nothing to publish. Run one again to draft it anew (spends model calls), or tick several and reject them together.",
   "evidenceHint": "Only lead-only pages, so there is nothing a draft could cite and no model was run. Reject them; coverage from an evidence source arrives as a new candidate.",
   "closedHint": "Rejected candidates and duplicates, for reference only.",
@@ -145,7 +141,9 @@
     "news_exact_duplicate": "Same as an earlier candidate",
     "news_reverify_requested": "Waiting to be re-verified",
     "news_zh_draft_ready": "Chinese draft waiting for you",
-    "news_ready_to_publish": "Five languages ready to publish"
+    "news_ready_to_publish": "Five languages ready to publish",
+    "news_final_edit_hold": "The final editor needs your decision",
+    "news_jev_final_hold": "Held at Jev's last call"
   },
   "next": {
     "shadow": "Jev approved all five languages; it was not published only because the scanner runs in shadow mode. Read the preview, then publish or reject it. Your decision is compared with Jev's for the auto-publish gate.",
@@ -159,9 +157,11 @@
     "published": "Published. If you find a major factual or licensing error, tick the box below and report it: auto-publishing for this category switches off at once.",
     "closed": "Rejected or a duplicate. Nothing to do.",
     "working": "The AI is still working on this candidate. It appears under To review, Needs redraft or Needs evidence when it finishes.",
-    "zhDraft": "The Traditional Chinese draft is written and passed the fact check against its source. Read the preview: to publish, press Confirm, translate and publish, and the other four languages are translated, checked and published by themselves; otherwise reject it, or run it again for a new draft. Your decision is compared with Jev's for the auto-publish gate.",
+    "zhDraft": "The Traditional Chinese draft is written and passed the fact-checker's review against the sources. Check the preview: to publish, press \"Confirm, translate and publish\"; the other four languages are translated and published automatically after the final editor and Jev's last call. Reject it if not, or press \"Run again\" for a new version. Your decision is compared with Jev's for the agreement reference.",
     "translationHold": "You confirmed publication, but a translation or a check did not pass (reason above). Press Translate again and publish to try once more, or reject it.",
-    "readyToPublish": "The edited five-language article passed every check. Publish it if it is right, or reject it."
+    "readyToPublish": "The edited five-language article passed every check. Publish it if it is right, or reject it.",
+    "finalEditHold": "The final editor checked each language against the evidence and found a problem it cannot fix (see above and the assessments below). The five-language article is saved: if the preview is fine, press \"Publish five locales\"; to change it, edit it in the article editor and press \"Re-verify\"; reject it if it is not worth publishing.",
+    "jevFinalHold": "All five languages passed the final editor, but Jev's last call did not approve at least one of them (see \"Jev final review · last call\" in the assessments below). If the preview is fine, press \"Publish five locales\"; to change it, edit it in the article editor and press \"Re-verify\"; reject it if it is not worth publishing."
   },
   "assessmentTypes": {
     "duplicate": "Duplicate check",
@@ -189,6 +189,15 @@
   },
   "approve": "Confirm, translate and publish",
   "retranslate": "Translate again and publish",
-  "doneApprove": "Publication confirmed. The other four languages are being translated; it publishes by itself when they pass, or comes back here if something fails.",
-  "jevOnDraft": "Jev on this Chinese draft: {tier} (confidence {confidence})"
+  "doneApprove": "Confirmed. The other four languages are being translated; the article is published once the final editor and Jev's last call pass, or comes back to To review if not.",
+  "jevOnDraft": "Jev on this Chinese draft: {tier} (confidence {confidence})",
+  "editor": "Final editor model",
+  "agreement": "Agreement with Jev (reference)",
+  "agreementHint": "Automatic publication no longer waits for these figures: an article is published once the final editor and Jev's last call both pass. They only show how close Jev's judgement is to yours.",
+  "agreementProgress": "{vertical} agreement with Jev (reference): you decided {labelled}, {rate}% agree",
+  "assessmentStages": {
+    "zh_draft": "zh-TW draft",
+    "final_edit": "final edit",
+    "final": "last call"
+  }
 }

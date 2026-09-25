@@ -24,7 +24,12 @@ from app.news_automation.models import (
     NewsEvidence,
 )
 from app.news_automation.policy import ZH_DRAFT_READY, document_fingerprint
-from app.news_automation.schemas import CandidateAction, EditorialDraft, VerificationResult
+from app.news_automation.schemas import (
+    CandidateAction,
+    EditorialDraft,
+    SettingsWrite,
+    VerificationResult,
+)
 from app.problems import AppError
 from tests.test_news_pipeline import (
     EVENT_DAY,
@@ -403,3 +408,63 @@ async def test_a_confirmed_draft_that_failed_can_be_confirmed_again_and_retry_fo
     await engine.dispose()
     assert (again.status, again.human_decision) == ("discovered", "publish")
     assert (retried.status, retried.human_decision) == ("discovered", None)
+
+
+def _settings_write(**changes: object) -> SettingsWrite:
+    values: dict[str, object] = {
+        "enabled": True,
+        "mode": "automatic",
+        "writer_provider": "minimax",
+        "verifier_provider": "minimax",
+        "global_concurrency": 2,
+        "per_vertical_concurrency": 1,
+        "min_shadow_days": 14,
+        "min_shadow_candidates": 50,
+        "min_human_agreement": 0.95,
+        "jev_act_confidence": 0.9,
+        "auto_publish_ai": True,
+        "auto_publish_tech": True,
+        "auto_publish_crypto": True,
+        "prompt_version": "news-v1",
+        "policy_version": "news-policy-v1",
+    }
+    values.update(changes)
+    return SettingsWrite.model_validate(values)
+
+
+@pytest.mark.asyncio
+async def test_auto_publish_needs_automatic_mode_but_no_shadow_gate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    monkeypatch.setattr(service, "settings_view", AsyncMock(return_value="view"))
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1))
+        owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+        session.add(owner)
+        await session.commit()
+        # Nobody has labelled a single candidate, and auto-publish still switches on.
+        assert await service.update_settings(session, owner, _settings_write()) == "view"
+        row = await session.get(NewsAutomationSettings, 1)
+        assert row is not None
+        assert (row.auto_publish_ai, row.editor_provider, row.editor_model) == (
+            True,
+            "anthropic",
+            "claude-opus-5-5",
+        )
+        started = row.shadow_started_at_ai
+        # Choosing another editor restarts the agreement figures but leaves autopilot on.
+        await service.update_settings(
+            session, owner, _settings_write(editor_provider="minimax", editor_model=None)
+        )
+        await session.refresh(row)
+        assert (row.mode, row.auto_publish_ai, row.editor_provider) == (
+            "automatic",
+            True,
+            "minimax",
+        )
+        assert row.shadow_started_at_ai >= started
+        with pytest.raises(AppError) as shadow:
+            await service.update_settings(session, owner, _settings_write(mode="shadow"))
+    await engine.dispose()
+    assert shadow.value.code == "news_mode_shadow"
