@@ -174,6 +174,76 @@ async def test_a_viewer_reads_the_settings_and_only_a_settings_manager_changes_t
     update.assert_not_awaited()
 
 
+def _owner() -> User:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    return owner
+
+
+def _stored(monkeypatch: pytest.MonkeyPatch) -> AsyncMock:
+    """Stored settings whose writer runs on Opus 5.5; returns the mocked save."""
+    stored = _values()
+    stored["stage_models"]["writer"] = {"provider": "claude_code", "model": "claude-opus-5-5"}
+    monkeypatch.setattr(service, "settings_row", AsyncMock(return_value=object()))
+    monkeypatch.setattr(service, "settings_values", lambda _row: SettingsWrite(**stored))
+    monkeypatch.setattr(admin_api, "load_runtime_settings", AsyncMock(return_value=Settings()))
+
+    async def save(_session: Any, _user: User, payload: SettingsWrite) -> SettingsView:
+        return SettingsView(
+            **payload.model_dump(),
+            model_options=service.model_options(),
+            configured_providers=["anthropic"],
+            voice_options=VoiceOptionsView(gemini=["Sulafat"], gemini_models=[], azure=[]),
+            updated_at=None,
+        )
+
+    update = AsyncMock(side_effect=save)
+    monkeypatch.setattr(service, "update_settings", update)
+    return update
+
+
+@pytest.mark.asyncio
+async def test_a_settings_save_without_stage_models_keeps_the_stored_ones(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The videos page no longer sends models, so it cannot undo a change made on AI settings."""
+    update = _stored(monkeypatch)
+    values = _values(enabled=True)
+    del values["stage_models"]
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_owner())), base_url="http://t"
+    ) as client:
+        saved = await client.put("/api/v1/admin/video-automation/settings", json=values)
+    assert saved.status_code == 200, saved.text
+    payload = update.await_args.args[2]
+    assert payload.enabled is True
+    assert payload.stage_models["writer"].model == "claude-opus-5-5"
+
+
+@pytest.mark.asyncio
+async def test_the_models_route_changes_only_the_stage_models_and_checks_them(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    update = _stored(monkeypatch)
+    models = {stage: dict(choice) for stage, choice in DEFAULT_STAGE_MODELS.items()}
+    models["verifier"] = {"provider": "anthropic", "model": "claude-sonnet-5"}
+    url = "/api/v1/admin/video-automation/settings/models"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_owner())), base_url="http://t"
+    ) as client:
+        saved = await client.put(url, json={"stage_models": models})
+        models["writer"] = {"provider": "anthropic", "model": "gpt-6-sol"}
+        refused = await client.put(url, json={"stage_models": models})
+        incomplete = await client.put(url, json={"stage_models": {"writer": models["writer"]}})
+    assert saved.status_code == 200, saved.text
+    payload = update.await_args.args[2]
+    assert payload.stage_models["verifier"].model == "claude-sonnet-5"
+    assert payload.draft_interval_hours == 72 and payload.enabled is False
+    assert refused.status_code == 422 and "gpt-6-sol" in refused.text
+    assert incomplete.status_code == 422
+    assert update.await_count == 1
+
+
 @pytest.mark.asyncio
 async def test_the_tool_route_needs_a_video_tool_token() -> None:
     async with AsyncClient(transport=ASGITransport(app=_app()), base_url="http://t") as client:
