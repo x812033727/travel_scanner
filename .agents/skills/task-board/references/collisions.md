@@ -27,6 +27,8 @@ ls tasks/done | grep <slug>                         # 別人做完的票
 
 分支只告訴你「這張票有人拿了」，不告訴你是誰：四條分支曾屬於至少兩個 session。要給持有者的訊息寫進票的 Notes，不要對著猜出來的 session 講。
 
+要跟別的 session 分工時，先用 `ListAgents` 數清楚有幾個，不要從一堆分支推斷只有「另一個」。按區域或工作線分，不按票分：撞到的那張票曾落在雙方宣告的工作線之外。
+
 ## 過期認領與被鎖住的票
 
 - 持有超過 24 小時（`isStale`）的認領可以直接接手，`claim` 會印 `Taking over a stale claim from <owner>` 並清掉 branch 欄位。
@@ -40,12 +42,15 @@ ls tasks/done | grep <slug>                         # 別人做完的票
 repo 用 **squash merge**，所以合併過的分支的 commit 永遠不在 main 上：`git cherry`、`--not --remotes`、subject 比對都會把落地的分支說成沒推（231 條裡誤報 69 條，真的只有 1 條）。
 
 1. 有 PR 的：`gh pr list --state all --head <branch>` 拿 state 與 mergeCommit；`git diff --stat <PR head> <squash commit>` 是空的就是完整落地（`strict` 逼 head 跟上 main，所以樹會一模一樣）。head 物件本機沒有就 `git fetch origin pull/<n>/head`。
-2. 沒 PR 的：先兩個便宜的過濾，`git merge-base --is-ancestor <branch> origin/main` 與 `git cherry origin/main <branch>` 零個 `+`；殘餘的用**內容標記**測：挑 2 到 4 個這條分支引入的東西（新檔路徑、符號、i18n key、migration 檔名）對 `origin/main` 查（`git ls-tree -r --name-only origin/main | grep …`）。有就是落地了，不管 git 怎麼說。
+2. 沒 PR 的：先兩個便宜的過濾，`git merge-base --is-ancestor <branch> origin/main` 與 `git cherry origin/main <branch>` 零個 `+`；殘餘的用**內容標記**測：挑 2 到 4 個這條分支引入的東西（新檔路徑、符號、i18n key、migration 檔名）對 `origin/main` 查（`git ls-tree -r --name-only origin/main | grep …`）。有就是落地了，不管 git 怎麼說。合併前先 rebase（不 squash）也會造成同樣的錯覺：commit 以不同的 SHA 在 main 上，而且落地的 rebase 多加了東西、blob 也不同；內容標記測試一樣適用。
 3. 推送狀態用 `git ls-remote --heads origin <branch>` 核實，本機有沒有 `origin/<branch>` 不算。
 4. 刪分支前看 `git worktree list --porcelain` 有沒有 `detached`：掛在 detached HEAD 上的 commit 不在任何分支上，刪 worktree 就沒了。`git branch -d` 對已落地但 upstream 是 `[gone]` 的分支會拒絕，確認 `--is-ancestor` 後用 `-D`。
 
 ## 碰撞已經發生時
 
+- 你縮減了別的 session 的票的範圍：盡快把縮減開成 PR 落地。只在你分支上的縮減別人看不到，對方照原本的範圍做完了。
+- 別的 session 擁有的 PR 分支，即使是一般 push（非 force）也被擋成 Modify Shared Resources，站主說「CI 紅」也不夠；用有選項的提問拿到「直接推到 PR 分支」才過。推之前先問。
 - 對方先合併：取 main 的版本（`git checkout origin/main -- <paths>`），拿掉你多加而沒人用的 message key；讀對方的做法，它可能比你的好。
 - 只有一部分重疊：留下不重疊的那部分，開成一張疊在對方分支上的票。
 - 兩份實作都完整：用多視角的代理比較（loader、route、單元測試、e2e、文件，加一個專門找合併版缺陷的），每個發現交給獨立代理反駁；存活的才值得帶進小的後續 PR。關掉被取代的 PR 時留言說明原因、分支保留。
+- 站主對兩個 session 下了同一個指令（2026-09-20）：讓進行中的代理跑完；回「收到＋已派出的最大編號」當切點，對方從下一號派；研究、brief、代理報告放在對方只讀的狀態檔；規格檔不 commit、對方複製；票的 commit 由對方 cherry-pick（worktree 共用同一個物件庫，所以刪遠端分支、留本地分支）。對方說「站主已經決定了」而要你**少做**時，照做是安全的。

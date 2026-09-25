@@ -16,7 +16,7 @@ metadata:
 3. **在 PR 內結案。** `npm run tasks -- done <id>` 當 PR 的最後一個 commit，票的檔案跟工作一起搬到 `tasks/done/`；不要為了搬一個檔再開一個 PR。設成 `review` 卻從不 `done` 的票會在合併後繼續鎖住 scope。
 4. **票的檔案就是交接。** 停手前打勾、寫 Notes、`release`；發現但不修的東西 `new` 一張票，不要留在對話裡。
 5. **別人持有的票不要動**：對它 `done`／`release` 會被 auto 模式擋成 Interfere With Workloads，用有選項的提問列出票號與證據，站主同意後同一個指令就過。
-6. **合併只能靠綠燈**：四個必要檢查 `api`、`web`、`containers`、`full-stack-smoke`，`strict` 表示分支要跟上 main，`enforce_admins` 表示 `--admin` 不是後門，repo 也不允許 `--auto`。用 `--match-head-commit <綠燈的 SHA>` 合併，別人推了新 commit 就會被拒而不是把沒測的東西合進去。
+6. **合併只能靠綠燈**：四個必要檢查 `api`、`web`、`containers`、`full-stack-smoke`，`strict` 表示分支要跟上 main，`enforce_admins` 表示 `--admin` 不是後門，repo 也不允許 `--auto`。用 `--match-head-commit <綠燈的 SHA>` 合併，別人推了新 commit 就會被拒而不是把沒測的東西合進去。背景的等綠再合併迴圈，只有站主下過點名條件的常設指令（例如「CI 綠就合併」）才能跑；否則每個 PR 各問一次。
 7. **合併前先看票有沒有已經落地**：`git fetch` 後 `git log --oneline origin/main -- <scope 路徑>`，以及 `tasks/done/` 裡有沒有同一張票；另一個 session 做完的話，取 main 的版本，不要開競爭的 PR。
 8. 中文的 PR 標題或內文在 Windows 的 Git Bash 要用 `--body-file` 或 `gh api --input`，不能當命令列參數。
 
