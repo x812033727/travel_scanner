@@ -1,20 +1,21 @@
 ---
 id: 2026-09-25-roll-out-antigravity-accounts
 title: Roll out Antigravity accounts on the host and check the first sign-in
-status: open
+status: in-progress
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5.5
+claimed_at: 2026-09-25T13:53:30Z
 created_at: 2026-09-25T12:52:52Z
 completed_at:
-branch:
+branch: claude/antigravity-token-file
 depends_on:
   - 2026-09-25-antigravity-subscription-accounts
 scope:
   - ops/ai-accounts/README.md
   - apps/api/ai_accounts_agent/antigravity.py
   - apps/api/tests/test_ai_accounts_antigravity.py
+  - apps/api/ai_accounts_agent/config.py
 ---
 
 # Roll out Antigravity accounts on the host and check the first sign-in
@@ -46,15 +47,18 @@ Every host step needs the owner's approval (see the `deploy` skill and
 
 ## Steps
 
-- [ ] Merge the code PR; deploy (skill `deploy`).
-- [ ] From the deployed checkout, rerun `bash ops/ai-accounts/install.sh` (it restarts the
+- [x] Merge the code PR; deploy (skill `deploy`). #760 went live as 734298bf, 13:44Z.
+- [x] From the deployed checkout, rerun `bash ops/ai-accounts/install.sh` (it restarts the
       agent). It creates `agy-a` … `agy-e`, the `/root/.gemini/antigravity-cli` link, the
       `agy-?` commands and the `agy()` shell function. agy 1.2.11 is already at
       `/root/.local/bin/agy` (installed 2026-09-25, sha512 checked).
-- [ ] Add the owner's Google emails to `AI_ACCOUNTS_ALLOWED_EMAILS` in
+- [x] Add the owner's Google emails to `AI_ACCOUNTS_ALLOWED_EMAILS` in
       `/etc/travel-scanner/ai-accounts.env` if they differ from the Claude/Codex ones, then
       restart the agent.
-- [ ] Owner: sign in Antigravity account A on the page.
+- [x] Owner: sign in Antigravity account A on the page. The login worked at 13:47Z but the
+      page reported a failure (see Notes); fixed in the follow-up PR on this branch.
+- [ ] Deploy the follow-up, rerun `install.sh` (copies the agent and restarts it), and check
+      that account A shows as signed in with its email.
 - [ ] If the card says the first-run setup is needed, the owner runs `agy-a` once over SSH,
       then presses Refresh on the page.
 - [ ] If the card says the quota page could not be read, read
@@ -76,6 +80,22 @@ Then `agy-a` over SSH, `/usage`, and the page side by side.
 
 ## Notes
 
+- 2026-09-25, first real sign-in (account A, 13:47Z): agy 1.2.11 saved the login to
+  `~/.gemini/antigravity-cli/antigravity-oauth-token`, not `jetski-standalone-oauth-token`
+  (that name came from a report about an older version). The agent waited 90 s for the wrong
+  file and reported a failure although the log said "OAuth: authenticated successfully as
+  …@gmail.com" ("ChainedAuth: authenticated via keyring (effective: keyring)" is printed
+  even when the file fallback served it). Two more clicks on the page then got a 503: agy
+  with a saved login opens on its TUI, never printing a URL, and the agent waited 30 s, past
+  the API's 25 s timeout, while holding the login registry lock (overview requests broke
+  with BrokenPipe in the journal). Fix: both file names count, "sign in again" sets the
+  saved login aside and restores it when the new one does not finish, and the URL wait is
+  15 s. A clean login printed its URL in 0.5 s inside the systemd sandbox.
+- After that login `cache/onboarding.json` says `"consumerOnboardingComplete": false`, so the
+  first probe is expected to stop at a first-run page (`setup_needed`) until the owner runs
+  `agy-a` once.
+- Allowlist (owner's choice): x812033727, s812033727, z812033727 @gmail.com and the two
+  Apple private-relay addresses of Claude D and Codex D.
 - The agent answers only the per-folder trust question, and only for its own empty probe
   folder. It never answers terms, colour scheme or telemetry pages; those are the owner's.
 - If the login itself fails after the code is pasted, the page shows the last error line
