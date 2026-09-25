@@ -82,6 +82,8 @@ from app.ui_text.router import admin_router as admin_ui_text_router
 from app.ui_text.router import runtime_router as ui_text_runtime_router
 from app.usage.router import admin_router as admin_usage_router
 from app.usage.router import router as usage_router
+from app.video_reviews.admin_api import admin_router as admin_video_reviews_router
+from app.video_reviews.admin_api import tool_router as video_reviews_router
 from app.video_speech.admin_api import admin_router as video_tool_tokens_router
 from app.video_speech.admin_api import speech_router as video_speech_router
 
@@ -180,6 +182,8 @@ app.include_router(admin_foods_router, prefix="/api/v1")
 app.include_router(line_router, prefix="/api/v1")
 app.include_router(video_tool_tokens_router, prefix="/api/v1")
 app.include_router(video_speech_router, prefix="/api/v1")
+app.include_router(video_reviews_router, prefix="/api/v1")
+app.include_router(admin_video_reviews_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["system"])

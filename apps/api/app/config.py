@@ -554,6 +554,14 @@ class Settings(BaseSettings):
         default=300_000, ge=0, le=100_000_000
     )
     video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
+    # Previews the owner reviews on /admin/videos: a 720p cut, the narration, the contact sheet.
+    # Production has no object storage, so they live in a volume on the host
+    # (docker-compose.prod.yml) and are served to admins only.
+    video_review_dir: str = "/var/lib/mokaair/video-reviews"
+    video_review_max_file_bytes: int = Field(default=400_000_000, ge=1_000_000, le=4_000_000_000)
+    video_review_max_total_bytes: int = Field(
+        default=20_000_000_000, ge=10_000_000, le=500_000_000_000
+    )
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
