@@ -2,7 +2,7 @@
 id: 2026-09-25-let-the-trip-planner-use-the
 title: Let the trip planner use the Claude subscription within a reader's wait
 status: open
-priority: P3
+priority: P2
 area: api
 owner:
 claimed_at:
@@ -30,14 +30,13 @@ Anthropic key. A reader waits for both: the parser has a hard 12 s ceiling, the 
 15 s per-vendor and 35 s total budget, and the web proxy cuts planner routes at 15 s. A Claude
 Code run takes tens of seconds, and longer when the accounts are busy.
 
-The owner asked for every Claude feature to use the subscription. Whether readers should wait
-up to about two minutes for it is their call.
+The owner asked for every Claude feature to use the subscription, and on 2026-09-25 approved
+the plan in which a reader saving a trip may wait up to about two minutes for it. The parser
+cannot fit a CLI run into 12 s, so it skips the subscription.
 
 ## Definition of done
 
-- [ ] The owner decides whether the planner may take that long, or whether it should keep the
-      key, MiniMax or the catalogue planner.
-- [ ] If they say yes: a subscription planner provider (schema in the prompt,
+- [ ] A subscription planner provider (schema in the prompt,
       `queue_seconds` 0), its own timeout (about 120 s), a total budget of about 150 s in
       subscription mode, and a longer web proxy timeout for the planning routes only.
 - [ ] The trip parser skips the subscription and says so on the settings card.
