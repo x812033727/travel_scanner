@@ -1,6 +1,6 @@
 ---
 name: catchtable-discovery
-description: 用 CatchTable 的排行榜反推新的韓國美食店家並補上訂位連結：抄榜單、對正式站目錄去重、逐店查證店頁與官方來源、轉成既有匯入指令的檔案、部署後套用，再在後台補座標、Naver 精準頁與核准。要開新一批（首爾、釜山、濟州、大邱的最佳餐廳榜或候位榜）、接手別人的批次、把候選檔轉成匯入檔、在正式站套用店家與平台列、或處理「建成 pending 之後怎麼公開」時，先讀這個 skill。Turn CatchTable rankings into new Korean food merchants and reservation links for travel_scanner. Covers capturing a ranking page, dedup against the production catalog, per-shop verification of the shop page and an official source, converting the candidate file into the files the existing importers accept, applying them on the host after a deploy, and the admin steps that make a Korean merchant public. Use it to start or take over a batch, convert or apply a batch, or publish pending merchants. Not for writing articles (content-pipeline) and not for the deploy itself (deploy).
+description: 用 CatchTable 的排行榜反推新的韓國美食店家並補上訂位連結：抄榜單、對正式站目錄去重、逐店查證店頁與官方來源、轉成既有匯入指令的檔案、部署後套用，再在後台補座標、Naver 精準頁與核准。要開新一批（首爾、釜山、濟州、大邱的最佳餐廳榜或候位榜）、接手別人的批次、把候選檔轉成匯入檔、在正式站套用店家與平台列、或處理「建成 pending 之後怎麼公開」時，先讀這個 skill。Turn CatchTable rankings into verified Korean food merchants with reservation links, then import and publish them.
 metadata:
   short-description: CatchTable 榜單反推店家：收集、查證、匯入、公開
 ---

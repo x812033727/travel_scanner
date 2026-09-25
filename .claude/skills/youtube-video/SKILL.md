@@ -1,6 +1,6 @@
 ---
 name: youtube-video
-description: 製作 YouTube 教學與解說影片的完整流程，分兩條路線。全自動：AI 撰稿與查核、伺服器用 Azure 合成台灣口音旁白、深色投影片版型、ffmpeg 合成、五語 CC，工具在 tools/video。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。兩條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce YouTube tutorial and explainer videos for the Mokaair channel on two routes. Fully automated, with an agent-written and fact-checked script, server-side Azure Taiwanese Mandarin narration, dark slide templates, ffmpeg assembly and five-language captions through tools/video; or recorded by the owner, with a spoken script, shot list, slides, screen recording and editor handover. Both cover topic and format, fact checks, visuals and thumbnail, chapters, captions, the upload package and the pre-upload checklist. Not for writing site articles (content-pipeline).
+description: 製作 YouTube 教學與解說影片的完整流程，分兩條路線。全自動：AI 撰稿與查核、伺服器用 Azure 合成台灣口音旁白、深色投影片版型、ffmpeg 合成、五語 CC，工具在 tools/video。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。兩條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos, fully automated through tools/video or recorded by the owner, from topic to upload.
 metadata:
   short-description: YouTube 影片：全自動或人工錄製，從選題到上架
 ---

@@ -1,6 +1,6 @@
 ---
 name: content-pipeline
-description: Mokaair 文章批次的完整產線：規劃規格、派撰稿與查核代理、翻譯與逐語審稿、機械檢查、pack_cli ingest、PR、部署後 guides-import dry-run 與 publish、逐頁驗證與交接。只要是要寫、查核、翻譯、匯入或發布文章／內容包（旅遊攻略、情報、美食特輯、生活分享、AI／科技／幣圈新聞、系列教學），或要開一批新文章、接手別人的批次、把內容包推上正式站，就先讀這個 skill。Run Mokaair article batches end to end, from the batch spec through writer and fact-check agents, translation and per-locale review, mechanical checks, pack_cli ingest, PR, guides-import dry-run then publish on the host, to page verification and handover. Use it whenever the task is to write, verify, translate, import or publish articles or content packs, launch or take over a batch, or ship packs to production. Not for a one-line fix to a single pack or for site code changes.
+description: Mokaair 文章批次的完整產線：規劃規格、派撰稿與查核代理、翻譯與逐語審稿、機械檢查、pack_cli ingest、PR、部署後 guides-import dry-run 與 publish、逐頁驗證與交接。只要是要寫、查核、翻譯、匯入或發布文章／內容包（旅遊攻略、情報、美食特輯、生活分享、AI／科技／幣圈新聞、系列教學），或要開一批新文章、接手別人的批次、把內容包推上正式站，就先讀這個 skill。Run Mokaair article batches end to end, from spec, writing and fact checks through translation, ingest, publish and verification.
 metadata:
   short-description: 文章批次：撰稿、查核、匯入、發布
 ---
