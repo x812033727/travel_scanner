@@ -34,10 +34,10 @@ metadata:
 | 字卡、截圖、螢幕錄影、縮圖 | `.agents/skills/youtube-video/references/visuals.md` |
 | 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
 | 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
-| 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑 | `.agents/skills/youtube-video/references/automated.md` |
+| 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑、主機自動產線 | `.agents/skills/youtube-video/references/automated.md` |
 | 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`caption-translate.md`、`caption-review.md`） |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
-| 全自動的設計理由、YouTube 與 Azure 的官方規則 | `docs/videos/DESIGN.md` |
+| 全自動的設計理由、YouTube、Azure 與 Gemini 語音的官方規則 | `docs/videos/DESIGN.md` |
 
 ## 不變的規矩
 
@@ -49,7 +49,7 @@ metadata:
 6. **只用有授權的素材**：音樂用 YouTube 音效庫或已購授權；別人的影片、截圖、Logo 只在評論必要時短暫引用並標出處；縮圖不用別人的照片。
 7. **上架是站主的動作。** 代理不登入 YouTube、不按發布、不改公開狀態；交出上架包，列出需要站主決定的欄位（付費宣傳、合成內容揭露、兒童設定）。
 8. **檔案先落地**：每完成一段稿子就存檔，session 被切斷時留下的是檔案，不是對話。
-9. **金鑰與權杖不經過代理。** Azure 語音的金鑰由站主填在正式站後台；本機工具用的影片工具權杖，由站主自己在終端機執行 `login` 存起來。權杖不能出現在對話、檔案或指令參數裡。
+9. **金鑰與權杖不經過代理。** 旁白的金鑰（Gemini 用網站既有的金鑰，Azure 由站主填）只在正式站後台；本機工具的影片工具權杖靠 `login` 配對取得：代理把印出的連結交給站主，站主在後台按「允許」，權杖直接寫進本機檔案。權杖不能出現在對話、檔案或指令參數裡。
 
 ## 全自動路線
 
