@@ -121,16 +121,30 @@ def _slot(slot: str, *peaks: float | None, **extra: Any) -> dict[str, Any]:
     }
 
 
-def test_the_account_with_the_most_room_below_the_cap_is_picked() -> None:
-    assert pick_slot([_slot("a", 50, 70), _slot("b", 10, 30)], 80, "a") == "b"
-    assert pick_slot([_slot("a", 30), _slot("b", 30)], 80, "b") == "b", "a tie goes to the default"
-    assert pick_slot([_slot("a", 90), _slot("c")], 80, "a") == "c", "unknown usage is tried last"
+def test_the_current_account_keeps_every_run_until_it_is_full() -> None:
+    assert pick_slot([_slot("a", 75, 70), _slot("b", 10, 30)], 80, "a") == "a"
+    assert pick_slot([_slot("a", 30), _slot("b", 30)], 80, "b") == "b"
+    assert pick_slot([_slot("a", 10), _slot("c")], 80, "c") == "c", "unknown usage counts as room"
     assert pick_slot([_slot("a", 10, auth_method="api_key"), _slot("b", 60)], 80, "a") == "b"
     assert pick_slot([_slot("a", 10, email_allowed=False), _slot("b", 60)], 80, "a") == "b"
     assert (
         pick_slot([{"tool": "codex", "slot": "a", "logged_in": True}, _slot("b", 1)], 80, None)
         == "b"
     )
+
+
+def test_a_full_account_hands_over_to_the_next_slot_and_the_last_wraps_to_the_first() -> None:
+    accounts = [_slot(name, 10) for name in "abcde"]
+    full = {"c": _slot("c", 85), "e": _slot("e", 20, 90)}
+    around = [full.get(slot["slot"], slot) for slot in accounts]
+    assert pick_slot(around, 80, "c") == "d"
+    assert pick_slot(around, 80, "e") == "a", "after the last slot the first one is next"
+    signed_out = [_slot("a", 10), _slot("b", 10, logged_in=False), _slot("c", 95), _slot("d", 5)]
+    assert pick_slot(signed_out, 80, "c") == "d"
+    assert pick_slot(signed_out, 80, "b") == "d", "a signed-out current account passes its turn"
+    assert pick_slot([_slot("b", 10)], 80, "z") == "b", "an unknown pointer starts at a"
+    codex = [{**_slot("a", 10), "tool": "codex"}, {**_slot("b", 10), "tool": "codex"}]
+    assert pick_slot([*codex, _slot("a", 1)], 80, "a", tool="codex", resting={"a"}) == "b"
 
 
 def test_when_every_account_is_at_the_cap_nothing_runs_until_the_earliest_reset() -> None:
@@ -266,13 +280,31 @@ def test_a_run_that_hits_the_limit_moves_on_to_the_next_account_and_rests_the_fi
     run = {"tool": "claude", "model": "claude-opus-5-5", "system": "Write.", "prompt": "{}"}
     application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
     status, body = _signed(application, run)
-    assert status == 200 and body["slot"] == "b", "a had the most room but its run hit the limit"
+    assert status == 200 and body["slot"] == "b", "it was a's turn but its run hit the limit"
     assert "a" in application._runs_resting and not application._runs_busy
+    assert config.current_path("claude").read_text(encoding="utf-8").strip() == "b"
     (config.slot_path("claude", "b") / "last-run.json").unlink()
     (config.slot_path("claude", "a") / "last-run.json").unlink()
     status, body = _signed(application, run)
     assert status == 200 and body["slot"] == "b"
     assert not (config.slot_path("claude", "a") / "last-run.json").exists(), "a is resting"
+    application._runs_resting.clear()
+    (config.slot_path("claude", "a") / "spent").unlink()
+    status, body = _signed(application, run)
+    assert status == 200 and body["slot"] == "b", "a has room again, but b keeps its turn"
+
+
+def test_the_turn_survives_a_restart_and_the_default_restarts_it(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    usage = {"a": 10, "b": 10, "c": 10}
+    config.current_path("claude").write_text("c\n", encoding="utf-8")
+    application = AgentApplication(config, claude=Accounts(usage), codex=Accounts({}))  # type: ignore[arg-type]
+    assert application._claim_run_slot(_request()) == "c"
+    application._release_run_slot("c", spent=False)
+    assert application.overview(False)["current"]["claude"] == "c"
+    body = json.dumps({"slot": "b"}).encode()
+    assert application.set_default("claude", body)[0] == 200
+    assert application._claim_run_slot(_request()) == "b"
 
 
 def test_a_request_gives_up_when_every_account_with_room_stays_busy(tmp_path: Path) -> None:
@@ -296,6 +328,7 @@ def test_two_runs_on_different_accounts_go_side_by_side(tmp_path: Path) -> None:
     application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
     first = application._claim_run_slot(_request())
     second = application._claim_run_slot(_request())
-    assert {first, second} == {"a", "b"}
+    assert (first, second) == ("a", "b"), "a busy account keeps its turn; b runs beside it"
+    assert not config.current_path("claude").exists()
     application._release_run_slot(first, spent=False)
-    assert application._claim_run_slot(_request()) == first
+    assert application._claim_run_slot(_request()) == "a"
