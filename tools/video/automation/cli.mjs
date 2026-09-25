@@ -33,6 +33,8 @@ export async function run(command, args, ctx) {
         break;
       }
       ctx.stdout.write(`${done}\n`);
+      // The unit could not move and would fail the same way right now: wait for the next round.
+      if (automation.halted) break;
     }
     return EXIT.ok;
   } catch (error) {
