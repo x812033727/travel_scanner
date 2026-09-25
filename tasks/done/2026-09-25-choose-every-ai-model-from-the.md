@@ -1,13 +1,13 @@
 ---
 id: 2026-09-25-choose-every-ai-model-from-the
 title: Choose every AI model from the AI settings page
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-25T13:34:12Z
 created_at: 2026-09-25T13:33:49Z
-completed_at:
+completed_at: 2026-09-25T14:42:54Z
 branch: claude/ai-models-in-ai-settings
 depends_on: []
 scope:
@@ -111,5 +111,13 @@ there shows up on `/admin/news?tab=settings` and in the table at once.
   switch could not be seen; `admin-ai-settings.test.tsx` covers it in jsdom instead.
 - Local Playwright could not run: `npm ci` moved Playwright past the installed browser build.
   CI runs `admin-domains.spec.ts`, whose redirect URL now names `tab=models`.
+- Gemini and subscriptions: on 2026-09-25 the owner asked whether Gemini could use the
+  Antigravity subscriptions (#760/#762) as well, and after the ban risk was laid out
+  (Antigravity terms §6; Google banned paid accounts for routing its OAuth into other tools)
+  chose to keep them for manual use on the host. Every row that runs on Gemini therefore says
+  `geminiApiKeyOnly`. Do not wire the site's Gemini calls to `agy` without asking again.
+- Open PR #763 adds a third news model (`editor_provider`/`editor_model`, the final editor) in
+  the same news files. Whichever lands second must move it here too: add it to `ModelsWrite`,
+  `SettingsWrite`'s kept-when-omitted keys, `AdminNewsModelSettings` and `overviewRows`.
 - Production today (read 2026-09-25): the planner card has `openai_model = gpt-5.6-terra`
   saved, so it overrides the new GPT-6 Sol default until the owner changes it on the new tab.
