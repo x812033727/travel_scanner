@@ -22,6 +22,9 @@ const OWNER_CODES = new Set([
   "video_automation_settings_invalid",
 ]);
 const RETRYABLE_CODES = new Set(["video_ai_upstream_busy", "video_ai_upstream_unreachable", "rate_limit_exceeded", "upstream_unavailable"]);
+// Every subscription account is at the owner's cap: nothing ran, and retrying within minutes will
+// not help. This run of `auto` ends; the worker's loop tries again on its next round.
+const PAUSE_CODES = new Set(["video_ai_subscription_paused"]);
 
 async function problemOf(response) {
   try {
@@ -68,6 +71,7 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
       const problem = await problemOf(response);
       const message = problem.detail || `HTTP ${response.status}`;
       if (response.status === 401 || OWNER_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code, who: "owner" });
+      if (PAUSE_CODES.has(problem.code)) throw new AutomationError(message, { status: response.status, code: problem.code });
       last = new AutomationError(message, { status: response.status, code: problem.code });
       if (!(RETRYABLE_CODES.has(problem.code) || response.status === 429 || response.status >= 500)) throw last;
       await sleep(delayMs(response, attempt));

@@ -106,7 +106,7 @@ test("a worksheet is done only when every line, chapter, title, description and 
 });
 
 /** The site as the worker sees it: settings, topics, the model runner, reviews and source pages. */
-function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity } = {}) {
+function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false } = {}) {
   const calls = { run: [], reviews: [], reports: [], pages: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
@@ -130,6 +130,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity } = {}) {
     if (pathname === "/api/video/automation/topics") return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/guides/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
+      if (paused) return json({ code: "video_ai_subscription_paused", detail: "every Claude account is at or above 80%" }, 429);
       if (budgetLeft-- <= 0) return json({ code: "video_ai_budget_exhausted", detail: "本月模型 token 已用完" }, 429);
       const answer = answers[body.stage]?.(body) ?? {};
       return json({ text: JSON.stringify(answer), provider: "anthropic", model: "claude-sonnet-5", input_tokens: 10, output_tokens: 5, usage: { tokens: 15, token_budget: 20_000_000, drafts: 1, draft_budget: 8, calls: 1, failed_calls: 0 } });
@@ -260,6 +261,12 @@ test("an outline sent back is re-planned with the owner's note, and a spent budg
   const run = context(other, spent.fetchImpl, clock);
   assert.equal(await main(["auto", "--once"], run.ctx), EXIT.owner);
   assert.match(run.out.stderr, /本月模型 token 已用完/);
+
+  const waiting = fakeSite({ answers: answersFor("other"), paused: true });
+  const pause = context(sandbox(), waiting.fetchImpl, clock);
+  assert.equal(await main(["auto", "--once"], pause.ctx), EXIT.external);
+  assert.equal(waiting.calls.run.length, 1, "a paused subscription is not retried within the run");
+  assert.match(pause.out.stderr, /at or above 80%/);
 
   const off = fakeSite({ settings: { enabled: false } });
   const quiet = context(sandbox(), off.fetchImpl, clock);
