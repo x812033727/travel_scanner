@@ -2175,6 +2175,61 @@ class VideoToolToken(Timestamped, Base):
     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
 
+class VideoProject(Timestamped, Base):
+    """One video the local pipeline is making, as the owner sees it on /admin/videos.
+
+    The pipeline's own state stays in its work directory; this row is what it last reported:
+    the title, where it is, and the checklist its `status` command prints.
+    """
+
+    __tablename__ = "video_projects"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
+    title: Mapped[str] = mapped_column(String(200))
+    stage: Mapped[str] = mapped_column(String(40))
+    checklist: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    youtube_video_id: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    last_synced_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class VideoReview(Timestamped, Base):
+    """Something the owner must decide on for one video: an outline, the narration, the final cut,
+    or whether it may be uploaded. Bound to the SHA-256 of what was reviewed, so the pipeline
+    records an approval only for the exact file the owner saw."""
+
+    __tablename__ = "video_reviews"
+    __table_args__ = (
+        UniqueConstraint("project_id", "gate", "content_sha256", name="uq_video_review_content"),
+        CheckConstraint(
+            "gate IN ('outline', 'audio', 'final', 'publish')", name="ck_video_review_gate"
+        ),
+        CheckConstraint(
+            "status IN ('pending', 'approved', 'rejected', 'superseded')",
+            name="ck_video_review_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    project_id: Mapped[UUID] = mapped_column(
+        ForeignKey("video_projects.id", ondelete="CASCADE"), index=True
+    )
+    gate: Mapped[str] = mapped_column(String(20))
+    content_sha256: Mapped[str] = mapped_column(String(64))
+    summary: Mapped[str] = mapped_column(String(500))
+    payload: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    # [{role, sha256, size, content_type}], each a file in the review store.
+    files: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    choice: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    decided_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    submitted_by_token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+
+
 class SitePage(Timestamped, Base):
     __tablename__ = "site_pages"
     __table_args__ = (
