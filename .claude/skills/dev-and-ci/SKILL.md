@@ -7,6 +7,8 @@ metadata:
 
 # 本機開發與 CI（dev-and-ci）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/dev-and-ci/` 底下；`.claude/skills/dev-and-ci/` 只放這份 SKILL.md 的逐字複本。
+
 這個 skill 只放指令、判斷順序、去哪裡讀。CI 真正跑什麼以 `.github/workflows/ci.yml` 為準；推 PR 前的清單在 `AGENTS.md` §Checks before you push；四個必要檢查與怎麼讀在 `.github/BRANCH_PROTECTION.md`。合併、rebase、BEHIND 走 skill `task-board`。
 
 ## 不變的規矩
