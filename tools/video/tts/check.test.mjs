@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -7,7 +7,7 @@ import { EXIT, main } from "../cli.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
-import { comparable, GIVE_UP_AFTER, matchKind, matches, reading, spokenForm } from "./check.mjs";
+import { comparable, GIVE_UP_AFTER, hintTerms, MAX_HINT_TERMS, matchKind, matches, reading, spokenForm } from "./check.mjs";
 import { concatSamples, downsample, encodeWav } from "./wav.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -44,6 +44,27 @@ test("same-sound characters and added filler words pass without Jev; a different
   assert.equal(reading("它"), reading("他"));
 });
 
+test("Taiwanese particles the voice adds pass as fillers; a closing 餒 or 耶 only when the script lacks it", () => {
+  const lexicon = { schema_version: 1, terms: {} };
+  const line = (text) => ({ id: "k7p2", text });
+  // Pairs the Google student video's transcripts produced on 2026-09-25.
+  assert.equal(matchKind("我的看法是齁，這一年免費，算下來大概兩千元", line("我的看法是，這一年免費，算下來大概兩千元。"), lexicon), "filler");
+  assert.equal(matchKind("同一頁三種說法，Google自己都沒兜起來耶", line("同一頁，三種說法，Google 自己都沒兜起來。"), lexicon), "filler");
+  assert.equal(matchKind("官方自己也沒有給出一句肯定答案餒。", line("官方自己也沒有給出一句肯定答案。"), lexicon), "filler");
+  assert.equal(matchKind("他其實很氣", line("他其實很氣餒。"), lexicon), null, "a word that ends in 餒 still needs it");
+  assert.equal(matchKind("耶很好", line("很好。"), lexicon), null, "耶 counts only at the end");
+});
+
+test("hintTerms lists each English word a line says once, as the script spells it", () => {
+  assert.deepEqual(hintTerms({ id: "am2h", text: "那付錢的 Go 呢？" }), ["Go"]);
+  assert.deepEqual(hintTerms({ id: "4vai", text: "比較起來，Plus 大約是 Go 的兩倍半，Go 還可能有廣告。" }), ["Plus", "Go"]);
+  assert.deepEqual(hintTerms({ id: "k7p2", text: "用 AI 看 MMLU-Pro 與 p95，比 GPT-5.5 準。" }), ["AI", "MMLU-Pro", "p95", "GPT-5.5"]);
+  assert.deepEqual(hintTerms({ id: "c2x8", text: "8 × 31.855 ≈ 255" }), [], "numbers are not words");
+  assert.deepEqual(hintTerms({ id: "p5vs", text: "Node.js 很快。", say: "Node JS 很快。", say_for: "x" }), ["Node", "JS"], "the spoken form is what is heard");
+  const many = { id: "m4ny", text: Array.from({ length: 25 }, (_, index) => `W${index}`).join(" ") };
+  assert.equal(hintTerms(many).length, MAX_HINT_TERMS);
+});
+
 test("downsampling keeps what 16 kHz can carry and removes what it cannot", () => {
   const low = downsample(sine(48_000, 1000, 0.1), 3);
   const ideal = sine(16_000, 1000, 0.1);
@@ -58,7 +79,7 @@ test("downsampling keeps what 16 kHz can carry and removes what it cannot", () =
 
 /** A site that synthesizes tones, transcribes clips in narration order, and judges with Jev. */
 function site({ heardFor, noul, fails = () => false }) {
-  const calls = { speech: 0, transcribe: [], judge: [], failed: 0 };
+  const calls = { speech: 0, transcribe: [], hints: [], judge: [], failed: 0 };
   const tone = (milliseconds) => sine(SAMPLE_RATE, 440, milliseconds / 1000);
   const quiet = (milliseconds) => new Int16Array(Math.round((milliseconds / 1000) * SAMPLE_RATE));
   const fetchImpl = async (url, init) => {
@@ -77,6 +98,7 @@ function site({ heardFor, noul, fails = () => false }) {
         );
       }
       calls.transcribe.push(wav.length);
+      calls.hints.push(body.terms);
       return Response.json({ text: heardFor(calls.transcribe.length - 1) });
     }
     if (url.endsWith("/speech/judge")) {
@@ -144,6 +166,32 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   const forced = context(box, server.fetchImpl);
   await main(["check-audio", "--slug", box.slug, "--force"], forced.ctx);
   assert.equal(server.calls.transcribe.length, lines.length * 2);
+});
+
+test("check-audio tells the transcriber each line's English words, and redoes transcripts made without them", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const english = lines.filter((line) => hintTerms(line).length);
+  assert.ok(english.length && english.length < lines.length, "the fixture has lines with and without English words");
+  const server = site({ heardFor: (count) => spokenText(lines[count % lines.length]), noul: () => 0.95 });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  const first = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], first.ctx), EXIT.ok, first.out.stdout);
+  lines.forEach((line, index) => {
+    const terms = hintTerms(line);
+    assert.deepEqual(server.calls.hints[index], terms.length ? terms : undefined, `${line.id} sends its words, and no field without any`);
+  });
+
+  // A cache from before hints existed: the lines with English words are transcribed again.
+  const cacheFile = path.join(box.workdir, "review", "check.json");
+  const cache = JSON.parse(readFileSync(cacheFile, "utf8"));
+  for (const entry of Object.values(cache.lines)) delete entry.terms;
+  writeFileSync(cacheFile, JSON.stringify(cache));
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug], again.ctx), EXIT.ok);
+  assert.equal(server.calls.transcribe.length, lines.length + english.length);
 });
 
 test("check-audio skips a line Gemini will not transcribe, keeps the rest, and picks it up on the next run", async () => {
