@@ -20,6 +20,7 @@ const providers = (vendors: Record<string, string | null> = {}) => ({
 });
 const news = {
   writer_provider: "anthropic", writer_model: null, verifier_provider: "minimax", verifier_model: "MiniMax-M3",
+  editor_provider: "gemini", editor_model: "gemini-3.8-flash",
   model_options: { anthropic: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }] },
   default_models: { anthropic: "claude-opus-5-5", minimax: "MiniMax-M3" },
 } as unknown as NewsSettings;
@@ -62,7 +63,7 @@ describe("overviewRows", () => {
   it("keeps every row that runs on Gemini on the API key, whatever the feature allows", () => {
     const rows = overviewRows({ providers: providers(), news, video }, t, stage);
     const gemini = rows.filter((item) => item.support === "geminiApiKeyOnly").map((item) => item.key);
-    expect(gemini).toEqual(["geminiSearch", "video-translator"]);
+    expect(gemini).toEqual(["geminiSearch", "news-editor", "video-translator"]);
     expect(rows.filter((item) => item.support === "geminiApiKeyOnly").every((item) => item.connection === "apiKey")).toBe(true);
     const onGemini = providers({ anthropic_connection: "subscription" });
     onGemini.providers[3].config.hotspot_intro_ai_default_provider = "gemini";
@@ -88,7 +89,7 @@ describe("overviewRows", () => {
   });
 
   it("leaves out what a reader cannot load and a planner that calls no AI", () => {
-    expect(overviewRows({ news }, t, stage).map((item) => item.key)).toEqual(["news-writer", "news-verifier"]);
+    expect(overviewRows({ news }, t, stage).map((item) => item.key)).toEqual(["news-writer", "news-verifier", "news-editor"]);
     const off = providers();
     off.providers[1].config.ai_planner_mode = "disabled";
     expect(row({ providers: off }, "planner")).toMatchObject({ vendor: "overview.plannerDisabled", connection: "none" });

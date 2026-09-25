@@ -295,7 +295,7 @@ describe("AdminNewsWorkspace", () => {
     const labels = (select: HTMLSelectElement) => Array.from(select.options).map((option) => option.text);
     expect(labels(writerModel)).toEqual(["預設 · GPT-5.6 Terra", "GPT-6 Astra", "GPT-5.6 Terra", "自訂…"]);
     expect(screen.getAllByText("Balanced default.")).toHaveLength(2);
-    expect(screen.getByText(/回到影子模式/)).toBeTruthy();
+    expect(screen.getByText(/換模型不會關掉自動發布/)).toBeTruthy();
 
     fireEvent.change(writerModel, { target: { value: "gpt-6-astra" } });
     expect(writerModel.value).toBe("gpt-6-astra");

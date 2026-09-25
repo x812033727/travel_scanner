@@ -120,8 +120,10 @@ there shows up on `/admin/news?tab=settings` and in the table at once.
   (Antigravity terms §6; Google banned paid accounts for routing its OAuth into other tools)
   chose to keep them for manual use on the host. Every row that runs on Gemini therefore says
   `geminiApiKeyOnly`. Do not wire the site's Gemini calls to `agy` without asking again.
-- Open PR #763 adds a third news model (`editor_provider`/`editor_model`, the final editor) in
-  the same news files. Whichever lands second must move it here too: add it to `ModelsWrite`,
-  `SettingsWrite`'s kept-when-omitted keys, `AdminNewsModelSettings` and `overviewRows`.
+- #763 (merged first) added a third news model, the final editor, and stopped a model change
+  from switching auto-publish off (it only restarts the agreement figures). Its
+  `editor_provider`/`editor_model` are in `ModelsWrite`, kept when a save omits them, edited in
+  `AdminNewsModelSettings` and shown as the "news-editor" row. `SettingsWrite` keeps #763's
+  editor defaults for the settings CLI; the keep rule reads `model_fields_set`, not values.
 - Production today (read 2026-09-25): the planner card has `openai_model = gpt-5.6-terra`
   saved, so it overrides the new GPT-6 Sol default until the owner changes it on the new tab.
