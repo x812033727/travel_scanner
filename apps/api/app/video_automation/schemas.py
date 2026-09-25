@@ -1,9 +1,16 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated, Literal, get_args
+from typing import Annotated, Literal, Self, get_args
 
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StringConstraints,
+    field_validator,
+    model_validator,
+)
 
 from app.ai.catalog import ModelStatus
 
@@ -33,7 +40,7 @@ class VoiceSettings(StrictModel):
     rate: str = Field(default="+0%", pattern=r"^[+-]\d{1,2}%$")
 
 
-class SettingsWrite(StrictModel):
+class _SettingsFields(StrictModel):
     enabled: bool
     draft_interval_hours: int = Field(ge=6, le=720)
     topics_per_run: int = Field(ge=1, le=3)
@@ -42,7 +49,6 @@ class SettingsWrite(StrictModel):
     topic_avoid: list[TopicWord] = Field(max_length=20)
     topic_from_site: bool
     topic_from_search: bool
-    stage_models: dict[Stage, StageModel]
     voice: VoiceSettings
     target_minutes_min: int = Field(ge=3, le=30)
     target_minutes_max: int = Field(ge=3, le=30)
@@ -57,17 +63,56 @@ class SettingsWrite(StrictModel):
     auto_approve_audio: bool
 
     @model_validator(mode="after")
-    def _consistent(self) -> SettingsWrite:
+    def _consistent(self) -> Self:
         if self.target_minutes_min > self.target_minutes_max:
             raise ValueError("target_minutes_min must not exceed target_minutes_max")
         if not (self.topic_from_site or self.topic_from_search):
             raise ValueError("at least one topic source must be on")
         if len(set(self.caption_locales)) != len(self.caption_locales):
             raise ValueError("caption_locales must not repeat")
-        missing = set(get_args(Stage)) - set(self.stage_models)
-        if missing:
-            raise ValueError(f"stage_models is missing {', '.join(sorted(missing))}")
         return self
+
+
+def _every_stage(stage_models: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
+    missing = set(get_args(Stage)) - set(stage_models)
+    if missing:
+        raise ValueError(f"stage_models is missing {', '.join(sorted(missing))}")
+    return stage_models
+
+
+class StageModelsWrite(StrictModel):
+    """The model of each stage, chosen on the AI settings page (PUT /settings/models)."""
+
+    stage_models: dict[Stage, StageModel]
+
+    @field_validator("stage_models")
+    @classmethod
+    def _complete(cls, value: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
+        return _every_stage(value)
+
+
+class SettingsWrite(_SettingsFields):
+    stage_models: dict[Stage, StageModel]
+
+    @field_validator("stage_models")
+    @classmethod
+    def _complete(cls, value: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
+        return _every_stage(value)
+
+
+class SettingsSave(_SettingsFields):
+    """A save from the settings tab on /admin/videos.
+
+    The stage models are chosen on the AI settings page; a save that leaves them out keeps
+    the stored ones, so the videos page cannot put back models it loaded earlier.
+    """
+
+    stage_models: dict[Stage, StageModel] | None = None
+
+    @field_validator("stage_models")
+    @classmethod
+    def _complete(cls, value: dict[Stage, StageModel] | None) -> dict[Stage, StageModel] | None:
+        return None if value is None else _every_stage(value)
 
 
 class ModelOptionView(StrictModel):

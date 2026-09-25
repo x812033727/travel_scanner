@@ -12,7 +12,7 @@ import { adminSettingsCopy } from "@/lib/admin-settings-copy";
 import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import { VideoToolTokens } from "@/components/video-tool-tokens";
-import { domainSettingsDependencies, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
+import { domainSettingsDependencies, isAiSettingsProvider, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
 
 type Scalar = string | number | boolean;
 type SecretState = { configured: boolean; masked?: string | null; source: string };
@@ -140,8 +140,8 @@ export const providerCategoryOf: Record<string, ProviderCategory> = {
 export const SETTINGS_PAGE_CATEGORIES: readonly ProviderCategory[] = providerCategories.filter((category) => category !== "ai");
 export const AI_PAGE_CATEGORIES: readonly ProviderCategory[] = ["ai"];
 
-function shownIn(categories: readonly ProviderCategory[] | undefined, provider: string) {
-  return !categories || categories.includes(providerCategoryOf[provider] || "other");
+function shownIn(categories: readonly ProviderCategory[] | undefined, provider: string, only?: readonly string[]) {
+  return (!categories || categories.includes(providerCategoryOf[provider] || "other")) && (!only || only.includes(provider));
 }
 
 const fieldMeta: Record<string, FieldMeta> = {
@@ -733,9 +733,14 @@ function loadFailure(reason: unknown): LoadFailure {
   };
 }
 
-export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField, categories }: { scope?: AdminSettingsScope; provider?: string; field?: string; categories?: readonly ProviderCategory[] }) {
+// `providers` narrows the cards further than `categories`: the AI settings page splits the AI
+// category between its API keys tab and its models tab.
+// `focusFirst={false}` keeps the page where it is when no card was linked to, for a panel
+// that sits below other content (the AI settings models tab puts an overview above it).
+export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField, categories, providers: only, focusFirst = true }: { scope?: AdminSettingsScope; provider?: string; field?: string; categories?: readonly ProviderCategory[]; providers?: readonly string[]; focusFirst?: boolean }) {
   const t = useTranslations("admin");
   const copy = adminSettingsCopy(useLocale());
+  const scopeLabel = (owner: AdminSettingsScope, provider: string) => owner === "providers" && isAiSettingsProvider(provider) ? copy.aiSettings : copy.scopes[owner];
   const budgetCopy = adminCatalogBudgetCopy(useLocale());
   const affiliateCopy = klookAffiliateCopy(useLocale());
   const { sessionIdentity, status: sessionStatus } = useHeaderSession();
@@ -778,8 +783,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       }
       return fresh;
     });
-    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider))?.provider);
-  }, [categories, scope, sessionIdentity]);
+    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider, only))?.provider);
+  }, [categories, only, scope, sessionIdentity]);
   const applySnapshotRef = useRef(applySnapshot);
   useEffect(() => { applySnapshotRef.current = applySnapshot; }, [applySnapshot]);
 
@@ -832,9 +837,9 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
 
   useEffect(() => {
     if (!snapshot) return;
-    const defaultProvider = snapshot.providers.find((item) => item.provider !== "runtime" && item.provider !== "layout" && shownIn(categories, item.provider))?.provider;
+    const defaultProvider = snapshot.providers.find((item) => item.provider !== "runtime" && item.provider !== "layout" && shownIn(categories, item.provider, only))?.provider;
     const requested = linkedProvider || urlProvider;
-    const name = requested === "__audit" || snapshot.providers.some((item) => item.provider === requested && shownIn(categories, item.provider))
+    const name = requested === "__audit" || snapshot.providers.some((item) => item.provider === requested && shownIn(categories, item.provider, only))
       ? requested
       : scope === "providers" ? defaultProvider : requested;
     const field = linkedField ?? urlField;
@@ -843,7 +848,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
     if (focusedLink.current === key) return;
     const frame = requestAnimationFrame(() => {
       if (scope === "providers" && activePanel !== name) { setActivePanel(name); return; }
-      if (name === "__audit") { focusedLink.current = key; return; }
+      if (name === "__audit" || (!requested && !focusFirst)) { focusedLink.current = key; return; }
       const candidates = panelRef.current?.querySelectorAll<HTMLElement>("[data-settings-provider]");
       const target = Array.from(candidates || []).find((item) => item.dataset.settingsProvider === name && (!field || item.dataset.settingsField === field));
       if (!target) return;
@@ -852,7 +857,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       (target.querySelector<HTMLElement>("input, select, button, a, h2") || target).focus();
     });
     return () => cancelAnimationFrame(frame);
-  }, [snapshot, scope, categories, linkedProvider, linkedField, activePanel, urlProvider, urlField]);
+  }, [snapshot, scope, categories, only, focusFirst, linkedProvider, linkedField, activePanel, urlProvider, urlField]);
 
   function retryLoad() {
     setLoadError(undefined);
@@ -984,7 +989,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       || Object.keys(provider.config).some((field) => settingsOwner(provider.provider, "config", field) === scope);
     if (scope === "system") return provider.provider === "runtime";
     if (scope === "layout") return provider.provider === "layout";
-    return provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider);
+    return provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider, only);
   });
   const visibleAudit = snapshot.audit.filter((item) => visibleProviders.some((provider) => provider.provider === item.target));
   const sharedDependencies = isDomainSettingsScope(scope)
@@ -1099,7 +1104,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       return <section key={provider.provider} id={scope === "providers" ? `provider-panel-${provider.provider}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${provider.provider}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
         <div data-settings-provider={provider.provider} className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 tabIndex={-1} className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? t("settingsPanel.statusReady") : provider.status === "disabled" ? t("settingsPanel.statusDisabled") : provider.status === "test_required" ? t("settingsPanel.statusTestRequired") : provider.status === "unverified" ? t("settingsPanel.statusUnverified") : provider.status === "error" ? t("settingsPanel.statusError") : t("settingsPanel.statusPending")}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">{t("settingsPanel.recentCalls", { requests: provider.requests_24h || 0, errors: provider.errors_24h || 0 })}{provider.last_error_at ? t("settingsPanel.lastFailure", { time: dateTime.format(new Date(provider.last_error_at)) }) : ""}</p>}</div>{canEnable && <label data-settings-provider={provider.provider} data-settings-field="enabled" className="flex min-h-11 items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />{t("settingsPanel.enable")}</label>}</div>
 
-        {references.length > 0 && <div className="mt-4 space-y-2">{Array.from(new Set(references.map((item) => item.owner))).map((owner) => <details key={owner} open={references.some((item) => item.owner === owner && item.field === deepField)} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] px-4"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">{copy.managedIn} {copy.scopes[owner]} · {references.filter((item) => item.owner === owner).length}</summary><ul className="divide-y divide-[var(--line)] pb-3">{references.filter((item) => item.owner === owner).map((item) => <li key={item.field} data-settings-provider={provider.provider} data-settings-field={item.field} className="flex flex-wrap items-center justify-between gap-x-4 py-2 text-sm"><span className="min-w-0 break-words">{item.field === "enabled" ? t("settingsPanel.enable") : item.field in provider.secrets ? secretMeta(t, item.field).label : provider.provider === "layout" ? t(`layout.fields.${item.field}.label`) : fieldMeta[item.field]?.localized ? t(`providerFields.${item.field}.label`) : fieldMeta[item.field]?.label || item.field} · {item.value}</span><Link href={settingsHref(owner, provider.provider, item.field)} className="inline-flex min-h-11 shrink-0 items-center font-semibold text-[var(--teal)] underline">{copy.scopes[owner]}</Link></li>)}</ul></details>)}</div>}
+        {references.length > 0 && <div className="mt-4 space-y-2">{Array.from(new Set(references.map((item) => item.owner))).map((owner) => <details key={owner} open={references.some((item) => item.owner === owner && item.field === deepField)} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] px-4"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">{copy.managedIn} {scopeLabel(owner, provider.provider)} · {references.filter((item) => item.owner === owner).length}</summary><ul className="divide-y divide-[var(--line)] pb-3">{references.filter((item) => item.owner === owner).map((item) => <li key={item.field} data-settings-provider={provider.provider} data-settings-field={item.field} className="flex flex-wrap items-center justify-between gap-x-4 py-2 text-sm"><span className="min-w-0 break-words">{item.field === "enabled" ? t("settingsPanel.enable") : item.field in provider.secrets ? secretMeta(t, item.field).label : provider.provider === "layout" ? t(`layout.fields.${item.field}.label`) : fieldMeta[item.field]?.localized ? t(`providerFields.${item.field}.label`) : fieldMeta[item.field]?.label || item.field} · {item.value}</span><Link href={settingsHref(owner, provider.provider, item.field)} className="inline-flex min-h-11 shrink-0 items-center font-semibold text-[var(--teal)] underline">{scopeLabel(owner, provider.provider)}</Link></li>)}</ul></details>)}</div>}
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}

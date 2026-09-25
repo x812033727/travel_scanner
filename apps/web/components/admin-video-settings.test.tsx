@@ -1,7 +1,8 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
-import { AdminVideoSettings, linesToList, settingsBody, STAGES } from "./admin-video-settings";
+import { AdminVideoModelSettings } from "./admin-video-model-settings";
+import { AdminVideoSettings, linesToList, saveBody, settingsBody, STAGES } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -55,31 +56,47 @@ describe("AdminVideoSettings", () => {
     expect(Object.keys(body)).not.toContain("model_options");
     expect(Object.keys(body)).not.toContain("updated_at");
     expect(Object.keys(body.stage_models)).toEqual([...STAGES]);
+    expect(saveBody(body, "AI", "")).not.toHaveProperty("stage_models");
   });
 
-  it("lets a settings manager turn drafts on, pick a model and save", async () => {
+  it("lets a settings manager turn drafts on and save without touching the stage models", async () => {
     const puts = stubFetch();
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
     const enabled = await screen.findByRole("checkbox", { name: "自動產生草稿" });
     fireEvent.click(enabled);
     fireEvent.change(screen.getByRole("spinbutton", { name: "多久產生一次新草稿（小時）" }), { target: { value: "48" } });
-    const writer = screen.getByRole("group", { name: "撰稿" });
-    fireEvent.change(writer.querySelectorAll("select")[1], { target: { value: "claude-opus-5-5" } });
+    expect(screen.queryByRole("group", { name: "撰稿" })).toBeNull();
+    expect(screen.getAllByText(/Anthropic Claude API · Claude Opus 5\.5/, { selector: "dd" })).toHaveLength(3);
+    expect(screen.getByRole("link", { name: "到 AI 設定修改" }).getAttribute("href")).toContain("/admin/ai-accounts?tab=models&section=video");
     fireEvent.change(screen.getByRole("textbox", { name: "要避開的題材" }), { target: { value: "Stocks\n  Elections  \n" } });
     fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     const body = puts[0] as Record<string, unknown>;
     expect(body).toMatchObject({ enabled: true, draft_interval_hours: 48, topic_avoid: ["Stocks", "Elections"] });
-    expect((body.stage_models as Record<string, unknown>).writer).toEqual(opus);
+    expect(body).not.toHaveProperty("stage_models");
     expect(body).not.toHaveProperty("model_options");
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
   });
 
+  it("picks a stage model on the AI settings page and saves only the models", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoModelSettings /></AdminOperationsProvider>);
+    const writer = await screen.findByRole("group", { name: "撰稿" });
+    fireEvent.change(writer.querySelectorAll("select")[1], { target: { value: "claude-opus-5-5" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存影片模型" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const body = puts[0] as { stage_models: Record<string, unknown> };
+    expect(Object.keys(body)).toEqual(["stage_models"]);
+    expect(body.stage_models.writer).toEqual(opus);
+    expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings/models");
+  });
+
   it("shows a vendor without a key and keeps a reader from saving", async () => {
     stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSettings /><AdminVideoModelSettings /></AdminOperationsProvider>);
     expect(await screen.findByText(/要有「管理設定」權限才能修改/)).toBeTruthy();
     expect(screen.getByRole("button", { name: "儲存設定" })).toHaveProperty("disabled", true);
+    expect(await screen.findByRole("button", { name: "儲存影片模型" })).toHaveProperty("disabled", true);
     expect(screen.getAllByRole("option", { name: "OpenAI API (沒有金鑰)" }).length).toBe(STAGES.length);
     expect(screen.getAllByRole("option", { name: "Claude Code (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
     expect(screen.getByText(/1 \/ 8 支草稿，呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
