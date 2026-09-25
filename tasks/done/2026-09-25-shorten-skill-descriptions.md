@@ -13,6 +13,7 @@ depends_on: []
 scope:
   - .agents/skills
   - .claude/skills
+  - AGENTS.md
 ---
 
 # Shorten the English half of the shared skill descriptions
@@ -33,6 +34,7 @@ came to about 5.3 KB of fixed context per session.
 ## Steps
 
 - [x] Shorten catchtable-discovery, content-pipeline, deploy, task-board, youtube-video.
+- [x] List the seven new skills (PRs 768, 769, 771, 775–778) in AGENTS.md so agents look for them first.
 
 ## How to verify
 
