@@ -29,9 +29,12 @@ scope:
 ## Steps
 
 - [x] 企劃代理寫 brief，站主選大綱（2026-09-25，選項 A）。
-- [ ] 撰稿（sonnet）→ 查核（opus，換人）→ 聽眾優先審稿。新詞列在 `lexicon-additions.json`，由協調者併進共用字典。
+- [x] 撰稿（sonnet）→ 查核（opus，換人）→ 聽眾優先審稿，2026-09-25 完成。新詞已併進共用的 `docs/videos/lexicon.json`。
+  - 查核兩輪，第 2 輪不需要再加一輪。
+  - 聽眾審稿改寫 ef9k、m7qy、ex3f、c8ct、29zm、drae 和片尾一句，刪掉 8iey。ef9k 原本寫「我都自己測過一次」，這是撰稿代理替站主捏造的經驗，已經改掉。
+  - lint 0 錯誤，估計 10.9 分鐘。
 - [ ] tts → check-audio → 核准旁白 → render → assemble → CC → package。
-- [ ] Codex 修補版本號（CLI 0.149.0／Desktop 26.818.21641）只查到媒體引用，查不到官方出處，片中寫「以官網為準」。
+- [x] Codex 修補版本號：片中完全不提版本號（verify-2 #25）。
 - [ ] 不示範任何入侵手法，也不點名一手來源以外的受害公司。
 
 ## How to verify

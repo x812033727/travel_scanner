@@ -1,0 +1,1038 @@
+{
+  "schema_version": 1,
+  "slug": "gemini-student-offer",
+  "format": "slides",
+  "source_guide": "ai-news-gemini-student-offer-20260820",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Google AI 學生方案免費一年，台灣大學生真的符合資格嗎？四道關卡全解析",
+    "description": "Google 這則免費一年的 Google AI 學生方案公告，你是不是也心動了？這支影片幫台灣的大學生，把官方的四份文件一次兜清楚：公告、優惠條款、供應地區清單，還有台灣學生頁。\n\n影片用身分、地區、帳號、期限四道關卡，帶你自己判斷台灣算不算；再實際算一次，這份優惠期滿之後，第十三個月會發生什麼事；最後用站上教學裡的示範資料，帶你做一次 AI 筆記引用核對的練習。\n\n我的看法是：真正該在意的不是省了多少錢，是優惠期滿後會不會自動續扣。兌換的那一刻，就先在月曆上設一個到期前的提醒；每一張 AI 生成的筆記，只要要拿去交作業或考試，都該點開引用核對一次來源是不是真的這樣寫。",
+    "tags": [
+      "Google AI學生方案",
+      "Gemini學生方案",
+      "NotebookLM",
+      "GeminiNotebook",
+      "GoogleAIPlus",
+      "AI新聞",
+      "學生優惠",
+      "免費一年",
+      "AI筆記查證",
+      "GoogleOne"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 新聞",
+      "headline": "**免費一年**你符合資格嗎",
+      "sub": "官方四份文件一次兜清楚"
+    }
+  },
+  "sources": [
+    {
+      "title": "Start the semester with one year of Gemini, on us",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-app/student-offer-google-ai/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Google AI Plan Membership Student Offer Terms",
+      "url": "https://one.google.com/offer/studentoffer8",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "訂閱 Google AI Plus 會員方案（Google One 說明）",
+      "url": "https://support.google.com/googleone/answer/16548195?hl=zh-TW",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Gemini：深獲學生喜愛的 Google AI 學習好夥伴（台灣學生頁）",
+      "url": "https://gemini.google/tw/students/?hl=zh-TW",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Google AI 方案與定價（台灣）",
+      "url": "https://one.google.com/intl/zh-TW_tw/about/google-ai-plans/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Gemini 訂閱方案（台灣）",
+      "url": "https://gemini.google/tw/subscriptions/?hl=zh-TW",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Sharpen your study routine with new Gemini Notebook tools",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/new-study-tools-september-2026/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Google Workspace Updates: New back-to-school features and learning tools available in Gemini Notebook",
+      "url": "https://workspaceupdates.googleblog.com/2026/09/new-back-to-school-features-and-learning-tools-available-in-Gemini-Notebook.html",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "NotebookLM is now Gemini Notebook",
+      "url": "https://blog.google/innovation-and-ai/products/gemini-notebook/notebooklm-gemini-notebook/",
+      "checked_on": "2026-09-25"
+    }
+  ],
+  "assets": [
+    {
+      "path": "apps/web/public/guides/ai-news-gemini-student-offer-20260820/diagram-1.svg",
+      "source": "Mokaair 原創，取自文章 ai-news-gemini-student-offer-20260820 的圖解",
+      "license": "© Mokaair"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "開場",
+      "template": "title",
+      "data": {
+        "tag": "AI 新聞",
+        "title": "Google AI 學生方案免費一年，你真的符合資格嗎？",
+        "subtitle": "官方四份文件，兜出台灣算不算"
+      },
+      "lines": [
+        {
+          "id": "dxrr",
+          "text": "你是不是也在社群看到，Google AI 免費一年的貼文？"
+        },
+        {
+          "id": "n87r",
+          "text": "看到當下，是不是很想直接點進去兌換？"
+        },
+        {
+          "id": "r7mx",
+          "text": "這則優惠的官方頁面，連 Google 自己都寫得兜不起來。"
+        },
+        {
+          "id": "amsk",
+          "text": "同一頁台灣學生頁，前後三處說法都對不上。"
+        },
+        {
+          "id": "jj9r",
+          "text": "今天用官方四份文件，一次幫你兜清楚。"
+        },
+        {
+          "id": "kmnz",
+          "text": "看完你會自己判斷，台灣到底算不算。"
+        }
+      ]
+    },
+    {
+      "id": "official-chapter",
+      "chapter": "先看官方怎麼寫",
+      "template": "chapter",
+      "data": {
+        "title": "先看官方怎麼寫"
+      },
+      "lines": [
+        {
+          "id": "gz76",
+          "text": "官方文件到底寫了什麼，先攤開來看。"
+        },
+        {
+          "id": "z82n",
+          "text": "公告和優惠條款，各自列了一份排除名單。"
+        },
+        {
+          "id": "fei3",
+          "text": "先看看，這兩份文件到底怎麼寫排除地區。"
+        }
+      ]
+    },
+    {
+      "id": "official-bullets",
+      "template": "bullets",
+      "data": {
+        "title": "官方怎麼列排除名單",
+        "items": [
+          "公告的排除清單沒有台灣",
+          "優惠條款另一份清單也沒有台灣",
+          "供應地區清單上找得到台灣"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "gt38",
+          "text": "公告和優惠條款，是兩份完全不同的文件。"
+        },
+        {
+          "id": "b2gs",
+          "text": "先講結論，這三份文件都沒寫台灣不能領。"
+        },
+        {
+          "id": "8hpd",
+          "text": "第一份，公告注腳只列了七個排除地區，沒有台灣。",
+          "reveal": 1
+        },
+        {
+          "id": "hbgv",
+          "text": "換句話說，公告注腳沒有把台灣算進排除名單。"
+        },
+        {
+          "id": "nyb8",
+          "text": "美國、加拿大、香港澳門，都在排除名單裡。"
+        },
+        {
+          "id": "7uv4",
+          "text": "第二份，優惠條款自己另外列了六個排除地區，也沒有台灣。",
+          "reveal": 1
+        },
+        {
+          "id": "6k4q",
+          "text": "這份清單雖然少了美國，結論一樣沒有台灣。"
+        },
+        {
+          "id": "aup8",
+          "text": "這份清單少了美國，因為美國學生走的是另一套方案。"
+        },
+        {
+          "id": "ytv8",
+          "text": "第三份，是另一頁的供應地區清單，上面找得到台灣。",
+          "reveal": 1
+        },
+        {
+          "id": "k72y",
+          "text": "這份供應清單看的是，你住的地方訂不訂得到這個方案。"
+        },
+        {
+          "id": "vhzc",
+          "text": "沒被排除，又列在供應清單上，看起來像過關了。"
+        },
+        {
+          "id": "s5mn",
+          "text": "兩份排除名單都沒點名台灣，那台灣到底算不算？"
+        },
+        {
+          "id": "qqrx",
+          "text": "但官方自己都還沒說台灣可以，先別急著點兌換。"
+        }
+      ]
+    },
+    {
+      "id": "excluded-vs-supported",
+      "template": "compare",
+      "data": {
+        "title": "被排除 vs 供應清單",
+        "left": {
+          "heading": "公告與條款排除的地區",
+          "points": [
+            "美國",
+            "加拿大",
+            "港澳",
+            "另外三個國家"
+          ]
+        },
+        "right": {
+          "heading": "台灣的位置",
+          "points": [
+            "不在兩份排除清單裡",
+            "列在供應清單上，瑞士之後、塔吉克之前"
+          ]
+        },
+        "verdict": "沒被排除，不等於官方說你可以"
+      },
+      "claims": [
+        "c1",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "y5d9",
+          "text": "先看公告和條款排除的地區，加起來一共七個。",
+          "reveal": 1
+        },
+        {
+          "id": "i823",
+          "text": "美國、加拿大，還有港澳，再加另外三個國家。"
+        },
+        {
+          "id": "7p2h",
+          "text": "這幾個地區，官方自己也沒解釋為什麼被排除。"
+        },
+        {
+          "id": "5y8q",
+          "text": "這七個地區裡，並沒有台灣。"
+        },
+        {
+          "id": "jhg5",
+          "text": "你可能會想，那台灣是不是就直接過關了？"
+        },
+        {
+          "id": "hc9u",
+          "text": "再看台灣，兩份排除清單都找不到台灣。",
+          "reveal": 1
+        },
+        {
+          "id": "2qfp",
+          "text": "供應清單看的是居住地，跟條款看的就讀學校不是同一件事。"
+        },
+        {
+          "id": "f7k9",
+          "text": "另一頁供應地區清單上，台灣排在瑞士之後、塔吉克之前。"
+        },
+        {
+          "id": "b4f2",
+          "text": "供應清單上，連香港、澳門、美國都在，一樣被排除。"
+        },
+        {
+          "id": "ijhv",
+          "text": "換句話說，供應清單有沒有列出，不等於學生優惠用不用得到。"
+        },
+        {
+          "id": "k9nf",
+          "text": "沒被排除，不等於官方說你可以領。"
+        }
+      ]
+    },
+    {
+      "id": "four-gates-chapter",
+      "chapter": "要過四道關卡",
+      "template": "chapter",
+      "data": {
+        "title": "要過四道關卡"
+      },
+      "lines": [
+        {
+          "id": "whgx",
+          "text": "光是沒被排除，還不能算過關。"
+        },
+        {
+          "id": "kgji",
+          "text": "真正決定你能不能領，是另外四道關卡。"
+        },
+        {
+          "id": "xd2e",
+          "text": "這張圖，是站上文章整理出來的。"
+        }
+      ]
+    },
+    {
+      "id": "four-gates-diagram",
+      "template": "diagram",
+      "data": {
+        "svg": "apps/web/public/guides/ai-news-gemini-student-offer-20260820/diagram-1.svg",
+        "caption": "身分、地區、帳號、期限"
+      },
+      "lines": [
+        {
+          "id": "c92q",
+          "text": "這是站上文章畫的圖，四個方框排成兩排。"
+        },
+        {
+          "id": "g9j2",
+          "text": "分別是身分、地區、帳號，還有期限。"
+        },
+        {
+          "id": "e4ju",
+          "text": "每個方框裡，都寫了一行這一關的重點。"
+        },
+        {
+          "id": "xrii",
+          "text": "地區這一關，前面已經看過台灣的位置。"
+        },
+        {
+          "id": "yaz7",
+          "text": "地區先看到這裡，接下來三關才是真正的考驗。"
+        },
+        {
+          "id": "gfpc",
+          "text": "剩下三關，同時符合，才算真的拿到資格。"
+        },
+        {
+          "id": "5n6g",
+          "text": "缺一關，都不算真正拿到這份優惠。"
+        }
+      ]
+    },
+    {
+      "id": "four-gates-steps",
+      "template": "steps",
+      "data": {
+        "title": "剩下三道關卡",
+        "steps": [
+          {
+            "title": "身分",
+            "detail": "18歲以上，學校在支援地區，通過第三方驗證"
+          },
+          {
+            "title": "帳號",
+            "detail": "個人 Google 帳戶，註冊時要有付款方式"
+          },
+          {
+            "title": "期限",
+            "detail": "2026年12月31日前兌換，兌換日起算12個月"
+          }
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "2ivg",
+          "text": "第一關是身分，你得年滿十八歲。",
+          "reveal": 1
+        },
+        {
+          "id": "awap",
+          "text": "而且學校要在方案有支援的地區，還要通過第三方驗證。"
+        },
+        {
+          "id": "dstq",
+          "text": "驗證的方式，是交給第三方服務核對你的學生身分。"
+        },
+        {
+          "id": "x8u5",
+          "text": "官方文件沒有寫，要準備什麼資料，也沒有寫審核要多久。"
+        },
+        {
+          "id": "f8th",
+          "text": "第二關是帳號，得用你自己的個人 Google 帳戶。",
+          "reveal": 1
+        },
+        {
+          "id": "4xph",
+          "text": "註冊的時候，這個帳戶就要先綁好有效的付款方式。"
+        },
+        {
+          "id": "tvip",
+          "text": "家庭群組成員、企業採購者，這幾種身分官方直接排除。"
+        },
+        {
+          "id": "2k4m",
+          "text": "學校配發的帳號，也一樣不能拿來兌換這項優惠。"
+        },
+        {
+          "id": "jve6",
+          "text": "第三關是期限，得在今年十二月三十一日前兌換。",
+          "reveal": 1
+        },
+        {
+          "id": "zj9u",
+          "text": "兌換之後才開始算十二個月，不是現在馬上倒數。"
+        },
+        {
+          "id": "rxhm",
+          "text": "很多人會把兌換期限，誤會成優惠到期日，其實不是同一天。"
+        },
+        {
+          "id": "nm7d",
+          "text": "兌換期限只管你什麼時候要去點申請，不是優惠什麼時候結束。"
+        },
+        {
+          "id": "tjdk",
+          "text": "四關全部同時成立，才算真的過關。"
+        },
+        {
+          "id": "bdvv",
+          "text": "四關裡，前兩關考的是你符不符合資格。"
+        },
+        {
+          "id": "ztfc",
+          "text": "最後一關考的是，你有沒有在期限內完成動作。"
+        }
+      ]
+    },
+    {
+      "id": "real-math-big",
+      "template": "big",
+      "data": {
+        "kicker": "台灣學生頁自己寫的數字",
+        "text": "$165",
+        "sub": "沒標幣別，一年約 NT$1,980（以官網為準）"
+      },
+      "claims": [
+        "c8",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "f9az",
+          "text": "台灣學生頁自己寫了一個數字，講優惠期滿之後怎麼收費。"
+        },
+        {
+          "id": "mxkt",
+          "text": "頁面寫的是，每個月一百六十五元，沒有標示幣別。"
+        },
+        {
+          "id": "423c",
+          "text": "頁面上沒有新台幣三個字，也沒有幣別代碼。"
+        },
+        {
+          "id": "z2kk",
+          "text": "換算一年，大概兩千元左右，正確金額請以官網為準。"
+        },
+        {
+          "id": "fbh6",
+          "text": "Gemini 的方案頁倒是寫明，一般的 Plus 方案每月新台幣一百六十五元。"
+        },
+        {
+          "id": "vcp3",
+          "text": "但這不是重點，真正的重點在第十三個月。"
+        },
+        {
+          "id": "zxjt",
+          "text": "免費一年聽起來很划算，但重點從來不是這一年。"
+        },
+        {
+          "id": "d8ij",
+          "text": "官方條款自己寫的是，沒提前取消，就自動收費。"
+        }
+      ]
+    },
+    {
+      "id": "real-math-table",
+      "template": "table",
+      "data": {
+        "title": "兌換之後要記得的三個時間點",
+        "columns": [
+          "時間點",
+          "狀態",
+          "你要做的事"
+        ],
+        "rows": [
+          [
+            "兌換當天",
+            "優惠開始算12個月",
+            "在月曆設到期前的提醒"
+          ],
+          [
+            "到期前",
+            "優惠快結束",
+            "確認還要不要繼續用"
+          ],
+          [
+            "到期未取消",
+            "自動收標準月費",
+            "被收費才發現已經太晚"
+          ]
+        ],
+        "highlight": 2
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "63sp",
+          "text": "把這句話拆成三個時間點，你會更清楚。"
+        },
+        {
+          "id": "dhdp",
+          "text": "三個時間點，分別是兌換當天、到期前，還有到期沒取消。"
+        },
+        {
+          "id": "zijq",
+          "text": "兌換當天，優惠就開始算十二個月，先在月曆上設提醒。",
+          "reveal": 1
+        },
+        {
+          "id": "umse",
+          "text": "這一步最簡單，花十秒鐘設定，換一年不用煩惱。"
+        },
+        {
+          "id": "f564",
+          "text": "到期前，你要自己判斷，還要不要繼續用下去。",
+          "reveal": 1
+        },
+        {
+          "id": "9ttj",
+          "text": "英文條款的用詞是，取消之後會員資格可能維持到期滿，不是保證。"
+        },
+        {
+          "id": "hnby",
+          "text": "到期沒取消，系統就直接收標準月費，這就是第十三個月。",
+          "reveal": 1
+        },
+        {
+          "id": "yttg",
+          "text": "自動收費不是系統出錯，是條款一開始就寫好的規則。"
+        },
+        {
+          "id": "c72v",
+          "text": "這句話官方寫得很清楚，問題是你到時候會不會記得。"
+        },
+        {
+          "id": "f9gv",
+          "text": "免費一年最容易被忽略的地方，就是這最後一步。"
+        }
+      ]
+    },
+    {
+      "id": "demo-chapter",
+      "chapter": "示範：AI 筆記會不會抄錯",
+      "template": "chapter",
+      "data": {
+        "title": "示範",
+        "subtitle": "AI 筆記會不會抄錯"
+      },
+      "lines": [
+        {
+          "id": "ccq2",
+          "text": "免費划不划算講完了，另一件事更常被忽略。"
+        },
+        {
+          "id": "bnzc",
+          "text": "AI 幫你整理的讀書筆記，會不會抄錯來源？"
+        },
+        {
+          "id": "qk58",
+          "text": "尤其是要拿去交作業、拿去考試的內容。"
+        },
+        {
+          "id": "byrd",
+          "text": "站上教學本來就有一組練習資料，直接借來做給你看。"
+        },
+        {
+          "id": "56f4",
+          "text": "這段示範不用登入帳號，看完你也能自己做一次。"
+        }
+      ]
+    },
+    {
+      "id": "demo-code",
+      "template": "code",
+      "data": {
+        "title": "兩份公告，一份提示詞",
+        "language": "text",
+        "code": "公告甲（9/1 更新）\n10/10 下午2點，約20人\n場地未定，是否收費未定\n\n公告乙（9/8 更新）\n10/11 下午2點，社區教室\n免費，24人，未給報名截止日\n\n提示詞\n只根據公告甲與公告乙回答\n比對日期、時間、地點、名額、\n費用、報名截止日六個欄位\n標出哪些被更正、哪些未提供",
+        "highlight": [
+          13
+        ],
+        "caption": "示範用的虛構公告，非真實活動"
+      },
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "86i3",
+          "text": "這個工具原本叫 NotebookLM，現在改名，換上了 Gemini 的名字。"
+        },
+        {
+          "id": "acc4",
+          "text": "改名之後功能延續，九月又替測驗、字卡加了新功能，還有短影片摘要。"
+        },
+        {
+          "id": "ydf6",
+          "text": "示範用的是站上教學裡，兩份虛構的活動公告。"
+        },
+        {
+          "id": "6bsa",
+          "text": "示範資料不是真實活動，是站上教學設計出來練習用的。"
+        },
+        {
+          "id": "fhzt",
+          "text": "公告甲是九月一日的初稿，公告乙是九月八日的修正版。"
+        },
+        {
+          "id": "nr8m",
+          "text": "兩份公告只差一週，內容卻有好幾個地方不一樣。"
+        },
+        {
+          "id": "heg3",
+          "text": "提示詞請它比對六個欄位，並且附上引用。"
+        },
+        {
+          "id": "6b4h",
+          "text": "這種提示詞，訂出範圍，也訂出驗收標準。"
+        },
+        {
+          "id": "22ic",
+          "text": "還要它指出，哪些欄位被更正，哪些還沒提供。"
+        },
+        {
+          "id": "hqj8",
+          "text": "接下來這張表，就是核對後的正確答案。"
+        }
+      ]
+    },
+    {
+      "id": "demo-table",
+      "template": "table",
+      "data": {
+        "title": "六個欄位，比對結果",
+        "columns": [
+          "欄位",
+          "公告甲",
+          "公告乙"
+        ],
+        "rows": [
+          [
+            "日期",
+            "10月10日",
+            "10月11日，已更正"
+          ],
+          [
+            "時間",
+            "下午2點",
+            "下午2點，沒有變"
+          ],
+          [
+            "地點",
+            "未定",
+            "社區教室，新補上"
+          ],
+          [
+            "名額",
+            "約20人",
+            "24人，已更正"
+          ],
+          [
+            "費用",
+            "未定",
+            "免費，新補上"
+          ],
+          [
+            "報名截止日",
+            "未提供",
+            "未提供"
+          ]
+        ],
+        "highlight": 1
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "qjpw",
+          "text": "這張表是照兩份公告原文整理的，不是今天真的問過模型。"
+        },
+        {
+          "id": "pddy",
+          "text": "日期從十號，改成十一號，這是真的被更正。",
+          "reveal": 1
+        },
+        {
+          "id": "qiiv",
+          "text": "改一天而已，很容易被忽略，點開引用就能核對。"
+        },
+        {
+          "id": "rdvu",
+          "text": "時間呢，兩份都寫下午兩點，其實沒有變。",
+          "reveal": 1
+        },
+        {
+          "id": "898w",
+          "text": "這一列很容易被誤判成也有更正，這才是要抓的錯。"
+        },
+        {
+          "id": "aucr",
+          "text": "如果 AI 把這一列也標成更正，代表它抄錯了來源。"
+        },
+        {
+          "id": "bbi7",
+          "text": "地點從未定，到公告乙才補上社區教室。",
+          "reveal": 1
+        },
+        {
+          "id": "adye",
+          "text": "從一句沒有講清楚，變成寫死是哪一間教室。"
+        },
+        {
+          "id": "9ege",
+          "text": "名額從約二十人，改成二十四人，同樣被更正。",
+          "reveal": 1
+        },
+        {
+          "id": "rdqg",
+          "text": "費用從未定，到公告乙才寫明免費。",
+          "reveal": 1
+        },
+        {
+          "id": "a435",
+          "text": "未定不等於要收費，這種欄位很容易被記錯。"
+        },
+        {
+          "id": "umgz",
+          "text": "報名截止日，兩份公告都沒有寫。",
+          "reveal": 1
+        },
+        {
+          "id": "vaaq",
+          "text": "兩份公告都沒寫，AI 也不該自己幫你編一個日期。"
+        },
+        {
+          "id": "nmn8",
+          "text": "看到引用編號，不代表內容一定對，點開來核對最安全。"
+        }
+      ]
+    },
+    {
+      "id": "page-contradictions",
+      "template": "bullets",
+      "data": {
+        "title": "台灣學生頁，自己講不清楚",
+        "items": [
+          "頁尾寫每月165元，主打Plus方案",
+          "常見問題卻寫美國大學生可免費用",
+          "搜尋摘要又推另一個更貴的方案"
+        ]
+      },
+      "claims": [
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "47yj",
+          "text": "翻回同一頁台灣學生頁，裡面三處也對不起來。"
+        },
+        {
+          "id": "3t34",
+          "text": "同一頁，三個不同的角落，寫的是三種說法。"
+        },
+        {
+          "id": "ic7q",
+          "text": "頁尾寫的是，每個月一百六十五元，主打的是 Plus 方案。",
+          "reveal": 1
+        },
+        {
+          "id": "hwep",
+          "text": "頁尾這句，講的是試用期結束後怎麼收費。"
+        },
+        {
+          "id": "9q5n",
+          "text": "常見問題問誰能免費用，答案寫的卻是美國大學生。",
+          "reveal": 1
+        },
+        {
+          "id": "unu4",
+          "text": "英文公告明明寫，美國以外的學生拿的是另一個方案。"
+        },
+        {
+          "id": "tgmj",
+          "text": "網頁寫給搜尋引擎的摘要，又叫你去訂閱另一個更貴的方案。",
+          "reveal": 1
+        },
+        {
+          "id": "yu5p",
+          "text": "這段摘要，可能就是你在搜尋結果裡第一眼看到的文字。"
+        },
+        {
+          "id": "7z8x",
+          "text": "同一頁，三種說法，Google 自己都沒兜起來。"
+        },
+        {
+          "id": "5bdj",
+          "text": "如果連官方自己都能寫出三種版本，你更不能只看一眼就相信。"
+        }
+      ]
+    },
+    {
+      "id": "my-approach-chapter",
+      "chapter": "我的做法",
+      "template": "chapter",
+      "data": {
+        "title": "我的做法"
+      },
+      "lines": [
+        {
+          "id": "7rde",
+          "text": "查了這麼多官方文件，我自己會怎麼做？"
+        },
+        {
+          "id": "938u",
+          "text": "說結論之前，先講一件我注意到的事。"
+        },
+        {
+          "id": "67z6",
+          "text": "這件事跟今天的示範，其實是同一個道理。"
+        }
+      ]
+    },
+    {
+      "id": "my-approach-bullets",
+      "template": "bullets",
+      "data": {
+        "title": "查完之後，我會做的事",
+        "items": [
+          "兌換當天，先在月曆設提醒",
+          "到期前主動判斷，要不要取消",
+          "AI筆記的引用，點開來核對一次"
+        ]
+      },
+      "claims": [
+        "c6",
+        "c7",
+        "c12",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "kma3",
+          "text": "我的看法是，這一年免費，算下來大概兩千元。"
+        },
+        {
+          "id": "vgjs",
+          "text": "兩千元換一年，聽起來是筆划算的交易。"
+        },
+        {
+          "id": "8mxj",
+          "text": "但真正的重點，不是省了多少錢。"
+        },
+        {
+          "id": "kvy8",
+          "text": "重點是，優惠結束之後，你會不會多付一次錢。"
+        },
+        {
+          "id": "5i2i",
+          "text": "第一件事，兌換當天就先在月曆設一個到期前的提醒。",
+          "reveal": 1
+        },
+        {
+          "id": "sr3p",
+          "text": "官方條款自己寫，沒提前取消，就自動收標準月費。"
+        },
+        {
+          "id": "weqg",
+          "text": "這句話寫在條款裡，不是客服臨時決定的。"
+        },
+        {
+          "id": "k946",
+          "text": "第二件事，到期前主動判斷，還要不要繼續用。",
+          "reveal": 1
+        },
+        {
+          "id": "abrn",
+          "text": "不要相信自己到時候會記得，先設提醒最實在。"
+        },
+        {
+          "id": "ik8j",
+          "text": "手機月曆設定一次，比事後申訴退費輕鬆多了。"
+        },
+        {
+          "id": "9m3b",
+          "text": "第三件事，就是我剛才說注意到的那件事，跟 AI 筆記有關。"
+        },
+        {
+          "id": "93u7",
+          "text": "同一批公告裡，Google 自己對即時語音對話，寫了兩種答案。"
+        },
+        {
+          "id": "ikea",
+          "text": "企業端的公告說，滿十八歲的使用者現在就可以用。"
+        },
+        {
+          "id": "wths",
+          "text": "消費端的原文卻說，你很快就可以用。"
+        },
+        {
+          "id": "y4ux",
+          "text": "同一件事，兩份官方文件寫得不一樣。"
+        },
+        {
+          "id": "tigk",
+          "text": "連官方通稿都兜不起來，AI 幫你整理的筆記，當然也可能抄錯。"
+        },
+        {
+          "id": "62qa",
+          "text": "所以第三件事，每一張 AI 生成的筆記，點開引用核對一次。",
+          "reveal": 1
+        },
+        {
+          "id": "8p2f",
+          "text": "看起來講得通，不代表來源真的這樣寫。"
+        },
+        {
+          "id": "g4zn",
+          "text": "花十秒鐘點開來看，比事後發現抄錯划算多了。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "結論",
+      "template": "outro",
+      "data": {
+        "title": "沒被排除，不等於官方說你可以",
+        "cta": "完整的四道關卡整理，在說明欄的文章裡",
+        "lines": [
+          "身分：18歲以上，學校在支援地區",
+          "帳號：個人帳戶，註冊時綁好付款方式",
+          "期限：12月31日前兌換，到期記得取消"
+        ]
+      },
+      "lines": [
+        {
+          "id": "36h7",
+          "text": "所以，台灣的大學生到底算不算？"
+        },
+        {
+          "id": "sxpz",
+          "text": "這個問題，官方自己也沒有給出一句肯定答案。"
+        },
+        {
+          "id": "bkd5",
+          "text": "答案是，沒被排除，也列在供應清單上。"
+        },
+        {
+          "id": "t9mk",
+          "text": "這兩件事都是真的，但都不是核准。"
+        },
+        {
+          "id": "hqxf",
+          "text": "但沒被排除，不等於官方說你可以領。"
+        },
+        {
+          "id": "iyw2",
+          "text": "最終資格，還是由 Google 在兌換流程裡自己認定。"
+        },
+        {
+          "id": "f9sy",
+          "text": "所以片名裡的問號，今天先留給你自己回答。"
+        },
+        {
+          "id": "6yaa",
+          "text": "身分、地區、帳號、期限，四關都要過。"
+        },
+        {
+          "id": "e8sq",
+          "text": "少一關，都可能讓你白高興一場。"
+        },
+        {
+          "id": "eh8h",
+          "text": "完整的整理，我放在說明欄的文章裡了。"
+        },
+        {
+          "id": "pdyi",
+          "text": "四份官方文件的連結，我也一起放在說明欄。"
+        },
+        {
+          "id": "rszd",
+          "text": "兌換的那一刻，記得先在月曆上設提醒。"
+        },
+        {
+          "id": "235i",
+          "text": "AI 筆記的引用，也記得養成點開來核對的習慣。"
+        },
+        {
+          "id": "hnf8",
+          "text": "我們下一支影片見。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1105 @@
+{
+  "schema_version": 1,
+  "slug": "chatgpt-ads-upgrade",
+  "format": "slides",
+  "source_guide": "ai-free-vs-paid-plans-2026",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "ChatGPT 開始有廣告了，免費版、Go、Plus 到底該不該升級？",
+    "description": "官方 9 月 23 日公告，ChatGPT 的廣告開始在台灣上線，免費版、Go、Plus 到底差在哪？這支影片用三個問題，幫你自己算出升不升級划不划算，不是我幫你決定買哪一個方案。\n\n官方在 Go 方案的頁面上自己寫著，這個方案可能包含廣告；真正保證沒有廣告的，要到 Plus 以上。免費版則可以在設定的「廣告控制功能」裡選擇無廣告，不用花錢，代價是額度變低。影片裡用 ChatGPT 官網標給台灣的台幣月費（2026 年 9 月 25 日查看，已含 5% 營業稅），算給你看一年要花多少錢才能保證看不到廣告，也示範怎麼用美元定價、匯率和營業稅自己對照。\n\n四條路徑一年的算式（月費乘 12，實際以結帳畫面為準）：\n・Free 預設：NT$0，可能看到廣告\n・Free 選無廣告：NT$0，沒有廣告，額度變低\n・Go：NT$270 × 12 = NT$3,240，官方寫可能有廣告\n・Plus：NT$690 × 12 = NT$8,280，官方保證沒有廣告\n\n我的看法是，只為了不想看廣告去升級不划算；真正該花的錢，是為了更高的額度和更好的模型，廣告消失只是順便發生的事。",
+    "tags": [
+      "ChatGPT",
+      "ChatGPT廣告",
+      "ChatGPT Go",
+      "ChatGPT Plus",
+      "AI訂閱比較",
+      "AI工具教學",
+      "Ads-Free",
+      "ChatGPT免費版",
+      "訂閱該不該升級",
+      "OpenAI"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 工具教學",
+      "headline": "ChatGPT\n**開始有廣告**了",
+      "sub": "免費版、Go、Plus 差在哪"
+    }
+  },
+  "sources": [
+    {
+      "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Ads in ChatGPT",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "ChatGPT pricing",
+      "url": "https://chatgpt.com/pricing/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "What is ChatGPT Plus?",
+      "url": "https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Introducing ChatGPT Go, now available worldwide",
+      "url": "https://openai.com/index/introducing-chatgpt-go/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Testing ads in ChatGPT",
+      "url": "https://openai.com/index/testing-ads-in-chatgpt/",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Taiwan VAT and eGUI",
+      "url": "https://help.openai.com/en/articles/11173733-taiwan-vat-and-egui",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Multicurrency billing",
+      "url": "https://help.openai.com/en/articles/10421635-multicurrency-billing",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "台灣銀行牌告匯率",
+      "url": "https://rate.bot.com.tw/xrt/flcsv/0/day",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "title": "Inside：ChatGPT 廣告在台灣、東南亞上線報導",
+      "url": "https://www.inside.com.tw/article/42466-chatgpt-ads-launch-taiwan-southeast-asia",
+      "checked_on": "2026-09-25"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "開場",
+      "template": "title",
+      "data": {
+        "tag": "AI 工具教學",
+        "title": "ChatGPT 開始有廣告了，你該升級嗎？",
+        "subtitle": "免費版、Go、Plus，差的不是廣告"
+      },
+      "lines": [
+        {
+          "id": "hfr3",
+          "text": "你以為升級到 Go，ChatGPT 就不會再看到廣告了嗎？"
+        },
+        {
+          "id": "8fs2",
+          "text": "還是你已經在對話下面，看到廣告了？"
+        },
+        {
+          "id": "nivj",
+          "text": "官方自己寫的答案是，不一定。"
+        },
+        {
+          "id": "sf4i",
+          "text": "這禮拜，台灣的 ChatGPT 開始出現廣告了。"
+        },
+        {
+          "id": "6h4r",
+          "text": "免費版和 Go 方案，都可能看到廣告。"
+        },
+        {
+          "id": "wuun",
+          "text": "付費方案裡，真正保證沒有廣告的，要到 Plus 以上。"
+        },
+        {
+          "id": "zu2v",
+          "text": "那免費版和 Go 到底差在哪，值不值得升級？"
+        },
+        {
+          "id": "nk4a",
+          "text": "這支影片，用三個問題幫你自己算清楚。"
+        }
+      ]
+    },
+    {
+      "id": "ads-launch-chapter",
+      "chapter": "這禮拜剛發生的事",
+      "template": "chapter",
+      "data": {
+        "title": "這禮拜剛發生的事"
+      },
+      "lines": [
+        {
+          "id": "f29v",
+          "text": "那這禮拜，到底發生了什麼事？"
+        },
+        {
+          "id": "8y2j",
+          "text": "先看廣告是怎麼上線的。"
+        }
+      ]
+    },
+    {
+      "id": "ads-launch-big",
+      "template": "big",
+      "data": {
+        "kicker": "官方 9 月 23 日公告",
+        "text": "廣告上線了",
+        "sub": "和東南亞 6 個市場一起"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "ntdx",
+          "text": "9 月 23 日，官方正式公告。"
+        },
+        {
+          "id": "irnq",
+          "text": "ChatGPT 的廣告，開始在台灣陸續上線。"
+        },
+        {
+          "id": "ck4m",
+          "text": "同一天，東南亞六個市場也一起上線。"
+        },
+        {
+          "id": "mvyr",
+          "text": "印尼、馬來西亞、菲律賓、新加坡、泰國、越南。"
+        },
+        {
+          "id": "z5a2",
+          "text": "這不是台灣單獨被挑出來測試。"
+        },
+        {
+          "id": "5sq8",
+          "text": "是這一波擴張，剛好輪到我們。"
+        },
+        {
+          "id": "da3h",
+          "text": "如果你這幾天剛好在用 ChatGPT，很可能已經看過了。"
+        },
+        {
+          "id": "9mmy",
+          "text": "廣告通常出現在回答下面，標明是贊助，和回答分開。"
+        },
+        {
+          "id": "j6fd",
+          "text": "官方特別強調，廣告和回答是分開的。"
+        },
+        {
+          "id": "uz5f",
+          "text": "看到那則廣告，不代表 ChatGPT 的答案被動過手腳。"
+        }
+      ]
+    },
+    {
+      "id": "ads-launch-bullets",
+      "template": "bullets",
+      "data": {
+        "title": "廣告怎麼一路擴大過來的",
+        "items": [
+          "2 月從美國開始測試",
+          "8 月擴大到英國、日本、南韓等地",
+          "9 月 23 日公告輪到台灣和東南亞"
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "wnbp",
+          "text": "廣告不是憑空冒出來的，官方是分階段推的。"
+        },
+        {
+          "id": "jm85",
+          "text": "從小範圍測試到全球擴大，官方走了大半年。"
+        },
+        {
+          "id": "kbhy",
+          "text": "第一步，2 月先在美國小範圍測試。",
+          "reveal": 1
+        },
+        {
+          "id": "kkaf",
+          "text": "那時候只有美國、登入的成年用戶看得到。"
+        },
+        {
+          "id": "rnkh",
+          "text": "第二步，8 月擴大到英國、日本、南韓等地。",
+          "reveal": 1
+        },
+        {
+          "id": "avty",
+          "text": "官方一路觀察數據，才敢往下一步擴大。"
+        },
+        {
+          "id": "ny5e",
+          "text": "第三步，9 月 23 日公告，才輪到台灣和東南亞。",
+          "reveal": 1
+        },
+        {
+          "id": "bena",
+          "text": "台灣不是第一批，也不是最後一批。"
+        },
+        {
+          "id": "97p6",
+          "text": "看這個時間軸，我的判斷是，廣告不會突然消失。"
+        },
+        {
+          "id": "s44h",
+          "text": "換句話說，你看到的廣告，已經被測試了大半年。"
+        },
+        {
+          "id": "228y",
+          "text": "官方花了大半年鋪這條路，我猜接下來只會擴大，不會縮小。"
+        }
+      ]
+    },
+    {
+      "id": "myth-chapter",
+      "chapter": "常見的誤解",
+      "template": "chapter",
+      "data": {
+        "title": "常見的誤解"
+      },
+      "lines": [
+        {
+          "id": "dcyv",
+          "text": "廣告一上線，最容易誤會的是哪一點？"
+        },
+        {
+          "id": "zffm",
+          "text": "就是以為付錢就能保證沒有廣告。"
+        },
+        {
+          "id": "mq35",
+          "text": "而且這個誤會，連付錢的人都會中。"
+        }
+      ]
+    },
+    {
+      "id": "myth-compare",
+      "template": "compare",
+      "data": {
+        "title": "免費版和 Go，差在哪",
+        "left": {
+          "heading": "免費版",
+          "points": [
+            "可能看到廣告",
+            "設定裡能自己關掉",
+            "關掉要換更低額度"
+          ]
+        },
+        "right": {
+          "heading": "Go，要付錢",
+          "points": [
+            "一樣可能看到廣告",
+            "沒有無廣告選項",
+            "要升到 Plus 才保證沒有"
+          ]
+        },
+        "verdict": "付錢給 Go，換不到沒有廣告"
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "t4tf",
+          "text": "先看看，免費版和 Go，到底差在哪。"
+        },
+        {
+          "id": "hwwr",
+          "text": "免費版可能看到廣告，這個大家都知道。",
+          "reveal": 1
+        },
+        {
+          "id": "d9he",
+          "text": "但很多人不知道，免費版有得選。"
+        },
+        {
+          "id": "mni7",
+          "text": "免費版的設定裡，可以自己選擇無廣告。"
+        },
+        {
+          "id": "zjwi",
+          "text": "關掉的代價，是換成比較低的使用額度。"
+        },
+        {
+          "id": "6rsj",
+          "text": "這件事，很多用戶其實沒注意到。"
+        },
+        {
+          "id": "am2h",
+          "text": "那付錢的 Go 呢？",
+          "reveal": 1
+        },
+        {
+          "id": "th7i",
+          "text": "Go 一樣可能看到廣告，官方自己這樣寫。"
+        },
+        {
+          "id": "yd6e",
+          "text": "很多人以為，花錢升級就是為了拿掉廣告。"
+        },
+        {
+          "id": "63sh",
+          "text": "而且 Go 沒有這個無廣告選項。"
+        },
+        {
+          "id": "krra",
+          "text": "想關掉，只有兩條路。"
+        },
+        {
+          "id": "5zhe",
+          "text": "要嘛切回免費版選無廣告，要嘛再往上升級。"
+        },
+        {
+          "id": "2wc7",
+          "text": "要保證看不到廣告，得再升一級到 Plus。"
+        },
+        {
+          "id": "bzae",
+          "text": "所以付錢給 Go，換不到的，其實是沒有廣告。"
+        },
+        {
+          "id": "2r7j",
+          "text": "這才是這幾天，最容易被誤會的地方。"
+        }
+      ]
+    },
+    {
+      "id": "myth-big",
+      "template": "big",
+      "data": {
+        "kicker": "Go 方案頁面自己寫的",
+        "text": "may include ads",
+        "sub": "翻成中文：這個方案可能包含廣告"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "s6bb",
+          "text": "這句話，我直接從官網的 Go 頁面上抓下來。"
+        },
+        {
+          "id": "id32",
+          "text": "這不是新聞報導轉述，是官方自己的用詞。"
+        },
+        {
+          "id": "cuwu",
+          "text": "原文是英文，寫在 Go 方案自己的介紹裡。"
+        },
+        {
+          "id": "pqey",
+          "text": "翻成中文的意思，就是這個方案可能包含廣告。"
+        },
+        {
+          "id": "9zvm",
+          "text": "包含，代表有可能出現，也可能沒出現。"
+        },
+        {
+          "id": "7x9h",
+          "text": "不是可能沒有廣告，是可能包含廣告。"
+        },
+        {
+          "id": "ufzu",
+          "text": "這種寫法，等於替自己保留空間。"
+        },
+        {
+          "id": "2csg",
+          "text": "官方沒有承諾 Go 一定沒有廣告。"
+        },
+        {
+          "id": "nsdk",
+          "text": "你付的是更高的訊息、上傳、圖片額度。"
+        },
+        {
+          "id": "wjbn",
+          "text": "Go 以後會不會拿掉廣告，官方沒有說。"
+        },
+        {
+          "id": "ybzn",
+          "text": "所以你付的那筆錢，買不到保證沒有廣告。"
+        }
+      ]
+    },
+    {
+      "id": "q1-chapter",
+      "chapter": "先問三個問題",
+      "template": "chapter",
+      "data": {
+        "title": "先問三個問題"
+      },
+      "lines": [
+        {
+          "id": "qkqb",
+          "text": "那到底該怎麼判斷，值不值得升級？"
+        },
+        {
+          "id": "9vv6",
+          "text": "先問自己三個問題，一題一題來。"
+        },
+        {
+          "id": "2iw4",
+          "text": "誰看得到廣告，是最基本的第一題。"
+        }
+      ]
+    },
+    {
+      "id": "q1-bullets",
+      "template": "bullets",
+      "data": {
+        "title": "第一題：誰看得到廣告",
+        "items": [
+          "你的帳號是 Free 還是 Go？",
+          "有沒有滿 18 歲？",
+          "廣告和回答分開算，不影響內容"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c4",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "bkve",
+          "text": "第一題，先確認你自己看不看得到廣告。"
+        },
+        {
+          "id": "etc7",
+          "text": "第一步，你的帳號是 Free 還是 Go。",
+          "reveal": 1
+        },
+        {
+          "id": "y75y",
+          "text": "Plus 以上的帳號，官方保證不會看到廣告。"
+        },
+        {
+          "id": "wssi",
+          "text": "這一點，很多人第一次聽到會愣一下。"
+        },
+        {
+          "id": "44tt",
+          "text": "第二步，你的帳號有沒有滿 18 歲。",
+          "reveal": 1
+        },
+        {
+          "id": "wj34",
+          "text": "官方判定未滿 18 歲的帳號，不會看到廣告。"
+        },
+        {
+          "id": "pfug",
+          "text": "這是官方在保護未成年帳號。"
+        },
+        {
+          "id": "85kr",
+          "text": "第三步，廣告和 ChatGPT 給你的回答分開算。",
+          "reveal": 1
+        },
+        {
+          "id": "g7e2",
+          "text": "官方說廣告不會改變模型本身給你的答案。"
+        },
+        {
+          "id": "y9a8",
+          "text": "換句話說，就算你看到廣告，答案品質不會打折。"
+        },
+        {
+          "id": "xf4s",
+          "text": "先把自己歸類清楚，才知道接下來要不要繼續往下算。"
+        }
+      ]
+    },
+    {
+      "id": "q2-compare",
+      "template": "compare",
+      "data": {
+        "title": "第二題：自己關掉廣告的代價",
+        "left": {
+          "heading": "看廣告的 Free",
+          "points": [
+            "訊息額度是預設值",
+            "圖片生成不受影響"
+          ]
+        },
+        "right": {
+          "heading": "選了無廣告的 Free",
+          "points": [
+            "額度變低",
+            "圖片生成、深度研究跟著關"
+          ]
+        },
+        "verdict": "免費關掉廣告，代價不是錢"
+      },
+      "claims": [
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "hbvx",
+          "text": "第二題，免費版自己關掉廣告，要付什麼代價。"
+        },
+        {
+          "id": "4w53",
+          "text": "先講重點，選無廣告完全不用花錢。"
+        },
+        {
+          "id": "b633",
+          "text": "先看預設狀態，看廣告的 Free。",
+          "reveal": 1
+        },
+        {
+          "id": "njtm",
+          "text": "訊息額度是預設值，圖片生成也照常能用。"
+        },
+        {
+          "id": "m8kh",
+          "text": "簡單說，就是你現在習慣的樣子。"
+        },
+        {
+          "id": "t8m4",
+          "text": "改成無廣告之後呢？",
+          "reveal": 1
+        },
+        {
+          "id": "g3ca",
+          "text": "訊息額度會變低。"
+        },
+        {
+          "id": "8iyr",
+          "text": "官方沒有公布確切降低多少，但確定會變少。"
+        },
+        {
+          "id": "6e88",
+          "text": "連圖片生成、深度研究這些工具，也會跟著關掉。"
+        },
+        {
+          "id": "9t69",
+          "text": "這兩個工具，平常很多人都會用到。"
+        },
+        {
+          "id": "iez3",
+          "text": "如果你平常很少用圖片生成或深度研究，選無廣告的損失不大。"
+        },
+        {
+          "id": "6tzc",
+          "text": "但如果你天天靠這些工具工作，代價就不小。"
+        },
+        {
+          "id": "fxs4",
+          "text": "所以選了無廣告，你不會看到廣告，但也會少用到一些功能。"
+        },
+        {
+          "id": "5p96",
+          "text": "換句話說，免費關掉廣告不是沒有代價。"
+        },
+        {
+          "id": "sqeq",
+          "text": "只是這個代價不是錢，是你能用的額度。"
+        },
+        {
+          "id": "a4qz",
+          "text": "免費永遠不是真的免費，只是換一種付法。"
+        }
+      ]
+    },
+    {
+      "id": "q3-table",
+      "template": "table",
+      "data": {
+        "title": "第三題：一年要付多少",
+        "columns": [
+          "路徑",
+          "美國月費",
+          "台灣官網/月",
+          "一年",
+          "廣告"
+        ],
+        "rows": [
+          [
+            "Free 預設",
+            "0",
+            "NT$0",
+            "NT$0",
+            "可能出現"
+          ],
+          [
+            "Free 選無廣告",
+            "0",
+            "NT$0",
+            "NT$0",
+            "沒有，額度變低"
+          ],
+          [
+            "Go",
+            "8 美元",
+            "NT$270",
+            "NT$3,240",
+            "官方寫可能有"
+          ],
+          [
+            "Plus",
+            "20 美元",
+            "NT$690",
+            "NT$8,280",
+            "官方保證沒有"
+          ]
+        ],
+        "highlight": 2
+      },
+      "claims": [
+        "c8",
+        "c9",
+        "c10",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "d8iw",
+          "text": "第三題，也是今天要一起算的重點。"
+        },
+        {
+          "id": "wccc",
+          "text": "把四條路徑放在一起比，一年各要花多少錢。"
+        },
+        {
+          "id": "qber",
+          "text": "這張表，我建議你先看最後一欄，廣告出不出現。"
+        },
+        {
+          "id": "y7sz",
+          "text": "表上的台幣月費，是官網現在直接標給台灣的價格。"
+        },
+        {
+          "id": "dbba",
+          "text": "一年的金額是我乘上 12 算的，實際以結帳畫面為準。"
+        },
+        {
+          "id": "3k6b",
+          "text": "四條路徑，從完全免費到每個月固定扣款都有。"
+        },
+        {
+          "id": "cjrt",
+          "text": "第一條，Free 預設狀態，一毛錢都不用花。",
+          "reveal": 1
+        },
+        {
+          "id": "7tcb",
+          "text": "但廣告有可能出現。"
+        },
+        {
+          "id": "6nku",
+          "text": "這是大多數人現在的狀態。"
+        },
+        {
+          "id": "idt6",
+          "text": "第二條，Free 選無廣告，一樣不用花錢。",
+          "reveal": 1
+        },
+        {
+          "id": "dcx6",
+          "text": "廣告會消失，換成比較低的額度。"
+        },
+        {
+          "id": "7jze",
+          "text": "這一條，很多人根本不知道存在。"
+        },
+        {
+          "id": "9hmr",
+          "text": "第三條，Go，台灣官網標價每個月 270 元。",
+          "reveal": 1
+        },
+        {
+          "id": "ds5u",
+          "text": "一年大約三千兩百多元，但官方寫的是可能有廣告。"
+        },
+        {
+          "id": "zngn",
+          "text": "花了錢，卻買不到保證。"
+        },
+        {
+          "id": "y3xm",
+          "text": "第四條，Plus，台灣官網標價每個月 690 元。",
+          "reveal": 1
+        },
+        {
+          "id": "v3vc",
+          "text": "一年大約八千三百元，官方保證這一級不含廣告。"
+        },
+        {
+          "id": "4vai",
+          "text": "比較起來，Plus 大約是 Go 的兩倍半價錢，但至少廣告有官方保證。"
+        }
+      ]
+    },
+    {
+      "id": "q3-code",
+      "template": "code",
+      "data": {
+        "code": "8 × 31.855 = 254.84\n254.84 × 1.05 ≈ 268\n官網台幣月費 270（已含稅）\n270 × 12 = 3,240",
+        "highlight": [
+          4
+        ],
+        "caption": "Go 一年 NT$3,240，用台灣官網月費乘 12；匯率換算只是對照"
+      },
+      "claims": [
+        "c8",
+        "c10",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "688a",
+          "text": "這組算式，示範用 Go 來算給你看。"
+        },
+        {
+          "id": "prv3",
+          "text": "這個算式，你也可以套自己的匯率重算一次。"
+        },
+        {
+          "id": "edsu",
+          "text": "先把美金 8 元，換算成今天的台幣匯率。"
+        },
+        {
+          "id": "szd9",
+          "text": "今天的匯率，大約一美元換三十一塊九。"
+        },
+        {
+          "id": "p2fu",
+          "text": "算出來，大約兩百五十五元台幣。"
+        },
+        {
+          "id": "75ue",
+          "text": "台灣的個人訂閱，沒填統一編號要付百分之五的營業稅。"
+        },
+        {
+          "id": "us42",
+          "text": "多數個人用戶，帳號裡都沒有填這個號碼。"
+        },
+        {
+          "id": "8hyr",
+          "text": "加上這筆稅，大約兩百六十八元。"
+        },
+        {
+          "id": "7pr3",
+          "text": "官網標給台灣的 Go 月費是 270 元，已經含稅。"
+        },
+        {
+          "id": "mjth",
+          "text": "跟手機上很多訂閱服務，價位差不多。"
+        },
+        {
+          "id": "bir5",
+          "text": "乘上 12 個月，一年是三千兩百四十元。"
+        },
+        {
+          "id": "jjyh",
+          "text": "用匯率換算只是估計，實際以官網的台幣價為準。"
+        },
+        {
+          "id": "tv8c",
+          "text": "官方定價會變動，記得回官網核對最新的台幣數字。"
+        }
+      ]
+    },
+    {
+      "id": "settings-steps",
+      "template": "steps",
+      "data": {
+        "title": "設定廣告怎麼找",
+        "steps": [
+          {
+            "title": "打開設定",
+            "detail": "手機 App 或網頁版都找得到"
+          },
+          {
+            "title": "點進廣告控制功能",
+            "detail": "英文介面叫 Ad Controls"
+          },
+          {
+            "title": "Free：改成無廣告",
+            "detail": "確認前會提醒額度變低"
+          },
+          {
+            "title": "Go 只能管理個人化",
+            "detail": "沒有關掉廣告的選項"
+          }
+        ]
+      },
+      "claims": [
+        "c3",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "xjr7",
+          "text": "想自己動手調整，設定路徑其實不難找。"
+        },
+        {
+          "id": "wpyz",
+          "text": "整個流程，大概三十秒就能找到。"
+        },
+        {
+          "id": "9p7t",
+          "text": "第一步，打開設定。",
+          "reveal": 1
+        },
+        {
+          "id": "wwyd",
+          "text": "手機 App 或網頁版，都找得到這個選單。"
+        },
+        {
+          "id": "a4xx",
+          "text": "這個選單，通常在左下角或頭像旁邊。"
+        },
+        {
+          "id": "2nyv",
+          "text": "第二步，點進廣告控制功能。",
+          "reveal": 1
+        },
+        {
+          "id": "qmz5",
+          "text": "名字裡有廣告兩個字，很好找。"
+        },
+        {
+          "id": "cuxx",
+          "text": "第三步，如果你是 Free 帳號。",
+          "reveal": 1
+        },
+        {
+          "id": "fgax",
+          "text": "會看到改成無廣告的選項。"
+        },
+        {
+          "id": "h36w",
+          "text": "按下去之後，畫面會先提醒你額度會變低，再請你確認。"
+        },
+        {
+          "id": "92jv",
+          "text": "第四步，如果你是 Go 帳號。",
+          "reveal": 1
+        },
+        {
+          "id": "ugxh",
+          "text": "進到同一頁，只能管理廣告的個人化。"
+        },
+        {
+          "id": "iq9t",
+          "text": "能調的，主要是廣告要不要跟你的興趣有關。"
+        },
+        {
+          "id": "6b6m",
+          "text": "看不到關掉廣告這個選項。"
+        },
+        {
+          "id": "yu7z",
+          "text": "不管你是哪一種帳號，這個設定頁面都值得自己點一次。"
+        }
+      ]
+    },
+    {
+      "id": "approach-chapter",
+      "chapter": "我的做法",
+      "template": "chapter",
+      "data": {
+        "title": "我的做法"
+      },
+      "lines": [
+        {
+          "id": "inhb",
+          "text": "算完這些數字，我自己怎麼看？"
+        },
+        {
+          "id": "3mnr",
+          "text": "說說我自己的判斷。"
+        }
+      ]
+    },
+    {
+      "id": "approach-bullets",
+      "template": "bullets",
+      "data": {
+        "title": "我怎麼看這件事",
+        "items": [
+          "只為了廣告升級不划算",
+          "免費的無廣告選項已經是解法",
+          "真正該花的錢是配額和模型"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "a6vv",
+          "text": "我的看法是，只為了不想看廣告去升級，不划算。"
+        },
+        {
+          "id": "xt3c",
+          "text": "這句話，我講得很直接。"
+        },
+        {
+          "id": "tk9u",
+          "text": "第一，免費版本來就能選無廣告，不用花錢。",
+          "reveal": 1
+        },
+        {
+          "id": "xbum",
+          "text": "多數只是為了不想看廣告的人，其實用不到升級。"
+        },
+        {
+          "id": "kvw2",
+          "text": "效果甚至比付錢買 Go 還徹底，是真的沒有廣告。"
+        },
+        {
+          "id": "gkia",
+          "text": "代價是，額度和部分功能都會變少。"
+        },
+        {
+          "id": "5jce",
+          "text": "第二，真正保證沒有廣告的是 Plus。",
+          "reveal": 1
+        },
+        {
+          "id": "c4m8",
+          "text": "但那一步同時也把你帶進更高的訊息額度。"
+        },
+        {
+          "id": "zeak",
+          "text": "還有官方現在主打的新模型。"
+        },
+        {
+          "id": "u23a",
+          "text": "這是官方白紙黑字保證的，不是可能。"
+        },
+        {
+          "id": "kqyi",
+          "text": "第三，你該付的那筆錢，買的其實是額度和模型。",
+          "reveal": 1
+        },
+        {
+          "id": "ktqg",
+          "text": "廣告消失，只是升級順便發生的事。"
+        },
+        {
+          "id": "dzuw",
+          "text": "如果你本來就需要更高的額度，升級才划算。"
+        },
+        {
+          "id": "rptf",
+          "text": "如果你只是不想看廣告，免費的無廣告選項已經夠用。"
+        },
+        {
+          "id": "3yz4",
+          "text": "官方自己也把廣告和回答分開放，還清楚標示是贊助。"
+        },
+        {
+          "id": "n7g7",
+          "text": "我們決定升不升級的時候，也該把這兩筆帳分開算。"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "結論",
+      "template": "outro",
+      "data": {
+        "title": "廣告不是重點，配額和模型才是",
+        "cta": "完整比較表在說明欄的文章裡",
+        "lines": [
+          "誰看得到廣告：Free 和 Go",
+          "免費也能關掉：設定裡選無廣告",
+          "真正該算的：一年配額值不值那筆錢"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xvyc",
+          "text": "所以，升級到底值不值得？"
+        },
+        {
+          "id": "2kvp",
+          "text": "這支影片沒有要幫你決定買哪一個方案。"
+        },
+        {
+          "id": "r2yw",
+          "text": "答案不是廣告消不消失，是配額和模型夠不夠用。"
+        },
+        {
+          "id": "y39n",
+          "text": "這句話，值得你按暫停，想個十秒。"
+        },
+        {
+          "id": "kat8",
+          "text": "誰看得到廣告，Free 和 Go 都可能看到。"
+        },
+        {
+          "id": "nwkh",
+          "text": "免費也能關掉，設定裡就能選無廣告。"
+        },
+        {
+          "id": "5pcq",
+          "text": "這個選項，完全不用多花一毛錢。"
+        },
+        {
+          "id": "gfii",
+          "text": "真正該算的，是一年的配額值不值那筆錢。"
+        },
+        {
+          "id": "85z3",
+          "text": "把這個數字，換算成你自己的實際用量。"
+        },
+        {
+          "id": "nrj8",
+          "text": "這三句，你自己套進去，答案就出來了。"
+        },
+        {
+          "id": "du3c",
+          "text": "四條路徑的完整算式，我也留在說明欄了。"
+        },
+        {
+          "id": "tdny",
+          "text": "完整的比較表，我放在說明欄的文章裡。"
+        },
+        {
+          "id": "mgsj",
+          "text": "如果這支片對你有幫助，留言告訴我你選了哪一條路。"
+        },
+        {
+          "id": "abps",
+          "text": "要不要升級，決定權一直在你自己手上。"
+        },
+        {
+          "id": "pux5",
+          "text": "我們下一支影片見。"
+        }
+      ]
+    }
+  ]
+}
