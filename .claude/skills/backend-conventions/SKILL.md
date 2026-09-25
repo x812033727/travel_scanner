@@ -7,6 +7,8 @@ metadata:
 
 # 後端與後台慣例（backend-conventions）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/backend-conventions/` 底下；`.claude/skills/backend-conventions/` 只放這份 SKILL.md 的逐字複本。
+
 這個 skill 只放規則、指令與去哪裡讀；每條規則背後的事故與機制在 `references/`。程式裡已經寫下的理由（docstring、測試檔開頭的說明）是正本，這裡只指過去。
 
 ## 不變的規矩
