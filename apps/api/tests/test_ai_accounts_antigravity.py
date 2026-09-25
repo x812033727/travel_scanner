@@ -15,6 +15,7 @@ from ai_accounts_agent.antigravity import (
     LEGACY_TOKEN_NAME,
     TOKEN_NAME,
     AntigravityAccounts,
+    _header_account,
     email_from_logs,
     extract_authorize_url,
     is_authorize_url,
@@ -94,11 +95,16 @@ FAKE_AGY = textwrap.dedent(
          "\\x1b[20;2H> \\x1b[21;2HGemini 3.1 Pro 82%")
     if sys.stdin.readline().strip() != "/usage":
         sys.exit(1)
-    bar = "\\u2588" * 8 + "\\u2591" * 2
-    show("\\x1b[2J\\x1b[1;2HModels & Quota\\x1b[3;2HGemini Models")
-    show("\\x1b[4;4H5-hour limit  " + bar + "  80%  Refreshes in 1h 52m")
-    show("\\x1b[5;4HWeekly limit  " + bar + "  50%  Refreshes in 4d 21h")
-    show("\\x1b[7;2HClaude and GPT Models\\x1b[8;4HWeekly limit  Disabled")
+    # The layout agy 1.2.11 drew on the host (2026-09-25).
+    bar = "[" + "\\u2588" * 40 + "]"
+    show("\\x1b[2J\\x1b[1;1H\\u2514 Models & Quota\\x1b[2;3HAccount: g@x.test"
+         "\\x1b[3;1HGEMINI MODELS\\x1b[4;3HModels within this group: Gemini Flash, Gemini Pro")
+    show("\\x1b[5;3HWeekly Limit Remaining\\x1b[6;5H" + bar + " 50.00%"
+         "\\x1b[7;5HRefreshes in 167h 57m")
+    show("\\x1b[8;3HFive Hour Limit Remaining\\x1b[9;5H" + bar + " 80.00%"
+         "\\x1b[10;5HRefreshes in 4h 57m")
+    show("\\x1b[11;1HCLAUDE AND GPT MODELS\\x1b[12;3HWeekly Limit Remaining"
+         "\\x1b[13;5H" + bar + " 100.00%\\x1b[14;5HQuota available")
     time.sleep(30)
     """
 ).replace("URL", repr(GOOGLE_URL))
@@ -161,37 +167,81 @@ def test_screen_alternate_buffer_and_scrolling() -> None:
 # --- the quota page -------------------------------------------------------------------
 
 
-def test_quota_page_rows_become_windows_per_model_group() -> None:
-    lines = [
-        "g@x.test · Google AI Ultra",
-        "Models & Quota",
-        "Gemini Models",
-        "  5-hour limit  ████████░░  80%  Refreshes in 1h 52m",
-        "  Weekly limit  █████░░░░░  50% remaining  Refreshes in 4d 21h",
-        "Claude and GPT Models",
-        "  Weekly limit  Disabled",
-        "Gemini 3.1 Pro  30% used",
-    ]
-    windows = parse_quota(lines, now=1_000)
+# What the probe read on the host after `/usage` (agy 1.2.11, 2026-09-25), trimmed of the
+# slash-command menu drawn above it and the explanatory box below.
+HOST_QUOTA_PAGE = [
+    "      ▄▀▀▄        Antigravity CLI 1.2.11",
+    "     ▀▀▀▀▀▀       owner@gmail.com",
+    "  ▄▀▀      ▀▀▄    Gemini 3.8 Flash (Hi (Google AI Pro)",
+    "  /usage               View model quota usage",
+    "└ Models & Quota",
+    "  Account: owner@gmail.com",
+    "GEMINI MODELS",
+    "  Models within this group: Gemini Flash, Gemini Pro",
+    "  Weekly Limit Remaining",
+    "    [██████████████████████████████████████████████████] 99.93%",
+    "    Refreshes in 167h 57m",
+    "  Five Hour Limit Remaining",
+    "    [██████████████████████████████████████████████████] 99.58%",
+    "    Refreshes in 4h 57m",
+    "CLAUDE AND GPT MODELS",
+    "  Models within this group: Claude Opus, Claude Sonnet, GPT-OSS",
+    "  Weekly Limit Remaining",
+    "    [██████████████████████████████████████████████████] 100.00%",
+    "    Quota available",
+    "  Five Hour Limit Remaining",
+    "    [██████████████████████████████████████████████████] 100.00%",
+    "    Quota available",
+    "  │Within each group, models share a weekly limit and a 5-hour limit. Quota is",
+    "  ↑/↓ Scroll · pgup/pgdown Page · ctrl+end Bottom · ctrl+home Top · esc Close",
+]
+
+
+def test_the_host_quota_page_becomes_windows_per_model_group() -> None:
+    windows = parse_quota(HOST_QUOTA_PAGE, now=1_000)
     assert windows == [
         {
             "label": "Gemini Models",
-            "window_minutes": 300,
-            "used_percent": 20.0,
-            "resets_at": 1_000 + 3_600 + 52 * 60,
+            "window_minutes": 10_080,
+            "used_percent": 0.07,
+            "resets_at": 1_000 + 167 * 3_600 + 57 * 60,
         },
         {
             "label": "Gemini Models",
-            "window_minutes": 10_080,
-            "used_percent": 50.0,
-            "resets_at": 1_000 + 4 * 86_400 + 21 * 3_600,
+            "window_minutes": 300,
+            "used_percent": 0.42,
+            "resets_at": 1_000 + 4 * 3_600 + 57 * 60,
         },
+        {
+            "label": "Claude and GPT Models",
+            "window_minutes": 10_080,
+            "used_percent": 0.0,
+            "resets_at": None,
+        },
+        {
+            "label": "Claude and GPT Models",
+            "window_minutes": 300,
+            "used_percent": 0.0,
+            "resets_at": None,
+        },
+    ]
+    assert _header_account(HOST_QUOTA_PAGE) == ("owner@gmail.com", "Pro")
+
+
+def test_quota_rows_on_one_line_and_pages_without_figures() -> None:
+    lines = [
+        "Gemini 3.1 Pro 82%",  # The status bar, above the page: not a window.
+        "Models & Quota",
+        "Gemini 3.1 Pro  30% used  Refreshes in 1h",
+        "Weekly limit  Disabled",
+    ]
+    assert parse_quota(lines, now=0) == [
         {
             "label": "Gemini 3.1 Pro",
             "window_minutes": None,
             "used_percent": 30.0,
-            "resets_at": None,
-        },
+            "resets_at": 3_600,
+        }
     ]
     assert parse_quota(["Loading quota…", "Press esc to close"], now=0) == []
 
@@ -336,8 +386,9 @@ def test_page_login_picks_google_takes_the_code_and_reads_the_quota(tmp_path: Pa
     assert [
         (w["label"], w["window_minutes"], w["used_percent"]) for w in card["usage"]["windows"]
     ] == [
-        ("Gemini Models", 300, 20.0),
         ("Gemini Models", 10_080, 50.0),
+        ("Gemini Models", 300, 20.0),
+        ("Claude and GPT Models", 10_080, 0.0),
     ]
 
 
@@ -409,6 +460,6 @@ def test_the_probe_records_windows_email_and_plan(tmp_path: Path) -> None:
     accounts = AntigravityAccounts(config)
     assert accounts.refresh_usage("e") is True
     usage = accounts.details("e")["usage"]
-    assert [window["used_percent"] for window in usage["windows"]] == [20.0, 50.0]
+    assert [window["used_percent"] for window in usage["windows"]] == [50.0, 20.0, 0.0]
     status = accounts.status("e")
     assert (status["email"], status["plan"]) == ("g@x.test", "Ultra")
