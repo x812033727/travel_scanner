@@ -40,6 +40,12 @@ def test_navigation_registry_has_stable_unique_destinations() -> None:
     assert (ai_accounts.href, ai_accounts.capability) == ("/admin/ai-accounts", "settings.read")
     news = next(item for item in operations_service.NAVIGATION_REGISTRY if item.id == "news")
     assert news.badge_key == "news_review_pending"
+    videos = next(item for item in operations_service.NAVIGATION_REGISTRY if item.id == "videos")
+    assert (videos.href, videos.capability, videos.badge_key) == (
+        "/admin/videos",
+        "content.read",
+        "video_reviews_pending",
+    )
     assert all(item.href.startswith("/admin") for item in operations_service.NAVIGATION_REGISTRY)
 
 
