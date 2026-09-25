@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { AdminSettingsPanel, SETTINGS_PAGE_CATEGORIES } from "@/components/admin-settings-panel";
 import { Link } from "@/i18n/navigation";
-import { AI_SETTINGS_PATH, isAiSettingsProvider } from "@/lib/admin-settings-ownership";
+import { AI_SETTINGS_PATH, aiSettingsTab, isAiSettingsProvider } from "@/lib/admin-settings-ownership";
 
 type Search = Record<string, string | string[] | undefined>;
 
@@ -12,8 +12,8 @@ export default async function AdminSettingsPage({ params, searchParams }: { para
   if (isAiSettingsProvider(provider)) {
     // Links made before the AI cards moved (the video tool's pairing link among them)
     // land on the AI settings page with every parameter they carried.
-    const query = new URLSearchParams({ tab: "api" });
-    for (const [key, value] of Object.entries(search)) if (typeof value === "string") query.set(key, value);
+    const query = new URLSearchParams({ tab: aiSettingsTab(provider) });
+    for (const [key, value] of Object.entries(search)) if (typeof value === "string" && key !== "tab") query.set(key, value);
     redirect(`/${locale}${AI_SETTINGS_PATH}?${query}`);
   }
   const t = await getTranslations("admin.pageHeaders.providers");
