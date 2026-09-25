@@ -3,9 +3,10 @@
 #
 #   bash ops/ai-accounts/install.sh [--runtime-env /root/travel_scanner/.env]
 #
-# The first run moves root's existing Claude Code and Codex logins into account A and
-# leaves /root/.claude, /root/.claude.json and /root/.codex as links to it, so anything
-# that runs the CLIs without the shell functions keeps using the same account.
+# The first run moves root's existing Claude Code, Codex and Antigravity logins into
+# account A and leaves /root/.claude, /root/.claude.json, /root/.codex and
+# /root/.gemini/antigravity-cli as links to it, so anything that runs the CLIs without the
+# shell functions keeps using the same account.
 set -euo pipefail
 # The host's default umask once made deployed files unreadable (2026-09-07); be explicit.
 umask 022
@@ -26,6 +27,12 @@ SLOTS=(a b c d e)
 # the session history, so `--resume` works whichever account a session started on.
 CLAUDE_SHARED=(CLAUDE.md agents commands skills plugins output-styles projects)
 CODEX_SHARED=(AGENTS.md prompts skills sessions)
+# Each Antigravity account is a home of its own (agy has no switch for its data folder), so
+# the settings root's own tools read from $HOME are linked into it: git and GitHub
+# credentials, npm. ssh finds /root/.ssh by itself. MCP servers (.gemini/config) are shared
+# with account A like the other tools' settings.
+AGY_ROOT_SHARED=(.gitconfig .git-credentials .npmrc .config/gh)
+AGY_DATA=.gemini/antigravity-cli
 RUNTIME_ENV=""
 
 while [[ $# -gt 0 ]]; do
@@ -46,7 +53,7 @@ cli_running() {
   for link in /proc/[0-9]*/exe; do
     target="$(readlink "${link}" 2>/dev/null || true)"
     case "${target}" in
-      /root/.local/share/claude/versions/* | *codex-linux-*) return 0 ;;
+      /root/.local/share/claude/versions/* | *codex-linux-* | /root/.local/bin/agy) return 0 ;;
     esac
   done
   return 1
@@ -60,13 +67,15 @@ needs_move() {
 getent group travel-api >/dev/null || groupadd --system --gid 10002 travel-api
 install -d -m 0700 "${STATE}" "${STATE}/home"
 for slot in "${SLOTS[@]}"; do
-  install -d -m 0700 "${STATE}/claude-${slot}" "${STATE}/codex-${slot}"
+  install -d -m 0700 "${STATE}/claude-${slot}" "${STATE}/codex-${slot}" "${STATE}/agy-${slot}"
+  install -d -m 0700 "${STATE}/agy-${slot}/.gemini"
 done
 
 # 2. First run: move the existing logins into account A.
-if needs_move /root/.claude || needs_move /root/.claude.json || needs_move /root/.codex; then
+if needs_move /root/.claude || needs_move /root/.claude.json || needs_move /root/.codex ||
+  needs_move "/root/${AGY_DATA}"; then
   if cli_running; then
-    echo "A claude or codex process is running. Close every session, then run this again." >&2
+    echo "A claude, codex or agy process is running. Close every session, then run this again." >&2
     exit 3
   fi
 fi
@@ -85,6 +94,10 @@ move_into_slot() {
 }
 move_into_slot /root/.claude "${STATE}/claude-a"
 move_into_slot /root/.codex "${STATE}/codex-a"
+# /root/.gemini also belongs to the Gemini CLI; only agy's own folder moves.
+install -d -m 0700 "${STATE}/agy-a/${AGY_DATA}"
+[[ -d /root/.gemini ]] || install -d -m 0700 /root/.gemini
+move_into_slot "/root/${AGY_DATA}" "${STATE}/agy-a/${AGY_DATA}"
 if needs_move /root/.claude.json; then
   if [[ -e "${STATE}/claude-a/.claude.json" ]]; then
     echo "${STATE}/claude-a/.claude.json exists; leaving /root/.claude.json where it is." >&2
@@ -116,6 +129,19 @@ copy_from_a() {
 }
 for name in "${CLAUDE_SHARED[@]}"; do share_with_a claude "${name}"; done
 for name in "${CODEX_SHARED[@]}"; do share_with_a codex "${name}"; done
+install -d -m 0700 "${STATE}/agy-a/.gemini/config"
+for slot in "${SLOTS[@]:1}"; do
+  link="${STATE}/agy-${slot}/.gemini/config"
+  [[ -e "${link}" || -L "${link}" ]] || ln -s ../../agy-a/.gemini/config "${link}"
+done
+for slot in "${SLOTS[@]}"; do
+  for name in "${AGY_ROOT_SHARED[@]}"; do
+    target="${STATE}/agy-${slot}/${name}"
+    [[ -e "/root/${name}" && ! -e "${target}" && ! -L "${target}" ]] || continue
+    install -d -m 0700 "$(dirname "${target}")"
+    ln -s "/root/${name}" "${target}"
+  done
+done
 # The agent points each account's status line at its own recorder when it starts.
 copy_from_a claude settings.json
 copy_from_a claude mokaair-statusline-chain.json
@@ -139,7 +165,7 @@ if servers:
 PY
   done
 fi
-for tool in claude codex; do
+for tool in claude codex agy; do
   [[ -f "${STATE}/default-${tool}" ]] || printf 'a\n' >"${STATE}/default-${tool}"
   chmod 0600 "${STATE}/default-${tool}"
 done
@@ -156,6 +182,7 @@ install -m 0755 "${HERE}/mokaair-ai-cli" "${LIB}/mokaair-ai-cli"
 for slot in "${SLOTS[@]}"; do
   ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/claude-${slot}"
   ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/codex-${slot}"
+  ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/agy-${slot}"
 done
 install -m 0644 "${HERE}/profile.sh" /etc/profile.d/mokaair-ai-accounts.sh
 # tmux windows and other non-login shells read only ~/.bashrc.

@@ -6,23 +6,32 @@ import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
 import { useModalSheet } from "@/lib/modal-sheet";
 
-type Tool = "claude" | "codex";
+type Tool = "claude" | "codex" | "agy";
 type Slot = "a" | "b" | "c" | "d" | "e";
 type LoginStatus = "pending" | "verifying" | "succeeded" | "failed" | "cancelled" | "expired";
 type Login = { id: string; tool: Tool; slot: Slot; kind: "device_code" | "paste_code"; status: LoginStatus; url?: string | null; user_code?: string | null; error?: string | null; expires_at: number };
-type UsageWindow = { window_minutes?: number | null; used_percent: number; resets_at?: number | null };
+type UsageWindow = { label?: string | null; window_minutes?: number | null; used_percent: number; resets_at?: number | null };
 type Usage = { source: "live" | "snapshot"; recorded_at?: number | null; windows: UsageWindow[] };
 export type AiAccount = { tool: Tool; slot: Slot; is_default: boolean; logged_in: boolean | null; auth_method?: string | null; email?: string | null; organization?: string | null; plan?: string | null; email_allowed?: boolean | null; usage?: Usage | null; usage_error?: string | null; recorder_installed?: boolean | null; usage_refreshing?: boolean | null; checked_at?: number | null; error?: string | null; login?: Login | null };
 export type AiAccountsOverview = { enabled: boolean; agent_reachable: boolean; agent_error?: string | null; slots: AiAccount[]; defaults: Partial<Record<Tool, Slot>>; allowlist_configured: boolean };
 
-const TOOLS: Tool[] = ["claude", "codex"];
-const TOOL_NAMES: Record<Tool, string> = { claude: "Claude Code", codex: "Codex" };
+const TOOLS: Tool[] = ["claude", "codex", "agy"];
+const TOOL_NAMES: Record<Tool, string> = { claude: "Claude Code", codex: "Codex", agy: "Antigravity" };
 // The sign-in methods billed to a subscription; anything else is API billing.
-const SUBSCRIPTION_METHODS: Record<Tool, string> = { claude: "claude.ai", codex: "chatgpt" };
+const SUBSCRIPTION_METHODS: Record<Tool, string> = { claude: "claude.ai", codex: "chatgpt", agy: "google" };
 const ACTIVE = new Set<LoginStatus>(["pending", "verifying"]);
-// What the Claude callback page shows: base64url pieces joined by `#`. The API and the host
-// agent check the same pattern.
-const CODE_PATTERN = /^[A-Za-z0-9._~#-]{10,1024}$/;
+// What each callback page shows: Claude's is base64url pieces joined by `#`, Google's carries a
+// `/` (`4/0A…`). The API and the host agent check the same patterns.
+const CODE_PATTERNS: Record<Tool, RegExp> = {
+  claude: /^[A-Za-z0-9._~#-]{10,1024}$/,
+  codex: /^[A-Za-z0-9._~#-]{10,1024}$/,
+  agy: /^[A-Za-z0-9._~/+-]{10,1024}$/,
+};
+// Why the host could not read an Antigravity account's quota page (ai_accounts_agent.antigravity).
+const AGY_USAGE_ERRORS: Record<string, string> = { setup_needed: "agyUsageSetup", signed_out: "agyUsageSignedOut", unreadable: "agyUsageUnreadable" };
+const LOGIN_TITLES: Record<Tool, string> = { claude: "loginTitleClaude", codex: "loginTitleCodex", agy: "loginTitleAgy" };
+const FALLBACKS: Record<Tool, string> = { claude: "fallbackClaude", codex: "fallbackCodex", agy: "fallbackAgy" };
+const SSH_HINTS: Record<Tool, string> = { claude: "sshHintClaude", codex: "sshHintCodex", agy: "sshHintAgy" };
 const REFRESH_MS = 60_000;
 const LOGIN_POLL_MS = 3_000;
 const USAGE_POLL_MS = 4_000;
@@ -49,6 +58,11 @@ function windowLabel(t: Translator, minutes?: number | null) {
   return t("windowHours", { hours: Math.round(minutes / 60) });
 }
 
+function usageErrorText(t: Translator, account: AiAccount) {
+  const key = account.tool === "agy" && account.usage_error ? AGY_USAGE_ERRORS[account.usage_error] : undefined;
+  return key ? t(key, { slot: account.slot }) : t("usageUnavailable", { detail: account.usage_error || "—" });
+}
+
 function relativeTime(format: Intl.RelativeTimeFormat, seconds: number) {
   const size = Math.abs(seconds);
   if (size < 60) return format.format(Math.round(seconds), "second");
@@ -67,12 +81,13 @@ function UsageBars({ usage, now }: { usage: Usage; now: number }) {
       const reset = Boolean(window.resets_at && window.resets_at * 1000 <= now);
       const remaining = reset ? 100 : Math.max(0, Math.min(100, Math.round(100 - window.used_percent)));
       const tone = remaining < 10 ? "bg-red-500" : remaining < 30 ? "bg-amber-500" : "bg-emerald-500";
-      return <div key={`${window.window_minutes}-${window.resets_at}`}>
+      const name = window.label ? `${window.label} · ${windowLabel(t, window.window_minutes)}` : windowLabel(t, window.window_minutes);
+      return <div key={`${window.label}-${window.window_minutes}-${window.resets_at}`}>
         <div className="flex items-baseline justify-between gap-3 text-sm">
-          <span className="font-semibold">{windowLabel(t, window.window_minutes)}</span>
+          <span className="font-semibold">{name}</span>
           <span className={`font-bold tabular-nums ${remaining < 10 ? "text-red-600" : ""}`}>{t("remaining", { percent: remaining })}</span>
         </div>
-        <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100" role="progressbar" aria-label={windowLabel(t, window.window_minutes)} aria-valuemin={0} aria-valuemax={100} aria-valuenow={remaining}>
+        <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-slate-100" role="progressbar" aria-label={name} aria-valuemin={0} aria-valuemax={100} aria-valuenow={remaining}>
           <div className={`h-full rounded-full ${tone}`} style={{ width: `${remaining}%` }} />
         </div>
         {window.resets_at ? <p className="mt-1 text-xs text-[var(--muted)]">{reset ? t("resetDone") : `${t("resetsAt", { time: dateTime.format(new Date(window.resets_at * 1000)) })} · ${relativeTime(relative, window.resets_at - now / 1000)}`}</p> : null}
@@ -105,9 +120,9 @@ function AccountCard({ account, now, busy, onLogin, onLogout, onDefault }: CardP
     {account.error && <p className="mt-2 text-xs text-red-700">{account.error}</p>}
     {signedIn && account.usage?.windows.length ? <UsageBars usage={account.usage} now={now} /> : null}
     {signedIn && account.usage_refreshing && <p role="status" className="mt-3 flex items-center gap-1.5 text-xs text-[var(--muted)]"><LoaderCircle size={13} className="animate-spin motion-reduce:animate-none" />{t("usageRefreshing")}</p>}
-    {signedIn && account.tool === "claude" && !account.usage && !account.usage_refreshing && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
+    {signedIn && account.tool !== "codex" && !account.usage && !account.usage_refreshing && !account.usage_error && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
     {signedIn && account.tool === "claude" && account.recorder_installed === false && <p className="mt-2 text-xs text-amber-800">{t("recorderMissing")}</p>}
-    {signedIn && account.usage_error && <p className="mt-2 text-xs text-amber-800">{t("usageUnavailable", { detail: account.usage_error })}</p>}
+    {signedIn && account.usage_error && <p className="mt-2 text-xs text-amber-800">{usageErrorText(t, account)}</p>}
     <div className="mt-auto flex flex-wrap gap-2 pt-5">
       {pending ? <button type="button" onClick={() => onLogin(account)} className="inline-flex min-h-10 items-center gap-1.5 rounded-xl bg-[var(--coral-fill)] px-3.5 text-sm font-bold text-white"><LoaderCircle size={15} className="animate-spin motion-reduce:animate-none" />{t("resume")}</button>
         : <button type="button" disabled={busy} onClick={() => onLogin(account)} className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[var(--line)] px-3.5 text-sm font-bold disabled:opacity-40"><LogIn size={15} />{signedIn ? t("signInAgain") : t("signIn")}</button>}
@@ -129,10 +144,12 @@ function LoginDialog({ login, busy, onClose, onCancel, onSubmitCode }: { login: 
   const active = ACTIVE.has(login.status);
   const slot = slotLabel(login.slot);
   const trimmed = code.trim();
+  const codeOk = CODE_PATTERNS[login.tool].test(trimmed);
+  const steps = login.tool === "agy" ? ["agyStep1", "agyStep2"] : ["claudeStep1", "claudeStep2"];
 
   function submit(event: FormEvent) {
     event.preventDefault();
-    if (CODE_PATTERN.test(trimmed)) onSubmitCode(trimmed);
+    if (codeOk) onSubmitCode(trimmed);
   }
   async function copy() {
     if (!login.user_code) return;
@@ -142,20 +159,20 @@ function LoginDialog({ login, busy, onClose, onCancel, onSubmitCode }: { login: 
   return <div role="presentation" className="fixed inset-0 z-50 grid place-items-center bg-black/55 p-4" onMouseDown={(event) => { if (event.currentTarget === event.target) onClose(); }}>
     <div role="dialog" aria-modal="true" aria-labelledby="ai-login-title" ref={sheetRef} className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-[1.75rem] bg-white p-6 shadow-2xl md:p-8">
       <div className="flex items-start justify-between gap-4">
-        <h2 id="ai-login-title" className="text-xl font-black">{login.tool === "codex" ? t("loginTitleCodex", { slot }) : t("loginTitleClaude", { slot })}</h2>
+        <h2 id="ai-login-title" className="text-xl font-black">{t(LOGIN_TITLES[login.tool], { slot })}</h2>
         <button type="button" aria-label={t("closeLogin")} onClick={onClose} className="rounded-lg p-2 hover:bg-slate-100"><X /></button>
       </div>
       {login.status === "pending" && login.url && <ol className="mt-5 space-y-5 text-sm leading-6">
-        <li><p>{login.kind === "device_code" ? t("codexStep1") : t("claudeStep1")}</p><a href={login.url} target="_blank" rel="noreferrer noopener" className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--ink)] px-4 font-bold text-white">{t("openLoginPage")}<ExternalLink size={15} /></a></li>
+        <li><p>{login.kind === "device_code" ? t("codexStep1") : t(steps[0])}</p><a href={login.url} target="_blank" rel="noreferrer noopener" className="mt-2 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--ink)] px-4 font-bold text-white">{t("openLoginPage")}<ExternalLink size={15} /></a></li>
         {login.kind === "device_code" && login.user_code ? <li>
           <p>{t("codexStep2")}</p>
           <div className="mt-2 flex flex-wrap items-center gap-3"><code className="rounded-xl bg-[var(--paper)] px-4 py-3 font-mono text-2xl font-black tracking-widest">{login.user_code}</code><button type="button" onClick={() => void copy()} className="inline-flex min-h-10 items-center gap-1.5 rounded-xl border border-[var(--line)] px-3 font-bold">{copied ? <CheckCircle2 size={15} /> : <Copy size={15} />}{copied ? t("copied") : t("copyCode")}</button></div>
           <p className="mt-3 text-xs text-[var(--muted)]">{t("codexDeviceHint")}</p>
         </li> : <li>
           <form onSubmit={submit}>
-            <label htmlFor="ai-login-code">{t("claudeStep2")}</label>
+            <label htmlFor="ai-login-code">{t(steps[1])}</label>
             <input id="ai-login-code" value={code} onChange={(event) => setCode(event.target.value)} autoComplete="off" spellCheck={false} maxLength={1100} className="mt-2 w-full rounded-xl border border-[var(--line)] px-4 py-3 font-mono text-sm" />
-            <button type="submit" disabled={busy || !CODE_PATTERN.test(trimmed)} className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--coral-fill)] px-4 font-bold text-white disabled:opacity-40">{busy ? <LoaderCircle size={16} className="animate-spin motion-reduce:animate-none" /> : <LogIn size={16} />}{t("submitCode")}</button>
+            <button type="submit" disabled={busy || !codeOk} className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-[var(--coral-fill)] px-4 font-bold text-white disabled:opacity-40">{busy ? <LoaderCircle size={16} className="animate-spin motion-reduce:animate-none" /> : <LogIn size={16} />}{t("submitCode")}</button>
           </form>
         </li>}
       </ol>}
@@ -166,7 +183,7 @@ function LoginDialog({ login, busy, onClose, onCancel, onSubmitCode }: { login: 
         {login.status === "failed" && <p className="font-bold text-red-700">{t("failed", { detail: login.error || "—" })}</p>}
         {login.status === "cancelled" && <p className="text-[var(--muted)]">{t("cancelled")}</p>}
         {login.status === "expired" && <p className="text-[var(--muted)]">{t("expired")}</p>}
-        {(login.status === "failed" || login.status === "expired") && <p className="mt-2 flex items-start gap-1.5 text-xs text-[var(--muted)]"><TerminalSquare size={14} className="mt-0.5 shrink-0" />{login.tool === "codex" ? t("fallbackCodex", { slot: login.slot }) : t("fallbackClaude", { slot: login.slot })}</p>}
+        {(login.status === "failed" || login.status === "expired") && <p className="mt-2 flex items-start gap-1.5 text-xs text-[var(--muted)]"><TerminalSquare size={14} className="mt-0.5 shrink-0" />{t(FALLBACKS[login.tool], { slot: login.slot })}</p>}
       </div>
       <div className="mt-6 flex justify-end gap-2">
         {active ? <button type="button" disabled={busy} onClick={onCancel} className="min-h-11 rounded-xl border border-[var(--line)] px-4 font-bold disabled:opacity-40">{t("cancelLogin")}</button>
@@ -209,7 +226,7 @@ export function AdminAiAccountsPanel() {
     return () => { clearTimeout(first); clearInterval(timer); };
   }, [load]);
 
-  // The host reads Claude usage in the background (a few seconds per account); poll
+  // The host reads Claude and Antigravity usage in the background (seconds per account); poll
   // until every card has its numbers.
   const readingUsage = Boolean(overview?.slots.some((account) => account.usage_refreshing));
   useEffect(() => {
@@ -292,7 +309,7 @@ export function AdminAiAccountsPanel() {
       const free = nextFreeSlot(accounts);
       return <section key={tool} aria-labelledby={`ai-${tool}-title`} className="rounded-[1.75rem] border border-[var(--line)] bg-[var(--paper)] p-5 md:p-7">
         <h2 id={`ai-${tool}-title`} className="text-xl font-bold">{TOOL_NAMES[tool]}</h2>
-        <p className="mt-1 flex items-start gap-1.5 text-sm text-[var(--muted)]"><TerminalSquare size={15} className="mt-0.5 shrink-0" />{tool === "claude" ? t("sshHintClaude") : t("sshHintCodex")}</p>
+        <p className="mt-1 flex items-start gap-1.5 text-sm text-[var(--muted)]"><TerminalSquare size={15} className="mt-0.5 shrink-0" />{t(SSH_HINTS[tool])}</p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {shown.map((account) => <AccountCard key={account.slot} account={account} now={now} busy={busy} onLogin={(item) => void startLogin(item)} onLogout={(item) => void signOut(item)} onDefault={(item) => void makeDefault(item)} />)}
           <div className="flex flex-col items-start justify-center rounded-2xl border border-dashed border-[var(--line)] p-5">
