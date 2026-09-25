@@ -68,6 +68,18 @@ export function outlineOptions(brief) {
   return options;
 }
 
+const GUIDE_URL = /^https:\/\/(?:www\.)?mokaair\.com\/[A-Za-z-]+\/guides\/([a-z0-9][a-z0-9-]{0,118}[a-z0-9])\/?(?:[?#].*)?$/;
+
+/** The site articles among some URLs, by slug. */
+export function guideSlugs(urls) {
+  return [...new Set((urls ?? []).map((url) => GUIDE_URL.exec(String(url))?.[1]).filter(Boolean))];
+}
+
+/** The article a video retells: source_guide, or else the first site article it cites. */
+export function sourceGuideOf(doc) {
+  return doc.source_guide || guideSlugs((doc.sources ?? []).map((source) => source?.url))[0] || null;
+}
+
 /** status's steps as the site's checklist. */
 export function checklistFrom(steps) {
   return steps.map((step) => ({ key: step.id.toLowerCase().replace(/[^a-z0-9]+/g, "_").slice(0, 40), label: STEP_LABELS[step.id] ?? step.id, done: Boolean(step.done) }));
@@ -240,7 +252,7 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
 }
 
 function common(args) {
-  const values = parseArgs({ args, options: { slug: { type: "string" }, workdir: { type: "string" }, gate: { type: "string" } }, strict: true }).values;
+  const values = parseArgs({ args, options: { slug: { type: "string" }, workdir: { type: "string" }, gate: { type: "string" }, "report-only": { type: "boolean" } }, strict: true }).values;
   if (!values.slug) throw new UsageError("needs --slug");
   if (values.gate && !REVIEW_GATES.includes(values.gate)) throw new UsageError(`--gate must be one of ${REVIEW_GATES.join(", ")}`);
   return values;
@@ -264,14 +276,20 @@ export async function reviewPush(args, ctx) {
   try {
     const request = client(ctx);
     const status = await pipelineStatus({ slug: values.slug, root: ctx.root, workdir });
+    const sourceGuide = sourceGuideOf(project.doc);
     await request("PUT", values.slug, {
       json: {
         title: project.doc.youtube?.title || project.doc.slug,
         stage: status.next ? status.next.id.slice(0, 40) : "done",
         checklist: checklistFrom(status.steps),
         youtube_video_id: project.doc.youtube?.video_id || null,
+        ...(sourceGuide ? { source_guide: sourceGuide } : {}),
       },
     });
+    if (values["report-only"]) {
+      ctx.stdout.write(`${values.slug}: reported to /admin/videos; nothing submitted\n`);
+      return ctx.EXIT.ok;
+    }
     const gate = values.gate ?? (await nextGate({ docDir: dir, workdir }, workdir));
     if (!gate) {
       ctx.stdout.write(`${values.slug}: reported; nothing waits for the owner right now\n`);

@@ -14,7 +14,7 @@ import { sha256File } from "../core/approvals.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
 import { eachLine, LINE_ID } from "../core/schema.mjs";
 import { lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
-import { checklistFrom, outlineOptions } from "../review/sync.mjs";
+import { checklistFrom, guideSlugs, outlineOptions, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError } from "./client.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { INSTRUCTIONS, parseAnswer, references } from "./prompts.mjs";
@@ -22,6 +22,7 @@ import { INSTRUCTIONS, parseAnswer, references } from "./prompts.mjs";
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
 const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,58}[a-z0-9])?$/;
+const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 export const MAX_LINT_FIXES = 3;
 export const MAX_REPLANS = 2;
 const MAX_SOURCE_PAGES = 25;
@@ -55,8 +56,13 @@ function titleOf(brief) {
   return (/^#\s+(.+)$/m.exec(brief)?.[1] ?? "").trim().slice(0, 200);
 }
 
-/** What makes a planner's answer unusable, or null. */
-export function planProblem(plan, taken) {
+/** The site article a video retells: its source_guide, or else the first site article it rests on. */
+export function mainGuide({ source_guide: guide, source_urls: urls }) {
+  return (GUIDE_SLUG.test(guide ?? "") ? guide : null) ?? guideSlugs(urls)[0] ?? null;
+}
+
+/** What makes a planner's answer unusable, or null. `usedGuides` are earlier videos' main articles. */
+export function planProblem(plan, taken, usedGuides = new Set()) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
@@ -65,6 +71,8 @@ export function planProblem(plan, taken) {
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
   if (outlineOptions(plan.brief).length < 2) return "brief needs 2 or 3 options written as 「### 選項 A：…」 with 一行說明 and 開場鉤子 lines";
   if (!Array.isArray(plan.source_urls) || !plan.source_urls.every((url) => /^https:\/\//.test(url))) return "source_urls must be https URLs";
+  const guide = mainGuide(plan);
+  if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
   return null;
 }
 
@@ -131,11 +139,12 @@ async function run(ctx, command) {
   return { code, out };
 }
 
-/** Hand everything the automation knows to /admin/videos: title, stage, checklist. */
+/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article. */
 async function report(ctx, api, state, stage) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
-  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: checklistFrom(status.steps) });
+  const guide = mainGuide(state);
+  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: checklistFrom(status.steps), ...(guide ? { source_guide: guide } : {}) });
 }
 
 export class Automation {
@@ -175,6 +184,13 @@ export class Automation {
   /** One unit of work; returns a line saying what was done, or null when nothing could be. */
   async step() {
     if (!this.settings.enabled) return null;
+    // Every video on /admin/videos, the ones this worker did not make included, read afresh
+    // each unit: the owner may drop one at any time.
+    this.site = await this.api.videos();
+    const dropped = new Map(this.site.filter((video) => video.dropped_at).map((video) => [video.slug, video]));
+    for (const state of automatedVideos(this.workBase)) {
+      if (state.status !== "dropped" && dropped.has(state.slug)) return this.drop(state, dropped.get(state.slug));
+    }
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "active") continue;
       const done = await this.advance(state);
@@ -182,6 +198,14 @@ export class Automation {
     }
     if (this.due()) return this.draft();
     return null;
+  }
+
+  /** The owner dropped this video on /admin/videos: leave it, files and all. */
+  drop(state, video) {
+    state.status = "dropped";
+    state.dropped = { at: video.dropped_at, note: video.dropped_note ?? "" };
+    saveState(this.workdir(state.slug), state);
+    return `${state.slug}: the owner dropped it (${state.dropped.note}); the worker leaves it`;
   }
 
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */
@@ -192,24 +216,41 @@ export class Automation {
     return !last || this.ctx.now().getTime() - Date.parse(last) >= this.settings.draft_interval_hours * 3600_000;
   }
 
+  /**
+   * Every video made or started: the ones in docs/videos, the worker's own drafts, and every video
+   * on /admin/videos (the owner's branches and dropped ones too), with the article each retells.
+   */
   earlierVideos() {
+    const found = new Map();
     const videos = path.join(this.ctx.root, "docs", "videos");
-    if (!existsSync(videos)) return [];
-    return readdirSync(videos, { withFileTypes: true })
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => {
-        const brief = path.join(videos, entry.name, "brief.md");
-        const video = readJson(path.join(videos, entry.name, "video.json"), null);
-        return {
-          slug: entry.name,
-          title: video?.youtube?.title ?? (existsSync(brief) ? titleOf(readFileSync(brief, "utf8")) : ""),
-          source_guide: video?.source_guide ?? null,
-          templates: (video?.scenes ?? []).map((scene) => scene.template),
-        };
+    const dirs = existsSync(videos) ? readdirSync(videos, { withFileTypes: true }).filter((entry) => entry.isDirectory()) : [];
+    for (const entry of dirs) {
+      const brief = path.join(videos, entry.name, "brief.md");
+      const video = readJson(path.join(videos, entry.name, "video.json"), null);
+      found.set(entry.name, {
+        slug: entry.name,
+        title: video?.youtube?.title ?? (existsSync(brief) ? titleOf(readFileSync(brief, "utf8")) : ""),
+        source_guide: video ? sourceGuideOf(video) : null,
+        templates: (video?.scenes ?? []).map((scene) => scene.template),
       });
+    }
+    for (const state of automatedVideos(this.workBase)) {
+      const known = found.get(state.slug);
+      const entry = known ?? { slug: state.slug, title: state.title ?? "", source_guide: null, templates: [] };
+      entry.source_guide ??= mainGuide(state);
+      if (state.status === "dropped") entry.dropped = true;
+      found.set(state.slug, entry);
+    }
+    for (const video of this.site ?? []) {
+      const entry = found.get(video.slug) ?? { slug: video.slug, title: video.title ?? "", source_guide: null, templates: [] };
+      entry.source_guide ??= video.source_guide ?? null;
+      if (video.dropped_at) entry.dropped = true;
+      found.set(video.slug, entry);
+    }
+    return [...found.values()];
   }
 
-  planPayload(extra) {
+  planPayload(extra, earlier = this.earlierVideos()) {
     const refs = this.reference();
     return {
       today: today(this.ctx),
@@ -219,7 +260,8 @@ export class Automation {
       channel: refs.channel,
       formats: refs.formats,
       script_writing: refs.script_writing,
-      earlier_videos: this.earlierVideos(),
+      earlier_videos: earlier,
+      used_guides: [...new Set(earlier.map((video) => video.source_guide).filter(Boolean))],
       ...extra,
     };
   }
@@ -228,12 +270,14 @@ export class Automation {
   async draft() {
     const { topics, notes } = await this.api.topics();
     const draftSlug = `draft-${this.ctx.now().toISOString().slice(0, 16).replace(/[-:T]/g, "")}`;
-    const taken = new Set(this.earlierVideos().map((video) => video.slug));
+    const earlier = this.earlierVideos();
+    const taken = new Set(earlier.map((video) => video.slug));
+    const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     let plan = null;
     let problem = null;
     for (let attempt = 0; attempt < 2 && !plan; attempt++) {
-      const answer = await this.stage("planner", draftSlug, this.planPayload({ topics, topic_notes: notes, ...(problem ? { previous_problem: problem } : {}) }));
-      problem = planProblem(answer, taken);
+      const answer = await this.stage("planner", draftSlug, this.planPayload({ topics, topic_notes: notes, ...(problem ? { previous_problem: problem } : {}) }, earlier));
+      problem = planProblem(answer, taken, usedGuides);
       if (!problem) plan = answer;
     }
     atomicWrite(path.join(this.workBase, GLOBAL_FILE), `${JSON.stringify({ last_draft_at: this.ctx.now().toISOString() }, null, 2)}\n`);
@@ -375,10 +419,12 @@ export class Automation {
   async replan(state, note) {
     const dir = docDir(state.slug, this.ctx.root);
     const previous = readFileSync(path.join(dir, "brief.md"), "utf8");
-    const taken = new Set(this.earlierVideos().map((video) => video.slug).filter((slug) => slug !== state.slug));
+    const earlier = this.earlierVideos().filter((video) => video.slug !== state.slug);
+    const taken = new Set(earlier.map((video) => video.slug));
+    const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const { topics } = await this.api.topics();
-    const answer = await this.stage("planner", state.slug, this.planPayload({ topics, owner_note: note, previous_brief: previous, slug: state.slug }));
-    const problem = planProblem({ ...answer, slug: state.slug }, taken);
+    const answer = await this.stage("planner", state.slug, this.planPayload({ topics, owner_note: note, previous_brief: previous, slug: state.slug }, earlier));
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, usedGuides);
     state.replans += 1;
     state.notes.push(`outline sent back: ${note}`);
     saveState(this.workdir(state.slug), state);

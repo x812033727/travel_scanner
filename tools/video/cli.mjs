@@ -47,7 +47,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
   approve  --slug S --gate outline|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
-  review-push --slug S [--gate G]                  report the video to /admin/videos and submit the next gate
+  review-push --slug S [--gate G | --report-only]  report the video to /admin/videos and submit the next gate
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
   captions --slug S [--workdir D]                  caption files for every current locale
   i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory

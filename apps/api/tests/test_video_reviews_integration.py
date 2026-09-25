@@ -16,7 +16,7 @@ from app.db import SessionFactory, engine
 from app.models import AdminAuditLog, User, VideoToolToken
 from app.problems import AppError
 from app.video_reviews import admin_service as service
-from app.video_reviews.schemas import DecisionIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
 
 pytestmark = pytest.mark.skipif(
@@ -155,3 +155,51 @@ async def test_a_video_goes_from_report_to_decision_and_back_to_the_pipeline(
         )
         assert published.youtube_video_id == "abcDEF123_-"
         assert store.path(slug, new_cut) is None, "published videos keep no previews"
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a_dropped_video_stays_listed_with_its_article_and_takes_nothing_more(
+    tmp_path: Path,
+) -> None:
+    slug = f"it-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    async with SessionFactory() as session:
+        owner = User(email=f"video-drop-{uuid4()}@example.com", password_hash="unused")
+        token = VideoToolToken(name="it", token_hash=uuid4().hex * 2, token_prefix="mkv_it")
+        session.add_all([owner, token])
+        await session.commit()
+
+        article = "ai-news-gemini-student-offer-20260820"
+        await service.upsert_project(
+            session,
+            store,
+            slug,
+            ProjectIn(title="Google AI 學生方案", stage="outline", source_guide=article),
+        )
+        again = await service.upsert_project(
+            session, store, slug, ProjectIn(title="Google AI 學生方案", stage="outline")
+        )
+        assert again.source_guide == article, "a report without the article keeps it"
+        outline = ReviewIn(
+            gate="outline",
+            content_sha256="4" * 64,
+            summary="大綱",
+            payload={"options": [{"key": "A"}, {"key": "B"}]},
+        )
+        pending = await service.submit_review(session, store, slug, outline, token)
+
+        dropped = await service.drop_project(
+            session, store, slug, owner, DropIn(note="第二批已經做了這題")
+        )
+        assert dropped.dropped_at is not None and dropped.pending == 0
+        assert dropped.reviews[0].id == pending.id and dropped.reviews[0].status == "superseded"
+        with pytest.raises(AppError) as refused:
+            await service.submit_review(session, store, slug, outline, token)
+        assert refused.value.code == "video_project_dropped"
+
+        listed = next(item for item in await service.list_projects(session) if item.slug == slug)
+        assert (listed.source_guide, listed.dropped_note) == (article, "第二批已經做了這題")
+        audit = await session.scalars(
+            select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
+        )
+        assert list(audit) == ["video_project_dropped"]

@@ -62,9 +62,11 @@ export const INSTRUCTIONS = {
 
 You are the planner. From "topics" (the site's recent checked articles, then web results) pick ONE
 topic inside "scope", outside "avoid", not already covered by "earlier_videos", timely and useful to
-a Taiwanese viewer, and write the brief the owner chooses an outline from. Prefer a site article:
-the video can then point back to it. When "owner_note" is present the owner sent the previous
-brief back; keep the topic unless the note rejects it, and fix what the note says.
+a Taiwanese viewer, and write the brief the owner chooses an outline from. "earlier_videos" holds
+every video made or started, including ones the owner dropped: do not retell the same news,
+product offer or article under another title, and never pick a site article in "used_guides".
+Prefer a site article: the video can then point back to it. When "owner_note" is present the owner
+sent the previous brief back; keep the topic unless the note rejects it, and fix what the note says.
 
 Return {"slug": "lowercase-kebab-case, at most 60 characters, unique among earlier_videos",
 "title": "working title", "source_guide": "the site article's slug, or null",

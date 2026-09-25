@@ -30,6 +30,8 @@ from app.video_automation.schemas import (
     TopicsOut,
 )
 from app.video_automation.topics import gather_topics
+from app.video_reviews.admin_service import list_projects
+from app.video_reviews.schemas import ProjectSummary
 from app.video_speech.admin_api import VideoTool
 
 # A whole video is a few dozen stage calls; this only stops a runaway loop.
@@ -88,6 +90,13 @@ async def run_video_stage(request: StageRunIn, tool: VideoTool, session: Session
             error.detail,
             headers={"Retry-After": error.retry_after} if error.retry_after else None,
         ) from error
+
+
+@tool_router.get("/videos", response_model=list[ProjectSummary])
+async def list_tool_videos(tool: VideoTool, session: Session) -> list[ProjectSummary]:
+    """Every video on /admin/videos, dropped ones too, so a new draft does not repeat a topic."""
+    _ = tool
+    return await list_projects(session)
 
 
 @tool_router.get("/topics", response_model=TopicsOut)

@@ -81,6 +81,8 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
   return {
     settings: () => request("GET", "automation/settings"),
     topics: () => request("GET", "automation/topics"),
+    /** Every video on /admin/videos, dropped ones too: slug, title, source_guide, dropped_at. */
+    videos: () => request("GET", "automation/videos"),
     /** One stage: the server answers with the model the owner chose; returns { text, usage, … }. */
     run: (stage, slug, instructions, payload, maxOutputTokens = 16_000) =>
       request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens }),
