@@ -22,6 +22,11 @@ The owner widened this on 2026-09-25 to every site feature that uses Claude (new
 introductions), so runs from several callers overlap: each account runs one prompt at a time, a
 caller waits a bounded time for one to free up, and an account whose run hits its limit rests
 while the request moves on to the next one.
+
+The owner asked the same day for the accounts to take turns rather than share the load: the
+agent stays on one account until it is full, then hands over to the next slot, and after the
+last slot comes back to the first (A -> B -> C -> ... -> A). Spreading runs by lowest usage had
+worn every account down together, so all of them hit their cap at the same moment.
 """
 
 from __future__ import annotations
@@ -117,33 +122,44 @@ def _peak(slot: dict[str, Any]) -> tuple[float | None, str | None]:
     return peak, resets
 
 
+TOOL_NAMES = {"claude": "Claude", "codex": "Codex"}
+
+
+def rotation(current: str | None) -> list[str]:
+    """The slots in the order they take turns, starting at ``current`` and wrapping around."""
+    start = SLOTS.index(current) if current in SLOTS else 0
+    return [*SLOTS[start:], *SLOTS[:start]]
+
+
 def pick_slot(
     slots: list[dict[str, Any]],
     cap: int,
-    default: str | None,
+    current: str | None,
     *,
+    tool: str = "claude",
     busy: Collection[str] = (),
     resting: Collection[str] = (),
 ) -> str:
-    """The signed-in Claude subscription with the most room below ``cap``.
+    """The first signed-in subscription with room below ``cap``, counting from ``current``.
 
-    An account whose usage is not known yet is tried after every known one; that is the state
-    right after sign-in, before the first usage probe has run. ``busy`` accounts are running
-    another prompt: when only they have room, the answer is ``subscription_busy`` and the caller
-    may wait. ``resting`` accounts hit their limit in a run the usage snapshot has not caught
-    up with yet, and count as spent.
+    The accounts take turns in slot order: ``current`` keeps every run until it is full, and
+    then the next slot with room gets them, wrapping from the last slot to the first. An account
+    whose usage is not known yet (right after sign-in) counts as having room. ``busy`` accounts
+    are running another prompt and are passed over, so runs go side by side; when only they
+    have room, the answer is ``subscription_busy`` and the caller may wait. ``resting`` accounts
+    hit their limit in a run the usage snapshot has not caught up with yet, and count as spent.
     """
-    known: list[tuple[float, int, str]] = []
-    unknown: list[str] = []
+    by_name = {str(slot.get("slot")): slot for slot in slots if slot.get("tool") == tool}
+    label = TOOL_NAMES.get(tool, tool)
     blocked: list[str] = []
     waiting = False
     spent = False
-    for slot in slots:
-        if slot.get("tool") != "claude" or slot.get("logged_in") is not True:
+    for name in rotation(current):
+        slot = by_name.get(name)
+        if slot is None or slot.get("logged_in") is not True:
             continue
         if slot.get("auth_method") == "api_key" or slot.get("email_allowed") is False:
             continue
-        name = str(slot.get("slot"))
         peak, resets = _peak(slot)
         if name in resting:
             spent = True
@@ -153,31 +169,25 @@ def pick_slot(
                 blocked.append(resets)
         elif name in busy:
             waiting = True
-        elif peak is None:
-            unknown.append(name)
         else:
-            known.append((peak, 0 if name == default else 1, name))
-    if known:
-        return min(known)[2]
-    if unknown:
-        return sorted(unknown, key=lambda name: (name != default, SLOTS.index(name)))[0]
+            return name
     if waiting:
         raise RunRefused(
             503,
             "subscription_busy",
-            "every Claude account with room is running another prompt; try again shortly",
+            f"every {label} account with room is running another prompt; try again shortly",
         )
     if spent:
         earliest = min(blocked) if blocked else None
         raise RunRefused(
             429,
             "subscription_quota_paused",
-            f"every Claude account is at or above {cap}% of a usage window"
+            f"every {label} account is at or above {cap}% of a usage window"
             + (f"; the earliest resets at {earliest}" if earliest else ""),
             {"resets_at": earliest} if earliest else {},
         )
     raise RunRefused(
-        409, "subscription_not_signed_in", "no Claude subscription account is signed in"
+        409, "subscription_not_signed_in", f"no {label} subscription account is signed in"
     )
 
 

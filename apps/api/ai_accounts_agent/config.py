@@ -83,6 +83,12 @@ class AgentConfig:
             raise ValueError(f"unknown tool {tool}")
         return self.state_root / f"default-{tool}"
 
+    def current_path(self, tool: str) -> Path:
+        """The account whose turn it is for prompt runs; it keeps them until it is full."""
+        if tool not in TOOLS:
+            raise ValueError(f"unknown tool {tool}")
+        return self.state_root / f"current-{tool}"
+
     def recorder_for(self, slot: str) -> str:
         return f"{self.statusline_command} claude-{slot}"
 
