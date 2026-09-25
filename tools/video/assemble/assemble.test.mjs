@@ -15,6 +15,8 @@ import {
   parsePsnr,
   PlanError,
   psnrArgs,
+  rivalImages,
+  sampleProblem,
   segmentArgs,
   segmentKey,
   segmentSamples,
@@ -112,6 +114,18 @@ test("frames are compared by number: first, second and last of each segment", ()
   assert.match(psnrArgs("s.mp4", 101, "still.png").join(" "), /select=eq\(n\\,101\)/);
 });
 
+test("a dense slide near 40 dB passes when it looks most like its own image, and fails when a rival is as close", () => {
+  const scene = { entries: [{ file: "t0", frames: 1 }, { file: "first", frames: 40 }, { file: "t1", frames: 1 }, { file: "second", frames: 60 }] };
+  assert.deepEqual(rivalImages(scene, "second"), ["first"]);
+  const sample = { scene: "myth-compare", n: 101, file: "second" };
+  // Numbers from the pilot on 2026-09-25: the right frame of a two-card comparison scored 39.97 dB.
+  assert.equal(sampleProblem(sample, 47.2), null);
+  assert.equal(sampleProblem(sample, 39.97, { first: 27.4 }), null);
+  assert.match(sampleProblem(sample, 39.97, { first: 38.1 }), /looks as much like first/);
+  assert.match(sampleProblem(sample, 33.5), /does not show second/);
+  assert.equal(sampleProblem({ ...sample, file: "only" }, 42.9, {}), null, "a scene with one image has no rival");
+});
+
 test("the probe check wants exactly the timeline's frames and YouTube's recommended streams", () => {
   const good = {
     streams: [
@@ -120,6 +134,13 @@ test("the probe check wants exactly the timeline's frames and YouTube's recommen
     ],
   };
   assert.deepEqual(checkProbe(good, { frames: 1247 }), []);
+  // AAC pads to whole 1,024-sample frames: the pilot's 17,995 frames came back 0.067 s longer.
+  const padded = structuredClone(good);
+  padded.streams[1].duration = String(1247 / 30 + 0.067);
+  assert.deepEqual(checkProbe(padded, { frames: 1247 }), []);
+  const short = structuredClone(good);
+  short.streams[1].duration = String(1247 / 30 - 0.05);
+  assert.match(checkProbe(short, { frames: 1247 })[0], /audio lasts/);
   const bad = structuredClone(good);
   bad.streams[0].color_primaries = "unknown";
   bad.streams[0].nb_read_packets = "1246";

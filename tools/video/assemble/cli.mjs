@@ -10,6 +10,7 @@ import { locateFfmpeg, runTool, ToolMissing } from "./ffmpeg.mjs";
 import {
   checkLoudness,
   checkProbe,
+  CLEAR_PSNR,
   concatList,
   ebur128Args,
   joinArgs,
@@ -24,6 +25,8 @@ import {
   PlanError,
   probeArgs,
   psnrArgs,
+  rivalImages,
+  sampleProblem,
   segmentArgs,
   segmentKey,
   segmentSamples,
@@ -119,12 +122,23 @@ export async function run(command, args, ctx) {
   const loudness = parseEbur128((await runTool(tools.ffmpeg, ebur128Args(final))).stderr);
   problems.push(...checkLoudness(loudness));
   const psnr = [];
-  layout.forEach((scene, index) => psnr.push(...segmentSamples(scene).map((sample) => ({ scene: scene.id, segment: segmentFiles[index], ...sample }))));
+  layout.forEach((scene, index) =>
+    psnr.push(...segmentSamples(scene).map((sample) => ({ scene: scene.id, segment: segmentFiles[index], rivalFiles: rivalImages(scene, sample.file), ...sample }))),
+  );
+  const measure = async (sample, file) => parsePsnr((await runTool(tools.ffmpeg, psnrArgs(sample.segment, sample.n, resolve(file)))).stderr);
   for (const sample of psnr) {
-    const value = parsePsnr((await runTool(tools.ffmpeg, psnrArgs(sample.segment, sample.n, resolve(sample.file)))).stderr);
+    const value = await measure(sample, sample.file);
     sample.psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
+    // Only a frame in the grey zone is compared with the scene's other images.
+    const rivals = {};
+    if (value >= MIN_PSNR && value < CLEAR_PSNR) {
+      for (const file of sample.rivalFiles) rivals[file] = await measure(sample, file);
+      if (sample.rivalFiles.length) sample.rivals = Object.fromEntries(Object.entries(rivals).map(([file, score]) => [file, Number(score.toFixed(2))]));
+    }
+    const problem = sampleProblem(sample, value, rivals);
+    if (problem) problems.push(problem);
     delete sample.segment;
-    if (value < MIN_PSNR) problems.push(`scene ${sample.scene} frame ${sample.n} does not show ${sample.file} (PSNR ${value.toFixed(1)} dB)`);
+    delete sample.rivalFiles;
   }
   const seconds = Math.round((Date.now() - started) / 1000);
   const checks = {
