@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 from typing import Any
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import pytest
@@ -15,10 +15,10 @@ from httpx import ASGITransport, AsyncClient
 from app.auth.service import current_user
 from app.config import Settings
 from app.db import get_session
-from app.models import User, VideoReview, VideoToolToken
+from app.models import User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_reviews import admin_api, admin_service
-from app.video_reviews.schemas import DecisionIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech import admin_api as speech_api
 
@@ -137,6 +137,51 @@ def test_decisions_need_a_pending_review_a_reason_to_reject_and_an_outline_choic
     assert admin_service.decision_problem(_review("publish"), approve) is None
 
 
+@pytest.mark.asyncio
+async def test_dropping_a_video_closes_its_reviews_deletes_its_previews_and_is_final(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    store = _store(tmp_path)
+    body = b"outline preview"
+    sha = hashlib.sha256(body).hexdigest()
+    store.put_part("v", sha, index=0, count=1, size=len(body), data=body)
+    project = VideoProject(id=uuid4(), slug="v", title="Google AI 學生方案", stage="outline")
+    pending = _review("outline")
+    decided = _review("audio", "approved")
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[pending, decided]))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    session = AsyncMock()
+    session.add = MagicMock()
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+
+    note = DropIn(note="  第二批已經做了這題  ")
+    assert await admin_service.drop_project(session, store, "v", owner, note) == "view"
+    assert (pending.status, decided.status) == ("superseded", "approved")
+    assert project.dropped_at is not None and project.dropped_by_user_id == owner.id
+    assert project.dropped_note == "第二批已經做了這題"
+    assert store.path("v", sha) is None, "a dropped video keeps no previews"
+    assert session.add.call_args.args[0].action == "video_project_dropped"
+
+    await admin_service.drop_project(session, store, "v", owner, DropIn(note="again"))
+    assert session.add.call_count == 1 and project.dropped_note == "第二批已經做了這題"
+
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+    outline = ReviewIn(gate="outline", content_sha256="a" * 64, summary="大綱")
+    with pytest.raises(AppError) as submitted:
+        await admin_service.submit_review(session, store, "v", outline, token)
+    with pytest.raises(AppError) as decided_after:
+        await admin_service.decide(session, "v", uuid4(), owner, DecisionIn(decision="approve"))
+    assert submitted.value.code == decided_after.value.code == "video_project_dropped"
+
+
+def test_a_report_keeps_the_source_article_an_older_tool_does_not_send() -> None:
+    assert ProjectIn(title="t", stage="s").source_guide is None
+    assert ProjectIn(title="t", stage="s", source_guide="ai-news-x-20260820").source_guide
+    with pytest.raises(ValueError):
+        ProjectIn(title="t", stage="s", source_guide="../etc")
+
+
 def test_a_review_payload_is_capped() -> None:
     body = {"gate": "final", "content_sha256": "a" * 64, "summary": "成片"}
     ReviewIn.model_validate({**body, "payload": {"text": "字" * 1000}})
@@ -164,7 +209,9 @@ async def test_admin_routes_need_content_capabilities(monkeypatch: pytest.Monkey
     viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
     monkeypatch.setattr(admin_service, "list_projects", AsyncMock(return_value=[]))
     decide = AsyncMock()
+    drop = AsyncMock()
     monkeypatch.setattr(admin_service, "decide", decide)
+    monkeypatch.setattr(admin_service, "drop_project", drop)
     app = _app(viewer)
     review = f"/api/v1/admin/videos/v/reviews/{uuid4()}/decision"
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -172,9 +219,12 @@ async def test_admin_routes_need_content_capabilities(monkeypatch: pytest.Monkey
         viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
         listed = await client.get("/api/v1/admin/videos")
         refused = await client.post(review, json={"decision": "approve"})
+        not_dropped = await client.post("/api/v1/admin/videos/v/drop", json={"note": "重複"})
     assert nobody.status_code == 403 and listed.status_code == 200
     assert refused.status_code == 403, "a viewer can read but not decide"
+    assert not_dropped.status_code == 403, "nor drop a video"
     decide.assert_not_awaited()
+    drop.assert_not_awaited()
 
 
 @pytest.mark.asyncio

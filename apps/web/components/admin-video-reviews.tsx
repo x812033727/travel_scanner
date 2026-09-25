@@ -24,6 +24,7 @@ type ChecklistItem = { key: string; label: string; done: boolean };
 type ProjectSummary = {
   slug: string; title: string; stage: string; checklist: ChecklistItem[];
   youtube_video_id: string | null; last_synced_at: string; pending: number;
+  dropped_at?: string | null; dropped_note?: string | null;
 };
 type Project = ProjectSummary & { reviews: Review[] };
 
@@ -173,8 +174,41 @@ function ReviewCard({ slug, review, canManage, onDecided }: { slug: string; revi
   </article>;
 }
 
+/** Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. */
+function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void }) {
+  const t = useTranslations("admin.videoReviews");
+  const [note, setNote] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const drop = async () => {
+    if (!note.trim() || !window.confirm(t("dropConfirm"))) return;
+    setBusy(true);
+    setError("");
+    try {
+      await api(`/admin/videos/${slug}/drop`, { method: "POST", body: JSON.stringify({ note: note.trim() }) });
+      onDropped();
+    } catch (problem) {
+      setError(t("dropError", { message: problem instanceof Error ? problem.message : "" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return <details className="rounded-2xl border border-[var(--line)] p-4">
+    <summary className="cursor-pointer font-bold">{t("dropTitle")}</summary>
+    <div className="mt-3 grid gap-3">
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dropDetail")}</p>
+      <label className="grid gap-2 text-sm font-semibold">{t("dropReason")}
+        <textarea className={control} rows={2} value={note} disabled={busy} placeholder={t("dropPlaceholder")} onChange={(event) => setNote(event.target.value)} />
+      </label>
+      {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+      <div><Button secondary disabled={busy || !note.trim()} onClick={() => void drop()}>{busy ? t("saving") : t("dropButton")}</Button></div>
+    </div>
+  </details>;
+}
+
 function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   const t = useTranslations("admin.videoReviews");
+  const when = useWhen();
   const manage = useAdminActionGuard("content.manage");
   const [project, setProject] = useState<Project | null>(null);
   const [error, setError] = useState("");
@@ -184,22 +218,28 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   useEffect(load, [load]);
   const live = project?.reviews.filter((review) => review.status === "pending") ?? [];
   const past = project?.reviews.filter((review) => review.status !== "pending") ?? [];
+  const dropped = Boolean(project?.dropped_at);
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {project && <>
       <header className="grid gap-2"><h2 className="text-2xl font-bold">{project.title}</h2>
         {project.youtube_video_id && <p className="text-sm">{t("youtube", { id: project.youtube_video_id })} · {t("previewsGone")}</p>}
+        {project.dropped_at && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
+          <strong>{t("droppedAt", { time: when(project.dropped_at) })}</strong>
+          {project.dropped_note && <span className="block whitespace-pre-wrap">{project.dropped_note}</span>}
+        </p>}
       </header>
       {project.checklist.length > 0 && <section aria-label={t("checklist")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
         <p className="font-bold">{t("checklist")}</p>
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
       </section>}
-      {live.length === 0 && <p className="text-[var(--muted)]">{t("noPending")}</p>}
-      {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed} onDecided={load} />)}
+      {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
+      {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} />)}
       {past.length > 0 && <details className="grid gap-4"><summary className="cursor-pointer font-bold">{t("history")}</summary>
         <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} />)}</div>
       </details>}
+      {manage.allowed && !dropped && !project.youtube_video_id && <DropVideo slug={slug} onDropped={load} />}
     </>}
   </section>;
 }
@@ -219,7 +259,9 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
     {(projects ?? []).map((project) => <li key={project.slug}>
       <button type="button" onClick={() => onOpen(project.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
         <span className="flex flex-wrap items-center gap-3"><Clapperboard aria-hidden size={20} className="text-[var(--teal)]" /><span className="text-lg font-bold">{project.title}</span>
-          <AdminStatusPill status={project.pending ? "pending" : "inactive"}>{project.pending ? t("pending", { count: project.pending }) : t("noPendingShort")}</AdminStatusPill>
+          {project.dropped_at
+            ? <AdminStatusPill status="inactive">{t("dropped")}</AdminStatusPill>
+            : <AdminStatusPill status={project.pending ? "pending" : "inactive"}>{project.pending ? t("pending", { count: project.pending }) : t("noPendingShort")}</AdminStatusPill>}
         </span>
         <span className="text-sm text-[var(--muted)]">{t("progress", { done: project.checklist.filter((item) => item.done).length, total: project.checklist.length })} · {t("lastSynced", { time: when(project.last_synced_at) })}</span>
       </button>

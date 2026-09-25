@@ -9,7 +9,7 @@ import { readApprovals } from "../core/approvals.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
 import { encodeWav } from "../tts/wav.mjs";
-import { audioCheck, checklistFrom, outlineOptions, PART_BYTES, uploadItems } from "./sync.mjs";
+import { audioCheck, checklistFrom, guideSlugs, outlineOptions, PART_BYTES, sourceGuideOf, uploadItems } from "./sync.mjs";
 
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -128,6 +128,32 @@ test("review-push submits the outline bound to brief.md, and review-pull records
   await main(["review-pull", "--slug", box.slug], changed.ctx);
   assert.match(changed.out.stdout, /has since changed/);
   assert.equal(readApprovals(box.workdir).approvals.length, 1, "an approval of the old brief is not recorded for the new one");
+});
+
+test("the article a video retells is its source_guide, or else the first site article it cites", () => {
+  const urls = ["https://example.com/a", "https://mokaair.com/zh-TW/guides/ai-news-x-20260820?utm_source=y", "https://www.mokaair.com/en/guides/other/", "https://mokaair.com/zh-TW/hotspots/x"];
+  assert.deepEqual(guideSlugs(urls), ["ai-news-x-20260820", "other"]);
+  assert.equal(sourceGuideOf({ source_guide: "pack-slug", sources: [{ url: urls[1] }] }), "pack-slug");
+  assert.equal(sourceGuideOf({ sources: urls.map((url) => ({ url })) }), "ai-news-x-20260820");
+  assert.equal(sourceGuideOf({ sources: [{ url: urls[0] }] }), null);
+});
+
+test("review-push --report-only lists the video on the site with its article and submits nothing", async () => {
+  const box = sandbox();
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  doc.sources.push({ title: "站內文章", url: "https://mokaair.com/zh-TW/guides/ai-workflow-cost-quality-latency", checked_on: "2026-09-24" });
+  writeFileSync(file, `${JSON.stringify(doc, null, 2)}\n`);
+  const server = site();
+  let reported = null;
+  const push = context(box, async (url, init) => {
+    if (init.method === "PUT") reported = JSON.parse(init.body);
+    return server.fetchImpl(url, init);
+  });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--report-only"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.deepEqual(server.state.calls.map((call) => call.method), ["PUT"]);
+  assert.equal(reported.source_guide, "ai-workflow-cost-quality-latency");
+  assert.match(push.out.stdout, /nothing submitted/);
 });
 
 test("the narration goes up as an encoded copy, in parts, before its review is submitted", async () => {
