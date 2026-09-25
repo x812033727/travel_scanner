@@ -340,6 +340,8 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         writer_model=row.writer_model,
         verifier_provider=cast(Any, row.verifier_provider),
         verifier_model=row.verifier_model,
+        editor_provider=cast(Any, row.editor_provider),
+        editor_model=row.editor_model,
         global_concurrency=row.global_concurrency,
         per_vertical_concurrency=row.per_vertical_concurrency,
         min_shadow_days=row.min_shadow_days,
@@ -369,27 +371,22 @@ async def update_settings(
         "writer_model": row.writer_model,
         "verifier_provider": row.verifier_provider,
         "verifier_model": row.verifier_model,
+        "editor_provider": row.editor_provider,
+        "editor_model": row.editor_model,
         "prompt_version": row.prompt_version,
         "policy_version": row.policy_version,
     }
     major_change = any(getattr(payload, key) != value for key, value in before.items())
     values = payload.model_dump()
+    # The owner removed the shadow gate on 2026-09-25: the final editor and Jev's last call
+    # decide each article, so auto-publish no longer waits for labelled days, and a model
+    # change no longer switches it off. The agreement figures still restart, for reference.
     if major_change:
         for vertical in ("ai", "tech", "crypto"):
-            values[f"auto_publish_{vertical}"] = False
             setattr(row, f"shadow_started_at_{vertical}", datetime.now(UTC))
-        values["mode"] = "shadow"
     for vertical in ("ai", "tech", "crypto"):
-        if values[f"auto_publish_{vertical}"]:
-            gate = await gate_for(session, row, cast(Vertical, vertical))
-            if not gate.eligible:
-                raise AppError(
-                    409,
-                    "news_gate_not_met",
-                    f"{vertical} 尚未達到自動發布門檻：{', '.join(gate.reasons)}",
-                )
-            if values["mode"] != "automatic":
-                raise AppError(409, "news_mode_shadow", "影子模式不能開啟自動發布")
+        if values[f"auto_publish_{vertical}"] and values["mode"] != "automatic":
+            raise AppError(409, "news_mode_shadow", "影子模式不能開啟自動發布")
     for key, value in values.items():
         setattr(row, key, value)
     row.updated_by_user_id = actor.id
@@ -807,9 +804,9 @@ async def publication_bundle(
 ) -> tuple[dict[Locale, GuideDocument], dict[Locale, int]]:
     """Every check a publication needs, on the saved five-locale article.
 
-    Shared by the publish button and the pipeline's second stage. A person decides to
-    publish in both, so one evidence page is enough; automatic publication asks for two
-    websites before it gets here.
+    Shared by the publish button and the pipeline's second stage. One evidence page is
+    enough here; automatic publication asks for two websites or a first-party page before
+    it gets here, and for the final editor and Jev's last call on every locale.
     """
 
     if row.guide_article_id is None:
