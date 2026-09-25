@@ -60,10 +60,22 @@ MODEL_CATALOG: dict[Vendor, tuple[ModelEntry, ...]] = {
             "OpenAI 最強模型，成本最高；適合完整行程規劃。",
         ),
         ModelEntry(
+            "gpt-6-sol",
+            "GPT-6 Sol",
+            _RESPONSES,
+            "GPT-6 主力，價格是 GPT-5.6 Sol 的一半；適合複雜任務、新聞撰稿與查核。",
+        ),
+        ModelEntry(
+            "gpt-6-luna",
+            "GPT-6 Luna",
+            _RESPONSES,
+            "GPT-6 最省成本，價格是 GPT-5.6 Luna 的一半；適合搜尋詞規劃與評選。",
+        ),
+        ModelEntry(
             "gpt-5.6-sol",
             "GPT-5.6 Sol",
             _RESPONSES,
-            "GPT-5.6 旗艦（別名 gpt-5.6），適合複雜任務。",
+            "前一代旗艦（別名 gpt-5.6），適合複雜任務。",
         ),
         ModelEntry(
             "gpt-5.6-terra",
