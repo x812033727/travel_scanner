@@ -38,7 +38,10 @@ Antigravity is different because `agy` has no switch for its data folder: it alw
 finds `/root/.ssh` by itself, and accounts B–E share A's `.gemini/config` (MCP servers).
 The session bus points at nothing (`DBUS_SESSION_BUS_ADDRESS=unix:path=/dev/null/…`): a
 keyring would hold one login for every account, and without one agy keeps each login in
-`~/.gemini/antigravity-cli/jetski-standalone-oauth-token`.
+`~/.gemini/antigravity-cli/antigravity-oauth-token` (agy 1.2.11; older versions used
+`jetski-standalone-oauth-token`, which still counts). agy with a saved login opens straight
+on its TUI, so "sign in again" on the page moves the saved login aside for the new sign-in
+and puts it back if that one does not finish.
 
 ## Using the accounts over SSH
 
