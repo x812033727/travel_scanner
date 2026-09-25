@@ -82,5 +82,44 @@ describe("AdminVideoReviews", () => {
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const approve = await screen.findByRole("button", { name: "核准" });
     expect(approve).toHaveProperty("disabled", true);
+    expect(screen.queryByText("放棄這支影片")).toBeNull();
+  });
+
+  it("drops a video with a reason once confirmed, then shows it as dropped", async () => {
+    let dropped = false;
+    const posts: Array<{ url: string; body: unknown }> = [];
+    const droppedFields = () => (dropped ? { dropped_at: "2026-09-25T13:00:00Z", dropped_note: "第二批做過了" } : {});
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push({ url, body: JSON.parse(String(init.body)) });
+        dropped = true;
+      }
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([{ ...summary, ...droppedFields() }]));
+      const reviews = dropped ? [{ ...outline, status: "superseded" }] : [outline];
+      return Promise.resolve(Response.json({ ...summary, ...droppedFields(), reviews }));
+    }));
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByText("放棄這支影片", { selector: "summary" }));
+    const button = screen.getByRole("button", { name: "放棄這支影片" });
+    expect(button).toHaveProperty("disabled", true);
+    fireEvent.change(screen.getByRole("textbox", { name: "放棄的原因（必填）" }), { target: { value: "第二批做過了" } });
+    fireEvent.click(button);
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(confirm).toHaveBeenCalledOnce();
+    expect(posts[0].url).toContain("/admin/videos/ai-model-choice/drop");
+    expect(posts[0].body).toEqual({ note: "第二批做過了" });
+    expect((await screen.findByRole("status")).textContent).toContain("第二批做過了");
+    expect(screen.queryByText("放棄這支影片", { selector: "summary" })).toBeNull();
+    confirm.mockRestore();
+  });
+
+  it("marks a dropped video in the list", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json([{ ...summary, pending: 0, dropped_at: "2026-09-25T13:00:00Z" }]))));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const item = await screen.findByRole("button", { name: /AI 模型怎麼挑/ });
+    expect(item.textContent).toContain("已放棄");
   });
 });

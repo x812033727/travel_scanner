@@ -9,7 +9,7 @@ import { ROOT } from "../core/paths.mjs";
 import { pipelineStatus } from "../core/state.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, planProblem, sheetDone } from "./flow.mjs";
+import { Automation, automatedVideos, mainGuide, planProblem, sheetDone } from "./flow.mjs";
 import { INSTRUCTIONS, parseAnswer, references } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -95,6 +95,12 @@ test("a planner's brief must have a new slug, the owner's sections and two optio
   assert.match(planProblem({ ...plan, brief: brief(["A"]) }, new Set()), /2 or 3 options/);
   assert.match(planProblem({ ...plan, brief: plan.brief.replace("## 站主觀點", "## 觀點") }, new Set()), /站主觀點/);
   assert.match(planProblem({ ...plan, source_urls: ["http://x"] }, new Set()), /https/);
+  const used = new Set(["ai-news-gemini-student-offer-20260820"]);
+  assert.match(planProblem({ ...plan, source_guide: "ai-news-gemini-student-offer-20260820" }, new Set(), used), /earlier video retells/);
+  const cited = { ...plan, source_guide: null, source_urls: ["https://mokaair.com/zh-TW/guides/ai-news-gemini-student-offer-20260820", "https://blog.google/x"] };
+  assert.match(planProblem(cited, new Set(), used), /earlier video retells/, "an unnamed article is its first site link");
+  assert.equal(mainGuide(cited), "ai-news-gemini-student-offer-20260820");
+  assert.equal(planProblem({ ...plan, source_guide: "chatgpt-ads-status" }, new Set(), used), null);
 });
 
 test("a worksheet is done only when every line, chapter, title, description and tag is filled", () => {
@@ -106,9 +112,11 @@ test("a worksheet is done only when every line, chapter, title, description and 
 });
 
 /** The site as the worker sees it: settings, topics, the model runner, reviews and source pages. */
-function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false } = {}) {
+function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [] } = {}) {
   const calls = { run: [], reviews: [], reports: [], pages: [] };
   const projects = new Map();
+  // /admin/videos as a list: videos made elsewhere, then whatever the worker reports.
+  const listed = new Map(videos.map((video) => [video.slug, { dropped_at: null, dropped_note: null, source_guide: null, ...video }]));
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
   const current = {
     enabled: true, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3,
@@ -127,6 +135,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     assert.equal(new Headers(init.headers).get("authorization"), `Bearer ${TOKEN}`);
     const body = init.body ? JSON.parse(init.body) : null;
     if (pathname === "/api/video/automation/settings") return json(current);
+    if (pathname === "/api/video/automation/videos") return json([...listed.values()]);
     if (pathname === "/api/video/automation/topics") return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/guides/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
@@ -140,6 +149,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       const [, slug, sub] = match;
       if (init.method === "PUT") {
         calls.reports.push({ slug, ...body });
+        const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null };
+        listed.set(slug, { ...known, title: body.title, source_guide: body.source_guide ?? known.source_guide });
         return json({ slug, reviews: reviewsOf(slug) });
       }
       if (sub && init.method === "POST") {
@@ -156,7 +167,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
-  return { calls, fetchImpl, reviewsOf, settings: current };
+  return { calls, fetchImpl, reviewsOf, listed, settings: current };
 }
 
 function context(box, fetchImpl, clock) {
@@ -238,6 +249,45 @@ test("auto takes a video from a topic to the outline, waits for the owner, then 
   const status = await pipelineStatus({ slug, root: box.root, workdir: path.join(box.work, slug) });
   assert.equal(status.next.id, "narration synthesized");
   assert.deepEqual(automatedVideos(box.work).map((state) => [state.slug, state.verified, state.listener_done]), [[slug, true, true]]);
+});
+
+test("the planner sees every video on /admin/videos and may not retell an article one of them used", async () => {
+  const box = sandbox();
+  const elsewhere = { slug: "gemini-student-offer", title: "Gemini 學生方案", source_guide: "chatgpt-ads-status" };
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), videos: [elsewhere] });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /not usable \(the site article "chatgpt-ads-status" is what an earlier video retells/);
+  const [first, second] = site.calls.run;
+  assert.ok(first.payload.earlier_videos.some((video) => video.slug === "gemini-student-offer" && video.source_guide === "chatgpt-ads-status"));
+  assert.deepEqual(first.payload.used_guides, ["chatgpt-ads-status"]);
+  assert.match(second.payload.previous_problem, /chatgpt-ads-status/, "the second try is told why the first failed");
+  assert.equal(site.calls.reviews.length, 0, "nothing reaches the owner");
+});
+
+test("a video the owner drops is left alone, frees its place and keeps its topic taken", async () => {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug), settings: { max_waiting_drafts: 1, draft_interval_hours: 1 } });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  assert.equal(site.calls.reports[0].source_guide, "chatgpt-ads-status", "the site learns the article");
+  Object.assign(site.listed.get(slug), { dropped_at: "2026-09-25T09:30:00Z", dropped_note: "第二批做過了" });
+  assert.match(await automation.step(), /the owner dropped it \(第二批做過了\)/);
+  assert.equal(automatedVideos(box.work)[0].status, "dropped");
+  assert.equal(await automation.step(), null, "a dropped video is not advanced");
+
+  clock.now += 2 * 3600_000;
+  const planned = site.calls.run.length;
+  assert.match(await automation.step(), /not usable/, "the dropped video no longer blocks a new draft");
+  const payload = site.calls.run[planned].payload;
+  assert.ok(payload.earlier_videos.some((video) => video.slug === slug && video.dropped === true));
+  assert.deepEqual(payload.used_guides, ["chatgpt-ads-status"], "its article still counts as used");
 });
 
 test("an outline sent back is re-planned with the owner's note, and a spent budget stops auto for the owner", async () => {

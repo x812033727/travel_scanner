@@ -4,7 +4,8 @@ A review is bound to the SHA-256 of what it shows (the brief, the timeline, the 
 upload package). Submitting different content for the same gate supersedes the pending review;
 submitting the same content again returns the review that exists, whatever its state, so a
 rejected cut cannot come back as a fresh pending one without changing. Files no live review
-refers to are deleted from the store.
+refers to are deleted from the store. A video the owner dropped takes no more submissions or
+decisions.
 """
 
 from __future__ import annotations
@@ -23,6 +24,7 @@ from app.problems import AppError
 from app.video_automation.settings import AUTO_APPROVED_NOTE, auto_approves_audio
 from app.video_reviews.schemas import (
     DecisionIn,
+    DropIn,
     ProjectIn,
     ProjectOut,
     ProjectSummary,
@@ -99,6 +101,9 @@ def _summary(project: VideoProject, pending: int) -> dict[str, Any]:
         "youtube_video_id": project.youtube_video_id,
         "last_synced_at": project.last_synced_at,
         "pending": pending,
+        "source_guide": project.source_guide,
+        "dropped_at": project.dropped_at,
+        "dropped_note": project.dropped_note,
     }
 
 
@@ -111,6 +116,11 @@ async def _project(session: AsyncSession, slug: str) -> VideoProject:
     if project is None:
         raise AppError(404, "video_project_not_found", "找不到這支影片")
     return project
+
+
+def _refuse_dropped(project: VideoProject) -> None:
+    if project.dropped_at is not None:
+        raise AppError(409, "video_project_dropped", "站主已經放棄這支影片")
 
 
 async def _reviews(session: AsyncSession, project: VideoProject) -> list[VideoReview]:
@@ -136,6 +146,8 @@ async def upsert_project(
     project.stage = payload.stage
     project.checklist = [item.model_dump() for item in payload.checklist]
     project.youtube_video_id = payload.youtube_video_id
+    if payload.source_guide is not None:
+        project.source_guide = payload.source_guide
     project.last_synced_at = now
     project.updated_at = now
     await session.commit()
@@ -179,6 +191,7 @@ async def submit_review(
     token: VideoToolToken,
 ) -> ReviewOut:
     project = await _project(session, slug)
+    _refuse_dropped(project)
     missing = [item.sha256 for item in payload.files if store.path(slug, item.sha256) is None]
     if missing:
         raise AppError(
@@ -238,6 +251,7 @@ async def decide(
     session: AsyncSession, slug: str, review_id: Any, user: User, decision: DecisionIn
 ) -> ReviewOut:
     project = await _project(session, slug)
+    _refuse_dropped(project)
     review = await session.scalar(
         select(VideoReview)
         .where(VideoReview.id == review_id, VideoReview.project_id == project.id)
@@ -270,6 +284,38 @@ async def decide(
     )
     await session.commit()
     return _review_out(review)
+
+
+async def drop_project(
+    session: AsyncSession, store: ReviewStore, slug: str, user: User, payload: DropIn
+) -> ProjectOut:
+    """Stop a video for good: nothing waits on the owner any more and its previews go.
+
+    Its row stays, so the next automatic draft still sees its topic as made.
+    """
+    project = await _project(session, slug)
+    if project.dropped_at is not None:
+        return await project_view(session, slug)
+    now = datetime.now(UTC)
+    for review in await _reviews(session, project):
+        if review.status == "pending":
+            review.status = "superseded"
+            review.updated_at = now
+    project.dropped_at = now
+    project.dropped_note = payload.note.strip()
+    project.dropped_by_user_id = user.id
+    project.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_project_dropped",
+            target=f"video_project:{project.id}",
+            metadata_json={"slug": slug},
+        )
+    )
+    await session.commit()
+    store.keep_only(slug, set())
+    return await project_view(session, slug)
 
 
 async def file_for_admin(

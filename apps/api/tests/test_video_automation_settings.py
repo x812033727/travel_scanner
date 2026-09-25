@@ -36,6 +36,7 @@ from app.video_automation.schemas import SettingsView, SettingsWrite, VoiceOptio
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.schemas import ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
+from app.video_speech import admin_api as speech_api
 
 
 def _values(**changes: Any) -> dict[str, Any]:
@@ -177,7 +178,23 @@ async def test_a_viewer_reads_the_settings_and_only_a_settings_manager_changes_t
 async def test_the_tool_route_needs_a_video_tool_token() -> None:
     async with AsyncClient(transport=ASGITransport(app=_app()), base_url="http://t") as client:
         response = await client.get("/api/v1/video/automation/settings")
-    assert response.status_code == 401
+        videos = await client.get("/api/v1/video/automation/videos")
+    assert response.status_code == 401 and videos.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_the_worker_lists_every_video_dropped_ones_included(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    listed = AsyncMock(return_value=[])
+    monkeypatch.setattr(admin_api, "list_projects", listed)
+    app = _app()
+    token = VideoToolToken(id=uuid4(), name="worker", token_hash="h", token_prefix="mkv_w")
+    app.dependency_overrides[speech_api.video_tool] = lambda: token
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        response = await client.get("/api/v1/video/automation/videos")
+    assert response.status_code == 200 and response.json() == []
+    listed.assert_awaited_once()
 
 
 # Against PostgreSQL, as CI runs it.

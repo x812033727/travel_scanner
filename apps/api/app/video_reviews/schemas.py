@@ -24,6 +24,8 @@ class ProjectIn(BaseModel):
     stage: str = Field(min_length=1, max_length=40)
     checklist: list[ChecklistItem] = Field(default_factory=list, max_length=30)
     youtube_video_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{6,32}$")
+    # The article's slug. Left out, the stored one stays: older tools do not send it.
+    source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
 
 
 class ReviewFile(BaseModel):
@@ -71,6 +73,9 @@ class ProjectSummary(BaseModel):
     youtube_video_id: str | None
     last_synced_at: datetime
     pending: int
+    source_guide: str | None = None
+    dropped_at: datetime | None = None
+    dropped_note: str | None = None
 
 
 class ProjectOut(ProjectSummary):
@@ -81,6 +86,10 @@ class DecisionIn(BaseModel):
     decision: Literal["approve", "reject"]
     choice: str | None = Field(default=None, min_length=1, max_length=40)
     note: str | None = Field(default=None, max_length=2000)
+
+
+class DropIn(BaseModel):
+    note: str = Field(min_length=1, max_length=2000)
 
 
 class PartOut(BaseModel):

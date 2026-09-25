@@ -3,7 +3,7 @@
 ``tool_router`` is what the local pipeline calls with its video tool token, through the web
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
-the owner lists the videos, opens one, watches its previews and decides.
+the owner lists the videos, opens one, watches its previews and decides, or drops the video.
 """
 
 from __future__ import annotations
@@ -23,6 +23,7 @@ from app.problems import AppError
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import (
     DecisionIn,
+    DropIn,
     PartOut,
     ProjectIn,
     ProjectOut,
@@ -105,6 +106,12 @@ async def decide(
     slug: str, review_id: UUID, payload: DecisionIn, user: ContentManager, session: Session
 ) -> ReviewOut:
     return await service.decide(session, slug, review_id, user, payload)
+
+
+@admin_router.post("/{slug}/drop", response_model=ProjectOut)
+async def drop(slug: str, payload: DropIn, user: ContentManager, session: Session) -> ProjectOut:
+    """The owner stops this video; the pipeline leaves it and its topic counts as made."""
+    return await service.drop_project(session, await _store(session), slug, user, payload)
 
 
 @admin_router.get("/{slug}/files/{sha256}")
