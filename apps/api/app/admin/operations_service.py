@@ -42,6 +42,7 @@ from app.models import (
     TravelHotspot,
     TravelServiceProduct,
     User,
+    VideoReview,
 )
 from app.news_automation.models import NewsCandidate
 from app.problems import AppError
@@ -61,6 +62,11 @@ NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
     AdminNavigationItem(
         id="news", group="content", href="/admin/news", label_key="news",
         capability="content.read", badge_key="news_review_pending",
+    ),
+    # The video pipeline's drafts and finished videos, waiting for the owner's decision.
+    AdminNavigationItem(
+        id="videos", group="content", href="/admin/videos", label_key="videos",
+        capability="content.read", badge_key="video_reviews_pending",
     ),
     AdminNavigationItem(
         id="hotspots", group="content", href="/admin/hotspots", label_key="hotspots",
@@ -178,6 +184,9 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             NewsCandidate,
             NewsCandidate.status.in_(("manual_review", "shadow_review")),
         ).label("news_review_pending"),
+        _scalar_count(VideoReview, VideoReview.status == "pending").label(
+            "video_reviews_pending"
+        ),
         _scalar_count(
             DeploymentRun, DeploymentRun.status.in_(ACTIVE_DEPLOYMENT_STATUSES)
         ).label("deployments_active"),
@@ -199,6 +208,7 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
             "guides_pending",
             "hotels_pending",
             "news_review_pending",
+            "video_reviews_pending",
         )
     )
     values["jobs_active"] = values["community_jobs_pending"]
@@ -208,7 +218,8 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
 
 async def pending_counts(session: AsyncSession) -> dict[str, int]:
     redis = get_redis()
-    cache_key = "admin:operations:pending:v2"
+    # v3: video_reviews_pending joined the counts; a cached v2 dict would show no badge.
+    cache_key = "admin:operations:pending:v3"
     try:
         cached = await redis.get(cache_key)
         if cached:

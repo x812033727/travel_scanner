@@ -19,7 +19,8 @@
     "analytics": "Traffic & analytics",
     "deployments": "Deployments",
     "uiText": "Site copy",
-    "aiAccounts": "AI settings"
+    "aiAccounts": "AI settings",
+    "videos": "Video reviews"
   },
   "providerTabs": {
     "label": "API provider settings tabs",
@@ -1056,6 +1057,10 @@
     "aiAccounts": {
       "title": "AI settings",
       "description": "Everything AI in one place: the subscription accounts the host's Claude Code and Codex use, and the API keys and models the site's AI features use."
+    },
+    "videos": {
+      "title": "Video reviews",
+      "description": "Briefs, narration and finished videos from the video tool wait for your decision here: pick an outline, listen to the narration, watch the cut, and confirm it may be uploaded. Uploading to YouTube and making it public stay with you in YouTube Studio."
     }
   },
   "usersPanel": {
@@ -2012,5 +2017,62 @@
     "pairDenied": "Denied. This code will not get a token.",
     "pairCodeInvalid": "A code is 8 letters, such as BCDF-GHJK.",
     "pairFailed": "This code could not be processed"
+  },
+  "videoReviews": {
+    "listTitle": "Videos",
+    "empty": "No videos submitted yet",
+    "emptyDetail": "Videos appear here once the video tool submits them for review.",
+    "loadError": "Could not load the videos",
+    "retry": "Retry",
+    "pending": "{count} to decide",
+    "noPendingShort": "Nothing to decide",
+    "progress": "Progress {done}/{total}",
+    "lastSynced": "Last synced {time}",
+    "back": "Back to videos",
+    "checklist": "Progress",
+    "noPending": "Nothing is waiting for your decision.",
+    "history": "Past decisions",
+    "youtube": "YouTube video {id}",
+    "previewsGone": "Published; the previews were deleted.",
+    "gates": {
+      "outline": "Outline",
+      "audio": "Narration",
+      "final": "Final cut",
+      "publish": "Upload confirmation"
+    },
+    "statuses": {
+      "pending": "To decide",
+      "approved": "Approved",
+      "rejected": "Sent back",
+      "superseded": "Replaced by a newer version"
+    },
+    "submittedAt": "Submitted {time}",
+    "decidedAt": "Decided {time}",
+    "choice": "Chose option {key}",
+    "chooseOption": "Choose an outline",
+    "option": "Option {key}",
+    "hook": "Opening",
+    "brief": "Full brief",
+    "narration": "Narration",
+    "check": "Jev check",
+    "checkSummary": "{lines} lines: {exact} word for word, {alike} differing only by same-sound characters or filler words, {judged} judged fine by Jev, {flagged} flagged.",
+    "flaggedLines": "Flagged lines",
+    "script": "Script",
+    "heard": "Heard",
+    "preview": "Preview (720p)",
+    "checks": "Automatic checks",
+    "checksOk": "All passed",
+    "chapters": "Chapters",
+    "contactSheet": "All frames",
+    "metadata": "Titles and descriptions in five languages",
+    "uploadChecklist": "Before uploading",
+    "note": "Comments (required to send back)",
+    "notePlaceholder": "For example: the opening is too long; check the figures in chapter 3 again",
+    "approve": "Approve",
+    "approveOutline": "Use this outline",
+    "approvePublish": "Confirm it may be uploaded",
+    "reject": "Send back",
+    "saving": "Sending…",
+    "decideError": "Not sent: {message}"
   }
 }
