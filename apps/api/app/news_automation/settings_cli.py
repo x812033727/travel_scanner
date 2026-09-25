@@ -49,7 +49,7 @@ def blockers(payload: SettingsWrite, ready: dict[str, bool]) -> list[str]:
     if not payload.enabled:
         return []
     problems: list[str] = []
-    for role in ("writer", "verifier"):
+    for role in ("writer", "verifier", "editor"):
         vendor = cast(str, getattr(payload, f"{role}_provider"))
         if vendor in UNSUPPORTED_FOR_NEWS:
             problems.append(f"{role} vendor {vendor} cannot write a news article yet")
@@ -79,6 +79,8 @@ async def run(
     verifier_provider: str | None,
     verifier_model: str | None,
     apply: bool,
+    editor_provider: str | None = None,
+    editor_model: str | None = None,
     actor_email: str | None,
 ) -> dict[str, Any]:
     try:
@@ -97,6 +99,8 @@ async def run(
                 ("writer_model", writer_model),
                 ("verifier_provider", verifier_provider),
                 ("verifier_model", verifier_model),
+                ("editor_provider", editor_provider),
+                ("editor_model", editor_model),
             ):
                 if value is not None:
                     # An empty string means "back to the vendor default".
@@ -118,6 +122,8 @@ async def run(
                         "writer_model",
                         "verifier_provider",
                         "verifier_model",
+                        "editor_provider",
+                        "editor_model",
                         "auto_publish_ai",
                         "auto_publish_tech",
                         "auto_publish_crypto",
@@ -157,6 +163,8 @@ def main() -> None:
     parser.add_argument("--writer-model", help="Model id; an empty string restores the default")
     parser.add_argument("--verifier-provider", choices=PROVIDERS)
     parser.add_argument("--verifier-model", help="Model id; an empty string restores the default")
+    parser.add_argument("--editor-provider", choices=PROVIDERS)
+    parser.add_argument("--editor-model", help="Model id; an empty string restores the default")
     parser.add_argument("--apply", action="store_true", help="Write; show the change otherwise")
     parser.add_argument("--actor-email", help="Administrator the audit row is recorded for")
     args = parser.parse_args()
@@ -167,6 +175,8 @@ def main() -> None:
             writer_model=args.writer_model,
             verifier_provider=args.verifier_provider,
             verifier_model=args.verifier_model,
+            editor_provider=args.editor_provider,
+            editor_model=args.editor_model,
             apply=args.apply,
             actor_email=args.actor_email,
         )

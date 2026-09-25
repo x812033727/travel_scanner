@@ -63,6 +63,11 @@ ALLOWED_TRANSITIONS: Mapping[str, frozenset[str]] = {
 # article (re-verified in the editor) waiting for the publish button.
 ZH_DRAFT_READY = "news_zh_draft_ready"
 READY_TO_PUBLISH = "news_ready_to_publish"
+# The last two gates before publication (owner decision, 2026-09-25): the final editor found a
+# problem it cannot fix without new evidence, or Jev's last call on the five locales was not
+# "act" everywhere. The article is saved either way, so the owner can still publish it.
+FINAL_EDIT_HOLD = "news_final_edit_hold"
+JEV_FINAL_HOLD = "news_jev_final_hold"
 
 
 class EvidenceLike(Protocol):
@@ -97,6 +102,17 @@ def evidence_sufficient(rows: Iterable[EvidenceLike]) -> bool:
     """
     usable = [row for row in rows if row.role == "evidence"]
     return evidence_site_count(usable) >= 2 and any(row.is_first_party for row in usable)
+
+
+def auto_evidence_ok(rows: Iterable[EvidenceLike]) -> bool:
+    """Enough evidence to publish without a person: two websites, or one first-party page.
+
+    The owner decided on 2026-09-25 that an official announcement (the company's own site,
+    blog or feed) may be published automatically on its own, reported as that company's
+    statement; any other single website still waits for a person.
+    """
+    usable = [row for row in rows if row.role == "evidence"]
+    return evidence_sufficient(usable) or any(row.is_first_party for row in usable)
 
 
 def transition_allowed(current: str, target: str) -> bool:
