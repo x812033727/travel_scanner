@@ -7,6 +7,8 @@ metadata:
 
 # 主機端資料 CLI（catalog-import）
 
+> 本文提到的 `references/…`、`scripts/…` 都在 `.agents/skills/catalog-import/` 底下；`.claude/skills/catalog-import/` 只放這份 SKILL.md 的逐字複本。
+
 `python -m app.cli` 有 30 個子指令，另有幾個模組自己帶 `__main__`。這個 skill 只放順序、關卡與去哪裡讀；每個子指令的旗標在 `.agents/skills/catalog-import/references/commands.md`，別再從頭讀 58 KB 的 `apps/api/app/cli.py`。旗標以 `argparse` 為準：懷疑時跑 `python -m app.cli <子指令> --help`。
 
 佔位符：`<SSH>` 是你自己開到主機 root shell 的前綴（連線方式不進 repo，見 skill `deploy`）；`<API>` 是 `cd /root/travel_scanner && docker compose -f docker-compose.prod.yml exec -T api python -m app.cli`；`<PY>` 是從 `apps/api` 跑的 repo python（`uv run python` 或 venv）。
