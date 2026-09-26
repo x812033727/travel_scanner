@@ -22,6 +22,7 @@ from app.models import User
 from app.problems import AppError
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import (
+    SERIES_SLUG_PATTERN,
     DecisionIn,
     DropIn,
     PartOut,
@@ -30,6 +31,7 @@ from app.video_reviews.schemas import (
     ProjectSummary,
     ReviewIn,
     ReviewOut,
+    VideoFormat,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech.admin_api import VideoTool
@@ -90,9 +92,15 @@ async def submit(slug: str, payload: ReviewIn, tool: VideoTool, session: Session
 
 
 @admin_router.get("", response_model=list[ProjectSummary])
-async def list_videos(user: ContentReader, session: Session) -> list[ProjectSummary]:
+async def list_videos(
+    user: ContentReader,
+    session: Session,
+    format: VideoFormat | None = None,
+    series: Annotated[str | None, Query(pattern=SERIES_SLUG_PATTERN)] = None,
+) -> list[ProjectSummary]:
+    """The videos, newest first; format or series narrows them (docs/videos/SERIES.md)."""
     _ = user
-    return await service.list_projects(session)
+    return await service.list_projects(session, video_format=format, series_slug=series)
 
 
 @admin_router.get("/{slug}", response_model=ProjectOut)
