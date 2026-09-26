@@ -25,30 +25,30 @@ YouTube 的多語言音軌讓一支影片多掛幾條配音，觀眾依語言偏
 
 ## Definition of done
 
-- [ ] `node tools/video/cli.mjs dub --slug S --locale L[,L] [--format m4a|mp3|wav] [--dry-run] [--redo <flags file>] [--workdir D]` 存在，登記在 `cli.mjs` 的模組表（附這張票的 id）與 `--help`。
-- [ ] 前置條件與 `captions` 相同：lint 零錯誤、`timeline.json` 的 `speech_hash` 是現在這份稿子的、該語系每一句都有當前的翻譯（`source_hash` 相符）。缺句或過期就列出來，結束碼 1，不寫半條音軌。
-- [ ] 視窗與對齊照 DUBS.md：
+- [x] `node tools/video/cli.mjs dub --slug S --locale L[,L] [--format m4a|mp3|wav] [--dry-run] [--redo <flags file>] [--force] [--style T] [--workdir D]` 存在，登記在 `cli.mjs` 的模組表（附這張票的 id）與 `--help`。
+- [x] 前置條件與 `captions` 相同：lint 零錯誤、`timeline.json` 的 `speech_hash` 是現在這份稿子的、該語系每一句都有當前的翻譯（`source_hash` 相符）。缺句或過期就列出來，結束碼 1，不寫半條音軌。另外只收 Gemini 聲音（結束碼 3）與投影片格式（漫劇自己混音）。
+- [x] 視窗與對齊照 DUBS.md：
   - 視窗 = 同一個場景、同一個投影片狀態（`timeline.scenes[].states[]`）裡的連續句子，長度取自 zh-TW 時間軸；
-  - 每句配音的開始 = max(原句開始, 上一句配音結束 + 250 ms)；
-  - 超出視窗 → 整個視窗等比例 `atempo`，上限 1.15；
-  - 仍超出 → `fit.json` 列出這個視窗的句子與每句的 `max_chars`，結束碼 1（其餘語系照常寫出）；
-  - 每條音軌的取樣數恰等於 `timeline.total_frames × 1600`。
-- [ ] 合成沿用 `tts/client.mjs`、`tts/synthesis.mjs`、`tts/wav.mjs`：聲音是 `doc.voice`，style 換成該語系的預設（`tools/video/dubs/` 裡的 `DUB_STYLES`，語氣同 zh-TW 的 style、語言改掉）；發音字典只套用全是拉丁字母、數字、空格的別名；每句的快取鍵 = 聲音欄位 + 那句的 parts，改一句只重錄一句；`--redo` 吃 `check-audio` 的 flags 檔。
-- [ ] `--dry-run` 印字元數、每個供應商本月剩餘額度、每個語系的視窗餘裕估計（用預設語速）；額度不夠時和 `tts` 一樣以 `video_speech_budget_exhausted` 停下。
-- [ ] 寫出：`dubs/<locale>/audio/<id>.wav`、`dubs/<locale>/timeline.json`（每句 `start_frame`、`end_frame`、`audio_samples`、`tempo`；`speech_hash`、`translation_hash`、`total_frames`）、`dubs/<locale>/fit.json`（每個視窗的餘裕或超出、量到的語速、塞不下的句子與預算）、`dubs/<locale>.m4a`（兩段式 loudnorm −14 LUFS／−1 dBTP，AAC-LC 立體聲 48 kHz 384 kbps；`--format mp3` 是 libmp3lame 320 kbps，`wav` 是 PCM 16-bit）。
-- [ ] `i18n-sheet` 在 `timeline.json` 存在時，每句多一個 `max_chars`（DUBS.md 的預算公式；語速先用預設，該語系有 `fit.json` 就用量到的值），`note` 說明它的意思。
-- [ ] `status --slug S` 多印一行 dubs：每個語系 current／stale／missing／over（有塞不下的視窗）。
-- [ ] `state.mjs` 的 `ARTIFACTS` 加上 dubs 目錄與 `dubArtifacts(locale)`；不加進 `SLIDES_STEPS`（配音是選配，不能讓沒開配音的影片卡在這一步）。
-- [ ] 單元測試（純函式，不用 ffmpeg 與網路）：視窗切法、對齊、加速倍率、超出時的預算、快取鍵、別名過濾、ffmpeg 參數；`npm run test:tools` 過。
+  - 先保留原本節奏（每句配音的開始 = max(原句開始, 上一句配音結束 + 250 ms)），塞不下再緊排（只留 250 ms 間隔）；
+  - 仍超出 → 整個視窗等比例 `atempo`，從 1.01 起每 0.01 試到 1.15；實際拉完再排一次，還差就 +0.02 再拉；
+  - 仍超出 → `fit.json` 列出這個視窗的句子與每句的 `max_chars`、實測秒數、視窗超出秒數，結束碼 1（其餘語系照常寫出）；
+  - 每條音軌的取樣數恰等於 `timeline.total_frames × 1600`；視窗結尾留 100 ms 保護。
+- [x] 合成沿用 `tts/client.mjs`、`tts/synthesis.mjs`、`tts/wav.mjs`：聲音是 `doc.voice`，style 換成該語系的預設（`tools/video/dubs/plan.mjs` 的 `DUB_STYLES`，語氣同 zh-TW 的 style、語言改掉；`--style` 可覆蓋）；發音字典只套用不含中日韓字的別名（`dubLexicon`）；每句的快取鍵 = 聲音欄位 + 那句的 parts，改一句只重錄一句；拉過速的檔 `<id>.x<tempo>.wav` 另外快取；`--redo` 吃 `check-audio` 的 flags 檔。
+- [x] `--dry-run` 印字元數、Gemini 本月剩餘額度、每個語系的視窗估計（會加速幾個、塞不下幾個）；額度不夠時和 `tts` 一樣以 `video_speech_budget_exhausted` 停下。
+- [x] 寫出：`dubs/<locale>/audio/<id>.wav`、`dubs/<locale>/timeline.json`（每句 `start_frame`、`end_frame`、`audio_samples`、`tempo`；`speech_hash`、`translation_hash`、`total_frames`、`format`、`file`、`voice`、`windows`）、`dubs/<locale>/fit.json`（每個視窗的倍率與餘裕、預設與量到的語速、塞不下的句子與預算）、`dubs/<locale>.m4a`（兩段式 loudnorm −14 LUFS／−1 dBTP，AAC-LC 立體聲 48 kHz 384 kbps；`--format mp3` 是 libmp3lame 320 kbps，`wav` 是 PCM 16-bit）。
+- [x] `i18n-sheet` 在 `timeline.json` 存在時，每句多一個 `max_chars`（DUBS.md 的預算公式；語速先用 zh-TW 旁白實測值乘上語系倍率，該語系有 `fit.json` 就用量到的值），`note` 說明它的意思。
+- [x] `status --slug S` 多印一行 dubs：每個語系 current／stale／over／skipped，全是 missing 時不印。
+- [x] `state.mjs` 的 `ARTIFACTS` 加上 dubs 目錄與 `dubArtifacts(workdir, locale)`、`dubsStatus`；不加進 `SLIDES_STEPS`（配音是選配，不能讓沒開配音的影片卡在這一步）。
+- [x] 單元測試（純函式加假伺服器、假 ffmpeg，不用網路）：視窗切法、保留節奏／緊排／加速／超出、預算與語速、音軌組裝、ffmpeg 參數、整條指令（en 塞得下、ko 加速、ja 超出、快取、`--redo`、`status`、`i18n-sheet` 的 `max_chars`、各種拒絕）；`npm run test:tools` 過。
 
 ## Steps
 
-- [ ] `tools/video/dubs/plan.mjs`：視窗、對齊、倍率、預算、`fit.json` 的形狀。
-- [ ] `tools/video/dubs/cli.mjs`：前置檢查、合成與快取、`--redo`、`--dry-run`。
-- [ ] `tools/video/dubs/encode.mjs`：串接、`atempo`、loudnorm 兩段、m4a／mp3／wav。
-- [ ] `i18n-sheet` 的 `max_chars`；`status` 的 dubs 行；`ARTIFACTS`。
-- [ ] 測試；`cli.mjs` 登記與 `--help`。
-- [ ] 本機對第二批一支做一條英文音軌，聽過、量過長度，結果寫進 Notes。
+- [x] `tools/video/dubs/plan.mjs`：視窗、對齊、倍率、預算、`fit.json` 的形狀。
+- [x] `tools/video/dubs/cli.mjs`：前置檢查、合成與快取、`--redo`、`--dry-run`。
+- [x] `tools/video/dubs/encode.mjs`：`atempo`、loudnorm 兩段、m4a／mp3／wav。
+- [x] `i18n-sheet` 的 `max_chars`；`status` 的 dubs 行；`ARTIFACTS`。
+- [x] 測試；`cli.mjs` 登記與 `--help`。
+- [x] 本機對第二批一支做一條英文音軌，量過長度，結果寫進 Notes（聽要站主聽）。
 
 ## How to verify
 
@@ -63,6 +63,13 @@ ffprobe -v error -show_entries stream=codec_name,sample_rate,channels:format=dur
 
 ## Notes
 
+- **2026-09-27 本機實測**（〈ChatGPT 廣告〉`chatgpt-ads-upgrade`，10:36，170 句，用 `--file` 指向從 `claude/video-batch-2` 取出的 video.json 與 i18n，工作區是本機既有的 `mokaair-work/videos/chatgpt-ads-upgrade`）：
+  - zh-TW 旁白實測 5.80 字元／秒，說話佔時間軸 87%。翻譯字元數：en 2.66×、ja 1.27×、ko 1.48×、zh-CN 0.98×。
+  - `--dry-run` 四語系共 27,445 個 Gemini 字元（en 10,261），主機額度剩 265,009。
+  - en 第一輪：44 個請求、13,291 計費字元；實測英文 15.17 字元／秒（預設 15）；83 個視窗裡 57 個保留原節奏、15 個加速（1.01–1.14）、**11 個塞不下**（18 句要縮）。照 `fit.json` 的 `max_chars` 縮短 18 句（數字、名稱不動）再跑：只重錄 18 句，剩 1 個視窗塞不下（`q3-code`：三句裡兩句有 NT$ 金額，"With tax, that's about NT$268." 30 字元唸了 4.9 秒）。第三輪把金額旁邊的字再砍才過。
+  - 成品 `dubs/en.m4a`：25.4 MB、AAC 48 kHz 立體聲、長度 635.700 s 與 `final.mp4` 相同、−14.0 LUFS、峰值 −0.9 dBFS；64 個視窗原節奏、19 個加速（最快 1.15）、0 個超出；英文說話佔 84%。
+  - 學到的：(1) 每句有約 0.5 秒的固定起收音（英文回歸 `秒 = 0.51 + 0.055 × 字元`），預算公式已扣 `LINE_OVERHEAD_MS = 400`；(2) 數字與貨幣代碼唸得比字元數慢很多，`fit.json` 的 `over` 現在附每句實測秒數與視窗超出秒數，翻譯提示要寫「砍數字旁邊的字」；(3) 預設語速改成以 zh-TW 旁白實測值為錨（`RATE_RATIOS`），否則 dry-run 把 zh-CN 判成塞不下。
+  - 還沒做：站主聽（同一個聲音 Sulafat 講英文像不像）、Studio 實測收不收 m4a（`video-dubs-captions-package` 的票）。
 - 第二批的稿子與翻譯在分支 `claude/video-batch-2`（`docs/videos/chatgpt-ads-upgrade` 等）；本機工具副本要自己補 `apps/api/app/guides/content/<source_guide>.json`，否則 lint 報「no content pack」。
 - 先用 `audition --text-file en.txt --voices gemini:Sulafat --style "<DUB_STYLES.en>"` 聽 Sulafat 講英文像不像；Gemini 文件說內建聲音跨語言、語言自動判斷，但沒有逐個聲音保證。不像就換一個內建聲音當「外語聲音」，記在 DUBS.md。
 - `atempo` 一次 0.5–100 倍都收；整個視窗同一個倍率，不要逐句不同。

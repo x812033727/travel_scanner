@@ -11,7 +11,7 @@ import { estimateTimeline, framesFor, msToSamples, SAMPLE_RATE, SAMPLES_PER_FRAM
 import { concatSamples, encodeWav, parseWav } from "../tts/wav.mjs";
 import { encodeArgs, stretchArgs } from "./encode.mjs";
 import {
-  BUDGET_MARGIN, DEFAULT_RATES, DUB_STYLES, GAP_MS, GUARD_MS, MAX_TEMPO, RATE_RATIOS,
+  BUDGET_MARGIN, DEFAULT_RATES, DUB_STYLES, GAP_MS, GUARD_MS, LINE_OVERHEAD_MS, MAX_TEMPO, RATE_RATIOS,
   assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
 } from "./plan.mjs";
 
@@ -102,7 +102,7 @@ test("budgets follow the slot and the rate; an overflowing window shrinks every 
   const timeline = estimateTimeline(doc);
   const budgets = lineBudgets(timeline, 15);
   const first = timeline.lines[0];
-  const seconds = (first.end_frame - first.start_frame) / 30 - GAP_MS / 1000;
+  const seconds = (first.end_frame - first.start_frame) / 30 - (GAP_MS + LINE_OVERHEAD_MS) / 1000;
   assert.equal(budgets[first.id], Math.floor(seconds * 15 * MAX_TEMPO * BUDGET_MARGIN));
   assert.ok(Object.values(budgets).every((value) => Number.isInteger(value) && value >= 1));
 
@@ -111,10 +111,13 @@ test("budgets follow the slot and the rate; an overflowing window shrinks every 
   const span = (hook.end_frame - hook.start_frame) * SAMPLES_PER_FRAME;
   const over = layoutWindow(hook, originals, new Map([["k7p2", Math.round(span * 0.8)], ["m4qa", Math.round(span * 0.8)]]));
   const texts = new Map([["k7p2", "a".repeat(100)], ["m4qa", "b".repeat(50)]]);
-  const shrunk = shrinkBudgets(over, texts);
+  const shrunk = shrinkBudgets(over, texts, { lengths: new Map([["k7p2", 3 * SAMPLE_RATE], ["m4qa", 2 * SAMPLE_RATE]]) });
   assert.deepEqual(shrunk.map((line) => line.id), ["k7p2", "m4qa"]);
   assert.ok(shrunk.every((line) => line.max_chars < line.chars && line.max_chars >= 1));
   assert.ok(Math.abs(shrunk[0].max_chars / 100 - shrunk[1].max_chars / 50) < 0.05, "the same share for every line");
+  assert.deepEqual(shrunk.map((line) => line.seconds), [3, 2]);
+  assert.ok(shrunk[0].window_over_seconds > 0);
+  assert.equal(shrinkBudgets(over, texts)[0].seconds, undefined, "seconds only when the clips are known");
 
   assert.equal(measureRate(new Map([["a", "abcde"], ["b", "fghij"]]), new Map([["a", SAMPLE_RATE], ["b", SAMPLE_RATE]])), 5);
   assert.equal(measureRate(new Map([["a", "abc"]]), new Map()), null);
@@ -267,7 +270,7 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   assert.equal(long.chars, 200);
   assert.ok(long.max_chars < 200 && long.max_chars >= 1);
   assert.match(run.out.stdout, /ja: .*1 windows do not fit even at 1.15x/);
-  assert.match(run.out.stdout, /k7p2: \d+ characters \(now 200\)/);
+  assert.match(run.out.stdout, /k7p2: \d+ characters \(now 200, spoken in [\d.]+ s; its window is [\d.]+ s over\)/);
 
   const again = capture(box, server, ffmpeg);
   const synthesized = server.calls.length;

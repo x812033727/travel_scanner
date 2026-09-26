@@ -183,7 +183,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     windows.push(await fitWindow(window, originals, lengths, clips, dub, ffmpeg, values));
   }
   const measured = measureRate(texts, lengths);
-  const over = windows.filter((window) => window.over).flatMap((window) => shrinkBudgets(window, texts));
+  const over = windows.filter((window) => window.over).flatMap((window) => shrinkBudgets(window, texts, { lengths }));
   const tempoMax = windows.reduce((max, window) => Math.max(max, window.tempo), 1);
   const fit = {
     locale,
@@ -198,8 +198,8 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   if (over.length) {
     const windowsOver = windows.filter((window) => window.over).length;
     ctx.stdout.write(`${locale}: ${pending.length} requests synthesized (${billable} billable characters); ${windowsOver} windows do not fit even at ${MAX_TEMPO}x; shorten these lines to at most:\n`);
-    for (const line of over) ctx.stdout.write(`  ${line.id}: ${line.max_chars} characters (now ${line.chars})\n`);
-    ctx.stdout.write(`  budgets are in ${files.fit}; after i18n-merge, run dub --locale ${locale} again\n`);
+    for (const line of over) ctx.stdout.write(`  ${line.id}: ${line.max_chars} characters (now ${line.chars}, spoken in ${line.seconds} s; its window is ${line.window_over_seconds} s over)\n`);
+    ctx.stdout.write(`  numbers and currency codes read slowly for their length: cut the words around them\n  budgets are in ${files.fit}; after i18n-merge, run dub --locale ${locale} again\n`);
     recordStage(workdir, "dub", { locale, requests: requests.length, synthesized: pending.length, billable, tempo_max: tempoMax, over: over.length }, ctx.now());
     return EXIT.lint;
   }

@@ -32,6 +32,10 @@ export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15, "zh-CN": 1.0 };
 export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-CN": 5.8 };
 // Budgets leave this much of the room unused: a translator lands close to the limit, not on it.
 export const BUDGET_MARGIN = 0.97;
+// What a line costs before its first word and after its last (breath, the trimmed margins, the
+// final syllable's stretch): on the 2026-09-26 English dub, seconds = 0.51 + 0.055 × characters.
+// Budgets take it off the room a line has, or a short line gets more characters than it can say.
+export const LINE_OVERHEAD_MS = 400;
 
 const STYLE_TAIL = "Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.";
 // The zh-TW style names Taiwan Mandarin; a dub keeps the manner and changes the language.
@@ -187,10 +191,10 @@ export function defaultRate(locale, doc, timeline) {
  * rate and the speed-up a window can absorb. A guide for the translator ahead of synthesis: the
  * real fit is decided per window, where short neighbours lend their room.
  */
-export function lineBudgets(timeline, rate, { gapMs = GAP_MS, maxTempo = MAX_TEMPO } = {}) {
+export function lineBudgets(timeline, rate, { gapMs = GAP_MS, maxTempo = MAX_TEMPO, overheadMs = LINE_OVERHEAD_MS } = {}) {
   const budgets = {};
   for (const line of timeline.lines) {
-    const seconds = (line.end_frame - line.start_frame) / FPS - gapMs / 1000;
+    const seconds = (line.end_frame - line.start_frame) / FPS - (gapMs + overheadMs) / 1000;
     budgets[line.id] = Math.max(1, Math.floor(Math.max(0, seconds) * rate * maxTempo * BUDGET_MARGIN));
   }
   return budgets;
@@ -198,17 +202,25 @@ export function lineBudgets(timeline, rate, { gapMs = GAP_MS, maxTempo = MAX_TEM
 
 /**
  * For a window that is over even at MAX_TEMPO: how many characters each of its lines may keep,
- * shrinking every line by the same share, so the translator knows exactly how much to cut.
+ * shrinking every line's words by the same share, so the translator knows exactly how much to
+ * cut. With `lengths` (clip samples by line id) each line also carries the seconds it took: a
+ * line full of numbers or currency reads far slower than its character count says, and the
+ * translator should cut the words around them.
  */
-export function shrinkBudgets(window, texts, { gapMs = GAP_MS, guardMs = GUARD_MS } = {}) {
+export function shrinkBudgets(window, texts, { gapMs = GAP_MS, guardMs = GUARD_MS, overheadMs = LINE_OVERHEAD_MS, lengths = null } = {}) {
   const gap = gapFramesFor(gapMs);
+  const overhead = framesFor(msToSamples(overheadMs));
   const limit = window.end_frame - framesFor(msToSamples(guardMs));
-  const available = Math.max(1, limit - window.start_frame - gap * Math.max(0, window.lines.length - 1));
-  const spoken = window.lines.reduce((sum, line) => sum + (line.end_frame - line.start_frame), 0);
-  const ratio = Math.min(1, (available / Math.max(1, spoken)) * BUDGET_MARGIN);
+  const count = window.lines.length;
+  const available = Math.max(1, limit - window.start_frame - gap * Math.max(0, count - 1) - overhead * count);
+  const spoken = Math.max(1, window.lines.reduce((sum, line) => sum + (line.end_frame - line.start_frame), 0) - overhead * count);
+  const ratio = Math.min(1, (available / spoken) * BUDGET_MARGIN);
+  const over = Math.max(0, (window.lines.at(-1)?.end_frame ?? window.start_frame) - limit) / FPS;
   return window.lines.map((line) => {
     const characters = [...(texts.get(line.id) ?? "")].length;
-    return { id: line.id, chars: characters, max_chars: Math.max(1, Math.floor(characters * ratio)) };
+    const entry = { id: line.id, chars: characters, max_chars: Math.max(1, Math.floor(characters * ratio)), window_over_seconds: Math.round(over * 100) / 100 };
+    if (lengths?.has(line.id)) entry.seconds = Math.round((lengths.get(line.id) / SAMPLE_RATE) * 100) / 100;
+    return entry;
   });
 }
 
