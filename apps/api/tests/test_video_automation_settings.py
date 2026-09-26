@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import os
 from collections.abc import AsyncIterator
@@ -26,10 +27,12 @@ from app.video_automation import admin_api
 from app.video_automation import settings as service
 from app.video_automation.models import (
     DEFAULT_CAPTION_LOCALES,
+    DEFAULT_DRAMA,
     DEFAULT_STAGE_MODELS,
     DEFAULT_TOPIC_AVOID,
     DEFAULT_TOPIC_SCOPE,
     DEFAULT_VOICE,
+    STYLE_PRESETS,
     VideoAutomationSettings,
 )
 from app.video_automation.schemas import SettingsView, SettingsWrite, VoiceOptionsView
@@ -59,9 +62,25 @@ def _values(**changes: Any) -> dict[str, Any]:
         "max_verify_rounds": 3,
         "max_retake_rounds": 2,
         "auto_approve_audio": True,
+        "drama": copy.deepcopy(DEFAULT_DRAMA),
     }
     values.update(changes)
     return values
+
+
+def _drama(**changes: Any) -> dict[str, Any]:
+    return {**copy.deepcopy(DEFAULT_DRAMA), **changes}
+
+
+def _view_extras() -> dict[str, Any]:
+    return {
+        "model_options": service.model_options(),
+        "configured_providers": ["anthropic"],
+        "voice_options": VoiceOptionsView(gemini=["Sulafat"], gemini_models=[], azure=[]),
+        "media_options": service.media_options_view(),
+        "style_presets": list(STYLE_PRESETS),
+        "updated_at": None,
+    }
 
 
 def test_the_defaults_are_a_valid_setting_the_server_can_run() -> None:
@@ -70,6 +89,78 @@ def test_the_defaults_are_a_valid_setting_the_server_can_run() -> None:
     assert service.settings_problems(payload, runtime) == []
     assert payload.stage_models["verifier"].model == "claude-opus-5-5"
     assert payload.voice.name == "Sulafat"
+    assert payload.drama.drama_enabled is False and payload.drama.clip_model
+
+
+def test_drama_settings_the_server_cannot_run_are_named() -> None:
+    runtime = Settings(hotspot_guide_gemini_api_key="g", azure_speech_voices="zh-TW-YunJheNeural")
+    unknown = service.settings_problems(
+        SettingsWrite(**_values(drama=_drama(clip_model="veo-9"))), runtime
+    )
+    assert unknown == ["片段：gemini 沒有 veo-9 這個模型"]
+    seconds = service.settings_problems(
+        SettingsWrite(
+            **_values(drama=_drama(clip_model="veo-3.1-generate-001", clip_seconds_default=5))
+        ),
+        runtime,
+    )
+    assert seconds == ["片段：veo-3.1-generate-001 一次只能做 4、6、8 秒"]
+    minimax = service.settings_problems(
+        SettingsWrite(
+            **_values(
+                drama=_drama(
+                    drama_enabled=True,
+                    clip_provider="minimax",
+                    clip_model="MiniMax-H3",
+                    clip_resolution="1080p",
+                )
+            )
+        ),
+        runtime,
+    )
+    assert minimax == [
+        "片段：MiniMax-H3 沒有 1080p，只有 768p、2k",
+        "片段：網站還沒有 minimax 的金鑰，不能開啟漫劇",
+    ]
+    voices = service.settings_problems(
+        SettingsWrite(
+            **_values(
+                drama=_drama(
+                    character_voice_pool=[
+                        {"provider": "gemini", "name": "Nobody"},
+                        {"provider": "azure", "name": "zh-TW-YunJheNeural", "hint": "長者"},
+                    ]
+                )
+            )
+        ),
+        runtime,
+    )
+    assert voices == ["角色聲音：Gemini 沒有 Nobody 這個聲音"]
+    for bad in (
+        _drama(character_voice_pool=[{"provider": "gemini", "name": "Kore"}] * 2),
+        _drama(clip_seconds_default=11),
+        _drama(style_preset="noir"),
+        _drama(clip_resolution="4320p"),
+        _drama(judge_min_score=11),
+    ):
+        with pytest.raises(ValidationError):
+            SettingsWrite(**_values(drama=bad))
+
+
+def test_the_storyboard_check_needs_the_threshold_and_no_problems() -> None:
+    passed = {"shots": [{"id": "a"}, {"id": "b"}], "judge": {"overall": 8, "problems": []}}
+    assert service.storyboard_check_passed(passed, 7)
+    assert service.storyboard_check_passed({**passed, "judge": {"overall": 7.5}}, 7)
+    assert not service.storyboard_check_passed(passed, 9)
+    assert not service.storyboard_check_passed(
+        {**passed, "judge": {"overall": 9, "problems": ["hands"]}}, 7
+    )
+    assert not service.storyboard_check_passed(
+        {**passed, "shots": [{"id": "a", "needs_review": True}]}, 7
+    )
+    assert not service.storyboard_check_passed({**passed, "judge": {"overall": True}}, 0)
+    assert not service.storyboard_check_passed({**passed, "shots": []}, 0)
+    assert not service.storyboard_check_passed({}, 0)
 
 
 @pytest.mark.parametrize(
@@ -151,15 +242,7 @@ async def test_a_viewer_reads_the_settings_and_only_a_settings_manager_changes_t
 ) -> None:
     viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
     viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
-    view = AsyncMock(
-        return_value=SettingsView(
-            **_values(),
-            model_options=service.model_options(),
-            configured_providers=["anthropic"],
-            voice_options=VoiceOptionsView(gemini=["Sulafat"], gemini_models=[], azure=[]),
-            updated_at=None,
-        )
-    )
+    view = AsyncMock(return_value=SettingsView(**_values(), **_view_extras()))
     update = AsyncMock()
     monkeypatch.setattr(service, "settings_view", view)
     monkeypatch.setattr(service, "update_settings", update)
@@ -181,21 +264,19 @@ def _owner() -> User:
 
 
 def _stored(monkeypatch: pytest.MonkeyPatch) -> AsyncMock:
-    """Stored settings whose writer runs on Opus 5.5; returns the mocked save."""
-    stored = _values()
+    """Stored settings: the writer on Opus 5.5, the drama on; returns the mocked save."""
+    stored = _values(drama=_drama(drama_enabled=True, max_usd_per_video=50))
     stored["stage_models"]["writer"] = {"provider": "claude_code", "model": "claude-opus-5-5"}
     monkeypatch.setattr(service, "settings_row", AsyncMock(return_value=object()))
     monkeypatch.setattr(service, "settings_values", lambda _row: SettingsWrite(**stored))
-    monkeypatch.setattr(admin_api, "load_runtime_settings", AsyncMock(return_value=Settings()))
+    monkeypatch.setattr(
+        admin_api,
+        "load_runtime_settings",
+        AsyncMock(return_value=Settings(hotspot_guide_gemini_api_key="g")),
+    )
 
     async def save(_session: Any, _user: User, payload: SettingsWrite) -> SettingsView:
-        return SettingsView(
-            **payload.model_dump(),
-            model_options=service.model_options(),
-            configured_providers=["anthropic"],
-            voice_options=VoiceOptionsView(gemini=["Sulafat"], gemini_models=[], azure=[]),
-            updated_at=None,
-        )
+        return SettingsView(**payload.model_dump(), **_view_extras())
 
     update = AsyncMock(side_effect=save)
     monkeypatch.setattr(service, "update_settings", update)
@@ -218,6 +299,41 @@ async def test_a_settings_save_without_stage_models_keeps_the_stored_ones(
     payload = update.await_args.args[2]
     assert payload.enabled is True
     assert payload.stage_models["writer"].model == "claude-opus-5-5"
+
+
+@pytest.mark.asyncio
+async def test_a_settings_save_without_drama_keeps_the_stored_drama(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A page built before the drama settings existed sends none; it must not reset them."""
+    update = _stored(monkeypatch)
+    values = _values(enabled=True)
+    del values["drama"]
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_owner())), base_url="http://t"
+    ) as client:
+        saved = await client.put("/api/v1/admin/video-automation/settings", json=values)
+        lowered = await client.put(
+            "/api/v1/admin/video-automation/settings",
+            json=_values(drama=_drama(drama_enabled=True, max_usd_per_video=20)),
+        )
+        refused = await client.put(
+            "/api/v1/admin/video-automation/settings",
+            json=_values(
+                drama=_drama(
+                    drama_enabled=True,
+                    clip_provider="minimax",
+                    clip_model="MiniMax-H3",
+                    clip_resolution="2k",
+                )
+            ),
+        )
+    assert saved.status_code == 200, saved.text
+    kept = update.await_args_list[0].args[2]
+    assert kept.drama.drama_enabled is True and kept.drama.max_usd_per_video == 50
+    assert lowered.status_code == 200 and lowered.json()["drama"]["max_usd_per_video"] == 20
+    assert refused.status_code == 422 and "minimax" in refused.text
+    assert update.await_count == 2
 
 
 @pytest.mark.asyncio

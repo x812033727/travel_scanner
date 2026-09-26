@@ -1,6 +1,6 @@
 # 全自動 YouTube 教學影片產線：設計
 
-2026-09-24 定案。操作步驟在 skill `youtube-video`（`.agents/skills/youtube-video/SKILL.md`），這份只寫**為什麼這樣做**與各部分怎麼接起來。工作分成 11 張票，id 都是 `2026-09-24-video-*`。
+2026-09-24 定案。操作步驟在 skill `youtube-video`（`.agents/skills/youtube-video/SKILL.md`），這份只寫**為什麼這樣做**與各部分怎麼接起來。工作分成 11 張票，id 都是 `2026-09-24-video-*`。第二種格式 AI 漫劇（`format: "drama"`，2026-09-26 定案）沿用這裡的產線、時間軸、關卡與主機工人，只加自己的部分，寫在 [`DRAMA.md`](DRAMA.md)。
 
 ## 目標與已定的選擇
 
@@ -35,7 +35,7 @@
 | 10 | 打包 | `package` | `upload/`、`UPLOAD.md` | 站主看完全片 → `approve --gate final` |
 | 11 | 站主在 Studio 上傳成私人 → `youtube-sync` 補五語系中繼資料與 CC → 站主自己按公開 | 站主＋工具 | YouTube 影片 | 公開一律站主按 |
 
-核准綁雜湊：大綱綁 `brief.md`、試聽綁 `timeline.json`、成片綁 `final.mp4`。檔案變了，舊的核准就不算，後面的指令會拒絕執行（結束碼 3）。
+核准綁雜湊：大綱綁 `brief.md`、試聽綁 `timeline.json`、成片綁 `final.mp4`；漫劇另有角色設定圖綁 `characters/manifest.json`、分鏡綁 `keyframes/manifest.json`。檔案變了，舊的核准就不算，後面的指令會拒絕執行（結束碼 3）。
 
 ## 資料
 
