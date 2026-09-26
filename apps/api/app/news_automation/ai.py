@@ -13,7 +13,7 @@ from app.hotspots.ai_search import AIProviderName, research_provider
 from app.i18n import LOCALES as SITE_LOCALES
 from app.i18n import Locale
 from app.news_automation.models import NewsAutomationSettings, NewsCandidate, NewsEvidence
-from app.news_automation.policy import without_topic_links
+from app.news_automation.policy import for_review
 from app.news_automation.schemas import (
     EditorialDraft,
     LocaleReviewResult,
@@ -232,8 +232,8 @@ async def review_locale(
         LOCALE_REVIEW_INSTRUCTIONS,
         {
             "locale": locale,
-            "verified_zh_tw": without_topic_links(source),
-            "localized_article": without_topic_links(document),
+            "verified_zh_tw": for_review(source),
+            "localized_article": for_review(document),
         },
     )
 
@@ -252,8 +252,8 @@ async def final_edit(
     payload: dict[str, Any] = {
         "locale": locale,
         "evidence": evidence_payload(evidence),
-        "verified_zh_tw": without_topic_links(source),
-        "article": without_topic_links(document),
+        "verified_zh_tw": for_review(source),
+        "article": for_review(document),
     }
     if problems:
         payload["mechanical_problems"] = problems
