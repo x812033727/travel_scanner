@@ -573,15 +573,11 @@
     },
     "anthropic_connection": {
       "label": "Claude 连接方式",
-      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审核、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥；每个账号都到上限时改用 MiniMax。行程规划与行程文字解析仍只用 API 密钥。只有站长能切换。",
+      "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审查、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥。账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时改用 MiniMax。行程规划与行程文字解析仍只用 API 密钥。只有站主能切换。",
       "options": {
         "api_key": "API 密钥",
         "subscription": "订阅账号（主机 Claude Code）"
       }
-    },
-    "ai_subscription_max_usage_percent": {
-      "label": "订阅账号用量上限（%）",
-      "help": "账号的 5 小时或每周用量达到这个百分比，网站就不再用它，留给站长自己用；所有账号都到上限时改用 MiniMax。默认 80。"
     }
   },
   "hotspotTabs": {
@@ -2199,8 +2195,7 @@
       "monthly_token_budget_millions": "每月模型 token 上限（百万）",
       "max_verify_rounds": "每部最多核查几轮",
       "max_retake_rounds": "旁白最多重录几轮",
-      "auto_approve_audio": "Jev 判断旁白每一句都读对时，自动核准",
-      "subscription_max_usage_percent": "订阅账号用到几 % 就先停（5 小时或每周额度）"
+      "auto_approve_audio": "Jev 判断旁白每一句都读对时，自动核准"
     },
     "stages": {
       "planner": "企划（选题与大纲）",
@@ -2219,7 +2214,7 @@
     "usage": "本月（UTC）API 已用 {tokens} / {tokenBudget} 个 token，订阅账号用了 {planTokens} 个 token；产生 {drafts} / {draftBudget} 部草稿，调用模型 {calls} 次（其中 {failed} 次失败）。",
     "subscription": "订阅账号",
     "agentOff": "主机代理未设置",
-    "subscriptionHelp": "订阅账号在 5 小时或每周额度用到上面的百分比时会先跳过；每个账号都达到后，工人会等额度重置再继续，不会自动改用 API 密钥。不提供 Codex：它的命令行无法关闭执行命令的能力。",
+    "subscriptionHelp": "订阅账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时，工人就等额度重置再继续，不会自动改用 API 密钥。Codex 不提供：它的命令行关不掉执行命令的能力。",
     "modelsManaged": "各阶段使用哪个模型，统一在“AI 设置 › 各功能模型”选择。",
     "editModels": "到 AI 设置修改",
     "saveModels": "保存视频模型",
