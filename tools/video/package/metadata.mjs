@@ -1,5 +1,5 @@
-// What goes into YouTube's fields, per locale: title, the composed description (body, chapters,
-// the Mokaair article, sources) and tags, each checked against YouTube's limits.
+// What goes into YouTube's fields, per locale: title, the composed description (the Mokaair
+// article, body, chapters, sources, hashtags) and tags, each checked against YouTube's limits.
 import { articleUrl, checkYoutubeFields, composeDescription, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
 import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
@@ -25,6 +25,7 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
       article: pack ? articleUrl(pack, articleLocale, doc.slug) : null,
       sources: doc.sources ?? [],
       locale,
+      tags: translation?.tags?.length ? translation.tags : doc.youtube.tags,
     });
     problems.push(...checkYoutubeFields({ title, description, tags: [] }, `${locale}`));
     perLocale[locale] = { title, description };

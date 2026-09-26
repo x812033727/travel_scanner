@@ -84,6 +84,32 @@ test("the chapter label is drawn when given and the brand always is", () => {
   assert.doesNotMatch(slideHtml(scene("numbers"), state({ chapter: null })), /chrome-chapter/);
 });
 
+test("with the chapter count known, the corner says 02 / 06 and a bar marks the chapters seen and current", () => {
+  const html = slideHtml(scene("numbers"), state({ chapter: "比一比", chapterNumber: 2, chapterCount: 4 }));
+  assert.match(html, /<div class="chrome-progress"><span class="done"><\/span><span class="now"><\/span><span><\/span><span><\/span><\/div>/);
+  assert.match(html, /<div class="chrome-chapter"><span class="index">02 \/ 04<\/span>比一比<\/div>/);
+  assert.doesNotMatch(slideHtml(scene("opening"), state({ chapter: null, chapterCount: 4 })), /chrome-progress/, "the title card opens clean");
+  assert.match(slideHtml(scene("part-one"), state({ chapter: null, chapterNumber: 2, chapterCount: 4 })), /<div class="number enter" style="--i:0">02<span class="of">\/ 04<\/span><\/div>/);
+  assert.doesNotMatch(slideHtml(scene("numbers"), state({ chapterCount: 1 })), /chrome-progress|class="index"/, "one chapter needs no map");
+});
+
+test("the new templates check their data and reveal one element at a time", () => {
+  const chat = scene("ask-once");
+  const first = slideHtml(chat, state({ reveal: 1, totalReveals: 2 }));
+  assert.equal((first.match(/class="msg (left|right)[^"]*"/g) ?? []).length, 2);
+  assert.equal((first.match(/data-hidden/g) ?? []).length, 1, "the answer waits for its line");
+  chat.data.messages[0].side = "middle";
+  assert.match(sceneProblems(chat)[0], /side: left\|right/);
+  const quote = scene("own-words");
+  delete quote.data.source;
+  assert.deepEqual(sceneProblems(quote), ["source is required: where the words come from"]);
+  const stats = scene("speed-cost");
+  stats.lines[0].reveal = 3;
+  assert.deepEqual(sceneProblems(stats), ["reveals 4 elements but the stats slide has 2"]);
+  assert.match(slideHtml(scene("speed-cost"), state({ reveal: 2, totalReveals: 2 })), /style="--n:2"/);
+  assert.match(slideHtml(scene("article-card"), state()), /<div class="site">mokaair\.com<\/div><\/div>/);
+});
+
 test("an inlined SVG loses its prolog and fixed size; scripts and network loads are refused", () => {
   const svg = '<?xml version="1.0"?><!DOCTYPE svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900"><text>圖</text></svg>';
   assert.equal(inlineSvg(svg), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><text>圖</text></svg>');
