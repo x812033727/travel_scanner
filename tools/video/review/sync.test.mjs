@@ -1,17 +1,19 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { appendFileSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
+import { ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
-import { audioCheck, checklistFrom, guideSlugs, outlineOptions, PART_BYTES, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
+import { audioCheck, checklistFrom, guideSlugs, judgeBody, outlineOptions, PART_BYTES, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
 
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -50,13 +52,25 @@ test("the checklist, the Jev summary and the upload items are what the page show
   assert.deepEqual(uploadItems("# 上架\n- [ ] **AI 使用揭露**：看情況\n- [x] 已完成\n- [ ] 縮圖看得懂"), ["AI 使用揭露：看情況", "縮圖看得懂"]);
 });
 
-/** The site: it keeps what the tool sends and answers reads with the reviews it was given. */
-function site() {
-  const state = { calls: [], files: new Map(), reviews: [] };
+/**
+ * The site: it keeps what the tool sends and answers reads with the reviews it was given. The
+ * judge answers as `judge()` and `policy()` say (an object, or a Response for an error); by
+ * default the outline judge is off (409) and the policy judge is not there (404). Any other
+ * address is a description's link the quality check opens.
+ */
+function site({ judge = null, policy = null } = {}) {
+  const state = { calls: [], files: new Map(), reviews: [], judge: [] };
+  const answer = (value) => (value instanceof Response ? value : Response.json(value));
   const fetchImpl = async (url, init = {}) => {
+    if (!url.startsWith("https://mokaair.com/")) return new Response("", { status: 200 });
     const { pathname, searchParams } = new URL(url);
-    state.calls.push({ method: init.method, pathname });
     assert.equal(new Headers(init.headers).get("authorization"), `Bearer ${TOKEN}`);
+    if (pathname === "/api/video/automation/judge/outline") {
+      state.judge.push(JSON.parse(init.body));
+      return judge ? answer(judge()) : Response.json({ code: "video_judge_not_enabled", detail: "頻道立場還是空白，或「由 Jev 挑大綱」關著；大綱照舊等站主" }, { status: 409 });
+    }
+    if (pathname === "/api/video/automation/judge/policy") return policy ? answer(policy()) : Response.json({ detail: "Not Found" }, { status: 404 });
+    state.calls.push({ method: init.method, pathname });
     const route = pathname.replace("/api/video/reviews/", "");
     if (init.method === "PUT" && route.includes("/files/")) {
       const hash = route.split("/files/")[1];
@@ -109,6 +123,8 @@ test("review-push submits the outline bound to brief.md, and review-pull records
   assert.equal(outline.gate, "outline");
   assert.equal(outline.content_sha256, sha(brief));
   assert.equal(outline.payload.brief, brief.toString("utf8"));
+  assert.equal("pick" in outline.payload, false, "a brief without options is nothing for Jev: the owner chooses");
+  assert.match(push.out.stdout, /the owner chooses the outline \(the brief has 0 options/);
 
   const waiting = context(box, server.fetchImpl);
   assert.equal(await main(["review-pull", "--slug", box.slug], waiting.ctx), EXIT.owner);
@@ -130,6 +146,46 @@ test("review-push submits the outline bound to brief.md, and review-pull records
   await main(["review-pull", "--slug", box.slug], changed.ctx);
   assert.match(changed.out.stdout, /has since changed/);
   assert.equal(readApprovals(box.workdir).approvals.length, 1, "an approval of the old brief is not recorded for the new one");
+});
+
+const PICK = { choice: "A", probabilities: { A: 0.8 }, options: { A: { stance: 0.9, demo: 0.7 } }, advice: 0.1, passed: true, note: "Jev 挑了 A（0.80）：符合立場 0.90、有示範 0.70、建議 0.10，依設定自動核准" };
+// A brief with the two outline options a judge takes; the fixture's has none.
+const OPTIONS_BRIEF = "# AI 模型怎麼挑\n\n## 觀眾看完能做到的事\n\n挑出一個模型。\n\n## 站主觀點\n\n套用立場：1\n排行榜只是起點。\n\n## 大綱\n\n### 選項 A：三個問題\n一行說明：照三個問題走。\n開場鉤子：「排行榜第一名不一定最好用」\n\n### 選項 B：從一個情境開始\n一行說明：用情境貫穿。\n";
+
+test("review-push --gate outline asks Jev first and sends the pick with the brief; a judge that is down still sends the outline, for the owner", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
+  const server = site({ judge: () => PICK });
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], push.ctx), EXIT.ok, push.out.stderr);
+  const [asked] = server.state.judge;
+  assert.deepEqual(Object.keys(asked), ["slug", "brief", "options"], "the judge's strict request model");
+  assert.equal(asked.slug, box.slug);
+  assert.deepEqual(asked.options.map((option) => Object.keys(option)), [["key", "title", "summary", "hook"], ["key", "title", "summary", "hook"]]);
+  assert.equal(asked.options[1].hook, "", "a missing hook is sent as an empty string, never left out");
+  assert.deepEqual(judgeBody("s", "b", [{ key: "A", title: "t" }]).options, [{ key: "A", title: "t", summary: "", hook: "" }]);
+  const [outline] = server.state.reviews;
+  assert.deepEqual(outline.payload.pick, PICK, "the whole answer travels as the pick");
+  assert.equal(outline.summary, "企劃書與 2 個大綱選項；Jev 挑了 A");
+  assert.match(push.out.stdout, /Jev 挑了 A（0\.80）/);
+
+  const failed = site({ judge: () => ({ ...PICK, passed: false, note: "Jev 挑了 A（0.80）：…；沒過關" }) });
+  const again = context(box, failed.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(failed.state.reviews[0].payload.pick.passed, false, "a pick that did not pass still goes up, so the card shows the table");
+  assert.equal(failed.state.reviews[0].summary, "企劃書與 2 個大綱選項；Jev 沒有挑出過關的大綱，請站主選");
+
+  const down = site({ judge: () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 }) });
+  const later = context(box, down.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], later.ctx), EXIT.ok, later.out.stderr);
+  assert.equal("pick" in down.state.reviews[0].payload, false);
+  assert.match(later.out.stdout, /Jev could not judge the outline \(Jev 暫時無法判斷\); it goes up for the owner/);
+
+  const revoked = site({ judge: () => Response.json({ code: "video_tool_token_invalid", detail: "token revoked" }, { status: 401 }) });
+  const owner = context(box, revoked.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], owner.ctx), EXIT.owner);
+  assert.match(owner.out.stderr, /token revoked/);
+  assert.equal(revoked.state.reviews.length, 0);
 });
 
 test("the article a video retells is its source_guide, or else the first site article it cites", () => {
@@ -182,6 +238,102 @@ test("the narration goes up as an encoded copy, in parts, before its review is s
   assert.deepEqual(audio.files, [{ role: "narration", sha256: sha(encoded), size: encoded.length, content_type: "audio/mp4" }]);
   assert.equal(Buffer.concat(server.state.files.get(sha(encoded))).equals(encoded), true);
   assert.equal(audio.payload.duration_seconds, 3);
+});
+
+/** A work directory with a narration and a cut, enough for the final gate to hash and preview. */
+function cutVideo(box) {
+  mkdirSync(box.workdir, { recursive: true });
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
+  writeSyntheticNarration(doc, lexicon, box.workdir);
+  const final = Buffer.from("the finished cut");
+  writeFileSync(path.join(box.workdir, "final.mp4"), final);
+  return { doc, final };
+}
+
+const encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+
+test("review-push --gate final runs the quality check and sends its report; a check that could not finish sends nothing", async () => {
+  const box = sandbox();
+  const { final } = cutVideo(box);
+  const server = site();
+  const push = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.match(push.out.stdout, /\[ \] policy: judge endpoint not available/, "qa ran, and printed its items");
+  const [review] = server.state.reviews;
+  assert.equal(review.gate, "final");
+  assert.equal(review.content_sha256, sha(final));
+  assert.equal(review.payload.qa.final_sha256, sha(final), "the report is of this very final.mp4");
+  assert.equal(review.payload.qa.ok, false);
+  assert.deepEqual(review.payload.qa.items.map((item) => item.id), ITEM_IDS);
+  assert.match(review.summary, /^成片 00:\d\d，自動品管 \d+ 項沒過：assemble、render/);
+  assert.deepEqual(review.files.map((file) => file.role), ["preview"]);
+  assert.ok(existsSync(path.join(box.workdir, "review", "qa.json")));
+
+  // Jev unreachable: the quality check ends with exit 4, and so does the push, without a review.
+  const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
+  const later = context(box, down.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], later.ctx), EXIT.external);
+  assert.match(later.out.stderr, /the quality check could not finish/);
+  assert.equal(down.state.reviews.length, 0);
+});
+
+test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
+  const box = sandbox();
+  const { final } = cutVideo(box);
+  const upload = path.join(box.workdir, "upload");
+  mkdirSync(path.join(upload, "captions"), { recursive: true });
+  writeFileSync(path.join(upload, "final.mp4"), final);
+  writeFileSync(path.join(upload, "thumbnail.jpg"), Buffer.from([0xff, 0xd8, 0xff, 0xd9]));
+  for (const locale of ["zh-TW", "en"]) {
+    writeFileSync(path.join(upload, "captions", `${locale}.srt`), `1\n00:00:00,000 --> 00:00:01,000\n${locale}\n`);
+    writeFileSync(path.join(upload, `description.${locale}.txt`), `${locale} title\n\n${locale} body\n`);
+  }
+  writeFileSync(path.join(upload, "UPLOAD.md"), "# 上傳步驟\n");
+  const metadata = {
+    slug: box.slug, title: "AI 模型怎麼挑", description: "本文", tags: ["AI 模型"], chapters: [{ at: "00:00", title: "開場" }, { at: "00:10", title: "三個問題" }, { at: "00:20", title: "結論" }],
+    default_language: "zh-TW", localizations: { en: { title: "en title", description: "en body" } },
+    final_sha256: sha(final), thumbnail: "thumbnail.jpg", captions: ["captions/en.srt", "captions/zh-TW.srt"],
+    skipped_caption_locales: { ja: "no translation", ko: "no translation", "zh-CN": "no translation" },
+    contains_synthetic_media: false, disclosure_reason: "slides read by a stock TTS voice",
+  };
+  const bytes = `${JSON.stringify(metadata, null, 2)}\n`;
+  writeFileSync(path.join(upload, "metadata.json"), bytes);
+  writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
+  const [publish] = server.state.reviews;
+  assert.equal(publish.gate, "publish");
+  assert.equal(publish.content_sha256, sha(bytes), "bound to metadata.json");
+  assert.equal(publish.summary, "上傳包 4 項齊全：請確認可以上架");
+  assert.deepEqual(publish.payload.package.items.map((item) => [item.id, item.ok]), [["files", true], ["descriptions", true], ["captions", true], ["disclosure", true]]);
+  assert.equal(publish.payload.package.final_sha256, sha(bytes), "the report names the file the gate hashes");
+  assert.equal(publish.payload.chapters, 3);
+  assert.ok(publish.payload.minutes > 0);
+  assert.deepEqual(publish.payload.locales, ["zh-TW", "en"]);
+  assert.deepEqual(publish.payload.zh, { title: "AI 模型怎麼挑", description: "本文", tags: ["AI 模型"] });
+  assert.deepEqual(publish.payload.disclosure, { synthetic: false, reason: "slides read by a stock TTS voice" });
+  assert.deepEqual(publish.payload.checklist, [], "UPLOAD.md has no self-check list any more");
+  assert.deepEqual(publish.files.map((file) => [file.role, file.content_type]), [
+    ["captions_en", "text/plain"],
+    ["captions_zh-TW", "text/plain"],
+    ["description_en", "text/plain"],
+    ["description_zh-TW", "text/plain"],
+    ["final", "video/mp4"],
+    ["metadata", "application/json"],
+    ["thumbnail", "image/jpeg"],
+  ]);
+  assert.equal(server.state.files.size, 7, "every file went up; UPLOAD.md did not");
+  assert.equal(Buffer.concat(server.state.files.get(sha(bytes))).toString("utf8"), bytes);
+
+  // The thumbnail gone: the check fails its files item and the summary says so; the owner decides.
+  rmSync(path.join(upload, "thumbnail.jpg"));
+  const broken = site();
+  const again = context(box, broken.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(broken.state.reviews[0].summary, "上傳包 1 項沒過：files");
+  assert.equal(broken.state.reviews[0].payload.package.ok, false);
 });
 
 test("without a token the push needs the owner", async () => {

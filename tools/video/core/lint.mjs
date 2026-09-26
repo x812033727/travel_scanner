@@ -52,6 +52,50 @@ export function checkBrief(markdown, format = "slides") {
   }).map((name) => `brief.md needs a non-empty "## ${name}" section`);
 }
 
+// The channel's stance (docs/videos/HANDS-OFF.md §頻道立場): the owner's numbered points, one
+// per line, and the brief's 站主觀點 opens by naming the ones this video applies.
+export const STANCE_SECTION = "站主觀點";
+export const STANCE_LINE = "套用立場";
+const STANCE_POINT = /^\s*([0-9０-９]+)\s*[.．、)）]\s*(\S.*)$/;
+const FULL_WIDTH_ZERO = "０".charCodeAt(0);
+
+const asciiDigits = (text) => text.replace(/[０-９]/g, (digit) => String(digit.charCodeAt(0) - FULL_WIDTH_ZERO));
+
+/** The stance's numbered points, `1. …` one per line: { number: text }. Empty for a blank stance. */
+export function stancePoints(stance) {
+  const points = {};
+  if (typeof stance !== "string") return points;
+  for (const line of stance.replace(/\r\n/g, "\n").split("\n")) {
+    const match = STANCE_POINT.exec(line);
+    if (match) points[Number(asciiDigits(match[1]))] = match[2].trim();
+  }
+  return points;
+}
+
+/**
+ * What is wrong with the brief's 站主觀點 against the stance, as strings; nothing when the stance
+ * is blank (the owner has not written one, so the old rule holds). With a stance, the section's
+ * first non-blank line must read 「套用立場：N、M」 and every number must be one of its points.
+ */
+export function stanceProblems(brief, stance) {
+  const points = stancePoints(stance);
+  if (!Object.keys(points).length) return [];
+  if (typeof brief !== "string") return ["brief.md is missing: the planner writes it before the script"];
+  const section = briefSections(brief)[STANCE_SECTION];
+  if (section === undefined) return [`brief.md needs a "## ${STANCE_SECTION}" section`];
+  const first = section.split("\n").map((line) => line.trim()).find((line) => line.length > 0) ?? "";
+  const match = new RegExp(`^${STANCE_LINE}\\s*[：:]\\s*(.*)$`).exec(first);
+  if (!match) return [`the first line of "## ${STANCE_SECTION}" must read 「${STANCE_LINE}：N、M」, the numbers of the stance points it applies (found 「${first.slice(0, 40)}」)`];
+  const numbers = asciiDigits(match[1]).split(/[、,，\s;；/]+/).filter(Boolean);
+  if (!numbers.length) return [`「${STANCE_LINE}：」 names no stance point; the stance has ${Object.keys(points).join(", ")}`];
+  const problems = [];
+  for (const number of numbers) {
+    if (!/^\d+$/.test(number)) problems.push(`「${STANCE_LINE}」 lists "${number}", which is not a point number`);
+    else if (!(Number(number) in points)) problems.push(`「${STANCE_LINE}」 names point ${number}, but the stance has only ${Object.keys(points).join(", ")}`);
+  }
+  return problems;
+}
+
 function lcsLength(a, b) {
   const row = new Array(b.length + 1).fill(0);
   for (const x of a) {

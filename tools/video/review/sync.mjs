@@ -1,16 +1,20 @@
 // `review-push` and `review-pull`: the owner reviews on the site's /admin/videos, not in chat.
 //
-// `review-push` reports where a video is and submits the next thing the owner must decide: the
-// outline (brief.md with its options), the narration (a small AAC copy plus the Jev check), the
-// final cut (a 720p copy, the contact sheet, the thumbnail, titles in every locale), or the
-// upload package. Each is bound to the SHA-256 of the file its approval gate covers, so an
-// approval on the site means exactly the file the pipeline has. `review-pull` reads the owner's
-// decisions back and records an approval only when that hash still matches the local file.
+// `review-push` reports where a video is and submits the next thing to decide: the outline
+// (brief.md with its options, and Jev's pick when the channel stance lets it choose), the
+// narration (a small AAC copy plus the Jev check), the final cut (a 720p copy, the contact sheet,
+// the thumbnail, titles in every locale, and the quality check's report), or the upload package
+// (every file in it and the package check). Each is bound to the SHA-256 of the file its
+// approval gate covers, so an approval on the site means exactly the file the pipeline has; the
+// site approves a review on arrival when the pick, the quality check or the package check passes
+// and the owner's switch is on (docs/videos/HANDS-OFF.md). `review-pull` reads the decisions back
+// and records an approval only when that hash still matches the local file.
 import { closeSync, existsSync, mkdirSync, openSync, readFileSync, readSync, statSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
+import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
@@ -18,6 +22,7 @@ import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
 import { keepSheets } from "../media/series-store.mjs";
+import { packageFiles, packageLocales, readPackageReport, UPLOAD_DIR } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
@@ -121,6 +126,99 @@ export function uploadItems(markdown) {
     .map((item) => item.replace(/\*\*/g, ""));
 }
 
+// The judge takes 2 to 3 options (judge.py MIN_OPTIONS, MAX_OPTIONS).
+export const JUDGE_MIN_OPTIONS = 2;
+export const JUDGE_MAX_OPTIONS = 3;
+
+/** The judge endpoint's body, exactly { slug, brief, options: [{ key, title, summary, hook }] }: its request model refuses any other field. */
+export function judgeBody(slug, brief, options) {
+  return {
+    slug,
+    brief,
+    options: options.slice(0, JUDGE_MAX_OPTIONS).map((option) => ({ key: option.key, title: option.title, summary: option.summary ?? "", hook: option.hook ?? "" })),
+  };
+}
+
+/** Jev's answer as a review's `pick`: { choice, probabilities, options: { key: { stance, demo } }, advice, passed, note }, or null when it has no verdict. */
+export function pickFrom(answer) {
+  if (typeof answer?.passed !== "boolean" || typeof answer.choice !== "string" || !answer.choice) return null;
+  return {
+    choice: answer.choice,
+    probabilities: answer.probabilities && typeof answer.probabilities === "object" ? answer.probabilities : {},
+    options: answer.options && typeof answer.options === "object" ? answer.options : {},
+    advice: typeof answer.advice === "number" ? answer.advice : null,
+    passed: answer.passed,
+    note: typeof answer.note === "string" ? answer.note : "",
+  };
+}
+
+/**
+ * Ask Jev which outline to make (docs/videos/HANDS-OFF.md §Jev 挑大綱). `api` is the automation
+ * client. Answers { status: "passed" | "failed", pick } with Jev's verdict; { status: "owner",
+ * reason } when the site says the judge is not enabled (409: the stance is blank or the switch
+ * is off) or has no judge yet, so the outline waits for the owner as before; { status: "later",
+ * reason } when Jev, its budget or the site could not answer, to try again next round. A revoked
+ * token or another error only the owner can fix is thrown.
+ */
+export async function judgeOutline(api, slug, brief, options) {
+  if (options.length < JUDGE_MIN_OPTIONS) return { status: "owner", reason: `the brief has ${options.length} options; the judge takes ${JUDGE_MIN_OPTIONS} to ${JUDGE_MAX_OPTIONS}` };
+  let answer;
+  try {
+    answer = await api.judgeOutline(judgeBody(slug, brief, options));
+  } catch (error) {
+    if (!(error instanceof AutomationError)) throw error;
+    if (error.status === 409 && error.code === "video_judge_not_enabled") return { status: "owner", reason: error.message };
+    if (error.status === 404) return { status: "owner", reason: "the site has no judge endpoint yet" };
+    if (error.who === "owner") throw error;
+    return { status: "later", reason: error.message };
+  }
+  const pick = pickFrom(answer);
+  if (!pick) return { status: "later", reason: "the judge answered without a verdict" };
+  return { status: pick.passed ? "passed" : "failed", pick };
+}
+
+/** The outline review's payload and summary: the brief, its options and Jev's pick when there is one. */
+export function outlineReview(brief, options, verdict, suffix = "") {
+  const payload = { brief, options };
+  let summary = `企劃書與 ${options.length} 個大綱選項${suffix}`;
+  if (verdict?.pick) {
+    payload.pick = verdict.pick;
+    summary += verdict.status === "passed" ? `；Jev 挑了 ${verdict.pick.choice}` : "；Jev 沒有挑出過關的大綱，請站主選";
+  }
+  return { payload, summary };
+}
+
+/** A review's summary for the quality check's report: 「自動品管 11 項全過」 or 「自動品管 2 項沒過：pace、links」. */
+export function qaSummary(report) {
+  if (!report) return "自動品管沒有結果";
+  const failed = report.items.filter((each) => !each.ok).map((each) => each.id);
+  return failed.length ? `自動品管 ${failed.length} 項沒過：${failed.join("、")}` : `自動品管 ${report.items.length} 項全過`;
+}
+
+/** The same for the package check: 「上傳包 4 項齊全」 or 「上傳包 1 項沒過：captions」. */
+export function packageSummary(report) {
+  const failed = report.items.filter((each) => !each.ok).map((each) => each.id);
+  return failed.length ? `上傳包 ${failed.length} 項沒過：${failed.join("、")}` : `上傳包 ${report.items.length} 項齊全`;
+}
+
+/**
+ * Run the quality check before the final cut goes up: exit 0 or 1 means there is a report to
+ * send (qa.json for this very final.mp4); 4 means a service was down and the push waits for the
+ * next round; 3 needs the owner (the token). A test that plays the commands hands in runCommand.
+ */
+async function qualityCheck(ctx, slug, workdir, flags) {
+  const args = ["qa", "--slug", slug, ...flags];
+  let code;
+  if (ctx.runCommand) ({ code } = await ctx.runCommand(args, ctx));
+  else {
+    const qa = await import("../qa/cli.mjs");
+    code = await qa.run("qa", args.slice(1), ctx);
+  }
+  if (code === ctx.EXIT.external) throw new ReviewError("the quality check could not finish (a service was down); run review-push --gate final again later", { who: "service" });
+  if (code === ctx.EXIT.owner) throw new ReviewError("the quality check needs the owner (the video tool token); see above", { who: "owner" });
+  return readJson(path.join(workdir, "review", "qa.json"), null);
+}
+
 function client(ctx) {
   const credentials = readCredentials({ env: ctx.env, home: ctx.home });
   if (!credentials.token) throw new ReviewError("no video tool token yet: run `node tools/video/cli.mjs login`", { who: "owner" });
@@ -221,14 +319,21 @@ async function nextGate(places, workdir, doc) {
   return confirmed ? null : "publish";
 }
 
-async function submission(gate, { ctx, request, project, workdir, dir }) {
+async function submission(gate, { ctx, request, project, workdir, dir, flags = [] }) {
   const { doc } = project;
   const slug = doc.slug;
   if (gate === "outline") {
     const file = path.join(dir, "brief.md");
     const brief = readFileSync(file, "utf8");
     const options = outlineOptions(brief);
-    return { gate, content_sha256: await sha256File(file), summary: `企劃書與 ${options.length} 個大綱選項`, payload: { brief, options }, files: [] };
+    // Jev picks when the stance is written and the switch is on; the site approves the review
+    // on arrival when the pick clears the thresholds. Otherwise the owner chooses, as before.
+    const verdict = await judgeOutline(automationClient(ctx, { attempts: 2 }), slug, brief, options);
+    if (verdict.status === "later") ctx.stdout.write(`${slug}: Jev could not judge the outline (${verdict.reason}); it goes up for the owner, and review-push --gate outline again lets Jev pick\n`);
+    else if (verdict.status === "owner") ctx.stdout.write(`${slug}: the owner chooses the outline (${verdict.reason})\n`);
+    else ctx.stdout.write(`${slug}: ${verdict.pick.note}\n`);
+    const { payload, summary } = outlineReview(brief, options, verdict);
+    return { gate, content_sha256: await sha256File(file), summary, payload, files: [] };
   }
   if (gate === "script") {
     // Written afresh so the file always matches video.json; the same narrative gives the same
@@ -271,6 +376,13 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
   }
   if (gate === "final") {
     const file = path.join(workdir, ARTIFACTS.video);
+    const sha = await sha256File(file);
+    // The quality check first (docs/videos/HANDS-OFF.md §自動品管): its report goes up with the
+    // review, and only a report of this very final.mp4 counts; the site approves the cut on
+    // arrival when every item passed and the owner's switch is on.
+    const report = await qualityCheck(ctx, slug, workdir, flags);
+    const qa = report?.final_sha256 === sha ? report : null;
+    if (!qa) ctx.stdout.write(`${slug}: no quality check report for this final.mp4; the review goes up without one\n`);
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
     const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack });
@@ -282,20 +394,51 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
     const seconds = timeline.total_frames / timeline.fps;
     return {
       gate,
-      content_sha256: await sha256File(file),
-      summary: `成片 ${formatClock(Math.round(seconds))}，自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}`,
+      content_sha256: sha,
+      summary: `成片 ${formatClock(Math.round(seconds))}，${qa ? qaSummary(qa) : `自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}；${qaSummary(null)}`}`,
       payload: {
         duration_seconds: seconds,
         checks: { ok: Boolean(checks.ok), problems: checks.problems ?? [] },
         chapters: metadata.chapters.map((chapter) => ({ time: chapter.at, title: chapter.title })),
         metadata: { [metadata.default_language]: { title: metadata.title, description: metadata.description }, ...metadata.localizations },
+        ...(qa ? { qa } : {}),
       },
       files,
     };
   }
+  return publishSubmission({ request, workdir, slug });
+}
+
+/**
+ * The publish gate (docs/videos/HANDS-OFF.md §上傳包與「可以上架」): the package check's report,
+ * what the 「可以上架」 card shows, and every file of the package attached, so the owner downloads
+ * it from the site. The site approves the confirmation on arrival when the four items pass and
+ * the owner's switch is on; final.mp4 goes up in parts like the preview.
+ */
+async function publishSubmission({ request, workdir, slug }) {
   const file = path.join(workdir, ARTIFACTS.upload);
+  const { report, files: listed, metadata } = await readPackageReport(workdir);
+  if (!metadata) throw new ReviewError("upload/metadata.json is missing; run package first", { who: "owner" });
+  const files = [];
+  for (const entry of packageFiles(listed.keys())) files.push(await upload(request, slug, path.join(workdir, UPLOAD_DIR, entry.path), entry.role, entry.content_type));
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const minutes = timeline?.total_frames && timeline.fps ? Math.round((timeline.total_frames / timeline.fps / 60) * 10) / 10 : null;
   const checklist = existsSync(path.join(workdir, UPLOAD_CHECKLIST)) ? uploadItems(readFileSync(path.join(workdir, UPLOAD_CHECKLIST), "utf8")) : [];
-  return { gate, content_sha256: await sha256File(file), summary: "上傳包已備好：請確認可以上架", payload: { checklist }, files: [] };
+  return {
+    gate: "publish",
+    content_sha256: await sha256File(file),
+    summary: report.ok ? `${packageSummary(report)}：請確認可以上架` : packageSummary(report),
+    payload: {
+      package: report,
+      minutes,
+      chapters: (metadata.chapters ?? []).length,
+      locales: packageLocales(metadata),
+      zh: { title: metadata.title ?? "", description: metadata.description ?? "", tags: metadata.tags ?? [] },
+      disclosure: { synthetic: metadata.contains_synthetic_media === true, reason: typeof metadata.disclosure_reason === "string" ? metadata.disclosure_reason : "" },
+      checklist,
+    },
+    files,
+  };
 }
 
 /**
@@ -398,7 +541,8 @@ function fail(error, ctx) {
     ctx.stderr.write(`${error.message}\n`);
     return ctx.EXIT.missing;
   }
-  if (!(error instanceof ReviewError)) throw error;
+  // The judge is asked through the automation client; its errors say who can fix them too.
+  if (!(error instanceof ReviewError || error instanceof AutomationError)) throw error;
   ctx.stderr.write(`${error.message}\n`);
   return error.who === "owner" ? ctx.EXIT.owner : ctx.EXIT.external;
 }
@@ -431,7 +575,7 @@ export async function reviewPush(args, ctx) {
       ctx.stdout.write(`${values.slug}: reported; nothing waits for the owner right now\n`);
       return ctx.EXIT.ok;
     }
-    const bodies = await submissions(gate, { ctx, request, project, workdir, dir });
+    const bodies = await submissions(gate, { ctx, request, project, workdir, dir, flags: values.workdir ? ["--workdir", values.workdir] : [] });
     for (const body of bodies) {
       const review = await request("POST", `${values.slug}/reviews`, { json: body });
       const what = body.subject ? `${gate} (${body.subject})` : gate;

@@ -4,18 +4,22 @@
 // adds what it cannot see (whether the fact-check rounds and the listener edit are done, how
 // many retakes were tried, what the owner wrote when sending something back) in
 // <workdir>/<slug>/auto.json, and does that step: a writing stage through the server's model
-// runner, or one of the existing commands. The three gates the owner keeps — outline, final cut,
-// publishing — stop the video until they decide on /admin/videos; narration waits too unless
-// Jev passed every line and the owner left automatic approval on.
+// runner, or one of the existing commands. The gates stop the video until the site decides: the
+// owner on /admin/videos, or the site itself on arrival when the owner let it (docs/videos/
+// HANDS-OFF.md) — Jev picks the outline against the channel stance, the quality check approves
+// the final cut, the package check approves the upload, Jev's line check approves the narration.
+// What still waits for a person: a check that did not pass, an outline Jev could not pick after
+// the rewrites, a blocked video, and the upload itself, whose YouTube id comes back from the site.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { approve, sha256File } from "../core/approvals.mjs";
+import { stanceProblems } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
 import { eachLine, LINE_ID } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { ARTIFACTS, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
-import { checklistFrom, guideSlugs, outlineOptions, sourceGuideOf } from "../review/sync.mjs";
+import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
@@ -35,6 +39,7 @@ const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
 const DRAMA_SECTIONS = ["## 故事前提", "## 角色", "## 站主觀點", "## 大綱"];
+const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
 // Which manifest a drama stage's failures are read from, and what its entries are called.
 const FIX_SOURCES = {
   look: { manifest: ARTIFACTS.characters, entries: "characters", what: "character" },
@@ -76,15 +81,19 @@ export function mainGuide({ source_guide: guide, source_urls: urls }) {
 
 /**
  * What makes a planner's answer unusable, or null. `usedGuides` are earlier videos' main
- * articles; a drama's brief has the story bible's sections instead of a tutorial's.
+ * articles; a drama's brief has the story bible's sections instead of a tutorial's. With a
+ * channel stance, 站主觀點 must open by naming the stance points it applies (core/lint.mjs
+ * stanceProblems); the local `lint` has no stance and does not check this.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides") {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "") {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
   if (typeof plan.brief !== "string") return "brief is missing";
   const missing = (format === "drama" ? DRAMA_SECTIONS : REQUIRED_SECTIONS).filter((heading) => !plan.brief.includes(heading));
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
+  const stanceIssues = stanceProblems(plan.brief, stance);
+  if (stanceIssues.length) return `站主觀點 does not apply the channel stance: ${stanceIssues.join("; ")}`;
   if (outlineOptions(plan.brief).length < 2) return "brief needs 2 or 3 options written as 「### 選項 A：…」 with 一行說明 and 開場鉤子 lines";
   if (!Array.isArray(plan.source_urls) || !plan.source_urls.every((url) => /^https:\/\//.test(url))) return "source_urls must be https URLs";
   const guide = mainGuide(plan);
@@ -176,15 +185,32 @@ async function run(ctx, command) {
 }
 
 const lastLine = (out, lines = 1) => out.trim().split("\n").slice(-lines).join(" ");
+/** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
+const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}: ${text}`);
 
-/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format. */
+/** The YouTube id the script records, or null: a report without it would clear the site's. */
+function recordedVideoId(state, root) {
+  const video = readJson(path.join(docDir(state.slug, root), "video.json"), null);
+  const id = video?.youtube?.video_id;
+  return YOUTUBE_ID.test(id ?? "") ? id : null;
+}
+
+/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format, YouTube id. */
 async function report(ctx, api, state, stage) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
   // The page has no field for why a video stopped; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: `卡住，需要人處理：${state.blocked}`.slice(0, 120), done: false }] : [];
-  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: [...blocked, ...checklistFrom(status.steps)], format: state.format ?? "slides", ...(guide ? { source_guide: guide } : {}), ...(state.series ? { series_slug: state.series.slug, episode_number: state.series.episode } : {}) });
+  await api.report(state.slug, {
+    title: state.title || state.slug,
+    stage: stage.slice(0, 40),
+    checklist: [...blocked, ...checklistFrom(status.steps)],
+    format: state.format ?? "slides",
+    youtube_video_id: recordedVideoId(state, ctx.root),
+    ...(guide ? { source_guide: guide } : {}),
+    ...(state.series ? { series_slug: state.series.slug, episode_number: state.series.episode } : {}),
+  });
 }
 
 export class Automation {
@@ -215,11 +241,17 @@ export class Automation {
     return this.refs;
   }
 
+  /** The channel's stance from the settings tab (docs/videos/HANDS-OFF.md §頻道立場); "" while the owner has not written one. */
+  get stance() {
+    return typeof this.settings.channel_stance === "string" ? this.settings.channel_stance.trim() : "";
+  }
+
   async stage(stage, slug, payload, maxOutputTokens, format = "slides", variant = null) {
-    // The owner's standing instructions for the stage (settings tab) end the prompt; the server
-    // keeps what was sent, per stage, format and variant, for the owner to read.
+    // The channel's stance (the planner and the writer read it) and the owner's standing
+    // instructions for the stage (settings tab) end the prompt; the server keeps what was sent,
+    // per stage, format and variant, for the owner to read.
     const standing = this.settings.stage_instructions?.[stage] ?? "";
-    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant), payload, maxOutputTokens, format, variant);
+    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance), payload, maxOutputTokens, format, variant);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
     try {
@@ -279,6 +311,14 @@ export class Automation {
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "dropped" && dropped.has(state.slug)) return this.drop(state, dropped.get(state.slug));
     }
+    // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
+    // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
+    const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
+    for (const state of automatedVideos(this.workBase)) {
+      if (!["active", "done"].includes(state.status) || !uploaded.has(state.slug)) continue;
+      const recorded = await this.recordVideoId(state, uploaded.get(state.slug));
+      if (recorded) return recorded;
+    }
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "active") continue;
       let done;
@@ -307,6 +347,24 @@ export class Automation {
   room() {
     const active = automatedVideos(this.workBase).filter((state) => state.status === "active").length;
     return active < this.settings.max_waiting_drafts;
+  }
+
+  /**
+   * Write the YouTube id the site reports into docs/videos/<slug>/video.json (youtube.video_id),
+   * the file the worker's docs volume holds, once: a script that already names a video keeps it.
+   * `status` then reads the video as on YouTube, and /admin/videos gets the finished checklist.
+   */
+  async recordVideoId(state, videoId) {
+    const file = path.join(docDir(state.slug, this.ctx.root), "video.json");
+    if (!existsSync(file)) return null;
+    const video = JSON.parse(readFileSync(file, "utf8"));
+    if (video.youtube?.video_id) return null;
+    atomicWrite(file, `${JSON.stringify({ ...video, youtube: { ...(video.youtube ?? {}), video_id: videoId } }, null, 2)}\n`);
+    state.status = "done";
+    state.youtube_video_id = videoId;
+    saveState(this.workdir(state.slug), state);
+    await report(this.ctx, this.api, state, "on YouTube");
+    return `${state.slug}: on YouTube as ${videoId}; video.json records it and the video is complete`;
   }
 
   /** The owner dropped this video on /admin/videos: leave it, files and all. */
@@ -392,7 +450,7 @@ export class Automation {
         problem = error.message;
         continue;
       }
-      problem = planProblem(answer, taken, usedGuides);
+      problem = planProblem(answer, taken, usedGuides, "slides", this.stance);
       if (!problem) plan = answer;
     }
     // Written whatever came of it: a failed draft waits for the next interval like a good one.
@@ -419,16 +477,35 @@ export class Automation {
       notes: [],
     };
     saveState(this.workdir(plan.slug), state);
-    await this.submitOutline(state);
-    return `draft: ${plan.slug} planned from ${topics.length} topics; outline sent to /admin/videos`;
+    return `draft: ${plan.slug} planned from ${topics.length} topics; ${await this.submitOutline(state)}`;
   }
 
+  /**
+   * Send the outline for review, and say what became of it. With the channel stance written and
+   * the switch on, Jev picks first (docs/videos/HANDS-OFF.md §Jev 挑大綱): a pick that clears the
+   * thresholds goes up with the review and the site approves it on arrival; one that does not is
+   * the planner's note for a rewrite, MAX_REPLANS times in all, after which the outline waits for
+   * the owner with the last pick attached, so the review card shows Jev's table. A site whose
+   * judge is off (409) means the owner chooses as before; Jev or the site being down ends this
+   * run, and the next one asks again.
+   */
   async submitOutline(state) {
     const file = path.join(docDir(state.slug, this.ctx.root), "brief.md");
     const brief = readFileSync(file, "utf8");
-    await report(this.ctx, this.api, state, "outline approved");
     const options = outlineOptions(brief);
-    await this.api.submit(state.slug, { gate: "outline", content_sha256: await sha256File(file), summary: `企劃書與 ${options.length} 個大綱選項（自動產生）`, payload: { brief, options }, files: [] });
+    const verdict = await judgeOutline(this.api, state.slug, brief, options);
+    if (verdict.status === "later") return this.later(`Jev could not judge the outline (${verdict.reason}); the next run asks again`);
+    if (verdict.pick) {
+      state.last_pick = verdict.pick;
+      saveState(this.workdir(state.slug), state);
+    }
+    if (verdict.status === "failed" && state.replans < MAX_REPLANS) return this.replan(state, verdict.pick.note, "Jev");
+    await report(this.ctx, this.api, state, "outline approved");
+    const { payload, summary } = outlineReview(brief, options, verdict, "（自動產生）");
+    await this.api.submit(state.slug, { gate: "outline", content_sha256: await sha256File(file), summary, payload, files: [] });
+    if (verdict.status === "passed") return `Jev picked outline ${verdict.pick.choice}; outline sent to /admin/videos`;
+    if (verdict.status === "failed") return `Jev found no outline that passes after ${state.replans} rewrites (${verdict.pick.note}); outline sent to /admin/videos for the owner, pick attached`;
+    return `outline sent to /admin/videos for the owner (${verdict.reason})`;
   }
 
   /** What the drama planner and writer get beyond a tutorial's payload. */
@@ -472,7 +549,7 @@ export class Automation {
         problem = error.message;
         continue;
       }
-      problem = planProblem(answer, taken, request.source_guide ? new Set() : usedGuides, "drama");
+      problem = planProblem(answer, taken, request.source_guide ? new Set() : usedGuides, "drama", this.stance);
       if (!problem) plan = answer;
     }
     const slug = plan?.slug ?? `drama-${String(request.id).slice(0, 8)}`;
@@ -501,8 +578,7 @@ export class Automation {
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     saveState(this.workdir(slug), state);
-    await this.submitOutline(state);
-    return `drama: ${slug} planned from the owner's request; outline sent to /admin/videos`;
+    return `drama: ${slug} planned from the owner's request; ${await this.submitOutline(state)}`;
   }
 
   /**
@@ -654,20 +730,19 @@ export class Automation {
 
     if (next === "outline approved") {
       const review = await this.decision(state, "outline", path.join(dir, "brief.md"));
-      if (!review) {
-        await this.submitOutline(state);
-        return `${state.slug}: outline re-sent to /admin/videos`;
-      }
+      if (!review) return lineFor(state.slug, await this.submitOutline(state));
       if (review.status === "approved") {
         await this.pull(state.slug);
         state.chosen = review.choice;
         state.notes.push(...(review.note ? [`outline: ${review.note}`] : []));
         saveState(workdir, state);
-        return `${state.slug}: the owner chose outline ${review.choice}`;
+        // The site approves on arrival when Jev's pick passed; otherwise the owner chose.
+        const jev = review.payload?.pick?.passed === true && review.payload.pick.choice === review.choice;
+        return `${state.slug}: ${jev ? "Jev" : "the owner"} chose outline ${review.choice}${review.note ? ` (${review.note})` : ""}`;
       }
       if (review.status === "rejected") {
-        if (state.replans >= MAX_REPLANS) return this.block(state,`the owner sent the outline back ${state.replans + 1} times: ${review.note}`);
-        return this.replan(state, review.note ?? "");
+        if (state.replans >= MAX_REPLANS) return this.block(state,`the outline was sent back ${state.replans + 1} times (Jev and the owner together): ${review.note}`);
+        return lineFor(state.slug, await this.replan(state, review.note ?? ""));
       }
       return null;
     }
@@ -727,6 +802,7 @@ export class Automation {
       if (review.status === "approved") {
         await this.pull(state.slug);
         state.status = "done";
+        state.notes.push(...(review.note ? [`publish: ${review.note}`] : []));
         saveState(workdir, state);
         if (state.series) {
           try {
@@ -744,7 +820,7 @@ export class Automation {
             this.log(`  could not mark the drama request done: ${error.message}`);
           }
         }
-        return `${state.slug}: the owner confirmed the upload; they upload it in YouTube Studio`;
+        return `${state.slug}: the upload is confirmed${review.note ? ` (${review.note})` : ""}; the owner uploads it in YouTube Studio and pastes the address on /admin/videos`;
       }
       if (review.status === "rejected") return this.block(state,`the owner sent the upload back: ${review.note}`);
       return null;
@@ -757,7 +833,11 @@ export class Automation {
     return null;
   }
 
-  async replan(state, note) {
+  /**
+   * Rewrite the brief from a note — the owner's when they sent the outline back, Jev's when no
+   * option passed (`by`) — then send it again; both count toward MAX_REPLANS.
+   */
+  async replan(state, note, by = "the owner") {
     const dir = docDir(state.slug, this.ctx.root);
     const previous = readFileSync(path.join(dir, "brief.md"), "utf8");
     const earlier = this.earlierVideos().filter((video) => video.slug !== state.slug);
@@ -766,10 +846,10 @@ export class Automation {
     const drama = state.format === "drama";
     const { topics } = drama ? { topics: [] } : await this.api.topics();
     const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes ?? 3, state.target_minutes ?? 3], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
-    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, previous_brief: previous, slug: state.slug }, earlier), 16_000, state.format);
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format);
+    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier), 16_000, state.format);
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance);
     state.replans += 1;
-    state.notes.push(`outline sent back: ${note}`);
+    state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "planner", `the re-planned brief was not usable (${problem})`);
     this.cleared(state, "planner");
@@ -777,8 +857,7 @@ export class Automation {
     state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
     state.source_guide = answer.source_guide ?? state.source_guide;
     saveState(this.workdir(state.slug), state);
-    await this.submitOutline(state);
-    return `${state.slug}: brief rewritten after the owner's note; outline re-sent`;
+    return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }
 
   scriptPayload(state, extra) {
@@ -1085,16 +1164,24 @@ export class Automation {
     return `${state.slug}: captions written`;
   }
 
+  /**
+   * A gate the site decides: the final cut. `review-push --gate final` runs the quality check
+   * and sends its report; the site approves on arrival when every item passed and the owner's
+   * switch is on, else the owner decides. A push that could not finish (the check's service, the
+   * site) ends this run and is tried again next round.
+   */
   async gate(state, gate, file) {
     const review = await this.decision(state, gate, file);
     if (!review) {
       const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", gate]);
-      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the ${gate} for review: ${pushed.out.trim()}`);
-      return `${state.slug}: ${gate} sent to /admin/videos`;
+      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the ${gate} for review: ${lastLine(pushed.out, 2)}`);
+      return `${state.slug}: ${gate} sent to /admin/videos (${lastLine(pushed.out)})`;
     }
     if (review.status === "approved") {
       await this.pull(state.slug);
-      return `${state.slug}: the owner approved the ${gate}`;
+      if (review.note) state.notes.push(`${gate}: ${review.note}`);
+      saveState(this.workdir(state.slug), state);
+      return `${state.slug}: the ${gate} is approved${review.note ? ` (${review.note})` : ""}`;
     }
     if (review.status === "rejected") return this.block(state,`the owner sent the ${gate} back: ${review.note}`);
     return null;
