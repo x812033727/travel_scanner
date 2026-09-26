@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -75,8 +76,62 @@ test("requests follow scenes, stay under the server's limit and change key when 
   const again = planRequests(changed, { terms: {} });
   assert.equal(again[0].key, requests[0].key);
   assert.notEqual(again[2].key, requests[2].key);
+  // A slides clip's key is the voice fields and the parts, as it was before dramas had speakers:
+  // the audio caches of every published video depend on it.
+  const pinned = createHash("sha256").update(JSON.stringify([{ voice: "zh-TW-HsiaoChenNeural", rate: "+0%" }, [{ text: "另一個場景。" }]])).digest("hex").slice(0, 16);
+  assert.equal(requests[2].lines[0].key, pinned);
+  assert.ok(requests.every((request) => request.speaker === "narrator"));
   // Each Chinese character is billed twice, plus the break markup.
   assert.equal(billableForRequest({ voice: "zh-TW-X", segments: [{ parts: [{ text: "中文A" }], break_after_ms: 800 }] }), 3 + 2 + '<break time="800ms"/>'.length);
+});
+
+test("a drama's requests change with the speaker, and a line's emotion rides in the Gemini style", () => {
+  const doc = {
+    format: "drama",
+    voice: { provider: "gemini", name: "Sulafat", style: "說書人" },
+    characters: [
+      { id: "jingwei", name: "精衛", voice: { provider: "gemini", name: "Kore", style: "少女" } },
+      { id: "yandi", name: "炎帝", voice: { provider: "azure", name: "zh-TW-YunJheNeural" } },
+    ],
+    scenes: [
+      {
+        id: "s",
+        lines: [
+          { id: "n1", text: "旁白一。" },
+          { id: "n2", text: "旁白二。" },
+          { id: "j1", text: "父王。", speaker: "jingwei", emotion: "急" },
+          { id: "j2", text: "我去了。", speaker: "jingwei", emotion: "急" },
+          { id: "j3", text: "再見。", speaker: "jingwei" },
+          { id: "y1", text: "早點回來。", speaker: "yandi", emotion: "擔心" },
+          { id: "n3", text: "旁白三。", speaker: "narrator" },
+        ],
+      },
+    ],
+  };
+  const requests = planRequests(doc, { terms: {} });
+  // Consecutive lines by one speaker with one emotion share a request; anything else starts a new one.
+  assert.deepEqual(requests.map((request) => request.lines.map((line) => line.id)), [["n1", "n2"], ["j1", "j2"], ["j3"], ["y1"], ["n3"]]);
+  assert.deepEqual(requests.map((request) => request.speaker), ["narrator", "jingwei", "jingwei", "yandi", "narrator"]);
+  assert.deepEqual(requests.map((request) => request.id), ["s#0", "s#1", "s#2", "s#3", "s#4"]);
+  assert.equal(requests[0].body.voice, "gemini:Sulafat");
+  assert.equal(requests[0].body.style, "說書人");
+  assert.equal(requests[1].body.voice, "gemini:Kore");
+  assert.equal(requests[1].body.style, "少女。急");
+  assert.equal(requests[2].body.style, "少女");
+  // Azure has no style prompt, so the emotion goes nowhere (lint warns about it).
+  assert.deepEqual(requests[3].body, { voice: "zh-TW-YunJheNeural", rate: "+0%", segments: [{ parts: [{ text: "早點回來。" }], break_after_ms: 0 }] });
+  // The same words in another emotion are another take, and a request of their own; the line
+  // after them keeps its take.
+  const calmer = structuredClone(doc);
+  calmer.scenes[0].lines[2].emotion = "平靜";
+  const retaken = planRequests(calmer, { terms: {} });
+  assert.deepEqual(retaken.map((request) => request.lines.map((line) => line.id)), [["n1", "n2"], ["j1"], ["j2"], ["j3"], ["y1"], ["n3"]]);
+  assert.notEqual(retaken[1].lines[0].key, requests[1].lines[0].key);
+  assert.equal(retaken[2].lines[0].key, requests[1].lines[1].key);
+  // A long style plus an emotion is cut at the server's 400 characters.
+  const verbose = structuredClone(doc);
+  verbose.characters[0].voice.style = "字".repeat(398);
+  assert.equal(planRequests(verbose, { terms: {} })[1].body.style.length, 400);
 });
 
 function fakeServer({ status = {}, failures = [] } = {}) {
@@ -246,6 +301,53 @@ test("tts without a token, or against an unconfigured card, needs the owner", as
   const dry = capture({ root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base });
   assert.equal(await main(["tts", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok);
   assert.match(dry.out.stdout, /3 requests, 3 to synthesize; about \d+ billable characters/);
+});
+
+test("tts on a drama gives each speaker their voice, and names the character whose voice the site lacks", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const server = fakeServer({ status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 1000 } });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const dry = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  assert.match(dry.out.stdout, /^7 requests, 7 to synthesize;/m);
+  assert.match(dry.out.stdout, /^voices: gemini:Sulafat \d+ characters \(narrator\); gemini:Kore \d+ characters \(jingwei \(精衛\)\); gemini:Charon \d+ characters \(yandi \(炎帝\)\)$/m);
+  assert.match(dry.out.stdout, /^server: voice gemini:Sulafat ready; voice gemini:Kore ready; voice gemini:Charon ready; gemini: 299000 characters left this month$/m);
+
+  const run = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  const bodies = server.calls.filter((call) => call.url.endsWith("/api/video/speech")).map((call) => JSON.parse(call.init.body));
+  assert.deepEqual(
+    bodies.map((body) => body.voice),
+    ["gemini:Sulafat", "gemini:Kore", "gemini:Charon", "gemini:Sulafat", "gemini:Sulafat", "gemini:Kore", "gemini:Sulafat"],
+  );
+  assert.equal(bodies[1].style, "清亮、倔強的少女聲，台灣國語。開心、有點急");
+  assert.equal(bodies[2].style, "低沉、緩慢的長者聲，台灣國語。溫和但擔心");
+  assert.equal(bodies[3].style, "沉穩的說書人語氣，台灣國語，語速稍慢", "the narrator's style is untouched");
+  assert.match(run.out.stdout, /^farewell#1 \[yandi \(炎帝\)\]: 1 lines$/m);
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  assert.equal(timeline.lines.find((line) => line.id === "x9fe").speaker, "jingwei");
+  assert.equal(timeline.lines.length, 10);
+  const state = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8"));
+  assert.deepEqual(state.runs.at(-1).voices, ["gemini:Sulafat", "gemini:Kore", "gemini:Charon"]);
+
+  // Editing one character's line retakes that line alone, with that character's voice.
+  const file = path.join(box.dir, "video.json");
+  writeFileSync(file, readFileSync(file, "utf8").replace("早點回來。", "早些回來。"));
+  const edited = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], edited.ctx), EXIT.ok, edited.out.stderr);
+  const retakes = server.calls.filter((call) => call.url.endsWith("/api/video/speech")).slice(bodies.length).map((call) => JSON.parse(call.init.body));
+  assert.equal(retakes.length, 1);
+  assert.equal(retakes[0].voice, "gemini:Charon");
+
+  // A character voiced by an Azure voice the admin card does not allow stops tts, naming the character.
+  const azure = JSON.parse(readFileSync(file, "utf8"));
+  azure.characters[1].voice = { provider: "azure", name: "zh-TW-YunJheNeural" };
+  writeFileSync(file, JSON.stringify(azure));
+  const strict = fakeServer({ status: { gemini_configured: true, voices: ["zh-TW-HsiaoChenNeural"] } });
+  const refused = capture({ root: box.root, env, home: box.base, fetch: strict.fetchImpl });
+  assert.equal(await main(["tts", "--slug", box.slug], refused.ctx), EXIT.owner);
+  assert.match(refused.out.stderr, /voice zh-TW-YunJheNeural is not on the admin card's allowlist \(spoken by yandi \(炎帝\)\)/);
+  assert.equal(strict.calls.filter((call) => call.url.endsWith("/api/video/speech")).length, 0, "nothing synthesized");
 });
 
 test("audition writes one clip per allowed voice and a page to compare them", async () => {
