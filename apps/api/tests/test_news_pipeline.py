@@ -53,6 +53,7 @@ from app.news_automation.schemas import (
     VerificationResult,
 )
 from app.news_automation.worker import QUEUE_NAME
+from app.problems import AppError
 from app.worker import QUEUE_NAMES
 
 REPLY_MODELS: tuple[type[BaseModel], ...] = (
@@ -1341,3 +1342,56 @@ async def test_a_refreshed_article_jev_holds_waits_for_the_owner(
 
     assert result == "manual_review"
     assert stored is not None and stored.error_code == "news_jev_final_hold"
+
+
+def test_a_candidate_waiting_for_a_subscription_account_tries_again_in_half_an_hour(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    queue = Mock()
+    monkeypatch.setattr(jobs, "SessionFactory", FakeSessionFactory)
+    monkeypatch.setattr(jobs, "load_runtime_settings", AsyncMock(return_value=get_settings()))
+    monkeypatch.setattr(jobs, "process_candidate", AsyncMock(return_value="paused"))
+    monkeypatch.setattr(jobs, "get_redis", Mock())
+    monkeypatch.setattr(jobs, "_close_resources", AsyncMock())
+    monkeypatch.setattr(jobs, "_queue", lambda: (Mock(), queue))
+    candidate_id = str(uuid4())
+    jobs.run_candidate(candidate_id)
+    assert queue.enqueue_in.call_count == 1
+    delay, job, target = queue.enqueue_in.call_args.args
+    assert (delay, job, target) == (
+        timedelta(minutes=30),
+        "app.news_automation.jobs.run_candidate",
+        candidate_id,
+    )
+    assert "-paused-" in queue.enqueue_in.call_args.kwargs["job_id"]
+
+
+@pytest.mark.asyncio
+async def test_when_every_subscription_account_is_full_the_story_waits_instead_of_failing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate_id = candidate.id
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    stage_one_mocks(monkeypatch)
+    full = AppError(429, "subscription_quota_paused", "every Claude account is at 100%")
+    monkeypatch.setattr(ai, "draft_article", AsyncMock(side_effect=full))
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        draft_run = await session.scalar(
+            select(NewsPipelineRun).where(
+                NewsPipelineRun.candidate_id == candidate_id, NewsPipelineRun.stage == "draft"
+            )
+        )
+    await engine.dispose()
+
+    assert result == "paused"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("discovered", "news_subscription_paused")
+    assert draft_run is not None and draft_run.error_code == "subscription_quota_paused"

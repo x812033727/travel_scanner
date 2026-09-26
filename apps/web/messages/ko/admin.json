@@ -578,6 +578,14 @@
         "api_key": "API 키",
         "subscription": "구독 계정(호스트의 Claude Code)"
       }
+    },
+    "ai_subscription_fallback": {
+      "label": "구독 계정이 모두 한도일 때",
+      "help": "모든 Claude 계정이 한도에 이르렀을 때의 동작입니다. \"계정 회복 대기\": 뉴스는 대기열로 돌아가 30분마다 다시 시도하고, 다른 기능은 그 호출이 실패합니다. \"MiniMax 사용\": 바로 MiniMax로 실행합니다. 빠르지만 품질이 떨어집니다. 사이트 소유자만 바꿀 수 있습니다.",
+      "options": {
+        "wait": "계정 회복 대기",
+        "minimax": "MiniMax 사용"
+      }
     }
   },
   "hotspotTabs": {
