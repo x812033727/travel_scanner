@@ -2191,6 +2191,10 @@ class VideoProject(Timestamped, Base):
     title: Mapped[str] = mapped_column(String(200))
     # Which pipeline makes it: "slides" or the AI drama route (docs/videos/DRAMA.md; 0097).
     format: Mapped[str] = mapped_column(String(8), default="slides", server_default="slides")
+    # An episode of a long drama series (docs/videos/SERIES.md): the series' slug and the
+    # episode's number, so the drama tab lists a series' episodes together. Migration 0099.
+    series_slug: Mapped[str | None] = mapped_column(String(40), nullable=True, index=True)
+    episode_number: Mapped[int | None] = mapped_column(Integer, nullable=True)
     stage: Mapped[str] = mapped_column(String(40))
     checklist: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
     youtube_video_id: Mapped[str | None] = mapped_column(String(32), nullable=True)
@@ -2218,9 +2222,12 @@ class VideoReview(Timestamped, Base):
     __table_args__ = (
         UniqueConstraint("project_id", "gate", "content_sha256", name="uq_video_review_content"),
         # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095);
-        # dubs is a batch of finished dub tracks the owner uploads (docs/videos/DUBS.md; 0099).
+        # script is an episode's screenplay before any image or clip is paid for
+        # (docs/videos/SERIES.md; migration 0099); dubs is a batch of finished dub tracks the
+        # owner uploads (docs/videos/DUBS.md; migration 0100).
         CheckConstraint(
-            "gate IN ('outline', 'look', 'storyboard', 'audio', 'final', 'publish', 'dubs')",
+            "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', "
+            "'publish', 'dubs')",
             name="ck_video_review_gate",
         ),
         CheckConstraint(

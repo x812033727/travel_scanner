@@ -439,6 +439,7 @@ async def test_a_viewer_reads_the_prompts_as_they_were_sent(
         {
             "stage": "planner",
             "format": "slides",
+            "variant": "",
             "slug": "a",
             "instructions": "Plan.",
             "sent_at": "2026-09-26T15:00:00Z",

@@ -88,6 +88,14 @@ class DramaSettings(StrictModel):
     subtitle_burn_in: bool
     style_preset: StylePreset
     drama_topic_scope: list[TopicWord] = Field(max_length=20)
+    # A long series (docs/videos/SERIES.md); a page from before these existed sends the stored
+    # values back unchanged, since it sends the whole drama object.
+    series_max_in_flight: int = Field(default=1, ge=1, le=2)
+    series_script_gate: bool = True
+    series_auto_continue: bool = True
+    series_chapter_ahead: int = Field(default=2, ge=0, le=10)
+    series_doc_rewrites: int = Field(default=2, ge=0, le=5)
+    series_episodes_per_month: int = Field(default=30, ge=0, le=500)
 
     @model_validator(mode="after")
     def _distinct_voices(self) -> Self:
@@ -320,6 +328,9 @@ class StageRunIn(StrictModel):
     # The video's format, so the prompt is kept under the right heading for the owner to read;
     # a worker from before the drama route sends none and is filed under slides.
     format: PromptFormat = "slides"
+    # A series document (setting, outline, chapter), an episode, a recap or a fix: kept under
+    # its own heading, and not counted as one of the month's drafts (docs/videos/SERIES.md).
+    variant: str | None = Field(default=None, pattern=r"^[a-z][a-z0-9_-]{0,31}$")
 
 
 class StageRunOut(StrictModel):
@@ -337,6 +348,7 @@ class StagePromptView(StrictModel):
 
     stage: Stage
     format: PromptFormat
+    variant: str = ""
     slug: str
     instructions: str
     sent_at: datetime
@@ -360,3 +372,214 @@ class TopicsOut(StrictModel):
     topics: list[TopicView]
     # Why a source returned nothing: off in the settings, no key, or the day's budget used.
     notes: list[str]
+
+
+# A long drama series (docs/videos/SERIES.md): the series, the documents the owner approves
+# (the setting book, the whole-series outline, each chapter's detailed outline), the episode
+# table, and what the worker asks for and reports.
+SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
+SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
+SeriesAspect = Literal["world", "bonds", "structure", "mood"]
+SeriesTone = Literal[
+    "dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"
+]
+DocKind = Literal["setting", "outline", "chapter"]
+DocStatus = Literal["generating", "review", "approved", "rejected"]
+EpisodeStatus = Literal["planned", "ready", "queued", "started", "done", "skipped"]
+SeriesJobKind = Literal["setting", "outline", "chapter", "episode"]
+SeriesAction = Literal["plan-next-chapter", "start-next"]
+MAX_DOC_MD_CHARS = 200_000
+MAX_DOC_JSON_BYTES = 512 * 1024
+
+
+class SeriesIn(StrictModel):
+    """What the owner fills in to start a series; the setting book is planned from it."""
+
+    slug: str = Field(pattern=SERIES_SLUG_PATTERN)
+    title: str = Field(min_length=1, max_length=200)
+    premise: str = Field(min_length=1, max_length=4000)
+    aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
+    tone: SeriesTone = "dual-male-leads-subtext"
+    style_preset: StylePreset = "cinematic-3d"
+    target_minutes: int = Field(default=3, ge=1, le=8)
+    planned_episodes: int = Field(default=100, ge=1, le=500)
+    episodes_per_chapter: int = Field(default=10, ge=4, le=20)
+    open_ended: bool = True
+    note: str | None = Field(default=None, min_length=1, max_length=2000)
+
+    @field_validator("title", "premise", "note")
+    @classmethod
+    def _trimmed(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        text = value.strip()
+        if not text:
+            raise ValueError("must not be blank")
+        return text
+
+    @field_validator("aspects")
+    @classmethod
+    def _distinct(cls, value: list[SeriesAspect]) -> list[SeriesAspect]:
+        if len(set(value)) != len(value):
+            raise ValueError("aspects must not repeat")
+        return value
+
+
+class SeriesPatch(StrictModel):
+    """What the owner may change later; a field left out stays as it is."""
+
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    premise: str | None = Field(default=None, min_length=1, max_length=4000)
+    aspects: list[SeriesAspect] | None = Field(default=None, max_length=4)
+    tone: SeriesTone | None = None
+    style_preset: StylePreset | None = None
+    target_minutes: int | None = Field(default=None, ge=1, le=8)
+    planned_episodes: int | None = Field(default=None, ge=1, le=500)
+    episodes_per_chapter: int | None = Field(default=None, ge=4, le=20)
+    open_ended: bool | None = None
+    note: str | None = Field(default=None, max_length=2000)
+    # Only these three: the others are set by the documents' decisions.
+    status: Literal["active", "paused", "finished"] | None = None
+
+
+class SeriesDocOut(BaseModel):
+    id: UUID
+    kind: DocKind
+    chapter_number: int
+    version: int
+    body_md: str
+    body_json: dict[str, object]
+    status: DocStatus
+    note: str | None
+    decided_at: datetime | None
+    created_at: datetime
+
+
+class SeriesEpisodeOut(BaseModel):
+    number: int
+    chapter_number: int
+    title: str
+    logline: str
+    beats: dict[str, object]
+    status: EpisodeStatus
+    slug: str | None
+    recap: str | None
+    started_at: datetime | None
+    finished_at: datetime | None
+    # The video the worker made of it, once it started, as /admin/videos lists it.
+    video: dict[str, object] | None = None
+
+
+class SeriesSummary(BaseModel):
+    id: UUID
+    slug: str
+    title: str
+    premise: str
+    aspects: list[SeriesAspect]
+    tone: SeriesTone
+    style_preset: StylePreset
+    target_minutes: int
+    planned_episodes: int
+    episodes_per_chapter: int
+    chapters: int
+    open_ended: bool
+    status: SeriesStatus
+    note: str | None
+    requested_chapter: int | None
+    force_next: bool
+    episodes_done: int
+    episodes_started: int
+    episodes_ready: int
+    docs_pending: int
+    media_usd: float = 0.0
+    clip_seconds: int = 0
+    created_at: datetime
+    updated_at: datetime
+
+
+class SeriesOut(SeriesSummary):
+    # The latest version of every document, and every planned episode.
+    docs: list[SeriesDocOut]
+    episodes: list[SeriesEpisodeOut]
+
+
+class SeriesListOut(BaseModel):
+    series: list[SeriesSummary]
+
+
+class SeriesDocDecisionIn(StrictModel):
+    decision: Literal["approve", "reject"]
+    note: str | None = Field(default=None, max_length=2000)
+
+
+class SeriesDocEditIn(StrictModel):
+    """The owner rewrites a document: a new version, already approved or waiting as asked."""
+
+    body_md: str = Field(min_length=1, max_length=MAX_DOC_MD_CHARS)
+    body_json: dict[str, object] | None = None
+    approve: bool = False
+
+
+class SeriesEpisodeEditIn(StrictModel):
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    logline: str | None = Field(default=None, max_length=2000)
+    beats: dict[str, object] | None = None
+
+
+class SeriesActionOut(BaseModel):
+    series: SeriesSummary
+    detail: str
+
+
+class SeriesDocSubmitIn(StrictModel):
+    """A document the worker planned: a new version that waits for the owner."""
+
+    kind: DocKind
+    chapter_number: int = Field(default=0, ge=0, le=200)
+    body_md: str = Field(min_length=1, max_length=MAX_DOC_MD_CHARS)
+    body_json: dict[str, object] = Field(default_factory=dict)
+
+
+class SeriesContextOut(BaseModel):
+    """What the prompts need: the approved documents, the episodes so far and the recaps."""
+
+    series: SeriesSummary
+    setting: SeriesDocOut | None
+    outline: SeriesDocOut | None
+    chapter: SeriesDocOut | None
+    chapter_number: int | None
+    chapter_range: tuple[int, int] | None
+    episode: SeriesEpisodeOut | None
+    episodes: list[SeriesEpisodeOut]
+    recaps: list[dict[str, object]]
+    mysteries: list[dict[str, object]]
+
+
+class SeriesJob(BaseModel):
+    kind: SeriesJobKind
+    series: SeriesSummary
+    chapter_number: int | None = None
+    episode: SeriesEpisodeOut | None = None
+    # The version the worker is rewriting, with the owner's note, when a document was sent back.
+    previous: SeriesDocOut | None = None
+    rewrites_left: int = 0
+    context: SeriesContextOut
+
+
+class SeriesJobOut(BaseModel):
+    job: SeriesJob | None
+
+
+class SeriesEpisodeStartIn(StrictModel):
+    slug: str = Field(pattern=SLUG_PATTERN)
+
+
+class SeriesEpisodeStartOut(BaseModel):
+    request: DramaRequestOut
+    episode: SeriesEpisodeOut
+    context: SeriesContextOut
+
+
+class SeriesEpisodeRecapIn(StrictModel):
+    recap: str = Field(min_length=1, max_length=4000)
+    state: dict[str, object] = Field(default_factory=dict)

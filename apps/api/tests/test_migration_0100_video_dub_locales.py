@@ -1,4 +1,4 @@
-"""0099 adds ``video_projects.dub_locales`` and the ``dubs`` review gate.
+"""0100 adds ``video_projects.dub_locales`` and the ``dubs`` review gate.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees the tables in
 their older shape; this test takes the column and the wide gate check off a real PostgreSQL, runs
@@ -32,11 +32,11 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0099_video_dub_locales"
+MIGRATION = "0100_video_dub_locales"
 PROJECTS = "video_projects"
 REVIEWS = "video_reviews"
 GATE_CHECK = "ck_video_review_gate"
-OLD_GATES = "gate IN ('outline', 'look', 'storyboard', 'audio', 'final', 'publish')"
+OLD_GATES = "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', 'publish')"
 
 
 @pytest_asyncio.fixture(scope="module", loop_scope="module", autouse=True)
@@ -96,7 +96,7 @@ def _older_shape(connection: Connection) -> None:
 def _exercise(connection: Connection) -> None:
     # A video from before the column existed: it must come out with no dub languages.
     session = Session(bind=connection)
-    project = VideoProject(slug="mig-0099-dubs", title="t", stage="final")
+    project = VideoProject(slug="mig-0100-dubs", title="t", stage="final")
     session.add(project)
     session.flush()
     _older_shape(connection)
@@ -107,7 +107,7 @@ def _exercise(connection: Connection) -> None:
     assert "dub_locales" in columns(connection, PROJECTS)
     assert "'dubs'" in checks(connection, REVIEWS)[GATE_CHECK]
     stored = connection.execute(
-        sa.text(f"SELECT dub_locales FROM {PROJECTS} WHERE slug = 'mig-0099-dubs'")
+        sa.text(f"SELECT dub_locales FROM {PROJECTS} WHERE slug = 'mig-0100-dubs'")
     ).scalar()
     assert stored == []
     # Idempotent: a second upgrade finds everything and leaves it alone.

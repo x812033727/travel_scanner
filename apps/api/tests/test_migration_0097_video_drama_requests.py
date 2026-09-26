@@ -83,7 +83,9 @@ def in_a_rolled_back_transaction(
 
 
 def _exercise(connection: Connection) -> None:
-    connection.execute(sa.text(f"DROP TABLE IF EXISTS {TABLE}"))
+    # Later migrations hang foreign keys on this table (0099's episodes point at their request);
+    # CASCADE takes those constraints with it, and the transaction rolls everything back.
+    connection.execute(sa.text(f"DROP TABLE IF EXISTS {TABLE} CASCADE"))
     connection.execute(sa.text(f"ALTER TABLE {PROJECTS} DROP CONSTRAINT IF EXISTS {FORMAT_CHECK}"))
     connection.execute(sa.text(f"ALTER TABLE {PROJECTS} DROP COLUMN IF EXISTS format"))
     assert TABLE not in tables(connection)

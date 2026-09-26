@@ -119,6 +119,8 @@ def _summary(project: VideoProject, pending: int, spend: SlugSpend | None = None
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
         "dub_locales": list(project.dub_locales or []),
+        "series_slug": project.series_slug,
+        "episode_number": project.episode_number,
     }
 
 
@@ -165,6 +167,10 @@ async def upsert_project(
         project.source_guide = payload.source_guide
     if payload.format is not None:
         project.format = payload.format
+    if payload.series_slug is not None:
+        project.series_slug = payload.series_slug
+    if payload.episode_number is not None:
+        project.episode_number = payload.episode_number
     project.last_synced_at = now
     project.updated_at = now
     await session.commit()
@@ -185,18 +191,30 @@ async def project_view(session: AsyncSession, slug: str) -> ProjectOut:
     )
 
 
-async def list_projects(session: AsyncSession) -> list[ProjectSummary]:
+async def list_projects(
+    session: AsyncSession,
+    *,
+    video_format: str | None = None,
+    series_slug: str | None = None,
+    limit: int = 200,
+) -> list[ProjectSummary]:
+    """The videos, newest first; a format or a series narrows them (docs/videos/SERIES.md),
+    so a hundred episodes do not push the tutorials past the cap."""
     pending = (
         select(VideoReview.project_id, func.count().label("pending"))
         .where(VideoReview.status == "pending")
         .group_by(VideoReview.project_id)
         .subquery()
     )
+    statement = select(VideoProject, func.coalesce(pending.c.pending, 0)).outerjoin(
+        pending, pending.c.project_id == VideoProject.id
+    )
+    if video_format is not None:
+        statement = statement.where(VideoProject.format == video_format)
+    if series_slug is not None:
+        statement = statement.where(VideoProject.series_slug == series_slug)
     rows = await session.execute(
-        select(VideoProject, func.coalesce(pending.c.pending, 0))
-        .outerjoin(pending, pending.c.project_id == VideoProject.id)
-        .order_by(VideoProject.last_synced_at.desc())
-        .limit(200)
+        statement.order_by(VideoProject.last_synced_at.desc()).limit(limit)
     )
     listed = list(rows.all())
     spend = await spend_by_slug(session, [project.slug for project, _count in listed])

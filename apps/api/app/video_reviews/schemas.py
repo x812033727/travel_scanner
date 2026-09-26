@@ -9,9 +9,11 @@ from pydantic import BaseModel, Field, field_validator
 
 # look and storyboard belong to the drama format (docs/videos/DRAMA.md): the character sheets
 # the owner picks from, one review per character, and the keyframes before any clip is made.
-# dubs is a batch of finished dub tracks (docs/videos/DUBS.md): the owner downloads them, uploads
-# them in YouTube Studio, and approves the review to say so.
-Gate = Literal["outline", "look", "storyboard", "audio", "final", "publish", "dubs"]
+# script is an episode's screenplay, read before any image or clip is paid for
+# (docs/videos/SERIES.md). dubs is a batch of finished dub tracks (docs/videos/DUBS.md): the
+# owner downloads them, uploads them in YouTube Studio, and approves the review to say so.
+Gate = Literal["outline", "script", "look", "storyboard", "audio", "final", "publish", "dubs"]
+SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
 ContentType = Literal[
     "video/mp4", "audio/mp4", "audio/mpeg", "audio/wav", "image/png", "image/jpeg"
 ]
@@ -45,6 +47,9 @@ class ProjectIn(BaseModel):
     source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
     # Slides or the AI drama route (docs/videos/DRAMA.md). Left out, the stored one stays.
     format: VideoFormat | None = None
+    # An episode of a long series (docs/videos/SERIES.md). Left out, the stored ones stay.
+    series_slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
+    episode_number: int | None = Field(default=None, ge=1, le=10_000)
 
 
 class ReviewFile(BaseModel):
@@ -104,6 +109,9 @@ class ProjectSummary(BaseModel):
     clip_seconds: int = 0
     # The languages the owner ticked to dub this video in; the worker makes only those tracks.
     dub_locales: list[DubLocale] = Field(default_factory=list)
+    # The series this video is an episode of, if any (docs/videos/SERIES.md).
+    series_slug: str | None = None
+    episode_number: int | None = None
 
 
 class ProjectOut(ProjectSummary):
