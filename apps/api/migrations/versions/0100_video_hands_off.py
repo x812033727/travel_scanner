@@ -30,7 +30,7 @@ SETTINGS = "video_automation_settings"
 PROJECTS = "video_projects"
 ID_CHECK = (
     "ck_video_project_youtube_id",
-    "youtube_video_id IS NULL OR char_length(youtube_video_id) = 11",
+    "youtube_video_id IS NULL OR length(youtube_video_id) = 11",
 )
 SETTINGS_COLUMNS: tuple[tuple[str, sa.types.TypeEngine[object], str], ...] = (
     ("channel_stance", sa.Text(), "''"),
