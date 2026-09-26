@@ -4,6 +4,7 @@ import test from "node:test";
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { billableEstimate, briefSections, checkBrief, lintVideo, templateSimilarity } from "./lint.mjs";
 import { textHash } from "./schema.mjs";
+import { sourceHashes } from "./translations.mjs";
 
 const context = (overrides = {}) => ({ lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {}, ...overrides });
 const messages = (problems) => problems.map((problem) => problem.message).join("\n");
@@ -103,6 +104,33 @@ test("stale and missing translations are listed per locale", () => {
   const { warnings } = lintVideo(doc, context({ translations: { en: { lines } } }));
   assert.match(messages(warnings), /1 lines not translated: k7p2/);
   assert.match(messages(warnings), /1 translations older than the zh-TW line: m4qa/);
+});
+
+test("the title, description, tags and chapters are stale, unknown or missing against their zh-TW hashes", () => {
+  const doc = fixture();
+  const lines = {};
+  for (const scene of doc.scenes) for (const line of scene.lines) lines[line.id] = { source_hash: textHash(line.text), text: "x" };
+  const hashes = sourceHashes(doc);
+  const current = { title: "T", description: "D", tags: ["AI"], chapters: { hook: "Intro", questions: "Q", wrap: "End" }, source_hashes: hashes, lines };
+  assert.deepEqual(lintVideo(doc, context({ translations: { en: current } })).warnings, []);
+
+  const reordered = structuredClone(doc);
+  reordered.youtube.tags.reverse();
+  const translation = {
+    ...current,
+    tags: [],
+    chapters: { hook: "Intro", questions: "Q", moved: "Old place" },
+    source_hashes: { title: hashes.title, description: "000000000000", tags: hashes.tags, chapters: { hook: "000000000000" } },
+  };
+  const found = lintVideo(reordered, context({ translations: { ko: translation } })).warnings.filter((warning) => warning.path === "i18n/ko.json");
+  assert.deepEqual(found.map((warning) => warning.message), [
+    "not translated: tags, chapter wrap",
+    "translations older than the zh-TW text: description, chapter hook",
+    "translations merged before i18n-merge hashed their zh-TW text, so possibly stale: chapter questions; i18n-sheet marks them todo",
+    "chapter titles for scenes that no longer open a chapter: moved; i18n-merge drops them",
+  ]);
+  const withTags = { ...translation, tags: ["AI"] };
+  assert.match(messages(lintVideo(reordered, context({ translations: { ko: withTags } })).warnings), /older than the zh-TW text: description, tags, chapter hook/);
 });
 
 test("a slide sequence that copies another video's is flagged", () => {
