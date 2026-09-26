@@ -4,6 +4,7 @@ import path from "node:path";
 import readline from "node:readline";
 import { parseArgs } from "node:util";
 
+import { NARRATOR } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
@@ -119,6 +120,60 @@ function remainingFor(status, voice) {
   return status.monthly_limit > 0 ? status.remaining : null;
 }
 
+/** The provider whose month a request voice counts against. */
+const providerOf = (voice) => (voice.startsWith(GEMINI_VOICE_PREFIX) ? "gemini" : "azure");
+
+/** How a speaker is named to the owner: the narrator, or a character's id and name. */
+function speakerName(doc, speaker) {
+  if (speaker === NARRATOR) return NARRATOR;
+  const character = (doc.characters ?? []).find((item) => item.id === speaker);
+  return character ? `${speaker} (${character.name})` : speaker;
+}
+
+/**
+ * The voices the requests use, in narration order, each with who speaks with it and the billable
+ * characters of the whole video. A slides video has one, the narrator's; a drama one per
+ * character voice and emotion.
+ */
+function voicesUsed(doc, requests) {
+  const byVoice = new Map();
+  for (const request of requests) {
+    const entry = byVoice.get(request.body.voice) ?? { voice: request.body.voice, provider: providerOf(request.body.voice), speakers: new Set(), billable: 0 };
+    entry.speakers.add(speakerName(doc, request.speaker ?? NARRATOR));
+    entry.billable += billableForRequest(request.body);
+    byVoice.set(request.body.voice, entry);
+  }
+  return [...byVoice.values()].map((entry) => ({ ...entry, speakers: [...entry.speakers] }));
+}
+
+/**
+ * Why the server cannot narrate with these voices, one message per problem naming who speaks
+ * with the voices it stops (a character's voice missing from the allowlist names the character).
+ */
+function voiceProblems(doc, status, voices) {
+  const speakersByProblem = new Map();
+  for (const entry of voices) {
+    const problem = voiceProblem(status, entry.voice);
+    if (!problem) continue;
+    const speakers = speakersByProblem.get(problem) ?? new Set();
+    for (const speaker of entry.speakers) speakers.add(speaker);
+    speakersByProblem.set(problem, speakers);
+  }
+  const drama = doc.format === "drama";
+  return [...speakersByProblem].map(([problem, speakers]) => (drama ? `${problem} (spoken by ${[...speakers].join(", ")})` : problem));
+}
+
+/** Characters left this month per provider the voices use: "azure: no monthly limit; gemini: 12 characters left this month". */
+function remainingText(status, voices) {
+  const providers = [...new Set(voices.map((entry) => entry.provider))];
+  return providers
+    .map((provider) => {
+      const remaining = remainingFor(status, voices.find((entry) => entry.provider === provider).voice);
+      return `${provider}: ${remaining === null ? "no monthly limit" : `${remaining} characters left this month`}`;
+    })
+    .join("; ");
+}
+
 async function audition(args, ctx) {
   const values = parseArgs({
     args,
@@ -186,8 +241,8 @@ async function tts(args, ctx) {
     return EXIT.lint;
   }
   const { doc, lexicon } = project;
-  const voice = voiceFields(doc.voice).voice;
   const requests = planRequests(doc, lexicon);
+  const voices = voicesUsed(doc, requests);
   const estimate = requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const cache = readCache(workdir);
@@ -211,17 +266,27 @@ async function tts(args, ctx) {
   };
   const pending = requests.filter((request) => !current(request));
   const pendingEstimate = pending.reduce((sum, request) => sum + estimateFor(request), 0);
+  // Each provider has its own month, so what is still to synthesize is counted per provider.
+  const pendingByProvider = new Map();
+  for (const request of pending) {
+    const provider = providerOf(request.body.voice);
+    pendingByProvider.set(provider, (pendingByProvider.get(provider) ?? 0) + estimateFor(request));
+  }
+  const pendingVoices = voices.filter((entry) => pending.some((request) => request.body.voice === entry.voice));
   // Record current clips under their own keys, so a later edit elsewhere in the scene keeps them.
   const migrated = requests.flatMap((request) => request.lines.filter((line) => clipCurrent(request, line) && cache.lines[line.id] !== line.key));
 
   if (values["dry-run"]) {
     ctx.stdout.write(`${requests.length} requests, ${pending.length} to synthesize; about ${pendingEstimate} billable characters now (${estimate} for the whole video, ${((estimate / FREE_TIER) * 100).toFixed(1)}% of the free tier)\n`);
+    ctx.stdout.write(`voices: ${voices.map((entry) => `${entry.voice} ${entry.billable} characters (${entry.speakers.join(", ")})`).join("; ")}\n`);
     const credentials = readCredentials({ env: ctx.env, home: ctx.home });
     if (credentials.token) {
       const status = await speechStatus(clientOptions(ctx, credentials));
-      const problem = voiceProblem(status, voice);
-      const remaining = remainingFor(status, voice);
-      ctx.stdout.write(`server: voice ${voice} ${problem ? `NOT ready: ${problem}` : "ready"}; ${remaining === null ? "no monthly limit" : `${remaining} characters left this month`}\n`);
+      const readiness = voices.map((entry) => {
+        const problem = voiceProblem(status, entry.voice);
+        return `voice ${entry.voice} ${problem ? `NOT ready: ${problem}` : "ready"}`;
+      });
+      ctx.stdout.write(`server: ${readiness.join("; ")}; ${remainingText(status, voices)}\n`);
     } else {
       ctx.stdout.write("no video tool token yet; run `node tools/video/cli.mjs login` before synthesizing\n");
     }
@@ -232,11 +297,14 @@ async function tts(args, ctx) {
   const options = clientOptions(ctx, credentials);
   if (pending.length) {
     const status = await speechStatus(options);
-    const problem = voiceProblem(status, voice);
-    if (problem) throw new SpeechError(problem, { who: "owner" });
-    const remaining = remainingFor(status, voice);
-    if (remaining !== null && pendingEstimate > remaining) {
-      throw new SpeechError(`about ${pendingEstimate} billable characters needed, ${remaining} left this month`, { code: "video_speech_budget_exhausted" });
+    const problems = voiceProblems(doc, status, pendingVoices);
+    if (problems.length) throw new SpeechError(problems.join("; "), { who: "owner" });
+    for (const [provider, needed] of pendingByProvider) {
+      const remaining = remainingFor(status, pendingVoices.find((entry) => entry.provider === provider).voice);
+      if (remaining !== null && needed > remaining) {
+        const which = pendingByProvider.size > 1 ? ` for ${provider}` : "";
+        throw new SpeechError(`about ${needed} billable characters needed${which}, ${remaining} left this month`, { code: "video_speech_budget_exhausted" });
+      }
     }
   }
   mkdirSync(audioDir, { recursive: true });
@@ -262,7 +330,8 @@ async function tts(args, ctx) {
     }
     atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
     const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
-    ctx.stdout.write(`${request.id}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
+    const who = doc.format === "drama" ? ` [${speakerName(doc, request.speaker)}]` : "";
+    ctx.stdout.write(`${request.id}${who}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
 
   const clips = new Map();
@@ -275,7 +344,7 @@ async function tts(args, ctx) {
   for (const [id, clip] of clips) if (clip.length === 0) clips.set(id, new Int16Array(1));
   atomicWrite(path.join(workdir, ARTIFACTS.narration), encodeWav(buildNarration(timeline, clips)));
   atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify(timeline, null, 2)}\n`);
-  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name }, ctx.now());
+  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
   for (const problem of checkChapters(timeline)) ctx.stdout.write(`chapters: ${problem}\n`);

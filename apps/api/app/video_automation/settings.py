@@ -145,7 +145,6 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         monthly_token_budget_millions=row.monthly_token_budget_millions,
         max_verify_rounds=row.max_verify_rounds,
         max_retake_rounds=row.max_retake_rounds,
-        subscription_max_usage_percent=row.subscription_max_usage_percent,
         auto_approve_audio=row.auto_approve_audio,
         drama=drama_values(row),
     )

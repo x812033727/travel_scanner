@@ -12,7 +12,8 @@ import { parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
-import { docDir, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { isDrama, shotScenes } from "../core/drama.mjs";
+import { atomicWrite, docDir, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { formatClock } from "../core/timeline.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -21,18 +22,26 @@ import { USER_AGENT } from "../tts/client.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
-export const REVIEW_GATES = ["outline", "audio", "final", "publish"];
+// look and storyboard are the drama format's gates (docs/videos/DRAMA.md).
+export const REVIEW_GATES = ["outline", "look", "audio", "storyboard", "final", "publish"];
 const UPLOAD_CHECKLIST = path.join("upload", "UPLOAD.md");
 
-// The owner reads the site in Traditional Chinese; status's step ids are English.
-const STEP_LABELS = {
+// The owner reads the site in Traditional Chinese; status's step ids are English. Every step of
+// both formats (core/state.mjs SLIDES_STEPS and DRAMA_STEPS) has a label here.
+export const STEP_LABELS = {
   brief: "企劃書",
   "outline approved": "站主選好大綱",
   "script passes lint": "稿子通過檢查",
   "fact-checked": "查核完成",
+  "look generated": "角色設定圖",
+  "look approved": "站主選好設定圖",
   "narration synthesized": "旁白合成",
   "narration approved": "旁白核准",
+  "keyframes drawn": "關鍵影格",
+  "storyboard approved": "分鏡核准",
   "frames rendered": "畫面完成",
+  "clips generated": "片段生成",
+  "music generated": "配樂生成",
   "video assembled": "成片合成",
   "captions written": "五語字幕",
   "final video approved": "成片核准",
@@ -185,9 +194,18 @@ async function preview(ctx, workdir, kind, source) {
   return target;
 }
 
-/** The next gate whose content exists and is not approved as it stands; null when none. */
-async function nextGate(places, workdir) {
-  for (const gate of ["outline", "audio", "final"]) {
+/** The option letter of candidate n on the review page: 1 → A. */
+export const optionKey = (n) => String.fromCharCode(64 + n);
+const IMAGE_TYPES = { ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp" };
+const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "application/octet-stream";
+
+/**
+ * The next gate whose content exists and is not approved as it stands; null when none. A drama
+ * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut.
+ */
+async function nextGate(places, workdir, doc) {
+  const order = isDrama(doc) ? ["outline", "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
     if (state.status === "absent") return null;
@@ -251,6 +269,94 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
   return { gate, content_sha256: await sha256File(file), summary: "上傳包已備好：請確認可以上架", payload: { checklist }, files: [] };
 }
 
+/**
+ * The look gate: one review per character, its candidate sheets as files, the owner picks one
+ * (docs/videos/DRAMA.md). Every review is bound to characters/manifest.json.
+ */
+async function lookSubmissions({ request, project, workdir }) {
+  const { doc } = project;
+  const file = path.join(workdir, ARTIFACTS.characters);
+  const manifest = readJson(file, null);
+  if (!manifest?.characters) throw new ReviewError("characters/manifest.json is missing; run look first", { who: "owner" });
+  const sha = await sha256File(file);
+  const bodies = [];
+  for (const [id, entry] of Object.entries(manifest.characters)) {
+    const character = doc.characters?.find((each) => each.id === id);
+    const files = [];
+    const options = [];
+    for (const candidate of entry.candidates ?? []) {
+      const role = `candidate_${optionKey(candidate.n).toLowerCase()}`;
+      files.push(await upload(request, doc.slug, path.join(workdir, candidate.file), role, imageType(candidate.file)));
+      options.push({ key: optionKey(candidate.n), index: candidate.n, file_role: role, judge: { overall: candidate.judge?.overall ?? null, problems: candidate.judge?.problems ?? [] } });
+    }
+    const suggested = entry.suggested ? optionKey(entry.suggested) : null;
+    bodies.push({
+      gate: "look",
+      subject: id,
+      content_sha256: sha,
+      summary: `${entry.name} 的設定圖 ${options.length} 張${suggested ? `，judge 建議 ${suggested}` : "，judge 沒有推薦"}`,
+      payload: {
+        subject: id,
+        character: { name: entry.name, description: character?.appearance ?? "", voice: character?.voice ? `${character.voice.provider}:${character.voice.name}` : "" },
+        options,
+        suggested,
+        prompt: entry.prompt ?? "",
+      },
+      files,
+    });
+  }
+  return bodies;
+}
+
+/** The storyboard gate: every keyframe and the contact sheet, with the judge's verdicts; bound to keyframes/manifest.json. */
+async function storyboardSubmission({ request, project, workdir }) {
+  const { doc } = project;
+  const file = path.join(workdir, ARTIFACTS.keyframes);
+  const manifest = readJson(file, null);
+  if (!manifest?.shots) throw new ReviewError("keyframes/manifest.json is missing; run keyframes first", { who: "owner" });
+  const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+  const seconds = new Map((timeline?.scenes ?? []).map((scene) => [scene.id, Math.round(((scene.end_frame - scene.start_frame) / (timeline.fps || 30)) * 10) / 10]));
+  const files = [];
+  const shots = [];
+  for (const [index, scene] of shotScenes(doc).entries()) {
+    const shot = manifest.shots[scene.id];
+    if (!shot?.file) continue;
+    const role = `shot_${String(index + 1).padStart(2, "0")}`;
+    files.push(await upload(request, doc.slug, path.join(workdir, shot.file), role, imageType(shot.file)));
+    shots.push({
+      id: scene.id,
+      chapter: scene.chapter ?? null,
+      prompt: scene.data?.prompt ?? "",
+      seconds: seconds.get(scene.id) ?? null,
+      file_role: role,
+      needs_review: Boolean(shot.needs_review),
+      judge: { overall: shot.judge?.overall ?? null, problems: shot.judge?.problems ?? [] },
+    });
+  }
+  const sheet = path.join(workdir, "keyframes", "contact-sheet.png");
+  if (existsSync(sheet) && files.length < 48) files.push(await upload(request, doc.slug, sheet, "contact_sheet", "image/png"));
+  const scores = shots.map((shot) => shot.judge.overall).filter((score) => typeof score === "number");
+  const lowest = scores.length ? Math.min(...scores) : null;
+  const waiting = shots.filter((shot) => shot.needs_review);
+  // Only the shots left for a prompt fix carry problems here: a board the judge passed whole
+  // may be approved automatically when the owner allows it.
+  const problems = [...new Set(waiting.flatMap((shot) => shot.judge.problems))];
+  return {
+    gate: "storyboard",
+    content_sha256: await sha256File(file),
+    summary: `分鏡 ${shots.length} 鏡${lowest === null ? "" : `，judge 最低 ${lowest}/10`}${waiting.length ? `，${waiting.length} 鏡待修` : ""}`,
+    payload: { shots, judge: { overall: lowest, problems }, duplicates: manifest.duplicates ?? [] },
+    files,
+  };
+}
+
+/** Everything a gate submits: several reviews for the look, one for the others. */
+async function submissions(gate, places) {
+  if (gate === "look") return lookSubmissions(places);
+  if (gate === "storyboard") return [await storyboardSubmission(places)];
+  return [await submission(gate, places)];
+}
+
 function common(args) {
   const values = parseArgs({ args, options: { slug: { type: "string" }, workdir: { type: "string" }, gate: { type: "string" }, "report-only": { type: "boolean" } }, strict: true }).values;
   if (!values.slug) throw new UsageError("needs --slug");
@@ -290,18 +396,53 @@ export async function reviewPush(args, ctx) {
       ctx.stdout.write(`${values.slug}: reported to /admin/videos; nothing submitted\n`);
       return ctx.EXIT.ok;
     }
-    const gate = values.gate ?? (await nextGate({ docDir: dir, workdir }, workdir));
+    const gate = values.gate ?? (await nextGate({ docDir: dir, workdir }, workdir, project.doc));
     if (!gate) {
       ctx.stdout.write(`${values.slug}: reported; nothing waits for the owner right now\n`);
       return ctx.EXIT.ok;
     }
-    const body = await submission(gate, { ctx, request, project, workdir, dir });
-    const review = await request("POST", `${values.slug}/reviews`, { json: body });
-    ctx.stdout.write(`${values.slug}: ${gate} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);
+    const bodies = await submissions(gate, { ctx, request, project, workdir, dir });
+    for (const body of bodies) {
+      const review = await request("POST", `${values.slug}/reviews`, { json: body });
+      const what = body.subject ? `${gate} (${body.subject})` : gate;
+      ctx.stdout.write(`${values.slug}: ${what} submitted for review (${review.status}); the owner decides on /admin/videos, then run review-pull\n`);
+    }
     return ctx.EXIT.ok;
   } catch (error) {
     return fail(error, ctx);
   }
+}
+
+/**
+ * The owner's look decisions: each approved review picks one character's sheet. The picks go
+ * to characters/choice.json, and the look gate is approved once every character has a sheet
+ * (chosen, or the judge's suggestion when the owner approved without choosing).
+ */
+async function recordLook(reviews, { dir, workdir, now }) {
+  const file = GATES.look({ docDir: dir, workdir });
+  const manifest = readJson(file, null);
+  if (!manifest?.characters) return { message: "approved, but characters/manifest.json is gone; run look again", waiting: 0 };
+  const sha = await sha256File(file);
+  const usable = reviews.filter((review) => review.content_sha256 === sha && review.subject && manifest.characters[review.subject]);
+  if (!usable.length) return { message: "approved a version that has since changed; run review-push --gate look again", waiting: 0 };
+  const choiceFile = path.join(workdir, ARTIFACTS.characterChoice);
+  const previous = readJson(choiceFile, null);
+  const chosen = previous?.look_hash === manifest.look_hash ? { ...(previous.chosen ?? {}) } : {};
+  for (const review of usable) {
+    const option = (review.payload?.options ?? []).find((each) => each.key === review.choice);
+    // Approved without a pick means the judge's suggestion is fine.
+    const pick = option?.index ?? (review.choice ? review.choice.charCodeAt(0) - 64 : null) ?? manifest.characters[review.subject].suggested;
+    if (pick) chosen[review.subject] = pick;
+  }
+  atomicWrite(choiceFile, `${JSON.stringify({ look_hash: manifest.look_hash, chosen, chosen_at: now.toISOString() }, null, 2)}\n`);
+  // Every character needs the owner's decision, not just a suggestion.
+  const missing = Object.keys(manifest.characters).filter((id) => !chosen[id]);
+  const picks = Object.entries(chosen).map(([id, n]) => `${id} = ${optionKey(n)}`).join(", ");
+  if (missing.length) return { message: `${picks || "no sheet chosen yet"}; waiting for ${missing.join(", ")}`, waiting: missing.length };
+  if (readApprovals(workdir).approvals.some((entry) => entry.gate === "look" && entry.sha256 === sha)) return { message: `already recorded (${picks})`, waiting: 0 };
+  const decided = usable.map((review) => review.decided_at).filter(Boolean).sort().at(-1) ?? now.toISOString();
+  await approve({ gate: "look", docDir: dir, workdir, now, note: `approved on /admin/videos at ${decided}; chose sheets ${picks}` });
+  return { message: `approval recorded (${picks})`, waiting: 0 };
 }
 
 export async function reviewPull(args, ctx) {
@@ -311,18 +452,27 @@ export async function reviewPull(args, ctx) {
   try {
     const project = await client(ctx)("GET", values.slug);
     let waiting = 0;
+    const looks = [];
     // Oldest first, so the newest decision on a gate is the one approvals.json ends with.
     for (const review of [...project.reviews].reverse()) {
       if (values.gate && review.gate !== values.gate) continue;
+      const what = review.subject ? `${review.gate} (${review.subject})` : review.gate;
       if (review.status === "pending") {
         waiting += 1;
-        ctx.stdout.write(`${review.gate}: waiting for the owner\n`);
+        ctx.stdout.write(`${what}: waiting for the owner\n`);
       } else if (review.status === "rejected") {
-        ctx.stdout.write(`${review.gate}: sent back — ${review.note ?? ""}\n`);
+        ctx.stdout.write(`${what}: sent back — ${review.note ?? ""}\n`);
+      } else if (review.status === "approved" && review.gate === "look") {
+        looks.push(review);
       } else if (review.status === "approved") {
         const message = await recordApproval(review, { dir, workdir, now: ctx.now() });
-        ctx.stdout.write(`${review.gate}: ${message}\n`);
+        ctx.stdout.write(`${what}: ${message}\n`);
       }
+    }
+    if (looks.length) {
+      const result = await recordLook(looks, { dir, workdir, now: ctx.now() });
+      waiting += result.waiting;
+      ctx.stdout.write(`look: ${result.message}\n`);
     }
     return waiting ? ctx.EXIT.owner : ctx.EXIT.ok;
   } catch (error) {
