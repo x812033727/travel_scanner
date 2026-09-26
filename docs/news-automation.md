@@ -205,6 +205,33 @@ re-verification keeps its marker, so the rerun re-checks the edited drafts inste
 writing new ones. `discovered` candidates older than two hours are re-queued while the
 scanner is enabled.
 
+## When every subscription account is full
+
+With 「Claude 連線方式」 set to 訂閱帳號, the AI vendors card's 「訂閱帳號都滿時」
+(`ai_subscription_fallback`) decides what a call does when every account is at the cap:
+
+- 「改用 MiniMax」 (`minimax`, the default) runs it on MiniMax at once.
+- 「等帳號恢復」 (`wait`) is the owner's choice of 2026-09-26. A news candidate goes back to
+  `discovered` as `news_subscription_paused`, or keeps its re-verify marker, and its job
+  tries again 30 minutes later (`jobs.PAUSE_MINUTES`). The accounts take turns A → B → … →
+  A, each used until it is full.
+
+## Backfilling stories stopped by old rules
+
+`python -m app.news_automation.backfill_cli --since YYYY-MM-DD` (inside the api container)
+lists the candidates published since that day that stopped for a reason the pipeline no
+longer applies:
+
+- evidence from one website (the rule until 2026-09-25);
+- a failed MiniMax check, translation or hard check;
+- a claim citing a page outside the evidence.
+
+Stories with a first-party page come first, since only those may publish on their own.
+Rejections for editorial reasons are not in the list. Add `--apply --actor-email <admin>`,
+and optionally `--limit N`, to reopen them as new drafts, with an audit row each, and queue
+them. The current pipeline then decides each one, including the owner's confirmation for a
+story that may not go out on its own.
+
 ## Known limits
 
 - Gemini cannot yet serve as writer or checker: the shared `gemini_response_schema`

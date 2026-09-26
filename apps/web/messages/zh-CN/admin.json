@@ -582,6 +582,14 @@
     "ai_subscription_max_usage_percent": {
       "label": "订阅账号用量上限（%）",
       "help": "账号的 5 小时或每周用量达到这个百分比，网站就不再用它，留给站长自己用；所有账号都到上限时改用 MiniMax。默认 80。"
+    },
+    "ai_subscription_fallback": {
+      "label": "订阅账号都满时",
+      "help": "每个 Claude 账号都到上限时怎么办。“等账号恢复”：新闻先放回队列，每 30 分钟再试一次，其他功能这次调用会失败；“改用 MiniMax”：立刻改用 MiniMax 运行，速度快但质量较差。只有站长能改。",
+      "options": {
+        "wait": "等账号恢复",
+        "minimax": "改用 MiniMax"
+      }
     }
   },
   "hotspotTabs": {

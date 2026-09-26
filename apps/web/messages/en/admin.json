@@ -582,6 +582,14 @@
     "ai_subscription_max_usage_percent": {
       "label": "Subscription usage cap (%)",
       "help": "Once an account's 5-hour or weekly usage reaches this share, the site stops using it and leaves the rest to the owner; when every account is past it, calls use MiniMax. Default 80."
+    },
+    "ai_subscription_fallback": {
+      "label": "When every subscription account is full",
+      "help": "What happens when every Claude account is at its cap. \"Wait for an account\": news goes back to the queue and is tried again every 30 minutes, and other features fail that call. \"Use MiniMax\": the call runs on MiniMax at once, faster but weaker. Only the owner can change this.",
+      "options": {
+        "wait": "Wait for an account",
+        "minimax": "Use MiniMax"
+      }
     }
   },
   "hotspotTabs": {

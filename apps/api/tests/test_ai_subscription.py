@@ -232,3 +232,23 @@ async def test_the_news_stages_run_on_the_subscription_when_claude_is_set_to_it(
     )
     assert (answer.title, model) == ("新聞", "claude-opus-5-5")
     assert agent.calls[0]["timeout_seconds"] == news_ai.STAGE_TIMEOUT_SECONDS + 60
+
+
+@pytest.mark.asyncio
+async def test_in_wait_mode_a_full_subscription_is_reported_instead_of_run_on_minimax(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The owner chose waiting over MiniMax on 2026-09-26; the news pipeline tries later."""
+
+    full = AppError(429, "subscription_quota_paused", "every Claude account is at 100%")
+    monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda _settings: FakeAgent(full))
+    provider = research_provider(
+        _settings(ai_subscription_fallback="wait"), "anthropic", model="claude-opus-5-5"
+    )
+    with pytest.raises(AppError) as waiting:
+        await provider.structured(Answer, "answer", "Write.", {})
+    assert waiting.value.code == "subscription_quota_paused"
+    fallback = research_provider(_settings(), "anthropic", model="claude-opus-5-5")
+    monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda _settings: FakeAgent(full))
+    assert isinstance(fallback, SubscriptionResearchProvider)
+    assert fallback._fallback_factory is not None, "the default still falls back to MiniMax"

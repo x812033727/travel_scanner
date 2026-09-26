@@ -249,6 +249,10 @@ class Settings(BaseSettings):
     # Past this share of an account's 5-hour or weekly window the site leaves the account to
     # the owner; when every account is past it, Claude calls fall back to MiniMax.
     ai_subscription_max_usage_percent: int = Field(default=80, ge=1, le=100)
+    # When every account is at the cap: "minimax" runs the call on MiniMax at once; "wait"
+    # leaves it for an account to free up (the news pipeline tries again every 30 minutes),
+    # which the owner chose on 2026-09-26 for quality.
+    ai_subscription_fallback: Literal["minimax", "wait"] = "minimax"
     minimax_api_base_url: str = "https://api.minimaxi.com/v1"
     minimax_model: str = "MiniMax-M3"
     # Gemini shares the key and base URL of the article search (hotspot_guide_gemini_*);

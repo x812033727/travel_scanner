@@ -97,7 +97,11 @@ SITE_VISIBILITY_FIELDS = (
 
 # Settings that put the owner's personal subscription accounts to work for the site.
 OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
-    "ai_vendors": ("anthropic_connection", "ai_subscription_max_usage_percent"),
+    "ai_vendors": (
+        "anthropic_connection",
+        "ai_subscription_max_usage_percent",
+        "ai_subscription_fallback",
+    ),
 }
 
 # Rows that are never disabled: a disabled row nulls its secrets, and these hold
@@ -197,6 +201,7 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         (
             "anthropic_connection",
             "ai_subscription_max_usage_percent",
+            "ai_subscription_fallback",
             "openai_api_base_url",
             "anthropic_api_base_url",
             "minimax_api_base_url",
@@ -1422,6 +1427,7 @@ def _validate_provider_values(
         "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "hotspot_intro_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "anthropic_connection": {"api_key", "subscription"},
+        "ai_subscription_fallback": {"minimax", "wait"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
