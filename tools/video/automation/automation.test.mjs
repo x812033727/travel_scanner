@@ -459,7 +459,8 @@ test("an outline sent back is re-planned with the owner's note, and a spent budg
   assert.equal(off.calls.run.length, 0);
 });
 
-const DRAMA_SETTINGS = { drama_enabled: true, style_preset: "ink-wash", subtitle_burn_in: true, music_enabled: false, character_voice_pool: [{ provider: "gemini", name: "Kore", hint: "少女" }] };
+// auto_pick_look is the drama-look ticket's switch (docs/videos/HANDS-OFF.md); the server applies it on look reviews.
+const DRAMA_SETTINGS = { drama_enabled: true, style_preset: "ink-wash", subtitle_burn_in: true, music_enabled: false, auto_pick_look: false, character_voice_pool: [{ provider: "gemini", name: "Kore", hint: "少女" }] };
 
 test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", () => {
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
