@@ -16,7 +16,7 @@ metadata:
 3. **在 PR 內結案。** `npm run tasks -- done <id>` 當 PR 的最後一個 commit，票的檔案跟工作一起搬到 `tasks/done/`；不要為了搬一個檔再開一個 PR。設成 `review` 卻從不 `done` 的票會在合併後繼續鎖住 scope。
 4. **票的檔案就是交接。** 停手前打勾、寫 Notes、`release`；發現但不修的東西 `new` 一張票，不要留在對話裡。
 5. **別人持有的票不要動**：對它 `done`／`release` 會被 auto 模式擋成 Interfere With Workloads，用有選項的提問列出票號與證據，站主同意後同一個指令就過。
-6. **合併只能靠綠燈**：四個必要檢查 `api`、`web`、`containers`、`full-stack-smoke`，`strict` 表示分支要跟上 main，`enforce_admins` 表示 `--admin` 不是後門，repo 也不允許 `--auto`。用 `--match-head-commit <綠燈的 SHA>` 合併，別人推了新 commit 就會被拒而不是把沒測的東西合進去。背景的等綠再合併迴圈，只有站主下過點名條件的常設指令（例如「CI 綠就合併」）才能跑；否則每個 PR 各問一次。
+6. **合併只能靠綠燈**：四個必要檢查 `api`、`web`、`containers`、`full-stack-smoke`，`strict` 表示分支要跟上 main，`enforce_admins` 表示 `--admin` 不是後門。自己合併時用 `--match-head-commit <綠燈的 SHA>`，別人推了新 commit 就會被拒而不是把沒測的東西合進去。`.github/workflows/auto-update-branches.yml` 設好 token 之後，**從這個 repo 分支開、目標是 main 的非草稿 PR，四個檢查一綠就會被自動合併**（它替 PR 打開 auto-merge、限流地 update-branch，規則見 `.github/BRANCH_PROTECTION.md`「Automatic updates and merges」）；站主還沒同意的 PR 要開成 `gh pr create --draft`，或貼 `no-auto-merge` 標籤。沒有那個 workflow 時，背景的等綠再合併迴圈只有站主下過點名條件的常設指令（例如「CI 綠就合併」）才能跑；否則每個 PR 各問一次。
 7. **合併前先看票有沒有已經落地**：`git fetch` 後 `git log --oneline origin/main -- <scope 路徑>`，以及 `tasks/done/` 裡有沒有同一張票；另一個 session 做完的話，取 main 的版本，不要開競爭的 PR。
 8. 中文的 PR 標題或內文在 Windows 的 Git Bash 要用 `--body-file` 或 `gh api --input`，不能當命令列參數。
 
@@ -28,7 +28,7 @@ metadata:
 | 2 | 認領 | `git fetch origin && git checkout -b claude/<slug> origin/main`；`npm run tasks -- claim <id> --owner <你的名字> --branch claude/<slug>` | 工具沒有拒絕（scope 重疊會拒；過期 24 小時的認領可直接接手） |
 | 3 | 做事 | 在 worktree 裡改 scope 內的檔案；票的 Steps 隨手打勾；AGENTS.md 列的檢查跑你動到的那幾項 | `npm run check:tasks` 過 |
 | 4 | 結案 | `npm run tasks -- done <id>`，commit（訊息附 `Task: <id>`），push | 檔案在 `tasks/done/`、未勾的項目在 Notes 交代 |
-| 5 | PR | `gh pr create --base main --head <branch> --title "<type>(<area>): …" --body-file <file>` | 內文寫為什麼、做了什麼、怎麼驗 |
+| 5 | PR | `gh pr create --base main --head <branch> --title "<type>(<area>): …" --body-file <file>` | 內文寫為什麼、做了什麼、怎麼驗；站主還沒同意合併的加 `--draft`（否則綠了會被自動合併） |
 | 6 | 等綠、合併 | `bash .agents/skills/task-board/scripts/merge-when-green.sh <pr>`（rebase → push → 等檢查 → squash 合併 → main 又動了就重來，最多三輪） | 四個必要檢查 `completed success`；`mergeStateStatus` 是 CLEAN |
 | 7 | 之後 | 部署走 skill `deploy`；同一組票要批次合併時一次跑一條 chain | 票在 done、分支已刪、記憶或交接有寫 |
 
