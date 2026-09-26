@@ -205,7 +205,6 @@ const fieldMeta: Record<string, FieldMeta> = {
   jev_api_base_url: { label: "Jev API Base URL", type: "url" },
   jev_daily_call_budget: { localized: true, type: "number" },
   anthropic_connection: { localized: true, options: [{ value: "api_key" }, { value: "subscription" }] },
-  ai_subscription_max_usage_percent: { localized: true, type: "number" },
   ai_subscription_fallback: { localized: true, options: [{ value: "wait" }, { value: "minimax" }] },
   minimax_model: { localized: true, allowCustom: true },
   gemini_model: { localized: true, allowCustom: true },

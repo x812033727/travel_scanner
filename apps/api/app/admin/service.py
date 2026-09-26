@@ -99,7 +99,6 @@ SITE_VISIBILITY_FIELDS = (
 OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
     "ai_vendors": (
         "anthropic_connection",
-        "ai_subscription_max_usage_percent",
         "ai_subscription_fallback",
     ),
 }
@@ -196,11 +195,11 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。"
         "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。"
         "Claude 可以改走主機上「AI 帳號」登入的訂閱帳號（只有站主能切換）：各功能照樣選 Claude "
-        "與模型，實際由用量最低、還沒到上限的帳號執行；每個帳號都到上限時改用 MiniMax。"
+        "與模型，帳號依 A、B、C… 的順序輪流，一個帳號的 5 小時或每週額度用滿才換下一個，"
+        "最後一個用滿再回到 A；每個帳號都用滿時改用 MiniMax。"
         "行程規劃與行程文字解析仍只用 Claude 的 API 金鑰。",
         (
             "anthropic_connection",
-            "ai_subscription_max_usage_percent",
             "ai_subscription_fallback",
             "openai_api_base_url",
             "anthropic_api_base_url",
@@ -1801,7 +1800,7 @@ async def _test_claude_subscription(settings: Settings) -> tuple[bool, str]:
         overview = await AiAccountsAgentClient(settings).overview()
     except AppError as error:
         return False, f"Claude 訂閱帳號：{error.detail}"
-    return subscription_summary(overview, settings.ai_subscription_max_usage_percent)
+    return subscription_summary(overview)
 
 
 async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None = None) -> str:

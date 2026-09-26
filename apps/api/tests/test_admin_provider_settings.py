@@ -14,6 +14,7 @@ import app.admin.service as admin_service
 import app.ai.itinerary as itinerary_module
 from app.admin.schemas import ProviderSettingsUpdate
 from app.admin.service import (
+    PROVIDER_DEFINITIONS,
     _default_provider_enabled,
     _merge_secret_values,
     _safe_test_message,
@@ -1847,22 +1848,14 @@ async def test_only_the_owner_puts_the_site_on_their_claude_subscription(
         await update_provider_settings(
             session,  # type: ignore[arg-type]
             "ai_vendors",
-            ProviderSettingsUpdate(
-                config={
-                    "anthropic_connection": "subscription",
-                    "ai_subscription_max_usage_percent": 90,
-                }
-            ),
+            ProviderSettingsUpdate(config={"anthropic_connection": "subscription"}),
             _actor("owner"),
             object(),  # type: ignore[arg-type]
         )
         == "snapshot"
     )
     row = next(item for item in session.added if isinstance(item, ProviderConfig))
-    assert row.config == {
-        "anthropic_connection": "subscription",
-        "ai_subscription_max_usage_percent": 90,
-    }
+    assert row.config == {"anthropic_connection": "subscription"}
 
     # Saving the card unchanged is not a switch, so an operator can still rotate a key.
     existing = ProviderConfig(
@@ -1881,17 +1874,15 @@ async def test_only_the_owner_puts_the_site_on_their_claude_subscription(
     assert session.committed
 
 
-def test_the_claude_connection_is_one_of_two_choices_and_the_cap_a_percentage() -> None:
+def test_the_claude_connection_is_one_of_two_choices_and_there_is_no_usage_cap() -> None:
     with pytest.raises(AppError):
         _validate_provider_values(
             "ai_vendors", {}, ProviderSettingsUpdate(config={"anthropic_connection": "codex"})
         )
-    with pytest.raises(AppError):
-        _validate_provider_values(
-            "ai_vendors",
-            {},
-            ProviderSettingsUpdate(config={"ai_subscription_max_usage_percent": 101}),
-        )
+    # The owner removed the cap on 2026-09-26: an account is used until it is full.
+    fields = PROVIDER_DEFINITIONS["ai_vendors"].config_fields
+    assert "ai_subscription_max_usage_percent" not in fields
+    assert not hasattr(Settings(), "ai_subscription_max_usage_percent")
 
 
 def test_the_ai_cards_count_claude_as_ready_on_the_subscription_without_a_key() -> None:

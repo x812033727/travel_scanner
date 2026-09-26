@@ -106,8 +106,10 @@ reply, and the dropped bounds are written into the field descriptions.
    「Claude 連線方式」 on that card to 訂閱帳號: every stage then runs on the Claude
    subscription accounts signed in at `/admin/ai-accounts`, through the host agent that
    the news-worker reaches over its socket (`app/ai/subscription.py`). A stage waits up to
-   two minutes for a busy account. When every account is at the card's usage cap, the
-   stage falls back to MiniMax, and its run records MiniMax's model.
+   two minutes for a busy account. There is no usage cap (the owner's choice of
+   2026-09-26): the accounts take turns A, B, C and back to A, and one is left only when its
+   5-hour or weekly window is full. When every account is full, the stage falls back to
+   MiniMax, and its run records MiniMax's model.
 3. **Sources.** The reviewed list lives in `apps/api/app/news_automation/sources.json`
    (each entry carries a `note` on why it is there). Load it on the host, dry run first:
 
@@ -208,7 +210,7 @@ scanner is enabled.
 ## When every subscription account is full
 
 With 「Claude 連線方式」 set to 訂閱帳號, the AI vendors card's 「訂閱帳號都滿時」
-(`ai_subscription_fallback`) decides what a call does when every account is at the cap:
+(`ai_subscription_fallback`) decides what a call does when every account is full:
 
 - 「改用 MiniMax」 (`minimax`, the default) runs it on MiniMax at once.
 - 「等帳號恢復」 (`wait`) is the owner's choice of 2026-09-26. A news candidate goes back to
