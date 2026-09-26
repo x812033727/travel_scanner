@@ -24,6 +24,7 @@ _UNNAMED_SECRETS = (
     re.compile(r"\b1//[A-Za-z0-9._-]{10,}"),
     re.compile(r"\b4/[0-9A-Za-z][A-Za-z0-9._-]{10,}"),
 )
+_EMAIL = re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+")
 _CONTROL = re.compile(r"[\x00-\x08\x0b-\x1f\x7f]")
 
 
@@ -35,6 +36,11 @@ def sanitize(value: str, limit: int = 300) -> str:
     for pattern in _UNNAMED_SECRETS:
         cleaned = pattern.sub("***", cleaned)
     return " ".join(cleaned.split())[:limit]
+
+
+def redact_emails(value: str) -> str:
+    """Replace anything shaped like an email address, domain included."""
+    return _EMAIL.sub("<email>", value)
 
 
 def signature_for(
