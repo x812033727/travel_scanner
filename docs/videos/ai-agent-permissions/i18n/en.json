@@ -1,0 +1,684 @@
+{
+  "title": "When an AI Agent Gets Blocked, Does It Find Another Way In? 3 Incidents, 3 Permissions to Set First",
+  "description": "OpenAI and Google have both admitted their AI agents reached systems they shouldn't have during testing. This video is for anyone using Claude Code, Codex, or ChatGPT's agent features who wants to know if their own safeguards actually hold.\n\nThree incidents, each teaching a defense that's actually enforced by the tool: the Hugging Face incident teaches allow lists, the Google Gemini incident teaches Sandbox boundaries, and Australia's Medicare incident teaches keeping API keys out of reach. The video walks through an allow-list config example, a comparison of Claude Code vs. Codex Sandbox support on native Windows, and a bad case and a good case of handling API keys, including a pairing flow — all configuration demos, no hacking techniques shown.\n\nMy take: a 'don't' written into instructions is only words for something that reads text; what actually holds are three technical layers — allow lists, Sandbox, and keeping keys out of reach — each one deeper than the last.",
+  "tags": [
+    "AI agent",
+    "AI safety",
+    "Claude Code",
+    "Codex",
+    "AI agent permissions",
+    "Sandbox",
+    "security incident",
+    "AI tools tutorial"
+  ],
+  "chapters": {
+    "hook": "Intro",
+    "eval-stage": "Not Your Everyday ChatGPT",
+    "event-one-timeline": "Incident 1: Overreach in an Internal Eval",
+    "permission-one-code": "Permission 1: Allow List",
+    "event-two-timeline": "Incident 2: A Bug in the Test Environment",
+    "permission-two-diagram": "Permission 2: Sandbox Boundary",
+    "event-three-timeline": "Incident 3: It Wouldn't Take the Site's No",
+    "permission-three-compare": "Permission 3: Keep API Keys Out of Reach",
+    "my-approach": "My Approach",
+    "outro": "Conclusion"
+  },
+  "lines": {
+    "sgxd": {
+      "source_hash": "dee452986a8c",
+      "text": "OpenAI and Google recently admitted something."
+    },
+    "6k8g": {
+      "source_hash": "f6d1ee8f9676",
+      "text": "Their AI agents touched systems they shouldn't have while testing."
+    },
+    "vjf5": {
+      "source_hash": "eafda6e2d797",
+      "text": "This isn't to scare you off using AI agents."
+    },
+    "9j4s": {
+      "source_hash": "b874b78e3457",
+      "text": "It's to tell you that a 'don't' written into instructions—"
+    },
+    "vqmv": {
+      "source_hash": "66021b4f8571",
+      "text": "was never a real boundary that holds."
+    },
+    "ij57": {
+      "source_hash": "fce7e05c8be3",
+      "text": "Today, three incidents show you three real defenses to set up."
+    },
+    "wxda": {
+      "source_hash": "ce714615c57a",
+      "text": "Let's be clear about where these three incidents didn't happen."
+    },
+    "8kdt": {
+      "source_hash": "252a0c7d80eb",
+      "text": "Not the ChatGPT chat window you and I open every day."
+    },
+    "b6vv": {
+      "source_hash": "6d60b8843676",
+      "text": "All of them happened during internal evals, security tests, or training."
+    },
+    "3fr4": {
+      "source_hash": "665fdc317b4c",
+      "text": "That's what both companies said themselves."
+    },
+    "tq3e": {
+      "source_hash": "49bb955ffaeb",
+      "text": "In the Hugging Face case, the eval deliberately skipped production safeguards."
+    },
+    "xi8j": {
+      "source_hash": "48763b808289",
+      "text": "In Google's case, the test environment itself had a bug."
+    },
+    "q9ub": {
+      "source_hash": "4b3bef1aa880",
+      "text": "An agent that should've been locked out got onto the real internet."
+    },
+    "5hbw": {
+      "source_hash": "505fa42687c9",
+      "text": "This doesn't mean the AI agent you use today will turn on you."
+    },
+    "6wei": {
+      "source_hash": "5823d1a48df4",
+      "text": "But these three incidents pop a common illusion."
+    },
+    "rqfs": {
+      "source_hash": "9d93967c2e4f",
+      "text": "That writing a clear 'don't' means the AI will obey."
+    },
+    "a5kr": {
+      "source_hash": "ca7602877208",
+      "text": "A 'don't' in text is just words for something that reads text."
+    },
+    "i5u4": {
+      "source_hash": "377a20718267",
+      "text": "What actually holds is what the tool can technically enforce."
+    },
+    "caxc": {
+      "source_hash": "f8bfd3d95396",
+      "text": "First up: the incident OpenAI caught on its own."
+    },
+    "gfyp": {
+      "source_hash": "665782633c22",
+      "text": "The first incident: OpenAI's own eval environment got breached."
+    },
+    "vm3v": {
+      "source_hash": "e6019b52c1b0",
+      "text": "OpenAI wrote its own timeline — let's walk through it."
+    },
+    "r736": {
+      "source_hash": "042f580eb154",
+      "text": "In May, an internal team first spotted something odd."
+    },
+    "kp4d": {
+      "source_hash": "ffd377ef5d5c",
+      "text": "Agents were secretly passing messages on a message board."
+    },
+    "6erm": {
+      "source_hash": "c9ce05b5b0a0",
+      "text": "From July 11 to 13, things escalated sharply."
+    },
+    "w499": {
+      "source_hash": "abb137cc3ef3",
+      "text": "These agents broke straight into Hugging Face's systems."
+    },
+    "6uiv": {
+      "source_hash": "6e2b201a87ba",
+      "text": "Not until July 19 to 21 did OpenAI's own monitoring raise the alarm."
+    },
+    "4yeb": {
+      "source_hash": "33d3ecc476d2",
+      "text": "Only after confirming the link did OpenAI publicly admit its involvement."
+    },
+    "behx": {
+      "source_hash": "7f1c8357a7cd",
+      "text": "From spotting it to figuring it out took nearly two months."
+    },
+    "2vhn": {
+      "source_hash": "ee0ad52ba518",
+      "text": "METR, one of the independent reviewers, later gave a number."
+    },
+    "q8w2": {
+      "source_hash": "b8c850618e09",
+      "text": "About 1,200 agents found a way to communicate privately."
+    },
+    "dadd": {
+      "source_hash": "cea581f28fd5",
+      "text": "This diagram sums up OpenAI's official report in four steps."
+    },
+    "nas9": {
+      "source_hash": "37503790180f",
+      "text": "Eval safeguards were lowered, giving the agents an opening."
+    },
+    "htf6": {
+      "source_hash": "928df39a950a",
+      "text": "Then they built their own private message board."
+    },
+    "e38y": {
+      "source_hash": "ffd4fe303d42",
+      "text": "Only then did it escalate into breaching external systems."
+    },
+    "5kmk": {
+      "source_hash": "4be9dbe2733c",
+      "text": "After the fact, OpenAI brought in two independent reviewers."
+    },
+    "kigy": {
+      "source_hash": "5c144e686611",
+      "text": "This diagram traces that step-by-step escalation."
+    },
+    "urie": {
+      "source_hash": "738350796018",
+      "text": "It didn't happen in one step — several stages stacked up."
+    },
+    "34ev": {
+      "source_hash": "b6c9915de901",
+      "text": "Safeguards being off was where this whole path started."
+    },
+    "wbyp": {
+      "source_hash": "cd6aa4ee1fff",
+      "text": "So why did this happen?"
+    },
+    "syeb": {
+      "source_hash": "ac0156b680ef",
+      "text": "One cause OpenAI itself named is pretty direct."
+    },
+    "yj7m": {
+      "source_hash": "3ce85e67bc28",
+      "text": "The eval environment deliberately left production safeguards off."
+    },
+    "u8ae": {
+      "source_hash": "86e3c261a8de",
+      "text": "Neither the system prompt nor production safeguards were applied then."
+    },
+    "drae": {
+      "source_hash": "5115f8a8c22b",
+      "text": "Without that layer, the agents just kept pushing outward."
+    },
+    "svd9": {
+      "source_hash": "c83c0a7c0439",
+      "text": "That's one of the causes OpenAI itself admitted."
+    },
+    "hjri": {
+      "source_hash": "710f3e5fd42f",
+      "text": "So how much changes once safeguards are back on?"
+    },
+    "c9xb": {
+      "source_hash": "143486048838",
+      "text": "The first permission: allow lists."
+    },
+    "nfs6": {
+      "source_hash": "657b9f3714ff",
+      "text": "A tool's config file can hold two separate kinds of rules."
+    },
+    "v2gf": {
+      "source_hash": "dbef7b387cbd",
+      "text": "One lets things through, the other blocks them outright."
+    },
+    "28ax": {
+      "source_hash": "e5ddf31e06a9",
+      "text": "Deny rules take priority over allow rules."
+    },
+    "ex3f": {
+      "source_hash": "c47e0e73efbb",
+      "text": "That's straight from the official docs."
+    },
+    "q2ia": {
+      "source_hash": "cf0a5846131e",
+      "text": "For example, blocking it from reading a folder called private."
+    },
+    "dqrc": {
+      "source_hash": "7c0cfb48440c",
+      "text": "If it's blocked, it should report why and stop."
+    },
+    "8p8i": {
+      "source_hash": "a353fea989b6",
+      "text": "It shouldn't find its own way around by switching tools."
+    },
+    "8w3h": {
+      "source_hash": "4da88adb0d1f",
+      "text": "Whether it's blocked is up to the tool, not up to the agent."
+    },
+    "deqk": {
+      "source_hash": "ec20bf6148a6",
+      "text": "When this rule blocks it, a clear denial message shows up."
+    },
+    "iipu": {
+      "source_hash": "83607be56911",
+      "text": "A deny rule can block a whole command, or just one folder."
+    },
+    "4pai": {
+      "source_hash": "b3b0d6857e8f",
+      "text": "Allow rules work the same way — the scope can be very precise."
+    },
+    "gxiz": {
+      "source_hash": "ce8e28665e87",
+      "text": "The more precise the scope, the less it can touch."
+    },
+    "t2jm": {
+      "source_hash": "450c9be2766b",
+      "text": "Rules alone aren't enough. OpenAI also ran its own test afterward."
+    },
+    "29zm": {
+      "source_hash": "8728b78a9f2f",
+      "text": "It retested after switching to the production prompt and safeguards."
+    },
+    "258r": {
+      "source_hash": "dbc56b8002f7",
+      "text": "The model's tendency to compromise infrastructure can drop over 100x."
+    },
+    "7fpd": {
+      "source_hash": "01cef23718e2",
+      "text": "That 100x came from a separate test done afterward."
+    },
+    "28m2": {
+      "source_hash": "c1dd98edc2d0",
+      "text": "Not from safeguards that existed at the time of the incident."
+    },
+    "s4jj": {
+      "source_hash": "e48b2a6a0c94",
+      "text": "It shows just how much running production safeguards matters."
+    },
+    "rz8i": {
+      "source_hash": "ae14a6dcac08",
+      "text": "An allow list means the agent isn't even allowed to try."
+    },
+    "a9gp": {
+      "source_hash": "b62ea9593854",
+      "text": "Allow lists are just the first layer — on to incident two."
+    },
+    "y4qq": {
+      "source_hash": "043077007ec9",
+      "text": "The second incident: Google's Gemini."
+    },
+    "4bzz": {
+      "source_hash": "8921800e0fb2",
+      "text": "This account comes from a Google statement reported by media."
+    },
+    "e76r": {
+      "source_hash": "28f19edb8eec",
+      "text": "This security test was never supposed to touch the real internet."
+    },
+    "bvgs": {
+      "source_hash": "30883ca25620",
+      "text": "But the test environment itself happened to have a bug."
+    },
+    "pwq9": {
+      "source_hash": "f47350a4c3d0",
+      "text": "That bug is what opened up network access."
+    },
+    "66bh": {
+      "source_hash": "945112e4fadc",
+      "text": "The agent guessed passwords and used ones posted publicly online."
+    },
+    "imav": {
+      "source_hash": "935b92ba094d",
+      "text": "It used them to log into three companies' systems."
+    },
+    "p226": {
+      "source_hash": "921fac0bfa4d",
+      "text": "Once it realized these were real company systems—"
+    },
+    "nqg8": {
+      "source_hash": "32e6afe96751",
+      "text": "the agent stopped itself all three times, without digging further."
+    },
+    "wezj": {
+      "source_hash": "10ba22ac81a9",
+      "text": "Reports say the problem was a bug in the test environment."
+    },
+    "hvmi": {
+      "source_hash": "7fb70803393a",
+      "text": "The test was run by Irregular, a partner firm doing security testing."
+    },
+    "xn4r": {
+      "source_hash": "b69386e84af3",
+      "text": "Irregular said the same issue showed up at other labs too."
+    },
+    "dyi8": {
+      "source_hash": "6b409e56d9fc",
+      "text": "There's one thing worth noting here."
+    },
+    "mgbu": {
+      "source_hash": "d264fa086e1a",
+      "text": "The agent wasn't stopped by any tool."
+    },
+    "xcbg": {
+      "source_hash": "4cd5e7edf4cf",
+      "text": "It figured out on its own that these were real company systems."
+    },
+    "5thg": {
+      "source_hash": "35183453d113",
+      "text": "After realizing that, it stopped itself all three times."
+    },
+    "799n": {
+      "source_hash": "62ce980d660e",
+      "text": "What stopped it wasn't a defense at all."
+    },
+    "9c8a": {
+      "source_hash": "cc6fe28271db",
+      "text": "But security can't just rely on it choosing to stop."
+    },
+    "r5ek": {
+      "source_hash": "4697c259db8d",
+      "text": "An interface saying Sandbox is on doesn't mean it actually holds."
+    },
+    "h6nz": {
+      "source_hash": "bce5ce0846ad",
+      "text": "Just looking at the settings screen doesn't count."
+    },
+    "335m": {
+      "source_hash": "a78f8c13eb9c",
+      "text": "You have to test it yourself to know if it really holds."
+    },
+    "vbn8": {
+      "source_hash": "819624f6c078",
+      "text": "The second permission: the Sandbox boundary."
+    },
+    "vera": {
+      "source_hash": "e1854379ac5a",
+      "text": "Sandbox draws its boundary with system-level restrictions."
+    },
+    "c8ct": {
+      "source_hash": "08ea1ef931d0",
+      "text": "Set the scope for files and network, and the agent can only touch what's inside."
+    },
+    "eje5": {
+      "source_hash": "ecf5b71110a8",
+      "text": "Even if it tries to step outside, the system blocks the command."
+    },
+    "ft4y": {
+      "source_hash": "1d8b4e67ae5d",
+      "text": "But an interface just saying 'enabled' isn't enough."
+    },
+    "vv7v": {
+      "source_hash": "efbf035fa07d",
+      "text": "You need to actually test it yourself for it to count."
+    },
+    "s4zv": {
+      "source_hash": "f65aeff77474",
+      "text": "But the two tools do this differently."
+    },
+    "4e42": {
+      "source_hash": "4c0fbf1aeaf1",
+      "text": "The same name doesn't mean it blocks the same thing."
+    },
+    "fd2r": {
+      "source_hash": "dc485cdd3f2f",
+      "text": "Let's start with Claude Code."
+    },
+    "f64y": {
+      "source_hash": "497395bf70dc",
+      "text": "The official docs are very clear about this."
+    },
+    "fgam": {
+      "source_hash": "5ac4bf2b3ff9",
+      "text": "Sandbox isn't supported on native Windows."
+    },
+    "5by5": {
+      "source_hash": "3bde499115f3",
+      "text": "You have to run it inside WSL2 first."
+    },
+    "338q": {
+      "source_hash": "aac162e27df7",
+      "text": "Codex does it differently."
+    },
+    "vax9": {
+      "source_hash": "7b80f44f0c45",
+      "text": "It has its own native Sandbox on Windows."
+    },
+    "tmx4": {
+      "source_hash": "609f4e4c2dbc",
+      "text": "It runs straight from PowerShell — no WSL, no VM needed."
+    },
+    "mwi8": {
+      "source_hash": "2d23b9536e91",
+      "text": "The two draw the boundary differently, but the point's the same."
+    },
+    "ratv": {
+      "source_hash": "bfecfef65891",
+      "text": "Find out first whether your tool actually holds on your system."
+    },
+    "3srf": {
+      "source_hash": "c44c0967a8f4",
+      "text": "The third incident moves to Australia."
+    },
+    "q7q2": {
+      "source_hash": "a7160c7fcd62",
+      "text": "This is what Australia's Prime Minister disclosed himself."
+    },
+    "dscb": {
+      "source_hash": "1855da2108bd",
+      "text": "OpenAI's research agent was meant to look up drug spending stats."
+    },
+    "eee2": {
+      "source_hash": "b5c78d5ac67a",
+      "text": "That data was public to begin with, not confidential."
+    },
+    "6s79": {
+      "source_hash": "d0f46b1aeee7",
+      "text": "But the Medicare website kept blocking its requests."
+    },
+    "qqwq": {
+      "source_hash": "4684c0412823",
+      "text": "Normally, being blocked should be the end of it."
+    },
+    "yhrc": {
+      "source_hash": "9c78d9896f7a",
+      "text": "But the agent found another way around the restriction."
+    },
+    "ac5m": {
+      "source_hash": "ae3b6fd837a9",
+      "text": "It got hold of some statistics that weren't public."
+    },
+    "semp": {
+      "source_hash": "c4c08be6e8b3",
+      "text": "OpenAI didn't notify them until almost three months later."
+    },
+    "65b8": {
+      "source_hash": "384b75304b38",
+      "text": "And it only went to a public inbox."
+    },
+    "9g7q": {
+      "source_hash": "1533059b89f5",
+      "text": "The PM revealed this himself during the UN session."
+    },
+    "bw6n": {
+      "source_hash": "45d5d0f34286",
+      "text": "The site clearly refused, but the agent brushed it off."
+    },
+    "sq9x": {
+      "source_hash": "46928cfe3546",
+      "text": "OpenAI also issued a statement through the media."
+    },
+    "knnm": {
+      "source_hash": "1b9116d507b2",
+      "text": "They said their review found no evidence patient records were accessed."
+    },
+    "3f29": {
+      "source_hash": "1294ab1820d8",
+      "text": "But the data it got included aggregated health statistics."
+    },
+    "syc3": {
+      "source_hash": "5620127eebe8",
+      "text": "And the names of some internal files."
+    },
+    "82us": {
+      "source_hash": "54df035cbe44",
+      "text": "It did see the site's denial screen."
+    },
+    "ahjv": {
+      "source_hash": "e0106fda154c",
+      "text": "It just didn't treat that as a real boundary."
+    },
+    "zu5k": {
+      "source_hash": "496707c53002",
+      "text": "That's why a boundary can't rely only on the agent understanding it."
+    },
+    "zysh": {
+      "source_hash": "8ad216ceadac",
+      "text": "The third permission: keep API keys out of its reach."
+    },
+    "78gw": {
+      "source_hash": "382bf9e51edd",
+      "text": "First, a cautionary case."
+    },
+    "h3y9": {
+      "source_hash": "acd1fa398a15",
+      "text": "A real case OpenAI disclosed in September."
+    },
+    "p7tu": {
+      "source_hash": "26d4fc5110f4",
+      "text": "An internal model got stuck on a task during training."
+    },
+    "hxes": {
+      "source_hash": "e53c71ed6779",
+      "text": "It needed a revenue figure it just couldn't find."
+    },
+    "y957": {
+      "source_hash": "0079a7bcf79d",
+      "text": "So it thought to go look for leaked API keys."
+    },
+    "cgwr": {
+      "source_hash": "a742d2007482",
+      "text": "It went searching through public code repositories."
+    },
+    "6ard": {
+      "source_hash": "83782d3d1e0b",
+      "text": "One of the keys it found actually passed authentication."
+    },
+    "shek": {
+      "source_hash": "cf5070d43754",
+      "text": "The one hunting for keys wasn't a hacker out of a movie."
+    },
+    "qatm": {
+      "source_hash": "de891d8448f6",
+      "text": "It was a model just trying to finish a report."
+    },
+    "4pyh": {
+      "source_hash": "26b802eb821d",
+      "text": "It shows we can't rely on its self-restraint alone to stop it looking."
+    },
+    "ug6w": {
+      "source_hash": "58ae96a8f203",
+      "text": "Now a good example — what we actually use ourselves."
+    },
+    "ea6i": {
+      "source_hash": "07b38b2768d4",
+      "text": "The text-to-speech API key sits in the site's backend."
+    },
+    "8r4j": {
+      "source_hash": "1be62dcd28e4",
+      "text": "The local tool gets a token through a pairing flow."
+    },
+    "bq9n": {
+      "source_hash": "a84d39c9ca74",
+      "text": "Pairing can only be claimed once — then it expires."
+    },
+    "n62h": {
+      "source_hash": "80a35d77802f",
+      "text": "The key itself is never printed out."
+    },
+    "h8w5": {
+      "source_hash": "4c6c19c83a2d",
+      "text": "Nor written into any file the agent can see."
+    },
+    "m7qy": {
+      "source_hash": "17cd76993239",
+      "text": "Even if the first two defenses fail, the key stays out of reach."
+    },
+    "4r7m": {
+      "source_hash": "eace01ddfc19",
+      "text": "Whether it goes looking shouldn't be its own decision."
+    },
+    "ty5t": {
+      "source_hash": "241e35eeebfc",
+      "text": "So how do I actually do this?"
+    },
+    "7hqi": {
+      "source_hash": "595ddad5eb69",
+      "text": "My take is simple — just these three things."
+    },
+    "6iwh": {
+      "source_hash": "15e0056132b5",
+      "text": "First, assume a 'don't' won't be understood."
+    },
+    "mzz7": {
+      "source_hash": "00d1b56b275e",
+      "text": "Whether it's a prompt or a site's denial screen."
+    },
+    "ef9k": {
+      "source_hash": "957acd29ac40",
+      "text": "Second, test your allow list and Sandbox yourself once set up."
+    },
+    "58ph": {
+      "source_hash": "fbf13cb46f56",
+      "text": "If the tool says it's blocked, I need to see that block myself."
+    },
+    "pn3m": {
+      "source_hash": "1b7a9bda1985",
+      "text": "Third, never let it see the API key in the first place."
+    },
+    "tpei": {
+      "source_hash": "4f5a7fc92518",
+      "text": "Don't paste it into a prompt or a file it can read."
+    },
+    "axsm": {
+      "source_hash": "b514004606e6",
+      "text": "Each one goes a layer deeper — skip one and it's not enough."
+    },
+    "7kcd": {
+      "source_hash": "546fac20a1ed",
+      "text": "That's what I do now — check your own setup against it."
+    },
+    "6nib": {
+      "source_hash": "769dc805a194",
+      "text": "Use these same three things to check the tools you're using."
+    },
+    "yjvs": {
+      "source_hash": "a22d89b95b8a",
+      "text": "So does a 'don't' written into instructions actually hold?"
+    },
+    "tfnm": {
+      "source_hash": "c1b8855cd2b7",
+      "text": "Honestly, it was never a real boundary to begin with."
+    },
+    "a7p8": {
+      "source_hash": "56151e582674",
+      "text": "What actually holds are three technical defenses."
+    },
+    "br8v": {
+      "source_hash": "ad94f6e42a28",
+      "text": "Allow lists mean it's not even allowed to try."
+    },
+    "9e3u": {
+      "source_hash": "009b264b531a",
+      "text": "Sandbox means it can't even touch what's outside."
+    },
+    "z47a": {
+      "source_hash": "0d0f7749d696",
+      "text": "Keeping keys out of reach means there's nothing to find."
+    },
+    "bijw": {
+      "source_hash": "e665cc96ad8e",
+      "text": "All three incidents happened during evals, not your daily chats."
+    },
+    "99cm": {
+      "source_hash": "a312eed04e54",
+      "text": "But they still puncture an illusion we often hold."
+    },
+    "h76f": {
+      "source_hash": "43e9a2e583a8",
+      "text": "Assume it won't understand 'don't,' then set up these defenses."
+    },
+    "tje9": {
+      "source_hash": "0e23c637ddde",
+      "text": "The full timeline and official links are in the article below."
+    },
+    "j9j4": {
+      "source_hash": "56422ec9d171",
+      "text": "See you in the next video."
+    }
+  }
+}

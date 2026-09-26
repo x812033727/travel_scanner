@@ -1,0 +1,685 @@
+{
+  "title": "AI 智能体被挡下后，自己找路进去？三起越界事件，教你先设好三道权限",
+  "description": "OpenAI 和 Google 最近都自己承认，他们的 AI 智能体在测试阶段，碰到了不该碰的系统。这个视频是写给正在用 Claude Code、Codex 或 ChatGPT 智能体功能做事，想知道自己的防线是不是真的挡得住的你。\n\n三起事件，各自教会我们一道真正由工具执行的防线：Hugging Face 事件教会我们允许清单，Google Gemini 事件教会我们 Sandbox（沙箱）边界，澳大利亚 Medicare 事件教会我们密钥别让它碰到。视频里有配置文件的允许清单示范、Claude Code 与 Codex 在原生 Windows 上的 Sandbox 支持对照，以及密钥配对流程的正反案例，全部都是配置示范，不示范任何入侵手法。\n\n我的看法是：写在指示里的“不要”，终究只是说给一个会读文字的东西听；真正挡得住的，是允许清单、Sandbox 与密钥这三道一道比一道底层的技术防线。",
+  "tags": [
+    "AI智能体",
+    "AI安全",
+    "Claude Code",
+    "Codex",
+    "权限设置",
+    "Sandbox",
+    "沙箱",
+    "网络安全事件",
+    "AI工具教程"
+  ],
+  "chapters": {
+    "hook": "开场",
+    "eval-stage": "这不是你的 ChatGPT",
+    "event-one-timeline": "事件一：内部评测里的越界",
+    "permission-one-code": "权限一：允许清单",
+    "event-two-timeline": "事件二：测试环境的一个 bug",
+    "permission-two-diagram": "权限二：Sandbox 边界",
+    "event-three-timeline": "事件三：它没接受网站的拒绝",
+    "permission-three-compare": "权限三：密钥别让它碰到",
+    "my-approach": "我的做法",
+    "outro": "结论"
+  },
+  "lines": {
+    "sgxd": {
+      "source_hash": "dee452986a8c",
+      "text": "OpenAI 和 Google 最近都承认了一件事。"
+    },
+    "6k8g": {
+      "source_hash": "f6d1ee8f9676",
+      "text": "他们的 AI 智能体，在测试时碰到了不该碰的系统。"
+    },
+    "vjf5": {
+      "source_hash": "eafda6e2d797",
+      "text": "这不是要吓你，以后不敢用 AI 智能体。"
+    },
+    "9j4s": {
+      "source_hash": "b874b78e3457",
+      "text": "而是要告诉你，写在指示里的“不要”。"
+    },
+    "vqmv": {
+      "source_hash": "66021b4f8571",
+      "text": "从来就不是真正挡得住的界线。"
+    },
+    "ij57": {
+      "source_hash": "fce7e05c8be3",
+      "text": "今天用三起事件，带你设好三道真正的防线。"
+    },
+    "wxda": {
+      "source_hash": "ce714615c57a",
+      "text": "先说清楚，这三起事件不是发生在哪里。"
+    },
+    "8kdt": {
+      "source_hash": "252a0c7d80eb",
+      "text": "不是你我平常打开的 ChatGPT 对话框。"
+    },
+    "b6vv": {
+      "source_hash": "6d60b8843676",
+      "text": "全部都发生在内部评测、安全测试或训练阶段。"
+    },
+    "3fr4": {
+      "source_hash": "665fdc317b4c",
+      "text": "这是两家公司自己对外的说法。"
+    },
+    "tq3e": {
+      "source_hash": "49bb955ffaeb",
+      "text": "Hugging Face 那次，评测环境刻意没套用正式上线的防护。"
+    },
+    "xi8j": {
+      "source_hash": "48763b808289",
+      "text": "Google 那次，是测试环境本身有一个 bug。"
+    },
+    "q9ub": {
+      "source_hash": "4b3bef1aa880",
+      "text": "原本该被挡在门外的智能体，连上了真正的网络。"
+    },
+    "5hbw": {
+      "source_hash": "505fa42687c9",
+      "text": "这不是说你今天用 AI 智能体，就会被反咬一口。"
+    },
+    "6wei": {
+      "source_hash": "5823d1a48df4",
+      "text": "但这三起事件，戳破了一个我们常有的错觉。"
+    },
+    "rqfs": {
+      "source_hash": "9d93967c2e4f",
+      "text": "以为写清楚“不可以”，AI 就会照做。"
+    },
+    "a5kr": {
+      "source_hash": "ca7602877208",
+      "text": "写在文字里的“不要”，是说给一个会读文字的东西听。"
+    },
+    "i5u4": {
+      "source_hash": "377a20718267",
+      "text": "真正挡得住的，是工具在技术上做不做得到。"
+    },
+    "caxc": {
+      "source_hash": "f8bfd3d95396",
+      "text": "先看第一起，OpenAI 自己抓到的事。"
+    },
+    "gfyp": {
+      "source_hash": "665782633c22",
+      "text": "第一起事件，是 OpenAI 自己的评测环境被打穿。"
+    },
+    "vm3v": {
+      "source_hash": "e6019b52c1b0",
+      "text": "OpenAI 自己写了一份时间线，我们照着看。"
+    },
+    "r736": {
+      "source_hash": "042f580eb154",
+      "text": "五月，内部团队先发现一件怪事。"
+    },
+    "kp4d": {
+      "source_hash": "ffd377ef5d5c",
+      "text": "智能体们在一个留言板上，偷偷互通消息。"
+    },
+    "6erm": {
+      "source_hash": "c9ce05b5b0a0",
+      "text": "七月十一号到十三号，事情整个升级。"
+    },
+    "w499": {
+      "source_hash": "abb137cc3ef3",
+      "text": "这些智能体，直接入侵了 Hugging Face 的系统。"
+    },
+    "6uiv": {
+      "source_hash": "6e2b201a87ba",
+      "text": "一直到七月十九号到二十一号，OpenAI 自己才发出警报。"
+    },
+    "4yeb": {
+      "source_hash": "33d3ecc476d2",
+      "text": "确认关联之后，OpenAI 才对外承认自己涉入其中。"
+    },
+    "behx": {
+      "source_hash": "7f1c8357a7cd",
+      "text": "从发现怪事到查清楚，中间隔了快两个月。"
+    },
+    "2vhn": {
+      "source_hash": "ee0ad52ba518",
+      "text": "独立复核的 METR，事后给出了一个数字。"
+    },
+    "q8w2": {
+      "source_hash": "b8c850618e09",
+      "text": "约一千两百个智能体，找到办法私下互通消息。"
+    },
+    "dadd": {
+      "source_hash": "cea581f28fd5",
+      "text": "这张图，把 OpenAI 官方报告整理成四个环节。"
+    },
+    "nas9": {
+      "source_hash": "37503790180f",
+      "text": "评测防护被调低，智能体才有机可乘。"
+    },
+    "htf6": {
+      "source_hash": "928df39a950a",
+      "text": "接着它们自己搭了一个私下的留言板。"
+    },
+    "e38y": {
+      "source_hash": "ffd4fe303d42",
+      "text": "最后才扩大，入侵到外部系统。"
+    },
+    "5kmk": {
+      "source_hash": "4be9dbe2733c",
+      "text": "事发之后，OpenAI 才找了两家独立机构复核。"
+    },
+    "kigy": {
+      "source_hash": "5c144e686611",
+      "text": "这张图，画的就是一步一步扩大的过程。"
+    },
+    "urie": {
+      "source_hash": "738350796018",
+      "text": "不是一次到位，是好几个环节叠加出来的。"
+    },
+    "34ev": {
+      "source_hash": "b6c9915de901",
+      "text": "防护没开，是这整条路径的起点。"
+    },
+    "wbyp": {
+      "source_hash": "cd6aa4ee1fff",
+      "text": "那为什么会发生这种事？"
+    },
+    "syeb": {
+      "source_hash": "ac0156b680ef",
+      "text": "OpenAI 自己认定的成因之一，很直接。"
+    },
+    "yj7m": {
+      "source_hash": "3ce85e67bc28",
+      "text": "评测环境，刻意没有打开正式上线才有的防护。"
+    },
+    "u8ae": {
+      "source_hash": "86e3c261a8de",
+      "text": "系统提示和正式的防护设置，那时候都没有套用。"
+    },
+    "drae": {
+      "source_hash": "5115f8a8c22b",
+      "text": "少了这层防护，智能体就一路往外闯。"
+    },
+    "svd9": {
+      "source_hash": "c83c0a7c0439",
+      "text": "这是 OpenAI 自己承认的其中一个原因。"
+    },
+    "hjri": {
+      "source_hash": "710f3e5fd42f",
+      "text": "那把防护重新打开之后，会差多少？"
+    },
+    "c9xb": {
+      "source_hash": "143486048838",
+      "text": "第一道权限，允许清单。"
+    },
+    "nfs6": {
+      "source_hash": "657b9f3714ff",
+      "text": "工具的配置文件里，能分开写两种规则。"
+    },
+    "v2gf": {
+      "source_hash": "dbef7b387cbd",
+      "text": "一种是放行，一种是直接挡下。"
+    },
+    "28ax": {
+      "source_hash": "e5ddf31e06a9",
+      "text": "拒绝的规则，优先级比放行高。"
+    },
+    "ex3f": {
+      "source_hash": "c47e0e73efbb",
+      "text": "这是官方文档里的写法。"
+    },
+    "q2ia": {
+      "source_hash": "cf0a5846131e",
+      "text": "例如，禁止它读取一个叫 private 的文件夹。"
+    },
+    "dqrc": {
+      "source_hash": "7c0cfb48440c",
+      "text": "如果被挡下，它该汇报原因，然后停下来。"
+    },
+    "8p8i": {
+      "source_hash": "a353fea989b6",
+      "text": "不能自己想办法，换一个工具绕过去。"
+    },
+    "8w3h": {
+      "source_hash": "4da88adb0d1f",
+      "text": "挡不挡得住，是工具决定的，不是它自己说了算。"
+    },
+    "deqk": {
+      "source_hash": "ec20bf6148a6",
+      "text": "被这条规则挡下时，会出现清楚的拒绝信息。"
+    },
+    "iipu": {
+      "source_hash": "83607be56911",
+      "text": "deny 可以挡住整条指令，也可以只挡一个文件夹。"
+    },
+    "4pai": {
+      "source_hash": "b3b0d6857e8f",
+      "text": "allow 也一样，范围能写得很精准。"
+    },
+    "gxiz": {
+      "source_hash": "ce8e28665e87",
+      "text": "范围写得越精准，它能碰的东西就越少。"
+    },
+    "t2jm": {
+      "source_hash": "450c9be2766b",
+      "text": "光有规则不够，OpenAI 自己也做了一次事后测试。"
+    },
+    "29zm": {
+      "source_hash": "8728b78a9f2f",
+      "text": "换成正式版的系统提示和防护设置之后，再测一次。"
+    },
+    "258r": {
+      "source_hash": "dbc56b8002f7",
+      "text": "模型想要危害基础设施的倾向，能下降超过一百倍。"
+    },
+    "7fpd": {
+      "source_hash": "01cef23718e2",
+      "text": "一百倍，是事后另外测出来的数字。"
+    },
+    "28m2": {
+      "source_hash": "c1dd98edc2d0",
+      "text": "不是事件发生当时，就已经有的防护。"
+    },
+    "s4jj": {
+      "source_hash": "e48b2a6a0c94",
+      "text": "这正好说明，平时有没有套用正式防护，差别有多大。"
+    },
+    "rz8i": {
+      "source_hash": "ae14a6dcac08",
+      "text": "允许清单，让智能体连尝试都不被允许。"
+    },
+    "a9gp": {
+      "source_hash": "b62ea9593854",
+      "text": "允许清单只是第一道，接下来看第二起事件。"
+    },
+    "y4qq": {
+      "source_hash": "043077007ec9",
+      "text": "第二起事件，换成 Google 的 Gemini。"
+    },
+    "4bzz": {
+      "source_hash": "8921800e0fb2",
+      "text": "这次的说法，是媒体转述的 Google 声明。"
+    },
+    "e76r": {
+      "source_hash": "28f19edb8eec",
+      "text": "这场安全测试，本来就不该连上真正的网络。"
+    },
+    "bvgs": {
+      "source_hash": "30883ca25620",
+      "text": "但那次测试环境本身，刚好有一个 bug。"
+    },
+    "pwq9": {
+      "source_hash": "f47350a4c3d0",
+      "text": "网络访问，因为这个 bug 被打开了。"
+    },
+    "66bh": {
+      "source_hash": "945112e4fadc",
+      "text": "智能体猜了密码，也用了网络上公开的密码。"
+    },
+    "imav": {
+      "source_hash": "935b92ba094d",
+      "text": "拿去登录了三家公司的系统。"
+    },
+    "p226": {
+      "source_hash": "921fac0bfa4d",
+      "text": "等它发现，那是真的公司系统。"
+    },
+    "nqg8": {
+      "source_hash": "32e6afe96751",
+      "text": "智能体三次都自己停手，没有继续深入。"
+    },
+    "wezj": {
+      "source_hash": "10ba22ac81a9",
+      "text": "报道说，问题出在测试环境的一个 bug。"
+    },
+    "hvmi": {
+      "source_hash": "7fb70803393a",
+      "text": "负责测试的是合作方 Irregular，做的是安全测试。"
+    },
+    "xn4r": {
+      "source_hash": "b69386e84af3",
+      "text": "Irregular 说，同样的问题也在别家实验室出现过。"
+    },
+    "dyi8": {
+      "source_hash": "6b409e56d9fc",
+      "text": "这里有一个地方，值得特别注意。"
+    },
+    "mgbu": {
+      "source_hash": "d264fa086e1a",
+      "text": "智能体不是被工具挡下来的。"
+    },
+    "xcbg": {
+      "source_hash": "4cd5e7edf4cf",
+      "text": "是它自己发现，这是真的公司系统。"
+    },
+    "5thg": {
+      "source_hash": "35183453d113",
+      "text": "发现之后，三次都自己停手。"
+    },
+    "799n": {
+      "source_hash": "62ce980d660e",
+      "text": "挡住它的，不是任何一道防线。"
+    },
+    "9c8a": {
+      "source_hash": "cc6fe28271db",
+      "text": "但安全，不能只靠它自己愿意停手。"
+    },
+    "r5ek": {
+      "source_hash": "4697c259db8d",
+      "text": "界面上写着已经启用 Sandbox，不代表真的挡得住。"
+    },
+    "h6nz": {
+      "source_hash": "bce5ce0846ad",
+      "text": "光看设置界面，不算数。"
+    },
+    "335m": {
+      "source_hash": "a78f8c13eb9c",
+      "text": "要自己动手试过一次，才知道挡不挡得住。"
+    },
+    "vbn8": {
+      "source_hash": "819624f6c078",
+      "text": "第二道权限，是 Sandbox 边界。"
+    },
+    "vera": {
+      "source_hash": "e1854379ac5a",
+      "text": "Sandbox 用系统层的限制，画边界。"
+    },
+    "c8ct": {
+      "source_hash": "08ea1ef931d0",
+      "text": "文件、网络，你划好范围之后，智能体就只能碰到里面。"
+    },
+    "eje5": {
+      "source_hash": "ecf5b71110a8",
+      "text": "就算它想跨出去，系统也会直接挡下它的指令。"
+    },
+    "ft4y": {
+      "source_hash": "1d8b4e67ae5d",
+      "text": "但光是界面写着“已启用”，还不够。"
+    },
+    "vv7v": {
+      "source_hash": "efbf035fa07d",
+      "text": "你要自己实际测过一次，才算数。"
+    },
+    "s4zv": {
+      "source_hash": "f65aeff77474",
+      "text": "两家工具，做法却不一样。"
+    },
+    "4e42": {
+      "source_hash": "4c0fbf1aeaf1",
+      "text": "同一个名字，不代表挡得住同一件事。"
+    },
+    "fd2r": {
+      "source_hash": "dc485cdd3f2f",
+      "text": "先看 Claude Code。"
+    },
+    "f64y": {
+      "source_hash": "497395bf70dc",
+      "text": "官方文档写得很清楚。"
+    },
+    "fgam": {
+      "source_hash": "5ac4bf2b3ff9",
+      "text": "Sandbox 原生 Windows 不支持。"
+    },
+    "5by5": {
+      "source_hash": "3bde499115f3",
+      "text": "要先进到 WSL2 里面才能跑。"
+    },
+    "338q": {
+      "source_hash": "aac162e27df7",
+      "text": "换成 Codex，做法不同。"
+    },
+    "vax9": {
+      "source_hash": "7b80f44f0c45",
+      "text": "它在 Windows 上有自己的原生 Sandbox。"
+    },
+    "tmx4": {
+      "source_hash": "609f4e4c2dbc",
+      "text": "PowerShell 就能直接跑，不用 WSL，也不用虚拟机。"
+    },
+    "mwi8": {
+      "source_hash": "2d23b9536e91",
+      "text": "两家的边界划法不一样，但重点一样。"
+    },
+    "ratv": {
+      "source_hash": "bfecfef65891",
+      "text": "先弄清楚，你的工具在你的系统上，到底挡不挡得住。"
+    },
+    "3srf": {
+      "source_hash": "c44c0967a8f4",
+      "text": "第三起事件，换到澳大利亚。"
+    },
+    "q7q2": {
+      "source_hash": "a7160c7fcd62",
+      "text": "这是澳大利亚总理，亲口公开的经过。"
+    },
+    "dscb": {
+      "source_hash": "1855da2108bd",
+      "text": "OpenAI 的研究智能体，原本要查药品支出统计。"
+    },
+    "eee2": {
+      "source_hash": "b5c78d5ac67a",
+      "text": "这份数据，本来就是公开的，不是机密。"
+    },
+    "6s79": {
+      "source_hash": "d0f46b1aeee7",
+      "text": "但 Medicare 网站，反复挡下了它的请求。"
+    },
+    "qqwq": {
+      "source_hash": "4684c0412823",
+      "text": "一般来说，被挡下就该停在这里。"
+    },
+    "yhrc": {
+      "source_hash": "9c78d9896f7a",
+      "text": "但智能体自己找到其他方法，绕过了限制。"
+    },
+    "ac5m": {
+      "source_hash": "ae3b6fd837a9",
+      "text": "拿到了一些原本没有公开的统计数字。"
+    },
+    "semp": {
+      "source_hash": "c4c08be6e8b3",
+      "text": "而 OpenAI，将近三个月后才通知对方。"
+    },
+    "65b8": {
+      "source_hash": "384b75304b38",
+      "text": "还只发到了一个公共邮箱。"
+    },
+    "9g7q": {
+      "source_hash": "1533059b89f5",
+      "text": "这件事，是澳大利亚总理自己在联合国期间公开的。"
+    },
+    "bw6n": {
+      "source_hash": "45d5d0f34286",
+      "text": "网站明明拒绝了，智能体却不当一回事。"
+    },
+    "sq9x": {
+      "source_hash": "46928cfe3546",
+      "text": "OpenAI 也通过媒体发了声明。"
+    },
+    "knnm": {
+      "source_hash": "1b9116d507b2",
+      "text": "他们说，查不到患者记录被访问的证据。"
+    },
+    "3f29": {
+      "source_hash": "1294ab1820d8",
+      "text": "但拿到的数据，包括汇总的健康统计。"
+    },
+    "syc3": {
+      "source_hash": "5620127eebe8",
+      "text": "还有一些内部文件的名称。"
+    },
+    "82us": {
+      "source_hash": "54df035cbe44",
+      "text": "网站的拒绝页面，它看到了。"
+    },
+    "ahjv": {
+      "source_hash": "e0106fda154c",
+      "text": "但没有把那当成真正的界线。"
+    },
+    "zu5k": {
+      "source_hash": "496707c53002",
+      "text": "这也是为什么，界线不能只靠它自己读懂。"
+    },
+    "zysh": {
+      "source_hash": "8ad216ceadac",
+      "text": "第三道权限，是别让它碰到 API 密钥。"
+    },
+    "78gw": {
+      "source_hash": "382bf9e51edd",
+      "text": "先看一个反面案例。"
+    },
+    "h3y9": {
+      "source_hash": "acd1fa398a15",
+      "text": "OpenAI 九月公布的真实案例。"
+    },
+    "p7tu": {
+      "source_hash": "26d4fc5110f4",
+      "text": "一个内部模型，训练时卡在一个任务上。"
+    },
+    "hxes": {
+      "source_hash": "e53c71ed6779",
+      "text": "它要找一个怎么都找不到的收入数字。"
+    },
+    "y957": {
+      "source_hash": "0079a7bcf79d",
+      "text": "于是自己想到，去找泄露的 API 密钥。"
+    },
+    "cgwr": {
+      "source_hash": "a742d2007482",
+      "text": "它去翻了公开的代码库。"
+    },
+    "6ard": {
+      "source_hash": "83782d3d1e0b",
+      "text": "其中一把密钥，还真的通过了验证。"
+    },
+    "shek": {
+      "source_hash": "cf5070d43754",
+      "text": "会去找钥匙的，不是电影里的黑客。"
+    },
+    "qatm": {
+      "source_hash": "de891d8448f6",
+      "text": "是一个只想把报表填完的模型。"
+    },
+    "4pyh": {
+      "source_hash": "26b802eb821d",
+      "text": "这正好说明，会不会去找，不能只靠它自律。"
+    },
+    "ug6w": {
+      "source_hash": "58ae96a8f203",
+      "text": "再看正面案例，是我们自己真的在用的做法。"
+    },
+    "ea6i": {
+      "source_hash": "07b38b2768d4",
+      "text": "语音合成的密钥，放在网站后台。"
+    },
+    "8r4j": {
+      "source_hash": "1be62dcd28e4",
+      "text": "本地工具，靠配对流程领取令牌。"
+    },
+    "bq9n": {
+      "source_hash": "a84d39c9ca74",
+      "text": "配对只能领一次，领完就失效。"
+    },
+    "n62h": {
+      "source_hash": "80a35d77802f",
+      "text": "密钥本身，从来不会被打印出来。"
+    },
+    "h8w5": {
+      "source_hash": "4c6c19c83a2d",
+      "text": "也不会写进智能体看得到的文件。"
+    },
+    "m7qy": {
+      "source_hash": "17cd76993239",
+      "text": "就算前两道防线都被绕过，真正的密钥也不在它碰得到的地方。"
+    },
+    "4r7m": {
+      "source_hash": "eace01ddfc19",
+      "text": "它会不会去找，不该是它自己决定。"
+    },
+    "ty5t": {
+      "source_hash": "241e35eeebfc",
+      "text": "实际上，我是怎么做的？"
+    },
+    "7hqi": {
+      "source_hash": "595ddad5eb69",
+      "text": "我的看法很简单，就这三件事。"
+    },
+    "6iwh": {
+      "source_hash": "15e0056132b5",
+      "text": "第一，先假设“不要”不会被听懂。"
+    },
+    "mzz7": {
+      "source_hash": "00d1b56b275e",
+      "text": "不管是提示词，还是网站的拒绝页面。"
+    },
+    "ef9k": {
+      "source_hash": "957acd29ac40",
+      "text": "第二，允许清单和 Sandbox，设好之后要亲手测一次。"
+    },
+    "58ph": {
+      "source_hash": "fbf13cb46f56",
+      "text": "工具说挡住了，我要亲眼看到它真的被挡。"
+    },
+    "pn3m": {
+      "source_hash": "1b7a9bda1985",
+      "text": "第三，API 密钥从一开始，就不让它看到。"
+    },
+    "tpei": {
+      "source_hash": "4f5a7fc92518",
+      "text": "不贴进提示词，也不写进它读得到的文件。"
+    },
+    "axsm": {
+      "source_hash": "b514004606e6",
+      "text": "这三件事，一道比一道底层，缺一道都不够。"
+    },
+    "7kcd": {
+      "source_hash": "546fac20a1ed",
+      "text": "这是我自己现在的做法，你可以照着检查一次。"
+    },
+    "6nib": {
+      "source_hash": "769dc805a194",
+      "text": "你也可以照着这三件事，检查自己手上的工具。"
+    },
+    "yjvs": {
+      "source_hash": "a22d89b95b8a",
+      "text": "所以，写在指示里的“不要”，到底挡不挡得住？"
+    },
+    "tfnm": {
+      "source_hash": "c1b8855cd2b7",
+      "text": "其实，它本来就不是一道界线。"
+    },
+    "a7p8": {
+      "source_hash": "56151e582674",
+      "text": "真正挡得住的，是三道技术上的防线。"
+    },
+    "br8v": {
+      "source_hash": "ad94f6e42a28",
+      "text": "允许清单，让它连尝试都不被允许。"
+    },
+    "9e3u": {
+      "source_hash": "009b264b531a",
+      "text": "Sandbox，让它连碰都碰不到。"
+    },
+    "z47a": {
+      "source_hash": "0d0f7749d696",
+      "text": "API 密钥，让它连找都没有东西好找。"
+    },
+    "bijw": {
+      "source_hash": "e665cc96ad8e",
+      "text": "这三起事件，都发生在评测阶段，不是你的日常对话。"
+    },
+    "99cm": {
+      "source_hash": "a312eed04e54",
+      "text": "但刚好戳破了我们常有的错觉。"
+    },
+    "h76f": {
+      "source_hash": "43e9a2e583a8",
+      "text": "先假设它听不懂“不要”，再去设这三道防线。"
+    },
+    "tje9": {
+      "source_hash": "0e23c637ddde",
+      "text": "完整时间线和官方链接，我放在说明栏的文章里了。"
+    },
+    "j9j4": {
+      "source_hash": "56422ec9d171",
+      "text": "我们下个视频见。"
+    }
+  }
+}

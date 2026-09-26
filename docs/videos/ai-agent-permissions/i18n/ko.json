@@ -1,0 +1,685 @@
+{
+  "title": "AI 에이전트가 막힌 뒤 스스로 뚫고 들어간다? 사건 3건과 미리 설정할 권한 3가지",
+  "description": "OpenAI와 Google은 최근 자사의 AI 에이전트가 테스트 단계에서 접근하면 안 될 시스템에 닿았다고 직접 인정했습니다. 이 영상은 Claude Code, Codex, ChatGPT의 에이전트 기능으로 작업하며 자신의 방어선이 정말 막아주는지 궁금한 분들을 위한 것입니다.\n\n세 사건은 각각 도구가 실제로 실행하는 방어선 하나씩을 알려줍니다. Hugging Face 사건은 허용 목록을, Google Gemini 사건은 Sandbox 경계를, 호주 Medicare 사건은 API 키에 아예 손대지 못하게 하는 방법을 알려줍니다. 영상에는 설정 파일의 허용 목록 예시, Claude Code와 Codex의 네이티브 Windows Sandbox 지원 비교, 키 페어링 과정의 반면교사와 모범 사례가 담겨 있습니다. 전부 설정 시연이며 침입 기법은 다루지 않습니다.\n\n제 생각은 이렇습니다. 지시문에 적힌 '하지 마'는 결국 글을 읽는 대상에게 하는 말일 뿐이고, 진짜 막아주는 것은 허용 목록, Sandbox, API 키라는 갈수록 더 근본적인 세 겹의 기술적 방어선입니다.",
+  "tags": [
+    "AI 에이전트",
+    "AI 보안",
+    "Claude Code",
+    "Codex",
+    "권한 설정",
+    "Sandbox",
+    "샌드박스",
+    "보안 사고",
+    "AI 도구 활용법"
+  ],
+  "chapters": {
+    "hook": "인트로",
+    "eval-stage": "이건 당신의 ChatGPT가 아니다",
+    "event-one-timeline": "사건 1: 내부 평가에서 벌어진 일탈",
+    "permission-one-code": "권한 1: 허용 목록",
+    "event-two-timeline": "사건 2: 테스트 환경의 버그",
+    "permission-two-diagram": "권한 2: Sandbox 경계",
+    "event-three-timeline": "사건 3: 거부를 무시한 에이전트",
+    "permission-three-compare": "권한 3: API 키에 손대지 못하게",
+    "my-approach": "제 대응 방법",
+    "outro": "결론"
+  },
+  "lines": {
+    "sgxd": {
+      "source_hash": "dee452986a8c",
+      "text": "OpenAI와 Google이 최근 한 가지를 인정했습니다."
+    },
+    "6k8g": {
+      "source_hash": "f6d1ee8f9676",
+      "text": "테스트 중 AI 에이전트가 건드리면 안 될 시스템에 닿았습니다."
+    },
+    "vjf5": {
+      "source_hash": "eafda6e2d797",
+      "text": "AI 에이전트를 쓰지 말라고 겁주려는 게 아닙니다."
+    },
+    "9j4s": {
+      "source_hash": "b874b78e3457",
+      "text": "말하고 싶은 건, 지시문에 적힌 '하지 마'는"
+    },
+    "vqmv": {
+      "source_hash": "66021b4f8571",
+      "text": "애초에 진짜 막아주는 경계가 아니었다는 겁니다."
+    },
+    "ij57": {
+      "source_hash": "fce7e05c8be3",
+      "text": "오늘 세 사건으로 진짜 방어선 세 개를 세워보겠습니다."
+    },
+    "wxda": {
+      "source_hash": "ce714615c57a",
+      "text": "먼저 이 세 사건이 어디서 일어난 게 아닌지 짚겠습니다."
+    },
+    "8kdt": {
+      "source_hash": "252a0c7d80eb",
+      "text": "우리가 평소 쓰는 ChatGPT 대화창이 아닙니다."
+    },
+    "b6vv": {
+      "source_hash": "6d60b8843676",
+      "text": "전부 내부 평가, 보안 테스트, 훈련 단계에서 일어났습니다."
+    },
+    "3fr4": {
+      "source_hash": "665fdc317b4c",
+      "text": "이는 두 회사가 직접 밝힌 내용입니다."
+    },
+    "tq3e": {
+      "source_hash": "49bb955ffaeb",
+      "text": "Hugging Face 건은 평가에서 정식 보호 장치를 일부러 뺐습니다."
+    },
+    "xi8j": {
+      "source_hash": "48763b808289",
+      "text": "Google 사건은 테스트 환경 자체에 버그가 있었습니다."
+    },
+    "q9ub": {
+      "source_hash": "4b3bef1aa880",
+      "text": "원래 막혔어야 할 에이전트가 실제 네트워크에 연결됐습니다."
+    },
+    "5hbw": {
+      "source_hash": "505fa42687c9",
+      "text": "AI 에이전트를 쓴다고 오늘 당장 당한다는 말은 아닙니다."
+    },
+    "6wei": {
+      "source_hash": "5823d1a48df4",
+      "text": "하지만 이 세 사건은 우리의 흔한 착각을 깨뜨렸습니다."
+    },
+    "rqfs": {
+      "source_hash": "9d93967c2e4f",
+      "text": "'하면 안 돼'라고 쓰면 AI가 따를 거라는 착각입니다."
+    },
+    "a5kr": {
+      "source_hash": "ca7602877208",
+      "text": "글로 쓴 '하지 마'는 글을 읽는 대상에게 하는 말일 뿐입니다."
+    },
+    "i5u4": {
+      "source_hash": "377a20718267",
+      "text": "진짜 막아주는 건 도구에서 기술적으로 되느냐 안 되느냐입니다."
+    },
+    "caxc": {
+      "source_hash": "f8bfd3d95396",
+      "text": "먼저 OpenAI가 직접 발견한 첫 번째 사건을 보겠습니다."
+    },
+    "gfyp": {
+      "source_hash": "665782633c22",
+      "text": "첫 번째 사건은 OpenAI 자체 평가 환경이 뚫린 일입니다."
+    },
+    "vm3v": {
+      "source_hash": "e6019b52c1b0",
+      "text": "OpenAI가 작성한 타임라인을 그대로 살펴보겠습니다."
+    },
+    "r736": {
+      "source_hash": "042f580eb154",
+      "text": "5월, 내부 팀이 이상한 점을 먼저 발견했습니다."
+    },
+    "kp4d": {
+      "source_hash": "ffd377ef5d5c",
+      "text": "에이전트들이 게시판에서 몰래 정보를 주고받았습니다."
+    },
+    "6erm": {
+      "source_hash": "c9ce05b5b0a0",
+      "text": "7월 11일부터 13일 사이, 상황이 커졌습니다."
+    },
+    "w499": {
+      "source_hash": "abb137cc3ef3",
+      "text": "이 에이전트들이 Hugging Face 시스템에 직접 침입했습니다."
+    },
+    "6uiv": {
+      "source_hash": "6e2b201a87ba",
+      "text": "7월 19~21일에야 OpenAI 자체 모니터링이 경보를 울렸습니다."
+    },
+    "4yeb": {
+      "source_hash": "33d3ecc476d2",
+      "text": "연관성을 확인한 뒤에야 OpenAI가 관여 사실을 인정했습니다."
+    },
+    "behx": {
+      "source_hash": "7f1c8357a7cd",
+      "text": "이상 징후 발견부터 규명까지 거의 두 달이 걸렸습니다."
+    },
+    "2vhn": {
+      "source_hash": "ee0ad52ba518",
+      "text": "독립 검증을 맡은 METR이 사후에 수치를 밝혔습니다."
+    },
+    "q8w2": {
+      "source_hash": "b8c850618e09",
+      "text": "약 1,200개 에이전트가 몰래 소통할 방법을 찾았습니다."
+    },
+    "dadd": {
+      "source_hash": "cea581f28fd5",
+      "text": "이 그림은 OpenAI 공식 보고서를 네 단계로 정리한 것입니다."
+    },
+    "nas9": {
+      "source_hash": "37503790180f",
+      "text": "평가용 보호 수준이 낮아져 에이전트가 틈을 탔습니다."
+    },
+    "htf6": {
+      "source_hash": "928df39a950a",
+      "text": "그다음 스스로 비밀 게시판을 만들었습니다."
+    },
+    "e38y": {
+      "source_hash": "ffd4fe303d42",
+      "text": "마지막엔 범위를 넓혀 외부 시스템까지 침입했습니다."
+    },
+    "5kmk": {
+      "source_hash": "4be9dbe2733c",
+      "text": "사건 이후 OpenAI는 독립 기관 두 곳에 검증을 맡겼습니다."
+    },
+    "kigy": {
+      "source_hash": "5c144e686611",
+      "text": "이 그림은 단계별로 커진 과정을 보여줍니다."
+    },
+    "urie": {
+      "source_hash": "738350796018",
+      "text": "한 번에 벌어진 게 아니라 여러 단계가 쌓인 겁니다."
+    },
+    "34ev": {
+      "source_hash": "b6c9915de901",
+      "text": "보호 장치를 안 켠 것이 이 전체 과정의 출발점입니다."
+    },
+    "wbyp": {
+      "source_hash": "cd6aa4ee1fff",
+      "text": "그럼 왜 이런 일이 벌어졌을까요?"
+    },
+    "syeb": {
+      "source_hash": "ac0156b680ef",
+      "text": "OpenAI가 인정한 원인 중 하나는 아주 단순합니다."
+    },
+    "yj7m": {
+      "source_hash": "3ce85e67bc28",
+      "text": "평가 환경엔 정식 서비스에만 있는 보호 장치를 일부러 켜지 않았습니다."
+    },
+    "u8ae": {
+      "source_hash": "86e3c261a8de",
+      "text": "시스템 프롬프트도 정식 보호 설정도 적용되지 않았습니다."
+    },
+    "drae": {
+      "source_hash": "5115f8a8c22b",
+      "text": "이 보호가 없으니 에이전트가 계속 밖으로 나갔습니다."
+    },
+    "svd9": {
+      "source_hash": "c83c0a7c0439",
+      "text": "이는 OpenAI가 인정한 원인 중 하나입니다."
+    },
+    "hjri": {
+      "source_hash": "710f3e5fd42f",
+      "text": "그럼 보호 장치를 다시 켜면 얼마나 달라질까요?"
+    },
+    "c9xb": {
+      "source_hash": "143486048838",
+      "text": "첫 번째 권한은 허용 목록입니다."
+    },
+    "nfs6": {
+      "source_hash": "657b9f3714ff",
+      "text": "도구 설정 파일에 두 종류 규칙을 따로 쓸 수 있습니다."
+    },
+    "v2gf": {
+      "source_hash": "dbef7b387cbd",
+      "text": "하나는 허용, 하나는 즉시 차단입니다."
+    },
+    "28ax": {
+      "source_hash": "e5ddf31e06a9",
+      "text": "차단 규칙이 허용 규칙보다 우선순위가 높습니다."
+    },
+    "ex3f": {
+      "source_hash": "c47e0e73efbb",
+      "text": "이는 공식 문서에 나온 방식입니다."
+    },
+    "q2ia": {
+      "source_hash": "cf0a5846131e",
+      "text": "예를 들어 private 폴더 읽기를 금지할 수 있습니다."
+    },
+    "dqrc": {
+      "source_hash": "7c0cfb48440c",
+      "text": "차단되면 이유를 알리고 멈춰야 합니다."
+    },
+    "8p8i": {
+      "source_hash": "a353fea989b6",
+      "text": "다른 도구로 바꿔 우회하면 안 됩니다."
+    },
+    "8w3h": {
+      "source_hash": "4da88adb0d1f",
+      "text": "막을지 말지는 도구가 정하지, 에이전트가 정하는 게 아닙니다."
+    },
+    "deqk": {
+      "source_hash": "ec20bf6148a6",
+      "text": "이 규칙에 막히면 명확한 거부 메시지가 뜹니다."
+    },
+    "iipu": {
+      "source_hash": "83607be56911",
+      "text": "deny는 명령 전체도, 폴더 하나만도 막을 수 있습니다."
+    },
+    "4pai": {
+      "source_hash": "b3b0d6857e8f",
+      "text": "allow도 마찬가지로 범위를 정밀하게 정할 수 있습니다."
+    },
+    "gxiz": {
+      "source_hash": "ce8e28665e87",
+      "text": "범위를 정밀하게 쓸수록 건드릴 수 있는 게 줄어듭니다."
+    },
+    "t2jm": {
+      "source_hash": "450c9be2766b",
+      "text": "규칙만으론 부족해 OpenAI도 사후 테스트를 했습니다."
+    },
+    "29zm": {
+      "source_hash": "8728b78a9f2f",
+      "text": "정식 시스템 프롬프트와 보호 설정으로 바꿔 다시 테스트했습니다."
+    },
+    "258r": {
+      "source_hash": "dbc56b8002f7",
+      "text": "모델이 인프라를 해치려는 성향은 100배 넘게 줄어들 수 있습니다."
+    },
+    "7fpd": {
+      "source_hash": "01cef23718e2",
+      "text": "100배는 사후에 따로 측정한 수치입니다."
+    },
+    "28m2": {
+      "source_hash": "c1dd98edc2d0",
+      "text": "사건 당시에 있었던 보호가 아닙니다."
+    },
+    "s4jj": {
+      "source_hash": "e48b2a6a0c94",
+      "text": "정식 보호 적용 여부의 차이를 잘 보여줍니다."
+    },
+    "rz8i": {
+      "source_hash": "ae14a6dcac08",
+      "text": "허용 목록은 에이전트의 시도 자체를 막습니다."
+    },
+    "a9gp": {
+      "source_hash": "b62ea9593854",
+      "text": "허용 목록은 첫 번째 방어선, 다음은 두 번째 사건입니다."
+    },
+    "y4qq": {
+      "source_hash": "043077007ec9",
+      "text": "두 번째 사건은 Google의 Gemini입니다."
+    },
+    "4bzz": {
+      "source_hash": "8921800e0fb2",
+      "text": "이번 내용은 언론이 전한 Google의 발표입니다."
+    },
+    "e76r": {
+      "source_hash": "28f19edb8eec",
+      "text": "이 보안 테스트는 원래 실제 네트워크에 연결되면 안 됐습니다."
+    },
+    "bvgs": {
+      "source_hash": "30883ca25620",
+      "text": "하지만 테스트 환경 자체에 버그가 있었습니다."
+    },
+    "pwq9": {
+      "source_hash": "f47350a4c3d0",
+      "text": "이 버그 때문에 네트워크 접근이 열렸습니다."
+    },
+    "66bh": {
+      "source_hash": "945112e4fadc",
+      "text": "에이전트가 비밀번호를 추측하고 공개된 것도 썼습니다."
+    },
+    "imav": {
+      "source_hash": "935b92ba094d",
+      "text": "그 정보로 세 회사 시스템에 로그인했습니다."
+    },
+    "p226": {
+      "source_hash": "921fac0bfa4d",
+      "text": "그게 실제 회사 시스템이란 걸 알아차리자,"
+    },
+    "nqg8": {
+      "source_hash": "32e6afe96751",
+      "text": "에이전트는 세 번 다 스스로 멈추고 더 들어가지 않았습니다."
+    },
+    "wezj": {
+      "source_hash": "10ba22ac81a9",
+      "text": "보도에 따르면 원인은 테스트 환경의 버그였습니다."
+    },
+    "hvmi": {
+      "source_hash": "7fb70803393a",
+      "text": "테스트를 맡은 곳은 파트너사 Irregular였습니다."
+    },
+    "xn4r": {
+      "source_hash": "b69386e84af3",
+      "text": "Irregular는 같은 문제가 다른 연구소에서도 있었다고 했습니다."
+    },
+    "dyi8": {
+      "source_hash": "6b409e56d9fc",
+      "text": "여기서 특히 주목할 부분이 있습니다."
+    },
+    "mgbu": {
+      "source_hash": "d264fa086e1a",
+      "text": "에이전트는 도구에 의해 막힌 게 아닙니다."
+    },
+    "xcbg": {
+      "source_hash": "4cd5e7edf4cf",
+      "text": "실제 회사 시스템임을 스스로 알아챈 것입니다."
+    },
+    "5thg": {
+      "source_hash": "35183453d113",
+      "text": "알아챈 뒤 세 번 다 스스로 멈췄습니다."
+    },
+    "799n": {
+      "source_hash": "62ce980d660e",
+      "text": "그것을 막은 건 어떤 방어선도 아니었습니다."
+    },
+    "9c8a": {
+      "source_hash": "cc6fe28271db",
+      "text": "하지만 보안을 그 의지에만 맡길 순 없습니다."
+    },
+    "r5ek": {
+      "source_hash": "4697c259db8d",
+      "text": "화면에 Sandbox 활성화라 떠도 실제로 막힌다는 뜻은 아닙니다."
+    },
+    "h6nz": {
+      "source_hash": "bce5ce0846ad",
+      "text": "설정 화면만 보는 건 소용없습니다."
+    },
+    "335m": {
+      "source_hash": "a78f8c13eb9c",
+      "text": "직접 한 번 시도해봐야 막히는지 알 수 있습니다."
+    },
+    "vbn8": {
+      "source_hash": "819624f6c078",
+      "text": "두 번째 권한은 Sandbox 경계입니다."
+    },
+    "vera": {
+      "source_hash": "e1854379ac5a",
+      "text": "Sandbox는 시스템 차원의 제한으로 경계를 긋습니다."
+    },
+    "c8ct": {
+      "source_hash": "08ea1ef931d0",
+      "text": "파일과 네트워크 범위를 정하면 에이전트는 그 안에서만 움직입니다."
+    },
+    "eje5": {
+      "source_hash": "ecf5b71110a8",
+      "text": "벗어나려 해도 시스템이 명령을 바로 막습니다."
+    },
+    "ft4y": {
+      "source_hash": "1d8b4e67ae5d",
+      "text": "하지만 화면에 '활성화'라고만 뜨는 건 부족합니다."
+    },
+    "vv7v": {
+      "source_hash": "efbf035fa07d",
+      "text": "직접 실제로 테스트해봐야 의미가 있습니다."
+    },
+    "s4zv": {
+      "source_hash": "f65aeff77474",
+      "text": "두 도구는 방식이 서로 다릅니다."
+    },
+    "4e42": {
+      "source_hash": "4c0fbf1aeaf1",
+      "text": "이름이 같다고 막는 게 같은 건 아닙니다."
+    },
+    "fd2r": {
+      "source_hash": "dc485cdd3f2f",
+      "text": "먼저 Claude Code부터 보겠습니다."
+    },
+    "f64y": {
+      "source_hash": "497395bf70dc",
+      "text": "공식 문서에 명확히 나와 있습니다."
+    },
+    "fgam": {
+      "source_hash": "5ac4bf2b3ff9",
+      "text": "Sandbox는 네이티브 Windows를 지원하지 않습니다."
+    },
+    "5by5": {
+      "source_hash": "3bde499115f3",
+      "text": "WSL2 안에 들어가야 실행할 수 있습니다."
+    },
+    "338q": {
+      "source_hash": "aac162e27df7",
+      "text": "Codex는 방식이 다릅니다."
+    },
+    "vax9": {
+      "source_hash": "7b80f44f0c45",
+      "text": "Windows에서 자체 네이티브 Sandbox를 제공합니다."
+    },
+    "tmx4": {
+      "source_hash": "609f4e4c2dbc",
+      "text": "PowerShell에서 바로 실행되고 WSL도 가상머신도 필요 없습니다."
+    },
+    "mwi8": {
+      "source_hash": "2d23b9536e91",
+      "text": "두 도구의 경계 설정 방식은 달라도 핵심은 같습니다."
+    },
+    "ratv": {
+      "source_hash": "bfecfef65891",
+      "text": "먼저 내 도구가 내 시스템에서 정말 막는지 확인해야 합니다."
+    },
+    "3srf": {
+      "source_hash": "c44c0967a8f4",
+      "text": "세 번째 사건은 무대가 호주로 바뀝니다."
+    },
+    "q7q2": {
+      "source_hash": "a7160c7fcd62",
+      "text": "호주 총리가 직접 공개한 경위입니다."
+    },
+    "dscb": {
+      "source_hash": "1855da2108bd",
+      "text": "OpenAI의 리서치 에이전트가 약품 지출 통계를 조사하려 했습니다."
+    },
+    "eee2": {
+      "source_hash": "b5c78d5ac67a",
+      "text": "이 자료는 원래 공개된 것으로 기밀이 아니었습니다."
+    },
+    "6s79": {
+      "source_hash": "d0f46b1aeee7",
+      "text": "하지만 Medicare 사이트가 요청을 계속 막았습니다."
+    },
+    "qqwq": {
+      "source_hash": "4684c0412823",
+      "text": "보통은 막히면 거기서 멈춰야 합니다."
+    },
+    "yhrc": {
+      "source_hash": "9c78d9896f7a",
+      "text": "하지만 에이전트가 다른 방법을 찾아 제한을 우회했습니다."
+    },
+    "ac5m": {
+      "source_hash": "ae3b6fd837a9",
+      "text": "원래 공개되지 않은 통계 수치를 얻었습니다."
+    },
+    "semp": {
+      "source_hash": "c4c08be6e8b3",
+      "text": "OpenAI는 거의 석 달이 지나서야 알렸습니다."
+    },
+    "65b8": {
+      "source_hash": "384b75304b38",
+      "text": "그마저도 대표 메일함 한 곳으로만 보냈습니다."
+    },
+    "9g7q": {
+      "source_hash": "1533059b89f5",
+      "text": "이 일은 호주 총리가 유엔 총회 기간에 직접 공개했습니다."
+    },
+    "bw6n": {
+      "source_hash": "45d5d0f34286",
+      "text": "사이트가 분명히 거부했지만 에이전트는 무시했습니다."
+    },
+    "sq9x": {
+      "source_hash": "46928cfe3546",
+      "text": "OpenAI도 언론을 통해 입장을 밝혔습니다."
+    },
+    "knnm": {
+      "source_hash": "1b9116d507b2",
+      "text": "환자 기록에 접근한 증거는 찾지 못했다고 했습니다."
+    },
+    "3f29": {
+      "source_hash": "1294ab1820d8",
+      "text": "하지만 얻은 자료엔 집계된 건강 통계가 있었습니다."
+    },
+    "syc3": {
+      "source_hash": "5620127eebe8",
+      "text": "내부 파일 이름 일부도 포함됐습니다."
+    },
+    "82us": {
+      "source_hash": "54df035cbe44",
+      "text": "사이트의 거부 화면을 분명 보긴 했습니다."
+    },
+    "ahjv": {
+      "source_hash": "e0106fda154c",
+      "text": "하지만 그걸 진짜 경계로 받아들이지 않았습니다."
+    },
+    "zu5k": {
+      "source_hash": "496707c53002",
+      "text": "그래서 경계를 스스로 이해하는 데만 맡길 수 없습니다."
+    },
+    "zysh": {
+      "source_hash": "8ad216ceadac",
+      "text": "세 번째 권한은 API 키에 아예 손대지 못하게 하는 겁니다."
+    },
+    "78gw": {
+      "source_hash": "382bf9e51edd",
+      "text": "먼저 반면교사 사례부터 보겠습니다."
+    },
+    "h3y9": {
+      "source_hash": "acd1fa398a15",
+      "text": "OpenAI가 9월에 공개한 실제 사례입니다."
+    },
+    "p7tu": {
+      "source_hash": "26d4fc5110f4",
+      "text": "내부 모델이 훈련 중 한 작업에서 막혔습니다."
+    },
+    "hxes": {
+      "source_hash": "e53c71ed6779",
+      "text": "아무리 해도 못 찾는 소득 수치를 찾아야 했습니다."
+    },
+    "y957": {
+      "source_hash": "0079a7bcf79d",
+      "text": "그래서 스스로 유출된 API 키를 찾기로 했습니다."
+    },
+    "cgwr": {
+      "source_hash": "a742d2007482",
+      "text": "공개된 코드 저장소를 뒤졌습니다."
+    },
+    "6ard": {
+      "source_hash": "83782d3d1e0b",
+      "text": "그중 키 하나가 실제로 인증을 통과했습니다."
+    },
+    "shek": {
+      "source_hash": "cf5070d43754",
+      "text": "키를 찾아 나선 건 영화 속 해커가 아니었습니다."
+    },
+    "qatm": {
+      "source_hash": "de891d8448f6",
+      "text": "그저 보고서를 채우려던 모델이었습니다."
+    },
+    "4pyh": {
+      "source_hash": "26b802eb821d",
+      "text": "찾을지 말지를 자율에만 맡길 수 없다는 뜻입니다."
+    },
+    "ug6w": {
+      "source_hash": "58ae96a8f203",
+      "text": "이번엔 저희가 실제로 쓰는 모범 사례입니다."
+    },
+    "ea6i": {
+      "source_hash": "07b38b2768d4",
+      "text": "음성 합성 키는 사이트 관리자 페이지에 둡니다."
+    },
+    "8r4j": {
+      "source_hash": "1be62dcd28e4",
+      "text": "로컬 도구는 페어링 과정으로 토큰을 받습니다."
+    },
+    "bq9n": {
+      "source_hash": "a84d39c9ca74",
+      "text": "페어링은 한 번만 쓸 수 있고, 쓰고 나면 바로 무효가 됩니다."
+    },
+    "n62h": {
+      "source_hash": "80a35d77802f",
+      "text": "키 자체는 절대 출력되지 않습니다."
+    },
+    "h8w5": {
+      "source_hash": "4c6c19c83a2d",
+      "text": "에이전트가 볼 수 있는 파일에도 남지 않습니다."
+    },
+    "m7qy": {
+      "source_hash": "17cd76993239",
+      "text": "앞의 두 방어선이 뚫려도 진짜 키는 닿을 수 없는 곳에 있습니다."
+    },
+    "4r7m": {
+      "source_hash": "eace01ddfc19",
+      "text": "찾을지 말지는 에이전트가 스스로 정할 일이 아닙니다."
+    },
+    "ty5t": {
+      "source_hash": "241e35eeebfc",
+      "text": "실제로 저는 어떻게 하고 있을까요?"
+    },
+    "7hqi": {
+      "source_hash": "595ddad5eb69",
+      "text": "제 생각은 간단합니다, 이 세 가지입니다."
+    },
+    "6iwh": {
+      "source_hash": "15e0056132b5",
+      "text": "첫째, '하지 마'는 안 통한다고 가정합니다."
+    },
+    "mzz7": {
+      "source_hash": "00d1b56b275e",
+      "text": "프롬프트든 사이트의 거부 화면이든 마찬가지입니다."
+    },
+    "ef9k": {
+      "source_hash": "957acd29ac40",
+      "text": "둘째, 허용 목록과 Sandbox는 설정 후 직접 테스트합니다."
+    },
+    "58ph": {
+      "source_hash": "fbf13cb46f56",
+      "text": "도구가 막았다고 해도 제 눈으로 직접 확인합니다."
+    },
+    "pn3m": {
+      "source_hash": "1b7a9bda1985",
+      "text": "셋째, API 키는 처음부터 아예 보여주지 않습니다."
+    },
+    "tpei": {
+      "source_hash": "4f5a7fc92518",
+      "text": "프롬프트에도 안 넣고 읽을 수 있는 파일에도 안 씁니다."
+    },
+    "axsm": {
+      "source_hash": "b514004606e6",
+      "text": "이 세 가지는 갈수록 더 근본적이라 하나도 빠지면 안 됩니다."
+    },
+    "7kcd": {
+      "source_hash": "546fac20a1ed",
+      "text": "이는 제가 지금 쓰는 방식으로, 따라 점검할 수 있습니다."
+    },
+    "6nib": {
+      "source_hash": "769dc805a194",
+      "text": "이 세 가지로 여러분의 도구도 점검할 수 있습니다."
+    },
+    "yjvs": {
+      "source_hash": "a22d89b95b8a",
+      "text": "그래서 지시문의 '하지 마'는 정말 막아줄까요?"
+    },
+    "tfnm": {
+      "source_hash": "c1b8855cd2b7",
+      "text": "사실 그것은 애초에 경계가 아니었습니다."
+    },
+    "a7p8": {
+      "source_hash": "56151e582674",
+      "text": "진짜 막아주는 건 기술적인 방어선 세 개입니다."
+    },
+    "br8v": {
+      "source_hash": "ad94f6e42a28",
+      "text": "허용 목록은 시도 자체를 막습니다."
+    },
+    "9e3u": {
+      "source_hash": "009b264b531a",
+      "text": "Sandbox는 아예 손댈 수 없게 합니다."
+    },
+    "z47a": {
+      "source_hash": "0d0f7749d696",
+      "text": "API 키는 찾아봐도 찾을 게 없게 합니다."
+    },
+    "bijw": {
+      "source_hash": "e665cc96ad8e",
+      "text": "세 사건 모두 평가 단계의 일이지, 여러분의 일상 대화 속 일이 아닙니다."
+    },
+    "99cm": {
+      "source_hash": "a312eed04e54",
+      "text": "하지만 우리의 흔한 착각을 정확히 깨뜨렸습니다."
+    },
+    "h76f": {
+      "source_hash": "43e9a2e583a8",
+      "text": "'하지 마'가 안 통한다고 가정한 뒤 이 세 방어선을 세워야 합니다."
+    },
+    "tje9": {
+      "source_hash": "0e23c637ddde",
+      "text": "전체 타임라인과 공식 링크는 설명란에 링크한 글에 정리해 뒀습니다."
+    },
+    "j9j4": {
+      "source_hash": "56422ec9d171",
+      "text": "다음 영상에서 뵙겠습니다."
+    }
+  }
+}

@@ -1,0 +1,685 @@
+{
+  "title": "AIエージェントは拒否されても自分で抜け道を探す？3つの越権行為と先に設定すべき3つの権限",
+  "description": "OpenAIとGoogleは最近、自社のAIエージェントがテスト段階で触れてはいけないシステムに接触したことを認めました。Claude Code、Codex、ChatGPTのエージェント機能を使っていて、自分の防御が本当に効いているか知りたい方に向けた動画です。\n\n3つの事件それぞれが、ツールが実際に実行する防御を教えてくれます。Hugging Face事件は許可リスト、Google Gemini事件はSandboxの境界、オーストラリアMedicare事件はAPIキーに触れさせないことです。動画では設定ファイルの許可リスト例、Claude CodeとCodexのネイティブWindowsでのSandbox対応の比較、キーのペアリング手順の良い例と悪い例を紹介しますが、すべて設定の説明であり、侵入手法は一切扱いません。\n\n私の考えはこうです。指示に書いた『ダメ』は、結局文字を読める相手に言っているだけ。本当に効くのは、許可リスト、Sandbox、APIキーという、順に下の層で効く、3つの技術的な防御です。",
+  "tags": [
+    "AIエージェント",
+    "AI安全性",
+    "Claude Code",
+    "Codex",
+    "権限設定",
+    "Sandbox",
+    "サンドボックス",
+    "セキュリティインシデント",
+    "AIツール活用術"
+  ],
+  "chapters": {
+    "hook": "オープニング",
+    "eval-stage": "これは普段のChatGPTじゃない",
+    "event-one-timeline": "事件1:内部評価での越権行為",
+    "permission-one-code": "権限1:許可リスト",
+    "event-two-timeline": "事件2:テスト環境のバグ",
+    "permission-two-diagram": "権限2:Sandboxの境界",
+    "event-three-timeline": "事件3:サイトの拒否を無視",
+    "permission-three-compare": "権限3:APIキーに触れさせない",
+    "my-approach": "私のやり方",
+    "outro": "まとめ"
+  },
+  "lines": {
+    "sgxd": {
+      "source_hash": "dee452986a8c",
+      "text": "OpenAIとGoogleが最近、あることを認めました。"
+    },
+    "6k8g": {
+      "source_hash": "f6d1ee8f9676",
+      "text": "自社のAIエージェントが、テスト中に触れてはいけないシステムに触れたのです。"
+    },
+    "vjf5": {
+      "source_hash": "eafda6e2d797",
+      "text": "AIエージェントを怖がってほしい、という話ではありません。"
+    },
+    "9j4s": {
+      "source_hash": "b874b78e3457",
+      "text": "伝えたいのは、指示に書いた『ダメ』のことです。"
+    },
+    "vqmv": {
+      "source_hash": "66021b4f8571",
+      "text": "それは最初から、本当に止められる境界ではないという話です。"
+    },
+    "ij57": {
+      "source_hash": "fce7e05c8be3",
+      "text": "今日は3つの事件から、本物の防御を3つ紹介します。"
+    },
+    "wxda": {
+      "source_hash": "ce714615c57a",
+      "text": "まず、この3件がどこで起きていないかを話します。"
+    },
+    "8kdt": {
+      "source_hash": "252a0c7d80eb",
+      "text": "普段使っているChatGPTの画面ではありません。"
+    },
+    "b6vv": {
+      "source_hash": "6d60b8843676",
+      "text": "すべて内部評価やセキュリティテスト、訓練段階での話です。"
+    },
+    "3fr4": {
+      "source_hash": "665fdc317b4c",
+      "text": "これは両社自身が対外的に説明している内容です。"
+    },
+    "tq3e": {
+      "source_hash": "49bb955ffaeb",
+      "text": "Hugging Faceの件では、評価環境にあえて本番の防御を適用しませんでした。"
+    },
+    "xi8j": {
+      "source_hash": "48763b808289",
+      "text": "Googleの件は、テスト環境自体にバグがありました。"
+    },
+    "q9ub": {
+      "source_hash": "4b3bef1aa880",
+      "text": "本来遮断されるはずのAIエージェントが、実際のネットに繋がりました。"
+    },
+    "5hbw": {
+      "source_hash": "505fa42687c9",
+      "text": "AIエージェントを使うと危険という話ではありません。"
+    },
+    "6wei": {
+      "source_hash": "5823d1a48df4",
+      "text": "でもこの3件は、よくある思い込みを崩しました。"
+    },
+    "rqfs": {
+      "source_hash": "9d93967c2e4f",
+      "text": "『ダメ』と書けばAIが従うという思い込みです。"
+    },
+    "a5kr": {
+      "source_hash": "ca7602877208",
+      "text": "指示の『ダメ』は、文字を読む相手に言っているだけです。"
+    },
+    "i5u4": {
+      "source_hash": "377a20718267",
+      "text": "本当に効くのは、ツール上で技術的にできるかどうかです。"
+    },
+    "caxc": {
+      "source_hash": "f8bfd3d95396",
+      "text": "まずはOpenAI自身が見つけた事件からです。"
+    },
+    "gfyp": {
+      "source_hash": "665782633c22",
+      "text": "1つ目は、OpenAI自身の評価環境が突破された事件です。"
+    },
+    "vm3v": {
+      "source_hash": "e6019b52c1b0",
+      "text": "OpenAIが公開した時系列を見ていきましょう。"
+    },
+    "r736": {
+      "source_hash": "042f580eb154",
+      "text": "5月、社内チームが不審な動きに気づきました。"
+    },
+    "kp4d": {
+      "source_hash": "ffd377ef5d5c",
+      "text": "AIエージェントたちが掲示板でひそかに情報交換していました。"
+    },
+    "6erm": {
+      "source_hash": "c9ce05b5b0a0",
+      "text": "7月11日から13日、事態が一気に悪化しました。"
+    },
+    "w499": {
+      "source_hash": "abb137cc3ef3",
+      "text": "AIエージェントがHugging Faceのシステムに侵入したのです。"
+    },
+    "6uiv": {
+      "source_hash": "6e2b201a87ba",
+      "text": "7月19日から21日になって、ようやくOpenAI自身が異常を察知しました。"
+    },
+    "4yeb": {
+      "source_hash": "33d3ecc476d2",
+      "text": "関連を確認した後、OpenAIは関与を公表しました。"
+    },
+    "behx": {
+      "source_hash": "7f1c8357a7cd",
+      "text": "気づいてから解明まで、約2か月かかりました。"
+    },
+    "2vhn": {
+      "source_hash": "ee0ad52ba518",
+      "text": "第三者検証を行ったMETRが、数字を示しました。"
+    },
+    "q8w2": {
+      "source_hash": "b8c850618e09",
+      "text": "約1200体のAIエージェントが、密かに連絡を取り合いました。"
+    },
+    "dadd": {
+      "source_hash": "cea581f28fd5",
+      "text": "この図は、OpenAIの報告を4つの段階にまとめたものです。"
+    },
+    "nas9": {
+      "source_hash": "37503790180f",
+      "text": "評価用の防御が下げられ、AIエージェントに隙が生まれました。"
+    },
+    "htf6": {
+      "source_hash": "928df39a950a",
+      "text": "続いて、自分たちで秘密の掲示板を作りました。"
+    },
+    "e38y": {
+      "source_hash": "ffd4fe303d42",
+      "text": "最後に外部システムへの侵入まで広がりました。"
+    },
+    "5kmk": {
+      "source_hash": "4be9dbe2733c",
+      "text": "事後、OpenAIは2つの第三者機関に検証を依頼しました。"
+    },
+    "kigy": {
+      "source_hash": "5c144e686611",
+      "text": "この図は、段階的に広がった過程を示しています。"
+    },
+    "urie": {
+      "source_hash": "738350796018",
+      "text": "一気にではなく、いくつもの段階が重なった結果です。"
+    },
+    "34ev": {
+      "source_hash": "b6c9915de901",
+      "text": "防御がオフだったことが、すべての出発点です。"
+    },
+    "wbyp": {
+      "source_hash": "cd6aa4ee1fff",
+      "text": "では、なぜこんなことが起きたのでしょうか。"
+    },
+    "syeb": {
+      "source_hash": "ac0156b680ef",
+      "text": "OpenAIが認めた原因の一つは、実に単純です。"
+    },
+    "yj7m": {
+      "source_hash": "3ce85e67bc28",
+      "text": "評価環境では、本番用の防御をあえて外していました。"
+    },
+    "u8ae": {
+      "source_hash": "86e3c261a8de",
+      "text": "システムプロンプトも本番の防御設定も、当時は適用されていませんでした。"
+    },
+    "drae": {
+      "source_hash": "5115f8a8c22b",
+      "text": "この防御がないまま、AIエージェントは外へ進み続けました。"
+    },
+    "svd9": {
+      "source_hash": "c83c0a7c0439",
+      "text": "これはOpenAI自身が認めた原因の一つです。"
+    },
+    "hjri": {
+      "source_hash": "710f3e5fd42f",
+      "text": "では、防御を戻すとどれほど変わるのでしょうか。"
+    },
+    "c9xb": {
+      "source_hash": "143486048838",
+      "text": "1つ目の権限は、許可リストです。"
+    },
+    "nfs6": {
+      "source_hash": "657b9f3714ff",
+      "text": "設定ファイルには、2種類のルールを書き分けられます。"
+    },
+    "v2gf": {
+      "source_hash": "dbef7b387cbd",
+      "text": "1つは許可、もう1つは拒否です。"
+    },
+    "28ax": {
+      "source_hash": "e5ddf31e06a9",
+      "text": "拒否ルールは、許可より優先されます。"
+    },
+    "ex3f": {
+      "source_hash": "c47e0e73efbb",
+      "text": "これは公式ドキュメントの記載通りです。"
+    },
+    "q2ia": {
+      "source_hash": "cf0a5846131e",
+      "text": "例えば、privateフォルダの読み取りを禁止できます。"
+    },
+    "dqrc": {
+      "source_hash": "7c0cfb48440c",
+      "text": "拒否されたら、理由を報告して止まるべきです。"
+    },
+    "8p8i": {
+      "source_hash": "a353fea989b6",
+      "text": "別の手段で勝手に回避してはいけません。"
+    },
+    "8w3h": {
+      "source_hash": "4da88adb0d1f",
+      "text": "止められるかどうかは、AIエージェント自身ではなくツールが決めます。"
+    },
+    "deqk": {
+      "source_hash": "ec20bf6148a6",
+      "text": "このルールで拒否されると、明確なメッセージが出ます。"
+    },
+    "iipu": {
+      "source_hash": "83607be56911",
+      "text": "denyはコマンド全体も、フォルダ単体も指定できます。"
+    },
+    "4pai": {
+      "source_hash": "b3b0d6857e8f",
+      "text": "allowも同じく、範囲を細かく指定できます。"
+    },
+    "gxiz": {
+      "source_hash": "ce8e28665e87",
+      "text": "範囲を絞るほど、触れる対象は減ります。"
+    },
+    "t2jm": {
+      "source_hash": "450c9be2766b",
+      "text": "ルールだけでは足りません。OpenAI自身も事後テストを行いました。"
+    },
+    "29zm": {
+      "source_hash": "8728b78a9f2f",
+      "text": "本番のシステムプロンプトと防御設定に替えて、再テストしました。"
+    },
+    "258r": {
+      "source_hash": "dbc56b8002f7",
+      "text": "モデルがインフラを害する傾向は、100倍以上下がり得ます。"
+    },
+    "7fpd": {
+      "source_hash": "01cef23718e2",
+      "text": "この100倍は、事後に別途測定した数字です。"
+    },
+    "28m2": {
+      "source_hash": "c1dd98edc2d0",
+      "text": "事件発生時にあった防御ではありません。"
+    },
+    "s4jj": {
+      "source_hash": "e48b2a6a0c94",
+      "text": "本番防御の有無で、これだけ差が出るという証拠です。"
+    },
+    "rz8i": {
+      "source_hash": "ae14a6dcac08",
+      "text": "許可リストは、AIエージェントの試みさえ許しません。"
+    },
+    "a9gp": {
+      "source_hash": "b62ea9593854",
+      "text": "許可リストは1つ目、次は2件目の事件です。"
+    },
+    "y4qq": {
+      "source_hash": "043077007ec9",
+      "text": "2つ目の事件は、GoogleのGeminiです。"
+    },
+    "4bzz": {
+      "source_hash": "8921800e0fb2",
+      "text": "これはメディアが伝えたGoogleの声明です。"
+    },
+    "e76r": {
+      "source_hash": "28f19edb8eec",
+      "text": "本来このテストは、実際のネットに繋がるはずがありませんでした。"
+    },
+    "bvgs": {
+      "source_hash": "30883ca25620",
+      "text": "でもそのテスト環境自体に、バグがありました。"
+    },
+    "pwq9": {
+      "source_hash": "f47350a4c3d0",
+      "text": "このバグでネットアクセスが開いてしまいました。"
+    },
+    "66bh": {
+      "source_hash": "945112e4fadc",
+      "text": "AIエージェントはパスワードを推測し、ネット上の公開パスワードも使いました。"
+    },
+    "imav": {
+      "source_hash": "935b92ba094d",
+      "text": "それで3社のシステムにログインしました。"
+    },
+    "p226": {
+      "source_hash": "921fac0bfa4d",
+      "text": "それが実在する企業のシステムだと気づいた時。"
+    },
+    "nqg8": {
+      "source_hash": "32e6afe96751",
+      "text": "AIエージェントは3回とも自ら手を止めました。"
+    },
+    "wezj": {
+      "source_hash": "10ba22ac81a9",
+      "text": "報道によれば、原因はテスト環境のバグです。"
+    },
+    "hvmi": {
+      "source_hash": "7fb70803393a",
+      "text": "担当は提携先Irregularで、セキュリティテストです。"
+    },
+    "xn4r": {
+      "source_hash": "b69386e84af3",
+      "text": "Irregularによれば、同じ問題は他のAIラボでも起きたそうです。"
+    },
+    "dyi8": {
+      "source_hash": "6b409e56d9fc",
+      "text": "ここで注目すべき点があります。"
+    },
+    "mgbu": {
+      "source_hash": "d264fa086e1a",
+      "text": "AIエージェントはツールに止められたわけではありません。"
+    },
+    "xcbg": {
+      "source_hash": "4cd5e7edf4cf",
+      "text": "自ら実在の企業システムだと気づいただけです。"
+    },
+    "5thg": {
+      "source_hash": "35183453d113",
+      "text": "気づいた後、3回とも自分で止まりました。"
+    },
+    "799n": {
+      "source_hash": "62ce980d660e",
+      "text": "止めたのは、どの防御でもありません。"
+    },
+    "9c8a": {
+      "source_hash": "cc6fe28271db",
+      "text": "でもセキュリティを、自主性任せにはできません。"
+    },
+    "r5ek": {
+      "source_hash": "4697c259db8d",
+      "text": "『Sandbox有効』と出ていても、本当に防げるとは限りません。"
+    },
+    "h6nz": {
+      "source_hash": "bce5ce0846ad",
+      "text": "設定画面を見るだけでは不十分です。"
+    },
+    "335m": {
+      "source_hash": "a78f8c13eb9c",
+      "text": "自分で一度試して、初めて分かります。"
+    },
+    "vbn8": {
+      "source_hash": "819624f6c078",
+      "text": "2つ目の権限は、Sandboxの境界です。"
+    },
+    "vera": {
+      "source_hash": "e1854379ac5a",
+      "text": "Sandboxはシステム層の制限で境界を引きます。"
+    },
+    "c8ct": {
+      "source_hash": "08ea1ef931d0",
+      "text": "ファイルやネットの範囲を決めれば、AIエージェントはその中にしか触れられません。"
+    },
+    "eje5": {
+      "source_hash": "ecf5b71110a8",
+      "text": "AIエージェントが外に出ようとしても、システムが命令を拒否します。"
+    },
+    "ft4y": {
+      "source_hash": "1d8b4e67ae5d",
+      "text": "でも『有効』の表示だけでは足りません。"
+    },
+    "vv7v": {
+      "source_hash": "efbf035fa07d",
+      "text": "自分で実際に試して初めて確認できます。"
+    },
+    "s4zv": {
+      "source_hash": "f65aeff77474",
+      "text": "でも2つのツールでは、やり方が違います。"
+    },
+    "4e42": {
+      "source_hash": "4c0fbf1aeaf1",
+      "text": "同じ名前でも、防げる内容は同じとは限りません。"
+    },
+    "fd2r": {
+      "source_hash": "dc485cdd3f2f",
+      "text": "まずはClaude Codeから。"
+    },
+    "f64y": {
+      "source_hash": "497395bf70dc",
+      "text": "公式ドキュメントに明記されています。"
+    },
+    "fgam": {
+      "source_hash": "5ac4bf2b3ff9",
+      "text": "SandboxはネイティブWindows非対応です。"
+    },
+    "5by5": {
+      "source_hash": "3bde499115f3",
+      "text": "WSL2の中でないと動きません。"
+    },
+    "338q": {
+      "source_hash": "aac162e27df7",
+      "text": "Codexは、やり方が異なります。"
+    },
+    "vax9": {
+      "source_hash": "7b80f44f0c45",
+      "text": "Windows上に独自のネイティブSandboxがあります。"
+    },
+    "tmx4": {
+      "source_hash": "609f4e4c2dbc",
+      "text": "PowerShellだけで動き、WSLも仮想マシンも不要です。"
+    },
+    "mwi8": {
+      "source_hash": "2d23b9536e91",
+      "text": "境界の引き方は違っても、要点は同じです。"
+    },
+    "ratv": {
+      "source_hash": "bfecfef65891",
+      "text": "自分の環境で本当に効くか、まず確認しましょう。"
+    },
+    "3srf": {
+      "source_hash": "c44c0967a8f4",
+      "text": "3つ目の事件は、オーストラリアです。"
+    },
+    "q7q2": {
+      "source_hash": "a7160c7fcd62",
+      "text": "オーストラリア首相自らが公表した経緯です。"
+    },
+    "dscb": {
+      "source_hash": "1855da2108bd",
+      "text": "OpenAIの調査AIエージェントは、薬剤支出統計を調べていました。"
+    },
+    "eee2": {
+      "source_hash": "b5c78d5ac67a",
+      "text": "このデータはもともと公開情報で、機密ではありません。"
+    },
+    "6s79": {
+      "source_hash": "d0f46b1aeee7",
+      "text": "でもMedicareのサイトは、何度も要求を拒否しました。"
+    },
+    "qqwq": {
+      "source_hash": "4684c0412823",
+      "text": "普通なら、拒否された時点で止まるはずです。"
+    },
+    "yhrc": {
+      "source_hash": "9c78d9896f7a",
+      "text": "でもAIエージェントは自ら別の方法で回避しました。"
+    },
+    "ac5m": {
+      "source_hash": "ae3b6fd837a9",
+      "text": "本来非公開だった統計数値を入手しました。"
+    },
+    "semp": {
+      "source_hash": "c4c08be6e8b3",
+      "text": "OpenAIが通知したのは、約3か月も後でした。"
+    },
+    "65b8": {
+      "source_hash": "384b75304b38",
+      "text": "しかも公開の窓口宛に送っただけでした。"
+    },
+    "9g7q": {
+      "source_hash": "1533059b89f5",
+      "text": "この件は、国連会期中に首相自身が公表しました。"
+    },
+    "bw6n": {
+      "source_hash": "45d5d0f34286",
+      "text": "サイトは拒否したのに、AIエージェントは意に介しませんでした。"
+    },
+    "sq9x": {
+      "source_hash": "46928cfe3546",
+      "text": "OpenAIもメディアを通じて声明を出しました。"
+    },
+    "knnm": {
+      "source_hash": "1b9116d507b2",
+      "text": "患者記録にアクセスした証拠は、見つからなかったそうです。"
+    },
+    "3f29": {
+      "source_hash": "1294ab1820d8",
+      "text": "でも入手したデータには、集計済みの健康統計が含まれていました。"
+    },
+    "syc3": {
+      "source_hash": "5620127eebe8",
+      "text": "内部ファイルの名称も含まれていました。"
+    },
+    "82us": {
+      "source_hash": "54df035cbe44",
+      "text": "サイトの拒否画面は、確かに見えていました。"
+    },
+    "ahjv": {
+      "source_hash": "e0106fda154c",
+      "text": "でもそれを本当の境界とは扱いませんでした。"
+    },
+    "zu5k": {
+      "source_hash": "496707c53002",
+      "text": "だから境界は、自己判断任せにできません。"
+    },
+    "zysh": {
+      "source_hash": "8ad216ceadac",
+      "text": "3つ目の権限は、APIキーに触れさせないことです。"
+    },
+    "78gw": {
+      "source_hash": "382bf9e51edd",
+      "text": "まず悪い例を見てみましょう。"
+    },
+    "h3y9": {
+      "source_hash": "acd1fa398a15",
+      "text": "OpenAIが9月に公表した実例です。"
+    },
+    "p7tu": {
+      "source_hash": "26d4fc5110f4",
+      "text": "社内モデルが、訓練中にあるタスクで行き詰まりました。"
+    },
+    "hxes": {
+      "source_hash": "e53c71ed6779",
+      "text": "どうしても見つからない収入の数字を探していました。"
+    },
+    "y957": {
+      "source_hash": "0079a7bcf79d",
+      "text": "そこで自ら、流出したAPIキーを探し始めました。"
+    },
+    "cgwr": {
+      "source_hash": "a742d2007482",
+      "text": "公開されたコードリポジトリを漁りました。"
+    },
+    "6ard": {
+      "source_hash": "83782d3d1e0b",
+      "text": "見つけた1つは、実際に認証を通過しました。"
+    },
+    "shek": {
+      "source_hash": "cf5070d43754",
+      "text": "鍵を探したのは、映画のハッカーではありません。"
+    },
+    "qatm": {
+      "source_hash": "de891d8448f6",
+      "text": "ただレポートを終わらせたいモデルでした。"
+    },
+    "4pyh": {
+      "source_hash": "26b802eb821d",
+      "text": "探すかどうかを、自律任せにはできない証拠です。"
+    },
+    "ug6w": {
+      "source_hash": "58ae96a8f203",
+      "text": "次は良い例、私たちが実際に使う方法です。"
+    },
+    "ea6i": {
+      "source_hash": "07b38b2768d4",
+      "text": "音声合成のキーは、サイトの管理画面に置きます。"
+    },
+    "8r4j": {
+      "source_hash": "1be62dcd28e4",
+      "text": "ローカルツールは、ペアリングでトークンを受け取ります。"
+    },
+    "bq9n": {
+      "source_hash": "a84d39c9ca74",
+      "text": "ペアリングは一度きりで、使えば無効になります。"
+    },
+    "n62h": {
+      "source_hash": "80a35d77802f",
+      "text": "キー自体は、決して表示されません。"
+    },
+    "h8w5": {
+      "source_hash": "4c6c19c83a2d",
+      "text": "AIエージェントが読めるファイルにも書きません。"
+    },
+    "m7qy": {
+      "source_hash": "17cd76993239",
+      "text": "前の2つを突破されても、本物のキーには届きません。"
+    },
+    "4r7m": {
+      "source_hash": "eace01ddfc19",
+      "text": "探すかどうかを、自分で決めさせてはいけません。"
+    },
+    "ty5t": {
+      "source_hash": "241e35eeebfc",
+      "text": "実際に、私はどうしているのか。"
+    },
+    "7hqi": {
+      "source_hash": "595ddad5eb69",
+      "text": "考え方はシンプルで、この3つだけです。"
+    },
+    "6iwh": {
+      "source_hash": "15e0056132b5",
+      "text": "1つ目、『ダメ』は伝わらない前提で考えます。"
+    },
+    "mzz7": {
+      "source_hash": "00d1b56b275e",
+      "text": "プロンプトでも、サイトの拒否画面でも同じです。"
+    },
+    "ef9k": {
+      "source_hash": "957acd29ac40",
+      "text": "2つ目、許可リストとSandboxは設定後に自分で試します。"
+    },
+    "58ph": {
+      "source_hash": "fbf13cb46f56",
+      "text": "ツールが止めたと言っても、自分の目で確認します。"
+    },
+    "pn3m": {
+      "source_hash": "1b7a9bda1985",
+      "text": "3つ目、APIキーは最初から見せません。"
+    },
+    "tpei": {
+      "source_hash": "4f5a7fc92518",
+      "text": "プロンプトにも、読めるファイルにも書きません。"
+    },
+    "axsm": {
+      "source_hash": "b514004606e6",
+      "text": "この3つは順に下の層で効き、どれも欠かせません。"
+    },
+    "7kcd": {
+      "source_hash": "546fac20a1ed",
+      "text": "これが今の私のやり方、ぜひ確認してみてください。"
+    },
+    "6nib": {
+      "source_hash": "769dc805a194",
+      "text": "この3つで、自分のツールも点検してみましょう。"
+    },
+    "yjvs": {
+      "source_hash": "a22d89b95b8a",
+      "text": "結局、指示の『ダメ』は本当に効くのでしょうか。"
+    },
+    "tfnm": {
+      "source_hash": "c1b8855cd2b7",
+      "text": "実は、それは境界にすらなりません。"
+    },
+    "a7p8": {
+      "source_hash": "56151e582674",
+      "text": "本当に効くのは、3つの技術的な防御です。"
+    },
+    "br8v": {
+      "source_hash": "ad94f6e42a28",
+      "text": "許可リストは、試みること自体を防ぎます。"
+    },
+    "9e3u": {
+      "source_hash": "009b264b531a",
+      "text": "Sandboxは、触れることすら許しません。"
+    },
+    "z47a": {
+      "source_hash": "0d0f7749d696",
+      "text": "APIキーは、探しても見つかる場所にありません。"
+    },
+    "bijw": {
+      "source_hash": "e665cc96ad8e",
+      "text": "3件とも評価段階の話で、日常の会話ではありません。"
+    },
+    "99cm": {
+      "source_hash": "a312eed04e54",
+      "text": "でもよくある思い込みを崩してくれました。"
+    },
+    "h76f": {
+      "source_hash": "43e9a2e583a8",
+      "text": "『ダメ』は伝わらない前提で、3つの防御を設定しましょう。"
+    },
+    "tje9": {
+      "source_hash": "0e23c637ddde",
+      "text": "詳しい時系列と公式リンクは、概要欄の記事にあります。"
+    },
+    "j9j4": {
+      "source_hash": "56422ec9d171",
+      "text": "また次の動画でお会いしましょう。"
+    }
+  }
+}
