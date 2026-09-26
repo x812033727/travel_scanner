@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-news-batch-4-8-ten-five
 title: News batch 4.8: ten five-language stories the hourly automation missed (2026-09-17 to 09-25)
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-news-backfill
 claimed_at: 2026-09-26T13:37:18Z
 created_at: 2026-09-26T13:37:11Z
-completed_at:
+completed_at: 2026-09-26T18:17:23Z
 branch: claude/news-batch-4-8-work
 depends_on: []
 scope:
@@ -70,7 +70,7 @@ Synology, Japan FSA, Taiwan's central bank, Korea FSC). Rules: `docs/news-2026-b
       (`build_assets.py` `# 4.8`).
 - [x] Every slug passes `check_article.py <slug> --full --assets`; `pack_cli lint --kind life` zero errors.
 - [x] The three indexes carry the ten links in all five locales (`update_index.py`, not `build_*_index.py`).
-- [ ] Merged, deployed, `guides-import --slug` x10 plus the three indexes (dry-run first, owner's
+- [x] Merged, deployed, `guides-import --slug` x10 plus the three indexes (dry-run first, owner's
       consent before `--publish`), recheck dry-run all unchanged, `verify_public.py` all PASS.
 
 ## Steps
@@ -79,8 +79,8 @@ Synology, Japan FSA, Taiwan's central bank, Korea FSC). Rules: `docs/news-2026-b
 - [x] zh-TW drafts (sonnet), then fact check round 1 and round 2 (opus, different agents).
 - [x] Translation x4 (sonnet), review (ja/ko opus, en/zh-CN sonnet), apply corrections, normalize.
 - [x] Drawings, relink, related, index update, lint.
-- [ ] PR, CI, merge.
-- [ ] Deploy, import, verify; numbers into HANDOVER and this ticket.
+- [x] PR, CI, merge.
+- [x] Deploy, import, verify; numbers into HANDOVER and this ticket.
 
 ## How to verify
 
@@ -100,3 +100,9 @@ Synology, Japan FSA, Taiwan's central bank, Korea FSC). Rules: `docs/news-2026-b
 - Found in passing and filed separately: `2026-09-26-update-chatgpt-ads-taiwan-status-openai`,
   `2026-09-26-review-evergreen-ai-pages-after-claude`, `2026-09-26-refresh-stale-parts-of-the-three`.
 - Numbers, rulings and the coordinator's own zh-TW edits: `docs/news-2026-batch-4/HANDOVER.md` §1h.
+
+## Result (2026-09-26 UTC)
+
+PR #817 (`fe852236`) merged and deployed 17:50Z. `guides-import` published 65 locale pages
+(50 created, 15 index updates), failed null; the recheck dry run is 65 unchanged and
+`verify_public.py --from-report --sitemap` passes all 65. Details in HANDOVER §1h.
