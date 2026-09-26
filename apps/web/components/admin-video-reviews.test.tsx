@@ -166,6 +166,62 @@ describe("AdminVideoReviews", () => {
     expect(screen.getByRole("button", { name: "核准分鏡" })).toHaveProperty("disabled", false);
   });
 
+  it("queues a drama episode from the form, lists the requests and withdraws a queued one", async () => {
+    const calls: Array<{ url: string; method: string; body?: unknown }> = [];
+    type Row = Record<string, unknown> & { id: string; status: string; created_at: string };
+    let requests: Row[] = [
+      { id: "6f1d2c3b-4a59-4e6f-8a7b-9c0d1e2f3a4b", premise: "精衛填海：炎帝最小的女兒在東海溺水。", title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 3, note: "旁白慢一點", status: "queued", slug: null, created_at: "2026-09-26T05:00:00Z", started_at: null, finished_at: null, cancelled_at: null },
+      { id: "7a2e3d4c-5b6a-4f7e-9b8c-0d1e2f3a4b5c", premise: "夸父逐日", title: "夸父", source_guide: "shanhaijing-kuafu", style_preset: "ink-wash", target_minutes: 2, note: null, status: "started", slug: "kuafu-chases-the-sun", created_at: "2026-09-26T04:00:00Z", started_at: "2026-09-26T04:10:00Z", finished_at: null, cancelled_at: null },
+    ];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      const method = init?.method ?? "GET";
+      calls.push({ url, method, body: init?.body ? JSON.parse(String(init.body)) : undefined });
+      if (url.endsWith("/drama-requests") && method === "POST") {
+        const body = JSON.parse(String(init?.body));
+        requests = [{ ...requests[0], id: "new", premise: body.premise, style_preset: body.style_preset, target_minutes: body.target_minutes, note: null, created_at: "2026-09-26T06:00:00Z" }, ...requests];
+        return Promise.resolve(Response.json(requests[0], { status: 201 }));
+      }
+      if (method === "DELETE") {
+        requests = requests.map((request) => (url.endsWith(request.id) ? { ...request, status: "cancelled", cancelled_at: "2026-09-26T06:30:00Z" } : request));
+        return Promise.resolve(Response.json(requests[0]));
+      }
+      if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests }));
+      return Promise.resolve(Response.json([{ ...summary, format: "drama", pending: 1, checklist: [{ key: "brief", label: "企劃", done: true }, { key: "look", label: "角色設定圖", done: false }] }]));
+    }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const queue = await screen.findByRole("region", { name: "發起的漫劇" });
+    expect(queue.textContent).toContain("排隊中");
+    expect(queue.textContent).toContain("製作中");
+    expect(queue.textContent).toContain("改編文章 shanhaijing-kuafu");
+    expect(screen.getByRole("button", { name: "打開 kuafu-chases-the-sun" })).toBeTruthy();
+    expect(screen.getByText("現在：角色設定圖")).toBeTruthy();
+
+    fireEvent.click(screen.getByText("新的漫劇", { selector: "summary" }));
+    const submit = screen.getByRole("button", { name: "排進製作" });
+    expect(submit).toHaveProperty("disabled", true);
+    fireEvent.change(screen.getByRole("textbox", { name: "故事前提（必填）" }), { target: { value: "  大禹治水  " } });
+    fireEvent.change(screen.getByRole("combobox", { name: "風格" }), { target: { value: "ink-wash" } });
+    fireEvent.change(screen.getByRole("spinbutton", { name: "長度（分鐘，1–8）" }), { target: { value: "2" } });
+    fireEvent.change(screen.getByRole("textbox", { name: "改編站上文章（slug，選填）" }), { target: { value: "Not A Slug" } });
+    expect(submit).toHaveProperty("disabled", true);
+    fireEvent.change(screen.getByRole("textbox", { name: "改編站上文章（slug，選填）" }), { target: { value: "" } });
+    expect(submit).toHaveProperty("disabled", false);
+    fireEvent.click(submit);
+    await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
+    const post = calls.find((call) => call.method === "POST");
+    expect(post?.url).toContain("/admin/video-automation/drama-requests");
+    expect(post?.body).toEqual({ premise: "大禹治水", style_preset: "ink-wash", target_minutes: 2 });
+    await waitFor(() => expect(screen.getByRole("region", { name: "發起的漫劇" }).textContent).toContain("大禹治水"));
+
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    fireEvent.click(screen.getAllByRole("button", { name: "取消" })[0]);
+    await waitFor(() => expect(calls.some((call) => call.method === "DELETE")).toBe(true));
+    expect(calls.find((call) => call.method === "DELETE")?.url).toContain("/admin/video-automation/drama-requests/new");
+    await waitFor(() => expect(screen.getByRole("region", { name: "發起的漫劇" }).textContent).toContain("已取消"));
+    confirm.mockRestore();
+  });
+
   it("marks a drama and its media spend in the list", async () => {
     vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", media_usd: 12.5, clip_seconds: 96 }]))));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);

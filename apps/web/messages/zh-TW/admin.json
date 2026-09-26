@@ -2170,7 +2170,41 @@
     "seconds": "{seconds} 秒",
     "shotNeedsReview": "沒有一次通過 judge，提示詞要修",
     "drama": "AI 漫劇",
-    "spend": "媒體花費 US${usd}（{seconds} 片段秒）"
+    "spend": "媒體花費 US${usd}（{seconds} 片段秒）",
+    "newDrama": "新的漫劇",
+    "newDramaHelp": "寫下故事前提（或填一篇站上文章的 slug 改編）、選風格與長度。主機上的工人會先做它再做排程草稿；大綱、角色設定圖、旁白、分鏡、成片都在這一頁等你決定。設定分頁要先開啟「AI 漫劇」。",
+    "premise": "故事前提（必填）",
+    "premisePlaceholder": "誰想要什麼、什麼擋在前面、結局怎樣。公有領域的傳說或原創故事。",
+    "workingTitle": "暫定標題（選填）",
+    "sourceGuide": "改編站上文章（slug，選填）",
+    "sourceGuidePlaceholder": "例如 tokyo-first-trip-guide",
+    "stylePreset": "風格",
+    "targetMinutes": "長度（分鐘，1–8）",
+    "requestNote": "給企劃的備註（選填）",
+    "requestNotePlaceholder": "例如：旁白慢一點、結尾接下一集的標題",
+    "fileRequest": "排進製作",
+    "newDramaError": "沒有排進去：{message}",
+    "queue": "發起的漫劇",
+    "requestStatuses": {
+      "queued": "排隊中",
+      "started": "製作中",
+      "done": "完成",
+      "cancelled": "已取消"
+    },
+    "minutes": "{minutes} 分鐘",
+    "filedAt": "發起於 {time}",
+    "adaptsArticle": "改編文章 {slug}",
+    "openVideo": "打開 {slug}",
+    "cancelRequest": "取消",
+    "cancelConfirm": "取消這個請求？工人就不會做它。",
+    "cancelError": "沒有取消：{message}",
+    "currentStep": "現在：{step}",
+    "presets": {
+      "cinematic-3d": "電影感 3D 寫實",
+      "anime-2d": "2D 日系動畫",
+      "ink-wash": "水墨",
+      "custom": "自訂"
+    }
   },
   "videoSettings": {
     "loading": "讀取設定中…",
