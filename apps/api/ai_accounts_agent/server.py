@@ -37,7 +37,11 @@ from ai_accounts_agent.sessions import (
     LoginHandle,
     LoginRegistry,
 )
-from ai_accounts_agent.statusline import atomic_write_text, ensure_statusline
+from ai_accounts_agent.statusline import (
+    UNCHANGED_REWRITE_SECONDS,
+    atomic_write_text,
+    ensure_statusline,
+)
 
 Response = tuple[int, dict[str, Any]]
 
@@ -277,7 +281,10 @@ class AgentApplication:
         A page view starts one when the snapshot is missing or older than max_age; the
         refresh button and a finished login start one regardless, but no account is
         probed more than once per min_interval, and a page view does not retry a probe
-        that found nothing for retry seconds. Returns whether a probe is running.
+        that found nothing for retry seconds. A Claude snapshot younger than the
+        recorder's rewrite interval is never probed, forced or not: the recorder would
+        leave the unchanged numbers as they are, and the probe would send its message and
+        report a failure while the page was current. Returns whether a probe is running.
         """
         method = PROBED_USAGE.get(tool)
         if method is None:
@@ -296,9 +303,16 @@ class AgentApplication:
             last = self._usage_attempts.get(key)
             if last is not None and now - last < self.config.claude_usage_min_interval_seconds:
                 return False
+            usage = self.accounts[tool].details(slot).get("usage")
+            recorded = usage.get("recorded_at") if isinstance(usage, dict) else None
+            if (
+                tool == "claude"
+                and not after_login
+                and isinstance(recorded, int | float)
+                and now - recorded < UNCHANGED_REWRITE_SECONDS
+            ):
+                return False
             if not force:
-                usage = self.accounts[tool].details(slot).get("usage")
-                recorded = usage.get("recorded_at") if isinstance(usage, dict) else None
                 if (
                     isinstance(recorded, int | float)
                     and now - recorded < self.config.claude_usage_max_age_seconds
