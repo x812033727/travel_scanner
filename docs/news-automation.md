@@ -74,7 +74,7 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    `news_jev_final_hold`, and a Jev quota that ran out counts as anything else. Both holds
    keep the saved article, so 「五語發布」 still publishes it as a person's decision. A
    failed locale review or hard check keeps the confirmation and waits in manual review
-   for 「重新翻譯並發布」; changed evidence can only be rejected.
+   for 「重新翻譯並發布」; changed evidence waits for 「用最新來源重新查核」 (below).
 7. **Automatic mode** skips step 5 when auto-publish is on for the category, Jev answered
    `act` for the zh-TW draft, and the evidence is two websites or a first-party page;
    anything else waits for a person. There is no shadow gate any more (owner decision,
@@ -172,7 +172,16 @@ Inside 待審查:
   reject.
 - `news_ready_to_publish` — an edited, re-verified article nobody has confirmed yet;
   「五語發布」 or reject.
-- `news_evidence_changed` — reject (see Known limits).
+- `news_evidence_changed` — a source page changed after the check, so the old check
+  cannot publish it. 「用最新來源重新查核」 (`POST …/refresh-evidence`) fetches every
+  evidence page again under the same host and source rules. The fetch sends no ETag, so a
+  stale one cannot hide the change. The current text replaces the stored excerpt and hash,
+  but only when every page reads; otherwise nothing changes and the error names the page.
+  An earlier "not a duplicate" answer carries over to the new evidence. The saved
+  five-locale article then runs as `news_evidence_refreshed`: the fact check, the locale
+  reviews and Jev's last call run again on the new text. The story publishes on its own
+  when it may (the automatic-mode rules), or when the owner already confirmed it and Jev
+  acts on every locale; otherwise it waits as usual. Reject it if you do not want it.
 - `shadow_review`, `news_jev_manual` — candidates from before 2026-09-25 that went
   through the old five-locale stage; publish or reject.
 
@@ -197,10 +206,6 @@ writing new ones. `discovered` candidates older than two hours are re-queued whi
 scanner is enabled.
 
 ## Known limits
-
-- A candidate held with `news_evidence_changed` cannot be published or rerun into
-  shape: stored evidence hashes are never refreshed, so every attempt finds the same
-  change. Reject it; later coverage arrives as a new candidate.
 
 - Gemini cannot yet serve as writer or checker: the shared `gemini_response_schema`
   keeps only the first option of an `anyOf`, which collapses the block union.

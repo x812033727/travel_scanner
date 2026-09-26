@@ -134,6 +134,20 @@ async def retry_candidate(
     return result
 
 
+@admin_router.post("/candidates/{candidate_id}/refresh-evidence", response_model=CandidateDetail)
+async def refresh_candidate_evidence(
+    candidate_id: UUID,
+    payload: CandidateAction,
+    user: ContentManager,
+    session: Session,
+    redis: RedisDep,
+) -> CandidateDetail:
+    result = await service.refresh_candidate_evidence(session, user, candidate_id, payload, redis)
+    row = await session.get(NewsCandidate, candidate_id)
+    jobs.enqueue_candidate(candidate_id, retry_count=row.retry_count if row else 0)
+    return result
+
+
 @admin_router.post("/candidates/{candidate_id}/verify", response_model=CandidateDetail)
 async def verify_candidate(
     candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
