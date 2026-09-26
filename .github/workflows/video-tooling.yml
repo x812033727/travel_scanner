@@ -42,6 +42,8 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node --test "tools/video/**/*.test.mjs"
       - run: node tools/video/assemble/smoke.mjs --workdir "$RUNNER_TEMP/video-smoke"
+      # The drama example: stand-in keyframes, clips and music through the same chain.
+      - run: node tools/video/assemble/smoke.mjs --fixture drama --workdir "$RUNNER_TEMP/video-smoke-drama"
       - if: failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -50,5 +52,8 @@ jobs:
             ${{ runner.temp }}/video-smoke/**/checks.json
             ${{ runner.temp }}/video-smoke/**/contact-sheet.png
             ${{ runner.temp }}/video-smoke/**/state.json
+            ${{ runner.temp }}/video-smoke-drama/**/checks.json
+            ${{ runner.temp }}/video-smoke-drama/**/frames/manifest.json
+            ${{ runner.temp }}/video-smoke-drama/**/state.json
           if-no-files-found: ignore
           retention-days: 7
