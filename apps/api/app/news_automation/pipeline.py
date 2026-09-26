@@ -36,6 +36,7 @@ from app.news_automation.models import (
     NewsPipelineRun,
 )
 from app.news_automation.policy import (
+    EVIDENCE_REFRESH_MARKER,
     FINAL_EDIT_HOLD,
     JEV_FINAL_HOLD,
     READY_TO_PUBLISH,
@@ -60,6 +61,8 @@ ACTIVE_STATUSES = ("drafting", "verifying", "locale_review", "jev_review")
 # outcome, so a rerun after a crash or a stalled worker re-verifies the edited drafts
 # instead of drafting new ones over them.
 REVERIFY_MARKER = "news_reverify_requested"
+# Both run the saved article through the checks again instead of drafting anew.
+REVERIFY_MARKERS = frozenset({REVERIFY_MARKER, EVIDENCE_REFRESH_MARKER})
 ClaimOutcome = Literal["claimed", "disabled", "skipped", "deferred"]
 # RQ kills a candidate job after 60 minutes; nothing legitimate is still in flight after 70.
 STALE_AFTER = timedelta(minutes=70)
@@ -202,7 +205,7 @@ async def _claim_capacity(
         return "deferred", None
     candidate.status = "drafting"
     candidate.processing_started_at = datetime.now(UTC)
-    if candidate.error_code != REVERIFY_MARKER:
+    if candidate.error_code not in REVERIFY_MARKERS:
         candidate.error_code = None
     candidate.error_detail = None
     candidate.prompt_version = settings.prompt_version
@@ -212,8 +215,27 @@ async def _claim_capacity(
 
 
 def _clear_reverify_marker(candidate: NewsCandidate) -> None:
-    if candidate.error_code == REVERIFY_MARKER:
+    if candidate.error_code in REVERIFY_MARKERS:
         candidate.error_code = None
+
+
+async def _auto_publishable(
+    session: AsyncSession, candidate: NewsCandidate, usable: list[NewsEvidence]
+) -> bool:
+    """Whether this story may go out without a person: the switches, Jev and the evidence.
+
+    No shadow gate any more (owner decision, 2026-09-25): the final editor and Jev's last
+    call on all five locales guard what goes out on its own.
+    """
+    fresh_settings = await settings_row(session)
+    return bool(
+        fresh_settings.enabled
+        and fresh_settings.mode == "automatic"
+        and getattr(fresh_settings, f"auto_publish_{candidate.vertical}")
+        and candidate.would_publish
+        # Two websites, or the company's own announcement; anything else waits for a person.
+        and auto_evidence_ok(usable)
+    )
 
 
 def _source_locked(document: GuideDocument, evidence: list[NewsEvidence]) -> GuideDocument:
@@ -409,7 +431,8 @@ async def process_candidate(
             await session.commit()
             return "needs_evidence"
 
-        reverify_requested = candidate.error_code == REVERIFY_MARKER
+        reverify_requested = candidate.error_code in REVERIFY_MARKERS
+        refreshed = candidate.error_code == EVIDENCE_REFRESH_MARKER
         if (
             not reverify_requested
             and candidate.human_decision == "publish"
@@ -612,7 +635,10 @@ async def process_candidate(
                 slug=draft_slug,
                 event_date=draft_event_date,
                 localized=reverify_documents,
-                automatic=False,
+                # Refreshed evidence is not an editor's text: Jev makes the last call, and
+                # a story that may go out on its own does.
+                automatic=refreshed and await _auto_publishable(session, candidate, usable),
+                last_call=refreshed,
             )
 
         # End of stage one: keep the verified draft for the owner and ask Jev about it.
@@ -651,17 +677,7 @@ async def process_candidate(
             item.tier == "act" for item in decisions
         )
 
-        # No shadow gate any more (owner decision, 2026-09-25): the final editor and Jev's
-        # last call on all five locales guard what goes out on its own.
-        fresh_settings = await settings_row(session)
-        if (
-            fresh_settings.enabled
-            and fresh_settings.mode == "automatic"
-            and bool(getattr(fresh_settings, f"auto_publish_{candidate.vertical}"))
-            and candidate.would_publish
-            # Two websites, or the company's own announcement; anything else waits for a person.
-            and auto_evidence_ok(usable)
-        ):
+        if await _auto_publishable(session, candidate, usable):
             return await _second_stage(
                 session,
                 redis,
@@ -697,7 +713,7 @@ async def process_candidate(
             "rejected",
         }:
             candidate.status = "failed"
-            if candidate.error_code != REVERIFY_MARKER:
+            if candidate.error_code not in REVERIFY_MARKERS:
                 candidate.error_code = type(error).__name__[:64]
             candidate.error_detail = f"{type(error).__name__}: {error}"[:4000]
         if runs.active is not None:
@@ -761,8 +777,13 @@ async def _second_stage(
     event_date: date,
     localized: dict[Locale, GuideDocument] | None,
     automatic: bool,
+    last_call: bool = False,
 ) -> str:
-    """Translate (or take the editor's translations), review, check, save and publish."""
+    """Translate (or take the editor's translations), review, check, save and publish.
+
+    Jev's last call runs on AI translations, and on a saved article re-checked against
+    refreshed evidence (``last_call``); an editor's own re-verified text does not get it.
+    """
 
     candidate.status = "locale_review"
     await session.commit()
@@ -924,7 +945,7 @@ async def _second_stage(
             f"The final editor held {', '.join(final_holds)}; see its issues below.",
         )
         return "manual_review"
-    if localized is None and (confirmed or automatic):
+    if (localized is None or last_call) and (confirmed or automatic):
         held = await _jev_final(session, redis, environment, settings, candidate, runs, documents)
         if held:
             await _manual(
@@ -1211,7 +1232,7 @@ async def recover_stalled_candidates(
         row.status = "failed"
         # A stalled re-verification keeps its marker, so the rerun re-verifies the edited
         # drafts instead of writing new ones over them.
-        if row.error_code != REVERIFY_MARKER:
+        if row.error_code not in REVERIFY_MARKERS:
             row.error_code = "news_processing_stale"
         row.error_detail = f"The worker stopped while this candidate was in {stalled_in}."
         if recoveries < MAX_AUTOMATIC_RECOVERIES:
