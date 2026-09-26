@@ -139,6 +139,33 @@ def evidence_fingerprint(rows: list[dict[str, Any]]) -> str:
     ).hexdigest()
 
 
+# The link to the vertical's topic hub the pipeline appends to each locale. Its URL names the
+# locale, so it differs between locales on purpose.
+TOPIC_LINK = re.compile(
+    r"^https://mokaair\.com/(?:en|ja|ko|zh-TW|zh-CN)/life/topics/(?:ai-news|tech-news|crypto)$"
+)
+
+
+def is_topic_link(block: object) -> bool:
+    return (
+        isinstance(block, dict)
+        and block.get("type") == "link"
+        and TOPIC_LINK.match(str(block.get("url", ""))) is not None
+    )
+
+
+def without_topic_links(document: GuideDocument) -> dict[str, Any]:
+    """The document as a reviewing model sees it, without the per-locale topic link.
+
+    A reviewer comparing a translation with the zh-TW source otherwise reports the
+    locale in that URL as a mismatch and holds the article (it did on 2026-09-26); the
+    pipeline adds the link back after every review.
+    """
+    encoded = document.model_dump(mode="json")
+    encoded["blocks"] = [block for block in encoded["blocks"] if not is_topic_link(block)]
+    return encoded
+
+
 def document_fingerprint(document: GuideDocument) -> str:
     encoded = document.model_dump(mode="json")
     hero = encoded.get("hero")
@@ -148,21 +175,11 @@ def document_fingerprint(document: GuideDocument) -> str:
         block
         for block in encoded["blocks"]
         if not (
-            isinstance(block, dict)
-            and (
-                (
-                    block.get("type") == "image"
-                    and str(block.get("src", "")).startswith("/guides/news-assets/")
-                )
-                or (
-                    block.get("type") == "link"
-                    and re.match(
-                        r"^https://mokaair\.com/(?:en|ja|ko|zh-TW|zh-CN)/life/topics/"
-                        r"(?:ai-news|tech-news|crypto)$",
-                        str(block.get("url", "")),
-                    )
-                    is not None
-                )
+            is_topic_link(block)
+            or (
+                isinstance(block, dict)
+                and block.get("type") == "image"
+                and str(block.get("src", "")).startswith("/guides/news-assets/")
             )
         )
     ]

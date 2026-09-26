@@ -833,7 +833,12 @@ async def _second_stage(
                 and review_round == 0
                 and locale_result.corrected_document
             ):
-                translated_document = _source_locked(locale_result.corrected_document, evidence)
+                # The reviewer never saw the topic link, so its correction has none.
+                translated_document = _topic_linked(
+                    _source_locked(locale_result.corrected_document, evidence),
+                    candidate.vertical,
+                    locale,
+                )
                 continue
             session.add(
                 NewsAssessment(
