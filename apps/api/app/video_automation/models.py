@@ -164,6 +164,11 @@ class VideoAutomationSettings(Base):
     stage_models: Mapped[dict[str, dict[str, str]]] = mapped_column(
         JSON, default=_default(DEFAULT_STAGE_MODELS)
     )
+    # Stage -> the owner's standing instructions from the settings tab, which the worker appends
+    # to that stage's prompt on every video (docs/videos/AUTOMATION.md).
+    stage_instructions: Mapped[dict[str, str]] = mapped_column(
+        JSON, default=_default({}), server_default=text("'{}'")
+    )
     # The finished video.
     voice: Mapped[dict[str, Any]] = mapped_column(JSON, default=_default(DEFAULT_VOICE))
     target_minutes_min: Mapped[int] = mapped_column(Integer, default=8)
@@ -243,6 +248,32 @@ class VideoAutomationSettings(Base):
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=utcnow, onupdate=utcnow
     )
+
+
+class VideoStagePrompt(Base):
+    """The instructions the worker last sent for one stage of one format, kept for the owner.
+
+    The prompt is composed on the worker (the skill's text, the format's variant, then the
+    owner's standing instructions), so the server only sees it as it arrives on
+    /video/automation/run. One row per stage and format, replaced by every run, is what the
+    settings tab shows as the prompt sent.
+    """
+
+    __tablename__ = "video_stage_prompts"
+    __table_args__ = (
+        CheckConstraint(
+            "stage IN ('planner', 'writer', 'verifier', 'listener', 'translator', "
+            "'caption_reviewer')",
+            name="ck_video_stage_prompt_stage",
+        ),
+        CheckConstraint("format IN ('slides', 'drama')", name="ck_video_stage_prompt_format"),
+    )
+
+    stage: Mapped[str] = mapped_column(String(20), primary_key=True)
+    format: Mapped[str] = mapped_column(String(8), primary_key=True)
+    slug: Mapped[str] = mapped_column(String(80))
+    instructions: Mapped[str] = mapped_column(Text)
+    sent_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class VideoAiRun(Base):

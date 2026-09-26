@@ -2312,6 +2312,18 @@
       "anime-2d": "2D 애니메이션",
       "ink-wash": "수묵",
       "custom": "사용자 지정(스타일은 대본이 제공)"
-    }
+    },
+    "instructionsTitle": "단계별 상시 지시",
+    "instructionsHelp": "매번 말해야 하는 내용을 여기에 적습니다. 워커는 해당 단계를 실행할 때 이 글을 프롬프트 끝에 덧붙이며, 슬라이드와 드라마 모든 영상에 적용됩니다. 칸마다 4,000자까지이고, 비우면 아무것도 붙지 않습니다. 한 회만의 요청은 「새 드라마」의 메모나 관문을 되돌릴 때의 메모에 적으세요.",
+    "instructionFor": "{stage} 상시 지시",
+    "instructionPlaceholder": "예: 내레이션은 대만 구어체로, 마지막은 다음 회 예고로 끝내기",
+    "promptsTitle": "현재 프롬프트(읽기 전용)",
+    "promptsHelp": "워커가 모델에 마지막으로 보낸 전체 지시로, 단계와 형식마다 최신 하나를 남깁니다. 상시 지시는 끝에 붙어 있습니다. 해당 단계를 한 번 실행해야 나타나며, 고정 부분은 저장소의 스킬 파일(.agents/skills/youtube-video/references/prompts)에 있습니다.",
+    "promptsEmpty": "아직 기록이 없습니다. 워커가 첫 단계를 실행하면 나타납니다.",
+    "promptFormats": {
+      "slides": "슬라이드",
+      "drama": "드라마"
+    },
+    "promptSent": "{slug} · {time}"
   }
 }

@@ -590,3 +590,20 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   assert.equal(runs.filter((run) => run.startsWith("clips")).length, 1, "a blocked drama is not touched again");
   assert.ok(MAX_PROMPT_FIX_ROUNDS >= 2);
 });
+
+test("the owner's standing instructions from the settings tab end a stage's prompt, and a run names its format", async () => {
+  assert.equal(instructionsFor("writer", "slides", "  "), INSTRUCTIONS.writer, "blank instructions add nothing");
+  assert.match(instructionsFor("writer", "drama", " 結尾留懸念 "), /"fix" is present[\s\S]*## The owner's standing instructions\n[\s\S]*結尾留懸念$/);
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug), settings: { stage_instructions: { planner: "每集結尾留下一集的懸念" } } });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /planned from 1 topics/);
+  const run = site.calls.run[0];
+  assert.equal(run.stage, "planner");
+  assert.equal(run.format, "slides", "the server files the prompt under the video's format");
+  assert.match(run.instructions, /## The owner's standing instructions\n[\s\S]*每集結尾留下一集的懸念$/);
+});
