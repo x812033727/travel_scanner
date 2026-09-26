@@ -47,6 +47,8 @@ from app.news_automation.policy import (
     evidence_present,
     evidence_site_count,
     hard_policy_problems,
+    site_additions_removed,
+    with_crypto_disclaimer,
 )
 from app.news_automation.schemas import Vertical
 from app.news_automation.service import audit, settings_row
@@ -526,7 +528,9 @@ async def process_candidate(
                     + "; ".join(unsupported_claim_urls[:5]),
                 )
                 return candidate.status
-            document = _source_locked(draft.document, evidence)
+            document = with_crypto_disclaimer(
+                _source_locked(draft.document, evidence), candidate.vertical, "zh-TW"
+            )
             draft_slug = draft.slug
             draft_event_date = draft.event_date
         date_problems = event_date_problems(
@@ -576,7 +580,11 @@ async def process_candidate(
                 verification_passed = True
                 break
             if result.verdict == "revise" and verification_round == 0 and result.corrected_document:
-                document = _source_locked(result.corrected_document, evidence)
+                document = with_crypto_disclaimer(
+                    _source_locked(result.corrected_document, evidence),
+                    candidate.vertical,
+                    "zh-TW",
+                )
                 await session.commit()
                 continue
             await session.commit()
@@ -759,6 +767,9 @@ async def _second_stage(
     candidate.status = "locale_review"
     await session.commit()
     if localized is None:
+        # A rerun's zh-TW text still carries the last run's artwork and topic link; the
+        # translators start from the words alone, and both come back after the reviews.
+        document = site_additions_removed(document)
         documents: dict[Locale, GuideDocument] = {"zh-TW": document}
         for target in TARGET_LOCALES:
             await runs.start(
@@ -774,7 +785,9 @@ async def _second_stage(
     else:
         documents = {**localized, "zh-TW": document}
     documents = {
-        locale: _topic_linked(item, candidate.vertical, locale)
+        locale: _topic_linked(
+            with_crypto_disclaimer(item, candidate.vertical, locale), candidate.vertical, locale
+        )
         for locale, item in documents.items()
     }
     document = documents["zh-TW"]
@@ -835,7 +848,11 @@ async def _second_stage(
             ):
                 # The reviewer never saw the topic link, so its correction has none.
                 translated_document = _topic_linked(
-                    _source_locked(locale_result.corrected_document, evidence),
+                    with_crypto_disclaimer(
+                        _source_locked(locale_result.corrected_document, evidence),
+                        candidate.vertical,
+                        locale,
+                    ),
                     candidate.vertical,
                     locale,
                 )
@@ -988,7 +1005,11 @@ async def _final_edit(
         return sorted({problem for problem in now if problem not in was})
 
     def edited(document: GuideDocument, locale: Locale) -> GuideDocument:
-        return _topic_linked(_source_locked(document, evidence), candidate.vertical, locale)
+        return _topic_linked(
+            with_crypto_disclaimer(_source_locked(document, evidence), candidate.vertical, locale),
+            candidate.vertical,
+            locale,
+        )
 
     held: list[str] = []
     for locale in ("zh-TW", *TARGET_LOCALES):

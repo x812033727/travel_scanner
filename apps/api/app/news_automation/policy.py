@@ -139,6 +139,7 @@ def evidence_fingerprint(rows: list[dict[str, Any]]) -> str:
     ).hexdigest()
 
 
+NEWS_ASSET_PREFIX = "/guides/news-assets/"
 # The link to the vertical's topic hub the pipeline appends to each locale. Its URL names the
 # locale, so it differs between locales on purpose.
 TOPIC_LINK = re.compile(
@@ -154,35 +155,119 @@ def is_topic_link(block: object) -> bool:
     )
 
 
-def without_topic_links(document: GuideDocument) -> dict[str, Any]:
-    """The document as a reviewing model sees it, without the per-locale topic link.
+# The site's own non-investment-advice notice for crypto news, one per locale, each containing
+# its CRYPTO_MARKERS phrase. The pipeline adds it where a model left none (on 2026-09-26 the
+# writer and the translators omitted it in three locales), so no crypto story stops at the
+# disclaimer check for something the site can write itself.
+CRYPTO_DISCLAIMERS: Mapping[str, tuple[str, str]] = {
+    "zh-TW": (
+        "這篇是新聞整理，不是投資建議",
+        "本文整理公開報導與官方資訊，不推薦任何代幣、平台或操作，不是投資建議。"
+        "加密資產風險高，做任何決定前請自行查證並評估風險。",
+    ),
+    "zh-CN": (
+        "这篇是新闻整理，不是投资建议",
+        "本文整理公开报道与官方信息，不推荐任何代币、平台或操作，不是投资建议。"
+        "加密资产风险高，做任何决定前请自行核实并评估风险。",
+    ),
+    "en": (
+        "A news summary, not investment advice",
+        "This article summarises public reporting and official information. It recommends no "
+        "token, platform or action, and it is not investment advice. Crypto assets carry high "
+        "risk; check the facts and weigh the risks yourself before any decision.",
+    ),
+    "ja": (
+        "ニュースのまとめであり、投資助言ではありません",
+        "本記事は公開された報道と公式情報をまとめたもので、特定のトークン、プラットフォーム、"
+        "行動を勧めるものではなく、投資助言ではありません。暗号資産はリスクが高いため、"
+        "判断の前にご自身で事実を確認し、リスクを検討してください。",
+    ),
+    "ko": (
+        "뉴스 정리이며 투자 조언이 아닙니다",
+        "이 글은 공개 보도와 공식 정보를 정리한 것으로, 특정 토큰·플랫폼·행동을 권하지 않으며 "
+        "투자 조언이 아닙니다. 암호화폐는 위험이 크니 결정하기 전에 직접 사실을 확인하고 "
+        "위험을 판단하세요.",
+    ),
+}
+_DISCLAIMER_TEXTS = frozenset(text for _title, text in CRYPTO_DISCLAIMERS.values())
 
-    A reviewer comparing a translation with the zh-TW source otherwise reports the
-    locale in that URL as a mismatch and holds the article (it did on 2026-09-26); the
-    pipeline adds the link back after every review.
-    """
+
+def is_site_disclaimer(block: object) -> bool:
+    return (
+        isinstance(block, dict)
+        and block.get("type") == "callout"
+        and block.get("text") in _DISCLAIMER_TEXTS
+    )
+
+
+def with_crypto_disclaimer(document: GuideDocument, vertical: str, locale: str) -> GuideDocument:
+    """A crypto story with a disclaimer callout the hard checks accept, added if it has none."""
+    if vertical != "crypto":
+        return document
+    marker = CRYPTO_MARKERS[locale].casefold()
+    if any(
+        isinstance(block, CalloutBlock) and marker in block.text.casefold()
+        for block in document.blocks
+    ):
+        return document
+    title, text = CRYPTO_DISCLAIMERS[locale]
     encoded = document.model_dump(mode="json")
-    encoded["blocks"] = [block for block in encoded["blocks"] if not is_topic_link(block)]
-    return encoded
+    notice = {"type": "callout", "tone": "info", "title": title, "text": text}
+    # Before the topic link, which stays last.
+    position = next(
+        (index for index, block in enumerate(encoded["blocks"]) if is_topic_link(block)),
+        len(encoded["blocks"]),
+    )
+    encoded["blocks"].insert(position, notice)
+    return GuideDocument.model_validate(encoded)
 
 
-def document_fingerprint(document: GuideDocument) -> str:
+def is_site_asset(block: object) -> bool:
+    """An image the pipeline drew for the story (``ensure_assets``), not one a model wrote."""
+    return (
+        isinstance(block, dict)
+        and block.get("type") == "image"
+        and str(block.get("src", "")).startswith(NEWS_ASSET_PREFIX)
+    )
+
+
+def _without_site_additions(document: GuideDocument) -> dict[str, Any]:
     encoded = document.model_dump(mode="json")
     hero = encoded.get("hero")
-    if isinstance(hero, dict) and str(hero.get("src", "")).startswith("/guides/news-assets/"):
+    if isinstance(hero, dict) and str(hero.get("src", "")).startswith(NEWS_ASSET_PREFIX):
         encoded["hero"] = None
     encoded["blocks"] = [
         block
         for block in encoded["blocks"]
-        if not (
-            is_topic_link(block)
-            or (
-                isinstance(block, dict)
-                and block.get("type") == "image"
-                and str(block.get("src", "")).startswith("/guides/news-assets/")
-            )
-        )
+        if not (is_topic_link(block) or is_site_asset(block))
     ]
+    return encoded
+
+
+def site_additions_removed(document: GuideDocument) -> GuideDocument:
+    """The article as the models wrote it: no topic link, and no artwork the pipeline drew.
+
+    Stage two adds both after every model step. A rerun starts from a zh-TW text that already
+    carries them, and a reviewer comparing it with a fresh translation (told to add no image)
+    held the translation for a "missing" hero and diagram on 2026-09-26.
+    """
+    return GuideDocument.model_validate(_without_site_additions(document))
+
+
+def for_review(document: GuideDocument) -> dict[str, Any]:
+    """The document as a reviewing model sees it, without anything the pipeline adds.
+
+    The topic link names the locale in its URL, so a reviewer comparing a translation with
+    the zh-TW source reported it as a mismatch and held the article (2026-09-26).
+    """
+    return _without_site_additions(document)
+
+
+def document_fingerprint(document: GuideDocument) -> str:
+    encoded = _without_site_additions(document)
+    # The site's own notice, so adding it where a model left none keeps a verification of the
+    # text valid.
+    encoded["blocks"] = [block for block in encoded["blocks"] if not is_site_disclaimer(block)]
     return hashlib.sha256(
         json.dumps(
             encoded,
