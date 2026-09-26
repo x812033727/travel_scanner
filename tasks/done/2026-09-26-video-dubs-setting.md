@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-video-dubs-setting
 title: Video dubs: the owner picks each video's dub languages on /admin/videos
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1-video-dubs-setting
 claimed_at: 2026-09-26T18:32:25Z
 created_at: 2026-09-26T17:59:10Z
-completed_at:
+completed_at: 2026-09-26T20:08:15Z
 branch: claude/video-dubs-setting
 depends_on: []
 scope:
