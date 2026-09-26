@@ -3,18 +3,22 @@
 // Writes frames/manifest.json with the visual hash status compares, the thumbnail, and a contact
 // sheet. Frames are cached by content key, so a rerun after editing one scene redraws that scene
 // only. A STOP file ends the run after the current scene; the next run picks up from the cache.
+// A drama's shots are clips the media stages make, so render draws only its cards, its subtitle
+// strips (when they are burned in) and its thumbnail, on the chosen shot's keyframe.
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
-import { atomicWrite, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
+import { burnIn, isDrama, subtitlesHash } from "../core/drama.mjs";
+import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.mjs";
-import { visualHash } from "../core/timeline.mjs";
+import { speechHash, visualHash } from "../core/timeline.mjs";
 import { SIZE, THUMB_SIZE } from "../templates/templates.mjs";
 import { openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
 import { renderPlan, renderProblems, stillFile, themeHash, transitionFile } from "./plan.mjs";
+import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, subtitlePlan } from "./subtitles.mjs";
 
 export const THUMBNAIL_FILE = "thumbnail.jpg";
 export const THUMBNAIL_MAX_BYTES = 2 * 1024 * 1024;
@@ -24,14 +28,20 @@ function print(out, label, problems) {
   for (const problem of problems) out.write(`${label} ${problem.path}: ${problem.message}\n`);
 }
 
-/** Characters no bundled font covers, per scene state. */
-export function coverageProblems(plan, coverage) {
+const glyphList = (missing) => missing.map((char) => `"${char}" U+${char.codePointAt(0).toString(16).toUpperCase()}`).join(", ");
+
+/** Characters no bundled font covers, per scene state, subtitle strip and the thumbnail. */
+export function coverageProblems(plan, coverage, subtitles = null) {
   const problems = [];
   for (const scene of plan.scenes) {
     scene.states.forEach((state, index) => {
       const missing = uncovered(state.text, coverage);
-      if (missing.length) problems.push({ path: `${scene.id} state ${index}`, message: `no bundled font has ${missing.map((char) => `"${char}" U+${char.codePointAt(0).toString(16).toUpperCase()}`).join(", ")}` });
+      if (missing.length) problems.push({ path: `${scene.id} state ${index}`, message: `no bundled font has ${glyphList(missing)}` });
     });
+  }
+  for (const strip of subtitles?.strips ?? []) {
+    const missing = uncovered(strip.text, coverage);
+    if (missing.length) problems.push({ path: `subtitle "${strip.text}"`, message: `no bundled font has ${glyphList(missing)}` });
   }
   const missing = plan.thumbnail ? uncovered(plan.thumbnail.text, coverage) : [];
   if (missing.length) problems.push({ path: "thumbnail", message: `no bundled font has ${missing.join(" ")}` });
@@ -53,20 +63,37 @@ export async function run(command, args, ctx) {
     ctx.stdout.write(`${slug} has ${lint.errors.length} lint errors; run lint first\n`);
     return EXIT.lint;
   }
-  const { doc } = project;
+  const { doc, lexicon } = project;
   const dataProblems = renderProblems(doc, ctx.root);
   if (dataProblems.length) {
     print(ctx.stdout, "ERROR", dataProblems);
     return EXIT.lint;
   }
-  const plan = renderPlan(doc, themeHash(), ctx.root);
-  const glyphs = coverageProblems(plan, bundledCoverage());
+  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug, root: ctx.root });
+  const drama = isDrama(doc);
+  // Burned-in subtitles are cut and timed to the narration, like the captions, so a drama's
+  // strips need the timeline the tts stage wrote for this very script.
+  let subtitles = null;
+  if (drama && burnIn(doc)) {
+    const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+    if (!timeline || timeline.speech_hash !== speechHash(doc, lexicon)) {
+      ctx.stderr.write("timeline.json is missing or was built for an older script; run tts first (the burned-in subtitles follow the narration)\n");
+      return EXIT.usage;
+    }
+    subtitles = subtitlePlan(doc, timeline);
+  }
+  const keyframes = drama ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
+  const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes });
+  if (plan.thumbnail?.shot && !plan.thumbnail.keyframe) {
+    ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
+    return EXIT.usage;
+  }
+  const glyphs = coverageProblems(plan, bundledCoverage(), subtitles);
   if (glyphs.length) {
     print(ctx.stdout, "ERROR", glyphs);
     return EXIT.lint;
   }
 
-  const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug, root: ctx.root });
   mkdirSync(path.join(workdir, "frames"), { recursive: true });
   const cacheFile = path.join(workdir, CACHE_FILE);
   const cache = values.force || !existsSync(cacheFile) ? {} : JSON.parse(readFileSync(cacheFile, "utf8"));
@@ -76,6 +103,9 @@ export async function run(command, args, ctx) {
   let reused = 0;
   let stopped = false;
   const channel = values.channel ?? ctx.env.VIDEO_BROWSER_CHANNEL;
+  // The contact sheet shows the slide states; a drama's shots get theirs from the keyframes
+  // stage, so a drama with no cards has no sheet here.
+  const tiles = plan.scenes.flatMap((scene) => scene.states.map((state, index) => ({ file: stillFile(state.key), label: `${scene.id} · ${scene.template} · ${index + 1}/${scene.states.length}` })));
   let renderer;
   try {
     renderer = await openRenderer({ root: ctx.root, workdir, channel });
@@ -106,6 +136,28 @@ export async function run(command, args, ctx) {
       }
       atomicWrite(cacheFile, `${JSON.stringify(cache)}\n`);
     }
+    if (!stopped && subtitles) {
+      for (const strip of subtitles.strips) {
+        if (stopRequested(workdir)) {
+          stopped = true;
+          break;
+        }
+        if (cache[strip.key] && existsSync(path.join(workdir, stripFile(strip.key)))) {
+          reused += 1;
+          continue;
+        }
+        const shot = await renderer.capture(strip.key, strip.html, { size: STRIP_SIZE, omitBackground: true });
+        for (const problem of shot.problems) layout.push({ path: `subtitle "${strip.text}"`, message: problem });
+        writeFileSync(path.join(workdir, stripFile(strip.key)), shot.still);
+        cache[strip.key] = { transition: 0, problems: shot.problems, strip: strip.text };
+        drawn += 1;
+      }
+      atomicWrite(cacheFile, `${JSON.stringify(cache)}\n`);
+      if (!stopped && !existsSync(path.join(workdir, BLANK_STRIP))) {
+        const blank = await renderer.capture(blankStripKey(), blankStripHtml(), { size: STRIP_SIZE, omitBackground: true });
+        writeFileSync(path.join(workdir, BLANK_STRIP), blank.still);
+      }
+    }
     if (!stopped && plan.thumbnail) {
       const thumb = await renderer.capture(plan.thumbnail.key, plan.thumbnail.html, { size: THUMB_SIZE, type: "jpeg", quality: 90 });
       for (const problem of thumb.problems) layout.push({ path: "thumbnail", message: problem });
@@ -113,15 +165,14 @@ export async function run(command, args, ctx) {
       writeFileSync(path.join(workdir, THUMBNAIL_FILE), thumb.still);
     }
     // Problems found in an earlier run stay problems until the state is redrawn.
-    for (const scene of plan.scenes) {
-      scene.states.forEach((state, index) => {
-        if (cache[state.key]?.problems?.length && !layout.some((problem) => problem.path === `${scene.id} state ${index}`)) {
-          for (const message of cache[state.key].problems) layout.push({ path: `${scene.id} state ${index}`, message });
-        }
-      });
-    }
-    if (!stopped) {
-      const tiles = plan.scenes.flatMap((scene) => scene.states.map((state, index) => ({ file: stillFile(state.key), label: `${scene.id} · ${scene.template} · ${index + 1}/${scene.states.length}` })));
+    const remembered = (key, where) => {
+      if (cache[key]?.problems?.length && !layout.some((problem) => problem.path === where)) {
+        for (const message of cache[key].problems) layout.push({ path: where, message });
+      }
+    };
+    for (const scene of plan.scenes) scene.states.forEach((state, index) => remembered(state.key, `${scene.id} state ${index}`));
+    for (const strip of subtitles?.strips ?? []) remembered(strip.key, `subtitle "${strip.text}"`);
+    if (!stopped && tiles.length) {
       writeFileSync(path.join(workdir, ARTIFACTS.contactSheet), await renderer.sheet(contactSheetHtml(`${doc.slug}：${tiles.length} slide states`, tiles), SHEET_WIDTH));
     }
   } finally {
@@ -145,6 +196,7 @@ export async function run(command, args, ctx) {
     size: SIZE,
     scenes: plan.scenes.map((scene) => ({
       id: scene.id,
+      kind: scene.kind,
       states: scene.states.map((state) => ({
         reveal: state.reveal,
         still: stillFile(state.key),
@@ -152,9 +204,24 @@ export async function run(command, args, ctx) {
       })),
     })),
     thumbnail: plan.thumbnail ? THUMBNAIL_FILE : null,
+    // Burned-in subtitles follow the narration, so status compares these two hashes as well.
+    ...(subtitles
+      ? {
+          speech_hash: speechHash(doc, lexicon),
+          subtitles_hash: subtitlesHash(doc),
+          subtitles: {
+            style: subtitles.style,
+            size: STRIP_SIZE,
+            blank: BLANK_STRIP,
+            cues: subtitles.cues.map((cue) => ({ line: cue.line, start_frame: cue.start_frame, end_frame: cue.end_frame, text: cue.text, file: stripFile(cue.key) })),
+          },
+        }
+      : {}),
   };
   atomicWrite(path.join(workdir, ARTIFACTS.frames), `${JSON.stringify(manifest, null, 2)}\n`);
-  recordStage(workdir, "render", { states: drawn + reused, drawn, reused, seconds, channel: channel ?? "bundled chromium" }, ctx.now());
-  ctx.stdout.write(`${drawn} states drawn, ${reused} reused, in ${seconds} s; contact sheet: ${path.join(workdir, ARTIFACTS.contactSheet)}\n`);
+  const strips = subtitles ? subtitles.strips.length : 0;
+  recordStage(workdir, "render", { states: drawn + reused, drawn, reused, strips, seconds, channel: channel ?? "bundled chromium" }, ctx.now());
+  const sheet = tiles.length ? `; contact sheet: ${path.join(workdir, ARTIFACTS.contactSheet)}` : "";
+  ctx.stdout.write(`${drawn} states drawn, ${reused} reused${subtitles ? ` (${strips} subtitle strips, ${subtitles.cues.length} cues)` : ""}, in ${seconds} s${sheet}\n`);
   return EXIT.ok;
 }
