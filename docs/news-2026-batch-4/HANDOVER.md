@@ -372,6 +372,13 @@ sonnet 翻譯、逐語審稿（ja／ko opus、en／zh-CN sonnet，一語兩組�
 - 央行：摘要與小標補「應用場景」；「以下是央行整理指出」改通順；「9 月 18 日的資料」補 2025 年（ja 審稿抓到）。
 - WordPress：「CVSS 4.0 基本分數」→「整體分數」（GHSA 印的是 overall score，en 審稿抓到）。
 
+**上線紀錄（2026-09-26 UTC）**：PR #817 squash `fe852236`（17:48Z）；部署 `deploy_20260926_174838.log`，17:50Z 上線（alembic head、
+`/health`／`/ready` 200、首頁 200）。發布前重讀活頁面（OpenAI 國家表台灣仍 Available、Sonnet／Haiku 5.5 未推出、Vids 兩份說明頁的 6／50 未變）。
+主機腳本 `/root/news48-20260927/import.sh`（dryrun／publish／recheck 三模式，檔案夾在 base64 裡傳上去；把指令直接塞進 plink 的巢狀引號
+第一次就壞了，`sh` 報 Unterminated quoted string、什麼都沒寫）：dry-run 50 create＋15 update，站主同意後 publish：created 50、updated 15、
+published 65、taxonomy_updated 10、failed null；`guides-links-rebuild` unresolved 0；複核 dry-run 65 筆全 unchanged；
+`verify_public.py --from-report publish.json --sitemap` 65 頁 PASS。
+
 **學到的**：
 - 逐語審稿又抓到三個兩輪查核都放過的原稿問題（計畫語氣、計費範圍、漏年份），全是「限定詞或時間錨點被省掉」這一類。
 - 審稿代理交的 research 修正若用整串陣列或 `"key": "value"` 當 `old`，`apply_corrections.py` 一律 0 matches；規格要寫明 `old` 是單一字串值。
