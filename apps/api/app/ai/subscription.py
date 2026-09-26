@@ -33,6 +33,10 @@ Connection = Literal["api_key", "subscription"]
 
 # Why a subscription call gives way to MiniMax: nothing ran, so trying another vendor spends
 # nothing twice. A run that started and failed is reported instead.
+# The owner's choice of 2026-09-26: no usage cap. The accounts take turns in slot order
+# (A, B, C, … and back to A), and one is left only when its 5-hour or weekly window is full.
+FULL_PERCENT = 100
+
 FALLBACK_CODES = frozenset(
     {
         "subscription_quota_paused",
@@ -151,7 +155,7 @@ class SubscriptionResearchProvider:
                     model=self.model,
                     system=system,
                     prompt=prompt,
-                    max_usage_percent=self._settings.ai_subscription_max_usage_percent,
+                    max_usage_percent=FULL_PERCENT,
                     timeout_seconds=self._timeout_seconds,
                     queue_seconds=QUEUE_SECONDS,
                 )
@@ -177,7 +181,7 @@ def _peak(slot: Any) -> float | None:
     return max((window.used_percent for window in windows), default=None)
 
 
-def subscription_summary(overview: AgentOverview, cap: int) -> tuple[bool, str]:
+def subscription_summary(overview: AgentOverview, cap: int = FULL_PERCENT) -> tuple[bool, str]:
     """For the card's connection test: can any Claude account serve, and what each one has."""
     usable: list[str] = []
     notes: list[str] = []
@@ -195,7 +199,7 @@ def subscription_summary(overview: AgentOverview, cap: int) -> tuple[bool, str]:
         if peak is None:
             usable.append(f"{name}（用量未知）")
         elif peak >= cap:
-            notes.append(f"{name} 已用 {peak:.0f}%，達上限 {cap}%")
+            notes.append(f"{name} 已用滿（{peak:.0f}%），等額度重置")
         else:
             usable.append(f"{name}（已用 {peak:.0f}%）")
     if not usable:

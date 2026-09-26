@@ -10,6 +10,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Annotated
+from uuid import UUID
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,9 +21,16 @@ from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User
 from app.problems import AppError
+from app.video_automation import requests as drama_requests
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
+from app.video_automation.requests import RequestRefused
 from app.video_automation.schemas import (
+    DramaRequestIn,
+    DramaRequestOut,
+    DramaRequestsOut,
+    DramaRequestStart,
+    NextDramaRequestOut,
     SettingsSave,
     SettingsView,
     SettingsWrite,
@@ -39,11 +47,14 @@ from app.video_speech.admin_api import VideoTool
 # A whole video is a few dozen stage calls; this only stops a runaway loop.
 RUNS_PER_HOUR = 120
 TOPIC_LOOKUPS_PER_HOUR = 12
+# The worker asks every few minutes; this only stops a runaway loop.
+REQUEST_CALLS_PER_HOUR = 240
 
 admin_router = APIRouter(prefix="/admin/video-automation", tags=["admin video automation"])
 tool_router = APIRouter(prefix="/video/automation", tags=["video automation (pipeline)"])
 Session = Annotated[AsyncSession, Depends(get_session)]
 ContentReader = Annotated[User, Depends(require_capability("content.read"))]
+ContentManager = Annotated[User, Depends(require_capability("content.manage"))]
 SettingsManager = Annotated[User, Depends(require_capability("settings.manage"))]
 
 
@@ -133,3 +144,90 @@ async def get_video_topics(tool: VideoTool, session: Session) -> TopicsOut:
     row = await service.settings_row(session)
     runtime = await load_runtime_settings(session)
     return await gather_topics(session, runtime, get_redis(), row)
+
+
+# The owner's drama requests (docs/videos/DRAMA.md): filed on /admin/videos, claimed by the worker.
+
+
+def _refused(error: RequestRefused) -> AppError:
+    return AppError(error.status, error.code, error.detail)
+
+
+@admin_router.get("/drama-requests", response_model=DramaRequestsOut)
+async def list_drama_requests(user: ContentReader, session: Session) -> DramaRequestsOut:
+    """Every request the owner filed, newest first, with the video each one became."""
+    _ = user
+    return DramaRequestsOut(requests=await drama_requests.list_requests(session))
+
+
+@admin_router.post("/drama-requests", response_model=DramaRequestOut, status_code=201)
+async def create_drama_request(
+    payload: DramaRequestIn, user: ContentManager, session: Session
+) -> DramaRequestOut:
+    """The owner asks for an episode; the worker starts it on its next round, before any
+    scheduled draft. Refused while the drama route is switched off, so nothing queues for a
+    worker that will never take it."""
+    row = await service.settings_row(session)
+    if not row.drama_enabled:
+        raise AppError(
+            409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
+        )
+    return await drama_requests.create_request(session, user, payload)
+
+
+@admin_router.delete("/drama-requests/{request_id}", response_model=DramaRequestOut)
+async def cancel_drama_request(
+    request_id: UUID, user: ContentManager, session: Session
+) -> DramaRequestOut:
+    """Withdraw a request the worker has not started; a started one is dropped as a video."""
+    try:
+        return await drama_requests.cancel_request(session, user, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.get("/drama-requests", response_model=DramaRequestsOut)
+async def list_active_drama_requests(tool: VideoTool, session: Session) -> DramaRequestsOut:
+    """The requests still queued or in the making, oldest first, so a restarted worker can
+    tell which of its videos answers which request."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    return DramaRequestsOut(requests=await drama_requests.list_requests(session, active_only=True))
+
+
+@tool_router.get("/drama-requests/next", response_model=NextDramaRequestOut)
+async def next_drama_request(tool: VideoTool, session: Session) -> NextDramaRequestOut:
+    """The oldest queued request, or none: what the worker should start before a scheduled draft."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    return NextDramaRequestOut(request=await drama_requests.next_request(session))
+
+
+@tool_router.post("/drama-requests/{request_id}/start", response_model=DramaRequestOut)
+async def start_drama_request(
+    request_id: UUID, payload: DramaRequestStart, tool: VideoTool, session: Session
+) -> DramaRequestOut:
+    """The worker claims a queued request for the video it is about to make."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await drama_requests.start_request(session, tool, request_id, payload.slug)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.post("/drama-requests/{request_id}/done", response_model=DramaRequestOut)
+async def finish_drama_request(
+    request_id: UUID, tool: VideoTool, session: Session
+) -> DramaRequestOut:
+    """The worker reports the request's video is finished and published."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await drama_requests.finish_request(session, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error

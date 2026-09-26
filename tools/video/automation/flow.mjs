@@ -13,11 +13,11 @@ import path from "node:path";
 import { sha256File } from "../core/approvals.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
 import { eachLine, LINE_ID } from "../core/schema.mjs";
-import { lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { checklistFrom, guideSlugs, outlineOptions, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError } from "./client.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
-import { INSTRUCTIONS, parseAnswer, references } from "./prompts.mjs";
+import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -26,10 +26,20 @@ const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 export const MAX_LINT_FIXES = 3;
 export const MAX_REPLANS = 2;
 export const MAX_STAGE_FAILURES = 2;
+// A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
+// many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
+export const MAX_PROMPT_FIX_ROUNDS = 2;
 const OUTPUT_INVALID = "video_ai_output_invalid";
 const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
+const DRAMA_SECTIONS = ["## 故事前提", "## 角色", "## 站主觀點", "## 大綱"];
+// Which manifest a drama stage's failures are read from, and what its entries are called.
+const FIX_SOURCES = {
+  look: { manifest: ARTIFACTS.characters, entries: "characters", what: "character" },
+  keyframes: { manifest: ARTIFACTS.keyframes, entries: "shots", what: "shot" },
+  clips: { manifest: ARTIFACTS.clips, entries: "shots", what: "shot" },
+};
 
 const today = (ctx) => ctx.now().toISOString().slice(0, 10);
 
@@ -63,13 +73,16 @@ export function mainGuide({ source_guide: guide, source_urls: urls }) {
   return (GUIDE_SLUG.test(guide ?? "") ? guide : null) ?? guideSlugs(urls)[0] ?? null;
 }
 
-/** What makes a planner's answer unusable, or null. `usedGuides` are earlier videos' main articles. */
-export function planProblem(plan, taken, usedGuides = new Set()) {
+/**
+ * What makes a planner's answer unusable, or null. `usedGuides` are earlier videos' main
+ * articles; a drama's brief has the story bible's sections instead of a tutorial's.
+ */
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides") {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
   if (typeof plan.brief !== "string") return "brief is missing";
-  const missing = REQUIRED_SECTIONS.filter((heading) => !plan.brief.includes(heading));
+  const missing = (format === "drama" ? DRAMA_SECTIONS : REQUIRED_SECTIONS).filter((heading) => !plan.brief.includes(heading));
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
   if (outlineOptions(plan.brief).length < 2) return "brief needs 2 or 3 options written as 「### 選項 A：…」 with 一行說明 and 開場鉤子 lines";
   if (!Array.isArray(plan.source_urls) || !plan.source_urls.every((url) => /^https:\/\//.test(url))) return "source_urls must be https URLs";
@@ -113,8 +126,12 @@ function mergeLexicon(root, additions) {
   return added;
 }
 
-/** video.json as the owner's settings say it must be, whatever the model returned. */
-export function settle(video, { slug, settings, sourceGuide, root }) {
+/**
+ * video.json as the owner's settings say it must be, whatever the model returned. A drama
+ * (docs/videos/DRAMA.md) also takes the settings tab's style preset, subtitle burn-in and
+ * whether music is made at all; the writer's own look fields stay.
+ */
+export function settle(video, { slug, settings, sourceGuide, root, format = "slides" }) {
   // Gemini takes its pace from the style and has no rate; Azure has a rate and no style or model.
   const unused = settings.voice.provider === "gemini" ? ["rate"] : ["style", "model"];
   const voice = Object.fromEntries(Object.entries(settings.voice).filter(([key, value]) => value !== null && value !== "" && !unused.includes(key)));
@@ -125,6 +142,13 @@ export function settle(video, { slug, settings, sourceGuide, root }) {
   else delete settled.source_guide;
   settled.assets = [];
   if (settled.youtube) settled.youtube = { ...settled.youtube, video_id: null };
+  if (format === "drama") {
+    const drama = settings.drama ?? {};
+    settled.format = "drama";
+    settled.look = { preset: drama.style_preset ?? "cinematic-3d", ...(video.look ?? {}) };
+    settled.subtitles = { burn_in: drama.subtitle_burn_in ?? true, ...(video.subtitles ?? {}) };
+    if (drama.music_enabled === false) delete settled.music;
+  }
   return settled;
 }
 
@@ -134,6 +158,8 @@ function lintErrors(ctx, slug) {
 }
 
 async function run(ctx, command) {
+  // Tests hand in a runner that plays the media stages without any vendor.
+  if (ctx.runCommand) return ctx.runCommand(command, ctx);
   const { main } = await import("../cli.mjs");
   let out = "";
   const sink = { write: (text) => (out += text) };
@@ -141,14 +167,16 @@ async function run(ctx, command) {
   return { code, out };
 }
 
-/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article. */
+const lastLine = (out, lines = 1) => out.trim().split("\n").slice(-lines).join(" ");
+
+/** Hand everything the automation knows to /admin/videos: title, stage, checklist, article, format. */
 async function report(ctx, api, state, stage) {
   const workdir = resolveWorkdir({ env: ctx.env, slug: state.slug, root: ctx.root, home: ctx.home });
   const status = await pipelineStatus({ slug: state.slug, root: ctx.root, workdir });
   const guide = mainGuide(state);
   // The page has no field for why a video stopped; the checklist is what the owner reads.
   const blocked = state.status === "blocked" && state.blocked ? [{ key: "blocked", label: `卡住，需要人處理：${state.blocked}`.slice(0, 120), done: false }] : [];
-  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: [...blocked, ...checklistFrom(status.steps)], ...(guide ? { source_guide: guide } : {}) });
+  await api.report(state.slug, { title: state.title || state.slug, stage: stage.slice(0, 40), checklist: [...blocked, ...checklistFrom(status.steps)], format: state.format ?? "slides", ...(guide ? { source_guide: guide } : {}) });
 }
 
 export class Automation {
@@ -179,8 +207,8 @@ export class Automation {
     return this.refs;
   }
 
-  async stage(stage, slug, payload, maxOutputTokens) {
-    const answer = await this.api.run(stage, slug, INSTRUCTIONS[stage], payload, maxOutputTokens);
+  async stage(stage, slug, payload, maxOutputTokens, format = "slides") {
+    const answer = await this.api.run(stage, slug, instructionsFor(stage, format), payload, maxOutputTokens);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
     try {
@@ -251,8 +279,19 @@ export class Automation {
       }
       if (done) return done;
     }
+    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
+    if (this.settings.drama?.drama_enabled && this.room()) {
+      const request = await this.api.dramaNext();
+      if (request) return this.draftDrama(request);
+    }
     if (this.due()) return this.draft();
     return null;
+  }
+
+  /** Whether another video may start without passing the owner's cap on drafts waiting on them. */
+  room() {
+    const active = automatedVideos(this.workBase).filter((state) => state.status === "active").length;
+    return active < this.settings.max_waiting_drafts;
   }
 
   /** The owner dropped this video on /admin/videos: leave it, files and all. */
@@ -265,8 +304,7 @@ export class Automation {
 
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */
   due() {
-    const active = automatedVideos(this.workBase).filter((state) => state.status === "active").length;
-    if (active >= this.settings.max_waiting_drafts) return false;
+    if (!this.room()) return false;
     const last = readJson(path.join(this.workBase, GLOBAL_FILE), {}).last_draft_at;
     return !last || this.ctx.now().getTime() - Date.parse(last) >= this.settings.draft_interval_hours * 3600_000;
   }
@@ -378,6 +416,80 @@ export class Automation {
     await this.api.submit(state.slug, { gate: "outline", content_sha256: await sha256File(file), summary: `企劃書與 ${options.length} 個大綱選項（自動產生）`, payload: { brief, options }, files: [] });
   }
 
+  /** What the drama planner and writer get beyond a tutorial's payload. */
+  dramaPayload(state) {
+    const refs = this.reference();
+    const drama = this.settings.drama ?? {};
+    return {
+      drama: refs.drama,
+      drama_example: refs.drama_example,
+      drama_brief: refs.drama_brief,
+      drama_settings: { style_preset: state.style_preset ?? drama.style_preset ?? "cinematic-3d", voices: drama.character_voice_pool ?? [], subtitle_burn_in: drama.subtitle_burn_in ?? true, music_enabled: drama.music_enabled !== false },
+    };
+  }
+
+  /**
+   * An episode the owner asked for on /admin/videos: plan it from the premise, claim the request
+   * under the video's slug, and send the outline. A planner that fails twice leaves a blocked
+   * video behind, so the owner sees why on the page instead of a request that never starts.
+   */
+  async draftDrama(request) {
+    const earlier = this.earlierVideos();
+    const taken = new Set(earlier.map((video) => video.slug));
+    const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
+    const minutes = Number(request.target_minutes) || 3;
+    const stateBase = { format: "drama", request_id: request.id, premise: request.premise, style_preset: request.style_preset ?? null, target_minutes: minutes, source_guide: request.source_guide ?? null };
+    const sources = request.source_guide ? await readSources(this.read, [`https://mokaair.com/zh-TW/guides/${request.source_guide}`]) : [];
+    let plan = null;
+    let problem = null;
+    for (let attempt = 0; attempt < 2 && !plan; attempt++) {
+      let answer;
+      try {
+        answer = await this.stage(
+          "planner",
+          `drama-${String(request.id).slice(0, 8)}`,
+          this.planPayload({ premise: request.premise, title: request.title ?? null, note: request.note ?? null, source_guide: request.source_guide ?? null, sources, target_minutes: [minutes, minutes], ...this.dramaPayload(stateBase), ...(problem ? { previous_problem: problem } : {}) }, earlier),
+          16_000,
+          "drama",
+        );
+      } catch (error) {
+        if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+        problem = error.message;
+        continue;
+      }
+      problem = planProblem(answer, taken, request.source_guide ? new Set() : usedGuides, "drama");
+      if (!problem) plan = answer;
+    }
+    const slug = plan?.slug ?? `drama-${String(request.id).slice(0, 8)}`;
+    const state = {
+      slug,
+      title: String(plan?.title || request.title || titleOf(plan?.brief ?? "") || slug).slice(0, 200),
+      status: "active",
+      created_at: this.ctx.now().toISOString(),
+      ...stateBase,
+      source_urls: (plan?.source_urls ?? []).slice(0, 12),
+      replans: 0,
+      verify_rounds: 0,
+      verified: false,
+      listener_done: false,
+      retakes: 0,
+      prompt_fixes: {},
+      notes: request.note ? [`owner request: ${request.note}`] : [],
+    };
+    await this.api.dramaStart(request.id, slug);
+    if (!plan) {
+      const kept = this.keepAnswer(this.workdir(slug), "planner");
+      saveState(this.workdir(slug), state);
+      return this.block(state, `the planner could not write a usable brief for the owner's request (${problem}${kept ? `; the answer is in ${kept}` : ""})`);
+    }
+    const dir = docDir(slug, this.ctx.root);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
+    saveState(this.workdir(slug), state);
+    await this.submitOutline(state);
+    return `drama: ${slug} planned from the owner's request; outline sent to /admin/videos`;
+  }
+
   /** The newest decision on a gate for the current file: {status, choice, note} or null. */
   async decision(state, gate, file) {
     const project = await this.api.reviews(state.slug);
@@ -432,6 +544,15 @@ export class Automation {
     if (!state.verified) return this.verify(state);
     if (!state.listener_done) return this.listen(state);
 
+    // The drama's own steps (docs/videos/DRAMA.md): each media stage runs as a command, a failed
+    // check goes back to the writer as a prompt fix, and two gates wait on the owner.
+    if (next === "look generated") return this.media(state, "look");
+    if (next === "look approved") return this.lookGate(state);
+    if (next === "keyframes drawn") return this.media(state, "keyframes");
+    if (next === "storyboard approved") return this.storyboardGate(state);
+    if (next === "clips generated") return this.media(state, "clips");
+    if (next === "music generated") return this.media(state, "music");
+
     if (next === "narration synthesized") {
       const result = await run(ctx, ["tts", "--slug", state.slug]);
       if (result.code !== 0) return this.block(state,`tts failed: ${result.out.trim().split("\n").at(-1)}`);
@@ -469,6 +590,14 @@ export class Automation {
         await this.pull(state.slug);
         state.status = "done";
         saveState(workdir, state);
+        if (state.request_id) {
+          try {
+            await this.api.dramaDone(state.request_id);
+          } catch (error) {
+            // The request reads as done once the video is on YouTube anyway.
+            this.log(`  could not mark the drama request done: ${error.message}`);
+          }
+        }
         return `${state.slug}: the owner confirmed the upload; they upload it in YouTube Studio`;
       }
       if (review.status === "rejected") return this.block(state,`the owner sent the upload back: ${review.note}`);
@@ -488,9 +617,11 @@ export class Automation {
     const earlier = this.earlierVideos().filter((video) => video.slug !== state.slug);
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
-    const { topics } = await this.api.topics();
-    const answer = await this.stage("planner", state.slug, this.planPayload({ topics, owner_note: note, previous_brief: previous, slug: state.slug }, earlier));
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, usedGuides);
+    const drama = state.format === "drama";
+    const { topics } = drama ? { topics: [] } : await this.api.topics();
+    const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes ?? 3, state.target_minutes ?? 3], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
+    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, previous_brief: previous, slug: state.slug }, earlier), 16_000, state.format);
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format);
     state.replans += 1;
     state.notes.push(`outline sent back: ${note}`);
     saveState(this.workdir(state.slug), state);
@@ -507,18 +638,20 @@ export class Automation {
   scriptPayload(state, extra) {
     const refs = this.reference();
     const lexicon = readJson(lexiconFile(this.ctx.root), { terms: {} });
+    const drama = state.format === "drama";
     return {
       today: today(this.ctx),
       slug: state.slug,
       voice: this.settings.voice,
       source_guide: state.source_guide,
-      target_minutes: [this.settings.target_minutes_min, this.settings.target_minutes_max],
+      target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : [this.settings.target_minutes_min, this.settings.target_minutes_max],
       lexicon: Object.keys(lexicon.terms),
       script_writing: refs.script_writing,
       channel: refs.channel,
       minimal: refs.minimal,
       showcase: refs.showcase,
       owner_notes: state.notes,
+      ...(drama ? this.dramaPayload(state) : {}),
       ...extra,
     };
   }
@@ -529,15 +662,125 @@ export class Automation {
     let current = answer;
     for (let fix = 0; ; fix++) {
       if (!current?.video || typeof current.video !== "object") return "the answer has no video object";
-      writeVideo(dir, settle(current.video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root }));
+      writeVideo(dir, settle(current.video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format }));
       const added = mergeLexicon(this.ctx.root, current.lexicon_additions);
       if (added.length) state.lexicon_added = [...new Set([...(state.lexicon_added ?? []), ...added])];
       const errors = lintErrors(this.ctx, state.slug);
       if (!errors.length) return null;
       if (fix >= MAX_LINT_FIXES) return `lint still fails after ${MAX_LINT_FIXES} fixes: ${errors.slice(0, 3).join("; ")}`;
       const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-      current = await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000);
+      current = await this.stage("writer", state.slug, this.scriptPayload(state, { video, lint_errors: errors, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format);
     }
+  }
+
+  /**
+   * Run one of the drama's media stages. Exit 1 means the checks failed some sheets, keyframes or
+   * clips: the writer fixes their prompts and the stage runs again next round. Exit 3 needs the
+   * owner (the cap, a setting, a key) and blocks the video with the reason on /admin/videos; exit
+   * 4 is a vendor or the budget server-side, tried again next round; anything else blocks.
+   */
+  async media(state, command) {
+    const { ctx } = this;
+    const channel = ["look", "keyframes"].includes(command) && ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
+    const result = await run(ctx, [command, "--slug", state.slug, ...channel]);
+    if (result.code === 0) {
+      this.cleared(state, command);
+      delete state.prompt_fixes?.[command];
+      saveState(this.workdir(state.slug), state);
+      await report(ctx, this.api, state, `${command} done`);
+      return `${state.slug}: ${command} done`;
+    }
+    if (result.code === 1 && FIX_SOURCES[command]) return this.fixPrompts(state, command, {});
+    if (result.code === 3) return this.block(state, `${command} needs the owner: ${lastLine(result.out)}`);
+    if (result.code === 4) return this.later(`${state.slug}: ${command} could not finish (${lastLine(result.out)}); the next run tries again`);
+    return this.block(state, `${command} failed: ${lastLine(result.out, 2)}`);
+  }
+
+  /** The ids a stage left for a prompt fix, with what the judge or the checks said about each. */
+  failedTargets(state, kind) {
+    const source = FIX_SOURCES[kind];
+    const manifest = readJson(path.join(this.workdir(state.slug), source.manifest), null);
+    const targets = [];
+    for (const [id, entry] of Object.entries(manifest?.[source.entries] ?? {})) {
+      if (!entry?.needs_review) continue;
+      const problems = entry.problems ?? [...new Set((entry.candidates ?? entry.takes ?? []).flatMap((take) => take.judge?.problems ?? take.qc?.problems ?? []))];
+      targets.push({ id, problems });
+    }
+    return targets;
+  }
+
+  /**
+   * Hand failed sheets, keyframes or clips (or a gate the owner sent back) to the writer as a
+   * prompt fix, at most MAX_PROMPT_FIX_ROUNDS times per kind; then the video waits for a person.
+   */
+  async fixPrompts(state, kind, { targets = null, ownerNote = null }) {
+    const workdir = this.workdir(state.slug);
+    const found = targets ?? this.failedTargets(state, kind);
+    const what = FIX_SOURCES[kind]?.what ?? "shot";
+    const summary = found.map((target) => `${target.id}: ${(target.problems ?? []).join("; ") || "failed"}`).join(" | ") || ownerNote || "no detail";
+    const rounds = state.prompt_fixes?.[kind] ?? 0;
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`);
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind, targets: found, problems: found.flatMap((target) => target.problems ?? []), owner_note: ownerNote }, line_ids: this.freshIds(state, video, 40) }), 32_000, "drama");
+    const problem = await this.saveAndLint(state, answer);
+    if (problem) return this.retryLater(state, "writer", `the ${kind} fix ${problem}`);
+    this.cleared(state, "writer");
+    state.prompt_fixes = { ...(state.prompt_fixes ?? {}), [kind]: rounds + 1 };
+    if (ownerNote) state.notes.push(`${kind} sent back: ${ownerNote}`);
+    saveState(workdir, state);
+    return `${state.slug}: ${kind} prompts fixed (round ${rounds + 1}) for ${found.map((target) => target.id).join(", ") || what}; ${kind} runs again next`;
+  }
+
+  /**
+   * The look gate: one review per character. Nothing sent yet for these sheets: send them. Every
+   * character approved: record the choice and the approval. One sent back: the writer rewrites
+   * that character and the sheets are drawn again.
+   */
+  async lookGate(state) {
+    const workdir = this.workdir(state.slug);
+    const file = path.join(workdir, ARTIFACTS.characters);
+    const manifest = readJson(file, null);
+    if (!manifest?.characters) return this.block(state, "characters/manifest.json is gone; run look again");
+    const project = await this.api.reviews(state.slug);
+    const sha = await sha256File(file);
+    const reviews = (project?.reviews ?? []).filter((review) => review.gate === "look" && review.content_sha256 === sha);
+    if (!reviews.length) {
+      const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "look"]);
+      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the look for review: ${lastLine(pushed.out)}`);
+      return `${state.slug}: character sheets sent to /admin/videos`;
+    }
+    const rejected = reviews.filter((review) => review.status === "rejected");
+    if (rejected.length) {
+      const targets = rejected.map((review) => ({ id: review.subject, problems: review.note ? [review.note] : [] }));
+      return this.fixPrompts(state, "look", { targets, ownerNote: rejected.map((review) => `${review.subject}: ${review.note ?? ""}`).join("; ") });
+    }
+    const approved = new Set(reviews.filter((review) => review.status === "approved").map((review) => review.subject));
+    if (Object.keys(manifest.characters).every((id) => approved.has(id))) {
+      await this.pull(state.slug);
+      return `${state.slug}: the owner chose the character sheets`;
+    }
+    return null;
+  }
+
+  /** The storyboard gate: sent when nothing is pending for these keyframes; sent back means a prompt fix. */
+  async storyboardGate(state) {
+    const workdir = this.workdir(state.slug);
+    const review = await this.decision(state, "storyboard", path.join(workdir, ARTIFACTS.keyframes));
+    if (!review) {
+      const pushed = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "storyboard"]);
+      if (pushed.code !== 0) return this.later(`${state.slug}: could not send the storyboard for review: ${lastLine(pushed.out)}`);
+      return `${state.slug}: storyboard sent to /admin/videos`;
+    }
+    if (review.status === "approved") {
+      await this.pull(state.slug);
+      return `${state.slug}: the owner approved the storyboard${review.note ? ` (${review.note})` : ""}`;
+    }
+    if (review.status === "rejected") {
+      const shots = (review.payload?.shots ?? []).filter((shot) => shot.needs_review).map((shot) => ({ id: shot.id, problems: shot.judge?.problems ?? [] }));
+      return this.fixPrompts(state, "keyframes", { targets: shots, ownerNote: review.note ?? "" });
+    }
+    return null;
   }
 
   /** Line ids for the model to use, none already in the script (the same alphabet as `ids`). */
@@ -565,7 +808,7 @@ export class Automation {
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const siteUrl = state.source_guide ? [`https://mokaair.com/zh-TW/guides/${state.source_guide}`] : [];
     const sources = await readSources(this.read, [...siteUrl, ...(state.source_urls ?? [])]);
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
@@ -583,7 +826,7 @@ export class Automation {
     const round = state.verify_rounds + 1;
     const urls = [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])];
     const sources = await readSources(this.read, urls);
-    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources }, 32_000);
+    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources }, 32_000, state.format);
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
@@ -602,7 +845,7 @@ export class Automation {
   async listen(state, note = null) {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) }, 32_000);
+    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) }, 32_000, state.format);
     const problem = await this.saveAndLint(state, answer);
     state.listener_done = !problem;
     if (problem) return this.retryLater(state, "listener", `the listener edit ${problem}`);
