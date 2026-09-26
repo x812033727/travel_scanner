@@ -1,0 +1,117 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+
+import { dramaFixture, fixture } from "../core/fixtures/load.mjs";
+import { assembleItem, captionsItem, disclosureDecision, disclosureItem, item, ITEM_IDS, metadataItem, narrationItem, qaReport, renderItem } from "./checks.mjs";
+import { policyRequest, policyVerdict } from "./policy.mjs";
+
+test("the report lists exactly the eleven items in order and is ok only when every item is", () => {
+  assert.deepEqual(ITEM_IDS, ["assemble", "render", "narration", "pace", "captions", "metadata", "facts", "links", "thumbnail", "policy", "disclosure"]);
+  const items = ITEM_IDS.map((id) => item(id, true, `${id} fine`));
+  const report = qaReport(items, "ab".repeat(32));
+  assert.deepEqual(Object.keys(report), ["ok", "final_sha256", "items"]);
+  assert.equal(report.ok, true);
+  assert.deepEqual(report.items[3], { id: "pace", ok: true, detail: "pace fine" });
+  items[7] = item("links", false, "one broken", ["slow"]);
+  assert.equal(qaReport(items, null).ok, false);
+  assert.deepEqual(qaReport(items, null).items[7], { id: "links", ok: false, detail: "one broken", warnings: ["slow"] });
+  assert.equal(qaReport(items, null).final_sha256, null);
+  assert.throws(() => qaReport(items.slice(1), null), /exactly assemble, render/);
+  assert.throws(() => qaReport([...items].reverse(), null), /exactly assemble, render/);
+});
+
+test("assemble reads checks.json: missing, failed, stale or passed", () => {
+  assert.match(assembleItem({ checks: null, current: false, finalExists: false }).detail, /final\.mp4 is missing/);
+  assert.match(assembleItem({ checks: null, current: false, finalExists: true }).detail, /checks\.json is missing/);
+  assert.equal(assembleItem({ checks: { ok: false, problems: ["1 frame short", "loud"] }, current: false, finalExists: true }).detail, "checks failed: 1 frame short; loud");
+  assert.match(assembleItem({ checks: { ok: true, problems: [] }, current: false, finalExists: true }).detail, /older script/);
+  const passed = assembleItem({ checks: { ok: true, problems: [], metrics: { frames: 1200, loudness: { integrated: -14.1 }, psnr: [{}, {}] } }, current: true, finalExists: true });
+  assert.deepEqual(passed, { id: "assemble", ok: true, detail: "1200 frames, -14.1 LUFS, 2 frames matched their slides; every check passed" });
+});
+
+test("render reads the manifest and the cache the renderer left", () => {
+  const manifest = { visual_hash: "v1", scenes: [{ id: "hook", states: [{ still: "frames/aaaa.png" }, { still: "frames/bbbb.png" }] }], thumbnail: "thumbnail.jpg" };
+  const base = { visual: "v1", speech: "s1", subtitles: null, burnIn: false, hasThumbnail: true };
+  assert.match(renderItem({ ...base, manifest: null, cache: null }).detail, /missing; run render/);
+  assert.match(renderItem({ ...base, manifest: { ...manifest, visual_hash: "old" }, cache: {} }).detail, /older script/);
+  const clean = renderItem({ ...base, manifest, cache: { aaaa: { problems: [] }, cccc: { problems: ["unused state, stale problem"] } } });
+  assert.deepEqual(clean, { id: "render", ok: true, detail: "2 slide states drawn with no layout, glyph or font problem, thumbnail included" });
+  const clipped = renderItem({ ...base, manifest, cache: { bbbb: { problems: ["the code panel shows 9 of 13 lines; shorten the code"] } } });
+  assert.deepEqual([clipped.ok, clipped.detail], [false, "hook state 1: the code panel shows 9 of 13 lines; shorten the code"]);
+  assert.match(renderItem({ ...base, manifest: { ...manifest, thumbnail: null }, cache: {} }).detail, /thumbnail was not drawn/);
+  const drama = renderItem({ ...base, burnIn: true, subtitles: "sub1", manifest: { ...manifest, speech_hash: "s1", subtitles_hash: "old" }, cache: {} });
+  assert.match(drama.detail, /subtitle strips for an older narration/);
+  assert.equal(renderItem({ ...base, burnIn: true, subtitles: "sub1", manifest: { ...manifest, speech_hash: "s1", subtitles_hash: "sub1" }, cache: {} }).ok, true);
+});
+
+test("narration needs the approved timeline to be the current one", () => {
+  assert.match(narrationItem({ approval: { status: "absent" }, current: false }).detail, /missing; run tts/);
+  assert.match(narrationItem({ approval: { status: "approved" }, current: false }).detail, /older script/);
+  assert.match(narrationItem({ approval: { status: "missing" }, current: true }).detail, /not been approved/);
+  assert.match(narrationItem({ approval: { status: "stale" }, current: true }).detail, /changed since/);
+  assert.deepEqual(narrationItem({ approval: { status: "approved", entry: { approved_at: "2026-09-27T01:00:00Z" } }, current: true }), { id: "narration", ok: true, detail: "timeline.json approved at 2026-09-27T01:00:00Z" });
+});
+
+test("captions: stale translations fail, reading speed only warns, every locale needs a file", () => {
+  const locales = ["zh-TW", "en"];
+  const manifest = { locales: { "zh-TW": { cues: 9, problems: ["cue 3 (k7p2): 11.2 characters a second, above 9"] }, en: { cues: 9, problems: [] } }, skipped: {} };
+  const hasFile = () => true;
+  const fine = captionsItem({ lintWarnings: [{ path: "scenes", message: "about 1.2 minutes" }], manifest, current: true, locales, hasCaptionFile: hasFile });
+  assert.deepEqual(fine, { id: "captions", ok: true, detail: "caption files for zh-TW, en, every translation current", warnings: ["zh-TW: cue 3 (k7p2): 11.2 characters a second, above 9"] });
+  const stale = captionsItem({
+    lintWarnings: [
+      { path: "i18n/en.json", message: "2 translations older than the zh-TW line: k7p2, m4qa" },
+      { path: "i18n/en.json", message: "translations older than the zh-TW text: title, chapter hook" },
+      { path: "i18n/en.json", message: "chapter titles for scenes that no longer open a chapter: old; i18n-merge drops them" },
+    ],
+    manifest,
+    current: true,
+    locales,
+    hasCaptionFile: hasFile,
+  });
+  assert.equal(stale.ok, false);
+  assert.equal(stale.detail, "i18n/en.json: 2 translations older than the zh-TW line: k7p2, m4qa; i18n/en.json: translations older than the zh-TW text: title, chapter hook");
+  assert.deepEqual(stale.warnings, ["i18n/en.json: chapter titles for scenes that no longer open a chapter: old; i18n-merge drops them", "zh-TW: cue 3 (k7p2): 11.2 characters a second, above 9"]);
+  assert.match(captionsItem({ lintWarnings: [], manifest: null, current: false, locales, hasCaptionFile: hasFile }).detail, /manifest\.json is missing/);
+  assert.match(captionsItem({ lintWarnings: [], manifest, current: false, locales, hasCaptionFile: hasFile }).detail, /older narration/);
+  const skipped = captionsItem({ lintWarnings: [], manifest: { ...manifest, skipped: { en: ["k7p2"] } }, current: true, locales, hasCaptionFile: hasFile });
+  assert.equal(skipped.detail, "en: no caption file, 1 lines missing or older than zh-TW (k7p2)");
+  assert.equal(captionsItem({ lintWarnings: [], manifest, current: true, locales: [...locales, "ja"], hasCaptionFile: hasFile }).detail, "ja: no caption file");
+  assert.equal(captionsItem({ lintWarnings: [], manifest, current: true, locales, hasCaptionFile: (locale) => locale !== "en" }).detail, "en: no caption file");
+  const overlap = captionsItem({ lintWarnings: [], manifest: { ...manifest, locales: { ...manifest.locales, en: { problems: ["cue 2 (m4qa): overlaps the previous cue"] } } }, current: true, locales, hasCaptionFile: hasFile });
+  assert.deepEqual([overlap.ok, overlap.detail], [false, "en: cue 2 (m4qa): overlaps the previous cue"]);
+});
+
+test("metadata gathers YouTube's limits and the chapter rules", () => {
+  const ok = metadataItem({ problems: [], tagProblems: [], chapterProblems: [], locales: ["zh-TW", "en"], chapters: 4, timelineCurrent: true });
+  assert.deepEqual(ok, { id: "metadata", ok: true, detail: "title, description and tags within YouTube's limits for zh-TW, en; 4 chapters" });
+  const bad = metadataItem({ problems: ["en.title: 120 characters, at most 100"], tagProblems: ["youtube.tags: 600 characters counted YouTube's way, at most 500"], chapterProblems: ['chapter "x" lasts 4.0 s; YouTube needs 10 s'], locales: ["zh-TW"], chapters: 3, timelineCurrent: true });
+  assert.equal(bad.ok, false);
+  assert.equal(bad.detail, 'en.title: 120 characters, at most 100; youtube.tags: 600 characters counted YouTube\'s way, at most 500; chapter "x" lasts 4.0 s; YouTube needs 10 s');
+  assert.match(metadataItem({ problems: [], tagProblems: [], chapterProblems: [], locales: ["zh-TW"], chapters: 0, timelineCurrent: false }).detail, /chapter times are unknown/);
+});
+
+test("disclosure: slides with a stock voice need none, a drama always does, and the item never fails", () => {
+  const slides = disclosureDecision(fixture());
+  assert.equal(slides.synthetic, false);
+  const drama = disclosureDecision(dramaFixture());
+  assert.equal(drama.synthetic, true);
+  assert.deepEqual(disclosureItem(slides, null).ok, true);
+  assert.match(disclosureItem(slides, null).detail, /^no disclosure needed: slides read by a stock TTS voice/);
+  assert.match(disclosureItem(drama, true).detail, /^tick altered or synthetic content: a drama.*; written to upload\/metadata\.json$/);
+  assert.match(disclosureItem(drama, false).detail, /already says so$/);
+});
+
+test("the policy request carries the spoken lines and the verdict is never a pass by default", () => {
+  const doc = fixture();
+  const request = policyRequest({ doc, brief: "## 站主觀點\n先算帳", description: "composed" });
+  assert.deepEqual(Object.keys(request), ["slug", "format", "title", "description", "brief", "lines"]);
+  assert.equal(request.lines.length, 7);
+  assert.deepEqual(request.lines[0], { id: "k7p2", scene: "hook", text: doc.scenes[0].lines[0].text });
+  assert.equal(policyRequest({ doc, brief: null, description: "" }).brief, "");
+  assert.deepEqual(policyVerdict({ passed: true, scores: { stance: 0.91, demo: 0.8, advice: 0.05, sponsorship: 0 } }), { ok: true, detail: "Jev passed the narration: stance 0.91, demo 0.80, advice 0.05, sponsorship 0.00" });
+  assert.deepEqual(policyVerdict({ passed: false, reasons: ["gives investment advice"] }), { ok: false, detail: "Jev did not pass the narration: gives investment advice" });
+  assert.deepEqual(policyVerdict({ ok: true }), { ok: true, detail: "Jev passed the narration" });
+  assert.deepEqual(policyVerdict({}), { ok: false, detail: "the judge answered without a verdict" });
+  assert.equal(policyVerdict(null).ok, false);
+});

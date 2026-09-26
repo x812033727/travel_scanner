@@ -36,6 +36,7 @@ export const AREAS = {
   "i18n-merge": ["i18n", "2026-09-24-video-captions-i18n"],
   package: ["package", "2026-09-24-video-assemble-package"],
   "youtube-sync": ["youtube", "2026-09-24-video-youtube-sync"],
+  qa: ["qa", "2026-09-26-video-hands-off-qa"],
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
   // The drama format's media stages (docs/videos/DRAMA.md).
   look: ["media", "2026-09-26-video-drama-look-keyframes"],
@@ -60,6 +61,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   captions --slug S [--workdir D]                  caption files for every current locale
   i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
+  qa       --slug S [--workdir D]                  the eleven checks of the finished cut, written to review/qa.json (docs/videos/HANDS-OFF.md)
   auto [--once]                                    run the pipeline from the settings on /admin/videos (docs/videos/AUTOMATION.md)
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card

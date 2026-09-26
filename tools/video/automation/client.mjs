@@ -93,6 +93,12 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */
     submit: (slug, review) => request("POST", `reviews/${slug}/reviews`, review),
+    /**
+     * Jev's policy reading of a finished script for the QA's `policy` item (docs/videos/HANDS-OFF.md
+     * §自動品管; tools/video/qa/policy.mjs shapes the body). Until the judge ticket ships the
+     * endpoint, the site answers 404 and the caller reports it as not available.
+     */
+    judgePolicy: (body) => request("POST", "automation/judge/policy", body),
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {
