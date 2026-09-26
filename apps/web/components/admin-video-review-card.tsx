@@ -9,11 +9,12 @@ import { api } from "@/lib/api";
 // What the video pipeline reports (apps/api/app/video_reviews/schemas.py). Payloads come from
 // tools/video/review; the page reads them defensively, since an older tool may send less.
 // look and storyboard are the drama format's gates (docs/videos/DRAMA.md): the character sheets
-// the owner picks one of, and the keyframes of every shot before any clip is paid for.
+// the owner picks one of, and the keyframes of every shot before any clip is paid for. dubs is a
+// batch of finished dub tracks (docs/videos/DUBS.md) the owner downloads and uploads in Studio.
 // This file holds the review card and the gate bodies, shared by the tutorial list, the drama
 // series page and any page that shows a video's reviews; the pages themselves import it, so it
 // must not import them back.
-export type Gate = "outline" | "look" | "audio" | "storyboard" | "final" | "publish";
+export type Gate = "outline" | "look" | "audio" | "storyboard" | "final" | "publish" | "dubs";
 export type Status = "pending" | "approved" | "rejected" | "superseded";
 export type ReviewFile = { role: string; sha256: string; size: number; content_type: string };
 export type Review = {
@@ -222,7 +223,7 @@ export function ReviewCard({ slug, review, canManage, onDecided }: { slug: strin
       setBusy(false);
     }
   };
-  const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish") };
+  const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish"), dubs: t("approveDubs") };
   const approveLabel = approveLabels[review.gate] ?? t("approve");
   const title = review.gate === "look" && text(record(review.payload.character).name) ? `${t("gates.look")}：${text(record(review.payload.character).name)}` : t(`gates.${review.gate}`);
   return <article className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={title}>

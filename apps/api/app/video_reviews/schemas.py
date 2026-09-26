@@ -2,15 +2,22 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
-from typing import Any, Literal
+from typing import Any, Literal, get_args
 from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator
 
 # look and storyboard belong to the drama format (docs/videos/DRAMA.md): the character sheets
 # the owner picks from, one review per character, and the keyframes before any clip is made.
-Gate = Literal["outline", "look", "storyboard", "audio", "final", "publish"]
-ContentType = Literal["video/mp4", "audio/mp4", "image/png", "image/jpeg"]
+# dubs is a batch of finished dub tracks (docs/videos/DUBS.md): the owner downloads them, uploads
+# them in YouTube Studio, and approves the review to say so.
+Gate = Literal["outline", "look", "storyboard", "audio", "final", "publish", "dubs"]
+ContentType = Literal[
+    "video/mp4", "audio/mp4", "audio/mpeg", "audio/wav", "image/png", "image/jpeg"
+]
+# The languages a video can be dubbed in, in the order the page lists them; zh-TW is the original.
+DubLocale = Literal["en", "ja", "ko", "zh-CN"]
+DUB_LOCALES: tuple[DubLocale, ...] = get_args(DubLocale)
 MAX_PAYLOAD_BYTES = 256 * 1024
 SHA256_PATTERN = r"^[0-9a-f]{64}$"
 # One gate can hold several pending reviews when each names a subject: a look review per
@@ -95,6 +102,8 @@ class ProjectSummary(BaseModel):
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0
+    # The languages the owner ticked to dub this video in; the worker makes only those tracks.
+    dub_locales: list[DubLocale] = Field(default_factory=list)
 
 
 class ProjectOut(ProjectSummary):
@@ -109,6 +118,21 @@ class DecisionIn(BaseModel):
 
 class DropIn(BaseModel):
     note: str = Field(min_length=1, max_length=2000)
+
+
+class DubLocalesIn(BaseModel):
+    """The owner's choice of languages to dub one video in, from /admin/videos."""
+
+    locales: list[DubLocale] = Field(max_length=4)
+
+    @field_validator("locales")
+    @classmethod
+    def _each_once_in_page_order(cls, value: list[DubLocale]) -> list[DubLocale]:
+        if len(set(value)) != len(value):
+            raise ValueError("locales must not repeat")
+        # Stored in the page's order whatever order they were ticked in, so the worker and the
+        # audit trail always see one shape for one choice.
+        return [locale for locale in DUB_LOCALES if locale in value]
 
 
 class PartOut(BaseModel):

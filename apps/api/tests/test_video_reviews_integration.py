@@ -17,7 +17,7 @@ from app.models import AdminAuditLog, User, VideoToolToken
 from app.problems import AppError
 from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
-from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, DubLocalesIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
 
 pytestmark = pytest.mark.skipif(
@@ -204,6 +204,87 @@ async def test_a_dropped_video_stays_listed_with_its_article_and_takes_nothing_m
             select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
         )
         assert list(audit) == ["video_project_dropped"]
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_the_owner_s_dub_languages_reach_the_worker_and_its_tracks_come_back_for_upload(
+    tmp_path: Path,
+) -> None:
+    slug = f"it-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    async with SessionFactory() as session:
+        owner = User(email=f"video-dubs-{uuid4()}@example.com", password_hash="unused")
+        token = VideoToolToken(name="it", token_hash=uuid4().hex * 2, token_prefix="mkv_it")
+        session.add_all([owner, token])
+        await session.commit()
+
+        reported = await service.upsert_project(
+            session, store, slug, ProjectIn(title="AI 模型怎麼挑", stage="final")
+        )
+        assert reported.dub_locales == [], "off until the owner ticks a language"
+
+        chosen = await service.set_dub_locales(
+            session, slug, owner, DubLocalesIn.model_validate({"locales": ["ko", "en"]})
+        )
+        assert chosen.dub_locales == ["en", "ko"]
+        listed = next(item for item in await service.list_projects(session) if item.slug == slug)
+        assert listed.dub_locales == ["en", "ko"], "the worker's list carries the choice"
+        again = await service.upsert_project(
+            session, store, slug, ProjectIn(title="AI 模型怎麼挑", stage="dubs")
+        )
+        assert again.dub_locales == ["en", "ko"], "the pipeline's reports never touch it"
+
+        track = _upload(store, slug, b"english track")
+        dubs = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(
+                gate="dubs",
+                content_sha256="6" * 64,
+                summary="配音：en 完成、ko 跳過",
+                payload={
+                    "locales": {
+                        "en": {"file": "en.m4a", "file_role": "dub_en", "status": "ready"},
+                        "ko": {"status": "skipped", "reason": "1.15 倍還塞不下"},
+                    }
+                },
+                files=[
+                    {"role": "dub_en", "sha256": track, "size": 13, "content_type": "audio/mp4"}
+                ],
+            ),
+            token,
+        )
+        assert dubs.status == "pending"
+        uploaded = await service.decide(
+            session, slug, dubs.id, owner, DecisionIn(decision="approve", note="已在 Studio 上傳")
+        )
+        assert (uploaded.status, uploaded.choice, uploaded.note) == (
+            "approved",
+            None,
+            "已在 Studio 上傳",
+        )
+        path, content_type = await service.file_for_admin(session, store, slug, track)
+        assert path.read_bytes() == b"english track" and content_type == "audio/mp4"
+
+        audit = list(
+            await session.scalars(
+                select(AdminAuditLog).where(AdminAuditLog.actor_user_id == owner.id)
+            )
+        )
+        assert sorted(row.action for row in audit) == [
+            "video_dub_locales_set",
+            "video_review_approved",
+        ]
+        picked = next(row for row in audit if row.action == "video_dub_locales_set")
+        assert picked.metadata_json == {"slug": slug, "locales": ["en", "ko"]}
+
+        await service.drop_project(session, store, slug, owner, DropIn(note="不做了"))
+        with pytest.raises(AppError) as refused:
+            await service.set_dub_locales(
+                session, slug, owner, DubLocalesIn.model_validate({"locales": []})
+            )
+        assert refused.value.code == "video_project_dropped"
 
 
 @pytest.mark.asyncio(loop_scope="module")
