@@ -53,8 +53,17 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
   };
 }
 
-export function uploadChecklist({ metadata, captions, thumbnail }) {
+// A drama's own checks (docs/videos/DRAMA.md): the pictures and music are synthetic, every
+// episode must stand on its own, and the music must be licensed.
+const DRAMA_CHECKS = `- [ ] **合成內容揭露**（Studio「變造或合成內容」）：3D 寫實的 AI 畫面與 AI 配樂一律勾「是」；YouTube 說明寫明這不影響觸及與營利。
+- [ ] **每集劇情獨立**：這一集有自己的故事與構圖，不是換名字的模板；分鏡、提示詞與參考圖留在工作區當作者證據。
+- [ ] **音樂授權**：配樂來自 Lyria（站上生成）或站主自己有授權、放在 \`_music/\` 的檔案；不用來路不明的曲子。`;
+
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
+  const disclosure = drama
+    ? DRAMA_CHECKS
+    : "- [ ] **AI 使用揭露**（Studio「變造或合成內容」）：只有擬真到會被誤認為真人、真實事件或真實場景時才要勾。用一般 TTS 聲音唸投影片，依 YouTube 說明推論不需要；如果用了複製真人（不是自己）的聲音，一定要勾。";
   return `# 上傳檢查表：${metadata.title}
 
 這個資料夾就是要上傳的全部內容。公開前的每一步都由站主自己在 YouTube Studio 操作。
@@ -76,8 +85,8 @@ ${captionLines}
 
 ## 3. 上架前自我檢查
 
-- [ ] **AI 使用揭露**（Studio「變造或合成內容」）：只有擬真到會被誤認為真人、真實事件或真實場景時才要勾。用一般 TTS 聲音唸投影片，依 YouTube 說明推論不需要；如果用了複製真人（不是自己）的聲音，一定要勾。
-- [ ] **非原創內容政策**：這支有站主自己的觀點（brief.md 的「站主觀點」）、至少一段實際示範或實算，而不是套版型念重點。
+${disclosure}
+- [ ] **非原創內容政策**：這支有站主自己的觀點（brief.md 的「站主觀點」）、${drama ? "站主看過並核准了每一個關卡（設定圖、分鏡、成片）" : "至少一段實際示範或實算，而不是套版型念重點"}。
 - [ ] **付費宣傳**：影片裡有業配或聯盟連結就勾選，說明欄也要寫明。
 - [ ] 說明欄的連結都點過，文章頁會開。
 - [ ] 縮圖縮到手機大小還看得懂。

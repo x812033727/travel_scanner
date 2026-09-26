@@ -5,11 +5,22 @@ import path from "node:path";
 import { parseArgs } from "node:util";
 
 import { approvalState } from "../core/approvals.mjs";
+import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { runCaptions } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { composeMetadata, uploadChecklist } from "./metadata.mjs";
+
+/**
+ * Whether checks.json describes the final video of this very script: its narration and
+ * pictures, and for a drama its look, clips, subtitles and music as well.
+ */
+export function checksCurrent(doc, lexicon, checks, clips = null) {
+  if (!checks?.ok || checks.speech_hash !== speechHash(doc, lexicon) || checks.visual_hash !== visualHash(doc)) return false;
+  if (!isDrama(doc)) return true;
+  return checks.look_hash === lookHash(doc) && checks.subtitles_hash === subtitlesHash(doc) && checks.mix_hash === mixHash(doc) && Boolean(clips?.clips_hash) && checks.clips_hash === clips.clips_hash;
+}
 
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
@@ -20,7 +31,8 @@ export async function run(command, args, ctx) {
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const speech = speechHash(doc, lexicon);
   const checks = readJson(path.join(workdir, ARTIFACTS.checks), null);
-  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checks?.ok || checks.speech_hash !== speech || checks.visual_hash !== visualHash(doc)) {
+  const clips = isDrama(doc) ? readJson(path.join(workdir, ARTIFACTS.clips), null) : null;
+  if (!existsSync(path.join(workdir, ARTIFACTS.video)) || !checksCurrent(doc, lexicon, checks, clips)) {
     ctx.stderr.write("final.mp4 is missing, failed its checks, or is older than the script; run assemble first\n");
     return EXIT.usage;
   }
@@ -57,7 +69,7 @@ export async function run(command, args, ctx) {
   }
   const record = { ...metadata, final_sha256: approval.sha256, thumbnail: thumbnail ? "thumbnail.jpg" : null, captions: captionFiles, skipped_caption_locales: captions.skipped ?? {} };
   atomicWrite(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
-  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail }));
+  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail, drama: isDrama(doc) }));
   recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length }, ctx.now());
   ctx.stdout.write(`upload package: ${upload}\n  final.mp4, ${thumbnail ? "thumbnail.jpg, " : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
   return EXIT.ok;

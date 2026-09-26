@@ -128,12 +128,13 @@ async def test_a_subscription_stage_is_recorded_apart_from_the_api_budget(
     monkeypatch.setattr(ai, "slug_has_draft", AsyncMock(return_value=True))
     monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda runtime: agent)
     session = MagicMock(commit=AsyncMock())
+    # A value left in the retired column is ignored: an account is used until it is full.
     row = VideoAutomationSettings(stage_models={}, subscription_max_usage_percent=65)
     out = await ai.run_stage(session, AGENT, row, _request(), None)
     assert out.provider == "claude_code" and out.model == "claude-opus-5-5"
     assert out.usage.tokens == 1_000_000, "the API budget is untouched"
     assert out.usage.subscription_tokens == 1000
-    assert agent.calls[0]["max_usage_percent"] == 65
+    assert agent.calls[0]["max_usage_percent"] == 100
     recorded = session.add.call_args.args[0]
     assert isinstance(recorded, VideoAiRun)
     assert (recorded.provider, recorded.status, recorded.input_tokens) == ("claude_code", "ok", 900)
@@ -145,10 +146,10 @@ async def test_a_paused_subscription_records_nothing_and_a_missing_agent_says_so
 ) -> None:
     monkeypatch.setattr(ai, "usage_view", AsyncMock(return_value=_usage()))
     monkeypatch.setattr(ai, "slug_has_draft", AsyncMock(return_value=True))
-    agent = FakeAgent(AppError(429, "subscription_quota_paused", "all accounts at 80%"))
+    agent = FakeAgent(AppError(429, "subscription_quota_paused", "all accounts are full"))
     monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda runtime: agent)
     session = MagicMock(commit=AsyncMock())
-    row = VideoAutomationSettings(stage_models={}, subscription_max_usage_percent=80)
+    row = VideoAutomationSettings(stage_models={})
     with pytest.raises(ai.StageFailed) as paused:
         await ai.run_stage(session, AGENT, row, _request(), None)
     assert (paused.value.status, paused.value.code) == (429, "video_ai_subscription_paused")

@@ -304,14 +304,14 @@ const RENDERERS = {
   },
 };
 
-function page(body, size) {
+function page(body, size, extraCss = "") {
   return [
     "<!doctype html>",
     '<html lang="zh-Hant"><head><meta charset="utf-8">',
     `<link rel="stylesheet" href="${ORIGIN}/fonts/noto-sans-tc/index.css">`,
     `<link rel="stylesheet" href="${ORIGIN}/fonts/jetbrains-mono/index.css">`,
     `<link rel="stylesheet" href="${ORIGIN}/theme.css">`,
-    `<style>:root{--width:${size.width}px;--height:${size.height}px}</style>`,
+    `<style>:root{--width:${size.width}px;--height:${size.height}px}${extraCss}</style>`,
     `</head><body>${body}</body></html>`,
   ].join("");
 }
@@ -353,10 +353,21 @@ export function thumbnailProblems(thumbnail) {
   return [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"].filter(Boolean);
 }
 
-export function thumbnailHtml(thumbnail) {
+// A drama's thumbnail sits on a keyframe: the picture fills the frame under a scrim that keeps
+// the headline readable, in place of the decorative ring. The CSS lives here rather than in the
+// theme so that adding it changed no slides video's frame keys.
+const THUMB_BACKGROUND_CSS =
+  ".thumb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}" +
+  ".thumb-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,38,39,.94) 0%,rgba(14,38,39,.72) 48%,rgba(14,38,39,.12) 100%)}";
+
+/**
+ * The thumbnail as a page. `background` is the URL of a picture to fill it with (a drama's
+ * keyframe, served from the work directory); without one the theme's ring decorates it.
+ */
+export function thumbnailHtml(thumbnail, { background = null } = {}) {
   const data = thumbnail.data;
   const body = [
-    '<div class="thumb-art"></div>',
+    background ? `<img class="thumb-bg" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim"></div>` : '<div class="thumb-art"></div>',
     '<div class="thumb">',
     data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
     `<h1 class="fit">${richText(data.headline)}</h1>`,
@@ -364,7 +375,7 @@ export function thumbnailHtml(thumbnail) {
     `<div class="brand">${BRAND}</div>`,
     "</div>",
   ].join("");
-  return page(body, THUMB_SIZE);
+  return page(body, THUMB_SIZE, background ? THUMB_BACKGROUND_CSS : "");
 }
 
 /** The characters a slide will draw, for the font coverage check. */
