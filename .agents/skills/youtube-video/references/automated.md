@@ -56,7 +56,7 @@ node tools/video/cli.mjs tts      --slug <SLUG> [--dry-run] [--redo flags.json]
 node tools/video/cli.mjs review   --slug <SLUG>
 node tools/video/cli.mjs render   --slug <SLUG> [--channel msedge]
 node tools/video/cli.mjs assemble --slug <SLUG>
-node tools/video/cli.mjs i18n-sheet --slug <SLUG> [--locale en,ja]   # 翻譯底稿在 <VIDEO_WORKDIR>/<SLUG>/i18n/，只標出缺漏或過期的句子
+node tools/video/cli.mjs i18n-sheet --slug <SLUG> [--locale en,ja]   # 翻譯底稿在 <VIDEO_WORKDIR>/<SLUG>/i18n/，只標出缺漏或過期的句子、章節、標題、說明與標籤
 node tools/video/cli.mjs i18n-merge --slug <SLUG> [--locale en,ja]   # 底稿寫回 i18n/<語系>.json，雜湊由工具算
 node tools/video/cli.mjs captions --slug <SLUG>
 node tools/video/cli.mjs review-push --slug <SLUG> [--gate outline|audio|final|publish]   # 送審到 /admin/videos
