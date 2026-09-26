@@ -15,6 +15,7 @@ from sqlalchemy import select
 from app.db import SessionFactory, engine
 from app.models import AdminAuditLog, User, VideoToolToken
 from app.problems import AppError
+from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
@@ -203,3 +204,72 @@ async def test_a_dropped_video_stays_listed_with_its_article_and_takes_nothing_m
             select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
         )
         assert list(audit) == ["video_project_dropped"]
+
+
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a_drama_keeps_one_look_review_per_character_and_can_auto_approve_its_storyboard(
+    tmp_path: Path,
+) -> None:
+    slug = f"it-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    async with SessionFactory() as session:
+        owner = User(email=f"video-drama-{uuid4()}@example.com", password_hash="unused")
+        token = VideoToolToken(name="it", token_hash=uuid4().hex * 2, token_prefix="mkv_it")
+        session.add_all([owner, token])
+        await session.commit()
+        await service.upsert_project(
+            session, store, slug, ProjectIn(title="drama", stage="look", checklist=[])
+        )
+
+        def look(subject: str, content: str) -> ReviewIn:
+            return ReviewIn(
+                gate="look",
+                subject=subject,
+                content_sha256=content * 64,
+                summary=f"sheets for {subject}",
+                payload={"options": [{"key": "A"}, {"key": "B"}, {"key": "C"}]},
+            )
+
+        first = await service.submit_review(session, store, slug, look("jingwei", "1"), token)
+        other = await service.submit_review(session, store, slug, look("yandi", "2"), token)
+        second = await service.submit_review(session, store, slug, look("jingwei", "3"), token)
+        view = await service.project_view(session, slug)
+        statuses = {review.id: (review.status, review.subject) for review in view.reviews}
+        assert statuses[first.id] == ("superseded", "jingwei")
+        assert statuses[other.id] == ("pending", "yandi"), "another character's review stays"
+        assert statuses[second.id] == ("pending", "jingwei")
+        with pytest.raises(AppError) as no_choice:
+            await service.decide(session, slug, second.id, owner, DecisionIn(decision="approve"))
+        assert no_choice.value.code == "video_review_not_decidable"
+        chosen = await service.decide(
+            session, slug, second.id, owner, DecisionIn(decision="approve", choice="C")
+        )
+        assert (chosen.status, chosen.choice, chosen.subject) == ("approved", "C", "jingwei")
+
+        board = {"shots": [{"id": "opening"}], "judge": {"overall": 9, "problems": []}}
+        waiting = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(gate="storyboard", content_sha256="4" * 64, summary="board", payload=board),
+            token,
+        )
+        assert waiting.status == "pending", "off by default: the owner looks at the keyframes"
+
+        row = await automation.settings_row(session, lock=True)
+        row.auto_approve_storyboard = True
+        row.judge_min_score = 8
+        await session.commit()
+        approved = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(gate="storyboard", content_sha256="5" * 64, summary="board", payload=board),
+            token,
+        )
+        assert approved.status == "approved"
+        assert approved.note == automation.AUTO_APPROVED_STORYBOARD_NOTE
+        row = await automation.settings_row(session, lock=True)
+        row.auto_approve_storyboard = False
+        row.judge_min_score = 7
+        await session.commit()

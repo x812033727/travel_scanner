@@ -17,6 +17,7 @@ from app.config import Settings
 from app.db import get_session
 from app.models import User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
+from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service
 from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
@@ -135,6 +136,88 @@ def test_decisions_need_a_pending_review_a_reason_to_reject_and_an_outline_choic
     )
     assert admin_service.decision_problem(_review("audio", "superseded"), approve)
     assert admin_service.decision_problem(_review("publish"), approve) is None
+
+
+def test_a_look_review_needs_one_of_its_sheets_chosen_and_a_storyboard_does_not() -> None:
+    look = _review("look", payload={"options": [{"key": "A"}, {"key": "B"}]})
+    approve = DecisionIn(decision="approve")
+    assert "角色設定圖" in (admin_service.decision_problem(look, approve) or "")
+    assert admin_service.decision_problem(look, DecisionIn(decision="approve", choice="B")) is None
+    assert admin_service.decision_problem(look, DecisionIn(decision="approve", choice="Z"))
+    assert admin_service.decision_problem(_review("storyboard"), approve) is None
+
+
+def test_a_review_carries_up_to_48_files_and_a_subject_that_is_an_id() -> None:
+    base = {"gate": "storyboard", "content_sha256": "a" * 64, "summary": "分鏡"}
+    file = {"role": "shot_01", "sha256": "b" * 64, "size": 1, "content_type": "image/png"}
+    ReviewIn.model_validate({**base, "files": [file] * 48})
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**base, "files": [file] * 49})
+    assert ReviewIn.model_validate({**base, "gate": "look", "subject": "jingwei"}).subject
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**base, "gate": "look", "subject": "Jing Wei"})
+
+
+@pytest.mark.asyncio
+async def test_a_look_review_replaces_only_the_pending_one_of_its_character(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    store = _store(tmp_path)
+    project = VideoProject(id=uuid4(), slug="v", title="精衛填海", stage="look")
+    jingwei = VideoReview(
+        gate="look",
+        subject="jingwei",
+        status="pending",
+        content_sha256="a" * 64,
+        payload={},
+        files=[],
+    )
+    yandi = VideoReview(
+        gate="look",
+        subject="yandi",
+        status="pending",
+        content_sha256="b" * 64,
+        payload={},
+        files=[],
+    )
+    outline = VideoReview(
+        gate="outline",
+        subject=None,
+        status="pending",
+        content_sha256="c" * 64,
+        payload={},
+        files=[],
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[jingwei, yandi, outline])
+    )
+    monkeypatch.setattr(admin_service, "auto_approves_audio", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_approves_storyboard", AsyncMock(return_value=True))
+    session = AsyncMock()
+    session.add = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+
+    newer = ReviewIn(
+        gate="look",
+        subject="jingwei",
+        content_sha256="d" * 64,
+        summary="精衛的新設定圖",
+        payload={"options": [{"key": "A"}]},
+    )
+    out = await admin_service.submit_review(session, store, "v", newer, token)
+    assert out.subject == "jingwei" and out.status == "pending"
+    assert (jingwei.status, yandi.status, outline.status) == ("superseded", "pending", "pending")
+
+    board = ReviewIn(
+        gate="storyboard",
+        content_sha256="e" * 64,
+        summary="分鏡",
+        payload={"shots": [{"id": "a"}], "judge": {"overall": 9, "problems": []}},
+    )
+    auto = await admin_service.submit_review(session, store, "v", board, token)
+    assert auto.status == "approved" and auto.note == AUTO_APPROVED_STORYBOARD_NOTE
+    assert session.add.call_args.args[0].action == "video_review_auto_approved"
 
 
 @pytest.mark.asyncio
