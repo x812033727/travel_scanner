@@ -7,13 +7,15 @@ import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { approve } from "../core/approvals.mjs";
 import { isDrama, lookHash, resolveLook } from "../core/drama.mjs";
-import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { ledgerTotals } from "./ledger.mjs";
+import { reuseSheets } from "./series-store.mjs";
 import { drawContactSheet, imagePrice, JUDGE_USD_PER_CALL, retakeable, Stage, statusProblem } from "./stages.mjs";
 
 export const MAX_LOOK_ROUNDS = 2;
@@ -136,8 +138,18 @@ export async function run(command, args, ctx) {
   const started = Date.now();
   let generated = 0;
   let stopped = false;
+  // An episode of a series reuses the sheets the owner approved for the same characters
+  // (docs/videos/SERIES.md); only a new or changed character is drawn.
+  const store = doc.series
+    ? reuseSheets({ workBase: resolveWorkBase({ env: ctx.env, root: ctx.root, home: ctx.home }), workdir, seriesSlug: doc.series.slug, characters, look })
+    : { reused: {}, missing: characters };
+  for (const [id, candidate] of Object.entries(store.reused)) {
+    const character = characters.find((each) => each.id === id);
+    manifest.characters[id] = { name: character.name, prompt: sheetPrompt(character, look), candidates: [candidate], suggested: 1, needs_review: false, reused: true };
+    ctx.stdout.write(`${id}: reusing the sheet approved for ${candidate.reused_from}\n`);
+  }
 
-  for (const character of characters) {
+  for (const character of store.missing) {
     const entry = manifest.characters[character.id] ?? { name: character.name, candidates: [], suggested: null, needs_review: false };
     entry.name = character.name;
     entry.prompt = sheetPrompt(character, look);
@@ -218,6 +230,13 @@ export async function run(command, args, ctx) {
     for (const [id, entry] of waiting) ctx.stdout.write(`ERROR ${id}: no candidate passed the judge: ${[...new Set(entry.candidates.flatMap((candidate) => candidate.judge?.problems ?? []))].join("; ")}\n`);
     ctx.stdout.write(`rewrite the appearance or sheet_prompt of ${waiting.map(([id]) => id).join(", ")} and run look again\n`);
     return EXIT.lint;
+  }
+  if (doc.series && !store.missing.length) {
+    // Nothing new to choose: the owner's earlier picks stand, and the look is approved as such.
+    atomicWrite(path.join(workdir, "characters", "choice.json"), `${JSON.stringify({ look_hash: hash, chosen: Object.fromEntries(Object.keys(store.reused).map((id) => [id, 1])), chosen_at: ctx.now().toISOString() }, null, 2)}\n`);
+    await approve({ gate: "look", docDir: project.dir, workdir, now: ctx.now(), note: "reused the sheets approved earlier for this series" });
+    ctx.stdout.write(`every sheet reused from the series; the look is approved\nnext: node tools/video/cli.mjs tts --slug ${doc.slug}\n`);
+    return EXIT.ok;
   }
   ctx.stdout.write(`next: node tools/video/cli.mjs review-push --slug ${doc.slug} --gate look\n`);
   return EXIT.ok;

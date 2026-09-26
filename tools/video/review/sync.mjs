@@ -13,10 +13,11 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isDrama, shotScenes } from "../core/drama.mjs";
-import { atomicWrite, docDir, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
+import { keepSheets } from "../media/series-store.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
@@ -447,7 +448,7 @@ export async function reviewPush(args, ctx) {
  * to characters/choice.json, and the look gate is approved once every character has a sheet
  * (chosen, or the judge's suggestion when the owner approved without choosing).
  */
-async function recordLook(reviews, { dir, workdir, now }) {
+async function recordLook(reviews, { dir, workdir, now, doc = null, ctx = null }) {
   const file = GATES.look({ docDir: dir, workdir });
   const manifest = readJson(file, null);
   if (!manifest?.characters) return { message: "approved, but characters/manifest.json is gone; run look again", waiting: 0 };
@@ -471,6 +472,11 @@ async function recordLook(reviews, { dir, workdir, now }) {
   if (readApprovals(workdir).approvals.some((entry) => entry.gate === "look" && entry.sha256 === sha)) return { message: `already recorded (${picks})`, waiting: 0 };
   const decided = usable.map((review) => review.decided_at).filter(Boolean).sort().at(-1) ?? now.toISOString();
   await approve({ gate: "look", docDir: dir, workdir, now, note: `approved on /admin/videos at ${decided}; chose sheets ${picks}` });
+  if (doc?.series && ctx) {
+    // The chosen sheets go to the series' store, so the next episode reuses them (docs/videos/SERIES.md).
+    const kept = keepSheets({ workBase: resolveWorkBase({ env: ctx.env, root: ctx.root, home: ctx.home }), workdir, seriesSlug: doc.series.slug, doc, manifest, chosen, now });
+    return { message: `approval recorded (${picks}); ${kept} sheets kept for the series`, waiting: 0 };
+  }
   return { message: `approval recorded (${picks})`, waiting: 0 };
 }
 
@@ -499,7 +505,8 @@ export async function reviewPull(args, ctx) {
       }
     }
     if (looks.length) {
-      const result = await recordLook(looks, { dir, workdir, now: ctx.now() });
+      const doc = existsSync(path.join(dir, "video.json")) ? loadProject({ slug: values.slug, root: ctx.root }).doc : null;
+      const result = await recordLook(looks, { dir, workdir, now: ctx.now(), doc, ctx });
       waiting += result.waiting;
       ctx.stdout.write(`look: ${result.message}\n`);
     }
