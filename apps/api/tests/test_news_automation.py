@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import gzip
 from datetime import UTC, datetime, timedelta
+from typing import Any
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -10,6 +11,7 @@ import pytest
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
+from app.config import get_settings
 from app.db import Base
 from app.guides.schemas import GuideDocument
 from app.news_automation.feeds import extract_article, parse_entries
@@ -856,3 +858,52 @@ async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> 
     ]
     assert evidence == ["https://official.example/announcement", "https://press.example/story"]
     assert status == "succeeded"
+
+
+@pytest.mark.asyncio
+async def test_reviewers_never_see_the_per_locale_topic_link(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """On 2026-09-26 a reviewer held a Japanese article because its topic link named /ja/
+    while the zh-TW source named /zh-TW/; the link is the pipeline's, not the article's."""
+
+    from app.news_automation import ai as news_ai
+    from app.news_automation.policy import without_topic_links
+
+    def linked(locale: str) -> GuideDocument:
+        return GuideDocument.model_validate(
+            {
+                "title": "T",
+                "description": "D",
+                "blocks": [
+                    {"type": "paragraph", "text": "Body."},
+                    {
+                        "type": "link",
+                        "text": "More",
+                        "url": f"https://mokaair.com/{locale}/life/topics/crypto",
+                    },
+                    {"type": "link", "text": "Source", "url": "https://www.coindesk.com/a"},
+                ],
+            }
+        )
+
+    assert [block["type"] for block in without_topic_links(linked("ja"))["blocks"]] == [
+        "paragraph",
+        "link",
+    ]
+    seen: list[dict[str, Any]] = []
+
+    async def structured(*args: Any) -> tuple[Any, dict[str, int], str]:
+        seen.append(args[-1])
+        return object(), {}, "model"
+
+    monkeypatch.setattr(news_ai, "_structured", structured)
+    settings = NewsAutomationSettings(id=1)
+    await news_ai.review_locale(get_settings(), settings, linked("zh-TW"), "ja", linked("ja"))
+    await news_ai.final_edit(get_settings(), settings, linked("zh-TW"), "ja", linked("ja"), [])
+    for payload in seen:
+        for key in ("verified_zh_tw", "localized_article", "article"):
+            if key in payload:
+                urls = [block.get("url") for block in payload[key]["blocks"]]
+                assert all("/life/topics/" not in str(url) for url in urls), key
+                assert "https://www.coindesk.com/a" in urls, "other links stay"
