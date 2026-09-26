@@ -379,7 +379,9 @@ def test_page_login_picks_google_takes_the_code_and_reads_the_quota(tmp_path: Pa
         return slot_of(signed(application, "GET", "/v1/accounts")[1], "agy", "a")
 
     # The finished login probes the quota page at once.
-    wait_until(lambda: bool(account()["usage"]), 30)
+    # Usage is read fresh, but the email and plan the probe learns come through the status
+    # cache, which is cleared when the probe ends: wait for the end, not for the usage.
+    wait_until(lambda: bool(account()["usage"]) and not account()["usage_refreshing"], 30)
     card = account()
     assert (card["logged_in"], card["email"], card["auth_method"]) == (True, "g@x.test", "google")
     assert card["plan"] == "Ultra"

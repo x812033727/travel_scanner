@@ -149,7 +149,9 @@ class AgentApplication:
         self._usage_running: set[tuple[str, str]] = set()
         self._usage_attempts: dict[tuple[str, str], float] = {}
         # One prompt per account at a time, so two runs never share one usage window; runs on
-        # different accounts go side by side.
+        # different accounts go side by side. A Claude usage probe counts as a run here: two
+        # CLIs on one account refresh its OAuth token at once and one of them fails (claude-b,
+        # 2026-09-26). Whoever needs both locks takes _runs_changed first, then _usage_lock.
         self._runs_changed = threading.Condition()
         self._runs_busy: set[str] = set()
         # Accounts whose run hit the limit, until when: the usage snapshot lags behind.
@@ -286,9 +288,11 @@ class AgentApplication:
             return False  # A probe and a sign-in must not share the account's directory.
         key = (tool, slot)
         now = self.clock()
-        with self._usage_lock:
+        with self._runs_changed, self._usage_lock:
             if key in self._usage_running:
                 return True
+            if tool == "claude" and slot in self._runs_busy:
+                return False  # The next page view or the run's end probes it.
             last = self._usage_attempts.get(key)
             if last is not None and now - last < self.config.claude_usage_min_interval_seconds:
                 return False
@@ -319,8 +323,10 @@ class AgentApplication:
         finally:
             # A probe can learn the account's email and plan (Antigravity's header).
             self.cache.invalidate((tool, slot))
-            with self._usage_lock:
-                self._usage_running.discard((tool, slot))
+            with self._runs_changed:
+                with self._usage_lock:
+                    self._usage_running.discard((tool, slot))
+                self._runs_changed.notify_all()  # A run may be waiting for this account.
 
     def overview(self, fresh: bool) -> dict[str, Any]:
         keys = [(tool, slot) for tool in TOOLS for slot in SLOTS]
@@ -442,12 +448,15 @@ class AgentApplication:
                 now = self.clock()
                 resting = {slot for slot, until in self._runs_resting.items() if until > now}
                 current = self.current_slot("claude")
+                with self._usage_lock:
+                    probing = {name for tool, name in self._usage_running if tool == "claude"}
+                busy = self._runs_busy | probing
                 try:
                     slot = pick_slot(
                         slots,
                         request.max_usage_percent,
                         current,
-                        busy=self._runs_busy,
+                        busy=busy,
                         resting=resting,
                     )
                 except RunRefused as exc:
@@ -456,7 +465,22 @@ class AgentApplication:
                         raise
                     self._runs_changed.wait(timeout=min(RUN_WAIT_POLL_SECONDS, left))
                     continue
-                if slot != current and current not in self._runs_busy:
+                left = deadline - time.monotonic()
+                if slot != current and current in probing and left > 0:
+                    # A probe takes seconds; the account whose turn it is gets the run once it
+                    # ends, rather than an account that should not be spent yet.
+                    with contextlib.suppress(RunRefused):
+                        unprobed = pick_slot(
+                            slots,
+                            request.max_usage_percent,
+                            current,
+                            busy=self._runs_busy,
+                            resting=resting,
+                        )
+                        if unprobed == current:
+                            self._runs_changed.wait(timeout=min(RUN_WAIT_POLL_SECONDS, left))
+                            continue
+                if slot != current and current not in busy:
                     # The current account is full or signed out, so the turn passes on. A busy
                     # one keeps its turn, and this run just goes beside it.
                     atomic_write_text(self.config.current_path("claude"), f"{slot}\n", 0o600)

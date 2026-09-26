@@ -183,6 +183,11 @@ text parser do not; a reader cannot wait for a CLI.
 - Each account runs one prompt at a time. Runs on different accounts go side by side, and
   a request waits up to its `queue_seconds` for a busy account before it is refused as
   `subscription_busy`.
+- A usage probe counts as a run on its account. Two CLIs on one account refresh its OAuth
+  token at the same time and one of them fails ("Failed to refresh OAuth token", claude-b
+  on 2026-09-26). So no probe starts on an account with a run, and a run passes over an
+  account being probed. When it is the probed account's turn, the run waits for the probe
+  (seconds, within `queue_seconds`) instead of spending another account.
 - A run that hits a usage limit rests that account for 30 minutes and moves on to the next
   one. When every account is at the cap, the answer is `subscription_quota_paused`, and the
   site falls back to MiniMax if it has the key.
