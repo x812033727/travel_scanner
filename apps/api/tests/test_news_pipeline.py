@@ -42,6 +42,7 @@ from app.news_automation.models import (
     NewsPipelineRun,
     NewsSource,
 )
+from app.news_automation.policy import EVIDENCE_REFRESH_MARKER
 from app.news_automation.provider_schema import portable_json_schema
 from app.news_automation.schemas import (
     CandidateAction,
@@ -1276,7 +1277,7 @@ async def seed_refreshed_candidate(session: AsyncSession) -> UUID:
     candidate.guide_article_id = article.id
     candidate.event_date = EVENT_DAY
     candidate.would_publish = True
-    candidate.error_code = pipeline.EVIDENCE_REFRESH_MARKER
+    candidate.error_code = EVIDENCE_REFRESH_MARKER
     candidate.draft_bundle_json = {
         locale: news_document(f"Saved {locale}").model_dump(mode="json")
         for locale in ("zh-TW", "zh-CN", "en", "ja", "ko")
