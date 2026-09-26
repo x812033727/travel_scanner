@@ -27,6 +27,7 @@ from app.video_automation.settings import (
     auto_approves_audio,
     auto_approves_storyboard,
 )
+from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
     DecisionIn,
     DropIn,
@@ -101,10 +102,11 @@ def _review_out(review: VideoReview) -> ReviewOut:
     )
 
 
-def _summary(project: VideoProject, pending: int) -> dict[str, Any]:
+def _summary(project: VideoProject, pending: int, spend: SlugSpend | None = None) -> dict[str, Any]:
     return {
         "slug": project.slug,
         "title": project.title,
+        "format": project.format or "slides",
         "stage": project.stage,
         "checklist": project.checklist,
         "youtube_video_id": project.youtube_video_id,
@@ -113,6 +115,8 @@ def _summary(project: VideoProject, pending: int) -> dict[str, Any]:
         "source_guide": project.source_guide,
         "dropped_at": project.dropped_at,
         "dropped_note": project.dropped_note,
+        "media_usd": spend.usd if spend else 0.0,
+        "clip_seconds": spend.clip_seconds if spend else 0,
     }
 
 
@@ -157,6 +161,8 @@ async def upsert_project(
     project.youtube_video_id = payload.youtube_video_id
     if payload.source_guide is not None:
         project.source_guide = payload.source_guide
+    if payload.format is not None:
+        project.format = payload.format
     project.last_synced_at = now
     project.updated_at = now
     await session.commit()
@@ -170,8 +176,9 @@ async def project_view(session: AsyncSession, slug: str) -> ProjectOut:
     project = await _project(session, slug)
     reviews = await _reviews(session, project)
     pending = sum(1 for review in reviews if review.status == "pending")
+    spend = await spend_by_slug(session, [project.slug])
     return ProjectOut(
-        **_summary(project, pending),
+        **_summary(project, pending, spend.get(project.slug)),
         reviews=[_review_out(review) for review in reviews],
     )
 
@@ -189,7 +196,12 @@ async def list_projects(session: AsyncSession) -> list[ProjectSummary]:
         .order_by(VideoProject.last_synced_at.desc())
         .limit(200)
     )
-    return [ProjectSummary(**_summary(project, int(count))) for project, count in rows.all()]
+    listed = list(rows.all())
+    spend = await spend_by_slug(session, [project.slug for project, _count in listed])
+    return [
+        ProjectSummary(**_summary(project, int(count), spend.get(project.slug)))
+        for project, count in listed
+    ]
 
 
 async def submit_review(

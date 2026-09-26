@@ -573,15 +573,11 @@
     },
     "anthropic_connection": {
       "label": "Claude 연결 방식",
-      "help": "\"구독 계정\"을 고르면 가이드 검색, 명소 소개, 소개 검토, 간체 이름, AI 뉴스의 Claude 호출이 API 키 대신 호스트의 \"AI 계정\"에서 로그인한 Claude 구독 계정으로 실행됩니다. 모든 계정이 한도에 이르면 MiniMax를 씁니다. 일정 작성과 일정 텍스트 분석은 계속 API 키만 씁니다. 사이트 소유자만 바꿀 수 있습니다.",
+      "help": "'구독 계정'을 고르면 가이드 검색, 명소 소개, 소개 검토, 간체 이름, AI 뉴스의 Claude 호출이 API 키 대신 호스트의 'AI 계정'에 로그인한 Claude 구독 계정으로 실행됩니다. 계정은 A, B, C… 순서로 돌아가며, 5시간 또는 주간 한도를 다 쓴 경우에만 다음으로 넘어가고 마지막 다음은 A로 돌아갑니다. 모두 다 쓰면 MiniMax를 씁니다. 여행 일정과 일정 텍스트 분석은 계속 API 키만 씁니다. 전환은 오너만 할 수 있습니다.",
       "options": {
         "api_key": "API 키",
         "subscription": "구독 계정(호스트의 Claude Code)"
       }
-    },
-    "ai_subscription_max_usage_percent": {
-      "label": "구독 사용 한도(%)",
-      "help": "계정의 5시간 또는 주간 사용량이 이 비율에 이르면 사이트는 그 계정을 쓰지 않고 나머지를 소유자에게 남깁니다. 모든 계정이 한도를 넘으면 MiniMax를 씁니다. 기본값 80."
     }
   },
   "hotspotTabs": {
@@ -2214,7 +2210,6 @@
       "max_verify_rounds": "영상당 최대 팩트체크 횟수",
       "max_retake_rounds": "내레이션 최대 재녹음 횟수",
       "auto_approve_audio": "Jev가 모든 문장을 바르게 읽었다고 판단하면 내레이션을 자동 승인",
-      "subscription_max_usage_percent": "구독 계정을 멈출 사용률(5시간 또는 주간 한도, %)",
       "drama_enabled": "AI 드라마 켜기",
       "drama_image_provider": "이미지 공급자(설정화와 키프레임)",
       "drama_image_model": "이미지 모델",
@@ -2258,7 +2253,7 @@
     "usage": "이번 달(UTC) 사용량: API 토큰 {tokens} / {tokenBudget}, 구독 계정 토큰 {planTokens}, 초안 {drafts} / {draftBudget}개, 모델 호출 {calls}회(실패 {failed}회).",
     "subscription": "구독 계정",
     "agentOff": "호스트 에이전트 미설정",
-    "subscriptionHelp": "구독 계정은 5시간 또는 주간 한도가 위 비율에 도달하면 건너뜁니다. 모든 계정이 도달하면 워커는 한도가 초기화될 때까지 기다리며, API 키로 알아서 바꾸지 않습니다. Codex는 제공하지 않습니다. 명령줄에서 명령 실행 기능을 끌 수 없기 때문입니다.",
+    "subscriptionHelp": "구독 계정은 A, B, C… 순서로 돌아가며, 5시간 또는 주간 한도를 다 쓴 경우에만 다음으로 넘어가고 마지막 다음은 A로 돌아갑니다. 모두 다 쓰면 작업기는 한도가 초기화될 때까지 기다렸다가 계속하며, 스스로 API 키로 바꾸지 않습니다. Codex는 제공하지 않습니다. 명령줄에서 명령 실행을 끌 수 없기 때문입니다.",
     "modelsManaged": "단계별 모델은 'AI 설정 › 기능별 모델'에서 한곳에서 고릅니다.",
     "editModels": "AI 설정에서 변경",
     "saveModels": "영상 모델 저장",

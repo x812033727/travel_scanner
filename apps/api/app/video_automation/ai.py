@@ -17,6 +17,7 @@ import httpx
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai.subscription import FULL_PERCENT
 from app.config import Settings
 from app.hotspots.ai_search import AIProviderName, research_provider
 from app.video_automation.errors import StageFailed
@@ -131,7 +132,7 @@ async def run_stage(
                 model=model,
                 instructions=request.instructions,
                 payload=dict(request.payload),
-                max_usage_percent=row.subscription_max_usage_percent,
+                max_usage_percent=FULL_PERCENT,
             )
             text, used_model = run.text, run.model
             tokens = {"input_tokens": run.input_tokens, "output_tokens": run.output_tokens}

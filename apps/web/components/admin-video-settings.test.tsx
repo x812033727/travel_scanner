@@ -20,7 +20,7 @@ const view = {
   voice: { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" },
   target_minutes_min: 8, target_minutes_max: 12, caption_locales: ["en", "ja", "ko", "zh-CN"],
   max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2,
-  subscription_max_usage_percent: 80, auto_approve_audio: true,
+  auto_approve_audio: true,
   drama: {
     drama_enabled: false, image_provider: "gemini", image_model: "gemini-3-pro-image", clip_provider: "gemini", clip_model: "gemini-omni-1.1-flash",
     music_provider: "gemini", music_model: "lyria-3.5", clip_resolution: "1080p", clip_seconds_default: 8, clip_native_audio: false, drama_aspect: "16:9",
@@ -139,6 +139,7 @@ describe("AdminVideoSettings", () => {
     expect(screen.getAllByRole("option", { name: "OpenAI API (沒有金鑰)" }).length).toBe(STAGES.length);
     expect(screen.getAllByRole("option", { name: "Claude Code (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
     expect(screen.getByText(/1 \/ 8 支草稿，呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
-    expect(screen.getByRole("spinbutton", { name: /訂閱帳號用到幾 %/ })).toHaveProperty("value", "80");
+    expect(screen.queryByRole("spinbutton", { name: /訂閱帳號用到幾 %/ })).toBeNull();
+    expect(screen.getByText(/用滿才換下一個，最後一個用滿再回到 A/)).toBeTruthy();
   });
 });

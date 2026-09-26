@@ -573,15 +573,11 @@
     },
     "anthropic_connection": {
       "label": "Claude connection",
-      "help": "With \"Subscription accounts\", the Claude calls of guide search, place introductions, introduction review, Simplified names and AI news run on the Claude subscription accounts signed in under AI accounts on the host, not on an API key; when every account is at its cap they use MiniMax. The trip planner and trip text parsing still use the API key only. Only the owner can switch this.",
+      "help": "With \"Subscription accounts\", the Claude calls of guide search, place introductions, introduction review, Simplified names and AI news run on the Claude subscription accounts signed in under AI accounts on the host, not on an API key. The accounts take turns in order, A, B, C and back to A: one is left only when its 5-hour or weekly window is full. When every account is full, calls use MiniMax. The trip planner and trip text parsing still use the API key only. Only the owner can switch this.",
       "options": {
         "api_key": "API key",
         "subscription": "Subscription accounts (Claude Code on the host)"
       }
-    },
-    "ai_subscription_max_usage_percent": {
-      "label": "Subscription usage cap (%)",
-      "help": "Once an account's 5-hour or weekly usage reaches this share, the site stops using it and leaves the rest to the owner; when every account is past it, calls use MiniMax. Default 80."
     }
   },
   "hotspotTabs": {
@@ -2214,7 +2210,6 @@
       "max_verify_rounds": "Most fact-check rounds per video",
       "max_retake_rounds": "Most narration retake rounds",
       "auto_approve_audio": "Approve the narration automatically when Jev finds every line read correctly",
-      "subscription_max_usage_percent": "Pause a subscription account at this % of its 5-hour or weekly window",
       "drama_enabled": "AI drama route on",
       "drama_image_provider": "Image vendor (sheets and keyframes)",
       "drama_image_model": "Image model",
@@ -2258,7 +2253,7 @@
     "usage": "This month (UTC): {tokens} of {tokenBudget} API tokens used and {planTokens} tokens on the subscription accounts; {drafts} of {draftBudget} drafts made, {calls} model calls ({failed} failed).",
     "subscription": "subscription",
     "agentOff": "host agent not set up",
-    "subscriptionHelp": "A subscription account is skipped once its 5-hour or weekly window reaches the percentage above; when every account has, the worker waits for a window to reset and never switches to an API key on its own. Codex is not offered: its command line cannot turn off running commands.",
+    "subscriptionHelp": "The subscription accounts take turns in order, A, B, C and back to A: one is left only when its 5-hour or weekly window is full. When every account is full, the worker waits for a window to reset and never switches to an API key on its own. Codex is not offered: its command line cannot turn off running commands.",
     "modelsManaged": "The model of each stage is chosen under AI settings › Models by feature.",
     "editModels": "Change in AI settings",
     "saveModels": "Save video models",

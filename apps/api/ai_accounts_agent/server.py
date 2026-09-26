@@ -2,8 +2,10 @@ import contextlib
 import json
 import re
 import socketserver
+import sys
 import threading
 import time
+import traceback
 from collections.abc import Callable
 from concurrent.futures import Future, ThreadPoolExecutor
 from concurrent.futures import wait as wait_for
@@ -24,6 +26,7 @@ from ai_accounts_agent.security import (
     SIGNATURE_HEADER,
     TIMESTAMP_HEADER,
     NonceCache,
+    redact_emails,
     sanitize,
     verify_request,
 )
@@ -306,9 +309,13 @@ class AgentApplication:
 
     def _refresh_usage(self, tool: str, slot: str) -> None:
         try:
-            # Whatever breaks, the page shows the last snapshot and its age.
-            with contextlib.suppress(Exception):
-                self.accounts[tool].refresh_usage(slot)
+            self.accounts[tool].refresh_usage(slot)
+        except Exception:
+            # Whatever breaks, the page shows the last snapshot and its age; the journal
+            # gets the reason, on one line and without anything credential-like.
+            # The end of a traceback names the exception, so a long one keeps its tail.
+            detail = sanitize(redact_emails(traceback.format_exc()), 100_000)[-4000:]
+            print(f"{tool} usage probe {slot} failed: {detail}", file=sys.stderr, flush=True)
         finally:
             # A probe can learn the account's email and plan (Antigravity's header).
             self.cache.invalidate((tool, slot))
