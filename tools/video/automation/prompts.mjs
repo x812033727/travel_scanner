@@ -22,6 +22,8 @@ export function references(root) {
     drama: read(SKILL, "drama.md"),
     drama_example: JSON.parse(read("tools", "video", "core", "fixtures", "drama", "video.json")),
     drama_brief: read("tools", "video", "core", "fixtures", "drama", "brief.md"),
+    // A long series (docs/videos/SERIES.md): its reference, for the documents and the episodes.
+    series: read(SKILL, "series.md"),
   };
 }
 
@@ -325,9 +327,12 @@ export const STANDING_HEADING = `## The owner's standing instructions
 The site owner wrote these on the settings tab for every video this stage works on. Follow them;
 where they contradict a rule above, they win. They may be in Chinese.`;
 
-/** The stage's instructions for the format, with the owner's standing instructions (if any) last. */
-export function instructionsFor(stage, format = "slides", standing = "") {
-  const base = (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+/**
+ * The stage's instructions for the format, with the owner's standing instructions (if any) last.
+ * A series document or an episode stage (`variant`, docs/videos/SERIES.md) has its own text.
+ */
+export function instructionsFor(stage, format = "slides", standing = "", variant = null) {
+  const base = (variant && SERIES_INSTRUCTIONS[`${stage}:${variant}`]) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
   const text = typeof standing === "string" ? standing.trim() : "";
   return text ? `${base}\n\n${STANDING_HEADING}\n${text}` : base;
 }
@@ -346,3 +351,168 @@ export function parseAnswer(text) {
     throw new SyntaxError("the model's answer is not a JSON object");
   }
 }
+
+
+// A long series (docs/videos/SERIES.md): the documents the owner approves before any episode is
+// written, and the episode stages' variants. Keyed "<stage>:<variant>"; the variant travels to
+// the site, which keeps the prompt as sent under its own heading and does not count a document
+// as a tutorial draft.
+const SERIES_COMMON = `
+You work on ONE long zh-TW (Traditional Chinese, Taiwan) AI drama series for the Mokaair
+channel: about a hundred episodes of 2 to 4 minutes, split into chapters of about ten, made one
+episode after another for months. "series" is what the owner filled in: the premise, the sides of
+the genre they care about ("aspects": world = a xianxia world of sects and clans, cultivation
+ranks, the orthodox against the demonic path; bonds = an ensemble growing up together, confidants,
+masters and clans; structure = past and present lives, flashbacks, planted threads and reversals,
+serialised suspense; mood = classical xianxia art, a dark and uncanny streak, ghosts and talismans),
+the emotional register ("tone": dual-male-leads-subtext means two male leads bound as confidants,
+never stated, never a kiss; dual-male-leads-explicit a stated romance within the platform's
+rules; hetero-leads a man and a woman; no-romance none), the style preset, the episode length,
+the planned episode count and chapter size, whether the first part is open-ended (it then closes
+a stage and leaves threads for a sequel), and a note. "series_reference" is the route's reference.
+Everything is original: no character, name, sect, place, artefact or plot of any existing work,
+and nothing a reader would recognise as one; when in doubt, invent. No real people, no real
+brands, no politics or religion argued, no gore, nothing a synthetic-media disclosure would not
+cover. Names read naturally in Taiwan Mandarin. Answer with ONE JSON object in "text":
+{"body_md": <the document as the owner reads it, zh-TW Markdown, complete>, "body_json":
+<the same document as structured data, the exact shape asked below>}. When "previous" is present
+the owner sent the last version back: keep what the note does not touch, change what it asks,
+and say at the top of body_md what changed. When "previous_problem" is present your last answer
+was refused for that reason: fix exactly that.
+`.trim();
+
+export const SERIES_INSTRUCTIONS = {
+  "planner:setting": `${SERIES_COMMON}
+
+You are planning the SETTING BOOK (設定集), the one document every episode is written from.
+Build a conflict engine, not a gazetteer: a world whose rules make trouble by themselves.
+
+body_md sections, in this order, each substantial:
+## 世界觀 the world in a page: the era, the geography that matters, the sects and clans (3 to 5,
+each with what it wants and what it hides), the cultivation ranks and what they cost, the
+orthodox path and the demonic path and why the line between them is not where people say.
+## 規則與代價 the hard rules of power and their prices; the taboos; what cannot be undone.
+## 人物 the cast: two leads (bound as "tone" says: for subtext, two people who would die for
+each other and never say so, one word or object standing for what is unsaid), 4 to 7 supporting
+characters, 2 to 3 antagonists with reasons; for each: name, age and standing, what they want,
+what they fear, the secret they keep, how they speak (a verbal habit), and the relationship map.
+## 長線謎團 8 to 12 long-running mysteries, each with an id (m1…), the question, where it is
+planted (chapter), the chapter it may be revealed (or null), and whether it is RESERVED for the
+sequel (at least 3 are, when "series.open_ended").
+## 語氣與畫面 the register (dark, uncanny, restrained), the imagery (talismans, ghosts, mist,
+lacquer, bronze), what the camera loves, what is never shown.
+## 命名規則 how people, sects, places and artefacts are named, with examples, so later
+documents spell them the same way.
+## 不做的事 what this series never does (genre clichés, borrowed names, sermons, gore).
+
+body_json: {"characters": [{"id": lowercase ascii 2–24 chars, "name": zh-TW, "role": lead|support|
+antagonist, "appearance": English, concrete, ≤ 800 chars (age, build, face, hair, clothing with
+colours, one signature object; this text is copied word for word into every episode and drawn
+by an image model), "voice": {"provider": "gemini", "name": one of "drama_settings.voices" when
+any, "style": a Taiwan Mandarin direction}, "personality", "want", "fear", "secret",
+"speech": the verbal habit, "relationships": [{"with": id, "kind": text}]}], "world": {"era",
+"places": [...], "factions": [{"name", "wants", "hides"}]}, "rules": [text], "mysteries":
+[{"id", "question", "planted_chapter": int, "reveal_chapter": int|null, "reserved": bool}],
+"tone": text, "naming": [text], "never": [text], "lexicon": {"<name or term>": "<how it is read
+aloud, or null when the characters already read right>"}}. The leads' ids come first in the
+list, then the rest; ids never change once the owner approves.`,
+
+  "planner:outline": `${SERIES_COMMON}
+
+You are planning the SERIES OUTLINE (總綱) of the first part from the approved "setting"
+(body_md and body_json). "chapter_ranges" gives every chapter's first and last episode number;
+"series.chapters" the count. Plan the whole run so that the stakes rise chapter by chapter (a
+person → a sect → the world), a revelation around the middle of the run turns the world on its
+head, every chapter ends on a turn that changes the situation, the past-life line is told in
+flashback episodes (at least one or two per chapter), and each mystery of the setting book is
+planted, advanced and revealed on schedule, the RESERVED ones planted but never resolved. When
+"series.open_ended", the last chapter closes this part's question and opens the sequel's.
+
+body_md sections: ## 全季張力地圖 (a table: chapter ｜ stakes ｜ the question it asks ｜ the
+turn it ends on), ## 篇章 (one section per chapter: title, theme, where it starts, where it
+ends, the end-of-chapter turn, then one line per episode: number, title, one-sentence logline
+that answers a question and asks a bigger one, and whether it is present-day or past-life),
+## 謎團揭曉排程 (mystery ｜ planted ｜ advanced in ｜ revealed in).
+
+body_json: {"chapters": [{"number", "title", "theme", "start_state", "end_state", "turn",
+"episodes": [{"number", "title", "logline", "timeline": "present"|"past"}]}], "tension_map":
+[{"chapter", "stakes", "question", "turn"}], "reveal_schedule": [{"mystery": id, "planted":
+chapter, "advanced": [chapters], "revealed": chapter|null}]}. Every episode number from 1 to
+"series.planned_episodes" appears exactly once, in its chapter's range.`,
+
+  "planner:chapter": `${SERIES_COMMON}
+
+You are planning ONE CHAPTER'S DETAILED OUTLINE (篇章細綱): chapter "chapter_number", episodes
+"chapter_range", from the approved "setting", "outline" (its "chapter_outline" row is the
+contract: keep the titles and loglines unless the note says otherwise) and, for a later chapter,
+"previous_chapters", "recaps" (what actually happened in the episodes made so far) and
+"episodes_so_far". This is where tension is engineered; do not describe, design:
+- Each episode: a HOOK inside the first 20 seconds (a question, a danger, an image that cannot
+  be unseen); a CONFLICT it must settle by its end; a TURN halfway that changes what the
+  characters (or the viewer) believe; a CLIFFHANGER as the last beat, typed danger | reveal |
+  choice | reversal | emotion; SETUPS it plants and PAYOFFS it pays, by mystery id; TENSION as
+  five scores 1 to 5 for the episode's five beats (opening, first half, midpoint, second half,
+  ending), never flat, the ending at least 4.
+- Adjacent episodes never end on the same cliffhanger type. Every 3 or 4 episodes at least one
+  payoff. The chapter's last episode ends on a reveal or reversal that changes the meaning of
+  something the viewer saw earlier in the chapter.
+- Each episode carries 2 to 4 minutes: one place or two, 2 to 4 characters, one or two turns of
+  events, never a summary of what came before (a series playlist needs no recap).
+- The leads' bond advances by one notch per chapter, shown in an act or an object, not said.
+
+body_md: ## 本篇 (title, theme, what this chapter does to the story), then ### 第 N 集 for each
+episode with: 標題, 一句話, 開場鉤子, 主要衝突, 轉折, 結尾懸念（類型）, 埋下 / 回收 (mystery
+ids), 張力曲線 (five numbers), 出場角色, 場景, 主題句.
+
+body_json: {"chapter": int, "episodes": [{"number", "title", "logline", "timeline":
+"present"|"past", "hook": text, "conflict": text, "turn": text, "cliffhanger": {"type":
+danger|reveal|choice|reversal|emotion, "text"}, "setups": [mystery ids], "payoffs": [mystery
+ids], "tension": [5 ints 1–5], "characters": [character ids], "locations": [text], "theme":
+text}]}. Exactly the episodes of "chapter_range", each once.`,
+
+  "writer:episode": `${DRAMA_INSTRUCTIONS.writer}
+
+THIS IS AN EPISODE OF A LONG SERIES (docs/videos/SERIES.md), and these rules come on top:
+- "cast" is the setting book's cast in video.json's shape: copy each character you use INTO
+  "characters" word for word (id, name, appearance, voice, sheet_prompt), list them by id in
+  order, invent nobody; lint refuses any difference, since the character sheets are reused
+  across episodes. "setting_md" is the world and its rules; "series" is the owner's brief and
+  tone; "mysteries" the long threads and their state.
+- "beats" is this episode's row of the approved chapter outline and it is the contract: the
+  hook is spoken or shown inside the first shot or two (within about 20 seconds), the turn sits
+  near the middle, the last scene is the cliffhanger and nothing after it, no summary, no moral.
+  Plant what "beats.setups" names, pay what "beats.payoffs" names, touch no RESERVED mystery.
+- "recaps" say what actually happened before (the last few in full, earlier ones in a line):
+  continue from there; "next_logline" is the next episode's promise: set it up, do not tell it.
+- The bond between the leads follows "series.tone": for subtext, nothing is said; an act, a
+  look, an object. Characters speak little and only what a listener must hear.
+- Every name and term is spelled as the setting book spells it; new terms go in
+  lexicon_additions.
+Return {"video": video.json, "claims": claims.md (the sources of any real-world detail, else a
+line saying the story is original), "lexicon_additions": {...}}.`,
+
+  "verifier:episode": `${DRAMA_INSTRUCTIONS.verifier}
+
+THIS IS AN EPISODE OF A LONG SERIES: the bible is "setting_md" plus video.json "characters"
+(which must equal "cast" word for word), the history is "recaps", the contract is "beats". Add
+two checks and report them:
+1. Tension: does the script actually deliver each beat? "coverage" scores hook, conflict, turn
+   and cliffhanger as "有" (delivered), "弱" (present but flat, late or told rather than shown)
+   or "無" (missing); a cliffhanger that is followed by a summary or a moral is "弱".
+2. Continuity with the series: names, ranks, wounds, objects and places against "setting_md"
+   and "recaps"; a mystery resolved that "mysteries" marks reserved; a payoff paid without its
+   setup; a character speaking against their "speech" habit.
+Also name any resemblance to a well-known existing work (a borrowed name, sect, plot beat) in
+"similar_works". Fix ids, spellings, "characters" lists and prompt contradictions as before; do
+not restructure. Return {"report", "video"|null, "claims", "changed_facts", "coverage":
+{"hook", "conflict", "turn", "cliffhanger"}, "problems": [zh-TW sentences the owner reads on the
+script's review card], "similar_works": [text]}.`,
+
+  "verifier:recap": `${SERIES_COMMON}
+
+You are writing the RECAP (前情) of an episode just finished, for the next episode's writer and
+checker: "video" is the final script, "beats" the episode's plan, "previous_recaps" the recaps
+before it. Return {"recap": zh-TW, at most 150 characters, what happened and what it changed,
+no adjectives, "state": {"characters": {<id>: <one line: where they are, what they know, what
+they carry>}, "mysteries": {<id>: "planted"|"advanced"|"revealed"}, "open_threads": [text]}}.`,
+};
