@@ -176,6 +176,8 @@ class VideoAutomationSettings(Base):
     monthly_token_budget_millions: Mapped[int] = mapped_column(Integer, default=20)
     max_verify_rounds: Mapped[int] = mapped_column(Integer, default=3)
     max_retake_rounds: Mapped[int] = mapped_column(Integer, default=2)
+    # Unused since 2026-09-26: runs keep an account until it is full (app.ai.subscription
+    # FULL_PERCENT). The column stays so no migration is needed to drop a setting.
     subscription_max_usage_percent: Mapped[int] = mapped_column(
         Integer, default=80, server_default="80"
     )

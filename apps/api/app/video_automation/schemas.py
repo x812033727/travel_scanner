@@ -110,9 +110,6 @@ class _SettingsFields(StrictModel):
     monthly_token_budget_millions: int = Field(ge=1, le=500)
     max_verify_rounds: int = Field(ge=1, le=5)
     max_retake_rounds: int = Field(ge=0, le=5)
-    # A subscription account at or above this share of its 5-hour or weekly window is skipped;
-    # when every account is, the pipeline waits for a window to reset.
-    subscription_max_usage_percent: int = Field(default=80, ge=10, le=100)
     auto_approve_audio: bool
 
     @model_validator(mode="after")

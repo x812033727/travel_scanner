@@ -168,7 +168,8 @@ Claude's quota appears after the next Claude session on the host has made its fi
 
 `POST /v1/runs` (`ai_accounts_agent/runs.py`) runs one prompt through `claude -p` with every
 tool turned off, on the signed-in Claude subscription account whose turn it is, as long as it
-is below the caller's usage cap. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
+is below the caller's usage cap. The site always sends 100 since 2026-09-26 (the owner removed
+the cap settings), so an account keeps the runs until it is full. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
 「Claude 連線方式」 on the AI vendors card to 訂閱帳號, every other site feature that calls
 Claude uses it too (`apps/api/app/ai/subscription.py`): guide search, introductions,
 introduction review, Simplified names and the news stages. The trip planner and the trip
