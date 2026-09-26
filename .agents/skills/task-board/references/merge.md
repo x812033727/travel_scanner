@@ -4,8 +4,9 @@
 
 - 必要檢查 `api`、`web`、`containers`、`full-stack-smoke`，即 `.github/workflows/ci.yml` 的四個 job。其他 workflow（lighthouse、瀏覽器測試）會跑，但不是合併條件。
 - `strict`：分支必須跟上 main。別人一合併，你的綠燈 PR 就變 `BEHIND`（或 `DIRTY` 有衝突），要 rebase 再跑一輪 CI。2026-09-06 一個晚上五個 PR 互相追，浪費三輪 CI。
-- `enforce_admins`：`gh pr merge --admin` 不是後門。repo 也不允許 `--auto`。
-- 誰能按合併：前景的 `gh pr merge <n> --squash`（或 `gh pr checks --watch --fail-fast && gh pr merge`）只在站主對**那一個** PR 說了「合併」之後會過，同意不會延續到下一個 PR。背景迴圈（`gh pr update-branch` → 輪詢四個 check-run → `gh pr merge --squash --match-head-commit`）只有在站主下過點名條件的常設指令（例如「訂閱所有 CI，如果綠就合併」）時可以跑，這時同一個 session 之後開的 PR 也算在內；沒有這種指令就每個 PR 各問一次。問的同時在背景把分支同步、CI 跑綠，字一到就能合。
+- `enforce_admins`：`gh pr merge --admin` 不是後門。
+- 自動合併：`.github/workflows/auto-update-branches.yml` 設好 `AUTO_MERGE_TOKEN` 之後，會替從這個 repo 分支開、目標 main、非草稿、沒有 `no-auto-merge` 標籤、作者是站主的 PR 打開 auto-merge，並限流地 update-branch，綠了就合（全文 `.github/BRANCH_PROTECTION.md`「Automatic updates and merges」）。站主還沒同意的 PR 開成 draft 或貼標籤；已經打開的 auto-merge 要 `gh pr merge <n> --disable-auto`。這時不要對同一個 PR 跑 `merge-when-green.sh`，兩邊會同時改那個分支。
+- 誰能按合併：前景的 `gh pr merge <n> --squash`（或 `gh pr checks --watch --fail-fast && gh pr merge`）只在站主對**那一個** PR 說了「合併」之後會過，同意不會延續到下一個 PR。背景迴圈（`gh pr update-branch` → 輪詢四個 check-run → `gh pr merge --squash --match-head-commit`）只有在站主下過點名條件的常設指令（例如「訂閱所有 CI，如果綠就合併」）時可以跑，這時同一個 session 之後開的 PR 也算在內；沒有這種指令、也沒有上面那個 workflow 時，就每個 PR 各問一次。問的同時在背景把分支同步、CI 跑綠，字一到就能合。
 - `npm audit`／`pip-audit` 在 ci.yml 裡是 `continue-on-error`，另有每日的強制 workflow；main 自己紅了會由 `ci-red-main.yml` 開 issue。
 
 ## 一條 chain
