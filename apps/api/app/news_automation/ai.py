@@ -13,6 +13,7 @@ from app.hotspots.ai_search import AIProviderName, research_provider
 from app.i18n import LOCALES as SITE_LOCALES
 from app.i18n import Locale
 from app.news_automation.models import NewsAutomationSettings, NewsCandidate, NewsEvidence
+from app.news_automation.policy import without_topic_links
 from app.news_automation.schemas import (
     EditorialDraft,
     LocaleReviewResult,
@@ -95,8 +96,13 @@ evidence IDs, "according to the supplied evidence" or other notes meant for edit
 the structure, claim ledger, sources, links, numbers, dates, quotations and event date
 exactly as the evidence supports them; never add a fact, number, date, quotation, person,
 organisation, product detail or link. When the evidence comes from one website, every claim
-stays attributed to that organisation. Cryptocurrency articles keep the
-non-investment-advice warning and never discuss prices, returns or trading. Return pass when
+stays attributed to that organisation. Cryptocurrency articles never discuss prices, returns
+or trading, and keep their non-investment-advice warning as a callout block that contains
+the exact phrase for its locale: 不是投資建議 (zh-TW), 不是投资建议 (zh-CN), not investment
+advice (en), 投資助言ではありません (ja), 투자 조언이 아닙니다 (ko). Never reword, move or
+remove that callout. When the payload lists mechanical_problems, your previous correction
+broke those site checks: return the article again with them fixed and your other
+corrections kept. Return pass when
 the article is ready as it is, or revise with one complete corrected GuideDocument in the
 same locale, keeping every string within the maxLength given in its schema description.
 Return manual only for a problem you cannot fix without new evidence: a claim the evidence
@@ -226,8 +232,8 @@ async def review_locale(
         LOCALE_REVIEW_INSTRUCTIONS,
         {
             "locale": locale,
-            "verified_zh_tw": source.model_dump(mode="json"),
-            "localized_article": document.model_dump(mode="json"),
+            "verified_zh_tw": without_topic_links(source),
+            "localized_article": without_topic_links(document),
         },
     )
 
@@ -239,8 +245,18 @@ async def final_edit(
     locale: Locale,
     document: GuideDocument,
     evidence: list[NewsEvidence],
+    *,
+    problems: list[str] | None = None,
 ) -> tuple[LocaleReviewResult, dict[str, int], str]:
     """The final editor's pass over one locale; its reply has the locale review's shape."""
+    payload: dict[str, Any] = {
+        "locale": locale,
+        "evidence": evidence_payload(evidence),
+        "verified_zh_tw": without_topic_links(source),
+        "article": without_topic_links(document),
+    }
+    if problems:
+        payload["mechanical_problems"] = problems
     return await _structured(
         environment,
         settings.editor_provider,
@@ -248,12 +264,7 @@ async def final_edit(
         LocaleReviewResult,
         "news_final_edit",
         EDITOR_INSTRUCTIONS,
-        {
-            "locale": locale,
-            "evidence": evidence_payload(evidence),
-            "verified_zh_tw": source.model_dump(mode="json"),
-            "article": document.model_dump(mode="json"),
-        },
+        payload,
     )
 
 
