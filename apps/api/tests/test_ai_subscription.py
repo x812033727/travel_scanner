@@ -127,7 +127,8 @@ async def test_a_subscription_answer_is_parsed_like_an_api_answer() -> None:
     call = agent.calls[0]
     assert call["model"] == "claude-opus-5-5" and call["prompt"] == '{"q": "頁面"}'
     assert "Write a title." in call["system"] and '"title"' in call["system"], "schema is inlined"
-    assert call["max_usage_percent"] == 80
+    # No cap since 2026-09-26: an account takes runs until its window is full.
+    assert call["max_usage_percent"] == 100
     assert call["timeout_seconds"] == 300 and call["queue_seconds"] == subscription.QUEUE_SECONDS
 
 
@@ -204,18 +205,17 @@ def _usage(percent: float) -> dict[str, Any]:
 def test_the_connection_test_names_the_accounts_that_can_serve_and_why_others_cannot() -> None:
     ready, message = subscription_summary(
         _overview(
-            {"slot": "a", "logged_in": True, "usage": _usage(92)},
+            {"slot": "a", "logged_in": True, "usage": _usage(100)},
             {"slot": "b", "logged_in": True, "usage": _usage(15)},
             {"slot": "c", "logged_in": True},
             {"slot": "d", "logged_in": True, "auth_method": "api_key"},
             {"slot": "e", "logged_in": False},
         ),
-        80,
     )
     assert ready
     assert message.startswith("Claude 訂閱帳號可用：B（已用 15%）、C（用量未知）")
-    assert "A 已用 92%，達上限 80%" in message and "D 是 API 金鑰登入" in message
-    ready, message = subscription_summary(_overview({"slot": "a", "logged_in": False}), 80)
+    assert "A 已用滿（100%），等額度重置" in message and "D 是 API 金鑰登入" in message
+    ready, message = subscription_summary(_overview({"slot": "a", "logged_in": False}))
     assert not ready and "沒有登入的 Claude 訂閱帳號" in message
 
 

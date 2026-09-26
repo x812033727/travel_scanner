@@ -254,11 +254,9 @@ const aiVendorsProvider = {
     hotspot_guide_gemini_base_url: "https://generativelanguage.googleapis.com",
     jev_api_base_url: "https://api.typesafe.ai/v1",
     anthropic_connection: "api_key",
-    ai_subscription_max_usage_percent: 80,
   },
   config_sources: {
     anthropic_connection: "environment",
-    ai_subscription_max_usage_percent: "environment",
     openai_api_base_url: "environment",
     anthropic_api_base_url: "environment",
     minimax_api_base_url: "environment",
@@ -1448,12 +1446,13 @@ describe("AdminSettingsPanel", () => {
     expect(Array.from(connection.options).map((option) => option.textContent)).toEqual(["API 金鑰", "訂閱帳號（主機 Claude Code）"]);
     expect(connection.value).toBe("api_key");
     fireEvent.change(connection, { target: { value: "subscription" } });
-    fireEvent.change(within(section).getByLabelText(/^訂閱帳號用量上限/), { target: { value: "90" } });
+    // No usage cap: an account takes the site's calls until it is full.
+    expect(within(section).queryByLabelText(/^訂閱帳號用量上限/)).toBeNull();
     fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
     const body = savedBody(fetchMock);
-    expect(body.config).toEqual({ anthropic_connection: "subscription", ai_subscription_max_usage_percent: 90 });
+    expect(body.config).toEqual({ anthropic_connection: "subscription" });
     expect(body.secrets).toEqual({});
   });
 
