@@ -22,6 +22,7 @@ describe("AnalyticsProvider", () => {
     document.cookie = "travel_oauth_registered=; path=/; max-age=0";
     Object.defineProperty(navigator, "doNotTrack", { configurable: true, value: null });
     navigation.pathname = "/zh-TW/hotspots";
+    window.history.replaceState(null, "", "/");
     resetThirdPartyAudience();
   });
 
@@ -58,6 +59,71 @@ describe("AnalyticsProvider", () => {
     const pageViews = (window.dataLayer || []).filter((row) => row[0] === "event" && row[1] === "page_view");
     expect(pageViews).toHaveLength(1);
     expect(pageViews[0][2]).toMatchObject({ page_path: "/zh-TW/hotspots" });
+  });
+
+  describe("a campaign-tagged landing", () => {
+    const ga4PageViews = () => (window.dataLayer || []).filter((row) => row[0] === "event" && row[1] === "page_view");
+    const ga4Config = () => (window.dataLayer || []).find((row) => row[0] === "config");
+    // What a video description links to (tools/video/core/metadata.mjs `articleUrl`), plus a
+    // search term and a click identifier that must never reach GA4.
+    const landing = "/zh-TW/life/ai-notes?utm_source=youtube&utm_medium=video&utm_campaign=ai-notes&q=secret-term&fbclid=IwAR0click";
+
+    it("gives GA4 the tags on the first page view, and on no later one", async () => {
+      window.history.replaceState(null, "", landing);
+      navigation.pathname = "/zh-TW/life/ai-notes";
+      withGa4();
+      const view = render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+      await waitFor(() => expect(ga4PageViews()).toHaveLength(1));
+      // GA4 takes a session's campaign from these parameters of the location it is given,
+      // not from the real address; a bare path filed the visit under its referrer.
+      const tagged = `${location.origin}/zh-TW/life/ai-notes?utm_source=youtube&utm_medium=video&utm_campaign=ai-notes`;
+      expect(ga4PageViews()[0][2]).toMatchObject({ page_path: "/zh-TW/life/ai-notes", page_location: tagged });
+      expect(ga4Config()?.[2]).toMatchObject({ page_location: tagged });
+
+      navigation.pathname = "/zh-TW/life/codex-cli-install-windows-guide";
+      view.rerender(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+      await waitFor(() => expect(ga4PageViews()).toHaveLength(2));
+      expect(ga4PageViews()[1][2]).toMatchObject({ page_location: `${location.origin}/zh-TW/life/codex-cli-install-windows-guide` });
+      const sent = JSON.stringify(window.dataLayer);
+      expect(sent).not.toContain("secret-term");
+      expect(sent).not.toContain("fbclid");
+      expect(sent).not.toContain("IwAR0click");
+    });
+
+    it("cleans a tag and leaves out a missing one, the way the first-party record does", async () => {
+      window.history.replaceState(null, "", "/zh-TW/life/ai-notes?utm_source=youtube&utm_campaign=ai%3Cnotes%3E");
+      navigation.pathname = "/zh-TW/life/ai-notes";
+      withGa4();
+      render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+      await waitFor(() => expect(ga4PageViews()).toHaveLength(1));
+      expect(ga4PageViews()[0][2]).toMatchObject({
+        page_location: `${location.origin}/zh-TW/life/ai-notes?utm_source=youtube&utm_campaign=ainotes`,
+      });
+    });
+
+    it("still gives GA4 the tags when it only starts after a signed-in reader clears", async () => {
+      resetThirdPartyAudience();
+      window.history.replaceState(null, "", landing);
+      navigation.pathname = "/zh-TW/life/ai-notes";
+      const sentFirstParty = withGa4();
+      render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+      await waitFor(() => expect(sentFirstParty()).toBe(true));
+      act(() => setThirdPartyAudience("allowed"));
+      await waitFor(() => expect(ga4PageViews()).toHaveLength(1));
+      expect(ga4PageViews()[0][2]).toMatchObject({
+        page_location: `${location.origin}/zh-TW/life/ai-notes?utm_source=youtube&utm_medium=video&utm_campaign=ai-notes`,
+      });
+    });
+
+    it("sends GA4 a bare location when the landing carried no tags", async () => {
+      window.history.replaceState(null, "", "/zh-TW/life/ai-notes?q=secret-term");
+      navigation.pathname = "/zh-TW/life/ai-notes";
+      withGa4();
+      render(<AnalyticsProvider><div>content</div></AnalyticsProvider>);
+      await waitFor(() => expect(ga4PageViews()).toHaveLength(1));
+      expect(ga4PageViews()[0][2]).toMatchObject({ page_location: `${location.origin}/zh-TW/life/ai-notes` });
+      expect(ga4Config()?.[2]).toMatchObject({ page_location: `${location.origin}/zh-TW/life/ai-notes` });
+    });
   });
 
   function firstPartyOnly() {
