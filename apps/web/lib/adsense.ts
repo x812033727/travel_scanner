@@ -88,6 +88,12 @@ export function adsenseArticleRoute(
  * request the renderer will refuse must not still get the relaxed policy. The renderer adds
  * one more condition on top — that the article actually exists — which needs an API read and
  * so cannot happen in the proxy.
+ *
+ * `pathname` is the path with its query string, if any, and a request that carries one is
+ * refused. Third-party code can read `location.href` for itself, so a reader's search terms
+ * or campaign tags stay out of the ad document only if the ad tag never loads into a document
+ * whose URL has them. The page used to be redirected to its bare path instead, which threw
+ * away every `utm_*` tag a video or newsletter link carried before analytics could read it.
  */
 export function adsenseRequestGate(signals: {
   host: string | null;
@@ -99,6 +105,7 @@ export function adsenseRequestGate(signals: {
   // The site's standing rule for third-party scripts: a browser asking not to be tracked gets
   // none of them — and therefore has no reason to be handed a loosened policy either.
   if (signals.dnt === "1" || signals.gpc === "1") return null;
+  if (signals.pathname.includes("?")) return null;
   return adsenseArticleRoute(signals.pathname);
 }
 
