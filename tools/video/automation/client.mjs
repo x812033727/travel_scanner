@@ -99,5 +99,12 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
         throw error;
       }
     },
+    // The owner's drama requests (docs/videos/DRAMA.md): filed on /admin/videos, made before any scheduled draft.
+    /** The oldest request nobody has started, or null. */
+    dramaNext: async () => (await request("GET", "automation/drama-requests/next")).request ?? null,
+    /** Claim a request for the video about to be made under `slug`. */
+    dramaStart: (id, slug) => request("POST", `automation/drama-requests/${id}/start`, { slug }),
+    /** Report a request's video finished and confirmed for upload. */
+    dramaDone: (id) => request("POST", `automation/drama-requests/${id}/done`),
   };
 }
