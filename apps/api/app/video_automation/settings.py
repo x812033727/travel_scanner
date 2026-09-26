@@ -247,6 +247,7 @@ async def remember_prompt(session: AsyncSession, request: StageRunIn) -> None:
         VideoStagePrompt(
             stage=request.stage,
             format=request.format,
+            variant=request.variant or "",
             slug=request.slug,
             instructions=request.instructions,
             sent_at=datetime.now(UTC),
@@ -259,12 +260,13 @@ async def stage_prompts(session: AsyncSession) -> list[StagePromptView]:
     order = {stage: index for index, stage in enumerate(get_args(Stage))}
     rows = sorted(
         (await session.scalars(select(VideoStagePrompt))).all(),
-        key=lambda row: (order.get(row.stage, len(order)), row.format != "slides"),
+        key=lambda row: (order.get(row.stage, len(order)), row.format != "slides", row.variant),
     )
     return [
         StagePromptView(
             stage=cast(Any, row.stage),
             format=cast(Any, row.format),
+            variant=row.variant or "",
             slug=row.slug,
             instructions=row.instructions,
             sent_at=row.sent_at,
