@@ -1,6 +1,6 @@
 # 影片產線：YouTube 多語言音軌（設計）
 
-2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的投影片產線、[`AUTOMATION.md`](AUTOMATION.md) 的主機工人與 [`HANDS-OFF.md`](HANDS-OFF.md) 的分工。這份寫 YouTube 多語言音軌（multi-language audio，觀眾在播放器裡切換配音語言）在 2026-09-27 查到的規則、產線怎麼用同一個頻道聲音唸出 en、ja、ko、zh-CN 四條配音、每條配音怎麼塞回原本的時間軸、站主要多做什麼，以及為什麼預設關著。工作分成幾張票，id 都是 `2026-09-26-video-dubs-*`（看板用 UTC 日期）。
+2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的投影片產線、[`AUTOMATION.md`](AUTOMATION.md) 的主機工人與 [`HANDS-OFF.md`](HANDS-OFF.md) 的分工。這份寫 YouTube 多語言音軌（multi-language audio，觀眾在播放器裡切換配音語言）在 2026-09-27 查到的規則、產線怎麼用同一個頻道聲音唸出 en、ja、ko、zh-CN 四條配音、每條配音怎麼塞回原本的時間軸、站主要多做什麼，以及為什麼是每支影片由站主挑語言、而不是全域開關。工作分成幾張票，id 都是 `2026-09-26-video-dubs-*`（看板用 UTC 日期）。
 
 ## 一句話
 
@@ -22,7 +22,7 @@
 兩個結論：
 
 1. **要有日、韓、簡中的配音，只能自己做音軌。** YouTube 自動配音只給英文，而且我們不能改它。
-2. **音軌只能站主在 Studio 手動上傳**，每支影片四個檔案，約兩三分鐘。API 稽核通過也不會改變這件事。這和 HANDS-OFF 的「站主只決定上架時間」有衝突，所以功能預設關著，由站主在設定分頁決定要不要開。
+2. **音軌只能站主在 Studio 手動上傳**，每個語言一個檔案，每個約半分鐘。API 稽核通過也不會改變這件事。這和 HANDS-OFF 的「站主只決定上架時間」有衝突，所以不做全域開關（站主 2026-09-27 的決定）：**每支影片先只出繁體中文，站主在後台那支影片的頁面勾選要加哪些語言，勾了工人才做那幾條**，音軌做好再由站主上傳。上架前或上架後勾都可以，YouTube 對已發布的影片也能加音軌。
 
 ## 產線怎麼做
 
@@ -79,14 +79,17 @@
 
 ### 工人
 
-設定 `dub_locales` 不是空的時，「captions written」之後多一步「dubs synthesized」：
+工人每一輪都會讀 `/admin/videos` 的影片清單；清單裡每支影片帶著站主勾的 `dub_locales`。成片已經核准、而且有勾了還沒做的語系時，工人對那幾個語系跑：
 
-1. `dub`，結束碼 1 → 翻譯階段的「縮短」模式（只給塞不下的句子與預算）→ `i18n-merge` → 再 `dub`，最多兩輪；
+1. `dub --locale <勾的語系>`，結束碼 1 → 翻譯階段的「縮短」模式（只給塞不下的句子與預算）→ `i18n-merge` → 再 `dub`，最多兩輪；
 2. `check-audio --locale` → Jev → `dub --redo`，最多兩輪；
 3. 兩輪之後仍不行的語系跳過，原因記下，不卡影片；
-4. 自動品管（`qa`）多一項 `dubs`：設定裡的每個語系，不是有一條當前的音軌而且檢查過，就是有跳過的原因。跳過的在審核卡片上列成警告，不算沒過。
+4. `captions`（有配音的語系改用配音的時間軸切字幕）；上傳包已經打包過的話再跑一次 `package`，音軌進 `upload/dubs/`；
+5. 送一筆 `dubs` 審核：附上做好的音軌檔，payload 列每個語系的狀態（ready／skipped 與原因）。站主在卡片下載、到 Studio「語言」頁上傳後按核准（意思是「已上傳」）結案。之後再勾新的語言，就再來一筆。
 
-配音不改 `final.mp4`，成片的雜湊與核准不受影響；配音在成片關卡之前做完，讓審看頁能放四條音軌試聽。
+自動品管（`qa`）多一項 `dubs`：勾了的每個語系，不是有一條當前的音軌而且檢查過，就是有跳過的原因。跳過的在審核卡片上列成警告，不算沒過。
+
+配音不改 `final.mp4`，成片的雜湊與核准不受影響，也不擋「確認上架」：沒勾語言的影片，流程和現在一個位元組都不差。
 
 ## 成本
 
@@ -106,13 +109,13 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 
 1. Studio → 設定 → 頻道 → 功能使用資格，確認「進階功能」已啟用；沒有的話做身分證件或影片驗證。
 2. Studio → 設定 → 頻道 → 進階設定，取消「允許自動配音」。理由：自動配音只會多一條我們不能改的英文音軌，而且它生成之後，要先刪掉才能上傳自己的英文音軌。想留著也可以，但要改成先審核再發布。
-3. 後台「影片」→「設定」勾選要配音的語系（`dub_locales`）。
 
-每支影片（接在 HANDS-OFF「可以上架」的步驟之後）：
+每支影片：
 
-1. 照舊在 Studio 上傳 `final.mp4`，瀏覽權限私人。
-2. 左選單「語言」→ 這支影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→ 選 `upload/dubs/<locale>.m4a` →「發布」。四個語系各做一次。
-3. 其餘（五語系標題說明、字幕、縮圖、排程）由 T8 的 API 補齊。
+1. 照舊：成片核准、上傳包備好，站主在 Studio 上傳 `final.mp4`（瀏覽權限私人），其餘（五語系標題說明、字幕、縮圖、排程）由 T8 的 API 補齊。到這裡影片只有繁體中文旁白。
+2. 想加配音時，在 `/admin/videos` 那支影片的頁面勾選語言（en、ja、ko、zh-CN 任選）並儲存。上架前或上架後都可以。
+3. 工人做好音軌後，影片頁多一張「配音音軌」卡片，列出每個語系的檔案（做不出來的會寫原因）。下載檔案，到 Studio 左選單「語言」→ 這支影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→「發布」，每個語系一次。
+4. 回到卡片按核准，表示已上傳。之後再勾別的語言，會再來一張卡片。
 
 第一支要實測、然後寫進 skill 的 `publish.md`：
 
@@ -127,13 +130,18 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 - **配音沒有時間伸縮的餘地時會被縮短。** 縮短的句子字幕也跟著短，翻譯審稿要看縮短後的版本。
 - **漫劇不在第一期。** 漫劇有多個角色、燒錄字幕與配樂，音軌要重新混音；投影片影片先做。
 
-## 設定（新增到 `video_automation_settings`）
+## 每支影片的選擇（不是設定）
 
-| 欄位 | 預設 | 說明 |
-| --- | --- | --- |
-| `dub_locales` | 空（關） | 要做配音的語系，只能是 `caption_locales` 的子集合 |
+站主 2026-09-27 的要求：「應該要給我選擇要不要做什麼語言才做。基本的就是先出繁體中文，後面我可以挑選是否要加入其他語言。」所以沒有全域的 `dub_locales` 設定，選擇掛在影片上：
 
-遷移接在當時 main 最新的 `video_automation` 遷移之後；HANDS-OFF 的 settings 票先落地，這張才動同一張表。
+| 在哪裡 | 內容 |
+| --- | --- |
+| `video_projects.dub_locales` | 每支影片一個 JSON 陣列，預設空；站主在影片頁勾選後由 `PUT /admin/videos/{slug}/dubs` 寫入，寫一筆 audit log |
+| `ProjectSummary`／`ProjectOut` | 帶出 `dub_locales`，工人從既有的影片清單就看得到，不用新端點 |
+| 審核 gate `dubs` | 工人把做好的音軌當成一筆審核送上來（檔案類型多收 `audio/mpeg`、`audio/wav`），站主核准表示已上傳；沒有選項 |
+| `/admin/videos` 的影片頁 | 「配音語言」四個核取方塊與儲存鈕，加一行說明；`dubs` 審核卡片列出每個語系的狀態與下載連結 |
+
+沒勾的影片不會多任何步驟。已經在 YouTube 上的影片也能勾：音軌對已發布的影片一樣能加。
 
 ## 票
 
@@ -141,8 +149,8 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 | --- | --- | --- | --- |
 | `video-dubs-command` | `dub` 指令：視窗、對齊、加速、字元預算、`fit.json`、m4a 輸出；`i18n-sheet` 帶預算 | `tools/video/dubs`、`tools/video/cli.mjs`、`tools/video/core/state.mjs`、`tools/video/i18n` | — |
 | `video-dubs-check-language` | 轉寫端點帶語言、`check-audio --locale` | `apps/api/app/video_speech`、`tools/video/tts/check.mjs`、`tools/video/tts/client.mjs` | — |
-| `video-dubs-setting` | `dub_locales` 設定、遷移、設定分頁、工具讀取端點 | `apps/api/app/video_automation`、遷移、`apps/web/components/admin-video-settings*`、`admin.json` | —（和 hands-off-settings 動同一張表，後落地的接在前面的遷移之後） |
+| `video-dubs-setting` | 每支影片的 `dub_locales` 欄位與 `PUT /admin/videos/{slug}/dubs`、審核 gate `dubs`、影片頁的「配音語言」與 `dubs` 卡片（票的 id 取自原本的全域設定方案，內容已改） | `apps/api/app/models`（VideoProject）、遷移、`apps/api/app/video_reviews`、`apps/web/app/api/admin/videos/[slug]/dubs`、`apps/web/components/admin-video-reviews*`、`admin.json` | — |
 | `video-dubs-captions-package` | 字幕跟配音時間軸、上傳包含音軌、`UPLOAD.md` 的「語言」步驟、審看頁試聽、skill 的 `publish.md` | `tools/video/core/stages.mjs`、`tools/video/core/captions.mjs`、`tools/video/package`、`tools/video/review`、skill 的 references | command |
-| `video-dubs-worker` | 工人的「dubs synthesized」步驟、翻譯的縮短模式、`qa` 的 `dubs` 項、`AUTOMATION.md` | `tools/video/automation`、`tools/video/qa`、`docs/videos/AUTOMATION.md`、翻譯提示 | 前四張 |
+| `video-dubs-worker` | 工人依每支影片的 `dub_locales` 做配音、翻譯的縮短模式、送 `dubs` 審核、`qa` 的 `dubs` 項、`AUTOMATION.md` | `tools/video/automation`、`tools/video/qa`、`docs/videos/AUTOMATION.md`、翻譯提示 | 前四張 |
 
-順序：command、check-language、setting 可以馬上平行做；captions-package 等 command；worker 最後。command 做完就能在本機對第二批的任何一支試做一條英文音軌，讓站主先聽同一個聲音講英文像不像，再決定要不要往下做。
+順序：command、check-language、setting 可以馬上平行做；captions-package 等 command；worker 最後。command 做完就能在本機對第二批的任何一支試做一條英文音軌，讓站主先聽同一個聲音講英文像不像。
