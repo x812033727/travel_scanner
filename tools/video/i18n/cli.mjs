@@ -14,27 +14,33 @@ import { parseArgs } from "node:util";
 
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { eachLine, LOCALES, NARRATION_LOCALE, textHash } from "../core/schema.mjs";
-import { loadProject } from "../core/state.mjs";
+import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
 import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
+import { speechHash } from "../core/timeline.mjs";
 import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes } from "../core/translations.mjs";
+import { DEFAULT_RATES, lineBudgets } from "../dubs/plan.mjs";
 
 export const TARGET_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 
 const sheetFile = (workdir, locale) => path.join(workdir, "i18n", `${locale}.todo.json`);
 const translationFile = (dir, locale) => path.join(dir, "i18n", `${locale}.json`);
 
+const SHEET_NOTE = "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are.";
+const BUDGET_NOTE = " `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the zh-TW line takes, so stay under it.";
+
 /**
  * The worksheet for one locale: every line, chapter and YouTube field with its current
  * translation. One whose zh-TW source changed since the merge, or that was merged before its source
- * was hashed, is marked todo with an empty `text`, like a missing one.
+ * was hashed, is marked todo with an empty `text`, like a missing one. With `budgets` (line id to
+ * characters, from the narration timeline), each line also says how long its dub may be.
  */
-export function buildSheet(doc, translation, locale) {
+export function buildSheet(doc, translation, locale, budgets = null) {
   const current = translation ?? {};
   const lines = [];
   for (const { scene, line } of eachLine(doc)) {
     const entry = current.lines?.[line.id];
     const fresh = entry && entry.source_hash === textHash(line.text) && entry.text;
-    lines.push({ id: line.id, scene: scene.id, todo: !fresh, source: line.text, text: fresh ? entry.text : "" });
+    lines.push({ id: line.id, scene: scene.id, todo: !fresh, source: line.text, text: fresh ? entry.text : "", ...(budgets ? { max_chars: budgets[line.id] } : {}) });
   }
   const state = metadataStatus(doc, current);
   const chapters = chapterScenes(doc).map((scene) => {
@@ -48,7 +54,7 @@ export function buildSheet(doc, translation, locale) {
   return {
     locale,
     slug: doc.slug,
-    note: "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are.",
+    note: budgets ? `${SHEET_NOTE}${BUDGET_NOTE}` : SHEET_NOTE,
     title: field("title", ""),
     description: field("description", ""),
     tags: field("tags", []),
@@ -163,10 +169,15 @@ export async function run(command, args, ctx) {
   const { doc } = project;
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   if (command === "i18n-sheet") {
+    // Once the narration exists, each line's slot is known, and so is how long its dub may be.
+    const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+    const timed = timeline && timeline.speech_hash === speechHash(doc, project.lexicon);
     for (const locale of values.locales) {
-      const sheet = buildSheet(doc, project.translations[locale], locale);
+      const fit = timed ? readJson(dubArtifacts(workdir, locale).fit, null) : null;
+      const budgets = timed ? lineBudgets(timeline, fit?.rates?.measured ?? DEFAULT_RATES[locale]) : null;
+      const sheet = buildSheet(doc, project.translations[locale], locale, budgets);
       atomicWrite(sheetFile(workdir, locale), `${JSON.stringify(sheet, null, 2)}\n`);
-      ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}\n`);
+      ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}${budgets ? " (with max_chars for the dub)" : ""}\n`);
     }
     return EXIT.ok;
   }
