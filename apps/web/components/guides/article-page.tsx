@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from "next";
+import { headers } from "next/headers";
 import { permanentRedirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
@@ -59,17 +60,22 @@ function listingOf(kind: GuideKind, t: Translate): Crumb {
  * (`/guides/howto/Narita-To-Tokyo`) is sent to the canonical address for good rather than
  * answered with the "temporarily unavailable" notice the loader's identity guard would
  * otherwise produce: the article is live, only the address was wrong. `guideHref` builds
- * the locale-less path; the `Link`-less redirect needs the locale on it.
+ * the locale-less path; the `Link`-less redirect needs the locale on it. The query string
+ * goes along, so a campaign-tagged link that capitalised the slug keeps its tags.
  */
-function canonicalSlugOrRedirect({ locale, kind, slug }: GuideArticleRoute): void {
+async function canonicalSlugOrRedirect({ locale, kind, slug }: GuideArticleRoute): Promise<void> {
   const canonical = slug.toLowerCase();
-  if (canonical !== slug) permanentRedirect(`/${locale}${guideHref(kind, canonical)}`);
+  if (canonical === slug) return;
+  // proxy.ts writes this header from the request's own URL on every page request.
+  const requested = (await headers()).get("x-travel-pathname") || "";
+  const query = requested.includes("?") ? requested.slice(requested.indexOf("?")) : "";
+  permanentRedirect(`/${locale}${guideHref(kind, canonical)}${query}`);
 }
 
 export async function guideArticleMetadata(
   { locale, kind, slug }: GuideArticleRoute, parent?: ResolvingMetadata,
 ): Promise<Metadata> {
-  canonicalSlugOrRedirect({ locale, kind, slug });
+  await canonicalSlugOrRedirect({ locale, kind, slug });
   const [state, t] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
@@ -182,7 +188,7 @@ async function relatedTravel(
 }
 
 export async function renderGuideArticle({ locale, kind, slug }: GuideArticleRoute) {
-  canonicalSlugOrRedirect({ locale, kind, slug });
+  await canonicalSlugOrRedirect({ locale, kind, slug });
   const [rawState, t, nav, ts] = await Promise.all([
     getGuideArticle(kind, slug, locale),
     getTranslations({ locale, namespace: "common" }),
