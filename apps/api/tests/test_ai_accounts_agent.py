@@ -239,6 +239,11 @@ def wait_until(check: Callable[[], bool], seconds: float = 10.0) -> None:
     raise AssertionError("condition not met in time")
 
 
+def _journal(capsys: pytest.CaptureFixture[str], prefix: str) -> list[str]:
+    """This test's lines: a probe an earlier test started can still be logging."""
+    return [line for line in capsys.readouterr().err.splitlines() if line.startswith(prefix)]
+
+
 def slot_of(overview: dict[str, Any], tool: str, slot: str) -> dict[str, Any]:
     return next(item for item in overview["slots"] if (item["tool"], item["slot"]) == (tool, slot))
 
@@ -706,11 +711,37 @@ def test_a_probe_that_raises_is_logged_and_the_account_can_be_probed_again(
     assert application.finalize("claude", "b") is None
     wait_until(lambda: claude.refreshes == ["b"])
     wait_until(lambda: not application.usage_refreshing("claude", "b"))
-    logged = capsys.readouterr().err.splitlines()
+    logged = _journal(capsys, "claude usage probe b failed:")
     assert len(logged) == 1
     assert logged[0].startswith("claude usage probe b failed: Traceback")
     assert "CliError: cannot start claude for <email>: No such file" in logged[0]
     assert "owner@x.test" not in logged[0]
+
+
+def test_a_snapshot_the_recorder_would_not_rewrite_is_never_probed(tmp_path: Path) -> None:
+    now = [1_790_000_000.0]
+    config = make_config(tmp_path, claude_cache_seconds=0.0)
+    claude = RecordingAccounts("a@x.test")
+    application = AgentApplication(
+        config, claude=claude, codex=RecordingAccounts("c@x.test"), clock=lambda: now[0]
+    )
+    claude.signed_in = True
+    # A Claude session over SSH updated the snapshot 30 s ago: the recorder keeps unchanged
+    # numbers for 60 s, so a probe now could only end in a false failure.
+    claude.usage = {"source": "snapshot", "recorded_at": int(now[0]) - 30, "windows": []}
+    assert not application.maybe_refresh_usage("claude", "b", claude.status("b"), force=True)
+    overview = application.overview(fresh=True)
+    assert slot_of(overview, "claude", "b")["usage_refreshing"] is False
+    assert claude.refreshes == []
+    # A finished login is a new account in the folder: it is probed whatever the age.
+    assert application.maybe_refresh_usage(
+        "claude", "b", claude.status("b"), force=True, after_login=True
+    )
+    wait_until(lambda: claude.refreshes == ["b"])
+    # Once the interval has passed, the refresh button probes again.
+    now[0] += 60
+    assert application.maybe_refresh_usage("claude", "c", claude.status("c"), force=True)
+    wait_until(lambda: claude.refreshes == ["b", "c"])
 
 
 def test_api_billed_claude_accounts_are_never_probed(tmp_path: Path) -> None:
@@ -792,9 +823,8 @@ def test_usage_probe_never_starts_a_sign_in(
     assert ClaudeAccounts(config).refresh_usage("d") is False
     assert time.monotonic() - started < 15
     assert statusline.read_snapshot(home) is None
-    logged = capsys.readouterr().err.splitlines()
+    logged = _journal(capsys, "claude usage probe d: gave up (login prompt) after ")
     assert len(logged) == 1
-    assert logged[0].startswith("claude usage probe d: gave up (login prompt) after ")
     assert "no message sent" in logged[0]
     assert "Select login method: | 1. Claude account with subscription" in logged[0]
 
@@ -820,9 +850,8 @@ def test_a_probe_that_times_out_says_so_and_whether_it_sent_the_message(
     config = make_config(tmp_path, claude_usage_quiet_seconds=1.0, claude_usage_message_seconds=1.5)
     _probe_slot(config, "c", "fake-silent")
     assert ClaudeAccounts(config).refresh_usage("c") is False
-    logged = capsys.readouterr().err.splitlines()
+    logged = _journal(capsys, "claude usage probe c: gave up (timed out) after ")
     assert len(logged) == 1
-    assert "claude usage probe c: gave up (timed out) after " in logged[0]
     assert "message sent;" in logged[0] and "no message sent" not in logged[0]
     assert "Weekly limit reached" in logged[0]
 

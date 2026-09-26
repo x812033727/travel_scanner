@@ -237,10 +237,11 @@ class ProbingAccounts(Accounts):
         self.release = threading.Event()
 
     def details(self, slot: str) -> dict[str, Any]:
-        # A fresh snapshot, so looking at the accounts starts no probe of its own.
+        # Young enough that looking at the accounts starts no probe of its own, and older
+        # than the recorder's rewrite interval, so a forced probe still runs.
         view = super().details(slot)
         if view["usage"] is not None:
-            view["usage"]["recorded_at"] = time.time()
+            view["usage"]["recorded_at"] = time.time() - 120
         return view
 
     def refresh_usage(self, slot: str) -> bool:
