@@ -108,7 +108,13 @@ async def run_stage(
     provider_name, model = stage_choice(row, request.stage)
     on_plan = provider_name == SUBSCRIPTION_PROVIDER
     usage = await usage_view(session, row)
-    new_draft = request.stage == DRAFT_STAGE and not await slug_has_draft(session, request.slug)
+    # A series document, an episode planned from an approved chapter, a recap or a fix is not
+    # one of the month's drafts (docs/videos/SERIES.md): the series has its own monthly cap.
+    new_draft = (
+        request.stage == DRAFT_STAGE
+        and not request.variant
+        and not await slug_has_draft(session, request.slug)
+    )
     problem = budget_problem(usage, new_draft=new_draft, billed=not on_plan)
     if problem:
         raise StageFailed(429, "video_ai_budget_exhausted", problem)
@@ -148,7 +154,9 @@ async def run_stage(
     session.add(
         VideoAiRun(
             slug=request.slug,
-            stage=request.stage,
+            # Recorded under "planner/setting" and the like, so the draft count (planner runs)
+            # does not see a series document as a tutorial draft.
+            stage=f"{request.stage}/{request.variant}" if request.variant else request.stage,
             provider=provider_name,
             model=used_model,
             status="failed" if failure else "ok",

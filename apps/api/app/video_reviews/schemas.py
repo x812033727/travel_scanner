@@ -9,7 +9,10 @@ from pydantic import BaseModel, Field, field_validator
 
 # look and storyboard belong to the drama format (docs/videos/DRAMA.md): the character sheets
 # the owner picks from, one review per character, and the keyframes before any clip is made.
-Gate = Literal["outline", "look", "storyboard", "audio", "final", "publish"]
+# script is an episode's screenplay, read before any image or clip is paid for
+# (docs/videos/SERIES.md).
+Gate = Literal["outline", "script", "look", "storyboard", "audio", "final", "publish"]
+SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
 ContentType = Literal["video/mp4", "audio/mp4", "image/png", "image/jpeg"]
 MAX_PAYLOAD_BYTES = 256 * 1024
 SHA256_PATTERN = r"^[0-9a-f]{64}$"
@@ -38,6 +41,9 @@ class ProjectIn(BaseModel):
     source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
     # Slides or the AI drama route (docs/videos/DRAMA.md). Left out, the stored one stays.
     format: VideoFormat | None = None
+    # An episode of a long series (docs/videos/SERIES.md). Left out, the stored ones stay.
+    series_slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
+    episode_number: int | None = Field(default=None, ge=1, le=10_000)
 
 
 class ReviewFile(BaseModel):
@@ -95,6 +101,9 @@ class ProjectSummary(BaseModel):
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0
+    # The series this video is an episode of, if any (docs/videos/SERIES.md).
+    series_slug: str | None = None
+    episode_number: int | None = None
 
 
 class ProjectOut(ProjectSummary):
