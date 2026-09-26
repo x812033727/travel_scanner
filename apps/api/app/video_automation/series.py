@@ -946,6 +946,9 @@ async def start_episode(
         started_at=now,
     )
     session.add(request)
+    # The episode points at the request, and nothing tells the unit of work which of the two
+    # to write first: flush the request before the episode carries its id.
+    await session.flush()
     episode.status = "started"
     episode.slug = video_slug
     episode.request_id = request.id

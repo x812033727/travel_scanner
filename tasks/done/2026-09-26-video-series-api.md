@@ -25,6 +25,7 @@ scope:
   - apps/api/migrations/versions
   - apps/api/tests/test_video_series.py
   - apps/api/app/video_automation/ai.py
+  - apps/api/tests/test_migration_0097_video_drama_requests.py
   - apps/api/tests/test_video_automation_settings.py
   - apps/api/tests/test_video_reviews.py
 ---
