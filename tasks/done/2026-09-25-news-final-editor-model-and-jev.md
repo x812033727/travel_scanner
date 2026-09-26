@@ -1,13 +1,13 @@
 ---
 id: 2026-09-25-news-final-editor-model-and-jev
 title: News final editor model and Jev final gate, auto-publish without the shadow gate
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-news-final-editor
 claimed_at: 2026-09-25T13:48:47Z
 created_at: 2026-09-25T13:48:39Z
-completed_at:
+completed_at: 2026-09-26T00:56:15Z
 branch: claude/news-final-editor
 depends_on: []
 scope:
@@ -73,3 +73,7 @@ final-edit-* and jev-final.
 ## Notes
 
 - Migration number: PR #759 took 0093; this one is 0094 on top of it.
+- Merged as #763 and live since the deploy of 5591af82 on 2026-09-26 (migration 0094 at
+  head). The editor defaults to anthropic / claude-opus-5-5, so it only runs once the AI
+  vendors card puts Claude on the subscription accounts; until then stage two fails at
+  final-edit-zh-TW.
