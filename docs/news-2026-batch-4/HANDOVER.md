@@ -323,6 +323,70 @@ Anthropic 篇的連結整句刪除。
 **學到的**：同批互指的 `article` inline 只能指向同一個 PR 會上線的文章，波次拆開時要回頭刪；「四份來源都沒提到 X」這種否定句
 每一份都要 grep（地區、價格、ChatGPT 方案三個否定句在第二輪都被來源打臉，改成限縮到內文）；第一輪新寫的句子是第二輪最常翻案的地方。
 
+## 1h. 自動化漏掉的十篇（批次 4.8，2026-09-26／27）：AI 四、科技三、幣圈三，五語
+
+每小時的新聞自動化從 9/24 起幾乎沒有產出，站主 2026-09-26 要求在重跑 127 則舊候選（PR #806）之外再手寫一批當練習。
+三位探索代理掃到 9/26 台北 21:03，候選清單原樣在 `candidates-since-0922-{ai,tech,crypto}.md`；十則的發布者都不在自動化的來源清單上
+（OpenAI、Anthropic、Qualcomm、WordPress.org、Synology、日本金融廳、台灣央行、韓國金融委），這就是它們被漏掉的原因。
+規則差異在 [`agents/DELTA-4-8.md`](agents/DELTA-4-8.md)：五語（同 4.5）、每篇一位 opus 研究代理、sonnet 撰稿、兩輪不同的 opus 查核、
+sonnet 翻譯、逐語審稿（ja／ko opus、en／zh-CN sonnet，一語兩組：AI 四篇一組、科技＋幣圈六篇一組），`display_order` 由 `RELATED` 的
+`# 4.8` 區決定（AI 186–189、科技 337–339、幣圈 230–232，接在 4.4 已佔的號碼之後）。十篇都過 `check_article.py --full --assets`，
+`pack_cli lint --kind life` 0 error、0 warning。
+
+| slug | order | zh-TW 字數 | 第一輪 主張／事實改動 | 第二輪 主張／改動 | 審稿採用（en／ja／ko／zh-CN） |
+| --- | --- | --- | --- | --- | --- |
+| `ai-news-chatgpt-ads-taiwan-20260923` | 186 | 2,811 | 116／8 | 48／4 | 0／14／23／5 |
+| `ai-news-gpt-6-sol-luna-20260923` | 187 | 2,918 | 180／14 | 97／10（＋3 項裁決） | 1／7／7／9 |
+| `ai-news-claude-opus-55-20260922` | 188 | 2,996 | 158／22 | 124／12 | 0／11／10／19 |
+| `ai-news-google-vids-omni-free-20260924` | 189 | 2,895 | 91／15 | 71／13 | 3／12／8／16 |
+| `tech-news-wordpress-712-20260922` | 337 | 2,924 | 125／14 | 137／35（＋來源替換） | 0／9／5／1 |
+| `tech-news-synology-dsm-sa2613-20260918` | 338 | 2,908 | 146／16 | 91／11 | 0／19／7／0 |
+| `tech-news-snapdragon-8-elite-gen6-20260922` | 339 | 2,425 | 121／12 | 87／11 | 8／35／31／2 |
+| `crypto-news-japan-onchain-finance-forum-20260925` | 230 | 2,804 | 127／14 | 114／2 | 4／13／4／9 |
+| `crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917` | 231 | 2,936 | 168／45 | 117／7 | 1／14／10／9 |
+| `crypto-news-korea-market-manipulation-referrals-20260923` | 232 | 2,504 | 180／24 | 106／8 | 0／12／21／7 |
+
+查核報告每篇兩個檔在 [`factcheck-draft/`](factcheck-draft)；研究紀錄在三個垂直工作區的 `research/`；繪圖在 `build_assets.py` 的 `# 4.8` 區
+（協調者畫，照定稿；圖上不放數字、不畫比特幣符號）；`related` 只指同批同垂直的文章。
+
+**裁決（不再翻案）**：
+- WordPress 的事件是 9/22 的 7.1.2 發布，不是 KEV（slug 不帶 kev）；KEV 只寫「美國時間 9 月 25 日」。第二輪把 KEV JSON 換成
+  WordPress.org〈Dashboard screen〉說明頁（At a Glance 小工具底部寫版本號），因為「怎麼確認自己的版本」是讀者要做的事，
+  9/28 期限與台北時間換算隨之拿掉。
+- Synology 不提 KEV；「沒有遭利用跡象」只用 CISA 的三個 SSVC 值一起寫。修補版本的日期（6–7 月）早於公告，照寫、不解釋。
+- Snapdragon 只寫高通；新聞稿只有電頭 MAUI、沒有時區，不寫「夏威夷時間」；唯一的規格數字是 2 奈米製程節點。
+- GPT-6：OpenAI 的方案頁把 GPT-6 在 Free／Go 欄標 No，公告與 changelog 寫 Free／Go 可在桌面 App 用 Luna。正文照公告並歸因，
+  標題改成不主張 Free／Go 可用（「API 降價、Codex 可用，ChatGPT 對話裡還沒有」）；發布當天三頁重讀。
+- Google Vids：兩份說明頁的免費額度不同（每月 6 部 vs 最多 50 部），並列各自歸因；Flash-Lite 旁白照 Vids 公告寫 Coming soon，
+  同日另一篇 TTS 公告寫「開始推出」，所以標題不再寫「哪些還沒上線」。
+- Opus 5.5：三個數字（20% 牌價、60% 快取讀取、約 40% 成本估計）處處分開；蒸餾類是直接擋下、不轉模型。
+- 韓國：金融委員會的告發（고발）與通報偵查機關（수사기관 통보）分開寫，一律「偵查機關」，不寫「檢調」；「特定交易所」不寫「一家」。
+- 央行：不寫成與金管會 9/22 試辦是聯合行動；零售型 CBDC「尚無發行急迫性」；zh-CN 標題寫「台湾央行」（大陸讀者會把「央行」讀成人民銀行）。
+
+**協調者對 zh-TW 原稿的修訂**（查核兩輪之後；腳本與理由在工作區 `_tools/coordinator/`，四個譯文的對應修訂在 `translation-corrections.json`）：
+- 日本論壇：刪第一、二段重複的「不是修法」半句；FAQ 兩處查證流水帳改直述。
+- Snapdragon：刪「——不是全部」（來源只寫 many of the same）。
+- Vids 標題「哪些還沒上線」→「使用前的限制」；韓國「特定一家／單一交易所」→「特定交易所」，案件④補 90% 被用作上架資格那半句（FAQ 有、正文原本沒有）。
+- GPT-6 標題改寫、description 補「公告也寫」；ChatGPT 端「當天逐步推出」補「OpenAI 預計」（來源 we plan to，ja 審稿抓到）。
+- Opus 5.5：FAQ 4 的例子換成正文的例子；計費句補「或轉給其他模型」（來源 stop or fall back，ko 審稿抓到）。
+- 央行：摘要與小標補「應用場景」；「以下是央行整理指出」改通順；「9 月 18 日的資料」補 2025 年（ja 審稿抓到）。
+- WordPress：「CVSS 4.0 基本分數」→「整體分數」（GHSA 印的是 overall score，en 審稿抓到）。
+
+**上線紀錄（2026-09-26 UTC）**：PR #817 squash `fe852236`（17:48Z）；部署 `deploy_20260926_174838.log`，17:50Z 上線（alembic head、
+`/health`／`/ready` 200、首頁 200）。發布前重讀活頁面（OpenAI 國家表台灣仍 Available、Sonnet／Haiku 5.5 未推出、Vids 兩份說明頁的 6／50 未變）。
+主機腳本 `/root/news48-20260927/import.sh`（dryrun／publish／recheck 三模式，檔案夾在 base64 裡傳上去；把指令直接塞進 plink 的巢狀引號
+第一次就壞了，`sh` 報 Unterminated quoted string、什麼都沒寫）：dry-run 50 create＋15 update，站主同意後 publish：created 50、updated 15、
+published 65、taxonomy_updated 10、failed null；`guides-links-rebuild` unresolved 0；複核 dry-run 65 筆全 unchanged；
+`verify_public.py --from-report publish.json --sitemap` 65 頁 PASS。
+
+**學到的**：
+- 逐語審稿又抓到三個兩輪查核都放過的原稿問題（計畫語氣、計費範圍、漏年份），全是「限定詞或時間錨點被省掉」這一類。
+- 審稿代理交的 research 修正若用整串陣列或 `"key": "value"` 當 `old`，`apply_corrections.py` 一律 0 matches；規格要寫明 `old` 是單一字串值。
+- 譯者會把表格 caption 與圖說譯成一字不差的同一句，`apply_corrections.py` 就改不動（2 matches），要協調者分開手改。
+- 繪圖要在翻譯之後跑：圖上的阿拉伯數字必須出現在該語言正文（ja 的「4つ」被 `check_article.py` 擋下，改成「四つ」）。
+- 本 session 只能寫自己的 worktree（hook），第二個 worktree 開了也不能用；批次要在同一個 worktree 開新分支做。
+- 用量（Max）：十篇從研究到審稿，5 小時窗約用了 55%、週額度約 13%；opus 研究與查核每篇約 25–33 萬 tokens，sonnet 撰稿與翻譯約 25–40 萬。
+
 ## 2. 還沒做完的事
 
 ### 2.1 上線後仍可修訂的原稿用詞（都不是事實錯誤）
