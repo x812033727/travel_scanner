@@ -34,6 +34,7 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    EVIDENCE_REFRESH_MARKER,
     ZH_DRAFT_READY,
     document_fingerprint,
     evidence_fingerprint,
@@ -62,7 +63,11 @@ from app.news_automation.schemas import (
     StatsView,
     Vertical,
 )
-from app.news_automation.validation import revalidate_evidence, validate_source_configuration
+from app.news_automation.validation import (
+    refresh_evidence,
+    revalidate_evidence,
+    validate_source_configuration,
+)
 from app.problems import AppError
 
 # The news stages run through the guide-search adapters in app.hotspots.ai_search, so a
@@ -655,6 +660,90 @@ async def reverify_candidate(
     return await candidate_detail(session, row.id)
 
 
+async def refresh_candidate_evidence(
+    session: AsyncSession,
+    actor: User,
+    candidate_id: UUID,
+    payload: CandidateAction,
+    redis: Redis | None = None,
+) -> CandidateDetail:
+    """Re-check a candidate held for changed evidence against the current pages.
+
+    Each evidence page is fetched again and its current text replaces the stored excerpt and
+    hash. The saved five-locale article then goes through the fact check, the locale reviews
+    and Jev's last call again, against the new text; the old verification no longer matches
+    the evidence, so nothing can be published on it. A story already judged distinct stays
+    distinct: that decision is carried to the new evidence.
+    """
+
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if (
+        row.status != "manual_review"
+        or row.error_code != "news_evidence_changed"
+        or row.guide_article_id is None
+    ):
+        raise AppError(409, "news_candidate_not_refreshable", "這個候選不是在等來源更新")
+    evidence = list(
+        await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == row.id))
+    )
+    previous_hash = row.evidence_hash
+    distinct = (
+        await session.scalar(
+            select(NewsAssessment.id)
+            .where(
+                NewsAssessment.candidate_id == row.id,
+                NewsAssessment.assessment_type == "duplicate",
+                NewsAssessment.verdict == "pass",
+                NewsAssessment.evidence_hash == previous_hash,
+            )
+            .limit(1)
+        )
+        is not None
+    )
+    changed, problems = await refresh_evidence(
+        session,
+        evidence,
+        rate_limiter=RedisHostRateLimiter(redis) if redis is not None else None,
+    )
+    if problems:
+        await session.rollback()
+        raise AppError(
+            409, "news_evidence_refresh_failed", "無法讀取最新來源：" + "; ".join(problems[:3])
+        )
+    row.evidence_hash = evidence_fingerprint(
+        [{"url": item.url, "content_hash": item.content_hash} for item in evidence]
+    )
+    if distinct:
+        session.add(
+            NewsAssessment(
+                candidate_id=row.id,
+                assessment_type="duplicate",
+                verdict="pass",
+                provider=HUMAN_PROVIDER,
+                reasons_json=[payload.reason],
+                details_json={"basis": "evidence_refreshed", "previous_evidence": previous_hash},
+                evidence_hash=row.evidence_hash,
+                prompt_version=row.prompt_version,
+                created_by_user_id=actor.id,
+            )
+        )
+    await _queue_reverify(session, row, payload.reason, marker=EVIDENCE_REFRESH_MARKER)
+    audit(
+        session,
+        actor,
+        "news_candidate_evidence_refreshed",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        changed_urls=changed,
+        previous_evidence_sha256=previous_hash,
+        evidence_sha256=row.evidence_hash,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
 async def clear_duplicate_candidate(
     session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
 ) -> CandidateDetail:
@@ -713,7 +802,12 @@ def _queue_new_draft(row: NewsCandidate, reason: str) -> None:
     row.human_decision = None
 
 
-async def _queue_reverify(session: AsyncSession, row: NewsCandidate, reason: str) -> None:
+async def _queue_reverify(
+    session: AsyncSession,
+    row: NewsCandidate,
+    reason: str,
+    marker: str = "news_reverify_requested",
+) -> None:
     """Run the edited guide drafts through the checks again instead of drafting anew."""
 
     if row.guide_article_id is None:
@@ -731,7 +825,7 @@ async def _queue_reverify(session: AsyncSession, row: NewsCandidate, reason: str
         raise AppError(422, "news_locale_bundle_incomplete", "五個語言版本必須完整")
     row.draft_bundle_json = documents
     row.status = "discovered"
-    row.error_code = "news_reverify_requested"
+    row.error_code = marker
     row.error_detail = None
     row.retry_count += 1
     row.human_reason = reason

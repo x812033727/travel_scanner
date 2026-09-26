@@ -59,10 +59,10 @@ type Situation =
   | "zhDraft" | "translationHold" | "readyToPublish" | "finalEditHold" | "jevFinalHold"
   | "shadow" | "jevHold" | "fixArticle" | "duplicate" | "evidenceChanged" | "redraft"
   | "failed" | "needsEvidence" | "published" | "closed" | "working";
-type Action = "approve" | "publish" | "verify" | "notDuplicate" | "retry" | "reject" | "incident";
+type Action = "approve" | "publish" | "verify" | "notDuplicate" | "refresh" | "retry" | "reject" | "incident";
 const actionPath: Record<Action, string> = {
   approve: "approve", publish: "publish", verify: "verify", notDuplicate: "not-duplicate",
-  retry: "retry", reject: "reject", incident: "major-error",
+  refresh: "refresh-evidence", retry: "retry", reject: "reject", incident: "major-error",
 };
 // Only the buttons that can work for the situation, so none sit greyed out unexplained.
 const situationActions: Record<Situation, readonly Action[]> = {
@@ -78,8 +78,8 @@ const situationActions: Record<Situation, readonly Action[]> = {
   jevHold: ["publish", "verify", "reject"],
   fixArticle: ["verify", "reject"],
   duplicate: ["notDuplicate", "reject"],
-  // Stored evidence hashes are never refreshed, so publish and reruns fail the same way.
-  evidenceChanged: ["reject"],
+  // The pages changed after the check: take the current text and check the article again.
+  evidenceChanged: ["refresh", "reject"],
   redraft: ["retry", "reject"],
   failed: ["approve", "retry", "verify", "reject"],
   // Only lead-only pages: a rerun cannot find a page to cite.
@@ -88,7 +88,7 @@ const situationActions: Record<Situation, readonly Action[]> = {
   closed: [],
   working: [],
 };
-const primaryActions: readonly Action[] = ["approve", "publish", "notDuplicate", "incident"];
+const primaryActions: readonly Action[] = ["approve", "publish", "notDuplicate", "refresh", "incident"];
 
 function situationOf(candidate: NewsCandidateSummary): Situation {
   switch (candidate.status) {
@@ -231,13 +231,13 @@ export function AdminNewsWorkspace() {
 
   const doneMessage: Record<Action, string> = {
     approve: copy.doneApprove, publish: copy.donePublish, verify: copy.doneVerify,
-    notDuplicate: copy.doneNotDuplicate, retry: copy.doneRetry, reject: copy.doneReject,
-    incident: copy.doneIncident,
+    notDuplicate: copy.doneNotDuplicate, refresh: copy.doneRefresh, retry: copy.doneRetry,
+    reject: copy.doneReject, incident: copy.doneIncident,
   };
   const actionLabel: Record<Action, string> = {
     approve: copy.approve, publish: copy.publish, verify: copy.verify,
-    notDuplicate: copy.notDuplicate, retry: copy.retry, reject: copy.reject,
-    incident: copy.incident,
+    notDuplicate: copy.notDuplicate, refresh: copy.refresh, retry: copy.retry,
+    reject: copy.reject, incident: copy.incident,
   };
   // Confirming again resumes the translations of a draft the owner already confirmed.
   const labelFor = (name: Action) =>

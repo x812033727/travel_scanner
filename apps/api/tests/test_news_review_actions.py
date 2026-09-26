@@ -4,6 +4,7 @@ parks a candidate that stopped before its five-locale article existed."""
 from __future__ import annotations
 
 from datetime import timedelta
+from typing import Any
 from unittest.mock import AsyncMock, Mock
 from uuid import uuid4
 
@@ -468,3 +469,96 @@ async def test_auto_publish_needs_automatic_mode_but_no_shadow_gate(
             await service.update_settings(session, owner, _settings_write(mode="shadow"))
     await engine.dispose()
     assert shadow.value.code == "news_mode_shadow"
+
+
+async def held_for_changed_evidence(session: AsyncSession) -> NewsCandidate:
+    candidate = await seed_candidate(session, status="manual_review")
+    candidate.error_code = "news_evidence_changed"
+    candidate.evidence_hash = "stale"
+    await add_evidence(session, candidate)
+    await add_article(session, candidate)
+    session.add(
+        NewsAssessment(
+            candidate_id=candidate.id,
+            assessment_type="duplicate",
+            verdict="pass",
+            provider="jev",
+            reasons_json=[],
+            details_json={},
+            evidence_hash="stale",
+            prompt_version="news-v1",
+        )
+    )
+    await session.commit()
+    return candidate
+
+
+@pytest.mark.asyncio
+async def test_refreshing_changed_evidence_takes_the_current_pages_and_rechecks_the_article(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+
+    async def refresh(_session: Any, evidence: list[NewsEvidence], **_kwargs: Any) -> Any:
+        for row in evidence:
+            if row.url == FIRST_PARTY_URL:
+                row.content_hash = "a" * 64
+                row.excerpt = "The model shipped today, and the page now says more."
+        return [FIRST_PARTY_URL], []
+
+    monkeypatch.setattr(service, "refresh_evidence", refresh)
+    async with factory() as session:
+        candidate = await held_for_changed_evidence(session)
+        detail = await service.refresh_candidate_evidence(session, EDITOR, candidate.id, ACTION)
+        stored = await session.get(NewsCandidate, candidate.id)
+        carried = list(
+            await session.scalars(
+                select(NewsAssessment).where(
+                    NewsAssessment.candidate_id == candidate.id,
+                    NewsAssessment.assessment_type == "duplicate",
+                    NewsAssessment.provider == "human",
+                )
+            )
+        )
+        audits = list(await session.scalars(select(AdminAuditLog)))
+    await engine.dispose()
+
+    assert (detail.status, detail.error_code) == ("discovered", "news_evidence_refreshed")
+    assert stored is not None and stored.evidence_hash not in {None, "stale"}
+    assert set(stored.draft_bundle_json) == set(LOCALES), "the saved article is re-checked"
+    assert [row.evidence_hash for row in carried] == [stored.evidence_hash], (
+        "a story already judged distinct stays distinct on the new evidence"
+    )
+    refreshed = next(row for row in audits if row.action == "news_candidate_evidence_refreshed")
+    assert refreshed.metadata_json["changed_urls"] == [FIRST_PARTY_URL]
+
+
+@pytest.mark.asyncio
+async def test_only_a_changed_evidence_hold_is_refreshed_and_an_unreadable_page_changes_nothing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    monkeypatch.setattr(
+        service,
+        "refresh_evidence",
+        AsyncMock(return_value=([], [f"source_refetch_failed:{FIRST_PARTY_URL}:TimeoutError"])),
+    )
+    async with factory() as session:
+        candidate = await held_for_changed_evidence(session)
+        other = await seed_candidate(session, status="manual_review")
+        other.error_code = "news_jev_final_hold"
+        await session.commit()
+        candidate_id, other_id = candidate.id, other.id
+        with pytest.raises(AppError) as wrong_state:
+            await service.refresh_candidate_evidence(session, EDITOR, other_id, ACTION)
+        with pytest.raises(AppError) as unreadable:
+            await service.refresh_candidate_evidence(session, EDITOR, candidate_id, ACTION)
+    async with factory() as session:
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    assert wrong_state.value.code == "news_candidate_not_refreshable"
+    assert unreadable.value.code == "news_evidence_refresh_failed"
+    assert "TimeoutError" in unreadable.value.detail
+    assert stored is not None
+    assert (stored.error_code, stored.evidence_hash) == ("news_evidence_changed", "stale")
