@@ -91,6 +91,13 @@ and puts it back if that one does not finish.
     `lastOnboardingVersion`) in that account's `.claude.json` after a login and before a
     probe, and changes nothing else in the file.
   - Accounts on API billing are never probed.
+  - A probe that ends without a new snapshot writes one line to the journal
+    (`journalctl -u mokaair-ai-accounts`): the slot, why it gave up (`claude exited with
+    code N`, `timed out`, `login prompt`, `the terminal closed`), the seconds it ran,
+    whether the one-word message went out, and the last 20 lines of the screen joined
+    with ` | `. Email addresses become `<email>` and tokens `***`. A probe that raises
+    logs `claude usage probe <slot> failed:` and its traceback on one line. Before
+    2026-09-26 a failed probe left no trace at all.
 - **Antigravity:** agy shows quota only on its TUI's "Models & Quota" page (`/usage`), which
   asks Google and draws groups of buckets with the share left and when each refreshes.
   (`agy -p /usage` was reported to send the text to the model as a prompt.) On the same
