@@ -12,7 +12,7 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 ## Read first
 
 1. `<VIDEO_DOCS>/video.json`: the slides (`data`) show what the viewer sees while a line plays; use them for context and keep the terms consistent with what is on screen.
-2. The worksheet. Lines with `todo: true` need a translation; the others already have a current one, which you may improve only if it is wrong.
+2. The worksheet. Every entry with `todo: true` needs a translation: lines, chapters, the title, the description and the tags. Its `text` is empty because it is missing, or because its zh-TW source changed since the last merge (a renamed chapter, a new paragraph, reordered tags). The others already have a current one, which you may improve only if it is wrong.
 3. `<ROOT>/apps/api/app/guides/content/<SOURCE>.json` when `video.json` names a `source_guide`: its `<LOCALE>` version, if any, is the site's own wording for the same terms.
 
 ## Rules
