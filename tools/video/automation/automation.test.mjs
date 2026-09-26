@@ -3,14 +3,21 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { createHash } from "node:crypto";
+import { mkdirSync, writeFileSync } from "node:fs";
+
+import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
-import { fixture, sandbox } from "../core/fixtures/load.mjs";
-import { ROOT } from "../core/paths.mjs";
+import { readApprovals } from "../core/approvals.mjs";
+import { lookHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
+import { dramaFixture, fixture, sandbox } from "../core/fixtures/load.mjs";
+import { readJson, ROOT } from "../core/paths.mjs";
 import { pipelineStatus } from "../core/state.mjs";
+import { speechHash, visualHash } from "../core/timeline.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, planProblem, sheetDone } from "./flow.mjs";
-import { INSTRUCTIONS, parseAnswer, references } from "./prompts.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, planProblem, settle, sheetDone } from "./flow.mjs";
+import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, parseAnswer, references } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -121,9 +128,10 @@ test("a worksheet is done only when every line, chapter, title, description and 
   assert.equal(sheetDone({ ...sheet, tags: { text: [] } }), false);
 });
 
-/** The site as the worker sees it: settings, topics, the model runner, reviews and source pages. */
-function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [] } = {}) {
-  const calls = { run: [], reviews: [], reports: [], pages: [] };
+/** The site as the worker sees it: settings, topics, the model runner, reviews, drama requests and source pages. */
+function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused = false, videos = [], dramaRequests = [] } = {}) {
+  const calls = { run: [], reviews: [], reports: [], pages: [], drama: [] };
+  const requests = dramaRequests.map((request) => ({ status: "queued", slug: null, ...request }));
   const projects = new Map();
   // /admin/videos as a list: videos made elsewhere, then whatever the worker reports.
   const listed = new Map(videos.map((video) => [video.slug, { dropped_at: null, dropped_note: null, source_guide: null, ...video }]));
@@ -147,6 +155,15 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     if (pathname === "/api/video/automation/settings") return json(current);
     if (pathname === "/api/video/automation/videos") return json([...listed.values()]);
     if (pathname === "/api/video/automation/topics") return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/guides/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
+    if (pathname === "/api/video/automation/drama-requests/next") return json({ request: requests.find((request) => request.status === "queued") ?? null });
+    const drama = /^\/api\/video\/automation\/drama-requests\/([^/]+)\/(start|done)$/.exec(pathname);
+    if (drama) {
+      const request = requests.find((each) => each.id === drama[1]);
+      calls.drama.push({ id: drama[1], action: drama[2], slug: body?.slug ?? null });
+      if (!request) return json({ code: "video_drama_request_not_found", detail: "no" }, 404);
+      Object.assign(request, drama[2] === "start" ? { status: "started", slug: body.slug } : { status: "done" });
+      return json(request);
+    }
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
       if (paused) return json({ code: "video_ai_subscription_paused", detail: "every Claude account is at or above 80%" }, 429);
@@ -165,7 +182,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       }
       if (sub && init.method === "POST") {
         const list = reviewsOf(slug);
-        const same = list.find((review) => review.gate === body.gate && review.content_sha256 === body.content_sha256);
+        const same = list.find((review) => review.gate === body.gate && review.content_sha256 === body.content_sha256 && (review.subject ?? null) === (body.subject ?? null));
         if (same) return json(same);
         const review = { id: `r${list.length + 1}`, status: "pending", choice: null, note: null, decided_at: null, created_at: new Date().toISOString(), ...body };
         list.unshift(review);
@@ -177,7 +194,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
-  return { calls, fetchImpl, reviewsOf, listed, settings: current };
+  return { calls, fetchImpl, reviewsOf, listed, settings: current, requests };
 }
 
 function context(box, fetchImpl, clock) {
@@ -363,4 +380,213 @@ test("an outline sent back is re-planned with the owner's note, and a spent budg
   assert.equal(await main(["auto"], quiet.ctx), EXIT.ok);
   assert.match(quiet.out.stdout, /off in the settings/);
   assert.equal(off.calls.run.length, 0);
+});
+
+const DRAMA_SETTINGS = { drama_enabled: true, style_preset: "ink-wash", subtitle_burn_in: true, music_enabled: false, character_voice_pool: [{ provider: "gemini", name: "Kore", hint: "少女" }] };
+
+test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", () => {
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };
+  const video = { ...dramaFixture(), slug: "x" };
+  delete video.look.preset;
+  const settled = settle(video, { slug: "jingwei", settings, sourceGuide: null, root: ROOT, format: "drama" });
+  assert.equal(settled.format, "drama");
+  assert.equal(settled.look.preset, "ink-wash", "the settings tab's preset when the writer named none");
+  assert.equal(settled.look.style, video.look.style, "the writer's own style stays");
+  assert.equal(settled.subtitles.burn_in, true);
+  assert.equal(settled.music, undefined, "music is off in the settings");
+  assert.equal(settled.voice.name, "Sulafat");
+  const kept = settle({ ...dramaFixture(), slug: "x" }, { slug: "y", settings: { ...settings, drama: { ...DRAMA_SETTINGS, music_enabled: true } }, sourceGuide: null, root: ROOT, format: "drama" });
+  assert.equal(kept.look.preset, "cinematic-3d", "the writer's preset wins");
+  assert.ok(kept.music);
+  const slides = settle(fixture(), { slug: "z", settings, sourceGuide: null, root: ROOT });
+  assert.notEqual(slides.format, "drama", "a slides video is untouched");
+  assert.equal(slides.look, undefined);
+
+  const bible = "# 精衛\n## 故事前提\n溺水化鳥\n## 角色\n精衛\n## 站主觀點\n（提案）\n## 幕\n三幕\n## 大綱\n### 選項 A：告別\n一行說明：先告別\n開場鉤子：「很久以前」\n### 選項 B：風暴\n一行說明：先風暴\n開場鉤子：「那一天」\n";
+  assert.equal(planProblem({ slug: "jingwei", brief: bible, source_urls: [] }, new Set(), new Set(), "drama"), null);
+  assert.match(planProblem({ slug: "jingwei", brief: bible.replace("## 角色", "## 人物"), source_urls: [] }, new Set(), new Set(), "drama"), /角色/);
+  assert.match(planProblem({ slug: "jingwei", brief: bible, source_urls: [] }, new Set()), /觀眾看完能做到的事/, "a tutorial's brief wants its own sections");
+
+  assert.deepEqual(Object.keys(DRAMA_INSTRUCTIONS).sort(), ["listener", "planner", "verifier", "writer"]);
+  assert.match(instructionsFor("writer", "drama"), /"fix" is present/);
+  assert.match(instructionsFor("planner", "drama"), /## 故事前提/);
+  assert.equal(instructionsFor("translator", "drama"), INSTRUCTIONS.translator);
+  assert.equal(instructionsFor("writer"), INSTRUCTIONS.writer);
+  assert.ok(references(ROOT).drama_example.format === "drama");
+});
+
+const sha = (file) => createHash("sha256").update(readFileSync(file)).digest("hex");
+
+test("an owner's drama request is planned first, its failed sheets go back to the writer, the gates wait for the owner, and a spent cap blocks the clips", async () => {
+  const box = sandbox();
+  const slug = "jingwei-fills-the-sea";
+  const example = dramaFixture();
+  const bible = [
+    "# 精衛填海",
+    "## 故事前提",
+    "炎帝最小的女兒在東海溺水，化成一隻鳥。",
+    "## 角色",
+    "- jingwei 精衛：a girl of about twelve",
+    "- yandi 炎帝：a tall emperor",
+    "## 站主觀點",
+    "（提案）明知做不到還是要做。",
+    "## 幕",
+    "三幕。",
+    "## 大綱",
+    "### 選項 A：從告別講起",
+    "一行說明：先給告別。",
+    "開場鉤子：「很久以前，發鳩山上住著炎帝最小的女兒。」",
+    "### 選項 B：從風暴講起",
+    "一行說明：先給風暴。",
+    "開場鉤子：「那一天，東海起了大風。」",
+    "",
+  ].join("\n");
+  const answers = {
+    planner: (body) => ({ slug, title: "精衛填海", source_guide: null, source_urls: ["https://zh.wikisource.org/wiki/x"], brief: bible }),
+    writer: (body) => {
+      if (body.payload.fix) {
+        const video = structuredClone(body.payload.video);
+        for (const target of body.payload.fix.targets) {
+          const character = video.characters.find((each) => each.id === target.id);
+          if (character) character.appearance = `${character.appearance}, plain bronze crown without gems`;
+        }
+        return { video };
+      }
+      return { video: { ...structuredClone(example), slug }, claims: "原創：山海經北山經\n", lexicon_additions: {} };
+    },
+    verifier: () => ({ report: "# 連貫性第 1 輪\n", video: null, claims: "原創\n", changed_facts: 0 }),
+    listener: (body) => ({ video: body.payload.video, edits: [] }),
+  };
+  const request = { id: "6f1d2c3b-4a59-4e6f-8a7b-9c0d1e2f3a4b", premise: "精衛填海：炎帝最小的女兒在東海溺水，化成一隻鳥。", title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 2, note: "旁白慢一點" };
+  // One video at a time: the owner's request takes the place, so no scheduled draft starts beside it.
+  const site = fakeSite({ answers, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
+  const clock = { now: Date.parse("2026-09-26T10:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const workdir = path.join(box.work, slug);
+  const docFile = () => path.join(box.root, "docs", "videos", slug, "video.json");
+  const currentVideo = () => JSON.parse(readFileSync(docFile(), "utf8"));
+  const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
+  const runs = [];
+  let lookRuns = 0;
+  // The media stages, the narration and the uploads play here without any vendor; review-pull is real.
+  ctx.runCommand = async (command, runCtx) => {
+    runs.push(command.join(" "));
+    const [name] = command;
+    const video = existsSync(docFile()) ? currentVideo() : null;
+    const write = (file, data) => {
+      mkdirSync(path.dirname(path.join(workdir, file)), { recursive: true });
+      writeFileSync(path.join(workdir, file), JSON.stringify(data));
+    };
+    if (name === "tts") {
+      writeSyntheticNarration(video, lexicon(), workdir);
+      return { code: 0, out: "narration" };
+    }
+    if (name === "check-audio") return { code: 0, out: "every line passed" };
+    if (name === "look") {
+      const candidate = (passed) => [{ n: 1, seed: 1, file: "characters/x/001.png", sha256: "1".repeat(64), judge: { overall: passed ? 8 : 4, passed, problems: passed ? [] : ["wrong crown"] } }];
+      const failing = lookRuns++ === 0;
+      write("characters/manifest.json", {
+        look_hash: lookHash(video),
+        characters: {
+          jingwei: { name: "精衛", candidates: candidate(true), suggested: 1, needs_review: false },
+          yandi: { name: "炎帝", candidates: candidate(!failing), suggested: failing ? null : 1, needs_review: failing },
+        },
+      });
+      return failing ? { code: 1, out: "ERROR yandi: no candidate passed the judge: wrong crown\nrewrite the appearance" } : { code: 0, out: "2 characters" };
+    }
+    if (name === "keyframes") {
+      write("keyframes/manifest.json", { look_hash: lookHash(video), visual_hash: visualHash(video), shots: Object.fromEntries(shotScenes(video).map((scene) => [scene.id, { file: `keyframes/${scene.id}-1.png`, sha256: "2".repeat(64), needs_review: false, judge: { overall: 8, problems: [] } }])) });
+      return { code: 0, out: "4 keyframes" };
+    }
+    if (name === "render") {
+      write("frames/manifest.json", { visual_hash: visualHash(video), speech_hash: speechHash(video, lexicon()), subtitles_hash: subtitlesHash(video), theme_hash: "t", scenes: [], subtitles: { style: "drama", blank: "frames/sub-blank.png", cues: [] }, thumbnail: null });
+      return { code: 0, out: "rendered" };
+    }
+    if (name === "clips") return { code: 3, out: "this video has spent US$180.00 and the next generation costs about US$1.20, past the per-video cap of US$180; raise max_usd_per_video on /admin/videos or stop here" };
+    if (name === "review-push") {
+      const gate = command[command.indexOf("--gate") + 1];
+      const list = site.reviewsOf(slug);
+      if (gate === "look") {
+        const manifest = readJson(path.join(workdir, "characters", "manifest.json"));
+        for (const id of Object.keys(manifest.characters)) list.unshift({ id: `look-${id}-${list.length}`, gate: "look", subject: id, status: "pending", choice: null, note: null, decided_at: null, content_sha256: sha(path.join(workdir, "characters", "manifest.json")), payload: { options: [{ key: "A", index: 1 }] } });
+      }
+      if (gate === "audio") list.unshift({ id: `audio-${list.length}`, gate: "audio", status: "approved", choice: null, note: "Jev passed every line", decided_at: "2026-09-26T10:30:00Z", content_sha256: sha(path.join(workdir, "timeline.json")), payload: {} });
+      // The server approves a storyboard on its own when the judge passed every shot and the owner allows it.
+      if (gate === "storyboard") list.unshift({ id: `board-${list.length}`, gate: "storyboard", status: "approved", choice: null, note: null, decided_at: "2026-09-26T10:40:00Z", content_sha256: sha(path.join(workdir, "keyframes", "manifest.json")), payload: { shots: [], judge: { overall: 8, problems: [] } } });
+      return { code: 0, out: `${gate} submitted` };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, runCommand: undefined, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = { ...smallRefs, drama: "the drama route", drama_example: example, drama_brief: bible };
+
+  assert.match(await automation.step(), /drama: jingwei-fills-the-sea planned from the owner's request; outline sent/);
+  const planner = site.calls.run[0];
+  assert.equal(planner.stage, "planner");
+  assert.equal(planner.payload.premise, request.premise);
+  assert.deepEqual(planner.payload.target_minutes, [2, 2]);
+  assert.match(planner.instructions, /story bible/);
+  assert.deepEqual(site.calls.drama, [{ id: request.id, action: "start", slug }]);
+  assert.equal(site.requests[0].status, "started");
+  assert.equal(site.calls.reports.at(-1).format, "drama");
+  const state = () => automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.equal(state().format, "drama");
+  assert.equal(state().request_id, request.id);
+  assert.deepEqual(state().notes, ["owner request: 旁白慢一點"]);
+  assert.equal(await automation.step(), null, "the outline waits for the owner");
+
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "A" });
+  assert.match(await automation.step(), /chose outline A/);
+  assert.match(await automation.step(), /script drafted and passes lint/);
+  const writer = site.calls.run.find((call) => call.stage === "writer");
+  assert.match(writer.instructions, /"format": "drama"/);
+  assert.equal(writer.payload.drama_settings.style_preset, "cinematic-3d", "the request's preset");
+  assert.deepEqual(writer.payload.target_minutes, [2, 2]);
+  const written = currentVideo();
+  assert.equal(written.format, "drama");
+  assert.equal(written.music, undefined, "music is off in the settings");
+  assert.equal(written.characters.length, 2);
+  assert.match(await automation.step(), /fact-check round 1/);
+  assert.match(site.calls.run.find((call) => call.stage === "verifier").instructions, /continuity checker/);
+  assert.match(await automation.step(), /listener edit/);
+  assert.match(site.calls.run.find((call) => call.stage === "listener").instructions, /"speaker"/);
+
+  // look: the first run leaves 炎帝 without a passed sheet; the writer fixes the appearance; the second run passes.
+  assert.match(await automation.step(), /look prompts fixed \(round 1\) for yandi; look runs again next/);
+  const fix = site.calls.run.at(-1);
+  assert.equal(fix.stage, "writer");
+  assert.deepEqual(fix.payload.fix, { kind: "look", targets: [{ id: "yandi", problems: ["wrong crown"] }], problems: ["wrong crown"], owner_note: null });
+  assert.match(currentVideo().characters[1].appearance, /plain bronze crown/);
+  assert.equal(state().prompt_fixes.look, 1);
+  assert.match(await automation.step(), /look done/);
+  assert.equal(runs.filter((run) => run.startsWith("look ")).length, 2);
+  assert.equal(state().prompt_fixes.look, undefined, "a passed stage clears its fix count");
+
+  assert.match(await automation.step(), /character sheets sent to \/admin\/videos/);
+  assert.equal(site.reviewsOf(slug).filter((review) => review.gate === "look").length, 2);
+  assert.equal(await automation.step(), null, "the sheets wait for the owner");
+  for (const review of site.reviewsOf(slug).filter((each) => each.gate === "look")) Object.assign(review, { status: "approved", choice: review.subject === "jingwei" ? "A" : null, decided_at: "2026-09-26T10:20:00Z" });
+  assert.match(await automation.step(), /the owner chose the character sheets/);
+  assert.deepEqual(readJson(path.join(workdir, "characters", "choice.json")).chosen, { jingwei: 1, yandi: 1 });
+  assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "look"));
+
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.match(await automation.step(), /narration checked \(Jev passed every line\) and sent for review/);
+  assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "audio"), "the site's approval is pulled at once");
+  assert.match(await automation.step(), /keyframes done/);
+  assert.match(await automation.step(), /storyboard sent to \/admin\/videos/);
+  assert.match(await automation.step(), /the owner approved the storyboard/);
+  assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "storyboard"));
+  assert.match(await automation.step(), /frames rendered/);
+  assert.match(await automation.step(), /blocked — clips needs the owner: .*past the per-video cap/);
+  assert.equal(state().status, "blocked");
+  assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：clips needs the owner/);
+  // A blocked video frees its place: the next unit is a scheduled draft (not due to fail here), never the clips again.
+  assert.match((await automation.step()) ?? "", /^draft:/);
+  assert.equal(runs.filter((run) => run.startsWith("clips")).length, 1, "a blocked drama is not touched again");
+  assert.ok(MAX_PROMPT_FIX_ROUNDS >= 2);
 });
