@@ -14,6 +14,7 @@ import { approve, GATES } from "./core/approvals.mjs";
 import { docDir, resolveWorkdir, ROOT, UsageError } from "./core/paths.mjs";
 import { eachLine, LINE_ID } from "./core/schema.mjs";
 import { StageError, runCaptions } from "./core/stages.mjs";
+import { narrativeHash, writeScreenplay } from "./core/screenplay.mjs";
 import { lintProject, loadProject, pipelineStatus } from "./core/state.mjs";
 
 export const EXIT = { ok: 0, lint: 1, usage: 2, owner: 3, external: 4, missing: 5 };
@@ -51,8 +52,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   status   --slug S [--workdir D]                  where the video is, and the next command
   lint     --slug S | --file F [--json]            check video.json, brief.md, dictionary, YouTube limits
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
-  approve  --slug S --gate outline|look|storyboard|audio|final|publish [--workdir D] [--note T]
+  approve  --slug S --gate outline|script|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
+  script   --slug S                                write docs/videos/<slug>/script.md, the screenplay a series episode's owner reads
   review-push --slug S [--gate G | --report-only]  report the video to /admin/videos and submit the next gate
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
   captions --slug S [--workdir D]                  caption files for every current locale
@@ -144,6 +146,15 @@ async function cmdApprove(args, ctx) {
   return EXIT.ok;
 }
 
+async function cmdScript(args, ctx) {
+  const values = parse(args, { slug: { type: "string" } });
+  if (!values.slug) throw new UsageError("script needs --slug");
+  const project = loadProject({ slug: values.slug, root: ctx.root });
+  const file = writeScreenplay(project.dir, project.doc);
+  ctx.stdout.write(`${values.slug}: wrote ${path.relative(ctx.root, file)} (narrative ${narrativeHash(project.doc)})\n`);
+  return EXIT.ok;
+}
+
 async function cmdCaptions(args, ctx) {
   const values = parse(args, { slug: { type: "string" }, workdir: { type: "string" } });
   if (!values.slug) throw new UsageError("captions needs --slug");
@@ -171,7 +182,7 @@ async function delegate(command, args, ctx) {
   return module.run(command, args, { ...ctx, EXIT });
 }
 
-const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, captions: cmdCaptions };
+const COMMANDS = { lint: cmdLint, status: cmdStatus, ids: cmdIds, approve: cmdApprove, script: cmdScript, captions: cmdCaptions };
 
 export async function main(argv, overrides = {}) {
   const ctx = { root: ROOT, here: HERE, env: process.env, stdout: process.stdout, stderr: process.stderr, now: () => new Date(), ...overrides };

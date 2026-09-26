@@ -22,6 +22,7 @@ metadata:
 | --- | --- | --- | --- |
 | **全自動** | 深色投影片＋台灣口音合成旁白＋五語 CC，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
 | **AI 漫劇** | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋五語 CC，2–4 分鐘一集 | 代理寫故事聖經、劇本與分鏡，工具生成設定圖、關鍵影格、片段、音樂並合成；站主選大綱、選角色設定圖、聽旁白、看分鏡、看成片、自己上傳 | `.agents/skills/youtube-video/references/drama.md`（設計在 `docs/videos/DRAMA.md`） |
+| **長篇漫劇** | 一部約 100 集、分篇章的原創故事，一集接一集地做；角色設定圖與人物表跨集沿用 | 站主建作品、核准設定集／總綱／每篇細綱／每集劇本、上架；工人規劃文件、依細綱寫每一集、自動接續 | `.agents/skills/youtube-video/references/series.md`（設計在 `docs/videos/SERIES.md`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
 
 站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
@@ -39,6 +40,8 @@ metadata:
 | 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`caption-translate.md`、`caption-review.md`） |
 | AI 漫劇：一次性設定、主幹與關卡、指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑 | `.agents/skills/youtube-video/references/drama.md` |
 | AI 漫劇的代理提示（故事聖經、劇本與分鏡、連貫性查核、修鏡頭） | `.agents/skills/youtube-video/references/prompts/planner-drama.md`、`writer-drama.md`、`verifier-drama.md` |
+| 長篇漫劇：名稱、主幹、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
+| 長篇漫劇的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
 | 全自動的設計理由、YouTube、Azure 與 Gemini 語音的官方規則 | `docs/videos/DESIGN.md` |
 

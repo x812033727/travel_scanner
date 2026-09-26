@@ -14,6 +14,9 @@ import { atomicWrite } from "./paths.mjs";
 
 export const GATES = {
   outline: ({ docDir }) => path.join(docDir, "brief.md"),
+  // A series episode's screenplay (docs/videos/SERIES.md): the narrative only, so a prompt fix
+  // by the media stages does not unsettle an approval the owner gave.
+  script: ({ docDir }) => path.join(docDir, "script.md"),
   // Drama only (docs/videos/DRAMA.md): the character sheets, then the keyframes before any clip is paid for.
   look: ({ workdir }) => path.join(workdir, "characters", "manifest.json"),
   storyboard: ({ workdir }) => path.join(workdir, "keyframes", "manifest.json"),
