@@ -1,0 +1,148 @@
+# 影片產線：YouTube 多語言音軌（設計）
+
+2026-09-27 起草。前提是 [`DESIGN.md`](DESIGN.md) 的投影片產線、[`AUTOMATION.md`](AUTOMATION.md) 的主機工人與 [`HANDS-OFF.md`](HANDS-OFF.md) 的分工。這份寫 YouTube 多語言音軌（multi-language audio，觀眾在播放器裡切換配音語言）在 2026-09-27 查到的規則、產線怎麼用同一個頻道聲音唸出 en、ja、ko、zh-CN 四條配音、每條配音怎麼塞回原本的時間軸、站主要多做什麼，以及為什麼預設關著。工作分成幾張票，id 都是 `2026-09-26-video-dubs-*`（看板用 UTC 日期）。
+
+## 一句話
+
+現在每支影片上傳五條 CC，觀眾聽到的永遠是台灣國語。多語言音軌讓同一支影片多掛四條配音：YouTube 依觀眾的語言偏好自動選音軌，觀眾也能自己切。畫面不換，所以投影片上的中文字還是中文；配音是「聽得懂的口譯」，不是另一支影片。
+
+## YouTube 的規則（2026-09-27 查官方頁）
+
+| 規則 | 內容 | 來源 |
+| --- | --- | --- |
+| 資格 | 「創作者必須具備進階功能使用權限」。進階功能要身分證件驗證、影片驗證或足夠的頻道紀錄；不需要營利資格。Studio → 設定 → 頻道 → 功能使用資格可以查 | support.google.com/youtube/answer/13338784、answer/9890437 |
+| 怎麼加 | Studio 左選單「語言」→ 點影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→「發布」。新影片、已發布的影片都可以加 | answer/13338784 |
+| 檔案 | 「支援的純音訊檔案格式，長度必須和影片大致相同」。官方沒列格式；第三方一致寫 MP3、WAV、AAC（部分寫 FLAC），第一支實測後寫進 skill | answer/13338784 |
+| 換掉一條 | 先刪除那個語言的音軌，再照上面重傳 | answer/13338784 |
+| 自動配音衝突 | 「如果系統已自動生成該語言的配音，必須先刪除自動配音，才能上傳自己的版本」。自動配音對符合資格的頻道**預設開啟** | answer/13338784、answer/15569972 |
+| 自動配音能做什麼 | 來源是「中文（繁體）」時，只會配成英文；日文、韓文、簡中都沒有。自動配音不能編輯；帶語氣的 Expressive Speech 只有英、法、德、印地、印尼、義、葡、西 8 種來源 | answer/15569972、blog.youtube 2026-02-04 |
+| Data API | Data API v3 沒有任何上傳或管理音軌的方法；修訂紀錄到 2026-09-14 為止沒有相關項目。`captions.insert`、`videos.update` 的 `localizations` 只管字幕與標題說明 | developers.google.com/youtube/v3/revision_history |
+| 多語言標題與說明 | 同一個「語言」頁可以填，也可以由 API 的 `localizations` 補（T8） | answer/13338784 |
+
+兩個結論：
+
+1. **要有日、韓、簡中的配音，只能自己做音軌。** YouTube 自動配音只給英文，而且我們不能改它。
+2. **音軌只能站主在 Studio 手動上傳**，每支影片四個檔案，約兩三分鐘。API 稽核通過也不會改變這件事。這和 HANDS-OFF 的「站主只決定上架時間」有衝突，所以功能預設關著，由站主在設定分頁決定要不要開。
+
+## 產線怎麼做
+
+### 聲音
+
+同一個 Gemini 聲音（`video.json` 的 `voice`，目前是 `Sulafat`）唸四種語言。Gemini TTS 自動判斷輸入語言，30 個內建聲音都能跨語言；只有 `style` 要換：zh-TW 的 style 寫著「台灣國語、台灣腔」，其他語系各有一段預設 style（同樣的「輕鬆、跟朋友解釋、有起伏、中等偏快」，語言改掉）。這樣四條音軌聽起來是同一個人，是頻道聲音的延伸，不是另一個播報員。
+
+發音字典（`docs/videos/lexicon.json`）只套用全是拉丁字母、數字與空格的別名（`API → A P I`、`NotebookLM → Notebook L M`）；含中文的別名（`p95 → P 九十五`）在其他語言裡不用，照原字唸。
+
+### 稿子
+
+配音唸的就是字幕的翻譯：`docs/videos/<slug>/i18n/<locale>.json` 每一句的 `text`。不另外維護一份配音稿，否則字幕與配音會說不一樣的話。
+
+翻譯比原文長是常態。第二批三支的量（2026-09-26）：
+
+| 語系 | 字元數（三支的範圍） | 相對 zh-TW |
+| --- | --- | --- |
+| zh-TW（原文） | 3,102–3,296 | 1.0 |
+| en | 8,497–9,133 | 2.7–2.8 |
+| ja | 3,799–4,050 | 1.2–1.3 |
+| ko | 4,616–4,717 | 1.4–1.5 |
+| zh-CN | 3,123–3,298 | 1.0 |
+
+英文每個字元短、日韓每個字元長，所以唸出來的長度差不到字元數那麼多，但每句仍會有超出原本時間的。處理方式在下面「塞回時間軸」。
+
+### 塞回時間軸
+
+投影片的時間軸（`timeline.json`）是由 zh-TW 旁白決定的：每句一格一格排，換畫面（場景）與逐條出現（reveal）都落在句子的邊界上。配音不能改畫面，所以規則是：
+
+- **視窗**：同一個投影片狀態（兩個 reveal 之間、同一個場景裡）的連續幾句是一個視窗。視窗的長度來自 zh-TW 時間軸，含句間停頓、場景結尾的 0.7 秒與片尾的 1.5 秒。畫面在視窗邊界換，配音不能越界。
+- **視窗內**：每句配音的開始時間是「原本這句的開始」與「上一句配音結束加 250 毫秒」兩者較晚的那個。有餘裕時配音和原句對齊，沒餘裕時往後推。
+- **超出視窗**：整個視窗的配音等比例加速（ffmpeg `atempo`），上限 1.15 倍；同一個視窗用同一個倍率，聽起來才不會忽快忽慢。
+- **1.15 倍還塞不下**：這個視窗的句子列進 `dubs/<locale>/fit.json`，每句附「最多幾個字元」，結束碼 1。翻譯模型只改這幾句，縮短到預算內（數字、專有名詞、說法不能改；字幕跟著用縮短後的句子），`i18n-merge` 之後只重錄這幾句。最多兩輪；還是不行就跳過這個語系的配音，原因寫進上傳包的 `metadata.json`，不擋整支影片。
+- **每條音軌的總長度等於影片的格數**（`total_frames` × 1,600 個取樣），不是「大致相同」，是一樣。
+
+為了少跑幾輪，翻譯工作表（`i18n-sheet`）先給每句一個字元預算：這句在 zh-TW 時間軸上的秒數 × 該語系的語速 × 1.1（加速能吸收的部分）。語速的起始值：en 每秒 15 字元、ja 7、ko 6、zh-CN 4.5；第一支配音錄完之後，工具從實際的音檔算出每個語系的語速寫回 `fit.json`，之後的工作表用量到的值。翻譯提示與字幕審稿提示都要看得到這個預算。
+
+### 檔案與指令
+
+新指令 `node tools/video/cli.mjs dub --slug <slug> --locale en,ja,ko,zh-CN [--format m4a|mp3|wav] [--dry-run] [--redo <flags>]`，在工作區寫：
+
+| 檔案 | 內容 |
+| --- | --- |
+| `dubs/<locale>/audio/<line id>.wav` | 每句一段，48 kHz 16-bit mono；快取鍵是聲音、style 與那句的文字，跟 zh-TW 的 `tts` 一樣，改一句只重錄一句 |
+| `dubs/<locale>/timeline.json` | 這條配音每句的開始與結束格、加速倍率、`speech_hash`、翻譯檔的雜湊 |
+| `dubs/<locale>/fit.json` | 每個視窗的餘裕或超出、量到的語速、塞不下的句子與預算 |
+| `dubs/<locale>.m4a` | 上傳的音軌：兩段式 loudnorm 到 −14 LUFS／−1 dBTP，AAC-LC 立體聲 48 kHz 384 kbps，與 `final.mp4` 的聲音同一條編碼鏈；Studio 不收再用 `--format mp3`（libmp3lame 320 kbps）或 `wav` |
+
+`check-audio --locale <locale>` 對配音做和 zh-TW 旁白一樣的檢查：伺服器逐句轉寫（要帶語言，轉寫提示不再寫死「台灣國語、繁體字」），文字一樣的直接過，其餘交給 Jev。拼音「同音」規則與語助詞規則只在中文語系用。被標的句子 `dub --redo` 重錄，最多兩輪。
+
+`captions` 在某個語系有配音時，用那條配音的時間軸切字幕（每句的時間範圍是配音真正說話的範圍），這樣選日文配音配日文字幕的觀眾，字幕跟得上聲音；沒有配音的語系照舊用 zh-TW 的時間軸。
+
+`package` 把 `dubs/*.m4a` 複製到 `upload/dubs/`，`metadata.json` 列出 `dubs` 與 `skipped_dub_locales`，`UPLOAD.md` 多一節「語言」的操作步驟（下面）。
+
+### 工人
+
+設定 `dub_locales` 不是空的時，「captions written」之後多一步「dubs synthesized」：
+
+1. `dub`，結束碼 1 → 翻譯階段的「縮短」模式（只給塞不下的句子與預算）→ `i18n-merge` → 再 `dub`，最多兩輪；
+2. `check-audio --locale` → Jev → `dub --redo`，最多兩輪；
+3. 兩輪之後仍不行的語系跳過，原因記下，不卡影片；
+4. 自動品管（`qa`）多一項 `dubs`：設定裡的每個語系，不是有一條當前的音軌而且檢查過，就是有跳過的原因。跳過的在審核卡片上列成警告，不算沒過。
+
+配音不改 `final.mp4`，成片的雜湊與核准不受影響；配音在成片關卡之前做完，讓審看頁能放四條音軌試聽。
+
+## 成本
+
+Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`gemini-3.8-flash-tts` 輸出音訊每百萬 token 9 美元、每秒音訊 25 個 token，到 2026-12-31；2027-01-01 起 18 美元。文字輸入每百萬 token 0.5 美元，可以忽略。
+
+| 項目 | 數字 |
+| --- | --- |
+| 一條 10 分鐘的配音 | 15,000 個音訊 token ≈ US$0.135（2027 起 ≈ US$0.27） |
+| 一支影片四條 | ≈ US$0.54（2027 起 ≈ US$1.08） |
+| 站上的月額度 `video_speech_gemini_monthly_character_limit` | 預設 300,000 字元。zh-TW 旁白一支約 3,200 字元；四條配音約 20,600 字元，一支合計約 24,000 → 一個月約 12 支（不含重錄）。開配音時把額度調到 600,000 以上 |
+
+重錄與縮短會再加。`dub --dry-run` 和 `tts --dry-run` 一樣先印字元數與剩餘額度。
+
+## 站主要做的事
+
+一次性：
+
+1. Studio → 設定 → 頻道 → 功能使用資格，確認「進階功能」已啟用；沒有的話做身分證件或影片驗證。
+2. Studio → 設定 → 頻道 → 進階設定，取消「允許自動配音」。理由：自動配音只會多一條我們不能改的英文音軌，而且它生成之後，要先刪掉才能上傳自己的英文音軌。想留著也可以，但要改成先審核再發布。
+3. 後台「影片」→「設定」勾選要配音的語系（`dub_locales`）。
+
+每支影片（接在 HANDS-OFF「可以上架」的步驟之後）：
+
+1. 照舊在 Studio 上傳 `final.mp4`，瀏覽權限私人。
+2. 左選單「語言」→ 這支影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→ 選 `upload/dubs/<locale>.m4a` →「發布」。四個語系各做一次。
+3. 其餘（五語系標題說明、字幕、縮圖、排程）由 T8 的 API 補齊。
+
+第一支要實測、然後寫進 skill 的 `publish.md`：
+
+- Studio 收不收 `.m4a`；不收就 `--format mp3`。
+- 影片還是私人時能不能加音軌、音軌的「發布」會不會動到影片的瀏覽權限（應該不會，音軌隨影片公開）。
+- 「語言」頁上原始語言是不是照影片語言（中文（台灣））標成原音。
+
+## 已知限制
+
+- **畫面是中文。** 配音換了，投影片上的重點、表格、程式碼註解還是繁體中文。數字、產品名、指令本來就是拉丁字母，表格與程式碼看得懂；文字多的 `bullets` 對非中文觀眾還是要靠聽。要「畫面也換語言」就是每個語系一支影片（翻譯 `data` 欄位、各渲染一次、各上傳一次），是另一個功能，這裡不做。
+- **不是自動上架。** 四個檔案要站主在 Studio 點。沒有 API，短期內也看不到。
+- **配音沒有時間伸縮的餘地時會被縮短。** 縮短的句子字幕也跟著短，翻譯審稿要看縮短後的版本。
+- **漫劇不在第一期。** 漫劇有多個角色、燒錄字幕與配樂，音軌要重新混音；投影片影片先做。
+
+## 設定（新增到 `video_automation_settings`）
+
+| 欄位 | 預設 | 說明 |
+| --- | --- | --- |
+| `dub_locales` | 空（關） | 要做配音的語系，只能是 `caption_locales` 的子集合 |
+
+遷移接在當時 main 最新的 `video_automation` 遷移之後；HANDS-OFF 的 settings 票先落地，這張才動同一張表。
+
+## 票
+
+| 票 | 內容 | scope | 依賴 |
+| --- | --- | --- | --- |
+| `video-dubs-command` | `dub` 指令：視窗、對齊、加速、字元預算、`fit.json`、m4a 輸出；`i18n-sheet` 帶預算 | `tools/video/dubs`、`tools/video/cli.mjs`、`tools/video/core/state.mjs`、`tools/video/i18n` | — |
+| `video-dubs-check-language` | 轉寫端點帶語言、`check-audio --locale` | `apps/api/app/video_speech`、`tools/video/tts/check.mjs`、`tools/video/tts/client.mjs` | — |
+| `video-dubs-setting` | `dub_locales` 設定、遷移、設定分頁、工具讀取端點 | `apps/api/app/video_automation`、遷移、`apps/web/components/admin-video-settings*`、`admin.json` | —（和 hands-off-settings 動同一張表，後落地的接在前面的遷移之後） |
+| `video-dubs-captions-package` | 字幕跟配音時間軸、上傳包含音軌、`UPLOAD.md` 的「語言」步驟、審看頁試聽、skill 的 `publish.md` | `tools/video/core/stages.mjs`、`tools/video/core/captions.mjs`、`tools/video/package`、`tools/video/review`、skill 的 references | command |
+| `video-dubs-worker` | 工人的「dubs synthesized」步驟、翻譯的縮短模式、`qa` 的 `dubs` 項、`AUTOMATION.md` | `tools/video/automation`、`tools/video/qa`、`docs/videos/AUTOMATION.md`、翻譯提示 | 前四張 |
+
+順序：command、check-language、setting 可以馬上平行做；captions-package 等 command；worker 最後。command 做完就能在本機對第二批的任何一支試做一條英文音軌，讓站主先聽同一個聲音講英文像不像，再決定要不要往下做。

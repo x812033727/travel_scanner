@@ -24,6 +24,7 @@
 | 縮圖 | 1280×720 JPEG | `tools/video/render/` |
 | 長度 | 8–12 分鐘（`video.json` 的 `target_minutes` 可以改）；漫劇一集 2–4 分鐘 | `tools/video/core/schema.mjs` |
 | 字幕 | 五條 CC：zh-TW、en、ja、ko、zh-CN。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/drama.mjs` |
+| 配音音軌 | 投影片影片可以多掛 en、ja、ko、zh-CN 四條 YouTube 多語言音軌：同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡，站主在 Studio「語言」上傳。預設關（設定 `dub_locales`）；漫劇第一期不做。設計在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`（票 `2026-09-26-video-dubs-*`） |
 | 配樂 | 投影片影片沒有；漫劇有（`music`，由 Lyria 生成或站主提供有授權的檔案），在對白下自動壓低 | `tools/video/core/drama.mjs` |
 
 每句旁白和它後面的停頓，都補到整格（48,000 Hz ÷ 30 fps ＝ 每格 1,600 個取樣），所以十分鐘的影片不會有影音漂移。
