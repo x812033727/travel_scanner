@@ -483,7 +483,7 @@ async def transcribe_narration(
         raise AppError(422, "video_transcribe_bad_audio", "只收 2 MB 以內的 WAV 音檔")
     settings = await load_runtime_settings(session)
     try:
-        text = await transcribe(settings, wav, terms=payload.terms)
+        text = await transcribe(settings, wav, terms=payload.terms, language=payload.language)
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
     except SpeechUpstreamError as error:
@@ -520,7 +520,7 @@ async def judge_narration(payload: JudgeIn, tool: VideoTool, session: Session) -
     settings = await load_runtime_settings(session)
     lines = [line.model_dump() for line in payload.lines]
     try:
-        verdicts = await judge(settings, get_redis(), lines)
+        verdicts = await judge(settings, get_redis(), lines, language=payload.language)
     except CheckUnavailable as error:
         raise AppError(error.status, error.code, error.detail) from error
     except (JevError, httpx.HTTPError) as error:

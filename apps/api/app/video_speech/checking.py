@@ -9,8 +9,12 @@ spacing and letter case are ignored, so Jev's call budget goes to the cases that
 word that is really missing or misread.
 
 Jev documents that its accuracy is best in English and publishes nothing for Chinese, so the
-questions are written in English, the state carries the Chinese text, and the tool reports Jev's
-probabilities rather than acting on them; the owner still approves the narration.
+questions are written in English, the state carries the track's text and names its language, and
+the tool reports Jev's probabilities rather than acting on them; the owner still approves the
+narration.
+
+A dubbed track (docs/videos/DUBS.md) is read in another language, and the transcriber is told
+which: a Japanese clip transcribed as Mandarin would differ from its script on every line.
 """
 
 from __future__ import annotations
@@ -30,18 +34,70 @@ from app.video_speech.azure import USER_AGENT, SpeechUpstreamError
 
 logger = logging.getLogger(__name__)
 
+NARRATION_LANGUAGE = "zh-TW"
 TRANSCRIBE_INSTRUCTIONS = (
     "Transcribe this Mandarin narration word for word in Traditional Chinese characters as "
     "used in Taiwan. Write English words and acronyms as Latin letters the way they are spoken "
     "(for example AI, GPT, p95). Write numbers the way they are spoken. Do not correct, "
     "summarize or add anything. Output only the transcript."
 )
+# One prompt per track language (the values of TrackLanguage in schemas.py). zh-CN keeps
+# Mandarin's rules in Simplified characters, numbers included, since a zh-CN script writes them
+# in words as often as a zh-TW one does. The other three are read from translations that write
+# numbers as digits, so their transcribers are left to do the same.
+TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE: dict[str, str] = {
+    NARRATION_LANGUAGE: TRANSCRIBE_INSTRUCTIONS,
+    "zh-CN": (
+        "Transcribe this Mandarin narration word for word in Simplified Chinese characters as "
+        "used in mainland China. Write English words and acronyms as Latin letters the way they "
+        "are spoken (for example AI, GPT, p95). Write numbers the way they are spoken. Do not "
+        "correct, summarize or add anything. Output only the transcript."
+    ),
+    "en": (
+        "Transcribe this English narration word for word. Write acronyms and product names as "
+        "Latin letters the way they are spoken (for example AI, GPT, p95). Do not correct, "
+        "summarize or add anything. Output only the transcript."
+    ),
+    "ja": (
+        "Transcribe this Japanese narration word for word in Japanese, in the kanji and kana "
+        "written Japanese uses. Write English words and acronyms as Latin letters the way they "
+        "are spoken (for example AI, GPT, p95), not in katakana. Do not correct, summarize, "
+        "translate or add anything. Output only the transcript."
+    ),
+    "ko": (
+        "Transcribe this Korean narration word for word in Korean, in Hangul. Write English "
+        "words and acronyms as Latin letters the way they are spoken (for example AI, GPT, p95), "
+        "not in Hangul. Do not correct, summarize, translate or add anything. Output only the "
+        "transcript."
+    ),
+}
 # Speech recognisers take a phrase list for the same reason: a short English word inside
-# Mandarin ("Go", "Plus") is heard as whichever Chinese character sounds like it.
+# Mandarin ("Go", "Plus") is heard as whichever Chinese character sounds like it, inside
+# Japanese as kana, inside Korean as Hangul, and inside English as an ordinary word.
 TERMS_HINT = (
     " This line may say these English words; when you hear one, write it exactly as listed "
-    "rather than as Chinese characters that sound like it: {terms}."
+    "rather than as {script} that sound like it: {terms}."
 )
+SOUND_ALIKE_SCRIPT = {
+    NARRATION_LANGUAGE: "Chinese characters",
+    "zh-CN": "Chinese characters",
+    "en": "other words",
+    "ja": "kana",
+    "ko": "Hangul",
+}
+
+
+def transcribe_instructions(language: str, terms: Sequence[str] = ()) -> str:
+    """The transcriber's system prompt for one track language, with its hint list when given."""
+    if language not in TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE:
+        raise ValueError(f"no transcription prompt for language {language!r}")
+    instructions = TRANSCRIBE_INSTRUCTIONS_BY_LANGUAGE[language]
+    if terms:
+        instructions += TERMS_HINT.format(
+            script=SOUND_ALIKE_SCRIPT[language], terms=", ".join(terms)
+        )
+    return instructions
+
 
 JUDGE_INSTRUCTIONS = (
     "In the state, look at the line whose id is {line_id}. 'heard' is a machine transcript of a "
@@ -76,8 +132,11 @@ async def transcribe(
     wav: bytes,
     client: httpx.AsyncClient | None = None,
     terms: Sequence[str] = (),
+    language: str = NARRATION_LANGUAGE,
 ) -> str:
-    """The words in one clip, as Gemini hears them; ``terms`` are English words it may say."""
+    """The words in one clip, as Gemini hears them, written in ``language``'s script; ``terms``
+    are English words it may say."""
+    instructions = transcribe_instructions(language, terms)
     key = settings.hotspot_guide_gemini_api_key
     if not key:
         raise CheckUnavailable(
@@ -89,9 +148,6 @@ async def transcribe(
     http = client or httpx.AsyncClient(
         timeout=settings.video_speech_gemini_timeout_seconds, trust_env=False
     )
-    instructions = TRANSCRIBE_INSTRUCTIONS
-    if terms:
-        instructions += TERMS_HINT.format(terms=", ".join(terms))
     body = {
         "system_instruction": {"parts": [{"text": instructions}]},
         "contents": [
@@ -170,8 +226,10 @@ async def judge(
     redis: Redis,
     lines: list[dict[str, str]],
     client: httpx.AsyncClient | None = None,
+    language: str = NARRATION_LANGUAGE,
 ) -> dict[str, float]:
-    """Jev's probability, per line id, that the recording says the intended words."""
+    """Jev's probability, per line id, that the recording says the intended words; ``language``
+    is what the lines are written in."""
     jev: JevClient = jev_client(settings, client)
     try:
         if not await consume_jev_call(redis, settings):
@@ -180,7 +238,7 @@ async def judge(
                 "jev_budget_exhausted",
                 "今天的 Jev 呼叫次數已用完（JEV_DAILY_CALL_BUDGET），請明天再檢查",
             )
-        state: dict[str, Any] = {"language": "zh-TW", "lines": lines}
+        state: dict[str, Any] = {"language": language, "lines": lines}
         answers, _usage = await jev.ask(state, judge_questions([line["id"] for line in lines]))
     finally:
         await jev.close()
