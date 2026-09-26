@@ -69,10 +69,14 @@ async def put_video_automation_settings(
     payload: SettingsSave, user: SettingsManager, session: Session
 ) -> SettingsView:
     values = payload.model_dump()
-    if payload.stage_models is None:
-        # The stage models are chosen on the AI settings page; keep the stored ones.
-        current = service.settings_values(await service.settings_row(session))
-        values["stage_models"] = current.model_dump()["stage_models"]
+    if payload.stage_models is None or payload.drama is None:
+        # The stage models are chosen on the AI settings page, and a page from before the drama
+        # settings existed sends none: keep the stored ones in both cases.
+        current = service.settings_values(await service.settings_row(session)).model_dump()
+        if payload.stage_models is None:
+            values["stage_models"] = current["stage_models"]
+        if payload.drama is None:
+            values["drama"] = current["drama"]
     return await _save(session, user, SettingsWrite.model_validate(values))
 
 

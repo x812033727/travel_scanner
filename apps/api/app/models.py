@@ -2208,8 +2208,10 @@ class VideoReview(Timestamped, Base):
     __tablename__ = "video_reviews"
     __table_args__ = (
         UniqueConstraint("project_id", "gate", "content_sha256", name="uq_video_review_content"),
+        # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095).
         CheckConstraint(
-            "gate IN ('outline', 'audio', 'final', 'publish')", name="ck_video_review_gate"
+            "gate IN ('outline', 'look', 'storyboard', 'audio', 'final', 'publish')",
+            name="ck_video_review_gate",
         ),
         CheckConstraint(
             "status IN ('pending', 'approved', 'rejected', 'superseded')",
@@ -2221,6 +2223,8 @@ class VideoReview(Timestamped, Base):
         ForeignKey("video_projects.id", ondelete="CASCADE"), index=True
     )
     gate: Mapped[str] = mapped_column(String(20))
+    # Which of a gate's several reviews this is (a look review per character); None for the rest.
+    subject: Mapped[str | None] = mapped_column(String(40), nullable=True)
     content_sha256: Mapped[str] = mapped_column(String(64))
     summary: Mapped[str] = mapped_column(String(500))
     payload: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)

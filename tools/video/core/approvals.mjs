@@ -1,9 +1,11 @@
 // The owner's approvals, each bound to the exact file approved.
 //
-// Three gates need the site owner: the outline (brief.md), the narration (timeline.json, which
-// changes whenever any line is re-synthesized) and the finished video (final.mp4). Recording the
-// SHA-256 of what was approved means an edit after the approval silently voids it, and the
-// stages after the gate refuse to run instead of shipping something nobody looked at.
+// The gates need the site owner: the outline (brief.md), the narration (timeline.json, which
+// changes whenever any line is re-synthesized) and the finished video (final.mp4); a drama adds
+// the look (characters/manifest.json, the character sheets the owner picks from) and the
+// storyboard (keyframes/manifest.json). Recording the SHA-256 of what was approved means an edit
+// after the approval silently voids it, and the stages after the gate refuse to run instead of
+// shipping something nobody looked at.
 import { createHash } from "node:crypto";
 import { createReadStream, existsSync, readFileSync } from "node:fs";
 import path from "node:path";
@@ -12,6 +14,9 @@ import { atomicWrite } from "./paths.mjs";
 
 export const GATES = {
   outline: ({ docDir }) => path.join(docDir, "brief.md"),
+  // Drama only (docs/videos/DRAMA.md): the character sheets, then the keyframes before any clip is paid for.
+  look: ({ workdir }) => path.join(workdir, "characters", "manifest.json"),
+  storyboard: ({ workdir }) => path.join(workdir, "keyframes", "manifest.json"),
   audio: ({ workdir }) => path.join(workdir, "timeline.json"),
   final: ({ workdir }) => path.join(workdir, "final.mp4"),
   // The owner's "this may be uploaded", given on /admin/videos to the package `package` wrote.

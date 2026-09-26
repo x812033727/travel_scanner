@@ -36,6 +36,12 @@ export const AREAS = {
   package: ["package", "2026-09-24-video-assemble-package"],
   "youtube-sync": ["youtube", "2026-09-24-video-youtube-sync"],
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
+  // The drama format's media stages (docs/videos/DRAMA.md).
+  look: ["media", "2026-09-26-video-drama-look-keyframes"],
+  keyframes: ["media", "2026-09-26-video-drama-look-keyframes"],
+  clips: ["media", "2026-09-26-video-drama-clips-music"],
+  music: ["media", "2026-09-26-video-drama-clips-music"],
+  "media-status": ["media", "2026-09-26-video-drama-media-client"],
 };
 
 const HELP = `Automated YouTube video pipeline (docs/videos/DESIGN.md)
@@ -45,7 +51,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   status   --slug S [--workdir D]                  where the video is, and the next command
   lint     --slug S | --file F [--json]            check video.json, brief.md, dictionary, YouTube limits
   ids      [--count N] [--slug S]                  fresh line ids that are not in use
-  approve  --slug S --gate outline|audio|final|publish [--workdir D] [--note T]
+  approve  --slug S --gate outline|look|storyboard|audio|final|publish [--workdir D] [--note T]
                                                    record the owner's approval of the file as it is now
   review-push --slug S [--gate G | --report-only]  report the video to /admin/videos and submit the next gate
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
@@ -58,6 +64,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
+  look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing.

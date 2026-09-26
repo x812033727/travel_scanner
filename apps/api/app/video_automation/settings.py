@@ -11,9 +11,13 @@ from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.config import Settings
 from app.models import AdminAuditLog, User
-from app.video_automation.models import VideoAutomationSettings
+from app.video_automation.models import DRAMA_FIELDS, STYLE_PRESETS, VideoAutomationSettings
 from app.video_automation.schemas import (
     ApiProviderName,
+    DramaSettings,
+    MediaOptionsView,
+    MediaOptionView,
+    MediaProvider,
     ModelOptionView,
     ProviderName,
     SettingsView,
@@ -21,6 +25,7 @@ from app.video_automation.schemas import (
     VoiceOptionsView,
 )
 from app.video_automation.usage import usage_view
+from app.video_media.catalog import MEDIA_VENDORS, MediaKind, find_model, media_options
 from app.video_speech.gemini import GEMINI_TTS_MODELS, PREBUILT_VOICES
 
 # The stages run through the same vendor adapters as the news writer and verifier
@@ -32,6 +37,7 @@ MODEL_CAPABILITY: dict[ApiProviderName, Capability] = {
     "gemini": "gemini_structured",
 }
 AUTO_APPROVED_NOTE = "Jev 判斷每一句都唸對了，依設定自動核准"
+AUTO_APPROVED_STORYBOARD_NOTE = "judge 給每一鏡的分數都達到門檻、沒有列出問題，依設定自動核准"
 
 
 def _options(entries: Any, capability: Capability | None) -> list[ModelOptionView]:
@@ -75,6 +81,39 @@ def voice_options(runtime: Settings) -> VoiceOptionsView:
     )
 
 
+def _media_options(kind: MediaKind) -> dict[MediaProvider, list[MediaOptionView]]:
+    return {
+        vendor: [
+            MediaOptionView(
+                value=model.id,
+                label=model.label,
+                description=model.note,
+                status=model.status,
+                resolutions=list(model.resolutions),
+                durations=list(model.durations),
+                reference_images=model.reference_images,
+                native_audio=model.native_audio,
+                usd_per_second=model.usd_per_second,
+                usd_per_image=model.usd_per_image,
+                usd_per_track=model.usd_per_track,
+            )
+            for model in media_options(vendor, kind)
+        ]
+        for vendor in MEDIA_VENDORS
+    }
+
+
+def media_options_view() -> MediaOptionsView:
+    """The image, clip and music models the drama section of the settings tab can offer."""
+    return MediaOptionsView(
+        images=_media_options("image"), clips=_media_options("clip"), music=_media_options("music")
+    )
+
+
+def drama_values(row: VideoAutomationSettings) -> DramaSettings:
+    return DramaSettings(**{field: getattr(row, field) for field in DRAMA_FIELDS})
+
+
 async def settings_row(session: AsyncSession, *, lock: bool = False) -> VideoAutomationSettings:
     statement = select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     if lock:
@@ -108,6 +147,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         max_retake_rounds=row.max_retake_rounds,
         subscription_max_usage_percent=row.subscription_max_usage_percent,
         auto_approve_audio=row.auto_approve_audio,
+        drama=drama_values(row),
     )
 
 
@@ -119,9 +159,54 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         model_options=model_options(),
         configured_providers=configured_providers(runtime),
         voice_options=voice_options(runtime),
+        media_options=media_options_view(),
+        style_presets=list(STYLE_PRESETS),
         usage=await usage_view(session, row),
         updated_at=row.updated_at,
     )
+
+
+def _voice_problem(provider: str, name: str, runtime: Settings) -> str | None:
+    if provider == "gemini":
+        return None if name in PREBUILT_VOICES else f"Gemini 沒有 {name} 這個聲音"
+    return (
+        None if name in runtime.azure_speech_voice_list else f"{name} 不在 Azure 語音的允許清單裡"
+    )
+
+
+def drama_problems(drama: DramaSettings, runtime: Settings) -> list[str]:
+    """What the drama settings name that the server cannot serve (docs/videos/DRAMA.md)."""
+    problems: list[str] = []
+    configured = set(configured_providers(runtime))
+    choices: tuple[tuple[MediaKind, str, MediaProvider, str], ...] = (
+        ("image", "圖片", drama.image_provider, drama.image_model),
+        ("clip", "片段", drama.clip_provider, drama.clip_model),
+        ("music", "音樂", drama.music_provider, drama.music_model),
+    )
+    for kind, label, provider, model_id in choices:
+        model = find_model(provider, kind, model_id)
+        if model is None:
+            problems.append(f"{label}：{provider} 沒有 {model_id} 這個模型")
+            continue
+        if model.status == "retired":
+            problems.append(f"{label}：{model_id} 已經退役，請換一個模型")
+        if kind == "clip":
+            if drama.clip_resolution not in model.resolutions:
+                problems.append(
+                    f"片段：{model_id} 沒有 {drama.clip_resolution}，"
+                    f"只有 {'、'.join(model.resolutions)}"
+                )
+            if drama.clip_seconds_default not in model.durations:
+                problems.append(
+                    f"片段：{model_id} 一次只能做 {'、'.join(map(str, model.durations))} 秒"
+                )
+        if drama.drama_enabled and provider not in configured:
+            problems.append(f"{label}：網站還沒有 {provider} 的金鑰，不能開啟漫劇")
+    for voice in drama.character_voice_pool:
+        problem = _voice_problem(voice.provider, voice.name, runtime)
+        if problem:
+            problems.append(f"角色聲音：{problem}")
+    return problems
 
 
 def settings_problems(payload: SettingsWrite, runtime: Settings) -> list[str]:
@@ -139,7 +224,15 @@ def settings_problems(payload: SettingsWrite, runtime: Settings) -> list[str]:
             problems.append(f"Gemini 沒有 {voice.model} 這個語音模型")
     elif voice.name not in runtime.azure_speech_voice_list:
         problems.append(f"{voice.name} 不在 Azure 語音的允許清單裡")
+    problems.extend(drama_problems(payload.drama, runtime))
     return problems
+
+
+def _flat(values: dict[str, Any]) -> dict[str, Any]:
+    """The drama object spread onto the row's columns, for saving and for the audit diff."""
+    flat = {key: value for key, value in values.items() if key != "drama"}
+    flat.update(values.get("drama") or {})
+    return flat
 
 
 async def update_settings(
@@ -147,8 +240,8 @@ async def update_settings(
 ) -> SettingsView:
     """Save settings ``settings_problems`` has already passed; the admin router checks first."""
     row = await settings_row(session, lock=True)
-    before = settings_values(row).model_dump(mode="json")
-    after = payload.model_dump(mode="json")
+    before = _flat(settings_values(row).model_dump(mode="json"))
+    after = _flat(payload.model_dump(mode="json"))
     for key, value in after.items():
         setattr(row, key, value)
     row.updated_by_user_id = actor.id
@@ -189,3 +282,34 @@ async def auto_approves_audio(session: AsyncSession, payload: dict[str, Any]) ->
     # With no row yet the defaults apply, and the default is on (the owner's 2026-09-25 choice).
     enabled = True if row is None else row.auto_approve_audio
     return enabled and audio_check_passed(payload)
+
+
+def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
+    """Whether a storyboard review's judge summary clears the owner's threshold with no problems.
+
+    The payload carries {"shots": [...], "judge": {"overall": 0-10, "problems": [...]}} from
+    the keyframes stage; a shot left for a prompt fix (needs_review) never auto-approves.
+    """
+    judge = payload.get("judge")
+    shots = payload.get("shots")
+    if not isinstance(judge, dict) or not isinstance(shots, list) or not shots:
+        return False
+    overall = judge.get("overall")
+    problems = judge.get("problems")
+    if not isinstance(overall, int | float) or isinstance(overall, bool):
+        return False
+    if problems not in (None, []):
+        return False
+    if any(isinstance(shot, dict) and shot.get("needs_review") for shot in shots):
+        return False
+    return overall >= min_score
+
+
+async def auto_approves_storyboard(session: AsyncSession, payload: dict[str, Any]) -> bool:
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    # Off by default: the owner looks at the first drama's keyframes before any clip is paid for.
+    if row is None or not row.auto_approve_storyboard:
+        return False
+    return storyboard_check_passed(payload, row.judge_min_score)

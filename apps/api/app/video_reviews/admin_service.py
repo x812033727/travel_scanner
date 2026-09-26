@@ -21,7 +21,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
-from app.video_automation.settings import AUTO_APPROVED_NOTE, auto_approves_audio
+from app.video_automation.settings import (
+    AUTO_APPROVED_NOTE,
+    AUTO_APPROVED_STORYBOARD_NOTE,
+    auto_approves_audio,
+    auto_approves_storyboard,
+)
 from app.video_reviews.schemas import (
     DecisionIn,
     DropIn,
@@ -35,6 +40,9 @@ from app.video_reviews.schemas import (
 from app.video_reviews.storage import ReviewStore, valid_slug
 
 LIVE = ("pending", "approved", "rejected")
+# Gates where approving means choosing one of the offered options (an outline; a character sheet).
+CHOICE_GATES = ("outline", "look")
+CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
 
 
 def review_store(settings: Settings) -> ReviewStore:
@@ -59,9 +67,9 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
         return "這一項已經決定過或被新版本取代"
     if decision.decision == "reject" and not (decision.note or "").strip():
         return "退回時請寫下原因，工具會把它帶回給撰稿與查核"
-    choices = outline_choices(review.payload) if review.gate == "outline" else []
+    choices = outline_choices(review.payload) if review.gate in CHOICE_GATES else []
     if decision.decision == "approve" and choices and decision.choice not in choices:
-        return f"請從 {'、'.join(choices)} 選一個大綱"
+        return CHOICE_PROMPTS[review.gate].format("、".join(choices))
     return None
 
 
@@ -80,6 +88,7 @@ def _review_out(review: VideoReview) -> ReviewOut:
     return ReviewOut(
         id=review.id,
         gate=review.gate,
+        subject=review.subject,
         content_sha256=review.content_sha256,
         summary=review.summary,
         payload=review.payload,
@@ -209,14 +218,21 @@ async def submit_review(
     if same is not None:
         return _review_out(same)
     now = datetime.now(UTC)
+    # A new submission replaces the pending one of the same gate and subject: one look review
+    # per character stays open at a time, and the older gates (subject None) behave as before.
     for review in reviews:
-        if review.gate == payload.gate and review.status == "pending":
+        if (
+            review.gate == payload.gate
+            and review.status == "pending"
+            and review.subject == payload.subject
+        ):
             review.status = "superseded"
             review.updated_at = now
     review = VideoReview(
         id=uuid4(),
         project_id=project.id,
         gate=payload.gate,
+        subject=payload.subject,
         content_sha256=payload.content_sha256,
         summary=payload.summary,
         payload=payload.payload,
@@ -229,9 +245,15 @@ async def submit_review(
     session.add(review)
     # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
     # passed every line and the setting is on, the review is decided as it arrives.
+    auto_note = None
     if payload.gate == "audio" and await auto_approves_audio(session, payload.payload):
+        auto_note = AUTO_APPROVED_NOTE
+    # A drama's storyboard may stand on the judge's scores when the owner turned that on.
+    elif payload.gate == "storyboard" and await auto_approves_storyboard(session, payload.payload):
+        auto_note = AUTO_APPROVED_STORYBOARD_NOTE
+    if auto_note is not None:
         review.status = "approved"
-        review.note = AUTO_APPROVED_NOTE
+        review.note = auto_note
         review.decided_at = now
         session.add(
             AdminAuditLog(
@@ -264,7 +286,7 @@ async def decide(
         raise AppError(409, "video_review_not_decidable", problem)
     now = datetime.now(UTC)
     review.status = "approved" if decision.decision == "approve" else "rejected"
-    review.choice = decision.choice if review.gate == "outline" else None
+    review.choice = decision.choice if review.gate in CHOICE_GATES else None
     review.note = (decision.note or "").strip() or None
     review.decided_at = now
     review.decided_by_user_id = user.id
