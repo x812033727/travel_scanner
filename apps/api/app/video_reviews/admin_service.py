@@ -6,13 +6,20 @@ submitting the same content again returns the review that exists, whatever its s
 rejected cut cannot come back as a fresh pending one without changing. Files no live review
 refers to are deleted from the store. A video the owner dropped takes no more submissions or
 decisions.
+
+Once the owner has uploaded a video themselves and pasted its YouTube address (HANDS-OFF.md
+§上傳包與「可以上架」), the row carries ``youtube_video_id`` and ``youtube_publish_at``; the
+review files stay downloadable, and ``prune_published_previews`` deletes only the mp4 once the
+upload confirmation and the publish time are both at least PREVIEW_RETENTION old.
 """
 
 from __future__ import annotations
 
+import re
 from collections.abc import Iterable
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
+from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 
 from sqlalchemy import func, select
@@ -29,6 +36,7 @@ from app.video_automation.settings import (
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
+    YOUTUBE_VIDEO_ID_PATTERN,
     DecisionIn,
     DropIn,
     ProjectIn,
@@ -41,6 +49,16 @@ from app.video_reviews.schemas import (
 from app.video_reviews.storage import ReviewStore, valid_slug
 
 LIVE = ("pending", "approved", "rejected")
+# How long the mp4 of a video that is on YouTube stays in the review store, counted from the
+# later of the upload confirmation's decision and the publish time (HANDS-OFF.md). The
+# thumbnail, captions and descriptions are small and stay.
+PREVIEW_RETENTION = timedelta(days=7)
+YOUTUBE_ID = re.compile(YOUTUBE_VIDEO_ID_PATTERN)
+YOUTUBE_HOSTS = frozenset(
+    {"youtu.be", "youtube.com", "www.youtube.com", "m.youtube.com", "studio.youtube.com"}
+)
+# youtube.com/<kind>/<id>: shorts, embeds and live pages, and Studio's /video/<id>/edit.
+YOUTUBE_PATH_KINDS = frozenset({"shorts", "embed", "live", "video", "v"})
 # Gates where approving means choosing one of the offered options (an outline; a character sheet).
 CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
@@ -102,7 +120,12 @@ def _review_out(review: VideoReview) -> ReviewOut:
     )
 
 
-def _summary(project: VideoProject, pending: int, spend: SlugSpend | None = None) -> dict[str, Any]:
+def _summary(
+    project: VideoProject,
+    pending: int,
+    spend: SlugSpend | None = None,
+    publish_approved_at: datetime | None = None,
+) -> dict[str, Any]:
     return {
         "slug": project.slug,
         "title": project.title,
@@ -110,6 +133,8 @@ def _summary(project: VideoProject, pending: int, spend: SlugSpend | None = None
         "stage": project.stage,
         "checklist": project.checklist,
         "youtube_video_id": project.youtube_video_id,
+        "youtube_publish_at": project.youtube_publish_at,
+        "publish_approved_at": publish_approved_at,
         "last_synced_at": project.last_synced_at,
         "pending": pending,
         "source_guide": project.source_guide,
@@ -160,7 +185,10 @@ async def upsert_project(
     project.title = payload.title
     project.stage = payload.stage
     project.checklist = [item.model_dump() for item in payload.checklist]
-    project.youtube_video_id = payload.youtube_video_id
+    # The owner records the id on /admin/videos first; a report that does not carry it yet
+    # (the worker reads it back a round later) must not clear it.
+    if payload.youtube_video_id is not None:
+        project.youtube_video_id = payload.youtube_video_id
     if payload.source_guide is not None:
         project.source_guide = payload.source_guide
     if payload.format is not None:
@@ -172,10 +200,30 @@ async def upsert_project(
     project.last_synced_at = now
     project.updated_at = now
     await session.commit()
-    if project.youtube_video_id:
-        # On YouTube now: the previews have done their job.
-        store.keep_only(slug, set())
+    # A video on YouTube keeps its upload package for the owner to download; only the mp4 goes,
+    # and only after PREVIEW_RETENTION (prune_published_previews), so nothing is deleted here
+    # and the store is not touched.
     return await project_view(session, slug)
+
+
+def publish_approved_at(reviews: Iterable[VideoReview]) -> datetime | None:
+    """When the upload confirmation was last approved, or None while it was not."""
+    decided = [
+        review.decided_at
+        for review in reviews
+        if review.gate == "publish" and review.status == "approved" and review.decided_at
+    ]
+    return max(decided) if decided else None
+
+
+def _confirmations() -> Any:
+    """Per video, when its upload confirmation was last approved (a subquery)."""
+    return (
+        select(VideoReview.project_id, func.max(VideoReview.decided_at).label("decided_at"))
+        .where(VideoReview.gate == "publish", VideoReview.status == "approved")
+        .group_by(VideoReview.project_id)
+        .subquery()
+    )
 
 
 async def project_view(session: AsyncSession, slug: str) -> ProjectOut:
@@ -184,7 +232,7 @@ async def project_view(session: AsyncSession, slug: str) -> ProjectOut:
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
     return ProjectOut(
-        **_summary(project, pending, spend.get(project.slug)),
+        **_summary(project, pending, spend.get(project.slug), publish_approved_at(reviews)),
         reviews=[_review_out(review) for review in reviews],
     )
 
@@ -204,8 +252,11 @@ async def list_projects(
         .group_by(VideoReview.project_id)
         .subquery()
     )
-    statement = select(VideoProject, func.coalesce(pending.c.pending, 0)).outerjoin(
-        pending, pending.c.project_id == VideoProject.id
+    confirmed = _confirmations()
+    statement = (
+        select(VideoProject, func.coalesce(pending.c.pending, 0), confirmed.c.decided_at)
+        .outerjoin(pending, pending.c.project_id == VideoProject.id)
+        .outerjoin(confirmed, confirmed.c.project_id == VideoProject.id)
     )
     if video_format is not None:
         statement = statement.where(VideoProject.format == video_format)
@@ -215,10 +266,10 @@ async def list_projects(
         statement.order_by(VideoProject.last_synced_at.desc()).limit(limit)
     )
     listed = list(rows.all())
-    spend = await spend_by_slug(session, [project.slug for project, _count in listed])
+    spend = await spend_by_slug(session, [project.slug for project, _count, _at in listed])
     return [
-        ProjectSummary(**_summary(project, int(count), spend.get(project.slug)))
-        for project, count in listed
+        ProjectSummary(**_summary(project, int(count), spend.get(project.slug), approved_at))
+        for project, count, approved_at in listed
     ]
 
 
@@ -383,3 +434,121 @@ async def file_for_admin(
                     break
                 return path, str(item["content_type"])
     raise AppError(404, "video_review_file_not_found", "這個檔案已經不在審核區")
+
+
+# --- on YouTube: the owner's link, and what the store keeps afterwards ---------------------------
+
+
+def youtube_video_id(value: str) -> str | None:
+    """The eleven-character id in what the owner pasted, or None when it names no video.
+
+    Takes ``https://youtu.be/<id>``, ``https://www.youtube.com/watch?v=<id>`` (other parameters
+    allowed), ``https://youtube.com/shorts/<id>``, ``https://studio.youtube.com/video/<id>/edit``
+    and the bare id. Anything on another host is refused, so a pasted link cannot record an id
+    that is not YouTube's.
+    """
+    text = value.strip()
+    if YOUTUBE_ID.fullmatch(text):
+        return text
+    try:
+        parsed = urlsplit(text if "://" in text else f"https://{text}")
+        host = (parsed.hostname or "").lower()
+    except ValueError:
+        return None
+    if parsed.scheme not in ("http", "https") or host not in YOUTUBE_HOSTS:
+        return None
+    parts = [part for part in parsed.path.split("/") if part]
+    candidate: str | None = None
+    if host == "youtu.be":
+        candidate = parts[0] if parts else None
+    elif parts[:1] == ["watch"]:
+        candidate = next(iter(parse_qs(parsed.query).get("v", [])), None)
+    elif len(parts) >= 2 and parts[0] in YOUTUBE_PATH_KINDS:
+        candidate = parts[1]
+    return candidate if candidate and YOUTUBE_ID.fullmatch(candidate) else None
+
+
+async def link_youtube(
+    session: AsyncSession,
+    slug: str,
+    user: User,
+    video_id: str,
+    publish_at: datetime | None,
+) -> ProjectOut:
+    """The owner uploaded the final cut in Studio: record the video's id and when it goes public.
+
+    Pasting again overwrites (a wrong link is corrected the same way); the worker reads the id
+    back on its next round and writes it into the work directory's video.json.
+    """
+    if publish_at is not None and publish_at.tzinfo is None:
+        raise AppError(422, "video_youtube_publish_at_naive", "上架時間要帶時區")
+    project = await _project(session, slug)
+    _refuse_dropped(project)
+    now = datetime.now(UTC)
+    project.youtube_video_id = video_id
+    project.youtube_publish_at = publish_at
+    project.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_youtube_linked",
+            target=f"video_project:{slug}",
+            metadata_json={
+                "slug": slug,
+                "youtube_video_id": video_id,
+                "publish_at": publish_at.isoformat() if publish_at else None,
+            },
+        )
+    )
+    await session.commit()
+    return await project_view(session, slug)
+
+
+def _is_video(item: Any) -> bool:
+    return isinstance(item, dict) and (
+        item.get("content_type") == "video/mp4" or item.get("role") == "final"
+    )
+
+
+async def _published_before(session: AsyncSession, cutoff: datetime) -> list[VideoProject]:
+    """Videos on YouTube whose upload confirmation was approved on or before ``cutoff``."""
+    confirmed = _confirmations()
+    rows = await session.scalars(
+        select(VideoProject)
+        .join(confirmed, confirmed.c.project_id == VideoProject.id)
+        .where(VideoProject.youtube_video_id.is_not(None), confirmed.c.decided_at <= cutoff)
+    )
+    return list(rows)
+
+
+async def prune_published_previews(
+    session: AsyncSession, store: ReviewStore, now: datetime | None = None
+) -> dict[str, list[str]]:
+    """Delete the mp4 files of videos that have been on YouTube for PREVIEW_RETENTION.
+
+    The rule (HANDS-OFF.md §上傳包與「可以上架」): the video has a ``youtube_video_id``, its
+    upload confirmation was approved at least PREVIEW_RETENTION ago and, when the owner set a
+    publish time, that time is also at least PREVIEW_RETENTION past. Only files that are
+    ``video/mp4`` or play the ``final`` role go; the thumbnail, captions and descriptions stay
+    so the owner can still fetch them. Idempotent and cheap, so the list page calls it: a video
+    whose mp4 is already gone costs one stat per file. Returns what was removed, by slug.
+    """
+    now = now or datetime.now(UTC)
+    cutoff = now - PREVIEW_RETENTION
+    removed: dict[str, list[str]] = {}
+    for project in await _published_before(session, cutoff):
+        if project.youtube_publish_at is not None and project.youtube_publish_at > cutoff:
+            continue
+        reviews = await _reviews(session, project)
+        videos = {
+            str(item["sha256"])
+            for review in reviews
+            for item in review.files
+            if _is_video(item) and item.get("sha256")
+        }
+        if not any(store.path(project.slug, sha256) is not None for sha256 in videos):
+            continue
+        gone = store.keep_only(project.slug, kept_files(reviews) - videos)
+        if gone:
+            removed[project.slug] = gone
+    return removed

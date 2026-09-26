@@ -1,6 +1,7 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
+import { youtubeVideoId } from "./admin-video-review-card";
 import { AdminVideoReviews } from "./admin-video-reviews";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
@@ -44,6 +45,8 @@ function stubFetch() {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  // jsdom has no clipboard; a test that defines one must not leak it into the fallback test.
+  delete (navigator as { clipboard?: unknown }).clipboard;
   window.history.replaceState(null, "", "/");
 });
 
@@ -276,5 +279,178 @@ describe("AdminVideoReviews", () => {
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const item = await screen.findByRole("button", { name: /AI 模型怎麼挑/ });
     expect(item.textContent).toContain("已放棄");
+  });
+
+  it("shows why Jev picked an outline, and the quality check items with the failed ones first", async () => {
+    const picked = {
+      ...outline, status: "approved", choice: "B", decided_at: "2026-09-25T05:10:00Z",
+      note: "Jev 挑了 B（0.74）：符合立場 0.81、有示範 0.92、建議 0.05，依設定自動核准",
+      payload: { ...outline.payload, pick: { choice: "B", probabilities: { A: 0.26, B: 0.74 }, options: { A: { stance: 0.55, demo: 0.4 }, B: { stance: 0.81, demo: 0.92 } }, advice: 0.05 } },
+    };
+    const checked = {
+      ...final, summary: "自動品管 2 項沒過：pace、links",
+      payload: { ...final.payload, qa: { ok: false, final_sha256: "b".repeat(64), items: [
+        { id: "assemble", ok: true, detail: "1800 frames" },
+        { id: "pace", ok: false, detail: "slide 4 stays 21 s" },
+        { id: "captions", ok: true, detail: "5 locales", warnings: ["en: 18 characters per second"] },
+        { id: "links", ok: false, detail: "https://example.com/x returned 404" },
+      ] } },
+    };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 1, reviews: [checked, picked] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const cut = await screen.findByRole("article", { name: "成片" });
+    const items = [...within(cut).getByLabelText("自動品管").querySelectorAll(":scope > ul > li")].map((item) => item.textContent);
+    expect(items[0]).toContain("節奏 · slide 4 stays 21 s");
+    expect(items[1]).toContain("連結 · https://example.com/x returned 404");
+    expect(items[2]).toContain("合成 · 1800 frames");
+    expect(items[3]).toContain("字幕 · 5 locales");
+    expect(items[3]).toContain("注意：en: 18 characters per second");
+    expect(cut.textContent).toContain("2 項沒過");
+
+    fireEvent.click(screen.getByText("過去的決定", { selector: "summary" }));
+    const chosen = screen.getByRole("article", { name: "大綱" });
+    expect(chosen.textContent).toContain("Jev 挑選");
+    const table = within(chosen).getByLabelText("Jev 挑選的理由");
+    const rows = [...table.querySelectorAll("tbody tr")].map((row) => row.textContent);
+    expect(rows[0]).toContain("選項 A");
+    expect(rows[0]).toContain("0.26");
+    expect(rows[1]).toContain("選項 BJev 挑的");
+    expect(rows[1]).toContain("0.74");
+    expect(rows[1]).toContain("0.81");
+    expect(rows[1]).toContain("0.92");
+    expect(table.textContent).toContain("整份企劃給了建議0.05");
+    expect(table.textContent).toContain("門檻：符合立場與有示範至少 0.6，建議至多 0.3。");
+    expect(chosen.textContent).toContain("依設定自動核准");
+    expect(chosen.textContent).not.toContain("有項目沒過門檻");
+  });
+
+  it("puts what needs the owner first, then what is ready to upload with its package, copy buttons and the uploaded form", async () => {
+    const ready = { ...summary, slug: "upload-ready", title: "上傳包影片", stage: "done", pending: 0, publish_approved_at: "2026-09-27T05:00:00Z", last_synced_at: "2026-09-27T05:00:00Z" };
+    const blocked = { ...summary, slug: "stuck-video", title: "卡住的影片", stage: "blocked", pending: 0, checklist: [{ key: "blocked", label: "卡住，需要人處理：缺金鑰", done: false }] };
+    const published = { ...summary, slug: "on-youtube", title: "已上架的影片", pending: 0, youtube_video_id: "abcdefghijk", youtube_publish_at: "2026-10-01T12:00:00Z", publish_approved_at: "2026-09-20T05:00:00Z" };
+    const confirmation = {
+      id: "66666666-6666-4666-8666-666666666666", gate: "publish", content_sha256: "5".repeat(64), summary: "上傳包 4 項齊全",
+      payload: {
+        package: { ok: true, final_sha256: "5".repeat(64), items: [{ id: "files", ok: true, detail: "13 files" }, { id: "descriptions", ok: true, detail: "5 locales" }, { id: "captions", ok: true, detail: "5 locales" }, { id: "disclosure", ok: true, detail: "slides and TTS" }] },
+        minutes: 9.5, chapters: 6, locales: ["zh-TW", "zh-CN", "en", "ja", "ko"],
+        zh: { title: "AI 模型怎麼挑：三個問題", description: "先把帳算清楚。\n\n0:00 開場", tags: ["AI", "模型"] },
+        disclosure: { synthetic: false, reason: "投影片加一般 TTS，不需要勾" },
+      },
+      files: [
+        { role: "final", sha256: "6".repeat(64), size: 95_000_000, content_type: "video/mp4" },
+        { role: "thumbnail", sha256: "7".repeat(64), size: 180_000, content_type: "image/jpeg" },
+        { role: "captions_zh-TW", sha256: "8".repeat(64), size: 12_000, content_type: "text/plain" },
+        { role: "captions_zh_cn", sha256: "b".repeat(64), size: 11_000, content_type: "application/x-subrip" },
+        { role: "description_zh-TW", sha256: "9".repeat(64), size: 2_000, content_type: "text/plain" },
+        { role: "metadata", sha256: "a".repeat(64), size: 4_000, content_type: "application/json" },
+      ],
+      status: "approved", choice: null, note: "上傳包 4 項齊全，依設定自動核准", decided_at: "2026-09-27T05:00:00Z", created_at: "2026-09-27T05:00:00Z",
+    };
+    const posts: Array<{ url: string; body: unknown }> = [];
+    let linked = false;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push({ url, body: JSON.parse(String(init.body)) });
+        linked = true;
+        return Promise.resolve(Response.json({ ...ready, youtube_video_id: "dQw4w9WgXcQ", reviews: [confirmation] }));
+      }
+      const current = linked ? { ...ready, youtube_video_id: "dQw4w9WgXcQ" } : ready;
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([published, current, blocked, summary]));
+      if (url.endsWith("/admin/videos/upload-ready")) return Promise.resolve(Response.json({ ...current, reviews: [confirmation] }));
+      return Promise.resolve(Response.json({ ...summary, reviews: [] }));
+    }));
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "上傳包影片" });
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "已上架"]);
+    const needs = screen.getByRole("region", { name: "需要你" });
+    expect([...needs.querySelectorAll("button")].map((button) => button.textContent)).toEqual([expect.stringContaining("卡住的影片"), expect.stringContaining("AI 模型怎麼挑")]);
+    expect(needs.textContent).toContain("卡住");
+    expect(screen.getByRole("region", { name: "已上架" }).textContent).toContain("YouTube 影片 abcdefghijk");
+
+    await waitFor(() => expect(card.textContent).toContain("9.5 分鐘"));
+    expect(card.textContent).toContain("6 章");
+    expect(card.textContent).toContain("5 個語系");
+    const downloads = [...card.querySelectorAll("a[download]")];
+    expect(downloads.map((link) => link.getAttribute("download"))).toEqual(["final.mp4", "thumbnail.jpg", "zh-TW.srt", "zh-CN.srt", "description.zh-TW.txt", "metadata.json"]);
+    expect(downloads[0].getAttribute("href")).toBe(`/api/admin-video-files/upload-ready/${"6".repeat(64)}`);
+    expect(downloads[0].textContent).toContain("95.0 MB");
+    expect(card.textContent).toContain("不用勾");
+    expect(card.textContent).toContain("投影片加一般 TTS，不需要勾");
+    expect((screen.getByRole("textbox", { name: "標籤" }) as HTMLTextAreaElement).value).toBe("AI, 模型");
+    fireEvent.click(screen.getByRole("button", { name: "複製 中文標題" }));
+    await waitFor(() => expect(writeText).toHaveBeenCalledWith("AI 模型怎麼挑：三個問題"));
+    expect(screen.getByRole("button", { name: "複製 中文標題" }).textContent).toContain("已複製");
+
+    const form = screen.getByRole("form", { name: "已上傳到 YouTube" });
+    const submit = within(form).getByRole("button", { name: "已上傳" });
+    expect(submit).toHaveProperty("disabled", true);
+    const address = within(form).getByRole("textbox", { name: "YouTube 網址或影片 id" });
+    fireEvent.change(address, { target: { value: "https://example.com/watch?v=dQw4w9WgXcQ" } });
+    expect(form.textContent).toContain("看不出影片 id");
+    expect(submit).toHaveProperty("disabled", true);
+    fireEvent.change(address, { target: { value: " https://youtu.be/dQw4w9WgXcQ?si=share " } });
+    expect(form.textContent).toContain("影片 id：dQw4w9WgXcQ");
+    expect(submit).toHaveProperty("disabled", false);
+    fireEvent.change(within(form).getByLabelText("上架時間（選填）"), { target: { value: "2026-10-01T20:00" } });
+    fireEvent.click(submit);
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts[0].url).toContain("/admin/videos/upload-ready/youtube");
+    expect(posts[0].body).toEqual({ url: "https://youtu.be/dQw4w9WgXcQ?si=share", publish_at: new Date("2026-10-01T20:00").toISOString() });
+    await waitFor(() => expect(screen.getByRole("region", { name: "已上架" }).textContent).toContain("上傳包影片"));
+    expect(screen.queryByRole("region", { name: "可以上架" })).toBeNull();
+  });
+
+  it("selects the text for Ctrl+C when the clipboard is refused, and shows the form on a ready video's page", async () => {
+    const confirmation = {
+      id: "66666666-6666-4666-8666-666666666666", gate: "publish", content_sha256: "5".repeat(64), summary: "上傳包",
+      payload: {
+        package: { ok: true, final_sha256: "5".repeat(64), items: [{ id: "files", ok: true, detail: "13 files" }, { id: "descriptions", ok: true }, { id: "captions", ok: true }, { id: "disclosure", ok: true }] },
+        zh: { title: "標題", description: "說明", tags: [] },
+      },
+      files: [],
+      status: "approved", choice: null, note: null, decided_at: "2026-09-27T05:00:00Z", created_at: "2026-09-27T05:00:00Z",
+    };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, pending: 0, publish_approved_at: "2026-09-27T05:00:00Z", reviews: [confirmation] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    expect(await screen.findByRole("form", { name: "已上傳到 YouTube" })).toBeTruthy();
+    const confirmed = screen.getByRole("article", { name: "上架確認" });
+    expect(within(confirmed).getByLabelText("上傳包檢查").textContent).toContain("4 項全過");
+    expect(within(confirmed).getByLabelText("上傳包檢查").textContent).toContain("檔案 · 13 files");
+    fireEvent.click(screen.getByRole("button", { name: "複製 中文說明欄" }));
+    expect((await screen.findByRole("status")).textContent).toContain("沒辦法自動複製");
+    const field = screen.getByRole("textbox", { name: "中文說明欄" }) as HTMLTextAreaElement;
+    expect(document.activeElement).toBe(field);
+    expect([field.selectionStart, field.selectionEnd]).toEqual([0, "說明".length]);
+  });
+
+  it("tells a published video's page whether its mp4 is still in the store", async () => {
+    const gone = { ...summary, pending: 0, youtube_video_id: "dQw4w9WgXcQ", youtube_publish_at: "2026-09-01T12:00:00Z", publish_approved_at: "2026-08-30T00:00:00Z", reviews: [] };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json(gone))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    const { unmount } = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByText(/YouTube 影片 dQw4w9WgXcQ/);
+    expect(screen.getByText(/YouTube 影片 dQw4w9WgXcQ/).textContent).toContain("排定");
+    expect(screen.getByText(/已從審核區刪除/)).toBeTruthy();
+    unmount();
+    const fresh = { ...gone, youtube_publish_at: new Date(Date.now() + 86_400_000).toISOString(), publish_approved_at: new Date().toISOString() };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json(fresh))));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByText(/YouTube 影片 dQw4w9WgXcQ/);
+    expect(screen.getByText(/上架滿 7 天後從審核區刪除/)).toBeTruthy();
+  });
+
+  it("reads a video id out of every address shape and nothing else", () => {
+    const id = "dQw4w9WgXcQ";
+    for (const pasted of [id, `https://youtu.be/${id}?si=x`, `https://www.youtube.com/watch?t=30s&v=${id}`, `https://youtube.com/shorts/${id}`, `https://studio.youtube.com/video/${id}/edit`, `youtu.be/${id}`, `m.youtube.com/watch?v=${id}`]) {
+      expect(youtubeVideoId(pasted)).toBe(id);
+    }
+    for (const pasted of ["", "dQw4w9WgXc", `https://example.com/watch?v=${id}`, `https://youtube.com.evil.example/watch?v=${id}`, "https://www.youtube.com/channel/UCabcdefghij", "javascript:alert(1)", "https://["]) {
+      expect(youtubeVideoId(pasted)).toBeNull();
+    }
   });
 });

@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import AwareDatetime, BaseModel, Field, field_validator
 
 # look and storyboard belong to the drama format (docs/videos/DRAMA.md): the character sheets
 # the owner picks from, one review per character, and the keyframes before any clip is made.
@@ -13,7 +13,19 @@ from pydantic import BaseModel, Field, field_validator
 # (docs/videos/SERIES.md).
 Gate = Literal["outline", "script", "look", "storyboard", "audio", "final", "publish"]
 SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
-ContentType = Literal["video/mp4", "audio/mp4", "image/png", "image/jpeg"]
+# The previews, and since HANDS-OFF.md the whole upload package the owner downloads from the
+# "ready to upload" list: the captions (.srt), the descriptions (.txt) and metadata.json.
+ContentType = Literal[
+    "video/mp4",
+    "audio/mp4",
+    "image/png",
+    "image/jpeg",
+    "application/x-subrip",
+    "text/vtt",
+    "text/plain",
+    "application/json",
+]
+YOUTUBE_VIDEO_ID_PATTERN = r"^[A-Za-z0-9_-]{11}$"
 MAX_PAYLOAD_BYTES = 256 * 1024
 SHA256_PATTERN = r"^[0-9a-f]{64}$"
 # One gate can hold several pending reviews when each names a subject: a look review per
@@ -36,7 +48,9 @@ class ProjectIn(BaseModel):
     title: str = Field(min_length=1, max_length=200)
     stage: str = Field(min_length=1, max_length=40)
     checklist: list[ChecklistItem] = Field(default_factory=list, max_length=30)
-    youtube_video_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{11}$")
+    # Left out (or null), the stored one stays: the owner records it on /admin/videos before the
+    # worker reads it back into video.json (docs/videos/HANDS-OFF.md).
+    youtube_video_id: str | None = Field(default=None, pattern=YOUTUBE_VIDEO_ID_PATTERN)
     # The article's slug. Left out, the stored one stays: older tools do not send it.
     source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
     # Slides or the AI drama route (docs/videos/DRAMA.md). Left out, the stored one stays.
@@ -48,8 +62,9 @@ class ProjectIn(BaseModel):
 
 class ReviewFile(BaseModel):
     # What the file is to the page: preview, narration, contact_sheet, thumbnail; a drama's
-    # storyboard names its keyframes shot_01, shot_02 and its look candidates candidate_a.
-    role: str = Field(pattern=r"^[a-z][a-z0-9_]{0,39}$")
+    # storyboard names its keyframes shot_01, shot_02 and its look candidates candidate_a. The
+    # upload package names a locale's files captions_zh-TW and description_zh-TW (HANDS-OFF.md).
+    role: str = Field(pattern=r"^[a-z][A-Za-z0-9_-]{0,39}$")
     sha256: str = Field(pattern=SHA256_PATTERN)
     size: int = Field(gt=0)
     content_type: ContentType
@@ -93,6 +108,11 @@ class ProjectSummary(BaseModel):
     stage: str
     checklist: list[ChecklistItem]
     youtube_video_id: str | None
+    # When the owner set it to go public on YouTube (docs/videos/HANDS-OFF.md §YouTube API).
+    youtube_publish_at: datetime | None = None
+    # When the upload confirmation was approved: with no youtube_video_id yet, the video is
+    # "ready to upload" and the page lists it second, after what needs the owner.
+    publish_approved_at: datetime | None = None
     last_synced_at: datetime
     pending: int
     source_guide: str | None = None
@@ -123,3 +143,15 @@ class DropIn(BaseModel):
 class PartOut(BaseModel):
     received: list[int]
     complete: bool
+
+
+class YoutubeIn(BaseModel):
+    """What the owner pastes after uploading the final cut in YouTube Studio themselves.
+
+    ``url`` is any address that names the video (youtu.be, watch?v=, shorts, Studio) or the bare
+    eleven-character id; ``publish_at`` is when it goes public, timezone-aware, or null while
+    the owner has not decided (docs/videos/HANDS-OFF.md §YouTube API 第一步).
+    """
+
+    url: str = Field(min_length=1, max_length=500)
+    publish_at: AwareDatetime | None = None
