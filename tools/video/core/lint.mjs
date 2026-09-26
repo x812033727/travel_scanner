@@ -8,6 +8,7 @@ import { unknownTerms, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, NARRATION_LOCALE, eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
+import { metadataStatus, namedWith } from "./translations.mjs";
 
 // Phrases that only work on a page. Same list as video_kit.py's WRITTEN_ONLY.
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
@@ -166,6 +167,12 @@ export function lintVideo(doc, context = {}) {
     }
     if (missing.length) warn(`i18n/${locale}.json`, `${missing.length} lines not translated: ${missing.join(", ")}`);
     if (stale.length) warn(`i18n/${locale}.json`, `${stale.length} translations older than the zh-TW line: ${stale.join(", ")}`);
+    const state = metadataStatus(doc, translation);
+    const [absent, older, unknown] = ["missing", "stale", "unknown"].map((wanted) => namedWith(state, wanted));
+    if (absent.length) warn(`i18n/${locale}.json`, `not translated: ${absent.join(", ")}`);
+    if (older.length) warn(`i18n/${locale}.json`, `translations older than the zh-TW text: ${older.join(", ")}`);
+    if (unknown.length) warn(`i18n/${locale}.json`, `translations merged before i18n-merge hashed their zh-TW text, so possibly stale: ${unknown.join(", ")}; i18n-sheet marks them todo`);
+    if (state.orphans.length) warn(`i18n/${locale}.json`, `chapter titles for scenes that no longer open a chapter: ${state.orphans.join(", ")}; i18n-merge drops them`);
   }
 
   // Every drama scene is a shot, so template sequences say nothing there; shotProblems compares prompts instead.
