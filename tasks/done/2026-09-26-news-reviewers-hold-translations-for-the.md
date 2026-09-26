@@ -37,6 +37,11 @@ editor.
       (`policy.without_topic_links`).
 - [x] A translation the reviewer corrects gets its topic link back before the hard checks.
 - [x] `document_fingerprint` shares the one topic-link rule (`policy.is_topic_link`).
+- [x] A final edit may not break a site check the translation passed. The editor gets one
+      more call with the broken checks (`mechanical_problems`); if they are still broken, the
+      locale keeps its reviewed translation. The prompt names the exact disclaimer phrase for
+      each locale. On 2026-09-26 the Kalshi story lost its crypto disclaimer callout in all
+      five locales this way.
 
 ## How to verify
 
@@ -44,7 +49,11 @@ editor.
 
 ## Notes
 
-- The same run showed the other two ways MiniMax stops a confirmed story:
+- Outcome of the seven stories confirmed on 2026-09-26: Microsoft stopped at Jev's last call,
+  set at 0.9 at the time; the owner lowered it to 0.55 afterwards. Bitget stopped on the topic
+  link and Kalshi on the disclaimer; both are fixed here. The other four stopped on MiniMax
+  translations.
+- The same run showed the ways MiniMax stops a confirmed story:
   - an English translation whose JSON is broken twice (`expected , or }`), seen on KelpDAO
     and Anthropic;
   - a Korean translation that keeps Chinese words, seen on Sony/Suno.

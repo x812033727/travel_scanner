@@ -870,7 +870,7 @@ async def _second_stage(
         # The owner's final editor reads every locale against the evidence (2026-09-25). An
         # editor's own changes in the guide editor (``localized``) are never rewritten.
         final_holds = await _final_edit(
-            session, environment, settings, candidate, evidence, runs, documents
+            session, environment, settings, candidate, evidence, usable, runs, documents
         )
         document = documents["zh-TW"]
 
@@ -966,27 +966,76 @@ async def _final_edit(
     settings: NewsAutomationSettings,
     candidate: NewsCandidate,
     evidence: list[NewsEvidence],
+    usable: list[NewsEvidence],
     runs: _Runs,
     documents: dict[Locale, GuideDocument],
 ) -> list[str]:
-    """Run the final editor over each locale in place; return the locales it held."""
+    """Run the final editor over each locale in place; return the locales it held.
+
+    An edit may not break a site check the translation passed (on 2026-09-26 one rewrote the
+    crypto disclaimer out of its callout in all five locales): the editor gets one more call
+    with the checks it broke, and if they are still broken the locale keeps its reviewed
+    translation.
+    """
 
     source = documents["zh-TW"]
+    vertical = cast(Vertical, candidate.vertical)
+    sites = evidence_site_count(usable)
+
+    def broken(before: GuideDocument, after: GuideDocument, locale: Locale) -> list[str]:
+        was = set(hard_policy_problems(before, vertical, locale, source_count=sites))
+        now = hard_policy_problems(after, vertical, locale, source_count=sites)
+        return sorted({problem for problem in now if problem not in was})
+
+    def edited(document: GuideDocument, locale: Locale) -> GuideDocument:
+        return _topic_linked(_source_locked(document, evidence), candidate.vertical, locale)
+
     held: list[str] = []
     for locale in ("zh-TW", *TARGET_LOCALES):
+        original = documents[locale]
         await runs.start(
             f"final-edit-{locale}", provider=settings.editor_provider, model=settings.editor_model
         )
         edit, usage, model = await ai.final_edit(
-            environment, settings, source, locale, documents[locale], evidence
+            environment, settings, source, locale, original, evidence
         )
         await runs.finish(usage=usage, model=model)
-        revised = edit.verdict == "revise" and edit.corrected_document is not None
-        if revised and edit.corrected_document is not None:
-            documents[locale] = _topic_linked(
-                _source_locked(edit.corrected_document, evidence), candidate.vertical, locale
-            )
-        passed = edit.verdict == "pass" or revised
+        issues = list(edit.issues)
+        passed = edit.verdict == "pass" or (
+            edit.verdict == "revise" and edit.corrected_document is not None
+        )
+        revised = False
+        if edit.verdict == "revise" and edit.corrected_document is not None:
+            candidate_document = edited(edit.corrected_document, locale)
+            problems = broken(original, candidate_document, locale)
+            if problems:
+                await runs.start(
+                    f"final-edit-{locale}-checks",
+                    provider=settings.editor_provider,
+                    model=settings.editor_model,
+                )
+                retry, usage, model = await ai.final_edit(
+                    environment,
+                    settings,
+                    source,
+                    locale,
+                    candidate_document,
+                    evidence,
+                    problems=problems,
+                )
+                await runs.finish(usage=usage, model=model)
+                if retry.verdict == "revise" and retry.corrected_document is not None:
+                    candidate_document = edited(retry.corrected_document, locale)
+                problems = broken(original, candidate_document, locale)
+            if problems:
+                issues.append(
+                    "The edit was not kept: it broke "
+                    + "; ".join(problems)
+                    + ". The reviewed translation stays."
+                )
+            else:
+                documents[locale] = candidate_document
+                revised = True
         fingerprint = document_fingerprint(documents[locale])
         details: dict[str, Any] = {
             "stage": "final_edit",
@@ -1001,7 +1050,7 @@ async def _final_edit(
                 verdict="pass" if passed else "manual",
                 provider=settings.editor_provider,
                 model=model,
-                reasons_json=edit.issues,
+                reasons_json=issues,
                 details_json=details,
                 evidence_hash=candidate.evidence_hash,
                 prompt_version=candidate.prompt_version,
@@ -1017,7 +1066,7 @@ async def _final_edit(
                     verdict="pass",
                     provider=settings.editor_provider,
                     model=model,
-                    reasons_json=edit.issues,
+                    reasons_json=issues,
                     details_json=details,
                     evidence_hash=candidate.evidence_hash,
                     prompt_version=candidate.prompt_version,

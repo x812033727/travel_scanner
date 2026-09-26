@@ -1193,3 +1193,72 @@ async def test_a_translation_the_reviewer_corrected_gets_its_topic_link_back(
     assert "https://mokaair.com/en/life/topics/ai-news" in [
         block.get("url") for block in english.draft_json["blocks"]
     ]
+
+
+@pytest.mark.asyncio
+async def test_an_edit_that_breaks_a_site_check_gets_one_fix_then_falls_back(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """On 2026-09-26 the final editor rewrote a crypto disclaimer out of its callout."""
+
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        owner_id = await seed_owner(session)
+        candidate_id = candidate.id
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    stage_one_mocks(monkeypatch)
+    stage_two_mocks(monkeypatch)
+
+    def checks(document: GuideDocument, *_args: Any, **_kwargs: Any) -> list[str]:
+        return ["crypto_disclaimer_block: broken"] if document.title == "Broken" else []
+
+    monkeypatch.setattr(pipeline, "hard_policy_problems", checks)
+    retries: dict[str, list[str]] = {}
+
+    async def final_edit(
+        *args: Any, problems: list[str] | None = None
+    ) -> tuple[LocaleReviewResult, dict[str, int], str]:
+        locale = cast(str, args[3])
+        if locale not in {"ja", "ko"}:
+            return LocaleReviewResult(verdict="pass"), {}, "editor"
+        if problems:
+            retries[locale] = problems
+            title = "Fixed ko" if locale == "ko" else "Broken"
+        else:
+            title = "Broken"
+        return (
+            LocaleReviewResult(verdict="revise", corrected_document=news_document(title)),
+            {},
+            "editor",
+        )
+
+    monkeypatch.setattr(ai, "final_edit", final_edit)
+    await confirm(factory, candidate_id, owner_id)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        titles = {
+            row.locale: row.draft_json["title"]
+            for row in await session.scalars(select(GuideArticleLocale))
+        }
+        notes = [
+            reason
+            for row in await session.scalars(
+                select(NewsAssessment).where(NewsAssessment.locale == "ja")
+            )
+            if row.details_json.get("stage") == "final_edit"
+            for reason in row.reasons_json
+        ]
+    await engine.dispose()
+
+    assert result == "published"
+    assert retries == {
+        "ja": ["crypto_disclaimer_block: broken"],
+        "ko": ["crypto_disclaimer_block: broken"],
+    }
+    assert titles["ko"] == "Fixed ko", "the second call fixed it, so the edit stays"
+    assert titles["ja"] == "Release ja", "still broken, so the reviewed translation stays"
+    assert any("was not kept" in note for note in notes)
