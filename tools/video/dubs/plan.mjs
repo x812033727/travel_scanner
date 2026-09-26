@@ -120,7 +120,8 @@ export function placeLines(window, originals, lengths, { tempo = 1, gapMs = GAP_
     const samples = Math.max(1, Math.round(lengths.get(id) / tempo));
     const start = keepStarts ? Math.max(originals.get(id).start_frame, cursor) : cursor;
     const end = start + framesFor(samples);
-    lines.push({ id, start_frame: start, end_frame: end, audio_samples: samples, tempo });
+    // The scene rides along: check-audio batches its Jev questions per scene, for dubs too.
+    lines.push({ id, scene: window.scene, start_frame: start, end_frame: end, audio_samples: samples, tempo });
     cursor = end + gap;
   }
   return lines;

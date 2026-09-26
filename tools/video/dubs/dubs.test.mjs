@@ -245,6 +245,7 @@ test("dub writes a track per locale, speeds up a tight window, and reports a win
   assert.equal(enTimeline.total_frames, timeline.total_frames);
   assert.equal(enTimeline.lines.length, timeline.lines.length);
   assert.ok(enTimeline.lines.every((line) => line.tempo === 1));
+  assert.deepEqual(enTimeline.lines.map((line) => line.scene), timeline.lines.map((line) => line.scene), "each dubbed line names its scene, as the narration's does");
   assert.equal(enTimeline.translation_hash, translationHash(dubScript(doc, translationFor(doc, texts.en), "en").doc));
   const enTrack = parseWav(readFileSync(en.narration));
   assert.equal(enTrack.samples.length, timeline.total_frames * SAMPLES_PER_FRAME, "the track is exactly the video's length");
