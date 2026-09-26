@@ -126,7 +126,15 @@ test("the thumbnail is its own 1280x720 page", () => {
   const html = thumbnailHtml(showcase.thumbnail);
   assert.match(html, /--width:1280px;--height:720px/);
   assert.match(html, /第一名<em>不一定<\/em>最好用/);
+  assert.match(html, /<div class="thumb-art"><\/div>/);
+  assert.doesNotMatch(html, /thumb-bg/);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: {} }), ["thumbnail.data.headline is required"]);
+  // A drama's thumbnail sits on a keyframe under a scrim, with the CSS in the head, not the theme.
+  const onKeyframe = thumbnailHtml(showcase.thumbnail, { background: "https://video.local/work/keyframes/a.png" });
+  assert.match(onKeyframe, /<body><img class="thumb-bg" src="https:\/\/video\.local\/work\/keyframes\/a\.png" alt=""><div class="thumb-scrim"><\/div><div class="thumb">/);
+  assert.match(onKeyframe, /<style>:root\{[^<]*\.thumb-bg\{position:absolute;inset:0;width:100%;height:100%;object-fit:cover\}/);
+  assert.doesNotMatch(onKeyframe, /thumb-art/);
+  assert.doesNotMatch(visibleText(onKeyframe), /object-fit/);
 });
 
 test("visibleText is what the font check sees: text without markup or the head", () => {
