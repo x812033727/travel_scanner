@@ -67,3 +67,8 @@ On the host, `journalctl -u mokaair-ai-accounts` shows a line for any failed pro
 
 - Everything else checked out on the host. Background probes updated all three Claude snapshots
   within the systemd sandbox (01:30:53Z): A 0 %/100 %, B 0 %/87 %, C 3 %/18 % (5 h/weekly used).
+- 2026-09-26: the logging half landed in #790. A probe that returns False writes one line
+  to the journal (reason, seconds, whether the message went out, and the last 20 screen
+  rows with emails and tokens redacted). An exception in `_refresh_usage` is logged with
+  its traceback. What is left here is the throttle: skip a probe while the snapshot is
+  younger than `UNCHANGED_REWRITE_SECONDS`, or count "unchanged" as success.
