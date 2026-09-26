@@ -21,6 +21,40 @@ export type Stage = (typeof STAGES)[number];
 type CaptionLocale = (typeof CAPTION_LOCALES)[number];
 type ModelOption = { value: string; label: string; description: string | null; status: string };
 type Voice = { provider: "azure" | "gemini"; name: string; style: string | null; model: string | null; rate: string };
+// The AI drama route (docs/videos/DRAMA.md): apps/api/app/video_automation/schemas.py DramaSettings.
+export const MEDIA_PROVIDERS = ["gemini", "minimax"] as const;
+export const STYLE_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
+export type MediaProvider = (typeof MEDIA_PROVIDERS)[number];
+export type MediaOption = ModelOption & { resolutions: string[]; durations: number[]; reference_images: number; native_audio: boolean; usd_per_second: number | null; usd_per_image: number | null; usd_per_track: number | null };
+export type MediaOptions = { images: Partial<Record<MediaProvider, MediaOption[]>>; clips: Partial<Record<MediaProvider, MediaOption[]>>; music: Partial<Record<MediaProvider, MediaOption[]>> };
+export type CharacterVoice = { provider: "azure" | "gemini"; name: string; style?: string | null; hint?: string | null };
+export type DramaSettings = {
+  drama_enabled: boolean;
+  image_provider: MediaProvider;
+  image_model: string;
+  clip_provider: MediaProvider;
+  clip_model: string;
+  music_provider: MediaProvider;
+  music_model: string;
+  clip_resolution: string;
+  clip_seconds_default: number;
+  clip_native_audio: boolean;
+  drama_aspect: "16:9" | "9:16";
+  max_clips_per_video: number;
+  max_retakes_per_shot: number;
+  monthly_clip_seconds_budget: number;
+  monthly_images_budget: number;
+  monthly_judge_calls_budget: number;
+  monthly_music_budget: number;
+  max_usd_per_video: number;
+  judge_min_score: number;
+  auto_approve_storyboard: boolean;
+  character_voice_pool: CharacterVoice[];
+  music_enabled: boolean;
+  subtitle_burn_in: boolean;
+  style_preset: (typeof STYLE_PRESETS)[number];
+  drama_topic_scope: string[];
+};
 export type VideoSettings = {
   enabled: boolean;
   draft_interval_hours: number;
@@ -40,12 +74,15 @@ export type VideoSettings = {
   max_verify_rounds: number;
   max_retake_rounds: number;
   auto_approve_audio: boolean;
+  drama: DramaSettings;
 };
 type Usage = { tokens: number; token_budget: number; subscription_tokens?: number; drafts: number; draft_budget: number; calls: number; failed_calls: number };
 export type VideoSettingsView = VideoSettings & {
   model_options: Record<Provider, ModelOption[]>;
   configured_providers: Provider[];
   voice_options: { gemini: string[]; gemini_models: string[]; azure: string[] };
+  media_options?: MediaOptions;
+  style_presets?: string[];
   usage?: Usage | null;
   updated_at: string | null;
 };
@@ -57,6 +94,14 @@ const numberFields = {
   budget: [["max_drafts_per_month", 0, 60], ["monthly_token_budget_millions", 1, 500], ["max_verify_rounds", 1, 5], ["max_retake_rounds", 0, 5]],
 } as const;
 type NumberField = (typeof numberFields)[keyof typeof numberFields][number][0];
+// The drama's numbers, with the API's bounds; the budgets open wide on purpose (the owner chose
+// to start without a cap on 2026-09-26 and to lower them after the pilot).
+const dramaNumberFields = {
+  shape: [["max_clips_per_video", 1, 120], ["max_retakes_per_shot", 0, 5], ["judge_min_score", 0, 10]],
+  budget: [["monthly_clip_seconds_budget", 0, 100_000], ["monthly_images_budget", 0, 100_000], ["monthly_judge_calls_budget", 0, 100_000], ["monthly_music_budget", 0, 100_000], ["max_usd_per_video", 0, 10_000]],
+} as const;
+type DramaNumberField = (typeof dramaNumberFields)[keyof typeof dramaNumberFields][number][0];
+export const mediaProviderLabels: Record<MediaProvider, string> = { gemini: "Google Gemini API", minimax: "MiniMax API" };
 
 /** One word or phrase per line, blank lines dropped, as the API stores the topic lists. */
 export function linesToList(value: string): string[] {
@@ -67,7 +112,7 @@ const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "auto_approve_audio",
+  "max_retake_rounds", "auto_approve_audio", "drama",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The body the API's SettingsWrite accepts (it refuses unknown fields): the view without its options. */
@@ -76,10 +121,16 @@ export function settingsBody(view: VideoSettingsView | VideoSettings): VideoSett
 }
 
 /** What the settings tab saves: the stage models are chosen on the AI settings page and left out. */
-export function saveBody(draft: VideoSettings, scope: string, avoid: string): Omit<VideoSettings, "stage_models"> {
+export function saveBody(draft: VideoSettings, scope: string, avoid: string, dramaScope?: string): Omit<VideoSettings, "stage_models"> {
   const rest: Partial<VideoSettings> = { ...draft };
   delete rest.stage_models;
-  return { ...(rest as Omit<VideoSettings, "stage_models">), topic_scope: linesToList(scope), topic_avoid: linesToList(avoid) };
+  const drama = dramaScope === undefined ? draft.drama : { ...draft.drama, drama_topic_scope: linesToList(dramaScope) };
+  return { ...(rest as Omit<VideoSettings, "stage_models">), topic_scope: linesToList(scope), topic_avoid: linesToList(avoid), drama };
+}
+
+/** The catalog entry of a chosen media model, or null when the server no longer offers it. */
+export function mediaChoice(options: MediaOptions | undefined, kind: keyof MediaOptions, provider: MediaProvider, model: string): MediaOption | null {
+  return options?.[kind]?.[provider]?.find((option) => option.value === model) ?? null;
 }
 
 export function AdminVideoSettings() {
@@ -89,6 +140,7 @@ export function AdminVideoSettings() {
   const [draft, setDraft] = useState<VideoSettings | null>(null);
   const [scope, setScope] = useState("");
   const [avoid, setAvoid] = useState("");
+  const [dramaScope, setDramaScope] = useState("");
   const [error, setError] = useState("");
   const [saveError, setSaveError] = useState("");
   const [saved, setSaved] = useState(false);
@@ -98,6 +150,7 @@ export function AdminVideoSettings() {
     setDraft(settingsBody(value));
     setScope(value.topic_scope.join("\n"));
     setAvoid(value.topic_avoid.join("\n"));
+    setDramaScope((value.drama?.drama_topic_scope ?? []).join("\n"));
   }, []);
   const load = useCallback(() => {
     api<VideoSettingsView>("/admin/video-automation/settings").then((value) => { show(value); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
@@ -113,13 +166,45 @@ export function AdminVideoSettings() {
     <input className={fieldClass} type="number" min={min} max={max} value={draft[key]} disabled={disabled} onChange={(event) => edit({ [key]: Number(event.target.value) })} />
   </label>;
   const voiceNames = draft.voice.provider === "gemini" ? view.voice_options.gemini : view.voice_options.azure;
+  const drama = draft.drama;
+  const editDrama = (change: Partial<DramaSettings>) => edit({ drama: { ...drama, ...change } });
+  const dramaNumberInput = ([key, min, max]: readonly [DramaNumberField, number, number]) => <label key={key} className="block text-sm font-semibold">{t(`fields.drama_${key}`)}
+    <input className={fieldClass} type="number" min={min} max={max} value={drama[key]} disabled={disabled} onChange={(event) => editDrama({ [key]: Number(event.target.value) })} />
+  </label>;
+  const mediaConfigured = (provider: MediaProvider) => view.configured_providers.includes(provider);
+  const clipModel = mediaChoice(view.media_options, "clips", drama.clip_provider, drama.clip_model);
+  /** One provider select and one model select for a kind of media, the model list following the provider. */
+  const mediaPicker = (kind: keyof MediaOptions, providerKey: "image_provider" | "clip_provider" | "music_provider", modelKey: "image_model" | "clip_model" | "music_model") => {
+    const models = view.media_options?.[kind]?.[drama[providerKey]] ?? [];
+    return <div key={kind} className="grid gap-3 md:grid-cols-2">
+      <label className="block text-sm font-semibold">{t(`fields.drama_${providerKey}`)}
+        <select className={fieldClass} value={drama[providerKey]} disabled={disabled} onChange={(event) => {
+          const provider = event.target.value as MediaProvider;
+          const first = view.media_options?.[kind]?.[provider]?.[0];
+          editDrama({ [providerKey]: provider, [modelKey]: first?.value ?? drama[modelKey], ...(kind === "clips" && first ? { clip_resolution: first.resolutions[0] ?? drama.clip_resolution, clip_seconds_default: first.durations.includes(drama.clip_seconds_default) ? drama.clip_seconds_default : (first.durations[0] ?? drama.clip_seconds_default) } : {}) });
+        }}>
+          {MEDIA_PROVIDERS.map((provider) => <option key={provider} value={provider}>{mediaProviderLabels[provider]}{mediaConfigured(provider) ? "" : ` (${t("noKey")})`}</option>)}
+        </select>
+      </label>
+      <label className="block text-sm font-semibold">{t(`fields.drama_${modelKey}`)}
+        <select className={fieldClass} value={drama[modelKey]} disabled={disabled} onChange={(event) => {
+          const chosen = models.find((option) => option.value === event.target.value);
+          editDrama({ [modelKey]: event.target.value, ...(kind === "clips" && chosen ? { clip_resolution: chosen.resolutions.includes(drama.clip_resolution) ? drama.clip_resolution : (chosen.resolutions[0] ?? drama.clip_resolution), clip_seconds_default: chosen.durations.includes(drama.clip_seconds_default) ? drama.clip_seconds_default : (chosen.durations[0] ?? drama.clip_seconds_default) } : {}) });
+        }}>
+          {!models.some((option) => option.value === drama[modelKey]) && <option value={drama[modelKey]}>{drama[modelKey]}</option>}
+          {models.map((option) => <option key={option.value} value={option.value}>{option.label}{option.status === "preview" ? ` (${t("preview")})` : ""}{option.usd_per_second ? ` · US$${option.usd_per_second}/s` : option.usd_per_image ? ` · US$${option.usd_per_image}` : option.usd_per_track ? ` · US$${option.usd_per_track}` : ""}</option>)}
+        </select>
+      </label>
+    </div>;
+  };
+  const voiceInPool = (name: string) => drama.character_voice_pool.some((voice) => voice.provider === "gemini" && voice.name === name);
 
   async function save() {
     if (!draft) return;
     setBusy(true);
     setSaveError("");
     try {
-      show(await api<VideoSettingsView>("/admin/video-automation/settings", { method: "PUT", body: JSON.stringify(saveBody(draft, scope, avoid)) }));
+      show(await api<VideoSettingsView>("/admin/video-automation/settings", { method: "PUT", body: JSON.stringify(saveBody(draft, scope, avoid, dramaScope)) }));
       setSaved(true);
     } catch (problem) {
       setSaveError(problem instanceof Error ? problem.message : t("saveError"));
@@ -208,6 +293,58 @@ export function AdminVideoSettings() {
       <h2 id="video-settings-gates" className="text-xl font-bold">{t("gatesTitle")}</h2>
       <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={draft.auto_approve_audio} disabled={disabled} onChange={(event) => edit({ auto_approve_audio: event.target.checked })} />{t("fields.auto_approve_audio")}</label>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("gatesHelp")}</p>
+    </section>
+
+    <section className={`${panelClass} grid gap-4`} aria-labelledby="video-settings-drama">
+      <h2 id="video-settings-drama" className="text-xl font-bold">{t("dramaTitle")}</h2>
+      <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={drama.drama_enabled} disabled={disabled} onChange={(event) => editDrama({ drama_enabled: event.target.checked })} />{t("fields.drama_enabled")}</label>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dramaHelp")}</p>
+      <fieldset className="grid gap-3"><legend className="mb-1 text-sm font-semibold">{t("dramaModels")}</legend>
+        {mediaPicker("images", "image_provider", "image_model")}
+        {mediaPicker("clips", "clip_provider", "clip_model")}
+        {mediaPicker("music", "music_provider", "music_model")}
+      </fieldset>
+      <div className="grid gap-3 md:grid-cols-3">
+        <label className="block text-sm font-semibold">{t("fields.drama_clip_resolution")}
+          <select className={fieldClass} value={drama.clip_resolution} disabled={disabled} onChange={(event) => editDrama({ clip_resolution: event.target.value })}>
+            {!(clipModel?.resolutions ?? []).includes(drama.clip_resolution) && <option value={drama.clip_resolution}>{drama.clip_resolution}</option>}
+            {(clipModel?.resolutions ?? []).map((resolution) => <option key={resolution} value={resolution}>{resolution}</option>)}
+          </select>
+        </label>
+        <label className="block text-sm font-semibold">{t("fields.drama_clip_seconds_default")}
+          <select className={fieldClass} value={drama.clip_seconds_default} disabled={disabled} onChange={(event) => editDrama({ clip_seconds_default: Number(event.target.value) })}>
+            {!(clipModel?.durations ?? []).includes(drama.clip_seconds_default) && <option value={drama.clip_seconds_default}>{drama.clip_seconds_default}</option>}
+            {(clipModel?.durations ?? []).map((seconds) => <option key={seconds} value={seconds}>{seconds}</option>)}
+          </select>
+        </label>
+        <label className="block text-sm font-semibold">{t("fields.drama_aspect")}
+          <select className={fieldClass} value={drama.drama_aspect} disabled={disabled} onChange={(event) => editDrama({ drama_aspect: event.target.value as DramaSettings["drama_aspect"] })}>
+            <option value="16:9">16:9</option><option value="9:16">9:16</option>
+          </select>
+        </label>
+      </div>
+      <div className="grid gap-3 md:grid-cols-3">
+        <label className="block text-sm font-semibold">{t("fields.drama_style_preset")}
+          <select className={fieldClass} value={drama.style_preset} disabled={disabled} onChange={(event) => editDrama({ style_preset: event.target.value as DramaSettings["style_preset"] })}>
+            {(view.style_presets ?? [...STYLE_PRESETS]).map((preset) => <option key={preset} value={preset}>{t(`stylePresets.${preset}`)}</option>)}
+          </select>
+        </label>
+        {dramaNumberFields.shape.map(dramaNumberInput)}
+      </div>
+      <fieldset className="flex flex-wrap gap-5"><legend className="mb-2 text-sm font-semibold">{t("dramaSwitches")}</legend>
+        <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.music_enabled} disabled={disabled} onChange={(event) => editDrama({ music_enabled: event.target.checked })} />{t("fields.drama_music_enabled")}</label>
+        <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.subtitle_burn_in} disabled={disabled} onChange={(event) => editDrama({ subtitle_burn_in: event.target.checked })} />{t("fields.drama_subtitle_burn_in")}</label>
+        <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.clip_native_audio} disabled={disabled} onChange={(event) => editDrama({ clip_native_audio: event.target.checked })} />{t("fields.drama_clip_native_audio")}</label>
+        <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.auto_approve_storyboard} disabled={disabled} onChange={(event) => editDrama({ auto_approve_storyboard: event.target.checked })} />{t("fields.drama_auto_approve_storyboard")}</label>
+      </fieldset>
+      <fieldset className="flex flex-wrap gap-5"><legend className="mb-2 text-sm font-semibold">{t("fields.drama_character_voice_pool")}</legend>
+        {view.voice_options.gemini.map((name) => <label key={name} className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={voiceInPool(name)} disabled={disabled}
+          onChange={(event) => editDrama({ character_voice_pool: event.target.checked ? [...drama.character_voice_pool, { provider: "gemini", name }] : drama.character_voice_pool.filter((voice) => !(voice.provider === "gemini" && voice.name === name)) })} />{name}</label>)}
+      </fieldset>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("voicePoolHelp")}</p>
+      <div className="grid gap-3 md:grid-cols-2">{dramaNumberFields.budget.map(dramaNumberInput)}</div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dramaBudgetHelp")}</p>
+      <label className="block text-sm font-semibold">{t("fields.drama_topic_scope")}<textarea className={fieldClass} rows={3} value={dramaScope} disabled={disabled} onChange={(event) => { setDramaScope(event.target.value); setSaved(false); }} /></label>
     </section>
 
     {saveError && <p role="alert" className="text-sm text-red-800">{saveError}</p>}

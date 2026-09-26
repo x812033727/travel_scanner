@@ -8,6 +8,7 @@ from redis.asyncio import Redis
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.ai.subscription import FALLBACK_CODES
 from app.config import Settings
 from app.guides.models import (
     GuideArticle,
@@ -63,6 +64,9 @@ ACTIVE_STATUSES = ("drafting", "verifying", "locale_review", "jev_review")
 REVERIFY_MARKER = "news_reverify_requested"
 # Both run the saved article through the checks again instead of drafting anew.
 REVERIFY_MARKERS = frozenset({REVERIFY_MARKER, EVIDENCE_REFRESH_MARKER})
+# What a candidate says while it waits for a Claude subscription account to free up.
+SUBSCRIPTION_PAUSED = "news_subscription_paused"
+SUBSCRIPTION_WAITS = FALLBACK_CODES
 ClaimOutcome = Literal["claimed", "disabled", "skipped", "deferred"]
 # RQ kills a candidate job after 60 minutes; nothing legitimate is still in flight after 70.
 STALE_AFTER = timedelta(minutes=70)
@@ -702,6 +706,10 @@ async def process_candidate(
         return "manual_review"
     except Exception as error:
         await session.rollback()
+        # Every subscription account is full or unreachable and the owner chose waiting over
+        # MiniMax (2026-09-26): nothing is wrong with the story, so it goes back to the queue
+        # and the job tries again later (jobs.run_candidate).
+        paused = isinstance(error, AppError) and error.code in SUBSCRIPTION_WAITS
         candidate = await session.get(NewsCandidate, candidate_id)
         if candidate is not None and candidate.status not in {
             "published",
@@ -712,18 +720,27 @@ async def process_candidate(
             "duplicate",
             "rejected",
         }:
-            candidate.status = "failed"
-            if candidate.error_code not in REVERIFY_MARKERS:
-                candidate.error_code = type(error).__name__[:64]
+            if paused:
+                candidate.status = "discovered"
+                # A re-verify keeps its marker, so the next run checks the saved article.
+                if candidate.error_code not in REVERIFY_MARKERS:
+                    candidate.error_code = SUBSCRIPTION_PAUSED
+            else:
+                candidate.status = "failed"
+                if candidate.error_code not in REVERIFY_MARKERS:
+                    candidate.error_code = type(error).__name__[:64]
             candidate.error_detail = f"{type(error).__name__}: {error}"[:4000]
         if runs.active is not None:
             run = await session.get(NewsPipelineRun, runs.active.id)
             if run is not None:
                 run.status = "failed"
-                run.error_code = type(error).__name__[:64]
+                code = cast(AppError, error).code if paused else type(error).__name__
+                run.error_code = code[:64]
                 run.error_detail = str(error)[:4000]
                 run.finished_at = datetime.now(UTC)
         await session.commit()
+        if paused:
+            return "paused"
         raise
 
 

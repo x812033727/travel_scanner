@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoModelSettings } from "./admin-video-model-settings";
-import { AdminVideoSettings, linesToList, saveBody, settingsBody, STAGES } from "./admin-video-settings";
+import { AdminVideoSettings, linesToList, mediaChoice, saveBody, settingsBody, STAGES } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -21,6 +21,22 @@ const view = {
   target_minutes_min: 8, target_minutes_max: 12, caption_locales: ["en", "ja", "ko", "zh-CN"],
   max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2,
   auto_approve_audio: true,
+  drama: {
+    drama_enabled: false, image_provider: "gemini", image_model: "gemini-3-pro-image", clip_provider: "gemini", clip_model: "gemini-omni-1.1-flash",
+    music_provider: "gemini", music_model: "lyria-3.5", clip_resolution: "1080p", clip_seconds_default: 8, clip_native_audio: false, drama_aspect: "16:9",
+    max_clips_per_video: 40, max_retakes_per_shot: 2, monthly_clip_seconds_budget: 3000, monthly_images_budget: 1500, monthly_judge_calls_budget: 3000,
+    monthly_music_budget: 60, max_usd_per_video: 200, judge_min_score: 7, auto_approve_storyboard: false, character_voice_pool: [], music_enabled: true,
+    subtitle_burn_in: true, style_preset: "cinematic-3d", drama_topic_scope: ["山海經", "民間傳說"],
+  },
+  media_options: {
+    images: { gemini: [{ value: "gemini-3-pro-image", label: "Gemini 3 Pro Image", description: null, status: "stable", resolutions: [], durations: [], reference_images: 14, native_audio: false, usd_per_second: null, usd_per_image: 0.134, usd_per_track: null }], minimax: [] },
+    clips: {
+      gemini: [{ value: "gemini-omni-1.1-flash", label: "Gemini Omni 1.1 Flash", description: null, status: "stable", resolutions: ["720p", "1080p"], durations: [4, 5, 6, 7, 8, 9, 10], reference_images: 3, native_audio: true, usd_per_second: 0.15, usd_per_image: null, usd_per_track: null }],
+      minimax: [{ value: "MiniMax-H3", label: "MiniMax H3", description: null, status: "stable", resolutions: ["768p", "2k"], durations: [4, 6, 8, 10], reference_images: 9, native_audio: false, usd_per_second: 0.13, usd_per_image: null, usd_per_track: null }],
+    },
+    music: { gemini: [{ value: "lyria-3.5", label: "Lyria 3.5", description: null, status: "stable", resolutions: [], durations: [], reference_images: 0, native_audio: false, usd_per_second: null, usd_per_image: null, usd_per_track: 0.08 }], minimax: [] },
+  },
+  style_presets: ["cinematic-3d", "anime-2d", "ink-wash", "custom"],
   model_options: {
     claude_code: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
     anthropic: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
@@ -89,6 +105,29 @@ describe("AdminVideoSettings", () => {
     expect(Object.keys(body)).toEqual(["stage_models"]);
     expect(body.stage_models.writer).toEqual(opus);
     expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings/models");
+  });
+
+  it("turns the drama route on, follows the clip model's resolutions and lengths, and saves the drama block", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByRole("checkbox", { name: "開啟 AI 漫劇" }));
+    const resolution = screen.getByRole("combobox", { name: "片段解析度" }) as HTMLSelectElement;
+    expect([...resolution.options].map((option) => option.value)).toEqual(["720p", "1080p"]);
+    expect(screen.getAllByRole("option", { name: /MiniMax API \(沒有金鑰\)/ })).toHaveLength(3);
+    fireEvent.change(screen.getByRole("combobox", { name: "片段廠商（圖生影片）" }), { target: { value: "minimax" } });
+    expect((screen.getByRole("combobox", { name: "片段模型" }) as HTMLSelectElement).value).toBe("MiniMax-H3");
+    expect([...(screen.getByRole("combobox", { name: "片段解析度" }) as HTMLSelectElement).options].map((option) => option.value)).toEqual(["768p", "2k"]);
+    expect((screen.getByRole("combobox", { name: "片段預設秒數" }) as HTMLSelectElement).value).toBe("8");
+    fireEvent.click(screen.getByRole("checkbox", { name: "Kore" }));
+    fireEvent.change(screen.getByRole("spinbutton", { name: "單支最多花費（美元）" }), { target: { value: "120" } });
+    fireEvent.change(screen.getByRole("textbox", { name: "漫劇題材（每行一個）" }), { target: { value: "山海經\n原創玄幻\n" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const body = puts[0] as { drama: Record<string, unknown> };
+    expect(body.drama).toMatchObject({ drama_enabled: true, clip_provider: "minimax", clip_model: "MiniMax-H3", clip_resolution: "768p", clip_seconds_default: 8, max_usd_per_video: 120, drama_topic_scope: ["山海經", "原創玄幻"] });
+    expect(body.drama.character_voice_pool).toEqual([{ provider: "gemini", name: "Kore" }]);
+    expect(mediaChoice(view.media_options as never, "clips", "minimax", "MiniMax-H3")?.usd_per_second).toBe(0.13);
+    expect(mediaChoice(view.media_options as never, "clips", "gemini", "nope")).toBeNull();
   });
 
   it("shows a vendor without a key and keeps a reader from saving", async () => {
