@@ -13,7 +13,7 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
 from app.db import Base
 from app.models import AdminAuditLog, User
-from app.news_automation import backfill_cli
+from app.news_automation import backfill_cli, jobs
 from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
 
 
@@ -95,7 +95,7 @@ async def test_the_backfill_reopens_only_stories_stopped_by_old_rules_best_first
     monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
     monkeypatch.setattr(backfill_cli, "engine", engine)
     monkeypatch.setattr(
-        backfill_cli.jobs,
+        jobs,
         "enqueue_candidate",
         lambda candidate_id, retry_count=0: queued.append((candidate_id, retry_count)) or "job",
     )
