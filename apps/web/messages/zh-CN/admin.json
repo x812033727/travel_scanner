@@ -2111,7 +2111,8 @@
       "final": "成片",
       "publish": "上架确认",
       "look": "角色设定图",
-      "storyboard": "分镜"
+      "storyboard": "分镜",
+      "script": "剧本"
     },
     "statuses": {
       "pending": "待决定",
@@ -2204,7 +2205,21 @@
       "anime-2d": "2D 日系动画",
       "ink-wash": "水墨",
       "custom": "自定义"
-    }
+    },
+    "tabDrama": "漫剧",
+    "episodeOf": "作品 {series} 第 {number} 集",
+    "approveScript": "核准剧本",
+    "scriptCoverage": "节拍有没有做到",
+    "scriptBeats": {
+      "hook": "钩子",
+      "conflict": "冲突",
+      "turn": "转折",
+      "cliffhanger": "悬念"
+    },
+    "scriptProblems": "查核指出的问题",
+    "scriptMinutes": "约 {minutes} 分钟",
+    "scriptPrompt": "镜头提示词",
+    "narrator": "旁白"
   },
   "videoSettings": {
     "loading": "正在读取设置…",
@@ -2325,5 +2340,131 @@
       "drama": "漫剧"
     },
     "promptSent": "{slug} · {time}"
+  },
+  "videoSeries": {
+    "listTitle": "作品",
+    "empty": "还没有作品",
+    "emptyDetail": "在下面建一部：工人下一轮就会规划设定集，你在这里核准。",
+    "loadError": "作品读不到",
+    "retry": "再试一次",
+    "newSeries": "新的作品",
+    "newSeriesHelp": "用你的话写前提、勾你在意的面向、选情感线与形状。工人依序规划设定集、总纲、每篇细纲，你在这里逐份核准；每一集的剧本也先给你看，集数依序制作。设置分页要先开启「AI 漫剧」。",
+    "fields": {
+      "title": "作品名称",
+      "slug": "代号（小写英数与连字号）",
+      "premise": "故事前提",
+      "aspects": "最在意的面向",
+      "tone": "情感线",
+      "stylePreset": "画面风格",
+      "targetMinutes": "每集分钟（1–8）",
+      "plannedEpisodes": "预计集数",
+      "episodesPerChapter": "每篇集数",
+      "openEnded": "开放结局：第一部阶段性收束，为续作铺梗",
+      "note": "给企划的常设备注"
+    },
+    "slugPlaceholder": "例如 wenjian",
+    "premisePlaceholder": "谁想要什么、什么挡在前面、发生在什么世界。",
+    "notePlaceholder": "要改什么；退回一定要写",
+    "aspects": {
+      "world": "仙侠修真世界观：门派世家、修为、正道与魔道的对立",
+      "bonds": "群像与羁绊：少年结伴成长、知己、师门与家族",
+      "structure": "叙事结构：前世今生、倒叙插叙、伏笔与反转、悬念连载",
+      "mood": "氛围与画面：古风仙侠美术、点黑暗悬疑、鬼怪与符箓"
+    },
+    "tones": {
+      "dual-male-leads-subtext": "双男主知己羁绊，留白不点明",
+      "dual-male-leads-explicit": "双男主明确的感情线",
+      "hetero-leads": "男女主线",
+      "no-romance": "不设爱情线"
+    },
+    "presets": {
+      "cinematic-3d": "电影感 3D 写实",
+      "anime-2d": "2D 日系动画",
+      "ink-wash": "水墨",
+      "custom": "自定义"
+    },
+    "create": "建立作品",
+    "createError": "没有建立：{message}",
+    "saving": "保存中…",
+    "statuses": {
+      "setting": "设定集",
+      "outline": "总纲",
+      "active": "制作中",
+      "paused": "已暂停",
+      "finished": "已完结"
+    },
+    "docsPending": "{count} 份等你核准",
+    "progress": "{done}/{total} 集 · {chapters} 篇",
+    "spend": "US${usd} · 片段 {seconds} 秒",
+    "minutesEach": "每集 {minutes} 分钟",
+    "back": "回作品列表",
+    "pause": "暂停",
+    "resume": "继续",
+    "planNextChapter": "先规划下一篇",
+    "startNext": "现在开始下一集",
+    "actionError": "没有做：{message}",
+    "chapterRequested": "第 {n} 篇的细纲会在工人下一轮产生。",
+    "nextForced": "下一集不等上一集上架就会开始。",
+    "docsTitle": "文件",
+    "docsEmpty": "工人下一轮会写设定集。",
+    "docKinds": {
+      "setting": "设定集",
+      "outline": "总纲",
+      "chapter": "篇章细纲"
+    },
+    "chapterN": "第 {n} 篇细纲",
+    "version": "第 {n} 版",
+    "docStatuses": {
+      "generating": "撰写中",
+      "review": "等你决定",
+      "approved": "已核准",
+      "rejected": "已退回"
+    },
+    "sentBack": "退回原因：",
+    "readDoc": "看全文",
+    "note": "备注",
+    "approve": "核准",
+    "reject": "退回",
+    "decideError": "没有记录：{message}",
+    "editDoc": "自己改",
+    "editHelp": "你改的版本会成为最新版：可以直接核准，或先留着待审。",
+    "saveApprove": "保存并核准",
+    "saveReview": "保存为待审",
+    "editError": "没有保存：{message}",
+    "beats": {
+      "episode": "集",
+      "title": "标题",
+      "hook": "钩子",
+      "conflict": "冲突",
+      "turn": "转折",
+      "cliffhanger": "悬念",
+      "threads": "埋 / 收",
+      "tension": "张力"
+    },
+    "episodesTitle": "集数",
+    "episodesEmpty": "总纲核准后这里就有每一集。",
+    "episodeColumns": {
+      "number": "集",
+      "chapter": "篇",
+      "title": "标题",
+      "status": "状态",
+      "step": "现在",
+      "pending": "等你",
+      "spend": "花费",
+      "actions": ""
+    },
+    "episodeStatuses": {
+      "planned": "已规划",
+      "ready": "可制作",
+      "queued": "排队中",
+      "started": "制作中",
+      "done": "完成",
+      "skipped": "已跳过"
+    },
+    "pendingCount": "{count} 项等你",
+    "openVideo": "打开",
+    "skip": "跳过",
+    "skipConfirm": "跳过第 {n} 集？作品会直接做下一集。",
+    "oneOffTitle": "单集漫剧"
   }
 }

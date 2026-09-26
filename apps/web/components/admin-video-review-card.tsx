@@ -13,7 +13,8 @@ import { api } from "@/lib/api";
 // This file holds the review card and the gate bodies, shared by the tutorial list, the drama
 // series page and any page that shows a video's reviews; the pages themselves import it, so it
 // must not import them back.
-export type Gate = "outline" | "look" | "audio" | "storyboard" | "final" | "publish";
+// script is an episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md).
+export type Gate = "outline" | "script" | "look" | "audio" | "storyboard" | "final" | "publish";
 export type Status = "pending" | "approved" | "rejected" | "superseded";
 export type ReviewFile = { role: string; sha256: string; size: number; content_type: string };
 export type Review = {
@@ -27,6 +28,7 @@ export type ProjectSummary = {
   youtube_video_id: string | null; last_synced_at: string; pending: number;
   dropped_at?: string | null; dropped_note?: string | null;
   format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
+  series_slug?: string | null; episode_number?: number | null;
 };
 export type Project = ProjectSummary & { reviews: Review[] };
 
@@ -83,6 +85,43 @@ function OutlineBody({ review, choice, onChoice, disabled }: { review: Review; c
       })}
     </fieldset>}
     {brief && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("brief")}</summary><div className="mt-3 max-h-[32rem] overflow-y-auto whitespace-pre-wrap text-sm leading-7">{brief}</div></details>}
+  </div>;
+}
+
+const COVERAGE_KEYS = ["hook", "conflict", "turn", "cliffhanger"] as const;
+// The checker's verdicts are Chinese words (delivered, weak, missing): the tones go by code point.
+const coverageTone: Record<string, string> = { "\u6709": "ok", "\u5f31": "warning", "\u7121": "failed" };
+const beatOf = (beats: Record<string, unknown>, key: string) => {
+  const value = beats[key];
+  return value && typeof value === "object" && !Array.isArray(value) ? text((value as Record<string, unknown>).text) : text(value);
+};
+
+/**
+ * The script gate (docs/videos/SERIES.md): the checker's coverage of the episode's beats and what
+ * jars come first, then every scene's lines with their speakers, and a shot's prompt beside them.
+ */
+function ScriptBody({ review }: { review: Review }) {
+  const t = useTranslations("admin.videoReviews");
+  const coverage = record(review.payload.coverage);
+  const problems = list(review.payload.continuity_problems).map(text).filter(Boolean);
+  const beats = record(review.payload.beats);
+  const scenes = list(review.payload.scenes).map(record);
+  const minutes = review.payload.minutes;
+  // A chapter heading where the chapter changes, so the scenes read as acts.
+  const headings = scenes.map((scene, index) => (text(scene.chapter) && text(scene.chapter) !== text(scenes[index - 1]?.chapter) ? text(scene.chapter) : ""));
+  return <div className="grid gap-4">
+    {Object.keys(coverage).length > 0 && <p className="flex flex-wrap items-center gap-2 text-sm"><strong>{t("scriptCoverage")}</strong>{COVERAGE_KEYS.map((key) => <span key={key} className="flex items-center gap-1">{t(`scriptBeats.${key}`)}<AdminStatusPill status={coverageTone[text(coverage[key])] ?? "inactive"}>{text(coverage[key]) || "—"}</AdminStatusPill></span>)}</p>}
+    {problems.length > 0 && <ul className="grid gap-1 rounded-xl bg-[var(--paper)] p-3 text-sm leading-6" aria-label={t("scriptProblems")}>{problems.map((problem) => <li key={problem}>• {problem}</li>)}</ul>}
+    {Object.keys(beats).length > 0 && <dl className="grid gap-1 text-sm md:grid-cols-2">{COVERAGE_KEYS.map((key) => beatOf(beats, key) && <div key={key}><dt className="inline font-semibold">{t(`scriptBeats.${key}`)}</dt><dd className="inline"> · {beatOf(beats, key)}</dd></div>)}</dl>}
+    {typeof minutes === "number" && <p className="text-sm text-[var(--muted)]">{t("scriptMinutes", { minutes })}</p>}
+    <ol className="grid gap-3">{scenes.map((scene, index) => {
+      return <li key={text(scene.id) || index} className="grid gap-1 rounded-2xl border border-[var(--line)] p-3">
+        {headings[index] && <span className="text-sm font-bold text-[var(--teal)]">{headings[index]}</span>}
+        <span className="text-xs text-[var(--muted)]">{index + 1}. {text(scene.id)}{text(scene.template) && text(scene.template) !== "shot" ? ` · ${text(scene.template)}` : ""}</span>
+        {list(scene.lines).map(record).map((line) => <span key={text(line.id)} className="leading-7">{text(line.name) ? <strong>【{text(line.name)}】</strong> : <span className="text-[var(--muted)]">{t("narrator")}：</span>}{text(line.emotion) && <span className="text-xs text-[var(--muted)]">（{text(line.emotion)}）</span>}{text(line.text)}</span>)}
+        {text(scene.prompt) && <details><summary className="cursor-pointer text-xs text-[var(--muted)]">{t("scriptPrompt")}</summary><p className="mt-1 text-xs leading-5 text-[var(--muted)]">{text(scene.prompt)}</p></details>}
+      </li>;
+    })}</ol>
   </div>;
 }
 
@@ -222,7 +261,7 @@ export function ReviewCard({ slug, review, canManage, onDecided }: { slug: strin
       setBusy(false);
     }
   };
-  const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish") };
+  const approveLabels: Partial<Record<Gate, string>> = { outline: t("approveOutline"), script: t("approveScript"), look: t("approveLook"), storyboard: t("approveStoryboard"), publish: t("approvePublish") };
   const approveLabel = approveLabels[review.gate] ?? t("approve");
   const title = review.gate === "look" && text(record(review.payload.character).name) ? `${t("gates.look")}：${text(record(review.payload.character).name)}` : t(`gates.${review.gate}`);
   return <article className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={title}>
@@ -234,6 +273,7 @@ export function ReviewCard({ slug, review, canManage, onDecided }: { slug: strin
     <p className="mt-2 leading-7">{review.summary}</p>
     <div className="mt-4">
       {review.gate === "outline" && <OutlineBody review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
+      {review.gate === "script" && <ScriptBody review={review} />}
       {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
       {review.gate === "storyboard" && <StoryboardBody slug={slug} review={review} />}
       {review.gate === "audio" && <AudioBody slug={slug} review={review} />}
