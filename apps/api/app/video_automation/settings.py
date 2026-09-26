@@ -157,6 +157,9 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         max_retake_rounds=row.max_retake_rounds,
         auto_approve_audio=row.auto_approve_audio,
         drama=drama_values(row),
+        channel_stance=row.channel_stance or "",
+        auto_pick_outline=row.auto_pick_outline,
+        auto_approve_final=row.auto_approve_final,
     )
 
 

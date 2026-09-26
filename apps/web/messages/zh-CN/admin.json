@@ -2240,7 +2240,7 @@
     "budgetTitle": "预算上限",
     "budgetHelp": "超过任何一个上限，工人就停在当前步骤，不会自动换成较便宜的模型。旁白每月字数与 Jev 每日次数沿用“AI 服务”里的设置。",
     "gatesTitle": "审核关卡",
-    "gatesHelp": "选大纲、看成片、确认上架永远等你；上传到 YouTube 与设为公开也一律由你在 Studio 操作。",
+    "gatesHelp": "上传到 YouTube 与上架时间永远由你决定。旁白、大纲、成片与确认上架各有开关，关掉的关卡照旧等你；自动质检没过的成片、Jev 重写两次仍挑不到的大纲，也会回到你这里。",
     "save": "保存设置",
     "saving": "正在保存…",
     "saved": "已保存",
@@ -2291,7 +2291,11 @@
       "drama_monthly_judge_calls_budget": "每月 judge 次数",
       "drama_monthly_music_budget": "每月配乐首数",
       "drama_max_usd_per_video": "单部最多花费（美元）",
-      "drama_topic_scope": "漫剧题材（每行一个）"
+      "drama_topic_scope": "漫剧题材（每行一个）",
+      "channel_stance": "频道立场",
+      "auto_pick_outline": "由 Jev 挑大纲（立场留白时没有作用）",
+      "auto_approve_final": "自动质检全过就核准成片；上传包备好就核准“确认上架”",
+      "drama_auto_pick_look": "设定图自动选：judge 分数最高的那张达到门槛、没有问题时，就核准该角色"
     },
     "stages": {
       "planner": "企划（选题与大纲）",
@@ -2339,7 +2343,10 @@
       "slides": "幻灯片",
       "drama": "漫剧"
     },
-    "promptSent": "{slug} · {time}"
+    "promptSent": "{slug} · {time}",
+    "stanceTitle": "频道立场",
+    "stanceHelp": "这个频道相信什么。企划模型写每一支视频的站主观点时，只以这份立场为依据；撰稿与 Jev 的检查也会读它。跟“各阶段的常设指示”分开：常设指示写怎么写，立场写相信什么。每条一行、加编号，最多 4,000 字。留白时 Jev 不会替你挑大纲，大纲照旧等你。草稿在 docs/videos/HANDS-OFF.md 的“頻道立場”一节，改过再贴进来；改了只影响之后才写企划的视频。",
+    "stancePlaceholder": "例如：1. 先把账算清楚再花钱：付费是为了真的用得到的额度与能力，不是为了去掉广告。"
   },
   "videoSeries": {
     "listTitle": "作品",

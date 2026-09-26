@@ -83,6 +83,9 @@ class DramaSettings(StrictModel):
     max_usd_per_video: int = Field(ge=0, le=10_000)
     judge_min_score: int = Field(ge=0, le=10)
     auto_approve_storyboard: bool
+    # A character's sheet is picked by the judge's score (docs/videos/HANDS-OFF.md); a page
+    # from before this existed sends the stored value back, since it sends the whole object.
+    auto_pick_look: bool = False
     character_voice_pool: list[CharacterVoice] = Field(max_length=8)
     music_enabled: bool
     subtitle_burn_in: bool
@@ -162,6 +165,11 @@ class SettingsWrite(_SettingsFields):
     stage_models: dict[Stage, StageModel]
     drama: DramaSettings
     stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
+    # The hands-off switches (docs/videos/HANDS-OFF.md). The stance is what this channel
+    # believes, at most 4,000 characters; while it is blank Jev does not choose outlines.
+    channel_stance: StandingText = ""
+    auto_pick_outline: bool = True
+    auto_approve_final: bool = True
 
     @field_validator("stage_models")
     @classmethod
@@ -179,13 +187,16 @@ class SettingsSave(_SettingsFields):
 
     The stage models are chosen on the AI settings page; a save that leaves them out keeps
     the stored ones, so the videos page cannot put back models it loaded earlier. The drama
-    settings and the standing instructions follow the same rule, so a page built before they
-    existed cannot reset them.
+    settings, the standing instructions, the channel stance and the hands-off switches follow
+    the same rule, so a page built before they existed cannot reset them.
     """
 
     stage_models: dict[Stage, StageModel] | None = None
     drama: DramaSettings | None = None
     stage_instructions: dict[Stage, StandingText] | None = None
+    channel_stance: StandingText | None = None
+    auto_pick_outline: bool | None = None
+    auto_approve_final: bool | None = None
 
     @field_validator("stage_models")
     @classmethod

@@ -22,11 +22,12 @@ const view = {
   max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2,
   auto_approve_audio: true,
   stage_instructions: { writer: "結尾留懸念" },
+  channel_stance: "", auto_pick_outline: true, auto_approve_final: true,
   drama: {
     drama_enabled: false, image_provider: "gemini", image_model: "gemini-3-pro-image", clip_provider: "gemini", clip_model: "gemini-omni-1.1-flash",
     music_provider: "gemini", music_model: "lyria-3.5", clip_resolution: "1080p", clip_seconds_default: 8, clip_native_audio: false, drama_aspect: "16:9",
     max_clips_per_video: 40, max_retakes_per_shot: 2, monthly_clip_seconds_budget: 3000, monthly_images_budget: 1500, monthly_judge_calls_budget: 3000,
-    monthly_music_budget: 60, max_usd_per_video: 200, judge_min_score: 7, auto_approve_storyboard: false, character_voice_pool: [], music_enabled: true,
+    monthly_music_budget: 60, max_usd_per_video: 200, judge_min_score: 7, auto_approve_storyboard: false, auto_pick_look: false, character_voice_pool: [], music_enabled: true,
     subtitle_burn_in: true, style_preset: "cinematic-3d", drama_topic_scope: ["山海經", "民間傳說"],
   },
   media_options: {
@@ -111,6 +112,22 @@ describe("AdminVideoSettings", () => {
     const sent = await screen.findByText(/企劃（選題與大綱） · 漫劇 · jingwei · /);
     expect(sent.tagName).toBe("SUMMARY");
     expect(screen.getByText(/You are the planner\./).textContent).toContain("每集結尾留下一集的懸念");
+  });
+
+  it("writes the channel stance, flips the hands-off switches and saves them with the rest", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    const stance = await screen.findByRole("textbox", { name: "頻道立場" });
+    expect(stance).toHaveProperty("value", "");
+    fireEvent.change(stance, { target: { value: "1. 先把帳算清楚再花錢" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: "由 Jev 挑大綱（立場留白時沒有作用）" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "開啟 AI 漫劇" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: /設定圖自動選/ }));
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const body = puts[0] as Record<string, unknown>;
+    expect(body).toMatchObject({ channel_stance: "1. 先把帳算清楚再花錢", auto_pick_outline: false, auto_approve_final: true });
+    expect((body.drama as Record<string, unknown>).auto_pick_look).toBe(true);
   });
 
   it("picks a stage model on the AI settings page and saves only the models", async () => {
