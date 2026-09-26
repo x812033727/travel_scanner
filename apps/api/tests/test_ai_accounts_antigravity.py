@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import textwrap
+import threading
 import time
 from pathlib import Path
 from typing import Any
@@ -465,3 +466,88 @@ def test_the_probe_records_windows_email_and_plan(tmp_path: Path) -> None:
     assert [window["used_percent"] for window in usage["windows"]] == [50.0, 20.0, 0.0]
     status = accounts.status("e")
     assert (status["email"], status["plan"]) == ("g@x.test", "Ultra")
+
+
+@pytest.mark.filterwarnings("error::pytest.PytestUnhandledThreadExceptionWarning")
+def test_a_status_read_never_writes_back_over_the_plan_the_probe_just_saved(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # A status() whose log email differs from account.json rewrites the file; if it read the
+    # file before the quota probe saved the plan, its write-back used to drop the plan. The
+    # interleaving is forced: the first read pauses until the probe has had its chance.
+    config = agy_config(tmp_path)
+    accounts = AntigravityAccounts(config)
+    home = config.slot_path("agy", "a")
+    sign_in_on_disk(config, "a")
+    first_read = threading.Event()
+    release_first = threading.Event()
+    original = AntigravityAccounts._account
+    calls = 0
+
+    def paused_account(self: AntigravityAccounts, slot: str) -> dict[str, Any]:
+        nonlocal calls
+        calls += 1
+        account = original(self, slot)
+        if calls == 1:
+            first_read.set()
+            assert release_first.wait(30)
+        return account
+
+    monkeypatch.setattr(AntigravityAccounts, "_account", paused_account)
+    status_like = threading.Thread(
+        target=accounts._remember, args=("a",), kwargs={"email": "g@x.test"}
+    )
+    probe_like = threading.Thread(
+        target=accounts._remember, args=("a",), kwargs={"email": "g@x.test", "plan": "Ultra"}
+    )
+    status_like.start()
+    assert first_read.wait(5)
+    probe_like.start()
+    probe_like.join(1.0)  # without the lock the probe writes now, before the stale write-back
+    release_first.set()
+    status_like.join(5)
+    probe_like.join(5)
+    assert not status_like.is_alive() and not probe_like.is_alive()
+    assert calls == 2, "both writers read the file"
+    saved = json.loads((home / ACCOUNT_NAME).read_text("utf-8"))
+    assert (saved.get("email"), saved.get("plan")) == ("g@x.test", "Ultra")
+
+
+@pytest.mark.filterwarnings("error::pytest.PytestUnhandledThreadExceptionWarning")
+def test_a_status_read_does_not_write_the_account_back_after_a_sign_out(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    config = agy_config(tmp_path)
+    accounts = AntigravityAccounts(config)
+    home = config.slot_path("agy", "b")
+    sign_in_on_disk(config, "b")
+    first_read = threading.Event()
+    release_first = threading.Event()
+    original = AntigravityAccounts._account
+
+    reads = 0
+
+    def paused_account(self: AntigravityAccounts, slot: str) -> dict[str, Any]:
+        nonlocal reads
+        reads += 1
+        account = original(self, slot)
+        first_read.set()
+        assert release_first.wait(30)
+        return account
+
+    monkeypatch.setattr(AntigravityAccounts, "_account", paused_account)
+    status_like = threading.Thread(
+        target=accounts._remember, args=("b",), kwargs={"email": "g@x.test"}
+    )
+    status_like.start()
+    assert first_read.wait(5)
+    sign_out = threading.Thread(target=accounts.logout, args=("b",))
+    sign_out.start()
+    sign_out.join(1.0)  # without the lock the sign-out finishes now, before the write-back
+    release_first.set()
+    status_like.join(5)
+    sign_out.join(5)
+    assert not status_like.is_alive() and not sign_out.is_alive()
+    assert reads == 1, "the status-like write read the file before the sign-out"
+    assert not (home / ACCOUNT_NAME).exists()
+    assert accounts.status("b")["logged_in"] is False
