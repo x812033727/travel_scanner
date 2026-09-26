@@ -26,6 +26,9 @@ class ChecklistItem(BaseModel):
     done: bool
 
 
+VideoFormat = Literal["slides", "drama"]
+
+
 class ProjectIn(BaseModel):
     title: str = Field(min_length=1, max_length=200)
     stage: str = Field(min_length=1, max_length=40)
@@ -33,6 +36,8 @@ class ProjectIn(BaseModel):
     youtube_video_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{6,32}$")
     # The article's slug. Left out, the stored one stays: older tools do not send it.
     source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
+    # Slides or the AI drama route (docs/videos/DRAMA.md). Left out, the stored one stays.
+    format: VideoFormat | None = None
 
 
 class ReviewFile(BaseModel):
@@ -78,6 +83,7 @@ class ReviewOut(BaseModel):
 class ProjectSummary(BaseModel):
     slug: str
     title: str
+    format: VideoFormat = "slides"
     stage: str
     checklist: list[ChecklistItem]
     youtube_video_id: str | None
@@ -86,6 +92,9 @@ class ProjectSummary(BaseModel):
     source_guide: str | None = None
     dropped_at: datetime | None = None
     dropped_note: str | None = None
+    # What the drama route's generations have cost so far, from the media jobs (any month).
+    media_usd: float = 0.0
+    clip_seconds: int = 0
 
 
 class ProjectOut(ProjectSummary):

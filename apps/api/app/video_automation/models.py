@@ -16,6 +16,7 @@ from sqlalchemy import (
     Index,
     Integer,
     String,
+    Text,
     text,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -269,3 +270,49 @@ class VideoAiRun(Base):
         ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
     )
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+# What the owner asked for on /admin/videos: an episode of the drama route to make next, ahead
+# of the scheduled drafts (docs/videos/DRAMA.md). The worker claims the oldest queued one.
+REQUEST_STATUSES = ("queued", "started", "done", "cancelled")
+
+
+class VideoDramaRequest(Base):
+    __tablename__ = "video_drama_requests"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('queued', 'started', 'done', 'cancelled')",
+            name="ck_video_drama_request_status",
+        ),
+        CheckConstraint(
+            "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
+            name="ck_video_drama_request_style",
+        ),
+        Index("ix_video_drama_requests_status_created", "status", "created_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    # The story's premise in the owner's words, or what to make of the article in source_guide.
+    premise: Mapped[str] = mapped_column(Text)
+    title: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    # An article of the site to adapt, by slug; None for an original story.
+    source_guide: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    style_preset: Mapped[str] = mapped_column(String(16), default="cinematic-3d")
+    target_minutes: Mapped[int] = mapped_column(Integer, default=3)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    status: Mapped[str] = mapped_column(String(12), default="queued")
+    # The video the worker made of it, once it started; the project row carries the rest.
+    slug: Mapped[str | None] = mapped_column(String(80), unique=True, nullable=True)
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    started_by_token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    cancelled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
