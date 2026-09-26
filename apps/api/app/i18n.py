@@ -1970,6 +1970,10 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_duplicate_uncertain": (
             "This candidate is not waiting for a duplicate decision"
         ),
+        "news_candidate_not_refreshable": (
+            "This candidate is not waiting for its changed sources to be re-checked"
+        ),
+        "news_evidence_refresh_failed": "The current source pages could not be read",
         "news_candidate_not_retryable": "This candidate cannot be run again in its current state",
         "news_candidate_not_reviewable": "This candidate cannot be rejected in its current state",
         "news_draft_unavailable": "This candidate does not have a complete editable draft",
@@ -2007,6 +2011,8 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_publishable": "この候補はまだ公開できません",
         "news_candidate_not_published": "公開後の重大エラーは公開済み候補でのみ報告できます",
         "news_candidate_not_duplicate_uncertain": "この候補は重複判定待ちではありません",
+        "news_candidate_not_refreshable": "この候補は情報源の再確認待ちではありません",
+        "news_evidence_refresh_failed": "最新の情報源ページを読み込めませんでした",
         "news_candidate_not_retryable": "現在の状態ではこの候補を再実行できません",
         "news_candidate_not_reviewable": "現在の状態ではこの候補を却下できません",
         "news_draft_unavailable": "この候補には編集可能な完全原稿がありません",
@@ -2040,6 +2046,8 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_publishable": "이 후보는 아직 게시할 수 없습니다",
         "news_candidate_not_published": "게시 후 중대 오류는 게시된 후보에서만 신고할 수 있습니다",
         "news_candidate_not_duplicate_uncertain": "이 후보는 중복 판정을 기다리고 있지 않습니다",
+        "news_candidate_not_refreshable": "이 후보는 출처 재확인을 기다리고 있지 않습니다",
+        "news_evidence_refresh_failed": "최신 출처 페이지를 읽을 수 없습니다",
         "news_candidate_not_retryable": "현재 상태에서는 이 후보를 다시 실행할 수 없습니다",
         "news_candidate_not_reviewable": "현재 상태에서는 이 후보를 거절할 수 없습니다",
         "news_draft_unavailable": "이 후보에는 편집 가능한 전체 초안이 없습니다",
@@ -2075,6 +2083,8 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_publishable": "這個候選目前不能發布",
         "news_candidate_not_published": "只有已發布候選可回報重大錯誤",
         "news_candidate_not_duplicate_uncertain": "這個候選沒有在等待重複判定",
+        "news_candidate_not_refreshable": "這個候選不是在等來源更新後重新查核",
+        "news_evidence_refresh_failed": "無法讀取最新的來源頁",
         "news_candidate_not_retryable": "這個候選目前不能重新執行",
         "news_candidate_not_reviewable": "這個候選目前不能退件",
         "news_draft_unavailable": "候選沒有完整的可編輯草稿",
@@ -2108,6 +2118,8 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_candidate_not_publishable": "这个候选目前不能发布",
         "news_candidate_not_published": "只有已发布候选可报告重大错误",
         "news_candidate_not_duplicate_uncertain": "这个候选没有在等待重复判定",
+        "news_candidate_not_refreshable": "这个候选不是在等来源更新后重新核查",
+        "news_evidence_refresh_failed": "无法读取最新的来源页",
         "news_candidate_not_retryable": "这个候选目前不能重新运行",
         "news_candidate_not_reviewable": "这个候选目前不能退回",
         "news_draft_unavailable": "候选没有完整的可编辑草稿",

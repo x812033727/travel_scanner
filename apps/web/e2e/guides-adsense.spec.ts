@@ -54,6 +54,17 @@ const longArticle = {
   },
 };
 
+// An article that links to another, so a reader can move on without leaving the document.
+const linkedPath = "/zh-TW/guides/howto/tokyo-linked";
+const linkedArticle = {
+  ...article,
+  slug: "tokyo-linked",
+  document: { ...article.document, title: "東京 eSIM 延伸閱讀" },
+  related: [{ kind: "howto", slug: "tokyo-long", title: longArticle.document.title }],
+};
+// What a video description links to: tools/video/core/metadata.mjs `articleUrl`.
+const campaign = "?utm_source=youtube&utm_medium=video&utm_campaign=tokyo-linked";
+
 type Fixture = { origin: string; enabled: boolean; cmp: boolean; adRequests: string[] };
 
 /**
@@ -92,6 +103,7 @@ const test = base.extend<{ site: Fixture }>({
           : { enabled: false, publisher_id: null, slot_id: null, cmp_enabled: false };
       } else if (url.pathname === "/api/v1/guides/howto/tokyo-esim") result = article;
       else if (url.pathname === "/api/v1/guides/howto/tokyo-long") result = longArticle;
+      else if (url.pathname === "/api/v1/guides/howto/tokyo-linked") result = linkedArticle;
       else if (url.pathname.startsWith("/api/v1/guides/topics")) result = { items: [] };
       else if (url.pathname.startsWith("/api/v1/guides")) result = { articles: [], total: 0 };
       else if (url.pathname === "/api/v1/runtime/site-visibility") result = Object.fromEntries(siteFeatureKeys.map((key) => [`${key}_enabled`, true]));
@@ -273,6 +285,48 @@ test("a hub is a listing, not an article, so it carries nothing", async ({ page,
   await page.goto(`${canonical}${hubPath}`);
   await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
   expect(site.adRequests).toEqual([]);
+});
+
+test("a campaign-tagged link keeps its tags, and the document it opens stays ad-free", async ({ page, site }) => {
+  site.adRequests.length = 0;
+  const response = await page.goto(`${canonical}${linkedPath}${campaign}`);
+  // Answered where it was asked. It used to 307 to the bare path, and the tags never reached
+  // analytics. The ad tag can read location.href, so this document does without it instead.
+  expect(response?.status()).toBe(200);
+  expect(response?.request().redirectedFrom()).toBeNull();
+  expect(page.url()).toBe(`${canonical}${linkedPath}${campaign}`);
+  expect(response?.headers()["content-security-policy-report-only"]).not.toContain("'unsafe-eval'");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(linkedArticle.document.title);
+  await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
+  await expect(page.getByText(AD_LABEL, { exact: true })).toHaveCount(0);
+
+  // Moving on to another article keeps this document, and the root layout that decided
+  // against the tag is not rendered again. The next article must not reserve boxes that
+  // nothing in this document will ever fill.
+  await page.evaluate(() => Object.assign(window, { sameDocument: true }));
+  await page.getByRole("link", { name: longArticle.document.title }).click();
+  await expect(page).toHaveURL(`${canonical}${longPath}`);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(longArticle.document.title);
+  expect(await page.evaluate(() => "sameDocument" in window)).toBe(true);
+  await expect(page.locator("ins.adsbygoogle")).toHaveCount(0);
+  await expect(page.getByText(AD_LABEL, { exact: true })).toHaveCount(0);
+  expect(site.adRequests).toEqual([]);
+});
+
+test("the same article opened without a query still carries its ad", async ({ page, site }) => {
+  // The other half of the rule above: only the query takes the tag away.
+  await page.goto(`${canonical}${linkedPath}`);
+  await expect(page.locator("ins.adsbygoogle")).toHaveCount(1);
+  await expect.poll(() => site.adRequests.length, { timeout: 10_000 }).toBeGreaterThan(0);
+});
+
+test("a capitalised slug is sent to its canonical address for good, tags and all", async ({ request, site }) => {
+  const response = await request.get(`${site.origin}/zh-TW/guides/howto/Tokyo-Linked${campaign}`, {
+    headers: { host: "mokaair.com", "x-forwarded-host": "mokaair.com", "x-forwarded-proto": "https" },
+    maxRedirects: 0,
+  });
+  expect(response.status()).toBe(308);
+  expect(new URL(response.headers().location, canonical).href).toBe(`${canonical}${linkedPath}${campaign}`);
 });
 
 test("only an article route relaxes the content security policy", async ({ request, site }) => {

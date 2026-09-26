@@ -1,6 +1,7 @@
 "use client";
 
 import Script from "next/script";
+import { createContext, useContext } from "react";
 import { ADSENSE_SCRIPT_ORIGIN, isAdsensePublisherId } from "@/lib/adsense";
 import { AnchorAdOffset } from "./anchor-ad-offset";
 
@@ -27,6 +28,25 @@ export function adsbygoogleQueue(cmpEnabled: boolean): AdsbygoogleQueue {
   const queue: AdsbygoogleQueue = (window.adsbygoogle ??= []);
   if (!cmpEnabled) queue.requestNonPersonalizedAds = 1;
   return queue;
+}
+
+const AdsenseDocumentContext = createContext(false);
+
+/**
+ * Marks the pages under it as living in a document that loaded the tag.
+ *
+ * The page decides its units per request, but the root layout — and so the loader — is only
+ * rendered for the request that opened the document. An article reached by client-side
+ * navigation from a document that loaded no tag (a tutorial hub, or a URL with a query
+ * string) would otherwise reserve boxes nothing will ever fill.
+ */
+export function AdsenseDocument({ children }: { children: React.ReactNode }) {
+  return <AdsenseDocumentContext.Provider value>{children}</AdsenseDocumentContext.Provider>;
+}
+
+/** False outside an `AdsenseDocument`, so a unit fails closed wherever the tag is absent. */
+export function useAdsenseDocument(): boolean {
+  return useContext(AdsenseDocumentContext);
 }
 
 /**

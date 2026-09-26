@@ -42,6 +42,7 @@ from app.news_automation.models import (
     NewsPipelineRun,
     NewsSource,
 )
+from app.news_automation.policy import EVIDENCE_REFRESH_MARKER
 from app.news_automation.provider_schema import portable_json_schema
 from app.news_automation.schemas import (
     CandidateAction,
@@ -1262,3 +1263,81 @@ async def test_an_edit_that_breaks_a_site_check_gets_one_fix_then_falls_back(
     assert titles["ko"] == "Fixed ko", "the second call fixed it, so the edit stays"
     assert titles["ja"] == "Release ja", "still broken, so the reviewed translation stays"
     assert any("was not kept" in note for note in notes)
+
+
+async def seed_refreshed_candidate(session: AsyncSession) -> UUID:
+    """A saved five-locale article whose evidence an editor just refreshed."""
+
+    candidate = await seed_single_source_candidate(session)
+    settings = await session.get(NewsAutomationSettings, 1)
+    assert settings is not None
+    settings.mode, settings.auto_publish_ai = "automatic", True
+    article = GuideArticle(id=uuid4(), slug=SLUG, kind="life", news_date=EVENT_DAY)
+    session.add(article)
+    candidate.guide_article_id = article.id
+    candidate.event_date = EVENT_DAY
+    candidate.would_publish = True
+    candidate.error_code = EVIDENCE_REFRESH_MARKER
+    candidate.draft_bundle_json = {
+        locale: news_document(f"Saved {locale}").model_dump(mode="json")
+        for locale in ("zh-TW", "zh-CN", "en", "ja", "ko")
+    }
+    await session.commit()
+    return candidate.id
+
+
+@pytest.mark.asyncio
+async def test_a_refreshed_article_is_rechecked_and_goes_out_only_on_jevs_last_call(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate_id = await seed_refreshed_candidate(session)
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    mocks = stage_one_mocks(monkeypatch)
+    stage_two_mocks(monkeypatch)
+    verify = AsyncMock(return_value=(VerificationResult(verdict="pass"), {}, "checker"))
+    monkeypatch.setattr(ai, "verify_article", verify)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    assert result == "published"
+    assert stored is not None and stored.error_code is None
+    # The saved article is fact-checked against the new evidence, never drafted again.
+    verify.assert_awaited()
+    mocks["draft"].assert_not_awaited()
+    mocks["final_edit"].assert_not_awaited()
+    assert mocks["jev_locales"] == [("zh-TW", "zh-CN", "en", "ja", "ko")], "Jev's last call ran"
+
+
+@pytest.mark.asyncio
+async def test_a_refreshed_article_jev_holds_waits_for_the_owner(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate_id = await seed_refreshed_candidate(session)
+
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("distinct", 0.01, []))
+    )
+    stage_one_mocks(monkeypatch)
+    stage_two_mocks(monkeypatch)
+
+    async def jev(*args: Any, **kwargs: Any) -> list[ai.JevLocaleDecision]:
+        locales = kwargs.get("locales", ("zh-TW", "zh-CN", "en", "ja", "ko"))
+        return [ai.JevLocaleDecision(locale, "hold", 0.3, [], {}) for locale in locales]
+
+    monkeypatch.setattr(ai, "jev_assessments", jev)
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+    await engine.dispose()
+
+    assert result == "manual_review"
+    assert stored is not None and stored.error_code == "news_jev_final_hold"
