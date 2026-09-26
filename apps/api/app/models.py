@@ -2185,9 +2185,10 @@ class VideoProject(Timestamped, Base):
     __tablename__ = "video_projects"
     __table_args__ = (
         CheckConstraint("format IN ('slides', 'drama')", name="ck_video_project_format"),
-        # A YouTube video id is eleven characters (migration 0100 adds this NOT VALID).
+        # A YouTube video id is eleven characters (migration 0100 adds this NOT VALID); length()
+        # rather than char_length() so the SQLite-backed tests can build the table too.
         CheckConstraint(
-            "youtube_video_id IS NULL OR char_length(youtube_video_id) = 11",
+            "youtube_video_id IS NULL OR length(youtube_video_id) = 11",
             name="ck_video_project_youtube_id",
         ),
     )
