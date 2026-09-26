@@ -1,11 +1,11 @@
 ---
 id: 2026-09-26-video-drama-media-volume
 title: Video drama: video_media volume in production compose and the disk figures
-status: open
+status: in-progress
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-fable-5-1-video-drama
+claimed_at: 2026-09-26T07:15:21Z
 created_at: 2026-09-26T01:53:28Z
 completed_at:
 branch:
@@ -24,13 +24,13 @@ scope:
 
 ## Definition of done
 
-- [ ] `api.volumes` 有 `video_media:/var/lib/mokaair/video-media`，頂層 `volumes:` 有 `video_media`。
-- [ ] 部署後 `GET /api/v1/video/media/status` 的 `store.writable` 為 true，重部署後檔案仍在。
-- [ ] 一支試作的磁碟用量（媒體庫與 `video_work`）記進 `docs/videos/DRAMA.md` 的成本節（由持有 DRAMA.md 的票或這張票的 Notes 轉交）。
+- [x] `api.volumes` 有 `video_media:/var/lib/mokaair/video-media`，頂層 `volumes:` 有 `video_media`（本機 js-yaml 解析過）。
+- [ ] 部署後 `GET /api/v1/video/media/status` 的 `store.writable` 為 true，重部署後檔案仍在。→ 等下一次部署（#791 的 0096、#797 的 0097 一起），部署時驗。
+- [ ] 一支試作的磁碟用量（媒體庫與 `video_work`）記進 `docs/videos/DRAMA.md` 的成本節。→ 試作票 `2026-09-26-video-drama-pilot` 做完轉交。
 
 ## Steps
 
-- [ ] compose 改動；照 skill `deploy` 做主機預檢與部署。
+- [x] compose 改動；照 skill `deploy` 做主機預檢與部署。→ compose 已改；部署另排。
 - [ ] 部署後量 `docker system df -v` 的 volume 大小。
 
 ## How to verify

@@ -1,7 +1,9 @@
 // What to ask the narration server for: one request per scene, or per run of lines when a scene is
-// longer than the server takes at once, with dictionary terms marked by their spoken forms.
+// longer than the server takes at once or (in a drama) the voice changes, with dictionary terms
+// marked by their spoken forms.
 import { createHash } from "node:crypto";
 
+import { NARRATOR, voiceFor } from "../core/drama.mjs";
 import { substitutions } from "../core/lexicon.mjs";
 import { spokenText } from "../core/schema.mjs";
 import { spokenUnits } from "../core/timeline.mjs";
@@ -68,18 +70,25 @@ export function geminiText(segments) {
   return text.trim();
 }
 
-/** Every request for a video, in narration order. */
+/**
+ * Every request for a video, in narration order. A request carries one voice: a scene is cut
+ * where it outgrows the server's limit and, in a drama, where the speaker or the emotion changes
+ * (`voiceFor` folds a line's emotion into a Gemini style; Azure voices ignore it). A slides video
+ * has one voice and no speakers, so its requests and clip keys are what they always were.
+ */
 export function planRequests(doc, lexicon) {
   const requests = [];
   for (const scene of doc.scenes) {
     let chunk = [];
     let characters = 0;
+    let fields = null;
+    let speaker = null;
     const flush = () => {
       if (!chunk.length) return;
       const segments = chunk.map((line, index) => ({ parts: line.parts, break_after_ms: index < chunk.length - 1 ? SPLIT_BREAK_MS : 0 }));
-      const body = { ...voiceFields(doc.voice), segments };
+      const body = { ...fields, segments };
       const key = createHash("sha256").update(JSON.stringify([chunk.map((line) => line.id), body])).digest("hex").slice(0, 16);
-      requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, lines: chunk, body, key });
+      requests.push({ id: `${scene.id}#${requests.filter((request) => request.scene === scene.id).length}`, scene: scene.id, speaker, lines: chunk, body, key });
       chunk = [];
       characters = 0;
     };
@@ -87,10 +96,14 @@ export function planRequests(doc, lexicon) {
       const parts = spokenParts(spokenText(line), lexicon);
       const length = partsLength(parts);
       if (length > MAX_REQUEST_CHARACTERS) throw new Error(`line ${line.id} has ${length} characters; the server takes ${MAX_REQUEST_CHARACTERS} at once`);
-      if (characters + length > MAX_REQUEST_CHARACTERS) flush();
+      const voice = voiceFields(voiceFor(doc, line));
+      const lineSpeaker = line.speaker ?? NARRATOR;
+      if (characters + length > MAX_REQUEST_CHARACTERS || lineSpeaker !== speaker || JSON.stringify(voice) !== JSON.stringify(fields)) flush();
+      fields = voice;
+      speaker = lineSpeaker;
       // A clip stays current while its own words and the voice stay the same, whatever its
       // neighbours do, so an edit to one line retakes that line alone.
-      const key = createHash("sha256").update(JSON.stringify([voiceFields(doc.voice), parts])).digest("hex").slice(0, 16);
+      const key = createHash("sha256").update(JSON.stringify([voice, parts])).digest("hex").slice(0, 16);
       chunk.push({ id: line.id, parts, weight: Math.max(1, spokenUnits(spokenText(line))), key });
       characters += length;
     }
