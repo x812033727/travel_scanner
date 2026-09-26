@@ -68,6 +68,10 @@ READY_TO_PUBLISH = "news_ready_to_publish"
 # "act" everywhere. The article is saved either way, so the owner can still publish it.
 FINAL_EDIT_HOLD = "news_final_edit_hold"
 JEV_FINAL_HOLD = "news_jev_final_hold"
+# Set when an editor re-checks a candidate held for changed evidence against the current
+# pages: the saved article is re-verified like an edited one, and then Jev makes the last
+# call before anything is published.
+EVIDENCE_REFRESH_MARKER = "news_evidence_refreshed"
 
 
 class EvidenceLike(Protocol):

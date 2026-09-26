@@ -143,14 +143,15 @@
     "news_zh_draft_ready": "Chinese draft waiting for you",
     "news_ready_to_publish": "Five languages ready to publish",
     "news_final_edit_hold": "The final editor needs your decision",
-    "news_jev_final_hold": "Held at Jev's last call"
+    "news_jev_final_hold": "Held at Jev's last call",
+    "news_evidence_refreshed": "Sources updated, checking again"
   },
   "next": {
     "shadow": "Jev approved all five languages; it was not published only because the scanner runs in shadow mode. Read the preview, then publish or reject it. Your decision is compared with Jev's for the auto-publish gate.",
     "jevHold": "The five-language draft is ready, but Jev held at least one language (see the assessments below). Read the preview: publish it if it is right; if something needs fixing, edit it in the guide editor and press Re-verify; reject it if it is not worth publishing. Your decision counts toward the auto-publish gate.",
     "fixArticle": "The edited article did not pass its checks again (reason above). Fix it in the guide editor and press Re-verify, or reject it.",
     "duplicate": "Jev could not tell whether this is the same event as a recent story. Compare it with the closest titles below. If it is a new development, press Not a duplicate, continue (drafting starts and spends model calls); if it is the same event, reject it.",
-    "evidenceChanged": "A source page changed after the article was checked, so it cannot be published, and running it again gives the same result. Reject it; later coverage arrives as a new candidate.",
+    "evidenceChanged": "A source page changed after the article was checked, so it cannot be published on the old check. Press \"Re-check against the current sources\": each source page is fetched again, and the saved five-language article goes through the fact check, the locale reviews and Jev's last call against the new text. It is published if they pass and comes back here if not; the fact check stops it when the new text no longer supports the article. Reject it if you do not want it.",
     "redraft": "The AI stopped before a five-language draft existed (reason above), so there is nothing to publish or edit. Run it again to draft the whole article anew (spends model calls), or reject it.",
     "failed": "Processing hit an error (message above). Run it again, or reject it.",
     "needsEvidence": "Only lead-only pages back this story, so there is nothing a draft could cite and no model was run. Reject it; coverage from an evidence source arrives as a new candidate.",
@@ -206,5 +207,7 @@
   "modelsShadowNote": "Changing a model leaves automatic publishing on; the agreement with Jev starts counting again, for reference only.",
   "saveModels": "Save news models",
   "modelInherited": "Default · {model}",
-  "openNews": "Open the news admin"
+  "openNews": "Open the news admin",
+  "refresh": "Re-check against the current sources",
+  "doneRefresh": "The current sources were fetched and the article is queued for checking again. It is published if the fact check, the locale reviews and Jev's last call pass, and comes back to To review if not."
 }

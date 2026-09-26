@@ -92,7 +92,7 @@ afterEach(() => vi.unstubAllGlobals());
 
 const posts = () => vi.mocked(fetch).mock.calls.filter(([, init]) => init?.method === "POST").map(([url]) => String(url));
 const listCalls = () => vi.mocked(fetch).mock.calls.map(([url]) => String(url)).filter((url) => url.includes("/admin/news/candidates?"));
-const actionButtons = () => ["確認發布，翻譯其他語言", "重新翻譯並發布", "五語發布", "重新查核", "不是重複，繼續寫", "重新執行", "退件", "回報發布後重大錯誤"]
+const actionButtons = () => ["確認發布，翻譯其他語言", "重新翻譯並發布", "五語發布", "重新查核", "不是重複，繼續寫", "用最新來源重新查核", "重新執行", "退件", "回報發布後重大錯誤"]
   .filter((name) => screen.queryByRole("button", { name }));
 
 describe("AdminNewsWorkspace", () => {
@@ -169,12 +169,24 @@ describe("AdminNewsWorkspace", () => {
     expect(await screen.findByText(/已記下「不是重複」/)).toBeTruthy();
   });
 
+  it("re-checks a story whose sources changed against the current pages", async () => {
+    const changed = { ...summary, id: "00000000-0000-4000-8000-000000000031", source_title: "A changed page", error_code: "news_evidence_changed" };
+    serveRows(changed);
+    render(<AdminNewsWorkspace />);
+    fireEvent.click(await screen.findByRole("button", { name: /A changed page/ }));
+    expect(await screen.findByText(/來源頁的內容更新了/)).toBeTruthy();
+    fireEvent.change(screen.getByLabelText(/原因（必填/), { target: { value: "報導補了新內容" } });
+    fireEvent.click(screen.getByRole("button", { name: "用最新來源重新查核" }));
+    await waitFor(() => expect(posts()).toEqual([`/api/travel/admin/news/candidates/${changed.id}/refresh-evidence`]));
+    expect(await screen.findByText(/已抓取最新來源並排入重新查核/)).toBeTruthy();
+  });
+
   it.each([
     ["needs_redraft", "news_verification_failed", null, ["重新執行", "退件"]],
     ["failed", "ValidationError", null, ["重新執行", "退件"]],
     ["failed", "news_processing_stale", "00000000-0000-4000-8000-000000000002", ["重新查核", "重新執行", "退件"]],
     ["needs_evidence", "news_evidence_insufficient", null, ["退件"]],
-    ["manual_review", "news_evidence_changed", "00000000-0000-4000-8000-000000000002", ["退件"]],
+    ["manual_review", "news_evidence_changed", "00000000-0000-4000-8000-000000000002", ["用最新來源重新查核", "退件"]],
     ["manual_review", "news_verification_failed", "00000000-0000-4000-8000-000000000002", ["重新查核", "退件"]],
     ["published", null, "00000000-0000-4000-8000-000000000002", ["回報發布後重大錯誤"]],
     ["rejected", null, null, []],

@@ -982,3 +982,47 @@ def test_a_rerun_starts_from_the_words_without_the_last_runs_artwork() -> None:
     assert words.hero is None
     assert [block.type for block in words.blocks] == ["paragraph"]
     assert document_fingerprint(words) == document_fingerprint(drawn)
+
+
+@pytest.mark.asyncio
+async def test_refreshing_evidence_takes_the_current_text_only_when_every_page_reads() -> None:
+    from app.news_automation.validation import refresh_evidence
+
+    source = NewsSource(
+        name="Official",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    evidence = NewsEvidence(
+        candidate_id=uuid4(),
+        role="evidence",
+        is_first_party=True,
+        url="https://example.com/release",
+        title="Official product update",
+        content_hash="old",
+        excerpt="Old text.",
+        etag='"stale"',
+    )
+    session = AsyncMock()
+    session.scalars.return_value = [source]
+    fetcher = AsyncMock()
+    fetcher.fetch.side_effect = TimeoutError()
+    changed, problems = await refresh_evidence(session, [evidence], fetcher=fetcher)
+    assert (changed, problems) == ([], [f"source_refetch_failed:{evidence.url}:TimeoutError"])
+    assert (evidence.content_hash, evidence.excerpt) == ("old", "Old text."), "nothing changed"
+
+    body = b"<html><main>Official product update, now with the pricing details added.</main></html>"
+    fetcher.fetch.side_effect = None
+    fetcher.fetch.return_value = FetchResult(
+        url=evidence.url, status_code=200, content_type="text/html", body=body, etag='"new"'
+    )
+    changed, problems = await refresh_evidence(session, [evidence], fetcher=fetcher)
+    _, text, _ = extract_article(body, evidence.url)
+    assert (changed, problems) == ([evidence.url], [])
+    assert evidence.content_hash == content_fingerprint(text) and "pricing" in evidence.excerpt
+    assert evidence.etag == '"new"'
+    assert "etag" not in fetcher.fetch.await_args.kwargs, "a stale ETag cannot hide the change"
