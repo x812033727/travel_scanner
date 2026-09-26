@@ -21,8 +21,8 @@ import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../t
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
-  DEFAULT_FORMAT, DEFAULT_RATES, DUB_FORMATS, DUB_LOCALES, GUARD_MS, MAX_TEMPO,
-  assembleTrack, dubLexicon, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
+  DEFAULT_FORMAT, DUB_FORMATS, DUB_LOCALES, GUARD_MS, MAX_TEMPO,
+  assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
 } from "./plan.mjs";
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
@@ -64,9 +64,9 @@ function geminiRemaining(status) {
   return status.gemini_monthly_limit > 0 && status.gemini_used !== null && status.gemini_used !== undefined ? status.gemini_monthly_limit - status.gemini_used : null;
 }
 
-/** The rate a locale's last fit measured, else the starting value. */
-export function rateFor(fit, locale) {
-  return fit?.rates?.measured ?? DEFAULT_RATES[locale];
+/** The rate a locale's last fit measured, else the estimate from the narration's own rate. */
+export function rateFor(fit, locale, doc, timeline) {
+  return fit?.rates?.measured ?? defaultRate(locale, doc, timeline);
 }
 
 /** Everything one locale's dub is made from, before any audio: the script, the requests, the cache. */
@@ -158,6 +158,8 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
       delete cache.stretched[id];
     }
     atomicWrite(files.cache, `${JSON.stringify(cache, null, 2)}\n`);
+    const done = lines ? `${lines.length} of ${request.lines.length} lines retaken` : `${request.lines.length} lines`;
+    ctx.stdout.write(`${locale} ${request.id}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
 
   // The clips as spoken, then the layout: which windows keep their rhythm, which pack, which speed up.
@@ -187,7 +189,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     locale,
     speech_hash: timeline.speech_hash,
     translation_hash: dub.hash,
-    rates: { default: DEFAULT_RATES[locale], measured },
+    rates: { default: defaultRate(locale, project.doc, timeline), measured },
     tempo_max: tempoMax,
     windows: windows.map((window) => ({ scene: window.scene, state: window.state, start_frame: window.start_frame, end_frame: window.end_frame, lines: window.lines.map((line) => line.id), tempo: window.tempo, slack_frames: window.slack_frames, over: window.over })),
     over,
@@ -233,7 +235,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
   return EXIT.ok;
 }
 
-async function dryRun(dubs, timeline, ctx, credentials) {
+async function dryRun(dubs, project, timeline, ctx, credentials) {
   for (const dub of dubs) {
     if (dub.missing.length) {
       ctx.stdout.write(`${dub.locale}: ${dub.missing.length} lines have no current translation (${dub.missing.slice(0, 8).join(", ")}${dub.missing.length > 8 ? ", …" : ""})\n`);
@@ -243,7 +245,7 @@ async function dryRun(dubs, timeline, ctx, credentials) {
     const pending = dub.requests.filter((request) => !request.lines.every((line) => clipCurrent(request, line)));
     const estimate = dub.requests.reduce((sum, request) => sum + billableForRequest(request.body), 0);
     const now = pending.reduce((sum, request) => sum + billableForRequest(request.body), 0);
-    const rate = rateFor(readJson(dub.files.fit, null), dub.locale);
+    const rate = rateFor(readJson(dub.files.fit, null), dub.locale, project.doc, timeline);
     const windows = layoutDub(timeline, estimatedLengths(dub.texts, rate));
     const over = windows.filter((window) => window.over).length;
     const sped = windows.filter((window) => !window.over && window.tempo > 1).length;
@@ -278,7 +280,7 @@ async function dub(args, ctx) {
   if (timeline.speech_hash !== speechHash(doc, project.lexicon)) throw new UsageError("timeline.json was built for an older script; run tts again");
   const dubs = values.locales.map((locale) => prepare(project, locale, values, workdir));
 
-  if (values["dry-run"]) return dryRun(dubs, timeline, ctx, readCredentials({ env: ctx.env, home: ctx.home }));
+  if (values["dry-run"]) return dryRun(dubs, project, timeline, ctx, readCredentials({ env: ctx.env, home: ctx.home }));
 
   const credentials = requireCredentials(ctx);
   const clientOpts = clientOptions(ctx, credentials);

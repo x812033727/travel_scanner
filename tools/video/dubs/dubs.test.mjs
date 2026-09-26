@@ -11,8 +11,8 @@ import { estimateTimeline, framesFor, msToSamples, SAMPLE_RATE, SAMPLES_PER_FRAM
 import { concatSamples, encodeWav, parseWav } from "../tts/wav.mjs";
 import { encodeArgs, stretchArgs } from "./encode.mjs";
 import {
-  BUDGET_MARGIN, DEFAULT_RATES, DUB_STYLES, GAP_MS, GUARD_MS, MAX_TEMPO,
-  assembleTrack, dubLexicon, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, placeLines, shrinkBudgets, translationHash, windowsOf,
+  BUDGET_MARGIN, DEFAULT_RATES, DUB_STYLES, GAP_MS, GUARD_MS, MAX_TEMPO, RATE_RATIOS,
+  assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, layoutWindow, lineBudgets, measureRate, narrationRate, placeLines, shrinkBudgets, translationHash, windowsOf,
 } from "./plan.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -119,7 +119,13 @@ test("budgets follow the slot and the rate; an overflowing window shrinks every 
   assert.equal(measureRate(new Map([["a", "abcde"], ["b", "fghij"]]), new Map([["a", SAMPLE_RATE], ["b", SAMPLE_RATE]])), 5);
   assert.equal(measureRate(new Map([["a", "abc"]]), new Map()), null);
   assert.equal(estimatedLengths(new Map([["a", "x".repeat(15)]]), 15).get("a"), SAMPLE_RATE);
-  assert.equal(DEFAULT_RATES.en, 15);
+
+  // Before a dub is measured, its rate is the narration's own rate scaled per language.
+  const anchor = narrationRate(doc, timeline);
+  assert.ok(anchor > 0);
+  assert.equal(defaultRate("zh-CN", doc, timeline), Math.round(anchor * 100) / 100);
+  assert.equal(defaultRate("en", doc, timeline), Math.round(anchor * RATE_RATIOS.en * 100) / 100);
+  assert.equal(defaultRate("en", doc, null), DEFAULT_RATES.en, "without a timeline, the fixed starting value");
 });
 
 test("the track is the video's length with each clip at its frame", () => {

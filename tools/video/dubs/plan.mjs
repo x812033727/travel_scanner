@@ -9,7 +9,7 @@
 // is exactly as long as the video, to the sample.
 import { createHash } from "node:crypto";
 
-import { LOCALES, NARRATION_LOCALE, textHash } from "../core/schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
 
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
@@ -22,9 +22,14 @@ export const GUARD_MS = 100;
 // The most a window is sped up before its translation must be shortened instead.
 export const MAX_TEMPO = 1.15;
 export const TEMPO_STEP = 0.01;
-// Starting speaking rates, in characters of the translation per second of speech. The rates a
-// finished dub measured replace them (fit.json), so the second video's budgets are real.
-export const DEFAULT_RATES = { en: 15, ja: 7, ko: 6, "zh-CN": 4.5 };
+// Speaking rates, in characters of the translation per second of speech, relative to the zh-TW
+// narration's own rate: what the same voice manages in each language. The zh-TW rate is measured
+// from the narration itself (5.8 characters a second on the 2026-09-26 batch), so a video read
+// faster or slower than usual carries that into its budgets. The rate a finished dub measured
+// replaces the estimate (fit.json), so the next video's budgets are real.
+export const RATE_RATIOS = { en: 2.6, ja: 1.35, ko: 1.15, "zh-CN": 1.0 };
+// When the narration cannot be measured (no audio lengths in the timeline).
+export const DEFAULT_RATES = { en: 15, ja: 7.8, ko: 6.7, "zh-CN": 5.8 };
 // Budgets leave this much of the room unused: a translator lands close to the limit, not on it.
 export const BUDGET_MARGIN = 0.97;
 
@@ -161,6 +166,20 @@ export function measureRate(texts, lengths) {
     samples += lengths.get(id);
   }
   return samples > 0 ? Math.round(((characters * SAMPLE_RATE) / samples) * 100) / 100 : null;
+}
+
+/** Characters a second of the zh-TW narration itself, from the timeline's clip lengths; null before tts. */
+export function narrationRate(doc, timeline) {
+  const texts = new Map();
+  for (const { line } of eachLine(doc)) texts.set(line.id, spokenText(line));
+  const lengths = new Map((timeline?.lines ?? []).filter((line) => Number.isInteger(line.audio_samples)).map((line) => [line.id, line.audio_samples]));
+  return measureRate(texts, lengths);
+}
+
+/** The rate to plan a locale's dub with before it is measured: the narration's own rate, scaled. */
+export function defaultRate(locale, doc, timeline) {
+  const anchor = timeline ? narrationRate(doc, timeline) : null;
+  return anchor ? Math.round(anchor * RATE_RATIOS[locale] * 100) / 100 : DEFAULT_RATES[locale];
 }
 
 /**

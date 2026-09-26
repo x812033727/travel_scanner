@@ -18,7 +18,7 @@ import { ARTIFACTS, dubArtifacts, loadProject } from "../core/state.mjs";
 import { TITLE_MAX_CHARS } from "../core/metadata.mjs";
 import { speechHash } from "../core/timeline.mjs";
 import { chapterScenes, METADATA_FIELDS, metadataStatus, sourceHashes } from "../core/translations.mjs";
-import { DEFAULT_RATES, lineBudgets } from "../dubs/plan.mjs";
+import { defaultRate, lineBudgets } from "../dubs/plan.mjs";
 
 export const TARGET_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 
@@ -174,7 +174,7 @@ export async function run(command, args, ctx) {
     const timed = timeline && timeline.speech_hash === speechHash(doc, project.lexicon);
     for (const locale of values.locales) {
       const fit = timed ? readJson(dubArtifacts(workdir, locale).fit, null) : null;
-      const budgets = timed ? lineBudgets(timeline, fit?.rates?.measured ?? DEFAULT_RATES[locale]) : null;
+      const budgets = timed ? lineBudgets(timeline, fit?.rates?.measured ?? defaultRate(locale, doc, timeline)) : null;
       const sheet = buildSheet(doc, project.translations[locale], locale, budgets);
       atomicWrite(sheetFile(workdir, locale), `${JSON.stringify(sheet, null, 2)}\n`);
       ctx.stdout.write(`${locale}: to translate ${sheetTodo(sheet)}; ${sheetFile(workdir, locale)}${budgets ? " (with max_chars for the dub)" : ""}\n`);
