@@ -2112,7 +2112,8 @@
       "publish": "Upload confirmation",
       "look": "Character sheets",
       "storyboard": "Storyboard",
-      "dubs": "Dub tracks"
+      "dubs": "Dub tracks",
+      "script": "Screenplay"
     },
     "statuses": {
       "pending": "To decide",
@@ -2222,7 +2223,21 @@
       "anime-2d": "2D anime",
       "ink-wash": "Ink wash",
       "custom": "Custom"
-    }
+    },
+    "tabDrama": "Drama",
+    "episodeOf": "Episode {number} of the series {series}",
+    "approveScript": "Approve the screenplay",
+    "scriptCoverage": "Beats delivered",
+    "scriptBeats": {
+      "hook": "Hook",
+      "conflict": "Conflict",
+      "turn": "Turn",
+      "cliffhanger": "Cliffhanger"
+    },
+    "scriptProblems": "What the checker flagged",
+    "scriptMinutes": "About {minutes} minutes",
+    "scriptPrompt": "Shot prompt",
+    "narrator": "Narrator"
   },
   "videoSettings": {
     "loading": "Loading settings…",
@@ -2343,5 +2358,131 @@
       "drama": "Drama"
     },
     "promptSent": "{slug} · {time}"
+  },
+  "videoSeries": {
+    "listTitle": "Series",
+    "empty": "No series yet",
+    "emptyDetail": "Start one below: the worker plans its setting book on its next round, and you approve it here.",
+    "loadError": "The series could not be loaded",
+    "retry": "Try again",
+    "newSeries": "New series",
+    "newSeriesHelp": "The premise in your words, the sides of the genre you care about, the tone and the shape. The worker plans the setting book, then the whole-series outline, then each chapter's outline; you approve each here, read every episode's screenplay, and the episodes are made in order. The AI drama route must be on in Settings.",
+    "fields": {
+      "title": "Title",
+      "slug": "Slug (lowercase, digits, hyphens)",
+      "premise": "Premise",
+      "aspects": "What matters most",
+      "tone": "Emotional register",
+      "stylePreset": "Art style",
+      "targetMinutes": "Minutes per episode (1–8)",
+      "plannedEpisodes": "Planned episodes",
+      "episodesPerChapter": "Episodes per chapter",
+      "openEnded": "Open ending: close a stage, leave threads for a sequel",
+      "note": "Standing note for the planner"
+    },
+    "slugPlaceholder": "e.g. wenjian",
+    "premisePlaceholder": "Who wants what, what stands in the way, the world it happens in.",
+    "notePlaceholder": "What to change; required to send it back",
+    "aspects": {
+      "world": "A xianxia world: sects and clans, cultivation ranks, the orthodox against the demonic path",
+      "bonds": "An ensemble and its bonds: growing up together, confidants, masters and clans",
+      "structure": "Structure: past and present lives, flashbacks, planted threads and reversals, serialised suspense",
+      "mood": "Mood and picture: classical xianxia art, a dark streak, ghosts and talismans"
+    },
+    "tones": {
+      "dual-male-leads-subtext": "Two male leads, confidants, never stated",
+      "dual-male-leads-explicit": "Two male leads, a stated romance",
+      "hetero-leads": "A man and a woman",
+      "no-romance": "No romance"
+    },
+    "presets": {
+      "cinematic-3d": "Cinematic 3D realistic",
+      "anime-2d": "2D anime",
+      "ink-wash": "Ink wash",
+      "custom": "Custom"
+    },
+    "create": "Start the series",
+    "createError": "Not started: {message}",
+    "saving": "Saving…",
+    "statuses": {
+      "setting": "Setting book",
+      "outline": "Outline",
+      "active": "In the making",
+      "paused": "Paused",
+      "finished": "Finished"
+    },
+    "docsPending": "{count} to approve",
+    "progress": "{done}/{total} episodes · {chapters} chapters",
+    "spend": "US${usd} · {seconds} clip seconds",
+    "minutesEach": "{minutes} min each",
+    "back": "Back to the series",
+    "pause": "Pause",
+    "resume": "Resume",
+    "planNextChapter": "Plan the next chapter now",
+    "startNext": "Start the next episode now",
+    "actionError": "Not done: {message}",
+    "chapterRequested": "Chapter {n} is planned on the worker's next round.",
+    "nextForced": "The next episode starts without waiting for the previous one.",
+    "docsTitle": "Documents",
+    "docsEmpty": "The worker writes the setting book on its next round.",
+    "docKinds": {
+      "setting": "Setting book",
+      "outline": "Series outline",
+      "chapter": "Chapter outline"
+    },
+    "chapterN": "Chapter {n} outline",
+    "version": "version {n}",
+    "docStatuses": {
+      "generating": "Being written",
+      "review": "Waiting for you",
+      "approved": "Approved",
+      "rejected": "Sent back"
+    },
+    "sentBack": "Sent back:",
+    "readDoc": "Read the document",
+    "note": "Note",
+    "approve": "Approve",
+    "reject": "Send back",
+    "decideError": "Not recorded: {message}",
+    "editDoc": "Rewrite it yourself",
+    "editHelp": "Your version becomes the next one; approve it at once, or leave it waiting.",
+    "saveApprove": "Save and approve",
+    "saveReview": "Save as waiting",
+    "editError": "Not saved: {message}",
+    "beats": {
+      "episode": "Ep.",
+      "title": "Title",
+      "hook": "Hook",
+      "conflict": "Conflict",
+      "turn": "Turn",
+      "cliffhanger": "Cliffhanger",
+      "threads": "Plants / pays",
+      "tension": "Tension"
+    },
+    "episodesTitle": "Episodes",
+    "episodesEmpty": "The episodes appear once the series outline is approved.",
+    "episodeColumns": {
+      "number": "Ep.",
+      "chapter": "Ch.",
+      "title": "Title",
+      "status": "Status",
+      "step": "Now",
+      "pending": "Waiting",
+      "spend": "Spend",
+      "actions": ""
+    },
+    "episodeStatuses": {
+      "planned": "Planned",
+      "ready": "Ready",
+      "queued": "Queued",
+      "started": "In the making",
+      "done": "Done",
+      "skipped": "Skipped"
+    },
+    "pendingCount": "{count} for you",
+    "openVideo": "Open",
+    "skip": "Skip",
+    "skipConfirm": "Skip episode {n}? The series moves on without it.",
+    "oneOffTitle": "One-off episodes"
   }
 }

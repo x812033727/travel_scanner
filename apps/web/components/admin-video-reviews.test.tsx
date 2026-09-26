@@ -187,8 +187,10 @@ describe("AdminVideoReviews", () => {
         return Promise.resolve(Response.json(requests[0]));
       }
       if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests }));
+      if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
       return Promise.resolve(Response.json([{ ...summary, format: "drama", pending: 1, checklist: [{ key: "brief", label: "企劃", done: true }, { key: "look", label: "角色設定圖", done: false }] }]));
     }));
+    window.history.replaceState(null, "", "/?tab=drama");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const queue = await screen.findByRole("region", { name: "發起的漫劇" });
     expect(queue.textContent).toContain("排隊中");
@@ -296,12 +298,51 @@ describe("AdminVideoReviews", () => {
     expect(within(section).getByRole("button", { name: "儲存配音語言" })).toHaveProperty("disabled", true);
   });
 
-  it("marks a drama and its media spend in the list", async () => {
-    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", media_usd: 12.5, clip_seconds: 96 }]))));
+  it("keeps dramas off the tutorial list and shows a one-off drama with its spend on the drama tab", async () => {
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
+      if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests: [] }));
+      return Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", media_usd: 12.5, clip_seconds: 96 }, { ...summary, slug: "a-tutorial", title: "教學片", pending: 0 }]));
+    }));
+    const { unmount } = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("button", { name: /教學片/ });
+    expect(screen.queryByRole("button", { name: /AI 模型怎麼挑/ })).toBeNull();
+    unmount();
+    window.history.replaceState(null, "", "/?tab=drama");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const item = await screen.findByRole("button", { name: /AI 模型怎麼挑/ });
     expect(item.textContent).toContain("AI 漫劇");
     expect(item.textContent).toContain("媒體花費 US$12.50（96 片段秒）");
+  });
+
+  it("shows a screenplay's beats, the checker's verdicts and every line with its speaker", async () => {
+    const script = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "script", content_sha256: "9".repeat(64), summary: "劇本 3 場、12 句，約 2.5 分鐘",
+      payload: {
+        minutes: 2.5, beats: { hook: "鐘聲在夜裡響了", conflict: "誰敲的", turn: "鐘是自己響的", cliffhanger: { type: "reveal", text: "鐘下有字" } },
+        coverage: { hook: "有", conflict: "有", turn: "弱", cliffhanger: "有" }, continuity_problems: ["轉折來得太晚"],
+        characters: [{ id: "shen-lan", name: "沈瀾" }],
+        scenes: [
+          { id: "opening", chapter: "山門", template: "shot", prompt: "wide shot of a mountain gate at night", lines: [{ id: "a1", speaker: "narrator", name: null, text: "夜裡，鐘響了。", emotion: null }, { id: "a2", speaker: "shen-lan", name: "沈瀾", text: "誰？", emotion: "警覺" }] },
+          { id: "outro", chapter: null, template: "outro", prompt: null, lines: [{ id: "a3", speaker: "narrator", name: null, text: "下集待續。", emotion: null }] },
+        ],
+      },
+      files: [], status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
+    };
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, format: "drama", series_slug: "wenjian", episode_number: 1, reviews: [script] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    expect(screen.getByText("作品 wenjian 第 1 集")).toBeTruthy();
+    expect(card.textContent).toContain("鉤子有");
+    expect(card.textContent).toContain("轉折弱");
+    expect(card.textContent).toContain("轉折來得太晚");
+    expect(card.textContent).toContain("【沈瀾】");
+    expect(card.textContent).toContain("（警覺）誰？");
+    expect(card.textContent).toContain("旁白：夜裡，鐘響了。");
+    expect(card.textContent).toContain("鐘下有字");
+    expect(screen.getByRole("button", { name: "核准劇本" })).toHaveProperty("disabled", false);
   });
 
   it("marks a dropped video in the list", async () => {

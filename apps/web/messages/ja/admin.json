@@ -2112,7 +2112,8 @@
       "publish": "アップロード確認",
       "look": "キャラクター設定画",
       "storyboard": "絵コンテ",
-      "dubs": "吹き替え音声"
+      "dubs": "吹き替え音声",
+      "script": "脚本"
     },
     "statuses": {
       "pending": "判断待ち",
@@ -2222,7 +2223,21 @@
       "anime-2d": "2D アニメ",
       "ink-wash": "水墨",
       "custom": "カスタム"
-    }
+    },
+    "tabDrama": "ドラマ",
+    "episodeOf": "作品 {series} 第 {number} 話",
+    "approveScript": "脚本を承認",
+    "scriptCoverage": "各ビートの達成",
+    "scriptBeats": {
+      "hook": "フック",
+      "conflict": "対立",
+      "turn": "転換",
+      "cliffhanger": "引き"
+    },
+    "scriptProblems": "チェックが指摘した問題",
+    "scriptMinutes": "約 {minutes} 分",
+    "scriptPrompt": "ショットのプロンプト",
+    "narrator": "ナレーション"
   },
   "videoSettings": {
     "loading": "設定を読み込んでいます…",
@@ -2343,5 +2358,131 @@
       "drama": "ドラマ"
     },
     "promptSent": "{slug} · {time}"
+  },
+  "videoSeries": {
+    "listTitle": "作品",
+    "empty": "まだ作品がありません",
+    "emptyDetail": "下で作品を作ると、ワーカーが次の周回で設定集を企画し、ここで承認します。",
+    "loadError": "作品を読み込めません",
+    "retry": "再試行",
+    "newSeries": "新しい作品",
+    "newSeriesHelp": "あらすじを自分の言葉で書き、重視する面を選び、感情線と形を決めます。ワーカーは設定集、総綱、各章の細綱を順に企画し、ここで一つずつ承認します。各話の脚本も先に読み、話は順番に制作されます。設定で「AI ドラマ」をオンにしておいてください。",
+    "fields": {
+      "title": "作品名",
+      "slug": "スラッグ（小文字・数字・ハイフン）",
+      "premise": "あらすじ",
+      "aspects": "重視する面",
+      "tone": "感情線",
+      "stylePreset": "画風",
+      "targetMinutes": "1 話の分数（1〜8）",
+      "plannedEpisodes": "予定話数",
+      "episodesPerChapter": "1 章の話数",
+      "openEnded": "オープンエンド：第一部は区切りで閉じ、続編の伏線を残す",
+      "note": "企画への常設メモ"
+    },
+    "slugPlaceholder": "例：wenjian",
+    "premisePlaceholder": "誰が何を望み、何が立ちはだかり、どんな世界か。",
+    "notePlaceholder": "何を変えるか。差し戻しには必須",
+    "aspects": {
+      "world": "仙侠の世界観：門派と世家、修為、正道と魔道の対立",
+      "bonds": "群像と絆：共に育つ少年たち、知己、師門と一族",
+      "structure": "構成：前世と今生、回想、伏線と反転、連載の引き",
+      "mood": "雰囲気と画：古風な仙侠美術、暗い影、妖怪と符"
+    },
+    "tones": {
+      "dual-male-leads-subtext": "男性主人公二人の知己の絆、明言しない",
+      "dual-male-leads-explicit": "男性主人公二人の明確な恋愛",
+      "hetero-leads": "男女の主人公",
+      "no-romance": "恋愛なし"
+    },
+    "presets": {
+      "cinematic-3d": "シネマティック 3D リアル",
+      "anime-2d": "2D アニメ",
+      "ink-wash": "水墨",
+      "custom": "カスタム"
+    },
+    "create": "作品を作る",
+    "createError": "作れませんでした：{message}",
+    "saving": "保存中…",
+    "statuses": {
+      "setting": "設定集",
+      "outline": "総綱",
+      "active": "制作中",
+      "paused": "一時停止",
+      "finished": "完結"
+    },
+    "docsPending": "{count} 件が承認待ち",
+    "progress": "{done}/{total} 話 · {chapters} 章",
+    "spend": "US${usd} · クリップ {seconds} 秒",
+    "minutesEach": "1 話 {minutes} 分",
+    "back": "作品一覧へ",
+    "pause": "一時停止",
+    "resume": "再開",
+    "planNextChapter": "次の章を先に企画",
+    "startNext": "次の話を今すぐ開始",
+    "actionError": "できませんでした：{message}",
+    "chapterRequested": "第 {n} 章の細綱はワーカーの次の周回で作られます。",
+    "nextForced": "次の話は前の話の公開を待たずに始まります。",
+    "docsTitle": "文書",
+    "docsEmpty": "ワーカーが次の周回で設定集を書きます。",
+    "docKinds": {
+      "setting": "設定集",
+      "outline": "総綱",
+      "chapter": "章の細綱"
+    },
+    "chapterN": "第 {n} 章の細綱",
+    "version": "第 {n} 版",
+    "docStatuses": {
+      "generating": "執筆中",
+      "review": "判断待ち",
+      "approved": "承認済み",
+      "rejected": "差し戻し"
+    },
+    "sentBack": "差し戻し理由：",
+    "readDoc": "全文を読む",
+    "note": "メモ",
+    "approve": "承認",
+    "reject": "差し戻す",
+    "decideError": "記録できませんでした：{message}",
+    "editDoc": "自分で書き直す",
+    "editHelp": "あなたの版が最新版になります。すぐ承認するか、判断待ちにできます。",
+    "saveApprove": "保存して承認",
+    "saveReview": "判断待ちとして保存",
+    "editError": "保存できませんでした：{message}",
+    "beats": {
+      "episode": "話",
+      "title": "タイトル",
+      "hook": "フック",
+      "conflict": "対立",
+      "turn": "転換",
+      "cliffhanger": "引き",
+      "threads": "伏線 / 回収",
+      "tension": "緊張"
+    },
+    "episodesTitle": "話",
+    "episodesEmpty": "総綱を承認すると各話が並びます。",
+    "episodeColumns": {
+      "number": "話",
+      "chapter": "章",
+      "title": "タイトル",
+      "status": "状態",
+      "step": "現在",
+      "pending": "待ち",
+      "spend": "費用",
+      "actions": ""
+    },
+    "episodeStatuses": {
+      "planned": "計画済み",
+      "ready": "制作可",
+      "queued": "待機中",
+      "started": "制作中",
+      "done": "完了",
+      "skipped": "スキップ"
+    },
+    "pendingCount": "{count} 件が判断待ち",
+    "openVideo": "開く",
+    "skip": "スキップ",
+    "skipConfirm": "第 {n} 話をスキップしますか？作品は次の話に進みます。",
+    "oneOffTitle": "単発エピソード"
   }
 }
