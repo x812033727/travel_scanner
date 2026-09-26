@@ -1,0 +1,1374 @@
+{
+  "slug": "tech-news-wordpress-712-20260922",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-22",
+  "featured": false,
+  "display_order": 337,
+  "locales": {
+    "zh-TW": {
+      "title": "WordPress 7.1.2 修補核心嚴重漏洞：各分支的修補版本與怎麼確認自己的網站",
+      "description": "2026 年 9 月 22 日，WordPress 發布 7.1.2 安全版，修補一個自評為嚴重等級的核心漏洞，修補範圍從最新的 7.1 分支回溯到 4.7 分支。美國時間 9 月 25 日，CISA 依遭實際利用的證據將它列入已遭利用漏洞清單。這篇整理各分支對應的修補版本，以及怎麼確認自己網站的版本號（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/tech-news-wordpress-712-20260922/hero.jpg",
+        "alt": "原創插圖：一個後台儀表板頁面，其中一個小方框的最下面一行被放大鏡照著；箭頭指向一個圓形更新箭頭圖案，再一個箭頭指向一個打勾符號；不含商標或真實人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 22 日，WordPress 發布 7.1.2 安全版，修補一個自評為嚴重等級的核心漏洞；修補範圍從最新的 7.1 分支，一路回溯到 4.7 分支，各分支都有自己對應的修補版本。這個漏洞不需要登入就能觸發，但要在伺服器環境與使用中的佈景主題兩邊的前提都成立時，才可能導致遠端執行程式碼。美國時間 9 月 25 日，美國網路安全暨基礎設施安全局（CISA）依遭實際利用的證據，把這個漏洞列入已知遭利用漏洞（KEV）清單。不管網站現在用哪個分支，都值得回頭確認一次版本號。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 26 日查核，讀的是 WordPress.org 的〈WordPress 7.1.2 Release〉發布文與〈Dashboard screen〉說明文件、GitHub 安全公告 GHSA-7hp8-65ch-5whp，以及 CISA 的公告；這裡沒有實際測試任何網站或攻擊手法，也不提供主機商或佈景主題的購買建議，只整理這些文件寫了什麼、沒寫什麼。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 22 日，WordPress 發布 7.1.2 安全版，修補一個自評為嚴重等級的核心漏洞，修補範圍從最新的 7.1 分支一路回溯到 4.7 分支。",
+            "漏洞不需要登入就能觸發，但要在伺服器環境與使用中的佈景主題兩邊的前提都成立時，才可能導致遠端執行程式碼；GHSA 標示的 CVSS 4.0 分數是 9.2。",
+            "美國時間 9 月 25 日，CISA 依遭實際利用的證據，把這個漏洞列入已知遭利用漏洞（KEV）目錄；CISA 的相關指令只約束美國聯邦民事行政機關，對其他組織只是鼓勵。",
+            "從 4.7 到 7.1 的各分支都有自己的修補版本，例如 7.0 分支是 7.0.6、6.9 分支是 6.9.9，讀者要對照的是自己所在分支的修補版，而不是一律裝 7.1.2。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 22 日修補了什麼：條件式的核心漏洞"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.org 在 2026 年 9 月 22 日發布〈WordPress 7.1.2 Release〉，開頭寫的是「This security release features a fix for a critical severity security vulnerability.」（這個安全版修補了一個嚴重等級的安全漏洞），並寫「Because this is a security release, it is recommended that you update your sites immediately.」（因為是安全版，建議立即更新網站）——用的是建議，不是強制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布文說明，一名未經驗證、不需要登入的攻擊者，在符合特定條件時可能觸發這個問題；如果伺服器環境與使用中的佈景主題兩邊的前提都成立，可能導致（can lead to）遠端執行程式碼，不是必然發生。GHSA 另外點名了兩種伺服器環境，在官方映像或預設設定下（其中一種限特定 PHP 版本）就已經符合伺服器端的前提；攻擊手法與環境細節不在這裡討論。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這個漏洞有兩個正式名稱，並列呈現：GitHub 安全公告 GHSA-7hp8-65ch-5whp 把它命名為「Unauthenticated path traversal in page-template resolution leading to conditional RCE」（頁面範本解析中未經驗證的路徑穿越，導致有條件的遠端執行程式碼）；CISA 的命名則是「WordPress Core Remote File Inclusion Vulnerability」（WordPress 核心遠端檔案引入漏洞）。嚴重程度 Critical、CVSS 4.0 整體分數 9.2 是 GHSA 自己的評分，不是雙方共同的分數。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "哪些版本受影響、各分支的修補版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA 的受影響版本欄逐分支列出，從最新的 7.1 分支（7.1.0–7.1.1）一路列到 6.7、6.6 等舊分支，最舊列到 4.7 分支（4.7.0–4.7.36）；修補版本欄與受影響欄逐列對應；7.1、7.0、6.9、6.8 分支的版本號整理在下表，其餘分支請看 GHSA 的逐分支表。讀者要對照的是自己所在分支的修補版，不是一律裝 7.1.2。"
+        },
+        {
+          "type": "paragraph",
+          "text": "7.1.1 也在受影響範圍內，代表就算網站已經更新到 7.1.1，還是要再更新一次。發布文寫的是，出於善意（as a courtesy），這次修補回溯到目前仍可收到安全修補的所有分支，括號寫「currently through 4.7」，也就是目前回溯到 4.7 分支為止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布文同一段也提醒，只有最新版本的 WordPress 受到積極支援；舊分支收到這次修補是善意回溯，不代表那個分支仍受積極支援。早於 4.7 的版本沒有出現在 GHSA 的受影響表裡，那是表格沒有列，不代表這些版本不受影響。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "所在分支",
+            "受影響版本",
+            "修補版本"
+          ],
+          "rows": [
+            [
+              "7.1",
+              "7.1.0–7.1.1",
+              "7.1.2"
+            ],
+            [
+              "7.0",
+              "7.0.0–7.0.5",
+              "7.0.6"
+            ],
+            [
+              "6.9",
+              "6.9.0–6.9.8",
+              "6.9.9"
+            ],
+            [
+              "6.8",
+              "6.8.0–6.8.9",
+              "6.8.10"
+            ],
+            [
+              "6.7 至 4.7 各分支",
+              "詳見 GHSA 逐分支表",
+              "詳見 GHSA 逐分支表"
+            ],
+            [
+              "早於 4.7 的版本",
+              "不在 GHSA 表內",
+              "修補只回溯到 4.7 分支"
+            ]
+          ],
+          "caption": "依 WordPress 發布文與 GitHub 安全公告 GHSA-7hp8-65ch-5whp 整理，查核日 2026 年 9 月 26 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼確認自己的網站：三個查核步驟"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一步是看版本號：網站控制台（Dashboard）首頁預設會顯示 At a Glance 小工具，依 WordPress.org 的說明文件，小工具底部會寫出網站正在執行的 WordPress 版本（小工具被隱藏的話，可以在 Screen Options 面板勾選回來）；把這個版本號對照上表或 GHSA 頁面，確認是不是所在分支的修補版本。還不是修補版的話，發布文寫的更新做法是進入控制台、點「Updates」、再點「Update Now」，也可以直接到 WordPress.org 下載 7.1.2 安裝。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二步，不要假設自動更新已經完成。發布文寫的是「If you have sites that support automatic background updates, the update process will begin automatically.」（支援自動背景更新的網站，更新程序會自動開始），用的是會開始，不是已經完成；建議回頭看版本號確認，不要只看有沒有收到更新通知。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三步，如果網站是代管或請人維護的，可以直接請維護者回報更新後的版本號——這是編輯給的建議，不是 WordPress 文件寫的做法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更新之外，網站的日常維護，如果平常沒有整理，可以參考"
+            },
+            {
+              "type": "article",
+              "text": "網站維護要做什麼：備份、更新與故障回報的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            },
+            {
+              "type": "text",
+              "text": "這一篇。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-wordpress-712-20260922/diagram-1.svg",
+          "alt": "四格圖解：先看版本號、對照修補版、自動更新的狀態、早於 4.7 的版本",
+          "width": 1600,
+          "height": 900,
+          "caption": "WordPress 2026 年 9 月 22 日發布 7.1.2 安全版後，站長確認網站已修補要看的四件事，依 WordPress 發布文、說明文件與 GHSA 整理，查核日 2026 年 9 月 26 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "已遭利用代表什麼、不代表什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 的已知遭利用漏洞（KEV）目錄，是 CISA 依實際遭利用的證據所維護的清單；美國時間 9 月 25 日，CISA 把這個漏洞加進 KEV 目錄，命名為「WordPress Core Remote File Inclusion Vulnerability」，與 GHSA 的名稱並列，不是取代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 的公告寫明，相關指令要求美國聯邦民事行政機關（FCEB）優先快速修補高風險漏洞，而且只適用於這些機關；對其他所有組織，CISA 只是鼓勵採取風險導向的漏洞管理、優先修補 KEV 目錄裡的漏洞，這對台灣站長沒有約束力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 的公告沒有寫受害數量、受害地區或攻擊者身分，只寫是依遭實際利用的證據判斷；WordPress 9 月 22 日的發布文與 GHSA 公告都沒有提到這個漏洞已遭利用，遭利用的判斷出自 CISA。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還不知道的事：文件沒寫的，別自己補"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇引用的四份文件都沒有提到台灣，只能說文件沒寫，不能反過來說成台灣沒有受影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA 頁面沒有列出更新以外的暫時緩解做法；換佈景主題、刪目錄或改伺服器設定之類的替代方案都不是 WordPress 提出的做法，要修補就是更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "發布文沒有說多少網站已經透過自動背景更新完成更新，這裡同樣沒有這個數字；這個漏洞管的是 WordPress 核心（Core），發布文、GHSA 與 CISA 的公告談這個漏洞時都沒有提到外掛，不能說裝了安全外掛就沒事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要自己再查最新狀態，可以直接看 WordPress.org 的新聞頁有沒有更新的安全版本，以及 GHSA-7hp8-65ch-5whp 這則公告有沒有異動；如果 WordPress 後續發布比 7.1.2 更新的版本，就照新版本安裝。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的網站開了自動更新，還要做什麼？",
+              "answer": "發布文寫的是支援自動背景更新的網站，更新程序會自動開始，不是已經完成；建議還是回控制台首頁的 At a Glance 小工具確認目前的版本號，是不是已經對到自己所在分支的修補版本，例如 7.1 分支要是 7.1.2、7.0 分支要是 7.0.6。"
+            },
+            {
+              "question": "我沒用 Twenty Twelve 這類主題，是不是就沒事？",
+              "answer": "不一定。GHSA 點名受影響的是它稱為 legacy（舊版）的 Twenty Twelve 與 Twenty Fourteen，並舉例包含 Neve、Hestia、Sydney 等部分第三方佈景主題，但這是舉例，不是完整清單；而且佈景主題只是兩個前提之一，另一個前提在伺服器環境，不能用沒用這幾個主題來判斷安全與否，要修補就是把版本更新到自己分支對應的修補版。"
+            },
+            {
+              "question": "我還在用 6.x 版，一定要升到 7.1.2 嗎？",
+              "answer": "不必跳到 7.1.2。GHSA 逐分支列了修補版本，例如 6.9 分支的修補版是 6.9.9、6.8 分支是 6.8.10，裝自己所在分支對應的修補版就是完成修補；但 WordPress 也提醒，只有最新版本受到積極支援，舊分支收到這次修補是出於善意的回溯。"
+            },
+            {
+              "question": "CISA 的修補要求跟我有關嗎？",
+              "answer": "如果網站不是美國聯邦民事行政機關管理的系統，CISA 的這項要求不直接約束你：CISA 明寫相關指令只適用於這些機關，對其他所有組織只是鼓勵；不過既然 CISA 判斷這個漏洞已遭實際利用，愈早更新愈好。"
+            },
+            {
+              "question": "網站是請人代管的，我要問什麼？",
+              "answer": "可以直接請維護者回報網站目前的 WordPress 版本號，以及是不是已經更新到自己所在分支對應的修補版本，例如最新的 7.1 分支要是 7.1.2。這是編輯給的建議，不是 WordPress 文件寫的做法；這一篇引用的文件也沒有提到代管或維護者的處理方式。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "自動更新不等於已更新",
+          "text": "WordPress 在 2026 年 9 月 22 日發布 7.1.2 安全版，寫的是支援自動背景更新的網站，更新程序會自動開始，不是已經完成；不管有沒有開自動更新，都建議親自確認版本號是不是已經對到自己所在分支的修補版本。這篇資料查核到 2026 年 9 月 26 日，之後文件如果更新，請以官方頁面為準。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 7.1.2 Release",
+          "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Unauthenticated path traversal in page-template resolution leading to conditional RCE（GHSA-7hp8-65ch-5whp）",
+          "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Dashboard screen（WordPress.org 說明文件）",
+          "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "en": {
+      "title": "WordPress 7.1.2 Patches a Critical Core Vulnerability: Patched Versions by Branch and How to Check Your Site",
+      "description": "On September 22, 2026, WordPress released 7.1.2, a security release patching a core vulnerability it rates as critical severity; the patch reaches back from the current 7.1 branch to the 4.7 branch. On September 25 (US time), CISA added it to its Known Exploited Vulnerabilities catalog based on evidence of active exploitation. This piece lays out the patched version for each branch and how to check your own site's version number (verified September 2026).",
+      "hero": {
+        "src": "/guides/tech-news-wordpress-712-20260922/hero-en.jpg",
+        "alt": "Illustration: a dashboard page with a small box whose bottom line is viewed through a magnifying glass; an arrow to a circular update icon, then an arrow to a checkmark. No trademarks or people.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 22, 2026, WordPress released 7.1.2, a security release patching a core vulnerability it rates as critical severity. The patch reaches back from the current 7.1 branch all the way to the 4.7 branch, with each branch getting its own patched version. The vulnerability can be triggered without logging in, but it can only lead to remote code execution when preconditions on both the server environment and the active theme are met. On September 25 (US time), the US Cybersecurity and Infrastructure Security Agency (CISA) added this vulnerability to its Known Exploited Vulnerabilities (KEV) catalog based on evidence of active exploitation. Whichever branch your site is on, it is worth checking your version number again."
+        },
+        {
+          "type": "paragraph",
+          "text": "This piece was checked on September 26, 2026, against WordPress.org's “WordPress 7.1.2 Release” announcement and its “Dashboard screen” documentation, the GitHub security advisory GHSA-7hp8-65ch-5whp, and the CISA alert; it does not test any site or attack technique, and it does not recommend a host or theme to buy — it only lays out what these documents say and do not say."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 22, 2026, WordPress released 7.1.2, a security release patching a core vulnerability it rates as critical severity, with the patch reaching back from the current 7.1 branch all the way to the 4.7 branch.",
+            "The vulnerability can be triggered without logging in, but it can only lead to remote code execution when preconditions on both the server environment and the active theme are met; GHSA scores it 9.2 on CVSS 4.0.",
+            "On September 25 (US time), CISA added the vulnerability to its Known Exploited Vulnerabilities (KEV) catalog based on evidence of active exploitation; the related directive binds only US federal civilian executive branch agencies, and is merely an encouragement for other organizations.",
+            "Every branch from 4.7 through 7.1 has its own patched version — for example, 7.0.6 for the 7.0 branch and 6.9.9 for the 6.9 branch — so readers should match the patched version for their own branch rather than installing 7.1.2 across the board."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the September 22 Patch Fixed: A Conditional Core Vulnerability"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.org published “WordPress 7.1.2 Release” on September 22, 2026, opening with: “This security release features a fix for a critical severity security vulnerability.” It goes on: “Because this is a security release, it is recommended that you update your sites immediately.” That is a recommendation, not a mandate."
+        },
+        {
+          "type": "paragraph",
+          "text": "The release post explains that an unauthenticated attacker who does not need to log in can trigger the issue under certain conditions; if the preconditions on both the server environment and the active theme are met, this “can lead to” remote code execution — it is not guaranteed to happen. GHSA separately names two server environments where the server-side precondition is already met under an official image or a default configuration (one of them limited to a specific PHP version); the attack technique and environment details are not discussed here."
+        },
+        {
+          "type": "paragraph",
+          "text": "This vulnerability has two official names, presented side by side: the GitHub security advisory GHSA-7hp8-65ch-5whp names it “Unauthenticated path traversal in page-template resolution leading to conditional RCE”; CISA's name for it is “WordPress Core Remote File Inclusion Vulnerability.” The severity rating of Critical and the CVSS 4.0 overall score of 9.2 are GHSA's own scoring, not a score the two agree on."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Which Versions Are Affected: Patched Versions by Branch"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA's affected-versions column lists branch by branch, from the current 7.1 branch (7.1.0–7.1.1) down through older branches like 6.7 and 6.6, to the oldest, the 4.7 branch (4.7.0–4.7.36); the patched-versions column lines up row for row with the affected column. The version numbers for the 7.1, 7.0, 6.9, and 6.8 branches are laid out in the table below; for the rest, see GHSA's branch-by-branch table. Readers should match the patched version for their own branch, not install 7.1.2 across the board."
+        },
+        {
+          "type": "paragraph",
+          "text": "7.1.1 is also within the affected range, meaning that even a site already updated to 7.1.1 needs to update again. The release post says the fix was backported “as a courtesy” to all branches still eligible to receive security fixes, noting in parentheses “currently through 4.7” — that is, it currently reaches back only as far as the 4.7 branch."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same paragraph in the release post also notes that only the most recent version of WordPress is actively supported; older branches getting this patch is a courtesy backport, not a sign that the branch is still actively supported. Versions earlier than 4.7 do not appear in GHSA's affected-versions table — that is because the table does not list them, not because those versions are unaffected."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Branch",
+            "Affected versions",
+            "Patched version"
+          ],
+          "rows": [
+            [
+              "7.1",
+              "7.1.0–7.1.1",
+              "7.1.2"
+            ],
+            [
+              "7.0",
+              "7.0.0–7.0.5",
+              "7.0.6"
+            ],
+            [
+              "6.9",
+              "6.9.0–6.9.8",
+              "6.9.9"
+            ],
+            [
+              "6.8",
+              "6.8.0–6.8.9",
+              "6.8.10"
+            ],
+            [
+              "Branches 6.7 through 4.7",
+              "See GHSA's branch-by-branch table",
+              "See GHSA's branch-by-branch table"
+            ],
+            [
+              "Versions earlier than 4.7",
+              "Not in GHSA's table",
+              "The patch reaches back only to the 4.7 branch"
+            ]
+          ],
+          "caption": "Compiled from the WordPress release post and GitHub security advisory GHSA-7hp8-65ch-5whp; checked on September 26, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Check Your Own Site: Three Steps"
+        },
+        {
+          "type": "paragraph",
+          "text": "Step one is checking your version number: the Dashboard home screen shows the At a Glance widget by default, and per WordPress.org's documentation, a line at the bottom of that widget tells you which WordPress version your site is running (if the widget is hidden, you can turn it back on in the Screen Options panel). Match that version number against the table above or the GHSA page to confirm whether you are on the patched version for your branch. If you are not, the release post's update path is to go to the Dashboard, click “Updates,” then click “Update Now” — or you can download 7.1.2 directly from WordPress.org and install it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step two: do not assume automatic updates have already finished. The release post says: “If you have sites that support automatic background updates, the update process will begin automatically.” That is “will begin,” not “have completed” — check your version number to confirm, rather than relying on whether you received an update notification."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step three: if your site is managed or maintained by someone else, you can simply ask them to report back the updated version number — this is the editors' suggestion, not something WordPress's documentation states."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Beyond this update, if your site's routine maintenance has not been kept up, "
+            },
+            {
+              "type": "article",
+              "text": "What website maintenance involves: a routine for backups, updates, and incident reports",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            },
+            {
+              "type": "text",
+              "text": " covers that."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-wordpress-712-20260922/diagram-1-en.svg",
+          "alt": "Four-card diagram: check the version, match the patch, the auto-update status, and versions before 4.7",
+          "width": 1600,
+          "height": 900,
+          "caption": "After WordPress released the 7.1.2 security update on September 22, 2026, the four things site owners should check to confirm they are patched, compiled from the WordPress release post, its documentation, and GHSA; checked on September 26, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What “Actively Exploited” Means — and Does Not"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA's Known Exploited Vulnerabilities (KEV) catalog is a list CISA maintains based on evidence of actual exploitation. On September 25 (US time), CISA added this vulnerability to the KEV catalog under the name “WordPress Core Remote File Inclusion Vulnerability” — alongside GHSA's name, not replacing it."
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA's alert states that the related directive requires US Federal Civilian Executive Branch (FCEB) agencies to prioritize rapid remediation of high-risk vulnerabilities, and that it applies only to those agencies; for every other organization, CISA merely encourages risk-based vulnerability management and prioritizing fixes for vulnerabilities in the KEV catalog — none of which binds site owners in Taiwan."
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA's alert does not state the number of victims, where they are, or who the attackers are — only that the finding is based on evidence of active exploitation. Neither WordPress's September 22 release post nor the GHSA advisory mentions that this vulnerability has been exploited; the exploitation finding comes from CISA alone."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What We Still Do Not Know: Do Not Fill In What the Documents Do Not Say"
+        },
+        {
+          "type": "paragraph",
+          "text": "None of the four documents cited here mention Taiwan — that only means the documents do not say, not that Taiwan is unaffected."
+        },
+        {
+          "type": "paragraph",
+          "text": "The GHSA page lists no temporary mitigation beyond updating; switching themes, deleting directories, or changing server settings are not alternatives WordPress has proposed — to patch it, you update."
+        },
+        {
+          "type": "paragraph",
+          "text": "The release post does not say how many sites have already updated via automatic background updates, and there is no such figure here either. This vulnerability is in WordPress Core — the release post, GHSA, and the CISA alert all discuss it without mentioning plugins, so you cannot say installing a security plugin makes it a non-issue."
+        },
+        {
+          "type": "paragraph",
+          "text": "To check the latest status yourself, look at WordPress.org's news page for a newer security release, and see whether the GHSA-7hp8-65ch-5whp advisory has been updated; if WordPress later ships a version newer than 7.1.2, install that one instead."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "My site has automatic updates on — what else should I do?",
+              "answer": "The release post says the update process “will begin automatically” for sites that support automatic background updates — not that it is already done. It is still worth going back to the Dashboard home screen's At a Glance widget to confirm your current version number matches the patched version for your branch — for example, 7.1.2 for the 7.1 branch or 7.0.6 for the 7.0 branch."
+            },
+            {
+              "question": "I am not using a theme like Twenty Twelve — am I in the clear?",
+              "answer": "Not necessarily. GHSA names the legacy Twenty Twelve and Twenty Fourteen themes as affected, and gives examples of some popular third-party themes, such as Neve, Hestia, and Sydney — but that is a set of examples, not a complete list. And the theme is only one of two preconditions; the other is the server environment. You cannot judge safety by whether you use those particular themes — to patch it, update to the patched version for your branch."
+            },
+            {
+              "question": "I am still on a 6.x version — do I have to jump to 7.1.2?",
+              "answer": "You do not have to jump to 7.1.2. GHSA lists a patched version for each branch — 6.9.9 for the 6.9 branch, 6.8.10 for the 6.8 branch, and so on — so installing the patched version for your own branch counts as being patched. But WordPress also notes that only the most recent version is actively supported; older branches getting this patch is a courtesy backport."
+            },
+            {
+              "question": "Does CISA's remediation requirement apply to me?",
+              "answer": "If your site is not a system run by a US federal civilian executive branch agency, this CISA requirement does not bind you directly: CISA states plainly that the related directive applies only to those agencies, and is merely an encouragement for every other organization. That said, since CISA has judged this vulnerability to be actively exploited, the sooner you update, the better."
+            },
+            {
+              "question": "My site is managed by someone else — what should I ask them?",
+              "answer": "You can simply ask whoever maintains it to report your site's current WordPress version number, and whether it is already updated to the patched version for its branch — for example, 7.1.2 for the current 7.1 branch. This is the editors' suggestion, not something WordPress's documentation states; none of the documents cited here mention how managed hosting or maintainers should handle this."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Automatic Updates Do Not Mean Already Updated",
+          "text": "WordPress released the 7.1.2 security update on September 22, 2026, and says the update process “will begin automatically” for sites that support automatic background updates — not that it is already done. Whether or not automatic updates are on, it is worth confirming for yourself that your version number matches the patched version for your branch. This piece was checked through September 26, 2026; if the documents are updated after that, defer to the official pages."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU Cyber Resilience Act Reporting Obligations Begin September 11: Who Must Report, How Fast",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 7.1.2 Release",
+          "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Unauthenticated path traversal in page-template resolution leading to conditional RCE (GHSA-7hp8-65ch-5whp)",
+          "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Dashboard screen (WordPress.org documentation)",
+          "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress 7.1.2がコアの重大な脆弱性を修正：各ブランチの修正バージョンと自サイトの確認方法",
+      "description": "2026年9月22日、WordPressは自ら重大（critical severity）と評価したコアの脆弱性を修正するセキュリティリリース7.1.2を公開しました。修正範囲は最新の7.1系から4.7系まで遡ります。米国時間9月25日、CISAは実際に悪用された証拠に基づき、既知の悪用された脆弱性カタログに追加しました。本記事は各ブランチに対応する修正バージョンと、自サイトのバージョン番号の確認方法をまとめたものです（2026年9月確認）。",
+      "hero": {
+        "src": "/guides/tech-news-wordpress-712-20260922/hero-ja.jpg",
+        "alt": "オリジナルイラスト：管理画面に小さな箱があり、その一番下の行が虫眼鏡で見られている。矢印は円形の更新矢印アイコンへ、さらに矢印はチェックマークへ続く。商標や実在の人物は含まない。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月22日、WordPressは自ら重大（critical severity）と評価したコアの脆弱性を修正するセキュリティリリース7.1.2を公開しました。修正範囲は最新の7.1系から4.7系まで遡り、各ブランチにはそれぞれ対応する修正バージョンがあります。この脆弱性はログインなしでも引き起こせますが、サーバー環境と使用中のテーマの両方の前提条件がそろって初めてリモートコード実行につながる可能性があります。米国時間9月25日、米国サイバーセキュリティ・インフラセキュリティ庁（CISA）は実際に悪用された証拠に基づき、この脆弱性を既知の悪用された脆弱性（KEV）カタログに追加しました。現在どのブランチを使っているサイトでも、改めてバージョン番号を確認する価値があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事の内容は2026年9月26日に確認したもので、WordPress.orgの発表文「WordPress 7.1.2 Release」と説明文書「Dashboard screen」、GitHubのセキュリティアドバイザリGHSA-7hp8-65ch-5whp、およびCISAの公告を読んでまとめています。実際にサイトや攻撃手法を検証したものではなく、レンタルサーバーやテーマの購入を勧めるものでもなく、これらの文書に書かれていること・書かれていないことを整理しただけです。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月22日、WordPressはセキュリティリリース7.1.2を公開し、自ら重大（critical severity）と評価したコアの脆弱性を修正しました。修正範囲は最新の7.1系から4.7系まで遡ります。",
+            "この脆弱性はログインなしでも引き起こせますが、サーバー環境と使用中のテーマの両方の前提条件がそろって初めてリモートコード実行につながる可能性があります。GHSAが示すCVSS 4.0のスコアは9.2です。",
+            "米国時間9月25日、CISAは実際に悪用された証拠に基づき、この脆弱性を既知の悪用された脆弱性（KEV）カタログに追加しました。関連する指令が拘束するのは米国連邦文民行政機関だけで、それ以外の組織に対しては推奨にとどまります。",
+            "4.7系から7.1系まで、各ブランチにはそれぞれ対応する修正バージョンがあります。例えば7.0系なら7.0.6、6.9系なら6.9.9です。読者が確認すべきは自分の使っているブランチの修正版であり、一律に7.1.2を入れることではありません。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月22日に何が修正されたのか：条件付きのコア脆弱性"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.orgは2026年9月22日に「WordPress 7.1.2 Release」を公開し、冒頭で「This security release features a fix for a critical severity security vulnerability.」（このセキュリティリリースは重大な深刻度のセキュリティ脆弱性の修正を含んでいます）と述べ、続けて「Because this is a security release, it is recommended that you update your sites immediately.」（セキュリティリリースであるため、直ちにサイトを更新することが推奨されます）と書いています。使われているのは「推奨」であって「義務」ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表文によると、認証を受けていない、ログイン不要の攻撃者が特定の条件を満たした場合にこの問題を引き起こす可能性があります。サーバー環境と使用中のテーマの両方の前提条件がそろえば、リモートコード実行に「つながる可能性がある（can lead to）」としており、必ず起きるわけではありません。GHSAはさらに2種類のサーバー環境を挙げており、公式イメージまたはデフォルト設定（そのうち一つは特定のPHPバージョンに限定）ではすでにサーバー側の前提条件を満たしているとしています。攻撃手法と環境の詳細はここでは扱いません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この脆弱性には正式名称が2つあり、並記されています。GitHubのセキュリティアドバイザリGHSA-7hp8-65ch-5whpは「Unauthenticated path traversal in page-template resolution leading to conditional RCE」（ページテンプレート解決における未認証のパストラバーサルによる条件付きリモートコード実行）と命名し、CISAの命名は「WordPress Core Remote File Inclusion Vulnerability」（WordPressコアのリモートファイルインクルージョン脆弱性）です。深刻度Critical、CVSS 4.0の総合スコア9.2はGHSA自身の評価であり、両者が共通して示すスコアではありません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "影響を受けるバージョンと各ブランチの修正版"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSAの影響を受けるバージョン欄はブランチごとに記載されており、最新の7.1系（7.1.0～7.1.1）から6.7系、6.6系などの古いブランチまで並び、最も古いものは4.7系（4.7.0～4.7.36）です。修正バージョン欄は影響を受ける欄と1行ずつ対応しています。7.1系、7.0系、6.9系、6.8系のバージョン番号は下の表にまとめており、それ以外のブランチはGHSAのブランチ別表を参照してください。読者が確認すべきは自分の使っているブランチの修正版であり、一律に7.1.2を入れることではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "7.1.1も影響を受ける範囲に含まれており、すでに7.1.1に更新済みのサイトでも、もう一度更新する必要があります。発表文には、好意（as a courtesy）として、現在もセキュリティ修正を受けられるすべてのブランチまで今回の修正を遡って適用したとあり、括弧内には「currently through 4.7」（現時点では4.7系まで）と書かれています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表文の同じ段落では、積極的にサポートされているのは最新バージョンのWordPressのみであるとも注意しています。旧ブランチが今回の修正を受け取ったのは好意による遡及適用であり、そのブランチが引き続き積極的にサポートされていることを意味しません。4.7より前のバージョンはGHSAの影響を受けるバージョン表に載っていませんが、それは表に記載がないだけで、これらのバージョンが影響を受けないという意味ではありません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "ブランチ",
+            "影響を受けるバージョン",
+            "修正バージョン"
+          ],
+          "rows": [
+            [
+              "7.1",
+              "7.1.0～7.1.1",
+              "7.1.2"
+            ],
+            [
+              "7.0",
+              "7.0.0～7.0.5",
+              "7.0.6"
+            ],
+            [
+              "6.9",
+              "6.9.0～6.9.8",
+              "6.9.9"
+            ],
+            [
+              "6.8",
+              "6.8.0～6.8.9",
+              "6.8.10"
+            ],
+            [
+              "6.7～4.7系の各ブランチ",
+              "GHSAのブランチ別表を参照",
+              "GHSAのブランチ別表を参照"
+            ],
+            [
+              "4.7より前のバージョン",
+              "GHSAの表に記載なし",
+              "修正は4.7系までしか遡っていません"
+            ]
+          ],
+          "caption": "WordPressの発表文とGitHubのセキュリティアドバイザリGHSA-7hp8-65ch-5whpに基づき作成、確認日2026年9月26日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自分のサイトを確認する方法：3つの手順"
+        },
+        {
+          "type": "paragraph",
+          "text": "1つ目の手順はバージョン番号の確認です。管理画面（Dashboard）のホーム画面には、デフォルトでAt a Glanceウィジェットが表示されます。WordPress.orgの説明文書によると、このウィジェットの下部にサイトが実行中のWordPressバージョンが表示されます（ウィジェットが非表示になっている場合は、Screen Optionsパネルでチェックを入れれば戻せます）。このバージョン番号を上の表やGHSAのページと照らし合わせ、自分のブランチの修正版になっているか確認してください。まだ修正版でない場合、発表文に書かれている更新方法は、管理画面に入り「Updates」をクリックし、続けて「Update Now」をクリックすることです。WordPress.orgから7.1.2を直接ダウンロードしてインストールすることもできます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "2つ目の手順は、自動更新がすでに完了していると思い込まないことです。発表文には「If you have sites that support automatic background updates, the update process will begin automatically.」（自動バックグラウンド更新に対応しているサイトでは、更新プロセスが自動的に開始されます）とあり、使われているのは「開始される」であって「完了した」ではありません。更新通知が来たかどうかだけで判断せず、バージョン番号を見て確認することをおすすめします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "3つ目の手順として、サイトの運用を委託していたり、保守を依頼している相手がいる場合は、その担当者に更新後のバージョン番号を報告してもらうとよいでしょう。これは編集部からの提案であり、WordPressの文書に書かれているやり方ではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更新以外にも、サイトの日常的な保守を普段整理できていない場合は、"
+            },
+            {
+              "type": "article",
+              "text": "ウェブサイト保守ですること：バックアップ、更新、障害報告の日常運用",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            },
+            {
+              "type": "text",
+              "text": "が参考になります。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-wordpress-712-20260922/diagram-1-ja.svg",
+          "alt": "4コマ図解：バージョンの確認、修正版との照合、自動更新の状況、4.7より前のバージョン",
+          "width": 1600,
+          "height": 900,
+          "caption": "WordPressが2026年9月22日にセキュリティリリース7.1.2を公開した後、サイト管理者が修正済みかを確認すべき4つのポイント。WordPressの発表文、説明文書、GHSAに基づき作成、確認日2026年9月26日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「悪用された」が意味すること、意味しないこと"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISAの既知の悪用された脆弱性（KEV）カタログは、CISAが実際に悪用された証拠に基づいて維持しているリストです。米国時間9月25日、CISAはこの脆弱性をKEVカタログに追加し、「WordPress Core Remote File Inclusion Vulnerability」と命名しました。これはGHSAの名称と並記されるものであり、置き換えるものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISAの公告には、関連する指令が米国連邦文民行政機関（FCEB）に対し、高リスクの脆弱性を優先的かつ迅速に修正するよう求めていること、そしてそれがこれらの機関にのみ適用されることが明記されています。それ以外のすべての組織に対しては、CISAはリスクに基づく脆弱性管理を行い、KEVカタログ内の脆弱性の修正を優先することを推奨しているだけであり、台湾のサイト管理者を拘束するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISAの公告には被害件数や被害地域、攻撃者の身元は書かれておらず、実際に悪用された証拠に基づく判断だとしか書かれていません。WordPressの9月22日の発表文とGHSAの公告のいずれにも、この脆弱性がすでに悪用されたという記載はなく、悪用されたという判断はCISAによるものです。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まだ分かっていないこと：文書に書かれていないことを勝手に補わない"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事が引用している4つの文書はいずれも台湾について触れていません。これは文書に書かれていないというだけであり、逆に台湾が影響を受けていないと言うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSAのページには更新以外の暫定的な緩和策は挙げられていません。テーマを変更する、ディレクトリを削除する、サーバー設定を変更するといった代替策はWordPressが提示しているものではなく、修正するには更新するしかありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "発表文には自動バックグラウンド更新によってすでに更新を完了したサイトがどれだけあるかは書かれておらず、ここでもその数字はありません。この脆弱性が関わるのはWordPressコア（Core）であり、発表文、GHSA、CISAの公告のいずれもこの脆弱性についてプラグインには触れていません。セキュリティプラグインを入れているから大丈夫とは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最新の状況を自分で確認したい場合は、WordPress.orgのニュースページにさらに新しいセキュリティリリースがないか、GHSA-7hp8-65ch-5whpの公告に更新がないかを直接確認してください。WordPressが今後7.1.2より新しいバージョンを公開した場合は、その新しいバージョンに従ってインストールしてください。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "サイトで自動更新を有効にしています。ほかに何をすればよいですか？",
+              "answer": "発表文に書かれているのは、自動バックグラウンド更新に対応するサイトでは更新プロセスが自動的に開始されるということであり、すでに完了したという意味ではありません。管理画面のホーム画面にあるAt a Glanceウィジェットに戻って現在のバージョン番号を確認し、自分のブランチの修正版になっているか、例えば7.1系なら7.1.2、7.0系なら7.0.6になっているかを確かめることをおすすめします。"
+            },
+            {
+              "question": "Twenty Twelveのようなテーマを使っていません。それなら大丈夫ですか？",
+              "answer": "必ずしもそうとは限りません。GHSAが影響を受けるとして挙げているのは、GHSAがlegacy（旧世代）と呼ぶTwenty TwelveとTwenty Fourteen、そしてNeve、Hestia、Sydneyなど一部のサードパーティ製テーマの例です。ただしこれは例示であり、完全なリストではありません。また、テーマは2つの前提条件のうちの1つにすぎず、もう1つの前提条件はサーバー環境にあります。これらのテーマを使っていないかどうかで安全性を判断することはできず、修正するには自分のブランチに対応する修正版にバージョンを更新するしかありません。"
+            },
+            {
+              "question": "まだ6.x系を使っています。7.1.2にアップグレードしないといけませんか？",
+              "answer": "7.1.2まで一気に上げる必要はありません。GHSAはブランチごとに修正バージョンを挙げており、例えば6.9系の修正版は6.9.9、6.8系は6.8.10です。自分のブランチに対応する修正版を入れれば修正は完了します。ただしWordPressは、積極的にサポートされているのは最新バージョンのみであり、旧ブランチが今回の修正を受け取ったのは好意による遡及適用だとも注意しています。"
+            },
+            {
+              "question": "CISAの修正要求は自分に関係がありますか？",
+              "answer": "サイトが米国連邦文民行政機関の管理するシステムでなければ、このCISAの要求は直接あなたを拘束するものではありません。CISAは関連する指令がこれらの機関にのみ適用されると明記しており、それ以外のすべての組織に対しては推奨にとどまります。とはいえ、CISAがこの脆弱性はすでに実際に悪用されていると判断している以上、更新は早いに越したことはありません。"
+            },
+            {
+              "question": "サイトの運用を人に任せています。何を聞けばよいですか？",
+              "answer": "保守を担当している相手に、サイトの現在のWordPressバージョン番号と、自分のブランチに対応する修正版にすでに更新されているか、例えば最新の7.1系なら7.1.2になっているかを報告してもらうとよいでしょう。これは編集部からの提案であり、WordPressの文書に書かれているやり方ではありません。本記事が引用している文書にも、運用の委託先や保守担当者側の対応方法については触れられていません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "自動更新イコール更新済みではない",
+          "text": "WordPressは2026年9月22日にセキュリティリリース7.1.2を公開しました。書かれているのは、自動バックグラウンド更新に対応するサイトでは更新プロセスが自動的に開始されるということであり、すでに完了したという意味ではありません。自動更新をオンにしているかどうかにかかわらず、自分のブランチの修正版になっているか、自分自身でバージョン番号を確認することをおすすめします。本記事の内容は2026年9月26日まで確認したものです。それ以降に文書が更新されている場合は、公式ページの内容を優先してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EUサイバーレジリエンス法の通報義務が始動：9月11日から誰がどれだけ早く通報するのか",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 7.1.2 Release",
+          "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Unauthenticated path traversal in page-template resolution leading to conditional RCE（GHSA-7hp8-65ch-5whp）",
+          "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Dashboard screen（WordPress.org ドキュメント）",
+          "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 7.1.2, 코어의 심각한 취약점 패치: 브랜치별 패치 버전과 내 사이트 확인 방법",
+      "description": "2026년 9월 22일, WordPress는 스스로 심각(critical severity) 등급으로 평가한 코어 취약점을 패치하는 보안 릴리스 7.1.2를 배포했습니다. 패치 범위는 최신 7.1 브랜치부터 4.7 브랜치까지 거슬러 올라갑니다. 미국 시간 9월 25일, CISA는 실제로 악용된 증거를 근거로 이를 알려진 악용 취약점 목록에 추가했습니다. 이 글은 브랜치별 패치 버전과 내 사이트의 버전 번호를 확인하는 방법을 정리했습니다(2026년 9월 확인).",
+      "hero": {
+        "src": "/guides/tech-news-wordpress-712-20260922/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 대시보드 화면에 작은 상자가 있고, 그 맨 아래 줄을 돋보기로 보고 있습니다. 화살표는 원형 업데이트 화살표 아이콘으로, 다시 화살표는 체크 표시로 이어집니다. 상표나 실존 인물은 포함되어 있지 않습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 22일, WordPress는 스스로 심각(critical severity) 등급으로 평가한 코어 취약점을 패치하는 보안 릴리스 7.1.2를 배포했습니다. 패치 범위는 최신 7.1 브랜치부터 4.7 브랜치까지 거슬러 올라가며, 각 브랜치마다 대응하는 패치 버전이 있습니다. 이 취약점은 로그인 없이도 촉발될 수 있지만, 서버 환경과 사용 중인 테마 양쪽의 전제 조건이 모두 성립할 때에만 원격 코드 실행으로 이어질 수 있습니다. 미국 시간 9월 25일, 미국 사이버보안·인프라보안국(CISA)은 실제로 악용된 증거를 근거로 이 취약점을 알려진 악용 취약점(KEV) 카탈로그에 추가했습니다. 지금 어떤 브랜치를 쓰고 있는 사이트든, 버전 번호를 다시 한번 확인해 볼 가치가 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글의 내용은 2026년 9월 26일 확인한 것으로, WordPress.org의 발표문 “WordPress 7.1.2 Release”와 설명 문서 “Dashboard screen”, GitHub 보안 권고 GHSA-7hp8-65ch-5whp, 그리고 CISA의 공고를 읽고 정리했습니다. 본 사이트는 어떤 웹사이트나 공격 기법도 직접 시험해 보지 않았고, 호스팅 업체나 테마 구매를 권하지도 않으며, 이 문서들이 무엇을 썼고 무엇을 쓰지 않았는지만 정리한 것입니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 22일, WordPress는 보안 릴리스 7.1.2를 배포해 스스로 심각(critical severity) 등급으로 평가한 코어 취약점을 패치했으며, 패치 범위는 최신 7.1 브랜치부터 4.7 브랜치까지 거슬러 올라갑니다.",
+            "이 취약점은 로그인 없이도 촉발될 수 있지만, 서버 환경과 사용 중인 테마 양쪽의 전제 조건이 모두 성립할 때에만 원격 코드 실행으로 이어질 수 있습니다. GHSA가 표시한 CVSS 4.0 점수는 9.2입니다.",
+            "미국 시간 9월 25일, CISA는 실제로 악용된 증거를 근거로 이 취약점을 알려진 악용 취약점(KEV) 카탈로그에 추가했습니다. 관련 지침이 구속하는 대상은 미국 연방 민간 행정기관뿐이며, 그 밖의 조직에는 권고에 그칩니다.",
+            "4.7부터 7.1까지 각 브랜치마다 저마다의 패치 버전이 있습니다. 예를 들어 7.0 브랜치는 7.0.6, 6.9 브랜치는 6.9.9입니다. 독자가 대조해야 할 것은 자신이 속한 브랜치의 패치 버전이지, 무조건 7.1.2를 설치하는 것이 아닙니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 22일에 패치된 것: 조건부 코어 취약점"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.org는 2026년 9월 22일 “WordPress 7.1.2 Release”를 발표하며 서두에 “This security release features a fix for a critical severity security vulnerability.”(이 보안 릴리스는 심각한 수준의 보안 취약점에 대한 수정을 포함합니다)라고 썼고, 이어서 “Because this is a security release, it is recommended that you update your sites immediately.”(보안 릴리스이므로 사이트를 즉시 업데이트할 것을 권장합니다)라고 썼습니다. 쓰인 표현은 “권장”이지 “의무”가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문에 따르면, 인증되지 않은, 로그인이 필요 없는 공격자가 특정 조건을 충족할 때 이 문제를 촉발할 수 있습니다. 서버 환경과 사용 중인 테마 양쪽의 전제 조건이 모두 성립하면 원격 코드 실행으로 “이어질 수 있다(can lead to)”고 했을 뿐, 반드시 일어나는 것은 아닙니다. GHSA는 별도로 두 가지 서버 환경을 지목했는데, 공식 이미지 또는 기본 설정(그중 하나는 특정 PHP 버전에 한정) 상태에서는 이미 서버 쪽 전제 조건이 성립한다고 밝혔습니다. 공격 기법과 환경의 세부 사항은 여기서 다루지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 취약점에는 두 개의 공식 명칭이 나란히 붙어 있습니다. GitHub 보안 권고 GHSA-7hp8-65ch-5whp는 이를 “Unauthenticated path traversal in page-template resolution leading to conditional RCE”(페이지 템플릿 해석 과정의 미인증 경로 순회로 인한 조건부 원격 코드 실행)라고 명명했고, CISA의 명칭은 “WordPress Core Remote File Inclusion Vulnerability”(WordPress 코어 원격 파일 포함 취약점)입니다. 심각도 Critical, CVSS 4.0 종합 점수 9.2는 GHSA 자체의 평가이며, 양측이 공통으로 매긴 점수가 아닙니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "영향받는 버전과 브랜치별 패치 버전"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA의 영향받는 버전 칸은 브랜치별로 나열되어 있으며, 최신 7.1 브랜치(7.1.0~7.1.1)부터 6.7, 6.6 같은 오래된 브랜치를 거쳐 가장 오래된 4.7 브랜치(4.7.0~4.7.36)까지 이어집니다. 패치 버전 칸은 영향받는 버전 칸과 한 줄씩 대응합니다. 7.1, 7.0, 6.9, 6.8 브랜치의 버전 번호는 아래 표에 정리했고, 나머지 브랜치는 GHSA의 브랜치별 표를 참고하시기 바랍니다. 독자가 대조해야 할 것은 자신이 속한 브랜치의 패치 버전이지, 무조건 7.1.2를 설치하는 것이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "7.1.1도 영향받는 범위에 포함되어 있어, 이미 7.1.1로 업데이트한 사이트라도 다시 한번 업데이트해야 합니다. 발표문에는 호의로(as a courtesy) 현재 보안 패치를 받을 수 있는 모든 브랜치까지 이번 수정을 소급 적용했다고 나와 있으며, 괄호 안에 “currently through 4.7”(현재로서는 4.7까지)라고 적혀 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문의 같은 단락은 최신 버전의 WordPress만이 적극적인 지원을 받는다는 점도 함께 안내하고 있습니다. 오래된 브랜치가 이번 패치를 받은 것은 호의에 따른 소급 적용일 뿐, 그 브랜치가 여전히 적극적으로 지원된다는 뜻은 아닙니다. 4.7보다 이전 버전은 GHSA의 영향받는 버전 표에 나오지 않는데, 이는 표에 실리지 않은 것일 뿐 해당 버전들이 영향을 받지 않는다는 뜻은 아닙니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "소속 브랜치",
+            "영향받는 버전",
+            "패치 버전"
+          ],
+          "rows": [
+            [
+              "7.1",
+              "7.1.0~7.1.1",
+              "7.1.2"
+            ],
+            [
+              "7.0",
+              "7.0.0~7.0.5",
+              "7.0.6"
+            ],
+            [
+              "6.9",
+              "6.9.0~6.9.8",
+              "6.9.9"
+            ],
+            [
+              "6.8",
+              "6.8.0~6.8.9",
+              "6.8.10"
+            ],
+            [
+              "6.7부터 4.7까지 각 브랜치",
+              "GHSA의 브랜치별 표 참고",
+              "GHSA의 브랜치별 표 참고"
+            ],
+            [
+              "4.7보다 이전 버전",
+              "GHSA 표에 없음",
+              "패치는 4.7 브랜치까지만 소급 적용"
+            ]
+          ],
+          "caption": "WordPress 발표문과 GitHub 보안 권고 GHSA-7hp8-65ch-5whp를 바탕으로 정리, 확인일 2026년 9월 26일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "내 사이트 확인 방법: 세 가지 단계"
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 번째 단계는 버전 번호 확인입니다. 관리자 화면(Dashboard) 홈에는 기본적으로 At a Glance 위젯이 표시됩니다. WordPress.org의 설명 문서에 따르면, 이 위젯 하단에 사이트가 실행 중인 WordPress 버전이 표시됩니다(위젯이 숨겨져 있다면 Screen Options 패널에서 체크해 다시 표시할 수 있습니다). 이 버전 번호를 위 표나 GHSA 페이지와 대조해 자신이 속한 브랜치의 패치 버전인지 확인하십시오. 아직 패치 버전이 아니라면, 발표문에 나온 업데이트 방법은 관리자 화면에 들어가 “Updates”를 클릭하고 이어서 “Update Now”를 클릭하는 것이며, WordPress.org에서 7.1.2를 직접 내려받아 설치할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째 단계는 자동 업데이트가 이미 끝났다고 단정하지 않는 것입니다. 발표문에는 “If you have sites that support automatic background updates, the update process will begin automatically.”(자동 백그라운드 업데이트를 지원하는 사이트는 업데이트 절차가 자동으로 시작됩니다)라고 되어 있는데, 쓰인 표현은 “시작된다”이지 “끝났다”가 아닙니다. 업데이트 알림을 받았는지만 보지 말고, 버전 번호를 다시 확인해 보시기를 권합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "세 번째 단계로, 사이트를 위탁 운영하거나 다른 사람에게 유지관리를 맡기고 있다면, 담당자에게 업데이트 후 버전 번호를 알려 달라고 직접 요청할 수 있습니다. 이는 편집부의 제안이며, WordPress 문서에 나온 방법은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "업데이트 외에 사이트의 일상적인 유지관리를 평소 정리해 두지 못했다면, "
+            },
+            {
+              "type": "article",
+              "text": "웹사이트 유지관리에서 할 일: 백업, 업데이트, 장애 보고의 일상 절차",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            },
+            {
+              "type": "text",
+              "text": " 이 글을 참고할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-wordpress-712-20260922/diagram-1-ko.svg",
+          "alt": "4칸 도해: 버전 확인, 패치 버전 대조, 자동 업데이트 상태, 4.7 이전 버전",
+          "width": 1600,
+          "height": 900,
+          "caption": "WordPress가 2026년 9월 22일 보안 릴리스 7.1.2를 배포한 뒤, 사이트 관리자가 패치되었는지 확인해야 할 네 가지. WordPress 발표문, 설명 문서, GHSA를 바탕으로 정리, 확인일 2026년 9월 26일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "“악용됨”이 뜻하는 것과 뜻하지 않는 것"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA의 알려진 악용 취약점(KEV) 카탈로그는 CISA가 실제로 악용된 증거를 근거로 관리하는 목록입니다. 미국 시간 9월 25일, CISA는 이 취약점을 KEV 카탈로그에 추가하며 “WordPress Core Remote File Inclusion Vulnerability”라고 명명했는데, 이는 GHSA의 명칭과 나란히 붙는 것이지 대체하는 것이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA의 공고에는 관련 지침이 미국 연방 민간 행정기관(FCEB)에 고위험 취약점을 우선적으로 신속히 패치하도록 요구하며, 이는 해당 기관에만 적용된다고 명시되어 있습니다. 그 밖의 모든 조직에 대해서는 CISA가 위험 기반의 취약점 관리와 KEV 카탈로그에 실린 취약점의 우선 패치를 권장할 뿐이며, 이는 대만의 사이트 운영자를 구속하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA의 공고에는 피해 건수나 피해 지역, 공격자의 신원이 적혀 있지 않고, 실제로 악용된 증거에 근거한 판단이라고만 되어 있습니다. WordPress의 9월 22일 발표문과 GHSA 공고 모두 이 취약점이 이미 악용되었다는 언급이 없으며, 악용되었다는 판단은 CISA에서 나온 것입니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "아직 알 수 없는 것: 문서에 없는 내용을 스스로 채워 넣지 않기"
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글이 인용한 네 개의 문서 모두 대만을 언급하지 않았습니다. 이는 문서에 쓰여 있지 않다는 것일 뿐, 거꾸로 대만이 영향을 받지 않는다고 말할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA 페이지에는 업데이트 외의 임시 완화 방법이 나와 있지 않습니다. 테마를 바꾸거나 디렉터리를 삭제하거나 서버 설정을 바꾸는 것 같은 대안은 WordPress가 제시한 방법이 아니며, 패치하려면 업데이트해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "발표문에는 자동 백그라운드 업데이트를 통해 이미 업데이트를 마친 사이트가 얼마나 되는지 나와 있지 않으며, 여기서도 그런 수치는 없습니다. 이 취약점이 관련된 것은 WordPress 코어(Core)이며, 발표문과 GHSA, CISA 공고 모두 이 취약점을 다루면서 플러그인을 언급하지 않았습니다. 보안 플러그인을 설치했다고 해서 안전하다고 말할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "최신 상황을 직접 확인하고 싶다면, WordPress.org의 뉴스 페이지에 더 새로운 보안 릴리스가 있는지, GHSA-7hp8-65ch-5whp 공고에 변경이 있는지 직접 확인해 보시기 바랍니다. WordPress가 이후 7.1.2보다 새로운 버전을 배포하면 그 새 버전에 따라 설치하시면 됩니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "제 사이트는 자동 업데이트를 켜 두었습니다. 또 무엇을 해야 하나요?",
+              "answer": "발표문에 나온 것은 자동 백그라운드 업데이트를 지원하는 사이트는 업데이트 절차가 자동으로 시작된다는 것이지, 이미 끝났다는 뜻이 아닙니다. 관리자 화면 홈의 At a Glance 위젯으로 돌아가 현재 버전 번호가 자신이 속한 브랜치의 패치 버전과 맞는지, 예를 들어 7.1 브랜치라면 7.1.2, 7.0 브랜치라면 7.0.6인지 확인해 보시기를 권합니다."
+            },
+            {
+              "question": "저는 Twenty Twelve 같은 테마를 쓰지 않습니다. 그러면 안전한가요?",
+              "answer": "꼭 그렇지는 않습니다. GHSA가 영향받는다고 지목한 것은 GHSA가 legacy(구버전)라고 부르는 Twenty Twelve와 Twenty Fourteen이며, Neve, Hestia, Sydney 등 일부 서드파티 테마도 예시로 들었습니다. 다만 이는 예시일 뿐 전체 목록이 아닙니다. 게다가 테마는 두 가지 전제 조건 중 하나일 뿐이고, 다른 하나는 서버 환경에 있습니다. 이런 테마를 쓰지 않는다는 것만으로 안전 여부를 판단할 수는 없으며, 패치하려면 자신이 속한 브랜치에 맞는 패치 버전으로 업데이트해야 합니다."
+            },
+            {
+              "question": "아직 6.x 버전을 쓰고 있습니다. 꼭 7.1.2로 올려야 하나요?",
+              "answer": "7.1.2로 곧장 올릴 필요는 없습니다. GHSA는 브랜치별로 패치 버전을 나열했는데, 예를 들어 6.9 브랜치의 패치 버전은 6.9.9, 6.8 브랜치는 6.8.10입니다. 자신이 속한 브랜치의 패치 버전을 설치하면 패치는 완료됩니다. 다만 WordPress는 최신 버전만이 적극적인 지원을 받으며, 오래된 브랜치가 이번 패치를 받은 것은 호의에 따른 소급 적용이라는 점도 함께 안내하고 있습니다."
+            },
+            {
+              "question": "CISA의 패치 요구가 저와 관련이 있나요?",
+              "answer": "사이트가 미국 연방 민간 행정기관이 운영하는 시스템이 아니라면, 이 CISA의 요구는 직접적으로 여러분을 구속하지 않습니다. CISA는 관련 지침이 이들 기관에만 적용된다고 명시하고 있으며, 그 밖의 모든 조직에는 권고에 그칩니다. 다만 CISA가 이 취약점을 이미 실제로 악용된 것으로 판단한 만큼, 업데이트는 빠를수록 좋습니다."
+            },
+            {
+              "question": "사이트를 다른 사람에게 위탁 운영하고 있습니다. 무엇을 물어봐야 하나요?",
+              "answer": "유지관리를 맡고 있는 담당자에게 사이트의 현재 WordPress 버전 번호와, 자신이 속한 브랜치에 맞는 패치 버전으로 이미 업데이트되었는지, 예를 들어 최신 7.1 브랜치라면 7.1.2인지 알려 달라고 직접 요청할 수 있습니다. 이는 편집부의 제안이며, WordPress 문서에 나온 방법은 아닙니다. 이 글이 인용한 문서에도 위탁 운영이나 유지관리 담당자 쪽의 처리 방법은 언급되어 있지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "자동 업데이트가 곧 업데이트 완료는 아니다",
+          "text": "WordPress는 2026년 9월 22일 보안 릴리스 7.1.2를 배포했습니다. 여기에 쓰인 것은 자동 백그라운드 업데이트를 지원하는 사이트는 업데이트 절차가 자동으로 시작된다는 것이지, 이미 끝났다는 뜻이 아닙니다. 자동 업데이트를 켜 두었든 아니든, 자신이 속한 브랜치의 패치 버전과 버전 번호가 맞는지 직접 확인해 보시기를 권합니다. 이 글의 내용은 2026년 9월 26일까지 확인한 것이며, 이후 문서가 업데이트되면 공식 페이지를 기준으로 삼으시기 바랍니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU 사이버복원력법 통보 의무 시행: 9월 11일부터, 누가 얼마나 빨리 통보해야 하나",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 7.1.2 Release",
+          "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Unauthenticated path traversal in page-template resolution leading to conditional RCE（GHSA-7hp8-65ch-5whp）",
+          "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Dashboard screen（WordPress.org 안내 문서）",
+          "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 7.1.2 修复核心严重漏洞：各分支的修复版本与如何确认自己的网站",
+      "description": "2026 年 9 月 22 日，WordPress 发布 7.1.2 安全版，修复一个自评为严重级别的核心漏洞，修复范围从最新的 7.1 分支回溯到 4.7 分支。美国时间 9 月 25 日，CISA 依据遭实际利用的证据将其列入已遭利用漏洞名录。这篇整理了各分支对应的修复版本，以及如何确认自己网站的版本号（2026 年 9 月查证）。",
+      "hero": {
+        "src": "/guides/tech-news-wordpress-712-20260922/hero-zh-cn.jpg",
+        "alt": "原创插图：一个后台仪表盘页面，其中一个小方框的最下面一行被放大镜照着；箭头指向一个圆形更新箭头图案，再一个箭头指向一个打勾符号；不含商标或真实人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 22 日，WordPress 发布 7.1.2 安全版，修复一个自评为严重级别的核心漏洞；修复范围从最新的 7.1 分支，一路回溯到 4.7 分支，各分支都有自己对应的修复版本。这个漏洞不需要登录就能触发，但要在服务器环境与启用的主题两边的前提都成立时，才可能导致远程代码执行。美国时间 9 月 25 日，美国网络安全和基础设施安全局（CISA）依据遭实际利用的证据，把这个漏洞列入已知遭利用漏洞（KEV）名录。不管网站现在用哪个分支，都值得回头确认一次版本号。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这一篇的资料在 2026 年 9 月 26 日查核，读的是 WordPress.org 的《WordPress 7.1.2 Release》发布文与《Dashboard screen》说明文档、GitHub 安全公告 GHSA-7hp8-65ch-5whp，以及 CISA 的公告；这里没有实际测试任何网站或攻击手法，也不提供主机商或主题的购买建议，只整理这些文档写了什么、没写什么。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 22 日，WordPress 发布 7.1.2 安全版，修复一个自评为严重级别的核心漏洞，修复范围从最新的 7.1 分支一路回溯到 4.7 分支。",
+            "漏洞不需要登录就能触发，但要在服务器环境与启用的主题两边的前提都成立时，才可能导致远程代码执行；GHSA 标示的 CVSS 4.0 分数是 9.2。",
+            "美国时间 9 月 25 日，CISA 依据遭实际利用的证据，把这个漏洞列入已知遭利用漏洞（KEV）名录；CISA 的相关指令只约束美国联邦民事行政机关，对其他组织只是鼓励。",
+            "从 4.7 到 7.1 的各分支都有自己的修复版本，例如 7.0 分支是 7.0.6、6.9 分支是 6.9.9，读者要对照的是自己所在分支的修复版，而不是一律装 7.1.2。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 22 日修复了什么：条件式的核心漏洞"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.org 在 2026 年 9 月 22 日发布《WordPress 7.1.2 Release》，开头写的是“This security release features a fix for a critical severity security vulnerability.”（这个安全版修复了一个严重级别的安全漏洞），并写“Because this is a security release, it is recommended that you update your sites immediately.”（因为是安全版，建议立即更新网站）——用的是建议，不是强制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布文说明，一名未经身份验证、不需要登录的攻击者，在符合特定条件时可能触发这个问题；如果服务器环境与启用的主题两边的前提都成立，可能导致（can lead to）远程代码执行，不是必然发生。GHSA 另外点名了两种服务器环境，在官方镜像或默认设置下（其中一种限定特定 PHP 版本）就已经符合服务器端的前提；攻击手法与环境细节不在这里讨论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这个漏洞有两个正式名称，并列呈现：GitHub 安全公告 GHSA-7hp8-65ch-5whp 把它命名为“Unauthenticated path traversal in page-template resolution leading to conditional RCE”（页面模板解析中未经身份验证的路径遍历，导致有条件的远程代码执行）；CISA 的命名则是“WordPress Core Remote File Inclusion Vulnerability”（WordPress 核心远程文件包含漏洞）。严重程度 Critical、CVSS 4.0 总体分数 9.2 是 GHSA 自己的评分，不是双方共同的分数。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "哪些版本受影响、各分支的修复版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA 的受影响版本栏逐分支列出，从最新的 7.1 分支（7.1.0–7.1.1）一路列到 6.7、6.6 等旧分支，最旧列到 4.7 分支（4.7.0–4.7.36）；修复版本栏与受影响栏逐行对应；7.1、7.0、6.9、6.8 分支的版本号整理在下表，其余分支请看 GHSA 的逐分支表。读者要对照的是自己所在分支的修复版，不是一律装 7.1.2。"
+        },
+        {
+          "type": "paragraph",
+          "text": "7.1.1 也在受影响范围内，代表就算网站已经更新到 7.1.1，还是要再更新一次。发布文写的是，出于善意（as a courtesy），这次修复回溯到目前仍可收到安全修复的所有分支，括号写“currently through 4.7”，也就是目前回溯到 4.7 分支为止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布文同一段也提醒，只有最新版本的 WordPress 受到积极支持；旧分支收到这次修复是善意回溯，不代表那个分支仍受积极支持。早于 4.7 的版本没有出现在 GHSA 的受影响表里，那是表格没有列，不代表这些版本不受影响。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "所在分支",
+            "受影响版本",
+            "修复版本"
+          ],
+          "rows": [
+            [
+              "7.1",
+              "7.1.0–7.1.1",
+              "7.1.2"
+            ],
+            [
+              "7.0",
+              "7.0.0–7.0.5",
+              "7.0.6"
+            ],
+            [
+              "6.9",
+              "6.9.0–6.9.8",
+              "6.9.9"
+            ],
+            [
+              "6.8",
+              "6.8.0–6.8.9",
+              "6.8.10"
+            ],
+            [
+              "6.7 至 4.7 各分支",
+              "详见 GHSA 逐分支表",
+              "详见 GHSA 逐分支表"
+            ],
+            [
+              "早于 4.7 的版本",
+              "不在 GHSA 表内",
+              "修复只回溯到 4.7 分支"
+            ]
+          ],
+          "caption": "依 WordPress 发布文与 GitHub 安全公告 GHSA-7hp8-65ch-5whp 整理，查核日 2026 年 9 月 26 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎么确认自己的网站：三个查核步骤"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一步是看版本号：网站控制台（Dashboard）首页默认会显示 At a Glance 小工具，依 WordPress.org 的说明文档，小工具底部会写出网站正在运行的 WordPress 版本（小工具被隐藏的话，可以在 Screen Options 面板勾选找回来）；把这个版本号对照上表或 GHSA 页面，确认是不是所在分支的修复版本。还不是修复版的话，发布文写的更新做法是进入控制台、点“Updates”、再点“Update Now”，也可以直接到 WordPress.org 下载 7.1.2 安装。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二步，不要假设自动更新已经完成。发布文写的是“If you have sites that support automatic background updates, the update process will begin automatically.”（支持自动后台更新的网站，更新流程会自动开始），用的是会开始，不是已经完成；建议回头看版本号确认，不要只看有没有收到更新通知。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第三步，如果网站是托管或请人维护的，可以直接请维护者回报更新后的版本号——这是编辑给的建议，不是 WordPress 文档写的做法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "更新之外，网站的日常维护，如果平常没有整理，可以参考"
+            },
+            {
+              "type": "article",
+              "text": "网站维护要做什么：备份、更新与故障报告的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            },
+            {
+              "type": "text",
+              "text": "这一篇。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-wordpress-712-20260922/diagram-1-zh-cn.svg",
+          "alt": "四格图解：先看版本号、对照修复版、自动更新的状态、早于 4.7 的版本",
+          "width": 1600,
+          "height": 900,
+          "caption": "WordPress 2026 年 9 月 22 日发布 7.1.2 安全版后，站长确认网站已修复要看的四件事，依 WordPress 发布文、说明文档与 GHSA 整理，查核日 2026 年 9 月 26 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "已遭利用代表什么、不代表什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 的已知遭利用漏洞（KEV）名录，是 CISA 依据实际遭利用的证据所维护的清单；美国时间 9 月 25 日，CISA 把这个漏洞加进 KEV 名录，命名为“WordPress Core Remote File Inclusion Vulnerability”，与 GHSA 的名称并列，不是取代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 的公告写明，相关指令要求美国联邦民事行政机关（FCEB）优先快速修复高风险漏洞，而且只适用于这些机关；对其他所有组织，CISA 只是鼓励采取风险导向的漏洞管理、优先修复 KEV 名录里的漏洞，这对台湾站长没有约束力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 的公告没有写受害数量、受害地区或攻击者身份，只写是依据遭实际利用的证据判断；WordPress 9 月 22 日的发布文与 GHSA 公告都没有提到这个漏洞已遭利用，遭利用的判断出自 CISA。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "还不知道的事：文档没写的，别自己补"
+        },
+        {
+          "type": "paragraph",
+          "text": "这一篇引用的四份文档都没有提到台湾，只能说文档没写，不能反过来说成台湾没有受影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "GHSA 页面没有列出更新以外的临时缓解做法；换主题、删目录或改服务器设置之类的替代方案都不是 WordPress 提出的做法，要修复就是更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布文没有说多少网站已经通过自动后台更新完成更新，这里同样没有这个数字；这个漏洞管的是 WordPress 核心（Core），发布文、GHSA 与 CISA 的公告谈这个漏洞时都没有提到插件，不能说装了安全插件就没事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要自己再查最新状态，可以直接看 WordPress.org 的新闻页有没有更新的安全版本，以及 GHSA-7hp8-65ch-5whp 这则公告有没有变动；如果 WordPress 后续发布比 7.1.2 更新的版本，就照新版本安装。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的网站开了自动更新，还要做什么？",
+              "answer": "发布文写的是支持自动后台更新的网站，更新流程会自动开始，不是已经完成；建议还是回控制台首页的 At a Glance 小工具确认目前的版本号，是不是已经对到自己所在分支的修复版本，例如 7.1 分支要是 7.1.2、7.0 分支要是 7.0.6。"
+            },
+            {
+              "question": "我没用 Twenty Twelve 这类主题，是不是就没事？",
+              "answer": "不一定。GHSA 点名受影响的是它称为 legacy（旧版）的 Twenty Twelve 与 Twenty Fourteen，并举例包含 Neve、Hestia、Sydney 等部分第三方主题，但这是举例，不是完整清单；而且主题只是两个前提之一，另一个前提在服务器环境，不能用没用这几个主题来判断安全与否，要修复就是把版本更新到自己分支对应的修复版。"
+            },
+            {
+              "question": "我还在用 6.x 版，一定要升到 7.1.2 吗？",
+              "answer": "不必跳到 7.1.2。GHSA 逐分支列了修复版本，例如 6.9 分支的修复版是 6.9.9、6.8 分支是 6.8.10，装自己所在分支对应的修复版就是完成修复；但 WordPress 也提醒，只有最新版本受到积极支持，旧分支收到这次修复是出于善意的回溯。"
+            },
+            {
+              "question": "CISA 的修复要求跟我有关吗？",
+              "answer": "如果网站不是美国联邦民事行政机关管理的系统，CISA 的这项要求不直接约束你：CISA 明写相关指令只适用于这些机关，对其他所有组织只是鼓励；不过既然 CISA 判断这个漏洞已遭实际利用，越早更新越好。"
+            },
+            {
+              "question": "网站是请人托管的，我要问什么？",
+              "answer": "可以直接请维护者回报网站目前的 WordPress 版本号，以及是不是已经更新到自己所在分支对应的修复版本，例如最新的 7.1 分支要是 7.1.2。这是编辑给的建议，不是 WordPress 文档写的做法；这一篇引用的文档也没有提到托管或维护者的处理方式。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "自动更新不等于已更新",
+          "text": "WordPress 在 2026 年 9 月 22 日发布 7.1.2 安全版，写的是支持自动后台更新的网站，更新流程会自动开始，不是已经完成；不管有没有开自动更新，都建议亲自确认版本号是不是已经对到自己所在分支的修复版本。这篇资料查核到 2026 年 9 月 26 日，之后文档如果更新，请以官方页面为准。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "欧盟《网络弹性法案》通报义务开始适用：9 月 11 日起，谁要多快通报",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 7.1.2 Release",
+          "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Unauthenticated path traversal in page-template resolution leading to conditional RCE（GHSA-7hp8-65ch-5whp）",
+          "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+          "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Dashboard screen（WordPress.org 说明文档）",
+          "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    }
+  },
+  "related": [
+    "tech-news-synology-dsm-sa2613-20260918",
+    "tech-news-snapdragon-8-elite-gen6-20260922"
+  ]
+}
