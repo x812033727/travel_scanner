@@ -20,6 +20,8 @@ export const FIT_MODES = ["auto", "freeze", "slow", "trim"];
 export const TRANSITIONS = ["cut", "dissolve"];
 export const SUBTITLE_STYLES = ["drama", "plain"];
 export const MUSIC_TRACK = /^[a-z0-9][a-z0-9._-]{0,63}\.(?:mp3|m4a|wav|flac)$/;
+// An episode of a long series (docs/videos/SERIES.md): the series' slug as the site knows it.
+export const SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
 const SHA256 = /^[0-9a-f]{64}$/;
 export const MAX_SHOT_CHARACTERS = 3;
 export const MAX_SHOT_SECONDS = 12;
@@ -64,6 +66,7 @@ const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prom
 const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "fit", "seed", "transition", "start_frame", "end_frame"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
+const SERIES_KEYS = new Set(["slug", "episode", "chapter"]);
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
@@ -76,6 +79,7 @@ const hash16 = (...parts) => {
 };
 
 export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
+export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
 export const shotScenes = (doc) => (doc?.scenes ?? []).filter(isShot);
 
@@ -235,10 +239,23 @@ function validateSubtitles(subtitles, errors) {
  * scenes and lines are known to be objects with ids. `validateVoice(voice, errors, where)` is
  * schema.mjs's voice check, passed in to avoid an import cycle.
  */
+/** `series`: which series and episode this video is, so the cast and the sheets are shared. */
+function validateSeries(series, errors) {
+  if (!isObject(series)) {
+    errors.push({ path: "series", message: "must be an object { slug, episode, chapter }" });
+    return;
+  }
+  unknownKeys(series, SERIES_KEYS, "series", errors);
+  if (typeof series.slug !== "string" || !SERIES_SLUG.test(series.slug)) errors.push({ path: "series.slug", message: "must be the series' slug: lowercase letters, digits and hyphens" });
+  for (const key of ["episode", "chapter"]) {
+    if (!Number.isInteger(series[key]) || series[key] < 1) errors.push({ path: `series.${key}`, message: "must be a positive integer" });
+  }
+}
+
 export function validateDrama(doc, errors, validateVoice) {
   const drama = isDrama(doc);
   if (!drama) {
-    for (const key of ["characters", "look"]) {
+    for (const key of ["characters", "look", "series"]) {
       if (doc[key] !== undefined) errors.push({ path: key, message: `only a video with format "${DRAMA_FORMAT}" has ${key}` });
     }
   }
@@ -248,6 +265,13 @@ export function validateDrama(doc, errors, validateVoice) {
 
   const characterIds = drama ? validateCharacters(doc.characters, errors, validateVoice) : new Set();
   if (drama) validateLook(doc.look, errors);
+  if (drama && doc.series !== undefined) {
+    validateSeries(doc.series, errors);
+    // An episode lists its cast by id, so lookHash changes only when the cast itself changes
+    // and the series' character sheets are reused (docs/videos/SERIES.md).
+    const ids = Array.isArray(doc.characters) ? doc.characters.map((character) => character?.id).filter((id) => typeof id === "string") : [];
+    if (ids.some((id, index) => index > 0 && id < ids[index - 1])) errors.push({ path: "characters", message: "an episode of a series lists its characters by id in order" });
+  }
   const earlierShots = new Set();
   let shots = 0;
   doc.scenes.forEach((scene, sceneIndex) => {

@@ -65,6 +65,8 @@ const TOP_KEYS = new Set([
   "look",
   "music",
   "subtitles",
+  // Drama-only: which long series and episode this is (docs/videos/SERIES.md).
+  "series",
 ]);
 const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
 const YOUTUBE_KEYS = new Set([

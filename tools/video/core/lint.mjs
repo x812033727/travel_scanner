@@ -93,6 +93,33 @@ export function billableEstimate(doc) {
  * context: { lexicon, brief (markdown or null), others: [{ slug, doc }], translations: { locale: json },
  *            pack (the source_guide content pack or null), cpm }
  */
+/**
+ * An episode of a series uses the cast as the setting book has it, word for word, so the
+ * character sheets are reused across episodes (docs/videos/SERIES.md). series.json beside
+ * video.json is that cast, written by the worker when it starts the episode.
+ */
+function seriesProblems(doc, series, error, warn) {
+  if (!series) {
+    warn("series", "no series.json beside video.json: the worker writes it when it starts an episode (docs/videos/SERIES.md)");
+    return;
+  }
+  if (series.slug !== doc.series.slug || series.episode !== doc.series.episode) {
+    error("series", `series.json is for ${series.slug} episode ${series.episode}, not ${doc.series.slug} episode ${doc.series.episode}`);
+  }
+  const cast = new Map((series.characters ?? []).map((character) => [character.id, character]));
+  (doc.characters ?? []).forEach((character, index) => {
+    const known = cast.get(character.id);
+    if (!known) {
+      error(`characters[${index}]`, `"${character.id}" is not in the series' setting book; an episode uses the cast as written there`);
+      return;
+    }
+    for (const key of ["appearance", "sheet_prompt"]) {
+      if ((character[key] ?? null) !== (known[key] ?? null)) error(`characters[${index}].${key}`, "differs from the series' setting book; copy it as written so the character sheets are reused");
+    }
+    if (JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice ?? null)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
+  });
+}
+
 export function lintVideo(doc, context = {}) {
   const errors = [];
   const warnings = [];
@@ -108,6 +135,7 @@ export function lintVideo(doc, context = {}) {
   const drama = isDrama(doc);
   if (!drama && doc.music) warn("music", "the channel spec puts no music under slides videos (docs/videos/README.md); a drama may");
   if (doc.source_guide && context.pack === null) error("source_guide", `no content pack named ${doc.source_guide}`);
+  if (drama && doc.series) seriesProblems(doc, context.series, error, warn);
 
   for (const { line, label } of eachLine(doc)) {
     const spoken = spokenText(line);
