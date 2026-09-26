@@ -73,7 +73,6 @@ export type VideoSettings = {
   monthly_token_budget_millions: number;
   max_verify_rounds: number;
   max_retake_rounds: number;
-  subscription_max_usage_percent: number;
   auto_approve_audio: boolean;
   drama: DramaSettings;
 };
@@ -92,7 +91,7 @@ export const providerLabels: Record<Provider, string> = { claude_code: "Claude C
 const numberFields = {
   schedule: [["draft_interval_hours", 6, 720], ["topics_per_run", 1, 3], ["max_waiting_drafts", 1, 10]],
   length: [["target_minutes_min", 3, 30], ["target_minutes_max", 3, 30]],
-  budget: [["max_drafts_per_month", 0, 60], ["monthly_token_budget_millions", 1, 500], ["subscription_max_usage_percent", 10, 100], ["max_verify_rounds", 1, 5], ["max_retake_rounds", 0, 5]],
+  budget: [["max_drafts_per_month", 0, 60], ["monthly_token_budget_millions", 1, 500], ["max_verify_rounds", 1, 5], ["max_retake_rounds", 0, 5]],
 } as const;
 type NumberField = (typeof numberFields)[keyof typeof numberFields][number][0];
 // The drama's numbers, with the API's bounds; the budgets open wide on purpose (the owner chose
@@ -113,7 +112,7 @@ const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "subscription_max_usage_percent", "auto_approve_audio", "drama",
+  "max_retake_rounds", "auto_approve_audio", "drama",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The body the API's SettingsWrite accepts (it refuses unknown fields): the view without its options. */

@@ -246,9 +246,6 @@ class Settings(BaseSettings):
     # "subscription" runs every Claude call on the accounts /admin/ai-accounts signs in on the
     # host (app.ai.subscription), the owner's choice of 2026-09-25; the key is then unused.
     anthropic_connection: Literal["api_key", "subscription"] = "api_key"
-    # Past this share of an account's 5-hour or weekly window the site leaves the account to
-    # the owner; when every account is past it, Claude calls fall back to MiniMax.
-    ai_subscription_max_usage_percent: int = Field(default=80, ge=1, le=100)
     minimax_api_base_url: str = "https://api.minimaxi.com/v1"
     minimax_model: str = "MiniMax-M3"
     # Gemini shares the key and base URL of the article search (hotspot_guide_gemini_*);

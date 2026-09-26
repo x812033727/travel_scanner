@@ -1,3 +1,4 @@
+import codecs
 import contextlib
 import json
 import os
@@ -21,7 +22,8 @@ from ai_accounts_agent.runner import (
     run_cli,
     text_or_none,
 )
-from ai_accounts_agent.security import sanitize
+from ai_accounts_agent.screen import Screen
+from ai_accounts_agent.security import redact_emails, sanitize
 from ai_accounts_agent.sessions import (
     CANCELLED,
     FAILED,
@@ -56,6 +58,9 @@ SCREEN_SETTLE_SECONDS = 0.8
 # Only sent when the status line has not reported usage on its own; a one-word answer from
 # the smallest model is the cheapest request that yields an API response.
 PROBE_MESSAGE = "Reply with the single word: ok"
+# How much of the last screen a probe that gave up writes to the journal.
+PROBE_LOG_LINES = 20
+PROBE_LOG_LINE_CHARACTERS = 200
 # `claude auth login` prints the authorize URL as an OSC 8 hyperlink; its target survives
 # any wrapping of the visible text, so read it from there first.
 _OSC8_TARGET = re.compile(r"\x1b\]8;[^;\x07\x1b]*;(https://[^\x07\x1b]+)(?:\x07|\x1b\\)")
@@ -127,6 +132,52 @@ def mark_onboarding_done(config_dir: Path) -> bool:
         data.setdefault("lastOnboardingVersion", version)
     atomic_write_text(path, json.dumps(data, indent=2, ensure_ascii=False) + "\n", mode)
     return True
+
+
+def probe_failure_line(
+    slot: str, reason: str, elapsed: float, messaged: bool, lines: Sequence[str]
+) -> str:
+    """One journal line for a usage probe that gave up, safe to log.
+
+    The screen can show the account's email, so addresses are replaced whole before
+    anything is cut, and every line goes through `sanitize`.
+    """
+    shown = [
+        sanitize(redact_emails(line), PROBE_LOG_LINE_CHARACTERS)
+        for line in lines[-PROBE_LOG_LINES:]
+    ]
+    message = "message sent" if messaged else "no message sent"
+    screen = " | ".join(line for line in shown if line) or "(empty)"
+    return (
+        f"claude usage probe {slot}: gave up ({reason}) after {elapsed:.1f}s, "
+        f"{message}; screen: {screen}"
+    )
+
+
+def _drain(controller: int, seconds: float = 0.5) -> bytes:
+    """What an exited CLI left unread in the terminal: often its last words."""
+    data = bytearray()
+    deadline = time.monotonic() + seconds
+    while time.monotonic() < deadline:
+        ready, _, _ = select.select([controller], [], [], 0.05)
+        if not ready:
+            break
+        try:
+            chunk = os.read(controller, 65536)
+        except OSError:
+            break
+        if not chunk:
+            break
+        data.extend(chunk)
+    return bytes(data)
+
+
+def _ended(process: subprocess.Popen[bytes]) -> str:
+    """Why the terminal went quiet: the CLI's exit, which can trail its side closing."""
+    try:
+        return f"claude exited with code {process.wait(1)}"
+    except subprocess.TimeoutExpired:
+        return "the terminal closed"
 
 
 def _stop_session(process: subprocess.Popen[bytes]) -> None:
@@ -332,7 +383,8 @@ class ClaudeAccounts:
         this usually costs nothing; a one-word request is the fallback. `--restricted`
         leaves out the owner's settings (hooks, push notifications, Remote Control) and
         the tools that run code; the recorder comes in through `--settings`. Returns True
-        when a new snapshot was written.
+        when a new snapshot was written; when it returns False it has written the reason
+        and the end of the screen to stderr, which systemd keeps in the journal.
         """
         if sys.platform == "win32":
             return False
@@ -380,6 +432,9 @@ class ClaudeAccounts:
         finally:
             os.close(terminal)
         output = bytearray()
+        # The whole run as drawn, kept for the journal if the probe gives up.
+        screen = Screen(TERMINAL_COLUMNS, TERMINAL_ROWS)
+        decoder = codecs.getincrementaldecoder("utf-8")(errors="replace")
         answered: set[str] = set()
         started = last_output = time.monotonic()
         message_at = started + self.config.claude_usage_quiet_seconds
@@ -390,8 +445,13 @@ class ClaudeAccounts:
                 if stamp() != before:
                     return True
                 now = time.monotonic()
-                if process.poll() is not None or now >= give_up_at:
-                    return False
+                if process.poll() is not None:
+                    screen.feed(decoder.decode(_drain(controller)))
+                    reason = _ended(process)
+                    break
+                if now >= give_up_at:
+                    reason = "timed out"
+                    break
                 if not messaged and now >= message_at:
                     messaged = True
                     os.write(controller, PROBE_MESSAGE.encode())
@@ -403,22 +463,28 @@ class ClaudeAccounts:
                     try:
                         chunk = os.read(controller, 65536)
                     except OSError:
-                        return stamp() != before
+                        if stamp() != before:
+                            return True
+                        reason = _ended(process)
+                        break
                     output.extend(chunk)
                     del output[:-MAX_OUTPUT_BYTES]
+                    screen.feed(decoder.decode(chunk))
                     last_output = time.monotonic()
                     continue
                 # Read a screen only once it has settled; the TUI draws in bursts.
                 if not output or time.monotonic() - last_output < SCREEN_SETTLE_SECONDS:
                     continue
-                screen = "".join(
+                flat = "".join(
                     _TERMINAL_ESCAPES.sub("", output.decode("utf-8", errors="replace")).split()
                 )
                 output.clear()
-                if _LOGIN_PROMPT.search(screen):
-                    return False  # Not really signed in; a probe must never start a login.
+                if _LOGIN_PROMPT.search(flat):
+                    # Not really signed in; a probe must never start a login.
+                    reason = "login prompt"
+                    break
                 for name, pattern, keys in _FIRST_RUN_SCREENS:
-                    if name not in answered and pattern.search(screen):
+                    if name not in answered and pattern.search(flat):
                         answered.add(name)
                         for key in keys:
                             os.write(controller, key)
@@ -427,6 +493,10 @@ class ClaudeAccounts:
         finally:
             _stop_session(process)
             os.close(controller)
+        elapsed = time.monotonic() - started
+        line = probe_failure_line(slot, reason, elapsed, messaged, screen.lines())
+        print(line, file=sys.stderr, flush=True)
+        return False
 
     def start_login(self, slot: str, finalize: Finalizer) -> ClaudeLogin:
         return ClaudeLogin(
