@@ -59,6 +59,9 @@ services:
       - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
       # Previews for /admin/videos (app/video_reviews/storage.py): the site has no object store.
       - video_reviews:/var/lib/mokaair/video-reviews
+      # The drama route's generated images, clips and music (app/video_media/storage.py), kept
+      # 14 days so a redeploy between two stages does not lose what was paid for.
+      - video_media:/var/lib/mokaair/video-media
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
@@ -273,6 +276,7 @@ volumes:
   postgres_data:
   redis_data:
   video_reviews:
+  video_media:
   video_work:
   video_home:
   video_docs:

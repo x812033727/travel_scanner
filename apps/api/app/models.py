@@ -2183,9 +2183,14 @@ class VideoProject(Timestamped, Base):
     """
 
     __tablename__ = "video_projects"
+    __table_args__ = (
+        CheckConstraint("format IN ('slides', 'drama')", name="ck_video_project_format"),
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
     title: Mapped[str] = mapped_column(String(200))
+    # Which pipeline makes it: "slides" or the AI drama route (docs/videos/DRAMA.md; 0097).
+    format: Mapped[str] = mapped_column(String(8), default="slides", server_default="slides")
     stage: Mapped[str] = mapped_column(String(40))
     checklist: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
     youtube_video_id: Mapped[str | None] = mapped_column(String(32), nullable=True)

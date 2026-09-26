@@ -91,6 +91,13 @@ and puts it back if that one does not finish.
     `lastOnboardingVersion`) in that account's `.claude.json` after a login and before a
     probe, and changes nothing else in the file.
   - Accounts on API billing are never probed.
+  - A probe that ends without a new snapshot writes one line to the journal
+    (`journalctl -u mokaair-ai-accounts`): the slot, why it gave up (`claude exited with
+    code N`, `timed out`, `login prompt`, `the terminal closed`), the seconds it ran,
+    whether the one-word message went out, and the last 20 lines of the screen joined
+    with ` | `. Email addresses become `<email>` and tokens `***`. A probe that raises
+    logs `claude usage probe <slot> failed:` and its traceback on one line. Before
+    2026-09-26 a failed probe left no trace at all.
 - **Antigravity:** agy shows quota only on its TUI's "Models & Quota" page (`/usage`), which
   asks Google and draws groups of buckets with the share left and when each refreshes.
   (`agy -p /usage` was reported to send the text to the model as a prompt.) On the same
@@ -161,7 +168,8 @@ Claude's quota appears after the next Claude session on the host has made its fi
 
 `POST /v1/runs` (`ai_accounts_agent/runs.py`) runs one prompt through `claude -p` with every
 tool turned off, on the signed-in Claude subscription account whose turn it is, as long as it
-is below the caller's usage cap. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
+is below the caller's usage cap. The site always sends 100 since 2026-09-26 (the owner removed
+the cap settings), so an account keeps the runs until it is full. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
 「Claude 連線方式」 on the AI vendors card to 訂閱帳號, every other site feature that calls
 Claude uses it too (`apps/api/app/ai/subscription.py`): guide search, introductions,
 introduction review, Simplified names and the news stages. The trip planner and the trip
