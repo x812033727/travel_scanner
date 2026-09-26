@@ -58,6 +58,33 @@ function fitText() {
   }
 }
 
+// Runs in the page: load every face of the slide font that covers the slide's text. Drawing a
+// character loads only one of the subsets whose unicode-range holds it, but fonts.check() wants
+// all of them loaded, and fontsource's CJK slices overlap the Latin subset and each other: a
+// slide whose "$" or 「擴」 no other text shares failed the check though it was drawn right.
+// Loading them all leaves only faces that really cannot load, and load() rejects for those.
+async function loadFaces(fontFamily) {
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const byFace = new Map();
+  while (walker.nextNode()) {
+    const parent = walker.currentNode.parentElement;
+    if (parent.closest("pre")) continue;
+    const style = getComputedStyle(parent);
+    const face = `${style.fontStyle} ${style.fontWeight} 40px "${fontFamily}"`;
+    byFace.set(face, (byFace.get(face) ?? "") + walker.currentNode.nodeValue);
+  }
+  const failed = [];
+  for (const [face, text] of byFace) {
+    if (!text.trim()) continue;
+    try {
+      await document.fonts.load(face, text);
+    } catch (error) {
+      failed.push(`${face.split(" 40px")[0]}: ${error.message}`);
+    }
+  }
+  return failed;
+}
+
 // Runs in the page: what still does not fit once fitText has done what it can.
 function layoutProblems(fontFamily) {
   const problems = [];
@@ -70,12 +97,28 @@ function layoutProblems(fontFamily) {
     if (box.scrollHeight > box.clientHeight + 1) problems.push(`the slide's content is ${box.scrollHeight - box.clientHeight}px taller than its area`);
     if (box.scrollWidth > box.clientWidth + 1) problems.push(`the slide's content is ${box.scrollWidth - box.clientWidth}px wider than its area`);
   }
+  // The code panel clips what it cannot show, so the content box above never sees the overflow.
+  for (const panel of document.querySelectorAll(".t-code .panel")) {
+    const shown = [...panel.querySelectorAll(".ln")].filter((line) => line.getBoundingClientRect().bottom <= panel.getBoundingClientRect().bottom + 1).length;
+    const total = panel.querySelectorAll(".ln").length;
+    if (shown < total) problems.push(`the code panel shows ${shown} of ${total} lines; shorten the code`);
+  }
   for (const image of document.images) if (!image.complete || image.naturalWidth === 0) problems.push(`image did not load: ${image.getAttribute("src")}`);
   // Code is set in the monospace font, so Noto's Latin subsets may rightly never load for it.
+  // Checked per weight and style as drawn: a word set only in bold needs only the bold faces.
+  // The grouping repeats loadFaces': functions sent into the page cannot share a helper.
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-  let text = "";
-  while (walker.nextNode()) if (!walker.currentNode.parentElement.closest("pre")) text += walker.currentNode.nodeValue;
-  if (text.trim() && !document.fonts.check(`40px "${fontFamily}"`, text)) problems.push("the slide font did not load for all of its text");
+  const byFace = new Map();
+  while (walker.nextNode()) {
+    const parent = walker.currentNode.parentElement;
+    if (parent.closest("pre")) continue;
+    const style = getComputedStyle(parent);
+    const face = `${style.fontStyle} ${style.fontWeight} 40px "${fontFamily}"`;
+    byFace.set(face, (byFace.get(face) ?? "") + walker.currentNode.nodeValue);
+  }
+  const unloaded = [...byFace].filter(([face, text]) => text.trim() && !document.fonts.check(face, text));
+  const chars = (face, text) => [...new Set(text)].filter((char) => char.trim() && !document.fonts.check(face, char)).slice(0, 12).join("");
+  if (unloaded.length) problems.push(`the slide font did not load for all of its text (${unloaded.map(([face, text]) => `${face.split(" 40px")[0]}: ${chars(face, text)}`).join("; ")})`);
   return problems;
 }
 
@@ -133,8 +176,10 @@ export async function openRenderer({ root, workdir, channel }) {
     await page.setViewportSize(size);
     await page.goto(`${ORIGIN}/state/${key}.html`, { waitUntil: "load" });
     await page.evaluate(() => document.fonts.ready);
+    const unloadable = await page.evaluate(loadFaces, "Noto Sans TC Variable");
     await page.evaluate(fitText);
     const problems = await page.evaluate(layoutProblems, "Noto Sans TC Variable");
+    for (const failure of unloadable) problems.push(`a slide font face would not load: ${failure}`);
     pages.delete(key);
     return problems;
   }
