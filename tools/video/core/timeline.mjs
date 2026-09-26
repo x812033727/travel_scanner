@@ -71,7 +71,8 @@ export function buildTimeline(doc, samplesById) {
     const isLastLine = last && source === doc.scenes.at(-1);
     const pauseMs = (line.pause_after_ms ?? DEFAULT_PAUSE_MS) + (last ? (isLastLine ? TAIL_MS : SCENE_GAP_MS) : 0);
     const frames = framesFor(samples + msToSamples(pauseMs));
-    lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples });
+    // A drama line carries its speaker so the review pages and the subtitle prefix know who talks.
+    lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples, ...(line.speaker ? { speaker: line.speaker } : {}) });
     frame += frames;
     scene.end_frame = frame;
   }
@@ -148,8 +149,14 @@ export function speechHash(doc, lexicon) {
   const hash = createHash("sha256");
   hash.update(JSON.stringify(doc.voice));
   hash.update(JSON.stringify(lexicon?.terms ?? {}));
+  // A drama's audio also depends on who speaks each line and with which voice. Slides keep the
+  // original hash, so their timelines stay valid across this change.
+  const drama = doc.format === "drama";
+  if (drama) hash.update(JSON.stringify((doc.characters ?? []).map((character) => [character.id, character.voice])));
   for (const { scene, line, last } of eachLine(doc)) {
-    hash.update(JSON.stringify([scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last]));
+    const fields = [scene.id, line.id, spokenText(line), line.pause_after_ms ?? null, last];
+    if (drama) fields.push(line.speaker ?? "narrator", line.emotion ?? null);
+    hash.update(JSON.stringify(fields));
   }
   return hash.digest("hex").slice(0, 16);
 }

@@ -6,8 +6,11 @@
 // (k7p2)") is what a writer agent needs to fix its draft, which a generic validator does not give.
 import { createHash } from "node:crypto";
 
+import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
+
 export const SCHEMA_VERSION = 1;
-export const FORMATS = ["slides", "screencast"];
+// drama: AI-generated shots instead of slides (docs/videos/DRAMA.md); its rules live in drama.mjs.
+export const FORMATS = ["slides", "screencast", DRAMA_FORMAT];
 // Same order as apps/api/app/i18n.py; zh-TW is the narration language.
 export const LOCALES = ["zh-TW", "en", "ja", "ko", "zh-CN"];
 export const NARRATION_LOCALE = "zh-TW";
@@ -53,6 +56,11 @@ const TOP_KEYS = new Set([
   "sources",
   "assets",
   "scenes",
+  // Drama-only, validated in drama.mjs: the shared look and the cast; music and subtitles for any format.
+  "characters",
+  "look",
+  "music",
+  "subtitles",
 ]);
 const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
 const YOUTUBE_KEYS = new Set([
@@ -65,7 +73,7 @@ const YOUTUBE_KEYS = new Set([
   "video_id",
 ]);
 const SCENE_KEYS = new Set(["id", "chapter", "template", "data", "claims", "lines"]);
-const LINE_KEYS = new Set(["id", "text", "say", "say_for", "pause_after_ms", "reveal"]);
+const LINE_KEYS = new Set(["id", "text", "say", "say_for", "pause_after_ms", "reveal", "speaker", "emotion"]);
 
 /** A short content hash: what `say_for` and translation `source_hash` fields hold. */
 export function textHash(text) {
@@ -86,37 +94,38 @@ function lineLabel(sceneIndex, lineIndex, line) {
   return `scenes[${sceneIndex}].lines[${lineIndex}]${id}`;
 }
 
-function validateVoice(voice, errors) {
+/** One voice object: the narration's `voice`, or a drama character's (`where` names which). */
+export function validateVoice(voice, errors, where = "voice") {
   if (!isObject(voice)) {
-    errors.push({ path: "voice", message: "must be an object with provider and name" });
+    errors.push({ path: where, message: "must be an object with provider and name" });
     return;
   }
-  unknownKeys(voice, VOICE_KEYS, "voice", errors);
+  unknownKeys(voice, VOICE_KEYS, where, errors);
   if (!VOICE_PROVIDERS.includes(voice.provider)) {
-    errors.push({ path: "voice.provider", message: `must be one of ${VOICE_PROVIDERS.join(", ")}` });
+    errors.push({ path: `${where}.provider`, message: `must be one of ${VOICE_PROVIDERS.join(", ")}` });
   }
-  if (!isText(voice.name)) errors.push({ path: "voice.name", message: "must name the voice, e.g. zh-TW-HsiaoChenNeural" });
+  if (!isText(voice.name)) errors.push({ path: `${where}.name`, message: "must name the voice, e.g. zh-TW-HsiaoChenNeural" });
   if (voice.rate !== undefined && !RATE.test(voice.rate)) {
-    errors.push({ path: "voice.rate", message: 'must look like "+5%" or "-10%"' });
+    errors.push({ path: `${where}.rate`, message: 'must look like "+5%" or "-10%"' });
   }
   if (voice.provider === "gemini") {
     if (isText(voice.name) && !GEMINI_VOICE.test(voice.name)) {
-      errors.push({ path: "voice.name", message: "a Gemini voice is a name like Sulafat or a voice_... id, without the gemini: prefix" });
+      errors.push({ path: `${where}.name`, message: "a Gemini voice is a name like Sulafat or a voice_... id, without the gemini: prefix" });
     }
     if (voice.rate !== undefined) {
-      errors.push({ path: "voice.rate", message: "Gemini takes its pace from voice.style; remove rate" });
+      errors.push({ path: `${where}.rate`, message: "Gemini takes its pace from voice.style; remove rate" });
     }
     if (voice.model !== undefined && !GEMINI_MODELS.includes(voice.model)) {
-      errors.push({ path: "voice.model", message: `must be one of ${GEMINI_MODELS.join(", ")}` });
+      errors.push({ path: `${where}.model`, message: `must be one of ${GEMINI_MODELS.join(", ")}` });
     }
   } else if (voice.style !== undefined || voice.model !== undefined) {
-    errors.push({ path: "voice", message: "style and model are for Gemini voices only" });
+    errors.push({ path: where, message: "style and model are for Gemini voices only" });
   }
   if (voice.style !== undefined && !(isText(voice.style) && voice.style.length <= STYLE_MAX)) {
-    errors.push({ path: "voice.style", message: `must be text of at most ${STYLE_MAX} characters` });
+    errors.push({ path: `${where}.style`, message: `must be text of at most ${STYLE_MAX} characters` });
   }
   if (voice.lang !== undefined && voice.lang !== NARRATION_LOCALE) {
-    errors.push({ path: "voice.lang", message: `narration is ${NARRATION_LOCALE}; omit the field or set it to that` });
+    errors.push({ path: `${where}.lang`, message: `narration is ${NARRATION_LOCALE}; omit the field or set it to that` });
   }
 }
 
@@ -176,7 +185,7 @@ function validateLine(line, label, seenLines, errors) {
   }
 }
 
-function validateScenes(scenes, errors) {
+function validateScenes(scenes, errors, format) {
   if (!Array.isArray(scenes) || scenes.length === 0) {
     errors.push({ path: "scenes", message: "must be a non-empty array" });
     return;
@@ -203,8 +212,9 @@ function validateScenes(scenes, errors) {
     if (sceneIndex === 0 && !isText(scene.chapter)) {
       errors.push({ path: `${where}.chapter`, message: "the first scene must open a chapter: YouTube needs one at 00:00" });
     }
-    if (!TEMPLATES.includes(scene.template)) {
-      errors.push({ path: `${where}.template`, message: `must be one of ${TEMPLATES.join(", ")}` });
+    // A drama's "shot" is not an HTML template; drama.mjs checks its data, and refuses it in any other format.
+    if (!TEMPLATES.includes(scene.template) && scene.template !== SHOT_TEMPLATE) {
+      errors.push({ path: `${where}.template`, message: `must be one of ${TEMPLATES.join(", ")}${format === DRAMA_FORMAT ? ` or ${SHOT_TEMPLATE}` : ""}` });
     }
     if (!isObject(scene.data)) errors.push({ path: `${where}.data`, message: "must be an object (the template's fields)" });
     if (scene.claims !== undefined && (!Array.isArray(scene.claims) || scene.claims.some((claim) => !isText(claim)))) {
@@ -273,7 +283,8 @@ export function validateVideo(doc) {
       });
     }
   }
-  validateScenes(doc.scenes, errors);
+  validateScenes(doc.scenes, errors, doc.format);
+  validateDrama(doc, errors, validateVoice);
   return errors;
 }
 

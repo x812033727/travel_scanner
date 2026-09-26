@@ -1,6 +1,6 @@
 # Mokaair 影片頻道規格
 
-這份是頻道的「長相」：每支全自動影片都照這裡做，改這裡等於改整個頻道。產線怎麼跑寫在 skill `youtube-video`（`.agents/skills/youtube-video/references/automated.md`），為什麼這樣設計、YouTube 與 Azure 的官方規則寫在 [`DESIGN.md`](DESIGN.md)。
+這份是頻道的「長相」：每支全自動影片都照這裡做，改這裡等於改整個頻道。產線怎麼跑寫在 skill `youtube-video`（`.agents/skills/youtube-video/references/automated.md`），為什麼這樣設計、YouTube 與 Azure 的官方規則寫在 [`DESIGN.md`](DESIGN.md)。AI 漫劇（`format: "drama"`：AI 生成的鏡頭片段、多角色配音、燒錄字幕、配樂）是第二種格式，設計在 [`DRAMA.md`](DRAMA.md)；下面沒有另外說的地方，漫劇都照這份。
 
 ## 資料夾
 
@@ -22,8 +22,9 @@
 | 聲音 | AAC-LC 立體聲 48 kHz 384 kbps；兩段式 loudnorm 到 −14 LUFS、峰值 −1 dBTP | 同上 |
 | 容器 | MP4，faststart | 同上 |
 | 縮圖 | 1280×720 JPEG | `tools/video/render/` |
-| 長度 | 8–12 分鐘（`video.json` 的 `target_minutes` 可以改） | `tools/video/core/schema.mjs` |
-| 字幕 | **不燒錄**；五條 CC：zh-TW、en、ja、ko、zh-CN | `tools/video/core/captions.mjs` |
+| 長度 | 8–12 分鐘（`video.json` 的 `target_minutes` 可以改）；漫劇一集 2–4 分鐘 | `tools/video/core/schema.mjs` |
+| 字幕 | 五條 CC：zh-TW、en、ja、ko、zh-CN。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/drama.mjs` |
+| 配樂 | 投影片影片沒有；漫劇有（`music`，由 Lyria 生成或站主提供有授權的檔案），在對白下自動壓低 | `tools/video/core/drama.mjs` |
 
 每句旁白和它後面的停頓，都補到整格（48,000 Hz ÷ 30 fps ＝ 每格 1,600 個取樣），所以十分鐘的影片不會有影音漂移。
 
@@ -63,7 +64,7 @@
 
 - **沒有片頭動畫**。第一個場景就是開場鉤子（`title` 版型）：第一句是觀眾的問題或一個反直覺的說法，30 秒內說完「為什麼該看、會得到什麼、怎麼進行」。
 - **片尾**是 `outro` 版型：回到開場的問題給一句答案，只給一個下一步（對應的 Mokaair 文章、下一支影片、或一個具體的留言問題），畫面上有 `mokaair.com`。
-- 不放背景音樂。之後要放，只用 YouTube 音效庫。
+- 投影片影片不放背景音樂。漫劇的配樂規則在 [`DRAMA.md`](DRAMA.md)。
 
 ## 聲音
 
