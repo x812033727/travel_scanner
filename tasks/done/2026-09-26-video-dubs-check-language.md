@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-video-dubs-check-language
 title: Video dubs: transcribe in the dub's language so check-audio can judge en, ja, ko and zh-CN tracks
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-fable-5-1-video-dubs-check
 claimed_at: 2026-09-26T18:23:49Z
 created_at: 2026-09-26T17:58:54Z
-completed_at:
+completed_at: 2026-09-26T19:48:02Z
 branch: claude/video-dubs-check-language
 depends_on: []
 scope:
