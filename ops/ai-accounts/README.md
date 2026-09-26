@@ -77,7 +77,10 @@ and puts it back if that one does not finish.
   fills the gaps itself. When the page is opened and an account's snapshot is missing or
   older than 30 minutes, when the refresh button is pressed (at most once a minute per
   account), and right after a login, it opens Claude Code once in a pseudo-terminal in
-  `/var/lib/mokaair-ai-accounts/home/usage-probe`:
+  `/var/lib/mokaair-ai-accounts/home/usage-probe`. The button does nothing while the
+  snapshot is under 60 seconds old: the recorder rewrites unchanged numbers only once a
+  minute, so a probe then would send its message and report a failure while the page was
+  current.
   - `--restricted` loads none of the owner's settings, so no hooks, push notifications or
     Remote Control session, and no tool that runs code. The recorder comes in through
     `--settings`, and `--model haiku` keeps the fallback cheap.
