@@ -1,13 +1,13 @@
 ---
 id: 2026-09-25-run-the-site-s-claude-features
 title: Run the site's Claude features on the host's subscription accounts
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-news-subscription
 claimed_at: 2026-09-25T12:49:48Z
 created_at: 2026-09-25T12:49:43Z
-completed_at:
+completed_at: 2026-09-26T00:56:13Z
 branch: claude/site-ai-on-claude-subscription
 depends_on: []
 scope:
@@ -51,23 +51,23 @@ that route for the rest of the site.
 
 ## Definition of done
 
-- [ ] The "AI vendors" card has a Claude connection setting (API key or subscription accounts)
+- [x] The "AI vendors" card has a Claude connection setting (API key or subscription accounts)
       and a usage cap. Only the owner can change them.
-- [ ] In subscription mode, the guide search, intros, guide review, simplified names, news and
+- [x] In subscription mode, the guide search, intros, guide review, simplified names, news and
       video "anthropic" stages all run through the agent. When no account can serve, they fall
       back to MiniMax.
-- [ ] Two runs can go at once on different accounts, and a run that hits the limit moves on to
+- [x] Two runs can go at once on different accounts, and a run that hits the limit moves on to
       the next account instead of pausing the whole request.
-- [ ] The worker and news-worker containers can reach the agent's socket.
-- [ ] Readiness checks and the card's connection test understand subscription mode.
+- [x] The worker and news-worker containers can reach the agent's socket.
+- [x] Readiness checks and the card's connection test understand subscription mode.
 
 ## Steps
 
-- [ ] Agent: per-account concurrency, a bounded wait, and rotation when a run hits the limit.
-- [ ] Site: the connection setting, `vendor_ready`, `SubscriptionResearchProvider`, and the
+- [x] Agent: per-account concurrency, a bounded wait, and rotation when a run hits the limit.
+- [x] Site: the connection setting, `vendor_ready`, `SubscriptionResearchProvider`, and the
       MiniMax fallback.
-- [ ] Admin card, readiness checks, connection test, and web copy in five languages.
-- [ ] Compose mounts, docs, and tests.
+- [x] Admin card, readiness checks, connection test, and web copy in five languages.
+- [x] Compose mounts, docs, and tests.
 
 ## How to verify
 
@@ -82,3 +82,10 @@ that route for the rest of the site.
   `--disable shell_tool` and web-search flags could not be tried on 2026-09-25 because every
   Codex account was at 100% until 9/27. That work has its own ticket.
 - The reader-facing planner and the trip parser are out of scope; they get a separate ticket.
+- Merged as #761 and live since the deploy of 5591af82 on 2026-09-26. The agent in /opt was
+  reinstalled at 00:37 UTC that day with the per-account runs; #774 then changed the pick to
+  "each account until it is full, A -> B -> ... -> A".
+- Probe on 2026-09-26 from the news-worker container through the socket: account C,
+  claude-sonnet-5, 4 s. Asked to read /etc/hostname and run `id`, it answered "unavailable"
+  for both, so the model has no tools.
+- The card still said 「Claude 連線方式: API 金鑰」 after the deploy; the owner switches it.
