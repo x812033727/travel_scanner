@@ -8,24 +8,16 @@ import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/
 import {
   control, type Project, type ProjectSummary, REFRESH_MS, ReviewCard, SLUG, fileUrl, useRefresh, useWhen,
 } from "@/components/admin-video-review-card";
+import { AdminVideoSeries } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 
 // The review card, the gate bodies and the shared types live in admin-video-review-card.tsx;
-// these two are re-exported so older imports keep working.
+// these two are re-exported so older imports keep working. The drama tab (series and one-off
+// episodes) is admin-video-series.tsx; this file holds the tutorial list, the video page and the tabs.
 export { REFRESH_MS, fileUrl };
-
-// The owner's drama requests (apps/api/app/video_automation/requests.py): an episode to make next,
-// which the worker on the host claims before any scheduled draft (docs/videos/DRAMA.md).
-type RequestStatus = "queued" | "started" | "done" | "cancelled";
-type DramaRequest = {
-  id: string; premise: string; title: string | null; source_guide: string | null; style_preset: string; target_minutes: number;
-  note: string | null; status: RequestStatus; slug: string | null; created_at: string; started_at: string | null; finished_at: string | null; cancelled_at: string | null;
-};
-const REQUEST_PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
-const GUIDE_SLUG = /^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$/;
 
 /** Stop a video for good, with a reason; the pipeline leaves it and its topic stays taken. */
 function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void }) {
@@ -77,6 +69,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {project && <>
       <header className="grid gap-2"><h2 className="text-2xl font-bold">{project.title}</h2>
+        {project.series_slug && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
         {project.youtube_video_id && <p className="text-sm">{t("youtube", { id: project.youtube_video_id })} · {t("previewsGone")}</p>}
         {project.dropped_at && <p role="status" className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6">
           <strong>{t("droppedAt", { time: when(project.dropped_at) })}</strong>
@@ -97,140 +90,34 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   </section>;
 }
 
-/** Ask for an episode: a premise (or an article to adapt), a style and a length; the worker starts it next. */
-function NewDramaForm({ onFiled }: { onFiled: () => void }) {
-  const t = useTranslations("admin.videoReviews");
-  const [premise, setPremise] = useState("");
-  const [title, setTitle] = useState("");
-  const [guide, setGuide] = useState("");
-  const [preset, setPreset] = useState<(typeof REQUEST_PRESETS)[number]>("cinematic-3d");
-  const [minutes, setMinutes] = useState(3);
-  const [note, setNote] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  const guideOk = !guide.trim() || GUIDE_SLUG.test(guide.trim());
-  const file = async () => {
-    setBusy(true);
-    setError("");
-    try {
-      await api("/admin/video-automation/drama-requests", {
-        method: "POST",
-        body: JSON.stringify({ premise: premise.trim(), title: title.trim() || undefined, source_guide: guide.trim() || undefined, style_preset: preset, target_minutes: minutes, note: note.trim() || undefined }),
-      });
-      setPremise(""); setTitle(""); setGuide(""); setNote("");
-      onFiled();
-    } catch (problem) {
-      setError(t("newDramaError", { message: problem instanceof Error ? problem.message : "" }));
-    } finally {
-      setBusy(false);
-    }
-  };
-  return <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
-    <summary className="cursor-pointer text-lg font-bold">{t("newDrama")}</summary>
-    <form className="mt-4 grid gap-3" onSubmit={(event) => { event.preventDefault(); void file(); }} aria-label={t("newDrama")}>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("newDramaHelp")}</p>
-      <label className="grid gap-2 text-sm font-semibold">{t("premise")}
-        <textarea className={control} rows={4} value={premise} disabled={busy} maxLength={4000} placeholder={t("premisePlaceholder")} onChange={(event) => setPremise(event.target.value)} />
-      </label>
-      <div className="grid gap-3 md:grid-cols-2">
-        <label className="grid gap-2 text-sm font-semibold">{t("workingTitle")}<input className={control} value={title} disabled={busy} maxLength={200} onChange={(event) => setTitle(event.target.value)} /></label>
-        <label className="grid gap-2 text-sm font-semibold">{t("sourceGuide")}<input className={control} value={guide} disabled={busy} placeholder={t("sourceGuidePlaceholder")} aria-invalid={!guideOk} onChange={(event) => setGuide(event.target.value)} /></label>
-        <label className="grid gap-2 text-sm font-semibold">{t("stylePreset")}
-          <select className={control} value={preset} disabled={busy} onChange={(event) => setPreset(event.target.value as (typeof REQUEST_PRESETS)[number])}>
-            {REQUEST_PRESETS.map((each) => <option key={each} value={each}>{t(`presets.${each}`)}</option>)}
-          </select>
-        </label>
-        <label className="grid gap-2 text-sm font-semibold">{t("targetMinutes")}<input className={control} type="number" min={1} max={8} value={minutes} disabled={busy} onChange={(event) => setMinutes(Number(event.target.value))} /></label>
-      </div>
-      <label className="grid gap-2 text-sm font-semibold">{t("requestNote")}<textarea className={control} rows={2} value={note} disabled={busy} maxLength={2000} placeholder={t("requestNotePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
-      {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-      <div><Button type="submit" disabled={busy || !premise.trim() || !guideOk || minutes < 1 || minutes > 8}>{busy ? t("saving") : t("fileRequest")}</Button></div>
-    </form>
-  </details>;
-}
-
-const requestTone: Record<RequestStatus, string> = { queued: "pending", started: "active", done: "inactive", cancelled: "inactive" };
-
-/** What the owner asked for and where each request stands; a queued one can still be withdrawn. */
-function DramaQueue({ requests, canManage, onChanged, onOpen }: { requests: DramaRequest[]; canManage: boolean; onChanged: () => void; onOpen: (slug: string) => void }) {
-  const t = useTranslations("admin.videoReviews");
-  const when = useWhen();
-  const [busy, setBusy] = useState("");
-  const [error, setError] = useState("");
-  const cancel = async (request: DramaRequest) => {
-    if (!window.confirm(t("cancelConfirm"))) return;
-    setBusy(request.id);
-    setError("");
-    try {
-      await api(`/admin/video-automation/drama-requests/${request.id}`, { method: "DELETE" });
-      onChanged();
-    } catch (problem) {
-      setError(t("cancelError", { message: problem instanceof Error ? problem.message : "" }));
-    } finally {
-      setBusy("");
-    }
-  };
-  if (!requests.length) return null;
-  return <section className="grid gap-3" aria-label={t("queue")}>
-    <h3 className="text-lg font-bold">{t("queue")}</h3>
-    {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-    <ul className="grid gap-3">{requests.map((request) => <li key={request.id} className="grid gap-2 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
-      <span className="flex flex-wrap items-center gap-3">
-        <AdminStatusPill status={requestTone[request.status]}>{t(`requestStatuses.${request.status}`)}</AdminStatusPill>
-        <span className="font-bold">{request.title || request.premise.slice(0, 40)}</span>
-        <span className="text-sm text-[var(--muted)]">{t(`presets.${request.style_preset}`)} · {t("minutes", { minutes: request.target_minutes })} · {t("filedAt", { time: when(request.created_at) })}</span>
-      </span>
-      <span className="whitespace-pre-wrap text-sm leading-6">{request.premise}</span>
-      {request.source_guide && <span className="text-sm text-[var(--muted)]">{t("adaptsArticle", { slug: request.source_guide })}</span>}
-      {request.note && <span className="text-sm text-[var(--muted)]">{t("requestNote")}: {request.note}</span>}
-      <span className="flex flex-wrap gap-3">
-        {request.slug && <Button secondary onClick={() => onOpen(request.slug as string)}>{t("openVideo", { slug: request.slug })}</Button>}
-        {canManage && request.status === "queued" && <Button secondary disabled={busy === request.id} onClick={() => void cancel(request)}>{busy === request.id ? t("saving") : t("cancelRequest")}</Button>}
-      </span>
-    </li>)}</ul>
-  </section>;
-}
-
+/** The tutorials (slides videos): dramas live on their own tab. */
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
-  const manage = useAdminActionGuard("content.manage");
   const [projects, setProjects] = useState<ProjectSummary[] | null>(null);
-  const [requests, setRequests] = useState<DramaRequest[]>([]);
   const [error, setError] = useState("");
   const load = useCallback(() => {
-    api<ProjectSummary[]>("/admin/videos").then((value) => { setProjects(value); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
-    // A site from before the drama route answers 404 here: the queue then simply stays empty.
-    // Finished and withdrawn requests drop off the queue after a week; the videos they became stay in the list.
-    api<{ requests: DramaRequest[] }>("/admin/video-automation/drama-requests").then((value) => {
-      const recent = Date.now() - 7 * 24 * 3600_000;
-      setRequests((value.requests ?? []).filter((request) => request.status === "queued" || request.status === "started" || Date.parse(request.created_at) > recent));
-    }).catch(() => setRequests([]));
+    api<ProjectSummary[]>("/admin/videos").then((value) => { setProjects(value.filter((project) => project.format !== "drama")); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
   }, []);
   useRefresh(load);
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
-  const controls = <>
-    {manage.allowed && <NewDramaForm onFiled={load} />}
-    <DramaQueue requests={requests} canManage={manage.allowed} onChanged={load} onOpen={onOpen} />
-  </>;
-  if (projects && projects.length === 0) return <div className="grid gap-4">{controls}<AdminEmptyState title={t("empty")} detail={t("emptyDetail")} /></div>;
-  return <div className="grid gap-4">{controls}<ul className="grid gap-4" aria-label={t("listTitle")}>
+  if (projects && projects.length === 0) return <AdminEmptyState title={t("empty")} detail={t("emptyDetail")} />;
+  return <ul className="grid gap-4" aria-label={t("listTitle")}>
     {(projects ?? []).map((project) => <li key={project.slug}>
       <button type="button" onClick={() => onOpen(project.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
         <span className="flex flex-wrap items-center gap-3"><Clapperboard aria-hidden size={20} className="text-[var(--teal)]" /><span className="text-lg font-bold">{project.title}</span>
-          {project.format === "drama" && <AdminStatusPill status="active">{t("drama")}</AdminStatusPill>}
           {project.dropped_at
             ? <AdminStatusPill status="inactive">{t("dropped")}</AdminStatusPill>
             : <AdminStatusPill status={project.pending ? "pending" : "inactive"}>{project.pending ? t("pending", { count: project.pending }) : t("noPendingShort")}</AdminStatusPill>}
         </span>
-        <span className="text-sm text-[var(--muted)]">{t("progress", { done: project.checklist.filter((item) => item.done).length, total: project.checklist.length })} · {t("lastSynced", { time: when(project.last_synced_at) })}{project.format === "drama" && typeof project.media_usd === "number" && ` · ${t("spend", { usd: project.media_usd.toFixed(2), seconds: project.clip_seconds ?? 0 })}`}</span>
+        <span className="text-sm text-[var(--muted)]">{t("progress", { done: project.checklist.filter((item) => item.done).length, total: project.checklist.length })} · {t("lastSynced", { time: when(project.last_synced_at) })}</span>
         {project.stage && !project.youtube_video_id && !project.dropped_at && <span className="text-sm text-[var(--muted)]">{t("currentStep", { step: project.checklist.find((item) => !item.done)?.label ?? project.stage })}</span>}
       </button>
     </li>)}
-  </ul></div>;
+  </ul>;
 }
 
-const TABS = ["reviews", "settings"] as const;
+const TABS = ["reviews", "drama", "settings"] as const;
 
 export function AdminVideoReviews() {
   const t = useTranslations("admin.videoReviews");
@@ -239,8 +126,10 @@ export function AdminVideoReviews() {
   if (slug) return <ProjectDetail slug={slug} onBack={() => setSlug("")} />;
   return <div className="mt-6">
     <Tabs value={tab} onChange={(value) => setTab(value as (typeof TABS)[number])} label={t("tabsLabel")}
-      items={[{ value: "reviews", label: t("tabReviews") }, { value: "settings", label: t("tabSettings") }]}>
-      {tab === "reviews" ? <ProjectList onOpen={setSlug} /> : <AdminVideoSettings />}
+      items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "settings", label: t("tabSettings") }]}>
+      {tab === "reviews" && <ProjectList onOpen={setSlug} />}
+      {tab === "drama" && <AdminVideoSeries onOpenVideo={setSlug} />}
+      {tab === "settings" && <AdminVideoSettings />}
     </Tabs>
   </div>;
 }
