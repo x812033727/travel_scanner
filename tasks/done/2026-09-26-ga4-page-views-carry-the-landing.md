@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-ga4-page-views-carry-the-landing
 title: GA4 page views carry the landing page's campaign tags
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-26T04:53:27Z
 created_at: 2026-09-26T03:34:20Z
-completed_at:
+completed_at: 2026-09-26T05:16:59Z
 branch: claude/ga4-campaign-tags
 depends_on:
   - 2026-09-26-article-pages-keep-their-query-string
