@@ -578,6 +578,14 @@
         "api_key": "API キー",
         "subscription": "サブスクリプションアカウント（ホストの Claude Code）"
       }
+    },
+    "ai_subscription_fallback": {
+      "label": "サブスクリプションが全て上限のとき",
+      "help": "すべての Claude アカウントが上限に達したときの動作です。「アカウントの回復を待つ」：ニュースはキューに戻り、30 分ごとに再試行します。ほかの機能はその呼び出しが失敗します。「MiniMax を使う」：すぐに MiniMax で実行します。速いですが品質は劣ります。変更できるのはサイトオーナーだけです。",
+      "options": {
+        "wait": "アカウントの回復を待つ",
+        "minimax": "MiniMax を使う"
+      }
     }
   },
   "hotspotTabs": {
