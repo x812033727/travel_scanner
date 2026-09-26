@@ -93,19 +93,17 @@ def _exercise(connection: Connection) -> None:
     assert "youtube_publish_at" in columns(connection, PROJECTS)
     assert ID_CHECK in checks(connection, PROJECTS)
     # An existing settings row reads the defaults: a blank stance, the switches on, the look off.
-    connection.execute(
-        sa.text(
-            f"INSERT INTO {SETTINGS} (id, created_at, updated_at) VALUES (1, now(), now()) "
-            "ON CONFLICT (id) DO NOTHING"
-        )
-    )
-    row = connection.execute(
-        sa.text(
-            f"SELECT channel_stance, auto_pick_outline, auto_approve_final, auto_pick_look "
-            f"FROM {SETTINGS} WHERE id = 1"
-        )
-    ).one()
-    assert tuple(row) == ("", True, True, False)
+    # (The older columns have no server defaults, so a bare INSERT cannot make a row here; the
+    # server defaults the migration set are what an existing row would read.)
+    defaults = {
+        column["name"]: str(column["default"])
+        for column in sa.inspect(connection).get_columns(SETTINGS)
+        if column["name"] in SETTINGS_COLUMNS
+    }
+    assert defaults["channel_stance"] in ("''::text", "''")
+    assert defaults["auto_pick_outline"] == "true"
+    assert defaults["auto_approve_final"] == "true"
+    assert defaults["auto_pick_look"] == "false"
     # A YouTube id is eleven characters; the check holds new writes to it.
     connection.execute(
         sa.text(
