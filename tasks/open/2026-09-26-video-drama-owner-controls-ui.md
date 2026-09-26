@@ -15,7 +15,6 @@ depends_on:
 scope:
   - apps/web/components/admin-video-reviews.tsx
   - apps/web/components/admin-video-reviews.test.tsx
-  - apps/web/app/api/video/automation
   - apps/web/messages/en/admin.json
   - apps/web/messages/ja/admin.json
   - apps/web/messages/ko/admin.json
