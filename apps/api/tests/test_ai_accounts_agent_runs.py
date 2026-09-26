@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import sys
 import textwrap
+import threading
 import time
 from pathlib import Path
 from typing import Any
@@ -227,6 +228,27 @@ class Accounts:
         return True
 
 
+class ProbingAccounts(Accounts):
+    """Records each usage probe, which lasts until ``release`` is set."""
+
+    def __init__(self, usage: dict[str, float]) -> None:
+        super().__init__(usage)
+        self.probed: list[str] = []
+        self.release = threading.Event()
+
+    def details(self, slot: str) -> dict[str, Any]:
+        # A fresh snapshot, so looking at the accounts starts no probe of its own.
+        view = super().details(slot)
+        if view["usage"] is not None:
+            view["usage"]["recorded_at"] = time.time()
+        return view
+
+    def refresh_usage(self, slot: str) -> bool:
+        self.probed.append(slot)
+        self.release.wait(10)
+        return True
+
+
 def _signed(application: AgentApplication, payload: dict[str, Any]) -> tuple[int, dict[str, Any]]:
     body = json.dumps(payload).encode()
     timestamp, nonce = str(int(time.time())), uuid4().hex
@@ -332,3 +354,71 @@ def test_two_runs_on_different_accounts_go_side_by_side(tmp_path: Path) -> None:
     assert not config.current_path("claude").exists()
     application._release_run_slot(first, spent=False)
     assert application._claim_run_slot(_request()) == "a"
+
+
+def _wait_until(check: Any, seconds: float = 5.0) -> None:
+    deadline = time.monotonic() + seconds
+    while not check():
+        assert time.monotonic() < deadline, "condition not met in time"
+        time.sleep(0.02)
+
+
+def test_a_probe_keeps_runs_off_its_account_and_the_turn_waits_for_it(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    claude = ProbingAccounts({"a": 10, "b": 20})
+    application = AgentApplication(config, claude=claude, codex=Accounts({}))  # type: ignore[arg-type]
+    config.current_path("claude").write_text("a\n", encoding="utf-8")
+    assert application.maybe_refresh_usage("claude", "a", claude.status("a"), force=True)
+    _wait_until(lambda: claude.probed == ["a"])
+    # With no time to wait, the run goes beside a's probe, which holds a's OAuth token.
+    assert application._claim_run_slot(_request(queue_seconds=0)) == "b"
+    assert config.current_path("claude").read_text(encoding="utf-8").strip() == "a"
+    application._release_run_slot("b", spent=False)
+    # With time to wait, it is still a's turn: the run waits for the probe to end.
+    claimed: list[str] = []
+    waiter = threading.Thread(
+        target=lambda: claimed.append(application._claim_run_slot(_request(queue_seconds=30)))
+    )
+    waiter.start()
+    time.sleep(0.3)
+    assert claimed == []
+    claude.release.set()
+    waiter.join(10)
+    assert claimed == ["a"]
+    assert config.current_path("claude").read_text(encoding="utf-8").strip() == "a"
+
+
+def test_no_probe_starts_on_an_account_with_a_run(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    claude = ProbingAccounts({"a": 10})
+    claude.release.set()
+    application = AgentApplication(config, claude=claude, codex=Accounts({}))  # type: ignore[arg-type]
+    assert application._claim_run_slot(_request()) == "a"
+    assert not application.maybe_refresh_usage("claude", "a", claude.status("a"), force=True)
+    assert claude.probed == [] and not application.usage_refreshing("claude", "a")
+    application._release_run_slot("a", spent=False)
+    assert application.maybe_refresh_usage("claude", "a", claude.status("a"), force=True)
+    _wait_until(lambda: claude.probed == ["a"])
+
+
+def test_a_run_waiting_for_the_only_account_gets_it_when_the_probe_ends(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    claude = ProbingAccounts({"b": 20})
+    application = AgentApplication(config, claude=claude, codex=Accounts({}))  # type: ignore[arg-type]
+    assert application.maybe_refresh_usage("claude", "b", claude.status("b"), force=True)
+    _wait_until(lambda: claude.probed == ["b"])
+    with pytest.raises(RunRefused) as busy:
+        application._claim_run_slot(_request(queue_seconds=0))
+    assert busy.value.code == "subscription_busy"
+    claimed: list[str] = []
+    waiter = threading.Thread(
+        target=lambda: claimed.append(application._claim_run_slot(_request(queue_seconds=30)))
+    )
+    waiter.start()
+    time.sleep(0.3)
+    assert claimed == []
+    started = time.monotonic()
+    claude.release.set()
+    waiter.join(10)
+    assert claimed == ["b"]
+    assert time.monotonic() - started < 2, "the probe's end wakes the waiting run"
