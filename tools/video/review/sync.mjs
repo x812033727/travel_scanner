@@ -15,7 +15,8 @@ import { GATES, approvalState, approve, readApprovals, sha256File } from "../cor
 import { isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
-import { formatClock } from "../core/timeline.mjs";
+import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
+import { estimateTimeline, formatClock } from "../core/timeline.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
@@ -23,7 +24,8 @@ import { USER_AGENT } from "../tts/client.mjs";
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
 // look and storyboard are the drama format's gates (docs/videos/DRAMA.md).
-export const REVIEW_GATES = ["outline", "look", "audio", "storyboard", "final", "publish"];
+// script is a series episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md).
+export const REVIEW_GATES = ["outline", "script", "look", "audio", "storyboard", "final", "publish"];
 const UPLOAD_CHECKLIST = path.join("upload", "UPLOAD.md");
 
 // The owner reads the site in Traditional Chinese; status's step ids are English. Every step of
@@ -33,6 +35,7 @@ export const STEP_LABELS = {
   "outline approved": "站主選好大綱",
   "script passes lint": "稿子通過檢查",
   "fact-checked": "查核完成",
+  "script approved": "劇本核准",
   "look generated": "角色設定圖",
   "look approved": "站主選好設定圖",
   "narration synthesized": "旁白合成",
@@ -204,7 +207,7 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
  * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut.
  */
 async function nextGate(places, workdir, doc) {
-  const order = isDrama(doc) ? ["outline", "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  const order = isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
@@ -225,6 +228,31 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
     const brief = readFileSync(file, "utf8");
     const options = outlineOptions(brief);
     return { gate, content_sha256: await sha256File(file), summary: `企劃書與 ${options.length} 個大綱選項`, payload: { brief, options }, files: [] };
+  }
+  if (gate === "script") {
+    // Written afresh so the file always matches video.json; the same narrative gives the same
+    // bytes, so an approval already given stays valid.
+    const file = writeScreenplay(dir, doc);
+    const check = readJson(path.join(workdir, "review", "script-check.json"), null);
+    const scenes = scriptScenes(doc);
+    const lines = scenes.reduce((sum, scene) => sum + scene.lines.length, 0);
+    const timeline = estimateTimeline(doc);
+    const minutes = Number((timeline.total_frames / timeline.fps / 60).toFixed(1));
+    return {
+      gate,
+      content_sha256: await sha256File(file),
+      summary: `劇本 ${scenes.length} 場、${lines} 句，約 ${minutes} 分鐘${check?.coverage ? "；查核已對照細綱" : ""}`,
+      payload: {
+        scenes,
+        characters: (doc.characters ?? []).map(({ id, name }) => ({ id, name })),
+        minutes,
+        beats: project.series?.beats ?? null,
+        coverage: check?.coverage ?? null,
+        continuity_problems: check?.problems ?? [],
+        narrative_hash: narrativeHash(doc),
+      },
+      files: [],
+    };
   }
   if (gate === "audio") {
     const file = path.join(workdir, ARTIFACTS.timeline);
@@ -390,6 +418,7 @@ export async function reviewPush(args, ctx) {
         checklist: checklistFrom(status.steps),
         youtube_video_id: project.doc.youtube?.video_id || null,
         ...(sourceGuide ? { source_guide: sourceGuide } : {}),
+        ...(project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
       },
     });
     if (values["report-only"]) {

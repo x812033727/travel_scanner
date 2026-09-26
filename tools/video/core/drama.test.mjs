@@ -189,9 +189,10 @@ test("lint wants the drama brief sections and warns about an emotion an Azure vo
 test("a drama's status walks the media steps in order, each bound to its hashes", async () => {
   const box = sandbox("fixture-drama", "drama");
   const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
-  assert.deepEqual(stepsFor(dramaFixture()), DRAMA_STEPS);
+  assert.deepEqual(stepsFor(dramaFixture()), DRAMA_STEPS.filter((id) => id !== "script approved"), "a one-off drama has no script gate");
+  assert.deepEqual(stepsFor({ ...dramaFixture(), series: { slug: "xianxia", episode: 1, chapter: 1 } }), DRAMA_STEPS);
   assert.equal(stepsFor(fixture()), SLIDES_STEPS);
-  assert.deepEqual((await status()).steps.map((step) => step.id), DRAMA_STEPS);
+  assert.deepEqual((await status()).steps.map((step) => step.id), stepsFor(dramaFixture()));
   const places = { docDir: box.dir, workdir: box.workdir };
   mkdirSync(box.workdir, { recursive: true });
   await approve({ gate: "outline", ...places });
