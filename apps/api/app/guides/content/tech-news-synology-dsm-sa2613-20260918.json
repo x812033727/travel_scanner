@@ -1,0 +1,1195 @@
+{
+  "slug": "tech-news-synology-dsm-sa2613-20260918",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "tech",
+    "tech-news",
+    "software"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-18",
+  "featured": false,
+  "display_order": 338,
+  "locales": {
+    "zh-TW": {
+      "title": "Synology DSM 公告 SA-26:13：兩個免登入的 9.8 分漏洞，先對版本號再更新",
+      "description": "2026 年 9 月 18 日下午 4 點 17 分（台北時間），Synology 發布資安公告 Synology-SA-26:13，處理 DSM 的八個 CVE 編號，其中兩個評為 Critical、CVSS 3.1 為 9.8，不需要登入就可能被利用；公告的緩解措施欄寫 None。整理各版本線的修補版本，以及怎麼自己對照 NAS 目前的版本（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/tech-news-synology-dsm-sa2613-20260918/hero.jpg",
+        "alt": "原創插圖：一個四格儲存裝置外殼，其中兩格被標亮；箭頭指向一份版本清單，清單中一列被標亮，旁邊有一個打勾符號；不含商標或真實人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 18 日下午 4 點 17 分（台北時間），Synology 發布資安公告 Synology-SA-26:13 DSM，處理 DSM（DiskStation Manager，Synology NAS 的作業系統）的漏洞。這則公告的整體嚴重程度是 Critical、狀態是 Resolved；公告列出的八個 CVE 編號裡，兩個由 Synology 評為 Critical、CVSS 3.1 基本分數 9.8，屬於不需要登入的遠端攻擊者可利用的一組。處理方式是把 DSM 至少升到各版本線各自的修補版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 26 日查核，讀的是 Synology 的 SA-26:13 公告頁、兩筆 CVE 紀錄（CVE-2026-13684、CVE-2026-13639，含 CISA 補上的評估），以及 DSM 版本說明。本站沒有實際測試，也不提供替代做法；查不到答案的地方會直接寫查不到。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 18 日，Synology 發布資安公告 Synology-SA-26:13，處理 DSM 的八個 CVE 編號，其中兩個（CVE-2026-13684、CVE-2026-13639）由 Synology 評為 Critical、CVSS 3.1 基本分數都是 9.8，不需要登入。",
+            "其餘六個依序是 Important 兩個、Moderate 兩個、Low 兩個，多數需要已登入的使用者才能利用。",
+            "公告的緩解措施欄寫 None，處理方式是把 DSM 升到各版本線的修補版本：DSM 7.4 升到 7.4-90075 以上、DSM 7.3 升到 7.3.2-86009-4 以上、DSM 7.2.2 升到 7.2.2-72806-9 以上、DSM 7.2.1 升到 7.2.1-69057-12 以上。",
+            "CISA 在 CVE 紀錄補上的評估（台北 9 月 19 日凌晨）是 Exploitation none、Automatable yes、Technical Impact total，到 2026 年 9 月 26 日查核時沒有更新；早於 DSM 7.2.1 的版本，CVE 紀錄標示為 unknown（未知）。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 18 日的公告寫了什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的正式名稱是 Synology-SA-26:13 DSM，發布時間是 2026 年 9 月 18 日下午 4 點 17 分（台北時間，即 UTC+8），最後更新時間相同；頁尾 Revision 表只有第 1 版，日期同樣是 9 月 18 日。以公告頁查核到 2026 年 9 月 26 日，公告沒有改版；之後如有改版，讀者可以自己回頁面看 Last Updated 與 Revision 表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告把八個 CVE 分成三組。CVE-2026-13684、CVE-2026-13639、CVE-2026-13635 是遠端攻擊者可利用、不需要登入，後果依個別 CVE 不同，可能是讀寫任意檔案、造成阻斷服務，或取得非敏感資訊。CVE-2026-13673、CVE-2026-6205、CVE-2026-13666 要已登入的遠端使用者才能利用，其中一種要受害者點了分享網址才會發生。CVE-2026-13623、CVE-2026-13683 則要有管理員權限的已登入使用者才能利用，後果是讀寫有限的檔案或取得非敏感資訊。"
+        },
+        {
+          "type": "paragraph",
+          "text": "評為 Critical、CVSS 3.1 基本分數 9.8 的只有兩個：CVE-2026-13684 在 DSM 的 SCGI 元件，CVE-2026-13639 在 DSM 的登入邏輯，向量都有 AV:N、AC:L、PR:N、UI:N，即不需要權限、不需要使用者互動就能經網路利用。不需要登入的三個編號不能直接等同於「Critical 的兩個」：CVE-2026-13635 同樣不需要登入，卻只評為 Moderate，只讓攻擊者取得非敏感資訊。公告的緩解措施（Mitigation）欄寫 None。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "各版本線的修補版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的 Affected Products 表列出四條版本線，修補版本都寫「or above」（以上），詳見下表。每一列的 Severity 欄都寫 Critical，那是這條版本線的整體等級，不代表八個 CVE 全部都是 Critical。表上沒有列出 DSM 7.1、7.0 或 6.2；CVE 紀錄對早於 7.2.1 的版本標示的狀態是 unknown（未知），不是「不受影響」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSM 版本說明把這四個修補版本的日期列在 2026 年 6 月 16 日到 7 月 29 日之間，都早於公告 9 月 18 日的發布日；以這兩份來源查核到 2026 年 9 月 26 日，官方沒有說明原因，這裡不推論。版本說明的 Fixed Issues 欄位，三個 Update 版本寫的是修補另一則公告 Synology-SA-26:06，7.4-90075 寫的安全性修補是 Ghostscript 的 CVE-2023-43115 與「多個安全性弱點」，都沒有點名 SA-26:13；要求升到這些版本的是公告。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本線",
+            "公告要求的修補版本",
+            "版本說明上的寫法與日期（末列為 CVE 紀錄）"
+          ],
+          "rows": [
+            [
+              "DSM 7.4",
+              "7.4-90075 以上",
+              "7.4-90075，2026 年 6 月 16 日"
+            ],
+            [
+              "DSM 7.3",
+              "7.3.2-86009-4 以上",
+              "7.3.2-86009 Update 4，2026 年 7 月 29 日"
+            ],
+            [
+              "DSM 7.2.2",
+              "7.2.2-72806-9 以上",
+              "7.2.2-72806 Update 9，2026 年 6 月 30 日"
+            ],
+            [
+              "DSM 7.2.1",
+              "7.2.1-69057-12 以上",
+              "7.2.1-69057 Update 12，2026 年 6 月 30 日"
+            ],
+            [
+              "早於 DSM 7.2.1 的版本",
+              "公告未列",
+              "兩筆 CVE 紀錄標示為 unknown（未知）"
+            ]
+          ],
+          "caption": "依 Synology 資安公告 Synology-SA-26:13、DSM 版本說明與兩筆 CVE 紀錄整理，查核日 2026 年 9 月 26 日；版本說明上的修補版本日期都早於 9 月 18 日的公告發布日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎麼確認自己的 NAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認自己的 NAS，第一步是看目前的 DSM 版本號，對照上表公告要求的修補版本；查看版本號的畫面路徑，四份來源都沒有寫，這裡不猜測。DSM 7.3.2、7.2.2、7.2.1 三個 Update 版本的說明寫，NAS 可能因為更新還沒推到某個地區，或系統評估目前不需要更新，而不會通知使用者；沒有跳出通知不代表已經是修補版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "四個修補版本的更新都會重新啟動裝置。7.4-90075 的說明另寫，自動更新沒有執行時可到控制台（Control Panel）手動更新，裝了這個版本之後沒辦法降級。早於 DSM 7.2.1 的版本，公告沒有列，CVE 紀錄標示為 unknown（未知），這份公告對這些版本沒有給答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告本身沒有提供更新以外的做法，緩解措施欄寫的是 None（以公告頁查核到 2026 年 9 月 26 日）。公告與兩筆 CVE 紀錄也都沒有寫出受影響的裝置數量、地區分布，或任何跟台灣有關的資訊。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-synology-dsm-sa2613-20260918/diagram-1.svg",
+          "alt": "四格圖解：看版本號、對照修補版、手動更新、早於 7.2.1 的版本",
+          "width": 1600,
+          "height": 900,
+          "caption": "Synology 2026 年 9 月 18 日發布資安公告 Synology-SA-26:13 後，確認自己的 NAS 是否已裝上修補版本的四個步驟，依 Synology 資安公告、CVE 紀錄與 DSM 版本說明整理，查核日 2026 年 9 月 26 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「Critical」與「沒有已知利用」是什麼意思"
+        },
+        {
+          "type": "paragraph",
+          "text": "9.8 是 Synology 自己用 CVSS 3.1 算出來的評分，CVE 紀錄的 CNA（編號分配機構）也是 Synology，CISA 在 CVE 紀錄裡沒有另外給分數。其餘六個的 CVSS 3.1 分數依序是：CVE-2026-13673（Important、8.8，LDAP API，需登入）、CVE-2026-6205（Important、8.1，Upload API，需登入）、CVE-2026-13635（Moderate、5.3，Auth API，不需登入但只取得非敏感資訊）、CVE-2026-13623（Moderate、4.8，Theme API，需管理員權限）、CVE-2026-13666（Low、3.5，Sharing API，需登入且要受害者點了分享網址）、CVE-2026-13683（Low、2.7，EventScheduler API，需管理員權限）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 以 ADP 身分在兩筆 CVE 紀錄各補上一次 SSVC 評估，時間戳都在台北時間 9 月 19 日凌晨（美國時間仍是 9 月 18 日）：CVE-2026-13684 是凌晨 3 點 14 分，CVE-2026-13639 是 3 點 13 分。兩者的三個欄位都相同：Exploitation 是 none、Automatable 是 yes、Technical Impact 是 total；查核到 2026 年 9 月 26 日都沒有再更新。這三個值要一起看，不能只挑 none 說沒事，也不能反過來說確定沒有人利用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "還不知道的事，以及怎麼自己查"
+        },
+        {
+          "type": "paragraph",
+          "text": "還有幾件事查不到答案：公告沒有寫出漏洞是否已有公開的攻擊程式或概念驗證；Affected Products 表沒有列出受影響的機型，只列出版本線。公告也沒有說明發布日為什麼晚於版本說明上的修補版本日期，這裡不推論原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "讀者能自己做的查證，是回到 SA-26:13 公告頁看 Last Updated 與 Revision 表有沒有變成第 2 版，或回到 CVE-2026-13684、CVE-2026-13639 的紀錄看 SSVC 評估的三個值有沒有改變。查核日 2026 年 9 月 26 日的狀態不代表之後不會改變。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的 NAS 沒有跳出更新通知，是不是就代表沒事？",
+              "answer": "不一定。DSM 7.3.2、7.2.2、7.2.1 三個 Update 版本的說明寫，NAS 可能因為更新還沒推到你所在的地區，或系統評估目前不需要更新，而不會跳出通知；沒有收到通知不等於已經是修補版本，還是要自己看 DSM 目前的版本號，對照公告要求的四個修補版本。"
+            },
+            {
+              "question": "我用的是 DSM 7.1 或更舊的版本，會受影響嗎？",
+              "answer": "公告的 Affected Products 表沒有列出 DSM 7.1、7.0 或 6.2；兩筆 CVE 紀錄對早於 7.2.1 的版本，標示的狀態是 unknown（未知），不是「不受影響」，也不是「受影響」。以這份公告與兩筆 CVE 紀錄查核到 2026 年 9 月 26 日，都沒有給出答案。"
+            },
+            {
+              "question": "公告的緩解措施欄寫 None，是什麼意思？",
+              "answer": "代表 Synology 沒有在公告裡提供更新以外的做法（以公告頁查核到 2026 年 9 月 26 日）；處理方式就是把 DSM 至少升到公告列出的修補版本。"
+            },
+            {
+              "question": "有沒有證據顯示這些漏洞已經被利用？",
+              "answer": "CISA 在兩筆 CVE 紀錄各補上一次評估，時間戳是台北時間 9 月 19 日凌晨（美國時間 9 月 18 日），Exploitation（是否已知遭利用）欄位是 none；以這兩筆紀錄查核到 2026 年 9 月 26 日沒有更新。但同一份評估的 Automatable 是 yes、Technical Impact 是 total，這是那個時點的評估，不是保證，也不代表確定沒有人利用。"
+            },
+            {
+              "question": "為什麼修補版本在版本說明上的日期，比公告日期還早？",
+              "answer": "公告列出的四個修補版本，在 DSM 版本說明上的日期是 2026 年 6 月 16 日到 7 月 29 日之間，確實早於 9 月 18 日的公告發布日；以公告與 DSM 版本說明查核到 2026 年 9 月 26 日，兩者都沒有說明原因。"
+            },
+            {
+              "question": "兩個 Critical 漏洞分別在哪裡？",
+              "answer": "CVE-2026-13684 發生在 DSM 的 SCGI 元件，CVE-2026-13639 發生在 DSM 的登入邏輯；兩者的 CVSS 3.1 基本分數都是 9.8，向量都是不需要權限、不需要使用者互動，就能經網路利用，可能讓遠端攻擊者讀寫任意檔案並造成阻斷服務。公告沒有進一步說明攻擊手法，這裡也不解釋機制細節。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "先對版本號，再看有沒有通知",
+          "text": "這是一則 2026 年 9 月 18 日發布的資安公告，處理方式是把 DSM 至少升到公告列出的修補版本；公告的緩解措施欄寫 None，沒有提供其他暫時做法。三個 Update 版本的說明寫，NAS 可能不會主動通知這些更新，而且採取分地區推出，所以沒收到通知不代表已經是修補版本，建議直接比對 DSM 目前的版本號與文中表格。CISA 在 CVE 紀錄的評估（台北 9 月 19 日凌晨）是 Exploitation none、Automatable yes、Technical Impact total，以這兩筆紀錄查核到 2026 年 9 月 26 日沒有更新，這是那個時點的評估，不是保證。早於 DSM 7.2.1 的版本，CVE 紀錄標示為 unknown（未知），這份公告沒有給答案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新聞總整理：硬體、平台、電信與法規的重點",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Synology-SA-26:13 DSM",
+          "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13684（CVE 紀錄：CNA 為 Synology，含 CISA ADP Vulnrichment 評估）",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13639（CVE 紀錄：CNA 為 Synology，含 CISA ADP Vulnrichment 評估）",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Release Notes for DSM（DSM 版本說明頁載入的官方資料，en-global）",
+          "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "en": {
+      "title": "Synology Advisory SA-26:13: Two Unauthenticated 9.8 Flaws — Check Your Version Before Updating",
+      "description": "At 4:17 PM Taipei time on September 18, 2026, Synology published security advisory Synology-SA-26:13, addressing eight CVE entries in DSM — two rated Critical with a CVSS 3.1 score of 9.8, exploitable without authentication. The advisory's Mitigation field reads None. Here are the fixed releases for each branch and how to check your NAS's current version yourself (verified September 2026).",
+      "hero": {
+        "src": "/guides/tech-news-synology-dsm-sa2613-20260918/hero-en.jpg",
+        "alt": "Illustration: a four-bay storage enclosure with two bays highlighted; an arrow points to a version list with one row highlighted, and a checkmark beside it. No trademarks or people.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "At 4:17 PM Taipei time on September 18, 2026, Synology published security advisory Synology-SA-26:13 DSM, addressing vulnerabilities in DSM (DiskStation Manager, the operating system for Synology NAS devices). This advisory's overall severity is Critical and its status is Resolved. Of the eight CVE entries the advisory lists, two are rated Critical by Synology with a CVSS 3.1 base score of 9.8, and belong to the group exploitable by remote attackers without authentication. The fix is to upgrade DSM to at least the fixed release for each branch, or above."
+        },
+        {
+          "type": "paragraph",
+          "text": "The data in this article was verified on September 26, 2026, drawn from Synology's SA-26:13 advisory page, the two CVE records (CVE-2026-13684 and CVE-2026-13639, including the assessment CISA added), and the DSM release notes. This site has not tested this itself and does not offer workarounds; where an answer could not be found, that is stated directly."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 18, 2026, Synology published security advisory Synology-SA-26:13, addressing eight CVE entries in DSM. Two of them (CVE-2026-13684 and CVE-2026-13639) are rated Critical by Synology, each with a CVSS 3.1 base score of 9.8, and require no authentication.",
+            "The remaining six are rated, in order, Important (two), Moderate (two), and Low (two); most require an authenticated user to exploit.",
+            "The advisory's Mitigation field reads None. The fix is to upgrade DSM to the fixed release for each branch: DSM 7.4 to 7.4-90075 or above, DSM 7.3 to 7.3.2-86009-4 or above, DSM 7.2.2 to 7.2.2-72806-9 or above, and DSM 7.2.1 to 7.2.1-69057-12 or above.",
+            "The assessment CISA added to the CVE records (early morning of September 19, Taipei time) reads Exploitation none, Automatable yes, and Technical Impact total, and was unchanged as of the September 26, 2026 check. For versions earlier than DSM 7.2.1, the CVE records mark the status as unknown."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What the September 18 Advisory Says"
+        },
+        {
+          "type": "paragraph",
+          "text": "The advisory's formal name is Synology-SA-26:13 DSM, published at 4:17 PM Taipei time (UTC+8) on September 18, 2026, with the same Last Updated time; the Revision table at the bottom of the page shows only Revision 1, also dated September 18. As checked on the advisory page through September 26, 2026, the advisory had not been revised; if it is revised later, readers can check the page's own Last Updated field and Revision table."
+        },
+        {
+          "type": "paragraph",
+          "text": "The advisory groups the eight CVEs into three sets. CVE-2026-13684, CVE-2026-13639, and CVE-2026-13635 can be exploited by remote attackers without authentication; the consequences vary by CVE and may include reading or writing arbitrary files, causing denial of service, or obtaining non-sensitive information. CVE-2026-13673, CVE-2026-6205, and CVE-2026-13666 require an authenticated remote user, with one of them occurring only if the victim clicks a sharing URL. CVE-2026-13623 and CVE-2026-13683 require an authenticated user with administrator privileges, with consequences limited to reading or writing limited files or obtaining non-sensitive information."
+        },
+        {
+          "type": "paragraph",
+          "text": "Only two are rated Critical with a CVSS 3.1 base score of 9.8: CVE-2026-13684 in DSM's SCGI component, and CVE-2026-13639 in DSM's login logic. Both vectors have AV:N, AC:L, PR:N, UI:N — meaning they require no privileges and no user interaction to exploit over the network. The three entries that need no authentication should not be equated with \"the two Critical ones\": CVE-2026-13635 also needs no authentication, yet is rated only Moderate and lets an attacker obtain only non-sensitive information. The advisory's Mitigation field reads None."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "The Fixed Release for Each Branch"
+        },
+        {
+          "type": "paragraph",
+          "text": "The advisory's Affected Products table lists four release branches, with each fixed release written as \"or above\"; see the table below. Every row's Severity column reads Critical, which is the overall rating for that branch, not a claim that all eight CVEs are Critical. DSM 7.1, 7.0, and 6.2 are not listed in the table; for versions earlier than 7.2.1, the CVE records mark the status as unknown, not \"not affected.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "The DSM release notes date these four fixed releases between June 16 and July 29, 2026 — all earlier than the advisory's September 18 publication date. As checked against both sources through September 26, 2026, the official record does not explain why, and none is inferred here. In the release notes' Fixed Issues field, the three Update versions list fixes for a different advisory, Synology-SA-26:06; the security fixes listed for 7.4-90075 are Ghostscript's CVE-2023-43115 and \"multiple security vulnerabilities\" — neither names SA-26:13. It is the advisory that requires upgrading to these releases."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Release branch",
+            "Fixed release required by the advisory",
+            "How the release notes phrase it, with date (last row is the CVE record)"
+          ],
+          "rows": [
+            [
+              "DSM 7.4",
+              "7.4-90075 or above",
+              "7.4-90075, June 16, 2026"
+            ],
+            [
+              "DSM 7.3",
+              "7.3.2-86009-4 or above",
+              "7.3.2-86009 Update 4, July 29, 2026"
+            ],
+            [
+              "DSM 7.2.2",
+              "7.2.2-72806-9 or above",
+              "7.2.2-72806 Update 9, June 30, 2026"
+            ],
+            [
+              "DSM 7.2.1",
+              "7.2.1-69057-12 or above",
+              "7.2.1-69057 Update 12, June 30, 2026"
+            ],
+            [
+              "Versions earlier than DSM 7.2.1",
+              "Not listed in the advisory",
+              "Both CVE records mark the status as unknown"
+            ]
+          ],
+          "caption": "Compiled from Synology-SA-26:13, the DSM release notes, and the CVE records; checked September 26, 2026. Release-note dates for the four fixed releases predate the advisory."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to Check Your Own NAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "The first step in checking your own NAS is to look at your current DSM version number and compare it against the fixed release the advisory requires in the table above; none of the four sources state where in the interface to find the version number, so none is guessed here. The release notes for the three Update versions — DSM 7.3.2, 7.2.2, and 7.2.1 — state that the NAS may not notify you, either because the update has not yet reached your region or because the system has evaluated that no update is currently needed; not receiving a notification does not mean you are already on the fixed release."
+        },
+        {
+          "type": "paragraph",
+          "text": "Updating to any of the four fixed releases will restart the device. The 7.4-90075 release notes additionally state that if auto update does not run, you can perform a manual update in Control Panel, and that once this version is installed you cannot downgrade. For versions earlier than DSM 7.2.1, the advisory does not list them, and the CVE records mark the status as unknown; this advisory gives no answer for these versions."
+        },
+        {
+          "type": "paragraph",
+          "text": "The advisory itself provides no workaround beyond updating; the Mitigation field reads None (as checked on the advisory page through September 26, 2026). Neither the advisory nor the two CVE records state the number of affected devices, their regional distribution, or anything related to Taiwan."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-synology-dsm-sa2613-20260918/diagram-1-en.svg",
+          "alt": "Four-card diagram: check the version, match the release, update manually, and versions before 7.2.1",
+          "width": 1600,
+          "height": 900,
+          "caption": "Four steps for checking whether your NAS already has the fixed release installed, following Synology's September 18, 2026 security advisory Synology-SA-26:13, compiled from the Synology security advisory, the CVE records, and the DSM release notes; checked September 26, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What \"Critical\" and \"No Known Exploitation\" Mean"
+        },
+        {
+          "type": "paragraph",
+          "text": "9.8 is the score Synology itself calculated using CVSS 3.1; the CNA (CVE Numbering Authority) for the CVE records is also Synology, and CISA did not assign a separate score in the CVE records. The CVSS 3.1 scores for the remaining six, in order, are: CVE-2026-13673 (Important, 8.8, LDAP API, requires authentication), CVE-2026-6205 (Important, 8.1, Upload API, requires authentication), CVE-2026-13635 (Moderate, 5.3, Auth API, no authentication required but only obtains non-sensitive information), CVE-2026-13623 (Moderate, 4.8, Theme API, requires administrator privileges), CVE-2026-13666 (Low, 3.5, Sharing API, requires authentication and requires the victim to click a sharing URL), and CVE-2026-13683 (Low, 2.7, EventScheduler API, requires administrator privileges)."
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA, acting as the ADP, added one SSVC assessment to each of the two CVE records, both timestamped in the early morning of September 19 Taipei time (still September 18 in US time): 3:14 AM for CVE-2026-13684 and 3:13 AM for CVE-2026-13639. All three fields are the same for both: Exploitation is none, Automatable is yes, and Technical Impact is total; neither had been updated again as of the September 26, 2026 check. These three values need to be read together — you cannot pick out just \"none\" and call it fine, nor can you flip it around and say for certain that no one has exploited it."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What's Still Unknown, and How to Check It Yourself"
+        },
+        {
+          "type": "paragraph",
+          "text": "A few things could not be answered: the advisory does not state whether public exploit code or a proof of concept exists for these vulnerabilities; the Affected Products table lists only release branches, not affected models. The advisory also does not explain why its publication date is later than the fixed-release dates in the release notes, and no reason is inferred here."
+        },
+        {
+          "type": "paragraph",
+          "text": "What readers can check for themselves is going back to the SA-26:13 advisory page to see whether Last Updated and the Revision table have moved to Revision 2, or going back to the CVE-2026-13684 and CVE-2026-13639 records to see whether the three SSVC assessment values have changed. The status as of the September 26, 2026 check does not mean it will stay that way."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "My NAS hasn't shown an update notification — does that mean it's fine?",
+              "answer": "Not necessarily. The release notes for the three Update versions — DSM 7.3.2, 7.2.2, and 7.2.1 — state that the NAS may not show a notification because the update has not yet reached your region, or because the system has evaluated that no update is currently needed. Not receiving a notification does not mean you are already on the fixed release; you still need to check your DSM's current version number yourself against the four fixed releases the advisory requires."
+            },
+            {
+              "question": "I'm running DSM 7.1 or older — am I affected?",
+              "answer": "The advisory's Affected Products table does not list DSM 7.1, 7.0, or 6.2. For versions earlier than 7.2.1, both CVE records mark the status as unknown — not \"not affected,\" and not \"affected\" either. As checked against this advisory and the two CVE records through September 26, 2026, no answer is given."
+            },
+            {
+              "question": "The advisory's Mitigation field reads None — what does that mean?",
+              "answer": "It means Synology has not provided any workaround other than updating in the advisory (as checked on the advisory page through September 26, 2026); the fix is to upgrade DSM to at least the fixed release the advisory lists."
+            },
+            {
+              "question": "Is there evidence these vulnerabilities have already been exploited?",
+              "answer": "CISA added one assessment to each of the two CVE records, timestamped in the early morning of September 19 Taipei time (September 18 US time); the Exploitation field (whether exploitation is known) reads none, and neither record had been updated as of the September 26, 2026 check. But the same assessment's Automatable is yes and Technical Impact is total; this is the assessment at that point in time, not a guarantee, and it does not mean no one has definitely exploited it."
+            },
+            {
+              "question": "Why are the fixed-release dates in the release notes earlier than the advisory's date?",
+              "answer": "The four fixed releases the advisory lists are dated between June 16 and July 29, 2026 in the DSM release notes, which is indeed earlier than the advisory's September 18 publication date. As checked against the advisory and the DSM release notes through September 26, 2026, neither explains why."
+            },
+            {
+              "question": "Where are the two Critical vulnerabilities, specifically?",
+              "answer": "CVE-2026-13684 is in DSM's SCGI component, and CVE-2026-13639 is in DSM's login logic. Both have a CVSS 3.1 base score of 9.8, and both vectors require no privileges and no user interaction, and can be exploited over the network — potentially letting a remote attacker read or write arbitrary files and cause denial of service. The advisory does not further explain the attack method, and no mechanism details are explained here either."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Check Your Version Number First, Then Look for a Notification",
+          "text": "This is a security advisory published on September 18, 2026; the fix is to upgrade DSM to at least the fixed release the advisory lists. The advisory's Mitigation field reads None, with no other temporary workaround provided. The release notes for the three Update versions state that the NAS may not proactively notify you of these updates, and that they are rolled out by region, so not receiving a notification does not mean you are already on the fixed release — it's recommended to directly compare your DSM's current version number against the table in this article. CISA's assessment in the CVE records (early morning of September 19 Taipei time) is Exploitation none, Automatable yes, and Technical Impact total; neither record had been updated as of the September 26, 2026 check, and this is the assessment at that point in time, not a guarantee. For versions earlier than DSM 7.2.1, the CVE records mark the status as unknown, and this advisory gives no answer."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 Tech News Roundup: Key Points on Hardware, Platforms, Telecom, and Regulation",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU Cyber Resilience Act Reporting Obligations Begin September 11: Who Must Report, How Fast",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Synology-SA-26:13 DSM",
+          "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13684 (CVE record: CNA is Synology, includes the CISA ADP Vulnrichment assessment)",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13639 (CVE record: CNA is Synology, includes the CISA ADP Vulnrichment assessment)",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Release Notes for DSM (the official data loaded by the DSM release notes page, en-global)",
+          "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "ja": {
+      "title": "SynologyがDSM勧告SA-26:13を公表：認証不要のCVSS 9.8脆弱性2件、バージョン番号を確認してから更新を",
+      "description": "2026年9月18日午後4時17分（台北時間）、Synologyがセキュリティ勧告Synology-SA-26:13を公表し、DSMの8件のCVEに対応しました。うち2件はCriticalでCVSS 3.1スコアは9.8、認証なしで悪用される可能性があります。勧告のMitigation欄にはNoneと記載されています。各バージョン系列の修正版と、自分のNASの現在のバージョンを確認する方法を整理します（2026年9月確認）。",
+      "hero": {
+        "src": "/guides/tech-news-synology-dsm-sa2613-20260918/hero-ja.jpg",
+        "alt": "オリジナルイラスト：4ベイのストレージ筐体で、2つのベイが強調されている。矢印はバージョン一覧へ続き、一行が強調され、その横にチェックマークがある。商標や実在の人物は含まない。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026年9月18日午後4時17分（台北時間）、Synologyはセキュリティ勧告Synology-SA-26:13 DSMを公表し、DSM（DiskStation Manager、Synology製NASのオペレーティングシステム）の脆弱性に対応しました。この勧告の全体の深刻度はCritical、ステータスはResolvedです。勧告が挙げる8件のCVEのうち2件はSynologyによってCriticalと評価され、CVSS 3.1基本値は9.8で、認証不要でリモート攻撃者が悪用できるグループに属します。対処方法は、DSMを各バージョン系列それぞれの修正版以上に更新することです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事の内容は2026年9月26日に確認したもので、SynologyのSA-26:13勧告ページ、2件のCVE記録（CVE-2026-13684、CVE-2026-13639。CISAが追加した評価を含む）、およびDSMのリリースノートを読んでいます。当サイトは実機での検証を行っておらず、代替の対処法も提供しません。答えが見つからない箇所は、見つからないとそのまま記します。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026年9月18日、Synologyはセキュリティ勧告Synology-SA-26:13を公表し、DSMの8件のCVEに対応しました。うち2件（CVE-2026-13684、CVE-2026-13639）はSynologyによってCriticalと評価され、CVSS 3.1基本値はいずれも9.8で、認証は不要です。",
+            "残る6件は順にImportantが2件、Moderateが2件、Lowが2件で、大半はログイン済みのユーザーでなければ悪用できません。",
+            "勧告のMitigation欄はNoneと記載されており、対処方法はDSMを各バージョン系列の修正版に更新することです。DSM 7.4は7.4-90075以上、DSM 7.3は7.3.2-86009-4以上、DSM 7.2.2は7.2.2-72806-9以上、DSM 7.2.1は7.2.1-69057-12以上に更新します。",
+            "CISAがCVE記録に追加した評価（台北時間9月19日未明）はExploitation none、Automatable yes、Technical Impact totalで、2026年9月26日の確認時点まで更新されていません。DSM 7.2.1より前のバージョンについて、CVE記録はunknown（不明）と表示しています。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月18日の勧告に書かれていること"
+        },
+        {
+          "type": "paragraph",
+          "text": "勧告の正式名称はSynology-SA-26:13 DSM、公表時刻は2026年9月18日午後4時17分（台北時間、UTC+8）で、最終更新時刻も同じです。ページ末尾のRevision表はRevision 1のみで、日付も9月18日です。勧告ページを2026年9月26日まで確認したところ、勧告は改訂されていません。今後改訂された場合は、読者自身がページのLast UpdatedとRevision表を確認できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "勧告は8件のCVEを3グループに分けています。CVE-2026-13684、CVE-2026-13639、CVE-2026-13635はリモート攻撃者が認証なしで悪用でき、影響はCVEごとに異なり、任意のファイルの読み書き、サービス拒否の発生、または非機密情報の取得のいずれかとなる可能性があります。CVE-2026-13673、CVE-2026-6205、CVE-2026-13666は認証済みのリモートユーザーでなければ悪用できず、そのうち1件は被害者が共有URLをクリックした場合にのみ発生します。CVE-2026-13623、CVE-2026-13683は管理者権限を持つ認証済みユーザーでなければ悪用できず、影響は限られたファイルの読み書きまたは非機密情報の取得です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CriticalでCVSS 3.1基本値9.8と評価されているのは2件のみです。CVE-2026-13684はDSMのSCGIコンポーネント、CVE-2026-13639はDSMのログインロジックにあり、どちらのベクトルもAV:N、AC:L、PR:N、UI:Nを含みます。つまり、権限もユーザー操作も不要でネットワーク経由で悪用できるということです。認証不要の3件を「Criticalの2件」とそのまま同一視することはできません。CVE-2026-13635も認証不要ですが、評価はModerateにとどまり、攻撃者が得られるのは非機密情報のみです。勧告のMitigation欄はNoneと記載されています。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "各バージョン系列の修正版"
+        },
+        {
+          "type": "paragraph",
+          "text": "勧告のAffected Products表には4つのバージョン系列が挙げられており、修正版はいずれも「or above」（以上）と記載されています。詳細は下表のとおりです。各行のSeverity欄はいずれもCriticalと記載されていますが、これはそのバージョン系列全体の等級であり、8件のCVEすべてがCriticalであることを意味しません。表にはDSM 7.1、7.0、6.2は挙げられていません。7.2.1より前のバージョンについて、CVE記録が示すステータスはunknown（不明）であり、「影響なし」ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSMのリリースノートでは、この4つの修正版の日付は2026年6月16日から7月29日の間とされており、いずれも勧告の公表日である9月18日より前です。この2つの情報源を2026年9月26日まで確認しましたが、公式には理由の説明がなく、ここでは推測しません。リリースノートのFixed Issues欄では、3つのUpdateバージョンは別の勧告Synology-SA-26:06の修正だと記載されており、7.4-90075のセキュリティ修正はGhostscriptのCVE-2023-43115と「複数のセキュリティ脆弱性」とされ、いずれもSA-26:13には言及していません。これらのバージョンへの更新を求めているのは勧告のほうです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "バージョン系列",
+            "勧告が求める修正版",
+            "リリースノート上の表記と日付（最終行はCVE記録）"
+          ],
+          "rows": [
+            [
+              "DSM 7.4",
+              "7.4-90075以上",
+              "7.4-90075、2026年6月16日"
+            ],
+            [
+              "DSM 7.3",
+              "7.3.2-86009-4以上",
+              "7.3.2-86009 Update 4、2026年7月29日"
+            ],
+            [
+              "DSM 7.2.2",
+              "7.2.2-72806-9以上",
+              "7.2.2-72806 Update 9、2026年6月30日"
+            ],
+            [
+              "DSM 7.2.1",
+              "7.2.1-69057-12以上",
+              "7.2.1-69057 Update 12、2026年6月30日"
+            ],
+            [
+              "DSM 7.2.1より前のバージョン",
+              "勧告に記載なし",
+              "2件のCVE記録がunknown（不明）と表示"
+            ]
+          ],
+          "caption": "Synology-SA-26:13、DSMリリースノート、CVE記録から作成。確認日2026年9月26日。リリースノート上の修正版の日付はいずれも勧告の公表日（9月18日）より前。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "自分のNASを確認する方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分のNASを確認する最初のステップは、現在のDSMバージョン番号を確認し、上表の勧告が求める修正版と照らし合わせることです。バージョン番号を確認する画面の場所は4つの情報源のいずれにも記載がなく、ここでは推測しません。DSM 7.3.2、7.2.2、7.2.1の3つのUpdateバージョンのリリースノートには、更新がまだ自分の地域に届いていない、またはシステムが現時点で更新の必要はないと判断したために、NASが通知しない場合があると書かれています。通知が表示されないことは、すでに修正版になっていることを意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "4つの修正版はいずれも、更新すると装置が再起動します。7.4-90075のリリースノートにはさらに、自動更新が実行されない場合はコントロールパネル（Control Panel）で手動更新できること、このバージョンを導入した後はダウングレードできないことが書かれています。DSM 7.2.1より前のバージョンは勧告に記載がなく、CVE記録はunknown（不明）と表示しており、この勧告はこれらのバージョンについて答えを示していません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "勧告そのものは更新以外の対処法を示しておらず、Mitigation欄はNoneと記載されています（勧告ページで2026年9月26日まで確認）。勧告と2件のCVE記録のいずれにも、影響を受ける装置の台数、地域分布、台湾に関する情報は記載されていません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-synology-dsm-sa2613-20260918/diagram-1-ja.svg",
+          "alt": "4コマ図解：バージョン確認、修正版との照合、手動更新、7.2.1より前のバージョン",
+          "width": 1600,
+          "height": 900,
+          "caption": "Synologyが2026年9月18日にセキュリティ勧告Synology-SA-26:13を公表した後、自分のNASに修正版が導入済みか確認する4つのステップ。Synologyのセキュリティ勧告、CVE記録、DSMリリースノートから作成、確認日2026年9月26日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "「Critical」と「既知の悪用なし」とは何を意味するのか"
+        },
+        {
+          "type": "paragraph",
+          "text": "9.8はSynology自身がCVSS 3.1で算出したスコアであり、CVE記録のCNA（採番機関）もSynologyで、CISAはCVE記録の中で別途スコアを付けていません。残り6件のCVSS 3.1スコアは順に、CVE-2026-13673（Important、8.8、LDAP API、要認証）、CVE-2026-6205（Important、8.1、Upload API、要認証）、CVE-2026-13635（Moderate、5.3、Auth API、認証不要だが非機密情報のみ取得可能）、CVE-2026-13623（Moderate、4.8、Theme API、要管理者権限）、CVE-2026-13666（Low、3.5、Sharing API、要認証かつ被害者が共有URLをクリックする必要あり）、CVE-2026-13683（Low、2.7、EventScheduler API、要管理者権限）です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISAはADPとして、2件のCVE記録それぞれに1回ずつSSVC評価を追加しており、タイムスタンプはいずれも台北時間9月19日未明（米国時間ではまだ9月18日）です。CVE-2026-13684は午前3時14分、CVE-2026-13639は午前3時13分です。両者とも3つの欄はいずれも同じで、Exploitationはnone、Automatableはyes、Technical Impactはtotalであり、2026年9月26日の確認時点まで更新されていません。この3つの値はあわせて見る必要があり、noneだけを取り出して問題ないと言うことはできず、逆に誰も悪用していないと断定することもできません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "まだわかっていないこと、自分で確認する方法"
+        },
+        {
+          "type": "paragraph",
+          "text": "答えが見つからないことがいくつかあります。勧告には、脆弱性を突く公開の攻撃コードや概念実証が存在するかどうかの記載がありません。Affected Products表には影響を受ける機種は挙げられておらず、バージョン系列のみが挙げられています。勧告はまた、公表日がリリースノート上の修正版の日付より後になっている理由も説明しておらず、ここでは理由を推測しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "読者が自分で確認できるのは、SA-26:13の勧告ページに戻ってLast UpdatedとRevision表がRevision 2になっていないかを見ること、またはCVE-2026-13684とCVE-2026-13639の記録に戻ってSSVC評価の3つの値が変わっていないかを見ることです。2026年9月26日の確認時点の状態が、その後も変わらないという意味ではありません。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "自分のNASに更新通知が表示されないのは、問題がないということですか？",
+              "answer": "そうとは限りません。DSM 7.3.2、7.2.2、7.2.1の3つのUpdateバージョンのリリースノートには、更新がまだお使いの地域に届いていない、またはシステムが現時点で更新は不要と判断したために、通知が表示されない場合があると書かれています。通知がないことは、すでに修正版になっていることを意味しません。自分でDSMの現在のバージョン番号を確認し、勧告が求める4つの修正版と照らし合わせる必要があります。"
+            },
+            {
+              "question": "DSM 7.1以前の古いバージョンを使っていますが、影響を受けますか？",
+              "answer": "勧告のAffected Products表にはDSM 7.1、7.0、6.2は挙げられていません。7.2.1より前のバージョンについて、2件のCVE記録が示すステータスはunknown（不明）であり、「影響なし」でも「影響あり」でもありません。この勧告と2件のCVE記録を2026年9月26日まで確認しましたが、答えは示されていません。"
+            },
+            {
+              "question": "勧告のMitigation欄がNoneと書かれているのは、どういう意味ですか？",
+              "answer": "Synologyが勧告の中で更新以外の対処法を示していないということです（勧告ページで2026年9月26日まで確認）。対処方法は、DSMを勧告が挙げる修正版以上に更新することです。"
+            },
+            {
+              "question": "これらの脆弱性がすでに悪用されているという証拠はありますか？",
+              "answer": "CISAは2件のCVE記録それぞれに1回ずつ評価を追加しており、タイムスタンプは台北時間9月19日未明（米国時間9月18日）です。Exploitation（既知の悪用の有無）欄はnoneで、この2件の記録は2026年9月26日の確認時点まで更新されていません。しかし同じ評価のAutomatableはyes、Technical Impactはtotalであり、これはその時点での評価であって保証ではなく、誰も悪用していないと断定するものでもありません。"
+            },
+            {
+              "question": "なぜ修正版のリリースノート上の日付が、勧告の公表日より早いのですか？",
+              "answer": "勧告が挙げる4つの修正版は、DSMのリリースノート上では2026年6月16日から7月29日の間の日付となっており、確かに9月18日の勧告公表日より早いです。勧告とDSMリリースノートを2026年9月26日まで確認しましたが、いずれも理由を説明していません。"
+            },
+            {
+              "question": "2件のCritical脆弱性は、それぞれどこにあるのですか？",
+              "answer": "CVE-2026-13684はDSMのSCGIコンポーネントで発生し、CVE-2026-13639はDSMのログインロジックで発生します。どちらもCVSS 3.1基本値は9.8で、ベクトルはいずれも権限もユーザー操作も不要でネットワーク経由で悪用でき、リモート攻撃者が任意のファイルを読み書きし、サービス拒否を引き起こす可能性があります。勧告はそれ以上の攻撃手法を説明しておらず、ここでも仕組みの詳細は解説しません。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "まずバージョン番号を確認、それから通知の有無を",
+          "text": "これは2026年9月18日に公表されたセキュリティ勧告で、対処方法はDSMを勧告が挙げる修正版以上に更新することです。勧告のMitigation欄はNoneと記載されており、他の一時的な対処法は示されていません。3つのUpdateバージョンのリリースノートには、NASがこれらの更新を自動的に通知しない場合があり、地域ごとに段階的に展開されるとも書かれているため、通知がないことは修正版になっていることを意味せず、DSMの現在のバージョン番号を本文中の表と直接照らし合わせることをおすすめします。CISAによるCVE記録の評価（台北時間9月19日未明）はExploitation none、Automatable yes、Technical Impact totalで、この2件の記録は2026年9月26日の確認時点まで更新されておらず、これはその時点での評価であって保証ではありません。DSM 7.2.1より前のバージョンについて、CVE記録はunknown（不明）と表示しており、この勧告は答えを示していません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年テクノロジーニュースまとめ：ハードウェア、プラットフォーム、通信、法規制の要点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EUサイバーレジリエンス法の通報義務が始動：9月11日から誰がどれだけ早く通報するのか",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Synology-SA-26:13 DSM",
+          "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13684（CVE記録：CNAはSynology、CISA ADP Vulnrichment評価を含む）",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13639（CVE記録：CNAはSynology、CISA ADP Vulnrichment評価を含む）",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Release Notes for DSM（DSMリリースノートページが読み込む公式データ、en-global）",
+          "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Synology, DSM 권고문 SA-26:13 발표: 인증 없이 악용 가능한 9.8점 취약점 2건, 버전 번호부터 확인을",
+      "description": "2026년 9월 18일 오후 4시 17분(타이베이 시간), Synology가 보안 권고문 Synology-SA-26:13을 발표해 DSM의 CVE 8건에 대응했습니다. 이 중 2건은 Critical로 평가되었고 CVSS 3.1 점수는 9.8로, 인증 없이 악용될 수 있습니다. 권고문의 Mitigation 항목은 None으로 기재되어 있습니다. 각 버전 계열의 수정 버전과 자신의 NAS 현재 버전을 직접 확인하는 방법을 정리했습니다(2026년 9월 확인).",
+      "hero": {
+        "src": "/guides/tech-news-synology-dsm-sa2613-20260918/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 4베이 스토리지 외장에서 두 베이가 강조되어 있습니다. 화살표는 버전 목록으로 이어지고, 한 행이 강조되어 있으며 옆에 체크 표시가 있습니다. 상표나 실존 인물은 포함되어 있지 않습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026년 9월 18일 오후 4시 17분(타이베이 시간), Synology는 보안 권고문 Synology-SA-26:13 DSM을 발표해 DSM(DiskStation Manager, Synology NAS의 운영체제)의 취약점에 대응했습니다. 이 권고문의 전체 심각도는 Critical, 상태는 Resolved입니다. 권고문이 나열한 CVE 8건 중 2건은 Synology가 Critical로 평가했으며 CVSS 3.1 기본 점수는 9.8로, 인증 없이 원격 공격자가 악용할 수 있는 그룹에 속합니다. 대응 방법은 DSM을 각 버전 계열의 수정 버전 이상으로 업데이트하는 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글의 자료는 2026년 9월 26일에 확인했으며, Synology의 SA-26:13 권고문 페이지, CVE 기록 2건(CVE-2026-13684, CVE-2026-13639. CISA가 추가한 평가 포함), DSM 버전 노트를 읽었습니다. 본 사이트는 직접 시험해 보지 않았고, 대체 대응법도 제공하지 않습니다. 답을 찾을 수 없는 부분은 찾을 수 없다고 그대로 적었습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026년 9월 18일, Synology는 보안 권고문 Synology-SA-26:13을 발표해 DSM의 CVE 8건에 대응했습니다. 이 중 2건(CVE-2026-13684, CVE-2026-13639)은 Synology가 Critical로 평가했으며 CVSS 3.1 기본 점수는 모두 9.8이고, 인증이 필요하지 않습니다.",
+            "나머지 6건은 순서대로 Important 2건, Moderate 2건, Low 2건이며, 대부분 로그인한 사용자여야 악용할 수 있습니다.",
+            "권고문의 Mitigation 항목은 None으로 기재되어 있으며, 대응 방법은 DSM을 각 버전 계열의 수정 버전으로 업데이트하는 것입니다: DSM 7.4는 7.4-90075 이상, DSM 7.3은 7.3.2-86009-4 이상, DSM 7.2.2는 7.2.2-72806-9 이상, DSM 7.2.1은 7.2.1-69057-12 이상으로 업데이트합니다.",
+            "CISA가 CVE 기록에 추가한 평가(타이베이 시간 9월 19일 새벽)는 Exploitation none, Automatable yes, Technical Impact total이며, 2026년 9월 26일 확인 시점까지 업데이트되지 않았습니다. DSM 7.2.1보다 이전 버전에 대해 CVE 기록은 unknown(알 수 없음)으로 표시하고 있습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 18일 권고문에 담긴 내용"
+        },
+        {
+          "type": "paragraph",
+          "text": "권고문의 정식 명칭은 Synology-SA-26:13 DSM이며, 발표 시각은 2026년 9월 18일 오후 4시 17분(타이베이 시간, 즉 UTC+8)으로 최종 수정 시각도 같습니다. 페이지 하단의 Revision 표에는 Revision 1만 있으며 날짜도 9월 18일입니다. 권고문 페이지를 2026년 9월 26일까지 확인한 결과 권고문은 개정되지 않았습니다. 이후 개정되면 독자가 직접 페이지의 Last Updated와 Revision 표를 확인할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "권고문은 CVE 8건을 세 그룹으로 나눕니다. CVE-2026-13684, CVE-2026-13639, CVE-2026-13635는 원격 공격자가 인증 없이 악용할 수 있으며, 결과는 개별 CVE마다 달라 임의의 파일 읽기·쓰기, 서비스 거부 유발, 또는 민감하지 않은 정보 획득일 수 있습니다. CVE-2026-13673, CVE-2026-6205, CVE-2026-13666은 인증된 원격 사용자여야 악용할 수 있으며, 그중 하나는 피해자가 공유 URL을 클릭해야만 발생합니다. CVE-2026-13623, CVE-2026-13683은 관리자 권한을 가진 인증된 사용자여야 악용할 수 있으며, 결과는 제한된 파일의 읽기·쓰기 또는 민감하지 않은 정보 획득입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Critical로 평가되고 CVSS 3.1 기본 점수가 9.8인 것은 2건뿐입니다: CVE-2026-13684는 DSM의 SCGI 구성 요소에, CVE-2026-13639는 DSM의 로그인 로직에 있으며, 두 벡터 모두 AV:N, AC:L, PR:N, UI:N을 포함합니다. 즉 권한도 사용자 조작도 필요 없이 네트워크로 악용할 수 있다는 뜻입니다. 인증이 필요 없는 3건을 그대로 \"Critical인 2건\"과 동일시해서는 안 됩니다. CVE-2026-13635도 마찬가지로 인증이 필요 없지만 평가는 Moderate에 그치며, 공격자가 얻을 수 있는 것은 민감하지 않은 정보뿐입니다. 권고문의 Mitigation 항목은 None으로 기재되어 있습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "버전 계열별 수정 버전"
+        },
+        {
+          "type": "paragraph",
+          "text": "권고문의 Affected Products 표에는 4개의 버전 계열이 나열되어 있으며, 수정 버전은 모두 \"or above\"(이상)로 기재되어 있습니다. 자세한 내용은 아래 표를 참고하시기 바랍니다. 각 행의 Severity 항목은 모두 Critical로 기재되어 있는데, 이는 해당 버전 계열 전체의 등급이며 CVE 8건이 모두 Critical이라는 뜻은 아닙니다. 표에는 DSM 7.1, 7.0, 6.2가 나열되어 있지 않습니다. 7.2.1보다 이전 버전에 대해 CVE 기록이 표시하는 상태는 unknown(알 수 없음)이며, \"영향 없음\"이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "DSM 버전 노트는 이 4개 수정 버전의 날짜를 2026년 6월 16일부터 7월 29일 사이로 기재하고 있으며, 모두 권고문 발표일인 9월 18일보다 이전입니다. 2026년 9월 26일까지 확인한 이 두 출처에는 이유에 대한 공식 설명이 없으며, 여기서는 추측하지 않습니다. 버전 노트의 Fixed Issues 항목에서 3개의 Update 버전은 다른 권고문 Synology-SA-26:06의 수정 사항이라고 기재되어 있고, 7.4-90075에 기재된 보안 수정 사항은 Ghostscript의 CVE-2023-43115와 \"여러 보안 취약점\"으로, 둘 다 SA-26:13을 지목하지 않습니다. 이 버전들로 업데이트하도록 요구하는 것은 권고문 쪽입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "버전 계열",
+            "권고문이 요구하는 수정 버전",
+            "버전 노트상의 표기와 날짜(마지막 행은 CVE 기록)"
+          ],
+          "rows": [
+            [
+              "DSM 7.4",
+              "7.4-90075 이상",
+              "7.4-90075, 2026년 6월 16일"
+            ],
+            [
+              "DSM 7.3",
+              "7.3.2-86009-4 이상",
+              "7.3.2-86009 Update 4, 2026년 7월 29일"
+            ],
+            [
+              "DSM 7.2.2",
+              "7.2.2-72806-9 이상",
+              "7.2.2-72806 Update 9, 2026년 6월 30일"
+            ],
+            [
+              "DSM 7.2.1",
+              "7.2.1-69057-12 이상",
+              "7.2.1-69057 Update 12, 2026년 6월 30일"
+            ],
+            [
+              "DSM 7.2.1보다 이전 버전",
+              "권고문에 없음",
+              "CVE 기록 2건 모두 unknown(알 수 없음)으로 표시"
+            ]
+          ],
+          "caption": "Synology-SA-26:13, DSM 버전 노트, CVE 기록 2건을 바탕으로 정리. 확인일 2026년 9월 26일. 버전 노트상의 수정 버전 날짜는 모두 권고문 발표일(9월 18일)보다 이릅니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "내 NAS를 확인하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "내 NAS를 확인하는 첫 단계는 현재 DSM 버전 번호를 확인하고 위 표의 권고문이 요구하는 수정 버전과 비교하는 것입니다. 버전 번호를 확인하는 화면 경로는 네 출처 모두에 기재되어 있지 않아 여기서는 추측하지 않습니다. DSM 7.3.2, 7.2.2, 7.2.1 세 Update 버전의 버전 노트에는 업데이트가 아직 해당 지역에 배포되지 않았거나 시스템이 현재 업데이트가 필요 없다고 판단해 NAS가 알림을 보내지 않을 수 있다고 적혀 있습니다. 알림이 뜨지 않았다고 해서 이미 수정 버전이라는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "네 수정 버전 모두 업데이트하면 기기가 재부팅됩니다. 7.4-90075의 버전 노트에는 추가로 자동 업데이트가 실행되지 않을 경우 제어판(Control Panel)에서 수동으로 업데이트할 수 있으며, 이 버전을 설치한 뒤에는 다운그레이드할 수 없다고 적혀 있습니다. DSM 7.2.1보다 이전 버전은 권고문에 나열되어 있지 않고 CVE 기록은 unknown(알 수 없음)으로 표시하고 있어, 이 권고문은 해당 버전에 대한 답을 주지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "권고문 자체는 업데이트 외의 대응법을 제공하지 않으며, Mitigation 항목은 None으로 기재되어 있습니다(권고문 페이지를 2026년 9월 26일까지 확인). 권고문과 CVE 기록 2건 모두 영향을 받는 기기 수, 지역 분포, 대만과 관련된 정보를 기재하지 않았습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-synology-dsm-sa2613-20260918/diagram-1-ko.svg",
+          "alt": "4칸 도해: 버전 확인, 수정판 대조, 수동 업데이트, 7.2.1 이전 버전",
+          "width": 1600,
+          "height": 900,
+          "caption": "Synology가 2026년 9월 18일 보안 권고문 Synology-SA-26:13을 발표한 뒤, 내 NAS에 수정 버전이 설치되었는지 확인하는 네 단계. Synology 보안 권고문, CVE 기록, DSM 버전 노트를 바탕으로 정리, 확인일 2026년 9월 26일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "'Critical'과 '알려진 악용 없음'은 무슨 뜻인가"
+        },
+        {
+          "type": "paragraph",
+          "text": "9.8은 Synology가 자체적으로 CVSS 3.1로 산출한 점수이며, CVE 기록의 CNA(번호 부여 기관)도 Synology로, CISA는 CVE 기록에 별도의 점수를 매기지 않았습니다. 나머지 6건의 CVSS 3.1 점수는 순서대로: CVE-2026-13673(Important, 8.8, LDAP API, 로그인 필요), CVE-2026-6205(Important, 8.1, Upload API, 로그인 필요), CVE-2026-13635(Moderate, 5.3, Auth API, 로그인은 필요 없으나 민감하지 않은 정보만 획득), CVE-2026-13623(Moderate, 4.8, Theme API, 관리자 권한 필요), CVE-2026-13666(Low, 3.5, Sharing API, 로그인이 필요하고 피해자가 공유 URL을 클릭해야 함), CVE-2026-13683(Low, 2.7, EventScheduler API, 관리자 권한 필요)입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA는 ADP 자격으로 CVE 기록 2건 각각에 SSVC 평가를 한 차례씩 추가했으며, 타임스탬프는 모두 타이베이 시간 9월 19일 새벽입니다(미국 시간으로는 아직 9월 18일): CVE-2026-13684는 새벽 3시 14분, CVE-2026-13639는 3시 13분입니다. 두 기록 모두 세 항목이 동일합니다: Exploitation은 none, Automatable은 yes, Technical Impact는 total이며, 2026년 9월 26일 확인 시점까지 다시 업데이트되지 않았습니다. 이 세 값은 함께 봐야 하며, none만 골라 문제없다고 말할 수도 없고, 반대로 아무도 악용하지 않았다고 단정할 수도 없습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "아직 알 수 없는 것, 그리고 직접 확인하는 방법"
+        },
+        {
+          "type": "paragraph",
+          "text": "답을 찾을 수 없는 몇 가지가 더 있습니다. 권고문은 이 취약점에 공개된 공격 코드나 개념 증명이 있는지 밝히지 않았습니다. Affected Products 표에는 영향을 받는 기종이 아니라 버전 계열만 나열되어 있습니다. 권고문은 또한 발표일이 버전 노트상의 수정 버전 날짜보다 늦은 이유도 설명하지 않았으며, 여기서는 이유를 추측하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "독자가 직접 할 수 있는 확인은 SA-26:13 권고문 페이지로 돌아가 Last Updated와 Revision 표가 Revision 2로 바뀌었는지 보거나, CVE-2026-13684와 CVE-2026-13639 기록으로 돌아가 SSVC 평가의 세 값이 바뀌었는지 보는 것입니다. 확인일인 2026년 9월 26일의 상태가 이후에도 바뀌지 않는다는 뜻은 아닙니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "제 NAS에 업데이트 알림이 뜨지 않았는데, 문제가 없다는 뜻인가요?",
+              "answer": "꼭 그런 것은 아닙니다. DSM 7.3.2, 7.2.2, 7.2.1 세 Update 버전의 버전 노트에는 업데이트가 아직 사용자의 지역에 배포되지 않았거나 시스템이 현재 업데이트가 필요 없다고 판단해 알림이 뜨지 않을 수 있다고 적혀 있습니다. 알림을 받지 못했다고 해서 이미 수정 버전이라는 뜻은 아니며, 직접 DSM의 현재 버전 번호를 확인해 권고문이 요구하는 네 개의 수정 버전과 비교해야 합니다."
+            },
+            {
+              "question": "DSM 7.1 이하의 예전 버전을 사용 중인데, 영향을 받나요?",
+              "answer": "권고문의 Affected Products 표에는 DSM 7.1, 7.0, 6.2가 나열되어 있지 않습니다. 7.2.1보다 이전 버전에 대해 CVE 기록 2건이 표시하는 상태는 unknown(알 수 없음)이며, \"영향 없음\"도 \"영향 있음\"도 아닙니다. 이 권고문과 CVE 기록 2건을 2026년 9월 26일까지 확인했지만 답은 나와 있지 않습니다."
+            },
+            {
+              "question": "권고문의 Mitigation 항목이 None으로 적혀 있는데, 무슨 뜻인가요?",
+              "answer": "Synology가 권고문에서 업데이트 외의 대응법을 제공하지 않았다는 뜻입니다(권고문 페이지를 2026년 9월 26일까지 확인). 대응 방법은 DSM을 권고문이 나열한 수정 버전 이상으로 업데이트하는 것입니다."
+            },
+            {
+              "question": "이 취약점들이 이미 악용되었다는 증거가 있나요?",
+              "answer": "CISA는 CVE 기록 2건 각각에 평가를 한 차례씩 추가했으며, 타임스탬프는 타이베이 시간 9월 19일 새벽(미국 시간 9월 18일)입니다. Exploitation(알려진 악용 여부) 항목은 none이고, 이 두 기록은 2026년 9월 26일 확인 시점까지 업데이트되지 않았습니다. 하지만 같은 평가의 Automatable은 yes, Technical Impact는 total이며, 이는 그 시점의 평가일 뿐 보장이 아니고, 아무도 악용하지 않았다고 단정하는 것도 아닙니다."
+            },
+            {
+              "question": "왜 수정 버전의 버전 노트상 날짜가 권고문 날짜보다 이른가요?",
+              "answer": "권고문이 나열한 네 개의 수정 버전은 DSM 버전 노트상 2026년 6월 16일부터 7월 29일 사이 날짜로 기재되어 있으며, 실제로 9월 18일의 권고문 발표일보다 이릅니다. 권고문과 DSM 버전 노트를 2026년 9월 26일까지 확인했지만, 둘 다 이유를 설명하지 않았습니다."
+            },
+            {
+              "question": "Critical 취약점 2건은 각각 어디에 있나요?",
+              "answer": "CVE-2026-13684는 DSM의 SCGI 구성 요소에서, CVE-2026-13639는 DSM의 로그인 로직에서 발생합니다. 둘 다 CVSS 3.1 기본 점수는 9.8이며, 벡터는 모두 권한도 사용자 조작도 필요 없이 네트워크로 악용할 수 있어, 원격 공격자가 임의의 파일을 읽고 쓰며 서비스 거부를 일으킬 수 있습니다. 권고문은 구체적인 공격 방법을 더 설명하지 않으며, 여기서도 메커니즘의 세부 사항은 설명하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "버전 번호부터 확인하고, 그다음 알림 여부를 보세요",
+          "text": "이것은 2026년 9월 18일에 발표된 보안 권고문으로, 대응 방법은 DSM을 권고문이 나열한 수정 버전 이상으로 업데이트하는 것입니다. 권고문의 Mitigation 항목은 None으로 기재되어 있으며, 다른 임시 대응법은 제공되지 않았습니다. 세 Update 버전의 버전 노트에는 NAS가 이러한 업데이트를 자동으로 알리지 않을 수 있고 지역별로 순차 배포된다고 적혀 있어, 알림을 받지 못했다고 해서 이미 수정 버전이라는 뜻은 아니므로 DSM의 현재 버전 번호를 본문의 표와 직접 비교하는 것을 권합니다. CISA가 CVE 기록에 남긴 평가(타이베이 시간 9월 19일 새벽)는 Exploitation none, Automatable yes, Technical Impact total이며, 이 두 기록은 2026년 9월 26일 확인 시점까지 업데이트되지 않았습니다. 이는 그 시점의 평가일 뿐 보장이 아닙니다. DSM 7.2.1보다 이전 버전에 대해 CVE 기록은 unknown(알 수 없음)으로 표시하고 있으며, 이 권고문은 답을 주지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 테크 뉴스 총정리: 하드웨어, 플랫폼, 통신, 규제의 핵심",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "EU 사이버복원력법 통보 의무 시행: 9월 11일부터, 누가 얼마나 빨리 통보해야 하나",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Synology-SA-26:13 DSM",
+          "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13684(CVE 기록: CNA는 Synology, CISA ADP Vulnrichment 평가 포함)",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13639(CVE 기록: CNA는 Synology, CISA ADP Vulnrichment 평가 포함)",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Release Notes for DSM(DSM 버전 노트 페이지가 불러오는 공식 데이터, en-global)",
+          "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Synology 发布 DSM 公告 SA-26:13：两个无需登录的 9.8 分漏洞，先核对版本号再更新",
+      "description": "2026 年 9 月 18 日下午 4 点 17 分（台北时间），Synology 发布网络安全公告 Synology-SA-26:13，处理 DSM 的八个 CVE 编号，其中两个评为 Critical、CVSS 3.1 为 9.8，无需登录就可能被利用；公告的 Mitigation 栏写的是 None。整理各版本分支的修复版本，以及怎么自己核对 NAS 当前的版本（2026 年 9 月查证）。",
+      "hero": {
+        "src": "/guides/tech-news-synology-dsm-sa2613-20260918/hero-zh-cn.jpg",
+        "alt": "原创插图：一个四格存储装置外壳，其中两格被标亮；箭头指向一份版本清单，清单中一行被标亮，旁边有一个打勾符号；不含商标或真实人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "2026 年 9 月 18 日下午 4 点 17 分（台北时间），Synology 发布网络安全公告 Synology-SA-26:13 DSM，处理 DSM（DiskStation Manager，Synology NAS 的操作系统）的漏洞。这则公告的整体严重程度是 Critical、状态是 Resolved；公告列出的八个 CVE 编号里，两个由 Synology 评为 Critical、CVSS 3.1 基本分数 9.8，属于无需登录的远程攻击者可利用的一组。处理方式是把 DSM 至少升级到各版本分支各自的修复版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇文章的数据在 2026 年 9 月 26 日查核，读的是 Synology 的 SA-26:13 公告页、两条 CVE 记录（CVE-2026-13684、CVE-2026-13639，含 CISA 补上的评估），以及 DSM 版本说明。本站没有实际测试，也不提供替代做法；查不到答案的地方会直接写查不到。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "2026 年 9 月 18 日，Synology 发布网络安全公告 Synology-SA-26:13，处理 DSM 的八个 CVE 编号，其中两个（CVE-2026-13684、CVE-2026-13639）由 Synology 评为 Critical、CVSS 3.1 基本分数都是 9.8，无需登录。",
+            "其余六个依次是 Important 两个、Moderate 两个、Low 两个，多数需要已登录的用户才能利用。",
+            "公告的 Mitigation 栏写的是 None，处理方式是把 DSM 升级到各版本分支的修复版本：DSM 7.4 升级到 7.4-90075 以上、DSM 7.3 升级到 7.3.2-86009-4 以上、DSM 7.2.2 升级到 7.2.2-72806-9 以上、DSM 7.2.1 升级到 7.2.1-69057-12 以上。",
+            "CISA 在 CVE 记录补上的评估（台北时间 9 月 19 日凌晨）是 Exploitation none、Automatable yes、Technical Impact total，到 2026 年 9 月 26 日查核时没有更新；早于 DSM 7.2.1 的版本，CVE 记录标示为 unknown（未知）。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 18 日的公告写了什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的正式名称是 Synology-SA-26:13 DSM，发布时间是 2026 年 9 月 18 日下午 4 点 17 分（台北时间，即 UTC+8），最后更新时间相同；页脚的 Revision 表只有第 1 版，日期同样是 9 月 18 日。以公告页查核到 2026 年 9 月 26 日，公告没有改版；之后如有改版，读者可以自己回到页面查看 Last Updated 与 Revision 表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告把八个 CVE 分成三组。CVE-2026-13684、CVE-2026-13639、CVE-2026-13635 是远程攻击者可利用、无需登录，后果依个别 CVE 不同，可能是读写任意文件、造成拒绝服务，或获取非敏感信息。CVE-2026-13673、CVE-2026-6205、CVE-2026-13666 需要已登录的远程用户才能利用，其中一种需要受害者点击了共享链接才会发生。CVE-2026-13623、CVE-2026-13683 则需要具有管理员权限的已登录用户才能利用，后果是读写有限的文件或获取非敏感信息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "评为 Critical、CVSS 3.1 基本分数 9.8 的只有两个：CVE-2026-13684 在 DSM 的 SCGI 组件，CVE-2026-13639 在 DSM 的登录逻辑，向量都含有 AV:N、AC:L、PR:N、UI:N，也就是无需权限、无需用户交互就能通过网络利用。无需登录的三个编号不能直接等同于“Critical 的两个”：CVE-2026-13635 同样无需登录，却只评为 Moderate，只让攻击者获取非敏感信息。公告的 Mitigation 栏写的是 None。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "各版本分支的修复版本"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告的 Affected Products 表列出四条版本分支，修复版本都写的是“or above”（以上），详见下表。每一行的 Severity 栏都写的是 Critical，那是这条版本分支的整体等级，不代表八个 CVE 全部都是 Critical。表上没有列出 DSM 7.1、7.0 或 6.2；CVE 记录对早于 7.2.1 的版本标示的状态是 unknown（未知），不是“不受影响”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "DSM 版本说明把这四个修复版本的日期列在 2026 年 6 月 16 日到 7 月 29 日之间，都早于公告 9 月 18 日的发布日；以这两份来源查核到 2026 年 9 月 26 日，官方没有说明原因，这里不作推论。版本说明的 Fixed Issues 栏目，三个 Update 版本写的是修复另一则公告 Synology-SA-26:06，7.4-90075 写的安全修复是 Ghostscript 的 CVE-2023-43115 与“多个安全漏洞”，都没有点名 SA-26:13；要求升级到这些版本的是公告。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "版本分支",
+            "公告要求的修复版本",
+            "版本说明上的写法与日期（末行为 CVE 记录）"
+          ],
+          "rows": [
+            [
+              "DSM 7.4",
+              "7.4-90075 以上",
+              "7.4-90075，2026 年 6 月 16 日"
+            ],
+            [
+              "DSM 7.3",
+              "7.3.2-86009-4 以上",
+              "7.3.2-86009 Update 4，2026 年 7 月 29 日"
+            ],
+            [
+              "DSM 7.2.2",
+              "7.2.2-72806-9 以上",
+              "7.2.2-72806 Update 9，2026 年 6 月 30 日"
+            ],
+            [
+              "DSM 7.2.1",
+              "7.2.1-69057-12 以上",
+              "7.2.1-69057 Update 12，2026 年 6 月 30 日"
+            ],
+            [
+              "早于 DSM 7.2.1 的版本",
+              "公告未列出",
+              "两条 CVE 记录标示为 unknown（未知）"
+            ]
+          ],
+          "caption": "依 Synology 网络安全公告 Synology-SA-26:13、DSM 版本说明与两条 CVE 记录整理，查核日 2026 年 9 月 26 日；版本说明上的修复版本日期都早于 9 月 18 日的公告发布日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "怎么核对自己的 NAS"
+        },
+        {
+          "type": "paragraph",
+          "text": "核对自己的 NAS，第一步是查看当前的 DSM 版本号，对照上表公告要求的修复版本；查看版本号的界面路径，四份来源都没有写，这里不作猜测。DSM 7.3.2、7.2.2、7.2.1 三个 Update 版本的说明写道，NAS 可能因为更新还没推送到某个地区，或系统评估目前不需要更新，而不会通知用户；没有弹出通知不代表已经是修复版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "四个修复版本的更新都会重新启动设备。7.4-90075 的说明另外写道，自动更新没有执行时可到控制台（Control Panel）手动更新，安装了这个版本之后无法降级。早于 DSM 7.2.1 的版本，公告没有列出，CVE 记录标示为 unknown（未知），这份公告对这些版本没有给出答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公告本身没有提供更新以外的做法，Mitigation 栏写的是 None（以公告页查核到 2026 年 9 月 26 日）。公告与两条 CVE 记录也都没有写出受影响的设备数量、地区分布，或任何与台湾有关的信息。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/tech-news-synology-dsm-sa2613-20260918/diagram-1-zh-cn.svg",
+          "alt": "四格图解：看版本号、对照修复版、手动更新、早于 7.2.1 的版本",
+          "width": 1600,
+          "height": 900,
+          "caption": "Synology 于 2026 年 9 月 18 日发布网络安全公告 Synology-SA-26:13 后，核对自己的 NAS 是否已装上修复版本的四个步骤，依 Synology 网络安全公告、CVE 记录与 DSM 版本说明整理，查核日 2026 年 9 月 26 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "“Critical”与“没有已知利用”是什么意思"
+        },
+        {
+          "type": "paragraph",
+          "text": "9.8 是 Synology 自己用 CVSS 3.1 算出来的评分，CVE 记录的 CNA（编号分配机构）也是 Synology，CISA 在 CVE 记录里没有另外给分。其余六个的 CVSS 3.1 分数依次是：CVE-2026-13673（Important、8.8，LDAP API，需登录）、CVE-2026-6205（Important、8.1，Upload API，需登录）、CVE-2026-13635（Moderate、5.3，Auth API，无需登录但只能获取非敏感信息）、CVE-2026-13623（Moderate、4.8，Theme API，需管理员权限）、CVE-2026-13666（Low、3.5，Sharing API，需登录且需受害者点击了共享链接）、CVE-2026-13683（Low、2.7，EventScheduler API，需管理员权限）。"
+        },
+        {
+          "type": "paragraph",
+          "text": "CISA 以 ADP 身份在两条 CVE 记录中各补上一次 SSVC 评估，时间戳都在台北时间 9 月 19 日凌晨（美国时间仍是 9 月 18 日）：CVE-2026-13684 是凌晨 3 点 14 分，CVE-2026-13639 是 3 点 13 分。两者的三个栏目都相同：Exploitation 是 none、Automatable 是 yes、Technical Impact 是 total；查核到 2026 年 9 月 26 日都没有再更新。这三个值要一起看，不能只挑 none 就说没事，也不能反过来说确定没有人利用。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "还不知道的事，以及怎么自己查证"
+        },
+        {
+          "type": "paragraph",
+          "text": "还有几件事查不到答案：公告没有写出漏洞是否已有公开的攻击程序或概念验证；Affected Products 表没有列出受影响的机型，只列出版本分支。公告也没有说明发布日为什么晚于版本说明上的修复版本日期，这里不推论原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "读者能自己做的查证，是回到 SA-26:13 公告页查看 Last Updated 与 Revision 表有没有变成第 2 版，或回到 CVE-2026-13684、CVE-2026-13639 的记录查看 SSVC 评估的三个值有没有改变。查核日 2026 年 9 月 26 日的状态不代表之后不会改变。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "我的 NAS 没有弹出更新通知，是不是就代表没事？",
+              "answer": "不一定。DSM 7.3.2、7.2.2、7.2.1 三个 Update 版本的说明写道，NAS 可能因为更新还没推送到你所在的地区，或系统评估目前不需要更新，而不会弹出通知；没有收到通知不等于已经是修复版本，还是要自己查看 DSM 当前的版本号，对照公告要求的四个修复版本。"
+            },
+            {
+              "question": "我用的是 DSM 7.1 或更旧的版本，会受影响吗？",
+              "answer": "公告的 Affected Products 表没有列出 DSM 7.1、7.0 或 6.2；两条 CVE 记录对早于 7.2.1 的版本，标示的状态是 unknown（未知），不是“不受影响”，也不是“受影响”。以这份公告与两条 CVE 记录查核到 2026 年 9 月 26 日，都没有给出答案。"
+            },
+            {
+              "question": "公告的 Mitigation 栏写的是 None，是什么意思？",
+              "answer": "代表 Synology 没有在公告里提供更新以外的做法（以公告页查核到 2026 年 9 月 26 日）；处理方式就是把 DSM 至少升级到公告列出的修复版本。"
+            },
+            {
+              "question": "有没有证据显示这些漏洞已经被利用？",
+              "answer": "CISA 在两条 CVE 记录中各补上一次评估，时间戳是台北时间 9 月 19 日凌晨（美国时间 9 月 18 日），Exploitation（是否已知遭利用）栏目是 none；以这两条记录查核到 2026 年 9 月 26 日没有更新。但同一份评估的 Automatable 是 yes、Technical Impact 是 total，这是那个时间点的评估，不是保证，也不代表确定没有人利用。"
+            },
+            {
+              "question": "为什么修复版本在版本说明上的日期，比公告日期还早？",
+              "answer": "公告列出的四个修复版本，在 DSM 版本说明上的日期是 2026 年 6 月 16 日到 7 月 29 日之间，确实早于 9 月 18 日的公告发布日；以公告与 DSM 版本说明查核到 2026 年 9 月 26 日，两者都没有说明原因。"
+            },
+            {
+              "question": "两个 Critical 漏洞分别在哪里？",
+              "answer": "CVE-2026-13684 发生在 DSM 的 SCGI 组件，CVE-2026-13639 发生在 DSM 的登录逻辑；两者的 CVSS 3.1 基本分数都是 9.8，向量都是无需权限、无需用户交互，就能通过网络利用，可能让远程攻击者读写任意文件并造成拒绝服务。公告没有进一步说明攻击手法，这里也不解释机制细节。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "先核对版本号，再看有没有通知",
+          "text": "这是一则 2026 年 9 月 18 日发布的网络安全公告，处理方式是把 DSM 至少升级到公告列出的修复版本；公告的 Mitigation 栏写的是 None，没有提供其他临时做法。三个 Update 版本的说明写道，NAS 可能不会主动通知这些更新，而且采取分地区推送，所以没收到通知不代表已经是修复版本，建议直接比对 DSM 当前的版本号与文中表格。CISA 在 CVE 记录中的评估（台北时间 9 月 19 日凌晨）是 Exploitation none、Automatable yes、Technical Impact total，以这两条记录查核到 2026 年 9 月 26 日没有更新，这是那个时间点的评估，不是保证。早于 DSM 7.2.1 的版本，CVE 记录标示为 unknown（未知），这份公告没有给出答案。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年科技新闻总整理：硬件、平台、电信与法规的重点",
+              "kind": "life",
+              "slug": "tech-news-2026-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "欧盟《网络弹性法案》通报义务开始适用：9 月 11 日起，谁要多快通报",
+              "kind": "life",
+              "slug": "tech-news-eu-cra-reporting-20260911"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Synology-SA-26:13 DSM",
+          "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13684（CVE 记录：CNA 为 Synology，含 CISA ADP Vulnrichment 评估）",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "CVE-2026-13639（CVE 记录：CNA 为 Synology，含 CISA ADP Vulnrichment 评估）",
+          "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Release Notes for DSM（DSM 版本说明页加载的官方数据，en-global）",
+          "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    }
+  },
+  "related": [
+    "tech-news-wordpress-712-20260922",
+    "tech-news-snapdragon-8-elite-gen6-20260922"
+  ]
+}
