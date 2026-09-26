@@ -116,6 +116,64 @@ describe("AdminVideoReviews", () => {
     confirm.mockRestore();
   });
 
+  it("shows a character's sheets as radio cards and approves only once one is chosen", async () => {
+    const look = {
+      id: "33333333-3333-4333-8333-333333333333", gate: "look", subject: "jingwei", content_sha256: "d".repeat(64), summary: "精衛 的設定圖 2 張，judge 建議 B",
+      payload: { subject: "jingwei", character: { name: "精衛", description: "a girl of about twelve", voice: "gemini:Kore" }, suggested: "B", options: [{ key: "A", index: 1, file_role: "candidate_a", judge: { overall: 6, problems: ["six fingers"] } }, { key: "B", index: 2, file_role: "candidate_b", judge: { overall: 9, problems: [] } }] },
+      files: [{ role: "candidate_a", sha256: "e".repeat(64), size: 10, content_type: "image/png" }, { role: "candidate_b", sha256: "f".repeat(64), size: 10, content_type: "image/png" }],
+      status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-26T05:00:00Z",
+    };
+    const board = {
+      id: "44444444-4444-4444-8444-444444444444", gate: "storyboard", content_sha256: "1".repeat(64), summary: "分鏡 2 鏡，judge 最低 5/10，1 鏡待修",
+      payload: { shots: [{ id: "opening", chapter: "發鳩山", prompt: "wide shot", seconds: 9.5, file_role: "shot_01", needs_review: false, judge: { overall: 8, problems: [] } }, { id: "bird", chapter: null, prompt: "close-up of a bird", seconds: 8, file_role: "shot_02", needs_review: true, judge: { overall: 5, problems: ["no bird"] } }], judge: { overall: 5, problems: ["no bird"] }, duplicates: [{ a: "opening", b: "bird", distance: 3 }] },
+      files: [{ role: "shot_01", sha256: "2".repeat(64), size: 10, content_type: "image/png" }, { role: "shot_02", sha256: "3".repeat(64), size: 10, content_type: "image/png" }, { role: "contact_sheet", sha256: "4".repeat(64), size: 10, content_type: "image/png" }],
+      status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-26T05:10:00Z",
+    };
+    const posts: Array<{ url: string; body: unknown }> = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push({ url, body: JSON.parse(String(init.body)) });
+        return Promise.resolve(Response.json({ ...look, status: "approved", choice: "B" }));
+      }
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([{ ...summary, format: "drama", media_usd: 12.5, clip_seconds: 96 }]));
+      return Promise.resolve(Response.json({ ...summary, format: "drama", reviews: [look, board] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    const { container } = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "角色設定圖：精衛" });
+    expect(card.textContent).toContain("聲音 gemini:Kore");
+    const images = [...card.querySelectorAll("img")].map((image) => image.getAttribute("src"));
+    expect(images).toEqual([`/api/admin-video-files/ai-model-choice/${"e".repeat(64)}`, `/api/admin-video-files/ai-model-choice/${"f".repeat(64)}`]);
+    expect(card.textContent).toContain("judge 建議");
+    expect(card.textContent).toContain("judge 6/10：six fingers");
+    const approve = screen.getByRole("button", { name: "用這張" });
+    expect(approve).toHaveProperty("disabled", true);
+    fireEvent.click(screen.getByRole("radio", { name: /設定圖 B/ }));
+    expect(approve).toHaveProperty("disabled", false);
+    fireEvent.click(approve);
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts[0].url).toContain(`/reviews/${look.id}/decision`);
+    expect(posts[0].body).toEqual({ decision: "approve", choice: "B" });
+
+    const storyboard = screen.getByRole("article", { name: "分鏡" });
+    expect(storyboard.textContent).toContain("judge 5/10：no bird");
+    expect(storyboard.textContent).toContain("相鄰鏡頭太像：opening／bird");
+    expect(storyboard.textContent).toContain("沒有一次通過 judge");
+    expect(storyboard.textContent).toContain("9.5 秒");
+    expect(storyboard.querySelectorAll("li img").length).toBe(2);
+    expect(container.querySelector("details img")?.getAttribute("src")).toBe(`/api/admin-video-files/ai-model-choice/${"4".repeat(64)}`);
+    expect(screen.getByRole("button", { name: "核准分鏡" })).toHaveProperty("disabled", false);
+  });
+
+  it("marks a drama and its media spend in the list", async () => {
+    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", media_usd: 12.5, clip_seconds: 96 }]))));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const item = await screen.findByRole("button", { name: /AI 模型怎麼挑/ });
+    expect(item.textContent).toContain("AI 漫劇");
+    expect(item.textContent).toContain("媒體花費 US$12.50（96 片段秒）");
+  });
+
   it("marks a dropped video in the list", async () => {
     vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json([{ ...summary, pending: 0, dropped_at: "2026-09-25T13:00:00Z" }]))));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);

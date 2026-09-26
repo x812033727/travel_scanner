@@ -2109,7 +2109,9 @@
       "outline": "大綱",
       "audio": "旁白",
       "final": "成片",
-      "publish": "上架確認"
+      "publish": "上架確認",
+      "look": "角色設定圖",
+      "storyboard": "分鏡"
     },
     "statuses": {
       "pending": "待決定",
@@ -2156,7 +2158,19 @@
     "dropPlaceholder": "例如：這個題目第二批已經做了",
     "dropConfirm": "確定放棄這支影片？放棄後不能復原。",
     "dropButton": "放棄這支影片",
-    "dropError": "沒有放棄：{message}"
+    "dropError": "沒有放棄：{message}",
+    "chooseLook": "選一張，之後每個鏡頭都以它為準",
+    "candidate": "設定圖 {key}",
+    "suggested": "judge 建議",
+    "approveLook": "用這張",
+    "approveStoryboard": "核准分鏡",
+    "judgeScore": "judge {score}/10",
+    "voice": "聲音 {voice}",
+    "lookAlike": "相鄰鏡頭太像：{pairs}",
+    "seconds": "{seconds} 秒",
+    "shotNeedsReview": "沒有一次通過 judge，提示詞要修",
+    "drama": "AI 漫劇",
+    "spend": "媒體花費 US${usd}（{seconds} 片段秒）"
   },
   "videoSettings": {
     "loading": "讀取設定中…",
@@ -2203,7 +2217,32 @@
       "monthly_token_budget_millions": "每月模型 token 上限（百萬）",
       "max_verify_rounds": "每支最多查核幾輪",
       "max_retake_rounds": "旁白最多重錄幾輪",
-      "auto_approve_audio": "旁白由 Jev 判斷每一句都唸對時，自動核准"
+      "auto_approve_audio": "旁白由 Jev 判斷每一句都唸對時，自動核准",
+      "drama_enabled": "開啟 AI 漫劇",
+      "drama_image_provider": "圖片廠商（設定圖與關鍵影格）",
+      "drama_image_model": "圖片模型",
+      "drama_clip_provider": "片段廠商（圖生影片）",
+      "drama_clip_model": "片段模型",
+      "drama_music_provider": "音樂廠商",
+      "drama_music_model": "音樂模型",
+      "drama_clip_resolution": "片段解析度",
+      "drama_clip_seconds_default": "片段預設秒數",
+      "drama_aspect": "畫面比例",
+      "drama_style_preset": "風格預設",
+      "drama_max_clips_per_video": "一支最多幾段片段",
+      "drama_max_retakes_per_shot": "每鏡最多重做幾次",
+      "drama_judge_min_score": "judge 門檻（0–10）",
+      "drama_music_enabled": "生成配樂",
+      "drama_subtitle_burn_in": "把繁中字幕燒進畫面",
+      "drama_clip_native_audio": "讓片段模型自己配音效",
+      "drama_auto_approve_storyboard": "judge 全過時自動核准分鏡",
+      "drama_character_voice_pool": "角色聲音",
+      "drama_monthly_clip_seconds_budget": "每月片段秒數",
+      "drama_monthly_images_budget": "每月圖片張數",
+      "drama_monthly_judge_calls_budget": "每月 judge 次數",
+      "drama_monthly_music_budget": "每月配樂首數",
+      "drama_max_usd_per_video": "單支最多花費（美元）",
+      "drama_topic_scope": "漫劇題材（每行一個）"
     },
     "stages": {
       "planner": "企劃（選題與大綱）",
@@ -2226,6 +2265,19 @@
     "modelsManaged": "各階段用哪個模型，統一在「AI 設定 › 各功能模型」選擇。",
     "editModels": "到 AI 設定修改",
     "saveModels": "儲存影片模型",
-    "openVideos": "前往影片設定"
+    "openVideos": "前往影片設定",
+    "dramaTitle": "AI 漫劇",
+    "dramaHelp": "漫劇路線（docs/videos/DRAMA.md）：AI 生成的鏡頭片段、旁白加角色配音、燒錄字幕、配樂。關閉時工人不接漫劇請求，媒體階段也不會生成。廠商用網站的 Gemini 與 MiniMax 金鑰，沒金鑰的會標出來。",
+    "dramaModels": "媒體模型",
+    "dramaSwitches": "選項",
+    "dramaBudgetHelp": "每月預算在伺服器擋，請求不會送到廠商；單支上限由工具在送出前擋。站主 2026-09-26 決定先不設上限：預設開很大，試作完再調低。",
+    "voicePoolHelp": "撰稿模型可以分配給角色的 Gemini 聲音；旁白沿用上面的頻道聲音。",
+    "preview": "預覽版",
+    "stylePresets": {
+      "cinematic-3d": "電影感 3D 寫實",
+      "anime-2d": "2D 日系動畫",
+      "ink-wash": "水墨",
+      "custom": "自訂（風格由劇本提供）"
+    }
   }
 }
