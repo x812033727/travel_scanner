@@ -6,10 +6,12 @@ import type { LearningEntry } from "@/lib/codex-learning";
 const mocks = vi.hoisted(() => ({
   article: vi.fn(), series: vi.fn(), topics: vi.fn(async (): Promise<Record<string, unknown>[]> => []),
   permanentRedirect: vi.fn((url: string) => { throw new Error(`NEXT_REDIRECT ${url}`); }),
+  headers: vi.fn(async () => new Headers()),
 }));
 vi.mock("next/navigation", async (original) => ({
   ...await original<typeof import("next/navigation")>(), permanentRedirect: mocks.permanentRedirect,
 }));
+vi.mock("next/headers", () => ({ headers: mocks.headers }));
 vi.mock("@/components/site-header", () => ({ SiteHeader: () => null }));
 vi.mock("@/lib/adsense.server", () => ({ getAdsenseSlot: async () => ({ enabled: false }) }));
 vi.mock("@/lib/guides.server", () => ({
@@ -35,7 +37,7 @@ const state = { ...reference, locale: "en", status: "published", destination_id:
   destination_label: null, topics: [], published_locales: ["en", "ja"], expired: false, document,
   series: { slug: "codex", hub: reference, current: null, previous: null, next: null, prerequisites: [], related: [] }, article_links: [] };
 
-beforeEach(() => { vi.clearAllMocks(); mocks.article.mockResolvedValue(state); mocks.series.mockResolvedValue({
+beforeEach(() => { vi.clearAllMocks(); mocks.headers.mockResolvedValue(new Headers()); mocks.article.mockResolvedValue(state); mocks.series.mockResolvedValue({
   slug: "codex", locale: "en", hub: reference, groups: [], paths: [], entries: [current],
 }); });
 
@@ -51,6 +53,14 @@ describe("a capitalised slug", () => {
     mocks.permanentRedirect.mockClear();
     render(await renderGuideArticle({ locale: "en", kind: "life", slug: "codex-learning-hub" }));
     expect(mocks.permanentRedirect).not.toHaveBeenCalled();
+  });
+
+  it("keeps the query string, so a campaign-tagged link does not lose its tags", async () => {
+    const query = "?utm_source=youtube&utm_medium=video&utm_campaign=ai-notes";
+    mocks.headers.mockResolvedValue(new Headers({ "x-travel-pathname": `/zh-TW/life/AI-Notes${query}` }));
+    const route = { locale: "zh-TW" as const, kind: "life" as const, slug: "AI-Notes" };
+    await expect(renderGuideArticle(route)).rejects.toThrow(`NEXT_REDIRECT /zh-TW/life/ai-notes${query}`);
+    await expect(guideArticleMetadata(route)).rejects.toThrow(`NEXT_REDIRECT /zh-TW/life/ai-notes${query}`);
   });
 });
 
