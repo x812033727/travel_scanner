@@ -578,6 +578,14 @@
         "api_key": "API key",
         "subscription": "Subscription accounts (Claude Code on the host)"
       }
+    },
+    "ai_subscription_fallback": {
+      "label": "When every subscription account is full",
+      "help": "What happens when every Claude account is full. \"Wait for an account\": news goes back to the queue and is tried again every 30 minutes, and other features fail that call. \"Use MiniMax\": the call runs on MiniMax at once, faster but weaker. Only the owner can change this.",
+      "options": {
+        "wait": "Wait for an account",
+        "minimax": "Use MiniMax"
+      }
     }
   },
   "hotspotTabs": {

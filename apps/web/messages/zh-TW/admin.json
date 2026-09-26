@@ -578,6 +578,14 @@
         "api_key": "API 金鑰",
         "subscription": "訂閱帳號（主機 Claude Code）"
       }
+    },
+    "ai_subscription_fallback": {
+      "label": "訂閱帳號都滿時",
+      "help": "每個 Claude 帳號都到上限時怎麼辦。「等帳號恢復」：新聞先放回佇列，每 30 分鐘再試一次，其他功能這次呼叫會失敗；「改用 MiniMax」：立刻改用 MiniMax 跑，速度快但品質較差。只有站主能改。",
+      "options": {
+        "wait": "等帳號恢復",
+        "minimax": "改用 MiniMax"
+      }
     }
   },
   "hotspotTabs": {

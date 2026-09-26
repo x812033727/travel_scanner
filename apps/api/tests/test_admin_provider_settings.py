@@ -1966,3 +1966,32 @@ async def test_the_connection_test_asks_the_agent_about_claude_instead_of_the_ap
     with pytest.raises(ConnectionError) as failed:
         await admin_service._test_ai_vendors(unplugged, None)
     assert "還沒設定 AI 帳號代理" in str(failed.value)
+
+
+@pytest.mark.asyncio
+async def test_waiting_for_an_account_instead_of_minimax_is_the_owners_choice(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    with pytest.raises(AppError):
+        _validate_provider_values(
+            "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "gemini"})
+        )
+    assert _validate_provider_values(
+        "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"})
+    ) == {"ai_subscription_fallback": "wait"}
+
+    async def fake_snapshot(*_args: object) -> object:
+        return "snapshot"
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    operator = User(id=uuid4(), email="staff@example.com", password_hash="unused", is_admin=True)
+    operator.__dict__["_admin_roles_cache"] = frozenset({"operations"})
+    with pytest.raises(AppError) as refused:
+        await update_provider_settings(
+            UpdateSession(),  # type: ignore[arg-type]
+            "ai_vendors",
+            ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"}),
+            operator,
+            object(),  # type: ignore[arg-type]
+        )
+    assert refused.value.code == "admin_capability_required"

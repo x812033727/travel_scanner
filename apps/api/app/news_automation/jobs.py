@@ -21,6 +21,9 @@ from app.news_automation.models import NewsAsset, NewsCandidate, NewsEvidence
 from app.news_automation.pipeline import process_candidate
 from app.news_automation.scanner import scan_source
 
+# How long a candidate waiting for a Claude subscription account sleeps between tries.
+PAUSE_MINUTES = 30
+
 logger = logging.getLogger(__name__)
 
 
@@ -149,6 +152,21 @@ def run_candidate(candidate_id: str) -> None:
                 # Only a full concurrency slot comes back in a minute. "disabled" waits for
                 # the orphan sweep once the switch is on again; "skipped" means another
                 # job already owns or finished the candidate.
+                if result == "paused":
+                    # Every subscription account is full: try again once a window has had
+                    # time to move, instead of spending MiniMax on it.
+                    connection, queue = _queue()
+                    try:
+                        paused_slot = int(datetime.now(UTC).timestamp() // 1800)
+                        queue.enqueue_in(
+                            timedelta(minutes=PAUSE_MINUTES),
+                            "app.news_automation.jobs.run_candidate",
+                            candidate_id,
+                            job_id=f"news-candidate-{candidate_id}-paused-{paused_slot}",
+                            job_timeout=3_600,
+                        )
+                    finally:
+                        connection.close()
                 if result == "deferred":
                     connection, queue = _queue()
                     try:
