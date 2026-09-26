@@ -2278,6 +2278,18 @@
       "anime-2d": "2D 日系動畫",
       "ink-wash": "水墨",
       "custom": "自訂（風格由劇本提供）"
-    }
+    },
+    "instructionsTitle": "各階段的常設指示",
+    "instructionsHelp": "每次都要講的話寫在這裡。工人跑該階段時會把這段文字接在提示詞後面，投影片與漫劇每一支都適用；每格最多 4,000 字，清空就是不加。單集的要求請寫在「新的漫劇」的備註，或退回關卡時的備註。",
+    "instructionFor": "{stage}的常設指示",
+    "instructionPlaceholder": "例如：旁白一律用台灣口語；結尾留下一集的懸念",
+    "promptsTitle": "目前的提示詞（唯讀）",
+    "promptsHelp": "工人最後一次送給模型的完整指示，每個階段、每種格式各留最新一份，常設指示已接在最後。該階段跑過一次才會出現；固定的部分在 repo 的 skill 檔（.agents/skills/youtube-video/references/prompts）。",
+    "promptsEmpty": "還沒有紀錄：工人跑過第一個階段後就會出現。",
+    "promptFormats": {
+      "slides": "投影片",
+      "drama": "漫劇"
+    },
+    "promptSent": "{slug} · {time}"
   }
 }

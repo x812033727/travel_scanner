@@ -2278,6 +2278,18 @@
       "anime-2d": "2D anime",
       "ink-wash": "Ink wash",
       "custom": "Custom (the script supplies the style)"
-    }
+    },
+    "instructionsTitle": "Standing instructions per stage",
+    "instructionsHelp": "What you would otherwise repeat every time. The worker appends each stage's text to that stage's prompt on every video, slides and drama alike; at most 4,000 characters each, and an emptied field adds nothing. Wishes for one episode go in the new drama form's note, or in the note when you send a gate back.",
+    "instructionFor": "{stage}: standing instructions",
+    "instructionPlaceholder": "e.g. narrate in Taiwanese colloquial Mandarin; end on the next episode's hook",
+    "promptsTitle": "The prompts as sent (read only)",
+    "promptsHelp": "The full instructions the worker last sent to the model, the latest one per stage and format, with your standing instructions at the end. A stage appears after its first run. The fixed part lives in the repository's skill files (.agents/skills/youtube-video/references/prompts).",
+    "promptsEmpty": "Nothing recorded yet: the first stage the worker runs will show up here.",
+    "promptFormats": {
+      "slides": "Slides",
+      "drama": "Drama"
+    },
+    "promptSent": "{slug} · {time}"
   }
 }
