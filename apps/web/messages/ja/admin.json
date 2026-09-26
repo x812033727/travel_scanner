@@ -2166,7 +2166,41 @@
     "seconds": "{seconds} 秒",
     "shotNeedsReview": "判定を通ったテイクがありません。プロンプトの修正が必要です",
     "drama": "AI ドラマ",
-    "spend": "メディア費用 US${usd}（クリップ {seconds} 秒）"
+    "spend": "メディア費用 US${usd}（クリップ {seconds} 秒）",
+    "newDrama": "新しいドラマ",
+    "newDramaHelp": "あらすじ（またはサイト記事のスラッグ）を書き、スタイルと長さを選びます。ホストのワーカーは定期ドラフトより先にこれを企画し、アウトライン、設定画、ナレーション、絵コンテ、最終カットはこのページで決めます。設定で「AI ドラマ」をオンにしておいてください。",
+    "premise": "あらすじ（必須）",
+    "premisePlaceholder": "誰が何を望み、何が立ちはだかり、どう終わるか。パブリックドメインの伝承か創作。",
+    "workingTitle": "仮タイトル（任意）",
+    "sourceGuide": "翻案するサイト記事（スラッグ、任意）",
+    "sourceGuidePlaceholder": "例：tokyo-first-trip-guide",
+    "stylePreset": "スタイル",
+    "targetMinutes": "長さ（分、1〜8）",
+    "requestNote": "企画への補足（任意）",
+    "requestNotePlaceholder": "例：ナレーションはゆっくり、最後は次回のタイトルで",
+    "fileRequest": "制作に並べる",
+    "newDramaError": "並べられませんでした：{message}",
+    "queue": "依頼したドラマ",
+    "requestStatuses": {
+      "queued": "待機中",
+      "started": "制作中",
+      "done": "完了",
+      "cancelled": "取り消し"
+    },
+    "minutes": "{minutes} 分",
+    "filedAt": "{time} に依頼",
+    "adaptsArticle": "記事 {slug} を翻案",
+    "openVideo": "{slug} を開く",
+    "cancelRequest": "取り消す",
+    "cancelConfirm": "この依頼を取り消しますか？ワーカーは制作しません。",
+    "cancelError": "取り消せませんでした：{message}",
+    "currentStep": "現在：{step}",
+    "presets": {
+      "cinematic-3d": "シネマティック 3D リアル",
+      "anime-2d": "2D アニメ",
+      "ink-wash": "水墨",
+      "custom": "カスタム"
+    }
   },
   "videoSettings": {
     "loading": "設定を読み込んでいます…",
