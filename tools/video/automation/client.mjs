@@ -5,6 +5,9 @@
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 
+// A stage answered something that is not the JSON it was asked for; flow.mjs retries it later.
+export const OUTPUT_INVALID = "video_ai_output_invalid";
+
 export class AutomationError extends Error {
   constructor(message, { status = 0, code = "", who = "service" } = {}) {
     super(message);
@@ -84,8 +87,8 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     /** Every video on /admin/videos, dropped ones too: slug, title, source_guide, dropped_at. */
     videos: () => request("GET", "automation/videos"),
     /** One stage: the server answers with the model the owner chose; returns { text, usage, … }. */
-    run: (stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides") =>
-      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format }),
+    run: (stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides", variant = null) =>
+      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format, ...(variant ? { variant } : {}) }),
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */
@@ -106,5 +109,18 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     dramaStart: (id, slug) => request("POST", `automation/drama-requests/${id}/start`, { slug }),
     /** Report a request's video finished and confirmed for upload. */
     dramaDone: (id) => request("POST", `automation/drama-requests/${id}/done`),
+    // A long series (docs/videos/SERIES.md): the site says what is next, the worker reports back.
+    /** The next document to plan or episode to start, or null while every series waits. */
+    seriesNext: async () => (await request("GET", "automation/series/next")).job ?? null,
+    /** The prompts' context for a series, narrowed to one episode's chapter. */
+    seriesContext: (slug, episode) => request("GET", `automation/series/${slug}/context${episode ? `?episode=${episode}` : ""}`),
+    /** File a planned document as a new version that waits for the owner. */
+    seriesDoc: (slug, doc) => request("POST", `automation/series/${slug}/docs`, doc),
+    /** Start an episode under the video's slug; answers with the request row and the context. */
+    episodeStart: (slug, number, videoSlug) => request("POST", `automation/series/${slug}/episodes/${number}/start`, { slug: videoSlug }),
+    /** Keep the finished episode's recap and the characters' states for the next one. */
+    episodeRecap: (slug, number, body) => request("POST", `automation/series/${slug}/episodes/${number}/recap`, body),
+    /** Report the episode cleared for upload, so the next one may start. */
+    episodeDone: (slug, number) => request("POST", `automation/series/${slug}/episodes/${number}/done`),
   };
 }

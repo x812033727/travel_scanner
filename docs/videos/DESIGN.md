@@ -35,7 +35,7 @@
 | 10 | 打包 | `package` | `upload/`、`UPLOAD.md` | 站主看完全片 → `approve --gate final` |
 | 11 | 站主在 Studio 上傳成私人 → `youtube-sync` 補五語系中繼資料與 CC → 站主自己按公開 | 站主＋工具 | YouTube 影片 | 公開一律站主按 |
 
-核准綁雜湊：大綱綁 `brief.md`、試聽綁 `timeline.json`、成片綁 `final.mp4`；漫劇另有角色設定圖綁 `characters/manifest.json`、分鏡綁 `keyframes/manifest.json`。檔案變了，舊的核准就不算，後面的指令會拒絕執行（結束碼 3）。
+核准綁雜湊：大綱綁 `brief.md`、試聽綁 `timeline.json`、成片綁 `final.mp4`；漫劇另有角色設定圖綁 `characters/manifest.json`、分鏡綁 `keyframes/manifest.json`；長篇作品的每一集（`video.json` 有 `series`，見 `SERIES.md`）另有劇本關卡綁 `script.md`（`node tools/video/cli.mjs script` 由 `video.json` 寫出，只含場景、台詞、說話者與情緒，不含鏡頭提示詞，所以媒體階段自動修提示詞不會讓核准失效）。檔案變了，舊的核准就不算，後面的指令會拒絕執行（結束碼 3）。
 
 ## 資料
 

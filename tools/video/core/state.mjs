@@ -87,6 +87,7 @@ export const DRAMA_STEPS = [
   "outline approved",
   "script passes lint",
   "fact-checked",
+  "script approved",
   "look generated",
   "look approved",
   "narration synthesized",
@@ -105,7 +106,10 @@ export const DRAMA_STEPS = [
 
 export function stepsFor(doc) {
   if (!isDrama(doc)) return SLIDES_STEPS;
-  return doc.music ? DRAMA_STEPS : DRAMA_STEPS.filter((id) => id !== "music generated");
+  // The script gate belongs to an episode of a series (docs/videos/SERIES.md); a one-off drama
+  // keeps the owner's outline pick as its only reading before the sheets. Music is skipped when
+  // the script has none.
+  return DRAMA_STEPS.filter((id) => (id !== "music generated" || doc.music) && (id !== "script approved" || doc.series));
 }
 
 /**
@@ -140,6 +144,9 @@ export function loadProject({ slug, file, root }) {
     file: source,
     dir,
     brief: readText(path.join(dir, "brief.md")),
+    // An episode of a series: the cast as the setting book has it, and this episode's beats
+    // (docs/videos/SERIES.md); the worker writes it when it starts the episode.
+    series: readJson(path.join(dir, "series.json"), null),
     lexicon: readJson(path.join(shelf, "lexicon.json"), emptyLexicon()),
     pack: doc.source_guide ? readJson(contentPackFile(doc.source_guide, root), null) : undefined,
     translations,
@@ -228,6 +235,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const final = await gate("final");
   const look = drama ? await gate("look") : null;
   const storyboard = drama ? await gate("storyboard") : null;
+  const script = drama && doc?.series ? await gate("script") : null;
   const timeline = read(ARTIFACTS.timeline);
   const frames = read(ARTIFACTS.frames);
   const checks = read(ARTIFACTS.checks);
@@ -261,6 +269,11 @@ export async function pipelineStatus({ slug, root, workdir }) {
       todo: lint ? cli("lint", slug) : `the writer agent drafts docs/videos/${slug}/video.json`,
     },
     "fact-checked": { done: existsSync(path.join(dir, "verify-1.md")), todo: drama ? "a different agent checks continuity and the story bible and writes verify-1.md" : "a different agent fact-checks and writes verify-1.md" },
+    "script approved": {
+      done: script?.status === "approved",
+      note: script ? describe(script) : undefined,
+      todo: `${cli("script", slug)}, then ${cli("review-push", slug, "--gate script")}; the owner reads the screenplay on /admin/videos; then ${cli("review-pull", slug)}`,
+    },
     "look generated": {
       done: Boolean(lookNow) && characters?.look_hash === lookNow,
       note: characters && characters.look_hash !== lookNow ? "characters/manifest.json was made for an older look" : undefined,

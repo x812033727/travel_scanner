@@ -110,6 +110,10 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 `settle()` 依設定寫進 `video.json`：`format: "drama"`、`look.preset`（模型沒寫時用設定的風格預設）、`subtitles.burn_in`、關掉音樂時拿掉 `music`。工人回報影片時帶 `format`，後台列表才分得出漫劇並顯示 `media_usd`。
 
+## 長篇作品（2026-09-27 加，設計在 `SERIES.md`）
+
+工人每輪先問 `GET /video/automation/series/next`，再問單集請求，再看排程草稿。作品的工作有四種：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照漫劇的步驟走，多了三件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；聽眾審稿之後多一個**劇本關卡**（`script.md` 只含敘事，站主退回就走撰稿 FIX 模式，最多 `MAX_PROMPT_FIX_ROUNDS` 輪）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪。
+
 ## 安全與成本
 
 - `/video/automation/run` 只接受設定裡列出的階段名稱，模型由伺服器依設定決定，工人不能指定。每次呼叫都記下階段、模型、token 數與影片代號。上限有兩個，超過都回 429：
