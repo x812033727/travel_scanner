@@ -18,6 +18,7 @@ scope:
   - tools/video/package
   - tools/video/core/lint.mjs
   - tools/video/core/lint.test.mjs
+  - tools/video/assemble/drama.test.mjs
   - .agents/skills/youtube-video
   - .claude/skills/youtube-video
   - docs/videos/AUTOMATION.md
@@ -72,7 +73,7 @@ node tools/video/cli.mjs review-push --slug ai-agent-permissions --gate final   
 
 - 工人的權杖本來就能送審，這張沒有擴大它能做的事。
 - 上傳包裡的 mp4 約 90–100 MB，用既有的分段上傳送。
-- 2026-09-27 claude-fable-5-1-video-worker 做完（分支 `claude/video-hands-off-worker`，從 `origin/main` 併入 qa 票的分支）。judge 票當時還沒 done，claim 用了 `--force`。`tools/video/core/lint.test.mjs` 加進 scope：`stanceProblems` 的單元測試放在它旁邊。
+- 2026-09-27 claude-fable-5-1-video-worker 做完（分支 `claude/video-hands-off-worker`，從 `origin/main` 併入 qa 票的分支）。judge 票當時還沒 done，claim 用了 `--force`。`tools/video/core/lint.test.mjs` 加進 scope：`stanceProblems` 的單元測試放在它旁邊；`tools/video/assemble/drama.test.mjs` 也加進 scope：它斷言 `UPLOAD.md` 舊的自我檢查文字，改成新的揭露那一行。
 - **實作的合約**（伺服器端在 judge 票 `apps/api/app/video_automation/judge.py`）：
   - `POST automation/judge/outline`：`{ slug, brief, options: [{ key, title, summary, hook }] }`，2–3 個選項，`summary`/`hook` 缺的送空字串（請求模型拒絕未知欄位）。回 `{ choice, probabilities, options: { key: { stance, demo } }, advice, passed, note }`。`client.judgeOutline`。
   - 大綱審核 `payload = { brief, options, pick? }`：Jev 過關（`passed`）就附 `pick`，伺服器收到時核准並設 `choice`；沒過就把 `note` 當退回意見給 `replan`（計入 `MAX_REPLANS`），重寫到上限仍不過，就附上最後一次的 `pick` 送審等站主（卡片顯示表）；409 `video_judge_not_enabled`（立場空白或開關關）不附 `pick`；404（站上還沒有這個端點）也走站主；429/502/連不上 → `later`，下一輪再問。本機 `review-push --gate outline` 走同一條，只是外部失敗時印出警告、照舊送審（再跑一次就會補上 pick）。
