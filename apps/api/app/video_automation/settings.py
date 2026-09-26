@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, cast
+from datetime import UTC, datetime
+from typing import Any, cast, get_args
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,7 +12,12 @@ from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.config import Settings
 from app.models import AdminAuditLog, User
-from app.video_automation.models import DRAMA_FIELDS, STYLE_PRESETS, VideoAutomationSettings
+from app.video_automation.models import (
+    DRAMA_FIELDS,
+    STYLE_PRESETS,
+    VideoAutomationSettings,
+    VideoStagePrompt,
+)
 from app.video_automation.schemas import (
     ApiProviderName,
     DramaSettings,
@@ -22,6 +28,9 @@ from app.video_automation.schemas import (
     ProviderName,
     SettingsView,
     SettingsWrite,
+    Stage,
+    StagePromptView,
+    StageRunIn,
     VoiceOptionsView,
 )
 from app.video_automation.usage import usage_view
@@ -137,6 +146,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         topic_from_site=row.topic_from_site,
         topic_from_search=row.topic_from_search,
         stage_models=cast(Any, row.stage_models),
+        stage_instructions=cast(Any, row.stage_instructions or {}),
         voice=cast(Any, row.voice),
         target_minutes_min=row.target_minutes_min,
         target_minutes_max=row.target_minutes_max,
@@ -225,6 +235,42 @@ def settings_problems(payload: SettingsWrite, runtime: Settings) -> list[str]:
         problems.append(f"{voice.name} 不在 Azure 語音的允許清單裡")
     problems.extend(drama_problems(payload.drama, runtime))
     return problems
+
+
+async def remember_prompt(session: AsyncSession, request: StageRunIn) -> None:
+    """Keep the instructions a stage was just sent, so the settings tab can show them as sent.
+
+    The caller commits: the record should survive a run that then fails upstream, since that
+    is exactly when the owner wants to read what the model was told.
+    """
+    await session.merge(
+        VideoStagePrompt(
+            stage=request.stage,
+            format=request.format,
+            slug=request.slug,
+            instructions=request.instructions,
+            sent_at=datetime.now(UTC),
+        )
+    )
+
+
+async def stage_prompts(session: AsyncSession) -> list[StagePromptView]:
+    """Every stage's last prompt, in the stages' order, a slides video's before a drama's."""
+    order = {stage: index for index, stage in enumerate(get_args(Stage))}
+    rows = sorted(
+        (await session.scalars(select(VideoStagePrompt))).all(),
+        key=lambda row: (order.get(row.stage, len(order)), row.format != "slides"),
+    )
+    return [
+        StagePromptView(
+            stage=cast(Any, row.stage),
+            format=cast(Any, row.format),
+            slug=row.slug,
+            instructions=row.instructions,
+            sent_at=row.sent_at,
+        )
+        for row in rows
+    ]
 
 
 def _flat(values: dict[str, Any]) -> dict[str, Any]:

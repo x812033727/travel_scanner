@@ -35,6 +35,7 @@ from app.video_automation.schemas import (
     SettingsView,
     SettingsWrite,
     StageModelsWrite,
+    StagePromptsOut,
     StageRunIn,
     StageRunOut,
     TopicsOut,
@@ -80,15 +81,25 @@ async def put_video_automation_settings(
     payload: SettingsSave, user: SettingsManager, session: Session
 ) -> SettingsView:
     values = payload.model_dump()
-    if payload.stage_models is None or payload.drama is None:
+    missing = [
+        key
+        for key in ("stage_models", "drama", "stage_instructions")
+        if getattr(payload, key) is None
+    ]
+    if missing:
         # The stage models are chosen on the AI settings page, and a page from before the drama
-        # settings existed sends none: keep the stored ones in both cases.
+        # settings or the standing instructions existed sends none: keep the stored ones.
         current = service.settings_values(await service.settings_row(session)).model_dump()
-        if payload.stage_models is None:
-            values["stage_models"] = current["stage_models"]
-        if payload.drama is None:
-            values["drama"] = current["drama"]
+        for key in missing:
+            values[key] = current[key]
     return await _save(session, user, SettingsWrite.model_validate(values))
+
+
+@admin_router.get("/prompts", response_model=StagePromptsOut)
+async def get_video_stage_prompts(user: ContentReader, session: Session) -> StagePromptsOut:
+    """What each stage was last told, standing instructions included, as the worker sent it."""
+    _ = user
+    return StagePromptsOut(prompts=await service.stage_prompts(session))
 
 
 @admin_router.put("/settings/models", response_model=SettingsView)
@@ -115,6 +126,10 @@ async def run_video_stage(request: StageRunIn, tool: VideoTool, session: Session
     await enforce_named_rate_limit(
         "video_ai_run", str(tool.id), limit=RUNS_PER_HOUR, window_seconds=3600
     )
+    # Kept before the run, and committed on its own, so a run the vendor refuses still leaves
+    # the owner the prompt to read.
+    await service.remember_prompt(session, request)
+    await session.commit()
     row = await service.settings_row(session)
     runtime = await load_runtime_settings(session)
     try:

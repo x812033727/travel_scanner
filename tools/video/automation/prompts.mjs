@@ -320,8 +320,16 @@ exactly, and keep a character's line in that character's voice (short, spoken, i
 };
 
 /** The instructions a stage gets for a video's format: the drama's own where it has one. */
-export function instructionsFor(stage, format = "slides") {
-  return (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+/** What the settings tab adds under the skill's text: the owner's standing instructions for the stage. */
+export const STANDING_HEADING = `## The owner's standing instructions
+The site owner wrote these on the settings tab for every video this stage works on. Follow them;
+where they contradict a rule above, they win. They may be in Chinese.`;
+
+/** The stage's instructions for the format, with the owner's standing instructions (if any) last. */
+export function instructionsFor(stage, format = "slides", standing = "") {
+  const base = (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+  const text = typeof standing === "string" ? standing.trim() : "";
+  return text ? `${base}\n\n${STANDING_HEADING}\n${text}` : base;
 }
 
 /** The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. */

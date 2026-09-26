@@ -50,6 +50,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | | 要避開的題材 | 投資建議、醫療建議、選舉政治 |
 | | 題目來源：站上新聞與文章／Brave 搜尋 | 都開 |
 | 各階段模型 | 企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿，各選「Claude Code（訂閱帳號）」或某家 API 的模型 | 全部用 Claude Code 訂閱帳號；企劃、撰稿、翻譯用 Claude Sonnet 5，查核、聽眾審稿、字幕審稿用 Claude Opus 5.5 |
+| 各階段常設指示 | 企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿各一段文字（每格最多 4000 字），工人接在該階段提示詞之後，投影片與漫劇都適用；清空就是不加。分頁的「目前的提示詞」顯示工人最後送出的完整指示（`video_stage_prompts`，每階段每格式各留最新一份，跑過才有） | 空 |
 | 成片參數 | 旁白聲音、風格、語速 | Gemini Sulafat，沿用 `docs/videos/README.md` |
 | | 目標長度（分鐘） | 8–12 |
 | | 字幕語系 | en、ja、ko、zh-CN |

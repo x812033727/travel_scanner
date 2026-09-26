@@ -264,10 +264,15 @@ def _app() -> FastAPI:
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
     app.include_router(automation_api.tool_router, prefix="/api/v1")
 
+    sessions: list[Any] = []
+
     async def session() -> Any:
-        yield MagicMock(commit=AsyncMock())
+        fake = MagicMock(commit=AsyncMock(), merge=AsyncMock())
+        sessions.append(fake)
+        yield fake
 
     app.dependency_overrides[get_session] = session
+    app.state.sessions = sessions
     return app
 
 
@@ -300,6 +305,15 @@ async def test_the_run_route_needs_a_token_and_passes_refusals_on_with_their_ret
     assert busy.status_code == 503 and busy.headers["retry-after"] == "12"
     assert busy.json()["code"] == "video_ai_upstream_busy"
     assert bad.status_code == 422, "only the six stages exist"
+    remembered = [
+        fake.merge.await_args.args[0] for fake in app.state.sessions if fake.merge.await_count
+    ]
+    assert len(remembered) == 1, "the refused run's prompt was kept; the unknown stage's was not"
+    assert (remembered[0].stage, remembered[0].format, remembered[0].instructions) == (
+        "writer",
+        "slides",
+        "Write.",
+    )
 
 
 integration = pytest.mark.skipif(
