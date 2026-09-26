@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-video-dubs-captions-package
 title: Video dubs: captions follow the dub timeline, the upload package carries the tracks, UPLOAD.md gets the Languages steps
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-fable-5-1-video-dubs
 claimed_at: 2026-09-26T18:49:33Z
 created_at: 2026-09-26T17:59:25Z
-completed_at:
+completed_at: 2026-09-26T22:53:10Z
 branch: claude/video-dubs-captions-package
 depends_on:
   - 2026-09-26-video-dubs-command
