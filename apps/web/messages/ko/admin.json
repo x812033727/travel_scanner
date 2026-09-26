@@ -2109,7 +2109,9 @@
       "outline": "구성",
       "audio": "내레이션",
       "final": "완성 영상",
-      "publish": "업로드 확인"
+      "publish": "업로드 확인",
+      "look": "캐릭터 설정화",
+      "storyboard": "스토리보드"
     },
     "statuses": {
       "pending": "결정 대기",
@@ -2156,7 +2158,19 @@
     "dropPlaceholder": "예: 이 주제는 2차 묶음에서 이미 만들었음",
     "dropConfirm": "이 영상을 중단할까요? 되돌릴 수 없습니다.",
     "dropButton": "이 영상 중단하기",
-    "dropError": "중단하지 못했습니다: {message}"
+    "dropError": "중단하지 못했습니다: {message}",
+    "chooseLook": "한 장을 고르면 이후 모든 숏의 기준이 됩니다",
+    "candidate": "설정화 {key}",
+    "suggested": "판정 추천",
+    "approveLook": "이 설정화 사용",
+    "approveStoryboard": "스토리보드 승인",
+    "judgeScore": "판정 {score}/10",
+    "voice": "목소리 {voice}",
+    "lookAlike": "너무 비슷한 인접 숏: {pairs}",
+    "seconds": "{seconds}초",
+    "shotNeedsReview": "판정을 통과한 테이크가 없어 프롬프트를 고쳐야 합니다",
+    "drama": "AI 드라마",
+    "spend": "미디어 비용 US${usd}(클립 {seconds}초)"
   },
   "videoSettings": {
     "loading": "설정을 불러오는 중…",
@@ -2203,7 +2217,32 @@
       "monthly_token_budget_millions": "월간 모델 토큰 한도(백만)",
       "max_verify_rounds": "영상당 최대 팩트체크 횟수",
       "max_retake_rounds": "내레이션 최대 재녹음 횟수",
-      "auto_approve_audio": "Jev가 모든 문장을 바르게 읽었다고 판단하면 내레이션을 자동 승인"
+      "auto_approve_audio": "Jev가 모든 문장을 바르게 읽었다고 판단하면 내레이션을 자동 승인",
+      "drama_enabled": "AI 드라마 켜기",
+      "drama_image_provider": "이미지 공급자(설정화와 키프레임)",
+      "drama_image_model": "이미지 모델",
+      "drama_clip_provider": "클립 공급자(이미지→영상)",
+      "drama_clip_model": "클립 모델",
+      "drama_music_provider": "음악 공급자",
+      "drama_music_model": "음악 모델",
+      "drama_clip_resolution": "클립 해상도",
+      "drama_clip_seconds_default": "클립 기본 길이(초)",
+      "drama_aspect": "화면 비율",
+      "drama_style_preset": "스타일 프리셋",
+      "drama_max_clips_per_video": "편당 최대 클립 수",
+      "drama_max_retakes_per_shot": "숏당 최대 재촬영 횟수",
+      "drama_judge_min_score": "판정 기준(0–10)",
+      "drama_music_enabled": "음악 생성",
+      "drama_subtitle_burn_in": "번체 중국어 자막을 화면에 새기기",
+      "drama_clip_native_audio": "클립 모델이 소리를 넣게 하기",
+      "drama_auto_approve_storyboard": "판정이 모든 숏을 통과시키면 스토리보드 자동 승인",
+      "drama_character_voice_pool": "캐릭터 목소리",
+      "drama_monthly_clip_seconds_budget": "월 클립 초",
+      "drama_monthly_images_budget": "월 이미지 수",
+      "drama_monthly_judge_calls_budget": "월 판정 호출 수",
+      "drama_monthly_music_budget": "월 음악 트랙 수",
+      "drama_max_usd_per_video": "편당 최대 비용(미국 달러)",
+      "drama_topic_scope": "드라마 소재(한 줄에 하나)"
     },
     "stages": {
       "planner": "기획(주제와 개요)",
@@ -2226,6 +2265,19 @@
     "modelsManaged": "단계별 모델은 'AI 설정 › 기능별 모델'에서 한곳에서 고릅니다.",
     "editModels": "AI 설정에서 변경",
     "saveModels": "영상 모델 저장",
-    "openVideos": "영상 설정으로 이동"
+    "openVideos": "영상 설정으로 이동",
+    "dramaTitle": "AI 드라마",
+    "dramaHelp": "드라마 경로(docs/videos/DRAMA.md): AI가 생성한 숏, 내레이션과 캐릭터 목소리, 화면에 새긴 자막, 음악. 끄면 워커가 드라마 요청을 받지 않고 미디어 단계도 생성하지 않습니다. 공급자는 사이트의 Gemini와 MiniMax 키를 쓰며, 키가 없는 공급자는 표시됩니다.",
+    "dramaModels": "미디어 모델",
+    "dramaSwitches": "옵션",
+    "dramaBudgetHelp": "월 예산은 서버에서 막아 공급자에게 요청이 가지 않습니다. 편당 상한은 도구가 제출 전에 막습니다. 운영자가 2026-09-26에 당분간 상한 없이 시작하기로 하여 기본값은 넉넉하며, 시범 제작 후 낮춥니다.",
+    "voicePoolHelp": "작가 모델이 캐릭터에 배정할 수 있는 Gemini 목소리입니다. 내레이션은 위의 채널 목소리를 그대로 씁니다.",
+    "preview": "미리보기",
+    "stylePresets": {
+      "cinematic-3d": "시네마틱 3D 실사",
+      "anime-2d": "2D 애니메이션",
+      "ink-wash": "수묵",
+      "custom": "사용자 지정(스타일은 대본이 제공)"
+    }
   }
 }

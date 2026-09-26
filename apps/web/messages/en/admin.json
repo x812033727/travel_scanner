@@ -2109,7 +2109,9 @@
       "outline": "Outline",
       "audio": "Narration",
       "final": "Final cut",
-      "publish": "Upload confirmation"
+      "publish": "Upload confirmation",
+      "look": "Character sheets",
+      "storyboard": "Storyboard"
     },
     "statuses": {
       "pending": "To decide",
@@ -2156,7 +2158,19 @@
     "dropPlaceholder": "For example: batch 2 already covers this topic",
     "dropConfirm": "Drop this video? This cannot be undone.",
     "dropButton": "Drop this video",
-    "dropError": "Not dropped: {message}"
+    "dropError": "Not dropped: {message}",
+    "chooseLook": "Choose the sheet every shot is drawn from",
+    "candidate": "Sheet {key}",
+    "suggested": "judge's pick",
+    "approveLook": "Use this sheet",
+    "approveStoryboard": "Approve the storyboard",
+    "judgeScore": "Judge {score}/10",
+    "voice": "voice {voice}",
+    "lookAlike": "Neighbouring shots that look alike: {pairs}",
+    "seconds": "{seconds} s",
+    "shotNeedsReview": "No take passed the judge; the prompt needs a fix",
+    "drama": "AI drama",
+    "spend": "Media spend US${usd} ({seconds} clip seconds)"
   },
   "videoSettings": {
     "loading": "Loading settings…",
@@ -2203,7 +2217,32 @@
       "monthly_token_budget_millions": "Monthly model token limit (millions)",
       "max_verify_rounds": "Most fact-check rounds per video",
       "max_retake_rounds": "Most narration retake rounds",
-      "auto_approve_audio": "Approve the narration automatically when Jev finds every line read correctly"
+      "auto_approve_audio": "Approve the narration automatically when Jev finds every line read correctly",
+      "drama_enabled": "AI drama route on",
+      "drama_image_provider": "Image vendor (sheets and keyframes)",
+      "drama_image_model": "Image model",
+      "drama_clip_provider": "Clip vendor (image to video)",
+      "drama_clip_model": "Clip model",
+      "drama_music_provider": "Music vendor",
+      "drama_music_model": "Music model",
+      "drama_clip_resolution": "Clip resolution",
+      "drama_clip_seconds_default": "Default clip length (seconds)",
+      "drama_aspect": "Aspect",
+      "drama_style_preset": "Style preset",
+      "drama_max_clips_per_video": "Most clips in one video",
+      "drama_max_retakes_per_shot": "Most retakes per shot",
+      "drama_judge_min_score": "Judge threshold (0–10)",
+      "drama_music_enabled": "Generate music",
+      "drama_subtitle_burn_in": "Burn the zh-TW subtitles into the picture",
+      "drama_clip_native_audio": "Let the clip model add its own sound",
+      "drama_auto_approve_storyboard": "Approve the storyboard automatically when the judge passes every shot",
+      "drama_character_voice_pool": "Character voices",
+      "drama_monthly_clip_seconds_budget": "Clip seconds a month",
+      "drama_monthly_images_budget": "Images a month",
+      "drama_monthly_judge_calls_budget": "Judge calls a month",
+      "drama_monthly_music_budget": "Music tracks a month",
+      "drama_max_usd_per_video": "Most spent on one video (US$)",
+      "drama_topic_scope": "Drama subjects (one per line)"
     },
     "stages": {
       "planner": "Planning (topic and outline)",
@@ -2226,6 +2265,19 @@
     "modelsManaged": "The model of each stage is chosen under AI settings › Models by feature.",
     "editModels": "Change in AI settings",
     "saveModels": "Save video models",
-    "openVideos": "Open video settings"
+    "openVideos": "Open video settings",
+    "dramaTitle": "AI drama",
+    "dramaHelp": "The drama route (docs/videos/DRAMA.md): AI-generated shots, a narrator plus character voices, burned-in subtitles and music. Switched off, the worker takes no drama requests and the media stages refuse to generate. The vendors use the site's Gemini and MiniMax keys; a vendor without a key is marked.",
+    "dramaModels": "Media models",
+    "dramaSwitches": "Options",
+    "dramaBudgetHelp": "Each month's budget stops generation at the server before a vendor is called; the per-video cap stops the tool before it submits. The owner chose to start without a cap (2026-09-26): the defaults are wide and are lowered after the pilot.",
+    "voicePoolHelp": "Gemini voices the writer may give to characters; the narrator keeps the channel voice above.",
+    "preview": "preview",
+    "stylePresets": {
+      "cinematic-3d": "Cinematic 3D realistic",
+      "anime-2d": "2D anime",
+      "ink-wash": "Ink wash",
+      "custom": "Custom (the script supplies the style)"
+    }
   }
 }
