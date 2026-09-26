@@ -2,10 +2,17 @@
 // review/audio.html to listen to every line and flag the ones read wrong, and review/final.html to
 // watch the finished video with its lines alongside. Nothing is loaded from the network, and both
 // open straight from disk.
+import { characterOf } from "../core/drama.mjs";
 import { eachLine, spokenText } from "../core/schema.mjs";
 import { formatClock, frameToSeconds } from "../core/timeline.mjs";
 
 export const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
+
+/** A drama line's text with its speaker in front, 【精衛】 style, so the owner knows whose voice to expect. */
+export function labelledText(doc, line) {
+  const character = characterOf(doc, line);
+  return character ? `【${character.name}】${line.text}` : line.text;
+}
 // Inside <script>, "</" would end the element early.
 const scriptJson = (value) => JSON.stringify(value).replace(/</g, "\\u003c");
 
@@ -26,7 +33,11 @@ button{font:inherit;padding:.6rem 1rem;border-radius:.6rem;border:0;background:v
 .bar{position:sticky;bottom:0;background:var(--paper);border-top:1px solid var(--line);padding:.75rem 0;display:flex;gap:1rem;align-items:center}
 .cue{cursor:pointer;border-radius:.4rem;padding:.3rem .5rem}.cue:hover,.cue.now{background:color-mix(in srgb,var(--teal) 18%,transparent)}
 .time{font-variant-numeric:tabular-nums;color:var(--muted);margin-right:.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(18rem,1fr));gap:1rem}
+figure{margin:0}figure img{width:100%;border-radius:.4rem;border:1px solid var(--line)}figcaption{font-size:.9rem;margin-top:.3rem}
 `;
+
+const optionKey = (n) => String.fromCharCode(64 + n);
 
 function page(title, body) {
   return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)}</title><style>${STYLE}</style></head><body><main>${body}</main></body></html>\n`;
@@ -46,7 +57,7 @@ export function audioReviewHtml(doc, timeline) {
     const time = placed ? formatClock(frameToSeconds(placed.start_frame)) : "";
     const spoken = spokenText(line) !== line.text ? `<span class="say">唸成：${escapeHtml(spokenText(line))}</span>` : "";
     current.items.push(
-      `<li data-line="${escapeHtml(line.id)}"><div><span class="time">${time}</span>${escapeHtml(line.text)}</div>${spoken}` +
+      `<li data-line="${escapeHtml(line.id)}"><div><span class="time">${time}</span>${escapeHtml(labelledText(doc, line))}</div>${spoken}` +
         `<audio controls preload="none" src="../audio/${encodeURIComponent(line.id)}.wav"></audio>` +
         `<div><label><input type="checkbox" class="flag"> 唸錯</label></div>` +
         `<input type="text" class="note" placeholder="哪個字唸錯、應該怎麼唸（選填）"></li>`,
@@ -70,9 +81,30 @@ export function audioReviewHtml(doc, timeline) {
   return page(`旁白試聽：${doc.youtube.title}`, body);
 }
 
+/** A drama's candidate character sheets with the judge's verdicts, for choosing one per character locally. */
+export function lookReviewHtml(doc, manifest) {
+  const sections = Object.entries(manifest.characters ?? {}).map(([id, entry]) => {
+    const character = doc.characters?.find((each) => each.id === id);
+    const cards = (entry.candidates ?? [])
+      .map((candidate) => {
+        const verdict = candidate.judge ? `judge ${candidate.judge.overall}/10${candidate.judge.problems?.length ? `：${candidate.judge.problems.join("；")}` : ""}` : "not judged";
+        return `<figure><img src="../${escapeHtml(candidate.file)}" alt=""><figcaption>${optionKey(candidate.n)}${entry.suggested === candidate.n ? "（建議）" : ""} · ${escapeHtml(verdict)}</figcaption></figure>`;
+      })
+      .join("");
+    return `<h2>${escapeHtml(entry.name)}（${escapeHtml(id)}）</h2><p class="hint">${escapeHtml(character?.appearance ?? "")}</p><div class="grid">${cards}</div>`;
+  });
+  const body = [
+    `<h1>角色設定圖：${escapeHtml(doc.youtube?.title ?? doc.slug)}</h1>`,
+    `<p class="hint">每個角色選一張，之後每個鏡頭都以它當參考。在 /admin/videos 決定，或本機執行 <code>node tools/video/cli.mjs look --slug ${escapeHtml(doc.slug)} --choose ${Object.keys(manifest.characters ?? {}).map((id) => `${id}=1`).join(",")}</code> 再 <code>approve --gate look</code>。</p>`,
+    `<p class="hint">設定版本 ${escapeHtml(manifest.look_hash ?? "")}</p>`,
+    ...sections,
+  ].join("");
+  return page(`角色設定圖：${doc.youtube?.title ?? doc.slug}`, body);
+}
+
 /** The finished video, its chapters, and every line; clicking a line or chapter seeks to it. */
 export function finalReviewHtml(doc, timeline, checks) {
-  const text = new Map([...eachLine(doc)].map(({ line }) => [line.id, line.text]));
+  const text = new Map([...eachLine(doc)].map(({ line }) => [line.id, labelledText(doc, line)]));
   const cues = timeline.lines.map((line) => ({ id: line.id, start: frameToSeconds(line.start_frame), end: frameToSeconds(line.end_frame), text: text.get(line.id) ?? "" }));
   const chapters = timeline.chapters.map((chapter) => `<li class="cue" data-start="${frameToSeconds(chapter.start_frame)}"><span class="time">${formatClock(frameToSeconds(chapter.start_frame))}</span>${escapeHtml(chapter.title)}</li>`);
   const lines = cues.map((cue) => `<li class="cue" data-start="${cue.start}" data-end="${cue.end}"><span class="time">${formatClock(cue.start)}</span>${escapeHtml(cue.text)}</li>`);
