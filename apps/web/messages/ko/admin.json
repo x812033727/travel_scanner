@@ -2111,7 +2111,8 @@
       "final": "완성 영상",
       "publish": "업로드 확인",
       "look": "캐릭터 설정화",
-      "storyboard": "스토리보드"
+      "storyboard": "스토리보드",
+      "script": "대본"
     },
     "statuses": {
       "pending": "결정 대기",
@@ -2204,7 +2205,21 @@
       "anime-2d": "2D 애니메이션",
       "ink-wash": "수묵",
       "custom": "사용자 지정"
-    }
+    },
+    "tabDrama": "드라마",
+    "episodeOf": "작품 {series} {number}화",
+    "approveScript": "대본 승인",
+    "scriptCoverage": "비트 달성 여부",
+    "scriptBeats": {
+      "hook": "훅",
+      "conflict": "갈등",
+      "turn": "전환",
+      "cliffhanger": "클리프행어"
+    },
+    "scriptProblems": "검수가 지적한 문제",
+    "scriptMinutes": "약 {minutes}분",
+    "scriptPrompt": "숏 프롬프트",
+    "narrator": "내레이션"
   },
   "videoSettings": {
     "loading": "설정을 불러오는 중…",
@@ -2325,5 +2340,131 @@
       "drama": "드라마"
     },
     "promptSent": "{slug} · {time}"
+  },
+  "videoSeries": {
+    "listTitle": "작품",
+    "empty": "아직 작품이 없습니다",
+    "emptyDetail": "아래에서 작품을 만들면 워커가 다음 회차에 설정집을 기획하고, 여기서 승인합니다.",
+    "loadError": "작품을 불러오지 못했습니다",
+    "retry": "다시 시도",
+    "newSeries": "새 작품",
+    "newSeriesHelp": "줄거리를 직접 쓰고, 중시하는 면을 고르고, 감정선과 형태를 정합니다. 워커가 설정집, 총괄 개요, 각 장의 세부 개요를 차례로 기획하고 여기서 하나씩 승인합니다. 각 회의 대본도 먼저 읽고, 회차는 순서대로 제작됩니다. 설정에서 「AI 드라마」를 먼저 켜 두세요.",
+    "fields": {
+      "title": "작품 제목",
+      "slug": "슬러그(소문자·숫자·하이픈)",
+      "premise": "줄거리",
+      "aspects": "가장 중시하는 면",
+      "tone": "감정선",
+      "stylePreset": "화풍",
+      "targetMinutes": "회당 분(1–8)",
+      "plannedEpisodes": "예정 회차",
+      "episodesPerChapter": "장당 회차",
+      "openEnded": "열린 결말: 1부는 단계적으로 마무리하고 속편의 떡밥을 남김",
+      "note": "기획에 전할 상시 메모"
+    },
+    "slugPlaceholder": "예: wenjian",
+    "premisePlaceholder": "누가 무엇을 원하고, 무엇이 막고, 어떤 세계인지.",
+    "notePlaceholder": "무엇을 바꿀지, 반려 시 필수",
+    "aspects": {
+      "world": "선협 세계관: 문파와 세가, 수위, 정도와 마도의 대립",
+      "bonds": "군상과 유대: 함께 자라는 소년들, 지기, 사문과 가문",
+      "structure": "구성: 전생과 현생, 회상, 복선과 반전, 연재의 긴장",
+      "mood": "분위기와 화면: 고풍 선협 미술, 어두운 결, 귀괴와 부적"
+    },
+    "tones": {
+      "dual-male-leads-subtext": "두 남주의 지기 유대, 말하지 않음",
+      "dual-male-leads-explicit": "두 남주의 명시적 로맨스",
+      "hetero-leads": "남녀 주인공",
+      "no-romance": "로맨스 없음"
+    },
+    "presets": {
+      "cinematic-3d": "시네마틱 3D 실사",
+      "anime-2d": "2D 애니메이션",
+      "ink-wash": "수묵",
+      "custom": "사용자 지정"
+    },
+    "create": "작품 만들기",
+    "createError": "만들지 못했습니다: {message}",
+    "saving": "저장 중…",
+    "statuses": {
+      "setting": "설정집",
+      "outline": "총괄 개요",
+      "active": "제작 중",
+      "paused": "일시 정지",
+      "finished": "완결"
+    },
+    "docsPending": "{count}건 승인 대기",
+    "progress": "{done}/{total}화 · {chapters}장",
+    "spend": "US${usd} · 클립 {seconds}초",
+    "minutesEach": "회당 {minutes}분",
+    "back": "작품 목록으로",
+    "pause": "일시 정지",
+    "resume": "재개",
+    "planNextChapter": "다음 장 먼저 기획",
+    "startNext": "다음 화 지금 시작",
+    "actionError": "하지 못했습니다: {message}",
+    "chapterRequested": "{n}장의 세부 개요는 워커의 다음 회차에 만들어집니다.",
+    "nextForced": "다음 화는 이전 화의 게시를 기다리지 않고 시작합니다.",
+    "docsTitle": "문서",
+    "docsEmpty": "워커가 다음 회차에 설정집을 씁니다.",
+    "docKinds": {
+      "setting": "설정집",
+      "outline": "총괄 개요",
+      "chapter": "장 세부 개요"
+    },
+    "chapterN": "{n}장 세부 개요",
+    "version": "{n}판",
+    "docStatuses": {
+      "generating": "작성 중",
+      "review": "결정 대기",
+      "approved": "승인됨",
+      "rejected": "반려됨"
+    },
+    "sentBack": "반려 사유:",
+    "readDoc": "전문 읽기",
+    "note": "메모",
+    "approve": "승인",
+    "reject": "반려",
+    "decideError": "기록하지 못했습니다: {message}",
+    "editDoc": "직접 고치기",
+    "editHelp": "고친 판이 최신판이 됩니다. 바로 승인하거나 대기로 둘 수 있습니다.",
+    "saveApprove": "저장 후 승인",
+    "saveReview": "대기로 저장",
+    "editError": "저장하지 못했습니다: {message}",
+    "beats": {
+      "episode": "화",
+      "title": "제목",
+      "hook": "훅",
+      "conflict": "갈등",
+      "turn": "전환",
+      "cliffhanger": "클리프행어",
+      "threads": "복선 / 회수",
+      "tension": "긴장"
+    },
+    "episodesTitle": "회차",
+    "episodesEmpty": "총괄 개요를 승인하면 각 회가 나타납니다.",
+    "episodeColumns": {
+      "number": "화",
+      "chapter": "장",
+      "title": "제목",
+      "status": "상태",
+      "step": "현재",
+      "pending": "대기",
+      "spend": "비용",
+      "actions": ""
+    },
+    "episodeStatuses": {
+      "planned": "계획됨",
+      "ready": "제작 가능",
+      "queued": "대기 중",
+      "started": "제작 중",
+      "done": "완료",
+      "skipped": "건너뜀"
+    },
+    "pendingCount": "{count}건 대기",
+    "openVideo": "열기",
+    "skip": "건너뛰기",
+    "skipConfirm": "{n}화를 건너뛸까요? 작품은 다음 화로 넘어갑니다.",
+    "oneOffTitle": "단편 에피소드"
   }
 }
