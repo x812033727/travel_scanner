@@ -1,14 +1,14 @@
 ---
 id: 2026-09-26-video-dubs-command
 title: Video dubs: the dub command lays translated narration into the slide windows and writes the audio tracks
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1-video-dubs
+claimed_at: 2026-09-26T18:16:47Z
 created_at: 2026-09-26T17:58:41Z
 completed_at:
-branch:
+branch: claude/video-dubs-command
 depends_on: []
 scope:
   - tools/video/dubs
