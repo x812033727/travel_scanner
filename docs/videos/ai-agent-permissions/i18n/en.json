@@ -1,27 +1,27 @@
 {
   "title": "When an AI Agent Gets Blocked, Does It Find Another Way In? 3 Incidents, 3 Permissions to Set First",
-  "description": "OpenAI and Google have both admitted their AI agents reached systems they shouldn't have during testing. This video is for anyone using Claude Code, Codex, or ChatGPT's agent features who wants to know if their own safeguards actually hold.\n\nThree incidents, each teaching a defense that's actually enforced by the tool: the Hugging Face incident teaches allow lists, the Google Gemini incident teaches Sandbox boundaries, and Australia's Medicare incident teaches keeping API keys out of reach. The video walks through an allow-list config example, a comparison of Claude Code vs. Codex Sandbox support on native Windows, and a bad case and a good case of handling API keys, including a pairing flow — all configuration demos, no hacking techniques shown.\n\nMy take: a 'don't' written into instructions is only words for something that reads text; what actually holds are three technical layers — allow lists, Sandbox, and keeping keys out of reach — each one deeper than the last.",
+  "description": "This video walks you through three incidents where AI agents crossed the line during evals: OpenAI's agent breaking into Hugging Face, Google Gemini getting onto the real internet because of a bug in the test environment, and the refusals on Australia's Medicare website being bypassed. Then it takes you step by step through setting up three defenses that are actually enforced by the tool: allow lists, Sandbox boundaries, and API keys kept out of the agent's reach.\n\nOpenAI and Google have both admitted their AI agents reached systems they shouldn't have during testing. This video is for anyone using Claude Code, Codex, or ChatGPT's agent features who wants to know if their own safeguards actually hold.\n\nThree incidents, each teaching a defense that's actually enforced by the tool: the Hugging Face incident teaches allow lists, the Google Gemini incident teaches Sandbox boundaries, and Australia's Medicare incident teaches keeping API keys out of reach. The video walks through an allow-list config example, a comparison of Claude Code vs. Codex Sandbox support on native Windows, and a bad case and a good case of handling API keys, including a pairing flow — all configuration demos, no hacking techniques shown.\n\nMy take: a 'don't' written into instructions is only words for something that reads text; what actually holds are three technical layers — allow lists, Sandbox, and keeping keys out of reach — each one deeper than the last.",
   "tags": [
-    "AI agent",
-    "AI safety",
     "Claude Code",
     "Codex",
+    "AI agent",
+    "AI safety",
     "AI agent permissions",
     "Sandbox",
     "security incident",
     "AI tools tutorial"
   ],
   "chapters": {
-    "hook": "Intro",
+    "hook": "AI Agents Crossing the Line?",
     "eval-stage": "Not Your Everyday ChatGPT",
-    "event-one-timeline": "Incident 1: Overreach in an Internal Eval",
-    "permission-one-code": "Permission 1: Allow List",
-    "event-two-timeline": "Incident 2: A Bug in the Test Environment",
+    "event-one-timeline": "The Hugging Face Incident",
+    "permission-one-rules": "Permission 1: Allow List",
+    "event-two-timeline": "The Gemini Overreach Incident",
     "permission-two-diagram": "Permission 2: Sandbox Boundary",
-    "event-three-timeline": "Incident 3: It Wouldn't Take the Site's No",
-    "permission-three-compare": "Permission 3: Keep API Keys Out of Reach",
-    "my-approach": "My Approach",
-    "outro": "Conclusion"
+    "event-three-timeline": "Australia's Medicare Incident",
+    "permission-three-intro": "Permission 3: Keys Out of Reach",
+    "my-approach": "My Approach: 3 Checks",
+    "recap-question": "Recap: The 3 Defenses"
   },
   "lines": {
     "sgxd": {
@@ -439,6 +439,10 @@
     "ratv": {
       "source_hash": "bfecfef65891",
       "text": "Find out first whether your tool actually holds on your system."
+    },
+    "jifv": {
+      "source_hash": "74847696664a",
+      "text": "Incident one's full timeline and official links are in the article atop the description."
     },
     "3srf": {
       "source_hash": "c44c0967a8f4",

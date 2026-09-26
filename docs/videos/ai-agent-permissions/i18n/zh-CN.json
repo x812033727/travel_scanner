@@ -1,11 +1,11 @@
 {
   "title": "AI 智能体被挡下后，自己找路进去？三起越界事件，教你先设好三道权限",
-  "description": "OpenAI 和 Google 最近都自己承认，他们的 AI 智能体在测试阶段，碰到了不该碰的系统。这个视频是写给正在用 Claude Code、Codex 或 ChatGPT 智能体功能做事，想知道自己的防线是不是真的挡得住的你。\n\n三起事件，各自教会我们一道真正由工具执行的防线：Hugging Face 事件教会我们允许清单，Google Gemini 事件教会我们 Sandbox（沙箱）边界，澳大利亚 Medicare 事件教会我们密钥别让它碰到。视频里有配置文件的允许清单示范、Claude Code 与 Codex 在原生 Windows 上的 Sandbox 支持对照，以及密钥配对流程的正反案例，全部都是配置示范，不示范任何入侵手法。\n\n我的看法是：写在指示里的“不要”，终究只是说给一个会读文字的东西听；真正挡得住的，是允许清单、Sandbox 与密钥这三道一道比一道底层的技术防线。",
+  "description": "这个视频带你看完三起 AI 智能体在评测中越界的事件：OpenAI 的智能体入侵 Hugging Face、Google Gemini 因为测试环境的 bug 连上了真正的网络，以及澳大利亚 Medicare 网站的拒绝被绕过。接着一步步带你设好三道真正由工具执行的防线：允许清单、Sandbox（沙箱）边界，以及不让智能体碰到的 API 密钥。\n\nOpenAI 和 Google 最近都自己承认，他们的 AI 智能体在测试阶段，碰到了不该碰的系统。这个视频是写给正在用 Claude Code、Codex 或 ChatGPT 智能体功能做事，想知道自己的防线是不是真的挡得住的你。\n\n三起事件，各自教会我们一道真正由工具执行的防线：Hugging Face 事件教会我们允许清单，Google Gemini 事件教会我们 Sandbox 边界，澳大利亚 Medicare 事件教会我们密钥别让它碰到。视频里有配置文件的允许清单示范、Claude Code 与 Codex 在原生 Windows 上的 Sandbox 支持对照，以及密钥配对流程的正反案例，全部都是配置示范，不示范任何入侵手法。\n\n我的看法是：写在指示里的“不要”，终究只是说给一个会读文字的东西听；真正挡得住的，是允许清单、Sandbox 与密钥这三道一道比一道底层的技术防线。",
   "tags": [
-    "AI智能体",
-    "AI安全",
     "Claude Code",
     "Codex",
+    "AI智能体",
+    "AI安全",
     "权限设置",
     "Sandbox",
     "沙箱",
@@ -13,16 +13,16 @@
     "AI工具教程"
   ],
   "chapters": {
-    "hook": "开场",
+    "hook": "AI 智能体越界了？",
     "eval-stage": "这不是你的 ChatGPT",
-    "event-one-timeline": "事件一：内部评测里的越界",
-    "permission-one-code": "权限一：允许清单",
-    "event-two-timeline": "事件二：测试环境的一个 bug",
+    "event-one-timeline": "Hugging Face 事件",
+    "permission-one-rules": "权限一：允许清单",
+    "event-two-timeline": "Gemini 越界事件",
     "permission-two-diagram": "权限二：Sandbox 边界",
-    "event-three-timeline": "事件三：它没接受网站的拒绝",
-    "permission-three-compare": "权限三：密钥别让它碰到",
-    "my-approach": "我的做法",
-    "outro": "结论"
+    "event-three-timeline": "澳大利亚 Medicare 事件",
+    "permission-three-intro": "权限三：密钥别让它碰到",
+    "my-approach": "我的做法：三项检查",
+    "recap-question": "三道防线总结"
   },
   "lines": {
     "sgxd": {
@@ -440,6 +440,10 @@
     "ratv": {
       "source_hash": "bfecfef65891",
       "text": "先弄清楚，你的工具在你的系统上，到底挡不挡得住。"
+    },
+    "jifv": {
+      "source_hash": "74847696664a",
+      "text": "第一起事件的完整时间线和官方链接，在说明栏最上面的文章里。"
     },
     "3srf": {
       "source_hash": "c44c0967a8f4",

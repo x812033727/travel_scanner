@@ -1,11 +1,11 @@
 {
   "title": "AIエージェントは拒否されても自分で抜け道を探す？3つの越権行為と先に設定すべき3つの権限",
-  "description": "OpenAIとGoogleは最近、自社のAIエージェントがテスト段階で触れてはいけないシステムに接触したことを認めました。Claude Code、Codex、ChatGPTのエージェント機能を使っていて、自分の防御が本当に効いているか知りたい方に向けた動画です。\n\n3つの事件それぞれが、ツールが実際に実行する防御を教えてくれます。Hugging Face事件は許可リスト、Google Gemini事件はSandboxの境界、オーストラリアMedicare事件はAPIキーに触れさせないことです。動画では設定ファイルの許可リスト例、Claude CodeとCodexのネイティブWindowsでのSandbox対応の比較、キーのペアリング手順の良い例と悪い例を紹介しますが、すべて設定の説明であり、侵入手法は一切扱いません。\n\n私の考えはこうです。指示に書いた『ダメ』は、結局文字を読める相手に言っているだけ。本当に効くのは、許可リスト、Sandbox、APIキーという、順に下の層で効く、3つの技術的な防御です。",
+  "description": "この動画では、AIエージェントが評価中に越権行為に及んだ3つの事件を見ていきます。OpenAIのAIエージェントによるHugging Faceへの侵入、テスト環境のバグで実際のネットに繋がったGoogle Gemini、そしてオーストラリアのMedicareサイトで拒否が回避された件です。続いて、ツールが実際に実行する3つの防御、つまり許可リスト、Sandboxの境界、AIエージェントに触れさせないAPIキーを、順を追って設定していきます。\n\nOpenAIとGoogleは最近、自社のAIエージェントがテスト段階で触れてはいけないシステムに接触したことを認めました。Claude Code、Codex、ChatGPTのエージェント機能を使っていて、自分の防御が本当に効いているか知りたい方に向けた動画です。\n\n3つの事件それぞれが、ツールが実際に実行する防御を教えてくれます。Hugging Face事件は許可リスト、Google Gemini事件はSandboxの境界、オーストラリアMedicare事件はAPIキーに触れさせないことです。動画では設定ファイルの許可リスト例、Claude CodeとCodexのネイティブWindowsでのSandbox対応の比較、キーのペアリング手順の良い例と悪い例を紹介しますが、すべて設定の説明であり、侵入手法は一切扱いません。\n\n私の考えはこうです。指示に書いた『ダメ』は、結局文字を読める相手に言っているだけ。本当に効くのは、許可リスト、Sandbox、APIキーという、順に下の層で効く、3つの技術的な防御です。",
   "tags": [
-    "AIエージェント",
-    "AI安全性",
     "Claude Code",
     "Codex",
+    "AIエージェント",
+    "AI安全性",
     "権限設定",
     "Sandbox",
     "サンドボックス",
@@ -13,16 +13,16 @@
     "AIツール活用術"
   ],
   "chapters": {
-    "hook": "オープニング",
+    "hook": "AIエージェントの越権行為？",
     "eval-stage": "これは普段のChatGPTじゃない",
-    "event-one-timeline": "事件1:内部評価での越権行為",
-    "permission-one-code": "権限1:許可リスト",
-    "event-two-timeline": "事件2:テスト環境のバグ",
+    "event-one-timeline": "Hugging Face事件",
+    "permission-one-rules": "権限1:許可リスト",
+    "event-two-timeline": "Geminiの越権行為",
     "permission-two-diagram": "権限2:Sandboxの境界",
-    "event-three-timeline": "事件3:サイトの拒否を無視",
-    "permission-three-compare": "権限3:APIキーに触れさせない",
-    "my-approach": "私のやり方",
-    "outro": "まとめ"
+    "event-three-timeline": "オーストラリアMedicare事件",
+    "permission-three-intro": "権限3:APIキーに触れさせない",
+    "my-approach": "私のやり方:3つのチェック",
+    "recap-question": "まとめ:3つの防御"
   },
   "lines": {
     "sgxd": {
@@ -440,6 +440,10 @@
     "ratv": {
       "source_hash": "bfecfef65891",
       "text": "自分の環境で本当に効くか、まず確認しましょう。"
+    },
+    "jifv": {
+      "source_hash": "74847696664a",
+      "text": "1つ目の事件の詳しい時系列と公式リンクは、概要欄の一番上の記事にあります。"
     },
     "3srf": {
       "source_hash": "c44c0967a8f4",
