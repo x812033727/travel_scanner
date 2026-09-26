@@ -367,7 +367,7 @@ def research_provider(
                     max_output_tokens=max_output_tokens,
                 )
             )
-            if settings.minimax_api_key
+            if settings.minimax_api_key and settings.ai_subscription_fallback == "minimax"
             else None,
         )
     if name == "openai" and settings.openai_api_key:
