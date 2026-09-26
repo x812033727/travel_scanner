@@ -2105,7 +2105,9 @@
       "outline": "大纲",
       "audio": "旁白",
       "final": "成片",
-      "publish": "上架确认"
+      "publish": "上架确认",
+      "look": "角色设定图",
+      "storyboard": "分镜"
     },
     "statuses": {
       "pending": "待决定",
@@ -2152,7 +2154,19 @@
     "dropPlaceholder": "例如：这个题目第二批已经做了",
     "dropConfirm": "确定放弃这支视频？放弃后无法恢复。",
     "dropButton": "放弃这支视频",
-    "dropError": "没有放弃：{message}"
+    "dropError": "没有放弃：{message}",
+    "chooseLook": "选一张，之后每个镜头都以它为准",
+    "candidate": "设定图 {key}",
+    "suggested": "judge 建议",
+    "approveLook": "用这张",
+    "approveStoryboard": "批准分镜",
+    "judgeScore": "judge {score}/10",
+    "voice": "声音 {voice}",
+    "lookAlike": "相邻镜头太像：{pairs}",
+    "seconds": "{seconds} 秒",
+    "shotNeedsReview": "没有一次通过 judge，提示词要修",
+    "drama": "AI 漫剧",
+    "spend": "媒体花费 US${usd}（{seconds} 片段秒）"
   },
   "videoSettings": {
     "loading": "正在读取设置…",
@@ -2200,7 +2214,32 @@
       "max_verify_rounds": "每部最多核查几轮",
       "max_retake_rounds": "旁白最多重录几轮",
       "auto_approve_audio": "Jev 判断旁白每一句都读对时，自动核准",
-      "subscription_max_usage_percent": "订阅账号用到几 % 就先停（5 小时或每周额度）"
+      "subscription_max_usage_percent": "订阅账号用到几 % 就先停（5 小时或每周额度）",
+      "drama_enabled": "开启 AI 漫剧",
+      "drama_image_provider": "图片厂商（设定图与关键帧）",
+      "drama_image_model": "图片模型",
+      "drama_clip_provider": "片段厂商（图生视频）",
+      "drama_clip_model": "片段模型",
+      "drama_music_provider": "音乐厂商",
+      "drama_music_model": "音乐模型",
+      "drama_clip_resolution": "片段分辨率",
+      "drama_clip_seconds_default": "片段默认秒数",
+      "drama_aspect": "画面比例",
+      "drama_style_preset": "风格预设",
+      "drama_max_clips_per_video": "一部最多几段片段",
+      "drama_max_retakes_per_shot": "每镜最多重做几次",
+      "drama_judge_min_score": "judge 门槛（0–10）",
+      "drama_music_enabled": "生成配乐",
+      "drama_subtitle_burn_in": "把繁中字幕烧进画面",
+      "drama_clip_native_audio": "让片段模型自己配音效",
+      "drama_auto_approve_storyboard": "judge 全过时自动批准分镜",
+      "drama_character_voice_pool": "角色声音",
+      "drama_monthly_clip_seconds_budget": "每月片段秒数",
+      "drama_monthly_images_budget": "每月图片张数",
+      "drama_monthly_judge_calls_budget": "每月 judge 次数",
+      "drama_monthly_music_budget": "每月配乐首数",
+      "drama_max_usd_per_video": "单部最多花费（美元）",
+      "drama_topic_scope": "漫剧题材（每行一个）"
     },
     "stages": {
       "planner": "企划（选题与大纲）",
@@ -2223,6 +2262,19 @@
     "modelsManaged": "各阶段使用哪个模型，统一在“AI 设置 › 各功能模型”选择。",
     "editModels": "到 AI 设置修改",
     "saveModels": "保存视频模型",
-    "openVideos": "前往视频设置"
+    "openVideos": "前往视频设置",
+    "dramaTitle": "AI 漫剧",
+    "dramaHelp": "漫剧路线（docs/videos/DRAMA.md）：AI 生成的镜头片段、旁白加角色配音、烧录字幕、配乐。关闭时工人不接漫剧请求，媒体阶段也不会生成。厂商用网站的 Gemini 与 MiniMax 密钥，没密钥的会标出来。",
+    "dramaModels": "媒体模型",
+    "dramaSwitches": "选项",
+    "dramaBudgetHelp": "每月预算在服务器拦截，请求不会发给厂商；单部上限由工具在提交前拦截。站长 2026-09-26 决定先不设上限：默认开得很大，试做完再调低。",
+    "voicePoolHelp": "撰稿模型可以分配给角色的 Gemini 声音；旁白沿用上面的频道声音。",
+    "preview": "预览版",
+    "stylePresets": {
+      "cinematic-3d": "电影感 3D 写实",
+      "anime-2d": "2D 日系动画",
+      "ink-wash": "水墨",
+      "custom": "自定义（风格由剧本提供）"
+    }
   }
 }

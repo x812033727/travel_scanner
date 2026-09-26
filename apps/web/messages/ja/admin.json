@@ -2105,7 +2105,9 @@
       "outline": "構成",
       "audio": "ナレーション",
       "final": "完成動画",
-      "publish": "アップロード確認"
+      "publish": "アップロード確認",
+      "look": "キャラクター設定画",
+      "storyboard": "絵コンテ"
     },
     "statuses": {
       "pending": "判断待ち",
@@ -2152,7 +2154,19 @@
     "dropPlaceholder": "例：このテーマは第 2 弾で制作済み",
     "dropConfirm": "この動画を中止しますか？元に戻せません。",
     "dropButton": "この動画を中止する",
-    "dropError": "中止できませんでした：{message}"
+    "dropError": "中止できませんでした：{message}",
+    "chooseLook": "1枚選ぶと、以後のすべてのショットの基準になります",
+    "candidate": "設定画 {key}",
+    "suggested": "判定のおすすめ",
+    "approveLook": "この設定画を使う",
+    "approveStoryboard": "絵コンテを承認",
+    "judgeScore": "判定 {score}/10",
+    "voice": "声 {voice}",
+    "lookAlike": "似すぎている隣接ショット：{pairs}",
+    "seconds": "{seconds} 秒",
+    "shotNeedsReview": "判定を通ったテイクがありません。プロンプトの修正が必要です",
+    "drama": "AI ドラマ",
+    "spend": "メディア費用 US${usd}（クリップ {seconds} 秒）"
   },
   "videoSettings": {
     "loading": "設定を読み込んでいます…",
@@ -2200,7 +2214,32 @@
       "max_verify_rounds": "1 本あたりのファクトチェックの最大回数",
       "max_retake_rounds": "ナレーション録り直しの最大回数",
       "auto_approve_audio": "Jev がすべての文を正しく読めていると判断したら、ナレーションを自動で承認",
-      "subscription_max_usage_percent": "サブスクリプションアカウントを止める使用率（5 時間または週の枠、%）"
+      "subscription_max_usage_percent": "サブスクリプションアカウントを止める使用率（5 時間または週の枠、%）",
+      "drama_enabled": "AI ドラマをオンにする",
+      "drama_image_provider": "画像ベンダー（設定画とキーフレーム）",
+      "drama_image_model": "画像モデル",
+      "drama_clip_provider": "クリップベンダー（画像から動画）",
+      "drama_clip_model": "クリップモデル",
+      "drama_music_provider": "音楽ベンダー",
+      "drama_music_model": "音楽モデル",
+      "drama_clip_resolution": "クリップの解像度",
+      "drama_clip_seconds_default": "クリップの既定の長さ（秒）",
+      "drama_aspect": "画面比率",
+      "drama_style_preset": "スタイルプリセット",
+      "drama_max_clips_per_video": "1本あたりの最大クリップ数",
+      "drama_max_retakes_per_shot": "1ショットあたりの最大リテイク数",
+      "drama_judge_min_score": "判定のしきい値（0–10）",
+      "drama_music_enabled": "音楽を生成する",
+      "drama_subtitle_burn_in": "繁体字中国語の字幕を画面に焼き込む",
+      "drama_clip_native_audio": "クリップモデルに音を付けさせる",
+      "drama_auto_approve_storyboard": "判定が全ショットを通したら絵コンテを自動承認する",
+      "drama_character_voice_pool": "キャラクターの声",
+      "drama_monthly_clip_seconds_budget": "月あたりのクリップ秒数",
+      "drama_monthly_images_budget": "月あたりの画像枚数",
+      "drama_monthly_judge_calls_budget": "月あたりの判定回数",
+      "drama_monthly_music_budget": "月あたりの音楽トラック数",
+      "drama_max_usd_per_video": "1本あたりの上限（米ドル）",
+      "drama_topic_scope": "ドラマの題材（1行に1つ）"
     },
     "stages": {
       "planner": "企画（テーマと構成案）",
@@ -2223,6 +2262,19 @@
     "modelsManaged": "各段階のモデルは「AI 設定 › 機能別モデル」でまとめて選びます。",
     "editModels": "AI 設定で変更",
     "saveModels": "動画のモデルを保存",
-    "openVideos": "動画設定を開く"
+    "openVideos": "動画設定を開く",
+    "dramaTitle": "AI ドラマ",
+    "dramaHelp": "ドラマルート（docs/videos/DRAMA.md）：AI 生成のショット、ナレーションとキャラクターの声、焼き込み字幕、音楽。オフにすると、ワーカーはドラマの依頼を受けず、メディア段階も生成しません。ベンダーはサイトの Gemini と MiniMax のキーを使い、キーのないベンダーには印が付きます。",
+    "dramaModels": "メディアモデル",
+    "dramaSwitches": "オプション",
+    "dramaBudgetHelp": "月ごとの予算はサーバー側で止め、ベンダーへは送りません。1本あたりの上限はツールが送信前に止めます。オーナーは 2026-09-26 に当面上限なしと決めたため、既定値は大きめで、試作後に下げます。",
+    "voicePoolHelp": "脚本モデルがキャラクターに割り当ててよい Gemini の声。ナレーションは上のチャンネルの声のままです。",
+    "preview": "プレビュー版",
+    "stylePresets": {
+      "cinematic-3d": "シネマティック 3D リアル",
+      "anime-2d": "2D アニメ",
+      "ink-wash": "水墨",
+      "custom": "カスタム（スタイルは脚本が指定）"
+    }
   }
 }
