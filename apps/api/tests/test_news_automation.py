@@ -868,7 +868,7 @@ async def test_reviewers_never_see_the_per_locale_topic_link(
     while the zh-TW source named /zh-TW/; the link is the pipeline's, not the article's."""
 
     from app.news_automation import ai as news_ai
-    from app.news_automation.policy import without_topic_links
+    from app.news_automation.policy import for_review
 
     def linked(locale: str) -> GuideDocument:
         return GuideDocument.model_validate(
@@ -887,7 +887,7 @@ async def test_reviewers_never_see_the_per_locale_topic_link(
             }
         )
 
-    assert [block["type"] for block in without_topic_links(linked("ja"))["blocks"]] == [
+    assert [block["type"] for block in for_review(linked("ja"))["blocks"]] == [
         "paragraph",
         "link",
     ]
@@ -907,3 +907,78 @@ async def test_reviewers_never_see_the_per_locale_topic_link(
                 urls = [block.get("url") for block in payload[key]["blocks"]]
                 assert all("/life/topics/" not in str(url) for url in urls), key
                 assert "https://www.coindesk.com/a" in urls, "other links stay"
+
+
+def test_the_site_adds_its_own_crypto_disclaimer_where_a_model_left_none() -> None:
+    """On 2026-09-26 the writer and two translators left the disclaimer out of a crypto story."""
+
+    from app.news_automation.policy import (
+        CRYPTO_MARKERS,
+        document_fingerprint,
+        with_crypto_disclaimer,
+    )
+
+    def article(locale: str) -> GuideDocument:
+        return GuideDocument.model_validate(
+            {
+                "title": "T",
+                "description": "D",
+                "blocks": [
+                    {"type": "paragraph", "text": "Body."},
+                    {
+                        "type": "link",
+                        "text": "More",
+                        "url": f"https://mokaair.com/{locale}/life/topics/crypto",
+                    },
+                ],
+            }
+        )
+
+    for locale, marker in CRYPTO_MARKERS.items():
+        bare = article(locale)
+        noticed = with_crypto_disclaimer(bare, "crypto", locale)
+        callouts = [block for block in noticed.blocks if block.type == "callout"]
+        assert len(callouts) == 1 and marker in callouts[0].text, locale
+        assert noticed.blocks[-1].type == "link", "the topic link stays last"
+        assert not [
+            problem
+            for problem in hard_policy_problems(noticed, "crypto", locale, source_count=1)
+            if problem.startswith(("crypto_disclaimer", "finance_no_disclaimer"))
+        ], locale
+        assert document_fingerprint(noticed) == document_fingerprint(bare), (
+            "a verification of the words stays valid"
+        )
+        assert with_crypto_disclaimer(noticed, "crypto", locale) == noticed, "added once"
+    assert with_crypto_disclaimer(article("en"), "ai", "en") == article("en")
+
+
+def test_a_rerun_starts_from_the_words_without_the_last_runs_artwork() -> None:
+    from app.news_automation.policy import document_fingerprint, site_additions_removed
+
+    drawn = GuideDocument.model_validate(
+        {
+            "title": "T",
+            "description": "D",
+            "hero": {
+                "src": "/guides/news-assets/abc-hero.png",
+                "alt": "Hero",
+                "width": 1200,
+                "height": 630,
+            },
+            "blocks": [
+                {"type": "paragraph", "text": "Body."},
+                {
+                    "type": "image",
+                    "src": "/guides/news-assets/abc-diagram.svg",
+                    "alt": "Diagram",
+                    "width": 1200,
+                    "height": 800,
+                },
+                {"type": "link", "text": "More", "url": "https://mokaair.com/en/life/topics/ai-news"},
+            ],
+        }
+    )
+    words = site_additions_removed(drawn)
+    assert words.hero is None
+    assert [block.type for block in words.blocks] == ["paragraph"]
+    assert document_fingerprint(words) == document_fingerprint(drawn)
