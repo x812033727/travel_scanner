@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-article-pages-keep-their-query-string
 title: Article pages keep their query string when ads are on
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-26T03:18:04Z
 created_at: 2026-09-26T03:17:57Z
-completed_at:
+completed_at: 2026-09-26T03:42:00Z
 branch: claude/article-query-string
 depends_on: []
 scope:
