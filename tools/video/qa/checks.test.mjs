@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { dramaFixture, fixture } from "../core/fixtures/load.mjs";
 import { assembleItem, captionsItem, disclosureDecision, disclosureItem, item, ITEM_IDS, metadataItem, narrationItem, qaReport, renderItem } from "./checks.mjs";
-import { policyRequest, policyVerdict } from "./policy.mjs";
+import { narrationScript, ownerViewpoint, policyRequest, policyVerdict, SCRIPT_MAX_CHARS, VIEWPOINT_MAX_CHARS } from "./policy.mjs";
 
 test("the report lists exactly the eleven items in order and is ok only when every item is", () => {
   assert.deepEqual(ITEM_IDS, ["assemble", "render", "narration", "pace", "captions", "metadata", "facts", "links", "thumbnail", "policy", "disclosure"]);
@@ -102,16 +102,34 @@ test("disclosure: slides with a stock voice need none, a drama always does, and 
   assert.match(disclosureItem(drama, false).detail, /already says so$/);
 });
 
-test("the policy request carries the spoken lines and the verdict is never a pass by default", () => {
+test("the policy request is exactly the judge's slug, script and viewpoint", () => {
   const doc = fixture();
-  const request = policyRequest({ doc, brief: "## 站主觀點\n先算帳", description: "composed" });
-  assert.deepEqual(Object.keys(request), ["slug", "format", "title", "description", "brief", "lines"]);
-  assert.equal(request.lines.length, 7);
-  assert.deepEqual(request.lines[0], { id: "k7p2", scene: "hook", text: doc.scenes[0].lines[0].text });
-  assert.equal(policyRequest({ doc, brief: null, description: "" }).brief, "");
-  assert.deepEqual(policyVerdict({ passed: true, scores: { stance: 0.91, demo: 0.8, advice: 0.05, sponsorship: 0 } }), { ok: true, detail: "Jev passed the narration: stance 0.91, demo 0.80, advice 0.05, sponsorship 0.00" });
-  assert.deepEqual(policyVerdict({ passed: false, reasons: ["gives investment advice"] }), { ok: false, detail: "Jev did not pass the narration: gives investment advice" });
-  assert.deepEqual(policyVerdict({ ok: true }), { ok: true, detail: "Jev passed the narration" });
+  const brief = "# 標題\n\n## 觀眾看完能做到的事\n挑模型\n\n## 站主觀點\n<!-- 草稿 -->\n排行榜只是起點；先看工作類型。\n\n## 章節大綱\n1. 開場\n";
+  const request = policyRequest({ doc, brief });
+  assert.deepEqual(Object.keys(request), ["slug", "script", "viewpoint"], "the endpoint refuses any other field");
+  assert.equal(request.slug, "fixture-minimal");
+  assert.equal(request.viewpoint, "排行榜只是起點；先看工作類型。");
+  const lines = doc.scenes.map((scene) => scene.lines.map((line) => line.text));
+  assert.equal(request.script, `${lines[0].join("\n")}\n\n${lines[1].join("\n")}\n\n${lines[2].join("\n")}`, "every line in order, a blank line between scenes");
+  assert.equal(narrationScript(doc).split("\n\n").length, 3);
+  assert.equal(ownerViewpoint(null), "");
+  assert.equal(ownerViewpoint("## 觀眾\n上班族"), "", "a brief without the section sends an empty viewpoint");
+  assert.equal(policyRequest({ doc, brief: null }).viewpoint, "");
+  // The limits the endpoint enforces, counted in characters as Python does.
+  const long = fixture();
+  long.scenes[0].lines[0].text = "字".repeat(SCRIPT_MAX_CHARS + 5);
+  assert.equal([...policyRequest({ doc: long, brief: null }).script].length, SCRIPT_MAX_CHARS);
+  assert.equal([...policyRequest({ doc, brief: `## 站主觀點\n${"觀".repeat(VIEWPOINT_MAX_CHARS + 1)}` }).viewpoint].length, VIEWPOINT_MAX_CHARS);
+});
+
+test("the verdict is the judge's passed flag with its note, and never a pass by default", () => {
+  const note = "Jev：符合立場 0.82、有示範 0.70、建議 0.05、業配 0.10，通過";
+  assert.deepEqual(policyVerdict({ stance: 0.82, demo: 0.7, advice: 0.05, sponsored: 0.1, passed: true, note }), { ok: true, detail: note });
+  const failed = "Jev：符合立場 0.40、有示範 0.70、建議 0.05、業配 0.10，沒過";
+  assert.deepEqual(policyVerdict({ stance: 0.4, demo: 0.7, advice: 0.05, sponsored: 0.1, passed: false, note: failed }), { ok: false, detail: failed });
+  assert.deepEqual(policyVerdict({ stance: 0.91, demo: 0.8, advice: 0.05, sponsored: 0, passed: true, note: "" }), { ok: true, detail: "Jev passed the narration: stance 0.91, demo 0.80, advice 0.05, sponsored 0.00" });
+  assert.deepEqual(policyVerdict({ passed: false }), { ok: false, detail: "Jev did not pass the narration" });
+  assert.deepEqual(policyVerdict({ ok: true, note: "not the field the endpoint uses" }), { ok: false, detail: "the judge answered without a verdict" });
   assert.deepEqual(policyVerdict({}), { ok: false, detail: "the judge answered without a verdict" });
   assert.equal(policyVerdict(null).ok, false);
 });

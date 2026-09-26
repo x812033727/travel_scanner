@@ -39,7 +39,11 @@ function recordDisclosure(file, decision) {
   return true;
 }
 
-/** The judge call: 404 means the endpoint is not built yet, never a pass; other failures say who can fix them. */
+/**
+ * The judge call. A 404 means the endpoint is not deployed yet and a 409 that the channel stance
+ * is still blank: both are failed items, never a pass. Anything else (a spent Jev budget, Jev
+ * down, a revoked token) says who can fix it, and the exit code carries that.
+ */
 async function policyItem(ctx, request) {
   let api;
   try {
@@ -54,6 +58,7 @@ async function policyItem(ctx, request) {
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
     if (error.status === 404) return { item: item("policy", false, "judge endpoint not available") };
+    if (error.status === 409 && error.code === "video_judge_not_enabled") return { item: item("policy", false, "channel stance is blank; the judge has nothing to judge against") };
     return { item: item("policy", false, `the judge call failed: ${error.message}`), who: error.who ?? "service" };
   }
 }
@@ -128,7 +133,7 @@ export async function run(command, args, ctx) {
     const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline });
     items.push(item("thumbnail", verdict.ok, verdict.detail, verdict.warnings));
   }
-  const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief, description: metadata.description }));
+  const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }));
   items.push(policy.item);
   who = policy.who ?? null;
   const decision = disclosureDecision(doc);

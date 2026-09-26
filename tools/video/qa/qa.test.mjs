@@ -130,9 +130,11 @@ test("a finished video passes every check but the judge that is not built yet, a
   const judge = server.calls.find((call) => call.url.endsWith("/judge/policy"));
   assert.equal(judge.init.headers.Authorization, `Bearer ${TOKEN}`);
   const body = JSON.parse(judge.init.body);
+  assert.deepEqual(Object.keys(body), ["slug", "script", "viewpoint"], "the judge's strict request model");
   assert.equal(body.slug, box.slug);
-  assert.equal(body.lines.length, 7);
-  assert.match(body.description, /參考資料/);
+  assert.equal(body.script.split("\n\n").length, 3, "one block per scene");
+  assert.ok(body.script.startsWith("每次有新模型出來"));
+  assert.equal(body.viewpoint, "排行榜只是起點；我自己是先看工作類型，再看等待時間和價格。");
   assert.doesNotMatch(out.stdout + out.stderr + readFileSync(path.join(workdir, "review", "qa.json"), "utf8"), new RegExp(TOKEN), "the token is never printed or written");
   assert.match(out.stdout, /\[ \] policy: judge endpoint not available/);
   assert.match(out.stdout, /10 of 11 checks passed/);
@@ -141,12 +143,13 @@ test("a finished video passes every check but the judge that is not built yet, a
 test("with the judge passing, everything passes and the exit code is 0", async () => {
   const { box, workdir } = finishedVideo();
   await approve({ gate: "audio", docDir: box.dir, workdir, now: new Date("2026-09-27T01:00:00Z") });
-  const server = site({ policy: () => Response.json({ passed: true, scores: { stance: 0.9, demo: 0.8, advice: 0.1, sponsorship: 0 } }) });
+  const note = "Jev：符合立場 0.90、有示範 0.80、建議 0.10、業配 0.00，通過";
+  const server = site({ policy: () => Response.json({ stance: 0.9, demo: 0.8, advice: 0.1, sponsored: 0, passed: true, note }) });
   const { out, ctx } = context(box, server.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.ok, out.stderr);
   const report = readReport(workdir);
   assert.equal(report.ok, true);
-  assert.equal(report.items.find((item) => item.id === "policy").detail, "Jev passed the narration: stance 0.90, demo 0.80, advice 0.10, sponsorship 0.00");
+  assert.equal(report.items.find((item) => item.id === "policy").detail, note);
   assert.match(out.stdout, /11 of 11 checks passed \(final\.mp4 sha256 [0-9a-f]{12}\)/);
 });
 
@@ -188,7 +191,20 @@ test("stages that were not run, or ran for an older script, fail their items wit
   assert.equal(byId.pace.ok, true);
 });
 
-test("the judge being unreachable is an external failure, exit 4; a revoked token is the owner's, exit 3", async () => {
+test("a blank channel stance and a failed verdict are failed items, exit 1", async () => {
+  const { box, workdir } = finishedVideo();
+  const blank = site({ policy: () => Response.json({ code: "video_judge_not_enabled", detail: "頻道立場還是空白，Jev 沒有依據可以判斷" }, { status: 409 }) });
+  const first = context(box, blank.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
+  assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: "channel stance is blank; the judge has nothing to judge against" });
+  const note = "Jev：符合立場 0.30、有示範 0.70、建議 0.05、業配 0.10，沒過";
+  const failed = site({ policy: () => Response.json({ stance: 0.3, demo: 0.7, advice: 0.05, sponsored: 0.1, passed: false, note }) });
+  const second = context(box, failed.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], second.ctx), EXIT.lint);
+  assert.deepEqual(readReport(workdir).items.find((item) => item.id === "policy"), { id: "policy", ok: false, detail: note });
+});
+
+test("the judge being unreachable or out of budget is an external failure, exit 4; a revoked token is the owner's, exit 3", async () => {
   const { box, workdir } = finishedVideo();
   const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
   const first = context(box, down.fetchImpl);
@@ -196,6 +212,14 @@ test("the judge being unreachable is an external failure, exit 4; a revoked toke
   const policy = readReport(workdir).items.find((item) => item.id === "policy");
   assert.equal(policy.ok, false);
   assert.match(policy.detail, /^the judge call failed: cannot reach https:\/\/site\.test/);
+  const spent = site({ policy: () => Response.json({ code: "jev_budget_exhausted", detail: "Jev 今天的次數用完了" }, { status: 429 }) });
+  const budget = context(box, spent.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], budget.ctx), EXIT.external);
+  assert.equal(readReport(workdir).items.find((item) => item.id === "policy").detail, "the judge call failed: Jev 今天的次數用完了");
+  const upstream = site({ policy: () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 }) });
+  const jev = context(box, upstream.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], jev.ctx), EXIT.external);
+  assert.equal(readReport(workdir).items.find((item) => item.id === "policy").detail, "the judge call failed: Jev 暫時無法判斷");
   const revoked = site({ policy: () => Response.json({ code: "video_tool_token_invalid", detail: "token revoked" }, { status: 401 }) });
   const second = context(box, revoked.fetchImpl);
   assert.equal(await main(["qa", "--slug", box.slug], second.ctx), EXIT.owner);
