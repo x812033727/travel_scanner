@@ -21,6 +21,7 @@ const view = {
   target_minutes_min: 8, target_minutes_max: 12, caption_locales: ["en", "ja", "ko", "zh-CN"],
   max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2,
   auto_approve_audio: true,
+  stage_instructions: { writer: "結尾留懸念" },
   drama: {
     drama_enabled: false, image_provider: "gemini", image_model: "gemini-3-pro-image", clip_provider: "gemini", clip_model: "gemini-omni-1.1-flash",
     music_provider: "gemini", music_model: "lyria-3.5", clip_resolution: "1080p", clip_seconds_default: 8, clip_native_audio: false, drama_aspect: "16:9",
@@ -49,9 +50,12 @@ const view = {
   updated_at: "2026-09-25T08:00:00Z",
 };
 
+const prompts = [{ stage: "planner", format: "drama", slug: "jingwei", instructions: "You are the planner.\n\n## The owner's standing instructions\n每集結尾留下一集的懸念", sent_at: "2026-09-26T15:00:00Z" }];
+
 function stubFetch() {
   const puts: unknown[] = [];
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+    if (String(input).endsWith("/api/travel/admin/video-automation/prompts")) return Promise.resolve(Response.json({ prompts }));
     expect(String(input)).toContain("/api/travel/admin/video-automation/settings");
     if (init?.method === "PUT") {
       const body = JSON.parse(String(init.body));
@@ -92,6 +96,21 @@ describe("AdminVideoSettings", () => {
     expect(body).not.toHaveProperty("stage_models");
     expect(body).not.toHaveProperty("model_options");
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+  });
+
+  it("edits a stage's standing instructions, saves them with the rest, and shows the prompts as sent", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    const writer = await screen.findByRole("textbox", { name: "撰稿的常設指示" });
+    expect(writer).toHaveProperty("value", "結尾留懸念");
+    fireEvent.change(screen.getByRole("textbox", { name: "企劃（選題與大綱）的常設指示" }), { target: { value: "每集結尾留下一集的懸念" } });
+    fireEvent.change(writer, { target: { value: "" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect((puts[0] as Record<string, unknown>).stage_instructions).toEqual({ writer: "", planner: "每集結尾留下一集的懸念" });
+    const sent = await screen.findByText(/企劃（選題與大綱） · 漫劇 · jingwei · /);
+    expect(sent.tagName).toBe("SUMMARY");
+    expect(screen.getByText(/You are the planner\./).textContent).toContain("每集結尾留下一集的懸念");
   });
 
   it("picks a stage model on the AI settings page and saves only the models", async () => {

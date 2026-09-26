@@ -1,7 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminErrorState } from "@/components/admin-ui";
 import { Button, fieldClass, panelClass } from "@/components/community/ui";
@@ -75,7 +75,11 @@ export type VideoSettings = {
   max_retake_rounds: number;
   auto_approve_audio: boolean;
   drama: DramaSettings;
+  // Stage -> the owner's standing instructions, which the worker appends to that stage's prompt.
+  stage_instructions: Partial<Record<Stage, string>>;
 };
+// The instructions a stage was last sent, as the worker composed them (GET /admin/video-automation/prompts).
+export type StagePrompt = { stage: Stage; format: "slides" | "drama"; slug: string; instructions: string; sent_at: string };
 type Usage = { tokens: number; token_budget: number; subscription_tokens?: number; drafts: number; draft_budget: number; calls: number; failed_calls: number };
 export type VideoSettingsView = VideoSettings & {
   model_options: Record<Provider, ModelOption[]>;
@@ -112,12 +116,14 @@ const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "auto_approve_audio", "drama",
+  "max_retake_rounds", "auto_approve_audio", "drama", "stage_instructions",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The body the API's SettingsWrite accepts (it refuses unknown fields): the view without its options. */
 export function settingsBody(view: VideoSettingsView | VideoSettings): VideoSettings {
-  return Object.fromEntries(SETTINGS_KEYS.map((key) => [key, view[key]])) as VideoSettings;
+  const body = Object.fromEntries(SETTINGS_KEYS.map((key) => [key, view[key]])) as VideoSettings;
+  // A site from before the standing instructions existed sends none.
+  return { ...body, stage_instructions: view.stage_instructions ?? {} };
 }
 
 /** What the settings tab saves: the stage models are chosen on the AI settings page and left out. */
@@ -135,8 +141,11 @@ export function mediaChoice(options: MediaOptions | undefined, kind: keyof Media
 
 export function AdminVideoSettings() {
   const t = useTranslations("admin.videoSettings");
+  const locale = useLocale();
+  const when = useMemo(() => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" }), [locale]);
   const manage = useAdminActionGuard("settings.manage");
   const [view, setView] = useState<VideoSettingsView | null>(null);
+  const [prompts, setPrompts] = useState<StagePrompt[] | null>(null);
   const [draft, setDraft] = useState<VideoSettings | null>(null);
   const [scope, setScope] = useState("");
   const [avoid, setAvoid] = useState("");
@@ -154,6 +163,8 @@ export function AdminVideoSettings() {
   }, []);
   const load = useCallback(() => {
     api<VideoSettingsView>("/admin/video-automation/settings").then((value) => { show(value); setError(""); }).catch((problem: unknown) => setError(problem instanceof Error ? problem.message : ""));
+    // The prompts as the worker last sent them; a site from before they were kept answers 404.
+    api<{ prompts: StagePrompt[] }>("/admin/video-automation/prompts").then((value) => setPrompts(value.prompts ?? [])).catch(() => setPrompts([]));
   }, [show]);
   useEffect(load, [load]);
 
@@ -240,6 +251,24 @@ export function AdminVideoSettings() {
         return <div key={stage}><dt className="inline font-semibold">{t(`stages.${stage}`)}</dt><dd className="inline"> · {providerLabels[choice.provider]} · {label}</dd></div>;
       })}</dl>
       <Link href={aiModelsHref("video")} className="inline-flex min-h-11 items-center text-sm font-semibold text-[var(--teal)] underline">{t("editModels")}</Link>
+    </section>
+
+    <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-instructions">
+      <h2 id="video-settings-instructions" className="text-xl font-bold">{t("instructionsTitle")}</h2>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("instructionsHelp")}</p>
+      <div className="grid gap-3 md:grid-cols-2">{STAGES.map((stage) => <label key={stage} className="block text-sm font-semibold">{t("instructionFor", { stage: t(`stages.${stage}`) })}
+        <textarea className={fieldClass} rows={3} maxLength={4000} value={draft.stage_instructions[stage] ?? ""} disabled={disabled} placeholder={t("instructionPlaceholder")} onChange={(event) => edit({ stage_instructions: { ...draft.stage_instructions, [stage]: event.target.value } })} />
+      </label>)}</div>
+    </section>
+
+    <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-prompts">
+      <h2 id="video-settings-prompts" className="text-xl font-bold">{t("promptsTitle")}</h2>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("promptsHelp")}</p>
+      {prompts && prompts.length === 0 && <p className="text-sm text-[var(--muted)]">{t("promptsEmpty")}</p>}
+      {prompts?.map((prompt) => <details key={`${prompt.stage}-${prompt.format}`} className="rounded-xl border border-[var(--line)] p-3">
+        <summary className="cursor-pointer text-sm font-semibold">{t(`stages.${prompt.stage}`)} · {t(`promptFormats.${prompt.format}`)} · {t("promptSent", { slug: prompt.slug, time: when.format(new Date(prompt.sent_at)) })}</summary>
+        <pre className="mt-3 max-h-96 overflow-auto whitespace-pre-wrap break-words rounded-lg bg-[var(--paper)] p-3 text-xs leading-5">{prompt.instructions}</pre>
+      </details>)}
     </section>
 
     <section className={`${panelClass} grid gap-4`} aria-labelledby="video-settings-video">

@@ -6,9 +6,10 @@ import copy
 import hashlib
 import os
 from collections.abc import AsyncIterator
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
-from unittest.mock import AsyncMock
+from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
 
 import pytest
@@ -34,8 +35,15 @@ from app.video_automation.models import (
     DEFAULT_VOICE,
     STYLE_PRESETS,
     VideoAutomationSettings,
+    VideoStagePrompt,
 )
-from app.video_automation.schemas import SettingsView, SettingsWrite, VoiceOptionsView
+from app.video_automation.schemas import (
+    SettingsView,
+    SettingsWrite,
+    StagePromptView,
+    StageRunIn,
+    VoiceOptionsView,
+)
 from app.video_reviews import admin_service as reviews
 from app.video_reviews.schemas import ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
@@ -63,6 +71,7 @@ def _values(**changes: Any) -> dict[str, Any]:
         "max_retake_rounds": 2,
         "auto_approve_audio": True,
         "drama": copy.deepcopy(DEFAULT_DRAMA),
+        "stage_instructions": {},
     }
     values.update(changes)
     return values
@@ -267,6 +276,7 @@ def _stored(monkeypatch: pytest.MonkeyPatch) -> AsyncMock:
     """Stored settings: the writer on Opus 5.5, the drama on; returns the mocked save."""
     stored = _values(drama=_drama(drama_enabled=True, max_usd_per_video=50))
     stored["stage_models"]["writer"] = {"provider": "claude_code", "model": "claude-opus-5-5"}
+    stored["stage_instructions"] = {"writer": "結尾留懸念"}
     monkeypatch.setattr(service, "settings_row", AsyncMock(return_value=object()))
     monkeypatch.setattr(service, "settings_values", lambda _row: SettingsWrite(**stored))
     monkeypatch.setattr(
@@ -334,6 +344,106 @@ async def test_a_settings_save_without_drama_keeps_the_stored_drama(
     assert lowered.status_code == 200 and lowered.json()["drama"]["max_usd_per_video"] == 20
     assert refused.status_code == 422 and "minimax" in refused.text
     assert update.await_count == 2
+
+
+def test_standing_instructions_are_trimmed_and_an_emptied_one_is_dropped() -> None:
+    payload = SettingsWrite(
+        **_values(stage_instructions={"writer": "  結尾留下一集的懸念  ", "planner": "   "})
+    )
+    assert payload.stage_instructions == {"writer": "結尾留下一集的懸念"}
+    without = {key: value for key, value in _values().items() if key != "stage_instructions"}
+    assert SettingsWrite(**without).stage_instructions == {}
+    with pytest.raises(ValidationError):
+        SettingsWrite(**_values(stage_instructions={"writer": "長" * 4001}))
+    with pytest.raises(ValidationError):
+        SettingsWrite(**_values(stage_instructions={"boss": "x"}))
+
+
+@pytest.mark.asyncio
+async def test_a_settings_save_without_standing_instructions_keeps_the_stored_ones(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A page from before the instructions existed sends none; an emptied field drops one."""
+    update = _stored(monkeypatch)
+    values = _values(enabled=True)
+    del values["stage_instructions"]
+    url = "/api/v1/admin/video-automation/settings"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_owner())), base_url="http://t"
+    ) as client:
+        kept = await client.put(url, json=values)
+        changed = await client.put(
+            url, json=_values(stage_instructions={"writer": "", "verifier": "對照山海經原文"})
+        )
+    assert kept.status_code == 200, kept.text
+    assert update.await_args_list[0].args[2].stage_instructions == {"writer": "結尾留懸念"}
+    assert changed.status_code == 200, changed.text
+    assert changed.json()["stage_instructions"] == {"verifier": "對照山海經原文"}
+
+
+@pytest.mark.asyncio
+async def test_the_prompt_a_stage_was_sent_is_kept_per_format_and_read_in_stage_order() -> None:
+    session = AsyncMock()
+    await service.remember_prompt(
+        session,
+        StageRunIn(
+            stage="writer", slug="jingwei", instructions="Write it.", payload={}, format="drama"
+        ),
+    )
+    kept = session.merge.await_args.args[0]
+    assert isinstance(kept, VideoStagePrompt)
+    assert (kept.stage, kept.format, kept.slug, kept.instructions) == (
+        "writer",
+        "drama",
+        "jingwei",
+        "Write it.",
+    )
+    assert kept.sent_at.tzinfo is not None
+
+    when = datetime(2026, 9, 26, 15, 0, tzinfo=UTC)
+    rows = [
+        VideoStagePrompt(stage="writer", format="drama", slug="b", instructions="B", sent_at=when),
+        VideoStagePrompt(
+            stage="planner", format="slides", slug="a", instructions="A", sent_at=when
+        ),
+        VideoStagePrompt(stage="writer", format="slides", slug="c", instructions="C", sent_at=when),
+    ]
+    found = MagicMock()
+    found.all.return_value = rows
+    session.scalars = AsyncMock(return_value=found)
+    prompts = await service.stage_prompts(session)
+    assert [(prompt.stage, prompt.format, prompt.slug) for prompt in prompts] == [
+        ("planner", "slides", "a"),
+        ("writer", "slides", "c"),
+        ("writer", "drama", "b"),
+    ]
+
+
+@pytest.mark.asyncio
+async def test_a_viewer_reads_the_prompts_as_they_were_sent(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
+    viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
+    when = datetime(2026, 9, 26, 15, 0, tzinfo=UTC)
+    prompt = StagePromptView(
+        stage="planner", format="slides", slug="a", instructions="Plan.", sent_at=when
+    )
+    monkeypatch.setattr(service, "stage_prompts", AsyncMock(return_value=[prompt]))
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(viewer)), base_url="http://t"
+    ) as client:
+        read = await client.get("/api/v1/admin/video-automation/prompts")
+    assert read.status_code == 200, read.text
+    assert read.json()["prompts"] == [
+        {
+            "stage": "planner",
+            "format": "slides",
+            "slug": "a",
+            "instructions": "Plan.",
+            "sent_at": "2026-09-26T15:00:00Z",
+        }
+    ]
 
 
 @pytest.mark.asyncio

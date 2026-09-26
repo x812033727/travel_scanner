@@ -208,7 +208,10 @@ export class Automation {
   }
 
   async stage(stage, slug, payload, maxOutputTokens, format = "slides") {
-    const answer = await this.api.run(stage, slug, instructionsFor(stage, format), payload, maxOutputTokens);
+    // The owner's standing instructions for the stage (settings tab) end the prompt; the server
+    // keeps what was sent, per stage and format, for the owner to read.
+    const standing = this.settings.stage_instructions?.[stage] ?? "";
+    const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing), payload, maxOutputTokens, format);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
     try {

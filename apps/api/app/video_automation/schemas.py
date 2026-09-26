@@ -22,6 +22,10 @@ ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
 CaptionLocale = Literal["en", "ja", "ko", "zh-CN"]
 TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
+# The owner's standing instructions for one stage: the settings tab's text, which the worker
+# appends to that stage's prompt. Which prompt a stage gets depends on the video's format.
+StandingText = Annotated[str, StringConstraints(strip_whitespace=True, max_length=4000)]
+PromptFormat = Literal["slides", "drama"]
 # The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
 MediaProvider = Literal["gemini", "minimax"]
 ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
@@ -123,6 +127,11 @@ class _SettingsFields(StrictModel):
         return self
 
 
+def _kept_instructions(value: dict[Stage, str]) -> dict[Stage, str]:
+    """A field emptied on the settings tab drops that stage's standing instructions."""
+    return {stage: text for stage, text in value.items() if text}
+
+
 def _every_stage(stage_models: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
     missing = set(get_args(Stage)) - set(stage_models)
     if missing:
@@ -144,11 +153,17 @@ class StageModelsWrite(StrictModel):
 class SettingsWrite(_SettingsFields):
     stage_models: dict[Stage, StageModel]
     drama: DramaSettings
+    stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
 
     @field_validator("stage_models")
     @classmethod
     def _complete(cls, value: dict[Stage, StageModel]) -> dict[Stage, StageModel]:
         return _every_stage(value)
+
+    @field_validator("stage_instructions")
+    @classmethod
+    def _kept(cls, value: dict[Stage, str]) -> dict[Stage, str]:
+        return _kept_instructions(value)
 
 
 class SettingsSave(_SettingsFields):
@@ -156,16 +171,23 @@ class SettingsSave(_SettingsFields):
 
     The stage models are chosen on the AI settings page; a save that leaves them out keeps
     the stored ones, so the videos page cannot put back models it loaded earlier. The drama
-    settings follow the same rule, so a page built before they existed cannot reset them.
+    settings and the standing instructions follow the same rule, so a page built before they
+    existed cannot reset them.
     """
 
     stage_models: dict[Stage, StageModel] | None = None
     drama: DramaSettings | None = None
+    stage_instructions: dict[Stage, StandingText] | None = None
 
     @field_validator("stage_models")
     @classmethod
     def _complete(cls, value: dict[Stage, StageModel] | None) -> dict[Stage, StageModel] | None:
         return None if value is None else _every_stage(value)
+
+    @field_validator("stage_instructions")
+    @classmethod
+    def _kept(cls, value: dict[Stage, str] | None) -> dict[Stage, str] | None:
+        return None if value is None else _kept_instructions(value)
 
 
 class ModelOptionView(StrictModel):
@@ -295,6 +317,9 @@ class StageRunIn(StrictModel):
     instructions: str = Field(min_length=1, max_length=60_000)
     payload: dict[str, object]
     max_output_tokens: int = Field(default=16_000, ge=1_000, le=32_000)
+    # The video's format, so the prompt is kept under the right heading for the owner to read;
+    # a worker from before the drama route sends none and is filed under slides.
+    format: PromptFormat = "slides"
 
 
 class StageRunOut(StrictModel):
@@ -305,6 +330,20 @@ class StageRunOut(StrictModel):
     input_tokens: int
     output_tokens: int
     usage: UsageView
+
+
+class StagePromptView(StrictModel):
+    """The instructions a stage was last sent for a format, as the worker composed them."""
+
+    stage: Stage
+    format: PromptFormat
+    slug: str
+    instructions: str
+    sent_at: datetime
+
+
+class StagePromptsOut(StrictModel):
+    prompts: list[StagePromptView]
 
 
 class TopicView(StrictModel):

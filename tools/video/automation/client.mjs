@@ -84,8 +84,8 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     /** Every video on /admin/videos, dropped ones too: slug, title, source_guide, dropped_at. */
     videos: () => request("GET", "automation/videos"),
     /** One stage: the server answers with the model the owner chose; returns { text, usage, … }. */
-    run: (stage, slug, instructions, payload, maxOutputTokens = 16_000) =>
-      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens }),
+    run: (stage, slug, instructions, payload, maxOutputTokens = 16_000, format = "slides") =>
+      request("POST", "automation/run", { stage, slug, instructions, payload, max_output_tokens: maxOutputTokens, format }),
     /** Report the video's title, stage and checklist to /admin/videos. */
     report: (slug, project) => request("PUT", `reviews/${slug}`, project),
     /** Submit one review; the same content twice returns the review that exists. */
