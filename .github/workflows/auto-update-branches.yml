@@ -1,0 +1,51 @@
+name: Auto-update branches
+
+# Strict branch protection makes a green pull request wait whenever main moves: it must be
+# updated from main and pass CI again before it can merge. Merge queue would handle that, but
+# GitHub offers it only to organization-owned repositories. This workflow runs
+# tools/ci/auto-update-branches.mjs, which merges the pull request that is ready, turns on
+# auto-merge for the rest, and updates a few BEHIND branches at a time. Rules, opt-outs and
+# the token it needs: .github/BRANCH_PROTECTION.md, "Automatic updates and merges". The
+# workflow name `CI` below and the four job names listed in the script must follow ci.yml.
+on:
+  push:
+    branches: [main]
+  # A finished CI run can free a slot or leave a pull request ready to merge.
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+# One pass at a time; a newer trigger replaces a waiting one, never a running one.
+concurrency:
+  group: auto-update-branches
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # The default branch, never a pull request's code: the token below can push.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: 24 }
+      - name: Merge, enable auto-merge, update BEHIND branches
+        env:
+          # A fine-grained token, not GITHUB_TOKEN: pull_request runs started by a GITHUB_TOKEN
+          # push wait for a maintainer's approval, so an updated branch would sit without CI.
+          GH_TOKEN: ${{ secrets.AUTO_MERGE_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          # Only pull requests these accounts opened are merged; bots never are.
+          AUTO_MERGE_AUTHORS: ${{ github.repository_owner }}
+          MAX_INFLIGHT: "3"
+        run: node tools/ci/auto-update-branches.mjs
