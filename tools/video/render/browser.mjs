@@ -189,9 +189,10 @@ export async function openRenderer({ root, workdir, channel }) {
   return {
     /**
      * Draw one state. With `transition`, also every 1/30 s of its entrance animations, frame 0
-     * being the moment before anything has moved. Returns PNG buffers and layout problems.
+     * being the moment before anything has moved. With `omitBackground`, a page that paints no
+     * background comes out transparent (a subtitle strip). Returns PNG buffers and layout problems.
      */
-    async capture(key, html, { size = SIZE, transition = false, type = "png", quality } = {}) {
+    async capture(key, html, { size = SIZE, transition = false, type = "png", quality, omitBackground = false } = {}) {
       const refusedBefore = refused.length;
       const problems = await load(key, html, size);
       const end = await page.evaluate(pauseAnimations);
@@ -200,11 +201,11 @@ export async function openRenderer({ root, workdir, channel }) {
         const count = Math.min(Math.ceil(end / (1000 / FPS)), MAX_TRANSITION_FRAMES);
         for (let index = 0; index < count; index++) {
           await page.evaluate(seekAnimations, (index * 1000) / FPS);
-          frames.push(await page.screenshot({ type, quality }));
+          frames.push(await page.screenshot({ type, quality, omitBackground }));
         }
       }
       await page.evaluate(seekAnimations, end + 1);
-      const still = await page.screenshot({ type, quality });
+      const still = await page.screenshot({ type, quality, omitBackground });
       for (const url of refused.slice(refusedBefore)) problems.push(`refused a request for ${url}`);
       return { frames, still, problems };
     },
