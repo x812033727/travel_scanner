@@ -1,5 +1,5 @@
 {
-  "reviewed_on": "2026-09-24",
+  "reviewed_on": "2026-09-26",
   "sources": [
     {
       "name": "OpenAI News",
@@ -171,6 +171,121 @@
       "scan_interval_minutes": 60,
       "config": {"max_entries_per_scan": 10},
       "note": "Press; policy and industry coverage."
+    },
+    {
+      "name": "Meta Newsroom",
+      "url": "https://about.fb.com/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "mixed",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Meta's own announcements, Llama and AI products included; added 2026-09-26 at the owner's request."
+    },
+    {
+      "name": "AWS Machine Learning Blog",
+      "url": "https://aws.amazon.com/blogs/machine-learning/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Amazon's cloud AI launches; many posts are how-tos, which the writer declares not newsworthy."
+    },
+    {
+      "name": "Microsoft Research blog",
+      "url": "https://www.microsoft.com/en-us/research/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Microsoft Research papers and model releases."
+    },
+    {
+      "name": "Google Keyword blog",
+      "url": "https://blog.google/rss/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "mixed",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "All of Google's official blog (Android, Pixel, Search), wider than the AI section above; the same post from both feeds is an exact duplicate."
+    },
+    {
+      "name": "Google Cloud blog",
+      "url": "https://cloudblog.withgoogle.com/rss/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "mixed",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "allowed_redirect_hosts": ["cloud.google.com"],
+      "config": {"max_entries_per_scan": 10},
+      "note": "Google Cloud announcements; the feed's articles live on cloud.google.com."
+    },
+    {
+      "name": "GitHub blog",
+      "url": "https://github.blog/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "GitHub's announcements, Copilot and developer AI tools included."
+    },
+    {
+      "name": "Cloudflare blog",
+      "url": "https://blog.cloudflare.com/rss/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "tech",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "Cloudflare's announcements and incident write-ups."
+    },
+    {
+      "name": "SEC press releases",
+      "url": "https://www.sec.gov/news/pressreleases.rss",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 5},
+      "note": "US regulator; most releases are not about crypto and the writer declares those not newsworthy."
+    },
+    {
+      "name": "Chainalysis blog",
+      "url": "https://www.chainalysis.com/blog/feed/",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": true,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "note": "On-chain research and hack reports; first-party for its own findings."
+    },
+    {
+      "name": "Decrypt",
+      "url": "https://decrypt.co/feed",
+      "format": "rss",
+      "role": "evidence",
+      "vertical": "crypto",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 60,
+      "config": {"max_entries_per_scan": 10},
+      "note": "Press; a second website for crypto stories, which automatic publication can count."
     }
   ]
 }
