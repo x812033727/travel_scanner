@@ -21,6 +21,12 @@ ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
 CaptionLocale = Literal["en", "ja", "ko", "zh-CN"]
 TopicWord = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=40)]
+# The drama format's media settings (docs/videos/DRAMA.md); the vendors are the site's keys.
+MediaProvider = Literal["gemini", "minimax"]
+ClipResolution = Literal["720p", "768p", "1080p", "2k", "4k"]
+StylePreset = Literal["cinematic-3d", "anime-2d", "ink-wash", "custom"]
+DramaAspect = Literal["16:9", "9:16"]
+MediaKindName = Literal["image", "clip", "music"]
 
 
 class StrictModel(BaseModel):
@@ -38,6 +44,52 @@ class VoiceSettings(StrictModel):
     style: str | None = Field(default=None, min_length=1, max_length=400)
     model: str | None = Field(default=None, min_length=3, max_length=60)
     rate: str = Field(default="+0%", pattern=r"^[+-]\d{1,2}%$")
+
+
+class CharacterVoice(StrictModel):
+    """One voice the planner may cast a character with; `hint` says what it suits."""
+
+    provider: Literal["azure", "gemini"]
+    name: str = Field(min_length=1, max_length=90)
+    style: str | None = Field(default=None, min_length=1, max_length=400)
+    hint: str | None = Field(default=None, min_length=1, max_length=40)
+
+
+class DramaSettings(StrictModel):
+    """The drama format's media settings, one nested object on the settings row."""
+
+    drama_enabled: bool
+    image_provider: MediaProvider
+    image_model: str = Field(min_length=1, max_length=128)
+    clip_provider: MediaProvider
+    clip_model: str = Field(min_length=1, max_length=128)
+    music_provider: MediaProvider
+    music_model: str = Field(min_length=1, max_length=128)
+    clip_resolution: ClipResolution
+    clip_seconds_default: int = Field(ge=4, le=10)
+    clip_native_audio: bool
+    drama_aspect: DramaAspect
+    max_clips_per_video: int = Field(ge=1, le=120)
+    max_retakes_per_shot: int = Field(ge=0, le=5)
+    monthly_clip_seconds_budget: int = Field(ge=0, le=100_000)
+    monthly_images_budget: int = Field(ge=0, le=100_000)
+    monthly_judge_calls_budget: int = Field(ge=0, le=100_000)
+    monthly_music_budget: int = Field(ge=0, le=100_000)
+    max_usd_per_video: int = Field(ge=0, le=10_000)
+    judge_min_score: int = Field(ge=0, le=10)
+    auto_approve_storyboard: bool
+    character_voice_pool: list[CharacterVoice] = Field(max_length=8)
+    music_enabled: bool
+    subtitle_burn_in: bool
+    style_preset: StylePreset
+    drama_topic_scope: list[TopicWord] = Field(max_length=20)
+
+    @model_validator(mode="after")
+    def _distinct_voices(self) -> Self:
+        voices = [(voice.provider, voice.name) for voice in self.character_voice_pool]
+        if len(set(voices)) != len(voices):
+            raise ValueError("character_voice_pool must not repeat a voice")
+        return self
 
 
 class _SettingsFields(StrictModel):
@@ -93,6 +145,7 @@ class StageModelsWrite(StrictModel):
 
 class SettingsWrite(_SettingsFields):
     stage_models: dict[Stage, StageModel]
+    drama: DramaSettings
 
     @field_validator("stage_models")
     @classmethod
@@ -104,10 +157,12 @@ class SettingsSave(_SettingsFields):
     """A save from the settings tab on /admin/videos.
 
     The stage models are chosen on the AI settings page; a save that leaves them out keeps
-    the stored ones, so the videos page cannot put back models it loaded earlier.
+    the stored ones, so the videos page cannot put back models it loaded earlier. The drama
+    settings follow the same rule, so a page built before they existed cannot reset them.
     """
 
     stage_models: dict[Stage, StageModel] | None = None
+    drama: DramaSettings | None = None
 
     @field_validator("stage_models")
     @classmethod
@@ -126,6 +181,28 @@ class VoiceOptionsView(StrictModel):
     gemini: list[str]
     gemini_models: list[str]
     azure: list[str]
+
+
+class MediaOptionView(StrictModel):
+    """One image, clip or music model the settings tab can offer, from app.video_media.catalog."""
+
+    value: str
+    label: str
+    description: str | None
+    status: ModelStatus
+    resolutions: list[str]
+    durations: list[int]
+    reference_images: int
+    native_audio: bool
+    usd_per_second: float | None
+    usd_per_image: float | None
+    usd_per_track: float | None
+
+
+class MediaOptionsView(StrictModel):
+    images: dict[MediaProvider, list[MediaOptionView]]
+    clips: dict[MediaProvider, list[MediaOptionView]]
+    music: dict[MediaProvider, list[MediaOptionView]]
 
 
 class UsageView(StrictModel):
@@ -147,6 +224,8 @@ class SettingsView(SettingsWrite):
     model_options: dict[ProviderName, list[ModelOptionView]]
     configured_providers: list[ProviderName]
     voice_options: VoiceOptionsView
+    media_options: MediaOptionsView
+    style_presets: list[StylePreset]
     usage: UsageView | None = None
     updated_at: datetime | None
 
