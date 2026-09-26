@@ -28,8 +28,12 @@ export type ProjectSummary = {
   youtube_video_id: string | null; last_synced_at: string; pending: number;
   dropped_at?: string | null; dropped_note?: string | null;
   format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
+  // The languages the owner ticked to dub this video in (docs/videos/DUBS.md).
+  dub_locales?: string[];
 };
 export type Project = ProjectSummary & { reviews: Review[] };
+// The languages a video can be dubbed in, in the page's order; zh-TW is the original.
+export const DUB_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
 
 // How often a list or a page reads the site again while open: the worker moves a video every
 // few minutes, so this is enough to watch a step land without reloading.
@@ -198,6 +202,27 @@ function PublishBody({ review }: { review: Review }) {
   return items.length ? <div><p className="font-bold">{t("uploadChecklist")}</p><ul className="mt-2 grid gap-1 text-sm leading-6">{items.map((item) => <li key={item}>• {item}</li>)}</ul></div> : null;
 }
 
+/**
+ * The dub tracks the worker finished (docs/videos/DUBS.md): one row per language with its state,
+ * the reason when it was given up on, and the track to download for YouTube Studio's Languages page.
+ */
+function DubsBody({ slug, review }: { slug: string; review: Review }) {
+  const t = useTranslations("admin.videoReviews");
+  const locales = Object.entries(record(review.payload.locales)).map(([locale, value]) => [locale, record(value)] as const);
+  if (!locales.length) return null;
+  return <ul className="grid gap-2 text-sm leading-6">{locales.map(([locale, entry]) => {
+    const status = text(entry.status);
+    const name = text(entry.file) || `${locale}.${text(entry.format) || "m4a"}`;
+    const href = fileUrl(slug, fileFor(review, text(entry.file_role)));
+    const reason = status === "skipped" ? text(entry.reason) : "";
+    return <li key={locale} className="flex flex-wrap items-center gap-3">
+      <span className="font-semibold">{t.has(`locales.${locale}`) ? t(`locales.${locale}`) : locale}</span>
+      <span className="text-[var(--muted)]">{status === "ready" || status === "skipped" ? t(`dubStatuses.${status}`) : status}{reason ? `：${reason}` : ""}</span>
+      {href && <a className="font-semibold text-[var(--teal)] underline" href={href} download={name}>{t("downloadTrack", { file: name })}</a>}
+    </li>;
+  })}</ul>;
+}
+
 /** One review of one gate: its body, and the owner's approve or reject with a note. */
 export function ReviewCard({ slug, review, canManage, onDecided }: { slug: string; review: Review; canManage: boolean; onDecided: () => void }) {
   const t = useTranslations("admin.videoReviews");
@@ -240,6 +265,7 @@ export function ReviewCard({ slug, review, canManage, onDecided }: { slug: strin
       {review.gate === "audio" && <AudioBody slug={slug} review={review} />}
       {review.gate === "final" && <FinalBody slug={slug} review={review} />}
       {review.gate === "publish" && <PublishBody review={review} />}
+      {review.gate === "dubs" && <DubsBody slug={slug} review={review} />}
     </div>
     {pending ? <div className="mt-5 grid gap-3 border-t border-[var(--line)] pt-4">
       <label className="grid gap-2 text-sm font-semibold">{t("note")}
