@@ -8,11 +8,13 @@ they are the sum of ``usd_estimate`` over this month's jobs, priced from the cat
 
 from __future__ import annotations
 
+from collections.abc import Sequence
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from decimal import Decimal
 
 from redis.asyncio import Redis
-from sqlalchemy import func, select
+from sqlalchemy import case, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.providers.usage_meter import (
@@ -111,3 +113,34 @@ async def slug_usd(session: AsyncSession, slug: str) -> float:
         )
     )
     return round(float(total or 0), 4)
+
+
+@dataclass(frozen=True)
+class SlugSpend:
+    """What one video's generations have cost so far, and how many clip seconds it bought."""
+
+    usd: float
+    clip_seconds: int
+
+
+async def spend_by_slug(session: AsyncSession, slugs: Sequence[str]) -> dict[str, SlugSpend]:
+    """The spend of each of these videos, in one query; a video with no jobs is left out."""
+    if not slugs:
+        return {}
+    clip_seconds = case((VideoMediaJob.kind == "clip", VideoMediaJob.seconds), else_=0)
+    rows = await session.execute(
+        select(
+            VideoMediaJob.slug,
+            func.coalesce(func.sum(VideoMediaJob.usd_estimate), 0),
+            func.coalesce(func.sum(clip_seconds), 0),
+        )
+        .where(
+            VideoMediaJob.slug.in_(list(slugs)),
+            VideoMediaJob.status.in_(("submitted", "ready")),
+        )
+        .group_by(VideoMediaJob.slug)
+    )
+    return {
+        str(slug): SlugSpend(usd=round(float(usd or 0), 4), clip_seconds=int(seconds or 0))
+        for slug, usd, seconds in rows.all()
+    }

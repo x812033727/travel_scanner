@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from typing import Annotated, Literal, Self, get_args
+from uuid import UUID
 
 from pydantic import (
     BaseModel,
@@ -231,6 +232,62 @@ class SettingsView(SettingsWrite):
 
 
 SLUG_PATTERN = r"^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$"
+GUIDE_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$"
+RequestStatus = Literal["queued", "started", "done", "cancelled"]
+
+
+class DramaRequestIn(StrictModel):
+    """What the owner asks for on /admin/videos: an episode of the drama route to make next.
+
+    ``premise`` is the story in the owner's words; with ``source_guide`` it says what to make of
+    that article. The worker takes the oldest request before any scheduled draft.
+    """
+
+    premise: str = Field(min_length=1, max_length=4000)
+    title: str | None = Field(default=None, min_length=1, max_length=200)
+    source_guide: str | None = Field(default=None, pattern=GUIDE_SLUG_PATTERN)
+    style_preset: StylePreset = "cinematic-3d"
+    target_minutes: int = Field(default=3, ge=1, le=8)
+    note: str | None = Field(default=None, min_length=1, max_length=2000)
+
+    @field_validator("premise", "title", "note")
+    @classmethod
+    def _trimmed(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        text = value.strip()
+        if not text:
+            raise ValueError("must not be blank")
+        return text
+
+
+class DramaRequestStart(StrictModel):
+    slug: str = Field(pattern=SLUG_PATTERN)
+
+
+class DramaRequestOut(BaseModel):
+    id: UUID
+    premise: str
+    title: str | None
+    source_guide: str | None
+    style_preset: StylePreset
+    target_minutes: int
+    note: str | None
+    status: RequestStatus
+    slug: str | None
+    created_by_user_id: UUID | None
+    created_at: datetime
+    started_at: datetime | None
+    finished_at: datetime | None
+    cancelled_at: datetime | None
+
+
+class DramaRequestsOut(BaseModel):
+    requests: list[DramaRequestOut]
+
+
+class NextDramaRequestOut(BaseModel):
+    request: DramaRequestOut | None
 
 
 class StageRunIn(StrictModel):
