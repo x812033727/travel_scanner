@@ -518,6 +518,11 @@ class AntigravityLogin:
 class AntigravityAccounts:
     def __init__(self, config: AgentConfig) -> None:
         self.config = config
+        # account.json is rewritten whole by the quota probe's thread and by a status() read on
+        # a request thread whose log email differs from the file. Unlocked, a status() that read
+        # the file before the probe saved the plan wrote its stale copy back over it, and one
+        # that read it before a sign-out wrote the account back after it.
+        self._account_lock = threading.Lock()
 
     def home(self, slot: str) -> Path:
         return self.config.slot_path("agy", slot)
@@ -540,15 +545,20 @@ class AntigravityAccounts:
         return read_json(self.home(slot) / ACCOUNT_NAME) or {}
 
     def _remember(self, slot: str, **values: Any) -> None:
-        account = self._account(slot)
-        changed = {
-            key: value for key, value in values.items() if value and account.get(key) != value
-        }
-        if not changed:
-            return
-        account.update(changed, recorded_at=int(time.time()))
-        with contextlib.suppress(OSError):
-            atomic_write_text(self.home(slot) / ACCOUNT_NAME, json.dumps(account))
+        with self._account_lock:
+            # logout() removes the saved login before it deletes account.json under this lock,
+            # so a write that gets here after a sign-out finds no credentials and stops.
+            if not self.has_credentials(slot):
+                return
+            account = self._account(slot)
+            changed = {
+                key: value for key, value in values.items() if value and account.get(key) != value
+            }
+            if not changed:
+                return
+            account.update(changed, recorded_at=int(time.time()))
+            with contextlib.suppress(OSError):
+                atomic_write_text(self.home(slot) / ACCOUNT_NAME, json.dumps(account))
 
     def status(self, slot: str) -> dict[str, Any]:
         """Read from files only: the CLI has no status command, and starting its TUI to ask
@@ -727,7 +737,11 @@ class AntigravityAccounts:
                 # A login moved aside by a sign-in in progress is that sign-in's to settle.
                 if not path.name.endswith(SET_ASIDE_SUFFIX):
                     path.unlink(missing_ok=True)
-            (home / ACCOUNT_NAME).unlink(missing_ok=True)
+            # After the login files are gone and under the lock: a _remember() that already
+            # holds the lock has its write removed by this unlink, and one that takes the lock
+            # later finds no credentials and writes nothing.
+            with self._account_lock:
+                (home / ACCOUNT_NAME).unlink(missing_ok=True)
             (home / SNAPSHOT_NAME).unlink(missing_ok=True)
         except OSError as exc:
             raise CliError(f"cannot sign agy out: {exc.strerror}") from exc
