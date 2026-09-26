@@ -49,10 +49,21 @@ Reveal: a line with "reveal": 1 shows the next item; a scene's reveals must equa
 - compare {title?, left:{heading, points 1-5}, right:{…}, verdict?}: 2 reveals (left, right).
 - steps {title?, steps: 2-5 of {title, detail?}}: one reveal per step.
 - table {title?, columns 2-5, rows 1-8 (each as long as columns), highlight? row index}: one reveal per row.
-- code {code ≤16 lines, highlight? [line numbers], caption?}: no reveals. For worked calculations.
+- code {code ≤9 lines with a title and caption, highlight? [line numbers], caption?}: no reveals.
+  For worked calculations; the renderer refuses code its panel cannot show.
 - big {text, kicker?, sub?}: no reveals. One number or phrase to remember.
+- chat {title?, messages: 1-5 of {side: left|right, name?, text}}: one reveal per message. A
+  question and its answer, a customer's message: the concrete thing, not a description of it.
+- quote {quote, source, kicker?, translation?}: 1 reveal when there is a translation. An official
+  sentence in its own words, then what it means, and where it is from.
+- stats {title?, stats: 1-4 of {value, label, note?}, source?}: one reveal per number.
+- cta {title, kicker?, sub?}: no reveals. Once, near the middle, when there is a source article:
+  points to the article in the description's first line.
 - outro {title, cta?, lines 1-4}: no reveals. The last scene.
 Do not use diagram or screenshot: automated videos have no image files.
+Pace: no slide state should stay up much longer than about 15 seconds; split a long explanation
+into several scenes and reveal one item per sentence.
+Chapter names say what the part is about, the first and the last included (never 開場 or 結論).
 Slides hold keywords, not sentences: titles about 16 characters, items about 20. **文字** marks the
 accent colour; \\n breaks a line.
 `.trim();

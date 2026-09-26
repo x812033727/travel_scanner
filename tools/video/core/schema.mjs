@@ -25,6 +25,10 @@ export const TEMPLATES = [
   "big",
   "diagram",
   "screenshot",
+  "chat",
+  "quote",
+  "stats",
+  "cta",
   "outro",
 ];
 export const THUMBNAIL_TEMPLATES = ["thumb"];

@@ -60,12 +60,14 @@ test("keys change with the picture or the theme, and only then", () => {
 
 test("chapter labels carry forward, except on title and chapter cards", () => {
   const plan = renderPlan(showcase, "t");
-  const label = (id) => /chrome-chapter">([^<]+)</.exec(plan.scenes.find((scene) => scene.id === id).states[0].html)?.[1] ?? null;
+  const html = (id) => plan.scenes.find((scene) => scene.id === id).states[0].html;
+  const label = (id) => /chrome-chapter">(?:<span class="index">[^<]*<\/span>)?([^<]+)</.exec(html(id))?.[1] ?? null;
   assert.equal(label("opening"), null);
   assert.equal(label("part-one"), null);
   assert.equal(label("three-questions"), "三個問題");
   assert.equal(label("keyword"), "三個問題");
   assert.equal(label("numbers"), "比一比");
+  assert.match(html("numbers"), /<span class="index">03 \/ 05<\/span>/, "the showcase has five chapters");
 });
 
 test("template data problems are labelled with the scene", () => {

@@ -48,12 +48,36 @@ export function articleUrl(pack, locale, campaign) {
   return `${SITE}/${locale}${path}?utm_source=youtube&utm_medium=video&utm_campaign=${encodeURIComponent(campaign)}`;
 }
 
-/** The description as it is uploaded: body, chapters, the article link, then sources. */
-export function composeDescription({ body, timeline, chapterTitles = {}, article, sources = [], locale }) {
+export const HASHTAG_COUNT = 3;
+
+/**
+ * Hashtags from the first tags: YouTube shows the description's first three above the title.
+ * A hashtag cannot hold spaces or punctuation, so "ChatGPT Go" becomes #ChatGPTGo.
+ */
+export function hashtagsFrom(tags = [], count = HASHTAG_COUNT) {
+  const hashtags = [];
+  for (const tag of tags) {
+    const word = String(tag).replace(/[^\p{L}\p{N}_]/gu, "");
+    // YouTube treats #ChatGPTGo and #chatgptgo as one hashtag.
+    if (word && !hashtags.some((hashtag) => hashtag.toLowerCase() === `#${word}`.toLowerCase())) hashtags.push(`#${word}`);
+    if (hashtags.length === count) break;
+  }
+  return hashtags;
+}
+
+/**
+ * The description as it is uploaded. The article link goes first, where YouTube shows it before
+ * "more"; then the body, the chapters, the sources, and the hashtags last, the layout the channels
+ * we learn from use (2026-09-26, the owner's reference video).
+ */
+export function composeDescription({ body, timeline, chapterTitles = {}, article, sources = [], locale, tags = [] }) {
   const labels = LABELS[locale] ?? LABELS.en;
-  const parts = [body.trim()];
-  if (timeline) parts.push(`${labels.chapters}\n${chapterText(timeline, chapterTitles)}`);
-  if (article) parts.push(`${labels.article}\n${article}`);
-  if (sources.length) parts.push(`${labels.sources}\n${sources.map((source) => `${source.title}${labels.colon}${source.url}`).join("\n")}`);
+  const parts = [];
+  if (article) parts.push(`🔗 ${labels.article}${labels.colon}${article}`);
+  parts.push(body.trim());
+  if (timeline) parts.push(`📌 ${labels.chapters}\n${chapterText(timeline, chapterTitles)}`);
+  if (sources.length) parts.push(`📚 ${labels.sources}\n${sources.map((source) => `${source.title}${labels.colon}${source.url}`).join("\n")}`);
+  const hashtags = hashtagsFrom(tags);
+  if (hashtags.length) parts.push(hashtags.join(" "));
   return parts.join("\n\n");
 }

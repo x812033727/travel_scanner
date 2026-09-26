@@ -60,6 +60,7 @@ export function renderProblems(doc, root = null) {
  */
 export function renderPlan(doc, theme = themeHash(), root = null) {
   const timeline = estimateTimeline(doc);
+  const chapterCount = doc.scenes.filter((scene) => scene.chapter).length;
   let chapter = null;
   let chapterNumber = 0;
   const scenes = doc.scenes.map((scene, index) => {
@@ -80,6 +81,7 @@ export function renderPlan(doc, theme = themeHash(), root = null) {
         totalReveals,
         chapter: NO_CHAPTER_LABEL.has(scene.template) ? null : chapter,
         chapterNumber,
+        chapterCount,
       });
       return { reveal: state.reveal, first: stateIndex === 0, html, key: hash(theme, html, assetHash), text: visibleText(html) };
     });

@@ -103,6 +103,40 @@ export const TEMPLATE_SPECS = {
     ],
     capacity: (data) => (data.highlight ? 1 : 0),
   },
+  // The next four came from a reference video (2026-09-26): concrete little artefacts instead of
+  // one slide of text left up for half a minute.
+  chat: {
+    check: (data) => [
+      data.title !== undefined && !isText(data.title) && "title must be text",
+      !(Array.isArray(data.messages) && data.messages.length >= 1 && data.messages.length <= 5 &&
+        data.messages.every((message) => message && ["left", "right"].includes(message.side) && isText(message.text) && (message.name === undefined || isText(message.name)))) &&
+        "messages must be 1 to 5 of { side: left|right, name?, text }",
+    ],
+    capacity: (data) => data.messages.length,
+  },
+  quote: {
+    check: (data) => [
+      !isText(data.quote) && "quote is required",
+      !isText(data.source) && "source is required: where the words come from",
+      data.kicker !== undefined && !isText(data.kicker) && "kicker must be text",
+      data.translation !== undefined && !isText(data.translation) && "translation must be text",
+    ],
+    capacity: (data) => (data.translation ? 1 : 0),
+  },
+  stats: {
+    check: (data) => [
+      data.title !== undefined && !isText(data.title) && "title must be text",
+      !(Array.isArray(data.stats) && data.stats.length >= 1 && data.stats.length <= 4 &&
+        data.stats.every((stat) => stat && isText(stat.value) && isText(stat.label) && (stat.note === undefined || isText(stat.note)))) &&
+        "stats must be 1 to 4 of { value, label, note? }",
+      data.source !== undefined && !isText(data.source) && "source must be text",
+    ],
+    capacity: (data) => data.stats.length,
+  },
+  cta: {
+    check: (data) => [!isText(data.title) && "title is required", data.kicker !== undefined && !isText(data.kicker) && "kicker must be text", data.sub !== undefined && !isText(data.sub) && "sub must be text"],
+    capacity: () => 0,
+  },
   outro: {
     check: (data) => [!isText(data.title) && "title is required", data.cta !== undefined && !isText(data.cta) && "cta must be text", data.lines !== undefined && !isTextList(data.lines, 1, 4) && "lines must be 1 to 4 strings"],
     capacity: () => 0,
@@ -161,6 +195,8 @@ function enterClass(first, extra = "", index = 0) {
 }
 
 const heading = (data, first) => (data.title ? `<h2 ${enterClass(first, "heading fit")}>${richText(data.title)}</h2>` : "");
+const pad = (number) => String(number).padStart(2, "0");
+const knowsChapters = (state) => (state.chapterCount ?? 0) >= 2 && (state.chapterNumber ?? 0) >= 1;
 
 const RENDERERS = {
   title(data, state) {
@@ -173,8 +209,9 @@ const RENDERERS = {
   },
   chapter(data, state) {
     const number = data.number ?? state.chapterNumber;
+    const of = number && knowsChapters(state) ? `<span class="of">/ ${pad(state.chapterCount)}</span>` : "";
     return [
-      number ? `<div ${enterClass(state.first, "number", 0)}>${escapeHtml(String(number).padStart(2, "0"))}</div>` : "",
+      number ? `<div ${enterClass(state.first, "number", 0)}>${escapeHtml(pad(number))}${of}</div>` : "",
       `<h2 ${enterClass(state.first, "fit", 1)}>${richText(data.title)}</h2>`,
       data.subtitle ? `<div ${enterClass(state.first, "subtitle fit", 2)}>${richText(data.subtitle)}</div>` : "",
     ].join("");
@@ -230,6 +267,33 @@ const RENDERERS = {
       : "";
     return `${heading(data, state.first)}<div class="frame"><div ${enterClass(state.first, "shot", 1)}><img src="${assetUrl(data.image)}" alt="">${box}</div></div>${data.caption ? `<div class="caption-line">${richText(data.caption)}</div>` : ""}`;
   },
+  chat(data, state) {
+    const show = state.visible(data.messages.length);
+    const messages = data.messages.map(
+      (message, index) => `<div${attrs(show(index), `msg ${message.side}`)}>${message.name ? `<div class="who">${richText(message.name)}</div>` : ""}<div class="bubble fit">${richText(message.text)}</div></div>`,
+    );
+    return `${heading(data, state.first)}<div class="thread">${messages.join("")}</div>`;
+  },
+  quote(data, state) {
+    // A reveal brings in the translation after the original words have been heard.
+    const translation = data.translation ? `<div${attrs(state.visible(1)(0), "translation fit")}>${richText(data.translation)}</div>` : "";
+    return [
+      data.kicker ? `<div ${enterClass(state.first, "kicker", 0)}>${richText(data.kicker)}</div>` : "",
+      `<blockquote ${enterClass(state.first, "fit", 1)}>${richText(data.quote)}</blockquote>`,
+      translation,
+      `<div ${enterClass(state.first, "source", 2)}>${richText(data.source)}</div>`,
+    ].join("");
+  },
+  stats(data, state) {
+    const show = state.visible(data.stats.length);
+    const cards = data.stats.map(
+      (stat, index) => `<div${attrs(show(index), "stat")}><div class="value fit">${richText(stat.value)}</div><div class="label">${richText(stat.label)}</div>${stat.note ? `<div class="note">${richText(stat.note)}</div>` : ""}</div>`,
+    );
+    return `${heading(data, state.first)}<div class="grid" style="--n:${data.stats.length}">${cards.join("")}</div>${data.source ? `<div class="caption-line">${richText(data.source)}</div>` : ""}`;
+  },
+  cta(data, state) {
+    return `<div ${enterClass(state.first, "cta-card", 0)}>${data.kicker ? `<div class="kicker">${richText(data.kicker)}</div>` : ""}<h2 class="fit">${richText(data.title)}</h2>${data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : ""}<div class="site">${SITE_LABEL}</div></div>`;
+  },
   outro(data, state) {
     return [
       `<h2 ${enterClass(state.first, "fit", 0)}>${richText(data.title)}</h2>`,
@@ -253,8 +317,25 @@ function page(body, size) {
 }
 
 /**
+ * Where the viewer is: a bar across the top with one segment per chapter, the ones seen and the
+ * current one marked, and "02 / 06 chapter" in the corner. The owner asked for both after a
+ * reference video on 2026-09-26. The title card opens the video and carries neither.
+ */
+function chrome(scene, state) {
+  const bar = knowsChapters(state) && scene.template !== "title"
+    ? `<div class="chrome-progress">${Array.from({ length: state.chapterCount }, (_, index) => {
+      const place = index + 1 < state.chapterNumber ? ' class="done"' : index + 1 === state.chapterNumber ? ' class="now"' : "";
+      return `<span${place}></span>`;
+    }).join("")}</div>`
+    : "";
+  const index = knowsChapters(state) ? `<span class="index">${pad(state.chapterNumber)} / ${pad(state.chapterCount)}</span>` : "";
+  const label = state.chapter ? `<div class="chrome-chapter">${index}${escapeHtml(state.chapter)}</div>` : "";
+  return `${bar}${label}<div class="chrome-brand">${BRAND}</div>`;
+}
+
+/**
  * One slide state as a complete HTML page.
- * state: { reveal, previousReveal, first, totalReveals, chapter (label to show), chapterNumber }
+ * state: { reveal, previousReveal, first, totalReveals, chapter (label to show), chapterNumber, chapterCount }
  */
 export function slideHtml(scene, state) {
   const renderer = RENDERERS[scene.template];
@@ -263,8 +344,7 @@ export function slideHtml(scene, state) {
     ...state,
     visible: (count) => visibility(count, state.totalReveals, state.reveal, state.previousReveal, state.first),
   };
-  const chrome = `${state.chapter ? `<div class="chrome-chapter">${escapeHtml(state.chapter)}</div>` : ""}<div class="chrome-brand">${BRAND}</div>`;
-  return page(`${chrome}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE);
+  return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE);
 }
 
 export function thumbnailProblems(thumbnail) {

@@ -121,6 +121,52 @@
       ]
     },
     {
+      "id": "ask-once",
+      "template": "chat",
+      "data": {
+        "title": "同一個問題，問一次看看",
+        "messages": [
+          { "side": "right", "name": "你", "text": "幫我把這封信改得客氣一點" },
+          { "side": "left", "name": "小模型", "text": "好的，這是修改後的版本，語氣比較委婉。" }
+        ]
+      },
+      "lines": [
+        { "id": "sa19", "text": "先拿同一個問題，實際問一次。", "reveal": 1 },
+        { "id": "sa20", "text": "小模型幾秒鐘就回答了。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "own-words",
+      "template": "quote",
+      "data": { "kicker": "官方頁面原文", "quote": "may include ads", "translation": "可能會出現廣告", "source": "來源：範例官方頁面" },
+      "lines": [
+        { "id": "sa21", "text": "官方頁面上，原文是這一句。" },
+        { "id": "sa22", "text": "翻成中文，就是可能會出現廣告。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "speed-cost",
+      "template": "stats",
+      "data": {
+        "title": "小模型贏在哪裡",
+        "stats": [
+          { "value": "3 秒", "label": "回應時間", "note": "示範用的數字" },
+          { "value": "1/10", "label": "每次的成本" }
+        ],
+        "source": "數字為示範用，實際以官方定價為準"
+      },
+      "lines": [
+        { "id": "sa23", "text": "第一個差別是速度，幾秒鐘就回答。", "reveal": 1 },
+        { "id": "sa24", "text": "第二個差別是成本，只要十分之一。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "article-card",
+      "template": "cta",
+      "data": { "kicker": "完整比較表", "title": "三種流程的成本怎麼算", "sub": "說明欄第一行就是文章連結" },
+      "lines": [{ "id": "sa25", "text": "完整的比較表，我放在說明欄第一行的文章裡。" }]
+    },
+    {
       "id": "closing",
       "chapter": "結論",
       "template": "outro",
