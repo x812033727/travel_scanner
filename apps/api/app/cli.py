@@ -87,6 +87,7 @@ from app.search.schemas import SearchCreate
 from app.trips.name_backfill import backfill_trip_item_names
 from app.trips.routing import NaverDirectionsProvider, RoutePoint
 from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_package
+from app.video_media.prune_cli import prune_video_media
 
 
 async def add_usage_package(email: str, package_code: str, reference: str) -> None:
@@ -768,9 +769,7 @@ def main() -> None:
         ),
     )
     shadow.add_argument("--limit", type=int, default=200, help="How many recent runs to scan")
-    shadow.add_argument(
-        "--examples", type=int, default=20, help="How many disagreements to list"
-    )
+    shadow.add_argument("--examples", type=int, default=20, help="How many disagreements to list")
     candidates = subparsers.add_parser(
         "import-hotspot-candidates",
         help="Cross-check a JSON list of place names and report or write what survives",
@@ -1060,6 +1059,11 @@ def main() -> None:
             "migration 0078 and after any bulk publish that bypassed the admin write path."
         ),
     )
+    media_prune = subparsers.add_parser(
+        "video-media-prune",
+        help="Expire old media generation jobs and delete the files no live job names",
+    )
+    media_prune.add_argument("--dry-run", action="store_true")
     guides_links_rebuild.add_argument(
         "--dry-run", action="store_true", help="Report what would change without writing"
     )
@@ -1221,6 +1225,9 @@ def main() -> None:
                 dry_run=args.dry_run,
             )
         )
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "video-media-prune":
+        outcome = asyncio.run(prune_video_media(dry_run=args.dry_run))
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
     elif args.command == "guides-links-rebuild":
         outcome = asyncio.run(rebuild_guide_links(dry_run=args.dry_run))
