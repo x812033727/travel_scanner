@@ -1,19 +1,21 @@
 ---
 id: 2026-09-25-skip-claude-usage-probes-the-recorder
 title: Skip Claude usage probes the recorder would not write, and log probe failures
-status: open
+status: done
 priority: P3
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-26T14:49:55Z
 created_at: 2026-09-25T01:33:21Z
-completed_at:
-branch:
+completed_at: 2026-09-26T15:07:48Z
+branch: claude/ai-accounts-probe-throttle
 depends_on: []
 scope:
   - apps/api/ai_accounts_agent/server.py
   - apps/api/ai_accounts_agent/claude.py
   - apps/api/tests/test_ai_accounts_agent.py
+  - apps/api/tests/test_ai_accounts_agent_runs.py
+  - ops/ai-accounts/README.md
 ---
 
 # Skip Claude usage probes the recorder would not write, and log probe failures
@@ -42,18 +44,18 @@ Found on 2026-09-25 while checking the automatic Claude usage probes (#737) on t
 
 ## Definition of done
 
-- [ ] `maybe_refresh_usage` does not start a probe, forced or not, while the snapshot is
+- [x] `maybe_refresh_usage` does not start a probe, forced or not, while the snapshot is
       younger than the recorder's rewrite interval.
-- [ ] A probe that returns False or raises writes one line to stderr (the journal):
+- [x] A probe that returns False or raises writes one line to stderr (the journal):
       slot, reason and duration, with no screen text (it can echo codes or emails).
-- [ ] Tests cover both.
+- [x] Tests cover both.
 
 ## Steps
 
-- [ ] Share the interval: import `UNCHANGED_REWRITE_SECONDS` from `statusline` in `server.py`.
-- [ ] Have `refresh_usage` return a reason (`no_change`, `login_picker`, `exited`,
+- [x] Share the interval: import `UNCHANGED_REWRITE_SECONDS` from `statusline` in `server.py`.
+- [x] Have `refresh_usage` return a reason (`no_change`, `login_picker`, `exited`,
       `timeout`) instead of a bare bool, and log it.
-- [ ] Tests with the fake interactive CLI and the `RecordingAccounts` stand-in.
+- [x] Tests with the fake interactive CLI and the `RecordingAccounts` stand-in.
 
 ## How to verify
 
@@ -72,3 +74,16 @@ On the host, `journalctl -u mokaair-ai-accounts` shows a line for any failed pro
   rows with emails and tokens redacted). An exception in `_refresh_usage` is logged with
   its traceback. What is left here is the throttle: skip a probe while the snapshot is
   younger than `UNCHANGED_REWRITE_SECONDS`, or count "unchanged" as success.
+- 2026-09-26, the throttle half: `maybe_refresh_usage` reads the snapshot before anything
+  else and returns without a probe while it is younger than `UNCHANGED_REWRITE_SECONDS`
+  (imported from `statusline`), for the page, the button and a spent run alike. The one
+  exception is `after_login`: a new account in the folder is probed whatever the age of the
+  last account's snapshot. No change in `claude.py`: the boundary is clean, because a probe
+  that starts after 60 s meets a recorder that will write. The reason is logged as a string
+  in the journal line from #790, not returned as a code; nothing reads a code.
+- The #810 runs tests gave their fake a snapshot "now", which this rule turns into "no
+  probe"; they now use two minutes ago. The #790 tests that counted stderr lines flaked under
+  parallel load: a probe started by an earlier test logged into the next one. They now keep
+  only their own slot's lines (`_journal`).
+- Verified: Windows `uv run pytest` on the ai_accounts tests, three runs; WSL 4 parallel x 5
+  runs, 86 passed each time; ruff; mypy on `ai_accounts_agent` and the runs test.
