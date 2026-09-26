@@ -7,7 +7,7 @@ import { parseArgs } from "node:util";
 import { approvalState } from "../core/approvals.mjs";
 import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { runCaptions } from "../core/stages.mjs";
+import { dubsForUpload, runCaptions } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { composeMetadata, uploadChecklist } from "./metadata.mjs";
@@ -67,10 +67,18 @@ export async function run(command, args, ctx) {
   for (const [locale, fields] of Object.entries(metadata.localizations)) {
     atomicWrite(path.join(upload, `description.${locale}.txt`), `${fields.title}\n\n${fields.description}\n`);
   }
-  const record = { ...metadata, final_sha256: approval.sha256, thumbnail: thumbnail ? "thumbnail.jpg" : null, captions: captionFiles, skipped_caption_locales: captions.skipped ?? {} };
+  // The dub tracks the owner picked and the worker finished (docs/videos/DUBS.md); a locale the
+  // worker gave up on is named with its reason, so the owner knows not to wait for it.
+  const { dubs: tracks, skipped: skippedDubs } = dubsForUpload(project, workdir, speech);
+  const dubs = tracks.map((dub) => {
+    mkdirSync(path.join(upload, "dubs"), { recursive: true });
+    copyFileSync(dub.file, path.join(upload, "dubs", path.basename(dub.file)));
+    return { ...dub, file: `dubs/${path.basename(dub.file)}` };
+  });
+  const record = { ...metadata, final_sha256: approval.sha256, thumbnail: thumbnail ? "thumbnail.jpg" : null, captions: captionFiles, skipped_caption_locales: captions.skipped ?? {}, dubs, skipped_dub_locales: skippedDubs };
   atomicWrite(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
-  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail, drama: isDrama(doc) }));
-  recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length }, ctx.now());
-  ctx.stdout.write(`upload package: ${upload}\n  final.mp4, ${thumbnail ? "thumbnail.jpg, " : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
+  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail, drama: isDrama(doc), dubs, skippedDubs }));
+  recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length, dubs: dubs.map((dub) => dub.locale) }, ctx.now());
+  ctx.stdout.write(`upload package: ${upload}\n  final.mp4, ${thumbnail ? "thumbnail.jpg, " : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
   return EXIT.ok;
 }

@@ -14,6 +14,7 @@ import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
 import { isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { dubRole, dubsForUpload } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, pipelineStatus } from "../core/state.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { estimateTimeline, formatClock } from "../core/timeline.mjs";
@@ -279,16 +280,27 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
     const thumbnail = path.join(workdir, "thumbnail.jpg");
     if (existsSync(thumbnail)) files.push(await upload(request, slug, thumbnail, "thumbnail", "image/jpeg"));
+    // The dub tracks made so far go up beside the cut, so the owner can hear them on the site
+    // (docs/videos/DUBS.md). Only the m4a form: it is the audio type the review store takes.
+    const { dubs, skipped: skippedDubs } = dubsForUpload(project, workdir, timeline.speech_hash);
+    const dubEntries = {};
+    for (const dub of dubs) {
+      const role = dub.format === "m4a" ? dubRole(dub.locale) : null;
+      if (role) files.push(await upload(request, slug, dub.file, role, "audio/mp4"));
+      dubEntries[dub.locale] = { status: "ready", format: dub.format, tempo_max: dub.tempo_max, file_role: role };
+    }
+    for (const [locale, reason] of Object.entries(skippedDubs)) dubEntries[locale] = { status: "skipped", reason };
     const seconds = timeline.total_frames / timeline.fps;
     return {
       gate,
       content_sha256: await sha256File(file),
-      summary: `成片 ${formatClock(Math.round(seconds))}，自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}`,
+      summary: `成片 ${formatClock(Math.round(seconds))}，自動檢查${checks.ok ? "全部通過" : `有 ${(checks.problems ?? []).length} 項問題`}${dubs.length ? `，配音 ${dubs.map((dub) => dub.locale).join("、")}` : ""}`,
       payload: {
         duration_seconds: seconds,
         checks: { ok: Boolean(checks.ok), problems: checks.problems ?? [] },
         chapters: metadata.chapters.map((chapter) => ({ time: chapter.at, title: chapter.title })),
         metadata: { [metadata.default_language]: { title: metadata.title, description: metadata.description }, ...metadata.localizations },
+        ...(Object.keys(dubEntries).length ? { dubs: dubEntries } : {}),
       },
       files,
     };
