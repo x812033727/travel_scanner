@@ -17,6 +17,7 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
+    UniqueConstraint,
     text,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -88,6 +89,17 @@ DEFAULT_DRAMA: dict[str, Any] = {
     "subtitle_burn_in": True,
     "style_preset": "cinematic-3d",
     "drama_topic_scope": DEFAULT_DRAMA_TOPIC_SCOPE,
+    # A long series (docs/videos/SERIES.md): how many episodes may be in the making at once,
+    # whether every episode's script waits for the owner, whether the next episode starts on
+    # its own, how many episodes before a chapter's end the next chapter is planned, how many
+    # times a document is rewritten from the owner's note before it waits for the owner, and
+    # how many episodes a month may start.
+    "series_max_in_flight": 1,
+    "series_script_gate": True,
+    "series_auto_continue": True,
+    "series_chapter_ahead": 2,
+    "series_doc_rewrites": 2,
+    "series_episodes_per_month": 30,
 }
 DRAMA_FIELDS: tuple[str, ...] = tuple(DEFAULT_DRAMA)
 
@@ -147,6 +159,13 @@ class VideoAutomationSettings(Base):
         CheckConstraint(
             "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
             name="ck_video_drama_preset",
+        ),
+        # The series columns; migration 0099 creates the same constraints under the same names.
+        CheckConstraint(
+            "series_max_in_flight BETWEEN 1 AND 2 AND series_chapter_ahead BETWEEN 0 AND 10 "
+            "AND series_doc_rewrites BETWEEN 0 AND 5 "
+            "AND series_episodes_per_month BETWEEN 0 AND 500",
+            name="ck_video_drama_series",
         ),
     )
 
@@ -241,6 +260,12 @@ class VideoAutomationSettings(Base):
         default=_default(DEFAULT_DRAMA_TOPIC_SCOPE),
         server_default=text("'" + json.dumps(DEFAULT_DRAMA_TOPIC_SCOPE, ensure_ascii=True) + "'"),
     )
+    series_max_in_flight: Mapped[int] = mapped_column(Integer, default=1, server_default="1")
+    series_script_gate: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+    series_auto_continue: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+    series_chapter_ahead: Mapped[int] = mapped_column(Integer, default=2, server_default="2")
+    series_doc_rewrites: Mapped[int] = mapped_column(Integer, default=2, server_default="2")
+    series_episodes_per_month: Mapped[int] = mapped_column(Integer, default=30, server_default="30")
     updated_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
@@ -271,6 +296,11 @@ class VideoStagePrompt(Base):
 
     stage: Mapped[str] = mapped_column(String(20), primary_key=True)
     format: Mapped[str] = mapped_column(String(8), primary_key=True)
+    # Which of a stage's prompts this is: "" for a video's own, or a series document (setting,
+    # outline, chapter), an episode, a recap or a fix (docs/videos/SERIES.md; migration 0099).
+    variant: Mapped[str] = mapped_column(
+        String(32), primary_key=True, default="", server_default=""
+    )
     slug: Mapped[str] = mapped_column(String(80))
     instructions: Mapped[str] = mapped_column(Text)
     sent_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
@@ -336,6 +366,12 @@ class VideoDramaRequest(Base):
     status: Mapped[str] = mapped_column(String(12), default="queued")
     # The video the worker made of it, once it started; the project row carries the rest.
     slug: Mapped[str | None] = mapped_column(String(80), unique=True, nullable=True)
+    # An episode of a series (docs/videos/SERIES.md) rather than a one-off request; the series
+    # row and the episode number say which. Migration 0099.
+    series_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_drama_series.id", ondelete="SET NULL"), nullable=True
+    )
+    episode_number: Mapped[int | None] = mapped_column(Integer, nullable=True)
     created_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
@@ -349,3 +385,150 @@ class VideoDramaRequest(Base):
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     cancelled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+# A long drama series (docs/videos/SERIES.md; migration 0099): the series the owner planned, the
+# documents the owner approves (the setting book, the whole-series outline, each chapter's
+# detailed outline, one row per version), and the episode table.
+SERIES_STATUSES = ("setting", "outline", "active", "paused", "finished")
+DOC_KINDS = ("setting", "outline", "chapter")
+DOC_STATUSES = ("generating", "review", "approved", "rejected")
+EPISODE_STATUSES = ("planned", "ready", "queued", "started", "done", "skipped")
+
+
+class VideoDramaSeries(Base):
+    __tablename__ = "video_drama_series"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ('setting', 'outline', 'active', 'paused', 'finished')",
+            name="ck_video_drama_series_status",
+        ),
+        CheckConstraint(
+            "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 4 AND 20 "
+            "AND target_minutes BETWEEN 1 AND 8",
+            name="ck_video_drama_series_numbers",
+        ),
+        CheckConstraint(
+            "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
+            name="ck_video_drama_series_style",
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(40), unique=True)
+    title: Mapped[str] = mapped_column(String(200))
+    # The story in the owner's words; the setting book is planned from it.
+    premise: Mapped[str] = mapped_column(Text)
+    # Which sides of the genre the owner cares about: world, bonds, structure, mood.
+    aspects: Mapped[list[str]] = mapped_column(
+        JSON, default=_default([]), server_default=text("'[]'")
+    )
+    tone: Mapped[str] = mapped_column(
+        String(40), default="dual-male-leads-subtext", server_default="dual-male-leads-subtext"
+    )
+    style_preset: Mapped[str] = mapped_column(
+        String(40), default="cinematic-3d", server_default="cinematic-3d"
+    )
+    target_minutes: Mapped[int] = mapped_column(Integer, default=3, server_default="3")
+    planned_episodes: Mapped[int] = mapped_column(Integer, default=100, server_default="100")
+    episodes_per_chapter: Mapped[int] = mapped_column(Integer, default=10, server_default="10")
+    # The first part closes a stage, not the story: threads are left for a sequel.
+    open_ended: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+    # setting -> outline -> active as the documents are approved; the owner pauses or finishes.
+    status: Mapped[str] = mapped_column(String(12), default="setting", server_default="setting")
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # The owner asked for a chapter's outline ahead of time, or for the next episode to start
+    # without waiting for the previous one; the worker's next round clears them.
+    requested_chapter: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    force_next: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+
+
+class VideoDramaDoc(Base):
+    __tablename__ = "video_drama_docs"
+    __table_args__ = (
+        UniqueConstraint(
+            "series_id", "kind", "chapter_number", "version", name="uq_video_drama_doc_version"
+        ),
+        CheckConstraint(
+            "kind IN ('setting', 'outline', 'chapter')", name="ck_video_drama_doc_kind"
+        ),
+        CheckConstraint(
+            "status IN ('generating', 'review', 'approved', 'rejected')",
+            name="ck_video_drama_doc_status",
+        ),
+        CheckConstraint("version >= 1 AND chapter_number >= 0", name="ck_video_drama_doc_numbers"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    series_id: Mapped[UUID] = mapped_column(
+        ForeignKey("video_drama_series.id", ondelete="CASCADE"), index=True
+    )
+    kind: Mapped[str] = mapped_column(String(12))
+    # 0 for the setting book and the outline; the chapter's number for a chapter outline.
+    chapter_number: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
+    version: Mapped[int] = mapped_column(Integer, default=1, server_default="1")
+    # The document as the owner reads it, and its structured twin the worker plans from.
+    body_md: Mapped[str] = mapped_column(Text)
+    body_json: Mapped[dict[str, Any]] = mapped_column(
+        JSON, default=_default({}), server_default=text("'{}'")
+    )
+    status: Mapped[str] = mapped_column(String(12), default="review", server_default="review")
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    decided_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
+class VideoDramaEpisode(Base):
+    __tablename__ = "video_drama_episodes"
+    __table_args__ = (
+        UniqueConstraint("series_id", "number", name="uq_video_drama_episode_number"),
+        CheckConstraint(
+            "status IN ('planned', 'ready', 'queued', 'started', 'done', 'skipped')",
+            name="ck_video_drama_episode_status",
+        ),
+        CheckConstraint(
+            "number >= 1 AND chapter_number >= 1", name="ck_video_drama_episode_numbers"
+        ),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    series_id: Mapped[UUID] = mapped_column(
+        ForeignKey("video_drama_series.id", ondelete="CASCADE"), index=True
+    )
+    number: Mapped[int] = mapped_column(Integer)
+    chapter_number: Mapped[int] = mapped_column(Integer)
+    title: Mapped[str] = mapped_column(String(200))
+    logline: Mapped[str] = mapped_column(Text, default="", server_default="")
+    # The chapter outline's row for this episode: hook, conflict, turn, cliffhanger, setups,
+    # payoffs, tension, characters, locations, theme.
+    beats: Mapped[dict[str, Any]] = mapped_column(
+        JSON, default=_default({}), server_default=text("'{}'")
+    )
+    # planned (from the outline) -> ready (its chapter approved) -> started -> done; skipped.
+    status: Mapped[str] = mapped_column(String(12), default="planned", server_default="planned")
+    # The video the worker made of it, and the request row it travelled as.
+    slug: Mapped[str | None] = mapped_column(String(80), unique=True, nullable=True)
+    request_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_drama_requests.id", ondelete="SET NULL"), nullable=True
+    )
+    # Written when the episode is done: what happened, the characters' states, the threads.
+    recap: Mapped[str | None] = mapped_column(Text, nullable=True)
+    state_json: Mapped[dict[str, Any]] = mapped_column(
+        JSON, default=_default({}), server_default=text("'{}'")
+    )
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )

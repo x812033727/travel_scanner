@@ -15,9 +15,9 @@ scope:
   - apps/api/app/video_automation/schemas.py
   - apps/api/app/video_automation/settings.py
   - apps/api/app/video_reviews/models.py
-  - apps/api/migrations/versions/0099_video_hands_off.py
+  - apps/api/migrations/versions/0100_video_hands_off.py
   - apps/api/tests/test_video_automation_settings.py
-  - apps/api/tests/test_migration_0099_video_hands_off.py
+  - apps/api/tests/test_migration_0100_video_hands_off.py
   - apps/web/components/admin-video-settings.tsx
   - apps/web/components/admin-video-settings.test.tsx
   - apps/web/messages/en/admin.json
@@ -56,11 +56,12 @@ scope:
 ## How to verify
 
 ```bash
-cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/test_video_automation_settings.py tests/test_migration_0099_video_hands_off.py -q
+cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/test_video_automation_settings.py tests/test_migration_0100_video_hands_off.py -q
 cd apps/web && npx vitest run components/admin-video-settings && npm run lint && npm run typecheck && cd ../.. && npm run check:i18n
 ```
 
 ## Notes
 
+- 遷移編號改成 `0100`：`0099` 被長篇作品的 `0099_video_drama_series`（PR #822，票 2026-09-26-video-series-api）先用了；`down_revision` 接 `0099_video_drama_series`。
 - 頻道立場和 #814 的「各階段常設指示」分開：常設指示寫的是怎麼寫，立場寫的是這個頻道相信什麼（HANDS-OFF.md §頻道立場）。
 - 部署時要跑遷移；工人與 API 要在同一次部署換成新版。
