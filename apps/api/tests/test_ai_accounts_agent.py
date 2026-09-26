@@ -22,6 +22,7 @@ from ai_accounts_agent.claude import (
     extract_authorize_url,
     is_authorize_url,
     mark_onboarding_done,
+    probe_failure_line,
 )
 from ai_accounts_agent.codex import CodexAccounts, is_verification_url, usage_windows
 from ai_accounts_agent.config import (
@@ -31,7 +32,13 @@ from ai_accounts_agent.config import (
     parse_emails,
 )
 from ai_accounts_agent.runner import CliError
-from ai_accounts_agent.security import NonceCache, sanitize, signature_for, verify_request
+from ai_accounts_agent.security import (
+    NonceCache,
+    redact_emails,
+    sanitize,
+    signature_for,
+    verify_request,
+)
 from ai_accounts_agent.server import AgentApplication, UnixHTTPServer, make_handler
 from ai_accounts_agent.sessions import (
     CANCELLED,
@@ -156,6 +163,12 @@ FAKE_CLAUDE = textwrap.dedent(
             show("Select login method:\\r\\n 1. Claude account with subscription\\r\\n")
             time.sleep(30)
             sys.exit(1)
+        if os.path.exists(os.path.join(home, "fake-exits")):
+            show("API Error: owner@x.test token=sk-abcdefghijklmnopqrstu over its limit\\r\\n")
+            sys.exit(3)
+        if os.path.exists(os.path.join(home, "fake-silent")):
+            show("Weekly limit reached\\r\\n")
+            time.sleep(30)
         if os.path.exists(os.path.join(home, "fake-theme")):
             show("Choose the text style that looks best\\r\\nSyntax theme: Monokai\\r\\n")
             sys.stdin.readline()
@@ -677,6 +690,29 @@ def test_page_views_probe_claude_usage_only_when_due(tmp_path: Path) -> None:
     wait_until(lambda: len(claude.refreshes) == 10)  # The button forces one.
 
 
+class BrokenProbeAccounts(RecordingAccounts):
+    def refresh_usage(self, slot: str) -> bool:
+        self.refreshes.append(slot)
+        raise CliError("cannot start claude for owner@x.test: No such file or directory")
+
+
+def test_a_probe_that_raises_is_logged_and_the_account_can_be_probed_again(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    config = make_config(tmp_path)
+    claude = BrokenProbeAccounts("a@x.test")
+    application = AgentApplication(config, claude=claude, codex=RecordingAccounts("c@x.test"))
+    claude.signed_in = True
+    assert application.finalize("claude", "b") is None
+    wait_until(lambda: claude.refreshes == ["b"])
+    wait_until(lambda: not application.usage_refreshing("claude", "b"))
+    logged = capsys.readouterr().err.splitlines()
+    assert len(logged) == 1
+    assert logged[0].startswith("claude usage probe b failed: Traceback")
+    assert "CliError: cannot start claude for <email>: No such file" in logged[0]
+    assert "owner@x.test" not in logged[0]
+
+
 def test_api_billed_claude_accounts_are_never_probed(tmp_path: Path) -> None:
     config = make_config(tmp_path)
     claude = RecordingAccounts("a@x.test", auth_method="console")
@@ -746,7 +782,9 @@ def test_usage_probe_sends_one_message_when_the_status_line_stays_quiet(tmp_path
 
 
 @posix_only
-def test_usage_probe_never_starts_a_sign_in(tmp_path: Path) -> None:
+def test_usage_probe_never_starts_a_sign_in(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
     config = make_config(tmp_path, claude_usage_quiet_seconds=20.0)
     home = config.slot_path("claude", "d")
     home.mkdir(parents=True, exist_ok=True)  # No .claude.json: the TUI asks for a login.
@@ -754,6 +792,54 @@ def test_usage_probe_never_starts_a_sign_in(tmp_path: Path) -> None:
     assert ClaudeAccounts(config).refresh_usage("d") is False
     assert time.monotonic() - started < 15
     assert statusline.read_snapshot(home) is None
+    logged = capsys.readouterr().err.splitlines()
+    assert len(logged) == 1
+    assert logged[0].startswith("claude usage probe d: gave up (login prompt) after ")
+    assert "no message sent" in logged[0]
+    assert "Select login method: | 1. Claude account with subscription" in logged[0]
+
+
+@posix_only
+def test_a_probe_that_exits_logs_its_code_and_last_words_without_secrets(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    config = make_config(tmp_path)
+    _probe_slot(config, "b", "fake-exits")
+    assert ClaudeAccounts(config).refresh_usage("b") is False
+    logged = capsys.readouterr().err
+    assert "claude usage probe b: gave up (claude exited with code 3)" in logged
+    assert "API Error: <email> token=*** over its limit" in logged
+    assert "owner@x.test" not in logged and "x.test" not in logged
+    assert "sk-abcdefghijklmnopqrstu" not in logged
+
+
+@posix_only
+def test_a_probe_that_times_out_says_so_and_whether_it_sent_the_message(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    config = make_config(tmp_path, claude_usage_quiet_seconds=1.0, claude_usage_message_seconds=1.5)
+    _probe_slot(config, "c", "fake-silent")
+    assert ClaudeAccounts(config).refresh_usage("c") is False
+    logged = capsys.readouterr().err.splitlines()
+    assert len(logged) == 1
+    assert "claude usage probe c: gave up (timed out) after " in logged[0]
+    assert "message sent;" in logged[0] and "no message sent" not in logged[0]
+    assert "Weekly limit reached" in logged[0]
+
+
+def test_probe_failure_line_keeps_the_last_lines_on_one_safe_line() -> None:
+    lines = [f"row {number}" for number in range(30)]
+    lines += ["Signed in as Owner.Name+ai@mokaair.example", "  ", "x" * 500]
+    line = probe_failure_line("e", "timed out", 25.04, True, lines)
+    assert "\n" not in line
+    assert line.startswith("claude usage probe e: gave up (timed out) after 25.0s, message sent;")
+    assert "row 12" not in line and "row 13 | row 14" in line
+    assert "Signed in as <email>" in line and "mokaair.example" not in line
+    assert "x" * 200 in line and "x" * 201 not in line
+    assert probe_failure_line("e", "login prompt", 1, False, []).endswith("screen: (empty)")
+    assert redact_emails("a.b@c.d and e@f.gh.ij, not @x or a@b") == (
+        "<email> and <email>, not @x or a@b"
+    )
 
 
 def test_finalize_accepts_listed_accounts_and_undoes_others(tmp_path: Path) -> None:
