@@ -14,6 +14,8 @@ depends_on:
 scope:
   - tools/video/core/stages.mjs
   - tools/video/core/captions.mjs
+  - tools/video/core/approvals.mjs
+  - tools/video/dubs/captions-package.test.mjs
   - tools/video/package
   - tools/video/review
   - .agents/skills/youtube-video/references/publish.md
@@ -34,6 +36,7 @@ scope:
 - [x] `package`：把 `dubs/<locale>.<ext>` 複製到 `upload/dubs/`；`metadata.json` 多 `dubs: [{ locale, file, format, total_frames, tempo_max }]` 與 `skipped_dub_locales: { locale: reason }`（來源是 `dubs/<locale>/skipped.json`）；`recordStage` 記 dubs。共用的判斷在 `core/stages.mjs` 的 `currentDub`／`dubsForUpload`／`dubRole`。
 - [x] `UPLOAD.md` 多一節「3. 配音音軌（多語言音訊）」，用官方的按鈕名稱：「語言」→「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→「發布」，每個語系一次；附提醒：系統已自動生成該語言配音時要先刪除、一次性的「進階功能」與關閉「允許自動配音」（設定 → 頻道 → 進階設定）、傳完到卡片按核准；沒有音軌時說明去影片頁勾語言；跳過的語系列出原因。
 - [x] 審看頁（`review/final.html`）每條配音一個播放器（`dubPlayers`），`review-push --gate final` 把 m4a 音軌以 `dub_<locale>` 的 role 一起送上去（既有的分段上傳），payload 多 `dubs`（每個語系 ready／skipped）；mp3、wav 不送（審核檔案區只收 `audio/mp4`，等 `video-dubs-setting` 加上其他類型）。
+- [x] 新的審核 gate `dubs`（只在 `review-push --gate dubs` 時送，`nextGate` 不會自己挑）：附 m4a 音軌，payload `{ locales: { en: { status: "ready", file, format, tempo_max, file_role, sha256 }, ja: { status: "skipped", reason } } }`，綁 `dubs/manifest.json`（送出時寫）；`review-pull` 把站主的核准記成「已上傳」（`approvals.json` 的 gate `dubs`）。伺服器端的 `Gate` 要加 `dubs`（`video-dubs-setting` 票），加上之前送會被 422 擋。
 - [x] skill：`publish.md` 加「多語言音軌（配音）」一節（資格、步驟、自動配音衝突、字幕跟配音走、跳過的語系）；`automated.md` 的主幹表加第 13 步、指令表加 `dub`、成本與坑各加一條。references 只有 `.agents/` 一份（`tools/skills.test.mjs` 只鏡像 SKILL.md），票的 scope 裡 `.claude/skills/youtube-video/references/*` 這兩條路徑不存在，不用動。
 - [ ] 第一支在 Studio 實測：收不收 m4a、私人影片能不能加音軌、原音語言怎麼標。結果回寫 `publish.md` 與 DUBS.md 的「第一支要實測」。（要等站主上傳）
 

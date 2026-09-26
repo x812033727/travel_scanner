@@ -3,6 +3,8 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
+import { EXIT, main } from "../cli.mjs";
+import { GATES, readApprovals } from "../core/approvals.mjs";
 import { parseSrt } from "../core/captions.mjs";
 import { fixture, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
@@ -12,6 +14,48 @@ import { estimateTimeline, frameToMs, speechHash } from "../core/timeline.mjs";
 import { composeMetadata, dubSteps, uploadChecklist } from "../package/metadata.mjs";
 import { finalReviewHtml } from "../review/pages.mjs";
 import { dubScript, translationHash } from "./plan.mjs";
+
+const TOKEN = `mkv_${"t".repeat(43)}`;
+
+/** The site as review-push and review-pull see it: it keeps files, reviews and the owner's decisions. */
+function site() {
+  const state = { calls: [], files: new Map(), reviews: [] };
+  const fetchImpl = async (url, init = {}) => {
+    const { pathname, searchParams } = new URL(url);
+    state.calls.push({ method: init.method, pathname });
+    const route = pathname.replace("/api/video/reviews/", "");
+    if (init.method === "PUT" && route.includes("/files/")) {
+      const hash = route.split("/files/")[1];
+      const parts = state.files.get(hash) ?? [];
+      parts[Number(searchParams.get("part"))] = Buffer.from(init.body);
+      state.files.set(hash, parts);
+      return Response.json({ received: parts.map((_, index) => index), complete: parts.filter(Boolean).length === Number(searchParams.get("parts")) });
+    }
+    if (init.method === "PUT") return Response.json({ ...JSON.parse(init.body), reviews: [], pending: 0 });
+    if (init.method === "POST") {
+      const body = JSON.parse(init.body);
+      state.reviews.unshift({ id: `r${state.reviews.length}`, status: "pending", choice: null, note: null, decided_at: null, ...body });
+      return Response.json(state.reviews[0], { status: 201 });
+    }
+    return Response.json({ slug: "fixture-minimal", reviews: state.reviews });
+  };
+  return { state, fetchImpl };
+}
+
+function context(box, fetchImpl) {
+  const out = { stdout: "", stderr: "" };
+  const ctx = {
+    root: box.root,
+    env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN },
+    home: box.base,
+    fetch: fetchImpl,
+    stdout: { write: (text) => (out.stdout += text) },
+    stderr: { write: (text) => (out.stderr += text) },
+    now: () => new Date("2026-09-27T08:00:00Z"),
+    sleep: async () => {},
+  };
+  return { out, ctx };
+}
 
 function translationFor(doc, prefix) {
   const lines = {};
@@ -95,6 +139,45 @@ test("the upload checklist tells the owner where each track goes in Studio, and 
   const without = uploadChecklist({ metadata, captions: [], thumbnail: false });
   assert.match(without, /這支沒有配音音軌/);
   assert.doesNotMatch(dubSteps([], {}), /做不出來/);
+});
+
+test("review-push --gate dubs sends the tracks bound to a manifest, and the owner's approval means uploaded", async () => {
+  const box = sandbox();
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  const doc = fixture();
+  writeFileSync(path.join(box.dir, "i18n", "en.json"), JSON.stringify(translationFor(doc, "EN")));
+  const project = loadProject({ slug: box.slug, root: box.root });
+  const speech = speechHash(project.doc, project.lexicon);
+  const timeline = { ...estimateTimeline(doc), speech_hash: speech };
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  const server = site();
+
+  const empty = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "dubs"], empty.ctx), EXIT.owner, "nothing to send before dub ran");
+  assert.match(empty.out.stderr, /run dub first/);
+
+  writeDub(box, project, "en", timeline);
+  mkdirSync(dubArtifacts(box.workdir, "ja").dir, { recursive: true });
+  writeFileSync(dubArtifacts(box.workdir, "ja").skipped, JSON.stringify({ reason: "two shortening rounds were not enough" }));
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "dubs"], push.ctx), EXIT.ok);
+  const review = server.state.reviews[0];
+  assert.equal(review.gate, "dubs");
+  assert.deepEqual(review.files.map((file) => [file.role, file.content_type]), [["dub_en", "audio/mp4"]]);
+  assert.equal(review.payload.locales.en.status, "ready");
+  assert.equal(review.payload.locales.en.file, "en.m4a");
+  assert.deepEqual(review.payload.locales.ja, { status: "skipped", reason: "two shortening rounds were not enough" });
+  assert.match(review.summary, /配音音軌：en；做不出來：ja/);
+  const manifest = JSON.parse(readFileSync(GATES.dubs({ workdir: box.workdir }), "utf8"));
+  assert.deepEqual(Object.keys(manifest.locales), ["en", "ja"]);
+  assert.ok(server.state.files.size >= 1, "the track went up");
+
+  server.state.reviews[0] = { ...review, status: "approved", decided_at: "2026-09-27T09:00:00Z" };
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pull.ctx), EXIT.ok);
+  assert.match(pull.out.stdout, /dubs: the owner uploaded these dub tracks/);
+  assert.ok(readApprovals(box.workdir).approvals.some((entry) => entry.gate === "dubs" && entry.sha256 === review.content_sha256));
 });
 
 test("the final review page plays each dub track beside the video", () => {

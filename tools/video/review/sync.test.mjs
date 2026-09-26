@@ -194,7 +194,7 @@ test("without a token the push needs the owner", async () => {
 
 test("every pipeline step of both formats has a label for the site", () => {
   for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
-  assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish"]);
+  assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "dubs"]);
 });
 
 const png = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);

@@ -25,9 +25,10 @@ import { USER_AGENT } from "../tts/client.mjs";
 
 // Mirrors PART_BYTES in apps/api/app/video_reviews/storage.py: under nginx's 6 MB request cap.
 export const PART_BYTES = 4 * 1024 * 1024;
-// look and storyboard are the drama format's gates (docs/videos/DRAMA.md).
-// script is a series episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md).
-export const REVIEW_GATES = ["outline", "script", "look", "audio", "storyboard", "final", "publish"];
+// look and storyboard are the drama format's gates (docs/videos/DRAMA.md); script is a series
+// episode's screenplay, read before any image or clip is paid for (docs/videos/SERIES.md); dubs is
+// the owner's "uploaded" on the dub tracks (docs/videos/DUBS.md), sent only when asked for with --gate.
+export const REVIEW_GATES = ["outline", "script", "look", "audio", "storyboard", "final", "publish", "dubs"];
 const UPLOAD_CHECKLIST = path.join("upload", "UPLOAD.md");
 
 // The owner reads the site in Traditional Chinese; status's step ids are English. Every step of
@@ -305,6 +306,31 @@ async function submission(gate, { ctx, request, project, workdir, dir }) {
       files,
     };
   }
+  if (gate === "dubs") {
+    const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
+    const { dubs, skipped } = dubsForUpload(project, workdir, timeline?.speech_hash);
+    if (!dubs.length && !Object.keys(skipped).length) throw new ReviewError("no dub track to send yet: run dub first", { who: "owner" });
+    const files = [];
+    const locales = {};
+    for (const dub of dubs) {
+      const role = dub.format === "m4a" ? dubRole(dub.locale) : null;
+      if (role) files.push(await upload(request, slug, dub.file, role, "audio/mp4"));
+      locales[dub.locale] = { status: "ready", file: path.basename(dub.file), format: dub.format, tempo_max: dub.tempo_max, file_role: role, sha256: await sha256File(dub.file) };
+    }
+    for (const [locale, reason] of Object.entries(skipped)) locales[locale] = { status: "skipped", reason };
+    // The manifest is what the owner's approval binds to: these tracks, as sent.
+    const file = GATES.dubs({ workdir });
+    atomicWrite(file, `${JSON.stringify({ speech_hash: timeline?.speech_hash ?? null, locales }, null, 2)}\n`);
+    const ready = dubs.map((dub) => dub.locale);
+    const gaveUp = Object.keys(skipped);
+    return {
+      gate,
+      content_sha256: await sha256File(file),
+      summary: `配音音軌：${ready.length ? ready.join("、") : "無"}${gaveUp.length ? `；做不出來：${gaveUp.join("、")}` : ""}。到 Studio「語言」上傳後按核准`,
+      payload: { locales },
+      files,
+    };
+  }
   const file = path.join(workdir, ARTIFACTS.upload);
   const checklist = existsSync(path.join(workdir, UPLOAD_CHECKLIST)) ? uploadItems(readFileSync(path.join(workdir, UPLOAD_CHECKLIST), "utf8")) : [];
   return { gate, content_sha256: await sha256File(file), summary: "上傳包已備好：請確認可以上架", payload: { checklist }, files: [] };
@@ -540,5 +566,6 @@ async function recordApproval(review, { dir, workdir, now }) {
   const note = `approved on /admin/videos at ${review.decided_at}${review.choice ? `; chose outline ${review.choice}` : ""}${review.note ? `; ${review.note}` : ""}`;
   await approve({ gate: review.gate, docDir: dir, workdir, now, note });
   if (review.gate === "publish") return "the owner confirmed the upload; follow upload/UPLOAD.md in YouTube Studio";
+  if (review.gate === "dubs") return "the owner uploaded these dub tracks in YouTube Studio";
   return `approval recorded${review.choice ? ` (outline ${review.choice})` : ""}`;
 }
