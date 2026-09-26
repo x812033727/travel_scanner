@@ -1,0 +1,818 @@
+{
+  "slug": "ai-news-chatgpt-ads-taiwan-20260923",
+  "vertical": "ai",
+  "display_order": 186,
+  "event_date": "2026-09-23",
+  "event_date_basis": "事件日 2026-09-23（台北）。依據兩處，2026-09-26 本人重抓讀到：(1) 官方 feed https://openai.com/news/rss.xml（HTTP 200、750,532 bytes、1,230 筆 item、最新一筆 2026-09-25T19:00Z，判斷 feed 有效）中這篇的 <pubDate> 是 \"Wed, 23 Sep 2026 02:00:00 GMT\"，不是 OpenAI 常見的 00:00:00 佔位值，換算台北是 2026-09-23 10:00；(2) 公告頁本身印 \"September 23, 2026\"（頁內 RSC 資料的 publicationDate 也是 \"September 23, 2026\"），與台北日期相同。02:00Z 在美國太平洋時間是 9 月 22 日晚上，但發布者自己印的日期就是 9 月 23 日，DELTA-4-8 第 4 條也沒有把這篇列為跨日篇，所以正文只寫「2026 年 9 月 23 日」一個日期，不另寫美國日期。feed 不在 sources[] 裡，因此正文不寫發布時刻（10:00）。另外：openai.com 的 product sitemap（https://openai.com/sitemap.xml/product/）這篇的 <lastmod> 是 2026-09-24T02:01:30.125Z，表示頁面在發布後一天有過修改；那是頁面更新時間，不是事件日。今天抽出的正文與探索代理 2026-09-26 約 07:57Z 抓的版本逐字相同。",
+  "title": "ChatGPT 廣告開始在台灣逐步推出：哪些方案會看到、能怎麼控制、商家怎麼買",
+  "title_candidates": [
+    "ChatGPT 廣告開始在台灣逐步推出：哪些方案會看到、能怎麼控制、商家怎麼買",
+    "ChatGPT 廣告擴及台灣與東南亞六國：Free 與 Go 方案逐步出現廣告，台灣企業可自助投放",
+    "OpenAI 宣布 ChatGPT 廣告在台灣推出：免費版會怎麼變、無廣告方案有哪些",
+    "ChatGPT 廣告來到台灣：使用者端逐步推出，廣告主自助資格看公司所在地"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "title": "ChatGPT Ads expands to Southeast Asia and Taiwan",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-26T13:45:21Z",
+      "http_status": 200,
+      "bytes": 386683,
+      "checked_on": "2026-09-26",
+      "verbatim_quote": "Starting today, ChatGPT Ads will begin rolling out across Indonesia, Malaysia, the Philippines, Singapore, Thailand, Vietnam, and Taiwan."
+    },
+    {
+      "url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+      "title": "Ads Manager Availability（OpenAI Help Center）",
+      "publisher": "OpenAI Help Center",
+      "fetched_at": "2026-09-26T13:47:57Z",
+      "http_status": 200,
+      "bytes": 63843,
+      "checked_on": "2026-09-26",
+      "verbatim_quote": "Note: To use self-service Ads Manager, the legal entity that will advertise and be billed must be based in a country listed as available below."
+    },
+    {
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "title": "Ads in ChatGPT（OpenAI Help Center）",
+      "publisher": "OpenAI Help Center",
+      "fetched_at": "2026-09-26T13:51:23Z",
+      "http_status": 200,
+      "bytes": 98365,
+      "checked_on": "2026-09-26",
+      "verbatim_quote": "Ads may appear for users on the Free and Go plans. Plus, Pro, Business, Enterprise, and Edu accounts will not have ads."
+    },
+    {
+      "url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+      "title": "A milestone in expanding access to AI",
+      "publisher": "OpenAI",
+      "fetched_at": "2026-09-26T13:50:59Z",
+      "http_status": 200,
+      "bytes": 401829,
+      "checked_on": "2026-09-26",
+      "verbatim_quote": "In less than 200 days after launch, ChatGPT Ads has reached $1 billion in annualized revenue run rate."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北）本人用 curl -sSL --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'（不帶 --compressed；請求沒有帶任何人的姓名、email 或個人資料；同一主機間隔 ≥1 秒）重抓，body 存在批次工作目錄的 _raw/ai-news-chatgpt-ads-taiwan-20260923/（引文比對腳本在 _tools/ai-news-chatgpt-ads-taiwan-20260923/check_quotes.py：去註解、去 script/style、標籤換成空格或空字串、html.unescape、空白收斂，彎引號與 U+2060 不正規化），逐筆狀態碼、落地網址與落地檔案大小在同目錄 fetch-log.tsv；bytes 是落地檔案大小。\n(1) 公告頁 https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/ → 200、0 次轉址、386,683 bytes（oa-ads-taiwan.html）。<article> 內是完整正文（約 4,800 字元），本紀錄引用的每一句都在裡面。頁面 <article> 裡有三處 U+2060（word joiner），分別緊接在「Ads Manager」「60 countries」「ads.openai.com」後面、再接螢幕閱讀器用的「(opens in a new window)」，引文都刻意停在 U+2060 之前。這一頁今天沒有被 403 擋。頁面沒有任何 hreflang 替代語系連結；product sitemap 對這個網址也沒有 xhtml:link 替代語系（對照：同一份 sitemap 裡的其他文章有 zh-Hant、ja-JP 等替代版本）。以 openai.com/sitemap.xml/product/ 查核到 2026-09-26 未見這篇公告的繁體中文版，因此 BRIEF 第 8 條的「兩語公告比對」對公告本身不適用。\n(2) Ads Manager 國家表：公告裡「60 countries」連到 https://help.openai.com/articles/20001245-ads-manager-availability，今天 1 次轉址後落地 https://help.openai.com/en/articles/20001245-ads-manager-availability → 200、63,843 bytes（oa-help-ads-availability.html）。sources[] 記的是落地網址。頁面自印「Updated: 17 hours ago」（13:48Z 讀到），頁內資料的 updatedAt 是 1790370772.554＝2026-09-25T21:12:52Z（台北 9/26 05:12）。表格 Country／Self-service availability 兩欄，Taiwan 那一列第二格是 Available（原始 HTML：<td><span>Taiwan</span></td><td><span>Available</span></td>）。與探索代理 07:57Z 那一份比，正文只差「Updated: 11 hours ago」→「17 hours ago」，其餘逐字相同。\n(3) 使用者端 FAQ：從說明中心 ChatGPT Ads 分類頁 https://help.openai.com/en/collections/20001223-chatgpt-ads（200、60,248 bytes，國家表頁面麵包屑連過去）的連結進入 https://help.openai.com/en/articles/20001047-ads-in-chatgpt → 200、0 次轉址、98,365 bytes（oa-help-ads-in-chatgpt.html）。自印「Updated: 4 hours ago」，updatedAt 1790417091.374＝2026-09-26T10:04:51Z（台北 18:04）。全頁以詞界比對 Taiwan 0 次（這一頁沒有點名任何亞洲國家）。\n(4) 8 月背景：公告裡「August」連到 https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/ → 200、0 次轉址、401,829 bytes（oa-expanding-access-aug.html）；頁首印 August 31, 2026，feed pubDate Mon, 31 Aug 2026 04:00:00 GMT；正文沒有提到台灣（Taiwan 唯一一次出現在頁尾「Keep reading」卡片，是 9/23 那篇的標題）。\n另外抓了、但不列入 sources[] 的頁面（都存在同一目錄）：openai.com/news/rss.xml（事件日依據）、openai.com/robots.txt → sitemap.xml → sitemap.xml/product/（1,286,625 bytes，查語系替代版本與 lastmod）、openai.com/index/testing-ads-in-chatgpt/（200、433,813 bytes；最新一次更新寫 August 11, 2026，列的是英國、墨西哥、巴西、日本、南韓，沒有台灣，這一頁沒有跟著 9/23 更新，所以不拿來當台灣的依據）、help.openai.com 兩頁的 zh-Hant 版（國家表 zh-Hant 版頁首自印「此頁面由機器翻譯。查看原始英文文章。」；FAQ 的 zh-Hant 版沒有這行字）、FAQ 的 ja-jp 與 ko-kr 版（給翻譯代理對官方用語）、ads.openai.com 與 ads.openai.com/zh-TW（廣告主首頁；zh-TW 版是用 WebSearch 找到的官方頁，內容大半仍是英文）。WebSearch 只用了 1 次（限 openai.com 網域，找有沒有繁中官方公告），沒有找到公告的繁中版；搜尋結果摘要聲稱台灣頁送「500」抵用金，實際打開 ads.openai.com/zh-TW 寫的是「消費滿 $8,000 即可獲得 $8,000 的廣告抵用金」，摘要是錯的，這件事也因此整條排除（見 unverified_or_excluded）。\nBRIEF 第 8 條的兩語比對（說明中心有繁中版）：國家表 zh-Hant 版的台灣列是「台灣／已開放」，與英文一致，但那是機器翻譯；FAQ zh-Hant 版的方案清單（Plus、Pro、Business、Enterprise 和 Edu 不會看到廣告）、未滿 18 歲、30 天、暫存對話都與英文一致，但有一處誤譯：英文 \"Tap Change plan to go ad-free.\"（把 go 當動詞）在 zh-Hant 版寫成「輕觸變更方案以享受 Go 無廣告體驗」，把 go 讀成 Go 方案；英文同頁明寫 \"Ads-Free is a Free-plan option.\"。以英文版為準，見 must_not_write。\n名詞：英文版本身對設定路徑有兩種寫法（\"Settings > Ad Controls\" 與 \"Settings → Ads controls\"，並註明 wording may vary by platform）；各語系官方說明頁的寫法：zh-Hant「設定 > 廣告控制功能」（同頁另處「設定 → 廣告控制」）、ja「「設定」>「広告の管理」」、ko「설정 > 광고 제어」；Temporary Chat 在 zh-Hant 是「暫存對話」、ja「一時チャット」、ko「임시 채팅」。這些是說明頁的寫法，不保證等於 App 介面上的字。\n人名：公告裡兩段引言都署了姓名與職稱。依本批網路與紀錄規則，本紀錄不轉錄姓名，只寫職稱：OpenAI 那段是「Vice President and Head of Global Ads Solutions, OpenAI」，Shopee 那段是「Executive Director, Brand and Growth Marketing, Shopee」。",
+  "verified_facts": [
+    {
+      "fact": "公告頁印的日期是 2026 年 9 月 23 日。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 23, 2026"
+    },
+    {
+      "fact": "OpenAI 宣布 ChatGPT Ads（ChatGPT 廣告）「從今天開始」在印尼、馬來西亞、菲律賓、新加坡、泰國、越南與台灣「開始推出」（begin rolling out），是逐步推出，不是當天全部開通。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Starting today, ChatGPT Ads will begin rolling out across Indonesia, Malaysia, the Philippines, Singapore, Thailand, Vietnam, and Taiwan."
+    },
+    {
+      "fact": "公告副標：這次是擴及亞洲另外七個市場（seven additional markets），OpenAI 表示 ChatGPT Ads 現在已在超過 60 個國家提供。台灣是這次「新增」的七個市場之一。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT Ads expands to seven additional markets across Asia and is now available in more than 60 countries."
+    },
+    {
+      "fact": "OpenAI 表示這次擴張接在亞太地區先前在澳洲、紐西蘭、日本、南韓與印度推出之後。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This announcement follows Asia Pacific launches in Australia, New Zealand, Japan, South Korea and India, expanding access for businesses of all sizes across the region."
+    },
+    {
+      "fact": "廣告主的購買管道：OpenAI Ads Solutions 團隊、代理商夥伴（including 列出 dentsu、Havas Media、Omnicom Media、Publicis Groupe 與 WPP，是舉例不是全名單），以及技術夥伴。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Advertisers can access ChatGPT Ads through the OpenAI Ads Solutions team, agency partners including dentsu, Havas Media, Omnicom Media, Publicis Groupe and WPP, and technology partners."
+    },
+    {
+      "fact": "透過 Ads Manager 的自助購買也開放，但只給「符合資格的企業」（頁面上這句的前半是「Self-service access through Ads Manager」）。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "is also available for eligible businesses."
+    },
+    {
+      "fact": "公告寫：和既有市場一樣，廣告只對 Free 與 Go 方案的使用者顯示；Plus、Pro 與 Enterprise 訂閱維持無廣告。公告這一句只列這三種無廣告方案（Business、Edu 見說明中心那一條）。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As in our existing markets, ads will be shown only to users on the Free and Go plans. Plus, Pro, and Enterprise subscriptions will remain ad-free."
+    },
+    {
+      "fact": "OpenAI 說明廣告的目的：支撐免費與低價的 ChatGPT 使用（公司自述的理由）。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ads help democratize access to intelligence by supporting free and low-cost access to ChatGPT."
+    },
+    {
+      "fact": "OpenAI 全球廣告解決方案主管（Vice President and Head of Global Ads Solutions）在公告裡的說法：擴張到亞洲更多市場，是把機會帶給各種規模的企業。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our expansion into more markets across Asia brings that opportunity to businesses of every size"
+    },
+    {
+      "fact": "Shopee 的品牌與成長行銷執行董事在公告裡表示，繼巴西推出 ChatGPT Ads 之後，把與 OpenAI 的合作延伸到東南亞與台灣。這是 Shopee 對合作的說法，沒有說明合作內容、會投放什麼廣告或何時投放。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Following the launch of ChatGPT Ads in Brazil, we are pleased to extend this collaboration to Southeast Asia and Taiwan, marking another step in our deepening partnership with OpenAI."
+    },
+    {
+      "fact": "OpenAI 的廣告原則宣示：對話不給廣告主、不出售客戶資料；廣告一律清楚標示、與回答分開；廣告不影響 ChatGPT 的回答。這是 OpenAI 的宣稱，本站無法驗證。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we keep conversations private from advertisers and never sell customer data. Ads in ChatGPT are always clearly labeled and separate from ChatGPT’s answers, and advertising does not influence the answers ChatGPT provides."
+    },
+    {
+      "fact": "OpenAI 表示使用者可以控制廣告個人化，不想看廣告的人有無廣告的付費方案可選。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "People also have control over ad personalization, with ad-free paid plans available for those who prefer not to see ads."
+    },
+    {
+      "fact": "10 億美元年化營收（annualized revenue run rate）是 OpenAI 在 8 月底公布的數字，9/23 公告只是回顧，不是這次的新數字。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "At the end of August, we announced that ChatGPT Ads had reached $1 billion in annualized revenue run rate in less than 200 days after launch."
+    },
+    {
+      "fact": "OpenAI 表示現在有數萬家廣告主在 ChatGPT 投放廣告（自報數，沒有確切數字）。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Tens of thousands of advertisers are now running ads in ChatGPT, with many reaching people across multiple countries."
+    },
+    {
+      "fact": "OpenAI 表示隨這次公告，ChatGPT Ads 在超過 60 個國家提供（這句的「60 countries」連到說明中心的 Ads Manager 國家表；那張表列的是「自助」開放情形，兩者不是同一個概念，不要拿表格列數去對 60）。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With today’s announcement, ChatGPT Ads are now available in over 60 countries"
+    },
+    {
+      "fact": "OpenAI 表示接下來幾個月會繼續擴展到新市場，並推出新的廣告格式、優化工具與成效量測（關於未來的計畫，沒有時程）。",
+      "url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Over the next few months, we will continue to expand into new markets, build new formats, optimization tools, and measurement solutions."
+    },
+    {
+      "fact": "說明中心國家表的用途：查各國目前的 Ads Manager（自助）開放情形。",
+      "url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+      "is_vendor_claim": false,
+      "verbatim_quote": "View current Ads Manager availability by country."
+    },
+    {
+      "fact": "自助 Ads Manager 的資格：「刊登廣告並被收費的法律實體」必須設在國家表列為開放（available）的國家。頁面只寫這條規則，沒有寫「不是使用者或行銷人員本人在哪裡」這種對照，文章不寫這個對照（第二輪依協調者裁定刪除）。",
+      "url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Note: To use self-service Ads Manager, the legal entity that will advertise and be billed must be based in a country listed as available below."
+    },
+    {
+      "fact": "截至 2026-09-26 13:47Z 抓到的國家表，Taiwan 那一列的 Self-service availability 是 Available。引文是表格同一列相鄰的兩格（Country｜Self-service availability），兩格之間只有 </td><td> 標籤，不是一句話；這是活文件的快照。",
+      "url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Taiwan Available"
+    },
+    {
+      "fact": "建立帳號與取得自助資格是兩回事，能不能用自助看所在國家。",
+      "url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Account creation and self-service availability are separate: access depends on your country."
+    },
+    {
+      "fact": "國家表標示 Coming Soon 或沒列出的國家，代表自助還沒開放；仍可到 ads.openai.com 註冊，開放時會通知。",
+      "url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If your country is marked Coming Soon or isn’t listed, self-service access isn’t available in your country yet."
+    },
+    {
+      "fact": "說明中心的使用者 FAQ（查核日版本）寫：Free 與 Go 方案的使用者「可能」看到廣告；Plus、Pro、Business、Enterprise 與 Edu 帳號不會有廣告。這比 9/23 公告多列了 Business 與 Edu。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ads may appear for users on the Free and Go plans. Plus, Pro, Business, Enterprise, and Edu accounts will not have ads."
+    },
+    {
+      "fact": "被判定為未滿 18 歲的帳號不會看到廣告；判定依據是帳號層級的年齡資訊，以及在可用時的年齡預測。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We do not show ads to accounts identified as belonging to users under 18, based on account-level age information and age prediction where available."
+    },
+    {
+      "fact": "廣告測試 2026 年 2 月 9 日從美國開始；OpenAI 正逐步對「特定地區」「符合資格」的 Free 與 Go 使用者推出廣告。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ad testing started in the United States on February 9, 2026. We’re gradually rolling out ads to eligible users on the Free and Go plans in select regions."
+    },
+    {
+      "fact": "使用者怎麼知道自己是否在範圍內：符合測試資格的人會在產品裡看到明確的說明。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you’re eligible for the test, you’ll see clear in-product information."
+    },
+    {
+      "fact": "廣告的位置：可能出現在回答結尾的下方，標示為贊助（sponsored），並在視覺上與回答分開。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ads can appear below the end of a response. Ads are clearly labeled as sponsored and visually separated from ChatGPT’s response."
+    },
+    {
+      "fact": "測試期間，ChatGPT Atlas 瀏覽器裡不會出現廣告。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "During this test, ads do not appear in the ChatGPT Atlas browser."
+    },
+    {
+      "fact": "廣告控制在「設定」裡（英文版寫 Settings > Ad Controls；同頁另處寫 Settings → Ads controls，並註明各平台字樣可能不同）。可以關閉廣告個人化、關掉廣告並回饋、看為什麼出現某則廣告、清除廣告用資料。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ad controls are available in Settings > Ad Controls"
+    },
+    {
+      "fact": "關掉廣告個人化「不等於」沒有廣告：仍會依目前這段對話的脈絡看到廣告，只是不再用其他對話、廣告紀錄或主題。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you turn off ads personalization, you will still see ads based on the context of your current chat thread"
+    },
+    {
+      "fact": "廣告控制只提供給廣告已推出或即將推出地區的 Free 與 Go 使用者。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ad controls are available only to Free and Go users in regions where ads are available or will soon be available."
+    },
+    {
+      "fact": "暫時對話（Temporary Chats）不會顯示廣告。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Temporary Chats will not show ads."
+    },
+    {
+      "fact": "廣告不會出現在敏感或受規範的話題旁，包括個人健康、心理健康或政治。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Ads are not eligible to appear near sensitive or regulated topics, including personal health, mental health, or politics."
+    },
+    {
+      "fact": "OpenAI 目前不允許在 ChatGPT 刊登政治廣告（currently，是現況不是永久承諾）。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we currently do not allow political advertising in ChatGPT"
+    },
+    {
+      "fact": "Free 方案可以改用 Ads-Free（無廣告）體驗：移除廣告，但使用上限較低、可用功能較少（頁面舉例：訊息較少，不能用圖片生成、深度研究等部分工具）。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you’re on the Free plan and prefer not to see ads, you can switch to an Ads-Free experience. This removes ads, but comes with lower usage limits and reduced feature access"
+    },
+    {
+      "fact": "Ads-Free 是 Free 方案的選項；Go 方案要用它得先切回 Free，或升級到本身就無廣告的方案（例如 Plus 或 Pro）。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ads-Free is a Free-plan option."
+    },
+    {
+      "fact": "廣告與 Ads-Free 控制項「可能」只出現在測試廣告的地區；不符合測試資格的人可能看不到這些選項。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ads (and Ads-Free controls) may only appear in regions where ads are being tested. If you’re not eligible for the ads test, you may not see these options."
+    },
+    {
+      "fact": "OpenAI 表示不會把使用者與 ChatGPT 的對話給廣告主，也不會把資料賣給廣告主。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We do not share your conversations with ChatGPT with advertisers, and we never sell your data to advertisers."
+    },
+    {
+      "fact": "OpenAI 表示廣告主只拿到彙總、無法識別個人的成效資訊，例如總瀏覽數或點擊數。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Advertisers only receive aggregated, non-identifying information about how their ads perform, such as total views or clicks."
+    },
+    {
+      "fact": "刪除廣告資料後就不再用來顯示廣告，但資料最多保留 30 天才從伺服器移除（up to，上限不是固定天數）。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "That data is retained for up to 30 days before being removed from our servers."
+    },
+    {
+      "fact": "廣告是付費刊登，看到廣告不代表 OpenAI 背書或推薦該廣告主或其產品。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Ads are paid placements, and seeing an ad doesn’t mean OpenAI endorses or recommends the advertiser or its products or services."
+    },
+    {
+      "fact": "對商家：在所在國家獲得支援之前，先建立帳號也不會提前取得使用權限。",
+      "url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Creating an account does not give you access before your country is supported."
+    },
+    {
+      "fact": "8 月背景：2026 年 8 月 31 日 OpenAI 公告 ChatGPT Ads 上線不到 200 天達到 10 億美元年化營收（自報數）。",
+      "url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In less than 200 days after launch, ChatGPT Ads has reached $1 billion in annualized revenue run rate."
+    },
+    {
+      "fact": "8 月 31 日那篇寫的國家數是「超過 40 個國家」（當時的快照，透過 Ads Solutions 團隊與代理商、技術夥伴）；不可與 9/23 的「超過 60 個國家」相減。",
+      "url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ChatGPT Ads are now available in over 40 countries"
+    },
+    {
+      "fact": "8 月 31 日那天開放自助購買的地區是印度、歐洲、中東與北非；這一篇正文沒有提到台灣。",
+      "url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Starting later today, self-service access to ChatGPT Ads is launching across India, Europe, the Middle East, and North Africa."
+    },
+    {
+      "fact": "Ads Manager 是 5 月推出的，OpenAI 表示它讓中小企業也能投放（可接第二個結尾連結那篇 5 月的文章）。",
+      "url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The introduction of Ads Manager in May opened the platform to small and medium-sized businesses"
+    }
+  ],
+  "not_said": [
+    "9/23 公告沒有給台灣使用者「哪一天會看到廣告」或「什麼時候全面推出」：原文是 will begin rolling out，說明中心寫 gradually rolling out ... to eligible users ... in select regions。以這四條來源查核到 2026-09-26 未見台灣使用者端的完成日期。",
+    "公告沒有說廣告是依使用者人在台灣、帳號註冊地還是其他條件投放；說明中心只寫會用「大致位置或語言」等基本脈絡挑廣告。文章不可自己定義「台灣使用者」的判斷方式。",
+    "公告的無廣告方案只列 Plus、Pro、Enterprise；Business 與 Edu 是說明中心 FAQ 才列（查核日版本）。兩者不矛盾，但要各自歸因。",
+    "兩個說明中心頁面都沒有點名台灣以外的使用者端規則差異：FAQ 以詞界比對 Taiwan 0 次；它只寫個人化廣告「初期」不在歐洲經濟區（EEA）與瑞士提供。這不等於台灣有個人化廣告，文章不可推論台灣的個人化設定狀態。",
+    "說明中心沒有說 Ads-Free（Free 方案的無廣告選項）在台灣一定看得到：原文是 may only appear in regions where ads are being tested，且 Availability may vary by region and over time。",
+    "沒有台灣廣告主的價格、幣別、最低預算、計費方式或付款方式；國家表只說自助資格看法律實體所在地。",
+    "沒有提到台灣本地的代理商或技術夥伴；代理商名單是 including 起頭的舉例。",
+    "Shopee 的引言只說把合作延伸到東南亞與台灣，沒有說 Shopee 會在台灣的 ChatGPT 投放哪些廣告、何時投放，也沒有合作金額或條件。",
+    "沒有提到 Sponsored Agents 會到台灣；9/23 公告全文沒有 Sponsored Agents 這個詞。",
+    "沒有提到任何台灣主管機關、法規或個資法；公告與說明中心都沒有。",
+    "沒有廣告在台灣會用哪一種語言顯示的承諾；FAQ 只寫廣告語言可能與對話或介面語言不同，挑選時會考慮所在地、語言設定與對話語言。",
+    "以 openai.com/sitemap.xml/product/ 與公告頁的 hreflang 查核到 2026-09-26，未見這篇公告的繁體中文版；OpenAI 沒有台灣版公告可以比對兩語說法。說明中心有 zh-Hant 版，但國家表那頁自印是機器翻譯。",
+    "公告沒有說 OpenAI 在台灣設立廣告團隊或辦公室。",
+    "公告與說明中心都沒有寫「超過 60 個國家」是哪 60 個；說明中心國家表是自助開放清單，不是那份名單。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "ads.openai.com 的新廣告主優惠：「在 9 月 30 日前註冊，消費滿 $8,000 即可獲得 $8,000 的廣告抵用金」。",
+      "seen_where": "https://ads.openai.com/zh-TW（200、794,429 bytes）與 https://ads.openai.com/（200、217,384 bytes）頁首橫幅，2026-09-26 讀到。",
+      "why_excluded": "限時行銷優惠（9 月 30 日截止，可能在文章上線前後就過期），頁面沒有寫幣別與條件細節，也不在公告與說明中心裡；寫進去等於替廣告主做購買引導。WebSearch 的摘要還把它說成「500」，與頁面不符，顯示這個數字容易被轉錯。整條不寫。"
+    },
+    {
+      "claim": "「台灣是 9 月 14 日／9 月 18 日官方名單上還沒有的國家」這類具體日期的前後對照。",
+      "seen_where": "站上既有的 chatgpt-ads-status（查核日 9/14）與 ai-news-chatgpt-sponsored-agents-20260916（查核日 9/18）寫過台灣未列入。",
+      "why_excluded": "那是本站文章，不是一手來源；今天的國家表是活文件，看不到過去版本（不用 Wayback）。本篇 sources[] 撐得住的只有「台灣是 9/23 公告裡新增的七個市場之一」與「8 月 31 日開放自助的是印度、歐洲、中東與北非」，文章照這兩句寫。"
+    },
+    {
+      "claim": "國家表共有幾個國家是 Available、是否就是公告說的「超過 60 個國家」。",
+      "seen_where": "https://help.openai.com/en/articles/20001245-ads-manager-availability 的表格。",
+      "why_excluded": "清點出來的數字來源沒印（BRIEF 第 9 條），而且國家表是「自助」開放清單，公告的 60 國是 ChatGPT Ads 整體提供範圍，兩者概念不同。不數、不寫。"
+    },
+    {
+      "claim": "Testing ads in ChatGPT 頁面的市場清單（最新一次更新 2026-08-11：英國、墨西哥、巴西、日本、南韓）。",
+      "seen_where": "https://openai.com/index/testing-ads-in-chatgpt/（200、433,813 bytes）。",
+      "why_excluded": "這一頁沒有跟著 9/23 的擴張更新，拿它當現況會誤導；不列入 sources[]，文章不引用它的市場清單。"
+    },
+    {
+      "claim": "發布時刻「台北時間上午 10 點」。",
+      "seen_where": "OpenAI 官方 feed 的 pubDate 02:00:00 GMT。",
+      "why_excluded": "feed 不在 sources[]（四條額度留給正文需要的頁面），公告頁本身只印日期。正文只寫 9 月 23 日。"
+    },
+    {
+      "claim": "說明中心 zh-Hant 版的「輕觸變更方案以享受 Go 無廣告體驗」。",
+      "seen_where": "https://help.openai.com/zh-hant/articles/20001047-ads-in-chatgpt（200、99,738 bytes）。",
+      "why_excluded": "與英文原文 \"Tap Change plan to go ad-free.\" 以及同頁 \"Ads-Free is a Free-plan option.\" 矛盾，是翻譯錯誤；以英文版為準，不寫 Go 方案可以切換無廣告。"
+    },
+    {
+      "claim": "OpenAI 的廣告原則全文（2026-01-16 的 Our approach to advertising and expanding access to ChatGPT）。",
+      "seen_where": "公告裡「ads principles」連到 /index/our-approach-to-advertising-and-expanding-access/，說明中心 FAQ 也有摘要。",
+      "why_excluded": "本輪沒有抓這一頁；原則的內容用公告與說明中心 FAQ 各自印出的句子就夠，不引用原則頁本身。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣的 ChatGPT 使用者（很多人用免費版）和想在 ChatGPT 投廣告的台灣商家。第一段就回答：台灣在 9 月 23 日公告的名單上，而且是「開始逐步推出」，不是當天每個帳號都看得到；看到廣告的只有 Free 與 Go 方案。\n\n五節建議：\n一、發生了什麼：9 月 23 日 OpenAI 宣布 ChatGPT 廣告在台灣、印尼、馬來西亞、菲律賓、新加坡、泰國、越南開始推出，台灣是這次新增的七個亞洲市場之一；之前亞太已在澳洲、紐西蘭、日本、南韓、印度推出。60 國是 OpenAI 的說法。\n二、對使用者：誰會看到（Free、Go，逐步、符合資格者；未滿 18 歲的帳號不會）、誰不會（公告列 Plus、Pro、Enterprise；說明中心另列 Business、Edu）、廣告出現在哪（回答下方、標示贊助；暫時對話不顯示；健康、心理健康、政治話題旁不顯示；Atlas 測試期間不顯示）。提醒 Go 是付費方案但仍有廣告。本節結尾放表：方案｜是否可能看到廣告｜出處（公告或說明中心），caption 寫查核日。\n三、能怎麼控制：設定裡的廣告控制（寫「設定」裡的廣告控制選項，英文版字樣不一致，不要寫死介面字）；關個人化不等於沒廣告；Free 方案的 Ads-Free 選項要付出訊息較少、部分工具不能用的代價，而且這些選項「可能」只在測試廣告的地區出現；刪除廣告資料後最多保留 30 天。本節結尾放圖。\n四、對台灣商家：三條管道（Ads Solutions 團隊、代理商、技術夥伴）；自助 Ads Manager 看的是「刊登並被收費的法律實體」所在國家，說明中心國家表在查核日把 Taiwan 列為 Available；建立帳號不等於取得權限。Shopee 在公告裡具名，但只說合作延伸到東南亞與台灣。\n五、數字與界線：超過 60 個國家、數萬家廣告主、10 億美元年化營收（8 月底公布，不是這次的新數字）都是 OpenAI 自報；廣告不影響回答、不給廣告主對話是 OpenAI 的宣示，本站無法驗證；想確認自己帳號的狀態，看產品內的說明與說明中心兩頁（寫出頁名，不要教讀者去哪裡買）。可以接 5 月那篇（第二個結尾連結）講 Ads Manager 是 5 月推出的。\n\n引言用職稱歸因（OpenAI 全球廣告解決方案主管、Shopee 品牌與成長行銷執行董事），不必寫姓名。說明中心兩頁是活文件，正文要寫「截至 2026 年 9 月 26 日查核」。不寫購買建議、不比較廣告平台、不寫優惠活動。",
+  "must_not_write": [
+    "不寫「台灣所有免費版使用者從 9 月 23 日起都會看到廣告」。原文是 will begin rolling out；說明中心是 gradually rolling out ... to eligible users ... in select regions，而且 Ads may appear（可能出現）。",
+    "不寫「付費方案都沒有廣告」。Go 是付費方案，仍在會出現廣告的名單上。無廣告的方案照來源逐一列：公告寫 Plus、Pro、Enterprise；說明中心（查核日版本）寫 Plus、Pro、Business、Enterprise、Edu，要分別歸因。",
+    "不寫 Go 方案可以切換成無廣告（說明中心 zh-Hant 版的誤譯）。英文原文：Ads-Free 是 Free 方案的選項，Go 要先切回 Free 或升級。",
+    "不寫「關閉個人化就不會看到廣告」。關掉後仍會依目前對話的脈絡出現廣告。",
+    "不寫 Ads-Free 選項在台灣一定有；原文是 may only appear in regions where ads are being tested。",
+    "不把 10 億美元寫成 9/23 公布的新數字，也不寫成「年營收」或「已賺進 10 億美元」；原文是 annualized revenue run rate（年化營收），8 月底公布。",
+    "不寫「比 8 月多了 20 個國家」之類的相減；兩個數字都是 over／more than 的自報快照。公告自己說的是「seven additional markets」。",
+    "不自己數說明中心國家表的列數，也不把國家表當成「60 國名單」。",
+    "不寫台灣廣告主的價格、幣別、最低預算、抵用金優惠或限時活動。",
+    "不寫發布時刻（sources[] 沒有能撐時刻的頁面），也不另寫美國日期。",
+    "不把「廣告不影響回答」「不出售資料」「對話不給廣告主」「廣告主只拿到彙總數據」寫成事實，一律寫 OpenAI 表示／OpenAI 的原則是。",
+    "不寫 Shopee 會在台灣的 ChatGPT 投放什麼、何時開始或合作條件；只寫它在公告裡說合作延伸到東南亞與台灣。品牌名照來源寫 Shopee。",
+    "不寫 Sponsored Agents 會到台灣；9/23 公告沒提。",
+    "不推論台灣有或沒有個人化廣告；說明中心只寫個人化「初期」不在 EEA 與瑞士提供。",
+    "不寫「OpenAI 在台灣設立團隊／辦公室」，也不補台灣本地代理商名字；代理商名單是 including 起頭的舉例，照原文舉例寫。",
+    "不把使用者端的推出和廣告主端的自助資格混成一件事：前者是 Free／Go 帳號逐步看到廣告，後者看法律實體所在地，國家表只管後者。",
+    "不引用站上舊文當台灣先前狀態的依據，也不寫「9 月 14 日／18 日時台灣還不在名單上」；要寫先前狀態，只能寫「台灣是這次新增的七個市場之一」與「8 月 31 日開放自助的是印度、歐洲、中東與北非」。",
+    "不寫購買或投放建議、不和其他廣告平台比較成效；8 月 31 日那篇裡的客戶成效數字（3x return on ad spend、more than 80% 新客流量）一律不寫；9/23 公告本身沒有成效數字。",
+    "圖解與 hero 不畫任何商標、字標或介面截圖，不畫 ChatGPT 或 Shopee 的標誌。"
+  ],
+  "live_data_warnings": [
+    "OpenAI 說明中心〈Ads Manager Availability〉是活文件（DELTA-4-8 第 7 條點名要在發布當天重讀）：2026-09-26 13:47Z 讀到的版本自印「Updated: 17 hours ago」、頁內 updatedAt＝2026-09-25T21:12:52Z（台北 9/26 05:12），Taiwan＝Available。正文寫「截至 2026 年 9 月 26 日查核」，發布當天重抓一次；若 Taiwan 那一列改變，正文與表格要跟著改。",
+    "OpenAI 說明中心〈Ads in ChatGPT〉是活文件：2026-09-26 13:51Z 讀到的版本自印「Updated: 4 hours ago」、updatedAt＝2026-09-26T10:04:51Z（台北 18:04）。方案清單（Plus、Pro、Business、Enterprise、Edu 無廣告）、Ads-Free 的條件、控制項字樣、30 天保留都可能再改，發布當天重讀。",
+    "「超過 60 個國家」「數萬家廣告主」是 9/23 公告當下的自報數字；「超過 40 個國家」是 8 月 31 日的快照；10 億美元年化營收是 8 月底的數字。都要繫著日期寫，不可當成常數。",
+    "公告頁在 product sitemap 的 lastmod 是 2026-09-24T02:01:30Z，發布後改過一次；今天的正文與探索代理 9/26 早上的版本逐字相同。發布當天若重抓發現正文不同，以新版為準並回報。",
+    "ads.openai.com 頁首的新廣告主優惠寫明 9 月 30 日截止，已排除，不寫。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "ai-news-chatgpt-ads-20260505",
+      "locales": 5,
+      "what_it_says": "五語齊全（zh-TW、en、ja、ko、zh-CN），事件日 2026-05-05，查核日 2026-09-18。寫 5 月 5 日公告的 Ads Manager 測試版自助工具、廣告帳戶→活動→廣告組→廣告四層、三種活動目標的計費、出價策略與地區／平台／context hints 鎖定；FAQ 寫「本文查核的四條來源都沒有列出可以投放廣告的地區清單」「台灣是否已開放，本文沒有答案」。新篇不重講工具與計費，只一句帶到 Ads Manager 是 5 月推出、細節看那篇（第二個結尾連結）。這一篇會因新事件而過期，本批不動它（DELTA-4-8 第 4 條另開維護票）。"
+    },
+    {
+      "slug": "ai-news-chatgpt-sponsored-agents-20260916",
+      "locales": 5,
+      "what_it_says": "五語齊全，事件日 2026-09-16，查核日 2026-09-18。標題「ChatGPT 廣告新增 Sponsored Agents：美國測試中，台灣未列入開放名單」；寫 Sponsored Agents 只與美國特定廣告主測試、廣告只給 Free 與 Go 的登入成年使用者、Plus／Pro／Business／Enterprise／Education 無廣告、官方市場清單沒有台灣。新篇不重講 Sponsored Agents；它的「台灣未列入」在 9/23 後過期，本批不動它、也不要在新篇裡引用它當依據。可以連（五語齊全），但結尾連結依 DELTA-4-8 第 5 條指向 5 月那篇。"
+    },
+    {
+      "slug": "chatgpt-ads-status",
+      "locales": 1,
+      "what_it_says": "只有 zh-TW（非新聞、常青文，查核日 2026-09-14）。〈ChatGPT 廣告怎麼查：開放地區、官方規則與品牌準備〉寫自助資格看法律實體所在地、查閱當日台灣未列在自助可用名單，並用原創品牌示範準備工作。只有一個語系，五語新篇不能連；它的台灣狀態會過期，本批不動它。"
+    },
+    {
+      "slug": "ai-news-openai-funding-20260331",
+      "locales": 5,
+      "what_it_says": "五語齊全，3 月的募資文，順帶寫「廣告試辦不到六週就達到逾 1 億美元年化營收」。那是 3 月的舊數字，新篇不可與 8 月的 10 億美元放在同一句比較或計算成長倍數。"
+    },
+    {
+      "slug": "ai-news-2026-january-september-index",
+      "locales": 5,
+      "what_it_says": "AI 索引，已收 Sponsored Agents 那篇。索引由協調者補（DELTA-4-8 第 6 條），撰稿不碰。"
+    }
+  ],
+  "second_link": {
+    "slug": "ai-news-chatgpt-ads-20260505",
+    "title": "ChatGPT 廣告開放自助購買：OpenAI 5 月公告的工具、計費與鎖定機制"
+  },
+  "hero_label": "廣告在台灣逐步推出",
+  "diagram": {
+    "title": "ChatGPT 廣告到台灣的四件事",
+    "caption": "整理自 OpenAI 2026 年 9 月 23 日公告與說明中心兩頁，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "誰會看到",
+        "Free、Go 方案逐步推出"
+      ],
+      [
+        "誰沒有廣告",
+        "Plus、Pro 等方案"
+      ],
+      [
+        "怎麼控制",
+        "關個人化不等於沒廣告"
+      ],
+      [
+        "商家怎麼買",
+        "自助看法律實體所在地"
+      ]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent, round 1 (claude-opus-5-5)",
+    "checked_on": "2026-09-26",
+    "method": "Re-fetched all four sources[] on 2026-09-26 between 14:32Z and 14:33Z (Taipei 22:32) with curl -sSL --max-time 30 and the batch's editorial role UA, no personal name or email in any request, >=1 s per host; bodies in <WORK>/_raw/ai-news-chatgpt-ads-taiwan-20260923/round1/ with fetch-log.tsv. All four HTTP 200, 0 redirects, full article bodies: announcement 386,726 bytes, Ads Manager Availability 63,895, Ads in ChatGPT 98,313, August page 401,787 (byte counts differ from the research agent's by page tokens only; extracted text identical to the research agent's 13:45-13:51Z copies). Help Center updatedAt: Ads in ChatGPT 2026-09-26T10:04:51Z (Taipei 18:04), Availability 2026-09-25T21:12:52Z (Taipei 9/26 05:12); Taiwan row = Available. Also re-read the zh-Hant versions of both Help Center pages (mistranslation '輕觸變更方案以享受 Go 無廣告體驗' still there; the article does not use it) and the OpenAI feed (pubDate Wed, 23 Sep 2026 02:00:00 GMT for the announcement; Mon, 31 Aug 2026 04:00:00 GMT for the August page). Split the zh-TW locale into 116 numbered claims (title, description, 17 paragraphs, summary, 5 headings, table rows and caption, image caption/alt, FAQ, callout, 2 links, hero_label, diagram, sources) and matched each to a sentence in the fetched bodies; every verbatim_quote in this record re-checked by program against today's bodies (49/49 contiguous). Closing-link texts compared character for character with the target packs' zh-TW titles; both targets have five locales.",
+    "claims_checked": 116,
+    "changes": [
+      {
+        "claim": "p1 opening, Free/Go users",
+        "before": "使用 Free 或 Go 方案的人，接下來會陸續、不是同一天全部看到廣告；",
+        "after": "使用 Free 或 Go 方案的人，接下來可能陸續看到廣告，不是同一天全部開通；",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "Dropped qualifier: the Help Center says 'Ads may appear for users on the Free and Go plans' and 'gradually rolling out ads to eligible users ... in select regions'; 會…看到廣告 promised every Free/Go user ads. The description already says 可能陸續看到廣告."
+      },
+      {
+        "claim": "summary item 5, $1B run rate",
+        "before": "是 OpenAI 在 2026 年 8 月底、上線不到 200 天時公布的數字，9 月 23 日的公告只是回顧，不是這次的新數字。",
+        "after": "是 OpenAI 在 2026 年 8 月底公布、上線不到 200 天就達到的數字，9 月 23 日的公告只是回顧，不是這次的新數字。",
+        "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+        "why": "The source says the run rate was REACHED in less than 200 days ('had reached $1 billion in annualized revenue run rate in less than 200 days after launch') and ANNOUNCED at the end of August; the summary said it was announced when launch was under 200 days old. Now matches body paragraph 15 word for word."
+      },
+      {
+        "claim": "p3 attribution cap",
+        "before": "公告寫，這次是 ChatGPT 廣告擴及亞洲另外七個市場",
+        "after": "這次是 ChatGPT 廣告擴及亞洲另外七個市場",
+        "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+        "why": "Reader-first (coordinator-approved): the paragraph carried three attribution phrases (公告寫, OpenAI 表示, 公告原文寫); the first is restated as a direct fact. The fact itself is the subtitle 'expands to seven additional markets across Asia'."
+      },
+      {
+        "claim": "p5 Shopee, negative sentence",
+        "before": "以查核到 2026-09-26 未見這項合作",
+        "after": "以公告查核到 2026-09-26 未見這項合作",
+        "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+        "why": "Negative sentence named no page (writer spec pattern is 以 X 查核到 YYYY-MM-DD 未見). The announcement is the only page that mentions Shopee; its quote gives no ad content, timing or terms."
+      },
+      {
+        "claim": "p6 rollout timeline, negative sentence",
+        "before": "以查核到 2026-09-26 未見台灣使用者完成推出的時間表",
+        "after": "以這兩頁查核到 2026-09-26 未見台灣使用者完成推出的時間表",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "Negative sentence named no page; 這兩頁 = the announcement and the Help Center page named in the same paragraph ('will begin rolling out'; 'gradually rolling out ... Availability will expand over time'), neither of which gives a completion date."
+      },
+      {
+        "claim": "p8 ad placement rules, attribution",
+        "before": "廣告出現的位置也有限制：",
+        "after": "說明中心也寫了廣告位置的限制：",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "Unattributed policy statements. 'Ads are not eligible to appear near sensitive or regulated topics, including personal health, mental health, or politics' is OpenAI's own rule about its own process (the record flags it is_vendor_claim=true); the paragraph had no attribution at all."
+      },
+      {
+        "claim": "p9 ad controls list",
+        "before": "關掉某則廣告並回饋原因",
+        "after": "關掉某則廣告並提供回饋",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "The Help Center item is 'Dismiss ads and share feedback'; it does not say the feedback is a reason."
+      },
+      {
+        "claim": "p11 who sees the controls",
+        "before": "；台灣使用者要等廣告推送到自己帳號，才會看到對應控制項。",
+        "after": "；廣告控制只提供給廣告已推出或即將推出地區的 Free 與 Go 使用者。",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "NOT FOUND and contradicted: no source says Taiwan users must wait for ads to reach their own account before the controls appear. The Help Center says 'Ad controls are available only to Free and Go users in regions where ads are available or will soon be available' (record verified_facts: the 'Ad controls are available only to...' entry)."
+      },
+      {
+        "claim": "h2 section 4, recommendation tone",
+        "before": "對台灣商家的機會：",
+        "after": "對台灣商家的影響：",
+        "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+        "why": "AI-vertical boundary (no promotional/recommendation tone): 機會 repeats OpenAI's marketing line 'This expansion brings that opportunity to more businesses across Southeast Asia and Taiwan' in the site's own voice; now parallel to section 2's 對台灣使用者的影響."
+      },
+      {
+        "claim": "p13 account creation",
+        "before": "台灣商家先建立帳號，也不會因此提前取得使用權限。",
+        "after": "所在國家還沒開放前，先建立帳號也不會提前取得使用權限。",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "Misapplied: the source rule is 'Creating an account does not give you access before your country is supported', and Taiwan's row reads Available, so it cannot be stated as a restriction on Taiwan merchants. Restored to the general rule, which is what the Coming Soon sentence before it is about."
+      },
+      {
+        "claim": "p14 pricing and local partners, negative sentence",
+        "before": "以查核到 2026-09-26 未見台灣廣告主",
+        "after": "以公告與說明中心查核到 2026-09-26 未見台灣廣告主",
+        "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+        "why": "Negative sentence named no page. Word-boundary search of the announcement and both Help Center pages: no price, currency, budget, minimum or billing terms for Taiwan; agency list begins with 'including'."
+      },
+      {
+        "claim": "p15 future plans",
+        "before": "但沒有寫時程。",
+        "after": "但沒有寫具體時程。",
+        "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+        "why": "The source does give a timeframe ('Over the next few months'), which the same sentence reports as 接下來幾個月; 沒有寫時程 contradicted it. What is missing is a specific schedule."
+      },
+      {
+        "claim": "p16 personalization and regulators, negative sentence",
+        "before": "以查核到 2026-09-26 未見台灣的個人化廣告設定狀態",
+        "after": "以公告與說明中心查核到 2026-09-26 未見台灣的個人化廣告設定狀態",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "Negative sentence named no page. The Help Center names only the EEA and Switzerland ('Personalized ads are not initially available in the European Economic Area (EEA) or Switzerland'); Taiwan 0 times on that page; no regulator or law in either page ('regulated' occurs only as 'sensitive or regulated topics')."
+      },
+      {
+        "claim": "p17 where to check account status",
+        "before": "想確認自己帳號目前是什麼狀態，或商家想確認能不能自助投放",
+        "after": "想確認最新規則，或商家想確認能不能自助投放",
+        "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+        "why": "The Help Center pages cannot show a reader's own account status; the Help Center says 'If you're eligible for the test, you'll see clear in-product information' (already in paragraph 7 and FAQ 1). The two pages carry the rules and the country table."
+      },
+      {
+        "claim": "p17 May announcement pointer",
+        "before": "完整的操作流程與計費方式，可以看 OpenAI 當時的公告。",
+        "after": "工具細節與計費方式，可以看下方連結的 5 月那篇整理。",
+        "source_url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads/",
+        "why": "NOT FOUND in sources[]: no page in sources[] supports that OpenAI's May announcement holds the full workflow and billing (the published May article draws billing from developer docs as well as the announcement). The August page supports only 'The introduction of Ads Manager in May'. Pointer moved to the second closing link, as the record's editorial_brief plans."
+      }
+    ],
+    "open_questions": [
+      "年化營收 for 'annualized revenue run rate': this record's must_not_write allows 年化營收 and forbids 年營收/已賺進; FAQ 5 also carries the English term. Kept. If the coordinator wants no 營收 wording at all, 年化營收運行率 is the literal form (summary 5, paragraph 15, FAQ 5 and its question).",
+      "「不是使用者或行銷人員本人在哪裡」 (paragraph 12, section-4 heading, callout) is a contrast drawn from the Availability note 'the legal entity that will advertise and be billed must be based in a country listed as available'; the page does not state the negative in so many words. Kept, because it is in this record's verified_facts and the launch brief states the same reading.",
+      "「三種管道／三條管道／管道有三種」 counts a closed three-item list ('through the OpenAI Ads Solutions team, agency partners ..., and technology partners'); self-service is a separate fourth route in the next sentence. Kept.",
+      "Live documents: both Help Center pages must be re-read on publish day (DELTA-4-8 item 7); the Business/Edu row and the Taiwan=Available row are 2026-09-26 snapshots."
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-8 item 4: single event date 2026-09-23 (feed pubDate 02:00Z = Taipei 10:00; page prints September 23, 2026); no US date written. Confirmed against today's feed and page.",
+      "DELTA-4-8 item 4: 'Taiwan was previously not on the list' only where sources[] support it. The article only says Taiwan is one of the 'seven additional markets'; no sentence claims an earlier exclusion. Nothing changed.",
+      "FACTCHECK-48: at most two attribution phrases per body paragraph, the rest restated as direct facts (applied once, paragraph 3).",
+      "DELTA-4-8 item 5: second closing link text matches ai-news-chatgpt-ads-20260505's zh-TW title exactly; index link text matches the fixed index title; both targets carry zh-TW, en, ja, ko, zh-CN."
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent, round 2 (claude-opus-5-5); not the writer, not round 1",
+      "checked_on": "2026-09-26",
+      "method": "Re-fetched all four sources[] on 2026-09-26 14:48-14:49Z with curl -sSL --max-time 30 and the batch's editorial role UA (no person's name or email in any request, >=1 s per host); bodies in <WORK>/_raw/ai-news-chatgpt-ads-taiwan-20260923/round2/ with fetch-log.tsv. Announcement 200 (386,687 bytes), Ads Manager Availability 200 (63,842), Ads in ChatGPT 200 (98,313); the August page returned 403 (9,967 bytes, block page) on the first try and 200 (401,787) on an immediate retry, and only the retry body is used. Extracted text identical to round 1's except the Help Center 'Updated: N hours ago' line; updatedAt unchanged (Availability 2026-09-25T21:12:52Z, Ads in ChatGPT 2026-09-26T10:04:51Z); Taiwan row still Available; feed pubDate for the announcement still Wed, 23 Sep 2026 02:00:00 GMT. Re-checked sentence by sentence against the bodies: all 15 sentences round 1 changed or added, a seeded random third (33 of 97) of round 1's other CONFIRMED claims (fc2_sample.py, seed 20260926), and every sentence this round wrote; swept all 116 claims for dropped qualifiers (may, gradually, eligible, including, up to, select regions, during this test, where available, over/more than, less than); all 49 verbatim_quote strings in this record re-checked by program as contiguous substrings of today's bodies (49/49; none contains ..., … or |). Closing-link texts equal the target packs' zh-TW titles and both targets have five locales. Implemented coordinator rulings 1-5 (see coordinator_rulings).",
+      "claims_checked": 48,
+      "changes": [
+        {
+          "claim": "description, routes to buy ads",
+          "before": "透過 Ads Solutions 團隊、代理商，或符合資格的自助 Ads Manager",
+          "after": "透過 Ads Solutions 團隊、代理商、技術夥伴，或符合資格的自助 Ads Manager",
+          "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+          "why": "Fact: the announcement's list is closed and has three items ('through the OpenAI Ads Solutions team, agency partners including ..., and technology partners'); 「A、B，或 C」 dropped technology partners and read as complete."
+        },
+        {
+          "claim": "p1, routes to buy ads",
+          "before": "廣告解決方案團隊、代理商夥伴，或符合資格的自助 Ads Manager",
+          "after": "廣告解決方案團隊、代理商夥伴、技術夥伴，或符合資格的自助 Ads Manager",
+          "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+          "why": "Same dropped list item as the description."
+        },
+        {
+          "claim": "summary 4, routes and country table",
+          "before": "Ads Solutions 團隊、代理商夥伴，或符合資格的自助 Ads Manager 投放廣告；…查核日讀到的國家表把 Taiwan 列為 Available。",
+          "after": "Ads Solutions 團隊、代理商夥伴、技術夥伴，或符合資格的自助 Ads Manager 投放廣告；…說明中心的國家表把台灣列為已開放。",
+          "source_url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+          "why": "Same dropped list item; coordinator ruling 3 (no repeated 查核日讀到的) and ruling 2 (plain Chinese for the table value). Taiwan | Available re-read at 14:48Z."
+        },
+        {
+          "claim": "p15, future plans",
+          "before": "推出新廣告格式與量測工具",
+          "after": "推出新廣告格式、優化工具與成效量測方案",
+          "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+          "why": "Fact: 'build new formats, optimization tools, and measurement solutions' has three items; optimization tools was dropped and 「A與B」 read as complete."
+        },
+        {
+          "claim": "p2 (coordinator ruling 1, 3)",
+          "before": "這一篇的資料在 2026 年 9 月 26 日查核，讀了 OpenAI 這篇公告，以及說明中心〈Ads Manager Availability〉與〈Ads in ChatGPT〉兩頁查核當天讀到的版本；本站沒有實測 ChatGPT 廣告，也不提供投放或訂閱建議，這兩頁會持續更新，內容以查核當天讀到的版本為準。",
+          "after": "無廣告方案的清單與開放自助投放的國家表都在 OpenAI 說明中心，頁面會更新，以下寫的是 2026 年 9 月 26 日的內容。本站沒有實測 ChatGPT 廣告，也不提供投放或訂閱建議。",
+          "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+          "why": "Verification narration replaced by direct statements; the article's one as-of statement names the two live things (plans list, country table). 'Availability may continue to evolve as testing expands' and both pages' Updated lines support 頁面會更新. Checked date stays in the opening paragraphs (checker rule)."
+        },
+        {
+          "claim": "section-4 heading (ruling 4)",
+          "before": "對台灣商家的影響：自助資格看公司所在地，不是看人在哪裡",
+          "after": "對台灣商家的影響：自助投放看法律實體所在國家",
+          "source_url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+          "why": "The page states only 'the legal entity that will advertise and be billed must be based in a country listed as available below'; the contrast with where people are is not on the page."
+        },
+        {
+          "claim": "p12 (rulings 2, 3, 4)",
+          "before": "說明中心〈Ads Manager Availability〉頁面解釋，自助資格看的是刊登廣告並被收費的法律實體所在國家，不是使用者或行銷人員本人在哪裡；查核日（2026-09-26）讀到的國家表裡，Taiwan 那一列的 Self-service availability 是 Available。",
+          "after": "說明中心〈Ads Manager Availability〉頁面寫明，要使用自助 Ads Manager，刊登廣告並被收費的法律實體必須設在國家表列為開放的國家；國家表把台灣列為已開放自助投放（Available）。",
+          "source_url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+          "why": "Rule as written ('To use self-service Ads Manager, the legal entity that will advertise and be billed must be based in a country listed as available below'); column name removed; Taiwan | Available."
+        },
+        {
+          "claim": "FAQ 4 (rulings 2, 3, 4)",
+          "before": "說明中心解釋，自助資格看的是刊登廣告並被收費的法律實體所在國家，查核日讀到的國家表裡 Taiwan 那一列標示 Available。",
+          "after": "說明中心寫明，要自助投放，刊登廣告並被收費的法律實體必須設在國家表列為開放的國家，國家表把台灣列為已開放。",
+          "source_url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+          "why": "Same rule as p12; answer stays a subset of the body."
+        },
+        {
+          "claim": "callout (rulings 3, 4)",
+          "before": "查核日讀到的說明中心頁面另外列出 Business 與 Edu …企業能不能自助投放，看的是刊登並被收費的法律實體所在地，不是人在哪裡。查核到 2026 年 9 月 26 日為止，之後想確認最新狀態，請直接查 OpenAI 說明中心。",
+          "after": "說明中心頁面另外列出 Business 與 Edu …企業要自助投放，刊登廣告並被收費的法律實體必須設在國家表列為開放的國家。說明中心的清單會更新，最新狀態請直接查 OpenAI 說明中心。",
+          "source_url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+          "why": "Inferred contrast removed; repeated as-of phrasing replaced (the date is stated once, in paragraph 2)."
+        },
+        {
+          "claim": "p15 and FAQ 5, run rate (ruling 5)",
+          "before": "10 億美元的年化營收，是 OpenAI 在 2026 年 8 月底公布…／10 億美元的年化營收（annualized revenue run rate）；",
+          "after": "10 億美元的年化營收（annualized revenue run rate，以當時的營收速度換算成一年的金額，不是一年實際收到的錢），是 OpenAI 在 2026 年 8 月底公布…／10 億美元的年化營收（annualized revenue run rate，以當時的營收速度換算成一年的金額）；",
+          "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+          "why": "Coordinator ruling 5: keep 年化營收, make the run rate clear, keep it attributed to OpenAI and dated to end of August ('At the end of August, we announced that ChatGPT Ads had reached $1 billion in annualized revenue run rate in less than 200 days after launch'). The gloss is the term's definition, not a sourced fact."
+        },
+        {
+          "claim": "summary 2, p6, FAQ 2 (ruling 3)",
+          "before": "查核日讀到的說明中心頁面…／查核日讀到的說明中心〈Ads in ChatGPT〉頁面…／查核日讀到的說明中心頁面則列出…",
+          "after": "說明中心頁面…／說明中心〈Ads in ChatGPT〉頁面…／說明中心頁面則列出…",
+          "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+          "why": "Repeated as-of phrasing; the facts ('Plus, Pro, Business, Enterprise, and Edu accounts will not have ads') re-read at 14:49Z."
+        },
+        {
+          "claim": "table row and caption (ruling 3)",
+          "before": "說明中心（查核日版本）／以及查核日（2026 年 9 月 26 日）讀到的說明中心〈Ads in ChatGPT〉頁面",
+          "after": "說明中心／以及 2026 年 9 月 26 日的說明中心〈Ads in ChatGPT〉頁面",
+          "source_url": "https://help.openai.com/en/articles/20001047-ads-in-chatgpt",
+          "why": "Repeated as-of phrasing; the caption keeps the page date as a citation."
+        },
+        {
+          "claim": "negatives in p5, p6, p14, p16 (ruling 3)",
+          "before": "以公告查核到 2026-09-26 未見…／以這兩頁查核到 2026-09-26 未見…／以公告與說明中心查核到 2026-09-26 未見…（兩處）",
+          "after": "公告沒有說明…／這兩頁都沒有寫…／公告與說明中心都沒有寫…（兩處）",
+          "source_url": "https://openai.com/index/chatgpt-ads-expands-southeast-asia-taiwan/",
+          "why": "Stated as facts about the named pages; each negative still points at pages in sources[] and was re-verified today (no Shopee ad content, timing or terms; no completion date, 'Availability will expand over time'; word search: no price, currency, budget, minimum or billing terms and Taiwan 0 times in Ads in ChatGPT; only EEA and Switzerland named for personalization; no regulator or law). The date is carried by paragraph 2."
+        },
+        {
+          "claim": "record verified_facts, legal-entity rule",
+          "before": "自助 Ads Manager 的資格看的是「刊登廣告並被收費的法律實體」所在國家，不是使用者或行銷人員人在哪裡。",
+          "after": "自助 Ads Manager 的資格：「刊登廣告並被收費的法律實體」必須設在國家表列為開放（available）的國家。頁面只寫這條規則，沒有寫「不是使用者或行銷人員本人在哪裡」這種對照，文章不寫這個對照（第二輪依協調者裁定刪除）。",
+          "source_url": "https://help.openai.com/en/articles/20001245-ads-manager-availability",
+          "why": "The record carried the same inference the coordinator ruled out; corrected so a later round or translator does not restore it."
+        }
+      ],
+      "round1_changes_rechecked": "All 15 confirmed against today's bodies: #5 p1 'Ads may appear' + 'gradually rolling out ... eligible users'; #16 summary 5 'had reached ... in less than 200 days' + 'At the end of August, we announced'; #18 p3 subtitle 'seven additional markets across Asia'; #25 p5 Shopee quote has no content, timing or terms; #30 p6 no completion date on either page; #34 p8 attribution; #46 p9 'Dismiss ads and share feedback'; #51 p11 'Ad controls are available only to Free and Go users in regions where ads are available or will soon be available' (contiguous); #55 heading 影響 (further changed this round, ruling 4); #62 p13 'Creating an account does not give you access before your country is supported'; #63 p14 word search; #68 p15 'Over the next few months' (but the same sentence lost 'optimization tools', fixed this round); #73 p16 EEA/Switzerland only; #74 p17 in-product information; #75 p17 second link target's zh-TW title names 工具、計費. Four of them (#25, #30, #63, #73) were then reworded under ruling 3 and #55 under ruling 4, without changing the fact.",
+      "open_questions": [
+        "Paragraph 13 keeps 「能不能用自助功能要看公司所在國家」 for 'access depends on your country'. 公司 matches the page's legal-entity note but is not the literal word; the literal form is 「要看所在國家」.",
+        "The run-rate gloss in paragraph 15 and FAQ 5 (以當時的營收速度換算成一年的金額) is the term's definition, added under ruling 5; no page in sources[] defines it.",
+        "Negative sentences now name their pages without repeating the date (ruling 3); SECOND-ROUND.md item 4 asks for page + check date. Paragraph 2's single as-of statement carries the date for the whole article.",
+        "The image caption keeps 「查核日 2026 年 9 月 26 日」 (a citation line that must equal the record's diagram.caption); the table caption keeps 「說明中心版本才列出」. Neither is the repeated 查核日讀到的 phrasing, so both were left.",
+        "Live pages must be re-read on publish day (DELTA-4-8 item 7): at 14:48Z Availability updatedAt was still 2026-09-25T21:12:52Z (Taiwan | Available) and Ads in ChatGPT updatedAt still 2026-09-26T10:04:51Z."
+      ],
+      "coordinator_rulings": [
+        "1: paragraph 2 rewritten as direct statements for the reader (DELTA-4-7 item 14).",
+        "2: the field name 'Self-service availability' removed from prose; the table value is said as 已開放（自助投放）, with (Available) kept once in paragraph 12 so a reader can match the page.",
+        "3: 查核日讀到的 / 查核當天讀到的 / 以…查核到 2026-09-26 未見 / 查核到…為止 removed from summary, body, table, FAQ and callout; one as-of statement kept in paragraph 2 naming the plans list and the country table.",
+        "4: 「不是使用者或行銷人員本人在哪裡」 and 「不是（看）人在哪裡」 replaced in paragraph 12, the section-4 heading, FAQ 4 and the callout with the rule as written. Source wins over the ruling's paraphrase: the page says 'the legal entity that will advertise and be billed' (刊登廣告並被收費), not 'registers', so the article says 刊登廣告並被收費的法律實體.",
+        "5: 年化營收 kept, run rate glossed in paragraph 15 and FAQ 5, attributed to OpenAI's end-of-August announcement; the three routes (Ads Solutions team, agency partners, technology partners) kept, and technology partners restored where the description, paragraph 1 and summary 4 had dropped it."
+      ],
+      "self_check": "check_article.py -> OK ai-news-chatgpt-ads-taiwan-20260923 zh-TW paragraphs 2811 (exit 0; 2907 before this round). pack_cli lint -> raw_internal_url warning and two image_missing errors only (expected before the assets are drawn).",
+      "verdict": "ok"
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Taiwan Ads Rollout",
+      "diagram": {
+        "title": "ChatGPT Ads in Taiwan: Four Things",
+        "caption": "Compiled from OpenAI's September 23, 2026 announcement and two Help Center pages; checked on September 26, 2026.",
+        "nodes": [
+          [
+            "Who Sees Them",
+            "Free, Go gradually see ads"
+          ],
+          [
+            "Who Has No Ads",
+            "Plus, Pro, and more"
+          ],
+          [
+            "How to Control",
+            "Off still shows ads"
+          ],
+          [
+            "Businesses Buying",
+            "Self-service: entity location"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "台湾で広告を順次展開",
+      "diagram": {
+        "title": "台湾に来るChatGPT広告の四つの要点",
+        "caption": "OpenAIの2026年9月23日の発表とヘルプセンター2ページをもとに作成。確認日は2026年9月26日。",
+        "nodes": [
+          [
+            "誰に表示",
+            "FreeとGoに順次"
+          ],
+          [
+            "誰に非表示",
+            "PlusやProなど"
+          ],
+          [
+            "管理方法",
+            "パーソナライズオフでも広告あり"
+          ],
+          [
+            "企業の購入",
+            "セルフサーブは法人の所在国次第"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "대만 광고 단계적 시작",
+      "diagram": {
+        "title": "대만 광고 네 가지 포인트",
+        "caption": "OpenAI의 2026년 9월 23일 발표문과 고객센터 두 페이지를 바탕으로 정리. 확인일 2026년 9월 26일.",
+        "nodes": [
+          [
+            "누가 보나",
+            "Free, Go 단계적"
+          ],
+          [
+            "누구는 광고 없나",
+            "Plus, Pro 등"
+          ],
+          [
+            "제어 방법",
+            "개인화 꺼도 광고 표시"
+          ],
+          [
+            "기업 구매",
+            "셀프서브는 법인 소재국"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "广告在台湾逐步推出",
+      "diagram": {
+        "title": "ChatGPT 广告到台湾的四件事",
+        "caption": "整理自 OpenAI 2026 年 9 月 23 日公告与帮助中心两页，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "谁会看到",
+            "Free、Go 逐步推出"
+          ],
+          [
+            "谁没有广告",
+            "Plus、Pro 等方案"
+          ],
+          [
+            "怎么控制",
+            "关个性化仍有广告"
+          ],
+          [
+            "商家怎么买",
+            "自助看法律实体所在地"
+          ]
+        ]
+      }
+    }
+  }
+}

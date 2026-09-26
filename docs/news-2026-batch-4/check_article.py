@@ -193,6 +193,18 @@ RELATED: dict[str, str] = {
     "crypto-news-cftc-perpetual-contracts-20260603": "crypto-news-cftc-passive-software-20260917",
     "crypto-news-stablecoin-cip-20260622": "crypto-news-stablecoin-aml-20260410",
     "crypto-news-treasury-state-regime-20260403": "crypto-news-genius-act-occ-20260302",
+    # 4.8（每小時自動化漏掉的十則，五語）：AI 186-189、科技 337-339、幣圈 230-232。
+    # 順序＝站主 2026-09-26 圈選的順序；第二連結只指五語都有的已發布文章。
+    "ai-news-chatgpt-ads-taiwan-20260923": "ai-news-chatgpt-ads-20260505",
+    "ai-news-gpt-6-sol-luna-20260923": "ai-news-gpt-6-astra-20260903",
+    "ai-news-claude-opus-55-20260922": "ai-news-claude-opus-5-20260724",
+    "ai-news-google-vids-omni-free-20260924": "ai-news-gemini-omni-20260519",
+    "tech-news-wordpress-712-20260922": "tech-news-eu-cra-reporting-20260911",
+    "tech-news-synology-dsm-sa2613-20260918": "tech-news-eu-cra-reporting-20260911",
+    "tech-news-snapdragon-8-elite-gen6-20260922": "tech-news-nvidia-mediatek-20260831",
+    "crypto-news-japan-onchain-finance-forum-20260925": "crypto-news-jfsa-working-group-20260216",
+    "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917": "crypto-news-taiwan-vasp-act-20260630",
+    "crypto-news-korea-market-manipulation-referrals-20260923": "crypto-news-fca-p2p-crypto-crackdown-20260917",
 }
 
 def items_bounds(block: type) -> tuple[int, int]:

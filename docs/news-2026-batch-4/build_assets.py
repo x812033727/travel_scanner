@@ -1452,6 +1452,195 @@ def _openai_zero_data_retention(accent: str) -> str:
 # slug -> its composition. Keyed by the whole slug: two of this batch's slugs share a topic
 # word (the two JFSA pieces, the four GENIUS Act rules), so a substring match as batch 3 used
 # would hand one article another's picture.
+# --- batch 4.8: the stories the hourly automation missed, 2026-09-17 to 2026-09-25 --------
+
+
+def _down(x, y1, y2, color, width=12, broken=False):
+    """``arrow`` pointing down: a price cut, a figure lowered."""
+    shaft = dashed(x, y1, x, y2 - 14, color, width) if broken else line(x, y1, x, y2 - 14, color, width)
+    return shaft + f'<path d="M{x-30} {y2-36} L{x} {y2} L{x+30} {y2-36}" fill="none" stroke="{color}" stroke-width="{width}" stroke-linecap="round" stroke-linejoin="round"/>'
+
+
+def _chatgpt_ads_taiwan(accent: str) -> str:
+    # A chat window: the answer comes first, and below it, fenced off in dashes, a separate
+    # card -- the ad sits apart from the reply. On the right, a small shopfront reaches that card
+    # with a line (a business buying the slot), and a toggle stands for the reader's ad controls.
+    other = second_colour(accent)
+    b = rect(220, 210, 600, 440, "#FFFFFF", INK, 24) + rect(220, 210, 600, 60, PALE, "none", 22)
+    b += "".join(line(270, 320 + i * 44, 700 - (i % 2) * 90, 320 + i * 44, "#C4CCCC", 12) for i in range(4))
+    b += f'<rect x="270" y="500" width="500" height="110" rx="18" fill="{PALE}" stroke="{accent}" stroke-width="7" stroke-dasharray="18 12"/>'
+    b += rect(300, 530, 60, 50, "#FFFFFF", accent, 10) + line(390, 545, 700, 545, accent, 10) + line(390, 580, 620, 580, "#C4CCCC", 10)
+    b += f'<path d="M1060 330 L1310 330 L1290 280 L1080 280 Z" fill="{PALE}" stroke="{other}" stroke-width="7" stroke-linejoin="round"/>'
+    b += rect(1080, 330, 210, 170, "#FFFFFF", other, 12) + rect(1150, 410, 70, 90, PALE, other, 8)
+    b += line(1060, 450, 790, 555, other, 8)
+    b += rect(1090, 560, 170, 80, "#FFFFFF", accent, 40) + circle(1220, 600, 28, accent, "none")
+    return b
+
+
+def _gpt_6_sol_luna(accent: str) -> str:
+    # A sun and a crescent for the two models' names. Below them two price pairs: the old price
+    # as a dashed outline, the new one as a solid bar half as tall inside it. A desktop screen at
+    # the right carries a small crescent -- the app where Free and Go get Luna.
+    other = second_colour(accent)
+    b = circle(330, 300, 80, PALE, accent)
+    b += "".join(line(330 + 110 * c, 300 + 110 * s, 330 + 140 * c, 300 + 140 * s, accent, 10) for c, s in ((1, 0), (-1, 0), (0, 1), (0, -1), (0.71, 0.71), (-0.71, 0.71), (0.71, -0.71), (-0.71, -0.71)))
+    b += circle(620, 300, 80, PALE, other) + circle(655, 275, 70, CREAM, "none")
+    for x, colour in ((250, accent), (540, other)):
+        b += f'<rect x="{x}" y="470" width="120" height="180" rx="14" fill="none" stroke="{colour}" stroke-width="6" stroke-dasharray="16 12"/>'
+        b += rect(x, 560, 120, 90, colour, "none", 14)
+    b += monitor(900, 250, 520, 300)
+    b += circle(1160, 390, 60, "#FFFFFF", other) + circle(1185, 372, 52, PALE, "none")
+    return b
+
+
+def _claude_opus_55(accent: str) -> str:
+    # A clock whose coloured arc runs further than before: the five-hour limit, raised. To the
+    # right, three boxes kept apart by dashed dividers -- three different numbers that must not
+    # be merged -- each with its own downward arrow; the last box is dashed, because that one is
+    # an estimate, not a price.
+    other = second_colour(accent)
+    b = circle(360, 420, 160, "#FFFFFF", INK)
+    b += f'<path d="M360 260 A160 160 0 1 1 212 480" fill="none" stroke="{accent}" stroke-width="16" stroke-linecap="round"/>'
+    b += line(360, 420, 360, 320, INK, 12) + line(360, 420, 440, 460, INK, 12) + circle(360, 420, 14, INK, "none")
+    for i, (colour, drop, broken) in enumerate(((other, 90, False), (accent, 150, False), (other, 120, True))):
+        x = 700 + i * 250
+        if broken:
+            b += f'<rect x="{x}" y="250" width="190" height="360" rx="18" fill="#FFFFFF" stroke="{colour}" stroke-width="6" stroke-dasharray="18 12"/>'
+        else:
+            b += rect(x, 250, 190, 360, "#FFFFFF", colour, 18)
+        b += _down(x + 95, 320, 320 + drop, colour, broken=broken)
+        if i < 2:
+            b += dashed(x + 220, 250, x + 220, 610, "#C4CCCC", 6)
+    return b
+
+
+def _google_vids_omni_free(accent: str) -> str:
+    # A desktop screen holding a strip of film and a play mark: clips made on a computer. To the
+    # right, two separate gauges filled to different points -- the two help pages that give the
+    # monthly allowance differently, side by side, neither chosen.
+    other = second_colour(accent)
+    b = monitor(200, 230, 620, 340)
+    b += rect(260, 300, 500, 150, "#FFFFFF", other, 12)
+    b += "".join(rect(280 + i * 60, 312, 26, 18, PALE, other, 4) + rect(280 + i * 60, 420, 26, 18, PALE, other, 4) for i in range(8))
+    b += circle(510, 375, 42, "#FFFFFF", accent) + f'<path d="M497 352 l36 23 l-36 23 Z" fill="{accent}"/>'
+    for cx, frac, colour in ((1040, 0.3, accent), (1290, 0.8, other)):
+        b += f'<path d="M{cx-110} 460 A110 110 0 0 1 {cx+110} 460" fill="none" stroke="#C4CCCC" stroke-width="22" stroke-linecap="round"/>'
+        ang = math.pi * (1 - frac)
+        ex, ey = cx + 110 * math.cos(ang), 460 - 110 * math.sin(ang)
+        b += f'<path d="M{cx-110} 460 A110 110 0 0 1 {ex:.1f} {ey:.1f}" fill="none" stroke="{colour}" stroke-width="22" stroke-linecap="round"/>'
+        b += rect(cx - 90, 500, 180, 90, "#FFFFFF", colour, 14) + line(cx - 60, 545, cx + 60, 545, "#C4CCCC", 10)
+    return b
+
+
+def _wordpress_712(accent: str) -> str:
+    # A site's dashboard page with a small box whose bottom line is read through a lens: the
+    # version the site runs. An arrow leads on to a circular update mark and then a tick -- check
+    # the version first, then update to the fixed release for your own branch.
+    other = second_colour(accent)
+    b = rect(200, 220, 520, 420, "#FFFFFF", INK, 20) + rect(200, 220, 520, 56, PALE, "none", 18)
+    b += rect(240, 310, 260, 220, "#FFFFFF", other, 14)
+    b += "".join(line(270, 355 + i * 40, 460 - (i % 2) * 50, 355 + i * 40, "#C4CCCC", 10) for i in range(3))
+    b += line(270, 490, 440, 490, accent, 12)
+    b += line(540, 330, 680, 330, "#C4CCCC", 12) + line(540, 380, 650, 380, "#C4CCCC", 12)
+    b += magnifier(470, 490, 62, accent)
+    b += arrow(760, 930, 430, other)
+    b += f'<path d="M1080 330 A100 100 0 1 1 990 400" fill="none" stroke="{other}" stroke-width="14" stroke-linecap="round"/>'
+    b += f'<path d="M1060 300 L1090 332 L1052 350" fill="none" stroke="{other}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>'
+    b += arrow(1215, 1300, 430, accent)
+    b += tick(1370, 430, 62, accent)
+    return b
+
+
+def _synology_dsm_sa2613(accent: str) -> str:
+    # A four-bay storage box; two of its bays are drawn in the accent, the two flaws that need no
+    # sign-in. An arrow leads to a version list with one row picked out and a tick beside it:
+    # compare the version you run against the fixed releases, then update.
+    other = second_colour(accent)
+    b = rect(220, 230, 440, 400, "#FFFFFF", INK, 22)
+    for i in range(4):
+        colour = accent if i < 2 else other
+        b += rect(260 + i * 95, 280, 70, 250, PALE if i < 2 else "#FFFFFF", colour, 10)
+        b += line(275 + i * 95, 320, 315 + i * 95, 320, colour, 8)
+    b += "".join(circle(290 + i * 50, 580, 11, other if i % 2 else accent, "none") for i in range(4))
+    b += arrow(700, 880, 430, other)
+    b += sheet(920, 230, 300, 400, other, rows=6)
+    b += rect(950, 385, 240, 46, PALE, accent, 10)
+    b += tick(1330, 408, 60, accent)
+    return b
+
+
+def _snapdragon_8_elite_gen6(accent: str) -> str:
+    # Two chips side by side, one drawn in the accent and one in the second colour: two platforms
+    # of one generation. Between them a shared band carries a few marks drawn in both colours --
+    # many of the same features, without saying which ones differ.
+    other = second_colour(accent)
+    b = ""
+    for x, colour in ((240, accent), (1000, other)):
+        b += rect(x, 250, 340, 340, PALE, colour, 22) + rect(x + 60, 310, 220, 220, "#FFFFFF", colour, 14)
+        for i in range(5):
+            b += line(x - 30, 285 + i * 65, x, 285 + i * 65, colour, 8) + line(x + 340, 285 + i * 65, x + 370, 285 + i * 65, colour, 8)
+            b += line(x + 35 + i * 65, 220, x + 35 + i * 65, 250, colour, 8) + line(x + 35 + i * 65, 590, x + 35 + i * 65, 620, colour, 8)
+    b += rect(640, 380, 300, 80, "#FFFFFF", INK, 40)
+    b += "".join(circle(690 + i * 66, 420, 16, accent if i % 2 == 0 else other, "none") for i in range(4))
+    return b
+
+
+def _japan_onchain_forum(accent: str) -> str:
+    # A round table with seats around it -- a forum, a place to review -- with a short chain of
+    # linked blocks leading into it from above. Below, two smaller tables sit apart: the two study
+    # groups that review their own lists. Nothing here is a law or an approval.
+    other = second_colour(accent)
+    b = circle(800, 380, 130, PALE, accent)
+    b += "".join(circle(800 + 190 * c, 380 + 150 * s, 30, "#FFFFFF", accent) for c, s in ((1, 0), (-1, 0), (0.7, 0.72), (-0.7, 0.72), (0.7, -0.72), (-0.7, -0.72)))
+    b += rect(560, 140, 100, 70, "#FFFFFF", other, 14) + line(660, 175, 700, 175, other, 10) + rect(700, 140, 100, 70, "#FFFFFF", other, 14) + line(800, 210, 800, 250, other, 10)
+    for cx in (330, 1270):
+        b += circle(cx, 560, 80, "#FFFFFF", other)
+        b += "".join(circle(cx + 120 * c, 560 + 90 * s, 22, PALE, other) for c, s in ((1, 0), (-1, 0), (0, 1)))
+        b += dashed(cx + (150 if cx < 800 else -150), 520, 800 + (-150 if cx < 800 else 150), 450, "#C4CCCC", 6)
+    return b
+
+
+def _taiwan_cbc_layers(accent: str) -> str:
+    # Three bands stacked like floors of one building, each with its own mark: a coin on the top
+    # band (stablecoins, mostly issued outside banks), a bank on the middle band (deposit tokens,
+    # issued by commercial banks), and a round seal on the bottom band (central bank money). One
+    # vertical line runs through all three: layers that coexist rather than replace each other.
+    other = second_colour(accent)
+    b = ""
+    for i, colour in enumerate((accent, other, accent)):
+        y = 200 + i * 160
+        b += rect(260, y, 1080, 130, "#FFFFFF" if i != 1 else PALE, colour, 18)
+    b += coin(420, 265, 46, accent) + coin(560, 265, 46, accent)
+    b += bank(360, 370, 150, other) + bank(560, 370, 150, other)
+    b += circle(460, 585, 50, "#FFFFFF", accent) + circle(460, 585, 22, PALE, accent)
+    b += circle(640, 585, 50, "#FFFFFF", accent) + circle(640, 585, 22, PALE, accent)
+    b += dashed(1100, 190, 1100, 670, INK, 8)
+    b += "".join(circle(1100, 265 + i * 160, 16, INK, "none") for i in range(3))
+    return b
+
+
+def _korea_market_manipulation(accent: str) -> str:
+    # A column of order-book bars that flicker in alternating colours -- trading made to look
+    # busy -- read through a lens. An arrow leads to four case folders: one drawn solid (the case
+    # filed as a criminal complaint) and three outlined in dashes (the cases passed on to
+    # investigators). Nothing names a coin or an exchange.
+    other = second_colour(accent)
+    b = rect(200, 220, 360, 430, "#FFFFFF", INK, 20)
+    for i in range(8):
+        w = (140, 220, 100, 250, 170, 230, 120, 200)[i]
+        b += rect(230, 250 + i * 48, w, 30, accent if i % 2 == 0 else PALE, "none" if i % 2 == 0 else other, 8)
+    b += magnifier(470, 460, 70, other)
+    b += arrow(660, 840, 430, other)
+    for i in range(4):
+        x, y = 890 + (i % 2) * 270, 240 + (i // 2) * 220
+        if i == 0:
+            b += rect(x, y + 30, 220, 150, "#FFFFFF", accent, 14) + rect(x, y, 100, 45, "#FFFFFF", accent, 12)
+        else:
+            b += f'<rect x="{x}" y="{y+30}" width="220" height="150" rx="14" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="16 12"/>'
+            b += f'<rect x="{x}" y="{y}" width="100" height="45" rx="12" fill="#FFFFFF" stroke="{other}" stroke-width="6" stroke-dasharray="14 10"/>'
+    return b
+
+
 _DRAWINGS = {
     "crypto-news-taiwan-vasp-act-20260630": _taiwan_vasp_act,
     "crypto-news-mica-transition-ends-20260701": _mica_transition,
@@ -1540,6 +1729,17 @@ _DRAWINGS = {
     "ai-news-openai-hugging-face-incident-20260826": _openai_hugging_face_incident,
     "ai-news-openai-cursor-wind-down-20260828": _openai_cursor_wind_down,
     "ai-news-meta-muse-agent-20260909": _meta_muse_agent,
+    # 4.8
+    "ai-news-chatgpt-ads-taiwan-20260923": _chatgpt_ads_taiwan,
+    "ai-news-gpt-6-sol-luna-20260923": _gpt_6_sol_luna,
+    "ai-news-claude-opus-55-20260922": _claude_opus_55,
+    "ai-news-google-vids-omni-free-20260924": _google_vids_omni_free,
+    "tech-news-wordpress-712-20260922": _wordpress_712,
+    "tech-news-synology-dsm-sa2613-20260918": _synology_dsm_sa2613,
+    "tech-news-snapdragon-8-elite-gen6-20260922": _snapdragon_8_elite_gen6,
+    "crypto-news-japan-onchain-finance-forum-20260925": _japan_onchain_forum,
+    "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917": _taiwan_cbc_layers,
+    "crypto-news-korea-market-manipulation-referrals-20260923": _korea_market_manipulation,
 }
 
 

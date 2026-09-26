@@ -31,7 +31,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本索引於 2026 年 9 月 17 日查核，之後多次增補（最近一次 2026 年 9 月 23 日）。本站沒有實測任何產品、軟體或服務，也不提供購買、升級或換機的建議；這個系列會整理官方定價、規格與條件的差異，但不做「該不該買」「哪一個比較好」的結論。廠商自己測到或宣稱的效能數字，一律寫成「Apple 表示」「NVIDIA 稱」，並連同對照機型、測試條件與「最高」這類限定詞一起寫；拿不到一手來源的數字不寫。各篇的查核日寫在各篇開頭，價格、上市時程與功能的適用地區以各該官方頁面當期公告為準。"
+          "text": "本索引於 2026 年 9 月 17 日查核，之後多次增補（最近一次 2026 年 9 月 27 日）。本站沒有實測任何產品、軟體或服務，也不提供購買、升級或換機的建議；這個系列會整理官方定價、規格與條件的差異，但不做「該不該買」「哪一個比較好」的結論。廠商自己測到或宣稱的效能數字，一律寫成「Apple 表示」「NVIDIA 稱」，並連同對照機型、測試條件與「最高」這類限定詞一起寫；拿不到一手來源的數字不寫。各篇的查核日寫在各篇開頭，價格、上市時程與功能的適用地區以各該官方頁面當期公告為準。"
         },
         {
           "type": "summary",
@@ -120,6 +120,10 @@
           "text": "8 月 25 日，Apple 發表 M6 與 M5 Ultra 兩顆晶片，由新款 Mac mini 與新款 Mac Studio 首發搭載。Apple 表示 M6 是 Apple 首款 2 奈米製程晶片，M5 Ultra 最高支援 512GB 統一記憶體與 1.2TB/s 頻寬；搭載 M6 的 Mac mini 台灣售價 NT$29,900 起，搭載 M5 Ultra 的 Mac Studio 為 NT$199,900 起。那一篇花了不少篇幅在一件事上：同一顆 M5 Ultra 的 AI 效能倍數，晶片新聞稿與 Mac Studio 新聞稿給的數字不同，測試月份與說法也不同，不能互換。這三篇的效能、續航與準確度數字都是 Apple 自己的測試或宣稱。"
         },
         {
+          "type": "paragraph",
+          "text": "9 月 22 日，高通以茂宜島為電頭，同時發表 Snapdragon 8 Elite Extreme Gen 6 與 Snapdragon 8 Elite Gen 6 兩款旗艦手機平台；新聞稿除了 2 奈米製程節點之外沒有其他規格數字，也沒有寫代工廠、上市日、售價或台灣資訊。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "平台與軟體：功能各自綁機型、地區與語言"
@@ -135,6 +139,10 @@
         {
           "type": "paragraph",
           "text": "9 月 16 日，Apple 另外公告 App Store 訂閱隨 iOS 27 而來的變動：多個訂閱可合併成組合方案或套組，最多五個開發者參與；多名額購買在 App Store Connect 預設開啟，大量採購預定 10 月 22 日推出，群組購買只預告今年冬天。官方頁面沒有寫出任何國家或地區。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 18 日，Synology 發布資安公告 Synology-SA-26:13，處理 DSM 的八個 CVE 編號，其中兩個由 Synology 評為 Critical、CVSS 3.1 基本分數 9.8，不需要登入就可能被利用；9 月 22 日，WordPress 發布 7.1.2 安全版，修補一個自評為嚴重等級的核心漏洞，修補範圍從 7.1 分支回溯到 4.7 分支；兩篇都整理了各自的修補版本對照，以及怎麼核對自己的版本號。"
         },
         {
           "type": "heading",
@@ -271,6 +279,17 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "高通發表兩款 Snapdragon 旗艦手機平台：Extreme 版與 8 Elite Gen 6 差在哪",
+              "kind": "life",
+              "slug": "tech-news-snapdragon-8-elite-gen6-20260922"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "平台與軟體"
@@ -360,6 +379,28 @@
               "text": "ENISA 公布 2026 威脅全景報告：統計的是 2025 一整年的事件",
               "kind": "life",
               "slug": "tech-news-enisa-threat-landscape-20260922"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 7.1.2 修補核心嚴重漏洞：各分支的修補版本與怎麼確認自己的網站",
+              "kind": "life",
+              "slug": "tech-news-wordpress-712-20260922"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Synology DSM 公告 SA-26:13：兩個免登入的 9.8 分漏洞，先對版本號再更新",
+              "kind": "life",
+              "slug": "tech-news-synology-dsm-sa2613-20260918"
             }
           ]
         },
@@ -642,7 +683,7 @@
         },
         {
           "type": "paragraph",
-          "text": "This index was checked on September 17, 2026 and expanded on September 18, 2026. This site has not tested any product, software, or service itself, and offers no advice on whether to buy, upgrade, or switch devices; this series lays out the differences in official pricing, specifications, and conditions, but does not conclude “whether you should buy” or “which one is better.” Performance figures a vendor measured or claimed itself are always attributed — “Apple states,” “NVIDIA says” — together with the comparison model, test conditions, and qualifiers such as “up to”; figures without a primary source are left out. Each article states its own fact-check date near the top, and pricing, launch timing, and the regions where a feature applies follow that official page's current announcement."
+          "text": "This index was checked on September 17, 2026 and expanded on September 27, 2026. This site has not tested any product, software, or service itself, and offers no advice on whether to buy, upgrade, or switch devices; this series lays out the differences in official pricing, specifications, and conditions, but does not conclude “whether you should buy” or “which one is better.” Performance figures a vendor measured or claimed itself are always attributed — “Apple states,” “NVIDIA says” — together with the comparison model, test conditions, and qualifiers such as “up to”; figures without a primary source are left out. Each article states its own fact-check date near the top, and pricing, launch timing, and the regions where a feature applies follow that official page's current announcement."
         },
         {
           "type": "summary",
@@ -731,6 +772,10 @@
           "text": "On August 25, Apple introduced two chips, M6 and M5 Ultra, debuting in the new Mac mini and new Mac Studio respectively. Apple states M6 is Apple's first chip built on a 2-nanometer process, and M5 Ultra supports up to 512GB of unified memory and 1.2TB/s of bandwidth; the Mac mini with M6 is priced from NT$29,900 in Taiwan, and the Mac Studio with M5 Ultra from NT$199,900. That article spends considerable space on one issue: the same M5 Ultra's AI-performance multiple is given as different figures in the chip press release and the Mac Studio press release, with different test months and different wording, and the two cannot be used interchangeably. The performance, battery-life, and accuracy figures in all three of these articles are Apple's own tests or claims."
         },
         {
+          "type": "paragraph",
+          "text": "On September 22, Qualcomm unveiled two flagship mobile platforms at once, the Snapdragon 8 Elite Extreme Gen 6 and the Snapdragon 8 Elite Gen 6, in a press release datelined Maui; beyond the 2nm process node it gives no specification figures, and it names no foundry, launch date, price or Taiwan information."
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Platforms and Software: Features Each Tied to Their Own Devices, Regions, and Languages"
@@ -746,6 +791,10 @@
         {
           "type": "paragraph",
           "text": "Also on September 16, Apple announced the subscription changes that come with iOS 27: several subscriptions may be sold as one purchase, as a bundle or a suite, with up to five developers taking part; multiseat purchases are on by default in App Store Connect, volume purchasing is scheduled for October 22 and group purchases are only promised for this winter. The official pages name no country or region."
+        },
+        {
+          "type": "paragraph",
+          "text": "On September 18, Synology published security advisory Synology-SA-26:13, covering eight CVE entries in DSM, two of them rated Critical by Synology, with a CVSS 3.1 base score of 9.8, and exploitable without authentication; on September 22, WordPress released 7.1.2, a security release patching a core vulnerability it rates as critical severity, with patches reaching back from the 7.1 branch to the 4.7 branch; both articles set out the patched versions and how to check your own version number."
         },
         {
           "type": "heading",
@@ -860,6 +909,17 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Qualcomm Unveils Two Snapdragon Flagship Mobile Platforms: How the Extreme and 8 Elite Gen 6 Differ",
+              "kind": "life",
+              "slug": "tech-news-snapdragon-8-elite-gen6-20260922"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "Platforms and Software"
@@ -894,6 +954,28 @@
               "text": "New App Store Subscription Rules: Bundles Cap at Five Developers, Multiseat Purchases On by Default, Volume Purchasing Arrives October 22",
               "kind": "life",
               "slug": "tech-news-app-store-bundles-multiseat-20260916"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 7.1.2 Patches a Critical Core Vulnerability: Patched Versions by Branch and How to Check Your Site",
+              "kind": "life",
+              "slug": "tech-news-wordpress-712-20260922"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Synology Advisory SA-26:13: Two Unauthenticated 9.8 Flaws — Check Your Version Before Updating",
+              "kind": "life",
+              "slug": "tech-news-synology-dsm-sa2613-20260918"
             }
           ]
         },
@@ -1143,7 +1225,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本索引は2026年9月17日に確認し、2026年9月18日に追補しました。当サイトはいかなる製品・ソフトウェア・サービスについても実機での検証を行っておらず、購入・買い替え・機種変更についての助言も行いません。このシリーズでは公式価格・仕様・条件の違いを整理しますが、「買うべきか」「どちらが優れているか」という結論は書きません。ベンダー自身が測定または主張する性能数値は、必ず「Appleは述べています」「NVIDIAは述べています」のように帰属を明記し、比較対象の機種、測定条件、そして「最大」といった限定語もあわせて記載します。一次情報源が確認できない数値は掲載しません。各記事は冒頭にそれぞれの確認日を記しており、価格・発売時期・機能の対象地域は、それぞれの公式ページの最新の発表に従います。"
+          "text": "本索引は2026年9月17日に確認し、2026年9月27日に追補しました。当サイトはいかなる製品・ソフトウェア・サービスについても実機での検証を行っておらず、購入・買い替え・機種変更についての助言も行いません。このシリーズでは公式価格・仕様・条件の違いを整理しますが、「買うべきか」「どちらが優れているか」という結論は書きません。ベンダー自身が測定または主張する性能数値は、必ず「Appleは述べています」「NVIDIAは述べています」のように帰属を明記し、比較対象の機種、測定条件、そして「最大」といった限定語もあわせて記載します。一次情報源が確認できない数値は掲載しません。各記事は冒頭にそれぞれの確認日を記しており、価格・発売時期・機能の対象地域は、それぞれの公式ページの最新の発表に従います。"
         },
         {
           "type": "summary",
@@ -1232,6 +1314,10 @@
           "text": "8月25日、Appleは新しいMac miniとMac Studioにそれぞれ初搭載される2つのチップ、M6とM5 Ultraを発表しました。Appleは、M6がApple初の2ナノメートルプロセスで製造されたチップであり、M5 Ultraは最大512GBのユニファイドメモリと1.2TB/sの帯域幅に対応するとしています。M6搭載のMac miniは台湾価格29,900台湾ドルから、M5 Ultra搭載のMac Studioは199,900台湾ドルからです。この記事はある1点にかなりの分量を割いています。同じM5 UltraのAI性能の倍率が、チップのプレスリリースとMac Studioのプレスリリースとで異なる数値になっており、測定した月も表現も違うため、両者を互換的に扱うことはできません。これら3本の記事に登場する性能・バッテリー駆動時間・精度に関する数値は、いずれもApple自身のテストまたは主張によるものです。"
         },
         {
+          "type": "paragraph",
+          "text": "9月22日、Qualcommはマウイを発信地とするプレスリリースで、Snapdragon 8 Elite Extreme Gen 6とSnapdragon 8 Elite Gen 6という2つのフラッグシップ向けモバイルプラットフォームを同時に発表しましたが、2nmプロセスノード以外の仕様数値はなく、受託製造先、発売日、価格、台湾情報も記載されていません。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "プラットフォームとソフトウェア：機種・地域・言語ごとに異なる機能"
@@ -1247,6 +1333,10 @@
         {
           "type": "paragraph",
           "text": "同じ9月16日、AppleはiOS 27に伴うサブスクリプションの変更も発表しました。複数のサブスクリプションをバンドルまたはスイートとして1回の購入にまとめられ、最大5つのデベロッパーが参加できます。マルチシート購入はApp Store Connectで既定で有効になり、ボリューム購入は10月22日の提供予定、グループ購入は今年の冬とだけ予告されています。公式ページには国や地域の記載がありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9月18日、SynologyはDSMのセキュリティ勧告Synology-SA-26:13を公表し、挙げた8件のCVEのうち2件をCritical、CVSS 3.1基本値9.8、認証不要で悪用されうるものとし、9月22日にはWordPressが、自ら重大と評価したコアの脆弱性を7.1系から4.7系まで遡って修正するセキュリティリリース7.1.2を公開しており、どちらの記事もそれぞれの修正バージョンと自分のバージョン番号の確認方法を整理しています。"
         },
         {
           "type": "heading",
@@ -1361,6 +1451,17 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "QualcommがSnapdragonフラッグシップ向けモバイルプラットフォームを2機種発表：Extreme版と8 Elite Gen 6は何が違うのか",
+              "kind": "life",
+              "slug": "tech-news-snapdragon-8-elite-gen6-20260922"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "プラットフォームとソフトウェア"
@@ -1395,6 +1496,28 @@
               "text": "App Store定期購読の新ルール：バンドルは開発者最大5社まで、マルチシート購入はデフォルトで有効、一括購入は10月22日開始",
               "kind": "life",
               "slug": "tech-news-app-store-bundles-multiseat-20260916"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 7.1.2がコアの重大な脆弱性を修正：各ブランチの修正バージョンと自サイトの確認方法",
+              "kind": "life",
+              "slug": "tech-news-wordpress-712-20260922"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "SynologyがDSM勧告SA-26:13を公表：認証不要のCVSS 9.8脆弱性2件、バージョン番号を確認してから更新を",
+              "kind": "life",
+              "slug": "tech-news-synology-dsm-sa2613-20260918"
             }
           ]
         },
@@ -1644,7 +1767,7 @@
         },
         {
           "type": "paragraph",
-          "text": "본 색인은 2026년 9월 17일에 검증했고, 2026년 9월 18일에 보완했습니다. 본 사이트는 어떤 제품, 소프트웨어, 서비스도 직접 시험해 보지 않았으며, 구매, 업그레이드, 기기 교체에 대한 조언도 하지 않습니다. 이 시리즈는 공식 가격, 사양, 조건의 차이를 정리하지만, '사야 하는지', '어느 쪽이 더 나은지'와 같은 결론은 쓰지 않습니다. 업체가 스스로 측정하거나 주장한 성능 수치는 항상 'Apple은 밝힙니다', 'NVIDIA는 밝힙니다'처럼 출처를 명시하고, 비교 대상 기종, 테스트 조건, '최대'와 같은 한정어도 함께 적습니다. 1차 출처를 확인할 수 없는 수치는 싣지 않습니다. 각 기사는 첫머리에 각자의 확인일을 밝히고 있으며, 가격, 출시 시기, 기능이 적용되는 지역은 해당 공식 페이지의 최신 발표를 따릅니다."
+          "text": "본 색인은 2026년 9월 17일에 검증했고, 2026년 9월 27일에 보완했습니다. 본 사이트는 어떤 제품, 소프트웨어, 서비스도 직접 시험해 보지 않았으며, 구매, 업그레이드, 기기 교체에 대한 조언도 하지 않습니다. 이 시리즈는 공식 가격, 사양, 조건의 차이를 정리하지만, '사야 하는지', '어느 쪽이 더 나은지'와 같은 결론은 쓰지 않습니다. 업체가 스스로 측정하거나 주장한 성능 수치는 항상 'Apple은 밝힙니다', 'NVIDIA는 밝힙니다'처럼 출처를 명시하고, 비교 대상 기종, 테스트 조건, '최대'와 같은 한정어도 함께 적습니다. 1차 출처를 확인할 수 없는 수치는 싣지 않습니다. 각 기사는 첫머리에 각자의 확인일을 밝히고 있으며, 가격, 출시 시기, 기능이 적용되는 지역은 해당 공식 페이지의 최신 발표를 따릅니다."
         },
         {
           "type": "summary",
@@ -1733,6 +1856,10 @@
           "text": "8월 25일, Apple은 새 Mac mini와 Mac Studio에 각각 처음 탑재되는 두 칩, M6와 M5 Ultra를 공개했습니다. Apple은 M6가 Apple 최초의 2나노미터 공정 칩이며, M5 Ultra는 최대 512GB의 통합 메모리와 1.2TB/s의 대역폭을 지원한다고 밝혔습니다. M6를 탑재한 Mac mini는 대만 가격 29,900대만달러부터, M5 Ultra를 탑재한 Mac Studio는 199,900대만달러부터입니다. 그 기사는 한 가지 쟁점에 상당한 분량을 할애합니다. 같은 M5 Ultra의 AI 성능 배수가 칩 보도자료와 Mac Studio 보도자료에서 서로 다른 수치로 나와 있고 측정한 달과 표현도 달라, 둘을 서로 바꿔 쓸 수 없습니다. 이 세 기사에 나오는 성능, 배터리 사용 시간, 정확도 수치는 모두 Apple 자체 테스트나 주장입니다."
         },
         {
+          "type": "paragraph",
+          "text": "9월 22일 퀄컴은 마우이 발신 보도자료로 Snapdragon 8 Elite Extreme Gen 6와 Snapdragon 8 Elite Gen 6라는 두 종의 플래그십 모바일 플랫폼을 동시에 발표했지만, 보도자료에는 2nm 공정 노드 외의 사양 수치가 없고 파운드리, 출시일, 가격, 대만 정보도 없습니다."
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "플랫폼과 소프트웨어: 기기, 지역, 언어마다 다른 기능"
@@ -1748,6 +1875,10 @@
         {
           "type": "paragraph",
           "text": "같은 9월 16일, Apple은 iOS 27과 함께 오는 구독 변경도 발표했습니다. 여러 구독을 번들이나 스위트로 묶어 한 번의 구매로 팔 수 있고, 최대 5개 개발자가 참여할 수 있습니다. 멀티시트 구매는 App Store Connect에서 기본으로 켜지고, 볼륨 구매는 10월 22일 출시 예정이며, 그룹 구매는 올겨울이라고만 예고됐습니다. 공식 페이지에는 국가나 지역이 적혀 있지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "9월 18일 Synology는 DSM 보안 권고문 Synology-SA-26:13을 발표해 CVE 8건 가운데 2건을 Critical, CVSS 3.1 기본 점수 9.8, 인증 없이 악용될 수 있는 취약점으로 밝혔고, 9월 22일 WordPress는 스스로 심각 등급으로 평가한 코어 취약점을 7.1 브랜치부터 4.7 브랜치까지 거슬러 패치하는 보안 릴리스 7.1.2를 배포했으며, 두 기사 모두 각각의 패치 버전과 자신의 버전 번호를 확인하는 방법을 정리했습니다."
         },
         {
           "type": "heading",
@@ -1862,6 +1993,17 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "퀄컴, Snapdragon 플래그십 모바일 플랫폼 두 종 발표: Extreme 버전과 8 Elite Gen 6는 어떻게 다른가",
+              "kind": "life",
+              "slug": "tech-news-snapdragon-8-elite-gen6-20260922"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "플랫폼과 소프트웨어"
@@ -1896,6 +2038,28 @@
               "text": "App Store 구독 새 규칙: 번들은 개발자 최대 5개사, 다중 시트 구매 기본 활성화, 볼륨 구매는 10월 22일 시작",
               "kind": "life",
               "slug": "tech-news-app-store-bundles-multiseat-20260916"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 7.1.2, 코어의 심각한 취약점 패치: 브랜치별 패치 버전과 내 사이트 확인 방법",
+              "kind": "life",
+              "slug": "tech-news-wordpress-712-20260922"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Synology, DSM 권고문 SA-26:13 발표: 인증 없이 악용 가능한 9.8점 취약점 2건, 버전 번호부터 확인을",
+              "kind": "life",
+              "slug": "tech-news-synology-dsm-sa2613-20260918"
             }
           ]
         },
@@ -2145,7 +2309,7 @@
         },
         {
           "type": "paragraph",
-          "text": "本索引于 2026 年 9 月 17 日查核，2026 年 9 月 18 日增补。本站没有实测任何产品、软件或服务，也不提供购买、升级或换机的建议；这个系列会整理官方定价、规格与条件的差异，但不做“该不该买”“哪一个比较好”的结论。厂商自己测到或宣称的性能数字，一律写成“Apple 表示”“NVIDIA 称”，并连同对照机型、测试条件与“最高”这类限定词一起写；拿不到一手来源的数字不写。各篇的查核日写在各篇开头，价格、上市时程与功能的适用地区以各该官方页面当期公告为准。"
+          "text": "本索引于 2026 年 9 月 17 日查核，2026 年 9 月 27 日增补。本站没有实测任何产品、软件或服务，也不提供购买、升级或换机的建议；这个系列会整理官方定价、规格与条件的差异，但不做“该不该买”“哪一个比较好”的结论。厂商自己测到或宣称的性能数字，一律写成“Apple 表示”“NVIDIA 称”，并连同对照机型、测试条件与“最高”这类限定词一起写；拿不到一手来源的数字不写。各篇的查核日写在各篇开头，价格、上市时程与功能的适用地区以各该官方页面当期公告为准。"
         },
         {
           "type": "summary",
@@ -2234,6 +2398,10 @@
           "text": "8 月 25 日，Apple 发表 M6 与 M5 Ultra 两颗芯片，由新款 Mac mini 与新款 Mac Studio 首发搭载。Apple 表示 M6 是 Apple 首款 2 纳米制程芯片，M5 Ultra 最高支持 512GB 统一内存与 1.2TB/s 带宽；搭载 M6 的 Mac mini 台湾售价 NT$29,900 起，搭载 M5 Ultra 的 Mac Studio 为 NT$199,900 起。那一篇花了不少篇幅在一件事上：同一颗 M5 Ultra 的 AI 性能倍数，芯片新闻稿与 Mac Studio 新闻稿给的数字不同，测试月份与说法也不同，不能互换。这三篇的性能、续航与准确度数字都是 Apple 自己的测试或宣称。"
         },
         {
+          "type": "paragraph",
+          "text": "9 月 22 日，高通以茂宜岛为电头，同时发表 Snapdragon 8 Elite Extreme Gen 6 与 Snapdragon 8 Elite Gen 6 两款旗舰手机平台；新闻稿除了 2 纳米制程节点之外没有其他规格数字，也没有写代工厂、上市日、售价或台湾信息。"
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "平台与软件：功能各自绑机型、地区与语言"
@@ -2249,6 +2417,10 @@
         {
           "type": "paragraph",
           "text": "9 月 16 日，Apple 另外公告 App Store 订阅随 iOS 27 而来的变动：多个订阅可合并成组合方案或套组，最多五个开发者参与；多名额购买在 App Store Connect 默认开启，批量采购预定 10 月 22 日推出，群组购买只预告今年冬天。官方页面没有写出任何国家或地区。"
+        },
+        {
+          "type": "paragraph",
+          "text": "9 月 18 日，Synology 发布网络安全公告 Synology-SA-26:13，处理 DSM 的八个 CVE 编号，其中两个由 Synology 评为 Critical、CVSS 3.1 基本分数 9.8，无需登录就可能被利用；9 月 22 日，WordPress 发布 7.1.2 安全版，修复一个自评为严重级别的核心漏洞，修复范围从 7.1 分支回溯到 4.7 分支；两篇都整理了各自的修复版本对照，以及如何核对自己的版本号。"
         },
         {
           "type": "heading",
@@ -2363,6 +2535,17 @@
           ]
         },
         {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "高通发布两款 Snapdragon 旗舰手机平台：Extreme 版与 8 Elite Gen 6 差在哪",
+              "kind": "life",
+              "slug": "tech-news-snapdragon-8-elite-gen6-20260922"
+            }
+          ]
+        },
+        {
           "type": "heading",
           "level": 2,
           "text": "平台与软件"
@@ -2397,6 +2580,28 @@
               "text": "App Store 订阅新规则：套装最多五家开发者、多席位购买默认开启、批量购买 10 月 22 日上线",
               "kind": "life",
               "slug": "tech-news-app-store-bundles-multiseat-20260916"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 7.1.2 修复核心严重漏洞：各分支的修复版本与如何确认自己的网站",
+              "kind": "life",
+              "slug": "tech-news-wordpress-712-20260922"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Synology 发布 DSM 公告 SA-26:13：两个无需登录的 9.8 分漏洞，先核对版本号再更新",
+              "kind": "life",
+              "slug": "tech-news-synology-dsm-sa2613-20260918"
             }
           ]
         },
