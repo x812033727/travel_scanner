@@ -20,10 +20,15 @@ from datetime import UTC, datetime
 from typing import Any, cast
 from uuid import uuid4
 
-from sqlalchemy import func, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import AdminAuditLog, User, VideoProject, VideoToolToken
+from app.video_automation.judge import (
+    retention_required_for,
+    series_doc_note,
+    series_doc_passed,
+)
 from app.video_automation.models import (
     VideoAutomationSettings,
     VideoDramaDoc,
@@ -33,6 +38,9 @@ from app.video_automation.models import (
 )
 from app.video_automation.requests import request_view
 from app.video_automation.schemas import (
+    BingeQuoteOut,
+    BudgetLine,
+    SeriesCompilationStartOut,
     SeriesContextOut,
     SeriesDocEditIn,
     SeriesDocOut,
@@ -48,6 +56,7 @@ from app.video_automation.schemas import (
     SeriesPatch,
     SeriesSummary,
 )
+from app.video_media.catalog import JUDGE_USD_PER_CALL, find_model
 from app.video_media.meter import spend_by_slug
 from app.video_reviews.admin_service import list_projects
 
@@ -57,6 +66,50 @@ BEAT_FIELDS = ("hook", "conflict", "turn", "cliffhanger")
 RECENT_RECAPS = 3
 ACTIVE_STATUSES = ("setting", "outline", "active")
 EPISODE_OPEN = ("planned", "ready", "queued", "started")
+
+# A binge series (docs/videos/BINGE.md). The genre presets the planner writes from: the
+# classic xianxia series keeps today's prompts and rules; the others carry the retention
+# spec, so their chapter outlines must schedule the satisfaction beats a viewer stays for.
+# The satisfaction types are the same ids the worker's prompts use.
+GENRE_LABELS: dict[str, str] = {
+    "xianxia-bonds": "仙俠羈絆",
+    "rebirth-revenge": "重生復仇",
+    "system-game": "系統遊戲",
+    "urban-return": "都市歸來",
+    "empress-rise": "女帝崛起",
+    "custom": "自訂",
+}
+COMMON_SATISFACTIONS = (
+    "face_slap",
+    "identity_reveal",
+    "counter_kill",
+    "level_up",
+    "first_clear",
+    "betrayer_punished",
+    "villain_humbled",
+    "hidden_power",
+    "public_vindication",
+    "rescue",
+    "reversal",
+)
+GENRE_SATISFACTIONS: dict[str, tuple[str, ...]] = {
+    genre: COMMON_SATISFACTIONS for genre in GENRE_LABELS
+}
+BEATS = ("opening", "first_half", "midpoint", "second_half", "ending")
+HOOK_TYPES = ("question", "danger", "image", "line", "reversal")
+LEAD_ARCS = ("wins", "suffers", "mixed")
+MIN_SATISFACTION = 2
+# The series' title until the setting book names it (the form left it blank).
+AUTO_TITLE = "（企劃命名中）"
+# What the quote assumes per episode (docs/videos/DRAMA.md): thirty shots of six seconds for
+# three minutes, half of the shots retaken once, one keyframe take in three redrawn, a judge
+# call per keyframe and per clip, the sheets once per series.
+SHOTS_PER_MINUTE = 10
+SHOT_SECONDS = 6
+RETAKE_FACTOR = 1.5
+KEYFRAME_TAKES = 1.3
+SHEET_IMAGES = 18
+TIER_CLIP_SHARE: dict[str, float] = {"clips": 1.0, "hybrid": 0.4, "stills": 0.1}
 
 
 class SeriesRefused(Exception):
@@ -89,6 +142,90 @@ def chapter_range(series: VideoDramaSeries, chapter: int) -> tuple[int, int]:
 
 def chapter_of(series: VideoDramaSeries, number: int) -> int:
     return (number - 1) // series.episodes_per_chapter + 1
+
+
+def binge_shape(total_minutes: int, episode_minutes: int) -> tuple[int, int]:
+    """How many episodes a compilation of ``total_minutes`` takes, and how many per chapter.
+
+    Chapters hold six to ten episodes, whichever leaves the fullest last chapter, the larger
+    size when two tie (fewer chapter outlines to plan), so a 120-minute run of 3-minute
+    episodes is 40 episodes in four chapters of ten. A run of ten episodes or fewer is one
+    chapter: the outline planner accepts four to ten, so the pilot is a normal series.
+    """
+    planned = max(1, min(500, round(total_minutes / max(1, episode_minutes))))
+    if planned <= 10:
+        return planned, max(4, min(10, planned))
+    best = 10
+    for size in range(6, 11):
+        remainder = planned % size
+        short = 0 if remainder == 0 else size - remainder
+        current = planned % best
+        current_short = 0 if current == 0 else best - current
+        if (short, -size) < (current_short, -best):
+            best = size
+    return planned, best
+
+
+def auto_slug(genre: str, now: datetime | None = None) -> str:
+    """A slug for a series the form did not name: the genre, the day and four random hexits."""
+    when = now or _now()
+    return f"{genre[:16]}-{when:%Y%m%d}-{uuid4().hex[:4]}"
+
+
+def auto_title(genre: str) -> str:
+    return f"{GENRE_LABELS.get(genre, genre)}合集 {AUTO_TITLE}"
+
+
+def retention_required(series: VideoDramaSeries) -> bool:
+    return retention_required_for(series.genre)
+
+
+def _retention_problem(series: VideoDramaSeries, episodes: list[dict[str, Any]]) -> str | None:
+    """Why a chapter outline breaks the retention rules (docs/videos/BINGE.md), or None.
+
+    Every episode names its hook type, the lead's arc and at least MIN_SATISFACTION
+    satisfaction beats of the genre's types, the first of them inside the first half; two
+    episodes in a row never leave the lead only suffering; any four in a row pay something off.
+    """
+    allowed = set(GENRE_SATISFACTIONS.get(series.genre or "", COMMON_SATISFACTIONS))
+    ordered = sorted(
+        (e for e in episodes if isinstance(e.get("number"), int)), key=lambda e: e["number"]
+    )
+    for episode in ordered:
+        number = episode["number"]
+        if episode.get("hook_type") not in HOOK_TYPES:
+            return f"episode {number} needs hook_type: one of {', '.join(HOOK_TYPES)}"
+        if episode.get("lead_arc") not in LEAD_ARCS:
+            return f"episode {number} needs lead_arc: one of {', '.join(LEAD_ARCS)}"
+        beats = episode.get("satisfaction")
+        if not isinstance(beats, list) or len(beats) < MIN_SATISFACTION:
+            return f"episode {number} needs at least {MIN_SATISFACTION} satisfaction beats"
+        for beat in beats:
+            if (
+                not isinstance(beat, dict)
+                or beat.get("beat") not in BEATS
+                or beat.get("type") not in allowed
+            ):
+                return (
+                    f"episode {number}: every satisfaction beat is {{beat: one of "
+                    f"{', '.join(BEATS)}, type: one of the genre's types}}"
+                )
+        if beats[0].get("beat") not in ("opening", "first_half"):
+            return f"episode {number}: the first satisfaction beat must land in the first half"
+    for before, now in zip(ordered, ordered[1:], strict=False):
+        if before.get("lead_arc") == "suffers" and now.get("lead_arc") == "suffers":
+            return (
+                f"episodes {before['number']} and {now['number']} both leave the lead suffering; "
+                "give one of them a win"
+            )
+    for start in range(0, max(0, len(ordered) - 3)):
+        window = ordered[start : start + 4]
+        if not any(isinstance(e.get("payoffs"), list) and e["payoffs"] for e in window):
+            return (
+                f"episodes {window[0]['number']} to {window[-1]['number']} pay nothing off; "
+                "every four in a row must pay off at least one thread"
+            )
+    return None
 
 
 def latest_docs(docs: list[VideoDramaDoc]) -> dict[tuple[str, int], VideoDramaDoc]:
@@ -162,6 +299,8 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
         numbers.append(int(episode["number"]))
     if sorted(numbers) != list(range(first, last + 1)):
         return f"chapter {payload.chapter_number} covers episodes {first} to {last}"
+    if retention_required(series):
+        return _retention_problem(series, episodes)
     return None
 
 
@@ -208,6 +347,18 @@ def next_job_for(
         return _rewrite_job("setting", 0, docs, rewrites)
     if series.status == "outline":
         return _rewrite_job("outline", 0, docs, rewrites)
+    if series.status == "finished":
+        # Every episode is cleared for upload: a compilation series joins them once
+        # (docs/videos/BINGE.md), unless nothing was made or the owner skipped it all.
+        if (
+            series.compilation
+            and series.compilation_slug is None
+            and episodes
+            and all(e.status in ("done", "skipped") for e in episodes)
+            and any(e.status == "done" for e in episodes)
+        ):
+            return NextJob(kind="compilation")
+        return None
     if series.status != "active":
         return None
     by_number = {episode.number: episode for episode in episodes}
@@ -358,6 +509,15 @@ def summary_view(
         docs_pending=sum(1 for doc in latest.values() if doc.status == "review"),
         media_usd=media_usd,
         clip_seconds=clip_seconds,
+        genre=cast(Any, series.genre or "xianxia-bonds"),
+        lead=cast(Any, series.lead or "dual-male"),
+        hands_off=bool(series.hands_off),
+        compilation=bool(series.compilation),
+        visual_tier=cast(Any, series.visual_tier or "clips"),
+        total_minutes=series.total_minutes,
+        compilation_slug=series.compilation_slug,
+        compilation_started_at=series.compilation_started_at,
+        compilation_finished_at=series.compilation_finished_at,
         created_at=series.created_at,
         updated_at=series.updated_at,
     )
@@ -419,16 +579,37 @@ async def _spend(session: AsyncSession, episodes: list[VideoDramaEpisode]) -> tu
 # --- the owner's side ---------------------------------------------------------------------------
 
 
+def series_values(payload: SeriesIn, now: datetime) -> dict[str, Any]:
+    """The row a form fills in, with what the one-button form leaves to the server.
+
+    With ``total_minutes`` the episode count and the chapter size come from ``binge_shape``;
+    a blank slug is named after the genre and the day, a blank title after the genre until
+    the setting book names it, a blank premise says the planner invents it from the genre.
+    """
+    values = payload.model_dump()
+    if payload.total_minutes is not None:
+        planned, per_chapter = binge_shape(payload.total_minutes, payload.target_minutes)
+        values["planned_episodes"] = planned
+        values["episodes_per_chapter"] = per_chapter
+    values["slug"] = payload.slug or auto_slug(payload.genre, now)
+    values["title"] = payload.title or auto_title(payload.genre)
+    values["premise"] = payload.premise or (
+        f"由企劃依「{GENRE_LABELS.get(payload.genre, payload.genre)}」題材預設自擬前提"
+    )
+    return values
+
+
 async def create_series(session: AsyncSession, actor: User, payload: SeriesIn) -> SeriesOut:
+    now = _now()
+    values = series_values(payload, now)
     taken = await session.scalar(
-        select(VideoDramaSeries.id).where(VideoDramaSeries.slug == payload.slug)
+        select(VideoDramaSeries.id).where(VideoDramaSeries.slug == values["slug"])
     )
     if taken is not None:
-        raise SeriesRefused(409, "video_series_slug_taken", f"{payload.slug} 已經是另一部作品")
-    now = _now()
+        raise SeriesRefused(409, "video_series_slug_taken", f"{values['slug']} 已經是另一部作品")
     row = VideoDramaSeries(
         id=uuid4(),
-        **payload.model_dump(),
+        **values,
         status="setting",
         created_by_user_id=actor.id,
         created_at=now,
@@ -441,9 +622,15 @@ async def create_series(session: AsyncSession, actor: User, payload: SeriesIn) -
             action="video_series_created",
             target=f"video-series:{row.slug}",
             metadata_json={
-                "planned_episodes": payload.planned_episodes,
-                "episodes_per_chapter": payload.episodes_per_chapter,
+                "planned_episodes": values["planned_episodes"],
+                "episodes_per_chapter": values["episodes_per_chapter"],
                 "tone": payload.tone,
+                "genre": payload.genre,
+                "lead": payload.lead,
+                "hands_off": payload.hands_off,
+                "compilation": payload.compilation,
+                "visual_tier": payload.visual_tier,
+                "total_minutes": payload.total_minutes,
             },
         )
     )
@@ -501,6 +688,8 @@ async def patch_series(
         )
     if "episodes_per_chapter" in changes and episodes:
         raise SeriesRefused(409, "video_series_chapters_fixed", "總綱核准之後，每篇集數就固定了")
+    if "visual_tier" in changes and reached:
+        raise SeriesRefused(409, "video_series_tier_fixed", "已經有集數開始做，畫面等級不能再改")
     for key, value in changes.items():
         setattr(series, key, value)
     series.updated_at = _now()
@@ -571,6 +760,10 @@ async def _apply_approval(
     if doc.kind == "setting":
         if series.status == "setting":
             series.status = "outline"
+        # The one-button form left the title to the planner: the setting book names it.
+        title = body.get("title")
+        if AUTO_TITLE in series.title and isinstance(title, str) and title.strip():
+            series.title = title.strip()[:200]
     elif doc.kind == "outline":
         rows = episode_rows_from_outline(series, body)
         episodes = {episode.number: episode for episode in await _episodes(session, series)}
@@ -741,11 +934,33 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
     """The owner pushes the series along: plan the next chapter now, or start the next episode
     without waiting for the previous one."""
     series = await _series(session, slug, lock=True)
-    if series.status != "active":
-        raise SeriesRefused(409, "video_series_not_active", "作品要在進行中才能推進")
     docs = await _docs(session, series)
     latest = latest_docs(docs)
     total = chapter_count(series.planned_episodes, series.episodes_per_chapter)
+    if action == "compile":
+        # The owner asks for the compilation of a finished series that was not set up to
+        # make one, or for another after the first (docs/videos/BINGE.md).
+        if series.status != "finished":
+            raise SeriesRefused(409, "video_series_not_finished", "每一集都完成之後才能做合集")
+        if series.compilation_slug is not None and series.compilation_finished_at is None:
+            raise SeriesRefused(409, "video_series_compiling", "合集正在做")
+        series.compilation = True
+        series.compilation_slug = None
+        series.compilation_started_at = None
+        series.compilation_finished_at = None
+        series.updated_at = _now()
+        session.add(
+            AdminAuditLog(
+                actor_user_id=actor.id,
+                action="video_series_action",
+                target=f"video-series:{series.slug}",
+                metadata_json={"action": action},
+            )
+        )
+        await session.commit()
+        return await series_view(session, slug), "工人的下一輪會開始做合集"
+    if series.status != "active":
+        raise SeriesRefused(409, "video_series_not_active", "作品要在進行中才能推進")
     if action == "plan-next-chapter":
         pending = [
             chapter
@@ -807,6 +1022,7 @@ async def context_view(
         {"number": e.number, "title": e.title, "recap": e.recap, "state": e.state_json or {}}
         for e in done[-RECENT_RECAPS:]
     ]
+    all_recaps = [{"number": e.number, "title": e.title, "recap": e.recap} for e in done]
     mysteries = (setting.body_json or {}).get("mysteries") if setting else None
     return SeriesContextOut(
         series=summary_view(series, docs, episodes),
@@ -823,6 +1039,7 @@ async def context_view(
         episodes=[episode_view(e) for e in episodes],
         recaps=cast(list[dict[str, object]], recaps),
         mysteries=cast(list[dict[str, object]], mysteries if isinstance(mysteries, list) else []),
+        all_recaps=cast(list[dict[str, object]], all_recaps),
     )
 
 
@@ -832,7 +1049,16 @@ async def next_job(session: AsyncSession, settings: VideoAutomationSettings) -> 
         (
             await session.scalars(
                 select(VideoDramaSeries)
-                .where(VideoDramaSeries.status.in_(ACTIVE_STATUSES))
+                .where(
+                    or_(
+                        VideoDramaSeries.status.in_(ACTIVE_STATUSES),
+                        and_(
+                            VideoDramaSeries.status == "finished",
+                            VideoDramaSeries.compilation.is_(True),
+                            VideoDramaSeries.compilation_slug.is_(None),
+                        ),
+                    )
+                )
                 .order_by(VideoDramaSeries.created_at)
             )
         ).all()
@@ -875,8 +1101,35 @@ async def next_job(session: AsyncSession, settings: VideoAutomationSettings) -> 
     return SeriesJobOut(job=None)
 
 
-async def submit_doc(session: AsyncSession, slug: str, payload: SeriesDocSubmitIn) -> SeriesDocOut:
-    """The worker files a planned document as a new version that waits for the owner."""
+def auto_doc_status(
+    series: VideoDramaSeries, payload: SeriesDocSubmitIn, version: int, rewrites: int
+) -> tuple[str, str | None]:
+    """What the server decides about a filed document, and the note that says why.
+
+    A classic series, or a version filed without a verdict, waits for the owner. A hands-off
+    series (docs/videos/BINGE.md) is approved when the checker's verdict passes, sent back for
+    a rewrite while the rewrites the settings allow are not spent (version 2 is the first
+    rewrite), and left for the owner with the checker's problems once they are.
+    """
+    if not series.hands_off or payload.judge is None:
+        return "review", None
+    passed = series_doc_passed(payload.judge, payload.kind)
+    note = series_doc_note(payload.judge, passed)
+    if passed:
+        return "approved", note
+    if version - 1 < rewrites:
+        return "rejected", note
+    return "review", note
+
+
+async def submit_doc(
+    session: AsyncSession,
+    slug: str,
+    payload: SeriesDocSubmitIn,
+    settings: VideoAutomationSettings | None = None,
+) -> SeriesDocOut:
+    """The worker files a planned document as a new version that waits for the owner, or,
+    on a hands-off series, is decided from the checker's verdict as it arrives."""
     series = await _series(session, slug, lock=True)
     problem = doc_problem(series, payload)
     if problem:
@@ -887,19 +1140,41 @@ async def submit_doc(session: AsyncSession, slug: str, payload: SeriesDocSubmitI
         raise SeriesRefused(
             409, "video_series_doc_not_wanted", "這份文件已經在等站主或已核准，不能再送一版"
         )
+    version = (latest.version + 1) if latest else 1
+    rewrites = settings.series_doc_rewrites if settings is not None else 0
+    status, note = auto_doc_status(series, payload, version, rewrites)
+    now = _now()
     doc = VideoDramaDoc(
         id=uuid4(),
         series_id=series.id,
         kind=payload.kind,
         chapter_number=payload.chapter_number,
-        version=(latest.version + 1) if latest else 1,
+        version=version,
         body_md=payload.body_md,
         body_json=payload.body_json,
-        status="review",
-        created_at=_now(),
+        status=status,
+        note=note,
+        decided_at=now if status != "review" else None,
+        created_at=now,
     )
     session.add(doc)
-    series.updated_at = _now()
+    if status == "approved":
+        await _apply_approval(session, series, doc)
+    if status != "review":
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action=f"video_series_doc_auto_{status}",
+                target=f"video-series:{series.slug}",
+                metadata_json={
+                    "kind": payload.kind,
+                    "chapter": payload.chapter_number,
+                    "version": version,
+                    "verdicts": (payload.judge or {}).get("verdicts"),
+                },
+            )
+        )
+    series.updated_at = now
     await session.commit()
     return doc_view(doc)
 
@@ -1006,6 +1281,106 @@ async def finish_episode(session: AsyncSession, slug: str, number: int) -> Serie
     series.updated_at = now
     await session.commit()
     return episode_view(episode)
+
+
+async def start_compilation(
+    session: AsyncSession, token: VideoToolToken, slug: str, video_slug: str
+) -> SeriesCompilationStartOut:
+    """The worker starts the compilation of a finished series under the video's slug
+    (docs/videos/BINGE.md); the episodes come back in play order."""
+    _ = token
+    series = await _series(session, slug, lock=True)
+    if series.status != "finished" or not series.compilation:
+        raise SeriesRefused(409, "video_series_not_finished", "每一集都完成之後才能做合集")
+    if series.compilation_slug is not None:
+        raise SeriesRefused(409, "video_series_compiling", "合集已經開始做")
+    taken = await session.scalar(
+        select(VideoDramaRequest.id).where(VideoDramaRequest.slug == video_slug)
+    )
+    project = await session.scalar(select(VideoProject).where(VideoProject.slug == video_slug))
+    if taken is not None or project is not None:
+        raise SeriesRefused(409, "video_drama_request_slug_taken", f"{video_slug} 已經是另一支影片")
+    now = _now()
+    series.compilation_slug = video_slug
+    series.compilation_started_at = now
+    series.compilation_finished_at = None
+    series.updated_at = now
+    await session.commit()
+    episodes = [e for e in await _episodes(session, series) if e.status == "done" and e.slug]
+    docs = await _docs(session, series)
+    return SeriesCompilationStartOut(
+        series=summary_view(series, docs, await _episodes(session, series)),
+        episodes=[episode_view(episode) for episode in episodes],
+        context=await context_view(session, series, None),
+    )
+
+
+async def finish_compilation(session: AsyncSession, slug: str) -> SeriesSummary:
+    """The worker reports the compilation is cleared for upload."""
+    series = await _series(session, slug, lock=True)
+    if series.compilation_slug is None:
+        raise SeriesRefused(409, "video_series_not_compiling", "這部作品沒有在做合集")
+    now = _now()
+    series.compilation_finished_at = now
+    series.updated_at = now
+    await session.commit()
+    return summary_view(series, await _docs(session, series), await _episodes(session, series))
+
+
+def binge_quote(
+    settings: VideoAutomationSettings, total_minutes: int, episode_minutes: int, visual_tier: str
+) -> BingeQuoteOut:
+    """What one binge series takes at the settings' prices, against the month's budgets.
+
+    Pure so the form can ask before the owner presses the button; the numbers are the
+    estimate of docs/videos/DRAMA.md scaled by the tier's clip share, with the sheets once.
+    """
+    planned, per_chapter = binge_shape(total_minutes, episode_minutes)
+    share = TIER_CLIP_SHARE.get(visual_tier, 1.0)
+    shots = planned * episode_minutes * SHOTS_PER_MINUTE
+    clip_shots = round(shots * share)
+    clip_seconds = round(clip_shots * SHOT_SECONDS * RETAKE_FACTOR)
+    images = round(shots * KEYFRAME_TAKES) + SHEET_IMAGES
+    judge_calls = shots + clip_shots + SHEET_IMAGES
+    clip_model = find_model(cast(Any, settings.clip_provider), "clip", settings.clip_model)
+    image_model = find_model(cast(Any, settings.image_provider), "image", settings.image_model)
+    clip_price = clip_model.usd_per_second if clip_model and clip_model.usd_per_second else 0.15
+    image_price = image_model.usd_per_image if image_model and image_model.usd_per_image else 0.134
+    usd = clip_seconds * clip_price + images * image_price + judge_calls * JUDGE_USD_PER_CALL
+    usd += planned * 1.0  # narration, music and captions, well under a dollar an episode
+    budgets = {
+        "clip_seconds": BudgetLine(
+            needed=clip_seconds,
+            monthly=settings.monthly_clip_seconds_budget,
+            ok=clip_seconds <= settings.monthly_clip_seconds_budget,
+        ),
+        "images": BudgetLine(
+            needed=images,
+            monthly=settings.monthly_images_budget,
+            ok=images <= settings.monthly_images_budget,
+        ),
+        "judge_calls": BudgetLine(
+            needed=judge_calls,
+            monthly=settings.monthly_judge_calls_budget,
+            ok=judge_calls <= settings.monthly_judge_calls_budget,
+        ),
+        "episodes_per_month": BudgetLine(
+            needed=planned,
+            monthly=settings.series_episodes_per_month,
+            ok=planned <= settings.series_episodes_per_month,
+        ),
+    }
+    return BingeQuoteOut(
+        episodes=planned,
+        chapters=chapter_count(planned, per_chapter),
+        episodes_per_chapter=per_chapter,
+        clip_seconds=clip_seconds,
+        images=images,
+        judge_calls=judge_calls,
+        usd=round(usd, 2),
+        budgets=budgets,
+        ok=all(line.ok for line in budgets.values()),
+    )
 
 
 def month_days(now: datetime | None = None) -> int:

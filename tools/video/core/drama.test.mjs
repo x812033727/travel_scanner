@@ -7,7 +7,9 @@ import { approve } from "./approvals.mjs";
 import {
   charactersBySpeaker,
   clipKey,
+  clipShotScenes,
   clipsHash,
+  isClipShot,
   keyframeKey,
   lookHash,
   mixHash,
@@ -15,7 +17,13 @@ import {
   resolveLook,
   resolveSubtitles,
   shotProblems,
+  shotVisual,
+  stillShotScenes,
   subtitlesHash,
+  TIER_CLIP_SHARE_MAX,
+  VISUAL_MODES,
+  VISUAL_TIERS,
+  visualTierProblems,
   voiceFor,
 } from "./drama.mjs";
 import { dramaBrief, dramaFixture, fixture, fixtureLexicon, sandbox } from "./fixtures/load.mjs";
@@ -57,6 +65,7 @@ test("shots, speakers, references and music are range-checked", () => {
   doc.scenes[0].data.characters = ["jingwei", "ghost"];
   doc.scenes[0].data.fit = "stretch";
   doc.scenes[0].data.start_frame = { shot: "bird", at: "last" };
+  doc.scenes[1].data.visual = "gif";
   doc.scenes[2].data.seed = -1;
   doc.thumbnail.data.shot = "wrap";
   doc.music = { gain_db: 3 };
@@ -73,6 +82,7 @@ test("shots, speakers, references and music are range-checked", () => {
     "scenes[0].data.start_frame",
     "scenes[0].lines[0] (k7p2).reveal",
     "scenes[1].data.characters",
+    "scenes[1].data.visual",
     "scenes[1].lines[0] (x9fe).speaker",
     "scenes[1].lines[1] (b3tn).emotion",
     "scenes[1].lines[1] (b3tn).speaker",
@@ -80,6 +90,64 @@ test("shots, speakers, references and music are range-checked", () => {
     "subtitles.style",
     "thumbnail.data.shot",
   ]);
+});
+
+/** The drama example stretched to `count` shots, the first `clips` of them clips and the rest stills. */
+function episodeWith(count, clips) {
+  const doc = dramaFixture();
+  const shot = doc.scenes[0];
+  doc.scenes = Array.from({ length: count }, (_, index) => ({
+    ...structuredClone(shot),
+    id: `shot-${index + 1}`,
+    data: { ...structuredClone(shot.data), ...(index < clips ? {} : { visual: "still" }) },
+    lines: shot.lines.map((line) => ({ ...line, id: `${line.id.slice(0, 2)}${String(index).padStart(2, "0")}` })),
+  }));
+  doc.thumbnail.data.shot = "shot-1";
+  return doc;
+}
+
+test("a shot is a clip unless it says still, and both kinds validate", () => {
+  assert.deepEqual(VISUAL_MODES, ["clip", "still"]);
+  const doc = dramaFixture();
+  assert.equal(shotVisual(doc.scenes[0]), "clip");
+  assert.equal(shotVisual(doc.scenes[4]), "clip", "a card answers clip too; callers ask isShot first");
+  doc.scenes[1].data.visual = "still";
+  doc.scenes[3].data.visual = "clip";
+  assert.deepEqual(validateVideo(doc), []);
+  assert.equal(shotVisual(doc.scenes[1]), "still");
+  assert.equal(isClipShot(doc.scenes[0]), true);
+  assert.equal(isClipShot(doc.scenes[1]), false);
+  assert.equal(isClipShot(doc.scenes[4]), false, "the outro card is not a clip shot");
+  assert.deepEqual(clipShotScenes(doc).map((scene) => scene.id), ["opening", "sea-storm", "bird"]);
+  assert.deepEqual(stillShotScenes(doc).map((scene) => scene.id), ["farewell"]);
+  assert.notEqual(visualHash(doc), visualHash(dramaFixture()), "flipping a shot to a still redraws the pictures");
+  const explicit = dramaFixture();
+  explicit.scenes[0].data.visual = "clip";
+  assert.notEqual(visualHash(explicit), visualHash(dramaFixture()), "the field is part of the data hash as written");
+});
+
+test("a binge tier caps the clips, rounded up: 12 of 30 in hybrid, 3 of 30 in stills, and clips caps nothing", () => {
+  assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills"]);
+  assert.deepEqual(TIER_CLIP_SHARE_MAX, { clips: 1, hybrid: 0.4, stills: 0.1 });
+  assert.deepEqual(validateVideo(episodeWith(30, 12)), []);
+  assert.deepEqual(visualTierProblems(episodeWith(30, 12), "hybrid"), { errors: [], warnings: [] });
+  const hybrid = visualTierProblems(episodeWith(30, 13), "hybrid");
+  assert.deepEqual(hybrid.warnings, []);
+  assert.deepEqual(hybrid.errors, [{ path: "scenes", message: '13 of 30 shots are clips; the "hybrid" tier allows at most 12: mark the rest visual "still"' }]);
+  assert.deepEqual(visualTierProblems(episodeWith(30, 3), "stills").errors, []);
+  assert.match(visualTierProblems(episodeWith(30, 4), "stills").errors[0].message, /4 of 30 shots are clips; the "stills" tier allows at most 3/);
+  assert.deepEqual(visualTierProblems(episodeWith(30, 0), "stills"), { errors: [], warnings: [] }, "no clips at all is fine");
+  assert.deepEqual(visualTierProblems(episodeWith(30, 30), "clips"), { errors: [], warnings: [] });
+  const remarked = visualTierProblems(episodeWith(30, 28), "clips");
+  assert.deepEqual(remarked.errors, []);
+  assert.equal(remarked.warnings.length, 1);
+  assert.match(remarked.warnings[0].message, /^the clips tier plays every shot as a clip; 2 still shots/);
+  assert.deepEqual(visualTierProblems(episodeWith(4, 4), "hybrid").errors.length, 1, "4 shots allow ceil(1.6) = 2 clips");
+  assert.deepEqual(visualTierProblems(episodeWith(4, 2), "hybrid").errors, []);
+  const unknown = visualTierProblems(episodeWith(4, 4), "premium");
+  assert.equal(unknown.errors.length, 1);
+  assert.equal(unknown.errors[0].path, "series.visual_tier");
+  assert.match(unknown.errors[0].message, /"premium" is not a visual tier; the tiers are clips, hybrid, stills/);
 });
 
 test("a drama needs a shot, and a custom look needs a style", () => {

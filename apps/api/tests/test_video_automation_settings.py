@@ -686,3 +686,94 @@ async def test_narration_jev_passed_is_approved_as_it_arrives_unless_the_owner_t
         )
         off = await reviews.submit_review(session, store, slug, review(b"c", passed), token)
         assert off.status == "pending", "with the setting off the owner decides"
+
+
+# --- a hands-off series decides its own sheets, storyboards and screenplays (BINGE.md) -----------
+
+
+@pytest.mark.asyncio
+async def test_a_hands_off_series_overrides_the_look_and_storyboard_switches() -> None:
+    sheets: dict[str, Any] = {
+        "options": [{"key": "B", "judge": {"overall": 8, "problems": []}}],
+        "suggested": "B",
+    }
+    board: dict[str, Any] = {"shots": [{"id": "a"}], "judge": {"overall": 9, "problems": []}}
+    off = SimpleNamespace(auto_pick_look=False, auto_approve_storyboard=False, judge_min_score=7)
+    hands_off = SimpleNamespace(hands_off=True, genre="rebirth-revenge")
+    classic = SimpleNamespace(hands_off=False, genre="xianxia-bonds")
+    session = AsyncMock()
+    session.scalar = AsyncMock(side_effect=[off, hands_off])
+    assert await service.auto_picks_look(session, sheets, "rebirth-20260927-ab12")
+    session.scalar = AsyncMock(side_effect=[off, classic])
+    assert not await service.auto_picks_look(session, sheets, "wenjian")
+    session.scalar = AsyncMock(side_effect=[off, hands_off])
+    assert await service.auto_approves_storyboard(session, board, "rebirth-20260927-ab12")
+    session.scalar = AsyncMock(side_effect=[off, None])
+    assert not await service.auto_approves_storyboard(session, board, "gone")
+    session.scalar = AsyncMock(return_value=off)
+    assert not await service.auto_approves_storyboard(session, board), (
+        "no series: the switch decides, and no second query is made"
+    )
+    strict = SimpleNamespace(
+        auto_pick_look=False, auto_approve_storyboard=False, judge_min_score=10
+    )
+    session.scalar = AsyncMock(side_effect=[strict, hands_off])
+    assert not await service.auto_picks_look(session, sheets, "rebirth-20260927-ab12"), (
+        "the threshold still applies"
+    )
+
+
+@pytest.mark.asyncio
+async def test_a_screenplay_is_approved_only_on_a_hands_off_series() -> None:
+    payload: dict[str, Any] = {
+        "coverage": {
+            "hook": "有",
+            "conflict": "有",
+            "turn": "有",
+            "cliffhanger": "有",
+            "satisfaction": "有",
+        },
+        "continuity_problems": [],
+        "similar_works": [],
+        "retention": {
+            "hook_seconds": 4,
+            "satisfaction": {"count": 2, "first_seconds": 20, "positions": [20, 140]},
+            "cliffhanger_last": True,
+        },
+    }
+    session = AsyncMock()
+    session.scalar = AsyncMock(
+        return_value=SimpleNamespace(hands_off=True, genre="rebirth-revenge")
+    )
+    assert await service.auto_approves_script(session, "rebirth-20260927-ab12", payload)
+    session.scalar = AsyncMock(
+        return_value=SimpleNamespace(hands_off=False, genre="rebirth-revenge")
+    )
+    assert not await service.auto_approves_script(session, "rebirth-20260927-ab12", payload)
+    assert not await service.auto_approves_script(session, None, payload), "a one-off episode"
+    session.scalar = AsyncMock(return_value=SimpleNamespace(hands_off=True, genre="xianxia-bonds"))
+    classic = {**payload, "retention": None}
+    assert await service.auto_approves_script(session, "wenjian", classic), (
+        "the classic genre has no timing rule"
+    )
+
+
+@pytest.mark.asyncio
+async def test_a_compilation_s_final_cut_uses_the_shorter_list() -> None:
+    from app.video_automation.judge import COMPILATION_QA_ITEMS
+
+    sha = "f" * 64
+    report: dict[str, Any] = {
+        "ok": True,
+        "final_sha256": sha,
+        "kind": "compilation",
+        "items": [{"id": name, "ok": True, "detail": ""} for name in COMPILATION_QA_ITEMS],
+    }
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=SimpleNamespace(auto_approve_final=True))
+    assert await service.auto_approves_final(
+        session, "final", {"qa": report}, sha, compilation=True
+    )
+    assert not await service.auto_approves_final(session, "final", {"qa": report}, sha), (
+        "an episode's cut wants the eleven"
+    )

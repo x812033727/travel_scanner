@@ -9,6 +9,7 @@ import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 
+import { isCompilation, THUMB_SOURCE } from "../core/compilation.mjs";
 import { burnIn, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.mjs";
@@ -70,11 +71,14 @@ export async function run(command, args, ctx) {
     return EXIT.lint;
   }
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug, root: ctx.root });
+  // A series' compilation (docs/videos/BINGE.md) is a drama with cards and a thumbnail only:
+  // the episodes' cuts already carry their subtitles, so nothing is timed to a narration here.
+  const compilation = isCompilation(doc);
   const drama = isDrama(doc);
   // Burned-in subtitles are cut and timed to the narration, like the captions, so a drama's
   // strips need the timeline the tts stage wrote for this very script.
   let subtitles = null;
-  if (drama && burnIn(doc)) {
+  if (drama && !compilation && burnIn(doc)) {
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     if (!timeline || timeline.speech_hash !== speechHash(doc, lexicon)) {
       ctx.stderr.write("timeline.json is missing or was built for an older script; run tts first (the burned-in subtitles follow the narration)\n");
@@ -85,7 +89,8 @@ export async function run(command, args, ctx) {
   const keyframes = drama ? (readJson(path.join(workdir, ARTIFACTS.keyframes), null)?.shots ?? {}) : {};
   const plan = renderPlan(doc, themeHash(), ctx.root, { keyframes });
   if (plan.thumbnail?.shot && !plan.thumbnail.keyframe) {
-    ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
+    if (compilation) ctx.stderr.write(`the thumbnail's background is ${THUMB_SOURCE}, listed in keyframes/manifest.json under shots.${plan.thumbnail.shot}; the worker copies an episode's keyframe there when it plans the metadata (docs/videos/BINGE.md)\n`);
+    else ctx.stderr.write(`the thumbnail's background is the keyframe of shot ${plan.thumbnail.shot}, which is not drawn yet; run keyframes first\n`);
     return EXIT.usage;
   }
   const glyphs = coverageProblems(plan, bundledCoverage(), subtitles);

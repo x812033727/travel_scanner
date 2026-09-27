@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
+import { dramaBrief, dramaFixture, fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
 import { billableEstimate, briefSections, checkBrief, lintVideo, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
 import { textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
@@ -161,6 +161,59 @@ test("a slide sequence that copies another video's is flagged", () => {
   assert.equal(templateSimilarity(doc, copy), 1);
   const { warnings } = lintVideo(doc, context({ others: [{ slug: "older-video", doc: copy }] }));
   assert.match(messages(warnings), /100% the same as older-video/);
+});
+
+/** The drama example as episode 1 of a series, with series.json's cast beside it. */
+function episode() {
+  const doc = { ...dramaFixture(), series: { slug: "xianxia", episode: 1, chapter: 1 } };
+  const series = { slug: "xianxia", episode: 1, characters: doc.characters.map((character) => ({ ...character })) };
+  return { doc, series, context: context({ brief: dramaBrief(), series }) };
+}
+
+test("a binge series' visual tier in series.json caps the clips, before the clips stage spends anything", () => {
+  const plain = episode();
+  assert.deepEqual(lintVideo(plain.doc, plain.context).errors, [], "no tier in series.json, no cap");
+
+  const stills = episode();
+  stills.series.visual_tier = "stills";
+  const capped = lintVideo(stills.doc, stills.context);
+  assert.deepEqual(capped.errors.map((error) => [error.path, error.message]), [["scenes", '4 of 4 shots are clips; the "stills" tier allows at most 1: mark the rest visual "still"']]);
+  for (const id of ["farewell", "sea-storm", "bird"]) stills.doc.scenes.find((scene) => scene.id === id).data.visual = "still";
+  const kept = lintVideo(stills.doc, stills.context);
+  assert.deepEqual(kept.errors, []);
+  assert.ok(!kept.warnings.some((warning) => /tier/.test(warning.message)));
+
+  const hybrid = episode();
+  hybrid.series.visual_tier = "hybrid";
+  assert.match(messages(lintVideo(hybrid.doc, hybrid.context).errors), /4 of 4 shots are clips; the "hybrid" tier allows at most 2/);
+  hybrid.doc.scenes[0].data.visual = "still";
+  hybrid.doc.scenes[1].data.visual = "still";
+  assert.deepEqual(lintVideo(hybrid.doc, hybrid.context).errors, []);
+
+  const clips = episode();
+  clips.series.visual_tier = "clips";
+  clips.doc.scenes[2].data.visual = "still";
+  const remarked = lintVideo(clips.doc, clips.context);
+  assert.deepEqual(remarked.errors, []);
+  assert.match(messages(remarked.warnings), /the clips tier plays every shot as a clip; 1 still shots/);
+
+  const unknown = episode();
+  unknown.series.visual_tier = "gold";
+  assert.match(messages(lintVideo(unknown.doc, unknown.context).errors), /"gold" is not a visual tier/);
+  const nothing = episode();
+  nothing.series.visual_tier = null;
+  assert.deepEqual(lintVideo(nothing.doc, nothing.context).errors, [], "a null tier is no tier");
+});
+
+test("an episode of a compilation opens cold: no title card first", () => {
+  const { doc, series, context: ctx } = episode();
+  doc.scenes.unshift({ id: "card", chapter: "開場", template: "title", data: { title: "精衛填海", subtitle: "山海經" }, lines: [{ id: "t1tl", text: "第一集。" }] });
+  assert.deepEqual(lintVideo(doc, ctx).errors, [], "a plain episode may still open on a card");
+  series.compilation = true;
+  const cold = lintVideo(doc, ctx);
+  assert.deepEqual(cold.errors.map((error) => [error.path, error.message]), [["scenes[0]", "a binge episode opens cold: the first line is the hook; drop the title card"]]);
+  doc.scenes.shift();
+  assert.deepEqual(lintVideo(doc, ctx).errors, []);
 });
 
 test("Azure bills each Chinese character twice, plus markup", () => {

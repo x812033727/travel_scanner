@@ -1,20 +1,33 @@
 // How a drama's clips, subtitle strips and music become final.mp4 (docs/videos/DRAMA.md), as pure
-// functions beside plan.mjs: the layout of clip and card scenes, how a clip is fitted to its
-// scene's frames, the subtitle overlay track, every ffmpeg argument for a clip segment and for
-// the music mix, and the drama's own checks.
+// functions beside plan.mjs: the layout of clip, still and card scenes, how a clip is fitted to
+// its scene's frames, how a still shot's keyframe is animated, the subtitle overlay track, every
+// ffmpeg argument for a clip or motion segment and for the music mix, and the drama's own checks.
 //
 // A clip segment is encoded with the slides' settings apart from the tune, so the segments still
 // join with `-c copy`; it has its own encoder version, so a change here never invalidates a
-// slides video's cached segments. Nothing here needs a GPU or minterpolate: the worker has 3 GB
-// and no GPU, and xfade would force the join to re-encode.
+// slides video's cached segments. A motion segment (a shot marked visual "still", docs/videos/
+// BINGE.md) is the keyframe under a slow zoompan move, encoded exactly like a clip segment, with
+// its own version again. Nothing here needs a GPU or minterpolate: the worker has 3 GB and no
+// GPU, and xfade would force the join to re-encode.
 import { createHash } from "node:crypto";
 
-import { isShot } from "../core/drama.mjs";
+import { isShot, shotVisual } from "../core/drama.mjs";
 import { FPS } from "../core/timeline.mjs";
 import { HEIGHT, layoutScenes, LOUDNESS, PlanError, WIDTH } from "./plan.mjs";
 
 // Part of every clip segment's cache key: change a setting below and every clip is re-encoded.
 export const CLIP_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-clip-v1";
+// The same for a motion segment: the zoompan expressions below are part of what it versions.
+export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v1";
+// How far a push-in or pull-out travels over the shot, as a share of the picture; a pan or tilt
+// sits at a fixed zoom and slides the window; a drift barely moves at all. Small on purpose: a
+// still is meant to read as a held shot with life in it, not as a camera move.
+export const MOTION_ZOOM = 0.10;
+export const MOTION_PAN_ZOOM = 1.08;
+export const MOTION_DRIFT_ZOOM = 0.04;
+// The keyframe is upscaled this much before zoompan crops it, so the crop window is never
+// smaller than the output and no frame is enlarged from fewer pixels than it shows.
+export const MOTION_SOURCE_SCALE = 1.25;
 // A clip shorter than its narration is slowed no further than this before its last frame holds.
 export const MIN_AUTO_SPEED = 0.85;
 export const MIN_SLOW_SPEED = 0.5;
@@ -75,18 +88,91 @@ export function layoutDrama(doc, timeline, frames, clips, keyframes = null) {
       const [laid] = layoutScenes({ scenes: [scene] }, { scenes: [rendered] });
       return { ...laid, kind: "stills" };
     }
+    const transition = index > 0 ? (source.data?.transition ?? "cut") : "cut";
+    if (shotVisual(source) === "still") {
+      // The keyframes manifest is the source; the clips manifest carries the same file and hash
+      // for every still, so a work directory missing one still assembles from the other.
+      const keyframe = keyframes?.shots?.[scene.id] ?? (clips?.shots?.[scene.id]?.still ? clips.shots[scene.id] : null);
+      if (!keyframe?.file) throw new PlanError(`shot ${scene.id} is a still with no keyframe; run keyframes first`);
+      if (keyframe.needs_review) throw new PlanError(`shot ${scene.id} is a still whose keyframe failed its checks (needs_review in keyframes/manifest.json); fix the prompt and run keyframes again`);
+      return { ...base, kind: "motion", keyframe: { file: keyframe.file, sha256: keyframe.sha256 ?? null }, move: motionMove(source.data), transition, fit: null };
+    }
     const clip = clips?.shots?.[scene.id];
-    if (!clip?.file) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
+    if (!clip?.file || clip.still) throw new PlanError(`shot ${scene.id} has no clip; run clips first`);
     if (clip.needs_review) throw new PlanError(`shot ${scene.id} failed the clip checks (needs_review in clips/manifest.json); fix the prompt and run clips again`);
     return {
       ...base,
       kind: "clip",
       clip: { file: clip.file, sha256: clip.sha256 ?? null },
       fit: source.data?.fit ?? "auto",
-      transition: index > 0 ? (source.data?.transition ?? "cut") : "cut",
+      transition,
       keyframe: keyframes?.shots?.[scene.id]?.file ?? null,
     };
   });
+}
+
+// The camera words a writer uses, in the order they are tried; the first that matches wins, and
+// a shot that names none drifts. A move is named for what the viewer sees the picture do, which
+// for a pan is the opposite of the camera's word: a camera panning left sends the picture to the
+// right, so "pan left" (and "left to right", the picture's own direction) is pan-right. Tilts
+// keep the camera's word, as the writers use it: "tilt up", "crane up" and "rise" are tilt-up.
+const MOVES = [
+  ["push-in", /push|dolly in|zoom in|closer|move in/],
+  ["pull-out", /pull|zoom out|widen|back away/],
+  ["pan-right", /pan (?:to the )?left|left to right/],
+  ["pan-left", /pan (?:to the )?right|right to left/],
+  ["tilt-up", /tilt up|crane up|rise/],
+  ["tilt-down", /tilt down|crane down|descend/],
+];
+// Moves whose first frame is the whole keyframe at zoom 1.0, so frame 0 can be checked against it.
+const IDENTITY_START = new Set(["push-in", "drift"]);
+
+/**
+ * Which camera move animates a still shot, read from the shot's camera direction first and its
+ * motion prompt second: { name, startsAtIdentity }.
+ */
+export function motionMove(data) {
+  for (const text of [data?.camera, data?.motion]) {
+    if (typeof text !== "string") continue;
+    const lower = text.toLowerCase();
+    const found = MOVES.find(([, pattern]) => pattern.test(lower));
+    if (found) return { name: found[0], startsAtIdentity: IDENTITY_START.has(found[0]) };
+  }
+  return { name: "drift", startsAtIdentity: true };
+}
+
+/**
+ * zoompan's zoom, x and y expressions for a move over `frames` output frames, in terms of `on`
+ * (the output frame number) so the move ends exactly on the last frame. x and y are the crop
+ * window's top-left corner in the upscaled keyframe: a window sliding right shows what lies to
+ * the right, so the picture travels left. pan-right therefore slides the window from the right
+ * edge to the left edge, and tilt-up (the camera tilting up) slides it from the bottom to the top.
+ */
+export function zoompanExpr(move, frames) {
+  const name = typeof move === "string" ? move : move?.name;
+  const n = Math.max(frames - 1, 1);
+  const centreX = "iw/2-(iw/zoom/2)";
+  const centreY = "ih/2-(ih/zoom/2)";
+  const midX = "(iw-iw/zoom)/2";
+  const midY = "(ih-ih/zoom)/2";
+  const forward = (size) => `(${size}-${size}/zoom)*on/${n}`;
+  const backward = (size) => `(${size}-${size}/zoom)*(1-on/${n})`;
+  switch (name) {
+    case "push-in":
+      return { z: `1+${MOTION_ZOOM}*on/${n}`, x: centreX, y: centreY };
+    case "pull-out":
+      return { z: `${1 + MOTION_ZOOM}-${MOTION_ZOOM}*on/${n}`, x: centreX, y: centreY };
+    case "pan-right":
+      return { z: `${MOTION_PAN_ZOOM}`, x: backward("iw"), y: midY };
+    case "pan-left":
+      return { z: `${MOTION_PAN_ZOOM}`, x: forward("iw"), y: midY };
+    case "tilt-up":
+      return { z: `${MOTION_PAN_ZOOM}`, x: midX, y: backward("ih") };
+    case "tilt-down":
+      return { z: `${MOTION_PAN_ZOOM}`, x: midX, y: forward("ih") };
+    default:
+      return { z: `1+${MOTION_DRIFT_ZOOM}*on/${n}`, x: `${midX}+(iw-iw/zoom)*0.15*on/${n}`, y: centreY };
+  }
 }
 
 /**
@@ -131,7 +217,60 @@ export function clipSegmentKey(scene, fit, subtitles = null, previous = null) {
   return hash16([CLIP_ENCODER_VERSION, scene.frames, scene.clip.file, scene.clip.sha256, fit, subtitles, scene.transition, previous]);
 }
 
+export function motionSegmentKey(scene, move, subtitles = null, previous = null) {
+  return hash16([MOTION_ENCODER_VERSION, scene.frames, scene.keyframe.file, scene.keyframe.sha256, move.name, subtitles, scene.transition, previous]);
+}
+
 const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_trc=bt709:colorspace=bt709`;
+
+/**
+ * The inputs after the picture (input 0): the subtitle strips as input 1 when there are any,
+ * then the previous scene's last frame, looped, for a dissolve.
+ */
+function overlayInputs(subtitlesList, dissolveFrom) {
+  const inputs = [];
+  if (subtitlesList) inputs.push("-f", "concat", "-safe", "0", "-i", subtitlesList);
+  if (dissolveFrom) inputs.push("-loop", "1", "-framerate", String(FPS), "-t", seconds(DISSOLVE_FRAMES + 2), "-i", dissolveFrom);
+  return { inputs, subtitlesInput: subtitlesList ? 1 : null, dissolveInput: dissolveFrom ? (subtitlesList ? 2 : 1) : null };
+}
+
+/**
+ * The rest of the graph once [pic] holds the scene's frames: the previous scene's last frame
+ * dissolving away over it when asked, the subtitle strips laid over the bottom, then the colour
+ * tags. Shared by clip and motion segments so the two encode identically.
+ */
+function overlayGraph(picChain, { subtitlesInput, dissolveInput }) {
+  const graph = [`[0:v]${picChain.join(",")}[pic]`];
+  let last = "pic";
+  if (dissolveInput !== null) {
+    graph.push(`[${dissolveInput}:v]scale=${WIDTH}:${HEIGHT},format=yuva420p,fade=t=out:st=0:d=${seconds(DISSOLVE_FRAMES)}:alpha=1[prev]`);
+    graph.push(`[${last}][prev]overlay=0:0:eof_action=pass[dissolved]`);
+    last = "dissolved";
+  }
+  if (subtitlesInput !== null) {
+    graph.push(`[${subtitlesInput}:v]format=rgba[strips]`);
+    graph.push(`[${last}][strips]overlay=0:main_h-overlay_h:eof_action=pass[captioned]`);
+    last = "captioned";
+  }
+  graph.push(`[${last}]${COLOUR}[out]`);
+  return graph.join(";");
+}
+
+/** Same H.264 settings as a slide segment but tuned for film, so the segments still join without re-encoding. */
+function encodeArgs(inputs, graph, frames, outFile) {
+  return [
+    "-hide_banner", "-y", "-loglevel", "error",
+    ...inputs,
+    "-filter_complex", graph,
+    "-map", "[out]",
+    "-frames:v", String(frames),
+    "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "18", "-tune", "film",
+    "-bf", "2", "-g", String(FPS * 2), "-keyint_min", String(FPS),
+    "-x264-params", "colorprim=bt709:transfer=bt709:colormatrix=bt709",
+    "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv",
+    "-r", String(FPS), "-fps_mode", "cfr", "-an", outFile,
+  ];
+}
 
 /**
  * Encode one shot: the clip scaled and padded to 1920x1080, slowed and held as its fit says, cut
@@ -140,12 +279,7 @@ const COLOUR = `format=yuv420p,setparams=range=tv:color_primaries=bt709:color_tr
  * film, so the segments still join without re-encoding.
  */
 export function clipSegmentArgs({ clip, frames, fit, subtitlesList = null, dissolveFrom = null, outFile }) {
-  const inputs = ["-i", clip];
-  // Input 1 is the subtitle strips when there are any; the dissolve frame comes after them.
-  const subtitlesInput = subtitlesList ? 1 : null;
-  if (subtitlesList) inputs.push("-f", "concat", "-safe", "0", "-i", subtitlesList);
-  const dissolveInput = dissolveFrom ? (subtitlesList ? 2 : 1) : null;
-  if (dissolveFrom) inputs.push("-loop", "1", "-framerate", String(FPS), "-t", seconds(DISSOLVE_FRAMES + 2), "-i", dissolveFrom);
+  const overlays = overlayInputs(subtitlesList, dissolveFrom);
   const chain = [
     `scale=${WIDTH}:${HEIGHT}:force_original_aspect_ratio=decrease:flags=lanczos`,
     `pad=${WIDTH}:${HEIGHT}:(ow-iw)/2:(oh-ih)/2`,
@@ -155,30 +289,43 @@ export function clipSegmentArgs({ clip, frames, fit, subtitlesList = null, disso
     `trim=end_frame=${frames}`,
     "setpts=PTS-STARTPTS",
   ];
-  const graph = [`[0:v]${chain.join(",")}[pic]`];
-  let last = "pic";
-  if (dissolveFrom) {
-    graph.push(`[${dissolveInput}:v]scale=${WIDTH}:${HEIGHT},format=yuva420p,fade=t=out:st=0:d=${seconds(DISSOLVE_FRAMES)}:alpha=1[prev]`);
-    graph.push(`[${last}][prev]overlay=0:0:eof_action=pass[dissolved]`);
-    last = "dissolved";
-  }
-  if (subtitlesList) {
-    graph.push(`[${subtitlesInput}:v]format=rgba[strips]`);
-    graph.push(`[${last}][strips]overlay=0:main_h-overlay_h:eof_action=pass[captioned]`);
-    last = "captioned";
-  }
-  graph.push(`[${last}]${COLOUR}[out]`);
+  return encodeArgs(["-i", clip, ...overlays.inputs], overlayGraph(chain, overlays), frames, outFile);
+}
+
+/** The keyframe upscaled, then zoompan's crop window travelling as the move says: one output frame per input frame. */
+function motionChain(move, frames) {
+  const { z, x, y } = zoompanExpr(move, frames);
   return [
-    "-hide_banner", "-y", "-loglevel", "error",
-    ...inputs,
-    "-filter_complex", graph.join(";"),
-    "-map", "[out]",
-    "-frames:v", String(frames),
-    "-c:v", "libx264", "-profile:v", "high", "-preset", "medium", "-crf", "18", "-tune", "film",
-    "-bf", "2", "-g", String(FPS * 2), "-keyint_min", String(FPS),
-    "-x264-params", "colorprim=bt709:transfer=bt709:colormatrix=bt709",
-    "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv",
-    "-r", String(FPS), "-fps_mode", "cfr", "-an", outFile,
+    `scale=${WIDTH * MOTION_SOURCE_SCALE}:${HEIGHT * MOTION_SOURCE_SCALE}:flags=lanczos`,
+    `zoompan=z='${z}':x='${x}':y='${y}':d=1:s=${WIDTH}x${HEIGHT}:fps=${FPS}`,
+  ];
+}
+
+/**
+ * Encode one still shot: its keyframe looped for the scene's length, upscaled and animated by
+ * zoompan (d=1, so every looped input frame becomes one output frame and the -t on the input,
+ * the trim and -frames:v all agree on exactly `frames`), then the same dissolve, strips and
+ * colour chain and the same encoder flags as a clip segment, so the join still copies.
+ */
+export function motionSegmentArgs({ keyframe, frames, move, subtitlesList = null, dissolveFrom = null, outFile }) {
+  const overlays = overlayInputs(subtitlesList, dissolveFrom);
+  const chain = [...motionChain(move, frames), `trim=end_frame=${frames}`, "setpts=PTS-STARTPTS"];
+  const inputs = ["-loop", "1", "-framerate", String(FPS), "-t", seconds(frames), "-i", keyframe, ...overlays.inputs];
+  return encodeArgs(inputs, overlayGraph(chain, overlays), frames, outFile);
+}
+
+/**
+ * Compare the first frame a motion segment would show with the keyframe itself, straight from
+ * the picture chain: the strips carry the first line's text from frame 0 and a dissolve opens
+ * on the previous scene, so the encoded segment's frame 0 is not the picture to measure. For a
+ * move that starts at identity, this is the keyframe upscaled and scaled back, and a low score
+ * means the zoompan expressions no longer open on the whole picture.
+ */
+export function motionFramePsnrArgs(keyframe, move, frames) {
+  return [
+    "-hide_banner", "-nostats", "-i", keyframe, "-i", keyframe,
+    "-lavfi", `[0:v]${motionChain(move, frames).join(",")},select=eq(n\\,0),format=rgb24[a];[1:v]scale=${WIDTH}:${HEIGHT},format=rgb24[b];[a][b]psnr`,
+    "-frames:v", "1", "-f", "null", "-",
   ];
 }
 

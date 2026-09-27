@@ -24,7 +24,17 @@ import {
   measureMixArgs,
   mixArgs,
   mixFilter,
+  MOTION_DRIFT_ZOOM,
+  MOTION_ENCODER_VERSION,
+  MOTION_PAN_ZOOM,
+  MOTION_SOURCE_SCALE,
+  MOTION_ZOOM,
+  motionFramePsnrArgs,
+  motionMove,
+  motionSegmentArgs,
+  motionSegmentKey,
   subtitleTrack,
+  zoompanExpr,
 } from "./drama.mjs";
 import { ENCODER_VERSION, PlanError } from "./plan.mjs";
 import { clipSeconds, LONG_BY_SECONDS, SHORT_BY_SECONDS } from "./synthetic.mjs";
@@ -47,9 +57,11 @@ function clipsManifestFor(doc) {
   return { clips_hash: "c1", shots };
 }
 
-test("the slides encoder version is untouched, so no published video's segments are redone", () => {
+test("the slides and clip encoder versions are untouched, so no published video's segments are redone", () => {
   assert.equal(ENCODER_VERSION, "x264-high-crf18-stillimage-g60-bf2-bt709-v2");
-  assert.notEqual(CLIP_ENCODER_VERSION, ENCODER_VERSION);
+  assert.equal(CLIP_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-clip-v1");
+  assert.equal(MOTION_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-motion-v1");
+  assert.equal(new Set([ENCODER_VERSION, CLIP_ENCODER_VERSION, MOTION_ENCODER_VERSION]).size, 3);
 });
 
 test("a clip is cut when long, slowed then held when short, as far as its fit mode allows", () => {
@@ -105,6 +117,145 @@ test("the drama layout keeps the cards as stills and gives each shot its clip, f
   flagged.shots.bird.needs_review = true;
   assert.throws(() => layoutDrama(doc, timeline, frames, flagged), /needs_review/);
   assert.throws(() => layoutDrama(doc, timeline, { scenes: [] }, clips), /run render again/);
+});
+
+test("a still shot is laid out as a motion scene carrying its keyframe and its camera move", () => {
+  const doc = dramaFixture();
+  doc.scenes[0].data.visual = "still";
+  doc.scenes[3].data.visual = "still";
+  const timeline = estimateTimeline(doc);
+  const frames = framesManifestFor(doc, timeline);
+  const clips = clipsManifestFor(doc);
+  clips.shots.opening = { still: true, file: "keyframes/opening-1.png", sha256: "b".repeat(64) };
+  clips.shots.bird = { still: true, file: "keyframes/bird-1.png", sha256: "c".repeat(64) };
+  const keyframes = { shots: { opening: { file: "keyframes/opening-1.png", sha256: "b".repeat(64) }, "sea-storm": { file: "keyframes/sea-storm-1.png" } } };
+  const layout = layoutDrama(doc, timeline, frames, clips, keyframes);
+  assert.deepEqual(layout.map((scene) => [scene.id, scene.kind]), [["opening", "motion"], ["farewell", "clip"], ["sea-storm", "clip"], ["bird", "motion"], ["wrap", "stills"]]);
+  const opening = layout[0];
+  assert.deepEqual(opening.keyframe, { file: "keyframes/opening-1.png", sha256: "b".repeat(64) });
+  assert.deepEqual(opening.move, { name: "push-in", startsAtIdentity: true }, "camera \"slow push in\"");
+  assert.equal(opening.fit, null);
+  assert.equal(opening.transition, "cut");
+  assert.equal(opening.clip, undefined);
+  assert.equal(opening.frames, timeline.scenes[0].end_frame - timeline.scenes[0].start_frame);
+  const bird = layout[3];
+  assert.deepEqual(bird.keyframe, { file: "keyframes/bird-1.png", sha256: "c".repeat(64) }, "without the keyframes manifest, the clips manifest's still entry serves");
+  assert.equal(bird.transition, "dissolve");
+  assert.equal(bird.move.name, "drift", "\"slow orbit\" and ruffling feathers name no move");
+  assert.equal(layout.reduce((sum, scene) => sum + scene.frames, 0), timeline.total_frames);
+  // A still needs a passed keyframe from one manifest or the other.
+  assert.throws(() => layoutDrama(doc, timeline, frames, clipsManifestFor(doc), { shots: {} }), /shot opening is a still with no keyframe; run keyframes first/);
+  const flagged = { shots: { ...keyframes.shots, opening: { ...keyframes.shots.opening, needs_review: true } } };
+  assert.throws(() => layoutDrama(doc, timeline, frames, clips, flagged), /shot opening is a still whose keyframe failed its checks/);
+  // And a clip shot whose manifest entry is a still has no clip to play.
+  const swapped = clipsManifestFor(doc);
+  swapped.shots.farewell = { still: true, file: "keyframes/farewell-1.png", sha256: "d".repeat(64) };
+  assert.throws(() => layoutDrama(doc, timeline, frames, swapped, keyframes), /shot farewell has no clip; run clips first/);
+});
+
+test("a camera word names the move, from the camera direction first, then the motion prompt; nothing named drifts", () => {
+  const table = [
+    ["slow push in", "push-in", true],
+    ["Dolly in on her face", "push-in", true],
+    ["zoom in", "push-in", true],
+    ["the camera moves closer", "push-in", true],
+    ["move in slowly", "push-in", true],
+    ["slow pull back", "pull-out", false],
+    ["zoom out to the valley", "pull-out", false],
+    ["widen to the whole hall", "pull-out", false],
+    ["back away from the door", "pull-out", false],
+    ["pan left along the wall", "pan-right", false],
+    ["pan to the left", "pan-right", false],
+    ["sweep left to right", "pan-right", false],
+    ["pan right", "pan-left", false],
+    ["pan to the right", "pan-left", false],
+    ["right to left across the ranks", "pan-left", false],
+    ["tilt up to the moon", "tilt-up", false],
+    ["crane up", "tilt-up", false],
+    ["a slow rise", "tilt-up", false],
+    ["tilt down to the water", "tilt-down", false],
+    ["crane down", "tilt-down", false],
+    ["descend into the valley", "tilt-down", false],
+    ["static, slight handheld drift", "drift", true],
+    ["", "drift", true],
+  ];
+  for (const [camera, name, startsAtIdentity] of table) {
+    assert.deepEqual(motionMove({ camera }), { name, startsAtIdentity }, camera);
+  }
+  assert.deepEqual(motionMove({}), { name: "drift", startsAtIdentity: true });
+  assert.deepEqual(motionMove(undefined), { name: "drift", startsAtIdentity: true });
+  assert.equal(motionMove({ motion: "the camera pushes in on the pebble" }).name, "push-in", "the motion prompt is read when the camera names nothing");
+  assert.equal(motionMove({ camera: "pan left", motion: "zoom in" }).name, "pan-right", "the camera direction wins over the motion prompt");
+  assert.equal(motionMove({ camera: "handheld", motion: "waves crashing" }).name, "drift");
+});
+
+test("zoompan expressions end the move on the last frame, and only push-in and drift open on the whole keyframe", () => {
+  assert.equal(MOTION_ZOOM, 0.1);
+  assert.equal(MOTION_PAN_ZOOM, 1.08);
+  assert.equal(MOTION_DRIFT_ZOOM, 0.04);
+  assert.equal(MOTION_SOURCE_SCALE, 1.25);
+  assert.deepEqual(zoompanExpr({ name: "push-in" }, 180), { z: "1+0.1*on/179", x: "iw/2-(iw/zoom/2)", y: "ih/2-(ih/zoom/2)" });
+  assert.deepEqual(zoompanExpr("pull-out", 180), { z: "1.1-0.1*on/179", x: "iw/2-(iw/zoom/2)", y: "ih/2-(ih/zoom/2)" });
+  // The crop window slides left for pan-right (the picture travels right) and right for pan-left.
+  assert.deepEqual(zoompanExpr("pan-right", 180), { z: "1.08", x: "(iw-iw/zoom)*(1-on/179)", y: "(ih-ih/zoom)/2" });
+  assert.deepEqual(zoompanExpr("pan-left", 180), { z: "1.08", x: "(iw-iw/zoom)*on/179", y: "(ih-ih/zoom)/2" });
+  // The camera tilting up climbs the keyframe: the window slides from the bottom to the top.
+  assert.deepEqual(zoompanExpr("tilt-up", 180), { z: "1.08", x: "(iw-iw/zoom)/2", y: "(ih-ih/zoom)*(1-on/179)" });
+  assert.deepEqual(zoompanExpr("tilt-down", 180), { z: "1.08", x: "(iw-iw/zoom)/2", y: "(ih-ih/zoom)*on/179" });
+  assert.deepEqual(zoompanExpr("drift", 180), { z: "1+0.04*on/179", x: "(iw-iw/zoom)/2+(iw-iw/zoom)*0.15*on/179", y: "ih/2-(ih/zoom/2)" });
+  assert.equal(zoompanExpr("push-in", 1).z, "1+0.1*on/1", "a one-frame shot divides by one, not zero");
+  assert.equal(zoompanExpr("push-in", 0).z, "1+0.1*on/1");
+});
+
+test("a motion segment animates the looped keyframe with zoompan and then encodes exactly like a clip segment", () => {
+  const move = motionMove({ camera: "slow push in" });
+  const plain = motionSegmentArgs({ keyframe: "keyframes/a.png", frames: 180, move, outFile: "seg.mp4" });
+  const inputs = plain.slice(0, plain.indexOf("-filter_complex"));
+  assert.deepEqual(inputs, ["-hide_banner", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "30", "-t", "6.000000", "-i", "keyframes/a.png"]);
+  const graph = plain[plain.indexOf("-filter_complex") + 1];
+  assert.match(graph, /^\[0:v\]scale=2400:1350:flags=lanczos,zoompan=z='1\+0\.1\*on\/179':x='iw\/2-\(iw\/zoom\/2\)':y='ih\/2-\(ih\/zoom\/2\)':d=1:s=1920x1080:fps=30,trim=end_frame=180,setpts=PTS-STARTPTS\[pic\];\[pic\]format=yuv420p,setparams=/);
+  for (const expected of ["zoompan=", "s=1920x1080", "fps=30", "trim=end_frame=180"]) assert.ok(graph.includes(expected), expected);
+  assert.equal(plain[plain.indexOf("-frames:v") + 1], "180");
+  assert.doesNotMatch(graph, /overlay|tpad|setpts=PTS\//);
+  // Everything from -c:v on is the clip segment's, so joinArgs still copies the streams.
+  const clip = clipSegmentArgs({ clip: "clips/a.mp4", frames: 180, fit: fitPlan(180, 180), outFile: "seg.mp4" });
+  assert.deepEqual(plain.slice(plain.indexOf("-c:v")), clip.slice(clip.indexOf("-c:v")));
+  assert.deepEqual(plain.slice(plain.indexOf("-map"), plain.indexOf("-c:v")), clip.slice(clip.indexOf("-map"), clip.indexOf("-c:v")));
+
+  const full = motionSegmentArgs({ keyframe: "keyframes/a.png", frames: 180, move: { name: "pan-left" }, subtitlesList: "segments/a-subtitles.ffconcat", dissolveFrom: "build/last-prev.png", outFile: "seg.mp4" });
+  const fullInputs = full.filter((_, index) => full[index - 1] === "-i");
+  assert.deepEqual(fullInputs, ["keyframes/a.png", "segments/a-subtitles.ffconcat", "build/last-prev.png"]);
+  const chain = full[full.indexOf("-filter_complex") + 1];
+  const clipFull = clipSegmentArgs({ clip: "clips/a.mp4", frames: 180, fit: fitPlan(180, 180), subtitlesList: "segments/a-subtitles.ffconcat", dissolveFrom: "build/last-prev.png", outFile: "seg.mp4" });
+  const tail = (args) => args[args.indexOf("-filter_complex") + 1].slice(args[args.indexOf("-filter_complex") + 1].indexOf("[pic];"));
+  assert.equal(tail(full), tail(clipFull), "the dissolve, strips and colour chain is the clip segment's");
+  assert.match(chain, /zoompan=z='1\.08':x='\(iw-iw\/zoom\)\*on\/179'/);
+  assert.match(chain, /\[2:v\]scale=1920:1080,format=yuva420p,fade=t=out.*\[prev\];\[pic\]\[prev\]overlay=0:0:eof_action=pass\[dissolved\];\[1:v\]format=rgba\[strips\];\[dissolved\]\[strips\]overlay=0:main_h-overlay_h:eof_action=pass\[captioned\];\[captioned\]format=yuv420p/);
+  assert.deepEqual(full.slice(full.indexOf("-c:v")), clipFull.slice(clipFull.indexOf("-c:v")));
+
+  // The keyframe check runs the picture chain alone, so strips and dissolves never count against it.
+  const psnr = motionFramePsnrArgs("keyframes/a.png", move, 180);
+  assert.deepEqual(psnr.slice(0, 6), ["-hide_banner", "-nostats", "-i", "keyframes/a.png", "-i", "keyframes/a.png"]);
+  const lavfi = psnr[psnr.indexOf("-lavfi") + 1];
+  assert.match(lavfi, /^\[0:v\]scale=2400:1350:flags=lanczos,zoompan=z='1\+0\.1\*on\/179'.*:d=1:s=1920x1080:fps=30,select=eq\(n\\,0\),format=rgb24\[a\];\[1:v\]scale=1920:1080,format=rgb24\[b\];\[a\]\[b\]psnr$/);
+  assert.deepEqual(psnr.slice(-5), ["-frames:v", "1", "-f", "null", "-"]);
+});
+
+test("motion segment keys change with the keyframe, the move, the strips, the dissolve source and the encoder", () => {
+  const scene = { id: "a", frames: 180, keyframe: { file: "keyframes/a.png", sha256: "1".repeat(64) }, transition: "cut" };
+  const move = motionMove({ camera: "push in" });
+  const base = motionSegmentKey(scene, move);
+  assert.match(base, /^[0-9a-f]{16}$/);
+  assert.equal(motionSegmentKey({ ...scene }, { ...move }), base);
+  assert.notEqual(motionSegmentKey({ ...scene, keyframe: { file: "keyframes/a.png", sha256: "2".repeat(64) } }, move), base);
+  assert.notEqual(motionSegmentKey({ ...scene, keyframe: { file: "keyframes/a-2.png", sha256: "1".repeat(64) } }, move), base);
+  assert.notEqual(motionSegmentKey({ ...scene, frames: 181 }, move), base);
+  assert.notEqual(motionSegmentKey(scene, motionMove({ camera: "pull back" })), base);
+  assert.notEqual(motionSegmentKey(scene, move, [{ file: "frames/sub-x.png", frames: 180 }]), base);
+  assert.notEqual(motionSegmentKey({ ...scene, transition: "dissolve" }, move, null, "prevkey"), base);
+  assert.notEqual(motionSegmentKey({ ...scene, transition: "dissolve" }, move, null, "otherkey"), motionSegmentKey({ ...scene, transition: "dissolve" }, move, null, "prevkey"));
+  const clipScene = { ...scene, clip: { file: "keyframes/a.png", sha256: "1".repeat(64) } };
+  assert.notEqual(clipSegmentKey(clipScene, fitPlan(180, 180)), base, "a clip and a motion segment of the same file never share a key");
 });
 
 test("a scene's subtitle track covers exactly its frames, blank where nobody speaks", () => {

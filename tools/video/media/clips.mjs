@@ -3,6 +3,11 @@
 // (docs/videos/DRAMA.md). The most expensive stage, so it runs after the look, the narration,
 // the keyframes and the storyboard have been approved, and every submission is checked against
 // the per-video cap first. Writes clips/manifest.json (what assemble reads) and clips/<shot>-<seed>.mp4.
+//
+// A shot marked visual "still" (docs/videos/BINGE.md) buys no clip: assemble animates its
+// keyframe instead. It still gets a manifest entry naming that keyframe and its hash, so the
+// manifest covers every shot, its clips_hash moves when a keyframe is redrawn, and status and
+// assemble read one file for the whole picture track.
 import { execFile } from "node:child_process";
 import { existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
@@ -11,7 +16,7 @@ import { parseArgs } from "node:util";
 
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { approvalState } from "../core/approvals.mjs";
-import { clipKey, clipsHash, isDrama, lookHash, resolveLook, shotScenes } from "../core/drama.mjs";
+import { clipKey, clipShotScenes, clipsHash, isDrama, lookHash, resolveLook, shotScenes, stillShotScenes } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
 import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
@@ -124,9 +129,11 @@ export async function run(command, args, ctx) {
     return EXIT.usage;
   }
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
-  const shots = shotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
-  if (!shots.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
-  const undrawn = shots.filter((scene) => !keyframes.shots?.[scene.id]?.file || keyframes.shots[scene.id].needs_review);
+  const shots = clipShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
+  const stills = stillShotScenes(doc).filter((scene) => !wanted || wanted.has(scene.id));
+  if (!shots.length && !stills.length) throw new UsageError(`--shot ${values.shot} names no shot of ${doc.slug}`);
+  // A still is its keyframe, so it needs a passed one as much as a clip does.
+  const undrawn = [...shots, ...stills].filter((scene) => !keyframes.shots?.[scene.id]?.file || keyframes.shots[scene.id].needs_review);
   if (undrawn.length) {
     ctx.stderr.write(`shots ${undrawn.map((scene) => scene.id).join(", ")} have no passed keyframe; run keyframes first\n`);
     return EXIT.usage;
@@ -150,12 +157,18 @@ export async function run(command, args, ctx) {
     const durations = status ? (chosenModel(status, "clip")?.durations ?? []) : [];
     const price = status ? clipSecondPrice(status) : 0;
     let total = 0;
-    for (const scene of shots) {
+    for (const scene of shotScenes(doc)) {
+      if (!shots.includes(scene) && !stills.includes(scene)) continue;
+      const lines = ((framesOf.get(scene.id) ?? 0) / FPS).toFixed(1);
+      if (stills.includes(scene)) {
+        ctx.stdout.write(`${scene.id}: ${lines} s of lines → still, its keyframe under a camera move (no clip to buy)\n`);
+        continue;
+      }
       const seconds = clipSeconds(framesOf.get(scene.id) ?? 0, durations);
       total += seconds;
-      ctx.stdout.write(`${scene.id}: ${((framesOf.get(scene.id) ?? 0) / FPS).toFixed(1)} s of lines → ${seconds} s clip${status ? ` ≈ US$${(seconds * price).toFixed(2)}` : ""}; ${clipPrompt(scene, look)}\n`);
+      ctx.stdout.write(`${scene.id}: ${lines} s of lines → ${seconds} s clip${status ? ` ≈ US$${(seconds * price).toFixed(2)}` : ""}; ${clipPrompt(scene, look)}\n`);
     }
-    ctx.stdout.write(`${shots.length} shots, ${total} clip seconds for one take each\n`);
+    ctx.stdout.write(`${shots.length + stills.length} shots: ${stills.length} stills (animated keyframes, nothing to buy) and ${shots.length} clips priced, ${total} clip seconds for one take each\n`);
     if (status) {
       const problem = statusProblem(status, "clip");
       const budget = status.budgets?.clip_seconds;
@@ -201,6 +214,15 @@ export async function run(command, args, ctx) {
   let generated = 0;
   let stopped = false;
 
+  // The stills first: they cost nothing, and a clip continuing from one (start_frame) reads its
+  // entry below. Each names the keyframe assemble will animate, so a redrawn keyframe changes
+  // the clips_hash and the video is assembled again.
+  for (const scene of stills) {
+    const keyframe = keyframes.shots[scene.id];
+    manifest.shots[scene.id] = { still: true, file: keyframe.file, sha256: keyframe.sha256 };
+  }
+  if (stills.length) writeManifest(workdir, doc, manifest);
+
   for (const scene of shots) {
     const present = manifest.shots[scene.id];
     if (present && !present.needs_review && !values.force && existsSync(path.join(workdir, present.file))) {
@@ -223,10 +245,16 @@ export async function run(command, args, ctx) {
         ctx.stderr.write(`${scene.id} continues from ${scene.data.start_frame.shot}, which has no clip yet; run clips for it first\n`);
         return EXIT.usage;
       }
-      const frame = `clips/${scene.data.start_frame.shot}-last.png`;
-      if (ctx.extractFrame) await ctx.extractFrame(path.join(workdir, previous.file), path.join(workdir, frame));
-      else await runTool(tools.ffmpeg, lastFrameArgs(path.join(workdir, previous.file), previous.frames ?? Math.round(previous.seconds * FPS), path.join(workdir, frame)));
-      continues = { shot: scene.data.start_frame.shot, file: frame, sha256: await upload(frame) };
+      if (previous.still) {
+        // A still ends on its keyframe under a slight camera move, so the keyframe itself is
+        // the picture this clip continues from; there is no clip to take a last frame of.
+        continues = { shot: scene.data.start_frame.shot, file: previous.file, sha256: await upload(previous.file) };
+      } else {
+        const frame = `clips/${scene.data.start_frame.shot}-last.png`;
+        if (ctx.extractFrame) await ctx.extractFrame(path.join(workdir, previous.file), path.join(workdir, frame));
+        else await runTool(tools.ffmpeg, lastFrameArgs(path.join(workdir, previous.file), previous.frames ?? Math.round(previous.seconds * FPS), path.join(workdir, frame)));
+        continues = { shot: scene.data.start_frame.shot, file: frame, sha256: await upload(frame) };
+      }
       references.push({ sha256: continues.sha256, role: "previous_frame" });
     }
     const refs = references.slice(0, MAX_REFERENCES);
@@ -332,8 +360,9 @@ export async function run(command, args, ctx) {
   const seconds = Math.round((Date.now() - started) / 1000);
   const totals = ledgerTotals(workdir);
   const waiting = Object.entries(manifest.shots).filter(([, shot]) => shot.needs_review);
-  recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, generated, needs_review: waiting.map(([id]) => id), clip_seconds: totals.clip_seconds, usd: totals.usd, seconds }, ctx.now());
-  ctx.stdout.write(`${generated} clips generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots have clips; this video has spent US$${totals.usd.toFixed(2)} (${totals.clip_seconds} clip seconds)\n`);
+  const stillCount = Object.values(manifest.shots).filter((shot) => shot.still).length;
+  recordStage(workdir, "clips", { shots: Object.keys(manifest.shots).length, stills: stillCount, generated, needs_review: waiting.map(([id]) => id), clip_seconds: totals.clip_seconds, usd: totals.usd, seconds }, ctx.now());
+  ctx.stdout.write(`${generated} clips generated in ${seconds} s; ${Object.keys(manifest.shots).length} shots in the manifest (${stillCount} stills); this video has spent US$${totals.usd.toFixed(2)} (${totals.clip_seconds} clip seconds)\n`);
   if (waiting.length) {
     for (const [id, shot] of waiting) ctx.stdout.write(`ERROR ${id}: no take passed: ${(shot.problems ?? []).join("; ")}\n`);
     ctx.stdout.write(`fix the prompts of ${waiting.map(([id]) => id).join(", ")} and run clips again (needs_review in clips/manifest.json)\n`);

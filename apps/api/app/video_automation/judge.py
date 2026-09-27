@@ -70,7 +70,58 @@ QA_ITEMS: tuple[str, ...] = (
     "policy",
     "disclosure",
 )
+# A compilation of a binge series (docs/videos/BINGE.md) joins episodes that each passed the
+# eleven; its own check covers the join, the merged captions and the upload fields.
+COMPILATION_QA_ITEMS: tuple[str, ...] = (
+    "assemble",
+    "captions",
+    "metadata",
+    "links",
+    "thumbnail",
+    "disclosure",
+)
 PACKAGE_ITEMS: tuple[str, ...] = ("files", "descriptions", "captions", "disclosure")
+
+# The hands-off rules of a binge series (docs/videos/BINGE.md §自動核准). A planned document
+# and an episode's screenplay are judged in the checker's own words: 有 (delivered), 弱 (there
+# but flat) or 無 (missing), the vocabulary the script gate's coverage already uses.
+VERDICT_VALUES: tuple[str, ...] = ("有", "弱", "無")
+REQUIRED_VERDICTS: dict[str, tuple[str, ...]] = {
+    "setting": ("originality", "conflict_engine", "genre_fit", "cast_playable"),
+    "outline": (
+        "originality",
+        "escalation",
+        "midpoint_reveal",
+        "chapter_turns",
+        "satisfaction_schedule",
+    ),
+    "chapter": (
+        "originality",
+        "tension_rules",
+        "hooks",
+        "satisfaction",
+        "alternation",
+        "escalation",
+    ),
+}
+COVERAGE_BEATS: tuple[str, ...] = ("hook", "conflict", "turn", "cliffhanger")
+MAX_WEAK_VERDICTS = 1
+# The retention numbers the worker measures on the screenplay's estimated timeline: the hook
+# must be spoken within the first line or two, the first satisfaction beat inside half a
+# minute, and the cliffhanger must be the last thing said.
+HOOK_MAX_SECONDS = 8.0
+FIRST_SATISFACTION_MAX_SECONDS = 30.0
+MIN_SATISFACTION = 2
+# The genre presets whose chapter outlines and screenplays are held to the retention rules;
+# the classic xianxia series keeps the rules it was planned under (docs/videos/BINGE.md).
+RETENTION_GENRES = frozenset(
+    {"rebirth-revenge", "system-game", "urban-return", "empress-rise", "custom"}
+)
+
+
+def retention_required_for(genre: str | None) -> bool:
+    return (genre or "xianxia-bonds") in RETENTION_GENRES
+
 
 PICK_INSTRUCTIONS = (
     "Which of these outlines should this channel make? Choose the one that best serves the "
@@ -450,9 +501,20 @@ def _items_passed(report: Any, sha: str, required: tuple[str, ...]) -> bool:
     return all(name in passed for name in required)
 
 
-def final_qa_passed(payload: dict[str, Any], sha: str) -> bool:
-    """Whether a final review's ``qa`` passed every required item for exactly this final cut."""
-    return _items_passed(payload.get("qa"), sha, QA_ITEMS)
+def final_qa_passed(
+    payload: dict[str, Any], sha: str, required: tuple[str, ...] = QA_ITEMS
+) -> bool:
+    """Whether a final review's ``qa`` passed every required item for exactly this final cut.
+
+    A compilation (docs/videos/BINGE.md) is held to COMPILATION_QA_ITEMS: its episodes each
+    passed the eleven, and its own report says so under ``kind``.
+    """
+    report = payload.get("qa")
+    if required is COMPILATION_QA_ITEMS and (
+        not isinstance(report, dict) or report.get("kind") != "compilation"
+    ):
+        return False
+    return _items_passed(report, sha, required)
 
 
 def publish_package_passed(payload: dict[str, Any], sha: str) -> bool:
@@ -473,3 +535,117 @@ def failed_items(report: Any) -> list[str]:
 
 QA_AUTO_APPROVED_NOTE = f"自動品管 {len(QA_ITEMS)} 項全過，依設定自動核准"
 PACKAGE_AUTO_APPROVED_NOTE = f"上傳包 {len(PACKAGE_ITEMS)} 項齊全，依設定自動核准"
+
+
+# --- the hands-off rules of a binge series (docs/videos/BINGE.md) --------------------------------
+
+
+def _verdicts(judge: Any) -> dict[str, str] | None:
+    if not isinstance(judge, dict):
+        return None
+    verdicts = judge.get("verdicts")
+    if not isinstance(verdicts, dict):
+        return None
+    read = {str(key): value for key, value in verdicts.items()}
+    if any(value not in VERDICT_VALUES for value in read.values()):
+        return None
+    return read
+
+
+def _empty_list(value: Any) -> bool:
+    return isinstance(value, list) and len(value) == 0
+
+
+def series_doc_passed(judge: Any, kind: str) -> bool:
+    """Whether a checker's verdict on a planned document clears the hands-off bar.
+
+    Every verdict the kind requires must be there, none 無, at most one 弱, and the checker
+    must have listed no problems and no resemblance to an existing work. A verdict that is
+    missing a key, or lists anything, waits for a rewrite or the owner: silence never passes.
+    """
+    verdicts = _verdicts(judge)
+    required = REQUIRED_VERDICTS.get(kind)
+    if verdicts is None or required is None or not isinstance(judge, dict):
+        return False
+    if any(key not in verdicts for key in required):
+        return False
+    if any(verdicts[key] == "無" for key in required):
+        return False
+    if sum(1 for key in required if verdicts[key] == "弱") > MAX_WEAK_VERDICTS:
+        return False
+    return _empty_list(judge.get("problems")) and _empty_list(judge.get("similar_works"))
+
+
+def series_doc_problems(judge: Any) -> list[str]:
+    """What the checker found, in the order the owner reads it, for the rewrite note."""
+    if not isinstance(judge, dict):
+        return ["the checker gave no verdict"]
+    found: list[str] = []
+    problems = judge.get("problems")
+    if isinstance(problems, list):
+        found.extend(str(item) for item in problems if str(item).strip())
+    similar = judge.get("similar_works")
+    if isinstance(similar, list) and similar:
+        found.append("與既有作品雷同：" + "；".join(str(item) for item in similar))
+    verdicts = _verdicts(judge) or {}
+    weak = [key for key, value in verdicts.items() if value == "無"]
+    if weak:
+        found.append("缺少：" + "、".join(weak))
+    return found or ["查核沒有列出理由，但裁決沒過"]
+
+
+def series_doc_note(judge: Any, passed: bool) -> str:
+    """The note on a document the server decided from the checker's verdict."""
+    verdicts = _verdicts(judge) or {}
+    body = "、".join(f"{key} {value}" for key, value in verdicts.items()) or "沒有裁決"
+    if passed:
+        return f"查核：{body}，依作品設定自動核准"
+    return f"[auto] 查核沒過：{'；'.join(series_doc_problems(judge))}"
+
+
+def script_check_passed(
+    payload: dict[str, Any], *, retention_required: bool, min_satisfaction: int = MIN_SATISFACTION
+) -> bool:
+    """Whether an episode's screenplay review stands on the checker's coverage (BINGE.md).
+
+    The four beats of the chapter outline must all be delivered, at most one of them weakly,
+    with no continuity problem and no resemblance to an existing work. A genre with the
+    retention rules also needs the satisfaction beats and the timing the worker measured:
+    the hook inside HOOK_MAX_SECONDS, the first satisfaction inside
+    FIRST_SATISFACTION_MAX_SECONDS, at least ``min_satisfaction`` of them, and the cliffhanger
+    as the last line. A payload from an older worker, without these, never auto-passes.
+    """
+    coverage = payload.get("coverage")
+    if not isinstance(coverage, dict):
+        return False
+    if any(coverage.get(beat) not in VERDICT_VALUES for beat in COVERAGE_BEATS):
+        return False
+    if any(coverage.get(beat) == "無" for beat in COVERAGE_BEATS):
+        return False
+    if sum(1 for beat in COVERAGE_BEATS if coverage.get(beat) == "弱") > MAX_WEAK_VERDICTS:
+        return False
+    if not _empty_list(payload.get("continuity_problems")):
+        return False
+    if not _empty_list(payload.get("similar_works")):
+        return False
+    if not retention_required:
+        return True
+    if coverage.get("satisfaction") not in ("有", "弱"):
+        return False
+    retention = payload.get("retention")
+    if not isinstance(retention, dict):
+        return False
+    hook = _number(retention.get("hook_seconds"))
+    satisfaction = retention.get("satisfaction")
+    if hook is None or hook > HOOK_MAX_SECONDS or not isinstance(satisfaction, dict):
+        return False
+    count = satisfaction.get("count")
+    first = _number(satisfaction.get("first_seconds"))
+    if not isinstance(count, int) or isinstance(count, bool) or count < min_satisfaction:
+        return False
+    if first is None or first > FIRST_SATISFACTION_MAX_SECONDS:
+        return False
+    return retention.get("cliffhanger_last") is True
+
+
+SCRIPT_AUTO_APPROVED_NOTE = "查核對照細綱：四個節拍都在、沒有連貫性問題，依作品設定自動核准"

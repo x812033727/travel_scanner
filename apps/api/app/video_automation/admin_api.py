@@ -13,7 +13,7 @@ from typing import Annotated
 from uuid import UUID
 
 import httpx
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -37,6 +37,7 @@ from app.video_automation.judge import (
 )
 from app.video_automation.requests import RequestRefused
 from app.video_automation.schemas import (
+    BingeQuoteOut,
     DramaRequestIn,
     DramaRequestOut,
     DramaRequestsOut,
@@ -44,6 +45,8 @@ from app.video_automation.schemas import (
     NextDramaRequestOut,
     SeriesAction,
     SeriesActionOut,
+    SeriesCompilationStartIn,
+    SeriesCompilationStartOut,
     SeriesContextOut,
     SeriesDocDecisionIn,
     SeriesDocEditIn,
@@ -59,6 +62,7 @@ from app.video_automation.schemas import (
     SeriesListOut,
     SeriesOut,
     SeriesPatch,
+    SeriesSummary,
     SettingsSave,
     SettingsView,
     SettingsWrite,
@@ -67,6 +71,7 @@ from app.video_automation.schemas import (
     StageRunIn,
     StageRunOut,
     TopicsOut,
+    VisualTier,
 )
 from app.video_automation.series import SeriesRefused
 from app.video_automation.topics import gather_topics
@@ -377,6 +382,21 @@ async def create_video_series(
         raise _series_refused(error) from error
 
 
+@admin_router.get("/series/binge-quote", response_model=BingeQuoteOut)
+async def video_series_binge_quote(
+    user: ContentReader,
+    session: Session,
+    total_minutes: int = Query(ge=30, le=480),
+    episode_minutes: int = Query(default=3, ge=1, le=8),
+    visual_tier: VisualTier = "hybrid",
+) -> BingeQuoteOut:
+    """What a binge series of these minutes would take, before the owner presses the button
+    (docs/videos/BINGE.md); declared before the slug route so the path is never a slug."""
+    _ = user
+    row = await service.settings_row(session)
+    return drama_series.binge_quote(row, total_minutes, episode_minutes, visual_tier)
+
+
 @admin_router.get("/series/{slug}", response_model=SeriesOut)
 async def video_series_detail(slug: str, user: ContentReader, session: Session) -> SeriesOut:
     _ = user
@@ -495,7 +515,9 @@ async def submit_video_series_doc(
 ) -> SeriesDocOut:
     await _series_limit(tool)
     try:
-        return await drama_series.submit_doc(session, slug, payload)
+        return await drama_series.submit_doc(
+            session, slug, payload, await service.settings_row(session)
+        )
     except SeriesRefused as error:
         raise _series_refused(error) from error
 
@@ -529,5 +551,28 @@ async def finish_video_series_episode(
     await _series_limit(tool)
     try:
         return await drama_series.finish_episode(session, slug, number)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.post("/series/{slug}/compilation/start", response_model=SeriesCompilationStartOut)
+async def start_video_series_compilation(
+    slug: str, payload: SeriesCompilationStartIn, tool: VideoTool, session: Session
+) -> SeriesCompilationStartOut:
+    """The worker starts the compilation of a finished binge series (docs/videos/BINGE.md)."""
+    await _series_limit(tool)
+    try:
+        return await drama_series.start_compilation(session, tool, slug, payload.slug)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.post("/series/{slug}/compilation/done", response_model=SeriesSummary)
+async def finish_video_series_compilation(
+    slug: str, tool: VideoTool, session: Session
+) -> SeriesSummary:
+    await _series_limit(tool)
+    try:
+        return await drama_series.finish_compilation(session, slug)
     except SeriesRefused as error:
         raise _series_refused(error) from error
