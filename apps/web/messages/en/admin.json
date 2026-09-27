@@ -2258,7 +2258,7 @@
     "budgetTitle": "Budget limits",
     "budgetHelp": "When any limit is reached, the worker stops at its current step; it never switches to a cheaper model on its own. The monthly narration characters and daily Jev calls keep their settings under AI services.",
     "gatesTitle": "Approvals",
-    "gatesHelp": "Choosing the outline, watching the final video and confirming the upload always wait for you. Uploading to YouTube and making a video public are always done by you in Studio.",
+    "gatesHelp": "Uploading to YouTube and the publish time are always yours. The narration, the outline, the final cut and the upload confirmation each have a switch, and a gate switched off waits for you as before; a final cut that fails a check and an outline Jev cannot pick after two rewrites come back to you too.",
     "save": "Save settings",
     "saving": "Saving…",
     "saved": "Saved",
@@ -2309,7 +2309,11 @@
       "drama_monthly_judge_calls_budget": "Judge calls a month",
       "drama_monthly_music_budget": "Music tracks a month",
       "drama_max_usd_per_video": "Most spent on one video (US$)",
-      "drama_topic_scope": "Drama subjects (one per line)"
+      "drama_topic_scope": "Drama subjects (one per line)",
+      "channel_stance": "Channel stance",
+      "auto_pick_outline": "Let Jev choose the outline (no effect while the stance is blank)",
+      "auto_approve_final": "Approve the final cut when every automatic check passes, and the upload confirmation once the package is ready",
+      "drama_auto_pick_look": "Pick character sheets automatically: approve a character when the judge's best sheet clears the threshold with no problems"
     },
     "stages": {
       "planner": "Planning (topic and outline)",
@@ -2357,7 +2361,10 @@
       "slides": "Slides",
       "drama": "Drama"
     },
-    "promptSent": "{slug} · {time}"
+    "promptSent": "{slug} · {time}",
+    "stanceTitle": "Channel stance",
+    "stanceHelp": "What this channel believes. The planner writes each video's owner viewpoint from this alone; the writer and Jev's checks read it too. It is separate from the standing instructions: those say how to write, this says what you believe. One numbered point per line, at most 4,000 characters. While it is blank Jev does not choose outlines and they wait for you as before. A draft is in docs/videos/HANDS-OFF.md under 頻道立場; edit it and paste it here. A change only reaches videos planned after it.",
+    "stancePlaceholder": "e.g. 1. Count the cost before paying: pay for quota and abilities you will use, not to remove ads."
   },
   "videoSeries": {
     "listTitle": "Series",

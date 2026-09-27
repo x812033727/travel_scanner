@@ -42,7 +42,7 @@ class ProjectIn(BaseModel):
     title: str = Field(min_length=1, max_length=200)
     stage: str = Field(min_length=1, max_length=40)
     checklist: list[ChecklistItem] = Field(default_factory=list, max_length=30)
-    youtube_video_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{6,32}$")
+    youtube_video_id: str | None = Field(default=None, pattern=r"^[A-Za-z0-9_-]{11}$")
     # The article's slug. Left out, the stored one stays: older tools do not send it.
     source_guide: str | None = Field(default=None, pattern=r"^[a-z0-9][a-z0-9-]{0,118}[a-z0-9]$")
     # Slides or the AI drama route (docs/videos/DRAMA.md). Left out, the stored one stays.

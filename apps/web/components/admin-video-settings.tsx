@@ -49,6 +49,7 @@ export type DramaSettings = {
   max_usd_per_video: number;
   judge_min_score: number;
   auto_approve_storyboard: boolean;
+  auto_pick_look: boolean;
   character_voice_pool: CharacterVoice[];
   music_enabled: boolean;
   subtitle_burn_in: boolean;
@@ -77,6 +78,10 @@ export type VideoSettings = {
   drama: DramaSettings;
   // Stage -> the owner's standing instructions, which the worker appends to that stage's prompt.
   stage_instructions: Partial<Record<Stage, string>>;
+  // The hands-off switches (docs/videos/HANDS-OFF.md): what the channel believes, and which gates approve themselves.
+  channel_stance: string;
+  auto_pick_outline: boolean;
+  auto_approve_final: boolean;
 };
 // The instructions a stage was last sent, as the worker composed them (GET /admin/video-automation/prompts).
 export type StagePrompt = { stage: Stage; format: "slides" | "drama"; slug: string; instructions: string; sent_at: string };
@@ -116,14 +121,21 @@ const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "auto_approve_audio", "drama", "stage_instructions",
+  "max_retake_rounds", "auto_approve_audio", "drama", "stage_instructions", "channel_stance", "auto_pick_outline",
+  "auto_approve_final",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The body the API's SettingsWrite accepts (it refuses unknown fields): the view without its options. */
 export function settingsBody(view: VideoSettingsView | VideoSettings): VideoSettings {
   const body = Object.fromEntries(SETTINGS_KEYS.map((key) => [key, view[key]])) as VideoSettings;
-  // A site from before the standing instructions existed sends none.
-  return { ...body, stage_instructions: view.stage_instructions ?? {} };
+  // A site from before the standing instructions or the hands-off switches existed sends none.
+  return {
+    ...body,
+    stage_instructions: view.stage_instructions ?? {},
+    channel_stance: view.channel_stance ?? "",
+    auto_pick_outline: view.auto_pick_outline ?? true,
+    auto_approve_final: view.auto_approve_final ?? true,
+  };
 }
 
 /** What the settings tab saves: the stage models are chosen on the AI settings page and left out. */
@@ -261,6 +273,14 @@ export function AdminVideoSettings() {
       </label>)}</div>
     </section>
 
+    <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-stance">
+      <h2 id="video-settings-stance" className="text-xl font-bold">{t("stanceTitle")}</h2>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("stanceHelp")}</p>
+      <label className="block text-sm font-semibold">{t("fields.channel_stance")}
+        <textarea className={fieldClass} rows={8} maxLength={4000} value={draft.channel_stance} disabled={disabled} placeholder={t("stancePlaceholder")} onChange={(event) => edit({ channel_stance: event.target.value })} />
+      </label>
+    </section>
+
     <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-prompts">
       <h2 id="video-settings-prompts" className="text-xl font-bold">{t("promptsTitle")}</h2>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("promptsHelp")}</p>
@@ -321,6 +341,8 @@ export function AdminVideoSettings() {
     <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-gates">
       <h2 id="video-settings-gates" className="text-xl font-bold">{t("gatesTitle")}</h2>
       <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={draft.auto_approve_audio} disabled={disabled} onChange={(event) => edit({ auto_approve_audio: event.target.checked })} />{t("fields.auto_approve_audio")}</label>
+      <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={draft.auto_pick_outline} disabled={disabled} onChange={(event) => edit({ auto_pick_outline: event.target.checked })} />{t("fields.auto_pick_outline")}</label>
+      <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={draft.auto_approve_final} disabled={disabled} onChange={(event) => edit({ auto_approve_final: event.target.checked })} />{t("fields.auto_approve_final")}</label>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("gatesHelp")}</p>
     </section>
 
@@ -365,6 +387,7 @@ export function AdminVideoSettings() {
         <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.subtitle_burn_in} disabled={disabled} onChange={(event) => editDrama({ subtitle_burn_in: event.target.checked })} />{t("fields.drama_subtitle_burn_in")}</label>
         <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.clip_native_audio} disabled={disabled} onChange={(event) => editDrama({ clip_native_audio: event.target.checked })} />{t("fields.drama_clip_native_audio")}</label>
         <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.auto_approve_storyboard} disabled={disabled} onChange={(event) => editDrama({ auto_approve_storyboard: event.target.checked })} />{t("fields.drama_auto_approve_storyboard")}</label>
+        <label className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={drama.auto_pick_look} disabled={disabled} onChange={(event) => editDrama({ auto_pick_look: event.target.checked })} />{t("fields.drama_auto_pick_look")}</label>
       </fieldset>
       <fieldset className="flex flex-wrap gap-5"><legend className="mb-2 text-sm font-semibold">{t("fields.drama_character_voice_pool")}</legend>
         {view.voice_options.gemini.map((name) => <label key={name} className="flex min-h-11 items-center gap-2"><input type="checkbox" checked={voiceInPool(name)} disabled={disabled}

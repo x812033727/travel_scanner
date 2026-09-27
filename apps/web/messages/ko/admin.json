@@ -2258,7 +2258,7 @@
     "budgetTitle": "예산 한도",
     "budgetHelp": "어느 한도에든 도달하면 워커는 현재 단계에서 멈추며, 더 저렴한 모델로 알아서 바꾸지 않습니다. 내레이션 월간 글자 수와 Jev 일일 호출 횟수는 'AI 서비스' 설정을 그대로 따릅니다.",
     "gatesTitle": "승인",
-    "gatesHelp": "개요 선택, 완성 영상 확인, 업로드 확인은 항상 직접 하셔야 합니다. YouTube 업로드와 공개도 항상 Studio에서 직접 하십니다.",
+    "gatesHelp": "YouTube 업로드와 공개 시각은 언제나 당신이 정합니다. 내레이션·아웃라인·최종본·업로드 확인에는 각각 스위치가 있고, 끈 관문은 예전처럼 당신을 기다립니다. 자동 검사에 떨어진 최종본과 두 번 다시 써도 Jev가 고르지 못한 아웃라인도 당신에게 돌아옵니다.",
     "save": "설정 저장",
     "saving": "저장 중…",
     "saved": "저장했습니다",
@@ -2309,7 +2309,11 @@
       "drama_monthly_judge_calls_budget": "월 판정 호출 수",
       "drama_monthly_music_budget": "월 음악 트랙 수",
       "drama_max_usd_per_video": "편당 최대 비용(미국 달러)",
-      "drama_topic_scope": "드라마 소재(한 줄에 하나)"
+      "drama_topic_scope": "드라마 소재(한 줄에 하나)",
+      "channel_stance": "채널의 입장",
+      "auto_pick_outline": "Jev가 아웃라인을 고르게 하기 (입장이 비어 있으면 효과 없음)",
+      "auto_approve_final": "자동 검사를 모두 통과하면 최종본을 승인하고, 업로드 패키지가 준비되면 \"업로드 확인\"도 승인",
+      "drama_auto_pick_look": "설정화 자동 선택: judge 최고 점수의 한 장이 기준을 넘고 문제가 없으면 그 인물을 승인"
     },
     "stages": {
       "planner": "기획(주제와 개요)",
@@ -2357,7 +2361,10 @@
       "slides": "슬라이드",
       "drama": "드라마"
     },
-    "promptSent": "{slug} · {time}"
+    "promptSent": "{slug} · {time}",
+    "stanceTitle": "채널의 입장",
+    "stanceHelp": "이 채널이 믿는 것. 기획 모델은 각 영상의 운영자 관점을 이 입장만을 근거로 쓰고, 집필과 Jev의 검사도 이것을 읽습니다. \"각 단계의 상설 지시\"와는 다릅니다: 상설 지시는 어떻게 쓸지, 입장은 무엇을 믿는지입니다. 한 줄에 한 항목, 번호를 붙여 최대 4,000자. 비어 있는 동안 Jev는 아웃라인을 고르지 않고 예전처럼 당신을 기다립니다. 초안은 docs/videos/HANDS-OFF.md의 「頻道立場」 절에 있으니 고쳐서 붙여 넣으세요. 바꾼 내용은 그 뒤에 기획되는 영상에만 적용됩니다.",
+    "stancePlaceholder": "예: 1. 돈을 쓰기 전에 계산부터: 정말 쓸 한도와 기능을 위해 결제하고, 광고를 없애려고 결제하지 않는다."
   },
   "videoSeries": {
     "listTitle": "작품",

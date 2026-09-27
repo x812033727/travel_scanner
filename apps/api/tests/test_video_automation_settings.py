@@ -8,6 +8,7 @@ import os
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
 from pathlib import Path
+from types import SimpleNamespace
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
 from uuid import uuid4
@@ -72,6 +73,9 @@ def _values(**changes: Any) -> dict[str, Any]:
         "auto_approve_audio": True,
         "drama": copy.deepcopy(DEFAULT_DRAMA),
         "stage_instructions": {},
+        "channel_stance": "",
+        "auto_pick_outline": True,
+        "auto_approve_final": True,
     }
     values.update(changes)
     return values
@@ -277,7 +281,11 @@ def _stored(monkeypatch: pytest.MonkeyPatch) -> AsyncMock:
     stored = _values(drama=_drama(drama_enabled=True, max_usd_per_video=50))
     stored["stage_models"]["writer"] = {"provider": "claude_code", "model": "claude-opus-5-5"}
     stored["stage_instructions"] = {"writer": "結尾留懸念"}
-    monkeypatch.setattr(service, "settings_row", AsyncMock(return_value=object()))
+    stored["channel_stance"] = "1. 先把帳算清楚再花錢"
+    stored["auto_pick_outline"] = False
+    monkeypatch.setattr(
+        service, "settings_row", AsyncMock(return_value=SimpleNamespace(updated_at=None))
+    )
     monkeypatch.setattr(service, "settings_values", lambda _row: SettingsWrite(**stored))
     monkeypatch.setattr(
         admin_api,
@@ -379,6 +387,71 @@ async def test_a_settings_save_without_standing_instructions_keeps_the_stored_on
     assert update.await_args_list[0].args[2].stage_instructions == {"writer": "結尾留懸念"}
     assert changed.status_code == 200, changed.text
     assert changed.json()["stage_instructions"] == {"verifier": "對照山海經原文"}
+
+
+def test_the_stance_is_trimmed_and_capped_and_the_switches_default_on_except_the_look() -> None:
+    payload = SettingsWrite(**_values(channel_stance="  1. 官方原文優先  "))
+    assert payload.channel_stance == "1. 官方原文優先"
+    assert payload.auto_pick_outline and payload.auto_approve_final
+    assert payload.drama.auto_pick_look is False
+    without = {
+        key: value
+        for key, value in _values().items()
+        if key not in ("channel_stance", "auto_pick_outline", "auto_approve_final")
+    }
+    assert SettingsWrite(**without).channel_stance == ""
+    with pytest.raises(ValidationError):
+        SettingsWrite(**_values(channel_stance="長" * 4001))
+
+
+@pytest.mark.asyncio
+async def test_a_settings_save_without_the_stance_or_the_switches_keeps_the_stored_ones(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A page from before the hands-off switches existed sends none; it must not reset them."""
+    update = _stored(monkeypatch)
+    values = _values(enabled=True)
+    for key in ("channel_stance", "auto_pick_outline", "auto_approve_final"):
+        del values[key]
+    url = "/api/v1/admin/video-automation/settings"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_owner())), base_url="http://t"
+    ) as client:
+        kept = await client.put(url, json=values)
+        changed = await client.put(
+            url,
+            json=_values(
+                channel_stance="2. 官方原文優先",
+                auto_approve_final=False,
+                drama=_drama(auto_pick_look=True),
+            ),
+        )
+    assert kept.status_code == 200, kept.text
+    first = update.await_args_list[0].args[2]
+    assert first.channel_stance == "1. 先把帳算清楚再花錢"
+    assert first.auto_pick_outline is False and first.auto_approve_final is True
+    assert changed.status_code == 200, changed.text
+    body = changed.json()
+    assert body["channel_stance"] == "2. 官方原文優先"
+    assert body["auto_pick_outline"] is True and body["auto_approve_final"] is False
+    assert body["drama"]["auto_pick_look"] is True
+
+
+@pytest.mark.asyncio
+async def test_the_worker_reads_the_stance_and_the_switches_with_the_settings(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _stored(monkeypatch)
+    app = _app()
+    token = VideoToolToken(id=uuid4(), name="worker", token_hash="h", token_prefix="mkv_w")
+    app.dependency_overrides[speech_api.video_tool] = lambda: token
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://t") as client:
+        response = await client.get("/api/v1/video/automation/settings")
+    assert response.status_code == 200, response.text
+    body = response.json()
+    assert body["channel_stance"] == "1. 先把帳算清楚再花錢"
+    assert (body["auto_pick_outline"], body["auto_approve_final"]) == (False, True)
+    assert body["drama"]["auto_pick_look"] is False
 
 
 @pytest.mark.asyncio
@@ -522,6 +595,8 @@ async def test_settings_start_from_defaults_save_with_an_audit_entry_and_read_ba
         await session.commit()
         first = await service.settings_view(session)
         assert first.enabled is False and first.draft_interval_hours == 72
+        assert first.channel_stance == "" and first.auto_pick_outline and first.auto_approve_final
+        assert first.drama.auto_pick_look is False
         saved = await service.update_settings(
             session, owner, SettingsWrite(**_values(enabled=True, draft_interval_hours=48))
         )
