@@ -24,6 +24,9 @@ export const GATES = {
   final: ({ workdir }) => path.join(workdir, "final.mp4"),
   // The owner's "this may be uploaded", given on /admin/videos to the package `package` wrote.
   publish: ({ workdir }) => path.join(workdir, "upload", "metadata.json"),
+  // The owner's "I uploaded these dub tracks in Studio" (docs/videos/DUBS.md), bound to the
+  // manifest `review-push --gate dubs` writes of the tracks it sent.
+  dubs: ({ workdir }) => path.join(workdir, "dubs", "manifest.json"),
 };
 
 export const approvalsFile = (workdir) => path.join(workdir, "approvals.json");
