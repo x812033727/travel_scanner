@@ -1,13 +1,13 @@
 ---
 id: 2026-09-26-pause-news-candidates-when-the-jev
 title: Pause news candidates when the Jev daily budget is spent, instead of holding them as uncertain duplicates
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-news-backfill
 claimed_at: 2026-09-26T22:03:56Z
 created_at: 2026-09-26T22:03:21Z
-completed_at:
+completed_at: 2026-09-27T00:29:11Z
 branch: claude/news-jev-quota-pause
 depends_on: []
 scope:
@@ -36,12 +36,12 @@ candidates. Nothing was uncertain about those stories, and nothing would ever ru
       status `discovered`) and records no assessment.
 - [x] The orphan sweep leaves paused candidates until the UTC day ends, then runs them.
 - [x] `backfill_cli --jev-quota-holds` reopens the existing holds, paused, without queueing.
-- [ ] Merged and deployed; the 2026-09-26 holds reopened with `--jev-quota-holds --apply`.
+- [x] Merged and deployed; the 2026-09-26 holds reopened with `--jev-quota-holds --apply`.
 
 ## Steps
 
 - [x] pipeline.py, jobs.py (comment), backfill_cli.py; tests; docs/news-automation.md.
-- [ ] PR, CI, merge, deploy, reopen the holds.
+- [x] PR, CI, merge, deploy, reopen the holds.
 
 ## How to verify
 
@@ -54,3 +54,10 @@ After the deploy, a dry run of `backfill_cli --since 2026-09-01 --jev-quota-hold
   when the budget is spent, so the pause costs nothing, and the file is in the scope of the
   stale `2026-09-22-jev-review-advisory-tool` claim.
 - Later Jev stages keep their holds (`news_jev_final_hold` is publishable by the owner).
+
+## Result (2026-09-27 UTC)
+
+PR #829 (`1d96c84f`) deployed 00:27Z. `backfill_cli --since 2026-09-01 --jev-quota-holds --apply`
+reopened 193 holds as `news_jev_quota_paused` (92 with a first-party page). Because the UTC day
+had just turned and a fresh budget was there, they were also queued at once rather than left for
+the next day's sweep; any that run out of budget pause again and resume after 00:00 UTC.
