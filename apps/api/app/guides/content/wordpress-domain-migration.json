@@ -259,6 +259,998 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Changing a WordPress Domain: Check Redirects, Search Signals, and Email",
+      "description": "Changing a WordPress domain means handling internal URLs, redirects from old links, search signals, and email together. Starting with a URL mapping, this guide explains how to preview database replacements, check permanent redirects, test sending and receiving on the new domain, and monitor the change after launch. It helps personal brands and studios plan a name change without assuming that editing the WordPress site address completes the move.",
+      "hero": {
+        "src": "/guides/wordpress-domain-migration/hero-en.jpg",
+        "alt": "Original illustration of a document, website screen, and check-mark shield representing URL mapping and verification during a domain change.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You have changed the brand name and registered a new domain. The next step is usually not to edit the WordPress site address immediately. Images in posts, old social posts, search results, form notifications, and work email may still point to the former name. Create a mapping so every old entry point has a defined destination."
+        },
+        {
+          "type": "paragraph",
+          "text": "Imagine a craft studio switching to a domain that is easier to remember while keeping its existing tutorials. A practical outcome is that an old article link opens the same article at its new address, editors can still log in, and someone receives customer inquiries sent to the old mailbox. The steps below follow those three paths."
+        },
+        {
+          "type": "heading",
+          "text": "Map old URLs to a destination for every page",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Build an inventory from the sitemap, post list, common navigation, and pages people actually visit. Include images and downloadable files. If only the domain changes, retain the existing paths initially to simplify mapping. If you also reorganize categories or remove posts, record the new destination and reason for each item."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, the old /workshop/ page should lead to the new course page, rather than sending every old article to the home page. When combining several posts, redirect to a new page that truly covers their information. A deleted page without a reasonable replacement should return an appropriate not-found response. Whether readers can find what they came for is the test of a sound mapping."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List old URLs for posts, pages, media, downloads, and important external links.",
+            "Assign a new URL to each and record why it is retained, combined, or removed.",
+            "Sample the home page, popular inner pages, Chinese-character paths, and links with query parameters."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Back up first, then preview database URL replacement",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The WordPress site address is only one setting. Post content, plugin options, and page builders may store absolute URLs elsewhere. Back up files and the database, then use a migration tool that understands WordPress data formats on a restricted copy. A plain text replacement of the domain throughout an SQL dump can damage serialized data."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a technical operator uses WP-CLI, its official search-replace command handles serialized data and offers --dry-run to report changes without writing them. Verify the table scope and the old and new URLs, then examine the expected replacement count. Do not include every table automatically, especially when other sites share the same database."
+        },
+        {
+          "type": "paragraph",
+          "text": "Replace only site URLs that need to change. The bare domain might also occur in email addresses, historical records, or external-service settings, so do not rename every occurrence indiscriminately. Afterwards, inspect custom theme files, CSS, menus, and plugin caches to ensure the rendered site no longer fetches resources from the old address."
+        },
+        {
+          "type": "heading",
+          "text": "Keep HTTPS working on both the old and new domains",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The new domain needs correct DNS records and a valid certificate. If the old domain used HTTPS, it also needs a valid connection throughout the redirect period. The browser establishes a secure connection before receiving a redirect response. If the old certificate expires, visitors may see a warning before they can reach the new site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Have the host or site administrator configure permanent redirects from the approved mapping, then test each old URL’s response and final destination. Google recommends server-side permanent redirects, such as 301 or 308, that reach the final page as directly as possible. Avoid rules that bounce between the apex domain, www, HTTP, and HTTPS."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose one consistent canonical-address strategy for the new domain’s apex and www names.",
+            "Test whether each type of old URL reaches its intended new page, not merely whether it redirects.",
+            "Check images, downloads, and forms for loops, missing paths, or security warnings."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Update search signals and links you control",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Canonical URLs, sitemaps, and internal links on new pages should point to the new domain. Before going public, remove any indexing blocks that were only for testing. The Search Console Change of Address tool has eligibility rules; for a true move between domains, verify both properties and complete the checks required by Google."
+        },
+        {
+          "type": "paragraph",
+          "text": "The tool does not create redirects and cannot update every search result instantly. Google recommends keeping redirects for as long as possible, generally at least a year. Business cards, bookmarks, and third-party links still in use may justify longer support. A site move can cause temporary fluctuations; do not promise that rankings will recover within a few days."
+        },
+        {
+          "type": "paragraph",
+          "text": "Schedule updates to entry points you can edit: social profiles, newsletter footers, business listings, partner sites, and QR Code images in documents. Prioritize heavily used or transaction-critical items, and record an owner and completion date. Direct links to the new domain spare readers an extra wait and simplify later maintenance even while old links redirect."
+        },
+        {
+          "type": "heading",
+          "text": "Treat email as a separate service to verify",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A website redirect does not automatically turn an old.example mailbox into a new.example mailbox. Ask your mail provider how to add the new domain and manage accounts or aliases, then set the MX records and sender authentication it requires. Google Workspace, for example, has a separate process for changing the primary domain and retaining old-domain aliases; WordPress settings cannot replace it."
+        },
+        {
+          "type": "paragraph",
+          "text": "List everyday mailboxes, form senders, reply-to addresses, and account-recovery mailboxes. Arrange to keep receiving at old addresses, tell customers about the new ones, and send test messages from an external mailbox to both domains. Confirm receipt, replies, and displayed sender addresses. For forwarding, verify delivery to the destination inbox rather than merely a saved setting."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not change every employee login account on the same day without a handoff list. Some third-party services identify users by email; a renamed account may need reverification or administrator changes. Identify who relies on an old address so a successful website move does not lock administrators out."
+        },
+        {
+          "type": "heading",
+          "text": "Monitor the switch through real problems",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After launch, check failed URLs, form notices, and old and new inboxes regularly, and connect each issue to the URL mapping. If a post loses traffic, first check that its old URL reaches the correct page, that the new page can be indexed, and that its images and content are complete before exploring other causes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep someone responsible for renewing the old domain and its certificate, as well as maintaining the redirect service. If you must roll back, first preserve content and inquiries added on the new site, then choose which settings to restore. Do not overwrite all new data with an old backup. Keep the cutover log, account entry points, and verification results together so the next administrator knows which old services must stay active."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-domain-migration/diagram-1-en.svg",
+          "alt": "Original four-column comparison of old-to-new URL mapping, site data replacement, search and redirect signals, and email delivery checks.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A domain change is complete only when old entry points lead readers to the right new destinations.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Verification path",
+            "What to check",
+            "Common omission"
+          ],
+          "rows": [
+            [
+              "Old post to new post",
+              "Destination matches the original content",
+              "Sending everything to the home page"
+            ],
+            [
+              "Browsing the new site",
+              "Links, images, downloads, and canonical URLs",
+              "Still loading resources from the old domain"
+            ],
+            [
+              "Search and indexing",
+              "New sitemap, verification, and indexable pages",
+              "Leaving test noindex settings enabled"
+            ],
+            [
+              "Work email",
+              "Receiving, replying, and authentication on both domains",
+              "Assuming a web redirect forwards mail"
+            ],
+            [
+              "Long-term maintenance",
+              "Old domain, certificate, and redirect service",
+              "Retiring old entry points as soon as the new site works"
+            ]
+          ],
+          "caption": "Record separate results for the website, search, and email; one successful screen is not enough."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Keep responsibility for the old domain",
+          "text": "The old domain may still receive links, email, or account-recovery messages. Before ending renewal, identify every dependency and retention period, and make sure no redirects or receiving arrangements still need it."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Moving hosts without changing the URL",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Checking website backup and restoration",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Managing domain and hosting renewals",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Migration settings",
+          "url": "https://developer.wordpress.org/advanced-administration/upgrade/migrating/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI: search-replace and dry-run",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search Central: Site moves with URL changes",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Change of Address tool",
+          "url": "https://support.google.com/webmasters/answer/9370220",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Workspace: Change your primary domain",
+          "url": "https://knowledge.workspace.google.com/admin/domains/change-your-primary-domain-for-google-workspace",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のドメイン変更：転送・検索シグナル・メールを一緒に確認",
+      "description": "WordPress のドメイン変更では、サイト内の URL、旧リンクからの転送、検索シグナル、メールを同時に扱います。URL の対応表から始め、データベース内の置換前プレビュー、恒久的な転送、新ドメインでの送受信、公開後の観察方法を説明します。個人ブランドや小規模スタジオが名称を変える際、管理画面のサイト URL だけを変更して移行完了と誤解しないための手順です。",
+      "hero": {
+        "src": "/guides/wordpress-domain-migration/hero-ja.jpg",
+        "alt": "ドメイン変更時の URL 対応と検証を、文書、サイト画面、チェック入りの盾で表したオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ブランド名を変え、新しいドメインを登録しても、次に行うことは WordPress のサイト URL をすぐ変更することとは限りません。記事内の画像、古い SNS 投稿、検索結果、フォーム通知、仕事用メールは、まだ旧名称を指している可能性があります。旧入口ごとの行き先を決める対応表が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば手作り工房が覚えやすいドメインへ変更し、既存の解説記事を残す場合を考えます。読者が旧記事のリンクから同じ新記事へ行けること、編集者がログインして作業を続けられること、旧メールアドレス宛ての問い合わせも受け取れることが実際の目標です。以下ではこの三つの経路に沿って切り替えます。"
+        },
+        {
+          "type": "heading",
+          "text": "旧 URL を整理し、ページごとの新しい行き先を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトマップ、記事一覧、よく使うナビゲーション、実際に訪問されるページから一覧を作り、画像とダウンロードファイルも含めます。ドメインだけを変更するなら、最初は元のパスを維持すると対応付けが容易です。カテゴリーを整理したり記事を削除したりするなら、各項目の新しい行き先と理由を記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば旧 /workshop/ は新サイトの講座案内へ送るべきで、すべての旧記事と一緒にトップページへ送るべきではありません。複数の記事を統合した場合は、その情報を実際に網羅する新ページへ転送できます。削除済みで妥当な代替ページがない場合は、適切な「見つからない」応答を返します。読者が求めた情報を見つけられるかが、対応表の判断基準です。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "記事、ページ、メディア、ダウンロード、重要な外部リンクの旧 URL を一覧にする。",
+            "各項目に新 URL を指定し、維持・統合・削除の理由を記録する。",
+            "トップページ、人気の個別ページ、中国語の文字を使ったパス、クエリーパラメーター付きリンクを抜き取り確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "バックアップ後にデータベース内の URL 置換をプレビューする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress のサイトアドレスは設定の一部にすぎません。記事、プラグイン設定、ページビルダーには絶対 URL が別途保存されていることがあります。まずファイルとデータベースをバックアップし、アクセスを制限したコピーで WordPress のデータ形式に対応する移行ツールを使います。SQL 全体のドメインをテキストエディターで単純置換すると、シリアライズされたデータを壊すおそれがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "技術担当者が WP-CLI を使う場合、公式の search-replace はシリアライズされたデータに対応し、書き込まずに予定内容を報告する --dry-run も備えています。対象テーブル、旧 URL、新 URL を照合してから変更予定件数を確認します。同じデータベースに別サイトもある場合は特に、全テーブルを無条件に含めないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "置換するのは変更が必要なサイトの URL です。ドメイン名だけの文字列はメールアドレス、過去の記録、外部サービスの設定にも現れます。すべてを無差別に変更してはいけません。完了後は独自テーマのファイル、CSS、メニュー、プラグインのキャッシュを調べ、表示中のページが旧サイトからリソースを取得しないことを確かめます。"
+        },
+        {
+          "type": "heading",
+          "text": "新旧ドメインの双方で HTTPS を維持する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新ドメインには正しい DNS 設定と有効な証明書が必要です。旧ドメインで HTTPS を使っていたなら、転送を続ける間は旧側にも有効な接続を維持します。ブラウザーは転送応答を受け取る前に安全な接続を確立します。旧証明書が失効すると、新サイトに到達する前に警告が表示される場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホスト事業者またはサイト管理者が確認済みの対応表に従って恒久的な転送を設定し、旧 URL の応答と最終的な行き先をテストします。Google は 301 や 308 などのサーバー側の恒久的な転送を推奨し、できるだけ直接最終ページに到達させるよう案内しています。ルートドメイン、www、HTTP、HTTPS の規則が互いに行き来する設定は避けます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "新ドメインのルートドメインと www について、主要 URL の方針を統一する。",
+            "さまざまな旧 URL が意図した新ページに着くかを確認し、転送の有無だけで判断しない。",
+            "画像、ダウンロード、フォームに循環、欠けたパス、セキュリティ警告がないか調べる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "検索シグナルと自分で管理できるリンクを更新する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新ページの canonical、サイトマップ、内部リンクは新 URL を指すようにします。公開前にはテスト用のインデックス禁止設定を解除します。Search Console のアドレス変更ツールには適用条件があります。ドメイン間を実際に移動する場合は、公式の要件に従い旧サイトと新サイトを確認し、ツールのチェックを完了します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このツールは転送を作るものではなく、検索結果を即座にすべて更新するものでもありません。Google は転送をできるだけ長く、通常少なくとも一年維持するよう勧めています。使用中の名刺、ブックマーク、外部リンクがあれば、さらに長く支えることも検討します。移行中には一時的な変動があり得るため、数日で順位が戻るとは約束しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分で変更できる入口も別途予定に入れます。SNS のプロフィール、メールマガジンのフッター、店舗情報、協力サイト、文書中の QR Code などです。クリック数が多いものや取引に関わるものを優先し、担当者と完了日を残します。旧 URL が転送される場合でも、新 URL への直接リンクは待ち時間と将来の保守を減らします。"
+        },
+        {
+          "type": "heading",
+          "text": "メールを別の検証対象として扱う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトの転送だけでは old.example のメールボックスが new.example に自動変換されません。メールサービスに新ドメインの追加方法、アカウントとエイリアスの規則を確認し、必要な MX レコードと送信者認証を設定します。例えば Google Workspace には主要ドメインの変更と旧ドメインのエイリアスを残す別の手順があり、WordPress の管理画面設定では代用できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日常使うメールボックス、フォームの送信元、返信先、アカウント復旧用アドレスを列挙します。旧アドレスでの受信を維持し、顧客に新アドレスを知らせ、外部メールボックスから新旧両方へ送ってみます。受信、返信、送信者の表示を確認してください。転送設定がある場合も、設定保存だけでなく実際に転送先へ届いたか確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎ表を作らずに従業員全員のログインアカウントを同じ日に変更しないでください。メールアドレスで利用者を識別する外部サービスでは、名称変更後に再認証や管理者による調整が必要な場合があります。旧アドレスへの依存を先に調べ、サイトは移行できても管理者がログインできなくなる事態を防ぎます。"
+        },
+        {
+          "type": "heading",
+          "text": "実際に起きた問題から切り替え結果を追う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公開後は失敗した URL、フォーム通知、新旧の受信箱を定期的に調べ、問題を URL 対応表に結び付けます。記事のアクセスが減ったら、まず旧 URL が正しい新ページへ転送されるか、そのページがインデックス可能か、画像と内容が完全かを確認し、その後で別の原因を検討します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧ドメインの更新と証明書の管理、転送サービスの担当者を残します。元に戻す必要がある場合は、新サイトに追加された記事や問い合わせを先に保存し、どの設定を戻すか判断します。古いバックアップで新しいデータを丸ごと上書きしてはいけません。切り替え記録、アカウントの入口、検証結果を一つの引き継ぎ文書にまとめ、次の管理者にも止められない旧サービスが分かるようにします。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-domain-migration/diagram-1-ja.svg",
+          "alt": "旧 URL と新 URL の対応、サイト内データの置換、検索と転送のシグナル、メール送受信の確認を四列で比較するオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "旧入口から適切な新しい行き先へ到達できて、初めてドメイン変更の引き継ぎは完了です。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "検証する経路",
+            "確認すること",
+            "見落としやすいこと"
+          ],
+          "rows": [
+            [
+              "旧記事から新記事",
+              "行き先と記事の内容が一致する",
+              "すべてをトップページへ転送する"
+            ],
+            [
+              "新サイト内の閲覧",
+              "リンク、画像、ダウンロード、canonical",
+              "旧ドメインのリソースを読み続ける"
+            ],
+            [
+              "検索とインデックス",
+              "新サイトマップ、所有権確認、インデックス可能な状態",
+              "テスト用 noindex を残す"
+            ],
+            [
+              "仕事用メール",
+              "新旧アドレスの受信、返信、認証",
+              "サイト転送でメールも転送されると思う"
+            ],
+            [
+              "長期の保守",
+              "旧ドメイン、証明書、転送サービス",
+              "新サイトが動いた時点で旧入口を止める"
+            ]
+          ],
+          "caption": "サイト、検索、メールの結果を別々に記録し、一つの成功画面だけで判断しません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "旧ドメインの管理責任を残す",
+          "text": "旧ドメインにはリンク、メール、アカウント復旧用の連絡がまだ届く可能性があります。更新をやめる前に依存関係と維持期間を確認し、必要な転送や受信が残っていないことを確かめてください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "URL を変えずにホストだけを移す",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトのバックアップと復元を検証する",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメインとホスティングの更新管理",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：移行時の設定",
+          "url": "https://developer.wordpress.org/advanced-administration/upgrade/migrating/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI：search-replace と dry-run",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search Central：URL 変更を伴うサイト移行",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：アドレス変更ツール",
+          "url": "https://support.google.com/webmasters/answer/9370220",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Workspace：主要ドメインの変更",
+          "url": "https://knowledge.workspace.google.com/admin/domains/change-your-primary-domain-for-google-workspace",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 도메인 변경: 리디렉션, 검색 신호, 이메일 함께 점검하기",
+      "description": "WordPress 도메인을 바꿀 때는 사이트 내부 URL, 예전 링크의 리디렉션, 검색 신호, 이메일을 함께 다뤄야 합니다. URL 대응표를 시작으로 데이터베이스 치환 전 미리 보기, 영구 리디렉션 점검, 새 도메인의 메일 송수신 테스트, 공개 후 관찰 방법을 설명합니다. 개인 브랜드와 작업실이 이름을 바꿀 때 관리자 화면의 URL만 수정하고 이전이 끝났다고 생각하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-domain-migration/hero-ko.jpg",
+        "alt": "도메인 변경 시 URL 대응과 검증을 문서, 웹사이트 화면, 확인 표시가 있는 방패로 표현한 자체 제작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "브랜드 이름을 바꾸고 새 도메인을 등록했더라도 다음 단계가 곧바로 WordPress 사이트 주소를 수정하는 일은 아닙니다. 글에 담긴 이미지, 오래된 소셜 게시물, 검색 결과, 양식 알림, 업무용 이메일이 여전히 이전 이름을 가리킬 수 있습니다. 모든 예전 진입점에 명확한 목적지를 정하는 대응표가 필요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 공예 작업실이 더 기억하기 쉬운 도메인을 쓰면서 기존 강좌 글은 유지한다고 가정해 봅시다. 실질적인 목표는 독자가 예전 글 링크를 눌렀을 때 같은 새 글로 가고, 편집자는 로그인해 계속 일하며, 고객이 예전 메일 주소로 보낸 문의도 누군가 받는 것입니다. 아래 절차는 이 세 경로를 기준으로 전환을 준비합니다."
+        },
+        {
+          "type": "heading",
+          "text": "이전 URL을 정리하고 페이지마다 새 목적지 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트맵, 글 목록, 자주 쓰는 탐색 메뉴, 실제 방문자가 있는 페이지를 바탕으로 목록을 만들고 이미지와 다운로드 파일도 포함합니다. 도메인만 바꾼다면 기존 경로를 우선 유지하면 대응 관계를 쉽게 확인할 수 있습니다. 카테고리를 조정하거나 글을 삭제한다면 항목별 새 목적지와 처리 이유를 기록하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 기존 /workshop/은 새 사이트의 강좌 소개로 보내야 하며 모든 이전 글과 함께 첫 화면으로 보내면 안 됩니다. 여러 글을 합친다면 그 정보를 실제로 담은 새 페이지로 리디렉션할 수 있습니다. 삭제했고 합당한 대체 내용도 없는 페이지는 적절한 찾을 수 없음 응답을 반환해야 합니다. 독자가 원래 찾던 정보를 발견할 수 있는지가 대응표의 기준입니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "글, 페이지, 미디어, 다운로드 파일, 중요한 외부 링크의 이전 URL을 정리합니다.",
+            "각 항목에 새 URL을 지정하고 유지·통합·삭제의 이유를 적습니다.",
+            "첫 화면, 인기 있는 개별 페이지, 중국어 문자로 된 경로, 쿼리 매개변수가 있는 링크를 표본 점검합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "백업한 뒤 데이터베이스 URL 치환을 미리 보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 사이트 주소는 설정의 일부일 뿐입니다. 글 내용, 플러그인 옵션, 페이지 빌더는 절대 URL을 별도로 저장할 수 있습니다. 파일과 데이터베이스를 먼저 백업하고 접근을 제한한 복사본에서 WordPress 데이터 형식을 처리할 수 있는 이전 도구를 사용하세요. SQL 덤프 전체의 도메인을 텍스트 편집기로 단순 치환하면 직렬화된 데이터 구조가 손상될 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기술 담당자가 WP-CLI를 쓴다면 공식 search-replace 명령은 직렬화된 데이터를 처리하고, 쓰지 않고 예상 내용을 보고하는 --dry-run 옵션도 제공합니다. 대상 테이블 범위와 이전·새 URL을 대조한 뒤 예상 변경 건수를 확인하세요. 특히 하나의 데이터베이스에 다른 사이트도 있으면 모든 테이블을 무조건 포함하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "치환 범위는 변경이 필요한 사이트 URL이어야 합니다. 도메인만 적힌 문자열은 이메일 주소, 과거 기록, 외부 서비스 설정에도 들어갈 수 있어 무분별하게 모두 바꾸면 안 됩니다. 작업 후에는 사용자 정의 테마 파일, CSS, 메뉴, 플러그인 캐시를 확인해 실제 페이지가 더는 기존 사이트에서 리소스를 가져오지 않도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "새 도메인과 이전 도메인 모두 HTTPS 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 도메인에는 올바른 DNS 설정과 유효한 인증서가 필요합니다. 이전 도메인에서 HTTPS를 사용했다면 리디렉션을 유지하는 동안 그쪽도 유효하게 연결되어야 합니다. 브라우저는 리디렉션 응답을 받기 전에 보안 연결을 맺습니다. 이전 인증서가 만료되면 독자가 새 사이트에 도착하기 전에 경고를 볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅 업체나 사이트 관리자가 검증한 대응표를 바탕으로 영구 리디렉션을 설정한 뒤 이전 URL의 응답과 최종 목적지를 시험합니다. Google은 301이나 308 같은 서버 측 영구 리디렉션을 권장하며 가능한 한 최종 페이지에 직접 도달하도록 안내합니다. 최상위 도메인, www, HTTP, HTTPS 규칙이 서로 되돌리는 순환을 피하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "새 도메인의 최상위 도메인과 www에 일관된 대표 URL 정책을 적용합니다.",
+            "여러 유형의 이전 URL이 의도한 새 페이지에 도착하는지 확인하고 단순히 이동 여부만 보지 않습니다.",
+            "이미지, 다운로드, 양식에서 순환, 누락된 경로, 보안 경고가 없는지 확인합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "검색 신호와 직접 관리할 수 있는 링크 업데이트하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 페이지의 canonical, 사이트맵, 내부 링크는 새 URL을 가리켜야 합니다. 공개 전에 테스트 단계에서만 쓰던 색인 차단 설정을 해제하세요. Search Console 주소 변경 도구에는 적용 조건이 있으며, 실제로 도메인 간 이동할 때는 공식 요구에 따라 이전 사이트와 새 사이트를 모두 인증하고 도구의 검사를 완료해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구가 리디렉션을 대신 만들어 주지는 않으며 검색 결과가 즉시 모두 바뀌지도 않습니다. Google은 리디렉션을 되도록 오래, 일반적으로 최소 1년 유지하라고 권장합니다. 여전히 쓰이는 명함, 북마크, 외부 링크에는 더 긴 지원이 필요할 수 있습니다. 사이트 이전 중 일시적인 변동이 있을 수 있으므로 며칠 안에 예전 순위가 돌아온다고 약속하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 수정할 수 있는 진입점도 따로 일정에 넣으세요. 소셜 프로필, 뉴스레터 바닥글, 사업자 정보, 협력 사이트, 문서의 QR Code 등이 있습니다. 클릭이 많거나 거래에 영향을 주는 항목을 먼저 바꾸고 담당자와 완료일을 남깁니다. 이전 URL이 리디렉션되더라도 새 URL로 직접 연결하면 독자의 대기와 추후 관리를 줄일 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "이메일을 별도 검증 서비스로 취급하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹사이트 리디렉션이 old.example 메일함을 new.example 메일함으로 자동 변경하지는 않습니다. 이메일 서비스에 새 도메인 추가 방법과 계정 또는 별칭 규칙을 확인한 뒤 해당 서비스가 요구하는 MX 및 발신자 인증을 설정합니다. 예를 들어 Google Workspace에는 기본 도메인을 바꾸고 이전 도메인 별칭을 유지하는 별도 절차가 있으며 WordPress 관리자 설정으로 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일상적으로 쓰는 메일함, 양식 발신자, 회신 주소, 계정 복구 주소를 나열합니다. 이전 주소로 계속 수신할 방법을 마련하고 고객에게 새 주소를 알린 다음 외부 메일함에서 두 주소로 각각 보내 보세요. 수신, 회신, 발신자 표시를 확인합니다. 메일 전달을 설정했다면 저장된 설정만 확인하지 말고 목적지 메일함에 실제로 도착하는지 검증하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "인계표 없이 같은 날 직원 전원의 로그인 계정을 바꾸지 마세요. 일부 외부 서비스는 이메일을 사용자 식별자로 쓰므로 이름이 바뀐 뒤 재인증이나 관리자 조정이 필요할 수 있습니다. 이전 주소에 의존하는 사람을 먼저 확인해 웹사이트는 옮겼는데 관리 계정에 로그인하지 못하는 일을 방지합니다."
+        },
+        {
+          "type": "heading",
+          "text": "실제 문제를 통해 전환 결과 추적하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 후에는 실패한 URL, 양식 알림, 새·이전 메일함을 정기적으로 확인하고 각 문제를 URL 대응표에 연결합니다. 특정 글의 방문이 줄었다면 다른 원인을 논의하기 전에 이전 URL이 올바른 새 페이지로 이동하는지, 그 페이지가 색인될 수 있는지, 이미지와 내용이 온전한지 먼저 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 도메인의 갱신과 인증서 관리, 리디렉션 서비스의 책임자를 유지합니다. 되돌려야 한다면 새 사이트에 추가된 콘텐츠와 문의를 먼저 보존하고 어떤 설정을 복구할지 결정하세요. 오래된 백업으로 새 데이터를 모두 덮어쓰면 안 됩니다. 전환 기록, 계정 진입점, 검증 결과를 한 문서에 모아 다음 관리자가 아직 중단하면 안 되는 이전 서비스를 알 수 있게 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-domain-migration/diagram-1-ko.svg",
+          "alt": "이전·새 URL 대응, 사이트 내부 데이터 치환, 검색·리디렉션 신호, 이메일 송수신 확인을 네 칸으로 비교한 자체 제작 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "이전 진입점에서 올바른 새 목적지에 도달해야 도메인 변경이 완전히 인계된 것입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "검증 경로",
+            "확인할 것",
+            "자주 빠뜨리는 것"
+          ],
+          "rows": [
+            [
+              "이전 글에서 새 글로",
+              "목적지와 기존 내용이 일치하는지",
+              "모두 첫 화면으로 보내기"
+            ],
+            [
+              "새 사이트 내부 탐색",
+              "링크, 이미지, 다운로드, canonical",
+              "이전 도메인의 리소스 계속 불러오기"
+            ],
+            [
+              "검색과 색인",
+              "새 사이트맵, 소유권 인증, 색인 가능 상태",
+              "테스트용 noindex 남기기"
+            ],
+            [
+              "업무용 이메일",
+              "두 주소의 수신, 회신, 인증",
+              "사이트 리디렉션이 메일도 전달한다고 생각하기"
+            ],
+            [
+              "장기 유지 관리",
+              "이전 도메인, 인증서, 리디렉션 서비스",
+              "새 사이트가 동작하자마자 이전 진입점 중단"
+            ]
+          ],
+          "caption": "사이트, 검색, 이메일 결과를 각각 기록하고 한 화면의 성공만으로 판단하지 마세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "이전 도메인의 관리 책임 유지하기",
+          "text": "이전 도메인으로 링크, 이메일, 계정 복구 메시지가 계속 올 수 있습니다. 갱신을 중단하기 전에 의존 관계와 유지 기간을 확인하고 더 필요한 리디렉션이나 수신 방법이 없는지 검증하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "URL은 그대로 두고 호스트만 이전하기",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 백업과 복원 검증하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인과 호스팅 갱신 관리하기",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 이전 설정",
+          "url": "https://developer.wordpress.org/advanced-administration/upgrade/migrating/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI: search-replace와 dry-run",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search Central: URL 변경을 수반하는 사이트 이전",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: 주소 변경 도구",
+          "url": "https://support.google.com/webmasters/answer/9370220",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Workspace: 기본 도메인 변경",
+          "url": "https://knowledge.workspace.google.com/admin/domains/change-your-primary-domain-for-google-workspace",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 换域名：重定向、搜索信号与邮件一起检查",
+      "description": "WordPress 换域名需要同时处理网站内部网址、旧链接重定向、搜索信号与电子邮件。本篇从网址对照表开始，说明数据库取代前的预览、永久重定向检查、新域名收发信测试及上线后观察方式，帮助个人品牌与工作室安排改名交接，也避免只改后台网址就以为整个网站已经搬好。",
+      "hero": {
+        "src": "/guides/wordpress-domain-migration/hero-zh-cn.jpg",
+        "alt": "原创文档、网站画面及检查盾牌，表达换域名时的网址对照与验收。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "品牌名称改了，新域名也注册好了，下一步往往不是直接修改 WordPress 的网站网址。文章里的图片、旧社交媒体贴文、搜索结果、表单通知及工作邮箱，都可能仍指向原来的名称。这次改动需要一张对照表，让每个旧入口都有明确去处。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设一个手作工作室要改用更容易记的域名，原本的教学文章仍然保留。最实际的目标是：读者点旧文章时能打开同一篇新文章，编辑登录后能继续工作，客户寄到旧邮箱的询问也有人接收。以下用这三条路径安排切换。"
+        },
+        {
+          "type": "heading",
+          "text": "先整理旧网址，决定每一页的新去处",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从网站地图、文章清单、常用导览与实际有人造访的页面创建清单，图片和下载文件也要包含。若只是更换域名，原路径可以先保留，让对照比较容易；若同时要调整分类或删除文章，就逐笔记录新目的地及处理原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如原本的 /workshop/ 应到新站的课程介绍，不宜和所有旧文章一起导向首页。把数篇内容合并时，可以导向真正涵盖那些信息的新页；已删除且没有合理替代内容的页面，则由网站正确回应不存在状态。读者能否找到原本要的信息，是判断对照是否合理的基准。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "整理文章、页面、媒体、下载文件及重要外部链接的旧网址。",
+            "逐一指定新网址，标记保留、合并或移除的原因。",
+            "抽查首页、热门内页、中文路径及带查询参数的链接。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "备份之后，预览数据库网址替换",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 的网站地址只是众多设置中的一项，文章内容、插件选项与页面构建器可能另外保存绝对网址。先保存文件与数据库，在受限副本上使用能处理 WordPress 数据格式的迁移工具。单纯用文本编辑器把整份 SQL 里的域名全部替换，可能破坏序列化数据的结构。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若由技术人员使用 WP-CLI，官方 search-replace 支持处理序列化数据，也提供 --dry-run，只产生报告而不写入。先核对数据表范围、旧网址与新网址，再看预计变更数量；不要直接把所有数据表都纳入，尤其同一数据库还有其他网站时。"
+        },
+        {
+          "type": "paragraph",
+          "text": "替换范围应是需要变动的网站 URL。裸域名字符串也可能出现在电子邮件、历史记录或外部服务设置中，不能不加判断地全部改名。完成后检查自定义主题文件、CSS、菜单及插件产生的缓存，让实际画面不再向旧站抓取资源。"
+        },
+        {
+          "type": "heading",
+          "text": "新旧域名都要能正常处理 HTTPS",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新域名需要正确的 DNS 指向与有效证书，旧域名如果曾使用 HTTPS，也要在重定向期间持续提供有效连接。浏览器是在取得网站的重定向回应之前创建安全连接；旧证书失效时，读者可能先看到警告，根本还没有走到新站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "由主机或网站管理者依已确认的对照表设置永久重定向，再测试旧网址的回应与最终目的地。Google 建议使用服务器端永久重定向，例如 301 或 308，并尽量直接到达最终页面。不要让根域名、www、HTTP 与 HTTPS 规则互相转来转去。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认新域名的根域名与 www 采用一致的主要网址策略。",
+            "测试各种旧网址是否到达预期新页，而不是只看有没有跳转。",
+            "检查图片、下载与表单，确认没有循环、遗失路径或安全警告。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "更新搜索信号，也更新自己能控制的链接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新页的 canonical、网站地图及站内链接要指向新网址。准备公开时，移除测试阶段设置且不应继续保留的 noindex。Search Console 的网址变更工具适用范围有条件，真正从一个域名搬到另一个域名时，依官方要求验证旧站与新站并完成工具检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "工具不会代替你创建重定向，也不代表搜索结果立刻全数更新。Google 建议重定向尽可能长期保留，一般至少一年；对仍有人使用的名片、书签或外部链接，可以安排更长的支持。网站搬迁可能有暂时波动，不应承诺几天内恢复原排名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把能自行更改的入口另外安排：社交媒体简介、电子邮件通讯页脚、商家信息、合作网站及文档里的 QR Code。先更新点击量高或影响交易的项目，保留负责人与完成日期。即使旧网址会重定向，直接连到新网址仍能减少读者等待与日后维护。"
+        },
+        {
+          "type": "heading",
+          "text": "把邮件当成另一个需要验收的服务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网站重定向不会把 old.example 的邮箱自动变成 new.example。先向邮件服务确认新域名加入方式、账号或别名规则，再设置该服务要求的 MX 与发信验证。以 Google Workspace 为例，官方另有更换主要域名及保留旧域名别名的流程，不能用 WordPress 后台设置取代。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出日常邮箱、表单发信者、回复地址与账号找回邮箱。保留旧地址的收信安排，向客户公告新地址，再用外部邮箱分别寄到新旧地址，确认收信、回复与发信显示符合预期。若有邮件转寄，也要确认目的邮箱确实收到，而不只是系统接受了设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要在同一天又更换所有员工登录账号而没有交接表。某些第三方服务用电子邮件作为身份识别，改名后可能需要重新验证或由管理者调整。先确认谁依赖旧地址，避免网站搬好了，管理网站所需的账号却无法登录。"
+        },
+        {
+          "type": "heading",
+          "text": "用实际问题追踪切换结果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "上线后固定检查失败网址、表单通知与新旧邮箱，将每个问题连回网址对照表。某篇文章流量降低时，先确认原网址是否转到正确页、该页能否索引，以及图片与内容是否完整，再讨论其他可能原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留旧域名的续约与证书维护责任，重定向服务也要有人负责。若需要回退，先保存新站已添加的内容与询问，再决定哪些设置改回，不能直接用旧备份覆盖所有新数据。把切换记录、账号入口与验收结果放在同一份交接文档，下一位管理者才知道哪些旧服务仍不可停用。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-domain-migration/diagram-1-zh-cn.svg",
+          "alt": "原创四栏比较图：旧新网址对照、网站内部数据替换、搜索重定向信号及邮件收发确认。",
+          "width": 1600,
+          "height": 900,
+          "caption": "旧入口找得到新去处，网站改名才算交接完整。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "验收路径",
+            "要检查什么",
+            "常见遗漏"
+          ],
+          "rows": [
+            [
+              "旧文章到新文章",
+              "目的地与内容相符",
+              "全部转到首页"
+            ],
+            [
+              "新站内部浏览",
+              "链接、图片、下载及 canonical",
+              "仍加载旧网址资源"
+            ],
+            [
+              "搜索与索引",
+              "新网站地图、验证与可索引状态",
+              "留下测试用 noindex"
+            ],
+            [
+              "工作邮箱",
+              "新旧地址收信、回复与验证",
+              "以为网站重定向会转寄邮件"
+            ],
+            [
+              "长期维护",
+              "旧域名、证书及重定向服务",
+              "新站正常就停掉旧入口"
+            ]
+          ],
+          "caption": "网站、搜索与邮件分别记录验收，不以单一成功画面代替。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "保留旧域名的管理责任",
+          "text": "旧域名仍可能接收链接、邮件或账号找回信件。决定停止续约前，先查清楚依赖与保留期限，并确认已无需要延续的重定向或收信安排。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "只换主机而保留原网址",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站备份与还原验收",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "域名与主机续约管理",
+              "kind": "life",
+              "slug": "domain-hosting-renewal"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：迁移设置",
+          "url": "https://developer.wordpress.org/advanced-administration/upgrade/migrating/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP-CLI：search-replace 与 dry-run",
+          "url": "https://developer.wordpress.org/cli/commands/search-replace/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Search Central：网址变更迁移",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：网址变更工具",
+          "url": "https://support.google.com/webmasters/answer/9370220",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Workspace：更换主要域名",
+          "url": "https://knowledge.workspace.google.com/admin/domains/change-your-primary-domain-for-google-workspace",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
