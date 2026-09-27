@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import importlib.util
 import os
+import re
 from collections.abc import AsyncIterator, Callable
 from pathlib import Path
 from types import ModuleType
@@ -91,6 +92,15 @@ def checks(connection: Connection, table: str) -> dict[str, str]:
     }
 
 
+def in_flight_bound(connection: Connection) -> int:
+    """The upper bound on ``series_max_in_flight`` in the settings check, as PostgreSQL renders
+    it: ``BETWEEN 1 AND 6`` comes back as ``series_max_in_flight <= 6``."""
+    text = checks(connection, SETTINGS)[SETTINGS_CHECK]
+    found = re.search(r"series_max_in_flight\s*(?:<=|BETWEEN\s+1\s+AND)\s*(\d+)", text)
+    assert found is not None, text
+    return int(found.group(1))
+
+
 def in_a_rolled_back_transaction(
     exercise: Callable[[Connection], None],
 ) -> Callable[[Connection], None]:
@@ -134,12 +144,12 @@ def _exercise(connection: Connection) -> None:
     )
     _older_shape(connection)
     assert "genre" not in columns(connection, SERIES)
-    assert "1 AND 2" in checks(connection, SETTINGS)[SETTINGS_CHECK]
+    assert in_flight_bound(connection) == 2
 
     run(connection, "upgrade")
     assert set(COLUMNS) <= columns(connection, SERIES)
     assert set(CHECKS) <= set(checks(connection, SERIES))
-    assert "1 AND 6" in checks(connection, SETTINGS)[SETTINGS_CHECK]
+    assert in_flight_bound(connection) == 6
     row = connection.execute(
         sa.text(
             f"SELECT genre, lead, hands_off, compilation, visual_tier, total_minutes "
@@ -149,7 +159,7 @@ def _exercise(connection: Connection) -> None:
     assert tuple(row) == ("xianxia-bonds", "dual-male", False, False, "clips", None)
     # Idempotent: a second upgrade finds everything and leaves it alone.
     run(connection, "upgrade")
-    assert "1 AND 6" in checks(connection, SETTINGS)[SETTINGS_CHECK]
+    assert in_flight_bound(connection) == 6
 
     # A hands-off series blocks the downgrade; once it is classic again the old shape returns.
     connection.execute(
@@ -164,7 +174,7 @@ def _exercise(connection: Connection) -> None:
     )
     run(connection, "downgrade")
     assert "genre" not in columns(connection, SERIES)
-    assert "1 AND 2" in checks(connection, SETTINGS)[SETTINGS_CHECK]
+    assert in_flight_bound(connection) == 2
 
 
 @pytest.mark.asyncio(loop_scope="module")
