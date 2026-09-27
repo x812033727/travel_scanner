@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-four-wordpress-operations-guides-batch026
 title: Localize four WordPress operations guides batch026
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-batch026
 claimed_at: 2026-09-23T17:52:02Z
 created_at: 2026-09-23T17:51:31Z
-completed_at:
+completed_at: 2026-09-27T05:41:45Z
 branch: codex/article-localization-batch026-wordpress-operations
 depends_on: []
 scope:
@@ -47,7 +47,7 @@ Image block indexes are zero-based. The four originals contain 118 blocks and 21
 - [x] Independently verify the outside integration candidate and apply the exact approved 52 content files. Original raw packs are byte-recoverable by reversing only the inserted target locales, and all 12 original assets remain byte-identical.
 - [x] Complete selected local pack/API/publication/pipeline/frontend/tools/lint/i18n/type/build/task/diff checks and bind the actual summary, attempts, skips and advisories to the tested claim HEAD.
 - [x] Create the separate open/unclaimed release task for remaining CI, merge, deployment, import, publication and public acceptance.
-- [ ] Open the scoped content PR with exact head and honest local results; retain this content task in progress until the actual PR handoff.
+- [x] Open the scoped content PR with exact head and honest local results; hand off remaining release gates to the separate task.
 
 ## Validation and release handoff
 
@@ -71,3 +71,7 @@ Evidence archive: `C:/Users/x8120/.codex/article-localization-release/batch026-w
 All original `checked_on: 2026-09-14` dates and source URLs remain intact; new source reading is separately recorded. No hosting account, installed MAMP/WordPress instance, real backup/restore, paid plan or physical mobile device was operated for editorial acceptance. The authors recorded 20 editorial advisory rows in their jobs; repository pack lint independently records 24 advisory rows across the complete five-language packs. These are separate actual counts.
 
 Previously identified incorrect AI glossary links in other articles remain excluded and tracked by `2026-09-23-correct-five-unrelated-ai-glossary-links-before`. Cable and URL-parameter/source corrections remain separate. Root owns repository integration/PR/release coordination; disjoint outside-repository authoring and reciprocal review do not authorize an unrelated source change.
+
+## PR handoff, 2026-09-27
+
+Content PR #842: https://github.com/x812033727/travel_scanner/pull/842. The opened content head is 30adba8caf07fb03236376b38c801f34992954c6, targeting current main cef32b0497f403b138de579d5e33efc45cb5ad6d. The article/image scope is unchanged from the independently reviewed integration. Selected post-integration API, publication, task and diff checks passed; the full PR CI is running against that base and remains a release-task gate. PR creation is content handoff only: no merge, deployment, import, publication or public browser acceptance is claimed here.
