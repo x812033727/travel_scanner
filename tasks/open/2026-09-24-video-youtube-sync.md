@@ -1,22 +1,39 @@
 ---
 id: 2026-09-24-video-youtube-sync
 title: 影片產線 T8：網站用 YouTube API 補齊五語系中繼資料、CC、縮圖，並依站主選的時間排程
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-youtube-link
+claimed_at: 2026-09-27T09:35:33Z
 created_at: 2026-09-24T00:41:17Z
 completed_at:
-branch:
+branch: claude/youtube-account-linking-9c99d3
 depends_on:
   - 2026-09-26-video-hands-off-web
 scope:
   - apps/api/app/video_youtube
+  - apps/api/app/models.py
+  - apps/api/app/main.py
+  - apps/api/app/video_reviews/schemas.py
+  - apps/api/app/video_reviews/admin_service.py
+  - apps/api/migrations/versions/0102_video_youtube_sync.py
   - apps/api/tests/test_video_youtube.py
+  - apps/api/tests/test_video_youtube_sync.py
+  - apps/api/tests/test_migration_0102_video_youtube_sync.py
+  - apps/web/app/api/admin-video-youtube
   - apps/web/components/admin-video-youtube.tsx
   - apps/web/components/admin-video-youtube.test.tsx
+  - apps/web/components/admin-video-settings.tsx
+  - apps/web/components/admin-video-reviews.tsx
+  - apps/web/components/admin-video-review-card.tsx
+  - apps/web/messages/en/admin.json
+  - apps/web/messages/ja/admin.json
+  - apps/web/messages/ko/admin.json
+  - apps/web/messages/zh-CN/admin.json
+  - apps/web/messages/zh-TW/admin.json
   - .agents/skills/youtube-video/references/publish.md
+  - docs/videos/HANDS-OFF.md
 ---
 
 # 影片產線 T8：網站用 YouTube API 補齊五語系中繼資料、CC、縮圖，並依站主選的時間排程
