@@ -464,3 +464,19 @@ async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_
     settled = ReviewIn(gate="audio", content_sha256="a" * 64, summary="旁白", payload={"x": 1})
     same = await admin_service.submit_review(session, store, "v", settled, token)
     assert same.id == decided.id and same.status == "approved" and decided.payload == {}
+
+    # A character's sheet: the judge's suggestion stands when the owner turned that on.
+    monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=True))
+    sheets = ReviewIn(
+        gate="look",
+        subject="jingwei",
+        content_sha256="d" * 64,
+        summary="精衛的設定圖",
+        payload={
+            "options": [{"key": "B", "judge": {"overall": 8, "problems": []}}],
+            "suggested": "B",
+        },
+    )
+    picked_sheet = await admin_service.submit_review(session, store, "v", sheets, token)
+    assert picked_sheet.status == "approved" and picked_sheet.choice == "B"
+    assert picked_sheet.note == "judge 給 B 8/10、沒有列出問題，依設定自動選"

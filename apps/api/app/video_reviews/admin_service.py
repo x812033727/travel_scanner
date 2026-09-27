@@ -40,7 +40,9 @@ from app.video_automation.settings import (
     auto_approves_audio,
     auto_approves_final,
     auto_approves_storyboard,
+    auto_picks_look,
     auto_picks_outline,
+    look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
@@ -351,6 +353,10 @@ async def submit_review(
     # A drama's storyboard may stand on the judge's scores when the owner turned that on.
     elif payload.gate == "storyboard" and await auto_approves_storyboard(session, payload.payload):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
+    # A character's sheet is picked by the judge's score when the owner turned that on.
+    elif payload.gate == "look" and await auto_picks_look(session, payload.payload):
+        auto_note = look_pick_note(payload.payload)
+        review.choice = str(payload.payload.get("suggested"))
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
     elif payload.gate == "outline" and await auto_picks_outline(session, payload.payload):
