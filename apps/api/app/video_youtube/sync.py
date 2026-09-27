@@ -230,7 +230,13 @@ async def request_sync(
     if review is None:
         raise Refused(409, "video_youtube_not_ready", "這支影片還沒有核准的上傳包")
     package = read_package(store, slug, review)
-    problem = text_problem(payload.title, payload.description)
+    title = payload.title if payload.title is not None else str(package.metadata["title"])
+    description = (
+        payload.description
+        if payload.description is not None
+        else str(package.metadata.get("description") or "")
+    )
+    problem = text_problem(title, description)
     if problem:
         raise Refused(422, "video_youtube_text_invalid", problem)
     publish_at = payload.publish_at if payload.visibility == "scheduled" else None
@@ -271,8 +277,8 @@ async def request_sync(
         "mode": payload.mode,
         "visibility": payload.visibility,
         "publish_at": publish_at.isoformat() if publish_at else None,
-        "title": payload.title,
-        "description": payload.description,
+        "title": title,
+        "description": description,
         "video_id": video_id,
         "accept_private_lock": payload.accept_private_lock,
         "review_id": package.review_id,

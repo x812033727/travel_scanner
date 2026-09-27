@@ -77,6 +77,8 @@ class PublishIn(BaseModel):
     url: str | None = Field(default=None, max_length=500)
     visibility: Visibility = "scheduled"
     publish_at: AwareDatetime | None = None
-    title: str = Field(min_length=1, max_length=100)
-    description: str = Field(default="", max_length=5000)
+    # The zh-TW title and description as the owner left them on the card (YouTube's Required
+    # Minimum Functionality: the uploader sets them); None takes the package's own.
+    title: str | None = Field(default=None, max_length=100)
+    description: str | None = Field(default=None, max_length=5000)
     accept_private_lock: bool = False
