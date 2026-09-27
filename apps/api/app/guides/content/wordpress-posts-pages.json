@@ -244,6 +244,942 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress posts and pages: choose the right content type and URL",
+      "description": "WordPress posts and pages both hold text and images, but serve different purposes and are organized differently. Using a fictional community baking school, this guide explains when to use each, then covers blocks, excerpts, featured images, URLs and prepublication checks. Follow a repeatable workflow for your first item, and keep links stable when updating published content instead of assuming that a title edit leaves its URL and layout untouched.",
+      "hero": {
+        "src": "/guides/wordpress-posts-pages/hero-en.jpg",
+        "alt": "Original editorial illustration of two content documents and a website preview.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "‘Registration is open for this week's class’ and ‘How to find our classroom’ can both be written as text, but readers look for them in different ways. The first changes with time; the second should remain easy to find. WordPress provides posts and pages so you can place content according to its role, rather than choosing whichever name sounds more formal."
+        },
+        {
+          "type": "paragraph",
+          "text": "The following workflow uses a fictional community baking school, from choosing a content type to checking a published item. The features were checked against official WordPress documentation; we did not test them in a signed-in site. A site with custom post types or a page builder may offer different choices. Understand the purpose first, then compare it with your own editor."
+        },
+        {
+          "type": "heading",
+          "text": "Choose by how readers will find the content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Posts suit an accumulating stream of news, tutorials or opinions. By default, they can appear in date order in a post list and be organized with categories and tags. Pages commonly hold About, services, contact and other standing information. They normally sit outside the ordinary post chronology and can have parent-child relationships. These are common defaults; plugins and themes can change the presentation."
+        },
+        {
+          "type": "paragraph",
+          "text": "The baking school could make a particular class announcement a post and its directions a page. Link from the announcement to the directions. When the address changes, update the directions first, then check whether the announcement repeats details that also need changing. Duplicating permanent information in every news item creates many places to chase down later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Content changing over time does not automatically make it a post: pages can be revised continually too. Decide by its role on the site, not by how often you expect to edit it. Nor should you turn every page into a post solely in pursuit of search rankings. You still need to answer readers' questions, make the content findable and keep it reliable."
+        },
+        {
+          "type": "heading",
+          "text": "Draft the content structure before adjusting blocks",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a draft from the Add New entry for posts or pages. Write a clear title and essential information, then arrange it with heading, paragraph, list and image blocks. For a class announcement, readers need to know whom it suits, when and where it happens, what to prepare and how to register. Put that information where it can be found in the body, not only inside an image."
+        },
+        {
+          "type": "paragraph",
+          "text": "Heading levels express the structure; do not skip levels merely because a font looks bigger. Give each paragraph one idea and use a numbered list for sequential steps. Add necessary explanation beside an image. Alternative text should describe what that image contributes here, rather than repeat a pile of keywords."
+        },
+        {
+          "type": "paragraph",
+          "text": "List View in the block editor helps confirm what is selected, especially before moving sections in a long article. Check whether you selected a group or shared item so dragging it does not move other blocks as well. Finish the content before fine-tuning spacing and decoration; this reduces repeated layout edits that overlook important information."
+        },
+        {
+          "type": "heading",
+          "text": "Check the excerpt and featured image separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Post settings can provide an excerpt, which a theme may show in lists, search results or other previews. Explain what problem the item helps solve instead of merely repeating its title. A class announcement might state its topic and key conditions, but do not put all registration details only in the excerpt: some layouts will not show it."
+        },
+        {
+          "type": "paragraph",
+          "text": "The theme also determines how a featured image is used: it may appear in a post card or on the article itself. After setting one, inspect both the list and the article. Check that the subject is not cropped, any text remains legible and you have rights to use the image. A featured image and an image in the body can differ; changing one does not automatically update every placement."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the excerpt or featured image is absent, first see whether the theme or template displays that content, then check caching. Do not upload several duplicates just to make an image appear. Avoid editing a site-wide template to fix one post unless you understand the effects on other pages."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm the URL and hierarchy before publishing",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A slug is the identifying part of a URL. You can usually view or adjust it in content settings, though the full URL also depends on permalink settings. Choose a clear, stable name that your team can recognize; do not change it whenever the title changes. Chinese and English slugs have different sharing and maintenance tradeoffs, with no single format that every site must follow."
+        },
+        {
+          "type": "paragraph",
+          "text": "A page URL may reflect its parent-page hierarchy. Changing the parent is more than tidying the admin list: check whether the complete URL changes. If a shared item moves, account for its old link, internal references and an appropriate redirect. Readers' bookmarks will not update themselves."
+        },
+        {
+          "type": "paragraph",
+          "text": "It is easiest to settle the URL and structure while new content is still private. For published content, save the old URL and list references in menus, buttons, newsletters and elsewhere before planning a change. If you only correct a typo in the title, check whether you can keep the URL and avoid unnecessary link maintenance."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish drafts, schedules and public visibility",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A draft prepares content; Pending Review hands it to someone with the right permission; scheduling specifies when it is intended to go live. Check the site's timezone and date when scheduling, especially for an event deadline important to readers in Taiwan. A preview shows work in progress; it does not prove that ordinary visitors can see it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before publishing, check visibility, comment settings, author and other details. Then test the public URL in a signed-out window. Editors or administrators with permission may still view a private post; ‘private’ does not mean only its author can see it. On a multi-person site, check roles and the content's purpose before choosing visibility."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose a post or page, create a draft and enter complete, verifiable information.",
+            "Check block heading levels, excerpt, featured image, categories and full URL.",
+            "Confirm publishing status and site timezone; preview desktop and mobile layouts.",
+            "Have an authorized person publish, then verify links and registration in a signed-out window."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Keep revisions and a cue for the next review",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress revisions can help compare and restore content changes; how many remain depends on site settings. Examine the differences before restoring and decide which recent details should survive. Revisions do not replace a whole-site backup and do not necessarily restore every plugin's data or settings. Save the current content first if you are unsure of the scope."
+        },
+        {
+          "type": "paragraph",
+          "text": "After an event, mark it finished, remove expired registration links, and either keep a useful record or link to the next session. Give standing pages an owner and a regular review date. A note on when each item needs checking makes it less likely that your site will fill with accessible but unusable old information."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-posts-pages/diagram-1-en.svg",
+          "alt": "Four-stage diagram: choose a post or page, organize content, set the URL, and verify publication.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The Publish button changes status; reading and functionality still need to be tested.",
+          "description": "Four-stage diagram: choose a post or page, organize content, set the URL, and verify publication.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Comparison",
+            "Post",
+            "Page"
+          ],
+          "rows": [
+            [
+              "Typical use",
+              "News, tutorials, accumulating content",
+              "Services, contact, standing information"
+            ],
+            [
+              "Organization",
+              "Date, categories and tags",
+              "Parent-child hierarchy and site navigation"
+            ],
+            [
+              "Updates",
+              "Can revise existing content",
+              "Can also be updated continually"
+            ],
+            [
+              "URL",
+              "Affected by slug and permalinks",
+              "Also check changes to the parent"
+            ],
+            [
+              "Verification",
+              "Check list and article views",
+              "Check navigation and related entry points"
+            ]
+          ],
+          "caption": "These are default concepts; themes, plugins and custom post types can change the behavior."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Confirm the scope of each update",
+          "text": "Editing a title, URL, body and template are different operations. Review the changes before publishing. For a URL already in public use, retain a record of the redirect and internal-link updates."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress admin and division of work",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Routine website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Create pages",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Page/Post Settings sidebar",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: WordPress Block Editor",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Revisions",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Set blog content visibility",
+          "url": "https://wordpress.org/documentation/article/content-visibility-block-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressの投稿と固定ページの使い分け：コンテンツとURLを決める",
+      "description": "WordPressの投稿と固定ページはどちらも文章や画像を載せられますが、用途と整理方法が異なります。架空の地域のパン教室を例に、それぞれに適した情報を説明し、ブロック編集、抜粋、アイキャッチ画像、URL、公開前の確認を整理します。最初のコンテンツを一定の手順で作成し、公開済みの記事を更新するときも安定したリンクを保てます。タイトルだけの変更がURLやレイアウトにどう影響するかも確認しましょう。",
+      "hero": {
+        "src": "/guides/wordpress-posts-pages/hero-ja.jpg",
+        "alt": "二枚のコンテンツ文書とサイトのプレビューを組み合わせたオリジナルの編集用イラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「今週の講座の申込受付を開始しました」と「教室へのアクセス」は、どちらも文章にできます。しかし読者の探し方は違います。前者は時間に応じて更新され、後者は長く見つけやすい場所に置くべきです。WordPressの投稿と固定ページは、名前の格式ではなくコンテンツの役割に合わせて使い分けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では架空の地域のパン教室を例に、種類の選択から公開後の確認までを扱います。機能はWordPressの公式文書に基づいて確認しており、ログインしての実機検証は行っていません。カスタム投稿タイプやページビルダーを使うサイトでは選択肢が異なる場合があります。まず用途を理解し、利用中の編集画面と照らし合わせてください。"
+        },
+        {
+          "type": "heading",
+          "text": "読者の探し方で種類を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿は継続して増えるお知らせ、解説、意見に向いています。標準設定では日付順の投稿一覧に表示でき、カテゴリーやタグで整理できます。固定ページは「私たちについて」、サービス、連絡先、長く使う説明によく使われ、通常の投稿の時系列には入らず、親子関係を作れます。これは一般的な初期動作で、プラグインやテーマによって表示を変えられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "パン教室なら、ある回の講座案内を投稿にし、交通案内を固定ページにできます。案内から交通ページにリンクします。住所が変わったら交通ページを先に更新し、案内にも同じ詳細が書かれていないか確認します。恒久的な情報を毎回複製すると、住所の変更時に多数の場所を追うことになります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容が更新されるからといって必ず投稿にするわけではありません。固定ページも継続して改訂できます。判断基準は更新頻度よりもサイト内での役割です。検索順位だけを狙ってすべての固定ページを投稿に変えるべきでもありません。疑問に答え、見つけやすくし、情報の信頼性を保つことは別に必要です。"
+        },
+        {
+          "type": "heading",
+          "text": "ブロックの調整より先に構成を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿または固定ページの新規追加から下書きを作り、明確なタイトルと重要事項を記載します。その後、見出し、段落、リスト、画像などのブロックで整理します。講座案内なら、対象者、日時、場所、準備物、申込方法が読者に必要です。画像内の文字だけに隠さず、本文から容易に見つけられるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "見出しレベルは構造を示すためのものです。文字が大きく見えるという理由だけで階層を飛ばさないでください。段落には一つの要点を置き、順序がある手順には番号付きリストを使います。画像のそばには必要な説明を添え、代替テキストにはその文脈で画像が果たす役割を書きます。キーワードを繰り返し詰め込まないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブロックエディターのリスト表示では選択中の位置を確認できます。長い記事の移動前には特に便利です。グループや共有項目を選んでいないか確かめ、ドラッグ時に別のブロックまで移さないようにします。間隔や装飾を整える前に内容を完成させると、レイアウトを繰り返し直す間に重要事項を落としにくくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "抜粋とアイキャッチ画像を別々に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿の設定には抜粋を入力できます。テーマによって投稿一覧、検索結果、その他のプレビューに表示されます。タイトルを繰り返すだけでなく、その内容で何が分かるかを書きます。講座案内では主題と主な条件を伝えられますが、申込の詳細を抜粋だけに置いてはいけません。表示しないレイアウトもあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アイキャッチ画像の使い方もテーマによって異なり、投稿カードや本文ページに現れます。設定後は一覧と記事の両方を確認し、被写体が切れず、文字が読め、使用権を持つ画像か確かめます。アイキャッチ画像と本文中の画像は別にできるため、片方の差し替えだけですべての表示が変わるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "抜粋やアイキャッチ画像が見えない場合は、テーマやテンプレートが該当部分を表示する設定か確認し、次にキャッシュを調べます。表示させるために同じ画像を何度もアップロードしないでください。他のページへの影響を理解しないまま、一つの記事のためにサイト全体のテンプレートを変えるのも避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "公開前にURLと階層を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "スラッグはURLの識別部分です。通常はコンテンツの設定で確認・変更できますが、完全なURLはパーマリンク設定にも左右されます。チームで認識しやすい、明確で安定した名前を選び、タイトルを更新するたびに変更しないでください。中国語と英語のスラッグには共有や運用上の違いがありますが、すべてのサイトに唯一の正しい形式はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "親を設定した固定ページのURLには、その階層が反映される場合があります。親ページの変更は管理画面の一覧整理だけではないため、完全なURLが変わるか確認します。共有済みの内容のURLを変えるなら、古いリンク、サイト内の参照、適切なリダイレクトを扱います。読者のブックマークは自動更新されません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい内容が未公開のうちにURLと構造を決めると手間を抑えられます。公開済みの内容では古いURLを保存し、メニュー、ボタン、メールマガジンなどの参照を列挙してから変更を計画します。タイトルの誤字修正だけならURLを維持できるか確認し、小さな編集のために不要なリンク整理を増やさないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "下書き、予約公開、公開範囲を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "下書きは準備用、レビュー待ちは権限を持つ人への確認依頼、予約公開は公開予定時刻の指定です。予約時にはサイトのタイムゾーンと日付を確認します。台湾の読者が気にするイベントの締切では特に重要です。プレビューは編集中の画面であり、一般の訪問者が見られる証拠ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開前に公開範囲、コメント設定、投稿者などを確認し、ログアウトしたウィンドウで正式なURLを試します。非公開投稿は権限のある編集者や管理者にも見える場合があり、投稿者だけが閲覧できるという意味ではありません。複数人で運営するサイトでは、役割と内容の用途を確認して公開方法を選びます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "投稿か固定ページかを決め、下書きを作り、完全で検証可能な情報を入力する。",
+            "見出し階層、抜粋、アイキャッチ画像、カテゴリー、完全なURLを確認する。",
+            "公開状態とサイトのタイムゾーンを確認し、デスクトップとスマートフォンでプレビューする。",
+            "適切な権限を持つ人が公開し、ログアウトした画面でリンクと申込手順を確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "リビジョンと次回の確認時期を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのリビジョンは変更の比較と復元に役立ちますが、保存数はサイト設定に左右されます。戻す前に差分を見て、最新のどの情報を残すか確認します。サイト全体のバックアップの代わりにはならず、すべてのプラグインのデータや設定を復元できるとも限りません。範囲が不明なら先に現在の内容を保存します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "イベント終了後は終了したことを追記し、期限切れの申込入口を外し、価値に応じて記録を残すか次回の案内へリンクします。長く使う固定ページには担当者と定期的な確認日を決めます。各コンテンツに次の確認時期を残すことで、開けても利用できない古い情報が増えにくくなります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-posts-pages/diagram-1-ja.svg",
+          "alt": "投稿か固定ページの選択、内容の整理、URL設定、公開確認という四段階の図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "公開ボタンが変えるのは状態です。読みやすさと機能は別途確認します。",
+          "description": "投稿か固定ページの選択、内容の整理、URL設定、公開確認という四段階の図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "投稿",
+            "固定ページ"
+          ],
+          "rows": [
+            [
+              "主な用途",
+              "お知らせ、解説、蓄積する内容",
+              "サービス、連絡先、長く使う説明"
+            ],
+            [
+              "整理方法",
+              "日付、カテゴリー、タグ",
+              "親子階層とサイトのナビゲーション"
+            ],
+            [
+              "更新",
+              "既存の内容を改訂できる",
+              "継続して更新できる"
+            ],
+            [
+              "URL",
+              "スラッグとパーマリンクの影響を受ける",
+              "親ページの変更にも注意する"
+            ],
+            [
+              "確認",
+              "一覧と記事ページを確認する",
+              "ナビゲーションと関連する入口を確認する"
+            ]
+          ],
+          "caption": "初期設定での一般的な考え方です。テーマ、プラグイン、カスタム投稿タイプによって動作は変わります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "更新が及ぶ範囲を先に確認する",
+          "text": "タイトル、URL、本文、テンプレートの変更はそれぞれ異なる操作です。公開前に差分を確認し、すでに公開したURLにはリダイレクトとサイト内リンクの更新記録を残します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress管理画面と作業分担",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの日常メンテナンス",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：固定ページの作成",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：投稿・固定ページの設定サイドバー",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ブロックエディター",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：リビジョン",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：コンテンツの公開範囲",
+          "url": "https://wordpress.org/documentation/article/content-visibility-block-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 글과 페이지 구분하기: 콘텐츠 유형과 URL 정하기",
+      "description": "WordPress의 글과 페이지는 모두 텍스트와 이미지를 담을 수 있지만 용도와 정리 방식이 다릅니다. 가상의 지역 제빵 교실을 예로 들어 어떤 정보에 글이나 페이지가 맞는지 살펴보고, 블록 편집, 요약, 대표 이미지, URL, 게시 전 점검을 설명합니다. 일정한 절차로 첫 콘텐츠를 만들고, 이미 게시된 콘텐츠를 수정할 때도 제목 변경이 URL과 화면에 미치는 영향을 확인하며 안정적인 링크를 유지할 수 있습니다.",
+      "hero": {
+        "src": "/guides/wordpress-posts-pages/hero-ko.jpg",
+        "alt": "콘텐츠 문서 두 장과 웹사이트 미리보기 화면을 조합한 독창적인 편집 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "‘이번 주 수업 신청 접수 시작’과 ‘교실 찾아오는 길’은 모두 문장으로 쓸 수 있지만 독자가 찾는 방법은 다릅니다. 앞의 정보는 시간에 따라 바뀌고, 뒤의 정보는 오래도록 쉽게 찾을 수 있어야 합니다. WordPress는 이름이 더 격식 있어 보이는 쪽을 고르는 것이 아니라 콘텐츠의 역할에 맞춰 배치하도록 글과 페이지를 제공합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 가상의 지역 제빵 교실을 예로 들어 유형 선택부터 게시 후 확인까지 설명합니다. 기능은 WordPress 공식 문서를 기준으로 확인했으며 로그인해서 실제로 시험하지는 않았습니다. 사용자 정의 글 유형이나 페이지 빌더를 설치한 사이트는 선택지가 다를 수 있으므로 용도를 먼저 이해한 뒤 사용 중인 편집 화면과 비교하세요."
+        },
+        {
+          "type": "heading",
+          "text": "독자가 콘텐츠를 찾는 방식으로 유형 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글은 계속 쌓이는 소식, 사용법, 의견에 적합합니다. 기본 설정에서는 날짜순 글 목록에 표시할 수 있고 카테고리와 태그로 정리할 수 있습니다. 페이지는 소개, 서비스, 연락처와 오래 쓰는 안내에 흔히 사용하며, 일반적인 글의 시간순 목록 밖에 있고 상위·하위 관계를 만들 수 있습니다. 이는 일반적인 기본 동작이며 플러그인과 테마가 표시 방식을 바꿀 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제빵 교실은 특정 회차의 수업 공지를 글로, 교통 안내를 페이지로 만들 수 있습니다. 공지에서 교통 페이지로 연결하세요. 주소가 바뀌면 교통 페이지를 먼저 수정하고 공지에도 함께 고쳐야 할 세부 사항이 있는지 확인합니다. 모든 소식에 고정 정보를 복사하면 주소 한 번 바꿀 때마다 여러 곳을 찾아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "내용을 수정할 예정이라고 반드시 글을 선택해야 하는 것은 아닙니다. 페이지도 계속 개정할 수 있습니다. 판단 기준은 수정 주기보다 사이트에서의 역할입니다. 검색 순위만을 이유로 모든 페이지를 글로 바꾸어서도 안 됩니다. 독자의 질문에 답하고 쉽게 찾게 하며 정보의 신뢰성을 유지하는 일은 별도로 필요합니다."
+        },
+        {
+          "type": "heading",
+          "text": "블록을 꾸미기 전에 콘텐츠 구조 작성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글이나 페이지의 새로 추가 메뉴에서 초안을 만들고 명확한 제목과 핵심 정보를 먼저 적은 뒤 제목, 문단, 목록, 이미지 블록으로 정리합니다. 수업 공지라면 대상, 일시, 장소, 준비물, 신청 방법이 필요합니다. 이미지 속 글자에만 넣지 말고 본문에서 쉽게 찾을 수 있게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "제목 수준은 구조를 표현합니다. 글씨가 커 보인다는 이유만으로 수준을 건너뛰지 마세요. 한 문단에는 한 가지 뜻을 담고 순서가 있는 절차에는 번호 목록을 사용합니다. 이미지 옆에 필요한 설명을 넣고 대체 텍스트에는 그 문맥에서 이미지가 하는 일을 설명합니다. 키워드만 반복해서 나열하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "블록 편집기의 목록 보기를 사용하면 선택한 위치를 확인할 수 있으며 긴 글에서 콘텐츠를 옮기기 전에 특히 유용합니다. 그룹이나 공유 항목을 선택했는지 살펴 다른 블록까지 함께 끌어 옮기지 않도록 합니다. 간격과 장식을 손보기 전에 내용을 완성하면 반복적인 화면 수정 중 중요한 정보를 빠뜨릴 가능성이 줄어듭니다."
+        },
+        {
+          "type": "heading",
+          "text": "요약과 대표 이미지를 각각 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 설정에는 요약을 넣을 수 있고 테마에 따라 글 목록, 검색 결과, 다른 미리보기에 표시될 수 있습니다. 제목을 반복하기보다 이 콘텐츠가 어떤 문제를 해결하는지 설명하세요. 수업 공지는 주제와 주요 조건을 알릴 수 있지만 신청 세부 사항을 요약에만 넣어서는 안 됩니다. 일부 화면은 요약을 표시하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대표 이미지의 사용 위치도 테마에 달려 있으며 글 카드나 본문 페이지에 나타날 수 있습니다. 설정 후 목록과 글 본문을 각각 확인해 주제가 잘리지 않고 글자가 읽히며 이미지 사용 권리가 있는지 살펴봅니다. 대표 이미지와 본문 이미지는 서로 다를 수 있으므로 한쪽만 교체하고 모든 위치가 바뀐다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "요약이나 대표 이미지가 보이지 않으면 테마 또는 템플릿이 해당 내용을 표시하는지 먼저 살펴보고 캐시를 확인합니다. 이미지를 보이게 하려고 같은 파일을 여러 번 올리지 마세요. 다른 페이지에 미치는 영향을 이해하지 못했다면 글 하나를 고치기 위해 사이트 전체 템플릿을 직접 변경하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "게시 전에 URL과 계층 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "슬러그는 URL에서 콘텐츠를 식별하는 부분입니다. 보통 콘텐츠 설정에서 확인하거나 바꿀 수 있지만 전체 URL은 고유주소 설정의 영향도 받습니다. 팀이 알아보기 쉬운 명확하고 안정적인 이름을 선택하고 제목을 갱신할 때마다 URL을 바꾸지 마세요. 중국어와 영어 슬러그는 공유와 관리에 각각 장단점이 있지만 모든 사이트에 적용할 유일한 형식은 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "페이지에 상위 페이지를 지정하면 URL에 계층이 반영될 수 있습니다. 상위를 바꾸는 일은 관리자 목록을 정리하는 것에 그치지 않으므로 전체 URL이 변하는지 먼저 확인합니다. 이미 공유된 콘텐츠의 URL을 바꾸면 이전 링크, 내부 참조, 적절한 리디렉션을 처리해야 합니다. 독자의 북마크는 저절로 바뀌지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 콘텐츠가 비공개일 때 URL과 구조를 확정하는 편이 가장 간단합니다. 이미 게시된 콘텐츠라면 이전 URL을 저장하고 메뉴, 버튼, 뉴스레터 등의 참조를 나열한 뒤 변경을 계획합니다. 제목의 오타만 고치는 경우 URL을 유지할 수 있는지 확인해 작은 수정 때문에 불필요한 링크 정리를 만들지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "초안, 예약 게시와 공개 범위 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "초안은 콘텐츠 준비용이고 검토 대기는 권한이 있는 사람에게 확인을 맡기는 상태이며 예약 게시는 게시 예정 시각을 지정합니다. 예약할 때 사이트 시간대와 날짜를 확인하세요. 특히 대만 독자에게 중요한 행사 신청 마감이라면 더욱 그렇습니다. 미리보기는 편집 중인 콘텐츠를 보여 줄 뿐 일반 방문자가 볼 수 있다는 뜻이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "게시 전에 공개 범위, 댓글 설정, 작성자 등을 확인한 다음 로그아웃한 창에서 실제 URL을 시험합니다. 비공개 글도 권한이 있는 편집자나 관리자에게는 보일 수 있으며 작성자만 본다는 뜻이 아닙니다. 여러 사람이 운영하는 사이트라면 역할과 콘텐츠 용도를 확인하고 공개 방식을 결정합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "글 또는 페이지를 선택하고 초안을 만들어 완전하고 확인 가능한 정보를 입력한다.",
+            "블록 제목 수준, 요약, 대표 이미지, 카테고리와 전체 URL을 확인한다.",
+            "게시 상태와 사이트 시간대를 확인하고 데스크톱과 휴대전화 화면을 미리 본다.",
+            "적절한 권한을 가진 사람이 게시한 뒤 로그아웃한 창에서 링크와 신청 절차를 확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "수정 이력과 다음 점검 시점 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 수정 이력은 콘텐츠 변경을 비교하고 되돌리는 데 도움이 되지만 보관 범위는 사이트 설정에 따라 다릅니다. 복원 전에 차이를 보고 최근 정보 중 무엇을 남길지 확인하세요. 수정 이력은 사이트 전체 백업을 대신하지 못하며 모든 플러그인 데이터와 설정까지 복원한다는 뜻도 아닙니다. 범위가 확실하지 않으면 현재 내용을 먼저 보존하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "행사가 끝나면 종료 상태를 적고 만료된 신청 링크를 제거하며, 가치에 따라 기록을 남기거나 다음 회차로 연결합니다. 오래 쓰는 페이지에는 담당자와 정기 점검일을 정합니다. 콘텐츠마다 다음 확인 시점을 남기면 열리기는 하지만 더는 쓸 수 없는 낡은 정보가 쌓일 가능성이 줄어듭니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-posts-pages/diagram-1-ko.svg",
+          "alt": "글 또는 페이지 선택, 콘텐츠 정리, URL 설정, 게시 검증의 네 단계를 보여 주는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "게시 버튼은 상태를 바꿉니다. 읽기 편한지와 기능이 작동하는지는 따로 확인해야 합니다.",
+          "description": "글 또는 페이지 선택, 콘텐츠 정리, URL 설정, 게시 검증의 네 단계를 보여 주는 그림.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "비교 항목",
+            "글",
+            "페이지"
+          ],
+          "rows": [
+            [
+              "일반적인 용도",
+              "소식, 사용법, 계속 쌓이는 콘텐츠",
+              "서비스, 연락처, 오래 쓰는 안내"
+            ],
+            [
+              "정리 방식",
+              "날짜, 카테고리, 태그",
+              "상위·하위 계층과 사이트 탐색"
+            ],
+            [
+              "수정",
+              "기존 콘텐츠를 개정할 수 있음",
+              "계속 수정할 수도 있음"
+            ],
+            [
+              "URL",
+              "슬러그와 고유주소의 영향을 받음",
+              "상위 페이지 변경도 확인"
+            ],
+            [
+              "검증",
+              "목록과 글 본문을 모두 확인",
+              "탐색과 관련 진입점을 확인"
+            ]
+          ],
+          "caption": "기본 개념을 설명한 것입니다. 테마, 플러그인, 사용자 정의 글 유형에 따라 동작이 달라질 수 있습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "수정 범위를 먼저 확인하세요",
+          "text": "제목, URL, 본문, 템플릿 수정은 서로 다른 작업입니다. 게시 전에 변경 내용을 살펴보고 이미 공개된 URL에는 리디렉션과 내부 링크 수정 기록을 남기세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 관리자 화면과 업무 분담",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트의 일상 유지 관리",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 페이지 만들기",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 글·페이지 설정 사이드바",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 블록 편집기",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 수정 이력",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 콘텐츠 공개 범위",
+          "url": "https://wordpress.org/documentation/article/content-visibility-block-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 文章与页面怎么分：建立内容与选择网址",
+      "description": "WordPress 的文章与页面都能放文字和图片，但用途与整理方式不同。本文用社区烘焙教室的内容情境，说明什么信息适合文章、什么适合页面，并整理区块编辑、摘要、特色图片、网址与发布前检查。你可以用固定工作流完成第一篇内容，也能在更新既有文章时保留稳定链接，避免只改标题却不清楚网址或版面受到哪些影响。",
+      "hero": {
+        "src": "/guides/wordpress-posts-pages/hero-zh-cn.jpg",
+        "alt": "两份内容文件与网站预览画面组成的原创编辑插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "「本周课程开放报名」与「我们的上课地点」都可以写成一段文字，但读者找它们的方法不一样。前者需要依时间更新，后者应该长期容易找到。WordPress 提供文章与页面，让你依内容的角色安排位置，而不只是选一个看起来比较正式的名称。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以虚构的社区烘焙教室为例，从选择内容类型到发布验收整理流程。功能依 WordPress 官方文件查证，没有登录实测。网站若加装自定义内容类型或页面编辑器，选项可能不同；先理解用途，再对照自己正在使用的编辑界面。"
+        },
+        {
+          "type": "heading",
+          "text": "用读者怎么找内容来决定类型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章适合持续累积的消息、教学或观点，默认可依日期出现在文章列表，也能用分类与标签整理。页面常用于关于、服务、联系或固定说明，通常不进入一般文章的时间序列，并可建立父子层级。这是常见默认行为，插件与主题仍能调整呈现方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "烘焙教室可以把某期课程公告写成文章，把交通方式做成页面。公告连回交通页，地址变更时先更新交通页，再检查公告是否写了需要同步的细节。不要为每一篇消息复制一套永久信息，否则修改一次地址就得追查很多地方。"
+        },
+        {
+          "type": "paragraph",
+          "text": "内容会更新，不代表一定要选文章；页面也可以持续修订。判断重点是它在网站中的用途，而不是预计多久改一次。也不应只因为想取得搜索排名就把所有页面改成文章，内容是否回答问题、能否被找到及信息是否可靠都需要另外做好。"
+        },
+        {
+          "type": "heading",
+          "text": "先写内容骨架，再调整区块",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从文章或页面的新增入口建立草稿，先写清楚标题与核心信息，再用标题、段落、列表及图片等区块整理。以课程公告为例，读者需要知道适合谁、时间、地点、准备事项及如何报名；这些信息应在正文容易找到，不要藏在只有图片才看得到的文字里。"
+        },
+        {
+          "type": "paragraph",
+          "text": "标题层级用来表达内容结构，不要只因字体看起来大就随意跳级。每个段落处理一个意思，步骤使用有序列表，比把所有内容塞成一段更容易阅读。图片旁补上必要说明，替代文字则描述图片在这段内容中的作用，避免重复堆放关键字。"
+        },
+        {
+          "type": "paragraph",
+          "text": "区块编辑器可在列表视图中确认选取位置，长文章尤其适合先看结构再搬动内容。修改时留意是否选到群组或共用项目，避免拖动时连同其他区块一起移走。先完成内容，再调整间距与装饰，能减少反复改版却漏掉重要信息的情况。"
+        },
+        {
+          "type": "heading",
+          "text": "摘要与特色图片各自验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章设置可提供摘要，主题可能将它放在文章列表、搜索或其他预览位置。摘要应说明这篇内容能解决什么问题，而不只是重复标题。课程公告可以交代主题及主要条件，但不要把全部报名细节只放进摘要，因为不同版式不一定显示它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "特色图片也由主题决定使用方式，可能出现在文章卡片或文章页面。设置后分别检查列表与文章本身，确认主体不被裁切、文字仍可辨认且图片有合法使用权。特色图片和正文图片可以不同，不能只换掉其中一个就假设所有位置都会同步更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果摘要或特色图片看不见，先查看主题或模板是否有显示对应内容，再检查缓存。不要为了让图片出现而重复上传多份相同文件，也不要直接修改全站模板来处理一篇文章，除非已了解其他页面会受到什么影响。"
+        },
+        {
+          "type": "heading",
+          "text": "发布前确认网址与层级",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Slug 是网址中的识别片段，通常可以在内容设置中查看或调整，实际网址仍受固定链接设置影响。使用清楚、稳定且容易辨认的名称，避免为了每次更新标题都更换网址。中文或英文各有分享与管理上的取舍，重点是团队能一致维护，不必套用没有依据的唯一格式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "页面若设置父层，网址可能反映该层级。调整父页面不只是让后台列表更整齐，应先检查完整网址是否改变。已被分享的内容若换网址，需要处理旧链接、站内引用与适当重定向，不能假设读者收藏的网址会自己更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新内容尚未公开时，先把网址与架构确认好最省事。已公开的内容则保存旧网址，列出菜单、按钮、邮件简报或其他引用，再规划变更。若只是修正标题错字，先确认能否保留网址，避免为了小幅编辑引入不必要的链接整理工作。"
+        },
+        {
+          "type": "heading",
+          "text": "草稿、定时发布与公开状态要分清",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "草稿用来准备内容，待审稿用于交给有权限的人确认，定时发布则指定预计发布时间。设置定时发布时核对网站时区与日期，尤其是台湾读者关心的活动截止时间。预览画面代表编辑中的内容，不表示一般访客已经看得到。"
+        },
+        {
+          "type": "paragraph",
+          "text": "发布前确认公开范围、留言设置及作者等信息，再用未登录的浏览器窗口测试正式网址。私人文章仍可能由具备权限的编辑或管理员查看，不应理解成只有撰写者看得到。若网站有多人管理，先确认角色与内容用途，再决定适合的公开方式。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "判断文章或页面，建立草稿并填入完整、可查证的内容。",
+            "检查区块层级、摘要、特色图片、分类及完整网址。",
+            "核对发布状态与网站时区，预览桌面及手机版。",
+            "由适当权限发布，使用未登录的浏览器窗口确认链接与报名流程。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "更新时保留版本与下一次维护线索",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 修订版本能协助比较及恢复内容变化，实际保留情况受网站设置影响。恢复前先看差异，确认会保留哪些最新信息；它不能代替整站备份，也不代表所有插件数据与设置都会一起恢复。若不确定修订范围，先保存目前内容再处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "活动结束后可补上结束状态、移除过期报名入口，并视内容价值保留记录或连向新一期信息。固定页面则安排负责人定期核对。每篇内容留下下一次需要检查的时点，网站就比较不容易充满仍可开启、却已无法使用的过期信息。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-posts-pages/diagram-1-zh-cn.svg",
+          "alt": "选择文章或页面、整理内容、设置网址及发布验收的四阶段图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "发布按钮完成的是状态变更，阅读与功能仍要验证。",
+          "description": "选择文章或页面、整理内容、设置网址及发布验收的四阶段图解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "比较项目",
+            "文章",
+            "页面"
+          ],
+          "rows": [
+            [
+              "常见用途",
+              "消息、教学、持续累积内容",
+              "服务、联系、固定说明"
+            ],
+            [
+              "整理方式",
+              "日期、分类及标签",
+              "父子层级与网站导航"
+            ],
+            [
+              "更新",
+              "可修订既有内容",
+              "同样可以持续更新"
+            ],
+            [
+              "网址",
+              "受 slug 与固定链接影响",
+              "也需注意父层变更"
+            ],
+            [
+              "验收",
+              "列表与文章页面都检查",
+              "导航与相关入口都检查"
+            ]
+          ],
+          "caption": "以上为默认概念；主题、插件及自定义内容类型可能调整行为。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先确认更新的是哪个范围",
+          "text": "修改标题、网址、正文及模板是不同操作。发布前看清楚变更内容，对已公开的网址保留重定向与站内链接处理记录。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 后台与工作分界",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护的日常安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：建立页面",
+          "url": "https://wordpress.org/documentation/article/create-pages/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：文章及页面设置侧栏",
+          "url": "https://wordpress.org/documentation/article/page-post-settings-sidebar/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：区块编辑器",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：修订版本",
+          "url": "https://wordpress.org/documentation/article/revisions/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：内容可见范围",
+          "url": "https://wordpress.org/documentation/article/content-visibility-block-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

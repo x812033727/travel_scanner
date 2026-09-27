@@ -30,16 +30,16 @@ Four existing published WordPress content guides provide only Traditional Chines
 ## Definition of done
 
 - [x] Inventory all four repository packs, original assets, current complete production rows, existing branch translations, active tasks and open PR scopes; claim this isolated worktree.
-- [ ] Read the primary references and inspect all source illustrations; preserve article/page, taxonomy, theme/plugin and classic/block-theme qualifications, source dates, URLs, commands, numbers, audience and credits.
-- [ ] Author all 16 complete language documents and 48 localized assets, including 16 editable cover SVGs, 16 1600×900 JPEG covers and 16 diagram SVGs. Preserve 12 original assets and every original zh-TW/raw metadata byte.
-- [ ] Independently review all 1,392 translated reader fields, full model structure, numbers and conditions. Actually render and inspect every new image at desktop/mobile sizes, including fonts, glyphs, clipping and layout.
-- [ ] Preserve 32 conditional ArticleInline instances and record exact translations of original SVG accessible titles and 16 target-only image-description backfills. Unpublished same-language destinations remain nonclickable.
+- [x] Read the primary references and inspect all source illustrations; preserve article/page, taxonomy, theme/plugin and classic/block-theme qualifications, source dates, URLs, commands, numbers, audience and credits.
+- [x] Author all 16 complete language documents and 48 localized assets, including 16 editable cover SVGs, 16 1600×900 JPEG covers and 16 diagram SVGs. Preserve 12 original assets and every original zh-TW/raw metadata byte.
+- [x] Independently review all 1,392 translated reader fields, full model structure, numbers and conditions. Actually render and inspect every new image at desktop/mobile sizes, including fonts, glyphs, clipping and layout.
+- [x] Preserve 32 conditional ArticleInline instances and record exact translations of original SVG accessible titles and 16 target-only image-description backfills. Unpublished same-language destinations remain nonclickable.
 - [ ] Independently verify and integrate the exact 52 content paths, then run scoped pack/API/publication/frontend/tools/lint/type/i18n/build/task checks and preserve actual skips/advisories.
 - [ ] Open a scoped PR and a separate release task with exact versions, hashes and per-article progress. Do not count a merged pack as imported/published or browser-verified.
 
 ## Steps
 
-- [ ] Author disjoint pairs outside the repository and complete reciprocal independent reviews.
+- [x] Author disjoint pairs outside the repository and complete reciprocal independent reviews.
 - [ ] Integrate only approved full documents and assets, run checks, and hand off exact content/CI evidence for release.
 
 ## How to verify
@@ -64,3 +64,7 @@ Candidate inventory under `C:/Users/x8120/.codex/article-localization-release/ba
 The read-only scan covered 155 readable worktrees, 14,102 task records and 338 local refs without active scoped conflict or existing target translations. Fresh remote PR file checks also found no overlap. These are claim-time evidence, not a permanent lock.
 
 Root owns repository integration and release coordination. Authorized Codex subagents work on disjoint external authoring directories, then cross-review; no agent may change an unrelated source or publish this batch as part of drafting. The newly observed generic “標記” link to `ai-term-token` in `website-information-architecture` is excluded and preserved in `deferred-source-link-findings.json` SHA256 `2bbaf022f8f559ba8eaee79dff964318d9113cc0a746aa314386838bf996957d` for a separate narrow correction task.
+
+2026-09-27 content handoff: Pair A revision 1 (`pair-a-revision1/staged`) and Pair B revision 5 (`pair-b-revision-v5/staged`) passed reciprocal independent field/image/source reviews. The fresh complete live source export `live-source-full-20260927T065921Z.json` SHA256 `49bfe...` still has only zh-TW v4 for all four articles; no target locale had appeared. Root integrated 4 packs plus 48 localized assets by exact hashes. The independent 52-path integration receipt `review-integration-independent/review-receipt.json` SHA256 `48e90587b00d190d81da4a0fbd21d4b0422fbad05b5137a8acc73f8b2d42d4f0` confirms original raw-byte reversal, 16 valid docs, 32 conditional links, 32 image references and no scope drift. All new SVG/JPEG assets were rendered and reviewed at desktop/mobile sizes; the original zh-TW files are unchanged.
+
+Local scoped pack lint passed for all four slugs, with inherited absent-summary and English body-length advisories only. `npm run check:i18n`, `npm run check:tasks`, `npm run lint:web`, `npm run typecheck:web`, `uv run ruff check .` and `uv run mypy app` passed. Focused API/docs tests: 193 passed, 89 skipped because isolated PostgreSQL is unavailable on this Windows host. Initial `test:tools` failed because the partial worktree `node_modules` lacked font packages; `npm ci` restored dependencies. Initial `test:web` hung under local Node 24.13.0, below jsdom's 24.15.0 engine floor; it was stopped after 24 minutes and will be rerun under the bundled Node 24.19.0. Full tools/web/build and actual CI remain pending; no production import or publication has been claimed for this task.
