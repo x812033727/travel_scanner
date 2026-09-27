@@ -20,7 +20,7 @@ import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settle, sheetDone } from "./flow.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settle, sheetDone, siteArticleUrl, siteSources } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -115,7 +115,28 @@ test("a planner's brief must have a new slug, the owner's sections and two optio
   const cited = { ...plan, source_guide: null, source_urls: ["https://mokaair.com/zh-TW/guides/ai-news-gemini-student-offer-20260820", "https://blog.google/x"] };
   assert.match(planProblem(cited, new Set(), used), /earlier video retells/, "an unnamed article is its first site link");
   assert.equal(mainGuide(cited), "ai-news-gemini-student-offer-20260820");
+  assert.equal(mainGuide({ source_guide: null, source_urls: ["https://mokaair.com/zh-TW/life/ai-news-gpt-6-sol-luna-20260923"] }), "ai-news-gpt-6-sol-luna-20260923");
   assert.equal(planProblem({ ...plan, source_guide: "chatgpt-ads-status" }, new Set(), used), null);
+});
+
+test("a stage reads the site article where the site serves it, stale /guides/<slug> addresses included", () => {
+  const box = sandbox();
+  const packs = path.join(box.root, "apps", "api", "app", "guides", "content");
+  mkdirSync(packs, { recursive: true });
+  writeFileSync(path.join(packs, "tokyo-subway.json"), JSON.stringify({ slug: "tokyo-subway", kind: "howto" }));
+  writeFileSync(path.join(packs, "ai-news-gpt-6-sol-luna-20260923.json"), JSON.stringify({ slug: "ai-news-gpt-6-sol-luna-20260923", kind: "life" }));
+  assert.equal(siteArticleUrl("tokyo-subway", box.root), "https://mokaair.com/zh-TW/guides/howto/tokyo-subway");
+  assert.equal(siteArticleUrl("no-pack-here", box.root), "https://mokaair.com/zh-TW/life/no-pack-here", "a slug with no pack is a life article, the section the topics come from");
+  // What gpt-6-sol-luna-where-to-use had saved on 2026-09-27: its article at a 404 address, then an official page.
+  const saved = ["https://mokaair.com/zh-TW/guides/ai-news-gpt-6-sol-luna-20260923", "https://openai.com/a"];
+  assert.deepEqual(siteSources("ai-news-gpt-6-sol-luna-20260923", saved, box.root), ["https://mokaair.com/zh-TW/life/ai-news-gpt-6-sol-luna-20260923", "https://openai.com/a"]);
+  assert.deepEqual(siteSources("no-pack-here", ["https://mokaair.com/zh-TW/guides/no-pack-here"], box.root), ["https://mokaair.com/zh-TW/life/no-pack-here"], "the video's own article moves even without a pack");
+  assert.deepEqual(
+    siteSources(null, ["https://mokaair.com/en/guides/tokyo-subway", "https://mokaair.com/zh-TW/guides/howto"], box.root),
+    ["https://mokaair.com/en/guides/howto/tokyo-subway", "https://mokaair.com/zh-TW/guides/howto"],
+    "a kind's list page has no pack and stays as it is",
+  );
+  assert.deepEqual(siteSources(null, undefined, box.root), []);
 });
 
 test("the CLI entry does not await at its top level, so auto can run sub-commands through it", () => {
@@ -219,7 +240,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       const answer = judge ? judge(body) : json({ code: "not_found", detail: pathname }, 404);
       return answer instanceof Response ? answer : json(answer);
     }
-    if (pathname === "/api/video/automation/topics") return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/guides/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
+    if (pathname === "/api/video/automation/topics") return json({ topics: [{ source: "site", title: "ChatGPT 廣告", summary: "s", url: "https://mokaair.com/zh-TW/life/chatgpt-ads-status", slug: "chatgpt-ads-status", date: "2026-09-24" }], notes: [] });
     if (pathname === "/api/video/automation/drama-requests/next") return json({ request: requests.find((request) => request.status === "queued") ?? null });
     const drama = /^\/api\/video\/automation\/drama-requests\/([^/]+)\/(start|done)$/.exec(pathname);
     if (drama) {
@@ -331,7 +352,7 @@ test("auto takes a video from a topic to the outline, waits for the owner, then 
   assert.match(await automation.step(), /script drafted and passes lint/);
   const writer = site.calls.run.find((call) => call.stage === "writer");
   assert.equal(writer.payload.chosen_option.key, "B");
-  assert.deepEqual(writer.payload.sources.map((page) => page.url), ["https://mokaair.com/zh-TW/guides/chatgpt-ads-status", "https://openai.com/a"]);
+  assert.deepEqual(writer.payload.sources.map((page) => page.url), ["https://mokaair.com/zh-TW/life/chatgpt-ads-status", "https://openai.com/a"]);
   assert.equal(writer.payload.line_ids.length, 140);
   const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
   assert.deepEqual([video.slug, video.voice.name], [slug, "Sulafat"]);

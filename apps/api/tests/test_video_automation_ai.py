@@ -316,6 +316,21 @@ async def test_the_run_route_needs_a_token_and_passes_refusals_on_with_their_ret
     )
 
 
+@pytest.mark.asyncio
+async def test_site_topics_link_each_article_where_the_site_serves_it() -> None:
+    entry = MagicMock(
+        title="GPT-6 Sol 與 Luna",
+        description="兩個版本怎麼選",
+        published_at=datetime(2026, 9, 23, 8, 0, tzinfo=UTC),
+    )
+    session = MagicMock()
+    session.execute = AsyncMock(return_value=[("ai-news-gpt-6-sol-luna-20260923", None, entry)])
+    [topic] = await topics.site_topics(session)
+    # /zh-TW/guides/<slug> is a kind's list page: the article it named answered 404.
+    assert topic.url == "https://mokaair.com/zh-TW/life/ai-news-gpt-6-sol-luna-20260923"
+    assert (topic.slug, topic.date) == ("ai-news-gpt-6-sol-luna-20260923", "2026-09-23")
+
+
 integration = pytest.mark.skipif(
     os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="requires PostgreSQL"
 )
