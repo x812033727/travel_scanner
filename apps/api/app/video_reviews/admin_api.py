@@ -34,6 +34,7 @@ from app.video_reviews.schemas import (
     ReviewIn,
     ReviewOut,
     VideoFormat,
+    YoutubeIn,
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech.admin_api import VideoTool
@@ -102,6 +103,9 @@ async def list_videos(
 ) -> list[ProjectSummary]:
     """The videos, newest first; format or series narrows them (docs/videos/SERIES.md)."""
     _ = user
+    # The page is opened a few times a day: enough to let go of the mp4 of a video that has been
+    # on YouTube for a week (HANDS-OFF.md), without a scheduler for one rule.
+    await service.prune_published_previews(session, await _store(session))
     return await service.list_projects(session, video_format=format, series_slug=series)
 
 
@@ -122,6 +126,22 @@ async def decide(
 async def drop(slug: str, payload: DropIn, user: ContentManager, session: Session) -> ProjectOut:
     """The owner stops this video; the pipeline leaves it and its topic counts as made."""
     return await service.drop_project(session, await _store(session), slug, user, payload)
+
+
+@admin_router.post("/{slug}/youtube", response_model=ProjectOut)
+async def link_youtube(
+    slug: str, payload: YoutubeIn, user: ContentManager, session: Session
+) -> ProjectOut:
+    """The owner uploaded the final cut in Studio: the pasted address names the video, and the
+    publish time is when it goes public (docs/videos/HANDS-OFF.md §YouTube API 第一步)."""
+    video_id = service.youtube_video_id(payload.url)
+    if video_id is None:
+        raise AppError(
+            422,
+            "video_youtube_url_invalid",
+            "看不出影片 id：貼上 youtu.be、watch?v=、shorts 或 Studio 的網址，或 11 個字元的 id",
+        )
+    return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
 
 
 @admin_router.put("/{slug}/dubs", response_model=ProjectOut)
