@@ -1,14 +1,14 @@
 ---
 id: 2026-09-27-news-images-under-guides-news-assets
 title: News images under /guides/news-assets answer 500 in production
-status: open
+status: done
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-09-27T07:45:59Z
 created_at: 2026-09-27T06:41:12Z
-completed_at:
-branch:
+completed_at: 2026-09-27T08:32:11Z
+branch: claude/news-assets-direct-api
 depends_on: []
 scope:
   - apps/web/app/guides/news-assets
@@ -61,19 +61,19 @@ upstream from `request.url`.
       answers 404 instead of 500, and an existing asset answers 200 with `image/webp` or
       `image/svg+xml`.
 - [ ] After the deploy, the web container logs no `ERR_SSL_WRONG_VERSION_NUMBER`.
-- [ ] A route test pins the upstream to `API_INTERNAL_URL`. It also covers a 404 passed
+- [x] A route test pins the upstream to `API_INTERNAL_URL`. It also covers a 404 passed
       through, a wrong content type (502), an upstream network error (502, not an
       unhandled throw) and a HEAD request without a body.
 
 ## Steps
 
-- [ ] Fetch `${API_INTERNAL_URL || "http://localhost:8000"}/api/v1/news-assets/<file>`
+- [x] Fetch `${API_INTERNAL_URL || "http://localhost:8000"}/api/v1/news-assets/<file>`
       directly and stop deriving the upstream from `request.url`.
-- [ ] Catch an upstream fetch failure and answer 502, as the BFF proxy does.
-- [ ] Keep the filename pattern and the content-type allowlist. Consider also applying the
+- [x] Catch an upstream fetch failure and answer 502, as the BFF proxy does.
+- [x] Keep the filename pattern and the content-type allowlist. Consider also applying the
       5 MiB cap that `app/api/travel/[...path]/route.ts` sets for news assets
       (`MAX_NEWS_ASSET_BYTES`).
-- [ ] Add `route.test.ts` next to the route, modelled on the news-asset case in
+- [x] Add `route.test.ts` next to the route, modelled on the news-asset case in
       `app/api/travel/[...path]/route.test.ts`.
 - [ ] After merge, deploy through skill `deploy` and run the checks below.
 
@@ -98,3 +98,27 @@ one from `news_assets` with the owner's OK.
   is what every other server route in `apps/web` does.
 - Not in scope: the article renderer and the API. If the fix needs a shared helper in
   `apps/web/lib`, widen the scope in this file and say why.
+- **Readers were affected when this was filed** (checked 2026-09-27 07:31Z, read-only
+  query in the api container plus the public list). All 9 `published` candidates, 7 of
+  them auto-published, carry `hero.src=/guides/news-assets/<id>-hero.webp` and a
+  `-diagram-<locale>.svg` image block; `tech-news-nvidia-ai-agent-security-20260921` is
+  one of them. In a browser the hero keeps its 1600x900 box but loads nothing
+  (`naturalWidth` 0 after the page's two `image_retry` attempts), and the diagram is
+  blank. The same files answer 200 through `/api/travel/news-assets/<file>`.
+- The site owner reported it as "published but not visible on the front end". The
+  articles themselves are listed; the other half of that report is ordering: news
+  lists sort by the day the news happened, and the pipeline publishes stories 1-6 days
+  after the event, so the newest publication sat 18th of the 20 on `/life`. The owner
+  chose to keep the event-date order (2026-09-27).
+- What the route does now (`claude/news-assets-direct-api`): calls the API directly with
+  a 15 s deadline; forwards the visitor's address (`forwardedClientHeaders`) and user
+  agent, so the API's public-read meter counts the reader, as the BFF and the
+  server-rendered pages do; never follows a redirect (502); passes 4xx and 5xx statuses
+  through with an empty `no-store` body instead of the API's JSON; normalises
+  `image/svg+xml; charset=utf-8` to `image/svg+xml`; buffers at most 5 MiB, declared or
+  streamed; drops the body for HEAD after the same checks, since the API answers GET
+  only. Seven of the ten new tests fail against the old route.
+- Unticked when closed: the deploy step and the two production checks, which need the
+  merged code live. The owner chose on 2026-09-27 to deploy as soon as this merges.
+  Before the deploy, the public checks under "How to verify" failed as expected: the
+  missing name, two heroes, one diagram and a HEAD request all answered 500.
