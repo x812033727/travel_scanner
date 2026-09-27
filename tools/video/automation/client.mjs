@@ -99,6 +99,13 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
      * endpoint, the site answers 404 and the caller reports it as not available.
      */
     judgePolicy: (body) => request("POST", "automation/judge/policy", body),
+    /**
+     * Jev's choice among a brief's outlines (docs/videos/HANDS-OFF.md §Jev 挑大綱): body
+     * { slug, brief, options: [{ key, title, summary, hook }] }, 2 to 3 options, no other field.
+     * Answers { choice, probabilities, options: { key: { stance, demo } }, advice, passed, note };
+     * 409 video_judge_not_enabled while the stance is blank or the switch is off.
+     */
+    judgeOutline: (body) => request("POST", "automation/judge/outline", body),
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {

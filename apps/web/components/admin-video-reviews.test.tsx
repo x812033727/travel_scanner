@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoReviews } from "./admin-video-reviews";
@@ -222,6 +222,80 @@ describe("AdminVideoReviews", () => {
     expect(calls.find((call) => call.method === "DELETE")?.url).toContain("/admin/video-automation/drama-requests/new");
     await waitFor(() => expect(screen.getByRole("region", { name: "發起的漫劇" }).textContent).toContain("已取消"));
     confirm.mockRestore();
+  });
+
+  it("shows a dubs review under its own gate and approves it as uploaded in Studio", async () => {
+    // The payload and files are what the worker will send (docs/videos/DUBS.md); the card's track
+    // list with download links is still to come, so only the gate and the decision are asserted.
+    const dubs = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "dubs", content_sha256: "7".repeat(64), summary: "配音：en 完成、ja 跳過",
+      payload: { locales: { en: { file: "en.m4a", file_role: "dub_en", status: "ready" }, ja: { status: "skipped", reason: "1.15 倍還塞不下" } } },
+      files: [{ role: "dub_en", sha256: "8".repeat(64), size: 10, content_type: "audio/mp4" }],
+      status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
+    };
+    const posts: Array<{ url: string; body: unknown }> = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") {
+        posts.push({ url, body: JSON.parse(String(init.body)) });
+        return Promise.resolve(Response.json({ ...dubs, status: "approved" }));
+      }
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({ ...summary, dub_locales: ["en", "ja", "zh-CN"], reviews: [dubs] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "配音音軌" });
+    expect(card.textContent).toContain("配音：en 完成、ja 跳過");
+    // The track list: English ready with its file to download, Japanese skipped with the reason.
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain(`/api/admin-video-files/${summary.slug}/${"8".repeat(64)}`);
+    expect(card.textContent).toContain("英文");
+    expect(card.textContent).toContain("跳過：1.15 倍還塞不下");
+    const approve = screen.getByRole("button", { name: "已在 Studio 上傳這些音軌" });
+    expect(approve).toHaveProperty("disabled", false);
+    fireEvent.click(approve);
+    await waitFor(() => expect(posts).toHaveLength(1));
+    expect(posts[0].url).toContain(`/reviews/${dubs.id}/decision`);
+    expect(posts[0].body).toEqual({ decision: "approve" });
+  });
+
+  it("lets the owner tick the languages to dub a video in and saves them in the page's order", async () => {
+    const puts: Array<{ url: string; body: unknown }> = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "PUT") {
+        puts.push({ url, body: JSON.parse(String(init.body)) });
+        return Promise.resolve(Response.json({ ...summary, dub_locales: ["en", "ko"], reviews: [] }));
+      }
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({ ...summary, dub_locales: ["en"], reviews: [] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const section = await screen.findByRole("region", { name: "配音語言" });
+    expect(within(section).getByRole("checkbox", { name: "英文" })).toHaveProperty("checked", true);
+    const save = within(section).getByRole("button", { name: "儲存配音語言" });
+    expect(save).toHaveProperty("disabled", true);
+    fireEvent.click(within(section).getByRole("checkbox", { name: "韓文" }));
+    expect(save).toHaveProperty("disabled", false);
+    fireEvent.click(save);
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect(puts[0].url).toContain("/admin/videos/ai-model-choice/dubs");
+    expect(puts[0].body).toEqual({ locales: ["en", "ko"] });
+    await screen.findByText("已儲存");
+  });
+
+  it("does not offer dub languages to a reader without content.manage", async () => {
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({ ...summary, dub_locales: [], reviews: [] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const section = await screen.findByRole("region", { name: "配音語言" });
+    expect(within(section).getByRole("checkbox", { name: "日文" })).toHaveProperty("disabled", true);
+    expect(within(section).getByRole("button", { name: "儲存配音語言" })).toHaveProperty("disabled", true);
   });
 
   it("keeps dramas off the tutorial list and shows a one-off drama with its spend on the drama tab", async () => {

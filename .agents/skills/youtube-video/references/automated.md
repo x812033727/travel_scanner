@@ -1,13 +1,15 @@
 # 全自動路線：AI 撰稿、台灣口音旁白、自動做成片
 
-這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg，CC 字幕五語系。站主只要在四個地方把關：
+這條路線的成品是一支投影片加旁白的影片。旁白由伺服器代為合成（頻道聲音是 Gemini 的 Sulafat；Azure 是另一個供應商，站主覺得它的聲音太平），畫面由 HTML 版型截圖，合成用 ffmpeg，CC 字幕五語系。關卡有四個，2026-09-27 起（`docs/videos/HANDS-OFF.md`）前三個由 AI 決定，站主只決定上架時間：
 
-1. 選大綱
-2. 聽旁白
-3. 看成片、確認可以上架
-4. 在 YouTube Studio 按公開
+| 關卡 | 誰決定 | 什麼時候才輪到站主 |
+| --- | --- | --- |
+| 選大綱 | Jev 依設定分頁的「頻道立場」挑（`POST /video/automation/judge/outline`）；選中的選項要符合立場 ≥ 0.6、有示範 ≥ 0.6、整份企劃的建議 ≤ 0.3 | 頻道立場還是空白或開關關著（伺服器回 409）；Jev 沒挑出過關的大綱、企劃模型重寫 `MAX_REPLANS`（2）次仍不過，這時審核卡片附上 Jev 的表 |
+| 聽旁白 | Jev 每一句都唸對就核准 | 有句子被標記 |
+| 看成片 | 自動品管（`qa` 的 11 項）全過、雜湊等於這份成片就核准 | 有項目沒過：卡片最上面列出沒過的項目與細節 |
+| 確認上架 | 上傳包檢查（`files`、`descriptions`、`captions`、`disclosure`）全過就核准，影片進「可以上架」 | 有項目沒過 |
 
-前三個都在網站後台的「影片審核」頁（`/admin/videos`）做：工具用 `review-push` 把該關的東西送上去（企劃與選項、旁白與 Jev 檢查、720p 成片與五語系標題、上傳檢查表），站主在頁面上核准或退回，工具再用 `review-pull` 讀回。核准綁定檔案雜湊，檔案改過就要重新送審。對話裡的提問只在後台頁用不了時當備援。
+都在網站後台的「影片審核」頁（`/admin/videos`）：工具用 `review-push` 把該關的東西送上去（企劃、選項與 Jev 的 pick；旁白與 Jev 檢查；720p 成片、五語系標題與 `qa` 的報告；完整上傳包與它的檢查），伺服器收到時照規則核准或留給站主，工具再用 `review-pull` 讀回。核准綁定檔案雜湊，檔案改過就要重新送審；同一份檔案還在等站主時再送一次，會換上新的 payload 重新判斷（字幕或連結修好後再 `review-push --gate final` 就會重判）。站主在 Studio 上傳成私人之後，在「可以上架」卡片貼上網址，工人下一輪把影片 id 寫進 `video.json`，影片就算完成。對話裡的提問只在後台頁用不了時當備援。
 
 為什麼這樣設計、YouTube 與 Azure 的規則，寫在 `docs/videos/DESIGN.md`；頻道的版型、配色與聲音寫在 `docs/videos/README.md`。這份只寫**怎麼做**。
 
@@ -28,7 +30,7 @@
 | # | 階段 | 誰 | 產出 | 關卡 |
 | --- | --- | --- | --- | --- |
 | 0 | 認領票、開工作區 | 協調者 | — | 票已認領 |
-| 1 | 企劃（提示 `.agents/skills/youtube-video/references/prompts/planner.md`） | 企劃代理（sonnet） | `<VIDEO_DOCS>/brief.md` | `review-push` 送企劃；站主在 `/admin/videos` 從 2–3 個大綱選一個；`review-pull` 記下核准 |
+| 1 | 企劃（提示 `.agents/skills/youtube-video/references/prompts/planner.md`；有頻道立場時，站主觀點第一行寫「套用立場：N、M」） | 企劃代理（sonnet） | `<VIDEO_DOCS>/brief.md` | `review-push --gate outline` 先問 Jev 挑哪一個，過關就附上 pick 送審、伺服器直接核准；Jev 關著（409）才由站主在 `/admin/videos` 選；`review-pull` 記下核准 |
 | 2 | 撰稿（提示 `.agents/skills/youtube-video/references/prompts/writer-video.md`） | 撰稿代理（sonnet） | `video.json`、`claims.md`、發音字典新增的詞 | `lint` 零錯誤 |
 | 3 | 查核（提示 `.agents/skills/youtube-video/references/prompts/verifier-video.md`） | **另一個**代理（opus） | `verify-1.md` | 改超過 3 個事實，就換人再查一輪，寫 `verify-2.md` |
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 修正清單 | 協調者套用後再跑 `lint` |
@@ -37,9 +39,10 @@
 | 7 | `render` | 工具 | `frames/`、`contact-sheet.png`、`thumbnail.jpg` | 看聯絡表；版面錯誤就縮短文字 |
 | 8 | `assemble` | 工具 | `final.mp4`、`checks.json` | 自動檢查全過 |
 | 9 | CC 翻譯：`i18n-sheet` 出底稿 → 每個語系一個翻譯代理（`prompts/caption-translate.md`，sonnet）填 → `i18n-merge` → 另一個審稿代理（`prompts/caption-review.md`，opus）只交修正清單 → 協調者改底稿再 merge → `captions` | 翻譯與審稿代理、工具 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/*.srt` | `i18n-merge` 沒有列出問題；lint 沒有過期或缺漏的翻譯 |
-| 10 | `review-push` 送成片（720p 預覽、聯絡表、縮圖、五語系標題說明） | 站主 | — | 站主在 `/admin/videos` 看完核准，`review-pull` 記下 |
-| 11 | `package`，再 `review-push` 送上架確認 | 工具、站主 | `upload/`（含 `UPLOAD.md`） | 核准的成片必須和目前的 `final.mp4` 一致；站主按「確認可以上架」，`review-pull` 記下 |
-| 12 | 站主照 `UPLOAD.md` 在 Studio 上傳成私人，檢查後自己按公開 | 站主 | YouTube 影片 | 影片 ID 寫回 `video.json` 的 `youtube.video_id` |
+| 10 | `review-push --gate final`：先跑 `qa`（11 項，寫到 `review/qa.json`），再送成片（720p 預覽、聯絡表、縮圖、五語系標題說明、`payload.qa`） | 工具 | `review/qa.json` | 11 項全過、`final_sha256` 等於這份 `final.mp4`，伺服器就核准；沒過的才由站主在 `/admin/videos` 看；`review-pull` 記下。`qa` 結束碼 4（Jev 或連結檢查連不上）就不送，下一輪再試 |
+| 11 | `package`（寫完就跑上傳包檢查、揭露答案寫進 `metadata.json`），再 `review-push --gate publish` 送上架確認：完整上傳包（`final`、`thumbnail`、`captions_<語系>`、`description_<語系>`、`metadata`）加 `payload.package` | 工具 | `upload/`（含只剩操作步驟的 `UPLOAD.md`） | 4 項全過、雜湊等於 `upload/metadata.json`，伺服器就核准，影片進「可以上架」；`review-pull` 記下 |
+| 12 | 站主照 `UPLOAD.md` 在 Studio 上傳成私人，到 `/admin/videos` 的「可以上架」卡片貼上網址、選上架時間 | 站主 | YouTube 影片 | 工人下一輪把影片 ID 寫回 `video.json` 的 `youtube.video_id`，影片標成完成；公開由站主選的時間決定 |
+| 13 | 配音音軌，**只在站主於 `/admin/videos` 的影片頁勾了語言之後**：`dub --locale <語系>` → 塞不下的句子交翻譯代理照 `fit.json` 的 `max_chars` 縮短 → `i18n-merge` → 再 `dub` → `check-audio --locale <語系>` → `captions`（有配音的語系改跟配音的時間）→ `package` → `review-push` 送 `dubs` 審核 | 工具、翻譯代理、站主 | `dubs/<語系>.m4a`、`upload/dubs/` | 站主照 `UPLOAD.md` 的「配音音軌」在 Studio「語言」上傳後按核准；規則在 `publish.md` 的「多語言音軌」與 `docs/videos/DUBS.md` |
 
 第 4 步聽眾審稿最常抓到的四種問題：代理替站主編經驗（「我都自己測過」）；台灣介面有中文名稱卻寫英文 UI 名；預測沒標成意見；引用站上已經過期的圖解。
 
@@ -59,10 +62,12 @@ node tools/video/cli.mjs assemble --slug <SLUG>
 node tools/video/cli.mjs i18n-sheet --slug <SLUG> [--locale en,ja]   # 翻譯底稿在 <VIDEO_WORKDIR>/<SLUG>/i18n/，只標出缺漏或過期的句子、章節、標題、說明與標籤
 node tools/video/cli.mjs i18n-merge --slug <SLUG> [--locale en,ja]   # 底稿寫回 i18n/<語系>.json，雜湊由工具算
 node tools/video/cli.mjs captions --slug <SLUG>
-node tools/video/cli.mjs review-push --slug <SLUG> [--gate outline|audio|final|publish]   # 送審到 /admin/videos
-node tools/video/cli.mjs review-pull --slug <SLUG>              # 讀回站主的決定，核准才寫進 approvals.json
+node tools/video/cli.mjs qa       --slug <SLUG>                 # 成片的 11 項自動品管，寫到 review/qa.json（結束碼 0 過、1 沒過、4 外部服務）
+node tools/video/cli.mjs review-push --slug <SLUG> [--gate outline|audio|final|publish]   # 送審到 /admin/videos；outline 先問 Jev，final 先跑 qa，publish 附完整上傳包
+node tools/video/cli.mjs review-pull --slug <SLUG>              # 讀回決定（站主的或伺服器自動核准的），核准才寫進 approvals.json
 node tools/video/cli.mjs approve  --slug <SLUG> --gate outline|audio|final|publish --note "<站主怎麼回答的>"   # 後台頁不能用時的備援
 node tools/video/cli.mjs package  --slug <SLUG>
+node tools/video/cli.mjs dub      --slug <SLUG> --locale en,ja [--dry-run] [--format m4a|mp3|wav] [--redo review/check-flags.en.json]   # 配音音軌：先 --dry-run 看字數、額度與塞得下幾個視窗
 node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整條流程的冒煙測試
 ```
 
@@ -112,6 +117,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - 每月上限由站主在後台卡片設定。超過時伺服器以 429 拒絕，請求不會送到 Azure，所以不會產生費用。
 - Gemini 以送出的文字字數計，和 Azure 分開算，預設每月 300,000 字（約一百支 10 分鐘影片）。
 - 實測合成語速約每分鐘 300 字（48 kHz 單聲道），工具估計用 250，所以 `lint` 估的長度偏長；要 8–12 分鐘的成片，旁白字數要比估計多寫一些。
+- 配音音軌（`dub`）以送出的翻譯字數計：一支 10 分鐘的影片，en 約 10,000、ja 約 6,000、ko 約 6,500、zh-CN 約 5,000 個 Gemini 字元，四條約 28,000（含場景切分的標記）。額度不夠時把 `video_speech_gemini_monthly_character_limit` 調高。
 
 ## 坑
 
@@ -119,6 +125,7 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - **`render` 回報版面錯誤**：代表縮小 40% 以後字還是放不下，或畫面裡有字型沒有的字（例如 emoji）。處理方式是縮短文字或換版型，不要改主題 CSS。
 - **`assemble` 回報某一格「不像」預期的畫面**：代表畫面錯位了，先看 `checks.json` 是哪個場景的哪一格。門檻：44 dB 以上直接算對、35 以下算錯；中間（字很密的表格、比較卡，正確也只有 40 左右）要比同場景其他畫面高 3 dB，`checks.json` 會記下它和每個對手的分數。不要調低門檻。
 - **`tts` 回報某一批改成逐句合成**：代表那一批的靜音切段和字數對不上。這通常不影響成品，只是多送幾次請求。如果同一批一直發生，把那個場景拆短一點。
+- **`dub` 回報視窗塞不下（結束碼 1）**：那個投影片狀態裡的翻譯，就算整窗加速 1.15 倍也講不完。`dubs/<語系>/fit.json` 的 `over` 列出每句最多幾個字元：只縮那幾句（數字、專有名詞、說法不能改；字幕跟著用縮短後的句子），`i18n-merge` 之後再跑 `dub`，只重錄改過的句子。`i18n-sheet` 在有時間軸時會先給每句 `max_chars`，翻譯時照它寫就少一輪。英文最容易超，第二批實測一支有 7 個視窗要縮。
 - **代理不能碰權杖**：用上面的配對流程，權杖不能出現在對話裡、檔案裡或指令參數裡。替站主開一個終端機分頁讓他打權杖，會被分類器擋成 Credential Leakage。
 - **ffmpeg（除錯 `assemble` 時用得到）**：PNG 的 concat 預設時基是 1/25 秒，每個檔案要加 `option framerate 30`；PNG 沒有色彩資訊，要 `setparams` 加 `-x264-params colorprim/transfer/colormatrix`；單聲道先正規化再轉立體聲會大 3 LU；抽格用場景片段上的 `select=eq(n,N)`，不要對串好的 mp4 用 `-ss`；Noto Sans CJK 單行會「溢出」零點幾個行高，所以版面檢查容許到 0.4 em。
 - **本機環境**：

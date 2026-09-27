@@ -24,7 +24,7 @@ Write `brief.md` in zh-TW with exactly these sections, in this order:
     # <working title>
     ## 觀眾                    who, what they already know, the question they searched for
     ## 觀眾看完能做到的事      one or two concrete things the viewer can DO afterwards (lint refuses it empty)
-    ## 站主觀點                a proposed stance, in the first person, that the owner confirms or rewrites when choosing the outline (lint refuses it empty)
+    ## 站主觀點                the owner's stance on this topic, in the first person (lint refuses it empty); see the rule below
     ## 示範或實算              at least one worked example: a real calculation with today's official numbers, a real prompt and its real output, a real before/after. Say which slide shows it.
     ## 大綱                    2 or 3 options, see below
     ## 會過期的事實            every fact that can change, with the official URL to re-check on writing day
@@ -41,6 +41,15 @@ Each outline option (### 選項 A, ### 選項 B, …):
 - the closing next step (one: the Mokaair article, the next video, or a specific question for the comments).
 
 Make the options genuinely different in angle or order, not three wordings of one outline. Vary the template sequence from the earlier videos'; lint warns when two videos' sequences are too alike.
+
+## 站主觀點 and the channel's stance
+
+The owner writes the channel's stance once, as numbered points, on the settings tab of `/admin/videos` (`docs/videos/HANDS-OFF.md` §頻道立場); the worker hands it to you under a `## The channel's stance` heading, and the launch message carries it on the manual route. It is what this channel believes, and the only source an opinion may come from.
+
+- When the stance is present, the FIRST line of `## 站主觀點` reads `套用立場：N、M` — the numbers of the stance points this video applies, at least one — followed by the concrete opinion those points give on this topic, in the first person. The worker's lint refuses a brief whose first line is missing or names a point the stance does not have; never argue against a point.
+- When there is no stance (the section is blank), the line is omitted: propose a stance and mark it as a proposal the owner confirms or rewrites when choosing the outline.
+
+Jev chooses among the outlines against the same stance (`review-push --gate outline`): the chosen option must keep to it and include a demonstration or a worked calculation the viewer can follow, and the brief must give no investment, medical, legal or electoral advice.
 
 ## Hard rules
 

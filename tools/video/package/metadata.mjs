@@ -53,20 +53,49 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
   };
 }
 
-// A drama's own checks (docs/videos/DRAMA.md): the pictures and music are synthetic, every
-// episode must stand on its own, and the music must be licensed.
-const DRAMA_CHECKS = `- [ ] **合成內容揭露**（Studio「變造或合成內容」）：3D 寫實的 AI 畫面與 AI 配樂一律勾「是」；YouTube 說明寫明這不影響觸及與營利。
-- [ ] **每集劇情獨立**：這一集有自己的故事與構圖，不是換名字的模板；分鏡、提示詞與參考圖留在工作區當作者證據。
-- [ ] **音樂授權**：配樂來自 Lyria（站上生成）或站主自己有授權、放在 \`_music/\` 的檔案；不用來路不明的曲子。`;
+/**
+ * The Studio steps for the dub tracks (docs/videos/DUBS.md), or where to ask for some. Tracks
+ * can be added before or after the video is public; YouTube's own auto dub of a language has to
+ * be deleted before the owner's track for it goes up.
+ */
+export function dubSteps(dubs = [], skippedDubs = {}) {
+  const lines = [];
+  if (dubs.length) {
+    lines.push("要上傳的音軌：", "");
+    for (const dub of dubs) lines.push(`- \`${dub.file}\`（${dub.locale}${dub.tempo_max > 1 ? `，最快處 ${dub.tempo_max} 倍速` : ""}）`);
+    lines.push(
+      "",
+      "每個語系做一次：Studio 左選單「語言」→ 這支影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→ 選對應的檔案 →「發布」。上架前或上架後都可以加。",
+      "",
+      "- 頻道要有「進階功能」（設定 → 頻道 → 功能使用資格）。",
+      "- YouTube 已經替這個語言自動配音的話，要先在同一頁刪掉自動配音，才傳得上去；建議在設定 → 頻道 → 進階設定取消「允許自動配音」。",
+      "- 傳完到影片頁的「配音音軌」卡片按核准，表示已上傳。",
+    );
+  } else {
+    lines.push("這支沒有配音音軌。要加，在 `/admin/videos` 這支影片的頁面勾選語言，工人做好會再送一張卡片。");
+  }
+  const skipped = Object.entries(skippedDubs);
+  if (skipped.length) {
+    lines.push("", "做不出來的語系（不用等）：");
+    for (const [locale, reason] of skipped) lines.push(`- ${locale}：${reason || "沒有寫原因"}`);
+  }
+  return lines.join("\n");
+}
 
-export function uploadChecklist({ metadata, captions, thumbnail, drama = false }) {
+/**
+ * UPLOAD.md: only the operating steps in YouTube Studio. The checks that used to be a list here
+ * (facts, links, thumbnail legibility, the owner's viewpoint, the disclosure) are the automatic
+ * quality check and the package check now (docs/videos/HANDS-OFF.md); the disclosure answer is
+ * in metadata.json and this page only says how to tick it. The dub tracks (docs/videos/DUBS.md)
+ * keep their own section: which file goes where in Studio's 「語言」.
+ */
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false, disclosure = null, dubs = [], skippedDubs = {} }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
-  const disclosure = drama
-    ? DRAMA_CHECKS
-    : "- [ ] **AI 使用揭露**（Studio「變造或合成內容」）：只有擬真到會被誤認為真人、真實事件或真實場景時才要勾。用一般 TTS 聲音唸投影片，依 YouTube 說明推論不需要；如果用了複製真人（不是自己）的聲音，一定要勾。";
-  return `# 上傳檢查表：${metadata.title}
+  const synthetic = typeof disclosure?.synthetic === "boolean" ? disclosure.synthetic : typeof metadata.contains_synthetic_media === "boolean" ? metadata.contains_synthetic_media : drama;
+  const reason = disclosure?.reason ?? metadata.disclosure_reason ?? (drama ? "AI-generated shots and voices" : "slides read by a synthesized narration");
+  return `# 上傳步驟：${metadata.title}
 
-這個資料夾就是要上傳的全部內容。公開前的每一步都由站主自己在 YouTube Studio 操作。
+這個資料夾就是要上傳的全部內容。自動品管與上傳包檢查已經做過；這裡只剩站主自己在 YouTube Studio 的操作，公開的時間也由站主決定。
 
 ## 1. 上傳（Studio → 建立 → 上傳影片）
 
@@ -76,23 +105,20 @@ export function uploadChecklist({ metadata, captions, thumbnail, drama = false }
 4. 縮圖：${thumbnail ? "上傳 `thumbnail.jpg`（帳號需完成手機驗證）" : "這次沒有縮圖，Studio 會自動挑一格"}。
 5. 目標觀眾：選「否，這不是為兒童打造的內容」${metadata.made_for_kids ? "（注意：video.json 標為兒童內容，請確認）" : ""}。
 6. 標籤：貼上 \`metadata.json\` 的 \`tags\`。類別：科學與技術（${metadata.category_id}）。影片語言：中文（台灣）。
+7. 「變造或合成內容」：${synthetic ? "勾「是」" : "不用勾"}。\`metadata.json\` 的 \`contains_synthetic_media\` 是 \`${synthetic}\`（${reason}）。
 
 ## 2. 字幕
 
 ${captionLines}
 
-在「字幕」分頁新增語言並上傳對應的檔案；或上傳完成後，把影片 ID 交回，用 \`node tools/video/cli.mjs youtube-sync\` 一次補上字幕與其他語言的標題說明。
+在「字幕」分頁新增語言並上傳對應的檔案；其他語系的標題與說明在 \`description.<語系>.txt\`。
 
-## 3. 上架前自我檢查
+## 3. 配音音軌（多語言音訊）
 
-${disclosure}
-- [ ] **非原創內容政策**：這支有站主自己的觀點（brief.md 的「站主觀點」）、${drama ? "站主看過並核准了每一個關卡（設定圖、分鏡、成片）" : "至少一段實際示範或實算，而不是套版型念重點"}。
-- [ ] **付費宣傳**：影片裡有業配或聯盟連結就勾選，說明欄也要寫明。
-- [ ] 說明欄的連結都點過，文章頁會開。
-- [ ] 縮圖縮到手機大小還看得懂。
+${dubSteps(dubs, skippedDubs)}
 
-## 4. 公開
+## 4. 上傳之後
 
-確認都沒問題之後，才把瀏覽權限改成「公開」或設定排程。影片網址交回後會寫進 \`video.json\`。
+回到 /admin/videos 這支影片的「可以上架」卡片貼上 YouTube 網址，並選上架時間；影片 ID 會寫進 \`video.json\`，影片就算完成。不要自己按公開：公開由站主選的時間決定。
 `;
 }
