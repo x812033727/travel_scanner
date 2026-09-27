@@ -21,9 +21,10 @@ scope:
 ## Why
 
 Batch029's four WordPress contact guides were merged as source packs and then
-published to production in 16 missing languages. The publication, preserved
-originals, postpublication QA, and release hold must have a durable record that
-reviewers can distinguish from source-code merge status.
+published to production in 16 missing locale documents across four languages.
+The publication, preserved originals, postpublication QA, and release hold
+must have a durable record that reviewers can distinguish from source-code
+merge status.
 
 ## Definition of done
 
