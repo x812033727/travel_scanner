@@ -273,6 +273,1046 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "After a WordPress Move: Check Search Traffic, the Old Host, and Renewals",
+      "description": "A completed WordPress move still needs checks that the new host is stable, search entry points work, backups can be used, and old services can safely stop. This guide provides a cutover observation checklist, a way to interpret search traffic, an inventory of old-host dependencies, and renewal closeout steps. Individual site owners and studios can retain the information needed for rollback without confusing temporary fluctuations, ending renewal, and immediately deleting a site.",
+      "hero": {
+        "src": "/guides/wordpress-migration-aftercare/hero-en.jpg",
+        "alt": "Original illustration of a website screen, backup folder, and billing calculation card showing post-migration checks of functionality, data, and billing.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The new site opens and the migration tool reports completion, so canceling the old host can feel like the next step. Yet the old environment may still provide email, DNS, redirects, or downloadable files. The new site may have passed only a home-page check while form notifications and recent data remain unverified. Closeout means resolving each of these remaining dependencies."
+        },
+        {
+          "type": "paragraph",
+          "text": "Think of the closeout document as a handover record: which service moved, who verified it, what still needs to stay, and when payment can stop. This guide begins after cutover and does not repeat the file-copy procedure. It focuses on observable evidence so you can retire old services with confidence and assign ongoing care for the new site."
+        },
+        {
+          "type": "heading",
+          "text": "Record the cutover time and comparison baseline",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down the actual cutover date, time zone, primary URL, old and new hosts, and the scope of changes. Did you only change hosts, or also change the domain, layout, or form provider? Each scope calls for different observations. Without this baseline, a traffic change several days later is hard to interpret because you may not remember which settings changed together."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Save the pre-migration list of key pages, results of important function tests, and available traffic and error logs. Compare matching time periods and conditions; weekdays differ from weekends, and promotion days from ordinary days. If you also changed analytics tools or "
+            },
+            {
+              "type": "text",
+              "text": "tag"
+            },
+            {
+              "type": "text",
+              "text": " settings, note that too, so a measurement change is not mistaken for a real loss of visitors."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "Create a cutover log with the time, URL, and every item changed together.",
+            "Keep verification baselines for the home page, popular posts, forms, and download pages.",
+            "Assign someone to review results daily and provide a contact for failure of key functions."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Check functions before traffic curves",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with what visitors actually do: open a post, search the site, download a file, submit a form, or complete a required login. Check on a phone and different networks, not only your usual browser. Record the URL, time, action, and result for each test, and keep reproducible steps for failures."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare logs from old and new hosts to confirm production traffic is gradually served by the new environment. When requests still reach the old site, identify whether they are normal visitors, scheduled callbacks, forgotten download links, or something else. Request totals alone are not enough to decide when to stop it, especially if the old host also provides other services."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether data remains split between the two sites, such as a final comment or form submitted to the old site. Once those records are saved and handled, prevent unnecessary new writes there. Do not overwrite the running new site with the old database; content added after cutover could be erased. Plan any merge by data type."
+        },
+        {
+          "type": "heading",
+          "text": "Use search reports to locate issues without jumping to conclusions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console Performance reports show clicks and impressions by page, query, device, and date. Compare the same group of important pages first to distinguish a site-wide change from a decline in a few posts. If the domain changed too, inspect data for both properties rather than only the new site’s newly accumulating figures. Recent data may still be collecting, so a single hour is not a sound basis for a conclusion."
+        },
+        {
+          "type": "paragraph",
+          "text": "“Not indexed” in an indexing report does not always signal an error. Deleted pages, legitimate duplicate URLs, and intentionally private content can have valid reasons to be excluded. For an important URL that should be public, use URL Inspection to check its state, including whether a test noindex setting, wrong canonical, or broken redirect remains."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, if a popular craft tutorial suddenly loses traffic, open the old link and see whether it reaches the correct new article. Then check its text, images, and indexability. If the technical path is sound, examine the queries and comparison periods. These steps narrow the cause; timing alone does not prove that the host changed search rankings."
+        },
+        {
+          "type": "heading",
+          "text": "Give the new environment its own backups and owner",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A pre-migration backup reflects one moment on the old host. Once the new site is active, it needs its own backup schedule, off-site storage, and restoration method. Create a new-environment backup manually first and confirm you can retrieve all the data, then check that the later schedule runs as intended. If backups still go to the old host, retiring it could also remove your recovery path."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep the necessary pre-migration copies, cutover logs, and configuration differences. Label filenames with the environment and time. Give each backup a purpose and retention owner rather than collecting archives no one can identify. Restrict access to copies containing personal data, and process them according to your internal retention policy when their period ends."
+        },
+        {
+          "type": "paragraph",
+          "text": "The person taking over should at least know the login entry point, incident contact, new backup location, and update window. Document who manages plugin licenses, form email, and scheduled jobs. A site may run correctly yet still lack a complete handoff if only the person who moved it knows those settings."
+        },
+        {
+          "type": "heading",
+          "text": "Decide service by service what can stop",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Inventory hosting, email, DNS, domain, certificates, CDN, and redirects in the old account. Mark each item as “moved,” “still in use,” or “needs confirmation.” Changing hosts does not mean the domain should stop renewing. After a domain change, the old domain may still need to redirect links and receive mail, so the entire old account is not one expense to cancel."
+        },
+        {
+          "type": "paragraph",
+          "text": "There is no universal rule to delete the old site a fixed number of days after moving. First confirm that important features are stable, the old environment no longer handles required requests or data, the new backup works, and each dependent service has a destination. For unresolved items, assign a next review date and owner; that avoids both premature deletion and indefinite neglect."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask the provider what stopping renewal, deleting a website, deleting a plan, and requesting a refund each do. Under Hostinger’s official guidance checked for this article, turning off auto-renewal keeps service through the end of the term, while an eligible refund that is processed ends the service. These buttons are not interchangeable billing cleanup actions."
+        },
+        {
+          "type": "heading",
+          "text": "Finish the billing check and preserve closeout evidence",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before stopping a service, download any website files, database, and mail you still need. Make sure the only backup is not in the account about to expire. Hostinger’s site-deletion instructions also say to save data first and offer an option concerning associated email. Read each current screen during the operation rather than copying button locations or choices from an old tutorial."
+        },
+        {
+          "type": "paragraph",
+          "text": "After each action, save the service name, action date, confirmation, and last available date. A billing page saying auto-renewal is off is different from showing that this term is fully paid. Check what was paid and whether add-ons are billed separately. A website being unused does not mean every charge has ended."
+        },
+        {
+          "type": "paragraph",
+          "text": "End the closeout document with a short status: key functions pass on the new environment; old items that must remain and why; services already stopped; the new backup; and the maintenance owner. For outstanding work, state the next step and acceptance condition. The same record can guide a future host change, a new administrator, or a billing inquiry."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-migration-aftercare/diagram-1-en.svg",
+          "alt": "Original four-part diagram of post-migration evidence: functions and data, search entry points, new backups, and old-service billing.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Verify the site, keep a backup, and name an owner before closing out old services.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Area to check",
+            "Evidence before closeout",
+            "If it must stay"
+          ],
+          "rows": [
+            [
+              "Website and data",
+              "Key functions work and cutover data is handed over",
+              "Record the problem, impact, and owner"
+            ],
+            [
+              "Search entry points",
+              "Important old links and new pages work",
+              "Track exact URLs and reasons for indexing status"
+            ],
+            [
+              "Recovery ability",
+              "A new-environment backup is available and verifiable",
+              "Keep necessary old copies and settings"
+            ],
+            [
+              "Old-service dependencies",
+              "DNS, mail, and redirects each have a destination",
+              "Record why they stay and the next review date"
+            ],
+            [
+              "Billing",
+              "Renewals, stop dates, and add-ons are checked",
+              "Schedule the next action on a calendar"
+            ]
+          ],
+          "caption": "This table describes conditions for stopping services, not one waiting period that fits every site."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Save new data before considering rollback",
+          "text": "Inquiries, comments, or transactions received after the move may exist only on the new site. Before any rollback or merge, save the differences on both sides and decide how to handle them, so repairing the site does not erase cutover-period data."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Move hosts while keeping the same URL",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Hand off search and mail when changing domains",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back up the new environment",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Monitor traffic after a host change",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Performance report",
+          "url": "https://support.google.com/webmasters/answer/7576553",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: Indexing report and valid exclusions",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger: Canceling service and auto-renewal",
+          "url": "https://www.hostinger.com/support/1583775-how-to-cancel-a-hosting-plan-at-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger: Save data before deleting a website",
+          "url": "https://www.hostinger.com/support/3624731-how-to-delete-a-website-from-a-hosting-plan-in-hostinger/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress 移行後の確認：検索流入、旧ホスト、更新契約の整理",
+      "description": "WordPress の移行が完了しても、新ホストの安定性、検索からの入口、バックアップの利用可能性、旧サービスを止められるかを確認する必要があります。切り替え後の観察表、検索流入の読み方、旧ホストへの依存関係、更新契約の整理手順を示します。個人サイトや小規模スタジオが切り戻しに必要な記録を残し、一時的な変動、更新停止、即時のサイト削除を混同しないための案内です。",
+      "hero": {
+        "src": "/guides/wordpress-migration-aftercare/hero-ja.jpg",
+        "alt": "移行後の機能、データ、請求の整理をサイト画面、バックアップフォルダー、料金計算カードで表したオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "新サイトが開き、移行ツールも完了と表示すると、すぐ旧ホストを解約したくなるかもしれません。しかし旧環境がメール、DNS、転送、ダウンロードファイルを提供し続けている場合があります。新サイトもトップページしか確認しておらず、フォーム通知や最新データは未検証かもしれません。移行の後始末では、こうした残る依存関係を一つずつ解決します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "後始末の文書を、サービスの引き継ぎ記録として考えます。何が移り、誰が確認し、何を残し、いつ支払いを止められるかを記します。本記事は切り替え後から始め、ファイル移行手順は繰り返しません。確認可能な証拠を残すことで、旧サービスを安心して停止し、新サイトの継続的な管理者も決めます。"
+        },
+        {
+          "type": "heading",
+          "text": "切り替え時刻と比較の基準を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "本番の切り替え日、タイムゾーン、主要 URL、新旧ホスト、変更範囲を記録します。ホストだけ変えたのか、ドメイン、画面構成、フォームサービスも変えたのか。範囲によって見るべき結果は違います。基準がなければ数日後のアクセス変動を見ても、どの設定を同時に変えたのか分からなくなります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "移行前の主要ページ一覧、重要機能のテスト結果、取得できるアクセスとエラーの記録を保存します。同じ時間帯と条件で比較してください。平日と休日、販促日と通常日には元から差があります。分析ツールや"
+            },
+            {
+              "type": "text",
+              "text": "タグ"
+            },
+            {
+              "type": "text",
+              "text": "設定も同時に変えた場合はその旨を記し、計測方法の変化を実際の訪問者減少と取り違えないようにします。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "切り替え時刻、URL、同時に変更した項目を記録する。",
+            "トップページ、人気記事、フォーム、ダウンロードページの検証基準を残す。",
+            "毎日結果を確認する担当者と、主要機能が失敗した場合の連絡先を決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "アクセス推移より先に機能を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初は訪問者が実際にする操作から始めます。記事を開く、サイト内を検索する、添付ファイルをダウンロードする、フォームを送る、必要なログインを行うなどです。いつものブラウザーだけでなく、スマートフォンや別の回線でも確認します。URL、時刻、操作、結果を毎回記し、失敗時は再現手順を残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新旧ホストのログを比較し、本番アクセスが徐々に新環境から提供されているか確かめます。旧サイトへのリクエストが残る場合は、通常の訪問者、定期的なコールバック、更新し忘れたダウンロードリンクなど、発生元を調べます。総リクエスト数だけで停止を決められません。特に旧ホストがサイト以外のサービスも担っている場合は注意が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "旧サイトが最後に受け取ったコメントやフォームなど、データが両側に分かれていないか調べます。保存と対応が済んでから、旧サイトが不要な新規データを受け取らないようにします。稼働中の新サイトへ旧データベースを丸ごと上書きしてはいけません。切り替え後に増えた内容が消えるおそれがあります。データの種類ごとに統合方法を決めます。"
+        },
+        {
+          "type": "heading",
+          "text": "検索レポートで問題を絞り、早合点しない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console の検索パフォーマンスでは、ページ、クエリ、端末、日付ごとにクリック数と表示回数を見られます。まず同じ重要ページ群を比較し、サイト全体の変化か一部の記事の減少かを分けます。ドメインも変えた場合は旧新両方のデータを見て、新サイトで集まり始めた数値だけを追わないでください。最新データはまだ収集中の場合があり、一時間だけで結論を出せません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "インデックス登録レポートの「登録されていない」は、必ずしもエラーではありません。削除済みページ、妥当な重複 URL、意図して非公開にした内容には正当な理由があります。本来公開されるべき重要 URL については URL 検査ツールで状態を確認し、テスト用 noindex、誤った canonical、無効な転送が残っていないか調べます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば以前よく読まれた手作りの解説記事が急に減少したら、旧リンクを実際に開き、正しい新記事へ行くか確認します。次に本文、画像、インデックス可能な状態を確認します。技術的な経路が正常なら、クエリと比較期間を調べます。原因を絞るための手順であり、発生時期が近いだけでホスト変更が検索順位を下げたとは断定できません。"
+        },
+        {
+          "type": "heading",
+          "text": "新環境固有のバックアップと担当者を用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "移行前のバックアップは旧環境のある時点を表します。新サイトの稼働後は、別のバックアップ予定、遠隔地での保存、復元方法が必要です。まず新環境のバックアップを手動で作成し、完全なデータを取得できることを確かめ、以後の定期処理が予定どおり動くか確認します。旧ホストに保存し続けると、その停止時に復旧手段まで失うかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "必要な移行前のコピー、切り替え記録、設定の差分を残し、ファイル名に環境と時刻を入れます。各バックアップの用途と保管責任者を決め、区別できない圧縮ファイルをため込まないでください。個人情報を含むコピーへのアクセスを制限し、内部の保存期限を過ぎたら手順に沿って処理します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぐ人は少なくともログイン入口、障害時の連絡先、新バックアップの保存先、更新時間帯を知る必要があります。プラグインのライセンス、フォームの送信メール、定期実行ジョブの担当者も明記します。移行当日の作業者だけが設定を知っているなら、サイトが動いていても運用の引き継ぎは未完了です。"
+        },
+        {
+          "type": "heading",
+          "text": "旧サービスを項目ごとに停止できるか判断する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "旧アカウントのホスティング、メール、DNS、ドメイン、証明書、CDN、転送を表にし、それぞれ「移行済み」「使用継続」「要確認」と記します。ホスト変更はドメイン更新の停止を意味しません。ドメインも変えた場合は、旧ドメインをリンク転送やメール受信のために残すこともあるので、旧アカウント全体を一つの支出として扱わないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「移行後何日で削除できる」という共通の答えはありません。停止前に主要機能の安定、旧環境に必要なリクエストやデータが残らないこと、新バックアップの利用可能性、依存サービスの移行先を確認します。未解決の項目には次の確認日と担当者を決め、早すぎる削除も無期限の放置も避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サービス提供者に、自動更新停止、サイト削除、プラン削除、返金申請がそれぞれどのような結果になるか確認しましょう。本記事の確認時点の Hostinger 公式案内では、自動更新を止めても期間満了までサービスは維持されます。一方、条件を満たす返金の処理が完了するとサービスは終了します。二つのボタンを同じ請求整理だと考えてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "請求を確認し、後始末の証拠を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "停止前には必要なサイトファイル、データベース、メールをダウンロードし、唯一のバックアップが失効予定のアカウントにないことを確かめます。Hostinger のサイト削除案内も事前のデータ保存を求め、関連メールを削除するかは選択肢として扱っています。古い手順のボタン位置や選択肢をそのまま使わず、現在の画面を一つずつ読んで操作してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "操作後はサービス名、処理日、確認メッセージ、最終利用日を保存します。請求画面の「自動更新なし」は、当期の費用を支払い済みかどうかとは別です。支払済みの項目と別課金の追加サービスを確認します。サイトを使っていないだけで全請求が終わったと考えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "後始末の文書には短い結果を載せます。新環境で主要機能が通ること、維持すべき旧項目と理由、停止済みのサービス、新バックアップ、運用担当者です。未完了の作業には次の手順と受け入れ条件を明記します。次のホスト変更、管理者交代、請求確認でも同じ記録から再開できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-migration-aftercare/diagram-1-ja.svg",
+          "alt": "移行後の機能とデータ、検索の入口、新しいバックアップ、旧サービスの請求という四分野の根拠を示すオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "検証、バックアップ、担当者の指定を終えてから旧サービスを整理します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認分野",
+            "停止前の証拠",
+            "残す場合の対応"
+          ],
+          "rows": [
+            [
+              "サイトとデータ",
+              "主要機能が動き、切り替え時のデータを引き継いだ",
+              "問題、影響、担当者を記録"
+            ],
+            [
+              "検索の入口",
+              "重要な旧リンクと新ページが正常",
+              "具体的な URL とインデックス状態の理由を追跡"
+            ],
+            [
+              "復旧能力",
+              "新環境のバックアップを取得・検証できる",
+              "必要な旧コピーと設定を保管"
+            ],
+            [
+              "旧サービスへの依存",
+              "DNS、メール、転送にそれぞれ行き先がある",
+              "維持理由と次の確認日を記す"
+            ],
+            [
+              "請求",
+              "更新、停止日、追加項目を確認した",
+              "次の処理をカレンダーに入れる"
+            ]
+          ],
+          "caption": "停止条件を判断する表であり、すべてのサイトに共通する待機日数ではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "切り戻しを考える前に新しいデータを保存する",
+          "text": "移行後の問い合わせ、コメント、取引は新サイトにしかない場合があります。切り戻しや統合の前に両側の差分を保存し、処理方法を決めてください。サイトを修復したのに切り替え期間のデータを失う事態を避けられます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "URL を維持してホストを移す手順",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメイン変更時の検索とメールの引き継ぎ",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "新環境のバックアップ方法",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：ホスト変更後のトラフィック監視",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：検索パフォーマンスレポート",
+          "url": "https://support.google.com/webmasters/answer/7576553",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：インデックス登録レポートと妥当な除外",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：サービス解約と自動更新",
+          "url": "https://www.hostinger.com/support/1583775-how-to-cancel-a-hosting-plan-at-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：サイト削除前のデータ保存",
+          "url": "https://www.hostinger.com/support/3624731-how-to-delete-a-website-from-a-hosting-plan-in-hostinger/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 이전 후 점검: 검색 트래픽, 기존 호스트, 갱신 정리",
+      "description": "WordPress 이전 도구가 완료를 표시해도 새 호스트의 안정성, 검색 진입점, 백업 사용 가능 여부, 이전 서비스 종료 가능 여부를 확인해야 합니다. 전환 관찰표, 검색 트래픽 해석 방법, 기존 호스트 의존 관계, 갱신 정리 절차를 제공합니다. 개인 사이트와 작업실이 되돌리기에 필요한 자료를 보존하고 일시적 변동, 갱신 중단, 즉시 사이트 삭제를 혼동하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-migration-aftercare/hero-ko.jpg",
+        "alt": "웹사이트 화면, 백업 폴더, 요금 계산 카드로 이전 후 기능·데이터·청구 확인을 보여 주는 자체 제작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "새 사이트가 열리고 이전 도구도 완료라고 표시하면 기존 호스트를 바로 취소하고 싶어집니다. 그러나 기존 환경은 여전히 메일, DNS, 리디렉션, 다운로드 파일을 제공할 수 있습니다. 새 사이트도 첫 화면만 점검했을 뿐 양식 알림과 최신 데이터는 확인하지 않았을 수 있습니다. 이전을 마무리하려면 이런 남은 의존 관계를 하나씩 정리해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마무리 문서를 인계 기록으로 생각하세요. 어떤 서비스를 옮겼는지, 누가 검증했는지, 무엇을 유지해야 하는지, 언제 비용 지불을 멈출 수 있는지 적습니다. 이 글은 전환 이후부터 시작하며 파일 복사 절차를 반복하지 않습니다. 관찰할 수 있는 증거를 마련해 기존 서비스를 안전하게 종료하고 새 사이트를 계속 돌볼 담당자도 정합니다."
+        },
+        {
+          "type": "heading",
+          "text": "전환 시각과 비교 기준 먼저 저장하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 전환 날짜, 시간대, 대표 URL, 기존·새 호스트, 변경 범위를 기록합니다. 호스트만 바꾸었나요, 아니면 도메인, 화면 구성, 양식 서비스도 바꾸었나요? 범위에 따라 살펴야 할 결과가 다릅니다. 기준이 없으면 며칠 뒤 트래픽이 변해도 그때 어떤 설정을 함께 바꾸었는지 파악하기 어렵습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이전 전 주요 페이지 목록, 중요 기능의 테스트 결과, 확보할 수 있는 트래픽과 오류 기록을 보관합니다. 같은 시간대와 조건으로 비교하세요. 평일과 주말, 행사일과 평소에는 원래 차이가 있습니다. 분석 도구나 "
+            },
+            {
+              "type": "text",
+              "text": "태그"
+            },
+            {
+              "type": "text",
+              "text": " 설정도 함께 바꿨다면 적어 두어 측정 방식의 변화를 실제 방문자 감소로 오해하지 않게 합니다."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "전환 시각, URL, 함께 바꾼 모든 항목을 기록합니다.",
+            "첫 화면, 인기 글, 양식, 다운로드 페이지의 검증 기준을 보관합니다.",
+            "매일 결과를 살필 담당자와 핵심 기능 실패 시 연락처를 정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "트래픽 그래프보다 기능을 먼저 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "방문자가 실제로 하는 일부터 점검합니다. 글 열기, 사이트 검색, 첨부 파일 다운로드, 양식 제출, 필요한 로그인 등이 있습니다. 익숙한 브라우저만 보지 말고 휴대전화와 다른 네트워크에서도 확인합니다. 각 테스트의 URL, 시각, 동작, 결과를 기록하고 실패하면 재현 가능한 절차를 남깁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 호스트와 새 호스트의 로그를 비교해 운영 트래픽이 점차 새 환경에서 제공되는지 확인합니다. 기존 사이트에도 요청이 오면 일반 방문자, 정기 콜백, 갱신하지 않은 다운로드 링크 등 출처를 구분합니다. 요청 총수만으로 종료 여부를 결정할 수 없습니다. 특히 기존 호스트가 웹사이트 밖의 서비스도 맡을 때는 더욱 그렇습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 사이트가 마지막에 받은 댓글이나 양식처럼 데이터가 양쪽에 나뉘었는지 확인합니다. 이를 저장하고 처리한 뒤 기존 사이트가 불필요한 새 데이터를 받지 않게 합니다. 운영 중인 새 사이트에 기존 데이터베이스를 그대로 덮어쓰지 마세요. 전환 후 새로 생긴 내용이 지워질 수 있습니다. 데이터 유형에 맞춰 병합해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "검색 보고서로 문제를 찾되 성급히 단정하지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 검색 실적에서 페이지, 검색어, 기기, 날짜별 클릭과 노출을 살펴볼 수 있습니다. 먼저 같은 중요 페이지 묶음을 비교해 사이트 전체 변화인지 일부 글의 하락인지 구분합니다. 도메인도 변경했다면 새 사이트에 쌓이기 시작한 수치만 보지 말고 기존·새 사이트의 자료를 함께 보세요. 최신 자료는 아직 집계 중일 수 있어 한 시간만으로 결론을 낼 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "색인 보고서의 “색인되지 않음”이 항상 오류는 아닙니다. 삭제한 페이지, 합당한 중복 URL, 의도적으로 공개하지 않은 콘텐츠에는 정당한 이유가 있을 수 있습니다. 정말 공개되어야 할 중요 URL은 URL 검사 도구로 상태를 확인하고 테스트용 noindex, 잘못된 canonical, 동작하지 않는 리디렉션이 남았는지 살펴보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 많이 읽히던 수공예 강좌의 트래픽이 갑자기 떨어졌다면 예전 링크를 직접 열어 올바른 새 글로 가는지 확인합니다. 이어서 글 내용, 이미지, 색인 가능 상태를 확인하세요. 기술적인 경로가 정상이라면 검색어와 비교 기간의 차이를 살펴봅니다. 원인을 좁히는 절차이지 시기가 가깝다는 이유만으로 호스트 변경이 검색 순위를 바꿨다고 단정할 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "새 환경만의 백업과 담당자 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 전 백업은 기존 환경의 한 시점을 나타냅니다. 새 사이트가 가동된 뒤에는 자체 백업 일정, 별도 장소의 보관, 복원 방법이 필요합니다. 새 환경 백업을 먼저 수동으로 만들고 전체 데이터를 가져올 수 있는지 확인한 다음 정기 일정이 예상대로 실행되는지 살펴보세요. 여전히 기존 호스트에 백업하면 서비스 종료와 함께 복구 경로도 잃을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "필요한 이전 전 복사본, 전환 기록, 설정 차이를 보관하고 파일명에 환경과 시각을 표시합니다. 각 백업의 용도와 보존 담당자를 정해 구분할 수 없는 압축 파일만 쌓지 마세요. 개인정보가 있는 복사본은 접근을 제한하고 내부 보존 기간이 지나면 정해진 절차에 따라 처리합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인계받는 사람은 최소한 로그인 주소, 장애 연락처, 새 백업 위치, 업데이트 시간대를 알아야 합니다. 플러그인 라이선스, 양식 발신 메일, 예약 작업의 담당자도 분명히 적습니다. 이전 당일 작업자만 설정을 안다면 사이트가 잘 돌아가도 유지 관리 인계는 끝나지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "text": "이전 서비스를 항목별로 중단할 수 있는지 판단하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 계정의 호스팅, 메일, DNS, 도메인, 인증서, CDN, 리디렉션을 표로 만들어 각각 “이전 완료”, “계속 사용”, “확인 필요”라고 표시합니다. 호스트 변경이 도메인 갱신 중단을 뜻하지는 않습니다. 도메인까지 바꿨다면 이전 도메인에서 링크 리디렉션과 메일 수신을 계속해야 할 수 있으므로 기존 계정 전체를 한 가지 취소 비용으로 다루지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "“옮긴 뒤 며칠이면 삭제 가능하다”는 공통 답은 없습니다. 종료 전 핵심 기능이 안정적인지, 이전 환경에 필요한 요청이나 데이터가 더는 없는지, 새 백업을 사용할 수 있는지, 의존 서비스의 목적지가 모두 마련되었는지 확인합니다. 해결되지 않은 항목에는 다음 점검일과 담당자를 정해 너무 이른 삭제와 무기한 방치를 모두 피합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 제공업체에 갱신 중단, 웹사이트 삭제, 요금제 삭제, 환불 요청이 각각 어떤 결과를 내는지 먼저 문의하세요. 이 글의 확인 시점에 따른 Hostinger 공식 안내에서는 자동 갱신을 꺼도 기간이 끝날 때까지 서비스가 유지됩니다. 반면 환불 자격이 있고 환불이 처리되면 서비스가 종료됩니다. 두 버튼을 같은 청구 정리 동작으로 생각하면 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "청구 내역을 확인하고 마무리 증거 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 종료 전 필요한 사이트 파일, 데이터베이스, 메일을 다시 내려받고 유일한 백업이 곧 만료될 계정에만 있지 않은지 확인합니다. Hostinger의 사이트 삭제 안내도 자료를 먼저 저장하라고 하며 관련 이메일 삭제 여부를 선택할 수 있게 합니다. 오래된 안내의 버튼 위치나 옵션을 그대로 따르지 말고 현재 화면을 항목별로 읽어 보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "작업 후 서비스명, 처리 날짜, 확인 메시지, 마지막 사용 가능일을 저장합니다. 청구 화면에 자동 갱신이 꺼져 있다고 표시되는 것과 이번 기간의 요금을 모두 냈는지는 별개입니다. 결제 항목과 추가 청구되는 부가 서비스를 확인하세요. 웹사이트를 쓰지 않는다고 모든 청구가 끝난 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마무리 문서 끝에는 짧은 결과를 남깁니다. 새 환경의 핵심 기능 통과, 유지해야 하는 이전 항목과 이유, 종료한 서비스, 새 백업, 유지 관리 담당자를 적습니다. 미완료 항목에는 다음 단계와 검증 조건을 명시합니다. 그러면 나중에 다시 호스트를 바꾸거나 담당자가 바뀌거나 청구서를 확인할 때 같은 기록에서 이어 갈 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-migration-aftercare/diagram-1-ko.svg",
+          "alt": "이전 후 기능과 데이터, 검색 진입점, 새 백업, 기존 서비스 청구라는 네 영역의 근거를 정리한 자체 제작 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "검증과 백업, 담당자 지정을 마친 뒤 기존 서비스를 정리하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "점검 영역",
+            "종료 전 증거",
+            "유지해야 할 때"
+          ],
+          "rows": [
+            [
+              "웹사이트와 데이터",
+              "핵심 기능이 동작하고 전환 데이터가 인계됨",
+              "문제, 영향, 담당자를 적음"
+            ],
+            [
+              "검색 진입점",
+              "중요한 이전 링크와 새 페이지가 정상",
+              "구체적인 URL과 색인 사유를 추적함"
+            ],
+            [
+              "복구 능력",
+              "새 환경 백업을 가져오고 검증할 수 있음",
+              "필요한 기존 복사본과 설정을 보관함"
+            ],
+            [
+              "이전 서비스 의존성",
+              "DNS, 메일, 리디렉션의 목적지가 있음",
+              "계속 쓰는 이유와 다음 점검일을 적음"
+            ],
+            [
+              "청구",
+              "갱신, 종료일, 부가 항목을 확인함",
+              "다음 작업을 일정에 넣음"
+            ]
+          ],
+          "caption": "서비스 종료 조건을 판단하는 표이며 모든 사이트에 적용되는 대기 일수는 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "되돌리기 전에 새 데이터를 보관하세요",
+          "text": "이전 뒤에 받은 문의, 댓글, 거래는 새 사이트에만 있을 수 있습니다. 되돌리거나 병합하기 전에 양쪽 차이를 저장하고 처리 방법을 정해 사이트를 고쳤는데 전환 기간의 데이터가 사라지는 일을 막으세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "URL을 유지하면서 호스트 이전하기",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인 변경 시 검색과 메일 인계하기",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "새 환경 백업 방법 만들기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: 호스트 변경 후 트래픽 관찰",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: 검색 실적 보고서",
+          "url": "https://support.google.com/webmasters/answer/7576553",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console: 색인 보고서와 합당한 제외",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger: 서비스 취소와 자동 갱신",
+          "url": "https://www.hostinger.com/support/1583775-how-to-cancel-a-hosting-plan-at-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger: 사이트 삭제 전 데이터 저장",
+          "url": "https://www.hostinger.com/support/3624731-how-to-delete-a-website-from-a-hosting-plan-in-hostinger/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "搬站之后检查什么：搜索流量、旧主机与续约收尾",
+      "description": "WordPress 搬站完成后，仍要确认新主机稳定、搜索入口正常、备份可用及旧服务能否停用。本篇提供切换观察表、搜索流量判读方式、旧主机依赖盘点与续约收尾步骤，协助个人网站与工作室保留必要的回退数据，也避免把暂时波动、取消续约与立即删站混成同一件事。",
+      "hero": {
+        "src": "/guides/wordpress-migration-aftercare/hero-zh-cn.jpg",
+        "alt": "原创网站画面、备份文件夹与账务计算卡，表达搬站后功能与数据、账务收尾。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "新网站已经能打开，搬站工具也显示完成，这时最容易想做的事就是把旧主机取消。可是旧环境可能还在提供邮箱、DNS、重定向或下载文件；新站也可能只通过首页检查，表单通知和最新数据尚未确认。搬站收尾要做的，是把这些尾端依赖逐一结清。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把收尾文档当成一份交接记录：哪个服务已搬走、谁验收、还有什么要保留、何时可以停止付费。这篇从切换之后开始，不重复搬文件流程，重点是创建可观察的证据，让旧服务停得安心，新网站也有人持续照顾。"
+        },
+        {
+          "type": "heading",
+          "text": "先保存切换时间与比较基准",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "记下正式切换的日期、时区、主要网址、新旧主机及这次变更范围。是只换主机，还是也换了域名、版面或表单服务？范围不同，应该观察的结果就不同。没有这份基准，几天后看到流量变化时，很难知道哪些设置当时一起改过。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "保存搬站前主要页面清单、重要功能的测试结果，以及可取得的流量与错误记录。比较数据时使用相同时段和条件；工作日与假日、促销日与平日可能本来就不同。若同时换了分析工具或"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "设置，也先注明，避免把量测方式的改变当成实际访客流失。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "创建切换记录，列出时间、网址与所有一起变更的项目。",
+            "保留首页、热门文章、表单和下载页的验收基准。",
+            "指定每天查看结果的人，以及主要功能失败时的联系方式。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "先看功能，再看流量曲线",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一轮从访客真正会做的事情开始：打开文章、搜索内容、下载附件、送出表单或完成必要登录。使用手机与不同网络确认，不只看自己常用的浏览器。每次测试写明网址、时间、操作与结果，失败时保留可重现的步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比对新旧主机日志，确认正式流量逐渐由新环境提供。旧站还有请求时，先识别是正常访客、固定回调、忘记更新的下载链接或其他来源。单看请求总数不足以决定停用，尤其旧主机同时承载网站以外的服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查数据是否仍分散在两边，例如旧站最后收到的留言或表单。确认已保存与处理后，再让旧站停止接受不必要的新数据。不要把旧数据库直接覆盖到正在运作的新站，否则新站切换后的内容可能被抹掉；应依数据类型安排合并。"
+        },
+        {
+          "type": "heading",
+          "text": "用搜索报告定位问题，保留判断空间",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search Console 的搜索成效可按页面、查询、设备与日期查看点击及曝光。先比对同一组重要页面，分清楚是整站变化还是少数文章下降；若更换域名，也要看旧新网站的数据，不只盯着新站刚开始累积的数字。最新数据可能仍在收集中，不适合以单一小时下结论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "索引报告中的「未创建索引」不一定代表错误。已删除的页面、合理的重复网址或刻意不公开的内容，都可能有正当原因。对真正应该公开的重要网址，再使用网址检查工具确认状态，检查是否留下测试用 noindex、错误的主要网址或失效重定向。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如一篇原本常有人阅读的手工教学突然下降，先实际打开旧链接，看是否到正确新文章；再检查文本、图片与可索引状态。若技术路径正常，接着查看查询和时段差异。这些步骤用来缩小原因，不能仅凭时间接近就断言是主机造成搜索排名改变。"
+        },
+        {
+          "type": "heading",
+          "text": "为新环境创建自己的备份与责任",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "搬站前的备份代表旧环境某个时间点，新站运作后需要新的备份定时任务、异地保存和恢复方式。先手动产生一份新环境副本，确认可取得完整数据，再检查之后的定时任务是否按预期运行。若仍备份到旧主机，旧服务停用时可能连恢复路径一起失去。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保留必要的搬迁前副本、切换记录与设置差异，文件名标示环境和时间。每份备份都指定用途与保留责任，不要累积一堆无法辨认的新旧压缩文件。含个人数据的副本限制访问，过了内部设置的保留期限再依流程处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接手人至少要知道登录入口、故障联系、新备份位置及更新窗口。插件授权、表单发信或定期工作由谁管理，也应写清楚。若只有搬站当天的操作人知道设置，网站虽然正常，后续维护仍然没有完成交接。"
+        },
+        {
+          "type": "heading",
+          "text": "逐项判断旧服务能不能停止",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把旧账号内的主机、邮箱、DNS、域名、证书、CDN 与重定向列成表，每一项标记「已搬走」、「继续使用」或「待确认」。网站换主机不代表域名需要停止续约；改域名之后，旧域名也可能仍要提供重定向与收信，不能把整个旧账号当成同一项支出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "没有统一的「搬完几天就能删」答案。停用前应确认主要功能稳定、旧环境不再承接需要的请求或数据、新备份可用，以及依赖服务都有去处。若还有未解问题，为保留项目设置下一次检查日期与负责人，避免既太早删除，也无限期忘记收尾。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可先询问服务商停止续约、删除网站、删除方案与申请退款各会产生什么效果。以 Hostinger 现行官方说明为例，关闭自动续约会保留服务到期，而符合退款并处理退款则会终止服务；不能把两个按钮当成相同的账务清理方式。"
+        },
+        {
+          "type": "heading",
+          "text": "完成账务核对，留下收尾证据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "实际停用前再下载需要的网站文件、数据库和邮件，确认备份不只留在即将失效的账号。Hostinger 的删站文档也要求先保存数据，并将是否删除相关邮件列为可选项；操作时逐项阅读目前画面，别照搬旧教学中的按钮位置或选项。"
+        },
+        {
+          "type": "paragraph",
+          "text": "操作后保存服务名称、处理日期、确认消息与最后使用期限。账务页显示不再自动续约，与本期费用已结清仍是不同问题；核对已付款项目及是否有另外计费的附加服务。不要把没有使用网站直接当成所有计费都已停止。"
+        },
+        {
+          "type": "paragraph",
+          "text": "收尾文档最后放一个简短结果：新环境主要功能通过、需要保留的旧项目及原因、已停止的服务、新备份与维护负责人。若尚有待办，明确写出下一步和验收条件。这样下一次换主机、换管理者或查询账单时，都能从同一份记录接续。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-migration-aftercare/diagram-1-zh-cn.svg",
+          "alt": "原创图解，依功能与数据、搜索入口、新备份以及旧服务账务四面向创建搬站收尾依据。",
+          "width": 1600,
+          "height": 900,
+          "caption": "有验收、有备份、有接手人，再完成旧服务收尾。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查面向",
+            "收尾前的证据",
+            "仍需保留时的做法"
+          ],
+          "rows": [
+            [
+              "网站与数据",
+              "主要功能正常，切换数据已交接",
+              "列出问题、影响与负责人"
+            ],
+            [
+              "搜索入口",
+              "重要旧链接与新页正常",
+              "追踪具体网址及索引原因"
+            ],
+            [
+              "恢复能力",
+              "新环境备份可取得且可验证",
+              "保留必要旧副本与设置"
+            ],
+            [
+              "旧服务依赖",
+              "DNS、邮件及重定向都有去处",
+              "写明继续使用原因与检查日"
+            ],
+            [
+              "账务",
+              "续约、停止时间及附加项目已核对",
+              "在日历安排下一次处理"
+            ]
+          ],
+          "caption": "这是判断停用条件的表格，不是所有网站通用的等待天数。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先保存新数据，再考虑回退",
+          "text": "搬站后收到的询问、留言或交易可能只存在新站。任何回退或合并之前，先保存两边差异并指定处理方式，避免修好网站却遗失切换期间的数据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "保留网址的主机搬迁流程",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "换域名的搜索与邮件交接",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "创建新环境的备份方法",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：换主机后流量观察",
+          "url": "https://developers.google.com/search/docs/crawling-indexing/site-move-no-url-changes",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：搜索成效报告",
+          "url": "https://support.google.com/webmasters/answer/7576553",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Search Console：索引报告与合理排除",
+          "url": "https://support.google.com/webmasters/answer/7440203",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：取消服务与自动续约",
+          "url": "https://www.hostinger.com/support/1583775-how-to-cancel-a-hosting-plan-at-hostinger/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hostinger：删除网站前保存数据",
+          "url": "https://www.hostinger.com/support/3624731-how-to-delete-a-website-from-a-hosting-plan-in-hostinger/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
