@@ -22,9 +22,10 @@ metadata:
 | --- | --- | --- | --- |
 | **全自動** | 深色投影片＋台灣口音合成旁白＋繁中 CC，其他語言（標題說明、CC、配音）由站主每支勾選，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
 | **AI 漫劇**（單集與作品） | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋繁中 CC（其他語言的標題說明與 CC 由站主每支勾選），2–4 分鐘一集；單集是一集的作品，長篇是一部約 100 集、分篇章的原創故事，一集接一集地做，角色設定圖與人物表跨集沿用 | 站主發起，在兩個關卡討論並核准：**文件**（單集的故事聖經；作品的設定集、總綱、每篇細綱）與**劇本**；之後的設定圖、分鏡由 judge 決定（`auto_pick_look`、`auto_approve_storyboard` 開了才自動，預設關）、旁白 Jev 全過與成片自動品管自動核准；出錯才找站主；站主再選語言、自己上傳。代理或工人規劃文件、寫劇本與分鏡、依細綱寫每一集並自動接續，工具生成設定圖、關鍵影格、片段、音樂並合成 | `.agents/skills/youtube-video/references/drama.md`（每一集的步驟；設計在 `docs/videos/DRAMA.md`）與 `.agents/skills/youtube-video/references/series.md`（作品的文件、討論串、一致性；設計在 `docs/videos/SERIES.md`）；一條流程與討論在 `docs/videos/DRAMA-FLOW.md` |
+| **一鍵合集** | 一部約兩小時（30–480 分鐘可設）一口氣看完的原創爽文漫劇：六個題材預設、節奏規格（鉤子、爽點、懸念）、混合畫面（四成片段、其餘關鍵影格加運鏡），全部集數做完接成一支長片，1080p 成片從後台下載 | 站主在後台按「一鍵開拍」（題材、主角、長度、畫面等級）、最後上傳與選上架時間；文件由查核模型判、伺服器依規則核准或退回，每集免關卡，工人做合集 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」（設計在 `docs/videos/BINGE.md`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
 
-站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
+站主沒指定時：AI／科技資訊、工具介紹、概念解說走全自動；故事（神話、民間傳說、原創玄幻、站上文章改成的故事）走 AI 漫劇；要一部一口氣看完、不想逐份核准的爽文合集走一鍵合集；要真人示範操作、或站主想自己出鏡的走人工錄製。全自動的螢幕錄影手把手還在做（票 `2026-09-24-video-screencast-steps`、`2026-09-24-video-terminal-template`、`2026-09-24-video-obs-import`），做好之前這類影片走人工錄製。
 
 ## 再讀對應的 reference
 
@@ -41,6 +42,8 @@ metadata:
 | AI 漫劇的代理提示（單集的故事聖經、劇本與分鏡、連貫性查核、修鏡頭；討論串的回覆） | `.agents/skills/youtube-video/references/prompts/series-bible.md`、`writer-drama.md`、`verifier-drama.md`、`discuss.md`（`planner-drama.md` 只給單集變成作品之前排進的舊請求） |
 | 作品：名稱、主幹（每個核准點的討論）、討論串、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
 | 作品的代理提示（設定集、總綱、篇章細綱、每集撰稿與查核、前情） | `.agents/skills/youtube-video/references/prompts/series-setting.md`、`series-outline.md`、`series-chapter.md`、`writer-series.md`、`verifier-series.md` |
+| 一鍵合集：一鍵表單與報價、免關卡的規則、節奏規格與爽點、畫面等級上限、`compile` 指令、下載、坑 | `.agents/skills/youtube-video/references/series.md` 的「合集作品（一鍵）」；still 鏡頭的 `visual` 與運鏡關鍵字在 `drama.md` |
+| 一鍵合集的代理提示（文件裁決、合集的標題／說明／標籤／縮圖與四語翻譯） | `.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`、`planner-compilation.md`；工人實際送出的文字是 `tools/video/automation/prompts.mjs` |
 | 頻道規格：版型、配色、聲音、片頭片尾、說明欄範本 | `docs/videos/README.md` |
 | 全自動的設計理由、YouTube、Azure 與 Gemini 語音的官方規則 | `docs/videos/DESIGN.md` |
 | 漫劇與教學分開的設定分頁、單集與作品同一條流程、文件與劇本的討論串（2026-09-27 設計；API、工人與後台都已落地） | `docs/videos/DRAMA-FLOW.md` |

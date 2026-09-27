@@ -9,19 +9,38 @@
 // episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2).
 import path from "node:path";
 
+import { eachLine } from "../core/schema.mjs";
+import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
+import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./prompts.mjs";
 
 export const DOC_KINDS = ["setting", "outline", "chapter", "bible"];
 const BIBLE_LISTS = ["acts"];
 const ANSWER_ATTEMPTS = 2;
 const CHARACTER_KEYS = ["id", "name", "appearance"];
 const BEAT_FIELDS = ["hook", "conflict", "turn", "cliffhanger"];
+// The hands-off rules of a binge series (docs/videos/BINGE.md), the same the site applies
+// (apps/api/app/video_automation/judge.py): a planned document's verdicts by kind, and the
+// screenplay's coverage and measured timing. Checked here first so a failing document is
+// rewritten and a failing screenplay fixed before anything is filed or sent.
+export const REQUIRED_VERDICTS = {
+  setting: ["originality", "conflict_engine", "genre_fit", "cast_playable"],
+  outline: ["originality", "escalation", "midpoint_reveal", "chapter_turns", "satisfaction_schedule"],
+  chapter: ["originality", "tension_rules", "hooks", "satisfaction", "alternation", "escalation"],
+};
+export const VERDICT_VALUES = ["有", "弱", "無"];
+export const COVERAGE_BEATS = ["hook", "conflict", "turn", "cliffhanger"];
+export const MAX_WEAK_VERDICTS = 1;
+export const HOOK_MAX_SECONDS = 8;
+export const FIRST_SATISFACTION_MAX_SECONDS = 30;
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
 /** Whether a series is a one-off drama: one episode, one story bible (docs/videos/DRAMA-FLOW.md, section 2). */
 export const isOneOff = (series) => series?.kind === "one-off";
+/** Whether a series' genre carries the retention rules (the classic xianxia series does not). */
+export const retentionRequired = (series) => Boolean(GENRE_SPECS[series?.genre]?.retention);
 
 /** The video slug of an episode: the series' slug and the number, zero-padded (xianxia-e001). */
 export const episodeSlug = (seriesSlug, number) => `${seriesSlug}-e${String(number).padStart(3, "0")}`;
@@ -91,7 +110,125 @@ export function documentProblem(kind, answer, job) {
     const now = body.episodes[index].cliffhanger?.type;
     if (before && now && before === now) return `episodes ${body.episodes[index - 1].number} and ${body.episodes[index].number} end on the same kind of cliffhanger (${now}); vary them`;
   }
+  if (retentionRequired(series)) return retentionProblem(series, body.episodes);
   return null;
+}
+
+/**
+ * Why a chapter outline breaks the retention rules (docs/videos/BINGE.md), or null: every
+ * episode names its hook type, the lead's arc and at least MIN_SATISFACTION satisfaction beats
+ * of the genre's types, the first inside the first half; two episodes in a row never leave the
+ * lead only suffering; any four in a row pay something off. The site refuses the same.
+ */
+export function retentionProblem(series, episodes) {
+  const allowed = new Set(GENRE_SPECS[series?.genre]?.satisfactions ?? []);
+  const ordered = [...episodes].filter((episode) => Number.isInteger(episode?.number)).sort((a, b) => a.number - b.number);
+  for (const episode of ordered) {
+    if (!HOOK_TYPES.includes(episode.hook_type)) return `episode ${episode.number} needs hook_type: one of ${HOOK_TYPES.join(", ")}`;
+    if (!LEAD_ARCS.includes(episode.lead_arc)) return `episode ${episode.number} needs lead_arc: one of ${LEAD_ARCS.join(", ")}`;
+    const beats = episode.satisfaction;
+    if (!Array.isArray(beats) || beats.length < MIN_SATISFACTION) return `episode ${episode.number} needs at least ${MIN_SATISFACTION} satisfaction beats`;
+    for (const beat of beats) {
+      if (!isObject(beat) || !BEATS.includes(beat.beat) || !allowed.has(beat.type)) return `episode ${episode.number}: every satisfaction beat is {beat: one of ${BEATS.join(", ")}, type: one of the genre's types}`;
+    }
+    if (!["opening", "first_half"].includes(beats[0].beat)) return `episode ${episode.number}: the first satisfaction beat must land in the first half`;
+  }
+  for (let index = 1; index < ordered.length; index++) {
+    if (ordered[index - 1].lead_arc === "suffers" && ordered[index].lead_arc === "suffers") return `episodes ${ordered[index - 1].number} and ${ordered[index].number} both leave the lead suffering; give one of them a win`;
+  }
+  for (let start = 0; start + 4 <= ordered.length; start++) {
+    const window = ordered.slice(start, start + 4);
+    if (!window.some((episode) => Array.isArray(episode.payoffs) && episode.payoffs.length)) return `episodes ${window[0].number} to ${window[3].number} pay nothing off; every four in a row must pay off at least one thread`;
+  }
+  return null;
+}
+
+/** Why a checker's verdict on a document cannot be filed as one, or null. */
+export function verdictProblem(verdict, kind) {
+  if (!isObject(verdict) || !isObject(verdict.verdicts)) return "the verdict has no verdicts object";
+  const required = REQUIRED_VERDICTS[kind] ?? [];
+  const missing = required.filter((key) => !VERDICT_VALUES.includes(verdict.verdicts[key]));
+  if (missing.length) return `the verdict lacks ${missing.join(", ")} (each 有, 弱 or 無)`;
+  if (!Array.isArray(verdict.problems) || !Array.isArray(verdict.similar_works)) return "the verdict needs problems and similar_works lists";
+  return null;
+}
+
+/** The verdict as the site reads it: the required keys, the lists, one line of notes. */
+export function verdictFor(verdict, kind) {
+  const keys = REQUIRED_VERDICTS[kind] ?? [];
+  return {
+    verdicts: Object.fromEntries(keys.map((key) => [key, verdict.verdicts[key]])),
+    problems: verdict.problems.map((item) => String(item)).filter((item) => item.trim()),
+    similar_works: verdict.similar_works.map((item) => String(item)).filter((item) => item.trim()),
+    notes: typeof verdict.notes === "string" ? verdict.notes.slice(0, 400) : "",
+  };
+}
+
+/** Whether a verdict passes the site's rule (mirrored here so the report line can say so). */
+export function verdictPasses(verdict, kind) {
+  const keys = REQUIRED_VERDICTS[kind] ?? [];
+  const values = keys.map((key) => verdict.verdicts?.[key]);
+  if (values.some((value) => value !== "有" && value !== "弱")) return false;
+  if (values.filter((value) => value === "弱").length > MAX_WEAK_VERDICTS) return false;
+  return verdict.problems.length === 0 && verdict.similar_works.length === 0;
+}
+
+/**
+ * The retention numbers of a screenplay, measured on its estimated timeline (250 characters a
+ * minute) from the lines the checker named, never taken from the model: how many seconds in
+ * the hook ends, when each satisfaction line starts, and whether the cliffhanger line is the
+ * last thing said. Null when the checker named none.
+ */
+export function retentionNumbers(video, retention) {
+  if (!isObject(retention)) return null;
+  const timeline = estimateTimeline(video);
+  const lines = new Map(timeline.lines.map((line) => [line.id, line]));
+  const ids = [...eachLine(video)].map(({ line }) => line.id);
+  const hook = lines.get(retention.hook_line);
+  const satisfaction = (Array.isArray(retention.satisfaction_lines) ? retention.satisfaction_lines : []).map((id) => lines.get(id)).filter(Boolean);
+  const positions = satisfaction.map((line) => Number(frameToSeconds(line.start_frame).toFixed(1)));
+  return {
+    // The hook lands when its words end: the pause after the line and the gap to the next shot
+    // are not part of it (a line's end_frame includes both).
+    hook_seconds: hook ? Number(frameToSeconds(hook.start_frame + framesFor(hook.audio_samples)).toFixed(1)) : null,
+    satisfaction: { count: satisfaction.length, first_seconds: positions.length ? Math.min(...positions) : null, positions },
+    cliffhanger_last: Boolean(retention.cliffhanger_line) && ids.at(-1) === retention.cliffhanger_line,
+  };
+}
+
+/**
+ * Whether a screenplay's check passes the site's script rule (docs/videos/BINGE.md), and why
+ * not, so a hands-off episode is fixed before it is sent rather than sent to be refused.
+ */
+export function scriptVerdict(check, series) {
+  const problems = [];
+  const coverage = isObject(check?.coverage) ? check.coverage : {};
+  for (const beat of COVERAGE_BEATS) {
+    if (!VERDICT_VALUES.includes(coverage[beat])) problems.push(`the checker gave no verdict on the ${beat}`);
+    else if (coverage[beat] === "無") problems.push(`the ${beat} is missing from the script`);
+  }
+  if (COVERAGE_BEATS.filter((beat) => coverage[beat] === "弱").length > MAX_WEAK_VERDICTS) problems.push("more than one beat is only weakly delivered");
+  for (const problem of check?.problems ?? []) problems.push(String(problem));
+  for (const work of check?.similar_works ?? []) problems.push(`resembles an existing work: ${work}`);
+  if (retentionRequired(series)) {
+    if (!["有", "弱"].includes(coverage.satisfaction)) problems.push("the satisfaction beats are not played");
+    const retention = check?.retention;
+    if (!isObject(retention)) problems.push("the checker named no hook, satisfaction or cliffhanger lines");
+    else {
+      // The site reads these as numbers and refuses a null (a hook_line that is not in the
+      // script measures as null), so a missing number is a problem here too, not a pass.
+      const hook = retention.hook_seconds;
+      const count = retention.satisfaction?.count;
+      const first = retention.satisfaction?.first_seconds;
+      if (typeof hook !== "number") problems.push("the checker's hook_line is not a line of the script: name the first line's id");
+      else if (hook > HOOK_MAX_SECONDS) problems.push(`the hook line ends at ${hook} s; shorten it (or move what follows into the next line) so its words end inside ${HOOK_MAX_SECONDS} s`);
+      if (typeof count !== "number" || count < MIN_SATISFACTION) problems.push(`only ${typeof count === "number" ? count : 0} satisfaction beats are played; at least ${MIN_SATISFACTION}`);
+      if (typeof first !== "number") problems.push("the checker's satisfaction_lines are not lines of the script: name their ids");
+      else if (first > FIRST_SATISFACTION_MAX_SECONDS) problems.push(`the first satisfaction beat starts at ${first} s; it must land inside ${FIRST_SATISFACTION_MAX_SECONDS} s`);
+      if (retention.cliffhanger_last !== true) problems.push("the cliffhanger is not the last line: cut everything after it");
+    }
+  }
+  return { passed: problems.length === 0, problems };
 }
 
 /** The cast as video.json wants it, from the setting book, by id. */
@@ -135,10 +272,13 @@ export function episodeBrief(series, episode, cast, beats) {
     series.note || "依頻道立場與作品前提；沒有站主的親身經驗。",
     "",
     "## 幕",
-    `- 開場鉤子：${beats.hook ?? ""}`,
+    ...(series.compilation ? ["- 冷開場：第一句就是鉤子，沒有片頭卡；最後一句是懸念，之後沒有任何總結"] : []),
+    `- 開場鉤子：${beats.hook ?? ""}${beats.hook_type ? `（${beats.hook_type}）` : ""}`,
     `- 主要衝突：${beats.conflict ?? ""}`,
     `- 轉折：${beats.turn ?? ""}`,
     `- 結尾懸念：${cliff}`,
+    ...(Array.isArray(beats.satisfaction) && beats.satisfaction.length ? [`- 爽點：${beats.satisfaction.map((beat) => `${beat.beat}｜${beat.type}`).join("、")}`] : []),
+    ...(beats.lead_arc ? [`- 主角走向：${beats.lead_arc}`] : []),
     `- 埋下：${listed(beats.setups)}；回收：${listed(beats.payoffs)}`,
     `- 張力曲線：${Array.isArray(beats.tension) ? beats.tension.join("-") : "未定"}`,
     `- 場景：${listed(beats.locations)}`,
@@ -173,7 +313,14 @@ export function documentPayload(automation, job, problem = null) {
       chapters: series.chapters,
       open_ended: series.open_ended,
       note: series.note,
+      genre: series.genre ?? "xianxia-bonds",
+      lead: series.lead ?? "dual-male",
+      visual_tier: series.visual_tier ?? "clips",
+      compilation: Boolean(series.compilation),
+      hands_off: Boolean(series.hands_off),
+      total_minutes: series.total_minutes ?? null,
     },
+    genre_spec: GENRE_SPECS[series.genre] ?? null,
     series_reference: refs.series,
     drama: refs.drama,
     drama_settings: automation.dramaPayload({ style_preset: series.style_preset }).drama_settings,
@@ -202,6 +349,41 @@ export function documentPayload(automation, job, problem = null) {
   };
 }
 
+/**
+ * The checker's verdict on a planned document (docs/videos/BINGE.md), for a hands-off series:
+ * a fresh session reads the document against the series and the approved documents before it.
+ * Null when the checker answered nothing usable twice; the document then waits for the owner.
+ */
+export async function judgeDocument(automation, job, answer) {
+  const { series } = job;
+  const context = job.context ?? {};
+  const payload = {
+    kind: job.kind,
+    series: documentPayload(automation, job).series,
+    genre_spec: GENRE_SPECS[series.genre] ?? null,
+    series_reference: automation.reference().series,
+    document: { body_md: answer.body_md, body_json: answer.body_json },
+    setting: job.kind !== "setting" && context.setting ? { body_md: context.setting.body_md, body_json: context.setting.body_json } : null,
+    outline: job.kind === "chapter" && context.outline ? { body_md: context.outline.body_md, body_json: context.outline.body_json } : null,
+    chapter_number: job.kind === "chapter" ? job.chapter_number : null,
+  };
+  let problem = null;
+  for (let attempt = 0; attempt < ANSWER_ATTEMPTS; attempt++) {
+    let verdict;
+    try {
+      verdict = await automation.stage("verifier", `series-${series.slug}`, problem ? { ...payload, previous_problem: problem } : payload, 16_000, "drama", "series-doc", series);
+    } catch (error) {
+      if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
+      problem = error.message;
+      continue;
+    }
+    problem = verdictProblem(verdict, job.kind);
+    if (!problem) return verdictFor(verdict, job.kind);
+  }
+  automation.log(`  the checker gave no usable verdict on ${job.kind} (${problem}); the document waits for the owner`);
+  return null;
+}
+
 /** Plan one document with the planner and file it on the site; a line saying what happened. */
 export async function planDocument(automation, job) {
   const { series } = job;
@@ -210,7 +392,7 @@ export async function planDocument(automation, job) {
   for (let attempt = 0; attempt < ANSWER_ATTEMPTS; attempt++) {
     let answer;
     try {
-      answer = await automation.stage("planner", slug, documentPayload(automation, job, problem), 32_000, "drama", job.kind);
+      answer = await automation.stage("planner", slug, documentPayload(automation, job, problem), 32_000, "drama", job.kind, series);
     } catch (error) {
       if (!(error instanceof AutomationError && error.code === OUTPUT_INVALID)) throw error;
       problem = error.message;
@@ -218,13 +400,23 @@ export async function planDocument(automation, job) {
     }
     problem = documentProblem(job.kind, answer, job);
     if (problem) continue;
+    // A hands-off series (docs/videos/BINGE.md): the checker's verdict travels with the
+    // document, and the site decides on arrival; a verdict the checker could not give leaves
+    // the document for the owner, as on a classic series.
+    const judge = series.hands_off ? await judgeDocument(automation, job, answer) : null;
     const doc = await automation.api.seriesDoc(series.slug, {
       kind: job.kind,
       chapter_number: job.kind === "chapter" ? job.chapter_number : 0,
       body_md: answer.body_md.endsWith("\n") ? answer.body_md : `${answer.body_md}\n`,
       body_json: answer.body_json,
+      ...(judge ? { judge } : {}),
     });
-    return `series ${series.slug}: ${documentName(job)} ${job.previous ? "rewritten from the owner's note" : "planned"} (version ${doc.version}); it waits for the owner on /admin/videos`;
+    const what = documentName(job);
+    const made = job.previous ? `rewritten from ${String(job.previous.note ?? "").startsWith("[auto]") ? "the checker's" : "the owner's"} note` : "planned";
+    if (doc.status === "approved") return `series ${series.slug}: ${what} ${made} (version ${doc.version}) and approved on the checker's verdict`;
+    if (doc.status === "rejected") return `series ${series.slug}: ${what} ${made} (version ${doc.version}); the checker sent it back for a rewrite (${doc.note ?? ""})`;
+    if (judge && !verdictPasses(judge, job.kind)) return `series ${series.slug}: ${what} ${made} (version ${doc.version}); the rewrites are spent, so it waits for the owner with the checker's problems`;
+    return `series ${series.slug}: ${what} ${made} (version ${doc.version}); it waits for the owner on /admin/videos`;
   }
   const kept = automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), job.kind);
   return automation.later(`series ${series.slug}: the planner could not write ${documentName(job)} (${problem}${kept ? `; the answer is in ${kept}` : ""}); the next run tries again`);
@@ -263,6 +455,10 @@ export async function seriesStep(automation) {
   if (job.kind === "episode") {
     if (!automation.room()) return null;
     return startEpisode(automation, job);
+  }
+  if (job.kind === "compilation") {
+    if (!automation.room()) return null;
+    return automation.startCompilation(job);
   }
   return planDocument(automation, job);
 }

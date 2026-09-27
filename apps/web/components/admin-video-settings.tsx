@@ -3,27 +3,28 @@
 import { useLocale, useTranslations } from "next-intl";
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
+import { useAdminOperations } from "@/components/admin-operations-provider";
 import { AdminErrorState } from "@/components/admin-ui";
-import { AdminVideoSettingsDrama } from "@/components/admin-video-settings-drama";
 import { AdminVideoSettingsTutorial } from "@/components/admin-video-settings-tutorial";
 import { Button, fieldClass, panelClass, Tabs } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
+import { adminCan } from "@/lib/admin-operations";
 import { aiModelsHref } from "@/lib/admin-settings-ownership";
-import { useAdminQueryState } from "@/lib/admin-workspace-navigation";
+import { adminUsersCopy } from "@/lib/admin-users-copy";
+import { adminNavigate, useAdminQueryState } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 
 // apps/api/app/video_automation/schemas.py. The worker on the host reads the same values with
 // its video tool token (docs/videos/AUTOMATION.md).
-// The settings tab is three parts, each saved on its own (docs/videos/DRAMA-FLOW.md, section 1): the
-// tutorial's (admin-video-settings-tutorial.tsx), the drama's (admin-video-settings-drama.tsx)
-// and what both share (this file, which also holds the types, the request bodies and the
-// pieces both parts render).
-// claude_code: the Claude subscription accounts the host's AI accounts agent signs in; the rest
-// are the site's API keys.
-export const PROVIDERS = ["claude_code", "anthropic", "openai", "gemini", "minimax"] as const;
+// The settings tab is two parts, each saved on its own (docs/videos/DRAMA-FLOW.md, section 1): the
+// tutorial's (admin-video-settings-tutorial.tsx) and what both formats share (this file, which
+// also holds the types, the request bodies and the pieces the parts render). The drama's part
+// lives on the drama tab (admin-video-drama-settings.tsx, rendering admin-video-settings-drama.tsx).
+// claude_code and codex use subscription accounts on the host; the rest use API keys.
+export const PROVIDERS = ["claude_code", "codex", "anthropic", "openai", "gemini", "minimax"] as const;
 export const STAGES = ["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"] as const;
 export const CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
-export const SECTIONS = ["tutorial", "drama", "shared"] as const;
+export const SECTIONS = ["tutorial", "shared"] as const;
 export type Provider = (typeof PROVIDERS)[number];
 export type Stage = (typeof STAGES)[number];
 export type CaptionLocale = (typeof CAPTION_LOCALES)[number];
@@ -40,6 +41,8 @@ export type MediaProvider = (typeof MEDIA_PROVIDERS)[number];
 export type MediaOption = ModelOption & { resolutions: string[]; durations: number[]; reference_images: number; native_audio: boolean; usd_per_second: number | null; usd_per_image: number | null; usd_per_track: number | null };
 export type MediaOptions = { images: Record<MediaProvider, MediaOption[]>; clips: Record<MediaProvider, MediaOption[]>; music: Record<MediaProvider, MediaOption[]> };
 export type CharacterVoice = { provider: "azure" | "gemini"; name: string; style?: string | null; hint?: string | null };
+// The API sends more drama fields than this tab edits (the series_* limits of docs/videos/SERIES.md);
+// they ride along untouched because every save spreads the whole object it was given.
 export type DramaSettings = {
   drama_enabled: boolean;
   image_provider: MediaProvider;
@@ -128,7 +131,7 @@ export type VideoSettingsView = VideoSettings & {
 };
 export type SectionProps = { view: VideoSettingsView; prompts: StagePrompt[]; canManage: boolean; onSaved: (view: VideoSettingsView) => void };
 
-export const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
+export const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", codex: "Codex", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
 export const mediaProviderLabels: Record<MediaProvider, string> = { gemini: "Google Gemini API", minimax: "MiniMax API" };
 
 /** One word or phrase per line, blank lines dropped, as the API stores the topic lists. */
@@ -204,6 +207,35 @@ export function sharedBody(draft: VideoSettings, avoid: string): SharedBody {
 
 export function dramaBody(drama: DramaSettings, scope: string): Pick<VideoSettings, "drama"> {
   return { drama: { ...drama, drama_topic_scope: linesToList(scope) } };
+}
+
+// The admin roles by the key the members page labels them with (lib/admin-users-copy.ts), so a
+// role reads the same here as where the owner grants it.
+const ROLE_COPY_KEYS: Record<string, string> = {
+  viewer: "rolesViewer", support: "rolesSupport", content: "rolesContent", operations: "rolesOperations",
+  database_operator: "rolesDatabase", deployer: "rolesDeployer", owner: "rolesOwner",
+};
+
+/**
+ * Why a settings form is read-only for this account: what it needs, the roles the account holds,
+ * and who can change that. A reviewer can run and review dramas with the content role alone, so
+ * without this a greyed-out save button looks like a broken page. Renders nothing when the
+ * account may edit, or outside an admin route.
+ */
+export function SettingsPermissionNotice({ capability }: { capability: string }) {
+  const t = useTranslations("admin.videoSettings");
+  const nav = useTranslations("admin.navigation");
+  const locale = useLocale();
+  const operations = useAdminOperations();
+  if (!operations || adminCan(operations.bootstrap, capability)) return null;
+  const copy = adminUsersCopy(locale) as unknown as Record<string, string>;
+  const label = (role: string) => copy[ROLE_COPY_KEYS[role] ?? ""] || role;
+  const roles = operations.bootstrap.admin_roles.map(label);
+  return <aside role="note" className="grid gap-1 rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm leading-6">
+    <p className="font-semibold">{t("readOnly")}</p>
+    <p>{roles.length ? t("permission.roles", { roles: new Intl.ListFormat(locale, { type: "conjunction" }).format(roles) }) : t("permission.noRoles")}</p>
+    <p>{t("permission.fix", { owner: label("owner"), operations: label("operations"), page: nav("users") })}</p>
+  </aside>;
 }
 
 /** The catalog entry of a chosen media model, or null when the server no longer offers it. */
@@ -384,6 +416,7 @@ function SharedSettings({ view, canManage, onSaved }: SectionProps) {
 
 export function AdminVideoSettings() {
   const t = useTranslations("admin.videoSettings");
+  const tabs = useTranslations("admin.videoReviews");
   const manage = useAdminActionGuard("settings.manage");
   const [view, setView] = useState<VideoSettingsView | null>(null);
   const [prompts, setPrompts] = useState<StagePrompt[] | null>(null);
@@ -399,11 +432,23 @@ export function AdminVideoSettings() {
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
   if (!view) return <p className="mt-6 text-[var(--muted)]">{t("loading")}</p>;
   const props: SectionProps = { view, prompts: prompts ?? [], canManage: manage.allowed, onSaved: setView };
+  // The tabs follow the URL through adminNavigate. A plain link would change the address without
+  // switching the tab: a pushState fires none of the events the tab state listens for.
+  const openDramaTab = () => {
+    const target = new URL(window.location.href);
+    target.searchParams.set("tab", "drama");
+    target.searchParams.delete("section");
+    adminNavigate(target);
+  };
   return <div className="mt-6 grid gap-5">
-    {!manage.allowed && <p className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm">{t("readOnly")}</p>}
+    <SettingsPermissionNotice capability="settings.manage" />
+    <section className={`${panelClass} grid gap-3`} aria-labelledby="video-settings-drama">
+      <h2 id="video-settings-drama" className="text-xl font-bold">{t("dramaTitle")}</h2>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dramaMoved", { tab: tabs("tabDrama") })}</p>
+      <div><Button secondary onClick={openDramaTab}>{t("dramaMovedLink", { tab: tabs("tabDrama") })}</Button></div>
+    </section>
     <Tabs value={section} onChange={(value) => setSection(value as Section)} label={t("sectionsLabel")} items={SECTIONS.map((each) => ({ value: each, label: t(`sections.${each}`) }))}>
       {section === "tutorial" && <AdminVideoSettingsTutorial {...props} />}
-      {section === "drama" && <AdminVideoSettingsDrama {...props} />}
       {section === "shared" && <SharedSettings {...props} />}
     </Tabs>
   </div>;

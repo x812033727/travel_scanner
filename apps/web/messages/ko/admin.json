@@ -571,6 +571,14 @@
       "label": "Jev 하루 호출 횟수",
       "help": "뉴스 자동화, 명소 소개의 Jev 섀도 평가, 내레이션 검사가 함께 쓰는 하루 한도로, UTC 날짜 기준으로 셉니다. 다 쓰면 그날은 Jev를 더 호출하지 않습니다. 기본값 200."
     },
+    "openai_connection": {
+      "label": "OpenAI 연결 방식",
+      "help": "구독 계정을 선택하면 가이드 검색, 명소 소개와 검토, 간체 이름, AI 뉴스의 OpenAI 호출이 호스트에 로그인한 Codex 계정을 사용합니다. 동영상의 각 단계에서는 Codex를 따로 선택할 수 있습니다. 여행 일정과 일정 텍스트 분석에는 계속 API 키가 필요합니다. 전환은 사이트 소유자만 할 수 있습니다.",
+      "options": {
+        "api_key": "API 키",
+        "subscription": "구독 계정(호스트의 Codex)"
+      }
+    },
     "anthropic_connection": {
       "label": "Claude 연결 방식",
       "help": "'구독 계정'을 고르면 가이드 검색, 명소 소개, 소개 검토, 간체 이름, AI 뉴스의 Claude 호출이 API 키 대신 호스트의 'AI 계정'에 로그인한 Claude 구독 계정으로 실행됩니다. 계정은 A, B, C… 순서로 돌아가며, 5시간 또는 주간 한도를 다 쓴 경우에만 다음으로 넘어가고 마지막 다음은 A로 돌아갑니다. 모두 다 쓰면 MiniMax를 씁니다. 여행 일정과 일정 텍스트 분석은 계속 API 키만 씁니다. 전환은 오너만 할 수 있습니다.",
@@ -1048,7 +1056,7 @@
       "models": "기능별 모델"
     },
     "hints": {
-      "subscriptions": "호스트에서 쓰는 Claude Code, Codex, Antigravity용입니다. 구독으로 동작해 추가 요금이 없고 도구별로 최대 다섯 계정입니다. 사이트 기능 중에서는 동영상 자동화의 원고 작성만 Claude 계정을 빌려 씁니다.",
+      "subscriptions": "호스트에서 Claude Code, Codex, Antigravity에 도구별 최대 다섯 계정으로 로그인할 수 있습니다. 사이트의 글쓰기 기능은 AI 설정에서 선택하면 Claude Code 또는 Codex 구독을 사용합니다.",
       "api": "사이트 AI 기능이 쓰는 키와 음성입니다. API 사용량으로 과금되며 키는 서버에만 암호화해 저장합니다. 기능마다 어떤 모델을 쓸지는 '기능별 모델'에서 고릅니다.",
       "models": "AI를 호출하는 사이트의 모든 기능이 여기서 공급자와 모델을 고릅니다. 각 기능 페이지는 현재 선택만 보여 주고 여기로 연결합니다."
     },
@@ -1093,7 +1101,10 @@
       "support": {
         "apiKeyOnly": "API 키만 가능",
         "claudeSubscription": "Claude는 구독 사용 가능 ('API 키'에서 Claude 연결 방식 전환)",
+        "codexSubscription": "OpenAI는 Codex 구독 사용 가능 ('API 키'에서 OpenAI 연결 방식 전환)",
         "claudeCode": "'Claude Code'를 고르면 구독 사용",
+        "codex": "'Codex'를 고르면 구독 사용",
+        "videoSubscriptions": "Claude Code 또는 Codex 구독 계정으로 전환 가능",
         "geminiApiKeyOnly": "Gemini는 API 키만 사용 (Antigravity 구독은 호스트에서 수동으로만 사용)"
       },
       "edit": "변경",
@@ -1131,7 +1142,7 @@
     },
     "videos": {
       "title": "영상 검토",
-      "description": "영상 도구가 만든 기획, 내레이션, 완성 영상이 여기서 결정을 기다립니다. 구성을 고르고, 내레이션을 듣고, 완성 영상을 본 뒤 업로드해도 되는지 확인하세요. YouTube 업로드와 공개는 계속 YouTube Studio에서 직접 합니다."
+      "description": "영상 도구가 만든 기획, 내레이션, 완성 영상이 여기서 결정을 기다립니다. 구성을 고르고, 내레이션을 듣고, 완성 영상을 본 뒤 업로드해도 되는지 확인하세요. YouTube 채널을 연결하면 사이트가 동영상을 채널로 보내고 공개 시간을 예약할 수 있습니다. 공개는 당신이 고른 시간에만 이루어집니다."
     }
   },
   "usersPanel": {
@@ -2200,7 +2211,7 @@
       "scheduled": "예약됨",
       "published": "게시됨"
     },
-    "scheduleWaits": "게시 예약은 언어가 끝난 뒤에 보내집니다.",
+    "scheduleWaits": "언어가 끝나면 YouTube로 보낼 수 있습니다. 그때 업로드 패키지에 언어가 들어갑니다.",
     "locales": {
       "en": "영어",
       "ja": "일본어",
@@ -2332,7 +2343,10 @@
     "uploadedError": "기록하지 못했습니다: {message}",
     "scheduledAt": "{time}에 게시 예정",
     "readyLoading": "업로드 패키지를 불러오는 중…",
-    "openDramaSettings": "드라마 설정 열기"
+    "openDramaSettings": "드라마 설정 열기",
+    "downloadCompilation": "1080p 완성본 내려받기",
+    "compilationInWorkspace": "완성본은 아직 워커의 작업 공간에 있습니다",
+    "compilationOf": "작품 {series}의 합본"
   },
   "videoSettings": {
     "loading": "설정을 불러오는 중…",
@@ -2344,7 +2358,7 @@
     "onePerLine": "한 줄에 단어나 구 하나씩 적어 주세요.",
     "topicSources": "주제 출처",
     "modelsTitle": "단계별 AI 모델",
-    "modelsHelp": "'Claude Code(구독 계정)'는 호스트에 로그인한 Claude 구독 계정으로 실행되며, 추가 요금 없이 요금제 한도 안에서 동작합니다. 나머지 선택지는 사이트 'AI 서비스'의 API 키를 사용하며 사용량만큼 요금이 부과됩니다. '키 없음'으로 표시된 업체는 먼저 키를 입력해야 합니다.",
+    "modelsHelp": "Claude Code와 Codex는 호스트에 로그인한 각 구독 계정을 요금제 한도 안에서 사용합니다. API 선택지는 사이트의 키를 사용하며 사용량만큼 요금이 부과됩니다. '키 없음'으로 표시된 업체는 먼저 키를 입력해야 합니다.",
     "provider": "업체",
     "model": "모델",
     "noKey": "키 없음",
@@ -2404,6 +2418,7 @@
       "drama_monthly_judge_calls_budget": "월 판정 호출 수",
       "drama_monthly_music_budget": "월 음악 트랙 수",
       "drama_max_usd_per_video": "편당 최대 비용(미국 달러)",
+      "drama_series_max_in_flight": "동시에 진행하는 작품 수(1–6)",
       "drama_topic_scope": "드라마 소재(한 줄에 하나)",
       "channel_stance": "채널의 입장",
       "auto_pick_outline": "Jev가 아웃라인을 고르게 하기 (입장이 비어 있으면 효과 없음)",
@@ -2412,7 +2427,7 @@
       "drama_stage_models_follow": "단계 모델은 튜토리얼과 같음",
       "drama_voice_follows": "내레이션 목소리는 튜토리얼과 같음(채널 목소리)",
       "series_script_gate": "생성을 시작하기 전에 대본을 먼저 보여 주기(단편과 시리즈의 각 회)",
-      "series_max_in_flight": "동시에 제작하는 회차 수(1–2)",
+      "series_max_in_flight": "동시에 제작하는 회차 수(1–6)",
       "series_auto_continue": "이전 회의 업로드가 확인되면 다음 회를 자동으로 시작",
       "series_chapter_ahead": "몇 회 남았을 때 다음 장을 기획할지",
       "series_doc_rewrites": "되돌린 문서를 기다리기 전에 다시 쓰는 횟수",
@@ -2434,7 +2449,7 @@
     },
     "subscription": "구독 계정",
     "agentOff": "호스트 에이전트 미설정",
-    "subscriptionHelp": "구독 계정은 A, B, C… 순서로 돌아가며, 5시간 또는 주간 한도를 다 쓴 경우에만 다음으로 넘어가고 마지막 다음은 A로 돌아갑니다. 모두 다 쓰면 작업기는 한도가 초기화될 때까지 기다렸다가 계속하며, 스스로 API 키로 바꾸지 않습니다. Codex는 제공하지 않습니다. 명령줄에서 명령 실행을 끌 수 없기 때문입니다.",
+    "subscriptionHelp": "Claude Code와 Codex 구독 계정은 각각 A, B, C… 순서로 사용하고 한도를 다 쓰면 다음 계정으로 넘어갑니다. 선택한 도구의 모든 계정이 한도에 이르면 작업기는 초기화를 기다리며 API 키로 자동 전환하지 않습니다.",
     "modelsManaged": "단계별 모델은 'AI 설정 › 기능별 모델'에서 한곳에서 고릅니다.",
     "editModels": "AI 설정에서 변경",
     "saveModels": "영상 모델 저장",
@@ -2495,7 +2510,18 @@
     "flowTitle": "횟수 한도",
     "seriesTitle": "시리즈",
     "seriesHelp": "장편 시리즈(docs/videos/SERIES.md)의 속도: 동시에 만드는 회차 수, 다음 장을 기획하는 시점, 되돌린 문서를 몇 번 다시 쓰고 나서 당신을 기다릴지.",
-    "dramaGatesHelp": "YouTube 업로드와 공개 시각은 언제나 당신이 정합니다. 대본은 기본으로 먼저 보여 주며, 끄면 자동 승인됩니다. 설정화·내레이션·스토리보드·최종본에는 각각 스위치가 있고, 끈 관문은 예전처럼 당신을 기다립니다."
+    "dramaGatesHelp": "YouTube 업로드와 공개 시각은 언제나 당신이 정합니다. 대본은 기본으로 먼저 보여 주며, 끄면 자동 승인됩니다. 설정화·내레이션·스토리보드·최종본에는 각각 스위치가 있고, 끈 관문은 예전처럼 당신을 기다립니다.",
+    "permission": {
+      "roles": "지금 로그인한 계정의 관리자 역할: {roles}.",
+      "noRoles": "지금 로그인한 계정에는 관리자 역할이 없습니다.",
+      "fix": "사이트 소유자({owner}) 계정으로 로그인하면 변경할 수 있습니다. 또는 소유자에게 ‘{page}’ 페이지에서 이 계정에 ‘{operations}’ 역할을 추가해 달라고 요청하세요."
+    },
+    "dramaMoved": "드라마 설정은 ‘{tab}’ 탭으로 옮겨졌습니다. 작품, 단편 에피소드와 같은 곳입니다.",
+    "dramaMovedLink": "‘{tab}’ 탭 열기",
+    "dramaSettingsTitle": "드라마 설정",
+    "dramaSave": "드라마 설정 저장",
+    "dramaKeyWarning": "{vendors}의 키가 아직 없어 드라마를 켠 채로 저장하면 거부됩니다. 먼저 키를 등록하거나 키가 있는 공급자를 선택하세요.",
+    "dramaKeyLink": "AI 설정에서 키 등록"
   },
   "videoSeries": {
     "listTitle": "작품",
@@ -2648,6 +2674,241 @@
     "withdrawConfirm": "「{title}」을(를) 철회할까요? 아직 시작된 화가 없습니다. 문서와 토론은 삭제되고 대기 중인 요청은 철회됨으로 표시됩니다.",
     "oneOffTitle": "단편 에피소드",
     "oneOff": "단편",
-    "openDramaSettings": "드라마 설정 열기"
+    "openDramaSettings": "드라마 설정 열기",
+    "dramaOn": "드라마가 켜져 있습니다. 워커가 요청한 단편 에피소드와 작품을 차례로 만듭니다.",
+    "dramaOff": "드라마가 현재 꺼져 있습니다.",
+    "dramaOffHow": "워커는 드라마를 만들지 않으며, 요청한 단편 에피소드와 작품은 켤 때까지 기다립니다. 아래 ‘{settings}’에서 ‘{enable}’을(를) 선택한 뒤 저장하세요.",
+    "binge": {
+      "title": "원버튼 촬영 시작",
+      "help": "장르, 주인공, 총 길이만 정하면 나머지는 워커가 맡습니다. 설정집, 총괄 개요, 각 장의 상세 개요, 대본은 검수기가 자동 승인하고, 한 편이 끝나면 다음 편으로 이어지며, 전편이 완성되면 하나의 합본으로 잇습니다. 완성본은 작품 페이지에서 내려받습니다. 편수와 장당 편수는 총 길이에서 계산하고, 작품 이름은 설정집이 정합니다.",
+      "genre": "장르",
+      "lead": "주인공",
+      "premise": "줄거리(선택)",
+      "premiseRequired": "줄거리(사용자 지정 장르는 필수)",
+      "premisePlaceholder": "비워 두면 기획자가 장르에 맞춰 만들어 냅니다. 사용자 지정 장르는 꼭 써 주세요.",
+      "totalMinutes": "총 길이(분, 30–480)",
+      "totalMinutesHint": "보통 60–240. 30분짜리 시범작도 괜찮습니다.",
+      "episodeMinutes": "편당 분(2–4)",
+      "tier": "화면 제작 방식",
+      "notePlaceholder": "예: 내레이션을 느리게, 유혈 장면 없이",
+      "quoteTitle": "예상",
+      "quoteLoading": "계산 중…",
+      "quoteError": "계산할 수 없습니다: {message}",
+      "quote": "{episodes}편 · {chapters}장(장당 {perChapter}편) · 클립 {seconds}초 · 이미지 {images}장 · 약 US${usd}",
+      "budgets": {
+        "clip_seconds": "이번 달 클립 예산은 {monthly}초, 이 작품에는 {needed}초가 필요합니다",
+        "images": "이번 달 이미지 예산은 {monthly}장, 이 작품에는 {needed}장이 필요합니다",
+        "judge_calls": "이번 달 judge 예산은 {monthly}회, 이 작품에는 {needed}회가 필요합니다",
+        "episodes_per_month": "월 편수 상한은 {monthly}편, 이 작품에는 {needed}편이 필요합니다"
+      },
+      "budgetsOver": {
+        "clip_seconds": "이번 달 클립 예산은 {monthly}초, 이 작품에는 {needed}초가 필요합니다: 먼저 설정 탭에서 올려 주세요",
+        "images": "이번 달 이미지 예산은 {monthly}장, 이 작품에는 {needed}장이 필요합니다: 먼저 설정 탭에서 올려 주세요",
+        "judge_calls": "이번 달 judge 예산은 {monthly}회, 이 작품에는 {needed}회가 필요합니다: 먼저 설정 탭에서 올려 주세요",
+        "episodes_per_month": "월 편수 상한은 {monthly}편, 이 작품에는 {needed}편이 필요합니다: 먼저 설정 탭에서 올려 주세요"
+      },
+      "overBudget": "예산이 다 차면 워커는 그 자리에서 기다리며 고장 나지 않습니다. 올리면 자동으로 이어 갑니다.",
+      "start": "원버튼 촬영 시작",
+      "starting": "만드는 중…",
+      "error": "시작하지 못했습니다: {message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "선협 인연",
+        "detail": "문파와 세가, 수위, 정도와 마도. 전생과 현생을 넘어 맺어진 지기."
+      },
+      "rebirth-revenge": {
+        "name": "환생 복수",
+        "detail": "배신당해 죽고, 아직 바꿀 수 있는 그날에 깨어난다. 이번에는 모두의 패를 안다."
+      },
+      "system-game": {
+        "name": "시스템 게임",
+        "detail": "게임이나 시스템이 강림하고 주인공만 규칙을 읽어 낸다. 히든 직업, 첫 클리어, 말도 안 되는 재능."
+      },
+      "urban-return": {
+        "name": "도시 귀환",
+        "detail": "여러 해 떠나 있다가 자신을 얕잡아 본 도시로, 아무도 상상 못 할 신분이나 실력을 지니고 돌아온다."
+      },
+      "empress-rise": {
+        "name": "여제의 부상",
+        "detail": "말로 취급받던 그녀가 한 수씩 판을 넘겨받아 왕좌를 손에 넣기까지."
+      },
+      "custom": {
+        "name": "사용자 지정",
+        "detail": "쓴 줄거리 그대로. 그것과 어긋나는 설정은 만들지 않습니다."
+      }
+    },
+    "leads": {
+      "female": "여주",
+      "male": "남주",
+      "dual-male": "남주 둘"
+    },
+    "tiers": {
+      "clips": {
+        "name": "전부 클립",
+        "detail": "모든 컷을 영상 클립으로 생성: 움직임이 가장 많고 비용도 가장 높습니다."
+      },
+      "hybrid": {
+        "name": "혼합",
+        "detail": "컷의 약 4할은 클립, 나머지는 정지 이미지에 카메라 움직임: 비용을 절반 이상 아낍니다."
+      },
+      "stills": {
+        "name": "정지 이미지",
+        "detail": "거의 모든 컷을 정지 이미지에 카메라 움직임으로, 핵심 컷 1할만 클립: 가장 저렴하며 시범작에 적합합니다."
+      }
+    },
+    "totalMinutesLabel": "총 {minutes}분",
+    "handsOff": "게이트 없음",
+    "handsOffHelp": "켜 두면 설정집·총괄 개요·상세 개요·대본을 검수기가 자동 승인하고, 통과하지 못할 때만 되돌리며, 막힐 때만 당신을 찾습니다. 끄면 한 건씩 승인하는 방식으로 돌아갑니다.",
+    "compilation": "합본",
+    "compilationStatuses": {
+      "waiting": "합본: 전편 완성 대기",
+      "queued": "합본: 워커 대기",
+      "making": "합본 제작 중",
+      "done": "합본 완성"
+    },
+    "compilationNone": "이 작품은 합본을 만들도록 설정되지 않았습니다. 완결 뒤 ‘합본 만들기’를 누를 수 있습니다.",
+    "compilationWaiting": "전편이 완성되면 워커가 하나로 잇습니다.",
+    "compilationQueued": "워커의 다음 회차에 합본을 시작합니다.",
+    "compilationStarting": "워커가 막 시작했고, 영상은 아직 보고되지 않았습니다.",
+    "compile": "합본 만들기",
+    "docNote": "메모:"
+  },
+  "videoYoutube": {
+    "title": "YouTube 채널",
+    "help": "연결하면 「업로드 가능」 동영상을 사이트가 바로 채널로 보낼 수 있습니다. 5개 언어의 제목과 설명, 태그, 자막, 미리보기 이미지, 게시 시간은 사이트가 채우고, 당신은 시간만 고르면 됩니다. 사이트가 직접 동영상을 공개로 바꾸는 일은 없으며, 고른 시간에 YouTube가 공개합니다.",
+    "loading": "채널 연결을 불러오는 중…",
+    "loadError": "채널 연결을 불러오지 못했습니다: {message}",
+    "linkedNow": "채널이 연결되었습니다.",
+    "dismiss": "확인",
+    "statusLinked": "연결됨",
+    "statusBroken": "권한 만료",
+    "statusNotLinked": "연결 안 됨",
+    "readyToLink": "클라이언트 설정이 끝났습니다. 「YouTube 채널 연결」을 누르고 Google 화면에서 허용하세요.",
+    "needsClient": "먼저 아래 단계대로 Google Cloud에서 OAuth 클라이언트를 만들고 ID와 보안 비밀을 여기에 붙여 넣으세요.",
+    "linkedAt": "{time} 연결",
+    "verifiedAt": "{time} 권한 마지막 확인",
+    "stepsTitle": "처음 설정: Google Cloud에서 할 다섯 단계",
+    "step1": "Google Cloud Console에서 프로젝트를 만들거나 고른 뒤 「API 및 서비스 → 라이브러리」에서 YouTube Data API v3를 사용 설정합니다.",
+    "step2": "「OAuth 동의 화면」: 사용자 유형은 「외부」, 앱 이름은 Mokaair Studio Sync(이름에 YouTube는 쓸 수 없음)로 하고 「앱 게시」를 눌러 게시 상태를 「프로덕션」으로 바꿉니다. 「테스트」 상태로 두면 권한이 7일 뒤 만료됩니다.",
+    "step3": "「사용자 인증 정보 → 사용자 인증 정보 만들기 → OAuth 클라이언트 ID」에서 유형 「웹 애플리케이션」을 고르고 「승인된 리디렉션 URI」에 이 주소를 추가합니다:",
+    "step4": "동의 화면의 「데이터 액세스」에는 이 범위 하나만 추가합니다: {scope}",
+    "step5": "클라이언트 ID와 클라이언트 보안 비밀을 아래에 붙여 넣고 저장한 뒤 「YouTube 채널 연결」을 누르세요. Google 화면에서 채널을 가진 계정(또는 브랜드 계정)을 고르고 허용합니다. 확인되지 않은 앱은 먼저 경고 화면이 나옵니다. 「고급」 → 「mokaair.com(으)로 이동(안전하지 않음)」을 누르면 됩니다. 사용자가 본인뿐이라 영향은 없습니다.",
+    "redirectUri": "리디렉션 URI",
+    "copy": "복사",
+    "copied": "복사됨",
+    "clientTitle": "OAuth 클라이언트",
+    "clientId": "클라이언트 ID",
+    "clientIdInvalid": "웹 애플리케이션 클라이언트 ID로 보이지 않습니다(.apps.googleusercontent.com으로 끝남)",
+    "clientSecret": "클라이언트 보안 비밀",
+    "secretKept": "설정됨. 비워 두면 그대로 유지",
+    "audited": "YouTube API 감사를 통과함",
+    "auditedHelp": "통과하기 전에는 사이트가 API로 업로드한 동영상이 YouTube에 의해 비공개로 잠기고 공개할 수 없어서, 업로드 전에 한 번 더 확인합니다. 감사 통과 알림을 받은 뒤에 체크하세요.",
+    "saving": "저장 중…",
+    "save": "저장",
+    "saved": "저장했습니다.",
+    "link": "YouTube 채널 연결",
+    "relink": "다시 연결",
+    "verify": "권한 확인",
+    "verified": "권한이 유효하며 채널 정보를 갱신했습니다.",
+    "unlink": "연결 해제",
+    "unlinkConfirm": "연결을 해제하면 사이트가 Google에 권한 취소를 요청하며, 다시 연결해야 동영상을 보낼 수 있습니다. 계속할까요?",
+    "unlinkNotRevoked": "사이트는 권한을 지웠지만 Google에 알리지 못했습니다. Google 계정의 「서드 파티 앱 및 서비스」에서 Mokaair Studio Sync를 삭제하세요.",
+    "unlinked": "연결을 해제했습니다.",
+    "revokeHelp": "Google 계정 → 보안 → 「서드 파티 앱 및 서비스」에서 언제든 권한을 취소할 수 있습니다. 사이트는 25일마다 권한이 유효한지 확인합니다.",
+    "publishTitle": "YouTube로 보내기",
+    "publishHelp": "채널 「{channel}」(으)로 보냅니다. 자막, 미리보기 이미지, 다른 언어의 제목과 설명, 태그, 공개 표시는 승인된 업로드 패키지를 쓰고, 아래 중국어 제목·설명·공개 범위는 당신이 정합니다.",
+    "source": "동영상 파일",
+    "sourceUpload": "사이트가 mp4 업로드",
+    "sourceStudio": "Studio에서 이미 업로드함(비공개), 주소 붙여 넣기",
+    "lockWarning": "API 감사를 통과하지 않았습니다. 사이트가 업로드한 동영상은 YouTube에 의해 비공개로 잠기고 나중에도 공개할 수 없습니다. 실제 게시는 「Studio에서 이미 업로드함」을 고르세요.",
+    "lockAccept": "이 동영상이 비공개로 잠기는 것을 이해함(테스트나 스크린샷 전용)",
+    "studioHelp": "Studio에서는 final.mp4를 공개 범위 「비공개」로 업로드하기만 하고 다른 칸은 비워 두세요. 그 주소를 여기에 붙여 넣습니다.",
+    "youtubeUrl": "YouTube 주소 또는 동영상 id",
+    "videoId": "동영상 id: {id}",
+    "urlInvalid": "동영상 id를 찾을 수 없습니다",
+    "videoTitle": "중국어 제목",
+    "titleCount": "{count}/{max}자",
+    "videoDescription": "중국어 설명",
+    "descriptionCount": "{count}/{max}바이트",
+    "titleTooLong": "제목은 최대 {max}자입니다",
+    "descriptionTooLong": "설명은 최대 {max}바이트입니다",
+    "angleBrackets": "제목과 설명에는 {characters}를 쓸 수 없습니다(YouTube가 거부함)",
+    "visibility": "공개 범위",
+    "visibilities": {
+      "scheduled": "고른 시간에 공개(그전에는 비공개)",
+      "unlisted": "일부 공개(링크가 있는 사람이 볼 수 있음)",
+      "private": "비공개"
+    },
+    "publishAt": "공개 시간",
+    "neverPublic": "사이트는 동영상을 바로 공개로 바꾸지 않습니다. 공개하려면 시간을 고르세요. 그 시간에 YouTube가 공개합니다.",
+    "sending": "보내는 중…",
+    "send": "YouTube로 보내기",
+    "syncTitle": "YouTube 동기화",
+    "statuses": {
+      "queued": "대기 중",
+      "running": "보내는 중",
+      "done": "완료",
+      "failed": "실패",
+      "interrupted": "중단됨"
+    },
+    "summaryScheduled": "{time} 공개 예정",
+    "finishedAt": "{time} 종료",
+    "uploadProgress": "mp4 업로드 진행률",
+    "progress": "{sent}/{total}MB 업로드({percent}%)",
+    "steps": {
+      "upload": "mp4 업로드",
+      "details": "제목·설명·예약",
+      "captions": "자막",
+      "thumbnail": "미리보기 이미지"
+    },
+    "stepStates": {
+      "pending": "대기",
+      "running": "진행 중",
+      "done": "완료",
+      "failed": "실패",
+      "skipped": "건너뜀"
+    },
+    "interruptedHelp": "보내는 도중 사이트가 다시 시작되었습니다. 다시 시도하면 멈춘 곳부터 이어서 하며, 끝난 단계는 반복하지 않습니다.",
+    "retry": "다시 시도",
+    "linkHint": "YouTube 채널을 연결하면 사이트가 직접 업로드하고 모든 칸을 채웁니다. 당신은 시간만 고르면 됩니다.",
+    "openSettings": "설정 탭에서 연결",
+    "resendTitle": "YouTube로 다시 보내기",
+    "resendHelp": "제목, 설명, 공개 범위, 공개 시간을 바꾸면 사이트가 이 동영상의 정보를 다시 씁니다. 이미 있는 자막은 다시 올리지 않습니다. 이미 공개된 동영상은 사이트가 건드리지 않습니다.",
+    "sendingPill": "YouTube로 보내는 중",
+    "stuckPill": "YouTube 동기화 실패",
+    "errors": {
+      "generic": "완료되지 않았습니다. 다시 시도하세요.",
+      "authentication_required": "로그인이 만료되었습니다. 다시 로그인한 뒤 연결하세요.",
+      "video_youtube_unavailable": "지금은 사이트 서비스에 연결할 수 없습니다. 잠시 뒤 다시 시도하세요.",
+      "video_youtube_cancelled": "Google 화면에서 취소해서 연결되지 않았습니다.",
+      "video_youtube_state_invalid": "인증 시간이 지났거나 이 브라우저에서 시작하지 않았습니다. 연결을 다시 누르세요.",
+      "video_youtube_state_unavailable": "지금은 인증을 시작할 수 없습니다. 잠시 뒤 다시 시도하세요.",
+      "video_youtube_client_missing": "먼저 OAuth 클라이언트 ID와 보안 비밀을 입력하고 저장하세요.",
+      "video_youtube_client_in_use": "채널이 아직 예전 클라이언트로 연결되어 있습니다. 먼저 연결을 해제한 뒤 클라이언트를 바꾸세요.",
+      "video_youtube_scope_missing": "Google 화면에서 YouTube 권한이 체크되지 않았습니다. 다시 연결하고 체크하세요.",
+      "video_youtube_no_refresh_token": "Google이 장기 권한을 주지 않았습니다. Google 계정에서 Mokaair Studio Sync의 액세스를 삭제한 뒤 다시 연결하세요.",
+      "video_youtube_no_channel": "이 Google 계정에는 YouTube 채널이 없습니다. 연결할 때 채널을 가진 계정이나 브랜드 계정을 고르세요.",
+      "video_youtube_exchange_failed": "Google이 이번 인증을 거부했습니다. 리디렉션 URI와 클라이언트 보안 비밀을 확인한 뒤 다시 연결하세요.",
+      "video_youtube_unreachable": "Google에 연결할 수 없습니다. 다시 시도하세요.",
+      "video_youtube_verify_failed": "YouTube가 이번 확인을 받아들이지 않았습니다. 잠시 뒤 다시 시도하세요.",
+      "video_youtube_not_linked": "아직 YouTube 채널이 연결되지 않았습니다. 설정 탭에서 연결하세요.",
+      "video_youtube_grant_lost": "채널 권한이 더 이상 유효하지 않습니다. 설정 탭에서 다시 연결하세요.",
+      "video_youtube_sync_running": "이 동영상은 YouTube로 보내는 중입니다. 끝날 때까지 기다리세요.",
+      "video_youtube_sync_missing": "이 동영상은 아직 YouTube로 보낸 적이 없습니다.",
+      "video_youtube_sync_done": "지난번에 모든 단계가 끝났습니다. 정보를 바꾸려면 다시 보내세요.",
+      "video_youtube_not_ready": "이 동영상에는 아직 승인된 업로드 패키지가 없습니다.",
+      "video_youtube_package_invalid": "업로드 패키지가 승인된 것과 일치하지 않습니다. 워커가 패키지를 다시 만들게 하세요.",
+      "video_youtube_package_missing": "업로드 패키지가 검토 저장소에 더 이상 없습니다.",
+      "video_youtube_text_invalid": "제목이나 설명이 YouTube 규칙에 맞지 않습니다(길이 또는 꺾쇠괄호).",
+      "video_youtube_publish_at_missing": "「고른 시간에 공개」에는 공개 시간이 필요합니다.",
+      "video_youtube_publish_at_past": "공개 시간은 지금부터 5분 이후여야 합니다.",
+      "video_youtube_url_invalid": "동영상 id를 찾을 수 없습니다. youtu.be, watch?v=, shorts 또는 Studio 주소를 붙여 넣으세요.",
+      "video_youtube_already_uploaded": "이 동영상은 이미 YouTube에 있습니다. 정보를 바꾸려면 「YouTube로 다시 보내기」를 쓰세요.",
+      "video_youtube_mp4_missing": "검토 저장소에 이 동영상의 mp4가 더 이상 없습니다. Studio에서 업로드하세요.",
+      "video_youtube_private_lock": "API 감사를 통과하지 않았습니다. 그래도 업로드하려면 「비공개로 잠기는 것을 이해함」을 체크하세요.",
+      "video_project_not_found": "이 동영상을 찾을 수 없습니다.",
+      "video_project_dropped": "이 동영상은 포기되었습니다."
+    }
   }
 }

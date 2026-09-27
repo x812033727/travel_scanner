@@ -263,6 +263,1014 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Moving from WordPress.com to Self-Hosted WordPress: Content, Media, and URLs",
+      "description": "Before moving a WordPress.com site to self-hosted WordPress, check your plan, domain, and the handoff for each kind of content. This guide covers the options available to free and paid sites, XML export and import, verification of actual image files, subscriber migration, and when Site Redirect is available. It helps individual creators in Taiwan plan the move and identifies features and billing items that need separate attention after the new site is ready.",
+      "hero": {
+        "src": "/guides/wordpress-com-migration/hero-en.jpg",
+        "alt": "Original illustration of an article document, a media folder, and a new host, showing the handoff of WordPress.com content and media.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After writing on WordPress.com for some time, you may want to run WordPress on a host you manage. Both platforms let you publish posts, but one export will not automatically preserve the design, images, subscriber relationships, and old URLs. Break those parts down before moving so you know what can transfer directly and what must be rebuilt."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you have collected personal stories and want to keep their dates, comments, and photos while changing the reading layout. A content export may suit that goal better than cloning the whole site. If you also need plugin settings and the overall design, assess a compatible whole-site migration method. Choose a process by the handoff it achieves, rather than the age of the site or how much you paid."
+        },
+        {
+          "type": "heading",
+          "text": "Start with your current plan and address",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Note whether the site uses the free plan or a paid plan, whether plugins are installed, and whether its public address is a .wordpress.com subdomain or a domain you own. According to the official guidance checked for this article, every paid WordPress.com plan can install plugins; a free site must upgrade. The older rule that only Business can install plugins no longer applies."
+        },
+        {
+          "type": "paragraph",
+          "text": "Plugin access does not make every migration tool compatible, and paid plans do not all offer the same full-backup download features. First check what the old site can export and what the new host can import, then choose a tool. List posts, media, layouts, forms, subscribers, and the domain separately, including anything with no automatic transfer route."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Record the plan, plugin activation, current public URL, and where the domain is managed.",
+            "List the posts, media, comments, and extra features that must be retained.",
+            "Choose a content export or a compatible whole-site migration, then prepare the new host and a test environment."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Use XML for content and keep the old site available for media",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In WordPress.com, go to Tools → Export, select all content or a defined subset, and download the export. XML mainly stores text content and media references; it does not contain the actual image files, theme design, or plugins. A large export may arrive as an archive containing several XML files. Include every file in your import checklist."
+        },
+        {
+          "type": "paragraph",
+          "text": "The destination importer needs access to media on the old site to copy files referenced by the XML. Official guidance says the old site must remain publicly accessible; do not delete it or make it private before the transfer finishes. If it already contains material that must not be public, ask support about another transfer method instead of exposing confidential content just to retrieve images."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can remove unwanted material before exporting, but do not rush to permanently delete drafts or comments merely to reduce file size. Keep the original export, then process smaller batches by date or content type and record each range. If a batch fails, you can identify what to retry without reimporting the entire site."
+        },
+        {
+          "type": "heading",
+          "text": "Import to the self-hosted site, then check authors and content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Install a suitable WordPress environment on the new host, create the required administrator accounts, and arrange backups. Under Tools → Import, choose WordPress, install or run the importer as prompted, select an XML file, map authors, choose the attachment option, and run it. Screen labels may vary by version or language; follow the current importer prompts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test a small, recognizable subset first. Check that dates, categories, tags, comments, and author assignments match expectations before importing the remaining batches. A completion message only means the process ended. Sample long posts, unusual characters, galleries, and embeds too. Special blocks used on the old site may need corresponding plugins on the new one."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the import times out or partly fails, save the error, filename, and number of imported items, then investigate. Do not keep pressing Retry without knowing the current state. Compare post and media inventories first; if needed, validate the process again on a clean test copy before the production import."
+        },
+        {
+          "type": "heading",
+          "text": "An image appearing is not proof of where its file lives",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare media inventories and counts on both sites. Sample actual image URLs, original-size files, featured images, and downloadable attachments. A page can look fine while it still loads images directly from the old site; those images may break when that site stops serving files. Confirm local copies in the new site’s media library and storage, rather than relying on what you can see on the page."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can separately save original media files for safekeeping. WordPress.com offers different media-export routes depending on plan and plugin status: sites without plugins can use the media export under Tools, while plugin-enabled plans must use the applicable official plugin or backup route. A media archive does not replace the post XML; each serves a different purpose."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make a sampling checklist for the most important content, such as the home-page hero, a post with many images, one PDF, and one video. Record the old item, its new location, and the test result so gaps have a clear owner. Keep captions and alternative text when rebuilding the layout; otherwise, migrated content loses context for readers."
+        },
+        {
+          "type": "heading",
+          "text": "Handle subscribers and old URLs separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Email subscribers do not move automatically when you import post XML. If you use Jetpack subscriptions, check that both sites are connected and that you meet the ownership requirements of its official migration tool. The guidance distinguishes email subscribers from WordPress.com Reader followers, and the tool does not transfer like counts. Do not promise that every interaction will carry over."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you used your own domain and its URLs will remain unchanged, you can point that domain to the new host. That is different from transferring the domain to another registrar. Consider paid Site Redirect only when you need to send an old .wordpress.com address to an external site. Current official guidance says this feature is unavailable on sites with plugins installed or hosting features activated, so check the account state first."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site qualifies for Site Redirect, check that the new site uses matching post paths. The official setup begins with an HTTP destination; the new site must correctly redirect to HTTPS itself. Testing only the home page is insufficient: old social post links, date-based paths, and download entry points all need sensible destinations. If the feature is unavailable, ask official support about alternatives."
+        },
+        {
+          "type": "heading",
+          "text": "Only after the handoff, review old subscriptions and maintenance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Once content, media, forms, subscriptions, and old links work on the new site, review paid items you no longer need on the old one. Plans, domains, email, and redirects may be billed separately. Record each renewal date, reason to retain the service, and effect of cancellation, so canceling a site plan does not remove an entry point still in use."
+        },
+        {
+          "type": "paragraph",
+          "text": "A self-hosted site needs a named owner for updates, backups, accounts, and incident response. Document how to access the new host, where backups are stored, and how content is updated. Create a restorable backup in the new environment. Keep the old export, image copies, and migration log for now so you can investigate older material later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, test the path a normal reader takes: open an old shared post, read the article, open an image, and send a contact form or subscribe. Only when that sequence works have you handed off the reader relationship. An importer saying “complete” is just one step in the move."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-com-migration/diagram-1-en.svg",
+          "alt": "Original four-column diagram covering plan and scope, content import, media and layout checks, and the handoff of subscribers and old URLs.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Let the new site fully serve readers before deciding when to retain or retire old services.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Common handoff method",
+            "Check separately"
+          ],
+          "rows": [
+            [
+              "Posts and comments",
+              "Export XML, then use the WordPress importer",
+              "Dates, authors, categories, and special blocks"
+            ],
+            [
+              "Images and attachments",
+              "Retrieve from the old site and create local copies",
+              "Actual storage location and file completeness"
+            ],
+            [
+              "Layout and plugins",
+              "Rebuild or use a compatible whole-site migration",
+              "Licenses, settings, and functionality"
+            ],
+            [
+              "Subscribers",
+              "Jetpack migration when eligible",
+              "Ownership and different follower types"
+            ],
+            [
+              "Old URLs",
+              "Point your domain or use an appropriate redirect service",
+              "Account eligibility and inner-page paths"
+            ]
+          ],
+          "caption": "Every row needs its own outcome; a matching post count does not prove the whole site was handed over."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Do not delete the old site too soon",
+          "text": "Media copying, old links, and subscriber handoff may still depend on the old site. Keep it until those checks pass, and distinguish deleting the site, canceling a plan, and stopping domain renewal."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choosing between WordPress.com and self-hosted WordPress",
+              "kind": "life",
+              "slug": "wordpress-com-org-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Moving hosts while keeping your domain",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Moving a site to a new domain",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.com: Export content",
+          "url": "https://wordpress.com/support/export/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com: Current plugin plans",
+          "url": "https://wordpress.com/support/plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Import tools",
+          "url": "https://wordpress.org/documentation/article/tools-import-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com: Media export and plan differences",
+          "url": "https://wordpress.com/support/export-your-media-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com: Site Redirect eligibility",
+          "url": "https://wordpress.com/support/domains/site-redirect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Jetpack: Subscriber migration requirements and steps",
+          "url": "https://jetpack.com/support/subscription-migration-tool/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress.com から自分で運用する WordPress へ：記事・メディア・URL の引き継ぎ",
+      "description": "WordPress.com のサイトを自分で運用する WordPress に移す前に、プラン、ドメイン、コンテンツの引き継ぎ方法を確認します。無料・有料サイトで使える手順、XML のエクスポートとインポート、画像ファイルの検証、購読者の移行、Site Redirect の適用条件を整理します。台湾の個人クリエイターが移行を計画する際に役立つよう、新サイトの完成後に別途対応すべき機能と請求項目も説明します。",
+      "hero": {
+        "src": "/guides/wordpress-com-migration/hero-ja.jpg",
+        "alt": "記事の文書、メディアフォルダー、新しいホストで WordPress.com のコンテンツとメディアの引き継ぎを表したオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WordPress.com でしばらく記事を書いた後、自分でホストを管理する WordPress に移りたくなることがあります。どちらも記事を書けますが、一度エクスポートするだけで外観、画像、購読関係、旧 URL のすべてが引き継がれるわけではありません。移行前に項目を分け、直接移せるものと作り直すものを把握しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、日々の記録が増え、記事の日付、コメント、写真を残しながら新しい閲覧レイアウトに変えたい場合は、サイト全体の複製よりコンテンツのエクスポートが適するかもしれません。プラグインの設定やデザイン全体も残すなら、互換性のあるサイト全体の移行方法を検討します。運営年数や支払額ではなく、必要な引き継ぎ結果から手順を選びます。"
+        },
+        {
+          "type": "heading",
+          "text": "現在のプランと URL から確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "無料プランかどの有料プランか、プラグインが導入されているか、公開 URL が .wordpress.com のサブドメインか独自ドメインかを記録します。本記事の確認時点の公式案内では、WordPress.com の有料プランはすべてプラグインを導入できます。無料サイトにはアップグレードが必要です。「Business だけが導入可能」という古い判断を当てはめないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインを使えても、すべての移行ツールが対応するとは限りません。有料プラン間でもサイト全体のバックアップをダウンロードする機能は同じではありません。旧サイトで何をエクスポートでき、新しいホストで何を受け入れられるかを確認してからツールを選びます。記事、メディア、レイアウト、フォーム、購読者、ドメインを項目ごとに列挙し、自動移行できないものも記録します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "プラン、プラグインの有効化状態、現在の公開 URL、ドメインの管理場所を記録する。",
+            "残す必要がある記事、メディア、コメント、追加機能を列挙する。",
+            "コンテンツのエクスポートか互換性のあるサイト全体の移行を選び、新しいホストとテスト環境を用意する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "XML でコンテンツを移し、メディア取得のため旧サイトを残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.com の管理画面で「ツール → エクスポート」を開き、全コンテンツか対象範囲を選んでファイルをダウンロードします。XML に主に保存されるのはテキストとメディアへの参照で、画像の実ファイル、テーマのデザイン、プラグインは含まれません。容量が大きい場合は複数の XML が入った圧縮ファイルになることがあります。すべてをインポート一覧に入れてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移行先のインポート処理が XML 内の参照からファイルを複製するには、旧サイトのメディアにアクセスする必要があります。公式案内では旧サイトを公開状態でアクセス可能に保つことが求められ、完了前に削除したり非公開にしたりしてはいけません。公開できない情報が元からある場合は、画像取得のため機密情報を公開するのではなく、サポートに別の移行方法を相談してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エクスポート前に不要なコンテンツを整理できますが、容量を減らすためだけに下書きやコメントを急いで完全削除する必要はありません。元のエクスポートを保存し、日付や種類ごとに分けて処理範囲を記録します。失敗した範囲を特定でき、サイト全体の重複インポートを避けられます。"
+        },
+        {
+          "type": "heading",
+          "text": "自分で運用するサイトに取り込み、著者と内容を照合する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新サイトに適切な WordPress 環境を用意し、必要な管理者アカウントとバックアップを整えます。「ツール → インポート」で WordPress を選び、画面の指示に従ってインポーターを導入または実行します。XML を選択し、著者の割り当てと添付ファイルのオプションを設定して実行します。画面の名称はバージョンや言語で異なるため、現在の案内に従ってください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず識別しやすい少量のデータで試し、記事の日付、カテゴリー、タグ、コメント、著者の割り当てを確認してから残りの範囲を処理します。完了表示は処理が終わったことしか示しません。長い記事、特殊文字、ギャラリー、埋め込みも抜き取り確認します。旧サイト特有のブロックは、新サイトで同じ動作をするために対応プラグインが必要な場合があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "タイムアウトや一部失敗が起きたら、エラー、ファイル名、取り込めた件数を保存して原因を調べます。現在の状態が分からないまま再試行を繰り返さないでください。記事とメディアの一覧を比較し、必要ならクリーンなテスト用コピーで手順を再検証してから本番へ移します。"
+        },
+        {
+          "type": "heading",
+          "text": "画像が表示されても、実ファイルの保存先を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新旧サイトのメディア一覧と件数を比較し、画像の実際の URL、原寸ファイル、アイキャッチ画像、ダウンロード添付ファイルを抜き取り確認します。旧サイトの画像を直接読み込んでいてもページは正常に見えますが、旧サイトが提供をやめると表示できません。見た目だけで判断せず、新サイトのメディア管理画面と保存先で自分のコピーがあることを確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存用にメディアの原本を別途保管することもできます。WordPress.com のメディアエクスポート方法は、プラグインの有効化状態とプランで異なります。プラグインのないサイトではツール内のメディアエクスポートを使えますが、プラグインを有効にしたプランでは公式が案内する該当プラグインまたはバックアップの方法を使います。メディアの圧縮ファイルは記事 XML の代わりにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要なコンテンツについて、トップページの画像、画像の多い記事、PDF、動画などの確認表を作ります。旧サイトの項目、新しい保存先、テスト結果を記録すれば、欠落を追跡できます。レイアウトを作り直す際もキャプションと代替テキストを残し、移した内容の文脈を失わないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "購読者と旧 URL は別々に引き継ぐ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事 XML をインポートしても、メール購読者は新サイトへ自動的には移りません。Jetpack の購読機能を使っている場合は、公式移行ツールの案内に従い、両サイトの接続と所有者の条件を確認します。公式案内はメール購読者と WordPress.com Reader のフォロワーを区別し、このツールでは「いいね」の件数も移りません。すべての反応データが残るとは約束しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独自ドメインを使っており、移行後も URL が変わらないなら、そのドメインの向き先を新しいホストに変更できます。これは別の登録事業者へドメインを移管することとは異なります。旧 .wordpress.com の入口を外部サイトへ送る必要がある場合に限り、有料の Site Redirect を検討します。現在の公式案内では、プラグインを導入したサイトやホスティング機能を有効にしたサイトでは使えないため、まずアカウントの状態を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Redirect の条件を満たす場合も、新サイトの記事パスが旧サイトと一致するか調べます。公式の設定手順では転送先を HTTP で指定し、新サイト自身が HTTPS へ正しく転送する必要があります。トップページだけのテストでは不十分です。旧 SNS 投稿のリンク、日付入りのパス、ダウンロード入口に妥当な転送先があるか確認します。使えない場合は公式サポートに代替策を相談してください。"
+        },
+        {
+          "type": "heading",
+          "text": "引き継ぎ後に旧契約と運用を見直す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新サイトでコンテンツ、メディア、フォーム、購読、旧リンクが動くと確認してから、旧サイトの不要な有料項目を見直します。プラン、ドメイン、メール、転送は別々に課金される可能性があります。更新日、残す理由、解約時の影響をそれぞれ記録し、サイトのプラン解約で必要な入口を失わないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自分で運用するサイトでは、更新、バックアップ、アカウント、障害対応の担当者を明確にします。新しいホストへのログイン方法、バックアップの保存先、記事更新の手順を引き継ぎ文書にまとめ、新環境で復元可能なバックアップを作ります。旧サイトのエクスポート、画像のコピー、作業記録も当面保存し、過去の記事の確認に備えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に通常の読者の動線を試します。古い投稿リンクからサイトへ入り、記事を読み、画像を開き、問い合わせフォームを送信するか購読します。一連の操作が通って初めて読者との接点を引き継げます。インポーターの「完了」表示は移行の一工程にすぎません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-com-migration/diagram-1-ja.svg",
+          "alt": "プランと対象範囲、コンテンツの取り込み、メディアとレイアウトの検証、購読者と旧 URL の引き継ぎを四列で示すオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "新サイトが読者を十分に受け入れてから、旧サービスの維持と停止を決めます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "主な引き継ぎ方法",
+            "別途確認すること"
+          ],
+          "rows": [
+            [
+              "記事とコメント",
+              "XML をエクスポートし WordPress でインポート",
+              "日付、著者、カテゴリー、特殊ブロック"
+            ],
+            [
+              "画像と添付ファイル",
+              "旧サイトから取得して新しいコピーを作成",
+              "実際の保存先とファイルの完全性"
+            ],
+            [
+              "レイアウトとプラグイン",
+              "再構築または互換性のあるサイト全体の移行",
+              "ライセンス、設定、機能"
+            ],
+            [
+              "購読者",
+              "条件を満たす場合の Jetpack 移行",
+              "所有者の条件とフォロワーの種類"
+            ],
+            [
+              "旧 URL",
+              "独自ドメインの向き先変更または適切な転送",
+              "アカウントの適用条件と個別ページのパス"
+            ]
+          ],
+          "caption": "記事数だけでサイト全体の引き継ぎを判断せず、各項目に結果を残します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "旧サイトを早く削除しない",
+          "text": "メディアの複製、旧リンク、購読者の引き継ぎには旧サイトが必要な場合があります。関連する確認が終わるまで残し、サイトの削除、プランの解約、ドメイン更新の停止を区別してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress.com と自分で運用する WordPress の選び方",
+              "kind": "life",
+              "slug": "wordpress-com-org-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ドメインを維持してホストを移す方法",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトを新しいドメインへ移す手順",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.com：コンテンツのエクスポート",
+          "url": "https://wordpress.com/support/export/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com：現在のプラグイン対応プラン",
+          "url": "https://wordpress.com/support/plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：インポートツール",
+          "url": "https://wordpress.org/documentation/article/tools-import-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com：メディアのエクスポートとプランの違い",
+          "url": "https://wordpress.com/support/export-your-media-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com：Site Redirect の適用条件",
+          "url": "https://wordpress.com/support/domains/site-redirect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Jetpack：購読者移行の条件と手順",
+          "url": "https://jetpack.com/support/subscription-migration-tool/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress.com에서 직접 호스팅하는 WordPress로 이전하기: 콘텐츠, 미디어, URL 인계",
+      "description": "WordPress.com 사이트를 직접 호스팅하는 WordPress로 옮기기 전에 요금제, 도메인, 콘텐츠별 인계 방법을 확인하세요. 무료·유료 사이트에서 가능한 절차, XML 내보내기와 가져오기, 실제 이미지 파일 검증, 구독자 이전, Site Redirect 적용 조건을 설명합니다. 대만의 개인 창작자가 이전을 계획할 때 필요한 정보와 새 사이트가 준비된 뒤 별도로 처리할 기능 및 결제 항목도 다룹니다.",
+      "hero": {
+        "src": "/guides/wordpress-com-migration/hero-ko.jpg",
+        "alt": "글 문서, 미디어 폴더, 새 호스트로 WordPress.com 콘텐츠와 미디어 인계를 표현한 자체 제작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WordPress.com에 글을 올리다가 직접 호스트를 관리하는 WordPress로 옮기고 싶을 수 있습니다. 두 곳 모두 글을 게시할 수 있지만 한 번 내보낸다고 디자인, 이미지, 구독 관계, 이전 URL까지 모두 이어지는 것은 아닙니다. 이전 전에 항목을 나누어 무엇을 바로 옮길 수 있고 무엇을 다시 만들어야 하는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 생활 기록을 모아 두었고 글의 날짜, 댓글, 사진은 유지하면서 읽기 화면을 바꾸려 한다면 사이트 전체 복제보다 콘텐츠 내보내기가 알맞을 수 있습니다. 플러그인 설정과 전체 디자인까지 보존해야 한다면 호환되는 사이트 전체 이전 방법을 검토해야 합니다. 사이트 운영 기간이나 지불 금액이 아니라 필요한 인계 결과를 기준으로 절차를 선택합니다."
+        },
+        {
+          "type": "heading",
+          "text": "현재 요금제와 주소부터 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "무료 또는 어떤 유료 요금제를 쓰는지, 플러그인을 설치했는지, 공개 주소가 .wordpress.com 하위 도메인인지 자체 도메인인지 적어 둡니다. 이 글의 확인 시점에 나온 공식 안내에 따르면 모든 WordPress.com 유료 요금제에서 플러그인을 설치할 수 있고 무료 사이트는 업그레이드가 필요합니다. “Business에서만 플러그인을 설치할 수 있다”는 예전 기준을 적용하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인 사용 권한이 있어도 모든 이전 도구가 호환되는 것은 아니며, 모든 유료 요금제가 동일한 전체 백업 다운로드 기능을 제공하지도 않습니다. 기존 사이트에서 무엇을 내보낼 수 있고 새 호스트가 무엇을 받아들일 수 있는지 먼저 확인한 뒤 도구를 고릅니다. 글, 미디어, 화면 구성, 양식, 구독자, 도메인을 각각 나열하고 자동으로 옮길 방법이 없는 항목도 기록하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "요금제, 플러그인 활성화 상태, 현재 공개 URL, 도메인 관리 위치를 기록합니다.",
+            "반드시 보존할 글, 미디어, 댓글, 추가 기능을 나열합니다.",
+            "콘텐츠 내보내기 또는 호환되는 사이트 전체 이전을 선택하고 새 호스트와 테스트 공간을 준비합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "XML로 콘텐츠를 인계하고 미디어를 가져올 수 있게 기존 사이트 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress.com 관리자 화면의 ‘도구 → 내보내기’에서 전체 콘텐츠나 지정 범위를 선택하고 파일을 내려받습니다. XML에는 주로 텍스트 콘텐츠와 미디어 참조가 담기며 실제 이미지 파일, 테마 디자인, 플러그인은 포함되지 않습니다. 파일이 크면 여러 XML이 담긴 압축 파일을 받을 수 있으므로 모든 파일을 가져오기 목록에 포함하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "대상 사이트의 가져오기 과정에서 XML이 참조하는 파일을 복사하려면 기존 사이트의 미디어에 접근할 수 있어야 합니다. 공식 안내에 따라 기존 사이트를 공개적으로 접근 가능한 상태로 유지하고 완료 전에는 삭제하거나 비공개로 바꾸지 마세요. 원래 공개하면 안 되는 자료가 있다면 이미지를 받기 위해 비밀 정보를 노출하지 말고 지원팀에 다른 이전 방법을 문의하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "내보내기 전에 불필요한 콘텐츠를 정리할 수 있지만 파일을 줄이려고 초안이나 댓글을 서둘러 영구 삭제할 필요는 없습니다. 원본 내보내기 파일을 보관한 다음 날짜나 콘텐츠 유형별로 나누어 처리하고 각 범위를 기록하세요. 실패하면 어느 부분을 다시 시도할지 알 수 있어 사이트 전체를 중복으로 가져오지 않아도 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "직접 호스팅하는 사이트로 가져온 뒤 작성자와 내용 대조하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 호스트에 적절한 WordPress 환경을 설치하고 필요한 관리자 계정과 백업을 준비합니다. ‘도구 → 가져오기’에서 WordPress를 선택해 화면 안내에 따라 가져오기 도구를 설치하거나 실행하고 XML을 고릅니다. 작성자를 연결하고 첨부 파일 옵션을 선택한 뒤 실행하세요. 화면 명칭은 버전이나 언어에 따라 다를 수 있으므로 현재 표시되는 안내를 따릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "식별하기 쉬운 작은 범위부터 시험해 글 날짜, 카테고리, 태그, 댓글, 작성자 배정이 예상과 맞는지 확인하고 나머지를 처리합니다. 완료 메시지는 절차가 끝났다는 뜻일 뿐입니다. 긴 글, 특수 문자, 갤러리, 삽입 콘텐츠도 표본 검사하세요. 기존 사이트의 특수 블록은 새 사이트에서 같은 방식으로 동작하려면 해당 플러그인이 필요할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시간 초과나 일부 실패가 발생하면 오류 메시지, 파일명, 이미 가져온 항목 수를 보관하고 원인을 조사합니다. 현재 상태를 모른 채 재시도를 계속 누르지 마세요. 글과 미디어 목록을 먼저 비교하고 필요하면 깨끗한 테스트 복사본에서 절차를 다시 검증한 후 운영 사이트로 옮깁니다."
+        },
+        {
+          "type": "heading",
+          "text": "이미지가 보인다고 실제 파일의 위치까지 확인된 것은 아닙니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "두 사이트의 미디어 목록과 개수를 비교하고 실제 이미지 URL, 원본 크기 파일, 대표 이미지, 다운로드 첨부 파일을 표본 검사합니다. 새 페이지가 기존 사이트의 이미지를 직접 불러오면 겉으로는 정상처럼 보여도 기존 사이트가 파일 제공을 멈추면 깨집니다. 눈에 보이는지만 판단하지 말고 새 사이트의 미디어 관리 화면과 저장 위치에서 자체 복사본을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "보관용으로 미디어 원본을 별도로 저장할 수도 있습니다. WordPress.com의 미디어 내보내기 경로는 플러그인 활성화와 요금제에 따라 다릅니다. 플러그인이 없는 사이트는 도구의 미디어 내보내기를 사용할 수 있지만 플러그인을 활성화한 요금제는 공식 안내에 맞는 플러그인 또는 백업 방법을 써야 합니다. 미디어 압축 파일은 글 XML을 대신하지 못하며 용도가 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가장 중요한 콘텐츠를 위한 표본 점검표를 만드세요. 예를 들어 첫 화면의 대표 이미지, 이미지가 많은 글, PDF 한 개, 동영상 한 개를 확인합니다. 기존 항목, 새 위치, 테스트 결과를 기록하면 누락된 항목을 추적할 수 있습니다. 화면을 다시 만들 때 이미지 설명과 대체 텍스트도 유지해 옮긴 콘텐츠의 맥락이 사라지지 않게 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "구독자와 이전 URL은 따로 인계하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글 XML을 가져와도 이메일 구독자는 새 사이트로 자동 이전되지 않습니다. Jetpack 구독 기능을 쓴다면 공식 이전 도구의 안내에 따라 두 사이트의 연결과 소유자 자격을 확인하세요. 공식 문서는 이메일 구독자와 WordPress.com Reader 팔로워를 구분하며, 해당 도구는 좋아요 수도 옮기지 않습니다. 모든 상호작용 데이터가 이어진다고 약속하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존에 자체 도메인을 사용했고 이전 뒤에도 URL이 그대로라면 그 도메인이 새 호스트를 가리키게 할 수 있습니다. 이는 도메인을 다른 등록업체로 이전하는 것과 다릅니다. 예전 .wordpress.com 주소를 외부 사이트로 보내야 할 때만 유료 Site Redirect를 검토하세요. 현재 공식 안내에 따르면 플러그인이 설치되었거나 호스팅 기능이 활성화된 사이트에는 적용되지 않으므로 계정 상태를 먼저 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Site Redirect 조건에 맞더라도 새 사이트의 글 경로가 기존 사이트와 일치하는지 확인합니다. 공식 설정 절차에서는 HTTP 목적지로 시작하며 새 사이트가 스스로 HTTPS로 올바르게 보내야 합니다. 첫 화면만 시험하고 끝내지 마세요. 예전 소셜 게시물 링크, 날짜가 포함된 경로, 다운로드 입구 모두 적절한 목적지로 연결되어야 합니다. 기능을 쓸 수 없다면 공식 지원팀에 대안을 문의하세요."
+        },
+        {
+          "type": "heading",
+          "text": "인계가 끝난 뒤 기존 구독과 유지 관리 검토하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 사이트의 콘텐츠, 미디어, 양식, 구독, 예전 링크가 모두 동작함을 확인한 후에만 기존 사이트에서 더는 필요 없는 유료 항목을 살펴봅니다. 요금제, 도메인, 이메일, 리디렉션은 별도로 청구될 수 있습니다. 각각의 갱신일, 유지 이유, 취소 효과를 적어 사이트 요금제를 취소하다가 필요한 입구를 잃지 않게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 호스팅하는 사이트에는 업데이트, 백업, 계정, 장애 대응의 담당자가 필요합니다. 새 호스트 로그인 방법, 백업 저장 위치, 콘텐츠 업데이트 절차를 인계 문서에 넣고 새 환경에서 복원할 수 있는 백업을 만드세요. 기존 사이트의 내보내기 파일, 이미지 복사본, 처리 기록도 당분간 보관해 옛 콘텐츠를 다시 확인할 수 있게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 일반 독자의 경로를 시험합니다. 오래된 공유 글에서 사이트에 들어와 글을 읽고 이미지를 열어 본 뒤 문의 양식을 보내거나 구독해 보세요. 이 흐름이 모두 통과해야 독자와의 연결이 제대로 이어진 것입니다. 가져오기 도구의 ‘완료’ 표시는 이전 과정의 한 단계일 뿐입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-com-migration/diagram-1-ko.svg",
+          "alt": "요금제와 범위 확인, 콘텐츠 가져오기, 미디어와 화면 검증, 구독자와 이전 URL 인계를 네 칸에 정리한 자체 제작 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "새 사이트가 독자를 완전히 받아들인 뒤 기존 서비스의 유지와 중단을 결정하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "일반적인 인계 방법",
+            "별도 확인 사항"
+          ],
+          "rows": [
+            [
+              "글과 댓글",
+              "XML 내보내기 후 WordPress로 가져오기",
+              "날짜, 작성자, 카테고리, 특수 블록"
+            ],
+            [
+              "이미지와 첨부 파일",
+              "기존 사이트에서 가져와 새 복사본 만들기",
+              "실제 저장 위치와 파일 완전성"
+            ],
+            [
+              "화면과 플러그인",
+              "다시 만들거나 호환되는 전체 이전",
+              "라이선스, 설정, 기능"
+            ],
+            [
+              "구독자",
+              "조건을 충족할 때 Jetpack 이전",
+              "소유자 자격과 팔로워 유형"
+            ],
+            [
+              "이전 URL",
+              "자체 도메인 연결 변경 또는 적절한 리디렉션",
+              "계정 적용 조건과 개별 페이지 경로"
+            ]
+          ],
+          "caption": "글 개수만으로 전체 인계를 판단하지 말고 각 항목의 결과를 기록하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "기존 사이트를 너무 일찍 삭제하지 마세요",
+          "text": "미디어 복사, 예전 링크, 구독자 인계에 기존 사이트가 여전히 필요할 수 있습니다. 관련 검증이 끝날 때까지 유지하고 사이트 삭제, 요금제 취소, 도메인 갱신 중단의 차이를 구분하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress.com과 직접 호스팅하는 WordPress 비교",
+              "kind": "life",
+              "slug": "wordpress-com-org-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "도메인을 유지하며 호스트 이전하기",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트를 새 도메인으로 옮기기",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.com: 콘텐츠 내보내기",
+          "url": "https://wordpress.com/support/export/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com: 현재 플러그인 요금제",
+          "url": "https://wordpress.com/support/plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 가져오기 도구",
+          "url": "https://wordpress.org/documentation/article/tools-import-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com: 미디어 내보내기와 요금제 차이",
+          "url": "https://wordpress.com/support/export-your-media-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com: Site Redirect 적용 조건",
+          "url": "https://wordpress.com/support/domains/site-redirect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Jetpack: 구독자 이전 조건과 절차",
+          "url": "https://jetpack.com/support/subscription-migration-tool/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "从 WordPress.com 搬到自建站：内容、媒体与网址交接",
+      "description": "想把 WordPress.com 网站搬到自行托管的 WordPress，先确认方案、网址与内容的交接方式。本篇整理免费与付费网站可用流程、XML 导出导入、图片文件验收、订阅者迁移及 Site Redirect 的适用条件，协助台湾个人创作者安排搬迁，也说明哪些功能与帐务需要在新站完成后另行处理。",
+      "hero": {
+        "src": "/guides/wordpress-com-migration/hero-zh-cn.jpg",
+        "alt": "原创文章文档、媒体文件夹与新主机，表示 WordPress.com 内容及媒体交接。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "使用 WordPress.com 写作一段时间后，可能想换成自己管理主机的 WordPress。两边都能写文章，不代表导出一次就能把外观、图片、订阅关系与旧网址全部接好。搬迁前先把这些项目拆开，会比较清楚哪些能直接迁移，哪些需要重建。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设你累积了一批生活记录，希望保留文章日期、留言与照片，再换一个新的阅读版面。这时内容导出可能比完整复制更符合需求；如果连插件设置与整体设计都想保留，就要评估兼容的整站迁移方式。本篇以交接结果选流程，不以网站运营时间或付费金额决定。"
+        },
+        {
+          "type": "heading",
+          "text": "从目前方案与网址开始盘点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先记下网站使用免费方案或哪一种付费方案、是否安装插件，以及公开网址是 .wordpress.com 子域名还是自有域名。依查证时的官方说明，所有 WordPress.com 付费方案都可安装插件；免费站需要升级才能使用，因此不要再套用「只有 Business 才能装插件」的旧判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有插件权限不代表每个搬家工具都兼容，也不代表所有付费方案都具有相同的完整备份下载功能。先确认旧站能导出什么、新主机接受什么，再选工具。把文章、媒体、版面、表单、订阅者及域名逐项列出，没有自动迁移途径的部分也要记录。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "记录方案、插件激活状态、目前公开网址及域名管理位置。",
+            "列出必须保留的文章、媒体、留言与额外功能。",
+            "选择内容导出或兼容的整站迁移，再准备新主机与测试空间。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "用 XML 交接内容，保留旧站供媒体获取",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WordPress.com 后台进入「工具 → 导出」，选全部内容或指定范围，下载导出文件。XML 主要保存文本内容与媒体参照，不包含实际图片文件、主题设计或插件。文件比较大时可能收到含多份 XML 的压缩文件，记得把每一份都列进导入清单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目标站的导入流程需要访问旧站媒体，才能依 XML 中的参照复制文件。官方要求旧站保持公开可访问，完成前不要删除或改成私密。若旧站本来有不适合公开的数据，先与官方支持确认其他迁移方式，不要为了下载图片而把机密内容直接公开。"
+        },
+        {
+          "type": "paragraph",
+          "text": "导出前可整理不需要的内容，但不必为了缩小文件就急着永久删除草稿或留言。先保留原始导出，再依日期或内容类型分批处理，并记下每批范围。这样失败时能知道要重试哪一段，避免重复导入整个网站。"
+        },
+        {
+          "type": "heading",
+          "text": "在自建站导入，再核对作者与内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新站先安装合适的 WordPress 环境，创建需要的管理账号与备份。在「工具 → 导入」选 WordPress，依画面安装或运行导入器，选择 XML 文件，处理作者对应与附件选项后运行。画面名称可能随版本或语言不同，以目前导入器提示为准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先用一个可辨识的小范围验证，确认文章日期、分类、标签、留言与作者归属符合预期，再处理剩余批次。导入完成消息只表示流程结束，还要抽查长文章、特殊符号、图库与嵌入内容。旧站依赖的特殊区块，在新站可能需要对应插件才有相同行为。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若发生超时或部分失败，保存错误消息、文件名及已导入笔数，先查明原因。不要在不确定目前状态时一直按重试；先比较文章与媒体清单，必要时在干净的测试副本重新验证流程，再安排正式导入。"
+        },
+        {
+          "type": "heading",
+          "text": "图片能显示，还要确认文件在哪里",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把新旧媒体清单与数量比对，再抽查图片实际网址、原尺寸文件、特色图片与下载附件。页面若仍直接引用旧站图片，看起来可能正常，但旧站停止提供文件时就会失效。以新站媒体管理和文件位置确认已创建自己的副本，不能只靠眼睛看到照片判定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以另存媒体原始文件作为保存用途。WordPress.com 的媒体导出入口依是否已激活插件及方案不同：没有插件的站可使用工具中的媒体导出；已激活插件的方案需走官方相应的插件或备份方式。媒体压缩文件也不能代替文章 XML，两者用途不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为最重要的内容做一张抽查表，例如首页主图、一篇多图文章、一个 PDF 与一段音视频。记录旧站项目、新站位置及测试结果，发现缺漏就有明确追踪对象。版面重建时保留图片说明与替代文本，避免内容搬过来却失去阅读脉络。"
+        },
+        {
+          "type": "heading",
+          "text": "分开安排订阅者与旧网址",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "电子邮件订阅者不会因文章 XML 导入就自动转到新站。若使用 Jetpack 的订阅功能，依官方迁移工具确认两站连接及拥有者资格。官方说明也区分电子邮件订阅者与 WordPress.com Reader 追踪者，且点赞数不在该工具迁移范围，不应承诺所有互动数据完整延续。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原来使用自有域名，且搬后网址保持不变，可安排域名指向新主机；这与把域名转到另一家注册商是两件事。若要把旧 .wordpress.com 入口跳转到站外，才评估付费 Site Redirect。官方目前说明此功能不适用于已安装插件或已激活托管功能的站，需先确认账号状态。"
+        },
+        {
+          "type": "paragraph",
+          "text": "符合 Site Redirect 条件时，也要检查新站的文章路径与旧站相符。官方设置流程以 HTTP 目的地起始，新站须自行正确跳转到 HTTPS。不要只测首页就宣布完成：旧社交媒体文章链接、含日期路径与下载入口都应有合理目的地。功能不符时，向官方支持确认可用的替代安排。"
+        },
+        {
+          "type": "heading",
+          "text": "交接完成后，再处理旧订阅与维护",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新站确认内容、媒体、表单、订阅与旧链接都能正常运作后，才检查旧站不再需要的付费项目。方案、域名、邮箱与重定向可能分开计费，逐项记录续约日、保留原因及取消效果，避免取消网站方案时忽略仍要使用的入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搬到自建站后，更新、备份、账号及故障处理需要有明确负责人。把新主机登录方式、备份保存位置与内容更新流程放进交接文档，再于新环境产生一份可还原的备份。旧站导出、图片副本与处理记录也先保留，方便补查早期内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后用一般读者的路径验收：从一则旧贴文进站、读完文章、打开图片、送出联系表单或订阅。这一连串操作通过，才证明读者联系有被接好；单一导入工具显示完成，仍只是搬迁的一个步骤。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-com-migration/diagram-1-zh-cn.svg",
+          "alt": "原创四栏图解，依次列出方案与范围盘点、内容导入、媒体和版面验收，以及订阅者和旧网址交接。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先让新站完整承接读者，再安排旧服务的保留与停用。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "常用交接方式",
+            "需要另外验收"
+          ],
+          "rows": [
+            [
+              "文章与留言",
+              "XML 导出后由 WordPress 导入",
+              "日期、作者、分类及特殊区块"
+            ],
+            [
+              "图片与附件",
+              "由旧站获取并创建新副本",
+              "实际保存位置与文件完整性"
+            ],
+            [
+              "版面与插件",
+              "重建或兼容的整站迁移",
+              "授权、设置及功能"
+            ],
+            [
+              "订阅者",
+              "符合条件的 Jetpack 迁移",
+              "拥有者资格与不同追踪方式"
+            ],
+            [
+              "旧网址",
+              "自有域名指向或合适的重定向服务",
+              "账号适用条件与内页路径"
+            ]
+          ],
+          "caption": "每一列都要有结果，不能只以文章数量代表整站交接。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "旧站不要太早删除",
+          "text": "媒体复制、旧链接与订阅者交接可能仍依赖旧站。保留到相关验收完成，并分清楚删除网站、取消方案与停止域名续约的不同效果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress.com 与自建站如何选",
+              "kind": "life",
+              "slug": "wordpress-com-org-choice"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "保留域名的主机搬迁",
+              "kind": "life",
+              "slug": "wordpress-host-migration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站搬到新域名的交接",
+              "kind": "life",
+              "slug": "wordpress-domain-migration"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.com：内容导出",
+          "url": "https://wordpress.com/support/export/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com：目前插件方案",
+          "url": "https://wordpress.com/support/plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：导入工具",
+          "url": "https://wordpress.org/documentation/article/tools-import-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com：媒体导出与方案差异",
+          "url": "https://wordpress.com/support/export-your-media-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress.com：Site Redirect 适用条件",
+          "url": "https://wordpress.com/support/domains/site-redirect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Jetpack：订阅者迁移条件与流程",
+          "url": "https://jetpack.com/support/subscription-migration-tool/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

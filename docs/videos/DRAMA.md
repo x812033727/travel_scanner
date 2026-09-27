@@ -60,7 +60,7 @@
 | --- | --- |
 | `look` | `{ preset?: cinematic-3d\|anime-2d\|ink-wash\|custom, style (≤600), negative?, motion?, candidates?: 2–4（預設 3）, style_frames?: string[] }`：全影片共用的風格提示詞 |
 | `characters[]` | `{ id（小寫，不可是 narrator）, name, appearance（≤800，英文，給圖片模型）, voice（同 doc.voice 的物件）, sheet_prompt? }` |
-| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt } }`；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
+| 鏡頭場景 | `template: "shot"`，`data: { prompt (≤1000), camera?, motion?, negative?, characters?: [id]（≤3）, fit?: auto\|freeze\|slow\|trim, seed?, transition?: cut\|dissolve, start_frame?: { shot, at: "last" }, end_frame?: { prompt }, visual?: clip\|still }`；`visual` 預設 `clip`，`still` 不買片段，由 `assemble` 用關鍵影格加運鏡（下面「畫面等級與運鏡」）；句子不能有 `reveal`。`title`／`chapter`／`outro` 卡片仍可用 |
 | 句子 | 多 `speaker?: narrator\|<角色 id>`（預設 narrator）與 `emotion?`（≤80，Gemini 併進 style；Azure 忽略並警告） |
 | `music` | `{ prompt? , track?, sha256?, gain_db (-20), duck_db (-10), fade_in_ms (1500), fade_out_ms (3000) }`：有 `prompt` 由 `music` 階段經伺服器生成；有 `track` 用 `<VIDEO_WORKDIR>/_music/` 的檔案 |
 | `subtitles` | `{ burn_in（drama 預設 true、slides 預設 false）, style: drama\|plain, speaker_prefix (false) }` |
@@ -71,6 +71,22 @@
 **id 與雜湊。** 鏡頭 id 就是場景 id、角色 id 穩定、句子 id 不變，快取都以 id＋內容雜湊為鍵。`speechHash` 納入每句的說話者、情緒與角色聲音；`visualHash` 已含 `scene.data`；新增 `lookHash`（look＋角色外觀）、`keyframeKey`、`clipKey`、`subtitlesHash`、`mixHash`（改音樂增益不會讓片段失效）。`checks.json` 記六個雜湊，`pipelineStatus` 全對才算成片完成。
 
 drama 的 `brief.md` 必要章節：「故事前提」「角色」「站主觀點」。
+
+### 畫面等級與運鏡（2026-09-27 加，設計在 [`BINGE.md`](BINGE.md)）
+
+長篇作品可以選每集有多少鏡頭買片段（`visual_tier`；單集漫劇沒有這個設定，全部是 clip）：
+
+| 等級 | 片段比例上限（`TIER_CLIP_SHARE_MAX`） | 30 鏡一集最多幾個 clip |
+| --- | --- | --- |
+| `clips` | 1 | 30（still 只警告） |
+| `hybrid` | 0.4 | 12 |
+| `stills` | 0.1 | 3 |
+
+- 鏡頭的 `data.visual` ∈ `VISUAL_MODES = ["clip", "still"]`。lint 從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（工人從作品寫進去；沒有就不檢查），超過上限是錯誤（`visualTierProblems`）。`clipsHash` 只算 clip 鏡頭。
+- `clips` 只為 clip 鏡頭生成；still 鏡頭在 `clips/manifest.json` 記 `{ still: true, file, sha256 }` 指向它通過 judge 的關鍵影格。
+- `assemble`：`layoutDrama` 對 still 鏡頭回 `kind: "motion"`；`motionSegmentArgs` 把關鍵影格 `-loop 1` 成該鏡的格數、放大 1.25 倍（`MOTION_SOURCE_SCALE`）、`zoompan`（`d=1`、以輸出格號 `on` 寫表達式、最後一格剛好到位）、`trim`，然後字幕條、溶接、色彩標記與編碼參數都與片段段相同，`-c copy` 串接不變；獨立 `MOTION_ENCODER_VERSION`。幅度小：push／pull 10%、pan／tilt 固定 1.08 倍、drift 4%。
+- 運鏡由 `motionMove(data)` 從 `camera`（其次 `motion`）的關鍵字決定：`push-in`（push、dolly in、zoom in、closer、move in）、`pull-out`（pull、zoom out、widen、back away）、`pan-right`（pan left、left to right：以畫面的移動方向命名，攝影機向左搖畫面往右跑）、`pan-left`（pan right、right to left）、`tilt-up`（tilt up、crane up、rise）、`tilt-down`（tilt down、crane down、descend）、其他 `drift`。
+- 檢查：`push-in` 與 `drift` 的第 0 格是整張關鍵影格，對它算 PSNR（≥ 22）；其他運鏡只驗格數；`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`。
 
 ## 產線與關卡
 

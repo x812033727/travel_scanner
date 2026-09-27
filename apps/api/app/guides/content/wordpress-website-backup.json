@@ -249,6 +249,962 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "How to back up WordPress: files, databases and restoration drills",
+      "description": "A successful backup message is not enough. Build a checklist for WordPress files, databases and off-site copies, then learn the UpdraftPlus and WPvivid controls, restore limitations and isolated drills needed to confirm recovery. Plan schedules, retained versions, configuration files and acceptance records so someone can restore a personal or studio website.",
+      "hero": {
+        "src": "/guides/wordpress-website-backup/hero-en.jpg",
+        "alt": "Three original illustrated cards show a folder, an off-site server and an acceptance-check shield, representing website backup and recovery.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Clicking backup before a plugin update and seeing a green success message does not guarantee recovery when the site breaks. Files may remain on the same host, the database may not have been saved with them, and even access to the backup account may depend on the website that has stopped working. What you need is a restoration path you can follow all the way through."
+        },
+        {
+          "type": "paragraph",
+          "text": "Think of backup as packing for a move: posts and settings are the contents list, images and programs are the boxes, off-site storage is another warehouse, and a restoration drill means opening the boxes to check that their contents work. This guide uses an ordinary single WordPress site to build a workflow you can check daily and hand over when something goes wrong."
+        },
+        {
+          "type": "heading",
+          "text": "First define how much data you can afford to lose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A personal site updated weekly and a studio taking bookings daily can tolerate different gaps in their data. First write down the longest period of content you could recreate, then choose the frequency. For example, if you save once every evening and a problem occurs in the afternoon, enquiries added that day may still be absent from the backup. This is a scheduling limitation; clicking restore afterward cannot recover that missing data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Website files typically include themes, plugins and uploaded media; the database contains posts, users and many settings. Full recovery often requires both from approximately the same point in time. Check separately how to preserve mailboxes, DNS, third-party form data and external storage. Do not assume a website plugin will include everything."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List posts, media, members, forms, external services and their responsible people.",
+            "Record the acceptable gap in data and how quickly you want service restored after an incident.",
+            "Choose the regular schedule, extra backups before major changes and the number of copies to retain."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Make sure the off-site copy really leaves the original host",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Saving backups in the website's own folder makes quick access convenient, but the copies may disappear with the site if the hosting account fails, a disk breaks or the whole site is deleted. Arrange at least one storage location with a different service and confirm that you can sign in there directly to obtain the files. Give the appropriate administrator the cloud account recovery instructions."
+        },
+        {
+          "type": "paragraph",
+          "text": "After first connecting cloud storage, run a manual backup and check the cloud for files from the same time. Their presence is not the final acceptance check: verify that no parts of a split archive are missing, the database file can be downloaded and retention rules do not immediately delete versions you need. Backups may contain personal data and keys, so restrict access to sharing links."
+        },
+        {
+          "type": "heading",
+          "text": "UpdraftPlus: check scope, schedules and restore components separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the official documentation at the time of checking, open UpdraftPlus Backups from Settings. In its Settings tab, configure file and database schedules, retention counts and remote storage. After selecting a cloud destination, complete authorisation and save. Return to Backup / Restore, run Backup Now and confirm the options include files, the database and sending the backup to remote storage."
+        },
+        {
+          "type": "paragraph",
+          "text": "For restoration, select the date under Existing backups. If a copy is not listed, rescan remote storage or upload backup files as appropriate for its source. Click Restore, choose the components to recover and read the preflight results before continuing. Restoring to the same URL and moving to a new URL are different situations; do not enable URL replacement merely to get past a screen."
+        },
+        {
+          "type": "paragraph",
+          "text": "The free and Premium versions differ in coverage; backing up WordPress core files, for example, is a paid feature. Do not describe a plugin's displayed backup set as an image of the entire hosting server. Record the restoration environment, core version and custom settings as well. These operations were not performed for this guide; the workflow is based on official documentation."
+        },
+        {
+          "type": "heading",
+          "text": "WPvivid: distinguish a finished backup from a finished restoration",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Under Backup & Restore in WPvivid Backup Plugin, choose database plus files, files only or database only. For off-site storage, first configure and connect the service in Remote Storage, then select the remote destination in the backup options and click Backup Now. After completion, check the list, logs and downloadable files."
+        },
+        {
+          "type": "paragraph",
+          "text": "To restore a remote copy, the official process first retrieves it to the website server, then runs Restore. Retrieval here does not mean downloading it to your own computer. Restoration overwrites current data and may remove newer content. The official instructions also say not to close, refresh or leave the page while restoration is running."
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid's official documentation specifically states that restoration in both the free and Pro versions does not overwrite wp-config.php or .htaccess, to avoid configuration conflicts. Save custom database connection details, environment settings and redirect rules separately and check them individually. If a backup contains multiple archives, keep the complete set rather than just the largest-looking file."
+        },
+        {
+          "type": "heading",
+          "text": "Practise in an isolated environment before trusting recovery",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a test environment with access restrictions and create a copy through a restoration or migration method supported by the tool. A different URL may require extra handling; ordinary restoration is not automatically migration. Disable live payments, notifications and outward synchronisation before the drill, so the copied site does not resend orders or send test data back to the original service."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose an easily identifiable point in time, such as a backup made after an image was added to a post. After restoration, check that the image, post content and relevant settings appear together, then sign in with a restricted test account. An accessible home page only proves that some paths work. Test search, individual posts, menus and forms separately."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Record the backup time, tool version, restoration destination and intended overwrite scope.",
+            "Confirm isolation and external integration settings in the test environment, and save its current state before restoring.",
+            "Verify content, media, sign-in and key functions, recording actual elapsed time and any problems."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Make backup a routine with named owners",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign a primary owner and a person who can take over, and regularly check the last successful backup time and off-site copies. On low-traffic sites, jobs dependent on WordPress scheduling may be delayed. If timing drifts, inspect plugin logs and the host's scheduling instead of merely increasing backup frequency."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep an identifiable old version before a major redesign and create a new version afterward, so you are not left with only copies made after a problem occurred. Add the reasons for failures to each drill's record: which setting was missing, who has cloud access and which form needs reconnecting. During the next incident, that record is more useful than a screenshot of a success message."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-website-backup/diagram-1-en.svg",
+          "alt": "An original flowchart: confirm files and the database, preserve a complete off-site copy, restore in isolation, then test website functions and record the results.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A usable recovery path requires both access to the copy and a completed restoration.",
+          "description": "An original flowchart: confirm files and the database, preserve a complete off-site copy, restore in isolation, then test website functions and record the results.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "What to preserve",
+            "Acceptance method"
+          ],
+          "rows": [
+            [
+              "Content and settings",
+              "Database and website files from similar times",
+              "Compare posts, media, accounts and settings"
+            ],
+            [
+              "Hosting and external services",
+              "Environment settings, DNS, mailboxes or an external-data inventory",
+              "Confirm each recovery entry point and responsible person"
+            ],
+            [
+              "Off-site copy",
+              "All split archive parts and the database",
+              "Obtain the copy directly from another service"
+            ],
+            [
+              "Restoration record",
+              "Scope, time, results and exceptions",
+              "Actually test key functions in isolation"
+            ]
+          ],
+          "caption": "Backup coverage varies by version and service. Inventory needs before choosing a tool."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Protect current data before restoring",
+          "text": "Restoration does more than add old files back: the database and settings may be overwritten. Save the current state first, confirm the point in time you intend to return to, and assess how to preserve or recreate data added after that backup."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "How to organise routine website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Create a local WordPress test environment",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: backups",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus: backup steps and free versus Premium coverage",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/backing-up/faqs/how-to-backup-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus: restoring to the same location and URL",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/restoration/faqs/how-to-restore-a-wordpress-site-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: manual backup in the free version",
+          "url": "https://docs.wpvivid.com/create-a-manual-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: restoration in the free version",
+          "url": "https://docs.wpvivid.com/restore-site-from-a-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: restoration coverage and configuration-file exclusions",
+          "url": "https://docs.wpvivid.com/wpvivid-backup-pro-backups-restore-overview.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: free scheduling and WordPress scheduling limitations",
+          "url": "https://docs.wpvivid.com/overview-schedule-free.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のバックアップ方法：ファイル、データベース、復元の練習",
+      "description": "WordPress のバックアップは成功メッセージだけでは判断できません。ファイル、データベース、外部保管のチェックリストを作り、UpdraftPlus と WPvivid の操作場所、復元の制限、隔離環境での練習を整理して、本当にデータを取り戻せるか確認します。スケジュール、保存する世代、設定ファイル、検証記録もまとめ、個人サイトや事業所のサイトを別の担当者でも復旧できるようにします。",
+      "hero": {
+        "src": "/guides/wordpress-website-backup/hero-ja.jpg",
+        "alt": "フォルダー、別の場所にあるサーバー、検証を示す盾を順に描いた三枚のオリジナル図で、サイトのバックアップと復旧の流れを表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "プラグイン更新前にバックアップを押し、緑の成功メッセージが出ても、サイトが壊れたときに必ず復元できるとは限りません。ファイルが同じサーバーにしか残っていない、データベースが一緒に保存されていない、バックアップ用アカウントへのログインさえ停止したサイトに依存している、といったこともあります。必要なのは、最後まで実行できる復元手順です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "バックアップは引っ越しの荷造りにたとえられます。投稿や設定は中身の一覧、画像やプログラムは箱、外部保管先は別の倉庫、復元練習は箱を開けて中身が使えるか確かめる作業です。このガイドでは一般的な単一の WordPress サイトを例に、日々確認でき、トラブル時に別の担当者へ引き継げる流れを作ります。"
+        },
+        {
+          "type": "heading",
+          "text": "まず、どの程度のデータ損失を許容できるか書く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "週に一度更新する個人サイトと毎日予約が入る事業所では、許容できるデータの欠落期間が違います。まず「どのくらいの期間の内容なら作り直せるか」を書き、その後で頻度を決めます。例えば毎晩保存していて午後に問題が起きると、当日追加された問い合わせはバックアップに含まれない可能性があります。これはスケジュール上の制約であり、後から復元を押しても埋められません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトのファイルには通常テーマ、プラグイン、アップロードしたメディアが含まれ、データベースには投稿、ユーザー、多くの設定が入ります。完全な復旧には、両方が近い時点のものであることが必要になる場合が多いです。メールボックス、DNS、外部フォームのデータ、外部ストレージは、それぞれのサービスで保存方法を確認し、サイトのプラグインがすべて保存するとは考えないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "投稿、メディア、会員、フォーム、外部サービスと担当者を一覧にする。",
+            "許容できるデータの欠落期間と、障害後にサービスを復旧したい時間を記録する。",
+            "通常のスケジュール、大きな変更前の追加バックアップ、保存する世代数を決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "外部コピーを確実に元のサーバーから離す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト自身のフォルダーに保存すればすぐ取り出せますが、ホスティングアカウントの失効、ディスク故障、サイト全体の削除が起きるとコピーも一緒に失われる恐れがあります。少なくとも別サービスの保存先を用意し、そこへ直接ログインしてファイルを取得できることを確認します。クラウドアカウントの復旧方法は、適切な管理者に引き継いでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "初めてクラウドに接続したら手動バックアップを実行し、クラウド側で同じ時刻のファイルを確認します。存在するだけで検証完了とはせず、分割アーカイブの欠けがないか、データベースファイルをダウンロードできるか、保存ルールが必要な世代をすぐ消していないかも確かめます。バックアップには個人情報やキーが含まれる場合があるため、共有リンクのアクセスを制限しましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "UpdraftPlus：範囲、スケジュール、復元項目を別々に確認",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "確認時点の公式資料では、「設定」から UpdraftPlus Backups を開き、Settings でファイルとデータベースのスケジュール、保存世代数、リモートストレージを設定します。クラウドの保存先を選んだら認証を完了して保存し、Backup / Restore に戻って Backup Now を実行します。ファイル、データベース、リモートへの送信を含む設定か確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "復元するときは Existing backups で日付を選びます。表示されないコピーは、保存元に応じてリモートを再スキャンするかバックアップファイルをアップロードします。Restore を押して復元対象を選び、事前チェックの結果を読んでから進めてください。同じ URL への通常の復元と新しい URL への移行は別の場面です。画面を先に進めるためだけに URL 置換を有効にしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "無料版と Premium では対象範囲が異なり、例えば WordPress コアファイルのバックアップは有料機能です。プラグインに表示されるバックアップ一式を、そのままサーバー全体のイメージとは呼べません。復元先の環境、コアのバージョン、独自設定も記録します。このガイドで実際にこれらの操作を行ったわけではなく、公式資料を基に手順を整理しています。"
+        },
+        {
+          "type": "heading",
+          "text": "WPvivid：バックアップ完了と復元完了を分けて考える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid Backup Plugin の Backup & Restore では、データベースとファイル、ファイルのみ、データベースのみを選べます。外部保管が必要なら、先に Remote Storage で保存サービスを設定・接続し、バックアップ設定でリモート保存先を選んで Backup Now を押します。完了後は一覧、ログ、ダウンロード可能なファイルを照合してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "リモートのコピーを復元する場合、公式手順では先にサイトのサーバーへコピーを取得し、その後 Restore を実行します。ここでの取得は、自分のパソコンにダウンロード済みという意味ではありません。復元は現在のデータを上書きし、新しい内容が失われることがあります。また公式資料は、復元中にページを閉じたり、再読み込みしたり、別のページへ移動したりしないよう求めています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid の公式資料は、設定の衝突を避けるため、無料版でも Pro でも復元時に wp-config.php と .htaccess を上書きしないと明記しています。独自のデータベース接続、環境設定、リダイレクト規則は別途保存し、一つずつ確認します。バックアップが複数の圧縮ファイルに分かれているなら、見た目で最大のものだけを選ばず、一式すべてを残してください。"
+        },
+        {
+          "type": "heading",
+          "text": "復元できると信じる前に、隔離環境で練習する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "アクセス制限のあるテスト環境を用意し、ツールが対応する復元または移行方法でコピーを作ります。URL が違えば追加処理が必要な場合があり、通常の復元をそのまま移行とはみなせません。練習前に本番の決済、通知、外部同期を無効にし、複製サイトが注文通知を再送したり、テストデータを元のサービスへ送ったりしないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿に画像を追加した直後のバックアップなど、識別しやすい時点を選びます。復元後、その画像、投稿内容、関連設定がそろっているか確認し、権限を制限したテストアカウントでログインします。トップページが開くことは一部の経路が正常というだけです。検索、個別の投稿、メニュー、フォームも順に操作してください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "バックアップ時刻、ツールのバージョン、復元先、予定する上書き範囲を記録する。",
+            "テスト環境の隔離と外部連携設定を確認し、現在の状態を保存してから復元する。",
+            "内容、メディア、ログイン、主要機能を検証し、実際の所要時間と問題点を記録する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "担当者のいる定例作業にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主担当と引き継げる人を決め、最後の成功時刻と外部コピーを定期的に確認します。アクセスが少ないサイトでは、WordPress のスケジュールに依存する処理が遅れる場合があります。時刻にずれがあれば、頻度を上げるだけでなく、プラグインのログとサーバーのスケジュールを調べてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "大規模な改修前に識別できる旧版を残し、改修後に新版を作ることで、問題が起きた後のコピーしかない状態を避けます。練習ごとに、足りなかった設定、クラウド権限を持つ人、再接続が必要なフォームなど、失敗の理由を記録へ追加します。次の障害時には、成功画面の画像よりその記録が役立ちます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-website-backup/diagram-1-ja.svg",
+          "alt": "ファイルとデータベースを確認し、完全な外部コピーを保存して隔離環境で復元し、最後にサイト機能を操作して結果を記録するオリジナルのフロー図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "コピーを取得でき、復元を完了できてこそ、使える復旧手順になる。",
+          "description": "ファイルとデータベースを確認し、完全な外部コピーを保存して隔離環境で復元し、最後にサイト機能を操作して結果を記録するオリジナルのフロー図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "保存するもの",
+            "検証方法"
+          ],
+          "rows": [
+            [
+              "内容と設定",
+              "近い時点のデータベースとサイトファイル",
+              "投稿、メディア、アカウント、設定を照合"
+            ],
+            [
+              "サーバーと外部サービス",
+              "環境設定、DNS、メールボックス、外部データの一覧",
+              "各復旧窓口と担当者を確認"
+            ],
+            [
+              "外部コピー",
+              "分割アーカイブ全体とデータベース",
+              "別サービスから直接コピーを取得"
+            ],
+            [
+              "復元記録",
+              "範囲、時刻、結果、例外",
+              "隔離環境で主要機能を実際に操作"
+            ]
+          ],
+          "caption": "バックアップ範囲は版やサービスで異なるため、まず対象を洗い出してからツールを選ぶ。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "復元前に現在のデータを守る",
+          "text": "復元は古いファイルを追加するだけではなく、データベースや設定を上書きすることがあります。まず現在の状態を保存し、戻したい時点を確認してから、そのバックアップ後に増えたデータをどう残すか、または再作成するか検討します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの日常保守を計画する",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ローカルに WordPress テスト環境を作る",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：バックアップ",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus：バックアップ操作と無料版・Premium の範囲",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/backing-up/faqs/how-to-backup-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus：同じ場所と URL への復元",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/restoration/faqs/how-to-restore-a-wordpress-site-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：無料版の手動バックアップ",
+          "url": "https://docs.wpvivid.com/create-a-manual-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：無料版での復元",
+          "url": "https://docs.wpvivid.com/restore-site-from-a-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：復元範囲と設定ファイルの除外",
+          "url": "https://docs.wpvivid.com/wpvivid-backup-pro-backups-restore-overview.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：無料版のスケジュールと WordPress の実行制限",
+          "url": "https://docs.wpvivid.com/overview-schedule-free.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 백업 방법: 파일, 데이터베이스, 복원 연습",
+      "description": "WordPress 백업은 성공 메시지만 봐서는 안 됩니다. 파일·데이터베이스·외부 보관 체크리스트를 만들고 UpdraftPlus와 WPvivid의 조작 위치, 복원 제한, 격리 연습을 살펴 실제로 데이터를 되찾을 수 있는지 확인합니다. 일정, 보존 버전, 설정 파일, 검증 기록도 정리해 개인 사이트나 스튜디오 사이트의 복구를 다른 사람이 이어받을 수 있게 합니다.",
+      "hero": {
+        "src": "/guides/wordpress-website-backup/hero-ko.jpg",
+        "alt": "폴더, 외부 서버, 검증 방패를 차례로 그린 세 장의 원본 그림 카드로 사이트 백업과 복구 흐름을 표현합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "플러그인 업데이트 전에 백업을 누르고 초록색 성공 메시지를 봤다고 사이트가 고장 났을 때 반드시 복구할 수 있는 것은 아닙니다. 파일이 같은 서버에만 남아 있거나, 데이터베이스가 함께 저장되지 않았거나, 백업 계정조차 이미 멈춘 사이트를 통해서만 로그인할 수 있을 수 있습니다. 필요한 것은 끝까지 실행할 수 있는 복원 경로입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "백업은 이삿짐을 싸는 일에 비유할 수 있습니다. 글과 설정은 내용물 목록, 이미지와 프로그램은 상자, 외부 저장소는 다른 창고이며, 복원 연습은 상자를 열어 물건을 쓸 수 있는지 확인하는 일입니다. 이 안내는 일반적인 단일 WordPress 사이트를 예로, 매일 확인하고 사고가 나면 다른 사람이 이어받을 수 있는 절차를 만듭니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 어느 정도의 데이터 손실을 감수할 수 있는지 쓰기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "매주 갱신하는 개인 사이트와 매일 예약을 받는 스튜디오는 허용할 수 있는 데이터 공백이 다릅니다. 먼저 ‘얼마 동안의 콘텐츠까지 다시 만들 수 있는가’를 쓰고 빈도를 정하세요. 예를 들어 매일 저녁 한 번 저장하는데 오후에 문제가 나면 그날 새로 들어온 문의는 백업에 없을 수 있습니다. 이는 일정 설계의 한계이며, 나중에 복원을 눌러도 그 공백을 채울 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 파일에는 보통 테마, 플러그인, 업로드 미디어가 있고, 데이터베이스에는 글, 사용자, 여러 설정이 들어 있습니다. 완전한 복구에는 둘이 비슷한 시점의 자료여야 하는 경우가 많습니다. 메일함, DNS, 외부 폼 데이터, 외부 저장 공간은 각 서비스에 보존 방법을 확인해야 하며, 사이트 플러그인이 모두 가져갈 것이라고 가정하면 안 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "글, 미디어, 회원, 폼, 외부 서비스와 담당자를 목록으로 만듭니다.",
+            "허용 가능한 데이터 공백과 사고 후 서비스를 복구하려는 목표 시간을 기록합니다.",
+            "일반 일정, 큰 변경 전의 추가 백업, 보존할 사본 수를 결정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "외부 사본이 원래 서버를 확실히 벗어나게 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 자체 폴더에 저장하면 빠르게 꺼내기 편하지만, 호스팅 계정이 무효화되거나 디스크가 고장 나거나 사이트 전체가 삭제되면 사본도 함께 사라질 수 있습니다. 적어도 다른 서비스의 저장 위치를 마련하고 그 서비스에 직접 로그인해 파일을 받을 수 있는지 확인하세요. 클라우드 계정 복구 방법은 적절한 관리자에게 전달합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "클라우드에 처음 연결한 뒤에는 수동 백업을 실행하고 클라우드에서 같은 시각의 파일을 확인하세요. 파일이 있다는 것만으로 검증을 끝내지 말고, 분할 압축 파일의 일부가 빠지지 않았는지, 데이터베이스 파일을 내려받을 수 있는지, 보존 규칙이 필요한 버전을 즉시 지우지 않는지도 확인해야 합니다. 백업에는 개인정보와 키가 들어 있을 수 있으므로 공유 링크의 접근을 제한하세요."
+        },
+        {
+          "type": "heading",
+          "text": "UpdraftPlus: 범위, 일정, 복원 항목을 각각 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "확인 당시의 공식 문서에 따르면 ‘설정’에서 UpdraftPlus Backups로 들어가 Settings에서 파일·데이터베이스 일정, 보존 사본 수, 원격 저장소를 설정합니다. 클라우드 목적지를 선택한 후 인증을 완료하고 저장한 다음 Backup / Restore로 돌아가 Backup Now를 실행하세요. 파일, 데이터베이스, 원격 저장소로 보내기 옵션이 포함되는지 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "복원할 때는 Existing backups에서 날짜를 선택합니다. 목록에 없는 사본은 원본 위치에 따라 원격 저장소를 다시 검색하거나 백업 파일을 업로드하세요. Restore를 누른 뒤 복원할 구성 요소를 선택하고 사전 검사 결과를 읽은 후 진행합니다. 같은 주소로 복원하는 것과 새 주소로 옮기는 것은 다른 상황이므로, 화면을 넘기려고 주소 치환을 함부로 켜지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "무료판과 Premium은 포함 범위가 다르며, 예를 들어 WordPress 코어 파일 백업은 유료 기능입니다. 플러그인에 표시되는 백업 묶음을 서버 전체 이미지라고 부르면 안 됩니다. 복원 환경, 코어 버전, 사용자 지정 설정도 기록하세요. 이 안내에서는 해당 작업을 실제 수행하지 않았으며 공식 문서를 바탕으로 절차를 정리했습니다."
+        },
+        {
+          "type": "heading",
+          "text": "WPvivid: 백업 완료와 복원 완료를 따로 보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid Backup Plugin의 Backup & Restore에서는 데이터베이스와 파일, 파일만, 데이터베이스만을 선택할 수 있습니다. 외부 보관이 필요하면 먼저 Remote Storage에서 저장 서비스를 설정하고 연결한 다음, 백업 옵션에서 원격 목적지를 선택하고 Backup Now를 누릅니다. 완료되면 목록, 로그, 내려받을 수 있는 파일을 대조하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "원격 사본을 복원할 때 공식 절차는 먼저 사본을 웹사이트 서버로 가져온 후 Restore를 실행합니다. 여기서 가져온다는 것은 자신의 컴퓨터로 내려받았다는 뜻이 아닙니다. 복원은 현재 데이터를 덮어쓰므로 더 새로운 콘텐츠가 사라질 수 있습니다. 공식 문서는 복원이 진행되는 동안 페이지를 닫거나 새로 고치거나 다른 곳으로 이동하지 말라고도 안내합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid 공식 문서는 설정 충돌을 피하기 위해 무료판과 Pro 모두 복원 시 wp-config.php와 .htaccess를 덮어쓰지 않는다고 명시합니다. 사용자 지정 데이터베이스 연결, 환경 설정, 리디렉션 규칙은 별도로 저장하고 항목별로 확인하세요. 백업이 여러 압축 파일로 나뉘었다면 가장 커 보이는 파일만 고르지 말고 완전한 한 묶음을 보존해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "복원 능력을 믿기 전에 격리 환경에서 연습하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "접근이 제한된 테스트 환경을 마련하고 도구가 지원하는 복원 또는 이전 방식으로 사본을 만드세요. 주소가 다르면 추가 처리가 필요할 수 있으므로 일반 복원을 곧바로 이전 작업으로 보면 안 됩니다. 연습 전에 운영 결제, 알림, 외부 동기화를 끄고 복제 사이트가 주문을 다시 보내거나 테스트 데이터를 원래 서비스로 보내지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글에 이미지를 추가한 뒤의 백업처럼 쉽게 구분할 수 있는 시점을 고르세요. 복원 후 이미지, 글 내용, 관련 설정이 함께 나타나는지 확인하고 권한을 제한한 테스트 계정으로 로그인합니다. 홈이 열린다는 것은 일부 경로가 정상이라는 뜻일 뿐입니다. 검색, 개별 글, 메뉴, 폼도 하나씩 조작해야 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "백업 시각, 도구 버전, 복원 목적지, 덮어쓸 예정 범위를 기록합니다.",
+            "테스트 환경 격리와 외부 연동 설정을 확인하고 현재 상태를 저장한 뒤 복원합니다.",
+            "콘텐츠, 미디어, 로그인, 주요 기능을 검증하고 실제 소요 시간과 문제를 기록합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "담당자가 책임지는 정기 작업으로 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "주 담당자와 이어받을 사람을 지정하고 마지막 성공 시각과 외부 사본을 정기적으로 확인하세요. 방문이 적은 사이트에서는 WordPress 일정에 의존하는 작업이 지연될 수 있습니다. 시간 차이가 생기면 백업 빈도만 높이지 말고 플러그인 로그와 서버 일정을 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "큰 개편 전에는 알아볼 수 있는 이전 버전을 남기고 개편 후 새 버전도 만들어, 문제가 생긴 뒤의 사본만 남지 않게 하세요. 연습할 때마다 어떤 설정이 없었는지, 누가 클라우드 권한을 갖고 있는지, 어떤 폼을 다시 연결해야 하는지 등 실패 원인을 기록에 추가합니다. 다음 사고에서는 이 기록이 성공 화면 한 장보다 더 도움이 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-website-backup/diagram-1-ko.svg",
+          "alt": "파일과 데이터베이스를 확인하고 완전한 외부 사본을 보존한 뒤 격리 환경에서 복원하고, 마지막으로 사이트 기능을 조작해 결과를 기록하는 원본 흐름도.",
+          "width": 1600,
+          "height": 900,
+          "caption": "사본을 확보하고 복원을 완료할 수 있어야 실제로 쓸 수 있는 복구 경로입니다.",
+          "description": "파일과 데이터베이스를 확인하고 완전한 외부 사본을 보존한 뒤 격리 환경에서 복원하고, 마지막으로 사이트 기능을 조작해 결과를 기록하는 원본 흐름도.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "보존할 내용",
+            "검증 방법"
+          ],
+          "rows": [
+            [
+              "콘텐츠와 설정",
+              "비슷한 시점의 데이터베이스와 사이트 파일",
+              "글, 미디어, 계정, 설정 대조"
+            ],
+            [
+              "서버와 외부 서비스",
+              "환경 설정, DNS, 메일함 또는 외부 데이터 목록",
+              "각 복구 진입점과 담당자 확인"
+            ],
+            [
+              "외부 사본",
+              "모든 분할 압축 파일과 데이터베이스",
+              "다른 서비스에서 직접 사본 확보"
+            ],
+            [
+              "복원 기록",
+              "범위, 시각, 결과, 예외",
+              "격리 환경에서 주요 기능 실제 조작"
+            ]
+          ],
+          "caption": "백업 범위는 버전과 서비스마다 다르므로 먼저 목록을 만들고 도구를 고르세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "복원 전에 현재 데이터부터 보호하기",
+          "text": "복원은 옛 파일을 추가하는 것에 그치지 않으며 데이터베이스와 설정을 덮어쓸 수 있습니다. 먼저 현재 상태를 보존하고 돌아갈 시점을 확인한 다음, 백업 이후 추가된 데이터를 어떻게 남기거나 다시 만들지 검토하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "일상적인 사이트 유지관리 계획 세우기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "로컬에 WordPress 테스트 환경 만들기",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 백업",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus: 백업 작업 및 무료판·Premium 범위",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/backing-up/faqs/how-to-backup-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus: 같은 위치와 주소로 복원",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/restoration/faqs/how-to-restore-a-wordpress-site-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: 무료판 수동 백업",
+          "url": "https://docs.wpvivid.com/create-a-manual-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: 무료판 복원",
+          "url": "https://docs.wpvivid.com/restore-site-from-a-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: 복원 범위와 설정 파일 제외",
+          "url": "https://docs.wpvivid.com/wpvivid-backup-pro-backups-restore-overview.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid: 무료판 일정과 WordPress 일정의 제약",
+          "url": "https://docs.wpvivid.com/overview-schedule-free.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 备份怎么做：文件、数据库与还原演练",
+      "description": "WordPress 备份不能只看成功消息。这里用文件、数据库与异地保存建立备份清单，说明 UpdraftPlus、WPvivid 的操作入口、还原限制及隔离演练，帮你确认网站数据真的拿得回来。也整理计划任务、保留版本、配置文件与验收记录，让个人网站或工作室有人能接手恢复。",
+      "hero": {
+        "src": "/guides/wordpress-website-backup/hero-zh-cn.jpg",
+        "alt": "三张原创图卡依次呈现文件夹、异地服务器与验收盾牌，表达网站备份与恢复流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "更新插件前按一次备份，看到绿色成功消息，并不代表网站坏掉时一定能恢复。文件可能只留在同一台服务器，数据库可能没有一起保存，甚至备份账号也只能靠已经停摆的网站登录。真正需要准备的是一条能走完的还原路径。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把备份想成整理搬家箱：文章与设置是内容清单，图片与程序是箱子，异地存储是另一个仓库，还原演练则是打开箱子确认东西能用。这份指南以一般单一 WordPress 网站为例，建立每天能检查、出事时有人能接手的流程。"
+        },
+        {
+          "type": "heading",
+          "text": "先写清楚可以损失多少数据",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每周更新的个人网站与每天收到预约的工作室，能接受的数据缺口不同。先写下“最多可以重做多久的内容”，再安排频率。例如每天晚上保存一次，下午发生问题时，当天新增的咨询仍可能不在备份里。这是计划任务设计的限制，不能靠事后按还原补回。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网站文件通常包含主题、插件与上传媒体；数据库包含文章、用户及许多设置。完整恢复经常需要两者处于相近时间点。邮箱、DNS、第三方表单数据与外部存储空间，则要向各自的服务确认保存方法，不能假设网站插件会全部带走。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出文章、媒体、会员、表单、外部服务及负责人。",
+            "记录可接受的数据缺口，以及出事后希望多久恢复服务。",
+            "决定常规计划、重大修改前的额外备份与保留份数。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "让异地副本真正离开原服务器",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "存进网站自己的文件夹，方便快速取用，但主机账号失效、磁盘损坏或整站遭删除时，副本可能一起消失。至少安排一个不同服务的存储位置，并确认能直接登录该服务取得文件；把云端账号的恢复方式交给合适的管理员。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第一次连接云端后，手动运行一次备份，再到云端查看同一时间的文件。文件存在仍不是最终验收，还要确认分卷压缩文件没有缺少部分、数据库文件可下载、保留规则没有立刻删掉需要的版本。备份可能含个人数据与密钥，分享链接应限制访问。"
+        },
+        {
+          "type": "heading",
+          "text": "UpdraftPlus：分别确认范围、计划与还原项目",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "根据查证时的官方文档，可从“设置”进入 UpdraftPlus Backups，在 Settings 设置文件及数据库计划、保留份数与远程存储。选好云端目的地后完成授权并保存，再回 Backup / Restore 执行 Backup Now，确认包含文件、数据库及发送到远程的选项。"
+        },
+        {
+          "type": "paragraph",
+          "text": "还原时在 Existing backups 选定日期；没有列出的副本，可根据来源重新扫描远程存储或上传备份文件。按 Restore 后选择要恢复的组件，阅读预检结果再继续。一般同网址还原与搬到新网址是不同情境，不要为了让画面继续就随意启用网址替换。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免费版与 Premium 的涵盖范围不同，例如 WordPress 核心文件备份属于付费功能。不要把插件显示的一组副本直接称为整台服务器镜像；还原环境、核心版本及自定义设置都应写进记录。这里没有实际执行这些操作，流程依据官方文档整理。"
+        },
+        {
+          "type": "heading",
+          "text": "WPvivid：备份完成与还原完成要分开看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WPvivid Backup Plugin 的 Backup & Restore，可选数据库加文件、只有文件或只有数据库。需要异地保存时，先于 Remote Storage 设置并连接存储服务，再在备份选项选择远程目的地，按 Backup Now。完成后核对清单、日志与可下载文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要恢复远程副本，官方流程会先把副本取回网站服务器，再执行 Restore。这里的取回不是代表已经下载到自己的电脑。还原会覆盖当前数据，较新内容可能因此消失；官方也提醒还原执行期间不要关闭、刷新或离开该页。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WPvivid 官方特别说明，免费版与 Pro 还原均不覆盖 wp-config.php 和 .htaccess，以避免配置冲突。自定义数据库连接、环境设置或重定向规则要另存并逐项核对。若备份分成多个压缩文件，保留完整的一组，不能只选看起来最大的那份。"
+        },
+        {
+          "type": "heading",
+          "text": "先在隔离环境演练，再相信还原能力",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "找一个有访问限制的测试环境，使用工具支持的还原或迁移方式建立副本。不同网址可能需要额外处理，不能直接把一般还原当成搬家。演练前停用正式付款、通知及对外同步，避免复制站重新发出订单或把测试数据送回原服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "挑一个容易辨识的时间点，例如某篇文章新增图片后的备份。恢复后检查该图片、文章内容及相关设置是否同时出现，再以受限测试账号登录。首页能打开只证明部分路径正常，搜索、文章内页、菜单与表单仍要逐一操作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "记录备份时间、工具版本、还原目的地与预计覆盖范围。",
+            "确认测试环境隔离与外部集成设置，保存当前状态后才还原。",
+            "验证内容、媒体、登录及主要功能，记下实际耗时与遇到的问题。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把备份变成有人负责的例行工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "指定一位主要负责人与一位可接手的人，定期查看最后成功时间及异地副本。若网站流量少，依赖 WordPress 计划任务的工作可能延迟；发现时间差时查插件日志与主机计划任务，不要只把备份频率调得更密。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重大改版前保留可辨识的旧版本，改版后再做一份新版本，避免只有出问题之后的副本。每次演练把失败原因补进记录：缺少哪个设置、谁有云端权限、哪个表单需要重新连接。下次出事时，这份记录比一张成功画面更有帮助。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-website-backup/diagram-1-zh-cn.svg",
+          "alt": "原创流程图：先确认文件与数据库，再保存完整异地副本，于隔离环境还原，最后操作网站功能并记录结果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "能取得副本、能完成还原，才有可用的恢复路径。",
+          "description": "原创流程图：先确认文件与数据库，再保存完整异地副本，于隔离环境还原，最后操作网站功能并记录结果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "需要保存",
+            "验收方法"
+          ],
+          "rows": [
+            [
+              "内容与设置",
+              "相近时间的数据库与网站文件",
+              "比对文章、媒体、账号及设置"
+            ],
+            [
+              "服务器与外部服务",
+              "环境设置、DNS、邮箱或外部数据清单",
+              "确认各项恢复入口与负责人"
+            ],
+            [
+              "异地副本",
+              "完整压缩分卷与数据库",
+              "直接从另一个服务取得副本"
+            ],
+            [
+              "还原记录",
+              "范围、时间、结果与例外",
+              "在隔离环境实际操作主要功能"
+            ]
+          ],
+          "caption": "备份范围依版本与服务而异，先盘点再选工具。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "还原前先保护当前数据",
+          "text": "还原不是把旧文件加回来而已，数据库与设置可能被覆盖。先保存当前状态、确认要回到的时间点，再评估备份之后新增的数据如何保留或补回。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站日常维护的安排方式",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在本地建立 WordPress 测试环境",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：备份",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus：备份操作与免费版、Premium 范围",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/backing-up/faqs/how-to-backup-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "UpdraftPlus：还原至相同位置与网址",
+          "url": "https://teamupdraft.com/documentation/updraftplus/topics/restoration/faqs/how-to-restore-a-wordpress-site-with-updraftplus/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：免费版手动备份",
+          "url": "https://docs.wpvivid.com/create-a-manual-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：免费版还原",
+          "url": "https://docs.wpvivid.com/restore-site-from-a-backup-free.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：还原范围与配置文件排除",
+          "url": "https://docs.wpvivid.com/wpvivid-backup-pro-backups-restore-overview.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WPvivid：免费版计划与 WordPress 计划任务限制",
+          "url": "https://docs.wpvivid.com/overview-schedule-free.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

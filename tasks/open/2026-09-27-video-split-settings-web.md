@@ -58,6 +58,7 @@ npm run check:i18n && npm run lint:web && npm run typecheck:web && npm run test:
   - 漫劇子分頁多了作品的六個數字（`series_*`，之前只在物件裡來回、沒有介面）、「劇本先給我看」（`series_script_gate`）、旁白「跟教學一樣」開關（`drama_voice` 為 null）、自己的常設指示、語言預設、輪數與兩個自動核准開關。「目前的提示詞」依格式分到兩邊，並顯示 variant。
   - AI 設定頁多「漫劇各階段」：勾「跟教學一樣」送 `drama_stage_models: null`，取消勾選時六個階段從教學的複製起。`PUT /settings/models` 現在固定送兩個鍵。
   - 字串：`videoSettings.usage` 拆成 `usageDrafts`（教學）與 `usageTokens`（共用）——**改了鍵名，站上若有對 `videoSettings.usage` 的文案覆寫會變孤兒**；`fields.caption_locales` 改標「語言面板預先勾選」；`instructionsHelp`、`voicePoolHelp` 改寫；新增 sections、saveTutorial／saveDrama／saveShared、drama*、series 的 fields 等。`videoReviews.newDramaHelp`、`videoSeries.newSeriesHelp` 最後一句改成「漫劇設定要先開啟」，後面接 `openDramaSettings` 連到 `?tab=settings&section=drama`。
+  - 2026-09-28 併 main（claude-opus-5-5）：main 的 #844 已把漫劇設定搬到漫劇分頁。站主選漫劇分頁，所以設定分頁只剩「教學影片」「共用」兩個子分頁，並放一顆按鈕連到漫劇分頁；`admin-video-settings-drama.tsx` 的欄位由 `admin-video-drama-settings.tsx`（#844 的外框：可收合、漫劇沒開時展開、唯讀時的角色說明）包著，缺金鑰警告也搬進來。存檔照這張的做法只送 `drama` 物件，不再用 #844 的「先重讀再整份送」。
   - 沒做：漫劇子分頁的「本月媒體用量」——後台的 `SettingsView` 沒有媒體用量（只在工人端的 `/video/media/status`），要另開 API 票才有；先只顯示預算。
   - 驗證：`check:i18n`（含 staged 的漢字檢查）、`lint:web`、`typecheck:web` 綠；`test:web` 315 檔 3396 案例全過；`admin-video-settings.test.tsx` 改成 7 個案例（三個部分各自儲存、深連結、舊站沒有新欄位、AI 設定頁的漫劇模型、唯讀）。
   - 接下來：`2026-09-27-video-split-settings-worker`。

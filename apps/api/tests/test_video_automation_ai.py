@@ -87,6 +87,7 @@ def stage(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
 
     def provider(runtime: Settings, name: str, client: Any = None, **kwargs: Any) -> Any:
         state["asked"] = (name, kwargs)
+        state["runtime"] = runtime
         return state["provider"]
 
     monkeypatch.setattr(ai, "research_provider", provider)
@@ -163,6 +164,26 @@ async def test_a_drama_runs_on_its_own_models_when_the_owner_chose_them(
     assert stage["asked"][1]["model"] == "claude-opus-5-5"
     await ai.run_stage(_session(), KEYS, row, _request("writer"), None)
     assert stage["asked"][1]["model"] == "claude-sonnet-5", "a tutorial keeps its own"
+
+
+@pytest.mark.asyncio
+async def test_video_api_choice_stays_on_the_api_when_site_research_uses_subscriptions(
+    stage: dict[str, Any],
+) -> None:
+    runtime = Settings(
+        openai_api_key="o",
+        anthropic_api_key="a",
+        openai_connection="subscription",
+        anthropic_connection="subscription",
+    )
+    row = VideoAutomationSettings(
+        stage_models={"verifier": {"provider": "openai", "model": "gpt-6-sol"}}
+    )
+    await ai.run_stage(_session(), runtime, row, _request(), None)
+    assert stage["asked"][0] == "openai"
+    assert stage["runtime"].openai_connection == "api_key"
+    assert stage["runtime"].anthropic_connection == "api_key"
+    assert runtime.openai_connection == "subscription"
 
 
 @pytest.mark.asyncio
@@ -347,6 +368,21 @@ async def test_the_run_route_needs_a_token_and_passes_refusals_on_with_their_ret
         "slides",
         "Write.",
     )
+
+
+@pytest.mark.asyncio
+async def test_site_topics_link_each_article_where_the_site_serves_it() -> None:
+    entry = MagicMock(
+        title="GPT-6 Sol 與 Luna",
+        description="兩個版本怎麼選",
+        published_at=datetime(2026, 9, 23, 8, 0, tzinfo=UTC),
+    )
+    session = MagicMock()
+    session.execute = AsyncMock(return_value=[("ai-news-gpt-6-sol-luna-20260923", None, entry)])
+    [topic] = await topics.site_topics(session)
+    # /zh-TW/guides/<slug> is a kind's list page: the article it named answered 404.
+    assert topic.url == "https://mokaair.com/zh-TW/life/ai-news-gpt-6-sol-luna-20260923"
+    assert (topic.slug, topic.date) == ("ai-news-gpt-6-sol-luna-20260923", "2026-09-23")
 
 
 integration = pytest.mark.skipif(

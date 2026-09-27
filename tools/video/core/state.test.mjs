@@ -9,8 +9,10 @@ import { sandbox } from "./fixtures/load.mjs";
 import { atomicWrite, isInside, resolveWorkdir, stopRequested, UsageError } from "./paths.mjs";
 import { eachLine, textHash } from "./schema.mjs";
 import { localeTexts, runCaptions, StageError } from "./stages.mjs";
-import { loadProject, pipelineStatus, recordStage } from "./state.mjs";
-import { estimateTimeline, speechHash } from "./timeline.mjs";
+import { compilationHash } from "./compilation.mjs";
+import { approvedEpisodes, COMPILATION_STEPS, lintProject, loadProject, pipelineStatus, recordStage, stepsFor, translationComplete } from "./state.mjs";
+import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
+import { compilationSandbox, EPISODES, sha, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
 /** What the TTS stage will write: a timeline with the hash of the script it was built from. */
 function writeTimeline(box) {
@@ -131,4 +133,66 @@ test("recordStage appends runs for the handover", () => {
     { stage: "tts", at: "2026-09-24T03:00:00.000Z", lines: 7 },
     { stage: "render", at: "2026-09-24T03:05:00.000Z" },
   ]);
+});
+
+test("a compilation walks its own steps: planned metadata, cards, the join, the translations, then the shared gates", async () => {
+  const box = compilationSandbox({ rendered: false, planned: false });
+  const status = async () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
+  const project = loadProject({ slug: box.slug, root: box.root });
+  assert.equal(stepsFor(project.doc), COMPILATION_STEPS);
+  assert.deepEqual(lintProject(project).errors, [], "the placeholder document passes lint");
+  let state = await status();
+  assert.deepEqual(state.steps.map((step) => step.id), COMPILATION_STEPS);
+  assert.equal(state.next.id, "metadata planned");
+  assert.match(state.next.note, /placeholder/);
+  assert.match(state.next.todo, /plans the compilation's title/);
+  assert.deepEqual(state.dubs, {});
+
+  // The planner's work, and the thumbnail's source keyframe the worker copies in.
+  const planned = compilationSandbox({ rendered: false });
+  const plannedStatus = async () => pipelineStatus({ slug: planned.slug, root: planned.root, workdir: planned.workdir });
+  state = await plannedStatus();
+  assert.equal(state.steps[0].done, true);
+  assert.equal(state.next.id, "cards rendered");
+  assert.match(state.next.todo, /render --slug wuxia-full/);
+
+  // The cards drawn: the join is next, and it wants every episode cleared.
+  const drawn = compilationSandbox();
+  const drawnStatus = async () => pipelineStatus({ slug: drawn.slug, root: drawn.root, workdir: drawn.workdir });
+  state = await drawnStatus();
+  assert.equal(state.steps[1].done, true);
+  assert.equal(state.next.id, "video compiled");
+  assert.match(state.next.todo, /compile --slug wuxia-full/);
+  writeEpisode(drawn.work, "wuxia-ep-2", { approved: false });
+  state = await drawnStatus();
+  assert.equal(state.next.note, "episodes not cleared for upload: wuxia-ep-2");
+  const cleared = writeEpisode(drawn.work, "wuxia-ep-2");
+  const episodes = approvedEpisodes(drawn.doc, drawn.work);
+  assert.deepEqual(episodes.map((episode) => episode.slug), EPISODES);
+  assert.equal(episodes[1].sha256, cleared.sha256);
+  // What compile leaves behind, for these very cuts and cards.
+  const hash = compilationHash(drawn.doc, episodes);
+  atomicWrite(path.join(drawn.workdir, "checks.json"), JSON.stringify({ ok: true, compilation_hash: hash, visual_hash: visualHash(drawn.doc), problems: [] }));
+  atomicWrite(path.join(drawn.workdir, "captions", "manifest.json"), JSON.stringify({ compilation_hash: hash, locales: {}, skipped: {} }));
+  writeFileSync(path.join(drawn.workdir, "final.mp4"), "joined");
+  state = await drawnStatus();
+  assert.equal(state.steps[2].done, true);
+  assert.equal(state.next.id, "metadata translated");
+  assert.match(state.next.todo, /i18n\/<locale>\.json with title, description, tags and chapters for en, ja, ko, zh-CN/);
+  // A re-cut episode voids the join.
+  writeEpisode(drawn.work, "wuxia-ep-3");
+  state = await drawnStatus();
+  assert.equal(state.next.id, "video compiled");
+  assert.equal(state.next.note, "checks.json was written for other cuts or cards");
+  atomicWrite(path.join(drawn.workdir, "checks.json"), JSON.stringify({ ok: true, compilation_hash: compilationHash(drawn.doc, approvedEpisodes(drawn.doc, drawn.work)), visual_hash: visualHash(drawn.doc), problems: [] }));
+  atomicWrite(path.join(drawn.workdir, "captions", "manifest.json"), JSON.stringify({ compilation_hash: compilationHash(drawn.doc, approvedEpisodes(drawn.doc, drawn.work)), locales: {}, skipped: {} }));
+  writeTranslations(drawn, drawn.doc);
+  state = await drawnStatus();
+  assert.equal(state.next.id, "final video approved");
+  assert.match(state.next.todo, /approve --slug wuxia-full --gate final/);
+  assert.equal(translationComplete({ title: "t", description: "d", tags: ["t"], chapters: {} }), true);
+  assert.equal(translationComplete({ title: "t", description: "d", tags: [], chapters: {} }), false, "an empty tags list reads as untranslated in lint, so it is not complete");
+  assert.equal(translationComplete({ title: "t", description: "d", tags: ["t"] }), false);
+  assert.equal(translationComplete(null), false);
+  assert.equal(sha("x").length, 64);
 });

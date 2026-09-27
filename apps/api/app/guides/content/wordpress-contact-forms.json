@@ -242,6 +242,930 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress contact forms: fields, spam protection, and delivery checks",
+      "description": "A contact form must be easy for visitors to complete and reliable for the site owner to receive and follow up. Using Contact Form 7, this guide covers field design, mail templates, reply addresses, Turnstile spam protection, and message storage with Flamingo. It gives Taiwan-based small-site owners phone and inbox checks so an on-screen success message is never mistaken for a completed contact process.",
+      "hero": {
+        "src": "/guides/wordpress-contact-forms/hero-en.jpg",
+        "alt": "Original illustration of documents, a server, and a screen showing the path from form submission to handling a message.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A studio website has a contact form, but nobody is assigned to check its inbox—or the notification contains a name but omits what the visitor needs. Problems like these often delay replies more than the form's appearance does. Before designing it, answer three questions: what information is needed, who receives the message, and when it will be handled."
+        },
+        {
+          "type": "paragraph",
+          "text": "The example below uses a general service-inquiry form to explain how to configure Contact Form 7. Completion means checking entry, notification, storage, and reply. Verify each step with a test message before placing the form in the main navigation."
+        },
+        {
+          "type": "heading",
+          "text": "Start with a small set of purposeful fields",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An initial version can ask for a name, email address, inquiry type, and message. Make a phone number mandatory only if a call is genuinely needed. Do not require a full address or identity information from someone making a first inquiry just to collect everything at once. For every added field, be able to say who will use it and why."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mark required and optional fields in their labels rather than relying on color alone. Give a clear email example; the message field can prompt visitors to mention the service and a suitable contact time, while asking them not to enter passwords or unnecessary sensitive details. Unless attachments serve a defined need, leave uploads out of the first version to keep it manageable."
+        },
+        {
+          "type": "paragraph",
+          "text": "Above the form, state your reply hours and an alternative way to get in touch. Promise only what your team can do, such as reviewing inquiries on working days, rather than automatically promising a reply within an hour. Explain before visitors spend time filling in the form whether urgent matters should use another channel."
+        },
+        {
+          "type": "heading",
+          "text": "Create the form and put it on a contact page",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After installing and activating Contact Form 7, manage forms under Contact > Contact Forms. Add or duplicate a test form and use the field generator on the Form tab. Give each field a distinct, recognizable name because the mail template uses that name to retrieve the submitted value."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, the field your-email corresponds to the mail-tag [your-email]. If you rename a field, update the Mail tab too; otherwise the page may collect the answer while the email still refers to the old name. Wrap inputs in visible labels instead of relying only on placeholder text that disappears as someone types."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Create an inquiry form with clearly named fields, required entries, and choices.",
+            "Add the Contact Form 7 block to the contact page and select the form, or use its shortcode.",
+            "Save the page, open it in a signed-out window, and check the fields, line breaks, and submit button."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Set the notification recipient and reply direction correctly",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The To field on the Mail tab is the inbox for notifications and should be managed by the person responsible for responding. Following the plugin's guidance, use an address on your own site's domain for From and align it with the sending service's verification. Do not use a visitor's Gmail or other outside address as the site's sender; that can create a mismatch in sender identity."
+        },
+        {
+          "type": "paragraph",
+          "text": "To let support staff reply directly to the visitor, set Reply-To in Additional headers using the email field's mail-tag. List every needed value in the message body, including inquiry type and message. Keep a fixed identifier in the subject so the work inbox can route it, and avoid blank or vague notifications."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail (2) can send an automatic response, but the plugin says it sends only after the primary Mail succeeds. The response can explain that an inquiry was received and how it will be handled; it should not imply that a booking or transaction is confirmed. A visitor may mistype an address, so avoid repeating sensitive details at length in the auto-reply and configure abuse protection."
+        },
+        {
+          "type": "heading",
+          "text": "Check notifications and message storage separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7 does not store submitted messages by itself. If you need a way to trace inquiries when email fails, consider Flamingo, from the same author, which stores form messages in the database. This adds a separate data-retention duty: decide who can view the messages, how long to keep them, and how to dispose of data that is no longer needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "After enabling Flamingo, inspect the test message under Inbound Messages. If you customized field names, the official flamingo_email, flamingo_name, and flamingo_subject settings map values to its list. Confirm the displayed sender and subject make sense instead of checking only that a database row exists."
+        },
+        {
+          "type": "paragraph",
+          "text": "The plugin also offers do_not_store for forms that should not be retained. Whichever policy you choose, explain the data flow on the site: the type of work inbox receiving messages, whether the website stores them, and who handles them. Storage does not replace regular inbox checks or guarantee delivery to an inbox."
+        },
+        {
+          "type": "heading",
+          "text": "Add spam protection while keeping a route for real people",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Current Contact Form 7 versions include a Cloudflare Turnstile integration. Follow its instructions to create a Turnstile widget and obtain a site key and secret key, then enter them under Contact > Integration. The standard integration does not require embedding the verification script yourself. Put keys in the integration settings, never in an article or support conversation."
+        },
+        {
+          "type": "paragraph",
+          "text": "After enabling Turnstile, test the form on a phone and in different browsers. If verification does not load, investigate caching, the content security policy, or other script restrictions instead of asking visitors to resubmit repeatedly. Provide a clear alternative contact route so legitimate inquiries do not stop entirely when the protection tool fails."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a specific consent is needed, use an acceptance field and explain its purpose next to the checkbox. Keep the contact inquiry separate from an optional subscription; avoid preselecting a box or combining distinct purposes under one vague choice. These are form-design principles. Confirm actual notices and retention arrangements against your site's data-handling context."
+        },
+        {
+          "type": "heading",
+          "text": "Use one test checklist to complete acceptance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "At minimum, test valid entries, missing required fields, a malformed email address, longer text, and switching the phone keyboard. Navigate with Tab and check that focus order is sensible and errors identify the field to fix. After submission, explain what happens next so visitors do not send the form repeatedly because the page seems unresponsive."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check notifications and automatic replies with different receiving services. Verify the subject, every field, Reply-To, and spam folder. If storage is enabled, compare the same test record there too. A unique test phrase connecting the page, email, and admin record shows which step failed and prevents you from replacing several plugins at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, assign a regular reviewer and backup. Retest after a site move, sending-service change, or form update. Remove test data periodically and reconsider unnecessary fields so the contact page stays easy to complete, easy to handle, and easy to diagnose."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-contact-forms/diagram-1-en.svg",
+          "alt": "Original four-panel diagram showing the acceptance sequence: visitor entry, form processing, email and stored data, and staff reply.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check submission, notification, storage, and reply separately to complete the contact workflow.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Where to check",
+            "What it establishes",
+            "What to check next"
+          ],
+          "rows": [
+            [
+              "Visitor's success message",
+              "The form reports the result of this submission",
+              "Whether the notification arrived"
+            ],
+            [
+              "Notification and auto-reply",
+              "The relevant messages reached those mailboxes",
+              "Complete content and reply address"
+            ],
+            [
+              "Flamingo admin record",
+              "The site stored the message",
+              "Access, handling responsibility, and retention"
+            ]
+          ],
+          "caption": "Compare the same test inquiry at each point; no single result proves the entire workflow is complete."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Every field needs a place in the handling process",
+          "text": "After adding a form field, check the mail template and storage mapping too. Seeing the field on screen does not prove that the site owner receives its value."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Review website user permissions",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Correct Traditional Chinese wording in plugin interfaces",
+              "kind": "life",
+              "slug": "wordpress-plugin-theme-translation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Getting started with Contact Form 7",
+          "url": "https://contactform7.com/getting-started-with-contact-form-7/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Setting up mail templates",
+          "url": "https://contactform7.com/setting-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Best practices for sender and reply addresses",
+          "url": "https://contactform7.com/best-practice-to-set-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Storing messages with Flamingo",
+          "url": "https://contactform7.com/save-submitted-messages-with-flamingo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Official Turnstile integration",
+          "url": "https://contactform7.com/turnstile-integration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Acceptance checkbox field",
+          "url": "https://contactform7.com/acceptance-checkbox/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress の問い合わせフォーム：項目、迷惑送信対策、メール到達の確認",
+      "description": "問い合わせフォームは訪問者が入力しやすく、サイト運営者が確実に受け取って対応できることが大切です。Contact Form 7 を例に、項目設計、メールテンプレート、返信先、Turnstile による迷惑送信対策、Flamingo での保存を説明します。台湾の小規模サイト運営者向けに、スマートフォン操作と受信の確認手順を示し、画面の送信成功表示だけで対応完了と判断しないためのガイドです。",
+      "hero": {
+        "src": "/guides/wordpress-contact-forms/hero-ja.jpg",
+        "alt": "書類、サーバー、画面を使い、フォーム送信から問い合わせの処理までを表したオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "事務所のサイトに問い合わせフォームはあるのに、受信箱を確認する担当者がいない。あるいは通知に名前だけが入り、相談内容が抜けている。こうした問題はフォームの見た目以上に返信を遅らせます。設計前に、必要な情報、受け取る担当者、対応する時期の三点を決めましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では一般的なサービス相談フォームを例に、Contact Form 7 の設定を考えます。入力、通知、保存、返信まで確認できて初めて完成です。各段階をテスト送信で確かめてから、フォームを主要ナビゲーションに置きます。"
+        },
+        {
+          "type": "heading",
+          "text": "目的のある少数の項目から始める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初は呼び名、メールアドレス、相談の種類、本文を基本にできます。電話が実際に必要な場合にだけ電話番号を必須にしましょう。初回の問い合わせで住所や身分情報をすべて求める必要はありません。項目を増やす際には、誰が何のために使うか説明できるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "必須・任意は色だけで示さず、項目名に明記します。メールアドレスの入力例を分かりやすくし、本文には希望するサービスと連絡しやすい時間を促せます。同時に、パスワードや不要な機微情報を書かないよう伝えます。添付ファイルに明確な目的がなければ、初版では省き、管理しやすい流れにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フォームの上に返信可能な時間帯と代替の連絡方法を書きます。「営業日に担当者が確認する」など実行できる案内にし、自動的に一時間以内の返信を約束しないでください。急ぎの用件にフォームが適しているかも、訪問者が入力に時間を使う前に説明します。"
+        },
+        {
+          "type": "heading",
+          "text": "フォームを作って問い合わせページに配置する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7 をインストールして有効化したら、Contact > Contact Forms から管理します。テスト用フォームを新規作成または複製し、Form タブの項目生成機能で必要な入力欄を作ります。メールテンプレートは項目名で回答を取得するため、重複せず識別しやすい名前にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば your-email という項目はメールタグ [your-email] に対応します。名前を変更したら Mail タブも更新してください。画面では回答を受け付けても、メールが古い名前を参照したままになることがあります。入力欄には見えるラベルを付け、入力すると消えるプレースホルダーだけに頼らないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "用途が分かる名前、必須項目、選択肢を持つ相談フォームを作る。",
+            "問い合わせページに Contact Form 7 ブロックを追加してフォームを選ぶか、提供されるショートコードを使う。",
+            "保存後、ログアウトしたウィンドウで開き、項目、改行、送信ボタンを確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "通知の宛先と返信先を正しく設定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail の To は通知の受信箱です。対応担当者が管理するアドレスを指定します。From には公式の推奨に沿って自サイトのドメインのアドレスを使い、送信サービスの認証設定と合わせます。訪問者の Gmail など外部アドレスをサイトの送信者にすると、送信者の身元が一致しなくなりがちです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "返信ボタンから訪問者へ返したい場合は、Additional headers の Reply-To にメール項目のメールタグを設定します。本文には相談の種類と内容を含む必要な値を一つずつ並べます。件名に固定の識別語を入れると業務用受信箱で振り分けやすく、空欄や内容の乏しい通知も避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail (2) は自動返信に使えますが、公式説明では主たる Mail の送信成功後にだけ送信されます。問い合わせを受け取ったことと対応方法を伝えられますが、予約や取引の成立と書いてはいけません。訪問者がアドレスを間違える可能性もあるため、機微情報を大量に繰り返さず、悪用対策も行います。"
+        },
+        {
+          "type": "heading",
+          "text": "通知とメッセージ保存を別々に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7 自体は送信メッセージを保存しません。メール障害時にも相談を追跡したい場合は、同じ作者の Flamingo を検討できます。フォームの内容をデータベースに保存しますが、保存に伴う責任も増えます。閲覧できる人、保存期間、不要になったデータの処理を有効化前に決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flamingo を使い始めたら、Inbound Messages でテスト送信を確認します。項目名を変更した場合、公式の flamingo_email、flamingo_name、flamingo_subject 設定で対応づけられます。行が存在するだけでなく、一覧の送信者と件名が正しいか確かめてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存したくないフォームには do_not_store 設定もあります。どの方針でも、メッセージが届く業務用受信箱の種類、サイト内保存の有無、担当者をサイトで説明しましょう。保存機能は定期的な受信確認の代わりにはならず、受信箱への到達も保証しません。"
+        },
+        {
+          "type": "heading",
+          "text": "迷惑送信を防ぎ、正当な問い合わせの道を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現行の Contact Form 7 には Cloudflare Turnstile 連携があります。公式手順に沿って Turnstile のウィジェットを作り、site key と secret key を取得し、Contact > Integration で設定します。通常の連携では検証用スクリプトを自分で埋め込む必要はありません。鍵は連携設定に置き、記事やサポート会話に公開しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有効化後もスマートフォンと複数のブラウザーで試します。検証部分が読み込まれないなら、キャッシュ、コンテンツセキュリティポリシー、他のスクリプト制限を調べ、訪問者に再送を繰り返させないでください。防護ツールの障害で正当な相談が途絶えないよう、代替の連絡先を明示します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "特定の同意が必要なら acceptance 項目を使い、チェック欄の近くで目的を説明します。問い合わせと追加の購読は分け、あらかじめチェックを入れたり、異なる用途を曖昧な一項目にまとめたりしないでください。これはフォーム設計の原則です。実際の告知と保存方法は、サイトのデータ処理に応じて確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "一つのテスト一覧で受け入れ確認を終える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最低限、正常な入力、必須欄の空白、誤ったメール形式、長文、スマートフォンのキーボード切替を試します。Tab キーで移動し、フォーカス順が自然で、エラーが修正すべき欄を示すか確認します。送信後は次の流れを明記し、反応がないと思った訪問者が連続送信しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "異なる受信サービスで通知と自動返信を確認し、件名、全項目、Reply-To、迷惑メールフォルダーを照合します。保存を有効にしたなら同じテスト記録も比べます。一意のテスト語句で画面、メール、管理画面を結べば、失敗箇所が分かり、一度に複数のプラグインを交換せずに済みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に定期確認の担当者と代役を決めます。サイト移転、送信サービス変更、フォーム更新後は再テストします。テストデータを定期的に削除し、不要な項目を見直して、入力・対応・原因調査のしやすい問い合わせページを保ちましょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-contact-forms/diagram-1-ja.svg",
+          "alt": "訪問者の入力、フォーム処理、メールと保存データ、担当者の返信という確認順を示すオリジナルの四コマ図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "送信、通知、保存、返信をそれぞれ照合して初めて、問い合わせの流れが完成します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認する場所",
+            "分かること",
+            "次に確かめること"
+          ],
+          "rows": [
+            [
+              "訪問者側の成功表示",
+              "フォームが今回の処理結果を報告した",
+              "通知が届いたか"
+            ],
+            [
+              "通知と自動返信",
+              "関連メールがそれぞれの受信箱に届いた",
+              "内容の欠落と返信先"
+            ],
+            [
+              "Flamingo の管理画面",
+              "サイトがメッセージを保存した",
+              "閲覧権限、担当者、保存期間"
+            ]
+          ],
+          "caption": "同じテスト内容を各段階で比較し、一つの結果だけで全体の完了と判断しないでください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "すべての項目を対応の流れにつなげる",
+          "text": "フォームの項目を増やしたら、メールテンプレートと保存時の対応づけも確認します。画面に項目が見えるだけでは、運営者に内容が届いた証拠にはなりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト利用者の権限を確認する",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "プラグイン画面の繁体字中国語表記を直す",
+              "kind": "life",
+              "slug": "wordpress-plugin-theme-translation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Contact Form 7 入門",
+          "url": "https://contactform7.com/getting-started-with-contact-form-7/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "メールテンプレートの設定",
+          "url": "https://contactform7.com/setting-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "送信者と返信先の推奨設定",
+          "url": "https://contactform7.com/best-practice-to-set-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Flamingo でのメッセージ保存",
+          "url": "https://contactform7.com/save-submitted-messages-with-flamingo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Turnstile の公式連携",
+          "url": "https://contactform7.com/turnstile-integration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "承諾チェック欄",
+          "url": "https://contactform7.com/acceptance-checkbox/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 문의 양식: 입력 항목, 스팸 방지, 메일 수신 확인",
+      "description": "문의 양식은 방문자가 쉽게 작성할 수 있어야 하고 사이트 운영자가 메시지를 실제로 받아 후속 처리할 수 있어야 합니다. Contact Form 7을 예로 항목 설계, 메일 서식, 회신 주소, Turnstile 스팸 방지, Flamingo 보관을 설명합니다. 대만의 소규모 사이트 운영자를 위해 휴대전화 사용과 수신 확인 절차를 제시하며, 화면의 전송 성공 표시만으로 문의 처리가 끝났다고 판단하지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-contact-forms/hero-ko.jpg",
+        "alt": "문서, 서버, 화면으로 양식 제출부터 문의 처리까지의 경로를 나타낸 창작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "작업실 웹사이트에 문의 양식은 있지만 받은편지함을 확인할 담당자가 없거나, 알림 메일에 이름만 있고 요청 내용은 빠질 수 있습니다. 이런 문제는 양식의 외관보다 답변을 더 늦춥니다. 설계 전에 필요한 정보, 메시지를 받을 사람, 처리 시점이라는 세 가지를 먼저 정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 일반적인 서비스 문의 양식을 예로 Contact Form 7 설정 방법을 설명합니다. 작성, 알림, 보관, 답변을 모두 확인해야 완료입니다. 각 단계에 시험 메시지를 보내 검증한 뒤 기본 탐색 메뉴에 양식을 배치하세요."
+        },
+        {
+          "type": "heading",
+          "text": "용도가 분명한 항목만 먼저 넣기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 버전에는 이름, 이메일 주소, 문의 유형, 메시지 내용을 넣을 수 있습니다. 전화가 실제로 필요할 때만 전화번호를 필수로 하세요. 첫 문의에서 모든 정보를 한 번에 받겠다며 집 주소나 신분 정보를 요구하지 마세요. 항목을 늘릴 때마다 누가 어떤 목적으로 사용하는지 설명할 수 있어야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "필수와 선택 여부는 색상만으로 표현하지 말고 항목 라벨에 쓰세요. 이메일 예시는 분명하게 제시하고, 메시지란에는 서비스 종류와 연락을 희망하는 시간을 안내할 수 있습니다. 비밀번호나 불필요한 민감 정보는 쓰지 않도록 알리세요. 첨부 파일에 명확한 목적이 없다면 첫 버전에서는 빼서 관리하기 쉬운 흐름을 만드세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "양식 위에는 답변 가능한 시간과 대체 연락 방법을 적으세요. 근무일에 담당자가 확인한다는 식으로 팀이 지킬 수 있는 내용을 쓰고, 한 시간 내 답변을 자동 약속하지 마세요. 긴급 문의가 양식에 적합한지도 방문자가 작성에 시간을 들이기 전에 설명해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "양식을 만들고 문의 페이지에 배치하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7을 설치하고 활성화한 뒤 Contact > Contact Forms에서 관리하세요. 시험용 양식을 새로 만들거나 복제하고 Form 탭의 필드 생성기로 필요한 입력란을 만듭니다. 메일 서식이 이 이름으로 답변을 가져오므로 각 필드 이름은 중복되지 않고 알아보기 쉬워야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 your-email 필드는 메일 태그 [your-email]에 대응합니다. 필드 이름을 바꾸면 Mail 탭도 함께 고치세요. 화면에서 값을 받더라도 메일은 이전 이름을 참조할 수 있습니다. 입력할 때 사라지는 안내 문구에만 의지하지 말고 눈에 보이는 라벨을 입력란에 연결하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "이름, 필수 항목, 선택지가 명확한 문의 양식을 만든다.",
+            "문의 페이지에 Contact Form 7 블록을 추가해 양식을 선택하거나 제공되는 쇼트코드를 사용한다.",
+            "저장 후 로그아웃한 창에서 페이지를 열어 항목, 줄바꿈, 제출 버튼을 확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "알림 수신자와 회신 방향을 올바르게 설정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail의 To는 알림을 받을 편지함이므로 처리 담당자가 관리하는 주소를 지정하세요. From에는 공식 권장에 따라 사이트 자체 도메인의 주소를 쓰고 발송 서비스의 인증 설정과 맞추세요. 방문자가 적은 Gmail 같은 외부 주소를 사이트 발신자로 쓰면 발신자 신원이 어긋나기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "담당자가 답장 버튼으로 방문자에게 바로 회신하려면 Additional headers의 Reply-To에 이메일 필드의 메일 태그를 넣습니다. 본문에는 문의 유형과 메시지를 포함해 필요한 데이터를 빠짐없이 나열하세요. 제목에는 일정한 식별어를 넣어 업무 편지함에서 분류하기 쉽게 하고, 비어 있거나 너무 짧은 알림을 피하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail (2)는 자동 회신에 사용할 수 있지만 공식 설명에 따르면 기본 Mail이 성공적으로 발송된 뒤에만 보냅니다. 문의를 받았다는 사실과 처리 방법은 안내할 수 있지만 예약이나 거래가 확정됐다고 쓰지 마세요. 방문자가 주소를 잘못 입력할 수 있으므로 자동 회신에 민감한 내용을 길게 반복하지 말고 악용 방지도 설정하세요."
+        },
+        {
+          "type": "heading",
+          "text": "알림과 메시지 보관을 따로 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7 자체는 제출된 메시지를 저장하지 않습니다. 메일에 문제가 생겼을 때 문의를 추적해야 한다면 같은 제작자의 Flamingo를 고려할 수 있습니다. 양식 메시지를 데이터베이스에 보관하지만 별도의 보관 책임이 생깁니다. 사용 전에 열람 권한, 보관 기간, 불필요해진 데이터의 처리 방법을 정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Flamingo를 활성화한 뒤 Inbound Messages에서 시험 메시지를 확인합니다. 필드 이름을 바꿨다면 공식 flamingo_email, flamingo_name, flamingo_subject 설정으로 값을 연결할 수 있습니다. 데이터 행이 있다는 것만 보지 말고 목록의 발신자와 제목이 맞는지도 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "보관이 필요 없는 양식에는 공식 do_not_store 설정도 있습니다. 어느 방식을 선택하든 메시지가 가는 업무 편지함의 종류, 사이트 저장 여부, 담당자를 사이트에 설명하세요. 보관 기능은 정기적인 수신 확인을 대신하지 않으며 받은편지함 도착도 보장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "스팸을 막되 정상 문의 경로는 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 Contact Form 7은 Cloudflare Turnstile 연동을 제공합니다. 공식 절차대로 Turnstile 위젯을 만들고 site key와 secret key를 받은 뒤 Contact > Integration에 입력하세요. 일반 연동에는 검증 스크립트를 직접 삽입할 필요가 없습니다. 키는 연동 설정에 보관하고 기사나 고객지원 대화에 공개하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Turnstile을 켠 뒤에도 휴대전화와 여러 브라우저에서 시험하세요. 검증 부분이 로드되지 않으면 방문자에게 반복 제출을 요구하지 말고 캐시, 콘텐츠 보안 정책, 다른 스크립트 제한을 점검하세요. 보호 도구가 고장 나도 정상 문의가 완전히 끊기지 않도록 대체 연락 수단을 명시하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "특정 동의가 필요하면 acceptance 필드를 쓰고 체크박스 가까이에 목적을 적으세요. 문의와 추가 구독은 분리하고, 미리 체크하거나 서로 다른 용도를 모호한 한 항목에 묶지 마세요. 이는 양식 설계 원칙이며 실제 고지와 보관 방식은 사이트의 데이터 처리 상황에 맞춰 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "하나의 시험 목록으로 최종 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "정상 입력, 필수칸 공백, 잘못된 이메일 형식, 긴 글, 휴대전화 키보드 전환을 최소한 시험하세요. Tab 키로 이동하며 초점 순서가 자연스럽고 오류가 수정할 항목을 알려 주는지 확인합니다. 제출 후에는 다음 절차를 분명히 써서 화면이 반응하지 않는다고 생각한 방문자가 연속 제출하지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "서로 다른 수신 서비스로 알림과 자동 회신을 확인하며 제목, 모든 항목, Reply-To, 스팸함을 대조하세요. 보관을 켰다면 동일한 시험 기록도 비교합니다. 고유한 시험 문구로 화면, 메일, 관리자 데이터를 연결하면 어느 단계가 실패했는지 알 수 있고 여러 플러그인을 한꺼번에 바꾸지 않아도 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 정기 확인 담당자와 대체 담당자를 정하세요. 사이트 이전, 발송 서비스 변경, 양식 업데이트 후에는 다시 시험합니다. 시험 데이터를 주기적으로 삭제하고 불필요한 항목을 점검해 입력과 처리, 문제 원인 찾기가 쉬운 문의 페이지를 유지하세요."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-contact-forms/diagram-1-ko.svg",
+          "alt": "방문자 작성, 양식 처리, 메일과 저장 데이터, 담당자 답변의 확인 순서를 나타낸 창작 4칸 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "제출, 알림, 보관, 답변을 각각 확인해야 완전한 문의 흐름이 됩니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "확인 위치",
+            "알 수 있는 것",
+            "추가 확인 사항"
+          ],
+          "rows": [
+            [
+              "방문자 화면의 성공 표시",
+              "양식이 이번 처리 결과를 보고함",
+              "알림 메일 도착 여부"
+            ],
+            [
+              "알림 메일과 자동 회신",
+              "관련 메일이 각 편지함에 도착함",
+              "내용 누락과 회신 주소"
+            ],
+            [
+              "Flamingo 관리자 기록",
+              "사이트가 메시지를 저장함",
+              "열람 권한, 처리 담당자, 보관 기간"
+            ]
+          ],
+          "caption": "동일한 시험 내용을 단계마다 비교하고 어느 한 결과만으로 전 과정을 완료했다고 판단하지 마세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "모든 필드를 처리 과정에 연결하세요",
+          "text": "양식 필드를 추가하면 메일 서식과 저장 항목 연결도 함께 확인하세요. 화면에 필드가 보인다는 것만으로 운영자가 그 내용을 받았다고 증명할 수 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트 사용자 권한 확인",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "플러그인 화면의 번체 중국어 표현 수정",
+              "kind": "life",
+              "slug": "wordpress-plugin-theme-translation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Contact Form 7 시작하기",
+          "url": "https://contactform7.com/getting-started-with-contact-form-7/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "메일 서식 설정",
+          "url": "https://contactform7.com/setting-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "발신자와 회신 주소 권장 설정",
+          "url": "https://contactform7.com/best-practice-to-set-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Flamingo 메시지 보관",
+          "url": "https://contactform7.com/save-submitted-messages-with-flamingo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Turnstile 공식 연동",
+          "url": "https://contactform7.com/turnstile-integration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "동의 체크박스 필드",
+          "url": "https://contactform7.com/acceptance-checkbox/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 联系表单：字段、垃圾信息与邮件送达检查",
+      "description": "联系表单既要让访客顺利填写，也要让站长确实收到并跟进消息。本文以 Contact Form 7 说明字段设计、邮件模板、回复地址、Turnstile 防垃圾提交，以及 Flamingo 保存消息的方法，并提供手机操作和收信检查步骤，帮助台湾小型网站建立清晰的联系流程，避免把页面上的提交成功提示当作整个工作已经完成。",
+      "hero": {
+        "src": "/guides/wordpress-contact-forms/hero-zh-cn.jpg",
+        "alt": "原创文档、服务器与屏幕插画，象征表单消息从提交到处理的路径。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室网站放了联系表单，却没人负责查看邮箱，或通知邮件只有姓名、漏了需求内容。这些问题往往比表单外观更影响回复效率。设计前先回答三件事：需要哪些信息、消息交给谁、多久处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以一般服务咨询表单为例，说明 Contact Form 7 的设置思路。完成标准包括填写、通知、保存和回复；每一步都用测试消息验证，再把表单放进主要导航。"
+        },
+        {
+          "type": "heading",
+          "text": "先缩小问题，让字段有用途",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一版可以保留称呼、电子邮箱、需求类型和消息内容。只有确实需要电话联系时才把电话号码设为必填；不要为了“一次收齐”，要求初次咨询者填写完整住址或身份信息。每增加一项，都要能说明由谁使用、用来做什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把必填与选填直接写在字段标签里，不要只靠颜色区分。电子邮箱的示例要清楚；留言栏可以提示对方填写服务项目和希望联系的时间，并提醒不要填入密码或不必要的敏感信息。没有明确需求时，第一版先不提供附件上传，让流程更容易管理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表单上方可写回复时段与替代联系方式。请使用团队能做到的说明，例如由人员于工作日查看，避免自动承诺一小时内回复。急件是否适合通过表单处理，也应在访客花时间填写前说清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "创建表单并放进联系页面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "安装并启用后，从 Contact > Contact Forms 管理表单。新建或复制一份测试表单，在 Form 标签页用字段生成器创建所需字段。每个字段都要有唯一且容易辨认的名称，因为邮件模板会用该名称取得填写内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如表单中的 your-email 对应邮件标签 [your-email]。更改字段名称后，应同步更新 Mail 标签页，否则页面收到了信息，邮件却可能仍引用旧名称。为输入框配上清楚可见的标签，不要只依赖用户输入后便消失的占位提示。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "创建命名清楚的咨询表单，设置必填字段与选项。",
+            "在联系页面加入 Contact Form 7 区块并选取表单，或使用它提供的短代码。",
+            "保存后从未登录窗口打开页面，核对字段、换行及提交按钮。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "把邮件的收件与回复方向设置正确",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail 中的 To 是接收通知的邮箱，应由负责处理的人员管理。From 按官方建议使用网站自有域名的地址，并与邮件发送服务的验证设置一致；不要把访客填写的 Gmail 或其他外部地址当成网站发件人，否则容易造成发件身份不一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果希望客服按回复时直接回给访客，可在 Additional headers 设置 Reply-To，引用电子邮件字段的 mail-tag。正文则逐一列出需要的数据，包含需求类型和消息内容。主题保留固定识别词，让工作邮箱容易分流，也避免只有空白或过于简短的通知。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mail (2) 可用作自动回复，但官方说明它只在主要 Mail 成功发送后才寄出。回复内容可以告知已收到询问及处理方式，不要把它写成预约或交易已成立。访客地址可能填错，因此别在自动回复邮件大量重述敏感数据，也要做好防滥用设置。"
+        },
+        {
+          "type": "heading",
+          "text": "分开检查通知与消息保存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7 本身不会保存提交的消息。如果网站需要在邮件发送失败时仍能追踪咨询，可以考虑同一作者的 Flamingo，把表单消息存在数据库中。这也增加了数据保存责任：启用前应决定谁能查看、保存多久，以及如何处理不再需要的数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用 Flamingo 后，到 Inbound Messages 检查测试消息。若自定义了字段名称，可用官方提供的 flamingo_email、flamingo_name 和 flamingo_subject 设置映射数据；应确认列表中的发件人与主题合理，而不只是看有没有数据记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "部分表单若不需要保存，官方也提供 do_not_store 设置。无论选择哪种策略，都要把数据流程写在网站说明中：消息会寄往哪类工作邮箱、是否保存在网站，以及谁负责处理。保存功能不能取代定期查看，更不能保证邮件一定进入收件箱。"
+        },
+        {
+          "type": "heading",
+          "text": "加入防垃圾消息，保留正常人的入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "当前 Contact Form 7 提供 Cloudflare Turnstile 集成。按官方流程创建 Turnstile widget，取得 site key 和 secret key，再到 Contact > Integration 填入对应设置；一般集成不需要自行嵌入验证脚本。密钥应放在集成设置中，不要公开贴在文章或客服对话里。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Turnstile 启用后仍要用手机与不同浏览器测试。若验证区无法加载，应查缓存、内容安全策略或其他脚本限制，而不是要求访客反复提交。保留一个清楚的替代联系途径，让正常询问不会因防护工具故障而完全中断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要取得特定同意时，可使用 acceptance 字段，把用途写在勾选框附近。联系需求与额外订阅应分开表达，避免预先勾选或以一个模糊选项包住不同用途。这是表单设计原则；实际需要的告知及保存安排，仍应依网站的数据处理情境确认。"
+        },
+        {
+          "type": "heading",
+          "text": "用一份测试清单完成验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "至少测试正常填写、空白必填、错误邮箱格式、较长的文字及手机键盘切换。用键盘 Tab 移动，确认焦点顺序合理，错误提示能指出要修改哪一栏。提交成功后的文本要清楚说明接下来会发生什么，避免访客以为画面没反应而连续提交。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再用不同收件服务查看通知邮件和自动回复，核对主题、每个字段、Reply-To 及垃圾邮件文件夹。若启用了消息保存，也要比对同一条测试记录。用唯一测试字样串起页面、邮件和后台数据，才能知道哪一步失败，避免一次更换好几套插件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后指定固定负责检查的人和备用人员，网站搬家、更换邮件发送服务或更新表单后重新发送测试消息。定期删除测试数据并检查不必要的字段，让联系页面易于填写、易于处理，也易于找出问题原因。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-contact-forms/diagram-1-zh-cn.svg",
+          "alt": "四格原创图解呈现访客填写、表单处理、邮件与保存的数据、负责人回复的验收顺序。",
+          "width": 1600,
+          "height": 900,
+          "caption": "提交、通知、保存和回复各自核对，才能形成完整联系流程。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查位置",
+            "能证明什么",
+            "还要核对"
+          ],
+          "rows": [
+            [
+              "访客看到的成功提示",
+              "表单报告此次处理结果",
+              "通知信是否到达"
+            ],
+            [
+              "通知邮件与自动回复",
+              "相关邮件已到达相应邮箱",
+              "内容完整及回复地址"
+            ],
+            [
+              "Flamingo 后台记录",
+              "网站保存了消息",
+              "查看权限、处理责任及保存安排"
+            ]
+          ],
+          "caption": "用同一条测试消息比对不同环节，避免把其中一步当成全部完成。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "每个字段都需要进入处理流程",
+          "text": "添加表单字段后，同时检查邮件模板与保存字段映射。只有页面出现字段，还不能证明站长收到的内容完整。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查网站用户权限",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "修正插件接口的繁体中文用语",
+              "kind": "life",
+              "slug": "wordpress-plugin-theme-translation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Contact Form 7 入门指南",
+          "url": "https://contactform7.com/getting-started-with-contact-form-7/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "设置邮件模板",
+          "url": "https://contactform7.com/setting-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "发件人与回复地址的建议",
+          "url": "https://contactform7.com/best-practice-to-set-up-mail/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "使用 Flamingo 保存消息",
+          "url": "https://contactform7.com/save-submitted-messages-with-flamingo/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Turnstile 官方集成",
+          "url": "https://contactform7.com/turnstile-integration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Acceptance 同意复选框",
+          "url": "https://contactform7.com/acceptance-checkbox/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

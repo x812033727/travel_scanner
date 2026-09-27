@@ -80,7 +80,19 @@ YouTube 要自動產生章節列，說明欄的時間戳必須：第一個是 `0
 
 `UPLOAD.md` 就是這份清單的自動版本，請站主照著做。沒勾任何語言（或按了「只出繁體中文」）的影片，上傳包只有 zh-TW。
 
-- **API 上傳會被鎖成私人**：YouTube 規定，沒通過稽核的 API 專案用 `videos.insert` 上傳的影片會被鎖成私人，而且不能申訴。所以 mp4 一律由站主在 Studio 上傳，先設成「私人」。其他語系的標題、說明和字幕，之後由 `youtube-sync` 用 API 補上，只送勾了的語系（還沒做好之前，就在 Studio 手動上傳 SRT）。
+- **API 上傳會被鎖成私人**：YouTube 規定，沒通過稽核的 API 專案用 `videos.insert` 上傳的影片會被鎖成私人，而且不能申訴。所以稽核通過之前，mp4 由站主在 Studio 上傳（私人、其他欄位不填），其餘由網站補（下一節）。
+
+## 網站送到 YouTube（連結頻道之後）
+
+程式在 `apps/api/app/video_youtube`（設計：`docs/videos/HANDS-OFF.md` §YouTube API）。**權杖只在 API 容器**：代理、工人、對話都碰不到，也不需要碰。
+
+- **連結（一次）**：`/admin/videos` → 設定分頁 →「YouTube 頻道」卡片列出 Google Cloud 的五步（啟用 YouTube Data API v3、同意畫面「外部」＋名稱 Mokaair Studio Sync＋**正式版**、網頁應用程式用戶端、重新導向 URI 用卡片上顯示的那個、範圍只有 `youtube.force-ssl`）。站主自己把用戶端 ID 與密鑰貼進卡片、按「連結 YouTube 頻道」、在 Google 選擁有頻道的帳號按允許。密鑰與 refresh token 加密存在 `video_youtube_connections`，不回傳瀏覽器；卡片每 25 天自動用 `channels.list` 確認一次授權（Developer Policies III.E.4）。
+- **送出**：「可以上架」卡片（或影片頁）在連結後換成「送到 YouTube」表單：
+  - 影片檔：「我已經在 Studio 上傳（私人），貼網址」，或「由網站上傳 mp4」（續傳上傳，8 MiB 一段；稽核沒過時要勾「我知道會被鎖成私人」，只拿來測試與截圖）；
+  - 中文標題、說明欄預填上傳包的，站主可以改；瀏覽權限：在選定時間公開（之前私人）／不公開／私人。網站**從不直接設成公開**，也拒絕動已經公開的影片。
+- **網站依序做**（每一步記在影片的「YouTube 同步」面板）：`upload`（只有網站上傳時）→ `details`（先 `videos.list` 讀現值、確認在連結的頻道且不是公開，再 `videos.update` 整段送：上傳包裡的語系（站主為這支勾的，`docs/videos/LANGUAGES.md`）、標籤、分類、`selfDeclaredMadeForKids`、`containsSyntheticMedia`、`publishAt`）→ `captions`（上傳包裡的字幕，`captions.list` 後只補沒有的語系；自動字幕不算）→ `thumbnail`。一支約 2,100 單位（`captions.insert` 每次 400）。
+- **失敗與重試**：面板顯示哪一步、YouTube 說了什麼；按重試只做沒完成的步驟，mp4 從 YouTube 收到的位元組接著傳，不會傳第二份。常見原因：配額用完（太平洋時間午夜重置）、縮圖 403（頻道要先完成電話驗證）、影片不是私人或不在連結的頻道、授權被撤銷（卡片會顯示「授權失效」，重新連結）。API 重啟時正在跑的那次會顯示「中斷了」，一樣按重試。
+- **還沒實測的兩件事**（第一支用私人影片實測後回寫這裡）：未稽核的專案對 Studio 上傳的影片呼叫 `captions.insert` 與設 `publishAt` 是否都成功；中文字幕語言碼用 `zh-TW`／`zh-CN` 送出後，`captions.list` 讀回是不是同一個碼（程式把 `zh-Hant`／`zh-Hans` 當成同一個語系比對）。字幕軌名稱送空字串，播放器選單只顯示語言名。
 - **非原創內容政策**：YouTube 會停止營利「用模板量產、沒有創作者觀點」的 AI 內容。全自動影片最容易踩到這一條，所以每支影片都要做到：
   - `brief.md` 的「站主觀點」由站主確認過；
   - 至少有一段實際示範或實算；

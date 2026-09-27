@@ -24,7 +24,7 @@ const oneOff = {
 const beats = (number: number) => ({ number, title: `第 ${number} 集`, logline: `L${number}`, hook: "鐘聲", conflict: "誰敲的", turn: "鐘自己響", cliffhanger: { type: "reveal", text: "鐘下有字" }, setups: ["m1"], payoffs: [], tension: [2, 3, 3, 4, 5] });
 type Doc = Record<string, unknown>;
 const docs: Doc[] = [
-  { id: "d1", kind: "setting", chapter_number: 0, version: 2, body_md: "# 設定集\n世界。", body_json: { characters: [] }, status: "approved", note: null, decided_at: "2026-09-27T00:30:00Z", created_at: "2026-09-27T00:20:00Z" },
+  { id: "d1", kind: "setting", chapter_number: 0, version: 2, body_md: "# 設定集\n世界。", body_json: { characters: [] }, status: "approved", note: "查核：世界觀一致，角色聲音有辨識度", decided_at: "2026-09-27T00:30:00Z", created_at: "2026-09-27T00:20:00Z" },
   { id: "d2", kind: "outline", chapter_number: 0, version: 1, body_md: "# 總綱", body_json: { chapters: [] }, status: "approved", note: null, decided_at: "2026-09-27T00:40:00Z", created_at: "2026-09-27T00:35:00Z" },
   { id: "d3", kind: "chapter", chapter_number: 2, version: 1, body_md: "# 第二篇", body_json: { chapter: 2, episodes: [beats(11), beats(12)] }, status: "review", note: null, decided_at: null, created_at: "2026-09-27T00:50:00Z" },
 ];
@@ -38,6 +38,43 @@ const oneOffEpisodes = [
   { number: 1, chapter_number: 1, title: "精衛填海", logline: "L1", beats: beats(1), status: "started", slug: "one-off-1a2b3c4d-e001", recap: null, started_at: "2026-09-27T02:05:00Z", finished_at: null, video: { slug: "one-off-1a2b3c4d-e001", title: "精衛填海", format: "drama", stage: "script", checklist: [{ key: "script", label: "劇本核准", done: false }], youtube_video_id: null, last_synced_at: "2026-09-27T02:10:00Z", pending: 1, media_usd: 12.5, clip_seconds: 96 } },
 ];
 
+// What the server quotes for the form's defaults (120 minutes of 3-minute hybrid episodes) against a
+// month whose clip, image and episode budgets are too small for it; only the judge budget fits.
+const quote = {
+  episodes: 40, chapters: 4, episodes_per_chapter: 10, clip_seconds: 4320, images: 1578, judge_calls: 1698, usd: 950.5,
+  budgets: {
+    clip_seconds: { needed: 4320, monthly: 3000, ok: false }, images: { needed: 1578, monthly: 1500, ok: false },
+    judge_calls: { needed: 1698, monthly: 3000, ok: true }, episodes_per_month: { needed: 40, monthly: 30, ok: false },
+  },
+  ok: false,
+};
+// The compilation of a finished binge series: the series' one video without an episode number.
+const compilationVideo = {
+  slug: "wenjian-full", title: "問劍 合集", format: "drama", stage: "done", checklist: [{ key: "brief", label: "企劃", done: true }], youtube_video_id: null,
+  last_synced_at: "2026-09-27T03:00:00Z", pending: 0, media_usd: 0, clip_seconds: 0, series_slug: "wenjian", episode_number: null, compilation: true, download_available: true,
+};
+
+// The video settings the drama tab reads once for its banner and its settings section. The media
+// catalog is left empty: the drama settings form itself is covered in admin-video-drama-settings.test.tsx.
+function videoSettings(dramaEnabled: boolean) {
+  return {
+    enabled: false, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3, topic_scope: ["AI"], topic_avoid: [], topic_from_site: true, topic_from_search: true,
+    stage_models: Object.fromEntries(["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"].map((stage) => [stage, { provider: "anthropic", model: "claude-sonnet-5" }])),
+    voice: { provider: "gemini", name: "Sulafat", style: null, model: null, rate: "+0%" }, target_minutes_min: 8, target_minutes_max: 12,
+    caption_locales: ["en"], max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2, auto_approve_audio: true,
+    stage_instructions: {}, channel_stance: "", auto_pick_outline: true, auto_approve_final: true,
+    drama: {
+      drama_enabled: dramaEnabled, image_provider: "gemini", image_model: "gemini-3-pro-image", clip_provider: "gemini", clip_model: "gemini-omni-1.1-flash",
+      music_provider: "gemini", music_model: "lyria-3.5", clip_resolution: "1080p", clip_seconds_default: 8, clip_native_audio: false, drama_aspect: "16:9",
+      max_clips_per_video: 40, max_retakes_per_shot: 2, monthly_clip_seconds_budget: 3000, monthly_images_budget: 1500, monthly_judge_calls_budget: 3000,
+      monthly_music_budget: 60, max_usd_per_video: 200, judge_min_score: 7, auto_approve_storyboard: false, auto_pick_look: false, character_voice_pool: [],
+      music_enabled: true, subtitle_burn_in: true, style_preset: "cinematic-3d", drama_topic_scope: ["山海經"],
+    },
+    media_options: { images: {}, clips: {}, music: {} }, style_presets: ["cinematic-3d"], model_options: {}, configured_providers: ["gemini"],
+    voice_options: { gemini: ["Kore"], gemini_models: [], azure: [] }, usage: null, updated_at: "2026-09-27T08:00:00Z",
+  };
+}
+
 type Line = { id: string; subject: string; author: string; body_md: string; refers_to: string | null; answered_at: string | null; created_at: string; created_by_user_id: string | null };
 type Call = { url: string; method: string; body?: Record<string, unknown> };
 
@@ -46,7 +83,7 @@ type Call = { url: string; method: string; body?: Record<string, unknown> };
  * threads by subject (an owner's line posted here shows up on the next read), the requests.
  * `answer` plays the model: it answers every waiting line and, when given, files the new documents.
  */
-function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; oneOffs?: (typeof oneOff)[]; withdrawRefused?: boolean } = {}) {
+function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; oneOffs?: (typeof oneOff)[]; withdrawRefused?: boolean ; settings?: Record<string, unknown>; series?: Record<string, unknown>; seriesVideos?: unknown[] } = {}) {
   const calls: Call[] = [];
   let currentDocs = options.docs ?? docs;
   const threads = options.threads ?? {};
@@ -57,6 +94,12 @@ function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; on
     const method = init?.method ?? "GET";
     const body = init?.body ? JSON.parse(String(init.body)) as Record<string, unknown> : undefined;
     calls.push({ url, method, body });
+    if (options.settings && url.endsWith("/admin/video-automation/settings")) {
+      if (method === "PUT") return Promise.resolve(Response.json({ ...options.settings, ...body, updated_at: "2026-09-27T09:00:00Z" }));
+      return Promise.resolve(Response.json(options.settings));
+    }
+    if (url.includes("/admin/videos?series=")) return Promise.resolve(Response.json(options.seriesVideos ?? []));
+    if (url.includes("/admin/video-automation/series/binge-quote")) return Promise.resolve(Response.json(quote));
     if (method === "DELETE" && url.includes("/admin/video-automation/series/")) {
       if (options.withdrawRefused) return Promise.resolve(Response.json({ code: "video_series_started", detail: "第 1 集已經開始做了，不能撤回" }, { status: 409 }));
       return Promise.resolve(Response.json({ slug: url.split("/").pop(), requests_cancelled: 1 }));
@@ -77,7 +120,7 @@ function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; on
     if (url.includes("/admin/video-automation/series/new-one")) return Promise.resolve(Response.json(newOne));
     if (url.includes("/admin/video-automation/series/one-off-9f8e7d6c")) return Promise.resolve(Response.json({ ...oneOff, slug: "one-off-9f8e7d6c", title: "大禹治水", status: "setting", episodes_started: 0, docs: [], episodes: [{ ...oneOffEpisodes[0], status: "planned", slug: null, started_at: null, video: null }] }));
     if (url.includes("/admin/video-automation/series/one-off-1a2b3c4d")) return Promise.resolve(Response.json({ ...oneOff, docs: [bible], episodes: oneOffEpisodes }));
-    if (url.includes("/admin/video-automation/series/wenjian")) return Promise.resolve(Response.json({ ...summary, docs: currentDocs, episodes }));
+    if (url.includes("/admin/video-automation/series/wenjian")) return Promise.resolve(Response.json({ ...summary, ...options.series, docs: currentDocs, episodes }));
     if (url.endsWith("/drama-requests") && method === "POST") return Promise.resolve(Response.json({ id: "r1", premise: body?.premise, title: null, source_guide: null, style_preset: body?.style_preset, target_minutes: body?.target_minutes, note: null, status: "queued", slug: null, series_slug: "one-off-1a2b3c4d", episode_number: 1, created_at: "2026-09-27T04:00:00Z", started_at: null, finished_at: null, cancelled_at: null }, { status: 201 }));
     if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests: [] }));
     return Promise.resolve(Response.json([]));
@@ -108,6 +151,10 @@ describe("AdminVideoSeries", () => {
     expect(card.textContent).toContain("1/25 集 · 3 篇");
     expect(card.textContent).toContain("US$41.20");
     expect(card.textContent).not.toContain("等模型回覆");
+    // A series from before the binge columns reads as the classic xianxia series made of clips.
+    expect(card.textContent).toContain("仙俠羈絆");
+    expect(card.textContent).toContain("全片段");
+    expect(card.textContent).not.toContain("免關卡");
 
     fireEvent.click(screen.getByText("新的作品", { selector: "summary" }));
     const create = screen.getByRole("button", { name: "建立作品" });
@@ -213,6 +260,8 @@ describe("AdminVideoSeries", () => {
     expect(docsRegion.textContent).toContain("第 2 版");
     expect(docsRegion.textContent).toContain("第 2 篇細綱");
     expect(docsRegion.textContent).toContain("等你決定");
+    expect(docsRegion.textContent).toContain("備註：");
+    expect(docsRegion.textContent).toContain("查核：世界觀一致，角色聲音有辨識度");
     expect(screen.getAllByRole("row").some((row) => row.textContent?.includes("鐘聲") && row.textContent?.includes("鐘下有字") && row.textContent?.includes("2-3-3-4-5"))).toBe(true);
 
     const reject = screen.getByRole("button", { name: "退回" });
@@ -322,5 +371,139 @@ describe("AdminVideoSeries", () => {
     expect(screen.queryByText("新的作品")).toBeNull();
     expect(screen.queryByRole("textbox", { name: "給模型的話" })).toBeNull();
     expect(screen.queryByRole("button", { name: "送出" })).toBeNull();
+  });
+
+  it("quotes a binge series as the numbers change, warns about each budget it overruns, and starts it with the derived payload and no slug", async () => {
+    const { calls } = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const form = await screen.findByRole("form", { name: "一鍵開拍" });
+    // The quote for the defaults (120 minutes of 3-minute hybrid episodes) arrives after the debounce.
+    await waitFor(() => expect(form.textContent).toContain("40 集，4 篇（每篇 10 集）"));
+    expect(form.textContent).toContain("片段 4320 秒 · 圖片 1578 張 · 約 US$950.50");
+    expect(calls.find((call) => call.url.includes("binge-quote"))?.url).toContain("binge-quote?total_minutes=120&episode_minutes=3&visual_tier=hybrid");
+    const lines = [...form.querySelectorAll("li")].map((line) => line.textContent);
+    expect(lines).toEqual([
+      "本月片段預算 3000 秒，這部要 4320 秒：先到設定分頁調高",
+      "本月圖片預算 1500 張，這部要 1578 張：先到設定分頁調高",
+      "本月 judge 預算 3000 次，這部要 1698 次",
+      "每月集數上限 30 集，這部要 40 集：先到設定分頁調高",
+    ]);
+    expect(form.textContent).toContain("預算不夠時工人會停在那裡等");
+    // An overrun budget is a warning, not a stop: the owner raises it on the settings tab and the worker waits.
+    const start = within(form).getByRole("button", { name: "一鍵開拍" });
+    expect(start).toHaveProperty("disabled", false);
+    // A custom genre is the one that needs a premise.
+    fireEvent.click(within(form).getByRole("radio", { name: /自訂/ }));
+    expect(start).toHaveProperty("disabled", true);
+    fireEvent.change(within(form).getByRole("textbox", { name: "故事前提（自訂題材必填）" }), { target: { value: "一把劍" } });
+    expect(start).toHaveProperty("disabled", false);
+    fireEvent.change(within(form).getByRole("textbox", { name: "故事前提（自訂題材必填）" }), { target: { value: "" } });
+    fireEvent.click(within(form).getByRole("radio", { name: /重生復仇/ }));
+    expect(start).toHaveProperty("disabled", false);
+    fireEvent.click(within(form).getByRole("radio", { name: "女主" }));
+    fireEvent.click(within(form).getByRole("radio", { name: /^靜圖/ }));
+    fireEvent.change(within(form).getByRole("spinbutton", { name: "總長度（分鐘，30–480）" }), { target: { value: "30" } });
+    fireEvent.change(within(form).getByRole("spinbutton", { name: "每集分鐘（2–4）" }), { target: { value: "2" } });
+    await waitFor(() => expect(calls.filter((call) => call.url.includes("binge-quote")).at(-1)?.url).toContain("total_minutes=30&episode_minutes=2&visual_tier=stills"));
+    fireEvent.change(within(form).getByRole("textbox", { name: "給企劃的常設備註" }), { target: { value: " 旁白慢一點 " } });
+    fireEvent.click(start);
+    await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
+    const post = calls.find((call) => call.method === "POST");
+    expect(post?.url).toContain("/admin/video-automation/series");
+    expect(post?.body).toEqual({
+      genre: "rebirth-revenge", lead: "female", total_minutes: 30, target_minutes: 2, visual_tier: "stills", style_preset: "cinematic-3d",
+      hands_off: true, compilation: true, open_ended: false, note: "旁白慢一點",
+    });
+    await waitFor(() => expect(window.location.search).toContain("series=new-one"));
+  });
+
+  it("shows a finished binge series' compilation with its download, offers another cut, and lets the owner take the series back", async () => {
+    const finished = {
+      status: "finished", episodes_done: 25, genre: "rebirth-revenge", lead: "female", hands_off: true, compilation: true, visual_tier: "hybrid", total_minutes: 75,
+      compilation_slug: "wenjian-full", compilation_started_at: "2026-09-27T02:00:00Z", compilation_finished_at: "2026-09-27T03:00:00Z",
+    };
+    const { calls } = stubFetch({ series: finished, seriesVideos: [compilationVideo, { ...episodes[0].video, series_slug: "wenjian", episode_number: 1 }] });
+    const opened: string[] = [];
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={(slug) => opened.push(slug)} /></AdminOperationsProvider>);
+    const heading = await screen.findByRole("heading", { name: /問劍/ });
+    for (const pill of ["已完結", "重生復仇", "混合", "免關卡", "合集完成"]) expect(heading.textContent).toContain(pill);
+    expect(screen.getByText(/共 75 分鐘/).textContent).toContain("女主");
+    const block = screen.getByRole("region", { name: "合集" });
+    await waitFor(() => expect(block.textContent).toContain("問劍 合集"));
+    const link = within(block).getByRole("link", { name: "下載 1080p 成片" });
+    expect(link.getAttribute("href")).toBe("/api/admin-video-download/wenjian-full");
+    expect(link.getAttribute("download")).toBe("wenjian-full.mp4");
+    fireEvent.click(within(block).getByRole("button", { name: "打開" }));
+    expect(opened).toEqual(["wenjian-full"]);
+    // A series has the one compilation the worker named <series>-full, so there is no second
+    // 做合集; a finished series has nothing else to push along either.
+    expect(screen.queryByRole("button", { name: "現在開始下一集" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "做合集" })).toBeNull();
+    fireEvent.click(screen.getByRole("checkbox", { name: "免關卡" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "PATCH")).toBe(true));
+    const patch = calls.find((call) => call.method === "PATCH");
+    expect(patch?.url).toContain("/admin/video-automation/series/wenjian");
+    expect(patch?.body).toEqual({ hands_off: false });
+  });
+
+  it("offers 做合集 on a finished series that was not set up to make one, and posts the action", async () => {
+    const finished = { status: "finished", episodes_done: 25, compilation: false, compilation_slug: null, compilation_started_at: null, compilation_finished_at: null };
+    const { calls } = stubFetch({ series: finished, seriesVideos: [] });
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const block = await screen.findByRole("region", { name: "合集" });
+    expect(block.textContent).toContain("沒有設定要做合集");
+    fireEvent.click(screen.getByRole("button", { name: "做合集" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "POST" && call.url.endsWith("/admin/video-automation/series/wenjian/actions/compile"))).toBe(true));
+  });
+
+  it("says the cut is still in the worker's workspace while the compilation is being made", async () => {
+    const making = { status: "finished", compilation: true, compilation_slug: "wenjian-full", compilation_started_at: "2026-09-27T02:00:00Z", compilation_finished_at: null };
+    const cutting = { ...compilationVideo, stage: "clips", download_available: false, checklist: [{ key: "brief", label: "企劃", done: true }, { key: "clips", label: "片段生成", done: false }] };
+    stubFetch({ series: making, seriesVideos: [cutting] });
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const block = await screen.findByRole("region", { name: "合集" });
+    await waitFor(() => expect(block.textContent).toContain("成片還在工人的工作區"));
+    expect(block.textContent).toContain("合集製作中");
+    expect(block.textContent).toContain("片段生成");
+    expect(within(block).queryByRole("link")).toBeNull();
+    expect(screen.queryByRole("button", { name: "做合集" })).toBeNull();
+  });
+
+  it("shows a reader the finished compilation but not the download the API would refuse", async () => {
+    const finished = {
+      status: "finished", episodes_done: 25, genre: "rebirth-revenge", lead: "female", hands_off: true, compilation: true, visual_tier: "hybrid", total_minutes: 75,
+      compilation_slug: "wenjian-full", compilation_started_at: "2026-09-27T02:00:00Z", compilation_finished_at: "2026-09-27T03:00:00Z",
+    };
+    stubFetch({ series: finished, seriesVideos: [compilationVideo] });
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const block = await screen.findByRole("region", { name: "合集" });
+    await waitFor(() => expect(block.textContent).toContain("問劍 合集"));
+    expect(within(block).queryByRole("link", { name: "下載 1080p 成片" })).toBeNull();
+    expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
+  });
+
+  it("says the drama route is off, opens its settings first, and says it is on once saved", async () => {
+    const { calls } = stubFetch({ settings: videoSettings(false) });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage", "settings.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    expect(await screen.findByText("漫劇目前是關閉的。")).toBeTruthy();
+    expect(screen.getByText("工人不會製作任何漫劇，你發起的單集漫劇與作品會等到開啟後才開始。在下方「漫劇設定」勾選「開啟 AI 漫劇」，再按儲存。")).toBeTruthy();
+    expect((screen.getByText("漫劇設定", { selector: "summary" }).closest("details") as HTMLDetailsElement).open).toBe(true);
+    fireEvent.click(screen.getByRole("checkbox", { name: "開啟 AI 漫劇" }));
+    fireEvent.click(screen.getByRole("button", { name: "儲存漫劇設定" }));
+    expect(await screen.findByText("漫劇已開啟：工人會依序製作發起的單集漫劇與作品。")).toBeTruthy();
+    expect(screen.queryByText("漫劇目前是關閉的。")).toBeNull();
+    const put = calls.find((call) => call.method === "PUT");
+    expect((put?.body as { drama: { drama_enabled: boolean } }).drama.drama_enabled).toBe(true);
+  });
+
+  it("keeps the drama settings closed once the route is on", async () => {
+    stubFetch({ settings: videoSettings(true) });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    expect(await screen.findByText("漫劇已開啟：工人會依序製作發起的單集漫劇與作品。")).toBeTruthy();
+    expect((screen.getByText("漫劇設定", { selector: "summary" }).closest("details") as HTMLDetailsElement).open).toBe(false);
   });
 });

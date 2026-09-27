@@ -104,7 +104,7 @@ DEFAULT_DRAMA: dict[str, Any] = {
     # until the owner has looked at a first drama's sheets, like auto_approve_storyboard.
     "auto_pick_look": False,
     # The drama's own copies of the settings a tutorial keeps at the top level
-    # (docs/videos/DRAMA-FLOW.md §一; migration 0102): the stage models and the narrator voice
+    # (docs/videos/DRAMA-FLOW.md §一; migration 0104): the stage models and the narrator voice
     # (None follows the tutorial's), the standing instructions, the language defaults, the
     # automatic approval of the narration and of the final cut, and the rounds.
     "drama_stage_models": None,
@@ -176,13 +176,15 @@ class VideoAutomationSettings(Base):
             name="ck_video_drama_preset",
         ),
         # The series columns; migration 0099 creates the same constraints under the same names.
+        # A binge series (docs/videos/BINGE.md; migration 0103) may keep up to six episodes in
+        # the making at once; the constraint is recreated under the same name.
         CheckConstraint(
-            "series_max_in_flight BETWEEN 1 AND 2 AND series_chapter_ahead BETWEEN 0 AND 10 "
+            "series_max_in_flight BETWEEN 1 AND 6 AND series_chapter_ahead BETWEEN 0 AND 10 "
             "AND series_doc_rewrites BETWEEN 0 AND 5 "
             "AND series_episodes_per_month BETWEEN 0 AND 500",
             name="ck_video_drama_series",
         ),
-        # The drama's own rounds; migration 0102 creates the same constraint under the same name.
+        # The drama's own rounds; migration 0104 creates the same constraint under the same name.
         CheckConstraint(
             "drama_max_verify_rounds BETWEEN 1 AND 5 AND drama_max_retake_rounds BETWEEN 0 AND 5",
             name="ck_video_drama_rounds",
@@ -294,8 +296,8 @@ class VideoAutomationSettings(Base):
     series_doc_rewrites: Mapped[int] = mapped_column(Integer, default=2, server_default="2")
     series_episodes_per_month: Mapped[int] = mapped_column(Integer, default=30, server_default="30")
     # The drama's own copies of the tutorial's settings (docs/videos/DRAMA-FLOW.md §一; migration
-    # 0102). The models and the voice are NULL to follow the tutorial's; the instructions and the
-    # two switches were copied from the tutorial's columns when 0102 ran.
+    # 0104). The models and the voice are NULL to follow the tutorial's; the instructions and the
+    # two switches were copied from the tutorial's columns when 0104 ran.
     drama_stage_models: Mapped[dict[str, dict[str, str]] | None] = mapped_column(
         JSON, nullable=True
     )
@@ -438,9 +440,24 @@ class VideoDramaRequest(Base):
 # A long drama series (docs/videos/SERIES.md; migration 0099): the series the owner planned, the
 # documents the owner approves (the setting book, the whole-series outline, each chapter's
 # detailed outline, one row per version), and the episode table. A one-off drama is a series of
-# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0105).
+# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0106).
 SERIES_KINDS = ("series", "one-off")
 SERIES_STATUSES = ("setting", "outline", "active", "paused", "finished")
+# A binge series (docs/videos/BINGE.md; migration 0103): the genre preset the planner writes
+# from, who leads, how many shots may be image-to-video clips, and the compilation of every
+# episode into one long video once they are all cleared for upload.
+SERIES_GENRES = (
+    "xianxia-bonds",
+    "rebirth-revenge",
+    "system-game",
+    "urban-return",
+    "empress-rise",
+    "custom",
+)
+SERIES_LEADS = ("female", "male", "dual-male")
+VISUAL_TIERS = ("clips", "hybrid", "stills")
+MIN_TOTAL_MINUTES = 30
+MAX_TOTAL_MINUTES = 480
 DOC_KINDS = ("setting", "outline", "chapter", "bible")
 DOC_STATUSES = ("generating", "review", "approved", "rejected")
 EPISODE_STATUSES = ("planned", "ready", "queued", "started", "done", "skipped")
@@ -463,6 +480,24 @@ class VideoDramaSeries(Base):
             name="ck_video_drama_series_style",
         ),
         CheckConstraint("kind IN ('series', 'one-off')", name="ck_video_drama_series_kind"),
+        CheckConstraint(
+            "genre IN ('xianxia-bonds', 'rebirth-revenge', 'system-game', 'urban-return', "
+            "'empress-rise', 'custom')",
+            name="ck_video_drama_series_genre",
+        ),
+        CheckConstraint(
+            "lead IN ('female', 'male', 'dual-male')", name="ck_video_drama_series_lead"
+        ),
+        CheckConstraint(
+            "visual_tier IN ('clips', 'hybrid', 'stills')", name="ck_video_drama_series_tier"
+        ),
+        CheckConstraint(
+            "total_minutes IS NULL OR total_minutes BETWEEN 30 AND 480",
+            name="ck_video_drama_series_total_minutes",
+        ),
+        # Named as migration 0103 names it, so a database built from the models (0001's
+        # create_all) and one upgraded from 0101 carry the same constraint.
+        UniqueConstraint("compilation_slug", name="uq_video_drama_series_compilation_slug"),
     )
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
@@ -495,6 +530,29 @@ class VideoDramaSeries(Base):
     # without waiting for the previous one; the worker's next round clears them.
     requested_chapter: Mapped[int | None] = mapped_column(Integer, nullable=True)
     force_next: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    # The binge columns (docs/videos/BINGE.md; migration 0103). The genre picks the planner's
+    # conflict engine and the satisfaction beats the chapter outlines must schedule; a
+    # hands-off series has its documents, screenplays, sheets and storyboards decided by the
+    # checks instead of the owner; a compilation series joins every episode into one long video
+    # once they are all cleared for upload; the visual tier caps how many shots are clips.
+    genre: Mapped[str] = mapped_column(
+        String(32), default="xianxia-bonds", server_default="xianxia-bonds"
+    )
+    lead: Mapped[str] = mapped_column(String(12), default="dual-male", server_default="dual-male")
+    hands_off: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    compilation: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    visual_tier: Mapped[str] = mapped_column(String(8), default="clips", server_default="clips")
+    # The length the owner asked the whole compilation to be; the episode count came from it.
+    total_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # The compilation video's slug once the worker started it, and when it started and was
+    # cleared for upload; null while the episodes are still being made.
+    compilation_slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    compilation_started_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    compilation_finished_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
@@ -543,7 +601,7 @@ class VideoDramaDoc(Base):
 
 
 # The discussion thread on every series document and every episode's screenplay
-# (docs/videos/DRAMA-FLOW.md §三; migration 0106): the owner writes a line, the worker's next
+# (docs/videos/DRAMA-FLOW.md §三; migration 0107): the owner writes a line, the worker's next
 # round has the planner (documents) or the writer (screenplays) answer it, and a new version of
 # the document when the owner asked for a change.
 MESSAGE_AUTHORS = ("owner", "planner", "writer")

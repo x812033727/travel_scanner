@@ -89,6 +89,8 @@ from app.video_reviews.admin_api import admin_router as admin_video_reviews_rout
 from app.video_reviews.admin_api import tool_router as video_reviews_router
 from app.video_speech.admin_api import admin_router as video_tool_tokens_router
 from app.video_speech.admin_api import speech_router as video_speech_router
+from app.video_youtube.admin_api import connection_router as video_youtube_router
+from app.video_youtube.admin_api import publish_router as video_youtube_publish_router
 
 settings = get_settings()
 settings.validate_api_serving_security()
@@ -187,6 +189,8 @@ app.include_router(video_tool_tokens_router, prefix="/api/v1")
 app.include_router(video_speech_router, prefix="/api/v1")
 app.include_router(video_reviews_router, prefix="/api/v1")
 app.include_router(admin_video_reviews_router, prefix="/api/v1")
+app.include_router(video_youtube_router, prefix="/api/v1")
+app.include_router(video_youtube_publish_router, prefix="/api/v1")
 app.include_router(video_automation_router, prefix="/api/v1")
 app.include_router(admin_video_automation_router, prefix="/api/v1")
 app.include_router(video_media_router, prefix="/api/v1")

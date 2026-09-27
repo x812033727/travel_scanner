@@ -3,7 +3,7 @@
 // Errors block the pipeline (the CLI exits 1); warnings are for the writer and reviewer to judge.
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
-import { emotionProblems, isDrama, shotProblems } from "./drama.mjs";
+import { emotionProblems, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
 import { unknownTerms, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, NARRATION_LOCALE, eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
@@ -162,6 +162,23 @@ function seriesProblems(doc, series, error, warn) {
     }
     if (JSON.stringify(character.voice ?? null) !== JSON.stringify(known.voice ?? null)) error(`characters[${index}].voice`, "differs from the series' setting book; copy it as written");
   });
+  // A binge series (docs/videos/BINGE.md) buys clips by tier: the worker copies the series'
+  // visual_tier into series.json, and a script over its cap is caught here, before the clips
+  // stage spends anything. An episode headed for a compilation opens cold, on the hook itself:
+  // the episodes are stitched back to back, and a title card at every seam breaks the binge.
+  if (series.visual_tier !== undefined && series.visual_tier !== null) {
+    const tier = visualTierProblems(doc, series.visual_tier);
+    for (const problem of tier.errors) error(problem.path, problem.message);
+    for (const problem of tier.warnings) warn(problem.path, problem.message);
+  }
+  if (series.compilation === true) {
+    if (doc.scenes[0]?.template === "title") error("scenes[0]", "a binge episode opens cold: the first line is the hook; drop the title card");
+    // The compilation puts its own chapter card between episodes and one outro after the last;
+    // an episode's outro card would play at every seam.
+    doc.scenes.forEach((scene, index) => {
+      if (scene.template === "outro") error(`scenes[${index}]`, "a binge episode ends on its cliffhanger: the compilation adds the cards; drop the outro");
+    });
+  }
 }
 
 export function lintVideo(doc, context = {}) {

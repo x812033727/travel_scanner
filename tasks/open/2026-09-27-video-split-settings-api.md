@@ -17,7 +17,7 @@ scope:
   - apps/api/tests/test_video_automation_settings.py
   - apps/api/tests/test_video_automation_ai.py
   - apps/api/tests/test_video_reviews.py
-  - apps/api/tests/test_migration_0102_video_split_settings.py
+  - apps/api/tests/test_migration_0104_video_split_settings.py
 ---
 
 # Video split settings API: the drama's own instructions, voice, rounds, gates, models and language defaults
@@ -47,7 +47,7 @@ scope:
 ```bash
 cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv run pytest tests/test_video_automation_settings.py tests/test_video_automation_ai.py tests/test_video_reviews.py tests/test_schema.py tests/test_migration_sql_dialect.py -q
 # 要 PostgreSQL（CI 一定跑）：
-RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_migration_0102_video_split_settings.py tests/test_video_automation_settings.py -q
+RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_migration_0104_video_split_settings.py tests/test_video_automation_settings.py -q
 ```
 
 ## Notes
@@ -56,7 +56,7 @@ RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_migration_0102_video_split_sett
 - `drama_topic_scope` 目前工人沒讀（`flow.mjs` 的 `planPayload` 對漫劇也送 `topic_scope`）；改讀的地方在工人票。
 - 跟 `2026-09-27-video-drama-room-one-off-series`、`2026-09-27-video-drama-room-messages-api`、`2026-09-27-video-languages-api` 各自帶一支遷移，平行做會撞號，後落地的改號。
 - 2026-09-27（claude-fable-5-1-video-split）做完，在分支 `claude/video-review-manga-workflow-fp1rpz`：
-  - 遷移是 `0102_video_split_settings`（`down_revision = 0101_video_dub_locales`）：八個欄位「不在才加」，`drama_stage_instructions`、`drama_auto_approve_audio`、`drama_auto_approve_final` 只在剛建立時從教學的欄位複製（第二次 upgrade 不會蓋掉站主之後改的值）；CHECK `ck_video_drama_rounds` 與 model 同名。
+  - 遷移是 `0104_video_split_settings`（`down_revision = 0103_video_binge_series`；併 main 時從 0102 重新編號）：八個欄位「不在才加」，`drama_stage_instructions`、`drama_auto_approve_audio`、`drama_auto_approve_final` 只在剛建立時從教學的欄位複製（第二次 upgrade 不會蓋掉站主之後改的值）；CHECK `ck_video_drama_rounds` 與 model 同名。
   - `SettingsSave` 改成每個欄位都可省略、沒有上下限；合併後用 `SettingsWrite` 驗（上下限與一致性都在那裡），驗不過回 422（`admin_api._validated`），不是 500。`SettingsSave.merged_over(current)` 是合併規則：省略或 `null` 保留；`drama` 逐欄合併（`exclude_unset`），所以舊頁面送沒有新欄位的 drama 物件不會重設它們。要讓這件事成立，`DramaSettings` 的八個新欄位都有預設值（舊欄位維持必填）。
   - `PUT /settings/models` 多收 `drama_stage_models`：送 `null` ＝ 跟教學一樣；沒送 ＝ 不改（用 `model_fields_set` 分辨）。
   - `stage_choice(row, stage, format)`：漫劇有自己的模型才用，沒有那一階就退回教學的，再退回預設；`run_stage` 傳 `request.format`。`auto_approves_audio`／`auto_approves_final` 多一個 `format` 參數（預設 `slides`），`submit_review` 傳 `project.format or "slides"`。

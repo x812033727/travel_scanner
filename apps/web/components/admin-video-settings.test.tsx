@@ -1,14 +1,15 @@
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
+import { AdminVideoDramaSettings } from "./admin-video-drama-settings";
 import { AdminVideoModelSettings } from "./admin-video-model-settings";
 import { AdminVideoSettings, dramaBody, linesToList, mediaChoice, normalizeDrama, settingsBody, sharedBody, STAGES, tutorialBody } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
 
-function bootstrap(capabilities: string[]): AdminBootstrap {
-  return { admin_roles: [], admin_capabilities: capabilities, navigation: [], pending_counts: {}, system_status: {}, environment: "test", can_deploy: false, can_manage_database: false };
+function bootstrap(capabilities: string[], roles: string[] = []): AdminBootstrap {
+  return { admin_roles: roles, admin_capabilities: capabilities, navigation: [], pending_counts: {}, system_status: {}, environment: "test", can_deploy: false, can_manage_database: false };
 }
 
 const sonnet = { provider: "anthropic", model: "claude-sonnet-5" };
@@ -45,6 +46,7 @@ const view = {
   model_options: {
     claude_code: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
     anthropic: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
+    codex: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }],
     openai: [], minimax: [],
     gemini: [{ value: "gemini-3.8-flash", label: "Gemini 3.8 Flash", description: null, status: "stable" }],
   },
@@ -80,7 +82,7 @@ function stubFetch() {
   return puts;
 }
 
-const settingsAt = (section: string) => window.history.replaceState(null, "", `/zh-TW/admin/videos?tab=settings&section=${section}`);
+const dramaManager = () => render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoDramaSettings view={view as never} onSaved={() => undefined} /></AdminOperationsProvider>);
 const manager = () => render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
 
 beforeEach(() => window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings"));
@@ -157,12 +159,10 @@ describe("AdminVideoSettings", () => {
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
   });
 
-  it("deep-links to the drama part, follows the clip model's resolutions and lengths, and saves the drama object alone", async () => {
-    settingsAt("drama");
+  it("shows the drama's part on the drama tab, follows the clip model's resolutions and lengths, and saves the drama object alone", async () => {
     const puts = stubFetch();
-    manager();
+    dramaManager();
     fireEvent.click(await screen.findByRole("checkbox", { name: "開啟 AI 漫劇" }));
-    expect(screen.getByRole("tab", { name: "漫劇", selected: true })).toBeTruthy();
     expect(screen.queryByRole("checkbox", { name: "自動產生草稿" })).toBeNull();
     const resolution = screen.getByRole("combobox", { name: "片段解析度" }) as HTMLSelectElement;
     expect([...resolution.options].map((option) => option.value)).toEqual(["720p", "1080p"]);
@@ -174,7 +174,7 @@ describe("AdminVideoSettings", () => {
     fireEvent.click(screen.getByRole("checkbox", { name: "Kore" }));
     fireEvent.change(screen.getByRole("spinbutton", { name: "單支最多花費（美元）" }), { target: { value: "120" } });
     fireEvent.change(screen.getByRole("textbox", { name: "漫劇題材（每行一個）" }), { target: { value: "山海經\n原創玄幻\n" } });
-    fireEvent.change(screen.getByRole("spinbutton", { name: "同時最多幾集在做（1–2）" }), { target: { value: "2" } });
+    fireEvent.change(screen.getByRole("spinbutton", { name: "同時最多幾集在做（1–6）" }), { target: { value: "3" } });
     fireEvent.click(screen.getByRole("checkbox", { name: /劇本先給我看/ }));
     fireEvent.click(screen.getByRole("checkbox", { name: /設定圖自動選/ }));
     // The drama's prompts, with the series document's variant, and only those.
@@ -186,7 +186,7 @@ describe("AdminVideoSettings", () => {
     expect(Object.keys(body)).toEqual(["drama"]);
     expect(body.drama).toMatchObject({
       drama_enabled: true, clip_provider: "minimax", clip_model: "MiniMax-H3", clip_resolution: "768p", clip_seconds_default: 8, max_usd_per_video: 120,
-      drama_topic_scope: ["山海經", "原創玄幻"], series_max_in_flight: 2, series_script_gate: false, auto_pick_look: true, drama_stage_models: null, drama_voice: null,
+      drama_topic_scope: ["山海經", "原創玄幻"], series_max_in_flight: 3, series_script_gate: false, auto_pick_look: true, drama_stage_models: null, drama_voice: null,
     });
     expect(body.drama.character_voice_pool).toEqual([{ provider: "gemini", name: "Kore" }]);
     expect(mediaChoice(view.media_options as never, "clips", "minimax", "MiniMax-H3")?.usd_per_second).toBe(0.13);
@@ -195,9 +195,8 @@ describe("AdminVideoSettings", () => {
   });
 
   it("gives the drama its own narrator voice, standing instructions and language defaults, or follows the tutorial's", async () => {
-    settingsAt("drama");
     const puts = stubFetch();
-    manager();
+    dramaManager();
     const follows = await screen.findByRole("checkbox", { name: "旁白聲音跟教學一樣（頻道聲音）" });
     expect(follows).toHaveProperty("checked", true);
     expect(screen.queryByRole("combobox", { name: "聲音" })).toBeNull();
@@ -258,8 +257,37 @@ describe("AdminVideoSettings", () => {
     expect(screen.getAllByRole("option", { name: "Claude Code (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
     fireEvent.click(screen.getByRole("tab", { name: "共用" }));
     expect(await screen.findByRole("button", { name: "儲存共用設定" })).toHaveProperty("disabled", true);
-    expect(screen.getByText(/用滿才換下一個，最後一個用滿再回到 A/)).toBeTruthy();
-    fireEvent.click(screen.getByRole("tab", { name: "漫劇" }));
-    expect(await screen.findByRole("button", { name: "儲存漫劇設定" })).toHaveProperty("disabled", true);
+    expect(screen.getByText(/Claude Code 與 Codex 的訂閱帳號分別按 A、B、C… 的順序輪流/)).toBeTruthy();
+    expect(screen.queryByRole("tab", { name: "漫劇" })).toBeNull();
+  });
+
+  it("offers Codex subscription beside Claude Code for a video stage", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoModelSettings /></AdminOperationsProvider>);
+    const writer = await screen.findByRole("group", { name: "撰稿" });
+    fireEvent.change(writer.querySelectorAll("select")[0], { target: { value: "codex" } });
+    expect((writer.querySelectorAll("select")[1] as HTMLSelectElement).value).toBe("gpt-6-sol");
+    fireEvent.click(screen.getByRole("button", { name: "儲存影片模型" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect((puts[0] as { stage_models: Record<string, unknown> }).stage_models.writer).toEqual({ provider: "codex", model: "gpt-6-sol" });
+  });
+
+  it("tells a content reviewer which role changes these settings, and sends the drama settings to their tab", async () => {
+    stubFetch();
+    window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"], ["content"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    expect(await screen.findByText("你目前登入的帳號，後台角色是：內容。")).toBeTruthy();
+    expect(screen.getByText("改用站主（Owner）帳號登入就能修改；或請站主到後台「會員與次數」頁，替這個帳號加上「營運」角色。")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "儲存教學設定" })).toHaveProperty("disabled", true);
+    expect(screen.queryByRole("checkbox", { name: "開啟 AI 漫劇" })).toBeNull();
+    expect(screen.getByText("漫劇的設定已移到「漫劇」分頁，和作品、單集漫劇放在一起。")).toBeTruthy();
+    // The tab state re-reads the address only on this event; a plain pushState or link would change
+    // the address and leave the settings tab on screen.
+    const moved = vi.fn();
+    window.addEventListener("admin:location-change", moved);
+    fireEvent.click(screen.getByRole("button", { name: "前往「漫劇」分頁" }));
+    window.removeEventListener("admin:location-change", moved);
+    expect(moved).toHaveBeenCalledTimes(1);
+    expect(new URL(window.location.href).searchParams.get("tab")).toBe("drama");
   });
 });

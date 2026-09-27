@@ -571,6 +571,14 @@
       "label": "Jev の 1 日あたり呼び出し回数",
       "help": "ニュース自動化、スポット紹介の Jev シャドー評価、ナレーション検査で共有する 1 日の上限です。UTC の日単位で数え、使い切るとその日は Jev を呼び出しません。既定値は 200。"
     },
+    "openai_connection": {
+      "label": "OpenAI の接続方法",
+      "help": "サブスクリプションを選ぶと、ガイド検索、スポット紹介と審査、簡体字名、AI ニュースの OpenAI 呼び出しはホストでサインインした Codex アカウントを使います。動画の各段階では Codex を個別に選べます。旅程作成と旅程テキスト解析には引き続き API キーが必要です。切り替えはオーナーのみ可能です。",
+      "options": {
+        "api_key": "API キー",
+        "subscription": "サブスクリプションアカウント（ホストの Codex）"
+      }
+    },
     "anthropic_connection": {
       "label": "Claude の接続方法",
       "help": "「サブスクリプションアカウント」を選ぶと、ガイド検索、スポット紹介、紹介の審査、簡体字名、AI ニュースの Claude 呼び出しは、API キーではなくホストの「AI アカウント」でサインインした Claude サブスクリプションで実行されます。アカウントは A、B、C… の順に使い、5 時間または週の枠を使い切ったときだけ次へ移り、最後の次は A に戻ります。すべて使い切ると MiniMax を使います。旅程作成と旅程テキストの解析は引き続き API キーのみです。切り替えられるのはオーナーだけです。",
@@ -1048,7 +1056,7 @@
       "models": "機能別モデル"
     },
     "hints": {
-      "subscriptions": "ホストで使う Claude Code、Codex、Antigravity 用です。サブスクリプションで動き追加の課金はなく、ツールごとに最大 5 アカウントです。サイトの機能では、動画自動化の原稿作成だけが Claude のアカウントを借ります。",
+      "subscriptions": "ホストの Claude Code、Codex、Antigravity にツールごと最大 5 アカウントでサインインできます。サイトの文章作成機能は、AI 設定で選ぶと Claude Code または Codex のサブスクリプションを使えます。",
       "api": "サイトの AI 機能で使うキーと音声です。API の利用量で課金され、キーはサーバー側で暗号化して保存します。各機能のモデルは「機能別モデル」で選びます。",
       "models": "AI を呼び出すサイトの機能はすべて、ここでベンダーとモデルを選びます。各機能のページは現在の選択を表示し、ここへリンクします。"
     },
@@ -1093,7 +1101,10 @@
       "support": {
         "apiKeyOnly": "API キーのみ",
         "claudeSubscription": "Claude はサブスクリプションを使えます（「API キー」で Claude の接続方法を切り替え）",
+        "codexSubscription": "OpenAI は Codex サブスクリプションを使えます（「API キー」で OpenAI の接続方法を切り替え）",
         "claudeCode": "「Claude Code」を選ぶとサブスクリプション",
+        "codex": "「Codex」を選ぶとサブスクリプション",
+        "videoSubscriptions": "Claude Code または Codex のサブスクリプションに切り替え可能",
         "geminiApiKeyOnly": "Gemini は API キーのみ（Antigravity のサブスクリプションはホストでの手動利用専用）"
       },
       "edit": "変更",
@@ -1131,7 +1142,7 @@
     },
     "videos": {
       "title": "動画レビュー",
-      "description": "動画ツールが作った企画、ナレーション、完成動画がここであなたの判断を待っています。構成を選び、ナレーションを聞き、完成動画を見て、アップロードしてよいか確認してください。YouTube へのアップロードと公開は、引き続き YouTube Studio であなたが行います。"
+      "description": "動画ツールが作った企画、ナレーション、完成動画がここであなたの判断を待っています。構成を選び、ナレーションを聞き、完成動画を見て、アップロードしてよいか確認してください。YouTube チャンネルを連携すると、サイトが動画をチャンネルに送り、公開日時を予約できます。公開されるのは、あなたが選んだ時間だけです。"
     }
   },
   "usersPanel": {
@@ -2200,7 +2211,7 @@
       "scheduled": "公開予約済み",
       "published": "公開済み"
     },
-    "scheduleWaits": "公開予約は言語が出来上がってから送られます。",
+    "scheduleWaits": "言語が出来上がると YouTube に送れます。そのときアップロードパッケージに言語が入ります。",
     "locales": {
       "en": "英語",
       "ja": "日本語",
@@ -2332,7 +2343,10 @@
     "uploadedError": "記録できませんでした：{message}",
     "scheduledAt": "{time} に公開予定",
     "readyLoading": "アップロードパッケージを読み込み中…",
-    "openDramaSettings": "ドラマの設定を開く"
+    "openDramaSettings": "ドラマの設定を開く",
+    "downloadCompilation": "1080p の本編をダウンロード",
+    "compilationInWorkspace": "本編はまだワーカーの作業領域にあります",
+    "compilationOf": "作品 {series} の総集編"
   },
   "videoSettings": {
     "loading": "設定を読み込んでいます…",
@@ -2344,7 +2358,7 @@
     "onePerLine": "1 行に 1 つの語句を書いてください。",
     "topicSources": "テーマの取得元",
     "modelsTitle": "各ステップの AI モデル",
-    "modelsHelp": "「Claude Code（サブスクリプション）」はホストでサインインした Claude のサブスクリプションアカウントで実行され、追加料金はかからず、プランの上限の範囲で動きます。その他はサイトの「AI サービス」にある API キーを使い、使用量に応じて課金されます。「キーなし」のベンダーは先にキーを入力してください。",
+    "modelsHelp": "Claude Code と Codex はホストでサインインした各サブスクリプションをプランの上限内で使います。API の選択肢はサイトのキーを使い、使用量に応じて課金されます。「キーなし」のベンダーは先にキーを入力してください。",
     "provider": "ベンダー",
     "model": "モデル",
     "noKey": "キーなし",
@@ -2404,6 +2418,7 @@
       "drama_monthly_judge_calls_budget": "月あたりの判定回数",
       "drama_monthly_music_budget": "月あたりの音楽トラック数",
       "drama_max_usd_per_video": "1本あたりの上限（米ドル）",
+      "drama_series_max_in_flight": "同時に進める作品数（1–6）",
       "drama_topic_scope": "ドラマの題材（1行に1つ）",
       "channel_stance": "チャンネルの立場",
       "auto_pick_outline": "Jev にアウトラインを選ばせる（立場が空欄の間は無効）",
@@ -2412,7 +2427,7 @@
       "drama_stage_models_follow": "段階のモデルは解説動画と同じ",
       "drama_voice_follows": "ナレーションの声は解説動画と同じ（チャンネルの声）",
       "series_script_gate": "生成を始める前に脚本を見せる（単発の話もシリーズの各話も）",
-      "series_max_in_flight": "同時に制作する話数（1–2）",
+      "series_max_in_flight": "同時に制作する話数（1–6）",
       "series_auto_continue": "前の話のアップロード確認後、次の話を自動で始める",
       "series_chapter_ahead": "残り何話で次の章を企画するか",
       "series_doc_rewrites": "差し戻した文書を待つまでに書き直す回数",
@@ -2434,7 +2449,7 @@
     },
     "subscription": "サブスクリプション",
     "agentOff": "ホストのエージェントが未設定",
-    "subscriptionHelp": "サブスクリプションアカウントは A、B、C… の順に使い、5 時間または週の枠を使い切ったときだけ次へ移り、最後の次は A に戻ります。すべて使い切ると、ワーカーは枠のリセットを待って再開し、勝手に API キーへ切り替えることはありません。Codex は提供していません。コマンドラインでコマンド実行を無効にできないためです。",
+    "subscriptionHelp": "Claude Code と Codex のアカウントはそれぞれ A、B、C… の順に使い、枠を使い切ると次へ移ります。選択したツールの全アカウントが上限に達すると、ワーカーは枠のリセットを待ち、勝手に API キーへ切り替えません。",
     "modelsManaged": "各段階のモデルは「AI 設定 › 機能別モデル」でまとめて選びます。",
     "editModels": "AI 設定で変更",
     "saveModels": "動画のモデルを保存",
@@ -2495,7 +2510,18 @@
     "flowTitle": "回数の上限",
     "seriesTitle": "シリーズ",
     "seriesHelp": "長編シリーズ（docs/videos/SERIES.md）のペース：同時に作る話数、次の章を企画するタイミング、差し戻した文書を何回書き直してから待つか。",
-    "dramaGatesHelp": "YouTube へのアップロードと公開時刻は常にあなたが決めます。脚本は初期設定であなたに見せ、切ると自動承認になります。設定画・ナレーション・絵コンテ・完成版にはそれぞれスイッチがあり、切った関門はこれまでどおりあなたを待ちます。"
+    "dramaGatesHelp": "YouTube へのアップロードと公開時刻は常にあなたが決めます。脚本は初期設定であなたに見せ、切ると自動承認になります。設定画・ナレーション・絵コンテ・完成版にはそれぞれスイッチがあり、切った関門はこれまでどおりあなたを待ちます。",
+    "permission": {
+      "roles": "いまログインしているアカウントの管理ロール：{roles}。",
+      "noRoles": "いまログインしているアカウントには管理ロールがありません。",
+      "fix": "サイトオーナー（{owner}）のアカウントでログインすれば変更できます。または、オーナーに「{page}」ページでこのアカウントへ「{operations}」ロールを付けてもらってください。"
+    },
+    "dramaMoved": "ドラマの設定は「{tab}」タブに移りました。作品や単発エピソードと同じ場所です。",
+    "dramaMovedLink": "「{tab}」タブを開く",
+    "dramaSettingsTitle": "ドラマの設定",
+    "dramaSave": "ドラマの設定を保存",
+    "dramaKeyWarning": "{vendors} のキーがまだないため、ドラマをオンにしたまま保存すると拒否されます。先にキーを登録するか、キーのあるベンダーを選んでください。",
+    "dramaKeyLink": "AI 設定でキーを登録"
   },
   "videoSeries": {
     "listTitle": "作品",
@@ -2648,6 +2674,241 @@
     "withdrawConfirm": "「{title}」を取り下げますか？まだどの話も制作が始まっていません。文書と議論は削除され、待機中のリクエストは取り下げ済みになります。",
     "oneOffTitle": "単発エピソード",
     "oneOff": "単発",
-    "openDramaSettings": "ドラマの設定を開く"
+    "openDramaSettings": "ドラマの設定を開く",
+    "dramaOn": "ドラマはオンです。ワーカーが依頼した単発エピソードと作品を順に作ります。",
+    "dramaOff": "ドラマは現在オフです。",
+    "dramaOffHow": "ワーカーはドラマを作りません。依頼した単発エピソードと作品は、オンにするまで待機します。下の「{settings}」で「{enable}」にチェックを入れて保存してください。",
+    "binge": {
+      "title": "ワンボタンで撮り始める",
+      "help": "ジャンル、主役、総尺を選べば残りはワーカーが進めます。設定集、総綱、各章の細綱、脚本はチェッカーが自動承認し、1 話が終わるごとに次の話へ進み、全話完成後に 1 本の総集編にまとめます。本編は作品ページからダウンロードします。話数と各章の話数は総尺から算出し、作品名は設定集が決めます。",
+      "genre": "ジャンル",
+      "lead": "主役",
+      "premise": "あらすじ（任意）",
+      "premiseRequired": "あらすじ（カスタムでは必須）",
+      "premisePlaceholder": "空欄ならプランナーがジャンルから考えます。カスタムのジャンルでは必ず書いてください。",
+      "totalMinutes": "総尺（分、30–480）",
+      "totalMinutesHint": "通常は 60–240。30 分の試作でも構いません。",
+      "episodeMinutes": "1 話の分数（2–4）",
+      "tier": "映像の作り方",
+      "notePlaceholder": "例：ナレーションをゆっくり、流血なし",
+      "quoteTitle": "見積もり",
+      "quoteLoading": "見積もり中…",
+      "quoteError": "見積もれません：{message}",
+      "quote": "{episodes} 話・{chapters} 章（各 {perChapter} 話）・クリップ {seconds} 秒・画像 {images} 枚・約 US${usd}",
+      "budgets": {
+        "clip_seconds": "今月のクリップ予算は {monthly} 秒、この作品には {needed} 秒必要です",
+        "images": "今月の画像予算は {monthly} 枚、この作品には {needed} 枚必要です",
+        "judge_calls": "今月の judge 予算は {monthly} 回、この作品には {needed} 回必要です",
+        "episodes_per_month": "月あたりの話数上限は {monthly} 話、この作品には {needed} 話必要です"
+      },
+      "budgetsOver": {
+        "clip_seconds": "今月のクリップ予算は {monthly} 秒、この作品には {needed} 秒必要です：先に設定タブで引き上げてください",
+        "images": "今月の画像予算は {monthly} 枚、この作品には {needed} 枚必要です：先に設定タブで引き上げてください",
+        "judge_calls": "今月の judge 予算は {monthly} 回、この作品には {needed} 回必要です：先に設定タブで引き上げてください",
+        "episodes_per_month": "月あたりの話数上限は {monthly} 話、この作品には {needed} 話必要です：先に設定タブで引き上げてください"
+      },
+      "overBudget": "予算が尽きるとワーカーはそこで待ち、壊れることはありません。引き上げれば自動で続きます。",
+      "start": "ワンボタンで撮り始める",
+      "starting": "作成中…",
+      "error": "始められませんでした：{message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "仙俠の絆",
+        "detail": "門派と世家、修為、正道と魔道。前世と今生を越えて結ばれた知己。"
+      },
+      "rebirth-revenge": {
+        "name": "重生復讐",
+        "detail": "裏切られて死に、まだ変えられる一日に目覚める。今度は全員の手札を知っている。"
+      },
+      "system-game": {
+        "name": "システムゲーム",
+        "detail": "ゲームやシステムが降臨し、主役だけがルールを読める。隠し職業、初クリア、規格外の才能。"
+      },
+      "urban-return": {
+        "name": "都市帰還",
+        "detail": "何年も離れたのち、自分を見限った街へ、誰も想像しない身分か実力を携えて戻る。"
+      },
+      "empress-rise": {
+        "name": "女帝の台頭",
+        "detail": "駒と見なされた彼女が一手ずつ盤面を奪い、玉座を手にするまで。"
+      },
+      "custom": {
+        "name": "カスタム",
+        "detail": "書かれたあらすじのまま。矛盾する設定は加えません。"
+      }
+    },
+    "leads": {
+      "female": "女性主役",
+      "male": "男性主役",
+      "dual-male": "男性主役二人"
+    },
+    "tiers": {
+      "clips": {
+        "name": "全クリップ",
+        "detail": "全ショットを動画クリップで生成：動きは最も多く、費用も最も高い。"
+      },
+      "hybrid": {
+        "name": "ハイブリッド",
+        "detail": "ショットの約 4 割をクリップ、残りは静止画にカメラワーク：費用は半分以下。"
+      },
+      "stills": {
+        "name": "静止画",
+        "detail": "ほぼ全ショットを静止画にカメラワーク、要所の 1 割だけクリップ：最も安く、試作向き。"
+      }
+    },
+    "totalMinutesLabel": "全 {minutes} 分",
+    "handsOff": "ゲートなし",
+    "handsOffHelp": "オンの間は、設定集・総綱・細綱・脚本をチェッカーが自動承認し、不合格のときだけ差し戻し、詰まったときだけあなたに回します。オフにすると 1 件ずつ承認に戻ります。",
+    "compilation": "総集編",
+    "compilationStatuses": {
+      "waiting": "総集編：全話の完成待ち",
+      "queued": "総集編：ワーカー待ち",
+      "making": "総集編を制作中",
+      "done": "総集編が完成"
+    },
+    "compilationNone": "この作品は総集編を作る設定になっていません。完結後に「総集編を作る」を押せます。",
+    "compilationWaiting": "全話が完成したら、ワーカーが 1 本にまとめます。",
+    "compilationQueued": "ワーカーの次の巡回で総集編を始めます。",
+    "compilationStarting": "ワーカーが始めたところで、動画はまだ報告されていません。",
+    "compile": "総集編を作る",
+    "docNote": "備考："
+  },
+  "videoYoutube": {
+    "title": "YouTube チャンネル",
+    "help": "連携すると、「アップロード可能」の動画をサイトから直接あなたのチャンネルに送れます。5 言語のタイトルと説明、タグ、字幕、サムネイル、公開日時はサイトが入れるので、あなたは時間を選ぶだけです。サイトが自分で動画を公開にすることはなく、選んだ時間に YouTube が公開します。",
+    "loading": "チャンネル連携を読み込み中…",
+    "loadError": "チャンネル連携を読み込めません：{message}",
+    "linkedNow": "チャンネルを連携しました。",
+    "dismiss": "閉じる",
+    "statusLinked": "連携済み",
+    "statusBroken": "アクセス失効",
+    "statusNotLinked": "未連携",
+    "readyToLink": "クライアントは設定済みです。「YouTube チャンネルを連携」を押し、Google の画面で許可してください。",
+    "needsClient": "まず下の手順で Google Cloud に OAuth クライアントを作り、ID とシークレットをここに貼ってください。",
+    "linkedAt": "{time} に連携",
+    "verifiedAt": "{time} にアクセスを最終確認",
+    "stepsTitle": "初回設定：Google Cloud での 5 つの手順",
+    "step1": "Google Cloud Console でプロジェクトを作成（または選択）し、「API とサービス → ライブラリ」で YouTube Data API v3 を有効にします。",
+    "step2": "「OAuth 同意画面」：ユーザーの種類は「外部」、アプリ名は Mokaair Studio Sync（名前に YouTube は使えません）。「アプリを公開」を押して公開ステータスを「本番環境」にします。「テスト」のままだとアクセスが 7 日で切れます。",
+    "step3": "「認証情報 → 認証情報を作成 → OAuth クライアント ID」で種類「ウェブ アプリケーション」を選び、「承認済みのリダイレクト URI」にこれを追加します：",
+    "step4": "同意画面の「データアクセス」にはこのスコープだけを追加します：{scope}",
+    "step5": "クライアント ID とクライアント シークレットを下に貼って保存し、「YouTube チャンネルを連携」を押します。Google の画面でチャンネルを持つアカウント（またはブランド アカウント）を選んで許可してください。未確認のアプリには先に警告が出ます。「詳細」→「mokaair.com に移動（安全ではないページ）」で進めます。使うのはあなただけなので影響はありません。",
+    "redirectUri": "リダイレクト URI",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "clientTitle": "OAuth クライアント",
+    "clientId": "クライアント ID",
+    "clientIdInvalid": "ウェブ アプリケーションのクライアント ID に見えません（末尾は .apps.googleusercontent.com）",
+    "clientSecret": "クライアント シークレット",
+    "secretKept": "設定済み。空欄なら変更しません",
+    "audited": "YouTube API の監査に合格した",
+    "auditedHelp": "合格するまで、サイトが API でアップロードした動画は YouTube により非公開に固定され、公開できません。そのためアップロード前にもう一度確認します。合格の通知が届いてからチェックしてください。",
+    "saving": "保存中…",
+    "save": "保存",
+    "saved": "保存しました。",
+    "link": "YouTube チャンネルを連携",
+    "relink": "連携し直す",
+    "verify": "アクセスを確認",
+    "verified": "アクセスは有効で、チャンネル情報を更新しました。",
+    "unlink": "連携を解除",
+    "unlinkConfirm": "連携を解除すると、サイトは Google にアクセスの取り消しを依頼し、もう一度連携するまで動画を送れません。よろしいですか？",
+    "unlinkNotRevoked": "サイトはアクセスを破棄しましたが、Google に伝えられませんでした。Google アカウントの「サードパーティ製のアプリとサービス」で Mokaair Studio Sync を削除してください。",
+    "unlinked": "連携を解除しました。",
+    "revokeHelp": "Google アカウント → セキュリティ →「サードパーティ製のアプリとサービス」からいつでもアクセスを取り消せます。サイトは 25 日ごとにアクセスが有効かを確認します。",
+    "publishTitle": "YouTube に送る",
+    "publishHelp": "チャンネル「{channel}」に送ります。字幕、サムネイル、他言語のタイトルと説明、タグ、開示は承認済みのアップロード パッケージから取り、下の中国語タイトル、説明、公開設定はあなたが決めます。",
+    "source": "動画ファイル",
+    "sourceUpload": "サイトが mp4 をアップロード",
+    "sourceStudio": "Studio でアップロード済み（非公開）なので URL を貼る",
+    "lockWarning": "API の監査に合格していません。サイトがアップロードした動画は YouTube により非公開に固定され、後から公開にもできません。本番の公開には「Studio でアップロード済み」を選んでください。",
+    "lockAccept": "この動画が非公開に固定されることを理解した（テストやスクリーンショット用のみ）",
+    "studioHelp": "Studio では final.mp4 を公開設定「非公開」でアップロードするだけで、ほかの欄は空のままで構いません。その URL をここに貼ってください。",
+    "youtubeUrl": "YouTube の URL または動画 id",
+    "videoId": "動画 id：{id}",
+    "urlInvalid": "動画 id が見つかりません",
+    "videoTitle": "中国語タイトル",
+    "titleCount": "{count}/{max} 文字",
+    "videoDescription": "中国語の説明",
+    "descriptionCount": "{count}/{max} バイト",
+    "titleTooLong": "タイトルは {max} 文字までです",
+    "descriptionTooLong": "説明は {max} バイトまでです",
+    "angleBrackets": "タイトルと説明に {characters} は使えません（YouTube が拒否します）",
+    "visibility": "公開設定",
+    "visibilities": {
+      "scheduled": "選んだ日時に公開（それまでは非公開）",
+      "unlisted": "限定公開（リンクを知っている人が視聴可能）",
+      "private": "非公開"
+    },
+    "publishAt": "公開日時",
+    "neverPublic": "サイトが動画を直接公開にすることはありません。公開するには日時を選ぶと、その時間に YouTube が公開します。",
+    "sending": "送信中…",
+    "send": "YouTube に送る",
+    "syncTitle": "YouTube 同期",
+    "statuses": {
+      "queued": "待機中",
+      "running": "送信中",
+      "done": "完了",
+      "failed": "失敗",
+      "interrupted": "中断"
+    },
+    "summaryScheduled": "{time} に公開予定",
+    "finishedAt": "{time} に終了",
+    "uploadProgress": "mp4 のアップロード進捗",
+    "progress": "{sent}/{total} MB をアップロード済み（{percent}%）",
+    "steps": {
+      "upload": "mp4 のアップロード",
+      "details": "タイトル・説明・公開予約",
+      "captions": "字幕",
+      "thumbnail": "サムネイル"
+    },
+    "stepStates": {
+      "pending": "待機",
+      "running": "実行中",
+      "done": "完了",
+      "failed": "失敗",
+      "skipped": "スキップ"
+    },
+    "interruptedHelp": "送信の途中でサイトが再起動しました。再試行すると止まったところから続け、完了した手順は繰り返しません。",
+    "retry": "再試行",
+    "linkHint": "YouTube チャンネルを連携すると、サイトが直接アップロードしてすべての欄を入れます。あなたは時間を選ぶだけです。",
+    "openSettings": "設定タブで連携する",
+    "resendTitle": "YouTube にもう一度送る",
+    "resendHelp": "タイトル、説明、公開設定、公開日時を変えると、サイトがこの動画の情報を書き直します。すでにある字幕は再アップロードしません。公開済みの動画にはサイトは手を付けません。",
+    "sendingPill": "YouTube に送信中",
+    "stuckPill": "YouTube 同期に失敗",
+    "errors": {
+      "generic": "完了しませんでした。もう一度お試しください。",
+      "authentication_required": "ログインの有効期限が切れました。もう一度ログインしてから連携してください。",
+      "video_youtube_unavailable": "サイトのサービスに接続できません。しばらくしてからお試しください。",
+      "video_youtube_cancelled": "Google の画面でキャンセルされたため、連携していません。",
+      "video_youtube_state_invalid": "認可がタイムアウトしたか、このブラウザで開始されていません。もう一度連携を押してください。",
+      "video_youtube_state_unavailable": "今は認可を開始できません。しばらくしてからお試しください。",
+      "video_youtube_client_missing": "先に OAuth クライアント ID とシークレットを入力して保存してください。",
+      "video_youtube_client_in_use": "チャンネルは古いクライアントで連携されたままです。先に連携を解除してからクライアントを変えてください。",
+      "video_youtube_scope_missing": "Google の画面で YouTube の権限にチェックが入っていません。もう一度連携してチェックしてください。",
+      "video_youtube_no_refresh_token": "Google が長期のアクセスを発行しませんでした。Google アカウントで Mokaair Studio Sync のアクセスを削除してから、もう一度連携してください。",
+      "video_youtube_no_channel": "この Google アカウントには YouTube チャンネルがありません。連携時にチャンネルを持つアカウントまたはブランド アカウントを選んでください。",
+      "video_youtube_exchange_failed": "Google がこの認可を拒否しました。リダイレクト URI とクライアント シークレットを確認して、もう一度連携してください。",
+      "video_youtube_unreachable": "Google に接続できません。もう一度お試しください。",
+      "video_youtube_verify_failed": "YouTube がこの確認を受け付けませんでした。しばらくしてからお試しください。",
+      "video_youtube_not_linked": "YouTube チャンネルがまだ連携されていません。設定タブで連携してください。",
+      "video_youtube_grant_lost": "チャンネルへのアクセスが無効になりました。設定タブで連携し直してください。",
+      "video_youtube_sync_running": "この動画は YouTube に送信中です。終わるまでお待ちください。",
+      "video_youtube_sync_missing": "この動画はまだ YouTube に送っていません。",
+      "video_youtube_sync_done": "前回はすべての手順が完了しています。情報を変えるにはもう一度送ってください。",
+      "video_youtube_not_ready": "この動画には承認済みのアップロード パッケージがまだありません。",
+      "video_youtube_package_invalid": "アップロード パッケージが承認されたものと一致しません。ワーカーにパッケージを作り直させてください。",
+      "video_youtube_package_missing": "アップロード パッケージがレビュー領域にもうありません。",
+      "video_youtube_text_invalid": "タイトルまたは説明が YouTube のルールに合いません（長さ、または山括弧）。",
+      "video_youtube_publish_at_missing": "「選んだ日時に公開」には公開日時が必要です。",
+      "video_youtube_publish_at_past": "公開日時は今から 5 分以上先にしてください。",
+      "video_youtube_url_invalid": "動画 id が見つかりません。youtu.be、watch?v=、shorts、Studio の URL を貼ってください。",
+      "video_youtube_already_uploaded": "この動画はすでに YouTube にあります。情報を変えるには「YouTube にもう一度送る」を使ってください。",
+      "video_youtube_mp4_missing": "レビュー領域にこの動画の mp4 がもうありません。Studio でアップロードしてください。",
+      "video_youtube_private_lock": "API の監査に合格していません。それでもアップロードするには「非公開に固定されることを理解した」にチェックしてください。",
+      "video_project_not_found": "この動画が見つかりません。",
+      "video_project_dropped": "この動画は取りやめになっています。"
+    }
   }
 }

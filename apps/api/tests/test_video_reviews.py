@@ -811,6 +811,7 @@ async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_
     monkeypatch.setattr(admin_service, "auto_approves_audio", AsyncMock(return_value=False))
     monkeypatch.setattr(admin_service, "auto_approves_storyboard", AsyncMock(return_value=False))
     monkeypatch.setattr(admin_service, "auto_picks_outline", AsyncMock(return_value=True))
+    monkeypatch.setattr(admin_service, "compilation_slugs", AsyncMock(return_value=set()))
     final_rule = AsyncMock(return_value=True)
     monkeypatch.setattr(admin_service, "auto_approves_final", final_rule)
     session = AsyncMock()
@@ -890,3 +891,98 @@ async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_
     picked_sheet = await admin_service.submit_review(session, store, "v", sheets, token)
     assert picked_sheet.status == "approved" and picked_sheet.choice == "B"
     assert picked_sheet.note == "judge 給 B 8/10、沒有列出問題，依設定自動選"
+
+
+# --- a binge series' screenplay and compilation (docs/videos/BINGE.md) ---------------------------
+
+
+@pytest.mark.asyncio
+async def test_a_screenplay_on_a_hands_off_series_is_approved_as_it_arrives(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    from app.video_automation.judge import SCRIPT_AUTO_APPROVED_NOTE
+
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    project = VideoProject(
+        id=uuid4(),
+        slug="rebirth-20260927-ab12-e001",
+        title="第 1 集",
+        stage="script",
+        checklist=[],
+        series_slug="rebirth-20260927-ab12",
+        episode_number=1,
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[]))
+    script_rule = AsyncMock(return_value=True)
+    monkeypatch.setattr(admin_service, "auto_approves_script", script_rule)
+    monkeypatch.setattr(admin_service, "compilation_slugs", AsyncMock(return_value=set()))
+    session = AsyncMock()
+    session.add = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+    payload = {"coverage": {"hook": "有"}, "continuity_problems": []}
+    review = ReviewIn(gate="script", content_sha256="5" * 64, summary="劇本", payload=payload)
+    out = await admin_service.submit_review(session, store, project.slug, review, token)
+    assert out.status == "approved" and out.note == SCRIPT_AUTO_APPROVED_NOTE
+    assert script_rule.await_args.args[1:] == ("rebirth-20260927-ab12", payload)
+    assert session.add.call_args.args[0].action == "video_review_auto_approved"
+
+    # A compilation's final cut is judged by the shorter list: the rule is told which it is.
+    final_rule = AsyncMock(return_value=False)
+    monkeypatch.setattr(admin_service, "auto_approves_final", final_rule)
+    monkeypatch.setattr(admin_service, "compilation_slugs", AsyncMock(return_value={project.slug}))
+    cut = ReviewIn(gate="final", content_sha256="f" * 64, summary="合集", payload={"qa": {}})
+    waiting = await admin_service.submit_review(session, store, project.slug, cut, token)
+    assert waiting.status == "pending"
+    assert final_rule.await_args.kwargs == {"compilation": True}
+
+
+def test_a_compilation_s_cut_is_found_only_under_its_own_slug_in_the_work_volume(
+    tmp_path: Path,
+) -> None:
+    (tmp_path / "s-full" / "upload").mkdir(parents=True)
+    (tmp_path / "s-full" / "upload" / "final.mp4").write_bytes(b"mp4")
+    assert admin_service.download_file(str(tmp_path), "s-full") == (
+        tmp_path / "s-full" / "upload" / "final.mp4"
+    )
+    assert admin_service.download_file(str(tmp_path), "other") is None
+    assert admin_service.download_file(None, "s-full") is None, "the volume is not mounted"
+    assert admin_service.download_file(str(tmp_path), "../s-full") is None
+
+
+@pytest.mark.asyncio
+async def test_a_compilation_s_cut_is_downloaded_with_byte_ranges_and_only_by_a_manager(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    work = tmp_path / "work"
+    (work / "s-full" / "upload").mkdir(parents=True)
+    (work / "s-full" / "upload" / "final.mp4").write_bytes(bytes(range(200)))
+    project = VideoProject(id=uuid4(), slug="s-full", title="合集", stage="publish", checklist=[])
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "compilation_slugs", AsyncMock(return_value={"s-full"}))
+
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path), video_work_dir=str(work))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(owner)), base_url="http://test"
+    ) as client:
+        part = await client.get(
+            "/api/v1/admin/videos/s-full/download", headers={"Range": "bytes=0-9"}
+        )
+        missing = await client.get("/api/v1/admin/videos/other/download")
+    assert part.status_code == 206 and part.content == bytes(range(10))
+    assert part.headers["content-type"] == "video/mp4"
+    assert "s-full.mp4" in part.headers["content-disposition"]
+    assert part.headers["cache-control"] == "private, no-store"
+    assert missing.status_code == 404 and missing.json()["code"] == "video_download_not_found"
+    viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
+    viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(viewer)), base_url="http://test"
+    ) as client:
+        refused = await client.get("/api/v1/admin/videos/s-full/download")
+    assert refused.status_code == 403, "a viewer watches previews but does not take the cut"

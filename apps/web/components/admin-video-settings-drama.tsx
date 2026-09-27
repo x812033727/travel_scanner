@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import {
   dramaBody, type DramaSettings, InstructionFields, LocaleDefaults, MEDIA_PROVIDERS, type MediaOptions, type MediaProvider, mediaChoice,
@@ -8,17 +8,35 @@ import {
   type Voice, VoiceFields,
 } from "@/components/admin-video-settings";
 import { fieldClass } from "@/components/community/ui";
+import { Link } from "@/i18n/navigation";
+import { settingsHref } from "@/lib/admin-settings-ownership";
 
-// The drama part of the settings tab (docs/videos/DRAMA-FLOW.md, section 1): the switch and topics,
-// the drama's own stage models (read only), standing instructions, narrator voice and language
-// defaults, the media models and the clip's shape, the rounds, the approvals, the series' pace,
-// the budgets and the prompts last sent for a drama. It saves the drama object alone.
+// The drama's settings (docs/videos/DRAMA-FLOW.md, section 1), on the drama tab inside
+// admin-video-drama-settings.tsx: the switch and topics, the drama's own stage models (read only),
+// standing instructions, narrator voice and language defaults, the media models and the clip's
+// shape, the rounds, the approvals, the series' pace, the budgets and the prompts last sent for a
+// drama. It saves the drama object alone.
+
+// How many series the worker keeps in flight at once (docs/videos/SERIES.md, docs/videos/BINGE.md):
+// one to six, so a pilot and a full run can overlap.
+export const SERIES_IN_FLIGHT_MAX = 6;
+
+/**
+ * The media vendors the chosen models need and the site has no key for, in the catalog's order.
+ * The API refuses to turn the route on while any of them is missing (settings.py drama_problems),
+ * so the tab says so before the owner presses save.
+ */
+export function missingMediaKeys(drama: Pick<DramaSettings, "image_provider" | "clip_provider" | "music_provider">, configured: readonly string[]): MediaProvider[] {
+  const wanted = new Set<string>([drama.image_provider, drama.clip_provider, drama.music_provider]);
+  return MEDIA_PROVIDERS.filter((provider) => wanted.has(provider) && !configured.includes(provider));
+}
+
 // The numbers carry the API's bounds; the budgets open wide on purpose (the owner chose to start
 // without a cap on 2026-09-26 and to lower them after the pilot).
 const numberFields = {
   shape: [["max_clips_per_video", 1, 120], ["max_retakes_per_shot", 0, 5], ["judge_min_score", 0, 10]],
   rounds: [["drama_max_verify_rounds", 1, 5], ["drama_max_retake_rounds", 0, 5]],
-  series: [["series_max_in_flight", 1, 2], ["series_chapter_ahead", 0, 10], ["series_doc_rewrites", 0, 5], ["series_episodes_per_month", 0, 500]],
+  series: [["series_max_in_flight", 1, SERIES_IN_FLIGHT_MAX], ["series_chapter_ahead", 0, 10], ["series_doc_rewrites", 0, 5], ["series_episodes_per_month", 0, 500]],
   budget: [["monthly_clip_seconds_budget", 0, 100_000], ["monthly_images_budget", 0, 100_000], ["monthly_judge_calls_budget", 0, 100_000], ["monthly_music_budget", 0, 100_000], ["max_usd_per_video", 0, 10_000]],
 } as const;
 type NumberField = (typeof numberFields)[keyof typeof numberFields][number][0];
@@ -35,6 +53,7 @@ const labelKey: Record<NumberField, string> = {
 
 export function AdminVideoSettingsDrama({ view, prompts, canManage, onSaved }: SectionProps) {
   const t = useTranslations("admin.videoSettings");
+  const locale = useLocale();
   const [drama, setDrama] = useState<DramaSettings>(() => normalizeDrama(view.drama));
   const [scope, setScope] = useState(() => (view.drama?.drama_topic_scope ?? []).join("\n"));
   const { busy, error, saved, save, touch } = useSettingsSave(onSaved);
@@ -46,6 +65,7 @@ export function AdminVideoSettingsDrama({ view, prompts, canManage, onSaved }: S
   </label>;
   const configured = (provider: MediaProvider) => view.configured_providers.includes(provider);
   const clipModel = mediaChoice(view.media_options, "clips", drama.clip_provider, drama.clip_model);
+  const missing = drama.drama_enabled ? missingMediaKeys(drama, view.configured_providers) : [];
   /** One provider select and one model select for a kind of media, the model list following the provider. */
   const mediaPicker = (kind: keyof MediaOptions, providerKey: "image_provider" | "clip_provider" | "music_provider", modelKey: "image_model" | "clip_model" | "music_model") => {
     const models = view.media_options?.[kind]?.[drama[providerKey]] ?? [];
@@ -80,6 +100,10 @@ export function AdminVideoSettingsDrama({ view, prompts, canManage, onSaved }: S
     <Panel title={t("dramaTitle")}>
       <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={drama.drama_enabled} disabled={disabled} onChange={(event) => edit({ drama_enabled: event.target.checked })} />{t("fields.drama_enabled")}</label>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("dramaHelp")}</p>
+      {missing.length > 0 && <p role="alert" className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-3 text-sm leading-6">
+        {t("dramaKeyWarning", { vendors: new Intl.ListFormat(locale, { type: "conjunction" }).format(missing.map((provider) => mediaProviderLabels[provider])) })}{" "}
+        <Link href={settingsHref("providers", "ai_vendors")} className="font-semibold text-[var(--teal)] underline">{t("dramaKeyLink")}</Link>
+      </p>}
       <label className="block text-sm font-semibold">{t("fields.drama_topic_scope")}<textarea className={fieldClass} rows={3} value={scope} disabled={disabled} onChange={(event) => { setScope(event.target.value); touch(); }} /></label>
     </Panel>
 

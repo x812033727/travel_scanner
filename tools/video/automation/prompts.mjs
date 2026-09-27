@@ -255,8 +255,11 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
   shot size, subjects by their bible names, setting, light, mood; no story, no dialogue, no text),
   camera, motion (what moves, for the video model), characters (ids in frame, ≤ 3), fit?
   (auto|freeze|slow|trim), transition? (cut|dissolve), start_frame? {shot, at: "last"} only when
-  the action continues an EARLIER shot, end_frame? {prompt}}. Cards: a "title" scene may open the
-  episode and an "outro" scene close it; no other slide templates.
+  the action continues an EARLIER shot, end_frame? {prompt}, visual? ("clip": an image-to-video
+  clip, the default; "still": the keyframe animated with a slow camera move the tool renders
+  from "camera": push in, pull out, pan left, pan right, tilt up, tilt down or drift; a still
+  has no end_frame)}. Cards: a
+  "title" scene may open the episode and an "outro" scene close it; no other slide templates.
 - A shot carries 3 to 10 seconds of lines (lint refuses more than 12): long narration is more
   shots, not a longer shot. Vary shot sizes: open wide, come closer. A median under 3 s warns.
 - Lines: one spoken sentence each, about 25 characters, at most 40; "speaker" is "narrator" or a
@@ -383,15 +386,20 @@ const STANCE_STAGES = new Set(["planner", "writer"]);
  * document or an episode stage (`variant`, docs/videos/SERIES.md) and the listener's rewrite
  * pass (variant "rewrite") have their own text, the same for both formats.
  */
-export function instructionsFor(stage, format = "slides", standing = "", variant = null, stance = "") {
+export function instructionsFor(stage, format = "slides", standing = "", variant = null, stance = "", series = null) {
   const base = (variant && VARIANT_INSTRUCTIONS[`${stage}:${variant}`]) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
   const parts = [base];
+  // A binge series' genre section (docs/videos/BINGE.md) for the stages that plan, write or
+  // check the story; the listener, the translator and the caption reviewer do not need it.
+  const genre = GENRE_STAGES.has(stage) ? genreBlock(series) : "";
+  if (genre) parts.push(genre);
   const belief = typeof stance === "string" && STANCE_STAGES.has(stage) ? stance.trim() : "";
   if (belief) parts.push(`${STANCE_HEADING}\n${belief}`);
   const text = typeof standing === "string" ? standing.trim() : "";
   if (text) parts.push(`${STANDING_HEADING}\n${text}`);
   return parts.join("\n\n");
 }
+const GENRE_STAGES = new Set(["planner", "writer", "verifier"]);
 
 /** The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. */
 export function parseAnswer(text) {
@@ -409,23 +417,185 @@ export function parseAnswer(text) {
 }
 
 
+// A binge series (docs/videos/BINGE.md): the genre presets the planner writes from when the
+// owner pressed the one-button form, the retention rules a viewer stays for, and the visual
+// tiers that cap how many shots are image-to-video clips. The satisfaction ids, the beats, the
+// hook types and the lead arcs are the server's (apps/api/app/video_automation/series.py):
+// a chapter outline that names any other is refused there.
+export const SATISFACTION_TYPES = {
+  face_slap: "打臉：看不起主角的人當場被事實打臉",
+  identity_reveal: "身份揭露：藏著的身份、實力或關係攤開",
+  counter_kill: "反殺：被逼到絕路的人反過來解決對手",
+  level_up: "升級：能力、境界、資源躍升一級",
+  first_clear: "首殺／首通：別人做不到的事第一個做到",
+  betrayer_punished: "背叛者遭報：前世或此前的背叛得到報應",
+  villain_humbled: "反派低頭：囂張的人被迫收斂或求饒",
+  hidden_power: "藏拙露鋒：一直藏著的底牌亮出來",
+  public_vindication: "當眾平反：誤解在眾人面前被推翻",
+  rescue: "及時救場：在最後一刻救下要緊的人或事",
+  reversal: "反轉：局面在一句話或一個動作之後翻過來",
+};
+export const BEATS = ["opening", "first_half", "midpoint", "second_half", "ending"];
+export const HOOK_TYPES = ["question", "danger", "image", "line", "reversal"];
+export const LEAD_ARCS = ["wins", "suffers", "mixed"];
+export const MIN_SATISFACTION = 2;
+export const VISUAL_TIERS = ["clips", "hybrid", "stills"];
+export const TIER_CLIP_SHARE = { clips: 1, hybrid: 0.4, stills: 0.1 };
+
+const COMMON_SATISFACTIONS = Object.keys(SATISFACTION_TYPES);
+
+export const GENRE_SPECS = {
+  "xianxia-bonds": {
+    label: "仙俠羈絆",
+    retention: false,
+    leads: ["dual-male", "male", "female"],
+    premise_seed: "A xianxia world of sects and clans, cultivation ranks, the orthodox against the demonic path; two people bound as confidants across past and present lives.",
+    conflict_engine: "The line between the orthodox and the demonic path is not where people say; every sect wants something it hides; power has a price nobody pays willingly.",
+    satisfactions: COMMON_SATISFACTIONS,
+    tropes: ["前世今生", "門派世家", "符籙鬼怪", "知己羈絆", "伏筆反轉"],
+    title_formula: "《作品名》第 N 集：一句話的懸念",
+    thumbnail_formula: "兩位主角的側臉或背影，四個字以內的大字",
+    never: ["借用既有作品的人名、門派、術語", "說教", "血腥"],
+  },
+  "rebirth-revenge": {
+    label: "重生復仇",
+    retention: true,
+    leads: ["female", "male"],
+    premise_seed: "The lead dies betrayed at the height of someone else's triumph and wakes up on the one day everything can still be changed; this time she knows every card in every hand.",
+    conflict_engine: "Everyone who betrayed her is still smiling at her; she needs their trust to reach the moment they fall; every step forward tempts her to strike early and lose everything again.",
+    satisfactions: COMMON_SATISFACTIONS,
+    tropes: ["重生回關鍵一天", "前世記憶當武器", "背叛者還在做夢", "打臉", "她已磨好刀", "先聲奪人", "反派低頭"],
+    title_formula: "重生回{關鍵時點}，{主角}覺醒{逆天能力}，{具體爽點}，{背叛者}還在做夢，她已磨好刀",
+    thumbnail_formula: "主角的臉占三分之一，眼神冷，大字四到六個字點出爽點（例：她磨好了刀）",
+    never: ["主角忘記前世", "背叛者一集就死", "說教", "性暗示", "血腥"],
+  },
+  "system-game": {
+    label: "系統遊戲",
+    retention: true,
+    leads: ["female", "male"],
+    premise_seed: "A game or a system descends on the world and the lead, alone, reads its rules the way nobody else can: a hidden class, a first clear, a talent the panel calls impossible.",
+    conflict_engine: "Every rank the lead gains is watched by guilds that want her power or her death; the system's hidden rules are traps for anyone who does not read them; allies are rivals until the boss shows up.",
+    satisfactions: COMMON_SATISFACTIONS,
+    tropes: ["開服當天", "逆天天賦", "轉職", "速通副本", "首殺", "面板數字", "公會爭搶"],
+    title_formula: "{開服／降臨的一天}，{主角}覺醒{逆天天賦}，{轉職／速通／首殺}，{對手}還在{做夢／排隊}，她已{具體爽點}",
+    thumbnail_formula: "主角加一個發光的面板或武器，大字寫出首殺或天賦",
+    never: ["借用真實遊戲的名稱、道具、地圖", "數字灌水到看不懂", "說教"],
+  },
+  "urban-return": {
+    label: "都市歸來",
+    retention: true,
+    leads: ["male", "female"],
+    premise_seed: "After years away (a war, a mountain, a prison, a hidden sect) the lead returns to the city that wrote him off, with a power or a status nobody there can imagine.",
+    conflict_engine: "The people who wrote him off need him without knowing it; every reveal of his standing costs him a bridge; the enemy that sent him away is still in the city.",
+    satisfactions: COMMON_SATISFACTIONS,
+    tropes: ["歸來", "藏拙", "當眾打臉", "身份揭露", "舊仇", "護短"],
+    title_formula: "{幾年}後{主角}歸來，{看不起他的人}還在{嘲笑}，{身份／實力}一亮，{具體爽點}",
+    thumbnail_formula: "主角西裝或軍裝背影加一個震驚的配角臉，大字寫身份",
+    never: ["真實企業、政府、軍隊的名稱", "羞辱女性", "說教"],
+  },
+  "empress-rise": {
+    label: "女帝崛起",
+    retention: true,
+    leads: ["female"],
+    premise_seed: "A woman the court, the sect or the family counted as a pawn takes the game over piece by piece until the throne, the seat or the crown is hers.",
+    conflict_engine: "Every ally has a price; every step up makes a new enemy of an old friend; the crown demands what she swore she would never give.",
+    satisfactions: COMMON_SATISFACTIONS,
+    tropes: ["棋子變棋手", "宮鬥／宗門鬥", "女帝", "反殺", "當眾平反", "登頂"],
+    title_formula: "{被當棋子的她}{覺醒／重生}，{反殺／平反}，{對手}還在做夢，她已{登上／握住}{位置}",
+    thumbnail_formula: "主角正面，冠冕或劍，大字四到六個字",
+    never: ["借用真實朝代的人物", "性暗示", "說教"],
+  },
+  custom: {
+    label: "自訂",
+    retention: true,
+    leads: ["female", "male", "dual-male"],
+    premise_seed: "The owner's premise, as written; invent nothing that contradicts it.",
+    conflict_engine: "Build it from the premise: who wants what, what stands in the way, what it costs.",
+    satisfactions: COMMON_SATISFACTIONS,
+    tropes: [],
+    title_formula: "{開場設定}，{主角}{覺醒／歸來／重生}，{具體爽點}，{對手}還在做夢",
+    thumbnail_formula: "主角的臉加四到六個字",
+    never: ["借用既有作品", "說教"],
+  },
+};
+export const GENRE_IDS = Object.keys(GENRE_SPECS);
+
+export const RETENTION_RULES = `
+Retention rules (docs/videos/BINGE.md): the viewer watches every episode in one sitting and
+leaves the moment the picture stops pulling. So:
+- The FIRST spoken line is the hook: no title card, no greeting, no scene-setting. Inside about
+  5 seconds the viewer knows who is in trouble or what is impossible, so that line is at most
+  about 28 characters: the tool measures it at 250 characters a minute and refuses a hook whose
+  words end after 8 seconds. Hook types: question | danger | image | line | reversal.
+- The episode's conflict is stated or shown by about 10 seconds; the first satisfaction beat
+  (爽點) lands inside 30 seconds.
+- An emotional beat every 20 to 30 seconds, about every second or third shot: a line that cuts,
+  a look, a reversal, a reveal, a threat.
+- Satisfaction and trouble alternate: right after a satisfaction, a bigger problem. At least
+  ${MIN_SATISFACTION} satisfaction beats per episode, of the genre's types (the ids below).
+- The last 5 to 10 seconds ARE the cliffhanger and nothing follows it: no summary, no moral,
+  no 「下集」.
+- The lead never only suffers two episodes in a row (lead_arc: wins | suffers | mixed); every
+  chapter raises the stakes over the last; around the middle of the run one reveal turns the
+  world on its head.
+- Dialogue is short and sharp; the narrator carries the speed, the characters carry the blades.
+`.trim();
+
+export const VISUAL_TIER_RULES = {
+  clips: 'Visual tier "clips": every shot is an image-to-video clip; "visual" may be left out.',
+  hybrid: 'Visual tier "hybrid": at most 40% of the shots carry "visual": "clip" (the climax of each beat: the slap, the reveal, the strike, the face that changes); every other shot is "visual": "still" with a "camera" the tool renders as a slow move (push in, pull out, pan left, pan right, tilt up, tilt down, drift).',
+  stills: 'Visual tier "stills": at most 10% of the shots, rounded up (3 of 30), are "visual": "clip", spent on the biggest climaxes first; everything else is "visual": "still" with a "camera" move.',
+};
+
+/**
+ * The prompt section a binge series adds under the stage's text: its genre preset, the
+ * retention rules when the genre has them, the visual tier's cap, and the cold open of a
+ * compilation. `series` is what the site's summary carries (genre, lead, visual_tier,
+ * compilation); a classic series without them adds nothing.
+ */
+export function genreBlock(series) {
+  if (!series || typeof series !== "object") return "";
+  const spec = GENRE_SPECS[series.genre];
+  if (!spec) return "";
+  const lines = [
+    "## Genre and retention (docs/videos/BINGE.md)",
+    `Genre: ${spec.label} (${series.genre}). Lead: ${series.lead ?? "dual-male"}. Visual tier: ${series.visual_tier ?? "clips"}.`,
+    `Premise seed (used when the owner's premise is blank): ${spec.premise_seed}`,
+    `Conflict engine: ${spec.conflict_engine}`,
+    `Satisfaction types, by id (use these ids in "satisfaction"): ${spec.satisfactions.map((id) => `${id} = ${SATISFACTION_TYPES[id]}`).join("; ")}.`,
+    ...(spec.tropes.length ? [`Tropes the audience came for: ${spec.tropes.join("、")}.`] : []),
+    `Title formula: ${spec.title_formula}`,
+    `Thumbnail formula: ${spec.thumbnail_formula}`,
+    `Never: ${spec.never.join("；")}.`,
+  ];
+  if (spec.retention) lines.push("", RETENTION_RULES);
+  const tier = VISUAL_TIER_RULES[series.visual_tier];
+  if (tier) lines.push("", tier);
+  if (series.compilation) lines.push("", "Compilation mode: every episode is joined into one long video, so an episode opens cold on its hook and ends on its cliffhanger; no title card, no outro card, no recap of earlier episodes.");
+  return lines.join("\n");
+}
+
 // A long series (docs/videos/SERIES.md): the documents the owner approves before any episode is
 // written, and the episode stages' variants. Keyed "<stage>:<variant>"; the variant travels to
 // the site, which keeps the prompt as sent under its own heading and does not count a document
 // as a tutorial draft.
 const SERIES_COMMON = `
 You work on ONE long zh-TW (Traditional Chinese, Taiwan) AI drama series for the Mokaair
-channel: about a hundred episodes of 2 to 4 minutes, split into chapters of about ten, made one
-episode after another for months. "series" is what the owner filled in: the premise, the sides of
-the genre they care about ("aspects": world = a xianxia world of sects and clans, cultivation
-ranks, the orthodox against the demonic path; bonds = an ensemble growing up together, confidants,
-masters and clans; structure = past and present lives, flashbacks, planted threads and reversals,
-serialised suspense; mood = classical xianxia art, a dark and uncanny streak, ghosts and talismans),
-the emotional register ("tone": dual-male-leads-subtext means two male leads bound as confidants,
-never stated, never a kiss; dual-male-leads-explicit a stated romance within the platform's
-rules; hetero-leads a man and a woman; no-romance none), the style preset, the episode length,
-the planned episode count and chapter size, whether the first part is open-ended (it then closes
-a stage and leaves threads for a sequel), and a note. "series_reference" is the route's reference.
+channel: dozens to a hundred episodes of 2 to 4 minutes, split into chapters, made one episode
+after another. "series" is what the owner filled in: the premise (blank means: invent one from
+the genre's premise seed and the lead, in the section at the end), the sides of the genre they
+care about ("aspects", for the xianxia genre: world = a xianxia world of sects and clans,
+cultivation ranks, the orthodox against the demonic path; bonds = an ensemble growing up
+together, confidants, masters and clans; structure = past and present lives, flashbacks, planted
+threads and reversals, serialised suspense; mood = classical xianxia art, a dark and uncanny
+streak, ghosts and talismans), the emotional register ("tone": dual-male-leads-subtext means two
+male leads bound as confidants, never stated, never a kiss; dual-male-leads-explicit a stated
+romance within the platform's rules; hetero-leads a man and a woman; no-romance none), who leads
+("lead": female | male | dual-male), the genre preset ("genre"; its rules, satisfaction types
+and retention spec are the section at the end of this prompt when it has one), the style
+preset, the episode length, the planned episode count and chapter size, whether the first part
+is open-ended (it then closes a stage and leaves threads for a sequel), and a note.
+"series_reference" is the route's reference.
 Everything is original: no character, name, sect, place, artefact or plot of any existing work,
 and nothing a reader would recognise as one; when in doubt, invent. No real people, no real
 brands, no politics or religion argued, no gore, nothing a synthetic-media disclosure would not
@@ -552,16 +722,23 @@ contract: keep the titles and loglines unless the note says otherwise) and, for 
 - Each episode carries 2 to 4 minutes: one place or two, 2 to 4 characters, one or two turns of
   events, never a summary of what came before (a series playlist needs no recap).
 - The leads' bond advances by one notch per chapter, shown in an act or an object, not said.
+- With the retention rules (a genre section at the end of this prompt), every episode also
+  names its "hook_type" (question | danger | image | line | reversal), the lead's "lead_arc"
+  (wins | suffers | mixed; never suffers twice in a row) and at least two "satisfaction" beats
+  ({beat: opening | first_half | midpoint | second_half | ending, type: a satisfaction id of the
+  genre}), the first inside the first half; any four episodes in a row pay off at least one
+  thread. The site refuses a chapter outline that breaks these.
 
 body_md: ## 本篇 (title, theme, what this chapter does to the story), then ### 第 N 集 for each
-episode with: 標題, 一句話, 開場鉤子, 主要衝突, 轉折, 結尾懸念（類型）, 埋下 / 回收 (mystery
-ids), 張力曲線 (five numbers), 出場角色, 場景, 主題句.
+episode with: 標題, 一句話, 開場鉤子（類型）, 主要衝突, 轉折, 爽點（節拍與類型）, 結尾懸念（類型）,
+埋下 / 回收 (mystery ids), 張力曲線 (five numbers), 主角走向, 出場角色, 場景, 主題句.
 
 body_json: {"chapter": int, "episodes": [{"number", "title", "logline", "timeline":
-"present"|"past", "hook": text, "conflict": text, "turn": text, "cliffhanger": {"type":
-danger|reveal|choice|reversal|emotion, "text"}, "setups": [mystery ids], "payoffs": [mystery
-ids], "tension": [5 ints 1–5], "characters": [character ids], "locations": [text], "theme":
-text}]}. Exactly the episodes of "chapter_range", each once.`,
+"present"|"past", "hook": text, "hook_type": text, "conflict": text, "turn": text,
+"cliffhanger": {"type": danger|reveal|choice|reversal|emotion, "text"}, "satisfaction":
+[{"beat", "type"}], "lead_arc": text, "setups": [mystery ids], "payoffs": [mystery ids],
+"tension": [5 ints 1–5], "characters": [character ids], "locations": [text], "theme": text}]}.
+Exactly the episodes of "chapter_range", each once.`,
 
   "writer:episode": `${DRAMA_INSTRUCTIONS.writer}
 
@@ -581,6 +758,11 @@ THIS IS AN EPISODE OF A LONG SERIES (docs/videos/SERIES.md), and these rules com
   look, an object. Characters speak little and only what a listener must hear.
 - Every name and term is spelled as the setting book spells it; new terms go in
   lexicon_additions.
+- With the retention rules (the genre section at the end): the first line of the first shot is
+  the hook itself, the "beats.satisfaction" moments are played as lines and pictures the
+  viewer can point at, the last line of the last shot is the cliffhanger. With a visual tier,
+  mark each shot's "visual" as the tier says and give every still a "camera" move. In
+  compilation mode the script has no title and no outro card.
 Return {"video": video.json, "claims": claims.md (the sources of any real-world detail, else a
 line saying the story is original), "lexicon_additions": {...}}.`,
 
@@ -595,11 +777,75 @@ two checks and report them:
 2. Continuity with the series: names, ranks, wounds, objects and places against "setting_md"
    and "recaps"; a mystery resolved that "mysteries" marks reserved; a payoff paid without its
    setup; a character speaking against their "speech" habit.
+3. Retention, when the genre section at the end carries the rules: "coverage.satisfaction"
+   says whether the "beats.satisfaction" moments are played (有), only mentioned (弱) or
+   missing (無); "retention" names the lines: "hook_line" (the line id that is the hook),
+   "satisfaction_lines" (one line id per satisfaction beat, in order), "cliffhanger_line" (the
+   line id of the cliffhanger; it must be the last line of the script). The tool measures the
+   seconds from the ids; do not estimate them yourself.
 Also name any resemblance to a well-known existing work (a borrowed name, sect, plot beat) in
 "similar_works". Fix ids, spellings, "characters" lists and prompt contradictions as before; do
 not restructure. Return {"report", "video"|null, "claims", "changed_facts", "coverage":
-{"hook", "conflict", "turn", "cliffhanger"}, "problems": [zh-TW sentences the owner reads on the
-script's review card], "similar_works": [text]}.`,
+{"hook", "conflict", "turn", "cliffhanger", "satisfaction"?}, "problems": [zh-TW sentences the
+owner reads on the script's review card; only what must change before the script can be shot,
+since any entry sends the script back, and EMPTY when it may go out as it is], "similar_works":
+[text], "retention"?: {"hook_line",
+"satisfaction_lines", "cliffhanger_line"}}.`,
+
+  "verifier:series-doc": `${SERIES_COMMON}
+
+You are the independent checker of a PLANNED DOCUMENT in a fresh session (docs/videos/BINGE.md):
+you did not write it, and the series is hands-off, so the site approves or sends the document
+back on your verdict alone. "kind" is setting | outline | chapter; "document" is the {body_md,
+body_json} the planner just wrote; "setting" and "outline" are the approved documents before it
+(when any); "series" and the genre section are what it must serve. Judge in the vocabulary 有
+(delivered), 弱 (there but flat, generic or late) or 無 (missing), exactly these verdicts:
+- setting: originality (no name, sect, system, place, artefact or plot a reader would recognise
+  from an existing work; invented rather than borrowed), conflict_engine (the world makes
+  trouble by itself, every faction wants and hides something), genre_fit (it delivers what this
+  genre's audience came for, and the premise seed when the premise was blank), cast_playable
+  (each character has a want, a fear, a secret, a speech habit and an English appearance an
+  image model draws the same way every time).
+- outline: originality, escalation (stakes rise chapter by chapter), midpoint_reveal (one
+  reveal around the middle turns the world on its head), chapter_turns (every chapter ends on a
+  turn that changes the situation), satisfaction_schedule (satisfaction beats are spread over
+  the run; no chapter is dry).
+- chapter: originality, tension_rules (hook, turn and cliffhanger per episode, cliffhanger
+  types vary between neighbours, tension curves are not flat and end high), hooks (each hook
+  is a line or a picture, not a mood), satisfaction (at least two per episode, the first in the
+  first half, of the genre's types), alternation (satisfaction and trouble alternate; the lead
+  never only suffers two episodes in a row), escalation (the chapter ends higher than it began).
+Answer with ONE JSON object in "text": {"verdicts": {<key>: "有"|"弱"|"無"}, "similar_works":
+[text, empty when none], "problems": [zh-TW sentences the planner can act on: one for every 無,
+and for a 弱 the planner must fix before the document can be used; EMPTY when the document may
+go out as it is, since any entry here or in similar_works sends it back for a rewrite; a 弱 you
+can live with goes in "notes" instead], "notes": one zh-TW line}.`,
+
+  "planner:compilation": `${SERIES_COMMON}
+
+You write the UPLOAD FIELDS of a COMPILATION (docs/videos/BINGE.md): every episode of the
+series joined into one long video a viewer watches in one sitting. "episodes" lists each one
+(number, title, logline, recap); "description_budget_bytes" is how many bytes the description
+body may take (the tool appends the chapter list, one line per episode); "thumbnail_candidates"
+are keyframes ([{episode (the episode's slug), number, shot, judge, characters, prompt}]) to
+pick the thumbnail's picture from. Return {"title": the title (≤ 100 characters, no angle brackets) following the genre's
+title formula: the setting in one clause, the awakening or return, one concrete satisfaction,
+the villain still dreaming; "titles": [two alternatives]; "description": zh-TW, ≤
+"description_budget_bytes" bytes, the first two lines say what the story is and who it is for,
+then what happens without spoiling the end; "tags": ≤ 500 characters in total, including 漫劇,
+AI漫劇, 一口氣看完 and the genre's; "thumbnail": {"headline": ≤ 12 characters of the biggest
+promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its
+slug, copied as written), "shot": its "shot"} picking the candidate with a character's face and
+the highest judge score}.`,
+
+  "translator:compilation": `${SERIES_COMMON}
+
+You translate a compilation's upload fields into "locale" (en plain, ja です／ます, ko 합니다체,
+zh-CN mainland wording in Simplified characters): "youtube" holds the zh-TW title, description
+and tags, "chapters" the episode titles keyed by episode slug. Keep every name spelled the same
+way throughout, keep the meaning, keep it as short as the source. Return {"title": ≤ 100
+characters, "description": no longer than the source, "tags": [...], "chapters": {<the same
+keys>: text}}.`,
 
   "planner:discuss": `${DRAMA_COMMON}
 

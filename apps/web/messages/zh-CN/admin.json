@@ -571,6 +571,14 @@
       "label": "Jev 每日调用次数",
       "help": "新闻自动化、景点介绍的 Jev 影子评估与视频旁白检查共用的每日上限，按 UTC 日计算；用完当天就不再调用 Jev。默认 200。"
     },
+    "openai_connection": {
+      "label": "OpenAI 连接方式",
+      "help": "选“订阅账号”后，攻略搜索、景点介绍与审查、简体名称及 AI 新闻的 OpenAI 调用改用主机已登录的 Codex 账号。影片各阶段可另外选择 Codex。行程规划与行程文字解析仍需要 API 密钥。只有站主能切换。",
+      "options": {
+        "api_key": "API 密钥",
+        "subscription": "订阅账号（主机 Codex）"
+      }
+    },
     "anthropic_connection": {
       "label": "Claude 连接方式",
       "help": "选“订阅账号”时，攻略搜索、景点介绍、介绍审查、简体名称与 AI 新闻的 Claude 调用都改由主机上“AI 账号”登录的 Claude 订阅账号执行，不用 API 密钥。账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时改用 MiniMax。行程规划与行程文字解析仍只用 API 密钥。只有站主能切换。",
@@ -1048,7 +1056,7 @@
       "models": "各功能模型"
     },
     "hints": {
-      "subscriptions": "给你在主机上用的 Claude Code、Codex 与 Antigravity：走订阅、不另外计费，每个工具最多五个账号。网站功能里只有视频自动化的撰稿会借用 Claude 账号。",
+      "subscriptions": "可在主机登录 Claude Code、Codex 与 Antigravity，每个工具最多五个账号。网站的文字工作可在 AI 设置中选择使用 Claude Code 或 Codex 订阅。",
       "api": "网站 AI 功能使用的密钥与语音：按 API 用量计费，密钥只存在后端并加密保存。各功能选哪个模型在“各功能模型”。",
       "models": "网站每个会调用 AI 的功能都在这里选择厂商与模型；功能页只显示当前的选择并链接回这里。"
     },
@@ -1093,7 +1101,10 @@
       "support": {
         "apiKeyOnly": "只能用 API 密钥",
         "claudeSubscription": "选 Claude 时可走订阅（在“API 密钥”切换 Claude 连接方式）",
+        "codexSubscription": "选 OpenAI 时可走 Codex 订阅（在“API 密钥”切换 OpenAI 连接方式）",
         "claudeCode": "选“Claude Code”时走订阅",
+        "codex": "选“Codex”时走订阅",
+        "videoSubscriptions": "可改用 Claude Code 或 Codex 订阅账号",
         "geminiApiKeyOnly": "Gemini 只能用 API 密钥（Antigravity 订阅只供主机上手动使用）"
       },
       "edit": "修改",
@@ -1131,7 +1142,7 @@
     },
     "videos": {
       "title": "视频审核",
-      "description": "视频工具做好的企划、旁白和成片都在这里等你决定：选大纲、听旁白、看成片，最后确认可以上架。上传到 YouTube 和点公开，仍由你在 YouTube Studio 自己操作。"
+      "description": "视频工具做好的企划、旁白和成片都在这里等你决定：选大纲、听旁白、看成片，最后确认可以上架。关联 YouTube 频道之后，网站可以直接把视频发送到频道并排好上架时间；公开仍然只在你选的时间发生。"
     }
   },
   "usersPanel": {
@@ -2200,7 +2211,7 @@
       "scheduled": "已排定",
       "published": "已上架"
     },
-    "scheduleWaits": "排程会在语言做好后送出。",
+    "scheduleWaits": "语言做好后才能送到 YouTube，那时上传包里才有这些语言。",
     "locales": {
       "en": "英文",
       "ja": "日文",
@@ -2332,7 +2343,10 @@
     "uploadedError": "没有记下：{message}",
     "scheduledAt": "定于 {time} 上架",
     "readyLoading": "读取上传包…",
-    "openDramaSettings": "前往漫剧设置"
+    "openDramaSettings": "前往漫剧设置",
+    "downloadCompilation": "下载 1080p 成片",
+    "compilationInWorkspace": "成片还在工人的工作区",
+    "compilationOf": "作品 {series} 的合集"
   },
   "videoSettings": {
     "loading": "正在读取设置…",
@@ -2344,7 +2358,7 @@
     "onePerLine": "每行一个词或短语。",
     "topicSources": "题目来源",
     "modelsTitle": "各阶段的 AI 模型",
-    "modelsHelp": "“Claude Code（订阅账号）”使用主机上登录的 Claude 订阅账号运行，不另外计费，额度由订阅方案决定；其他选项使用网站“AI 服务”里的 API 密钥，按用量计费。标示“没有密钥”的厂商需要先填写密钥才能使用。",
+    "modelsHelp": "Claude Code 与 Codex 使用主机上各自登录的订阅账号，额度由订阅方案决定；API 选项使用网站的密钥，按用量计费。标示“没有密钥”的厂商需要先填写密钥。",
     "provider": "厂商",
     "model": "模型",
     "noKey": "没有密钥",
@@ -2404,6 +2418,7 @@
       "drama_monthly_judge_calls_budget": "每月 judge 次数",
       "drama_monthly_music_budget": "每月配乐首数",
       "drama_max_usd_per_video": "单部最多花费（美元）",
+      "drama_series_max_in_flight": "同时进行的作品数（1–6）",
       "drama_topic_scope": "漫剧题材（每行一个）",
       "channel_stance": "频道立场",
       "auto_pick_outline": "由 Jev 挑大纲（立场留白时没有作用）",
@@ -2412,7 +2427,7 @@
       "drama_stage_models_follow": "各阶段模型跟教学一样",
       "drama_voice_follows": "旁白声音跟教学一样（频道声音）",
       "series_script_gate": "剧本先给我看，再开始生成（单集与作品的每一集）",
-      "series_max_in_flight": "同时最多几集在做（1–2）",
+      "series_max_in_flight": "同时最多几集在做（1–6）",
       "series_auto_continue": "上一集确认上架后自动开始下一集",
       "series_chapter_ahead": "剩几集时先规划下一篇",
       "series_doc_rewrites": "文件退回后最多重写几轮",
@@ -2434,7 +2449,7 @@
     },
     "subscription": "订阅账号",
     "agentOff": "主机代理未设置",
-    "subscriptionHelp": "订阅账号按 A、B、C… 的顺序轮流，一个账号的 5 小时或每周额度用满才换下一个，最后一个用满再回到 A；每个账号都用满时，工人就等额度重置再继续，不会自动改用 API 密钥。Codex 不提供：它的命令行关不掉执行命令的能力。",
+    "subscriptionHelp": "Claude Code 与 Codex 的订阅账号分别按 A、B、C… 的顺序轮流，额度用满才换下一个。所选工具的账号都满时，工人等待额度重置，不会自动改用 API 密钥。",
     "modelsManaged": "各阶段使用哪个模型，统一在“AI 设置 › 各功能模型”选择。",
     "editModels": "到 AI 设置修改",
     "saveModels": "保存视频模型",
@@ -2495,7 +2510,18 @@
     "flowTitle": "流程上限",
     "seriesTitle": "作品",
     "seriesHelp": "长篇作品（docs/videos/SERIES.md）的节奏：同时做几集、剩几集先规划下一篇、文件退回后重写几轮才停下来等你。",
-    "dramaGatesHelp": "上传到 YouTube 与上架时间永远由你决定。剧本默认先给你看，关掉才自动核准；设定图、旁白、分镜、成片各有开关，关掉的关卡照旧等你。"
+    "dramaGatesHelp": "上传到 YouTube 与上架时间永远由你决定。剧本默认先给你看，关掉才自动核准；设定图、旁白、分镜、成片各有开关，关掉的关卡照旧等你。",
+    "permission": {
+      "roles": "你当前登录的账号，后台角色是：{roles}。",
+      "noRoles": "你当前登录的账号没有任何后台角色。",
+      "fix": "改用站长（{owner}）账号登录就能修改；或请站长到后台“{page}”页面，为这个账号加上“{operations}”角色。"
+    },
+    "dramaMoved": "漫剧的设置已移到“{tab}”标签页，和作品、单集漫剧放在一起。",
+    "dramaMovedLink": "前往“{tab}”标签页",
+    "dramaSettingsTitle": "漫剧设置",
+    "dramaSave": "保存漫剧设置",
+    "dramaKeyWarning": "网站还没有 {vendors} 的密钥，开启漫剧时点保存会被拒绝。请先填入密钥，或改选有密钥的厂商。",
+    "dramaKeyLink": "到 AI 设置填写密钥"
   },
   "videoSeries": {
     "listTitle": "作品",
@@ -2648,6 +2674,241 @@
     "withdrawConfirm": "撤回「{title}」？还没有任何一集开始做，文件和讨论会一起删掉，排队中的请求会标成已撤回。",
     "oneOffTitle": "单集漫剧",
     "oneOff": "单集",
-    "openDramaSettings": "前往漫剧设置"
+    "openDramaSettings": "前往漫剧设置",
+    "dramaOn": "漫剧已开启：工人会依序制作发起的单集漫剧与作品。",
+    "dramaOff": "漫剧目前是关闭的。",
+    "dramaOffHow": "工人不会制作任何漫剧，你发起的单集漫剧与作品会等到开启后才开始。在下方“{settings}”勾选“{enable}”，再点保存。",
+    "binge": {
+      "title": "一键开拍",
+      "help": "选题材、选主角、填总长度，其余交给工人：设定集、总纲、细纲与剧本由查核自动核准，每一集做完就接下一集，全部完成后合成一部合集，成片在作品页下载。集数与每篇集数由总长度算出来；作品名称由设定集决定。",
+      "genre": "题材",
+      "lead": "主角",
+      "premise": "故事前提（选填）",
+      "premiseRequired": "故事前提（自定义题材必填）",
+      "premisePlaceholder": "留空就由企划依题材自己想一个；自定义题材一定要写。",
+      "totalMinutes": "总长度（分钟，30–480）",
+      "totalMinutesHint": "一般 60–240；30 分钟的试做也可以。",
+      "episodeMinutes": "每集分钟（2–4）",
+      "tier": "画面做法",
+      "notePlaceholder": "例如：旁白慢一点、不要血腥",
+      "quoteTitle": "估算",
+      "quoteLoading": "估算中…",
+      "quoteError": "估不出来：{message}",
+      "quote": "{episodes} 集，{chapters} 篇（每篇 {perChapter} 集）· 片段 {seconds} 秒 · 图片 {images} 张 · 约 US${usd}",
+      "budgets": {
+        "clip_seconds": "本月片段预算 {monthly} 秒，这部要 {needed} 秒",
+        "images": "本月图片预算 {monthly} 张，这部要 {needed} 张",
+        "judge_calls": "本月 judge 预算 {monthly} 次，这部要 {needed} 次",
+        "episodes_per_month": "每月集数上限 {monthly} 集，这部要 {needed} 集"
+      },
+      "budgetsOver": {
+        "clip_seconds": "本月片段预算 {monthly} 秒，这部要 {needed} 秒：先到设置标签页调高",
+        "images": "本月图片预算 {monthly} 张，这部要 {needed} 张：先到设置标签页调高",
+        "judge_calls": "本月 judge 预算 {monthly} 次，这部要 {needed} 次：先到设置标签页调高",
+        "episodes_per_month": "每月集数上限 {monthly} 集，这部要 {needed} 集：先到设置标签页调高"
+      },
+      "overBudget": "预算不够时工人会停在那里等，不会坏掉；调高之后自动继续。",
+      "start": "一键开拍",
+      "starting": "创建中…",
+      "error": "没有开拍：{message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "仙侠羁绊",
+        "detail": "门派世家与修为，正道与魔道，前世今生结伴的知己。"
+      },
+      "rebirth-revenge": {
+        "name": "重生复仇",
+        "detail": "被背叛而死，醒在还来得及的那一天；这次她知道每个人手上的牌。"
+      },
+      "system-game": {
+        "name": "系统游戏",
+        "detail": "游戏或系统降临，只有主角读得懂规则：隐藏职业、首杀、逆天天赋。"
+      },
+      "urban-return": {
+        "name": "都市归来",
+        "detail": "离开多年后回到把他看扁的城市，带着没人想得到的身份或实力。"
+      },
+      "empress-rise": {
+        "name": "女帝崛起",
+        "detail": "被当棋子的她一步步接手棋局，直到王座是她的。"
+      },
+      "custom": {
+        "name": "自定义",
+        "detail": "照你写的前提来，不加任何与它矛盾的设定。"
+      }
+    },
+    "leads": {
+      "female": "女主",
+      "male": "男主",
+      "dual-male": "双男主"
+    },
+    "tiers": {
+      "clips": {
+        "name": "全片段",
+        "detail": "每一镜都生成视频片段：最贵、动作最多。"
+      },
+      "hybrid": {
+        "name": "混合",
+        "detail": "约四成的镜头用片段，其余用静图加镜头运动：省一半以上。"
+      },
+      "stills": {
+        "name": "静图",
+        "detail": "几乎全部用静图加镜头运动，只有一成关键镜头用片段：最省，试做用这个。"
+      }
+    },
+    "totalMinutesLabel": "共 {minutes} 分钟",
+    "handsOff": "免关卡",
+    "handsOffHelp": "打开时，设定集、总纲、细纲与剧本由查核自动核准，查核没过才退回重写，卡住才找你；关掉就回到逐份核准。",
+    "compilation": "合集",
+    "compilationStatuses": {
+      "waiting": "合集：等每集完成",
+      "queued": "合集：等工人开始",
+      "making": "合集制作中",
+      "done": "合集完成"
+    },
+    "compilationNone": "这部作品没有设置要做合集；完结后可以点“做合集”。",
+    "compilationWaiting": "每一集完成后，工人会把它们合成一部。",
+    "compilationQueued": "工人的下一轮会开始做合集。",
+    "compilationStarting": "工人刚开始做，视频还没回报。",
+    "compile": "做合集",
+    "docNote": "备注："
+  },
+  "videoYoutube": {
+    "title": "YouTube 频道",
+    "help": "关联之后，「可以上架」的视频可以由网站直接发送到你的频道：五种语言的标题与说明、标签、字幕、缩略图和上架时间都由网站补齐，你只要选时间。网站不会自己把视频设为公开，公开由 YouTube 在你选的时间完成。",
+    "loading": "读取频道关联…",
+    "loadError": "读取不到频道关联：{message}",
+    "linkedNow": "已关联频道。",
+    "dismiss": "知道了",
+    "statusLinked": "已关联",
+    "statusBroken": "授权失效",
+    "statusNotLinked": "未关联",
+    "readyToLink": "客户端已设置好，点「关联 YouTube 频道」到 Google 点允许。",
+    "needsClient": "先按下面的步骤在 Google Cloud 创建 OAuth 客户端，再把 ID 与密钥粘贴进来。",
+    "linkedAt": "{time} 关联",
+    "verifiedAt": "{time} 最后确认授权有效",
+    "stepsTitle": "首次设置：在 Google Cloud 完成这五步",
+    "step1": "在 Google Cloud Console 创建（或选择）一个项目，在「API 和服务 → 库」启用 YouTube Data API v3。",
+    "step2": "「OAuth 同意屏幕」：用户类型选「外部」，应用名称填 Mokaair Studio Sync（名称不能包含 YouTube），再点「发布应用」把发布状态改成「正式版」。停在「测试」的话，授权 7 天后就会失效。",
+    "step3": "「凭据 → 创建凭据 → OAuth 客户端 ID」，类型选「Web 应用」，在「已获授权的重定向 URI」加上这一个：",
+    "step4": "同意屏幕的「数据访问」只添加这一个范围：{scope}",
+    "step5": "把客户端 ID 与客户端密钥粘贴到下面、点保存，再点「关联 YouTube 频道」，在 Google 的页面选择拥有频道的账号（或品牌账号）并点允许。未验证的应用会先出现警告页面：点「高级」→「转至 mokaair.com（不安全）」即可，只有你自己使用，不受影响。",
+    "redirectUri": "重定向 URI",
+    "copy": "复制",
+    "copied": "已复制",
+    "clientTitle": "OAuth 客户端",
+    "clientId": "客户端 ID",
+    "clientIdInvalid": "看起来不像 Web 应用的客户端 ID（结尾是 .apps.googleusercontent.com）",
+    "clientSecret": "客户端密钥",
+    "secretKept": "已设置；留空则不变",
+    "audited": "YouTube API 审核已通过",
+    "auditedHelp": "通过之前，网站用 API 上传的视频会被 YouTube 锁定为私享、不能公开，所以上传前会再确认一次。收到审核通过的通知后再勾选。",
+    "saving": "保存中…",
+    "save": "保存",
+    "saved": "已保存。",
+    "link": "关联 YouTube 频道",
+    "relink": "重新关联",
+    "verify": "确认授权",
+    "verified": "授权有效，频道信息已更新。",
+    "unlink": "解除关联",
+    "unlinkConfirm": "解除关联后，网站会请 Google 撤销授权，之后要再点关联才能发送视频。确定吗？",
+    "unlinkNotRevoked": "网站已经删除授权，但没能通知 Google；请到 Google 账号的「第三方应用和服务」移除 Mokaair Studio Sync。",
+    "unlinked": "已解除关联。",
+    "revokeHelp": "也可以随时在 Google 账号 → 安全性 →「第三方应用和服务」撤销访问权限。网站每 25 天会自动确认一次授权仍然有效。",
+    "publishTitle": "发送到 YouTube",
+    "publishHelp": "发送到频道「{channel}」。字幕、缩略图、其他语言的标题与说明、标签和披露都使用已核准的上传包；下面的中文标题、说明和公开范围由你决定。",
+    "source": "视频文件",
+    "sourceUpload": "由网站上传 mp4",
+    "sourceStudio": "我已经在 Studio 上传（私享），粘贴网址",
+    "lockWarning": "API 审核还没通过：网站上传的视频会被 YouTube 锁定为私享，之后也不能改为公开。正式上架请改选「我已经在 Studio 上传」。",
+    "lockAccept": "我知道这个视频会被锁定为私享（只是测试或截图）",
+    "studioHelp": "在 Studio 只要上传 final.mp4、公开范围选「私享」，其他栏位都不用填，然后把网址粘贴在这里。",
+    "youtubeUrl": "YouTube 网址或视频 id",
+    "videoId": "视频 id：{id}",
+    "urlInvalid": "看不出视频 id",
+    "videoTitle": "中文标题",
+    "titleCount": "{count}／{max} 字",
+    "videoDescription": "中文说明栏",
+    "descriptionCount": "{count}／{max} 字节",
+    "titleTooLong": "标题最多 {max} 个字",
+    "descriptionTooLong": "说明栏最多 {max} 字节",
+    "angleBrackets": "标题与说明不能包含 {characters}（YouTube 会拒绝）",
+    "visibility": "公开范围",
+    "visibilities": {
+      "scheduled": "在选定的时间公开（之前是私享）",
+      "unlisted": "不公开列出（知道链接的人可以看）",
+      "private": "私享"
+    },
+    "publishAt": "公开时间",
+    "neverPublic": "网站不会直接把视频设为公开：要公开就选时间，时间到了由 YouTube 公开。",
+    "sending": "发送中…",
+    "send": "发送到 YouTube",
+    "syncTitle": "YouTube 同步",
+    "statuses": {
+      "queued": "排队中",
+      "running": "发送中",
+      "done": "完成",
+      "failed": "失败",
+      "interrupted": "中断了"
+    },
+    "summaryScheduled": "预定 {time} 公开",
+    "finishedAt": "{time} 结束",
+    "uploadProgress": "mp4 上传进度",
+    "progress": "已上传 {sent}／{total} MB（{percent}%）",
+    "steps": {
+      "upload": "上传 mp4",
+      "details": "标题、说明与定时",
+      "captions": "字幕",
+      "thumbnail": "缩略图"
+    },
+    "stepStates": {
+      "pending": "等待",
+      "running": "进行中",
+      "done": "完成",
+      "failed": "失败",
+      "skipped": "跳过"
+    },
+    "interruptedHelp": "网站在发送途中重新启动了。点重试会从停下的地方接着做，已经完成的步骤不会重做。",
+    "retry": "重试",
+    "linkHint": "关联 YouTube 频道之后，网站可以直接上传并补齐所有栏位，你只要选时间。",
+    "openSettings": "到设置分页关联",
+    "resendTitle": "重新发送到 YouTube",
+    "resendHelp": "修改标题、说明、公开范围或上架时间，网站会重写这个视频的资料；已经有的字幕不会重新上传。已经公开的视频，网站不会改动。",
+    "sendingPill": "正在发送到 YouTube",
+    "stuckPill": "YouTube 同步失败",
+    "errors": {
+      "generic": "没有完成，请再试一次。",
+      "authentication_required": "登录已过期，请重新登录后再关联。",
+      "video_youtube_unavailable": "暂时连不到网站的服务，请稍后再试。",
+      "video_youtube_cancelled": "你在 Google 的页面取消了，没有关联。",
+      "video_youtube_state_invalid": "授权超时，或不是从这个浏览器开始的，请重新点关联。",
+      "video_youtube_state_unavailable": "暂时无法开始授权，请稍后再试。",
+      "video_youtube_client_missing": "先填好 OAuth 客户端 ID 与密钥并保存。",
+      "video_youtube_client_in_use": "频道还关联着旧的客户端：先解除关联，再更换客户端。",
+      "video_youtube_scope_missing": "Google 的页面上没有勾选 YouTube 的权限，请重新关联并勾选它。",
+      "video_youtube_no_refresh_token": "Google 没有给长期授权：到 Google 账号移除 Mokaair Studio Sync 的访问权限后，再关联一次。",
+      "video_youtube_no_channel": "这个 Google 账号没有 YouTube 频道；关联时请选择拥有频道的账号或品牌账号。",
+      "video_youtube_exchange_failed": "Google 拒绝了这次授权：确认重定向 URI 与客户端密钥都正确，再关联一次。",
+      "video_youtube_unreachable": "连不到 Google，请再试一次。",
+      "video_youtube_verify_failed": "YouTube 没有接受这次确认，请稍后再试。",
+      "video_youtube_not_linked": "还没有关联 YouTube 频道：到设置分页关联。",
+      "video_youtube_grant_lost": "频道授权已失效，请到设置分页重新关联。",
+      "video_youtube_sync_running": "这个视频正在发送到 YouTube，等它完成再发送。",
+      "video_youtube_sync_missing": "这个视频还没有发送过 YouTube。",
+      "video_youtube_sync_done": "上一次已经全部完成；要修改资料请重新发送。",
+      "video_youtube_not_ready": "这个视频还没有已核准的上传包。",
+      "video_youtube_package_invalid": "上传包和核准的那一份对不上，请让工人重新生成上传包。",
+      "video_youtube_package_missing": "审核区已经找不到这份上传包。",
+      "video_youtube_text_invalid": "标题或说明不符合 YouTube 的规则（长度，或含有尖括号）。",
+      "video_youtube_publish_at_missing": "选择「在选定的时间公开」时要填写公开时间。",
+      "video_youtube_publish_at_past": "公开时间要在现在的五分钟之后。",
+      "video_youtube_url_invalid": "看不出视频 id：粘贴 youtu.be、watch?v=、shorts 或 Studio 的网址。",
+      "video_youtube_already_uploaded": "这个视频已经在 YouTube 上了；要修改资料请用「重新发送到 YouTube」。",
+      "video_youtube_mp4_missing": "审核区已经没有这个视频的 mp4，请在 Studio 上传。",
+      "video_youtube_private_lock": "API 审核还没通过：要上传的话请勾选「我知道这个视频会被锁定为私享」。",
+      "video_project_not_found": "找不到这个视频。",
+      "video_project_dropped": "这个视频已经放弃了。"
+    }
   }
 }

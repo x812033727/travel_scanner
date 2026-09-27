@@ -13,14 +13,19 @@ from app.ai.catalog import MODEL_CATALOG, Capability
 from app.config import Settings
 from app.models import AdminAuditLog, User
 from app.video_automation.judge import (
+    COMPILATION_QA_ITEMS,
+    QA_ITEMS,
     final_qa_passed,
     outline_pick_passed,
     publish_package_passed,
+    retention_required_for,
+    script_check_passed,
 )
 from app.video_automation.models import (
     DRAMA_FIELDS,
     STYLE_PRESETS,
     VideoAutomationSettings,
+    VideoDramaSeries,
     VideoStagePrompt,
 )
 from app.video_automation.schemas import (
@@ -69,6 +74,7 @@ def model_options() -> dict[ProviderName, list[ModelOptionView]]:
     options: dict[ProviderName, list[ModelOptionView]] = {
         # Claude Code takes the same model names as the API; it runs them on the subscription.
         "claude_code": _options(MODEL_CATALOG["anthropic"], None),
+        "codex": _options(MODEL_CATALOG["openai"], None),
     }
     for provider, capability in MODEL_CAPABILITY.items():
         options[provider] = _options(MODEL_CATALOG[provider], capability)
@@ -80,6 +86,7 @@ def configured_providers(runtime: Settings) -> list[ProviderName]:
         # Whether the host agent is reachable is only known when a stage runs; configured here
         # means the API has what it needs to ask it.
         "claude_code": runtime.ai_accounts_configured,
+        "codex": runtime.ai_accounts_configured,
         "openai": runtime.openai_api_key,
         "anthropic": runtime.anthropic_api_key,
         "minimax": runtime.minimax_api_key,
@@ -389,12 +396,31 @@ def storyboard_check_passed(payload: dict[str, Any], min_score: int) -> bool:
     return overall >= min_score
 
 
-async def auto_approves_storyboard(session: AsyncSession, payload: dict[str, Any]) -> bool:
+async def hands_off_series(
+    session: AsyncSession, series_slug: str | None
+) -> VideoDramaSeries | None:
+    """The hands-off series a video belongs to (docs/videos/BINGE.md), or None.
+
+    A hands-off series has its sheets, storyboards and screenplays decided by the checks
+    whatever the global switches say; the owner set that on the series itself.
+    """
+    if not series_slug:
+        return None
+    row = await session.scalar(select(VideoDramaSeries).where(VideoDramaSeries.slug == series_slug))
+    return row if row is not None and row.hands_off else None
+
+
+async def auto_approves_storyboard(
+    session: AsyncSession, payload: dict[str, Any], series_slug: str | None = None
+) -> bool:
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    # Off by default: the owner looks at the first drama's keyframes before any clip is paid for.
-    if row is None or not row.auto_approve_storyboard:
+    # Off by default: the owner looks at the first drama's keyframes before any clip is paid
+    # for; a hands-off series decided otherwise when it was created.
+    if row is None:
+        return False
+    if not row.auto_approve_storyboard and await hands_off_series(session, series_slug) is None:
         return False
     return storyboard_check_passed(payload, row.judge_min_score)
 
@@ -437,15 +463,31 @@ def look_pick_note(payload: dict[str, Any]) -> str:
     return AUTO_PICKED_LOOK_NOTE.format(key=key, score=score)
 
 
-async def auto_picks_look(session: AsyncSession, payload: dict[str, Any]) -> bool:
+async def auto_picks_look(
+    session: AsyncSession, payload: dict[str, Any], series_slug: str | None = None
+) -> bool:
     """Whether a character's sheet is picked for the owner (docs/videos/HANDS-OFF.md)."""
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    # Off by default, like the storyboard: the owner looks at a first drama's sheets.
-    if row is None or not row.auto_pick_look:
+    # Off by default, like the storyboard: the owner looks at a first drama's sheets, unless
+    # the series is hands-off.
+    if row is None:
+        return False
+    if not row.auto_pick_look and await hands_off_series(session, series_slug) is None:
         return False
     return look_pick_passed(payload, row.judge_min_score)
+
+
+async def auto_approves_script(
+    session: AsyncSession, series_slug: str | None, payload: dict[str, Any]
+) -> bool:
+    """Whether an episode's screenplay stands on the checker's coverage (docs/videos/BINGE.md):
+    only on a hands-off series, and only when the rule passes for its genre."""
+    series = await hands_off_series(session, series_slug)
+    if series is None:
+        return False
+    return script_check_passed(payload, retention_required=retention_required_for(series.genre))
 
 
 async def auto_picks_outline(session: AsyncSession, payload: dict[str, Any]) -> bool:
@@ -463,11 +505,18 @@ async def auto_picks_outline(session: AsyncSession, payload: dict[str, Any]) -> 
 
 
 async def auto_approves_final(
-    session: AsyncSession, gate: str, payload: dict[str, Any], sha: str, format: str = "slides"
+    session: AsyncSession,
+    gate: str,
+    payload: dict[str, Any],
+    sha: str,
+    format: str = "slides",
+    *,
+    compilation: bool = False,
 ) -> bool:
     """Whether a final cut or an upload confirmation stands on the automatic checks.
 
-    A drama has its own switch (docs/videos/DRAMA-FLOW.md §一); the checks are the same.
+    A drama has its own switch (docs/videos/DRAMA-FLOW.md §一); the checks are the same. A
+    compilation (docs/videos/BINGE.md) is held to its own, shorter list of checks.
     """
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
@@ -482,7 +531,7 @@ async def auto_approves_final(
     if not enabled:
         return False
     if gate == "final":
-        return final_qa_passed(payload, sha)
+        return final_qa_passed(payload, sha, COMPILATION_QA_ITEMS if compilation else QA_ITEMS)
     if gate == "publish":
         return publish_package_passed(payload, sha)
     return False

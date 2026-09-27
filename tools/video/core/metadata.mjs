@@ -38,14 +38,21 @@ export function checkYoutubeFields({ title, description, tags }, where = "youtub
 }
 
 /**
+ * Where a content pack's article is read, after the locale: life articles under /life, everything
+ * else under /guides/<kind> (the routes in apps/web/app/(ads-public)/[locale]). /guides/<slug> on
+ * its own is a kind's list page and answers 404 for an article.
+ */
+export function articlePath(pack) {
+  return pack.kind === "life" ? `/life/${pack.slug}` : `/guides/${pack.kind}/${pack.slug}`;
+}
+
+/**
  * The Mokaair page for a content pack, with the campaign tag that separates video traffic in
- * analytics. Same URL shapes as the recorded route's video_kit.py: life articles under /life,
- * everything else under /guides/<kind>.
+ * analytics. Same URL shapes as the recorded route's video_kit.py.
  */
 export function articleUrl(pack, locale, campaign) {
   if (!pack?.slug) return null;
-  const path = pack.kind === "life" ? `/life/${pack.slug}` : `/guides/${pack.kind}/${pack.slug}`;
-  return `${SITE}/${locale}${path}?utm_source=youtube&utm_medium=video&utm_campaign=${encodeURIComponent(campaign)}`;
+  return `${SITE}/${locale}${articlePath(pack)}?utm_source=youtube&utm_medium=video&utm_campaign=${encodeURIComponent(campaign)}`;
 }
 
 export const HASHTAG_COUNT = 3;

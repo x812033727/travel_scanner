@@ -204,6 +204,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   minimax_api_base_url: { label: "MiniMax API Base URL", type: "url" },
   jev_api_base_url: { label: "Jev API Base URL", type: "url" },
   jev_daily_call_budget: { localized: true, type: "number" },
+  openai_connection: { localized: true, options: [{ value: "api_key" }, { value: "subscription" }] },
   anthropic_connection: { localized: true, options: [{ value: "api_key" }, { value: "subscription" }] },
   ai_subscription_fallback: { localized: true, options: [{ value: "wait" }, { value: "minimax" }] },
   minimax_model: { localized: true, allowCustom: true },

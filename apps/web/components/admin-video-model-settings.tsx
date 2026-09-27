@@ -70,7 +70,7 @@ export function AdminVideoModelSettings({ onSaved }: { onSaved?: (view: VideoSet
         <select className={fieldClass} value={choice.provider} disabled={disabled} onChange={(event) => {
           const provider = event.target.value as Provider;
           change({ ...models, [stage]: { provider, model: view.model_options[provider]?.[0]?.value ?? "" } });
-        }}>{PROVIDERS.map((provider) => <option key={provider} value={provider}>{providerLabels[provider]}{provider === "claude_code" ? ` (${t("subscription")})` : ""}{view.configured_providers.includes(provider) ? "" : ` (${t(provider === "claude_code" ? "agentOff" : "noKey")})`}</option>)}</select>
+        }}>{PROVIDERS.map((provider) => <option key={provider} value={provider}>{providerLabels[provider]}{provider === "claude_code" || provider === "codex" ? ` (${t("subscription")})` : ""}{view.configured_providers.includes(provider) ? "" : ` (${t(provider === "claude_code" || provider === "codex" ? "agentOff" : "noKey")})`}</option>)}</select>
       </label>
       <label className="block text-sm">{t("model")}
         <select className={fieldClass} value={choice.model} disabled={disabled} onChange={(event) => change({ ...models, [stage]: { ...choice, model: event.target.value } })}>

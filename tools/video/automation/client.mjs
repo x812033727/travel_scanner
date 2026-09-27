@@ -141,5 +141,9 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     messageNext: async () => (await request("GET", "automation/series/messages/next")).job ?? null,
     /** The model's reply, and for a document the revised version the owner reads next. */
     messageAnswer: (id, body) => request("POST", `automation/series/messages/${id}/answer`, body),
+    // A binge series' compilation (docs/videos/BINGE.md): started under the video's slug once
+    // every episode is cleared for upload, reported done when the compilation is.
+    compilationStart: (slug, videoSlug) => request("POST", `automation/series/${slug}/compilation/start`, { slug: videoSlug }),
+    compilationDone: (slug) => request("POST", `automation/series/${slug}/compilation/done`),
   };
 }

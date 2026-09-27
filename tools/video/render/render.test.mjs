@@ -4,6 +4,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
+import { compilationDocument } from "../core/compilation.mjs";
 import { dramaFixture } from "../core/fixtures/load.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
 import { resolveRequest } from "./browser.mjs";
@@ -197,4 +198,25 @@ test("the contact sheet lists every tile from the work directory", () => {
   const html = contactSheetHtml("標題 <x>", [{ file: "frames/a.png", label: "hook · title · 1/1" }]);
   assert.match(html, /<img src="https:\/\/video\.local\/work\/frames\/a\.png"/);
   assert.match(html, /標題 &lt;x&gt;/);
+});
+
+test("a compilation renders its chapter cards and outro as stills, numbered by episode, and its thumbnail on the chosen keyframe", () => {
+  const doc = compilationDocument({ series: "wuxia", episodes: [{ slug: "wuxia-ep-11", number: 11, title: "重返" }, { slug: "wuxia-ep-12", number: 12, title: "夜探藏經閣" }], voice: { provider: "gemini", name: "Sulafat" } });
+  doc.thumbnail.data.headline = "仙門風雲 第二篇";
+  assert.deepEqual(renderProblems(doc), []);
+  const plan = renderPlan(doc, "t");
+  assert.deepEqual(plan.scenes.map((scene) => [scene.id, scene.kind, scene.states.length]), [["card-11", "stills", 1], ["card-12", "stills", 1], ["outro", "stills", 1]]);
+  assert.match(plan.scenes[0].states[0].html, /重返/);
+  assert.match(plan.scenes[1].states[0].html, /class="number enter"[^>]*>02<span class="of">\/ 02<\/span><\/div>/, "the card counts its place among the cards");
+  assert.match(plan.scenes[2].states[0].html, /全集完/);
+  assert.deepEqual(coverageProblems(plan, bundledCoverage()), []);
+  assert.equal(plan.thumbnail.shot, "thumb");
+  assert.equal(plan.thumbnail.keyframe, null, "the worker has not chosen the keyframe yet");
+  const keyframe = { file: "keyframes/thumb-source.png", sha256: "3".repeat(64) };
+  const drawn = renderPlan(doc, "t", null, { keyframes: { thumb: keyframe } });
+  assert.deepEqual(drawn.thumbnail.keyframe, keyframe);
+  assert.match(drawn.thumbnail.html, /thumb-bg" src="https:\/\/video\.local\/work\/keyframes\/thumb-source\.png"/);
+  const bare = compilationDocument({ series: "wuxia", episodes: [{ slug: "wuxia-ep-1", number: 1 }], chapterCards: false, outro: false });
+  assert.deepEqual(renderPlan(bare, "t").scenes, [], "nothing to draw but the thumbnail");
+  assert.ok(renderPlan(bare, "t").thumbnail.key);
 });

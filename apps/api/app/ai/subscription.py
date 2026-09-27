@@ -1,12 +1,8 @@
-"""Claude on the host's subscription accounts, behind the same ``structured()`` call as the API.
+"""Claude and Codex subscription accounts behind the API's ``structured()`` call.
 
-The owner chose on 2026-09-25 to run every site feature that uses Claude on the subscription
-accounts the host signs in at /admin/ai-accounts instead of an API key, having been told the
-terms, quota and speed risks. The "AI vendors" card switches this with ``anthropic_connection``.
-The API never touches those accounts: it hands the AI accounts agent one prompt, and the agent
-runs Claude Code with every tool turned off on the signed-in account with the most room below
-the owner's cap (``ai_accounts_agent.runs``). If a run hits the limit, the agent moves on to the
-next account.
+The AI vendors card selects API key or a host subscription account for Claude and OpenAI
+research calls. The API hands the AI accounts agent one prompt; the agent runs Claude Code or
+Codex with tools disabled on a signed-in account. If a run hits the limit, it rotates accounts.
 
 When no account can serve (every one is at the cap, none is signed in, the agent is down, or
 all are busy past the wait), the call falls back to MiniMax, if the site has its key. The
@@ -30,6 +26,8 @@ from app.problems import AppError
 TModel = TypeVar("TModel", bound=BaseModel)
 
 Connection = Literal["api_key", "subscription"]
+SUBSCRIPTION_TOOLS = {"anthropic": "claude", "openai": "codex"}
+SUBSCRIPTION_LABELS = {"claude": "Claude", "codex": "Codex"}
 
 # Why a subscription call gives way to MiniMax: nothing ran, so trying another vendor spends
 # nothing twice. A run that started and failed is reported instead.
@@ -75,7 +73,9 @@ class _Structured(Protocol):
 
 def on_subscription(settings: Settings, vendor: str) -> bool:
     """Whether calls to this vendor go to the host's subscription accounts."""
-    return vendor == "anthropic" and settings.anthropic_connection == "subscription"
+    return (vendor == "anthropic" and settings.anthropic_connection == "subscription") or (
+        vendor == "openai" and settings.openai_connection == "subscription"
+    )
 
 
 def vendor_ready(settings: Settings, vendor: str) -> bool:
@@ -97,7 +97,7 @@ def run_seconds(timeout_seconds: float) -> float:
 
 
 class SubscriptionResearchProvider:
-    """``ResearchProvider`` for Claude on the subscription accounts, falling back to MiniMax."""
+    """``ResearchProvider`` on a vendor's subscription accounts, with MiniMax fallback."""
 
     def __init__(
         self,
@@ -106,12 +106,14 @@ class SubscriptionResearchProvider:
         timeout_seconds: float,
         fallback: Callable[[], _Structured] | None = None,
         agent: AiAccountsAgentClient | None = None,
+        vendor: Literal["anthropic", "openai"] = "anthropic",
     ) -> None:
-        self.name: Any = "anthropic"
+        self.name: Any = vendor
         self.model = model
         # "claude:b" for the account that answered last, or the fallback vendor's name.
         self.served_by: str | None = None
         self._settings = settings
+        self._tool = SUBSCRIPTION_TOOLS[vendor]
         self._timeout_seconds = run_seconds(timeout_seconds)
         self._fallback_factory = fallback
         self._fallback: _Structured | None = None
@@ -152,6 +154,7 @@ class SubscriptionResearchProvider:
                 prompt += repair_instruction(previous, failure)
             try:
                 result = await self._agent.run_prompt(
+                    tool=self._tool,
                     model=self.model,
                     system=system,
                     prompt=prompt,
@@ -163,7 +166,7 @@ class SubscriptionResearchProvider:
                 if error.code not in FALLBACK_CODES or self._fallback_factory is None:
                     raise
                 return await self._on_fallback(schema, schema_name, instructions, payload)
-            self.served_by = f"claude:{result.slot}"
+            self.served_by = f"{self._tool}:{result.slot}"
             usage["input_tokens"] += result.input_tokens
             usage["output_tokens"] += result.output_tokens
             previous = extract_json_document(result.text)
@@ -181,12 +184,15 @@ def _peak(slot: Any) -> float | None:
     return max((window.used_percent for window in windows), default=None)
 
 
-def subscription_summary(overview: AgentOverview, cap: int = FULL_PERCENT) -> tuple[bool, str]:
-    """For the card's connection test: can any Claude account serve, and what each one has."""
+def subscription_summary(
+    overview: AgentOverview, cap: int = FULL_PERCENT, *, tool: str = "claude"
+) -> tuple[bool, str]:
+    """For the card's connection test: can any account of this tool serve?"""
+    label = SUBSCRIPTION_LABELS[tool]
     usable: list[str] = []
     notes: list[str] = []
     for slot in overview.slots:
-        if slot.tool != "claude" or slot.logged_in is not True:
+        if slot.tool != tool or slot.logged_in is not True:
             continue
         name = slot.slot.upper()
         if slot.auth_method == "api_key":
@@ -203,9 +209,9 @@ def subscription_summary(overview: AgentOverview, cap: int = FULL_PERCENT) -> tu
         else:
             usable.append(f"{name}（已用 {peak:.0f}%）")
     if not usable:
-        detail = "；".join(notes) if notes else "主機上沒有登入的 Claude 訂閱帳號"
-        return False, f"Claude 訂閱帳號目前都不能用：{detail}"
-    message = f"Claude 訂閱帳號可用：{'、'.join(usable)}"
+        detail = "；".join(notes) if notes else f"主機上沒有登入的 {label} 訂閱帳號"
+        return False, f"{label} 訂閱帳號目前都不能用：{detail}"
+    message = f"{label} 訂閱帳號可用：{'、'.join(usable)}"
     if notes:
         message += f"；{'；'.join(notes)}"
     return True, message

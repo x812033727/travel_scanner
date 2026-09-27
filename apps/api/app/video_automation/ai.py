@@ -2,10 +2,10 @@
 
 The worker sends the stage's prompt and inputs; the server picks the vendor and model from the
 settings, checks the month's budgets, and records what the call cost. A stage runs either on the
-Claude subscription accounts the host's agent signs in (``subscription``), or with one of the
-site's API keys, which never leave this server. Every stage returns one file as text (brief.md,
-video.json, a fact-check report, a translation): the worker lints what comes back and sends the
-problems into the next call, as the agents did.
+Claude or Codex subscription accounts the host's agent signs in (``subscription``), or with
+one of the site's API keys, which never leave this server. Every stage returns one file as text
+(brief.md, video.json, a fact-check report, a translation): the worker lints what comes back and
+sends the problems into the next call, as the agents did.
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ from app.video_automation.settings import configured_providers
 from app.video_automation.subscription import run_on_subscription
 from app.video_automation.usage import (
     DRAFT_STAGE,
-    SUBSCRIPTION_PROVIDER,
+    SUBSCRIPTION_PROVIDERS,
     budget_problem,
     slug_has_draft,
     usage_view,
@@ -83,8 +83,13 @@ async def _on_api_key(
     request: StageRunIn,
     client: httpx.AsyncClient | None,
 ) -> tuple[str, str, dict[str, int]]:
+    # Video stage choices named OpenAI API / Anthropic API must stay API-billed even when
+    # the site-wide research connection for that vendor uses subscription accounts.
+    api_runtime = runtime.model_copy(
+        update={"openai_connection": "api_key", "anthropic_connection": "api_key"}
+    )
     provider = research_provider(
-        runtime,
+        api_runtime,
         cast(AIProviderName, provider_name),
         client,
         model=model,
@@ -111,7 +116,7 @@ async def run_stage(
     client: httpx.AsyncClient | None = None,
 ) -> StageRunOut:
     provider_name, model = stage_choice(row, request.stage, request.format)
-    on_plan = provider_name == SUBSCRIPTION_PROVIDER
+    on_plan = provider_name in SUBSCRIPTION_PROVIDERS
     usage = await usage_view(session, row)
     # A series document, an episode planned from an approved chapter, a recap or a fix is not
     # one of the month's drafts (docs/videos/SERIES.md): the series has its own monthly cap.
@@ -127,7 +132,7 @@ async def run_stage(
         raise StageFailed(
             503,
             "video_ai_provider_not_configured",
-            "主機的 AI 帳號代理還沒設定，Claude 訂閱帳號用不了"
+            "主機的 AI 帳號代理還沒設定，訂閱帳號用不了"
             if on_plan
             else f"{request.stage} 設定用 {provider_name}，但網站還沒有這家廠商的 API 金鑰",
         )
@@ -140,6 +145,7 @@ async def run_stage(
         if on_plan:
             run = await run_on_subscription(
                 runtime,
+                tool="codex" if provider_name == "codex" else "claude",
                 model=model,
                 instructions=request.instructions,
                 payload=dict(request.payload),

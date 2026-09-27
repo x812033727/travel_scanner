@@ -7,18 +7,27 @@ import { isDrama } from "../core/drama.mjs";
 
 /** The eleven items, in the order qa.json lists them; the server requires every one of them. */
 export const ITEM_IDS = ["assemble", "render", "narration", "pace", "captions", "metadata", "facts", "links", "thumbnail", "policy", "disclosure"];
+/**
+ * A series' compilation (docs/videos/BINGE.md) has no narration, slides, facts or stance of its
+ * own: its episodes passed those. Its six items are the join, the merged captions, the
+ * metadata with every chapter, the links, the thumbnail and the disclosure.
+ */
+export const COMPILATION_ITEM_IDS = ["assemble", "captions", "metadata", "links", "thumbnail", "disclosure"];
 
 export function item(id, ok, detail, warnings = []) {
   return { id, ok: Boolean(ok), detail: String(detail), ...(warnings.length ? { warnings: warnings.map(String) } : {}) };
 }
 
-/** The report the server reads: { ok, final_sha256, items }, items in ITEM_IDS order. */
-export function qaReport(items, finalSha256) {
+/**
+ * The report the server reads: { ok, final_sha256, items }, items in `required` order (ITEM_IDS,
+ * or COMPILATION_ITEM_IDS with `kind: "compilation"` so the server requires those six instead).
+ */
+export function qaReport(items, finalSha256, required = ITEM_IDS) {
   const ids = items.map((each) => each.id);
-  if (ids.length !== ITEM_IDS.length || ids.some((id, index) => id !== ITEM_IDS[index])) {
-    throw new Error(`qa items must be exactly ${ITEM_IDS.join(", ")}; got ${ids.join(", ")}`);
+  if (ids.length !== required.length || ids.some((id, index) => id !== required[index])) {
+    throw new Error(`qa items must be exactly ${required.join(", ")}; got ${ids.join(", ")}`);
   }
-  return { ok: items.every((each) => each.ok), final_sha256: finalSha256 ?? null, items };
+  return { ok: items.every((each) => each.ok), final_sha256: finalSha256 ?? null, ...(required === COMPILATION_ITEM_IDS ? { kind: "compilation" } : {}), items };
 }
 
 /**
@@ -26,11 +35,11 @@ export function qaReport(items, finalSha256) {
  * (frame count, audio drift, loudness, the PSNR of every chapter's first frame).
  * `current` is package/cli.mjs's checksCurrent verdict.
  */
-export function assembleItem({ checks, current, finalExists }) {
-  if (!finalExists) return item("assemble", false, "final.mp4 is missing; run assemble");
-  if (!checks) return item("assemble", false, "checks.json is missing; run assemble");
+export function assembleItem({ checks, current, finalExists, command = "assemble", stale = "an older script, look or clips" }) {
+  if (!finalExists) return item("assemble", false, `final.mp4 is missing; run ${command}`);
+  if (!checks) return item("assemble", false, `checks.json is missing; run ${command}`);
   if (!checks.ok) return item("assemble", false, `checks failed: ${(checks.problems ?? []).join("; ") || "no reason recorded"}`);
-  if (!current) return item("assemble", false, "checks.json was written for an older script, look or clips; run assemble again");
+  if (!current) return item("assemble", false, `checks.json was written for ${stale}; run ${command} again`);
   const metrics = checks.metrics ?? {};
   const loudness = metrics.loudness?.integrated;
   const psnr = Array.isArray(metrics.psnr) ? `, ${metrics.psnr.length} frames matched their slides` : "";
@@ -115,13 +124,44 @@ export function captionsItem({ lintWarnings, manifest, current, locales, hasCapt
 }
 
 /**
+ * captions of a compilation: the episodes' caption files merged for every locale every episode
+ * has (compile's manifest), and the compilation's own translations current (lint's warnings
+ * for i18n/<locale>.json, failures here). A locale an episode lacks is named with the episodes.
+ */
+export function compilationCaptionsItem({ lintWarnings, manifest, current, locales, hasCaptionFile }) {
+  const problems = [];
+  const warnings = [];
+  for (const warning of lintWarnings) {
+    if (/^i18n\//.test(warning.path)) problems.push(`${warning.path}: ${warning.message}`);
+  }
+  if (!manifest) problems.push("captions/manifest.json is missing; run compile");
+  else if (!current) problems.push("captions were merged for other cuts; run compile again");
+  else {
+    for (const locale of locales) {
+      const missing = manifest.skipped?.[locale];
+      if (Array.isArray(missing) && missing.length) {
+        problems.push(`${locale}: no caption file, ${missing.length} episodes have none (${missing.join(", ")})`);
+        continue;
+      }
+      if (!manifest.locales?.[locale] || !hasCaptionFile(locale)) {
+        problems.push(`${locale}: no caption file`);
+        continue;
+      }
+      for (const problem of manifest.locales[locale].problems ?? []) problems.push(`${locale}: ${problem}`);
+    }
+  }
+  if (problems.length) return item("captions", false, problems.join("; "), warnings);
+  return item("captions", true, `caption files for ${locales.join(", ")}, merged from every episode`, warnings);
+}
+
+/**
  * metadata: every locale's title, description (as composed) and tags within YouTube's limits,
  * and chapters YouTube will show. `problems` is composeMetadata's list, `tagProblems`
  * checkYoutubeFields' on the tags, `chapterProblems` checkChapters' on the real timeline.
  */
-export function metadataItem({ problems, tagProblems, chapterProblems, locales, chapters, timelineCurrent }) {
+export function metadataItem({ problems, tagProblems, chapterProblems, locales, chapters, timelineCurrent, command = "tts" }) {
   const all = [...problems, ...tagProblems, ...chapterProblems];
-  if (!timelineCurrent) all.unshift("timeline.json is missing or was built for an older script, so the chapter times are unknown; run tts");
+  if (!timelineCurrent) all.unshift(`timeline.json is missing or was built for an older script, so the chapter times are unknown; run ${command}`);
   if (all.length) return item("metadata", false, all.join("; "));
   return item("metadata", true, `title, description and tags within YouTube's limits for ${locales.join(", ")}; ${chapters} chapters`);
 }

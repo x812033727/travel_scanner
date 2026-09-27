@@ -98,6 +98,7 @@ SITE_VISIBILITY_FIELDS = (
 # Settings that put the owner's personal subscription accounts to work for the site.
 OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
     "ai_vendors": (
+        "openai_connection",
         "anthropic_connection",
         "ai_subscription_fallback",
     ),
@@ -194,11 +195,12 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "Jev 也放在這裡，但它是判斷模型而不是生成模型：只回傳 choice／score／noul 與信心值，"
         "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。"
         "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。"
-        "Claude 可以改走主機上「AI 帳號」登入的訂閱帳號（只有站主能切換）：各功能照樣選 Claude "
-        "與模型，帳號依 A、B、C… 的順序輪流，一個帳號的 5 小時或每週額度用滿才換下一個，"
-        "最後一個用滿再回到 A；每個帳號都用滿時改用 MiniMax。"
-        "行程規劃與行程文字解析仍只用 Claude 的 API 金鑰。",
+        "OpenAI 或 Claude 可以改走主機上「AI 帳號」登入的 Codex 或 Claude Code 訂閱帳號"
+        "（只有站主能切換）：各功能照樣選供應商與模型，帳號依 A、B、C… 的順序輪流，"
+        "一個帳號的 5 小時或每週額度用滿才換下一個；依候補設定可改用 MiniMax。"
+        "行程規劃與行程文字解析仍使用 API 金鑰。",
         (
+            "openai_connection",
             "anthropic_connection",
             "ai_subscription_fallback",
             "openai_api_base_url",
@@ -714,11 +716,12 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
     if provider == "ai_vendors":
         from app.ai.subscription import on_subscription, vendor_ready
 
+        openai = "OpenAI（Codex 訂閱帳號）" if on_subscription(settings, "openai") else "OpenAI"
         claude = "Claude（訂閱帳號）" if on_subscription(settings, "anthropic") else "Claude"
         vendors = [
             (label, ready)
             for ready, label in (
-                (vendor_ready(settings, "openai"), "OpenAI"),
+                (vendor_ready(settings, "openai"), openai),
                 (vendor_ready(settings, "anthropic"), claude),
                 (vendor_ready(settings, "minimax"), "MiniMax"),
                 (vendor_ready(settings, "gemini"), "Gemini"),
@@ -1426,6 +1429,7 @@ def _validate_provider_values(
         "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "hotspot_intro_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "anthropic_connection": {"api_key", "subscription"},
+        "openai_connection": {"api_key", "subscription"},
         "ai_subscription_fallback": {"minimax", "wait"},
     }
     for field, allowed in modes.items():
@@ -1789,18 +1793,19 @@ def _listed_model_ids(response: httpx.Response) -> set[str] | None:
     return ids
 
 
-async def _test_claude_subscription(settings: Settings) -> tuple[bool, str]:
-    """Whether a Claude account on the host can take the site's calls, without running one."""
+async def _test_subscription(settings: Settings, tool: str) -> tuple[bool, str]:
+    """Whether an account can take the site's calls, without running a prompt."""
     from app.admin_ai_accounts.agent import AiAccountsAgentClient
     from app.ai.subscription import subscription_summary
 
+    label = "Claude" if tool == "claude" else "Codex"
     if not settings.ai_accounts_configured:
-        return False, "Claude 設為訂閱帳號，但這台伺服器還沒設定 AI 帳號代理"
+        return False, f"{label} 設為訂閱帳號，但這台伺服器還沒設定 AI 帳號代理"
     try:
         overview = await AiAccountsAgentClient(settings).overview()
     except AppError as error:
-        return False, f"Claude 訂閱帳號：{error.detail}"
-    return subscription_summary(overview)
+        return False, f"{label} 訂閱帳號：{error.detail}"
+    return subscription_summary(overview, tool=tool)
 
 
 async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None = None) -> str:
@@ -1813,8 +1818,9 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     from app.ai.subscription import on_subscription
 
     probes: list[tuple[str, str, dict[str, str], dict[str, str] | None, str, bool]] = []
-    subscription = on_subscription(settings, "anthropic")
-    if settings.openai_api_key:
+    claude_subscription = on_subscription(settings, "anthropic")
+    codex_subscription = on_subscription(settings, "openai")
+    if settings.openai_api_key and not codex_subscription:
         probes.append(
             (
                 "OpenAI",
@@ -1825,7 +1831,7 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
                 False,
             )
         )
-    if settings.anthropic_api_key and not subscription:
+    if settings.anthropic_api_key and not claude_subscription:
         probes.append(
             (
                 "Claude",
@@ -1863,7 +1869,7 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     # ever read. One real noul question proves the key, the host, the model id and the
     # response shape for about forty input tokens, and output is not billed at all.
     jev_configured = bool(settings.jev_api_key)
-    if not probes and not jev_configured and not subscription:
+    if not probes and not jev_configured and not (claude_subscription or codex_subscription):
         raise ConnectionError("尚未設定任何 AI 金鑰")
     owns_client = client is None
     http = client or httpx.AsyncClient(timeout=10.0)
@@ -1891,8 +1897,10 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
             await http.aclose()
     verified: list[str] = []
     failures: list[str] = []
-    if subscription:
-        ready, message = await _test_claude_subscription(settings)
+    for tool in ("claude", "codex"):
+        if not (claude_subscription if tool == "claude" else codex_subscription):
+            continue
+        ready, message = await _test_subscription(settings, tool)
         (verified if ready else failures).append(message)
     for (label, _url, _headers, _params, model, tolerant), response in zip(
         probes, responses, strict=True

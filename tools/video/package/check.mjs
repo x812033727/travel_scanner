@@ -178,8 +178,8 @@ export function listFiles(dir) {
 /**
  * Read <workdir>/upload/ and check it; the approved final is the final gate's last approval, and
  * the locales are the owner's choice in the work directory unless given. Returns { report, files,
- * metadata }; without metadata.json every item fails and the report has no hash, since there is
- * nothing a review could bind to.
+ * metadata, finalSha256 }; without metadata.json every item fails and the report has no hash,
+ * since there is nothing a review could bind to.
  */
 export async function readPackageReport(workdir, given = {}) {
   const wanted = packageLocalesWanted(workdir);
@@ -193,5 +193,5 @@ export async function readPackageReport(workdir, given = {}) {
   const finalSha256 = existsSync(finalFile) ? await sha256File(finalFile) : null;
   const approvedSha256 = readApprovals(workdir).approvals.filter((entry) => entry.gate === "final").at(-1)?.sha256 ?? null;
   const metadataSha256 = metadata ? await sha256File(metadataFile) : null;
-  return { report: checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales, descriptionLocales }), files, metadata };
+  return { report: checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales, descriptionLocales }), files, metadata, finalSha256 };
 }

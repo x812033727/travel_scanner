@@ -7,7 +7,8 @@
 import { existsSync, readdirSync } from "node:fs";
 import path from "node:path";
 
-import { approvalState } from "./approvals.mjs";
+import { approvalState, readApprovals } from "./approvals.mjs";
+import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
 import { burnIn, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
@@ -27,7 +28,8 @@ export const ARTIFACTS = {
   // render: { visual_hash, states: [...] }; burning subtitles in adds { speech_hash, subtitles_hash, subtitles }
   frames: path.join("frames", "manifest.json"),
   contactSheet: "contact-sheet.png", // render
-  video: "final.mp4", // assemble
+  thumbnail: "thumbnail.jpg", // render
+  video: "final.mp4", // assemble, or compile for a compilation
   // assemble: { ok, speech_hash, visual_hash, problems: [...] }; a drama adds look_hash, clips_hash, subtitles_hash, mix_hash
   checks: "checks.json",
   captions: path.join("captions", "manifest.json"), // captions: { speech_hash, locales: { <locale>: {...} } }
@@ -44,6 +46,8 @@ export const ARTIFACTS = {
   mediaLedger: path.join("media", "ledger.json"), // media client: what each generation cost
   // dub: one directory per locale (dubArtifacts) and the upload track beside them, dubs/<locale>.<format>
   dubs: "dubs",
+  // compile (docs/videos/BINGE.md): { compilation_hash, visual_hash, total_frames, layout, chapters, episodes }
+  compilation: path.join("compile", "manifest.json"),
 };
 
 /** The files one locale's dub leaves under <workdir>/dubs/ (docs/videos/DUBS.md). */
@@ -104,7 +108,16 @@ export const DRAMA_STEPS = [
   "on YouTube",
 ];
 
+/**
+ * A series' compilation (docs/videos/BINGE.md) joins cuts the owner already approved, so it has
+ * no narration, look or storyboard steps: the planned metadata and thumbnail, the cards, the
+ * join, the translations, then the usual final, package and YouTube steps. The list lives in
+ * compilation.mjs beside the document it describes; the worker reads it from either module.
+ */
+export { COMPILATION_STEPS };
+
 export function stepsFor(doc) {
+  if (isCompilation(doc)) return COMPILATION_STEPS;
   if (!isDrama(doc)) return SLIDES_STEPS;
   // Every drama has the script gate (docs/videos/DRAMA-FLOW.md, section 2): the owner reads the
   // screenplay, and may discuss it, before any image or clip is paid for. Music is skipped when
@@ -155,7 +168,21 @@ export function loadProject({ slug, file, root }) {
 }
 
 export function lintProject(project) {
+  // A compilation narrates nothing: the brief, lexicon and shot rules do not apply to it.
+  if (isCompilation(project.doc)) return lintCompilation(project.doc, project);
   return lintVideo(project.doc, project);
+}
+
+/**
+ * The cuts a compilation joins, as approved: each episode's last `final` approval in its own
+ * work directory beside the compilation's. An episode without one has `sha256: null`, and the
+ * compilation cannot be current until it is cleared.
+ */
+export function approvedEpisodes(doc, workBase) {
+  return doc.compilation.episodes.map((slug) => {
+    const entry = readApprovals(path.join(workBase, slug)).approvals.filter((each) => each.gate === "final").at(-1) ?? null;
+    return { slug, sha256: entry?.sha256 ?? null };
+  });
 }
 
 /** Append a run to state.json: which stage ran, when, and whatever it wants the next person to know. */
@@ -228,7 +255,9 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const project = existsSync(videoFile(slug, root)) ? loadProject({ slug, root }) : null;
   const lint = project ? lintProject(project) : null;
   const doc = project?.doc;
-  const drama = isDrama(doc);
+  const compilation = isCompilation(doc);
+  // A compilation is a drama for the disclosure and the steps, not for the media stages here.
+  const drama = isDrama(doc) && !compilation;
   const gate = (name) => approvalState({ gate: name, docDir: dir, workdir });
   const outline = await gate("outline");
   const audio = await gate("audio");
@@ -246,7 +275,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const clips = drama ? read(ARTIFACTS.clips) : null;
   const music = drama ? read(ARTIFACTS.music) : null;
   const valid = Boolean(lint) && lint.errors.length === 0;
-  const speech = valid ? speechHash(doc, project.lexicon) : null;
+  const speech = valid && !compilation ? speechHash(doc, project.lexicon) : null;
   const visual = valid ? visualHash(doc) : null;
   const lookNow = valid && drama ? lookHash(doc) : null;
   const subtitles = valid && drama ? subtitlesHash(doc) : null;
@@ -328,8 +357,56 @@ export async function pipelineStatus({ slug, root, workdir }) {
       todo: `the owner uploads final.mp4 in YouTube Studio as Private; then ${cli("youtube-sync", slug, "--video-id <id> --dry-run")}`,
     },
   };
+  if (compilation) Object.assign(definitions, compilationDefinitions({ slug, workdir, doc, project, valid, lint, visual, read, frames, checks, captions }));
   const steps = stepsFor(doc).map((id) => ({ id, ...definitions[id] }));
   const next = steps.find((step) => !step.done) ?? null;
-  const dubs = drama ? {} : dubsStatus(project, workdir, speech);
+  const dubs = drama || compilation ? {} : dubsStatus(project, workdir, speech);
   return { steps, next, stop: stopRequested(workdir), lint, dubs };
+}
+
+const isText = (value) => typeof value === "string" && value.trim().length > 0;
+
+/** A compilation's locale translation is complete when the four YouTube fields are there. */
+export function translationComplete(translation) {
+  return isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation.tags.length > 0 && translation?.chapters !== null && typeof translation?.chapters === "object";
+}
+
+/**
+ * The compilation's own steps (docs/videos/BINGE.md). The episodes' work directories sit beside
+ * the compilation's, so their approvals say which cuts are current; the final, package and
+ * YouTube steps are the shared definitions.
+ */
+function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visual, read, frames, checks, captions }) {
+  const episodes = valid ? approvedEpisodes(doc, path.dirname(workdir)) : [];
+  const uncleared = episodes.filter((episode) => !episode.sha256).map((episode) => episode.slug);
+  const keyframes = read(ARTIFACTS.keyframes);
+  const planned = valid && isText(doc.youtube.title) && doc.youtube.title !== PLACEHOLDER_TITLE && Boolean(doc.thumbnail) && doc.thumbnail.data?.headline !== COMPILATION_HEADLINE_PLACEHOLDER;
+  // The thumbnail draws on an episode keyframe when the planner picked one; a compilation whose
+  // episodes left no keyframe to pick draws on the theme alone and needs no source.
+  const thumbSource = doc?.thumbnail?.data?.shot === undefined || Boolean(keyframes?.shots?.thumb?.file);
+  const compiled = valid && compilationChecksCurrent(doc, checks, episodes);
+  const locales = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+  const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale]));
+  return {
+    "metadata planned": {
+      done: planned && thumbSource,
+      note: !valid ? `video.json has ${lint?.errors.length ?? "?"} lint errors` : !planned ? "the title or the thumbnail headline is still the placeholder, or there is no thumbnail" : !thumbSource ? "keyframes/manifest.json has no shots.thumb: the thumbnail's background is not chosen" : undefined,
+      todo: `the worker plans the compilation's title, description and thumbnail on an episode keyframe (docs/videos/BINGE.md), then ${cli("lint", slug)}`,
+    },
+    "cards rendered": {
+      done: Boolean(visual) && frames?.visual_hash === visual && existsSync(path.join(workdir, ARTIFACTS.thumbnail)),
+      note: frames && frames.visual_hash !== visual ? "frames/manifest.json was rendered for older cards" : undefined,
+      todo: cli("render", slug),
+    },
+    "video compiled": {
+      done: compiled && captions?.compilation_hash === checks.compilation_hash && existsSync(path.join(workdir, ARTIFACTS.video)),
+      note: uncleared.length ? `episodes not cleared for upload: ${uncleared.join(", ")}` : checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : checks && !compiled ? "checks.json was written for other cuts or cards" : undefined,
+      todo: cli("compile", slug),
+    },
+    "metadata translated": {
+      done: valid && untranslated.length === 0,
+      note: untranslated.length && untranslated.length < locales.length ? `missing or incomplete: ${untranslated.join(", ")}` : undefined,
+      todo: `the translator agent writes docs/videos/${slug}/i18n/<locale>.json with title, description, tags and chapters for ${locales.join(", ")}`,
+    },
+  };
 }

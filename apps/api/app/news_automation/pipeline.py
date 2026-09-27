@@ -5,7 +5,7 @@ from typing import Any, Literal, cast
 from uuid import UUID, uuid4
 
 from redis.asyncio import Redis
-from sqlalchemy import func, or_, select
+from sqlalchemy import and_, func, not_, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.subscription import FALLBACK_CODES
@@ -1274,29 +1274,43 @@ async def recover_stalled_candidates(
 
 
 async def orphaned_candidates(
-    session: AsyncSession, *, now: datetime | None = None, limit: int = 20
+    session: AsyncSession,
+    *,
+    now: datetime | None = None,
+    limit: int = 20,
+    jev_budget_left: bool = False,
 ) -> list[UUID]:
-    """Discovered candidates that no queued job will pick up."""
+    """Discovered candidates that no queued job will pick up.
+
+    ``jev_budget_left`` says today's Jev budget has room again, which happens when the owner
+    raises it after it ran out (2026-09-27): the candidates paused for it run now instead of
+    after 00:00 UTC. No job waits for a paused candidate, so they skip the orphan delay too.
+    """
 
     settings = await settings_row(session)
     if not settings.enabled:
         await session.rollback()
         return []
     current = now or datetime.now(UTC)
+    paused = and_(
+        NewsCandidate.error_code.is_not(None), NewsCandidate.error_code == JEV_QUOTA_PAUSED
+    )
+    orphaned = and_(
+        NewsCandidate.updated_at < current - ORPHAN_AFTER,
+        # Paused for Jev's budget: nothing to do until the UTC day that spent it is
+        # over, and then this sweep is what runs it again, 20 a minute.
+        or_(
+            not_(paused),
+            NewsCandidate.updated_at
+            < datetime.combine(current.astimezone(UTC).date(), time.min, UTC),
+        ),
+    )
     ids = list(
         await session.scalars(
             select(NewsCandidate.id)
             .where(
                 NewsCandidate.status == "discovered",
-                NewsCandidate.updated_at < current - ORPHAN_AFTER,
-                # Paused for Jev's budget: nothing to do until the UTC day that spent it is
-                # over, and then this sweep is what runs it again, 20 a minute.
-                or_(
-                    NewsCandidate.error_code.is_(None),
-                    NewsCandidate.error_code != JEV_QUOTA_PAUSED,
-                    NewsCandidate.updated_at
-                    < datetime.combine(current.astimezone(UTC).date(), time.min, UTC),
-                ),
+                or_(orphaned, paused) if jev_budget_left else orphaned,
             )
             .order_by(NewsCandidate.updated_at, NewsCandidate.id)
             .limit(limit)
