@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoSeries } from "./admin-video-series";
@@ -28,12 +28,37 @@ const episodes = [
   { number: 3, chapter_number: 1, title: "山", logline: "L3", beats: beats(3), status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null },
 ];
 
-function stubFetch() {
+// The video settings the drama tab reads once for its banner and its settings section. The media
+// catalog is left empty: the drama settings form itself is covered in admin-video-drama-settings.test.tsx.
+function videoSettings(dramaEnabled: boolean) {
+  return {
+    enabled: false, draft_interval_hours: 72, topics_per_run: 1, max_waiting_drafts: 3, topic_scope: ["AI"], topic_avoid: [], topic_from_site: true, topic_from_search: true,
+    stage_models: {}, voice: { provider: "gemini", name: "Sulafat", style: null, model: null, rate: "+0%" }, target_minutes_min: 8, target_minutes_max: 12,
+    caption_locales: ["en"], max_drafts_per_month: 8, monthly_token_budget_millions: 20, max_verify_rounds: 3, max_retake_rounds: 2, auto_approve_audio: true,
+    stage_instructions: {}, channel_stance: "", auto_pick_outline: true, auto_approve_final: true,
+    drama: {
+      drama_enabled: dramaEnabled, image_provider: "gemini", image_model: "gemini-3-pro-image", clip_provider: "gemini", clip_model: "gemini-omni-1.1-flash",
+      music_provider: "gemini", music_model: "lyria-3.5", clip_resolution: "1080p", clip_seconds_default: 8, clip_native_audio: false, drama_aspect: "16:9",
+      max_clips_per_video: 40, max_retakes_per_shot: 2, monthly_clip_seconds_budget: 3000, monthly_images_budget: 1500, monthly_judge_calls_budget: 3000,
+      monthly_music_budget: 60, max_usd_per_video: 200, judge_min_score: 7, auto_approve_storyboard: false, auto_pick_look: false, character_voice_pool: [],
+      music_enabled: true, subtitle_burn_in: true, style_preset: "cinematic-3d", drama_topic_scope: ["山海經"],
+    },
+    media_options: { images: {}, clips: {}, music: {} }, style_presets: ["cinematic-3d"], model_options: {}, configured_providers: ["gemini"],
+    voice_options: { gemini: ["Kore"], gemini_models: [], azure: [] }, usage: null, updated_at: "2026-09-27T08:00:00Z",
+  };
+}
+
+function stubFetch(options: { settings?: Record<string, unknown>; videos?: unknown[] } = {}) {
   const calls: Array<{ url: string; method: string; body?: unknown }> = [];
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
     const url = String(input);
     const method = init?.method ?? "GET";
     calls.push({ url, method, body: init?.body ? JSON.parse(String(init.body)) : undefined });
+    if (options.settings && url.endsWith("/admin/video-automation/settings")) {
+      if (method === "PUT") return Promise.resolve(Response.json({ ...options.settings, ...JSON.parse(String(init?.body)), updated_at: "2026-09-27T09:00:00Z" }));
+      return Promise.resolve(Response.json(options.settings));
+    }
+    if (options.videos && url.includes("/admin/videos?format=drama")) return Promise.resolve(Response.json(options.videos));
     if (url.endsWith("/admin/video-automation/series") && method === "POST") return Promise.resolve(Response.json({ ...summary, slug: "new-one", title: "新作", status: "setting", docs: [], episodes: [] }, { status: 201 }));
     if (url.endsWith("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [summary] }));
     if (url.includes("/admin/video-automation/series/new-one")) return Promise.resolve(Response.json({ ...summary, slug: "new-one", title: "新作", status: "setting", docs: [], episodes: [] }));
@@ -125,5 +150,40 @@ describe("AdminVideoSeries", () => {
     expect(screen.queryByRole("button", { name: "核准" })).toBeNull();
     expect(screen.queryByRole("button", { name: "跳過" })).toBeNull();
     expect(screen.queryByText("新的作品")).toBeNull();
+  });
+
+  it("says the drama route is off, opens its settings first, and says it is on once saved", async () => {
+    const calls = stubFetch({ settings: videoSettings(false) });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage", "settings.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    expect(await screen.findByText("漫劇目前是關閉的。")).toBeTruthy();
+    expect(screen.getByText("工人不會製作任何漫劇，你發起的單集漫劇與作品會等到開啟後才開始。在下方「漫劇設定」勾選「開啟 AI 漫劇」，再按儲存。")).toBeTruthy();
+    expect((screen.getByText("漫劇設定", { selector: "summary" }).closest("details") as HTMLDetailsElement).open).toBe(true);
+    fireEvent.click(screen.getByRole("checkbox", { name: "開啟 AI 漫劇" }));
+    fireEvent.click(screen.getByRole("button", { name: "儲存漫劇設定" }));
+    expect(await screen.findByText("漫劇已開啟：工人會依序製作發起的單集漫劇與作品。")).toBeTruthy();
+    expect(screen.queryByText("漫劇目前是關閉的。")).toBeNull();
+    const put = calls.find((call) => call.method === "PUT");
+    expect((put?.body as { drama: { drama_enabled: boolean } }).drama.drama_enabled).toBe(true);
+  });
+
+  it("keeps the drama settings closed once the route is on", async () => {
+    stubFetch({ settings: videoSettings(true) });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    expect(await screen.findByText("漫劇已開啟：工人會依序製作發起的單集漫劇與作品。")).toBeTruthy();
+    expect((screen.getByText("漫劇設定", { selector: "summary" }).closest("details") as HTMLDetailsElement).open).toBe(false);
+  });
+
+  it("lists the one-off episodes that wait for the owner first, and marks one that stopped", async () => {
+    const oneOff = (slug: string, extra: Record<string, unknown> = {}) => ({
+      slug, title: slug, format: "drama", stage: "clips", checklist: [{ key: "brief", label: "企劃", done: true }], youtube_video_id: null,
+      last_synced_at: "2026-09-27T01:00:00Z", pending: 0, media_usd: 0, clip_seconds: 0, ...extra,
+    });
+    stubFetch({ videos: [oneOff("quiet-one"), oneOff("waiting-one", { pending: 1 }), oneOff("stopped-one", { stage: "blocked" })] });
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const region = await screen.findByRole("region", { name: "單集漫劇" });
+    const rows = within(region).getAllByRole("button").map((button) => button.textContent ?? "");
+    expect(rows.map((row) => row.split("AI 漫劇")[0])).toEqual(["waiting-one", "stopped-one", "quiet-one"]);
+    expect(rows[1]).toContain("卡住");
+    expect(rows[0]).not.toContain("卡住");
   });
 });

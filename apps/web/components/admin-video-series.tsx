@@ -2,10 +2,12 @@
 
 import { ArrowLeft, BookOpen } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
-import { control, list, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
+import { AdminVideoDramaSettings } from "@/components/admin-video-drama-settings";
+import { control, isBlocked, list, needsOwner, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
+import type { VideoSettingsView } from "@/components/admin-video-settings";
 import { Button } from "@/components/community/ui";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
@@ -210,11 +212,13 @@ function DramaQueue({ requests, canManage, onChanged, onOpen }: { requests: Dram
 function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string) => void; onOpenVideo: (slug: string) => void }) {
   const t = useTranslations("admin.videoSeries");
   const tv = useTranslations("admin.videoReviews");
+  const ts = useTranslations("admin.videoSettings");
   const when = useWhen();
   const manage = useAdminActionGuard("content.manage");
   const [series, setSeries] = useState<SeriesSummary[] | null>(null);
   const [videos, setVideos] = useState<ProjectSummary[]>([]);
   const [requests, setRequests] = useState<DramaRequest[]>([]);
+  const [settings, setSettings] = useState<VideoSettingsView | null>(null);
   const [error, setError] = useState("");
   const load = useCallback(() => {
     api<{ series: SeriesSummary[] }>("/admin/video-automation/series").then((value) => { setSeries(value.series ?? []); setError(""); }).catch((problem: unknown) => setError(message(problem)));
@@ -227,8 +231,27 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
     }).catch(() => setRequests([]));
   }, []);
   useRefresh(load);
+  // The settings are read once, not with the minute-by-minute refresh above: the drama settings are
+  // a form, and a re-read would throw away what the owner is typing. A site without the route, or an
+  // answer without a drama block, shows neither the banner nor the form.
+  useEffect(() => {
+    let current = true;
+    api<VideoSettingsView>("/admin/video-automation/settings")
+      .then((value) => { if (current && value && typeof value === "object" && !Array.isArray(value) && value.drama) setSettings(value); })
+      .catch(() => undefined);
+    return () => { current = false; };
+  }, []);
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
+  // What waits for the owner comes first, as on the tutorials list; the sort keeps the rest in order.
+  const oneOffs = [...videos].sort((a, b) => Number(needsOwner(b)) - Number(needsOwner(a)));
   return <div className="grid gap-4">
+    {settings && (settings.drama.drama_enabled
+      ? <p role="note" className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm leading-6">{t("dramaOn")}</p>
+      : <aside role="note" className="grid gap-1 rounded-xl border border-[var(--teal)] bg-[var(--surface)] p-4 text-sm leading-6">
+        <p className="font-bold">{t("dramaOff")}</p>
+        <p>{t("dramaOffHow", { settings: ts("dramaSettingsTitle"), enable: ts("fields.drama_enabled") })}</p>
+      </aside>)}
+    {settings && <AdminVideoDramaSettings view={settings} onSaved={setSettings} />}
     {manage.allowed && <NewSeriesForm onCreated={(slug) => { load(); onOpenSeries(slug); }} />}
     {series && series.length === 0 && <AdminEmptyState title={t("empty")} detail={t("emptyDetail")} />}
     {series && series.length > 0 && <ul className="grid gap-4" aria-label={t("listTitle")}>{series.map((each) => <li key={each.slug}>
@@ -245,13 +268,14 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
     <DramaQueue requests={requests} canManage={manage.allowed} onChanged={load} onOpen={onOpenVideo} />
     {videos.length > 0 && <section className="grid gap-3" aria-label={t("oneOffTitle")}>
       <h3 className="text-lg font-bold">{t("oneOffTitle")}</h3>
-      <ul className="grid gap-4">{videos.map((video) => <li key={video.slug}>
+      <ul className="grid gap-4">{oneOffs.map((video) => <li key={video.slug}>
         <button type="button" onClick={() => onOpenVideo(video.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
           <span className="flex flex-wrap items-center gap-3"><span className="text-lg font-bold">{video.title}</span>
             <AdminStatusPill status="active">{tv("drama")}</AdminStatusPill>
             {video.dropped_at
               ? <AdminStatusPill status="inactive">{tv("dropped")}</AdminStatusPill>
               : <AdminStatusPill status={video.pending ? "pending" : "inactive"}>{video.pending ? tv("pending", { count: video.pending }) : tv("noPendingShort")}</AdminStatusPill>}
+            {!video.dropped_at && isBlocked(video) && <AdminStatusPill status="failed">{tv("stuck")}</AdminStatusPill>}
           </span>
           <span className="text-sm text-[var(--muted)]">{tv("progress", { done: video.checklist.filter((item) => item.done).length, total: video.checklist.length })} · {tv("lastSynced", { time: when(video.last_synced_at) })}{typeof video.media_usd === "number" && ` · ${tv("spend", { usd: video.media_usd.toFixed(2), seconds: video.clip_seconds ?? 0 })}`}</span>
           {video.stage && !video.youtube_video_id && !video.dropped_at && <span className="text-sm text-[var(--muted)]">{tv("currentStep", { step: video.checklist.find((item) => !item.done)?.label ?? video.stage })}</span>}
