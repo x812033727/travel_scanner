@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-general-audience-ai-citation-checking-video
 title: General audience AI citation checking video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-videos-general
-claimed_at: 2026-09-27T15:27:01Z
+owner:
+claimed_at:
 created_at: 2026-09-27T15:26:42Z
 completed_at:
 branch: codex/ai-general-videos

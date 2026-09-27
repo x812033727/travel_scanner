@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-general-audience-ai-agent-versus-chatbot
 title: General audience AI agent versus chatbot video
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-videos-general
-claimed_at: 2026-09-27T15:26:14Z
+owner:
+claimed_at:
 created_at: 2026-09-27T15:25:59Z
 completed_at:
 branch: codex/ai-general-videos
