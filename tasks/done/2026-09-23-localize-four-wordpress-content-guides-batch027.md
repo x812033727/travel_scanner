@@ -1,13 +1,13 @@
 ---
 id: 2026-09-23-localize-four-wordpress-content-guides-batch027
 title: Localize four WordPress content guides batch027
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-batch027
 claimed_at: 2026-09-23T19:10:40Z
 created_at: 2026-09-23T19:10:30Z
-completed_at:
+completed_at: 2026-09-27T08:44:50Z
 branch: codex/article-localization-batch027-wordpress-content
 depends_on: []
 scope:
@@ -34,13 +34,13 @@ Four existing published WordPress content guides provide only Traditional Chines
 - [x] Author all 16 complete language documents and 48 localized assets, including 16 editable cover SVGs, 16 1600×900 JPEG covers and 16 diagram SVGs. Preserve 12 original assets and every original zh-TW/raw metadata byte.
 - [x] Independently review all 1,392 translated reader fields, full model structure, numbers and conditions. Actually render and inspect every new image at desktop/mobile sizes, including fonts, glyphs, clipping and layout.
 - [x] Preserve 32 conditional ArticleInline instances and record exact translations of original SVG accessible titles and 16 target-only image-description backfills. Unpublished same-language destinations remain nonclickable.
-- [ ] Independently verify and integrate the exact 52 content paths, then run scoped pack/API/publication/frontend/tools/lint/type/i18n/build/task checks and preserve actual skips/advisories.
-- [ ] Open a scoped PR and a separate release task with exact versions, hashes and per-article progress. Do not count a merged pack as imported/published or browser-verified.
+- [x] Independently verify and integrate the exact 52 content paths, then run scoped pack/API/publication/frontend/tools/lint/type/i18n/build/task checks and preserve actual skips/advisories.
+- [x] Open a scoped PR and a separate release task with exact versions, hashes and per-article progress. Do not count a merged pack as imported/published or browser-verified.
 
 ## Steps
 
 - [x] Author disjoint pairs outside the repository and complete reciprocal independent reviews.
-- [ ] Integrate only approved full documents and assets, run checks, and hand off exact content/CI evidence for release.
+- [x] Integrate only approved full documents and assets, run checks, and hand off exact content/CI evidence for release.
 
 ## How to verify
 
@@ -67,4 +67,6 @@ Root owns repository integration and release coordination. Authorized Codex suba
 
 2026-09-27 content handoff: Pair A revision 1 (`pair-a-revision1/staged`) and Pair B revision 5 (`pair-b-revision-v5/staged`) passed reciprocal independent field/image/source reviews. The fresh complete live source export `live-source-full-20260927T065921Z.json` SHA256 `49bfe...` still has only zh-TW v4 for all four articles; no target locale had appeared. Root integrated 4 packs plus 48 localized assets by exact hashes. The independent 52-path integration receipt `review-integration-independent/review-receipt.json` SHA256 `48e90587b00d190d81da4a0fbd21d4b0422fbad05b5137a8acc73f8b2d42d4f0` confirms original raw-byte reversal, 16 valid docs, 32 conditional links, 32 image references and no scope drift. All new SVG/JPEG assets were rendered and reviewed at desktop/mobile sizes; the original zh-TW files are unchanged.
 
-Local scoped pack lint passed for all four slugs, with inherited absent-summary and English body-length advisories only. `npm run check:i18n`, `npm run check:tasks`, `npm run lint:web`, `npm run typecheck:web`, `uv run ruff check .` and `uv run mypy app` passed. Focused API/docs tests: 193 passed, 89 skipped because isolated PostgreSQL is unavailable on this Windows host. Initial `test:tools` failed because the partial worktree `node_modules` lacked font packages; `npm ci` restored dependencies. Initial `test:web` hung under local Node 24.13.0, below jsdom's 24.15.0 engine floor; it was stopped after 24 minutes and will be rerun under the bundled Node 24.19.0. Full tools/web/build and actual CI remain pending; no production import or publication has been claimed for this task.
+Local scoped pack lint passed for all four slugs, with inherited absent-summary and English body-length advisories only. `npm run check:i18n`, `npm run check:tasks`, `npm run lint:web`, `npm run typecheck:web`, `uv run ruff check .` and `uv run mypy app` passed. Focused API/docs tests: 193 passed, 89 skipped because isolated PostgreSQL is unavailable on this Windows host. `npm run test:tools` passed 410/411 (one skipped), `npm run test:web` passed 316 files/3402 tests, and `npm run build:web` passed using bundled Node 24.19.0. Initial local test attempts under incomplete dependencies and Node 24.13.0 were superseded. Independent integration receipt SHA-256 `48e90587b00d190d81da4a0fbd21d4b0422fbad05b5137a8acc73f8b2d42d4f0` passed all 52 paths. Git normalized 16 reviewed SVGs from CRLF to LF without XML/content changes; root delta receipt SHA-256 `b61631a304ad28707c6bb47ddf55bd450be6b221eec47b6aba3b1280f71a8b59`.
+
+PR #849 merged on 2026-09-27T08:43:02Z, exact reviewed content head `b22a98b629696c0f2116fdf068439bc87f521192` to squash commit `790868bffcda4631280fec5f24f702bbb1a4a302`, with all nine exact-head CI checks successful. This closes content preparation only. Production deployment, import, publication and public browser QA remain in `2026-09-27-release-localized-wordpress-content-guides-batch027`.
