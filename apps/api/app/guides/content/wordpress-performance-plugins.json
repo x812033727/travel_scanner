@@ -286,6 +286,1106 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress Performance Plugins: Caching, Images, and Feature Conflicts",
+      "description": "WordPress performance plugins need settings matched to the actual site; enabling every option at once is unsafe. Using a small Taiwan-based course and shop site, this guide compares WP Rocket and NitroPack, divides responsibility for caching and images, and shows how to diagnose conflicts caused by CSS and JavaScript optimization. A comparison table, staged workflow, and original diagram help administrators retain a measurement baseline and verify forms, menus, and shopping flows.",
+      "hero": {
+        "src": "/guides/wordpress-performance-plugins/hero-en.jpg",
+        "alt": "Original WordPress performance illustration showing settings and speed checks.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A faster homepage score is not a finished job if the mobile menu no longer opens. A performance plugin changes how some files are generated, loaded, or run, so its settings must be checked alongside the theme, forms, membership features, and hosting environment."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before choosing a tool, inventory the features already enabled. Decide which service will handle caching, images, and code assets. Add settings through small tests so every speed or behavior change has a traceable cause and a conflict can be reversed."
+        },
+        {
+          "type": "heading",
+          "text": "Inventory existing tools before duplicating their work",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List the host cache, CDN, image plugins, page builder, and other performance tools. Record the active functions of each. Tools with different names can still both process lazy loading, CSS, or JavaScript. Compatibility depends on actual settings and integrations, not merely the number of installed plugins."
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack explicitly warns that another tool handling page caching, image lazy loading, or CSS/JavaScript optimization at the same time may interfere with its mechanisms. Its documentation lists WP Rocket among tools it does not recommend using alongside NitroPack. Do not enable both expecting their gains to stack."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some conflicts concern only one feature. NitroPack’s compatibility guidance for Smush, for example, calls for disabling Smush lazy loading, rather than removing the entire image plugin. Define responsibilities from the current documentation and verify them on a test site. Check the host’s integration rules separately for built-in caching instead of applying every plugin-disable list universally."
+        },
+        {
+          "type": "heading",
+          "text": "Establish a baseline and a way back first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a site that offers courses and sells products, select the homepage, a course page, a product page, the contact page, and the shopping flow as representative cases. Save the current appearance, functional results, measurements taken under the same conditions, and plugin and theme versions. Without a baseline, a later problem is hard to attribute to the new setting."
+        },
+        {
+          "type": "paragraph",
+          "text": "Back up the site and its original settings. Prefer a test copy for options that change file handling. If a tool offers Test Mode, learn how it affects ordinary visitors first. Test Mode is not a second database backup and cannot replace recovery preparation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write down the rollback steps: which option to switch off, how to restore settings, and whether optimized files must be regenerated or a specific cache cleared. Record the login state for both speed measurements and functional checks. An administrator’s normal screen can hide what ordinary visitors actually receive."
+        },
+        {
+          "type": "heading",
+          "text": "With WP Rocket, add one feature at a time",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket applies automatic features and defaults when activated, but additional options still need review. Its setup guidance recommends enabling one feature at a time and checking key pages in a signed-out browser after each change. Some processing is asynchronous, so wait for the generated output before comparing results instead of judging immediately after Save."
+        },
+        {
+          "type": "paragraph",
+          "text": "File optimization may remove unused CSS or delay JavaScript loading or execution; media features include lazy loading and image dimensions. Tackle an item only for a defined purpose. For instance, address the loading burden of images below the first screen, then investigate the next bottleneck."
+        },
+        {
+          "type": "paragraph",
+          "text": "To exclude a page, enter the corresponding URL or path under Advanced Rules → Never Cache URL(s) as documented. This exclusion also disables other optimizations for that page, not just page caching. Where the host manages caching itself, confirm the exclusion with the host as well."
+        },
+        {
+          "type": "heading",
+          "text": "With NitroPack, understand mode changes first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack offers Standard, Medium, Strong, Ludicrous, and Custom modes with different setting levels. Its current getting-started documentation names Ludicrous as the default, but a default is not suitable for every site. Inspect the actual account settings and adjust according to functional checks; do not ignore a broken layout to chase a mode name."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "With Test Mode on, ordinary URLs work without NitroPack optimization. A tester can view an optimized version by adding the testnitro=1 "
+            },
+            {
+              "type": "text",
+              "text": "parameter"
+            },
+            {
+              "type": "text",
+              "text": " to the URL. This allows a same-page comparison, but if the site already relies on NitroPack for speed, Test Mode also changes what ordinary visitors receive. Schedule an appropriate test window."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "After Test Mode is turned off, retained settings apply to production URLs; restore changes you do not intend to adopt first. After a mode switch or other adjustment, save, process caches, and wait for reoptimization according to NitroPack’s procedure. Keep the test-parameter URL and production URL separate in the acceptance record; one result cannot sign off the other."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Inventory existing settings and confirm the test environment; retain a recoverable baseline.",
+            "Choose one problem to improve and make a small adjustment with the relevant feature or mode.",
+            "Wait for optimization, then check the layout, menus, forms, and shopping actions first.",
+            "Compare under matching measurement conditions; adopt or revert before moving to another item."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "If the layout breaks or a button fails, narrow the cause",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If a course-outline toggle stops working after a new setting, compare optimized and unoptimized versions to establish whether the original function still works. Roll back the most recently added relevant setting and see whether the issue disappears. Changing the theme, deleting plugins, and clearing all data at the same time would make the cause impossible to identify even if the site recovers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Removing unused CSS can affect menus, popups, or mobile styles that appear later. Changes to JavaScript loading and execution can also change interaction timing. NitroPack’s troubleshooting guidance suggests lowering the optimization mode or inspecting related features. Preserve the affected page, device, reproduction steps, and setting difference, then use the exclusion method supported by the tool."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep an exclusion only as broad as needed to resolve the issue, and record why. For a conflict in one component, adjust its asset or page first. If you cannot isolate it, return to normal settings and send reproducible evidence to support. Do not force caching over a design that protects dynamic data."
+        },
+        {
+          "type": "heading",
+          "text": "Check shopping and membership flows separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket’s WooCommerce documentation says recognized cart, checkout, and account pages, plus the WooCommerce REST API, are automatically excluded from caching according to store configuration. This helps with a basic store, but does not guarantee that custom wishlists, regional pricing, or membership components work. Test them in practice."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use test products and accounts to check quantity changes, cart contents, form error messages, and member data. If checking payments, use the provider’s test environment and established acceptance method; do not create real transactions just for a speed test. After content updates, confirm that public pages receive the correct version."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally compare measurements, functions, and maintenance cost before and after. Record enabled settings, exclusions, reasons, and what to recheck after the next plugin or theme update. The result should make sense to the next administrator; there is no need to enable every option or promise a perfect score after installation."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-performance-plugins/diagram-1-en.svg",
+          "alt": "Four stages show assigning functions, establishing a test baseline, changing one setting at a time, and accepting it only after functional and performance checks.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Give each setting a purpose and accept it using both functional and measurement checks.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Task",
+            "Decide who handles it first",
+            "Acceptance focus"
+          ],
+          "rows": [
+            [
+              "Page caching",
+              "Host or primary performance tool",
+              "Correct updates and personalized data"
+            ],
+            [
+              "Image handling",
+              "Who compresses and who lazy loads",
+              "Clarity and appearance timing"
+            ],
+            [
+              "CSS optimization",
+              "Avoid duplicate processing by two tools",
+              "Mobile view, popups, expanded states"
+            ],
+            [
+              "JavaScript optimization",
+              "Adjust loading and execution for compatibility",
+              "Buttons, forms, and responses"
+            ],
+            [
+              "Test Mode",
+              "Know ordinary and test URL behavior",
+              "Clear trial settings before production use"
+            ]
+          ],
+          "caption": "Assign functions; the number of tools is not a measure of optimization."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Accept functions before signing off a score",
+          "text": "A better report with a broken menu, form, or shopping flow is unfinished. Keep before-and-after settings, restore essential functions, then narrow the optimization scope again."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Clarify the division of caching between the site and CDN",
+              "kind": "life",
+              "slug": "website-cache-cdn"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Read speed reports under consistent conditions",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Back up the site and prepare a restore",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Rocket best practices for settings",
+          "url": "https://docs.wp-rocket.me/article/1291-find-the-best-settings-for-your-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket page exclusion scope",
+          "url": "https://docs.wp-rocket.me/article/54-exclude-pages-from-the-cache",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket and WooCommerce",
+          "url": "https://docs.wp-rocket.me/article/1491-using-wp-rocket-on-your-woocommerce-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack initial setup and modes",
+          "url": "https://support.nitropack.io/en/articles/10521601-how-to-set-up-nitropack",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack Test Mode behavior",
+          "url": "https://support.nitropack.io/en/articles/8390292-test-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack with other caching plugins",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack troubleshooting for broken layouts",
+          "url": "https://support.nitropack.io/en/articles/8390442-what-to-do-if-your-site-appears-broken",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress高速化プラグインの使い方：キャッシュ、画像、機能の競合",
+      "description": "WordPressの高速化プラグインはサイトの現状に合わせて設定し、全項目を一度に有効にしないことが大切です。台湾の小規模な講座・商品サイトを例に、WP RocketとNitroPackの設定、キャッシュと画像処理の役割分担、CSSやJavaScriptの最適化で競合が起きた場合の調査方法を説明します。比較表、段階的な手順、オリジナル図解を使い、計測基準を残してフォーム、メニュー、購入操作を確認できます。",
+      "hero": {
+        "src": "/guides/wordpress-performance-plugins/hero-ja.jpg",
+        "alt": "WordPressの高速化設定と速度確認を示すオリジナル図。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "高速化でトップページの点数が上がっても、スマートフォンのメニューが開かなければ完了とは言えません。高速化プラグインは一部ファイルの生成、読み込み、実行方法を変えます。テーマ、フォーム、会員機能、ホスティング環境と合わせて設定を検証する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールを選ぶ前に、すでに有効な機能を整理し、キャッシュ、画像、プログラム資産をどれが担当するか決めます。小さな範囲で設定を増やせば、速度と機能の変化を追跡でき、競合したときにも正常な状態へ戻しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "既存ツールを棚卸しし、同じ仕事の重複を避ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ホストのキャッシュ、CDN、画像プラグイン、ページビルダー、その他の高速化ツールを列挙し、それぞれの有効な機能を記録します。名前が違っても遅延読み込み、CSS、JavaScriptを同時に処理することがあります。互換性は導入数ではなく、実際の設定とサービス連携で判断します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPackの公式資料は、別ツールでページキャッシュ、画像の遅延読み込み、CSS／JavaScriptの最適化を同時に有効にすると、その仕組みが働かなくなる可能性を明記しています。WP Rocketも併用を推奨しないツールに含まれます。効果が足し合わされると考えて両方を有効にしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "競合が特定の機能に限られることもあります。例えばNitroPackのSmush向け互換性資料は、画像プラグイン全体の削除ではなく、Smushの遅延読み込みを無効にするよう示しています。現行資料に基づく分担表を作ってテスト環境で確かめます。ホスト内蔵キャッシュは提供会社の連携方法を別途確認し、プラグインの停止リストを一律に当てはめないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "先に基準と戻し方を用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "講座紹介と商品販売を兼ねるサイトなら、トップページ、講座、商品、問い合わせの各ページと購入フローを代表例に選びます。現状の画面、機能の結果、同条件での計測値、プラグインとテーマのバージョンを保存します。基準がなければ、後の問題が新設定によるものか判断しにくくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトと元の設定をバックアップし、ファイルの処理を変える項目はテスト用コピーで優先的に検証します。ツールのTest Modeを使うなら、一般訪問者への影響も先に理解します。テストモードは別のデータベースバックアップではなく、復元準備の代わりにはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "どの項目を無効にするか、設定をどう戻すか、最適化ファイルの再生成や特定キャッシュの消去が必要かを記した手順を残します。速度計測と機能確認ではログイン状態を明示してください。管理者には正常でも、一般訪問者が別の版を受け取ることがあります。"
+        },
+        {
+          "type": "heading",
+          "text": "WP Rocketでは機能を一つずつ追加する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocketは有効化すると自動機能と初期設定を適用しますが、追加項目の確認は必要です。公式ガイドは一度に一機能ずつ有効にし、変更ごとにログアウトしたブラウザーで重要なページを確認するよう勧めています。非同期処理もあるので、保存直後に結論を出さず生成の完了を待って比較します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ファイル最適化には未使用CSSの削除やJavaScriptの読み込み・実行を遅らせる設定があり、メディア関連には遅延読み込みや画像サイズなどがあります。各項目には目的を定め、例えば最初の画面より下の画像の読み込み負荷を改善してから、次の問題を調べます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ページを除外する場合は、資料に従いAdvanced RulesのNever Cache URL(s)に該当するURLまたはパスを入力します。この除外はページキャッシュだけでなく、そのページの他の最適化も除外します。ホスト自身がキャッシュを管理する場合は、ホスト側の除外設定も確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "NitroPackではモード切り替えの意味を理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPackにはStandard、Medium、Strong、Ludicrous、Customなど設定の度合いが異なるモードがあります。現在の公式入門資料ではLudicrousが初期値ですが、初期値がどのサイトにも適するわけではありません。実際のアカウント設定を見て機能確認に沿って調整し、モード名のために表示崩れを無視しないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Test Modeを有効にすると通常のURLはNitroPackの最適化なしで動作し、テスターはtestnitro=1という"
+            },
+            {
+              "type": "text",
+              "text": "パラメーター"
+            },
+            {
+              "type": "text",
+              "text": "を付けたURLで最適化版を見られます。同じページを比較できますが、元のサイトがNitroPackの高速化に依存している場合、一般訪問者が受け取る状態も変わります。適切な検証時間を決めてください。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Test Modeを終了すると、残した設定が本番のURLに適用されます。採用しない変更は先に戻してください。モード切り替えや調整後は公式手順に沿って保存、キャッシュ処理を行い、再最適化を待ちます。検収記録ではテスト用パラメーター付きURLと本番URLを区別し、一方の結果だけでもう一方を承認しないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "現行設定とテスト環境を確認し、復元できる基準を保存する。",
+            "改善する問題を一つ選び、対応する機能またはモードで小さく変更する。",
+            "最適化の完了を待ち、画面、メニュー、フォーム、購入操作を先に調べる。",
+            "同じ計測条件で比較し、採用か復元かを決めてから次へ進む。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "表示崩れやボタンの故障は原因を絞る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "講座の目次を開くボタンが新設定後に動かないなら、最適化版と未最適化版を比較し、元の機能が正常か確かめます。次に直近の関連設定を戻して症状が消えるか調べます。テーマの変更、プラグイン削除、全データの消去を同時に行うと、直っても原因は分かりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "未使用CSSの削除は、後から表示されるメニュー、ポップアップ、モバイル表示に影響することがあります。JavaScriptの読み込み・実行の変更も操作のタイミングを変えます。NitroPackの公式調査資料はモードを下げるか関連機能を確認する方法を示します。問題のページ、端末、再現手順、設定差分を保存し、ツールが対応する除外方法で処理します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "除外は問題を解決するのに必要な範囲に絞り、理由を記録します。単一部品の競合なら、その資産やページから調整します。場所を特定できなければ正常な設定へ戻し、再現可能な情報をサポートに渡してください。動的データを守る設計を強制キャッシュで覆わないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "購入と会員の流れを別に検収する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP RocketのWooCommerce資料によると、店舗設定から認識できるカート、決済、アカウントの各ページとWooCommerce REST APIは自動的にキャッシュから除外されます。基本構成には役立ちますが、独自の欲しい物リスト、地域別価格、会員部品まで互換とは限らず、実際に検証する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト商品とアカウントを使い、数量変更、カートの内容、フォームのエラー表示、会員データを確かめます。決済を検証するなら提供会社のテスト環境と既存の検収方法を使用し、速度テストのために実取引を作らないでください。コンテンツの更新後は公開ページに正しい版が届くか確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に改善前後の計測値、機能、保守コストを比較します。有効な設定、除外、残した理由、次回のプラグインやテーマ更新時の確認項目を記録します。次の管理者に分かる状態が望ましく、全設定の有効化や導入後の満点を約束する必要はありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-performance-plugins/diagram-1-ja.svg",
+          "alt": "役割の整理、テスト基準、一項目ずつの調整、機能と速度の確認後の採用を示す四段階の図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "設定ごとに目的を定め、機能と計測の両方で検収する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "先に決める分担",
+            "検収の要点"
+          ],
+          "rows": [
+            [
+              "ページキャッシュ",
+              "ホストまたは主な高速化ツール",
+              "更新と個別データが正しい"
+            ],
+            [
+              "画像処理",
+              "圧縮と遅延読み込みの担当",
+              "鮮明さと表示のタイミング"
+            ],
+            [
+              "CSS最適化",
+              "二つのツールによる重複を避ける",
+              "モバイル、ポップアップ、展開状態"
+            ],
+            [
+              "JavaScript最適化",
+              "互換性に沿って読み込みと実行を調整",
+              "ボタン、フォーム、応答"
+            ],
+            [
+              "テストモード",
+              "通常URLとテストURLの動作を確認",
+              "本番適用前に試験設定を整理"
+            ]
+          ],
+          "caption": "機能で分担を決め、ツールの数を最適化の度合いとしない。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "点数より先に機能を検収する",
+          "text": "報告書の点が改善してもメニュー、フォーム、購入が壊れていれば未完了です。変更前後の設定を残し、必要な機能を復旧してから最適化範囲を再び絞ります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトとCDNのキャッシュの分担を整理する",
+              "kind": "life",
+              "slug": "website-cache-cdn"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "同じ条件で速度レポートを読む",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトをバックアップして復元を準備する",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Rocketの設定に関するベストプラクティス",
+          "url": "https://docs.wp-rocket.me/article/1291-find-the-best-settings-for-your-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocketでページを除外する範囲",
+          "url": "https://docs.wp-rocket.me/article/54-exclude-pages-from-the-cache",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP RocketとWooCommerce",
+          "url": "https://docs.wp-rocket.me/article/1491-using-wp-rocket-on-your-woocommerce-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPackの初期設定とモード",
+          "url": "https://support.nitropack.io/en/articles/10521601-how-to-set-up-nitropack",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPackのTest Modeの動作",
+          "url": "https://support.nitropack.io/en/articles/8390292-test-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPackと他のキャッシュプラグイン",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPackで表示が崩れた場合の調査",
+          "url": "https://support.nitropack.io/en/articles/8390442-what-to-do-if-your-site-appears-broken",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 성능 플러그인 사용법: 캐시, 이미지와 기능 충돌",
+      "description": "WordPress 성능 플러그인은 사이트 현황에 맞춰 설정해야 하며 모든 옵션을 한꺼번에 켜서는 안 됩니다. 대만의 소규모 강좌·상품 사이트를 예로 들어 WP Rocket과 NitroPack의 설정 방식, 캐시와 이미지 처리의 역할 분담, CSS·JavaScript 최적화 충돌을 조사하는 방법을 설명합니다. 비교표, 단계별 작업, 자체 제작 도표를 통해 운영자가 측정 기준을 남기고 양식, 메뉴, 구매 흐름을 검증하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-performance-plugins/hero-ko.jpg",
+        "alt": "WordPress 성능 설정과 속도 확인을 나타내는 자체 제작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "속도를 개선해 홈페이지 점수가 올라도 모바일 메뉴가 열리지 않는다면 작업은 끝나지 않았습니다. 성능 플러그인은 일부 파일의 생성·로딩·실행 방식을 바꿉니다. 테마, 양식, 회원 기능, 호스팅 환경까지 함께 설정을 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구를 선택하기 전에 이미 켜진 기능을 정리하고 캐시, 이미지, 코드 자산을 누가 담당할지 정합니다. 작은 범위에서 설정을 단계적으로 추가하면 속도와 기능 변화의 원인을 추적할 수 있고 충돌 때 정상 상태로 돌아가기도 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "기존 도구를 조사해 같은 작업이 겹치지 않게 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "호스트 캐시, CDN, 이미지 플러그인, 페이지 빌더, 다른 성능 도구를 나열하고 각각 활성화된 기능을 기록합니다. 이름이 달라도 지연 로딩, CSS 또는 JavaScript를 동시에 처리할 수 있습니다. 호환성은 설치 개수보다 실제 옵션과 서비스 연동을 보고 판단합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack 공식 자료에 따르면 다른 도구가 페이지 캐시, 이미지 지연 로딩 또는 CSS／JavaScript 최적화를 동시에 켜면 NitroPack 기능이 작동하지 않을 수 있습니다. WP Rocket도 함께 사용하지 말라고 권장하는 도구로 명시되어 있습니다. 두 도구의 효과가 합쳐진다고 보고 동시에 켜지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일부 충돌은 특정 기능에만 해당합니다. 예를 들어 NitroPack의 Smush 호환성 자료는 이미지 플러그인 전체를 제거하기보다 Smush의 지연 로딩을 끄라고 안내합니다. 현재 문서를 기준으로 역할표를 만들고 테스트 환경에서 확인하세요. 호스트 내장 캐시는 서비스 업체의 연동 방법을 별도로 확인해야 하며 플러그인 중지 목록을 일률적으로 적용하면 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "기준과 복구 방법부터 마련하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "강좌를 소개하고 상품도 판매하는 사이트라면 홈페이지, 강좌 페이지, 상품 페이지, 문의 페이지, 구매 흐름을 대표 사례로 고릅니다. 현재 화면, 기능 결과, 같은 조건의 측정값, 플러그인과 테마 버전을 보관합니다. 기준이 없으면 뒤에 나타난 문제가 새 설정 때문인지 확인하기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트와 기존 설정을 백업하고 파일 처리 방식을 바꾸는 옵션은 테스트 복제본에서 먼저 검증합니다. 도구의 Test Mode를 사용한다면 일반 방문자에게 미치는 영향을 먼저 파악합니다. 테스트 모드는 별도의 데이터베이스 백업이 아니므로 복구 준비를 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "어떤 옵션을 끌지, 설정을 어떻게 복원할지, 최적화 파일 재생성이나 특정 캐시 삭제가 필요한지 적어 둡니다. 속도 측정과 기능 확인에서는 로그인 상태를 명시하세요. 관리자 화면은 정상이지만 일반 방문자가 다른 버전을 받을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "WP Rocket에서는 기능을 하나씩 추가하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket을 활성화하면 자동 기능과 기본 설정이 적용되지만 추가 옵션도 살펴야 합니다. 공식 설정 안내는 한 번에 기능 하나를 켜고 변경 후마다 로그아웃한 브라우저에서 주요 페이지를 확인하라고 권합니다. 일부 처리는 비동기이므로 저장 직후 판단하지 말고 결과물 완료를 기다려 비교하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "파일 최적화에는 미사용 CSS 제거, JavaScript 로딩 또는 실행 지연이 포함될 수 있고 미디어 기능에는 지연 로딩과 이미지 크기 등이 있습니다. 각 항목은 목적이 분명할 때만 다룹니다. 예를 들어 첫 화면 아래 이미지의 로딩 부담을 개선한 다음 다른 병목을 살핍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "특정 페이지를 제외하려면 문서에 따라 Advanced Rules의 Never Cache URL(s)에 해당 URL 또는 경로를 입력합니다. 이 제외는 페이지 캐시뿐 아니라 해당 페이지의 다른 최적화도 제외합니다. 호스트가 캐시를 직접 관리한다면 호스트 측 제외 규칙도 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "NitroPack에서는 모드 전환을 먼저 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack은 설정 수준이 다른 Standard, Medium, Strong, Ludicrous, Custom 모드를 제공합니다. 현재 공식 시작 문서는 Ludicrous가 기본값이라고 하지만 모든 사이트에 맞는다는 뜻은 아닙니다. 실제 계정 설정을 확인하고 기능 점검 결과에 맞춰 조정하세요. 모드 이름을 좇느라 레이아웃 이상을 무시하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Test Mode를 켜면 일반 URL은 NitroPack 최적화 없이 작동하고 시험자는 testnitro=1 "
+            },
+            {
+              "type": "text",
+              "text": "매개변수"
+            },
+            {
+              "type": "text",
+              "text": "가 포함된 URL로 최적화 버전을 볼 수 있습니다. 같은 페이지를 비교할 수 있지만 원래 사이트가 NitroPack에 의존한다면 일반 방문자가 받는 상태도 바뀝니다. 적절한 시험 시간을 정하세요."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Test Mode를 끄면 남겨 둔 설정이 운영 URL에 적용됩니다. 채택하지 않을 변경은 먼저 되돌리세요. 모드를 바꾸거나 조정한 뒤에는 공식 절차대로 저장하고 캐시를 처리한 다음 다시 최적화될 때까지 기다립니다. 검수 기록에서 시험 매개변수 URL과 운영 URL을 구분하고 한쪽 결과로 다른 쪽을 승인하지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "기존 설정과 테스트 환경을 조사하고 복구 가능한 기준을 남깁니다.",
+            "개선할 문제 하나를 골라 해당 기능이나 모드로 작게 조정합니다.",
+            "최적화가 끝나면 화면, 메뉴, 양식, 구매 작업을 먼저 확인합니다.",
+            "같은 측정 조건에서 비교하고 채택 또는 복원한 뒤 다음 항목으로 갑니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "화면이 깨지거나 버튼이 작동하지 않으면 원인 좁히기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 설정 뒤에 강좌 목차 펼치기 버튼이 멈췄다면 최적화 버전과 미최적화 버전을 비교해 원래 기능이 정상인지 살핍니다. 이어 가장 최근에 추가한 관련 설정을 되돌려 문제가 사라지는지 확인합니다. 테마 교체, 플러그인 삭제, 전체 데이터 정리를 동시에 하면 복구되어도 원인을 알 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "미사용 CSS 제거는 뒤늦게 나타나는 메뉴, 팝업, 모바일 스타일에 영향을 줄 수 있습니다. JavaScript 로딩과 실행 변경은 상호작용 시점도 바꿀 수 있습니다. NitroPack 공식 문제 해결 자료는 최적화 모드를 낮추거나 관련 기능을 확인하도록 안내합니다. 문제 페이지, 기기, 재현 단계, 설정 차이를 함께 보관한 후 도구가 지원하는 제외 방법을 사용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "제외 범위는 문제 해결에 필요한 만큼으로 제한하고 이유를 기록합니다. 한 구성 요소가 충돌하면 해당 자산이나 페이지부터 조정하세요. 정확한 위치를 찾지 못하면 정상 설정으로 되돌리고 재현 가능한 자료를 지원팀에 전달합니다. 동적 데이터를 보호하는 설계를 강제 캐시로 덮어쓰지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "구매와 회원 흐름은 별도로 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket의 WooCommerce 문서에 따르면 상점 설정으로 인식되는 장바구니·결제·계정 페이지와 WooCommerce REST API는 캐시에서 자동 제외됩니다. 기본 구성에는 도움이 되지만 맞춤형 찜 목록, 지역별 가격, 회원 구성 요소까지 호환된다는 보장은 없으므로 실제 시험이 필요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시험 상품과 계정으로 수량 변경, 장바구니 내용, 양식 오류 안내, 회원 정보가 각각 올바른지 확인합니다. 결제를 검증한다면 제공 업체의 시험 환경과 기존 검수 방식을 사용하고 속도 시험 때문에 실제 거래를 만들지 마세요. 콘텐츠 변경 후에는 공개 페이지에 올바른 버전이 보이는지도 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 개선 전후의 측정값, 기능, 유지보수 비용을 비교합니다. 켠 설정, 제외한 설정, 그 이유, 다음 플러그인 또는 테마 업데이트 때 다시 볼 항목을 기록하세요. 다음 운영자도 이해할 수 있어야 하며 모든 옵션을 켜거나 설치 후 만점을 약속할 필요는 없습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-performance-plugins/diagram-1-ko.svg",
+          "alt": "기능 분담, 테스트 기준 마련, 항목별 조정, 기능과 속도 확인 뒤 채택 결정을 나타내는 네 단계 도표.",
+          "width": 1600,
+          "height": 900,
+          "caption": "각 설정에 목적을 부여하고 기능과 측정 결과를 함께 검수하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "작업",
+            "먼저 정할 담당",
+            "검수 중점"
+          ],
+          "rows": [
+            [
+              "페이지 캐시",
+              "호스트 또는 주 성능 도구",
+              "업데이트와 개인별 데이터 정확성"
+            ],
+            [
+              "이미지 처리",
+              "압축과 지연 로딩 담당",
+              "선명도와 나타나는 시점"
+            ],
+            [
+              "CSS 최적화",
+              "두 도구의 중복 처리를 피함",
+              "모바일, 팝업, 펼친 상태"
+            ],
+            [
+              "JavaScript 최적화",
+              "호환성에 맞춰 로딩과 실행 조정",
+              "버튼, 양식, 응답 결과"
+            ],
+            [
+              "테스트 모드",
+              "일반 URL과 시험 URL의 동작 확인",
+              "운영 적용 전 시험 설정 정리"
+            ]
+          ],
+          "caption": "기능별로 역할을 나누며 도구 개수를 최적화 수준으로 보지 마세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "점수보다 기능을 먼저 검수",
+          "text": "보고서 점수가 좋아져도 메뉴, 양식, 구매 흐름이 망가지면 완료가 아닙니다. 전후 설정을 보관하고 필요한 기능부터 복원한 뒤 최적화 범위를 다시 좁히세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트와 CDN의 캐시 역할 구분하기",
+              "kind": "life",
+              "slug": "website-cache-cdn"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "같은 조건에서 속도 보고서 읽기",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트 백업과 복원 준비하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Rocket 설정 모범 사례",
+          "url": "https://docs.wp-rocket.me/article/1291-find-the-best-settings-for-your-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket 페이지 제외 범위",
+          "url": "https://docs.wp-rocket.me/article/54-exclude-pages-from-the-cache",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket과 WooCommerce",
+          "url": "https://docs.wp-rocket.me/article/1491-using-wp-rocket-on-your-woocommerce-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 초기 설정과 모드",
+          "url": "https://support.nitropack.io/en/articles/10521601-how-to-set-up-nitropack",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack Test Mode 동작",
+          "url": "https://support.nitropack.io/en/articles/8390292-test-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack과 다른 캐시 플러그인",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 레이아웃 오류 해결",
+          "url": "https://support.nitropack.io/en/articles/8390442-what-to-do-if-your-site-appears-broken",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 加速插件怎么用：缓存、图片与功能冲突",
+      "description": "WordPress 加速插件要根据网站现状调整，不能把所有选项一次打开。本文以台湾小型课程和商品网站为例，梳理 WP Rocket、NitroPack 的设置思路、缓存与图片功能的分工，以及 CSS、JavaScript 优化发生冲突时的排查方法。比较表、分阶段操作与原创图解有助于管理员保留测量基准，并验证表单、菜单和购物流程。",
+      "hero": {
+        "src": "/guides/wordpress-performance-plugins/hero-zh-cn.jpg",
+        "alt": "原创 WordPress 加速设置示意图，连接设置项目与速度检查。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站加速后，首页分数变好，手机菜单却打不开，这还不能算完成。加速插件会改变部分文件的生成、加载或执行方式，因此必须连同主题、表单、会员功能及主机环境一起验证设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选择工具之前，先整理已启用的功能，再决定由谁负责缓存、图片和程序资源。通过小范围测试逐步添加设置，才能追溯速度与功能变化的来源，发生冲突时也更容易恢复正常。"
+        },
+        {
+          "type": "heading",
+          "text": "先盘点现有工具，避免重复工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出目前的主机缓存、CDN、图片插件、页面编辑器及其他加速工具，逐项记下已启用的功能。名称不同的插件仍可能同时处理延迟加载、CSS 或 JavaScript。判断兼容性要看具体选项和服务集成，而非只看安装数量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack 官方明确指出，另一套工具若同时启用页面缓存、图片延迟加载或 CSS／JavaScript 优化，可能妨碍其机制运作。文档也把 WP Rocket 列为不建议同时使用的工具，因此不应认为两者一起打开就能叠加效果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有些冲突仅涉及特定功能。例如 NitroPack 对 Smush 的兼容说明要求停用其延迟加载，并非一定要移除整个图片插件。依据现行文档制定分工表，再到测试环境确认；主机内建缓存则需查明服务商的集成方式，不能一律照插件停用清单处理。"
+        },
+        {
+          "type": "heading",
+          "text": "先建立基准与恢复方法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以同时提供课程介绍与商品销售的网站为例，选首页、课程页、商品页、联系页和购物流程作为代表。保存当前画面、功能结果、相同条件下的测量数据，再记录插件及主题版本。没有基准，后续问题就难以归因于新设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "备份网站和原有设置，优先在测试副本验证会改变文件处理方式的选项。若使用工具的 Test Mode，也要先弄清它对普通访客的影响。测试模式不是另一份数据库备份，不能取代必要的恢复准备。"
+        },
+        {
+          "type": "paragraph",
+          "text": "写下回退步骤，包括关闭哪个选项、如何恢复设置，以及是否需要重新生成优化文件或清除特定缓存。测速和功能检查应明确登录状态，避免管理员画面正常，却漏掉普通访客实际收到的版本。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 WP Rocket 时，每次只增加一项功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket 启用后会应用自动功能及默认设置，附加选项仍需检查。官方设置指南建议一次开启一个功能，每次更改后用未登录的浏览环境检查关键页面。部分处理是异步的，应等输出完成再比较，不能刚按保存就立即下结论。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文件优化可能包括移除未使用 CSS、延后 JavaScript 加载或执行；媒体功能则包括延迟加载和图片尺寸等。每次只处理有明确目的的项目，例如先减轻首屏以下图片的加载负担，再检查下一个瓶颈。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如需排除某个页面，按文档在 Advanced Rules 的 Never Cache URL(s) 输入对应网址或路径。注意这项排除也会关闭该页的其他优化，不只是页面缓存。部分主机自行管理缓存，还要在主机端同步确认排除规则。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 NitroPack 时，先弄清模式切换",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "NitroPack 提供 Standard、Medium、Strong、Ludicrous 和 Custom 等模式，对应不同程度的设置。官方入门文档目前记载默认是 Ludicrous，但默认值不一定适合每个网站。先看实际账户设置，依据功能检查结果调整，不必为了模式名称忽略版面异常。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "开启 Test Mode 时，普通网址以未启用 NitroPack 优化的方式运行；测试者可以使用带有 testnitro=1 "
+            },
+            {
+              "type": "text",
+              "text": "参数"
+            },
+            {
+              "type": "text",
+              "text": "的网址查看优化版本。这样可以比较同一页面，但如果原站已依赖 NitroPack 加速，开启此模式也会改变普通访客取得的优化状态，应安排合适的测试时段。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "关闭 Test Mode 后，保留下来的设置会应用到正式网址；不打算采用的更改须先恢复。切换模式或调整之后，依官方流程保存、处理缓存并等待重新优化。验收记录要区分测试参数网址和正式网址，不能用其中一份结果代替另一份签收。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "盘点现有设置并确认测试环境，保留可以恢复的基准。",
+            "选择一个待改善的问题，用对应功能或模式做小范围调整。",
+            "等待优化完成，先检查画面、菜单、表单与购物操作。",
+            "在相同测量条件下比较，确认采用或恢复后再处理下一项。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "出现破版或按钮失效，先缩小原因",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设课程大纲的展开按钮在新设置后失效，先比较优化与未优化版本，确认原有功能是否正常。接着恢复最近添加的相关设置，观察问题是否消失。不要同时换主题、删插件和清空全部数据，否则即使恢复正常也无法判断原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "移除未使用 CSS 可能影响稍后才出现的菜单、弹窗或手机样式；JavaScript 的加载和执行调整也可能改变交互时机。NitroPack 官方排错说明建议降低优化模式或检查相关功能。保存异常页面、设备、操作步骤和设置差异，再按工具支持的方式排除。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排除范围应以解决问题所需的最小范围为准，并记录理由。单个组件发生冲突时，先调整对应资源或页面；若无法准确定位，先恢复正常设置，向支持人员提供可复现资料。不要用强制缓存覆盖原本保护动态数据的设计。"
+        },
+        {
+          "type": "heading",
+          "text": "购物与会员流程要另外验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Rocket 的 WooCommerce 文档说明，按商店设置识别出的购物车、结账、账户页面和 WooCommerce REST API 会自动排除缓存。这有助于基本配置，但不保证客制愿望清单、地区定价或会员组件都兼容，仍需实际测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用测试商品与账户确认数量变化、购物车内容、表单错误提示和会员资料都正确。若验证付款流程，请使用服务商提供的测试环境和既有验收方法，不应为加速测试制造真实交易。内容更新后也要确认公开页面取得正确版本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后比较改善前后的测量数据、功能和维护成本。记录哪些设置已启用、哪些已排除、保留的理由，以及下次插件或主题更新要复查什么。可维护的结果应让下一位管理员看懂；不必打开全部选项，也不应承诺安装后一定满分。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-performance-plugins/diagram-1-zh-cn.svg",
+          "alt": "四个阶段分别表示确认功能分工、建立测试基准、逐项调整，以及检查功能与速度后决定是否采用。",
+          "width": 1600,
+          "height": 900,
+          "caption": "让每项设置都有明确目的，并通过功能与测量共同验收。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作项目",
+            "先决定的分工",
+            "验收重点"
+          ],
+          "rows": [
+            [
+              "页面缓存",
+              "主机或主要加速工具",
+              "更新与个性化数据正确"
+            ],
+            [
+              "图片处理",
+              "压缩与延迟加载各由谁负责",
+              "清晰度与出现时机"
+            ],
+            [
+              "CSS 优化",
+              "避免两套工具重复处理",
+              "手机、弹窗及展开状态"
+            ],
+            [
+              "JavaScript 优化",
+              "依兼容性调整加载与执行",
+              "按钮、表单与响应结果"
+            ],
+            [
+              "测试模式",
+              "确认普通网址与测试网址的行为",
+              "正式应用前清理试验设置"
+            ]
+          ],
+          "caption": "依功能建立分工，不把工具数量当作优化程度。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先验收功能，再签收分数",
+          "text": "报表改善，但菜单、表单或购物流程损坏，仍未完成。保存前后设置，先恢复必要功能，再重新缩小优化范围。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "厘清网站与 CDN 缓存分工",
+              "kind": "life",
+              "slug": "website-cache-cdn"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在一致条件下阅读速度报表",
+              "kind": "life",
+              "slug": "pagespeed-performance-review"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "备份网站并准备恢复",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Rocket 设置最佳做法",
+          "url": "https://docs.wp-rocket.me/article/1291-find-the-best-settings-for-your-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket 页面排除范围",
+          "url": "https://docs.wp-rocket.me/article/54-exclude-pages-from-the-cache",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Rocket 与 WooCommerce",
+          "url": "https://docs.wp-rocket.me/article/1491-using-wp-rocket-on-your-woocommerce-site",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 初始设置与模式",
+          "url": "https://support.nitropack.io/en/articles/10521601-how-to-set-up-nitropack",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack Test Mode 行为",
+          "url": "https://support.nitropack.io/en/articles/8390292-test-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 与其他缓存插件",
+          "url": "https://support.nitropack.io/en/articles/8390263-using-nitropack-and-another-page-caching-plugin-simultaneously",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NitroPack 页面异常排查",
+          "url": "https://support.nitropack.io/en/articles/8390442-what-to-do-if-your-site-appears-broken",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
