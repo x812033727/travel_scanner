@@ -7,11 +7,12 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import {
   control, finalApproved, isBlocked, type LocaleChoice, LOCALE_PARTS, LOCALES, mp4Retired, needsOwner, partStateLabel, type Project,
-  type ProjectSummary, type PublishState, publishState, REFRESH_MS, readyToUpload, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
+  type ProjectSummary, type PublishState, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
   useRefresh, useWhen,
 } from "@/components/admin-video-review-card";
-import { AdminVideoSeries } from "@/components/admin-video-series";
+import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
+import { DiscussionThread, scriptSubject } from "@/components/admin-video-thread";
 import { YouTubeSyncCard } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
@@ -178,6 +179,27 @@ function PublishPill({ project }: { project: ProjectSummary }) {
   return state ? <AdminStatusPill status={PUBLISH_TONES[state]}>{t(`publishStates.${state}`)}</AdminStatusPill> : null;
 }
 
+/**
+ * A one-off episode's series (docs/videos/DRAMA-FLOW.md, section 2): its story bible is the one
+ * document, shown on the episode's page above the gates, with its discussion. The server knows a
+ * one-off by its series' kind, not by its slug (the owner may pick one), so every drama episode's
+ * series is read; a long series never has a bible document (its first document is the setting book)
+ * and shows nothing here.
+ */
+function OneOffBible({ seriesSlug, canManage, onChanged }: { seriesSlug: string; canManage: boolean; onChanged: () => void }) {
+  const t = useTranslations("admin.videoSeries");
+  const [series, setSeries] = useState<Series | null>(null);
+  const load = useCallback(() => {
+    api<Series>(`/admin/video-automation/series/${seriesSlug}`).then((value) => setSeries(value)).catch(() => setSeries(null));
+  }, [seriesSlug]);
+  useRefresh(load);
+  const bible = series?.docs?.find((doc) => doc.kind === "bible");
+  if (bible) return <DocPanel slug={seriesSlug} doc={bible} canManage={canManage} onChanged={() => { load(); onChanged(); }} />;
+  // A one-off whose worker has not written the bible yet: say so instead of showing nothing.
+  if (series?.kind === "one-off") return <p className="text-sm text-[var(--muted)]">{t("bibleEmpty")}</p>;
+  return null;
+}
+
 function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
@@ -191,6 +213,11 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   const live = project?.reviews.filter((review) => review.status === "pending") ?? [];
   const past = project?.reviews.filter((review) => review.status !== "pending") ?? [];
   const dropped = Boolean(project?.dropped_at);
+  // A drama episode's screenplay has a thread on its series (docs/videos/DRAMA-FLOW.md, section 3);
+  // the live card takes the owner's lines, an approved one in the history keeps them as a record.
+  const discussion = (review: Review) => (review.gate === "script" && project?.series_slug && project.episode_number && (review.status === "pending" || review.status === "approved")
+    ? <DiscussionThread seriesSlug={project.series_slug} subject={scriptSubject(project.episode_number)} canManage={manage.allowed && !dropped} readOnly={review.status !== "pending"} />
+    : undefined);
   const retired = project ? mp4Retired(project) : false;
   const state = project ? publishState(project) : null;
   // The owner may upload the final cut as private as soon as the upload confirmation is approved;
@@ -214,6 +241,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
           {project.dropped_note && <span className="block whitespace-pre-wrap">{project.dropped_note}</span>}
         </p>}
       </header>
+      {project.series_slug && <OneOffBible seriesSlug={project.series_slug} canManage={manage.allowed && !dropped} onChanged={load} />}
       {project.checklist.length > 0 && <section aria-label={t("checklist")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
         <p className="font-bold">{t("checklist")}</p>
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
@@ -222,9 +250,9 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
       {project.youtube_video_id && !dropped && <YouTubeSyncCard slug={slug} project={project} canManage={manage.allowed} onSynced={load} />}
       {!dropped && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
-      {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} />)}
+      {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} discussion={discussion(review)} />)}
       {past.length > 0 && <details className="grid gap-4" open={readyToUpload(project)}><summary className="cursor-pointer font-bold">{t("history")}</summary>
-        <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} />)}</div>
+        <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} discussion={discussion(review)} />)}</div>
       </details>}
       {manage.allowed && !dropped && !project.youtube_video_id && <DropVideo slug={slug} onDropped={load} />}
     </>}

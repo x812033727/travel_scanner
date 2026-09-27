@@ -2,7 +2,7 @@
 
 import { CheckCircle2, Copy, Download, XCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
+import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { AdminStatusPill } from "@/components/admin-ui";
 import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
@@ -639,8 +639,12 @@ function LanguagesBody({ slug, review }: { slug: string; review: Review }) {
   </div>;
 }
 
-/** One review of one gate: its body, and the owner's approve or reject with a note. */
-export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false }: { slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean }) {
+/**
+ * One review of one gate: its body, and the owner's approve or reject with a note. `discussion` is
+ * the thread the page attaches under a drama's script gate (docs/videos/DRAMA-FLOW.md, section 3);
+ * the page knows the series and the episode, this card does not.
+ */
+export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false, discussion }: { slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean; discussion?: ReactNode }) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const [choice, setChoice] = useState("");
@@ -685,6 +689,7 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
       {review.gate === "publish" && <PublishBody slug={slug} review={review} mp4Gone={mp4Gone} />}
       {(review.gate === "languages" || review.gate === "dubs") && <LanguagesBody slug={slug} review={review} />}
     </div>
+    {discussion && <div className="mt-4">{discussion}</div>}
     {pending ? <div className="mt-5 grid gap-3 border-t border-[var(--line)] pt-4">
       <label className="grid gap-2 text-sm font-semibold">{t("note")}
         <textarea className={control} rows={3} value={note} disabled={!canManage || busy} placeholder={t("notePlaceholder")} onChange={(event) => setNote(event.target.value)} />

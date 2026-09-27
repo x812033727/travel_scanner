@@ -2249,7 +2249,7 @@
     "drama": "AI 漫剧",
     "spend": "媒体花费 US${usd}（{seconds} 片段秒）",
     "newDrama": "新的漫剧",
-    "newDramaHelp": "写下故事前提（或填一篇站上文章的 slug 改编）、选风格与长度。主机上的工人会先做它再做排程草稿；大纲、角色设定图、旁白、分镜、成片都在这一页等你决定。漫剧设置要先开启「AI 漫剧」。",
+    "newDramaHelp": "写下故事前提（或填一篇站上文章的 slug 改编）、选风格与长度。送出后就是一部只有一集的作品：工人先写故事圣经给你讨论、核准，再写剧本；之后的关卡都在那一集的视频页。漫剧设置要先开启「AI 漫剧」。",
     "premise": "故事前提（必填）",
     "premisePlaceholder": "谁想要什么、什么挡在前面、结局怎样。公有领域的传说或原创故事。",
     "workingTitle": "暂定标题（选填）",
@@ -2588,12 +2588,14 @@
     "saving": "保存中…",
     "statuses": {
       "setting": "设定集",
+      "bible": "故事圣经",
       "outline": "总纲",
       "active": "制作中",
       "paused": "已暂停",
       "finished": "已完结"
     },
     "docsPending": "{count} 份等你核准",
+    "messagesPending": "{count} 则等模型回复",
     "progress": "{done}/{total} 集 · {chapters} 篇",
     "spend": "US${usd} · 片段 {seconds} 秒",
     "minutesEach": "每集 {minutes} 分钟",
@@ -2607,10 +2609,12 @@
     "nextForced": "下一集不等上一集上架就会开始。",
     "docsTitle": "文件",
     "docsEmpty": "工人下一轮会写设定集。",
+    "bibleEmpty": "工人下一轮会写故事圣经。",
     "docKinds": {
       "setting": "设定集",
       "outline": "总纲",
-      "chapter": "篇章细纲"
+      "chapter": "篇章细纲",
+      "bible": "故事圣经"
     },
     "chapterN": "第 {n} 篇细纲",
     "version": "第 {n} 版",
@@ -2631,6 +2635,25 @@
     "saveApprove": "保存并核准",
     "saveReview": "保存为待审",
     "editError": "没有保存：{message}",
+    "thread": {
+      "title": "讨论",
+      "empty": "还没有讨论。问模型问题或说要改什么；它的回复与改出的新版本都留在这里。",
+      "authors": {
+        "owner": "站主",
+        "planner": "企划",
+        "writer": "撰稿"
+      },
+      "aboutVersion": "对第 {n} 版",
+      "aboutScript": "对剧本 {hash}",
+      "waiting": "等模型回复",
+      "closed": "已核准：这条讨论串只留记录，不再接受新消息。",
+      "input": "给模型的话",
+      "placeholder": "例如：第二幕为什么要死一个人？把师兄改成沉默寡言。",
+      "send": "送出",
+      "sending": "送出中…",
+      "sendError": "没有送出：{message}",
+      "loadError": "讨论读不到：{message}"
+    },
     "beats": {
       "episode": "集",
       "title": "标题",
@@ -2666,6 +2689,7 @@
     "skip": "跳过",
     "skipConfirm": "跳过第 {n} 集？作品会直接做下一集。",
     "oneOffTitle": "单集漫剧",
+    "oneOff": "单集",
     "openDramaSettings": "前往漫剧设置"
   }
 }

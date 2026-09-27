@@ -2249,7 +2249,7 @@
     "drama": "AI drama",
     "spend": "Media spend US${usd} ({seconds} clip seconds)",
     "newDrama": "New drama episode",
-    "newDramaHelp": "Write the premise (or name a site article to adapt), pick a style and a length. The worker on the host plans it before any scheduled draft, and you choose the outline, the character sheets, the narration, the storyboard and the final cut here as it goes. The AI drama route must be on in the drama settings.",
+    "newDramaHelp": "Write the premise (or name a site article to adapt), pick a style and a length. It becomes a one-episode series: the worker writes its story bible for you to discuss and approve, then the screenplay; the episode's page holds the gates after that. The AI drama route must be on in the drama settings.",
     "premise": "Premise (required)",
     "premisePlaceholder": "Who wants what, what stands in the way, how it ends. A public-domain tale or an original story.",
     "workingTitle": "Working title (optional)",
@@ -2588,12 +2588,14 @@
     "saving": "Saving…",
     "statuses": {
       "setting": "Setting book",
+      "bible": "Story bible",
       "outline": "Outline",
       "active": "In the making",
       "paused": "Paused",
       "finished": "Finished"
     },
     "docsPending": "{count} to approve",
+    "messagesPending": "{count} waiting for the model",
     "progress": "{done}/{total} episodes · {chapters} chapters",
     "spend": "US${usd} · {seconds} clip seconds",
     "minutesEach": "{minutes} min each",
@@ -2607,10 +2609,12 @@
     "nextForced": "The next episode starts without waiting for the previous one.",
     "docsTitle": "Documents",
     "docsEmpty": "The worker writes the setting book on its next round.",
+    "bibleEmpty": "The worker writes the story bible on its next round.",
     "docKinds": {
       "setting": "Setting book",
       "outline": "Series outline",
-      "chapter": "Chapter outline"
+      "chapter": "Chapter outline",
+      "bible": "Story bible"
     },
     "chapterN": "Chapter {n} outline",
     "version": "version {n}",
@@ -2631,6 +2635,25 @@
     "saveApprove": "Save and approve",
     "saveReview": "Save as waiting",
     "editError": "Not saved: {message}",
+    "thread": {
+      "title": "Discussion",
+      "empty": "Nothing said yet. Ask the model a question or tell it what to change; its answers and the versions it writes stay here.",
+      "authors": {
+        "owner": "Owner",
+        "planner": "Planner",
+        "writer": "Writer"
+      },
+      "aboutVersion": "about version {n}",
+      "aboutScript": "about screenplay {hash}",
+      "waiting": "Waiting for the model",
+      "closed": "Approved: this thread stays as a record and takes no new lines.",
+      "input": "Your line to the model",
+      "placeholder": "For example: why does someone have to die in act two? Make the elder brother a man of few words.",
+      "send": "Send",
+      "sending": "Sending…",
+      "sendError": "Not sent: {message}",
+      "loadError": "The discussion could not be loaded: {message}"
+    },
     "beats": {
       "episode": "Ep.",
       "title": "Title",
@@ -2666,6 +2689,7 @@
     "skip": "Skip",
     "skipConfirm": "Skip episode {n}? The series moves on without it.",
     "oneOffTitle": "One-off episodes",
+    "oneOff": "One-off",
     "openDramaSettings": "Open the drama settings"
   }
 }

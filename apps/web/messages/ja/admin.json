@@ -2249,7 +2249,7 @@
     "drama": "AI ドラマ",
     "spend": "メディア費用 US${usd}（クリップ {seconds} 秒）",
     "newDrama": "新しいドラマ",
-    "newDramaHelp": "あらすじ（またはサイト記事のスラッグ）を書き、スタイルと長さを選びます。ホストのワーカーは定期ドラフトより先にこれを企画し、アウトライン、設定画、ナレーション、絵コンテ、最終カットはこのページで決めます。ドラマの設定で「AI ドラマ」をオンにしておいてください。",
+    "newDramaHelp": "あらすじ（またはサイト記事のスラッグ）を書き、スタイルと長さを選びます。送信すると 1 話だけの作品になります。ワーカーがまずストーリーバイブルを書き、あなたが議論して承認したら脚本を書きます。以降の関門はそのエピソードの動画ページにあります。ドラマの設定で「AI ドラマ」をオンにしておいてください。",
     "premise": "あらすじ（必須）",
     "premisePlaceholder": "誰が何を望み、何が立ちはだかり、どう終わるか。パブリックドメインの伝承か創作。",
     "workingTitle": "仮タイトル（任意）",
@@ -2588,12 +2588,14 @@
     "saving": "保存中…",
     "statuses": {
       "setting": "設定集",
+      "bible": "ストーリーバイブル",
       "outline": "総綱",
       "active": "制作中",
       "paused": "一時停止",
       "finished": "完結"
     },
     "docsPending": "{count} 件が承認待ち",
+    "messagesPending": "{count} 件がモデルの返答待ち",
     "progress": "{done}/{total} 話 · {chapters} 章",
     "spend": "US${usd} · クリップ {seconds} 秒",
     "minutesEach": "1 話 {minutes} 分",
@@ -2607,10 +2609,12 @@
     "nextForced": "次の話は前の話の公開を待たずに始まります。",
     "docsTitle": "文書",
     "docsEmpty": "ワーカーが次の周回で設定集を書きます。",
+    "bibleEmpty": "ワーカーが次の周回でストーリーバイブルを書きます。",
     "docKinds": {
       "setting": "設定集",
       "outline": "総綱",
-      "chapter": "章の細綱"
+      "chapter": "章の細綱",
+      "bible": "ストーリーバイブル"
     },
     "chapterN": "第 {n} 章の細綱",
     "version": "第 {n} 版",
@@ -2631,6 +2635,25 @@
     "saveApprove": "保存して承認",
     "saveReview": "判断待ちとして保存",
     "editError": "保存できませんでした：{message}",
+    "thread": {
+      "title": "ディスカッション",
+      "empty": "まだ発言はありません。モデルに質問するか、変えたい点を伝えてください。返答と書き直した新版はここに残ります。",
+      "authors": {
+        "owner": "オーナー",
+        "planner": "企画",
+        "writer": "脚本"
+      },
+      "aboutVersion": "第 {n} 版について",
+      "aboutScript": "脚本 {hash} について",
+      "waiting": "モデルの返答待ち",
+      "closed": "承認済み：このスレッドは記録として残り、新しい発言は受け付けません。",
+      "input": "モデルへの一言",
+      "placeholder": "例：第二幕で誰かが死ぬ必要があるのはなぜ？ 兄弟子を寡黙な人物にして。",
+      "send": "送信",
+      "sending": "送信中…",
+      "sendError": "送信できませんでした：{message}",
+      "loadError": "ディスカッションを読み込めません：{message}"
+    },
     "beats": {
       "episode": "話",
       "title": "タイトル",
@@ -2666,6 +2689,7 @@
     "skip": "スキップ",
     "skipConfirm": "第 {n} 話をスキップしますか？作品は次の話に進みます。",
     "oneOffTitle": "単発エピソード",
+    "oneOff": "単発",
     "openDramaSettings": "ドラマの設定を開く"
   }
 }
