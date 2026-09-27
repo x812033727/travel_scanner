@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-video-drama-room-withdraw-a-one
 title: Video drama room: withdraw a one-off before the worker starts it
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-fable-5-1-video-languages
+claimed_at: 2026-09-27T14:06:11Z
 created_at: 2026-09-27T13:54:14Z
 completed_at:
 branch:
