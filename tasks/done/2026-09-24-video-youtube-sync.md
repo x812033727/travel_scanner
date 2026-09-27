@@ -1,13 +1,13 @@
 ---
 id: 2026-09-24-video-youtube-sync
 title: 影片產線 T8：網站用 YouTube API 補齊五語系中繼資料、CC、縮圖，並依站主選的時間排程
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5-5-youtube-link
 claimed_at: 2026-09-27T09:35:33Z
 created_at: 2026-09-24T00:41:17Z
-completed_at:
+completed_at: 2026-09-27T10:57:36Z
 branch: claude/youtube-account-linking-9c99d3
 depends_on:
   - 2026-09-26-video-hands-off-web
