@@ -59,12 +59,6 @@ const prompts = [
   { stage: "writer", format: "slides", variant: "", slug: "ai-model-choice", instructions: "You are the writer.", sent_at: "2026-09-26T16:00:00Z" },
 ];
 
-// The shared part's YouTube card reads the channel's state; the settings tests leave it unlinked.
-const connection = {
-  configured: false, connected: false, channel_id: null, channel_title: null, connected_at: null,
-  redirect_uri: "https://mokaair.com/api/travel/admin/video-youtube/connection/callback", scope: "https://www.googleapis.com/auth/youtube.force-ssl",
-};
-
 /** A merge the way the API answers a partial save: the sent fields over the stored ones, drama field by field. */
 function merged(body: Record<string, unknown>) {
   const { drama, ...rest } = body as { drama?: Record<string, unknown> };
@@ -75,7 +69,6 @@ function stubFetch() {
   const puts: unknown[] = [];
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
     if (String(input).endsWith("/api/travel/admin/video-automation/prompts")) return Promise.resolve(Response.json({ prompts }));
-    if (String(input).endsWith("/api/travel/admin/video-youtube/connection")) return Promise.resolve(Response.json(connection));
     expect(String(input)).toContain("/api/travel/admin/video-automation/settings");
     if (init?.method === "PUT") {
       const body = JSON.parse(String(init.body));
@@ -158,9 +151,6 @@ describe("AdminVideoSettings", () => {
     expect(screen.getByText(/API 已用 1,500 \/ 20,000,000 個 token/)).toBeTruthy();
     expect(screen.getByText(/呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
     expect(screen.queryByRole("checkbox", { name: "自動產生草稿" })).toBeNull();
-    // The YouTube channel card sits on the shared part, unlinked here.
-    const youtube = await screen.findByRole("region", { name: "YouTube 頻道" });
-    expect(within(youtube).getByRole("button", { name: "連結 YouTube 頻道" })).toHaveProperty("disabled", true);
     fireEvent.click(screen.getByRole("button", { name: "儲存共用設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     expect(puts[0]).toEqual({ channel_stance: "1. 先把帳算清楚再花錢", topic_avoid: ["Stocks", "Elections"], monthly_token_budget_millions: 30 });

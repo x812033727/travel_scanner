@@ -567,10 +567,6 @@
       "label": "Gemini 내레이션 월간 글자 수 한도",
       "help": "채널 음성이 Gemini(예: Sulafat)일 때 한 달에 보낼 수 있는 최대 글자 수입니다. UTC 월 기준으로 세며, 넘으면 보내지 않고 거부합니다. 기본값 300,000(10분 영상 약 100편), 0은 세기만 하고 제한하지 않습니다."
     },
-    "youtube_oauth_client_id": {
-      "label": "YouTube OAuth 클라이언트 ID",
-      "help": "Google Cloud → API 및 서비스 → 사용자 인증 정보 → 웹 애플리케이션 유형의 OAuth 2.0 클라이언트. 리디렉션 URI는 ‘영상 검토 › 설정 › 공통’의 YouTube 카드에 표시되는 주소. 동의 화면을 프로덕션으로 게시하지 않으면 리프레시 토큰이 7일 뒤 만료됩니다."
-    },
     "jev_daily_call_budget": {
       "label": "Jev 하루 호출 횟수",
       "help": "뉴스 자동화, 명소 소개의 Jev 섀도 평가, 내레이션 검사가 함께 쓰는 하루 한도로, UTC 날짜 기준으로 셉니다. 다 쓰면 그날은 Jev를 더 호출하지 않습니다. 기본값 200."
@@ -1542,10 +1538,6 @@
     "azure_speech_key": {
       "label": "Speech 키",
       "help": "Azure 포털 → Speech 리소스 → 키 및 엔드포인트의 “키 1”. 서버에만 저장되며 동영상 도구로 보내지 않습니다."
-    },
-    "youtube_oauth_client_secret": {
-      "label": "YouTube OAuth 클라이언트 비밀",
-      "help": "같은 클라이언트의 비밀. 서버에만 저장되며, 소유자의 동의로 받은 리프레시 토큰은 따로 암호화해 보관합니다."
     }
   },
   "settingsPanel": {
@@ -2209,27 +2201,6 @@
       "published": "게시됨"
     },
     "scheduleWaits": "게시 예약은 언어가 끝난 뒤에 보내집니다.",
-    "youtubeSyncTitle": "YouTube에 보낸 것",
-    "youtubeSyncHelp": "주소를 붙이면 사이트가 선택한 언어의 제목과 설명, 자막, 썸네일을 채웁니다. 게시 시각은 언어가 모두 끝난 뒤에 보냅니다. 더빙은 여전히 Studio에서 직접 올려야 합니다.",
-    "youtubeSyncNone": "아직 보낸 것이 없습니다.",
-    "youtubeSyncOk": "보냄",
-    "youtubeSyncFailed": "일부 보내지 못함",
-    "youtubeSyncAt": "마지막 전송 {time} ({reason})",
-    "youtubeSyncReasons": {
-      "linked": "주소를 붙인 뒤",
-      "languages": "언어 묶음이 도착한 뒤",
-      "manual": "직접 다시 보냄"
-    },
-    "youtubeSyncSteps": {
-      "video": "제목과 설명",
-      "schedule": "게시 시각",
-      "captions": "자막",
-      "thumbnail": "썸네일"
-    },
-    "youtubeSyncScheduled": "YouTube에 {time} 공개로 예약됨",
-    "youtubeSyncRetry": "YouTube에 다시 보내기",
-    "youtubeSyncQueued": "대기열에 넣었습니다. 몇 초 뒤 이 페이지가 새로 고쳐집니다.",
-    "youtubeSyncError": "대기열에 넣지 못했습니다: {message}",
     "locales": {
       "en": "영어",
       "ja": "일본어",
@@ -2524,22 +2495,7 @@
     "flowTitle": "횟수 한도",
     "seriesTitle": "시리즈",
     "seriesHelp": "장편 시리즈(docs/videos/SERIES.md)의 속도: 동시에 만드는 회차 수, 다음 장을 기획하는 시점, 되돌린 문서를 몇 번 다시 쓰고 나서 당신을 기다릴지.",
-    "dramaGatesHelp": "YouTube 업로드와 공개 시각은 언제나 당신이 정합니다. 대본은 기본으로 먼저 보여 주며, 끄면 자동 승인됩니다. 설정화·내레이션·스토리보드·최종본에는 각각 스위치가 있고, 끈 관문은 예전처럼 당신을 기다립니다.",
-    "youtubeTitle": "YouTube 채널",
-    "youtubeHelp": "Studio에 비공개로 올리고 주소를 붙이면 사이트가 YouTube API로 선택한 언어의 제목과 설명, 자막, 썸네일을 채우고, 언어가 모두 끝나면 게시 시각을 보냅니다. youtube.force-ssl 권한 하나만 요청하며, 리프레시 토큰은 서버에만 저장되고 다시 표시되지 않습니다.",
-    "youtubeNotConfigured": "먼저 공급자 카드에 YouTube OAuth 클라이언트 ID와 비밀(Google Cloud 웹 애플리케이션 클라이언트, 리디렉션 URI는 아래 것, 동의 화면은 프로덕션으로 게시)을 채워 주세요:",
-    "youtubeProviderCard": "Azure 음성(영상 내레이션) 카드",
-    "youtubeRedirectUri": "리디렉션 URI",
-    "youtubeConnectedPill": "연결됨",
-    "youtubeNotConnectedPill": "연결 안 됨",
-    "youtubeConnected": "{channel}, {time} 연결",
-    "youtubeNotConnected": "누르면 Google 동의 화면으로 가고, 동의하면 여기로 돌아옵니다.",
-    "youtubeConnect": "YouTube 채널 연결",
-    "youtubeRevoke": "연결 해제",
-    "youtubeRevokeConfirm": "해제하면 사이트가 정보를 채우거나 예약할 수 없고 다시 연결해야 합니다. 해제할까요?",
-    "youtubeJustConnected": "연결이 끝났습니다.",
-    "youtubeError": "연결이 끝나지 않았습니다: {code}",
-    "youtubeOwnerOnly": "연결과 해제는 사이트 소유자만 할 수 있습니다: 소유자의 Google 계정입니다."
+    "dramaGatesHelp": "YouTube 업로드와 공개 시각은 언제나 당신이 정합니다. 대본은 기본으로 먼저 보여 주며, 끄면 자동 승인됩니다. 설정화·내레이션·스토리보드·최종본에는 각각 스위치가 있고, 끈 관문은 예전처럼 당신을 기다립니다."
   },
   "videoSeries": {
     "listTitle": "작품",

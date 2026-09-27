@@ -264,7 +264,6 @@ def _summary(
         "locales_decided_at": project.locales_decided_at,
         "languages": states,
         "ready_to_upload": ready_to_upload(project, publish_approved_at, states),
-        "youtube_sync": project.youtube_sync,
         "dub_locales": [locale for locale, choice in choices.items() if choice.dub],
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,

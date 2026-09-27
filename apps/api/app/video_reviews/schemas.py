@@ -192,9 +192,6 @@ class ProjectSummary(BaseModel):
     locales_decided_at: datetime | None = None
     languages: dict[DubLocale, dict[LocalePart, LanguagePartOut]] = Field(default_factory=dict)
     ready_to_upload: bool = False
-    # What the site last sent to YouTube for this video and how each step went
-    # (docs/videos/HANDS-OFF.md §YouTube API 第一步; app.video_youtube.schemas.SyncRecord).
-    youtube_sync: dict[str, Any] | None = None
     # The languages with a dub track chosen, for a page from before the language panel.
     dub_locales: list[DubLocale] = Field(default_factory=list)
     # The series this video is an episode of, if any (docs/videos/SERIES.md).

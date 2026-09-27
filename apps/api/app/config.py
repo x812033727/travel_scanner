@@ -533,13 +533,6 @@ class Settings(BaseSettings):
     # stored.
     azure_speech_region: str | None = Field(default=None, pattern=r"^[a-z][a-z0-9]{1,31}$")
     azure_speech_key: str | None = None
-    # The OAuth client (a Google Cloud "web application" client) the site publishes videos
-    # through: after the owner uploads a cut in Studio, the site adds the titles, descriptions,
-    # captions and thumbnail and schedules it with the YouTube Data API
-    # (docs/videos/HANDS-OFF.md §YouTube API 第一步). The refresh token the owner's consent
-    # gives is kept encrypted in video_youtube_channel, never in a setting.
-    youtube_oauth_client_id: str | None = None
-    youtube_oauth_client_secret: str | None = None
 
     @field_validator("azure_speech_region", mode="before")
     @classmethod

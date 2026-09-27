@@ -567,10 +567,6 @@
       "label": "Gemini ナレーションの月間文字数上限",
       "help": "チャンネルの声が Gemini（例：Sulafat）の場合に、1 か月に送信できる文字数の上限です。UTC の月単位で数え、超えると送信せずに拒否します。既定値は 300,000（10 分の動画約 100 本分）、0 は数えるだけで制限しません。"
     },
-    "youtube_oauth_client_id": {
-      "label": "YouTube OAuth クライアント ID",
-      "help": "Google Cloud → API とサービス → 認証情報 → ウェブアプリケーション種別の OAuth 2.0 クライアント。リダイレクト URI は「動画レビュー › 設定 › 共通」の YouTube カードに表示される URL。同意画面は本番公開にしないとリフレッシュトークンが 7 日で失効します。"
-    },
     "jev_daily_call_budget": {
       "label": "Jev の 1 日あたり呼び出し回数",
       "help": "ニュース自動化、スポット紹介の Jev シャドー評価、ナレーション検査で共有する 1 日の上限です。UTC の日単位で数え、使い切るとその日は Jev を呼び出しません。既定値は 200。"
@@ -1542,10 +1538,6 @@
     "azure_speech_key": {
       "label": "Speech キー",
       "help": "Azure ポータル → Speech リソース → キーとエンドポイントの「キー 1」。サーバーにだけ保存され、動画ツールには送られません。"
-    },
-    "youtube_oauth_client_secret": {
-      "label": "YouTube OAuth クライアント シークレット",
-      "help": "同じクライアントのシークレット。サーバーにのみ保存され、オーナーの同意で得たリフレッシュトークンは別に暗号化して保管します。"
     }
   },
   "settingsPanel": {
@@ -2209,27 +2201,6 @@
       "published": "公開済み"
     },
     "scheduleWaits": "公開予約は言語が出来上がってから送られます。",
-    "youtubeSyncTitle": "YouTube に送ったもの",
-    "youtubeSyncHelp": "URL を貼ると、サイトが選んだ言語のタイトルと説明、字幕、サムネイルを補います。公開時刻は言語がすべて出来上がってから送られます。吹き替えは引き続き Studio でアップロードしてください。",
-    "youtubeSyncNone": "まだ送っていません。",
-    "youtubeSyncOk": "送信済み",
-    "youtubeSyncFailed": "一部送れませんでした",
-    "youtubeSyncAt": "最終送信 {time}（{reason}）",
-    "youtubeSyncReasons": {
-      "linked": "URL を貼った後",
-      "languages": "言語の一括分が届いた後",
-      "manual": "手動で再送"
-    },
-    "youtubeSyncSteps": {
-      "video": "タイトルと説明",
-      "schedule": "公開時刻",
-      "captions": "字幕",
-      "thumbnail": "サムネイル"
-    },
-    "youtubeSyncScheduled": "YouTube で {time} の公開を予約済み",
-    "youtubeSyncRetry": "YouTube に再送",
-    "youtubeSyncQueued": "キューに入れました。数秒後にこのページが更新されます。",
-    "youtubeSyncError": "キューに入りませんでした：{message}",
     "locales": {
       "en": "英語",
       "ja": "日本語",
@@ -2524,22 +2495,7 @@
     "flowTitle": "回数の上限",
     "seriesTitle": "シリーズ",
     "seriesHelp": "長編シリーズ（docs/videos/SERIES.md）のペース：同時に作る話数、次の章を企画するタイミング、差し戻した文書を何回書き直してから待つか。",
-    "dramaGatesHelp": "YouTube へのアップロードと公開時刻は常にあなたが決めます。脚本は初期設定であなたに見せ、切ると自動承認になります。設定画・ナレーション・絵コンテ・完成版にはそれぞれスイッチがあり、切った関門はこれまでどおりあなたを待ちます。",
-    "youtubeTitle": "YouTube チャンネル",
-    "youtubeHelp": "Studio で非公開としてアップロードし、URL を貼ると、サイトが YouTube API で選んだ言語のタイトルと説明、字幕、サムネイルを補い、言語がすべて出来上がったところで公開時刻を送ります。求める権限は youtube.force-ssl のみで、リフレッシュトークンはサーバーに保存され、二度と表示されません。",
-    "youtubeNotConfigured": "まずプロバイダーカードに YouTube OAuth クライアント ID とシークレット（Google Cloud のウェブアプリケーション クライアント。リダイレクト URI は下のもの、同意画面は本番公開に）を入れてください：",
-    "youtubeProviderCard": "Azure 音声（動画ナレーション）カード",
-    "youtubeRedirectUri": "リダイレクト URI",
-    "youtubeConnectedPill": "連携済み",
-    "youtubeNotConnectedPill": "未連携",
-    "youtubeConnected": "{channel}、{time} に連携",
-    "youtubeNotConnected": "押すと Google の同意画面に移り、同意後ここに戻ります。",
-    "youtubeConnect": "YouTube チャンネルを連携",
-    "youtubeRevoke": "連携を解除",
-    "youtubeRevokeConfirm": "解除するとサイトは情報の補完も公開予約もできなくなり、再連携が必要です。解除しますか？",
-    "youtubeJustConnected": "連携が完了しました。",
-    "youtubeError": "連携が完了しませんでした：{code}",
-    "youtubeOwnerOnly": "連携と解除はサイトオーナーのみ：オーナー自身の Google アカウントです。"
+    "dramaGatesHelp": "YouTube へのアップロードと公開時刻は常にあなたが決めます。脚本は初期設定であなたに見せ、切ると自動承認になります。設定画・ナレーション・絵コンテ・完成版にはそれぞれスイッチがあり、切った関門はこれまでどおりあなたを待ちます。"
   },
   "videoSeries": {
     "listTitle": "作品",

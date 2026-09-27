@@ -892,19 +892,6 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
 ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         **OAUTH_ERROR_DETAILS["en"],
-        "video_youtube_not_configured": (
-            "Fill in the YouTube OAuth client id and secret on the provider card first."
-        ),
-        "video_youtube_state_invalid": (
-            "This YouTube link attempt expired or did not start here. Press connect again."
-        ),
-        "video_youtube_state_other_user": (
-            "This YouTube link attempt was started by another account."
-        ),
-        "video_youtube_state_unavailable": "The verification service is temporarily unavailable.",
-        "video_youtube_token_unreadable": (
-            "The stored YouTube authorization cannot be read. Connect the channel again."
-        ),
         "catalog_enrichment_nothing_pending": "No pending merchants match the enrichment request.",
         "catalog_source_untrusted": (
             "The listing source must be on a trusted tourism or government host."
@@ -1064,19 +1051,6 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         **OAUTH_ERROR_DETAILS["ja"],
-        "video_youtube_not_configured": (
-            "先にプロバイダーカードで YouTube OAuth のクライアント ID と"
-            "シークレットを入力してください。"
-        ),
-        "video_youtube_state_invalid": (
-            "この YouTube 連携は期限切れか、ここから開始されたものではありません。"
-            "もう一度連携を押してください。"
-        ),
-        "video_youtube_state_other_user": "この YouTube 連携は別のアカウントが開始したものです。",
-        "video_youtube_state_unavailable": "認証サービスが一時的に利用できません。",
-        "video_youtube_token_unreadable": (
-            "保存されている YouTube の認可を読み取れません。チャンネルを再度連携してください。"
-        ),
         "catalog_enrichment_nothing_pending": "補完対象の審査待ち店舗がありません。",
         "catalog_source_untrusted": (
             "掲載元は信頼できる観光局または行政機関のホストである必要があります。"
@@ -1236,17 +1210,6 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         **OAUTH_ERROR_DETAILS["ko"],
-        "video_youtube_not_configured": (
-            "먼저 공급자 카드에 YouTube OAuth 클라이언트 ID와 시크릿을 입력하세요."
-        ),
-        "video_youtube_state_invalid": (
-            "이 YouTube 연결은 만료되었거나 여기서 시작된 것이 아닙니다. 연결을 다시 눌러 주세요."
-        ),
-        "video_youtube_state_other_user": "이 YouTube 연결은 다른 계정이 시작했습니다.",
-        "video_youtube_state_unavailable": "인증 서비스를 일시적으로 사용할 수 없습니다.",
-        "video_youtube_token_unreadable": (
-            "저장된 YouTube 인증을 읽을 수 없습니다. 채널을 다시 연결하세요."
-        ),
         "catalog_enrichment_nothing_pending": "보완할 심사 대기 가게가 없습니다.",
         "catalog_source_untrusted": (
             "등록 출처는 신뢰할 수 있는 관광청 또는 정부 호스트여야 합니다."
@@ -1445,13 +1408,6 @@ ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         **OAUTH_ERROR_DETAILS["zh-CN"],
-        "video_youtube_not_configured": "请先在供应商卡填写 YouTube OAuth 客户端 ID 与密钥。",
-        "video_youtube_state_invalid": (
-            "这次 YouTube 连接已过期或不是从这里发起的，请再按一次连接。"
-        ),
-        "video_youtube_state_other_user": "这次 YouTube 连接是别的账号发起的。",
-        "video_youtube_state_unavailable": "验证服务暂时无法使用。",
-        "video_youtube_token_unreadable": "存下来的 YouTube 授权读不出来，请重新连接频道。",
         "catalog_enrichment_nothing_pending": "目前没有符合条件的待审店家。",
         "catalog_source_untrusted": "旅游局来源必须是可信的官方或政府主机。",
         "catalog_scope_invalid": "审核范围不正确，请选择景点或美食。",
