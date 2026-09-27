@@ -1,0 +1,601 @@
+{
+  "title": "AI Agent vs Chatbot: A Real Trip Planning Task",
+  "description": "A chat reply is not the same as a finished task. Follow a half-day Taipei itinerary built from public information, see how a lookup changes the next step, and learn how to check the handoff. The demonstration lookup was performed on September 27, 2026. Check the museum's latest notice before visiting.",
+  "tags": [
+    "AI agent",
+    "chatbot",
+    "AI basics",
+    "trip planning"
+  ],
+  "chapters": {
+    "hook": "Can It Finish the Task?",
+    "pretty-answer": "A Good Reply Does Not Finish the Task",
+    "task-spec": "Define the Task",
+    "first-rule": "The Monday Exception",
+    "fixed-flow": "When an Agent Helps",
+    "task-recipe": "Try a Small Task"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "019d22d659e4",
+      "pretty-answer": "049b54c3877f",
+      "task-spec": "d60c0144db14",
+      "first-rule": "2cb186e4296c",
+      "fixed-flow": "d41643fb5fa2",
+      "task-recipe": "cc0cdaaf637f"
+    },
+    "title": "17720e2d50c2",
+    "description": "51c42d16c866",
+    "tags": "ac86e99c508c"
+  },
+  "lines": {
+    "ag001": {
+      "source_hash": "dcfa7b731fe4",
+      "text": "It says it planned your trip. Did it check the facts?"
+    },
+    "ag002": {
+      "source_hash": "3016fb48cffc",
+      "text": "A Monday museum visit makes the difference clear."
+    },
+    "ag003": {
+      "source_hash": "41ffc3c696ac",
+      "text": "By the end, you will have a task checklist you can use."
+    },
+    "ag004": {
+      "source_hash": "c63d26579600",
+      "text": "Here is the common version: you ask one question and get a list."
+    },
+    "ag005": {
+      "source_hash": "c6c1559089b6",
+      "text": "It may read well, yet never check the opening days."
+    },
+    "ag006": {
+      "source_hash": "591ab0b7c884",
+      "text": "This is a teaching example, not footage of any product."
+    },
+    "ag007": {
+      "source_hash": "5965470e0284",
+      "text": "It offers ideas, but there is no itinerary we can verify yet."
+    },
+    "ag008": {
+      "source_hash": "09a4ab84685f",
+      "text": "With a chat reply, you still take the next step yourself."
+    },
+    "ag009": {
+      "source_hash": "bd9592a3d803",
+      "text": "A fixed workflow follows preset steps, one by one."
+    },
+    "ag010": {
+      "source_hash": "e79b623798e9",
+      "text": "An agent uses tool results to decide what to do next."
+    },
+    "ag011": {
+      "source_hash": "1aedb235ed9d",
+      "text": "None is always better. It depends on the job."
+    },
+    "ag079": {
+      "source_hash": "f846507b33e0",
+      "text": "For example, you prepare the same table with the same fields each month."
+    },
+    "ag080": {
+      "source_hash": "8f62e063dcdc",
+      "text": "A program with preset rules may produce that report more reliably."
+    },
+    "ag081": {
+      "source_hash": "ba5210509222",
+      "text": "Do not make it guess at every small task just because agents are popular."
+    },
+    "ag082": {
+      "source_hash": "bc49c07b92c7",
+      "text": "First ask whether the path changes, then decide if you need flexibility."
+    },
+    "ag111": {
+      "source_hash": "ced5d7db9d32",
+      "text": "Without a browsing tool, an assistant cannot read a new museum notice."
+    },
+    "ag112": {
+      "source_hash": "9ef76185b98b",
+      "text": "It can suggest a route, but the opening day still needs checking."
+    },
+    "ag113": {
+      "source_hash": "1bb69a0ed0aa",
+      "text": "That is a limit of its tools, not how smart it sounds."
+    },
+    "ag114": {
+      "source_hash": "1eac86d88606",
+      "text": "Before choosing a tool, check what it can read and do."
+    },
+    "ag012": {
+      "source_hash": "c173fe79513f",
+      "text": "A chat box does not mean the system can only chat."
+    },
+    "ag013": {
+      "source_hash": "aeed4df49018",
+      "text": "And calling it an agent does not prove it finished the job."
+    },
+    "ag014": {
+      "source_hash": "1a026815b568",
+      "text": "Look at which tools it used and what results it received."
+    },
+    "ag015": {
+      "source_hash": "3e14fba67465",
+      "text": "Then ask whether those results changed what it did next."
+    },
+    "ag083": {
+      "source_hash": "a7474c704217",
+      "text": "Saying it checked is not evidence by itself."
+    },
+    "ag084": {
+      "source_hash": "d5c22535ab31",
+      "text": "Ideally, you can see which page it read and what it found."
+    },
+    "ag085": {
+      "source_hash": "45b28d1687fb",
+      "text": "Then see whether that result changed the draft."
+    },
+    "ag086": {
+      "source_hash": "d278d46bd937",
+      "text": "If not, you still have to finish the checking yourself."
+    },
+    "ag016": {
+      "source_hash": "1b865a2ee125",
+      "text": "I will use a public-data task with no personal details."
+    },
+    "ag017": {
+      "source_hash": "9ea5aa55439d",
+      "text": "Plan a half-day museum walk near Taipei Main Station."
+    },
+    "ag018": {
+      "source_hash": "e165a69805c8",
+      "text": "The date is September 28, 2026."
+    },
+    "ag019": {
+      "source_hash": "de636fb1bb06",
+      "text": "Use only public official pages. No bookings or payments."
+    },
+    "ag115": {
+      "source_hash": "a91bbb7085e4",
+      "text": "Asking what is fun in Taipei is fine for inspiration."
+    },
+    "ag116": {
+      "source_hash": "7491818cc4f6",
+      "text": "For a usable itinerary, add a date and a clear area."
+    },
+    "ag117": {
+      "source_hash": "c9b885470018",
+      "text": "Also say which details need evidence."
+    },
+    "ag118": {
+      "source_hash": "1216d46dbbd0",
+      "text": "The clearer the task, the easier it is to judge completion."
+    },
+    "ag020": {
+      "source_hash": "8dbd1a0581dd",
+      "text": "Define done first, or a claim like planned it is hard to check."
+    },
+    "ag021": {
+      "source_hash": "dde31bc71cf2",
+      "text": "I want places, an order, and official opening evidence."
+    },
+    "ag022": {
+      "source_hash": "8efca501735f",
+      "text": "Mark transport and weather as unchecked if they were not verified."
+    },
+    "ag023": {
+      "source_hash": "4f837a0f0fca",
+      "text": "Those fields matter more than a confident tone."
+    },
+    "ag087": {
+      "source_hash": "809e6035a19d",
+      "text": "We do not need a real name, phone number, or hotel booking."
+    },
+    "ag088": {
+      "source_hash": "5bc0a940bce0",
+      "text": "A public date, place, and goal are enough to show the process."
+    },
+    "ag089": {
+      "source_hash": "c342f6df5b7b",
+      "text": "The agent also does not log in to a travel account."
+    },
+    "ag090": {
+      "source_hash": "027307703ea0",
+      "text": "A low-risk task makes its abilities easier to see."
+    },
+    "ag024": {
+      "source_hash": "3963c2df2320",
+      "text": "First, I open the museum hours page."
+    },
+    "ag025": {
+      "source_hash": "60e155abee9d",
+      "text": "The usual rule is clear: closed every Monday."
+    },
+    "ag026": {
+      "source_hash": "ec6b70f20398",
+      "text": "If we stop there, we would rule out this date."
+    },
+    "ag027": {
+      "source_hash": "58478a6ce748",
+      "text": "But the same page notes that it may open on public holidays."
+    },
+    "ag028": {
+      "source_hash": "5fd292a4e414",
+      "text": "That exception is where feedback matters."
+    },
+    "ag029": {
+      "source_hash": "6bcf85b5939a",
+      "text": "I did not just paste closed Monday into the answer."
+    },
+    "ag030": {
+      "source_hash": "007e75817a0d",
+      "text": "The exception sent me to the annual opening notice."
+    },
+    "ag031": {
+      "source_hash": "dc972e542c03",
+      "text": "This was a real lookup, not a model filling a gap from memory."
+    },
+    "ag119": {
+      "source_hash": "e41f36aa3446",
+      "text": "This is not an imagined agent flow."
+    },
+    "ag120": {
+      "source_hash": "dd3b20024e46",
+      "text": "During production, we opened the hours page, then the annual notice."
+    },
+    "ag121": {
+      "source_hash": "038f43e8dab6",
+      "text": "Both results appear in one table so you can check them."
+    },
+    "ag122": {
+      "source_hash": "f567f83e1bb9",
+      "text": "No button was pressed for a traveler, and no account was used."
+    },
+    "ag032": {
+      "source_hash": "705111503b52",
+      "text": "The annual notice does list this exact date."
+    },
+    "ag033": {
+      "source_hash": "26e814188158",
+      "text": "September 28 is a Monday, but it is open for Teachers' Day."
+    },
+    "ag034": {
+      "source_hash": "d9e07e15e0f8",
+      "text": "So the usual Monday closure does not apply that day."
+    },
+    "ag035": {
+      "source_hash": "de1b267fbfbc",
+      "text": "The screen quotes only the needed English line; the link is below."
+    },
+    "ag091": {
+      "source_hash": "1ff7f8fe38ac",
+      "text": "The usual rule and the holiday notice do not conflict."
+    },
+    "ag092": {
+      "source_hash": "6ec95e069bff",
+      "text": "One covers ordinary Mondays; the other names a specific date."
+    },
+    "ag093": {
+      "source_hash": "ea13645ba6d9",
+      "text": "Quoting only closed Monday would miss the exception."
+    },
+    "ag094": {
+      "source_hash": "c31a640b7084",
+      "text": "That is why your source must match the date you asked about."
+    },
+    "ag036": {
+      "source_hash": "1e65220dae36",
+      "text": "This is more than adding another link."
+    },
+    "ag037": {
+      "source_hash": "207d6e0c6c3d",
+      "text": "The new information changed the itinerary draft."
+    },
+    "ag038": {
+      "source_hash": "f8eb62bd56f8",
+      "text": "We were going to remove the museum; now we can keep it."
+    },
+    "ag039": {
+      "source_hash": "69733e853bcc",
+      "text": "That is what adapting to tool feedback means."
+    },
+    "ag123": {
+      "source_hash": "94064504146a",
+      "text": "There is another easy mistake here."
+    },
+    "ag124": {
+      "source_hash": "a0129fce1e30",
+      "text": "Open on September 28 does not mean open every Monday."
+    },
+    "ag125": {
+      "source_hash": "7b1fa3b56b4d",
+      "text": "The deliverable must name the date and museum, not just say Mondays work."
+    },
+    "ag126": {
+      "source_hash": "125d7819717d",
+      "text": "Travel details have exceptions like this. Check again before you go."
+    },
+    "ag040": {
+      "source_hash": "7c9342695c2f",
+      "text": "The deliverable is a draft you can check later."
+    },
+    "ag041": {
+      "source_hash": "8e0f76861fe9",
+      "text": "Taipei Main Station first, then the National Taiwan Museum's main building."
+    },
+    "ag042": {
+      "source_hash": "403381798aa1",
+      "text": "Next is 228 Peace Memorial Park, an outdoor stop nearby."
+    },
+    "ag043": {
+      "source_hash": "1a7c62f6334d",
+      "text": "This order is a draft, not a verified walking route."
+    },
+    "ag095": {
+      "source_hash": "b2aff1ee9447",
+      "text": "You can check this plan field by field."
+    },
+    "ag096": {
+      "source_hash": "d4ce62270288",
+      "text": "Check entry against the museum notice and location against its address."
+    },
+    "ag097": {
+      "source_hash": "b0948ef50ea1",
+      "text": "My sources do not establish walking time or weather."
+    },
+    "ag098": {
+      "source_hash": "1b9cc95d12a2",
+      "text": "Leave those blank instead of inventing neat numbers."
+    },
+    "ag127": {
+      "source_hash": "96e340f71d86",
+      "text": "Sort the agent output into three levels."
+    },
+    "ag128": {
+      "source_hash": "6f1abfcedc52",
+      "text": "For confirmed facts, include the original source."
+    },
+    "ag129": {
+      "source_hash": "8271f72d7403",
+      "text": "For inferences, clearly label the plan as a draft."
+    },
+    "ag130": {
+      "source_hash": "b53006e93b3d",
+      "text": "Put unknowns under to check, not under confirmed."
+    },
+    "ag044": {
+      "source_hash": "98b4ba16cadb",
+      "text": "A useful deliverable also says what was not done."
+    },
+    "ag045": {
+      "source_hash": "339f66936db2",
+      "text": "We did not time the walk or check the weather."
+    },
+    "ag046": {
+      "source_hash": "de0c983781a9",
+      "text": "We did not book tickets or make a payment."
+    },
+    "ag047": {
+      "source_hash": "db42f869cdb1",
+      "text": "Listing open checks is part of a good handoff."
+    },
+    "ag099": {
+      "source_hash": "36e4824720a5",
+      "text": "You do not need to repeat every step in the review."
+    },
+    "ag100": {
+      "source_hash": "fc6aa7fec4e5",
+      "text": "Spot-check the details that matter most, like the opening day."
+    },
+    "ag101": {
+      "source_hash": "d54da82b4068",
+      "text": "Make sure the museum, date, and source page really match."
+    },
+    "ag102": {
+      "source_hash": "488db468ee42",
+      "text": "Check the latest notice again before you leave."
+    },
+    "ag131": {
+      "source_hash": "335937567808",
+      "text": "The result should be usable by the next person."
+    },
+    "ag132": {
+      "source_hash": "f4111f9849fa",
+      "text": "Review the order, then the source for each stop."
+    },
+    "ag133": {
+      "source_hash": "9275ac19e68d",
+      "text": "Keep confirmed and pending items distinct."
+    },
+    "ag134": {
+      "source_hash": "2d26f8a8f6a0",
+      "text": "List the human next steps instead of just saying done."
+    },
+    "ag048": {
+      "source_hash": "3307570c98c5",
+      "text": "But a fixed workflow can check two pages too."
+    },
+    "ag049": {
+      "source_hash": "366367b7dbec",
+      "text": "Yes. With the exceptions built in, it can do that reliably."
+    },
+    "ag050": {
+      "source_hash": "f7466bc864ba",
+      "text": "An agent can choose its next step from the feedback it gets."
+    },
+    "ag051": {
+      "source_hash": "800ce03e7b31",
+      "text": "This is not a ranking of tools."
+    },
+    "ag103": {
+      "source_hash": "157040c17839",
+      "text": "You might say: my usual chat tool can open web pages too."
+    },
+    "ag104": {
+      "source_hash": "c47d7109d7b9",
+      "text": "Right, so the chat box does not define the category."
+    },
+    "ag105": {
+      "source_hash": "8140312510ce",
+      "text": "One tool search does not mean the whole task is automated."
+    },
+    "ag106": {
+      "source_hash": "fdf6d17f00f3",
+      "text": "See whether it keeps going, revises, and gives checkable results."
+    },
+    "ag135": {
+      "source_hash": "c929a27eb4b1",
+      "text": "Turning on an agent does not mean giving it every decision."
+    },
+    "ag136": {
+      "source_hash": "fe520d2d23f1",
+      "text": "You can first allow only reading and drafting."
+    },
+    "ag137": {
+      "source_hash": "e014ba9602c2",
+      "text": "Review the result before allowing any more actions."
+    },
+    "ag138": {
+      "source_hash": "ab3305e2d843",
+      "text": "Have it stop and ask before sending anything or spending money."
+    },
+    "ag052": {
+      "source_hash": "8011e592d9cd",
+      "text": "A model can request a lookup, but words alone do not grant access."
+    },
+    "ag053": {
+      "source_hash": "60c4168942a8",
+      "text": "Reading public pages here does not mean it can enter your account."
+    },
+    "ag054": {
+      "source_hash": "e65a75ae1645",
+      "text": "If it says booked but has no booking record, treat it as unfinished."
+    },
+    "ag055": {
+      "source_hash": "08a397ede1f8",
+      "text": "Check its words separately from the state of the outside world."
+    },
+    "ag056": {
+      "source_hash": "aecfc965de7f",
+      "text": "I ask three questions when I review the result."
+    },
+    "ag057": {
+      "source_hash": "2ec2a4e12ada",
+      "text": "First, did the tool actually retrieve information?"
+    },
+    "ag058": {
+      "source_hash": "a38cd9b7c7a3",
+      "text": "Second, did new information change the next step?"
+    },
+    "ag059": {
+      "source_hash": "e0e4d8053541",
+      "text": "Third, can I check the final deliverable item by item?"
+    },
+    "ag060": {
+      "source_hash": "136f58a06b75",
+      "text": "If the official page will not open, the agent should not guess the hours."
+    },
+    "ag061": {
+      "source_hash": "83eeb89056fc",
+      "text": "It should say what it found and which pages it could not read."
+    },
+    "ag062": {
+      "source_hash": "d5ea147f5ca0",
+      "text": "Then hand the unverified parts back to a person."
+    },
+    "ag063": {
+      "source_hash": "c2ebe69749f6",
+      "text": "A partial, honest result beats a polished wrong answer."
+    },
+    "ag107": {
+      "source_hash": "3cb93b3fb8d9",
+      "text": "A page the agent reads may contain instructions unrelated to the task."
+    },
+    "ag108": {
+      "source_hash": "19fdffbeaa72",
+      "text": "That is external data, and should not expand the authority you gave it."
+    },
+    "ag109": {
+      "source_hash": "cfd4e61fa995",
+      "text": "If you only allowed research, it should not make a payment."
+    },
+    "ag110": {
+      "source_hash": "9453765677fc",
+      "text": "A stopping point keeps you in control of the result."
+    },
+    "ag064": {
+      "source_hash": "c3188cb2e8ee",
+      "text": "Start with a small task whose result you can verify."
+    },
+    "ag065": {
+      "source_hash": "43bd5633ead6",
+      "text": "Write the goal and allowed sources, then set the boundaries."
+    },
+    "ag066": {
+      "source_hash": "22677874bd81",
+      "text": "Specify how to review it, such as a sourced to-do list."
+    },
+    "ag067": {
+      "source_hash": "f04f8177fb5d",
+      "text": "Mark gaps as pending rather than forcing a complete answer."
+    },
+    "ag139": {
+      "source_hash": "d3a494a36629",
+      "text": "If the task may lead to a booking, define an approval point first."
+    },
+    "ag140": {
+      "source_hash": "f22d38ee5411",
+      "text": "It can research and draft without waiting."
+    },
+    "ag141": {
+      "source_hash": "f0e46eba97fb",
+      "text": "Using an account, ordering, or paying needs a human decision first."
+    },
+    "ag142": {
+      "source_hash": "f326fca95b5a",
+      "text": "That tells the agent where to hand off instead of pushing through."
+    },
+    "ag068": {
+      "source_hash": "352396f27442",
+      "text": "This is easier to review than simply asking it to plan a trip."
+    },
+    "ag069": {
+      "source_hash": "d5c2d4d3bd50",
+      "text": "Ask it to use only official public pages and deliver a sourced draft."
+    },
+    "ag070": {
+      "source_hash": "6d1ace389579",
+      "text": "List what it could not verify. No booking or payment."
+    },
+    "ag071": {
+      "source_hash": "24f74db10c81",
+      "text": "You keep the final decision and know what to check yourself."
+    },
+    "ag072": {
+      "source_hash": "955eaec8a529",
+      "text": "The full agent guide and task method are linked first below."
+    },
+    "ag073": {
+      "source_hash": "b60013cb446d",
+      "text": "The article also separates chat replies, fixed flows, and agents."
+    },
+    "ag074": {
+      "source_hash": "b896d8409f38",
+      "text": "Compare it with your own tool and see what it actually does."
+    },
+    "ag075": {
+      "source_hash": "15582667072d",
+      "text": "Back to the opening: answering is not the same as finishing."
+    },
+    "ag076": {
+      "source_hash": "566f542ac5f8",
+      "text": "An agent adds value when real feedback guides its next step."
+    },
+    "ag077": {
+      "source_hash": "792dd8f18b2c",
+      "text": "It still needs to deliver a result you can check."
+    },
+    "ag078": {
+      "source_hash": "ed923a6fbe52",
+      "text": "Try the four-field task brief on one small job."
+    }
+  }
+}

@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-general-audience-ai-citation-checking-video
 title: General audience AI citation checking video
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-video-review
+claimed_at: 2026-09-27T15:48:03Z
 created_at: 2026-09-27T15:26:42Z
 completed_at:
 branch: codex/ai-general-videos
@@ -23,7 +23,7 @@ scope:
 ## Definition of done
 
 - [ ] 8–12 分鐘繁中影片、縮圖與五語字幕通過產線檢查，完整上傳包可交站主。
-- [ ] 示意回答與真實來源清楚標示，獨立查核完成。
+- [x] 示意回答與真實來源清楚標示，獨立查核完成。
 
 ## Steps
 
@@ -40,3 +40,6 @@ scope:
 示範錯誤句是編輯刻意製作，不宣稱為真實模型輸出。2026-09-27 已打開 Anthropic 官方 Reduce hallucinations 頁與 Building effective agents 頁。前者要求引用能回查，並說這些方法不能完全消除錯誤。
 
 文字包在 `docs/videos/ai-citation-check/`。`lint` 0 錯 0 警、預估 9.9 分鐘（143 句）；四語 `.todo.json` 已生成於 repo 外 `C:\Users\x8120\mokaair-work\videos\ai-citation-check\i18n\`。獨立 `verify-1.md`、大綱核准、翻譯審稿、TTS、成片及上傳包仍未完成；`status` 逐項顯示缺口。
+
+2026-09-27 獨立查核已寫入 `verify-1.md`：Anthropic 官方文件現頁 HTTP 200，必要短引文、限制與示意標示一致；`lint` 重跑為 0 錯 0 警。音訊、畫面、字幕與上架包仍待完成。
+2026-09-28：五語字幕經獨立交叉審稿；兩句顯示過快的英、日文字幕已縮短，五語 SRT 無速度警告。繁中旁白 10:22；36 張字卡與縮圖已目視檢查。成片、品管、審核與上架包仍待完成。

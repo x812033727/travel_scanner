@@ -1,0 +1,605 @@
+{
+  "title": "Can You Trust AI Citations? Catch Bad References in 3 Steps",
+  "description": "An official link can be real while the claim beside it is wrong. Follow a clearly labeled teaching example: open the link, compare the original wording, read the context, and correct the answer. The source was opened on September 27, 2026. Official pages may change; check them again before relying on a citation.",
+  "tags": [
+    "AI fact-checking",
+    "AI citations",
+    "source verification",
+    "prompting"
+  ],
+  "chapters": {
+    "hook": "A Link Still Needs Checking",
+    "mock-answer": "A Deliberately Wrong Answer",
+    "open-link": "Step 1: Open the Link",
+    "claim-split": "Step 2: Check Each Claim",
+    "context": "Step 3: Context and Date",
+    "corrected": "Fix the Answer"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "39311a9af8b0",
+      "mock-answer": "68c27064abb8",
+      "open-link": "a86d3b1e1ee8",
+      "claim-split": "2f9fa7e95999",
+      "context": "eac3207e691f",
+      "corrected": "31224e6eace0"
+    },
+    "title": "abcf653ffc32",
+    "description": "c50fa91fe14d",
+    "tags": "c7a4f69d87bb"
+  },
+  "lines": {
+    "ci001": {
+      "source_hash": "25c1a17bf8c7",
+      "text": "This answer links to an official page, but its conclusion says the opposite."
+    },
+    "ci002": {
+      "source_hash": "f4945290954c",
+      "text": "If you only check for a link, you might pass the mistake along."
+    },
+    "ci003": {
+      "source_hash": "c41bbb95cadf",
+      "text": "Let us break it down in three steps, then fix the answer."
+    },
+    "ci004": {
+      "source_hash": "e3bd46102c36",
+      "text": "First, this on-screen answer was deliberately written wrong for teaching."
+    },
+    "ci005": {
+      "source_hash": "1984786c0f60",
+      "text": "It is not output from any real model."
+    },
+    "ci006": {
+      "source_hash": "5c02b343fcf9",
+      "text": "False claim: the official guide says citations replace human fact-checking."
+    },
+    "ci007": {
+      "source_hash": "419800ec143e",
+      "text": "It even includes a real link to an official document."
+    },
+    "ci076": {
+      "source_hash": "6123ed24d7dd",
+      "text": "The mock answer helps you see exactly where the mistake is."
+    },
+    "ci077": {
+      "source_hash": "06cf8fe68b4e",
+      "text": "We are not claiming that a particular product actually said this."
+    },
+    "ci078": {
+      "source_hash": "1058748f3099",
+      "text": "The link is a real official document, and you can open it yourself."
+    },
+    "ci079": {
+      "source_hash": "bd322e8ce42b",
+      "text": "Each step will rely only on the original text we can read."
+    },
+    "ci008": {
+      "source_hash": "a1dcd12946b3",
+      "text": "This error is easy to miss because the URL really exists."
+    },
+    "ci009": {
+      "source_hash": "d2a528b5555f",
+      "text": "An official domain can make the adjacent claim feel true."
+    },
+    "ci010": {
+      "source_hash": "d531e2e2bee8",
+      "text": "But a working link only proves there is a page."
+    },
+    "ci011": {
+      "source_hash": "b4e9c085f28c",
+      "text": "It does not prove that page supports this conclusion."
+    },
+    "ci080": {
+      "source_hash": "e2d146cbf11b",
+      "text": "A source may point to the wrong page or be read too broadly."
+    },
+    "ci081": {
+      "source_hash": "8c2eb64add1a",
+      "text": "Worse, the information may have been right only in an older version."
+    },
+    "ci082": {
+      "source_hash": "547c7f565a7f",
+      "text": "So checking is more than picking a trustworthy-looking URL."
+    },
+    "ci083": {
+      "source_hash": "1bb1a310e845",
+      "text": "Match each specific claim to specific words in the source."
+    },
+    "ci012": {
+      "source_hash": "68c488ed84cb",
+      "text": "The three-step check asks three questions."
+    },
+    "ci013": {
+      "source_hash": "56761a3707e3",
+      "text": "First, does the link really lead to the original source?"
+    },
+    "ci014": {
+      "source_hash": "84b8c8c2c417",
+      "text": "Second, which claim does the original text actually support?"
+    },
+    "ci015": {
+      "source_hash": "2b1c61f96554",
+      "text": "Third, do the context or date change the meaning?"
+    },
+    "ci116": {
+      "source_hash": "7e34798cddd3",
+      "text": "You may not have time to check a long list of sources."
+    },
+    "ci117": {
+      "source_hash": "8668f602a43d",
+      "text": "Start with the claim most likely to affect a decision or cause harm."
+    },
+    "ci118": {
+      "source_hash": "834b2e7fe138",
+      "text": "If that claim fails, do not reuse the passage as written."
+    },
+    "ci119": {
+      "source_hash": "3ac79e984690",
+      "text": "Spend your limited time on the most important claim."
+    },
+    "ci016": {
+      "source_hash": "a45b66a49a96",
+      "text": "Step one is simple: actually open the link."
+    },
+    "ci017": {
+      "source_hash": "73c8d3389f95",
+      "text": "Check the domain, page title, and body text."
+    },
+    "ci018": {
+      "source_hash": "de08ab84057f",
+      "text": "A search snippet or reposted screenshot cannot replace the original."
+    },
+    "ci019": {
+      "source_hash": "a36348ef5d54",
+      "text": "Here we reached an official document, so step one passes."
+    },
+    "ci020": {
+      "source_hash": "9855cb54d783",
+      "text": "The page is about reducing errors in model outputs."
+    },
+    "ci021": {
+      "source_hash": "3611038de748",
+      "text": "The link opens and really does lead to an official document."
+    },
+    "ci022": {
+      "source_hash": "1eff760a506b",
+      "text": "But don't share it yet."
+    },
+    "ci023": {
+      "source_hash": "5558a302ebdc",
+      "text": "We have not checked what that page actually says."
+    },
+    "ci084": {
+      "source_hash": "8c84c8671741",
+      "text": "The snippet beside a search result is another summary."
+    },
+    "ci085": {
+      "source_hash": "6dcd55a0b88f",
+      "text": "A chat tool's description of a source is still its own wording."
+    },
+    "ci086": {
+      "source_hash": "aa01f113cc07",
+      "text": "Compare the claim with the relevant passage on the source page."
+    },
+    "ci087": {
+      "source_hash": "3e2c981173ea",
+      "text": "If you can read the full page, do not stop at a two-line snippet."
+    },
+    "ci120": {
+      "source_hash": "2bccb29feece",
+      "text": "Some links redirect to a homepage or newer guidance."
+    },
+    "ci121": {
+      "source_hash": "300d01dac8a9",
+      "text": "A page opening does not mean it is the original document."
+    },
+    "ci122": {
+      "source_hash": "3e3bd9f903c7",
+      "text": "Check the final URL and title, then make sure the text is readable."
+    },
+    "ci123": {
+      "source_hash": "45b36ea9eb88",
+      "text": "Only then have you completed step one."
+    },
+    "ci024": {
+      "source_hash": "314ac93c0499",
+      "text": "So far, we have shown that the source is real."
+    },
+    "ci025": {
+      "source_hash": "52b80b7e82aa",
+      "text": "We have not shown that the mock answer's conclusion is true."
+    },
+    "ci026": {
+      "source_hash": "17e77373318c",
+      "text": "Keep those separate or the check stops at the surface."
+    },
+    "ci027": {
+      "source_hash": "5a6c08a6828a",
+      "text": "Now turn the false sentence into a claim we can search for."
+    },
+    "ci028": {
+      "source_hash": "bafa02cc1f45",
+      "text": "The mock answer actually combines two claims."
+    },
+    "ci029": {
+      "source_hash": "fc24769aa039",
+      "text": "First, the official guidance recommends citing sources."
+    },
+    "ci030": {
+      "source_hash": "20542951c645",
+      "text": "Second, citing sources removes the need for human review."
+    },
+    "ci031": {
+      "source_hash": "b21a8e878436",
+      "text": "The first might be right. It does not make the second right too."
+    },
+    "ci088": {
+      "source_hash": "5017a605a863",
+      "text": "A long answer often bundles many claims together."
+    },
+    "ci089": {
+      "source_hash": "ce26a5eca6b1",
+      "text": "Split them into sentences to see which have evidence."
+    },
+    "ci090": {
+      "source_hash": "be8811fb7250",
+      "text": "For each, mark supported, contradicted, or not found."
+    },
+    "ci091": {
+      "source_hash": "cc912677f932",
+      "text": "Not found may mean the citation is wrong, not that you read too slowly."
+    },
+    "ci124": {
+      "source_hash": "7a142a429047",
+      "text": "A small citation at the end can make the whole paragraph look sourced."
+    },
+    "ci125": {
+      "source_hash": "364f944c15c1",
+      "text": "It may support only the first half."
+    },
+    "ci126": {
+      "source_hash": "415747452daa",
+      "text": "Split the clauses and find supporting text for each one."
+    },
+    "ci127": {
+      "source_hash": "0683c077389b",
+      "text": "Do not let one marker certify two different claims."
+    },
+    "ci032": {
+      "source_hash": "4890aae49797",
+      "text": "The guidance says sources make the answer easier to verify."
+    },
+    "ci033": {
+      "source_hash": "996ce93b3c55",
+      "text": "That means checkable, not guaranteed correct."
+    },
+    "ci034": {
+      "source_hash": "9b0205a85d3c",
+      "text": "It also recommends dropping claims you cannot support."
+    },
+    "ci035": {
+      "source_hash": "b958bf22c002",
+      "text": "So compare every sentence of the mock answer with the source."
+    },
+    "ci128": {
+      "source_hash": "b1d399f11d41",
+      "text": "A sourced answer is easier to check than one with no clues."
+    },
+    "ci129": {
+      "source_hash": "1eb6b5719eaf",
+      "text": "But you still need to open, read, and compare that source."
+    },
+    "ci130": {
+      "source_hash": "540d882f9b49",
+      "text": "A citation is a signpost to possible evidence."
+    },
+    "ci131": {
+      "source_hash": "5831973470d1",
+      "text": "A signpost is not the evidence itself, and it is no guarantee."
+    },
+    "ci036": {
+      "source_hash": "54d622fd2ae2",
+      "text": "The claim on the left has support; the one on the right does not."
+    },
+    "ci037": {
+      "source_hash": "778c972aa622",
+      "text": "The left-hand citation cannot certify the right-hand claim."
+    },
+    "ci038": {
+      "source_hash": "1f9f6217e4a9",
+      "text": "If no passage directly supports it, remove that second claim."
+    },
+    "ci039": {
+      "source_hash": "ecb0d6475647",
+      "text": "Do not just restate it more confidently."
+    },
+    "ci092": {
+      "source_hash": "189a43486891",
+      "text": "Ask for the exact passage in the original text."
+    },
+    "ci093": {
+      "source_hash": "3f2457e1cf13",
+      "text": "If you still cannot find it, remove that claim for now."
+    },
+    "ci094": {
+      "source_hash": "c7f4ceeacad5",
+      "text": "Do not force a similar sentence into place to keep the answer smooth."
+    },
+    "ci095": {
+      "source_hash": "5c847f410b07",
+      "text": "Missing evidence is a status worth stating clearly."
+    },
+    "ci040": {
+      "source_hash": "c8dd7526f21e",
+      "text": "You do not have to read every long document from start to finish."
+    },
+    "ci041": {
+      "source_hash": "e2db36894ae1",
+      "text": "First, pick the answer's most decision-changing sentence."
+    },
+    "ci042": {
+      "source_hash": "ac4cb65db420",
+      "text": "Find the relevant section, then read it and the surrounding lines."
+    },
+    "ci043": {
+      "source_hash": "818941f5b8c6",
+      "text": "If the answer is stronger than the source, pause."
+    },
+    "ci096": {
+      "source_hash": "8251f00d1d86",
+      "text": "A paraphrase need not use the source's exact words."
+    },
+    "ci097": {
+      "source_hash": "f55b1cde8201",
+      "text": "But checkable cannot quietly become guaranteed."
+    },
+    "ci098": {
+      "source_hash": "853faea642e6",
+      "text": "And drop unsupported claims cannot become no need to check."
+    },
+    "ci099": {
+      "source_hash": "382529e103ec",
+      "text": "That shift is exactly the error in our mock answer."
+    },
+    "ci132": {
+      "source_hash": "70d2ca8fcf13",
+      "text": "If the source says the opposite, the next move is simpler."
+    },
+    "ci133": {
+      "source_hash": "115cec521d8e",
+      "text": "Stop. Do not repost the original answer."
+    },
+    "ci134": {
+      "source_hash": "8a4c5e4cac57",
+      "text": "Note the conflict, then rewrite only what the source supports."
+    },
+    "ci135": {
+      "source_hash": "21af2b19ba8e",
+      "text": "If uncertainty remains, say it is not confirmed."
+    },
+    "ci044": {
+      "source_hash": "c3cd34204e05",
+      "text": "Step three: read the limits the source gives its own methods."
+    },
+    "ci045": {
+      "source_hash": "5239dfda186f",
+      "text": "This document says these methods can reduce errors."
+    },
+    "ci046": {
+      "source_hash": "a050fc10b44a",
+      "text": "It does not say errors disappear entirely."
+    },
+    "ci047": {
+      "source_hash": "d07af27507cb",
+      "text": "Check important information against the real situation."
+    },
+    "ci100": {
+      "source_hash": "06b2449b5d6e",
+      "text": "Before making a quote card, do not stop at one sentence."
+    },
+    "ci101": {
+      "source_hash": "b502f6c2e107",
+      "text": "The previous line may explain when it applies."
+    },
+    "ci102": {
+      "source_hash": "4c0c20f11afb",
+      "text": "The next line may state its limits."
+    },
+    "ci103": {
+      "source_hash": "81f558dac09d",
+      "text": "Cutting those conditions can mislead, even with a perfect quote."
+    },
+    "ci136": {
+      "source_hash": "9105c87d8209",
+      "text": "A useful trick is to notice how strong the source's wording is."
+    },
+    "ci137": {
+      "source_hash": "63d8e548f0ef",
+      "text": "If it says may, the answer cannot say always."
+    },
+    "ci138": {
+      "source_hash": "3945e9d47d4e",
+      "text": "A recommendation is not a guarantee."
+    },
+    "ci139": {
+      "source_hash": "e8629ad0122e",
+      "text": "If a condition applies only in some cases, keep that condition."
+    },
+    "ci048": {
+      "source_hash": "8b5fde377bb4",
+      "text": "A reversed claim does not require an entirely invented paragraph."
+    },
+    "ci049": {
+      "source_hash": "de3d4b95df9e",
+      "text": "It may simply change may into will."
+    },
+    "ci050": {
+      "source_hash": "b1e1f52b30e3",
+      "text": "Or turn reduce errors into eliminate errors."
+    },
+    "ci051": {
+      "source_hash": "185f7953f5d4",
+      "text": "When the wording grows stronger, look for the original limits."
+    },
+    "ci052": {
+      "source_hash": "31d34c56a27b",
+      "text": "The source's date also affects the answer."
+    },
+    "ci053": {
+      "source_hash": "224e481d5060",
+      "text": "An old article may have been right then but superseded now."
+    },
+    "ci054": {
+      "source_hash": "6183416ebd94",
+      "text": "Prices, features, and rules especially need a fresh official check."
+    },
+    "ci055": {
+      "source_hash": "ddfad4729082",
+      "text": "This demonstration reflects the date we opened the page."
+    },
+    "ci104": {
+      "source_hash": "2817490e8883",
+      "text": "A credible source must also be relevant to the present."
+    },
+    "ci105": {
+      "source_hash": "742e470ed2cb",
+      "text": "An old article may explain the past without guiding today's choice."
+    },
+    "ci106": {
+      "source_hash": "4c887f7a4b1d",
+      "text": "For changing rules, find the latest official notice."
+    },
+    "ci107": {
+      "source_hash": "19e6fcd93c8b",
+      "text": "If there is no update date, state that uncertainty too."
+    },
+    "ci140": {
+      "source_hash": "aeb72f783d55",
+      "text": "One official document may cover several different issues."
+    },
+    "ci141": {
+      "source_hash": "632bbfe4c72d",
+      "text": "A recent date still does not mean it supports every claim."
+    },
+    "ci142": {
+      "source_hash": "ae21cea4728f",
+      "text": "Bring the question back: which passage are you citing?"
+    },
+    "ci143": {
+      "source_hash": "97ec1fd7ca72",
+      "text": "Is that passage really about the point you want to repeat?"
+    },
+    "ci056": {
+      "source_hash": "39965d949758",
+      "text": "Now rewrite the mock answer to say only what the source supports."
+    },
+    "ci057": {
+      "source_hash": "8e0c219559f1",
+      "text": "Sources make its claims easier for you to check."
+    },
+    "ci058": {
+      "source_hash": "e2bd016d3107",
+      "text": "But citing a source does not guarantee correctness."
+    },
+    "ci059": {
+      "source_hash": "850f89b39c84",
+      "text": "For important details, go back to the original text yourself."
+    },
+    "ci108": {
+      "source_hash": "8c80f5906f9f",
+      "text": "Fixing an answer does not mean throwing all of it away."
+    },
+    "ci109": {
+      "source_hash": "16178362dbdb",
+      "text": "Keep the supported part and remove the unsupported guarantee."
+    },
+    "ci110": {
+      "source_hash": "0636407e1d93",
+      "text": "Then add back the limits stated in the official document."
+    },
+    "ci111": {
+      "source_hash": "a0a013a975d3",
+      "text": "The result is shorter but closer to the evidence."
+    },
+    "ci060": {
+      "source_hash": "89e0dc8fb3f0",
+      "text": "You can also make later checks easier when you ask the question."
+    },
+    "ci061": {
+      "source_hash": "11b3d3fdf94a",
+      "text": "Ask for a matching source beside each separate claim."
+    },
+    "ci062": {
+      "source_hash": "750f7a73d945",
+      "text": "If it cannot find a supporting passage, have it say so."
+    },
+    "ci063": {
+      "source_hash": "f69585122945",
+      "text": "That makes errors easier to spot, but you still need to check."
+    },
+    "ci064": {
+      "source_hash": "dbf3e5235e61",
+      "text": "Before sharing the next AI answer, pause for one minute."
+    },
+    "ci065": {
+      "source_hash": "8348189595d4",
+      "text": "Open the link and find the sentence it claims is supported."
+    },
+    "ci066": {
+      "source_hash": "f8cec6b463a0",
+      "text": "Read the surrounding text and check the page date."
+    },
+    "ci067": {
+      "source_hash": "663af31b0d1a",
+      "text": "If any step fails, do not pass on the original wording."
+    },
+    "ci112": {
+      "source_hash": "8876d40e7d9b",
+      "text": "Think of an answer you actually plan to share."
+    },
+    "ci113": {
+      "source_hash": "72c74e4e8bc9",
+      "text": "Pick the sentence that could most affect someone else's decision."
+    },
+    "ci114": {
+      "source_hash": "065d0640e36c",
+      "text": "Check link, source text, and context, then note what is missing."
+    },
+    "ci115": {
+      "source_hash": "f725d79e7393",
+      "text": "If the source falls short, use a qualified statement instead."
+    },
+    "ci068": {
+      "source_hash": "361b00ea8b3d",
+      "text": "The first link below is a beginner's guide to prompting."
+    },
+    "ci069": {
+      "source_hash": "5eceecb8863d",
+      "text": "It shows how to ask for sources and gaps, and let it say 'I don't know.'"
+    },
+    "ci070": {
+      "source_hash": "ea98b7e9de4b",
+      "text": "That makes later verification easier."
+    },
+    "ci071": {
+      "source_hash": "af1699faeb92",
+      "text": "You still have to read the source and decide whether to rely on it."
+    },
+    "ci072": {
+      "source_hash": "21b68057dd54",
+      "text": "Back to the opening: an official link can still be misused."
+    },
+    "ci073": {
+      "source_hash": "9a48c4f5031f",
+      "text": "It is a starting point for checking, not a guarantee."
+    },
+    "ci074": {
+      "source_hash": "97927f240c79",
+      "text": "Open the link, compare the text, and read the context to catch some errors."
+    },
+    "ci075": {
+      "source_hash": "7ab78b8d6914",
+      "text": "Try those steps on the next answer you want to share."
+    }
+  }
+}
