@@ -191,6 +191,32 @@ right; do not invent style changes.
 Return {"worksheet": <the worksheet with your fixes applied>, "fixes": ["<id>: <problem> → <fix>", …]}.`,
 };
 
+/**
+ * The listener's rewrite pass (docs/videos/HANDS-OFF.md §旁白), variant "rewrite": after the
+ * retakes are spent, the lines Jev still hears wrong are reworded for the voice, nothing else.
+ * The skill's reference text is .agents/skills/youtube-video/references/prompts/listener-rewrite.md;
+ * flow.mjs drops any answer that changes a number, a Latin word or a dictionary term (rewrite.mjs).
+ */
+export const LISTENER_REWRITE = `
+You rewrite a few narration lines of ONE zh-TW (Traditional Chinese, Taiwan) Mokaair video for a
+synthesized Taiwanese-Mandarin voice. Each entry of "lines" was retaken and Jev still heard it
+wrong: "text" is what the script says, "heard" is what the transcriber understood, "jev" is
+Jev's confidence that they say the same thing. Rewrite ONLY these sentences' wording so the
+voice reads them unambiguously: swap the word that gets misheard for a plainer one with the
+same meaning (on 2026-09-26 the fixes were 「和」→「跟」, a sentence-final 「答」→「回答」,
+「旗艦」→「旗艦模型」), split a run of same-sound characters, keep the sentence about as long.
+Keep every number, price, date and version exactly as written, keep every Latin-script word and
+every product or proper name spelled exactly the same ("lexicon" lists the dictionary's terms),
+keep the meaning; add no fact and no filler. Leave a line alone when "heard" already says the
+same thing in other characters. When "previous_problems" is present, the check refused those
+rewrites of yours last round for the reasons given; do not repeat them. Nobody's personal data
+anywhere.
+
+Answer with ONE JSON object and nothing else (no Markdown fence):
+{"lines": [{"id": "<line id>", "text": "<the rewritten line>"}]}, with only the lines you
+changed, or {"lines": []} when none should change.
+`.trim();
+
 const DRAMA_COMMON = `
 You work on ONE zh-TW (Traditional Chinese, Taiwan) episode of the Mokaair AI drama channel
 (docs/videos/DRAMA.md): AI-generated shots (a keyframe per shot, then image-to-video), a narrator
@@ -348,10 +374,11 @@ const STANCE_STAGES = new Set(["planner", "writer"]);
 /**
  * The stage's instructions for the format, then the channel's stance for the planner and the
  * writer (blank: nothing), then the owner's standing instructions (if any) last. A series
- * document or an episode stage (`variant`, docs/videos/SERIES.md) has its own text.
+ * document or an episode stage (`variant`, docs/videos/SERIES.md) and the listener's rewrite
+ * pass (variant "rewrite") have their own text, the same for both formats.
  */
 export function instructionsFor(stage, format = "slides", standing = "", variant = null, stance = "") {
-  const base = (variant && SERIES_INSTRUCTIONS[`${stage}:${variant}`]) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+  const base = (variant && VARIANT_INSTRUCTIONS[`${stage}:${variant}`]) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
   const parts = [base];
   const belief = typeof stance === "string" && STANCE_STAGES.has(stage) ? stance.trim() : "";
   if (belief) parts.push(`${STANCE_HEADING}\n${belief}`);
@@ -539,3 +566,6 @@ before it. Return {"recap": zh-TW, at most 150 characters, what happened and wha
 no adjectives, "state": {"characters": {<id>: <one line: where they are, what they know, what
 they carry>}, "mysteries": {<id>: "planted"|"advanced"|"revealed"}, "open_threads": [text]}}.`,
 };
+
+/** Every "<stage>:<variant>" text: the series documents and episode stages, and the listener's rewrite pass. */
+export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE };

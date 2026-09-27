@@ -366,13 +366,16 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     const file = path.join(workdir, ARTIFACTS.timeline);
     const timeline = readJson(file, null);
     const check = audioCheck(readJson(path.join(workdir, "review", "check.json"), null), readJson(path.join(workdir, "review", "check-flags.json"), null), timeline.lines.length);
+    // The lines the listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白), as the
+    // worker wrote them: [{ id, before, after, heard }]; the review card lists them.
+    const rewrites = readJson(path.join(workdir, "review", "rewrites.json"), []);
     const narration = await upload(request, slug, await preview(ctx, workdir, "narration", path.join(workdir, ARTIFACTS.narration)), "narration", "audio/mp4");
     const seconds = timeline.total_frames / timeline.fps;
     return {
       gate,
       content_sha256: await sha256File(file),
-      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句`,
-      payload: { duration_seconds: seconds, ...check },
+      summary: `旁白 ${formatClock(Math.round(seconds))}，${timeline.lines.length} 句；Jev 標記 ${check.check.flagged} 句${rewrites.length ? `；改寫 ${rewrites.length} 句` : ""}`,
+      payload: { duration_seconds: seconds, ...check, rewrites },
       files: [narration],
     };
   }
