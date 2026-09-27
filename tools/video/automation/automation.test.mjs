@@ -611,7 +611,8 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   };
   const request = { id: "6f1d2c3b-4a59-4e6f-8a7b-9c0d1e2f3a4b", premise: "精衛填海：炎帝最小的女兒在東海溺水，化成一隻鳥。", title: null, source_guide: null, style_preset: "cinematic-3d", target_minutes: 2, note: "旁白慢一點" };
   // One video at a time: the owner's request takes the place, so no scheduled draft starts beside it.
-  const site = fakeSite({ answers, settings: { drama: DRAMA_SETTINGS, max_waiting_drafts: 1 }, dramaRequests: [request] });
+  // 「劇本先給我看」 is off: the screenplay is approved by the settings, not read by the owner.
+  const site = fakeSite({ answers, settings: { drama: { ...DRAMA_SETTINGS, series_script_gate: false }, max_waiting_drafts: 1 }, dramaRequests: [request] });
   const clock = { now: Date.parse("2026-09-26T10:00:00Z") };
   const { ctx } = context(box, site.fetchImpl, clock);
   const workdir = path.join(box.work, slug);
@@ -706,6 +707,11 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   assert.match(site.calls.run.find((call) => call.stage === "verifier").instructions, /continuity checker/);
   assert.match(await automation.step(), /listener edit/);
   assert.match(site.calls.run.find((call) => call.stage === "listener").instructions, /"speaker"/);
+  // Every drama has the script gate (docs/videos/DRAMA-FLOW.md, section 2); with the switch off it is approved here.
+  assert.match(await automation.step(), /screenplay approved by the settings/);
+  assert.ok(existsSync(path.join(box.root, "docs", "videos", slug, "script.md")));
+  assert.ok(readApprovals(workdir).approvals.some((entry) => entry.gate === "script" && /依設定自動核准/.test(entry.note)));
+  assert.equal(site.reviewsOf(slug).filter((review) => review.gate === "script").length, 0, "nothing went to the owner");
 
   // look: the first run leaves 炎帝 without a passed sheet; the writer fixes the appearance; the second run passes.
   assert.match(await automation.step(), /look prompts fixed \(round 1\) for yandi; look runs again next/);

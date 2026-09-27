@@ -22,6 +22,7 @@ import { dramaBrief, dramaFixture, fixture, fixtureLexicon, sandbox } from "./fi
 import { lintVideo } from "./lint.mjs";
 import { atomicWrite } from "./paths.mjs";
 import { validateVideo } from "./schema.mjs";
+import { writeScreenplay } from "./screenplay.mjs";
 import { DRAMA_STEPS, loadProject, lookChosen, pipelineStatus, SLIDES_STEPS, stepsFor } from "./state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "./timeline.mjs";
 
@@ -189,14 +190,19 @@ test("lint wants the drama brief sections and warns about an emotion an Azure vo
 test("a drama's status walks the media steps in order, each bound to its hashes", async () => {
   const box = sandbox("fixture-drama", "drama");
   const status = () => pipelineStatus({ slug: box.slug, root: box.root, workdir: box.workdir });
-  assert.deepEqual(stepsFor(dramaFixture()), DRAMA_STEPS.filter((id) => id !== "script approved"), "a one-off drama has no script gate");
+  assert.deepEqual(stepsFor(dramaFixture()), DRAMA_STEPS, "every drama reads its screenplay before the sheets (docs/videos/DRAMA-FLOW.md)");
   assert.deepEqual(stepsFor({ ...dramaFixture(), series: { slug: "xianxia", episode: 1, chapter: 1 } }), DRAMA_STEPS);
+  assert.deepEqual(stepsFor({ ...dramaFixture(), music: undefined }), DRAMA_STEPS.filter((id) => id !== "music generated"));
   assert.equal(stepsFor(fixture()), SLIDES_STEPS);
   assert.deepEqual((await status()).steps.map((step) => step.id), stepsFor(dramaFixture()));
   const places = { docDir: box.dir, workdir: box.workdir };
   mkdirSync(box.workdir, { recursive: true });
   await approve({ gate: "outline", ...places });
   writeFileSync(path.join(box.dir, "verify-1.md"), "# ok\n");
+  // The owner reads the screenplay before any sheet is drawn (docs/videos/DRAMA-FLOW.md, section 2).
+  assert.equal((await status()).next.id, "script approved");
+  writeScreenplay(box.dir, dramaFixture());
+  await approve({ gate: "script", ...places });
   assert.equal((await status()).next.id, "look generated");
 
   const project = loadProject({ slug: box.slug, root: box.root });

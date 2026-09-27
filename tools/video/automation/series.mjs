@@ -5,18 +5,23 @@
 // variant of its prompt and filed on the site as a new version that waits for the owner; sent
 // back with a note, it is rewritten from that note while the site allows rewrites. An episode is
 // started on the site under the video's slug, then drafted here from the chapter's beats: no
-// outline options, the owner already approved the chapter.
+// outline options, the owner already approved the chapter. A one-off drama is a series of one
+// episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md, section 2).
 import path from "node:path";
 
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 
-export const DOC_KINDS = ["setting", "outline", "chapter"];
+export const DOC_KINDS = ["setting", "outline", "chapter", "bible"];
+const BIBLE_LISTS = ["acts"];
 const ANSWER_ATTEMPTS = 2;
 const CHARACTER_KEYS = ["id", "name", "appearance"];
 const BEAT_FIELDS = ["hook", "conflict", "turn", "cliffhanger"];
 
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
+
+/** Whether a series is a one-off drama: one episode, one story bible (docs/videos/DRAMA-FLOW.md, section 2). */
+export const isOneOff = (series) => series?.kind === "one-off";
 
 /** The video slug of an episode: the series' slug and the number, zero-padded (xianxia-e001). */
 export const episodeSlug = (seriesSlug, number) => `${seriesSlug}-e${String(number).padStart(3, "0")}`;
@@ -38,11 +43,18 @@ export function documentProblem(kind, answer, job) {
   if (!isObject(answer.body_json)) return "body_json (the structured document) is missing";
   const body = answer.body_json;
   const series = job.series;
-  if (kind === "setting") {
+  if (kind === "setting" || kind === "bible") {
     if (!Array.isArray(body.characters) || !body.characters.length) return "body_json.characters must list the cast";
     for (const character of body.characters) {
       if (!isObject(character) || !CHARACTER_KEYS.every((key) => isText(character[key]))) return "every character needs id, name and appearance";
       if (!/^[a-z][a-z0-9-]{1,23}$/.test(character.id)) return `character id "${character.id}" must be lowercase ascii, 2 to 24 characters`;
+    }
+    if (kind === "bible") {
+      // The one-off's story bible (apps/api/app/video_automation/series.py doc_problem): the
+      // acts, and the one outline the episode is written from.
+      for (const key of BIBLE_LISTS) if (!Array.isArray(body[key]) || !body[key].length) return `body_json.${key} must list the ${key}`;
+      if (!isObject(body.outline)) return "body_json.outline must be the one outline (an object)";
+      return null;
     }
     if (!Array.isArray(body.mysteries) || !body.mysteries.length) return "body_json.mysteries must list the long-running mysteries";
     return null;
@@ -106,13 +118,15 @@ export function episodeBrief(series, episode, cast, beats) {
   const cliff = beats.cliffhanger && typeof beats.cliffhanger === "object" ? `${beats.cliffhanger.text ?? ""}（${beats.cliffhanger.type ?? ""}）` : String(beats.cliffhanger ?? "");
   const listed = (value) => (Array.isArray(value) && value.length ? value.join("、") : "無");
   const inFrame = Array.isArray(beats.characters) && beats.characters.length ? cast.filter((character) => beats.characters.includes(character.id)) : cast;
+  // A one-off is its own one-episode series: the brief is the story's, not "episode 1 of".
+  const oneOff = isOneOff(series);
   return [
-    `# ${series.title} 第 ${episode.number} 集：${episode.title}`,
+    oneOff ? `# ${episode.title || series.title}` : `# ${series.title} 第 ${episode.number} 集：${episode.title}`,
     "",
     "## 故事前提",
     series.premise,
     "",
-    `本集：${episode.logline || episode.title}`,
+    `${oneOff ? "一句話" : "本集"}：${episode.logline || episode.title}`,
     "",
     "## 角色",
     ...(inFrame.length ? inFrame : cast).map((character) => `- ${character.id} ${character.name}：${character.appearance}`),
@@ -166,7 +180,7 @@ export function documentPayload(automation, job, problem = null) {
     ...(job.previous ? { previous: { body_md: job.previous.body_md, body_json: job.previous.body_json, owner_note: job.previous.note ?? "" } } : {}),
     ...(problem ? { previous_problem: problem } : {}),
   };
-  if (job.kind === "setting") return base;
+  if (job.kind === "setting" || job.kind === "bible") return base;
   const setting = context.setting ? { body_md: context.setting.body_md, body_json: context.setting.body_json } : null;
   if (job.kind === "outline") {
     return { ...base, setting, chapter_ranges: Array.from({ length: series.chapters }, (_, index) => chapterRange(series, index + 1)) };
@@ -210,11 +224,18 @@ export async function planDocument(automation, job) {
       body_md: answer.body_md.endsWith("\n") ? answer.body_md : `${answer.body_md}\n`,
       body_json: answer.body_json,
     });
-    const what = job.kind === "chapter" ? `chapter ${job.chapter_number}'s outline` : job.kind === "setting" ? "the setting book" : "the series outline";
-    return `series ${series.slug}: ${what} ${job.previous ? "rewritten from the owner's note" : "planned"} (version ${doc.version}); it waits for the owner on /admin/videos`;
+    return `series ${series.slug}: ${documentName(job)} ${job.previous ? "rewritten from the owner's note" : "planned"} (version ${doc.version}); it waits for the owner on /admin/videos`;
   }
   const kept = automation.keepAnswer(path.join(automation.workBase, "_series", series.slug), job.kind);
-  return automation.later(`series ${series.slug}: the planner could not write ${job.kind === "chapter" ? `chapter ${job.chapter_number}` : `the ${job.kind}`} (${problem}${kept ? `; the answer is in ${kept}` : ""}); the next run tries again`);
+  return automation.later(`series ${series.slug}: the planner could not write ${documentName(job)} (${problem}${kept ? `; the answer is in ${kept}` : ""}); the next run tries again`);
+}
+
+/** How a document is named in the worker's lines. */
+export function documentName({ kind, chapter_number: chapter }) {
+  if (kind === "chapter") return `chapter ${chapter}'s outline`;
+  if (kind === "setting") return "the setting book";
+  if (kind === "bible") return "the story bible";
+  return "the series outline";
 }
 
 /** Start the next episode on the site and draft it here from the chapter's beats. */

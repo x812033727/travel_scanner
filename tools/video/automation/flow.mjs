@@ -25,10 +25,11 @@ import { speechHash } from "../core/timeline.mjs";
 import { MAX_TEMPO } from "../dubs/plan.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
+import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
-import { castFrom, episodeBrief, seriesStep } from "./series.mjs";
+import { castFrom, episodeBrief, isOneOff, seriesStep } from "./series.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -62,6 +63,13 @@ const FIX_SOURCES = {
 };
 
 const today = (ctx) => ctx.now().toISOString().slice(0, 10);
+/**
+ * The prompt variant of an episode's writer and checker: "episode" for an episode of a long
+ * series (the beats, the recaps, the next episode's promise); a one-off drama, though it is an
+ * episode of its own one-episode series (docs/videos/DRAMA-FLOW.md, section 2), is written with
+ * the drama prompts, since its story ends.
+ */
+const episodeVariant = (state) => (state.series && state.series.kind !== "one-off" ? "episode" : null);
 
 /** Every video the automation started, oldest first. */
 export function automatedVideos(workBase) {
@@ -283,6 +291,21 @@ export class Automation {
     return resolveWorkdir({ env: this.ctx.env, slug, root: this.ctx.root, home: this.ctx.home });
   }
 
+  /** Every video this worker started, oldest first (auto.json), for the modules beside this one. */
+  states() {
+    return automatedVideos(this.workBase);
+  }
+
+  /** Write a video's auto.json as it stands. */
+  persist(state) {
+    saveState(this.workdir(state.slug), state);
+  }
+
+  /** Put video.json back as it was before a revision that lint refused. */
+  restoreVideo(state, source) {
+    writeFileSync(path.join(docDir(state.slug, this.ctx.root), "video.json"), source);
+  }
+
   /** The skill's reference texts, from the tool's own repository whatever root the docs are under. */
   reference() {
     this.refs ??= references(ROOT);
@@ -382,8 +405,13 @@ export class Automation {
       }
       if (done) return done;
     }
-    // A series in the making comes first (docs/videos/SERIES.md), then the owner's one-off
-    // requests, then a scheduled draft, all within the same waiting cap.
+    // The owner's lines on a document or a screenplay are answered first, one per round
+    // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for.
+    const discussed = await discussStep(this);
+    if (discussed) return discussed;
+    // A series in the making comes next (docs/videos/SERIES.md), then the owner's one-off
+    // requests from before one-offs became series, then a scheduled draft, all within the same
+    // waiting cap.
     const series = await seriesStep(this);
     if (series) return series;
     // The owner's drama requests come before any scheduled draft, within the same waiting cap.
@@ -645,11 +673,14 @@ export class Automation {
   async draftEpisode(request, context, episode) {
     const series = context.series;
     const slug = request.slug;
+    // A one-off's story bible stands where the setting book does (docs/videos/DRAMA-FLOW.md,
+    // section 2): the site hands it over as "setting", and its one outline is the episode's beats.
+    const oneOff = isOneOff(series);
     const cast = castFrom(context.setting?.body_json);
     const beats = episode.beats ?? {};
     const state = {
       slug,
-      title: String(request.title || `${series.title} 第 ${episode.number} 集 ${episode.title}`).slice(0, 200),
+      title: String(request.title || (oneOff ? episode.title || series.title : `${series.title} 第 ${episode.number} 集 ${episode.title}`)).slice(0, 200),
       status: "active",
       created_at: this.ctx.now().toISOString(),
       format: "drama",
@@ -657,8 +688,8 @@ export class Automation {
       premise: request.premise,
       style_preset: series.style_preset ?? null,
       target_minutes: Number(request.target_minutes) || series.target_minutes || 3,
-      source_guide: null,
-      series: { slug: series.slug, episode: episode.number, chapter: episode.chapter_number },
+      source_guide: request.source_guide ?? null,
+      series: { slug: series.slug, episode: episode.number, chapter: episode.chapter_number, ...(oneOff ? { kind: "one-off" } : {}) },
       source_urls: [],
       replans: 0,
       verify_rounds: 0,
@@ -693,15 +724,24 @@ export class Automation {
     writeFileSync(path.join(dir, "brief.md"), episodeBrief(series, episode, cast, beats));
     const workdir = this.workdir(slug);
     saveState(workdir, state);
-    await approve({ gate: "outline", docDir: dir, workdir, now: this.ctx.now(), note: `planned by chapter ${episode.chapter_number}'s approved outline` });
+    await approve({ gate: "outline", docDir: dir, workdir, now: this.ctx.now(), note: oneOff ? "依故事聖經" : `planned by chapter ${episode.chapter_number}'s approved outline` });
     await report(this.ctx, this.api, state, "outline approved");
+    if (oneOff) return `one-off ${series.slug}: ${slug} started from the approved story bible`;
     return `series ${series.slug}: episode ${episode.number} (${slug}) started from the chapter outline`;
   }
 
-  /** The script gate (docs/videos/SERIES.md): the owner reads the screenplay before any image or clip is paid for. */
+  /**
+   * The script gate (docs/videos/DRAMA-FLOW.md, section 2): every drama's screenplay is read by
+   * the owner, who may discuss it, before any image or clip is paid for. With 「劇本先給我看」
+   * (series_script_gate) switched off on the settings tab, the screenplay is approved here.
+   */
   async scriptGate(state) {
     const dir = docDir(state.slug, this.ctx.root);
     const file = writeScreenplay(dir, JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")));
+    if (this.settings.drama?.series_script_gate === false) {
+      await approve({ gate: "script", docDir: dir, workdir: this.workdir(state.slug), now: this.ctx.now(), note: "「劇本先給我看」關著，依設定自動核准" });
+      return `${state.slug}: screenplay approved by the settings (劇本先給我看 is off)`;
+    }
     const review = await this.decision(state, "script", file);
     if (!review) {
       const result = await run(this.ctx, ["review-push", "--slug", state.slug, "--gate", "script"]);
@@ -724,7 +764,7 @@ export class Automation {
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `the owner sent the screenplay back ${rounds + 1} times: ${note}`);
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind: "script", targets: [], problems: [note], owner_note: note }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, state.series ? "episode" : null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix: { kind: "script", targets: [], problems: [note], owner_note: note }, line_ids: this.freshIds(state, video, 40) }), 32_000, state.format, episodeVariant(state));
     const problem = await this.saveAndLint(state, answer);
     state.prompt_fixes = { ...(state.prompt_fixes ?? {}), script: rounds + 1 };
     state.notes.push(`script sent back: ${note}`);
@@ -838,7 +878,7 @@ export class Automation {
       if (result.code !== 0) return this.block(state,`assemble failed: ${result.out.trim().split("\n").slice(-3).join(" ")}`);
       await report(ctx, this.api, state, "video assembled");
       // The script is final now: the episode's recap goes to the site for the next episode.
-      if (state.series && !state.recap_sent) await this.recap(state);
+      if (episodeVariant(state) && !state.recap_sent) await this.recap(state);
       return `${state.slug}: video assembled`;
     }
     if (next === "captions written") return this.captions(state);
@@ -862,7 +902,7 @@ export class Automation {
         saveState(workdir, state);
         if (state.series) {
           try {
-            if (!state.recap_sent) await this.recap(state);
+            if (episodeVariant(state) && !state.recap_sent) await this.recap(state);
             await this.api.episodeDone(state.series.slug, state.series.episode);
           } catch (error) {
             // The next round of the series waits until this is reported; the log says why.
@@ -1109,7 +1149,7 @@ export class Automation {
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
     const siteUrl = state.source_guide ? [`https://mokaair.com/zh-TW/guides/${state.source_guide}`] : [];
     const sources = await readSources(this.read, [...siteUrl, ...(state.source_urls ?? [])]);
-    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, state.series ? "episode" : null);
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, episodeVariant(state));
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
     saveState(this.workdir(state.slug), state);
@@ -1127,7 +1167,7 @@ export class Automation {
     const round = state.verify_rounds + 1;
     const urls = [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])];
     const sources = await readSources(this.read, urls);
-    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, state.series ? "episode" : null);
+    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, episodeVariant(state));
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
     if (state.series) {

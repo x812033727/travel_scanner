@@ -307,10 +307,11 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
 
 /**
  * The next gate whose content exists and is not approved as it stands; null when none. A drama
- * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut.
+ * (docs/videos/DRAMA.md) reads its screenplay before the sheets (docs/videos/DRAMA-FLOW.md,
+ * section 2), puts the look before the narration and the storyboard before the cut.
  */
 async function nextGate(places, workdir, doc) {
-  const order = isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  const order = isDrama(doc) ? ["outline", "script", "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
