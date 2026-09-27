@@ -94,10 +94,13 @@ reply, and the dropped bounds are written into the field descriptions.
 
 ## Switching it on
 
-1. **Start the services.** `/root/deploy-travel-scanner.sh` passes only
-   `--profile hotspots`. Add `--profile news` to that `up --build -d` call (a host change,
-   so the site owner decides). Starting the two services by hand once is not enough: the
-   next deploy would rebuild everything else and leave them on the old image.
+1. **Start the services.** `/root/deploy-travel-scanner.sh` has passed `--profile news`
+   to its `up --build -d` call since 2026-09-24, beside `--profile hotspots` and
+   `--profile video`, so an ordinary deploy starts both services and rebuilds them with
+   everything else. The script is not in git; when in doubt, run
+   `grep -- --profile /root/deploy-travel-scanner.sh` on the host. Starting the two
+   services by hand once is not enough: the next deploy would rebuild everything else and
+   leave them on the old image.
 2. **Keys.** The writer and checker vendors and Jev all need their keys in the admin card
    「AI 供應商與金鑰」 (or the environment). Each candidate spends up to two Jev calls
    (the duplicate check and the zh-TW draft) from `JEV_DAILY_CALL_BUDGET` (default 200).
