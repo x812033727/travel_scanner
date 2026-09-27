@@ -267,6 +267,1030 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress booking systems: time slots, confirmation emails, and cancellation rules",
+      "description": "A WordPress booking system must handle service hours, staff capacity, notifications, and cancellations together. This guide compares Amelia, Bookly, and WooCommerce Bookings for a Taiwanese studio, explains operating hours, buffers, and exceptional closures, then tests confirmation, rescheduling, and refunds as an ordinary customer so both staff and customers know when a booking is final.",
+      "hero": {
+        "src": "/guides/wordpress-booking-system/hero-en.jpg",
+        "alt": "Original illustration of a screen, document, and shield representing a booking entry point, schedule records, and slot checks.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A photography consultation, craft workshop, and one-to-one lesson all appear to be a choice of date and time, but their real constraints differ. One needs instructor approval, another a minimum number of attendees, and another cleanup after the service. Putting a calendar on the website alone solves none of these problems."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before building a booking system, write down the rules normally confirmed by phone. The plugin should show available slots under those rules, keep records, and send notifications. Staff also need a process for cancellations, failed payments, and unexpected closures."
+        },
+        {
+          "type": "heading",
+          "text": "Define whether the booking reserves a person, a place, or a resource",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a one-person photography consultation, allow 45 minutes plus 15 minutes to prepare afterward; one instructor can receive only one party at a time. A craft workshop may hold six people in one slot. If two instructors share a classroom, the room itself also limits bookings; separate staff availability is not enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "For each service, list its duration, buffer, minimum and maximum attendance, staff member, location, and equipment. Say whether a group reserves the whole slot or unrelated customers may join the same slot. These details show whether a plugin’s capacity and resource features meet the need."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also define the minimum advance notice, how many months ahead customers can book, and cancellation and rescheduling cutoffs. If staff cannot arrange someone at short notice this afternoon, do not display a slot one hour from now as immediately bookable. Online rules should match bookings taken by phone, at the desk, and through social messages."
+        },
+        {
+          "type": "heading",
+          "text": "Compare plugins and paid features against the workflow",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia organizes services, staff, and appointment management, making it a candidate for a studio’s scheduling needs. Bookly also supports booking and calendar integration, but Google Calendar synchronization has different modes; full two-way sync needs the corresponding plan or add-on. “Supports Google” does not mean every mode offers the same capability."
+        },
+        {
+          "type": "paragraph",
+          "text": "If products and payments already run through WooCommerce, consider WooCommerce Bookings. In its “requires confirmation” flow, the customer first requests a slot and receives a payment link after confirmation. This differs from paying and completing a booking immediately on button click, so both wording and notifications must reflect the state before and after approval."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether each candidate has three required capabilities: capacity for people or resources, the payment method you need, and a customer route for cancellation or rescheduling. A free version displaying a basic form does not imply it includes every operational feature. Budget for licensing, notification-channel fees, and maintenance, then prototype one candidate."
+        },
+        {
+          "type": "heading",
+          "text": "Set regular and exceptional hours with Amelia",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Set the correct city time zone in WordPress, such as Taipei, then decide whether to display times in the customer’s time zone. Cross-border online consultations should state the time basis on the booking page and confirmation email. For in-person services, make clear that the time is local to the venue so both parties interpret the same appointment consistently."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create the service, assign staff and working hours, and set service duration and required buffers. Amelia’s time-slot step limits usable time increments. For a 45-minute service plus a 15-minute buffer, choose a step that supports those values, then check the actual start times shown to customers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Handle days off and special working days separately. Amelia’s special days can override normal working hours, while days off still take priority and prevent booking. Before adding a makeup workday, check whether a day off is also configured. If the location changes at short notice, verify that the assigned staff member offers the service and has availability there; changing only the displayed address is insufficient."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Set the site time zone and create services, staff, and locations.",
+            "Enter service duration, buffer, capacity, and regular working hours.",
+            "Add days off and special days, then check priority on exception dates.",
+            "Use a customer account to inspect selectable slots and compare each with the written schedule."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish request submission, confirmation, and payment notices",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After a booking is created, the page and email should state its current status. If manual approval is required, explain how and when staff will respond. For an immediately confirmed service, provide the date, time zone, location, service details, and preparation instructions. Do not title a pending-approval email “Booking confirmed” and prompt a customer to arrange travel prematurely."
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia has event-triggered and scheduled notifications. Creation, rescheduling, or cancellation may trigger a message immediately; a reminder one day ahead requires the scheduler to keep running. In testing, wait until the reminder’s scheduled time and verify that the site scheduler actually ran. One immediate confirmation email does not prove that the next-day reminder will arrive."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test customer and staff notifications separately. Customers need an action route; staff need service details and tasks. Internal notes must not be emailed to customers. Collect only the phone number, name, and other fields required for the service. When payment fails, clearly say whether the slot remains held and what to do next."
+        },
+        {
+          "type": "heading",
+          "text": "Test capacity, calendar sync, and rescheduling",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Have two ordinary customer accounts book the same slot in sequence and watch whether remaining capacity is correct. Amelia has a setting that can allow pending appointments beyond maximum capacity, and administrators may have permission to override limits. If the studio does not accept overbooking, align both settings and daily procedures with that rule."
+        },
+        {
+          "type": "paragraph",
+          "text": "When using an external calendar, check sync direction, which busy events block slots, and whether updates lag. Bookly’s documentation specifically warns that an all-day event marked free may not block a slot as expected. Test creating, changing, and deleting an event; seeing one appointment appear on a calendar is not enough to finish validation."
+        },
+        {
+          "type": "paragraph",
+          "text": "After a customer reschedules, check that the new slot is reserved, the old one released, and the date and location updated in notifications. Test multi-session purchases, group bookings, and one participant’s cancellation separately so a single action does not remove the whole group’s still-active bookings."
+        },
+        {
+          "type": "heading",
+          "text": "Make cancellation and refunds a traceable closing process",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "On the booking page, explain cancellation, rescheduling, lateness, and no-show rules, including contact routes and applicable time limits. Actual policy must suit the service and applicable rules; a plugin setting that limits a button does not replace a judgment about consumer rights."
+        },
+        {
+          "type": "paragraph",
+          "text": "After cancellation, verify the slot, order, and payment separately. Even when the screen says “Cancelled,” check whether the payment provider actually refunded it, how much, and whether the refund failed. With manual bank transfers, record the responsible person and outcome. After a refund, verify that notifications no longer tell the customer to attend."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before opening bookings to the public, rehearse an unexpected closure: find affected appointments, contact and reschedule each customer, update the roster, and record the outcome. Routinely review the next week’s schedule, unconfirmed requests, and failed notifications so online booking reduces coordination instead of becoming another form staff must constantly watch."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-booking-system/diagram-1-en.svg",
+          "alt": "Four-step diagram: define service rules; confirm bookings and payments; send notices and keep schedules in sync; handle rescheduling, cancellations, and refunds.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Record booking completion, message delivery, and refunds as separate outcomes.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Check",
+            "Test scenario",
+            "Question to answer"
+          ],
+          "rows": [
+            [
+              "Time and buffer",
+              "Book two sessions in succession",
+              "Is cleanup time preserved?"
+            ],
+            [
+              "Capacity and resources",
+              "Two people seek the same slot",
+              "Can overbooking or overlap be prevented?"
+            ],
+            [
+              "Confirmation and payment",
+              "Pay only after approval",
+              "When is it confirmed and charged?"
+            ],
+            [
+              "Notices and sync",
+              "Reschedule, then await a reminder",
+              "Do all notices show the new time?"
+            ],
+            [
+              "Cancellation and refund",
+              "Cancel a paid booking",
+              "What happens to the slot and money?"
+            ]
+          ],
+          "caption": "Validate through an ordinary customer journey; check administrator overrides separately."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Put phone bookings in the same schedule",
+          "text": "Enter bookings accepted at the desk or by direct message into the system promptly and confirm whether customers were notified. If online and manual bookings use separate schedules, even a correctly working plugin can double-book because the information is out of sync."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check WordPress email delivery",
+              "kind": "life",
+              "slug": "wordpress-smtp-delivery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan a website contact form",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amelia service time and capacity",
+          "url": "https://wpamelia.com/documentation/pricing-duration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia general settings and time zones",
+          "url": "https://wpamelia.com/documentation/general-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia special working days",
+          "url": "https://wpamelia.com/documentation/special-days/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia appointment capacity and status",
+          "url": "https://wpamelia.com/documentation/appointment-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia appointment creation and administrator permissions",
+          "url": "https://wpamelia.com/documentation/creating-appointments/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "How Amelia notifications work",
+          "url": "https://wpamelia.com/documentation/notifications-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bookly Google Calendar synchronization",
+          "url": "https://support.booking-wp-plugin.com/hc/en-us/articles/203572552-Google-Calendar-Sync",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce Bookings confirmations and management",
+          "url": "https://woocommerce.com/document/introduction-to-woocommerce-bookings/managing-woocommerce-bookings/all-bookings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress予約システム：時間枠、確認メール、キャンセル規則",
+      "description": "WordPressの予約システムでは、営業時間、担当者の受け入れ数、通知、キャンセルを一緒に管理します。台湾の事業所を例にAmelia、Bookly、WooCommerce Bookingsを比較し、営業時間、準備時間、臨時休業の設定と、一般客として確認メール、日程変更、返金を検証する方法を説明します。いつ予約が正式に成立するかも明確にします。",
+      "hero": {
+        "src": "/guides/wordpress-booking-system/hero-ja.jpg",
+        "alt": "予約の入口、予定表の記録、時間枠の確認を画面、書類、盾で示したオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "写真撮影の相談、手作り体験、マンツーマン指導は、表面上は日付と時刻を選ぶだけでも、実際の制約は異なります。講師の承認が必要なもの、最低参加人数があるもの、終了後に片付けが必要なものがあります。サイトにカレンダーを置くだけでは解決しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "予約システムを作る前に、普段電話で確認している規則を書き出します。プラグインは規則に従って空き枠を表示し、記録を残し、通知を送る役目です。キャンセル、決済失敗、臨時休業への対応は店舗側でも決めておきます。"
+        },
+        {
+          "type": "heading",
+          "text": "人、定員、設備の何を確保する予約か定義する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一人向けの撮影相談なら、所要45分の後に片付け15分を確保し、講師一人が同時に受けられるのは一組だけです。手作り体験なら一枠に6人入れるかもしれません。二人の講師が教室を共有するなら、その部屋も制約になります。講師それぞれの空きだけ見ても足りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サービスごとに所要時間、準備時間、最少・最大人数、担当者、場所、必要な機材を挙げます。一組で貸し切るのか、別々の顧客が同じ枠に入れるのかも決めます。これによりプラグインの定員・設備管理機能が要件に合うか判断できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "何時間前まで予約できるか、何か月先まで表示するか、キャンセルと変更の締切も決めます。今日の午後に急きょ人を用意できないなら、1時間後の枠を即時予約可能にしてはいけません。オンラインの規則は電話、店頭、SNSのメッセージで受ける予約とも一致させます。"
+        },
+        {
+          "type": "heading",
+          "text": "業務フローと有料機能でプラグインを比較する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ameliaはサービス、担当者、予約管理を軸としており、事業所の時間枠を検討する候補になります。Booklyも予約とカレンダー連携を提供しますが、Google Calendar同期には複数の方式があり、完全な双方向同期には対応するプランや追加機能が必要です。「Google対応」というだけで同等の機能があるとは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WooCommerceで商品と決済を管理しているなら、WooCommerce Bookingsを検討できます。「確認が必要」な予約では、まず顧客が申し込み、承認後に支払いリンクが届きます。ボタンを押してすぐ決済・予約完了となる流れとは違うため、承認前後の文言と通知も変える必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "候補に必要な三点、人や設備の定員管理、必要な決済手段、顧客自身によるキャンセル・日程変更の入口があるか確認します。無料版で基本フォームを表示できても、運営に必要な全機能があるとは限りません。ライセンス、通知サービス、保守の費用も計算し、一つに絞って試作します。"
+        },
+        {
+          "type": "heading",
+          "text": "Ameliaで通常日と例外日の時間を設定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressで台北など正しい都市のタイムゾーンを設定し、顧客のタイムゾーンで表示するかも決めます。国境を越えたオンライン相談では予約ページと確認メールに時刻の基準を明記します。対面サービスでは店舗所在地の時刻だと明示し、同じ予約を双方が違って解釈しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サービスを作成して担当者と勤務時間を割り当て、所要時間と必要な準備時間を設定します。Ameliaの時間刻みは設定できる時間単位を制限します。45分のサービスと15分の準備時間には、その数値に対応する刻みを選び、顧客に表示される開始時刻を実際に確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "休暇と特別勤務日を別々に扱います。Ameliaの特別日は通常の勤務時間を上書きできますが、休暇日は予約を止める優先度を持ちます。振替営業を設定する前に休暇も登録されていないか調べます。急な場所変更なら、担当者がその場所でサービスを提供でき、空きがあるか確かめます。ページの住所だけ変えても不十分です。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "サイトのタイムゾーンを設定し、サービス、担当者、場所を作る。",
+            "所要時間、準備時間、定員、通常の勤務時間を入力する。",
+            "休暇と特別日を追加し、例外日の優先順位による結果を確かめる。",
+            "顧客アカウントで選択可能な枠を確認し、紙の予定表と一件ずつ照合する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "申し込み、承認、決済の通知を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "予約作成後のページとメールには現在の状態を直接示します。手動承認が必要なら返答方法と待ち時間を説明します。即時に成立するサービスなら日付、タイムゾーン、場所、内容、当日の準備を知らせます。承認待ちのメールに「予約完了」と書き、顧客に早まって交通手段を手配させないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ameliaの通知にはイベント発生時と予定時刻に送るものがあります。予約作成、変更、キャンセルでは即時送信できても、前日のリマインドにはスケジューラーの継続稼働が必要です。テストでは指定時刻まで待ち、サイトのスケジューラーが動いたことを確かめます。即時の確認メール一通では翌日の通知到達を証明できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客向けと従業員向けの通知を別々に検証します。顧客には操作の入口、従業員にはサービス情報と作業が必要で、内部メモを顧客へ誤送信してはいけません。電話番号や氏名などはサービスに必要な項目だけ集めます。決済失敗時には枠が保持されるか、次に何をするかも明確にします。"
+        },
+        {
+          "type": "heading",
+          "text": "定員、カレンダー同期、日程変更を検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般顧客のアカウント二つで同じ時間枠を順に予約し、残り定員が正しいか確認します。Ameliaには承認待ち予約が最大定員を超えることを許す設定や、管理者が制限を越える権限があります。超過受付をしない店なら、それらの設定と日常業務を規則に合わせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "外部カレンダーを使う場合、同期方向、どの「予定あり」が時間枠を止めるか、更新の遅延を確認します。Booklyの文書は、終日の予定を「空き」にすると想定どおり止まらない可能性を特に指摘しています。予定の作成、変更、削除を一件ずつ試し、予約が一件表示されただけで検証を終えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客が日時を変更したら、新しい枠が確保され古い枠が解放されたか、通知の日付と場所が更新されたか確認します。複数回分の購入、団体予約、一部の参加者のキャンセルも別に試し、一回の操作でまだ有効な予約まで全部消さないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "キャンセルと返金の処理を追跡できる形にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "予約ページでキャンセル、日程変更、遅刻、無断欠席の扱いを分かる言葉で示し、連絡手段と適用時間も説明します。実際の方針はサービスの性質と適用される規則に合う必要があり、プラグインのボタン制限だけで消費者の権利を判断してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "予約を取り消したら、時間枠、注文、金銭を別々に確認します。画面が「キャンセル済み」でも、決済サービスで返金されたか、金額はいくらか、失敗していないか調べます。手動の銀行振込なら担当者と結果の記録が一層必要です。返金後の通知に来店指示が残っていないかも確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公開前に臨時休業を演習します。影響を受ける予約を探し、一件ずつ連絡と変更を行い、予定表を更新して結果を残します。通常時も翌週の予定、未承認の依頼、通知失敗を定期的に確認し、オンライン予約が往復連絡を減らすようにします。見張るべきフォームを一つ増やすだけにしないためです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-booking-system/diagram-1-ja.svg",
+          "alt": "サービス規則の定義、予約と支払いの確認、通知と予定の同期、変更・キャンセル・返金の処理を示す4段階の図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "予約の成立、通知の送信、返金の完了をそれぞれ記録します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認項目",
+            "テスト状況",
+            "答えるべきこと"
+          ],
+          "rows": [
+            [
+              "時間と準備時間",
+              "連続する二件を予約",
+              "片付け時間を確保できるか"
+            ],
+            [
+              "定員と設備",
+              "二人が同じ枠を希望",
+              "定員超過や重複を防げるか"
+            ],
+            [
+              "承認と決済",
+              "承認後に支払う",
+              "いつ成立し、いつ請求されるか"
+            ],
+            [
+              "通知と同期",
+              "変更して通知を待つ",
+              "全て新しい時刻が表示されるか"
+            ],
+            [
+              "キャンセルと返金",
+              "支払い済みを取り消す",
+              "枠と代金はそれぞれどうなるか"
+            ]
+          ],
+          "caption": "一般顧客の流れで検証し、管理者の特別権限は別に確認します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "電話予約も同じ予定表に入れる",
+          "text": "店頭やダイレクトメッセージで受けた予約は速やかにシステムへ入力し、顧客への通知も確認します。オンラインと手作業で別々の予定表を使うと、プラグインが正しくても情報の不一致で二重受付が起こり得ます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressのメール送信を確認する",
+              "kind": "life",
+              "slug": "wordpress-smtp-delivery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの問い合わせフォームを設計する",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amelia：サービス時間と定員",
+          "url": "https://wpamelia.com/documentation/pricing-duration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia：一般設定とタイムゾーン",
+          "url": "https://wpamelia.com/documentation/general-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia：特別勤務日",
+          "url": "https://wpamelia.com/documentation/special-days/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia：予約の定員と状態",
+          "url": "https://wpamelia.com/documentation/appointment-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia：予約作成と管理者権限",
+          "url": "https://wpamelia.com/documentation/creating-appointments/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia：通知の仕組み",
+          "url": "https://wpamelia.com/documentation/notifications-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bookly：Google Calendar同期",
+          "url": "https://support.booking-wp-plugin.com/hc/en-us/articles/203572552-Google-Calendar-Sync",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce Bookings：承認と管理",
+          "url": "https://woocommerce.com/document/introduction-to-woocommerce-bookings/managing-woocommerce-bookings/all-bookings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 예약 시스템: 시간대, 확인 이메일, 취소 규칙",
+      "description": "WordPress 예약 시스템은 서비스 시간, 담당자 수용량, 알림, 취소를 함께 처리해야 합니다. 대만의 소규모 스튜디오를 예로 Amelia, Bookly, WooCommerce Bookings를 비교하고 영업 시간, 준비 시간, 예외 휴무를 설정한 뒤 일반 고객 입장에서 확인 이메일, 일정 변경, 환불을 검증해 언제 예약이 확정되는지 분명히 합니다.",
+      "hero": {
+        "src": "/guides/wordpress-booking-system/hero-ko.jpg",
+        "alt": "예약 진입점, 일정 기록, 시간대 확인을 화면과 문서, 방패로 나타낸 독창적인 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사진 상담, 수공예 체험, 일대일 수업은 겉으로는 날짜와 시간을 고르는 일이지만 실제 제약은 다릅니다. 강사의 확인을 기다려야 하거나 최소 인원을 채워야 하거나 서비스 뒤에 정리 시간이 필요할 수 있습니다. 웹사이트에 달력만 올려서는 이런 문제를 해결하지 못합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예약 시스템을 만들기 전에 평소 전화로 확인하는 규칙을 먼저 적으세요. 플러그인은 그 규칙에 따라 가능한 시간을 보여 주고 기록과 알림을 남깁니다. 매장도 취소, 결제 실패, 임시 휴업을 어떻게 처리할지 알아야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "사람, 정원, 자원 중 무엇을 예약하는지 정의하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "1인 사진 상담을 예로 들면 한 번에 45분이 걸리고 이후 정리 시간 15분이 필요하며 강사 한 명이 동시에 받을 수 있는 팀은 하나뿐입니다. 수공예 체험은 한 시간대에 6명을 받을 수 있습니다. 강사 두 명이 강의실 하나를 공유한다면 강의실도 제약 자원입니다. 강사별 빈 시간만 보면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스마다 소요 시간, 준비 시간, 최소·최대 인원, 담당자, 장소, 필요한 장비를 적습니다. 한 팀이 전체 시간을 독점하는지 서로 다른 고객이 같은 시간대에 참여할 수 있는지도 정합니다. 이 정보로 플러그인의 수용량 및 자원 기능이 요구에 맞는지 판단할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예약 가능한 최소 사전 시간, 몇 달 뒤까지 볼 수 있는지, 취소와 일정 변경 마감 시각도 정합니다. 오늘 오후에 갑자기 담당자를 배치할 수 없다면 한 시간 뒤 예약을 즉시 가능으로 표시하지 마세요. 온라인 규칙은 전화, 접수대, 소셜 메시지로 받는 예약과 일치해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "업무 절차와 유료 범위에 따라 플러그인 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia는 서비스, 담당자, 예약 관리를 중심으로 구성되어 스튜디오의 시간대 요구를 평가하기에 적합합니다. Bookly도 예약과 달력 연동을 제공하지만 Google Calendar 동기화에는 여러 방식이 있습니다. 완전한 양방향 동기화에는 해당 요금제나 추가 기능이 필요합니다. “Google 지원”만 보고 모든 기능이 같다고 생각하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "상품과 결제를 이미 WooCommerce로 관리한다면 WooCommerce Bookings를 살펴볼 수 있습니다. 확인이 필요한 예약에서는 고객이 먼저 요청하고 승인 뒤에 결제 링크를 받습니다. 버튼을 누른 즉시 결제와 예약이 완료되는 방식과 다르므로 승인 전후의 문구와 알림도 달라야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "후보 서비스에 필요한 세 기능이 있는지 확인합니다. 여러 사람이나 자원에 대한 정원, 필요한 결제 수단, 고객이 취소·일정 변경을 할 수 있는 진입점입니다. 무료 버전이 기본 양식을 보여 준다고 모든 운영 기능이 포함된 것은 아닙니다. 라이선스, 알림 채널 요금, 유지 관리 비용을 예산에 넣고 한 가지를 골라 시범 구축합니다."
+        },
+        {
+          "type": "heading",
+          "text": "Amelia로 일반 시간과 예외 시간 설정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress에서 타이베이처럼 올바른 도시 시간대를 설정한 후 고객의 시간대로 표시할지도 정합니다. 해외 고객과의 온라인 상담이라면 예약 페이지와 확인 이메일에 시간 기준을 명시합니다. 대면 서비스라면 매장 소재지 시간을 분명히 알려 같은 예약을 두 방식으로 해석하지 않게 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스를 만들고 담당자와 근무 시간을 배정한 뒤 서비스 길이와 필요한 준비 시간을 설정합니다. Amelia의 시간 간격 설정은 사용할 수 있는 단위를 제한합니다. 45분 서비스에 15분 준비 시간을 더하려면 이 수치를 지원하는 간격을 선택하고 고객에게 실제로 보이는 시작 시각을 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴무일과 특별 근무일을 따로 처리합니다. Amelia의 특별일은 평소 근무 시간을 덮어쓸 수 있지만 휴무일은 여전히 우선해 예약을 막습니다. 대체 근무일을 지정하기 전에 같은 날 휴무 설정이 있는지 살펴보세요. 장소가 갑자기 바뀌면 담당자가 새 장소에서 그 서비스를 제공하고 시간이 비어 있는지 확인해야 합니다. 페이지의 주소만 고쳐서는 부족합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "사이트 시간대를 설정하고 서비스, 담당자, 장소를 만듭니다.",
+            "서비스 시간, 준비 시간, 정원, 평소 근무 시간을 입력합니다.",
+            "휴무일과 특별일을 추가하고 예외 날짜에서 무엇이 우선하는지 확인합니다.",
+            "고객 계정으로 선택 가능한 시간대를 살피고 기록된 근무표와 하나씩 대조합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "요청 제출, 승인, 결제 알림을 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "예약을 만든 뒤 화면과 이메일에 현재 상태를 바로 설명해야 합니다. 수동 확인이 필요하면 답변 방법과 대기 시간을 적습니다. 즉시 확정되는 서비스라면 날짜, 시간대, 장소, 서비스 내용과 방문 준비 사항을 제공합니다. 승인 대기 이메일 제목을 “예약 확정”으로 써서 고객이 너무 일찍 교통편을 마련하게 하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia 알림은 사건 발생 시 보내는 것과 예약된 시각에 보내는 것으로 나뉩니다. 생성, 변경, 취소는 즉시 알림을 보낼 수 있지만 하루 전 알림에는 일정 실행기가 계속 작동해야 합니다. 시험할 때 실제 알림 시각까지 기다려 사이트의 일정 실행이 이루어졌는지 확인하세요. 즉시 확인 메일 한 통을 받았다고 다음 날 알림까지 도착한다고 증명할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "고객과 직원에게 보내는 알림을 따로 검증합니다. 고객에게는 작업할 진입점이, 직원에게는 서비스 정보와 할 일이 필요하며 내부 메모가 고객에게 잘못 발송되어서는 안 됩니다. 전화번호, 이름, 기타 항목은 서비스에 필요한 것만 수집합니다. 결제 실패 시 시간대가 유지되는지와 다음 단계도 명확히 설명해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "정원, 달력 동기화, 일정 변경 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 고객 계정 두 개로 같은 시간대를 차례로 예약하고 남은 정원이 정확한지 살핍니다. Amelia에는 승인 대기 예약이 최대 정원을 초과하도록 허용하는 설정과 관리자가 제한을 넘길 수 있는 권한이 있습니다. 매장이 초과 예약을 받지 않는다면 이런 설정과 일상 운영이 규칙에 맞는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "외부 달력을 쓴다면 동기화 방향, 어떤 바쁨 일정이 시간대를 막는지, 업데이트 지연이 있는지 확인합니다. Bookly 문서는 하루 종일 일정이 ‘한가함’으로 표시되면 예상대로 차단되지 않을 수 있다고 특히 설명합니다. 일정 하나를 만들고 변경하고 삭제해 보세요. 달력에 예약 한 건이 표시된 것만으로 검증을 끝내지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "고객이 일정을 바꾼 뒤 새 시간대가 확보되고 옛 시간대는 풀렸는지, 알림의 날짜와 장소가 바뀌었는지 확인합니다. 여러 회차 구매, 단체 예약, 일부 참가자의 취소도 별도로 시험해 한 번의 조작으로 여전히 유효한 전체 예약이 지워지지 않게 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "취소와 환불을 추적 가능한 마무리 절차로 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "예약 페이지에서 취소, 일정 변경, 지각, 불참 처리 방법을 이해하기 쉽게 제공하고 연락 수단과 적용 시간을 설명합니다. 실제 정책은 서비스 성격과 적용 규정에 맞아야 합니다. 플러그인 버튼을 제한하는 설정만으로 소비자 권익에 대한 판단을 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예약 취소 후 시간대, 주문, 금액을 따로 확인합니다. 화면에 ‘취소됨’이라고 보여도 결제 서비스에서 실제로 환불했는지, 금액이 얼마인지, 실패했는지 살펴야 합니다. 수동 계좌이체라면 처리자와 결과를 더 꼼꼼히 기록합니다. 환불 뒤에도 알림이 고객에게 방문을 요구하지 않는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "공개 전에 갑작스러운 휴업을 연습합니다. 영향을 받는 예약을 찾아 건별로 연락하고 일정을 변경하며 근무표를 갱신하고 처리 기록을 남깁니다. 평소에는 다음 주 일정, 미확정 요청, 알림 실패 항목을 정기적으로 확인합니다. 온라인 예약이 왕복 확인을 줄여야지 계속 감시해야 할 양식만 하나 더 만들어서는 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-booking-system/diagram-1-ko.svg",
+          "alt": "서비스 규칙 정의, 예약과 결제 확인, 알림 및 일정 동기화, 일정 변경·취소·환불 처리의 네 단계를 보여 주는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "예약 확정, 알림 발송, 환불 완료를 각각 별도의 결과로 기록합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "확인 항목",
+            "시험 상황",
+            "답해야 할 질문"
+          ],
+          "rows": [
+            [
+              "시간과 준비 시간",
+              "두 예약을 연달아 진행",
+              "정리 시간이 남는가"
+            ],
+            [
+              "정원과 자원",
+              "두 사람이 같은 시간대를 신청",
+              "초과 접수나 중복을 막는가"
+            ],
+            [
+              "확인과 결제",
+              "승인 뒤에 결제",
+              "언제 확정되고 언제 청구되는가"
+            ],
+            [
+              "알림과 동기화",
+              "변경 뒤 알림을 기다림",
+              "모두 새 시간이 표시되는가"
+            ],
+            [
+              "취소와 환불",
+              "결제한 예약을 취소",
+              "시간대와 금액은 각각 어떻게 되는가"
+            ]
+          ],
+          "caption": "일반 고객의 절차로 검증하고 관리자의 추가 권한은 따로 확인합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "전화 예약도 같은 일정표에 입력하기",
+          "text": "접수대나 개인 메시지로 받은 예약을 시스템에 신속히 입력하고 고객에게 알림을 보냈는지 확인합니다. 온라인과 수동 예약이 서로 다른 일정표를 쓰면 플러그인 자체가 정확해도 정보가 맞지 않아 중복 예약이 생길 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 이메일 발송 확인하기",
+              "kind": "life",
+              "slug": "wordpress-smtp-delivery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 문의 양식 계획하기",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amelia 서비스 시간과 정원",
+          "url": "https://wpamelia.com/documentation/pricing-duration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 일반 설정과 시간대",
+          "url": "https://wpamelia.com/documentation/general-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 특별 근무일",
+          "url": "https://wpamelia.com/documentation/special-days/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 예약 정원과 상태",
+          "url": "https://wpamelia.com/documentation/appointment-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 예약 생성과 관리자 권한",
+          "url": "https://wpamelia.com/documentation/creating-appointments/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 알림 작동 방식",
+          "url": "https://wpamelia.com/documentation/notifications-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bookly Google Calendar 동기화",
+          "url": "https://support.booking-wp-plugin.com/hc/en-us/articles/203572552-Google-Calendar-Sync",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce Bookings 예약 확인과 관리",
+          "url": "https://woocommerce.com/document/introduction-to-woocommerce-bookings/managing-woocommerce-bookings/all-bookings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 预约系统：时段、确认信与取消规则",
+      "description": "WordPress 预约系统需要同时处理服务时间、人员容量、通知与取消。本文整理 Amelia、Bookly 和 WooCommerce Bookings 的评估方向，示范如何设置营业时段、缓冲时间及例外休假，再以一般顾客身分验收确认信、改期与退款流程，协助台湾工作室避免时段重叠，也让顾客知道何时才算正式预约成功。",
+      "hero": {
+        "src": "/guides/wordpress-booking-system/hero-zh-cn.jpg",
+        "alt": "原创屏幕、文档与盾牌插图，代表预约入口、班表纪录与时段核对。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "摄影咨询、手作体验或一对一教学，表面上都是选日期和时间，实际限制却不同。有的需要等老师确认，有的必须凑足人数，有的服务结束还要清场；只把日历放到网站上，无法自动解决这些问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "创建预约系统前，先把平常用电话确认的规则写清楚。插件的工作是依规则显示可预约时段、留下纪录和寄送通知；店内也要知道遇到取消、付款失败与临时停业时如何处理。"
+        },
+        {
+          "type": "heading",
+          "text": "先定义预约的是人、名额还是资源",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以单人摄影咨询为例，每次 45 分钟，之后保留 15 分钟整理，一位老师同时只能接待一组。手作体验则可能是一个时段容纳六人；若两位老师共用一间教室，还需要把教室视为限制，不能只看老师各自有空。"
+        },
+        {
+          "type": "paragraph",
+          "text": "为每项服务列出长度、缓冲、最少与最多人数、负责人、地点和需要的器材。再说明是整组包场，还是不同顾客可以加入同一时段。这些数据能协助你判断插件的容量与资源功能是否符合需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另外列出最早能预约的提前时间、最多能看到几个月后，以及取消与改期截止点。若今天下午无法临时安排人员，就不要让系统显示一小时后可立即预约。在线规则应与电话、柜台和社群私讯的受理方式一致。"
+        },
+        {
+          "type": "heading",
+          "text": "按工作流比较插件及付费范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia 以服务、人员与预约管理为主要架构，适合拿来评估工作室的时段需求。Bookly 也提供预约与日历集成，但 Google Calendar 同步有不同模式，完整双向同步需要对应方案或附加组件，不能看到「支持 Google」就认为能力完全相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若已经用 WooCommerce 管理商品与付款，可评估 WooCommerce Bookings。它的需确认预约流程，是先提出需求、经确认后再提供付款链接；这与顾客按下按钮就直接付款并完成预约不同，确认前后的文本和通知要跟着调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先查三件必需功能在候选方案是否存在：多人或资源容量、需要的金流，以及取消改期的顾客入口。免费版能展示基本表单，不代表已包含所有实际营运功能。将授权、通知信道费用和维护列入预算，再缩小到一套进行试作。"
+        },
+        {
+          "type": "heading",
+          "text": "用 Amelia 示范设置日常与例外时段",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 WordPress 设置正确城市时区，例如台北，再确认是否要依顾客时区显示。跨国在线咨询应在预约页和确认信标明时间基准；实体服务则让顾客清楚知道是到店所在地时间，避免同一场服务出现两种理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "创建服务、指定人员与工作时间，设置服务长度和必要缓冲。Amelia 的时段步进会限制可使用的时间单位；想用 45 分钟服务加 15 分钟缓冲时，应选可支持这些数值的步进，再检查顾客实际看到的起始时间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "休假和特殊工作日要分别处理。Amelia 的特殊日可覆盖一般工作时间，休假日仍优先阻挡预约。安排补班时先查看是否同时存在休假设置；临时换地点则核对指定人员在该地点的服务与可用时间，不只改页面上的地址文本。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "设置网站时区，创建服务、人员与地点。",
+            "填入服务长度、缓冲、容量及一般工作时段。",
+            "添加休假与特殊日，核对例外日期的优先结果。",
+            "用顾客帐号检查可选时段，逐笔对照纸上的班表。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "分清楚送出需求、确认和付款通知",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "预约创建后，页面与信件应直接说明目前状态。需要人工确认时写清楚回复方式与等待时间；立即成立的服务则提供日期、时区、地点、服务内容和到场准备。不要让待确认信的主旨写成「预约成功」，使顾客提早安排交通。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Amelia 的通知分为事件触发与调度通知。创建、改期或取消可能立即触发通知，前一天提醒则需要调度机制持续运作。测试时应真的等到指定提醒时间，确认网站调度有运行；收到一次立即确认信，不能证明隔天提醒也会送达。"
+        },
+        {
+          "type": "paragraph",
+          "text": "将顾客和员工的通知分别验收。顾客需要操作入口，员工需要服务信息与待办事项，内部备注不应误寄出去。电话号码、姓名及其他字段只搜集服务所需，付款失败时也应明确说明是否仍保留时段以及下一步。"
+        },
+        {
+          "type": "heading",
+          "text": "验收容量、日历同步与改期",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用两个一般顾客帐号选择同一时段，依序完成预约，观察剩余名额是否正确。Amelia 有允许待确认预约超出最大容量的设置，也有管理员可跨越限制的权限；如果店内不接受超收，需确认这些选项与日常作业一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用外部日历，确认同步方向、哪些忙碌事件会挡住时段，以及更新有没有延迟。Bookly 文档特别提醒全天事件若标成空闲，可能不会达到预期阻挡效果。请用一条添加、改期和删除事件测试，别只看到日历出现一条预约就结案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顾客改期后，检查新时段已保留、旧时段是否发布，以及通知中的日期与地点是否更新。对一次购买多次服务、多人预约或部分参加者取消的情况，另外测试，避免一次操作把整组尚未取消的预约都清掉。"
+        },
+        {
+          "type": "heading",
+          "text": "把取消与退款做成可追踪的收尾",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "预约页先提供可理解的取消、改期、迟到与未到场处理方式，说明联系管道和适用时间。实际政策需符合服务性质及适用规定，不能以插件限制按钮的设置，取代对消费者权益的判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "取消预约后，要分别确认时段、订单与款项。即使画面显示已取消，仍需核对金流是否退款、退了多少及有没有失败；采人工转帐时更需要记录处理人和结果。退款完成后也要确认通知内容没有仍要求顾客到场。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式开放前演练临时停业：找出受影响预约、安排逐笔联系与改期、更新班表并留下处理纪录。平日则定期检查下一周行程、未确认需求和通知失败项目，让在线预约真正减少来回确认，而不只是多了一个需要人盯的表单。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-booking-system/diagram-1-zh-cn.svg",
+          "alt": "四个步骤依序为定义服务规则、确认预约与付款、通知并维持班表同步、处理改期取消与退款。",
+          "width": 1600,
+          "height": 900,
+          "caption": "完成预约、通知已寄与款项已退，分别留下结果。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查项目",
+            "测试情境",
+            "预期能回答"
+          ],
+          "rows": [
+            [
+              "时间与缓冲",
+              "连续预约两场",
+              "是否保留整理时间"
+            ],
+            [
+              "容量与资源",
+              "两人抢同一时段",
+              "能否避免超收或重叠"
+            ],
+            [
+              "确认与付款",
+              "待确认后才付费",
+              "何时成立、何时收款"
+            ],
+            [
+              "通知与同步",
+              "改期并等待提醒",
+              "是否全部显示新时间"
+            ],
+            [
+              "取消与退款",
+              "取消已付款预约",
+              "时段和款项各如何处理"
+            ]
+          ],
+          "caption": "以一般顾客流程验收，管理员可用的额外权限另作检查。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "电话预约也要进入同一份班表",
+          "text": "柜台或私讯接受的预约应及时补入系统，并核对是否通知顾客。若在线和人工预约各用一份班表，即使插件本身正确，也可能因信息不同步而重复接单。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查 WordPress 邮件寄送",
+              "kind": "life",
+              "slug": "wordpress-smtp-delivery"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "规划网站的联系表单",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Amelia 服务时间与容量",
+          "url": "https://wpamelia.com/documentation/pricing-duration/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 一般设置与时区",
+          "url": "https://wpamelia.com/documentation/general-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 特殊工作日",
+          "url": "https://wpamelia.com/documentation/special-days/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 预约容量与状态",
+          "url": "https://wpamelia.com/documentation/appointment-settings/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 创建预约与管理员权限",
+          "url": "https://wpamelia.com/documentation/creating-appointments/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Amelia 通知运作方式",
+          "url": "https://wpamelia.com/documentation/notifications-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Bookly Google Calendar 同步",
+          "url": "https://support.booking-wp-plugin.com/hc/en-us/articles/203572552-Google-Calendar-Sync",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WooCommerce Bookings 确认与管理",
+          "url": "https://woocommerce.com/document/introduction-to-woocommerce-bookings/managing-woocommerce-bookings/all-bookings/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
