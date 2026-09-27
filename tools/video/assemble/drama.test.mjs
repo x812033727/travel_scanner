@@ -222,12 +222,12 @@ test("package trusts checks.json only for the very same script, and a drama's lo
   const good = (doc) => ({ ok: true, speech_hash: undefined, visual_hash: undefined, look_hash: undefined, subtitles_hash: undefined, mix_hash: undefined, clips_hash: "c1", doc });
   assert.equal(checksCurrent(slides, lexicon, { ok: false }), false);
   assert.equal(checksCurrent(drama, lexicon, good(drama), { clips_hash: "c1" }), false, "hashes of another script are refused");
+  // UPLOAD.md keeps only the Studio steps: a drama's disclosure is ticked as metadata.json says
+  // (the self-check list moved into the automatic checks, docs/videos/HANDS-OFF.md).
   const list = uploadChecklist({ metadata: { title: "t", made_for_kids: false, category_id: 24 }, captions: [], thumbnail: false, drama: true });
-  assert.match(list, /合成內容揭露.*一律勾「是」/);
-  assert.match(list, /每集劇情獨立/);
-  assert.match(list, /音樂授權/);
-  assert.match(list, /站主看過並核准了每一個關卡/);
+  assert.match(list, /「變造或合成內容」：勾「是」。`metadata\.json` 的 `contains_synthetic_media` 是 `true`/);
+  assert.doesNotMatch(list, /- \[ \]/);
   const plain = uploadChecklist({ metadata: { title: "t", made_for_kids: false, category_id: 28 }, captions: [], thumbnail: true });
-  assert.match(plain, /AI 使用揭露/);
+  assert.match(plain, /「變造或合成內容」：不用勾。`metadata\.json` 的 `contains_synthetic_media` 是 `false`/);
   assert.doesNotMatch(plain, /音樂授權/);
 });

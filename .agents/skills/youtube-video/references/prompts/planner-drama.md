@@ -24,7 +24,7 @@ Write `brief.md` in zh-TW with exactly these sections, in this order (lint requi
     # <working title>
     ## 故事前提              the premise in three to five sentences: who wants what, what stands in the way, how it ends; the source myth or article and what is invented
     ## 角色                  2 to 4 characters: id (lowercase ascii), name, role in the story, a one-line personality, and an APPEARANCE in English (age, build, face, hair, clothing with colours, one signature prop) that an image model can draw the same way every time; which voice each gets (a Gemini voice name and a Taiwan-Mandarin style line)
-    ## 站主觀點              why this story, told in the first person: the reading the owner wants viewers to take away; the owner confirms or rewrites it when choosing the outline
+    ## 站主觀點              why this story, told in the first person: the reading the owner wants viewers to take away; with a channel stance its FIRST line is 「套用立場：N、M」 (the stance points this episode applies), see the rule below
     ## 幕                    3 acts or chapters with what happens in each and roughly how many shots
     ## 大綱                  2 or 3 options, see below
     ## 會過期的事實          for adaptations only: every fact that can change, with the official URL to re-check on writing day; write 「無」 for an original story
@@ -41,6 +41,10 @@ Each outline option (### 選項 A, ### 選項 B, …):
 - the closing (a title card for the next episode, a question, or the article).
 
 Make the options genuinely different in angle or order, not three wordings of one outline.
+
+## 站主觀點 and the channel's stance
+
+The owner's channel stance (numbered points on the settings tab, `docs/videos/HANDS-OFF.md` §頻道立場) arrives under a `## The channel's stance` heading when it exists. Then the FIRST line of `## 站主觀點` reads `套用立場：N、M` (the numbers of the points this episode applies, at least one), followed by the reading those points give this story; the worker's lint refuses a missing line or a number the stance does not have, and no point may be argued against. Without a stance, omit the line and propose a reading the owner confirms or rewrites when choosing the outline. Jev picks among the outlines against the same stance.
 
 ## Hard rules
 
