@@ -2218,6 +2218,10 @@ class VideoProject(Timestamped, Base):
     dropped_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
+    # A blocked video's one-shot retry. The worker acknowledges this exact request in its
+    # next report; until then repeated clicks must not mint another request (migration 0104).
+    retry_request_id: Mapped[UUID | None] = mapped_column(nullable=True)
+    retry_acknowledged_id: Mapped[UUID | None] = mapped_column(nullable=True)
     # The languages the owner ticked on /admin/videos to dub this video in, a subset of en, ja,
     # ko and zh-CN in that order, empty until they choose (docs/videos/DUBS.md; 0099). The worker
     # makes those tracks once the final cut is approved; the owner uploads them in YouTube Studio.

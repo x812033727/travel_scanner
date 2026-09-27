@@ -32,6 +32,7 @@ export type ProjectSummary = {
   // confirmation was approved; both absent from an API older than this page.
   youtube_publish_at?: string | null; publish_approved_at?: string | null;
   dropped_at?: string | null; dropped_note?: string | null;
+  retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
   // The languages the owner ticked to dub this video in (docs/videos/DUBS.md).
   dub_locales?: string[];
