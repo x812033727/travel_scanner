@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-localize-wordpress-contact-forms-and-smtp
 title: Localize WordPress contact forms and SMTP guides batch029
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-batch029-pair-a
-claimed_at: 2026-09-27T09:35:18Z
+owner:
+claimed_at:
 created_at: 2026-09-27T09:35:08Z
 completed_at:
 branch: codex/article-localization-batch029-contact-pair-a
