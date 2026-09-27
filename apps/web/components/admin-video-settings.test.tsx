@@ -41,6 +41,7 @@ const view = {
   style_presets: ["cinematic-3d", "anime-2d", "ink-wash", "custom"],
   model_options: {
     claude_code: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
+    codex: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }],
     anthropic: [{ value: "claude-opus-5-5", label: "Claude Opus 5.5", description: null, status: "stable" }, { value: "claude-sonnet-5", label: "Claude Sonnet 5", description: null, status: "stable" }],
     openai: [], minimax: [],
     gemini: [{ value: "gemini-3.8-flash", label: "Gemini 3.8 Flash", description: null, status: "stable" }],
@@ -152,6 +153,17 @@ describe("AdminVideoSettings", () => {
     expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings/models");
   });
 
+  it("offers Codex subscription beside Claude Code for a video stage", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoModelSettings /></AdminOperationsProvider>);
+    const writer = await screen.findByRole("group", { name: "撰稿" });
+    fireEvent.change(writer.querySelectorAll("select")[0], { target: { value: "codex" } });
+    expect((writer.querySelectorAll("select")[1] as HTMLSelectElement).value).toBe("gpt-6-sol");
+    fireEvent.click(screen.getByRole("button", { name: "儲存影片模型" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect((puts[0] as { stage_models: Record<string, unknown> }).stage_models.writer).toEqual({ provider: "codex", model: "gpt-6-sol" });
+  });
+
   it("tells a content reviewer which role changes these settings, and sends the drama settings to their tab", async () => {
     stubFetch();
     window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings");
@@ -180,8 +192,9 @@ describe("AdminVideoSettings", () => {
     expect(await screen.findByRole("button", { name: "儲存影片模型" })).toHaveProperty("disabled", true);
     expect(screen.getAllByRole("option", { name: "OpenAI API (沒有金鑰)" }).length).toBe(STAGES.length);
     expect(screen.getAllByRole("option", { name: "Claude Code (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
+    expect(screen.getAllByRole("option", { name: "Codex (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
     expect(screen.getByText(/1 \/ 8 支草稿，呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
     expect(screen.queryByRole("spinbutton", { name: /訂閱帳號用到幾 %/ })).toBeNull();
-    expect(screen.getByText(/用滿才換下一個，最後一個用滿再回到 A/)).toBeTruthy();
+    expect(screen.getByText(/額度用滿才換下一個/)).toBeTruthy();
   });
 });

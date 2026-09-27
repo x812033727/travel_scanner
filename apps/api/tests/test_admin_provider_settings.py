@@ -1874,10 +1874,39 @@ async def test_only_the_owner_puts_the_site_on_their_claude_subscription(
     assert session.committed
 
 
+@pytest.mark.asyncio
+async def test_only_the_owner_puts_openai_calls_on_codex_subscription(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def fake_snapshot(*_args: object) -> object:
+        return "snapshot"
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    change = ProviderSettingsUpdate(config={"openai_connection": "subscription"})
+    session = UpdateSession()
+    with pytest.raises(AppError) as refused:
+        await update_provider_settings(
+            session,  # type: ignore[arg-type]
+            "ai_vendors", change, _actor("operations"), object(),  # type: ignore[arg-type]
+        )
+    assert (refused.value.status, refused.value.code) == (403, "admin_capability_required")
+    session = UpdateSession()
+    await update_provider_settings(
+        session,  # type: ignore[arg-type]
+        "ai_vendors", change, _actor("owner"), object(),  # type: ignore[arg-type]
+    )
+    row = next(item for item in session.added if isinstance(item, ProviderConfig))
+    assert row.config == {"openai_connection": "subscription"}
+
+
 def test_the_claude_connection_is_one_of_two_choices_and_there_is_no_usage_cap() -> None:
     with pytest.raises(AppError):
         _validate_provider_values(
             "ai_vendors", {}, ProviderSettingsUpdate(config={"anthropic_connection": "codex"})
+        )
+    with pytest.raises(AppError):
+        _validate_provider_values(
+            "ai_vendors", {}, ProviderSettingsUpdate(config={"openai_connection": "codex"})
         )
     # The owner removed the cap on 2026-09-26: an account is used until it is full.
     fields = PROVIDER_DEFINITIONS["ai_vendors"].config_fields

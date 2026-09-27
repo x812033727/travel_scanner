@@ -28,7 +28,7 @@ export type Connection = "apiKey" | "subscription" | "subscriptionFallback" | "n
 // "geminiApiKeyOnly": the row runs on Gemini. The owner signs the host's Antigravity CLI in to
 // Google AI subscriptions for their own use over SSH only (2026-09-25): Antigravity's terms
 // forbid driving it from other products, so the site's Gemini calls stay on the API key.
-export type Support = "apiKeyOnly" | "claudeSubscription" | "claudeCode" | "geminiApiKeyOnly";
+export type Support = "apiKeyOnly" | "claudeSubscription" | "codexSubscription" | "claudeCode" | "codex" | "videoSubscriptions" | "geminiApiKeyOnly";
 
 export type OverviewRow = {
   key: string;
@@ -73,12 +73,13 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
   const planner = config("ai_planner");
   const guide = config("ai_guide_search");
   const intro = config("hotspot_intros");
-  // The Claude connection switch exists once the site can run Claude on the subscription accounts.
   const vendorsCard = config("ai_vendors");
-  const canSubscribe = "anthropic_connection" in vendorsCard;
-  const onSubscription = text(vendorsCard.anthropic_connection) === "subscription";
-  const siteConnection = (vendor: string): Connection => vendor === "anthropic" && onSubscription ? "subscriptionFallback" : "apiKey";
-  const siteSupport: Support = canSubscribe ? "claudeSubscription" : "apiKeyOnly";
+  const siteConnection = (vendor: string): Connection => (
+    (vendor === "anthropic" && text(vendorsCard.anthropic_connection) === "subscription") ||
+    (vendor === "openai" && text(vendorsCard.openai_connection) === "subscription")
+  ) ? "subscriptionFallback" : "apiKey";
+  const siteSupport = (vendor: string): Support => vendor === "anthropic" && "anthropic_connection" in vendorsCard
+    ? "claudeSubscription" : vendor === "openai" && "openai_connection" in vendorsCard ? "codexSubscription" : "apiKeyOnly";
   const rows: OverviewRow[] = [];
 
   if (sources.providers) {
@@ -107,7 +108,7 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
         key: "guideSearch", feature: t("overview.features.guideSearch"), vendor: vendorLabels[guideVendor],
         model: own ? label("ai_guide_search", `hotspot_guide_ai_${guideVendor}_model`, own) : plannerModel(guideVendor),
         inherited: own ? undefined : t("overview.features.planner"),
-        connection: siteConnection(guideVendor), support: siteSupport, gemini: guideVendor === "gemini",
+        connection: siteConnection(guideVendor), support: siteSupport(guideVendor), gemini: guideVendor === "gemini",
         edit: settingsHref("providers", "ai_guide_search", "hotspot_guide_ai_default_provider"), open: "/admin/hotspots?tab=content&section=guides",
       });
     }
@@ -119,7 +120,7 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
         key: "intros", feature: t("overview.features.intros"), vendor: vendorLabels[introVendor],
         model: own ? label("hotspot_intros", `hotspot_intro_ai_${introVendor}_model`, own) : fromGuide ? label("ai_guide_search", `hotspot_guide_ai_${introVendor}_model`, fromGuide) : plannerModel(introVendor),
         inherited: own ? undefined : t(fromGuide ? "overview.features.guideSearch" : "overview.features.planner"),
-        connection: siteConnection(introVendor), support: siteSupport, gemini: introVendor === "gemini",
+        connection: siteConnection(introVendor), support: siteSupport(introVendor), gemini: introVendor === "gemini",
         edit: settingsHref("providers", "hotspot_intros", "hotspot_intro_ai_default_provider"), open: "/admin/hotspots?tab=content&section=intros",
       });
     }
@@ -137,7 +138,7 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
       rows.push({
         key: `news-${kind}`, feature: t(`overview.features.${({ writer: "newsWriter", verifier: "newsVerifier", editor: "newsEditor" } as const)[kind]}`), vendor: newsProviderLabels[provider],
         model: options.find((option) => option.value === id)?.label ?? id, inherited: chosen ? undefined : t("overview.features.guideSearch"),
-        connection: siteConnection(provider), support: siteSupport, gemini: provider === "gemini", edit: "#ai-models-news", open: "/admin/news?tab=settings",
+        connection: siteConnection(provider), support: siteSupport(provider), gemini: provider === "gemini", edit: "#ai-models-news", open: "/admin/news?tab=settings",
       });
     }
   }
@@ -149,7 +150,7 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
       rows.push({
         key: `video-${stage}`, feature: t("overview.features.video", { stage: stageName(stage) }), vendor: videoProviderLabels[choice.provider],
         model: video.model_options?.[choice.provider]?.find((option) => option.value === choice.model)?.label ?? choice.model,
-        connection: choice.provider === "claude_code" ? "subscription" : "apiKey", support: "claudeCode", gemini: choice.provider === "gemini", edit: "#ai-models-video", open: "/admin/videos?tab=settings",
+        connection: choice.provider === "claude_code" || choice.provider === "codex" ? "subscription" : "apiKey", support: choice.provider === "codex" ? "codex" : choice.provider === "claude_code" ? "claudeCode" : "videoSubscriptions", gemini: choice.provider === "gemini", edit: "#ai-models-video", open: "/admin/videos?tab=settings",
       });
     }
   }

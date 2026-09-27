@@ -15,7 +15,7 @@ import pytest
 
 from ai_accounts_agent.config import AgentConfig
 from ai_accounts_agent.runner import CliError
-from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude
+from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude, run_codex
 from ai_accounts_agent.security import signature_for
 from ai_accounts_agent.server import AgentApplication
 
@@ -50,19 +50,47 @@ FAKE_CLAUDE = textwrap.dedent(
     """
 )
 
+FAKE_CODEX = textwrap.dedent(
+    """
+    import json, os, sys
+    args = sys.argv[1:]
+    folder = os.environ["CODEX_HOME"]
+    if args == ["--version"]:
+        print("codex-cli 0.157.0" if os.path.exists(os.path.join(folder, "wrong-version"))
+              else "codex-cli 0.156.1")
+        sys.exit(0)
+    prompt = sys.stdin.read()
+    with open(os.path.join(folder, "last-run.json"), "w", encoding="utf-8") as out:
+        json.dump({"args": args, "prompt": prompt, "env": dict(os.environ)}, out)
+    if "LIMIT" in prompt:
+        print(json.dumps({"type": "turn.failed", "message": "You've hit your weekly limit"}))
+        sys.exit(1)
+    if "TOOL" in prompt:
+        print(json.dumps({"type": "item.completed", "item": {"type": "command_execution"}}))
+    answer = {"type": "item.completed", "item": {
+        "type": "agent_message", "text": json.dumps({"text": '{"ok": true}'})}}
+    print(json.dumps(answer))
+    print(json.dumps({"type": "turn.completed", "usage": {
+        "input_tokens": 123, "cached_input_tokens": 7, "output_tokens": 45}}))
+    """
+)
+
 
 def _config(tmp_path: Path) -> AgentConfig:
     fake = tmp_path / "fake_claude.py"
     fake.write_text(FAKE_CLAUDE, encoding="utf-8")
+    fake_codex = tmp_path / "fake_codex.py"
+    fake_codex.write_text(FAKE_CODEX, encoding="utf-8")
     config = AgentConfig(
         hmac_key=KEY,
         socket_path=tmp_path / "agent.sock",
         state_root=tmp_path / "state",
         claude_command=(sys.executable, str(fake)),
-        codex_command=(sys.executable, str(fake)),
+        codex_command=(sys.executable, str(fake_codex)),
     )
     for slot in ("a", "b"):
         config.slot_path("claude", slot).mkdir(parents=True, exist_ok=True)
+        config.slot_path("codex", slot).mkdir(parents=True, exist_ok=True)
     return config
 
 
@@ -82,7 +110,7 @@ def _request(prompt: str = '{"brief": "…"}', **changes: Any) -> RunRequest:
 @pytest.mark.parametrize(
     "changes",
     [
-        {"tool": "codex"},
+        {"tool": "agy"},
         {"model": "opus; rm -rf /"},
         {"system": ""},
         {"prompt": ""},
@@ -95,7 +123,9 @@ def _request(prompt: str = '{"brief": "…"}', **changes: Any) -> RunRequest:
         {"queue_seconds": True},
     ],
 )
-def test_a_run_request_must_name_claude_a_model_and_sane_limits(changes: dict[str, Any]) -> None:
+def test_a_run_request_requires_a_supported_tool_and_sane_limits(
+    changes: dict[str, Any],
+) -> None:
     with pytest.raises(RunRefused) as refused:
         _request(**changes)
     assert refused.value.status == 422
@@ -190,6 +220,44 @@ def test_a_spent_window_is_a_pause_and_a_crash_is_a_failure(tmp_path: Path) -> N
     assert "overloaded" in str(failed.value)
 
 
+def test_codex_runs_with_all_tools_disabled_and_rejects_any_tool_event(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    result = run_codex(config, "b", _request(tool="codex", model="gpt-6-sol"))
+    assert (result["text"], result["slot"], result["input_tokens"], result["output_tokens"]) == (
+        '{"ok": true}', "b", 123, 45,
+    )
+    record = json.loads((config.slot_path("codex", "b") / "last-run.json").read_text())
+    args = record["args"]
+    required = {
+        "--json", "--ephemeral", "--ignore-user-config", "--ignore-rules", "--strict-config"
+    }
+    assert required <= set(args)
+    assert args[args.index("-s") + 1] == "read-only"
+    assert 'web_search="disabled"' in args and "tools.web_search=false" in args
+    forbidden_tools = {
+        "shell_tool", "unified_exec", "apps", "plugins", "browser_use", "computer_use", "hooks"
+    }
+    assert forbidden_tools <= {
+        args[index + 1] for index, arg in enumerate(args[:-1]) if arg == "--disable"
+    }
+    assert record["env"]["CODEX_HOME"] == str(config.slot_path("codex", "b"))
+    assert not any("HMAC" in key or KEY in value for key, value in record["env"].items())
+    assert not any((config.state_root / "runs").iterdir())
+    with pytest.raises(CliError, match="exposed a tool"):
+        run_codex(config, "a", _request("TOOL", tool="codex", model="gpt-6-sol"))
+    with pytest.raises(RunRefused) as paused:
+        run_codex(config, "a", _request("LIMIT", tool="codex", model="gpt-6-sol"))
+    assert paused.value.code == "subscription_quota_paused"
+
+
+def test_codex_upgrade_needs_a_new_tool_isolation_check(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    (config.slot_path("codex", "a") / "wrong-version").write_text("", encoding="utf-8")
+    with pytest.raises(CliError, match="version needs a new tool-isolation verification"):
+        run_codex(config, "a", _request(tool="codex", model="gpt-6-sol"))
+    assert not (config.slot_path("codex", "a") / "last-run.json").exists()
+
+
 class Accounts:
     """Claude slot a signed in near its cap, b with room; nothing is ever started."""
 
@@ -279,8 +347,8 @@ def test_the_runs_route_picks_an_account_runs_once_and_pauses_when_all_are_spent
     status, body = _signed(full, run)
     assert status == 429 and body["code"] == "subscription_quota_paused"
     assert body["resets_at"] == "2026-09-25T12:00:00Z"
-    status, body = _signed(application, {**run, "tool": "codex"})
-    assert status == 422 and body["code"] == "run_tool_not_offered"
+    status, body = _signed(application, {**run, "tool": "codex", "model": "gpt-6-sol"})
+    assert status == 409 and body["code"] == "subscription_not_signed_in"
 
 
 def test_a_busy_account_is_waited_for_and_a_resting_one_counts_as_spent() -> None:
@@ -304,7 +372,7 @@ def test_a_run_that_hits_the_limit_moves_on_to_the_next_account_and_rests_the_fi
     application = AgentApplication(config, claude=Accounts({"a": 10, "b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
     status, body = _signed(application, run)
     assert status == 200 and body["slot"] == "b", "it was a's turn but its run hit the limit"
-    assert "a" in application._runs_resting and not application._runs_busy
+    assert ("claude", "a") in application._runs_resting and not application._runs_busy
     assert config.current_path("claude").read_text(encoding="utf-8").strip() == "b"
     (config.slot_path("claude", "b") / "last-run.json").unlink()
     (config.slot_path("claude", "a") / "last-run.json").unlink()
@@ -340,7 +408,7 @@ def test_a_request_gives_up_when_every_account_with_room_stays_busy(tmp_path: Pa
         "queue_seconds": 0,
     }
     application = AgentApplication(config, claude=Accounts({"b": 20}), codex=Accounts({}))  # type: ignore[arg-type]
-    application._runs_busy.add("b")
+    application._runs_busy.add(("claude", "b"))
     status, body = _signed(application, run)
     assert (status, body["code"]) == (503, "subscription_busy")
     assert not (config.slot_path("claude", "b") / "last-run.json").exists()
@@ -355,6 +423,30 @@ def test_two_runs_on_different_accounts_go_side_by_side(tmp_path: Path) -> None:
     assert not config.current_path("claude").exists()
     application._release_run_slot(first, spent=False)
     assert application._claim_run_slot(_request()) == "a"
+
+
+def test_claude_and_codex_rotate_and_run_independently(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    application = AgentApplication(
+        config, claude=Accounts({"a": 10}), codex=Accounts({"a": 20})  # type: ignore[arg-type]
+    )
+    assert application._claim_run_slot(_request()) == "a"
+    assert application._claim_run_slot(_request(tool="codex", model="gpt-6-sol")) == "a"
+    assert application._runs_busy == {("claude", "a"), ("codex", "a")}
+    application._release_run_slot("a", spent=False, tool="codex")
+    application._release_run_slot("a", spent=False)
+
+
+def test_signed_codex_run_uses_a_codex_slot(tmp_path: Path) -> None:
+    config = _config(tmp_path)
+    application = AgentApplication(
+        config, claude=Accounts({}), codex=Accounts({"b": 20})  # type: ignore[arg-type]
+    )
+    status, body = _signed(application, {
+        "tool": "codex", "model": "gpt-6-sol", "system": "Write JSON.", "prompt": "{}"
+    })
+    assert status == 200
+    assert (body["slot"], body["model"], body["text"]) == ("b", "gpt-6-sol", '{"ok": true}')
 
 
 def _wait_until(check: Any, seconds: float = 5.0) -> None:

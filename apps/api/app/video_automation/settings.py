@@ -69,6 +69,7 @@ def model_options() -> dict[ProviderName, list[ModelOptionView]]:
     options: dict[ProviderName, list[ModelOptionView]] = {
         # Claude Code takes the same model names as the API; it runs them on the subscription.
         "claude_code": _options(MODEL_CATALOG["anthropic"], None),
+        "codex": _options(MODEL_CATALOG["openai"], None),
     }
     for provider, capability in MODEL_CAPABILITY.items():
         options[provider] = _options(MODEL_CATALOG[provider], capability)
@@ -80,6 +81,7 @@ def configured_providers(runtime: Settings) -> list[ProviderName]:
         # Whether the host agent is reachable is only known when a stage runs; configured here
         # means the API has what it needs to ask it.
         "claude_code": runtime.ai_accounts_configured,
+        "codex": runtime.ai_accounts_configured,
         "openai": runtime.openai_api_key,
         "anthropic": runtime.anthropic_api_key,
         "minimax": runtime.minimax_api_key,

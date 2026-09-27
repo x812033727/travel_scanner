@@ -1,8 +1,8 @@
-"""A writing stage on the Claude subscription accounts, through the host's AI accounts agent.
+"""A writing stage on Claude or Codex subscriptions through the host's AI accounts agent.
 
 The owner chose on 2026-09-25 to run the automated writing on the subscriptions the host signs
 in, having read Anthropic's terms themselves. The API never touches those accounts: it hands the
-agent one prompt, and the agent runs Claude Code with every tool turned off on the account with
+agent one prompt, and the agent runs the selected CLI with every tool turned off on an account with
 the most room below the owner's cap (ai_accounts_agent.runs). The answer is the model's text; the
 worker parses and lints it as it does an API answer.
 """
@@ -40,16 +40,17 @@ def _failure(error: AppError) -> StageFailed:
         return StageFailed(
             503,
             "video_ai_provider_not_configured",
-            "主機上沒有登入的 Claude 訂閱帳號：請在「AI 帳號」頁登入一個",
+            "主機上沒有登入的訂閱帳號：請在「AI 帳號」頁登入一個",
         )
     if error.code == "ai_accounts_agent_unavailable":
         return StageFailed(503, "video_ai_upstream_unreachable", error.detail, "60")
-    return StageFailed(502, "video_ai_upstream_failed", f"Claude 訂閱帳號執行失敗：{error.detail}")
+    return StageFailed(502, "video_ai_upstream_failed", f"訂閱帳號執行失敗：{error.detail}")
 
 
 async def run_on_subscription(
     runtime: Settings,
     *,
+    tool: str = "claude",
     model: str,
     instructions: str,
     payload: dict[str, Any],
@@ -59,6 +60,7 @@ async def run_on_subscription(
     agent = client or AiAccountsAgentClient(runtime)
     try:
         result = await agent.run_prompt(
+            tool=tool,
             model=model,
             system=instructions + ANSWER_RULE,
             prompt=json.dumps(payload, ensure_ascii=False),

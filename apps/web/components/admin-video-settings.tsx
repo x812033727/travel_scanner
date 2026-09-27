@@ -15,9 +15,8 @@ import { api } from "@/lib/api";
 
 // apps/api/app/video_automation/schemas.py. The worker on the host reads the same values with
 // its video tool token (docs/videos/AUTOMATION.md).
-// claude_code: the Claude subscription accounts the host's AI accounts agent signs in; the rest
-// are the site's API keys.
-export const PROVIDERS = ["claude_code", "anthropic", "openai", "gemini", "minimax"] as const;
+// claude_code and codex use subscription accounts on the host; the rest use API keys.
+export const PROVIDERS = ["claude_code", "codex", "anthropic", "openai", "gemini", "minimax"] as const;
 export const STAGES = ["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"] as const;
 export const CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
 export type Provider = (typeof PROVIDERS)[number];
@@ -102,7 +101,7 @@ export type VideoSettingsView = VideoSettings & {
   updated_at: string | null;
 };
 
-export const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
+export const providerLabels: Record<Provider, string> = { claude_code: "Claude Code", codex: "Codex", anthropic: "Anthropic Claude API", openai: "OpenAI API", gemini: "Google Gemini API", minimax: "MiniMax API" };
 const numberFields = {
   schedule: [["draft_interval_hours", 6, 720], ["topics_per_run", 1, 3], ["max_waiting_drafts", 1, 10]],
   length: [["target_minutes_min", 3, 30], ["target_minutes_max", 3, 30]],

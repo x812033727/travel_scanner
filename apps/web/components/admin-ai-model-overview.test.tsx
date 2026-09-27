@@ -26,7 +26,7 @@ const news = {
 } as unknown as NewsSettings;
 const video = {
   stage_models: { planner: { provider: "claude_code", model: "claude-sonnet-5" }, writer: { provider: "openai", model: "gpt-6-sol" }, verifier: { provider: "claude_code", model: "claude-opus-5-5" }, listener: { provider: "claude_code", model: "claude-opus-5-5" }, translator: { provider: "gemini", model: "gemini-3.8-flash" }, caption_reviewer: { provider: "claude_code", model: "claude-opus-5-5" } },
-  model_options: { claude_code: [], anthropic: [], openai: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }], gemini: [], minimax: [] },
+  model_options: { claude_code: [], codex: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }], anthropic: [], openai: [{ value: "gpt-6-sol", label: "GPT-6 Sol", description: null, status: "stable" }], gemini: [], minimax: [] },
 } as unknown as VideoSettingsView;
 
 const row = (sources: OverviewSources, key: string) => overviewRows(sources, t, stage).find((item) => item.key === key)!;
@@ -45,7 +45,7 @@ describe("overviewRows", () => {
   it("marks the features that can only run on an API key", () => {
     const rows = overviewRows({ providers: providers(), news, video }, t, stage);
     const support = Object.fromEntries(rows.map((item) => [item.key, item.support]));
-    expect(support).toMatchObject({ planner: "apiKeyOnly", geminiSearch: "geminiApiKeyOnly", guideSearch: "apiKeyOnly", "news-writer": "apiKeyOnly", "video-writer": "claudeCode" });
+    expect(support).toMatchObject({ planner: "apiKeyOnly", geminiSearch: "geminiApiKeyOnly", guideSearch: "apiKeyOnly", "news-writer": "apiKeyOnly", "video-writer": "videoSubscriptions" });
     expect(rows.filter((item) => item.connection === "subscription").map((item) => item.key)).toEqual(["video-planner", "video-verifier", "video-listener", "video-caption_reviewer"]);
     expect(rows.every((item) => item.key.startsWith("video-") || item.connection === "apiKey")).toBe(true);
   });
@@ -55,9 +55,19 @@ describe("overviewRows", () => {
     expect(row(sources, "guideSearch")).toMatchObject({ support: "claudeSubscription", connection: "subscriptionFallback" });
     expect(row(sources, "news-writer")).toMatchObject({ connection: "subscriptionFallback" });
     // Not Claude, so still the API key; the planner never takes the subscription.
-    expect(row(sources, "intros")).toMatchObject({ support: "claudeSubscription", connection: "apiKey" });
+    expect(row(sources, "intros")).toMatchObject({ support: "apiKeyOnly", connection: "apiKey" });
     expect(row(sources, "planner")).toMatchObject({ support: "apiKeyOnly", connection: "apiKey" });
     expect(row({ providers: providers({ anthropic_connection: "api_key" }) }, "guideSearch").connection).toBe("apiKey");
+  });
+
+  it("shows Codex subscription routing for OpenAI features and video stages", () => {
+    const configured = providers({ openai_connection: "subscription" });
+    expect(row({ providers: configured }, "intros")).toMatchObject({ support: "codexSubscription", connection: "subscriptionFallback" });
+    expect(row({ providers: configured }, "planner").connection).toBe("apiKey");
+    const codexVideo = { ...video, stage_models: { ...video.stage_models, writer: { provider: "codex", model: "gpt-6-sol" } } } as VideoSettingsView;
+    expect(row({ video: codexVideo }, "video-writer")).toMatchObject({ vendor: "Codex", support: "codex", connection: "subscription" });
+    const apiVideo = { ...video, stage_models: { ...video.stage_models, writer: { provider: "openai", model: "gpt-6-sol" } } } as VideoSettingsView;
+    expect(row({ video: apiVideo }, "video-writer")).toMatchObject({ support: "videoSubscriptions", connection: "apiKey" });
   });
 
   it("keeps every row that runs on Gemini on the API key, whatever the feature allows", () => {

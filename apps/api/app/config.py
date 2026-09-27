@@ -240,6 +240,9 @@ class Settings(BaseSettings):
     openai_api_base_url: str = "https://api.openai.com/v1"
     openai_model: str = "gpt-6-sol"
     openai_api_key: str | None = None
+    # The site's structured OpenAI calls may use text-only Codex subscription runs.
+    # Trip planning and trip parsing still use API keys.
+    openai_connection: Literal["api_key", "subscription"] = "api_key"
     anthropic_api_base_url: str = "https://api.anthropic.com/v1"
     anthropic_model: str = "claude-sonnet-5"
     anthropic_api_key: str | None = None
