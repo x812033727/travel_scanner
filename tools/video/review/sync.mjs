@@ -88,7 +88,10 @@ export function outlineOptions(brief) {
   return options;
 }
 
-const GUIDE_URL = /^https:\/\/(?:www\.)?mokaair\.com\/[A-Za-z-]+\/guides\/([a-z0-9][a-z0-9-]{0,118}[a-z0-9])\/?(?:[?#].*)?$/;
+// An article is read at /<locale>/life/<slug> or /<locale>/guides/<kind>/<slug> (core/metadata.mjs
+// articlePath). /<locale>/guides/<slug> is what drafts saved before 2026-09-27; it still names
+// the article, so earlier videos keep their topic.
+const GUIDE_URL = /^https:\/\/(?:www\.)?mokaair\.com\/[A-Za-z-]+\/(?:life|guides(?:\/[a-z0-9-]+)?)\/([a-z0-9][a-z0-9-]{0,118}[a-z0-9])\/?(?:[?#].*)?$/;
 
 /** The site articles among some URLs, by slug. */
 export function guideSlugs(urls) {
