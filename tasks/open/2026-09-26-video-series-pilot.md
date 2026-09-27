@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-09-26T17:36:33Z
 completed_at:
-branch:
+branch: claude/video-series-pilot-note
 depends_on:
   - 2026-09-26-video-series-episodes
   - 2026-09-26-video-series-admin-tab
@@ -37,3 +37,8 @@ scope:
 ## How to verify
 
 看 `/admin/videos` 的漫劇分頁：三集都「已上架」，作品頁的花費與 `docs/videos/SERIES.md` 的數字一致。
+
+## Notes
+
+- 2026-09-26 22:03Z：五支 PR（#818、#821、#822、#823、#824）都已合併並部署（1c0b5981，alembic `0099_video_drama_series`）；主機驗證過 admin／tool／BFF 的 series 路由、四張 `video_drama_*` 表、`video_stage_prompts` 主鍵含 `variant`、工人的三個新模組。這張票從這裡起只等站主：設定分頁開「AI 漫劇」，漫劇分頁「新的作品」建第一部；工人每 5 分鐘問一次 `series/next`，設定集出現後在作品頁核准或帶備註退回。
+- 記數字的地方：`docs/videos/SERIES.md` 的「成本與節奏」；作品頁每集有花費，`GET /admin/video-automation/series/{slug}` 有每份文件的版本數（退回次數）。

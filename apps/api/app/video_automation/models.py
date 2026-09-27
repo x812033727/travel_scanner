@@ -100,6 +100,9 @@ DEFAULT_DRAMA: dict[str, Any] = {
     "series_chapter_ahead": 2,
     "series_doc_rewrites": 2,
     "series_episodes_per_month": 30,
+    # A character's sheet is picked by the judge's score (docs/videos/HANDS-OFF.md); off
+    # until the owner has looked at a first drama's sheets, like auto_approve_storyboard.
+    "auto_pick_look": False,
 }
 DRAMA_FIELDS: tuple[str, ...] = tuple(DEFAULT_DRAMA)
 
@@ -205,8 +208,14 @@ class VideoAutomationSettings(Base):
     subscription_max_usage_percent: Mapped[int] = mapped_column(
         Integer, default=80, server_default="80"
     )
-    # Gates: outline, final cut and publishing always wait for the owner.
+    # Gates: publishing always waits for the owner.
     auto_approve_audio: Mapped[bool] = mapped_column(Boolean, default=True)
+    # The hands-off switches (docs/videos/HANDS-OFF.md; migration 0100). channel_stance is
+    # what this channel believes, the only source the planner writes the owner's viewpoint
+    # from; while it is blank Jev does not choose outlines, whatever auto_pick_outline says.
+    channel_stance: Mapped[str] = mapped_column(Text, default="", server_default="")
+    auto_pick_outline: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
+    auto_approve_final: Mapped[bool] = mapped_column(Boolean, default=True, server_default="true")
     # The drama format (docs/videos/DRAMA.md): media models, clip shape, budgets, gates, look.
     drama_enabled: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     image_provider: Mapped[str] = mapped_column(
@@ -246,6 +255,7 @@ class VideoAutomationSettings(Base):
     auto_approve_storyboard: Mapped[bool] = mapped_column(
         Boolean, default=False, server_default="false"
     )
+    auto_pick_look: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
     # [{provider, name, style?, hint?}]: voices the planner casts characters from.
     character_voice_pool: Mapped[list[dict[str, Any]]] = mapped_column(
         JSON, default=_default([]), server_default=text("'[]'")

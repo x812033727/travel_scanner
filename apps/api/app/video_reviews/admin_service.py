@@ -21,11 +21,21 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import Settings
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
+from app.video_automation.judge import (
+    PACKAGE_AUTO_APPROVED_NOTE,
+    QA_AUTO_APPROVED_NOTE,
+    pick_choice,
+    pick_reason,
+)
 from app.video_automation.settings import (
     AUTO_APPROVED_NOTE,
     AUTO_APPROVED_STORYBOARD_NOTE,
     auto_approves_audio,
+    auto_approves_final,
     auto_approves_storyboard,
+    auto_picks_look,
+    auto_picks_outline,
+    look_pick_note,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
@@ -245,34 +255,45 @@ async def submit_review(
         ),
         None,
     )
-    if same is not None:
-        return _review_out(same)
     now = datetime.now(UTC)
-    # A new submission replaces the pending one of the same gate and subject: one look review
-    # per character stays open at a time, and the older gates (subject None) behave as before.
-    for review in reviews:
-        if (
-            review.gate == payload.gate
-            and review.status == "pending"
-            and review.subject == payload.subject
-        ):
-            review.status = "superseded"
-            review.updated_at = now
-    review = VideoReview(
-        id=uuid4(),
-        project_id=project.id,
-        gate=payload.gate,
-        subject=payload.subject,
-        content_sha256=payload.content_sha256,
-        summary=payload.summary,
-        payload=payload.payload,
-        files=[item.model_dump() for item in payload.files],
-        status="pending",
-        submitted_by_token_id=token.id,
-        created_at=now,
-        updated_at=now,
-    )
-    session.add(review)
+    if same is not None and same.status != "pending":
+        return _review_out(same)
+    if same is not None:
+        # The same file sent again while it waits: the newer payload, summary and files
+        # replace the older ones (a quality check run after the fact, captions fixed without
+        # touching the video), and the rules below run again on them (HANDS-OFF.md).
+        same.summary = payload.summary
+        same.payload = payload.payload
+        same.files = [item.model_dump() for item in payload.files]
+        same.updated_at = now
+        review = same
+    else:
+        # A new submission replaces the pending one of the same gate and subject: one look
+        # review per character stays open at a time, and the older gates (subject None)
+        # behave as before.
+        for older in reviews:
+            if (
+                older.gate == payload.gate
+                and older.status == "pending"
+                and older.subject == payload.subject
+            ):
+                older.status = "superseded"
+                older.updated_at = now
+        review = VideoReview(
+            id=uuid4(),
+            project_id=project.id,
+            gate=payload.gate,
+            subject=payload.subject,
+            content_sha256=payload.content_sha256,
+            summary=payload.summary,
+            payload=payload.payload,
+            files=[item.model_dump() for item in payload.files],
+            status="pending",
+            submitted_by_token_id=token.id,
+            created_at=now,
+            updated_at=now,
+        )
+        session.add(review)
     # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
     # passed every line and the setting is on, the review is decided as it arrives.
     auto_note = None
@@ -281,6 +302,19 @@ async def submit_review(
     # A drama's storyboard may stand on the judge's scores when the owner turned that on.
     elif payload.gate == "storyboard" and await auto_approves_storyboard(session, payload.payload):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
+    # A character's sheet is picked by the judge's score when the owner turned that on.
+    elif payload.gate == "look" and await auto_picks_look(session, payload.payload):
+        auto_note = look_pick_note(payload.payload)
+        review.choice = str(payload.payload.get("suggested"))
+    # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
+    # and that a final cut and its upload confirmation stand on the automatic checks.
+    elif payload.gate == "outline" and await auto_picks_outline(session, payload.payload):
+        auto_note = pick_reason(payload.payload)
+        review.choice = pick_choice(payload.payload)
+    elif payload.gate in ("final", "publish") and await auto_approves_final(
+        session, payload.gate, payload.payload, payload.content_sha256
+    ):
+        auto_note = QA_AUTO_APPROVED_NOTE if payload.gate == "final" else PACKAGE_AUTO_APPROVED_NOTE
     if auto_note is not None:
         review.status = "approved"
         review.note = auto_note

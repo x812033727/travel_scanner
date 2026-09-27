@@ -14,7 +14,13 @@ from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 from app.db import Base
 from app.models import AdminAuditLog, User
 from app.news_automation import backfill_cli, jobs
-from app.news_automation.models import NewsCandidate, NewsEvidence, NewsSource
+from app.news_automation.models import (
+    NewsAssessment,
+    NewsCandidate,
+    NewsEvidence,
+    NewsSource,
+)
+from app.news_automation.pipeline import JEV_QUOTA_PAUSED
 
 
 def _candidate(
@@ -130,3 +136,85 @@ async def test_the_backfill_reopens_only_stories_stopped_by_old_rules_best_first
     untouched = {row.status for key, row in rows.items() if key not in {official_id, press_id}}
     assert untouched == {"rejected", "published"}
     assert audits == ["news_candidate_reopened", "news_candidate_reopened"]
+
+
+@pytest.mark.asyncio
+async def test_jev_quota_holds_are_reopened_paused_and_not_queued(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'news.db'}")
+    tables = cast(
+        list[Table],
+        [
+            User.__table__,
+            NewsSource.__table__,
+            NewsCandidate.__table__,
+            NewsEvidence.__table__,
+            NewsAssessment.__table__,
+            AdminAuditLog.__table__,
+        ],
+    )
+    async with engine.begin() as connection:
+        await connection.run_sync(lambda sync: Base.metadata.create_all(sync, tables=tables))
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    published = datetime(2026, 9, 25, tzinfo=UTC)
+    async with factory() as session:
+        session.add(User(email="owner@example.com", password_hash="unused", is_admin=True))
+        source = NewsSource(
+            name="Feed",
+            url="https://news.example/feed",
+            format="rss",
+            role="evidence",
+            vertical="ai",
+        )
+        session.add(source)
+        await session.flush()
+        quota = _candidate(source, "manual_review", "news_duplicate_uncertain", published)
+        uncertain = _candidate(source, "manual_review", "news_duplicate_uncertain", published)
+        session.add_all([quota, uncertain])
+        await session.flush()
+        for row, reasons in (
+            (quota, ["quota_unavailable"]),
+            (uncertain, ["semantic_duplicate_uncertain"]),
+        ):
+            session.add(
+                NewsAssessment(
+                    candidate_id=row.id,
+                    assessment_type="duplicate",
+                    verdict="manual",
+                    reasons_json=reasons,
+                    prompt_version="v1",
+                )
+            )
+        await session.commit()
+        quota_id, uncertain_id = quota.id, uncertain.id
+
+    queued: list[UUID] = []
+    monkeypatch.setattr(backfill_cli, "SessionFactory", factory)
+    monkeypatch.setattr(backfill_cli, "engine", engine)
+    monkeypatch.setattr(
+        jobs,
+        "enqueue_candidate",
+        lambda candidate_id, retry_count=0: queued.append(candidate_id) or "job",
+    )
+
+    report = await backfill_cli.run(
+        since=date(2026, 9, 1),
+        limit=None,
+        apply=True,
+        actor_email="owner@example.com",
+        reason="Jev budget",
+        jev_quota=True,
+    )
+    engine = create_async_engine(f"sqlite+aiosqlite:///{tmp_path / 'news.db'}")
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    async with factory() as session:
+        rows = {row.id: row for row in await session.scalars(select(NewsCandidate))}
+    await engine.dispose()
+
+    assert (report["candidates"], report["applied"], report["waits_for"]) == (1, True, "00:00 UTC")
+    assert queued == [], "the orphan sweep runs them once the budget resets"
+    assert (rows[quota_id].status, rows[quota_id].error_code) == ("discovered", JEV_QUOTA_PAUSED)
+    assert rows[uncertain_id].status == "manual_review", (
+        "a real uncertain check stays for an editor"
+    )
