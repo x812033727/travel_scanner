@@ -237,6 +237,910 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress tables of contents: heading structure, anchors, and mobile reading",
+      "description": "A table of contents can help readers find the right section in a long WordPress article, but its headings and jump targets need care. This guide covers manual anchors and Easy Table of Contents settings, fixed headers that obscure headings, mobile navigation, repeated headings, and checks after editing an article. The aim is useful reading navigation, not merely another box above the text.",
+      "hero": {
+        "src": "/guides/wordpress-table-of-contents/hero-en.jpg",
+        "alt": "Original document and screen illustration showing how article sections become a table of contents with jump links.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Someone opening a site-migration tutorial may only want the section on URL redirects. Even a thorough article is hard to use if they must scroll endlessly. A table of contents lets readers see the scope first and jump to the place they need; it should reflect the logic of the article."
+        },
+        {
+          "type": "paragraph",
+          "text": "Using a long article with preparation, steps, checks, and FAQs as an example, this guide explains WordPress anchors and Easy Table of Contents. Clarify the sections first, then choose automatic generation or manual upkeep, and finally check the result on desktop and mobile."
+        },
+        {
+          "type": "heading",
+          "text": "Make section names answer readers' questions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Read all the subheadings on their own. A sequence such as Introduction, More Introduction, and Other Matters tells readers little. Try specific questions instead: What do I need before starting? How do I move the files? How do I check the site afterward? A table of contents should show the main reading path, not list every sentence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use real Heading blocks in the editor, with H2 and H3 levels matching the content hierarchy. Do not merely enlarge and bold normal paragraphs, or jump between levels to change their size. Use H2 for major steps and H3 for details within a step; let theme styles control visual size."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give repeated FAQs or cautions a subject, such as Precautions before moving files and Precautions when changing URLs. Readers can then tell where they are when moving between the table and body. Editors and support staff can also reference a specific section later."
+        },
+        {
+          "type": "heading",
+          "text": "For a few key sections, start with manual anchors",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In a Heading block's Advanced settings, enter an HTML Anchor such as prepare-files. Then add a #prepare-files link to a list or button near the start of the article to jump to that section. A link from another article uses the full page URL followed by the same fragment."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress advises that anchors must be unique within a document, are case-sensitive, and cannot contain spaces. For sections likely to be linked over time, choose a short, clear name and keep it in editorial records. Changing the visible heading does not always require changing an anchor others already use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Manual anchors work well on service pages or features with few, stable sections. When sections are added or removed, however, you must update the table yourself. Do not forget the list after creating it: click every item during review and check for missing destinations or the wrong section with a repeated name."
+        },
+        {
+          "type": "heading",
+          "text": "Generate a table with Easy Table of Contents",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After enabling Easy Table of Contents, first choose which content types it supports, then choose which should receive an automatically inserted table. Support and auto-insertion are separate settings. To start, you might select ordinary posts only so a home page, checkout page, or short announcement does not acquire an unwanted table."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose a position and display threshold to suit the article, such as showing a table only when enough sections exist. Placing it after a short introduction lets readers first learn what the article solves. Set a clear label and heading levels; major sections and necessary subsections are usually enough, without listing every H1 through H6."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Enable the content types you need and test auto-insertion on a representative long article.",
+            "Set the position, display conditions, and included heading levels.",
+            "Check whether the theme or another plugin already generates a table, so the page does not show two."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Remove noise and keep the table readable",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If related posts, footer, or ad headings appear in the table, investigate why those blocks are counted as article content. The plugin offers heading-exclusion settings. Its documentation lists exclusion by CSS class as a Pro feature, so check the edition before depending on that option."
+        },
+        {
+          "type": "paragraph",
+          "text": "Some page builders or shortcodes produce headings dynamically. The editor preview may therefore look right while the public table differs. Test the actual published layout, not only the editor sidebar. Recheck representative pages after plugin updates, especially repeated headings, collapsible content, and dynamic blocks."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not make the table text too small. Let long headings wrap, keep indentation understandable, and consider showing main sections first or offering an obvious expand control for a very long article. Readers must recognize that the table is interactive; collapsing it by default should not hide its purpose."
+        },
+        {
+          "type": "heading",
+          "text": "Check sticky tables and fixed headers together",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Easy Table of Contents lists Fixed/Sticky TOC as a Pro feature. Before choosing a persistent table, decide whether readers really need it while scrolling. Space for a desktop sidebar does not mean a full list belongs in the corner of a phone screen; contact buttons, Cookie notices, and back-to-top controls may compete for that space."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a fixed header covers a section heading after a jump, adjust the offset. First check whether the plugin or theme has a relevant setting. When custom CSS is needed, a maintainer can consider scroll-margin-top and verify it against the header's actual height. Do not assume one numeric value works on every device."
+        },
+        {
+          "type": "paragraph",
+          "text": "Smooth scrolling is a visual effect, not a substitute for reaching the right target. Test long pages and slower devices, and watch whether images loading afterward shift the destination. If animation makes reading harder, simplify it while retaining clear links and stable section positions."
+        },
+        {
+          "type": "heading",
+          "text": "Add table checks to the editing workflow",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Before publication, click the first, middle, and last entries, then test every item. Use a keyboard to operate expansion controls and links and make sure focus is visible. On narrow screens, check for overflow and covered body text; rotate a phone and inspect fixed elements again."
+        },
+        {
+          "type": "paragraph",
+          "text": "Share a URL with an anchor fragment into a fresh signed-out window and confirm it opens at the intended section. If images or ads change page height after loading, pay particular attention to deep links opened directly. This differs from clicking the table after the page has fully loaded; keep both tests."
+        },
+        {
+          "type": "paragraph",
+          "text": "When updating an article, check whether a referenced section was removed, renamed, or moved, then update the table. If an anchor must change, repair related internal and support links so they do not open the page without finding the section. Maintaining the table with the content keeps saving readers time."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-table-of-contents/diagram-1-en.svg",
+          "alt": "Original four-panel diagram showing how to organize sections, configure the table, verify jump positions, and test on a phone.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A table improves long-form reading only when readers can understand it, use it, and reach the right section.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Suitable content",
+            "Ongoing work"
+          ],
+          "rows": [
+            [
+              "Manual anchors and list",
+              "A few stable sections",
+              "Update links when sections change"
+            ],
+            [
+              "Automatic table of contents",
+              "Long articles edited often",
+              "Check heading levels, exclusions, and duplicate tables"
+            ],
+            [
+              "Sticky table",
+              "Reading that requires repeated jumps",
+              "Check paid features and screen obstructions"
+            ]
+          ],
+          "caption": "Choose a table style for readers' needs, then test where links actually land."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A shareable section location is a content asset",
+          "text": "Keep important anchors as stable as possible. When editing, check references and open fragment URLs directly in a signed-out window to verify that readers truly reach the target section."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize WordPress posts and pages",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan website categories and navigation",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Page Anchors",
+          "url": "https://wordpress.org/documentation/article/page-jumps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents official plugin page",
+          "url": "https://wordpress.org/plugins/easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents settings guide",
+          "url": "https://tocwp.com/docs/knowledge-base/step-by-step-explanation-of-options-in-easy-table-of-content/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Pro feature: Exclude headings by class",
+          "url": "https://tocwp.com/docs/knowledge-base/excluding-headings-by-class-in-easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: scroll-margin-top",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-margin-top",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress 記事の目次：見出し構造、アンカー、スマートフォンでの読みやすさ",
+      "description": "長い WordPress 記事では、目次が必要な段落を探す助けになります。ただし、見出しの構造と移動先も整える必要があります。この記事では手動アンカーと Easy Table of Contents の設定、固定ヘッダーに隠れる見出し、スマートフォンの目次、重複見出し、記事更新後の確認点を説明します。冒頭に箱を一つ足すだけでなく、役立つ読書ナビゲーションを作りましょう。",
+      "hero": {
+        "src": "/guides/wordpress-table-of-contents/hero-ja.jpg",
+        "alt": "記事の章立てと目次リンクによる移動を、書類と画面で表したオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サイト移転の記事を開く人は、URL のリダイレクトの節だけを探しているかもしれません。内容が充実していても、延々とスクロールしなければならない記事は使いにくいものです。目次は全体像を先に示し、必要な箇所に直接移動できるようにします。記事の考え方の順序を反映させることが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "準備、作業手順、確認、よくある質問を含む長文を例に、WordPress のアンカーと Easy Table of Contents を説明します。まず章立てを明確にし、自動生成か手動管理かを選び、最後にパソコンとスマートフォンで確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "見出し名で読者の疑問に答える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事の小見出しだけを抜き出して読んでみましょう。「紹介」「さらに紹介」「その他」と続いても、読者は目次から内容を判断できません。「開始前に必要な資料」「ファイルの移動方法」「移転後の確認方法」など具体的な問いに変えます。目次は全ての文を列挙するものではなく、主要な読み進め方を示すものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "エディターでは本物の見出しブロックを使い、内容の階層に合わせて H2 と H3 を配置します。通常の段落を大きく太くするだけにしたり、文字サイズを変えるために階層を飛ばしたりしないでください。主な手順には H2、その中の補足には H3 を使い、見た目の大きさはテーマのスタイルで調整します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "繰り返し登場する FAQ や注意事項には、「移転前の注意」と「URL 変更時の注意」のように主題を加えます。読者は目次から本文に移動したときに現在地を把握でき、編集者やサポート担当者も特定の節を参照しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "項目が少なければ手動アンカーから始める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "見出しブロックの Advanced 設定に HTML Anchor として prepare-files などを入力します。記事冒頭のリストやボタンに #prepare-files へのリンクを作れば、同じページのその位置に移動できます。別の記事からリンクする場合は、ページの完全な URL に同じフラグメントを付けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 公式資料によると、アンカーは同じ文書内で一意である必要があり、大文字と小文字を区別し、空白は使えません。長期に参照される節には短く分かりやすい名前を付け、編集記録に残します。表示する見出しを変更しても、すでに参照されているアンカーまで変える必要は必ずしもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動方式は節が少なく構造の安定した案内ページや特集に向いています。ただし、節を追加・削除したら目次のリンクも自分で更新しなければなりません。冒頭のリストを作って終わりにせず、確認時には全項目をクリックし、移動先の欠落や同名の別の節への誤移動がないか調べます。"
+        },
+        {
+          "type": "heading",
+          "text": "Easy Table of Contents で目次を生成する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Easy Table of Contents を有効にしたら、まず対応するコンテンツタイプを指定し、次に自動挿入するタイプを選びます。対応と自動挿入は別の設定です。最初は通常の記事だけにすると、トップページ、決済ページ、短いお知らせに不要な目次が現れるのを避けられます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事に合う位置と表示のしきい値を決め、一定数以上の節がある場合だけ表示するなど設定します。短い導入文の後に置けば、読者は記事の目的を先に知ることができます。分かりやすいラベルと見出し階層を指定し、通常は主な節と必要な小節だけを載せれば十分です。H1 から H6 まで全て詰め込む必要はありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "必要なコンテンツタイプを有効にし、代表的な長文で自動挿入を試す。",
+            "表示位置、条件、対象にする見出し階層を設定する。",
+            "テーマや別のプラグインが既に目次を作っていないか調べ、二重表示を防ぐ。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "不要な項目を除き、読みやすい目次にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "関連記事、フッター、広告の見出しが目次に紛れ込んだら、それらが本文として扱われる理由を調べます。プラグインには見出しの除外設定があります。CSS class による除外は公式資料では Pro 機能として紹介されているため、利用する版を確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ページビルダーやショートコードが見出しを動的に出力する場合、エディターでは正常でも公開ページの目次が違うことがあります。エディターのサイドバーだけでなく、実際の公開表示を試します。プラグイン更新後も、重複見出し、折りたたみ内容、動的ブロックを含む代表ページを再確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目次の文字を小さくしすぎないでください。長い見出しは自然に折り返し、階層の字下げは分かりやすく保ちます。記事が非常に長ければ、主な節だけを先に表示するか、明確な展開ボタンを用意します。初期状態で閉じていても、操作できる目次がそこにあると読者に伝わるようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "固定目次と固定ヘッダーを合わせて確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Easy Table of Contents の公式資料では Fixed/Sticky TOC は Pro 機能です。固定目次を選ぶ前に、スクロール中も表示する必要が本当にあるか考えます。パソコンのサイドバーに空きがあっても、スマートフォンの画面隅に一覧全体を置けるとは限りません。問い合わせボタン、Cookie 通知、ページ上部へ戻るボタンと場所が重なる可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目次を押した後に固定ヘッダーが見出しを隠す場合は、移動先の余白を調整します。まずプラグインやテーマに該当設定があるか調べます。独自の CSS が必要なら、担当者は scroll-margin-top などを検討し、ヘッダーの実際の高さに合わせて確認します。一つの数値が全端末で使えると決めつけないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スムーズスクロールは視覚効果であり、正しい場所への移動の代わりにはなりません。長いページや低速の端末で試し、後から画像が読み込まれてレイアウトが動き、移動先がずれないか確認します。アニメーションが読書を妨げるなら簡素化し、明確なリンクと安定した節の位置を優先します。"
+        },
+        {
+          "type": "heading",
+          "text": "編集工程に目次の確認を組み込む",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公開前に最初、中央、最後の項目を順にクリックし、その後全項目を確認します。キーボードで展開操作とリンクを試し、フォーカスが見えるか調べます。狭い画面でははみ出しや本文への重なりを確認し、スマートフォンを回転させた後も固定要素を見直します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アンカー付きの URL を新しい未ログインのウィンドウで開き、指定の節に直接到達するか確かめます。画像や広告の読み込み後にページの高さが変わるサイトでは、深いリンクを直接開いた結果に特に注意します。ページの読み込みが終わってから目次を押す試験とは異なるので、両方を行います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "記事を更新するときは、参照されている節を削除、改名、移動していないか調べ、目次も直します。アンカーの変更が必要なら、関連するサイト内リンクやサポートで使うリンクを修正します。ページは開けても目的の節に着かないリンクを残さないようにしましょう。目次を本文とともに維持してこそ、読者の探す時間を減らし続けられます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-table-of-contents/diagram-1-ja.svg",
+          "alt": "章立ての整理、目次の設定、移動先の確認、スマートフォンでの検証を示すオリジナルの四コマ図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "目次を理解でき、操作でき、目的の節に着けて初めて、長文は読みやすくなります。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "適した内容",
+            "継続作業"
+          ],
+          "rows": [
+            [
+              "手動アンカーとリスト",
+              "少数で安定した節",
+              "節の変更時にリンクを更新"
+            ],
+            [
+              "自動生成の目次",
+              "頻繁に編集する長文",
+              "階層、除外項目、二重生成を確認"
+            ],
+            [
+              "固定目次",
+              "何度も節を移動する読書",
+              "有料機能と画面の遮りを確認"
+            ]
+          ],
+          "caption": "読者の用途に合う形式を選び、実際の移動先まで確認しましょう。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "共有できる節の位置もコンテンツの資産",
+          "text": "重要なアンカーはできるだけ維持します。記事を更新したら関連リンクを確認し、未ログインのウィンドウでアンカー付き URL を直接開いて、読者が目的の節に着くか確かめてください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress の投稿と固定ページを整理する",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトのカテゴリーとナビゲーションを設計する",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：ページアンカー",
+          "url": "https://wordpress.org/documentation/article/page-jumps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents 公式プラグインページ",
+          "url": "https://wordpress.org/plugins/easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents 設定ガイド",
+          "url": "https://tocwp.com/docs/knowledge-base/step-by-step-explanation-of-options-in-easy-table-of-content/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "見出しを Class で除外する Pro 機能",
+          "url": "https://tocwp.com/docs/knowledge-base/excluding-headings-by-class-in-easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：scroll-margin-top",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-margin-top",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 글 목차: 제목 구조, 앵커, 모바일 읽기",
+      "description": "긴 WordPress 글에는 목차가 필요한 문단을 찾는 데 도움이 되지만 제목 구조와 이동 결과를 함께 정리해야 합니다. 이 글은 수동 앵커와 Easy Table of Contents 설정, 고정 헤더에 가려지는 제목, 모바일 목차, 반복되는 제목, 글을 수정한 뒤 확인할 사항을 설명합니다. 글 앞에 상자 하나를 더하는 데 그치지 않고 실제로 유용한 읽기 탐색을 만드는 방법입니다.",
+      "hero": {
+        "src": "/guides/wordpress-table-of-contents/hero-ko.jpg",
+        "alt": "문서와 화면을 이용해 글의 장 구성과 목차 이동을 나타낸 창작 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사이트 이전 안내를 연 독자는 URL 리디렉션 부분만 찾고 싶을 수 있습니다. 계속 스크롤해야 한다면 내용이 충실해도 사용하기 어렵습니다. 목차는 먼저 글의 범위를 보여 주고 필요한 부분으로 바로 이동하게 합니다. 글의 사고 순서를 반영해야 가치가 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "준비 사항, 작업 단계, 점검, 자주 묻는 질문으로 이루어진 긴 글을 예로 WordPress 앵커와 Easy Table of Contents를 설명합니다. 먼저 장 구성을 명확히 하고 자동 생성과 수동 관리 중에서 선택한 뒤 데스크톱과 휴대전화에서 검증합니다."
+        },
+        {
+          "type": "heading",
+          "text": "장 제목이 독자의 질문에 답하도록 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글의 모든 소제목만 따로 모아 읽어 보세요. '소개', '추가 소개', '기타'가 이어지면 독자는 목차만으로 내용을 알기 어렵습니다. '시작 전에 필요한 자료', '파일을 옮기는 방법', '이전 후 점검 방법'처럼 구체적인 질문으로 바꿉니다. 목차는 모든 문장을 나열하는 곳이 아니라 주요 읽기 경로를 보여 주는 곳입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "편집기에서는 실제 제목 블록을 사용하고 내용의 계층에 맞춰 H2와 H3을 배치하세요. 일반 문단을 단순히 크게 굵게 만들거나 글자 크기 때문에 제목 단계를 건너뛰지 마세요. 주요 단계는 H2, 그 안의 설명은 H3을 사용하고 시각적 크기는 테마 스타일에서 조정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "반복되는 FAQ나 주의 사항에는 '이전 전 주의 사항', 'URL 변경 시 주의 사항'처럼 주제를 덧붙이세요. 그러면 독자가 목차와 본문 사이를 이동할 때 현재 위치를 알 수 있고, 나중에 편집자나 지원 담당자가 특정 문단을 인용하기에도 좋습니다."
+        },
+        {
+          "type": "heading",
+          "text": "핵심 항목이 적다면 수동 앵커부터 사용하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "제목 블록의 Advanced 설정에서 HTML Anchor에 prepare-files 같은 이름을 입력합니다. 글 앞부분의 목록이나 버튼에 #prepare-files 링크를 만들면 같은 페이지의 해당 위치로 이동합니다. 다른 글에서 연결하려면 전체 페이지 URL 뒤에 이 프래그먼트를 붙입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 공식 안내에 따르면 앵커는 같은 문서 안에서 고유해야 하고 대소문자를 구분하며 공백을 포함할 수 없습니다. 오래 인용될 장에는 짧고 명확한 이름을 정해 편집 기록에 남기세요. 본문 제목을 바꾸더라도 이미 인용된 앵커까지 반드시 바꿀 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수동 방식은 장이 적고 구조가 안정적인 서비스 설명이나 기획 페이지에 적합합니다. 다만 장을 추가하거나 삭제할 때 목차 링크를 직접 고쳐야 합니다. 앞부분의 목록을 만든 뒤 잊지 말고 검증 중 모든 항목을 클릭해 대상이 없거나 같은 이름의 잘못된 장으로 이동하지 않는지 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "Easy Table of Contents로 목차 생성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Easy Table of Contents를 활성화한 뒤 먼저 지원할 콘텐츠 유형을 정하고, 어떤 유형에 목차를 자동으로 넣을지 결정합니다. 지원과 자동 삽입은 서로 다른 설정입니다. 처음에는 일반 게시글만 골라 홈페이지, 결제 페이지, 짧은 공지에 불필요한 목차가 생기지 않도록 할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글에 맞는 위치와 표시 기준을 정하세요. 예를 들어 장이 충분한 글에만 표시할 수 있습니다. 짧은 도입문 다음에 목차를 두면 독자는 글이 어떤 문제를 해결하는지 먼저 알 수 있습니다. 명확한 레이블과 제목 단계를 정하고 보통 주요 장과 필요한 하위 장만 넣으면 됩니다. H1부터 H6까지 전부 나열할 필요는 없습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "필요한 콘텐츠 유형을 활성화하고 대표적인 긴 글에서 자동 삽입을 시험합니다.",
+            "위치, 표시 조건, 포함할 제목 단계를 설정합니다.",
+            "테마나 다른 플러그인이 이미 목차를 만들고 있는지 확인해 한 페이지에 두 개가 나타나지 않게 합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "잡음을 제거하고 읽기 쉬운 목차 유지하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "관련 글, 바닥글, 광고의 제목이 목차에 들어오면 왜 그 블록이 본문으로 처리되는지 먼저 확인하세요. 플러그인에는 제목 제외 설정이 있습니다. CSS class에 따른 제외는 공식 문서에서 Pro 기능으로 소개하므로 사용하려는 버전에서 지원하는지 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일부 페이지 빌더나 쇼트코드는 제목을 동적으로 출력합니다. 따라서 편집기에서는 정상이어도 공개 페이지의 목차는 다를 수 있습니다. 편집기 사이드바만 보지 말고 실제 공개 화면에서 시험하세요. 플러그인 업데이트 뒤에는 특히 반복 제목, 접힌 콘텐츠, 동적 블록이 있는 대표 페이지를 다시 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "목차의 글자를 너무 작게 만들지 마세요. 긴 제목은 자연스럽게 줄바꿈하고 계층별 들여쓰기를 구분할 수 있어야 합니다. 글이 매우 길다면 주요 장만 먼저 보여 주거나 분명한 펼치기 버튼을 제공하세요. 처음부터 접혀 있더라도 독자가 조작할 수 있는 목차의 존재를 알아차려야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "고정 목차와 고정 헤더를 함께 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Easy Table of Contents는 Fixed/Sticky TOC를 Pro 기능으로 안내합니다. 고정 목차를 선택하기 전에 스크롤 중 계속 보여 줄 필요가 있는지 판단하세요. 데스크톱 사이드바에 공간이 있다고 해서 휴대전화 화면 모서리에도 전체 목록을 놓을 수 있는 것은 아닙니다. 문의 버튼, Cookie 알림, 맨 위로 버튼과 같은 자리를 차지할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "목차를 누른 뒤 장 제목이 고정 헤더에 가려지면 이동 시 여백을 조정해야 합니다. 먼저 플러그인이나 테마에 관련 설정이 있는지 확인하세요. 맞춤 CSS가 필요하면 담당자가 scroll-margin-top 같은 방법을 검토하고 실제 헤더 높이에 맞춰 검증합니다. 하나의 숫자가 모든 기기에 맞는다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "부드러운 스크롤은 시각 효과이지 정확한 위치로 이동하는 기능을 대신하지 않습니다. 긴 페이지와 느린 기기에서 시험하고 이미지가 뒤늦게 로드되어 레이아웃이 움직이면서 위치가 어긋나는지 보세요. 애니메이션이 읽기를 방해한다면 단순하게 만들되 명확한 링크와 안정된 장 위치를 유지합니다."
+        },
+        {
+          "type": "heading",
+          "text": "편집 절차에 목차 검사를 추가하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "게시 전에 첫 번째, 가운데, 마지막 목차 항목을 차례로 누른 뒤 모든 항목을 검사합니다. 키보드로 펼치기 기능과 링크를 조작하고 포커스가 보이는지 확인하세요. 좁은 화면에서 넘침과 본문 가림을 살피고 휴대전화를 회전한 뒤 고정 요소를 다시 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "앵커가 포함된 URL을 새로운 로그아웃 창에서 열어 원하는 장에 바로 도착하는지 확인하세요. 이미지나 광고가 로드된 뒤 페이지 높이가 바뀌는 사이트에서는 깊은 링크를 직접 연 결과를 특히 살펴봅니다. 이는 페이지 로딩이 끝난 뒤 목차를 클릭하는 시험과 다르므로 두 가지를 모두 유지합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "글을 수정할 때는 참조 중인 장이 삭제, 이름 변경, 이동되었는지 먼저 확인하고 목차를 함께 고칩니다. 앵커를 바꿔야 한다면 관련 내부 링크와 고객 지원에서 쓰는 링크도 정리하세요. 페이지는 열리지만 해당 장을 찾지 못하는 참조를 남기지 않아야 합니다. 목차를 콘텐츠와 함께 관리해야 독자의 탐색 시간을 계속 줄일 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-table-of-contents/diagram-1-ko.svg",
+          "alt": "장 구성, 목차 설정, 이동 위치 확인, 휴대전화 검증을 순서대로 설명하는 창작 4단계 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "이해할 수 있고 누를 수 있으며 목표 장에 도착하는 목차여야 긴 글을 읽기 쉬워집니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방식",
+            "적합한 콘텐츠",
+            "후속 작업"
+          ],
+          "rows": [
+            [
+              "수동 앵커와 목록",
+              "적고 안정적인 장",
+              "장 변경 시 링크도 수정"
+            ],
+            [
+              "자동 목차",
+              "자주 수정하는 긴 글",
+              "제목 단계, 제외 항목, 중복 생성 점검"
+            ],
+            [
+              "고정 목차",
+              "읽는 중 여러 번 이동해야 할 때",
+              "유료 기능과 화면 가림 확인"
+            ]
+          ],
+          "caption": "독자의 필요에 따라 목차 방식을 정하고 실제 이동 결과를 검증하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "공유할 수 있는 장 위치도 콘텐츠 자산입니다",
+          "text": "중요한 앵커는 가능한 한 안정적으로 유지하세요. 글을 수정할 때 관련 참조를 확인하고 로그아웃 창에서 앵커가 포함된 URL을 직접 열어 독자가 목표 장에 도착하는지 검증합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 게시글과 페이지 정리하기",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트 카테고리와 탐색 설계하기",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 페이지 앵커",
+          "url": "https://wordpress.org/documentation/article/page-jumps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents 공식 플러그인 페이지",
+          "url": "https://wordpress.org/plugins/easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents 설정 안내",
+          "url": "https://tocwp.com/docs/knowledge-base/step-by-step-explanation-of-options-in-easy-table-of-content/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Class별 제목 제외 Pro 기능",
+          "url": "https://tocwp.com/docs/knowledge-base/excluding-headings-by-class-in-easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: scroll-margin-top",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-margin-top",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 文章目录：标题结构、锚点与手机阅读",
+      "description": "长篇 WordPress 文章可以用目录帮助读者找到所需段落，但标题结构和跳转结果也必须一起整理。本文介绍手动锚点与 Easy Table of Contents 的设置，说明固定页眉遮挡、手机目录、重复标题和文章更新后的检查重点，帮助内容网站建立真正实用的阅读导航，而不是只在文章前增加一个框。",
+      "hero": {
+        "src": "/guides/wordpress-table-of-contents/hero-zh-cn.jpg",
+        "alt": "原创文档与屏幕图像，展示文章章节整理和目录跳转。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "读者打开一篇网站迁移教程，可能只想找到网址重定向的段落。如果只能不断滚动，即使内容完整也不方便使用。文章目录的价值在于让人先了解内容范围，再直接前往所需位置；它应当体现文章的思路。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以一篇包含准备事项、操作步骤、检查和常见问题的长文为例，介绍 WordPress 锚点与 Easy Table of Contents。先理清章节，再决定自动生成还是手动维护，最后在桌面和手机上验收。"
+        },
+        {
+          "type": "heading",
+          "text": "先让章节名称能回答读者的问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先把文章的所有小标题单独列出来阅读。如果连续出现“介绍”“更多介绍”“其他事项”，读者很难通过目录判断内容；可以改成“开始前要准备哪些资料”“如何迁移文件”“迁移后怎样验收”等具体问题。目录不必列出每句话，而应呈现主要阅读路线。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在编辑器中使用真正的标题区块，按内容层级安排 H2 和 H3。不要只是放大、加粗普通段落，也不要为了字体大小随意跳级。主要步骤用 H2，步骤下的补充用 H3；视觉尺寸交给主题样式调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重复的常见问题或注意事项可加上主题，如“迁移前注意事项”和“更换网址注意事项”。这样读者在目录与正文之间跳转时就知道自己在哪里，也方便客服或编辑日后引用特定段落。"
+        },
+        {
+          "type": "heading",
+          "text": "少量重点章节可先使用手动锚点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在标题区块的 Advanced 设置中填写 HTML Anchor，例如 prepare-files。接着在文章开头的列表或按钮中建立 #prepare-files 链接，即可跳到同页对应位置。若要从另一篇文章跳转，就使用完整页面网址加上这个片段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 官方提醒，锚点在同一文档内必须唯一，区分大小写，且不能包含空格。对需要长期引用的章节，可选择简短清楚的名称并保留在编辑记录中。即使正文标题的用语改变，也不一定要同时更改已被引用的锚点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手动方式适合章节少、结构稳定的服务说明或专题页。缺点是增删章节时必须自行更新目录链接。不要建立开头列表后就忘了它；验收时仍需逐项点击，确认没有指向不存在的段落或同名的错误段落。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 Easy Table of Contents 生成文章目录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "启用 Easy Table of Contents 后，先在设置中指定要支持的内容类型，再决定哪些类型自动插入目录。“支持”和“自动插入”是两项不同设置。初次使用时可以先选择普通文章，避免首页、结账页或简短公告也出现不需要的目录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "根据内容安排位置和显示门槛，例如仅当文章有足够章节时才显示。目录可放在简短前言之后，让读者先知道本文能解决什么问题。设置清楚的标签和标题层级，通常列出主要章节及必要子章节即可，不必把所有 H1 到 H6 都放进列表。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "启用需要的内容类型，先用有代表性的长文测试自动插入。",
+            "设置位置、显示条件和收录的标题层级。",
+            "检查主题或其他插件是否已经生成目录，避免同页出现两份。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "去除杂项，保持目录易读",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果目录混入相关文章、页脚或广告标题，先调查这些区块为何被纳入正文。插件提供标题排除设置；如果需要按 CSS class 排除，官方将其列为 Pro 功能，选用前应确认版本差异。"
+        },
+        {
+          "type": "paragraph",
+          "text": "某些页面构建器或短代码会动态输出标题，所以编辑器看似正常，前台生成的目录却可能不同。要测试实际公开页面，而不只看编辑器侧栏。插件更新后也要重新检查代表性页面，尤其是重复标题、折叠内容和动态区块。"
+        },
+        {
+          "type": "paragraph",
+          "text": "目录文字本身不要太小。允许长标题自然换行，保持层级缩进清楚；文章很长时可先显示主要章节，或提供明显的展开按钮。读者应能发现目录入口，不能因为默认折叠而看不出它可以操作。"
+        },
+        {
+          "type": "heading",
+          "text": "固定目录与固定页眉要一起验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Easy Table of Contents 官方将 Fixed/Sticky TOC 列为 Pro 功能。选择固定目录前，先确认网站是否真的需要滚动时持续显示。桌面侧栏有空间，不代表手机右下角也适合放完整列表；联系按钮、Cookie 提示和返回顶部控件可能占据同一位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "点击目录后，如果章节标题被固定页眉遮住，就要调整跳转时预留的距离。先查看当前插件或主题是否有相应设置；需要定制 CSS 时，维护人员可评估 scroll-margin-top 等方法，并按页眉实际高度验证。不要套用一个数字就假设所有设备都适用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平滑滚动只是视觉效果，不能代替正确跳转。测试较长页面和较慢设备，观察图片加载后版式是否移动，导致原先定位偏移。如果动画妨碍阅读，可简化效果，但要保留清楚的链接和稳定的章节位置。"
+        },
+        {
+          "type": "heading",
+          "text": "将目录检查纳入编辑流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "发布前依次点击第一个、中间和最后一个目录项，再完整检查每一项。用键盘操作展开控件和链接，确认焦点可见；在窄屏幕上检查是否溢出、是否遮挡正文，旋转手机后也要重新观察固定元素。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把带锚点的网址分享到新的未登录窗口，确认能够直接到达指定章节。如果网站会在图片或广告加载后改变高度，尤其要注意直接打开深层链接的结果。这与等待页面加载完再点击目录不同，两种测试都应该保留。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新文章时，先看被引用的章节是否被删除、改名或移动，再同步目录。如果必须更改锚点，应整理相关站内链接和客服常用链接，避免链接能打开页面却找不到段落。目录随内容一起维护，才能持续帮读者节省查找时间。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-table-of-contents/diagram-1-zh-cn.svg",
+          "alt": "四格原创示意图，说明整理章节、设置目录、核对跳转位置及手机验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "目录能看懂、能点击、能到达，才能真正改善长文阅读。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "适用内容",
+            "后续工作"
+          ],
+          "rows": [
+            [
+              "手动锚点与列表",
+              "少量且稳定的章节",
+              "增删章节时同步链接"
+            ],
+            [
+              "自动文章目录",
+              "经常编辑的长文",
+              "核对层级、排除项和重复生成"
+            ],
+            [
+              "固定目录",
+              "阅读时需要反复跳转",
+              "检查付费功能和不同屏幕上的遮挡"
+            ]
+          ],
+          "caption": "根据阅读需求选择目录形式，再验证实际跳转结果。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "可分享的章节位置，也是一项内容资产",
+          "text": "重要锚点尽量保持稳定。更新文章时同步检查相关引用，并在未登录窗口直接打开带锚点的网址，确认读者确实能够到达目标段落。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理 WordPress 文章与页面",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "规划网站分类与导航",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：页面锚点",
+          "url": "https://wordpress.org/documentation/article/page-jumps/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents 官方插件页面",
+          "url": "https://wordpress.org/plugins/easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Easy Table of Contents 设置说明",
+          "url": "https://tocwp.com/docs/knowledge-base/step-by-step-explanation-of-options-in-easy-table-of-content/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "按 Class 排除标题的 Pro 功能",
+          "url": "https://tocwp.com/docs/knowledge-base/excluding-headings-by-class-in-easy-table-of-contents/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：scroll-margin-top",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-margin-top",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

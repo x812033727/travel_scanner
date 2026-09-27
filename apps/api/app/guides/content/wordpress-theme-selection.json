@@ -243,6 +243,934 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "How to Choose a WordPress Theme: Reading, Editing, and Long-Term Maintenance",
+      "description": "Choose a WordPress theme by starting with readers' and editors' needs, then comparing the appearance of demo sites. This guide explains block, classic, and hybrid themes and provides checks for testing real content, portability, customization, and long-term maintenance. It is written for people in Taiwan building or redesigning a site. Use the same checklist for mobile navigation, articles, forms, and administration so an attractive template does not make daily updates difficult.",
+      "hero": {
+        "src": "/guides/wordpress-theme-selection/hero-en.jpg",
+        "alt": "Original illustration of a reading layout, a content document, and a maintenance folder used to assess a theme.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Theme demos usually use coordinated photos, short headlines, and carefully chosen copy. Your site may have long Chinese articles, portrait images, and complex tables. Choosing from a demo homepage alone can expose layout problems only after you start publishing. Testing with your own representative content is more useful than picking colors first and forcing the information into place later."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a fictional lifestyle-knowledge blog to evaluate long articles, category listings, and a contact page. The comparison method is our own; descriptions of theme types and customization are checked against WordPress documentation. We do not rank brands or claim that an untested theme must be the fastest or best for search."
+        },
+        {
+          "type": "heading",
+          "text": "List the content you need to display first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List the page types your site will use: home, article, category archive, search, standard page, and contact form. Prepare one realistic example of each, including long titles, different image ratios, and multiple paragraphs. If you might later need a shop or member area, note it as a compatibility requirement without treating an undecided idea as a feature you must buy now."
+        },
+        {
+          "type": "paragraph",
+          "text": "Identify who will update the site. A single design-savvy administrator and a team that rotates publishing duties need different degrees of editing freedom. If each article only needs text and image changes, a stable template may be easier than many adjustable options. If you frequently make campaign pages, check whether layouts can be reused and shared settings protected."
+        },
+        {
+          "type": "paragraph",
+          "text": "Write requirements as observable outcomes: long Chinese headlines do not cover images, the mobile menu works, tables remain readable, and articles have no unwanted sidebar. These checks help eliminate unsuitable candidates without endlessly comparing dozens of appealing demos."
+        },
+        {
+          "type": "heading",
+          "text": "Understand how block and classic themes are edited",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress mainly supports block and classic themes. Block themes use block templates that can be adjusted through the Site Editor, including related templates and styles. Classic themes use a PHP template system, often with the Customizer, theme settings, or other tools. Some classic themes add block capabilities and are often called hybrid themes, but that is not a wholly separate third official type."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not judge by whether a category sounds new or old. Block themes can offer a consistent editing model, but the team still needs to distinguish content from templates. A classic theme may fit an established workflow, but its customization methods and update dependencies need checking. What matters is whether you can make routine changes and who can handle needs beyond the interface settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Practice three tasks in each candidate theme: edit an article, change navigation, and update the shared footer. Record how easy the entry points are to find, whether other pages are affected, and how to undo the changes. These tasks resemble future work more closely than a demo animation does."
+        },
+        {
+          "type": "heading",
+          "text": "Check appearance through reading and interaction",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For Chinese content, check font size, line spacing, paragraph width, and whether links are recognizable. Heading levels should be clear without relying on color alone. Long tables, code snippets, and lists also need workable displays so mobile readers can reach important columns. Check that images and captions are not cropped unnecessarily."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test navigation, search, and forms with a mouse, touch, and keyboard. Enlarge text and see whether menus are clipped, focus remains visible, or a fixed header hides content. A theme's advertised accessibility features are a starting point; your own content and plugins still require full acceptance testing. A label is not proof that the entire site passes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare performance using identical content, plugins, and cache settings, and record test conditions. A faster demo may owe its speed to its images, hosting, or external scripts rather than the theme. Remove unneeded features first, then observe real pages. Do not delete information readers need merely to raise one score."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Shortlist a few themes that meet essential requirements and add the same representative content to a test site.",
+            "Check desktop and mobile versions of articles, listings, search, and forms.",
+            "Practice content, navigation, and shared-area edits; record any difficult steps.",
+            "Compare dependencies, maintenance, and exit options before scheduling the live switch."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Keep essential functionality separate from appearance",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The WordPress Theme Handbook recommends separating presentation from important site functionality. If a theme provides a portfolio, special content, or another core capability, switching themes may remove its interface or display. Data still existing and visitors still being able to use it are different questions. Check alternative displays and migration steps before choosing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check which extra plugins, paid components, or external services a demo template requires. Importing one layout may introduce several dependencies along with future update and license costs. List each required item, check for tools doing the same job twice, and avoid counting only the theme's purchase price."
+        },
+        {
+          "type": "paragraph",
+          "text": "In a test copy, switch to another suitable theme and inspect article text, images, menus, and special content. Do not assume that exporting theme settings creates a universal format any other tool can read. If layouts need manual reconstruction, estimate the work and save the source content so a future redesign has a clear starting point."
+        },
+        {
+          "type": "heading",
+          "text": "Make customization survive the next update",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use built-in settings where they meet the need. When code changes are required, ask someone familiar with WordPress to choose the right approach. A child theme can manage customizations on top of a parent theme and prevent a parent update from overwriting direct file edits, but it still depends on that parent and needs compatibility checks after updates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Styles, template edits, and file settings in a block theme may be stored in different places. Document which layer was changed during handover. A finished screenshot without original settings, required files, and recovery instructions is insufficient. Someone who only edits articles should also know which sitewide areas not to change casually."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a paid theme, check the permitted number of sites, the update and support periods, and renewal terms. Keep legally obtained installation files and account details. For a free theme, check maintenance and documentation too; no purchase fee does not remove compatibility or handover costs. The real cost includes the work needed to keep the site usable."
+        },
+        {
+          "type": "heading",
+          "text": "Verify older content during a live redesign",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Take a fresh backup before switching, record current pages and functions, and choose an appropriate time. A new theme may change menu locations, widgets, image display, or templates. Recheck these after switching instead of looking only at the latest article. Sample older content, especially pages built with special shortcodes or layouts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test main paths in a signed-out window, including forms, search, navigation, and related links, and watch for caches still serving the old design. If problems appear, follow the prepared recovery process while preserving new data. A suitable theme lets readers read, administrators update, and the next maintainer understand how to make changes."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-theme-selection/diagram-1-en.svg",
+          "alt": "Original diagram assessing a theme against five criteria: reading, interaction, functional dependencies, updates, and portability.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Test with real content before deciding how to maintain the site long term.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Criterion",
+            "Question",
+            "Hands-on check"
+          ],
+          "rows": [
+            [
+              "Reading",
+              "Is real content clear?",
+              "Chinese text, long titles, and images"
+            ],
+            [
+              "Editing",
+              "Who handles routine updates?",
+              "Articles, navigation, and shared areas"
+            ],
+            [
+              "Functionality",
+              "Which features depend on the theme?",
+              "Special content and plugin inventory"
+            ],
+            [
+              "Maintenance",
+              "How are customizations preserved?",
+              "Updates, child theme, and documentation"
+            ],
+            [
+              "Portability",
+              "How does the site carry on after a switch?",
+              "Text, media, and alternative layouts"
+            ]
+          ],
+          "caption": "Theme types describe implementation differences; your own content still determines whether a theme fits."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Look beyond the demo's appearance",
+          "text": "Photos, fonts, plugins, and hosting can all affect a demo. Identify the required assets and features, then test with your own content. A demo homepage is not a completed site."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Installing and managing themes and plugins",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Setting up sidebars and widgets",
+              "kind": "life",
+              "slug": "wordpress-widgets-sidebar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: What a theme is and where functionality belongs",
+          "url": "https://developer.wordpress.org/themes/getting-started/what-is-a-theme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Block themes",
+          "url": "https://wordpress.org/documentation/article/block-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Child themes",
+          "url": "https://developer.wordpress.org/themes/advanced-topics/child-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Working with themes",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressテーマの選び方：読みやすさ、編集、長期運用",
+      "description": "WordPressのテーマは、デモサイトの見た目より先に、読者と編集者の必要を確かめて選びます。ブロックテーマ、クラシックテーマ、ハイブリッドな設計の違いを整理し、実際のコンテンツでの試用、移行しやすさ、カスタマイズ、長期運用の確認方法を紹介します。台湾で新規サイトを作る方や改装する方に向け、モバイルのナビゲーション、記事、フォーム、管理作業を同じチェックリストで検証し、見栄えのよいテンプレートが日々の更新を難しくしないようにします。",
+      "hero": {
+        "src": "/guides/wordpress-theme-selection/hero-ja.jpg",
+        "alt": "閲覧レイアウト、コンテンツ文書、保守用フォルダーを組み合わせた、テーマ評価のためのオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "テーマのデモサイトには統一された写真、短い見出し、厳選された文章が並びます。一方、実際のサイトには長い中国語の記事、縦長の画像、複雑な表があるかもしれません。デモのトップページだけで選ぶと、公開後にレイアウトの問題に気付くことがあります。先に自分の代表的なコンテンツを試すほうが、色を決めてから情報を無理に当てはめるより現実的です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事では架空の生活情報ブログを例に、長文記事、カテゴリ一覧、お問い合わせページを評価します。比較方法は独自の提案で、テーマの種類とカスタマイズに関する説明はWordPressの公式資料で確認しました。ブランドの順位付けはせず、未検証のテーマが必ず最速または検索に最適だとも主張しません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず表示したいコンテンツを洗い出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "トップページ、記事、カテゴリ一覧、検索、一般ページ、お問い合わせフォームなど、サイトで使うページの種類を挙げます。それぞれについて長い見出し、異なる画像比率、複数段落を含む実情に近いサンプルを用意します。将来ショップや会員機能が必要になりそうなら互換性の条件として記録しますが、未決定の構想を今すぐ購入すべき機能にはしません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新担当者も確認します。デザインに詳しい管理者が一人で運用する場合と、複数人が交代で投稿する場合では、必要な編集の自由度が異なります。各記事で文字と画像だけを変えればよいなら、多数の調整項目より安定したテンプレートが便利かもしれません。企画ページを頻繁に作るなら、レイアウトを再利用できるか、共通設定をどう保護するか調べます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "必須条件を観察できる結果で書きます。たとえば、長い中国語の見出しが画像を隠さない、モバイルメニューを使える、表を読める、記事に不要なサイドバーが出ない、などです。こうした条件があれば、見栄えのよい多数のデモを際限なく比較せずに候補を絞れます。"
+        },
+        {
+          "type": "heading",
+          "text": "ブロックテーマとクラシックテーマの編集方法を理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressが主にサポートするのはブロックテーマとクラシックテーマです。ブロックテーマはブロックテンプレートを使い、サイトエディターで関連するテンプレートやスタイルを調整できます。クラシックテーマはPHPのテンプレート方式を使い、カスタマイザー、テーマ設定、その他のツールと組み合わせることが一般的です。一部のクラシックテーマはブロック機能を追加しており、ハイブリッドテーマと呼ばれることがありますが、公式に完全に独立した第三の種類ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新旧の呼び方だけで良し悪しを決めないでください。ブロックテーマは編集方法を統一しやすい一方、チームはコンテンツとテンプレートの違いを理解する必要があります。クラシックテーマが既存の作業手順に合っていても、カスタマイズ方法と更新時の依存関係を確認すべきです。日常の変更を実行できるか、画面の設定を超える要件を誰が扱うかが判断の中心です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "候補のテーマで、記事を一つ編集する、ナビゲーションを変更する、共通フッターを更新する、という三つを実際に試します。操作の入口を見つけやすいか、他のページにも影響するか、変更をどう元に戻すかを記録します。デモのアニメーションより、将来の実務に近い確認です。"
+        },
+        {
+          "type": "heading",
+          "text": "読みやすさと操作から見た目を確かめる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "中国語のコンテンツでは文字サイズ、行間、段落幅、リンクの識別しやすさを確認します。見出しの階層は色の違いだけに頼らず理解できる必要があります。長い表、コード、リストも、モバイル画面から重要な列にたどり着ける表示にします。画像の主要部分やキャプションが不必要に切り取られないかも見ます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ナビゲーション、検索、フォームをマウス、タッチ、キーボードで試します。文字を拡大してメニューが切れないか、フォーカスが見えるか、固定ヘッダーが内容を隠さないか確認します。テーマの対応機能表示は出発点にすぎません。自分の内容やプラグインを加えたサイト全体で検証し、ラベルだけを合格証とみなさないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "性能は同じコンテンツ、プラグイン、キャッシュ設定で比較し、試験条件を記録します。あるデモの読み込みが速くても、画像、ホスティング、外部スクリプトの影響かもしれず、テーマだけに帰属できません。不要な機能を減らしてから実ページを観察し、単一の点数を上げるために読者に必要な情報を消さないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "必須条件を満たす少数のテーマを選び、テストサイトに同じ代表コンテンツを入れる。",
+            "記事、一覧、検索、フォームをデスクトップとモバイルで確認する。",
+            "内容更新、ナビゲーション、共通領域の変更を試し、難しい操作を記録する。",
+            "依存関係、保守、乗り換え方法を比較してから本番切り替えを計画する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "重要な機能を見た目に縛り付けない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのテーマハンドブックは、表示とサイトの重要な機能を適切に分けることを勧めています。ポートフォリオ、特殊なコンテンツ、その他の中核機能をテーマが提供している場合、テーマ変更時に操作画面や表示方法を失うことがあります。データが残っていることと訪問者が使えることは別です。選ぶ前に代替表示と移行方法を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "デモのテンプレートに追加のプラグイン、有料部品、外部サービスが必要か調べます。一つのレイアウトを取り込むだけで複数の依存が増え、将来の更新やライセンス費用も膨らみます。必要な項目をすべて挙げ、同じ仕事をするツールが重複しないか確認し、テーマの価格だけで費用を計算しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト用の複製サイトで別の適切なテーマに切り替え、記事の文字、画像、メニュー、特殊な内容を確認します。「テーマ設定をエクスポートできる」ことを、どのツールでも読める共通形式とみなしてはいけません。手動でレイアウトを作り直すなら作業量を見積もり、元の文章を保存して、将来の改装に備えます。"
+        },
+        {
+          "type": "heading",
+          "text": "次の更新に耐えられるカスタマイズにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "標準設定で要件を満たせるなら、まずそれを使います。コード変更が必要ならWordPressに詳しい人が方法を選びます。子テーマは親テーマの上でカスタマイズを管理し、親テーマのファイルを直接変えて更新時に上書きされる事態を避けられます。ただし親テーマへの依存は残り、更新後の互換性も確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブロックテーマのスタイル、テンプレート変更、ファイル設定は保存場所が異なる場合があります。引き継ぎ資料には、どの層を変更したか明記します。完成画面の画像だけでなく、元の設定、必要なファイル、復旧手順を渡してください。記事だけを編集する担当者にも、むやみに変えないほうがよいサイト全体の領域を伝えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有料テーマでは利用可能なサイト数、更新・サポート期間、更新契約の方法を確認し、適法に入手したインストールファイルとアカウント情報を保管します。無料テーマも保守状況と資料を見てください。購入費がゼロでも互換性や引き継ぎの負担は残ります。実際の費用には、サイトを使える状態に保つ作業も含まれます。"
+        },
+        {
+          "type": "heading",
+          "text": "本番のデザイン変更では古い内容も検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "切り替え前に新しいバックアップを取り、現在のページと機能の一覧を保存し、適切な時期を選びます。新テーマはメニューの位置、ウィジェット、画像表示、テンプレートを変えることがあります。切り替え後は最新記事だけでなく、以前の内容、とくに特殊なショートコードやレイアウトで作ったページも抽出して確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ログアウトしたウィンドウでフォーム、検索、ナビゲーション、関連記事へのリンクなど主要な経路を試し、キャッシュが旧デザインを表示していないか見ます。問題があれば準備した方法で復旧し、新しいデータは残します。適切なテーマなら読者が読め、管理者が更新でき、次の変更担当者もサイト全体を推測し直さずに済みます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-theme-selection/diagram-1-ja.svg",
+          "alt": "読みやすさ、操作、機能の依存関係、更新、移行しやすさの五つでテーマを検証するオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "実際のコンテンツで検証してから、長期的な保守方法を決めます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "比較項目",
+            "確認する問い",
+            "実際の検証"
+          ],
+          "rows": [
+            [
+              "読みやすさ",
+              "実際の内容が明瞭か",
+              "中国語、長い見出し、画像"
+            ],
+            [
+              "編集",
+              "日常の更新を誰がするか",
+              "記事、ナビゲーション、共通領域"
+            ],
+            [
+              "機能",
+              "どの機能がテーマに依存するか",
+              "特殊な内容とプラグインの一覧"
+            ],
+            [
+              "保守",
+              "カスタマイズをどう残すか",
+              "更新、子テーマ、資料"
+            ],
+            [
+              "移行しやすさ",
+              "切り替え後にどう継続するか",
+              "文章、メディア、代替レイアウト"
+            ]
+          ],
+          "caption": "テーマの種類は実装上の違いです。適合性は自分のコンテンツで検証します。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "デモの見た目を分解して考える",
+          "text": "写真、フォント、プラグイン、ホスティングはデモの結果を左右します。必要な素材と機能の出所を確認してから自分の内容で試し、デモのトップページを完成したサイトとみなさないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "テーマとプラグインのインストール・管理",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイドバーとウィジェットの設定",
+              "kind": "life",
+              "slug": "wordpress-widgets-sidebar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：テーマの種類と機能の分離",
+          "url": "https://developer.wordpress.org/themes/getting-started/what-is-a-theme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ブロックテーマ",
+          "url": "https://wordpress.org/documentation/article/block-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：子テーマ",
+          "url": "https://developer.wordpress.org/themes/advanced-topics/child-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：テーマの管理",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 테마 선택법: 읽기 편의성, 편집, 장기 유지 관리",
+      "description": "WordPress 테마를 고를 때는 데모 사이트의 외관보다 독자와 편집자의 요구를 먼저 살펴야 합니다. 이 글은 블록 테마, 클래식 테마, 혼합형 설계의 차이를 정리하고 실제 콘텐츠로 시험하는 법, 이전 가능성, 맞춤 설정, 장기 유지 관리 점검법을 제시합니다. 대만에서 새 사이트를 만들거나 개편하려는 사용자를 대상으로 모바일 탐색, 글, 양식, 관리 절차를 같은 점검표로 확인하여 보기 좋은 템플릿 때문에 일상적인 업데이트가 어려워지는 일을 피하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-theme-selection/hero-ko.jpg",
+        "alt": "읽기 화면, 콘텐츠 문서, 유지 관리 폴더를 결합한 테마 평가용 독창적 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "테마 데모에는 통일된 사진, 짧은 제목, 엄선한 콘텐츠가 사용됩니다. 하지만 실제 사이트에는 긴 중국어 글, 세로 사진, 복잡한 표가 있을 수 있습니다. 데모 첫 화면만 보고 테마를 고르면 실제 게시를 시작한 뒤에야 레이아웃이 맞지 않는다는 사실을 알 수 있습니다. 색상을 먼저 정하고 정보를 억지로 끼워 넣기보다, 자신의 대표 콘텐츠로 먼저 시험하는 편이 실용적입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 가상의 생활 정보 블로그를 예로 들어 긴 글, 카테고리 목록, 문의 페이지의 필요를 평가합니다. 비교 방법은 독자적으로 제안하며, 테마 유형과 맞춤 설정 개념은 WordPress 공식 문서로 확인했습니다. 브랜드 순위를 매기지 않고, 시험하지 않은 테마가 반드시 가장 빠르거나 검색에 가장 적합하다고 주장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "표시해야 할 콘텐츠부터 목록으로 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 화면, 글 본문, 카테고리 목록, 검색, 일반 페이지, 문의 양식 등 사이트에서 사용할 페이지 유형을 적습니다. 각 유형마다 긴 제목, 다양한 이미지 비율, 여러 문단을 포함한 실제에 가까운 콘텐츠를 하나씩 준비합니다. 나중에 쇼핑몰이나 회원 기능이 필요할 수 있다면 호환성 요구로 기록하되, 아직 결정하지 않은 구상을 지금 구매해야 할 기능으로 취급하지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트 담당자도 확인합니다. 디자인에 익숙한 관리자 한 명이 운영하는 경우와 여러 사람이 번갈아 글을 올리는 팀은 필요한 편집 자유도가 다릅니다. 글마다 글자와 이미지만 바꾸면 된다면 조정 항목이 많은 테마보다 안정된 템플릿이 편할 수 있습니다. 행사 페이지를 자주 만든다면 레이아웃을 재사용할 수 있는지, 공통 설정을 어떻게 보호할지 살펴봅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "필수 조건은 관찰할 수 있는 결과로 씁니다. 예를 들어 긴 중국어 제목이 이미지를 가리지 않는지, 모바일 메뉴가 작동하는지, 표를 읽을 수 있는지, 글에 불필요한 사이드바가 없는지 확인합니다. 이 기준이 있으면 보기 좋은 데모 수십 개를 끝없이 비교하지 않고 부적합한 후보를 걸러낼 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "블록 테마와 클래식 테마의 편집 방식 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress는 주로 블록 테마와 클래식 테마를 지원합니다. 블록 테마는 블록 템플릿을 사용하며 사이트 편집기에서 관련 템플릿과 스타일을 조정할 수 있습니다. 클래식 테마는 PHP 템플릿 체계를 사용하며 사용자 정의 도구, 테마 설정 또는 다른 도구와 함께 쓰이는 경우가 많습니다. 일부 클래식 테마는 블록 기능을 더해 혼합형 테마라고 부르기도 하지만, 공식적으로 완전히 독립된 세 번째 유형은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이름이 새롭거나 오래됐다는 이유만으로 좋고 나쁨을 판단하지 마세요. 블록 테마는 일관된 편집 개념을 제공할 수 있지만, 팀은 콘텐츠와 템플릿의 차이를 이해해야 합니다. 클래식 테마가 기존 작업 방식에 맞더라도 맞춤 설정 방식과 업데이트 의존성을 확인해야 합니다. 일상적인 수정을 할 수 있는지, 화면 설정을 넘어서는 요구를 누가 처리할지가 핵심입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "후보 테마에서 글 한 편 수정하기, 탐색 메뉴 조정하기, 공통 바닥글 업데이트하기를 직접 해 봅니다. 시작 메뉴를 찾기 쉬운지, 다른 페이지에도 영향을 주는지, 수정 후 어떻게 되돌리는지 기록합니다. 데모의 애니메이션보다 앞으로 실제로 하게 될 작업에 가깝습니다."
+        },
+        {
+          "type": "heading",
+          "text": "읽기와 조작으로 외관 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "중국어 콘텐츠에서는 글자 크기, 줄 간격, 문단 너비, 링크 구별 가능성을 봅니다. 제목 단계는 색상 차이만으로 구별해서는 안 됩니다. 긴 표, 코드 조각, 목록도 모바일 화면에서 중요한 열을 찾을 수 있도록 적절히 표시되어야 합니다. 이미지의 핵심 부분과 설명이 불필요하게 잘리지 않는지도 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "탐색, 검색, 양식은 마우스, 터치, 키보드로 시험합니다. 글자를 키운 뒤 메뉴가 잘리지 않는지, 포커스가 보이는지, 고정 머리글이 콘텐츠를 가리지 않는지 살펴봅니다. 테마에 표시된 지원 기능은 출발점일 뿐입니다. 자신의 콘텐츠와 플러그인을 넣은 뒤에는 사이트 전체를 검증해야 하며, 기능 표시를 전체 사이트의 합격 증명으로 여겨서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "성능을 비교할 때는 같은 콘텐츠, 플러그인, 캐시 설정을 사용하고 시험 조건을 기록합니다. 어떤 데모가 더 빨리 열리더라도 이미지, 호스팅, 외부 스크립트 때문일 수 있어 테마만의 효과라고 단정할 수 없습니다. 불필요한 기능을 줄인 뒤 실제 페이지를 관찰하세요. 한 점수를 높이려고 독자에게 필요한 정보를 없애지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "필수 조건을 충족하는 소수의 테마를 추려 시험 사이트에 같은 대표 콘텐츠를 넣습니다.",
+            "글, 목록, 검색, 양식의 데스크톱과 모바일 화면을 확인합니다.",
+            "콘텐츠 업데이트, 탐색 메뉴, 공통 영역 수정을 연습하고 어려운 점을 기록합니다.",
+            "의존성, 유지 관리, 이전 방법을 비교한 뒤 운영 사이트 전환을 계획합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "중요한 기능을 외관에 묶어 두지 않기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 테마 핸드북은 표현 방식과 사이트의 중요한 기능을 적절히 분리하도록 권장합니다. 포트폴리오, 특수 콘텐츠, 기타 핵심 기능을 테마가 제공한다면 테마를 바꿀 때 해당 기능의 진입점이나 표시 방식이 사라질 수 있습니다. 데이터가 남아 있는 것과 방문자가 사용할 수 있는 것은 별개입니다. 선택하기 전에 대체 표시 방법과 이전 절차를 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데모 템플릿에 추가 플러그인, 유료 구성 요소, 외부 서비스가 필요한지 확인합니다. 레이아웃 하나를 가져오면서 여러 의존성이 생기면 향후 업데이트와 라이선스 비용도 늘어납니다. 필요한 항목을 모두 적고, 같은 일을 중복 처리하는 도구가 없는지 확인하며, 테마 자체 가격만 비용으로 계산하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시험용 복제본에서 다른 적합한 테마로 바꾸고 글의 텍스트, 이미지, 메뉴, 특수 콘텐츠 상태를 확인합니다. '테마 설정을 내보낼 수 있다'는 사실을 모든 도구가 읽을 수 있는 공통 형식으로 오해하지 마세요. 레이아웃을 수동으로 다시 만들어야 한다면 작업량을 추정하고 원문을 보관해 향후 디자인 변경의 출발점을 마련합니다."
+        },
+        {
+          "type": "heading",
+          "text": "다음 업데이트에도 유지되는 맞춤 설정 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기본 설정으로 요구를 충족할 수 있다면 먼저 이를 사용합니다. 코드를 수정해야 한다면 WordPress에 익숙한 사람이 적절한 방식을 선택하도록 합니다. 자식 테마는 부모 테마를 바탕으로 맞춤 설정을 관리하여 부모 파일을 직접 고쳤다가 업데이트로 덮어쓰이는 일을 피할 수 있습니다. 다만 부모 테마에 계속 의존하므로 업데이트 후 호환성도 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "블록 테마의 스타일, 템플릿 수정, 파일 설정은 저장 위치가 서로 다를 수 있습니다. 인계할 때 어느 층을 수정했는지 명확히 적습니다. 완성 화면만 넘기지 말고 원래 설정, 필요한 파일, 복구 방법을 함께 남깁니다. 글만 편집하는 담당자도 어느 사이트 전체 영역을 함부로 바꾸면 안 되는지 알아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "유료 테마는 사용 가능한 사이트 수, 업데이트와 지원 기간, 갱신 방식을 확인하고 합법적으로 받은 설치 파일과 계정 정보를 보관합니다. 무료 테마도 유지 관리 상태와 문서를 살펴야 합니다. 구매 비용이 없더라도 호환성과 인계 비용은 남습니다. 실제 비용에는 사이트를 계속 쓸 수 있도록 유지하는 작업이 포함됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "운영 사이트 디자인을 바꿀 때 이전 콘텐츠도 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "전환 전에 새 백업을 만들고 현재 페이지와 기능 목록을 보관한 뒤 적절한 시간을 정합니다. 새 테마가 메뉴 위치, 위젯, 이미지 표시, 템플릿을 바꿀 수 있으므로 전환 후 최신 글만 확인해서는 안 됩니다. 이전 콘텐츠도 표본 검사하고, 특히 특수 숏코드나 레이아웃으로 만든 페이지를 살펴봅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로그아웃한 창에서 양식, 검색, 탐색, 관련 링크 등 주요 경로를 시험하고 캐시가 여전히 이전 디자인을 보여 주는지도 확인합니다. 문제가 생기면 미리 준비한 방법으로 복구하면서 새 데이터는 보존합니다. 좋은 테마는 독자가 읽고 관리자가 업데이트할 수 있으며 다음 변경 때 사이트 전체를 다시 추측하지 않아도 되는 테마입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-theme-selection/diagram-1-ko.svg",
+          "alt": "읽기, 조작, 기능 의존성, 업데이트, 이전 가능성의 다섯 기준으로 테마를 점검하는 독창적 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "실제 콘텐츠로 검증한 뒤 장기 유지 관리 방식을 결정합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "비교 기준",
+            "확인할 질문",
+            "실제 점검"
+          ],
+          "rows": [
+            [
+              "읽기",
+              "실제 콘텐츠가 명확한가?",
+              "중국어, 긴 제목, 이미지"
+            ],
+            [
+              "편집",
+              "일상 업데이트는 누가 하나?",
+              "글, 탐색 메뉴, 공통 영역"
+            ],
+            [
+              "기능",
+              "어떤 기능이 테마에 의존하나?",
+              "특수 콘텐츠와 플러그인 목록"
+            ],
+            [
+              "유지 관리",
+              "맞춤 설정을 어떻게 보존하나?",
+              "업데이트, 자식 테마, 문서"
+            ],
+            [
+              "이전 가능성",
+              "테마 변경 후 어떻게 이어 가나?",
+              "텍스트, 미디어, 대체 레이아웃"
+            ]
+          ],
+          "caption": "테마 유형은 구현의 차이일 뿐입니다. 적합한지는 자신의 콘텐츠로 검증해야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "데모의 겉모습을 나누어 살피기",
+          "text": "사진, 글꼴, 플러그인, 호스팅이 데모의 결과에 모두 영향을 줄 수 있습니다. 필요한 자료와 기능의 출처를 확인하고 자신의 콘텐츠로 시험하세요. 데모 첫 화면을 완성된 사이트로 보지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "테마와 플러그인 설치·관리",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이드바와 위젯 설정",
+              "kind": "life",
+              "slug": "wordpress-widgets-sidebar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 테마의 종류와 기능의 경계",
+          "url": "https://developer.wordpress.org/themes/getting-started/what-is-a-theme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 블록 테마",
+          "url": "https://wordpress.org/documentation/article/block-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 자식 테마",
+          "url": "https://developer.wordpress.org/themes/advanced-topics/child-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 테마 관리",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 主题怎么选：阅读、编辑与长期维护",
+      "description": "选 WordPress 主题，应先看阅读与编辑需求，再比较展示网站的外观。本文整理区块主题、传统主题与混合设计的差异，提供真实内容测试、可迁移性、自定义及长期维护的检查方式。适合准备换版或建立新站的台湾使用者，用同一份验收清单确认手机导航、文章、表单与管理流程，避免选了漂亮模板后才发现日常更新很困难。",
+      "hero": {
+        "src": "/guides/wordpress-theme-selection/hero-zh-cn.jpg",
+        "alt": "阅读版面、内容文件与维护资料夹组成的原创主题评估插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "主题演示站通常有一致的照片、短标题和精心挑选的内容，你的网站却可能有长篇中文、竖版图片与复杂表格。只靠展示首页选主题，容易在正式发布后才发现版面不合用。先拿自己的代表内容测试，会比先决定颜色再勉强套入信息更实际。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以虚构的生活知识博客为例，评估长文章、分类列表及联系页的需求。比较方法为原创建议，主题类型与自定义概念依 WordPress 官方文件查证。本篇不提供品牌排名，也没有宣称任何主题在未测试的情况下一定最快或最适合搜索。"
+        },
+        {
+          "type": "heading",
+          "text": "先列出需要呈现的内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "整理网站会使用的页面类型，例如首页、文章内页、分类列表、搜索、一般页面及联系表单。每种类型选一份接近真实情况的内容，包含长标题、不同图片比例与多段文字。若未来需要商店或会员功能，列为兼容需求，但不要把尚未决定的构想都当成必买功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同时确认谁负责更新。只有一位熟悉设计的管理者，与多人轮流发布文章的团队，对编辑自由度的需要不同。若每篇文章只要改文字与图片，稳定模板可能比大量可调整选项更方便；若常做活动页，则需要了解版面能否重用及如何限制共用设置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把必要条件写成可观察的结果，例如中文长标题不挡住图片、手机菜单可用、表格能阅读、文章没有多余侧栏。这些条件能帮你淘汰不合用的候选，而不必在数十个看起来都很漂亮的演示站之间反复比较。"
+        },
+        {
+          "type": "heading",
+          "text": "理解区块与传统主题的编辑方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 主要支持区块与传统两类主题。区块主题使用区块模板，能透过网站编辑器调整相关模板与样式；传统主题使用 PHP 模板系统，常搭配自定义器、主题设置或其他工具。部分传统主题加入区块相关能力，常被称为混合主题，但不是完全独立的第三种官方类型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要只依新旧名称判断好坏。区块主题可提供一致的编辑概念，但团队仍要理解内容与模板的差别；传统主题可能已符合既有工作流，但自定义方式与更新依赖需要确认。选择重点是你能否完成日常修改，以及谁能处理超出界面设置的需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在候选主题中实际练习三件事：修改一篇文章、调整导航、更新共用页尾。记录是否容易找到入口、是否会影响其他页面，以及修改后如何恢复。这些工作比演示站上的动画更接近日后真正需要的操作。"
+        },
+        {
+          "type": "heading",
+          "text": "用阅读与操作检查外观",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "中文内容要看字级、行距、段落宽度与链接辨识。标题层级应容易理解，不能只靠不同颜色区分。长表格、程序片段或清单也要有合理显示方式，避免超出手机画面而让读者找不到重要字段。图片则确认主体与图注没有被不必要地裁切。"
+        },
+        {
+          "type": "paragraph",
+          "text": "导航、搜索与表单应使用鼠标、触控和键盘测试。放大文字后查看菜单是否被截断、焦点是否可见，固定页首是否挡住内容。主题标示的支持特性可以作为起点，但网站加入自己的内容与插件后，仍需要完整验收，不能把标签视为整站合格证明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "性能比较应使用相同内容、插件与缓存设置，并记录测试条件。若某演示站加载较快，可能与图片、主机及外部程序有关，不能直接归因于主题。先减少不需要的功能，再观察实际页面；不要为了追求单一分数而删掉读者需要的信息。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "挑选少量符合必要条件的主题，在测试站放入相同代表内容。",
+            "检查文章、列表、搜索及表单的桌面与手机版。",
+            "练习内容更新、导航与共用区域修改，记录操作难点。",
+            "比较依赖、维护与退出方式，确认后才安排正式切换。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "确认重要功能不被绑在外观里",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 主题手册建议将呈现与网站重要功能适当分开。若作品集、特殊内容或其他核心能力由主题提供，切换主题时可能失去相应入口或显示方式。资料是否仍存在与访客能否使用，是不同问题；选用前就应确认替代呈现与迁移方法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查展示模板需要哪些附加插件、付费组件或外部服务。导入一个模板可能同时带入多个依赖，日后更新与授权成本也会增加。把每个必要项目列出来，确认没有重复处理相同工作的工具，避免只计算主题本身的售价。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在测试副本切换到另一个合适主题，观察文章文字、图片、菜单与特殊内容的状态。不要把「可以导出主题设置」当成任何工具都能读取的通用格式。若需手动重建版面，估算工作量并保存内容原稿，让未来更换设计有明确起点。"
+        },
+        {
+          "type": "heading",
+          "text": "自定义要能承受下一次更新",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若内建设置能完成需求，先使用设置；需要修改程序时，让熟悉 WordPress 的人选择合适方式。子主题可在父主题基础上管理自定义，避免直接改父主题文件后被更新覆盖，但它仍依赖父主题，也需要确认更新后兼容性。"
+        },
+        {
+          "type": "paragraph",
+          "text": "区块主题中的样式、模板修改与文件设置可能有不同保存位置，交接时要写清楚改了哪一层。不要只交付一张完成画面，却没有原始设置、必要文件与恢复说明。若接手人员只会编辑文章，也应知道哪些全站区域不宜随意调整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "付费主题需确认网站数、更新与支持期间及续约方式，并保存合法取得的安装档与帐户信息。免费主题也要看维护情况与文件，不能因没有购买费用就忽略兼容及交接成本。真正的成本包含日后让网站保持可用所需要的工作。"
+        },
+        {
+          "type": "heading",
+          "text": "正式换版要验证旧内容仍可使用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "切换前取得新的备份，保存目前页面与功能清单，再安排适合的时间。新主题可能改变菜单位置、小工具、图片显示或模板，切换后要重新确认，不只检查最新文章。抽查较早的内容，尤其是曾用特殊短代码或模板建立的页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用未登录窗口测试主要路径，确认表单、搜索、导航及相关链接，并留意缓存是否仍显示旧版。若出现问题，依事先准备的方式恢复与保留新资料。选到合适主题的标准，是读者能阅读、管理者能更新，而且下一次变更不必重新猜测整个网站。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-theme-selection/diagram-1-zh-cn.svg",
+          "alt": "主题选择依阅读、操作、功能依赖、更新与可迁移性五项条件验收的原创图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "先用真实内容验收，再决定长期维护的方式。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "比较方向",
+            "要问的问题",
+            "实际检查"
+          ],
+          "rows": [
+            [
+              "阅读",
+              "真实内容是否清楚",
+              "中文、长标题与图片"
+            ],
+            [
+              "编辑",
+              "日常更新由谁完成",
+              "文章、导航与共用区域"
+            ],
+            [
+              "功能",
+              "哪些能力依赖主题",
+              "特殊内容与插件清单"
+            ],
+            [
+              "维护",
+              "自定义如何保留",
+              "更新、子主题与文件"
+            ],
+            [
+              "可迁移性",
+              "换版后如何继续使用",
+              "文字、媒体与替代版面"
+            ]
+          ],
+          "caption": "主题类型是实现差异，是否合用仍需要自己的内容验收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "演示站的效果要拆开看",
+          "text": "照片、字体、插件与主机都可能影响展示结果。先确认必要素材与功能来源，再用自己的内容测试，不把展示首页当成已完成的网站。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "主题与插件的安装管理",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "侧边栏与小工具配置",
+              "kind": "life",
+              "slug": "wordpress-widgets-sidebar"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：主题种类与功能分界",
+          "url": "https://developer.wordpress.org/themes/getting-started/what-is-a-theme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：区块主题",
+          "url": "https://wordpress.org/documentation/article/block-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：子主题",
+          "url": "https://developer.wordpress.org/themes/advanced-topics/child-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：主题管理",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
