@@ -46,8 +46,13 @@ class StageText(BaseModel):
     text: str = Field(description="The whole output file, exactly as it should be saved.")
 
 
-def stage_choice(row: VideoAutomationSettings, stage: str) -> tuple[str, str]:
-    choice = row.stage_models.get(stage) or DEFAULT_STAGE_MODELS[stage]
+def stage_choice(
+    row: VideoAutomationSettings, stage: str, format: str = "slides"
+) -> tuple[str, str]:
+    """The vendor and model a stage runs on: a drama's own choice when the owner made one
+    (docs/videos/DRAMA-FLOW.md §一), else the tutorial's, else the default."""
+    drama = (row.drama_stage_models or {}) if format == "drama" else {}
+    choice = drama.get(stage) or row.stage_models.get(stage) or DEFAULT_STAGE_MODELS[stage]
     return choice["provider"], choice["model"]
 
 
@@ -105,7 +110,7 @@ async def run_stage(
     token_id: Any,
     client: httpx.AsyncClient | None = None,
 ) -> StageRunOut:
-    provider_name, model = stage_choice(row, request.stage)
+    provider_name, model = stage_choice(row, request.stage, request.format)
     on_plan = provider_name == SUBSCRIPTION_PROVIDER
     usage = await usage_view(session, row)
     # A series document, an episode planned from an approved chapter, a recap or a fix is not

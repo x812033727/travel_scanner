@@ -9,11 +9,12 @@ with a video tool token, through apps/web/app/api/video/automation.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated
+from typing import Annotated, Any
 from uuid import UUID
 
 import httpx
 from fastapi import APIRouter, Depends
+from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -109,31 +110,32 @@ async def _save(session: AsyncSession, user: User, payload: SettingsWrite) -> Se
     return await service.update_settings(session, user, payload)
 
 
+def _validated(values: dict[str, Any]) -> SettingsWrite:
+    """The merged settings as a whole, or 422 naming what does not hold together.
+
+    The bounds and the consistency rules (a shortest length above the longest, no topic
+    source) live on ``SettingsWrite``; a save sends only some fields, so they can only be
+    checked once what was sent lies over what is stored.
+    """
+    try:
+        return SettingsWrite.model_validate(values)
+    except ValidationError as error:
+        problems = "；".join(
+            f"{'.'.join(str(part) for part in problem['loc'])}: {problem['msg']}"
+            if problem["loc"]
+            else str(problem["msg"])
+            for problem in error.errors()
+        )
+        raise AppError(422, "video_automation_settings_invalid", problems) from error
+
+
 @admin_router.put("/settings", response_model=SettingsView)
 async def put_video_automation_settings(
     payload: SettingsSave, user: SettingsManager, session: Session
 ) -> SettingsView:
-    values = payload.model_dump()
-    missing = [
-        key
-        for key in (
-            "stage_models",
-            "drama",
-            "stage_instructions",
-            "channel_stance",
-            "auto_pick_outline",
-            "auto_approve_final",
-        )
-        if getattr(payload, key) is None
-    ]
-    if missing:
-        # The stage models are chosen on the AI settings page, and a page from before the drama
-        # settings, the standing instructions, the stance or the hands-off switches existed
-        # sends none: keep the stored ones.
-        current = service.settings_values(await service.settings_row(session)).model_dump()
-        for key in missing:
-            values[key] = current[key]
-    return await _save(session, user, SettingsWrite.model_validate(values))
+    """Save the fields the tab sent; the rest keep their stored values (SettingsSave)."""
+    current = service.settings_values(await service.settings_row(session)).model_dump()
+    return await _save(session, user, _validated(payload.merged_over(current)))
 
 
 @admin_router.get("/prompts", response_model=StagePromptsOut)
@@ -147,10 +149,17 @@ async def get_video_stage_prompts(user: ContentReader, session: Session) -> Stag
 async def put_video_automation_models(
     payload: StageModelsWrite, user: SettingsManager, session: Session
 ) -> SettingsView:
-    """Change only the stage models, from the AI settings page."""
+    """Change only the stage models, from the AI settings page.
+
+    The drama's models change only when the page sends them: null means the drama follows the
+    tutorial's, left out keeps the stored choice (docs/videos/DRAMA-FLOW.md §一).
+    """
     current = service.settings_values(await service.settings_row(session)).model_dump()
-    merged = SettingsWrite.model_validate({**current, **payload.model_dump()})
-    return await _save(session, user, merged)
+    sent = payload.model_dump()
+    values = {**current, "stage_models": sent["stage_models"]}
+    if "drama_stage_models" in payload.model_fields_set:
+        values["drama"] = {**current["drama"], "drama_stage_models": sent["drama_stage_models"]}
+    return await _save(session, user, _validated(values))
 
 
 @tool_router.get("/settings", response_model=ToolSettingsView)

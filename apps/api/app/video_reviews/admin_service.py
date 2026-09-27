@@ -350,7 +350,12 @@ async def submit_review(
     # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
     # passed every line and the setting is on, the review is decided as it arrives.
     auto_note = None
-    if payload.gate == "audio" and await auto_approves_audio(session, payload.payload):
+    # A drama reads its own switches (docs/videos/DRAMA-FLOW.md §一); a project row from before
+    # formats existed reads as a tutorial.
+    video_format = project.format or "slides"
+    if payload.gate == "audio" and await auto_approves_audio(
+        session, payload.payload, video_format
+    ):
         auto_note = AUTO_APPROVED_NOTE
     # A drama's storyboard may stand on the judge's scores when the owner turned that on.
     elif payload.gate == "storyboard" and await auto_approves_storyboard(session, payload.payload):
@@ -365,7 +370,7 @@ async def submit_review(
         auto_note = pick_reason(payload.payload)
         review.choice = pick_choice(payload.payload)
     elif payload.gate in ("final", "publish") and await auto_approves_final(
-        session, payload.gate, payload.payload, payload.content_sha256
+        session, payload.gate, payload.payload, payload.content_sha256, video_format
     ):
         auto_note = QA_AUTO_APPROVED_NOTE if payload.gate == "final" else PACKAGE_AUTO_APPROVED_NOTE
     if auto_note is not None:

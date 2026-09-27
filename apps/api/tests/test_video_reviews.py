@@ -579,7 +579,8 @@ async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_
     assert again.id == waiting.id and again.status == "approved"
     assert again.note == QA_AUTO_APPROVED_NOTE
     assert waiting.summary == "成片＋品管" and waiting.payload == {"qa": qa}
-    assert final_rule.await_args.args[1:] == ("final", {"qa": qa}, "f" * 64)
+    # A project row from before formats existed reads as a tutorial (DRAMA-FLOW.md §一).
+    assert final_rule.await_args.args[1:] == ("final", {"qa": qa}, "f" * 64, "slides")
 
     # A decided review of the same file comes back as it is.
     settled = ReviewIn(gate="audio", content_sha256="a" * 64, summary="旁白", payload={"x": 1})
