@@ -562,9 +562,10 @@ function DubsBody({ slug, review }: { slug: string; review: Review }) {
  * it, otherwise a line saying it is still being cut there. Nothing for an ordinary video, so the
  * ready card, the video page and the series page can all place it without a check of their own.
  */
-export function CompilationDownload({ project }: { project: ProjectSummary }) {
+export function CompilationDownload({ project, canManage }: { project: ProjectSummary; canManage: boolean }) {
   const t = useTranslations("admin.videoReviews");
-  if (!project.compilation) return null;
+  // The API serves the cut to content.manage only, so a reader is shown nothing rather than a link that answers 403.
+  if (!project.compilation || !canManage) return null;
   if (!project.download_available) return <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationInWorkspace")}</p>;
   return <p><a href={downloadUrl(project.slug)} download={`${project.slug}.mp4`} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--teal)] bg-[var(--surface)] px-3 text-sm font-semibold hover:bg-[var(--paper)]"><Download aria-hidden size={16} />{t("downloadCompilation")}</a></p>;
 }

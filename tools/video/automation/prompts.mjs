@@ -251,7 +251,8 @@ video.json for a drama (the payload's "drama_example" shows the shape; copy it, 
   (auto|freeze|slow|trim), transition? (cut|dissolve), start_frame? {shot, at: "last"} only when
   the action continues an EARLIER shot, end_frame? {prompt}, visual? ("clip": an image-to-video
   clip, the default; "still": the keyframe animated with a slow camera move the tool renders
-  from "camera": push in, pull out, pan left, pan right, tilt up, tilt down or drift)}. Cards: a
+  from "camera": push in, pull out, pan left, pan right, tilt up, tilt down or drift; a still
+  has no end_frame)}. Cards: a
   "title" scene may open the episode and an "outro" scene close it; no other slide templates.
 - A shot carries 3 to 10 seconds of lines (lint refuses more than 12): long narration is more
   shots, not a longer shot. Vary shot sizes: open wide, come closer. A median under 3 s warns.

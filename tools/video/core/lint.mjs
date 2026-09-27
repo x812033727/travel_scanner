@@ -171,8 +171,13 @@ function seriesProblems(doc, series, error, warn) {
     for (const problem of tier.errors) error(problem.path, problem.message);
     for (const problem of tier.warnings) warn(problem.path, problem.message);
   }
-  if (series.compilation === true && doc.scenes[0]?.template === "title") {
-    error("scenes[0]", "a binge episode opens cold: the first line is the hook; drop the title card");
+  if (series.compilation === true) {
+    if (doc.scenes[0]?.template === "title") error("scenes[0]", "a binge episode opens cold: the first line is the hook; drop the title card");
+    // The compilation puts its own chapter card between episodes and one outro after the last;
+    // an episode's outro card would play at every seam.
+    doc.scenes.forEach((scene, index) => {
+      if (scene.template === "outro") error(`scenes[${index}]`, "a binge episode ends on its cliffhanger: the compilation adds the cards; drop the outro");
+    });
   }
 }
 

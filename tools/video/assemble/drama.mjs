@@ -18,7 +18,7 @@ import { HEIGHT, layoutScenes, LOUDNESS, PlanError, WIDTH } from "./plan.mjs";
 // Part of every clip segment's cache key: change a setting below and every clip is re-encoded.
 export const CLIP_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-clip-v1";
 // The same for a motion segment: the zoompan expressions below are part of what it versions.
-export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v1";
+export const MOTION_ENCODER_VERSION = "x264-high-crf18-film-g60-bf2-bt709-motion-v2";
 // How far a push-in or pull-out travels over the shot, as a share of the picture; a pan or tilt
 // sits at a fixed zoom and slides the window; a drift barely moves at all. Small on purpose: a
 // still is meant to read as a held shot with life in it, not as a camera move.
@@ -309,7 +309,10 @@ function motionChain(move, frames) {
  */
 export function motionSegmentArgs({ keyframe, frames, move, subtitlesList = null, dissolveFrom = null, outFile }) {
   const overlays = overlayInputs(subtitlesList, dissolveFrom);
-  const chain = [...motionChain(move, frames), `trim=end_frame=${frames}`, "setpts=PTS-STARTPTS"];
+  // The keyframe is RGB and carries no colour description: converted here with the BT.709 matrix
+  // (as the slides path does), or format=yuv420p in COLOUR would use swscale's default BT.601
+  // and setparams would label the result BT.709, off-colour against the neighbouring clips.
+  const chain = [...motionChain(move, frames), `scale=${WIDTH}:${HEIGHT}:out_color_matrix=bt709:out_range=tv`, "format=yuv420p", `trim=end_frame=${frames}`, "setpts=PTS-STARTPTS"];
   const inputs = ["-loop", "1", "-framerate", String(FPS), "-t", seconds(frames), "-i", keyframe, ...overlays.inputs];
   return encodeArgs(inputs, overlayGraph(chain, overlays), frames, outFile);
 }

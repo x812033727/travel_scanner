@@ -33,13 +33,15 @@ test("the description budget leaves room for the chapter lines, and the planner'
   assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, shot: "other" } }, candidates), /thumbnail_candidates/);
   assert.equal(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, shot: "other" } }, []), null, "no candidates: any picture name passes and the thumb draws on the theme");
   assert.match(metadataProblem({ ...good, tags: ["x".repeat(501)] }, candidates), /tags/);
+  assert.match(metadataProblem({ ...good, tags: [] }, candidates), /at least one word/);
+  assert.match(translationProblem({ title: "Reborn", description: "d", tags: [], chapters: { e1: "One", e2: "Two" } }, { e1: "一", e2: "二" }), /at least one word/, "an empty list would read as untranslated in lint and fail qa");
   const chapters = { e1: "一", e2: "二" };
   assert.equal(translationProblem({ title: "Reborn", description: "d", tags: ["t"], chapters: { e1: "One", e2: "Two" } }, chapters), null);
   assert.match(translationProblem({ title: "Reborn", description: "d", tags: ["t"], chapters: { e1: "One" } }, chapters), /chapters lack e2/);
 });
 
 /** A site with what a compilation touches: the stages, the reviews, the series' done call. */
-function fakeSite({ answers = {} } = {}) {
+function fakeSite({ answers = {}, doneFailures = 0 } = {}) {
   const calls = { run: [], reports: [], reviews: [], compilations: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
@@ -65,6 +67,8 @@ function fakeSite({ answers = {} } = {}) {
     const compiling = /^\/api\/video\/automation\/series\/([a-z0-9-]+)\/compilation\/done$/.exec(pathname);
     if (compiling) {
       calls.compilations.push({ series: compiling[1], action: "done" });
+      // The site down for the round that finished the compilation: a 404 is not retried inside the client.
+      if (doneFailures-- > 0) return json({ code: "not_found", detail: "down for a minute" }, 404);
       return json({ slug: compiling[1] });
     }
     const match = /^\/api\/video\/reviews\/([a-z0-9-]+)(\/reviews)?$/.exec(pathname);
@@ -90,6 +94,8 @@ function fakeSite({ answers = {} } = {}) {
 test("a compilation goes from the placeholder document to the confirmed upload without the owner, and the series is told", async () => {
   const box = compilationSandbox({ planned: false, rendered: false });
   const slug = `${SERIES}-full`;
+  // No tutorial draft is due, so an idle round is idle.
+  atomicWrite(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T04:00:00Z" }));
   // The worker's context file, as startCompilation writes it, and one episode with a drawn
   // keyframe of a shot with a character in it: the thumbnail's picture.
   const episodes = EPISODES.map((each, index) => ({ slug: each, number: index + 1, title: TITLES[each], logline: `L${index + 1}`, recap: `R${index + 1}` }));
@@ -119,7 +125,7 @@ test("a compilation goes from the placeholder document to the confirmed upload w
     },
     "translator:compilation": (body) => ({ title: `${body.payload.locale} title`, description: `${body.payload.locale} description`, tags: [`${body.payload.locale}`], chapters: Object.fromEntries(Object.keys(body.payload.chapters).map((key) => [key, `${body.payload.locale} ${key}`])) }),
   };
-  const site = fakeSite({ answers });
+  const site = fakeSite({ answers, doneFailures: 1 });
   const out = { stdout: "", stderr: "" };
   const ctx = {
     root: box.root,
@@ -187,9 +193,14 @@ test("a compilation goes from the placeholder document to the confirmed upload w
   assert.match(await automation.step(), /upload package written/);
   assert.match(await automation.step(), /publish confirmation sent/);
   assert.match(await automation.step(), /the upload is confirmed/);
-  assert.deepEqual(site.calls.compilations, [{ series: SERIES, action: "done" }]);
+  assert.deepEqual(site.calls.compilations, [{ series: SERIES, action: "done" }], "the site was told once, and refused");
   const finished = automatedVideos(box.work).find((each) => each.slug === slug);
   assert.equal(finished.status, "done");
+  assert.equal(finished.compilation_told, undefined, "the refusal is not remembered as told");
+  assert.match(await automation.step(), /the site now knows the compilation of wuxia is done/);
+  assert.deepEqual(site.calls.compilations, [{ series: SERIES, action: "done" }, { series: SERIES, action: "done" }]);
+  assert.equal(automatedVideos(box.work).find((each) => each.slug === slug).compilation_told, true);
+  assert.equal(await automation.step(), null, "and it is not told again");
   assert.deepEqual(runs.filter((run) => ["render", "compile", "package"].includes(run)), ["render", "compile", "package"]);
   const report = site.calls.reports.at(-1);
   assert.equal(report.series_slug, SERIES);

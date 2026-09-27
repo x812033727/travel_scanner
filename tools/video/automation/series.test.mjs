@@ -12,6 +12,7 @@ import { automationClient } from "./client.mjs";
 import { Automation, automatedVideos, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
 import { eachLine } from "../core/schema.mjs";
+import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
 import { castFrom, chapterRange, documentPayload, documentProblem, episodeSlug, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 
@@ -125,6 +126,7 @@ function fakeSite({ jobs = [], answers = {}, settings = {}, decide = null, serie
     if (compiling) {
       calls.compilations.push({ series: compiling[1], action: compiling[2], ...(body ?? {}) });
       if (compiling[2] === "done") return json({ ...series, compilation_finished_at: "2026-09-27T09:00:00Z" });
+      if (compilation?.refuse) return json({ code: compilation.refuse.code, detail: compilation.refuse.detail }, 409);
       return json({ series: { ...series, compilation_slug: body.slug }, episodes: compilation?.episodes ?? [], context: { series, setting: SETTING, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: null, episodes: [], recaps: [], mysteries: [], all_recaps: compilation?.recaps ?? [] } });
     }
     const episode = /^\/api\/video\/automation\/series\/([a-z0-9-]+)\/episodes\/(\d+)\/(start|recap|done)$/.exec(pathname);
@@ -421,6 +423,9 @@ test("the retention numbers are measured on the script's estimated timeline, and
   assert.deepEqual(scriptVerdict({ ...passing, retention: null }, SERIES), { passed: true, problems: [] }, "the classic series has no timing rule");
   assert.match(scriptVerdict({ ...passing, retention: null }, BINGE).problems.join(" "), /named no hook/);
   assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: 12 } }, BINGE).problems.join(" "), /hook ends at 12 s/);
+  // A hook_line the script does not have measures as null; the site refuses a null, so the worker must too.
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: null } }, BINGE).problems.join(" "), /hook_line is not a line of the script/);
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, satisfaction: { count: 0, first_seconds: null, positions: [] } } }, BINGE).problems.join(" "), /only 0 satisfaction beats[\s\S]*satisfaction_lines are not lines/);
   assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, cliffhanger_last: false } }, BINGE).problems.join(" "), /cliffhanger is not the last line/);
   assert.match(scriptVerdict({ ...passing, coverage: { ...passing.coverage, turn: "無" } }, SERIES).problems.join(" "), /turn is missing/);
   assert.match(scriptVerdict({ ...passing, coverage: { ...passing.coverage, hook: "弱" } }, SERIES).problems.join(" "), /more than one beat/);
@@ -461,6 +466,19 @@ test("a hands-off series' document goes through the checker and is filed with th
   assert.equal(site.calls.run.filter((call) => call.variant === "series-doc").length, 4, "the checker is asked twice before the document is left to the owner");
 });
 
+test("a compilation the site refuses to start ends the run with the site's reason instead of failing every round", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
+  const job = { kind: "compilation", series: { ...BINGE, status: "finished" }, chapter_number: null, episode: null, previous: null, rewrites_left: 0, context: null };
+  const site = fakeSite({ jobs: [job], series: { ...BINGE, status: "finished" }, compilation: { refuse: { code: "video_drama_request_slug_taken", detail: "rebirth-full 已經是另一支影片" } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T00:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  assert.match(await automation.step(), /series rebirth: the site refused to start the compilation rebirth-full: rebirth-full 已經是另一支影片/);
+  assert.equal(automation.halted, true);
+  assert.equal(existsSync(path.join(box.root, "docs", "videos", "rebirth-full")), false, "no document is written for a compilation the site did not start");
+});
+
 test("the compilation of a finished series is started under <series>-full with a document that passes lint", async () => {
   const box = sandbox();
   writeFileSync(path.join(box.work, "auto-state.json"), JSON.stringify({ last_draft_at: "2026-09-27T00:00:00Z" }));
@@ -477,6 +495,10 @@ test("the compilation of a finished series is started under <series>-full with a
   assert.deepEqual(video.compilation.episodes, ["rebirth-e001", "rebirth-e002", "rebirth-e003"]);
   assert.equal(video.compilation.series, "rebirth");
   assert.equal(video.scenes.length, 4, "a chapter card per episode and the outro");
+  // The site serialises the voice with a null model and a "+0%" rate, which lint refuses; the
+  // document carries the voice as settle writes it, or the compilation could never leave its first step.
+  assert.deepEqual(video.voice, { provider: "gemini", name: "Sulafat", style: "Relaxed" });
+  assert.deepEqual(lintCompilation(video).errors, [], "the compilation's document passes lint as written");
   assert.equal(readJson(path.join(dir, "compilation.json")).all_recaps.length, 3);
   const state = automatedVideos(box.work).find((each) => each.slug === slug);
   assert.deepEqual(state.compilation, { series: "rebirth", episodes: ["rebirth-e001", "rebirth-e002", "rebirth-e003"] });
@@ -493,7 +515,7 @@ test("a hands-off episode's screenplay is fixed from the checker's verdict befor
   const box = sandbox();
   const slug = "rebirth-e001";
   const example = dramaFixture();
-  const ids = [...eachLine(example)].map(({ line }) => line.id);
+  const ids = [...eachLine(example)].filter(({ scene }) => scene.template !== "outro").map(({ line }) => line.id);
   const script = () => {
     const video = structuredClone(example);
     video.characters = [
@@ -505,6 +527,10 @@ test("a hands-off episode's screenplay is fixed from the checker's verdict befor
       for (const line of scene.lines) if (line.speaker && line.speaker !== "narrator") line.speaker = line.speaker === "jingwei" ? "shen-lan" : "chu-ying";
     }
     if (video.thumbnail?.data) delete video.thumbnail.data.shot;
+    // A compilation episode ends on its cliffhanger; the compilation adds the cards. The
+    // fixture's outro carried its third chapter label, so the last shot takes it.
+    video.scenes = video.scenes.filter((scene) => scene.template !== "outro");
+    video.scenes.at(-1).chapter = "結尾";
     return { video: { ...video, slug }, claims: "原創\n", lexicon_additions: {} };
   };
   let checks = 0;

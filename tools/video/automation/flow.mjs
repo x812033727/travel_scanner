@@ -174,15 +174,22 @@ function mergeLexicon(root, additions) {
 }
 
 /**
+ * The settings tab's voice as video.json may carry it: the site serialises every field (a null
+ * model, a "+0%" rate), and lint refuses the ones the provider does not use. Gemini takes its
+ * pace from the style and has no rate; Azure has a rate and no style or model.
+ */
+export function settledVoice(voice) {
+  const unused = voice.provider === "gemini" ? ["rate"] : ["style", "model"];
+  return Object.fromEntries(Object.entries(voice).filter(([key, value]) => value !== null && value !== "" && !unused.includes(key)));
+}
+
+/**
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
  * (docs/videos/DRAMA.md) also takes the settings tab's style preset, subtitle burn-in and
  * whether music is made at all; the writer's own look fields stay.
  */
 export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null }) {
-  // Gemini takes its pace from the style and has no rate; Azure has a rate and no style or model.
-  const unused = settings.voice.provider === "gemini" ? ["rate"] : ["style", "model"];
-  const voice = Object.fromEntries(Object.entries(settings.voice).filter(([key, value]) => value !== null && value !== "" && !unused.includes(key)));
-  const settled = { ...video, slug, voice };
+  const settled = { ...video, slug, voice: settledVoice(settings.voice) };
   // The description links the article through its content pack. An article the news automation
   // published lives only in the database, so without a pack the script names it in sources instead.
   if (sourceGuide && existsSync(contentPackFile(sourceGuide, root))) settled.source_guide = sourceGuide;
@@ -329,6 +336,11 @@ export class Automation {
     return path.join("answers", name);
   }
 
+  /** The settings' voice as a document may carry it (settledVoice). */
+  voice() {
+    return settledVoice(this.settings.voice);
+  }
+
   /** Nothing moved and nothing was wrong with the video (a service was down): end this run. */
   later(line) {
     this.halted = true;
@@ -375,6 +387,13 @@ export class Automation {
       const recorded = await this.recordVideoId(state, uploaded.get(state.slug));
       if (recorded) return recorded;
     }
+    // A finished compilation the site has not heard about yet (the call failed on the round
+    // that finished it): tell it now, or the series stays 合集正在做.
+    for (const state of automatedVideos(this.workBase)) {
+      if (state.status === "done" && state.compilation && !state.compilation_told && (await this.tellCompilationDone(state))) {
+        return `${state.slug}: the site now knows the compilation of ${state.compilation.series} is done`;
+      }
+    }
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "active") continue;
       let done;
@@ -420,7 +439,28 @@ export class Automation {
     state.youtube_video_id = videoId;
     saveState(this.workdir(state.slug), state);
     await report(this.ctx, this.api, state, "on YouTube");
+    // The owner may paste the address before the worker read the publish approval: the series
+    // still has to hear that its compilation is done.
+    if (state.compilation) await this.tellCompilationDone(state);
     return `${state.slug}: on YouTube as ${videoId}; video.json records it and the video is complete`;
+  }
+
+  /**
+   * Tell the site the compilation is done (docs/videos/BINGE.md), once: until it hears, the
+   * series page says 合集正在做 and refuses another. A call that fails is made again on a later
+   * round (step), so a site that was down for a minute does not leave the series waiting forever.
+   */
+  async tellCompilationDone(state) {
+    if (!state.compilation || state.compilation_told) return false;
+    try {
+      await this.api.compilationDone(state.compilation.series);
+    } catch (error) {
+      this.log(`  could not mark the compilation of ${state.compilation.series} done: ${error.message}`);
+      return false;
+    }
+    state.compilation_told = true;
+    saveState(this.workdir(state.slug), state);
+    return true;
   }
 
   /** The owner dropped this video on /admin/videos: leave it, files and all. */
@@ -903,11 +943,7 @@ export class Automation {
         state.notes.push(...(review.note ? [`publish: ${review.note}`] : []));
         saveState(workdir, state);
         if (state.compilation) {
-          try {
-            await this.api.compilationDone(state.compilation.series);
-          } catch (error) {
-            this.log(`  could not mark the compilation of ${state.compilation.series} done: ${error.message}`);
-          }
+          await this.tellCompilationDone(state);
         } else if (state.series) {
           try {
             if (!state.recap_sent) await this.recap(state);

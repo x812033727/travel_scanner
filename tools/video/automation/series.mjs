@@ -202,9 +202,16 @@ export function scriptVerdict(check, series) {
     const retention = check?.retention;
     if (!isObject(retention)) problems.push("the checker named no hook, satisfaction or cliffhanger lines");
     else {
-      if (!(retention.hook_seconds <= HOOK_MAX_SECONDS)) problems.push(`the hook ends at ${retention.hook_seconds ?? "?"} s; it must land inside ${HOOK_MAX_SECONDS} s: make the first line the hook`);
-      if (!(retention.satisfaction?.count >= MIN_SATISFACTION)) problems.push(`only ${retention.satisfaction?.count ?? 0} satisfaction beats are played; at least ${MIN_SATISFACTION}`);
-      if (!(retention.satisfaction?.first_seconds <= FIRST_SATISFACTION_MAX_SECONDS)) problems.push(`the first satisfaction beat starts at ${retention.satisfaction?.first_seconds ?? "?"} s; it must land inside ${FIRST_SATISFACTION_MAX_SECONDS} s`);
+      // The site reads these as numbers and refuses a null (a hook_line that is not in the
+      // script measures as null), so a missing number is a problem here too, not a pass.
+      const hook = retention.hook_seconds;
+      const count = retention.satisfaction?.count;
+      const first = retention.satisfaction?.first_seconds;
+      if (typeof hook !== "number") problems.push("the checker's hook_line is not a line of the script: name the first line's id");
+      else if (hook > HOOK_MAX_SECONDS) problems.push(`the hook ends at ${hook} s; it must land inside ${HOOK_MAX_SECONDS} s: make the first line the hook`);
+      if (typeof count !== "number" || count < MIN_SATISFACTION) problems.push(`only ${typeof count === "number" ? count : 0} satisfaction beats are played; at least ${MIN_SATISFACTION}`);
+      if (typeof first !== "number") problems.push("the checker's satisfaction_lines are not lines of the script: name their ids");
+      else if (first > FIRST_SATISFACTION_MAX_SECONDS) problems.push(`the first satisfaction beat starts at ${first} s; it must land inside ${FIRST_SATISFACTION_MAX_SECONDS} s`);
       if (retention.cliffhanger_last !== true) problems.push("the cliffhanger is not the last line: cut everything after it");
     }
   }

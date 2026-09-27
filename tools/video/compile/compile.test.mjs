@@ -148,7 +148,7 @@ test("compile encodes the cards, joins the cuts, checks the result, merges the c
   const timeline = readWork(box, "timeline.json");
   assert.deepEqual(Object.keys(timeline), ["fps", "sample_rate", "total_frames", "scenes", "lines", "chapters", "speech_hash", "compilation_hash"]);
   assert.equal(timeline.speech_hash, null);
-  assert.deepEqual(timeline.chapters[1], { title: "第 2 集 夜探藏經閣", scene: "wuxia-ep-2", start_frame: 4381 });
+  assert.deepEqual(timeline.chapters[1], { title: "第 2 集 夜探藏經閣", scene: "wuxia-ep-2", start_frame: 4381, episode: 2 });
   assert.match(out.stdout, /4 of 4 cards encoded/);
   assert.match(out.stdout, /next: node tools\/video\/cli\.mjs qa --slug wuxia-full/);
   const state = readWork(box, "state.json");

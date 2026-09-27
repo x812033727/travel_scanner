@@ -60,7 +60,7 @@ function clipsManifestFor(doc) {
 test("the slides and clip encoder versions are untouched, so no published video's segments are redone", () => {
   assert.equal(ENCODER_VERSION, "x264-high-crf18-stillimage-g60-bf2-bt709-v2");
   assert.equal(CLIP_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-clip-v1");
-  assert.equal(MOTION_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-motion-v1");
+  assert.equal(MOTION_ENCODER_VERSION, "x264-high-crf18-film-g60-bf2-bt709-motion-v2");
   assert.equal(new Set([ENCODER_VERSION, CLIP_ENCODER_VERSION, MOTION_ENCODER_VERSION]).size, 3);
 });
 
@@ -213,7 +213,8 @@ test("a motion segment animates the looped keyframe with zoompan and then encode
   const inputs = plain.slice(0, plain.indexOf("-filter_complex"));
   assert.deepEqual(inputs, ["-hide_banner", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "30", "-t", "6.000000", "-i", "keyframes/a.png"]);
   const graph = plain[plain.indexOf("-filter_complex") + 1];
-  assert.match(graph, /^\[0:v\]scale=2400:1350:flags=lanczos,zoompan=z='1\+0\.1\*on\/179':x='iw\/2-\(iw\/zoom\/2\)':y='ih\/2-\(ih\/zoom\/2\)':d=1:s=1920x1080:fps=30,trim=end_frame=180,setpts=PTS-STARTPTS\[pic\];\[pic\]format=yuv420p,setparams=/);
+  // The RGB keyframe is converted to YUV with the BT.709 matrix before the overlays, as the slides path does; COLOUR's format is then a no-op.
+  assert.match(graph, /^\[0:v\]scale=2400:1350:flags=lanczos,zoompan=z='1\+0\.1\*on\/179':x='iw\/2-\(iw\/zoom\/2\)':y='ih\/2-\(ih\/zoom\/2\)':d=1:s=1920x1080:fps=30,scale=1920:1080:out_color_matrix=bt709:out_range=tv,format=yuv420p,trim=end_frame=180,setpts=PTS-STARTPTS\[pic\];\[pic\]format=yuv420p,setparams=/);
   for (const expected of ["zoompan=", "s=1920x1080", "fps=30", "trim=end_frame=180"]) assert.ok(graph.includes(expected), expected);
   assert.equal(plain[plain.indexOf("-frames:v") + 1], "180");
   assert.doesNotMatch(graph, /overlay|tpad|setpts=PTS\//);

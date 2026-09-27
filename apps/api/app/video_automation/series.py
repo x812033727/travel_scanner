@@ -939,13 +939,16 @@ async def act(session: AsyncSession, actor: User, slug: str, action: str) -> tup
     total = chapter_count(series.planned_episodes, series.episodes_per_chapter)
     if action == "compile":
         # The owner asks for the compilation of a finished series that was not set up to
-        # make one, or for another after the first (docs/videos/BINGE.md).
+        # make one (docs/videos/BINGE.md). A series keeps the one compilation it has: the
+        # worker names the video <series>-full, that slug is the first compilation's, and
+        # clearing it here would also take the first cut's download away.
         if series.status != "finished":
             raise SeriesRefused(409, "video_series_not_finished", "每一集都完成之後才能做合集")
-        if series.compilation_slug is not None and series.compilation_finished_at is None:
-            raise SeriesRefused(409, "video_series_compiling", "合集正在做")
+        if series.compilation_slug is not None:
+            if series.compilation_finished_at is None:
+                raise SeriesRefused(409, "video_series_compiling", "合集正在做")
+            raise SeriesRefused(409, "video_series_compiled", "合集已經做過；成片從作品頁下載")
         series.compilation = True
-        series.compilation_slug = None
         series.compilation_started_at = None
         series.compilation_finished_at = None
         series.updated_at = _now()
@@ -992,8 +995,13 @@ async def skip_episode(session: AsyncSession, actor: User, slug: str, number: in
     episode = await _episode(session, series, number)
     if episode.status not in ("planned", "ready"):
         raise SeriesRefused(409, "video_series_episode_started", "這一集已經開始做，不能跳過")
+    now = _now()
     episode.status = "skipped"
-    episode.updated_at = _now()
+    episode.updated_at = now
+    # The skipped episode may have been the last one open: the series finishes the same way
+    # it does when the worker reports the last episode, or a compilation series would wait
+    # for a job that never comes (docs/videos/BINGE.md).
+    finish_if_complete(series, await _episodes(session, series), now)
     session.add(
         AdminAuditLog(
             actor_user_id=actor.id,
@@ -1257,6 +1265,21 @@ async def recap_episode(
     return episode_view(episode)
 
 
+def finish_if_complete(
+    series: VideoDramaSeries, episodes: list[VideoDramaEpisode], now: datetime
+) -> bool:
+    """Mark the series finished once every planned episode is done or skipped; true if it did."""
+    if series.status != "active":
+        return False
+    if len(episodes) < series.planned_episodes or not all(
+        e.status in ("done", "skipped") for e in episodes
+    ):
+        return False
+    series.status = "finished"
+    series.updated_at = now
+    return True
+
+
 async def finish_episode(session: AsyncSession, slug: str, number: int) -> SeriesEpisodeOut:
     """The worker reports the episode is cleared for upload: the next one may start."""
     series = await _series(session, slug, lock=True)
@@ -1273,11 +1296,7 @@ async def finish_episode(session: AsyncSession, slug: str, number: int) -> Serie
             request.status = "done"
             request.finished_at = now
             request.updated_at = now
-    episodes = await _episodes(session, series)
-    if all(e.status in ("done", "skipped") for e in episodes) and len(episodes) >= (
-        series.planned_episodes
-    ):
-        series.status = "finished"
+    finish_if_complete(series, await _episodes(session, series), now)
     series.updated_at = now
     await session.commit()
     return episode_view(episode)

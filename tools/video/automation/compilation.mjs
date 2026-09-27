@@ -72,7 +72,7 @@ export function metadataProblem(answer, candidates) {
   if (!isText(answer.title) || answer.title.length > TITLE_MAX_CHARS || /[<>]/.test(answer.title)) return `title must be 1 to ${TITLE_MAX_CHARS} characters without angle brackets`;
   if (answer.title === COMPILATION_TITLE_PLACEHOLDER) return "title is still the placeholder";
   if (!isText(answer.description)) return "description is missing";
-  if (!Array.isArray(answer.tags) || !answer.tags.every(isText)) return "tags must be a list of words";
+  if (!Array.isArray(answer.tags) || !answer.tags.length || !answer.tags.every(isText)) return "tags must be a list of at least one word";
   if (answer.tags.join(",").length > TAGS_MAX_CHARS) return `tags must be at most ${TAGS_MAX_CHARS} characters in all`;
   const thumbnail = answer.thumbnail;
   if (!isObject(thumbnail) || !isText(thumbnail.headline) || thumbnail.headline.length > HEADLINE_MAX_CHARS) return `thumbnail.headline must be 1 to ${HEADLINE_MAX_CHARS} characters`;
@@ -87,7 +87,8 @@ export function translationProblem(answer, chapters) {
   if (!isObject(answer)) return "the answer is not an object";
   if (!isText(answer.title) || answer.title.length > TITLE_MAX_CHARS || /[<>]/.test(answer.title)) return `title must be 1 to ${TITLE_MAX_CHARS} characters without angle brackets`;
   if (!isText(answer.description) || bytes(answer.description) > DESCRIPTION_MAX_BYTES) return "description is missing or too long";
-  if (!Array.isArray(answer.tags) || !answer.tags.every(isText) || answer.tags.join(",").length > TAGS_MAX_CHARS) return "tags must be a short list of words";
+  // An empty list would read as "not translated" in lint, which qa counts against the captions.
+  if (!Array.isArray(answer.tags) || !answer.tags.length || !answer.tags.every(isText) || answer.tags.join(",").length > TAGS_MAX_CHARS) return "tags must be a short list of at least one word";
   if (!isObject(answer.chapters)) return "chapters must map each episode slug to its title";
   const missing = Object.keys(chapters).filter((key) => !isText(answer.chapters[key]));
   if (missing.length) return `chapters lack ${missing.join(", ")}`;
@@ -101,12 +102,22 @@ export function translationProblem(answer, chapters) {
 export async function startCompilation(automation, job) {
   const { series } = job;
   const slug = compilationSlug(series.slug);
-  const started = await automation.api.compilationStart(series.slug, slug);
+  let started;
+  try {
+    started = await automation.api.compilationStart(series.slug, slug);
+  } catch (error) {
+    // The site refuses a compilation it cannot start (the slug is another video's, the series
+    // is no longer finished): nothing on this side changes that, so say so instead of failing
+    // every round with the same request.
+    if (error instanceof AutomationError && error.status === 409) return automation.later(`series ${series.slug}: the site refused to start the compilation ${slug}: ${error.message}`);
+    throw error;
+  }
   const episodes = (started.episodes ?? []).map((episode) => ({ slug: episode.slug, number: episode.number, title: episode.title, logline: episode.logline ?? "", recap: episode.recap ?? null }));
   if (!episodes.length) return automation.later(`series ${series.slug}: the site started a compilation with no finished episodes; nothing to join`);
   const dir = docDir(slug, automation.ctx.root);
   mkdirSync(dir, { recursive: true });
-  const video = compilationDocument({ slug, series: series.slug, episodes, voice: automation.settings.voice });
+  // The settings' voice as lint accepts it, not as the site serialises it (settle does the same).
+  const video = compilationDocument({ slug, series: series.slug, episodes, voice: automation.voice() });
   writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
   // What the planner and the translators read later: the series as the site summarises it,
   // the episodes in order with their recaps, and the genre.
@@ -213,7 +224,7 @@ export async function translateMetadata(automation, state) {
   for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
     const file = path.join(dir, "i18n", `${locale}.json`);
     const existing = readJson(file, null);
-    if (existing && isText(existing.title) && isText(existing.description) && Array.isArray(existing.tags) && isObject(existing.chapters) && Object.keys(chapters).every((key) => isText(existing.chapters[key]))) continue;
+    if (existing && isText(existing.title) && isText(existing.description) && Array.isArray(existing.tags) && existing.tags.length && isObject(existing.chapters) && Object.keys(chapters).every((key) => isText(existing.chapters[key]))) continue;
     const answer = await automation.stage("translator", state.slug, { locale, youtube: { title: video.youtube.title, description: video.youtube.description, tags: video.youtube.tags }, chapters, series: info.series ?? {} }, 16_000, "drama", "compilation");
     const problem = translationProblem(answer, chapters);
     if (problem) return automation.retryLater(state, "translator", `the ${locale} upload fields ${problem}`);

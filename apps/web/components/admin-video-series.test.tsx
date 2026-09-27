@@ -190,15 +190,26 @@ describe("AdminVideoSeries", () => {
     expect(link.getAttribute("download")).toBe("wenjian-full.mp4");
     fireEvent.click(within(block).getByRole("button", { name: "打開" }));
     expect(opened).toEqual(["wenjian-full"]);
-    // A finished compilation may be made again; a finished series has nothing else to push along.
+    // A series has the one compilation the worker named <series>-full, so there is no second
+    // 做合集; a finished series has nothing else to push along either.
     expect(screen.queryByRole("button", { name: "現在開始下一集" })).toBeNull();
-    fireEvent.click(screen.getByRole("button", { name: "做合集" }));
-    await waitFor(() => expect(calls.some((call) => call.method === "POST" && call.url.endsWith("/admin/video-automation/series/wenjian/actions/compile"))).toBe(true));
+    expect(screen.queryByRole("button", { name: "做合集" })).toBeNull();
     fireEvent.click(screen.getByRole("checkbox", { name: "免關卡" }));
     await waitFor(() => expect(calls.some((call) => call.method === "PATCH")).toBe(true));
     const patch = calls.find((call) => call.method === "PATCH");
     expect(patch?.url).toContain("/admin/video-automation/series/wenjian");
     expect(patch?.body).toEqual({ hands_off: false });
+  });
+
+  it("offers 做合集 on a finished series that was not set up to make one, and posts the action", async () => {
+    const finished = { status: "finished", episodes_done: 25, compilation: false, compilation_slug: null, compilation_started_at: null, compilation_finished_at: null };
+    const calls = stubFetch({ series: finished, seriesVideos: [] });
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const block = await screen.findByRole("region", { name: "合集" });
+    expect(block.textContent).toContain("沒有設定要做合集");
+    fireEvent.click(screen.getByRole("button", { name: "做合集" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "POST" && call.url.endsWith("/admin/video-automation/series/wenjian/actions/compile"))).toBe(true));
   });
 
   it("says the cut is still in the worker's workspace while the compilation is being made", async () => {
@@ -263,6 +274,20 @@ describe("AdminVideoSeries", () => {
     expect(screen.queryByRole("button", { name: "跳過" })).toBeNull();
     expect(screen.queryByText("新的作品")).toBeNull();
     expect(screen.queryByRole("form", { name: "一鍵開拍" })).toBeNull();
+  });
+
+  it("shows a reader the finished compilation but not the download the API would refuse", async () => {
+    const finished = {
+      status: "finished", episodes_done: 25, genre: "rebirth-revenge", lead: "female", hands_off: true, compilation: true, visual_tier: "hybrid", total_minutes: 75,
+      compilation_slug: "wenjian-full", compilation_started_at: "2026-09-27T02:00:00Z", compilation_finished_at: "2026-09-27T03:00:00Z",
+    };
+    stubFetch({ series: finished, seriesVideos: [compilationVideo] });
+    window.history.replaceState(null, "", "/?tab=drama&series=wenjian");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const block = await screen.findByRole("region", { name: "合集" });
+    await waitFor(() => expect(block.textContent).toContain("問劍 合集"));
+    expect(within(block).queryByRole("link", { name: "下載 1080p 成片" })).toBeNull();
+    expect(screen.queryByRole("checkbox", { name: "免關卡" })).toBeNull();
   });
 
   it("says the drama route is off, opens its settings first, and says it is on once saved", async () => {

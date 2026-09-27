@@ -190,8 +190,9 @@ test("a compilation walks its own steps: planned metadata, cards, the join, the 
   state = await drawnStatus();
   assert.equal(state.next.id, "final video approved");
   assert.match(state.next.todo, /approve --slug wuxia-full --gate final/);
-  assert.equal(translationComplete({ title: "t", description: "d", tags: [], chapters: {} }), true);
-  assert.equal(translationComplete({ title: "t", description: "d", tags: [] }), false);
+  assert.equal(translationComplete({ title: "t", description: "d", tags: ["t"], chapters: {} }), true);
+  assert.equal(translationComplete({ title: "t", description: "d", tags: [], chapters: {} }), false, "an empty tags list reads as untranslated in lint, so it is not complete");
+  assert.equal(translationComplete({ title: "t", description: "d", tags: ["t"] }), false);
   assert.equal(translationComplete(null), false);
   assert.equal(sha("x").length, 64);
 });

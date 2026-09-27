@@ -305,3 +305,14 @@ test("a drama's status walks the media steps in order, each bound to its hashes"
   write("checks.json", { ok: true, speech_hash: speech, visual_hash: visual, look_hash: look, clips_hash: "c1", subtitles_hash: subtitlesHash(project.doc), mix_hash: mixHash(project.doc) });
   assert.equal((await status()).next.id, "captions written");
 });
+
+test("a still shot carries no end frame: it describes a clip's last frame and would be bought unseen", () => {
+  const doc = dramaFixture();
+  const shot = doc.scenes.find((scene) => scene.template === "shot");
+  shot.data.visual = "still";
+  shot.data.end_frame = { prompt: "the same room, empty" };
+  const problems = validateVideo(doc).filter((problem) => problem.path.endsWith(".end_frame"));
+  assert.deepEqual(problems.map((problem) => problem.message), ["a still shot has no end_frame: it belongs to a clip"]);
+  delete shot.data.end_frame;
+  assert.deepEqual(validateVideo(doc).filter((problem) => problem.path.includes(shot.id)), []);
+});

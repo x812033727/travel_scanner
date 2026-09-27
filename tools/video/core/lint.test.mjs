@@ -211,9 +211,18 @@ test("an episode of a compilation opens cold: no title card first", () => {
   assert.deepEqual(lintVideo(doc, ctx).errors, [], "a plain episode may still open on a card");
   series.compilation = true;
   const cold = lintVideo(doc, ctx);
-  assert.deepEqual(cold.errors.map((error) => [error.path, error.message]), [["scenes[0]", "a binge episode opens cold: the first line is the hook; drop the title card"]]);
+  const outro = doc.scenes.findIndex((scene) => scene.template === "outro");
+  assert.deepEqual(cold.errors.map((error) => [error.path, error.message]), [
+    ["scenes[0]", "a binge episode opens cold: the first line is the hook; drop the title card"],
+    [`scenes[${outro}]`, "a binge episode ends on its cliffhanger: the compilation adds the cards; drop the outro"],
+  ], "the fixture closes on an outro card, which the compilation's own cards replace");
   doc.scenes.shift();
-  assert.deepEqual(lintVideo(doc, ctx).errors, []);
+  doc.scenes.splice(outro - 1, 1);
+  doc.scenes.at(-1).chapter = "結尾";
+  assert.deepEqual(lintVideo(doc, ctx).errors, [], "without the cards the last shot carries the closing chapter");
+  series.compilation = false;
+  doc.scenes.push({ id: "bye", chapter: "結尾", template: "outro", data: { title: "下一集", cta: "完整故事在說明欄" }, lines: [{ id: "outr", text: "下一集見。" }] });
+  assert.deepEqual(lintVideo(doc, ctx).errors, [], "a plain episode may close on a card");
 });
 
 test("Azure bills each Chinese character twice, plus markup", () => {

@@ -42,6 +42,10 @@ describe("admin compilation download", () => {
     const response = await GET(new NextRequest("https://mokaair.com/api/admin-video-download/wenjian-full"), context("wenjian-full"));
     expect(response.status).toBe(404);
     expect((await response.json()).code).toBe("video_download_unavailable");
+    vi.stubGlobal("fetch", vi.fn(async () => Response.json({ detail: "forbidden" }, { status: 403 })));
+    const refused = await GET(new NextRequest("https://mokaair.com/api/admin-video-download/wenjian-full"), context("wenjian-full"));
+    expect(refused.status).toBe(403);
+    expect((await refused.json()).code).toBe("video_download_forbidden");
   });
 
   it("asks for a session and refuses odd names before calling the API", async () => {

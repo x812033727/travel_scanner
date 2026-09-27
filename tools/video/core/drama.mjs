@@ -219,6 +219,8 @@ function validateShotData(data, where, characterIds, earlierShots, errors) {
   if (data.end_frame !== undefined && !(isObject(data.end_frame) && isShortText(data.end_frame.prompt, LIMITS.prompt))) {
     errors.push({ path: `${where}.end_frame`, message: "must be { prompt } for the shot's last frame" });
   }
+  // A still is its keyframe with a camera move: an end frame would be bought and never shown.
+  if (data.visual === "still" && data.end_frame !== undefined) errors.push({ path: `${where}.end_frame`, message: "a still shot has no end_frame: it belongs to a clip" });
 }
 
 function validateMusic(music, errors) {

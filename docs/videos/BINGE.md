@@ -149,7 +149,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 - `next_job_for`：作品 `status == "finished"`、`compilation` 為真、`compilation_slug is None`、有集數且每一集都 `done|skipped`、至少一集 `done` → `NextJob(kind="compilation")`。`finish_episode` 照舊在全部完成且集數達 `planned_episodes` 時把作品設成 `finished`；合集工作就從 `finished` 出發。
 - `start_compilation(session, token, slug, video_slug)`：寫 `compilation_slug`／`compilation_started_at`，回 `SeriesCompilationStartOut`：作品摘要、`done` 的集（依序，含 slug、標題、一句話、前情）、`context`（設定集、所有前情）。作品沒完結、沒開合集、已在做、或 slug 已被用都是 409。
 - `finish_compilation(session, slug)`：寫 `compilation_finished_at`。
-- `act(session, actor, slug, "compile")`：站主在完結的作品上按「做合集」——沒設定合集的作品、或想再做一部時；把 `compilation` 設真、清掉 slug 與時間，工人下一輪開始；正在做時 409 `video_series_compiling`。
+- `act(session, actor, slug, "compile")`：站主在完結、沒設定合集的作品上按「做合集」；把 `compilation` 設真，工人下一輪開始。一部作品只有一部合集（工人固定叫它 `<作品>-full`，slug 被第一部占著，清掉 `compilation_slug` 也會讓第一部的下載失效）：正在做時 409 `video_series_compiling`，做過了 409 `video_series_compiled`；要重做，改的是那支合集影片本身（重跑它的步驟）。
 - 工人路由：`POST /video/automation/series/{slug}/compilation/start`（body `{slug: "<作品>-full"}`）、`…/compilation/done`；網站轉送在 `apps/web/app/api/video/automation/series/[slug]/compilation/`。
 
 ### 下載

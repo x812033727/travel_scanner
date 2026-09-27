@@ -368,7 +368,7 @@ const isText = (value) => typeof value === "string" && value.trim().length > 0;
 
 /** A compilation's locale translation is complete when the four YouTube fields are there. */
 export function translationComplete(translation) {
-  return isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation?.chapters !== null && typeof translation?.chapters === "object";
+  return isText(translation?.title) && isText(translation?.description) && Array.isArray(translation?.tags) && translation.tags.length > 0 && translation?.chapters !== null && typeof translation?.chapters === "object";
 }
 
 /**

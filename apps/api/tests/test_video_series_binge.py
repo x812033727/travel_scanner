@@ -243,6 +243,65 @@ def test_a_finished_compilation_series_asks_for_its_compilation_once() -> None:
     assert service.next_job_for(paused, [], done, _settings(), started_this_month=0) is None
 
 
+@pytest.mark.asyncio
+async def test_a_series_keeps_the_one_compilation_the_worker_named_after_it(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """做合集 sets up a finished series that has none; it never clears an existing one, since the
+    worker's <series>-full slug is taken and the first cut's download hangs on the column."""
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    session = AsyncMock()
+    session.add = lambda _row: None
+    monkeypatch.setattr(service, "_docs", AsyncMock(return_value=[]))
+    monkeypatch.setattr(service, "series_view", AsyncMock(return_value="view"))
+
+    async def refused(series: Any) -> str:
+        monkeypatch.setattr(service, "_series", AsyncMock(return_value=series))
+        with pytest.raises(service.SeriesRefused) as failure:
+            await service.act(session, owner, series.slug, "compile")
+        return str(failure.value.code)
+
+    finished = datetime(2026, 9, 27, 3, tzinfo=UTC)
+    started = datetime(2026, 9, 27, 2, tzinfo=UTC)
+    done = _series(
+        status="finished",
+        compilation_slug="rebirth-20260927-ab12-full",
+        compilation_started_at=started,
+        compilation_finished_at=finished,
+    )
+    assert await refused(done) == "video_series_compiled"
+    assert done.compilation_slug == "rebirth-20260927-ab12-full", "the first cut keeps its slug"
+    making = _series(
+        status="finished",
+        compilation_slug="rebirth-20260927-ab12-full",
+        compilation_started_at=started,
+        compilation_finished_at=None,
+    )
+    assert await refused(making) == "video_series_compiling"
+    assert await refused(_series(status="active")) == "video_series_not_finished"
+
+    classic = _series(status="finished", compilation=False, compilation_slug=None)
+    monkeypatch.setattr(service, "_series", AsyncMock(return_value=classic))
+    view, detail = await service.act(session, owner, classic.slug, "compile")
+    assert (view, detail) == ("view", "工人的下一輪會開始做合集")
+    assert classic.compilation is True and classic.compilation_slug is None
+
+
+def test_the_series_finishes_when_its_last_open_episode_is_done_or_skipped() -> None:
+    now = datetime(2026, 9, 27, 4, tzinfo=UTC)
+    series = _series(status="active", planned_episodes=10, episodes_per_chapter=10)
+    open_last = [_episode(n, "done" if n < 10 else "ready") for n in range(1, 11)]
+    assert service.finish_if_complete(series, open_last, now) is False
+    assert series.status == "active"
+    skipped_last = [_episode(n, "done" if n < 10 else "skipped") for n in range(1, 11)]
+    assert service.finish_if_complete(series, skipped_last, now) is True
+    assert series.status == "finished" and series.updated_at == now
+    short = _series(status="active", planned_episodes=10, episodes_per_chapter=10)
+    assert service.finish_if_complete(short, [_episode(n) for n in range(1, 10)], now) is False
+    paused = _series(status="paused", planned_episodes=10, episodes_per_chapter=10)
+    assert service.finish_if_complete(paused, skipped_last, now) is False, "a paused series stays"
+
+
 def _verdict(kind: str, **changes: Any) -> dict[str, Any]:
     judge: dict[str, Any] = {
         "verdicts": {key: "有" for key in REQUIRED_VERDICTS[kind]},

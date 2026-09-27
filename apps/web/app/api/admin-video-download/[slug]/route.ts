@@ -56,7 +56,8 @@ export async function GET(request: NextRequest, context: Context) {
   }
   if (!upstream.ok) {
     await upstream.body?.cancel();
-    return problem(upstream.status, "video_download_unavailable");
+    // A refusal of the caller is not the file being unavailable.
+    return problem(upstream.status, upstream.status === 401 || upstream.status === 403 ? "video_download_forbidden" : "video_download_unavailable");
   }
   return new Response(upstream.body, { status: upstream.status, headers: out });
 }

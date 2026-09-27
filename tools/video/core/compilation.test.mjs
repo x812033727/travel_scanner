@@ -172,7 +172,7 @@ test("chapters start at the cards, key on the episode slug, and read like the ti
   assert.deepEqual(Object.keys(timeline), ["fps", "sample_rate", "total_frames", "scenes", "lines", "chapters", "speech_hash"]);
   assert.equal(timeline.fps, 30);
   assert.equal(timeline.speech_hash, null);
-  assert.deepEqual(timeline.chapters[0], { title: "第 1 集 初入山門", scene: "wuxia-ep-1", start_frame: 0 });
+  assert.deepEqual(timeline.chapters[0], { title: "第 1 集 初入山門", scene: "wuxia-ep-1", start_frame: 0, episode: 1 });
   assert.equal(chapterText(timeline), "00:00 第 1 集 初入山門\n02:02 第 2 集 夜探藏經閣\n04:04 第 3 集 劍冢之約");
   assert.equal(chapterText(timeline, { "wuxia-ep-2": "Episode 2: The Library" }).split("\n")[1], "02:02 Episode 2: The Library");
   assert.deepEqual(checkChapters(timeline), []);
@@ -212,6 +212,13 @@ test("eighty titled chapters fall back to 「第 N 集」 so the description sta
   const en = descriptionWithinBudget("Every episode of part one.", timeline, Object.fromEntries(episodes.map((episode) => [episode.slug, `Episode ${episode.number}: ${"a long English title that goes on and on".repeat(2)}`])), { locale: "en" });
   assert.equal(en.shortened, true);
   assert.equal(en.titles["wuxia-ep-3"], "Episode 3");
+  // A skipped episode leaves a gap in the numbers: the fallback says the episode's number, as its card does, not its position.
+  const gapped = build({ episodes: episodes.filter((episode) => episode.number !== 2) });
+  const gappedLayout = compilationLayout(gapped, gapped.compilation.episodes.map((slug) => ({ slug, frames: 7200, sha256: "a".repeat(64) })));
+  const gappedBudget = descriptionWithinBudget(body, compilationTimeline(gappedLayout, gapped.compilation.titles), {}, { sources: [], tags: ["仙俠"] });
+  assert.equal(gappedBudget.shortened, true);
+  assert.equal(gappedBudget.titles["wuxia-ep-3"], "第 3 集", "the second chapter is episode 3");
+  assert.equal(gappedBudget.titles["wuxia-ep-80"], "第 80 集");
   assert.match(en.description, /Chapters\n00:00 Episode 1\n/);
   assert.equal(episodeLabel(4, "ja"), "第4話");
   assert.equal(episodeLabel(4, "ko"), "4화");

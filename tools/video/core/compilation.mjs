@@ -319,7 +319,7 @@ export function compilationTimeline(layout, titles = {}) {
     total_frames: totalFrames(layout),
     scenes: [],
     lines: [],
-    chapters: chapterList(layout, titles).map(({ title, scene, start_frame }) => ({ title, scene, start_frame })),
+    chapters: chapterList(layout, titles).map(({ title, scene, start_frame, episode }) => ({ title, scene, start_frame, episode })),
     speech_hash: null,
   };
 }
@@ -359,7 +359,8 @@ export function descriptionWithinBudget(body, timeline, titles = {}, { locale = 
   const overBudget = (description) => checkYoutubeFields({ title: "", description, tags: [] }).length > 0;
   const full = compose(titles);
   if (!overBudget(full)) return { titles, description: full, shortened: false };
-  const short = Object.fromEntries((timeline.chapters ?? []).map((chapter, index) => [chapter.scene, episodeLabel(index + 1, locale)]));
+  // The episode's number in the series, as its card says it, not its position: a skipped episode leaves a gap.
+  const short = Object.fromEntries((timeline.chapters ?? []).map((chapter, index) => [chapter.scene, episodeLabel(chapter.episode ?? index + 1, locale)]));
   return { titles: short, description: compose(short), shortened: true };
 }
 

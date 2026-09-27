@@ -588,7 +588,8 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
   const state = series ? compilationState(series) : "none";
   // The current compilation first; an earlier one (the owner asked for another) only when nothing newer exists.
   const compilation = series ? (compilations.find((video) => video.slug === series.compilation_slug) ?? compilations[0] ?? null) : null;
-  const canCompile = series?.status === "finished" && (state === "none" || state === "done");
+  // One compilation per series: the worker names it <series>-full, so a second cannot start.
+  const canCompile = series?.status === "finished" && state === "none";
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
@@ -625,7 +626,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
             {compilation.pending > 0 && <AdminStatusPill status="pending">{t("pendingCount", { count: compilation.pending })}</AdminStatusPill>}
             <Button secondary onClick={() => onOpenVideo(compilation.slug)}>{t("openVideo")}</Button>
           </p>
-          <CompilationDownload project={{ ...compilation, compilation: true }} />
+          <CompilationDownload project={{ ...compilation, compilation: true }} canManage={manage.allowed} />
         </div>}
       </section>}
       <section className="grid gap-4" aria-label={t("docsTitle")}>

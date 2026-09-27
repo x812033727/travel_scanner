@@ -454,6 +454,9 @@ class VideoDramaSeries(Base):
             "total_minutes IS NULL OR total_minutes BETWEEN 30 AND 480",
             name="ck_video_drama_series_total_minutes",
         ),
+        # Named as migration 0102 names it, so a database built from the models (0001's
+        # create_all) and one upgraded from 0101 carry the same constraint.
+        UniqueConstraint("compilation_slug", name="uq_video_drama_series_compilation_slug"),
     )
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
@@ -499,7 +502,7 @@ class VideoDramaSeries(Base):
     total_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
     # The compilation video's slug once the worker started it, and when it started and was
     # cleared for upload; null while the episodes are still being made.
-    compilation_slug: Mapped[str | None] = mapped_column(String(80), unique=True, nullable=True)
+    compilation_slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
     compilation_started_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
