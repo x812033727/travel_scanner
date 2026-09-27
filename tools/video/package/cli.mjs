@@ -1,5 +1,7 @@
-// `package`: everything the owner uploads, in <VIDEO_WORKDIR>/<slug>/upload/, once they have
-// approved final.mp4 exactly as it is.
+// `package`: everything the owner uploads, in <VIDEO_WORKDIR>/<slug>/upload/, once final.mp4 has
+// been approved exactly as it is. metadata.json carries the disclosure answer (the same the
+// quality check writes), and the package is checked as soon as it is written
+// (docs/videos/HANDS-OFF.md §上傳包與「可以上架」); the publish review sends that check.
 import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -7,10 +9,28 @@ import { parseArgs } from "node:util";
 import { approvalState } from "../core/approvals.mjs";
 import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
+import { LOCALES } from "../core/schema.mjs";
 import { dubsForUpload, runCaptions } from "../core/stages.mjs";
 import { ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
+import { disclosureDecision } from "../qa/checks.mjs";
+import { readPackageReport } from "./check.mjs";
 import { composeMetadata, uploadChecklist } from "./metadata.mjs";
+
+/**
+ * Why a locale has no caption file, for metadata.json's skipped_caption_locales: the line ids
+ * the captions stage left out (missing or older than zh-TW), or that no translation exists at
+ * all. The package check accepts either as a reason.
+ */
+export function skippedCaptionLocales(manifest, written) {
+  const skipped = {};
+  for (const locale of LOCALES) {
+    if (written.includes(`captions/${locale}.srt`)) continue;
+    const lines = manifest?.skipped?.[locale];
+    skipped[locale] = Array.isArray(lines) && lines.length ? lines : `no translation (i18n/${locale}.json missing)`;
+  }
+  return skipped;
+}
 
 /**
  * Whether checks.json describes the final video of this very script: its narration and
@@ -75,10 +95,30 @@ export async function run(command, args, ctx) {
     copyFileSync(dub.file, path.join(upload, "dubs", path.basename(dub.file)));
     return { ...dub, file: `dubs/${path.basename(dub.file)}` };
   });
-  const record = { ...metadata, final_sha256: approval.sha256, thumbnail: thumbnail ? "thumbnail.jpg" : null, captions: captionFiles, skipped_caption_locales: captions.skipped ?? {}, dubs, skipped_dub_locales: skippedDubs };
+  // The disclosure answer goes last, in this order: the quality check writes the same two keys
+  // the same way, so a qa run after package leaves metadata.json byte for byte as it is.
+  const disclosure = disclosureDecision(doc);
+  const record = {
+    ...metadata,
+    final_sha256: approval.sha256,
+    thumbnail: thumbnail ? "thumbnail.jpg" : null,
+    captions: captionFiles,
+    skipped_caption_locales: skippedCaptionLocales(captions, captionFiles),
+    dubs,
+    skipped_dub_locales: skippedDubs,
+    contains_synthetic_media: disclosure.synthetic,
+    disclosure_reason: disclosure.reason,
+  };
   atomicWrite(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
-  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail, drama: isDrama(doc), dubs, skippedDubs }));
+  atomicWrite(path.join(upload, "UPLOAD.md"), uploadChecklist({ metadata, captions: captionFiles, thumbnail, drama: isDrama(doc), disclosure, dubs, skippedDubs }));
   recordStage(workdir, "package", { locales: [metadata.default_language, ...Object.keys(metadata.localizations)], captions: captionFiles.length, dubs: dubs.map((dub) => dub.locale) }, ctx.now());
   ctx.stdout.write(`upload package: ${upload}\n  final.mp4, ${thumbnail ? "thumbnail.jpg, " : ""}${captionFiles.length} caption files, ${1 + Object.keys(metadata.localizations).length} locales of title and description${dubs.length ? `, ${dubs.length} dub tracks (${dubs.map((dub) => dub.locale).join(", ")})` : ""}\n  follow ${path.join(upload, "UPLOAD.md")}\n`);
+  const { report } = await readPackageReport(workdir);
+  for (const each of report.items) ctx.stdout.write(`  [${each.ok ? "x" : " "}] ${each.id}: ${each.detail}\n`);
+  if (!report.ok) {
+    ctx.stderr.write(`the upload package failed ${report.items.filter((each) => !each.ok).length} of its ${report.items.length} checks; fix them and run package again\n`);
+    return EXIT.lint;
+  }
+  ctx.stdout.write(`package check: ${report.items.length} of ${report.items.length} passed (metadata.json sha256 ${report.final_sha256.slice(0, 12)})\n`);
   return EXIT.ok;
 }

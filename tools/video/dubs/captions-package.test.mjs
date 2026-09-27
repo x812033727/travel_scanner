@@ -134,8 +134,10 @@ test("the upload checklist tells the owner where each track goes in Studio, and 
   assert.match(withDubs, /`dubs\/en\.m4a`（en，最快處 1\.07 倍速）/);
   assert.match(withDubs, /「語言」→ 這支影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」/);
   assert.match(withDubs, /ja：two shortening rounds were not enough/);
-  assert.match(withDubs, /## 4\. 上架前自我檢查/);
-  assert.match(withDubs, /## 5\. 公開/);
+  // The self-check list moved into the automatic checks (docs/videos/HANDS-OFF.md); the Studio
+  // steps end with the owner pasting the URL on the site.
+  assert.match(withDubs, /## 4\. 上傳之後/);
+  assert.doesNotMatch(withDubs, /## 5\. |- \[ \]/);
   const without = uploadChecklist({ metadata, captions: [], thumbnail: false });
   assert.match(without, /這支沒有配音音軌/);
   assert.doesNotMatch(dubSteps([], {}), /做不出來/);
