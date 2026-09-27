@@ -110,6 +110,24 @@ test("the new templates check their data and reveal one element at a time", () =
   assert.match(slideHtml(scene("article-card"), state()), /<div class="site">mokaair\.com<\/div><\/div>/);
 });
 
+test("chat lint keeps every accepted bubble within the 1080p layout budget", () => {
+  const chat = scene("ask-once");
+  assert.deepEqual(sceneProblems(chat), [], "the two long named bubbles are renderable");
+  chat.data.messages = Array.from({ length: 4 }, (_, index) => ({ side: index % 2 ? "left" : "right", name: "你", text: "短句" }));
+  assert.match(sceneProblems(chat).join("; "), /messages must be 1 to 3/);
+  chat.data.messages.pop();
+  assert.deepEqual(sceneProblems(chat), ["named chat messages are limited to 2"]);
+  chat.data.messages.forEach((message) => delete message.name);
+  assert.deepEqual(sceneProblems(chat), [], "three unnamed bubbles fit");
+  chat.data.messages[0].text = "字".repeat(45);
+  assert.match(sceneProblems(chat).join("; "), /at most 44 characters/);
+  chat.data.messages[0].text = "短句\n下一行";
+  assert.match(sceneProblems(chat).join("; "), /at most 44 characters/);
+  chat.data.messages[0].text = "短句";
+  chat.data.title = "標題".repeat(11);
+  assert.match(sceneProblems(chat).join("; "), /chat title must fit on one line/);
+});
+
 test("an inlined SVG loses its prolog and fixed size; scripts and network loads are refused", () => {
   const svg = '<?xml version="1.0"?><!DOCTYPE svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900"><text>圖</text></svg>';
   assert.equal(inlineSvg(svg), '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900"><text>圖</text></svg>');

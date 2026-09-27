@@ -1,19 +1,21 @@
 ---
 id: 2026-09-27-the-chat-slide-allows-five-messages
 title: The chat slide allows five messages but four named bubbles overflow at 1080p
-status: open
+status: done
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: codex-video-chat
+claimed_at: 2026-09-27T15:23:41Z
 created_at: 2026-09-27T07:32:10Z
-completed_at:
-branch:
+completed_at: 2026-09-27T15:38:05Z
+branch: codex/video-chat-layout
 depends_on: []
 scope:
   - tools/video/templates/templates.mjs
   - tools/video/templates/templates.test.mjs
   - tools/video/templates/theme.css
+  - tools/video/templates/fixtures/showcase/video.json
+  - .agents/skills/youtube-video/references/prompts/writer-video.md
 ---
 
 # The chat slide allows five messages but four named bubbles overflow at 1080p
@@ -41,21 +43,21 @@ in the `video_work` volume.
 
 ## Definition of done
 
-- [ ] `lint` rejects a chat scene that `render` cannot fit, or the chat layout fits everything
+- [x] `lint` rejects a chat scene that `render` cannot fit, or the chat layout fits everything
       `lint` accepts. Either way, lint and render agree on the upper limit, with and without
       `name`.
-- [ ] A test renders the largest chat scene `lint` accepts, with names and the longest texts
+- [x] A test renders the largest chat scene `lint` accepts, with names and the longest texts
       the writers use, and gets no layout problem.
 
 ## Steps
 
-- [ ] Measure how many named and unnamed bubbles fit under a title at 1080p, with one-line
+- [x] Measure how many named and unnamed bubbles fit under a title at 1080p, with one-line
       and two-line texts.
-- [ ] Then choose: lower the limit in `TEMPLATE_SPECS.chat` (a named message could count
+- [x] Then choose: lower the limit in `TEMPLATE_SPECS.chat` (a named message could count
       more than an unnamed one), or tighten the thread's spacing in `theme.css`. Per
       `references/automated.md`, content fixes do not change the theme CSS; this is a template
       fix, so it may.
-- [ ] Add the test in `templates.test.mjs`.
+- [x] Add the test in `templates.test.mjs`.
 
 ## How to verify
 
@@ -71,3 +73,9 @@ node tools/video/cli.mjs render --slug <a video with a 4- or 5-message chat scen
   `.claude/skills/` copy). Add those two paths to the scope first.
 - Found while clearing the stuck reviews on 2026-09-27, together with
   `2026-09-27-video-drafts-read-their-source-article`.
+- 2026-09-27: Limited chat to two named or three unnamed messages, a one-line title of at most
+  20 visible characters, and message text of at most 44 visible characters without manual
+  breaks. Added lint tests and both maximum layouts to the showcase fixture. The 1080p browser
+  render drew all 27 showcase states with no layout problems; the contact sheet was inspected.
+  The skill's writer prompt lives only under `.agents/skills/` in this checkout; there is no
+  separate `.claude/skills/youtube-video/references/` copy to edit.
