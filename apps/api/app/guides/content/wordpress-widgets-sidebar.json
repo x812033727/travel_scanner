@@ -243,6 +243,938 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress sidebars and widgets: arranging information and persistent blocks",
+      "description": "WordPress sidebars can hold search, an author profile and related content, but first ask whether they help readers. This guide distinguishes classic widgets, the block-based widgets editor and block themes. It covers adding, ordering, temporarily removing and checking content, and compares normal flow, sticky and fixed positioning. Check desktop, mobile and enlarged text so information blocks do not cover the article or forms and readers can follow a clear order when the site offers more routes.",
+      "hero": {
+        "src": "/guides/wordpress-widgets-sidebar/hero-en.jpg",
+        "alt": "Original interface illustration combining a website layout, information document and reading-check shield.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An empty sidebar does not have to be filled. While someone reads an article, search, a contents list or related content may help, but a long advertisement, tag cloud or set of tracking buttons can also distract them. State the purpose of each block before deciding where to place it. That uses layout space for information readers actually need."
+        },
+        {
+          "type": "paragraph",
+          "text": "The example below is a fictional home-organization blog arranging an author profile, post categories and related reading. The instructions draw on WordPress widget documentation and MDN's positioning guidance; no specific theme or plugin was tested. The available controls and actual layout depend on the active theme, so first check its design if you cannot find a sidebar."
+        },
+        {
+          "type": "heading",
+          "text": "Check how the theme manages this area",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A classic theme may provide a sidebar, footer or other widget areas. In a supported classic theme, the block-based widgets editor manages those areas using blocks. It is not the same feature as the Site Editor in a block theme; seeing a block interface does not make the two interchangeable."
+        },
+        {
+          "type": "paragraph",
+          "text": "With a block theme, side information may instead be built from columns or groups in a template and must be edited in the corresponding template or shared part. With a classic theme, first check Appearance > Widgets and the theme's instructions. A particular page template may intentionally have no sidebar; this does not necessarily mean a setting was lost or that you should immediately install a plugin to restore it."
+        },
+        {
+          "type": "paragraph",
+          "text": "List the layout used by the home page, article pages, search results and ordinary pages before deciding where to edit. A home-organization article may benefit from related reading, while a contact page may work better with a simple form. Do not assume the same sidebar must appear everywhere. Arrange it around the task the reader is trying to complete."
+        },
+        {
+          "type": "heading",
+          "text": "Keep only information with a clear purpose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write one reason for each proposed block. Search might help readers find a particular storage problem; an author profile identifies who prepared the content; related posts can continue work on the same room. If the only reason is that another site has a block, leave it out for now and add it when a real need emerges."
+        },
+        {
+          "type": "paragraph",
+          "text": "Order the blocks for the reading context. A contents list can help with a long article; an author biography need not fill the entire screen; and a category list need not expand every level. Longer text takes more space when a phone turns the page into one column. Start with a few important items, then observe whether readers can take the next step."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not put essential information only in the sidebar. State restrictions, steps and important warnings where they belong in the article body. If the mobile layout moves the sidebar below the article, readers may act on the instructions before ever seeing it. An essential condition should not be discoverable only in one screen arrangement."
+        },
+        {
+          "type": "heading",
+          "text": "A basic process for adding and adjusting widgets",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the block-based widgets editor through Appearance > Widgets, choose the area to change, add blocks and reorder or move them to another area. Existing third-party widgets not converted to blocks may be managed through the Legacy Widget block. Available features still depend on the theme and plugins; do not assume every block from the post editor works here."
+        },
+        {
+          "type": "paragraph",
+          "text": "If your site uses the classic widgets screen, add, order and configure widgets in the areas provided by the theme. Items you do not currently need but whose settings you want to keep can go to Inactive Widgets instead of being deleted outright. Before changing interfaces, save important text, URLs and settings so you can recover the original content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Change one area at a time, save, then check the public page. If you place categories below the author profile, confirm that the article page really uses the sidebar you edited and check for caching. Do not add the same item to several areas just because a change is not visible; multiple copies may appear later."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Identify the theme type, target template and widget area, and save the current settings.",
+            "Add content that serves a real need; set its heading, links and order first.",
+            "After saving, inspect the corresponding public page for duplicates or omissions.",
+            "Test phones, enlarged text and keyboard use before deciding whether to add sticky behavior."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Normal flow, sticky and fixed positioning differ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An ordinary block scrolls with the page. A sticky element usually stays near a specified position after reaching it, within the bounds of its containing block. A fixed element generally remains positioned relative to the viewport. MDN explains these distinctions, but parent settings and layout structure also affect the result. Changing one label does not guarantee identical behavior on a real page."
+        },
+        {
+          "type": "paragraph",
+          "text": "A short contents list beside a long article may suit sticky positioning; a sidebar taller than the screen can make its lower content hard to reach. A fixed subscription prompt can cover content when it overlaps a header, Cookie notice or chat button. First validate the reading experience with normal flow, then decide whether persistent positioning improves it."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the theme offers a sticky option, check the devices it applies to, top spacing and stopping point. If extra CSS or a plugin is required, have someone familiar with the layout implement it in a test environment and record where it was changed and how to disable it. Avoid enabling several fixed-sidebar tools at once; their position calculations and scroll behavior may conflict."
+        },
+        {
+          "type": "heading",
+          "text": "Mobile checks should include real interaction obstacles",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Narrow the screen and check whether the sidebar moves below the article, is hidden or remains fixed. Inspect article width and reading order. If a function appears only in a desktop sidebar, mobile readers still need an equivalent route, such as search near navigation or the post list. Simply hiding the entire area is not a complete mobile design."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the on-screen keyboard for a form and see whether a fixed element covers the input or Submit button. When opening a mobile menu, ensure its Close button still works. Landscape orientation, enlarged text and short screens can reveal problems that normal views miss. The check should include finishing the action, not merely taking a home-page screenshot."
+        },
+        {
+          "type": "paragraph",
+          "text": "Move keyboard focus in order to confirm sidebar links are reachable, focus is visible and no fixed block covers it. If a block moves or expands automatically, verify that it does not abruptly change the reading position. Ads and third-party embeds may change height after loading, so wait for full loading before testing rather than assessing an empty placeholder."
+        },
+        {
+          "type": "heading",
+          "text": "Review regularly and keep a recovery path",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "As the site gains articles, popular posts, categories and author information in the sidebar also need updating. Check for expired links, discontinued services and purposeless blocks regularly, and record why an item is removed. If information still matters but sits in the wrong place, move it into the article or footer rather than treating retention and deletion as the only choices."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before changing themes, save widget settings and screenshots and identify the corresponding areas in the new theme. Their arrangement may differ. After switching, check each page and rearrange information if needed. Success means readers can read and find their next step, not that every old box has been forced back into the same spot."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-widgets-sidebar/diagram-1-en.svg",
+          "alt": "Original four-stage diagram for planning a sidebar by purpose, editing location, positioning effect and checks across devices.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Make information easier to find while keeping the article itself complete and readable.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "Original four-stage diagram for planning a sidebar by purpose, editing location, positioning effect and checks across devices."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Suitable use",
+            "What to check"
+          ],
+          "rows": [
+            [
+              "Normal flow",
+              "Author profile, categories, related content",
+              "Order and content length"
+            ],
+            [
+              "Sticky",
+              "A suitably short contents list or prompt",
+              "Container edge and screen height"
+            ],
+            [
+              "Fixed",
+              "A short function that must stay visible",
+              "Never cover the main action"
+            ],
+            [
+              "Move on mobile",
+              "Put the sidebar after the article or offer another route",
+              "The function remains findable"
+            ],
+            [
+              "Remove temporarily",
+              "Observe whether it is still needed",
+              "Keep settings and a recovery method"
+            ]
+          ],
+          "caption": "Make normal reading work first, then add only the positioning effects you need."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Persistent blocks must not take space from the main action",
+          "text": "If the mobile keyboard, menu or enlarged text causes an obstruction, disable the persistent effect on that device or return to normal flow before correcting position and height."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organizing categories, tags and menus",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Dividing work in WordPress admin",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Block-based Widgets Editor",
+          "url": "https://wordpress.org/documentation/article/block-based-widgets-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Classic Widgets Screen",
+          "url": "https://wordpress.org/documentation/article/appearance-widgets-screen-classic-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: CSS positioning",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Site Editor",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のサイドバーとウィジェット：情報と追従表示の配置",
+      "description": "WordPress のサイドバーには検索、著者紹介、関連記事を置けますが、まず読者の役に立つかを考えましょう。本記事は従来型ウィジェット、ブロック型ウィジェット、ブロックテーマの違いを整理し、追加、並べ替え、一時的な取り外しと検証の方法を紹介します。通常の配置、追従表示、固定表示を比較し、パソコン、スマートフォン、拡大した文字で本文やフォームを隠さないことを確認します。入口を増やしても読み順を明確に保つためのガイドです。",
+      "hero": {
+        "src": "/guides/wordpress-widgets-sidebar/hero-ja.jpg",
+        "alt": "サイトのレイアウト、情報文書、読みやすさの確認を示す盾を組み合わせたオリジナルの画面構成イラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サイドバーが空いていても、必ず埋める必要はありません。記事を読む人にとって検索、目次、関連記事は役立つことがありますが、長い広告、タグクラウド、追跡用のボタンは注意をそらす可能性もあります。各ブロックの用途を書き出してから配置を決め、限られた画面を本当に必要な情報に使いましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下では架空の住まい整理ブログを例に、著者紹介、記事のカテゴリー、関連記事を配置します。操作は WordPress のウィジェット文書と MDN の位置指定の説明に基づき、特定のテーマやプラグインを実測したものではありません。実際の操作画面と配置は利用中のテーマで変わるため、サイドバーが見つからなければ、まず設計方法を確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "テーマがこの領域をどう管理するか確かめる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "従来型テーマにはサイドバー、フッターなどのウィジェット領域がある場合があります。対応する従来型テーマでは、ブロック型ウィジェットエディターを使ってこれらの領域をブロックで管理できます。これはブロックテーマのサイトエディターとは別の機能です。ブロック型の画面が見えたからといって同じものと考えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ブロックテーマでは、サイドの情報がテンプレート内のカラムやグループで構成され、該当テンプレートまたは共通パーツで編集する場合があります。従来型テーマでは、まず「外観 > ウィジェット」とテーマの説明を見ます。特定のページテンプレートが意図的にサイドバーを表示しないこともあります。設定が失われたとは限らず、すぐにプラグインで補う必要もありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "トップページ、記事ページ、検索結果、一般ページで使われるレイアウトを先に一覧にし、編集箇所を決めます。住まい整理の記事には関連記事が役立つ一方、問い合わせページは簡潔なフォームの方が適するかもしれません。全サイトに同じサイドバーを出すと決めつけず、読者がその場で行う作業に合わせましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "用途を説明できる情報だけを残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "候補の各ブロックについて理由を一文で書きます。検索は特定の収納問題を探す手段、著者紹介は誰が内容を整理したかの説明、関連記事は同じ部屋の課題を続けて解決する入口になります。「他のサイトにもあるから」だけが理由なら、実際に必要になるまで置かなくて構いません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "並び順は読む状況に合わせます。長い記事の目次は段落への移動に便利ですが、著者紹介で画面全体を占める必要はなく、カテゴリー一覧も全階層を展開しなくてよいでしょう。スマートフォンで一列に並ぶと長い文章ほど場所を取ります。重要な少数の項目から始め、読者が次の行動に進めるか見てください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "必須情報をサイドバーだけに置かないでください。記事で触れる制限、手順、大切な注意は、本文の関連箇所にも示します。スマートフォンでサイドバーが記事末尾に移動すると、読者はそこを見る前に手順を実行するかもしれません。重要な条件が一つの画面配置でしか見つからない状態を避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "ウィジェットの追加と調整の基本手順",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ブロック型ウィジェットエディターは「外観 > ウィジェット」から開き、変更する領域を選んでブロックを追加し、並べ替えたり他の領域へ移したりできます。まだブロックに変換されていない既存のサードパーティー製ウィジェットは、Legacy Widget ブロックで管理する場合があります。使用できる機能はテーマやプラグインによるため、記事エディターの全ブロックがここでも使えるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "従来のウィジェット画面を使う場合は、テーマが用意した領域で追加、並べ替え、設定を行います。一時的に使わないものの設定を残したいなら、直接削除する代わりに未使用ウィジェットの領域を使えます。画面の方式を変える前に、元の文章、URL、必要な設定を保存しておきましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一度に一つの領域だけを変え、保存後に公開ページを確認します。カテゴリーを著者紹介の下へ移すなら、その記事ページが編集したサイドバーを本当に使っているか、キャッシュの影響はないか確かめます。変更が見えないからといって複数領域へ同じものを重ねて追加すると、後で複数表示される可能性があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "テーマの種類、対象テンプレート、ウィジェット領域を確認し、現在の設定を保存する。",
+            "本当に必要な内容を追加し、見出し、リンク、順序を先に整える。",
+            "保存後に該当する公開ページを見て、重複や欠落がないか確認する。",
+            "スマートフォン、文字拡大、キーボード操作を試してから追従効果の必要性を決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "通常の配置、追従、固定はそれぞれ異なる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通常のブロックはページとともにスクロールします。追従表示は指定した位置に達すると一時的に留まることが多く、所属するコンテナーの範囲に制限されます。固定配置は一般にビューポートを基準に位置を保ちます。MDN はこの違いを説明していますが、実際のページでは親要素の設定やレイアウトも影響します。名称を一つ変えるだけで同じ結果になるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長い記事の短い目次には追従表示が向く場合がありますが、画面より高いサイドバーでは下部の情報に届きにくくなります。固定された購読案内がヘッダー、Cookie の通知、チャットボタンと重なると、内容を隠すおそれがあります。まず通常の配置で読めることを確かめ、その後で固定効果が操作を改善するか判断します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマに追従の設定があるなら、適用する端末、上端の余白、停止位置を確認します。追加の CSS やプラグインが必要なら、レイアウトに詳しい人がテスト環境で設定し、変更箇所と無効にする方法を記録します。複数の固定サイドバーツールを同時に有効化すると、位置計算やスクロール動作が干渉し得ます。"
+        },
+        {
+          "type": "heading",
+          "text": "スマートフォンでは実際の操作障害まで確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "画面を狭くして、サイドバーが記事末尾へ移るか、隠れるか、固定されたままかを調べ、本文幅と読む順番を確認します。機能がパソコンのサイドバーにしかないなら、スマートフォンにも、ナビゲーションや記事一覧の近くに検索を置くなど同等の入口が必要です。領域全体を隠すだけではモバイル対応とは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フォームの画面キーボードを開き、固定要素が入力欄や送信ボタンを覆わないか見ます。モバイルメニューを開いたときも閉じるボタンが操作できるか確かめます。横向き表示、拡大文字、縦の短い画面では普段見えない問題が出ます。トップページを一枚撮るだけでなく、実際に操作を完了できるか確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "キーボードで順番にフォーカスを移し、サイドバーのリンクへ到達でき、フォーカスが見え、固定ブロックに隠れないことを確認します。自動的に動く・展開するブロックでは、読む位置が突然変わらないかも調べます。広告や外部の埋め込みは読み込み後に高さが変わるため、空のプレースホルダーだけを見ずに完全に読み込んでから試します。"
+        },
+        {
+          "type": "heading",
+          "text": "定期的に整理し、元に戻す方法を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "記事が増えれば、サイドバーの人気記事、カテゴリー、著者情報も更新が必要です。期限切れのリンク、終了したサービス、用途を失ったブロックを定期的に点検し、取り外す理由を記録します。重要な情報でも位置が適切でないなら、残すか消すかの二択ではなく、本文やフッターへ移す方法があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマ変更前にウィジェットの設定とページのスクリーンショットを保存し、新テーマに対応する領域を確認します。配置が違うことがあるため、切り替え後はページごとに検証し、必要なら情報を並べ直します。成功の基準は、古い箱を全部同じ場所へ押し込むことではなく、読者が無理なく読んで次の行動を見つけられることです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-widgets-sidebar/diagram-1-ja.svg",
+          "alt": "用途、編集場所、表示位置の効果、複数端末での検証という四段階でサイドバーを計画するオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "情報を見つけやすくしながら、本文も完全で読みやすく保ちます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "用途、編集場所、表示位置の効果、複数端末での検証という四段階でサイドバーを計画するオリジナル図解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "適する用途",
+            "検証する点"
+          ],
+          "rows": [
+            [
+              "通常の配置",
+              "著者紹介、カテゴリー、関連記事",
+              "順序と内容の長さ"
+            ],
+            [
+              "追従表示",
+              "適度に短い目次や案内",
+              "コンテナーの端と画面の高さ"
+            ],
+            [
+              "固定表示",
+              "常に見える必要がある短い機能",
+              "主な操作を隠さない"
+            ],
+            [
+              "モバイルで移動",
+              "記事末尾などへ移すか別の入口を設ける",
+              "機能を見つけられる"
+            ],
+            [
+              "一時的に外す",
+              "今も必要かを観察する",
+              "設定と復旧方法を残す"
+            ]
+          ],
+          "caption": "まず通常の読みやすさを確保してから、必要な位置指定効果だけを加えます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "固定ブロックで主要な操作を妨げない",
+          "text": "スマートフォンのキーボード、メニュー、拡大した文字が隠れるなら、その端末で固定効果を止めるか通常の配置へ戻し、位置と高さを修正してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "カテゴリー、タグ、メニューの整理",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 管理画面での役割分担",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：ブロック型ウィジェットエディター",
+          "url": "https://wordpress.org/documentation/article/block-based-widgets-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：従来のウィジェット画面",
+          "url": "https://wordpress.org/documentation/article/appearance-widgets-screen-classic-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：CSS の位置指定",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：サイトエディター",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 사이드바와 위젯: 정보 및 고정 블록 배치",
+      "description": "WordPress 사이드바에 검색, 작성자 소개, 관련 콘텐츠를 넣을 수 있지만 독자에게 도움이 되는지 먼저 확인하세요. 이 글은 기존 위젯, 블록 기반 위젯 편집기, 블록 테마의 차이를 정리하고 추가, 정렬, 임시 제거, 검수 방법을 설명합니다. 일반 흐름, 스티키, 고정 표시의 용도를 비교하고 데스크톱, 휴대전화, 확대된 글자에서 정보 블록이 본문이나 양식을 가리지 않도록 확인합니다. 새로운 진입점을 늘려도 읽는 순서는 명확하게 유지해야 합니다.",
+      "hero": {
+        "src": "/guides/wordpress-widgets-sidebar/hero-ko.jpg",
+        "alt": "웹사이트 레이아웃, 정보 문서, 읽기 점검 방패를 결합한 자체 제작 인터페이스 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "사이드바가 비어 있다고 꼭 채울 필요는 없습니다. 글을 읽을 때 검색, 목차, 관련 콘텐츠가 도움이 될 수 있지만 지나치게 긴 광고, 태그 클라우드, 추적 버튼은 주의를 빼앗을 수도 있습니다. 각 블록의 목적을 먼저 적고 어디에 둘지 정하면 화면 공간을 실제 필요한 정보에 쓸 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이하에서는 가상의 집 정리 블로그에 작성자 소개, 글 분류, 관련 읽을거리를 배치합니다. 절차는 WordPress 위젯 문서와 MDN의 위치 지정 설명을 바탕으로 하며 특정 테마나 플러그인을 실제 테스트하지는 않았습니다. 실제 메뉴와 레이아웃은 사용 중인 테마에 따라 달라지므로 사이드바가 없다면 먼저 테마의 설계 방식을 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "테마가 이 영역을 어떻게 관리하는지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "클래식 테마에는 사이드바, 바닥글 등의 위젯 영역이 있을 수 있습니다. 지원되는 클래식 테마에서는 블록 기반 위젯 편집기가 이런 영역을 블록으로 관리합니다. 이는 블록 테마의 사이트 편집기와 다른 기능입니다. 블록 형태의 화면이 보인다고 두 기능을 혼동하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "블록 테마에서는 사이드 정보가 템플릿의 열이나 그룹으로 구성돼 해당 템플릿 또는 공유된 부분을 수정해야 할 수 있습니다. 클래식 테마라면 외모 > 위젯 메뉴와 테마 설명을 먼저 보세요. 어떤 페이지 템플릿에는 의도적으로 사이드바가 없을 수 있습니다. 설정이 사라진 것도 아닐 수 있고, 즉시 플러그인으로 복구해야 한다는 뜻도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 화면, 글 페이지, 검색 결과, 일반 페이지에 각각 어떤 레이아웃을 쓰는지 적은 뒤 수정할 곳을 정하세요. 집 정리 글에는 관련 읽을거리가 유용할 수 있지만 연락처 페이지에는 간단한 양식이 더 어울릴 수 있습니다. 같은 사이드바를 사이트 전체에 꼭 표시해야 한다고 가정하지 말고 독자가 현재 하려는 일에 맞게 배치하세요."
+        },
+        {
+          "type": "heading",
+          "text": "목적을 설명할 수 있는 정보만 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "추가할 각 블록에 대해 한 문장으로 이유를 쓰세요. 검색은 특정 정리 문제를 찾는 데, 작성자 소개는 누가 내용을 정리했는지 알려 주는 데, 관련 글은 같은 방의 다른 문제를 해결하는 데 도움이 될 수 있습니다. 이유가 단지 다른 사이트에도 있다는 것이라면 실제 필요가 생길 때까지 빼 두어도 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "읽는 상황에 따라 순서를 정하세요. 긴 글의 목차는 원하는 단락으로 이동하는 데 좋지만 작성자 소개가 화면 전체를 차지할 필요는 없고 분류 목록도 모든 단계를 펼칠 필요가 없습니다. 휴대전화의 한 열 화면에서는 글이 길수록 더 많은 공간을 차지합니다. 중요한 소수의 항목부터 시작해 독자가 다음 단계로 갈 수 있는지 관찰하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "필수 정보는 사이드바에만 두지 마세요. 글의 제한 사항, 단계, 중요한 주의점은 본문의 관련 위치에도 제공해야 합니다. 모바일에서 사이드바가 글 끝으로 이동하면 독자는 그것을 보기 전에 이미 지시대로 행동할 수 있습니다. 필수 조건이 특정 화면 배치에서만 보이면 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "위젯 추가와 조정의 기본 절차",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "블록 기반 위젯 편집기는 외모 > 위젯에서 열어 수정할 영역을 고른 뒤 블록을 추가하고 순서를 바꾸거나 다른 영역으로 이동할 수 있습니다. 아직 블록으로 변환되지 않은 기존 외부 위젯은 Legacy Widget 블록으로 관리할 수 있습니다. 사용 가능한 기능은 테마와 플러그인에 따라 다르므로 글 편집기의 모든 블록을 여기서도 쓸 수 있다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "클래식 위젯 화면을 사용한다면 테마가 제공하는 영역에서 위젯을 추가, 정렬, 설정하세요. 당장은 쓰지 않지만 설정을 보관하고 싶다면 바로 삭제하는 대신 비활성 위젯 영역을 사용할 수 있습니다. 화면 방식을 바꾸기 전에 원래 텍스트, URL, 필요한 설정을 저장해 두어 콘텐츠를 되찾을 수 있게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "한 번에 한 영역만 수정하고 저장한 다음 공개 페이지에서 확인하세요. 분류를 작성자 소개 아래에 놓는다면 해당 글 페이지가 방금 수정한 사이드바를 실제로 쓰는지, 캐시가 영향을 주는지 살펴보세요. 변경이 보이지 않는다는 이유로 같은 항목을 여러 영역에 반복 추가하면 나중에 여러 개가 동시에 나타날 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "테마 유형, 대상 템플릿, 위젯 영역을 확인하고 현재 설정을 보관합니다.",
+            "정말 필요한 콘텐츠를 추가하고 제목, 링크, 순서를 먼저 정합니다.",
+            "저장 후 해당 공개 페이지에서 항목이 중복되거나 빠지지 않았는지 확인합니다.",
+            "휴대전화, 확대된 글자, 키보드 조작을 시험한 뒤 스티키 효과가 필요한지 결정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "일반 흐름, 스티키, 고정 표시는 다릅니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 블록은 페이지와 함께 스크롤됩니다. 스티키 효과는 보통 지정된 위치에 도달한 뒤 잠시 머물며 상위 컨테이너의 범위에 제한됩니다. 고정 위치는 대체로 브라우저 뷰포트를 기준으로 자리를 유지합니다. MDN은 이런 차이를 설명하지만 실제 페이지는 부모 요소 설정과 레이아웃 구조의 영향도 받습니다. 이름 하나만 바꾸어 같은 결과를 보장할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "긴 글에 딸린 짧은 목차에는 스티키 효과가 어울릴 수 있지만 화면보다 높은 사이드바 전체를 고정하면 아래쪽 정보를 보기 어려워집니다. 고정된 구독 안내가 머리글, Cookie 알림, 채팅 버튼과 겹치면 콘텐츠를 가릴 수 있습니다. 일반 흐름에서 읽기 검수를 마친 뒤 고정 효과가 실제로 조작을 개선하는지 판단하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "테마에 스티키 옵션이 있다면 적용 기기, 위쪽 여백, 멈추는 위치를 확인하세요. 별도의 CSS나 플러그인이 필요하다면 레이아웃을 아는 사람이 테스트 환경에서 처리하고 변경 위치와 해제 방법을 기록하도록 하세요. 여러 고정 사이드바 도구를 동시에 켜면 위치 계산과 스크롤 동작이 서로 간섭할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "모바일에서는 실제 조작 장애까지 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "화면을 좁혀 사이드바가 본문 뒤로 이동하는지, 숨겨지는지, 계속 고정되는지 확인하고 본문 폭과 읽는 순서를 점검하세요. 기능이 데스크톱 사이드바에만 있다면 모바일에도 탐색 메뉴나 글 목록 근처의 검색처럼 동등한 진입점이 필요합니다. 영역 전체를 숨기는 것만으로 모바일 설계를 끝냈다고 할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "양식에서 화면 키보드를 열고 고정 요소가 입력 칸이나 제출 버튼을 가리는지 살펴보세요. 모바일 메뉴를 열 때는 닫기 버튼도 사용할 수 있어야 합니다. 가로 보기, 확대 글자, 높이가 낮은 화면은 평소 보이지 않는 문제를 드러낼 수 있습니다. 첫 화면 스크린샷 한 장이 아니라 실제 작업을 끝낼 수 있는지까지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "키보드로 순서대로 포커스를 옮겨 사이드바 링크에 도달할 수 있고 포커스가 보이며 고정 블록에 가리지 않는지 확인하세요. 블록이 자동으로 이동하거나 펼쳐진다면 읽던 위치가 갑자기 바뀌지 않는지도 점검합니다. 광고나 외부 삽입물은 로딩 후 높이가 바뀔 수 있으므로 빈 자리표시만 보지 말고 완전히 불러온 뒤 시험하세요."
+        },
+        {
+          "type": "heading",
+          "text": "정기적으로 정리하고 복구 방법 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "글이 늘어나면 사이드바의 인기 콘텐츠, 분류, 작성자 소개도 갱신해야 합니다. 만료된 링크, 중단된 서비스, 목적 없는 블록을 정기적으로 확인하고 제거 이유를 기록하세요. 정보가 여전히 중요하지만 위치가 부적절하다면 보관과 삭제 중 하나만 고르지 말고 본문이나 바닥글로 옮길 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테마를 바꾸기 전에 위젯 설정과 페이지 화면을 저장하고 새 테마의 대응 영역을 확인하세요. 배치가 다를 수 있으므로 전환 후 페이지마다 검수하고 필요하면 정보를 다시 놓습니다. 성공 기준은 원래의 모든 상자를 억지로 같은 위치에 돌려놓는 것이 아니라 독자가 편하게 읽고 다음 단계로 갈 곳을 찾는 것입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-widgets-sidebar/diagram-1-ko.svg",
+          "alt": "사이드바를 목적, 편집 위치, 위치 지정 효과, 여러 기기에서의 검수라는 네 단계로 계획하는 자체 제작 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "정보는 더 쉽게 찾되 본문도 완전하고 읽기 편하게 유지합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "사이드바를 목적, 편집 위치, 위치 지정 효과, 여러 기기에서의 검수라는 네 단계로 계획하는 자체 제작 도해."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방식",
+            "적합한 용도",
+            "검수할 점"
+          ],
+          "rows": [
+            [
+              "일반 흐름",
+              "작성자 소개, 분류, 관련 글",
+              "순서와 내용 길이"
+            ],
+            [
+              "스티키 표시",
+              "적절히 짧은 목차나 안내",
+              "컨테이너 경계와 화면 높이"
+            ],
+            [
+              "고정 표시",
+              "계속 보여야 하는 짧은 기능",
+              "주요 조작을 가리지 않을 것"
+            ],
+            [
+              "모바일에서 이동",
+              "사이드바를 글 뒤로 옮기거나 다른 진입점 제공",
+              "기능을 여전히 찾을 수 있는지"
+            ],
+            [
+              "임시 제거",
+              "아직 필요한지 관찰",
+              "설정과 복구 방법 보관"
+            ]
+          ],
+          "caption": "일반적인 읽기 경험을 먼저 확보한 뒤 필요한 위치 지정 효과만 더하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "고정 블록이 주요 조작 공간을 빼앗지 않게 하기",
+          "text": "모바일 키보드, 메뉴, 확대된 글자 때문에 내용이 가려진다면 먼저 해당 기기의 고정 효과를 끄거나 일반 흐름으로 돌린 다음 위치와 높이를 고치세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "분류, 태그, 메뉴 정리",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 관리자 화면의 역할 분담",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 블록 기반 위젯 편집기",
+          "url": "https://wordpress.org/documentation/article/block-based-widgets-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 클래식 위젯 화면",
+          "url": "https://wordpress.org/documentation/article/appearance-widgets-screen-classic-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: CSS 위치 지정",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 사이트 편집기",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 侧边栏与小工具：安排信息与固定区块",
+      "description": "WordPress 侧边栏可以放搜索、作者介绍与相关内容，但应先确认它对读者是否有帮助。本文整理传统小工具、区块小工具及区块主题的差异，说明如何新增、排序、暂时移除与验收，也比较一般排列、粘性定位与固定显示的用途。通过桌面、手机和文字放大的检查，避免信息区块遮住正文或表单，让网站增加入口时仍维持清楚的阅读顺序。",
+      "hero": {
+        "src": "/guides/wordpress-widgets-sidebar/hero-zh-cn.jpg",
+        "alt": "网站布局、信息文件与阅读检查盾牌组成的原创界面配置插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "侧边栏空着，不代表一定要塞满。读者正在看文章时，搜索、目录或相关内容可能有帮助，但过长的广告、标签云和关注按钮也可能抢走注意力。先替每个区块写出用途，再决定放在哪里，才能把布局空间用在真正需要的信息上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下以虚构的家居整理博客为例，安排作者介绍、文章分类与相关阅读。操作依 WordPress 小工具文档与 MDN 定位说明整理，没有实测特定主题或插件。实际入口和布局由使用中的主题决定，找不到侧边栏时先确认设计方式。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认主题怎么管理这个区域",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "传统主题可能提供侧边栏、页脚或其他小工具区域；区块小工具编辑器则让支持的传统主题以区块方式管理这些区域。它和区块主题的网站编辑器不是同一个功能，不能只看到区块界面就把两者混为一谈。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用区块主题时，侧边信息可能直接由模板中的栏或群组组成，需在对应模板或共享部分修改。使用传统主题时，则先查看外观的小工具入口与主题说明。某个页面模板可能刻意不显示侧边栏，这不一定是设置丢失，更不代表应立即安装插件补上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出首页、文章页、搜索结果与一般页面各使用哪个布局，再决定要改哪一处。家居整理文章需要相关阅读，联系页面却可能以简洁表单较合适。不要假设同一套侧边栏必须出现在全站，应依读者正在完成的事情安排。"
+        },
+        {
+          "type": "heading",
+          "text": "只保留能说清楚用途的信息",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "对每个候选区块写一句理由，例如搜索让读者找特定收纳问题，作者介绍说明内容由谁整理，相关文章让读者接着处理同一房间的其他问题。若理由只是「别人的网站也有」，可以先不放，等真的有需求再加入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "排列顺序应考虑阅读情境。长文目录适合协助跳到段落，作者简介不必占据整个屏幕，分类列表也不需要展开所有层级。文字越长，手机转成单栏时占用的空间越大；因此应从最重要的少量内容开始，再观察读者能否完成下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要把必要信息只放侧边栏。文章中提到的限制、步骤或重要提醒，应在正文相关位置提供。若手机版把侧边栏移到文末，读者可能还没看到它就已照着文章操作；必要条件不能依赖某一种屏幕排列才找得到。"
+        },
+        {
+          "type": "heading",
+          "text": "新增与调整小工具的基本流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "区块小工具编辑器可从外观、小工具进入，选择要修改的区域后新增区块，并调整顺序或移往其他区域。既有尚未转为区块的第三方小工具，可能通过 Legacy Widget 区块管理。可用功能仍取决于主题及插件，不应假定文章编辑器的所有区块都能在这里使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若使用传统小工具界面，依主题提供的区域加入、排序及设置小工具。暂时不用但想保留设置的项目，可以使用非使用中的小工具区域，而不是直接删除。进行调整前先保存文字、网址及必要设置，避免切换界面后找不到原本内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次先改一个区域，保存后到前台确认。假如想把分类放在作者介绍下方，就检查文章页是否确实使用你刚修改的侧边栏，并查看是否有缓存。不要因为看不到变更而在多个区域重复加入同一项目，否则稍后可能同时出现好几份。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认主题类型、目标模板与小工具区域，保存目前设置。",
+            "新增真正需要的内容，先安排标题、链接与顺序。",
+            "保存后查看对应前台页面，确认没有重复或缺少项目。",
+            "测试手机、文字放大及键盘操作，再决定是否加入粘性定位效果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "一般排列、粘性定位与固定显示不同",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般区块随页面一起滚动；粘性定位效果通常让元素到达指定位置后暂时停留，并受到所在容器范围限制；固定定位则通常相对浏览器视口维持位置。MDN 的定位文件说明了这些差异，但实际页面还会受到父级设置与布局结构影响，不能只改一个名称就保证结果一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "长文章的短目录可能适合粘性定位，整条比屏幕还高的侧边栏则可能让底部信息难以到达。固定的订阅提示若与页眉、Cookie 提示或聊天按钮重叠，更容易挡住内容。先用一般排列完成阅读验收，再判断固定效果是否真的改善操作。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若主题提供粘性定位选项，先看它的适用设备、上方留白与停止位置。需要额外 CSS 或插件时，交由了解布局的人在测试环境处理，记录修改位置与停用方法。不要同时启用多个固定侧边栏工具，否则位置计算与滚动行为可能互相影响。"
+        },
+        {
+          "type": "heading",
+          "text": "手机验收要包含真实的操作障碍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "缩窄屏幕宽度后，确认侧边栏是移到文末、隐藏还是维持固定，并检查正文宽度与阅读顺序。若某个功能只在桌面侧边栏出现，手机仍需要等效入口，例如把搜索放在导航或文章列表附近。不能单纯隐藏整个区域就算完成移动端设计。"
+        },
+        {
+          "type": "paragraph",
+          "text": "打开表单的屏幕键盘，观察固定元素是否遮住输入框或提交按钮；开启手机菜单时，也要确认关闭按钮仍可使用。横向观看、放大文字与较矮的屏幕都可能暴露平常看不到的问题。检查应涵盖操作完成，而不只是截一张首页图片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用键盘依序移动焦点，确认侧边栏链接能到达且焦点可见，没有被固定区块盖住。若区块会自动移动或展开，也要确认不会突然改变阅读位置。广告与第三方嵌入可能在加载后改变高度，应等待完整加载再测试，避免只看空白占位时的布局。"
+        },
+        {
+          "type": "heading",
+          "text": "定期整理，保留恢复方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文章量增加后，侧边栏中的热门内容、分类与作者介绍也需要更新。定期检查过期链接、停止使用的服务及没有用途的区块，记录移除理由。若某项信息仍重要，只是位置不合适，可以移到正文或页脚，不必在保留与删除之间二选一。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更换主题前先保存小工具设置及页面截图，确认新主题有哪些相对应区域。新主题的排列可能不同，切换后逐页验收，必要时重新安排信息。侧边栏的完成标准是读者能顺利阅读并找到下一步，而不是每个原本的方块都硬塞回同一个位置。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-widgets-sidebar/diagram-1-zh-cn.svg",
+          "alt": "侧边栏规划依用途、编辑位置、定位效果及多设备验收四阶段进行的图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "信息更容易找到，正文也要保持完整可读。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "侧边栏规划依用途、编辑位置、定位效果及多设备验收四阶段进行的图解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "适合用途",
+            "验收重点"
+          ],
+          "rows": [
+            [
+              "一般排列",
+              "作者介绍、分类、相关内容",
+              "顺序与内容长度"
+            ],
+            [
+              "粘性定位显示",
+              "适当长度的目录或提示",
+              "容器边界与屏幕高度"
+            ],
+            [
+              "固定显示",
+              "需要持续可见的短功能",
+              "不得遮住主要操作"
+            ],
+            [
+              "手机改位",
+              "侧边栏移到文末或其他入口",
+              "功能仍能找到"
+            ],
+            [
+              "暂时移除",
+              "观察是否仍需要",
+              "保留设置与恢复方法"
+            ]
+          ],
+          "caption": "先确保一般阅读顺畅，再逐项加入需要的定位效果。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "固定区块不能抢走主要操作空间",
+          "text": "若手机键盘、菜单或文字放大后出现遮挡，先停用该设备的固定效果或改用一般排列，再修正位置与高度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "分类、标签与菜单整理",
+              "kind": "life",
+              "slug": "wordpress-taxonomy-navigation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 后台的工作分界",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：区块小工具编辑器",
+          "url": "https://wordpress.org/documentation/article/block-based-widgets-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：传统小工具界面",
+          "url": "https://wordpress.org/documentation/article/appearance-widgets-screen-classic-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：CSS 定位方式",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：网站编辑器",
+          "url": "https://wordpress.org/documentation/article/site-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
