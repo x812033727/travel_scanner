@@ -2240,7 +2240,7 @@
     "budgetTitle": "預算上限",
     "budgetHelp": "超過任何一個上限，工人就停在目前的步驟，不會自動換成較便宜的模型。旁白每月字數與 Jev 每日次數沿用「AI 服務」裡的設定。",
     "gatesTitle": "關卡",
-    "gatesHelp": "選大綱、看成片、確認上架永遠等你；上傳到 YouTube 與按公開也一律由你在 Studio 做。",
+    "gatesHelp": "上傳到 YouTube 與上架時間永遠由你決定。旁白、大綱、成片與確認上架各有開關，關掉的關卡照舊等你；自動品管沒過的成片、Jev 重寫兩次仍挑不到的大綱，也會回到你這裡。",
     "save": "儲存設定",
     "saving": "儲存中…",
     "saved": "已儲存",
@@ -2291,7 +2291,11 @@
       "drama_monthly_judge_calls_budget": "每月 judge 次數",
       "drama_monthly_music_budget": "每月配樂首數",
       "drama_max_usd_per_video": "單支最多花費（美元）",
-      "drama_topic_scope": "漫劇題材（每行一個）"
+      "drama_topic_scope": "漫劇題材（每行一個）",
+      "channel_stance": "頻道立場",
+      "auto_pick_outline": "由 Jev 挑大綱（立場留白時沒有作用）",
+      "auto_approve_final": "自動品管全過就核准成片；上傳包備好就核准「確認上架」",
+      "drama_auto_pick_look": "設定圖自動選：judge 分數最高的那張達到門檻、沒有問題時，就核准該角色"
     },
     "stages": {
       "planner": "企劃（選題與大綱）",
@@ -2339,7 +2343,10 @@
       "slides": "投影片",
       "drama": "漫劇"
     },
-    "promptSent": "{slug} · {time}"
+    "promptSent": "{slug} · {time}",
+    "stanceTitle": "頻道立場",
+    "stanceHelp": "這個頻道相信什麼。企劃模型寫每一支影片的站主觀點時，只以這份立場為依據；撰稿與 Jev 的檢查也會讀它。跟「各階段的常設指示」分開：常設指示寫怎麼寫，立場寫相信什麼。每條一行、加編號，最多 4,000 字。留白時 Jev 不會替你挑大綱，大綱照舊等你。草稿在 docs/videos/HANDS-OFF.md 的「頻道立場」一節，改過再貼進來；改了只影響之後才寫企劃的影片。",
+    "stancePlaceholder": "例如：1. 先把帳算清楚再花錢：付費是為了真的用得到的額度與能力，不是為了拿掉廣告。"
   },
   "videoSeries": {
     "listTitle": "作品",

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
@@ -17,6 +18,7 @@ from app.config import Settings
 from app.db import get_session
 from app.models import User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError, app_error_handler
+from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service
 from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
@@ -373,3 +375,84 @@ async def test_a_preview_is_served_with_byte_ranges_and_never_cached(
     assert response.content == bytes(range(10, 20))
     assert response.headers["content-type"] == "video/mp4"
     assert response.headers["cache-control"] == "private, no-store"
+
+
+@pytest.mark.asyncio
+async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_file_is_rejudged(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """The hands-off approvals (docs/videos/HANDS-OFF.md): the server applies the rules to the
+    worker's payload as it arrives, and a file sent again while it waits is judged again."""
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    now = datetime.now(UTC)
+    project = VideoProject(id=uuid4(), slug="v", title="t", stage="final", checklist=[])
+    waiting = VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="final",
+        subject=None,
+        status="pending",
+        content_sha256="f" * 64,
+        summary="成片",
+        payload={},
+        files=[],
+        created_at=now,
+    )
+    decided = VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="audio",
+        subject=None,
+        status="approved",
+        content_sha256="a" * 64,
+        summary="旁白",
+        payload={},
+        files=[],
+        created_at=now,
+        decided_at=now,
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[waiting, decided]))
+    monkeypatch.setattr(admin_service, "auto_approves_audio", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_approves_storyboard", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_picks_outline", AsyncMock(return_value=True))
+    final_rule = AsyncMock(return_value=True)
+    monkeypatch.setattr(admin_service, "auto_approves_final", final_rule)
+    session = AsyncMock()
+    session.add = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+
+    pick = {
+        "choice": "B",
+        "probabilities": {"A": 0.26, "B": 0.74},
+        "options": {"A": {"stance": 0.9, "demo": 0.4}, "B": {"stance": 0.81, "demo": 0.92}},
+        "advice": 0.05,
+    }
+    outline = ReviewIn(
+        gate="outline",
+        content_sha256="c" * 64,
+        summary="大綱",
+        payload={"options": [{"key": "A"}, {"key": "B"}], "pick": pick},
+    )
+    picked = await admin_service.submit_review(session, store, "v", outline, token)
+    assert picked.status == "approved" and picked.choice == "B"
+    assert (
+        picked.note == "Jev 挑了 B（0.74）：符合立場 0.81、有示範 0.92、建議 0.05，依設定自動核准"
+    )
+    assert session.add.call_args.args[0].action == "video_review_auto_approved"
+
+    # The same final cut sent again while it waits: the quality check arrived after the fact.
+    qa = {"ok": True, "final_sha256": "f" * 64, "items": []}
+    resent = ReviewIn(
+        gate="final", content_sha256="f" * 64, summary="成片＋品管", payload={"qa": qa}
+    )
+    again = await admin_service.submit_review(session, store, "v", resent, token)
+    assert again.id == waiting.id and again.status == "approved"
+    assert again.note == QA_AUTO_APPROVED_NOTE
+    assert waiting.summary == "成片＋品管" and waiting.payload == {"qa": qa}
+    assert final_rule.await_args.args[1:] == ("final", {"qa": qa}, "f" * 64)
+
+    # A decided review of the same file comes back as it is.
+    settled = ReviewIn(gate="audio", content_sha256="a" * 64, summary="旁白", payload={"x": 1})
+    same = await admin_service.submit_review(session, store, "v", settled, token)
+    assert same.id == decided.id and same.status == "approved" and decided.payload == {}
