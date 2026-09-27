@@ -6,7 +6,7 @@ import { useCallback, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import {
-  control, type Project, type ProjectSummary, REFRESH_MS, ReviewCard, SLUG, fileUrl, useRefresh, useWhen,
+  control, DUB_LOCALES, type Project, type ProjectSummary, REFRESH_MS, ReviewCard, SLUG, fileUrl, useRefresh, useWhen,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
@@ -51,6 +51,52 @@ function DropVideo({ slug, onDropped }: { slug: string; onDropped: () => void })
   </details>;
 }
 
+/**
+ * The languages to dub this video in (docs/videos/DUBS.md). Every video is made in Traditional
+ * Chinese; the worker makes a track for each ticked language once the final cut is approved and
+ * sends them back as a card, and the owner uploads them in YouTube Studio. Ticking is allowed
+ * before or after the video is public.
+ */
+function DubLanguages({ slug, project, canManage, onSaved }: { slug: string; project: Project; canManage: boolean; onSaved: () => void }) {
+  const t = useTranslations("admin.videoReviews");
+  // The parent keys this section by the saved languages, so a save (or another admin's) remounts
+  // it with the new boxes while an edit in progress survives the page's minute-by-minute reads.
+  const saved = (project.dub_locales ?? []).join(",");
+  const [chosen, setChosen] = useState<string[]>(project.dub_locales ?? []);
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const ordered = DUB_LOCALES.filter((locale) => chosen.includes(locale));
+  const changed = ordered.join(",") !== saved;
+  const toggle = (locale: string) => setChosen((current) => (current.includes(locale) ? current.filter((each) => each !== locale) : [...current, locale]));
+  const save = async () => {
+    setBusy(true);
+    setError("");
+    setMessage("");
+    try {
+      await api(`/admin/videos/${slug}/dubs`, { method: "PUT", body: JSON.stringify({ locales: ordered }) });
+      setMessage(t("dubsSaved"));
+      onSaved();
+    } catch (problem) {
+      setError(t("dubsError", { message: problem instanceof Error ? problem.message : "" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return <section aria-label={t("dubsTitle")} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-4">
+    <p className="font-bold">{t("dubsTitle")}</p>
+    <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("dubsHelp")}</p>
+    <div className="mt-3 flex flex-wrap gap-4">
+      {DUB_LOCALES.map((locale) => <label key={locale} className="inline-flex items-center gap-2 text-sm font-semibold">
+        <input type="checkbox" checked={chosen.includes(locale)} disabled={!canManage || busy} onChange={() => toggle(locale)} />{t(`locales.${locale}`)}
+      </label>)}
+    </div>
+    {error && <p role="alert" className="mt-2 text-sm text-red-800">{error}</p>}
+    {message && !error && <p role="status" className="mt-2 text-sm text-[var(--muted)]">{message}</p>}
+    <div className="mt-3"><Button disabled={!canManage || busy || !changed} onClick={() => void save()}>{busy ? t("saving") : t("dubsSave")}</Button></div>
+  </section>;
+}
+
 function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
@@ -80,6 +126,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
         <p className="font-bold">{t("checklist")}</p>
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
       </section>}
+      {!dropped && (project.format ?? "slides") === "slides" && <DubLanguages key={(project.dub_locales ?? []).join(",")} slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
       {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} />)}
       {past.length > 0 && <details className="grid gap-4"><summary className="cursor-pointer font-bold">{t("history")}</summary>
