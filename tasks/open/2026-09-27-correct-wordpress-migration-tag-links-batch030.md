@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-correct-wordpress-migration-tag-links-batch030
 title: Correct WordPress migration tag links Batch030
-status: review
+status: open
 priority: P1
 area: api
-owner: codex-batch030-token-link-fix
-claimed_at: 2026-09-27T10:41:49Z
+owner:
+claimed_at:
 created_at: 2026-09-27T10:41:42Z
 completed_at:
 branch: codex/article-localization-batch030-token-link-fix
