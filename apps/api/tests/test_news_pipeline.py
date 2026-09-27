@@ -697,6 +697,62 @@ async def test_candidates_paused_for_jev_wait_for_the_next_utc_day() -> None:
 
 
 @pytest.mark.asyncio
+async def test_candidates_paused_for_jev_run_now_when_the_budget_has_room() -> None:
+    engine, factory = await database()
+    now = datetime(2026, 9, 27, 12, 0, tzinfo=UTC)
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        paused_minutes_ago = await seed_candidate(session)
+        paused_minutes_ago.error_code = pipeline.JEV_QUOTA_PAUSED
+        paused_minutes_ago.updated_at = now - timedelta(minutes=5)
+        recent = await seed_candidate(session)
+        recent.updated_at = now - timedelta(minutes=5)
+        await session.commit()
+        paused_id = paused_minutes_ago.id
+        spent = await pipeline.orphaned_candidates(session, now=now)
+        room = await pipeline.orphaned_candidates(session, now=now, jev_budget_left=True)
+    await engine.dispose()
+
+    assert spent == []
+    assert room == [paused_id], "a fresh candidate still waits for its own job"
+
+
+def test_the_scheduler_reads_the_counter_jev_calls_spend(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    counted: list[str] = []
+
+    class Spending:
+        async def eval(self, _script: str, _keys: int, key: str, _budget: str) -> int:
+            counted.append(key)
+            return 1
+
+    class Reading:
+        def __init__(self, used: int | None) -> None:
+            self.used = used
+            self.read: list[str] = []
+
+        def get(self, key: str) -> bytes | None:
+            self.read.append(key)
+            return None if self.used is None else str(self.used).encode()
+
+        def close(self) -> None:
+            pass
+
+    import asyncio
+
+    from app.ai.jev import consume_jev_call
+
+    asyncio.run(consume_jev_call(Spending(), get_settings()))  # type: ignore[arg-type]
+    for used, budget, expected in ((None, 200, True), (199, 200, True), (200, 200, False),
+                                   (200, 5_000, True)):
+        reader = Reading(used)
+        monkeypatch.setattr(scheduler, "Redis", Mock(from_url=Mock(return_value=reader)))
+        assert scheduler.jev_budget_left(budget) is expected
+        assert reader.read == counted
+
+
+@pytest.mark.asyncio
 async def test_settings_offer_catalog_models_and_the_resolved_default(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
