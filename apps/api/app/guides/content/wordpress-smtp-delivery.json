@@ -252,6 +252,970 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress email not arriving: SMTP, domain verification, and logs",
+      "description": "When WordPress password-reset messages or form notifications do not arrive, trace the website, sending service, and recipient system separately. Using WP Mail SMTP with Brevo, this guide explains sender identity, API connection, domain verification, test emails, and error logs. It helps Taiwan-based site owners build a traceable mail workflow instead of assuming that a successful send report means every message reached an inbox.",
+      "hero": {
+        "src": "/guides/wordpress-smtp-delivery/hero-en.jpg",
+        "alt": "Original illustration of a screen, server, and document showing the route from website email to the message received.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A customer says the confirmation never arrived, so the site owner clicks resend several times. The customer receives multiple copies the next day. To solve this kind of problem, first record one test message's time, recipient address, and purpose. Find where it stopped before deciding whether to resend it."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress creating an email, an outside service accepting it, and the recipient system receiving it are separate events. This guide uses WP Mail SMTP and Brevo to illustrate a traceable setup for site messages such as password resets and notifications. Check the services and allowances available under your own account plan."
+        },
+        {
+          "type": "heading",
+          "text": "Map the site's sending routes first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List every feature that sends mail, such as registration, form notifications, comment alerts, and order messages. Record the sender, recipient, and trigger for each. If a plugin calls its own outside service directly, mark that route separately; do not assume one SMTP plugin takes over all site email."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check for an existing mail plugin or hosting integration. When several tools change sender settings, it can be hard to tell which one took effect. Keep a record of the current settings, confirm the route to retain on a test site, then schedule the production change. Restrict recipients on the test site too, so member addresses copied from a backup are not used for a mass mailing."
+        },
+        {
+          "type": "paragraph",
+          "text": "A generic SMTP connection usually needs a host, port, encryption, and authentication settings. Brevo's dedicated mailer instead uses an API key. Although the plugin is named WP Mail SMTP, its selected service may not ask for an SMTP password; prepare the details specified by the official documentation for that mailer."
+        },
+        {
+          "type": "heading",
+          "text": "Prepare a recognizable, maintainable sender identity",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a sender address on a domain you control and assign someone to handle replies. A consistent sender name can identify the studio or site across notifications. An external sending service does not automatically provide an inbox for everyday incoming mail; if people should reply, provide a working mailbox or a correct Reply-To address."
+        },
+        {
+          "type": "paragraph",
+          "text": "After creating a Brevo account, confirm that it is active and transactional email is available. Then add the domain matching From Email. Keep a sending subdomain consistent too; do not verify one domain and send from another. You do not control the public domain of a free email provider, so you cannot use it to complete your own DNS verification."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before choosing a plan, estimate normal daily notifications, peaks, and retries. Assess large marketing campaigns separately from essential notices, and check the platform's limits and remaining allowance. This guide does not treat a particular free allowance as a long-term promise or recommend sending a large test batch."
+        },
+        {
+          "type": "heading",
+          "text": "Verify the domain using records generated for your account",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo is gradually introducing a new domain-setup flow; some accounts still show the older Authenticate interface. Choose automatic or manual verification according to the screen you have, and use the record names, types, and values generated for your account. The official guide lists a Brevo code, DKIM, and DMARC. DKIM may use a TXT record or two CNAME records, so do not copy another account's examples."
+        },
+        {
+          "type": "paragraph",
+          "text": "Find the service actually managing DNS before adding the requested records; the domain seller may not be the DNS provider. Save a screenshot or export of existing settings, then check each host name for control panels that append the domain twice. Email-sender verification does not require arbitrary changes to the website's A record or to the MX records used for incoming mail."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the domain already has DMARC, understand its current policy first. Brevo says its automatic flow may ask to replace an existing record; use the manual flow if you do not want that replacement. Do not add conflicting records just to clear a warning. Run verification again in Brevo and confirm success, distinguishing DNS propagation time from a configuration error."
+        },
+        {
+          "type": "heading",
+          "text": "Connect WP Mail SMTP",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In WP Mail SMTP Settings, set From Email and From Name, then choose Brevo as the mailer. If related site messages should all use the same sender address, consider Force From Email, but check whether it would affect features that need a different sender before enabling it. Configure reply addresses according to the actual service workflow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create an API key for this site in Brevo's SMTP & API settings and name it for its purpose. Keep it securely. Copy the complete key into WP Mail SMTP's API Key field; neither a masked value shown later nor an SMTP key is a substitute for the API key. Save and confirm that the selected mailer has not changed."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm domain verification and that the sender address matches the verified domain.",
+            "Enter a valid key for the selected mailer, recording its purpose and creation date.",
+            "Under Tools > Email Test, send one message to a test inbox you can inspect."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Use evidence to locate the failure",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If Email Test reports an error, keep its time and error type, then inspect Debug Events under Tools. For a missing key, check the complete API key and account. Resolve account activation issues with the platform. Investigate the host's outbound network only for connection or timeout problems. Change one cause at a time rather than resetting DNS, switching providers, and altering the form together."
+        },
+        {
+          "type": "paragraph",
+          "text": "After the plugin reports success, check the real inbox and spam folder. If it has a sent record but nothing arrived, search Brevo Transactional Logs by recipient, time, or message ID. Sending, delivery, and later bounces represent different events; acceptance for sending does not mean a person has read the message."
+        },
+        {
+          "type": "paragraph",
+          "text": "Detailed WP Mail SMTP Email Log features require a paid version and differ from basic sending-error tracking. For long-term troubleshooting, compare the plugin and service logs available to you. If you retain email bodies or attachments, limit access and retention periods. Turn off extra debugging after the investigation so unnecessary data does not accumulate."
+        },
+        {
+          "type": "heading",
+          "text": "Test real features and keep a maintenance record",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A test email is only the first check. Use test accounts to trigger password reset, registration notices, and a contact form, then confirm each message actually uses the new settings. Check link domains, sender name, Reply-To, and Chinese content; sample different receiving services and record arrival location and timing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before resending a message, check whether the service has already accepted or is still processing it. Avoid duplicate notices. For messages with expiring links, consider how new and old copies affect the user. Do not make manually forwarding a full password-reset link the standard support procedure."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hand the maintenance owner a record of the sending-service account, domain records, key purpose, usage checks, and test dates. Retest essential functions after a host move, domain change, or key rotation. Confirm the new connection works before removing old keys and settings so site notices remain traceable."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-smtp-delivery/diagram-1-en.svg",
+          "alt": "Three-panel diagram showing WordPress generating email, the sending service handling events, and the receiving system sorting messages; each stage needs separate evidence.",
+          "width": 1600,
+          "height": 900,
+          "caption": "After a send succeeds, still check delivery events and the message actually received.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "What you see",
+            "Check first",
+            "How to verify"
+          ],
+          "rows": [
+            [
+              "Immediate key error on a test",
+              "Mailer, key type, and account",
+              "Replace with the correct credential and retest one message"
+            ],
+            [
+              "Plugin sent but nothing arrived",
+              "Service events and recipient sorting",
+              "Match recipient, time, and message ID"
+            ],
+            [
+              "Only one notice type fails",
+              "That feature's trigger and sender settings",
+              "Exercise that feature with a test account"
+            ],
+            [
+              "Failure began after a move",
+              "New host connection and sender settings",
+              "Keep error events and trace each stage"
+            ]
+          ],
+          "caption": "Locate the failing stage before changing related settings."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Keep data that connects the three stages",
+          "text": "A test record should include at least its purpose, time, recipient, and service-returned identifier. Mask keys and unnecessary personal data when contacting support, and avoid repeatedly resending the same important notice."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a complete contact-form workflow",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Check DNS records and where to edit them",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Mail SMTP: Brevo mailer",
+          "url": "https://wpmailsmtp.com/docs/how-to-set-up-the-sendinblue-mailer-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo: existing domain-authentication flow",
+          "url": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo: new domain-setup flow",
+          "url": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP: test email",
+          "url": "https://wpmailsmtp.com/docs/how-to-send-a-test-email-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP: sending debug guide",
+          "url": "https://wpmailsmtp.com/docs/how-to-debug-email-sending-issues-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP: setup wizard and paid logging features",
+          "url": "https://wpmailsmtp.com/docs/how-to-use-the-wp-mail-smtp-setup-wizard/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo: transactional email logs",
+          "url": "https://help.brevo.com/hc/en-us/articles/360021533839-Manage-your-transactional-logs-and-email-previews",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のメールが届かないとき：SMTP、ドメイン認証、ログの確認",
+      "description": "WordPress のパスワード再設定メールやフォーム通知が届かない場合、サイト、送信サービス、受信側を分けて調べます。WP Mail SMTP と Brevo を例に、送信者の身元、API 接続、ドメイン認証、テストメール、エラーログを説明します。台湾のサイト運営者が、送信成功表示だけで受信箱への到達を決めつけず、追跡可能なメール運用を作るための手順です。",
+      "hero": {
+        "src": "/guides/wordpress-smtp-delivery/hero-ja.jpg",
+        "alt": "画面、サーバー、書類を使い、サイトから送られたメールが受信内容になるまでの流れを示すオリジナル図。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "お客さんから確認メールが届かないと言われ、運営者が何度も再送した結果、翌日に何通も届くことがあります。まず一件のテストについて時刻、宛先、用途を記録しましょう。どこで止まったか調べてから再送を判断します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress がメールを生成すること、外部サービスが受け付けること、受信側システムに届くことは別の出来事です。ここでは WP Mail SMTP と Brevo を使い、パスワード再設定や通知に使える追跡可能な設定を説明します。利用できるサービスと送信枠は契約プランで確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトの送信経路を先に書き出す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "会員登録、フォーム通知、コメント通知、注文連絡など、どの機能がメールを送るか列挙します。それぞれの送信者、宛先、発火条件を記録します。プラグインが独自に外部サービスを呼ぶ場合は経路を別に示し、SMTP プラグイン一つで全メールを制御できると思い込まないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "既存の送信プラグインやホスティング側の連携を確認します。複数のツールが設定を変えると、実際にどれが働いたか分かりません。今の設定を記録し、テストサイトで残す経路を確認してから本番の切替を計画します。テストサイトでも宛先を制限し、バックアップ中の会員アドレスへ一斉送信しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通常の SMTP 接続ではホスト、ポート、暗号化、認証方式を確認します。一方、Brevo 専用 mailer は API キーを使います。プラグイン名が SMTP でも、選んだサービスで SMTP パスワードを求められるとは限りません。該当 mailer の公式資料に沿って準備します。"
+        },
+        {
+          "type": "heading",
+          "text": "識別しやすく維持できる送信者を用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自分で管理するドメインの送信アドレスを使い、返信を扱う担当者を決めます。送信者名は事務所名やサイト名にし、通知間でそろえます。外部送信サービスがメールを送れても、通常の受信箱が自動で付くわけではありません。返信を受けるなら動く受信箱か正しい Reply-To が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo アカウントを作ったら、有効化とトランザクションメールの利用可否を確かめ、From Email と一致するドメインを追加します。送信用サブドメインも対応を保ち、別のドメインを認証して送信しないでください。無料メールサービスの共有ドメインは自分では管理できず、その DNS 認証には使えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラン選択前に、通常の日次通知数、ピーク、再試行を見積もります。大量のマーケティング配信と必須通知は分けて考え、サービスの制限と残量を確認します。特定の無料枠を永続的な約束として扱わず、テスト目的で一度に大量送信することも勧めません。"
+        },
+        {
+          "type": "heading",
+          "text": "自分のアカウントで生成された DNS レコードで認証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo は新しいドメイン設定フローを段階的に提供しており、従来の Authenticate 画面が出るアカウントもあります。現在の画面に沿って自動または手動認証を選び、自分のアカウントで生成された名前、種類、値を使います。公式資料には Brevo code、DKIM、DMARC が示されています。DKIM は TXT または二つの CNAME の場合があり、他人の例を流用しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "要求されたレコードを追加する前に、DNS を実際に管理するサービスを確認します。ドメインの購入先とは別の場合があります。既存設定の画面やエクスポートを保存し、管理画面がホスト名の末尾にドメインを重複追加しないか一つずつ照合します。送信者認証のためにサイトの A レコードや通常の受信用 MX をむやみに変える必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "すでに DMARC がある場合は現在の方針を理解してから変更します。Brevo によると自動フローは既存レコードの置換を求めることがあり、置き換えたくない場合は手動フローを選べます。警告を消すために矛盾する設定を追加しないでください。Brevo で再検証して成功を確認し、DNS 反映待ちと設定ミスを区別します。"
+        },
+        {
+          "type": "heading",
+          "text": "WP Mail SMTP を接続する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Mail SMTP の Settings で From Email と From Name を設定し、mailer に Brevo を選びます。同じ送信アドレスを関連するサイトメールに適用するなら Force From Email を検討できますが、別の送信者を必要とする機能への影響を先に確認してください。返信先も実際の業務に合わせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo の SMTP & API 設定で、このサイト用の API キーを作り、用途が分かる名前を付けて安全に保管します。完全なキーを WP Mail SMTP の API Key 欄にコピーしてください。後から表示される伏せ字や SMTP キーは代用できません。保存後も選択した mailer が変わっていないか確認します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "ドメイン認証が成功し、送信アドレスが認証済みドメインと一致するか確認する。",
+            "選んだ mailer に合う有効なキーを入力し、用途と作成日を記録する。",
+            "Tools > Email Test から、自分で確認できるテスト用受信箱へ一通送る。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "証拠を使って失敗箇所を特定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Email Test にエラーが出たら、時刻と種類を残し、Tools の Debug Events を見ます。キー不足なら完全な API キーとアカウント、アカウント未有効ならサービス側の有効化を調べます。接続・タイムアウトの問題で初めてホストの外向き通信を確認します。一度に DNS、サービス、フォームを変えず、一つずつ原因を直します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインが成功を報告しても、実際の受信箱と迷惑メールフォルダーを確認します。送信記録があるのに届かなければ、Brevo の Transactional Logs を宛先、時刻、message ID で検索します。送信、配達、後の返送は意味が異なり、送信受付だけで相手が読んだとは言えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Mail SMTP の詳しい Email Log 機能は有料版に属し、基本の送信エラー追跡とは別です。長期的な調査には、使えるプラグイン側とサービス側のログを比較します。本文や添付を保存するなら閲覧権限と保存期間を制限します。調査後は追加のデバッグを止め、不要なデータの蓄積を防ぎます。"
+        },
+        {
+          "type": "heading",
+          "text": "実際の機能を試し、維持管理の記録を残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テストメール成功は最初の関門です。続いてテストアカウントでパスワード再設定、登録通知、問い合わせフォームを発火し、各メールが新設定を使うか確認します。リンク先ドメイン、送信者名、Reply-To、中国語の内容を照合し、異なる受信サービスでも到達先と所要時間を記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再送が必要そうなら、サービスがすでに受け付けたか処理中かを先に調べ、重複通知を避けます。有効期限付きリンクでは、新旧メールが利用者へ与える影響も確認します。パスワード再設定リンク全体をサポート担当が手作業で転送する運用を標準にしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "送信サービスのアカウント、ドメインのレコード、キーの用途、使用量確認、テスト日を保守担当者へ引き継ぎます。ホスト移転、ドメイン変更、キー更新後には重要機能を再テストします。新しい接続を確認してから古いキーと不要な設定を外し、通知を追跡できる状態に保ちます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-smtp-delivery/diagram-1-ja.svg",
+          "alt": "WordPress でのメール生成、送信サービスの処理、受信側の分類を順に示し、各段階の確認を促す三コマ図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "送信が成功しても、配達結果と実際に受信した内容を確認します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "見えた現象",
+            "最初に調べること",
+            "確認方法"
+          ],
+          "rows": [
+            [
+              "テスト直後にキーのエラー",
+              "mailer、キーの種類、アカウント",
+              "正しい認証情報に替え、一通だけ再テスト"
+            ],
+            [
+              "プラグインは送信済みでも未着",
+              "サービス側の出来事と受信側の分類",
+              "宛先、時刻、message ID を照合"
+            ],
+            [
+              "特定の通知だけ失敗",
+              "その機能の発火条件と送信設定",
+              "テストアカウントでその機能を実行"
+            ],
+            [
+              "移転後から失敗",
+              "新ホストの接続と送信設定",
+              "エラー記録を残し、段階ごとに確認"
+            ]
+          ],
+          "caption": "失敗した段階を特定してから、関連する設定を変えます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "三つの段階を結べる情報を残す",
+          "text": "テスト記録には少なくとも用途、時刻、宛先、サービスが返した識別子を含めます。サポートに渡す際はキーや不要な個人情報を隠し、重要な通知を何度も再送しないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "問い合わせフォームの流れを完成させる",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS レコードと設定場所を確認する",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Mail SMTP：Brevo mailer",
+          "url": "https://wpmailsmtp.com/docs/how-to-set-up-the-sendinblue-mailer-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：従来のドメイン認証フロー",
+          "url": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：新しいドメイン設定フロー",
+          "url": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：テストメール",
+          "url": "https://wpmailsmtp.com/docs/how-to-send-a-test-email-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：送信エラーの調査",
+          "url": "https://wpmailsmtp.com/docs/how-to-debug-email-sending-issues-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：設定ウィザードと有料ログ機能",
+          "url": "https://wpmailsmtp.com/docs/how-to-use-the-wp-mail-smtp-setup-wizard/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：トランザクションメールのログ",
+          "url": "https://help.brevo.com/hc/en-us/articles/360021533839-Manage-your-transactional-logs-and-email-previews",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 메일이 오지 않을 때: SMTP, 도메인 인증, 로그 확인",
+      "description": "WordPress 비밀번호 재설정 메일이나 양식 알림이 오지 않으면 웹사이트, 발송 서비스, 수신 시스템을 나누어 추적하세요. WP Mail SMTP와 Brevo를 예로 발신자 신원, API 연결, 도메인 인증, 시험 메일, 오류 기록을 설명합니다. 대만의 사이트 운영자가 '발송 성공' 표시만으로 모든 메일의 받은편지함 도착을 단정하지 않고 추적 가능한 발송 체계를 만들도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-smtp-delivery/hero-ko.jpg",
+        "alt": "화면, 서버, 문서로 사이트 발송부터 실제 수신 내용까지의 메일 경로를 보여 주는 창작 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "고객이 확인 메일을 못 받았다고 해 운영자가 여러 번 재발송했더니 다음 날 같은 메일이 여러 통 도착할 수 있습니다. 이런 문제를 풀려면 먼저 한 건의 시험 메일에 대한 시간, 수신 주소, 용도를 남기세요. 어느 단계에서 멈췄는지 확인한 뒤 재발송을 결정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress가 메일을 생성하는 일, 외부 서비스가 접수하는 일, 수신 시스템이 받는 일은 각각 다릅니다. 이 글은 WP Mail SMTP와 Brevo로 비밀번호 재설정과 알림 등에 쓸 수 있는 추적 가능한 설정을 설명합니다. 실제 이용 가능한 서비스와 발송 한도는 계정 요금제에 따라 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "사이트의 메일 발송 경로부터 그리기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "회원 가입, 양식 알림, 댓글 알림, 주문 메시지 등 메일을 보내는 기능을 나열하고 각 기능의 발신자, 수신자, 작동 조건을 적으세요. 플러그인이 자체 외부 서비스를 직접 호출한다면 별도 경로로 표시해야 합니다. SMTP 플러그인 하나가 사이트의 모든 메일을 관리한다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 발송 플러그인이나 호스팅 연동이 있는지 확인하세요. 여러 도구가 발신 설정을 동시에 바꾸면 어느 도구가 실제 적용됐는지 알기 어렵습니다. 현재 설정을 기록하고 시험 사이트에서 유지할 경로를 검증한 뒤 운영 사이트 전환을 계획하세요. 시험 사이트에서는 백업에 포함된 회원 주소로 대량 발송하지 않도록 수신자도 제한해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 SMTP 연결에서는 호스트, 포트, 암호화, 인증 방식을 확인해야 합니다. Brevo 전용 mailer는 대신 API 키를 사용합니다. 플러그인 이름에 SMTP가 있어도 선택한 서비스에 SMTP 비밀번호를 입력하는 것은 아닐 수 있으므로 해당 mailer의 공식 문서에 따라 준비하세요."
+        },
+        {
+          "type": "heading",
+          "text": "알아보기 쉽고 관리 가능한 발신자 준비하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "자신이 관리하는 도메인의 발신 주소를 사용하고 회신을 처리할 사람을 지정하세요. 발신자 이름은 작업실이나 사이트 이름으로 하고 여러 알림에서 일관되게 유지합니다. 외부 발송 서비스로 메일을 보낼 수 있다고 일상적인 수신 편지함까지 자동 제공되는 것은 아닙니다. 답장을 받아야 한다면 작동하는 편지함이나 올바른 Reply-To가 필요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 계정을 만든 뒤 활성 상태와 거래 메일 기능 사용 가능 여부를 확인하고 From Email과 일치하는 도메인을 추가하세요. 발송용 하위 도메인을 쓴다면 그것도 일치시켜야 합니다. 한 도메인을 인증하고 다른 도메인에서 보내지 마세요. 무료 메일 서비스의 공용 도메인은 직접 제어하지 못하므로 자신의 DNS 인증에 사용할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "요금제를 정하기 전에 평소 하루 알림량, 최고 사용량, 재시도량을 추산하세요. 대규모 마케팅 메일과 필수 알림의 요구를 나누고 플랫폼 제한과 남은 할당량을 살펴보세요. 특정 무료 발송량을 오래 유지될 약속으로 간주하지 않으며 시험 삼아 한 번에 대량 발송하는 것도 권하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "내 계정에 생성된 DNS 레코드로 도메인 인증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo는 새로운 도메인 설정 절차를 단계적으로 제공하므로 일부 계정에는 이전 Authenticate 화면이 보입니다. 현재 화면에 맞게 자동 또는 수동 인증을 선택하고 그 계정에 생성된 레코드 이름, 유형, 값을 사용하세요. 공식 자료에는 Brevo code, DKIM, DMARC가 나옵니다. DKIM은 TXT 또는 CNAME 두 건일 수 있으니 남의 예시를 그대로 복사하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "요청된 레코드를 넣기 전에 실제 DNS 관리 서비스를 찾으세요. 도메인 구매처와 DNS 관리처는 다를 수 있습니다. 기존 설정을 캡처하거나 내보낸 뒤 관리 화면이 호스트 이름에 도메인을 중복 추가하지 않는지 항목마다 확인하세요. 발신자 인증을 위해 사이트 A 레코드나 일상적인 수신용 MX를 임의로 바꿀 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미 DMARC가 있다면 기존 정책을 이해한 뒤 처리하세요. Brevo 공식 안내에 따르면 자동 절차가 기존 레코드의 교체를 요구할 수 있으며, 교체를 원치 않으면 수동 절차를 사용할 수 있습니다. 경고를 없애려고 서로 충돌하는 설정을 추가하지 마세요. Brevo에서 검증을 다시 실행해 성공 상태를 확인하고 DNS 전파 대기와 설정 오류를 구분하세요."
+        },
+        {
+          "type": "heading",
+          "text": "WP Mail SMTP 연결하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Mail SMTP의 Settings에서 From Email과 From Name을 설정하고 mailer로 Brevo를 선택합니다. 관련 사이트 메일에 같은 주소를 강제로 쓰려면 Force From Email을 검토할 수 있지만, 다른 발신자가 필요한 기능에 미칠 영향을 먼저 확인하세요. 회신 주소도 실제 업무에 맞게 설정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo의 SMTP & API 설정에서 이 사이트용 API 키를 만들고 용도를 알 수 있는 이름을 붙여 안전하게 보관하세요. 전체 키를 WP Mail SMTP의 API Key 입력란에 복사합니다. 나중에 마스킹되어 표시되는 값이나 SMTP 키는 API 키를 대신할 수 없습니다. 저장 후 선택한 mailer가 바뀌지 않았는지도 확인하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "도메인 인증이 완료되고 발신 주소가 인증된 도메인과 일치하는지 확인한다.",
+            "선택한 mailer에 맞는 유효한 키를 입력하고 용도와 생성일을 기록한다.",
+            "Tools > Email Test에서 직접 확인할 수 있는 시험 편지함으로 한 통을 보낸다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "증거로 실패한 단계를 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Email Test에 오류가 나면 시각과 종류를 남기고 Tools의 Debug Events를 확인하세요. 키가 없다고 나오면 전체 API 키와 계정을 살피고, 계정이 활성화되지 않았다면 플랫폼 활성화를 처리합니다. 연결이나 시간 초과 문제일 때만 호스트의 외부 네트워크를 조사하세요. DNS를 다시 설정하고 서비스를 바꾸고 양식을 고치는 일을 한꺼번에 하지 말고 원인 하나씩 수정합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인이 성공을 보고해도 실제 받은편지함과 스팸함을 확인해야 합니다. 발송 기록이 있는데 도착하지 않았다면 Brevo의 Transactional Logs를 수신자, 시간, message ID로 검색하세요. 발송, 배달, 그 이후의 반송은 뜻이 다르며 발송 접수만으로 사람이 읽었다고 볼 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Mail SMTP의 자세한 Email Log 기능은 유료 버전에 속하며 기본 발송 오류 추적과 다릅니다. 장기 조사에는 이용 가능한 플러그인 기록과 서비스 기록을 비교하세요. 메일 본문이나 첨부를 보관한다면 열람 권한과 보관 기간을 제한해야 합니다. 조사 후 추가 디버깅은 끄고 불필요한 데이터가 계속 쌓이지 않게 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "실제 기능을 시험하고 유지보수 기록 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "시험 메일 성공은 첫 단계일 뿐입니다. 다음으로 시험 계정에서 비밀번호 재설정, 가입 알림, 문의 양식을 실행해 각 메일이 새 설정을 실제로 사용하는지 확인하세요. 링크 도메인, 발신자 이름, Reply-To, 중국어 내용을 대조하고 서로 다른 수신 서비스에서도 도착 위치와 시간을 기록합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "재발송이 필요한 것 같으면 먼저 서비스가 이미 접수했거나 처리 중인지 확인해 중복 알림을 피하세요. 만료되는 링크가 있는 메일은 새 메일과 이전 메일이 사용자에게 미치는 영향도 확인합니다. 고객지원 담당자가 비밀번호 재설정 링크 전체를 수동 전달하는 방식을 표준 절차로 삼지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "발송 서비스 계정, 도메인 레코드, 키 용도, 사용량 점검, 시험 날짜를 유지보수 담당자에게 넘기세요. 호스트 이전, 도메인 변경, 키 교체 후에는 핵심 기능을 다시 시험합니다. 새 연결을 확인한 다음 이전 키와 불필요한 설정을 제거해 사이트 알림을 계속 추적할 수 있게 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-smtp-delivery/diagram-1-ko.svg",
+          "alt": "WordPress 메일 생성, 발송 서비스의 사건 처리, 수신 시스템의 분류를 차례로 보여 주며 각 단계를 별도로 확인하도록 하는 세 칸 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "발송 성공 후에도 배달 결과와 실제로 받은 메일 내용을 확인하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "보이는 현상",
+            "먼저 확인할 것",
+            "검증 방법"
+          ],
+          "rows": [
+            [
+              "시험 직후 키 오류",
+              "mailer, 키 종류, 계정",
+              "올바른 인증 정보로 바꾸고 한 통 재시험"
+            ],
+            [
+              "플러그인은 발송했지만 미수신",
+              "서비스 사건과 수신 분류",
+              "수신자, 시간, message ID 대조"
+            ],
+            [
+              "특정 알림만 실패",
+              "그 기능의 작동 조건과 발신 설정",
+              "시험 계정에서 직접 해당 기능 실행"
+            ],
+            [
+              "이전 후부터 문제 발생",
+              "새 호스트 연결과 발신 설정",
+              "오류 사건을 보관하고 단계별 확인"
+            ]
+          ],
+          "caption": "실패한 단계를 찾은 뒤 관련 설정을 조정하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "세 단계를 연결할 자료를 남기세요",
+          "text": "시험 기록에는 최소한 용도, 시간, 수신자, 서비스가 돌려준 식별자를 넣으세요. 지원팀에 전달할 때는 키와 불필요한 개인정보를 가리고 같은 중요 알림을 반복 재발송하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "완전한 문의 양식 흐름 만들기",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "DNS 레코드와 설정 위치 확인하기",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Mail SMTP: Brevo mailer",
+          "url": "https://wpmailsmtp.com/docs/how-to-set-up-the-sendinblue-mailer-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo: 기존 도메인 인증 절차",
+          "url": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo: 새 도메인 설정 절차",
+          "url": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP: 시험 메일",
+          "url": "https://wpmailsmtp.com/docs/how-to-send-a-test-email-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP: 발송 오류 조사",
+          "url": "https://wpmailsmtp.com/docs/how-to-debug-email-sending-issues-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP: 설정 마법사와 유료 로그 기능",
+          "url": "https://wpmailsmtp.com/docs/how-to-use-the-wp-mail-smtp-setup-wizard/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo: 거래 메일 로그",
+          "url": "https://help.brevo.com/hc/en-us/articles/360021533839-Manage-your-transactional-logs-and-email-previews",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 邮件发不出去？检查 SMTP、域名验证与发送记录",
+      "description": "WordPress 的密码重置邮件或表单通知收不到时，可沿着网站、邮件发送服务和收件端逐步排查。本文以 WP Mail SMTP 搭配 Brevo 说明发件身份、API 连接、域名验证、测试邮件，以及错误记录的判断方法，帮助台湾站长建立可追踪的邮件发送流程，避免看到发送成功提示就以为每封邮件都已进入收件箱。",
+      "hero": {
+        "src": "/guides/wordpress-smtp-delivery/hero-zh-cn.jpg",
+        "alt": "原创屏幕、服务器与文档图像呈现网站发送邮件到收件内容的流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "客户说没收到确认邮件，站长连按几次重新发送，结果对方第二天收到好几封。要解决这类问题，先记录一封测试邮件的时间、收件地址和用途，查清它停在哪一步，再决定是否重发。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 生成邮件、外部服务接收邮件、收件系统收到邮件，是三个不同事件。本文用 WP Mail SMTP 和 Brevo 演示可追踪的发送设置，适用于密码重置和通知等网站邮件；实际可用服务和额度仍要按账号方案确认。"
+        },
+        {
+          "type": "heading",
+          "text": "先画出网站的邮件发送路径",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出会发送邮件的功能，例如会员注册、表单通知、留言提醒和订单消息，并记录各自的发件人、收件人和触发条件。如果有插件直接调用自己的外部服务，也要单独标记；不能假设安装一款 SMTP 插件就接管网站的所有邮件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查目前是否已有邮件发送插件或主机集成。多套工具同时更改发件设置，可能让你无法判断哪一套实际生效。先保留设置记录，在测试站确认要保留的路径，再安排正式切换；测试站也应限制收件对象，避免把备份中的会员地址拿来群发。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般 SMTP 连接通常要核对主机、端口、加密与验证方式；Brevo 专用 mailer 则使用 API 密钥。插件名称虽含 SMTP，画面选到的服务不一定要填 SMTP 密码，因此先按所选 mailer 的官方文档准备数据。"
+        },
+        {
+          "type": "heading",
+          "text": "准备可辨识且可维护的发件身份",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用自己掌控的域名作为发件地址，并指定人员处理回复。发件人名称可以是工作室或网站名称，在不同通知中保持一致。外部邮件发送服务能发出邮件，不代表它自动提供日常收件邮箱；需要接收回复时，仍要有可用邮箱或正确的 Reply-To。"
+        },
+        {
+          "type": "paragraph",
+          "text": "创建 Brevo 账号后，先确认账号已启用且可使用事务性邮件，再添加与 From Email 一致的域名。若使用发件子域名，也应保持对应，不要验证一个域名却从另一个域名发邮件。免费邮箱服务的公用域名不受你控制，不能用来完成自己的 DNS 验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选择方案前估算日常通知量、高峰量和重试量。把大量营销邮件与必要通知的需求分开评估，查看平台限制和剩余额度。本文不把某个免费额度视为长期承诺，也不建议为了测试一次发送大量邮件。"
+        },
+        {
+          "type": "heading",
+          "text": "依账号生成的记录完成域名验证",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Brevo 正逐步提供新的域名设置流程，部分账号仍会看到旧版 Authenticate 界面。依当前界面选择自动或手动验证，记录名称、类型和值以该账号生成的内容为准。官方列出 Brevo code、DKIM 和 DMARC；DKIM 可能采用 TXT 或两条 CNAME，不能套用别人的示例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先确认实际管理 DNS 的服务，再添加要求的记录。域名购买处不一定是当前的 DNS 管理处。保留原有设置的截图或导出文件，逐项核对控制台是否在主机名后重复加上域名；不需要为了发送验证随意更改网站的 A 记录或日常收件用的 MX 记录。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果域名已经有 DMARC，先弄清现有策略再处理。Brevo 官方说明，自动流程可能要求替换原有记录；不想替换时可使用手动流程。不要为了消除警告而添加彼此冲突的设置。完成后回到 Brevo 运行验证并确认成功，再区分 DNS 生效等待和配置错误。"
+        },
+        {
+          "type": "heading",
+          "text": "在 WP Mail SMTP 创建连接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WP Mail SMTP 的 Settings 设置 From Email 和 From Name，并选择 Brevo mailer。如果想让相关网站邮件使用同一发件地址，可评估 Force From Email；启用前先确认它是否影响原本需要不同发件人的功能。回复地址仍应按实际业务配置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Brevo 的 SMTP & API 设置中创建供此网站使用的 API 密钥，命名时标明网站用途并安全保存。将完整密钥复制到 WP Mail SMTP 的 API Key 字段，不能使用界面中打码后的字符串，也不要把 SMTP 密钥误当作 API 密钥。保存后确认所选服务没有变化。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认域名已验证，发件地址与验证域名一致。",
+            "输入对应 mailer 的有效密钥，记录密钥用途与创建时间。",
+            "到 Tools 的 Email Test，先发给自己能查看的测试邮箱。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "按证据判断失败位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Email Test 出现错误时，保留时间与错误种类，再查看 Tools 的 Debug Events。密钥找不到先核对完整 API 密钥及账号；账号未启用则处理平台启用；连接或超时问题才查主机对外网络。每次只修正一个原因，避免同时重设 DNS、换服务又更改表单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插件报告成功后，仍要查看实际邮箱和垃圾邮件文件夹。若插件有发送记录但没有收到，可在 Brevo 的 Transactional Logs 中按收件人、时间或 message ID 查询事件。发出、送达以及后续退回邮件意义不同，不要把服务接受邮件直接等同于收件人已阅读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WP Mail SMTP 的详细 Email Log 功能属于付费版本，与基本的发送错误追踪不同。需要长期排查时，比较可用的插件日志和服务端日志；如果保存邮件正文或附件，还应限制查看权限和保存期限。排查结束后关闭额外调试，避免不断积累不必要的数据。"
+        },
+        {
+          "type": "heading",
+          "text": "用真实功能验收，创建维护记录",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "测试邮件成功只是第一关。接着用测试账号触发密码重置、注册通知和联系表单，检查各封邮件是否真的使用新设置。核对链接域名、发件人名称、Reply-To 和中文内容，并向不同收件服务抽测，记录到达位置和耗时。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若某封邮件需要重寄，先查服务端是否已接收或正在处理，再决定动作，避免重复通知。对含时效链接的邮件，还要确认新旧信件对用户的影响；不要把客服手动转寄完整重设链接当作标准处理方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把邮件发送服务账号、域名记录、密钥用途、用量检查和测试日期交接给维护人员。更换主机、域名或轮换密钥后，都要重新测试关键功能；确认新连接可用后，再撤销旧密钥和不再需要的设置，让网站通知保持可追踪。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-smtp-delivery/diagram-1-zh-cn.svg",
+          "alt": "三格图解依序呈现 WordPress 产生邮件、邮件发送服务处理投递事件与收件系统分类，提醒分别查证。",
+          "width": 1600,
+          "height": 900,
+          "caption": "成功发送后，仍要确认投递结果和实际收到的邮件内容。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的现象",
+            "优先查什么",
+            "验证方式"
+          ],
+          "rows": [
+            [
+              "测试立即报密钥错误",
+              "mailer、密钥类型与账号",
+              "更新正确凭证后单封重测"
+            ],
+            [
+              "插件显示已发送但未收到",
+              "服务端事件与收件箱分类",
+              "以收件人、时间及 message ID 对照"
+            ],
+            [
+              "只有某种通知失败",
+              "该功能的触发条件与发件设置",
+              "直接操作该功能的测试账号"
+            ],
+            [
+              "搬家后才发生问题",
+              "新主机连接及发件设置",
+              "保留错误事件逐段核对"
+            ]
+          ],
+          "caption": "先定位失败环节，再调整相关设置。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "保留能连起三段路径的数据",
+          "text": "测试记录至少包含用途、时间、收件人和服务返回的标识。联系支持人员时要遮蔽密钥和不必要的个人信息，避免反复重发同一条重要通知。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "创建完整的联系表单流程",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检查 DNS 记录与设置位置",
+              "kind": "life",
+              "slug": "dns-records-troubleshooting"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WP Mail SMTP：Brevo mailer",
+          "url": "https://wpmailsmtp.com/docs/how-to-set-up-the-sendinblue-mailer-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：原有域名验证流程",
+          "url": "https://help.brevo.com/hc/en-us/articles/12163873383186-Authenticate-your-domain-with-Brevo-Brevo-code-DKIM-DMARC",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：新域名设置流程",
+          "url": "https://help.brevo.com/hc/en-us/articles/35337929909778-Set-up-your-domain-in-Brevo",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：测试邮件",
+          "url": "https://wpmailsmtp.com/docs/how-to-send-a-test-email-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：发送问题调试",
+          "url": "https://wpmailsmtp.com/docs/how-to-debug-email-sending-issues-in-wp-mail-smtp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WP Mail SMTP：设置向导与付费日志功能",
+          "url": "https://wpmailsmtp.com/docs/how-to-use-the-wp-mail-smtp-setup-wizard/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Brevo：事务性邮件日志",
+          "url": "https://help.brevo.com/hc/en-us/articles/360021533839-Manage-your-transactional-logs-and-email-previews",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
