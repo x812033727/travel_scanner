@@ -648,6 +648,55 @@ async def test_orphaned_discovered_candidates_are_swept_only_while_enabled() -> 
 
 
 @pytest.mark.asyncio
+async def test_a_spent_jev_budget_pauses_the_candidate_instead_of_holding_it(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+    async with factory() as session:
+        candidate = await seed_single_source_candidate(session)
+        candidate_id = candidate.id
+    monkeypatch.setattr(
+        ai, "jev_duplicate_check", AsyncMock(return_value=("manual", None, ["quota_unavailable"]))
+    )
+    writer = AsyncMock()
+    monkeypatch.setattr(ai, "draft_article", writer)
+
+    async with factory() as session:
+        result = await pipeline.process_candidate(session, Mock(), get_settings(), candidate_id)
+        stored = await session.get(NewsCandidate, candidate_id)
+        assessments = list(await session.scalars(select(NewsAssessment)))
+    await engine.dispose()
+
+    assert result == "jev_paused"
+    assert stored is not None
+    assert (stored.status, stored.error_code) == ("discovered", pipeline.JEV_QUOTA_PAUSED)
+    assert assessments == [], "an unanswered check is not recorded as an uncertain one"
+    writer.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_candidates_paused_for_jev_wait_for_the_next_utc_day() -> None:
+    engine, factory = await database()
+    now = datetime(2026, 9, 27, 12, 0, tzinfo=UTC)
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        paused_today = await seed_candidate(session)
+        paused_yesterday = await seed_candidate(session)
+        plain = await seed_candidate(session)
+        for row in (paused_today, paused_yesterday):
+            row.error_code = pipeline.JEV_QUOTA_PAUSED
+        paused_today.updated_at = now - timedelta(hours=3)
+        paused_yesterday.updated_at = datetime(2026, 9, 26, 23, 0, tzinfo=UTC)
+        plain.updated_at = now - timedelta(hours=3)
+        await session.commit()
+        expected = {paused_yesterday.id, plain.id}
+        orphaned = set(await pipeline.orphaned_candidates(session, now=now))
+    await engine.dispose()
+
+    assert orphaned == expected
+
+
+@pytest.mark.asyncio
 async def test_settings_offer_catalog_models_and_the_resolved_default(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:

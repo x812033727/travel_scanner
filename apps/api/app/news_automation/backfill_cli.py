@@ -10,6 +10,13 @@ still stored, so each one is reopened as a new draft (status ``discovered``) and
 current pipeline decides what happens to it, including the owner's confirmation for a story
 that may not go out on its own. Candidates a person rejected for editorial reasons are not
 in the pool: their error code is the hold they were rejected from, not one of these.
+
+    python -m app.news_automation.backfill_cli --since 2026-09-01 --jev-quota-holds --apply ...
+
+``--jev-quota-holds`` takes the other pool the same day left behind: candidates held as
+uncertain duplicates only because Jev's daily call budget was spent. They are not queued;
+each is marked paused for Jev's budget, and the orphan sweep runs them after 00:00 UTC, as
+many a day as the budget allows (``pipeline.JEV_QUOTA_PAUSED``).
 """
 
 from __future__ import annotations
@@ -27,7 +34,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db import SessionFactory, engine
 from app.models import User
 from app.news_automation import jobs
-from app.news_automation.models import NewsCandidate, NewsEvidence
+from app.news_automation.duplicates import DUPLICATE_UNCERTAIN
+from app.news_automation.models import NewsAssessment, NewsCandidate, NewsEvidence
+from app.news_automation.pipeline import JEV_QUOTA_PAUSED
 from app.news_automation.service import audit
 from app.news_automation.sources_cli import admin_actor
 
@@ -45,24 +54,52 @@ BACKFILL_STOPS = frozenset(
 BACKFILL_STATUSES = frozenset({"rejected", "needs_redraft"})
 
 
+async def jev_quota_holds(session: AsyncSession, since: date) -> list[NewsCandidate]:
+    """Uncertain-duplicate holds whose latest duplicate check never reached Jev."""
+    rows = list(
+        await session.scalars(
+            select(NewsCandidate).where(
+                NewsCandidate.status == "manual_review",
+                NewsCandidate.error_code == DUPLICATE_UNCERTAIN,
+                NewsCandidate.source_published_at
+                >= datetime(since.year, since.month, since.day, tzinfo=UTC),
+            )
+        )
+    )
+    latest: dict[Any, list[str]] = {}
+    for assessment in await session.scalars(
+        select(NewsAssessment)
+        .where(
+            NewsAssessment.candidate_id.in_([row.id for row in rows]),
+            NewsAssessment.assessment_type == "duplicate",
+        )
+        .order_by(NewsAssessment.created_at)
+    ):
+        latest[assessment.candidate_id] = list(assessment.reasons_json or [])
+    return [row for row in rows if latest.get(row.id) == ["quota_unavailable"]]
+
+
 async def backfill_pool(
-    session: AsyncSession, *, since: date, limit: int | None = None
+    session: AsyncSession, *, since: date, limit: int | None = None, jev_quota: bool = False
 ) -> list[tuple[NewsCandidate, bool]]:
     """Candidates to reopen, with whether each has a first-party page, best first.
 
     Stories with a first-party page come first, since only those may publish on their own;
     then the newest.
     """
-    rows = list(
-        await session.scalars(
-            select(NewsCandidate).where(
-                NewsCandidate.status.in_(BACKFILL_STATUSES),
-                NewsCandidate.error_code.in_(BACKFILL_STOPS),
-                NewsCandidate.source_published_at
-                >= datetime(since.year, since.month, since.day, tzinfo=UTC),
+    if jev_quota:
+        rows = await jev_quota_holds(session, since)
+    else:
+        rows = list(
+            await session.scalars(
+                select(NewsCandidate).where(
+                    NewsCandidate.status.in_(BACKFILL_STATUSES),
+                    NewsCandidate.error_code.in_(BACKFILL_STOPS),
+                    NewsCandidate.source_published_at
+                    >= datetime(since.year, since.month, since.day, tzinfo=UTC),
+                )
             )
         )
-    )
     first_party = set(
         await session.scalars(
             select(NewsEvidence.candidate_id).where(
@@ -83,8 +120,13 @@ async def backfill_pool(
     return [(row, row.id in first_party) for row in chosen]
 
 
-def reopen(session: AsyncSession, actor: User, row: NewsCandidate, reason: str) -> None:
-    """Send a stopped candidate back to drafting, with an audit row saying why."""
+def reopen(
+    session: AsyncSession, actor: User, row: NewsCandidate, reason: str, *, paused: bool = False
+) -> None:
+    """Send a stopped candidate back to drafting, with an audit row saying why.
+
+    ``paused`` leaves it waiting for Jev's next daily budget instead of running now.
+    """
     audit(
         session,
         actor,
@@ -95,19 +137,29 @@ def reopen(session: AsyncSession, actor: User, row: NewsCandidate, reason: str) 
         previous_error_code=row.error_code,
     )
     row.status = "discovered"
-    row.error_code = None
-    row.error_detail = None
+    row.error_code = JEV_QUOTA_PAUSED if paused else None
+    row.error_detail = (
+        "Jev's daily call budget was spent; the candidate runs again after 00:00 UTC."
+        if paused
+        else None
+    )
     row.human_decision = None
     row.human_reason = reason
     row.retry_count += 1
 
 
 async def run(
-    *, since: date, limit: int | None, apply: bool, actor_email: str | None, reason: str
+    *,
+    since: date,
+    limit: int | None,
+    apply: bool,
+    actor_email: str | None,
+    reason: str,
+    jev_quota: bool = False,
 ) -> dict[str, Any]:
     try:
         async with SessionFactory() as session:
-            pool = await backfill_pool(session, since=since, limit=limit)
+            pool = await backfill_pool(session, since=since, limit=limit, jev_quota=jev_quota)
             report: dict[str, Any] = {
                 "since": since.isoformat(),
                 "candidates": len(pool),
@@ -136,13 +188,17 @@ async def run(
                 raise SystemExit("The actor must be an active administrator")
             queued: list[tuple[Any, int]] = []
             for row, _first in pool:
-                reopen(session, actor, row, reason)
+                reopen(session, actor, row, reason, paused=jev_quota)
                 queued.append((row.id, row.retry_count))
             await session.commit()
+        report["applied"] = True
+        if jev_quota:
+            # Nothing is queued: the orphan sweep runs them once Jev's budget resets.
+            report["waits_for"] = "00:00 UTC"
+            return report
         # Queued only once every reopen is saved, so no job runs on a half-reopened batch.
         for candidate_id, retry_count in queued:
             jobs.enqueue_candidate(candidate_id, retry_count=retry_count)
-        report["applied"] = True
         return report
     finally:
         await engine.dispose()
@@ -158,6 +214,11 @@ def main() -> None:
     )
     parser.add_argument("--limit", type=int, help="At most this many, best first")
     parser.add_argument("--apply", action="store_true", help="Reopen and queue; list otherwise")
+    parser.add_argument(
+        "--jev-quota-holds",
+        action="store_true",
+        help="Reopen uncertain-duplicate holds caused only by a spent Jev budget, paused",
+    )
     parser.add_argument("--actor-email", help="Administrator the audit rows are recorded for")
     parser.add_argument(
         "--reason",
@@ -172,6 +233,7 @@ def main() -> None:
             apply=args.apply,
             actor_email=args.actor_email,
             reason=args.reason,
+            jev_quota=args.jev_quota_holds,
         )
     )
     print(json.dumps(report, ensure_ascii=False, indent=2, default=str))
