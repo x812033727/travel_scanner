@@ -12,6 +12,11 @@ from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.config import Settings
 from app.models import AdminAuditLog, User
+from app.video_automation.judge import (
+    final_qa_passed,
+    outline_pick_passed,
+    publish_package_passed,
+)
 from app.video_automation.models import (
     DRAMA_FIELDS,
     STYLE_PRESETS,
@@ -47,6 +52,7 @@ MODEL_CAPABILITY: dict[ApiProviderName, Capability] = {
 }
 AUTO_APPROVED_NOTE = "Jev 判斷每一句都唸對了，依設定自動核准"
 AUTO_APPROVED_STORYBOARD_NOTE = "judge 給每一鏡的分數都達到門檻、沒有列出問題，依設定自動核准"
+AUTO_PICKED_LOOK_NOTE = "judge 給 {key} {score:g}/10、沒有列出問題，依設定自動選"
 
 
 def _options(entries: Any, capability: Capability | None) -> list[ModelOptionView]:
@@ -157,6 +163,9 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         max_retake_rounds=row.max_retake_rounds,
         auto_approve_audio=row.auto_approve_audio,
         drama=drama_values(row),
+        channel_stance=row.channel_stance or "",
+        auto_pick_outline=row.auto_pick_outline,
+        auto_approve_final=row.auto_approve_final,
     )
 
 
@@ -360,3 +369,84 @@ async def auto_approves_storyboard(session: AsyncSession, payload: dict[str, Any
     if row is None or not row.auto_approve_storyboard:
         return False
     return storyboard_check_passed(payload, row.judge_min_score)
+
+
+def _suggested_sheet(payload: dict[str, Any]) -> tuple[str, float] | None:
+    """The key and score of the sheet the judge suggested, when it listed no problems."""
+    suggested = payload.get("suggested")
+    options = payload.get("options")
+    if not isinstance(suggested, str) or not suggested or not isinstance(options, list):
+        return None
+    for option in options:
+        if not isinstance(option, dict) or option.get("key") != suggested:
+            continue
+        judge = option.get("judge")
+        if not isinstance(judge, dict):
+            return None
+        overall = judge.get("overall")
+        if not isinstance(overall, int | float) or isinstance(overall, bool):
+            return None
+        if judge.get("problems") not in (None, []):
+            return None
+        return suggested, float(overall)
+    return None
+
+
+def look_pick_passed(payload: dict[str, Any], min_score: int) -> bool:
+    """Whether a look review's suggested sheet clears the threshold with no problems listed.
+
+    The payload is what tools/video/review/sync.mjs sends: {"options": [{"key", "judge":
+    {"overall", "problems"}}], "suggested": key}. The judge suggests nothing when no sheet
+    passed, and then the owner decides as before.
+    """
+    found = _suggested_sheet(payload)
+    return found is not None and found[1] >= min_score
+
+
+def look_pick_note(payload: dict[str, Any]) -> str:
+    found = _suggested_sheet(payload)
+    key, score = found if found is not None else ("?", 0.0)
+    return AUTO_PICKED_LOOK_NOTE.format(key=key, score=score)
+
+
+async def auto_picks_look(session: AsyncSession, payload: dict[str, Any]) -> bool:
+    """Whether a character's sheet is picked for the owner (docs/videos/HANDS-OFF.md)."""
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    # Off by default, like the storyboard: the owner looks at a first drama's sheets.
+    if row is None or not row.auto_pick_look:
+        return False
+    return look_pick_passed(payload, row.judge_min_score)
+
+
+async def auto_picks_outline(session: AsyncSession, payload: dict[str, Any]) -> bool:
+    """Whether an outline review stands on Jev's pick (docs/videos/HANDS-OFF.md).
+
+    The switch must be on and the stance written, so no video gets its viewpoint decided by
+    the AI before the owner wrote one down; then the pick must clear the thresholds.
+    """
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    if row is None or not row.auto_pick_outline or not (row.channel_stance or "").strip():
+        return False
+    return outline_pick_passed(payload)
+
+
+async def auto_approves_final(
+    session: AsyncSession, gate: str, payload: dict[str, Any], sha: str
+) -> bool:
+    """Whether a final cut or an upload confirmation stands on the automatic checks."""
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    # With no row yet the defaults apply, and the default is on (docs/videos/HANDS-OFF.md).
+    enabled = True if row is None else row.auto_approve_final
+    if not enabled:
+        return False
+    if gate == "final":
+        return final_qa_passed(payload, sha)
+    if gate == "publish":
+        return publish_package_passed(payload, sha)
+    return False
