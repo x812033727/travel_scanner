@@ -372,9 +372,17 @@ def _app(user: User | None = None) -> FastAPI:
 
 
 @pytest.mark.asyncio
-async def test_admin_routes_need_content_capabilities(monkeypatch: pytest.MonkeyPatch) -> None:
+async def test_admin_routes_need_content_capabilities(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
     viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
     monkeypatch.setattr(admin_service, "list_projects", AsyncMock(return_value=[]))
+
+    # The list route opens the review store first (it prunes published videos' mp4 files).
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
     decide = AsyncMock()
     drop = AsyncMock()
     dubs = AsyncMock()
