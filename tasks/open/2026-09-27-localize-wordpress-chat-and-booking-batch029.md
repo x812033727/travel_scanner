@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-localize-wordpress-chat-and-booking-batch029
 title: Localize WordPress chat contact buttons and booking system for Batch029
-status: in-progress
+status: open
 priority: P2
 area: api
-owner: codex-batch029-pair-b
-claimed_at: 2026-09-27T09:37:39Z
+owner:
+claimed_at:
 created_at: 2026-09-27T09:37:33Z
 completed_at:
 branch: codex/article-localization-batch029-contact-pair-b
