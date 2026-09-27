@@ -176,6 +176,45 @@ def test_the_storyboard_check_needs_the_threshold_and_no_problems() -> None:
     assert not service.storyboard_check_passed({}, 0)
 
 
+def test_the_look_rule_needs_the_suggested_sheet_to_clear_the_threshold_with_no_problems() -> None:
+    payload: dict[str, Any] = {
+        "options": [
+            {"key": "A", "judge": {"overall": 6, "problems": ["six fingers"]}},
+            {"key": "B", "judge": {"overall": 8.5, "problems": []}},
+        ],
+        "suggested": "B",
+    }
+    assert service.look_pick_passed(payload, 7)
+    assert not service.look_pick_passed(payload, 9)
+    assert service.look_pick_note(payload) == "judge 給 B 8.5/10、沒有列出問題，依設定自動選"
+    assert not service.look_pick_passed({**payload, "suggested": "A"}, 5), "problems listed"
+    assert not service.look_pick_passed({**payload, "suggested": None}, 0), "nothing passed"
+    assert not service.look_pick_passed({**payload, "suggested": "C"}, 0), "not an option"
+    assert not service.look_pick_passed(
+        {**payload, "options": [{"key": "B", "judge": {"overall": True}}]}, 0
+    )
+    assert not service.look_pick_passed({}, 0)
+
+
+@pytest.mark.asyncio
+async def test_a_sheet_is_picked_only_with_the_switch_on() -> None:
+    payload: dict[str, Any] = {
+        "options": [{"key": "B", "judge": {"overall": 8, "problems": []}}],
+        "suggested": "B",
+    }
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=SimpleNamespace(auto_pick_look=True, judge_min_score=7))
+    assert await service.auto_picks_look(session, payload)
+    session.scalar = AsyncMock(return_value=SimpleNamespace(auto_pick_look=True, judge_min_score=9))
+    assert not await service.auto_picks_look(session, payload)
+    session.scalar = AsyncMock(
+        return_value=SimpleNamespace(auto_pick_look=False, judge_min_score=0)
+    )
+    assert not await service.auto_picks_look(session, payload)
+    session.scalar = AsyncMock(return_value=None)
+    assert not await service.auto_picks_look(session, payload), "off until the owner turns it on"
+
+
 @pytest.mark.parametrize(
     "changes",
     [
