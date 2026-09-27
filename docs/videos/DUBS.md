@@ -132,6 +132,8 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 
 ## 每支影片的選擇（不是設定）
 
+**2026-09-27 起由 [`LANGUAGES.md`](LANGUAGES.md) 接手**：配音成了每支影片「語言」的三個部件（標題與說明、CC、配音）之一，`dub_locales` 併進 `video_projects.locales`，`dubs` 關卡併進 `languages`。下面是原本的設計，音軌本身的做法不變。
+
 站主 2026-09-27 的要求：「應該要給我選擇要不要做什麼語言才做。基本的就是先出繁體中文，後面我可以挑選是否要加入其他語言。」所以沒有全域的 `dub_locales` 設定，選擇掛在影片上：
 
 | 在哪裡 | 內容 |

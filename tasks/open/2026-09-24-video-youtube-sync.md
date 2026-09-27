@@ -1,6 +1,6 @@
 ---
 id: 2026-09-24-video-youtube-sync
-title: 影片產線 T8：網站用 YouTube API 補齊五語系中繼資料、CC、縮圖，並依站主選的時間排程
+title: 影片產線 T8：網站用 YouTube API 補齊勾了的語系的中繼資料、CC、縮圖，並在語言做好後依站主選的時間排程
 status: open
 priority: P2
 area: api
@@ -11,6 +11,7 @@ completed_at:
 branch:
 depends_on:
   - 2026-09-26-video-hands-off-web
+  - 2026-09-27-video-languages-web
 scope:
   - apps/api/app/video_youtube
   - apps/api/tests/test_video_youtube.py
@@ -53,6 +54,7 @@ YouTube 只會把「未通過稽核的 API 專案用 `videos.insert` 上傳」�
   
   任何一項不符就拒絕。
 - [ ] 網站永遠不會直接把影片設成公開：一定要有站主選的時間，公開由 YouTube 在那個時間做。
+- [ ] **2026-09-27 加（`docs/videos/LANGUAGES.md`）**：`localizations` 與 `captions.insert` 只送這支影片勾了的語系（`ProjectOut.locales`），zh-TW 一定送；`publishAt` 只在 `ready_to_upload` 為真（語言已決定、勾了的部件都做好或跳過）時送出，之前卡片寫「排程會在語言做好後送出」，做好的那一輪由網站送；上架後再勾的語系走同一支程式補送 `localizations` 與字幕（先 `captions.list`）。配音照舊只能站主在 Studio 上傳。
 - [ ] 兩個實測結果寫進 `publish.md`：
   - 沒有稽核的專案，能不能對 Studio 上傳的影片呼叫 `captions.insert` 與設定 `publishAt`；
   - 中文字幕的語言碼要用 `zh-TW`／`zh-CN`，還是 `zh-Hant`／`zh-Hans`。做法是上傳一條測試軌，再用 `captions.list` 讀回。
@@ -81,3 +83,4 @@ cd apps/web && npx vitest run components/admin-video-youtube && npm run lint && 
 - 如果要存權杖需要新的資料表，就要加遷移，檔名與號碼開工時再定，scope 跟著改。
 - 通過稽核（票 `2026-09-26-video-hands-off-api-audit`）之後，下一步是網站自己用 `videos.insert` 上傳 mp4，這張的程式可以沿用。
 - 原本依賴的 `2026-09-24-video-captions-i18n` 已經完成（#745、#788）。
+- 2026-09-27：語言改成每支影片選（`docs/videos/LANGUAGES.md`），這張的 DoD 多一條；五語系不再是固定的，標題也照著改成「勾了的語系」。

@@ -98,6 +98,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 漫劇（2026-09-26 加，設計在 `DRAMA.md`）
 
+2026-09-27 起單集與作品走同一條（[`DRAMA-FLOW.md`](DRAMA-FLOW.md)）：單集是一集的作品，站主核准故事聖經而不是選大綱，每支都有劇本關卡，文件與劇本可以討論；工人的一輪在作品之前多一段「討論」。語言與上架的順序在 [`LANGUAGES.md`](LANGUAGES.md)。下面是實作前的樣子。
+
 工人也會做 AI 漫劇。它不挑題：**站主在 `/admin/videos` 發起**（故事前提或改編的文章、風格、長度），伺服器排進 `video_drama_requests`，工人每輪在做排程草稿之前先問 `GET /video/automation/drama-requests/next`，有就用漫劇版的企劃提示寫故事聖經與大綱、`POST …/{id}/start` 認領（寫下影片代號），然後照投影片的規矩送審「選大綱」。設定分頁的「AI 漫劇」要開著，否則工人不會問。
 
 之後的步驟是 `DRAMA_STEPS` 的順序（`status` 會印）：撰稿（漫劇版提示：每鏡英文提示詞、一句一個說話者）→ 連貫性查核 → 聽眾審稿 → **look**（設定圖，judge 打分）→ 站主在後台每個角色選一張（`look` 關卡）→ tts（依說話者分批）→ check-audio → 旁白關卡 → **keyframes**（judge 不過換 seed）→ **storyboard 關卡**（設定開「分鏡自動核准」且 judge 全過時伺服器自己核准）→ render（卡片、字幕條、縮圖）→ **clips**（最貴，送出前對單支上限把關）→ music → assemble → 五語 CC → 成片關卡 → package → 上架確認；上架確認後工人 `POST …/{id}/done`。
