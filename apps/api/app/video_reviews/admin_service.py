@@ -49,6 +49,7 @@ from app.video_reviews.schemas import (
     YOUTUBE_VIDEO_ID_PATTERN,
     DecisionIn,
     DropIn,
+    DubLocalesIn,
     ProjectIn,
     ProjectOut,
     ProjectSummary,
@@ -152,6 +153,7 @@ def _summary(
         "dropped_note": project.dropped_note,
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
+        "dub_locales": list(project.dub_locales or []),
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,
     }
@@ -452,6 +454,33 @@ async def drop_project(
     )
     await session.commit()
     store.keep_only(slug, set())
+    return await project_view(session, slug)
+
+
+async def set_dub_locales(
+    session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
+) -> ProjectOut:
+    """The owner picks which languages this video gets dubbed in (docs/videos/DUBS.md).
+
+    Every video is made in Traditional Chinese; the worker makes a track for each language chosen
+    here once the final cut is approved, and the owner uploads them in YouTube Studio. The choice
+    is the owner's alone: the pipeline's reports never touch it, and a dropped video takes none.
+    """
+    project = await _project(session, slug)
+    _refuse_dropped(project)
+    chosen: list[str] = list(payload.locales)
+    if chosen != list(project.dub_locales or []):
+        project.dub_locales = chosen
+        project.updated_at = datetime.now(UTC)
+        session.add(
+            AdminAuditLog(
+                actor_user_id=user.id,
+                action="video_dub_locales_set",
+                target=f"video_project:{project.id}",
+                metadata_json={"slug": slug, "locales": chosen},
+            )
+        )
+        await session.commit()
     return await project_view(session, slug)
 
 

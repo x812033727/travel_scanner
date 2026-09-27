@@ -3,7 +3,8 @@
 ``tool_router`` is what the local pipeline calls with its video tool token, through the web
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
-the owner lists the videos, opens one, watches its previews and decides, or drops the video.
+the owner lists the videos, opens one, watches its previews and decides, picks the languages to
+dub it in, or drops the video.
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     DecisionIn,
     DropIn,
+    DubLocalesIn,
     PartOut,
     ProjectIn,
     ProjectOut,
@@ -140,6 +142,14 @@ async def link_youtube(
             "看不出影片 id：貼上 youtu.be、watch?v=、shorts 或 Studio 的網址，或 11 個字元的 id",
         )
     return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
+
+
+@admin_router.put("/{slug}/dubs", response_model=ProjectOut)
+async def set_dubs(
+    slug: str, payload: DubLocalesIn, user: ContentManager, session: Session
+) -> ProjectOut:
+    """Which languages to dub this video in; the worker makes those tracks after the final cut."""
+    return await service.set_dub_locales(session, slug, user, payload)
 
 
 @admin_router.get("/{slug}/files/{sha256}")

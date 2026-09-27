@@ -21,7 +21,7 @@ from app.problems import AppError, app_error_handler
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service
-from app.video_reviews.schemas import DecisionIn, DropIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, DubLocalesIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech import admin_api as speech_api
 
@@ -147,6 +147,88 @@ def test_a_look_review_needs_one_of_its_sheets_chosen_and_a_storyboard_does_not(
     assert admin_service.decision_problem(look, DecisionIn(decision="approve", choice="B")) is None
     assert admin_service.decision_problem(look, DecisionIn(decision="approve", choice="Z"))
     assert admin_service.decision_problem(_review("storyboard"), approve) is None
+
+
+def test_a_dubs_review_is_approved_as_uploaded_or_sent_back_with_a_reason() -> None:
+    """No choice to make: approving says the tracks are on YouTube, rejecting needs a reason."""
+    approve = DecisionIn(decision="approve")
+    assert admin_service.decision_problem(_review("dubs"), approve) is None
+    assert (
+        admin_service.decision_problem(_review("dubs"), DecisionIn(decision="approve", choice="en"))
+        is None
+    ), "a stray choice is ignored, not refused"
+    assert "原因" in (
+        admin_service.decision_problem(_review("dubs"), DecisionIn(decision="reject")) or ""
+    )
+    assert (
+        admin_service.decision_problem(
+            _review("dubs"), DecisionIn(decision="reject", note="英文太快")
+        )
+        is None
+    )
+
+
+def test_a_dubs_review_carries_its_tracks_as_m4a_mp3_or_wav() -> None:
+    base = {"gate": "dubs", "content_sha256": "a" * 64, "summary": "配音"}
+    track = {"role": "dub_zh_cn", "sha256": "b" * 64, "size": 1}
+    for content_type in ("audio/mp4", "audio/mpeg", "audio/wav"):
+        review = ReviewIn.model_validate(
+            {**base, "files": [{**track, "content_type": content_type}]}
+        )
+        assert review.gate == "dubs" and review.files[0].content_type == content_type
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**base, "files": [{**track, "content_type": "audio/ogg"}]})
+
+
+def test_the_dub_languages_are_the_caption_languages_each_at_most_once_in_page_order() -> None:
+    assert DubLocalesIn.model_validate({"locales": []}).locales == []
+    assert DubLocalesIn.model_validate({"locales": ["ko", "en"]}).locales == ["en", "ko"]
+    assert DubLocalesIn.model_validate({"locales": ["zh-CN", "ja", "ko", "en"]}).locales == [
+        "en",
+        "ja",
+        "ko",
+        "zh-CN",
+    ]
+    for bad in (["en", "en"], ["zh-TW"], ["fr"], ["en", "ja", "ko", "zh-CN", "en"]):
+        with pytest.raises(ValueError):
+            DubLocalesIn.model_validate({"locales": bad})
+
+
+@pytest.mark.asyncio
+async def test_the_owner_picks_a_video_s_dub_languages_and_a_dropped_one_takes_none(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = VideoProject(id=uuid4(), slug="v", title="AI 模型怎麼挑", stage="final")
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    session = AsyncMock()
+    session.add = MagicMock()
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    assert admin_service._summary(project, 0)["dub_locales"] == [], "off until the owner ticks one"
+
+    chosen = DubLocalesIn.model_validate({"locales": ["ko", "en"]})
+    assert await admin_service.set_dub_locales(session, "v", owner, chosen) == "view"
+    assert project.dub_locales == ["en", "ko"]
+    assert admin_service._summary(project, 0)["dub_locales"] == ["en", "ko"]
+    audit = session.add.call_args.args[0]
+    assert audit.action == "video_dub_locales_set" and audit.actor_user_id == owner.id
+    assert audit.target == f"video_project:{project.id}"
+    assert audit.metadata_json == {"slug": "v", "locales": ["en", "ko"]}
+    assert session.commit.await_count == 1
+
+    same = DubLocalesIn.model_validate({"locales": ["en", "ko"]})
+    assert await admin_service.set_dub_locales(session, "v", owner, same) == "view"
+    assert session.add.call_count == 1 and session.commit.await_count == 1, (
+        "the same choice again is not a change"
+    )
+
+    project.dropped_at = datetime.now(UTC)
+    with pytest.raises(AppError) as refused:
+        await admin_service.set_dub_locales(
+            session, "v", owner, DubLocalesIn.model_validate({"locales": []})
+        )
+    assert refused.value.code == "video_project_dropped"
+    assert project.dub_locales == ["en", "ko"]
 
 
 def test_a_review_carries_up_to_48_files_and_a_subject_that_is_an_id() -> None:
@@ -303,8 +385,10 @@ async def test_admin_routes_need_content_capabilities(
     monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
     decide = AsyncMock()
     drop = AsyncMock()
+    dubs = AsyncMock()
     monkeypatch.setattr(admin_service, "decide", decide)
     monkeypatch.setattr(admin_service, "drop_project", drop)
+    monkeypatch.setattr(admin_service, "set_dub_locales", dubs)
     app = _app(viewer)
     review = f"/api/v1/admin/videos/v/reviews/{uuid4()}/decision"
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -313,11 +397,48 @@ async def test_admin_routes_need_content_capabilities(
         listed = await client.get("/api/v1/admin/videos")
         refused = await client.post(review, json={"decision": "approve"})
         not_dropped = await client.post("/api/v1/admin/videos/v/drop", json={"note": "重複"})
+        not_dubbed = await client.put("/api/v1/admin/videos/v/dubs", json={"locales": ["en"]})
     assert nobody.status_code == 403 and listed.status_code == 200
     assert refused.status_code == 403, "a viewer can read but not decide"
     assert not_dropped.status_code == 403, "nor drop a video"
+    assert not_dubbed.status_code == 403, "nor pick its dub languages"
     decide.assert_not_awaited()
     drop.assert_not_awaited()
+    dubs.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_a_content_manager_sets_the_dub_languages_and_bad_ones_never_reach_the_service(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    view = {
+        "slug": "v",
+        "title": "AI 模型怎麼挑",
+        "stage": "final",
+        "checklist": [],
+        "youtube_video_id": None,
+        "last_synced_at": "2026-09-27T00:00:00Z",
+        "pending": 0,
+        "dub_locales": ["en"],
+        "reviews": [],
+    }
+    set_dubs = AsyncMock(return_value=view)
+    monkeypatch.setattr(admin_service, "set_dub_locales", set_dubs)
+    url = "/api/v1/admin/videos/v/dubs"
+    transport = ASGITransport(app=_app(owner))
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        saved = await client.put(url, json={"locales": ["en"]})
+        twice = await client.put(url, json={"locales": ["en", "en"]})
+        original = await client.put(url, json={"locales": ["zh-TW"]})
+        unknown = await client.put(url, json={"locales": ["en"], "note": "x"})
+    assert saved.status_code == 200, saved.text
+    assert saved.json()["dub_locales"] == ["en"]
+    assert set_dubs.await_args.args[3].locales == ["en"]
+    assert twice.status_code == 422 and original.status_code == 422
+    assert unknown.status_code == 200, "an extra field is ignored, as on the other routes"
+    assert set_dubs.await_count == 2
 
 
 @pytest.mark.asyncio
