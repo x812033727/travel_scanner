@@ -243,6 +243,938 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress categories, tags and menus: help readers find the next article",
+      "description": "Categories, tags and navigation menus organize posts, connect details and provide entry points in different ways. Using a fictional home-cooking site, this guide explains naming and creating categories and tags, setting up navigation in block or classic themes, and checking mobile and keyboard use. It also covers what URLs and mappings to preserve when renaming, changing a slug, merging or deleting, so a growing site remains easy to explore without listing every post in an oversized menu.",
+      "hero": {
+        "src": "/guides/wordpress-taxonomy-navigation/hero-en.jpg",
+        "alt": "Original information-organization illustration with a category folder, post document and navigation screen.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "With twenty posts, someone may still find an item by scrolling down the home page. With two hundred, readers need clear signposts. Categories, tags and menus are all signposts, but solve different problems. Decide how readers want to search before configuring WordPress; this is easier to maintain than inventing a new tag whenever you publish."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a fictional home-cooking site with quick dinners, meal preparation and cooking tips. The steps follow official WordPress documentation and distinguish block themes from classic menus. The category names are original examples; we make no claim that a particular taxonomy will increase traffic or copy another site's structure."
+        },
+        {
+          "type": "heading",
+          "text": "Categories group major topics; tags connect details",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress categories can have parent-child relationships and suit relatively stable topic groups. Tags have no such hierarchy and connect details across categories. A cooking site could make ‘Meal preparation’ a category and use ‘Freezer storage’ to connect relevant posts. Readers can then browse a broad topic or follow a shared detail from one article to another."
+        },
+        {
+          "type": "paragraph",
+          "text": "More categories and tags are not automatically better. Every new name adds maintenance and may create an archive with little content. Before adding one, ask whether an equivalent term already exists, whether several posts are likely to use it and whether readers will understand the name. A private shorthand known only to the author is usually a poor public entry point."
+        },
+        {
+          "type": "paragraph",
+          "text": "A post can belong to multiple categories, but use a consistent rule. Put a ‘fifteen-minute dinner’ mainly under Quick dinners. Add it to Cooking tips only if it actually teaches a technique. Checking every category merely for more exposure makes archive pages increasingly alike and leaves readers unsure what they will find."
+        },
+        {
+          "type": "heading",
+          "text": "Test the grouping on paper before building it in admin",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List existing post titles and sort them into a small set of provisional categories. See whether many posts fit nowhere or every post fits everywhere. The first may mean the topics are too scattered; the second may mean the names are too vague. Adjust using ten to twenty representative posts before applying rules across the site."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the Posts category management screen, create a name, slug, any needed parent category and description. The name is what readers see; the slug affects the category URL. They need not match exactly, but their relationship should be clear. A hierarchy should reflect content, not turn the category tree into an endlessly nested filing cabinet."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the tag management screen, create names, slugs and descriptions without parent-child relationships. Choose one preferred term for synonyms: for example, use ‘Freezer storage’ consistently instead of mixing ‘Freezing’, ‘Frozen meals’ and ‘Put it in the freezer’ without a meaningful distinction. If the terms truly serve different tasks, document those definitions before keeping them."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Select representative posts and draft a category scheme and tag naming rule.",
+            "Create major groups under Posts → Categories; check names, slugs and parents.",
+            "Create necessary detail terms under Posts → Tags and merge synonymous names.",
+            "Assign posts to suitable groups, then open the archive pages to inspect the actual result."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Put only the main reader entry points in menus",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A menu can link to pages, categories or other URLs; it need not list every post. A cooking site's main navigation could offer recipe categories, a preparation guide and About. Related links within an article can lead to specific posts. Decide priority and order deliberately instead of appending every new item until the menu becomes an arbitrary list."
+        },
+        {
+          "type": "paragraph",
+          "text": "Link text should preview the destination: ‘Meal preparation guide’ says more than ‘More information’. If an item only opens a submenu, make that behavior obvious; if it also links somewhere, test the tap action on mobile. A desktop hover test alone cannot establish that touch and keyboard navigation work."
+        },
+        {
+          "type": "paragraph",
+          "text": "The main menu, footer and in-article links can have different jobs. Put frequently needed content in the main entry points, less-used site information in the footer, and closely related posts near the relevant body text. This keeps the menu short without hiding important material."
+        },
+        {
+          "type": "heading",
+          "text": "Choose the editor that matches your theme",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "With a block theme, select or create a menu in the Site Editor's Navigation block and arrange links and submenus in List View. Check which menu you are editing, especially if the header and footer share one or have similar names. When adding a link, confirm its destination already has complete content; do not publish an empty page simply to fill out the menu."
+        },
+        {
+          "type": "paragraph",
+          "text": "A classic theme generally uses Appearance → Menus to add and drag items, then assign the menu to a location supplied by that theme. Creating a menu does not mean it is placed in the navigation visitors use. If you cannot find the expected control, check the theme documentation and your permissions before changing themes just to match an old tutorial screenshot."
+        },
+        {
+          "type": "paragraph",
+          "text": "After saving, inspect the home page, a post and other important templates in a signed-out window. On mobile, the menu should open, close and scroll, and submenus should respond to touch. Keyboard users must see focus and reach every link; enlarged text must not push the Close button or last item out of reach."
+        },
+        {
+          "type": "heading",
+          "text": "Treat display names and URL changes separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Changing a category's visible name is different from changing its slug. The latter affects the archive URL; if your permalink structure includes categories, check whether post URLs change too. Before editing, record old and new URLs and where they are referenced, including menus, posts, buttons and messages already sent."
+        },
+        {
+          "type": "paragraph",
+          "text": "When merging categories, assign the posts you want to keep to the destination category first, verify the archive and only then remove obsolete names. Deleting a category or tag in WordPress does not delete its posts, but confirm where they end up, especially if a post belonged only to the deleted category. Pressing Delete is not the end of a content reorganization."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give old URLs that still serve readers an appropriate redirect and update links you control, avoiding redirect chains. If an old category has no sensible replacement, consider what readers wanted there; do not send every old route to the home page. Sample both old and new URLs after the change and retain the results for the next cleanup."
+        },
+        {
+          "type": "heading",
+          "text": "Verify that readers can actually find content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask someone unfamiliar with the site to complete a simple task, such as finding a meal-preparation post about freezing. Observe where they start and which label gives them pause. Do not supply hints during the test: that would only prove that you know the path. If people repeatedly take a wrong turn, improve names and entry points before adding more categories."
+        },
+        {
+          "type": "paragraph",
+          "text": "Periodically inspect empty categories, duplicate tags and broken menu items, and check whether new posts follow the naming rules. Keep a short editing note describing each category's purpose and typical examples. Adjust the structure as content grows instead of creating a new branch for every unusual post."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-taxonomy-navigation/diagram-1-en.svg",
+          "alt": "Original four-part navigation diagram of category, tag, menu and URL-maintenance work.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Signposts are valuable when readers can find content, not when there are more of them.",
+          "description": "Original four-part navigation diagram of category, tag, menu and URL-maintenance work.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Tool",
+            "Main job",
+            "Common confusion"
+          ],
+          "rows": [
+            [
+              "Category",
+              "Major post group; may have hierarchy",
+              "Not the main menu itself"
+            ],
+            [
+              "Tag",
+              "Connect details across categories; no hierarchy",
+              "No need for a new term per post"
+            ],
+            [
+              "Navigation menu",
+              "Arrange key entry points and their order",
+              "Need not list every post"
+            ],
+            [
+              "Display name",
+              "Help readers understand",
+              "Renaming need not change the slug"
+            ],
+            [
+              "Slug",
+              "Identify part of a URL",
+              "Check old links after changing it"
+            ]
+          ],
+          "caption": "Define content relationships before deciding which entry points appear directly in navigation."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Check the public menu after saving",
+          "text": "Verify the assigned menu location, full destination URLs, mobile open and close behavior, and keyboard focus. Correct ordering in admin only proves the settings were saved; it does not replace a visitor's usability check."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choosing between posts and pages",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress admin work boundaries",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Posts Categories screen",
+          "url": "https://wordpress.org/documentation/article/posts-categories-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Posts Tags screen",
+          "url": "https://wordpress.org/documentation/article/posts-tags-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Navigation block",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Appearance Menus Screen",
+          "url": "https://wordpress.org/documentation/article/appearance-menus-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressのカテゴリー・タグ・メニュー：次の記事を見つけやすくする",
+      "description": "カテゴリー、タグ、ナビゲーションメニューには、投稿の整理、細部の関連付け、入口の提示という別々の役割があります。架空の家庭料理サイトを例に、名称の決め方、カテゴリーとタグの作成、ブロックテーマとクラシックテーマでのメニュー設定、スマートフォンとキーボードでの確認を説明します。名称変更、スラッグ変更、統合、削除の際に残すURLと対応表も扱い、投稿が増えても長すぎるメニューに頼らず探しやすいサイトを保ちます。",
+      "hero": {
+        "src": "/guides/wordpress-taxonomy-navigation/hero-ja.jpg",
+        "alt": "カテゴリーのフォルダー、投稿文書、ナビゲーション画面を組み合わせたオリジナルの情報整理イラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "投稿が二十本なら、ホームページを下へスクロールして見つけられるかもしれません。二百本になると、読者には明確な道しるべが必要です。カテゴリー、タグ、メニューはどれも道しるべですが、解決する問題が異なります。公開時に思いついたタグを追加する前に、読者の探し方を決めてWordPressを設定すると、後の管理が楽になります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このガイドでは、簡単な夕食、下ごしらえ、調理のコツを扱う架空の家庭料理サイトを例にします。操作はWordPressの公式文書に基づき、ブロックテーマとクラシックテーマのメニューを区別します。カテゴリー名は独自の例で、特定の分類がアクセスを増やすと主張したり、参照先サイトの構造を流用したりはしません。"
+        },
+        {
+          "type": "heading",
+          "text": "カテゴリーは主な分類、タグは細部をつなぐ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのカテゴリーには親子階層を作れ、比較的安定した主題の分類に向いています。タグには親子階層がなく、カテゴリーをまたぐ細部を結びます。料理サイトなら「下ごしらえ」をカテゴリーにし、「冷凍保存」を関連する投稿をつなぐタグにできます。読者は大きな分野から探すことも、一つの記事から同じ細部へ進むこともできます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "カテゴリーやタグは多いほどよいわけではありません。新しい名前ごとに管理が増え、内容の少ない一覧ページができることもあります。追加前に、同じ意味の語がないか、複数の投稿で使う見込みがあるか、読者が名称を理解できるかを確認します。書き手だけが知る略語は、通常、公開の入口に向きません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一つの投稿を複数のカテゴリーに入れることはできますが、規則を統一します。例えば「十五分で作る夕食」は主に「簡単な夕食」に置き、実際に技法を教える場合だけ「調理のコツ」にも入れます。露出を増やそうとすべてにチェックを入れると、一覧の内容が似通い、読者が中身を予想しにくくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "管理画面で作る前に紙の上で分類を試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "既存の投稿タイトルを並べ、少数の仮カテゴリーに分けます。どこにも入らない投稿が多いか、すべてに当てはまる投稿が多いかを見ます。前者は主題が散らばりすぎ、後者は名称が曖昧な可能性があります。代表的な十～二十本で規則を調整してから全体に適用します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "投稿のカテゴリー管理画面で名前、スラッグ、必要な親カテゴリー、説明を作ります。名前は読者に見える文字で、スラッグはカテゴリーのURLに影響します。完全に同じである必要はありませんが、対応が分かるようにします。階層は内容の関係を表すもので、保管フォルダーのように無限に深くしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "タグ管理画面では名前、スラッグ、説明を作り、親子関係は設定しません。同義語を整理するときは代表名を一つ選びます。例えば「冷凍保存」に統一し、「冷凍」「冷凍料理」「冷凍庫に入れる」を明確な違いなしに混用しません。実際に異なる用途があれば、定義を書いてから残します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "代表的な投稿を選び、カテゴリー案とタグの命名規則を作る。",
+            "投稿 → カテゴリーで主な分類を作り、名前、スラッグ、親を確認する。",
+            "投稿 → タグで必要な細部の語を作り、同じ意味の名称を統合する。",
+            "投稿を適切な分類に割り当て、一覧ページを開いて実際の結果を確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "メニューには読者に必要な主な入口だけを置く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "メニューは固定ページ、カテゴリー、その他のURLへリンクできます。全投稿を一件ずつ並べる必要はありません。料理サイトなら、主なナビゲーションにレシピの分類、下ごしらえガイド、サイト紹介を置き、特定の記事へは関連記事リンクから導けます。新規項目を毎回末尾に追加して無秩序な一覧にせず、重要度と順序を決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "リンクの文字は行き先を予告しましょう。「下ごしらえガイド」は「詳しくはこちら」より明確です。項目がサブメニューを開くだけなら操作方法が分かるようにします。リンクも兼ねる場合はスマートフォンでタップ時の動作を確認します。デスクトップでマウスを重ねて表示されたというだけでは、タッチやキーボード操作を確認したことになりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主メニュー、フッター、本文のリンクには役割を分けられます。よく使う内容を主な入口に、使用頻度の低いサイト説明をフッターに、その記事と密接に関係する投稿を本文の近くに置きます。重要な情報を隠すことなく、メニューを短くできます。"
+        },
+        {
+          "type": "heading",
+          "text": "テーマに合った編集方法を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ブロックテーマでは、サイトエディターのナビゲーションブロックでメニューを選択・作成し、リスト表示でリンクやサブメニューを整理できます。ヘッダーとフッターで同じメニューを使う場合や名前が似ている場合は、編集中の対象を確認します。リンクを追加する際は行き先に完全な内容があるか調べ、メニューを埋めるためだけに空の固定ページを公開しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "クラシックテーマでは通常、外観 → メニューで項目を追加・ドラッグして並べ、テーマが用意する表示位置に割り当てます。メニューを作っただけでは訪問者の使う場所に配置されません。予想した入口がなければテーマの説明と自分の権限を確認し、古い解説の画面に合わせるだけのためにテーマを変更しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存後、ログアウトしたウィンドウでホームページ、投稿ページ、重要なテンプレートを確認します。スマートフォンでは開閉とスクロールができ、サブメニューもタッチで使える必要があります。キーボードではフォーカスが見え、リンクへ到達できること、文字を拡大しても閉じるボタンや最後の項目が操作不能な位置に押し出されないことを確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "表示名とURLの変更を分けて扱う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "読者に見えるカテゴリー名だけの変更と、スラッグの変更は別です。後者は一覧ページのURLに影響し、パーマリンク構造にカテゴリーが含まれる場合は投稿URLへの影響も確認します。変更前に古いURL、新しいURL、メニュー、投稿、ボタン、送信済みの案内など参照箇所を記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "カテゴリーを統合するときは、残す投稿を先に移行先カテゴリーに割り当て、一覧を確認してから不要な名前を整理します。WordPressでカテゴリーやタグを削除しても投稿自体は消えませんが、特に削除したカテゴリーだけに属していた投稿の行き先は確認が必要です。削除ボタンを押しただけで再編完了とは考えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まだ役立つ古いURLには適切なリダイレクトを設け、自分で管理できるリンクを更新して、リダイレクトの連鎖を避けます。古いカテゴリーに妥当な移行先がなければ読者の目的を考え、すべてをホームページへ送らないでください。変更後は新旧のURLを抜き取り確認して結果を残し、次回の整理で推測し直さずに済むようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "実際にコンテンツを見つけられるか検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトを知らない人に、「冷凍できる下ごしらえの記事を探す」などの簡単な課題を頼みます。どの入口から始め、どの名称で迷うか観察します。途中で答えを教えると、あなたが経路を知っていると示すだけです。何度も間違えるなら、カテゴリーを増やす前に名称と入口を直します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "空のカテゴリー、重複タグ、無効なメニュー項目を定期的に見直し、新しい投稿が命名規則を守っているかも確認します。各カテゴリーの用途と典型例を短い編集メモに残せます。特殊な投稿に出会うたびに新しい分類体系を作るより、内容が増えた段階で構造を調整する方が安定します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-taxonomy-navigation/diagram-1-ja.svg",
+          "alt": "カテゴリー、タグ、メニュー、URLの管理という四つの仕事を示すオリジナルのナビゲーション図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "道しるべは数が多いことより、読者が内容を見つけられることに価値があります。",
+          "description": "カテゴリー、タグ、メニュー、URLの管理という四つの仕事を示すオリジナルのナビゲーション図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "道具",
+            "主な役割",
+            "混同しやすい点"
+          ],
+          "rows": [
+            [
+              "カテゴリー",
+              "投稿の主な分類。階層を持てる",
+              "主メニューそのものではない"
+            ],
+            [
+              "タグ",
+              "分類をまたぐ細部をつなぎ、階層はない",
+              "投稿ごとに新語は不要"
+            ],
+            [
+              "ナビゲーションメニュー",
+              "重要な入口と順序を決める",
+              "全投稿を並べる必要はない"
+            ],
+            [
+              "表示名",
+              "読者に意味を伝える",
+              "改名時にスラッグ変更は必須でない"
+            ],
+            [
+              "スラッグ",
+              "URLの識別部分を構成する",
+              "変更後は古いリンクを確認する"
+            ]
+          ],
+          "caption": "内容の関係を先に定義し、ナビゲーションに直接表示する入口を決めます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "保存後に公開側のメニューを確認する",
+          "text": "メニューの表示位置、行き先の完全なURL、スマートフォンでの開閉、キーボードのフォーカスを確認します。管理画面で順序が正しいことは設定の保存を示すだけで、訪問者による操作確認の代わりにはなりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "投稿と固定ページの使い分け",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress管理画面の作業分担",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：投稿カテゴリー画面",
+          "url": "https://wordpress.org/documentation/article/posts-categories-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：投稿タグ画面",
+          "url": "https://wordpress.org/documentation/article/posts-tags-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ナビゲーションブロック",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：外観のメニュー画面",
+          "url": "https://wordpress.org/documentation/article/appearance-menus-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 카테고리·태그·메뉴: 독자가 다음 글을 찾도록 돕기",
+      "description": "카테고리, 태그, 탐색 메뉴는 각각 글을 정리하고 세부 주제를 연결하며 진입점을 제공하는 일을 합니다. 가상의 집밥 사이트를 예로 이름 정하기, 카테고리와 태그 만들기, 블록 테마 또는 클래식 테마에서 메뉴 설정하기, 휴대전화와 키보드 사용 점검을 설명합니다. 이름이나 슬러그를 바꾸거나 합치고 삭제할 때 보존할 URL과 대응 관계도 다룹니다. 글이 늘어나더라도 모든 글을 긴 메뉴에 넣지 않고 쉽게 찾게 할 수 있습니다.",
+      "hero": {
+        "src": "/guides/wordpress-taxonomy-navigation/hero-ko.jpg",
+        "alt": "카테고리 폴더, 글 문서, 탐색 화면을 결합한 독창적인 정보 정리 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "글이 스무 편일 때는 첫 화면을 아래로 내려서 찾을 수도 있지만 이백 편이 되면 독자에게 명확한 길잡이가 필요합니다. 카테고리, 태그, 메뉴는 모두 길잡이이지만 해결하는 문제가 다릅니다. 게시할 때마다 떠오르는 태그를 새로 만드는 것보다 독자가 어떻게 찾으려는지 먼저 결정하고 WordPress를 설정하는 편이 관리하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 빠른 저녁 식사, 재료 준비, 요리 요령을 다루는 가상의 집밥 사이트를 예로 듭니다. 작업은 WordPress 공식 문서를 바탕으로 정리하며 블록 테마와 클래식 메뉴를 구분합니다. 카테고리 이름은 자체 예시입니다. 특정 분류가 방문자를 늘린다고 주장하거나 자료 사이트의 구조를 베끼지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "카테고리는 큰 주제를, 태그는 세부 사항을 연결합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 카테고리에는 상위·하위 관계를 만들 수 있어 비교적 안정적인 주제 분류에 적합합니다. 태그에는 이런 계층이 없고 여러 카테고리에 걸친 세부 사항을 연결합니다. 요리 사이트는 ‘재료 준비’를 카테고리로 만들고 ‘냉동 보관’을 관련 글을 잇는 태그로 쓸 수 있습니다. 독자는 큰 주제로 찾거나 한 글에서 같은 세부 주제로 이어 갈 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "카테고리와 태그는 많다고 좋은 것이 아닙니다. 이름을 하나 추가할 때마다 관리 업무가 늘고 내용이 적은 모음 페이지가 생길 수 있습니다. 만들기 전에 같은 뜻의 말이 이미 있는지, 여러 글에서 쓸 가능성이 있는지, 독자가 이름을 이해할 수 있는지 물어보세요. 작성자만 아는 암호 같은 말은 대체로 공개 진입점에 맞지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "한 글을 여러 카테고리에 넣을 수는 있지만 일관된 규칙이 필요합니다. 예를 들어 ‘십오 분 저녁 식사’는 주로 빠른 저녁 식사에 넣고 실제로 기술을 알려 줄 때만 요리 요령에도 넣습니다. 더 많이 노출하려고 모두 선택하면 모음 페이지들이 점점 비슷해지고 독자는 클릭 후 무엇을 볼지 예상하기 어려워집니다."
+        },
+        {
+          "type": "heading",
+          "text": "관리자 화면에서 만들기 전에 종이 위에서 분류 시험하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "기존 글 제목을 적고 소수의 임시 카테고리로 나눠 봅니다. 어느 곳에도 속하지 않는 글이 많거나 모든 카테고리에 들어맞는 글이 많은지 확인합니다. 전자는 주제 범위가 너무 넓고 후자는 카테고리 이름이 모호할 수 있습니다. 대표적인 글 열 편에서 스무 편으로 규칙을 다듬고 나서 사이트 전체에 적용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "글의 카테고리 관리 화면에서 이름, 슬러그, 필요한 상위 카테고리와 설명을 만듭니다. 이름은 독자에게 보이는 문구이고 슬러그는 카테고리 URL에 영향을 줍니다. 둘이 꼭 같을 필요는 없지만 대응 관계를 알 수 있어야 합니다. 계층은 콘텐츠 관계를 반영해야 하며 파일 보관함처럼 끝없이 세분화해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "태그 관리 화면에서는 이름, 슬러그, 설명을 만들며 상위·하위 관계는 지정하지 않습니다. 비슷한 말을 정리할 때 대표 이름 하나를 고릅니다. 예를 들어 의미 있는 차이가 없는데도 ‘냉동 보관’, ‘냉동’, ‘냉동 요리’, ‘얼려 두기’를 뒤섞지 마세요. 실제 사용 목적이 다르다면 정의를 기록한 뒤 유지합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "대표 글을 골라 카테고리 초안과 태그 이름 규칙을 만든다.",
+            "글 → 카테고리에서 주요 분류를 만들고 이름, 슬러그, 상위를 확인한다.",
+            "글 → 태그에서 필요한 세부 용어를 만들고 뜻이 같은 이름을 합친다.",
+            "글을 적절한 분류에 지정하고 모음 페이지를 열어 실제 결과를 확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "메뉴에는 독자에게 필요한 주요 진입점만 두기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "메뉴는 페이지, 카테고리, 다른 URL로 연결할 수 있으며 모든 글을 한 편씩 나열할 필요는 없습니다. 요리 사이트라면 주 메뉴에 조리법 카테고리, 재료 준비 안내, 사이트 소개를 두고 특정 글은 관련 링크로 안내할 수 있습니다. 새 항목을 무조건 맨 뒤에 붙여 무질서한 목록으로 만들지 말고 중요도와 순서를 정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "링크 문구는 목적지를 예고해야 합니다. ‘재료 준비 안내’가 ‘자세히 보기’보다 명확합니다. 항목이 하위 메뉴만 펼친다면 동작을 알아보기 쉽게 하고, 동시에 링크라면 휴대전화에서 탭할 때 어떻게 되는지 시험합니다. 데스크톱에서 마우스를 올려 확인한 것만으로 터치와 키보드도 작동한다고 볼 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주 메뉴, 바닥글, 글 본문 링크는 역할을 나눌 수 있습니다. 자주 쓰는 내용은 주요 진입점에, 덜 쓰는 사이트 설명은 바닥글에, 해당 글과 밀접한 글은 본문 근처에 둡니다. 중요한 정보를 숨기지 않으면서 메뉴를 짧게 유지할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "테마에 맞는 편집 방법 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "블록 테마에서는 사이트 편집기의 탐색 블록에서 메뉴를 선택하거나 만들고 목록 보기로 링크와 하위 메뉴를 정리할 수 있습니다. 특히 머리글과 바닥글이 같은 메뉴를 쓰거나 이름이 비슷하다면 어떤 메뉴를 편집하는지 먼저 확인하세요. 링크를 추가할 때 목적지에 완전한 내용이 있는지 확인하고 메뉴를 채우려고 빈 페이지만 서둘러 게시하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "클래식 테마는 보통 외모 → 메뉴에서 항목을 추가하고 끌어서 순서를 바꾼 다음 테마가 제공하는 위치에 지정합니다. 메뉴를 만들었다고 방문자가 쓰는 탐색 위치에 놓인 것은 아닙니다. 예상한 메뉴가 보이지 않으면 테마 설명과 본인 권한을 먼저 확인하고 옛 사용법 화면과 똑같이 만들겠다는 이유만으로 테마를 바꾸지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "저장 후 로그아웃한 창에서 첫 화면, 글 페이지, 다른 주요 템플릿을 확인합니다. 휴대전화 메뉴는 열고 닫고 스크롤할 수 있어야 하며 하위 메뉴도 터치로 조작해야 합니다. 키보드 사용자는 현재 초점을 볼 수 있고 링크에 도달할 수 있어야 합니다. 글자를 키웠을 때 닫기 버튼이나 마지막 항목이 조작할 수 없는 곳으로 밀리지 않는지도 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "표시 이름 변경과 URL 변경을 따로 처리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "독자에게 보이는 카테고리 이름만 바꾸는 것과 슬러그를 바꾸는 것은 다릅니다. 뒤의 변경은 모음 페이지 URL에 영향을 주고 고유주소 구조에 카테고리가 들어가 있다면 글 URL도 영향을 받는지 확인해야 합니다. 바꾸기 전에 이전 URL, 새 URL, 메뉴·글·버튼·이미 보낸 안내 등 참조 위치를 기록하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "카테고리를 합칠 때는 남길 글을 먼저 대상 카테고리에 지정하고 모음 결과를 확인한 뒤 더는 쓰지 않는 이름을 정리합니다. WordPress에서 카테고리나 태그를 삭제해도 글 자체는 삭제되지 않지만 특히 해당 카테고리에만 속한 글이 어디에 속하게 되는지 확인하세요. 삭제 버튼을 눌렀다고 콘텐츠 재구성이 끝난 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아직 쓸모가 있는 이전 URL에는 적절한 리디렉션을 설정하고 관리할 수 있는 링크를 갱신해 리디렉션이 여러 단계를 거치지 않게 합니다. 옛 카테고리에 합당한 새 목적지가 없다면 독자의 필요를 판단하고 모든 옛 경로를 첫 화면으로 보내지 마세요. 변경 후 새 URL과 이전 URL을 표본 검사해 결과를 남기면 다음 정리 때 다시 추측하지 않아도 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "독자가 실제로 콘텐츠를 찾는지 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트를 잘 모르는 사람에게 ‘냉동할 수 있는 재료 준비 글 찾기’ 같은 간단한 과제를 맡기고 어디서 시작하고 어떤 이름에서 멈추는지 관찰하세요. 시험하는 동안 답을 알려 주면 본인이 경로를 안다는 사실만 증명합니다. 여러 번 잘못 찾는다면 카테고리를 더 만들기 전에 이름과 진입점을 고치세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "빈 카테고리, 중복 태그, 작동하지 않는 메뉴를 정기적으로 살피고 새 글이 이름 규칙을 따르는지도 확인합니다. 각 카테고리의 용도와 대표 예시를 적은 짧은 편집 안내를 보관할 수 있습니다. 특이한 글을 만날 때마다 새 분류를 만드는 것보다 콘텐츠가 늘어날 때 구조를 조정하는 편이 안정적입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-taxonomy-navigation/diagram-1-ko.svg",
+          "alt": "카테고리, 태그, 메뉴, URL 관리라는 네 가지 일을 보여 주는 독창적인 탐색 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "길잡이의 가치는 개수가 아니라 독자가 콘텐츠를 찾을 수 있는지에 있습니다.",
+          "description": "카테고리, 태그, 메뉴, URL 관리라는 네 가지 일을 보여 주는 독창적인 탐색 그림.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "도구",
+            "주요 역할",
+            "혼동하기 쉬운 점"
+          ],
+          "rows": [
+            [
+              "카테고리",
+              "글의 주요 분류이며 계층을 가질 수 있음",
+              "주 메뉴 자체는 아님"
+            ],
+            [
+              "태그",
+              "분류를 넘어 세부 내용을 연결하며 계층은 없음",
+              "글마다 새 용어를 만들 필요는 없음"
+            ],
+            [
+              "탐색 메뉴",
+              "중요한 진입점과 순서를 정함",
+              "모든 글을 나열할 필요는 없음"
+            ],
+            [
+              "표시 이름",
+              "독자가 이해하도록 도와줌",
+              "이름을 바꿔도 슬러그 변경은 필수가 아님"
+            ],
+            [
+              "슬러그",
+              "URL의 식별 부분을 구성함",
+              "변경 후 이전 링크를 확인해야 함"
+            ]
+          ],
+          "caption": "콘텐츠의 관계를 먼저 정의하고 어떤 진입점을 탐색 메뉴에 직접 넣을지 결정합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "메뉴 저장 후 방문자 화면 확인하기",
+          "text": "메뉴가 쓰이는 위치, 목적지의 전체 URL, 휴대전화의 열기·닫기, 키보드 초점을 확인합니다. 관리자 화면에서 순서가 맞다는 사실은 설정이 저장됐음을 보여 줄 뿐 방문자의 사용성 점검을 대신하지 못합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "글과 페이지 구분하기",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 관리자 업무 경계",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 글 카테고리 관리",
+          "url": "https://wordpress.org/documentation/article/posts-categories-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 글 태그 관리",
+          "url": "https://wordpress.org/documentation/article/posts-tags-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 탐색 블록",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 클래식 메뉴 화면",
+          "url": "https://wordpress.org/documentation/article/appearance-menus-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 分类、标签与菜单：让读者找到下一篇",
+      "description": "分类、标签与导航菜单分别负责整理文章、串联细节及提供入口。本文用家常菜网站示范如何命名、建立分类与标签，并依区块主题或传统主题设置菜单，整理手机与键盘操作的检查方式。也说明改名、改 slug、合并或删除时要保存哪些网址与对照，让内容增加后仍容易找到，避免把所有文章都塞进过长的菜单。",
+      "hero": {
+        "src": "/guides/wordpress-taxonomy-navigation/hero-zh-cn.jpg",
+        "alt": "分类文件夹、文章文件与导航画面组成的原创信息整理插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站有二十篇文章时，靠首页往下滑还能找到内容；累积到两百篇，读者就需要清楚的路标。分类、标签与菜单都是路标，但处理不同问题。先决定读者想怎么找，再设置 WordPress，比发布时临时想到一个词就新增标签更容易维护。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文以虚构的家常菜网站为例，规划快速晚餐、备菜及烹饪技巧等内容。操作依 WordPress 官方文件整理，并区分区块主题与传统菜单。这些分类名称是原创示例，没有宣称某套分类一定能增加流量，也没有沿用来源网站的架构。"
+        },
+        {
+          "type": "heading",
+          "text": "分类是主要分组，标签连接细节",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 分类可以建立父子层级，适合表达相对稳定的主题分组；标签没有父子层级，适合串联跨分类的细节。烹饪网站可以将「备菜」设为分类，再以「冷冻保存」串联相关文章。这样读者既能按大方向找，也能从一篇内容延伸到相同细节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "分类与标签不是越多越好。每个新名称都会增加管理工作，并可能形成一个内容很少的归档页。建立前先问：是否已经有意思相同的词、是否预期有多篇内容、读者看到名称能否理解。若只有作者自己知道的暗号，通常不适合作为公开入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一篇文章可以属于多个分类，但应有一致规则。例如「十五分钟晚餐」主要放在快速晚餐，是否同时放烹饪技巧取决于它是否真的教一个技巧。不要为了让文章看起来出现在更多地方而全部勾选，否则分类页会越来越相似，读者也难以预测点进去会看到什么。"
+        },
+        {
+          "type": "heading",
+          "text": "先在纸上试分，再到后台建立",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出现有文章标题，用暂定的少量分类分组，看看有没有大量无法归类或同时符合所有分类的文章。无法归类可能表示主题范围太散，全部都符合则可能是分类名称太模糊。先用十到二十篇代表内容调整，确定规则后再套用到全站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "到文章的分类管理画面，建立名称、slug、必要的父分类及说明。名称是读者看到的文字，slug 会影响分类网址，两者不必完全相同，但要能对照。阶层应反映内容关系，而不是把分类树当成存档文件夹无限往下细分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "标签管理画面则建立名称、slug 与说明，不设置父子关系。整理同义词时先选定一个主名称，例如统一使用冷冻保存，避免冷冻、冷冻菜肴与冰起来三种标签混用却没有明确差别。若确实有不同操作需求，就写下定义再保留。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "挑选有代表性的文章，先建立分类草案与标签命名规则。",
+            "在文章 → 分类建立主要分组，核对名称、slug 与父层。",
+            "在文章 → 标签建立必要细节词，合并意思相同的命名。",
+            "将文章归入合适的分组，打开归档页核对实际结果。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "菜单只放读者需要的主要入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "菜单可以连到页面、分类或其他网址，不必逐篇列出全部文章。烹饪网站的主要导航可提供食谱分类、备菜指南及关于网站，特定文章再由相关链接带入。先决定重要性与顺序，避免把最新新增的项目一律放到最后，久了形成没有逻辑的列表。"
+        },
+        {
+          "type": "paragraph",
+          "text": "链接文字应预告目的地，例如「备菜指南」比「更多信息」清楚。若某项目只是展开子菜单，应让操作方式容易辨认；若同时也是链接，则要在手机上测试点击行为。不要只在桌面用鼠标移过去看正常，就假设触控与键盘也能使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主菜单、页脚与文章内链接可以分工。常用内容放主要入口，较少使用的网站说明放页脚，和当篇高度相关的文章则放正文附近。这样能缩短菜单，又不必为了保持简洁把重要信息藏起来。"
+        },
+        {
+          "type": "heading",
+          "text": "依主题选择正确的编辑方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用区块主题时，可在网站编辑器中的导航区块选择或建立菜单，利用列表视图整理链接及子菜单。先确认目前编辑的是哪一个菜单，尤其当页首与页脚共用或使用相似名称时。新增链接时检查目标已有完整内容，避免顺手发布空白页只为了让菜单看起来齐全。"
+        },
+        {
+          "type": "paragraph",
+          "text": "传统主题通常从外观的菜单画面新增项目、拖动排序，再归入到主题提供的位置。建立了一份菜单，不代表它已放进实际使用的导航位置。若找不到预期入口，先查看主题说明与自己权限，不必为了跟旧教学画面一致而更换网站主题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存后以未登录的浏览器窗口检查首页、文章页与其他重要模板。手机菜单应能开启、关闭与滚动，子菜单也要能触控操作。键盘使用者应能看见目前焦点并到达链接；文字放大后不能让关闭按钮或最后一个项目被挤到无法操作的位置。"
+        },
+        {
+          "type": "heading",
+          "text": "改名称与改网址分开处理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "只改读者看到的分类名称，与修改 slug 是两件事。后者会影响归档页网址，固定链接结构若包含分类，也需要检查文章网址是否受到影响。变更前保存旧网址、对应新网址和被引用的位置，包含菜单、文章、按钮与已发送的消息。"
+        },
+        {
+          "type": "paragraph",
+          "text": "合并分类时，先把需要保留的文章归入目标分类，再核对归档结果，最后才整理不再使用的名称。WordPress 删除分类或标签不等于删除其中文章，但分类删除后的归属仍要确认，尤其是只属于该分类的文章。不要把删除按钮当成已完成内容重整。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对仍有用途的旧网址设置适当重定向，并更新自己能控制的链接，避免形成多段重定向。若旧分类没有合理的新目的地，先判断读者需求，不要把所有旧路径都送回首页。修改后抽查新旧网址，保存结果，让下一次整理不必重新猜测。"
+        },
+        {
+          "type": "heading",
+          "text": "用找得到内容来验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "请一位不熟悉网站的人完成简单任务，例如找出可冷冻的备菜文章，再观察他从哪个入口开始、在哪个名称停住。不要一边测试一边提示答案，否则只能证明你知道路径。若多次找错，先修正命名与入口，不急着增加更多分类。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定期查看是否有空分类、重复标签与失效菜单，也检查新文章是否遵守命名规则。可以保留一份简短编辑说明，写出每个分类的用途与典型例子。内容增加时再调整结构，比每次遇到一篇特殊文章就新增整套分类更稳定。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-taxonomy-navigation/diagram-1-zh-cn.svg",
+          "alt": "分类、标签、菜单与网址维护四种工作组成的原创导航图。",
+          "width": 1600,
+          "height": 900,
+          "caption": "路标的价值在于找得到内容，而不是数量越多越好。",
+          "description": "分类、标签、菜单与网址维护四种工作组成的原创导航图。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工具",
+            "主要工作",
+            "容易混淆的地方"
+          ],
+          "rows": [
+            [
+              "分类",
+              "文章主要分组，可有层级",
+              "不是主菜单本身"
+            ],
+            [
+              "标签",
+              "跨分类串联细节，没有层级",
+              "不是每篇都要新增词"
+            ],
+            [
+              "导航菜单",
+              "安排重要入口与顺序",
+              "不必列出全部文章"
+            ],
+            [
+              "显示名称",
+              "让读者看懂",
+              "改名不一定需要换 slug"
+            ],
+            [
+              "slug",
+              "构成网址识别",
+              "变更后需检查旧链接"
+            ]
+          ],
+          "caption": "先定义内容关系，再决定哪些入口要直接出现在导航。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "菜单保存后要到前台确认",
+          "text": "检查菜单使用位置、完整目标网址、手机开关与键盘焦点。后台排序正确，只能证明设置已保存，不能代替访客操作验收。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文章与页面怎么分",
+              "kind": "life",
+              "slug": "wordpress-posts-pages"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 后台工作分界",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：分类管理",
+          "url": "https://wordpress.org/documentation/article/posts-categories-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：标签管理",
+          "url": "https://wordpress.org/documentation/article/posts-tags-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：导航区块",
+          "url": "https://wordpress.org/documentation/article/navigation-block/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：传统菜单画面",
+          "url": "https://wordpress.org/documentation/article/appearance-menus-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

@@ -252,6 +252,974 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Install WordPress themes and plugins: sources, updates and deactivation",
+      "description": "Before installing a WordPress theme or plugin, identify the problem, download source, compatibility and recovery method. This guide covers dashboard search, uploading an official ZIP, activation and acceptance checks, and explains the different effects of updating, deactivating and deleting. For people in Taiwan who maintain their own sites, a brief record of new features and long-term costs helps avoid duplicate tools, forgotten licenses and too many simultaneous production changes.",
+      "hero": {
+        "src": "/guides/wordpress-themes-plugins-install/hero-en.jpg",
+        "alt": "Original illustration of website settings, a trusted-source check and version documentation.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Installing a plugin whenever an attractive feature appears can quickly leave a site full of tools whose purpose nobody remembers. Themes and plugins can both change the appearance or behavior of a site, but you should consider whether an installation solves the problem, whether it can be updated over time, and what it leaves behind when removed. Clicking Install is only one step."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a fictional small showcase for handmade goods to explain the management process. The site wants an inquiry form and a more readable layout. Separate those needs before deciding whether existing settings suffice or a new tool is needed. The steps follow official WordPress documentation; no particular paid product has been tested or recommended."
+        },
+        {
+          "type": "heading",
+          "text": "Decide whether you need design or functionality",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A theme mainly controls a site's presentation and templates, while a plugin extends functionality, although real products may overlap. Write down the task first: for example, make text readable on phones or let visitors submit inquiries. If the current theme can already adjust font size, there is no need to install another design plugin first. Conversely, an attractive template alone cannot process form submissions."
+        },
+        {
+          "type": "paragraph",
+          "text": "List related tools already installed and check for overlapping functions. Having two cache tools, two SEO tools or several form tools does not necessarily improve results; it can make settings and responsibility harder to understand. Do not judge a site only by its plugin count. Examine each tool's purpose, dependencies and actual effect."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define acceptance criteria before choosing a tool. For the showcase, an inquiry feature must at least let a visitor fill in and submit a form, deliver a notification and retain a findable record. The reading layout must be clear on both phones and desktop. Recording these criteria in advance keeps extra features from distracting you from the original problem."
+        },
+        {
+          "type": "heading",
+          "text": "Check source, maintenance and licensing together",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Prefer files from the official WordPress directory or a developer's official channel, and verify the author, product URL and version. Download a paid ZIP through your own legitimate account, never an unknown modified copy. A matching file name does not establish a trustworthy origin. A free download also does not by itself entitle you to updates or support."
+        },
+        {
+          "type": "paragraph",
+          "text": "Read the latest update information, version requirements, changelog and official support documentation. A long gap since the last update deserves investigation, but the date alone does not prove a problem. A compatibility label cannot guarantee that the product works with every plugin on your site. Check whether your current environment meets the requirements and whether you can verify the functions you need."
+        },
+        {
+          "type": "paragraph",
+          "text": "For paid products, also record the number of sites allowed, the update period, renewal method and license transfer terms. If a contractor buys the product, agree who will provide updates after handover. If a tool connects to an external service, check the account, data sent and future fees. Continued use of the site and continued access to updates or support may be different entitlements."
+        },
+        {
+          "type": "heading",
+          "text": "Treat installation and activation as separate actions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In the dashboard, you can search the official directory from Plugins > Add New, read the details, install a plugin and then activate it. For an official ZIP, choose the correct file through Upload Plugin. Installation adds the files; activation begins loading the corresponding function on the site. You may still need to configure essential options afterward."
+        },
+        {
+          "type": "paragraph",
+          "text": "Add or upload a theme from Appearance > Themes, then preview and activate it. If the download contains instructions and several installation packages, follow the developer's directions and select the installable ZIP. Do not repeatedly upload every file after one failure. If a new theme previews as blank or shows errors, investigate before activation."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the normal dashboard process fails, check file size limits, permissions and plan rules before following official support guidance. Manual SFTP installation requires knowledge of the directory structure and access method; do not paste credentials into an unfamiliar tool. Nor should you broadly raise write permissions across the site directory without understanding the cause."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Record the need, existing tools and environment versions, and obtain the necessary backup.",
+            "Download from the official directory or developer account; confirm author, version and installation package.",
+            "Install and activate one tool on a test site first, then complete its essential settings.",
+            "Test the feature and layout against the original criteria, then schedule the production change after confirmation."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Acceptance checks must include existing functions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After adding an inquiry form, test not only the new form but also existing navigation, search and sign-in. After changing themes, a good-looking home page is insufficient: post lists, inner pages, the footer, mobile menu and error pages may use different templates. Use realistic text lengths and images of different sizes to reveal layout problems."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check whether installation imported demo content, extra tracking or integrations you do not need, and remove unused items. Submit a form with test data, then verify notifications, stored records and deletion options. If a product asks to connect an external account, understand what data it sends. Do not grant broader permissions merely to dismiss a prompt."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save the installed version, settings, test pages and results. If the feature works only while signed in or with caching disabled, record that limitation rather than treating a temporary workaround as completion. Before handover, have the actual administrator try the workflow so the site does not depend on the installer for routine use."
+        },
+        {
+          "type": "heading",
+          "text": "Keep recovery material before updating",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Updates can fix problems, add features or change compatibility requirements. Review the changelog and version requirements, test important sites on a staging copy first, and apply updates at a suitable time. Automatic updates can reduce forgotten maintenance, but still require backups, notifications and a response plan for failures. Enabling them is not a reason to stop checking the site."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not preserve customization by directly editing theme or plugin source files that an update will overwrite. Theme changes may belong in suitable settings or a child theme; have someone who understands the architecture manage code changes. Record where custom content lives before updating so an important function does not disappear with a new version."
+        },
+        {
+          "type": "paragraph",
+          "text": "Recovery must account for database changes too. Replacing program files with an older version may not restore data structures or settings changed by the update. Check the product's rollback guidance and a complete backup before choosing a method. If new data arrived after the update, plan how to retain it instead of blindly overwriting the site with an older backup."
+        },
+        {
+          "type": "heading",
+          "text": "Check deactivation, deletion and subscription cancellation separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An ordinary plugin can generally be deactivated first and then deleted through the dashboard. Deactivation stops the related function but does not mean all data are erased. Whether deletion cleans up data depends on the plugin's design and settings. Export forms or other data you need before removal, and check pages for leftover shortcodes, empty blocks or broken buttons."
+        },
+        {
+          "type": "paragraph",
+          "text": "Host-preinstalled or Must-Use plugins may be managed differently. Understand their relationship to the platform before removing them. Deleting a plugin from the website also does not cancel an external service subscription or automatic renewal. Handle billing with the relevant provider and confirm its data-retention and closure terms."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, update the tool inventory with each item's purpose, author, version, license and owner. Remove unused tools through an agreed process and schedule maintenance for those still in use. When every addition has a reason and every removal has a handover record, the site will not become a pile of tools nobody dares touch."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-themes-plugins-install/diagram-1-en.svg",
+          "alt": "Original four-stage diagram tracing themes and plugins from need and source through acceptance to maintenance.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Installation is not the finish line; ongoing maintenance is part of delivering a complete feature.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "Original four-stage diagram tracing themes and plugins from need and source through acceptance to maintenance."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Action",
+            "What it means",
+            "Also check"
+          ],
+          "rows": [
+            [
+              "Install",
+              "Add files to the site",
+              "Source and compatibility"
+            ],
+            [
+              "Activate",
+              "Begin loading the function or theme",
+              "Settings and actual acceptance checks"
+            ],
+            [
+              "Update",
+              "Apply a new version",
+              "Backup, changes and recovery"
+            ],
+            [
+              "Deactivate",
+              "Stop loading an ordinary plugin's function",
+              "Dependent features and data retention"
+            ],
+            [
+              "Delete",
+              "Remove installed content",
+              "Data cleanup and remnants on pages"
+            ],
+            [
+              "Cancel subscription",
+              "Handle billing with the provider",
+              "Separate from deletion on the site"
+            ]
+          ],
+          "caption": "Each stage in a tool's life cycle has a different effect and cannot replace another."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Change only a small, testable group at a time",
+          "text": "Test and save the result before making the next change. If something fails, use the record to identify the affected scope and recovery method, rather than deactivating everything at once and making the cause harder to find."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Dividing work in WordPress admin",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Creating a local test site",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Managing plugins",
+          "url": "https://wordpress.org/documentation/article/manage-plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Working with themes",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Security hardening",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Backups",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のテーマとプラグインを導入する：入手元、更新、無効化の手順",
+      "description": "WordPress のテーマやプラグインを導入する前に、解決したい問題、入手元、バージョンの互換性、復旧方法を確認しましょう。本記事では管理画面での検索、公式 ZIP のアップロード、有効化と動作確認を整理し、更新・無効化・削除がそれぞれ及ぼす影響を説明します。自分でサイトを管理する台湾の利用者向けに、新機能と長期費用を短く記録し、重複導入やライセンスの失念、本番サイトでの一度に多すぎる変更を防ぐ方法を紹介します。",
+      "hero": {
+        "src": "/guides/wordpress-themes-plugins-install/hero-ja.jpg",
+        "alt": "サイト設定、信頼できる入手元の確認、バージョン資料を描いたオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "欲しい機能を見つけるたびにプラグインを入れると、各ツールが何をしているのか分からないサイトになりがちです。テーマもプラグインも表示や動作を変えられますが、導入後に問題を本当に解決できるか、更新を続けられるか、削除時に何が残るかを先に考える必要があります。インストールボタンは工程の一部にすぎません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事では、架空の小さな手作り品展示サイトを例に管理の流れを説明します。問い合わせフォームの追加と読みやすいレイアウトの改善を別々の要件として整理し、既存の設定を使うか新しいツールを追加するか決めます。手順は WordPress の公式文書に基づき、特定の有料製品を実際に試したり推奨したりするものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "必要なのはデザインか機能かを見極める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマは主にサイトの見た目とテンプレートを管理し、プラグインは機能を拡張しますが、製品によって重なる部分もあります。まず、スマートフォンの文字を読みやすくする、訪問者が問い合わせを送れるようにする、といった作業を書き出します。現在のテーマ設定で文字サイズを調整できるなら、別のデザイン用プラグインを急いで入れる必要はありません。一方、きれいなテンプレートだけではフォームのデータを処理できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "既存の関連ツールを一覧にし、機能の重複を確かめます。キャッシュツールや SEO ツールが二つずつ、フォームツールが複数あるからといって効果が高まるとは限らず、設定や責任の所在が分かりにくくなることもあります。プラグインの総数だけでサイトの品質を判断せず、各ツールの目的、依存関係、実際の影響を見ましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ツールを選ぶ前に完了基準を決めます。展示サイトの問い合わせ機能なら、少なくとも入力・送信ができ、通知を受け取り、記録を探せる必要があります。レイアウトはスマートフォンとパソコンの双方で読みやすいことが条件です。先に基準を記しておけば、多彩な新機能に気を取られて当初の問題を忘れずに済みます。"
+        },
+        {
+          "type": "heading",
+          "text": "入手元、保守、ライセンスを一緒に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress の公式ディレクトリか開発者の正式な窓口からファイルを入手し、作者名、製品 URL、バージョンを照合します。有料の ZIP は自分の正規アカウントからダウンロードし、出所不明の改変版は使いません。同じファイル名は信頼性の証明にならず、無料で入手できたことも更新やサポートを受けられる根拠にはなりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最終更新、必要なバージョン、変更履歴、公式のサポート文書を確認します。長期間更新されていなければ詳しく調べるべきですが、日付だけで必ず問題があるとは言えません。互換性の表示も、サイトにある全プラグインとの共存を保証しません。現在の環境が要件を満たし、必要な機能を検証できるかが重要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "有料製品では、利用可能なサイト数、更新期間、更新契約の方法、ライセンスの移転条件も記録します。制作者が購入するなら、引き継ぎ後に誰が更新を提供するか決めておきます。外部サービスに接続するツールでは、アカウント、送信するデータ、後の費用も確認します。サイトを使い続けられることと、更新・サポートを受け続けられることは別の条件かもしれません。"
+        },
+        {
+          "type": "heading",
+          "text": "インストールと有効化を分けて考える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインは管理画面の「プラグイン > 新規追加」から公式ディレクトリを検索し、詳細を読んでインストールした後、有効化できます。公式 ZIP を使うなら「プラグインのアップロード」で正しいファイルを選びます。インストールはファイルの追加、有効化は対応する機能の読み込み開始を意味します。その後、必要な設定を行う場合もあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テーマは「外観 > テーマ」から追加またはアップロードし、プレビューしてから有効化します。ダウンロードした一式に説明書と複数のパッケージがある場合、開発者の指示を読み、インストール可能な ZIP を選びましょう。最初の失敗後に全ファイルを次々アップロードしないでください。新テーマのプレビューが空白になったりエラーが出たりしたら、有効化前に原因を調べます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "通常の管理画面操作で完了できない場合、まずファイル容量の制限、権限、契約プランの条件を調べ、公式サポートに従います。SFTP による手動導入にはディレクトリ構成と接続方法の理解が必要です。見知らぬツールに認証情報を貼り付けたり、原因を知らないままサイト全体の書き込み権限を広げたりしないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "目的、既存ツール、環境のバージョンを記録し、必要なバックアップを用意する。",
+            "公式ディレクトリか開発者アカウントから入手し、作者、バージョン、導入用パッケージを確かめる。",
+            "まずテストサイトでツールを一つ導入・有効化し、必要な設定を済ませる。",
+            "元の基準に照らして機能と画面を試し、確認後に本番サイトの変更を予定する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "検証には既存の正常な機能も含める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "問い合わせフォームを追加したら、新フォームだけでなく、元のナビゲーション、検索、ログインも確認します。テーマ変更後はトップページの見栄えだけでは不十分です。記事一覧、下層ページ、フッター、スマートフォンのメニュー、エラーページで異なるテンプレートを使う場合があります。実際に近い長さの文章や多様な画像サイズでレイアウトの問題を探します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "設定にサンプルデータ、余分な追跡機能、不要な連携が付いていないか確かめ、使わないものを削除します。フォームはテストデータで送信し、通知、記録、削除方法を確認します。製品が外部アカウントとの接続を求める場合、送られるデータを理解してから判断し、表示を消すだけのために必要以上の権限を与えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "導入したバージョン、設定、テストしたページと結果を保存します。ログイン中だけ、またはキャッシュを切ったときだけ動くなら、その条件を書き残し、一時的な回避策を完成扱いにしません。引き渡す前に実際の管理者にも操作してもらい、日常の運用が導入担当者だけに依存しないことを確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "更新前に復旧に必要なものを残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更新によって不具合の修正、機能の追加、互換性条件の変更が生じます。変更履歴と必要バージョンを読み、重要なサイトでは先にテスト用コピーで検証し、適切な時間に反映します。自動更新は保守忘れを減らせますが、バックアップ、通知、失敗時の対応策は引き続き必要です。有効にした後もサイトの確認を続けましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "更新で上書きされるテーマやプラグインの元ファイルを直接編集して、カスタマイズを保存しないでください。テーマの変更には、目的に合う設定や子テーマを使う方法があります。コードの変更は構造を理解する担当者が管理します。新版で大切な機能を失わないよう、更新前に独自の内容を置いた場所を記録します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "復旧ではデータベースの変更も考慮します。プログラムファイルを旧版へ戻すだけでは、更新後のデータ構造や設定は元に戻らない場合があります。製品のロールバック説明と完全なバックアップを確認してから方法を選びます。更新後に新しいデータが入った場合は、古いバックアップで無条件に上書きせず、データの保持方法を考えます。"
+        },
+        {
+          "type": "heading",
+          "text": "無効化、削除、購読解除をそれぞれ確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通常のプラグインなら先に無効化し、管理画面の手順で削除できます。無効化は関連機能を停止しますが、全データの消去を意味しません。削除時にデータを掃除するかどうかはプラグインの設計と設定によります。削除前に必要なフォームなどのデータをエクスポートし、ページにショートコード、空のブロック、動かないボタンが残っていないか確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホストにあらかじめ入っているプラグインや Must-Use プラグインでは、管理方法が異なる場合があります。プラットフォームとの関係を理解する前に勝手に削除しないでください。また、サイトからプラグインを削除しても外部サービスのサブスクリプションや自動継続課金は解約されません。請求は提供元で別途処理し、データの保存とアカウント閉鎖条件を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後にツール一覧を更新し、用途、作者、バージョン、ライセンス、担当者を残します。未使用のツールは確認済みの手順で整理し、使用中のものは保守を計画します。追加の理由と削除の引き継ぎ記録が毎回残れば、誰も触れないツールの山になることを防げます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-themes-plugins-install/diagram-1-ja.svg",
+          "alt": "テーマとプラグインについて、必要性、入手元、検証、保守の四段階を示すオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "導入は終点ではありません。継続して保守できてこそ、機能を届けたと言えます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "テーマとプラグインについて、必要性、入手元、検証、保守の四段階を示すオリジナル図解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "操作",
+            "意味",
+            "別途確認すること"
+          ],
+          "rows": [
+            [
+              "導入",
+              "ファイルをサイトに追加",
+              "入手元と互換性"
+            ],
+            [
+              "有効化",
+              "機能やテーマの読み込みを開始",
+              "設定と実際の動作検証"
+            ],
+            [
+              "更新",
+              "新版を適用",
+              "バックアップ、変更点、復旧"
+            ],
+            [
+              "無効化",
+              "通常のプラグイン機能の読み込みを停止",
+              "依存機能とデータの保持"
+            ],
+            [
+              "削除",
+              "導入済みの内容を除去",
+              "データ削除とページ上の残り"
+            ],
+            [
+              "購読解除",
+              "提供元との請求契約を処理",
+              "サイト上の削除とは別に行う"
+            ]
+          ],
+          "caption": "ツールのライフサイクルでは操作ごとに影響が異なり、互いに代用できません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "一度に変更するのは検証できる小さな範囲だけ",
+          "text": "まずテストして結果を保存し、それから次の変更へ進みます。不具合が起きたら記録から影響範囲と復旧方法を確かめます。原因を探しにくくする一斉無効化は避けましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 管理画面での役割分担",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ローカル環境にテストサイトを作る",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：プラグインの管理",
+          "url": "https://wordpress.org/documentation/article/manage-plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：テーマの利用",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：セキュリティ強化",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：サイトのバックアップ",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 테마와 플러그인 설치: 출처, 업데이트, 비활성화 절차",
+      "description": "WordPress 테마나 플러그인을 설치하기 전에 해결할 문제, 다운로드 출처, 버전 호환성, 복구 방법을 확인하세요. 이 글은 관리자 화면 검색, 공식 ZIP 업로드, 활성화와 검수 절차를 정리하고 업데이트, 비활성화, 삭제가 각각 어떤 영향을 줄 수 있는지 설명합니다. 직접 사이트를 관리하는 대만 이용자를 대상으로 새 기능과 장기 비용을 간단히 기록하여 중복 설치, 라이선스 누락, 운영 사이트에서의 과도한 동시 변경을 방지하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-themes-plugins-install/hero-ko.jpg",
+        "alt": "웹사이트 설정, 신뢰할 수 있는 출처 확인, 버전 문서를 그린 자체 제작 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "마음에 드는 기능을 발견할 때마다 플러그인을 설치하면 각 도구가 무슨 일을 하는지 모르는 사이트가 되기 쉽습니다. 테마와 플러그인은 모두 화면이나 동작을 바꿀 수 있지만, 설치 후 실제 문제를 해결하는지, 계속 업데이트할 수 있는지, 제거할 때 무엇이 남는지 먼저 생각해야 합니다. 설치 버튼은 여러 단계 중 하나일 뿐입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 가상의 소규모 수공예품 전시 사이트로 관리 절차를 설명합니다. 문의 양식을 추가하고 읽기 편한 레이아웃을 만들려는 요구를 각각 구분한 뒤 기존 설정으로 가능한지, 새 도구가 필요한지 결정합니다. 절차는 WordPress 공식 문서를 바탕으로 정리했으며 특정 유료 제품을 테스트하거나 추천하지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "text": "필요한 것이 디자인인지 기능인지 먼저 판단하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "테마는 주로 사이트 표시와 템플릿을 관리하고 플러그인은 기능을 확장하지만 실제 제품에서는 역할이 겹칠 수 있습니다. 예를 들어 휴대전화에서 글자를 읽기 쉽게 하거나 방문자가 문의를 보내게 하는 등 완료할 일을 먼저 적으세요. 현재 테마 설정으로 글자 크기를 조정할 수 있다면 디자인 플러그인을 추가할 필요가 없습니다. 반대로 보기 좋은 템플릿만으로 양식 데이터를 처리할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미 있는 관련 도구를 나열하고 기능이 중복되는지 확인하세요. 캐시 도구나 SEO 도구가 두 개씩, 양식 도구가 여러 개 있다고 효과가 높아지는 것은 아니며 설정과 책임을 알아보기 어려워질 수 있습니다. 플러그인 총개수만으로 사이트 품질을 판단하지 말고 각 도구의 목적, 의존 관계, 실제 영향을 살펴보세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "도구를 고르기 전에 완료 기준을 적으세요. 전시 사이트의 문의 기능이라면 적어도 작성과 전송, 알림 수신, 기록 검색이 가능해야 합니다. 읽기 레이아웃은 휴대전화와 데스크톱에서 모두 명확해야 합니다. 기준을 먼저 정해 두면 설치 후 여러 새 기능에 눈길이 쏠려 원래 해결할 문제를 잊지 않을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "출처, 유지관리, 라이선스를 함께 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 공식 디렉터리나 개발자의 공식 채널에서 파일을 받고 작성자 이름, 제품 URL, 버전을 대조하세요. 유료 ZIP은 자신의 합법적인 계정에서 다운로드하고 출처가 불명확한 수정본은 사용하지 마세요. 파일명이 같아도 신뢰할 수 있는 출처라는 증거가 아니며 무료로 다운로드할 수 있었다고 업데이트나 지원을 받을 권리가 생기는 것도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "최근 업데이트, 요구 버전, 변경 기록, 공식 지원 문서를 살펴보세요. 오랫동안 업데이트되지 않았다면 더 알아봐야 하지만 날짜만으로 문제가 있다고 단정할 수는 없습니다. 호환성 표시도 사이트의 모든 플러그인과 함께 작동한다는 보장은 아닙니다. 현재 환경이 요구 조건을 충족하는지, 필요한 기능을 검증할 수 있는지가 중요합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "유료 제품이라면 사용 가능한 사이트 수, 업데이트 기간, 갱신 방법, 라이선스 이전 조건도 기록하세요. 외주 작업자가 구입했다면 인계 후 업데이트를 누가 제공할지 합의해야 합니다. 외부 서비스에 연결되는 도구는 계정, 전송되는 데이터, 향후 비용도 확인하세요. 사이트를 계속 사용할 수 있는 권리와 업데이트·지원을 계속 받을 권리는 별개일 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "설치와 활성화를 별개의 동작으로 다루기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "관리자 화면의 플러그인 > 새로 추가에서 공식 디렉터리를 검색하고 상세 정보를 읽은 뒤 설치하고 활성화할 수 있습니다. 공식 ZIP을 사용한다면 플러그인 업로드에서 올바른 파일을 고르세요. 설치는 파일을 추가하는 것이고 활성화는 사이트가 해당 기능을 불러오기 시작하는 것입니다. 이후 필수 설정을 마쳐야 할 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테마는 외모 > 테마에서 새로 추가하거나 업로드한 뒤 미리 보고 활성화합니다. 다운로드한 묶음에 설명서와 여러 설치 파일이 있다면 개발자 지침을 읽고 설치 가능한 ZIP을 선택하세요. 첫 실패 후 모든 파일을 반복해서 올리지 마세요. 새 테마 미리 보기가 비어 있거나 오류가 나오면 활성화 전에 원인을 조사하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 관리자 화면 절차가 실패하면 파일 크기 제한, 권한, 요금제 규칙을 먼저 확인하고 공식 지원 안내를 따르세요. 수동 SFTP 설치에는 디렉터리 구조와 접근 방법에 대한 이해가 필요합니다. 낯선 도구에 계정 정보를 붙여 넣거나 원인을 모른 채 사이트 전체 디렉터리의 쓰기 권한을 넓히지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "요구 사항, 기존 도구, 환경 버전을 기록하고 필요한 백업을 준비합니다.",
+            "공식 디렉터리나 개발자 계정에서 내려받아 작성자, 버전, 설치 파일을 확인합니다.",
+            "먼저 테스트 사이트에서 도구 하나를 설치·활성화하고 필수 설정을 마칩니다.",
+            "처음 정한 기준에 따라 기능과 레이아웃을 테스트한 뒤 운영 사이트 변경을 계획합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "검수에는 원래 정상 작동하던 기능도 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "문의 양식을 추가한 뒤 새 양식뿐 아니라 기존 탐색, 검색, 로그인도 확인하세요. 테마를 바꾼 뒤 첫 화면이 예쁘게 보이는 것만으로는 부족합니다. 글 목록, 내부 페이지, 바닥글, 모바일 메뉴, 오류 페이지가 다른 템플릿을 쓸 수 있습니다. 실제 길이의 글과 크기가 다른 이미지를 사용해야 레이아웃 문제를 볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "설정에 예시 데이터, 추가 추적, 불필요한 연동이 포함됐는지 확인하고 쓰지 않는 항목은 제거하세요. 양식을 시험용 데이터로 제출한 뒤 알림, 기록, 삭제 방법을 확인합니다. 제품이 외부 계정 연결을 요구하면 어떤 데이터가 전송되는지 먼저 이해하고 단지 안내 문구를 없애기 위해 필요한 것보다 넓은 권한을 주지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "설치 버전, 설정, 테스트한 페이지와 결과를 보관하세요. 로그인 상태에서만 또는 캐시를 껐을 때만 기능이 작동한다면 그 조건을 기록하고 임시 우회 방법을 완료로 간주하지 마세요. 인계 전에 실제 관리자가 한 번 직접 사용해 보아 향후 설치 담당자에게 의존하지 않아도 되는지 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "업데이트 전에 복구 자료 남기기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트는 문제를 고치거나 기능을 추가하고 호환성 조건을 바꿀 수 있습니다. 변경 기록과 요구 버전을 읽고 중요한 사이트는 먼저 테스트 사본에서 검증한 뒤 적절한 시간에 적용하세요. 자동 업데이트는 유지관리 누락을 줄일 수 있지만 백업, 알림, 오류 대응 계획은 여전히 필요합니다. 설정만 켜고 사이트를 전혀 살펴보지 않아도 되는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용자 설정을 보존하려고 업데이트로 덮어쓰게 될 테마나 플러그인 원본 파일을 직접 수정하지 마세요. 테마 변경에는 적절한 설정이나 자식 테마를 사용할 수 있고 코드 변경은 구조를 이해하는 사람이 관리해야 합니다. 새 버전을 적용한 뒤 중요한 기능이 사라지지 않도록 사용자 지정 내용의 위치를 미리 기록하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "복구할 때 데이터베이스 변경도 고려해야 합니다. 프로그램 파일만 이전 버전으로 되돌려도 업데이트된 데이터 구조와 설정이 복구되지 않을 수 있습니다. 제품의 롤백 안내와 전체 백업을 확인하고 적절한 방법을 선택하세요. 업데이트 후 새 데이터가 생겼다면 이전 백업으로 무작정 덮어쓰지 말고 데이터를 보존할 방법을 처리해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "비활성화, 삭제, 구독 취소를 각각 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 플러그인은 먼저 비활성화한 다음 관리자 화면 절차에 따라 삭제할 수 있습니다. 비활성화하면 관련 기능은 멈추지만 모든 데이터가 지워지는 것은 아닙니다. 삭제 시 데이터 정리 여부는 플러그인의 설계와 설정에 달려 있습니다. 제거 전에 보존할 양식이나 기타 데이터를 내보내고 페이지에 숏코드, 빈 블록, 작동하지 않는 버튼이 남는지 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "호스팅 업체가 미리 설치했거나 Must-Use 유형인 플러그인은 관리 방식이 다를 수 있습니다. 플랫폼과의 관계를 이해하기 전에 임의로 삭제하지 마세요. 사이트에서 플러그인을 삭제해도 외부 서비스의 구독이나 자동 갱신은 취소되지 않습니다. 해당 공급업체에서 별도로 결제를 처리하고 데이터 보존 및 계정 종료 조건을 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 도구 목록에 목적, 작성자, 버전, 라이선스, 담당자를 업데이트하세요. 사용하지 않는 도구는 확인된 절차에 따라 정리하고 사용하는 도구에는 유지관리 계획을 세웁니다. 추가할 때마다 이유를 설명하고 제거할 때마다 인계 기록을 남기면 아무도 손대지 못하는 도구 더미가 되는 것을 막을 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-themes-plugins-install/diagram-1-ko.svg",
+          "alt": "테마와 플러그인을 필요성, 출처, 검수, 유지관리의 네 단계로 나눈 자체 제작 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "설치는 끝이 아닙니다. 지속적으로 관리할 수 있어야 완전한 기능 인도입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "테마와 플러그인을 필요성, 출처, 검수, 유지관리의 네 단계로 나눈 자체 제작 도해."
+        },
+        {
+          "type": "table",
+          "header": [
+            "동작",
+            "의미",
+            "추가 확인"
+          ],
+          "rows": [
+            [
+              "설치",
+              "파일을 사이트에 추가",
+              "출처와 호환성"
+            ],
+            [
+              "활성화",
+              "기능 또는 테마 불러오기 시작",
+              "설정과 실제 검수"
+            ],
+            [
+              "업데이트",
+              "새 버전 적용",
+              "백업, 변경 사항, 복구"
+            ],
+            [
+              "비활성화",
+              "일반 플러그인 기능 불러오기 중단",
+              "의존 기능과 데이터 보존"
+            ],
+            [
+              "삭제",
+              "설치한 내용 제거",
+              "데이터 정리와 페이지 잔여물"
+            ],
+            [
+              "구독 취소",
+              "공급업체 결제 처리",
+              "사이트에서의 삭제와 별개로 진행"
+            ]
+          ],
+          "caption": "도구 생애주기의 각 동작은 영향이 달라 서로 대신할 수 없습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "한 번에 검증 가능한 작은 범위만 변경하기",
+          "text": "테스트하고 결과를 보관한 다음 다음 변경을 진행하세요. 오류가 나면 기록을 바탕으로 영향 범위와 복구 방법을 파악하고 모든 기능을 한꺼번에 비활성화해 원인 파악을 어렵게 만들지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 관리자 화면의 역할 분담",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "로컬 환경에 테스트 사이트 만들기",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 플러그인 관리",
+          "url": "https://wordpress.org/documentation/article/manage-plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 테마 사용",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 보안 강화",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 사이트 백업",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "安装 WordPress 主题与插件：来源、更新与停用流程",
+      "description": "安装 WordPress 主题或插件前，先确认要解决的问题、下载来源、版本兼容性与恢复方式。本文整理后台搜索、官方 ZIP 上传、启用及验收流程，并说明更新、停用和删除各自可能影响什么。适合需要自行维护网站的台湾用户，用一份简短记录管理新增功能与长期成本，避免重复安装、忘记授权或在正式网站一次修改太多项目。",
+      "hero": {
+        "src": "/guides/wordpress-themes-plugins-install/hero-zh-cn.jpg",
+        "alt": "网站设置、可信来源检查与版本文件组成的原创插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "看到想要的功能就装一个插件，网站很快会累积到不知道每个工具在做什么。主题与插件都能改变外观或行为，但安装后是否真正解决问题、能否持续更新，以及移除时会留下什么，都需要事先考虑。安装按钮只是其中一个步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文用虚构的小型手工商品展示站说明管理流程。网站想新增咨询表单与改善阅读布局，先分清这两项需求，再决定使用既有设置或新增工具。步骤依 WordPress 官方文件整理，没有测试或推荐特定付费产品。"
+        },
+        {
+          "type": "heading",
+          "text": "先确定需要的是设计还是功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "主题主要管理网站外观与模板，插件则扩充功能，但实际产品可能有交集。先写下要完成的工作，例如让手机文字易读，或让访客提交咨询。若现有主题设置已能调整字号，就不必先安装另一个设计插件；若需要表单数据处理，也不能只靠一个漂亮的页面模板完成。"
+        },
+        {
+          "type": "paragraph",
+          "text": "列出目前已有的相关工具，确认是否功能重复。两个缓存、两个 SEO 或多套表单工具同时存在，不一定增加效果，却可能让设置与责任更难辨认。不要只用插件总数判断网站质量，应查看每个工具的用途、依赖与实际影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选定工具前，写出完成标准。展示站的咨询功能至少要能填写、提交、收到通知并找到记录；阅读布局则要在手机与桌面都清楚。把标准写在前面，才不会在安装后因为新功能很多，就忘了最初要解决的问题。"
+        },
+        {
+          "type": "heading",
+          "text": "来源、维护与授权一起核对",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "优先从 WordPress 官方目录或开发者正式管道取得文件，核对作者名称、产品网址及版本。付费 ZIP 应从自己的合法账户下载，不使用来路不明的修改版。文件名称相同不能证明来源可信，也不能因为免费下载得到就推定可取得更新与支持。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查看最近更新、版本需求、变更记录与官方支持文件。很久没有更新值得进一步了解，但不能只靠日期判定一定有问题；兼容性标示也不能保证与你站上的每个插件都能一起运作。真正需要确认的是目前环境是否符合要求，以及必要功能是否可验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "付费产品另外记录可使用的网站数、更新期间、续约方式与许可证转让条件。若由外包人员购买，要约定交接后由谁提供更新；若工具连到外部服务，也要确认账户、数据传输与后续费用。网站能继续使用与仍有更新支持，可能是不同条件。"
+        },
+        {
+          "type": "heading",
+          "text": "安装与启用分成两个动作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "插件可从后台插件的新增入口搜索官方目录，阅读详细信息后安装，再启用。若使用官方提供的 ZIP，通过上传插件选择正确文件。安装代表文件已加入，启用才会开始让网站加载对应功能；完成后可能还要设置必要选项。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主题可从外观的主题入口新增或上传，再预览与启用。若下载包包含说明文件与多个安装包，先看开发者指示，选对可安装的 ZIP，不要因为第一次失败就反复上传所有文件。新主题预览空白或出现错误时，先查原因再启用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般后台流程无法完成时，先确认文件大小限制、权限与方案规则，再依官方支持处理。手动 SFTP 安装需要了解目录结构与访问方式，不应把账号密码贴进不明工具。也不要在不清楚原因时直接提高整个网站目录的写入权限。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "记录需求、目前工具及环境版本，取得必要备份。",
+            "从官方目录或开发者账户下载，确认作者、版本与安装包。",
+            "先在测试站安装并启用一项工具，完成必要设置。",
+            "依原定标准测试功能与布局，确认后安排正式网站变更。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "验收要包含原本正常的功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新增咨询表单后，不只测试新表单，也检查原本导航、搜索及登录是否仍正常。更换主题后，首页看起来漂亮还不够，文章列表、内容页、页脚、手机菜单与错误页都可能使用不同模板。使用真实长度的文字与不同尺寸图片，才能看见布局问题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "检查设置是否带入示例数据、额外追踪或不需要的整合，移除未使用的内容。表单先用测试数据提交，再确认通知、记录与删除方式。若产品要求连接外部账户，先理解传输哪些数据，不要只为了消除提示就提供超过工作所需的权限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存这次安装的版本、设置、测试页面与结果。若功能只能在某个登录状态或缓存关闭时正常，也要写清楚，不能把暂时绕过问题当成完成。交付前让实际管理者操作一次，确认日后不依赖安装者才会使用。"
+        },
+        {
+          "type": "heading",
+          "text": "更新前保留恢复材料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更新可能修正问题、增加功能或改变相容条件。安排更新时查看变更记录与版本需求，重要网站先在测试副本验证，再在合适时段套用。自动更新可以减少忘记维护的机会，但仍需要备份、通知及出错后的处理方式，不能开启后就完全不看网站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要直接修改会被更新覆盖的主题或插件源文件来保存自定义。主题修改可依需求使用适当设置或子主题方式，代码变更则交由了解架构的人管理。更新前记录自定义内容放在哪里，避免新版套用后才发现重要功能消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "恢复也要考虑数据库变更。只把程序文件换回旧版，不一定能恢复更新后的数据结构与设置。先确认产品的恢复说明及完整备份，再选择适当方式；若网站在更新后已有新数据，还要处理数据保留，不能盲目用旧备份覆盖。"
+        },
+        {
+          "type": "heading",
+          "text": "停用、删除与取消订阅各自确认",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般插件可先停用，再依后台流程删除。停用会停止相关功能，但不代表所有数据都清除；删除时是否清理数据，则由插件设计及设置决定。移除前先导出需要保存的表单或其他数据，并查看页面中是否留下短代码、空白区块或失效按钮。"
+        },
+        {
+          "type": "paragraph",
+          "text": "主机预装或 Must-Use 插件可能有不同管理方式，先了解它与平台的关系，不任意移除。另要注意，从网站删除插件不等于取消外部服务订阅或自动续约；账务需到对应供应商处理，并确认数据保存与关闭条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后更新工具列表，保留用途、作者、版本、授权及负责人。没有使用的工具依确认后的程序整理，仍在使用的则安排维护。每次新增都能说明原因、每次移除都有交接记录，网站才不会变成没有人敢碰的工具堆。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-themes-plugins-install/diagram-1-zh-cn.svg",
+          "alt": "主题与插件从需求、来源、验收到维护的四阶段原创图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "安装不是结束，能持续维护才是完整的功能交付。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          },
+          "description": "主题与插件从需求、来源、验收到维护的四阶段原创图解。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "动作",
+            "代表什么",
+            "另外确认"
+          ],
+          "rows": [
+            [
+              "安装",
+              "文件加入网站",
+              "来源与兼容性"
+            ],
+            [
+              "启用",
+              "开始加载功能或主题",
+              "设置与实际验收"
+            ],
+            [
+              "更新",
+              "套用新版本",
+              "备份、变更与恢复"
+            ],
+            [
+              "停用",
+              "停止加载一般插件功能",
+              "依赖功能与数据保留"
+            ],
+            [
+              "删除",
+              "移除安装内容",
+              "数据清理与页面残留"
+            ],
+            [
+              "取消订阅",
+              "处理供应商账务",
+              "与网站删除分开办理"
+            ]
+          ],
+          "caption": "工具生命周期的每个动作都有不同影响，不能互相代替。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "一次只改足以验证的一小组项目",
+          "text": "先测试、保存结果，再进行下一项变更。若出错，依记录确认影响范围与恢复方式，避免同时停用所有功能让问题更难辨认。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 后台的管理分工",
+              "kind": "life",
+              "slug": "wordpress-admin-basics"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "在本机建立测试站",
+              "kind": "life",
+              "slug": "wordpress-local-development"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：插件管理",
+          "url": "https://wordpress.org/documentation/article/manage-plugins/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：使用主题",
+          "url": "https://wordpress.org/documentation/article/work-with-themes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：安全强化",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：网站备份",
+          "url": "https://developer.wordpress.org/advanced-administration/security/backup/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
