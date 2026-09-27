@@ -103,7 +103,20 @@ export function lookReviewHtml(doc, manifest) {
 }
 
 /** The finished video, its chapters, and every line; clicking a line or chapter seeks to it. */
-export function finalReviewHtml(doc, timeline, checks) {
+/**
+ * The dub tracks beside the video (docs/videos/DUBS.md): one player per locale, playing the
+ * track file from the work directory, so the owner can hear a language before uploading it.
+ */
+export function dubPlayers(dubs = []) {
+  if (!dubs.length) return "";
+  const items = dubs.map((dub) => {
+    const tempo = dub.tempo_max > 1 ? `，最快處 ${escapeHtml(dub.tempo_max)} 倍速` : "";
+    return `<li><p><strong>${escapeHtml(dub.locale)}</strong>${tempo}</p><audio controls preload="none" src="../dubs/${escapeHtml(dub.locale)}.${escapeHtml(dub.format ?? "m4a")}"></audio></li>`;
+  });
+  return `<h2>配音音軌</h2><p class="hint">同一個聲音講別的語言。把影片靜音、按下音軌一起看，畫面換頁的地方配音要剛好講完。</p><ol>${items.join("")}</ol>`;
+}
+
+export function finalReviewHtml(doc, timeline, checks, dubs = []) {
   const text = new Map([...eachLine(doc)].map(({ line }) => [line.id, labelledText(doc, line)]));
   const cues = timeline.lines.map((line) => ({ id: line.id, start: frameToSeconds(line.start_frame), end: frameToSeconds(line.end_frame), text: text.get(line.id) ?? "" }));
   const chapters = timeline.chapters.map((chapter) => `<li class="cue" data-start="${frameToSeconds(chapter.start_frame)}"><span class="time">${formatClock(frameToSeconds(chapter.start_frame))}</span>${escapeHtml(chapter.title)}</li>`);
@@ -114,6 +127,7 @@ export function finalReviewHtml(doc, timeline, checks) {
     problems,
     `<video id="video" controls preload="metadata" src="../final.mp4"></video>`,
     `<p class="hint">從頭看到尾。沒問題就回覆「成片可以」；有問題寫下時間與哪裡不對。點下面的章節或句子會跳到那裡。</p>`,
+    dubPlayers(dubs),
     `<h2>章節</h2><ol>${chapters.join("")}</ol>`,
     `<h2>每一句</h2><ol id="lines">${lines.join("")}</ol>`,
     `<script>const video=document.getElementById("video");` +

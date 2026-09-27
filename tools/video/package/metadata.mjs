@@ -59,7 +59,36 @@ const DRAMA_CHECKS = `- [ ] **合成內容揭露**（Studio「變造或合成內
 - [ ] **每集劇情獨立**：這一集有自己的故事與構圖，不是換名字的模板；分鏡、提示詞與參考圖留在工作區當作者證據。
 - [ ] **音樂授權**：配樂來自 Lyria（站上生成）或站主自己有授權、放在 \`_music/\` 的檔案；不用來路不明的曲子。`;
 
-export function uploadChecklist({ metadata, captions, thumbnail, drama = false }) {
+/**
+ * The Studio steps for the dub tracks (docs/videos/DUBS.md), or where to ask for some. Tracks
+ * can be added before or after the video is public; YouTube's own auto dub of a language has to
+ * be deleted before the owner's track for it goes up.
+ */
+export function dubSteps(dubs = [], skippedDubs = {}) {
+  const lines = [];
+  if (dubs.length) {
+    lines.push("要上傳的音軌：", "");
+    for (const dub of dubs) lines.push(`- \`${dub.file}\`（${dub.locale}${dub.tempo_max > 1 ? `，最快處 ${dub.tempo_max} 倍速` : ""}）`);
+    lines.push(
+      "",
+      "每個語系做一次：Studio 左選單「語言」→ 這支影片 →「新增語言」→ 選語言 →「配音」旁的「新增」→「選取檔案」→ 選對應的檔案 →「發布」。上架前或上架後都可以加。",
+      "",
+      "- 頻道要有「進階功能」（設定 → 頻道 → 功能使用資格）。",
+      "- YouTube 已經替這個語言自動配音的話，要先在同一頁刪掉自動配音，才傳得上去；建議在設定 → 頻道 → 進階設定取消「允許自動配音」。",
+      "- 傳完到影片頁的「配音音軌」卡片按核准，表示已上傳。",
+    );
+  } else {
+    lines.push("這支沒有配音音軌。要加，在 `/admin/videos` 這支影片的頁面勾選語言，工人做好會再送一張卡片。");
+  }
+  const skipped = Object.entries(skippedDubs);
+  if (skipped.length) {
+    lines.push("", "做不出來的語系（不用等）：");
+    for (const [locale, reason] of skipped) lines.push(`- ${locale}：${reason || "沒有寫原因"}`);
+  }
+  return lines.join("\n");
+}
+
+export function uploadChecklist({ metadata, captions, thumbnail, drama = false, dubs = [], skippedDubs = {} }) {
   const captionLines = captions.length ? captions.map((file) => `   - \`${file}\``).join("\n") : "   - （還沒有字幕檔：先跑 captions）";
   const disclosure = drama
     ? DRAMA_CHECKS
@@ -83,7 +112,11 @@ ${captionLines}
 
 在「字幕」分頁新增語言並上傳對應的檔案；或上傳完成後，把影片 ID 交回，用 \`node tools/video/cli.mjs youtube-sync\` 一次補上字幕與其他語言的標題說明。
 
-## 3. 上架前自我檢查
+## 3. 配音音軌（多語言音訊）
+
+${dubSteps(dubs, skippedDubs)}
+
+## 4. 上架前自我檢查
 
 ${disclosure}
 - [ ] **非原創內容政策**：這支有站主自己的觀點（brief.md 的「站主觀點」）、${drama ? "站主看過並核准了每一個關卡（設定圖、分鏡、成片）" : "至少一段實際示範或實算，而不是套版型念重點"}。
@@ -91,7 +124,7 @@ ${disclosure}
 - [ ] 說明欄的連結都點過，文章頁會開。
 - [ ] 縮圖縮到手機大小還看得懂。
 
-## 4. 公開
+## 5. 公開
 
 確認都沒問題之後，才把瀏覽權限改成「公開」或設定排程。影片網址交回後會寫進 \`video.json\`。
 `;
