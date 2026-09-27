@@ -1,6 +1,6 @@
 # AI 漫劇路線：角色設定圖、關鍵影格、圖生影片、多角色配音、燒錄字幕、配樂
 
-這條路線的成品是一支像《山海经之万兽图鉴》那樣的 AI 動畫劇：每個鏡頭是一段 AI 生成的動態片段（先出關鍵影格，再圖生影片），旁白加多個角色配音，底部燒錄繁中字幕，有背景音樂，五語 CC。設計與為什麼這樣做在 `docs/videos/DRAMA.md`；這份只寫**怎麼做**。投影片路線的共通部分（一次性設定、發音字典、CC 翻譯、上架包）在 `.agents/skills/youtube-video/references/automated.md`，這裡不重複。
+這條路線的成品是一支像《山海经之万兽图鉴》那樣的 AI 動畫劇：每個鏡頭是一段 AI 生成的動態片段（先出關鍵影格，再圖生影片），旁白加多個角色配音，底部燒錄繁中字幕，有背景音樂，繁中 CC；其他語言的標題說明與 CC 由站主每支勾選（下面第 13 步）。設計與為什麼這樣做在 `docs/videos/DRAMA.md`；這份只寫**怎麼做**。投影片路線的共通部分（一次性設定、發音字典、CC 翻譯、上架包）在 `.agents/skills/youtube-video/references/automated.md`，這裡不重複。
 
 站主把關的關卡比投影片多兩個：
 
@@ -40,7 +40,8 @@
 | 9 | `clips`：每鏡圖生影片，ffmpeg 與 judge 品檢，不過換 seed（最多 2 次），送出前對單支上限把關 | 工具 | `clips/manifest.json`、`clips/*.mp4` | **第一支先單獨跑一鏡**看主機地區有沒有被 Gemini 擋 |
 | 10 | `music`：生成或核對自帶曲子 | 工具 | `music/manifest.json` | — |
 | 11 | `assemble`：片段對齊句子（截、慢放、凍格）、疊字幕條、溶接、音樂壓低、串接、檢查 | 工具 | `final.mp4`、`checks.json`（六個雜湊） | 自動檢查全過 |
-| 12 | CC 翻譯、`captions`、`review-push --gate final`、`package`、`review-push --gate publish` | 同投影片路線 | `captions/`、`upload/` | `UPLOAD.md` 多了合成內容揭露、劇情獨立、音樂授權三項 |
+| 12 | `captions`（只有繁中）、`review-push --gate final`、`package`、`review-push --gate publish` | 同投影片路線 | `captions/`、`upload/` | `UPLOAD.md` 多了合成內容揭露、劇情獨立、音樂授權三項 |
+| 13 | 語言（`docs/videos/LANGUAGES.md`）：成片核准後站主在影片頁勾每個語言的標題說明與 CC（漫劇的配音是第二期，面板上灰掉；「照預設勾選」讀漫劇設定的 `drama_caption_locales`）→ 工人只做勾了的：`i18n-sheet --parts` → 翻譯與審稿代理 → `i18n-merge` → `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | `<VIDEO_DOCS>/i18n/<語系>.json`、`captions/<語系>.srt`、`upload/` | 沒有配音的批次伺服器直接核准；都做好影片才進「可以上架」。步驟細節同 `automated.md` 第 13 步 |
 
 每個媒體階段之間都看 `STOP` 檔；中斷後重跑接著做：同一個請求不付第二次（`media/cache.json`），還在跑的伺服器工作接著輪詢（`media/jobs.json`），花費都在 `media/ledger.json`。
 

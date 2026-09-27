@@ -1,6 +1,6 @@
 ---
 name: youtube-video
-description: 製作 YouTube 教學與解說影片的完整流程，分兩條路線。全自動：AI 撰稿與查核、伺服器用 Gemini（或 Azure）合成台灣口音旁白、深色投影片版型、ffmpeg 合成、五語 CC，工具在 tools/video。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。兩條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos, fully automated through tools/video or recorded by the owner, from topic to upload.
+description: 製作 YouTube 教學與解說影片的完整流程，分兩條路線。全自動：AI 撰稿與查核、伺服器用 Gemini（或 Azure）合成台灣口音旁白、深色投影片版型、ffmpeg 合成、繁中 CC 加站主每支勾選的語言（標題說明、CC、配音），工具在 tools/video。人工錄製：口播稿、分鏡、字卡、螢幕錄影、剪輯交接。兩條都涵蓋選題與格式、查核、畫面與縮圖、章節、字幕、上架包與上架前檢查。要做一支 YouTube 影片、把 Mokaair 文章改成影片、寫口播稿或分鏡、合成旁白、做縮圖、排章節、寫影片說明或上字幕時，先讀這個 skill。Produce Mokaair YouTube videos, fully automated through tools/video or recorded by the owner, from topic to upload.
 metadata:
   short-description: YouTube 影片：全自動或人工錄製，從選題到上架
 ---
@@ -20,8 +20,8 @@ metadata:
 
 | 路線 | 成品 | 誰做什麼 | 從哪裡開始 |
 | --- | --- | --- | --- |
-| **全自動** | 深色投影片＋台灣口音合成旁白＋五語 CC，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
-| **AI 漫劇** | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋五語 CC，2–4 分鐘一集 | 代理寫故事聖經、劇本與分鏡，工具生成設定圖、關鍵影格、片段、音樂並合成；站主選大綱、選角色設定圖、聽旁白、看分鏡、看成片、自己上傳 | `.agents/skills/youtube-video/references/drama.md`（設計在 `docs/videos/DRAMA.md`） |
+| **全自動** | 深色投影片＋台灣口音合成旁白＋繁中 CC，其他語言（標題說明、CC、配音）由站主每支勾選，8–12 分鐘 | 代理企劃、撰稿、查核，工具合成旁白、畫面與成片；站主選大綱、聽旁白、看成片、自己上傳 | 下面「全自動路線」與 `.agents/skills/youtube-video/references/automated.md` |
+| **AI 漫劇** | AI 生成的鏡頭片段＋旁白與角色配音＋燒錄繁中字幕＋配樂＋繁中 CC（其他語言的標題說明與 CC 由站主每支勾選），2–4 分鐘一集 | 代理寫故事聖經、劇本與分鏡，工具生成設定圖、關鍵影格、片段、音樂並合成；站主選大綱、選角色設定圖、聽旁白、看分鏡、看成片、自己上傳 | `.agents/skills/youtube-video/references/drama.md`（設計在 `docs/videos/DRAMA.md`） |
 | **長篇漫劇** | 一部約 100 集、分篇章的原創故事，一集接一集地做；角色設定圖與人物表跨集沿用 | 站主建作品、核准設定集／總綱／每篇細綱／每集劇本、上架；工人規劃文件、依細綱寫每一集、自動接續 | `.agents/skills/youtube-video/references/series.md`（設計在 `docs/videos/SERIES.md`） |
 | **人工錄製** | 站主出鏡或配音、螢幕錄影、剪輯 | 代理交稿子、分鏡、字卡、上架文字；站主錄音、錄影、剪輯 | 下面「人工錄製路線」 |
 
@@ -71,9 +71,10 @@ metadata:
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 協調者套用修正、`lint` 再過 |
 | 5 | `tts`：先 `--dry-run` 看字數與額度，再實際合成 | 工具 | 時間軸寫出、章節時間檢查過 |
 | 6 | `check-audio`（Jev 判斷）→ 被標的句子 `tts --redo` → 重錄到上限仍被標的句子交給聽眾審稿模型改寫措辭（`prompts/listener-rewrite.md`，最多兩輪）→ `review-push` | 工具、站主 | Jev 全過就自動核准；**還有被標的句子才由站主在 `/admin/videos` 核准旁白** → `review-pull` |
-| 7 | `render` → `assemble` → CC 翻譯與 `captions` | 工具、翻譯代理 | 聯絡表看過；`checks.json` 全過；沒有過期翻譯 |
+| 7 | `render` → `assemble` → `captions`（只有繁中） | 工具 | 聯絡表看過；`checks.json` 全過 |
 | 8 | `review-push --gate final`：先跑 `qa`（11 項自動品管），再送 720p 成片與報告 | 工具 | 11 項全過就自動核准；沒過的才**由站主在 `/admin/videos` 看** → `review-pull` |
-| 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准，影片進「可以上架」；影片 ID 由工人寫回 `video.json` |
+| 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准；影片 ID 由工人寫回 `video.json` |
+| 10 | 語言（`docs/videos/LANGUAGES.md`）：站主在影片頁勾每個語言要哪些部件（標題說明、CC、配音）或「只出繁體中文」→ 工人只做勾了的（翻譯、審稿；配音含縮短與重錄）→ `captions` → `package` → `review-push --gate languages` | 站主、工具、翻譯代理 | 都做好影片才進「可以上架」、排程才送出；有配音的卡片要站主在 Studio 上傳後按「已在 Studio 上傳配音」 |
 
 `status --slug <SLUG>` 隨時印出做到哪一步、下一個指令是什麼。核准綁檔案雜湊：稿子或旁白改了，舊的核准自動失效，後面的指令會以結束碼 3 拒絕，要重新 `review-push`。後台頁用不了時，才用有選項的提問問站主，再 `approve --gate …` 記下。
 
