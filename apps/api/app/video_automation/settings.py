@@ -12,6 +12,11 @@ from app.admin.service import load_runtime_settings
 from app.ai.catalog import MODEL_CATALOG, Capability
 from app.config import Settings
 from app.models import AdminAuditLog, User
+from app.video_automation.judge import (
+    final_qa_passed,
+    outline_pick_passed,
+    publish_package_passed,
+)
 from app.video_automation.models import (
     DRAMA_FIELDS,
     STYLE_PRESETS,
@@ -363,3 +368,35 @@ async def auto_approves_storyboard(session: AsyncSession, payload: dict[str, Any
     if row is None or not row.auto_approve_storyboard:
         return False
     return storyboard_check_passed(payload, row.judge_min_score)
+
+
+async def auto_picks_outline(session: AsyncSession, payload: dict[str, Any]) -> bool:
+    """Whether an outline review stands on Jev's pick (docs/videos/HANDS-OFF.md).
+
+    The switch must be on and the stance written, so no video gets its viewpoint decided by
+    the AI before the owner wrote one down; then the pick must clear the thresholds.
+    """
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    if row is None or not row.auto_pick_outline or not (row.channel_stance or "").strip():
+        return False
+    return outline_pick_passed(payload)
+
+
+async def auto_approves_final(
+    session: AsyncSession, gate: str, payload: dict[str, Any], sha: str
+) -> bool:
+    """Whether a final cut or an upload confirmation stands on the automatic checks."""
+    row = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    # With no row yet the defaults apply, and the default is on (docs/videos/HANDS-OFF.md).
+    enabled = True if row is None else row.auto_approve_final
+    if not enabled:
+        return False
+    if gate == "final":
+        return final_qa_passed(payload, sha)
+    if gate == "publish":
+        return publish_package_passed(payload, sha)
+    return False
