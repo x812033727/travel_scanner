@@ -241,6 +241,926 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Self-hosting WordPress fonts: files, licenses, and loading speed",
+      "description": "Serving fonts from your own WordPress site gives you control over their source and delivery, but you still need to check web-use rights, character coverage, and file size. This guide explains how to use the Font Library or CSS, what to consider for Traditional Chinese subsets, and how to check layout and speed before and after the change so site owners can balance brand appearance, readability, and maintenance.",
+      "hero": {
+        "src": "/guides/wordpress-fonts-self-hosting/hero-en.jpg",
+        "alt": "Original illustration of a document, folder, and screen showing font-file management and text displayed on a website.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You switch to an attractive Chinese font, only to see the home page go blank briefly or a name in an article change typeface. Fonts affect more than appearance: download size, missing glyphs, and layout stability matter too. Self-hosting means your own site serves the font files; moving them there does not automatically make them faster."
+        },
+        {
+          "type": "paragraph",
+          "text": "Try one body font and only the heading weights you need on a small set of pages before rolling them out sitewide. The steps below cover licensing, files, WordPress settings, and checks from a reader's perspective so the setup remains maintainable."
+        },
+        {
+          "type": "heading",
+          "text": "First, check whether you may serve the font files to visitors",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Permission to install a font on your computer does not necessarily allow you to upload it for browsers to download. Keep the official source, license text, author, and version. Check whether the license permits web use, self-hosting, and any modifications you plan to make. Commercial fonts may also impose domain, traffic, or plan limits; follow the terms of the actual license."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, the SIL Open Font License permits web-font use and distribution, but distributed files must retain the required license and copyright notices. Modifying a font with a reserved name brings additional naming conditions. A free download is no reason to assume you may rename or resell the file at will."
+        },
+        {
+          "type": "paragraph",
+          "text": "Decide whether the whole site needs a custom font at all. If only headings need a distinctive look, a system font for body text can reduce downloads and maintenance. System fonts vary somewhat by device, so test readability, but visitors will not need another full Chinese font download for your body copy."
+        },
+        {
+          "type": "heading",
+          "text": "Choose the formats, weights, and characters you need",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WOFF2 is a good format to evaluate for the web, subject to the browsers you support. Do not upload a huge desktop font and then load every weight. List the fonts used for body copy, headings, and buttons; if a few files suffice, keep the setup simple."
+        },
+        {
+          "type": "paragraph",
+          "text": "Chinese fonts contain many characters. Subsetting can reduce file size, but coverage must match your content. Keeping only characters visible on today's home page may leave the next article, a person's name, an address, or a reader comment without glyphs. Sites with substantial dynamic content need a maintainable coverage strategy or suitable segmented subsets, not just the smallest file today."
+        },
+        {
+          "type": "paragraph",
+          "text": "A variable font can cover a range of weights and other variations in one file, but compare its actual size with what you use. Unused ranges do not become free. If you only need regular and bold, compare both options instead of assuming the newer format must be faster."
+        },
+        {
+          "type": "heading",
+          "text": "Manage files with the WordPress Font Library",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Current WordPress Font Library documentation places the entry under Appearance > Fonts and describes support for block and classic themes in newer versions. Older versions may manage fonts through the Site Editor's Styles and Typography controls. Check your WordPress version and theme support before looking for the relevant entry."
+        },
+        {
+          "type": "paragraph",
+          "text": "In the Font Library's Upload tab, add files whose rights you have checked. Alternatively, choose the Google Fonts families and variants you need in Install Fonts. WordPress says that installation downloads the fonts and serves them locally from your site; separately check any external font requests still made by other plugins."
+        },
+        {
+          "type": "paragraph",
+          "text": "After installation, apply the font to the relevant text, headings, or blocks, save, and inspect the public page. Appearing in the font list does not mean every page uses it. With a classic theme or page builder, check whether its font menu and global settings use the same source."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Record the font source, license, and required variants, then back up the current styles.",
+            "Upload or install through the applicable Font Library entry and confirm the files appear.",
+            "Apply the font to representative pages first and verify the public text uses the intended face."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "When CSS is needed, check declaration and application separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For a manual setup, a maintainer can add @font-face to a stylesheet they can continue to manage, defining a name, file URL, weight, and style. Then apply it to target text with font-family. A declaration that no element uses proves nothing changed on screen. Avoid editing theme core files that an update will overwrite."
+        },
+        {
+          "type": "paragraph",
+          "text": "Visitors must be able to retrieve the file URL and receive the correct content. If files move to a CDN on another domain, check cross-origin settings too. Use the browser's network panel to find missing or failed downloads, then inspect computed styles rather than repeatedly guessing font names."
+        },
+        {
+          "type": "paragraph",
+          "text": "font-display controls how text appears while the font downloads. With swap, a fallback face can show text first, but replacing it may still change line breaks and layout. Choose a suitable fallback and check that headings, buttons, and body copy remain readable when the web font fails to load."
+        },
+        {
+          "type": "heading",
+          "text": "Compare actual downloads, not just hosting locations",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Self-hosting may avoid a connection to a font provider, but speed still depends on your server, caching, file size, and delivery. Google's web.dev guidance notes that self-hosting is not necessarily faster than an external service; replacing segmented, compressed external fonts with one giant file can make pages slower."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test the same page under the same device conditions, both on a first visit and with a warm cache. Record the number of font requests, bytes downloaded, when text becomes readable, and any visible shift after loading. Address duplicate downloads and unnecessary weights before more elaborate optimizations."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not preload every font. preload can fetch a resource early, but may compete with important images or styles. For segmented Chinese fonts in particular, a maintainer should identify the files genuinely needed. Measure first, then decide what to preload."
+        },
+        {
+          "type": "heading",
+          "text": "Check glyph coverage and layout with typical Taiwanese content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use representative pages with Traditional Chinese punctuation, names, addresses, English, numbers, and symbols. Look for boxes, unusual glyphs, or inconsistent weights. If the site includes Japanese or other languages, test the fallback stack too. A single brand slogan cannot establish that a font covers the whole site."
+        },
+        {
+          "type": "paragraph",
+          "text": "On a phone, check line wrapping in long headings, buttons that may overflow, narrower table columns, and readability with enlarged text. For articles updated regularly, keep a way to report missing glyphs. Check the subset-generation process whenever new characters appear instead of patching files for each post."
+        },
+        {
+          "type": "paragraph",
+          "text": "At handover, document file locations, licenses, where each font applies, how subsets are generated, and the last test date. Before removing a font, identify styles and pages that use it, confirm a replacement works, and then remove unneeded files so visual design and content maintenance can continue together."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-fonts-self-hosting/diagram-1-en.svg",
+          "alt": "Original four-panel diagram showing font licensing, file sizing, correct application, and checks across devices.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check that fonts look good, text stays readable, and future updates remain manageable.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Approach",
+            "Main advantage",
+            "Responsibility"
+          ],
+          "rows": [
+            [
+              "System fonts",
+              "No additional font-file download",
+              "Appearance varies slightly across devices"
+            ],
+            [
+              "Self-hosted web fonts",
+              "Control over files and delivery",
+              "Licensing, size, caching, and updates"
+            ],
+            [
+              "External font service",
+              "Service handles some subsetting and transfer",
+              "Service connections, plan terms, and data flow"
+            ]
+          ],
+          "caption": "Choose for readability and maintenance capacity; hosting location alone does not determine speed."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Missing glyphs matter more than saving a few downloads",
+          "text": "Chinese font subsets must cover content added over time. Check names, addresses, and common symbols before cutting download size, and keep a readable fallback for failed font loads."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choose a theme that suits your website",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Create a routine for maintaining your website",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Font Library",
+          "url": "https://wordpress.org/documentation/article/the-font-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Styles and Typography",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SIL: How to Use OFL Fonts",
+          "url": "https://openfontlicense.org/how-to-use-ofl-fonts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: @font-face",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google web.dev: Font Best Practices",
+          "url": "https://web.dev/articles/font-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPress のフォントを自サイトで配信する：ファイル、ライセンス、表示速度",
+      "description": "WordPress のフォントを自サイトで配信すると、入手元や読み込み方法を管理しやすくなります。ただし、ウェブ利用の許諾、文字の収録範囲、ファイル容量の確認は欠かせません。この記事では、フォントライブラリと CSS の使い方、繁体字中国語のサブセットに関する注意点、変更前後の表示と速度の検証を説明し、サイト運営者が見た目、読みやすさ、保守負担を比較できるようにします。",
+      "hero": {
+        "src": "/guides/wordpress-fonts-self-hosting/hero-ja.jpg",
+        "alt": "フォントファイルの管理とサイト上の文字表示を、書類、フォルダー、画面で表したオリジナルのイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "きれいな中国語フォントに変えたら、トップページが一瞬空白になったり、記事中の人名だけ別の書体になったりすることがあります。フォントは見た目だけでなく、ダウンロード量、文字の欠落、レイアウトの安定性にも関わります。自サイト配信とはサイト自身がフォントファイルを提供することで、ファイルを移すだけで必ず速くなるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず本文用の書体を一つ、見出しには必要な太さだけを選び、限られたページで試します。その後、サイト全体に広げるか判断しましょう。以下では、ライセンス、ファイル、WordPress の設定、読者側での確認を順に扱います。"
+        },
+        {
+          "type": "heading",
+          "text": "訪問者へのフォントファイル配信が認められるか確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自分のパソコンにフォントをインストールできても、サイトにアップロードしてブラウザーに配信してよいとは限りません。公式の入手元、ライセンス文、作者、バージョンを記録し、ウェブ利用、自サイト配信、予定している改変が認められるか確認します。商用フォントにはドメイン、アクセス量、契約プランの条件が付く場合もあるため、実際のライセンスに従ってください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "たとえば SIL Open Font License はウェブフォントとしての利用と配布を認めていますが、配布するファイルには所定のライセンス表示と著作権表示が必要です。予約名のあるフォントを改変する場合は、名称にも条件があります。無料でダウンロードできるだけで、自由に改名したり転売したりできると考えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト全体に独自フォントが本当に必要かも検討します。ブランドらしさが見出しだけに必要なら、本文はシステムフォントにするとダウンロード量と保守を減らせます。システムフォントは端末によって多少見た目が異なるので読みやすさの確認は必要ですが、訪問者全員に中国語フォント一式を追加配信する必要はありません。"
+        },
+        {
+          "type": "heading",
+          "text": "必要な形式、太さ、文字を選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ウェブ用には WOFF2 を優先候補にしつつ、対象ブラウザーの要件を確かめます。デスクトップ向けの大きなファイルをすべてアップロードし、全ウェイトを読み込むのは避けましょう。本文、見出し、ボタンで何を使うかを書き出し、少数のファイルで足りるなら構成を単純に保ちます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中国語フォントには膨大な文字が含まれます。サブセット化で容量は減らせますが、収録範囲はコンテンツに合っていなければなりません。現在のトップページにある文字だけを残すと、次の記事、人名、住所、読者コメントの文字が欠けるかもしれません。更新の多いサイトでは、その時点の最小容量だけを追わず、維持できる文字収録方針や適切な分割方式を用意します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "バリアブルフォントは一つのファイルで複数の太さなどに対応できますが、実際の容量と用途を比べる必要があります。使わない範囲が自動的に無コストになるわけではありません。標準と太字だけなら両案を測定し、新しい形式だから速いと決めつけないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPress のフォントライブラリでファイルを管理する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "現在の WordPress フォントライブラリの資料では、入口は「外観」の Fonts にあり、新しいバージョンではブロックテーマとクラシックテーマに対応すると説明されています。古いバージョンではサイトエディターのスタイルとタイポグラフィから管理する場合があります。WordPress のバージョンとテーマの対応状況を先に確かめましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フォントライブラリの Upload タブから利用許諾を確認したファイルをアップロードするか、Install Fonts で必要な Google Fonts の書体とバリエーションを選びます。公式資料によると、このインストール処理はフォントをダウンロードしてサイト内から配信します。ただし、別のプラグインが行う外部フォントへのリクエストは個別に確認してください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "インストール後は、必要な本文、見出し、ブロックに適用して保存し、公開ページを確認します。リストに表示されたからといって、全ページで使われているとは限りません。クラシックテーマやページビルダーを使う場合は、書体メニューと全体設定が同じデータを参照しているか確認します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "フォントの入手元、ライセンス、必要なバリエーションを記録し、現在のスタイルをバックアップする。",
+            "該当するフォントライブラリの入口から追加し、ファイルが一覧にあることを確認する。",
+            "代表的なページに先に適用し、公開ページの文字に目的の書体が使われているか確かめる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "CSS が必要なら、宣言と適用を別々に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "手動で設定するときは、担当者が継続して管理できるスタイルシートに @font-face を追加し、名前、ファイル URL、太さ、スタイルを指定します。その後 font-family で対象の文字に適用します。宣言だけで使う要素がなければ、画面が変わった証拠にはなりません。更新で上書きされるテーマ本体のファイルを直接編集することも避けます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ファイルの URL は訪問者から取得可能で、正しい内容を返す必要があります。別ドメインの CDN に移す場合は、クロスオリジンの設定も確認します。ブラウザーのネットワークパネルでファイルが見つからない状態やダウンロード失敗を探し、計算済みスタイルを調べましょう。書体名を当てずっぽうで変え続けても原因は分かりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "font-display はダウンロード中の文字表示を左右します。swap なら先に代替書体を表示できますが、切り替わったときに改行やレイアウトが変わることがあります。適切な fallback を用意し、フォントを取得できない場合も見出し、ボタン、本文を読めるか試します。"
+        },
+        {
+          "type": "heading",
+          "text": "配信場所だけでなく実際のダウンロードを比較する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自サイト配信ではフォント提供元への接続を減らせますが、速度は自分のサーバー、キャッシュ、ファイル容量、転送方式にも左右されます。Google の web.dev も、自サイト配信が外部サービスより必ず速いわけではないと注意しています。分割・圧縮済みの外部フォントを巨大な一つのファイルに置き換えると、かえって遅くなることがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じページと端末条件で、初回読み込みとキャッシュがある場合をそれぞれ調べます。フォントのリクエスト数、総ダウンロード量、文字が読めるまでの時間、読み込み後の目立つズレを記録します。高度な最適化の前に、重複ダウンロードや不要なウェイトを減らしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "すべてのフォントを preload しないでください。preload は取得を早めますが、重要な画像やスタイルのダウンロードと競合することもあります。特に分割された中国語フォントでは、担当者が本当に必要なファイルを見極めるべきです。先に測定し、対象を決めます。"
+        },
+        {
+          "type": "heading",
+          "text": "台湾でよく使う内容で文字欠けとレイアウトを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "繁体字中国語の句読点、人名、住所、英語、数字、記号を含む代表的なページを用意し、四角い代替表示、不自然な字形、太さの不一致を探します。日本語など他言語のページがあるなら fallback の組み合わせも確かめます。短いブランドスローガンだけで、フォント全体の適性は判断できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンでは長い見出しの折り返し、ボタンのはみ出し、表の列幅を確認し、文字を拡大しても読めるか試します。更新が続く記事では文字欠けの報告経路を残し、新しい文字が増えた際はサブセット生成手順も確認します。投稿のたびに慌ててファイルを修正しないで済むようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎ時には、ファイルの保存場所、ライセンス、適用範囲、サブセットの生成方法、最後の試験日を記録します。フォントを削除する前に、それを使うスタイルとページを特定し、代替書体を確認してから不要なファイルを消します。見た目と内容の保守を一緒に続けられる形にします。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-fonts-self-hosting/diagram-1-ja.svg",
+          "alt": "ライセンス、ファイルの軽量化、正しい適用、複数端末での検証を順に示すオリジナルの四コマ図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "見た目、読みやすさ、更新時の保守性を一緒に確かめましょう。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "主な利点",
+            "必要な管理"
+          ],
+          "rows": [
+            [
+              "システムフォント",
+              "追加のフォントファイルが不要",
+              "端末ごとに見た目が少し異なる"
+            ],
+            [
+              "自サイト配信のウェブフォント",
+              "ファイルと配信方法を管理できる",
+              "ライセンス、容量、キャッシュ、更新"
+            ],
+            [
+              "外部フォントサービス",
+              "一部の分割や転送をサービス側で処理",
+              "接続、契約条件、データの流れ"
+            ]
+          ],
+          "caption": "読みやすさと保守できる範囲で選び、配信場所だけで速度を判断しないでください。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "数ファイルの節約より文字欠けを先に解決する",
+          "text": "中国語フォントのサブセットは、増え続ける内容を収録する必要があります。人名、住所、よく使う記号が読めることを先に確かめ、その後で容量を減らしましょう。読み込みに失敗しても読める代替書体も残します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトに合うテーマの選び方",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトを継続して保守するための確認手順",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：フォントライブラリ",
+          "url": "https://wordpress.org/documentation/article/the-font-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：スタイルとタイポグラフィ",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SIL：OFL フォントの使い方",
+          "url": "https://openfontlicense.org/how-to-use-ofl-fonts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：@font-face",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google web.dev：フォントのパフォーマンスに関する実践",
+          "url": "https://web.dev/articles/font-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 글꼴 직접 호스팅: 파일, 라이선스, 로딩 속도",
+      "description": "WordPress 글꼴을 자체 사이트에서 제공하면 출처와 로딩 방식을 관리할 수 있지만 웹 사용 권한, 문자 범위, 파일 크기를 확인해야 합니다. 이 글은 글꼴 라이브러리와 CSS 사용 방법, 번체 중국어 서브셋의 유의점, 변경 전후의 레이아웃과 속도 점검을 설명합니다. 사이트 운영자가 브랜드 표현, 가독성, 유지보수 비용을 함께 판단하는 데 도움이 됩니다.",
+      "hero": {
+        "src": "/guides/wordpress-fonts-self-hosting/hero-ko.jpg",
+        "alt": "글꼴 파일 관리와 웹사이트의 글자 표시를 문서, 폴더, 화면으로 표현한 창작 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "예쁜 중국어 글꼴로 바꾸었더니 홈페이지가 잠시 비거나 글 속 이름만 다른 글꼴로 보일 수 있습니다. 글꼴 문제는 디자인뿐 아니라 다운로드 용량, 누락된 글리프, 레이아웃 안정성과도 관련됩니다. 직접 호스팅은 사이트가 글꼴 파일을 직접 제공한다는 뜻이지, 파일을 옮기기만 하면 반드시 빨라진다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "우선 본문 글꼴 한 가지와 필요한 제목 굵기만 일부 페이지에서 시험한 뒤 전체 사이트로 확대할지 결정하세요. 아래에서는 라이선스, 파일, WordPress 설정, 방문자 화면의 검증 순서로 지속해서 관리할 수 있는 방법을 설명합니다."
+        },
+        {
+          "type": "heading",
+          "text": "방문자에게 글꼴 파일을 제공할 권한부터 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "컴퓨터에 글꼴을 설치할 수 있다고 해서 브라우저 다운로드용으로 사이트에 업로드할 수 있는 것은 아닙니다. 공식 출처, 라이선스 문구, 저작자, 버전을 보관하고 웹 사용, 직접 호스팅, 필요한 수정이 허용되는지 확인하세요. 상용 글꼴에는 도메인, 트래픽, 요금제 조건이 추가될 수 있으므로 실제 계약을 따릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 SIL Open Font License는 웹 글꼴 사용과 배포를 허용하지만 배포 파일에는 필요한 라이선스 및 저작권 고지가 남아 있어야 합니다. 예약된 이름이 있는 글꼴을 수정할 때는 명칭에 관한 조건도 적용됩니다. 무료로 다운로드할 수 있다는 이유만으로 마음대로 이름을 바꾸거나 재판매할 수 있다고 생각하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 전체에 맞춤 글꼴이 정말 필요한지도 결정하세요. 브랜드 특색을 제목에만 주면 된다면 본문은 시스템 글꼴을 사용해 다운로드와 유지보수를 줄일 수 있습니다. 시스템 글꼴은 기기에 따라 조금 달라 보일 수 있으므로 가독성은 시험해야 하지만, 방문자마다 완전한 중국어 본문 글꼴을 추가로 내려받을 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "필요한 형식, 굵기, 문자 고르기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "웹에서는 WOFF2를 우선 검토하되 지원 대상 브라우저의 요건을 확인하세요. 데스크톱용 대형 파일을 모두 올리고 모든 굵기를 함께 로드하지 마세요. 본문, 제목, 버튼에 쓸 서체를 정리하고, 소수의 파일로 충분하다면 구성을 단순하게 유지합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "중국어 글꼴에는 많은 문자가 들어 있습니다. 서브셋으로 용량을 줄일 수 있지만 실제 콘텐츠에 맞는 범위가 필요합니다. 현재 홈페이지에 보이는 글자만 남기면 다음 글, 사람 이름, 주소, 방문자 댓글에서 글리프가 빠질 수 있습니다. 동적 콘텐츠가 많은 사이트는 당장의 최소 파일만 추구하지 말고 유지 가능한 문자 범위 전략이나 적절한 분할 방식을 사용하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "가변 글꼴은 한 파일에 여러 굵기 등의 변화를 담을 수 있지만 실제 크기와 사용 범위를 비교해야 합니다. 쓰지 않는 범위가 자동으로 비용 없이 제공되는 것은 아닙니다. 보통과 굵게만 필요하다면 두 방식을 측정하고 새 형식이라는 이유만으로 더 빠르다고 판단하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress 글꼴 라이브러리로 파일 관리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "현재 WordPress 글꼴 라이브러리 문서는 '모양' 아래의 Fonts를 진입 경로로 안내하고, 새 버전에서는 블록 테마와 클래식 테마를 지원한다고 설명합니다. 이전 버전에서는 사이트 편집기의 스타일과 타이포그래피에서 글꼴을 관리해야 할 수 있습니다. WordPress 버전과 테마 지원 상태를 확인한 다음 해당 메뉴를 찾으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "글꼴 라이브러리의 Upload 탭에서 사용 허가를 확인한 파일을 올리거나, Install Fonts에서 필요한 Google Fonts 글꼴과 변형을 선택합니다. 공식 설명에 따르면 설치 과정에서 글꼴을 다운로드하여 사이트에서 로컬로 제공합니다. 다른 플러그인이 보내는 기존 외부 글꼴 요청은 별도로 점검해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "설치가 끝나면 필요한 본문, 제목, 블록에 적용하고 저장한 뒤 공개 페이지를 확인하세요. 목록에 글꼴이 있다는 것만으로 모든 페이지에 적용된 것은 아닙니다. 클래식 테마나 페이지 빌더를 쓴다면 글꼴 메뉴와 전역 설정이 같은 데이터를 참조하는지 확인합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "글꼴 출처, 라이선스, 필요한 변형을 기록하고 현재 스타일을 백업합니다.",
+            "해당 글꼴 라이브러리 메뉴에서 업로드하거나 설치하고 목록에 나타나는지 확인합니다.",
+            "대표 페이지에 먼저 적용하고 공개 화면의 텍스트가 의도한 글꼴인지 검증합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "CSS가 필요하면 선언과 적용을 따로 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "수동으로 설정할 때는 관리자가 지속해서 관리할 수 있는 스타일시트에 @font-face를 추가하고 이름, 파일 URL, 굵기, 스타일을 지정합니다. 그런 다음 font-family로 대상 텍스트에 적용합니다. 선언만 있고 사용하는 요소가 없다면 화면이 바뀌었다고 볼 수 없습니다. 업데이트로 덮어쓸 테마 핵심 파일을 직접 수정하지도 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "방문자가 파일 URL에 접근하고 올바른 콘텐츠를 받아야 합니다. 파일을 다른 도메인의 CDN으로 옮기면 교차 출처 설정도 확인하세요. 브라우저 네트워크 패널에서 파일 누락이나 다운로드 실패를 찾고 계산된 스타일을 살펴보세요. 글꼴 이름만 반복해서 바꾸는 것으로는 원인을 찾기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "font-display는 글꼴 다운로드 중 텍스트가 보이는 방식을 바꿉니다. swap을 사용하면 대체 글꼴로 먼저 표시할 수 있지만 교체 시 줄바꿈과 레이아웃이 달라질 수 있습니다. 적절한 fallback 글꼴을 준비하고 웹 글꼴을 불러오지 못해도 제목, 버튼, 본문을 읽을 수 있는지 시험하세요."
+        },
+        {
+          "type": "heading",
+          "text": "호스팅 위치만 보지 말고 실제 다운로드를 비교하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 호스팅하면 글꼴 제공업체와의 연결을 줄일 수 있지만 속도는 자체 서버, 캐시, 파일 크기, 전송 방식에 따라 달라집니다. Google의 web.dev 문서도 직접 호스팅이 외부 서비스보다 반드시 빠르지는 않다고 설명합니다. 분할되고 압축된 외부 글꼴을 거대한 단일 파일로 바꾸면 오히려 느려질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 페이지와 기기 조건에서 첫 로딩과 캐시가 있는 로딩을 각각 살펴보세요. 글꼴 요청 수, 총 다운로드량, 텍스트를 읽을 수 있는 시점, 로딩 후 눈에 띄는 이동을 기록합니다. 다른 최적화에 앞서 중복 다운로드와 불필요한 굵기를 줄이세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "모든 글꼴을 preload하지 마세요. preload는 리소스를 미리 가져오지만 중요한 이미지나 스타일의 다운로드와 경쟁할 수 있습니다. 특히 분할된 중국어 글꼴에서는 담당자가 실제로 필요한 파일을 파악해야 합니다. 먼저 측정하고 사전 로딩 대상을 결정하세요."
+        },
+        {
+          "type": "heading",
+          "text": "대만에서 흔한 콘텐츠로 글리프 누락과 레이아웃 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "번체 중국어 문장부호, 사람 이름, 주소, 영어, 숫자, 기호가 포함된 대표 페이지를 준비하고 네모 표시, 이상한 글리프, 들쭉날쭉한 굵기를 확인하세요. 사이트에 일본어 등 다른 언어가 있다면 fallback 조합도 점검합니다. 짧은 브랜드 문구 하나만으로 글꼴 전체의 적합성을 판단할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대전화에서는 긴 제목의 줄바꿈, 버튼 넘침, 좁아진 표 열을 살펴보고 글자를 키워도 읽을 수 있는지 확인하세요. 지속해서 갱신되는 글에는 빠진 글리프를 신고할 방법을 남기세요. 새 문자가 추가되면 서브셋 생성 절차도 점검해 글을 올릴 때마다 급히 파일을 보완하지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인수인계 시 글꼴 위치, 라이선스, 적용 범위, 서브셋 생성 방법, 마지막 시험 날짜를 기록합니다. 글꼴을 삭제하기 전 이를 사용하는 스타일과 페이지를 찾고 대체 글꼴을 확인한 뒤 필요 없어진 파일을 정리하세요. 디자인과 콘텐츠 유지보수를 함께 이어 갈 수 있어야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-fonts-self-hosting/diagram-1-ko.svg",
+          "alt": "글꼴 라이선스, 파일 간소화, 올바른 적용, 여러 기기에서의 검증을 순서대로 보여 주는 창작 4단계 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "보기 좋은 글꼴, 읽기 쉬운 텍스트, 관리 가능한 업데이트를 함께 확인하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방식",
+            "주요 장점",
+            "관리할 사항"
+          ],
+          "rows": [
+            [
+              "시스템 글꼴",
+              "별도의 글꼴 파일 다운로드가 필요 없음",
+              "기기에 따라 모양이 조금 다름"
+            ],
+            [
+              "자체 호스팅 웹 글꼴",
+              "파일과 제공 방식을 통제할 수 있음",
+              "라이선스, 용량, 캐시, 업데이트"
+            ],
+            [
+              "외부 글꼴 서비스",
+              "일부 분할과 전송을 서비스가 처리",
+              "서비스 연결, 요금제, 데이터 흐름"
+            ]
+          ],
+          "caption": "가독성과 관리 능력에 맞춰 선택하고, 호스팅 위치만으로 속도를 판단하지 마세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "파일 몇 개를 아끼는 것보다 빠진 글리프를 먼저 해결하세요",
+          "text": "중국어 글꼴 서브셋은 계속 추가되는 콘텐츠를 포함해야 합니다. 먼저 이름, 주소, 자주 쓰는 기호가 읽히는지 확인한 다음 다운로드 범위를 줄이세요. 로딩 실패 시에도 읽을 수 있는 대체 글꼴을 남겨 둡니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트에 맞는 테마 선택하기",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트를 지속해서 관리하는 점검 절차 만들기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 글꼴 라이브러리",
+          "url": "https://wordpress.org/documentation/article/the-font-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 스타일과 타이포그래피",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SIL: OFL 글꼴 사용 안내",
+          "url": "https://openfontlicense.org/how-to-use-ofl-fonts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN: @font-face",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google web.dev: 글꼴 성능 권장 사항",
+          "url": "https://web.dev/articles/font-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 字体自行托管：文件、授权与加载速度",
+      "description": "将 WordPress 字体放在自己的网站，可以集中管理来源和加载方式，但仍需确认网页使用授权、字符覆盖范围和文件大小。本文介绍字体库与 CSS 引用的操作方法、繁体中文子集的注意事项，以及更换前后的版式和速度检查，帮助站长在品牌外观、阅读体验与维护成本之间做出合适选择。",
+      "hero": {
+        "src": "/guides/wordpress-fonts-self-hosting/hero-zh-cn.jpg",
+        "alt": "原创文档、文件夹与屏幕插画，展示字体文件管理和网站文字呈现。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站换上好看的中文字体后，首页却短暂空白，或文章中的人名突然显示成另一种字体。字体问题不只关乎美观，还涉及下载量、缺字和版式稳定性。自行托管指由自己的网站提供字体文件，并不保证把文件搬过来就一定更快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先在少量页面试用一种正文字体和必要的标题字重，再考虑是否推广到全站。以下从授权、文件、WordPress 设置和读者端验收出发，说明如何建立易于维护的字体使用方式。"
+        },
+        {
+          "type": "heading",
+          "text": "先确认能否向访客提供字体文件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "字体可以安装在自己的电脑上，不代表可以上传到网站供浏览器下载。取得字体时，保留官方来源、授权文本、作者和版本，核对是否允许网页使用、自行托管及计划采用的修改方式。商业字体可能另有域名、流量或套餐限制，应以实际授权条款为准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以 SIL Open Font License 为例，官方允许网页字体的使用和分发，但分发文件仍须保留相应的授权与版权信息；修改带有保留名称的字体还涉及命名条件。不要因为可以免费下载，就认为任何字体文件都能随意改名或转售。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先判断整个网站是否真的需要定制字体。如果品牌只希望标题有特色，正文可以采用系统字体，减少下载和维护。系统字体在不同设备上的外观可能略有差异，仍需测试阅读效果，但不必让每位访客再下载一份完整的中文正文字体。"
+        },
+        {
+          "type": "heading",
+          "text": "挑选需要的格式、字重和字符",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "网页字体可以优先评估 WOFF2，同时确认目标浏览器的需求。不要把桌面用的大文件全部上传，再同时加载每一种字重。先列出正文、标题和按钮分别使用什么字体；少量文件就能满足需求时，先保持简单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "中文字体包含大量字符，制作子集可以缩小文件，但覆盖范围必须与内容相符。若只保留首页当前出现的汉字，下一篇文章、人名、地址或用户留言就可能缺字。动态内容较多的网站，应采用可维护的完整字符策略或合适的分段方式，而不是只追求眼下最小的文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可变字体能用一个文件覆盖多种字重等变化，但仍需比较实际大小和使用需求。未使用的范围不会自动变成零成本；如果只需要常规和粗体，应实际比较方案，不能因为格式较新就认定一定更快。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 WordPress 字体库管理文件",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "现行 WordPress 字体库文档将入口列在“外观”下的 Fonts，并说明较新版本可供区块主题和经典主题使用；旧版本可能要通过站点编辑器中的样式与排版管理字体。先核对自己的 WordPress 版本和主题支持情况，再寻找相应入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在字体库的 Upload 标签页上传已核实授权的文件，或在 Install Fonts 中选择需要的 Google Fonts 字体和变体。官方说明，这个安装流程会下载字体，并由网站本地提供；但其他插件原有的外部字体请求仍需另行检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装后，将字体应用于需要的文字、标题或区块，保存并查看前台页面。字体出现在列表中，不代表所有页面都已使用。如果采用经典主题或页面构建器，还要确认其字体菜单和全局设置是否使用同一份数据。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "记录字体来源、授权和需要的变体，先备份当前样式。",
+            "通过适用的字体库入口上传或安装，确认文件出现在列表中。",
+            "先应用于代表性页面，核对前台文字确实使用预期字体。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "需要 CSS 时，分别检查声明与应用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "手动设置时，由维护人员在可持续管理的样式表中加入 @font-face，指定名称、字体文件网址、字重和样式，再通过 font-family 应用于目标文字。只声明字体却没有任何元素使用它，不能证明画面已经改变；也不应直接修改更新时会被覆盖的主题核心文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "访客必须能够获取文件网址，并收到正确的内容。如果文件移到其他域名的 CDN，还要核对跨域设置。用浏览器的网络面板查看是否有文件未找到或下载失败，再检查计算后的样式，而不是反复猜测字体名称。"
+        },
+        {
+          "type": "paragraph",
+          "text": "font-display 会影响字体下载期间的文字显示方式。采用 swap 可以先显示备用字体，但替换后仍可能改变换行和版式。准备合适的 fallback 字体，并测试网页字体加载失败时，标题、按钮和正文是否依然可读。"
+        },
+        {
+          "type": "heading",
+          "text": "比较实际下载情况，不能只看托管位置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自行托管可以减少与字体服务商的连接，但是否更快仍取决于自己的服务器、缓存、文件大小和传输方式。Google 的 web.dev 文档也提醒，自行托管的实际性能不一定优于外部服务；把已分段压缩的外部字体换成一个庞大文件，反而可能更慢。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在相同页面和设备条件下，分别观察首次加载和已有缓存时的结果。记录字体请求数、总下载量、文字何时可读，以及加载完成后是否出现明显位移。先处理重复下载和不必要的字重，再考虑其他优化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要预加载所有字体。preload 会让浏览器提前获取资源，也可能占用重要图片或样式的下载时机；尤其是分段中文字体，应由维护人员确认真正需要的文件。先测量，再决定预加载哪些资源。"
+        },
+        {
+          "type": "heading",
+          "text": "用台湾常见内容验收缺字和版式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "准备包含繁体中文标点、人名、地址、英文、数字和符号的代表性页面，查看是否出现方框、异常字形或不一致的字重。网站若有日文或其他语言，也要检查 fallback 字体组合。不能只凭一句品牌标语判断整套字体是否适用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在手机上检查长标题换行、按钮是否溢出、表格列是否变窄，并放大文字确认可读性。对于持续更新的文章，保留缺字反馈渠道；新增字符时同步检查子集生成流程，避免每次发文都临时补文件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "交接时列出字体位置、授权、应用范围、生成子集的方法和最后测试日期。移除字体前，先找出使用它的样式与页面，确认替代字体可用，再清理不需要的文件，让网站外观和内容维护都能延续。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-fonts-self-hosting/diagram-1-zh-cn.svg",
+          "alt": "四格原创示意图，依次展示字体授权、文件精简、正确引用和跨设备验收。",
+          "width": 1600,
+          "height": 900,
+          "caption": "同时确认字体美观、文字可读，以及后续更新便于维护。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "主要优点",
+            "需要承担的工作"
+          ],
+          "rows": [
+            [
+              "系统字体",
+              "无需额外下载字体文件",
+              "不同设备外观略有差异"
+            ],
+            [
+              "自行托管网页字体",
+              "掌握文件和提供方式",
+              "授权、大小、缓存与更新"
+            ],
+            [
+              "外部字体服务",
+              "由服务处理部分分段和传输",
+              "服务连接、套餐与数据流向"
+            ]
+          ],
+          "caption": "根据阅读需求和维护能力选择，不要只凭托管位置判断速度。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "处理缺字比少下载几个文件更优先",
+          "text": "中文字体子集必须覆盖持续新增的内容。先确认人名、地址和常用符号可读，再缩小下载范围，并保留加载失败时仍可阅读的备用字体。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "选择适合网站的主题",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立持续维护网站的检查流程",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：字体库",
+          "url": "https://wordpress.org/documentation/article/the-font-library/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：样式与排版",
+          "url": "https://wordpress.org/documentation/article/styles-overview/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "SIL：OFL 字体使用说明",
+          "url": "https://openfontlicense.org/how-to-use-ofl-fonts/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MDN：@font-face",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@font-face",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google web.dev：字体性能实践",
+          "url": "https://web.dev/articles/font-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

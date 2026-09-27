@@ -243,6 +243,934 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Choosing a WordPress Page Builder: Blocks, Patterns, and Maintenance Costs",
+      "description": "Choose a WordPress page builder by asking who makes daily edits, how much layout freedom is needed, and whether the site can be maintained or migrated. This guide compares native blocks, dedicated builders, and a split workflow. Build the same test page, check compatibility and shared patterns, then inspect what remains after disabling a tool. For people in Taiwan building or redesigning a site, these checks prevent dependence on a hard-to-handover tool chosen for its drag-and-drop features.",
+      "hero": {
+        "src": "/guides/wordpress-page-builder-choice/hero-en.jpg",
+        "alt": "Original comparison illustration combining a content document, page canvas, and portable folder.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A page builder lets you arrange text, images, and buttons directly. What matters in daily work, however, is whether the site stays consistent afterward, colleagues can avoid accidental sitewide changes, and someone can handle tool updates. Before choosing, imagine who will update the site six months later. That is more useful than judging how easy the first drag-and-drop session feels."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses a fictional course-information site to explain the trade-offs: routine articles need a reliable publishing flow, while occasional event pages need special layouts. Our comparison method is original, and feature descriptions were checked against WordPress and editor documentation. We have not benchmarked brand speeds and do not assume more paid components are better for everyone."
+        },
+        {
+          "type": "heading",
+          "text": "Separate content updates from layout design",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List common tasks: change a course date, replace an instructor photo, add a teaching article, and create an event page. The first few usually need easy-to-find content fields; an event page may need more design freedom. If every small edit requires working in a complicated canvas, daily maintenance comes to depend on a few specialists."
+        },
+        {
+          "type": "paragraph",
+          "text": "Decide who may change shared templates, colors, and fonts, and who only needs to edit content. Give the team clear roles and instructions; use appropriate permissions and locking where needed to reduce accidental changes. These limits are not meant to stop editing. They show which changes affect other pages."
+        },
+        {
+          "type": "paragraph",
+          "text": "List essential features such as multicolumn layouts, reusable patterns, forms, dynamic article lists, or sitewide templates. Check what your current tools can do before adding another one. Do not bring in an entire editing system for one decorative effect or treat an undecided future need as a reason to pay now."
+        },
+        {
+          "type": "heading",
+          "text": "Trade-offs between native blocks and dedicated builders",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress native blocks combine paragraphs, headings, images, and other blocks, and patterns let you reuse designs. For sites mainly made of articles and standard pages, trying native features first often reveals what is actually missing. Third-party block plugins still introduce compatibility and dependency work; a native-looking interface does not remove those costs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dedicated page builders commonly have their own component panel, canvas, and layout controls. Elementor's official guide, for example, describes editing through these areas. Such tools may offer useful design workflows, but check current product documentation for component eligibility, sitewide features, and version differences. Similar drag-and-drop interfaces do not imply identical storage or behavior when disabled."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also use native blocks for ordinary articles and a selected builder for special event pages, but document which editor owns each page. This split limits the dependency's reach while adding the learning and maintenance work of two systems. Avoid repeatedly switching editors on the same page to modify one layout unless you have verified a compatible workflow."
+        },
+        {
+          "type": "heading",
+          "text": "Test candidates with the same content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Prepare a page with a long heading, course introduction, three steps, an image, frequently asked questions, and an inquiry route. Build it in each candidate tool. Record completion time, points where documentation was needed, and effects that require an extra purchase. This tests your workflow; do not use different content and then declare one tool faster."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ask the person who will actually take over to change a date, replace an image, and add one item. Watch whether they can find the right place. A designer knowing the tool does not mean a content editor will. If tiny changes regularly break spacing, clearer templates, naming, or editing limits may help more than replacing the entire toolset."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test desktop and mobile layouts and enlarged text. Check that visual order matches reading order. Actually operate forms, menus, and interactive components instead of looking only at the editor's device preview. Previews help design, but fonts, caches, and external scripts can make the published page differ."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List routine edits, special design needs, and essential features; shortlist a few tools.",
+            "Build one page with identical content and record learning, paid add-ons, and customization needs.",
+            "Have the future editor make real changes, then verify mobile, keyboard, and key interactions.",
+            "Check disabling and migration in an isolated copy before deciding the tool's scope."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Understand the reach of shared patterns",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Editing a WordPress synced pattern updates every place it is used; after detaching it, a copy can be edited independently. This helps with shared contact details, but changing synced content when you mean to change one course may affect other pages. Distinguish 'share one piece of content' from 'copy the same starting layout.'"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dedicated builders may also offer global styles, shared components, or templates; names and behavior vary by product. Give shared items clear names, record where they are used, and check the impact before saving. A label such as 'New Template 2' forces the next administrator to guess."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the text, images, and data source inside each pattern. Some templates contain fixed content; others read the current article or other dynamic data. A misplaced item can repeat one sample paragraph everywhere. Test with several real-world content lengths so the layout is not merely convincing for one example."
+        },
+        {
+          "type": "heading",
+          "text": "After disabling, inspect content, appearance, and functions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Disable the relevant builder or add-on in an isolated copy. Check whether text and images remain readable, whether layouts need rebuilding, and whether forms or dynamic content still work. Outcomes vary by product and component. Do not promise a one-click conversion with an identical result, or call migration free of cost merely because the text remains."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress blocks can also render statically or dynamically; some content needs server-side code. After disabling the plugin that provides a block, usable stored content or a fallback depends on the implementation. That is why exit testing must cover the blocks you actually use, not just a tool's export claim."
+        },
+        {
+          "type": "paragraph",
+          "text": "Save original copy, legally usable images, important settings, and required exports, and identify which tools can read the export format. If special pages need manual rebuilding, estimate the page count and difficulty and migrate in batches. Do not use a live production site as a disabling experiment; prepare recovery and data-preservation steps first."
+        },
+        {
+          "type": "heading",
+          "text": "Include long-term maintenance in the decision",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Costs include licenses, add-ons, renewals, learning, and maintenance time. Confirm the boundary between free and paid features, site limits, and update and support terms. Do not buy functions you do not currently need. If you use two editing methods, record the pages and versions each covers so neither gets missed during updates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Regularly review unused components and duplicate plugins, and verify important pages before updates. When something fails, save the version, error message, and steps to reproduce it, then investigate one cause at a time instead of piling on more plugins. A suitable editor produces usable pages for readers and lets administrators keep making small, understandable changes."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-page-builder-choice/diagram-1-en.svg",
+          "alt": "Original four-step diagram comparing page builders by needs, a trial build, shared scope, and an exit test.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Choose an editing method your team can take over, update, and leave if needed.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Approach",
+            "When to consider it",
+            "Main maintenance question"
+          ],
+          "rows": [
+            [
+              "Native blocks",
+              "Mostly articles and fixed content",
+              "Third-party blocks still create dependencies"
+            ],
+            [
+              "Dedicated builder",
+              "A specific design workflow is needed",
+              "Licensing, components, and exit costs"
+            ],
+            [
+              "Split workflow",
+              "A few special pages",
+              "Two workflows and page ownership"
+            ],
+            [
+              "Synced pattern",
+              "Shared details must change together",
+              "Edits affect every use"
+            ],
+            [
+              "Independent pattern copy",
+              "Only the starting design is reused",
+              "Later changes must be made to each copy"
+            ]
+          ],
+          "caption": "No one approach fits every site; validate with your own content and handover workflow."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Run an exit test first",
+          "text": "In a test copy, inspect text, appearance, and functionality after disabling the builder, and record what needs rebuilding. A successful export does not mean another editor can reproduce the layout completely."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Choosing a WordPress theme",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Installing and managing themes and plugins",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: Block Editor",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Synced patterns",
+          "url": "https://wordpress.org/documentation/article/reusable-blocks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Static and dynamic block rendering",
+          "url": "https://developer.wordpress.org/block-editor/getting-started/fundamentals/static-dynamic-rendering/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor: Main areas of the editor",
+          "url": "https://elementor.com/help/explore-the-elementor-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressページビルダーの選び方：ブロック、パターン、保守負担",
+      "description": "WordPressのページビルダーを選ぶ前に、日常の修正を誰が行い、どれほど自由なレイアウトが必要で、将来も保守・移行できるか確認します。標準ブロック、専用ページビルダー、用途を分ける方法を比較し、同じ内容での試作、互換性、共通パターン、停止後の状態を確かめる手順を示します。台湾でサイトを新設・改装する読者が、ドラッグ操作や部品の数だけを見て、引き継ぎにくいツールにサイト全体を依存させないためのガイドです。",
+      "hero": {
+        "src": "/guides/wordpress-page-builder-choice/hero-ja.jpg",
+        "alt": "コンテンツ文書、ページのキャンバス、持ち運べるフォルダーを組み合わせた、エディター比較のオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ページビルダーでは文章、画像、ボタンを直接配置できます。ただし日々の運用を左右するのは、編集後も一貫性を保てるか、同僚が誤ってサイト全体を変えないか、ツール更新に誰が対応するかです。選ぶ前に、半年後は誰がサイトを更新するか想像してください。最初のドラッグ操作の手軽さだけを見るより役に立ちます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事は架空の講座案内サイトを例に、日常の記事は安定した投稿手順が必要で、イベントページには時折特別なレイアウトが必要という取捨選択を説明します。比較方法は独自の提案で、機能の説明はWordPressとエディターの公式資料で確認しました。ブランドごとの速度は実測しておらず、有料部品が多いほど誰にとってもよいとは考えません。"
+        },
+        {
+          "type": "heading",
+          "text": "コンテンツの更新とレイアウト設計を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "講座の日付変更、講師写真の差し替え、解説記事の追加、イベントページの作成など、よくある作業を書き出します。前のいくつかは見つけやすい入力欄があれば済みますが、イベントページには設計の自由度が必要かもしれません。小さな変更のたびに複雑なキャンバスを開くなら、日常の保守はツールに詳しい少人数に依存します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "共通テンプレート、色、フォントを変更できる人と、内容だけを変更する人も決めます。担当と操作手順を明確にし、必要なら適切な権限やロック機能で誤編集を減らします。制限は編集を妨げるためではなく、どの変更が別のページにも影響するか知らせるためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "複数列、再利用できるパターン、フォーム、動的な記事一覧、サイト全体のテンプレートなど、必要な機能を一覧にします。新しいツールを評価する前に、現在のツールでできることを確認します。装飾効果一つのために編集システム一式を追加したり、未決定の将来の要件を今すぐ有料機能を買う理由にしたりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "標準ブロックと専用ビルダーの取捨選択",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress標準のブロックでは段落、見出し、画像などを組み合わせ、パターンでデザインを再利用できます。記事と一般ページが中心なら、標準機能を先に試すと、本当に不足しているものが見えます。第三者製のブロックプラグインを追加すれば互換性と依存関係の管理が必要です。画面が標準機能に見えても追加コストが消えるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "専用ページビルダーには、独自の部品パネル、キャンバス、レイアウト設定があることが一般的です。たとえばElementorの公式資料もこれらの領域を使って編集手順を説明しています。デザイン作業に役立つ構成かもしれませんが、使える部品、サイト全体の機能、バージョン差は現行の製品説明で確認します。ドラッグ操作が似ていても、保存方法や停止後の動作が同じとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般記事には標準ブロック、特別なイベントページには指定のビルダーという使い分けも可能です。ただし各ページの管理方法を記録します。依存範囲を狭められる一方、二種類のツールを学び保守する負担が増えます。互換性のある手順を確認していない限り、同じページの同じレイアウトを異なるエディターで何度も切り替えて編集しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "同じ内容で候補を試作する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "長い見出し、講座紹介、三つの手順、画像、よくある質問、問い合わせ導線を含む内容を用意し、候補のツールでそれぞれ作ります。完成までの時間、資料を調べた箇所、追加購入が必要な効果を記録します。自分の作業手順の試験なので、異なる内容で作って一方のツールが速いと結論付けてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成後、実際に引き継ぐ人に日付の変更、画像の差し替え、項目の追加をしてもらい、適切な場所を見つけられるか観察します。デザイナーが使えても投稿担当者が使えるとは限りません。小さな修正で毎回余白が崩れるなら、ツール一式の変更より明確なテンプレート、命名、操作制限が必要かもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "デスクトップ、モバイル、文字拡大で確認し、見た目の順序と実際に読む順序が一致するか見ます。フォーム、メニュー、操作部品は本当に動かし、エディターの端末プレビューを見るだけで済ませません。プレビューは設計の補助です。公開ページではフォント、キャッシュ、外部プログラムによって差が出る場合があります。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "日常の更新、特別なデザイン、必須機能を挙げ、候補を少数に絞る。",
+            "同じ内容で一ページ作り、学習、追加購入、カスタマイズの必要を記録する。",
+            "引き継ぐ人に実際の修正をしてもらい、モバイル、キーボード、主要操作を検証する。",
+            "使用範囲を決める前に、隔離した複製で停止・移行後の状態を確かめる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "共通パターンの同期範囲を理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressの同期パターンを変更すると、使用しているすべての場所が更新されます。同期を解除したコピーなら独立して編集できます。共通の連絡先には便利ですが、一つの講座だけを変えたいときに同期内容を誤編集すると別のページにも影響します。「同じ内容を共有する」と「同じ初期レイアウトをコピーする」を区別しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "専用ビルダーにも全体スタイル、共通部品、テンプレート機能があるかもしれませんが、名称と動作は製品により異なります。共通項目には明確な名前を付け、使用ページを記録し、保存前に影響範囲を確かめます。「新しいテンプレート2」のような名前では、次の管理者が推測するしかありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "パターン内の文章、画像、データの参照元も確認します。固定内容を持つテンプレートもあれば、現在の記事などの動的データを読み込むものもあります。配置を間違えると、同じサンプル文が繰り返し表示される可能性があります。長さの異なる複数の実データで試し、ある一例だけが正常に見える状態を避けます。"
+        },
+        {
+          "type": "heading",
+          "text": "停止後の内容・外観・機能を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "隔離した複製で対象のビルダーや追加部品を停止し、文章と画像が読めるか、レイアウトの再構築が必要か、フォームや動的内容が機能するか確認します。結果は製品と部品によって異なります。ワンクリック変換で完全に同じ結果になると約束したり、文章が残っているだけで移行コストがないと言ったりしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのブロックには静的・動的な表示方法があり、一部はサーバー側のコードで生成します。ブロックを提供するプラグインを停止した後、保存された内容や代替表示が使えるかは実装次第です。だからこそ、ツールのエクスポート機能の宣伝だけでなく、実際に使うブロックについて退出試験を行います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "元の文章、適法に使える画像、重要な設定、必要なエクスポートファイルを保存し、どのツールがその形式を読めるか確認します。特別なページを手動で再構築するなら、ページ数と難易度を見積もり、段階的に移します。運用中の本番サイトを停止実験に使わず、復旧とデータ保持の方法を先に用意します。"
+        },
+        {
+          "type": "heading",
+          "text": "長期の保守も判断材料に入れる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "費用にはライセンスだけでなく、追加部品、更新契約、学習と保守の時間も含まれます。無料・有料機能の境界、サイト数、更新とサポートの条件を確認し、今不要な機能は買わないでください。二つの編集方式を使うなら、それぞれが担当するページとバージョンを記録し、更新時に片方を見落とさないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使っていない部品と重複するプラグインを定期的に確認し、更新前には重要ページを検証します。問題が起きたらバージョン、エラーメッセージ、再現手順を残し、プラグインを重ねて直そうとせず一項目ずつ調べます。適切なビルダーは読者に使えるページを届け、管理者が小さく理解しやすい変更を続けられるものです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-page-builder-choice/diagram-1-ja.svg",
+          "alt": "要件、試作、共有範囲、退出検証の四段階でページビルダーを比べるオリジナル図解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "引き継ぎ、更新、将来の移行ができる編集方法を選びます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "検討する場面",
+            "主な保守上の課題"
+          ],
+          "rows": [
+            [
+              "標準ブロック",
+              "記事と固定内容が中心",
+              "第三者製ブロックにも依存がある"
+            ],
+            [
+              "専用ビルダー",
+              "特定のデザイン作業が必要",
+              "ライセンス、部品、移行費用"
+            ],
+            [
+              "使い分け",
+              "少数の特別なページ",
+              "二つの手順とページの担当"
+            ],
+            [
+              "同期パターン",
+              "共通情報をまとめて更新",
+              "変更が全使用箇所に反映"
+            ],
+            [
+              "独立したコピー",
+              "初期デザインだけを再利用",
+              "その後の更新は個別に必要"
+            ]
+          ],
+          "caption": "万能な方式はありません。自分の内容と引き継ぎ手順で確かめます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず退出試験を一度行う",
+          "text": "テスト用の複製で停止後の文章、外観、機能を確認し、再構築が必要な項目を保存します。エクスポートに成功しても別のエディターがレイアウトを完全に復元できるとは限りません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressテーマの選び方",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "テーマとプラグインのインストール・管理",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：ブロックエディター",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：同期パターン",
+          "url": "https://wordpress.org/documentation/article/reusable-blocks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ブロックの静的・動的表示",
+          "url": "https://developer.wordpress.org/block-editor/getting-started/fundamentals/static-dynamic-rendering/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：エディターの主な領域",
+          "url": "https://elementor.com/help/explore-the-elementor-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 페이지 빌더 선택법: 블록, 패턴, 유지 관리 부담",
+      "description": "WordPress 페이지 빌더를 선택할 때는 일상적인 수정을 누가 하는지, 레이아웃 자유도가 얼마나 필요한지, 나중에도 유지하거나 다른 도구로 옮길 수 있는지 먼저 확인합니다. 이 글은 기본 블록, 전용 페이지 빌더, 용도를 나누어 쓰는 방법을 비교하며 같은 콘텐츠로 시험 제작하기, 호환성과 공통 패턴 확인하기, 도구를 비활성화한 뒤 결과 살피기 절차를 제시합니다. 대만에서 사이트를 만들거나 개편하는 독자가 드래그 효과와 구성 요소 수만 보고 인계하기 어려운 도구에 사이트 전체를 의존시키지 않도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-page-builder-choice/hero-ko.jpg",
+        "alt": "콘텐츠 문서, 페이지 캔버스, 이전 가능한 폴더를 결합한 편집기 비교용 독창적 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "페이지 빌더를 사용하면 글, 이미지, 버튼을 직접 배치할 수 있습니다. 그러나 일상 업무에서 중요한 것은 수정 후 일관성을 유지할 수 있는지, 동료가 실수로 사이트 전체를 바꾸지 않는지, 도구 업데이트를 누가 처리하는지입니다. 선택하기 전에 6개월 뒤 누가 사이트를 업데이트할지 생각해 보세요. 첫 드래그 작업의 편리함만 보는 것보다 도움이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 가상의 강좌 소개 사이트로 선택의 득실을 설명합니다. 일상적인 글은 안정적으로 올려야 하고 행사 페이지에는 가끔 특별한 레이아웃이 필요합니다. 비교 방법은 독자적으로 제안했고 기능 개념은 WordPress와 편집기 공식 자료로 확인했습니다. 브랜드별 속도를 실측하지 않았으며 유료 구성 요소가 많을수록 모두에게 좋다고 보지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "콘텐츠 업데이트와 레이아웃 설계를 분리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "강좌 날짜 변경, 강사 사진 교체, 교육 글 추가, 행사 페이지 만들기 등 흔한 작업을 나열합니다. 앞의 작업에는 찾기 쉬운 콘텐츠 입력란이 주로 필요하고, 행사 페이지에는 디자인 자유도가 더 필요할 수 있습니다. 간단한 수정마다 복잡한 캔버스에서 작업해야 한다면 일상적인 유지 관리가 도구에 익숙한 소수에게 의존하게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공통 템플릿, 색상, 글꼴을 조정할 사람과 콘텐츠만 수정할 사람도 정합니다. 팀의 역할과 작업 설명을 분명히 하고 필요하면 적절한 권한과 잠금 기능으로 실수를 줄입니다. 이런 제한은 편집을 막으려는 것이 아니라 어떤 변경이 다른 페이지에 영향을 주는지 알리기 위한 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 열 배치, 재사용 가능한 패턴, 양식, 동적 글 목록, 사이트 전체 템플릿 등 필수 기능을 목록으로 만듭니다. 새 도구를 평가하기 전에 현재 도구로 가능한지 살펴봅니다. 장식 효과 하나 때문에 편집 시스템 전체를 추가하거나 아직 결정하지 않은 미래 수요 때문에 지금 돈을 낼 필요는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "기본 블록과 전용 빌더의 장단점",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 기본 블록은 문단, 제목, 이미지 등의 블록으로 콘텐츠를 만들고 패턴으로 디자인을 재사용할 수 있습니다. 글과 고정 페이지가 중심인 사이트라면 기본 기능부터 시험하면 실제로 부족한 부분을 파악하기 쉽습니다. 제삼자 블록 플러그인을 추가한 뒤에는 호환성과 의존성을 관리해야 합니다. 화면이 기본 기능처럼 보여도 추가 비용이 사라지는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전용 페이지 빌더에는 자체 구성 요소 패널, 캔버스, 레이아웃 설정이 있는 경우가 많습니다. 예를 들어 Elementor 공식 문서는 이 영역을 중심으로 편집 흐름을 설명합니다. 디자인 작업에 맞는 기능이 있을 수 있지만 사용 가능한 요소, 사이트 전체 기능, 버전별 차이는 최신 제품 설명을 확인해야 합니다. 드래그 방식이 비슷해도 콘텐츠 저장 방식과 비활성화 후 동작이 같지는 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 글에는 기본 블록을, 특별한 행사 페이지에는 지정한 빌더를 쓸 수도 있지만 각 페이지의 관리 방식을 기록해야 합니다. 이렇게 나누면 의존 범위를 제한할 수 있으나 두 도구를 배우고 유지해야 하는 부담이 늘어납니다. 호환되는 절차를 확인하지 않았다면 같은 페이지의 같은 레이아웃을 서로 다른 편집기로 계속 바꾸어 수정하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "같은 콘텐츠로 후보를 시험하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "긴 제목, 강좌 소개, 세 단계, 이미지, 자주 묻는 질문, 문의 경로가 들어간 콘텐츠를 준비해 후보 도구마다 만들어 봅니다. 완료 시간, 문서를 찾아야 했던 부분, 추가 구매가 필요한 효과를 기록합니다. 자신의 작업 방식 시험이므로 서로 다른 내용으로 만든 뒤 한 도구가 더 빠르다고 주장해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "완성한 뒤 실제 인수할 사람에게 날짜 수정, 이미지 교체, 항목 하나 추가를 맡기고 올바른 위치를 찾는지 봅니다. 디자이너가 쓸 줄 안다고 콘텐츠 담당자도 쓸 수 있는 것은 아닙니다. 작은 수정마다 간격이 무너지면 도구 전체를 바꾸기보다 명확한 템플릿, 이름, 작업 제한이 필요할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데스크톱, 모바일, 확대된 글자를 시험하고 시각적 순서와 실제 읽는 순서가 일치하는지 확인합니다. 양식, 메뉴, 상호작용 요소는 직접 사용해 보고 편집기의 기기 미리보기만 보지 마세요. 미리보기는 디자인 보조 수단이며 실제 공개 페이지에서는 글꼴, 캐시, 외부 프로그램 때문에 차이가 생길 수 있습니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "일상적인 수정, 특별한 디자인, 필수 기능을 적고 후보 도구를 소수로 추립니다.",
+            "같은 콘텐츠로 페이지 하나를 만들고 학습, 추가 구매, 맞춤 설정 수요를 기록합니다.",
+            "인수할 사람이 직접 수정하게 하고 모바일, 키보드, 주요 상호작용을 검증합니다.",
+            "사용 범위를 결정하기 전에 격리된 복제본에서 비활성화와 이전 결과를 확인합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "공통 패턴의 동기화 범위 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 동기화 패턴을 수정하면 사용한 모든 위치가 업데이트됩니다. 동기화를 해제한 사본은 독립적으로 편집할 수 있습니다. 공통 연락처 정보에는 편리하지만 특정 강좌 설명만 바꾸려다가 동기화된 내용을 수정하면 다른 페이지에도 영향을 줍니다. '한 콘텐츠를 공유'하는 것과 '같은 시작 레이아웃을 복사'하는 것을 구별하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "전용 빌더에도 사이트 전체 스타일, 공통 구성 요소, 템플릿 기능이 있을 수 있지만 이름과 동작은 제품마다 다릅니다. 공통 항목에 명확한 이름을 붙이고 사용하는 페이지를 기록하며 저장 전 영향 범위를 확인합니다. '새 템플릿 2' 같은 이름을 쓰면 다음 관리자는 추측할 수밖에 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "패턴 안의 글, 이미지, 데이터 출처도 확인합니다. 일부 템플릿에는 고정 콘텐츠가 있지만 현재 글이나 다른 동적 데이터를 읽는 것도 있습니다. 위치를 잘못 정하면 같은 예시 문단이 반복해서 나타날 수 있습니다. 길이가 다른 여러 실제 데이터를 사용해 예시 하나에서만 정상처럼 보이는 상황을 피합니다."
+        },
+        {
+          "type": "heading",
+          "text": "비활성화 후 콘텐츠, 외관, 기능을 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "격리된 복제본에서 관련 빌더나 추가 요소를 비활성화하고 글과 이미지가 계속 읽히는지, 레이아웃을 다시 만들어야 하는지, 양식과 동적 콘텐츠가 작동하는지 살펴봅니다. 결과는 제품과 요소마다 다릅니다. 클릭 한 번으로 완전히 똑같이 바뀐다고 약속하거나 글이 남아 있다는 이유만으로 이전 비용이 없다고 말하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 블록도 정적 또는 동적 방식으로 표시될 수 있고 일부 콘텐츠는 서버 쪽 코드가 생성해야 합니다. 블록을 제공하던 플러그인을 비활성화한 뒤 사용 가능한 저장 내용이나 대체 표시가 남는지는 구현에 따라 다릅니다. 따라서 도구가 내보내기를 지원한다는 주장만 보지 말고 실제 사용하는 블록으로 이전 시험을 해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "원문, 합법적으로 사용할 수 있는 이미지, 중요한 설정, 필요한 내보내기 파일을 보관하고 어떤 도구가 해당 형식을 읽는지 확인합니다. 특별한 페이지를 손으로 다시 만들어야 한다면 페이지 수와 난도를 추정하고 단계별로 옮깁니다. 운영 중인 사이트를 비활성화 실험장으로 쓰지 말고 복구 방법과 데이터 보존을 먼저 준비합니다."
+        },
+        {
+          "type": "heading",
+          "text": "장기 유지 관리를 결정에 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "비용에는 라이선스 외에도 추가 요소, 갱신, 학습, 유지 관리 시간이 들어갑니다. 무료와 유료 기능의 경계, 사용 가능한 사이트 수, 업데이트와 지원 조건을 확인하고 지금 필요 없는 기능은 구매하지 않습니다. 두 가지 편집 방식을 쓴다면 각각 담당하는 페이지와 버전을 기록해 업데이트 때 한쪽을 놓치지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용하지 않는 요소와 중복 플러그인을 정기적으로 확인하고 업데이트 전에는 주요 페이지를 검증합니다. 문제가 생기면 버전, 오류 메시지, 재현 단계를 보관하고 플러그인을 더 얹어 해결하려 하지 말고 하나씩 조사합니다. 적합한 빌더는 독자에게 사용할 수 있는 페이지를 제공하고 관리자가 작고 이해 가능한 수정을 계속하게 해 줍니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-page-builder-choice/diagram-1-ko.svg",
+          "alt": "요구 사항, 시험 제작, 공통 범위, 이전 검증의 네 단계로 페이지 빌더를 비교하는 독창적 도해.",
+          "width": 1600,
+          "height": 900,
+          "caption": "인수하고 업데이트하며 필요하면 옮길 수 있는 편집 방식을 선택합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방식",
+            "고려할 상황",
+            "주요 유지 관리 문제"
+          ],
+          "rows": [
+            [
+              "기본 블록",
+              "글과 고정 콘텐츠 중심",
+              "제삼자 블록에도 의존성이 있음"
+            ],
+            [
+              "전용 빌더",
+              "특정 디자인 작업 방식이 필요",
+              "라이선스, 구성 요소, 이전 비용"
+            ],
+            [
+              "용도별 분리",
+              "특별한 페이지가 소수",
+              "두 가지 절차와 페이지 담당"
+            ],
+            [
+              "동기화 패턴",
+              "공통 정보를 함께 업데이트",
+              "수정이 사용한 모든 위치에 영향"
+            ],
+            [
+              "독립 패턴 사본",
+              "시작 디자인만 재사용",
+              "이후 수정은 각각 처리해야 함"
+            ]
+          ],
+          "caption": "모든 사이트에 맞는 한 가지 방식은 없습니다. 자신의 콘텐츠와 인계 절차로 검증하세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "먼저 이전 시험을 한 번 하기",
+          "text": "시험용 복제본에서 빌더를 비활성화한 뒤 글, 외관, 기능을 확인하고 다시 만들어야 할 항목을 기록합니다. 내보내기에 성공했다고 다른 편집기가 레이아웃을 완전히 복원할 수 있는 것은 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 테마 선택법",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "테마와 플러그인 설치·관리",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress: 블록 편집기",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 동기화 패턴",
+          "url": "https://wordpress.org/documentation/article/reusable-blocks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 블록의 정적·동적 표시",
+          "url": "https://developer.wordpress.org/block-editor/getting-started/fundamentals/static-dynamic-rendering/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor: 편집기의 주요 영역",
+          "url": "https://elementor.com/help/explore-the-elementor-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 页面编辑器怎么选：区块、模板与维护负担",
+      "description": "选择 WordPress 页面编辑器，先确认日常修改由谁完成、需要多少版面自由，以及未来能否维护和迁移。本文比较原生区块、专用页面编辑器与分工使用的方式，提供用相同内容试做、检查兼容性、共用模板及停用后结果的流程。适合正在建立或改版网站的台湾读者，避免只看拖拉效果或组件数量，就让整个网站依赖难以接管的工具组合。",
+      "hero": {
+        "src": "/guides/wordpress-page-builder-choice/hero-zh-cn.jpg",
+        "alt": "内容文件、页面画布与可携资料夹组成的原创编辑器比较插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "页面编辑器能让人直接排列文字、图片与按钮，但真正影响日常工作的，是改完之后能否维持一致、同事会不会误动全站，以及工具更新时谁负责处理。选择之前，先想像网站半年后由谁更新，会比只看第一次拖拉有多方便更有帮助。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文用虚构的课程介绍网站说明取舍：日常文章需要稳定发布，活动页偶尔需要特殊版面。比较方法为原创，功能概念依 WordPress 与编辑器官方资料查证，没有实测品牌速度，也不把付费组件较多当成对所有人都更好的理由。"
+        },
+        {
+          "type": "heading",
+          "text": "先把内容更新与版面设计分开",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出常见工作，例如改课程日期、换讲师照片、新增教学文章及建立活动页。前面几项通常需要容易找到的内容字段，活动页可能需要更多设计自由。若所有简单更新都得进入复杂画布调整，就会让日常维护依赖少数熟悉工具的人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再确认谁可以调整共用模板、色彩与字体，谁只需改内容。团队应有清楚分工与操作说明，必要时利用合适的权限及锁定能力降低误改机会。这些限制不是为了阻止编辑，而是让每个人知道哪一种修改会影响其他页面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把必要功能列成清单，例如多栏配置、可重用模板、表单、动态文章列表或全站模板。先看目前工具能否完成，再评估新工具。不要为了一个装饰效果就加入整套编辑系统，也不要把还没决定的未来需求当成现在必须付费的理由。"
+        },
+        {
+          "type": "heading",
+          "text": "原生区块与专用编辑器的取舍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 原生区块可用段落、标题、图片及其他区块组成内容，并使用模板重用设计。对以文章及固定页面为主的网站，先测试原生能力往往能了解真正缺少什么。加入第三方区块插件后，仍需管理兼容与依赖，不能因为界面看起来原生就假设没有额外成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "专用页面编辑器通常提供自己的组件面板、画布与版面设置，例如 Elementor 的官方文件就以这些区域介绍编辑流程。它可能有适合设计工作的配置能力，但组件资格、全站功能及版本差异要查当前产品说明。拖拉方式相似，不代表各工具存储内容与停用行为相同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可以让一般文章使用原生区块、特殊活动页使用指定编辑器，但要记录每个页面的管理方式。这种分工能限制依赖范围，却增加了两套工具的学习与维护工作。不要在同一页反复切换不同编辑器来修改同一份版面，除非已确认兼容流程。"
+        },
+        {
+          "type": "heading",
+          "text": "用同一份内容做选择测试",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "准备一份含长标题、课程介绍、三个步骤、图片、常见问题与询问入口的内容，分别在候选工具试做。记录完成时间、需要查文件的地方，以及哪些效果必须额外加购。这是你自己的工作流测试，不应用不同内容做完后就宣称其中一个工具比较快。"
+        },
+        {
+          "type": "paragraph",
+          "text": "完成后请实际接手人员修改日期、替换图片及新增一个项目，观察是否能找到正确位置。设计者会用不代表内容编辑会用；如果每次小改都容易破坏间距，可能需要更清楚的模板、命名或操作限制，而不一定要更换全部工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试桌面、手机与文字放大，查看视觉顺序是否和实际阅读顺序一致。表单、菜单与互动组件要真的操作，不能只看编辑器的装置预览。预览是设计辅助，正式页面的字体、缓存与外部程序仍可能造成差异。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出日常更新、特殊设计与必要功能，选少量候选工具。",
+            "用相同内容完成一页，记录学习、加购与自定义需求。",
+            "让接手人员实际修改，并验证手机、键盘及主要互动。",
+            "在隔离副本检查停用与迁移结果，再决定使用范围。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "共用模板先理解同步范围",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 同步模板修改后会更新所有使用位置，解除同步后则能独立编辑。这对共用联系信息很方便，但若你只想改某一堂课的说明，误改同步内容就可能影响其他页面。先分清「共用同一份内容」与「复制同一个起始版面」的需求。"
+        },
+        {
+          "type": "paragraph",
+          "text": "专用编辑器也可能有全站样式、共用组件或模板功能，名称与行为依产品而定。为共用项目取明确名称，记录哪些页面使用它，存储前核对影响范围。不要使用「新模板二」这类难以辨认的名称，让下一位管理者只能靠猜测判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模板内的文字、图片及资料来源也要检查。有些模板是固定内容，有些会读取目前文章或其他动态资料；放错位置可能重复显示同一段示范内容。使用多笔真实长度的测试资料，才能确认它不是只对某一个范例看起来正常。"
+        },
+        {
+          "type": "heading",
+          "text": "停用后要看内容、外观与功能三件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在隔离副本停用相关编辑器或附加组件，检查文字与图片是否仍可读、版面是否需要重建，以及表单或动态内容是否仍能运作。不同产品与组件结果可能不同，不应承诺一键转换后完全相同，也不能只因文字还在就说迁移没有成本。"
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 区块也有静态与动态呈现方式，部分内容需要服务器端程序产生。停用提供区块的插件后，是否还有可用的存储内容或替代呈现，要看实现。这也是为什么退出测试应针对实际使用的区块，而不是只看工具宣称支持导出。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保存原始文案、合法图片、重要设置及必要导出档，并确认导出格式由哪些工具读取。若需要人工重建特殊页面，估算页数与难度，安排分批转换。不要把正在运营的正式站当成停用实验场，先准备恢复方式与资料保留。"
+        },
+        {
+          "type": "heading",
+          "text": "把长期维护算进决策",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "费用除了授权，也包含附加组件、续约、学习与维护时间。确认免费与付费功能界线、网站数及更新支持条件，对目前不需要的功能先不加购。若使用两套编辑方式，记录各自负责的页面与版本，避免日后更新时漏掉其中一套。"
+        },
+        {
+          "type": "paragraph",
+          "text": "定期检查没有使用的组件与重复插件，并在更新前验证重要页面。遇到问题先保存版本、错误消息与重现步骤，再逐项排查，不直接用更多插件堆叠修补。适合的编辑器应让读者得到可用页面，也让管理者能持续做出小幅、可理解的修改。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-page-builder-choice/diagram-1-zh-cn.svg",
+          "alt": "页面编辑器依需求、试做、共用范围及退出验证四步进行比较的原创图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "选择能接管、能更新，也知道如何迁移的编辑方式。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方式",
+            "可考虑的情境",
+            "主要维护问题"
+          ],
+          "rows": [
+            [
+              "原生区块",
+              "文章与固定内容为主",
+              "第三方区块仍有依赖"
+            ],
+            [
+              "专用编辑器",
+              "需要特定设计工作流",
+              "授权、组件及退出成本"
+            ],
+            [
+              "分工使用",
+              "少量特殊页面",
+              "两套流程与页面归属"
+            ],
+            [
+              "同步模板",
+              "共用信息需要一起更新",
+              "修改影响所有使用位置"
+            ],
+            [
+              "独立模板副本",
+              "只重用起始设计",
+              "后续更新要逐份处理"
+            ]
+          ],
+          "caption": "没有单一方式适合所有网站，应以自己的内容与交接流程验证。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先做一次退出测试",
+          "text": "在测试副本确认停用后的文字、外观与功能，保存需要重建的项目。导出成功不等于另一个编辑器能完整还原版面。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 主题选择",
+              "kind": "life",
+              "slug": "wordpress-theme-selection"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "主题与插件安装管理",
+              "kind": "life",
+              "slug": "wordpress-themes-plugins-install"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress：区块编辑器",
+          "url": "https://wordpress.org/documentation/article/wordpress-block-editor/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：同步模板",
+          "url": "https://wordpress.org/documentation/article/reusable-blocks/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：区块静态与动态呈现",
+          "url": "https://developer.wordpress.org/block-editor/getting-started/fundamentals/static-dynamic-rendering/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elementor：编辑器主要区域",
+          "url": "https://elementor.com/help/explore-the-elementor-editor/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
