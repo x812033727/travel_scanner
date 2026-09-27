@@ -12,10 +12,12 @@ from datetime import datetime
 from typing import Annotated
 from uuid import UUID
 
+import httpx
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
+from app.ai.jev import JevError, JevRequestInvalid
 from app.auth.service import require_capability
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
@@ -25,6 +27,14 @@ from app.video_automation import requests as drama_requests
 from app.video_automation import series as drama_series
 from app.video_automation import settings as service
 from app.video_automation.ai import StageFailed, run_stage
+from app.video_automation.judge import (
+    JudgeOutlineIn,
+    JudgePolicyIn,
+    OutlinePick,
+    PolicyVerdict,
+    judge_outline,
+    judge_policy,
+)
 from app.video_automation.requests import RequestRefused
 from app.video_automation.schemas import (
     DramaRequestIn,
@@ -63,6 +73,7 @@ from app.video_automation.topics import gather_topics
 from app.video_reviews.admin_service import list_projects
 from app.video_reviews.schemas import ProjectSummary
 from app.video_speech.admin_api import VideoTool
+from app.video_speech.checking import CheckUnavailable
 
 # A whole video is a few dozen stage calls; this only stops a runaway loop.
 RUNS_PER_HOUR = 120
@@ -70,6 +81,8 @@ TOPIC_LOOKUPS_PER_HOUR = 12
 # The worker asks every few minutes; this only stops a runaway loop.
 REQUEST_CALLS_PER_HOUR = 240
 SERIES_CALLS_PER_HOUR = 240
+# Two Jev judgements per video at most; this only stops a runaway loop.
+JUDGE_CALLS_PER_HOUR = 60
 
 admin_router = APIRouter(prefix="/admin/video-automation", tags=["admin video automation"])
 tool_router = APIRouter(prefix="/video/automation", tags=["video automation (pipeline)"])
@@ -103,12 +116,20 @@ async def put_video_automation_settings(
     values = payload.model_dump()
     missing = [
         key
-        for key in ("stage_models", "drama", "stage_instructions")
+        for key in (
+            "stage_models",
+            "drama",
+            "stage_instructions",
+            "channel_stance",
+            "auto_pick_outline",
+            "auto_approve_final",
+        )
         if getattr(payload, key) is None
     ]
     if missing:
         # The stage models are chosen on the AI settings page, and a page from before the drama
-        # settings or the standing instructions existed sends none: keep the stored ones.
+        # settings, the standing instructions, the stance or the hands-off switches existed
+        # sends none: keep the stored ones.
         current = service.settings_values(await service.settings_row(session)).model_dump()
         for key in missing:
             values[key] = current[key]
@@ -138,6 +159,58 @@ async def get_tool_video_automation_settings(tool: VideoTool, session: Session) 
     row = await service.settings_row(session)
     await session.commit()
     return ToolSettingsView(**service.settings_values(row).model_dump(), updated_at=row.updated_at)
+
+
+@tool_router.post("/judge/outline", response_model=OutlinePick)
+async def judge_video_outline(
+    payload: JudgeOutlineIn, tool: VideoTool, session: Session
+) -> OutlinePick:
+    """Jev chooses among a brief's outlines against the channel's stance; one Jev call."""
+    await enforce_named_rate_limit(
+        "video_judge", str(tool.id), limit=JUDGE_CALLS_PER_HOUR, window_seconds=3600
+    )
+    row = await service.settings_row(session)
+    await session.commit()
+    stance = (row.channel_stance or "").strip()
+    if not row.auto_pick_outline or not stance:
+        raise AppError(
+            409,
+            "video_judge_not_enabled",
+            "頻道立場還是空白，或「由 Jev 挑大綱」關著；大綱照舊等站主",
+        )
+    runtime = await load_runtime_settings(session)
+    try:
+        return await judge_outline(runtime, get_redis(), stance, payload.brief, payload.options)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except JevRequestInvalid as error:
+        raise AppError(422, "video_judge_invalid", f"Jev 拒絕這個問題（{error}）") from error
+    except (JevError, httpx.HTTPError) as error:
+        raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
+
+
+@tool_router.post("/judge/policy", response_model=PolicyVerdict)
+async def judge_video_policy(
+    payload: JudgePolicyIn, tool: VideoTool, session: Session
+) -> PolicyVerdict:
+    """Jev judges a final cut's narration against the stance (the quality check's policy item)."""
+    await enforce_named_rate_limit(
+        "video_judge", str(tool.id), limit=JUDGE_CALLS_PER_HOUR, window_seconds=3600
+    )
+    row = await service.settings_row(session)
+    await session.commit()
+    stance = (row.channel_stance or "").strip()
+    if not stance:
+        raise AppError(409, "video_judge_not_enabled", "頻道立場還是空白，Jev 沒有依據可以判斷")
+    runtime = await load_runtime_settings(session)
+    try:
+        return await judge_policy(runtime, get_redis(), stance, payload.viewpoint, payload.script)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except JevRequestInvalid as error:
+        raise AppError(422, "video_judge_invalid", f"Jev 拒絕這個問題（{error}）") from error
+    except (JevError, httpx.HTTPError) as error:
+        raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
 
 
 @tool_router.post("/run", response_model=StageRunOut)

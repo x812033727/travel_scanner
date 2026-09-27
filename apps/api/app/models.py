@@ -2185,6 +2185,12 @@ class VideoProject(Timestamped, Base):
     __tablename__ = "video_projects"
     __table_args__ = (
         CheckConstraint("format IN ('slides', 'drama')", name="ck_video_project_format"),
+        # A YouTube video id is eleven characters (migration 0100 adds this NOT VALID); length()
+        # rather than char_length() so the SQLite-backed tests can build the table too.
+        CheckConstraint(
+            "youtube_video_id IS NULL OR length(youtube_video_id) = 11",
+            name="ck_video_project_youtube_id",
+        ),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
@@ -2198,6 +2204,11 @@ class VideoProject(Timestamped, Base):
     stage: Mapped[str] = mapped_column(String(40))
     checklist: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
     youtube_video_id: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    # When the owner chose to publish it, from the "ready to upload" list
+    # (docs/videos/HANDS-OFF.md; migration 0100). The site schedules it on YouTube.
+    youtube_publish_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     last_synced_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     # The article the video retells, so the next automatic draft does not pick it again.
     source_guide: Mapped[str | None] = mapped_column(String(120), nullable=True)

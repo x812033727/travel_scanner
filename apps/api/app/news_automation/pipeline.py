@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from datetime import UTC, date, datetime, timedelta
+from datetime import UTC, date, datetime, time, timedelta
 from typing import Any, Literal, cast
 from uuid import UUID, uuid4
 
 from redis.asyncio import Redis
-from sqlalchemy import func, select
+from sqlalchemy import func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.ai.subscription import FALLBACK_CODES
@@ -66,6 +66,9 @@ REVERIFY_MARKER = "news_reverify_requested"
 REVERIFY_MARKERS = frozenset({REVERIFY_MARKER, EVIDENCE_REFRESH_MARKER})
 # What a candidate says while it waits for a Claude subscription account to free up.
 SUBSCRIPTION_PAUSED = "news_subscription_paused"
+# What a candidate says while Jev's daily call budget, counted per UTC day
+# (app.ai.jev.consume_jev_call), is spent. The orphan sweep leaves it until that day ends.
+JEV_QUOTA_PAUSED = "news_jev_quota_paused"
 SUBSCRIPTION_WAITS = FALLBACK_CODES
 ClaimOutcome = Literal["claimed", "disabled", "skipped", "deferred"]
 # RQ kills a candidate job after 60 minutes; nothing legitimate is still in flight after 70.
@@ -473,6 +476,18 @@ async def process_candidate(
                 "\n".join(row.excerpt for row in evidence),
                 await known_titles(session, candidate),
             )
+            if duplicate == "manual" and duplicate_reasons == ["quota_unavailable"]:
+                # Jev's budget for the UTC day is spent, which says nothing about the story:
+                # it waits for tomorrow's budget, not for an editor. On 2026-09-26 a backfill
+                # held 207 of 243 candidates as uncertain duplicates for this reason alone.
+                candidate.status = "discovered"
+                if candidate.error_code not in REVERIFY_MARKERS:
+                    candidate.error_code = JEV_QUOTA_PAUSED
+                candidate.error_detail = (
+                    "Jev's daily call budget is spent; the candidate runs again after 00:00 UTC."
+                )
+                await session.commit()
+                return "jev_paused"
             session.add(
                 NewsAssessment(
                     candidate_id=candidate.id,
@@ -1274,6 +1289,14 @@ async def orphaned_candidates(
             .where(
                 NewsCandidate.status == "discovered",
                 NewsCandidate.updated_at < current - ORPHAN_AFTER,
+                # Paused for Jev's budget: nothing to do until the UTC day that spent it is
+                # over, and then this sweep is what runs it again, 20 a minute.
+                or_(
+                    NewsCandidate.error_code.is_(None),
+                    NewsCandidate.error_code != JEV_QUOTA_PAUSED,
+                    NewsCandidate.updated_at
+                    < datetime.combine(current.astimezone(UTC).date(), time.min, UTC),
+                ),
             )
             .order_by(NewsCandidate.updated_at, NewsCandidate.id)
             .limit(limit)
