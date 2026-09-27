@@ -24,7 +24,7 @@ from app.news_automation.models import (
     NewsCandidate,
     NewsEvidence,
 )
-from app.news_automation.policy import ZH_DRAFT_READY, document_fingerprint
+from app.news_automation.policy import READY_TO_PUBLISH, ZH_DRAFT_READY, document_fingerprint
 from app.news_automation.schemas import (
     CandidateAction,
     EditorialDraft,
@@ -531,6 +531,35 @@ async def test_refreshing_changed_evidence_takes_the_current_pages_and_rechecks_
     )
     refreshed = next(row for row in audits if row.action == "news_candidate_evidence_refreshed")
     assert refreshed.metadata_json["changed_urls"] == [FIRST_PARTY_URL]
+
+
+@pytest.mark.asyncio
+async def test_a_ready_article_whose_evidence_changed_is_held_for_the_re_check_on_publish(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    engine, factory = await database()
+
+    async def refresh(_session: Any, evidence: list[NewsEvidence], **_kwargs: Any) -> Any:
+        return [row.url for row in evidence], []
+
+    monkeypatch.setattr(service, "refresh_evidence", refresh)
+    async with factory() as session:
+        candidate = await held_for_changed_evidence(session)
+        candidate.error_code = READY_TO_PUBLISH
+        await session.commit()
+        candidate_id = candidate.id
+        with pytest.raises(AppError) as refused:
+            await service.publish_candidate(session, EDITOR, candidate_id, ACTION)
+    async with factory() as session:
+        held = await session.get(NewsCandidate, candidate_id)
+        assert held is not None
+        assert (held.status, held.error_code) == ("manual_review", "news_evidence_changed")
+        assert held.human_decision is None, "a refused publish records no decision"
+        detail = await service.refresh_candidate_evidence(session, EDITOR, candidate_id, ACTION)
+    await engine.dispose()
+
+    assert refused.value.code == "news_evidence_changed"
+    assert (detail.status, detail.error_code) == ("discovered", "news_evidence_refreshed")
 
 
 @pytest.mark.asyncio
