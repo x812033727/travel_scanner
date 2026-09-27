@@ -218,6 +218,17 @@ With 「Claude 連線方式」 set to 訂閱帳號, the AI vendors card's 「訂
   tries again 30 minutes later (`jobs.PAUSE_MINUTES`). The accounts take turns A → B → … →
   A, each used until it is full.
 
+## When Jev's daily budget is spent
+
+Jev is limited to `jev_daily_call_budget` calls per UTC day (200 in production). When the
+budget is spent at the duplicate check, the candidate goes back to `discovered` as
+`news_jev_quota_paused` instead of waiting in the review queue as an uncertain duplicate;
+nothing is uncertain about the story. The orphan sweep skips it until 00:00 UTC (08:00 in
+Taipei) and then queues it again, 20 a minute, so each day runs as many as that day's budget
+allows and the rest pause again. A check that did reach Jev and came back between 0.25 and
+0.85 still waits for an editor. Later Jev stages keep their holds: a spent budget at the Jev
+final gate is `news_jev_final_hold`, which the owner can publish from.
+
 ## Backfilling stories stopped by old rules
 
 `python -m app.news_automation.backfill_cli --since YYYY-MM-DD` (inside the api container)
@@ -233,6 +244,10 @@ Rejections for editorial reasons are not in the list. Add `--apply --actor-email
 and optionally `--limit N`, to reopen them as new drafts, with an audit row each, and queue
 them. The current pipeline then decides each one, including the owner's confirmation for a
 story that may not go out on its own.
+
+`--jev-quota-holds` takes the uncertain-duplicate holds whose latest duplicate check never
+reached Jev because its budget was spent (207 on 2026-09-26). With `--apply` they are marked
+`news_jev_quota_paused` rather than queued, and start after the next 00:00 UTC.
 
 ## Known limits
 

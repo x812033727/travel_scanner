@@ -151,7 +151,8 @@ def run_candidate(candidate_id: str) -> None:
                     return
                 # Only a full concurrency slot comes back in a minute. "disabled" waits for
                 # the orphan sweep once the switch is on again; "skipped" means another
-                # job already owns or finished the candidate.
+                # job already owns or finished the candidate. "jev_paused" needs no job
+                # either: the orphan sweep runs it once the UTC day's Jev budget resets.
                 if result == "paused":
                     # Every subscription account is full: try again once a window has had
                     # time to move, instead of spending MiniMax on it.
