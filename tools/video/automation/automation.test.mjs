@@ -20,7 +20,7 @@ import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settle, sheetDone } from "./flow.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settingsFor, settle, sheetDone } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -461,6 +461,47 @@ test("an outline sent back is re-planned with the owner's note, and a spent budg
 
 // auto_pick_look is the drama-look ticket's switch (docs/videos/HANDS-OFF.md); the server applies it on look reviews.
 const DRAMA_SETTINGS = { drama_enabled: true, style_preset: "ink-wash", subtitle_burn_in: true, music_enabled: false, auto_pick_look: false, character_voice_pool: [{ provider: "gemini", name: "Kore", hint: "少女" }] };
+
+test("a drama reads the drama part's own settings and falls back to the tutorial's (docs/videos/DRAMA-FLOW.md, section 1)", () => {
+  const voice = { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" };
+  const kore = { provider: "gemini", name: "Kore", style: "Grave", model: null, rate: "+0%" };
+  const tutorial = { voice, stage_instructions: { writer: "結尾留懸念" }, max_verify_rounds: 3, max_retake_rounds: 2, topic_scope: ["AI"] };
+  const split = { ...tutorial, drama: { ...DRAMA_SETTINGS, drama_voice: kore, drama_stage_instructions: { writer: "每集結尾一個懸念" }, drama_max_verify_rounds: 1, drama_max_retake_rounds: 0, drama_topic_scope: ["山海經"] } };
+  assert.deepEqual(settingsFor(split, "slides"), { voice, instructions: { writer: "結尾留懸念" }, verifyRounds: 3, retakeRounds: 2, topicScope: ["AI"] }, "a tutorial never reads the drama part");
+  assert.deepEqual(settingsFor(split, "drama"), { voice: kore, instructions: { writer: "每集結尾一個懸念" }, verifyRounds: 1, retakeRounds: 0, topicScope: ["山海經"] });
+  const following = { ...tutorial, drama: { ...DRAMA_SETTINGS, drama_voice: null, drama_stage_instructions: {}, drama_max_verify_rounds: 5, drama_max_retake_rounds: 1, drama_topic_scope: ["民間傳說"] } };
+  assert.deepEqual(settingsFor(following, "drama"), { voice, instructions: {}, verifyRounds: 5, retakeRounds: 1, topicScope: ["民間傳說"] }, "a null voice follows the tutorial's; empty instructions are empty, not the tutorial's");
+  const older = { ...tutorial, drama: DRAMA_SETTINGS };
+  assert.deepEqual(settingsFor(older, "drama"), { voice, instructions: { writer: "結尾留懸念" }, verifyRounds: 3, retakeRounds: 2, topicScope: ["AI"] }, "a site from before the split: the tutorial's values, as the migration copies them");
+  assert.deepEqual(settingsFor({ ...tutorial, drama: undefined }, "drama").voice, voice, "no drama object at all");
+
+  // settle() gives a drama the drama part's narrator voice, and a tutorial the channel voice.
+  const drama = settle(dramaFixture(), { slug: "jingwei", settings: split, sourceGuide: null, root: ROOT, format: "drama" });
+  assert.deepEqual(drama.voice, { provider: "gemini", name: "Kore", style: "Grave" }, "the drama's own voice, without the fields Gemini has no use for");
+  const followed = settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama" });
+  assert.equal(followed.voice.name, "Sulafat");
+  const slides = settle(fixture(), { slug: "z", settings: split, sourceGuide: null, root: ROOT });
+  assert.equal(slides.voice.name, "Sulafat", "a tutorial keeps the channel voice whatever the drama chose");
+});
+
+test("a drama stage ends its prompt with the drama part's standing instructions, a tutorial stage with the tutorial's", async () => {
+  const box = sandbox();
+  const site = fakeSite({ settings: { stage_instructions: { writer: "結尾留懸念" }, drama: { ...DRAMA_SETTINGS, drama_stage_instructions: { writer: "每集結尾一個懸念", verifier: "對照設定集" } } } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-27T09:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.stage("writer", "jingwei", {}, 1000, "drama");
+  await automation.stage("verifier", "jingwei", {}, 1000, "drama");
+  await automation.stage("writer", "chatgpt-ads-off", {}, 1000, "slides");
+  await automation.stage("verifier", "chatgpt-ads-off", {}, 1000);
+  const [dramaWriter, dramaVerifier, slidesWriter, slidesVerifier] = site.calls.run;
+  assert.match(dramaWriter.instructions, /## The owner's standing instructions\n[\s\S]*每集結尾一個懸念$/);
+  assert.equal(dramaWriter.format, "drama");
+  assert.match(dramaVerifier.instructions, /對照設定集$/);
+  assert.match(slidesWriter.instructions, /## The owner's standing instructions\n[\s\S]*結尾留懸念$/);
+  assert.equal(slidesWriter.instructions.includes("每集結尾一個懸念"), false, "a tutorial never sees the drama's");
+  assert.equal(slidesVerifier.instructions.includes("## The owner's standing instructions"), false, "the tutorial part has none for the verifier");
+});
 
 test("a drama is settled with the settings tab's preset, subtitles and music, and its brief has the bible's sections", () => {
   const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" }, drama: DRAMA_SETTINGS };

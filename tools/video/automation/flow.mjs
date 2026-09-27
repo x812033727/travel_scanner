@@ -142,14 +142,42 @@ function mergeLexicon(root, additions) {
 }
 
 /**
+ * The settings a video reads by its format (docs/videos/DRAMA-FLOW.md, section 1). A drama has
+ * its own standing instructions, narrator voice, fact-check and retake rounds and topic scope on
+ * the settings tab's drama part; a null voice, and a site from before the split that sends none
+ * of them, mean the tutorial's. The languages a video is made in are not here: until the
+ * language panel lands (docs/videos/LANGUAGES.md) both formats read `caption_locales`.
+ */
+export function settingsFor(settings, format = "slides") {
+  const tutorial = {
+    voice: settings.voice,
+    instructions: settings.stage_instructions ?? {},
+    verifyRounds: settings.max_verify_rounds,
+    retakeRounds: settings.max_retake_rounds,
+    topicScope: settings.topic_scope ?? [],
+  };
+  if (format !== "drama") return tutorial;
+  const drama = settings.drama ?? {};
+  return {
+    voice: drama.drama_voice ?? tutorial.voice,
+    instructions: drama.drama_stage_instructions ?? tutorial.instructions,
+    verifyRounds: drama.drama_max_verify_rounds ?? tutorial.verifyRounds,
+    retakeRounds: drama.drama_max_retake_rounds ?? tutorial.retakeRounds,
+    topicScope: drama.drama_topic_scope ?? tutorial.topicScope,
+  };
+}
+
+/**
  * video.json as the owner's settings say it must be, whatever the model returned. A drama
  * (docs/videos/DRAMA.md) also takes the settings tab's style preset, subtitle burn-in and
- * whether music is made at all; the writer's own look fields stay.
+ * whether music is made at all, and its narrator voice is the drama part's when the owner chose
+ * one; the writer's own look fields stay.
  */
 export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null }) {
+  const narrator = settingsFor(settings, format).voice;
   // Gemini takes its pace from the style and has no rate; Azure has a rate and no style or model.
-  const unused = settings.voice.provider === "gemini" ? ["rate"] : ["style", "model"];
-  const voice = Object.fromEntries(Object.entries(settings.voice).filter(([key, value]) => value !== null && value !== "" && !unused.includes(key)));
+  const unused = narrator.provider === "gemini" ? ["rate"] : ["style", "model"];
+  const voice = Object.fromEntries(Object.entries(narrator).filter(([key, value]) => value !== null && value !== "" && !unused.includes(key)));
   const settled = { ...video, slug, voice };
   // The description links the article through its content pack. An article the news automation
   // published lives only in the database, so without a pack the script names it in sources instead.
@@ -253,9 +281,10 @@ export class Automation {
 
   async stage(stage, slug, payload, maxOutputTokens, format = "slides", variant = null) {
     // The channel's stance (the planner and the writer read it) and the owner's standing
-    // instructions for the stage (settings tab) end the prompt; the server keeps what was sent,
-    // per stage, format and variant, for the owner to read.
-    const standing = this.settings.stage_instructions?.[stage] ?? "";
+    // instructions for the stage end the prompt: the tutorial part's for a slides video, the
+    // drama part's for a drama (docs/videos/DRAMA-FLOW.md, section 1). The server keeps what was
+    // sent, per stage, format and variant, for the owner to read.
+    const standing = settingsFor(this.settings, format).instructions?.[stage] ?? "";
     const answer = await this.api.run(stage, slug, instructionsFor(stage, format, standing, variant, this.stance), payload, maxOutputTokens, format, variant);
     this.log(`  ${stage}: ${answer.model}, ${answer.input_tokens + answer.output_tokens} tokens; month ${answer.usage.tokens}/${answer.usage.token_budget}`);
     this.lastAnswer = answer.text;
@@ -421,11 +450,12 @@ export class Automation {
     return [...found.values()];
   }
 
-  planPayload(extra, earlier = this.earlierVideos()) {
+  planPayload(extra, earlier = this.earlierVideos(), format = "slides") {
     const refs = this.reference();
     return {
       today: today(this.ctx),
-      scope: this.settings.topic_scope,
+      // A drama's own topic scope (the drama part's), the topics to avoid shared by both.
+      scope: settingsFor(this.settings, format).topicScope,
       avoid: this.settings.topic_avoid,
       target_minutes: [this.settings.target_minutes_min, this.settings.target_minutes_max],
       channel: refs.channel,
@@ -546,7 +576,7 @@ export class Automation {
         answer = await this.stage(
           "planner",
           `drama-${String(request.id).slice(0, 8)}`,
-          this.planPayload({ premise: request.premise, title: request.title ?? null, note: request.note ?? null, source_guide: request.source_guide ?? null, sources, target_minutes: [minutes, minutes], ...this.dramaPayload(stateBase), ...(problem ? { previous_problem: problem } : {}) }, earlier),
+          this.planPayload({ premise: request.premise, title: request.title ?? null, note: request.note ?? null, source_guide: request.source_guide ?? null, sources, target_minutes: [minutes, minutes], ...this.dramaPayload(stateBase), ...(problem ? { previous_problem: problem } : {}) }, earlier, "drama"),
           16_000,
           "drama",
         );
@@ -854,7 +884,7 @@ export class Automation {
     const drama = state.format === "drama";
     const { topics } = drama ? { topics: [] } : await this.api.topics();
     const extra = drama ? { premise: state.premise, target_minutes: [state.target_minutes ?? 3, state.target_minutes ?? 3], source_guide: state.source_guide, ...this.dramaPayload(state) } : { topics };
-    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier), 16_000, state.format);
+    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format);
     const problem = planProblem({ ...answer, slug: state.slug }, taken, drama && state.source_guide ? new Set() : usedGuides, state.format, this.stance);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
@@ -875,7 +905,7 @@ export class Automation {
     return {
       today: today(this.ctx),
       slug: state.slug,
-      voice: this.settings.voice,
+      voice: settingsFor(this.settings, state.format).voice,
       source_guide: state.source_guide,
       target_minutes: drama ? [state.target_minutes ?? 3, state.target_minutes ?? 3] : [this.settings.target_minutes_min, this.settings.target_minutes_max],
       lexicon: Object.keys(lexicon.terms),
@@ -1095,7 +1125,7 @@ export class Automation {
       const problem = await this.saveAndLint(state, { video: answer.video });
       if (problem) return this.retryLater(state, "verifier", `fact-check round ${round} changed ${changed} facts but ${problem}`);
     }
-    state.verified = changed <= 3 || round >= this.settings.max_verify_rounds;
+    state.verified = changed <= 3 || round >= settingsFor(this.settings, state.format).verifyRounds;
     this.cleared(state, "verifier");
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: fact-check round ${round}, ${changed} facts changed${state.verified ? "" : "; another round follows"}`;
@@ -1130,7 +1160,8 @@ export class Automation {
     }
     if (review?.status === "pending") return null;
     let check = await run(ctx, ["check-audio", "--slug", state.slug]);
-    while (check.code === 1 && state.retakes < this.settings.max_retake_rounds) {
+    const retakeRounds = settingsFor(this.settings, state.format).retakeRounds;
+    while (check.code === 1 && state.retakes < retakeRounds) {
       state.retakes += 1;
       saveState(workdir, state);
       const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", path.join(workdir, "review", "check-flags.json")]);

@@ -40,26 +40,23 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 設定（`video_automation_settings`）
 
-| 群組 | 欄位 | 預設 |
-| --- | --- | --- |
-| 開關 | `enabled` | 關 |
-| 排程與題材 | 多久產生一次新草稿（小時） | 72 |
-| | 每次幾個題目 | 1 |
-| | 等站主的草稿達到幾支就先不產生新的 | 3 |
-| | 題材範圍（關鍵詞清單） | AI、科技、AI 工具教學 |
-| | 要避開的題材 | 投資建議、醫療建議、選舉政治 |
-| | 題目來源：站上新聞與文章／Brave 搜尋 | 都開 |
-| 各階段模型 | 企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿，各選「Claude Code（訂閱帳號）」或某家 API 的模型 | 全部用 Claude Code 訂閱帳號；企劃、撰稿、翻譯用 Claude Sonnet 5，查核、聽眾審稿、字幕審稿用 Claude Opus 5.5 |
-| 各階段常設指示 | 企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿各一段文字（每格最多 4000 字），工人接在該階段提示詞之後，投影片與漫劇都適用；清空就是不加。分頁的「目前的提示詞」顯示工人最後送出的完整指示（`video_stage_prompts`，每階段每格式各留最新一份，跑過才有） | 空 |
-| 成片參數 | 旁白聲音、風格、語速 | Gemini Sulafat，沿用 `docs/videos/README.md` |
-| | 目標長度（分鐘） | 8–12 |
-| | 字幕語系 | en、ja、ko、zh-CN |
-| 預算 | 每月最多幾支草稿 | 8 |
-| | 每月模型 token 上限（百萬），只算 API 金鑰的呼叫 | 20 |
-| | 訂閱帳號用到幾 % 就先停（5 小時或每週額度） | 80 |
-| | 每支最多查核幾輪、旁白最多重錄幾輪 | 3、2 |
-| | 旁白每月字數、Jev 每日次數 | 沿用既有欄位，這裡只顯示用量 |
-| 關卡 | 旁白 Jev 全數通過就自動核准 | 開 |
+2026-09-27 起設定分頁分成**教學影片**、**漫劇**、**共用**三個部分，各自儲存（[`DRAMA-FLOW.md`](DRAMA-FLOW.md) §一）；工人依影片的 `format` 讀教學或漫劇那一欄，漫劇的欄位是 `null`（模型、旁白聲音）或站還沒有時，就用教學的值。仍是一列。
+
+| 群組 | 教學影片 | 漫劇 | 共用 |
+| --- | --- | --- | --- |
+| 開關 | `enabled`（自動產生草稿，預設關） | `drama_enabled`（接單集請求與作品，預設關） | — |
+| 排程與題材 | 多久產生一次新草稿（72 小時）、每次幾個題目（1）、等站主的草稿達到幾支就先不產生（3）、題材範圍（AI、科技、AI 工具教學）、題目來源（站上新聞與文章／Brave 搜尋，都開） | 沒有排程：漫劇一律由站主發起；`drama_topic_scope`（山海經、民間傳說、原創玄幻）給企劃當原創題材的參考 | 要避開的題材（投資建議、醫療建議、選舉政治） |
+| 各階段模型 | `stage_models`：企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿各選「Claude Code（訂閱帳號）」或某家 API 的模型；預設全用訂閱帳號，企劃、撰稿、翻譯用 Claude Sonnet 5，查核、聽眾審稿、字幕審稿用 Claude Opus 5.5 | `drama_stage_models`：可勾「跟教學一樣」（存 `null`）；伺服器的 `stage_choice` 依 `/video/automation/run` 帶的 `format` 選 | 都在「AI 設定 › 各功能模型」選 |
+| 各階段常設指示 | `stage_instructions`：六個階段各一段（每格最多 4000 字），工人接在該階段提示詞之後；清空就是不加 | `drama_stage_instructions`：同樣六格，只給漫劇（單集與作品的每一集）；遷移時從教學的複製一份 | 「目前的提示詞」依格式與 variant 分開顯示（`video_stage_prompts`） |
+| 聲音 | `voice`：頻道聲音（Gemini Sulafat，沿用 `docs/videos/README.md`） | `drama_voice`：旁白，`null` 就跟教學一樣；角色聲音池 `character_voice_pool` | — |
+| 長度 | 目標長度 8–12 分鐘 | 每個請求與作品各自帶 `target_minutes` | — |
+| 語言預設 | `caption_locales`（en、ja、ko、zh-CN）：語言面板的預先勾選 | `drama_caption_locales`（預設空） | 語言面板落地前（[`LANGUAGES.md`](LANGUAGES.md)），兩種影片的 CC 仍照 `caption_locales` 做 |
+| 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段 | — |
+| 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
+| 關卡 | 旁白 Jev 全過自動核准、Jev 挑大綱、自動品管全過核准成片與上架確認（都開） | `drama_auto_approve_audio`、`drama_auto_approve_final`（遷移時從教學的複製）、設定圖自動選、分鏡自動核准（關）、「劇本先給我看」`series_script_gate`（開） | — |
+| 頻道立場 | — | — | `channel_stance` |
+
+「訂閱帳號用到幾 % 就先停」欄位自 2026-09-26 起不再讀取（見上）。
 
 超過任何一個預算時，工人停在目前的步驟，審核頁顯示原因，不會悄悄降級成較便宜的模型。
 
