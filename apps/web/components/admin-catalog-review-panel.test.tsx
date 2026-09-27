@@ -58,7 +58,7 @@ describe("AdminCatalogReviewPanel", () => {
     render(<AdminCatalogReviewPanel scope="hotspots" />);
     expect(await screen.findByText("新工作呼叫上限 200 次；共用每日上限 300 次。")).toBeTruthy();
     expect(await screen.findByText("此工作原有累計上限 80 次；已使用 4 次。")).toBeTruthy();
-    expect(screen.getByRole("link", { name: "設定審核呼叫上限" }).getAttribute("href")).toBe("/zh-TW/admin/settings?provider=gemini_guides&field=catalog_review_max_calls");
+    expect(screen.getByRole("link", { name: "設定審核呼叫上限" }).getAttribute("href")).toBe("/zh-TW/admin/ai-accounts?tab=models&provider=gemini_guides&field=catalog_review_max_calls");
     fireEvent.click(screen.getByRole("button", { name: "開始審核現有待審" }));
     await waitFor(() => expect(fetchMock.mock.calls.some(([, init]) => init?.method === "POST")).toBe(true));
     expect(JSON.parse(String(fetchMock.mock.calls.find(([, init]) => init?.method === "POST")![1]!.body)).max_calls).toBe(200);

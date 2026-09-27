@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import OriginalLocaleLayout from "@/app/[locale]/layout";
+import { AdsenseDocument } from "@/components/ads/adsense-loader";
 import { getAdsenseSlot } from "@/lib/adsense.server";
 
 export { generateMetadata, generateStaticParams } from "@/app/[locale]/layout";
@@ -29,13 +29,17 @@ export default async function AdsPublicLayout({ children, params }: {
   const ads = await getAdsenseSlot();
   if (!ads.enabled) return OriginalLocaleLayout({ children, params });
   const requestPath = (await headers()).get("x-travel-pathname") || "";
-  const pathname = requestPath.split("?")[0];
-  // These directories write search terms and filters into the URL after hydration. Keep
-  // the whole document ad-free: redirecting would break its shareable filters, while
-  // loading the vendor on the clean URL would still let it observe later URL changes.
-  if (filterableTutorialHub.test(pathname)) return OriginalLocaleLayout({ children, params });
-  // Third-party code can read location.href for itself, so a clean article URL is the only
-  // way to keep a reader's search terms or campaign tags out of the ad document.
-  if (requestPath.includes("?")) redirect(pathname);
-  return OriginalLocaleLayout({ children, params, ads });
+  // Third-party code can read location.href for itself, so a URL carrying search terms or
+  // campaign tags is served without the tag rather than redirected to its bare path, which
+  // threw the tags away before analytics could read them. `adsenseRequestGate` has already
+  // refused such a request; this repeats it where the tag is actually loaded.
+  // The two tutorial directories write search terms and filters into the URL after
+  // hydration, so they stay ad-free on a clean URL too: the vendor would still observe
+  // later URL changes.
+  if (requestPath.includes("?") || filterableTutorialHub.test(requestPath)) {
+    return OriginalLocaleLayout({ children, params });
+  }
+  // The root layout is not rendered again on a client-side navigation, so whether this
+  // document loaded the tag is decided here, once, for every article it will show.
+  return OriginalLocaleLayout({ children: <AdsenseDocument>{children}</AdsenseDocument>, params, ads });
 }

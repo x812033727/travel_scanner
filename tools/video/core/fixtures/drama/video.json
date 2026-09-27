@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-drama",
+  "format": "drama",
+  "target_minutes": [0.5, 2],
+  "voice": { "provider": "gemini", "name": "Sulafat", "style": "沉穩的說書人語氣，台灣國語，語速稍慢" },
+  "look": {
+    "preset": "cinematic-3d",
+    "style": "semi-realistic 3D CG, ancient Chinese fantasy, volumetric dawn light, cinematic 35mm, muted jade and ochre palette",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "jingwei",
+      "name": "精衛",
+      "appearance": "a girl of about twelve, braided black hair tied with a red cord, pale green hanfu with cloud embroidery, determined dark eyes, small and slight",
+      "voice": { "provider": "gemini", "name": "Kore", "style": "清亮、倔強的少女聲，台灣國語" }
+    },
+    {
+      "id": "yandi",
+      "name": "炎帝",
+      "appearance": "a tall middle-aged emperor with a long grey beard, crimson robe with flame patterns, bronze crown, weathered kind face",
+      "voice": { "provider": "gemini", "name": "Charon", "style": "低沉、緩慢的長者聲，台灣國語" }
+    }
+  ],
+  "music": { "prompt": "solo guqin over soft strings, ancient Chinese fantasy, melancholic and resolute, no vocals", "gain_db": -20, "duck_db": -10 },
+  "subtitles": { "burn_in": true, "style": "drama" },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "精衛為什麼要填海？山海經最倔強的一隻鳥",
+    "description": "炎帝最小的女兒在東海溺水，化成一隻鳥，日復一日銜著石子想把海填平。這一集講她為什麼不肯停。",
+    "tags": ["山海經", "精衛填海", "AI漫劇"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "headline": "精衛為什麼填海", "tag": "山海經", "shot": "sea-storm" } },
+  "sources": [{ "title": "山海經・北山經（維基文庫）", "url": "https://zh.wikisource.org/wiki/山海經/北山經", "checked_on": "2026-09-26" }],
+  "scenes": [
+    {
+      "id": "opening",
+      "chapter": "發鳩山",
+      "template": "shot",
+      "data": {
+        "prompt": "wide establishing shot of Fajiu Mountain at dawn, mist over pine forest, a small girl standing on the ridge looking east",
+        "camera": "slow push in",
+        "motion": "mist drifting through the pines, birds crossing the sky",
+        "characters": ["jingwei"]
+      },
+      "lines": [
+        { "id": "k7p2", "text": "很久以前，發鳩山上住著炎帝最小的女兒。" },
+        { "id": "m4qa", "text": "她最愛往東邊走，去看那片沒有盡頭的海。" }
+      ]
+    },
+    {
+      "id": "farewell",
+      "template": "shot",
+      "data": {
+        "prompt": "medium shot, the emperor in a crimson robe at a palace gate, the girl bowing to him with a small bundle on her back, morning light",
+        "camera": "static, slight handheld drift",
+        "motion": "robes moving in the wind, the girl straightening up",
+        "characters": ["jingwei", "yandi"]
+      },
+      "lines": [
+        { "id": "x9fe", "text": "父王，我去看看海就回來。", "speaker": "jingwei", "emotion": "開心、有點急" },
+        { "id": "b3tn", "text": "海不是山，它不會等你。早點回來。", "speaker": "yandi", "emotion": "溫和但擔心" }
+      ]
+    },
+    {
+      "id": "sea-storm",
+      "chapter": "東海",
+      "template": "shot",
+      "data": {
+        "prompt": "low angle, the girl on black rocks facing a storming sea, spray in the air, dark clouds, a small boat far out",
+        "camera": "handheld, slight shake",
+        "motion": "waves crashing on the rocks, storm clouds rolling in",
+        "characters": ["jingwei"],
+        "fit": "freeze"
+      },
+      "lines": [
+        { "id": "r8wd", "text": "那一天，東海起了大風。", "pause_after_ms": 600 },
+        { "id": "h2cz", "text": "女娃沒有回來。" }
+      ]
+    },
+    {
+      "id": "bird",
+      "template": "shot",
+      "data": {
+        "prompt": "close-up of a small bird with a patterned head, white beak and red feet perched on a wet rock, a pebble in its beak, grey sea behind",
+        "camera": "slow orbit",
+        "motion": "feathers ruffling in the wind, the bird turning its head toward the sea",
+        "characters": [],
+        "start_frame": { "shot": "sea-storm", "at": "last" },
+        "transition": "dissolve"
+      },
+      "lines": [
+        { "id": "p5vs", "text": "後來，山上多了一隻鳥，叫聲像在喊自己的名字。" },
+        { "id": "q2mx", "text": "東海，我一定會把你填平。", "speaker": "jingwei", "emotion": "倔強、帶著哭腔" }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "結尾",
+      "template": "outro",
+      "data": { "title": "下一集：夸父逐日", "cta": "完整故事在說明欄" },
+      "lines": [
+        { "id": "w6kd", "text": "這就是精衛填海的故事。她填不平大海，但她從來沒有停下來。" },
+        { "id": "z3hr", "text": "下一集講夸父為什麼要追太陽，我們下一集見。" }
+      ]
+    }
+  ]
+}

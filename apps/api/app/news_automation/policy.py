@@ -4,9 +4,10 @@ import hashlib
 import json
 import re
 import unicodedata
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from datetime import UTC, date, datetime
-from typing import Any
+from typing import Any, Protocol
+from urllib.parse import urlsplit
 
 from app.guides.pack_ingest import lint_document
 from app.guides.schemas import CalloutBlock, FaqBlock, GuideDocument, ImageBlock, SummaryBlock
@@ -38,18 +39,84 @@ FORBIDDEN_TECH = (
     "proof-of-concept exploit",
 )
 ALLOWED_TRANSITIONS: Mapping[str, frozenset[str]] = {
-    "discovered": frozenset({"drafting", "manual_review", "duplicate", "failed"}),
-    "drafting": frozenset({"verifying", "manual_review", "failed"}),
-    "verifying": frozenset({"locale_review", "manual_review", "failed"}),
-    "locale_review": frozenset({"jev_review", "manual_review", "failed"}),
+    "discovered": frozenset(
+        {"drafting", "manual_review", "needs_evidence", "duplicate", "failed"}
+    ),
+    "drafting": frozenset({"verifying", "manual_review", "needs_redraft", "failed"}),
+    "verifying": frozenset({"locale_review", "manual_review", "needs_redraft", "failed"}),
+    "locale_review": frozenset({"jev_review", "manual_review", "needs_redraft", "failed"}),
     "jev_review": frozenset({"shadow_review", "manual_review", "published", "failed"}),
     "shadow_review": frozenset({"published", "rejected", "drafting"}),
     "manual_review": frozenset({"published", "rejected", "drafting"}),
+    # A retry puts it back to discovered; nothing here can be published.
+    "needs_evidence": frozenset({"discovered", "rejected"}),
+    "needs_redraft": frozenset({"discovered", "rejected"}),
     "failed": frozenset({"drafting", "rejected"}),
     "duplicate": frozenset({"rejected"}),
     "published": frozenset(),
     "rejected": frozenset(),
 }
+
+
+# Manual-review holds that are steps of the workflow rather than problems: a verified
+# Traditional Chinese draft waiting for the owner's decision, and a checked five-locale
+# article (re-verified in the editor) waiting for the publish button.
+ZH_DRAFT_READY = "news_zh_draft_ready"
+READY_TO_PUBLISH = "news_ready_to_publish"
+# The last two gates before publication (owner decision, 2026-09-25): the final editor found a
+# problem it cannot fix without new evidence, or Jev's last call on the five locales was not
+# "act" everywhere. The article is saved either way, so the owner can still publish it.
+FINAL_EDIT_HOLD = "news_final_edit_hold"
+JEV_FINAL_HOLD = "news_jev_final_hold"
+# Set when an editor re-checks a candidate held for changed evidence against the current
+# pages: the saved article is re-verified like an edited one, and then Jev makes the last
+# call before anything is published.
+EVIDENCE_REFRESH_MARKER = "news_evidence_refreshed"
+
+
+class EvidenceLike(Protocol):
+    role: str
+    url: str
+    is_first_party: bool
+
+
+def evidence_site(url: str) -> str:
+    """The website a page belongs to: its host, without a leading ``www.``."""
+    host = (urlsplit(url).hostname or "").casefold().rstrip(".")
+    return host.removeprefix("www.")
+
+
+def evidence_site_count(rows: Iterable[EvidenceLike]) -> int:
+    return len({evidence_site(row.url) for row in rows if row.role == "evidence"})
+
+
+def evidence_present(rows: Iterable[EvidenceLike]) -> bool:
+    """At least one evidence page, which is all a draft for the owner needs (owner
+    decision, 2026-09-25): every enabled source is an official or trusted feed, and a
+    person confirms each single-source article before it is translated and published."""
+    return any(row.role == "evidence" for row in rows)
+
+
+def evidence_sufficient(rows: Iterable[EvidenceLike]) -> bool:
+    """Two evidence pages from two different websites, one of them first-party.
+
+    Pages of one website are one source (owner decision, 2026-09-24): an announcement and
+    its own related pages do not corroborate each other. Since 2026-09-25 this only
+    guards automatic publication; a person may publish a single-source article.
+    """
+    usable = [row for row in rows if row.role == "evidence"]
+    return evidence_site_count(usable) >= 2 and any(row.is_first_party for row in usable)
+
+
+def auto_evidence_ok(rows: Iterable[EvidenceLike]) -> bool:
+    """Enough evidence to publish without a person: two websites, or one first-party page.
+
+    The owner decided on 2026-09-25 that an official announcement (the company's own site,
+    blog or feed) may be published automatically on its own, reported as that company's
+    statement; any other single website still waits for a person.
+    """
+    usable = [row for row in rows if row.role == "evidence"]
+    return evidence_sufficient(usable) or any(row.is_first_party for row in usable)
 
 
 def transition_allowed(current: str, target: str) -> bool:
@@ -76,33 +143,135 @@ def evidence_fingerprint(rows: list[dict[str, Any]]) -> str:
     ).hexdigest()
 
 
-def document_fingerprint(document: GuideDocument) -> str:
+NEWS_ASSET_PREFIX = "/guides/news-assets/"
+# The link to the vertical's topic hub the pipeline appends to each locale. Its URL names the
+# locale, so it differs between locales on purpose.
+TOPIC_LINK = re.compile(
+    r"^https://mokaair\.com/(?:en|ja|ko|zh-TW|zh-CN)/life/topics/(?:ai-news|tech-news|crypto)$"
+)
+
+
+def is_topic_link(block: object) -> bool:
+    return (
+        isinstance(block, dict)
+        and block.get("type") == "link"
+        and TOPIC_LINK.match(str(block.get("url", ""))) is not None
+    )
+
+
+# The site's own non-investment-advice notice for crypto news, one per locale, each containing
+# its CRYPTO_MARKERS phrase. The pipeline adds it where a model left none (on 2026-09-26 the
+# writer and the translators omitted it in three locales), so no crypto story stops at the
+# disclaimer check for something the site can write itself.
+CRYPTO_DISCLAIMERS: Mapping[str, tuple[str, str]] = {
+    "zh-TW": (
+        "這篇是新聞整理，不是投資建議",
+        "本文整理公開報導與官方資訊，不推薦任何代幣、平台或操作，不是投資建議。"
+        "加密資產風險高，做任何決定前請自行查證並評估風險。",
+    ),
+    "zh-CN": (
+        "这篇是新闻整理，不是投资建议",
+        "本文整理公开报道与官方信息，不推荐任何代币、平台或操作，不是投资建议。"
+        "加密资产风险高，做任何决定前请自行核实并评估风险。",
+    ),
+    "en": (
+        "A news summary, not investment advice",
+        "This article summarises public reporting and official information. It recommends no "
+        "token, platform or action, and it is not investment advice. Crypto assets carry high "
+        "risk; check the facts and weigh the risks yourself before any decision.",
+    ),
+    "ja": (
+        "ニュースのまとめであり、投資助言ではありません",
+        "本記事は公開された報道と公式情報をまとめたもので、特定のトークン、プラットフォーム、"
+        "行動を勧めるものではなく、投資助言ではありません。暗号資産はリスクが高いため、"
+        "判断の前にご自身で事実を確認し、リスクを検討してください。",
+    ),
+    "ko": (
+        "뉴스 정리이며 투자 조언이 아닙니다",
+        "이 글은 공개 보도와 공식 정보를 정리한 것으로, 특정 토큰·플랫폼·행동을 권하지 않으며 "
+        "투자 조언이 아닙니다. 암호화폐는 위험이 크니 결정하기 전에 직접 사실을 확인하고 "
+        "위험을 판단하세요.",
+    ),
+}
+_DISCLAIMER_TEXTS = frozenset(text for _title, text in CRYPTO_DISCLAIMERS.values())
+
+
+def is_site_disclaimer(block: object) -> bool:
+    return (
+        isinstance(block, dict)
+        and block.get("type") == "callout"
+        and block.get("text") in _DISCLAIMER_TEXTS
+    )
+
+
+def with_crypto_disclaimer(document: GuideDocument, vertical: str, locale: str) -> GuideDocument:
+    """A crypto story with a disclaimer callout the hard checks accept, added if it has none."""
+    if vertical != "crypto":
+        return document
+    marker = CRYPTO_MARKERS[locale].casefold()
+    if any(
+        isinstance(block, CalloutBlock) and marker in block.text.casefold()
+        for block in document.blocks
+    ):
+        return document
+    title, text = CRYPTO_DISCLAIMERS[locale]
+    encoded = document.model_dump(mode="json")
+    notice = {"type": "callout", "tone": "info", "title": title, "text": text}
+    # Before the topic link, which stays last.
+    position = next(
+        (index for index, block in enumerate(encoded["blocks"]) if is_topic_link(block)),
+        len(encoded["blocks"]),
+    )
+    encoded["blocks"].insert(position, notice)
+    return GuideDocument.model_validate(encoded)
+
+
+def is_site_asset(block: object) -> bool:
+    """An image the pipeline drew for the story (``ensure_assets``), not one a model wrote."""
+    return (
+        isinstance(block, dict)
+        and block.get("type") == "image"
+        and str(block.get("src", "")).startswith(NEWS_ASSET_PREFIX)
+    )
+
+
+def _without_site_additions(document: GuideDocument) -> dict[str, Any]:
     encoded = document.model_dump(mode="json")
     hero = encoded.get("hero")
-    if isinstance(hero, dict) and str(hero.get("src", "")).startswith("/guides/news-assets/"):
+    if isinstance(hero, dict) and str(hero.get("src", "")).startswith(NEWS_ASSET_PREFIX):
         encoded["hero"] = None
     encoded["blocks"] = [
         block
         for block in encoded["blocks"]
-        if not (
-            isinstance(block, dict)
-            and (
-                (
-                    block.get("type") == "image"
-                    and str(block.get("src", "")).startswith("/guides/news-assets/")
-                )
-                or (
-                    block.get("type") == "link"
-                    and re.match(
-                        r"^https://mokaair\.com/(?:en|ja|ko|zh-TW|zh-CN)/life/topics/"
-                        r"(?:ai-news|tech-news|crypto)$",
-                        str(block.get("url", "")),
-                    )
-                    is not None
-                )
-            )
-        )
+        if not (is_topic_link(block) or is_site_asset(block))
     ]
+    return encoded
+
+
+def site_additions_removed(document: GuideDocument) -> GuideDocument:
+    """The article as the models wrote it: no topic link, and no artwork the pipeline drew.
+
+    Stage two adds both after every model step. A rerun starts from a zh-TW text that already
+    carries them, and a reviewer comparing it with a fresh translation (told to add no image)
+    held the translation for a "missing" hero and diagram on 2026-09-26.
+    """
+    return GuideDocument.model_validate(_without_site_additions(document))
+
+
+def for_review(document: GuideDocument) -> dict[str, Any]:
+    """The document as a reviewing model sees it, without anything the pipeline adds.
+
+    The topic link names the locale in its URL, so a reviewer comparing a translation with
+    the zh-TW source reported it as a mismatch and held the article (2026-09-26).
+    """
+    return _without_site_additions(document)
+
+
+def document_fingerprint(document: GuideDocument) -> str:
+    encoded = _without_site_additions(document)
+    # The site's own notice, so adding it where a model left none keeps a verification of the
+    # text valid.
+    encoded["blocks"] = [block for block in encoded["blocks"] if not is_site_disclaimer(block)]
     return hashlib.sha256(
         json.dumps(
             encoded,
@@ -165,8 +334,8 @@ def hard_policy_problems(
         isinstance(block, LinkBlock) and block.url == topic_url for block in document.blocks
     ):
         problems.append("news_topic_link: the localized dynamic topic link is required")
-    if source_count < 2:
-        problems.append("news_sources: at least two evidence sources are required")
+    if source_count < 1:
+        problems.append("news_sources: evidence from at least one website is required")
     text = _visible_text(document)
     if vertical == "crypto":
         marker = CRYPTO_MARKERS[locale].casefold()

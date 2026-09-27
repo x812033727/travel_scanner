@@ -55,6 +55,13 @@ services:
     ports: ["127.0.0.1:8090:8000"]
     volumes:
       - /run/travel-scanner-deployer:/run/travel-scanner-deployer:ro
+      # The AI accounts agent (ops/ai-accounts); the same travel-api group opens it.
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+      # Previews for /admin/videos (app/video_reviews/storage.py): the site has no object store.
+      - video_reviews:/var/lib/mokaair/video-reviews
+      # The drama route's generated images, clips and music (app/video_media/storage.py), kept
+      # 14 days so a redeploy between two stages does not lose what was paid for.
+      - video_media:/var/lib/mokaair/video-media
     group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
@@ -73,6 +80,11 @@ services:
       DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
       REDIS_URL: ${REDIS_URL:?set REDIS_URL}
     command: ["python", "-m", "app.worker"]
+    # Guide search and introductions run Claude on the host's subscription accounts when the
+    # AI vendors card says so (app/ai/subscription.py); only the agent's socket is mounted.
+    volumes:
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+    group_add: ["${DEPLOY_AGENT_GID:-10002}"]
     security_opt: ["no-new-privileges:true"]
     cap_drop: ["ALL"]
     depends_on:
@@ -162,6 +174,30 @@ services:
       postgres: { condition: service_healthy }
       redis: { condition: service_healthy }
 
+  news-worker:
+    # The only consumer of the "news" queue; the general worker leaves it alone so a
+    # candidate's hour of model calls never blocks search.
+    image: travel-scanner-api:${RELEASE_SHA:-local}
+    profiles: ["news"]
+    restart: unless-stopped
+    env_file: ${RUNTIME_ENV_FILE:-.env}
+    environment:
+      APP_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL}
+    command: ["python", "-m", "app.news_automation.worker"]
+    # The news stages run Claude on the host's subscription accounts when the AI vendors card
+    # says so (app/ai/subscription.py); only the agent's socket is mounted.
+    volumes:
+      - /run/mokaair-ai-accounts:/run/mokaair-ai-accounts:ro
+    group_add: ["${DEPLOY_AGENT_GID:-10002}"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
   community-sweeper:
     image: travel-scanner-api:${RELEASE_SHA:-local}
     restart: unless-stopped
@@ -208,6 +244,39 @@ services:
     depends_on:
       - api
 
+  video-worker:
+    # The video pipeline running from the owner's settings on /admin/videos
+    # (docs/videos/AUTOMATION.md). It holds only a video tool token, paired once from its log;
+    # the AI keys stay in api. It reaches the site through the web container, not nginx.
+    image: travel-scanner-video-worker:${RELEASE_SHA:-local}
+    build:
+      context: .
+      dockerfile: ops/video/Dockerfile
+    profiles: ["video"]
+    init: true
+    restart: unless-stopped
+    environment:
+      VIDEO_INTERNAL_SITE: http://web:3000
+      VIDEO_WORKER_INTERVAL_SECONDS: "300"
+    volumes:
+      - video_work:/var/lib/mokaair/video-work
+      - video_home:/var/lib/mokaair/video-home
+      - video_docs:/opt/mokaair/docs/videos
+    # Chromium renders the slides; Docker's 64 MB /dev/shm makes it crash on 1080p pages.
+    shm_size: "1gb"
+    mem_limit: 3g
+    read_only: true
+    tmpfs: ["/tmp:size=512m"]
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: ["ALL"]
+    depends_on:
+      - web
+
 volumes:
   postgres_data:
   redis_data:
+  video_reviews:
+  video_media:
+  video_work:
+  video_home:
+  video_docs:

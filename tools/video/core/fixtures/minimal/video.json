@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "slug": "fixture-minimal",
+  "format": "slides",
+  "target_minutes": [0.5, 2],
+  "voice": { "provider": "azure", "name": "zh-TW-HsiaoChenNeural", "rate": "+0%" },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "AI 模型怎麼挑？三個問題幫你決定",
+    "description": "排行榜第一名不一定最適合你。這支用三個問題，幫你挑出適合自己的 AI 模型。",
+    "tags": ["AI 模型", "模型選擇"],
+    "video_id": null
+  },
+  "thumbnail": { "template": "thumb", "data": { "headline": "第一名不一定最好用", "tag": "AI 模型怎麼挑" } },
+  "sources": [{ "title": "範例來源", "url": "https://example.com/models", "checked_on": "2026-09-24" }],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "開場",
+      "template": "title",
+      "data": { "title": "AI 模型怎麼挑？", "subtitle": "排行榜第一名不一定最適合你" },
+      "lines": [
+        { "id": "k7p2", "text": "每次有新模型出來，排行榜就換一次第一名，你真的每次都要跟著換嗎？" },
+        { "id": "m4qa", "text": "今天用三個問題，幫你在五分鐘內決定要用哪一個 AI 模型。" }
+      ]
+    },
+    {
+      "id": "questions",
+      "chapter": "三個問題",
+      "template": "bullets",
+      "data": { "title": "先問自己三件事", "items": ["要它做什麼", "能等多久", "願意付多少"] },
+      "lines": [
+        { "id": "x9fe", "text": "第一個問題是，你要它做什麼工作。", "reveal": 1 },
+        { "id": "b3tn", "text": "第二個問題是，你能接受它想多久才回答。", "reveal": 1 },
+        { "id": "r8wd", "text": "第三個問題是，你每個月願意為它付多少錢。", "reveal": 1 }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "結論",
+      "template": "outro",
+      "data": { "title": "下一步", "cta": "完整比較表在說明欄的文章裡" },
+      "lines": [
+        { "id": "h2cz", "text": "把這三個答案寫下來，再去看排行榜，你會發現選擇變得很清楚。" },
+        { "id": "p5vs", "text": "完整的比較表放在說明欄的文章裡，我們下一支影片見。", "say": "完整的比較表，放在說明欄的文章裡。我們下一支影片見。", "say_for": "76ac91dc427b" }
+      ]
+    }
+  ]
+}

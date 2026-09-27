@@ -34,8 +34,18 @@ def test_navigation_registry_has_stable_unique_destinations() -> None:
     # this registry whenever the API answers, so a missing row made the page "forbidden".
     assert "/admin/guides" in hrefs
     assert "/admin/news" in hrefs
+    ai_accounts = next(
+        item for item in operations_service.NAVIGATION_REGISTRY if item.id == "ai_accounts"
+    )
+    assert (ai_accounts.href, ai_accounts.capability) == ("/admin/ai-accounts", "settings.read")
     news = next(item for item in operations_service.NAVIGATION_REGISTRY if item.id == "news")
     assert news.badge_key == "news_review_pending"
+    videos = next(item for item in operations_service.NAVIGATION_REGISTRY if item.id == "videos")
+    assert (videos.href, videos.capability, videos.badge_key) == (
+        "/admin/videos",
+        "content.read",
+        "video_reviews_pending",
+    )
     assert all(item.href.startswith("/admin") for item in operations_service.NAVIGATION_REGISTRY)
 
 

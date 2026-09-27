@@ -1,0 +1,175 @@
+{
+  "slug": "desk-cable-charging-organization",
+  "ticket": "2026-09-24-release-localized-desk-cable-guide",
+  "content_pr": 723,
+  "content_commit": "4e618566",
+  "production_code": {
+    "live_head": "1b4b42f2",
+    "deploy_needed": false,
+    "note": "1b4b42f2 (contains #723) was already deployed at 10:24 UTC by another run; the deploy script dry-run reported up to date"
+  },
+  "preflight": {
+    "hold_file": null,
+    "deploy_lock": "free",
+    "flagged_releases": 0,
+    "publish_hold_on_slug": false,
+    "image_pack_locales": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ]
+  },
+  "dry_run_before": {
+    "taxonomy": "unchanged",
+    "en": "create",
+    "ja": "create",
+    "ko": "create",
+    "zh-CN": "create",
+    "publish": true,
+    "zh-TW": "unchanged (separate dry-run)"
+  },
+  "owner_approval": "AskUserQuestion answer: 先 pg_dump 再發布 4 個語系",
+  "backup": {
+    "kind": "pg_dump -Fc (whole database)",
+    "file": "/root/travel_scanner_precable_l10n_20260924T104652Z.dump",
+    "bytes": 143453584,
+    "toc_readable": true
+  },
+  "publish_report": {
+    "created": [
+      "desk-cable-charging-organization:en",
+      "desk-cable-charging-organization:ja",
+      "desk-cable-charging-organization:ko",
+      "desk-cable-charging-organization:zh-CN"
+    ],
+    "updated": [],
+    "unchanged": [],
+    "published": [
+      "desk-cable-charging-organization:en",
+      "desk-cable-charging-organization:ja",
+      "desk-cable-charging-organization:ko",
+      "desk-cable-charging-organization:zh-CN"
+    ],
+    "taxonomy_updated": [],
+    "publish_held": {},
+    "failed": null
+  },
+  "links_rebuild": {
+    "materialized": 2036,
+    "materialized_before": 2032,
+    "dropped": 0,
+    "unavailable": 0,
+    "unresolved": []
+  },
+  "links_check": {
+    "findings_on_this_article": {
+      "zh-TW": 0,
+      "en": 0,
+      "ja": 0,
+      "ko": 0,
+      "zh-CN": 0
+    },
+    "note": "each locale exits 1 because of findings on other articles that predate this release"
+  },
+  "dry_run_after": "all five locales unchanged, publish false",
+  "verify_public": "RESULT PASS (0 problems, 5 pages) with --sitemap",
+  "locales": {
+    "zh-TW": {
+      "published_version": 8,
+      "title": "桌面線材整理不只要好看：把用途、規格與取用位置標清楚",
+      "normalized_hash_live": "b67d107a9413dbf52e5729d0c543cbb9698524feeb332f67c6df8b0de8e3619c",
+      "normalized_hash_pack": "b67d107a9413dbf52e5729d0c543cbb9698524feeb332f67c6df8b0de8e3619c",
+      "equal": true,
+      "file": "published-zh-TW.json",
+      "file_sha256": "a5fe53ae62a473777515871312aab1e45e41b44ee71bf89450e8855a0f31de1b",
+      "gadget_link_text": "買新 3C 前先寫需求：從真實問題、相容性到維修與退場成本",
+      "article_links_contains_gadget": true,
+      "article_links_contains_ai_term_token": false,
+      "published_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-TW",
+        "zh-CN"
+      ]
+    },
+    "en": {
+      "published_version": 2,
+      "title": "Desk cable organization isn't just about looks: label each cable's purpose, specs, and where it's used",
+      "normalized_hash_live": "29300977c879cb733271abac1b0625665e096ddc86208651e7b0d5a1637ba77c",
+      "normalized_hash_pack": "29300977c879cb733271abac1b0625665e096ddc86208651e7b0d5a1637ba77c",
+      "equal": true,
+      "file": "published-en.json",
+      "file_sha256": "fa59991821158c4fb550fe8cee8aae9845e5b79d1ddbd0acc4fd5dcdff90ad50",
+      "gadget_link_text": "Before buying new electronics (3C): define your needs, check compatibility, and consider repair and end-of-use costs",
+      "article_links_contains_gadget": true,
+      "article_links_contains_ai_term_token": false,
+      "published_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-TW",
+        "zh-CN"
+      ]
+    },
+    "ja": {
+      "published_version": 2,
+      "title": "デスクのケーブル整理は見た目だけではない：用途・規格・使う場所をはっきり示す",
+      "normalized_hash_live": "99b3444a19f729aadaf2212d72b3e0f3838d5073a44fcc0335e15aab9787d52e",
+      "normalized_hash_pack": "99b3444a19f729aadaf2212d72b3e0f3838d5073a44fcc0335e15aab9787d52e",
+      "equal": true,
+      "file": "published-ja.json",
+      "file_sha256": "0934026b5dae8c56133b19282a8a5e2356c9f8cc2fdcc85a36242346a4afa08f",
+      "gadget_link_text": "新しい3C機器を買う前に必要条件を書き出す：実際の困り事、互換性、修理と手放す際のコストまで",
+      "article_links_contains_gadget": true,
+      "article_links_contains_ai_term_token": false,
+      "published_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-TW",
+        "zh-CN"
+      ]
+    },
+    "ko": {
+      "published_version": 2,
+      "title": "책상 케이블 정리, 보기 좋은 것만으로는 부족합니다: 용도·규격·사용 위치를 분명하게 표시하기",
+      "normalized_hash_live": "796d07ab7e0402e03f8306087c07730122a5f5d4e9c0c5c9ded4be23f8f6eb8e",
+      "normalized_hash_pack": "796d07ab7e0402e03f8306087c07730122a5f5d4e9c0c5c9ded4be23f8f6eb8e",
+      "equal": true,
+      "file": "published-ko.json",
+      "file_sha256": "156f7f40b304d6439e05bf5c70e1df693185fd44b70491fc0c65fa91071dd154",
+      "gadget_link_text": "새 3C 기기를 사기 전에 요구 사항부터: 실제 문제, 호환성, 수리와 처분 비용까지",
+      "article_links_contains_gadget": true,
+      "article_links_contains_ai_term_token": false,
+      "published_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-TW",
+        "zh-CN"
+      ]
+    },
+    "zh-CN": {
+      "published_version": 2,
+      "title": "桌面线材整理不只要好看：把用途、规格与取用位置标清楚",
+      "normalized_hash_live": "a55af5580b4ff6a4d569508c5847ed4646ce5a815cb30bbac71c3a0d3ed2bb16",
+      "normalized_hash_pack": "a55af5580b4ff6a4d569508c5847ed4646ce5a815cb30bbac71c3a0d3ed2bb16",
+      "equal": true,
+      "file": "published-zh-CN.json",
+      "file_sha256": "43269bb4fb039d6f1bd3a38991e3e0ca5f6bc9f9ee316eb267695472d3fe732a",
+      "gadget_link_text": "买新 3C 前先写需求：从真实问题、兼容性到维修与退出使用的成本",
+      "article_links_contains_gadget": true,
+      "article_links_contains_ai_term_token": false,
+      "published_locales": [
+        "en",
+        "ja",
+        "ko",
+        "zh-TW",
+        "zh-CN"
+      ]
+    }
+  }
+}

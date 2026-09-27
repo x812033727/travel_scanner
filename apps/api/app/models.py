@@ -2156,6 +2156,120 @@ class ProviderConfig(Timestamped, Base):
     last_test_message: Mapped[str | None] = mapped_column(Text, nullable=True)
 
 
+class VideoToolToken(Timestamped, Base):
+    """A credential the local video pipeline presents to synthesize narration, and nothing else.
+
+    Only the SHA-256 of the token is stored; the owner sees the token once, when it is made.
+    """
+
+    __tablename__ = "video_tool_tokens"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    name: Mapped[str] = mapped_column(String(80))
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True, index=True)
+    # The first characters of the token, so the list can tell tokens apart.
+    token_prefix: Mapped[str] = mapped_column(String(16))
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True, index=True
+    )
+    last_used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class VideoProject(Timestamped, Base):
+    """One video the local pipeline is making, as the owner sees it on /admin/videos.
+
+    The pipeline's own state stays in its work directory; this row is what it last reported:
+    the title, where it is, and the checklist its `status` command prints.
+    """
+
+    __tablename__ = "video_projects"
+    __table_args__ = (
+        CheckConstraint("format IN ('slides', 'drama')", name="ck_video_project_format"),
+        # A YouTube video id is eleven characters (migration 0100 adds this NOT VALID); length()
+        # rather than char_length() so the SQLite-backed tests can build the table too.
+        CheckConstraint(
+            "youtube_video_id IS NULL OR length(youtube_video_id) = 11",
+            name="ck_video_project_youtube_id",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
+    title: Mapped[str] = mapped_column(String(200))
+    # Which pipeline makes it: "slides" or the AI drama route (docs/videos/DRAMA.md; 0097).
+    format: Mapped[str] = mapped_column(String(8), default="slides", server_default="slides")
+    # An episode of a long drama series (docs/videos/SERIES.md): the series' slug and the
+    # episode's number, so the drama tab lists a series' episodes together. Migration 0099.
+    series_slug: Mapped[str | None] = mapped_column(String(40), nullable=True, index=True)
+    episode_number: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    stage: Mapped[str] = mapped_column(String(40))
+    checklist: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    youtube_video_id: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    # When the owner chose to publish it, from the "ready to upload" list
+    # (docs/videos/HANDS-OFF.md; migration 0100). The site schedules it on YouTube.
+    youtube_publish_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    last_synced_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    # The article the video retells, so the next automatic draft does not pick it again.
+    source_guide: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    # The owner stopped this video on /admin/videos; the pipeline leaves it, its topic stays taken.
+    dropped_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    dropped_note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    dropped_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    # The languages the owner ticked on /admin/videos to dub this video in, a subset of en, ja,
+    # ko and zh-CN in that order, empty until they choose (docs/videos/DUBS.md; 0099). The worker
+    # makes those tracks once the final cut is approved; the owner uploads them in YouTube Studio.
+    dub_locales: Mapped[list[str]] = mapped_column(JSON, default=list, server_default="[]")
+
+
+class VideoReview(Timestamped, Base):
+    """Something the owner must decide on for one video: an outline, the narration, the final cut,
+    or whether it may be uploaded. Bound to the SHA-256 of what was reviewed, so the pipeline
+    records an approval only for the exact file the owner saw."""
+
+    __tablename__ = "video_reviews"
+    __table_args__ = (
+        UniqueConstraint("project_id", "gate", "content_sha256", name="uq_video_review_content"),
+        # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095);
+        # script is an episode's screenplay before any image or clip is paid for
+        # (docs/videos/SERIES.md; migration 0099); dubs is a batch of finished dub tracks the
+        # owner uploads (docs/videos/DUBS.md; migration 0100).
+        CheckConstraint(
+            "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', "
+            "'publish', 'dubs')",
+            name="ck_video_review_gate",
+        ),
+        CheckConstraint(
+            "status IN ('pending', 'approved', 'rejected', 'superseded')",
+            name="ck_video_review_status",
+        ),
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    project_id: Mapped[UUID] = mapped_column(
+        ForeignKey("video_projects.id", ondelete="CASCADE"), index=True
+    )
+    gate: Mapped[str] = mapped_column(String(20))
+    # Which of a gate's several reviews this is (a look review per character); None for the rest.
+    subject: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    content_sha256: Mapped[str] = mapped_column(String(64))
+    summary: Mapped[str] = mapped_column(String(500))
+    payload: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict)
+    # [{role, sha256, size, content_type}], each a file in the review store.
+    files: Mapped[list[dict[str, Any]]] = mapped_column(JSON, default=list)
+    status: Mapped[str] = mapped_column(String(20), default="pending")
+    choice: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    note: Mapped[str | None] = mapped_column(Text, nullable=True)
+    decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    decided_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    submitted_by_token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+
+
 class SitePage(Timestamped, Base):
     __tablename__ = "site_pages"
     __table_args__ = (

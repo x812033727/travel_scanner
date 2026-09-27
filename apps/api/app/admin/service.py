@@ -35,6 +35,7 @@ from app.admin.schemas import (
 )
 from app.ai import catalog
 from app.ai.itinerary import AIItineraryPlanner, AIItineraryRequest
+from app.auth.service import cached_admin_capabilities
 from app.config import (
     OFFICIAL_PROVIDER_HOSTS,
     Settings,
@@ -52,6 +53,7 @@ from app.providers.flightaware import FlightAwareProvider
 from app.providers.google_travel_impact import GoogleTravelImpactProvider
 from app.providers.skyscanner import SkyscannerProvider
 from app.providers.usage_meter import (
+    azure_speech_usage_snapshot,
     ekispert_usage_snapshot,
     google_maps_usage_snapshot,
     naver_maps_usage_snapshot,
@@ -68,6 +70,7 @@ from app.trips.routing import (
     OdsayRouteProvider,
     RoutePoint,
 )
+from app.video_speech.azure import AzureSpeech, SpeechUpstreamError
 from app.weather.google import GoogleWeatherService
 from app.weather.met_norway import MetNorwayWeatherService
 
@@ -91,6 +94,14 @@ SITE_VISIBILITY_FIELDS = (
     "airline_fares_enabled",
     "pricing_enabled",
 )
+
+# Settings that put the owner's personal subscription accounts to work for the site.
+OWNER_ONLY_CONFIG_FIELDS: dict[str, tuple[str, ...]] = {
+    "ai_vendors": (
+        "anthropic_connection",
+        "ai_subscription_fallback",
+    ),
+}
 
 # Rows that are never disabled: a disabled row nulls its secrets, and these hold
 # settings every feature shares rather than one provider that can be switched off.
@@ -181,13 +192,21 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "OpenAI、Claude、MiniMax 與 Gemini 的 API 金鑰與官方 Base URL 集中在這裡，由行程規劃、"
         "行程文字解析、景點介紹搜尋與 Gemini 文章搜尋共用；各功能只選供應商與模型。"
         "Jev 也放在這裡，但它是判斷模型而不是生成模型：只回傳 choice／score／noul 與信心值，"
-        "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。",
+        "不會寫出任何文字，因此不會出現在行程規劃或文章搜尋的供應商選單裡。"
+        "Jev 的每日呼叫次數由新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用。"
+        "Claude 可以改走主機上「AI 帳號」登入的訂閱帳號（只有站主能切換）：各功能照樣選 Claude "
+        "與模型，帳號依 A、B、C… 的順序輪流，一個帳號的 5 小時或每週額度用滿才換下一個，"
+        "最後一個用滿再回到 A；每個帳號都用滿時改用 MiniMax。"
+        "行程規劃與行程文字解析仍只用 Claude 的 API 金鑰。",
         (
+            "anthropic_connection",
+            "ai_subscription_fallback",
             "openai_api_base_url",
             "anthropic_api_base_url",
             "minimax_api_base_url",
             "hotspot_guide_gemini_base_url",
             "jev_api_base_url",
+            "jev_daily_call_budget",
         ),
         (
             "openai_api_key",
@@ -196,6 +215,22 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
             "hotspot_guide_gemini_api_key",
             "jev_api_key",
         ),
+    ),
+    "azure_speech": ProviderDefinition(
+        "Azure 語音（影片旁白）",
+        "YouTube 教學影片的台灣口音旁白。金鑰只存在這台伺服器：本機的影片工具帶著下方建立的"
+        "「影片工具權杖」送出句子，由伺服器呼叫 Azure 後把音檔傳回。每月上限以 Azure 的計費字元計算"
+        "（一個中文字算兩個，SSML 標記也算），預設 450,000，低於免費層的 500,000。"
+        "頻道聲音若選 Gemini（例如 Sulafat），用的是「AI 供應商與金鑰」裡的 Gemini 金鑰，"
+        "另有自己的每月字數上限（以送出的文字字數計）。",
+        (
+            "azure_speech_region",
+            "azure_speech_voices",
+            "azure_speech_monthly_character_limit",
+            "azure_speech_timeout_seconds",
+            "video_speech_gemini_monthly_character_limit",
+        ),
+        ("azure_speech_key",),
     ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
@@ -677,14 +712,17 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         message = f"目前開放 {visible}／{len(SITE_VISIBILITY_FIELDS)} 個前台模組"
         return True, "ready", message
     if provider == "ai_vendors":
+        from app.ai.subscription import on_subscription, vendor_ready
+
+        claude = "Claude（訂閱帳號）" if on_subscription(settings, "anthropic") else "Claude"
         vendors = [
-            (label, bool(value))
-            for value, label in (
-                (settings.openai_api_key, "OpenAI"),
-                (settings.anthropic_api_key, "Claude"),
-                (settings.minimax_api_key, "MiniMax"),
-                (settings.hotspot_guide_gemini_api_key, "Gemini"),
-                (settings.jev_api_key, "Jev"),
+            (label, ready)
+            for ready, label in (
+                (vendor_ready(settings, "openai"), "OpenAI"),
+                (vendor_ready(settings, "anthropic"), claude),
+                (vendor_ready(settings, "minimax"), "MiniMax"),
+                (vendor_ready(settings, "gemini"), "Gemini"),
+                (bool(settings.jev_api_key), "Jev"),
             )
         ]
         configured_names = [label for label, present in vendors if present]
@@ -728,23 +766,19 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else "尚未在「AI 供應商與金鑰」設定真實 AI 金鑰，建立行程時會使用內建備援",
         )
     if provider == "ai_guide_search":
+        from app.ai.subscription import vendor_ready
         from app.hotspots.ai_search import research_model
 
         selected = settings.hotspot_guide_ai_default_provider
         model = research_model(settings, selected)
-        key = {
-            "openai": settings.openai_api_key,
-            "anthropic": settings.anthropic_api_key,
-            "minimax": settings.minimax_api_key,
-            "gemini": settings.hotspot_guide_gemini_api_key,
-        }[selected]
+        vendor = vendor_ready(settings, selected)
         sources = bool(
             settings.hotspot_guide_brave_enabled
             and settings.hotspot_guide_brave_api_key
             or settings.hotspot_guide_youtube_enabled
             and settings.hotspot_guide_youtube_api_key
         )
-        configured = bool(key and sources)
+        configured = vendor and sources
         return (
             configured,
             "ready" if configured else "not_configured",
@@ -753,17 +787,12 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             else f"預設 {selected}（{model}）；請設定它的金鑰並啟用至少一個搜尋來源",
         )
     if provider == "hotspot_intros":
+        from app.ai.subscription import vendor_ready
         from app.hotspots.intro_generation import intro_model
 
         selected = settings.hotspot_intro_ai_default_provider
         model = intro_model(settings, selected)
-        key = {
-            "openai": settings.openai_api_key,
-            "anthropic": settings.anthropic_api_key,
-            "minimax": settings.minimax_api_key,
-            "gemini": settings.hotspot_guide_gemini_api_key,
-        }[selected]
-        configured = bool(key)
+        configured = vendor_ready(settings, selected)
         return (
             configured,
             "ready" if configured else "not_configured",
@@ -875,6 +904,16 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             configured,
             "ready" if configured else "not_configured",
             f"Ekispert 憑證已設定（{mode}模式）" if configured else "缺少 Ekispert API key",
+        )
+    if provider == "azure_speech":
+        configured = settings.azure_speech_configured
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"Azure 語音已設定（{settings.azure_speech_region}，"
+            f"{len(settings.azure_speech_voice_list)} 個允許的聲音）"
+            if configured
+            else "缺少 Azure Speech 金鑰或區域",
         )
     if provider == "odsay":
         configured = settings.odsay_configured
@@ -1009,7 +1048,7 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
     "ai_vendors", "ai_planner", "ai_guide_search", "hotspot_intros",
     "google_maps", "naver_maps", "youtube_guides", "brave_guides", "gemini_guides",
     "amadeus", "skyscanner", "duffel", "flightaware", "google_travel_impact",
-    "booking_demand", "met_norway", "ekispert", "odsay", "navitime",
+    "booking_demand", "met_norway", "ekispert", "odsay", "navitime", "azure_speech",
     "travelpayouts", "kkday", "klook", "airalo", "trip_com", "agoda", "booking",
     "skyscanner_affiliate",
 })
@@ -1114,6 +1153,14 @@ async def settings_snapshot(
         if redis is not None
         else None
     )
+    azure_speech_usage = (
+        await azure_speech_usage_snapshot(
+            redis,
+            monthly_limit=effective.azure_speech_monthly_character_limit,
+        )
+        if redis is not None
+        else None
+    )
     youtube_usage = (
         await youtube_usage_snapshot(
             redis,
@@ -1205,6 +1252,8 @@ async def settings_snapshot(
                     if provider == "ekispert" and ekispert_usage is not None
                     else ProviderUsageView(**asdict(odsay_usage))
                     if provider == "odsay" and odsay_usage is not None
+                    else ProviderUsageView(**asdict(azure_speech_usage))
+                    if provider == "azure_speech" and azure_speech_usage is not None
                     else ProviderUsageView(**asdict(youtube_usage))
                     if provider == "youtube_guides" and youtube_usage is not None
                     else None
@@ -1236,6 +1285,8 @@ async def settings_snapshot(
                         [
                             "provider_settings_updated",
                             "provider_connection_tested",
+                            "video_tool_token_created",
+                            "video_tool_token_revoked",
                             "system_settings_updated",
                             "layout_settings_updated",
                             "ui_text_updated",
@@ -1312,6 +1363,31 @@ def _validate_provider_values(
                 "ga4_measurement_id 必須是有效的 G-... Measurement ID",
             )
         merged["ga4_measurement_id"] = measurement_id
+    if "azure_speech_region" in merged:
+        # The region names the endpoint host, so it is lower-cased and pattern-checked here as
+        # well as in Settings: "East Asia" or a URL pasted by mistake is refused, not built into
+        # a hostname.
+        region = str(merged["azure_speech_region"] or "").strip().lower()
+        if region and not re.fullmatch(r"[a-z][a-z0-9]{1,31}", region):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "azure_speech_region 必須是 Azure 區域代碼，例如 eastasia",
+            )
+        merged["azure_speech_region"] = region or None
+    if "azure_speech_voices" in merged:
+        voices = [voice.strip() for voice in str(merged["azure_speech_voices"] or "").split(",")]
+        voices = [voice for voice in voices if voice]
+        if not voices or not all(
+            re.fullmatch(r"[a-z]{2,3}-[A-Z][A-Za-z]{1,3}-[A-Za-z0-9]+Neural", voice)
+            for voice in voices
+        ):
+            raise AppError(
+                422,
+                "provider_setting_invalid",
+                "azure_speech_voices 必須是以逗號分隔的 Azure 聲音名稱，例如 zh-TW-HsiaoChenNeural",
+            )
+        merged["azure_speech_voices"] = ",".join(voices)
     if "adsense_publisher_id" in merged:
         publisher_id = str(merged["adsense_publisher_id"] or "").strip()
         if publisher_id and not re.fullmatch(r"ca-pub-[0-9]{16}", publisher_id):
@@ -1349,6 +1425,8 @@ def _validate_provider_values(
         },
         "hotspot_guide_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
         "hotspot_intro_ai_default_provider": {"openai", "anthropic", "minimax", "gemini"},
+        "anthropic_connection": {"api_key", "subscription"},
+        "ai_subscription_fallback": {"minimax", "wait"},
     }
     for field, allowed in modes.items():
         if field in merged and str(merged[field]).lower() not in allowed:
@@ -1511,6 +1589,18 @@ async def update_provider_settings(
         )
         session.add(row)
     previous_config = dict(row.config or {})
+    owner_fields = [
+        field
+        for field in OWNER_ONLY_CONFIG_FIELDS.get(provider, ())
+        if field in payload.config and payload.config[field] != previous_config.get(field)
+    ]
+    if owner_fields and "roles.manage" not in cached_admin_capabilities(actor):
+        await session.rollback()
+        raise AppError(
+            403,
+            "admin_capability_required",
+            "Claude 訂閱帳號是站主個人的帳號，只有站主能切換或調整上限",
+        )
     row.config = _validate_provider_values(provider, previous_config, payload)
     stored = _merge_secret_values(decrypt_secrets(row.secret_config_encrypted), payload.secrets)
     row.secret_config_encrypted = encrypt_secrets(stored)
@@ -1699,6 +1789,20 @@ def _listed_model_ids(response: httpx.Response) -> set[str] | None:
     return ids
 
 
+async def _test_claude_subscription(settings: Settings) -> tuple[bool, str]:
+    """Whether a Claude account on the host can take the site's calls, without running one."""
+    from app.admin_ai_accounts.agent import AiAccountsAgentClient
+    from app.ai.subscription import subscription_summary
+
+    if not settings.ai_accounts_configured:
+        return False, "Claude 設為訂閱帳號，但這台伺服器還沒設定 AI 帳號代理"
+    try:
+        overview = await AiAccountsAgentClient(settings).overview()
+    except AppError as error:
+        return False, f"Claude 訂閱帳號：{error.detail}"
+    return subscription_summary(overview)
+
+
 async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None = None) -> str:
     """Probe every configured AI vendor with its cheapest authenticated call.
 
@@ -1706,7 +1810,10 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     models endpoint, so a 404/405 from it counts as configured-but-unverified; only an
     auth or transport failure fails the test.
     """
+    from app.ai.subscription import on_subscription
+
     probes: list[tuple[str, str, dict[str, str], dict[str, str] | None, str, bool]] = []
+    subscription = on_subscription(settings, "anthropic")
     if settings.openai_api_key:
         probes.append(
             (
@@ -1718,7 +1825,7 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
                 False,
             )
         )
-    if settings.anthropic_api_key:
+    if settings.anthropic_api_key and not subscription:
         probes.append(
             (
                 "Claude",
@@ -1756,7 +1863,7 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
     # ever read. One real noul question proves the key, the host, the model id and the
     # response shape for about forty input tokens, and output is not billed at all.
     jev_configured = bool(settings.jev_api_key)
-    if not probes and not jev_configured:
+    if not probes and not jev_configured and not subscription:
         raise ConnectionError("尚未設定任何 AI 金鑰")
     owns_client = client is None
     http = client or httpx.AsyncClient(timeout=10.0)
@@ -1784,6 +1891,9 @@ async def _test_ai_vendors(settings: Settings, client: httpx.AsyncClient | None 
             await http.aclose()
     verified: list[str] = []
     failures: list[str] = []
+    if subscription:
+        ready, message = await _test_claude_subscription(settings)
+        (verified if ready else failures).append(message)
     for (label, _url, _headers, _params, model, tolerant), response in zip(
         probes, responses, strict=True
     ):
@@ -2011,6 +2121,27 @@ async def _test_provider(
         if not odsay_probe.route_available:
             raise ConnectionError("ODsay 可連線，但未回傳首爾站→景福宮的測試路線")
         return "ODsay 韓國大眾運輸路線驗證成功"
+    if provider == "azure_speech":
+        if not (settings.azure_speech_key and settings.azure_speech_region):
+            raise ConnectionError("缺少 Azure Speech 金鑰或區域")
+        # Listing voices costs no characters, and it proves the key, the region and the
+        # voice allowlist in one call.
+        speech = AzureSpeech(
+            region=settings.azure_speech_region,
+            key=settings.azure_speech_key,
+            timeout_seconds=settings.azure_speech_timeout_seconds,
+        )
+        try:
+            listed = await speech.voices()
+        except SpeechUpstreamError as error:
+            raise ConnectionError(f"Azure 語音連線失敗（HTTP {error.status}）") from error
+        available = {str(voice.get("ShortName")) for voice in listed if isinstance(voice, dict)}
+        missing = [voice for voice in settings.azure_speech_voice_list if voice not in available]
+        if missing:
+            raise ConnectionError(f"Azure 語音可連線，但這個區域沒有：{'、'.join(missing)}")
+        return (
+            f"Azure 語音連線成功，允許的 {len(settings.azure_speech_voice_list)} 個聲音都可用"
+        )
     if provider == "navitime":
         gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
         navitime_probe = await NavitimeRouteProvider(settings, None, redis).probe(

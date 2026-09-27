@@ -14,6 +14,7 @@ import app.admin.service as admin_service
 import app.ai.itinerary as itinerary_module
 from app.admin.schemas import ProviderSettingsUpdate
 from app.admin.service import (
+    PROVIDER_DEFINITIONS,
     _default_provider_enabled,
     _merge_secret_values,
     _safe_test_message,
@@ -1247,7 +1248,7 @@ async def test_ai_vendors_connection_test_probes_each_configured_vendor() -> Non
     def handler(request: httpx.Request) -> httpx.Response:
         seen.append((request.url.host, request.url.path, dict(request.headers)))
         if request.url.host == "api.openai.com":
-            return httpx.Response(200, json={"data": [{"id": "gpt-5.6-terra"}]})
+            return httpx.Response(200, json={"data": [{"id": "gpt-6-sol"}]})
         if request.url.host == "api.anthropic.com":
             return httpx.Response(200, json={"data": [{"id": "claude-opus-5"}]})
         if request.url.host == "api.minimaxi.com":
@@ -1262,7 +1263,7 @@ async def test_ai_vendors_connection_test_probes_each_configured_vendor() -> Non
     )
     async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
         message = await admin_service._test_ai_vendors(settings, client)
-    assert "OpenAI ✓（gpt-5.6-terra）" in message
+    assert "OpenAI ✓（gpt-6-sol）" in message
     assert "金鑰有效，模型清單未列出 claude-sonnet-5" in message
     assert "MiniMax 已設定" in message
     assert "Gemini ✓（gemini-3.8-flash）" in message
@@ -1813,3 +1814,184 @@ async def test_a_lowered_planner_budget_reaches_the_gate_on_the_next_request(
     assert result.planning.status == "fallback"
     assert result.planning.provider == "catalog"
     assert PLANNER_WARNING_BUDGET_REACHED in result.planning.warnings
+
+
+def _actor(*roles: str) -> User:
+    actor = User(id=uuid4(), email="staff@example.com", password_hash="unused", is_admin=True)
+    actor.__dict__["_admin_roles_cache"] = frozenset(roles)
+    return actor
+
+
+@pytest.mark.asyncio
+async def test_only_the_owner_puts_the_site_on_their_claude_subscription(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    async def fake_snapshot(*_args: object) -> object:
+        return "snapshot"
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    switch = ProviderSettingsUpdate(config={"anthropic_connection": "subscription"})
+    session = UpdateSession()
+    with pytest.raises(AppError) as refused:
+        await update_provider_settings(
+            session,  # type: ignore[arg-type]
+            "ai_vendors",
+            switch,
+            _actor("operations"),
+            object(),  # type: ignore[arg-type]
+        )
+    assert (refused.value.status, refused.value.code) == (403, "admin_capability_required")
+    assert session.rolled_back and not session.committed
+
+    session = UpdateSession()
+    assert (
+        await update_provider_settings(
+            session,  # type: ignore[arg-type]
+            "ai_vendors",
+            ProviderSettingsUpdate(config={"anthropic_connection": "subscription"}),
+            _actor("owner"),
+            object(),  # type: ignore[arg-type]
+        )
+        == "snapshot"
+    )
+    row = next(item for item in session.added if isinstance(item, ProviderConfig))
+    assert row.config == {"anthropic_connection": "subscription"}
+
+    # Saving the card unchanged is not a switch, so an operator can still rotate a key.
+    existing = ProviderConfig(
+        provider="ai_vendors", enabled=True, priority=100, config=dict(row.config)
+    )
+    session = UpdateSession(existing)
+    await update_provider_settings(
+        session,  # type: ignore[arg-type]
+        "ai_vendors",
+        ProviderSettingsUpdate(
+            config={"anthropic_connection": "subscription"}, secrets={"openai_api_key": "sk-new"}
+        ),
+        _actor("operations"),
+        object(),  # type: ignore[arg-type]
+    )
+    assert session.committed
+
+
+def test_the_claude_connection_is_one_of_two_choices_and_there_is_no_usage_cap() -> None:
+    with pytest.raises(AppError):
+        _validate_provider_values(
+            "ai_vendors", {}, ProviderSettingsUpdate(config={"anthropic_connection": "codex"})
+        )
+    # The owner removed the cap on 2026-09-26: an account is used until it is full.
+    fields = PROVIDER_DEFINITIONS["ai_vendors"].config_fields
+    assert "ai_subscription_max_usage_percent" not in fields
+    assert not hasattr(Settings(), "ai_subscription_max_usage_percent")
+
+
+def test_the_ai_cards_count_claude_as_ready_on_the_subscription_without_a_key() -> None:
+    from app.admin.service import _configured
+
+    settings = Settings(
+        anthropic_connection="subscription",
+        anthropic_api_key=None,
+        openai_api_key=None,
+        minimax_api_key="mm",
+        hotspot_guide_gemini_api_key=None,
+        jev_api_key=None,
+        ai_accounts_enabled=True,
+        ai_accounts_agent_hmac_key="h" * 40,
+        hotspot_guide_ai_default_provider="anthropic",
+        hotspot_intro_ai_default_provider="anthropic",
+        hotspot_guide_brave_enabled=True,
+        hotspot_guide_brave_api_key="brave-key",
+    )
+    configured, _status, message = _configured("ai_vendors", settings)
+    assert configured and message.startswith("已設定：Claude（訂閱帳號）、MiniMax")
+    assert _configured("ai_guide_search", settings)[:2] == (True, "ready")
+    assert _configured("hotspot_intros", settings)[:2] == (True, "ready")
+    unplugged = settings.model_copy(update={"ai_accounts_enabled": False})
+    assert _configured("ai_guide_search", unplugged)[:2] == (False, "not_configured")
+
+
+@pytest.mark.asyncio
+async def test_the_connection_test_asks_the_agent_about_claude_instead_of_the_api(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    import httpx
+
+    from app.admin_ai_accounts import agent as agent_module
+    from app.admin_ai_accounts.schemas import AgentOverview
+
+    class Agent:
+        def __init__(self, _settings: Settings) -> None:
+            pass
+
+        async def overview(self) -> AgentOverview:
+            return AgentOverview.model_validate(
+                {
+                    "slots": [
+                        {
+                            "tool": "claude",
+                            "slot": "b",
+                            "is_default": True,
+                            "logged_in": True,
+                            "auth_method": "claude.ai",
+                        }
+                    ],
+                    "defaults": {"claude": "b", "codex": "a"},
+                    "allowlist_configured": False,
+                }
+            )
+
+    monkeypatch.setattr(agent_module, "AiAccountsAgentClient", Agent)
+    seen: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        seen.append(request.url.host)
+        return httpx.Response(404)
+
+    settings = Settings(
+        anthropic_connection="subscription",
+        anthropic_api_key="sk-unused",
+        openai_api_key=None,
+        minimax_api_key="mm",
+        hotspot_guide_gemini_api_key=None,
+        jev_api_key=None,
+        ai_accounts_enabled=True,
+        ai_accounts_agent_hmac_key="h" * 40,
+    )
+    async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+        message = await admin_service._test_ai_vendors(settings, client)
+    assert "Claude 訂閱帳號可用：B（用量未知）" in message
+    assert seen == ["api.minimaxi.com"], "the Anthropic key is not probed on a subscription"
+
+    unplugged = settings.model_copy(update={"ai_accounts_enabled": False, "minimax_api_key": None})
+    with pytest.raises(ConnectionError) as failed:
+        await admin_service._test_ai_vendors(unplugged, None)
+    assert "還沒設定 AI 帳號代理" in str(failed.value)
+
+
+@pytest.mark.asyncio
+async def test_waiting_for_an_account_instead_of_minimax_is_the_owners_choice(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    with pytest.raises(AppError):
+        _validate_provider_values(
+            "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "gemini"})
+        )
+    assert _validate_provider_values(
+        "ai_vendors", {}, ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"})
+    ) == {"ai_subscription_fallback": "wait"}
+
+    async def fake_snapshot(*_args: object) -> object:
+        return "snapshot"
+
+    monkeypatch.setattr(admin_service, "settings_snapshot", fake_snapshot)
+    operator = User(id=uuid4(), email="staff@example.com", password_hash="unused", is_admin=True)
+    operator.__dict__["_admin_roles_cache"] = frozenset({"operations"})
+    with pytest.raises(AppError) as refused:
+        await update_provider_settings(
+            UpdateSession(),  # type: ignore[arg-type]
+            "ai_vendors",
+            ProviderSettingsUpdate(config={"ai_subscription_fallback": "wait"}),
+            operator,
+            object(),  # type: ignore[arg-type]
+        )
+    assert refused.value.code == "admin_capability_required"

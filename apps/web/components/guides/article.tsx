@@ -10,6 +10,7 @@ import { ContentBlocks, FaqSection, ImageCreditLine, SummaryCard, type ContentBl
 import { adsensePlacements, type AdsenseConfig } from "@/lib/adsense";
 import { DestinationAffiliateOptions } from "@/components/destination-affiliate-options";
 import { PartnerLink, type PartnerLinkLabels } from "@/components/guides/partner-link";
+import { SupportLink, type SupportLinkLabels } from "@/components/guides/support-link";
 import type { TermLinkLabels } from "@/components/guides/term-link";
 import { Link } from "@/i18n/navigation";
 import { contentBlockLink } from "@/lib/content-blocks";
@@ -44,6 +45,8 @@ export type GuideArticleLabels = Record<GuideKind, string> & {
   /** The heading over the summary card and over the FAQ section. */
   summary?: string;
   faq?: string;
+  /** The line under the sources that links the owner's tip page, when one is set. */
+  support?: SupportLinkLabels;
 };
 
 /** Fewer level-2 headings than this and a table of contents is longer than the scroll it saves. */
@@ -314,6 +317,8 @@ export function GuideArticle({
           </ul>
         </section>
       ) : null}
+
+      {labels.support ? <SupportLink labels={labels.support} /> : null}
     </article>
   );
 }

@@ -18,19 +18,42 @@ export type NewsGate = {
   agreement_rate: number; serious_false_positives: number; eligible: boolean; reasons: string[];
 };
 
+export const newsProviders = ["openai", "anthropic", "minimax", "gemini"] as const;
+export type NewsProvider = typeof newsProviders[number];
+// Vendor and product names; the same in every locale.
+export const newsProviderLabels: Record<NewsProvider, string> = {
+  openai: "OpenAI", anthropic: "Anthropic Claude", minimax: "MiniMax", gemini: "Google Gemini",
+};
+
+// One entry of the server's model catalog (app/ai/catalog.py), filtered to the models the
+// vendor's news adapter can drive.
+export type NewsModelOption = {
+  value: string; label: string; description: string | null; status: "stable" | "preview" | "retired";
+};
+
 export type NewsSettings = {
   enabled: boolean; mode: "shadow" | "automatic";
-  writer_provider: "openai" | "anthropic" | "minimax" | "gemini"; writer_model: string | null;
-  verifier_provider: "openai" | "anthropic" | "minimax" | "gemini"; verifier_model: string | null;
+  writer_provider: NewsProvider; writer_model: string | null;
+  verifier_provider: NewsProvider; verifier_model: string | null;
+  editor_provider: NewsProvider; editor_model: string | null;
   global_concurrency: number; per_vertical_concurrency: number; min_shadow_days: number;
   min_shadow_candidates: number; min_human_agreement: number; jev_act_confidence: number;
   auto_publish_ai: boolean; auto_publish_tech: boolean; auto_publish_crypto: boolean;
   prompt_version: string; policy_version: string; gates: Record<NewsVertical, NewsGate>;
+  // Read-only: the dropdown options and the model an empty choice runs on.
+  model_options?: Partial<Record<NewsProvider, NewsModelOption[]>>;
+  default_models?: Partial<Record<NewsProvider, string>>;
   updated_at: string;
 };
 
+export const newsCandidateStatuses = [
+  "discovered", "drafting", "verifying", "locale_review", "jev_review", "shadow_review",
+  "manual_review", "needs_evidence", "needs_redraft", "published", "duplicate", "rejected", "failed",
+] as const;
+export type NewsCandidateStatus = typeof newsCandidateStatuses[number];
+
 export type NewsCandidateSummary = {
-  id: string; vertical: NewsVertical; status: string; source_title: string; canonical_url: string;
+  id: string; vertical: NewsVertical; status: NewsCandidateStatus; source_title: string; canonical_url: string;
   event_date: string | null; would_publish: boolean | null; human_decision: "publish" | "reject" | null;
   error_code: string | null; error_detail: string | null; guide_article_id: string | null;
   created_at: string; updated_at: string;
@@ -62,6 +85,8 @@ export type NewsCandidate = NewsCandidateSummary & {
   evidence: NewsEvidence[]; assessments: NewsAssessment[]; runs: NewsRun[];
   documents: Partial<Record<NewsLocale, GuideDocument>>; claim_ledger: Array<Record<string, unknown>>;
   lint: Record<string, string[]>; human_reason: string | null; human_major_error: boolean;
+  // The closest known titles, filled only while a duplicate check waits for an editor.
+  similar_titles?: string[];
 };
 
 export type NewsStats = {

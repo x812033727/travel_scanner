@@ -65,6 +65,9 @@ describe("deciding whether this response may carry an ad", () => {
     ["a non-production host", { host: "localhost:3000" }],
     ["a hub rather than an article", { "x-travel-pathname": "/zh-TW/guides" }],
     ["a shared trip", { "x-travel-pathname": "/zh-TW/share/9f8e7d6c5b4a" }],
+    // proxy.ts writes the query into this header too, and the page must agree with the
+    // layout that a campaign-tagged URL carries no unit.
+    ["an article URL with campaign tags", { "x-travel-pathname": `${articlePath}?utm_source=youtube&utm_campaign=tokyo-esim` }],
   ])("refuses %s", async (_label, headers) => {
     incoming.mockResolvedValue(request(headers));
     expect(await loadAdsenseSlot()).toEqual(disabledAdsense);

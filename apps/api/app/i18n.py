@@ -147,6 +147,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "That partner offer could not be found",
         "affiliate_partner_not_found": "That partner could not be found",
         "affiliate_source_invalid": "Choose a search or a saved trip first",
+        "ai_accounts_agent_invalid_response": "The AI accounts agent returned a malformed response",
+        "ai_accounts_agent_unavailable": "The AI accounts agent is unavailable right now",
+        "ai_accounts_disabled": "AI account management is not enabled",
         "ai_planner_unavailable": (
             "The AI planner is temporarily unavailable and did not read your description. Try "
             "again shortly"
@@ -350,6 +353,11 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "提携オファーが見つかりません",
         "affiliate_partner_not_found": "提携先が見つかりません",
         "affiliate_source_invalid": "検索か保存済みの旅程を指定してください",
+        "ai_accounts_agent_invalid_response": (
+            "AI アカウントエージェントの応答形式が正しくありません"
+        ),
+        "ai_accounts_agent_unavailable": "AI アカウントエージェントに現在接続できません",
+        "ai_accounts_disabled": "AI アカウント管理は有効になっていません",
         "ai_planner_unavailable": (
             "AI プランナーが一時的に利用できず、入力内容は読み取られませんでした。"
             "しばらくしてからお試しください"
@@ -539,6 +547,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "제휴 상품을 찾을 수 없습니다",
         "affiliate_partner_not_found": "제휴 업체를 찾을 수 없습니다",
         "affiliate_source_invalid": "검색 또는 저장된 여행을 먼저 지정해 주세요",
+        "ai_accounts_agent_invalid_response": "AI 계정 에이전트의 응답 형식이 올바르지 않습니다",
+        "ai_accounts_agent_unavailable": "지금은 AI 계정 에이전트에 연결할 수 없습니다",
+        "ai_accounts_disabled": "AI 계정 관리가 활성화되지 않았습니다",
         "ai_planner_unavailable": (
             "AI 플래너를 일시적으로 사용할 수 없어 입력한 "
             "설명을 읽지 못했습니다. 잠시 후 다시 시도해 "
@@ -744,6 +755,9 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "affiliate_offer_not_found": "找不到合作方案",
         "affiliate_partner_not_found": "找不到合作平台",
         "affiliate_source_invalid": "请指定搜索或已保存旅程",
+        "ai_accounts_agent_invalid_response": "AI 账号代理的回应格式不正确",
+        "ai_accounts_agent_unavailable": "AI 账号代理目前无法连接",
+        "ai_accounts_disabled": "AI 账号管理尚未启用",
         "ai_planner_unavailable": "AI 规划暂时无法使用，这次没有读到你的描述，请稍后再试",
         "alert_exists": "这个项目已经建立价格通知",
         "alert_limit_reached": "已达 20 笔价格通知上限",
@@ -1948,8 +1962,18 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "This news image is unavailable or has not been published",
         "news_asset_storage_unavailable": "News image storage is temporarily unavailable",
         "news_candidate_not_found": "This news candidate could not be found",
+        "news_candidate_not_approvable": (
+            "This candidate has no verified Traditional Chinese draft to confirm"
+        ),
         "news_candidate_not_publishable": "This candidate is not ready for publication",
         "news_candidate_not_published": "Only a published candidate can report this incident",
+        "news_candidate_not_duplicate_uncertain": (
+            "This candidate is not waiting for a duplicate decision"
+        ),
+        "news_candidate_not_refreshable": (
+            "This candidate is not waiting for its changed sources to be re-checked"
+        ),
+        "news_evidence_refresh_failed": "The current source pages could not be read",
         "news_candidate_not_retryable": "This candidate cannot be run again in its current state",
         "news_candidate_not_reviewable": "This candidate cannot be rejected in its current state",
         "news_draft_unavailable": "This candidate does not have a complete editable draft",
@@ -1981,8 +2005,14 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "このニュース画像は利用できないか、まだ公開されていません",
         "news_asset_storage_unavailable": "ニュース画像の保存先を一時的に利用できません",
         "news_candidate_not_found": "このニュース候補が見つかりません",
+        "news_candidate_not_approvable": (
+            "この候補には確認できる検証済みの繁体字中国語原稿がありません"
+        ),
         "news_candidate_not_publishable": "この候補はまだ公開できません",
         "news_candidate_not_published": "公開後の重大エラーは公開済み候補でのみ報告できます",
+        "news_candidate_not_duplicate_uncertain": "この候補は重複判定待ちではありません",
+        "news_candidate_not_refreshable": "この候補は情報源の再確認待ちではありません",
+        "news_evidence_refresh_failed": "最新の情報源ページを読み込めませんでした",
         "news_candidate_not_retryable": "現在の状態ではこの候補を再実行できません",
         "news_candidate_not_reviewable": "現在の状態ではこの候補を却下できません",
         "news_draft_unavailable": "この候補には編集可能な完全原稿がありません",
@@ -2012,8 +2042,12 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "이 뉴스 이미지를 사용할 수 없거나 아직 게시되지 않았습니다",
         "news_asset_storage_unavailable": "뉴스 이미지 저장소를 일시적으로 사용할 수 없습니다",
         "news_candidate_not_found": "이 뉴스 후보를 찾을 수 없습니다",
+        "news_candidate_not_approvable": "이 후보에는 확인할 검증된 번체 중국어 초안이 없습니다",
         "news_candidate_not_publishable": "이 후보는 아직 게시할 수 없습니다",
         "news_candidate_not_published": "게시 후 중대 오류는 게시된 후보에서만 신고할 수 있습니다",
+        "news_candidate_not_duplicate_uncertain": "이 후보는 중복 판정을 기다리고 있지 않습니다",
+        "news_candidate_not_refreshable": "이 후보는 출처 재확인을 기다리고 있지 않습니다",
+        "news_evidence_refresh_failed": "최신 출처 페이지를 읽을 수 없습니다",
         "news_candidate_not_retryable": "현재 상태에서는 이 후보를 다시 실행할 수 없습니다",
         "news_candidate_not_reviewable": "현재 상태에서는 이 후보를 거절할 수 없습니다",
         "news_draft_unavailable": "이 후보에는 편집 가능한 전체 초안이 없습니다",
@@ -2045,8 +2079,12 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "找不到新聞圖片，或圖片尚未發布",
         "news_asset_storage_unavailable": "新聞圖片儲存暫時無法使用",
         "news_candidate_not_found": "找不到新聞候選",
+        "news_candidate_not_approvable": "這個候選沒有可以確認的已查核繁中草稿",
         "news_candidate_not_publishable": "這個候選目前不能發布",
         "news_candidate_not_published": "只有已發布候選可回報重大錯誤",
+        "news_candidate_not_duplicate_uncertain": "這個候選沒有在等待重複判定",
+        "news_candidate_not_refreshable": "這個候選不是在等來源更新後重新查核",
+        "news_evidence_refresh_failed": "無法讀取最新的來源頁",
         "news_candidate_not_retryable": "這個候選目前不能重新執行",
         "news_candidate_not_reviewable": "這個候選目前不能退件",
         "news_draft_unavailable": "候選沒有完整的可編輯草稿",
@@ -2076,8 +2114,12 @@ _NEWS_AUTOMATION_ERRORS: dict[Locale, dict[str, str]] = {
         "news_asset_not_found": "找不到新闻图片，或图片尚未发布",
         "news_asset_storage_unavailable": "新闻图片存储暂时无法使用",
         "news_candidate_not_found": "找不到新闻候选",
+        "news_candidate_not_approvable": "这个候选没有可以确认的已核查繁中草稿",
         "news_candidate_not_publishable": "这个候选目前不能发布",
         "news_candidate_not_published": "只有已发布候选可报告重大错误",
+        "news_candidate_not_duplicate_uncertain": "这个候选没有在等待重复判定",
+        "news_candidate_not_refreshable": "这个候选不是在等来源更新后重新核查",
+        "news_evidence_refresh_failed": "无法读取最新的来源页",
         "news_candidate_not_retryable": "这个候选目前不能重新运行",
         "news_candidate_not_reviewable": "这个候选目前不能退回",
         "news_draft_unavailable": "候选没有完整的可编辑草稿",

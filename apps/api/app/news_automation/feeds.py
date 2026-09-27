@@ -29,6 +29,14 @@ def _date(value: object) -> datetime | None:
     return parsed.astimezone(UTC)
 
 
+def _join(base_url: str, href: str) -> str | None:
+    """Absolute URL, or None for an href urljoin cannot parse (e.g. "https://[broken")."""
+    try:
+        return urljoin(base_url, href.strip())
+    except ValueError:
+        return None
+
+
 def _tag(value: str) -> str:
     return value.rsplit("}", 1)[-1].casefold()
 
@@ -63,11 +71,12 @@ def parse_xml_feed(body: bytes, base_url: str) -> list[Entry]:
                         break
         summary = _child_text(node, "summary", "description", "content")
         published = _child_text(node, "published", "updated", "pubdate", "date")
-        if title and link:
+        url = _join(base_url, link) if link else None
+        if title and url:
             rows.append(
                 Entry(
                     title=title[:500],
-                    url=urljoin(base_url, link),
+                    url=url,
                     summary=_plain(summary)[:20_000],
                     published_at=_date(published),
                 )
@@ -98,14 +107,15 @@ def parse_json_feed(body: bytes, base_url: str, config: dict[str, object]) -> li
         if not isinstance(raw, dict):
             continue
         title = raw.get(title_field)
-        url = raw.get(url_field)
-        if not isinstance(title, str) or not isinstance(url, str) or not title.strip():
+        raw_url = raw.get(url_field)
+        url = _join(base_url, raw_url) if isinstance(raw_url, str) else None
+        if not isinstance(title, str) or url is None or not title.strip():
             continue
         summary = raw.get(summary_field)
         rows.append(
             Entry(
                 title=_plain(title)[:500],
-                url=urljoin(base_url, url),
+                url=url,
                 summary=_plain(summary if isinstance(summary, str) else "")[:20_000],
                 published_at=_date(raw.get(date_field)),
             )
@@ -230,7 +240,10 @@ def parse_html_listing(body: bytes, base_url: str, config: dict[str, object]) ->
     seen: set[str] = set()
     rows: list[Entry] = []
     for href, raw_title in parser.links:
-        url = urljoin(base_url, href)
+        joined = _join(base_url, href)
+        if joined is None:
+            continue
+        url = joined
         parsed = urlsplit(url)
         title = _plain(raw_title)
         if parsed.scheme != "https" or not title or len(title) < minimum:
@@ -252,7 +265,8 @@ def extract_article(
     parser = _ArticleParser(config or {})
     parser.feed(body.decode("utf-8", errors="replace"))
     text = "\n".join(parser.text)
-    return parser.title[:500], text[:40_000], [urljoin(base_url, url) for url in parser.links]
+    links = [url for url in (_join(base_url, href) for href in parser.links) if url]
+    return parser.title[:500], text[:40_000], links
 
 
 def parse_entries(

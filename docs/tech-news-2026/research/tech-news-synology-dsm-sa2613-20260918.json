@@ -1,0 +1,789 @@
+{
+  "slug": "tech-news-synology-dsm-sa2613-20260918",
+  "vertical": "tech",
+  "display_order": 338,
+  "event_date": "2026-09-18",
+  "event_date_basis": "事件是 Synology 資安公告 Synology-SA-26:13 DSM 的發布，與 DELTA-4-8 第 4 條的裁定（公告自印 Publish Time 16:17，UTC+8）一致，今天重抓的來源沒有衝突。公告頁印「Publish Time: 2026-09-18 16:17:35 UTC+8」與「Last Updated: 2026-09-18 16:17:35 UTC+8」，兩者相同；頁尾 Revision 表只有一列（Revision 1、Date 2026-09-18、Description 欄空白），所以到 2026-09-26 查核時公告沒有改版。佐證：Synology 資安 RSS（https://www.synology.com/api/rssfeed/security/en-global，從公告列表頁的「RSS Feed」連結取得）第一個 <item> 就是這則，<pubDate>Fri, 18 Sep 2026 16:17:35 +0800</pubDate>；兩筆 CVE 紀錄的 datePublished 是 2026-09-18T08:19:14.016Z（CVE-2026-13684）與 2026-09-18T08:21:27.534Z（CVE-2026-13639），換算台北是同一天 16:19 與 16:21。UTC+8 就是台北時間，不需換算，正文寫「2026 年 9 月 18 日」，要寫時刻只能寫台北下午 4 點 17 分（公告頁）。這是 DELTA-4-8 第 1 條說的補寫件：正文照 9 月 18 日寫，不寫「本週」「最近」「日前」，也不寫站內為什麼現在才整理（那是自動化來源清單的事，不是讀者要的內容，DELTA-4-7 第 14 條）。其他日期要分開寫、不可混成事件日：(1) CISA 在 CVE 紀錄補上的 SSVC 評估時間戳是 2026-09-18T19:14:05Z（13684）與 19:13:10Z（13639），台北已是 9 月 19 日凌晨 3 點 13～14 分，美國時間仍是 9 月 18 日；(2) 公告列的四個修補版本，在 DSM 版本說明的日期是 2026-06-16（7.4-90075）、2026-06-30（7.2.2-72806 Update 9、7.2.1-69057 Update 12）、2026-07-29（7.3.2-86009 Update 4），版本說明只印日期、沒有時區，照 Synology 印的日期寫、不換算；(3) 查核日 2026-09-26。slug 尾碼、news_date、第一段的台北日期三者都是 2026-09-18。",
+  "title": "Synology DSM 公告 SA-26:13：兩個免登入的 9.8 分漏洞，先對版本號再更新",
+  "title_candidates": [
+    "Synology DSM 公告 SA-26:13：兩個免登入的 9.8 分漏洞，先對版本號再更新",
+    "Synology DSM 資安公告 SA-26:13：各版本線的修補版本與怎麼確認自己的 NAS",
+    "Synology 9 月 18 日公布 DSM 漏洞：公告寫沒有緩解措施，修補版本 6、7 月已列在版本說明",
+    "Synology SA-26:13：兩個 Critical 漏洞沒有緩解措施，早於 DSM 7.2.1 的版本公告沒有答案"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "title": "Synology-SA-26:13 DSM",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "publisher": "Synology Inc.（產品資安公告）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T14:03:15Z",
+      "http_status": 200,
+      "bytes": 125185,
+      "verbatim_quote": "Publish Time: 2026-09-18 16:17:35 UTC+8"
+    },
+    {
+      "title": "CVE-2026-13684（CVE 紀錄：CNA 為 Synology，含 CISA ADP Vulnrichment 評估）",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+      "publisher": "CVE Program（CVE Services API；紀錄由 Synology 以 CNA 身分發布，CISA 以 ADP 身分補充）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T14:03:28Z",
+      "http_status": 200,
+      "bytes": 2505,
+      "verbatim_quote": "\"datePublished\":\"2026-09-18T08:19:14.016Z\""
+    },
+    {
+      "title": "CVE-2026-13639（CVE 紀錄：CNA 為 Synology，含 CISA ADP Vulnrichment 評估）",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+      "publisher": "CVE Program（CVE Services API；紀錄由 Synology 以 CNA 身分發布，CISA 以 ADP 身分補充）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T14:03:31Z",
+      "http_status": 200,
+      "bytes": 2474,
+      "verbatim_quote": "\"datePublished\":\"2026-09-18T08:21:27.534Z\",\"dateUpdated\":\"2026-09-18T19:13:24.287Z\""
+    },
+    {
+      "title": "Release Notes for DSM（DSM 版本說明頁載入的官方資料，en-global）",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "publisher": "Synology Inc.（DSM 版本說明）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T14:08:35Z",
+      "http_status": 200,
+      "bytes": 746801,
+      "verbatim_quote": "{\"version\":\"7.3.2-86009 Update 4\",\"publish_date\":\"2026-07-29\""
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北）本人重抓，全部用 curl -sSL --max-time 30 --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥1.3 秒，請求沒有帶任何人的姓名、email 或個人資料。bytes 一律是落地檔案大小（不是 curl 的 size_download）。原始檔在 C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\_raw\\tech-news-synology-dsm-sa2613-20260918\\，逐筆記錄在同目錄的 fetch-log.tsv（UTC 時間、檔名、HTTP 狀態、size_download、落地網址、落地 bytes）；抓取、去標籤、引文比對腳本在 _tools\\tech-news-synology-dsm-sa2613-20260918\\（fetch.sh、text.py、rn.py、verify.py、probe.py）。\n(1) https://www.synology.com/en-global/security/advisory/Synology_SA_26_13 → 200、125,185 bytes（syno-sa-26-13.html），伺服器端算繪，正文在 <article> 內：標題、Publish Time／Last Updated、Severity、Status、Abstract 三段、Affected Products 四列、Mitigation、Detail 八個 CVE（各有 Severity、CVSS3 Base Score、CVSS3 Vector、CWE 與一句描述）、Acknowledgement、Revision 表都讀到（去標籤後 syno-sa-26-13.txt）。與探索代理的 raw\\syno-sa-26-13.html 位元組完全相同。Acknowledgement 是回報者的個人姓名與帳號，研究紀錄一律不抄，引文都不含那一段。\n(2)(3) CVE 紀錄 https://cveawg.mitre.org/api/cve/CVE-2026-13684 → 200、2,505 bytes；https://cveawg.mitre.org/api/cve/CVE-2026-13639 → 200、2,474 bytes。兩份都與探索代理的 raw\\cve\\ 位元組相同。cveMetadata.dateUpdated 分別是 2026-09-18T19:14:16.588Z、2026-09-18T19:13:24.287Z，也就是從 CISA 補上評估之後到今天都沒有再更新。containers.cna 由 synology 提供（affected 範圍、CVSS 3.1 9.8、CWE、references 只有 SA-26:13 一條）；containers.adp 只有一個區塊，title 是 CISA ADP Vulnrichment，裡面只有 SSVC（Exploitation／Automatable／Technical Impact），沒有 kev 區塊，也沒有 CISA 自己的 CVSS 分數。credits 欄是回報者個人姓名，不抄。JSON 的引文用原始文字（只壓空白），不解碼。\n(4) DSM 版本說明：網址不是猜的。https://www.synology.com/robots.txt（200、127 bytes）指向 https://www.synology.com/sitemap.xml（200、13,735 bytes，101 個子 sitemap），其中 https://www.synology.com/sitemap/releaseNote/2.xml（200、24,703,905 bytes，含每個語系的 hreflang 替代網址）列出 https://www.synology.com/en-global/releaseNote/DSM 與 https://www.synology.com/zh-tw/releaseNote/DSM（三個 releaseNote sitemap 太大，已刪除，只留 syno-sitemap-rn2-DSM-extract.txt）。版本說明頁本身（200、121,415 bytes，syno-dsm-rn.html）是 Vue 外殼，去標籤後只剩導覽，這和探索代理說的「JS 外殼」相符；但頁面自己的 <script> 寫著 $.ajax({ url: \"/api/releaseNote/findChangeLog\", data: { identify, lang: SYNO_WEB.langCode, model: p?.model ?? null, dsm_major: p?.dsm_major ?? null } })，identify 在同一段宣告為 \"DSM\"，頁面 <html data-lang-code=\"en-global\">。照頁面自己會送出的請求（jQuery 把 null 序列化成空字串）抓 https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major= → 200、746,801 bytes（syno-dsm-rn-api.json），是 JSON：info.versions.DSM.all_versions 每筆有 version、publish_date、content（HTML 字串）、is_rolling、is_rc、is_security_version。所以 sources[] 放的是這個資料網址，不是讀者看得到的外殼頁（同 Qualcomm .md 的處理）；撰稿若要給讀者一個可點的頁面，正文可以說「DSM 版本說明頁」，但 sources[] 與內容包的 url 必須是這個資料網址。引文有兩種比對方式：原始 JSON 文字（只壓空白，JSON 的 \\/ 跳脫原樣保留，例如 archive.synology.com\\/download\\/Os\\/DSM\\/7.3.2-86009-4），或把 JSON 字串跳脫解碼後去標籤、html.unescape（content 裡是 HTML，這就是頁面顯示的文字）。每條 verified_facts 的說明寫了它用哪一種；verify.py 兩種都試。\n另外抓了、不放進 sources[] 的佐證（WRITER 規格與 check_article.py 限 2–4 條）：公告列表 https://www.synology.com/en-global/security/advisory（200、144,090 bytes，與探索代理相同；列表第一列 Synology-SA-26:13 DSM／Critical／Resolved／2026-09-18 16:17:35 UTC+8，頁首寫 Synology 在修補公開前不公布漏洞）；資安 RSS https://www.synology.com/api/rssfeed/security/en-global（200、439,644 bytes，440 個 <item>，第一個就是 SA-26:13，pubDate 同上）；同一列表連出的 https://www.synology.com/en-global/security/advisory/Synology_SA_26_06（200、127,992 bytes，另一則 DSM 公告，2026-04-15 發布、2026-09-21 改版「Disclosed vulnerability details.」，修補版本是較舊的 7.3.2-86009-2 等，與本則無關，見 unverified_or_excluded）；zh-tw 公告頁 https://www.synology.com/zh-tw/security/advisory/Synology_SA_26_13（從英文頁的語系選單「台灣 - 繁體中文」取得，200、121,371 bytes，與探索代理相同）：只有網站外框在地化（<title> 是「Synology_SA_26_13 | 群暉科技 Synology Inc.」、頁首「安全性諮詢」），公告正文仍是英文、逐字相同，Synology 沒有另出中文版公告；zh-tw 版本說明頁與資料（https://www.synology.com/zh-tw/releaseNote/DSM 200、118,373 bytes；https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=zh-tw&model=&dsm_major= 200、1,071,549 bytes，頁面 data-lang-code=\"zh-tw\"），只用來確認官方繁中用語（Control Panel＝「控制台」、Download Center＝「下載中心」、security vulnerabilities＝「安全性弱點」），內容與英文版一致，同樣沒有提到 SA-26:13；KEV 目錄：先抓 https://www.cisa.gov/known-exploited-vulnerabilities-catalog（200、283,416 bytes），從頁面的 href=\"/sites/default/files/feeds/known_exploited_vulnerabilities.json\" 取得網址，再抓 → 200、1,752,832 bytes（kev.json），catalogVersion 2026.09.25、dateReleased 2026-09-25T18:58:16.5029Z、1,726 筆；SA-26:13 的八個 CVE 都不在裡面，vendorProject 或任何欄位含 Synology 的條目 0 筆（與 WordPress 研究代理 13:48Z 抓的檔位元組相同）。這些頁只用來判斷 not_said 與 must_not_write，不當事實寫進正文。\n沒有任何一條 sources[] 被擋、軟性 404 或轉址到殼；四條都讀到正文（第四條讀的是外殼頁自己載入的資料）。探索代理的候選清單有一處與來源不合、以來源為準：它寫其他六個漏洞是「Important／Moderate」，公告實際是 Important 兩個、Moderate 兩個、Low 兩個（見 must_not_write）。",
+  "verified_facts": [
+    {
+      "fact": "公告編號與名稱是「Synology-SA-26:13 DSM」，是 Synology 對 DSM（DiskStation Manager，Synology NAS 的作業系統）發的產品資安公告。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Synology-SA-26:13 DSM"
+    },
+    {
+      "fact": "公告的發布時間是 2026 年 9 月 18 日 16:17:35（UTC+8，即台北時間）。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Publish Time: 2026-09-18 16:17:35 UTC+8"
+    },
+    {
+      "fact": "最後更新時間與發布時間相同，頁尾 Revision 表只有第 1 版、日期 2026-09-18（Description 欄空白）。到 2026-09-26 查核時公告沒有改版；日後可能改版，見 live_data_warnings。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Revision Date Description 1 2026-09-18"
+    },
+    {
+      "fact": "公告整體的嚴重程度標為 Critical，狀態標為 Resolved（引文是去標籤後的連續文字）。Resolved 只照原文寫，不自己延伸成「所有 NAS 都已修好」。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Severity Critical Status Resolved"
+    },
+    {
+      "fact": "Synology 說已經為 DSM 發布安全更新，處理多個漏洞。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Synology has released a security update for the DSM to address multiple vulnerabilities"
+    },
+    {
+      "fact": "第一組三個 CVE（13684、13639、13635）是「remote attackers」（遠端攻擊者）可利用的，公告沒有把它們列在需要登入的「remote authenticated users」底下；可能的後果依個別 CVE 不同，是讀寫任意檔案、阻斷服務，或取得非敏感資訊（13635 只取得非敏感資訊，見後面逐條）。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13684, CVE-2026-13639, and CVE-2026-13635 allow remote attackers to read or write arbitrary files, conduct denial-of-service attacks, or obtain non-sensitive information."
+    },
+    {
+      "fact": "第二組三個 CVE（13673、6205、13666）要「remote authenticated users」（已登入的遠端使用者）才能利用；其中一種後果要受害者點了分享網址才會發生。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13673, CVE-2026-6205, and CVE-2026-13666 allow remote authenticated users to read or write arbitrary files, write limited files when a victim clicks a sharing URL, and conduct denial-of-service attacks."
+    },
+    {
+      "fact": "第三組兩個 CVE（13623、13683）要有管理員權限的已登入使用者才能利用，後果是讀寫有限的檔案或取得非敏感資訊。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13623 and CVE-2026-13683 allow remote authenticated users with administrator privileges to read or write limited files or obtain non-sensitive information."
+    },
+    {
+      "fact": "Affected Products 表只列四條版本線與各自的修補版本：DSM 7.4 要升到 7.4-90075 以上、DSM 7.3 要升到 7.3.2-86009-4 以上、DSM 7.2.2 要升到 7.2.2-72806-9 以上、DSM 7.2.1 要升到 7.2.1-69057-12 以上（引文是去標籤後的連續表格文字）。每一列的 Severity 欄都寫 Critical，那是該產品列的整體等級，不代表八個 CVE 都是 Critical。表上沒有 DSM 7.1、7.0、6.2，也沒有 DSM UC 或其他產品。「or above」要照寫成「以上」。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DSM 7.4 Critical Upgrade to 7.4-90075 or above. DSM 7.3 Critical Upgrade to 7.3.2-86009-4 or above. DSM 7.2.2 Critical Upgrade to 7.2.2-72806-9 or above. DSM 7.2.1 Critical Upgrade to 7.2.1-69057-12 or above."
+    },
+    {
+      "fact": "緩解措施（Mitigation）欄寫 None：公告沒有提供更新以外的暫時做法。正文寫「公告的緩解措施欄寫 None（沒有）」，不自己補任何替代做法。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Mitigation None"
+    },
+    {
+      "fact": "CVE-2026-13684：Synology 評為 Critical，CVSS 3.1 基本分數 9.8，向量 AV:N（經網路）、PR:N（不需權限）、UI:N（不需使用者互動）。分數是 Synology 的評分（CVE 紀錄的 CNA 也是 Synology），CISA 沒有另外給分數。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13684 Severity: Critical CVSS3 Base Score: 9.8 CVSS3 Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "fact": "CVE-2026-13684 發生在 DSM 的 SCGI 元件，類型是輸出編碼或跳脫不當（CWE-116），可讓遠端攻擊者讀寫任意檔案並造成阻斷服務；受影響的是各版本線修補版本之前的 DSM。正文只寫元件名稱（SCGI）與後果，不解釋機制。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An improper encoding or escaping of output vulnerability in SCGI in Synology DiskStation Manager (DSM) before 7.2.1-69057-12, 7.2.2-72806-9, 7.3.2-86009-4 and 7.4-90075 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks."
+    },
+    {
+      "fact": "CVE-2026-13639：同樣是 Critical、CVSS 3.1 基本分數 9.8，向量與 13684 相同。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13639 Severity: Critical CVSS3 Base Score: 9.8 CVSS3 Vector: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    },
+    {
+      "fact": "CVE-2026-13639 發生在 DSM 的登入邏輯（login logic），類型是熵不足（CWE-331，Insufficient Entropy），後果同樣是遠端攻擊者可讀寫任意檔案並造成阻斷服務。正文只寫「登入邏輯」這個部位與後果，不解釋熵不足怎麼被利用。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "An insufficient entropy vulnerability in login logic in Synology DiskStation Manager (DSM) before 7.2.1-69057-12, 7.2.2-72806-9, 7.3.2-86009-4 and 7.4-90075 allows remote attackers to read or write arbitrary files and conduct denial-of-service attacks."
+    },
+    {
+      "fact": "CVE-2026-13673：Important、CVSS 3.1 8.8，在 LDAP API，需要登入（PR:L）。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13673 Severity: Important CVSS3 Base Score: 8.8"
+    },
+    {
+      "fact": "CVE-2026-6205：Important、CVSS 3.1 8.1，在 Upload API，需要登入（PR:L）。注意編號是 6205（四位數），不是 13xxx。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-6205 Severity: Important CVSS3 Base Score: 8.1"
+    },
+    {
+      "fact": "CVE-2026-13635：Moderate、CVSS 3.1 5.3，在 Auth API，不需登入但只取得非敏感資訊。這是第一組三個「remote attackers」裡唯一不是 Critical 的那個，所以「不需登入的有三個」與「Critical 的有兩個」是兩件事，不要合併。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13635 Severity: Moderate CVSS3 Base Score: 5.3"
+    },
+    {
+      "fact": "CVE-2026-13623：Moderate、CVSS 3.1 4.8，在 Theme API，需要管理員權限（PR:H）。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13623 Severity: Moderate CVSS3 Base Score: 4.8"
+    },
+    {
+      "fact": "CVE-2026-13666：Low、CVSS 3.1 3.5，在 Sharing API，需要登入且要受害者點分享網址。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13666 Severity: Low CVSS3 Base Score: 3.5"
+    },
+    {
+      "fact": "CVE-2026-13683：Low、CVSS 3.1 2.7，在 EventScheduler API，需要管理員權限。等級分布（Critical、Important、Moderate、Low 各兩個，共八個 CVE 編號）是研究代理照公告 Detail 段逐條清點的，頁面沒有印「8」「兩個」這些數字；正文要寫數量就讓讀者看得到清單（例如表格或逐一列出編號），或寫成「公告列出的八個 CVE 編號」。",
+      "url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-13683 Severity: Low CVSS3 Base Score: 2.7"
+    },
+    {
+      "fact": "CVE-2026-13684 的紀錄由 Synology（assignerShortName synology）以 CNA 身分發布，datePublished 2026-09-18T08:19:14.016Z（台北 9 月 18 日 16:19）；dateUpdated 2026-09-18T19:14:16.588Z 是 CISA 補上評估的時間，之後到 2026-09-26 查核時沒有再更新。dateReserved（2026-06-29）只是編號保留日，不可解讀成 Synology 從 6 月就知道或刻意延後。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"assignerShortName\":\"synology\",\"dateReserved\":\"2026-06-29T10:42:15.926Z\",\"datePublished\":\"2026-09-18T08:19:14.016Z\",\"dateUpdated\":\"2026-09-18T19:14:16.588Z\""
+    },
+    {
+      "fact": "CVE-2026-13684 的受影響版本欄，對早於 7.2.1 的版本（version 0 到 lessThan 7.2.1）標的狀態是 unknown（未知），不是「不受影響」；DSM 7.2.1 本身在 7.2.1-69057-12 以前是同一欄另一列的 affected，所以正文寫「早於 7.2.1」，不寫「7.2.1 以前」（第一輪查核更正）。DSM 7.1、6.2 等更舊的版本，這份紀錄與公告都沒有給答案。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"lessThan\":\"7.2.1\",\"status\":\"unknown\",\"version\":\"0\",\"versionType\":\"semver\"}"
+    },
+    {
+      "fact": "CISA 以 ADP 身分（區塊標題 CISA ADP Vulnrichment、角色 CISA Coordinator）在 CVE-2026-13684 紀錄補上的 SSVC 評估：Exploitation 是 none（沒有已知利用）、Automatable 是 yes、Technical Impact 是 total；時間戳 2026-09-18T19:14:05Z，台北是 9 月 19 日凌晨 3 點 14 分、美國時間 9 月 18 日。這是那個時點的評估，不是保證；三個欄位要一起寫，不可以只寫讓人安心的 none。Automatable／Technical Impact 的定義是 CISA SSVC 的術語，這一輪沒有抓 SSVC 說明文件，正文只照寫欄位名與值，不自己解釋成「可大規模自動攻擊」之類。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"timestamp\":\"2026-09-18T19:14:05.659717Z\",\"id\":\"CVE-2026-13684\",\"options\":[{\"Exploitation\":\"none\"},{\"Automatable\":\"yes\"},{\"Technical Impact\":\"total\"}],\"role\":\"CISA Coordinator\""
+    },
+    {
+      "fact": "CVE-2026-13684 紀錄的參考連結只有一條，就是 Synology 的 SA-26:13 公告頁（en-global）。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"references\":[{\"name\":\"Synology-SA-26:13 DSM\",\"url\":\"https://www.synology.com/en-global/security/advisory/Synology_SA_26_13\"}]"
+    },
+    {
+      "fact": "CVE-2026-13639 的紀錄 datePublished 2026-09-18T08:21:27.534Z（台北 9 月 18 日 16:21），dateUpdated 2026-09-18T19:13:24.287Z，之後到 2026-09-26 查核時沒有再更新。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"datePublished\":\"2026-09-18T08:21:27.534Z\",\"dateUpdated\":\"2026-09-18T19:13:24.287Z\""
+    },
+    {
+      "fact": "CVE-2026-13639 的受影響版本欄同樣對早於 7.2.1 的版本（version 0 到 lessThan 7.2.1）標 unknown（未知）。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"lessThan\":\"7.2.1\",\"status\":\"unknown\",\"version\":\"0\",\"versionType\":\"semver\"}"
+    },
+    {
+      "fact": "CISA 在 CVE-2026-13639 紀錄補上的 SSVC 評估與 13684 相同：Exploitation none、Automatable yes、Technical Impact total；時間戳 2026-09-18T19:13:10Z（台北 9 月 19 日凌晨 3 點 13 分）。",
+      "url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639",
+      "is_vendor_claim": false,
+      "verbatim_quote": "\"timestamp\":\"2026-09-18T19:13:10.452695Z\",\"id\":\"CVE-2026-13639\",\"options\":[{\"Exploitation\":\"none\"},{\"Automatable\":\"yes\"},{\"Technical Impact\":\"total\"}],\"role\":\"CISA Coordinator\""
+    },
+    {
+      "fact": "DSM 版本說明把 7.4-90075 的日期列為 2026-06-16（原始 JSON 引文）。公告要 DSM 7.4 升到的正是這個版本以上。版本說明沒有寫它修補 SA-26:13（見後面兩條）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"version\":\"7.4-90075\",\"publish_date\":\"2026-06-16\""
+    },
+    {
+      "fact": "DSM 7.4 系列還有更新的 7.4.1-90080，版本說明日期 2026-07-23（原始 JSON 引文）；它在公告「7.4-90075 or above」的範圍內。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"version\":\"7.4.1-90080\",\"publish_date\":\"2026-07-23\""
+    },
+    {
+      "fact": "DSM 版本說明把公告寫的 7.3.2-86009-4 列為「7.3.2-86009 Update 4」，日期 2026-07-29（原始 JSON 引文；對應關係見下一條）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"version\":\"7.3.2-86009 Update 4\",\"publish_date\":\"2026-07-29\""
+    },
+    {
+      "fact": "「7.3.2-86009 Update 4」那一筆的手動更新連結指向 archive.synology.com 的 7.3.2-86009-4 下載目錄，這就是公告的寫法（-4）與版本說明的寫法（Update 4）是同一個版本的依據，不是研究代理自己類推（原始 JSON 引文，保留 JSON 的 \\/ 跳脫）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "archive.synology.com\\/download\\/Os\\/DSM\\/7.3.2-86009-4"
+    },
+    {
+      "fact": "7.2.2-72806 Update 9 的版本說明日期是 2026-06-30（原始 JSON 引文）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"version\":\"7.2.2-72806 Update 9\",\"publish_date\":\"2026-06-30\""
+    },
+    {
+      "fact": "「7.2.2-72806 Update 9」那一筆的手動更新連結指向 7.2.2-72806-9，與公告寫的修補版本號相同（原始 JSON 引文）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "archive.synology.com\\/download\\/Os\\/DSM\\/7.2.2-72806-9"
+    },
+    {
+      "fact": "7.2.1-69057 Update 12 的版本說明日期也是 2026-06-30（原始 JSON 引文）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "{\"version\":\"7.2.1-69057 Update 12\",\"publish_date\":\"2026-06-30\""
+    },
+    {
+      "fact": "「7.2.1-69057 Update 12」那一筆的手動更新連結指向 7.2.1-69057-12，與公告寫的修補版本號相同（原始 JSON 引文）。合起來：公告列的四個修補版本，在版本說明上的日期是 2026 年 6 月 16 日到 7 月 29 日之間，都早於 9 月 18 日的公告日。這是兩份來源的日期並列，可以寫；但官方沒有說明為什麼公告晚於修補版本，不可推論原因。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "archive.synology.com\\/download\\/Os\\/DSM\\/7.2.1-69057-12"
+    },
+    {
+      "fact": "7.3.2、7.2.2、7.2.1 這三個 Update 版本的說明都寫：你的 Synology NAS 可能基於下列原因「不會通知你」有這個 DSM 更新，想立即更新可以點連結手動更新（原始 JSON 引文）。這是讀者要自己去對版本號的依據。繁中版說明的同一句是「您的 Synology NAS 可能基於下列原因，不會通知您有此 DSM 更新」（zh-tw 資料不在 sources[]，只供用語參考）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your Synology NAS may not notify you of this DSM update because of the following reasons. If you want to update your DSM to this version now, please click"
+    },
+    {
+      "fact": "第一個原因：更新還沒在你的地區推出，預計幾天內推到所有地區，各地區時間可能略有不同（原始 JSON 引文）。所以「版本說明日期」不等於每台 NAS 收到更新的日期。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The update is not available in your region yet. The update is expected to be available for all regions within the next few days, although the time of release in each region may vary slightly."
+    },
+    {
+      "fact": "第二個原因：系統會依服務狀態與系統設定評估是否需要更新到這個版本（原始 JSON 引文）。所以沒收到通知不代表已經是修補版本，要看版本號。注意兩語差異：英文前半句是「Your DSM is working fine without having to update」，繁中版說明寫「您的 DSM 沒有需要修正的項目」，意思接近但不逐字對應；正文與譯文以英文版為準，不要寫成「DSM 判定沒有需要修正的項目就代表安全」。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Your DSM is working fine without having to update. The system evaluates service statuses and system settings to determine whether it needs to update to this version."
+    },
+    {
+      "fact": "三個 Update 版本的說明也寫：這個更新會重新啟動裝置（原始 JSON 引文）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This update will restart the device."
+    },
+    {
+      "fact": "7.4-90075 的說明也寫：這個更新會重新啟動 Synology NAS（解碼去標籤後的文字；第一輪查核補上）。所以四個修補版本的說明都寫更新會重新啟動，不是只有三個 Update 版本。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This update will restart your Synology NAS."
+    },
+    {
+      "fact": "7.4-90075 的說明寫：如果自動更新沒有執行，請到控制台（Control Panel）手動更新（原始 JSON 引文；繁中版寫「如果自動更新未運行，請至控制台手動進行更新」）。在四個修補版本的說明裡，這是唯一提到操作位置的句子（同一份資料裡 DSM 5.1、6.1 等舊版說明另有「Control Panel > Update & Restore」這類舊介面路徑，與本則無關；第一輪查核更正）；查看目前版本號在哪個畫面，四條來源都沒有寫。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If auto update does not run, perform a manual update in Control Panel."
+    },
+    {
+      "fact": "7.4-90075 的說明寫：安裝這個更新後，無法降級回先前的 DSM 版本（原始 JSON 引文）。四個修補版本裡只有 7.4-90075 的說明寫這句；三個 Update 版本的說明對降級沒有寫，所以不要套到它們，也不要反過來寫成「只有 7.4 不能降級」（同一份資料裡 7.3.2-86009、7.2.2-72806、7.2.1-69057 這些大版本的說明也有同一句；第二輪查核更正）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "After installing this update, you will not be able to downgrade to a previous DSM version."
+    },
+    {
+      "fact": "7.4-90075 的說明另列一批較舊的機型：它們不會在裝置上收到這個更新、會留在最適合的版本（原始 JSON 引文）。這是 7.4 大版本更新的安排，說明沒有說這些機型拿不到 7.3.2 或 7.2.2 的修補版本，正文不可延伸。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To ensure optimal stability, the models listed below will not receive this update on your device and will remain on their most suitable version."
+    },
+    {
+      "fact": "同一段說，那些機型只能從 Synology 下載中心（Download Center）下載升級檔，因為 DSM 上不會收到這次更新的通知（引文用解碼去標籤後的文字，連結標籤「Synology Download Center」原樣留在句中）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can only download the upgrade patch from Synology Download Center because you won't receive notifications for this update on your DSM."
+    },
+    {
+      "fact": "三個 Update 版本（7.3.2-86009 Update 4、7.2.2-72806 Update 9、7.2.1-69057 Update 12）的「Fixed Issues」寫的是修補 Synology-SA-26:06 的安全性弱點，不是 SA-26:13（引文用解碼去標籤後的文字；三筆都一樣）。整份版本說明資料以字串比對查核到 2026-09-26，SA-26:13、SA_26_13 與八個 CVE 編號都未見。版本說明與公告在這點上沒有互相交代，正文不可寫「版本說明寫這些版本修補 SA-26:13」，只能寫公告要求升到這些版本。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Fixed security vulnerabilities (Synology-SA-26:06)."
+    },
+    {
+      "fact": "7.4-90075 的「Fixed Issues」最後兩條是 Ghostscript 的 CVE-2023-43115 與「多個安全性弱點」，沒有點名 SA-26:13（引文用解碼去標籤後的文字）。這兩條是它 Fixed Issues 十七條裡寫明 security vulnerabilities 的兩條，其餘十五條是 SSO、NFS、網路等問題的修正，所以正文寫「7.4-90075 寫的安全性修補是…」，不寫成 Fixed Issues 只有這兩條（第一輪查核更正）。",
+      "url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major=",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Fixed security vulnerabilities regarding Ghostscript (CVE-2023-43115). Fixed multiple security vulnerabilities."
+    }
+  ],
+  "not_said": [
+    "公告沒有提到漏洞是否已遭利用、是否有公開的概念驗證或攻擊程式。唯一的相關資料是 CISA 在 CVE 紀錄的 SSVC 評估：Exploitation none（美國時間 2026-09-18、台北 9 月 19 日凌晨），到 2026-09-26 查核時紀錄沒有更新。不得寫「遭攻擊」「駭客正在利用」，也不得反過來寫「確定沒有人利用」——none 是那個時點的評估。",
+    "研究代理另查了 CISA 已遭利用清單（KEV 目錄 JSON，catalogVersion 2026.09.25），八個 CVE 都不在裡面、也沒有任何 Synology 條目；KEV 目錄不在 sources[]，正文不寫 KEV（DELTA-4-8 第 4 條說 WordPress 已是八天內第三篇碰到 KEV 的科技文，這一篇若再寫 KEV 就是第四篇）。",
+    "公告的緩解措施欄是 None。公告沒有提到 QuickConnect、連接埠轉發、防火牆、關閉外網存取、停用某項服務或任何暫時做法。以公告頁查核到 2026-09-26 未見。",
+    "公告沒有列機型，也沒有說哪些機型跑哪條版本線。Affected Products 只列 DSM 7.4、7.3、7.2.2、7.2.1 四列；DSM 7.1、7.0、6.2、DSM UC 與其他 Synology 產品都沒有列。CVE 紀錄對早於 7.2.1 的版本標 unknown，那是「未知」，不是「不受影響」，也不是「受影響」。",
+    "公告沒有說怎麼查看目前的 DSM 版本、怎麼更新；四個修補版本的說明裡提到操作位置的只有 7.4-90075 的「到控制台手動更新」（同一份資料的舊版說明另有舊介面路徑，不適用）。查看版本號的畫面路徑，四條來源都沒有寫。",
+    "公告與 CVE 紀錄都沒有受影響的裝置數量、地區分布或受害案例，也沒有任何關於台灣的資訊（四條來源都沒有出現 Taiwan）。",
+    "版本說明沒有說哪一版修補 SA-26:13：三個 Update 版本寫的是 SA-26:06，7.4-90075 寫「多個安全性弱點」。以版本說明資料的字串比對查核到 2026-09-26，SA-26:13 與八個 CVE 編號都未見。",
+    "官方沒有說明為什麼公告（9 月 18 日）晚於版本說明上的修補版本日期（6 月 16 日到 7 月 29 日）。不可推論成 Synology 延後、隱瞞或刻意等待。",
+    "公告沒有說自動更新有沒有開、會不會自動裝上這些修補版本；三個 Update 版本的說明只說 NAS「可能不會通知」與「分地區推出」，7.4-90075 的說明寫自動更新沒有執行時到控制台手動更新（第二輪查核更正）。",
+    "CISA 沒有在 CVE 紀錄給自己的 CVSS 分數；9.8 是 Synology 的 CVSS 3.1 評分。",
+    "公告沒有說修補前的資料是否可能已被讀取，也沒有要使用者更換密碼或檢查紀錄。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "Synology 是台灣公司，DSM 是台灣家庭、工作室與中小企業最常見的 NAS 系統，很多台會開外網存取。",
+      "seen_where": "探索代理 candidates-tech.md 第 2 則的「為什麼重要」。",
+      "why_excluded": "四條 sources[] 都沒有公司所在地、市占或外網使用比例。正文不寫「台灣公司」「最常見」「很多台開外網」這類描述；要讓台灣讀者知道跟自己有關，寫「用 Synology NAS 的人」即可。"
+    },
+    {
+      "claim": "Synology 的中文名稱是「群暉科技」。",
+      "seen_where": "zh-tw 公告頁 https://www.synology.com/zh-tw/security/advisory/Synology_SA_26_13 的 <title>「Synology_SA_26_13 | 群暉科技 Synology Inc.」（200、121,371 bytes）。",
+      "why_excluded": "那一頁不在 sources[]（公告正文與 en-global 逐字相同的英文，只有外框在地化）。研究紀錄建議正文用「Synology」；若協調者要用中文名，可以把 sources[0] 換成 zh-tw 公告頁（內容相同、多了中文公司名），但這會讓 CVE 紀錄的 references（指向 en-global）與 sources[0] 不一致，請協調者決定。"
+    },
+    {
+      "claim": "SA-26:13 的八個 CVE 都不在 CISA 已遭利用清單（KEV）。",
+      "seen_where": "KEV 目錄 JSON（從 https://www.cisa.gov/known-exploited-vulnerabilities-catalog 的連結取得），catalogVersion 2026.09.25、dateReleased 2026-09-25T18:58:16.5029Z、1,726 筆，Synology 條目 0 筆。",
+      "why_excluded": "KEV JSON 不在 sources[]（上限四條，第四條用來放對讀者更有用的版本說明）。正文用 CVE 紀錄的 SSVC Exploitation none 表達「沒有已知利用的評估」即可，不寫 KEV。"
+    },
+    {
+      "claim": "Synology 的政策是修補版公開之前不公布漏洞，所以公告晚於修補版本。",
+      "seen_where": "公告列表頁 https://www.synology.com/en-global/security/advisory 頁首：「we do not publicly announce security vulnerabilities until fixes are publicly available, nor are the exact details of such vulnerabilities released」。",
+      "why_excluded": "列表頁不在 sources[]，而且那句是一般政策，不是對 SA-26:13 為什麼在 9 月 18 日公布的說明。正文可以並列兩個日期，不寫原因。"
+    },
+    {
+      "claim": "Synology 在 9 月 21 日更新了另一則 DSM 公告，揭露漏洞細節。",
+      "seen_where": "公告列表的 Synology-SA-26:06 DSM（Last Updated 2026-09-21 09:35:28 UTC+8）；內頁 Publish Time 2026-04-15，Revision 2 為 2026-09-21「Disclosed vulnerability details.」，修補版本 7.3.2-86009-2、7.2.2-72806-7、7.2.1-69057-10。",
+      "why_excluded": "那是 4 月的另一則公告、另一組 CVE（CVE-2026-40530 等），修補版本比 SA-26:13 舊，不在 sources[]。正文不合併、不寫成本事件的後續。唯一會碰到它的地方是版本說明把三個 Update 版本標為修補 SA-26:06；若要提，只能寫「版本說明寫的是另一則公告 SA-26:06」，不展開。"
+    },
+    {
+      "claim": "7.4-90075 是 DSM 7.4 最早的正式版，所以所有 DSM 7.4 使用者都已經是修補版本。",
+      "seen_where": "版本說明資料的 7.4 系列只列 7.4.1-90080 與 7.4-90075 兩筆。",
+      "why_excluded": "這是研究者從清單推出來的結論，官方沒有這樣寫；CVE 紀錄的受影響範圍是「7.4 起、小於 7.4-90075」，可能涵蓋測試版。正文不寫「7.4 使用者都安全」，只寫「公告要 7.4 升到 7.4-90075 以上」。"
+    },
+    {
+      "claim": "DSM 7.1 已經不再有修補，最後一版是 7.1.1-42962 Update 9（2025-08-05）。",
+      "seen_where": "版本說明資料 all_versions 清單。",
+      "why_excluded": "版本說明只列出有過哪些版本，沒有說 7.1 停止支援，也沒有說 7.1 是否受 SA-26:13 影響（CVE 紀錄標 unknown）。正文不寫「7.1 已停止支援」，也不替 7.1 使用者提出升級建議。"
+    },
+    {
+      "claim": "SSVC 的 Automatable yes 代表攻擊可大規模自動化、Technical Impact total 代表攻擊者可完全控制。",
+      "seen_where": "CVE 紀錄的 CISA ADP 區塊只有欄位名與值。",
+      "why_excluded": "這一輪沒有抓 CISA 的 SSVC 定義文件，欄位的精確意思沒有一手出處。正文只照寫欄位名與值，不加任何解釋；連「這是 CISA 排修補優先序用的欄位」這類說明也沒有一手出處，不寫。"
+    },
+    {
+      "claim": "DSM 版本說明頁提到「staged rollout」（分階段推出），並連到一篇知識中心文章。",
+      "seen_where": "https://www.synology.com/en-global/releaseNote/DSM 外殼頁的模板文字「This version is released in a staged rollout.」與 kb.synology.com 連結。",
+      "why_excluded": "外殼頁不在 sources[]，知識中心文章沒有抓。正文要寫分批推出，只用 sources[] 第四條三個 Update 版本的「not available in your region yet…may vary slightly」那句。"
+    },
+    {
+      "claim": "回報這些漏洞的研究者姓名與所屬單位。",
+      "seen_where": "公告的 Acknowledgement 段、CVE 紀錄的 credits 欄。",
+      "why_excluded": "個人姓名，一律不寫。"
+    },
+    {
+      "claim": "CVE-2026-13684 的編號在 2026-06-29 保留，表示 Synology 從 6 月底就知道。",
+      "seen_where": "CVE 紀錄 cveMetadata.dateReserved。",
+      "why_excluded": "保留日只是 CNA 取號的時間，來源沒有說 Synology 何時得知漏洞。不寫。"
+    }
+  ],
+  "editorial_brief": "讀者是用 Synology NAS 放家庭照片、工作檔案或當小公司檔案伺服器的台灣一般使用者，多半沒有資安背景。他們真正的問題只有三個：我的 NAS 有沒有事？我要做什麼？做完怎麼確認？這一篇的主軸是「SA-26:13 與怎麼確認自己的 NAS 已是修補版本」，不是資安產業新聞。這是補寫件：照 2026 年 9 月 18 日寫，不寫「本週」「最近」，也不交代站內為什麼現在才寫。\n\n第一段就要讓讀者知道跟自己有沒有關係：2026 年 9 月 18 日（台北時間下午 4 點 17 分）Synology 發布資安公告 Synology-SA-26:13，處理 DSM 的八個漏洞（公告列出的八個 CVE 編號），其中兩個 Synology 評為 Critical、CVSS 3.1 分數 9.8，公告把它們歸在不需登入的遠端攻擊者可利用的一組；公告的緩解措施欄寫 None，處理方式是把 DSM 升到各版本線的修補版本。第二段是查核日句，照 DELTA-4-7 第 14 條寫「這一篇的資料在 2026 年 9 月 26 日查核」，不寫「本文」，不寫查證流水帳。\n\n五節建議：一、9 月 18 日的公告寫了什麼：編號、整體等級 Critical、狀態 Resolved；Abstract 把八個 CVE 分成三組（遠端攻擊者、已登入使用者、有管理員權限的使用者）；兩個 Critical 在 SCGI 與登入邏輯，只寫部位不寫機制。二、各版本線的修補版本：結尾放表，建議三欄「版本線／公告要求的修補版本／版本說明上的寫法與日期」，四列 DSM 7.4（7.4-90075 以上／2026 年 6 月 16 日）、DSM 7.3（7.3.2-86009-4 以上／寫作 7.3.2-86009 Update 4，2026 年 7 月 29 日）、DSM 7.2.2（7.2.2-72806-9 以上／Update 9，6 月 30 日）、DSM 7.2.1（7.2.1-69057-12 以上／Update 12，6 月 30 日），可加第五列「早於 7.2.1 的版本／公告未列／CVE 紀錄標 unknown」；caption 寫查核日。三、怎麼確認自己的 NAS：先看 NAS 目前的 DSM 版本號（畫面路徑來源沒寫，不要寫），對照表格；三個 Update 版本的說明寫 NAS「可能不會通知」有這個更新、而且分地區推出，所以沒收到通知不等於已修補（第二輪查核更正：7.4-90075 的說明沒有這段）；7.4 的說明寫自動更新沒執行時到控制台（Control Panel）手動更新、裝了 7.4 不能降級；早於 DSM 7.2.1 的版本這份公告沒有答案。結尾放圖。四、「Critical」與「沒有已知利用」各是什麼意思：9.8 是 Synology 的 CVSS 3.1 評分；其餘六個是 Important、Moderate、Low 各兩個，多數需要登入；CISA 在 CVE 紀錄的評估（台北 9 月 19 日凌晨）是 Exploitation none、Automatable yes、Technical Impact total，三個值一起寫，並說到 9 月 26 日查核時沒有更新。五、還不知道的事與怎麼自己查：沒有緩解措施、沒有受影響台數、沒有台灣資訊；版本說明沒有點名 SA-26:13；修補版本在版本說明上的日期早於公告，官方沒有說明原因；請讀者回公告頁看 Last Updated 與 Revision 有沒有變。\n\n可以寫的一個觀察（兩條來源日期並列，不推原因）：公告列的四個修補版本，在 DSM 版本說明上的日期都在 2026 年 6 月 16 日到 7 月 29 日之間，早於 9 月 18 日的公告日。這讓「一直有更新的 NAS 可能早已是修補版本」成立的前提是讀者去對版本號，所以要寫成「去對版本號」，不寫「你大概已經安全」。\n\nFAQ 候選（答案純文字、不放網址）：我的 NAS 沒有跳出更新通知，是不是就沒事？（答：版本說明說可能不會通知，要看版本號）／我用的是 DSM 7.1 或更舊的版本，受影響嗎？（答：公告沒列，CVE 紀錄標未知，這份公告沒有答案）／公告說沒有緩解措施是什麼意思？／有沒有人已經利用這些漏洞？（答：CISA 在台北 9 月 19 日凌晨的評估是 none，到 9 月 26 日查核時沒有更新，但那是評估不是保證）／為什麼修補版本比公告早好幾個月？（答：兩個日期各自的出處；官方沒有說明原因）。\n\n用語：Control Panel 寫「控制台」、Download Center 寫「下載中心」（Synology 繁中版本說明的官方用語，研究代理在 zh-tw 資料看到；第一次出現附英文）；公司名寫「Synology」（中文名見 unverified_or_excluded）。版本號一律照公告原樣（7.3.2-86009-4），需要時再補「版本說明寫作 7.3.2-86009 Update 4」。翻譯提醒：en／ja／ko 版的 CVE 編號、版本號、Critical／Important／Moderate／Low、Mitigation: None、Exploitation／Automatable／Technical Impact 都保留英文原文。\n\n刻意不寫：利用機制與元件內部細節（見 must_not_write）；自創的暫時做法；KEV；受害規模；購買或換機建議；研究者姓名；CRA 與這則公告的關係（第二個結尾連結只是延伸閱讀，正文不要把 CRA 通報義務套到 Synology 或 SA-26:13，這則也沒有遭利用的證據）。表格與圖上的數字都要出現在正文。",
+  "must_not_write": [
+    "不寫「遭攻擊」「已遭利用」「駭客正在利用」「零時差」。寫「CISA 在 CVE 紀錄的評估（台北 9 月 19 日凌晨）標示 Exploitation 為 none，到 9 月 26 日查核時沒有更新」，並把同一份評估的 Automatable yes、Technical Impact total 一起寫，不只挑 none。也不寫「確定沒有人利用」。",
+    "不寫「八個嚴重漏洞」「八個 Critical」。Critical 只有 13684、13639 兩個；其餘是 Important（13673、6205）、Moderate（13635、13623）、Low（13666、13683）。候選清單漏了 Low，以公告為準。Affected Products 表每列的 Critical 是產品列的整體等級，不是每個 CVE 的等級。",
+    "不把「不需登入的三個」與「Critical 的兩個」混成一句：13635 也不需登入，但只是 Moderate、只取得非敏感資訊。",
+    "不寫「早於 7.2.1 的版本不受影響／很安全」，也不寫「一定受影響」；範圍寫「早於 7.2.1」，不寫「7.2.1 以前」（DSM 7.2.1 本身在 7.2.1-69057-12 以前是 affected；第二輪查核更正）。CVE 紀錄標的是 unknown（未知）；DSM 7.1、6.2 使用者從這份公告得不到答案。",
+    "不寫任何更新以外的暫時做法：不寫關 QuickConnect、關連接埠轉發、關外網、改防火牆、停用服務、改密碼。公告的 Mitigation 是 None；有必要時只能寫「公告沒有提供其他暫時做法」。",
+    "不寫利用細節：SCGI 與登入邏輯只寫部位名稱；不解釋輸出編碼不當或熵不足怎麼被利用，不寫 CVSS 向量的攻擊情境推演，不寫 LDAP／Upload／Auth／Theme／Sharing／EventScheduler 各 API 的利用方式（tech.md「可操作的攻擊細節」）。",
+    "不寫「修補版本 9 月 18 日推出」。9 月 18 日是公告日；修補版本在版本說明上的日期是 6 月 16 日到 7 月 29 日。也不寫原因（「Synology 延後公布」「隱瞞」「等修補普及才說」都不可以）。",
+    "不寫「版本說明寫這些版本修補 SA-26:13」。三個 Update 版本的說明寫的是 SA-26:06，7.4-90075 寫的是「多個安全性弱點」；正文只能寫「公告要求升到這些版本」。",
+    "不寫「你大概已經安全」「有開自動更新就沒事」「所有 DSM 7.4 使用者都已是修補版本」。版本說明寫 NAS 可能不會通知、分地區推出；要叫讀者自己對版本號。",
+    "不寫查看版本號的畫面路徑（例如「控制台 > 資訊中心」），四條來源都沒有寫。可以寫的操作只有 7.4-90075 說明的「自動更新沒執行時到控制台手動更新」。",
+    "不寫「Synology 是台灣公司」「台灣最常見的 NAS」「很多人開外網」這類 sources[] 沒有的描述；不寫台灣有多少台、有沒有台灣受害者。",
+    "不寫「本週」「最近」「日前」「剛剛」。這是補寫件，事件日 2026 年 9 月 18 日。",
+    "不寫 KEV 或「已遭利用清單」（KEV 不在 sources[]；也避免第四篇 KEV 文）。",
+    "不寫研究者姓名或帳號（公告 Acknowledgement、CVE 紀錄 credits）。",
+    "不把 SA-26:06（4 月的另一則 DSM 公告，9 月 21 日改版揭露細節）寫成這則的後續或同一件事。",
+    "不把歐盟《網路韌性法》的通報義務套到 Synology 或這則公告；第二個結尾連結只是延伸閱讀。",
+    "CVSS 只寫 Synology 的 CVSS 3.1 分數並標明是 Synology 的評分；不寫成「CISA 評 9.8」或「官方共同分數」。",
+    "不寫購買建議：不寫換品牌、換新機、該不該升級到 7.4（升 7.4 是公告列出的其中一條路，7.3、7.2.2、7.2.1 各有自己的修補版本）。",
+    "不寫「Synology 發布中文版公告」。zh-tw 公告頁的正文仍是英文，只有網站外框在地化。",
+    "不把 CISA 評估的時間寫成台北 9 月 18 日。時間戳 19:13～19:14Z 在台北是 9 月 19 日凌晨，美國時間是 9 月 18 日；要寫就兩個都寫或只寫「台北 9 月 19 日凌晨」。"
+  ],
+  "live_data_warnings": [
+    "公告頁可以改版：查核時 Last Updated 與 Publish Time 相同（2026-09-18 16:17:35 UTC+8）、Revision 只有第 1 版。同一站的 SA-26:06 在發布五個月後改版補上細節，所以發布當天要重抓公告頁，比對 Last Updated、Revision 表、Affected Products 與 Mitigation 四處。",
+    "CVE 紀錄的 CISA ADP 評估可能改：查核時 Exploitation none，dateUpdated 分別是 2026-09-18T19:14:16.588Z（13684）與 19:13:24.287Z（13639）。發布當天重抓兩份紀錄；若 Exploitation 變成 poc 或 active，或 ADP 出現 kev 區塊，正文第四節與 FAQ 要改寫，不可沿用「沒有已知利用」。",
+    "KEV 目錄（研究用，不在 sources[]）：查核時 catalogVersion 2026.09.25，沒有 Synology 條目。發布當天順手再查一次；若列入，要回報協調者重新評估這一篇。",
+    "DSM 版本說明是活資料：可能出現更新的版本（例如 7.3.2-86009 Update 5、7.4.x），公告的「or above」涵蓋它們，但表格若寫「最新版」就會過期。正文只寫公告的修補版本號與版本說明上的日期，不寫「最新版是…」。",
+    "版本說明寫更新分地區推出、各地區時間不同；正文不可把版本說明日期寫成每台 NAS 收到更新的日期。",
+    "正文寫成「截至 2026 年 9 月 26 日查核」，不要寫成永久狀態；「沒有緩解措施」「CISA 評估為 none」都要帶查核日。"
+  ],
+  "overlaps_existing_article": [
+    "以 grep 查核 apps/api/app/guides/content/ 到 2026-09-26：沒有任何內容包提到 Synology、群暉、DSM、DiskStation 或 QuickConnect；以詞界比對「NAS」只有一篇（下一行）。站上沒有 NAS 題目，這一篇不會重複既有文章。",
+    "tech-news-cisa-kev-linux-kernel-20260918（只有 zh-TW，不能連）〈CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單〉：在通論段落把 NAS 當成「底層可能跑 Linux 的裝置」舉例，並建議讀者去看裝置廠商的支援頁；沒有提任何 NAS 品牌。這一篇不重講 Linux 核心或 KEV，也不連它。",
+    "tech-news-cisa-kev-zyxel-gs1900-20260921（只有 zh-TW，不能連）〈CISA 把 Zyxel GS1900 交換器漏洞列入已遭利用清單：先對型號，再對韌體版本〉：同樣是「對版本號」的讀者動作，但那是已遭利用的網通設備。不連、不比較。",
+    "tech-news-enisa-threat-landscape-20260922（只有 zh-TW，不能連）〈ENISA 公布 2026 威脅全景報告：統計的是 2025 一整年的事件〉：提到家用路由器與韌體更新的通論。不相關，不連。",
+    "tech-news-wordpress-712-20260922（同批 4.8、撰寫中，不能連）〈WordPress 7.1.2 修補核心嚴重漏洞：各分支的修補版本與怎麼確認自己的網站〉：同樣是「各版本線的修補版本＋怎麼確認」的結構。兩篇各寫各的，不互相提及、不當結尾連結；撰稿可參考它的段落節奏，但不要抄它的句子。",
+    "backup-and-restore-home-files（五語齊全，可以用 article inline 連結）〈家庭檔案備份別只看同步完成：做一次還原，才知道能不能找回〉：家庭檔案備份與還原演練的通論，沒有提 NAS 或 DSM。這一篇不需要連它；若撰稿要加「更新前先備份」這類編輯建議，必須標明是編輯建議（來源沒有寫），才可以順帶連結。",
+    "tech-news-eu-cra-reporting-20260911（五語齊全）〈歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報〉：第二個結尾連結的目標。寫 CRA 第 14 條製造商對遭積極利用漏洞與重大資安事故的 24／72 小時通報、ENISA 單一通報平台，以及其餘義務 2027 年 12 月 11 日才適用。這一篇不得把 CRA 義務套到 Synology 或 SA-26:13（SA-26:13 也沒有遭利用的證據）。"
+  ],
+  "second_link": {
+    "slug": "tech-news-eu-cra-reporting-20260911",
+    "title": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報"
+  },
+  "hero_label": "先對 DSM 版本號",
+  "diagram": {
+    "title": "確認 DSM 已修補的四個步驟",
+    "caption": "Synology 2026 年 9 月 18 日發布資安公告 Synology-SA-26:13 後，確認自己的 NAS 是否已裝上修補版本的四個步驟，依 Synology 資安公告、CVE 紀錄與 DSM 版本說明整理，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "看版本號",
+        "NAS 目前的 DSM 版本"
+      ],
+      [
+        "對照修補版",
+        "公告表格的版本號"
+      ],
+      [
+        "手動更新",
+        "NAS 不一定會通知"
+      ],
+      [
+        "早於 7.2.1",
+        "CVE 紀錄標 unknown"
+      ]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent, round 1 (opus)",
+    "checked_on": "2026-09-26",
+    "method": "2026-09-26 台北 22:52 起（UTC 14:52）重抓 sources[] 四條與兩個佐證頁，curl -sSL --max-time 30 --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥1.5 秒，請求不含任何人的姓名或 email。四條來源今天都是 200，落地 bytes 125,185／2,505／2,474／746,801，與研究代理的檔案逐位元組相同（cmp）。研究紀錄 46 條 verified_facts 引文（含本輪補的一條）全部在今天的檔案裡找得到（fc1-verify.py，0 failures）。版本說明資料用 fc1-rn.py 逐筆解碼四個修補版本與 7.4.1-90080 的全文，並對整份資料做字串比對（SA-26:13／SA_26_13／八個 CVE 編號 0 次；SA-26:06 3 次；Update & Restore、Info Center、downgrade 的每個出現位置見 fc1-ctx.py）。另從 CISA BOD 26-04 頁（WordPress 研究代理的原始檔）上的連結抓了 CISA SSVC 頁與《CISA SSVC Guide》PDF（1,010,291 bytes，pypdf 抽文字），只用來判斷 Exploitation none 的意思，不進 sources[]（上限四條）。逐句拆成 146 條主張核對；改動用 fc1-edit.py 做逐字替換（每個舊字串恰好出現一次），沒有 json.dump。原始檔在 <WORK>\\_raw\\tech-news-synology-dsm-sa2613-20260918\\round1\\。",
+    "claims_checked": 146,
+    "changes": [
+      {
+        "claim": "CVE 紀錄的 unknown 範圍（summary 4、第二節第一段、表格第五列、第三節第二段、FAQ 2、callout、圖片 alt、研究紀錄 diagram 第四格）",
+        "before": "7.2.1 以前（的版本）",
+        "after": "早於（DSM）7.2.1 的版本",
+        "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684"
+      },
+      {
+        "claim": "表格第三欄的欄名與第五列（每一格要說出自哪一頁）",
+        "before": "欄名「版本說明上的寫法與日期」；第五列「7.2.1 以前版本／公告未列／CVE 紀錄標示為 unknown（未知）」",
+        "after": "欄名「版本說明上的寫法與日期（末列為 CVE 紀錄）」；第五列「早於 DSM 7.2.1 的版本／公告未列／兩筆 CVE 紀錄標示為 unknown（未知）」",
+        "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639"
+      },
+      {
+        "claim": "表格 caption 的來源",
+        "before": "依 Synology 資安公告 Synology-SA-26:13 與 DSM 版本說明整理",
+        "after": "依 Synology 資安公告 Synology-SA-26:13、DSM 版本說明與兩筆 CVE 紀錄整理",
+        "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684"
+      },
+      {
+        "claim": "第三節第二段：哪些修補版本會重新啟動裝置",
+        "before": "三個 Update 版本會讓裝置重新啟動；7.4-90075 的版本說明寫，",
+        "after": "四個修補版本的更新都會重新啟動裝置。7.4-90075 的說明另寫，",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "第三節第二段：不能降級「只針對 7.4」（NOT FOUND，刪除）",
+        "before": "裝了這個版本之後沒辦法降級——這只針對 7.4 這個大版本更新。",
+        "after": "裝了這個版本之後沒辦法降級。",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "第二節第二段：7.4-90075 的 Fixed Issues",
+        "before": "7.4-90075 寫的是 Ghostscript 的 CVE-2023-43115 與「多個安全性弱點」",
+        "after": "7.4-90075 寫的安全性修補是 Ghostscript 的 CVE-2023-43115 與「多個安全性弱點」",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "第三節第三段與 FAQ 3：列舉 QuickConnect、連接埠轉發、防火牆、停用服務（研究紀錄 must_not_write 第 5 條）",
+        "before": "以公告頁查核到 2026 年 9 月 26 日，沒有提到關閉 QuickConnect、連接埠轉發、防火牆設定或停用特定服務這類替代做法",
+        "after": "（以公告頁查核到 2026 年 9 月 26 日）——列舉刪除，只留「公告沒有提供更新以外的做法」",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "callout：緩解措施的否定句",
+        "before": "公告的緩解措施欄寫 None，沒有其他暫時做法。",
+        "after": "公告的緩解措施欄寫 None，沒有提供其他暫時做法。",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "callout：不會通知與分地區推出是哪幾份說明寫的",
+        "before": "DSM 版本說明寫，NAS 可能不會主動通知這些更新",
+        "after": "三個 Update 版本的說明寫，NAS 可能不會主動通知這些更新",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "FAQ 4 與 callout：CISA 評估的時點",
+        "before": "這是查核當下的評估",
+        "after": "這是那個時點的評估",
+        "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684"
+      },
+      {
+        "claim": "FAQ 5 的問句：自己算的時間差",
+        "before": "比公告日期早了兩三個月？",
+        "after": "比公告日期還早？",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "第五節第一段：PoC 的否定句",
+        "before": "還有幾件事，四份來源都沒有答案：公告與 CVE 紀錄都沒有寫出漏洞是否已有公開的攻擊程式或概念驗證；",
+        "after": "還有幾件事查不到答案：公告沒有寫出漏洞是否已有公開的攻擊程式或概念驗證；",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "第五節第二段：讀者回頭查什麼",
+        "before": "看 SSVC 評估是不是還維持在 none。",
+        "after": "看 SSVC 評估的三個值有沒有改變。",
+        "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13639"
+      },
+      {
+        "claim": "第四節第一段：CISA 沒有給分數的範圍",
+        "before": "CISA 沒有另外給分數。",
+        "after": "CISA 在 CVE 紀錄裡沒有另外給分數。",
+        "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684"
+      },
+      {
+        "claim": "第一節第三段：CVSS 向量",
+        "before": "向量都是 AV:N、AC:L、PR:N、UI:N",
+        "after": "向量都有 AV:N、AC:L、PR:N、UI:N",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "第三節第一段：表格的位置",
+        "before": "對照下表公告要求的修補版本",
+        "after": "對照上表公告要求的修補版本",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "description：時刻的時區",
+        "before": "2026 年 9 月 18 日下午 4 點 17 分，Synology 發布",
+        "after": "2026 年 9 月 18 日下午 4 點 17 分（台北時間），Synology 發布",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "第一段（讀者優先，協調者核准的改寫）：三個歸因語減為一個",
+        "before": "公告把整體嚴重程度標為 Critical、狀態標為 Resolved；…公告把它們歸在不需要登入的遠端攻擊者可利用的一組。",
+        "after": "這則公告的整體嚴重程度是 Critical、狀態是 Resolved；…屬於不需要登入的遠端攻擊者可利用的一組。",
+        "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+      },
+      {
+        "claim": "第二節第二段（讀者優先）：查證紀律的敘述",
+        "before": "官方沒有說明原因，這裡只並列兩份來源各自的日期，不推論原因。…；這裡只能寫「公告要求升到這些版本」，不能寫成版本說明修補了 SA-26:13。",
+        "after": "官方沒有說明原因，這裡不推論。…；要求升到這些版本的是公告。",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "研究紀錄（對來源是錯的）：7.4-90075 的「到控制台手動更新」是來源裡唯一提到操作位置的句子",
+        "before": "這是來源裡唯一提到操作位置的句子／四條來源裡提到操作位置的只有 7.4-90075 版本說明的「到控制台手動更新」",
+        "after": "在四個修補版本的說明裡是唯一的；同一份版本說明資料的 DSM 5.1、6.1 舊版說明另有「Control Panel > Update & Restore」舊介面路徑",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      },
+      {
+        "claim": "研究紀錄：補一條 verified_fact（7.4-90075 也寫會重新啟動），並在 7.4-90075 Fixed Issues 那條註明十七條裡只有兩條寫明 security vulnerabilities",
+        "before": "（沒有）",
+        "after": "\"This update will restart your Synology NAS.\"",
+        "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+      }
+    ],
+    "open_questions": [
+      "兩筆 CVE 紀錄 CNA 區塊的 defaultStatus 是 affected：沒有落在任何範圍裡的版本（例如各修補版本以上）在機器可讀的欄位裡預設是 affected，與公告的「or above」不一致，看起來是 CNA 資料的寫法問題。正文沒有碰這一欄，也不建議寫；只提醒第二輪與翻譯不要從這欄推論。",
+      "協調者指示寫「7.2.1 and earlier are unknown」，來源是 version 0、lessThan 7.2.1 為 unknown，DSM 7.2.1 本身在 7.2.1-69057-12 以前是 affected。來源為準，正文一律寫「早於 7.2.1」。",
+      "CISA《SSVC Guide》（2022 年 11 月，Table 2）把 Exploitation 的 None 定義為沒有遭積極利用的證據、也沒有公開的概念驗證。第四節標題「沒有已知利用」與 FAQ 4 的「是否已知遭利用」與這個定義一致；第五節原本寫「CVE 紀錄沒有寫出是否已有概念驗證」與定義衝突，已限縮成公告。這份指南不在 sources[]（上限四條），正文沒有引用它的定義。",
+      "第三節第一段與 FAQ 1 的「DSM 版本說明寫，NAS 可能…不會通知」只有三個 Update 版本的說明有這段；7.4-90075 的說明寫的是自動更新沒執行時到控制台手動更新，以及列出的舊機型不會收到通知。兩處沒有說「這些更新」，照原文留著；callout 因為寫了「這些更新」已改。第二輪可再判斷。",
+      "FAQ 5 的「不推論是延後公布或刻意等待」在否定句裡點名了 must_not_write 禁止的推論，事實上沒有錯，照留；協調者要收緊可以改成「不推論原因」。",
+      "hero.alt 沒有動（主圖由協調者繪製）。研究紀錄 diagram 第四格改成「早於 7.2.1」，圖片 alt 同步；build_assets.py 畫圖時照新字。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-8 第 1、4 條：補寫件，事件日 2026-09-18（公告自印 Publish Time 16:17 UTC+8）；slug、news_date、第一段一致；全文沒有「最近」「本週」「日前」「剛剛」。CISA 評估的時間（台北 9 月 19 日凌晨、美國 9 月 18 日）與公告日分開寫——守住。",
+      "KEV 不寫（研究紀錄 must_not_write、協調者裁定）：全文 KEV 0 次、「已遭利用清單」0 次——守住。",
+      "遭利用只透過 CISA 的三個 SSVC 值一起寫：第四節、summary、FAQ 4、callout 都三個值並列；第五節原本只提 none 的一句已改成「三個值有沒有改變」。",
+      "DELTA-4-8 第 5 條兩個結尾連結：文字與 tech-news-2026-index、tech-news-eu-cra-reporting-20260911 的 zh-TW title 逐字相同，兩個目標都有五語。",
+      "正文字數 2,991 → 2,877：騰出的空間來自刪掉的列舉與查證紀律的重複敘述，沒有刪任何限定詞。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent, round 2 (opus; did not write or run round 1)",
+      "checked_on": "2026-09-26",
+      "method": "2026-09-26 台北 23:15 起（UTC 15:15）重抓 sources[] 四條與 DSM 版本說明外殼頁，curl -sSL --max-time 30 --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥1.5 秒，請求不含任何人的姓名或 email（fc2-fetch.sh，round2/fetch-log.tsv）。四條都是 200，落地 125,185／2,505／2,474／746,801 bytes，與第一輪及研究代理的檔案逐位元組相同（cmp）。自己讀了公告全文（Acknowledgement 不抄）、兩筆 CVE 紀錄全文、版本說明資料裡四個修補版本與 7.4.1-90080 的解碼全文（fc2-text.py）；整份版本說明資料對操作路徑與關鍵字做全文掃描（fc2-ctx.py）。研究紀錄 4 條 source 引文與 46 條 verified_facts 引文用研究代理的比對規則對今天的檔案做連續字串比對（fc2-verify.py），0 failures；沒有含 ...、… 或 | 的引文。範圍：第一輪改動或新寫的 19 處全部逐句回原文、第一輪 111 條 CONFIRMED 以固定種子隨機抽 37 條（三分之一）重查、全文回掃限定詞（以上、至少、可能、unknown、三個 Update 版本 vs 四份版本說明）、協調者點名的四項裁定。改動用 fc2-edit.py 逐字替換（每個舊字串恰好一次），沒有 json.dump。",
+      "claims_checked": 91,
+      "changes": [
+        {
+          "claim": "FAQ 5 答句（協調者裁定 2：否定句點名了被禁止的推論）",
+          "before": "以這兩份來源查核到 2026 年 9 月 26 日，官方都沒有說明原因，這裡只並列兩份來源各自的日期，不推論是延後公布或刻意等待。",
+          "after": "以公告與 DSM 版本說明查核到 2026 年 9 月 26 日，兩者都沒有說明原因。",
+          "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+        },
+        {
+          "claim": "第三節第一段：「可能不會通知／還沒推到地區」是哪幾份說明寫的（掉了「四份裡的三份」）",
+          "before": "DSM 版本說明寫，NAS 可能因為更新還沒推到某個地區，",
+          "after": "DSM 7.3.2、7.2.2、7.2.1 三個 Update 版本的說明寫，NAS 可能因為更新還沒推到某個地區，",
+          "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+        },
+        {
+          "claim": "FAQ 1：同上",
+          "before": "不一定。DSM 版本說明寫，NAS 可能因為更新還沒推到你所在的地區，",
+          "after": "不一定。DSM 7.3.2、7.2.2、7.2.1 三個 Update 版本的說明寫，NAS 可能因為更新還沒推到你所在的地區，",
+          "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+        },
+        {
+          "claim": "第一段、FAQ 3、callout：公告寫「Upgrade to … or above」，三處掉了「以上」",
+          "before": "處理方式（就）是把 DSM 升到（各版本線各自的／公告列出的）修補版本",
+          "after": "處理方式（就）是把 DSM 至少升到（各版本線各自的／公告列出的）修補版本",
+          "source_url": "https://www.synology.com/en-global/security/advisory/Synology_SA_26_13"
+        },
+        {
+          "claim": "研究紀錄 verified_fact（7.4-90075 不能降級）：「這只針對 7.4 版本線的大版本更新」不在來源裡，與第一輪第 5 點刪掉的正文句相同",
+          "before": "這只針對 7.4 版本線的大版本更新，不要套到 7.3.2、7.2.2、7.2.1 的 Update 版本。",
+          "after": "四個修補版本裡只有 7.4-90075 的說明寫這句；三個 Update 版本的說明對降級沒有寫，所以不要套到它們，也不要反過來寫成「只有 7.4 不能降級」（…大版本的說明也有同一句）。",
+          "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+        },
+        {
+          "claim": "研究紀錄 editorial_brief 與 not_said：把三個 Update 版本的通知說明寫成全部版本說明",
+          "before": "版本說明寫 NAS「可能不會通知」有這些更新／版本說明只說 NAS「可能不會通知」與「分地區推出」",
+          "after": "三個 Update 版本的說明寫 NAS「可能不會通知」有這個更新／三個 Update 版本的說明只說…，7.4-90075 的說明寫自動更新沒有執行時到控制台手動更新",
+          "source_url": "https://www.synology.com/api/releaseNote/findChangeLog?identify=DSM&lang=en-global&model=&dsm_major="
+        },
+        {
+          "claim": "研究紀錄 title_candidates 第 4 條與 must_not_write 第 4 條：還寫「7.2.1 以前」（協調者裁定 1）",
+          "before": "DSM 7.2.1 以前公告沒有答案／不寫「7.2.1 以前的版本不受影響／很安全」",
+          "after": "早於 DSM 7.2.1 的版本公告沒有答案／不寫「早於 7.2.1 的版本不受影響／很安全」；範圍寫「早於 7.2.1」",
+          "source_url": "https://cveawg.mitre.org/api/cve/CVE-2026-13684"
+        }
+      ],
+      "open_questions": [
+        "第一輪報告寫版本說明資料「391 筆」：那是 all_versions 356 筆加上 versions.DSM.7.4 的 2 筆與 6.2 的 33 筆；all_versions 本身是 356 筆。正文與研究紀錄都沒有用到這個數字，不影響文章。",
+        "FAQ 6「向量都是不需要權限、不需要使用者互動，就能經網路利用」是對向量性質的描述，不是列出完整向量；第一節第三段已寫「向量都有 AV:N、AC:L、PR:N、UI:N」。沒有改，翻譯時不要把它譯成「the vectors are AV:N/PR:N/UI:N」。",
+        "第五節第一段「查不到答案：公告沒有寫出漏洞是否已有公開的攻擊程式或概念驗證」只限縮到公告。CISA SSVC 的 Exploitation none 依 CISA 自己的定義也涵蓋「沒有公開 PoC」，但那份定義不在 sources[]，正文不解釋，沿用第一輪的處理。"
+      ],
+      "coordinator_rulings": [
+        "裁定 1（早於 7.2.1）：CVE 紀錄兩筆都是 {\"lessThan\":\"7.2.1\",\"status\":\"unknown\",\"version\":\"0\"}，DSM 7.2.1 本身在 7.2.1-69057-12 以前是 affected，公告也列了 DSM 7.2.1。正文七處（summary 4、第二節第一段、表格第五列、第三節第二段、FAQ 2、callout、圖片 alt）與研究紀錄 diagram 第四格都是「早於（DSM）7.2.1」；研究紀錄還留著的兩處（title_candidates 第 4 條、must_not_write 第 4 條）這一輪改掉。第一輪 factcheck 物件的 before 欄是歷史紀錄，不動。",
+        "裁定 2（FAQ 5）：改成只說公告與 DSM 版本說明都沒有說明原因，刪掉「不推論是延後公布或刻意等待」與「官方」。",
+        "裁定 3（defaultStatus）：正文與研究紀錄正文（verified_facts、not_said、must_not_write、editorial_brief）沒有任何一句依據 defaultStatus；FAQ 2 的「不是不受影響，也不是受影響」依據的是 lessThan 7.2.1 那一列的 unknown。第一輪 factcheck.open_questions 第 1 條提到這一欄，是第一輪的歷史紀錄，不動；翻譯不要從它推論。",
+        "裁定 4：KEV、「已遭利用清單」全文 0 次；QuickConnect、防火牆、連接埠轉發 0 次，沒有任何替代做法；唯一的操作位置是 7.4-90075 說明原句的「到控制台（Control Panel）手動更新」。整份版本說明資料掃過「Info Center」「Update & Restore」「Control Panel >」：只有舊版的服務與更新設定路徑，沒有查看版本號的路徑，「查看版本號的畫面路徑，四份來源都沒有寫」成立。",
+        "zh-TW 段落總字數 2,877 → 2,908（≤3,000）；這一輪沒有刪任何限定詞，增加的字都是補回的限定詞（「至少」、「DSM 7.3.2、7.2.2、7.2.1 三個 Update 版本的說明」）。"
+      ],
+      "verdict": "ok"
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Check DSM version first",
+      "diagram": {
+        "title": "Four Steps to Confirm DSM Is Patched",
+        "caption": "Four steps for checking whether your NAS already has the fixed release installed, following Synology's September 18, 2026 security advisory Synology-SA-26:13, compiled from the Synology security advisory, the CVE records, and the DSM release notes; checked September 26, 2026.",
+        "nodes": [
+          [
+            "Check version",
+            "NAS's current DSM version"
+          ],
+          [
+            "Match release",
+            "Version in advisory table"
+          ],
+          [
+            "Update manually",
+            "NAS may not notify you"
+          ],
+          [
+            "Before 7.2.1",
+            "CVE record marks unknown"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "DSMのバージョンを確認",
+      "diagram": {
+        "title": "DSM修正確認の4ステップ",
+        "caption": "Synologyが2026年9月18日にセキュリティ勧告Synology-SA-26:13を公表した後、自分のNASに修正版が導入済みか確認する4つのステップ。Synologyのセキュリティ勧告、CVE記録、DSMリリースノートから作成、確認日2026年9月26日。",
+        "nodes": [
+          [
+            "バージョン確認",
+            "NASの現在のDSM版"
+          ],
+          [
+            "修正版と照合",
+            "勧告表のバージョン番号"
+          ],
+          [
+            "手動更新",
+            "通知されないことも"
+          ],
+          [
+            "7.2.1より前",
+            "CVE記録はunknown"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "DSM 버전부터 확인",
+      "diagram": {
+        "title": "DSM 수정 확인 4단계",
+        "caption": "Synology가 2026년 9월 18일 보안 권고문 Synology-SA-26:13을 발표한 뒤, 내 NAS에 수정 버전이 설치되었는지 확인하는 네 단계. Synology 보안 권고문, CVE 기록, DSM 버전 노트를 바탕으로 정리, 확인일 2026년 9월 26일.",
+        "nodes": [
+          [
+            "버전 확인",
+            "NAS의 현재 DSM 버전"
+          ],
+          [
+            "수정판 대조",
+            "권고문 표의 버전 번호"
+          ],
+          [
+            "수동 업데이트",
+            "알림이 안 올 수도"
+          ],
+          [
+            "7.2.1보다 이전",
+            "CVE 기록 unknown"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "先核对 DSM 版本号",
+      "diagram": {
+        "title": "核对 DSM 修复的四步",
+        "caption": "Synology 于 2026 年 9 月 18 日发布网络安全公告 Synology-SA-26:13 后，核对自己的 NAS 是否已装上修复版本的四个步骤，依 Synology 网络安全公告、CVE 记录与 DSM 版本说明整理，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "查看版本号",
+            "NAS 当前的 DSM 版本"
+          ],
+          [
+            "对照修复版",
+            "公告表格的版本号"
+          ],
+          [
+            "手动更新",
+            "NAS 不一定会通知"
+          ],
+          [
+            "早于 7.2.1",
+            "CVE 记录标 unknown"
+          ]
+        ]
+      }
+    }
+  }
+}

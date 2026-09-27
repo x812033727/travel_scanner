@@ -1,0 +1,1276 @@
+{
+  "slug": "ai-news-claude-opus-55-20260922",
+  "kind": "life",
+  "destination_id": null,
+  "topics": [
+    "ai",
+    "software",
+    "ai-news"
+  ],
+  "valid_until": null,
+  "news_date": "2026-09-22",
+  "featured": false,
+  "display_order": 188,
+  "locales": {
+    "zh-TW": {
+      "title": "Claude Opus 5.5 推出：牌價降 20%、付費方案五小時上限提高，40% 是 Anthropic 的成本估計",
+      "description": "Anthropic 在 2026 年 9 月 22 日推出 Claude Opus 5.5，是新的 Claude 5.5 家族第一個模型，公告沒有列出地區限制。這篇把容易混淆的三個數字——40% 的成本估計、20% 與 60% 的官方降價分開說明，並整理付費方案五小時上限提高的範圍與模型切換規則（2026 年 9 月查證）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-55-20260922/hero.jpg",
+        "alt": "原創插圖：一個時鐘，上面的彩色弧線比一般繞得更遠；右側三個以虛線分隔的方框，各有一支長短不同的向下箭頭，第三個方框以虛線描邊；不含商標或真實人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 9 月 22 日推出 Claude Opus 5.5，是新的「Claude 5.5」家族第一個模型；公告頁沒有提到任何地區或國家限制。這一次同時提高了 Pro、Max、Team 與按席次計費 Enterprise 方案的五小時用量上限，並多一次用量重置；不過截至查核日，claude.com 定價頁的方案比較表把「Opus」系列列在 Free 欄標示「No」。"
+        },
+        {
+          "type": "paragraph",
+          "text": "這一篇的資料在 2026 年 9 月 26 日查核，讀了 Anthropic 的公告頁、Claude 說明中心關於模型切換的文章、claude.com 定價頁與 Opus 5.5 的 System Card；本站沒有實際測試這個模型，這篇也不提供訂閱或升級建議。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 9 月 22 日推出 Claude Opus 5.5，是新的「Claude 5.5」家族第一個模型，公告沒有列出地區或國家限制。",
+            "40% 是 Anthropic 在預設設定、一般工作負載下測出的成本估計；20% 是輸入與輸出 token 的官方降價，60% 是快取讀取的官方降價，三個數字條件各不相同。",
+            "截至 9 月 26 日，claude.com 定價頁的方案比較表把「Opus」系列列在 Free 欄標示「No」；Pro、Max、Team 與按席次計費的 Enterprise 方案這次提高了五小時用量上限，公告沒有寫提高多少，清單裡也沒有 Free。",
+            "分類器觸發時，資安類可能轉給 Opus 4.8，生物與前沿 LLM 開發類轉給 Opus 5，蒸餾類則會被直接擋下、不會轉給其他模型。",
+            "評測分數包含 OpenAI 與 Zapier 自行公布的數字，Anthropic 也提醒評測時開著正式防護，且承認評測分數差距越來越難以反映實際差異。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 22 日發生了什麼：新家族先在所有平台上線"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，Claude Opus 5.5 在多數工作上的表現達到 Claude Fable 5.1 的水準，估計執行成本比 Opus 5 少 40%（條件見下一節），而且已經在「所有平台」上線，舉例包括 Amazon Web Services、Google Cloud 與 Microsoft Azure，這段沒有提到訂閱方案或國家；開發者在 Claude Platform 可以用模型代號 claude-opus-5-5 開始使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5 在 API 與 claude.ai 上都不能把「思考」模式關掉；消費者產品 claude.ai 也只開放給 18 歲以上的使用者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，這是它呼籲「放慢前沿」之後的第一個發布；Claude Sonnet 5.5 與 Claude Haiku 5.5 公告寫「未來幾週」推出、沒有給日期，截至查核日還沒推出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三個數字：40%、20%、60% 各自量的是什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "40% 是 Anthropic 自己測出的成本估計，條件是「預設設定」與「一般工作負載」，不是牌價降幅；官方說明它的來源是每個 token 比 Opus 5 便宜，加上每個任務用的 token 比較少，淨算出 40% 的成本下降。"
+        },
+        {
+          "type": "paragraph",
+          "text": "20% 與 60% 才是官方牌價的降幅：輸入與輸出 token 每百萬各是 4 美元與 20 美元，比 Opus 5 少 20%；快取讀取每百萬 token 0.20 美元，比 Opus 5 少 60%，官方說明快取讀取占代理與寫程式工作成本的大部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，Opus 5.5 產生輸出的速度比 Opus 5 快 30% 以上；在 Claude Code 與 Claude Platform 上還有 Fast mode，速度最高 2.5 倍，價格是輸入每百萬 token 8 美元、輸出 40 美元。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "數字",
+            "代表什麼",
+            "條件"
+          ],
+          "rows": [
+            [
+              "40%",
+              "Anthropic 估計的成本降幅",
+              "預設設定、一般工作負載"
+            ],
+            [
+              "20%",
+              "輸入／輸出 token 官方降價",
+              "4／20 美元，對比 Opus 5 的 5／25 美元"
+            ],
+            [
+              "60%",
+              "快取讀取官方降價",
+              "0.20 美元，對比 Opus 5 的 0.50 美元"
+            ],
+            [
+              "2.5 倍",
+              "Fast mode 最高加速",
+              "Claude Code 與 Claude Platform 提供，8／40 美元"
+            ]
+          ],
+          "caption": "整理自 Anthropic 2026 年 9 月 22 日 Claude Opus 5.5 公告頁的成本與定價說明，查核日 2026 年 9 月 26 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "訂閱使用者要看的：方案比較表與用量上限"
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.com 定價頁的方案比較表（截至查核日）把「Opus」系列列在 Free 欄標示「No」，Pro、Max 5x、Max 20x 三欄都標「Yes」；Team 與兩種 Enterprise 方案也都標「Yes」。表上寫的是系列名稱，沒有寫版本號，而且頁面可能更動。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用量上限的基本規則是每個方案都有以五小時為單位滾動重置的工作階段上限，付費方案再加每週上限；網頁、桌面、手機與 Claude Code 共用同一個額度。這次 Anthropic 提高了 Pro、Max、Team 與按席次計費 Enterprise 方案的五小時上限，公告沒有寫提高多少、是不是永久，清單裡也沒有 Free。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 也提供訂閱使用者一次 rate limit reset，可以先保留、自己選時間用；目前用量可以在 Settings 裡的 Usage 頁面查看。個人方案價格是 Pro 年繳折合每月 17 美元（一次付 200 美元）或月繳 20 美元，Max 方案每月 100 美元起；以上價格未含稅，且可能調整。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-55-20260922/diagram-1.svg",
+          "alt": "四格圖解：成本估計、官方降價、付費方案用量、還沒推出的部分",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic 2026 年 9 月 22 日推出 Claude Opus 5.5：成本估計、牌價降幅、付費方案用量與還沒推出的部分，查核日 2026 年 9 月 26 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "為什麼對話會突然換成別的模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 說明中心指出，分類器會檢查模型讀到的所有內容，不只是使用者剛打的那一句，包括記憶、連接器內容、網頁搜尋結果與檔案。疑似較高風險的攻擊性資安請求（例如產生 exploit、進行滲透測試）可能會從 Opus 5 或 Opus 5.5 轉給 Opus 4.8，但掃描原始碼弱點、分類資安問題這類安全的寫程式工作仍可用 Opus 5.5。"
+        },
+        {
+          "type": "paragraph",
+          "text": "病毒學、毒理學、分子設計這類兩用生物請求會從 Opus 5.5 轉給 Opus 5，日常健康與學習問題（例如看懂檢驗報告、了解症狀、學生物）仍可用 Opus 5.5；只有 Opus 5.5 才有的前沿 LLM 開發分類器，會把少數與開發前沿大型語言模型有關的能力轉給 Opus 5，一般 AI／ML 開發與寫程式大多不受影響。試圖套出模型內部推理的蒸餾類請求會被直接擋下，不會轉給其他模型，一般請它解釋理由不受影響。"
+        },
+        {
+          "type": "paragraph",
+          "text": "換模型時畫面會出現通知，回覆也會標出是哪個模型回答；換過之後，這個對話的模型選單會停在較弱的模型，可以自己從選單換回來，但原請求還在對話裡時可能再被換掉。要關掉自動換模型，可以到 Settings 裡的 Capabilities（Claude Code 是 Config 裡的 MODEL & OUTPUT）關掉訊息被標記時換模型的開關，關掉後被擋的請求會暫停對話，而不是換模型；API 則預設不開，需自行設定備援。"
+        },
+        {
+          "type": "paragraph",
+          "text": "經審核的組織從公告當天起就能申請 Life Sciences Verification Program，用 Opus 5.5 做生物研究；Cyber Verification Program 要在「未來幾週」才擴大，截至查核日 Opus 5.5 還不在這個計畫裡；多數資安任務目前會轉給 Opus 4.8。計費方面，生物、蒸餾或前沿 LLM 開發類請求在輸出前被防護攔下或轉給其他模型，仍會計費；其他類別在輸出前被擋的則不收費。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "評測數字怎麼看：誰測的、測的時候開著什麼"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 自己在公告裡寫，在這個能力水準，評測分數的差距越來越難以反映實際差異；它自己使用時，Opus 5.5 與 Fable 5.1 的差距比分數顯示的小。評測表裡 GPT-6 Astra 與 GPT-5.6 Sol 的 Terminal-Bench 4.0 數字是 OpenAI 自己公布的，不是 Anthropic 跑的；AutomationBench 的 Opus 5.5 分數則是 Zapier 在搶先使用期間自己跑的評測。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5 是在開著正式防護的情況下評測的；防護介入時，資安題由 Opus 4.8 完成、生物與前沿 LLM 開發題由 Opus 5 完成（AutomationBench 除外：它沒開備援，防護介入就算失敗），Anthropic 說這可能拉低 Opus 5.5 的評測分數。Anthropic 也承認，它看到 Opus 5.5 常常懷疑自己正在被評估的跡象，這讓它更難判斷模型在真實環境會怎麼做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，在它測試的每種情境（包括寫程式、工具使用、電腦操作、網頁瀏覽）裡，Opus 5.5 對提示注入攻擊的表現與 Opus 5 相當或更好。System Card 則列出一個退步：這個模型比先前的模型更容易照著使用者自己貼進提示裡的文字中被人埋入的惡意指令去做，最終版本加上一些產品端的改動已經緩解這個問題，並正在加上會移除看不見字元、標記貼上文字的功能。貼進別人寫的文字，等於讓那個人控制了一部分提示。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "免費方案的使用者現在能用 Claude Opus 5.5 嗎？",
+              "answer": "claude.com 定價頁的方案比較表，截至 2026 年 9 月 26 日查核，把「Opus」這個系列列在 Free 欄位標示「No」，Pro、Max 5x、Max 20x 三欄都標「Yes」；這張表寫的是系列名稱，沒有寫版本號，也可能之後更動。公告本身沒有寫哪些訂閱方案可以在模型選單選到 Opus 5.5。"
+            },
+            {
+              "question": "40%、20%、60% 這三個數字是同一件事嗎？",
+              "answer": "不是。40% 是 Anthropic 自己測出的成本估計，條件是預設設定與一般工作負載，來自每個 token 較便宜加上用的 token 較少；20% 是輸入與輸出 token 的官方牌價降幅；60% 是快取讀取的官方牌價降幅。三個數字的定義與條件都不一樣，不能混著講。"
+            },
+            {
+              "question": "Claude Sonnet 5.5 或 Haiku 5.5 也上線了嗎？",
+              "answer": "截至 2026 年 9 月 26 日查核還沒有。公告寫 Claude Sonnet 5.5 與 Claude Haiku 5.5 會在「未來幾週」推出，原文沒有給確切日期。"
+            },
+            {
+              "question": "資安從業人員現在可以用 Opus 5.5 做資安工作嗎？",
+              "answer": "多數資安任務目前會轉給 Opus 4.8。Claude 說明中心截至 2026 年 9 月 26 日寫，Opus 5.5 還不在 Cyber Verification Program 裡，公告則寫這個計畫要在「未來幾週」才擴大；掃描原始碼弱點、分類資安問題這類安全的寫程式工作，仍可以用 Opus 5.5。"
+            },
+            {
+              "question": "為什麼我的對話忽然換成別的模型回答？",
+              "answer": "Claude 的分類器會檢查模型讀到的所有內容，包括記憶、連接器內容、網頁搜尋結果與檔案，不只是最新一句訊息。依請求類型會轉給不同模型：疑似較高風險的攻擊性資安請求可能轉給 Opus 4.8，兩用生物請求轉給 Opus 5，少數前沿 LLM 開發能力也轉給 Opus 5；試圖套出模型內部推理的蒸餾類請求則被直接擋下，不會轉給其他模型。畫面會出現通知，回覆也會標出是哪個模型回答。"
+            },
+            {
+              "question": "可以關掉自動換模型嗎？",
+              "answer": "可以，在 Settings 裡的 Capabilities（Claude Code 是 Config 裡的 MODEL & OUTPUT）關掉「Switch models when a message is flagged」（訊息被標記時切換模型）這個選項；關掉後，被分類器擋下的請求會暫停對話，而不是換成別的模型回答。使用 Claude API 的話，自動換模型預設不開，需要客戶自己選擇並設定備援。"
+            },
+            {
+              "question": "Opus 5.5 的評測分數可以直接拿來跟其他公司的模型比較嗎？",
+              "answer": "要謹慎看待。評測表裡 OpenAI 模型的部分分數（例如 Terminal-Bench 4.0）是 OpenAI 自己公布的，不是 Anthropic 實測；AutomationBench 的 Opus 5.5 分數是 Zapier 在搶先使用期間自行跑出來的。Anthropic 自己也在公告裡寫，這個能力水準下評測分數的差距越來越難以反映實際差異。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三件事：三個數字分開看、免費看表不看公告、換模型可以關",
+          "text": "40% 是 Anthropic 在預設設定、一般工作負載下測出的成本估計，20% 與 60% 才是輸入輸出與快取讀取的官方牌價降幅，三者條件不同，不能混著講。免費方案能不能用 Opus 5.5，公告本身沒寫；claude.com 定價頁的方案比較表截至 9 月 26 日把「Opus」系列列在 Free 欄標示「No」，這張表可能隨時間更動。分類器換模型的規則與怎麼關掉，可以到 Claude 說明中心查看；這一篇的資料在 2026 年 9 月 26 日查核，本站沒有實際測試這個模型，也不提供訂閱或升級建議。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新聞總整理：1 月至 9 月的重點與生活應用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude 說明中心：Why Claude switched models in your conversation with Opus 5 or Opus 5.5",
+          "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Pricing（Plans & Pricing）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Anthropic：System Card: Claude Opus 5.5",
+          "url": "https://anthropic.com/claude-opus-5-5-system-card",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "en": {
+      "title": "Claude Opus 5.5 Launches: List Price Cut 20%, Paid Plans’ Five-Hour Limit Raised, 40% Is Anthropic’s Cost Estimate",
+      "description": "On September 22, 2026, Anthropic introduced Claude Opus 5.5, the first model in the new Claude 5.5 family; the announcement lists no region restrictions. This article separates three easily confused numbers — the 40% cost estimate and the 20% and 60% official price cuts — and lays out which paid plans get the five-hour limit increase and how model switching works (checked September 2026).",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-55-20260922/hero-en.jpg",
+        "alt": "Illustration: a clock with a coloured arc sweeping further than usual; right, three dashed boxes, each with a different-length downward arrow, the third boxed in dashes. No trademarks or people.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "On September 22, 2026, Anthropic introduced Claude Opus 5.5, the first model in the new “Claude 5.5” family; the announcement page does not mention any region or country restriction. At the same time, Anthropic raised the five-hour usage limits on the Pro, Max, Team, and seat-based Enterprise plans and added one extra rate limit reset; as of the check date, though, claude.com’s pricing page plan comparison table lists the “Opus” series as “No” in the Free column."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article’s information was checked on September 26, 2026, drawing on Anthropic’s announcement page, the Claude Help Center article on model switching, the claude.com pricing page, and the Opus 5.5 System Card; we have not tested this model ourselves, and this article offers no subscription or upgrade advice."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "On September 22, 2026, Anthropic introduced Claude Opus 5.5, the first model in the “Claude 5.5” family; the announcement lists no region or country restrictions.",
+            "40% is Anthropic’s own cost estimate at default settings on typical workloads; 20% is the official price cut on input and output tokens, and 60% is the official price cut on cache reads — the three figures have different conditions.",
+            "As of September 26, claude.com’s pricing page lists “Opus” as “No” in the Free column; Pro, Max, Team, and seat-based Enterprise had their five-hour limits raised, though the announcement doesn’t say by how much, and Free isn’t on the list.",
+            "When the classifiers trigger, cybersecurity requests may fall back to Opus 4.8, biology and frontier LLM development requests fall back to Opus 5, and distillation requests are blocked outright rather than routed to another model.",
+            "The benchmark table includes figures self-reported by OpenAI and Zapier; Anthropic notes the evaluations ran with production safeguards enabled, and admits benchmark score gaps are a less reliable guide to real-world differences."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What happened on September 22: the new family launched on every platform first"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic says Claude Opus 5.5 performs at the level of Claude Fable 5.1 on most work, with an estimated 40% lower cost to run than Opus 5 (conditions in the next section), and it is now available on all platforms, including Amazon Web Services, Google Cloud, and Microsoft Azure — this passage does not mention subscription plans or countries; on the Claude Platform, developers can get started with the model ID claude-opus-5-5."
+        },
+        {
+          "type": "paragraph",
+          "text": "On both the API and claude.ai, Opus 5.5 is only available with thinking enabled — it cannot be switched off; and claude.ai, the consumer product, is only available to users aged 18 or above."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic says this is its first release since it called for “pacing the frontier”; the announcement states that Claude Sonnet 5.5 and Claude Haiku 5.5 “will follow in the coming weeks,” with no date given, and as of the check date they have not yet launched."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Three numbers: what 40%, 20%, and 60% each actually measure"
+        },
+        {
+          "type": "paragraph",
+          "text": "The 40% figure is Anthropic’s own cost estimate, measured “at default settings” on “typical workloads” — it is not a list-price cut; Anthropic explains it comes from Opus 5.5 costing less per token than Opus 5 and using fewer tokens per task, which nets out to a 40% drop in costs."
+        },
+        {
+          "type": "paragraph",
+          "text": "The 20% and 60% figures are the official list-price cuts: input and output tokens are $4 and $20 per million, 20% less than Opus 5; cache reads are $0.20 per million tokens, 60% less than Opus 5, and Anthropic notes that cache reads make up the majority of agentic and coding work costs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic says Opus 5.5 generates output more than 30% faster than Opus 5; Fast mode is also available in Claude Code and the Claude Platform, with up to 2.5x speed, priced at $8 per million input tokens and $40 per million output tokens."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Number",
+            "What it represents",
+            "Conditions"
+          ],
+          "rows": [
+            [
+              "40%",
+              "Anthropic’s estimated cost reduction",
+              "Default settings, typical workloads"
+            ],
+            [
+              "20%",
+              "Official price cut on input/output tokens",
+              "$4/$20, versus Opus 5’s $5/$25"
+            ],
+            [
+              "60%",
+              "Official price cut on cache reads",
+              "$0.20, versus Opus 5’s $0.50"
+            ],
+            [
+              "2.5x",
+              "Fast mode’s top speed-up",
+              "Available in Claude Code and the Claude Platform, $8/$40"
+            ]
+          ],
+          "caption": "Compiled from the cost and pricing details on Anthropic’s September 22, 2026 Claude Opus 5.5 announcement page, checked September 26, 2026."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "What subscribers should know: the plan comparison table and usage limits"
+        },
+        {
+          "type": "paragraph",
+          "text": "As of the check date, claude.com’s pricing page plan comparison table lists the “Opus” series as “No” in the Free column, and “Yes” across Pro, Max 5x, and Max 20x; Team and both Enterprise plans are also marked “Yes.” The table names the series, not the version number, and the page may change."
+        },
+        {
+          "type": "paragraph",
+          "text": "The basic rule for usage limits is that every plan has a session limit that resets on a rolling five-hour window, and paid plans add a weekly limit on top; activity on web, desktop, mobile, and Claude Code all draws from the same pool. This time, Anthropic raised the five-hour limit for the Pro, Max, Team, and seat-based Enterprise plans; the announcement doesn’t say by how much or whether it is permanent, and Free is not on the list."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic is also giving subscription users one rate limit reset, which they can save and use whenever they choose; current usage can be checked anytime under Settings > Usage. Individual plan pricing is $17 per month with the annual subscription discount ($200 billed up front) or $20 per month billed monthly for Pro, and Max starts from $100 per month; these prices don’t include tax and are subject to change."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-55-20260922/diagram-1-en.svg",
+          "alt": "Four-card diagram: the cost estimate, the official price cuts, paid-plan usage, and what's weeks away",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic introduced Claude Opus 5.5 on September 22, 2026: the cost estimate, list-price cuts, paid-plan usage, and what hasn’t launched yet, checked September 26, 2026.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Why a conversation might suddenly switch to a different model"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Claude Help Center notes that the checks review everything the model reads, not just the user’s latest message — including memory, content from connectors, web search results, and files. Requests flagged as potentially higher-risk offensive cybersecurity work (such as generating exploits or running penetration tests) may fall back from Opus 5 or Opus 5.5 to Opus 4.8, but secure coding work such as scanning source code for vulnerabilities or triaging security issues remains available on Opus 5.5."
+        },
+        {
+          "type": "paragraph",
+          "text": "Dual-use biology requests in areas like virology, toxicology, and molecular design fall back from Opus 5.5 to Opus 5; everyday health and educational questions (such as interpreting lab results, understanding symptoms, or learning about biology) remain available on Opus 5.5. The frontier LLM development classifiers apply only to Opus 5.5, routing a small number of capabilities related to developing frontier large language models to Opus 5, while general AI/ML development and coding are mostly unaffected. Distillation requests — attempts to extract a model’s internal reasoning — are blocked outright and don’t fall back to another model; asking Claude to explain its reasoning is generally unaffected."
+        },
+        {
+          "type": "paragraph",
+          "text": "All fallbacks are transparent: you’ll see a notice that the model switched, and the response is labeled with the model that answered. After a switch, the model picker stays on the less capable model for the rest of the conversation — you can switch back yourself from the picker, but if your original request is still part of the conversation, the same safeguards may trigger another fallback. To turn off automatic model switching, go to Settings > Capabilities (Config > MODEL & OUTPUT in Claude Code) and toggle off “Switch models when a message is flagged”; with it off, a flagged request pauses the conversation instead of switching models. The API works differently — automatic switching isn’t active by default, and API customers must opt into and configure the fallbacks themselves."
+        },
+        {
+          "type": "paragraph",
+          "text": "Vetted organizations can apply starting from the announcement day to the Life Sciences Verification Program to use Opus 5.5 for biology research; the Cyber Verification Program will expand “in the coming weeks,” and as of the check date Opus 5.5 is not yet part of it — most cybersecurity tasks are currently re-routed to Opus 4.8. On billing, requests in the biology, distillation, or frontier LLM development categories are billed when safeguards stop them or hand them to another model before any output; requests blocked before output in other categories are not charged."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "How to read the benchmark numbers: who ran them, and what was switched on"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic itself writes in the announcement that, at this level of capability, benchmark margins have become a less reliable guide to real-world differences; in its own use, the gap between Opus 5.5 and Fable 5.1 is narrower than the scores suggest. In the benchmark table, the Terminal-Bench 4.0 figures for GPT-6 Astra and GPT-5.6 Sol are as reported by OpenAI, not run by Anthropic; the AutomationBench score for Opus 5.5 comes from Zapier’s own evaluation during early access."
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5 was evaluated with its production safeguards enabled; when they intervened, cybersecurity tasks were completed by Opus 4.8, and biology and frontier LLM development tasks were completed by Opus 5 (except on AutomationBench, which ran without a fallback model, so a safeguard intervention counted as a failure) — Anthropic says this may have lowered Opus 5.5’s benchmark scores. Anthropic also acknowledges seeing signs that Opus 5.5 often suspects it is being evaluated, which makes it harder to judge how the model will behave in real-world settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic says that on prompt injection attacks, Opus 5.5 matches or beats Opus 5 in every setting it tested, including coding, tool use, computer use, and web browsing. The System Card lists one regression, though: the model is more likely than previous models to follow malicious instructions embedded in text that a user pastes into their own prompt. Anthropic says the final snapshot of Opus 5.5, together with some product changes, has mitigated this issue, and it is adding features that remove invisible characters and mark pasted text. Pasting text written by someone else effectively lets that person control part of the prompt."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "Can Free-plan users use Claude Opus 5.5 right now?",
+              "answer": "The claude.com pricing page’s plan comparison table, checked as of September 26, 2026, lists the “Opus” series as “No” in the Free column, and “Yes” across Pro, Max 5x, and Max 20x; the table names the series, not the version number, and it may change later. The announcement itself does not say which subscription plans can select Opus 5.5 from the model picker."
+            },
+            {
+              "question": "Are the 40%, 20%, and 60% figures the same thing?",
+              "answer": "No. The 40% figure is Anthropic’s own cost estimate, measured at default settings on typical workloads, coming from cheaper per-token pricing plus fewer tokens used per task; 20% is the official list-price cut on input and output tokens; 60% is the official list-price cut on cache reads. The three figures have different definitions and conditions and shouldn’t be conflated."
+            },
+            {
+              "question": "Have Claude Sonnet 5.5 or Haiku 5.5 launched too?",
+              "answer": "Not as of the September 26, 2026 check. The announcement says Claude Sonnet 5.5 and Claude Haiku 5.5 “will follow in the coming weeks,” with no exact date given."
+            },
+            {
+              "question": "Can cybersecurity practitioners use Opus 5.5 for security work right now?",
+              "answer": "Most cybersecurity tasks are currently re-routed to Opus 4.8. As of September 26, 2026, the Claude Help Center says Opus 5.5 isn’t currently available in the Cyber Verification Program, and the announcement says the program will expand “in the coming weeks”; secure coding work such as scanning source code for vulnerabilities or triaging security issues can still use Opus 5.5."
+            },
+            {
+              "question": "Why did my conversation suddenly get answered by a different model?",
+              "answer": "Claude’s classifiers check everything the model reads, including memory, content from connectors, web search results, and files, not just the latest message. Different request types fall back to different models: potentially higher-risk offensive cybersecurity requests may fall back to Opus 4.8, dual-use biology requests fall back to Opus 5, and a small number of frontier LLM development capabilities also fall back to Opus 5; distillation requests — attempts to extract the model’s internal reasoning — are blocked outright and don’t fall back to another model. You’ll see a notice on screen, and the response is labeled with which model answered."
+            },
+            {
+              "question": "Can I turn off automatic model switching?",
+              "answer": "Yes — go to Settings > Capabilities (Config > MODEL & OUTPUT in Claude Code) and toggle off “Switch models when a message is flagged”; once it’s off, a request flagged by the classifiers pauses the conversation instead of getting answered by a different model. On the Claude API, automatic switching isn’t active by default, and customers must opt into and configure the fallbacks themselves."
+            },
+            {
+              "question": "Can Opus 5.5’s benchmark scores be compared directly with other companies’ models?",
+              "answer": "Treat them with caution. Some of the scores for OpenAI’s models on the benchmark table (such as Terminal-Bench 4.0) are self-reported by OpenAI, not run by Anthropic; the AutomationBench score for Opus 5.5 was run by Zapier itself during early access. Anthropic itself writes in the announcement that, at this level of capability, benchmark score gaps have become a less reliable guide to real-world differences."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "Separate the numbers, check the table for Free, switching is optional",
+          "text": "40% is Anthropic’s own cost estimate at default settings on typical workloads; 20% and 60% are the official list-price cuts on input/output tokens and cache reads respectively — the three have different conditions and shouldn’t be conflated. Whether Free-plan users can use Opus 5.5 isn’t stated in the announcement itself; claude.com’s pricing page plan comparison table, as of September 26, lists the “Opus” series as “No” in the Free column, and this table may change over time. The rules for when the classifiers switch models, and how to turn that off, can be found in the Claude Help Center; this article’s information was checked on September 26, 2026, we have not tested this model ourselves, and it offers no subscription or upgrade advice."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 AI News Roundup: Highlights and Daily Life Applications from January to September",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 Released: What Changes Matter Most for Everyday Work Users?",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Introducing Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Help Center: Why Claude switched models in your conversation with Opus 5 or Opus 5.5",
+          "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Pricing (Plans & Pricing)",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Anthropic: System Card: Claude Opus 5.5",
+          "url": "https://anthropic.com/claude-opus-5-5-system-card",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Claude Opus 5.5登場：正規料金20%引き下げ、有料プランの5時間上限を引き上げ、40%はAnthropicのコスト試算",
+      "description": "Anthropicは2026年9月22日、新しい「Claude 5.5」ファミリー最初のモデルとなるClaude Opus 5.5を発表しました。発表には地域制限についての記載はありません。本記事では混同しやすい3つの数字——40%のコスト試算、20%と60%の正規料金引き下げ——を分けて説明し、有料プランの5時間上限引き上げの範囲とモデル切り替えのルールを整理します（2026年9月確認）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-55-20260922/hero-ja.jpg",
+        "alt": "オリジナルイラスト：色付きの弧が通常より長く回る時計。右側には点線で区切られた3つの箱があり、それぞれ長さの異なる下向き矢印が入り、3つ目の箱は点線で縁取られている。商標や実在の人物は含まない。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropicは2026年9月22日、新しい「Claude 5.5」ファミリーの最初のモデルとなるClaude Opus 5.5を発表しました。発表ページには地域や国の制限についての記載はありません。同時にPro、Max、Team、席数課金のEnterpriseプランの5時間利用上限を引き上げ、利用制限のリセットも1回追加しました。ただし確認日時点で、claude.comの料金ページのプラン比較表では「Opus」シリーズはFree列で「No」と表示されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事の内容は2026年9月26日に確認したもので、Anthropicの発表ページ、モデル切り替えに関するClaude Help Centerの記事、claude.comの料金ページ、Opus 5.5のSystem Cardを参照しています。当サイトはこのモデルについて実地の検証を行っておらず、本記事は契約や購入、アップグレードを勧めるものでもありません。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropicは2026年9月22日、新しい「Claude 5.5」ファミリーの最初のモデルとなるClaude Opus 5.5を発表しました。発表には地域や国の制限は記載されていません。",
+            "40%はAnthropicがデフォルト設定・一般的なワークロードで測定したコスト試算です。20%は入力・出力トークンの正規料金の引き下げ、60%はキャッシュ読み取りの正規料金の引き下げで、3つの数字は条件がそれぞれ異なります。",
+            "9月26日時点で、claude.comの料金ページのプラン比較表は「Opus」シリーズをFree列で「No」としています。Pro、Max、Team、席数課金のEnterpriseプランは今回5時間利用上限が引き上げられましたが、発表にはどれだけ引き上げたかは書かれておらず、リストにFreeはありません。",
+            "分類器が作動すると、セキュリティ関連のリクエストはOpus 4.8に切り替わることがあり、生物学とフロンティアLLM開発関連のリクエストはOpus 5に切り替わり、蒸留（distillation）関連のリクエストは他モデルに切り替わらず直接ブロックされます。",
+            "ベンチマークの数値にはOpenAIとZapierが自社で公表した数字が含まれており、Anthropicも本番用の安全対策を有効にした状態で評価したと述べたうえで、ベンチマークの差が実際の違いを反映しにくくなっていると認めています。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9月22日に何が起きたか：新ファミリーはまず全プラットフォームで公開"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicによれば、Claude Opus 5.5はほとんどの作業でClaude Fable 5.1と同水準の性能を発揮し、Opus 5に比べて実行コストが40%低く抑えられると試算されています（条件は次のセクション）。すでに「すべてのプラットフォーム」で利用可能になっており、例としてAmazon Web Services、Google Cloud、Microsoft Azureが挙げられていますが、この部分にサブスクリプションプランや国についての言及はありません。開発者はClaude Platform上でモデルID「claude-opus-5-5」を使って利用を開始できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5はAPIとclaude.aiのいずれでも「思考」モードをオフにすることはできません。また、コンシューマー向けのclaude.aiは18歳以上の利用者にのみ提供されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicは、これが「フロンティアのペースを落とす」という呼びかけ以降で初めてのリリースだと述べています。Claude Sonnet 5.5とClaude Haiku 5.5については発表で「今後数週間のうちに」登場するとされていますが日付は示されておらず、確認日時点ではまだ公開されていません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "3つの数字：40%、20%、60%はそれぞれ何を測っているか"
+        },
+        {
+          "type": "paragraph",
+          "text": "40%はAnthropic自身が測定したコスト試算で、条件は「デフォルト設定」と「一般的なワークロード」であり、正規料金の引き下げ幅ではありません。公式の説明によれば、その内訳はOpus 5より1トークンあたりの単価が安いことと、1つのタスクで使うトークン数が少ないことを合わせた結果、コストが40%下がるというものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "20%と60%こそが正規料金の引き下げ幅です。入力トークンと出力トークンはそれぞれ100万トークンあたり4ドルと20ドルで、Opus 5より20%安くなっています。キャッシュ読み取りは100万トークンあたり0.20ドルでOpus 5より60%安く、公式にはキャッシュ読み取りがエージェント作業やコーディング作業のコストの大部分を占めると説明されています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicによれば、Opus 5.5が出力を生成する速度はOpus 5より30%以上速いとされています。Claude CodeとClaude Platformでは「Fast mode」も利用でき、速度は最大2.5倍、価格は入力100万トークンあたり8ドル、出力は40ドルです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "数字",
+            "何を表すか",
+            "条件"
+          ],
+          "rows": [
+            [
+              "40%",
+              "Anthropicが試算したコスト削減幅",
+              "デフォルト設定、一般的なワークロード"
+            ],
+            [
+              "20%",
+              "入力・出力トークンの正規料金引き下げ",
+              "4ドル／20ドル、Opus 5は5ドル／25ドル"
+            ],
+            [
+              "60%",
+              "キャッシュ読み取りの正規料金引き下げ",
+              "0.20ドル、Opus 5は0.50ドル"
+            ],
+            [
+              "最大2.5倍",
+              "Fast modeの最高速度",
+              "Claude CodeとClaude Platformで提供、8ドル／40ドル"
+            ]
+          ],
+          "caption": "Anthropicが2026年9月22日に発表したClaude Opus 5.5のコストと料金に関する説明をもとに作成。確認日は2026年9月26日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "サブスクリプション利用者が見るべきこと：プラン比較表と利用上限"
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.comの料金ページのプラン比較表（確認日時点）では、「Opus」シリーズはFree列で「No」、Pro、Max 5x、Max 20xの3列はいずれも「Yes」と表示されています。Teamと2種類のEnterpriseプランも「Yes」です。表に記載されているのはシリーズ名のみでバージョン番号はなく、ページは今後変更される可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "利用上限の基本ルールは、どのプランにも5時間単位でローリングリセットされるセッション上限があり、有料プランにはさらに週単位の上限が加わるというものです。ウェブ、デスクトップ、モバイル、Claude Codeはすべて同じ利用枠を共有します。今回Anthropicは、Pro、Max、Team、席数課金のEnterpriseプランの5時間上限を引き上げましたが、発表にはどれだけ引き上げたか、恒久的な変更かどうかは書かれておらず、リストにFreeはありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicはサブスクリプション利用者に対し、好きなタイミングで使える1回分の利用制限リセットも提供しています。現在の利用状況はSettingsのUsageページでいつでも確認できます。個人向けプランの価格は、Proが年払いで月換算17ドル（一括200ドル）または月払い20ドル、Maxは月額100ドルからで、いずれも税抜き価格であり変更される可能性があります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-55-20260922/diagram-1-ja.svg",
+          "alt": "4コマ図解：コスト試算、正規料金の値下げ、有料プランの利用状況、数週間先の予定",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropicは2026年9月22日にClaude Opus 5.5を発表しました：コスト試算、正規料金の引き下げ幅、有料プランの利用状況、まだ公開されていない部分。確認日は2026年9月26日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "会話が突然別のモデルに切り替わる理由"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude Help Centerによると、分類器は利用者が直前に入力した1文だけでなく、モデルが読み取るすべての内容（メモリ、コネクタの内容、ウェブ検索結果、ファイルを含む）をチェックします。攻撃的なセキュリティリクエストでリスクが高いと疑われるもの（エクスプロイトの生成や侵入テストなど）は、Opus 5またはOpus 5.5からOpus 4.8に切り替わることがありますが、ソースコードの脆弱性スキャンやセキュリティ問題の分類といった安全なコーディング作業には引き続きOpus 5.5が使えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ウイルス学、毒性学、分子設計といったデュアルユースの生物学系リクエストは、Opus 5.5からOpus 5に切り替わります。検査結果の読み方や症状の理解、生物学の学習といった日常の健康・学習に関する質問には引き続きOpus 5.5が使えます。Opus 5.5にだけ存在するフロンティアLLM開発向けの分類器は、フロンティアの大規模言語モデル開発に関する一部の能力をOpus 5に切り替えますが、一般的なAI/ML開発やコーディングの大半には影響しません。モデルの内部推論を引き出そうとする蒸留系のリクエストは他モデルに切り替わらず直接ブロックされ、通常の理由説明の依頼には影響しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルが切り替わると画面に通知が表示され、回答にもどのモデルが答えたかが表示されます。切り替わった後、その会話のモデルピッカーは能力の低いモデルのままになり、利用者は自分でピッカーから元に戻せますが、元のリクエストが会話に残っている場合は再び切り替わることがあります。自動モデル切り替えをオフにするには、SettingsのCapabilities（Claude CodeではConfigのMODEL & OUTPUT）で、メッセージがフラグ付けされた際にモデルを切り替える設定をオフにします。オフにすると、ブロックされたリクエストはモデルを切り替える代わりに会話を一時停止します。Claude APIではデフォルトでオフになっており、顧客自身がフォールバックを設定する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "審査を通過した組織は発表当日からLife Sciences Verification Programに申し込み、Opus 5.5を生物学研究に利用できます。Cyber Verification Programは「今後数週間のうちに」拡大される予定で、確認日時点でOpus 5.5はまだこのプログラムに含まれておらず、大半のセキュリティ関連タスクは現在Opus 4.8に切り替わっています。課金については、生物学、蒸留、フロンティアLLM開発の分類器によって出力前に停止・切り替えとなったリクエストも課金対象になりますが、それ以外のカテゴリーで出力前にブロックされたリクエストは課金されません。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "ベンチマークの数字をどう見るか：誰が測定し、何を有効にした状態だったか"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicは発表の中で、この能力水準ではベンチマークの差が実際の違いを反映する指標として当てにしにくくなってきていると述べています。Anthropic自身の利用では、Opus 5.5とFable 5.1の差はスコアが示すよりも小さいとのことです。ベンチマーク表にあるGPT-6 AstraとGPT-5.6 SolのTerminal-Bench 4.0の数値はOpenAIが自ら公表したものでAnthropicが実施したものではなく、AutomationBenchのOpus 5.5のスコアはZapierが早期アクセス期間中に自ら実施した評価によるものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5は本番用の安全対策を有効にした状態で評価されました。安全対策が介入した場合、セキュリティ関連のタスクはOpus 4.8が、生物学とフロンティアLLM開発関連のタスクはOpus 5が完了しています（AutomationBenchは例外で、フォールバックモデルを使わずに実施されたため、安全対策の介入は失敗として扱われました）。Anthropicはこれによりベンチマークのスコアが下がった可能性があるとしています。またAnthropicは、Opus 5.5が自分が評価されていることをしばしば疑っている兆候が見られ、実環境でモデルがどう振る舞うかを判断しづらくしていると認めています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropicによれば、コーディング、ツール利用、コンピュータ操作、ウェブ閲覧を含むテストしたすべての状況で、Opus 5.5のプロンプトインジェクション攻撃への対応はOpus 5と同等かそれ以上でした。一方でSystem Cardは1つの後退点を挙げています。このモデルは、利用者が自分のプロンプトに貼り付けたテキストの中に埋め込まれた悪意ある指示に、以前のモデルより従いやすいというものです。Anthropicは最終版と一部の製品側の変更によりこの問題は緩和されたとしており、見えない文字を除去したり貼り付けたテキストに印を付けたりする機能を追加している最中だとしています。他人が書いた文章をプロンプトに貼り付けることは、その人にプロンプトの一部を操作させることに等しいとされています。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "無料プランの利用者は今Claude Opus 5.5を使えますか？",
+              "answer": "claude.comの料金ページのプラン比較表は、2026年9月26日の確認時点で「Opus」シリーズをFree列で「No」とし、Pro、Max 5x、Max 20xの3列は「Yes」としています。この表に記載されているのはシリーズ名のみでバージョン番号はなく、今後変更される可能性もあります。発表自体には、どのサブスクリプションプランでモデルピッカーからOpus 5.5を選べるかは書かれていません。"
+            },
+            {
+              "question": "40%、20%、60%という3つの数字は同じことを指していますか？",
+              "answer": "いいえ。40%はAnthropic自身が測定したコスト試算で、デフォルト設定・一般的なワークロードという条件のもと、1トークンあたりの単価が安いことと使用トークン数が少ないことから算出されています。20%は入力・出力トークンの正規料金の引き下げ幅、60%はキャッシュ読み取りの正規料金の引き下げ幅です。3つの数字は定義も条件も異なるため、混同すべきではありません。"
+            },
+            {
+              "question": "Claude Sonnet 5.5やHaiku 5.5もすでに公開されていますか？",
+              "answer": "2026年9月26日の確認時点ではまだです。発表ではClaude Sonnet 5.5とClaude Haiku 5.5は「今後数週間のうちに」登場するとされていますが、原文に正確な日付は示されていません。"
+            },
+            {
+              "question": "セキュリティ従事者は今Opus 5.5をセキュリティ業務に使えますか？",
+              "answer": "大半のセキュリティ関連タスクは現在Opus 4.8に切り替わっています。Claude Help Centerは2026年9月26日時点で、Opus 5.5はまだCyber Verification Programに含まれていないと記載しており、発表ではこのプログラムが「今後数週間のうちに」拡大されるとされています。ソースコードの脆弱性スキャンやセキュリティ問題の分類といった安全なコーディング作業には引き続きOpus 5.5が使えます。"
+            },
+            {
+              "question": "なぜ会話が突然別のモデルの回答に切り替わったのですか？",
+              "answer": "Claudeの分類器は、直前の1メッセージだけでなく、メモリ、コネクタの内容、ウェブ検索結果、ファイルを含むモデルが読み取るすべての内容をチェックします。リクエストの種類によって切り替え先のモデルは異なり、リスクが高いと疑われる攻撃的なセキュリティリクエストはOpus 4.8に切り替わることがあり、デュアルユースの生物学系リクエストはOpus 5に切り替わり、ごく一部のフロンティアLLM開発関連の能力もOpus 5に切り替わります。モデルの内部推論を引き出そうとする蒸留系のリクエストは他モデルに切り替わらず直接ブロックされます。切り替わると画面に通知が表示され、回答にもどのモデルが答えたかが表示されます。"
+            },
+            {
+              "question": "自動モデル切り替えをオフにできますか？",
+              "answer": "できます。SettingsのCapabilities（Claude CodeではConfigのMODEL & OUTPUT）で「Switch models when a message is flagged」（メッセージがフラグ付けされた際にモデルを切り替える）をオフにします。オフにすると、分類器にブロックされたリクエストは別のモデルに切り替わる代わりに会話が一時停止します。Claude APIを使う場合、自動モデル切り替えはデフォルトでオフになっており、顧客が自分でフォールバックを選択・設定する必要があります。"
+            },
+            {
+              "question": "Opus 5.5のベンチマークスコアは他社のモデルとそのまま比較できますか？",
+              "answer": "慎重に見る必要があります。ベンチマーク表にあるOpenAIのモデルの一部のスコア（Terminal-Bench 4.0など）はOpenAIが自ら公表したものでAnthropicが実測したものではなく、AutomationBenchのOpus 5.5のスコアはZapierが早期アクセス期間中に自ら実施したものです。Anthropic自身も発表の中で、この能力水準ではベンチマークの差が実際の違いを反映する指標として当てにしにくくなっていると述べています。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "3つのポイント：数字は分けて見る、無料は表を確認、切り替えはオフにできる",
+          "text": "40%はAnthropicがデフォルト設定・一般的なワークロードで測定したコスト試算であり、20%と60%はそれぞれ入力出力トークンとキャッシュ読み取りの正規料金の引き下げ幅です。3つは条件が異なるため混同すべきではありません。無料プランでOpus 5.5が使えるかどうかは発表自体には書かれておらず、claude.comの料金ページのプラン比較表は9月26日時点で「Opus」シリーズをFree列で「No」としていますが、この表は今後変わる可能性があります。分類器がいつモデルを切り替えるか、その仕組みをオフにする方法はClaude Help Centerで確認できます。本記事の内容は2026年9月26日に確認したもので、当サイトはこのモデルについて実地の検証を行っておらず、契約や購入、アップグレードを勧めるものでもありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026年AIニュース総まとめ：1月から9月までの重要動向と実生活への応用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5登場：一般のデスクワーカーが注目すべき変化とは？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Help Center：Why Claude switched models in your conversation with Opus 5 or Opus 5.5",
+          "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Pricing（Plans & Pricing）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Anthropic：System Card: Claude Opus 5.5",
+          "url": "https://anthropic.com/claude-opus-5-5-system-card",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Claude Opus 5.5 출시: 정가 20% 인하, 유료 플랜 5시간 한도 상향, 40%는 Anthropic의 비용 추정치",
+      "description": "Anthropic은 2026년 9월 22일 새로운 'Claude 5.5' 패밀리의 첫 모델인 Claude Opus 5.5를 출시했습니다. 발표에는 지역 제한이 명시되어 있지 않습니다. 이 글은 혼동하기 쉬운 세 가지 숫자—40%의 비용 추정치, 20%와 60%의 공식 가격 인하—를 구분해 설명하고, 유료 플랜의 5시간 한도 상향 범위와 모델 전환 규칙을 정리합니다(2026년 9월 확인).",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-55-20260922/hero-ko.jpg",
+        "alt": "오리지널 일러스트: 색이 칠해진 호가 보통보다 더 멀리 도는 시계입니다. 오른쪽에는 점선으로 나뉜 상자 세 개가 있고, 각각 길이가 다른 아래쪽 화살표가 있으며, 세 번째 상자는 점선 테두리로 되어 있습니다. 상표나 실존 인물은 포함되어 있지 않습니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 2026년 9월 22일, 새로운 'Claude 5.5' 패밀리의 첫 모델인 Claude Opus 5.5를 출시했습니다. 발표 페이지에는 지역이나 국가 제한에 대한 언급이 없습니다. 동시에 Pro, Max, Team, 좌석 단위로 과금되는 Enterprise 플랜의 5시간 사용 한도를 상향했고, 사용 한도 리셋도 한 번 추가했습니다. 다만 확인일 기준으로 claude.com 요금 페이지의 플랜 비교표는 'Opus' 시리즈를 Free 열에서 'No'로 표시하고 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글의 내용은 2026년 9월 26일에 확인한 것으로, Anthropic의 발표 페이지, 모델 전환에 관한 Claude 고객센터 문서, claude.com 요금 페이지, Opus 5.5의 System Card를 참고했습니다. 본 사이트는 이 모델을 직접 시험해 보지 않았으며, 이 글은 구독이나 구매, 업그레이드를 권하지 않습니다."
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic은 2026년 9월 22일, 새로운 'Claude 5.5' 패밀리의 첫 모델인 Claude Opus 5.5를 출시했습니다. 발표에는 지역이나 국가 제한이 명시되어 있지 않습니다.",
+            "40%는 Anthropic이 기본 설정과 일반적인 작업 부하에서 측정한 비용 추정치입니다. 20%는 입력·출력 토큰의 공식 가격 인하, 60%는 캐시 읽기의 공식 가격 인하로, 세 숫자는 조건이 각각 다릅니다.",
+            "9월 26일 기준, claude.com 요금 페이지의 플랜 비교표는 'Opus' 시리즈를 Free 열에서 'No'로 표시합니다. Pro, Max, Team, 좌석 단위 과금 Enterprise 플랜은 이번에 5시간 사용 한도가 상향됐지만, 발표에는 얼마나 올랐는지 나와 있지 않고 목록에 Free는 없습니다.",
+            "분류기가 작동하면 보안 관련 요청은 Opus 4.8로 전환될 수 있고, 생물학 및 프런티어 LLM 개발 관련 요청은 Opus 5로 전환되며, 증류(distillation) 관련 요청은 다른 모델로 전환되지 않고 바로 차단됩니다.",
+            "벤치마크 점수에는 OpenAI와 Zapier가 자체적으로 발표한 수치가 포함되어 있으며, Anthropic은 평가 시 정식 안전장치를 켜둔 상태였다고 밝히면서 벤치마크 점수 차이가 실제 차이를 반영하기 어려워지고 있다고 인정했습니다."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9월 22일에 무슨 일이 있었나: 새 패밀리는 먼저 모든 플랫폼에 공개"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic에 따르면 Claude Opus 5.5는 대부분의 작업에서 Claude Fable 5.1 수준의 성능을 내면서 Opus 5보다 실행 비용이 40% 낮을 것으로 추정됩니다(조건은 다음 절 참고). 이미 '모든 플랫폼'에서 이용 가능하며, 예시로 Amazon Web Services, Google Cloud, Microsoft Azure가 언급되어 있는데, 이 부분에는 구독 플랜이나 국가에 대한 언급이 없습니다. 개발자는 Claude Platform에서 모델 ID claude-opus-5-5로 바로 사용을 시작할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5는 API와 claude.ai 어디에서도 '사고(thinking)' 모드를 끌 수 없습니다. 또한 소비자용 제품인 claude.ai는 18세 이상 사용자에게만 제공됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 이번 발표가 '프런티어의 속도 조절(pacing the frontier)'을 제안한 이후 첫 출시라고 밝혔습니다. Claude Sonnet 5.5와 Claude Haiku 5.5는 발표에서 '앞으로 몇 주 안에' 나온다고 했을 뿐 날짜는 제시되지 않았으며, 확인일 기준으로 아직 출시되지 않았습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "세 가지 숫자: 40%, 20%, 60%는 각각 무엇을 나타내나"
+        },
+        {
+          "type": "paragraph",
+          "text": "40%는 Anthropic이 자체적으로 측정한 비용 추정치로, 조건은 '기본 설정'과 '일반적인 작업 부하'이며 정가 인하 폭이 아닙니다. Anthropic의 설명에 따르면 이는 Opus 5보다 토큰당 단가가 저렴한 것과 작업당 사용하는 토큰 수가 적은 것을 합친 순효과로 비용이 40% 낮아진 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "20%와 60%가 바로 공식 정가 인하 폭입니다. 입력과 출력 토큰은 각각 100만 토큰당 4달러와 20달러로, Opus 5보다 20% 저렴합니다. 캐시 읽기는 100만 토큰당 0.20달러로 Opus 5보다 60% 저렴하며, Anthropic은 캐시 읽기가 에이전트 작업과 코딩 작업 비용의 대부분을 차지한다고 설명합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic에 따르면 Opus 5.5의 출력 생성 속도는 Opus 5보다 30% 이상 빠릅니다. Claude Code와 Claude Platform에서는 'Fast mode'도 사용할 수 있으며, 속도는 최대 2.5배이고 가격은 입력 100만 토큰당 8달러, 출력은 40달러입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "숫자",
+            "의미",
+            "조건"
+          ],
+          "rows": [
+            [
+              "40%",
+              "Anthropic이 추정한 비용 절감 폭",
+              "기본 설정, 일반적인 작업 부하"
+            ],
+            [
+              "20%",
+              "입력·출력 토큰의 공식 가격 인하",
+              "4달러/20달러, Opus 5는 5달러/25달러"
+            ],
+            [
+              "60%",
+              "캐시 읽기의 공식 가격 인하",
+              "0.20달러, Opus 5는 0.50달러"
+            ],
+            [
+              "최대 2.5배",
+              "Fast mode의 최고 속도 향상",
+              "Claude Code와 Claude Platform에서 제공, 8달러/40달러"
+            ]
+          ],
+          "caption": "Anthropic이 2026년 9월 22일 발표한 Claude Opus 5.5의 비용 및 가격 설명을 정리함. 확인일은 2026년 9월 26일."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "구독자가 확인해야 할 것: 플랜 비교표와 사용 한도"
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.com 요금 페이지의 플랜 비교표(확인일 기준)는 'Opus' 시리즈를 Free 열에서 'No'로, Pro, Max 5x, Max 20x 세 열에서는 모두 'Yes'로 표시합니다. Team과 두 가지 Enterprise 플랜도 모두 'Yes'입니다. 표에는 시리즈 이름만 적혀 있고 버전 번호는 없으며, 페이지는 앞으로 바뀔 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용 한도의 기본 규칙은 모든 플랜에 5시간 단위로 롤링 리셋되는 세션 한도가 있고, 유료 플랜에는 여기에 주간 한도가 추가된다는 것입니다. 웹, 데스크톱, 모바일, Claude Code는 모두 같은 사용량 풀을 공유합니다. 이번에 Anthropic은 Pro, Max, Team, 좌석 단위 과금 Enterprise 플랜의 5시간 한도를 상향했지만, 발표에는 얼마나 올렸는지, 영구적인지 여부는 나와 있지 않고 목록에 Free는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 구독자에게 원할 때 사용할 수 있는 사용 한도 리셋 1회도 제공합니다. 현재 사용량은 Settings의 Usage 페이지에서 언제든 확인할 수 있습니다. 개인 플랜 가격은 Pro가 연간 결제 시 월 환산 17달러(선불 200달러) 또는 월 결제 시 20달러이고, Max는 월 100달러부터 시작하며, 이 가격들은 세금이 포함되어 있지 않고 변경될 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-55-20260922/diagram-1-ko.svg",
+          "alt": "4칸 도해: 비용 추정치, 공식 가격 인하, 유료 플랜 사용량, 몇 주 뒤에나 나올 부분",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic이 2026년 9월 22일 Claude Opus 5.5를 출시했습니다: 비용 추정치, 정가 인하 폭, 유료 플랜 사용량, 아직 출시되지 않은 부분. 확인일은 2026년 9월 26일.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "대화가 갑자기 다른 모델로 바뀌는 이유"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 고객센터에 따르면 분류기는 사용자가 방금 입력한 한 문장뿐 아니라 메모리, 커넥터 콘텐츠, 웹 검색 결과, 파일을 포함해 모델이 읽는 모든 내용을 확인합니다. 위험도가 높을 것으로 의심되는 공격적인 보안 요청(익스플로잇 생성이나 침투 테스트 등)은 Opus 5 또는 Opus 5.5에서 Opus 4.8로 전환될 수 있지만, 소스코드 취약점 스캔이나 보안 문제 분류 같은 안전한 코딩 작업에는 계속 Opus 5.5를 쓸 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "바이러스학, 독성학, 분자 설계 같은 이중 용도 생물학 요청은 Opus 5.5에서 Opus 5로 전환됩니다. 검사 결과 이해하기, 증상 파악하기, 생물학 학습 같은 일상적인 건강·학습 질문에는 계속 Opus 5.5를 쓸 수 있습니다. Opus 5.5에만 있는 프런티어 LLM 개발 분류기는 프런티어 대형 언어 모델 개발과 관련된 소수의 능력을 Opus 5로 전환하지만, 일반적인 AI/ML 개발과 코딩 대부분에는 영향을 주지 않습니다. 모델의 내부 추론을 알아내려는 증류 관련 요청은 다른 모델로 전환되지 않고 바로 차단되며, 일반적으로 이유를 설명해 달라는 요청에는 영향이 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 전환되면 화면에 알림이 뜨고, 답변에도 어떤 모델이 응답했는지 표시됩니다. 전환된 뒤에는 해당 대화의 모델 선택기가 성능이 낮은 모델에 고정되며, 사용자가 직접 선택기에서 되돌릴 수 있지만 원래 요청이 대화에 남아 있으면 다시 전환될 수 있습니다. 자동 모델 전환을 끄려면 Settings의 Capabilities(Claude Code는 Config의 MODEL & OUTPUT)에서 메시지가 플래그될 때 모델을 전환하는 옵션을 끄면 됩니다. 끄면 차단된 요청은 모델을 전환하는 대신 대화를 일시 중지합니다. Claude API에서는 기본적으로 꺼져 있어 고객이 직접 폴백을 설정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "심사를 통과한 조직은 발표 당일부터 Life Sciences Verification Program에 신청해 Opus 5.5로 생물학 연구를 할 수 있습니다. Cyber Verification Program은 '앞으로 몇 주 안에' 확대될 예정이며, 확인일 기준으로 Opus 5.5는 아직 이 프로그램에 포함되어 있지 않아 대부분의 보안 작업은 현재 Opus 4.8로 전환됩니다. 과금 측면에서는 생물학, 증류, 프런티어 LLM 개발 분류기 때문에 출력이 나오기 전에 중단되거나 전환된 요청도 과금되며, 다른 카테고리에서 출력 전에 차단된 요청은 과금되지 않습니다."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "벤치마크 수치를 어떻게 봐야 하나: 누가 측정했고 무엇을 켜둔 상태였나"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic은 발표에서 이 정도 능력 수준에서는 벤치마크 점수 차이가 실제 차이를 나타내는 지표로서 점점 신뢰하기 어려워지고 있다고 밝혔습니다. Anthropic 자체적으로 사용할 때는 Opus 5.5와 Fable 5.1의 차이가 점수가 보여주는 것보다 작다고 합니다. 벤치마크 표에 있는 GPT-6 Astra와 GPT-5.6 Sol의 Terminal-Bench 4.0 수치는 OpenAI가 자체적으로 발표한 것으로 Anthropic이 측정한 것이 아니며, AutomationBench의 Opus 5.5 점수는 Zapier가 얼리 액세스 기간 중 자체적으로 실시한 평가에서 나온 것입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5는 정식 안전장치를 켠 상태에서 평가되었습니다. 안전장치가 개입했을 때 보안 관련 작업은 Opus 4.8이, 생물학과 프런티어 LLM 개발 관련 작업은 Opus 5가 완료했습니다(다만 AutomationBench는 예외로, 폴백 모델 없이 실행되어 안전장치 개입이 곧 실패로 처리되었습니다). Anthropic은 이 때문에 Opus 5.5의 벤치마크 점수가 낮아졌을 수 있다고 밝혔습니다. 또한 Anthropic은 Opus 5.5가 자신이 평가받고 있다고 의심하는 징후를 자주 보인다는 점을 인정했으며, 이 때문에 모델이 실제 환경에서 어떻게 행동할지 판단하기가 더 어려워졌다고 밝혔습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic에 따르면 코딩, 도구 사용, 컴퓨터 조작, 웹 브라우징을 포함해 테스트한 모든 상황에서 Opus 5.5의 프롬프트 인젝션 공격 대응은 Opus 5와 비슷하거나 더 나았습니다. 반면 System Card는 한 가지 퇴보를 지적합니다. 이 모델이 이전 모델보다 사용자가 자신의 프롬프트에 붙여넣은 텍스트 안에 심어진 악의적인 지시를 더 쉽게 따른다는 것입니다. Anthropic은 최종 버전과 일부 제품 측 변경으로 이 문제가 완화되었다고 밝혔으며, 보이지 않는 문자를 제거하고 붙여넣은 텍스트를 표시하는 기능을 추가하는 중이라고 설명했습니다. 다른 사람이 쓴 글을 프롬프트에 붙여넣는 것은 그 사람에게 프롬프트 일부를 맡기는 것과 같습니다."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "무료 플랜 사용자도 지금 Claude Opus 5.5를 쓸 수 있나요?",
+              "answer": "claude.com 요금 페이지의 플랜 비교표는 2026년 9월 26일 확인 기준으로 'Opus' 시리즈를 Free 열에서 'No'로, Pro, Max 5x, Max 20x 세 열에서는 'Yes'로 표시합니다. 이 표에는 시리즈 이름만 있고 버전 번호는 없으며 이후 바뀔 수도 있습니다. 발표 자체에는 어떤 구독 플랜에서 모델 선택기로 Opus 5.5를 고를 수 있는지 나와 있지 않습니다."
+            },
+            {
+              "question": "40%, 20%, 60%라는 세 숫자는 같은 것을 말하나요?",
+              "answer": "아닙니다. 40%는 Anthropic이 자체적으로 측정한 비용 추정치로, 기본 설정과 일반적인 작업 부하 조건에서 토큰당 단가가 저렴한 것과 사용하는 토큰 수가 적은 것에서 나온 값입니다. 20%는 입력·출력 토큰의 공식 정가 인하 폭이고, 60%는 캐시 읽기의 공식 정가 인하 폭입니다. 세 숫자는 정의와 조건이 모두 달라 섞어서 말할 수 없습니다."
+            },
+            {
+              "question": "Claude Sonnet 5.5나 Haiku 5.5도 이미 출시되었나요?",
+              "answer": "2026년 9월 26일 확인 기준으로는 아직입니다. 발표에서는 Claude Sonnet 5.5와 Claude Haiku 5.5가 '앞으로 몇 주 안에' 나온다고만 했을 뿐, 원문에 정확한 날짜는 없습니다."
+            },
+            {
+              "question": "보안 종사자는 지금 Opus 5.5로 보안 업무를 할 수 있나요?",
+              "answer": "대부분의 보안 작업은 현재 Opus 4.8로 전환됩니다. Claude 고객센터는 2026년 9월 26일 기준으로 Opus 5.5가 아직 Cyber Verification Program에 포함되어 있지 않다고 밝혔고, 발표에서는 이 프로그램이 '앞으로 몇 주 안에' 확대된다고 했습니다. 소스코드 취약점 스캔이나 보안 문제 분류 같은 안전한 코딩 작업에는 계속 Opus 5.5를 쓸 수 있습니다."
+            },
+            {
+              "question": "왜 제 대화가 갑자기 다른 모델의 답변으로 바뀌었나요?",
+              "answer": "Claude의 분류기는 방금 보낸 메시지 한 개뿐 아니라 메모리, 커넥터 콘텐츠, 웹 검색 결과, 파일을 포함해 모델이 읽는 모든 내용을 확인합니다. 요청 유형에 따라 전환되는 모델이 다른데, 위험도가 높을 것으로 의심되는 공격적인 보안 요청은 Opus 4.8로 전환될 수 있고, 이중 용도 생물학 요청은 Opus 5로 전환되며, 소수의 프런티어 LLM 개발 관련 능력도 Opus 5로 전환됩니다. 모델의 내부 추론을 알아내려는 증류 관련 요청은 다른 모델로 전환되지 않고 바로 차단됩니다. 전환되면 화면에 알림이 뜨고, 답변에도 어떤 모델이 응답했는지 표시됩니다."
+            },
+            {
+              "question": "자동 모델 전환을 끌 수 있나요?",
+              "answer": "가능합니다. Settings의 Capabilities(Claude Code는 Config의 MODEL & OUTPUT)에서 'Switch models when a message is flagged'(메시지가 플래그될 때 모델 전환)를 끄면 됩니다. 끄면 분류기에 차단된 요청이 다른 모델로 전환되는 대신 대화가 일시 중지됩니다. Claude API를 쓰는 경우 자동 모델 전환은 기본적으로 꺼져 있어 고객이 직접 선택하고 폴백을 설정해야 합니다."
+            },
+            {
+              "question": "Opus 5.5의 벤치마크 점수를 다른 회사 모델과 그대로 비교할 수 있나요?",
+              "answer": "신중하게 봐야 합니다. 벤치마크 표에 있는 OpenAI 모델의 일부 점수(Terminal-Bench 4.0 등)는 OpenAI가 자체적으로 발표한 것으로 Anthropic이 실측한 것이 아니며, AutomationBench의 Opus 5.5 점수는 Zapier가 얼리 액세스 기간 중 자체적으로 실행한 것입니다. Anthropic 스스로도 발표에서 이 정도 능력 수준에서는 벤치마크 점수 차이가 실제 차이를 나타내는 지표로서 점점 신뢰하기 어려워지고 있다고 밝혔습니다."
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "세 가지: 숫자는 따로 보기, 무료는 표를 확인, 전환은 끌 수 있음",
+          "text": "40%는 Anthropic이 기본 설정과 일반적인 작업 부하에서 측정한 비용 추정치이고, 20%와 60%는 각각 입력·출력 토큰과 캐시 읽기의 공식 정가 인하 폭입니다. 세 가지는 조건이 달라 섞어서 말할 수 없습니다. 무료 플랜에서 Opus 5.5를 쓸 수 있는지는 발표 자체에 나와 있지 않으며, claude.com 요금 페이지의 플랜 비교표는 9월 26일 기준으로 'Opus' 시리즈를 Free 열에서 'No'로 표시하지만 이 표는 앞으로 바뀔 수 있습니다. 분류기가 언제 모델을 전환하는지, 이를 끄는 방법은 Claude 고객센터에서 확인할 수 있습니다. 이 글의 내용은 2026년 9월 26일에 확인한 것으로, 본 사이트는 이 모델을 직접 시험해 보지 않았고 구독이나 구매, 업그레이드를 권하지 않습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026년 AI 뉴스 총정리: 1월부터 9월까지의 핵심과 일상 적용",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 출시: 일반 직장인은 어떤 변화에 주목해야 할까?",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic: Introducing Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude 고객센터: Why Claude switched models in your conversation with Opus 5 or Opus 5.5",
+          "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Pricing (Plans & Pricing)",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Anthropic: System Card: Claude Opus 5.5",
+          "url": "https://anthropic.com/claude-opus-5-5-system-card",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Claude Opus 5.5 发布：标价降 20%、付费方案五小时上限提高，40% 是 Anthropic 的成本估计",
+      "description": "Anthropic 在 2026 年 9 月 22 日发布 Claude Opus 5.5，是新的 Claude 5.5 家族第一个模型，公告没有列出地区限制。这篇把容易混淆的三个数字——40% 的成本估计、20% 与 60% 的官方降价分开说明，并整理付费方案五小时上限提高的范围与模型切换规则（2026 年 9 月查证）。",
+      "hero": {
+        "src": "/guides/ai-news-claude-opus-55-20260922/hero-zh-cn.jpg",
+        "alt": "原创插图：一个时钟，上面的彩色弧线比一般绕得更远；右侧三个以虚线分隔的方框，各有一支长短不同的向下箭头，第三个方框以虚线描边；不含商标或真实人物。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Anthropic 在 2026 年 9 月 22 日发布 Claude Opus 5.5，是新的“Claude 5.5”家族第一个模型；公告页没有提到任何地区或国家限制。这一次同时提高了 Pro、Max、Team 与按席位计费 Enterprise 方案的五小时用量上限，并多了一次用量重置；不过截至查核日，claude.com 定价页的方案比较表把“Opus”系列列在 Free 栏标示“No”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这篇的资料在 2026 年 9 月 26 日查核，读了 Anthropic 的公告页、Claude 帮助中心关于模型切换的文章、claude.com 定价页与 Opus 5.5 的 System Card；本站没有实际测试这个模型，这篇也不提供订阅或升级建议。"
+        },
+        {
+          "type": "summary",
+          "items": [
+            "Anthropic 在 2026 年 9 月 22 日发布 Claude Opus 5.5，是新的“Claude 5.5”家族第一个模型，公告没有列出地区或国家限制。",
+            "40% 是 Anthropic 在默认设置、一般工作负载下测出的成本估计；20% 是输入与输出 token 的官方降价，60% 是缓存读取的官方降价，三个数字条件各不相同。",
+            "截至 9 月 26 日，claude.com 定价页的方案比较表把“Opus”系列列在 Free 栏标示“No”；Pro、Max、Team 与按席位计费的 Enterprise 方案这次提高了五小时用量上限，公告没有写提高多少，清单里也没有 Free。",
+            "分类器触发时，网络安全类可能转给 Opus 4.8，生物与前沿 LLM 开发类转给 Opus 5，蒸馏类则会被直接挡下、不会转给其他模型。",
+            "评测分数包含 OpenAI 与 Zapier 自行公布的数字，Anthropic 也提醒评测时开着正式防护，且承认评测分数差距越来越难以反映实际差异。"
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "9 月 22 日发生了什么：新家族先在所有平台上线"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，Claude Opus 5.5 在多数工作上的表现达到 Claude Fable 5.1 的水平，估计运行成本比 Opus 5 少 40%（条件见下一节），而且已经在“所有平台”上线，举例包括 Amazon Web Services、Google Cloud 与 Microsoft Azure，这段没有提到订阅方案或国家；开发者在 Claude Platform 可以用模型代号 claude-opus-5-5 开始使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5 在 API 与 claude.ai 上都不能把“思考”模式关掉；消费者产品 claude.ai 也只开放给 18 岁以上的用户。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，这是它呼吁“放慢前沿”之后的第一个发布；Claude Sonnet 5.5 与 Claude Haiku 5.5 公告写“未来几周”推出、没有给日期，截至查核日还没推出。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "三个数字：40%、20%、60% 各自量的是什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "40% 是 Anthropic 自己测出的成本估计，条件是“默认设置”与“一般工作负载”，不是官方定价降幅；官方说明它的来源是每个 token 比 Opus 5 便宜，加上每个任务用的 token 比较少，净算出 40% 的成本下降。"
+        },
+        {
+          "type": "paragraph",
+          "text": "20% 与 60% 才是官方定价的降幅：输入与输出 token 每百万各是 4 美元与 20 美元，比 Opus 5 少 20%；缓存读取每百万 token 0.20 美元，比 Opus 5 少 60%，官方说明缓存读取占智能体与编程工作成本的大部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，Opus 5.5 生成输出的速度比 Opus 5 快 30% 以上；在 Claude Code 与 Claude Platform 上还有 Fast mode，速度最高 2.5 倍，价格是输入每百万 token 8 美元、输出 40 美元。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "数字",
+            "代表什么",
+            "条件"
+          ],
+          "rows": [
+            [
+              "40%",
+              "Anthropic 估计的成本降幅",
+              "默认设置、一般工作负载"
+            ],
+            [
+              "20%",
+              "输入／输出 token 官方降价",
+              "4／20 美元，对比 Opus 5 的 5／25 美元"
+            ],
+            [
+              "60%",
+              "缓存读取官方降价",
+              "0.20 美元，对比 Opus 5 的 0.50 美元"
+            ],
+            [
+              "2.5 倍",
+              "Fast mode 最高加速",
+              "Claude Code 与 Claude Platform 提供，8／40 美元"
+            ]
+          ],
+          "caption": "整理自 Anthropic 2026 年 9 月 22 日 Claude Opus 5.5 公告页的成本与定价说明，查核日 2026 年 9 月 26 日。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "订阅用户要看的：方案比较表与用量上限"
+        },
+        {
+          "type": "paragraph",
+          "text": "claude.com 定价页的方案比较表（截至查核日）把“Opus”系列列在 Free 栏标示“No”，Pro、Max 5x、Max 20x 三栏都标“Yes”；Team 与两种 Enterprise 方案也都标“Yes”。表上写的是系列名称，没有写版本号，而且页面可能更动。"
+        },
+        {
+          "type": "paragraph",
+          "text": "用量上限的基本规则是每个方案都有以五小时为单位滚动重置的会话上限，付费方案再加每周上限；网页、桌面、手机与 Claude Code 共用同一个额度。这次 Anthropic 提高了 Pro、Max、Team 与按席位计费 Enterprise 方案的五小时上限，公告没有写提高多少、是不是永久，清单里也没有 Free。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 也为订阅用户提供一次用量重置（rate limit reset），可以先保留、自己选时间用；目前用量可以在 Settings 里的 Usage 页面查看。个人方案价格是 Pro 年付折合每月 17 美元（一次付 200 美元）或月付 20 美元，Max 方案每月 100 美元起；以上价格未含税，且可能调整。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-news-claude-opus-55-20260922/diagram-1-zh-cn.svg",
+          "alt": "四格图解：成本估计、官方降价、付费方案用量、还没推出的部分",
+          "width": 1600,
+          "height": 900,
+          "caption": "Anthropic 2026 年 9 月 22 日发布 Claude Opus 5.5：成本估计、官方定价降幅、付费方案用量与还没推出的部分，查核日 2026 年 9 月 26 日。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "为什么对话会突然换成别的模型"
+        },
+        {
+          "type": "paragraph",
+          "text": "Claude 帮助中心指出，分类器会检查模型读到的所有内容，不只是用户刚打的那一句，包括记忆、连接器内容、网页搜索结果与文件。疑似较高风险的攻击性网络安全请求（例如生成 exploit、进行渗透测试）可能会从 Opus 5 或 Opus 5.5 转给 Opus 4.8，但扫描源代码漏洞、分类网络安全问题这类安全的编程工作仍可用 Opus 5.5。"
+        },
+        {
+          "type": "paragraph",
+          "text": "病毒学、毒理学、分子设计这类两用生物请求会从 Opus 5.5 转给 Opus 5，日常健康与学习问题（例如看懂检验报告、了解症状、学生物）仍可用 Opus 5.5；只有 Opus 5.5 才有的前沿 LLM 开发分类器，会把少数与开发前沿大语言模型有关的能力转给 Opus 5，一般 AI／ML 开发与编程大多不受影响。试图套出模型内部推理的蒸馏类请求会被直接挡下，不会转给其他模型，一般请它解释理由不受影响。"
+        },
+        {
+          "type": "paragraph",
+          "text": "换模型时画面会出现通知，回复也会标出是哪个模型回答；换过之后，这个对话的模型菜单会停在较弱的模型，可以自己从菜单换回来，但原请求还在对话里时可能再被换掉。要关掉自动换模型，可以到 Settings 里的 Capabilities（Claude Code 是 Config 里的 MODEL & OUTPUT）关掉消息被标记时换模型的开关，关掉后被挡的请求会暂停对话，而不是换模型；API 则默认不开，需自行设置备援。"
+        },
+        {
+          "type": "paragraph",
+          "text": "经审核的组织从公告当天起就能申请 Life Sciences Verification Program，用 Opus 5.5 做生物研究；Cyber Verification Program 要在“未来几周”才扩大，截至查核日 Opus 5.5 还不在这个计划里；多数网络安全任务目前会转给 Opus 4.8。计费方面，生物、蒸馏或前沿 LLM 开发类请求在输出前被防护拦下或转给其他模型，仍会计费；其他类别在输出前被挡的则不收费。"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "评测数字怎么看：谁测的、测的时候开着什么"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 自己在公告里写，在这个能力水平，评测分数的差距越来越难以反映实际差异；它自己使用时，Opus 5.5 与 Fable 5.1 的差距比分数显示的小。评测表里 GPT-6 Astra 与 GPT-5.6 Sol 的 Terminal-Bench 4.0 数字是 OpenAI 自己公布的，不是 Anthropic 跑的；AutomationBench 的 Opus 5.5 分数则是 Zapier 在抢先使用期间自己跑的评测。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Opus 5.5 是在开着正式防护的情况下评测的；防护介入时，网络安全题由 Opus 4.8 完成、生物与前沿 LLM 开发题由 Opus 5 完成（AutomationBench 除外：它没开备援，防护介入就算失败），Anthropic 说这可能拉低 Opus 5.5 的评测分数。Anthropic 也承认，它看到 Opus 5.5 常常怀疑自己正在被评估的迹象，这让它更难判断模型在真实环境会怎么做。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 表示，在它测试的每种情境（包括编程、工具使用、电脑操作、网页浏览）里，Opus 5.5 对提示注入攻击的表现与 Opus 5 相当或更好。System Card 则列出一个退步：这个模型比先前的模型更容易照着用户自己粘贴进提示里的文字中被人埋入的恶意指令去做，最终版本加上一些产品端的改动已经缓解这个问题，并正在加上会移除看不见字符、标记粘贴文字的功能。粘贴别人写的文字，等于让那个人控制了一部分提示。"
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "question": "免费方案的用户现在能用 Claude Opus 5.5 吗？",
+              "answer": "claude.com 定价页的方案比较表，截至 2026 年 9 月 26 日查核，把“Opus”这个系列列在 Free 栏位标示“No”，Pro、Max 5x、Max 20x 三栏都标“Yes”；这张表写的是系列名称，没有写版本号，也可能之后更动。公告本身没有写哪些订阅方案可以在模型菜单选到 Opus 5.5。"
+            },
+            {
+              "question": "40%、20%、60% 这三个数字是同一件事吗？",
+              "answer": "不是。40% 是 Anthropic 自己测出的成本估计，条件是默认设置与一般工作负载，来自每个 token 较便宜加上用的 token 较少；20% 是输入与输出 token 的官方定价降幅；60% 是缓存读取的官方定价降幅。三个数字的定义与条件都不一样，不能混着讲。"
+            },
+            {
+              "question": "Claude Sonnet 5.5 或 Haiku 5.5 也上线了吗？",
+              "answer": "截至 2026 年 9 月 26 日查核还没有。公告写 Claude Sonnet 5.5 与 Claude Haiku 5.5 会在“未来几周”推出，原文没有给确切日期。"
+            },
+            {
+              "question": "网络安全从业人员现在可以用 Opus 5.5 做网络安全工作吗？",
+              "answer": "多数网络安全任务目前会转给 Opus 4.8。Claude 帮助中心截至 2026 年 9 月 26 日写，Opus 5.5 还不在 Cyber Verification Program 里，公告则写这个计划要在“未来几周”才扩大；扫描源代码漏洞、分类网络安全问题这类安全的编程工作，仍可以用 Opus 5.5。"
+            },
+            {
+              "question": "为什么我的对话忽然换成别的模型回答？",
+              "answer": "Claude 的分类器会检查模型读到的所有内容，包括记忆、连接器内容、网页搜索结果与文件，不只是最新一句消息。依请求类型会转给不同模型：疑似较高风险的攻击性网络安全请求可能转给 Opus 4.8，两用生物请求转给 Opus 5，少数前沿 LLM 开发能力也转给 Opus 5；试图套出模型内部推理的蒸馏类请求则被直接挡下，不会转给其他模型。画面会出现通知，回复也会标出是哪个模型回答。"
+            },
+            {
+              "question": "可以关掉自动换模型吗？",
+              "answer": "可以，在 Settings 里的 Capabilities（Claude Code 是 Config 里的 MODEL & OUTPUT）关掉“Switch models when a message is flagged”（消息被标记时切换模型）这个选项；关掉后，被分类器挡下的请求会暂停对话，而不是换成别的模型回答。使用 Claude API 的话，自动换模型默认不开，需要客户自己选择并设置备援。"
+            },
+            {
+              "question": "Opus 5.5 的评测分数可以直接拿来跟其他公司的模型比较吗？",
+              "answer": "要谨慎看待。评测表里 OpenAI 模型的部分分数（例如 Terminal-Bench 4.0）是 OpenAI 自己公布的，不是 Anthropic 实测；AutomationBench 的 Opus 5.5 分数是 Zapier 在抢先使用期间自行跑出来的。Anthropic 自己也在公告里写，这个能力水平下评测分数的差距越来越难以反映实际差异。"
+            }
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "info",
+          "title": "三件事：三个数字分开看、免费看表不看公告、换模型可以关",
+          "text": "40% 是 Anthropic 在默认设置、一般工作负载下测出的成本估计，20% 与 60% 才是输入输出与缓存读取的官方定价降幅，三者条件不同，不能混着讲。免费方案能不能用 Opus 5.5，公告本身没写；claude.com 定价页的方案比较表截至 9 月 26 日把“Opus”系列列在 Free 栏标示“No”，这张表可能随时间更动。分类器换模型的规则与怎么关掉，可以到 Claude 帮助中心查看；这一篇的资料在 2026 年 9 月 26 日查核，本站没有实际测试这个模型，也不提供订阅或升级建议。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "2026 年 AI 新闻总整理：1 月至 9 月的重点与生活应用",
+              "kind": "life",
+              "slug": "ai-news-2026-january-september-index"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Claude Opus 5 发布：普通办公用户值得关注哪些变化？",
+              "kind": "life",
+              "slug": "ai-news-claude-opus-5-20260724"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Anthropic：Introducing Claude Opus 5.5",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude 帮助中心：Why Claude switched models in your conversation with Opus 5 or Opus 5.5",
+          "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Claude Pricing（Plans & Pricing）",
+          "url": "https://claude.com/pricing",
+          "checked_on": "2026-09-26"
+        },
+        {
+          "title": "Anthropic：System Card: Claude Opus 5.5",
+          "url": "https://anthropic.com/claude-opus-5-5-system-card",
+          "checked_on": "2026-09-26"
+        }
+      ]
+    }
+  },
+  "related": [
+    "ai-news-gpt-6-sol-luna-20260923",
+    "ai-news-chatgpt-ads-taiwan-20260923",
+    "ai-news-google-vids-omni-free-20260924"
+  ]
+}

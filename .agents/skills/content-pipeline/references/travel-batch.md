@@ -25,8 +25,10 @@
 - 頂層：slug、kind、destination_id、topics（要在 `apps/api/app/guides/taxonomy.py` 的 `SEED_TOPICS` 裡）、featured、display_order（每批一個區段）、valid_until（intel 才有）、aliases、related（最多 4）、locales。
 - 一日遊掛基地城市（芭達雅掛 bangkok、白川鄉掛 kanazawa）。目錄裡沒有的城市 → destination_id 是 null → 零 offer、最多兩個城市頁 link、不放美食目錄。
 - 區塊：summary 第一（2 到 5 句，第一句是答案，數字逐字照正文，不寫後設句）→ 開頭 paragraph → 至少 3 個 level 2 標題、1 張表格（設計上限 4 欄，渲染器允許 6）、1 個 callout、恰 1 張圖解、1 到 2 張照片；FAQ 只在規格列了才放。全部純文字：無 HTML、Markdown、emoji、實體。
-- 字數：`pack_ingest._body_length` 算 summary、每一格、callout、FAQ、連結句，不算標題。repo 的硬限制 howto 1,500 到 6,000、intel 700 到 3,000 是 CI 的真相；批次裁決 howto 上限 4,200（目標 3,000 到 3,600）、intel 上限 2,200（目標 1,500 到 1,900）；規格裡每個 H2 的字數是上限。刻意寫短的篇不補。
-- 站內連結：文章用 `article` inline，`kind` 填對方的；城市頁 `https://mokaair.com/zh-TW/destinations/<id>`、美食目錄 `https://mokaair.com/zh-TW/foods?destination_id=<id>` 用 `link` 區塊。既有文章的 `?city=` 不是錯，不順手改。連結目標要在 `apps/api/app/guides/content/` 有 zh-TW 版，或是本批的 slug。
+- 字數：`pack_ingest._body_length` 算 summary、每一格、callout、FAQ、連結句，不算標題。repo 的硬限制 howto 1,500 到 6,000、intel 700 到 3,000 是 CI 的真相；旅遊批次的裁決是 howto 上限 4,200（目標 3,000 到 3,600）、intel 上限 2,200（目標 1,500 到 1,900），規格裡每個 H2 的字數是上限。美食特輯沒有字數目標：讀者優先改寫後 3,800 到 4,600 的目標作廢，22 篇落在 1,679 到 3,224 字，只守 repo 的範圍；短，是因為來源只點名了那幾家。刻意寫短的篇不補。
+- 新的旅遊子主題要 migration 種子加 `apps/api/app/guides/taxonomy.py` 的常數，否則 `pack_ingest._known_topics` 以 `topic_unknown` 拒絕（範本是 `0080_crypto_and_tech_topics.py`）。
+- 文末的分潤面板依 topic 決定（`apps/web/lib/guide-affiliate.ts`）：`food` 與未知子主題不出面板，加上 `culture`／`viewpoint` 會出現活動面板。延伸目的地（`jeonju`、`gyeongju`）當 `destination_id` 可以一路用到底。
+- 站內連結：文章用 `article` inline，`kind` 填對方的；城市頁 `https://mokaair.com/zh-TW/destinations/<id>`、美食目錄 `https://mokaair.com/zh-TW/foods?destination_id=<id>` 用 `link` 區塊。既有文章的 `?city=` 不是錯，不順手改。連結目標要在 `apps/api/app/guides/content/` 有 zh-TW 版，或是本批的 slug。`/zh-TW/foods?category=` 吃的是料理**類別** slug（`apps/api/app/foods/category_catalog.py` 的 `CATEGORY_SEEDS`，如 `hotpot-soup`、`noodles`、`bbq-grill`、`home-style`、`rice-dishes`、`street-food`、`cafe-tea`），不是料理 slug；後台建的料理沒有類別對照，自己挑最近的。寫進規格前確認 `GET /api/travel/foods/merchants?destination_id=<id>&category=<slug>` 不是空的。
 - offer：最多 3 個、第一個 H2 之後、不相鄰、通用標題、無品牌與金額；null destination 零 offer（後台的 `_validate_document` 會擋）。
 - sources：`title`（網站名：頁名（查了什麼））、`url`（轉址後的最終網址）、`checked_on`（真的打開那頁的日期）。
 
@@ -36,6 +38,8 @@
 - 讀不到的官方站與特殊讀法（Inertia 的 `data-page`、`__NEXT_DATA__`、WordPress REST、兩段 POST、掃描 PDF 用 pymupdf）：`docs/travel-guides-batch-8/README.md` §「讀不到的官方站」更新、`docs/travel-guides-batch-7/README.md` §事實查核。
 - 已經不是官網的網域（賭場連結、停放頁、轉到社群平台）不得引用；規格與 README 會列，新發現的加進去。
 - 地名以目的地目錄為準：`apps/api/app/destinations/catalog.py`、`apps/api/app/hotspots/areas.py`、`apps/api/app/foods/area_catalog.py`。目錄外的寫法放 `aliases`。
+- 首爾觀光的中文站 `tchinese.visitseoul.net`（路徑同韓文站，ID 前綴 `KOP` 換成 `TCP`）有官方中文店名，但地址可能錯、料理名是機器翻譯：地址一律用韓文站的。
+- 美食特輯要加料理前，先確認正式站沒有同一道（見 `pitfalls.md` §正式站「種子檔不等於正式站」）。
 - 讀者看得到的地方不寫會成長的數字：標題、描述、summary 不寫家數。美食篇預設不寫價格，互相矛盾的年份一律不寫（`docs/korea-food-specials/README.md` §數字）。
 
 ## 照片與圖解

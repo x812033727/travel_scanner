@@ -11,7 +11,8 @@ import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigat
 import { adminSettingsCopy } from "@/lib/admin-settings-copy";
 import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
-import { domainSettingsDependencies, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
+import { VideoToolTokens } from "@/components/video-tool-tokens";
+import { domainSettingsDependencies, isAiSettingsProvider, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
 
 type Scalar = string | number | boolean;
 type SecretState = { configured: boolean; masked?: string | null; source: string };
@@ -94,10 +95,10 @@ type Draft = { base: ProviderView; enabled: boolean; config: Record<string, stri
 // treating a currency/profile update as a login. Logout releases the old key.
 const routeDrafts = new WeakMap<object, Map<AdminSettingsScope, Record<string, Draft>>>();
 type FieldMeta = { label?: string; type?: "text" | "number" | "url" | "boolean"; options?: FieldOption[]; help?: string; localized?: boolean; allowCustom?: boolean; emptyOption?: "inheritPlanner" | "inheritGuideSearch" };
-type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
+export type ProviderCategory = "auth" | "ai" | "maps" | "content" | "travelData" | "affiliate" | "other";
 
 const providerCategories: ProviderCategory[] = ["auth", "ai", "maps", "content", "travelData", "affiliate", "other"];
-const providerCategoryOf: Record<string, ProviderCategory> = {
+export const providerCategoryOf: Record<string, ProviderCategory> = {
   google_login: "auth",
   line_login: "auth",
   apple_login: "auth",
@@ -107,6 +108,7 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   ai_planner: "ai",
   ai_guide_search: "ai",
   hotspot_intros: "ai",
+  azure_speech: "ai",
   google_maps: "maps",
   naver_maps: "maps",
   navitime: "maps",
@@ -131,6 +133,16 @@ const providerCategoryOf: Record<string, ProviderCategory> = {
   booking: "affiliate",
   skyscanner_affiliate: "affiliate",
 };
+
+// /admin/settings shows every category but AI; the AI settings page shows only AI, next
+// to the host's subscription accounts. Callers pass these constants, so the arrays keep
+// their identity across renders.
+export const SETTINGS_PAGE_CATEGORIES: readonly ProviderCategory[] = providerCategories.filter((category) => category !== "ai");
+export const AI_PAGE_CATEGORIES: readonly ProviderCategory[] = ["ai"];
+
+function shownIn(categories: readonly ProviderCategory[] | undefined, provider: string, only?: readonly string[]) {
+  return (!categories || categories.includes(providerCategoryOf[provider] || "other")) && (!only || only.includes(provider));
+}
 
 const fieldMeta: Record<string, FieldMeta> = {
   auth_google_client_id: { localized: true },
@@ -191,6 +203,9 @@ const fieldMeta: Record<string, FieldMeta> = {
   anthropic_model: { localized: true, allowCustom: true },
   minimax_api_base_url: { label: "MiniMax API Base URL", type: "url" },
   jev_api_base_url: { label: "Jev API Base URL", type: "url" },
+  jev_daily_call_budget: { localized: true, type: "number" },
+  anthropic_connection: { localized: true, options: [{ value: "api_key" }, { value: "subscription" }] },
+  ai_subscription_fallback: { localized: true, options: [{ value: "wait" }, { value: "minimax" }] },
   minimax_model: { localized: true, allowCustom: true },
   gemini_model: { localized: true, allowCustom: true },
   travel_provider_mode: { localized: true, options: [{ value: "amadeus", label: "Amadeus" }, { value: "mock" }, { value: "disabled" }] },
@@ -246,6 +261,11 @@ const fieldMeta: Record<string, FieldMeta> = {
   travel_impact_cache_ttl_seconds: { localized: true, type: "number" },
   navitime_api_base_url: { localized: true, type: "url" },
   navitime_monthly_request_limit: { localized: true, type: "number" },
+  azure_speech_region: { localized: true },
+  azure_speech_voices: { localized: true },
+  azure_speech_monthly_character_limit: { localized: true, type: "number" },
+  azure_speech_timeout_seconds: { localized: true, type: "number" },
+  video_speech_gemini_monthly_character_limit: { localized: true, type: "number" },
   ekispert_api_base_url: { localized: true, type: "url" },
   ekispert_search_type: { localized: true, options: [{ value: "plain" }, { value: "departure" }] },
   ekispert_monthly_request_limit: { localized: true, type: "number" },
@@ -301,6 +321,7 @@ const secretLabels: Record<string, { label?: string; help?: string; localized?: 
   anthropic_api_key: { localized: true },
   minimax_api_key: { localized: true },
   jev_api_key: { localized: true },
+  azure_speech_key: { localized: true },
   google_maps_api_key: { localized: true },
   next_public_google_maps_browser_key: { localized: true },
   naver_maps_client_id: { localized: true },
@@ -384,13 +405,15 @@ const auditActionKeys: Record<string, string> = {
   system_settings_updated: "system_settings_updated",
   provider_settings_updated: "provider_settings_updated",
   provider_connection_tested: "provider_connection_tested",
+  video_tool_token_created: "video_tool_token_created",
+  video_tool_token_revoked: "video_tool_token_revoked",
   "admin_role.updated": "admin_role_updated",
 };
 function auditActionName(t: Translator, action: string): string {
   const key = auditActionKeys[action];
   return key ? t(`settingsPanel.auditActions.${key}`) : action;
 }
-const usageOperationKeys = new Set(["places_autocomplete", "place_details", "places_text_search", "places_photo", "routes", "weather_current", "weather_daily_forecast", "local_search", "geocode", "directions", "route_transit", "search_course", "search_pub_trans_path", "search_list", "videos_list"]);
+const usageOperationKeys = new Set(["places_autocomplete", "place_details", "places_text_search", "places_photo", "routes", "weather_current", "weather_daily_forecast", "local_search", "geocode", "directions", "route_transit", "search_course", "search_pub_trans_path", "search_list", "videos_list", "synthesis"]);
 function usageOperationName(t: Translator, operation: string): string {
   return usageOperationKeys.has(operation) ? t(`settingsPanel.usageOperations.${operation}`) : operation;
 }
@@ -559,7 +582,7 @@ const navitimeUsageTone: UsageTone = { border: "border-sky-200", bg: "bg-sky-50"
 const ekispertUsageTone: UsageTone = { border: "border-indigo-200", bg: "bg-indigo-50", text: "text-indigo-800", bar: "bg-indigo-600", tableBorder: "border-indigo-100" };
 const odsayUsageTone: UsageTone = { border: "border-fuchsia-200", bg: "bg-fuchsia-50", text: "text-fuchsia-800", bar: "bg-fuchsia-600", tableBorder: "border-fuchsia-100" };
 
-function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, progressLabel, limitLabel, remainingLabel, note, tone, period = "month" }: {
+function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, progressLabel, limitLabel, remainingLabel, note, tone, period = "month", unit }: {
   usage: ProviderUsage;
   refreshing: boolean;
   onRefresh: () => void;
@@ -571,25 +594,29 @@ function MonthlyUsagePanel({ usage, refreshing, onRefresh, title, ariaLabel, pro
   note: string;
   tone: UsageTone;
   period?: "month" | "day";
+  // What `used` counts when it is not requests, e.g. billable characters for speech.
+  unit?: string;
 }) {
   const t = useTranslations("admin");
   const { numberFormat } = useFormatters();
+  const unitLabel = unit ?? t("settingsPanel.siteRequests");
+  const countLabel = unit ?? t("settingsPanel.periodRequests", { period: t(period === "day" ? "settingsPanel.periodDay" : "settingsPanel.periodMonth") });
   const hasLimit = usage.monthly_limit > 0;
   const width = hasLimit ? Math.min(100, Math.max(0, usage.percentage || 0)) : 0;
   return <div className={`mt-6 rounded-2xl border ${tone.border} ${tone.bg} p-5`} aria-label={ariaLabel}>
     <div className="flex flex-wrap items-start justify-between gap-4">
-      <div><p className={`flex items-center gap-2 text-sm font-bold ${tone.text}`}><Gauge size={17} />{title}</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">{t("settingsPanel.siteRequests")}</span></p> : <p className="mt-2 font-semibold text-amber-800">{t("settingsPanel.usageUnavailable")}</p>}</div>
+      <div><p className={`flex items-center gap-2 text-sm font-bold ${tone.text}`}><Gauge size={17} />{title}</p>{usage.available ? <p className="mt-2 text-3xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)} <span className="text-base font-medium text-[var(--muted)]">{unitLabel}</span></p> : <p className="mt-2 font-semibold text-amber-800">{t("settingsPanel.usageUnavailable")}</p>}</div>
       <button type="button" onClick={onRefresh} disabled={refreshing} className={`flex items-center gap-2 rounded-xl border ${tone.border} bg-white px-3 py-2 text-sm font-semibold disabled:opacity-50`}><RefreshCw size={15} className={refreshing ? "animate-spin" : ""} />{t("settingsPanel.refreshUsage")}</button>
     </div>
     {usage.available && <>
       <dl className="mt-4 grid gap-3 sm:grid-cols-3">
-        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{t("settingsPanel.periodRequests", { period: t(period === "day" ? "settingsPanel.periodDay" : "settingsPanel.periodMonth") })}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
+        <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{countLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{numberFormat.format(usage.used || 0)}</dd></div>
         <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{limitLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.monthly_limit) : t("settingsPanel.notSet")}</dd></div>
         <div className="rounded-xl bg-white p-3"><dt className="text-xs text-[var(--muted)]">{remainingLabel}</dt><dd className="mt-1 text-xl font-bold tabular-nums">{hasLimit ? numberFormat.format(usage.remaining || 0) : "—"}</dd></div>
       </dl>
       {hasLimit && <div className="mt-4 h-2 overflow-hidden rounded-full bg-white" role="progressbar" aria-label={progressLabel} aria-valuemin={0} aria-valuemax={usage.monthly_limit} aria-valuenow={Math.min(usage.used || 0, usage.monthly_limit)}><div className={`h-full rounded-full ${(usage.percentage || 0) >= 100 ? "bg-red-500" : (usage.percentage || 0) >= 75 ? "bg-amber-500" : tone.bar}`} style={{ width: `${width}%` }} /></div>}
       <details className="mt-4 rounded-xl bg-white px-4 py-3"><summary className="cursor-pointer text-sm font-semibold">{t("settingsPanel.breakdown")}</summary><dl className="mt-3 grid gap-2 sm:grid-cols-3">{Object.entries(usage.breakdown).map(([operation, count]) => <div key={operation}><dt className="text-xs text-[var(--muted)]">{usageOperationName(t, operation)}</dt><dd className="mt-0.5 font-bold tabular-nums">{numberFormat.format(count)}</dd></div>)}</dl></details>
-      {usage.monthly_history.length > 0 && <div className={`mt-4 overflow-x-auto rounded-xl border ${tone.tableBorder} bg-white`}><table className="admin-responsive-table min-w-[32rem] w-full text-left text-sm"><thead className={`${tone.bg} text-xs text-[var(--muted)]`}><tr><th className="px-3 py-2 font-semibold">{t("settingsPanel.thMonth")}</th><th className="px-3 py-2 font-semibold">{t("settingsPanel.thRequests")}</th><th className="px-3 py-2 font-semibold">{limitLabel}</th><th className="px-3 py-2 font-semibold">{t("settingsPanel.thRemaining")}</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td data-label={t("settingsPanel.thRequests")} className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td data-label={limitLabel} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td data-label={t("settingsPanel.thRemaining")} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>}
+      {usage.monthly_history.length > 0 && <div className={`mt-4 overflow-x-auto rounded-xl border ${tone.tableBorder} bg-white`}><table className="admin-responsive-table min-w-[32rem] w-full text-left text-sm"><thead className={`${tone.bg} text-xs text-[var(--muted)]`}><tr><th className="px-3 py-2 font-semibold">{t("settingsPanel.thMonth")}</th><th className="px-3 py-2 font-semibold">{unit ?? t("settingsPanel.thRequests")}</th><th className="px-3 py-2 font-semibold">{limitLabel}</th><th className="px-3 py-2 font-semibold">{t("settingsPanel.thRemaining")}</th></tr></thead><tbody className="divide-y divide-[var(--line)]">{usage.monthly_history.map((month) => <tr key={month.period}><th className="px-3 py-2.5 font-semibold">{month.period}</th><td data-label={unit ?? t("settingsPanel.thRequests")} className="px-3 py-2.5 tabular-nums">{numberFormat.format(month.used)}</td><td data-label={limitLabel} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_limit) : "—"}</td><td data-label={t("settingsPanel.thRemaining")} className="px-3 py-2.5 tabular-nums">{hasLimit ? numberFormat.format(month.free_remaining) : "—"}</td></tr>)}</tbody></table></div>}
     </>}
     <p className="mt-4 text-xs leading-5 text-[var(--muted)]">{note}</p>
   </div>;
@@ -608,6 +635,13 @@ function NavitimeUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; 
 function EkispertUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
   const t = useTranslations("admin");
   return <MonthlyUsagePanel {...props} title={t("settingsPanel.ekispertTitle")} ariaLabel={t("settingsPanel.ekispertAria")} progressLabel={t("settingsPanel.ekispertProgress")} limitLabel={t("settingsPanel.monthlyCap")} remainingLabel={t("settingsPanel.capRemaining")} tone={ekispertUsageTone} note={t("settingsPanel.ekispertNote")} />;
+}
+
+const azureSpeechUsageTone: UsageTone = { border: "border-teal-200", bg: "bg-teal-50", text: "text-teal-800", bar: "bg-teal-600", tableBorder: "border-teal-100" };
+
+function AzureSpeechUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
+  const t = useTranslations("admin");
+  return <MonthlyUsagePanel {...props} title={t("settingsPanel.azureSpeechTitle")} ariaLabel={t("settingsPanel.azureSpeechAria")} progressLabel={t("settingsPanel.azureSpeechProgress")} limitLabel={t("settingsPanel.monthlyCap")} remainingLabel={t("settingsPanel.capRemaining")} tone={azureSpeechUsageTone} note={t("settingsPanel.azureSpeechNote")} unit={t("settingsPanel.billableCharacters")} />;
 }
 
 function OdsayUsagePanel(props: { usage: ProviderUsage; refreshing: boolean; onRefresh: () => void }) {
@@ -699,9 +733,14 @@ function loadFailure(reason: unknown): LoadFailure {
   };
 }
 
-export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField }: { scope?: AdminSettingsScope; provider?: string; field?: string }) {
+// `providers` narrows the cards further than `categories`: the AI settings page splits the AI
+// category between its API keys tab and its models tab.
+// `focusFirst={false}` keeps the page where it is when no card was linked to, for a panel
+// that sits below other content (the AI settings models tab puts an overview above it).
+export function AdminSettingsPanel({ scope = "providers", provider: linkedProvider, field: linkedField, categories, providers: only, focusFirst = true }: { scope?: AdminSettingsScope; provider?: string; field?: string; categories?: readonly ProviderCategory[]; providers?: readonly string[]; focusFirst?: boolean }) {
   const t = useTranslations("admin");
   const copy = adminSettingsCopy(useLocale());
+  const scopeLabel = (owner: AdminSettingsScope, provider: string) => owner === "providers" && isAiSettingsProvider(provider) ? copy.aiSettings : copy.scopes[owner];
   const budgetCopy = adminCatalogBudgetCopy(useLocale());
   const affiliateCopy = klookAffiliateCopy(useLocale());
   const { sessionIdentity, status: sessionStatus } = useHeaderSession();
@@ -744,8 +783,8 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       }
       return fresh;
     });
-    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout")?.provider);
-  }, [scope, sessionIdentity]);
+    setActivePanel((current) => current || result.providers.find((provider) => provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider, only))?.provider);
+  }, [categories, only, scope, sessionIdentity]);
   const applySnapshotRef = useRef(applySnapshot);
   useEffect(() => { applySnapshotRef.current = applySnapshot; }, [applySnapshot]);
 
@@ -798,9 +837,9 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
 
   useEffect(() => {
     if (!snapshot) return;
-    const defaultProvider = snapshot.providers.find((item) => item.provider !== "runtime" && item.provider !== "layout")?.provider;
+    const defaultProvider = snapshot.providers.find((item) => item.provider !== "runtime" && item.provider !== "layout" && shownIn(categories, item.provider, only))?.provider;
     const requested = linkedProvider || urlProvider;
-    const name = requested === "__audit" || snapshot.providers.some((item) => item.provider === requested)
+    const name = requested === "__audit" || snapshot.providers.some((item) => item.provider === requested && shownIn(categories, item.provider, only))
       ? requested
       : scope === "providers" ? defaultProvider : requested;
     const field = linkedField ?? urlField;
@@ -809,7 +848,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
     if (focusedLink.current === key) return;
     const frame = requestAnimationFrame(() => {
       if (scope === "providers" && activePanel !== name) { setActivePanel(name); return; }
-      if (name === "__audit") { focusedLink.current = key; return; }
+      if (name === "__audit" || (!requested && !focusFirst)) { focusedLink.current = key; return; }
       const candidates = panelRef.current?.querySelectorAll<HTMLElement>("[data-settings-provider]");
       const target = Array.from(candidates || []).find((item) => item.dataset.settingsProvider === name && (!field || item.dataset.settingsField === field));
       if (!target) return;
@@ -818,7 +857,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       (target.querySelector<HTMLElement>("input, select, button, a, h2") || target).focus();
     });
     return () => cancelAnimationFrame(frame);
-  }, [snapshot, scope, linkedProvider, linkedField, activePanel, urlProvider, urlField]);
+  }, [snapshot, scope, categories, only, focusFirst, linkedProvider, linkedField, activePanel, urlProvider, urlField]);
 
   function retryLoad() {
     setLoadError(undefined);
@@ -950,7 +989,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       || Object.keys(provider.config).some((field) => settingsOwner(provider.provider, "config", field) === scope);
     if (scope === "system") return provider.provider === "runtime";
     if (scope === "layout") return provider.provider === "layout";
-    return provider.provider !== "runtime" && provider.provider !== "layout";
+    return provider.provider !== "runtime" && provider.provider !== "layout" && shownIn(categories, provider.provider, only);
   });
   const visibleAudit = snapshot.audit.filter((item) => visibleProviders.some((provider) => provider.provider === item.target));
   const sharedDependencies = isDomainSettingsScope(scope)
@@ -1065,13 +1104,15 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
       return <section key={provider.provider} id={scope === "providers" ? `provider-panel-${provider.provider}` : undefined} role={scope === "providers" ? "tabpanel" : undefined} aria-labelledby={scope === "providers" ? `provider-tab-${provider.provider}` : undefined} className="rounded-[1.75rem] border border-[var(--line)] bg-white p-5 shadow-sm md:p-7">
         <div data-settings-provider={provider.provider} className="flex flex-wrap items-start justify-between gap-4"><div className="max-w-2xl"><div className="flex flex-wrap items-center gap-2"><h2 tabIndex={-1} className="text-xl font-bold">{provider.label}</h2><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${statusClass(provider.status)}`}>{provider.status === "ready" ? t("settingsPanel.statusReady") : provider.status === "disabled" ? t("settingsPanel.statusDisabled") : provider.status === "test_required" ? t("settingsPanel.statusTestRequired") : provider.status === "unverified" ? t("settingsPanel.statusUnverified") : provider.status === "error" ? t("settingsPanel.statusError") : t("settingsPanel.statusPending")}</span></div><p className="mt-2 text-sm leading-6 text-[var(--muted)]">{provider.description}</p><p className="mt-1 text-xs font-semibold text-[var(--teal)]">{provider.status_message}</p>{!internal && <p className="mt-2 text-xs text-[var(--muted)]">{t("settingsPanel.recentCalls", { requests: provider.requests_24h || 0, errors: provider.errors_24h || 0 })}{provider.last_error_at ? t("settingsPanel.lastFailure", { time: dateTime.format(new Date(provider.last_error_at)) }) : ""}</p>}</div>{canEnable && <label data-settings-provider={provider.provider} data-settings-field="enabled" className="flex min-h-11 items-center gap-2 rounded-full bg-[var(--paper)] px-4 py-2 text-sm font-semibold"><input type="checkbox" disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} checked={draft.enabled} onChange={(event) => patchDraft(provider.provider, { enabled: event.target.checked })} />{t("settingsPanel.enable")}</label>}</div>
 
-        {references.length > 0 && <div className="mt-4 space-y-2">{Array.from(new Set(references.map((item) => item.owner))).map((owner) => <details key={owner} open={references.some((item) => item.owner === owner && item.field === deepField)} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] px-4"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">{copy.managedIn} {copy.scopes[owner]} · {references.filter((item) => item.owner === owner).length}</summary><ul className="divide-y divide-[var(--line)] pb-3">{references.filter((item) => item.owner === owner).map((item) => <li key={item.field} data-settings-provider={provider.provider} data-settings-field={item.field} className="flex flex-wrap items-center justify-between gap-x-4 py-2 text-sm"><span className="min-w-0 break-words">{item.field === "enabled" ? t("settingsPanel.enable") : item.field in provider.secrets ? secretMeta(t, item.field).label : provider.provider === "layout" ? t(`layout.fields.${item.field}.label`) : fieldMeta[item.field]?.localized ? t(`providerFields.${item.field}.label`) : fieldMeta[item.field]?.label || item.field} · {item.value}</span><Link href={settingsHref(owner, provider.provider, item.field)} className="inline-flex min-h-11 shrink-0 items-center font-semibold text-[var(--teal)] underline">{copy.scopes[owner]}</Link></li>)}</ul></details>)}</div>}
+        {references.length > 0 && <div className="mt-4 space-y-2">{Array.from(new Set(references.map((item) => item.owner))).map((owner) => <details key={owner} open={references.some((item) => item.owner === owner && item.field === deepField)} className="rounded-xl border border-[var(--line)] bg-[var(--paper)] px-4"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">{copy.managedIn} {scopeLabel(owner, provider.provider)} · {references.filter((item) => item.owner === owner).length}</summary><ul className="divide-y divide-[var(--line)] pb-3">{references.filter((item) => item.owner === owner).map((item) => <li key={item.field} data-settings-provider={provider.provider} data-settings-field={item.field} className="flex flex-wrap items-center justify-between gap-x-4 py-2 text-sm"><span className="min-w-0 break-words">{item.field === "enabled" ? t("settingsPanel.enable") : item.field in provider.secrets ? secretMeta(t, item.field).label : provider.provider === "layout" ? t(`layout.fields.${item.field}.label`) : fieldMeta[item.field]?.localized ? t(`providerFields.${item.field}.label`) : fieldMeta[item.field]?.label || item.field} · {item.value}</span><Link href={settingsHref(owner, provider.provider, item.field)} className="inline-flex min-h-11 shrink-0 items-center font-semibold text-[var(--teal)] underline">{scopeLabel(owner, provider.provider)}</Link></li>)}</ul></details>)}</div>}
 
         {provider.provider === "google_maps" && usage && <GoogleUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "naver_maps" && usage && <NaverUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "navitime" && usage && <NavitimeUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "ekispert" && usage && <EkispertUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "odsay" && usage && <OdsayUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "azure_speech" && usage && <AzureSpeechUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
+        {provider.provider === "azure_speech" && <VideoToolTokens canManage={manage.allowed} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         <fieldset disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="min-w-0 disabled:opacity-70">

@@ -115,6 +115,9 @@ class SafeNewsFetcher:
         self._resolver = resolver
         self._distributed_rate_limiter = rate_limiter
         self._rates: dict[str, _HostRate] = {}
+        # One scan reads many pages from few hosts, so robots.txt is read once per host
+        # for the life of this fetcher (one scan job). None records "not readable".
+        self._robots: dict[str, RobotFileParser | None] = {}
 
     async def close(self) -> None:
         if self._external_client is None:
@@ -162,13 +165,22 @@ class SafeNewsFetcher:
                         if declared_size > MAX_RESPONSE_BYTES:
                             raise UnsafeNewsUrl("news source response is too large")
                     body = bytearray()
+                    # aiter_bytes() already undoes gzip/br, and the limit applies to the
+                    # decoded size, so a small compressed bomb stops at 2 MB too.
                     async for chunk in streamed.aiter_bytes():
                         body.extend(chunk)
                         if len(body) > MAX_RESPONSE_BYTES:
                             raise UnsafeNewsUrl("news source response is too large")
+                    # The rebuilt response holds decoded bytes. Keeping Content-Encoding
+                    # would make httpx decode them a second time (DecodingError on every
+                    # compressed page, which is nearly every real site).
                     response = httpx.Response(
                         streamed.status_code,
-                        headers=streamed.headers,
+                        headers=[
+                            (name, value)
+                            for name, value in streamed.headers.multi_items()
+                            if name.lower() not in {"content-encoding", "content-length"}
+                        ],
                         content=bytes(body),
                         request=streamed.request,
                     )
@@ -183,14 +195,20 @@ class SafeNewsFetcher:
     async def _robots_allowed(self, url: str, allowed_hosts: set[str]) -> bool:
         parsed = urlsplit(url)
         robots_url = urlunsplit(("https", parsed.netloc, "/robots.txt", "", ""))
-        response = await self._request(robots_url, allowed_hosts, {"Accept": "text/plain"})
-        if response.status_code < 200 or response.status_code >= 300:
-            return False
-        body = response.content[:256_000].decode("utf-8", errors="replace")
-        parser = RobotFileParser()
-        parser.set_url(robots_url)
-        parser.parse(body.splitlines())
-        return parser.can_fetch(USER_AGENT, url)
+        if robots_url not in self._robots:
+            response = await self._request(robots_url, allowed_hosts, {"Accept": "text/plain"})
+            if response.status_code == 429 or response.status_code >= 500:
+                # The host is briefly unavailable; that is not a refusal to remember.
+                response.raise_for_status()
+            parser: RobotFileParser | None = None
+            if 200 <= response.status_code < 300:
+                body = response.content[:256_000].decode("utf-8", errors="replace")
+                parser = RobotFileParser()
+                parser.set_url(robots_url)
+                parser.parse(body.splitlines())
+            self._robots[robots_url] = parser
+        cached = self._robots[robots_url]
+        return cached is not None and cached.can_fetch(USER_AGENT, url)
 
     async def fetch(
         self,

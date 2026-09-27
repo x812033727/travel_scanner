@@ -1,22 +1,30 @@
 from __future__ import annotations
 
 import asyncio
+import logging
 from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
 from botocore.exceptions import BotoCoreError, ClientError
+from pydantic import ValidationError
 from redis import Redis as SyncRedis
 from rq import Queue, Retry
 from sqlalchemy import select
 
-from app.community.media import storage
+from app.admin.service import load_runtime_settings
 from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.infra import get_redis
+from app.news_automation.assets import object_storage
 from app.news_automation.fetch import RedisHostRateLimiter, SafeNewsFetcher
 from app.news_automation.models import NewsAsset, NewsCandidate, NewsEvidence
 from app.news_automation.pipeline import process_candidate
 from app.news_automation.scanner import scan_source
+
+# How long a candidate waiting for a Claude subscription account sleeps between tries.
+PAUSE_MINUTES = 30
+
+logger = logging.getLogger(__name__)
 
 
 def _queue() -> tuple[SyncRedis, Queue]:
@@ -61,6 +69,32 @@ def enqueue_candidate(candidate_id: UUID, retry_count: int = 0) -> str:
         connection.close()
 
 
+def enqueue_candidate_once(candidate_id: UUID, reason: str) -> str | None:
+    """Queue one run per candidate, reason and hour; the scheduler calls this every minute.
+
+    RQ pushes a re-used job id onto the queue a second time instead of refusing it, so an
+    existing job is checked first.
+    """
+
+    connection, queue = _queue()
+    try:
+        slot = int(datetime.now(UTC).timestamp() // 3600)
+        job_id = f"news-candidate-{candidate_id}-{reason}-{slot}"
+        if queue.fetch_job(job_id) is not None:
+            return None
+        job = queue.enqueue(
+            "app.news_automation.jobs.run_candidate",
+            str(candidate_id),
+            job_id=job_id,
+            job_timeout=3_600,
+            result_ttl=86_400,
+            failure_ttl=604_800,
+        )
+        return str(job.id)
+    finally:
+        connection.close()
+
+
 async def _enqueue_candidate_async(candidate_id: UUID) -> None:
     await asyncio.to_thread(enqueue_candidate, candidate_id)
 
@@ -97,9 +131,43 @@ def run_candidate(candidate_id: str) -> None:
     async def run() -> None:
         try:
             async with SessionFactory() as session:
-                result = await process_candidate(
-                    session, get_redis(), get_settings(), UUID(candidate_id)
-                )
+                # Model keys and ids live in the admin AI settings (provider_configs) as
+                # well as the environment; the hotspot AI tasks read them the same way.
+                environment = await load_runtime_settings(session)
+                try:
+                    result = await process_candidate(
+                        session, get_redis(), environment, UUID(candidate_id)
+                    )
+                except (ValidationError, ValueError) as error:
+                    # A model reply that failed validation after its repair round (or came
+                    # back incomplete) fails the same way on a rerun, and RQ's retry would
+                    # rerun every stage. The candidate is already marked failed with the
+                    # reason, and an editor can run it again from /admin/news.
+                    logger.warning(
+                        "news candidate %s failed without retry: %s",
+                        candidate_id,
+                        type(error).__name__,
+                    )
+                    return
+                # Only a full concurrency slot comes back in a minute. "disabled" waits for
+                # the orphan sweep once the switch is on again; "skipped" means another
+                # job already owns or finished the candidate. "jev_paused" needs no job
+                # either: the orphan sweep runs it once the UTC day's Jev budget resets.
+                if result == "paused":
+                    # Every subscription account is full: try again once a window has had
+                    # time to move, instead of spending MiniMax on it.
+                    connection, queue = _queue()
+                    try:
+                        paused_slot = int(datetime.now(UTC).timestamp() // 1800)
+                        queue.enqueue_in(
+                            timedelta(minutes=PAUSE_MINUTES),
+                            "app.news_automation.jobs.run_candidate",
+                            candidate_id,
+                            job_id=f"news-candidate-{candidate_id}-paused-{paused_slot}",
+                            job_timeout=3_600,
+                        )
+                    finally:
+                        connection.close()
                 if result == "deferred":
                     connection, queue = _queue()
                     try:
@@ -136,16 +204,24 @@ async def cleanup_retention() -> dict[str, int]:
                 )
             )
         )
-        client = storage()
+        # Built only when an asset actually lives in S3: on a host without object
+        # storage the old unconditional client failed this job every day.
+        client = None
         for asset in assets:
-            try:
-                await asyncio.to_thread(
-                    client.delete_object,
-                    Bucket=get_settings().community_s3_bucket,
-                    Key=asset.storage_key,
-                )
-            except (BotoCoreError, ClientError):
-                continue
+            if asset.content is not None:
+                asset.content = None
+            else:
+                client = client or object_storage()
+                if client is None:
+                    continue
+                try:
+                    await asyncio.to_thread(
+                        client.delete_object,
+                        Bucket=get_settings().community_s3_bucket,
+                        Key=asset.storage_key,
+                    )
+                except (BotoCoreError, ClientError):
+                    continue
             asset.deleted_at = datetime.now(UTC)
             deleted_assets += 1
         evidence = await session.scalars(

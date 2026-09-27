@@ -85,6 +85,10 @@ window.__scan();
 `api` 裡出現 `dayslot-enc`／`timeslot-enc`／`online-reservation-open-schedule` 是訂位區塊真的掛上的旁證；`schedule` 只是營業時間。
 dock 的「今日公休」是「現在不在營業時段」，不是判定依據。頁尾「如果您喜歡」列別家店，不看。
 
+- **不要用 API 的服務欄位判訂位**：`mainServiceType: WAITING` 而 `serviceTypes` 裡還有 `DINING_GLOBAL` 的店（seoul-hyoddeu），渲染後其實只能候位。只信上面這張表。
+- **HTTP 狀態與原始 HTML 什麼都不證明**：每個路徑都回同一個 SPA 殼，`hreflang` 要渲染後才有。渲染後的錯 slug 會顯示真正的 404 頁，這個可以信。
+- **站內搜尋框驅動不了**：它是 React 受控輸入，打字與原生 setter 都不理；`/zh-TW/search?keyword=` 是 404。找店從榜頁或已知 alias 進。
+
 ## 資訊分頁：地址、電話、網站
 
 `navigate` 到 `/zh-TW/shop/<alias>/info`，等「位置」出現，點「原文語言」切成韓文道路名地址（點了之後韓文地址才會進 innerText）：
@@ -104,6 +108,9 @@ dock 的「今日公休」是「現在不在營業時段」，不是判定依據
 ```
 
 「網站」欄是 Instagram、smartstore 或 Naver 時記在 notes，不是來源；是店家自己的網域時去確認它講的是這家分店。
+例外：「網站」欄有時就是這家店自己的 Naver 地點頁（例如 일편등심 명동점、신사꽃게당 해운대점），它可以直接當 Naver 精準頁用，不必等站主貼（見 admin.md）。
+
+zh-TW 的 `/info` 只顯示中文顯示名，沒有韓文店名；韓文店名在店家首頁的名稱列。所以 `/info` 的引文只能用顯示名＋韓文地址。
 
 ## 代理提示要帶的東西
 
@@ -111,5 +118,6 @@ dock 的「今日公休」是「現在不在營業時段」，不是判定依據
 - 官方來源順序：觀光局店家頁（Visit Seoul `KOP…`／`ENP…`／`TCP…` 同尾碼同一頁；KTO 韓文 `detail/ms_detail.do?cotid=` 與英文 `contentsView.do?vcontsId=`；Visit Busan、Visit Jeju、`tour.daegu.go.kr`）→
   區廳（江南區 `visitgangnam.net`、首爾觀光財團 Taste of Seoul）→ 政府名冊 → 店家官網或母公司門市清單（要列這家分店的地址）。
   `korean.visitkorea.or.kr` 店家頁的地址是前端載入、內建瀏覽器導向會被彈回，改用英文站或 KTO 韓文的 `ms_detail` 網址。
+- 釜山的缺口：Visit Busan 不收連鎖分店與酒吧；`*.haeundae.go.kr` 與 `suksungdo.kr`（DNS 被導向黑洞）、`suyeong.go.kr`（TLS 被切）、`busan.go.kr/food`（401）在這個環境連不上，不要重試。另一個母公司分店名冊是 `sgfco.kr`。
 - `/info` 分頁「網站」欄的網址原樣記進 `catchtable.website`（Instagram、smartstore 也記）；找不到官方頁時 `merchant_platform` 來源只能是這家的 CatchTable 店頁／`/info`，或等於這個欄位的網址，引文仍要含店名與地址。
 - 分片檔每家寫完就覆寫；回報只回一張表。研究代理判訂位時分頁在背景，**一定要用上面的包裝片段**，否則會把可訂位的店看成候位。

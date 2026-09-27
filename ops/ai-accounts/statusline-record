@@ -1,0 +1,4 @@
+#!/bin/sh
+# Claude Code status line for the managed accounts: records plan usage for
+# /admin/ai-accounts, then prints the line. See ai_accounts_agent/statusline.py.
+exec /usr/bin/python3 -I /opt/mokaair-ai-accounts/ai_accounts_agent/statusline.py "$@"

@@ -1,5 +1,10 @@
 # Google AdSense 可行性評估
 
+> **2026-09-24 現況**：
+> - 2026-09-23 送審，以「缺乏價值的內容」退件。退件後的處理與複審時機見 `tasks/done/2026-09-23-reposition-the-site-as-a-travel.md`。
+> - AdSense 以外的方案評估在 [`monetization-alternatives.md`](monetization-alternatives.md)。
+> - 第八節的 `adsense-auto-ads-overlay-setup` 要等重新通過審核才有意義。
+
 2026-09-13。問題是「文章分享加入 Google 廣告的可能性」。本文以 **AdSense**（在自己的頁面放 Google
 展示廣告賺錢）為主，另附一節 **付費 Google Ads 導流**。這是評估，不是實作；後續工作在
 `tasks/open/` 的五張票，見第八節。

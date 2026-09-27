@@ -21,6 +21,14 @@
 - 單篇自檢：`<PY> <ROOT>/docs/news-2026-batch-4/check_article.py <SLUG>`；五語系加 `--full`；出圖後加 `--assets`。規則從 `app.guides` 匯入、不重抄；`docs/news-2026-batch-4/verticals.py` 依 slug 前綴決定垂直，認 `MOKAAIR_ROOT`。
 - 翻譯錯字：`docs/news-2026-batch-4/translation_checks.py`（ja 的 cp932 編不出的字、ko 在 KS X 1001 之外的音節、en 與 ko 裡源文沒有的 CJK 引文；sonnet 的錯字只有這個抓得到）；房規空格 `docs/news-2026-batch-4/space_cjk.py`。
 - 審稿者讀的對照檔：`docs/news-2026-batch-4/review_dumps.py`（段落對齊的 zh-TW 與目標語；別給審稿者 pack JSON）。
+- `review_dumps.py`、`normalize_locales.py`、`sync_captions.py` 以 slug 前綴掃檔，`ai-news-` 也會掃到第三批的 38 篇：一律在後面列出明確的 slug。
+- `update_index.py` 的 COUNT 規則（只守 AI 索引）會擋「數字＋兩個字＋新聞」這種寫法，改寫成「一月至九月」之類。
+- slug 裡的日期在撰稿時可能就是錯的（GPT-Live 是 7/8 不是 7/9）；改名要同時改 BRIEF、檢查腳本、索引腳本與票的 scope。
+- NCC 網站改成 SPA，舊新聞稿網址都失效：先確認入口再派研究。
+
+## 逐語審稿分組
+
+一組負責一對垂直的一個語言；ja／ko 審稿用 opus，en／zh-CN 用 sonnet 就夠。整批共通的 ko 修正（主詞「공식은／공식이」、統一成 가상자산）由協調者以 `coordinator_edit` 一次套用，不塞進每篇的清單；敬語語體的問題交給同一個代理統一修。發下去的術語表本身也會錯（ko「직접 검증하지 않았고」應為「직접 시험해 보지 않았고」），要留推翻它的管道。
 
 ## zh-TW-only 批次
 

@@ -1,11 +1,11 @@
 import { expect, test, type Page } from "@playwright/test";
 
 const OWNER_NAVIGATION = [
-  "/admin", "/admin/guides", "/admin/news", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
+  "/admin", "/admin/guides", "/admin/news", "/admin/videos", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
   "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/users",
   "/admin/analytics", "/admin/partners", "/admin/settings", "/admin/usage-settings",
   "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/database",
-  "/admin/deployments", "/admin/audit",
+  "/admin/deployments", "/admin/audit", "/admin/ai-accounts",
 ];
 
 const ownerPassword = "isolated-admin-workspace-password-123";
@@ -13,12 +13,13 @@ const ROLE_NAVIGATION: Record<string, string[]> = {
   viewer: OWNER_NAVIGATION.filter((href) => !["/admin/database", "/admin/deployments"].includes(href)),
   support: ["/admin", "/admin/community", "/admin/pet-friendly", "/admin/users", "/admin/audit"],
   content: [
-    "/admin", "/admin/guides", "/admin/news", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
+    "/admin", "/admin/guides", "/admin/news", "/admin/videos", "/admin/hotspots", "/admin/foods", "/admin/hotels", "/admin/travel-services",
     "/admin/catalog-review", "/admin/community", "/admin/pet-friendly", "/admin/partners", "/admin/audit",
   ],
   operations: [
     "/admin", "/admin/analytics", "/admin/settings", "/admin/usage-settings",
     "/admin/layout-settings", "/admin/ui-text", "/admin/site-pages", "/admin/system-settings", "/admin/audit",
+    "/admin/ai-accounts",
   ],
   database_operator: ["/admin", "/admin/database", "/admin/audit"],
   deployer: ["/admin", "/admin/deployments", "/admin/audit"],

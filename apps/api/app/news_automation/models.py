@@ -13,6 +13,7 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
+    LargeBinary,
     String,
     Text,
     UniqueConstraint,
@@ -32,6 +33,10 @@ CANDIDATE_STATUSES = (
     "jev_review",
     "shadow_review",
     "manual_review",
+    # Stopped at the evidence gate before any model call; not an editor's work item.
+    "needs_evidence",
+    # Stopped before a five-locale article existed: only a new draft or a rejection helps.
+    "needs_redraft",
     "published",
     "duplicate",
     "rejected",
@@ -72,6 +77,10 @@ class NewsAutomationSettings(Timestamped, Base):
             "verifier_provider IN ('openai','anthropic','minimax','gemini')",
             name="ck_news_verifier_provider",
         ),
+        CheckConstraint(
+            "editor_provider IN ('openai','anthropic','minimax','gemini')",
+            name="ck_news_editor_provider",
+        ),
         CheckConstraint("global_concurrency BETWEEN 1 AND 8", name="ck_news_global_concurrency"),
         CheckConstraint(
             "per_vertical_concurrency BETWEEN 1 AND 4",
@@ -96,6 +105,12 @@ class NewsAutomationSettings(Timestamped, Base):
     writer_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
     verifier_provider: Mapped[str] = mapped_column(String(16), default="openai")
     verifier_model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    # The final editor checks each translated locale against the evidence before Jev's last
+    # call (owner decision, 2026-09-25; migration 0094).
+    editor_provider: Mapped[str] = mapped_column(String(16), default="anthropic")
+    editor_model: Mapped[str | None] = mapped_column(
+        String(128), nullable=True, default="claude-opus-5-5"
+    )
     global_concurrency: Mapped[int] = mapped_column(Integer, default=2)
     per_vertical_concurrency: Mapped[int] = mapped_column(Integer, default=1)
     min_shadow_days: Mapped[int] = mapped_column(Integer, default=14)
@@ -323,5 +338,9 @@ class NewsAsset(Base):
     width: Mapped[int] = mapped_column(Integer)
     height: Mapped[int] = mapped_column(Integer)
     is_public: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
+    # The image itself on a host without object storage (the production host has none);
+    # None when it lives in S3 under storage_key. A candidate's seven images are a few
+    # hundred kilobytes, and retention clears them with the rest of its unpublished assets.
+    content: Mapped[bytes | None] = mapped_column(LargeBinary, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)

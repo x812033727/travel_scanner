@@ -1,0 +1,859 @@
+{
+  "slug": "crypto-news-japan-onchain-finance-forum-20260925",
+  "vertical": "crypto",
+  "display_order": 230,
+  "event_date": "2026-09-25",
+  "event_date_basis": "兩份公表頁（https://www.fsa.go.jp/news/r8/singi/20260925.html 與 https://www.fsa.go.jp/news/r8/singi/20260925-2.html）右上角都印「令和８年９月25日」與「金融庁」，金融廳「報道発表資料」列表（https://www.fsa.go.jp/news/index.html，2026-09-26T13:45:15Z 重抓，200／60,425 bytes）也把兩則列在「令和８年９月25日」之下。頁面沒有印發布時刻；依 DELTA-4-8 第 4 條（令和 8 年 9 月 25 日公表）與同條「沒有時刻的不換算」的判例，事件日照發布者日期寫 2026-09-25，不換算、不寫時刻。日本的日期是日本時間（UTC+9，比台北快一小時），因為沒有時刻，不宣稱台北時間的時點。第一次會議是另一個日期：開會通知印「令和８年９月30日（水曜）14時00分～15時00分」，是日本時間；正文若寫時刻，要寫明日本時間，並可另註台北時間下午 1 點至 2 點（編輯換算，要標明）。別紙２節錄的「成長投資を促進するための金融戦略」日期是 2026年７月21日，是背景文件的日期，不是事件日。兩份 PDF 的檔案中繼資料（別紙１ CreationDate 2026-09-15、別紙２ ModDate 2026-09-17）是檔案製作時間，不是公布日，不寫進正文。",
+  "title": "日本金融廳宣布成立鏈上金融論壇：把穩定幣、代幣化存款與國債代幣化列入跨部會檢討",
+  "title_candidates": [
+    "日本金融廳宣布成立鏈上金融論壇：把穩定幣、代幣化存款與國債代幣化列入跨部會檢討",
+    "日本金融廳成立鏈上金融論壇：是檢討場域，不是修法或核准任何產品",
+    "日本金融廳成立「AI 時代的鏈上金融論壇」：9 月 30 日首次開會、不開放旁聽",
+    "日本金融廳的鏈上金融論壇：一個論壇、兩個研究會，檢討清單從穩定幣到量子電腦風險",
+    "日本金融廳成立鏈上金融論壇：日銀當座預金上鏈是檢討項目，不是日銀的決定"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "title": "金融庁：「AI時代を見据えたオンチェーン金融フォーラム」について",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "publisher": "金融庁（日本金融廳）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:17Z",
+      "http_status": 200,
+      "bytes": 35662,
+      "verbatim_quote": "横断的に検討を進める場としての「AI時代を見据えたオンチェーン金融フォーラム」を立ち上げます。"
+    },
+    {
+      "title": "金融庁：「AI時代を見据えたオンチェーン金融フォーラム」（第１回）の開催について",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "publisher": "金融庁（日本金融廳）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:20Z",
+      "http_status": 200,
+      "bytes": 35261,
+      "verbatim_quote": "※一般傍聴の受付はいたしません。議事概要は、会議後、金融庁ウェブサイトにて公表されます。"
+    },
+    {
+      "title": "金融庁（別紙１）：AI時代を見据えたオンチェーン金融イニシアティブ（PDF）",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "publisher": "金融庁（日本金融廳）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:22Z",
+      "http_status": 200,
+      "bytes": 239344,
+      "verbatim_quote": "以下に関する制度の在り方等について点検・検討"
+    },
+    {
+      "title": "金融庁（別紙２）：「成長投資を促進するための金融戦略」（2026年７月21日）抜粋（PDF）",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "publisher": "金融庁（日本金融廳）刊登的附件；節錄的文件本身是 2026-07-21 的「成長投資を促進するための金融戦略」，節錄沒有寫制定機關",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:24Z",
+      "http_status": 200,
+      "bytes": 429967,
+      "verbatim_quote": "まずは2027年初、中間整理をまとめる。"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北 21:45–21:50）本人以 curl -sSL --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐一重抓，同一主機間隔 ≥1.5 秒，請求沒有帶任何人的姓名、email 或個人資料；四條 sources[] 全部讀到正文，bytes 是落地檔案大小（stat），原始檔與抽出的文字在 C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\_raw\\crypto-news-japan-onchain-finance-forum-20260925\\（fetch-log.tsv 是逐筆紀錄）。\n(1) https://www.fsa.go.jp/news/r8/singi/20260925.html → 200、35,662 bytes（forum.html）。UTF-8 的一般 HTML，正文在 <!-- main STRAT --> 與 <!-- main END --> 之間：右上「令和８年９月25日／金融庁」、h1 標題、「１．趣旨」兩段、別紙１與別紙２兩個 PDF 連結、「所管」。與探索代理 12:58Z 的紀錄同 bytes。頁面上的「Note: This page is machine translated.」是隱藏的機器翻譯切換字樣（display:none），不是這一頁的狀態。\n(2) https://www.fsa.go.jp/news/r8/singi/20260925-2.html → 200、35,261 bytes（forum-1st.html）。正文：日時、会場、議事（予定）四項、「※一般傍聴の受付はいたしません。」一段，以及「（参考）開催実績」連結到 /singi/ai_onchain/index.html。\n(3) https://www.fsa.go.jp/singi/ai_onchain/01.pdf → 200、239,344 bytes、1 頁（bessi1.pdf）。用系統 python 的 pypdf 抽文字（bessi1.txt，798 字）；因為這是一張圖解，pypdf 的文字順序會把左右兩欄與上下框交錯，所以另用 PyMuPDF 算繪成 PNG（bessi1-p1.png）並輸出每個文字框的座標（bessi1-p1-blocks.txt），逐框確認哪一條屬於論壇、哪一條屬於哪個研究會。\n(4) https://www.fsa.go.jp/singi/ai_onchain/02.pdf → 200、429,967 bytes、3 頁（bessi2.pdf，pypdf 抽出 2,386 字，另算繪三頁 PNG 對照）。每頁頁首是「成長投資を促進するための金融戦略（2026年７月21日）関連部分抜粋①～③」。探索代理下載了但沒讀，這次全文讀過。\n引文比對方法：HTML 去掉註解、script／style 與標籤後 html.unescape、空白收成一格，引文是其中的連續字串。PDF 的引文以去掉所有空白字元後比對，因為 pypdf 會在日文中插入原文沒有的空格與換行（例如「トー クン化預金」「Dec entralized」「日銀 当座預金」，算繪出來的頁面沒有這些空格）；引文照算繪頁面上看得到的字寫，不含這些人工空白。\n另外重抓、只用來判斷但不列入 sources[] 的頁面（都從官方頁的連結進入，沒有猜網址）：開會通知連出的「開催実績」頁 https://www.fsa.go.jp/singi/ai_onchain/index.html（200／34,796；目前只有「趣旨」一則與「第１回　令和８年９月30日開催」的開催通知，沒有議事概要，這是 9/30 之後要重抓的頁面）；報道発表資料列表裡 7 月 21 日「成長投資を促進するための金融戦略　ー 資産運用立国のアップグレード ー」的連結 https://www.fsa.go.jp/policy/fsa.html（200／35,721；頁面標題是「政府方針における金融庁関連の施策」，把這份戰略列在「最新の方針」下並連到內閣官房網站）；列表裡 8 月 5 日「金融庁の組織再編の公表」https://www.fsa.go.jp/news/r8/20260805.html（200／38,268）；英文新聞頁 https://www.fsa.go.jp/en/news/index.html（200／31,559，最新一則仍是 September 15, 2026，沒有這則的英文版）。這四頁的內容一律不進正文，理由見 unverified_or_excluded。\n與探索代理的候選清單（candidates-crypto.md 第 1 則）比對，有兩處是候選清單寫錯、以來源為準：一、候選清單寫兩個研究會檢討的項目包括「国債等のトークン化対応」，但別紙１的算繪版面與座標顯示這一條在論壇框的右欄（與 SC・代幣化存款用於公金給付、SC 在各法令的處理並列），不在任何一個研究會底下；「量子コンピュータによる危殆化リスクの把握」則在研究會②（AI 等）底下。二、候選清單寫別紙１列的「都是」「以下に関する制度の在り方等について点検・検討」的項目，但這一句只是研究會①框內的引言，論壇框的八條是另一種寫法（作成、継続・拡大、促進、連携・発信、対応、活用、整理・明確化）。",
+  "verified_facts": [
+    {
+      "fact": "發布日與發布者：公表頁右上角印令和 8 年 9 月 25 日（2026-09-25）與金融廳；沒有印時刻。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "令和８年９月25日"
+    },
+    {
+      "fact": "公表頁的正式標題：〈「AI時代を見据えたオンチェーン金融フォーラム」について〉。論壇名稱原文是「AI時代を見据えたオンチェーン金融フォーラム」（中文可譯「著眼 AI 時代的鏈上金融論壇」），翻譯時名稱照日文原文。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "「AI時代を見据えたオンチェーン金融フォーラム」について"
+    },
+    {
+      "fact": "金融廳說明的理由（金融廳的看法，要歸因）：隨著 AI 與區塊鏈等技術進展、金融交易的機制正在改變，推動以區塊鏈技術為基礎的「鏈上金融」的社會實裝，以及促進金融機構等健全利用 AI，是重要的事。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AIやブロックチェーン等の技術の進展により、金融取引の仕組みが変化する中、ブロックチェーン技術を基盤とする「オンチェーン金融」の社会実装や、金融機関等におけるAIの健全な利活用の促進に向けた取組を進めていくことが重要です。"
+    },
+    {
+      "fact": "這次做的事：金融廳以「AI時代を見据えたオンチェーン金融イニシアティブ」（倡議）的名義，與「関係省庁等」（相關省廳等）一起，設立一個「橫斷地進行檢討的場域」，也就是這個論壇。頁面用的動詞是「立ち上げます」（設立、啟動）。這是成立檢討場域，不是修法、不是核准任何產品；頁面沒有列出「関係省庁等」是哪些機關。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "このため、金融庁は、「AI時代を見据えたオンチェーン金融イニシアティブ」として、関係省庁等とともに、本分野の推進を加速するべく、横断的に検討を進める場としての「AI時代を見据えたオンチェーン金融フォーラム」を立ち上げます。"
+    },
+    {
+      "fact": "承辦單位（「所管」）是資產運用・保險監督局底下的「暗号資産・ステーブルコイン課」的數位決済企劃室。這是頁面上唯一出現「暗号資産」的地方；頁面沒有寫這個課何時成立。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "資産運用・保険監督局 暗号資産・ステーブルコイン課 デジタル決済企画室"
+    },
+    {
+      "fact": "公表頁附兩份 PDF：別紙１〈AI時代を見据えたオンチェーン金融イニシアティブ〉，以及別紙２〈「成長投資を促進するための金融戦略」（2026年７月21日）抜粋〉，也就是 7 月 21 日一份金融戰略的節錄。節錄沒有寫這份戰略是由哪個機關制定。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "「成長投資を促進するための金融戦略」（2026年７月21日）抜粋"
+    },
+    {
+      "fact": "同日另一則公表：論壇第一次會議的開會通知，標題〈「AI時代を見据えたオンチェーン金融フォーラム」（第１回）の開催について〉，同樣印令和 8 年 9 月 25 日。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "「AI時代を見据えたオンチェーン金融フォーラム」（第１回）の開催について"
+    },
+    {
+      "fact": "第一次會議的時間：令和 8 年 9 月 30 日（星期三）14:00–15:00，日本時間（換算台北時間是 13:00–14:00，這是編輯換算，要標明）。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "日時：令和８年９月30日（水曜）14時00分～15時00分"
+    },
+    {
+      "fact": "第一次會議的地點：中央合同廳舍第 7 號館 13 樓共用第 1 特別會議室。頁尾的金融廳地址也是「東京都千代田区霞が関3－2－1 中央合同庁舎第７号館」，但開會通知沒有寫「在金融廳內」，正文最多寫到「東京的中央合同廳舍第 7 號館」，或乾脆不寫地點。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "会場：中央合同庁舎第７号館 13階共用第1特別会議室"
+    },
+    {
+      "fact": "第一次會議的議程標為「予定」（預定），四項依序是開會、「関係省庁等報告」（相關省廳等報告）、討論、閉會。議程沒有列出任何決議事項。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "関係省庁等報告"
+    },
+    {
+      "fact": "第一次會議不受理一般旁聽；會後在金融廳網站公布的是「議事概要」（會議摘要），不是逐字的議事錄。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "※一般傍聴の受付はいたしません。議事概要は、会議後、金融庁ウェブサイトにて公表されます。"
+    },
+    {
+      "fact": "開會通知頁底下有「（参考）開催実績」連結，連到論壇自己的頁面（/singi/ai_onchain/index.html）；讀者之後可以從這裡找議事概要。截至 2026-09-26 這一頁只有趣旨與第一次會議的開會通知（這一頁本身不在 sources[]，只能寫「從開會通知頁的開催実績連結進入」）。",
+      "url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+      "is_vendor_claim": false,
+      "verbatim_quote": "開催実績"
+    },
+    {
+      "fact": "別紙１的第一句是金融廳的看法（要歸因）：AI 時代的支付要具備「24 小時 365 天連續運轉」「與商流、物流連動的可程式性」「作為支付基礎設施受信賴的穩定性與安全性」三個要素，因此重要的是推動以區塊鏈為基礎的「鏈上金融」，並與既有金融基礎設施（鏈下金融）取得最佳組合。注意是「最佳組合」（ベストミックス），不是取代既有系統。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AI時代の決済は、「24時間365日連続稼働」、「商流・物流と繋がるプログラマビリティ」、「決済基盤として信頼される安定性・安全性」の要素を備えた、ブロックチェーン技術を基盤とする「オンチェーン金融」の推進と、既存の金融インフラ（オフチェーン金融）とのベストミックスが重要。"
+    },
+    {
+      "fact": "別紙１第二句：為了實現鏈上金融，這次設立論壇，由相關省廳等進行「以社會實裝為目標的推動等」的檢討。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AI時代を見据えた「オンチェーン金融」の実現に向け、「AI時代を見据えたオンチェーン金融フォーラム」を今般立ち上げ、関係省庁等において、「オンチェーン金融」の社会実装の推進等に向けた検討を行う。"
+    },
+    {
+      "fact": "別紙１第三句：另外兩件事——①讓鏈上金融發展的環境整備、②對 AI 等技術的適應——由兩個研究會進行檢討。文件沒有說這兩個研究會是新設還是既有的，也沒有列成員或開會日期。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "あわせて、①「オンチェーン金融」を発展させる環境整備、②AI等の技術への適応については、２つの研究会で検討を進める。"
+    },
+    {
+      "fact": "別紙１圖解的論壇框副標：「鏈上金融的社會實裝、AI 等的健全利用的推動」。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "＜オンチェーン金融の社会実装・AI等の健全な利活用の推進＞"
+    },
+    {
+      "fact": "論壇框左欄第 1 條：以官民合作製作路線圖。（別紙１的論壇框共八條，左欄五條、右欄三條；版面以算繪圖與文字框座標確認。）",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "官民連携でのロードマップ作成"
+    },
+    {
+      "fact": "論壇框左欄第 2 條：「決済高度化プロジェクト（PIP）」的繼續與擴大。來源沒有展開 PIP 的英文全名，也沒有說明它過去做過什麼。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "決済高度化プロジェクト（PIP）の継続・拡大"
+    },
+    {
+      "fact": "論壇框左欄第 3 條：促進建構新的支付系統。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "新たな決済システムの構築の促進"
+    },
+    {
+      "fact": "論壇框左欄第 4 條：為國際間的鏈上金融實裝進行合作與對外發信。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "国際的なオンチェーン金融実装に向けた連携・発信"
+    },
+    {
+      "fact": "論壇框左欄第 5 條：「日銀当座預金」（金融機構存在日本銀行的當座存款）的鏈上對應。這是列在論壇框裡的工作項目，不是日本銀行的決定；別紙１沒有寫 CBDC，也沒有寫時程。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "日銀当座預金のオンチェーン対応"
+    },
+    {
+      "fact": "論壇框右欄第 1 條：把穩定幣（SC）與代幣化存款（トークン化預金）用在公款給付上。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "ステーブルコイン（SC）・トークン化預金の公金給付への活用"
+    },
+    {
+      "fact": "論壇框右欄第 2 條：整理、明確化穩定幣在各種法令中的處理方式。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "SCの諸法令における取扱いの整理・明確化"
+    },
+    {
+      "fact": "論壇框右欄第 3 條：國債等的代幣化對應。這一條在論壇框裡，不在研究會底下（候選清單寫錯）。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "国債等のトークン化対応"
+    },
+    {
+      "fact": "研究會①的名稱：框頭是「①環境整備に係る研究会」，括號裡的正式名稱是「デジタル・分散型金融への対応のあり方等に関する研究会」（中文可譯「數位・分散式金融因應方式等研究會」），翻譯時照日文原名。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "デジタル・分散型金融への対応のあり方等に関する研究会"
+    },
+    {
+      "fact": "研究會①框內的引言是「就以下事項的制度應有樣貌等進行點檢與檢討」，底下三條：各種資產的代幣化、穩定幣、DEX・DeFi 與錢包提供業者。動詞是「点検・検討」（點檢、檢討），不是開放或禁止。這一句只管研究會①這三條，不涵蓋論壇框。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "以下に関する制度の在り方等について点検・検討"
+    },
+    {
+      "fact": "研究會①第 3 條原文：DEX・DeFi 與錢包提供業者（同框另兩條是「様々な資産のトークン化」「ステーブルコイン」）。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "DEX・DeFiやウォレット提供業者"
+    },
+    {
+      "fact": "研究會②的名稱：框頭是「②AI等の健全な利活用に係る研究会」，括號裡的正式名稱是「AI等の健全な利活用の推進に関する研究会」（中文可譯「推動健全利用 AI 等研究會」）。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "AI等の健全な利活用の推進に関する研究会"
+    },
+    {
+      "fact": "研究會②框內三條：金融機構健全利用 AI 等、隨 AI 普及的市場與金融機構監督應有樣貌、掌握量子電腦造成的危殆化（被破解）風險。量子電腦這一條屬於研究會②。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "量子コンピュータによる危殆化リスクの把握"
+    },
+    {
+      "fact": "別紙２的每一頁頁首都寫明它是「成長投資を促進するための金融戦略（2026年７月21日）」的相關部分節錄（抜粋①～③），節錄的章節是「４．金融システムを支えるインフラへの投資」底下的「４－１．AI時代を見据えたオンチェーン金融イニシアティブ」。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": false,
+      "verbatim_quote": "成長投資を促進するための金融戦略（2026年７月21日）関連部分抜粋"
+    },
+    {
+      "fact": "7 月戰略的背景說法（要歸因，是文件的看法）：在 AI 代理人自主進行經濟活動的「エージェンティックコマース」（代理式商務）時代，商業交易不再受語言與時差限制，支付也被要求對應。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AIエージェントが自律的に経済活動を遂行する「エージェンティックコマース」の時代では、商取引は言語・時差に関係なく行われるようになり、決済もこれに対応することが求められる。"
+    },
+    {
+      "fact": "7 月戰略的風險說法（要歸因，而且是「おそれ」＝可能）：如果日本的支付基礎設施無法對應，可能加深對海外支付基礎設施的依賴、降低日本的競爭力並提高經濟安全上的風險。「おそれ」管到整串後果（連用形「依存が強まり」與「リスクを高める」共用同一個「おそれがある」），所以「依賴加深」也要寫成「可能」，不寫成「依賴會加深」。（第二輪查核 2026-09-26 改）",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "我が国の決済基盤がこれらに対応できないと、海外決済基盤への依存が強まり、我が国の競争力低下や経済安全保障上のリスクを高めるおそれがある。"
+    },
+    {
+      "fact": "7 月戰略當時寫的計畫是「2026 年夏天」設立論壇。這是 7 月文件的預定；9 月 25 日才公布設立。正文不評論兩者的先後（不寫延遲、如期或提前）。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "横断的に検討を進める場としての「AI時代を見据えたオンチェーン金融フォーラム」を2026年夏に立ち上げる。"
+    },
+    {
+      "fact": "7 月戰略寫論壇會「包含以下三個觀點」進行檢討——(1) 鏈上金融的社會實裝推動、(2) 讓鏈上金融發展的環境整備、(3) 支撐新時代的 AI 等技術的適應。「含め」（包含）表示三個觀點不是全部範圍。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "フォーラムにおいて以下の３つの観点を含め検討を進め"
+    },
+    {
+      "fact": "7 月戰略寫的時程：先在 2027 年初整理出「中間整理」（期中彙整）。這是 7 月文件寫的預定，不是法案時程，也不是最終結論；9 月 25 日的公表頁與開會通知都沒有重述這個時程。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "まずは2027年初、中間整理をまとめる。"
+    },
+    {
+      "fact": "7 月戰略也寫：為了讓金融廳在與相關省廳合作下，對民間資金決済整體的應有樣貌發揮主導角色，會檢討金融廳必要的組織擴充。這是 7 月文件寫的「検討する」（檢討）；sources[] 沒有寫這項擴充之後是否或何時完成，正文不寫「還沒有完成」也不寫「已完成」（8 月 7 日生效的組織再編頁不在 sources[]，見 unverified_or_excluded 第一條）。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "金融庁の必要な組織拡充を検討する。"
+    },
+    {
+      "fact": "7 月戰略對 PIP 的寫法：繼續支援實證實驗，並支援擴大官民合作的使用情境，包括把鏈上支付的使用場合擴大到含貿易結算在內的其他領域。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "決済高度化プロジェクト（PIP）において、実証実験の支援を継続するとともに、オンチェーン決済の活用場面を貿易決済を含むその他の分野へ拡大することを含め、官民連携でのユースケースの拡大を支援する。"
+    },
+    {
+      "fact": "7 月戰略的國際段（一）：為了讓日圓計價穩定幣也能在海外使用，文件認為與其他幣別穩定幣的互通很重要，因此要與各國主管機關對話，目標包括在價值保全、贖回規則等方面建立各國監理上的「イコールフッティング」（對等條件）。是「對話」，不是協議或核准。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "価値の保全や償還ルール等についての各国間の規制・監督におけるイコールフッティングの確立等に向け、各国当局間による対話を行う。"
+    },
+    {
+      "fact": "7 月戰略的國際段（二）：就包含鏈上金融在內的跨境匯款高度化，創設與亞洲的官民政策對話框架。除了「アジア」（亞洲）與日本，文件沒有點名任何國家或地區，也沒有點名亞洲的哪一國（台湾 0 次）；正文不可寫「沒有點名任何國家或地區」。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "アジアとの官民政策対話の枠組みを創設し"
+    },
+    {
+      "fact": "7 月戰略寫會追蹤「相關省廳等」各自的工作進度，底下列五個主體（見以下五條）。這五個是被追蹤進度的對象，不是論壇的成員名單。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "オンチェーン金融の推進に向け、以下のとおり関係省庁等の取組状況のフォローアップを行う。"
+    },
+    {
+      "fact": "追蹤對象一：日本銀行——就日銀當座預金的鏈上對應，「年內」彙整為實裝整理論點、以及實現路徑的檢討狀況。這是 7 月 21 日的戰略文件寫日本銀行會做什麼，不是日本銀行自己的公告；「年内」照原文寫，不改寫成具體日期。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "日本銀行において、日銀当座預金のオンチェーン対応につき、年内に実装に向けた論点整理と実現に向けた道筋に関する検討状況について取りまとめる。"
+    },
+    {
+      "fact": "追蹤對象二：「業界団体」（業界團體，文件沒有點名是哪一個）——檢討代幣化存款等與物流、商流資料連動時代的銀行業務應有樣貌。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "業界団体において、トークン化預金等が物流・商流とデータ連携する時代における銀行業務の在り方について検討を行う。"
+    },
+    {
+      "fact": "追蹤對象三：デジタル庁（數位廳）——檢討利用鏈上支付的可程式性，把穩定幣或代幣化存款用於公款給付的可能性。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "デジタル庁において、オンチェーン決済のプログラマビリティの機能を活かしたSCやトークン化預金の公金給付への活用可能性について検討を進める。"
+    },
+    {
+      "fact": "追蹤對象四：内閣官房デジタル行財政改革会議事務局（內閣官房的數位行財政改革會議事務局）——就穩定幣「準於金錢」的使用可能性等，進行跨省廳檢討，以整理、明確化它在各法令中的處理。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "内閣官房デジタル行財政改革会議事務局において、SCの金銭に準じた利用可能性等について、諸法令における取扱いを整理・明確化するための省庁横断的な検討を進める。"
+    },
+    {
+      "fact": "追蹤對象五：財務省——檢討國債等的代幣化對應，以及依投資人需求讓本息支付可以用鏈上支付進行。是「検討を進める」，不是已決定發行代幣化國債。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "財務省において、国債等のトークン化対応、及び元利払いを投資家のニーズに応じてオンチェーン決済を可能とすることの検討を進める。"
+    },
+    {
+      "fact": "7 月戰略的環境整備段對穩定幣的寫法：舉例而言，就以準備資產（裏付け資産）應有樣貌為首的穩定幣制度框架諸論點，連同優缺點一起點檢。「例えば」是舉例，「点検」是點檢，不是已決定修改準備資產規定。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "例えば、裏付け資産の在り方を始めとするSCの制度的枠組みに関する諸論点について、メリット・ デメリットを含めて点検を行う。"
+    },
+    {
+      "fact": "7 月戰略對 DEX／DeFi 與錢包業者的寫法：就以 DEX 為首的 DeFi 與錢包提供業者的風險降低措施（包含配合技術性質、不多不少的規制）應有樣貌，一邊關注各國動向一邊檢討。是「検討を行う」，不是開放或已訂規則；括號裡的「過不足のない規制」要照原文的意思保留（不過度也不不足），不可只寫「放寬」或只寫「加強」。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "DEX（Decentralized Exchange：分散型取引所）を始めとするDeFi（Decentralized Finance：分散型金融）や、ウォレット提供業者に関するリスク低減策（技術的性質に合わせた過不足のない規制を含む）の在り方について、各国の動向も注視しながら、検討を行う。"
+    },
+    {
+      "fact": "7 月戰略對資產代幣化的寫法：在國內外代幣化工作進展之下，檢討各種資產代幣化的制度應有樣貌。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "様々な資産のトークン化に関する制度の在り方について、検討を行う。"
+    },
+    {
+      "fact": "7 月戰略的 AI 段：著眼 AI 代理人時代，檢討隨 AI 在金融領域普及的市場與金融機構監督應有樣貌；同時舉例提到 VC（verifiable credential）的利用可能性等，檢討擔保本人真正性的基礎設施。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "金融分野におけるAIの浸透に応じた市場・金融機関の監督の在り方を検討する。"
+    },
+    {
+      "fact": "7 月戰略的量子段：推進掌握量子電腦對區塊鏈技術造成的危殆化風險，以及檢討替代手段。",
+      "url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "ブロックチェーン技術についての量子コンピュータによる危殆化リスクの把握や代替手段の検討を進める。"
+    }
+  ],
+  "not_said": [
+    "論壇的成員、座長與「関係省庁等」的名單：公表頁、開會通知、別紙１、別紙２都沒有列出。別紙２列的五個追蹤對象（日本銀行、業界団体、デジタル庁、内閣官房デジタル行財政改革会議事務局、財務省）是「取組状況のフォローアップ」的對象，不是成員名單。以這四份文件查核到 2026-09-26 未見成員名單。",
+    "兩個研究會是新設還是既有、成員是誰、何時開會：別紙１只寫「２つの研究会で検討を進める」與兩個名稱，沒有寫。",
+    "任何法案、條文修正或新規則：四份文件以「法改正」「改正」「法案」檢索，查核到 2026-09-26 均為 0 次。別紙２的「規制」兩次，都在「規制・監督におけるイコールフッティング」與「過不足のない規制を含む」這兩個要檢討的句子裡，不是新規則。",
+    "加密資產（暗号資産）的交易、上架或業者規則：四份文件的正文沒有提到；「暗号資産」只出現在承辦課名「暗号資産・ステーブルコイン課」（公表頁與開會通知的「所管」欄各一次），別紙１、別紙２為 0 次；ビットコイン 0 次，也沒有任何幣種、代幣或業者名。",
+    "CBDC：四份文件以「CBDC」「デジタル通貨」「中央銀行デジタル」檢索，查核到 2026-09-26 均為 0 次。日銀當座預金的鏈上對應不可寫成央行數位貨幣。",
+    "日本銀行自己的說法：四份文件都是金融廳網站上的文件；日本銀行的「年内」彙整是別紙２（7 月 21 日的戰略）寫的，這一篇沒有讀日本銀行的網站。",
+    "時程：9 月 25 日的公表頁與開會通知只有第一次會議的日期，沒有任何結論或報告的日期；「2027年初」的中間整理只出現在別紙２的 7 月 21 日文件。",
+    "台灣或日本以外的使用者、業者會受到什麼影響：四份文件沒有提到台灣（台湾 0 次）或任何特定外國；國際段只寫「各国当局間による対話」與「アジアとの官民政策対話の枠組み」。",
+    "預算、人員數字，以及金融廳組織擴充的內容：別紙２只寫「組織拡充を検討する」。",
+    "第一次會議的結果：會議在查核日之後（9 月 30 日）；開會通知只寫議事概要會在會後公布。",
+    "PIP 的英文全名、過去的實證案例與參與者：來源只有「決済高度化プロジェクト（PIP）」這個名稱與「継続・拡大」「実証実験の支援を継続」。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "承辦單位「暗号資産・ステーブルコイン課」是 2026 年 8 月 7 日金融廳組織再編時新設的。",
+      "seen_where": "金融廳報道発表資料列表 8 月 5 日「金融庁の組織再編の公表」https://www.fsa.go.jp/news/r8/20260805.html（2026-09-26 重抓，200／38,268 bytes），頁面寫組織再編依政令在 8 月 7 日實施，並「新たに、国際課、信用課、郵政金融課、資金決済課、暗号資産・ステーブルコイン課を設置する」。",
+      "why_excluded": "指派列明定「不補頁面沒寫的課的成立時間」，而且這一頁不在 sources[]（上限四條，四條都是本事件的一手文件）。正文不寫這個課何時成立，也不寫它是新課。"
+    },
+    {
+      "claim": "「成長投資を促進するための金融戦略」是誰制定的（金融廳自己的文件、內閣官房的文件或政府方針）。",
+      "seen_where": "金融廳報道発表資料列表 7 月 21 日「『成長投資を促進するための金融戦略　ー 資産運用立国のアップグレード ー』の公表」連到 https://www.fsa.go.jp/policy/fsa.html（2026-09-26 重抓，200／35,721 bytes），該頁標題是「政府方針における金融庁関連の施策」，把這份戰略列為「最新の方針」並連到內閣官房網站（cas.go.jp）；本輪沒有抓內閣官房的全文。",
+      "why_excluded": "別紙２的節錄本身沒有寫制定機關，能說明制定機關的頁面不在 sources[]。正文只寫「7 月 21 日的『成長投資を促進するための金融戦略』（金融廳附上的節錄）」，不寫「金融廳的戰略」或「內閣決定」。"
+    },
+    {
+      "claim": "金融廳沒有發布英文版。",
+      "seen_where": "金融廳英文新聞頁 https://www.fsa.go.jp/en/news/index.html（2026-09-26T13:50Z 重抓，200／31,559 bytes），最新一則是 September 15, 2026（FSA Strategic Priorities），沒有這則。",
+      "why_excluded": "英文頁落後是已知現象（DELTA-4-8 第 8 條），而且這一頁不在 sources[]；不寫「沒有英文版」，最多寫「這一篇依日文原文整理」。"
+    },
+    {
+      "claim": "9 月 15 日「2026事務年度金融行政方針」是否提到這個論壇或鏈上金融。",
+      "seen_where": "金融廳報道発表資料列表 9 月 15 日一則（/news/r8/202609/260915.html），本輪沒有讀全文。",
+      "why_excluded": "沒讀，不寫；不可寫「論壇是金融行政方針的落實」。"
+    },
+    {
+      "claim": "日本銀行對當座預金上鏈的立場或進度。",
+      "seen_where": "只有別紙２（7 月 21 日戰略節錄）寫日本銀行會在「年内」彙整檢討狀況；本輪沒有讀日本銀行網站。",
+      "why_excluded": "日本銀行的一手說法不在 sources[]；正文只能寫「7 月的戰略寫日本銀行將在年內彙整……」，不寫日本銀行已宣布、已決定或已開始實裝。"
+    },
+    {
+      "claim": "候選清單的兩處摘要：兩個研究會檢討「国債等のトークン化対応」；別紙１列的全部都是「以下に関する制度の在り方等について点検・検討」的項目。",
+      "seen_where": "C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\candidates-crypto.md 第 1 則（探索代理只用 pypdf 讀別紙１，文字順序把兩欄交錯）。",
+      "why_excluded": "與來源不符：算繪版面與文字框座標（bessi1-p1.png、bessi1-p1-blocks.txt）顯示「国債等のトークン化対応」在論壇框右欄，「点検・検討」那一句只是研究會①框內的引言。撰稿照 verified_facts 的歸屬寫，不照候選清單。"
+    },
+    {
+      "claim": "兩份 PDF 的檔案日期（別紙１ CreationDate 2026-09-15 16:52 JST、別紙２ ModDate 2026-09-17 11:32 JST）表示論壇早在 9 月中就定案。",
+      "seen_where": "pypdf 讀出的 PDF 中繼資料。",
+      "why_excluded": "檔案製作時間不是公布日，也不代表任何決定的日期；不寫進正文。"
+    },
+    {
+      "claim": "PIP（決済高度化プロジェクト）的內容、英文全名與過去的實證。",
+      "seen_where": "別紙１、別紙２只有名稱與「継続・拡大」「実証実験の支援を継続」。",
+      "why_excluded": "四份文件沒有說明，不在 sources[] 以外找來補；正文不展開 PIP 的英文全名。"
+    },
+    {
+      "claim": "台灣金管會 2026-09-22 開放銀行試辦存款代幣，可以拿來和日本對照。",
+      "seen_where": "站上 crypto-news-taiwan-deposit-token-pilot-20260922（只有 zh-TW）與候選清單的「為什麼重要」段。",
+      "why_excluded": "金管會新聞稿不在本篇 sources[]（上限四條），那篇文章只有 zh-TW、依 DELTA-4-8 第 2 條不能連；正文不寫台灣試辦的任何事實，只能在「跟台灣讀者有什麼關係」寫編輯觀點（日本把穩定幣、代幣化存款、DeFi 放進同一個檢討框架，可以當參考點），而且不帶台灣的制度細節。"
+    }
+  ],
+  "editorial_brief": "讀者是台灣一般讀者，可能聽過穩定幣、代幣化存款，但不熟日本的監理機關。第一段就要讓讀者知道：這是日本金融廳 2026 年 9 月 25 日宣布成立一個跨部會的「檢討場域」，第一次會議 9 月 30 日、不開放旁聽；它不是修法、不是核准任何產品，也沒有改變台灣或日本一般使用者現在能用的任何服務。\n\n骨架是「一個論壇、兩個研究會，各自列了什麼」，加上 7 月 21 日戰略節錄寫的時程與分工。建議五節：一、9 月 25 日公布了什麼：論壇名稱、金融廳給的理由（歸因）、承辦的課、兩份附件、第一次會議（時間、不開放旁聽、會後公布的是議事概要）；二、論壇與兩個研究會各看什麼（結尾放表：會議體／列出的項目／原文動詞，三到四列）；三、7 月 21 日的金融戰略怎麼寫：2026 年夏天設立的原計畫、2027 年初先做中間整理、會檢討金融廳的組織擴充、要追蹤進度的五個主體（日本銀行、業界團體、數位廳、內閣官房的事務局、財務省）各做什麼（結尾放圖）；四、三個最容易讀錯的地方：日銀當座預金上鏈是論壇的工作項目、7 月戰略寫日本銀行年內彙整檢討狀況——不是日本銀行的決定，也不是 CBDC；DeFi 與錢包業者是「風險降低措施（含不多不少的規制）」的檢討，不是開放；「暗号資産」只出現在承辦課名，這不是加密貨幣交易的新規則；五、跟台灣讀者的關係與怎麼自己追：四份文件沒有提到台灣，對台灣使用者沒有直接影響；可以當作觀察鄰國怎麼把穩定幣、代幣化存款、DeFi、國債代幣化與量子風險放進同一張清單的參考；追蹤方法是從開會通知頁的「開催実績」連結看議事概要，以及 2027 年初（7 月文件寫的預定）的中間整理。\n\n用語：日本法的「暗号資産」譯「加密資產」並在首次出現附日文（HANDOVER §3）；論壇、研究會、機關與課名首次出現附日文原名，四語翻譯照日文原文不回譯；「トークン化預金」譯「代幣化存款」（站上 FDIC 那篇的既有譯法），「ステーブルコイン」譯「穩定幣」；「日銀当座預金」首次出現要解釋是金融機構存在日本銀行的當座存款。日本官方頁沒有英文版可以對照（英文新聞頁停在 9 月 15 日），引文一律用日文原文並附中文。\n\n刻意不寫：論壇或研究會的成員；暗号資産・ステーブルコイン課的成立日期；金融戰略的制定機關；台灣金管會的存款代幣試辦；任何幣價、市值、交易量、業者或代幣名；日本銀行網站上的任何說法；「2026 年夏」與 9 月 25 日的先後評論。第二個結尾連結是 2 月那篇金融審議會報告（加密資產改依金融商品取引法），這一篇不重講那份報告與法案進度，最多一句話點出那是另一條線。",
+  "must_not_write": [
+    "不寫成修法、立法、核准或開放任何產品（例如「日本開放 DeFi」「日本決定國債代幣化」「日本允許銀行發代幣化存款」「日本將發行日圓穩定幣」）。9 月 25 日做的是宣布成立檢討場域；研究會①的項目掛在「以下に関する制度の在り方等について点検・検討」之下，7 月戰略的動詞是「検討」「点検」「対話」。",
+    "不寫日本銀行決定、宣布或已開始把當座預金（準備金）上鏈，也不寫成 CBDC、「日圓數位貨幣」或「央行數位貨幣」。「日銀当座預金のオンチェーン対応」是論壇框裡的工作項目；「年内に……検討状況について取りまとめる」是 7 月 21 日戰略節錄寫的，不是日本銀行的公告。",
+    "「年内」照原文寫「年內」並歸因 7 月 21 日的文件，不改寫成「12 月 31 日前」或其他具體日期。",
+    "不寫論壇成員名單或「關係省廳」有哪些；別紙２列的五個追蹤對象不可寫成成員。不猜「業界団体」是哪一個團體。",
+    "不寫研究會是新設、成員是誰或何時開第一次會；別紙１沒有寫。",
+    "不寫「暗号資産・ステーブルコイン課」何時成立或是新課（8 月 5 日組織再編頁不在 sources[]，且指派列禁止）。",
+    "不寫第一次會議開放旁聽、會直播或會公布逐字紀錄；會後公布的是「議事概要」。會議日期之後才發布時，不可把 9 月 30 日寫成未來式而不重查（見 live_data_warnings）。",
+    "第一次會議的時刻若要寫，寫「日本時間 14:00–15:00」，換算台北時間 13:00–14:00 要標明是換算；不可只寫 14:00 讓讀者當成台北時間。",
+    "不把「成長投資を促進するための金融戦略」寫成金融廳自己的文件、內閣決定或「日本政府的戰略」；別紙２的節錄沒有寫制定機關。寫法：「7 月 21 日的《成長投資を促進するための金融戦略》，金融廳這次附上相關部分的節錄」。",
+    "不評論 7 月文件寫的「2026年夏に立ち上げる」與 9 月 25 日公布的先後，不寫延遲、如期或提前。",
+    "不把「2027年初、中間整理」寫成確定時程、最終結論或法案提出時間；那是 7 月文件寫的預定（「まずは」＝先），而且 9 月 25 日的兩頁都沒有重述。",
+    "不展開 PIP 的英文全名，也不寫 PIP 過去的實證案例或參與銀行。",
+    "不寫成加密貨幣（暗号資産）交易、上架或交易所監理的新規定；四份文件的正文沒有這些內容，「暗号資産」只在承辦課名。",
+    "不寫 DeFi 或錢包業者的規則已經定案，也不只寫「放寬」或只寫「加強」；原文是「リスク低減策（技術的性質に合わせた過不足のない規制を含む）の在り方について、各国の動向も注視しながら、検討を行う」。",
+    "不把論壇框和研究會的項目搬錯位置：「国債等のトークン化対応」「SC・トークン化預金の公金給付への活用」「SCの諸法令における取扱いの整理・明確化」「日銀当座預金のオンチェーン対応」在論壇框；「様々な資産のトークン化」「ステーブルコイン」「DEX・DeFiやウォレット提供業者」在研究會①；「量子コンピュータによる危殆化リスクの把握」在研究會②。候選清單把國債代幣化寫成研究會項目是錯的。",
+    "不把 7 月戰略的看法（エージェンティックコマース、對海外支付基礎設施的依賴「おそれ」）寫成事實或預測，一律寫「7 月的戰略認為／寫道」，並保留「おそれ」（可能）的語氣。",
+    "不寫台灣金管會 9 月 22 日存款代幣試辦的任何內容（不在 sources[]，那篇只有 zh-TW 不能連）；也不寫台灣「應該」跟進。",
+    "不寫任何幣價、市值、交易量、殖利率、業者、交易所、錢包或代幣名，不寫任何買賣或持有的建議（crypto.md）。",
+    "不寫「首次」「唯一」「全面」「第一個」；來源沒有說這是日本第一個這類場域。",
+    "不寫「金融廳沒有英文版」；英文新聞頁不在 sources[]。",
+    "正文不出現「本文」（DELTA-4-7 第 14 條）；幣圈固定免責 callout 逐字照 crypto.md 樣板（含「本文」二字，DELTA-4-7 第 16 條）。",
+    "圖上、hero_label 與摘要不放來源沒印的清點數字（例如自己數的「八項工作」「五個機關」「十一個項目」），除非正文逐字寫了而且是來源自己的編號（「２つの研究会」「３つの観点」可以寫）。",
+    "不寫論壇與兩個研究會的項目「彼此不重疊」：穩定幣同時出現在論壇框（SC・トークン化預金の公金給付への活用、SCの諸法令における取扱い）與研究會①（ステーブルコイン），代幣化同時出現在論壇框（国債等のトークン化対応）與研究會①（様々な資産のトークン化）。表格「文件用的動詞」一欄，論壇列用別紙１的「検討を行う」，不用公表頁描述設立論壇的「立ち上げます」。（第一輪查核 2026-09-26 加）",
+    "不把 7 月戰略寫日本銀行「年内に……取りまとめる」改寫成「戰略對日本銀行的期待」；那是 follow-up 清單裡寫日本銀行會做的事。（第一輪查核 2026-09-26 加）",
+    "「おそれ」管到整串後果：不寫「對海外支付基礎設施的依賴會加深」，寫「可能加深……依賴、降低……競爭力並提高……風險」。（第二輪查核 2026-09-26 加）",
+    "研究會①的「ウォレット提供業者」照原文寫「錢包提供業者」，第一次出現附日文；不寫「加密資產錢包業者」（協調者 2026-09-26 裁決）。",
+    "自己數的「五個」追蹤對象只可以出現在正文與 FAQ；title、description、summary、hero_label 與圖都不放（協調者 2026-09-26 裁決）。"
+  ],
+  "live_data_warnings": [
+    "論壇頁（開會通知頁的「開催実績」連結，https://www.fsa.go.jp/singi/ai_onchain/index.html）：截至 2026-09-26 只有「趣旨」與「第１回　令和８年９月30日開催」的開催通知，沒有議事概要。第一次會議在 9 月 30 日，開會通知寫議事概要會在會後公布（DELTA-4-8 第 7 條點名的活頁面）。發布當天要重抓：若議事概要已公布，要讀過才能寫其中的任何內容，並把它換進或補進 sources[]（上限四條，要先決定換掉哪一條）；若還沒公布，正文寫「截至查核日尚未公布」。",
+    "如果文章在 9 月 30 日之後發布，第一次會議不可再寫成「將於 9 月 30 日召開」的未來式；要照查核日寫「預定 9 月 30 日召開」並註明查核日，或重查後改寫。",
+    "金融廳「報道発表資料」列表（https://www.fsa.go.jp/news/index.html）與英文新聞頁（https://www.fsa.go.jp/en/news/index.html，截至 2026-09-26 最新一則是 September 15, 2026）都會更新；英文版若出現，要比對日文與英文的用字（BRIEF 第 8 條），不可只挑一個。",
+    "別紙１、別紙２的 PDF 可能被替換：2026-09-26 的落地大小分別是 239,344 與 429,967 bytes，別紙２的 ModDate 是 2026-09-17；發布前重抓時若大小不同，要重讀。",
+    "7 月文件寫的「年内」（日本銀行彙整檢討狀況）與「2027年初」（中間整理）都是預定；文章發布後若日本銀行或論壇公布了彙整或中間整理，這一篇的相關句子會過期。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "crypto-news-jfsa-working-group-20260216",
+      "locales": 5,
+      "already_says": "日本金融審議會加密資產制度工作小組報告（英文暫譯本 2026-02-16 公布、報告本體 2025-12-10）建議把加密資產的法律依據從資金決済法移到金融商品取引法，並補上資訊揭露、業者規範與內線交易規範；相關法案 2026-04-10 提出、07-15 成立，以該篇所引頁面查核到 2026-09-17 未見施行日。這一篇是第二個結尾連結的目標，不重講報告內容與法案進度。"
+    },
+    {
+      "slug": "crypto-news-jfsa-cybersecurity-20260723",
+      "locales": 5,
+      "already_says": "日本金融廳 2026-07-23 公布委外的加密資產資安研究報告（封面 06-30、不代表金融廳見解），重新歸因一類不是金鑰被偷、而是簽章前系統被竄改的外流，以及金融廳 04-03 的取組方針（光靠冷錢包不夠、資安自我評估、TLPT）。與論壇無重疊，這一篇不提。"
+    },
+    {
+      "slug": "crypto-news-2026-index",
+      "locales": 5,
+      "already_says": "幣圈索引，第一個結尾連結；日本段目前只收上面兩篇金融廳文章。索引由協調者更新，撰稿不碰。"
+    },
+    {
+      "slug": "crypto-news-fdic-genius-act-20260410",
+      "locales": 5,
+      "already_says": "美國 FDIC 依 GENIUS Act 的穩定幣草案；全文用「代幣化存款」10 次，是站上 tokenized deposits 的既有譯法，這一篇的「トークン化預金」沿用「代幣化存款」。主題不重疊。"
+    },
+    {
+      "slug": "crypto-news-taiwan-deposit-token-pilot-20260922",
+      "locales": 1,
+      "already_says": "台灣金管會 2026-09-22 開放銀行申請試辦存款代幣（法律性質仍屬銀行存款、營業計畫書五件事），並與虛擬資產服務法的穩定幣許可對照。只有 zh-TW，不能連、不能引用；用關鍵字掃到的「日銀」3 次是「22 日銀行局」的子字串，不是日本銀行。"
+    },
+    {
+      "slug": "crypto-news-sec-innovation-exemption-20260917",
+      "locales": 1,
+      "already_says": "美國 SEC 創新豁免（代幣化美股在許可場所鏈上交易），提到 DeFi 一次。主題不重疊，只有 zh-TW，不能連。"
+    }
+  ],
+  "second_link": {
+    "slug": "crypto-news-jfsa-working-group-20260216",
+    "title": "日本金融審議會報告：建議加密資產改依金融商品取引法，相關法案已成立、施行日未見"
+  },
+  "hero_label": "跨部會的鏈上金融檢討",
+  "diagram": {
+    "title": "一個論壇與兩個研究會",
+    "caption": "日本金融廳 2026 年 9 月 25 日公布的鏈上金融論壇架構整理：論壇與兩個研究會各自列出的檢討項目，以及第一次會議的安排，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "論壇",
+        "路線圖、PIP、日銀當座預金"
+      ],
+      [
+        "研究會：環境整備",
+        "穩定幣、資產代幣化、DeFi"
+      ],
+      [
+        "研究會：AI 等",
+        "AI 監督與量子電腦風險"
+      ],
+      [
+        "第一次會議",
+        "不開放旁聽，會後公布摘要"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Onchain Finance Review",
+      "diagram": {
+        "title": "One Forum, Two Study Groups",
+        "caption": "How the onchain finance forum Japan's FSA announced on September 25, 2026 is structured: the items the forum and the two study groups each list for review, and the arrangements for the first meeting; verified September 26, 2026.",
+        "nodes": [
+          [
+            "Forum",
+            "Roadmap, PIP, BOJ deposits"
+          ],
+          [
+            "Environment Group",
+            "Stablecoins, assets, DeFi"
+          ],
+          [
+            "AI, Etc. Group",
+            "AI oversight, quantum risk"
+          ],
+          [
+            "First Meeting",
+            "Closed session, summary after"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "省庁横断のオンチェーン金融検討",
+      "diagram": {
+        "title": "一つのフォーラムと二つの研究会",
+        "caption": "日本の金融庁が2026年9月25日に公表したオンチェーン金融フォーラムの構成の整理：フォーラムと二つの研究会がそれぞれ列挙した検討項目、および第一回会合の予定。確認日は2026年9月26日。",
+        "nodes": [
+          [
+            "フォーラム",
+            "ロードマップ、PIP、日銀当座預金"
+          ],
+          [
+            "研究会：環境整備",
+            "ステーブルコイン、DeFi"
+          ],
+          [
+            "研究会：AI等",
+            "AI監督と量子リスク"
+          ],
+          [
+            "第一回会合",
+            "傍聴不可、後日概要公表"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "부처 횡단 온체인 금융 검토",
+      "diagram": {
+        "title": "포럼 하나와 연구회 둘",
+        "caption": "일본 금융청이 2026년 9월 25일 발표한 포럼과 두 연구회의 역할 분담 정리: 포럼과 두 연구회가 각각 열거한 검토 항목, 그리고 첫 회의 일정. 확인일 2026년 9월 26일.",
+        "nodes": [
+          [
+            "포럼",
+            "로드맵, PIP, 일본은행 당좌예금"
+          ],
+          [
+            "연구회: 환경정비",
+            "스테이블코인, DeFi"
+          ],
+          [
+            "연구회: AI 등",
+            "AI 감독, 양자 위험"
+          ],
+          [
+            "첫 회의",
+            "방청 불가, 요지 공표"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "跨部门的链上金融检讨",
+      "diagram": {
+        "title": "一个论坛与两个研究会",
+        "caption": "日本金融厅 2026 年 9 月 25 日公布的链上金融论坛架构整理：论坛与两个研究会各自列出的检讨项目，以及第一次会议的安排，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "论坛",
+            "路线图、PIP、日银当座存款"
+          ],
+          [
+            "研究会：环境整备",
+            "稳定币、资产代币化、DeFi"
+          ],
+          [
+            "研究会：AI 等",
+            "AI 监督与量子风险"
+          ],
+          [
+            "第一次会议",
+            "不开放旁听，会后公布摘要"
+          ]
+        ]
+      }
+    }
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent fact-check agent, round 1 (claude-opus-5-5)",
+    "checked_on": "2026-09-26",
+    "method": "Re-fetched all four sources[] on 2026-09-26 14:32Z with curl -sSL --max-time 30 and the Mokaair-editorial UA (no personal name or email; 1.5 s between requests): both HTML pages 200 (35,662 / 35,261 bytes), 別紙１ 200 (239,344 bytes, 1 page), 別紙２ 200 (429,967 bytes, 3 pages), all byte-identical to the research agent's files; also the forum page /singi/ai_onchain/index.html (200, 34,796 bytes, still no 議事概要) and the press list. HTML: comments, script and style stripped, html.unescape. PDFs: system python pypdf text plus PyMuPDF renders read by eye for the 別紙１ layout. Every Japanese quote in the pack was searched as a whitespace-free substring of the sources; every negative sentence was counted in the full HTML (navigation included) and both PDFs. Raw files, grep counts and scripts: C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\_raw\\crypto-news-japan-onchain-finance-forum-20260925\\round1 and _tools\\crypto-news-japan-onchain-finance-forum-20260925\\fc1_*.",
+    "claims_checked": 127,
+    "verdicts": {
+      "confirmed": 113,
+      "changed": 12,
+      "not_found_rewritten_or_deleted": 2,
+      "reader_first_edits": 3
+    },
+    "changes": [
+      {
+        "claim": "summary item 1: the forum's scope (別紙１「社会実装の推進等に向けた検討」; the page's 本分野 also covers AI)",
+        "before": "由金融廳與相關省廳等一起檢討鏈上金融的社會實裝，",
+        "after": "由金融廳與相關省廳等一起檢討推動鏈上金融社會實裝等事項，",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "summary item 4: who follows up whom (「関係省庁等の取組状況のフォローアップを行う」 -- the five are followed up, they do not follow up)",
+        "before": "財務省各自要追蹤的檢討項目，",
+        "after": "財務省各自的檢討項目，作為要追蹤進度的對象，",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§1 para 3: bureau name rendered half Japanese (保険) half Chinese (資產)",
+        "before": "資產運用・保険監督局",
+        "after": "資產運用・保險監督局",
+        "source_url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+        "kind": "fact"
+      },
+      {
+        "claim": "§2 para 3: 「彼此不互相重疊」 has no source, and SC (forum box and study group ①) and tokenisation (国債等 in the forum box, 様々な資産 in ①) do overlap",
+        "before": "以及 AI 等研究會處理的項目，彼此不互相重疊。下表",
+        "after": "以及 AI 等研究會處理的項目。下表",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§2 table, forum row verb: 「立ち上げます」 is the page's verb for setting the forum up, not the verb describing its items; 別紙１ says the forum 「検討を行う」",
+        "before": "立ち上げます（設立）",
+        "after": "検討を行う（進行檢討）",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§2 para 2: third attribution phrase restated as a direct fact (reader-first rule)",
+        "before": "除了論壇本身，別紙１另外寫著要由兩個研究會檢討",
+        "after": "除了論壇本身，另外要由兩個研究會檢討",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+        "kind": "reader-first"
+      },
+      {
+        "claim": "§3 para 1: third attribution phrase folded into the first (reader-first rule)",
+        "before": "；戰略也認為，如果日本的支付基礎設施",
+        "after": "；如果日本的支付基礎設施",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "reader-first"
+      },
+      {
+        "claim": "§3 para 2: 「還沒有完成」 states the present status of the FSA's 組織拡充, which no source in sources[] gives (the strategy only says 検討する; an FSA reorganisation took effect 8/7 per a page outside sources[])",
+        "before": "戰略也寫著，會檢討金融廳必要的組織擴充，這同樣是「検討する」，還沒有完成。",
+        "after": "另外也會檢討金融廳必要的組織擴充，用的同樣是「検討する」（檢討）。",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§3 para 3: attribution phrase trimmed (reader-first rule)",
+        "before": "業界團體（戰略沒有點名是哪一個）",
+        "after": "業界團體（沒有點名是哪一個）",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "reader-first"
+      },
+      {
+        "claim": "§3 para 3: dropped qualifier 等 (「SCの金銭に準じた利用可能性等について」)",
+        "before": "準於金錢使用的可能性，以整理",
+        "after": "準於金錢使用的可能性等，以整理",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§3 para 3: 「オンチェーン決済を可能とすること」 is 'make possible', not 'adopt'",
+        "before": "以及讓本息支付依投資人需求採用鏈上支付。",
+        "after": "以及讓本息支付可以依投資人需求以鏈上支付進行。",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§4 para 1: 「戰略對日本銀行的期待」 is an interpretation the source does not make (it lists what 日本銀行 will compile under a follow-up list)",
+        "before": "彙整檢討狀況，這是戰略對日本銀行的期待，不是日本銀行自己的公告，四份文件",
+        "after": "彙整檢討狀況，這不是日本銀行自己的公告，四份文件",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "§5 para 1: the international passage names アジア (and 日本): 「アジアとの官民政策対話の枠組みを創設」",
+        "before": "國際段落只寫著要與各國主管機關對話、建立跨境官民政策對話框架，沒有點名任何國家或地區；",
+        "after": "國際段落只寫著要與各國主管機關對話，以及創設與亞洲的官民政策對話框架，沒有點名亞洲的哪一個國家或地區；",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "FAQ 1: 「点検・検討」 heads only study group ①'s box; study group ②'s box has no such verb",
+        "before": "研究會框內的項目寫的動詞是「点検・検討」",
+        "after": "環境整備研究會框內的項目寫的動詞是「点検・検討」",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "FAQ 2: unscoped negative 「沒有這樣的公布」 (the Bank of Japan's own site was not read) scoped to the four documents",
+        "before": "沒有這樣的公布。「日銀當座預金的鏈上對應」",
+        "after": "金融廳這次公布的四份文件沒有這樣寫。「日銀當座預金的鏈上對應」",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "FAQ 2: same 「期待」 interpretation as §4 para 1",
+        "before": "的檢討狀況，這是戰略對日本銀行的期待，不是日本銀行自己的公告。以",
+        "after": "的檢討狀況，這不是日本銀行自己的公告。以",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "fact"
+      },
+      {
+        "claim": "FAQ 3: 「不行」 also answered the live-stream half, but the notice only does not mention streaming",
+        "before": "不行。開會通知寫明第一次會議不受理一般旁聽",
+        "after": "旁聽不行。開會通知寫明第一次會議不受理一般旁聽",
+        "source_url": "https://www.fsa.go.jp/news/r8/singi/20260925-2.html",
+        "kind": "fact"
+      },
+      {
+        "claim": "record verified_facts, 7 月戰略的國際段（二）: 「沒有點名任何國家或地區」 is wrong -- the sentence names アジア and 日本",
+        "before": "創設與亞洲的官民政策對話框架。文件沒有點名任何國家或地區（台湾 0 次）。",
+        "after": "創設與亞洲的官民政策對話框架。除了「アジア」（亞洲）與日本，文件沒有點名任何國家或地區，也沒有點名亞洲的哪一國（台湾 0 次）；正文不可寫「沒有點名任何國家或地區」。",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "record"
+      },
+      {
+        "claim": "record verified_facts, 組織拡充: make explicit that the sources give no present status",
+        "before": "會檢討金融廳必要的組織擴充。這是「検討する」（檢討），不是已完成的組織調整。",
+        "after": "會檢討金融廳必要的組織擴充。這是 7 月文件寫的「検討する」（檢討）；sources[] 沒有寫這項擴充之後是否或何時完成，正文不寫「還沒有完成」也不寫「已完成」（8 月 7 日生效的組織再編頁不在 sources[]，見 unverified_or_excluded 第一條）。",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "record"
+      },
+      {
+        "claim": "record must_not_write: two items added so round 2 does not restore the removed sentences",
+        "before": "（「２つの研究会」「３つの観点」可以寫）。\"\n  ],",
+        "after": "（「２つの研究会」「３つの観点」可以寫）。\",\n    \"不寫論壇與兩個研究會的項目「彼此不重疊」：穩定幣同時出現在論壇框（SC・トークン化預金の公金給付への活用、SCの諸法令における取扱い）與研究會①（ステーブルコイン），代幣化同時出現在論壇框（国債等のトークン化対応）與研究會①（様々な資産のトークン化）。表格「文件用的動詞」一欄，論壇列用別紙１的「検討を行う」，不用公表頁描述設立論壇的「立ち上げます」。（第一輪查核 2026-09-26 加）\",\n    \"不把 7 月戰略寫日本銀行「年内に……取りまとめる」改寫成「戰略對日本銀行的期待」；那是 follow-up 清單裡寫日本銀行會做的事。（第一輪查核 2026-09-26 加）\"\n  ],",
+        "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+        "kind": "record"
+      }
+    ],
+    "open_questions": [
+      "Paragraph 2 still carries verification discipline (「讀的是金融廳這兩份公布頁……」「這一篇因此只寫『7 月 21 日的這份金融戰略』，不寫成金融廳自己的文件」); DELTA-4-7 item 14 says not to write this into the body. Left for the coordinator because it is style, not fact.",
+      "The image block's alt (a hub with three spokes and a timeline) describes a hero-style drawing, not the 2x2 card diagram BRIEF specifies; the coordinator redraws and rewrites alt text.",
+      "FAQ 4 asks about 「加密資產錢包業者」 while the source says ウォレット提供業者 and the article says 暗号資産 appears only in the division name; reader phrasing, left as is.",
+      "Body and FAQ say 「五個」 追蹤對象: a count of a complete five-bullet list the source does not number. must_not_write bans such counts only on the figure, hero_label and summary, so it stays; the summary no longer carries it."
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-8 item 4: event date 2026-09-25 (令和８年９月25日), no time printed, not converted -- confirmed on both pages.",
+      "DELTA-4-8 item 5: second closing link text matches crypto-news-jfsa-working-group-20260216's zh-TW title character for character; both link targets have five locales.",
+      "DELTA-4-7 item 16: the crypto disclaimer callout matches crypto.md verbatim except the check date 2026-09-26."
+    ],
+    "second_round": {
+      "checked_by": "independent fact-check agent, round 2 (claude-opus-5-5); did not write the draft or run round 1",
+      "checked_on": "2026-09-26",
+      "method": "Re-fetched all four sources[] and the forum page on 2026-09-26 14:47Z with curl -sSL --max-time 30 -A 'Mokaair-editorial' (no name or email in any request; 1.5 s between requests): 20260925.html 200/35,662, 20260925-2.html 200/35,261, 01.pdf 200/239,344 (1 page), 02.pdf 200/429,967 (3 pages), /singi/ai_onchain/index.html 200/34,796 (still no 議事概要); all byte-identical to round 1's files. HTML: comments, script and style stripped, html.unescape; main region between the 'main STRAT' and 'main END' comments. PDFs: system python pypdf and PyMuPDF text, 別紙１ rendered to PNG and read by eye. Scope per SECOND-ROUND.md: every sentence of every paragraph round 1 changed (17 edits, 55 claims), a seeded random third of round 1's confirmed claims (38 of 113, random.seed(20260926)), a sweep of 等・含め・おそれ・検討する・年内・まずは・予定, all 54 record verbatim_quotes as whitespace-free continuous substrings, every Japanese quote in the pack, negative-sentence counts over full HTML and both PDFs, both closing-link titles and locales, and the four coordinator rulings. Files: C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\_raw\\crypto-news-japan-onchain-finance-forum-20260925\\round2 and _tools\\crypto-news-japan-onchain-finance-forum-20260925\\fc2_*.",
+      "claims_checked": 114,
+      "verdicts": {
+        "confirmed": 107,
+        "changed_rows": 6,
+        "distinct_fact_edits": 2,
+        "coordinator_ruling_edits": 2,
+        "not_found": 0,
+        "out_of_scope": 1
+      },
+      "changes": [
+        {
+          "claim": "paragraph 2 narrated verification (which pages were read, why the strategy is called what it is); coordinator ruling 1 (DELTA-4-7 item 14): direct statements for the reader -- what the forum is, what it is not, when it meets; provenance stays in sources[]. The 'excerpt does not name its author' point remains in §3 para 1.",
+          "before": "這一篇的資料在 2026 年 9 月 26 日查核，讀的是金融廳這兩份公布頁與所附的兩份 PDF（別紙１、別紙２）。本站沒有實測任何服務，也不提供投資或法律意見；別紙２節錄的《成長投資を促進するための金融戦略》（2026 年 7 月 21 日）是金融廳這次附上的背景文件，節錄本身沒有寫是哪個機關制定，這一篇因此只寫「7 月 21 日的這份金融戰略」，不寫成金融廳自己的文件。",
+          "after": "這個論壇是金融廳與相關省廳等橫斷地檢討如何推動鏈上金融社會實裝與 AI 等健全利用的場域，另外還有兩個研究會分頭檢討；這次公布不是修法、不是核准任何產品，也不是日本銀行的決定或加密貨幣交易的新規定。第一次會議預定 2026 年 9 月 30 日（星期三）日本時間 14:00 至 15:00 舉行，不開放一般旁聽。這一篇的資料在 2026 年 9 月 26 日查核，本站沒有實測任何服務，也不提供投資或法律意見。",
+          "source_url": "https://www.fsa.go.jp/news/r8/singi/20260925.html",
+          "kind": "coordinator-ruling"
+        },
+        {
+          "claim": "§3 para 1: 「海外決済基盤への依存が強まり、…リスクを高めるおそれがある」 -- おそれ scopes the whole chain (continuative 強まり shares the final predicate's modality), so the growing dependence is also only 'may'",
+          "before": "如果日本的支付基礎設施無法對應，對海外支付基礎設施的依賴會加深，可能（原文用「おそれ」）降低日本的競爭力，並提高經濟安全上的風險。",
+          "after": "如果日本的支付基礎設施無法對應，可能（原文用「おそれ」）加深對海外支付基礎設施的依賴、降低日本的競爭力，並提高經濟安全上的風險。",
+          "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+          "kind": "fact"
+        },
+        {
+          "claim": "§2 para 2: dropped qualifier 等 in study group ①'s lead line 「以下に関する制度の在り方等について点検・検討」; plus the Japanese ウォレット提供業者 on the term's first use in the running text (coordinator ruling 2)",
+          "before": "以及 DEX、DeFi 與錢包提供業者的制度應有樣貌；AI 等研究會全名",
+          "after": "以及 DEX、DeFi 與錢包提供業者（ウォレット提供業者）的制度應有樣貌等；AI 等研究會全名",
+          "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+          "kind": "fact"
+        },
+        {
+          "claim": "FAQ 4 question: 「加密資產錢包業者」 is not the source's term (01.pdf and 02.pdf say ウォレット提供業者, and 暗号資産 appears in none of the four documents' text); coordinator ruling 2",
+          "before": "\"question\": \"DeFi 與加密資產錢包業者是不是要開放營運了？\"",
+          "after": "\"question\": \"DeFi 與錢包提供業者是不是要開放營運了？\"",
+          "source_url": "https://www.fsa.go.jp/singi/ai_onchain/01.pdf",
+          "kind": "coordinator-ruling"
+        },
+        {
+          "claim": "record verified_facts, 7 月戰略的風險說法: same おそれ scope as the pack, corrected so a later round does not restore 「依賴會加深」",
+          "before": "如果日本的支付基礎設施無法對應，對海外支付基礎設施的依賴會加深，可能降低日本的競爭力並提高經濟安全上的風險。",
+          "after": "如果日本的支付基礎設施無法對應，可能加深對海外支付基礎設施的依賴、降低日本的競爭力並提高經濟安全上的風險。「おそれ」管到整串後果（連用形「依存が強まり」與「リスクを高める」共用同一個「おそれがある」），所以「依賴加深」也要寫成「可能」，不寫成「依賴會加深」。（第二輪查核 2026-09-26 改）",
+          "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+          "kind": "record"
+        },
+        {
+          "claim": "record must_not_write: three items added (おそれ scope; 錢包提供業者 wording; where the self-counted 五個 may appear)",
+          "before": "(end of must_not_write)",
+          "after": "three items, each tagged 第二輪查核 or 協調者 2026-09-26",
+          "source_url": "https://www.fsa.go.jp/singi/ai_onchain/02.pdf",
+          "kind": "record"
+        }
+      ],
+      "open_questions": [
+        "Title, description and §2 para 1's last sentence say 「國債代幣化」 where 01.pdf says 国債等のトークン化対応; the summary, §2 para 1's first mention, the table and callout 1 keep 等. Dropping 等 narrows rather than overstates, and a title change reaches the research title and the index, so it is left for the coordinator.",
+        "Table row 研究會② reads 「金融機構健全利用 AI」 (01.pdf: 金融機関におけるAI等の健全な利活用); the column is headed 節錄, so it was left; add 「等」 if the coordinator wants the table exact.",
+        "§1 para 3 names the 課 as 承辦單位; the page's 所管 line goes one level further to デジタル決済企画室 inside that 課. Not wrong, only coarser; left.",
+        "FAQ 1 and FAQ 2 still say 「以『法改正』…查核到 2026 年 9 月 26 日」: that is the scoping SECOND-ROUND.md item 4 asks for on negative sentences, but it reads like verification narration (DELTA-4-7 item 14). Left for the coordinator.",
+        "Live page: /singi/ai_onchain/index.html gets the 議事概要 after the 9/30 meeting; re-fetch on publication day (live_data_warnings)."
+      ],
+      "coordinator_rulings": [
+        "1. Paragraph 2 rewritten as direct statements (what the forum is, what it is not, when it meets); every clause re-checked against 20260925.html, 20260925-2.html and 01.pdf; no attribution phrase and no 本文 in it; check date stays in the opening paragraphs.",
+        "2. FAQ 4 now says 「錢包提供業者」; the Japanese 「ウォレット提供業者」 is given at the term's first use in the running text (§2 para 2). The summary mentions the term earlier but carries no glosses for any term (日銀當座預金 is explained in §2 para 1 the same way).",
+        "3. 「五個」 appears only in §3 para 3 and FAQ 5; title, description, summary, hero_label and the diagram nodes carry no count (checked by script).",
+        "4. Image alt left as is.",
+        "Crypto disclaimer callout unchanged and verbatim to crypto.md except the check date 2026-09-26."
+      ],
+      "verdict": "ok"
+    }
+  }
+}

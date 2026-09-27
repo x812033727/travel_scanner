@@ -47,7 +47,7 @@ export function GuideCard({
       ) : null}
       <div className="min-w-0">
         <p className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--fg)]">
+          <span className="rounded-full bg-[var(--line)] px-2 py-1 text-[var(--ink)]">
             {labels[article.kind]}
           </span>
           {article.destination_label ? <span>{article.destination_label}</span> : null}

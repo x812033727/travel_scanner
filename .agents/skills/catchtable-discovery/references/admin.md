@@ -14,6 +14,10 @@
 5. **審核狀態**設「核准」、勾「啟用」，和第 4 步一起按一次「儲存店家地點」。成功會出現「已儲存店家地點與來源資料。」，錯誤是視窗裡的紅字。
 6. 訂位平台列由 `apply-food-platform-reviews` 寫入，不在這裡動；店家公開後 verified 的那一列才會出現在公開 API 的 `reservation_links`。
 
+- 剛匯入的店家要重新載入後台清單才看得到；待審清單一次只顯示一個目的地，跨城市的批次要切換篩選。
+- 驗證寫入時比對「當地店名」輸入框的 value，不是視窗的 innerText（輸入框的值不在 innerText 裡）。
+- 整批的座標＋Naver＋已驗證＋核准＋啟用可以在一個 `doAll` 迴圈裡一家一家寫完。
+
 React 表單的寫法：文字欄與下拉用原生 value setter 加 `input`／`change` 事件，勾選框用真實 click；關舊視窗與開新視窗之間等一秒，
 否則 React 會把兩下合併成「關閉」。auto 模式下連續儲存與核准會被分類器擋成 Modify Shared Resources：用有選項的提問列出要做的動作，
 站主同意後同一動作放行，或先切 Manual。
@@ -24,7 +28,9 @@ React 表單的寫法：文字欄與下拉用原生 value setter 加 `input`／`
    `curl -sSL -A "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)" <頁面>` 後 grep `"latitude"`。類型 `official_tourism`，來源網址就是那一頁。
 2. OpenStreetMap：Nominatim `https://nominatim.openstreetmap.org/search?q=<路名 門牌>&format=jsonv2&countrycodes=kr&addressdetails=1`（帶固定 UA、每秒一次），
    要的是店家本身或同門牌建物的 `node`／`way`（`addresstype` 是 `amenity`／`building`），不是 `road` 的中心。類型 `admin_verified`，來源網址 `https://www.openstreetmap.org/<type>/<id>`。
-   查不到就把建物名或路名門牌拆開再查一次；還是只有路段中心就留給站主，不要硬填。
+   查不到就把建物名或路名門牌拆開再查一次；還是只有路段中心就留給站主，不要硬填。同門牌的鄰居節點可以當 `admin_verified`，但要在 notes 寫明。
+   - 沒有 JSON-LD 的 KTO 韓文頁：用頁面地圖呼叫的內容 API 回傳的 `mapX`／`mapY`。
+   - Visit Busan 同一家店常有好幾個條目：挑地址對得上的那個 `uc_seq`。
 3. Naver、Google、Kakao 的座標不能當耐久來源；座標佇列不寫座標。
 
 ## Naver 精準頁的分工
@@ -35,6 +41,7 @@ React 表單的寫法：文字欄與下拉用原生 value setter 加 `input`／`
   同園區的另一間餐飲（例如 한국의집 的 고호재）要請站主搜那間的名字，搜主體名字只會得到主頁、與既有店家撞號。
 - session 只讀短網址的轉址標頭：`curl -sS -I -A "<UA>" https://naver.me/<code>` 的 `location:` 就是 `map.naver.com/p/entry/place/<id>?…`，去掉查詢字串。
 - 經營者官網自己放的 Naver 短網址（例如品牌頁分店旁）可以直接用，身分由官網背書。
+- CatchTable `/info` 的「網站」欄如果就是這家店自己的 Naver 地點頁，也可以直接用，不必請站主貼。
 - 解出來的 id 要對照目錄裡既有的 `naver_map_url`（worklist 有），撞到就是同一個地點，不能再建一家。
 
 ## 驗證
