@@ -11,6 +11,7 @@ import { approvalState } from "./approvals.mjs";
 import { burnIn, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
+import { DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
 import { LOCALES, NARRATION_LOCALE } from "./schema.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
@@ -41,7 +42,24 @@ export const ARTIFACTS = {
   mediaCache: path.join("media", "cache.json"), // media client: request key -> file
   mediaJobs: path.join("media", "jobs.json"), // media client: jobs still running on the server, resumed on the next run
   mediaLedger: path.join("media", "ledger.json"), // media client: what each generation cost
+  // dub: one directory per locale (dubArtifacts) and the upload track beside them, dubs/<locale>.<format>
+  dubs: "dubs",
 };
+
+/** The files one locale's dub leaves under <workdir>/dubs/ (docs/videos/DUBS.md). */
+export function dubArtifacts(workdir, locale) {
+  const dir = path.join(workdir, ARTIFACTS.dubs, locale);
+  return {
+    dir,
+    audio: path.join(dir, "audio"), // one WAV per line id, plus <id>.x<tempo>.wav for sped-up takes
+    cache: path.join(dir, "audio", "cache.json"), // { lines: { id: key }, stretched: { id: key@tempo } }
+    narration: path.join(dir, "narration.wav"), // the whole track, frame-aligned, before loudness
+    timeline: path.join(dir, "timeline.json"), // { speech_hash, translation_hash, total_frames, windows, lines }
+    fit: path.join(dir, "fit.json"), // { rates, windows, over: [{ id, chars, max_chars }] }
+    skipped: path.join(dir, "skipped.json"), // the worker gave up on this locale: { reason, at }
+    track: (format) => path.join(workdir, ARTIFACTS.dubs, `${locale}.${format}`),
+  };
+}
 
 /** The pipeline steps of a slides video, in order; `pipelineStatus` reports them in this order. */
 export const SLIDES_STEPS = [
@@ -172,6 +190,37 @@ export function lookChosen(manifest, choice, look) {
 
 const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((shot) => shot?.needs_review);
 
+/**
+ * Each dub locale's state: "current" (a track made from this script and this translation),
+ * "stale", "over" (the last run found windows that do not fit; no track), "skipped" (the worker
+ * gave up, with its reason) or "missing". A video with no dubs is all "missing".
+ */
+export function dubsStatus(project, workdir, speech) {
+  const result = {};
+  for (const locale of DUB_LOCALES) {
+    const files = dubArtifacts(workdir, locale);
+    const skipped = readJson(files.skipped, null);
+    const timeline = readJson(files.timeline, null);
+    const fit = readJson(files.fit, null);
+    if (skipped) {
+      result[locale] = { status: "skipped", note: skipped.reason ?? "" };
+      continue;
+    }
+    const hash = project && speech ? translationHash(dubScript(project.doc, project.translations[locale], locale).doc) : null;
+    if (timeline && existsSync(files.track(timeline.format))) {
+      const current = timeline.speech_hash === speech && timeline.translation_hash === hash;
+      result[locale] = { status: current ? "current" : "stale", note: current ? timeline.file : "made from an older script or translation" };
+      continue;
+    }
+    if (fit?.over?.length && fit.speech_hash === speech && fit.translation_hash === hash) {
+      result[locale] = { status: "over", note: `${fit.over.length} lines to shorten (dubs/${locale}/fit.json)` };
+      continue;
+    }
+    result[locale] = { status: "missing", note: "" };
+  }
+  return result;
+}
+
 /** The pipeline checklist for one video and the next command to run. */
 export async function pipelineStatus({ slug, root, workdir }) {
   const dir = docDir(slug, root);
@@ -281,5 +330,6 @@ export async function pipelineStatus({ slug, root, workdir }) {
   };
   const steps = stepsFor(doc).map((id) => ({ id, ...definitions[id] }));
   const next = steps.find((step) => !step.done) ?? null;
-  return { steps, next, stop: stopRequested(workdir), lint };
+  const dubs = drama ? {} : dubsStatus(project, workdir, speech);
+  return { steps, next, stop: stopRequested(workdir), lint, dubs };
 }
