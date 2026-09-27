@@ -20,7 +20,7 @@ from ai_accounts_agent.claude import ClaudeAccounts, mark_onboarding_done
 from ai_accounts_agent.codex import CodexAccounts
 from ai_accounts_agent.config import SLOTS, TOOLS, AgentConfig
 from ai_accounts_agent.runner import CliError
-from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude
+from ai_accounts_agent.runs import RunRefused, RunRequest, pick_slot, run_claude, run_codex
 from ai_accounts_agent.security import (
     NONCE_HEADER,
     SIGNATURE_HEADER,
@@ -157,9 +157,9 @@ class AgentApplication:
         # CLIs on one account refresh its OAuth token at once and one of them fails (claude-b,
         # 2026-09-26). Whoever needs both locks takes _runs_changed first, then _usage_lock.
         self._runs_changed = threading.Condition()
-        self._runs_busy: set[str] = set()
+        self._runs_busy: set[tuple[str, str]] = set()
         # Accounts whose run hit the limit, until when: the usage snapshot lags behind.
-        self._runs_resting: dict[str, float] = {}
+        self._runs_resting: dict[tuple[str, str], float] = {}
         self._prepare_state()
 
     def _prepare_state(self) -> None:
@@ -298,7 +298,7 @@ class AgentApplication:
         with self._runs_changed, self._usage_lock:
             if key in self._usage_running:
                 return True
-            if tool == "claude" and slot in self._runs_busy:
+            if tool == "claude" and (tool, slot) in self._runs_busy:
                 return False  # The next page view or the run's end probes it.
             last = self._usage_attempts.get(key)
             if last is not None and now - last < self.config.claude_usage_min_interval_seconds:
@@ -455,21 +455,26 @@ class AgentApplication:
     # --- prompt runs (ai_accounts_agent.runs) ---------------------------------------
 
     def _claim_run_slot(self, request: RunRequest) -> str:
+        tool = request.tool
         deadline = time.monotonic() + request.queue_seconds
         while True:
             slots = self.overview(False)["slots"]
             with self._runs_changed:
                 now = self.clock()
-                resting = {slot for slot, until in self._runs_resting.items() if until > now}
-                current = self.current_slot("claude")
+                resting = {
+                    slot for (name, slot), until in self._runs_resting.items()
+                    if name == tool and until > now
+                }
+                current = self.current_slot(tool)
                 with self._usage_lock:
-                    probing = {name for tool, name in self._usage_running if tool == "claude"}
-                busy = self._runs_busy | probing
+                    probing = {name for name_tool, name in self._usage_running if name_tool == tool}
+                busy = {name for name_tool, name in self._runs_busy if name_tool == tool} | probing
                 try:
                     slot = pick_slot(
                         slots,
                         request.max_usage_percent,
                         current,
+                        tool=tool,
                         busy=busy,
                         resting=resting,
                     )
@@ -488,7 +493,8 @@ class AgentApplication:
                             slots,
                             request.max_usage_percent,
                             current,
-                            busy=self._runs_busy,
+                            tool=tool,
+                            busy={name for name_tool, name in self._runs_busy if name_tool == tool},
                             resting=resting,
                         )
                         if unprobed == current:
@@ -497,17 +503,17 @@ class AgentApplication:
                 if slot != current and current not in busy:
                     # The current account is full or signed out, so the turn passes on. A busy
                     # one keeps its turn, and this run just goes beside it.
-                    atomic_write_text(self.config.current_path("claude"), f"{slot}\n", 0o600)
-                self._runs_busy.add(slot)
+                    atomic_write_text(self.config.current_path(tool), f"{slot}\n", 0o600)
+                self._runs_busy.add((tool, slot))
                 return slot
 
-    def _release_run_slot(self, slot: str, *, spent: bool) -> None:
+    def _release_run_slot(self, slot: str, *, spent: bool, tool: str = "claude") -> None:
         with self._runs_changed:
-            self._runs_busy.discard(slot)
+            self._runs_busy.discard((tool, slot))
             if spent:
-                self._runs_resting[slot] = self.clock() + RUN_REST_SECONDS
+                self._runs_resting[(tool, slot)] = self.clock() + RUN_REST_SECONDS
             self._runs_changed.notify_all()
-        if spent:
+        if spent and tool == "claude":
             # Probe it now, so the picks after the rest see the spent window in its usage.
             self.maybe_refresh_usage("claude", slot, self.status("claude", slot), force=True)
 
@@ -518,7 +524,11 @@ class AgentApplication:
                 slot = self._claim_run_slot(request)
                 spent = False
                 try:
-                    result = run_claude(self.config, slot, request)
+                    result = (
+                        run_codex(self.config, slot, request)
+                        if request.tool == "codex"
+                        else run_claude(self.config, slot, request)
+                    )
                 except RunRefused as exc:
                     # This account is spent; the next pick skips it and tries another one.
                     spent = exc.code == "subscription_quota_paused"
@@ -526,7 +536,7 @@ class AgentApplication:
                         raise
                     continue
                 finally:
-                    self._release_run_slot(slot, spent=spent)
+                    self._release_run_slot(slot, spent=spent, tool=request.tool)
                 return HTTPStatus.OK, result
         except RunRefused as exc:
             return exc.status, {"code": exc.code, "detail": exc.detail, **exc.extra}

@@ -127,6 +127,8 @@ OAuth 的做法：
 
 這一步取代原本 T8（`2026-09-24-video-youtube-sync`）「在站主電腦上用桌面 OAuth」的做法，因為工人已經搬到主機，金鑰只能放在 API 容器。
 
+**T8 做好的樣子（2026-09-27）**：連結在設定分頁的「YouTube 頻道」卡片（重新導向 URI 是 `https://mokaair.com/api/admin-video-youtube/callback`，卡片上可以複製）；送出在「可以上架」卡片的「送到 YouTube」表單，兩種來源都做了：站主在 Studio 上傳後貼網址（第一步），或由網站自己用 `videos.insert` 續傳上傳（第二步，稽核通過前要站主勾「會被鎖成私人」，用來實測與截稽核附件）。卡片也有「YouTube API 稽核已通過」的勾選，勾了之後上傳不再多問，預設來源改成由網站上傳。步驟、重試與失敗原因在 skill `youtube-video` 的 `references/publish.md`。
+
 **第二步：稽核通過之後。** 網站自己用 `videos.insert`（續傳上傳）上傳 mp4，同時帶上 `publishAt`。站主只在後台選時間。
 
 稽核走「YouTube API Services - Audit and Quota Extension Form」，由站主用自己的 Google 帳號送出。要準備的東西：

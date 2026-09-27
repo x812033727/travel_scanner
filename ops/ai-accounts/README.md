@@ -20,7 +20,7 @@ and `/` (Google).
 | `/var/lib/mokaair-ai-accounts/codex-a` … `codex-e` | One `CODEX_HOME` per account |
 | `/var/lib/mokaair-ai-accounts/agy-a` … `agy-e` | One `HOME` per Antigravity account |
 | `/var/lib/mokaair-ai-accounts/default-claude`, `default-codex`, `default-agy` | The default slot letter |
-| `/var/lib/mokaair-ai-accounts/current-claude` | The slot whose turn it is for prompt runs (see below) |
+| `/var/lib/mokaair-ai-accounts/current-claude`, `current-codex` | The slot whose turn it is for each tool's prompt runs (see below) |
 | `/root/.claude`, `/root/.claude.json`, `/root/.codex`, `/root/.gemini/antigravity-cli` | Links to account A |
 | `/opt/mokaair-ai-accounts/ai_accounts_agent` | The agent (copied from `apps/api`) |
 | `/etc/travel-scanner/ai-accounts.env` | `AI_ACCOUNTS_AGENT_HMAC_KEY`, `AI_ACCOUNTS_ALLOWED_EMAILS` |
@@ -169,18 +169,21 @@ Claude's quota appears after the next Claude session on the host has made its fi
 
 ## Prompt runs
 
-`POST /v1/runs` (`ai_accounts_agent/runs.py`) runs one prompt through `claude -p` with every
-tool turned off, on the signed-in Claude subscription account whose turn it is, as long as it
+`POST /v1/runs` (`ai_accounts_agent/runs.py`) runs one text-only prompt through `claude -p`
+or `codex exec` on the selected tool's signed-in subscription account, as long as it
 is below the caller's usage cap. The site always sends 100 since 2026-09-26 (the owner removed
 the cap settings), so an account keeps the runs until it is full. The video pipeline uses it (#756). Since 2026-09-25, when the owner sets
 「Claude 連線方式」 on the AI vendors card to 訂閱帳號, every other site feature that calls
 Claude uses it too (`apps/api/app/ai/subscription.py`): guide search, introductions,
-introduction review, Simplified names and the news stages. The trip planner and the trip
+introduction review, Simplified names and the news stages. The same OpenAI features can use
+Codex when the owner selects its subscription connection. Video writing stages choose
+Claude Code or Codex independently. The trip planner and the trip
 text parser do not; a reader cannot wait for a CLI.
 
 - The accounts take turns in slot order (A -> B -> C -> D -> E -> A). One account keeps
   every run until it reaches the cap or a run reports its limit; then the next signed-in slot
-  with room takes over, and `current-claude` records it, so a restart keeps the turn. Setting
+  with room takes over, and `current-claude` or `current-codex` records it, so a restart keeps
+  the turn. Setting
   the default account on /admin/ai-accounts restarts the turns there. An account whose turn
   has passed is not used again until the turn comes round to it.
 - Each account runs one prompt at a time. Runs on different accounts go side by side, and
@@ -192,10 +195,15 @@ text parser do not; a reader cannot wait for a CLI.
   account being probed. When it is the probed account's turn, the run waits for the probe
   (seconds, within `queue_seconds`) instead of spending another account.
 - A run that hits a usage limit rests that account for 30 minutes and moves on to the next
-  one. When every account is at the cap, the answer is `subscription_quota_paused`, and the
-  site falls back to MiniMax if it has the key.
-- Codex is not offered. `codex exec` has no switch that removes its shell, and its read-only
-  sandbox still reads the site's `.env`.
+  one. When every account is at the cap, the answer is `subscription_quota_paused`.
+  Research features then wait or fall back to MiniMax according to `ai_subscription_fallback`;
+  a video writing stage remains paused.
+- Codex runs with shell, unified exec, browser, app, plugin, hooks and web search disabled,
+  plus read-only sandboxing, an empty working directory, ephemeral history and a fixed output
+  schema. The agent rejects any tool item in Codex's JSONL. A 2026-09-27 isolated host test
+  asked Codex to run `id` and read `/etc/hostname`; it returned `UNAVAILABLE` for both and
+  emitted no tool item. The command flags and verified CLI version (`0.156.1`) are pinned in
+  `ai_accounts_agent/runs.py`; a CLI upgrade needs a new isolation test before runs resume.
 
 ## Trust boundary
 
@@ -209,7 +217,7 @@ text parser do not; a reader cannot wait for a CLI.
   like the deployment agent's.
 - The API, worker and news-worker containers mount the socket, because all three run
   prompts. A prompt can spend quota on the owner's accounts but can do nothing on the host:
-  Claude Code runs with no tools, in an empty folder, with a fresh environment.
+  Claude Code and Codex run with no tools, in an empty folder, with a fresh environment.
 - The page never receives a token. It sees emails, plans, quota percentages, the sign-in
   URL and the Codex device code, and the last two only while a login is open.
 

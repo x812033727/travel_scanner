@@ -49,7 +49,7 @@
 
 仍然會找站主的只有：查核退回重寫用完仍不過的文件（停在待審，附查核的問題）、劇本被退回 `MAX_PROMPT_FIX_ROUNDS` 輪後卡住、自動品管有項目沒過、卡住的影片（同一階段連續失敗、預算、缺金鑰、磁碟）、上架時間。
 
-## 資料模型（遷移 `0102_video_binge_series`，接在 `0101_video_dub_locales` 後）
+## 資料模型（遷移 `0103_video_binge_series`，接在 `0102_video_youtube_sync` 後）
 
 `video_drama_series` 的新欄位（`apps/api/app/video_automation/models.py` 的 `VideoDramaSeries`；比照 0100 的「不存在才建」寫法）：
 

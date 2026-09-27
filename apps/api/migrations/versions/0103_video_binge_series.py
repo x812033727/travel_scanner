@@ -1,7 +1,7 @@
 """A binge series: genre, hands-off gates, visual tier and the compilation (docs/videos/BINGE.md).
 
-Revision ID: 0102_video_binge_series
-Revises: 0101_video_dub_locales
+Revision ID: 0103_video_binge_series
+Revises: 0102_video_youtube_sync
 
 ``video_drama_series`` gains the genre preset the planner writes from, who leads, whether the
 series is hands-off (its documents, screenplays, sheets and storyboards are decided by the
@@ -22,8 +22,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0102_video_binge_series"
-down_revision: str | None = "0101_video_dub_locales"
+revision: str = "0103_video_binge_series"
+down_revision: str | None = "0102_video_youtube_sync"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

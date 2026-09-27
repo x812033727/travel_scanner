@@ -13,7 +13,7 @@ from app.video_automation.schemas import UsageView
 # A draft is counted when its planning stage first succeeds in the month.
 DRAFT_STAGE = "planner"
 # Runs on the Claude subscription accounts; the plan pays for them, not the token budget.
-SUBSCRIPTION_PROVIDER = "claude_code"
+SUBSCRIPTION_PROVIDERS = frozenset({"claude_code", "codex"})
 
 
 def month_start(now: datetime | None = None) -> datetime:
@@ -26,7 +26,7 @@ async def usage_view(
 ) -> UsageView:
     since = month_start(now)
     spent = VideoAiRun.input_tokens + VideoAiRun.output_tokens
-    on_plan = VideoAiRun.provider == SUBSCRIPTION_PROVIDER
+    on_plan = VideoAiRun.provider.in_(SUBSCRIPTION_PROVIDERS)
     tokens, plan_tokens, calls, failed = (
         await session.execute(
             select(

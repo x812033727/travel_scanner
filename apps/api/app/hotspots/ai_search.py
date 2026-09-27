@@ -352,12 +352,13 @@ def research_provider(
             raise AppError(
                 503, "hotspot_guide_ai_provider_not_configured", "所選 AI 供應商尚未設定"
             )
-        chosen_model, chosen_timeout, _tokens = settings_for("anthropic")
+        chosen_model, chosen_timeout, _tokens = settings_for(name)
         return SubscriptionResearchProvider(
             settings,
             chosen_model,
             chosen_timeout,
-            # MiniMax on its own model, never the Claude model name this feature asked for.
+            vendor=cast(Literal["anthropic", "openai"], name),
+            # MiniMax uses its own model, never the selected vendor's model name.
             fallback=(
                 lambda: research_provider(
                     settings,

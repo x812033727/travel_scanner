@@ -36,7 +36,7 @@ class FakeAgent:
         return AgentRunResult(
             text=self.outcome,
             slot="b",
-            model="claude-opus-5-5",
+            model=kwargs["model"],
             input_tokens=900,
             output_tokens=100,
             duration_ms=1234,
@@ -47,7 +47,10 @@ def test_the_subscription_is_the_default_and_offers_the_claude_models() -> None:
     assert {choice["provider"] for choice in DEFAULT_STAGE_MODELS.values()} == {"claude_code"}
     assert "claude-opus-5-5" in {option.value for option in model_options()["claude_code"]}
     assert "claude_code" in configured_providers(AGENT)
+    assert "gpt-6-sol" in {option.value for option in model_options()["codex"]}
+    assert "codex" in configured_providers(AGENT)
     assert "claude_code" not in configured_providers(Settings())
+    assert "codex" not in configured_providers(Settings())
 
 
 @pytest.mark.asyncio
@@ -138,6 +141,27 @@ async def test_a_subscription_stage_is_recorded_apart_from_the_api_budget(
     recorded = session.add.call_args.args[0]
     assert isinstance(recorded, VideoAiRun)
     assert (recorded.provider, recorded.status, recorded.input_tokens) == ("claude_code", "ok", 900)
+
+
+@pytest.mark.asyncio
+async def test_codex_stage_uses_its_own_subscription_and_plan_usage(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    agent = FakeAgent("Codex script")
+    monkeypatch.setattr(ai, "usage_view", AsyncMock(return_value=_usage(tokens=1_000_000)))
+    monkeypatch.setattr(ai, "slug_has_draft", AsyncMock(return_value=True))
+    monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda runtime: agent)
+    session = MagicMock(commit=AsyncMock())
+    row = VideoAutomationSettings(stage_models={
+        **DEFAULT_STAGE_MODELS,
+        "verifier": {"provider": "codex", "model": "gpt-6-sol"},
+    })
+    out = await ai.run_stage(session, AGENT, row, _request(), None)
+    assert (out.provider, out.model, out.text) == ("codex", "gpt-6-sol", "Codex script")
+    assert out.usage.tokens == 1_000_000 and out.usage.subscription_tokens == 1000
+    assert agent.calls[0]["tool"] == "codex"
+    recorded = session.add.call_args.args[0]
+    assert (recorded.provider, recorded.model) == ("codex", "gpt-6-sol")
 
 
 @pytest.mark.asyncio

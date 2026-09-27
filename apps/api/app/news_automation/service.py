@@ -1058,7 +1058,20 @@ async def publish_candidate(
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if row.status not in {"manual_review", "shadow_review"} or row.guide_article_id is None:
         raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
-    documents, versions = await publication_bundle(session, row, redis)
+    try:
+        documents, versions = await publication_bundle(session, row, redis)
+    except AppError as problem:
+        if problem.code != "news_evidence_changed":
+            raise
+        # The pages moved after the article was checked. Hold it for changed evidence, as the
+        # pipeline's second stage does, so the editor is offered the re-check against the
+        # current pages. Otherwise a ready article can neither publish nor be refreshed
+        # (2026-09-27: ai-news-google-project-suncatcher-20260924).
+        row.status = "manual_review"
+        row.error_code = "news_evidence_changed"
+        row.error_detail = problem.detail[:4000]
+        await session.commit()
+        raise
     row.human_decision = "publish"
     row.human_reason = payload.reason
     row.human_major_error = payload.major_error

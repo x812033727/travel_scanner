@@ -14,13 +14,13 @@ scope:
   - apps/api/app/video_automation
   - apps/api/app/video_reviews
   - apps/api/app/config.py
-  - apps/api/migrations/versions/0102_video_binge_series.py
+  - apps/api/migrations/versions/0103_video_binge_series.py
   - apps/api/tests/test_video_series.py
   - apps/api/tests/test_video_series_binge.py
   - apps/api/tests/test_video_reviews.py
   - apps/api/tests/test_video_automation_judge.py
   - apps/api/tests/test_video_automation_settings.py
-  - apps/api/tests/test_migration_0102_video_binge_series.py
+  - apps/api/tests/test_migration_0103_video_binge_series.py
 ---
 
 # Video binge A1: series columns, hands-off document and script rules, compilation job, binge form endpoints, download
@@ -34,7 +34,7 @@ against the month's budgets, and serves the compilation's 1080p cut from the wor
 
 ## Definition of done
 
-- [x] Migration `0102_video_binge_series`: `genre`, `lead`, `hands_off`, `compilation`,
+- [x] Migration `0103_video_binge_series` (renumbered after `0102_video_youtube_sync` landed on main first): `genre`, `lead`, `hands_off`, `compilation`,
       `visual_tier`, `total_minutes`, `compilation_slug/started_at/finished_at` on
       `video_drama_series` with their checks; `ck_video_drama_series` recreated with
       `series_max_in_flight BETWEEN 1 AND 6`; downgrade refuses while a hands-off or compiled
@@ -67,7 +67,7 @@ against the month's budgets, and serves the compilation's 1080p cut from the wor
 ```bash
 cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests
 uv run pytest tests/test_video_series.py tests/test_video_series_binge.py tests/test_video_automation_judge.py tests/test_video_automation_settings.py tests/test_video_reviews.py -q
-RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_migration_0102_video_binge_series.py -q   # needs PostgreSQL
+RUN_INTEGRATION_TESTS=1 uv run pytest tests/test_migration_0103_video_binge_series.py -q   # needs PostgreSQL
 ```
 
 ## Notes

@@ -242,6 +242,930 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress contact buttons: LINE, customer support, and alternatives to the old Messenger plugin",
+      "description": "A contact button should lead visitors to a channel someone actually handles without blocking key actions on a phone. This guide shows a small Taiwanese website how to plan LINE Official Account links, support and form entry points, replace the old Messenger Chat Plugin, and test offline hours, device differences, and removal of old code.",
+      "hero": {
+        "src": "/guides/wordpress-chat-contact-buttons/hero-en.jpg",
+        "alt": "Original illustration of screens and a document showing how a website visitor reaches a person who handles an inquiry.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A chat bubble sits at the bottom right of a website, but nothing happens when a visitor opens it. Or a visitor sees “Contact us now” at midnight and receives no reply. These problems involve more than plugins: entry-point wording, device support, and the team’s process matter too. Decide where staff will answer before choosing buttons for the site."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a small studio in Taiwan, a LINE Official Account can be the mobile contact entry point while the website keeps a form. The goal is not to crowd the screen with every messaging platform, but to give visitors on different devices a path they can complete."
+        },
+        {
+          "type": "heading",
+          "text": "State the purpose of each contact route and who handles it",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List common visitor questions first, such as service coverage, available booking times, and the status of an existing case. General inquiries can go to LINE; matters requiring more detail can use a form or email. If different people handle each route, label its purpose so visitors do not send the same inquiry several times because they cannot choose."
+        },
+        {
+          "type": "paragraph",
+          "text": "Button text should describe the action, such as “Ask us on LINE” or “Describe your service request”; that is clearer than an icon alone. Do not promise an immediate reply when nobody is on live duty. State response hours and what happens next near the entry point, and keep another contact option available."
+        },
+        {
+          "type": "paragraph",
+          "text": "Plan customer-data retention and handover together. Business inquiries should go to an organization-controlled account, not a former colleague’s personal chat account. Assign at least a primary owner and a backup, and confirm both know how to check new messages."
+        },
+        {
+          "type": "heading",
+          "text": "Use links supplied by LINE",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the Official Account ID in LINE Official Account Manager, then use an add-friend link supplied by its interface or a URL supported in official documentation. Different LINE URLs do different things: some open an account page, while others open an Official Account chat. Decide what the visitor should accomplish before choosing one."
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE Developers documents a chat link built from https://line.me/R/oaMessage/ followed by the encoded account ID. If you add prefilled text, percent-encode both the account and the text correctly. Prefilling only puts text in the input field; the user still decides whether to send it. A button click is not proof that an inquiry was received."
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE currently recommends the HTTPS form of its URL scheme and has deprecated the old line:// scheme. These URLs support LINE on iOS and Android, while the documentation says LINE for desktop is unsupported. Offer desktop visitors another route, such as an add-friend QR code, account details, or a working form; do not promise every device will open a chat directly."
+        },
+        {
+          "type": "heading",
+          "text": "Start with a standard button",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Add a Button block to a WordPress page, write an explicit label, and paste the verified official link. Place it after the service description or on the contact page so visitors understand its purpose before clicking. An external link alone does not justify installing a full support suite with extensive tracking and automatic pop-ups."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the whole site needs a floating button, choose a maintained tool that can limit where it appears. Configure its position, label, and on/off settings on a test site first. Enable only channels someone manages, and check for duplicate loading of the same platform’s code. Before paying, verify which placement or device rules require a paid tier."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm the destination account and URL, then make a recognizable button on the contact page.",
+            "Test on a phone with LINE installed and confirm it opens the correct Official Account.",
+            "Test without LINE and on desktop too; an installation prompt is not a successful chat."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Replace the old Messenger Chat Plugin",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not reinstall the old Facebook Chat Plugin from an outdated tutorial just because its directory page still exists. The changelog of Facebook’s WooCommerce integration records removal of the discontinued Messenger Chat feature in 2024, while the old plugin page retains historical installation instructions. An existing document does not establish that the feature still suits a current website."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the team still handles messages in Messenger, obtain and actually test a contact link that works for its current account and sends visitors to the platform. If conversations must happen within the website, assess a maintained customer-support service and a form instead. These approaches differ in account requirements, data retention, and cost; choose according to the need."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before replacing the bubble, identify where it loads: a plugin, theme setting, header or footer code, or tag manager may be responsible. Build and verify the new route before disabling the old Chat-specific component. Shared Meta code may support other features; do not remove every related integration at once."
+        },
+        {
+          "type": "heading",
+          "text": "Check whether floating controls cover mobile actions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the service page, form page, and a page with bottom navigation on a narrow screen. See whether the button covers Submit, Next, cookie choices, or Back to top, and whether an expanded chat panel can be closed. If it obscures a primary action, move it or disable the floating control on that page."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test with the phone keyboard open too. A control fixed at the bottom of the viewport may move as the visible area changes and make the form hard to use. Desktop can show a fuller panel on the right, while mobile can use a compact button; the two layouts need not have identical size or expansion behavior."
+        },
+        {
+          "type": "paragraph",
+          "text": "Give the button an accessible name, visible keyboard focus, and sufficient contrast; do not rely on hover alone for its explanation. The label should warn users when it opens an external app. If a chat panel pops up automatically, check whether it interrupts reading or repeatedly reappears."
+        },
+        {
+          "type": "heading",
+          "text": "Test the staff handoff after contact",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Send one test inquiry through the complete path: click, open the channel, send, and confirm staff receipt. Check whether support staff can tell which service page the visitor came from. If the source needs to be prefilled, include only brief useful context; do not put personal data, account credentials, or full browsing history into the URL."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test automated replies outside staffed hours. They should explain when someone will check the message and what other routes are available. An automated reply is neither human acceptance nor confirmation of a booking. A clear next step reduces repeated messages and misunderstandings while visitors wait."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, record each button’s location, destination account, responsible staff, and test date. Repeat acceptance checks after an account change, plugin update, or mobile redesign. If nobody temporarily handles a route, change its wording or send visitors to a form so every public button leads to sustainable service."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-chat-contact-buttons/diagram-1-en.svg",
+          "alt": "Original four-panel diagram showing choice of a contact route, correct opening of the platform, confirmation that a message was sent, and staff response.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Test the entry point, device, and handoff together so each contact has a next step.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Entry point",
+            "Suitable need",
+            "Limits to verify"
+          ],
+          "rows": [
+            [
+              "LINE Official Account link",
+              "General inquiries on a phone",
+              "Device support, correct account, and staffed handoff"
+            ],
+            [
+              "Website contact form",
+              "Structured details or asynchronous handling",
+              "Submission, notification, and data retention"
+            ],
+            [
+              "On-site support service",
+              "Conversation must stay on the site",
+              "Staffing, privacy, cost, and mobile layout"
+            ],
+            [
+              "External platform contact link",
+              "Team already uses that platform",
+              "Login requirements and actual destination"
+            ]
+          ],
+          "caption": "Choose entry points by handling capacity and visitor context, not just bubble appearance."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "A click is not a completed conversation",
+          "text": "A button may only open an account page, an installation prompt, or a prefilled message. In acceptance testing, follow a test inquiry until it is actually sent and seen by the responsible person, then check that automated replies make no false promises."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build a trackable WordPress contact form",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Troubleshoot broken social-content embeds",
+              "kind": "life",
+              "slug": "wordpress-social-embeds"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LINE: URL scheme support and limitations",
+          "url": "https://developers.line.biz/en/docs/line-login/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE: Official Account chat links",
+          "url": "https://developers.line.biz/en/docs/messaging-api/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE: Official Account add-friend entry points",
+          "url": "https://developers.line.biz/en/docs/messaging-api/sharing-bot/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Facebook official integration changelog",
+          "url": "https://github.com/facebook/facebook-for-woocommerce/blob/main/changelog.txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Historical Facebook Chat Plugin page",
+          "url": "https://wordpress.org/plugins/facebook-messenger-customer-chat/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressの問い合わせボタン：LINE、サポート、旧Messengerプラグインの代替",
+      "description": "問い合わせボタンは、担当者が対応できる窓口へ読者を導き、スマートフォンの主要操作を妨げないことが大切です。台湾の小規模サイトを例に、LINE公式アカウント、サポートとフォームの入口、旧Messenger Chat Pluginの代替、営業時間外や端末別の動作、古いコードの撤去を確認します。",
+      "hero": {
+        "src": "/guides/wordpress-chat-contact-buttons/hero-ja.jpg",
+        "alt": "ウェブサイトの読者から担当者への問い合わせの流れを、画面と書類で示したオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "サイト右下のチャットアイコンを押しても反応がない、あるいは深夜に「今すぐ連絡」と表示されるのに返事が来ない。原因はプラグインだけではなく、入口の文言、端末への対応、チームの処理方法にもあります。まず誰がどこで返信するかを決め、それからサイトに置くボタンを選びます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "台湾の小規模な事業所なら、モバイルの窓口にLINE公式アカウントを使い、サイトのフォームも残せます。あらゆる連絡サービスを画面に並べるのではなく、端末の異なる読者にも完了できる経路を用意することが目的です。"
+        },
+        {
+          "type": "heading",
+          "text": "問い合わせの目的と担当者を明示する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "サービスの範囲、予約可能な時間、進行中の案件など、よくある質問を先に挙げます。一般的な問い合わせはLINEへ、詳細資料が必要なものはフォームやメールへ誘導できます。窓口ごとに担当者が違うなら用途を表示し、読者が迷って同じ内容を何度も送らないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ボタンにはアイコンだけでなく「LINEで問い合わせる」「サービスの希望を送る」など動作を表す文言を使います。常時対応していないなら即時返信を約束せず、近くに対応時間と次の手順を示し、別の連絡手段も残します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "顧客情報の保存と引き継ぎも同時に考えます。業務用の連絡先は組織が管理するアカウントにし、退職者の個人チャットへサイトが長期間つながらないようにします。主担当と代理担当を最低一人ずつ決め、両者が新着メッセージを確認できることを確かめます。"
+        },
+        {
+          "type": "heading",
+          "text": "LINEが提供する公式リンクを使う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE Official Account Managerで公式アカウントIDを確認し、管理画面の友だち追加リンク、または公式文書が対応するURLを使います。LINEのURLは、アカウントページを開くものと公式アカウントのチャットを開くものなど目的が異なります。利用者に何をしてほしいか決めてから選びます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE Developersは、https://line.me/R/oaMessage/ にエンコード済みのアカウントIDを付けてチャットを開く方法を案内しています。定型文を入れる場合はIDと文章の両方を正しくパーセントエンコードします。定型文は入力欄に入るだけで、送信は利用者が確認して行います。ボタンのクリックを問い合わせ受信と数えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LINEは現在HTTPS形式のURL schemeを推奨し、古いline://は非推奨です。この方式はiOSとAndroidのLINEに対応しますが、公式文書ではデスクトップ版LINEは非対応とされています。パソコン向けには友だち追加用QRコード、アカウント情報、利用できるフォームなどを別に用意し、全端末で直接チャットが開くと約束しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "まず標準のボタンで基本の入口を作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのページにボタンブロックを追加し、明確な文言と確認済みの公式リンクを入れます。サービスの説明の後、または問い合わせページに置き、用途を理解してから押せるようにします。外部リンク一つのために、大量の追跡機能や自動ポップアップを含むサポート一式を導入する必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイト全体にフローティングボタンが必要なら、保守が続き、表示ページを限定できるツールを選びます。まずテストサイトで位置、ラベル、オン・オフを設定します。実際に担当者がいる窓口だけを有効にし、同じサービスのコードが二重に読み込まれないか確認します。購入前に、位置や端末別の条件のどれが有料機能かも調べます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "遷移先アカウントとリンクを確認し、問い合わせページに識別しやすいボタンを作る。",
+            "LINEをインストールしたスマートフォンで、正しい公式アカウントが開くか試す。",
+            "未インストールの端末やパソコンでも代替窓口を確認し、インストール案内をチャット成功と見なさない。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "旧Messenger Chat Pluginの代替を用意する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグイン一覧に旧Facebook Chat Pluginが残っているだけで、古い手順に従って再導入しないでください。FacebookのWooCommerce連携ソースの変更履歴には、終了したMessenger Chat機能を2024年に削除した記録があります。一方、旧プラグインページには過去の導入説明が残ります。文書が存在しても、現行サイトに適した機能とは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "チームが今もMessengerで対応するなら、現在のアカウントで使える連絡リンクを取得して実際に試し、利用者をサービス側へ案内できます。サイト内で会話を完結させる必要があれば、継続保守されるサポートサービスとフォームを検討します。アカウント条件、データ保存、費用は異なるため、必要性に沿って選びます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "切り替え前に、古いアイコンの読み込み元を特定します。プラグイン、テーマ設定、ヘッダー・フッターのコード、タグ管理ツールのいずれかかもしれません。新しい窓口を作って検証してから旧Chat専用部分を停止します。共有のMetaコードは別の機能にも使われる可能性があるので、関連する連携を一度にすべて削除しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "フローティング窓口がスマートフォンの操作を隠さないか確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "狭い画面でサービスページ、フォームページ、下部ナビゲーションのあるページを開きます。ボタンが「送信」「次へ」、Cookieの選択、ページ上部へ戻る操作を覆わないか、チャットパネルを展開後に閉じられるかを調べます。主要機能が隠れるなら、位置を変えるかそのページでは非表示にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スマートフォンのキーボードを開いた状態も試します。画面下部に固定した操作部は表示領域の変化で移動し、フォームを使いにくくすることがあります。パソコンでは右側に大きなパネル、スマートフォンでは簡潔なボタンとしてもよく、寸法や展開方法を同じにする必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ボタンには分かりやすいアクセシブルな名前、見えるキーボードフォーカス、十分なコントラストを設け、ホバー時だけの説明に頼らないでください。外部アプリへ移るなら文言で予告します。チャットパネルが自動表示される場合、読書を妨げたり何度も現れたりしないか確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "問い合わせ後の担当者への引き継ぎを試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト問い合わせ一件で、クリック、窓口の起動、送信、担当者の受信まで通して試します。担当者がどのサービスページから来た利用者か分かるか確認します。参照元を定型入力する場合は理解に役立つ短い情報だけにし、個人情報、認証情報、閲覧履歴全体をURLに入れないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対応時間外の自動返信も試します。いつ確認するか、ほかの利用可能な窓口を知らせる内容にします。自動返信は人による受理でも予約の成立でもありません。次の手順を明示すれば、待機中の重複送信や誤解を減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後にボタンの場所、遷移先アカウント、管理担当者、テスト日を記録します。アカウント変更、プラグイン更新、スマートフォン版の改修後には再検証します。一時的に誰も対応しない窓口は文言を直すかフォームへ誘導し、公開ボタンが継続できるサービスにつながるようにします。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-chat-contact-buttons/diagram-1-ja.svg",
+          "alt": "窓口の選択、サービスの正しい起動、メッセージ送信の確認、担当者の返信を示すオリジナルの4コマ図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "入口、端末、引き継ぎを合わせて検証し、問い合わせの次の手順を確保します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "適した用途",
+            "確認すべき制約"
+          ],
+          "rows": [
+            [
+              "LINE公式アカウントのリンク",
+              "スマートフォンからの一般的な問い合わせ",
+              "端末対応、正しいアカウント、担当者への引き継ぎ"
+            ],
+            [
+              "サイトの問い合わせフォーム",
+              "項目の整理や非同期対応が必要",
+              "送信、通知、データ保存"
+            ],
+            [
+              "サイト内サポートサービス",
+              "サイト内で会話を続ける必要",
+              "担当体制、プライバシー、費用、モバイル表示"
+            ],
+            [
+              "外部サービスへの連絡リンク",
+              "チームがすでにそのサービスを利用",
+              "ログイン条件と実際の遷移先"
+            ]
+          ],
+          "caption": "アイコンの見た目だけでなく、対応能力と読者の状況で窓口を選びます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "クリックは会話の完了ではない",
+          "text": "ボタンが開くのはアカウントページ、インストール案内、入力済み文章だけかもしれません。テストの問い合わせが実際に送られ、担当者に読まれるところまで追跡し、自動返信に誤った約束がないかも確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "追跡できるWordPress問い合わせフォームを作る",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "SNSコンテンツの埋め込み不具合を調べる",
+              "kind": "life",
+              "slug": "wordpress-social-embeds"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LINE：URL schemeの対応端末と制約",
+          "url": "https://developers.line.biz/en/docs/line-login/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE：公式アカウントのチャットリンク",
+          "url": "https://developers.line.biz/en/docs/messaging-api/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE：公式アカウントの友だち追加方法",
+          "url": "https://developers.line.biz/en/docs/messaging-api/sharing-bot/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Facebook公式連携の変更履歴",
+          "url": "https://github.com/facebook/facebook-for-woocommerce/blob/main/changelog.txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "旧Facebook Chat Pluginのページ",
+          "url": "https://wordpress.org/plugins/facebook-messenger-customer-chat/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 문의 버튼: LINE, 고객 지원, 기존 Messenger 플러그인의 대안",
+      "description": "문의 버튼은 방문자를 실제 담당자가 처리하는 채널로 안내하고 휴대전화의 주요 조작을 가리지 않아야 합니다. 대만의 소규모 웹사이트를 예로 들어 LINE 공식 계정 링크, 고객 지원과 양식의 진입점, 기존 Messenger Chat Plugin의 대안, 업무 시간 외 대응과 기기별 차이, 오래된 코드 제거를 검증하는 방법을 설명합니다.",
+      "hero": {
+        "src": "/guides/wordpress-chat-contact-buttons/hero-ko.jpg",
+        "alt": "웹사이트 방문자가 담당자에게 문의하는 과정을 화면과 문서로 나타낸 독창적인 그림.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "웹사이트 오른쪽 아래의 채팅 아이콘을 눌러도 아무 반응이 없거나, 한밤중에 “지금 문의”를 보고 눌렀지만 답을 받지 못할 수 있습니다. 이런 문제는 플러그인뿐 아니라 진입점의 문구, 기기 지원, 팀의 처리 방식과도 관계가 있습니다. 먼저 담당자가 어디에서 답하는지 정한 뒤 웹사이트에 놓을 버튼을 선택하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "대만의 소규모 스튜디오라면 휴대전화 문의 창구로 LINE 공식 계정을 사용하면서 웹사이트 양식도 유지할 수 있습니다. 모든 메시지 서비스를 화면에 늘어놓는 것이 아니라, 서로 다른 기기의 방문자가 완료할 수 있는 경로를 제공하는 것이 목적입니다."
+        },
+        {
+          "type": "heading",
+          "text": "문의 목적과 담당 책임을 명확히 표시하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "서비스 범위, 예약 가능한 시간, 기존 의뢰의 진행 상황처럼 방문자가 자주 묻는 사항을 먼저 정리합니다. 일반 문의는 LINE으로, 자료가 많이 필요한 문의는 양식이나 이메일로 보낼 수 있습니다. 창구마다 처리자가 다르면 용도를 표시해, 방문자가 선택하지 못하고 같은 내용을 여러 번 보내지 않도록 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "버튼에는 아이콘만 놓기보다 “LINE으로 문의하기”, “서비스 요청 작성하기”처럼 행동을 설명하는 문구를 씁니다. 실시간 담당자가 없다면 즉시 답변을 약속하지 말고, 진입점 근처에 답변 시간과 예상 처리 방법을 안내하며 다른 연락 수단도 남겨 둡니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "고객 정보 보관과 담당자 인계도 함께 계획합니다. 업무용 문의는 조직이 관리하는 계정으로 받고, 퇴사자의 개인 채팅 계정에 사이트가 계속 연결되지 않도록 합니다. 주 담당자와 대체 담당자를 최소 한 명씩 지정하고 두 사람이 새 메시지를 확인할 수 있는지 검증합니다."
+        },
+        {
+          "type": "heading",
+          "text": "LINE에서 제공하는 공식 링크 사용하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE Official Account Manager에서 공식 계정 ID를 확인하고 관리 화면에서 제공하는 친구 추가 링크나 공식 문서가 지원하는 URL을 사용합니다. LINE URL마다 기능이 다릅니다. 어떤 것은 계정 페이지를 열고 어떤 것은 공식 계정 채팅으로 이동합니다. 방문자가 해야 할 작업을 먼저 정하고 링크를 선택하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE Developers 문서는 https://line.me/R/oaMessage/ 뒤에 인코딩된 계정 ID를 붙여 채팅을 여는 방법을 설명합니다. 미리 입력할 문구가 있다면 계정과 문구를 모두 올바르게 퍼센트 인코딩해야 합니다. 사전 입력은 입력창에 글을 넣을 뿐이며 발송은 사용자가 확인합니다. 버튼 클릭을 문의 수신으로 계산하면 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE은 현재 HTTPS 형식의 URL scheme을 권장하며 이전 line:// 방식은 지원 중단 대상으로 표시합니다. 이 URL은 iOS와 Android의 LINE을 지원하지만 공식 문서는 데스크톱 LINE은 지원하지 않는다고 밝힙니다. 따라서 데스크톱에는 친구 추가 QR 코드, 계정 안내나 작동하는 양식을 별도로 제공하고 모든 기기에서 바로 채팅이 열린다고 약속하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 일반 버튼으로 기본 진입점 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 페이지에 버튼 블록을 넣고 명확한 문구와 검증된 공식 링크를 입력합니다. 서비스 설명 다음이나 문의 페이지에 배치해 방문자가 용도를 이해하고 누르게 합니다. 외부 링크 하나를 만들기 위해 방대한 추적 및 자동 팝업 기능을 갖춘 고객 지원 패키지를 설치할 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트 전체에 떠 있는 버튼이 필요하면 계속 유지 관리되고 표시할 페이지를 제한할 수 있는 도구를 고릅니다. 시험 사이트에서 위치, 라벨, 켜기·끄기를 먼저 설정하세요. 실제 담당자가 관리하는 채널만 활성화하고 같은 플랫폼의 코드가 중복 로드되지 않는지 확인합니다. 구매 전에 위치 또는 기기 조건 중 어떤 기능이 유료인지 검토합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "대상 계정과 링크를 확인하고 문의 페이지에 알아보기 쉬운 버튼을 만듭니다.",
+            "LINE이 설치된 휴대전화에서 올바른 공식 계정이 열리는지 시험합니다.",
+            "LINE이 없거나 데스크톱인 경우에도 대체 창구를 확인하며 설치 안내를 채팅 성공으로 여기지 않습니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "기존 Messenger Chat Plugin의 대안 마련하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "옛 Facebook Chat Plugin이 플러그인 목록에 남아 있다는 이유만으로 예전 안내에 따라 다시 설치하지 마세요. Facebook의 WooCommerce 통합 소스 변경 기록에는 중단된 Messenger Chat 기능을 2024년에 제거한 내역이 있습니다. 반면 옛 플러그인 페이지에는 과거 설치 안내가 남아 있습니다. 문서가 존재한다고 현재 사이트에 적합한 기능이라는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "팀이 여전히 Messenger로 메시지를 처리한다면 현재 계정에서 사용할 수 있는 연락 링크를 구해 직접 시험하고 방문자를 플랫폼으로 보낼 수 있습니다. 웹사이트 안에서 대화를 끝내야 한다면 계속 관리되는 고객 지원 서비스와 양식을 평가합니다. 계정 요구 사항, 데이터 보관, 비용이 서로 다르므로 필요에 따라 선택하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "교체 전에 예전 채팅 아이콘을 어디에서 불러오는지 정리합니다. 플러그인, 테마 설정, 머리말·바닥글 코드, 태그 관리 도구일 수 있습니다. 새 진입점을 구축하고 검증한 후 기존 Chat 전용 부분을 끕니다. 공통 Meta 코드는 다른 기능에도 쓰일 수 있으므로 관련 통합을 한꺼번에 전부 삭제하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "떠 있는 버튼이 모바일 작업을 가리는지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "좁은 화면에서 서비스 페이지, 양식 페이지, 하단 탐색 메뉴가 있는 페이지를 엽니다. 버튼이 제출, 다음 단계, Cookie 선택지, 맨 위로 이동을 가리지 않는지, 펼친 채팅 패널을 닫을 수 있는지 확인합니다. 핵심 기능을 가린다면 위치를 옮기거나 해당 페이지에서 버튼을 끕니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "휴대전화 키보드를 연 상태에서도 시험합니다. 화면 아래에 고정한 요소는 보이는 영역이 변하면서 이동해 양식 사용을 어렵게 할 수 있습니다. 데스크톱에는 오른쪽의 넓은 패널을, 휴대전화에는 간결한 버튼을 사용할 수 있습니다. 두 환경의 크기와 펼침 방식이 같을 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "버튼에 명확한 접근성 이름, 눈에 보이는 키보드 초점, 충분한 대비를 제공하고 마우스를 올릴 때만 설명이 나타나게 하지 마세요. 외부 앱으로 이동한다면 문구로 미리 알립니다. 채팅 패널이 자동으로 뜨면 읽기를 방해하거나 반복해서 나타나는지 확인합니다."
+        },
+        {
+          "type": "heading",
+          "text": "문의 후 담당자 인계 과정 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "시험 문의 한 건을 클릭, 채널 열기, 발송, 담당자 수신까지 끝까지 진행합니다. 담당자가 방문자가 어느 서비스 페이지에서 왔는지 알 수 있는지도 확인합니다. 출처를 미리 입력해야 한다면 이해에 도움이 되는 짧은 정보만 넣고 개인정보, 계정 인증 정보, 전체 방문 기록을 URL에 담지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "근무 시간 외 자동 응답도 시험합니다. 언제 메시지를 확인하는지와 다른 이용 가능한 창구를 알려야 합니다. 자동 응답은 사람의 접수도 아니고 예약 확정도 아닙니다. 다음 단계를 알리면 대기 중 반복 문의와 오해를 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 사이트에서 버튼의 위치, 대상 계정, 관리 담당자, 시험 날짜를 기록합니다. 계정 변경, 플러그인 업데이트, 모바일 개편 후 다시 검증합니다. 일시적으로 담당자가 없는 창구는 문구를 바꾸거나 양식으로 안내해 모든 공개 버튼이 지속 가능한 서비스로 이어지게 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-chat-contact-buttons/diagram-1-ko.svg",
+          "alt": "문의 창구 선택, 플랫폼의 올바른 열기, 메시지 발송 확인, 담당자 답변을 보여 주는 독창적인 네 칸 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "진입점, 기기, 인계 과정을 함께 시험해 문의 다음 단계를 마련합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "진입점",
+            "적합한 요구",
+            "확인할 제한"
+          ],
+          "rows": [
+            [
+              "LINE 공식 계정 링크",
+              "휴대전화의 일반 문의",
+              "기기 지원, 올바른 계정, 담당자 인계"
+            ],
+            [
+              "웹사이트 문의 양식",
+              "정보 항목 정리 또는 비동기 처리",
+              "제출, 알림, 데이터 보관"
+            ],
+            [
+              "사이트 내부 고객 지원 서비스",
+              "사이트 안에서 대화해야 함",
+              "근무 체계, 개인정보, 비용, 모바일 화면"
+            ],
+            [
+              "외부 플랫폼 문의 링크",
+              "팀이 해당 플랫폼을 이미 사용",
+              "로그인 요구와 실제 도착지"
+            ]
+          ],
+          "caption": "아이콘 모양만 비교하지 말고 처리 역량과 방문자 상황에 맞게 창구를 선택합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "클릭은 대화 완료가 아닙니다",
+          "text": "버튼은 계정 페이지, 설치 안내 또는 미리 작성된 메시지만 열 수도 있습니다. 시험 문의가 실제로 발송되어 담당자에게 보일 때까지 추적하고 자동 응답이 잘못된 약속을 하지 않는지도 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "추적 가능한 WordPress 문의 양식 만들기",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "소셜 콘텐츠 삽입 오류 해결하기",
+              "kind": "life",
+              "slug": "wordpress-social-embeds"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LINE: URL scheme 지원과 제한",
+          "url": "https://developers.line.biz/en/docs/line-login/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE: 공식 계정 채팅 링크",
+          "url": "https://developers.line.biz/en/docs/messaging-api/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE: 공식 계정 친구 추가 경로",
+          "url": "https://developers.line.biz/en/docs/messaging-api/sharing-bot/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Facebook 공식 통합 변경 기록",
+          "url": "https://github.com/facebook/facebook-for-woocommerce/blob/main/changelog.txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "과거 Facebook Chat Plugin 페이지",
+          "url": "https://wordpress.org/plugins/facebook-messenger-customer-chat/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 即时联系按钮：LINE、客服与旧 Messenger 插件的替代",
+      "description": "网站的联系按钮要能把读者带到有人处理的管道，也不能挡住手机上的主要操作。本篇说明 WordPress 如何规划 LINE 官方帐号链接、客服与表单入口，整理旧 Messenger Chat Plugin 的替代方向，并提供脱机时段、设备差异和移除旧程序的验收步骤，协助小型网站创建清楚而可维护的联系方式。",
+      "hero": {
+        "src": "/guides/wordpress-chat-contact-buttons/hero-zh-cn.jpg",
+        "alt": "原创屏幕、文档与屏幕插画，呈现读者通过网站联系到人员处理的流程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站右下角有聊天泡泡，读者打开后没有反应，或半夜看到立即联系却等不到回复。这些问题不只来自插件，也与入口文案、设备支持和团队处理方式有关。先确定人员在哪里回复，再决定网站要放什么按钮。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以台湾小型工作室为例，可以用 LINE 官方帐号作为行动联系入口，同时保留网站表单。目的不是把所有通信平台都放满画面，而是让不同设备的读者都能找到一条能完成的路径。"
+        },
+        {
+          "type": "heading",
+          "text": "把联系目的与处理责任写清楚",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先列出读者常问的事情，例如服务范围、预约时段与既有案件进度。一般询问可以导向 LINE，需附较多数据的事项则可使用表单或信箱。若不同入口背后由不同人员处理，应标示用途，避免读者不知道该选哪个而同时送出多份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "联系按钮的文本应描述动作，例如用 LINE 询问、填写服务需求，比只放图标更容易理解。没有即时值班就不要写立即回复；可在入口附近说明回复时段与预期处理方式，并保留其他联系管道。"
+        },
+        {
+          "type": "paragraph",
+          "text": "把客户数据保存与交接安排一起确认。工作用途应由组织控制的帐号负责，不要让网站长期连到已离职同事的私人聊天帐号。至少指定主要管理者与备用负责人，并确认两人知道如何查看新消息。"
+        },
+        {
+          "type": "heading",
+          "text": "使用 LINE 官方提供的链接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先在 LINE Official Account Manager 核对官方帐号 ID，使用管理接口提供的加入好友链接或官方文档支持的网址。LINE 的不同网址有不同功能：有些打开帐号页面，有些直接前往官方帐号聊天；选择前先确认希望用户完成什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "LINE Developers 文档提供以 https://line.me/R/oaMessage/ 加上编码后帐号 ID 打开聊天的方式。若带预填文本，帐号与文本都需要正确的百分比编码。预填只是把文本放进输入栏，仍由用户确认送出，不能把点击按钮算成已收到询问。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方目前建议使用 HTTPS 形式的 LINE URL scheme，旧 line:// 已被弃用。这类 URL scheme 支持 iOS 与 Android 的 LINE，官方并列出不支持电脑版 LINE；因此桌面页面应另外准备加入好友 QR Code、帐号说明或可用表单，不要承诺所有设备都直接开聊天室。"
+        },
+        {
+          "type": "heading",
+          "text": "先用一般按钮完成基本入口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WordPress 页面加入按钮区块，输入明确文本并粘贴已确认的官方链接。先放在服务内容之后或联系页，让读者理解用途再点击。不要为了做一个外部链接，就安装包含许多追踪与自动弹窗功能的完整客服套件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若需要整站浮动按钮，选择仍受维护且能限制显示页面的工具，先在测试站设置位置、标签与开关。只激活实际有人管理的管道，并查看是否重复加载同平台程序。购买前核对哪些位置或设备条件属于付费功能。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认目的地帐号与链接，先在联系页创建可辨识的按钮。",
+            "用已安装 LINE 的手机测试，核对打开的是正确官方帐号。",
+            "再用未安装或桌面情境检查替代入口，不把安装提示当成聊天成功。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "旧 Messenger Chat Plugin 应安排替代",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "不要因为插件目录仍找得到旧 Facebook Chat Plugin，就照旧教学重新安装。Facebook 的 WooCommerce 集成原代码更新纪录已在二○二四年移除停止服务的 Messenger Chat 功能，旧插件页也保留许多历史安装说明；文档存在不代表功能仍适合目前网站。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果团队仍使用 Messenger 处理消息，可先取得并实际测试目前帐号可用的联系链接，让用户前往平台；若需要在网站内完成客服对话，则评估有持续维护的客服服务与表单。两种方式的帐号要求、数据保存与费用不同，应按需求选择。"
+        },
+        {
+          "type": "paragraph",
+          "text": "替换前列出旧泡泡从哪里加载：插件、主题设置、页眉页脚程序或标签管理工具都有可能。先创建新入口并验证，再停用旧 Chat 专用组件。共用的 Meta 程序可能另供其他功能使用，不要一口气删除所有相关集成。"
+        },
+        {
+          "type": "heading",
+          "text": "浮动入口先检查手机遮挡",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用窄屏幕打开服务页、表单页与有底部导览的页面。检查按钮是否压住送出、下一步、Cookie 选项或返回顶端控制，展开聊天面板时是否能关闭。若主要功能被遮住，先调整位置或停用该页的浮动入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手机键盘出现时也要测试。固定在窗口底部的控制可能随可视范围改变，让表单难以操作。桌面可以在右侧显示较完整的面板，手机则可采精简按钮；两者不必使用完全相同的尺寸与展开方式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "按钮要有清楚的可及名称、可见的键盘焦点与足够对比，不要只靠悬停才出现说明。会跳到外部应用程序的入口，文案应让人有所预期。对话面板若缺省自动弹出，应检查是否打断阅读或反复出现。"
+        },
+        {
+          "type": "heading",
+          "text": "检查联系完成后的接手流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以一条测试询问走完点击、打开管道、送出及人员接收。检查客服是否知道这位用户从哪个服务页而来；若需要预填来源，只带有助于理解的简短信息，避免把个资、帐号凭证或完整浏览纪录塞进网址。"
+        },
+        {
+          "type": "paragraph",
+          "text": "脱机时段也要测试自动回复，内容应告知何时查看与其他可用入口。自动回复不是人工受理，也不等于预约成立；让读者知道下一步，能减少等待中的重复消息与误会。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后记录网站按钮位置、目的地帐号、管理人员及测试日期。换帐号、插件更新或重新设计手机版后重新验收；如果入口暂时无人处理，就调整文案或改导向表单，让每个公开按钮都对应到可持续的服务。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-chat-contact-buttons/diagram-1-zh-cn.svg",
+          "alt": "四格原创图解显示选择联系入口、正确打开平台、确认消息送出及人员回复。",
+          "width": 1600,
+          "height": 900,
+          "caption": "把入口、设备与接手流程一起验收，让联系真的有下一步。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "入口",
+            "适合需求",
+            "要验证的限制"
+          ],
+          "rows": [
+            [
+              "LINE 官方帐号链接",
+              "手机上的一般询问",
+              "设备支持、帐号正确与有人接手"
+            ],
+            [
+              "网站联系表单",
+              "需整理字段或异步处理",
+              "送出、通知与数据保存"
+            ],
+            [
+              "站内客服工具",
+              "需要留在网站对话",
+              "值班、隐私、费用与手机版"
+            ],
+            [
+              "外部平台联系链接",
+              "团队已使用该平台",
+              "登录需求及实际目的地"
+            ]
+          ],
+          "caption": "以处理能力与读者情境选入口，避免只比较泡泡外观。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "点击不是对话完成",
+          "text": "按钮可能只打开帐号页、安装提示或预填消息。验收时追踪到测试询问实际送出并被负责人看见，再确认自动回复没有造成错误承诺。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "创建能追踪的 WordPress 联系表单",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "社群内容嵌入失效的排查方式",
+              "kind": "life",
+              "slug": "wordpress-social-embeds"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LINE：URL scheme 支持与限制",
+          "url": "https://developers.line.biz/en/docs/line-login/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE：官方帐号聊天链接",
+          "url": "https://developers.line.biz/en/docs/messaging-api/using-line-url-scheme/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LINE：官方帐号加入好友入口",
+          "url": "https://developers.line.biz/en/docs/messaging-api/sharing-bot/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Facebook 官方集成原代码更新纪录",
+          "url": "https://github.com/facebook/facebook-for-woocommerce/blob/main/changelog.txt",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "历史 Facebook Chat Plugin 页面",
+          "url": "https://wordpress.org/plugins/facebook-messenger-customer-chat/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }

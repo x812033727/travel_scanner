@@ -1,4 +1,4 @@
-"""0102 adds the binge columns to ``video_drama_series`` and widens the in-flight bound.
+"""0103 adds the binge columns to ``video_drama_series`` and widens the in-flight bound.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees the table in
 its older shape; this test takes the columns and the checks off a real PostgreSQL, puts the
@@ -31,7 +31,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0102_video_binge_series"
+MIGRATION = "0103_video_binge_series"
 SERIES = "video_drama_series"
 SETTINGS = "video_automation_settings"
 SETTINGS_CHECK = "ck_video_drama_series"
@@ -129,7 +129,7 @@ def _exercise(connection: Connection) -> None:
     connection.execute(
         sa.text(
             f"INSERT INTO {SERIES} (id, slug, title, premise, status, created_at, updated_at) "
-            "VALUES (gen_random_uuid(), 'mig-0102', 't', 'p', 'active', now(), now())"
+            "VALUES (gen_random_uuid(), 'mig-0103', 't', 'p', 'active', now(), now())"
         )
     )
     _older_shape(connection)
@@ -143,7 +143,7 @@ def _exercise(connection: Connection) -> None:
     row = connection.execute(
         sa.text(
             f"SELECT genre, lead, hands_off, compilation, visual_tier, total_minutes "
-            f"FROM {SERIES} WHERE slug = 'mig-0102'"
+            f"FROM {SERIES} WHERE slug = 'mig-0103'"
         )
     ).one()
     assert tuple(row) == ("xianxia-bonds", "dual-male", False, False, "clips", None)
@@ -153,13 +153,13 @@ def _exercise(connection: Connection) -> None:
 
     # A hands-off series blocks the downgrade; once it is classic again the old shape returns.
     connection.execute(
-        sa.text(f"UPDATE {SERIES} SET hands_off = true, compilation = true WHERE slug = 'mig-0102'")
+        sa.text(f"UPDATE {SERIES} SET hands_off = true, compilation = true WHERE slug = 'mig-0103'")
     )
     with pytest.raises(RuntimeError, match="hands-off or compiled"):
         run(connection, "downgrade")
     connection.execute(
         sa.text(
-            f"UPDATE {SERIES} SET hands_off = false, compilation = false WHERE slug = 'mig-0102'"
+            f"UPDATE {SERIES} SET hands_off = false, compilation = false WHERE slug = 'mig-0103'"
         )
     )
     run(connection, "downgrade")

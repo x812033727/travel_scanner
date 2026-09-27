@@ -137,6 +137,9 @@ class ProjectSummary(BaseModel):
     # the review store and is downloaded from the worker's volume when it is there.
     compilation: bool = False
     download_available: bool = False
+    # What the site last sent this video's YouTube side through the linked channel, step by step
+    # (app/video_youtube/state.py public_state), or None when it never did.
+    youtube_sync: dict[str, Any] | None = None
 
 
 class ProjectOut(ProjectSummary):

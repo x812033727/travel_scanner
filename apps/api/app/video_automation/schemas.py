@@ -15,9 +15,8 @@ from pydantic import (
 
 from app.ai.catalog import ModelStatus
 
-# "claude_code": the Claude subscription accounts the host's AI accounts agent manages; the
-# others are the site's API keys.
-ProviderName = Literal["claude_code", "openai", "anthropic", "minimax", "gemini"]
+# "claude_code" and "codex" use the host's subscription accounts; the others use API keys.
+ProviderName = Literal["claude_code", "codex", "openai", "anthropic", "minimax", "gemini"]
 ApiProviderName = Literal["openai", "anthropic", "minimax", "gemini"]
 Stage = Literal["planner", "writer", "verifier", "listener", "translator", "caption_reviewer"]
 CaptionLocale = Literal["en", "ja", "ko", "zh-CN"]

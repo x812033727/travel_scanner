@@ -27,11 +27,11 @@
 
 ## 網站怎麼用這些帳號
 
-`POST /v1/runs` 以關掉所有工具的 `claude -p` 跑一個 prompt，挑在用量上限以下、剩最多額度的 Claude 帳號。影片產線一直用它；「AI 供應商與金鑰」卡的 Claude 連線方式選「訂閱帳號」後，介紹搜尋、介紹撰寫、介紹審查、簡體名稱與新聞各階段的 Claude 呼叫也改走它（`apps/api/app/ai/subscription.py`），行程規劃與行程文字解析不走。
+`POST /v1/runs` 用關掉工具的 `claude -p` 或 `codex exec` 跑一個文字 prompt，各自挑未用滿的訂閱帳號。影片各階段可選 Claude Code 或 Codex；「AI 供應商與金鑰」卡可分別把 Claude、OpenAI 的攻略搜尋、介紹、審查、簡體名稱與新聞呼叫改走對應訂閱帳號（`apps/api/app/ai/subscription.py`）。行程規劃與行程文字解析仍只走 API 金鑰。
 
 - 每個帳號一次只跑一個 prompt，不同帳號並行；請求最多等它的 `queue_seconds`，等不到回 `subscription_busy`。
-- 撞到用量上限的帳號休息 30 分鐘；全部到上限回 `subscription_quota_paused`，網站有 MiniMax 金鑰就改用 MiniMax。上限百分比是 `ai_vendors` 卡的 `ai_subscription_max_usage_percent`。
-- Codex 不提供（`codex exec` 關不掉它的 shell，唯讀沙箱仍讀得到 `.env`）；Antigravity 也不提供（條款禁止把它接到別的產品，代理只驅動官方 binary、從不讀它的 token）。
+- 撞到用量上限的帳號休息 30 分鐘；全部到上限回 `subscription_quota_paused`。網站依 `ai_subscription_fallback` 設定等待或改用 MiniMax。網站呼叫的用量上限固定為 100%。
+- Codex 以停用 shell、unified exec、瀏覽器、應用程式、外掛、hooks 與網頁搜尋的固定旗標執行；代理拒絕任何工具事件，並只接受隔離測試驗證過的 CLI 版本 `0.156.1`。2026-09-27 的隔離測試中，要求執行 `id` 與讀 `/etc/hostname` 都回報不可用。Antigravity 不提供給網站流程。
 
 ## 檢查
 

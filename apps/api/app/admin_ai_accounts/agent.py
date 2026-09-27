@@ -28,7 +28,7 @@ RUN_QUEUE_SECONDS = 60.0
 
 
 class AgentRunResult(BaseModel):
-    """One prompt the agent ran on a signed-in Claude Code account (ai_accounts_agent.runs)."""
+    """One prompt the agent ran on a signed-in Claude Code or Codex account."""
 
     text: str
     slot: str
@@ -129,6 +129,7 @@ class AiAccountsAgentClient:
     async def run_prompt(
         self,
         *,
+        tool: str = "claude",
         model: str,
         system: str,
         prompt: str,
@@ -136,7 +137,7 @@ class AiAccountsAgentClient:
         timeout_seconds: float = RUN_TIMEOUT_SECONDS - 60,
         queue_seconds: float = RUN_QUEUE_SECONDS,
     ) -> AgentRunResult:
-        """One prompt on the Claude account with the most room; the agent turns every tool off.
+        """One text-only prompt on a subscription account with room.
 
         Refusals come back as AppError with the agent's code: ``subscription_quota_paused``
         (429, with the reset time in the detail), ``subscription_busy`` (503, every account with
@@ -144,7 +145,7 @@ class AiAccountsAgentClient:
         ``subscription_run_failed`` (502).
         """
         payload = {
-            "tool": "claude",
+            "tool": tool,
             "model": model,
             "system": system,
             "prompt": prompt,
