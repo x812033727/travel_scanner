@@ -2,13 +2,13 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoModelSettings } from "./admin-video-model-settings";
-import { AdminVideoSettings, linesToList, mediaChoice, saveBody, settingsBody, STAGES } from "./admin-video-settings";
+import { AdminVideoSettings, dramaSaveBody, linesToList, saveBody, settingsBody, STAGES } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
 
-function bootstrap(capabilities: string[]): AdminBootstrap {
-  return { admin_roles: [], admin_capabilities: capabilities, navigation: [], pending_counts: {}, system_status: {}, environment: "test", can_deploy: false, can_manage_database: false };
+function bootstrap(capabilities: string[], roles: string[] = []): AdminBootstrap {
+  return { admin_roles: roles, admin_capabilities: capabilities, navigation: [], pending_counts: {}, system_status: {}, environment: "test", can_deploy: false, can_manage_database: false };
 }
 
 const sonnet = { provider: "anthropic", model: "claude-sonnet-5" };
@@ -68,7 +68,10 @@ function stubFetch() {
   return puts;
 }
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  window.history.replaceState(null, "", "/");
+});
 
 describe("AdminVideoSettings", () => {
   it("keeps one topic per line and sends only what the API stores", () => {
@@ -78,6 +81,13 @@ describe("AdminVideoSettings", () => {
     expect(Object.keys(body)).not.toContain("updated_at");
     expect(Object.keys(body.stage_models)).toEqual([...STAGES]);
     expect(saveBody(body, "AI", "")).not.toHaveProperty("stage_models");
+    expect(saveBody(body, "AI", "")).not.toHaveProperty("drama");
+    // The drama tab sends the settings as stored a moment ago, with only the drama block replaced.
+    const stored = { ...body, draft_interval_hours: 48 };
+    const dramaBody = dramaSaveBody(stored, { ...body.drama, drama_enabled: true }, "山海經\n\n原創玄幻\n");
+    expect(dramaBody).not.toHaveProperty("stage_models");
+    expect(dramaBody.draft_interval_hours).toBe(48);
+    expect(dramaBody.drama).toMatchObject({ drama_enabled: true, drama_topic_scope: ["山海經", "原創玄幻"] });
   });
 
   it("lets a settings manager turn drafts on and save without touching the stage models", async () => {
@@ -96,6 +106,7 @@ describe("AdminVideoSettings", () => {
     expect(body).toMatchObject({ enabled: true, draft_interval_hours: 48, topic_avoid: ["Stocks", "Elections"] });
     expect(body).not.toHaveProperty("stage_models");
     expect(body).not.toHaveProperty("model_options");
+    expect(body).not.toHaveProperty("drama");
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
   });
 
@@ -121,13 +132,11 @@ describe("AdminVideoSettings", () => {
     expect(stance).toHaveProperty("value", "");
     fireEvent.change(stance, { target: { value: "1. 先把帳算清楚再花錢" } });
     fireEvent.click(screen.getByRole("checkbox", { name: "由 Jev 挑大綱（立場留白時沒有作用）" }));
-    fireEvent.click(screen.getByRole("checkbox", { name: "開啟 AI 漫劇" }));
-    fireEvent.click(screen.getByRole("checkbox", { name: /設定圖自動選/ }));
     fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     const body = puts[0] as Record<string, unknown>;
     expect(body).toMatchObject({ channel_stance: "1. 先把帳算清楚再花錢", auto_pick_outline: false, auto_approve_final: true });
-    expect((body.drama as Record<string, unknown>).auto_pick_look).toBe(true);
+    expect(body).not.toHaveProperty("drama");
   });
 
   it("picks a stage model on the AI settings page and saves only the models", async () => {
@@ -143,33 +152,30 @@ describe("AdminVideoSettings", () => {
     expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings/models");
   });
 
-  it("turns the drama route on, follows the clip model's resolutions and lengths, and saves the drama block", async () => {
-    const puts = stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
-    fireEvent.click(await screen.findByRole("checkbox", { name: "開啟 AI 漫劇" }));
-    const resolution = screen.getByRole("combobox", { name: "片段解析度" }) as HTMLSelectElement;
-    expect([...resolution.options].map((option) => option.value)).toEqual(["720p", "1080p"]);
-    expect(screen.getAllByRole("option", { name: /MiniMax API \(沒有金鑰\)/ })).toHaveLength(3);
-    fireEvent.change(screen.getByRole("combobox", { name: "片段廠商（圖生影片）" }), { target: { value: "minimax" } });
-    expect((screen.getByRole("combobox", { name: "片段模型" }) as HTMLSelectElement).value).toBe("MiniMax-H3");
-    expect([...(screen.getByRole("combobox", { name: "片段解析度" }) as HTMLSelectElement).options].map((option) => option.value)).toEqual(["768p", "2k"]);
-    expect((screen.getByRole("combobox", { name: "片段預設秒數" }) as HTMLSelectElement).value).toBe("8");
-    fireEvent.click(screen.getByRole("checkbox", { name: "Kore" }));
-    fireEvent.change(screen.getByRole("spinbutton", { name: "單支最多花費（美元）" }), { target: { value: "120" } });
-    fireEvent.change(screen.getByRole("textbox", { name: "漫劇題材（每行一個）" }), { target: { value: "山海經\n原創玄幻\n" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
-    await waitFor(() => expect(puts).toHaveLength(1));
-    const body = puts[0] as { drama: Record<string, unknown> };
-    expect(body.drama).toMatchObject({ drama_enabled: true, clip_provider: "minimax", clip_model: "MiniMax-H3", clip_resolution: "768p", clip_seconds_default: 8, max_usd_per_video: 120, drama_topic_scope: ["山海經", "原創玄幻"] });
-    expect(body.drama.character_voice_pool).toEqual([{ provider: "gemini", name: "Kore" }]);
-    expect(mediaChoice(view.media_options as never, "clips", "minimax", "MiniMax-H3")?.usd_per_second).toBe(0.13);
-    expect(mediaChoice(view.media_options as never, "clips", "gemini", "nope")).toBeNull();
+  it("tells a content reviewer which role changes these settings, and sends the drama settings to their tab", async () => {
+    stubFetch();
+    window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"], ["content"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    expect(await screen.findByText("你目前登入的帳號，後台角色是：內容。")).toBeTruthy();
+    expect(screen.getByText("改用站主（Owner）帳號登入就能修改；或請站主到後台「會員與次數」頁，替這個帳號加上「營運」角色。")).toBeTruthy();
+    expect(screen.getByRole("button", { name: "儲存設定" })).toHaveProperty("disabled", true);
+    expect(screen.queryByRole("checkbox", { name: "開啟 AI 漫劇" })).toBeNull();
+    expect(screen.getByText("漫劇的設定已移到「漫劇」分頁，和作品、單集漫劇放在一起。")).toBeTruthy();
+    // The tab state re-reads the address only on this event; a plain pushState or link would change
+    // the address and leave the settings tab on screen.
+    const moved = vi.fn();
+    window.addEventListener("admin:location-change", moved);
+    fireEvent.click(screen.getByRole("button", { name: "前往「漫劇」分頁" }));
+    window.removeEventListener("admin:location-change", moved);
+    expect(moved).toHaveBeenCalledTimes(1);
+    expect(new URL(window.location.href).searchParams.get("tab")).toBe("drama");
   });
 
   it("shows a vendor without a key and keeps a reader from saving", async () => {
     stubFetch();
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSettings /><AdminVideoModelSettings /></AdminOperationsProvider>);
     expect(await screen.findByText(/要有「管理設定」權限才能修改/)).toBeTruthy();
+    expect(screen.getByText("你目前登入的帳號沒有任何後台角色。")).toBeTruthy();
     expect(screen.getByRole("button", { name: "儲存設定" })).toHaveProperty("disabled", true);
     expect(await screen.findByRole("button", { name: "儲存影片模型" })).toHaveProperty("disabled", true);
     expect(screen.getAllByRole("option", { name: "OpenAI API (沒有金鑰)" }).length).toBe(STAGES.length);
