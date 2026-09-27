@@ -24,6 +24,7 @@
                                       │
 video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
   每 5 分鐘：GET /video/automation/next ──> 這一輪該做什麼（新草稿？哪支影片的下一步？）
+             漫劇（DRAMA-FLOW.md）：GET /video/automation/series/messages/next（討論）──> GET /video/automation/series/next（文件、下一集）
   文字階段 ──> POST /video/automation/run（伺服器照該階段的設定）
                  ├─ 訂閱：API ──HMAC──> 主機的 AI 帳號代理（ai_accounts_agent.runs）──> claude -p --tools ""
                  └─ API 金鑰：API 直接呼叫廠商（金鑰不出 API 容器）
@@ -51,10 +52,12 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | 聲音 | `voice`：頻道聲音（Gemini Sulafat，沿用 `docs/videos/README.md`） | `drama_voice`：旁白，`null` 就跟教學一樣；角色聲音池 `character_voice_pool` | — |
 | 長度 | 目標長度 8–12 分鐘 | 每個請求與作品各自帶 `target_minutes` | — |
 | 語言預設 | `caption_locales`（en、ja、ko、zh-CN）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（預設空） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
-| 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段 | — |
-| 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
-| 關卡 | 旁白 Jev 全過自動核准、Jev 挑大綱、自動品管全過核准成片與上架確認（都開） | `drama_auto_approve_audio`、`drama_auto_approve_final`（遷移時從教學的複製）、設定圖自動選、分鏡自動核准（關）、「劇本先給我看」`series_script_gate`（開） | — |
+| 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段、文件退回後最多重寫幾輪 `series_doc_rewrites`（2；討論出的新版本不算） | — |
+| 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 `series_episodes_per_month`、同時最多幾集在做 `series_max_in_flight`（1–2） | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
+| 關卡 | 旁白 Jev 全過自動核准、Jev 挑大綱、自動品管全過核准成片與上架確認（都開） | `drama_auto_approve_audio`、`drama_auto_approve_final`（遷移時從教學的複製）、設定圖自動選 `auto_pick_look`（關）、分鏡自動核准 `auto_approve_storyboard`（關）、「劇本先給我看」`series_script_gate`（開；單集與作品的每一集） | — |
 | 頻道立場 | — | — | `channel_stance` |
+| 目前的提示詞 | 教學的六個階段 | 漫劇的階段與 variant（`planner:setting`、`planner:bible`、`writer:episode`、`planner:discuss`、`writer:discuss`…），唯讀 | — |
+| 用量 | 本月草稿數 | —（本月片段秒、圖片、judge、音樂、美元在 `media-status`／`GET /video/media/status`） | 本月 token（API 金鑰的對上限；訂閱帳號的另計）與呼叫次數 |
 
 「訂閱帳號用到幾 % 就先停」欄位自 2026-09-26 起不再讀取（見上）。
 
@@ -95,11 +98,23 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 漫劇（2026-09-26 加，設計在 `DRAMA.md`）
 
-2026-09-27 起單集與作品走同一條（[`DRAMA-FLOW.md`](DRAMA-FLOW.md)）：單集是一集的作品，站主核准故事聖經而不是選大綱，每支都有劇本關卡，文件與劇本可以討論；工人的一輪在作品之前多一段「討論」。語言與上架的順序在 [`LANGUAGES.md`](LANGUAGES.md)。下面是實作前的樣子。
+工人也會做 AI 漫劇。它不挑題：**站主在 `/admin/videos` 發起**（「新的漫劇」：故事前提或改編的文章、風格、長度；「新的作品」：前提、面向、集數）。漫劇設定（`?tab=settings&section=drama`）的 `drama_enabled` 要開著，否則表單被拒、工人也不問。語言與上架的順序在 [`LANGUAGES.md`](LANGUAGES.md)。
 
-工人也會做 AI 漫劇。它不挑題：**站主在 `/admin/videos` 發起**（故事前提或改編的文章、風格、長度），伺服器排進 `video_drama_requests`，工人每輪在做排程草稿之前先問 `GET /video/automation/drama-requests/next`，有就用漫劇版的企劃提示寫故事聖經與大綱、`POST …/{id}/start` 認領（寫下影片代號），然後照投影片的規矩送審「選大綱」。設定分頁的「AI 漫劇」要開著，否則工人不會問。
+### 2026-09-27 起：單集與作品走同一條，一輪多一段「討論」
 
-之後的步驟是 `DRAMA_STEPS` 的順序（`status` 會印）：撰稿（漫劇版提示：每鏡英文提示詞、一句一個說話者）→ 連貫性查核 → 聽眾審稿 → **look**（設定圖，judge 打分）→ 站主在後台每個角色選一張（`look` 關卡）→ tts（依說話者分批）→ check-audio → 旁白關卡 → **keyframes**（judge 不過換 seed）→ **storyboard 關卡**（設定開「分鏡自動核准」且 judge 全過時伺服器自己核准）→ render（卡片、字幕條、縮圖）→ **clips**（最貴，送出前對單支上限把關）→ music → assemble → 五語 CC → 成片關卡 → package → 上架確認；上架確認後工人 `POST …/{id}/done`。
+設計在 [`DRAMA-FLOW.md`](DRAMA-FLOW.md)。單集是一部 `kind = one-off`、只有一集的作品：「新的漫劇」送出時伺服器建作品（slug `one-off-<請求 id 前 8 碼>`）、第 1 集與指向它的請求列；文件只有一份故事聖經（`bible`），站主核准故事聖經而不是選大綱；每支漫劇都有劇本關卡；文件與劇本都可以討論。工人的一輪（`Automation.step()`）依序是：
+
+1. 手上的影片：站主在 `/admin/videos` 放棄的、貼了 YouTube 網址的，然後每支 `active` 影片推進一步（`advance`）或做它的語言。
+2. **討論**（`discussStep()`，在任何作品工作之前，一輪最多回一則）：`GET /video/automation/series/messages/next` 拿最舊的未回覆站主訊息，連同整條串、文件最新版（劇本串給那一集，劇本由工人從自己的檔案讀）與作品脈絡；文件交給企劃模型（variant `discuss`）、劇本交給撰稿模型（variant `discuss`），答案 `{ reply, revised }`，`POST /video/automation/series/messages/{id}/answer {reply_md, revised?}`。文件的新版本由站上存成等站主的 `review` 版本（被取代的那版備註「討論後出了新版本」，不算 `series_doc_rewrites`，也不算每月草稿）；劇本的新版本由工人寫回 `video.json`（每句 id 保留、過 lint），之後的輪次重跑查核與聽眾審稿、重寫 `script.md`、再送一次劇本關卡。模型給不出可用答案就代它回一則說明，串停著等站主，不重試。沒有輪數上限；要停就關 `drama_enabled` 或放 `STOP` 檔。
+3. **作品**（`seriesStep()`）：`GET /video/automation/series/next`——`bible`（單集）或 `setting`／`outline`／`chapter`（作品）由企劃模型寫文件 `POST …/series/{slug}/docs` 等站主；`episode` 就 `POST …/episodes/{n}/start` 開下一集（單集是 `one-off-<…>-e001`），寫 `series.json` 與 `brief.md`（`## 大綱` 只有選項 A，本機核准，備註「依故事聖經」或 `planned by chapter <n>'s approved outline`），不送「選大綱」。
+4. 舊的單集請求（`GET /video/automation/drama-requests/next` 只回單集變成作品之前排進、沒有 `series_id` 的請求），照下面的舊路。
+5. 排程的教學草稿。
+
+每一集的步驟是 `DRAMA_STEPS` 的 19 步（`status` 會印）：撰稿 → 連貫性查核 → 聽眾審稿 → **劇本關卡**（`script.md` 只含敘事；`review-push --gate script`，站主在影片頁讀、討論、核准；「劇本先給我看」`series_script_gate` 關著就本機核准；退回走撰稿 FIX 模式最多 `MAX_PROMPT_FIX_ROUNDS` 輪）→ **look**（judge 打分，`auto_pick_look` 開著就核准 judge 建議的那張，沒過才找站主）→ tts → check-audio → 旁白關卡（Jev 全過自動核准）→ **keyframes** → storyboard 關卡（`auto_approve_storyboard`）→ render → **clips**（最貴，送出前對單支上限把關）→ music → assemble → 繁中字幕 → 成片關卡（自動品管）→ package → 上架確認（`POST …/episodes/{n}/done`）→ 語言。劇本關卡在任何圖片或片段花錢之前。
+
+### 舊路：單集變成作品之前排進的請求
+
+工人每輪在做排程草稿之前問 `GET /video/automation/drama-requests/next`，有就用 `planner-drama.md` 寫 `brief.md`（含大綱選項）、`POST …/{id}/start` 認領（寫下影片代號），然後照投影片的規矩送審「選大綱」。只有規劃這一段不同：大綱選定、lint 之後的步驟同上（`DRAMA_STEPS` 的 19 步）；上架確認後工人 `POST …/{id}/done`。
 
 三種失敗各有處理：
 
@@ -111,7 +126,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 長篇作品（2026-09-27 加，設計在 `SERIES.md`）
 
-工人每輪先問 `GET /video/automation/series/next`，再問單集請求，再看排程草稿。作品的工作有四種：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照漫劇的步驟走，多了三件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；聽眾審稿之後多一個**劇本關卡**（`script.md` 只含敘事，站主退回就走撰稿 FIX 模式，最多 `MAX_PROMPT_FIX_ROUNDS` 輪）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪。
+工人每輪先回一則討論（上面「討論」，`GET /video/automation/series/messages/next`），再問 `GET /video/automation/series/next`（單集的故事聖經與第 1 集也從這裡來），再問舊的單集請求，再看排程草稿。作品層的工作是 `setting`／`outline`／`chapter`／`episode`，單集只有 `bible` 與 `episode`：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照上面每一集的 19 步走（劇本關卡每支漫劇都有），作品的集只多兩件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪；討論出的新版本另計，沒有上限。
 
 ## 語言（2026-09-27 加，設計在 `LANGUAGES.md`）
 
