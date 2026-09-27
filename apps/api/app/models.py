@@ -2222,6 +2222,48 @@ class VideoProject(Timestamped, Base):
     # ko and zh-CN in that order, empty until they choose (docs/videos/DUBS.md; 0099). The worker
     # makes those tracks once the final cut is approved; the owner uploads them in YouTube Studio.
     dub_locales: Mapped[list[str]] = mapped_column(JSON, default=list, server_default="[]")
+    # What the site last sent this video's YouTube side through the linked channel, step by step
+    # (app/video_youtube/state.py; migration 0102): the owner's request, each step's result, and
+    # whether a run is going. None until the owner first sends it from /admin/videos.
+    youtube_sync: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+    # The resumable upload session YouTube opened for this video's mp4, kept so a retry resumes
+    # where the last run stopped instead of uploading a second copy. A capability URL: it never
+    # leaves the server, and it is cleared once the upload finishes.
+    youtube_upload_session: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+
+class VideoYoutubeConnection(Timestamped, Base):
+    """The one YouTube channel the site publishes to, and the OAuth client it signs in with.
+
+    docs/videos/HANDS-OFF.md §YouTube API; migration 0102. The owner pastes the client of their
+    Google Cloud project on the settings tab of /admin/videos and grants access in the browser.
+    The client secret and the refresh token are encrypted together in ``secret_config_encrypted``
+    the way the provider settings are, and never go back to a browser. A single row, id 1.
+    """
+
+    __tablename__ = "video_youtube_connections"
+    __table_args__ = (CheckConstraint("id = 1", name="ck_video_youtube_connection_single"),)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
+    client_id: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    secret_config_encrypted: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # The channel the grant speaks for, read back with channels.list at every verification.
+    channel_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    channel_title: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    scope: Mapped[str | None] = mapped_column(Text, nullable=True)
+    linked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    linked_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    # The last time channels.list answered with the grant (Developer Policies III.E.4 asks for a
+    # check at least every 30 days), and why the grant stopped working when it did.
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    problem: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # The owner's word that the project passed YouTube's API audit: until then an mp4 the site
+    # uploads with videos.insert is locked private, so the upload asks for an explicit yes.
+    audited: Mapped[bool] = mapped_column(Boolean, default=False, server_default=text("false"))
+    updated_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
 
 
 class VideoReview(Timestamped, Base):

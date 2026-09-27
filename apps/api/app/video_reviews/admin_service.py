@@ -58,6 +58,7 @@ from app.video_reviews.schemas import (
     ReviewOut,
 )
 from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_youtube.state import public_state
 
 LIVE = ("pending", "approved", "rejected")
 # How long the mp4 of a video that is on YouTube stays in the review store, counted from the
@@ -156,6 +157,7 @@ def _summary(
         "dub_locales": list(project.dub_locales or []),
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,
+        "youtube_sync": public_state(project.youtube_sync),
     }
 
 
