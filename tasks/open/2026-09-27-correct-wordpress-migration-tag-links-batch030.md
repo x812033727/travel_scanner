@@ -1,7 +1,7 @@
 ---
 id: 2026-09-27-correct-wordpress-migration-tag-links-batch030
 title: Correct WordPress migration tag links Batch030
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: codex-batch030-token-link-fix
@@ -31,7 +31,7 @@ Two published Traditional Chinese WordPress migration guides use structured link
 - [x] Capture both full production rows in a single read-only repeatable-read transaction and verify published/draft v4 against the unmodified repository models.
 - [x] Change only `/blocks/12/inlines/1` and `/blocks/4/inlines/1` from article links to plain-text `標記`; verify visible text and all other fields unchanged.
 - [x] Pass focused pack lint, content-pack tests and task validation.
-- [ ] Open a standalone PR without automatic merge; keep this task open for the later production source update.
+- [x] Open a standalone draft PR without automatic merge; keep this task open for the later production source update.
 - [ ] After separately authorized, guarded deployment and backup, update only these two `zh-TW` source revisions with exact version/hash checks, then verify public links.
 
 ## How to verify
@@ -43,3 +43,5 @@ From `apps/api`, run `.venv/Scripts/python.exe -m app.guides.pack_cli lint --slu
 Fresh full production source at 2026-09-27 10:42:29 UTC: `C:\Users\x8120\.codex\article-localization-release\batch030-link-fix\two-source-20260927T104224Z.json`, SHA256 `691b8d21df7c04caedb1e4c911bc63fffbd3403f516d1126a9b10fab6d49916e`. Both articles are active/published article v2; only `zh-TW` is present, with published/draft locale v4. Published hashes: host migration `20354724ebd32eefcee48a0c08ae23b78a4a6ac7cdf200474fc0600f109628e3`, aftercare `da363c3847673c9994627c1271186d7214d5d0385edca5a369e7f59db519170c`. `source-review-before.json` SHA256 `6bb004e701fc26f65289230236457d055d5c88c22486826bccc917b20081fdd5` verifies full document and metadata equality with Git at `227aae75cc3d6ac0461117d529881f059b176433`. No production write has been made. Merging the PR alone will not update the live database; a later guarded source correction must use a fresh snapshot and stop if v4 or these hashes moved.
 
 Offline exact-diff receipt `exact-correction-review.json` SHA256 `75edfbdb9fcb6277913b7569e53bcabff4a4f1d241ad7a9b85bca4da3e98363a` proves one inline object changed per pack, visible text and every other normalized field unchanged. Both scoped pack lints passed with only existing `no_summary` advisories; `tests/test_guides_content_pack.py` passed (9 passed, 5 skipped); `npm run check:tasks` and `git diff --check` passed.
+
+Draft PR [#855](https://github.com/x812033727/travel_scanner/pull/855) has the `no-auto-merge` label. Its content commit is `cfc703a913976ffc01aac91c094ae031d71a5f65`. It is intentionally unmerged and undeployed at this handoff; do not mark this task done until the guarded live source update and public verification are complete.
