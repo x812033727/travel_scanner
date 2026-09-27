@@ -1,6 +1,7 @@
 import { act, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { AdminSettingsPanel } from "./admin-settings-panel";
+import { AI_PAGE_CATEGORIES, AdminSettingsPanel, SETTINGS_PAGE_CATEGORIES, providerCategoryOf } from "./admin-settings-panel";
+import { AI_SETTINGS_PROVIDERS } from "@/lib/admin-settings-ownership";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
 import type { AdminBootstrap } from "@/lib/admin-operations";
@@ -252,8 +253,10 @@ const aiVendorsProvider = {
     minimax_api_base_url: "https://api.minimaxi.com/v1",
     hotspot_guide_gemini_base_url: "https://generativelanguage.googleapis.com",
     jev_api_base_url: "https://api.typesafe.ai/v1",
+    anthropic_connection: "api_key",
   },
   config_sources: {
+    anthropic_connection: "environment",
     openai_api_base_url: "environment",
     anthropic_api_base_url: "environment",
     minimax_api_base_url: "environment",
@@ -420,6 +423,26 @@ afterEach(() => {
 });
 
 describe("AdminSettingsPanel", () => {
+  it("keeps the AI cards on the AI settings page and everything else on /admin/settings", async () => {
+    stubAiFetch(aiSnapshot);
+    const settingsPage = render(<AdminSettingsPanel categories={SETTINGS_PAGE_CATEGORIES} />);
+    expect(await screen.findByRole("tab", { name: /地圖與路線/ })).toBeTruthy();
+    expect(screen.queryByRole("tab", { name: /AI 服務/ })).toBeNull();
+    settingsPage.unmount();
+
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel categories={AI_PAGE_CATEGORIES} provider="google_maps" />);
+    // A link to a card outside the page's categories opens the page's first card instead.
+    expect(await screen.findByRole("heading", { name: "AI 供應商與金鑰" })).toBeTruthy();
+    expect(screen.getByRole("tab", { name: /AI 服務/ })).toBeTruthy();
+    expect(screen.queryByRole("tab", { name: /地圖與路線/ })).toBeNull();
+  });
+
+  it("files every AI-category provider under the AI settings page links", () => {
+    const aiProviders = Object.entries(providerCategoryOf).filter(([, category]) => category === "ai").map(([provider]) => provider);
+    expect([...aiProviders].sort()).toEqual([...AI_SETTINGS_PROVIDERS].sort());
+  });
+
   it("waits for a session-bound settings snapshot before accepting the first budget edit", async () => {
     sessionIdentity.status = "loading";
     const data = { ...snapshot, providers: [{ ...geminiProvider, config: { ...geminiProvider.config, catalog_review_max_calls: 80 } }] };
@@ -646,17 +669,27 @@ describe("AdminSettingsPanel", () => {
     expect(savedBody(fetchMock)).toEqual({ config: { restaurant_aggregate_monthly_budget: 3500 }, secrets: {}, expected_updated_at: "2026-09-08T00:00:00Z" });
   });
 
-  it("does not duplicate editable hotspot fields on the shared provider page", async () => {
+  it("edits the guide search model on the shared page and leaves its limits to the hotspot page", async () => {
     stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel provider="ai_guide_search" field="hotspot_guide_ai_default_provider" />);
+    render(<AdminSettingsPanel provider="ai_guide_search" field="hotspot_guide_ai_timeout_seconds" />);
+    const heading = await screen.findByRole("heading", { name: "AI 景點介紹搜尋" });
+    const section = heading.closest("section")!;
+    expect(within(section).getByLabelText(/^景點 AI 搜尋預設供應商/)).toBeTruthy();
+    expect(within(section).queryByLabelText("啟用")).toBeNull();
+    const link = section.querySelector('[data-settings-field="hotspot_guide_ai_timeout_seconds"] a');
+    expect(link?.getAttribute("href")).toBe("/admin/hotspots?tab=settings&provider=ai_guide_search&field=hotspot_guide_ai_timeout_seconds");
+    await waitFor(() => expect(document.activeElement).toBe(link));
+  });
+
+  it("lists the guide search model read-only on the hotspot page, linked to AI settings", async () => {
+    stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel scope="hotspots" provider="ai_guide_search" field="hotspot_guide_ai_default_provider" />);
     const heading = await screen.findByRole("heading", { name: "AI 景點介紹搜尋" });
     const section = heading.closest("section")!;
     expect(within(section).queryByLabelText(/^景點 AI 搜尋預設供應商/)).toBeNull();
-    expect(within(section).queryByLabelText("啟用")).toBeNull();
-    expect(within(section).queryByRole("button", { name: "儲存設定" })).toBeNull();
     const link = section.querySelector('[data-settings-field="hotspot_guide_ai_default_provider"] a');
-    expect(link?.getAttribute("href")).toBe("/admin/hotspots?tab=settings&provider=ai_guide_search&field=hotspot_guide_ai_default_provider");
-    await waitFor(() => expect(document.activeElement).toBe(link));
+    expect(link?.getAttribute("href")).toBe("/admin/ai-accounts?tab=models&provider=ai_guide_search&field=hotspot_guide_ai_default_provider");
+    expect(link?.textContent).toBe("AI 設定");
   });
 
   it("saving one card preserves other drafts and their original version tokens", async () => {
@@ -742,7 +775,7 @@ describe("AdminSettingsPanel", () => {
     const { unmount } = render(<AdminSettingsPanel scope="hotspots" />);
     try {
       const section = (await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).closest("section")!;
-      fireEvent.change(within(section).getByLabelText(/^景點 AI 搜尋預設供應商/), { target: { value: "openai" } });
+      fireEvent.change(within(section).getByLabelText(/^景點 AI 搜尋逾時/), { target: { value: "60" } });
       const staying = new CustomEvent("admin:before-navigate", { cancelable: true, detail: { url: "/zh-TW/admin/hotspots?tab=catalog" } });
       expect(window.dispatchEvent(staying)).toBe(true);
       expect(confirm).not.toHaveBeenCalled();
@@ -1404,6 +1437,25 @@ describe("AdminSettingsPanel", () => {
     expect((await screen.findByRole("status")).textContent).toContain("AI 供應商與金鑰 設定已加密儲存並立即套用。");
   });
 
+  it("puts Claude on the host's subscription accounts from the shared card", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+
+    const section = (await screen.findByRole("heading", { name: "AI 供應商與金鑰" })).closest("section")!;
+    const connection = within(section).getByLabelText(/^Claude 連線方式/) as HTMLSelectElement;
+    expect(Array.from(connection.options).map((option) => option.textContent)).toEqual(["API 金鑰", "訂閱帳號（主機 Claude Code）"]);
+    expect(connection.value).toBe("api_key");
+    fireEvent.change(connection, { target: { value: "subscription" } });
+    // No usage cap: an account takes the site's calls until it is full.
+    expect(within(section).queryByLabelText(/^訂閱帳號用量上限/)).toBeNull();
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    const body = savedBody(fetchMock);
+    expect(body.config).toEqual({ anthropic_connection: "subscription" });
+    expect(body.secrets).toEqual({});
+  });
+
   it("carries the Jev key on the shared card even though Jev writes nothing", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
     render(<AdminSettingsPanel />);
@@ -1519,9 +1571,9 @@ describe("AdminSettingsPanel", () => {
 
   it("lets guide search inherit or override the planner model per vendor", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel scope="hotspots" />);
+    render(<AdminSettingsPanel />);
 
-    const section = (await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).closest("section")!;
+    const section = await openAiCard("AI 景點介紹搜尋");
     const minimax = within(section).getByLabelText(/^MiniMax 模型/) as HTMLSelectElement;
     expect(Array.from(minimax.options).map((option) => option.textContent)).toEqual(["沿用行程規劃的模型", "MiniMax Model A", "自訂…"]);
     expect(minimax.value).toBe("");
@@ -1542,9 +1594,9 @@ describe("AdminSettingsPanel", () => {
 
   it("lets the introduction writer inherit the guide search model or take its own", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel scope="hotspots" />);
+    render(<AdminSettingsPanel />);
 
-    const section = (await screen.findByRole("heading", { name: "AI 景點介紹撰寫" })).closest("section")!;
+    const section = await openAiCard("AI 景點介紹撰寫");
     const minimax = within(section).getByLabelText(/^MiniMax 模型/) as HTMLSelectElement;
     // Blank means the guide search's model, not the planner's: introductions run through
     // the guide search adapters, and the empty option has to say which one it inherits.
@@ -1583,9 +1635,9 @@ describe("AdminSettingsPanel", () => {
 
   it("lets guide search default to Gemini with its own optional model", async () => {
     const fetchMock = stubAiFetch(aiSnapshot);
-    render(<AdminSettingsPanel scope="hotspots" />);
+    render(<AdminSettingsPanel />);
 
-    const section = (await screen.findByRole("heading", { name: "AI 景點介紹搜尋" })).closest("section")!;
+    const section = await openAiCard("AI 景點介紹搜尋");
     fireEvent.change(within(section).getByLabelText(/^景點 AI 搜尋預設供應商/), { target: { value: "gemini" } });
     expect(within(section).queryByLabelText(/^MiniMax 模型/)).toBeNull();
     const gemini = within(section).getByLabelText(/^Gemini 模型/) as HTMLSelectElement;

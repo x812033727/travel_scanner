@@ -1,0 +1,935 @@
+{
+  "slug": "ai-news-claude-opus-55-20260922",
+  "vertical": "ai",
+  "display_order": 188,
+  "event_date": "2026-09-22",
+  "event_date_basis": "發布者只印日期、沒有時刻，照發布者日期，不換算台北時間（DELTA-4-8 第 4 條已裁定，研究代理 2026-09-26 重抓後結果一致）。三處都寫 2026-09-22：(1) 公告頁 https://www.anthropic.com/claude-opus-5-5 頁首在標題下印「September 22, 2026」（正規化後的連續字串「Claude Opus 5.5 September 22, 2026」）；(2) https://www.anthropic.com/news 的 Newsroom Featured Grid 裡這一篇的 featuredGridLink 物件 `date` 是 \"2026-09-22\"、可見文字印「AnnouncementsSep 22, 2026」，網址 /claude-opus-5-5 不在下方 publishedOn 列表裡（與探索代理的觀察一致）；(3) System Card PDF 封面印「September 22, 2026」。公告頁 HTML 沒有 article:published_time 或 datePublished；頁內唯一的 ISO 時刻是 CMS 物件的 _createdAt／_updatedAt（例如比較範例的 _updatedAt 2026-09-22T16:19Z、siteSettings 的 _updatedAt 2026-09-24T23:16:44Z），那是編輯系統的存檔時間，不是發布時刻，不能拿來換算。claude.com 部落格的後續文印 September 24, 2026，是後續發展，不是事件日。正文寫「2026 年 9 月 22 日」，不寫時刻、不寫「台北時間」或「美國時間」。",
+  "title": "Claude Opus 5.5 推出：牌價降 20%、付費方案五小時上限提高，40% 是 Anthropic 的成本估計",
+  "title_candidates": [
+    "Claude Opus 5.5 推出：40% 是成本估計、20% 是降價，付費方案用量上限也提高",
+    "Claude Opus 5.5 推出：新家族第一個模型，三個成本數字怎麼讀、哪些方案選得到",
+    "Claude Opus 5.5 推出：成本估計少 40%，Sonnet 與 Haiku 5.5 還要等幾週",
+    "Claude Opus 5.5 推出：一般使用者要看的方案、成本數字與安全限制"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "title": "Introducing Claude Opus 5.5",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "final_url": "https://www.anthropic.com/claude-opus-5-5",
+      "publisher": "Anthropic",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:15Z",
+      "http_status": 200,
+      "bytes": 619967,
+      "raw_file": "_raw/ai-news-claude-opus-55-20260922/opus-55.html",
+      "verbatim_quote": "We’re introducing Claude Opus 5.5, the first model in our new Claude 5.5 family.",
+      "used_for": "事件本身、日期、成本與價格、訂閱方案用量、安全措施、評測但書、平台可用性"
+    },
+    {
+      "title": "Why Claude switched models in your conversation with Opus 5 or Opus 5.5",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "final_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "publisher": "Claude Help Center（Anthropic）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:51:21Z",
+      "http_status": 200,
+      "bytes": 365182,
+      "raw_file": "_raw/ai-news-claude-opus-55-20260922/support-16049681.html",
+      "verbatim_quote": "Note: Opus 5.5 isn't currently available in the Cyber Verification Program.",
+      "used_for": "對話為什麼會換模型（各類分類器轉到哪個模型）、自動換模型的開關位置、可用的產品介面、Cyber Verification Program 目前狀態"
+    },
+    {
+      "title": "Claude Pricing（Plans & Pricing）",
+      "url": "https://claude.com/pricing",
+      "final_url": "https://claude.com/pricing",
+      "publisher": "Anthropic（claude.com）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:48:56Z",
+      "http_status": 200,
+      "bytes": 1171532,
+      "raw_file": "_raw/ai-news-claude-opus-55-20260922/claude-pricing.html",
+      "verbatim_quote": "Every plan has usage limits that reset on a rolling five-hour session window, and paid plans add weekly limits on top.",
+      "used_for": "方案比較表的 Opus 列（Free／Pro／Max）、Team／Enterprise 的 Opus 列、個人方案價格、用量上限的基本規則、API 價格欄"
+    },
+    {
+      "title": "System Card: Claude Opus 5.5",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "final_url": "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf",
+      "publisher": "Anthropic",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:46:38Z",
+      "http_status": 200,
+      "bytes": 17795106,
+      "raw_file": "_raw/ai-news-claude-opus-55-20260922/system-card.pdf（抽出文字：system-card.txt；空白收斂版：system-card-norm.txt）",
+      "verbatim_quote": "However, it is more likely than previous models to follow malicious instructions in text that a user pastes into their own prompt",
+      "used_for": "一般開放加三類防護、知識截止、思考不能關、Claude.ai 年齡、貼上文字裡的惡意指令這個退步與緩解、Cyber Verification Program 時程、蒸餾阻擋沒有備援模型"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北 21:45–21:52，UTC 13:45–13:52）研究代理用 curl -sSL --compressed --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐條重抓，同一主機間隔 ≥1.5 秒，請求沒有帶任何人的姓名、email 或個人資料；抓檔腳本 _tools/ai-news-claude-opus-55-20260922/fetch.sh，逐筆紀錄在 _raw/ai-news-claude-opus-55-20260922/fetch-log.tsv（bytes 一律是落地檔案大小；System Card 在紀錄裡叫 system-card.bin，之後改名成 system-card.pdf，內容相同）。\n四條 sources[]：\n(1) https://www.anthropic.com/claude-opus-5-5 → 200、619,967 bytes、沒有轉址。Next.js 頁，正文與探索代理的 raw-ai/an-opus-55.html（同樣 619,967 bytes）一致。**與指派列和 DELTA-4-8 第 8 條不同的地方（來源優先）**：完整頁有一節「Availability」，寫的是「Claude Opus 5.5 is now available on all platforms, including Amazon Web Services, Google Cloud, and Microsoft Azure. On the Claude Platform, developers can get started with claude-opus-5-5.」——也就是**平台**有寫；**訂閱方案（Free／Pro／Max）能不能選 Opus 5.5 這一頁沒有寫**，只寫了用量上限提高的方案清單。方案層級的資訊改從 (3) 定價頁的方案比較表取得，見下。\n(2) Claude Help Center 16049681 → 200、365,182 bytes。取得路徑不是猜的：先抓 https://support.claude.com/robots.txt（指向 sitemap），再抓說明中心首頁 https://support.claude.com/en/ 取得集合清單，從「Usage and limits」集合頁 https://support.claude.com/en/collections/18031876-usage-and-limits 的側欄連結找到這一篇（標題原文 Why Claude switched models in your conversation with Opus 5 or Opus 5.5）。頁面自印「Updated yesterday」（相對字串，活文件）。Intercom 頁，正文在「All Collections … 」麵包屑之後、「Did this answer your question?」之前，前面是全站側欄。\n(3) https://claude.com/pricing → 200、1,171,532 bytes（公告頁的「Pricing」連結）。方案比較表是 HTML <table>：列標題 <th scope=\"row\">Opus</th> 後面四格依序是 Free「No」、Pro「Yes」、Max 5x「Yes」、Max 20x「Yes」；Team／Enterprise (self-serve)／Enterprise (sales-assisted) 那張表的 Opus 列三格都是「Yes」。**表上寫的是「Opus」這個系列名，沒有寫版本號 5.5**。同頁 API 分頁的「Latest models」列出 Opus 5.5（$4／$20、快取讀取 $0.20、寫入 $5，註明快取價格以 5 分鐘 TTL 計），Opus 5 列在「Legacy models」。頁尾：「Prices shown don’t include applicable tax. Price and plans are subject to change at Anthropic's discretion.」\n(4) System Card：公告頁連結 https://anthropic.com/claude-opus-5-5-system-card → 200，轉址落在 www-cdn.anthropic.com 的 PDF（final_url 見 sources[3]），17,795,106 bytes、230 頁、PDF metadata Title「Claude Opus 5.5 System Card」。用系統 python 的 pypdf 6.16.2 逐頁抽文字（_tools/…/pdftext.py → system-card.txt，每個字之間夾換行），再把空白收斂成單一空格（system-card-norm.txt）。pypdf 把 fi／fl 抽成合字 U+FB01／U+FB02（例如「ﬁnal」「classiﬁers」），連結文字前後會多一個空格（例如「claude.ai , 」）；verbatim_quote 照抽出的樣子抄，沒有改。sources[] 放的是公告頁上的穩定連結，落地網址另記在 final_url。\n引文比對方式（查核者可重現）：HTML 先刪 <!-- -->、刪 <script>/<style>/<noscript>/<template>/<svg> 區塊，行內標籤（a、span、b、strong、em、i、u、code、sup、sub、small、mark、abbr、time）直接拿掉、其餘標籤換成一個空格，html.unescape，U+00A0 換空格，所有空白收斂成一個空格；PDF 用上述抽出文字再收斂空白。引文只做同樣的空白收斂，不改彎引號、破折號、合字。腳本 _tools/…/norm.py 與 _tools/…/check_quotes.py；各頁的正規化全文存成 _raw/…/<name>.norm.txt。有 10 條引文跨越相鄰的區塊元素（表格儲存格、清單項目、價格卡、標題與日期），是「正規化後才連續」的字串、不是原頁上的一句話，各條 fact 欄已寫明；其餘引文都在單一段落內。\n今天也讀了、但沒有放進 sources[]（上限四條；需要時協調者可以換）：https://www.anthropic.com/news（200、459,343 bytes，只用來確認日期，見 event_date_basis）；https://claude.com/blog/claude-opus-5-5-built-for-coding-sessions-that-use-more-context（200、542,889 bytes，頁面印 September 24, 2026 的後續文：「We estimate Claude Opus 5.5 costs about 40% less to run than Opus 5 for typical workloads billed by token.」，另有 Claude Code 2026 年 3–9 月用量趨勢）；https://platform.claude.com/docs/en/models/opus-5-5/whats-new-opus-5-5（200、453,218 bytes；Availability 列 Claude API、Amazon Bedrock、Claude Platform on AWS、Google Cloud、Microsoft Foundry，批次處理 $2／$10，1 小時快取寫入 $8，Fast mode 只在 Claude API）；https://platform.claude.com/docs/en/models/overview（200、392,263 bytes；Opus 5.5 預設 effort medium、1M context、退役「Not sooner than September 22, 2027」）；Help Center 17007452〈What is a limit reset?〉（200、330,387 bytes，Updated this week）、11647753（200、351,189 bytes）、8664678（200、351,704 bytes）、14604842（200、358,287 bytes，頁首註明不適用 Opus 5.5）、16761192（200、356,151 bytes，preserved thinking）；https://www.anthropic.com/supported-countries（200、213,587 bytes，Taiwan 同時在 API 與 Claude.ai 兩份名單）。這些頁上的事實都不在 verified_facts，要用就先換進 sources[]。\n沒有找繁中或其他語系版本的公告：anthropic.com 這一頁沒有語系切換，研究代理也沒有用 WebSearch（0 次）。沒有任何 403、逾時或 DNS 失敗。",
+  "verified_facts": [
+    {
+      "fact": "公告頁頁首在標題下印的日期是 2026 年 9 月 22 日，沒有時刻。（引文是標題與日期兩個相鄰頁面元素，正規化後才連續。）",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Opus 5.5 September 22, 2026"
+    },
+    {
+      "fact": "Claude Opus 5.5 是新的「Claude 5.5」家族的第一個模型；Anthropic 表示它在多數工作上的表現達到 Claude Fable 5.1 的水準，執行成本比 Opus 5 少 40%（成本的條件見下一條）。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’re introducing Claude Opus 5.5, the first model in our new Claude 5.5 family. It performs at the level of Claude Fable 5.1 on most work and costs 40% less to run than Opus 5."
+    },
+    {
+      "fact": "40% 是 Anthropic 自己測出的估計，條件是「預設設定」與「一般工作負載」，不是降價幅度。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our tests show that at default settings it will cost 40% less than Opus 5 on typical workloads."
+    },
+    {
+      "fact": "Anthropic 說明 40% 的來源是兩件事相加：每個 token 比 Opus 5 便宜，加上每個任務用的 token 比較少。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "It costs less per token than Opus 5 and uses fewer tokens per task, which nets out to a 40% drop in costs."
+    },
+    {
+      "fact": "API 定價：輸入每百萬 token 4 美元、輸出 20 美元，比 Opus 5 少 20%。這是官方牌價。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Input and output tokens are $4 and $20 per million, 20% less than Opus 5."
+    },
+    {
+      "fact": "快取讀取每百萬 token 0.20 美元，比 Opus 5 少 60%。括號裡「快取讀取占代理與寫程式工作成本的大部分」是 Anthropic 的說法。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Cache reads (which make up the majority of agentic and coding work costs) are $0.20 per million tokens, 60% less than Opus 5."
+    },
+    {
+      "fact": "公告頁的價格表（每百萬 token，美元；前為 Opus 5.5、後為 Opus 5）：快取讀取 0.20／0.50、輸入 4／5、輸出 20／25、快取寫入 5／6.25。引文是正規化後相鄰儲存格的連續字串。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Prices per 1M tokens Claude Opus 5.5 Claude Opus 5 Cache reads $0.20 $0.50 Input tokens $4 $5 Output tokens $20 $25 Cache writes $5 $6.25"
+    },
+    {
+      "fact": "Anthropic 表示 Opus 5.5 產生輸出的速度比 Opus 5 快 30% 以上。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Opus 5.5 also generates output more than 30% faster than Opus 5."
+    },
+    {
+      "fact": "Fast mode：在 Claude Code 與 Claude Platform 可用，速度最高 2.5 倍（up to），價格是輸入每百萬 token 8 美元、輸出 40 美元。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Fast mode for Opus 5.5 is also available in Claude Code and the Claude Platform with up to 2.5x speed. It costs $8 per million input tokens and $40 per million output tokens."
+    },
+    {
+      "fact": "訂閱方案：Anthropic 提高 Pro、Max、Team 與按席次計費（seat-based）的 Enterprise 方案的五小時用量上限；另外給訂閱使用者一次 rate limit reset，可以先保留、自己選時間用。原文沒有寫提高多少、提高是否有期限，清單裡沒有 Free。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In addition to the price drop, we’re increasing five-hour usage limits on Pro, Max, Team, and seat-based Enterprise plans. We’re also providing subscription users a rate limit reset, which you can now save and use whenever you choose."
+    },
+    {
+      "fact": "Claude Sonnet 5.5 與 Claude Haiku 5.5 還沒推出，原文是「未來幾週」，沒有日期。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Sonnet 5.5 and Claude Haiku 5.5 will follow in the coming weeks, with many of the same improvements to performance, efficiency, and safety."
+    },
+    {
+      "fact": "上線範圍（平台）：Anthropic 寫「所有平台」，舉例包括（including）Amazon Web Services、Google Cloud、Microsoft Azure；開發者在 Claude Platform 用的模型 ID 是 claude-opus-5-5。這一段沒有提到訂閱方案或國家。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Opus 5.5 is now available on all platforms, including Amazon Web Services, Google Cloud, and Microsoft Azure. On the Claude Platform, developers can get started with claude-opus-5-5."
+    },
+    {
+      "fact": "Opus 5.5 不能把「思考」模式關掉。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "It is also no longer available with “thinking” mode switched off, as we describe here."
+    },
+    {
+      "fact": "這是 Anthropic 呼籲放慢前沿（pacing the frontier）之後的第一個發布；發布前由外部評估者測試，名單以「包括」起頭：Frontier Design 與 METR（不是全名單）。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Opus 5.5 is our first release since we called for pacing the frontier. It was tested before release by external evaluators, including Frontier Design and METR."
+    },
+    {
+      "fact": "Anthropic 自己寫：在這個能力水準，評測分數的差距越來越難以反映實際差異（原文 a less reliable guide，是比較級，不是「不能反映」；查核第二輪改）；它自己使用時，Opus 5.5 與 Fable 5.1 的差距比分數顯示的小。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "That said, at these levels of capability we’ve found that benchmark margins have become a less reliable guide to real-world differences. In our own use, the gap between Opus 5.5 and Claude Fable 5.1 is narrower than these scores suggest."
+    },
+    {
+      "fact": "評測表的條件：Opus 5.5 是在開著正式防護的情況下評測的；防護介入時，資安題由 Claude Opus 4.8 完成、生物與前沿 LLM 開發題由 Claude Opus 5 完成，Anthropic 說這可能拉低 Opus 5.5 的分數。這句不適用 AutomationBench：註腳 2 寫那一項沒開備援模型、防護介入算失敗，正文要把它排除（查核第二輪依協調者裁定加上）。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Opus 5.5 was evaluated with its production safeguards enabled. When they intervened, cybersecurity tasks were completed by Claude Opus 4.8, and biology and frontier LLM development tasks were completed by Claude Opus 5."
+    },
+    {
+      "fact": "評測表裡 GPT-6 Astra 與 GPT-5.6 Sol 的 Terminal-Bench 4.0 數字是 OpenAI 自己公布的，不是 Anthropic 跑的。注意表上的 OpenAI 型號是 GPT-6 Astra 與 GPT-5.6 Sol，不是 GPT-6 Sol。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-6 Astra and GPT-5.6 Sol figures are as reported by OpenAI."
+    },
+    {
+      "fact": "AutomationBench 的 Opus 5.5 分數是 Zapier 在搶先使用期間自己跑的評測。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Opus 5.5 results come from Zapier’s own evaluation during early access."
+    },
+    {
+      "fact": "AutomationBench 那一列的 Opus 5、GPT-5.6 Sol、GPT-6 Astra 分數來自 Zapier 的公開排行榜，不是 OpenAI 自報；所以「OpenAI 型號的分數是 OpenAI 自報」只適用於 Terminal-Bench 4.0（兩個型號）與 Terminal-Bench-Science（GPT-6 Astra），其餘列公告沒有註明。AutomationBench 的執行沒有開備援模型，防護介入算失敗（查核第一輪加入）。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Results for Opus 5, GPT-5.6 Sol, and GPT-6 Astra come from Zapier’s public leaderboard."
+    },
+    {
+      "fact": "Anthropic 承認看到 Opus 5.5 常常懷疑自己正在被評估的跡象（原文 signs，查核第一輪補回），這讓它較難判斷模型在真實環境會怎麼做。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "We see signs that Opus 5.5 often suspects it is being evaluated, which challenges our ability to assess how it will act in the vast variety of real-world settings it is deployed in."
+    },
+    {
+      "fact": "Anthropic 表示在它測試的每種情境（包括程式、工具使用、電腦操作、網頁瀏覽；原文 including，不是全清單，查核第一輪補回）裡，Opus 5.5 對提示注入攻擊的表現與 Opus 5 相當或更好。這句要和 System Card 那條「貼上文字裡的惡意指令」一起寫，退步與緩解要歸因給 System Card。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On prompt injection attacks, it matches or beats Opus 5 in every setting we tested, including coding, tool use, computer use, and web browsing."
+    },
+    {
+      "fact": "生物研究：經審核的組織今天就能申請 Life Sciences Verification Program 用 Opus 5.5 做生物研究；資安：Cyber Verification Program 要在「未來幾週」才擴大，通過驗證的資安從業人員屆時才能用 Opus 5.5 做資安工作。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Vetted organizations can apply today to our Life Sciences Verification Program to use Opus 5.5 for biology research. In the coming weeks we will also be expanding access to our Cyber Verification Program, and verified cybersecurity practitioners will be able to use Opus 5.5 for their work."
+    },
+    {
+      "fact": "資安防護：一般軟體開發流程裡找錯、修錯可以用 Opus 5.5，但多數資安任務會被轉給 Opus 4.8。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Users will be able to identify and fix bugs in their code as part of the routine software development lifecycle, but most cybersecurity tasks will be re-routed to Opus 4.8."
+    },
+    {
+      "fact": "公告頁寫資安、生物與蒸餾三類防護「全都會透明地轉給另一個模型」。**這句與同一家的說明中心和 System Card 矛盾**：兩者都寫蒸餾類的阻擋沒有備援模型、直接擋下。正文照說明中心寫，不照這一句。",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Opus 5.5 is the first Opus model to launch with a similar class of safeguards to Fable 5.1 on cybersecurity, biology, and distillation, all of which fall back to another model transparently."
+    },
+    {
+      "fact": "資安類：當分類器標記出可能較高風險（potentially higher-risk）的攻擊性資安請求時，Opus 5 或 Opus 5.5 可能轉給 Opus 4.8（說明中心列的例子是 exploit 產生、以二進位檔為基礎的弱點掃描、滲透測試）；安全的寫程式工作，包括掃描原始碼弱點、分類資安問題，仍可用 Opus 5.5。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can still use Opus 5 and Opus 5.5 for secure coding, including scanning source code for vulnerabilities, triaging security issues, and building secure code."
+    },
+    {
+      "fact": "生物類：在病毒學、毒理學、分子設計這類兩用請求上，Opus 5.5 會轉給 Opus 5；日常健康與學習問題（看懂檢驗報告、了解症狀、學生物）仍可用 Opus 5.5。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "These classifiers cause Claude to fall back from Opus 5.5 to Opus 5 when you submit dual-use requests in areas like virology, toxicology, and molecular design. You can still use Opus 5.5 for everyday health and educational questions, including interpreting lab results, understanding symptoms, and learning about biology."
+    },
+    {
+      "fact": "前沿 LLM 開發類（只有 Opus 5.5 有）：少數與開發前沿大型語言模型有關的能力（例如特定 ML 加速器的 kernel 開發）會轉給 Opus 5；說明中心說一般 AI／ML 開發與寫程式大多不受影響。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Note: These frontier LLM development classifiers apply only to Opus 5.5. Opus 5 doesn’t fall back on frontier LLM development questions."
+    },
+    {
+      "fact": "蒸餾類：試圖套出模型內部推理的請求會被直接擋下，不轉給其他模型；一般請它解釋理由不受影響。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Distillation blocks don't fall back to another model, and the request is blocked outright."
+    },
+    {
+      "fact": "觸發轉換的不只是使用者剛打的那一句：分類器會看模型讀到的所有內容，包括記憶、連接器內容、網頁搜尋結果與檔案。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The checks also review everything the model reads, not just your latest message. This includes memory, content from connectors, web search results, and files, so a fallback can be triggered by content you didn't type."
+    },
+    {
+      "fact": "換模型時畫面會出現通知、回覆會標出是哪個模型答的；換過之後，這個對話的模型選單會停在較弱的模型，可以自己從選單換回 Opus 5.5。（引文跨兩個相鄰段落，正規化後才連續。）",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "All fallbacks are transparent, meaning you'll see a notice explaining that the model switched, and the response will be labeled with the model that answered. After the switch, the model picker stays on the less capable model for the rest of the conversation. You can switch back to Opus 5 or Opus 5.5 anytime from the model picker."
+    },
+    {
+      "fact": "換回 Opus 5 或 Opus 5.5 之後，只要原本的請求還在對話裡，同樣的防護可能讓對話再換一次模型；說明中心建議先編輯前一則訊息再重試（查核第一輪加入）。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you switch back to Opus 5 or Opus 5.5 after an automatic model switch, the same safeguards may cause Claude to fall back again if your original request is still part of the conversation."
+    },
+    {
+      "fact": "自動換模型預設開啟，可以在 Settings > Capabilities（Claude Code 是 Config > MODEL & OUTPUT）關掉「Switch models when a message is flagged」；關掉後被擋的請求會暫停對話，而不是換模型。介面字串照英文原文，不翻譯。（引文是相鄰的清單步驟與下一段，正規化後才連續。）",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Go to Settings > Capabilities (or Config > MODEL & OUTPUT in Claude Code). Toggle Switch models when a message is flagged off. With automatic model switching off, a request that falls back pauses the conversation instead of switching models."
+    },
+    {
+      "fact": "截至查核日，Opus 5.5 還不在 Cyber Verification Program 裡。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Note: Opus 5.5 isn't currently available in the Cyber Verification Program."
+    },
+    {
+      "fact": "說明中心列出「凡是能用 Opus 5 或 Opus 5.5 的地方」自動換模型都一樣運作：網頁版、Claude Mobile、Claude Desktop、Claude Cowork、Claude Code、Claude Design、Claude for Microsoft 365、Claude Tag、Claude Science。這是自動換模型的適用範圍清單，不是方案資格清單。（引文是引導句加上相鄰清單項目，正規化後才連續。）",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Automatic model switching works the same way everywhere you can use Claude Opus 5 or Opus 5.5: Claude on the web Claude Mobile Claude Desktop Claude Cowork Claude Code Claude Design Claude for Microsoft 365 Claude Tag Claude Science"
+    },
+    {
+      "fact": "API 的規則不同：自動換模型預設不開，API 客戶要自己選擇並設定備援。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you're using the Claude API, model switching works differently. Automatic switching isn't active by default, and API customers must opt into and configure the fallbacks."
+    },
+    {
+      "fact": "計費：在還沒有任何輸出前就因生物、蒸餾或前沿 LLM 開發分類器而停止或轉換的請求，會照樣計費；其他類別在輸出前被擋的不收費。說明中心寫這三類是截至 2026 年 9 月誤判率最低的類別。",
+      "url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5",
+      "is_vendor_claim": false,
+      "verbatim_quote": "refusals that arrive before any output are billed when they stop or fall back due to biology, distillation, or frontier LLM development safety classifiers. These are the categories where our false positive rates are lowest, as of September 2026. Requests blocked before any output in other categories are not charged."
+    },
+    {
+      "fact": "claude.com 定價頁的方案比較表（截至 2026-09-26）：「Opus」這一列在 Free 欄標 No，Pro、Max 5x、Max 20x 三欄標 Yes。表上寫的是 Opus 系列、沒有寫版本號。引文是正規化後相鄰儲存格的連續字串（Fable 那一列的儲存格原樣保留）。",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Models and usage Features Free Pro Max 5x Max 20x Fable More information No Usage credits 50% of weekly limits* 50% of weekly limits* Opus No Yes Yes Yes"
+    },
+    {
+      "fact": "同頁 Team／Enterprise 的比較表：「Opus」這一列在 Team、Enterprise (self-serve)、Enterprise (sales-assisted) 三欄都標 Yes。",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Features Team Enterprise (self-serve) Enterprise (sales-assisted) Fable More information 50% of weekly limits*on premium seats Yes Yes Opus Yes Yes Yes"
+    },
+    {
+      "fact": "個人方案價格（美元、未含稅）：Pro 年繳折合每月 17 美元（一次付 200 美元）、月繳 20 美元。（引文是價格卡上相鄰的元素，正規化後才連續。）",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "$17 Per month with annual subscription discount ($200 billed up front). $20 if billed monthly."
+    },
+    {
+      "fact": "Max 方案標價「每月 100 美元起」（未含稅）。（引文是價格卡上相鄰的元素，正規化後才連續。）",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For people who work with Claude all day From $100 Per month"
+    },
+    {
+      "fact": "定價頁在個人方案與 Team／Enterprise 方案的價格卡下方註明價格未含稅，方案與價格 Anthropic 可自行調整；API 價格區沒有這兩句，公告頁也沒有寫稅（查核第二輪加註）。",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Usage limits apply. Prices shown don’t include applicable tax. Price and plans are subject to change at Anthropic's discretion."
+    },
+    {
+      "fact": "用量上限的基本規則：每個方案都有以五小時為單位滾動重置的工作階段上限，付費方案再加每週上限；網頁、桌面、手機與 Claude Code 共用同一個額度。",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Every plan has usage limits that reset on a rolling five-hour session window, and paid plans add weekly limits on top. Your activity across Claude on web, desktop, mobile, and Claude Code all draws from the same pool."
+    },
+    {
+      "fact": "目前用量可以在 Settings > Usage 查看（定價頁常見問題）。",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "You can see where you stand anytime in Settings > Usage."
+    },
+    {
+      "fact": "定價頁 API 分頁的 Opus 5.5 欄：快取讀取每百萬 token 0.20 美元、快取寫入 5 美元、輸入 4 美元、輸出 20 美元；同頁註明快取價格以 5 分鐘 TTL 計。（引文是 API 價格卡上相鄰的元素，正規化後才連續。）",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Opus 5.5 Daily driver for agentic coding and enterprise work Prompt caching Read $0.20 / MTok Write $5 / MTok Input $4 / MTok Output $20 / MTok"
+    },
+    {
+      "fact": "定價頁 API 價格區「Latest models」截至 2026-09-26 列的是 Fable 5.1、Opus 5.5、Sonnet 5、Haiku 4.5，沒有 Sonnet 5.5 或 Haiku 5.5（查核第一輪加入，撐 FAQ「截至查核日還沒有」；同日 anthropic.com/news、sitemap.xml、claude.com/blog 與 platform 的 Models overview 也未見這兩個型號，但那幾頁不在 sources[]）。引文是價格卡上相鄰元素，正規化後才連續。",
+      "url": "https://claude.com/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Sonnet 5 High-performance model for coding and agents Prompt caching Read $0.20 / MTok Write $2.50 / MTok Input $2 / MTok Output $10 / MTok Haiku 4.5 Fastest, most cost-efficient model"
+    },
+    {
+      "fact": "System Card 封面日期是 2026 年 9 月 22 日。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "System Card: Claude Opus 5.5 September 22, 2026"
+    },
+    {
+      "fact": "System Card 寫 Opus 5.5 是「一般開放」（general access）的模型，但在生物、資安與支撐前沿 AI 開發的少數能力這三個高風險、兩用領域加了防護。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude Opus 5.5 is a new large language model from Anthropic, released for general access with safeguards in three high-risk, dual-use domains"
+    },
+    {
+      "fact": "知識截止日是 2026 年 6 月；Claude 會用使用者的語言回答，但輸出品質因語言而異（System Card 沒有給各語言的數字）。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude is multilingual and typically responds in the same language as the user’s input. Output quality varies by language. The model outputs text only. Claude Opus 5.5’s knowledge cutoff date is June 2026."
+    },
+    {
+      "fact": "在 API 與 claude.ai 上，Opus 5.5 都只能在開著思考的情況下使用。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On both API and claude.ai , Claude Opus 5.5 is only available with thinking enabled."
+    },
+    {
+      "fact": "Claude.ai（消費者產品）只開放給 18 歲以上的使用者。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Claude.ai , our consumer offering, is only available to users aged 18 or above."
+    },
+    {
+      "fact": "System Card 摘要列出的退步：Opus 5.5 比先前的模型更容易照著「使用者自己貼進提示裡的文字」中被人埋入的惡意指令去做。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "However, it is more likely than previous models to follow malicious instructions in text that a user pastes into their own prompt"
+    },
+    {
+      "fact": "Anthropic 對這件事的一般性提醒：把別人寫的文字貼進提示，等於讓那個人控制了一部分提示。（可以轉成給讀者的提醒：貼 email、網頁、README 之前先看過。）",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Whenever a user pastes text written by someone else into a prompt, they are effectively letting that person control part of their prompt."
+    },
+    {
+      "fact": "Anthropic 表示最終版本的 Opus 5.5 加上產品端的一些改動已經緩解這個問題（引文的「ﬁnal」是 PDF 抽出的合字 U+FB01，照抄）。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The ﬁnal snapshot of Claude Opus 5.5, together with some changes in our products, has mitigated this issue."
+    },
+    {
+      "fact": "產品端的改動是進行式：Anthropic 寫它「正在加上」會移除看不見的字元、標記貼上文字的功能。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We are also adding product changes that remove invisible characters and mark pasted text to help Claude identify material that the user may not have written or checked."
+    },
+    {
+      "fact": "System Card 寫 Opus 5.5 會在「近期」透過 Cyber Verification Program 提供，沒有日期。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Claude Opus 5.5 will be available through this program in the near future."
+    },
+    {
+      "fact": "System Card 也寫防蒸餾分類器在 Opus 5.5 上會直接阻擋、沒有備援模型（與說明中心一致，與公告頁「全都會轉給另一個模型」那句不一致）。",
+      "url": "https://anthropic.com/claude-opus-5-5-system-card",
+      "is_vendor_claim": false,
+      "verbatim_quote": "will block on Claude Opus 5.5 with no fallback model"
+    }
+  ],
+  "not_said": [
+    "公告頁沒有寫哪些訂閱方案可以在模型選單選到 Opus 5.5，也沒有寫它是不是任何方案的預設模型（7 月的 Opus 5 公告有寫 Max 預設、Pro 可用的最高模型，這次以 https://www.anthropic.com/claude-opus-5-5 查核到 2026-09-26 未見同類句子）。方案層級只有 claude.com 定價頁比較表的「Opus」列（Free 標 No、Pro／Max 標 Yes），那一列寫的是系列名、沒有版本號，而且是活頁面。",
+    "用量上限提高：沒有寫提高多少、是永久還是限期，清單是 Pro、Max、Team 與 seat-based Enterprise，沒有 Free，也沒有按用量計費的 Enterprise。rate limit reset 給的是 subscription users，這一頁沒有寫 Free 算不算、要在什麼時候之前用掉。",
+    "公告、說明中心 16049681、定價頁三頁都沒有提到台灣、國家或地區（詞界比對 Taiwan／country／region 在公告頁與定價頁 0 次；說明中心那 1 次 region 在全站側欄）。「all platforms」後面接的是 including 舉例，不是地區清單。",
+    "沒有新台幣價格；所有價格都是美元。「未含稅」「可能調整」只印在定價頁個人方案與 Team／Enterprise 方案的價格卡下方，API 價格區與公告頁都沒有寫稅（查核第二輪更正：原句把它套到所有價格）。",
+    "Sonnet 5.5、Haiku 5.5 只有「未來幾週」；Cyber Verification Program 擴大只有「未來幾週」「近期」，都沒有日期。",
+    "公告沒有寫 Opus 5 下架或退役。定價頁把 Opus 5 列在 Legacy models，這不等於停用。",
+    "評測表是 Anthropic 自選的項目；OpenAI 型號的分數寫明是 OpenAI 自己公布的；AutomationBench 的 Opus 5.5 分數是 Zapier 搶先測試期間跑的。沒有任何一項是本站或獨立第三方替這篇重跑的。",
+    "沒有中文（或任何單一語言）的表現數字；System Card 只寫輸出品質因語言而異。",
+    "公告沒有和 GPT-6 Sol、GPT-6 Luna 比較（評測表上的 OpenAI 型號是 GPT-6 Astra 與 GPT-5.6 Sol）。",
+    "早期測試者的案例（68 萬行程式遷移、40 次裡 39 次成功等）都是 Anthropic 挑出來放在公告裡的，不是可推廣到一般使用者的結果。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "免費版能不能用 Opus 5.5。",
+      "seen_where": "公告頁沒有寫；定價頁比較表的「Opus」列在 Free 欄標 No（2026-09-26）。",
+      "why_excluded": "不是完全查不到，而是只查到系列層級的表格。正文可以照表寫「方案比較表的 Opus 列，Free 標 No（截至查核日）」並註明表上沒有版本號；不可寫成「Anthropic 宣布免費版不能用 Opus 5.5」，也不可以省掉查核日。"
+    },
+    {
+      "claim": "rate limit reset 的使用方式與期限（Settings > Usage 裡的「Reset for free」、未使用的重置在方案寫的時間到期、手機與 Claude Code 沒有這個按鈕）。",
+      "seen_where": "Help Center 17007452〈What is a limit reset?〉，2026-09-26 讀到（200、330,387 bytes，Updated this week）。",
+      "why_excluded": "那一頁是一般性說明，沒有提到 Opus 5.5 或這次發布；而且不在 sources[]（四條上限）。正文只能照公告寫「可以先保留、自己選時間用」，不可補上「沒有期限」，也不可把那一頁的按鈕位置寫成這次重置的操作步驟。要寫就先把它換進 sources[]，並寫明它是一般說明。"
+    },
+    {
+      "claim": "Opus 5.5「大約是競品快取價格的五分之一」、Claude Code 用量趨勢（每個提示工作時間 3.3 倍、每次請求的 context 2.6 倍等）。",
+      "seen_where": "claude.com 2026-09-24 部落格後續文。",
+      "why_excluded": "五分之一是對競品的自選比較，DELTA-4-8 規定這篇不和 GPT-6 那篇互相比較；趨勢數字是 Anthropic 自己彙整的 Claude Code 資料，對一般讀者用處小。部落格也不在 sources[]。"
+    },
+    {
+      "claim": "Fast mode 只在 Claude API 提供、批次處理 2／10 美元、1 小時快取寫入 8 美元、預設 effort 是 medium、退役「不早於 2027 年 9 月 22 日」、Bedrock 上的舊版電腦操作工具仍可用。",
+      "seen_where": "platform.claude.com 的 What's new in Claude Opus 5.5 與 Models overview 兩頁，2026-09-26 讀到。",
+      "why_excluded": "開發者細節，而且不在 sources[]。公告頁自己寫 Fast mode 在「Claude Code and the Claude Platform」，正文照公告頁寫即可，不要把文件頁的「API only」混進來。"
+    },
+    {
+      "claim": "台灣可以用 Claude（anthropic.com/supported-countries 的 API 與 Claude.ai 兩份名單都有 Taiwan）。",
+      "seen_where": "https://www.anthropic.com/supported-countries，2026-09-26 讀到（200、213,587 bytes）。",
+      "why_excluded": "這是 Claude 整體的支援地區，不是 Opus 5.5 專屬，而且不在 sources[]。正文可以寫「公告沒有列地區限制」，不要寫「台灣已開放 Opus 5.5」。若協調者認為第一段一定要有台灣這句，可以把這一頁換掉 System Card 放進 sources[]。"
+    },
+    {
+      "claim": "System Card 的其他數字：無防護下 1.5% 的執行嘗試逃出沙箱、單輪有害請求的無害回應率 94.50%／99.51%、CB-1／CB-2 判定、提示注入早期快照 52%／26% 等。",
+      "seen_where": "System Card PDF（sources[3]）第 2–3、62、125 頁。",
+      "why_excluded": "條件複雜（無防護、模擬環境、早期快照），寫進一般讀者的新聞容易被讀成正式版的現況；公告頁另有「約少 85%」的越界嘗試說法，兩個數字分母不同不能並列。研究代理建議正文不引用這些數字；要引用就必須連條件一起寫，並且不和公告頁的 85% 放在同一句。"
+    },
+    {
+      "claim": "Opus 5.5「站上第一次出現」。",
+      "seen_where": "candidates-ai.md 第 3 則的重疊檢查。",
+      "why_excluded": "不成立：站上已有兩篇 zh-TW 內容包提到 Opus 5.5（ai-news-anthropic-life-sciences-verification-20260917 寫 9/23 申請頁出現 Opus 5.5；ai-workflow-cost-quality-latency 用 Opus 5.5 的 4／20 美元算成本）。不影響本篇是站上第一篇 Opus 5.5 發布新聞。"
+    },
+    {
+      "claim": "繁中或其他語系的官方公告。",
+      "seen_where": "無。",
+      "why_excluded": "anthropic.com 這一頁沒有語系切換，研究代理沒有另外搜尋（WebSearch 0 次）。只能說「以英文公告為準」，不要寫「官方沒有中文版」。"
+    }
+  ],
+  "editorial_brief": "讀者是在台灣用 Claude（或正在考慮付費）的一般使用者，他們第一個問題是「這跟我有沒有關係、現在能不能用、會不會比較便宜」。第一段就回答：2026 年 9 月 22 日 Anthropic 推出 Claude 5.5 家族的第一個模型；付費方案（Pro、Max、Team、按席次計費的 Enterprise）五小時用量上限提高並多一次 rate limit reset；免費方案在方案比較表的 Opus 列標 No（截至查核日，表上沒寫版本號）；公告沒有列地區；價格是美元。\n\n這篇最容易寫錯的是三個數字：40% 是 Anthropic 在「預設設定、一般工作負載」下的成本估計（每個 token 便宜加上用的 token 少），20% 是輸入／輸出 token 的牌價降幅（4／20 美元），60% 是快取讀取的牌價降幅（0.20 美元）。第二節結尾的表就拿來把這三個數字分開：欄位建議「數字／是什麼／條件」。\n\n建議五節：\n一、發布了什麼、現在的狀態：9 月 22 日（不寫時刻）、Claude 5.5 家族第一個、在所有平台上線（including AWS、Google Cloud、Microsoft Azure）、Sonnet／Haiku 5.5 未來幾週、思考不能關。\n二、三個成本數字怎麼讀（結尾放表）：40%／20%／60%，加上公告價格表的 Opus 5 對照與 Fast mode 8／40 美元；API 價格對一般訂閱者不是帳單。\n三、訂閱使用者要看的：方案比較表、五小時與每週上限、這次提高哪些方案（沒寫幅度）、重置可以先留著（照公告的話，不補期限）；用量在 Settings > Usage 看（結尾放圖）。\n四、為什麼對話會突然換成別的模型：照說明中心分四類（資安→Opus 4.8、生物→Opus 5、前沿 LLM 開發→Opus 5、蒸餾→直接擋），分類器也看檔案與搜尋結果，怎麼關自動換模型；資安驗證方案還沒納入 Opus 5.5、生命科學驗證方案給經審核的組織；System Card 的「貼上文字」退步與 Anthropic 說的緩解，轉成一句讀者提醒。\n五、評測數字怎麼看：Anthropic 自選、它自己說分數差距越來越不可靠、OpenAI 型號的分數是 OpenAI 自報、AutomationBench 是 Zapier 搶先測、評測時開著防護；以及 Anthropic 自己承認模型常懷疑在被評估。收尾告訴讀者去哪裡自己查：模型選單、Settings > Usage、定價頁、說明中心那篇。\n\n刻意不寫：任何與 GPT-6 Sol／Luna 的比較或同表（DELTA-4-8：兩篇分開、不互連）；早期測試者的戲劇性案例；System Card 的細部百分比；Claude Code 用量趨勢；購買或升級建議；重講 Opus 5、Fable 5.1、放慢前沿倡議、生命科學驗證方案的內容。",
+  "must_not_write": [
+    "不把 40%、20%、60% 混成一個數字。不可寫「Opus 5.5 降價 40%」「便宜 40%」而不帶「Anthropic 估計、預設設定、一般工作負載」；20% 只指輸入／輸出 token 牌價，60% 只指快取讀取牌價。",
+    "不寫 Sonnet 5.5 或 Haiku 5.5 已推出，也不替「未來幾週」補日期。",
+    "不寫資安從業人員現在就能用 Opus 5.5 做資安工作。Cyber Verification Program 擴大是「未來幾週」，說明中心截至 2026-09-26 寫 Opus 5.5 還不在計畫裡；多數資安任務會轉給 Opus 4.8。",
+    "不寫生命科學驗證方案開放給個人；公告寫的是經審核的組織（vetted organizations）。",
+    "不寫用量上限提高適用 Free，不寫提高幾倍或幾％，不寫提高是永久的；不寫 rate limit reset 沒有期限或 Free 也有。",
+    "不寫「Anthropic 宣布免費版不能用 Opus 5.5」。可以寫的只有：claude.com 方案比較表的 Opus 列在 Free 欄標 No（截至查核日），表上沒有寫版本號。",
+    "不寫 Opus 5.5 是任何方案的預設模型。",
+    "不寫蒸餾類阻擋會轉給另一個模型。公告頁那句「all of which fall back to another model transparently」與說明中心、System Card 矛盾；照說明中心寫：資安→Opus 4.8、生物→Opus 5、前沿 LLM 開發→Opus 5、蒸餾→直接擋。",
+    "不單獨寫「Opus 5.5 更不容易被提示注入」。那是 Anthropic 的說法，而且 System Card 同時寫它比先前的模型更容易照著使用者自己貼進來的文字裡的惡意指令做；Anthropic 說最終版加上產品改動已緩解，產品改動還在進行中。三件事要一起寫，也不可寫成「問題已完全解決」。",
+    "不把評測結果寫成事實或獨立評測；不寫「最強」「領先」而不歸因。OpenAI 型號的分數是 OpenAI 自報，AutomationBench 是 Zapier 搶先測，評測時開著防護。",
+    "評測表上的 OpenAI 型號是 GPT-6 Astra 與 GPT-5.6 Sol，不可寫成 GPT-6 Sol；這篇不提 GPT-6 Sol／Luna，不做任何與 GPT-6 那篇的比較表，也不連結同批文章。",
+    "不替 9 月 22 日加時刻，不寫「台北時間」或換算；9 月 24 日的部落格是後續文，不是事件日。",
+    "不引用早期測試者的案例數字當作一般使用者會得到的結果；不寫任何測試者、部落格作者或主管的姓名。",
+    "不寫新台幣價格或台灣售價；價格一律美元、截至查核日；「未含稅」只寫在訂閱方案價格上，API 價格不寫含不含稅（查核第二輪更正）。",
+    "不寫 Opus 5 下架或退役。",
+    "不把「all platforms, including AWS, Google Cloud, Microsoft Azure」寫成完整平台清單，也不推論成「台灣已開放」。",
+    "不寫可以關掉思考。",
+    "不寫購買、升級或「值不值得」的建議。",
+    "不連結只有 zh-TW 的文章：ai-news-anthropic-life-sciences-verification-20260917、ai-news-anthropic-accenture-evaluation-20260918、ai-news-claude-text-watermark-20260815、claude-model-lineup-2026、claude-plans-free-pro-max-2026、ai-workflow-cost-quality-latency、ai-model-release-timeline-2026。",
+    "不寫任何資安攻擊手法細節（例如貼上文字裡埋指令的具體寫法、看不見字元的編碼）。"
+  ],
+  "live_data_warnings": [
+    "https://claude.com/pricing 是活頁面：方案比較表的 Opus 列、Pro／Max 價格、API 價格都可能改（頁面自己寫 Price and plans are subject to change）。發布當天重讀，正文寫「截至 2026 年 9 月 26 日」。",
+    "Anthropic 的方案用量說明（DELTA-4-8 第 7 條）：這次提高的用量上限沒有對應的說明中心頁；說明中心 16049681 頁面自印「Updated yesterday」，〈What is a limit reset?〉自印「Updated this week」，都是相對字串。發布當天重讀 16049681，確認 Cyber Verification Program 那句與四類轉換規則還在。",
+    "Cyber Verification Program 擴大（「未來幾週」）與 Sonnet 5.5／Haiku 5.5（「未來幾週」）可能在發布前發生；發布當天看 https://www.anthropic.com/news 與說明中心 16049681。",
+    "https://www.anthropic.com/news 的 featured grid 會隨新公告替換；本篇只用它確認日期，不引用列表。",
+    "System Card 的公告頁連結會轉址到 CDN 上帶雜湊的 PDF 網址；若 Anthropic 改版，雜湊與頁碼可能變，查核時從公告頁連結重新取得。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "ai-news-claude-opus-5-20260724",
+      "locales": 5,
+      "says": "7 月 24 日 Opus 5 發布：能力重點、發布時是 Max 預設與 Pro 可用的最高模型、用編輯情境教讀者怎麼驗收（查核日 9/14）。本篇的第二個結尾連結；不重講 Opus 5 本身，只在價格表用 Opus 5 當對照。"
+    },
+    {
+      "slug": "ai-news-claude-fable-51-20260901",
+      "locales": 5,
+      "says": "Fable 5.1 與 Mythos 5.1 共用底層模型、開放方式不同、怎麼讀評測。本篇提到「達到 Fable 5.1 水準」時不重講 Fable／Mythos 的差別。"
+    },
+    {
+      "slug": "ai-news-pace-the-frontier-20260912",
+      "locales": 5,
+      "says": "放慢前沿倡議的主張、三步驟計畫與各方回應。本篇只寫一句「呼籲放慢之後的第一個發布」，不重講三步驟。"
+    },
+    {
+      "slug": "ai-news-anthropic-threat-report-20260910",
+      "locales": 5,
+      "says": "九月威脅情報報告的七類濫用。公告頁在蒸餾段落連到這份報告；本篇不重講報告內容。"
+    },
+    {
+      "slug": "ai-news-anthropic-pace-metrics-20260917",
+      "locales": 5,
+      "says": "三項前沿 AI 指標。與本篇無直接重疊，不要引用。"
+    },
+    {
+      "slug": "ai-news-anthropic-life-sciences-verification-20260917",
+      "locales": 1,
+      "says": "zh-TW only。生命科學驗證方案本身；已經寫到 9/23 申請頁出現 Opus 5.5、資格限 Enterprise／Team／API。本篇只寫「經審核的組織今天可申請」一句，不重講資格，也不能連結。"
+    },
+    {
+      "slug": "ai-news-anthropic-accenture-evaluation-20260918",
+      "locales": 1,
+      "says": "zh-TW only。Accenture 常駐評估合作；公告頁的安全段落提到這項合作。不能連結，本篇不需要提。"
+    },
+    {
+      "slug": "ai-news-claude-text-watermark-20260815",
+      "locales": 1,
+      "says": "zh-TW only。Claude 文字浮水印；公告頁寫 Opus 5.5 同樣帶浮水印。不能連結，本篇最多一句帶過或不提。"
+    },
+    {
+      "slug": "claude-model-lineup-2026",
+      "locales": 1,
+      "says": "zh-TW only、常青文。以 9/13 官網寫現役四模型是 Fable 5.1、Opus 5、Sonnet 5、Haiku 4.5，「多數工作先從 Opus 5 開始」、Opus 5 輸入 5／輸出 25 美元——Opus 5.5 上線後這幾句過期。本批不動，建議另開維護票。"
+    },
+    {
+      "slug": "claude-plans-free-pro-max-2026",
+      "locales": 1,
+      "says": "zh-TW only、常青文。Free／Pro／Max 價格與五小時加每週上限；模型段落以 9 月官方文件列 Opus 5 為現役。本篇不重講方案細節，不能連結；它的模型段落會過期，建議併入同一張維護票。"
+    },
+    {
+      "slug": "ai-workflow-cost-quality-latency",
+      "locales": 1,
+      "says": "zh-TW only。已經用 Opus 5.5 的 4／20 美元算多模型流程成本。不能連結。"
+    },
+    {
+      "slug": "ai-model-release-timeline-2026",
+      "locales": 1,
+      "says": "zh-TW only。2026 年 1 月到 9 月 15 日的模型時間軸，沒有 Opus 5.5。不能連結。"
+    }
+  ],
+  "second_link": {
+    "slug": "ai-news-claude-opus-5-20260724",
+    "title": "Claude Opus 5 推出：一般工作使用者值得注意哪些改變？"
+  },
+  "hero_label": "估計與降價分開看",
+  "diagram": {
+    "title": "Opus 5.5 上線後先看這四件事",
+    "caption": "Anthropic 2026 年 9 月 22 日推出 Claude Opus 5.5：成本估計、牌價降幅、付費方案用量與還沒推出的部分，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "成本估計",
+        "40% 限預設與一般工作"
+      ],
+      [
+        "官方降價",
+        "輸入輸出 20%、快取讀取 60%"
+      ],
+      [
+        "付費方案",
+        "五小時上限提高、未寫幅度"
+      ],
+      [
+        "幾週內才到",
+        "Sonnet 與 Haiku 5.5"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Estimate vs. price cut",
+      "diagram": {
+        "title": "What to check after Opus 5.5 launches",
+        "caption": "Anthropic introduced Claude Opus 5.5 on September 22, 2026: the cost estimate, list-price cuts, paid-plan usage, and what hasn’t launched yet, checked September 26, 2026.",
+        "nodes": [
+          [
+            "Cost estimate",
+            "40%, default & typical use"
+          ],
+          [
+            "Price cuts",
+            "In/out 20%, cache read 60%"
+          ],
+          [
+            "Paid plans",
+            "5-hr limit raised, no amount"
+          ],
+          [
+            "Weeks away",
+            "Sonnet & Haiku 5.5"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "試算と値下げを分ける",
+      "diagram": {
+        "title": "Opus 5.5公開後の4つの要点",
+        "caption": "Anthropicは2026年9月22日にClaude Opus 5.5を発表しました：コスト試算、正規料金の引き下げ幅、有料プランの利用状況、まだ公開されていない部分。確認日は2026年9月26日。",
+        "nodes": [
+          [
+            "コスト試算",
+            "40%はデフォルト・一般作業"
+          ],
+          [
+            "正規値下げ",
+            "入出力20%・キャッシュ読取60%"
+          ],
+          [
+            "有料プラン",
+            "5時間上限を引き上げ・幅は未記載"
+          ],
+          [
+            "今後数週間のうちに",
+            "Sonnet・Haiku 5.5"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "추정치와 인하 구분",
+      "diagram": {
+        "title": "Opus 5.5 출시 후 확인할 4가지",
+        "caption": "Anthropic이 2026년 9월 22일 Claude Opus 5.5를 출시했습니다: 비용 추정치, 정가 인하 폭, 유료 플랜 사용량, 아직 출시되지 않은 부분. 확인일은 2026년 9월 26일.",
+        "nodes": [
+          [
+            "비용 추정",
+            "40%, 기본·일반 작업"
+          ],
+          [
+            "공식 인하",
+            "입출력 20%·캐시 읽기 60%"
+          ],
+          [
+            "유료 플랜",
+            "5시간 한도 상향, 폭 미기재"
+          ],
+          [
+            "몇 주 안에",
+            "Sonnet·Haiku 5.5"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "估计与降价分开看",
+      "diagram": {
+        "title": "Opus 5.5 上线后先看这四件事",
+        "caption": "Anthropic 2026 年 9 月 22 日发布 Claude Opus 5.5：成本估计、官方定价降幅、付费方案用量与还没推出的部分，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "成本估计",
+            "40% 限默认与一般工作"
+          ],
+          [
+            "标价下调",
+            "输入输出 20%、缓存读取 60%"
+          ],
+          [
+            "付费方案",
+            "五小时上限提高、未写幅度"
+          ],
+          [
+            "几周内才到",
+            "Sonnet 与 Haiku 5.5"
+          ]
+        ]
+      }
+    }
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, claude-opus-5-5)",
+    "checked_on": "2026-09-26",
+    "method": "2026-09-26 台北 22:29–22:39（UTC 14:29–14:39）用 curl -sSL --compressed --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 自己重抓 sources[] 四條（同一主機間隔 ≥1.5 秒，請求沒有任何人的姓名或 email），存在 _raw/ai-news-claude-opus-55-20260922/round1/（fetch-log.tsv）：公告頁 200、619,967 bytes，與研究代理的檔案逐位元組相同；說明中心 16049681 200、365,182 bytes、定價頁 200、1,171,532 bytes，位元組不同但正規化後全文與研究代理的相同；System Card 轉址到同一個 CDN PDF，200、17,795,106 bytes、230 頁，逐位元組相同，系統 python 的 pypdf 重新抽文字。另讀 anthropic.com/news（200、459,343 bytes）、anthropic.com/sitemap.xml（200、69,048 bytes、537 個 loc）、claude.com/blog（200、805,184 bytes，最新 September 25, 2026）、platform.claude.com/docs/en/models/overview（200、392,248 bytes），只用來確認 Sonnet 5.5／Haiku 5.5 截至查核時還沒上線（四頁都沒有這兩個型號；models overview 與定價頁列 Sonnet 5、Haiku 4.5）。研究紀錄原有 57 條 verbatim_quote 用 fc1_quotes.py 對我自己的正規化全文做連續字串比對，全部找到；新增的 3 條同樣比對過。文章拆成 158 條主張逐條對原文（報告在 <WORK>/factcheck/ai-news-claude-opus-55-20260922-round1.md）；改法是 fc1_edit.py 的逐字替換（每個舊字串恰好一次）。",
+    "claims_checked": 158,
+    "changes": [
+      {
+        "claim": "title",
+        "before": "付費方案用量上限也提高",
+        "after": "付費方案五小時上限也提高",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第一段：方案比較表",
+        "before": "不過 claude.com 定價頁的方案比較表把「Opus」這個系列列在 Free 欄位標示「No」",
+        "after": "不過截至查核日，claude.com 定價頁的方案比較表把「Opus」這個系列列在 Free 欄位標示「No」",
+        "source_url": "https://claude.com/pricing"
+      },
+      {
+        "claim": "summary 第 3 句",
+        "before": "claude.com 定價頁的方案比較表把「Opus」列在 Free 欄標示「No」，Pro、Max、Team 等付費方案這次提高了五小時用量上限，但公告沒有寫提高多少或是否開放 Free。",
+        "after": "截至 9 月 26 日，claude.com 定價頁的方案比較表把「Opus」系列列在 Free 欄標示「No」；Pro、Max、Team 與按席次計費的 Enterprise 方案這次提高了五小時用量上限，公告沒有寫提高多少，清單裡也沒有 Free。",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "summary 第 4 句",
+        "before": "分類器會依資安、生物、前沿 LLM 開發與蒸餾四類把對話轉給 Opus 4.8 或 Opus 5，其中蒸餾類會被直接擋下、不會轉給其他模型。",
+        "after": "分類器觸發時，資安類可能轉給 Opus 4.8，生物與前沿 LLM 開發類轉給 Opus 5，蒸餾類則會被直接擋下、不會轉給其他模型。",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "第一節第一段：40%",
+        "before": "執行成本比 Opus 5 少 40%",
+        "after": "估計執行成本比 Opus 5 少 40%（條件見下一節）",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第一節第三段：Sonnet／Haiku 5.5",
+        "before": "Claude Sonnet 5.5 與 Claude Haiku 5.5 還沒推出，原文是「未來幾週」，沒有給日期。",
+        "after": "Claude Sonnet 5.5 與 Claude Haiku 5.5 公告寫「未來幾週」推出、沒有給日期，截至查核日還沒推出。",
+        "source_url": "https://claude.com/pricing"
+      },
+      {
+        "claim": "表格 Fast mode 條件",
+        "before": "限 Claude Code 與 Claude Platform，8／40 美元",
+        "after": "Claude Code 與 Claude Platform 提供，8／40 美元",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第四節第一段：資安轉換",
+        "before": "會從 Opus 5 或 Opus 5.5 轉給 Opus 4.8",
+        "after": "可能會從 Opus 5 或 Opus 5.5 轉給 Opus 4.8",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "第四節第二段：日常健康問題",
+        "before": "（看懂檢驗報告、了解症狀、學生物）",
+        "after": "（例如看懂檢驗報告、了解症狀、學生物）",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "第四節第三段：換回 Opus 5.5 的但書",
+        "before": "可以自己從選單換回來。",
+        "after": "可以自己從選單換回來，但原請求還在對話裡時可能再被換掉。",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "第四節第三段：介面字串",
+        "before": "Config 裡的 MODEL 與 OUTPUT）關掉「切換被標記訊息時的模型」這個選項",
+        "after": "Config 裡的 MODEL & OUTPUT）關掉訊息被標記時換模型的開關",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "第四節第四段：生命科學驗證方案",
+        "before": "經審核的組織今天就能申請",
+        "after": "經審核的組織從公告當天起就能申請",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第四節第四段：資安驗證方案與轉換",
+        "before": "截至查核日 Opus 5.5 還不在這個計畫裡，所以多數資安任務目前會轉給 Opus 4.8。",
+        "after": "截至查核日 Opus 5.5 還不在這個計畫裡；多數資安任務目前會轉給 Opus 4.8。",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第五節第二段：懷疑被評估",
+        "before": "它看到 Opus 5.5 常常懷疑自己正在被評估，",
+        "after": "它看到 Opus 5.5 常常懷疑自己正在被評估的跡象，",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第五節第三段：提示注入情境",
+        "before": "在它測試的每種情境（寫程式、工具使用、電腦操作、網頁瀏覽）裡",
+        "after": "在它測試的每種情境（包括寫程式、工具使用、電腦操作、網頁瀏覽）裡",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "第五節第三段：退步與緩解的出處",
+        "before": "但也承認一個退步：……去做——貼進別人寫的文字，等於讓那個人控制了一部分提示；Anthropic 說最終版本加上一些產品端的改動已經緩解這個問題，並正在加上……",
+        "after": "System Card 則列出一個退步：……去做，最終版本加上一些產品端的改動已經緩解這個問題，並正在加上……。貼進別人寫的文字，等於讓那個人控制了一部分提示。",
+        "source_url": "https://anthropic.com/claude-opus-5-5-system-card"
+      },
+      {
+        "claim": "FAQ 3 答句",
+        "before": "還沒有。公告寫……",
+        "after": "截至 2026 年 9 月 26 日查核還沒有，claude.com 定價頁 API 價格區列出的最新模型仍是 Sonnet 5 與 Haiku 4.5。公告寫……",
+        "source_url": "https://claude.com/pricing"
+      },
+      {
+        "claim": "FAQ 4 答句",
+        "before": "Opus 5.5 還不在 Cyber Verification Program 裡，這個計畫要在「未來幾週」才擴大；",
+        "after": "Opus 5.5 還不在 Cyber Verification Program 裡，公告則寫這個計畫要在「未來幾週」才擴大；",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "FAQ 5 答句",
+        "before": "較高風險的攻擊性資安請求轉給 Opus 4.8",
+        "after": "較高風險的攻擊性資安請求可能轉給 Opus 4.8",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "FAQ 6 答句",
+        "before": "Config 裡的 MODEL 與 OUTPUT）關掉「切換被標記訊息時的模型」這個選項",
+        "after": "Config 裡的 MODEL & OUTPUT）關掉「Switch models when a message is flagged」（訊息被標記時切換模型）這個選項",
+        "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+      },
+      {
+        "claim": "FAQ 7 答句",
+        "before": "評測表裡其他公司模型的分數是那家公司自己公布的，不是 Anthropic 實測；其中一項評測的 Opus 5.5 分數是合作夥伴在搶先使用期間自行跑出來的。",
+        "after": "評測表裡 OpenAI 模型的部分分數（例如 Terminal-Bench 4.0）是 OpenAI 自己公布的，不是 Anthropic 實測；AutomationBench 的 Opus 5.5 分數是 Zapier 在搶先使用期間自行跑出來的。",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "callout",
+        "before": "公告本身沒寫，只有 claude.com 定價頁的方案比較表把「Opus」列在 Free 欄標示「No」",
+        "after": "公告本身沒寫；claude.com 定價頁的方案比較表截至 9 月 26 日把「Opus」系列列在 Free 欄標示「No」",
+        "source_url": "https://claude.com/pricing"
+      },
+      {
+        "claim": "精簡（非事實修正；段落字數原為 2,980，補但書需要空間）",
+        "before": "公告頁只印日期、沒有寫時刻，也沒有提到任何地區或國家限制｜Opus 5.5 不能把「思考」模式關掉，在 API 與 claude.ai 上都只能在開著思考的情況下使用｜兩者相加淨算出",
+        "after": "公告頁沒有提到任何地區或國家限制｜Opus 5.5 在 API 與 claude.ai 上都不能把「思考」模式關掉｜淨算出",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      {
+        "claim": "研究紀錄",
+        "before": "title 舊標題；diagram 節點「用量上限提高、未寫幅度」；懷疑被評估那條沒有「跡象」；提示注入那條的情境寫成全清單",
+        "after": "title 同步新標題；節點改「五小時上限提高、未寫幅度」；兩條 fact 補回 signs 與 including；新增三條 verified_facts（定價頁 Latest models、換回後可能再換、AutomationBench 其他模型分數來自 Zapier 排行榜）",
+        "source_url": "https://www.anthropic.com/claude-opus-5-5"
+      }
+    ],
+    "open_questions": [
+      "公告頁寫資安、生物、蒸餾三類防護「all of which fall back to another model transparently」，與說明中心 16049681 和 System Card（蒸餾類 blocked outright／no fallback model）矛盾；文章照說明中心寫，研究紀錄已記。發布當天若公告頁改字再看。",
+      "AutomationBench 的執行沒有開備援模型、防護介入算失敗（公告註腳 2）；第五節第二段「評測時開著正式防護，介入時由 Opus 4.8／Opus 5 完成」是公告的一般說法，對這一項不適用。段落已 2,994／3,000 字，沒有加；要加得先精簡別處。",
+      "第二段「讀了 Anthropic 的公告頁、Claude 說明中心……與 System Card」與第一節第一段「這段沒有提到訂閱方案或國家」帶查證語氣（DELTA-4-7 第 14 條）；前者是規格要求的查核日句型，後者對讀者有用，都沒動，交協調者決定。",
+      "title「40% 是成本估計」對一般讀者稍嫌簡略（40% 是估計的成本降幅），但沒有說錯，照指示不改寫；只改了會被讀成「所有上限都提高」的後半。",
+      "description「三個數字」後面立刻列出 40%、20%、60%，不是選題清點；沒動。",
+      "段落字數 2,994（上限 3,000）；第二輪若要補句，得先等量精簡敘述，不可刪但書。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-8 第 4 條：Opus 5.5 公告只印日期，不換算時刻；正文只寫 2026 年 9 月 22 日（第一輪把第一段的「只印日期、沒有寫時刻」刪掉，日期本身不變）。",
+      "DELTA-4-8 第 8 條：方案層級只照 claude.com 定價頁比較表的「Opus」系列列寫，帶查核日；不寫「Anthropic 宣布免費版不能用」。第一段、summary、callout 補上查核日。",
+      "DELTA-4-8 第 4 條：不和 GPT-6 Sol／Luna 那篇比較或互連；評測表上的 GPT-6 Astra、GPT-5.6 Sol 一律寫成 Anthropic 表上、OpenAI 或 Zapier 自報的數字。",
+      "指派訊息：蒸餾類是直接擋下、不轉給其他模型，與說明中心、System Card 一致；公告頁那句相反，來源之間的矛盾記在 open_questions。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, claude-opus-5-5; not the writer, not round 1)",
+      "checked_on": "2026-09-26",
+      "method": "2026-09-26 台北 22:52–22:53（UTC 14:52–14:53）用 curl -sSL --compressed --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 自己重抓 sources[] 四條（同一主機間隔 ≥1.5 秒，請求沒有任何人的姓名或 email），存在 _raw/ai-news-claude-opus-55-20260922/round2/（fetch-log.tsv）：公告頁 200、619,967 bytes，與第一輪逐位元組相同；說明中心 16049681 200、365,182 bytes、定價頁 200、1,171,532 bytes，位元組不同但正規化全文與第一輪相同；System Card 轉址到同一個 CDN PDF，200、17,795,106 bytes，逐位元組相同，系統 python 的 pypdf 重抽 230 頁。為了協調者第 5 條另讀 anthropic.com/news（200、459,343 bytes，最新 Sep 23）、anthropic.com/sitemap.xml（200、69,048 bytes、537 個 loc）、claude.com/blog（200、805,184 bytes，最新 September 25, 2026）、platform.claude.com/docs/en/models/overview（200、392,263 bytes），四頁與定價頁都沒有 Sonnet 5.5／Haiku 5.5（連 sonnet-5-5、haiku_5_5 這類寫法一起比對，五頁 0 次，只在公告頁那句 will follow in the coming weeks 出現）。研究紀錄 60 條 verbatim_quote 用 fc2_quotes.py 對我自己的正規化全文做連續字串比對，全部找到，沒有一條含 ...、… 或 |。範圍照 agents/ai/SECOND-ROUND.md：第一輪改過或新寫的每一句（43 條主張，含研究紀錄的 7 處）、第一輪 CONFIRMED 129 條裡以 random.Random(20260926) 抽的 43 條、全文限定詞與五個小標回掃（30 條）、協調者裁定帶出的新句與改句（6 條）、兩個結尾連結；summary ⊆ 正文、FAQ ⊆ 正文、圖上數字、否定句與界線另外逐項看。改法是 fc2_edit.py 的逐字替換（每個舊字串恰好一次），報告在 <WORK>/factcheck/ai-news-claude-opus-55-20260922-round2.md。",
+      "claims_checked": 124,
+      "verdict": "ok",
+      "changes": [
+        {
+          "claim": "title（協調者裁定 1）",
+          "before": "Claude Opus 5.5 推出：40% 是成本估計、20% 是降價，付費方案五小時上限也提高",
+          "after": "Claude Opus 5.5 推出：牌價降 20%、付費方案五小時上限提高，40% 是 Anthropic 的成本估計",
+          "source_url": "https://www.anthropic.com/claude-opus-5-5"
+        },
+        {
+          "claim": "description：與標題同一個範圍（公告只提高五小時上限）",
+          "before": "並整理付費方案用量上限提高的範圍與模型切換規則",
+          "after": "並整理付費方案五小時上限提高的範圍與模型切換規則",
+          "source_url": "https://www.anthropic.com/claude-opus-5-5"
+        },
+        {
+          "claim": "第五節第二段：評測時的備援不適用 AutomationBench（協調者裁定 2，公告註腳 2）",
+          "before": "生物與前沿 LLM 開發題由 Opus 5 完成，Anthropic 說這可能拉低 Opus 5.5 在評測表上的分數。",
+          "after": "生物與前沿 LLM 開發題由 Opus 5 完成（AutomationBench 除外：它沒開備援，防護介入就算失敗），Anthropic 說這可能拉低 Opus 5.5 的評測分數。",
+          "source_url": "https://www.anthropic.com/claude-opus-5-5"
+        },
+        {
+          "claim": "第三節第三段：未含稅與可能調整只印在方案價格卡下方，API 價格區與公告頁沒有",
+          "before": "以上定價與前一節的 API 價格都未含稅，且可能調整。",
+          "after": "以上價格未含稅，且可能調整。",
+          "source_url": "https://claude.com/pricing"
+        },
+        {
+          "claim": "summary 5、第五節第一段、FAQ 7：a less reliable guide 是比較級",
+          "before": "越來越不能反映實際差異",
+          "after": "越來越難以反映實際差異",
+          "source_url": "https://www.anthropic.com/claude-opus-5-5"
+        },
+        {
+          "claim": "第四節第一段、FAQ 5：potentially higher-risk",
+          "before": "較高風險的攻擊性資安請求",
+          "after": "疑似較高風險的攻擊性資安請求",
+          "source_url": "https://support.claude.com/en/articles/16049681-why-claude-switched-models-in-your-conversation-with-opus-5-or-opus-5-5"
+        },
+        {
+          "claim": "第三節第一段、callout：subject to change",
+          "before": "而且是會更動的頁面｜這張表會隨時間更動",
+          "after": "而且頁面可能更動｜這張表可能隨時間更動",
+          "source_url": "https://claude.com/pricing"
+        },
+        {
+          "claim": "FAQ 3：答案要是正文的子集，定價頁 API 價格區那句不在正文",
+          "before": "截至 2026 年 9 月 26 日查核還沒有，claude.com 定價頁 API 價格區列出的最新模型仍是 Sonnet 5 與 Haiku 4.5。",
+          "after": "截至 2026 年 9 月 26 日查核還沒有。",
+          "source_url": "https://claude.com/pricing"
+        },
+        {
+          "claim": "騰字數（協調者裁定 3，只刪重複敘述與贅字，沒有刪限定詞）",
+          "before": "把「Opus」這個系列列在 Free 欄位標示（第一段、第三節第一段）｜官方說明它的來源是兩件事相加——每個 token｜開發這三類請求……仍會照樣計費",
+          "after": "把「Opus」系列列在 Free 欄標示｜官方說明它的來源是每個 token｜開發類請求……仍會計費",
+          "source_url": "https://www.anthropic.com/claude-opus-5-5"
+        },
+        {
+          "claim": "研究紀錄",
+          "before": "title 舊標題；fact 14「不能反映」；fact 15 沒有 AutomationBench 例外；fact 24 沒有 potentially；fact 40、not_said、must_not_write 把「未含稅」套到所有價格",
+          "after": "title 同步；fact 14 改「難以反映」並註明原文；fact 15 加 AutomationBench 例外；fact 24 補 potentially；fact 40、not_said、must_not_write 限縮到訂閱方案價格（研究紀錄本身錯，已同改，下一輪不要改回）",
+          "source_url": "https://claude.com/pricing"
+        }
+      ],
+      "open_questions": [
+        "標題剛好 60／60 字、段落 2,997／3,000 字；之後任何補字都要等量精簡。",
+        "標題的「付費方案」是 Pro、Max、Team 與按席次計費 Enterprise 的簡稱；定價頁的 Enterprise 本身就是按席次加用量計費，所以沒有改，正文與 summary 都列了完整清單。",
+        "FAQ 4 的「一般軟體開發流程裡找錯、修錯」出自公告，正文第四節第一段的例子是說明中心的「掃描原始碼弱點、分類資安問題」；主張相同、例子不同，沒改。",
+        "公告頁 all of which fall back to another model transparently 與說明中心、System Card 的蒸餾類直接擋下仍然矛盾；照協調者裁定 4 不重開，發布當天若公告頁改字再看。",
+        "研究紀錄 sourcing_notes 仍把定價頁的稅務註記叫「頁尾」，實際在兩個方案區的價格卡下方；那一段是敘述，沒有改，fact 40、not_said、must_not_write 已更正。",
+        "活頁面：說明中心 16049681（自印 Updated yesterday）、定價頁、Sonnet／Haiku 5.5 與 CVP 擴大，發布當天照 live_data_warnings 重讀。"
+      ],
+      "coordinator_rulings": [
+        "1 標題改成「Claude Opus 5.5 推出：牌價降 20%、付費方案五小時上限提高，40% 是 Anthropic 的成本估計」，研究紀錄 title 同步；三個數字各有出處（公告 20% less than Opus 5、five-hour usage limits、Our tests show … 40% less）。",
+        "2 第五節第二段的備援句限縮：括號排除 AutomationBench（公告註腳 2：These runs were performed without fallback models, so safeguard interventions were considered failures）。",
+        "3 騰字數只刪重複敘述與贅字（見 changes 的「騰字數」那一條），另外把沒有來源的「API 價格未含稅」刪掉也省下 13 字；沒有刪任何限定詞或但書。",
+        "4 蒸餾類照說明中心與 System Card 寫「直接擋下」，沒有重開。",
+        "5 Sonnet 5.5／Haiku 5.5 在 2026-09-26 台北 22:53 重查一次：news、sitemap、blog、models overview、定價頁都沒有，「截至查核日還沒推出」保留。"
+      ]
+    }
+  }
+}

@@ -18,6 +18,8 @@ from app.news_automation.schemas import (
     CandidateAction,
     CandidateDetail,
     CandidatePage,
+    CandidateStatus,
+    ModelsWrite,
     SettingsView,
     SettingsWrite,
     SourcePatch,
@@ -94,18 +96,25 @@ async def put_settings(
     return await service.update_settings(session, user, payload)
 
 
+@admin_router.put("/settings/models", response_model=SettingsView)
+async def put_models(payload: ModelsWrite, user: ContentManager, session: Session) -> SettingsView:
+    return await service.update_models(session, user, payload)
+
+
 @admin_router.get("/candidates", response_model=CandidatePage)
 async def candidates(
     user: ContentReader,
     session: Session,
     page: int = Query(default=1, ge=1),
     limit: int = Query(default=25, ge=1, le=100),
-    status: str | None = Query(default=None, max_length=24),
+    # Repeatable (?status=manual_review&status=failed) so the review list can ask for
+    # exactly the statuses a person acts on instead of the newest rows of every kind.
+    status: Annotated[list[CandidateStatus] | None, Query()] = None,
     vertical: Vertical | None = None,
 ) -> CandidatePage:
     del user
     return await service.list_candidates(
-        session, page=page, limit=limit, status=status, vertical=vertical
+        session, page=page, limit=limit, status=list(status or []), vertical=vertical
     )
 
 
@@ -125,11 +134,45 @@ async def retry_candidate(
     return result
 
 
+@admin_router.post("/candidates/{candidate_id}/refresh-evidence", response_model=CandidateDetail)
+async def refresh_candidate_evidence(
+    candidate_id: UUID,
+    payload: CandidateAction,
+    user: ContentManager,
+    session: Session,
+    redis: RedisDep,
+) -> CandidateDetail:
+    result = await service.refresh_candidate_evidence(session, user, candidate_id, payload, redis)
+    row = await session.get(NewsCandidate, candidate_id)
+    jobs.enqueue_candidate(candidate_id, retry_count=row.retry_count if row else 0)
+    return result
+
+
 @admin_router.post("/candidates/{candidate_id}/verify", response_model=CandidateDetail)
 async def verify_candidate(
     candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
 ) -> CandidateDetail:
     result = await service.reverify_candidate(session, user, candidate_id, payload)
+    row = await session.get(NewsCandidate, candidate_id)
+    jobs.enqueue_candidate(candidate_id, retry_count=row.retry_count if row else 0)
+    return result
+
+
+@admin_router.post("/candidates/{candidate_id}/approve", response_model=CandidateDetail)
+async def approve_candidate(
+    candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
+) -> CandidateDetail:
+    result = await service.approve_candidate(session, user, candidate_id, payload)
+    row = await session.get(NewsCandidate, candidate_id)
+    jobs.enqueue_candidate(candidate_id, retry_count=row.retry_count if row else 0)
+    return result
+
+
+@admin_router.post("/candidates/{candidate_id}/not-duplicate", response_model=CandidateDetail)
+async def clear_duplicate_candidate(
+    candidate_id: UUID, payload: CandidateAction, user: ContentManager, session: Session
+) -> CandidateDetail:
+    result = await service.clear_duplicate_candidate(session, user, candidate_id, payload)
     row = await session.get(NewsCandidate, candidate_id)
     jobs.enqueue_candidate(candidate_id, retry_count=row.retry_count if row else 0)
     return result

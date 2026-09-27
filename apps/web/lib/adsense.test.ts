@@ -270,6 +270,11 @@ describe("the request gate shared by the proxy and the renderer", () => {
     ["no host at all", { host: null }],
     ["a hub", { pathname: "/zh-TW/guides" }],
     ["a shared trip", { pathname: "/zh-TW/share/9f8e7d6c5b4a" }],
+    // The ad tag can read location.href, so the query would be in its hands. These requests
+    // are served without ads instead of being redirected to the bare path, which used to
+    // throw away every campaign tag before analytics could read it.
+    ["an article URL carrying campaign tags", { pathname: "/zh-TW/life/ai-notes?utm_source=youtube&utm_medium=video" }],
+    ["an article URL carrying any other query", { pathname: "/zh-TW/guides/howto/tokyo-esim?q=esim" }],
   ])("refuses %s", (_label, override) => {
     expect(adsenseRequestGate({ ...ok, ...override })).toBeNull();
   });
@@ -277,11 +282,14 @@ describe("the request gate shared by the proxy and the renderer", () => {
   it("gives the proxy and the renderer the same answer for the same request", () => {
     // They used to decide separately, and the proxy's decision was the looser of the two:
     // a DNT request got a relaxed policy for ad code it was never going to be served.
-    for (const override of [{}, { dnt: "1" }, { gpc: "1" }, { host: "localhost:3000" }, { pathname: "/zh-TW/life" }]) {
+    for (const override of [
+      {}, { dnt: "1" }, { gpc: "1" }, { host: "localhost:3000" }, { pathname: "/zh-TW/life" },
+      { pathname: "/zh-TW/life/ai-notes?utm_campaign=ai-notes" },
+    ]) {
       const signals = { ...ok, ...override };
       expect(adsenseRequestGate(signals) !== null).toBe(isAdsenseArticlePath(signals.pathname)
         && isAdsenseOrigin(`https://${signals.host || ""}`)
-        && signals.dnt !== "1" && signals.gpc !== "1");
+        && signals.dnt !== "1" && signals.gpc !== "1" && !signals.pathname.includes("?"));
     }
   });
 });

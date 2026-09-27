@@ -174,6 +174,28 @@ def test_enabled_database_maintenance_requires_secure_configuration(
         secure_production_settings(**values).validate_deployment_security()
 
 
+@pytest.mark.parametrize(
+    ("override", "message"),
+    [
+        ({"ai_accounts_agent_hmac_key": "short"}, "AI_ACCOUNTS_AGENT_HMAC_KEY"),
+        ({"ai_accounts_agent_socket": "/tmp/ai.sock"}, "AI_ACCOUNTS_AGENT_SOCKET"),
+    ],
+)
+def test_enabled_ai_accounts_require_the_packaged_agent(
+    override: dict[str, object], message: str
+) -> None:
+    valid: dict[str, object] = {
+        "ai_accounts_enabled": True,
+        "ai_accounts_agent_hmac_key": "x" * 32,
+        "ai_accounts_agent_socket": "/run/mokaair-ai-accounts/agent.sock",
+    }
+    with pytest.raises(RuntimeError, match=message):
+        secure_production_settings(**{**valid, **override}).validate_deployment_security()
+    secure_production_settings(**valid).validate_deployment_security()
+    assert secure_production_settings(**valid).ai_accounts_configured is True
+    assert secure_production_settings().ai_accounts_configured is False
+
+
 def test_database_maintenance_configuration_is_independent_of_deployments() -> None:
     settings = secure_production_settings(
         deployments_enabled=False,

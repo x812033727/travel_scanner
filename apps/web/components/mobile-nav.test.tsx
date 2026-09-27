@@ -25,7 +25,7 @@ describe("MobileNav", () => {
   // section needs its own icon there or it is unreachable on a phone in that mode.
   it.each([
     ["旅遊情報攻略", "/guides"],
-    ["生活分享", "/life"],
+    ["生活科技", "/life"],
   ])("carries an icon link to %s in discovery mode", (name, href) => {
     discovery.enabled = true;
     render(<ThemeProvider><MobileNav /></ThemeProvider>);

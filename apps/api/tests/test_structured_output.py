@@ -131,3 +131,25 @@ def test_gemini_response_schema_covers_the_models_the_features_send() -> None:
         serialized = json.dumps(schema)
         assert schema["type"] == "object" and schema["properties"], model.__name__
         assert "$ref" not in serialized and "pattern" not in serialized, model.__name__
+
+
+def test_repair_instruction_names_each_failed_field_and_keeps_the_reply() -> None:
+    from pydantic import BaseModel, Field, ValidationError
+
+    from app.ai.structured_output import repair_instruction
+
+    class Reply(BaseModel):
+        summary: list[str] = Field(max_length=2)
+        title: str = Field(max_length=5)
+
+    previous = '{"summary": ["a", "b", "c"], "title": "too long"}'
+    try:
+        Reply.model_validate_json(previous)
+    except ValidationError as error:
+        prompt = repair_instruction(previous, error)
+    else:
+        raise AssertionError("the reply should have failed")
+    assert "Repair the previous invalid JSON" in prompt
+    assert "- summary: " in prompt and "- title: " in prompt
+    assert "at most 5 characters" in prompt
+    assert prompt.endswith(previous)

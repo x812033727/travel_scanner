@@ -51,6 +51,20 @@ same flag, the same refusal on a second run. What it does change is the AI index
 which names the last event the series covers as well as the day it was last expanded -- the
 batch's newest AI article happened on 2026-09-21, so this time both dates in that sentence
 move, not only the second.
+
+Batch 4.8 (ten articles the hourly automation missed, events of 2026-09-17 to 09-25) is five
+locales again, the first batch since 4.5 to be, so it runs without ``--locale``:
+
+    update_index.py ai tech crypto [--dry-run]
+
+Two things are new. The four locales other than zh-TW had not been expanded since 2026-09-18
+while zh-TW had moved on to 2026-09-23, so every date sentence below is written per locale:
+different old dates, the same new one. And the crypto index opens a South Korea group the way
+4.5 opened the United Kingdom's, which changes the number of regions the index names in three
+places -- the description, the opening paragraph and the first summary item. ``edit_block``
+could not reach a summary item until now, which is why that item still said four regions
+after 4.5 had made them five; it edits a summary's or a list's items the way it edits a rich
+paragraph's text nodes, one item, once.
 """
 from __future__ import annotations
 
@@ -92,41 +106,104 @@ MAX_SOURCES = next(
 
 # The day this run expands the indexes: the one date the sentences below print, so the next
 # batch changes this constant and the same sentences instead of finding new ones to edit.
-EXPANDED_ON = "2026-09-23"
+EXPANDED_ON = "2026-09-27"
 EXPANDED = {
-    "zh-TW": "2026 年 9 月 23 日",
-    "en": "September 23, 2026",
-    "ja": "2026年9月23日",
-    "ko": "2026년 9월 23일",
-    "zh-CN": "2026 年 9 月 23 日",
+    "zh-TW": "2026 年 9 月 27 日",
+    "en": "September 27, 2026",
+    "ja": "2026年9月27日",
+    "ko": "2026년 9월 27일",
+    "zh-CN": "2026 年 9 月 27 日",
 }
+#: The newest event the AI series covers after this run, which the AI index's callout prints
+#: beside the expansion date: batch 4.8's Google Vids article, 2026-09-24 in Taipei.
+NEWEST_AI_EVENT = "2026-09-24"
 
 # vertical -> (slug, where to put the link). ``after`` is the existing slug to place the link
 # after (a leading "<" means before it), or an anchor of the ``INSERT`` kind -- per locale,
 # as a dict, when it names a heading whose text differs by locale. Applied in order: an entry
 # may name a slug inserted just before it.
 #
-# Batch 4.4 wave 1 (2026-09-23): six AI articles about August and early-September events that the
-# batch-4 discovery had left unwritten (secondary news), zh-TW only. The AI index lists by month,
-# so each link goes into its month group by event date -- after the existing link whose event
-# date precedes it (the batch-4.3 practice), not at the end of September. The tech and crypto
-# indexes get nothing this run; their 4.4 articles are deferred. Rows may anchor on a link this
-# same run inserts, because the table is applied in order.
+# Batch 4.8 (2026-09-27): ten articles the hourly automation missed, five locales each. The
+# zh-TW documents carry the zh-TW-only links of 4.4, 4.6 and 4.7 and the other four do not, so
+# a group can end on a different link per locale; those rows name their anchor per locale.
+#
+# * AI: September's group, by event date, after whatever the group ends on in that locale
+#   (09-22 Opus 5.5, then the two 09-23 articles in Taipei order -- GPT-6 at 02:00, the Taiwan
+#   ads rollout at 10:00 -- then 09-24 Vids).
+# * Tech: WordPress and then Synology at the end of Platforms and Software (the coordinator's
+#   order, not event order), Snapdragon at the end of Consumer Hardware and Chips.
+# * Crypto: the central bank at the end of Taiwan, the forum at the end of Japan, and Korea
+#   under the South Korea heading ``INSERT`` adds behind the Japan group. That heading is placed
+#   after the Japan group's last link before this table runs, so the forum's link, placed after
+#   that same link, lands above it.
+_TW_LAST_AI = "ai-news-nvidia-physical-ai-safety-20260921"
+_FIVE_LAST_AI = "ai-news-google-cc-family-agent-20260918"
 NEW: dict[str, list[tuple[str, object]]] = {
-    "crypto": [],
-    "tech": [],
+    "crypto": [
+        (
+            "crypto-news-taiwan-cbc-stablecoin-deposit-token-cbdc-20260917",
+            {
+                "zh-TW": "crypto-news-taiwan-vasp-tax-ruling-20260903",
+                "en": "crypto-news-taiwan-vasp-act-20260630",
+                "ja": "crypto-news-taiwan-vasp-act-20260630",
+                "ko": "crypto-news-taiwan-vasp-act-20260630",
+                "zh-CN": "crypto-news-taiwan-vasp-act-20260630",
+            },
+        ),
+        ("crypto-news-japan-onchain-finance-forum-20260925", "crypto-news-jfsa-cybersecurity-20260723"),
+        (
+            "crypto-news-korea-market-manipulation-referrals-20260923",
+            {
+                "zh-TW": "heading:韓國",
+                "en": "heading:South Korea",
+                "ja": "heading:韓国",
+                "ko": "heading:한국",
+                "zh-CN": "heading:韩国",
+            },
+        ),
+    ],
+    "tech": [
+        (
+            "tech-news-wordpress-712-20260922",
+            {
+                "zh-TW": "tech-news-enisa-threat-landscape-20260922",
+                "en": "tech-news-app-store-bundles-multiseat-20260916",
+                "ja": "tech-news-app-store-bundles-multiseat-20260916",
+                "ko": "tech-news-app-store-bundles-multiseat-20260916",
+                "zh-CN": "tech-news-app-store-bundles-multiseat-20260916",
+            },
+        ),
+        ("tech-news-synology-dsm-sa2613-20260918", "tech-news-wordpress-712-20260922"),
+        ("tech-news-snapdragon-8-elite-gen6-20260922", "tech-news-apple-m6-m5-ultra-20260825"),
+    ],
     "ai": [
-        # August: 08-02 EU transparency, 08-06 free/thinking already sit here; 08-15, 08-20, 08-20
-        # follow the 08-06 link, then 08-26 (Gemini Live already there) and 08-28.
-        ("ai-news-claude-text-watermark-20260815", "ai-news-chatgpt-free-thinking-20260806"),
-        ("ai-news-gemini-student-offer-20260820", "ai-news-claude-text-watermark-20260815"),
-        ("ai-news-openai-zero-data-retention-20260820", "ai-news-gemini-student-offer-20260820"),
-        ("ai-news-openai-hugging-face-incident-20260826", "ai-news-gemini-live-20260826"),
-        ("ai-news-openai-cursor-wind-down-20260828", "ai-news-openai-hugging-face-incident-20260826"),
-        # September: 09-09 goes after the 09-08 Images 2.5 link and before the 09-10 group.
-        ("ai-news-meta-muse-agent-20260909", "ai-news-chatgpt-images-25-20260908"),
+        (
+            "ai-news-claude-opus-55-20260922",
+            {
+                "zh-TW": _TW_LAST_AI,
+                "en": _FIVE_LAST_AI,
+                "ja": _FIVE_LAST_AI,
+                "ko": _FIVE_LAST_AI,
+                "zh-CN": _FIVE_LAST_AI,
+            },
+        ),
+        ("ai-news-gpt-6-sol-luna-20260923", "ai-news-claude-opus-55-20260922"),
+        ("ai-news-chatgpt-ads-taiwan-20260923", "ai-news-gpt-6-sol-luna-20260923"),
+        ("ai-news-google-vids-omni-free-20260924", "ai-news-chatgpt-ads-taiwan-20260923"),
     ],
 }
+# What batch 4.4 wave 1 (2026-09-23) added, kept for the record: six AI articles about August and
+# early-September events, zh-TW only, each placed in its month group by event date -- after the
+# existing link whose event date precedes it (the batch-4.3 practice), not at the end of September.
+#
+#     "ai": [
+#         ("ai-news-claude-text-watermark-20260815", "ai-news-chatgpt-free-thinking-20260806"),
+#         ("ai-news-gemini-student-offer-20260820", "ai-news-claude-text-watermark-20260815"),
+#         ("ai-news-openai-zero-data-retention-20260820", "ai-news-gemini-student-offer-20260820"),
+#         ("ai-news-openai-hugging-face-incident-20260826", "ai-news-gemini-live-20260826"),
+#         ("ai-news-openai-cursor-wind-down-20260828", "ai-news-openai-hugging-face-incident-20260826"),
+#         ("ai-news-meta-muse-agent-20260909", "ai-news-chatgpt-images-25-20260908"),
+#     ],
 # What batch 4.7 (2026-09-23) added, kept for the record: the twelve articles of the window that
 # opened on 2026-09-20 and three write-ups of earlier events, zh-TW only; the AI links went after
 # September's last link in display_order, the tech and crypto links joined existing groups
@@ -183,6 +260,10 @@ NEW: dict[str, list[tuple[str, object]]] = {
 # sources, which no later batch could put back without editing four locales it never read.
 # The fifteen packs of this batch carry no other locale to cite from either. ``main`` refuses
 # a non-empty table unless all five locales are in the run.
+#
+# Batch 4.8 is a five-locale run, so the second reason is gone and the first is not: the AI
+# index still cites 19 sources, tech 17 and crypto 14, and one per article is four, three and
+# three more. The coordinator kept the table empty (DELTA-4-8 item 6).
 CITED: dict[str, list[str]] = {"crypto": [], "tech": [], "ai": []}
 
 # vertical -> locale -> new title. Empty leaves the title alone: none of the three titles
@@ -195,30 +276,166 @@ RETITLE: dict[str, dict[str, str]] = {
 
 # vertical -> locale -> (where, old, new). ``where`` is "description" or a block index.
 #
-# Batch 4.7 fills only the "zh-TW" row of each vertical, and leaves the four other locales
-# alone on purpose: every one of them states the day its own document was last expanded, and
-# that sentence stays true for as long as this run does not add anything to it. Each sentence
-# below is the one batch 4.6 left behind, so mostly only the date moves. Nothing else changes
-# -- the index prose that introduces a batch by name (the AI index's second paragraph, the
-# tech and crypto group paragraphs) is five-locale text, and a sentence added to zh-TW alone
-# would make the five documents of one index describe different things. The block indexes are
-# those of the indexes as they read on 2026-09-23, before this run's links; batch 4.6 appended
-# its links behind every prose block, so the three AI indexes below did not move.
+# Batch 4.7 and 4.4 wave 1 filled only the "zh-TW" rows and left the four other locales alone
+# on purpose: every one of them states the day its own document was last expanded, and that
+# sentence stays true for as long as a run adds nothing to it. Batch 4.8 adds to all five, so
+# all five move -- zh-TW from 2026-09-23, the other four from 2026-09-18 -- each in its own
+# sentence's wording. The block indexes are those of the indexes as they read on 2026-09-27,
+# before this run's links and inserted blocks; every batch has appended its links behind the
+# prose, so the prose blocks sit at the same index in all five locales even though zh-TW has
+# more link blocks than the others.
+#
+# The crypto rows also carry the region count: the South Korea group makes six regions, and the
+# description, the opening paragraph (block 0) and the first summary item (block 2) all name
+# them. Batch 4.5 moved the first two to five when it added the United Kingdom and could not
+# reach the third, which said four until this run. The en description was already 499 of the
+# schema's 500 characters, so its row rewrites the whole description in shorter words instead
+# of adding two names to it.
+#
+# What batch 4.4 wave 1 (2026-09-23) edited, kept for the record -- the AI index, zh-TW only:
+#
+#     (0, "之後多次增補（最近一次 2026-09-23），", ...), (24, the same sentence),
+#     (25, "最後增補於 2026-09-23。", ...) -- the callout's first date stayed 2026-09-21.
+_CRYPTO_EN_DESCRIPTION = (
+    "This site's 2026 crypto news explainers, in six jurisdictions — Taiwan, the US, the UK, the"
+    " EU, Japan, South Korea: the Virtual Asset Service Act, the proposed GENIUS Act rules, the"
+    " joint SEC–CFTC interpretation and the SEC's own proposal, the end of MiCA's transitional"
+    " period and its link to the payment rules, the FCA's perimeter guidance, Japan's FSA reports"
+    " and South Korea's manipulation referrals. Regulation, technology and industry only, no"
+    " prices, with official sources and a check date."
+)
 EDITS: dict[str, dict[str, list[tuple[object, str, str]]]] = {
-    "crypto": {"zh-TW": [], "en": [], "ja": [], "ko": [], "zh-CN": []},
-    "tech": {"zh-TW": [], "en": [], "ja": [], "ko": [], "zh-CN": []},
+    "crypto": {
+        "zh-TW": [
+            ("description", "依台灣、美國、英國、歐盟、日本五個地區", "依台灣、美國、英國、歐盟、日本、韓國六個地區"),
+            (
+                "description",
+                "、日本金融廳公布的報告。",
+                "、日本金融廳公布的報告、韓國金融委員會交偵查機關的市場操縱嫌疑案。",
+            ),
+            (0, "內容依台灣、美國、英國、歐盟、日本五個地區編排", "內容依台灣、美國、英國、歐盟、日本、韓國六個地區編排"),
+            (1, "之後多次增補（最近一次 2026 年 9 月 23 日）", f"之後多次增補（最近一次 {EXPANDED['zh-TW']}）"),
+            (2, "這份索引依台灣、美國、歐盟、日本四個地區", "這份索引依台灣、美國、英國、歐盟、日本、韓國六個地區"),
+        ],
+        "en": [
+            (
+                "description",
+                "An index to this site's 2026 crypto news explainers, arranged by jurisdiction — Taiwan,"
+                " the US, the UK, the EU, Japan: the Virtual Asset Service Act, the proposed rules put"
+                " forward under the GENIUS Act, the joint SEC and CFTC interpretation and the SEC's own"
+                " proposal, the end of the MiCA transitional period and where MiCA meets the payment"
+                " rules, the UK FCA's perimeter guidance, and Japan's FSA reports. Regulation,"
+                " technology and industry only, no prices, with official sources and a check date.",
+                _CRYPTO_EN_DESCRIPTION,
+            ),
+            (
+                0,
+                "five jurisdictions — Taiwan, the United States, the United Kingdom, the European Union"
+                " and Japan —",
+                "six jurisdictions — Taiwan, the United States, the United Kingdom, the European Union,"
+                " Japan and South Korea —",
+            ),
+            (1, "and expanded on September 18, 2026.", f"and expanded on {EXPANDED['en']}."),
+            (
+                2,
+                "four jurisdictions — Taiwan, the United States, the European Union and Japan —",
+                "six jurisdictions — Taiwan, the United States, the United Kingdom, the European Union,"
+                " Japan and South Korea —",
+            ),
+        ],
+        "ja": [
+            ("description", "台湾、米国、英国、EU、日本の五つの地域ごとに", "台湾、米国、英国、EU、日本、韓国の六つの地域ごとに"),
+            (
+                "description",
+                "日本の金融庁が公表した報告書を取り上げます。",
+                "日本の金融庁が公表した報告書、韓国金融委員会が捜査機関へ告発・通報した仮想資産の相場操縦疑い事案を取り上げます。",
+            ),
+            (0, "台湾、米国、英国、EU、日本の五つの地域ごとに並べ", "台湾、米国、英国、EU、日本、韓国の六つの地域ごとに並べ"),
+            (1, "2026年9月18日に追補しました。", f"{EXPANDED['ja']}に追補しました。"),
+            (2, "台湾、米国、EU、日本の四つの地域ごとに", "台湾、米国、英国、EU、日本、韓国の六つの地域ごとに"),
+        ],
+        "ko": [
+            ("description", "대만, 미국, 영국, EU, 일본 다섯 지역별로", "대만, 미국, 영국, EU, 일본, 한국 여섯 지역별로"),
+            (
+                "description",
+                "일본 금융청이 공개한 보고서를 다룹니다.",
+                "일본 금융청이 공개한 보고서, 한국 금융위원회가 수사기관에 고발·통보한 가상자산 불공정거래 혐의 사건을 다룹니다.",
+            ),
+            (0, "대만, 미국, 영국, EU, 일본 다섯 지역별로 배열했고", "대만, 미국, 영국, EU, 일본, 한국 여섯 지역별로 배열했고"),
+            (1, "2026년 9월 18일에 보완했습니다.", f"{EXPANDED['ko']}에 보완했습니다."),
+            (2, "대만, 미국, EU, 일본 네 지역별로", "대만, 미국, 영국, EU, 일본, 한국 여섯 지역별로"),
+        ],
+        "zh-CN": [
+            ("description", "依台湾、美国、英国、欧盟、日本五个地区", "依台湾、美国、英国、欧盟、日本、韩国六个地区"),
+            (
+                "description",
+                "、日本金融厅公布的报告。",
+                "、日本金融厅公布的报告、韩国金融委员会移送侦查机关的市场操纵嫌疑案。",
+            ),
+            (0, "内容依台湾、美国、英国、欧盟、日本五个地区编排", "内容依台湾、美国、英国、欧盟、日本、韩国六个地区编排"),
+            (1, "2026 年 9 月 18 日增补。", f"{EXPANDED['zh-CN']}增补。"),
+            (2, "这份索引依台湾、美国、欧盟、日本四个地区", "这份索引依台湾、美国、英国、欧盟、日本、韩国六个地区"),
+        ],
+    },
+    # The tech index states its dates in block 1 alone; the table caption's check date is the
+    # table's own and stays.
+    "tech": {
+        "zh-TW": [
+            (1, "之後多次增補（最近一次 2026 年 9 月 23 日）", f"之後多次增補（最近一次 {EXPANDED['zh-TW']}）"),
+        ],
+        "en": [(1, "and expanded on September 18, 2026.", f"and expanded on {EXPANDED['en']}.")],
+        "ja": [(1, "2026年9月18日に追補しました。", f"{EXPANDED['ja']}に追補しました。")],
+        "ko": [(1, "2026년 9월 18일에 보완했습니다.", f"{EXPANDED['ko']}에 보완했습니다.")],
+        "zh-CN": [(1, "2026 年 9 月 18 日增补。", f"{EXPANDED['zh-CN']}增补。")],
+    },
+    # The AI index says it twice (blocks 0 and 24) and its callout (25) names both the newest
+    # event and the expansion day; both callout dates move this time.
     "ai": {
         "zh-TW": [
-            (0, "之後多次增補（最近一次 2026-09-23），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
-            (24, "之後多次增補（最近一次 2026-09-23），", f"之後多次增補（最近一次 {EXPANDED_ON}），"),
-            # The callout's first date (the newest event the series covers) stays 2026-09-21:
-            # this run's newest article happened on 2026-09-09. Only the expansion date moves.
-            (25, "最後增補於 2026-09-23。", f"最後增補於 {EXPANDED_ON}。"),
+            (0, "（最近一次 2026-09-23）", f"（最近一次 {EXPANDED_ON}）"),
+            (24, "（最近一次 2026-09-23）", f"（最近一次 {EXPANDED_ON}）"),
+            (
+                25,
+                "本輯收錄的事件到 2026-09-21 為止，最後增補於 2026-09-23。",
+                f"本輯收錄的事件到 {NEWEST_AI_EVENT} 為止，最後增補於 {EXPANDED_ON}。",
+            ),
         ],
-        "en": [],
-        "ja": [],
-        "ko": [],
-        "zh-CN": [],
+        "en": [
+            (0, "(most recently on 2026-09-18)", f"(most recently on {EXPANDED_ON})"),
+            (24, "(most recently on 2026-09-18)", f"(most recently on {EXPANDED_ON})"),
+            (
+                25,
+                "covers events through 2026-09-18 and was last expanded on 2026-09-18.",
+                f"covers events through {NEWEST_AI_EVENT} and was last expanded on {EXPANDED_ON}.",
+            ),
+        ],
+        "ja": [
+            (0, "（最終追補は2026-09-18）", f"（最終追補は{EXPANDED_ON}）"),
+            (24, "（最終追補は2026-09-18）", f"（最終追補は{EXPANDED_ON}）"),
+            (
+                25,
+                "本特集の対象は2026-09-18までの出来事で、最終追補は2026-09-18です。",
+                f"本特集の対象は{NEWEST_AI_EVENT}までの出来事で、最終追補は{EXPANDED_ON}です。",
+            ),
+        ],
+        "ko": [
+            (0, "(마지막 보완 2026-09-18)", f"(마지막 보완 {EXPANDED_ON})"),
+            (24, "(마지막 보완 2026-09-18)", f"(마지막 보완 {EXPANDED_ON})"),
+            (
+                25,
+                "본 특집은 2026-09-18까지의 사건을 다루며, 마지막 보완은 2026-09-18입니다.",
+                f"본 특집은 {NEWEST_AI_EVENT}까지의 사건을 다루며, 마지막 보완은 {EXPANDED_ON}입니다.",
+            ),
+        ],
+        "zh-CN": [
+            (0, "（最近一次 2026-09-18）", f"（最近一次 {EXPANDED_ON}）"),
+            (24, "（最近一次 2026-09-18）", f"（最近一次 {EXPANDED_ON}）"),
+            (
+                25,
+                "本辑收录的事件到 2026-09-18 为止，最后增补于 2026-09-18。",
+                f"本辑收录的事件到 {NEWEST_AI_EVENT} 为止，最后增补于 {EXPANDED_ON}。",
+            ),
+        ],
     },
 }
 
@@ -259,13 +476,256 @@ def _h(text: str) -> dict:
 # ``heading:<exact text>`` or ``paragraph:<opening text>``, with a leading ``<`` to insert
 # before it instead of after. Applied in order, before ``NEW``.
 #
-# Nothing this batch either. Every one of the fifteen links joins a group all three indexes
-# already have, and an inserted block is prose: written for zh-TW alone it would leave the
-# five locale documents of one index saying different things, which is the same reason
-# ``EDITS`` adds no sentence naming this batch's subjects.
+# Batches 4.6, 4.7 and 4.4 wave 1 inserted nothing: they were zh-TW only, and prose written
+# for zh-TW alone would leave the five locale documents of one index saying different things.
+#
+# Batch 4.8 is five locales, so it may, and does in two indexes:
+#
+# * crypto: a South Korea section, the way 4.5 added the United Kingdom's -- a heading and one
+#   paragraph in the narrative part after the Japan section, and a link-group heading after the
+#   Japan link group, under which ``NEW`` puts the Korea link. The paragraph says only what
+#   the Korea article says: suspects, not convictions; no coin, exchange or person named; no
+#   price. Besides that, one paragraph of one sentence each in the Taiwan section (the central
+#   bank's 9/17 material) and the Japan section (the FSA's 9/25 forum), since both sections
+#   already describe their groups' articles. The Korea heading anchors on the Japan forum
+#   paragraph inserted just before it, which is why the rows run in this order.
+# * tech: one sentence each where Consumer Hardware and Chips and Platforms and Software
+#   already describe their articles: Snapdragon after the M6 paragraph, the two security
+#   advisories after the App Store paragraph.
+#
+# The AI index gets no inserted prose. Its narrative names months, not articles past
+# 2026-09-14, and its second paragraph -- which named 4.5's six by name -- has not named the
+# zh-TW-only batches since; a sentence for 4.8 alone would be the odd one out.
+_KR_HEADING = {
+    "zh-TW": "韓國：虛擬資產操縱嫌疑案交偵查機關",
+    "en": "South Korea: suspected market manipulation cases referred to investigators",
+    "ja": "韓国：仮想資産の相場操縦疑い事案、捜査機関へ告発・通報",
+    "ko": "한국: 가상자산 불공정거래 혐의 사건, 수사기관에 고발·통보",
+    "zh-CN": "韩国：虚拟资产操纵嫌疑案移送侦查机关",
+}
+_KR_GROUP = {"zh-TW": "韓國", "en": "South Korea", "ja": "韓国", "ko": "한국", "zh-CN": "韩国"}
+_KR = {
+    "zh-TW": (
+        "2026 年 9 月 23 日，韓國金融委員會（與台灣的金管會是不同機關）在第 16 次定例會議中，"
+        "對它與金融監督院共同調查的 4 件虛擬資產市場操縱嫌疑案議決處置：1 件告發，3 件通報偵查機關。"
+        "其中 3 件是用自動交易程式（API）反覆小額下單、讓掛單簿看起來熱絡的超短線操縱，"
+        "另 1 件是虛擬資產營運公司主管與員工僱用造市業者、以借名帳戶互相成交灌出交易量，"
+        "以不實方式滿足交易所的上架維持條件。公告沒有點名任何虛擬資產、交易所或當事人，"
+        "也沒有寫不當得利金額；4 件的當事人一律是嫌疑人，不是被起訴或定罪的人。"
+    ),
+    "en": (
+        "On September 23, 2026, at its 16th regular meeting, South Korea's Financial Services"
+        " Commission (a different agency from Taiwan's Financial Supervisory Commission) resolved on"
+        " four suspected virtual-asset market manipulation cases it had investigated together with"
+        " the Financial Supervisory Service: one criminal complaint and three notifications to the"
+        " investigative authorities. Three of the cases were ultra-short-term price manipulation in"
+        " which automated trading programs (APIs) repeated small orders to make the order book look"
+        " active; in the fourth, executives and employees of a virtual-asset operating company hired"
+        " a market maker and traded between borrowed-name accounts to inflate volume, falsely"
+        " meeting an exchange's listing-maintenance requirements. The announcement named no virtual"
+        " asset, exchange or individual and gave no figure for illicit gains; the parties in all"
+        " four cases are suspects only, not people who have been indicted or convicted."
+    ),
+    "ja": (
+        "2026年9月23日、韓国金融委員会（台湾の金融監督管理委員会とは別の機関）は第16回定例会議で、"
+        "金融監督院と共同で調査した仮想資産市場の相場操縦疑いの4件について措置を議決しました。"
+        "告発が1件、捜査機関への通報が3件です。うち3件は自動売買プログラム（API）で少額の注文を繰り返し、"
+        "板を活発に見せる超短期の相場操縦で、残る1件は仮想資産運営会社の役職員がマーケットメイカーを雇い、"
+        "借名口座同士で売買を成立させて出来高を水増しし、取引所の上場維持要件を不正に満たしていたものです。"
+        "公表資料はいかなる仮想資産や取引所、当事者の名前も挙げておらず、不当利得の金額も記していません。"
+        "4件の当事者はいずれも容疑者であり、起訴または有罪が確定した人物ではありません。"
+    ),
+    "ko": (
+        "2026년 9월 23일, 한국 금융위원회(대만의 금융감독관리위원회와는 다른 기관)는 제16차 정례회의에서"
+        " 금융감독원과 공동으로 조사한 가상자산시장 불공정거래 혐의 사건 4건에 대한 조치를 의결했습니다."
+        " 고발이 1건, 수사기관 통보가 3건입니다. 이 가운데 3건은 자동매매 프로그램(API)으로 소액 주문을"
+        " 반복해 호가창을 활발하게 보이게 한 초단기 시세조종이고, 나머지 1건은 가상자산 운영사 임직원 등이"
+        " 마켓메이킹 업자를 고용해 차명 계정끼리 매매를 체결시켜 거래량을 부풀리고 거래소의 상장유지 요건을"
+        " 허위로 충족시킨 사건입니다. 발표문은 어떤 가상자산이나 거래소, 당사자의 이름도 밝히지 않았고"
+        " 부당이득 금액도 적지 않았습니다. 4건의 당사자는 모두 혐의자일 뿐, 기소되거나 유죄가 확정된 사람이"
+        " 아닙니다."
+    ),
+    "zh-CN": (
+        "2026 年 9 月 23 日，韩国金融委员会（与台湾的金融监督管理委员会是不同机关）在第 16 次定例会议中，"
+        "对它与金融监督院共同调查的 4 起虚拟资产市场操纵嫌疑案议决处置：1 起告发，3 起通报侦查机关。"
+        "其中 3 起是用自动交易程序（API）反复小额下单、让挂单簿看起来活跃的超短线操纵，"
+        "另 1 起是虚拟资产运营公司主管与员工雇用做市业者、以借名账户互相成交灌出交易量，"
+        "以不实方式满足交易所的上架维持条件。公告没有点名任何虚拟资产、交易所或当事人，"
+        "也没有写不当得利金额；4 起案件的当事人一律是嫌疑人，不是被起诉或定罪的人。"
+    ),
+}
+_TW_CBC = {
+    "zh-TW": (
+        "2026 年 9 月 17 日，中央銀行在理監事會後記者會的書面資料中比較穩定幣、存款代幣與央行數位貨幣（CBDC），"
+        "認為三者可在不同層級共存、互補，並表示台灣目前尚無發行零售型 CBDC 的急迫性；"
+        "那是央行自己準備的書面問答，不是理事會的決議，也沒有給出任何發行時程。"
+    ),
+    "en": (
+        "On September 17, 2026, Taiwan's Central Bank compared stablecoins, deposit tokens and"
+        " central bank digital currency (CBDC) in the written materials of its post-meeting press"
+        " conference, saying the three can coexist and complement each other across different"
+        " layers and that there is no urgency for Taiwan to issue a retail CBDC; those materials are"
+        " a written question-and-answer the Central Bank prepared itself, not a resolution of its"
+        " board, and they give no timetable for issuing one."
+    ),
+    "ja": (
+        "2026年9月17日、中央銀行は理監事会後の記者会見資料でステーブルコイン、預金トークン、中央銀行デジタル通貨（CBDC）を比較し、"
+        "三者は異なる階層で共存し補い合えるとしたうえで、台湾では一般利用型CBDCを発行する急務はまだないと述べましたが、"
+        "これは中央銀行自身が用意した書面の質疑応答であって理事会の決議ではなく、発行時期も示されていません。"
+    ),
+    "ko": (
+        "2026년 9월 17일 중앙은행은 이사·감사 연석회의 후 기자회견 자료에서 스테이블코인, 예금토큰,"
+        " 중앙은행디지털화폐(CBDC)를 비교하며 세 가지가 서로 다른 계층에서 공존하고 보완할 수 있고 대만은"
+        " 소매형 CBDC를 발행할 시급성이 아직 없다고 밝혔는데, 이는 중앙은행이 스스로 준비한 서면 질의응답으로"
+        " 이사회의 의결이 아니며 발행 시기도 제시하지 않았습니다."
+    ),
+    "zh-CN": (
+        "2026 年 9 月 17 日，中央银行在理监事会后记者会的书面资料中比较稳定币、存款代币与央行数字货币（CBDC），"
+        "认为三者可在不同层级共存、互补，并表示台湾目前尚无发行零售型 CBDC 的急迫性；"
+        "那是央行自己准备的书面问答，不是理事会的决议，也没有给出任何发行时程。"
+    ),
+}
+_JP_FORUM = {
+    "zh-TW": (
+        "2026 年 9 月 25 日，金融廳又宣布與相關省廳等一起設立「AI時代を見据えたオンチェーン金融フォーラム」"
+        "（著眼 AI 時代的鏈上金融論壇），把穩定幣、代幣化存款與國債等的代幣化列入跨部會檢討；"
+        "那是設立一個檢討場域，不是修法，也不是核准任何產品。"
+    ),
+    "en": (
+        "On September 25, 2026 the FSA announced that, together with relevant ministries and"
+        " agencies, it is setting up the 「AI時代を見据えたオンチェーン金融フォーラム」 (an Onchain"
+        " Finance Forum With an Eye on the AI Era), putting stablecoins, tokenized deposits and the"
+        " tokenization of government bonds into a cross-ministry review; it sets up a place for"
+        " review, not a change of law or the approval of any product."
+    ),
+    "ja": (
+        "2026年9月25日には、金融庁が関係省庁等とともに「AI時代を見据えたオンチェーン金融フォーラム」を立ち上げると公表し、"
+        "ステーブルコイン、トークン化預金、国債等のトークン化を省庁横断の検討に載せましたが、"
+        "これは検討の場の設置であって、法改正でもいかなる製品の承認でもありません。"
+    ),
+    "ko": (
+        "2026년 9월 25일에는 금융청이 관계 부처 등과 함께 'AI時代を見据えたオンチェーン金融フォーラム'(AI 시대를"
+        " 내다본 온체인 금융 포럼)을 신설한다고 발표하며 스테이블코인, 토큰화 예금, 국채 등의 토큰화를 부처 횡단"
+        " 검토 대상에 올렸는데, 이는 검토의 장을 만든 것이지 법 개정이나 어떤 상품의 승인이 아닙니다."
+    ),
+    "zh-CN": (
+        "2026 年 9 月 25 日，金融厅又宣布与相关省厅等一起设立“AI時代を見据えたオンチェーン金融フォーラム”"
+        "（着眼 AI 时代的链上金融论坛），把稳定币、代币化存款与国债等的代币化列入跨部门检讨；"
+        "那是设立一个检讨场域，不是修法，也不是核准任何产品。"
+    ),
+}
+# Where each of those goes: the last paragraph of the Taiwan and the Japan narrative sections,
+# by their opening words in each locale.
+_TW_LAST = {
+    "zh-TW": "paragraph:最容易被忽略的是時間。",
+    "en": "paragraph:The easiest thing to overlook is the timing.",
+    "ja": "paragraph:最も見落とされやすいのは時期です。",
+    "ko": "paragraph:가장 놓치기 쉬운 것은 시간입니다.",
+    "zh-CN": "paragraph:最容易被忽略的是时间。",
+}
+_JP_LAST = {
+    "zh-TW": "paragraph:2026 年 7 月 23 日，金融廳在官網公布",
+    "en": "paragraph:On July 23, 2026 the FSA published",
+    "ja": "paragraph:2026年7月23日、金融庁はウェブサイトで",
+    "ko": "paragraph:2026년 7월 23일 금융청은",
+    "zh-CN": "paragraph:2026 年 7 月 23 日，金融厅在官网公布",
+}
+_HW = {
+    "zh-TW": (
+        "9 月 22 日，高通以茂宜島為電頭，同時發表 Snapdragon 8 Elite Extreme Gen 6 與 Snapdragon 8 Elite"
+        " Gen 6 兩款旗艦手機平台；新聞稿除了 2 奈米製程節點之外沒有其他規格數字，也沒有寫代工廠、上市日、"
+        "售價或台灣資訊。"
+    ),
+    "en": (
+        "On September 22, Qualcomm unveiled two flagship mobile platforms at once, the Snapdragon 8"
+        " Elite Extreme Gen 6 and the Snapdragon 8 Elite Gen 6, in a press release datelined Maui;"
+        " beyond the 2nm process node it gives no specification figures, and it names no foundry,"
+        " launch date, price or Taiwan information."
+    ),
+    "ja": (
+        "9月22日、Qualcommはマウイを発信地とするプレスリリースで、Snapdragon 8 Elite Extreme Gen 6と"
+        "Snapdragon 8 Elite Gen 6という2つのフラッグシップ向けモバイルプラットフォームを同時に発表しましたが、"
+        "2nmプロセスノード以外の仕様数値はなく、受託製造先、発売日、価格、台湾情報も記載されていません。"
+    ),
+    "ko": (
+        "9월 22일 퀄컴은 마우이 발신 보도자료로 Snapdragon 8 Elite Extreme Gen 6와 Snapdragon 8 Elite"
+        " Gen 6라는 두 종의 플래그십 모바일 플랫폼을 동시에 발표했지만, 보도자료에는 2nm 공정 노드 외의 사양"
+        " 수치가 없고 파운드리, 출시일, 가격, 대만 정보도 없습니다."
+    ),
+    "zh-CN": (
+        "9 月 22 日，高通以茂宜岛为电头，同时发表 Snapdragon 8 Elite Extreme Gen 6 与 Snapdragon 8 Elite"
+        " Gen 6 两款旗舰手机平台；新闻稿除了 2 纳米制程节点之外没有其他规格数字，也没有写代工厂、上市日、"
+        "售价或台湾信息。"
+    ),
+}
+_PF = {
+    "zh-TW": (
+        "9 月 18 日，Synology 發布資安公告 Synology-SA-26:13，處理 DSM 的八個 CVE 編號，其中兩個由 Synology"
+        " 評為 Critical、CVSS 3.1 基本分數 9.8，不需要登入就可能被利用；9 月 22 日，WordPress 發布 7.1.2"
+        " 安全版，修補一個自評為嚴重等級的核心漏洞，修補範圍從 7.1 分支回溯到 4.7 分支；兩篇都整理了各自的"
+        "修補版本對照，以及怎麼核對自己的版本號。"
+    ),
+    "en": (
+        "On September 18, Synology published security advisory Synology-SA-26:13, covering eight"
+        " CVE entries in DSM, two of them rated Critical by Synology, with a CVSS 3.1 base score of"
+        " 9.8, and exploitable without authentication; on September 22, WordPress released 7.1.2, a"
+        " security release patching a core vulnerability it rates as critical severity, with"
+        " patches reaching back from the 7.1 branch to the 4.7 branch; both articles set out the"
+        " patched versions and how to check your own version number."
+    ),
+    "ja": (
+        "9月18日、SynologyはDSMのセキュリティ勧告Synology-SA-26:13を公表し、挙げた8件のCVEのうち2件をCritical、"
+        "CVSS 3.1基本値9.8、認証不要で悪用されうるものとし、9月22日にはWordPressが、自ら重大と評価したコアの脆弱性を"
+        "7.1系から4.7系まで遡って修正するセキュリティリリース7.1.2を公開しており、どちらの記事もそれぞれの修正バージョンと"
+        "自分のバージョン番号の確認方法を整理しています。"
+    ),
+    "ko": (
+        "9월 18일 Synology는 DSM 보안 권고문 Synology-SA-26:13을 발표해 CVE 8건 가운데 2건을 Critical,"
+        " CVSS 3.1 기본 점수 9.8, 인증 없이 악용될 수 있는 취약점으로 밝혔고, 9월 22일 WordPress는 스스로 심각"
+        " 등급으로 평가한 코어 취약점을 7.1 브랜치부터 4.7 브랜치까지 거슬러 패치하는 보안 릴리스 7.1.2를"
+        " 배포했으며, 두 기사 모두 각각의 패치 버전과 자신의 버전 번호를 확인하는 방법을 정리했습니다."
+    ),
+    "zh-CN": (
+        "9 月 18 日，Synology 发布网络安全公告 Synology-SA-26:13，处理 DSM 的八个 CVE 编号，其中两个由 Synology"
+        " 评为 Critical、CVSS 3.1 基本分数 9.8，无需登录就可能被利用；9 月 22 日，WordPress 发布 7.1.2"
+        " 安全版，修复一个自评为严重级别的核心漏洞，修复范围从 7.1 分支回溯到 4.7 分支；两篇都整理了各自的"
+        "修复版本对照，以及如何核对自己的版本号。"
+    ),
+}
+_HW_LAST = {
+    "zh-TW": "paragraph:8 月 25 日，Apple 發表 M6",
+    "en": "paragraph:On August 25, Apple introduced two chips",
+    "ja": "paragraph:8月25日、Appleは新しいMac mini",
+    "ko": "paragraph:8월 25일, Apple은 새 Mac mini",
+    "zh-CN": "paragraph:8 月 25 日，Apple 发表 M6",
+}
+_PF_LAST = {
+    "zh-TW": "paragraph:9 月 16 日，Apple 另外公告 App Store",
+    "en": "paragraph:Also on September 16, Apple announced",
+    "ja": "paragraph:同じ9月16日、AppleはiOS 27",
+    "ko": "paragraph:같은 9월 16일, Apple은 iOS 27",
+    "zh-CN": "paragraph:9 月 16 日，Apple 另外公告 App Store",
+}
 INSERT: dict[str, dict[str, list[tuple[str, dict]]]] = {
-    "crypto": {locale: [] for locale in LOCALES},
-    "tech": {locale: [] for locale in LOCALES},
+    "crypto": {
+        locale: [
+            (_TW_LAST[locale], _p(_TW_CBC[locale])),
+            (_JP_LAST[locale], _p(_JP_FORUM[locale])),
+            # The Korea section follows the Japan section's new last paragraph ...
+            ("paragraph:" + _JP_FORUM[locale][:24], _h(_KR_HEADING[locale])),
+            ("heading:" + _KR_HEADING[locale], _p(_KR[locale])),
+            # ... and its link group follows the Japan link group.
+            ("link:crypto-news-jfsa-cybersecurity-20260723", _h(_KR_GROUP[locale])),
+        ]
+        for locale in LOCALES
+    },
+    "tech": {
+        locale: [
+            (_HW_LAST[locale], _p(_HW[locale])),
+            (_PF_LAST[locale], _p(_PF[locale])),
+        ]
+        for locale in LOCALES
+    },
     "ai": {locale: [] for locale in LOCALES},
 }
 
@@ -337,6 +797,15 @@ def edit_block(block: dict, old: str, new: str, where: str) -> None:
     # too: a group that gains a second kind of document is renamed, not given a second heading.
     if block["type"] in ("paragraph", "callout", "heading"):
         block["text"] = replace_once(block["text"], old, new, where)
+        return
+    # A summary's items are sentences a reader sees first: the crypto index's first item names
+    # the regions the index is arranged by. The edit lands in exactly one item, once, like the
+    # text nodes below, so an item that says it twice or two items that both say it refuse.
+    if block["type"] in ("summary", "list"):
+        items = [i for i, item in enumerate(block["items"]) if old in item]
+        if len(items) != 1 or block["items"][items[0]].count(old) != 1:
+            sys.exit(f"{where}: expected one '{old[:40]}' in the {block['type']}'s items, found {len(items)}")
+        block["items"][items[0]] = block["items"][items[0]].replace(old, new)
         return
     if block["type"] != "rich_paragraph":
         sys.exit(f"{where}: block is a {block['type']}, not a paragraph")

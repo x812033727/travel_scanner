@@ -1,0 +1,857 @@
+{
+  "slug": "ai-news-gpt-6-sol-luna-20260923",
+  "vertical": "ai",
+  "display_order": 187,
+  "event_date": "2026-09-23",
+  "event_date_basis": "事件日依 OpenAI 官方 RSS 的真實時刻換算台北時間。2026-09-26T13:46:10Z 重抓 https://openai.com/news/rss.xml（HTTP 200、落地 750,532 bytes；1,230 筆 item、最新一筆 Fri, 25 Sep 2026 19:00:00 GMT，判定為有效 feed），〈Introducing GPT-6 Sol and Luna〉那一筆的 pubDate 是 Tue, 22 Sep 2026 18:00:00 GMT，換算台北（UTC+8）是 2026-09-23 02:00。18:00 不是 OpenAI feed 常見的 00:00／16:00 佔位時刻，所以照換算結果：事件日 2026-09-23（台北），與 DELTA-4-8 第 4 條的裁定一致。美國日期是 9 月 22 日，四個官方位置都印這一天：公告頁的頁面資料（RSC payload 的 publicationDateText）是「September 22, 2026」，但公告頁的可見文字沒有印本篇自己的日期（可見文字裡唯一的「Sep 22, 2026」在頁尾 Keep reading 卡片，屬於配套文〈Better prompt caching for GPT-6〉），所以 verified_facts 不引用公告頁的日期；同日配套文〈Better prompt caching for GPT-6〉頁首印「September 22, 2026」，它的 Keep reading 卡片把本篇標為「Sep 22, 2026」；Codex changelog 條目日期「2026-09-22」；GPT-6 Astra System Card 變更紀錄寫「September 22, 2026: We added an Appendix with information about GPT-6 Sol and GPT-6 Luna.」。跨日文章：正文第一段寫「台北時間 9 月 23 日凌晨（美國時間 9 月 22 日）」，slug、news_date、第一段台北日期三者一致為 2026-09-23。正文不寫美國各時區的時刻換算。配套文〈Better prompt caching for GPT-6〉的 pubDate 是 Tue, 22 Sep 2026 21:00:00 GMT（台北 9/23 05:00），與本篇不是同一時刻，不可混用。",
+  "title": "GPT-6 Sol 與 Luna 推出：API 降價、Codex 可用，ChatGPT 對話裡還沒有",
+  "title_candidates": [
+    "GPT-6 Sol 與 Luna 推出：API 降價、Codex 可用，ChatGPT 對話裡還沒有",
+    "OpenAI 推出 GPT-6 Sol 與 Luna：API 比 GPT-5.6 促銷價便宜一半",
+    "GPT-6 Sol 與 Luna 上線 ChatGPT Work 與 Codex：免費版能用哪個、價格跟誰比"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "title": "OpenAI：Introducing GPT-6 Sol and Luna",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:04Z",
+      "http_status": 200,
+      "bytes": 846857,
+      "verbatim_quote": "Free and Go users can access GPT‑6 Luna in the desktop app. These models are not yet available in Chat."
+    },
+    {
+      "title": "OpenAI（ChatGPT／Codex 說明文件）：Changelog，2026-09-22 條目〈GPT-6 Sol and Luna in Codex and ChatGPT Work〉",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:53:26Z",
+      "http_status": 200,
+      "bytes": 1542032,
+      "verbatim_quote": "Availability depends on rollout and workspace settings; Enterprise administrators must enable the new models."
+    },
+    {
+      "title": "OpenAI API 文件：Pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:49:07Z",
+      "http_status": 200,
+      "bytes": 552704,
+      "verbatim_quote": "GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026."
+    },
+    {
+      "title": "OpenAI Deployment Safety Hub：GPT-6 Astra System Card（第 11 節〈GPT-6 Sol, GPT-6 Luna〉附錄，2026-09-22 加入）",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "publisher": "OpenAI",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:47:26Z",
+      "http_status": 200,
+      "bytes": 1500702,
+      "verbatim_quote": "September 22, 2026: We added an Appendix with information about GPT-6 Sol and GPT-6 Luna."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北 21:45–21:53，13:45–13:53Z）研究代理用 curl -sSL --compressed --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 逐條重抓，同一主機間隔 ≥1 秒；請求、標頭、查詢字串都沒有任何人的姓名、email 或個人資料。原始回應存在 C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\_raw\\ai-news-gpt-6-sol-luna-20260923\\（逐筆 UTC 時間、狀態碼、落地 bytes、最終網址在同目錄 fetch-log.tsv）；bytes 一律是落地檔案大小，不是 curl 的壓縮傳輸量。\n(1) https://openai.com/index/introducing-gpt-6-sol-and-luna/ → HTTP 200、0 次轉址、846,857 bytes（探索代理 07:56Z 記 body=846,858，差 1 byte，正文逐段相同）。Next.js 頁，正文在靜態 HTML 裡：價格表、AutomationBench 表、各評測段落、Availability 段與頁尾評測方法註腳都是可見文字；其他評測圖表是互動元件，本輪只用文字段落裡印出的數字。頁內文字的連字號多半是 U+2011（GPT‑6、GPT‑5.6），另有 11 個 U+2060 夾在外部連結旁，逐字引用已照抄。hreflang 只有 en-US 與 x-default，沒有列出繁中版，所以沒有 BRIEF 第 8 條的兩語比對問題。頁內「See the system card」連結指向 https://deploymentsafety.openai.com/gpt-6-astra（也就是 Astra 的 system card，Sol／Luna 寫在它的附錄），不是另一份 Sol／Luna 專屬文件。\n(2) https://learn.chatgpt.com/docs/changelog → HTTP 200、0 次轉址、1,542,032 bytes，是 Codex 與 ChatGPT Work 的 changelog 全文（不是 BRIEF 第 6 條那種 learn.chatgpt.com/docs 導覽殼：頁面有逐日條目，最新一筆日期 2026-09-26），2026-09-22 條目〈GPT-6 Sol and Luna in Codex and ChatGPT Work〉逐字讀到。這個網址是從 openai.com/products/release-notes/ 該則條目的連結取得，不是猜的。選它而不選 openai.com/products/release-notes/，是因為後者第一頁只列最新五則（2026-09-26 查核時 9/22 條目排第四）、其餘要按 Load more，9/22 條目幾天內就會被擠出第一頁；兩頁的這則文字相同。\n(3) https://developers.openai.com/api/docs/pricing → HTTP 200、0 次轉址、552,704 bytes；網址取自 prompt caching 指南內的「API pricing」連結。Flagship models 表的 Standard 分頁是可見文字（gpt-6-astra／gpt-6-sol／gpt-6-luna 各一列，短脈絡與長脈絡各四欄：Input、Cached input、Cache writes、Output）；Batch、Flex、Fast mode 分頁也在可見文字裡。短脈絡與長脈絡的分界（≤272K／>272K input tokens）只寫在欄名 tooltip 的屬性值裡、不是可見文字，所以沒有列成 verified_facts。\n(4) https://deploymentsafety.openai.com/gpt-6-astra → HTTP 200、0 次轉址、1,500,702 bytes，頁題「GPT-6 Astra System Card - OpenAI Deployment Safety Hub」。Sol／Luna 的內容是第 11 節〈GPT-6 Sol, GPT-6 Luna〉附錄，變更紀錄寫明 2026-09-22 加入；同日另有兩條變更（修正 Astra 的 HealthBench 數值、對齊評測加註）。這一頁的正文多處硬斷行，逐字比對前把 ASCII 空白與換行壓成一個空格。\n另外讀到但沒有放進 sources[]（內容包 sources 上限 4 條）：〈Better prompt caching for GPT-6〉https://openai.com/index/better-prompt-caching-for-gpt-6/ ——探索代理 07:58Z 抓到 403（9,922 bytes 擋阻頁），本輪 13:47:16Z 現場重試一次即 HTTP 200、434,825 bytes、讀到正文（頁首印 September 22, 2026），證實 403 是間歇性的，沒有用 Wayback；prompt caching 指南 https://developers.openai.com/api/docs/guides/prompt-caching（200、734,494 bytes，主文連結去掉 #錨點）；模型目錄 https://developers.openai.com/api/docs/models（200、369,017 bytes）；openai.com/products/release-notes/（200、953,668 bytes）；Help Center〈ChatGPT — Release Notes〉https://help.openai.com/en/articles/6825453-chatgpt-release-notes（200、767,011 bytes，自印「Updated: 18 hours ago」，9/22 條目沒有 Free／Go 那句）；Deployment Safety Hub 首頁 https://deploymentsafety.openai.com/（14:03:11Z，200、54,846 bytes，Updates 列表最新一筆 Sep 08, 2026，沒有獨立的 Sol／Luna system card；只用來說明 verified_facts 裡那句限縮否定句的查法，不列入 sources）。這幾頁撐得住的事實列在 unverified_or_excluded，撰稿不可用，除非協調者換掉 sources[] 的某一條。\n逐字比對方法：_tools\\ai-news-gpt-6-sol-luna-20260923\\check_quotes.py 用 html.parser 去掉註解與 script／style／noscript／svg／template，html.unescape 後把 ASCII 空白壓成一個空格，NBSP、U+2011、U+2060 不動；做三種版本（A：區塊標籤→空格、行內標籤→無；B：所有標籤→空格；C：所有標籤→無），verbatim_quote 至少要是 A 版的連續子字串。表格列的引文（價格表）在 A、B 版成立，C 版因儲存格黏在一起不成立，這是正規化方式造成的，不是引文錯。",
+  "verified_facts": [
+    {
+      "fact": "OpenAI 在 GPT-6 家族加入 GPT-6 Sol 與 GPT-6 Luna 兩個型號，稱用與 GPT-6 Astra 類似的方法訓練，把 Astra 在專業工作、事實性、程式、電腦操作與對齊上的進展帶到更快、更便宜的型號。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We trained GPT‑6 Sol and Luna with similar methods as GPT‑6 Astra, bringing the advances behind Astra’s state-of-the-art performance in professional work, factuality, coding, computer use, and alignment to faster, more affordable models."
+    },
+    {
+      "fact": "OpenAI 說 GPT-6 Astra 仍是它全面最好的模型；Sol 與 Luna 是往下擴的型號，不是取代 Astra。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Astra continues to be our best model across the board."
+    },
+    {
+      "fact": "API 價格：OpenAI 寫的是 Sol 與 Luna 比「它們在 GPT-5.6 的促銷價」便宜 50%。比較基準是 GPT-5.6 的 promotional pricing，拿掉「促銷價」就換了主張。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "reducing API prices for Sol and Luna by 50% compared with their GPT‑5.6 promotional pricing"
+    },
+    {
+      "fact": "公告的價格表（每百萬 token、美元）：GPT-5.6 Sol → GPT-6 Sol，輸入 4 → 2、輸出 20 → 10，標「50% cheaper」。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT‑5.6 Sol → GPT‑6 Sol $4 → $2 $20 → $10 50% cheaper"
+    },
+    {
+      "fact": "同一張表：GPT-5.6 Luna → GPT-6 Luna，輸入 0.20 → 0.10、輸出 1.20 → 0.50（美元／每百萬 token），OpenAI 同樣標「50% cheaper」。輸出這一欄的降幅編輯不另算、不改寫成別的百分比，照表印的數字寫。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT‑5.6 Luna → GPT‑6 Luna $0.20 → $0.10 $1.20 → $0.50 50% cheaper"
+    },
+    {
+      "fact": "價格表的單位是每 100 萬個 token。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Prices are per 1 million tokens."
+    },
+    {
+      "fact": "開放範圍：GPT-6 Sol 與 Luna 從公告當天起在 ChatGPT Work 與 Codex 提供給所有 Plus、Pro、Business、Enterprise、Edu 使用者。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT‑6 Sol and GPT‑6 Luna are available in ChatGPT Work and Codex starting today for all Plus, Pro, Business, Enterprise, and Edu users."
+    },
+    {
+      "fact": "Free 與 Go 使用者可以在桌面 App 使用 GPT-6 Luna（原文只提 Luna、只提 desktop app，沒有寫哪個作業系統、沒有寫是 Work 還是 Codex）；兩個新模型「還沒有」在 Chat 提供。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Free and Go users can access GPT‑6 Luna in the desktop app. These models are not yet available in Chat."
+    },
+    {
+      "fact": "API 的模型名稱是 gpt-6-sol 與 gpt-6-luna。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In the OpenAI API, they are available as gpt-6-sol and gpt-6-luna."
+    },
+    {
+      "fact": "ChatGPT 端是當天逐步推出；在 ChatGPT Work 或 Codex 看不到新模型的人，OpenAI 請他們稍後再試。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "we plan to roll out these models in ChatGPT gradually throughout the day. If you don’t see the new models in ChatGPT Work or Codex, please try again later."
+    },
+    {
+      "fact": "Codex changelog 的 2026-09-22 條目標題是〈GPT-6 Sol and Luna in Codex and ChatGPT Work〉。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "2026-09-22 GPT-6 Sol and Luna in Codex and ChatGPT Work"
+    },
+    {
+      "fact": "changelog 的說法是兩個模型正在推出到 Codex 與 ChatGPT Work，token 價格低於 GPT-5.6 的前代（這句沒有寫百分比，也沒有寫「促銷價」）。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-6 Sol and GPT-6 Luna are rolling out to Codex and ChatGPT Work at lower token prices than their GPT-5.6 predecessors."
+    },
+    {
+      "fact": "OpenAI 建議的分工：Sol 用在複雜的程式與代理工作流程，Luna 用在範圍明確、大量的工作。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Use Sol for complex coding and agentic workflows, and Luna for focused, high-volume tasks."
+    },
+    {
+      "fact": "changelog 再寫一次方案：兩個模型正在推出給 Plus、Pro、Business、Enterprise、Edu；Free 與 Go 可在桌面 App 用 Luna。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Both models are rolling out to Plus, Pro, Business, Enterprise, and Edu users. Free and Go users can access Luna in the desktop app."
+    },
+    {
+      "fact": "能不能用取決於推出進度與工作區設定；Enterprise 的管理員必須啟用新模型（原文只點名 Enterprise 管理員，沒有提 Business 或 Edu）。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Availability depends on rollout and workspace settings; Enterprise administrators must enable the new models."
+    },
+    {
+      "fact": "在 ChatGPT 裡，這兩個模型在 Work 與 Codex 可用，Chat 不行。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In ChatGPT, the models are available in Work and Codex, but not Chat."
+    },
+    {
+      "fact": "Codex CLI 可用 /model 切換，或用 codex --model gpt-6-sol、codex --model gpt-6-luna 開始任務。",
+      "url": "https://learn.chatgpt.com/docs/changelog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "In the CLI, use /model or start a task with codex --model gpt-6-sol or codex --model gpt-6-luna."
+    },
+    {
+      "fact": "API 價目表 Flagship models 的欄位：短脈絡（Short context）與長脈絡（Long context）各分 Input、Cached input、Cache writes、Output 四欄，單位每百萬 token；同表第一列 gpt-6-astra 短脈絡是輸入 10.00、快取讀取 1.00、寫入快取 12.50、輸出 50.00 美元（查核日當下的活頁面數值）。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Short context Long context Model Input Cached input Cache writes Output Input Cached input Cache writes Output gpt-6-astra $10.00 $1.00 $12.50 $50.00"
+    },
+    {
+      "fact": "價目表的 Standard 分頁：gpt-6-sol 短脈絡輸入 2.00、快取讀取 0.20、寫入快取 2.50、輸出 10.00 美元；長脈絡輸入 4.00、快取讀取 0.40、寫入快取 5.00、輸出 15.00 美元（每百萬 token）。短脈絡的輸入與輸出和公告價格表的 2／10 一致。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "gpt-6-sol $2.00 $0.20 $2.50 $10.00 $4.00 $0.40 $5.00 $15.00"
+    },
+    {
+      "fact": "價目表的 Standard 分頁：gpt-6-luna 短脈絡輸入 0.10、快取讀取 0.01、寫入快取 0.125、輸出 0.50 美元；長脈絡輸入 0.20、快取讀取 0.02、寫入快取 0.25、輸出 0.75 美元（每百萬 token）。短脈絡的輸入與輸出和公告的 0.10／0.50 一致。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "gpt-6-luna $0.10 $0.01 $0.125 $0.50 $0.20 $0.02 $0.25 $0.75"
+    },
+    {
+      "fact": "價目表註明 GPT-5.6 Sol 的促銷價至少維持到 2026 年 11 月 21 日；也就是公告拿來比的 GPT-5.6 Sol 促銷價在查核日仍是現行價，不是已經取消的舊價。這句只講 GPT-5.6 Sol：第一輪查核 2026-09-26 在價目表全頁找 promotional，只有這一句，沒有 GPT-5.6 Luna 促銷價的期限，不可把「至少到 11 月 21 日」套到 Luna。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026."
+    },
+    {
+      "fact": "價目表註明：GPT-6 Sol 與 Luna 的歐盟資料落地（EU data residency）只能搭配 Standard 處理。",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "is_vendor_claim": false,
+      "verbatim_quote": "For GPT-6 Sol and Luna, EU data residency is available only with Standard processing."
+    },
+    {
+      "fact": "OpenAI 在自選的 AutomationBench（跨 App 的商務流程測試）上表示：GPT-6 Sol（xhigh）勝過 Claude Opus 5（max），每項任務成本只有 Opus 5 的 9%；GPT-6 Luna（high）比前代高 5.4 個百分點、每項任務成本低 58%。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On AutomationBench, a test of business workflows across apps, GPT‑6 Sol at xhigh effort outperforms Claude Opus 5 at max effort at just 9% of Opus 5’s cost per task. At high effort, GPT‑6 Luna improves on its predecessor by 5.4 percentage points at 58% lower cost per task."
+    },
+    {
+      "fact": "AutomationBench 表（OpenAI 公布）：GPT-6 Sol（xhigh）33.2%、每項任務 0.27 美元；GPT-6 Astra（low）30.3%、成本是 Sol 的 3.9 倍；Claude Opus 5（max）26.9%、成本是 Sol 的 11.1 倍。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Sol (xhigh) 33.2% $0.27 GPT‑6 Astra (low) 30.3% 3.9x GPT‑6 Sol Claude Opus 5 (max) 26.9% 11.1x GPT‑6 Sol"
+    },
+    {
+      "fact": "OpenAI 自己的註腳：表中 Claude Fable 5.1 的成本被低估，因為沒有算進約 40% 任務改用 Opus 5 備援的成本。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "The datapoint for Claude Fable 5.1 understates its actual cost, as it omits the cost of the Opus 5 fallbacks, which occurred on ~40% of tasks."
+    },
+    {
+      "fact": "Agents’ Last Exam：OpenAI 表示 GPT-6 Sol（max）得 56.4%，高於 Claude Opus 5 在這項評測的最高分，每項任務成本低 60%。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Sol at max effort scores 56.4%, above Claude Opus 5’s highest score in the evaluation at 60% lower cost per task."
+    },
+    {
+      "fact": "FrontierCode：OpenAI 表示 GPT-6 Sol 比 GPT-5.6 Sol 大幅進步，能以低得多的成本追平 Claude Fable 5.1（xhigh）；原文沒有印分數。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Sol improves substantially over GPT‑5.6 Sol, and is able to match Claude Fable 5.1 xhigh at much lower cost."
+    },
+    {
+      "fact": "DeepSWE v1.1：OpenAI 表示 GPT-6 Sol（max）68.8%，距 Claude Fable 5 在該評測的最高分 69.9%（xhigh）1.1 個百分點，每項任務成本約低 80%。比的是 Fable 5，不是 Fable 5.1。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Sol at max effort scores 68.8%, within 1.1 percentage points of Claude Fable 5’s highest score in the evaluation—69.9% at xhigh effort—at approximately 80% lower cost per task."
+    },
+    {
+      "fact": "DeepSWE v1.1：OpenAI 表示 GPT-6 Luna（max）66.6%，與 medium 設定的 Claude Opus 5、Fable 5 相當，每項任務成本比 Opus 5 低 93%、比 Fable 5 低 96%。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Luna at max effort scores 66.6%, comparable to Claude Opus 5 and Fable 5 at medium effort. In these comparisons, Luna costs 93% less per task than Opus 5 and 96% less than Fable 5."
+    },
+    {
+      "fact": "OSWorld 2.0（離線集）：OpenAI 表示 GPT-6 Sol（xhigh）60.5%、Claude Opus 5（medium）60.3%，分數相近、每項任務成本約低 80%。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Sol at xhigh effort achieves a similar score to Claude Opus 5 at medium effort—60.5% versus 60.3%—at approximately 80% lower cost per task."
+    },
+    {
+      "fact": "電腦操作：OpenAI 仍稱 GPT-6 Astra 是電腦操作最好的模型，Sol 與 Luna 的成本效益比前代更好（原文 more cost-efficient performance；不寫成「更划算」這類購買語氣）。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "While GPT‑6 Astra remains the world’s best model for computer use, GPT‑6 Sol and Luna offer more cost-efficient performance than their predecessors."
+    },
+    {
+      "fact": "評測方法的但書（公告頁尾）：GPT 的評測在 OpenAI 研究環境或 API 上做，可能與正式版 ChatGPT 的輸出略有不同；對手模型的分數取自公開報告；Fable 5.1 沒有分數時改報 Fable 5 的分數。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Evaluations of GPT were performed in our research environment or via our API, which may provide slightly different output from production ChatGPT due to differences in the system prompts, tools available, etc. Evaluations of competitor models were taken from publicly available reports. Scores for Claude Fable 5 were reported when scores for Claude Fable 5.1 were unavailable."
+    },
+    {
+      "fact": "事實性：OpenAI 的內部評測用的是去識別化、使用者曾標記模型出錯的真實對話；在這個評測上 GPT-6 Sol 的錯誤約為前代的一半。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "On our internal factuality evaluation, which is based on de-identified real-world conversations where users flagged mistakes by our models, GPT‑6 Sol makes about half as many mistakes as its predecessor, approaching Astra-level reliability at much lower cost."
+    },
+    {
+      "fact": "OpenAI 自己寫明：這些會誘發錯誤的對話不代表一般使用情況，一般使用時事實錯誤更少見。「錯誤減半」只能連同這個條件寫。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These error-inducing conversations are not representative of typical usage, where factual errors are more rare."
+    },
+    {
+      "fact": "OpenAI 表示 GPT-6 Luna 在事實性上也大幅進步，較高推理設定下與 GPT-5.6 Sol 相當，成本約為其百分之一。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Luna also improves substantially; at higher effort levels it matches GPT‑5.6 Sol at about a hundredth its cost."
+    },
+    {
+      "fact": "回答風格：OpenAI 說 Sol 與 Luna 帶入 Astra 的溝通方式，回答更清楚、少術語、少低價值細節，整體略短。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Expect to see more clarity, less jargon, fewer odd turns of phrase, fewer low-value details, and slightly shorter answers overall without losing substance."
+    },
+    {
+      "fact": "快取：OpenAI 表示改進了 GPT-6 的 prompt caching，預設快取命中率更高，快取的輸入 token 讀取有 90% 折扣。折扣是對「讀取快取」而言；價目表另有「寫入快取」一欄，價格高於一般輸入（Sol 2.50 對 2.00 美元）。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We’ve improved prompt caching for GPT‑6 to deliver higher cache hit rates by default, helping agents reuse more context, respond faster, and benefit from discounts of 90% on cached input-token reads."
+    },
+    {
+      "fact": "OpenAI 轉述 GitHub 的說法：過去幾個月這些改進讓需要重新處理的 prompt token 比例下降超過 50%，規模是數十億次請求。這是第三方經 OpenAI 轉述的數字。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GitHub reports that, over the past several months, these improvements have reduced the share of prompt tokens requiring fresh processing by more than 50% across billions of requests to OpenAI models, helping Copilot respond faster."
+    },
+    {
+      "fact": "對齊：OpenAI 表示在它的對齊評測中，Sol 與 Luna 都比各自的 GPT-5.6 前代進步，包括較少對自己的程式工作做出誤導性說法；這些評測刻意測困難情境，不衡量一般使用的失敗率。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "In our alignment evaluations, both Sol and Luna show improvements over their GPT‑5.6 counterparts, including lower rates of misleading claims about their coding work. The evaluations below deliberately test challenging situations and do not measure failure rates in typical use."
+    },
+    {
+      "fact": "OpenAI 稱 GPT-6 Sol 能在更高的使用上限與更低成本下處理困難的工作任務；原文沒有給任何上限數字或方案別的額度。",
+      "url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT‑6 Sol can take on difficult work tasks while giving you more room to iterate with higher usage limits and lower cost"
+    },
+    {
+      "fact": "system card 附錄的定位：GPT-6 Sol 是能力強、成本較低的 Astra 替代選擇；GPT-6 Luna 是 OpenAI 迄今最快、最具成本效益的模型（OpenAI 自述）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6 Sol, a highly capable, lower-cost alternative to Astra, and GPT-6 Luna, our fastest and most cost-efficient model yet."
+    },
+    {
+      "fact": "Sol／Luna 的安全資訊寫在 GPT-6 Astra System Card 的附錄，2026 年 9 月 22 日加入；公告頁的「system card」連結就指向這一頁。以 2026-09-26 查核 Deployment Safety Hub 首頁的 Updates 列表（最新一筆 Sep 08, 2026 ChatGPT Images 2.5 System Card），未見另一份獨立的 GPT-6 Sol／Luna system card。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 22, 2026: We added an Appendix with information about GPT-6 Sol and GPT-6 Luna."
+    },
+    {
+      "fact": "OpenAI 依自己的 Preparedness Framework，把 Sol 與 Luna 在資安與生物化學兩個領域都視為 High capability；兩者都沒有達到 AI 自我改進（AI Self-Improvement）的 High 門檻。這是 OpenAI 內部框架的分級，不是外部機構的評等。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": true,
+      "verbatim_quote": "we are treating GPT-6 Sol and GPT-6 Luna as High capability in both Cybersecurity and Biological and Chemical domains. Neither of these models reach our High threshold in AI Self-Improvement."
+    },
+    {
+      "fact": "這與 GPT-5.6 Sol／Luna 的分級相同，OpenAI 因此沿用 GPT-5.6 System Card 所述的同一套防護措施。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": true,
+      "verbatim_quote": "These are the same capability determinations we made for GPT-5.6 Sol and GPT-5.6 Luna. Based on that assessment, we’ve implemented the same set of safeguards for GPT-6 Sol and GPT-6 Luna that are detailed in the GPT-5.6 System Card for GPT-5.6 Sol and GPT-5.6 Luna."
+    },
+    {
+      "fact": "Sol 與 Luna 使用與 GPT-6 Astra 相同類型的資料與訓練。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": true,
+      "verbatim_quote": "GPT-6 Sol and Luna use the same types of data and training as GPT-6 Astra, described above."
+    },
+    {
+      "fact": "system card 的幻覺評測：OpenAI 表示 Sol 與 Luna 的事實錯誤明顯少於 GPT-5.6 前代，也較少重現使用者回報過的幻覺，在很低延遲與低推理設定下改善尤其明顯（原文文法寫成 makes，照抄）。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": true,
+      "verbatim_quote": "We find that GPT-6 Sol and GPT-6 Luna makes substantially fewer factual errors than their GPT-5.6 counterparts and are less likely to reproduce user-reported hallucinations. These improvements are particularly pronounced at very low latency and reasoning settings."
+    },
+    {
+      "fact": "健康評測的退步：system card 寫兩個模型在 HealthBench Professional 與 HealthBench Consensus 經長度調整（length-adjusted）的分數持平或進步（「經長度調整」不可省：Table 29 未調整的分數 GPT-6 Sol 在 Professional 是 59.5，低於 GPT-5.6 Sol 的 64.1），但在 HealthBench 與 HealthBench Hard 退步，退步同時伴隨最終回答明顯變短。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Both models therefore maintain or improve length-adjusted performance on HealthBench Professional and HealthBench Consensus, while regressing on HealthBench and HealthBench Hard. These regressions coincide with substantially shorter final answers."
+    },
+    {
+      "fact": "在 HealthBench 上，平均回答長度 Sol 約減少 45%、Luna 約減少 35%，HealthBench Hard 也有類似的減少。",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+      "is_vendor_claim": false,
+      "verbatim_quote": "On HealthBench, mean answer lengths decrease by approximately 45% for Sol and 35% for Luna, with similar reductions on HealthBench Hard."
+    }
+  ],
+  "not_said": [
+    "台灣與地區：四條來源談 Sol／Luna 開放範圍時都沒有提到台灣，也沒有列出 Sol／Luna 的國家或地區限制（以 2026-09-26 查核四條 sources[] 未見；公告頁唯一的「Taiwan」在頁尾 Keep reading 卡片〈ChatGPT Ads expands to Southeast Asia and Taiwan〉，是另一篇文章的標題）。正文寫「OpenAI 沒有說明地區限制或台灣的時程」這類限縮句，不可寫成「台灣已可使用」，也不可寫成「台灣還不能用」。台灣帳號看不看得到，只能請讀者看自己 App 或 Codex 的模型選單。",
+    "桌面 App 的細節：原文只寫 Free 與 Go 可以「in the desktop app」用 GPT-6 Luna，沒有寫是哪個作業系統（Windows／macOS）、沒有寫是在 App 裡的 Work 還是 Codex，也沒有寫網頁版或手機版可不可以。不可補「只有 Mac」「只能在 Codex」這類細節，也不可替 OpenAI 加上「只有」二字（原文沒有 only）。",
+    "Chat 什麼時候會有：原文只寫「not yet available in Chat」，changelog 寫「but not Chat」，都沒有給時程。不可寫「之後會開放到 Chat」「近期上線 Chat」。",
+    "Chat 目前用哪個模型：四條來源沒有寫。不可寫「Chat 仍是 GPT-5.6 Luna」或「免費版預設模型換成 GPT-6 Luna」。站上 8 月的 ai-news-chatgpt-free-thinking-20260806 寫過 Free 改用 Luna，那是 GPT-5.6 Luna 的舊事，不能拿來推論今天的 Chat。",
+    "訂閱價格：公告與 changelog 都沒有提 ChatGPT 各方案的月費。API 降價不等於訂閱降價；Work 與 Codex 的點數費率（changelog 連到的 Pricing for credit rates）本輪沒有讀，不寫。",
+    "使用上限：公告說 Sol 帶來「higher usage limits」，但沒有任何數字、也沒有方案別的額度。不可寫幾倍、幾則。",
+    "GPT-5.6 Sol／Luna 的去留：四條來源都沒有說 GPT-5.6 退役或停用；價目表反而寫 GPT-5.6 Sol 的促銷價至少到 2026 年 11 月 21 日。不可寫「取代 GPT-5.6」「GPT-5.6 下架」。",
+    "管理員啟用：changelog 只寫 Enterprise 管理員必須啟用新模型。第二輪查核 2026-09-26 讀了這個條目自己連到的〈Workspace model availability〉頁（見 unverified_or_excluded），它在 GPT-5.4 退役一節寫「In Enterprise and Edu, an administrator must enable Luna first.」；所以正文不可寫「官方沒有寫 Business 或 Edu 要不要管理員操作」這類否定句，也不可寫 Edu 不用管理員啟用。sources[] 撐不住 Edu 的說法，正文只寫 Enterprise。",
+    "Luna 輸出價的降幅：公告表 Luna 那一列的降價欄（Price reduction，每個型號一格，不是輸入、輸出各標一次）標「50% cheaper」，但輸出欄印的是 1.20 → 0.50 美元；OpenAI 沒有印出別的百分比。正文照印出的數字寫，不自己算百分比，也不指稱 OpenAI 算錯。",
+    "寫入快取的成本：公告頁沒有提寫入快取（cache writes）要另計價，只寫讀取快取有 90% 折扣；價目表的 Cache writes 欄才看得到（Sol 2.50、Luna 0.125 美元／每百萬 token，高於各自的一般輸入價）。",
+    "評測圖表：Agents’ Last Exam、FrontierCode、DeepSWE、OSWorld 的完整圖表是互動元件，本輪只用段落文字印出的數字；FrontierCode 沒有印分數。",
+    "與 Claude Opus 5.5 的比較：公告只拿 Claude Opus 5、Fable 5、Fable 5.1 比，沒有提同週發布的 Claude Opus 5.5。",
+    "模型規格：四條 sources[] 沒有脈絡視窗、最大輸出、知識截止日（這些只在沒列入的模型目錄頁，見 unverified_or_excluded）。",
+    "繁中版公告：公告頁 hreflang 只有 en-US 與 x-default，以 2026-09-26 查核未見繁中版，沒有兩語差異可比。",
+    "Terra：GPT-5.6 家族有 Terra，但四條來源講 GPT-6 家族時只有 Astra、Sol、Luna，沒有提 Terra 的 GPT-6 版，也沒有說 GPT-5.6 Terra 怎麼處理。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "GPT-6 Sol 與 Luna 的脈絡視窗 1.05M、最大輸出 128K tokens、知識截止日（Sol：Apr 20, 2026；Luna：May 18, 2026）、支援的工具（Functions、Web search、File search、Computer use），以及目錄頁對兩者的一句定位。",
+      "seen_where": "https://developers.openai.com/api/docs/models（2026-09-26T13:49:11Z，HTTP 200、369,017 bytes，Flagship models 卡片的可見文字）。",
+      "why_excluded": "內容包 sources 上限 4 條，這一頁沒有列入；撰稿不可寫這些規格數字。要用就由協調者決定換掉哪一條來源，並重新逐字比對。"
+    },
+    {
+      "claim": "〈Better prompt caching for GPT-6〉的內容：快取折扣寫成「up to 90%」、共享前綴在 30 分鐘內重用可享快取折扣、Prompt Caching Dashboard 與診斷工具、明確斷點（explicit breakpoints）、預熱快取，以及幾家客戶的引言（含 GitHub 引言多了「relative to our previous baseline」這個基準限定）。",
+      "seen_where": "https://openai.com/index/better-prompt-caching-for-gpt-6/（探索代理 2026-09-26T07:58Z 為 403、9,922 bytes 擋阻頁；本代理 13:47:16Z 現場重試一次即 HTTP 200、434,825 bytes，頁首印 September 22, 2026）。",
+      "why_excluded": "讀到了，但一般讀者的文章用主文的快取段落就夠，且 sources 上限 4 條，所以不列。要注意兩頁對沖詞不同：主文寫「discounts of 90% on cached input-token reads」，配套文寫「discounts of up to 90% on cached input tokens」。正文若寫快取折扣，照主文並歸因，或直接寫價目表印出的快取讀取價，不要把兩頁混成一句。"
+    },
+    {
+      "claim": "prompt caching 指南的計價倍率：GPT-5.6 以後的模型，快取讀取是未快取輸入價的 0.1 倍、寫入快取是 1.25 倍，快取壽命至少 30 分鐘，最短可快取長度 1,024 個可見輸入 token。",
+      "seen_where": "https://developers.openai.com/api/docs/guides/prompt-caching（2026-09-26T13:47:36Z，HTTP 200、734,494 bytes；主文「prompt caching」連結，去掉 #how-to-optimize-prompt-caching 錨點）。",
+      "why_excluded": "開發者細節、不在 sources[]。寫入快取比一般輸入貴這件事，改用價目表印出的 Cache writes 價格表達，不寫倍率。"
+    },
+    {
+      "claim": "短脈絡與長脈絡的分界是 272K 個輸入 token（≤272K／>272K）。",
+      "seen_where": "https://developers.openai.com/api/docs/pricing 的欄名 tooltip（屬性值裡的 JSON，不是可見文字）。",
+      "why_excluded": "沒有可見文字可逐字引用。正文可以說價目表另有長脈絡的較高價格（欄名 Long context 是可見文字），但不寫 272K。"
+    },
+    {
+      "claim": "openai.com 的 Release Notes 與 Help Center〈ChatGPT — Release Notes〉的 9/22 條目（「These models are separate from the models available in Chat.」「Codex desktop keeps the model you selected manually.」「Available models and reasoning effort options depend on your plan and workspace settings.」）。",
+      "seen_where": "https://openai.com/products/release-notes/（200、953,668 bytes）；https://help.openai.com/en/articles/6825453-chatgpt-release-notes（200、767,011 bytes，自印「Updated: 18 hours ago」；它的 9/22 條目沒有 Free／Go 那一句）。",
+      "why_excluded": "與 sources[] 第 2 條 changelog 的說法一致或更少；前者是只列最新幾則的活列表，條目很快會被擠出第一頁。不列，撰稿用 changelog 那一條。"
+    },
+    {
+      "claim": "Codex CLI 0.156.0 加入 GPT-6 Sol 與 Luna，「including Amazon Bedrock support」。",
+      "seen_where": "https://learn.chatgpt.com/docs/changelog 的 Codex CLI 0.156.0 條目（屬 sources[] 第 2 條同一頁，但不是 9/22 GPT-6 條目本身）。",
+      "why_excluded": "這是 Codex CLI 的模型目錄支援，不等於「GPT-6 Sol／Luna 已在 Amazon Bedrock 上架」；價目表那句 Bedrock 計價說明也是泛指 OpenAI 模型。一般讀者用不到，容易被寫成雲端上架新聞，不寫。"
+    },
+    {
+      "claim": "OpenAI 內部研究者的 token 用量（以 API 價計，中位數每天超過 600 美元、第 90 百分位超過 7,000 美元）。",
+      "seen_where": "公告頁 Coding 段落，引自另一篇〈Research acceleration: The view inside OpenAI〉。",
+      "why_excluded": "數字出自另一頁、與 Sol／Luna 本身無關，且容易被讀成使用者成本。不寫。"
+    },
+    {
+      "claim": "GPT-6 Luna 在 system card 的其他細項（例如 Critical 能力測試因各項 High 評測都低於 GPT-5.6 Sol 而不需要另做、生物評測表的各項分數、CoT 可控性不含 Luna）。",
+      "seen_where": "https://deploymentsafety.openai.com/gpt-6-astra 第 11.8 節等。",
+      "why_excluded": "讀到了，但太技術、一般讀者用不到；逐項分數容易被誤讀成能力排名。正文只寫附錄的分級結論與健康評測退步這兩件事即可。"
+    },
+    {
+      "claim": "指派表寫「Free／Go 只有 Luna、只在桌面 App」。",
+      "seen_where": "ASSIGNMENTS.md A2 列與 candidates-ai.md 第 2 則。",
+      "why_excluded": "來源優先：公告與 changelog 都只寫 Free 與 Go「can access (GPT‑6) Luna in the desktop app」，沒有 only。「只有 Luna」可以寫（兩頁都只提 Luna），「只在桌面 App」要改寫成「OpenAI 寫的是桌面 App，網頁與手機沒有提」。"
+    },
+    {
+      "claim": "GPT-5.6 Sol／Luna 的原價（非促銷價）或促銷價開始的日期。",
+      "seen_where": "四條 sources[] 都沒有印；站上 zh-TW-only 的 ai-api-pricing-comparison-2026 寫過 gpt-5.6-sol 的促銷價與 11/21 註記。",
+      "why_excluded": "來源沒有印，不寫；站內文章不能當來源。"
+    },
+    {
+      "claim": "ChatGPT 方案頁的比較表把 GPT-6 Sol 與 GPT-6 Luna 在 Free、Go 兩欄都標「No」（Plus 為 Yes、Pro 為 Expanded），GPT-5.6 Terra 在 Free、Go 兩欄標「Limited access in Work and Codex on desktop」；同頁 FAQ 寫「Paid plans (Go, Plus, Business, and Enterprise) are priced per user per month.」",
+      "seen_where": "https://chatgpt.com/pricing/（第二輪查核 2026-09-26T14:54:31Z，HTTP 200、0 次轉址、1,079,963 bytes；第一輪 14:41Z 經 openai.com/chatgpt/pricing/ 兩次轉址取得同一頁）。",
+      "why_excluded": "不在 sources[]（上限 4 條）。比較表與公告、changelog 的「Free and Go users can access (GPT‑6) Luna in the desktop app」互相矛盾，可能是方案頁還沒更新；正文沿用兩條 sources 的說法並寫明是 OpenAI 公告寫的，要不要補一句由協調者決定（要換掉一條 source）。FAQ 那句證實 Go 是付費方案，所以正文不再用「付費方案」對照「免費與 Go」。"
+    },
+    {
+      "claim": "GPT-6 Sol 與 GPT-6 Luna 在 Enterprise 工作區上線時預設關閉，管理員要逐一啟用；GPT-5.4 退役一節另寫「In Enterprise and Edu, an administrator must enable Luna first.」",
+      "seen_where": "https://learn.chatgpt.com/codex/enterprise/workspace-model-availability（changelog 2026-09-22 條目裡「Workspace model availability」連結，去掉 #gpt-6-sol-and-luna-in-enterprise 錨點；1 次轉址到 https://learn.chatgpt.com/docs/enterprise/workspace-model-availability，第二輪查核 2026-09-26T14:57:42Z，HTTP 200、352,212 bytes）。",
+      "why_excluded": "不在 sources[]。它推翻正文原本的「官方沒有寫 Business 或 Edu 是否也要管理員操作」，第二輪刪掉那兩處否定句；Edu 的說法本篇不寫。"
+    }
+  ],
+  "editorial_brief": "讀者是用 ChatGPT 的台灣一般讀者，其次是按 token 付費的開發者。第一段就要回答三件事：OpenAI 在台北時間 9 月 23 日凌晨（美國時間 9 月 22 日）推出 GPT-6 Sol 與 GPT-6 Luna；付費方案（Plus、Pro、Business、Enterprise、Edu）是在 ChatGPT Work 與 Codex 裡用，免費與 Go 使用者可以在桌面 App 用 GPT-6 Luna，一般的 Chat 裡還沒有，而且是逐步推出、Enterprise 要管理員先啟用；公告沒有提到台灣或地區限制。價格那句一定帶基準：API 價格比 GPT-5.6 的促銷價便宜一半。\n\n最重要的一件事：這篇的主角是「誰在哪裡用得到、價格跟誰比」，不是「GPT-6 Sol 贏了 Claude」。所有對 Claude 的比較都是 OpenAI 自選評測、對手分數取自公開報告、Fable 5.1 缺值時用 Fable 5 代替，而且 OpenAI 自己註明 Fable 5.1 的成本被低估；一律寫「OpenAI 表示」。\n\n建議五節（照 WRITER.md 的 blocks 順序）：\n一、誰現在用得到：方案、Work／Codex／桌面 App／Chat 的差別、逐步推出與 Enterprise 管理員啟用、公告沒寫地區。\n二、API 價格怎麼讀：「便宜 50%」的基準是 GPT-5.6 促銷價，而價目表寫 GPT-5.6 Sol 的促銷價至少到 11 月 21 日，所以兩代價格現在並存；快取讀取與寫入快取的價格不同。節末放表：三欄「項目｜GPT-6 Sol｜GPT-6 Luna」，五列「輸入、快取讀取、寫入快取、輸出（皆短脈絡、Standard、每百萬 token 美元）、GPT-5.6 促銷價（輸入／輸出）」＝ 2.00／0.10、0.20／0.01、2.50／0.125、10.00／0.50、4／20 與 0.20／1.20；caption 寫「OpenAI API 價目表與 9 月 22 日公告，查核日 2026 年 9 月 26 日；長脈絡另有較高價格」。\n三、OpenAI 自己的評測說了什麼：AutomationBench、Agents’ Last Exam、DeepSWE、OSWorld 的數字各連著它的推理設定（xhigh／max／medium）與成本說法；比的是 Opus 5、Fable 5、Fable 5.1，不是 Opus 5.5。節末放圖（在哪裡用得到的四格）。\n四、事實錯誤與安全評估的但書：「錯誤約減半」只在使用者標記過錯誤的對話上測，OpenAI 自己說不代表一般使用；system card 附錄（放在 GPT-6 Astra System Card 裡，9 月 22 日加入）說明 Preparedness 分級與 GPT-5.6 相同、沿用同一套防護，並寫出 HealthBench 與 HealthBench Hard 的退步和回答變短。\n五、怎麼自己確認：打開自己的 App 看 Work／Codex 的模型選單；開發者以價目表當天的數字為準（活頁面）；Enterprise 找管理員。\n\nFAQ 建議：免費版能用嗎？在一般聊天（Chat）裡看得到嗎？「便宜一半」是跟什麼比？GPT-6 Sol 是不是比 Claude 好？台灣可以用嗎（答：公告沒有提到地區，照自己的模型選單為準）？GPT-5.6 還能用嗎（答：價目表仍列 GPT-5.6 Sol 促銷價至少到 11 月 21 日；沒寫退役）？\ncallout（info）：評測數字全部是 OpenAI 自己公布、這一篇沒有實測；價格與開放範圍截至 2026 年 9 月 26 日；逐步推出，看不到不代表不能用。\n\n用語：保留原文名稱 ChatGPT Work、Codex、Chat、Plus、Pro、Business、Enterprise、Edu、Free、Go、desktop app（中文寫「桌面 App」）、gpt-6-sol、gpt-6-luna、AutomationBench、Agents’ Last Exam、FrontierCode、DeepSWE、OSWorld 2.0、Preparedness Framework、HealthBench，譯者照原文術語。topics 用 [\"ai\",\"software\",\"ai-news\"]，沒有投資免責 callout。第二個結尾連結指向 ai-news-gpt-6-astra-20260903，不重講 Astra 本身。與同批 ai-news-claude-opus-55-20260922 分開寫：不放同一張表、不連結、不重講對方內容；提到時只能寫「Anthropic 同週也發布了新模型」這類不需要來源的背景，最好不提。",
+  "must_not_write": [
+    "不寫沒有基準的「API 價格砍半／便宜 50%」。必須帶「與 GPT-5.6 的促銷價相比」（compared with their GPT‑5.6 promotional pricing）。changelog 的說法是「低於 GPT-5.6 前代」，沒有百分比，不可把兩句合成「比 GPT-5.6 便宜一半」而漏掉促銷價。",
+    "不自己算 Luna 輸出價的降幅（例如寫成降 58%），也不指稱 OpenAI 的「50% cheaper」標錯；照表印的 1.20 → 0.50 美元寫。",
+    "不寫免費版或 Go 在一般聊天（Chat）裡已經換成 GPT-6 Luna，也不寫「免費版預設模型升級」。原文：These models are not yet available in Chat。",
+    "不寫「免費與 Go 只能在桌面 App 用」這種 OpenAI 沒寫的 only；不補作業系統；不寫是在 Work 還是 Codex；不寫網頁或手機版能不能用。",
+    "不寫「今天每個帳號都看得到」：公告寫當天逐步推出，changelog 寫能不能用取決於推出進度與工作區設定，Enterprise 管理員必須啟用。",
+    "不把「管理員必須啟用」擴大到 Business 或 Edu，也不反過來寫「官方沒有說 Business 或 Edu 要不要管理員啟用」（OpenAI 的 Workspace model availability 頁寫 Edu 的 Luna 要管理員先啟用，見 not_said）。",
+    "不寫「GPT-6 Sol 比 Claude Opus 5／Fable 強」或任何未歸因的勝負句。每個評測數字都寫成 OpenAI 表示，並連著推理設定；至少交代一次：對手分數取自公開報告、Fable 5.1 缺值時用 Fable 5 代替、OpenAI 自己說 Fable 5.1 的成本被低估（約 40% 任務改用 Opus 5 備援）。",
+    "不把 DeepSWE 的比較對象寫成 Fable 5.1（原文比的是 Fable 5 的 69.9%）。",
+    "不寫「事實錯誤減半」這種一般化說法。只能寫：在 OpenAI 用使用者標記過錯誤的對話做的內部評測上，Sol 的錯誤約為前代一半，OpenAI 自己說這類對話不代表一般使用。",
+    "不拿 Claude Opus 5.5 來比，不把 Anthropic 的價格放進本篇表格，不連結同批的 ai-news-claude-opus-55-20260922（DELTA-4-8 第 4 條）。",
+    "不寫 ChatGPT 訂閱降價或方案月費變動；API 價格、Work／Codex 點數與訂閱是三件事。",
+    "不寫 GPT-5.6 Sol／Luna 退役、下架或被取代；價目表寫 GPT-5.6 Sol 的促銷價至少到 2026 年 11 月 21 日。",
+    "不寫「所有輸入都打一折／省 90%」。90% 是讀取快取的輸入 token；寫入快取的價格比一般輸入高（價目表 Cache writes 欄）。",
+    "不寫 Sol／Luna 的脈絡視窗、最大輸出、知識截止日（不在 sources[]）。",
+    "不寫「GPT-6 Sol／Luna 已在 Amazon Bedrock 上架」。",
+    "不把 Preparedness 的「High capability」寫成「危險」「不安全」或外部評等；那是 OpenAI 內部框架的分級，而且與 GPT-5.6 Sol／Luna 相同。",
+    "不寫成「OpenAI 另外發布了一份 GPT-6 Sol／Luna 的 system card」：公告連到的是 GPT-6 Astra System Card，Sol／Luna 在它 9 月 22 日加入的附錄（第 11 節）。",
+    "不寫 GPT-6 Terra，也不寫 Terra 停產或被取代：四條來源的 GPT-6 家族只有 Astra、Sol、Luna，沒有提 Terra。",
+    "不寫健康相關能力「提升」：system card 寫 HealthBench 與 HealthBench Hard 退步（伴隨回答變短），Professional 與 Consensus 經長度調整的分數持平或進步。",
+    "不寫「Luna 是 OpenAI 最便宜的模型」這類未歸因句；要寫就寫 OpenAI 在 system card 稱它是 our fastest and most cost-efficient model yet。",
+    "不寫使用上限的數字或倍數（原文只有 higher usage limits）。",
+    "不寫美國各時區的時刻換算；日期寫「台北時間 9 月 23 日凌晨（美國時間 9 月 22 日）」。",
+    "不引用 OpenAI 研究者每日 token 用量（600／7,000 美元）那組數字。",
+    "正文不出現「本文」，也不把查證流水帳寫進正文或 description（DELTA-4-7 第 14 條）。"
+  ],
+  "live_data_warnings": [
+    "API 價目表 https://developers.openai.com/api/docs/pricing 是活頁面：GPT-6 Sol／Luna 的各欄價格、「GPT-5.6 Sol’s promotional pricing is available at least through November 21, 2026.」這句，都可能改。正文寫「截至 2026 年 9 月 26 日查核」，發布當天重抓比對。",
+    "Codex changelog https://learn.chatgpt.com/docs/changelog 是持續累加的列表；9/22 條目會往下沉，但日期與文字不應改變。發布當天確認條目仍在、文字相同。",
+    "開放狀態是公告當下的描述：「not yet available in Chat」「gradually throughout the day」「Availability depends on rollout and workspace settings」都可能在發布前變化（例如開放到 Chat）。發布當天重讀公告頁的 Availability 段與 changelog，若有變化要改正文，不能沿用這份紀錄。",
+    "GPT-6 Astra System Card 有變更紀錄，已在 9 月 9 日、9 月 22 日改過；附錄數值可能再修正，發布當天看變更紀錄有沒有新條目。",
+    "openai.com/index/* 的 403 是間歇性的（探索代理 07:58Z 對配套文拿到 403，本代理 13:47Z 重試即 200）。查核者抓到 403 時現場重試，不要用 Wayback，也不要因此把來源判成讀不到。",
+    "Help Center 與 openai.com Release Notes（未列入 sources）也是活頁面；Help Center 自印「Updated: 18 hours ago」。",
+    "chatgpt.com/pricing 的方案比較表（未列入 sources）在 2026-09-26 仍把 GPT-6 Luna 標為 Free、Go 不可用，與公告和 changelog 的「Free and Go users can access (GPT‑6) Luna in the desktop app」矛盾。發布當天重讀方案頁、公告 Availability 段與 changelog 9/22 條目；任何一邊改寫，標題、description、summary 1 與第一節要跟著改。"
+  ],
+  "overlaps_existing_article": [
+    "ai-news-gpt-6-astra-20260903（五語：en、ja、ko、zh-CN、zh-TW）〈GPT-6 Astra 發布：從回答問題到完成電腦工作〉：9/3 的 Astra 發布，重點是電腦操作、多步驟工作與如何交代可驗收的任務。本篇的第二個結尾連結；不重講 Astra 的能力與任務寫法，只用一句交代 Sol／Luna 是 Astra 之下的兩個型號。",
+    "ai-news-gpt-56-price-cut-20260730（五語）〈GPT-5.6 Luna、Terra 降價：哪些使用成本受到影響？〉：7/30 GPT-5.6 Luna 降 80%、Terra 降 20%，並分清 API 單價、Work／Codex 點數與訂閱三種費用。本篇不重講那次降價；五語齊全，可以在「價格怎麼讀」一節用 article inline 連過去，但不當結尾連結。",
+    "ai-news-gpt-56-sol-preview-20260626（五語）〈GPT-5.6 Sol 從有限預覽開始：模型發表與人人可用為何不同？〉：GPT-5.6 Sol 的有限預覽。與本篇只在「前代」有關，不重講。",
+    "ai-news-chatgpt-free-thinking-20260806（五語）〈ChatGPT 免費版與思考功能更新：日常使用有什麼不同？〉：8/6 Free 使用者改用 Luna（GPT-5.6 Luna）與 Think。本篇不可拿它推論今天 Chat 用的是哪個模型。",
+    "ai-news-chatgpt-work-20260709（五語）〈ChatGPT Work 正式亮相：如何把跨檔案工作交代清楚？〉：ChatGPT Work 本身。讀者若不知道 Work 與 Chat 的差別，可 inline 連過去，本篇只用一句說明。",
+    "ai-news-claude-opus-5-20260724（五語）〈Claude Opus 5 推出：一般工作使用者值得注意哪些改變？〉與 ai-news-claude-fable-51-20260901（五語）〈Claude Fable 5.1 與 Mythos 5.1：功能、開放對象與限制〉：OpenAI 拿來比較的對手模型。本篇不重講它們的發布內容。",
+    "ai-news-openai-misalignment-reports-20260917（五語）〈OpenAI 公布失準通報框架：6 份報告都出自訓練階段〉：OpenAI 的對齊／失準通報，提到 GPT-5.6 Sol 與 GPT-6 Astra。本篇的對齊段只寫 Sol／Luna 的評測結論，不重講通報框架。",
+    "ai-news-openai-hugging-face-incident-20260826（只有 zh-TW）〈OpenAI 自承模型在評測中越界：Hugging Face 事件的官方事後報告〉：只有 zh-TW，五語文章不能連；system card 裡提到 Hugging Face 事件的段落本篇不用。",
+    "ai-news-astra-for-law-20260917（五語）〈Astra for Law 發布：OpenAI 的法律工具，加的是索引，不是新模型〉：Astra 的法律產品，與本篇無重疊。",
+    "站上多篇只有 zh-TW 的常青頁把 GPT-5.6 Sol／Luna 當成現行陣容，Sol／Luna 的 GPT-6 版上線後會部分過期，但本批不改、也不能連（不是五語）：chatgpt-plans-plus-pro-2026、ai-api-pricing-comparison-2026、ai-model-tiers-explained、ai-free-vs-paid-plans-2026、chatgpt-beginner-guide、ai-model-comparison-table-2026、ai-model-release-timeline-2026（時間軸到 9/15）、ai-coding-cost-tokens-explained、ai-pricing-beyond-list-price、local-vs-cloud-ai-cost 等。建議協調者另開維護票。",
+    "站上以 GPT-6 Sol／GPT-6 Luna／gpt-6-sol／gpt-6-luna 搜尋 content/ 全部內容包：0 篇（2026-09-26）。這是站上第一次寫 GPT-6 版的 Sol／Luna。",
+    "同批 ai-news-claude-opus-55-20260922：分開寫，不放同一張比較表、不互相連結、不重講。"
+  ],
+  "second_link": {
+    "slug": "ai-news-gpt-6-astra-20260903",
+    "title": "GPT-6 Astra 發布：從回答問題到完成電腦工作"
+  },
+  "hero_label": "Astra 之下的兩個型號",
+  "diagram": {
+    "title": "GPT-6 Sol 與 Luna 在哪裡用得到",
+    "caption": "GPT-6 Sol 與 Luna 在 ChatGPT、Codex 與 API 的開放範圍（「Plus、Pro 等方案」指 Plus、Pro、Business、Enterprise、Edu），依 OpenAI 美國時間 9 月 22 日的公告與 changelog 整理，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "Plus、Pro 等方案",
+        "Work 與 Codex 可選用"
+      ],
+      [
+        "免費與 Go",
+        "桌面 App 可用 Luna"
+      ],
+      [
+        "Chat 模式",
+        "兩個新模型尚未提供"
+      ],
+      [
+        "API",
+        "gpt-6-sol 與 gpt-6-luna"
+      ]
+    ]
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Two Models Below Astra",
+      "diagram": {
+        "title": "Where GPT-6 Sol and Luna Are Available",
+        "caption": "Where GPT-6 Sol and Luna are available across ChatGPT, Codex, and the API (\"Plus, Pro, and similar plans\" means Plus, Pro, Business, Enterprise, and Edu); from OpenAI's announcement and changelog (US time, September 22); checked September 26, 2026.",
+        "nodes": [
+          [
+            "Plus, Pro, etc.",
+            "Available in Work, Codex"
+          ],
+          [
+            "Free, Go",
+            "Luna in desktop app"
+          ],
+          [
+            "Chat",
+            "Not yet available"
+          ],
+          [
+            "API",
+            "gpt-6-sol, gpt-6-luna"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "Astraの下位2モデル",
+      "diagram": {
+        "title": "GPT-6 SolとLunaはどこで使えるか",
+        "caption": "GPT-6 SolとLunaがChatGPT、Codex、APIでどこまで使えるかを示す図（「Plus、Proなどのプラン」はPlus、Pro、Business、Enterprise、Eduを指す）。OpenAIのアメリカ時間9月22日の発表文とchangelogをもとに作成。確認日2026年9月26日。",
+        "nodes": [
+          [
+            "Plus/Proなど",
+            "WorkとCodexで可"
+          ],
+          [
+            "Free/Go",
+            "デスクトップでLuna"
+          ],
+          [
+            "Chat",
+            "まだ未提供"
+          ],
+          [
+            "API",
+            "gpt-6-sol/luna"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "Astra 아래의 두 모델",
+      "diagram": {
+        "title": "GPT-6 Sol과 Luna 어디서 쓰나",
+        "caption": "GPT-6 Sol과 Luna가 ChatGPT, Codex, API에서 제공되는 범위('Plus, Pro 등 플랜'은 Plus, Pro, Business, Enterprise, Edu를 뜻함). OpenAI의 미국 시간 9월 22일 발표문과 changelog를 바탕으로 정리. 확인일 2026년 9월 26일.",
+        "nodes": [
+          [
+            "Plus/Pro 등",
+            "Work·Codex 가능"
+          ],
+          [
+            "Free/Go",
+            "데스크톱서 Luna"
+          ],
+          [
+            "Chat",
+            "아직 미제공"
+          ],
+          [
+            "API",
+            "gpt-6-sol/luna"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "Astra 之下的两个模型",
+      "diagram": {
+        "title": "GPT-6 Sol 与 Luna 在哪里能用",
+        "caption": "GPT-6 Sol 与 Luna 在 ChatGPT、Codex 与 API 的开放范围（“Plus、Pro 等方案”指 Plus、Pro、Business、Enterprise、Edu），依 OpenAI 美国时间 9 月 22 日的公告与 changelog 整理，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "Plus/Pro 等",
+            "Work、Codex 可用"
+          ],
+          [
+            "免费/Go",
+            "桌面 App 可用 Luna"
+          ],
+          [
+            "Chat",
+            "两个新模型尚未提供"
+          ],
+          [
+            "API",
+            "gpt-6-sol/luna"
+          ]
+        ]
+      }
+    }
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, opus)",
+    "checked_on": "2026-09-26",
+    "method": "2026-09-26T14:34–14:41Z re-fetched all four sources[] plus the OpenAI news RSS, the companion 〈Better prompt caching for GPT-6〉, the Deployment Safety Hub home, the API models page and chatgpt.com/pricing with curl -sSL --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' (no personal data in any request); all HTTP 200, 0 redirects except openai.com/chatgpt/pricing/ -> chatgpt.com/pricing/ (2). Bodies in _raw/ai-news-gpt-6-sol-luna-20260923/round1/ (fetch-log.tsv); announcement 846,860 bytes (record 846,857, visible text identical), changelog 1,542,032, pricing 552,704, system card 1,500,702 (all three byte-identical to the record's fetch). Visible text via html.parser with comments stripped and html.unescape (_tools/.../fc1_text.py); every verbatim_quote re-matched as a contiguous string (fc1_quotes.py: 4/4 sources and 48/48 verified_facts pass). RSS: 1,230 items, newest Fri, 25 Sep 2026 19:00:00 GMT; the announcement's pubDate Tue, 22 Sep 2026 18:00:00 GMT = Taipei 2026-09-23 02:00. Every claim of the zh-TW pack (title, description, 5 summary items, 21 paragraphs, table cells and caption, diagram caption and nodes, 6 FAQ answers, callout, 2 link texts, 4 source titles) was listed and matched sentence by sentence; negative sentences were checked by keyword counts on the four pages (Taiwan, admin, macOS/Windows/iOS/Android, retire/deprecat, promotional, 90%).",
+    "claims_checked": 180,
+    "changes": [
+      {
+        "claim": "summary 2: promotional pricing through 2026-11-21",
+        "before": "價目表寫這個促銷價至少維持到 2026 年 11 月 21 日",
+        "after": "價目表寫 GPT-5.6 Sol 的促銷價至少維持到 2026 年 11 月 21 日",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      },
+      {
+        "claim": "FAQ 3: same",
+        "before": "OpenAI 的價目表寫這個促銷價至少維持到",
+        "after": "OpenAI 的價目表寫 GPT-5.6 Sol 的促銷價至少維持到",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      },
+      {
+        "claim": "section 2 p4: which promotional pricing is still current",
+        "before": "這次公告拿來比較的促銷價現在仍然有效、不是舊價，兩個世代的價格現在同時存在。",
+        "after": "也就是 Sol 這邊拿來比較的促銷價現在仍然有效、不是舊價，兩個世代的價格現在同時存在；GPT-5.6 Luna 的促銷價，價目表沒有寫維持到哪一天。",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      },
+      {
+        "claim": "FAQ 6: GPT-5.6 still usable",
+        "before": "可以。OpenAI 的 API 價目表寫…",
+        "after": "OpenAI 的 API 價目表寫…（刪去「可以。」：來源只撐得住 GPT-5.6 Sol 在 API 的促銷價期限，Luna 與 ChatGPT 端沒有寫）",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      },
+      {
+        "claim": "section 2 p3: where the 90% cache discount is printed",
+        "before": "價目表也顯示，快取讀取的輸入 token 有 90% 折扣；寫入快取的價格比一般輸入高",
+        "after": "公告寫快取讀取的輸入 token 有 90% 折扣；價目表另列寫入快取的價格，比一般輸入高",
+        "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      },
+      {
+        "claim": "section 2 p2: what the table labels 50% cheaper",
+        "before": "公告的價格表把 Sol、Luna 的輸入與輸出都標示為「50% cheaper」",
+        "after": "公告的價格表在 Sol、Luna 兩列的降價欄都標示「50% cheaper」",
+        "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      },
+      {
+        "claim": "section 5 p3: who names Enterprise administrators",
+        "before": "公告與 changelog 都只點名 Enterprise 管理員",
+        "after": "changelog 只點名 Enterprise 管理員",
+        "source_url": "https://learn.chatgpt.com/docs/changelog"
+      },
+      {
+        "claim": "section 1 p3: dropped qualifier on availability",
+        "before": "暫時看不到請稍後再試。Enterprise 方案要先由管理員啟用",
+        "after": "暫時看不到請稍後再試。能不能用也取決於工作區設定：Enterprise 方案要先由管理員啟用",
+        "source_url": "https://learn.chatgpt.com/docs/changelog"
+      },
+      {
+        "claim": "section 4 p4: HealthBench qualifier",
+        "before": "HealthBench Professional 與 Consensus 上持平或進步",
+        "after": "HealthBench Professional 與 Consensus 上經長度調整的分數持平或進步",
+        "source_url": "https://deploymentsafety.openai.com/gpt-6-astra"
+      },
+      {
+        "claim": "opening paragraph: whose best model",
+        "before": "GPT-6 Astra 仍是目前最好的模型",
+        "after": "GPT-6 Astra 仍是 OpenAI 目前最好的模型",
+        "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      },
+      {
+        "claim": "section 3 p3: added 只是",
+        "before": "Sol 與 Luna 只是比前代更划算",
+        "after": "Sol 與 Luna 則是比前代更划算",
+        "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      },
+      {
+        "claim": "section 1 p4: negative about Taiwan",
+        "before": "四條官方來源都沒有提到台灣，也沒有列出",
+        "after": "四條官方來源談 Sol 與 Luna 的開放範圍時都沒有提到台灣，也沒有列出",
+        "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+      },
+      {
+        "claim": "section 5 p3: negative about GPT-5.6 retirement",
+        "before": "GPT-5.6 Sol 與 Luna 目前沒有下架的訊息。",
+        "after": "四條官方來源都沒有寫 GPT-5.6 Sol 與 Luna 要下架。",
+        "source_url": "https://learn.chatgpt.com/docs/changelog"
+      },
+      {
+        "claim": "table caption: date zone",
+        "before": "OpenAI API 價目表與 9 月 22 日公告整理",
+        "after": "OpenAI API 價目表與美國時間 9 月 22 日公告整理",
+        "source_url": "https://openai.com/news/rss.xml"
+      },
+      {
+        "claim": "description ending (reader-first, not a fact)",
+        "before": "（2026 年 9 月查核）",
+        "after": "（2026 年 9 月查證）",
+        "source_url": ""
+      },
+      {
+        "claim": "two English quotes: U+2011 normalized to '-' (DELTA-4-7 item 11, not a fact)",
+        "before": "GPT‑6 Luna / GPT‑5.6",
+        "after": "GPT-6 Luna / GPT-5.6",
+        "source_url": ""
+      },
+      {
+        "claim": "record corrected (verified_facts 11/21 note, HealthBench fact and must_not_write, not_said on Taiwan and on the 50% cheaper cell)",
+        "before": "see the four record replacements in _tools/ai-news-gpt-6-sol-luna-20260923/fc1_apply.py",
+        "after": "scoped to GPT-5.6 Sol / length-adjusted / Keep reading card / one Price reduction cell per row",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      }
+    ],
+    "open_questions": [
+      "「付費方案（Plus、Pro、Business、Enterprise、Edu）」與「免費與 Go」的對照，會讓讀者以為 Go 不是付費方案；chatgpt.com/pricing（2026-09-26T14:41Z，200，不在 sources[]）把 Go 列為「/ month」的方案。分組本身照 OpenAI 原文是對的，只有「付費方案」這個標籤不精確（description、summary 1、第一節 p1、diagram 第一格、hero alt）。建議協調者決定是否改成「Plus、Pro、Business、Enterprise、Edu 方案」。",
+      "價目表的 All models 表（頁面資料裡，點開才顯示）同時列出 gpt-5.6-sol 4／20 與 gpt-5.6-luna 0.20／1.20 美元，撐得住「兩個世代的價格同時存在」；但那不是靜態 HTML 的可見文字，沒有寫成 verified_facts。可見文字裡 gpt-5.6-sol 只出現在 Cyber models（Daybreak）表。",
+      "第二節 p2「照表印的數字寫，不自己計算或推論百分比，也不是說 OpenAI 標錯」是查證紀律寫進正文（DELTA-4-7 第 14 條），不是事實錯誤，第一輪未改。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-8 item 4: 事件日 2026-09-23（台北），正文寫「台北時間 9 月 23 日凌晨（美國時間 9 月 22 日）」— confirmed against the RSS pubDate 18:00Z.",
+      "DELTA-4-8 item 4: 與 Claude Opus 5.5 分開寫 — the pack does not mention Opus 5.5 (0 hits for 5.5)."
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, opus; took no part in writing or in round 1)",
+      "checked_on": "2026-09-26",
+      "method": "2026-09-26T14:53:55–15:03:38Z re-fetched the four sources[], the OpenAI news RSS, chatgpt.com/pricing, the Deployment Safety Hub home and the changelog entry's own 'Workspace model availability' link with curl -sSL --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' (no personal data in any request; >=1 s per host). All HTTP 200; 0 redirects except the workspace page (1). Announcement 846,851 bytes (visible text identical to round 1's), changelog 1,542,032, pricing 552,704, system card 1,500,702 (byte-identical to the record). Bodies and fetch-log.tsv in _raw/ai-news-gpt-6-sol-luna-20260923/round2/; scripts fc2_fetch.sh, fc2_text.py, fc2_quotes.py, fc2_keywords.py, fc2_apply.py in _tools/ai-news-gpt-6-sol-luna-20260923/. Scope per agents/ai/SECOND-ROUND.md: every sentence round 1 changed or added (14 fact edits, 2 format edits, 4 record edits), a seeded random third of round 1's confirmed claims (54 of 161, random.seed(20260926)), a qualifier sweep (promotional, length-adjusted, gradually, workspace settings, up to, approximations), negatives, vendor-claim attribution, summary and FAQ within the body, and the three coordinator rulings. Every verbatim_quote re-matched as a contiguous string against today's bodies (4/4 sources, 48/48 verified_facts; no quote contains ..., … or |).",
+      "claims_checked": 97,
+      "fact_edits": 10,
+      "ruling_edits": 11,
+      "changes": [
+        {
+          "claim": "section 1 p3: Business/Edu administrator negative (round 1 left it, and added the qualifier before it)",
+          "before": "能不能用也取決於工作區設定：Enterprise 方案要先由管理員啟用，官方沒有寫 Business 或 Edu 是否也要管理員操作。",
+          "after": "能不能用也取決於工作區設定；Enterprise 方案要先由管理員啟用。",
+          "source_url": "https://learn.chatgpt.com/docs/enterprise/workspace-model-availability"
+        },
+        {
+          "claim": "section 5 p3: same negative scoped to the changelog (round 1's sentence)",
+          "before": "要先請管理員啟用新模型；changelog 只點名 Enterprise 管理員，沒有寫 Business 或 Edu 是否也要先操作。",
+          "after": "要先請管理員啟用新模型。",
+          "source_url": "https://learn.chatgpt.com/docs/enterprise/workspace-model-availability"
+        },
+        {
+          "claim": "FAQ 1: unscoped negative about Sol for Free/Go",
+          "before": "官方沒有寫 Sol 是不是也開放給免費或 Go 帳號",
+          "after": "公告與 changelog 都只提到 Luna、沒有提到 Sol",
+          "source_url": "https://chatgpt.com/pricing/"
+        },
+        {
+          "claim": "callout: unscoped negative about Taiwan",
+          "before": "官方也沒有提到台灣或其他地區的時程",
+          "after": "官方公告也沒有提到台灣或其他地區的時程",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "summary 3: 9% is not in the body (summary must be a subset of the body)",
+          "before": "每項任務成本只有 Opus 5 的 9%",
+          "after": "Opus 5 每項任務的成本是 Sol 的 11.1 倍",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "section 3 p3: FAQ 4's Fable 5 substitution was only in the FAQ",
+          "before": "可能與正式版 ChatGPT 略有差異；電腦操作方面",
+          "after": "可能與正式版 ChatGPT 略有差異，Claude Fable 5.1 沒有分數時則改報 Fable 5 的分數；電腦操作方面",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "section 3 p3: 更划算 (purchase wording) for 'more cost-efficient performance'",
+          "before": "Sol 與 Luna 則是比前代更划算",
+          "after": "Sol 與 Luna 則是成本效益比前代更好",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "section 4 p2: vendor claim stated before its attribution",
+          "before": "GPT-6 Luna 在事實性上也大幅進步：OpenAI 表示在較高的推理設定下，",
+          "after": "OpenAI 表示 GPT-6 Luna 在事實性上也大幅進步：在較高的推理設定下，",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "section 4 p4: 45% / 35% are HealthBench figures; HealthBench Hard only 'similar reductions'",
+          "before": "退步、回答明顯變短：平均回答長度 Sol 約減少 45%、Luna 約減少 35%。",
+          "after": "退步、回答明顯變短：HealthBench 的平均回答長度 Sol 約減少 45%、Luna 約減少 35%，HealthBench Hard 也有類似的減少。",
+          "source_url": "https://deploymentsafety.openai.com/gpt-6-astra"
+        },
+        {
+          "claim": "FAQ 6: answer broader than the body (GPT-5.6 系列)",
+          "before": "都沒有寫 GPT-5.6 系列要下架或停用。",
+          "after": "都沒有寫 GPT-5.6 Sol 與 Luna 要下架或停用。",
+          "source_url": "https://learn.chatgpt.com/docs/changelog"
+        },
+        {
+          "claim": "ruling 1: description",
+          "before": "推出 GPT-6 Sol 與 GPT-6 Luna：付費方案可在 ChatGPT Work、Codex 使用，免費與 Go 使用者能在桌面 App 用 Luna，Chat 裡還沒有；API 價格比 GPT-5.6 促銷價便宜 50%，文中整理開放範圍、價格基準與 OpenAI 自選的評測比較",
+          "after": "推出 GPT-6 Sol 與 Luna：Plus、Pro、Business、Enterprise、Edu 可在 ChatGPT Work、Codex 使用，免費與 Go 能在桌面 App 用 Luna，Chat 裡還沒有；API 價格比 GPT-5.6 促銷價便宜 50%，並列出 OpenAI 自選的評測",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "ruling 1: summary 1",
+          "before": "付費方案（Plus、Pro、Business、Enterprise、Edu）當天起可以",
+          "after": "Plus、Pro、Business、Enterprise、Edu 方案當天起可以",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "ruling 1: section 1 p1",
+          "before": "Plus、Pro、Business、Enterprise 與 Edu 這些付費方案，可以在",
+          "after": "Plus、Pro、Business、Enterprise 與 Edu 方案可以在",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "ruling 1: record diagram node 1, pack diagram alt and caption (caption kept equal to diagram.caption), hero alt",
+          "before": "[\"付費方案\", \"Work 與 Codex 可選用\"]；alt「在付費方案、免費與 Go、Chat 與 API」；hero alt「多種付費方案與工具」",
+          "after": "[\"Plus、Pro 等方案\", \"Work 與 Codex 可選用\"]；caption 加「（「Plus、Pro 等方案」指 Plus、Pro、Business、Enterprise、Edu）」；alt「在 Plus、Pro 等方案，以及免費與 Go、Chat、API」；hero alt「Plus、Pro、Business、Enterprise、Edu 方案與工具」",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "ruling 2: section 2 p4 and FAQ 3, two generations of prices",
+          "before": "兩個世代的價格現在同時存在／新舊兩個世代的價格現在同時存在",
+          "after": "GPT-5.6 Sol 與 GPT-6 Sol 兩個世代的價格現在同時存在",
+          "source_url": "https://developers.openai.com/api/docs/pricing"
+        },
+        {
+          "claim": "ruling 3: second paragraph (where the data comes from)",
+          "before": "這篇的內容在 2026 年 9 月 26 日查核，資料來自 OpenAI 官方公告、changelog、API 價目表與 System Card 附錄；",
+          "after": "這一篇的資料在 2026 年 9 月 26 日查核，價格與開放範圍以當天 OpenAI 頁面寫的為準；",
+          "source_url": ""
+        },
+        {
+          "claim": "ruling 3: section 2 p2 (verification discipline)",
+          "before": "Luna 輸出印的是從 1.20 美元降到 0.50 美元，照表印的數字寫，不自己計算或推論百分比，也不是說 OpenAI 標錯。",
+          "after": "其中 Luna 的輸出價，表上印的是從 1.20 美元降到 0.50 美元。",
+          "source_url": "https://openai.com/index/introducing-gpt-6-sol-and-luna/"
+        },
+        {
+          "claim": "record: not_said and must_not_write on administrators, verified fact on computer use, two unverified_or_excluded entries (chatgpt.com/pricing, Workspace model availability), one live_data_warnings entry",
+          "before": "see REC_EDITS R3–R7 in _tools/ai-news-gpt-6-sol-luna-20260923/fc2_apply.py",
+          "after": "Edu finding recorded so the negative is not written back; 划算 removed from the fact; the plan page's contradiction logged for publish day",
+          "source_url": "https://learn.chatgpt.com/docs/enterprise/workspace-model-availability"
+        }
+      ],
+      "open_questions": [
+        "OpenAI's own plan page contradicts the headline claim. chatgpt.com/pricing (2026-09-26T14:54Z, 200, not in sources[]) marks GPT-6 Luna and GPT-6 Sol 'No' for Free and Go, and still gives Free/Go 'Limited access in Work and Codex on desktop' through GPT-5.6 Terra; the announcement and the changelog (both re-read today, unchanged) say 'Free and Go users can access (GPT‑6) Luna in the desktop app'. The article keeps the two sources' wording (section 1 p2 quotes and attributes it). Coordinator: accept as is, or swap a source to add one sentence; re-read all three on publish day (live_data_warnings).",
+        "The Workspace model availability page (linked from the changelog's 9/22 entry) says 'In Enterprise and Edu, an administrator must enable Luna first.' Round 2 deleted the two 'Business/Edu not said' negatives instead of adding Edu, because the page is not in sources[]. Coordinator may prefer adding it.",
+        "Diagram node 1 is now 「Plus、Pro 等方案」 (8.4 units of the 9 allowed); the caption defines it. If the coordinator draws the full list instead, the caption's parenthesis can go.",
+        "Hero alt was changed under ruling 1 ('anywhere else') although agents/ai/FACTCHECK.md leaves hero.alt to the coordinator; rewrite it to the final drawing as usual.",
+        "The record's editorial_brief still says 付費方案（Plus、Pro、Business、Enterprise、Edu） and 兩代價格現在並存; it is the writer's brief and was left as history."
+      ],
+      "coordinator_rulings": [
+        "1. Go is a paid plan (chatgpt.com/pricing FAQ: 'Paid plans (Go, Plus, Business, and Enterprise)'): 付費方案 replaced by the plan names in the description, summary 1, section 1 p1, the diagram alt, node 1 and caption, and the hero alt; description 198 characters.",
+        "2. 兩代價格同時存在 limited to GPT-5.6 Sol and GPT-6 Sol (section 2 p4, FAQ 3): the pricing page's visible text lists gpt-5.6-sol ($4.00 / $20.00, Cyber models table) and says only GPT-5.6 Sol's promotional pricing lasts at least through 2026-11-21.",
+        "3. Verification-discipline sentences rewritten as direct statements (second paragraph; section 2 p2), DELTA-4-7 item 14; zh-TW paragraphs 2,940 -> 2,900."
+      ],
+      "verdict": "needs_owner"
+    }
+  }
+}

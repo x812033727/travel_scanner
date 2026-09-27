@@ -1,0 +1,13 @@
+# Build context for ops/video/Dockerfile (context = repository root). BuildKit reads this file
+# instead of the root .dockerignore for this Dockerfile. Only what the worker runs goes in: never
+# .env files, credentials, or anything else in the repository.
+**
+!ops/video/package.json
+!ops/video/worker.sh
+!tools/video/**
+!.agents/skills/youtube-video/**
+!docs/videos/**
+!apps/api/app/guides/content/**
+**/node_modules
+**/.env
+**/.env.*

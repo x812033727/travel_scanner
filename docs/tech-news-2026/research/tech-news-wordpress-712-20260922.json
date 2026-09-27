@@ -1,0 +1,842 @@
+{
+  "slug": "tech-news-wordpress-712-20260922",
+  "vertical": "tech",
+  "display_order": 337,
+  "event_date": "2026-09-22",
+  "event_date_basis": "事件是 WordPress 7.1.2 安全版的發布，依 DELTA-4-8 第 4 條的裁定，今天重抓的來源也支持這個日期，沒有衝突。WordPress.org 發布文的 <meta property=\"article:published_time\" content=\"2026-09-22T14:01:20+00:00\">、頁面 <time datetime=\"2026-09-22T14:01:20+00:00\">September 22, 2026</time>，以及 https://wordpress.org/news/feed/ 的 <pubDate>Tue, 22 Sep 2026 14:01:20 +0000</pubDate> 三處一致，換算台北時間是 2026-09-22 22:01。GitHub 安全公告 GHSA-7hp8-65ch-5whp 的 <relative-time datetime=\"2026-09-22T13:57:27Z\">Sep 22, 2026</relative-time> 換算台北是 2026-09-22 21:57，同一天。UTC 與台北都落在 9 月 22 日，所以主事件不跨日，正文寫「2026 年 9 月 22 日」即可，要寫時刻只能寫台北 22:01（發布文）。CVE 紀錄的 datePublished 是 2026-09-22T16:44:15.048Z（台北 9 月 23 日 00:44），那是 CVE 紀錄上架時間，不是事件日，CVE 紀錄也不在 sources[]，不寫。後續發展 KEV 是另一個日期：CISA 公告頁印 Release Date September 25, 2026，但該頁的 <time datetime=\"2026-09-25T12:00:00Z\"> 是整點佔位值，依 DELTA-4-7 第 10 條不換算。正文只寫「美國時間 9 月 25 日」，不要寫成台北 9 月 25 日，也不要把 12:00Z 換算成台北 20:00。（第二輪依協調者 2026-09-26 裁定修改：KEV 目錄 JSON 移出 sources[]，而「台北時間 9 月 26 日凌晨」只有 JSON 的 dateReleased 2026-09-25T18:58:16.5029Z 撐得住，一併刪除；DELTA-4-8 第 4 條「跨日兩個日期都寫」對 KEV 這一處不再適用。）slug 尾碼、news_date、第一段的台北日期三者都是 2026-09-22。",
+  "title": "WordPress 7.1.2 修補核心嚴重漏洞：各分支的修補版本與怎麼確認自己的網站",
+  "title_candidates": [
+    "WordPress 7.1.2 修補核心嚴重漏洞：各分支的修補版本與怎麼確認自己的網站",
+    "WordPress 7.1.2 安全更新：自動更新不等於已更新，先查自己網站的版本號",
+    "WordPress 7.1.2 修補有條件的遠端執行漏洞，美國時間 9 月 25 日列入已遭利用清單",
+    "WordPress 核心漏洞 CVE-2026-87902：7.1.2 與回溯到 4.7 分支的修補版本"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "title": "WordPress 7.1.2 Release",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "publisher": "WordPress.org",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:35Z",
+      "http_status": 200,
+      "bytes": 154558,
+      "verbatim_quote": "This security release features a fix for a critical severity security vulnerability."
+    },
+    {
+      "title": "Unauthenticated path traversal in page-template resolution leading to conditional RCE（GHSA-7hp8-65ch-5whp）",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "publisher": "WordPress（GitHub 安全公告，WordPress/wordpress-develop 儲存庫）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:40Z",
+      "http_status": 200,
+      "bytes": 205292,
+      "verbatim_quote": "WordPress 7.1.2 has been released containing a fix for the vulnerability, and as a courtesy to users on older branches the fix has been backported to all branches back to 4.7."
+    },
+    {
+      "title": "CISA Adds One Known Exploited Vulnerability to Catalog",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "publisher": "美國網路安全暨基礎設施安全局（CISA）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T13:45:43Z",
+      "http_status": 200,
+      "bytes": 53409,
+      "verbatim_quote": "CVE-2026-87902 WordPress Core Remote File Inclusion Vulnerability"
+    },
+    {
+      "title": "Dashboard screen（WordPress.org 說明文件）",
+      "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+      "publisher": "WordPress.org（Documentation）",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T15:12:29Z",
+      "http_status": 200,
+      "bytes": 158220,
+      "verbatim_quote": "A statement at the bottom of this widget tells you what WordPress version you’re running on, as well as the current theme that you have activated on your site."
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北）本人重抓，全部用 curl -sSL --max-time 30 --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)'，同一主機間隔 ≥1.3 秒，請求沒有帶任何人的姓名、email 或個人資料。bytes 一律是落地檔案大小（不是 curl 的 size_download）。原始檔在 C:\\Users\\x8120\\mokaair-work\\news-batch-4-8\\_raw\\tech-news-wordpress-712-20260922\\，逐筆記錄在同目錄的 fetch-log.tsv；抓取腳本與引文比對腳本在 _tools\\tech-news-wordpress-712-20260922\\（fetch.sh、text.py、verify.py）。\n(1) https://wordpress.org/news/2026/09/wordpress-7-1-2-release/ → 200、154,558 bytes（wp-712.html），伺服器端算繪的 WordPress 頁面，正文在 <div class=\"entry-content wp-block-post-content\"> 內，四段正文加三個小標（Security update included in this release、CVE and GHSA references、Backports）都讀到。與探索代理的 raw\\wp-712.html 比對，只差 _wpnonce、jetpack nonce 與 CSS／JS 的 ?ver= 快取參數，正文逐字相同。頁面有一份貢獻者姓名清單與回報者姓名，研究紀錄一律不抄，引文都選不含姓名的連續片段。\n(2) https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp → 200、205,292 bytes（ghsa.html），伺服器端算繪，標題、Critical、Affected versions／Patched versions 兩欄 25 組版本、Description（含兩條前提）、CVSS v4 9.2 與向量字串、CVE ID、CWE-98 都在 HTML 裡。與探索代理的 raw\\wp-ghsa.html 比對，差異只在 CSRF token、request id 這類每次請求不同的屬性。發布者欄位是一個個人帳號名稱，不抄。\n(3) https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog → 200、53,409 bytes（cisa-alert.html），與探索代理的 raw\\cisa-0925-one.html 位元組完全相同。頁面印 Release Date September 25, 2026，<time datetime=\"2026-09-25T12:00:00Z\"> 是佔位時刻。這一頁沒有印修補期限，期限出自 (4)。\n(4) KEV 目錄 JSON：網址不是猜的，先抓 https://www.cisa.gov/known-exploited-vulnerabilities-catalog（200、283,416 bytes，kev-catalog.html），從頁面上的 href=\"/sites/default/files/feeds/known_exploited_vulnerabilities.json\" 取得，再抓 → 200、1,752,832 bytes（kev.json），與探索代理的 raw\\kev.json 位元組完全相同。頂層 catalogVersion 2026.09.25、dateReleased 2026-09-25T18:58:16.5029Z；CVE-2026-87902 條目在第 40–54 行（dateAdded 第 44 行、dueDate 第 47 行、knownRansomwareCampaignUse 第 48 行、forensicTriage 第 49 行）。引文比對用原始 JSON 文字、只壓空白，JSON 的 \\u2019 之類跳脫序列不解碼，所以引文避開 requiredAction 那一欄。\n另外抓了但不放進 sources[] 的佐證（WRITER 規格上限四條，check_article.py 也要求 2–4 條且與內容包一致）：https://wordpress.org/news/feed/（200、287,223 bytes，10 個 <item>，最新一筆就是 7.1.2 發布文、pubDate 2026-09-22T14:01:20Z，第三筆是 2026-09-17T19:53:09Z 的〈WordPress 7.1.1 Maintenance and Security Release〉）；https://cveawg.mitre.org/api/cve/CVE-2026-87902（200、2,798 bytes，與探索代理的檔案位元組相同；cveMetadata.dateUpdated 2026-09-26T03:55:51.560Z，CISA ADP 區塊有 kev dateAdded 2026-09-25、SSVC Exploitation active／Automatable no／Technical Impact total、CVSS 3.1 8.1 HIGH）；從 CISA 公告頁連結取得的 BOD 26-04 實施指引頁 https://www.cisa.gov/news-events/directives/bod-26-04-implementation-guidance-prioritizing-security-updates-based-risk（200、111,591 bytes，頁首 June 10, 2026、Updated: August 25, 2026）與從 KEV 條目 notes 取得的指令本文頁 https://www.cisa.gov/news-events/directives/bod-26-04-prioritizing-security-updates-based-risk（200、84,350 bytes，頁首 June 10, 2026，與探索代理的 raw\\bod-26-04.html 相同）。這幾頁的內容只用來判斷 not_said 與 must_not_write，不當事實寫進正文。\n沒有任何一條來源被擋、軟性 404 或轉址到殼；四條 sources[] 都讀到正文。\n第二輪（2026-09-26）依協調者裁定換掉 sources[] 第 4 條：KEV 目錄 JSON 移出，換成 WordPress.org 說明文件〈Dashboard Updates screen〉https://wordpress.org/documentation/article/dashboard-updates-screen/（200、165,637 bytes，h1「Dashboard Updates screen」，article:published_time 2019-01-22T16:30:00+00:00、頁尾 Last updated June 6, 2024）。網址不是猜的：先抓 https://wordpress.org/documentation/（200、154,127 bytes），連到 https://wordpress.org/documentation/category/dashboard/（200、149,487 bytes），再從分類頁的連結取得。上面 (4) 的 KEV JSON 抓取紀錄留作歷史，它不再撐任何一句正文；原本只有它撐得住的三件事（台北時間 9 月 26 日凌晨的換算、9 月 28 日的期限、WordPress Core 7 月另有兩筆 KEV 條目）已從內容包刪除，對應的五條 verified_facts 移到 unverified_or_excluded。說明文件的正文有兩處行內標籤（Dashboard Updates Screen 加粗、You 的 Y 單獨加粗），引文比對要先去掉行內標籤再壓空白。\n第二輪補充（來源替換，2026-09-26 台北，UTC 15:12）：依協調者要求再換掉 sources[] 第 4 條，〈Dashboard Updates screen〉移出，換成 WordPress.org 說明文件〈Dashboard screen〉https://wordpress.org/documentation/article/dashboard-screen/（200、158,220 bytes，h1「Dashboard screen」，article:published_time 2018-10-20T04:19:26+00:00、article:modified_time 2024-06-06T14:01:27+00:00，頁尾 First published October 20, 2018、Last updated June 6, 2024）。網址不是猜的：重抓 https://wordpress.org/documentation/（200、154,127 bytes）→ https://wordpress.org/documentation/category/dashboard/（200、149,487 bytes），從分類頁的 href 取得。前提是 7.1.2 發布文寫了更新路徑：同時重抓發布文（200、154,558 bytes，與第二輪抓檔位元組相同），原句「visit your WordPress Dashboard, click “Updates”, and then click “Update Now”.」仍在。原始檔在第二輪同一個 _raw 目錄下的 round2b 子目錄，逐筆記錄在該目錄的 fetch-log.tsv。〈Dashboard Updates screen〉的四條 verified_facts 移到 unverified_or_excluded，上面第二輪那段的抓取紀錄留作歷史。〈Dashboard screen〉以詞界比對 Taiwan、台灣、臺灣都是 0 次；它提到 plugin 只在導覽列與「外掛或佈景主題開發者可以新增控制台小工具」一句。",
+  "verified_facts": [
+    {
+      "fact": "WordPress.org 在 2026 年 9 月 22 日發布〈WordPress 7.1.2 Release〉，分類是 Releases 與 Security。頁面 article:published_time 為 2026-09-22T14:01:20+00:00，換算台北時間是 9 月 22 日 22:01。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "September 22, 2026"
+    },
+    {
+      "fact": "WordPress 說這是一個安全版，修補一個「critical severity」（嚴重等級）的安全漏洞。等級是 WordPress 自己的評定。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This security release features a fix for a critical severity security vulnerability."
+    },
+    {
+      "fact": "WordPress 建議立即更新網站，原文用的是「it is recommended」（建議），不是「必須」。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Because this is a security release, it is recommended that you update your sites immediately."
+    },
+    {
+      "fact": "官方寫的手動更新路徑：進 WordPress 控制台（Dashboard），點「Updates」，再點「Update Now」；也可以從 WordPress.org 下載 7.1.2。正文寫繁中介面名稱時要附原文 Dashboard／Updates／Update Now，繁中介面的實際字樣這一篇的來源沒有印。第二輪補充（來源替換）：第三節第一步「還不是修補版的話，發布文寫的更新做法是進入控制台、點「Updates」、再點「Update Now」」只以這一句為依據，說明文件〈Dashboard screen〉不撐更新路徑。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "visit your WordPress Dashboard, click “Updates”, and then click “Update Now”."
+    },
+    {
+      "fact": "自動更新的原文限定兩件事：只有「支援自動背景更新」的網站才會自動更新，而且寫的是更新程序「will begin」（會開始），不是已經完成。不能寫成所有網站都已自動修好。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If you have sites that support automatic background updates, the update process will begin automatically."
+    },
+    {
+      "fact": "發布文對漏洞的描述：未經驗證（不需要登入）的攻擊者「在特定條件下」可以觸發這個問題。原文句子前半是向回報者致謝（含個人姓名），這裡只取不含姓名的連續片段。機制細節（頁面範本解析、載入本機 PHP 檔）只供查核對照，正文不寫，見 must_not_write。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "an unauthenticated attacker can, under certain conditions, make page template resolution include a chosen readable local PHP file outside the active theme directories."
+    },
+    {
+      "fact": "變成遠端執行程式碼（RCE）是有條件的：伺服器環境與使用中的佈景主題兩邊的前提都成立時「can lead to」（可能導致）。這是發布文的說法；GHSA 標題用「conditional RCE」。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If relevant pre-conditions for both the server environment and the active theme are met, this can lead to remote code execution (RCE)."
+    },
+    {
+      "fact": "發布文把細節指向安全公告，並列出兩個編號：CVE-2026-87902 與 GHSA-7hp8-65ch-5whp。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Further details can be found in the advisory: CVE-2026-87902 / GHSA-7hp8-65ch-5whp"
+    },
+    {
+      "fact": "修補「as a courtesy」（出於善意）回溯到所有仍可收到安全修補的分支，括號寫「currently through 4.7」（目前到 4.7 為止）。所以寫「修補回溯到 4.7 分支」，不寫早於 4.7 的版本安全。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As a courtesy, the security fix was backported to all branches eligible to receive security fixes (currently through 4.7)."
+    },
+    {
+      "fact": "同一段提醒：只有最新版本的 WordPress 受到積極支援（原文粗體）。舊分支收到這次修補，不等於那個分支仍受支援。",
+      "url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "As a reminder, only the most recent version of WordPress is actively supported."
+    },
+    {
+      "fact": "GHSA 的官方標題（WordPress 自己的命名），要和 CISA 的命名並列、各自附出處，不擇一改寫。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Unauthenticated path traversal in page-template resolution leading to conditional RCE"
+    },
+    {
+      "fact": "GHSA-7hp8-65ch-5whp 在 2026 年 9 月 22 日發布（relative-time datetime 2026-09-22T13:57:27Z，台北 21:57）。發布者欄位是個人帳號，這裡的引文刻意從「published」起算，不抄帳號名稱。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "published GHSA-7hp8-65ch-5whp Sep 22, 2026"
+    },
+    {
+      "fact": "GHSA 標示嚴重程度 Critical、CVSS 總分 9.2（CVSS v4 基本指標）。9.2 是 GHSA 的評分，正文要寫成「GHSA 標示的 CVSS 4.0 分數 9.2」，不可寫成唯一或官方共同分數（CVE 紀錄裡 CISA ADP 另給了 CVSS 3.1 的 8.1，版本不同、評分者不同，CVE 紀錄不在 sources[]，不寫）。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Severity Critical 9.2 CVSS overall score"
+    },
+    {
+      "fact": "GHSA 的 CVSS 4.0 向量：網路可觸發（AV:N）、不需權限（PR:N）、不需使用者互動（UI:N），但 Attack Requirements 是 Present（AT:P，要有特定部署條件），和「有條件的 RCE」一致。只供查核，正文不必抄向量字串。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    },
+    {
+      "fact": "GHSA 的受影響版本欄，逐分支列出，從 7.1.0–7.1.1 到 4.7.0–4.7.36 共 25 組（25 是研究代理自己數的，頁面沒有印這個數字，正文不可寫「25 個分支」）。7.1.1 在受影響範圍內，所以 9 月 17 日才更新到 7.1.1 的網站仍要再更新。表上最舊的是 4.7.0，早於 4.7 的版本沒有列，那是沒列，不是不受影響。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Affected versions 7.1.0 - 7.1.1 7.0.0 - 7.0.5 6.9.0 - 6.9.8 6.8.0 - 6.8.9 6.7.0 - 6.7.8 6.6.0 - 6.6.8 6.5.0 - 6.5.11 6.4.0 - 6.4.11 6.3.0 - 6.3.11 6.2.0 - 6.2.12 6.1.0 - 6.1.13 6.0.0 - 6.0.15 5.9.0 - 5.9.17 5.8.0 - 5.8.16 5.7.0 - 5.7.18 5.6.0 - 5.6.20 5.5.0 - 5.5.21 5.4.0 - 5.4.22 5.3.0 - 5.3.24 5.2.0 - 5.2.27 5.1.0 - 5.1.25 5.0.0 - 5.0.28 4.9.0 - 4.9.32 4.8.0 - 4.8.31 4.7.0 - 4.7.36"
+    },
+    {
+      "fact": "GHSA 的修補版本欄，與受影響欄逐列對應：7.1.2、7.0.6、6.9.9、6.8.10、6.7.9、6.6.9、6.5.12、6.4.12、6.3.12、6.2.13、6.1.14、6.0.16、5.9.18、5.8.17、5.7.19、5.6.21、5.5.22、5.4.23、5.3.25、5.2.28、5.1.26、5.0.29、4.9.33、4.8.32、4.7.37。讀者要對照的是「自己所在分支」的修補版，不是一律 7.1.2。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Patched versions 7.1.2 7.0.6 6.9.9 6.8.10 6.7.9 6.6.9 6.5.12 6.4.12 6.3.12 6.2.13 6.1.14 6.0.16 5.9.18 5.8.17 5.7.19 5.6.21 5.5.22 5.4.23 5.3.25 5.2.28 5.1.26 5.0.29 4.9.33 4.8.32 4.7.37"
+    },
+    {
+      "fact": "GHSA Description 的條件句（與發布文同義，但 GHSA 寫「lead to RCE」）：伺服器環境與使用中佈景主題兩邊的前提都成立時才可能導致 RCE。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "If relevant pre-conditions for both the server environment and the active theme are met, this can lead to RCE."
+    },
+    {
+      "fact": "佈景主題端的前提看的是「使用中」的子主題或父主題（active child or parent theme）。後半句是具體的目錄條件，屬攻擊前提細節，正文不寫；正文只能寫「條件看的是使用中的佈景主題，包括子主題所依附的父主題」。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The active child or parent theme contains a top-level directory whose name starts with page-"
+    },
+    {
+      "fact": "GHSA 點名的佈景主題：Twenty Twelve 與 Twenty Fourteen（GHSA 稱為 legacy，是肯定句「This affects」），以及「some popular third party themes such as Neve, Hestia, and Sydney」。第三方那一串是 such as 舉例，不是全清單；主題符合只是兩個前提之一，伺服器端前提也要成立。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "This affects the legacy Twenty Twelve and Twenty Fourteen themes, as well as some popular third party themes such as Neve, Hestia, and Sydney."
+    },
+    {
+      "fact": "伺服器端前提的一部分：GHSA 說官方 Docker php 映像受影響，PHP 8.5 以前的 cPanel 預設設定也受影響。這一句緊接在攻擊鏈說明之後，屬於「哪些環境可被利用」的細節；依 tech.md 與指派列「不寫攻擊鏈細節」，協調者 2026-09-26 裁定不點名，也不用 GHSA 沒寫的「常見」：正文寫「GHSA 另外點名了兩種伺服器環境，在官方映像或預設設定下（其中一種限特定 PHP 版本）就已經符合伺服器端的前提」，不寫 Docker、cPanel 與 PHP 版本號。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The official php image for Docker is affected, and the default cPanel configuration is affected when PHP prior to 8.5 is in use."
+    },
+    {
+      "fact": "GHSA 對修補的說法：7.1.2 已發布，並「as a courtesy」把修補回溯到 4.7 為止的所有分支。與發布文的「currently through 4.7」一致。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "WordPress 7.1.2 has been released containing a fix for the vulnerability, and as a courtesy to users on older branches the fix has been backported to all branches back to 4.7."
+    },
+    {
+      "fact": "GHSA 標示的弱點類型是 CWE-98，名稱是 PHP Remote File Inclusion。CISA 的命名「Remote File Inclusion」與這個 CWE 名稱對得上，但兩邊標題的說法不同，正文並列即可，不要自己解釋為什麼描述寫的是本機檔案、名稱卻是遠端檔案。",
+      "url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')"
+    },
+    {
+      "fact": "CISA 公告頁的日期是美國時間 2026 年 9 月 25 日（頁面 <time> 的 12:00:00Z 是佔位值，不換算）。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Release Date September 25, 2026"
+    },
+    {
+      "fact": "CISA 依「active exploitation」（遭到實際利用）的證據，把一個新漏洞加入已知遭利用漏洞（KEV）目錄。這是 CISA 的判斷，CISA 公告頁沒有寫證據內容、受害數量或地區。WordPress 9 月 22 日的發布文沒有提到遭利用。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "CISA has added one new vulnerability to its Known Exploited Vulnerabilities (KEV) Catalog, based on evidence of active exploitation."
+    },
+    {
+      "fact": "CISA 對這個漏洞的命名是「WordPress Core Remote File Inclusion Vulnerability」，與 GHSA 標題不同，兩個都是官方說法。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "CVE-2026-87902 WordPress Core Remote File Inclusion Vulnerability"
+    },
+    {
+      "fact": "期限的約束對象：CISA 明寫 BOD 26-04 只適用於美國聯邦民事行政機關（FCEB），對其他所有組織只是「encourages」（鼓勵）。所以 CISA 這項要求不約束台灣站長。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "While BOD 26-04 applies only to FCEB agencies, CISA encourages all organizations to adopt risk-based vulnerability management and prioritize remediation of KEV Catalog vulnerabilities"
+    },
+    {
+      "fact": "CISA 公告的一般性評語（每則 KEV 公告共用的句子，不是針對 WordPress 的個別分析）：這類漏洞是惡意網路行為者常用的攻擊途徑，對聯邦體系有重大風險。若要用，寫成 CISA 的說法，並且不要當成 WordPress 個案的受害證據。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This type of vulnerability is a frequent attack vector for malicious cyber actors and poses significant risks to the federal enterprise."
+    },
+    {
+      "fact": "CISA 公告另說 BOD 26-04 對聯邦機關訂有「何時必須檢查修補前系統是否已遭入侵」的基本要求。這是對聯邦機關的要求；正文若要借這句提醒一般站長「更新之後也留意更新前有沒有異常」，必須寫明那是聯邦機關的規定，並標成編輯的提醒，不可寫成 CISA 對一般網站的要求。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "BOD 26-04 further establishes basic expectations for when agencies must check whether threat actors compromised the system before the patch was applied."
+    },
+    {
+      "fact": "CISA 公告：BOD 26-04 要求聯邦機關優先快速修補高風險漏洞，特別是列在 KEV 目錄、位於對外公開資產上、遭利用後可取得該資產完全控制權的 CVE，較低風險的漏洞可延後處理。正文只寫「相關指令要求美國聯邦民事行政機關（FCEB）優先快速修補高風險漏洞，而且只適用於這些機關」，不寫任何期限日期（第二輪依協調者裁定，取代原本出自 KEV 目錄 JSON dueDate 的 9 月 28 日）。",
+      "url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog",
+      "is_vendor_claim": false,
+      "verbatim_quote": "BOD 26-04 reinforces the importance of the KEV Catalog and requires federal agencies to prioritize rapid remediation of high-risk vulnerabilities"
+    },
+    {
+      "fact": "WordPress.org 說明文件〈Dashboard screen〉的小標是「Dashboard → Home」，也就是控制台首頁。這是第三節「網站控制台（Dashboard）首頁」與 FAQ 1「控制台首頁」的依據（第二輪補充：來源替換）。",
+      "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Dashboard → Home"
+    },
+    {
+      "fact": "同一頁：WordPress 預設在控制台首頁放五個小工具（widgets），At a Glance 是其中之一。這是第三節「預設會顯示 At a Glance 小工具」的依據；原文寫的是 by default，所以正文帶「預設」。At a Glance 保留英文原名，不自己翻成繁中介面字樣。",
+      "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "By default, WordPress delivers five widgets on this page: At a Glance, Activity, Quick Draft, WordPress Events and News, and Welcome."
+    },
+    {
+      "fact": "同一頁：At a Glance 小工具底部有一行字，寫出網站正在執行的 WordPress 版本（同一行也寫目前啟用的佈景主題）。這是第三節「小工具底部會寫出網站正在執行的 WordPress 版本」與 FAQ 1「回控制台首頁的 At a Glance 小工具確認目前的版本號」的依據；這一句不限定網站是不是最新版，所以停在舊分支、已裝修補版的網站也適用（這正是換掉〈Dashboard Updates screen〉的原因）。",
+      "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "A statement at the bottom of this widget tells you what WordPress version you’re running on, as well as the current theme that you have activated on your site."
+    },
+    {
+      "fact": "同一頁：Screen Options 面板可以選擇要顯示或不顯示哪些小工具。這是第三節括號「小工具被隱藏的話，可以在 Screen Options 面板勾選回來」的依據（勾選的動作見下一條）。面板在畫面上的位置文件沒寫，正文不寫。",
+      "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "The Screen Options panel allows you to choose which widgets are displayed or not displayed."
+    },
+    {
+      "fact": "同一頁：在 Screen Options 面板勾選方塊就會顯示該小工具，取消勾選就隱藏。這是第三節「勾選回來」的依據。",
+      "url": "https://wordpress.org/documentation/article/dashboard-screen/",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Check the box to display a specific widget, or uncheck the box to hide that widget."
+    }
+  ],
+  "not_said": [
+    "沒有受害數量、受害地區或受害者類型。以 CISA 公告頁查核到 2026-09-26 未見（KEV 目錄 JSON 已移出 sources[]；它的 knownRansomwareCampaignUse 是 Unknown（未知），不是「沒有」）。文章不得寫「大量網站遭入侵」「台灣網站受害」，也不得寫「沒有勒索軟體使用」。",
+    "沒有台灣的資訊。四條來源都沒有提到台灣、台灣主機商或台灣機關；TWCERT/CC 本輪沒有查。文章只能寫「這幾份官方文件沒有提到台灣」，不得寫「台灣沒有受影響」。",
+    "WordPress 9 月 22 日的發布文與 GHSA 都沒有提到漏洞已遭利用。「已遭利用」只出自 CISA 美國時間 9 月 25 日的判斷；兩份 WordPress 文件也沒有說修補前是否已有人利用。不得寫成零時差攻擊，也不得寫「WordPress 證實遭利用」。",
+    "CISA 沒有說是誰利用、怎麼利用、利用從何時開始。只寫「依遭實際利用的證據」這個層級。",
+    "沒有更新以外的暫時緩解方法。以 GHSA 頁面查核到 2026-09-26，頁面上沒有 Workarounds 段落；CVE 紀錄（不在 sources[]）的 workarounds 欄也只是重述已發布修補。文章不得自己提出換佈景主題、刪目錄、改 PHP 設定之類的替代做法。",
+    "沒有說多少網站已經透過自動背景更新完成更新，也沒有說哪些網站「支援自動背景更新」。發布文只寫支援的網站「會開始」更新。",
+    "沒有提到外掛。這是核心（Core）漏洞，前提涉及佈景主題與伺服器環境；發布文、GHSA 與 CISA 公告沒有說外掛會觸發或能阻擋它（第二輪補充換進來的〈Dashboard screen〉提到外掛，只是說明外掛或佈景主題開發者可以新增控制台小工具，與這個漏洞無關）。不得寫「外掛也受影響」或「裝了安全外掛就沒事」。",
+    "早於 4.7 的版本不在 GHSA 的受影響表裡，那是沒列，不是不受影響；發布文說修補只回溯到仍可收安全修補的分支（目前到 4.7）。",
+    "WordPress.com、代管主機、各主機商的處理狀況，四條來源都沒有提到。",
+    "沒有說 Twenty Twelve、Twenty Fourteen 之外還有哪些主題受影響；第三方主題是「such as」舉例，GHSA 沒有給完整清單。",
+    "CISA 公告頁沒有印修補期限；9 月 28 日只出自 KEV 目錄 JSON 的 dueDate，JSON 在第二輪依協調者裁定移出 sources[]，正文不寫任何期限日期。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "攻擊者在修補發布後數小時就開始探測 WordPress 網站。",
+      "seen_where": "CVE 紀錄（https://cveawg.mitre.org/api/cve/CVE-2026-87902）的 CISA ADP references 列了一篇第三方資安公司文章，網址 slug 寫 attackers-started-probing-wordpress-sites-hours-after-the-patch，標記 third-party-advisory。",
+      "why_excluded": "第三方網站依規則不能當來源，本輪也沒有開那一頁。正文不寫任何「幾小時內」「修補後立刻」的時間線。"
+    },
+    {
+      "claim": "WordPress 7.1.1 於 2026 年 9 月 17 日發布（所以「五天前才更新的網站還要再更新一次」）。",
+      "seen_where": "https://wordpress.org/news/feed/ 第三個 <item>，pubDate Thu, 17 Sep 2026 19:53:09 +0000，標題 WordPress 7.1.1 Maintenance and Security Release。",
+      "why_excluded": "feed 不在 sources[]（上限四條）。正文可以根據 GHSA 受影響表寫「7.1.1 也在受影響範圍內，更新到 7.1.1 的網站還要再更新」，但不要寫 7.1.1 的發布日期或「五天前」；若撰稿堅持要寫日期，必須先換掉一條 sources[]。"
+    },
+    {
+      "claim": "CVSS 3.1 分數 8.1（HIGH），以及 CISA 的 SSVC 判定 Automatable: no、Technical Impact: total。",
+      "seen_where": "CVE 紀錄的 CISA ADP 區塊（CVE 紀錄 200、2,798 bytes，dateUpdated 2026-09-26T03:55:51.560Z）。",
+      "why_excluded": "CVE 紀錄不在 sources[]；而且 8.1 是 CISA ADP 的 CVSS 3.1 分數，與 GHSA 的 CVSS 4.0 分數 9.2 版本不同、評分者不同，放在同一篇只會讓讀者以為兩邊打架。正文只用 GHSA 的 9.2 並標明是 GHSA 的 CVSS 4.0 評分。"
+    },
+    {
+      "claim": "CVE 紀錄的受影響範圍是「所有小於 7.1.2 的版本」。",
+      "seen_where": "CVE 紀錄 containers.cna.affected：version 0、lessThan 7.1.2、versionType semver、defaultStatus unaffected。",
+      "why_excluded": "這個粗略範圍照字面會把 7.0.6、6.9.9 等已修補的舊分支也算成受影響，與 GHSA 逐分支的修補表矛盾。以 GHSA 的逐分支表為準；CVE 紀錄不在 sources[]。"
+    },
+    {
+      "claim": "BOD 26-04 是 2026 年 6 月 10 日發布的指令。",
+      "seen_where": "CISA 的 BOD 26-04 指令本文頁與實施指引頁頁首都印 June 10, 2026（實施指引另印 Updated: August 25, 2026）。",
+      "why_excluded": "兩頁都讀到了，但不在 sources[]。正文最多一句帶過 KEV，不需要 BOD 的日期或內容；只能寫「期限只約束美國聯邦民事行政機關」（CISA 公告頁撐得住），不寫 BOD 是哪天訂的，也不可寫成為這個漏洞新訂的規定。"
+    },
+    {
+      "claim": "WordPress 預設會自動套用小版本（安全版）更新。",
+      "seen_where": "一般常識，不在任何一條來源裡。",
+      "why_excluded": "發布文只寫「支援自動背景更新的網站會開始更新」，沒有說哪些網站預設支援。不寫預設行為。"
+    },
+    {
+      "claim": "繁體中文 WordPress 控制台的選單字樣（例如「控制台」「更新」「立即更新」）。",
+      "seen_where": "一般使用經驗，不在來源裡。",
+      "why_excluded": "發布文只有英文介面名稱 Dashboard、Updates、Update Now。正文可以寫「控制台（Dashboard）的更新（Updates）頁面」這種附原文的描述，不要把繁中字樣放進引號當成官方字樣。"
+    },
+    {
+      "claim": "WordPress 參與的 Open Website Alliance 曾回應歐盟《網路韌性法》，因此這次漏洞與 CRA 的通報義務有關。",
+      "seen_where": "https://wordpress.org/news/feed/ 第二個 <item>（WordPress Takes Its Turn Leading the Open Website Alliance，2026-09-21）提到 Cyber Resilience Act。",
+      "why_excluded": "不在 sources[]，而且與本事件無關。第二個結尾連結指向 CRA 通報義務那篇，只是延伸閱讀；那篇自己寫明開源軟體維護者的同類義務要到 2027 年 12 月 11 日才適用。正文不得暗示 CRA 的通報義務適用於這個漏洞或 WordPress 基金會。"
+    },
+    {
+      "claim": "台灣 TWCERT/CC 或其他台灣機關對此漏洞的公告。",
+      "seen_where": "本輪沒有查。",
+      "why_excluded": "沒有讀到就不寫，也不寫「台灣機關沒有發布」。"
+    },
+    {
+      "claim": "探索代理候選清單寫「GHSA 點名受影響的佈景主題包括 Twenty Twelve、Twenty Fourteen，以及 Neve、Hestia、Sydney 等第三方主題」。",
+      "seen_where": "candidates-tech.md 第 1 則「讀到的內容」。",
+      "why_excluded": "大致正確，但有一個細節要改：GHSA 對 Twenty Twelve 與 Twenty Fourteen 用的是肯定句「This affects the legacy …」，such as 只掛在第三方主題那一串。正文不要把兩個舊主題也寫成「例如」，也不要把第三方那串寫成全清單。已照 GHSA 原文寫進 verified_facts。"
+    },
+    {
+      "claim": "KEV 目錄 JSON 的 CVE-2026-87902 條目（dateAdded 2026-09-25、dueDate 2026-09-28、knownRansomwareCampaignUse Unknown、forensicTriage Yes、shortDescription 省掉兩個前提）、目錄頂層 dateReleased 2026-09-25T18:58:16.5029Z（台北 9 月 26 日 02:58），以及 WordPress Core 另兩筆 2026-07-21 加入的條目（CVE-2026-60137、CVE-2026-63030）。",
+      "seen_where": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json（第一輪與第二輪 2026-09-26 重抓都是 200、1,752,832 bytes，catalogVersion 2026.09.25，與研究代理的檔案位元組相同）。原本是 verified_facts 的五條，引文逐字對得上。",
+      "why_excluded": "第二輪依協調者 2026-09-26 裁定把 KEV JSON 移出 sources[]（上限四條，換成〈Dashboard Updates screen〉）。只有它撐得住的事一律不寫：台北時間 9 月 26 日凌晨的換算、9 月 28 日的期限、7 月另有兩筆 WordPress Core 條目（所以正文也不寫「不是第一次列入」）。KEV 的日期只寫 CISA 公告撐得住的「美國時間 9 月 25 日」；期限只寫公告撐得住的「相關指令要求美國聯邦民事行政機關優先快速修補高風險漏洞、只適用於這些機關」。"
+    },
+    {
+      "claim": "更新（Updates）頁面一定看得到目前安裝的 WordPress 版本號。",
+      "seen_where": "第一輪定稿的第三節「點選更新（Updates）分頁，就能看到目前安裝的 WordPress 版本」，以及 FAQ 1、callout 的「回到控制台的更新頁面，確認目前版本號」。",
+      "why_excluded": "〈Dashboard Updates screen〉只在「已經是最新版」的情況寫出版本號（re-install version x.x）；有新版可升級時的範例訊息沒有列出目前安裝的版本，也沒有寫停在舊分支、已裝修補版的網站在這一頁會看到什麼。第二輪把第三節改成說明文件撐得住的說法，FAQ 1 與 callout 拿掉「更新頁面」。另一份說明文件〈Dashboard screen〉寫 At a Glance 小工具底部會顯示正在執行的 WordPress 版本（https://wordpress.org/documentation/article/dashboard-screen/，200、158,220 bytes，從同一個分類頁取得），但 sources[] 已滿四條，沒有用；要不要換由協調者決定。第二輪補充：協調者決定換，〈Dashboard screen〉取代〈Dashboard Updates screen〉成為 sources[] 第 4 條；第三節改成在 At a Glance 小工具看版本號，更新頁面只以發布文的更新路徑出現，正文仍不寫「更新頁面一定看得到目前版本」。"
+    },
+    {
+      "claim": "〈Dashboard Updates screen〉的四點：更新頁面提供自動安裝核心升級的連結或手動升級所需的檔案；已是最新版時會看到已是最新版的訊息；那則訊息寫可以重新安裝 x.x 版；有新版可升級時會看到升級的訊息（範例按鈕 Upgrade Automatically）。",
+      "seen_where": "https://wordpress.org/documentation/article/dashboard-updates-screen/（第二輪 2026-09-26 抓取，200、165,637 bytes，頁尾 Last updated June 6, 2024；四句引文當時逐字對得上，原本是 verified_facts 的四條）。",
+      "why_excluded": "第二輪補充依協調者要求把它移出 sources[]（上限四條），換成〈Dashboard screen〉：它只在網站已是最新版時寫出版本號，撐不住讀者最需要的「去哪裡看自己正在執行的版本」。它撐的第三節說法（最新版訊息、可重新安裝的版本號、升級提示）一併拿掉；更新路徑改由 7.1.2 發布文撐（visit your WordPress Dashboard, click “Updates”, and then click “Update Now”）。"
+    }
+  ],
+  "editorial_brief": "讀者是用 WordPress 架站的台灣中小企業、個人品牌、社團與小型媒體，多數人沒有資安背景，也不一定自己管主機。他們真正的問題只有三個：我的網站有沒有事？我要做什麼？做完怎麼確認？這一篇的主軸是「WordPress 7.1.2 與怎麼確認自己的網站」，CISA 的已遭利用清單是後續發展，KEV 是什麼最多一句帶過（這是八天內第三篇碰到 KEV 的科技文，前兩篇只有 zh-TW，不能連，也不要重講）。\n\n第一段就要讓讀者知道跟自己有沒有關係：2026 年 9 月 22 日 WordPress 發布 7.1.2 安全版，修補一個官方評為嚴重等級的核心漏洞，修補範圍從 7.1 分支回溯到 4.7 分支（GHSA 的受影響表最舊列到 4.7，早於 4.7 的版本是沒列、不是不受影響，所以不寫「受影響範圍到 4.7」）；美國時間 9 月 25 日，CISA 依遭實際利用的證據把它列入已遭利用清單（第二輪依協調者裁定拿掉台北時間）。第二段是查核日句，照 DELTA-4-7 第 14 條寫「這一篇的資料在 2026 年 9 月 26 日查核」，不寫「本文」，不寫查證流水帳。\n\n五節建議：一、9 月 22 日修補了什麼：安全版、嚴重等級、不需要登入、在伺服器環境與使用中佈景主題兩邊條件都成立時可能變成遠端執行程式碼；兩個官方命名並列（GHSA 的標題與 CISA 的名稱），GHSA 標示的 CVSS 4.0 分數 9.2。二、哪些版本受影響、各分支的修補版：結尾放表，建議三欄「所在分支／受影響版本／修補版本」，列 7.1、7.0、6.9、6.8 四列，再加一列「6.7 至 4.7 各分支」寫「見 GHSA 的逐分支表」與一列「早於 4.7 的版本」寫「不在表內，修補只回溯到 4.7」；caption 寫查核日。三、怎麼確認自己的網站：在控制台（Dashboard）首頁預設顯示的 At a Glance 小工具看正在執行的版本號（說明文件〈Dashboard screen〉，第二輪補充換進來），把它對照所在分支的修補版，還不是修補版就照發布文的路徑（Dashboard → Updates → Update Now）更新；支援自動背景更新的網站「會開始」更新，不等於已完成，要回頭看版本號；7.1.1 也在受影響範圍；舊分支收到修補是官方的善意回溯，官方只積極支援最新版本；代管或請人維護的網站，請維護者回報更新後的版本號（這句是編輯建議，要標明）。結尾放圖。四、「已遭利用」代表什麼、不代表什麼：一句話說 KEV 是 CISA 依實際利用證據維護的清單；CISA 的相關指令只約束美國聯邦民事行政機關，對其他組織只是鼓勵（不寫期限日期）；CISA 公告沒有寫受害數量、地區或利用者；WordPress 的兩份文件沒有提到遭利用。（第二輪：9 月 28 日與「7 月另有兩條」只有 KEV 目錄 JSON 撐得住，JSON 移出 sources[] 後刪除。）五、還不知道的事與怎麼自己查：沒有台灣資訊、沒有更新以外的緩解做法、沒有自動更新完成比例；告訴讀者去 WordPress.org 新聞頁與 GHSA 頁看有沒有更新的版本，有更新版就裝更新版。\n\nFAQ 候選（答案純文字、不放網址）：我的網站開了自動更新，還要做什麼？／我沒用 Twenty Twelve 這類主題，是不是就沒事？／我還在用 6.x 版，一定要升到 7.1.2 嗎？（答：可以裝所在分支的修補版，但官方只積極支援最新版本）／CISA 的修補要求跟我有關嗎？／網站是請人代管的，我要問什麼？\n\n刻意不寫：攻擊鏈與前提的技術細節（見 must_not_write）；受害規模；零時差或修補後多久遭利用的時間線；主機商推薦或購買建議；回報者與貢獻者姓名；CRA 與這次漏洞的關係；KEV 與 BOD 的制度說明。表格與圖上的數字都要出現在正文。",
+  "must_not_write": [
+    "不寫「所有 WordPress 網站都能被遠端控制」「裝了 WordPress 就會被入侵」。要寫「在伺服器環境與使用中佈景主題兩邊的前提都成立時，可能導致遠端執行程式碼」；GHSA 標題本身就寫 conditional RCE。",
+    "不寫攻擊鏈細節（tech.md、指派列）：不寫 get_page_template() 或「頁面範本解析」怎麼被利用、不寫「載入本機 PHP 檔」的機制、不寫主題裡以 page- 開頭的目錄條件、不寫 pearcmd.php／PEAR、不寫 register_argc_argv、不寫 path traversal 的做法。GHSA 標題若要引用，照原文並列即可，不展開解釋。",
+    "不點名可被利用的伺服器環境（Docker 官方 php 映像、PHP 8.5 以前的 cPanel 預設設定）——協調者 2026-09-26 裁定：只寫「GHSA 另外點名了兩種伺服器環境，在官方映像或預設設定下（其中一種限特定 PHP 版本）就已經符合伺服器端的前提」，不寫 GHSA 沒寫的「常見」，也不可延伸成「用某某主機就安全」。",
+    "不把佈景主題清單寫成全清單：Twenty Twelve 與 Twenty Fourteen 是 GHSA 的肯定句，第三方主題是「such as Neve, Hestia, and Sydney」。不可寫「只有這五個主題受影響」「沒用這些主題就安全」，也不可把兩個舊主題寫成 WordPress「預設主題」（GHSA 只稱 legacy）。",
+    "兩個官方命名並列、各附出處：GHSA 的「Unauthenticated path traversal in page-template resolution leading to conditional RCE」與 CISA 的「WordPress Core Remote File Inclusion Vulnerability」。不擇一，不改寫成第三種名稱，不自己解釋兩者為何不同。第一次出現時各附一個中文譯名、英文原名保留（協調者 2026-09-26 裁定）；譯名是翻譯，不是第三種名稱。",
+    "不寫「自動更新的網站已經修好」。原文是支援自動背景更新的網站「更新程序會自動開始」，要叫讀者回頭確認版本號。",
+    "不寫「早於 4.7 的版本不受影響／很安全」。寫「修補只回溯到 4.7 分支」「早於 4.7 的版本不在 GHSA 的受影響表裡」；中文一律寫「早於 4.7 的版本」，不寫會被讀成含 4.7 的「4.7 以前」（協調者 2026-09-26 裁定）。",
+    "不寫「一律要升到 7.1.2」。GHSA 逐分支列了修補版（例如 7.0.6、6.9.9、6.8.10…4.7.37），讀者裝所在分支的修補版就是修補；但要同時寫官方只積極支援最新版本、舊分支的修補是 courtesy。",
+    "不引用 CVE 紀錄「小於 7.1.2 都受影響」的粗略範圍，否則會把 7.0.6、6.9.9 等已修補版本寫成受影響。",
+    "CVSS 只寫 GHSA 標示的 CVSS 4.0 分數 9.2，並標明是 GHSA 的評分；不寫 CISA ADP 的 CVSS 3.1 分數 8.1，不寫「滿分 10 分的 9.2 代表……」這類推論。",
+    "不寫 9 月 28 日或任何修補期限日期（只有 KEV 目錄 JSON 撐得住，第二輪依協調者裁定移出 sources[]）。只寫 CISA 公告撐得住的：相關指令要求美國聯邦民事行政機關（FCEB）優先快速修補高風險漏洞、只適用於這些機關，CISA 對其他組織只是鼓勵。不寫 BOD 26-04 是為這個漏洞新訂的規定，也不寫它的發布日（不在 sources[]）。",
+    "不寫受害數量、受害地區、「大量台灣網站遭入侵」「已有網站被勒索」。KEV 的 knownRansomwareCampaignUse 是 Unknown，不可寫成「沒有勒索軟體使用」。",
+    "不寫「WordPress 表示已遭利用」「修補前就被利用」「零時差」「修補後幾小時就遭攻擊」。遭利用的判斷只出自 CISA，時間線沒有一手來源。",
+    "不寫「首次有 WordPress 核心漏洞列入 KEV」或任何「第一」「唯一」：KEV 目錄在 2026-07-21 已有兩條 WordPress Core 條目（那兩條只有 KEV 目錄 JSON 撐得住，JSON 移出 sources[] 後，正文也不寫「不是第一次列入」）。",
+    "不照 KEV 目錄的 shortDescription 寫成無條件的遠端執行程式碼；影響描述以 WordPress 發布文與 GHSA 的條件句為準。",
+    "不提出更新以外的緩解做法（換主題、刪目錄、改 PHP 設定、裝特定安全外掛）。官方只給了更新。",
+    "不寫外掛會觸發或能阻擋這個漏洞；發布文、GHSA 與 CISA 公告都沒有提到外掛。",
+    "不寫回報者、發布負責人或任何貢獻者的姓名，也不寫 GHSA 發布者的帳號名稱。",
+    "不把繁中控制台的選單字樣放進引號當官方字樣；寫「控制台（Dashboard）的更新（Updates）頁面」這種附原文的說法。At a Glance 小工具與 Screen Options 面板保留英文原名（來源只有英文），不自己翻成繁中介面字樣，也不寫文件沒寫的畫面位置。",
+    "不寫 KEV 或 BOD 的制度說明超過一句；不重講 tech-news-cisa-kev-linux-kernel-20260918、tech-news-cisa-kev-zyxel-gs1900-20260921 的內容，也不連結這兩篇（只有 zh-TW）。",
+    "不寫 CRA 的通報義務適用於這個漏洞或 WordPress；第二個結尾連結只是延伸閱讀。",
+    "不寫主機商推薦、購買建議或「值不值得換平台」。",
+    "7.1.2 的發布時刻若要寫只能寫台北 9 月 22 日 22:01（發布文）；KEV 一律只寫「美國時間 9 月 25 日」（協調者 2026-09-26 裁定：台北時間的換算只有已移出 sources[] 的 KEV 目錄 JSON 撐得住），不可寫成台北 9 月 25 日，也不可把 CISA 頁面佔位的 12:00Z 換算成台北 20:00。",
+    "不寫 7.1.1 的發布日期或「五天前」（出處 feed 不在 sources[]）；只寫「7.1.1 也在受影響範圍內」。"
+  ],
+  "live_data_warnings": [
+    "KEV 目錄 JSON 在第二輪依協調者裁定移出 sources[]，正文不再引用它的任何欄位（第二輪 2026-09-26 重抓時 catalogVersion 仍是 2026.09.25）。KEV 的部分只靠 CISA 公告頁（Release Date September 25, 2026）；發布當天重抓公告頁，確認仍在、內容未改。",
+    "〈Dashboard screen〉說明文件（第二輪補充換進來，取代〈Dashboard Updates screen〉）頁尾印 Last updated June 6, 2024，描述的是當時的控制台介面。正文只用它的幾點：控制台首頁預設顯示 At a Glance 小工具、小工具底部寫出正在執行的 WordPress 版本、可以在 Screen Options 面板勾選要顯示的小工具；更新的按鈕字樣照 7.1.2 發布文（Updates、Update Now）。發布當天重看是否改版。",
+    "GHSA 頁面可以被編修（受影響／修補版本表、CVSS、說明文字都可能更新），發布當天重抓比對受影響與修補兩欄。",
+    "WordPress 可能再發布更新的安全版（7.1.3 之類）。查核時 https://wordpress.org/news/feed/ 最新一筆就是 7.1.2（2026-09-22T14:01:20Z）；發布當天重看 feed，若有更新的版本，正文要改成「7.1.2 或更新的版本」，表格照新公告更新或加註。",
+    "CVE 紀錄（不在 sources[]）在 2026-09-26T03:55:51Z 才由 CISA ADP 補上 KEV 與 SSVC 資料，仍在變動；正文本來就不引用它。",
+    "正文寫成「截至 2026 年 9 月 26 日查核」，不要寫成永久狀態；「目前只積極支援最新版本」「修補目前回溯到 4.7」都照原文帶「目前」。"
+  ],
+  "overlaps_existing_article": [
+    "website-maintenance-routine（五語齊全，可以在正文用 article inline 連結）〈網站維護要做什麼：備份、更新與故障回報的日常安排〉：通論網站維護，寫了更新前先備份、收到安全更新通知應另行評估處理而不必等月度維護。這一篇不重講備份與維護流程，最多一句帶到並連結。",
+    "wordpress-security-basics（只有 zh-TW，不能連）〈WordPress 安全維護：帳號、更新與防護外掛的分工〉：寫自動更新能減少遺漏但仍需有人讀失敗通知、盤點核心／佈景／外掛。與這一篇的「自動更新不等於已更新」同方向，但不能連，也不要照抄它的說法；這一篇只根據 7.1.2 發布文寫。",
+    "wordpress-website-backup（只有 zh-TW，不能連）〈WordPress 備份怎麼做：檔案、資料庫與還原演練〉：備份操作，不相關，不連。",
+    "tech-news-cisa-kev-linux-kernel-20260918（只有 zh-TW，不能連）〈CISA 同一天兩則公告：三個 Linux 核心漏洞列入「已遭利用」清單〉：已解釋 KEV 機制。這一篇不重講。",
+    "tech-news-cisa-kev-zyxel-gs1900-20260921（只有 zh-TW，不能連）〈CISA 把 Zyxel GS1900 交換器漏洞列入已遭利用清單：先對型號，再對韌體版本〉：同一機制的另一案例。不連、不重講。",
+    "tech-news-enisa-threat-landscape-20260922（只有 zh-TW，不能連）〈ENISA 公布 2026 威脅全景報告：統計的是 2025 一整年的事件〉：提到 KEV，但主題不同。",
+    "tech-news-eu-cra-reporting-20260911（五語齊全）〈歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報〉：第二個結尾連結的目標。寫 CRA 第 14 條製造商對積極利用漏洞的 24／72 小時通報，並寫明開源軟體維護者的同類義務要到 2027 年 12 月 11 日才適用。這一篇不得把 CRA 義務套到 WordPress 或這個漏洞。",
+    "站上 111 個內容包提到 WordPress（多為架站教學），以 grep 查核到 2026-09-26，沒有任何一篇寫 WordPress 7.1.x、CVE-2026-87902、7 月的 WordPress 核心 KEV 條目，也沒有一篇以詞界比對提到 Neve、Hestia、Sydney、Twenty Twelve、Twenty Fourteen 主題（wordpress-performance-plugins 的「Neve」命中其實是 Never Cache 的子字串）。existing-packs.txt 與 automation-candidates.tsv 依探索代理的比對都沒有 WordPress。"
+  ],
+  "second_link": {
+    "slug": "tech-news-eu-cra-reporting-20260911",
+    "title": "歐盟《網路韌性法》通報義務上路：9 月 11 日起，誰要多快通報"
+  },
+  "hero_label": "自動更新不等於已更新",
+  "diagram": {
+    "title": "確認網站已修補的四件事",
+    "caption": "WordPress 2026 年 9 月 22 日發布 7.1.2 安全版後，站長確認網站已修補要看的四件事，依 WordPress 發布文、說明文件與 GHSA 整理，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "先看版本號",
+        "控制台首頁的 At a Glance"
+      ],
+      [
+        "對照修補版",
+        "各分支有自己的修補版"
+      ],
+      [
+        "自動更新",
+        "會開始，不等於已完成"
+      ],
+      [
+        "早於 4.7 的版本",
+        "不在修補範圍"
+      ]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1, opus)",
+    "checked_on": "2026-09-26",
+    "method": "2026-09-26（台北）重抓 sources[] 四條與兩條佐證（wordpress.org/news/feed/、cveawg.mitre.org 的 CVE 紀錄），curl -sSL --max-time 30 --compressed、UA 為規格指定的 Mokaair-editorial/1.0、同一主機間隔 ≥1.5 秒、請求不含任何人的姓名或 email；原始檔在 <WORK>\\_raw\\tech-news-wordpress-712-20260922\\round1\\。四條都是 200 且為正文：發布文 154,558 bytes（與研究代理的檔案只差 CSS／JS 的 ?ver= 快取參數）、GHSA 205,297 bytes（空白正規化後的文字與研究代理的檔案相同）、CISA 公告 53,409 bytes 與 KEV JSON 1,752,832 bytes（與研究代理的檔案位元組相同；catalogVersion 仍是 2026.09.25）。研究紀錄 4 條 source 引文與 33 條 verified_facts 引文、內容包裡 9 個英文引號字串，全部是今天抓檔裡的連續字串。另外為了查第三節「更新頁面看得到版本」讀了 WordPress.org 說明文件〈Dashboard Updates Screen〉（https://wordpress.org/documentation/article/dashboard-updates-screen/，200、165,637 bytes，從 /documentation/category/dashboard/ 的連結取得，不是猜的），它寫更新頁面會顯示是否為最新版本與可重新安裝的版本號；因 sources[] 上限四條，沒有放進 sources[]，只記在這裡。逐句拆成 125 條主張，逐條對原文。",
+    "claims_checked": 125,
+    "changes": [
+      {
+        "claim": "description、第一段、summary 第 1 條：受影響範圍從最新的 7.1 分支回溯到 4.7 分支",
+        "before": "受影響範圍從最新的 7.1 分支回溯到 4.7 分支",
+        "after": "修補範圍從最新的 7.1 分支回溯到 4.7 分支",
+        "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+      },
+      {
+        "claim": "summary 第 4 條：各分支都有自己的修補版本",
+        "before": "各分支都有自己的修補版本，例如 7.0 分支是 7.0.6",
+        "after": "從 4.7 到 7.1 的各分支都有自己的修補版本，例如 7.0 分支是 7.0.6",
+        "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+      },
+      {
+        "claim": "第一節第一個直接引文的中文譯文",
+        "before": "（這個安全版修補了一個官方評為嚴重等級的安全漏洞）",
+        "after": "（這個安全版修補了一個嚴重等級的安全漏洞）",
+        "source_url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/"
+      },
+      {
+        "claim": "第一節第二段：官方沒有公開觸發的實際做法",
+        "before": "官方沒有公開觸發的實際做法，攻擊手法的細節不在這裡討論。",
+        "after": "攻擊手法的細節不在這裡討論。",
+        "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+      },
+      {
+        "claim": "第一節第二段：第三個歸因語（讀者優先規則，一段最多兩個；協調者核准的改寫）",
+        "before": "兩邊的前提都成立，官方寫的是可能導致（can lead to）遠端執行程式碼",
+        "after": "兩邊的前提都成立，可能導致（can lead to）遠端執行程式碼",
+        "source_url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/"
+      },
+      {
+        "claim": "第四節第二段：CISA 明寫這個期限只約束美國聯邦民事行政機關",
+        "before": "但 CISA 明寫，這個期限只約束美國聯邦民事行政機關（FCEB），對其他所有組織只是鼓勵",
+        "after": "但這個期限只約束美國聯邦民事行政機關（FCEB）：CISA 明寫相關指令只適用於這些機關，對其他所有組織只是鼓勵",
+        "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+      },
+      {
+        "claim": "第四節第三段：CISA 沒有公布受害數量、受害地區或攻擊者身分",
+        "before": "CISA 沒有公布受害數量、受害地區或攻擊者身分",
+        "after": "CISA 的公告與 KEV 目錄條目沒有寫受害數量、受害地區或攻擊者身分",
+        "source_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json"
+      },
+      {
+        "claim": "第四節第三段：遭利用的判斷只出自 CISA",
+        "before": "遭利用的判斷只出自 CISA。",
+        "after": "遭利用的判斷出自 CISA。",
+        "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+      },
+      {
+        "claim": "第五節第三段：官方沒有說多少網站已經透過自動背景更新完成更新",
+        "before": "官方沒有說多少網站已經透過自動背景更新完成更新",
+        "after": "發布文沒有說多少網站已經透過自動背景更新完成更新",
+        "source_url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/"
+      },
+      {
+        "claim": "FAQ 2：伺服器環境的前提是否成立官方沒有點名細節；可靠的做法還是更新到自己分支的修補版",
+        "before": "而且佈景主題只是前提之一，伺服器環境的前提是否成立官方沒有點名細節，不能用沒用這幾個主題來判斷安全與否，可靠的做法還是把版本更新到自己分支對應的修補版。",
+        "after": "而且佈景主題只是兩個前提之一，另一個前提在伺服器環境，不能用沒用這幾個主題來判斷安全與否，要修補就是把版本更新到自己分支對應的修補版。",
+        "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+      },
+      {
+        "claim": "FAQ 4：CISA 明寫 9 月 28 日的期限只約束美國聯邦民事行政機關；官方判斷已遭實際利用",
+        "before": "CISA 明寫 2026 年 9 月 28 日的期限只約束美國聯邦民事行政機關，對其他所有組織只是鼓勵，不是法定期限；不過既然官方判斷這個漏洞已遭實際利用，愈早更新愈好。",
+        "after": "2026 年 9 月 28 日的期限只約束美國聯邦民事行政機關：CISA 明寫相關指令只適用於這些機關，對其他所有組織只是鼓勵，不是法定期限；不過既然 CISA 判斷這個漏洞已遭實際利用，愈早更新愈好。",
+        "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+      },
+      {
+        "claim": "研究紀錄 editorial_brief：受影響範圍從 4.7 到 7.1.1 各分支（撰稿照抄成開頭三處的說法）",
+        "before": "受影響範圍從 4.7 到 7.1.1 各分支；",
+        "after": "修補範圍從 7.1 分支回溯到 4.7 分支（GHSA 的受影響表最舊列到 4.7，4.7 以前是沒列、不是不受影響，所以不寫「受影響範圍到 4.7」）；",
+        "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+      }
+    ],
+    "open_questions": [
+      "第三節「點選更新（Updates）分頁，就能看到目前安裝的 WordPress 版本」（以及 FAQ 1、callout、圖解第一格的「控制台的更新頁面」）：四條 sources 只寫了 Dashboard → Updates → Update Now 的更新路徑，沒有寫更新頁面會顯示目前版本。WordPress.org 說明文件〈Dashboard Updates Screen〉撐得住，但 sources[] 已滿四條。第一輪保留原句；協調者決定要不要換掉一條來源，或改寫成不描述介面的說法。",
+      "圖解 caption 寫「站長確認自己網站版本的四個步驟」，第三節小標寫「三個查核步驟」，而圖解第四格「4.7 以前／不在官方修補範圍」不是步驟。不是來源事實，第一輪沒改；畫圖時請協調者決定 caption 用「四件事」（與 diagram.title 一致）還是維持。caption 要與研究紀錄 diagram.caption 同步改。",
+      "「4.7 以前」（第二節第三段、表格最後一列、圖解第四格、hero alt）在中文裡可能被讀成含 4.7；翻譯時要譯成「早於 4.7／before 4.7」。若要改中文，表格、圖解與 alt 要一起改。",
+      "第一節第三段的兩個官方命名（GHSA 標題、CISA 名稱）只有英文、沒有中文譯名；寫作規格要求引文附中文。不是事實問題，第一輪沒改。",
+      "第二節第一段「詳細版本號見下表」：表格只列 7.1–6.8 四個分支的版本號，其餘寫「詳見 GHSA 逐分支表」。說法略寬，第一輪沒改。",
+      "第一節第二段「部分常見的伺服器預設環境」的「常見」是研究紀錄建議的轉述（GHSA 點名的是 Docker 官方 php 映像與 PHP 8.5 以前的 cPanel 預設設定，沒寫「常見」）。依裁定不點名，第一輪保留。"
+    ],
+    "coordinator_rulings": [
+      "事件是 9 月 22 日的 7.1.2 安全版：slug 尾碼、news_date、第一段都是 2026-09-22；發布文 article:published_time 2026-09-22T14:01:20+00:00（台北 22:01），今天重抓仍相同。守住。",
+      "KEV 寫「美國時間 9 月 25 日（台北時間 9 月 26 日凌晨）」：description、第一段、summary 第 3 條、第四節第一段四處都是這個寫法；CISA 公告 Release Date September 25, 2026，KEV JSON dateAdded 2026-09-25、dateReleased 2026-09-25T18:58:16.5029Z（台北 9/26 02:58）。KEV 是什麼只在第四節第一段用一句帶過。守住。",
+      "不寫攻擊鏈細節、不點名伺服器環境：正文沒有 get_page_template、page- 目錄條件、pearcmd／PEAR、register_argc_argv、Docker、cPanel、PHP 版本；GHSA 標題照原文並列未展開。守住（第一輪刪掉的兩句正是為了不讓『沒有公開／沒有點名』取代『這裡不轉述』）。",
+      "Twenty Twelve／Twenty Fourteen 是肯定句、第三方主題是 such as：FAQ 2 寫「點名受影響的是官方稱為 legacy（舊版）的 Twenty Twelve 與 Twenty Fourteen，並舉例包含 Neve、Hestia、Sydney 等部分第三方佈景主題，但這是舉例，不是完整清單」，與 GHSA 原文相符。守住。",
+      "9 月 28 日的期限只約束美國聯邦民事行政機關：結論守住；第四節與 FAQ 4 的歸因改成 CISA 寫的是『相關指令只適用於這些機關』，見 changes。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2, opus; not the writer, not round 1)",
+      "checked_on": "2026-09-26",
+      "method": "2026-09-26（台北，UTC 14:45–14:49）重抓 sources[] 三條（發布文 200／154,558 bytes、GHSA 200／205,292 bytes、CISA 公告 200／53,409 bytes）、被移出的 KEV JSON（200／1,752,832 bytes，位元組與第一輪相同）、wordpress.org/news/feed/（最新一筆仍是 7.1.2）與換進來的說明文件；說明文件的網址從 https://wordpress.org/documentation/ → /documentation/category/dashboard/ → /documentation/article/dashboard-updates-screen/ 的連結取得（200／165,637 bytes），沒有猜。curl -sSL --max-time 30 --compressed，UA 為規格指定的 Mokaair-editorial/1.0，同一主機間隔 ≥1.5 秒，請求不含任何人的姓名或 email；原始檔在 <WORK>\\_raw\\tech-news-wordpress-712-20260922\\round2\\。發布文、GHSA、說明文件的文字與第一輪抓檔壓空白後相同。研究紀錄 4 條 source 引文、33 條 verified_facts 引文與內容包 9 個英文引號字串，用程式對今天的抓檔做連續字串比對（行內標籤去掉、空白壓縮），0 failures（fc2-verify-after.txt）。範圍：第一輪改過或新寫的 12 處逐句回原文；第一輪 CONFIRMED 的 101 條隨機抽 34 條（seed 20260926）重查；七項協調者裁定照做並把改出來的每一句當新主張查；全文回掃被刪的但書與限定詞；兩個結尾連結與 inline 連結的目標標題逐字、五語齊全。",
+      "claims_checked": 137,
+      "changes": [
+        {
+          "claim": "sources[] 第 4 條（內容包與研究紀錄）",
+          "before": "CISA Catalog of Known Exploited Vulnerabilities（KEV 目錄 JSON，CVE-2026-87902 條目）https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+          "after": "Dashboard Updates screen（WordPress.org 說明文件）https://wordpress.org/documentation/article/dashboard-updates-screen/",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "description、第一段、summary 第 3 條、第四節第一段：KEV 的日期",
+          "before": "美國時間 9 月 25 日（台北時間 9 月 26 日凌晨）",
+          "after": "美國時間 9 月 25 日",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+        },
+        {
+          "claim": "summary 第 3 條：修補期限",
+          "before": "並訂出 2026 年 9 月 28 日的修補期限，但這個期限只約束美國聯邦民事行政機關。",
+          "after": "；CISA 的相關指令只約束美國聯邦民事行政機關，對其他組織只是鼓勵。",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+        },
+        {
+          "claim": "第四節第二段：修補期限",
+          "before": "KEV 目錄附了一個 2026 年 9 月 28 日的修補期限，但這個期限只約束美國聯邦民事行政機關（FCEB）：CISA 明寫相關指令只適用於這些機關，對其他所有組織只是鼓勵採取風險導向的修補做法；這個期限不是台灣站長的法定期限。",
+          "after": "CISA 的公告寫明，相關指令要求美國聯邦民事行政機關（FCEB）優先快速修補高風險漏洞，而且只適用於這些機關；對其他所有組織，CISA 只是鼓勵採取風險導向的漏洞管理、優先修補 KEV 目錄裡的漏洞，這對台灣站長沒有約束力。",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+        },
+        {
+          "claim": "第四節第三段：否定句的範圍與 7 月的兩筆 KEV 條目",
+          "before": "CISA 的公告與 KEV 目錄條目沒有寫受害數量……遭利用的判斷出自 CISA。這也不是 WordPress 核心元件第一次被列入 KEV 目錄，同一份目錄裡，WordPress Core 另外還有兩筆是今年 7 月加入的。",
+          "after": "CISA 的公告沒有寫受害數量……遭利用的判斷出自 CISA。",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+        },
+        {
+          "claim": "FAQ 4",
+          "before": "9 月 28 日的期限跟我有關嗎？／……這個期限不直接約束你。2026 年 9 月 28 日的期限只約束美國聯邦民事行政機關：……只是鼓勵，不是法定期限；",
+          "after": "CISA 的修補要求跟我有關嗎？／……CISA 的這項要求不直接約束你：CISA 明寫相關指令只適用於這些機關，對其他所有組織只是鼓勵；",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+        },
+        {
+          "claim": "第二段：讀了哪些文件",
+          "before": "〈WordPress 7.1.2 Release〉發布文、GitHub 安全公告 GHSA-7hp8-65ch-5whp，以及 CISA 的公告與已知遭利用漏洞（KEV）目錄；……只整理官方文件寫了什麼",
+          "after": "〈WordPress 7.1.2 Release〉發布文與〈Dashboard Updates screen〉說明文件、GitHub 安全公告 GHSA-7hp8-65ch-5whp，以及 CISA 的公告；……只整理這些文件寫了什麼",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "第三節第一段：更新頁面看得到目前安裝的版本",
+          "before": "進入網站控制台（Dashboard），點選更新（Updates）分頁，就能看到目前安裝的 WordPress 版本；對照上表或 GHSA 頁面，找出所在分支對應的修補版本。",
+          "after": "進入網站控制台（Dashboard）的更新（Updates）頁面，依 WordPress.org 的說明文件，已經是最新版本時，在這一頁會看到已是最新版的訊息與可重新安裝的版本號，有新版時則會看到升級的提示；再把目前的版本號對照上表或 GHSA 頁面，確認是不是所在分支的修補版本。",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "FAQ 1 與 callout：到更新頁面確認版本號",
+          "before": "回到控制台的更新頁面，確認目前版本號是不是已經對到……／都建議回到控制台的更新頁面，親自確認版本號",
+          "after": "回頭確認目前的版本號，是不是已經對到……／都建議親自確認版本號",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "圖解 caption（內容包與研究紀錄 diagram.caption）",
+          "before": "站長確認自己網站版本的四個步驟，依 WordPress 發布文與 GHSA 整理",
+          "after": "站長確認網站已修補要看的四件事，依 WordPress 發布文、說明文件與 GHSA 整理",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "研究紀錄 diagram.nodes 第 1、4 格",
+          "before": "[\"先看版本號\", \"控制台的更新頁面\"]／[\"4.7 以前\", \"不在官方修補範圍\"]",
+          "after": "[\"先看版本號\", \"更新頁面會寫明是否最新\"]／[\"早於 4.7 的版本\", \"不在修補範圍\"]",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "「4.7 以前」：第二節第三段、表格最後一列、圖解 alt、研究紀錄（not_said、must_not_write、editorial_brief、verified_facts 兩條）",
+          "before": "4.7 以前的版本／4.7 以前／官方修補只回溯到 4.7 分支／4.7 以前的處理",
+          "after": "早於 4.7 的版本／修補只回溯到 4.7 分支",
+          "source_url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/"
+        },
+        {
+          "claim": "第二節第三段：否定句",
+          "before": "那是表格沒有列，不是官方說 4.7 以前的版本不受影響。",
+          "after": "那是表格沒有列，不代表這些版本不受影響。",
+          "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+        },
+        {
+          "claim": "第一節第三段：兩個正式名稱的中文譯名",
+          "before": "「Unauthenticated path traversal in page-template resolution leading to conditional RCE」；CISA 的命名則是「WordPress Core Remote File Inclusion Vulnerability」。",
+          "after": "「Unauthenticated path traversal in page-template resolution leading to conditional RCE」（頁面範本解析中未經驗證的路徑穿越，導致有條件的遠端執行程式碼）；CISA 的命名則是「WordPress Core Remote File Inclusion Vulnerability」（WordPress 核心遠端檔案引入漏洞）。",
+          "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+        },
+        {
+          "claim": "第二節第一段：詳細版本號見下表",
+          "before": "修補版本欄與受影響欄逐列對應，詳細版本號見下表。",
+          "after": "修補版本欄與受影響欄逐列對應；7.1、7.0、6.9、6.8 分支的版本號整理在下表，其餘分支請看 GHSA 的逐分支表。",
+          "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+        },
+        {
+          "claim": "第一節第二段：部分常見的伺服器預設環境",
+          "before": "GHSA 說明，部分常見的伺服器預設環境就已經符合伺服器端的前提；攻擊手法的細節不在這裡討論。",
+          "after": "GHSA 另外點名了兩種伺服器環境，在官方映像或預設設定下（其中一種限特定 PHP 版本）就已經符合伺服器端的前提；攻擊手法與環境細節不在這裡討論。",
+          "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+        },
+        {
+          "claim": "第五節第三段：外掛（新來源提到外掛）",
+          "before": "四份來源都沒有提到外掛",
+          "after": "發布文、GHSA 與 CISA 的公告談這個漏洞時都沒有提到外掛",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "第五節第一段：台灣",
+          "before": "查到的四份官方文件都沒有提到台灣，只能說官方文件沒有提到台灣",
+          "after": "這一篇引用的四份文件都沒有提到台灣，只能說文件沒寫",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "「官方」歸因（讀者優先，協調者核准）：description、第一段、summary 第 1 條「官方評為」；第一節第一段「官方原文寫的是」；第一節第三段「兩個官方命名」；第二節第二、三段；表格 caption；第三節第二、三段；第五節小標與第二、四段；FAQ 1、2、3、5；callout",
+          "before": "「官方」約 30 次",
+          "after": "2 次：第一節第二段的「官方映像」（official image 的直譯，不是歸因）與 callout 的「請以官方頁面為準」；其餘改成點名 WordPress／發布文／GHSA／文件或直接陳述（自評為、開頭寫的是、正式名稱、發布文寫的是、它稱為 legacy、WordPress 也提醒……）",
+          "source_url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/"
+        },
+        {
+          "claim": "第一節第三段：同一個分數的兩個 GHSA 歸因",
+          "before": "GHSA 另外標示嚴重程度 Critical，CVSS 4.0 基本分數 9.2，這是 GHSA 自己的評分，不是雙方共同的分數。",
+          "after": "嚴重程度 Critical、CVSS 4.0 基本分數 9.2 是 GHSA 自己的評分，不是雙方共同的分數。",
+          "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+        },
+        {
+          "claim": "第五節第二段：三個歸因語（讀者優先，協調者核准的改寫類型）",
+          "before": "……替代方案都不是官方說法；官方只給了更新這一條路。",
+          "after": "GHSA 頁面沒有列出更新以外的暫時緩解做法；換佈景主題、刪目錄或改伺服器設定之類的替代方案都不是 WordPress 提出的做法，要修補就是更新。",
+          "source_url": "https://github.com/WordPress/wordpress-develop/security/advisories/GHSA-7hp8-65ch-5whp"
+        },
+        {
+          "claim": "研究紀錄：verified_facts",
+          "before": "五條 KEV JSON 事實（條目、dueDate、dateReleased、shortDescription、7 月的 CVE-2026-60137）",
+          "after": "移到 unverified_or_excluded；新增 CISA 公告 BOD 26-04 要求一條、說明文件四條（連續字串已比對）",
+          "source_url": "https://wordpress.org/documentation/article/dashboard-updates-screen/"
+        },
+        {
+          "claim": "研究紀錄：event_date_basis、sourcing_notes、not_said、must_not_write、live_data_warnings、editorial_brief、verified_facts 第 20、24、26 條",
+          "before": "KEV 寫兩個日期、9 月 28 日期限、7 月兩筆、「部分常見」、四條來源沒提外掛、CISA 沒有公開",
+          "after": "只寫美國時間 9 月 25 日、不寫期限日期、不寫「不是第一次」、GHSA 點名兩種環境不寫「常見」、否定句限縮到發布文／GHSA／CISA 公告；另加說明文件的活頁警告",
+          "source_url": "https://www.cisa.gov/news-events/alerts/2026/09/25/cisa-adds-one-known-exploited-vulnerability-catalog"
+        }
+      ],
+      "open_questions": [
+        "〈Dashboard Updates screen〉只撐得住一半的原句：它寫更新頁面能升級核心，並在『已經是最新版』時列出可重新安裝的版本號（re-install version x.x）；有新版可升級時的範例沒有列出目前安裝的版本。停在舊分支、已裝修補版（例如 7.0.6）的網站在這一頁看到什麼，文件沒寫。所以第三節只寫文件撐得住的兩點，FAQ 1 與 callout 拿掉「更新頁面」。另一份說明文件〈Dashboard screen〉寫 At a Glance 小工具底部會顯示正在執行的 WordPress 版本（https://wordpress.org/documentation/article/dashboard-screen/，200、158,220 bytes，從同一個分類頁取得），若協調者想讓第三節直接告訴讀者去哪裡看版本號，可以改換這一份。",
+        "說明文件頁尾印 Last updated June 6, 2024，範例按鈕是 Upgrade Automatically；正文的按鈕字樣照 7.1.2 發布文（Update Now），沒有混用。",
+        "「不是 WordPress 核心第一次列入 KEV（7 月另有兩筆）」只有 KEV JSON 撐得住（今天重抓仍是 CVE-2026-60137、CVE-2026-63030，dateAdded 2026-07-21），依裁定一併刪除；must_not_write 的「不寫首次」仍在。",
+        "DELTA-4-8 第 4 條寫 KEV「正文兩個日期都寫」，本輪照協調者較新的裁定只寫美國時間，研究紀錄 event_date_basis 與 must_not_write 已同步註明，翻譯代理請照紀錄。",
+        "第四節第二段的「高風險漏洞」是 CISA 公告原句的概括；原句另有限定（specifically those … on publicly exposed assets that grant total control of the asset post-exploitation），依裁定寫成一般性的一句，沒有寫這個漏洞是否落在那個範圍。",
+        "FAQ 2 的「部分第三方佈景主題」沒有譯出 GHSA 的 popular（熱門）；不是限縮用的但書，沒改。"
+      ],
+      "coordinator_rulings": [
+        "1 來源互換：sources[] 第 4 條（內容包與紀錄）換成 WordPress.org〈Dashboard Updates screen〉，網址從 /documentation/ 的索引連過去取得，頁面確認寫了更新頁面能升級核心、已是最新版時列出可重新安裝的版本號（但沒有寫一律顯示目前版本，見 open_questions 1）；紀錄加四條逐字引文。只有 KEV JSON 撐得住的三件事刪除：9 月 28 日、台北時間換算、7 月兩筆。KEV 日期全篇只寫「美國時間 9 月 25 日」（description、第一段、summary 第 3 條、第四節第一段），caption 本來就沒寫 KEV 日期。期限改成公告撐得住的一般句。紀錄的 live_data_warnings 已改。",
+        "2 圖解 caption 的「四個步驟」改「四件事」，內容包 caption 與 diagram.caption 逐字相同（check_article 通過）。",
+        "3 「4.7 以前」全篇改「早於 4.7 的版本」（第二節第三段、表格、圖解 alt、node 4，以及紀錄的 not_said、must_not_write、editorial_brief、verified_facts 兩條）；內容包 0 次。",
+        "4 兩個正式名稱第一次出現時各附中文譯名，英文原名保留；第四節第一段的第二次出現只留英文。",
+        "5 「詳細版本號見下表」改成「7.1、7.0、6.9、6.8 分支的版本號整理在下表，其餘分支請看 GHSA 的逐分支表」，與表格實際內容一致。",
+        "6 「部分常見的伺服器預設環境」改成 GHSA 撐得住的「GHSA 另外點名了兩種伺服器環境，在官方映像或預設設定下（其中一種限特定 PHP 版本）就已經符合伺服器端的前提」，沒有點名 Docker、cPanel 或 PHP 版本號。",
+        "7 「官方」從約 30 次減到 2 次（官方映像＝official image 的直譯；callout 的「請以官方頁面為準」），每一處改寫都重查了歸因對象是否正確。"
+      ],
+      "verdict": "ok",
+      "paragraph_chars_after": 2900,
+      "source_swap_addendum": {
+        "checked_by": "independent factcheck agent (round 2 addendum, opus; coordinator-requested source swap)",
+        "checked_on": "2026-09-26",
+        "method": "2026-09-26（台北，UTC 15:12）依協調者要求做的窄範圍補充，只處理第三節第一步的來源。重抓 WordPress 7.1.2 發布文（200、154,558 bytes，與第二輪抓檔位元組相同），確認它寫了更新路徑：「You can download WordPress 7.1.2 from WordPress.org, or visit your WordPress Dashboard, click “Updates”, and then click “Update Now”.」；再從 https://wordpress.org/documentation/（200、154,127 bytes）→ /documentation/category/dashboard/（200、149,487 bytes）的連結取得 https://wordpress.org/documentation/article/dashboard-screen/（200、158,220 bytes，h1「Dashboard screen」，頁尾 First published October 20, 2018、Last updated June 6, 2024），沒有猜網址。curl -sSL --max-time 30 --compressed，UA 為規格指定的 Mokaair-editorial/1.0，同一主機間隔 ≥1.5 秒，請求不含任何人的姓名或 email；原始檔在第二輪同一個 _raw 目錄下的 round2b 子目錄。發布文撐得住更新路徑，所以照要求換來源：sources[] 第 4 條換成〈Dashboard screen〉，第三節第一步改成在控制台首頁的 At a Glance 小工具看正在執行的版本、對照所在分支的修補版、還不是修補版就照發布文的路徑更新；FAQ 1 補回看版本號的地方；圖解第 1 格改成「控制台首頁的 At a Glance」。新改的每一句都對到四份 sources 之一，引文用程式對今天的抓檔做連續字串比對（fc2b-verify.txt）。",
+        "release_post_update_path": "You can download WordPress 7.1.2 from WordPress.org, or visit your WordPress Dashboard, click “Updates”, and then click “Update Now”.",
+        "dashboard_screen_version_quote": "A statement at the bottom of this widget tells you what WordPress version you’re running on, as well as the current theme that you have activated on your site.",
+        "changes": [
+          {
+            "claim": "sources[] 第 4 條（內容包與研究紀錄）",
+            "before": "Dashboard Updates screen（WordPress.org 說明文件）https://wordpress.org/documentation/article/dashboard-updates-screen/",
+            "after": "Dashboard screen（WordPress.org 說明文件）https://wordpress.org/documentation/article/dashboard-screen/",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          },
+          {
+            "claim": "第二段：讀了哪些文件",
+            "before": "〈WordPress 7.1.2 Release〉發布文與〈Dashboard Updates screen〉說明文件",
+            "after": "〈WordPress 7.1.2 Release〉發布文與〈Dashboard screen〉說明文件",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          },
+          {
+            "claim": "第三節第一段（第一步）：去哪裡看版本號",
+            "before": "進入網站控制台（Dashboard）的更新（Updates）頁面，依 WordPress.org 的說明文件，已經是最新版本時，在這一頁會看到已是最新版的訊息與可重新安裝的版本號，有新版時則會看到升級的提示；再把目前的版本號對照上表或 GHSA 頁面",
+            "after": "網站控制台（Dashboard）首頁預設會顯示 At a Glance 小工具，依 WordPress.org 的說明文件，小工具底部會寫出網站正在執行的 WordPress 版本（小工具被隱藏的話，可以在 Screen Options 面板勾選回來）；把這個版本號對照上表或 GHSA 頁面",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          },
+          {
+            "claim": "第三節第一段（第一步）：更新路徑",
+            "before": "手動更新的做法是進入控制台、點「Updates」、再點「Update Now」",
+            "after": "還不是修補版的話，發布文寫的更新做法是進入控制台、點「Updates」、再點「Update Now」",
+            "source_url": "https://wordpress.org/news/2026/09/wordpress-7-1-2-release/"
+          },
+          {
+            "claim": "FAQ 1：去哪裡確認版本號",
+            "before": "建議還是回頭確認目前的版本號",
+            "after": "建議還是回控制台首頁的 At a Glance 小工具確認目前的版本號",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          },
+          {
+            "claim": "研究紀錄 diagram.nodes 第 1 格",
+            "before": "[\"先看版本號\", \"更新頁面會寫明是否最新\"]",
+            "after": "[\"先看版本號\", \"控制台首頁的 At a Glance\"]",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          },
+          {
+            "claim": "研究紀錄：verified_facts",
+            "before": "〈Dashboard Updates screen〉四條",
+            "after": "〈Dashboard screen〉五條（Dashboard → Home、預設五個小工具、At a Glance 底部寫出正在執行的版本、Screen Options 選擇顯示哪些小工具、勾選即顯示），逐字比對過；〈Dashboard Updates screen〉四條移到 unverified_or_excluded；發布文的更新路徑那一條補註第三節只以它為依據",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          },
+          {
+            "claim": "研究紀錄：sourcing_notes、not_said（外掛）、must_not_write（介面字樣）、live_data_warnings、editorial_brief、unverified_or_excluded",
+            "before": "依〈Dashboard Updates screen〉寫的說明",
+            "after": "改成〈Dashboard screen〉；外掛的 not_said 改成新文件提到外掛的方式；At a Glance、Screen Options 保留英文原名",
+            "source_url": "https://wordpress.org/documentation/article/dashboard-screen/"
+          }
+        ],
+        "open_questions": [],
+        "coordinator_rulings": [
+          "來源互換（第二輪補充）：發布文寫了 Dashboard → Updates → Update Now 的更新路徑，條件成立；〈Dashboard screen〉取代〈Dashboard Updates screen〉。"
+        ],
+        "paragraph_chars_after": 2924
+      }
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "On Doesn't Mean Updated",
+      "diagram": {
+        "title": "Four Things to Confirm You're Patched",
+        "caption": "After WordPress released the 7.1.2 security update on September 22, 2026, the four things site owners should check to confirm they are patched, compiled from the WordPress release post, its documentation, and GHSA; checked on September 26, 2026.",
+        "nodes": [
+          [
+            "Check version",
+            "The At a Glance widget"
+          ],
+          [
+            "Match patch",
+            "Each branch has its own"
+          ],
+          [
+            "Auto-update",
+            "Will begin, not done yet"
+          ],
+          [
+            "Earlier than 4.7",
+            "Outside the patch range"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "自動更新＝更新済みではない",
+      "diagram": {
+        "title": "修正済みかを確認する4点",
+        "caption": "WordPressが2026年9月22日にセキュリティリリース7.1.2を公開した後、サイト管理者が修正済みかを確認すべき4つのポイント。WordPressの発表文、説明文書、GHSAに基づき作成、確認日2026年9月26日。",
+        "nodes": [
+          [
+            "バージョン確認",
+            "At a Glanceで見る"
+          ],
+          [
+            "修正版と照合",
+            "ブランチごとに違う"
+          ],
+          [
+            "自動更新の状況",
+            "開始であって完了ではない"
+          ],
+          [
+            "4.7より前",
+            "修正範囲の外"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "자동 업데이트와 완료는 별개",
+      "diagram": {
+        "title": "패치 확인을 위한 네 가지",
+        "caption": "WordPress가 2026년 9월 22일 보안 릴리스 7.1.2를 배포한 뒤, 사이트 관리자가 패치되었는지 확인해야 할 네 가지. WordPress 발표문, 설명 문서, GHSA를 바탕으로 정리, 확인일 2026년 9월 26일.",
+        "nodes": [
+          [
+            "버전 번호 확인",
+            "At a Glance 위젯"
+          ],
+          [
+            "패치 버전 대조",
+            "브랜치마다 다름"
+          ],
+          [
+            "자동 업데이트",
+            "시작돼도 완료와는 별개"
+          ],
+          [
+            "4.7보다 이전",
+            "패치 범위 밖"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "自动更新不等于已更新",
+      "diagram": {
+        "title": "确认网站已修复的四件事",
+        "caption": "WordPress 2026 年 9 月 22 日发布 7.1.2 安全版后，站长确认网站已修复要看的四件事，依 WordPress 发布文、说明文档与 GHSA 整理，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "先看版本号",
+            "首页的 At a Glance"
+          ],
+          [
+            "对照修复版",
+            "各分支有自己的修复版"
+          ],
+          [
+            "自动更新",
+            "会开始，不等于已完成"
+          ],
+          [
+            "早于 4.7 的版本",
+            "不在修复范围"
+          ]
+        ]
+      }
+    }
+  }
+}

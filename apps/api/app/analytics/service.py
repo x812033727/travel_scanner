@@ -78,8 +78,23 @@ FUNNEL_STEPS = ("discover_requested", "trip_created", "offer_attached", "outboun
 # older bundles do — and ingest drops it rather than double-counting the trip.
 SERVER_OWNED_EVENTS = frozenset({"trip_created"})
 _UUID_OR_TOKEN = re.compile(r"(?i)(?:[0-9a-f]{8}-[0-9a-f-]{27,}|[A-Za-z0-9_-]{20,})")
+# The slug rule of `app.guides.schemas.SLUG_PATTERN`. A published article's slug is public
+# and is the one long segment the reports must tell apart; `apps/web/components/
+# analytics-provider.tsx` (`sanitizedPath`) keeps the same two shapes.
+_ARTICLE_SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 _SAFE_UTM = re.compile(r"[^A-Za-z0-9._+\-/ ]")
 _BOT = re.compile(r"bot|crawler|spider|slurp|headless|preview|monitor", re.I)
+
+
+def _is_article(parts: list[str]) -> bool:
+    """`/guides/{intel,howto}/<slug>` or `/life/<slug>`, the locale already removed."""
+    if len(parts) == 3 and parts[0] == "guides" and parts[1] in {"intel", "howto"}:
+        slug = parts[2]
+    elif len(parts) == 2 and parts[0] == "life":
+        slug = parts[1]
+    else:
+        return False
+    return _ARTICLE_SLUG.fullmatch(slug) is not None
 
 
 def normalize_path(raw: str) -> str | None:
@@ -93,8 +108,14 @@ def normalize_path(raw: str) -> str | None:
         parts = parts[1:]
     if parts and parts[0].lower() in {"admin", "api", "health", "ready"}:
         return None
-    safe = [":id" if _UUID_OR_TOKEN.fullmatch(part) else part[:48] for part in parts]
+    if _is_article(parts):
+        # Whole, not cut at 48: two slugs sharing a 48-character prefix would merge.
+        safe = parts
+    else:
+        safe = [":id" if _UUID_OR_TOKEN.fullmatch(part) else part[:48] for part in parts]
     normalized = "/" + "/".join(safe)
+    # `analytics_events.normalized_path` is String(128): a `/guides/intel/` slug longer than
+    # 114 characters (the schema allows 120; the longest published is 53) is still cut here.
     return normalized[:128] or "/"
 
 

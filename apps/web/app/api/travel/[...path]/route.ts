@@ -19,6 +19,8 @@ const UPSTREAM_TIMEOUT_MS = Number(process.env.API_PROXY_TIMEOUT_MS || 15_000);
 function upstreamTimeout(endpoint: string): number {
   if (endpoint === "community/translations") return Math.max(UPSTREAM_TIMEOUT_MS, 45_000);
   if (/^community\/media\/[0-9a-f-]+\/complete$/.test(endpoint)) return Math.max(UPSTREAM_TIMEOUT_MS, 60_000);
+  // Starting a login runs a CLI on the host; the API gives its agent 25 s.
+  if (endpoint.startsWith("admin/ai-accounts")) return Math.max(UPSTREAM_TIMEOUT_MS, 30_000);
   return UPSTREAM_TIMEOUT_MS;
 }
 const SUPPORTED_LOCALES = new Set(["en", "ja", "ko", "zh-TW", "zh-CN"]);

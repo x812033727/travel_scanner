@@ -1,6 +1,6 @@
 import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { GuideArticle } from "./article";
+import { GuideArticle, type GuideArticleLabels } from "./article";
 import { AD_CLEARANCE_BLOCKS, MIN_BLOCKS_BETWEEN, type AdsenseConfig } from "@/lib/adsense";
 
 vi.mock("@/components/ads/article-ad-slot", () => ({
@@ -43,11 +43,11 @@ const document = {
 
 function draw(
   overrides: Record<string, unknown> = {},
-  extra: { readingTime?: string; adsense?: AdsenseConfig } = {},
+  extra: { readingTime?: string; adsense?: AdsenseConfig; labels?: Partial<GuideArticleLabels> } = {},
 ) {
   return render(
     <GuideArticle
-      labels={labels}
+      labels={{ ...labels, ...extra.labels }}
       readingTime={extra.readingTime}
       adsense={extra.adsense}
       state={{
@@ -551,5 +551,13 @@ describe("GuideArticle summary and FAQ", () => {
     // Once each: the body renders around them.
     expect(screen.getAllByText("先買 eSIM。")).toHaveLength(1);
     expect(screen.getAllByText("要實體 SIM 嗎？")).toHaveLength(1);
+  });
+});
+
+describe("GuideArticle reader support", () => {
+  it("draws no support line while the owner has not set a tip page", () => {
+    draw({}, { labels: { support: { text: "如果這篇文章對你有幫助，歡迎小額支持本站繼續更新。", action: "支持 Mokaair", newTab: "另開新分頁" } } });
+    expect(screen.queryByText("支持 Mokaair")).toBeNull();
+    expect(screen.queryByText(/歡迎小額支持/)).toBeNull();
   });
 });

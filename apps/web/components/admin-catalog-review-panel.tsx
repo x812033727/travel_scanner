@@ -16,6 +16,8 @@ import {
   type CatalogReviewScope,
 } from "@/lib/admin-review-copy";
 import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
+import { adminSettingsCopy } from "@/lib/admin-settings-copy";
+import { settingsHref } from "@/lib/admin-settings-ownership";
 import { useModalSheet } from "@/lib/modal-sheet";
 import { safeExternalHref } from "@/lib/navigation";
 
@@ -803,11 +805,11 @@ function CatalogReviewContent({ scope }: PanelProps) {
         aria-label={t("availability")}
         className="rounded-2xl bg-[var(--paper)] p-4 text-sm"
       >
-        <p>{t("provider", { model: overview?.model || "—" })}</p>
+        <p>{t("provider", { model: overview?.model || "—" })} · <a href={`/${locale}${settingsHref("providers", "gemini_guides", "hotspot_guide_gemini_model")}`} className="font-semibold text-[var(--teal)] underline">{adminSettingsCopy(locale).aiSettings}</a></p>
         <p className="mt-1 text-[var(--muted)]">
           {budgetCopy.defaultLimits.replace("{run}", String(overview?.run_call_limit ?? "—")).replace("{daily}", String(overview?.daily_call_limit ?? "—"))}
         </p>
-        <a href={`/${locale}/admin/settings?provider=gemini_guides&field=catalog_review_max_calls`} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline focus-visible:outline-2 focus-visible:outline-offset-2">{budgetCopy.configure}</a>
+        <a href={`/${locale}${settingsHref("providers", "gemini_guides", "catalog_review_max_calls")}`} className="inline-flex min-h-11 items-center font-semibold text-[var(--teal)] underline focus-visible:outline-2 focus-visible:outline-offset-2">{budgetCopy.configure}</a>
         <p className="mt-1 text-[var(--muted)]">{copy.sharedQuota}</p>
         {scope &&
           overview?.active_run &&

@@ -120,6 +120,19 @@ services:
       postgres: { condition: service_healthy }
       redis: { condition: service_healthy }
 
+  news-worker:
+    profiles: ["news"]
+    build: ./apps/api
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://travel:travel@postgres:5432/travel_scanner
+      REDIS_URL: redis://redis:6379/0
+    command: ["python", "-m", "app.news_automation.worker"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+
   community-sweeper:
     build: ./apps/api
     env_file: .env

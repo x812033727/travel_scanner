@@ -119,6 +119,13 @@ class Settings(BaseSettings):
     deploy_agent_hmac_key: str | None = None
     deploy_agent_timeout_seconds: float = Field(default=10.0, gt=0, le=30)
     deploy_cooldown_seconds: int = Field(default=300, ge=0, le=3_600)
+    # /admin/ai-accounts: the host agent in ops/ai-accounts signs root's Claude Code and
+    # Codex CLIs in to subscription accounts. The socket path is fixed by its systemd unit.
+    ai_accounts_enabled: bool = False
+    ai_accounts_agent_socket: str = "/run/mokaair-ai-accounts/agent.sock"
+    ai_accounts_agent_hmac_key: str | None = None
+    # Starting a login runs a CLI on the host; the web proxy allows 30 s for these routes.
+    ai_accounts_agent_timeout_seconds: float = Field(default=25.0, gt=0, le=28)
     database_url: str = "postgresql+asyncpg://travel:travel@localhost:5432/travel_scanner"
     redis_url: str = "redis://localhost:6379/0"
     api_cors_origins: str = "http://localhost:3000"
@@ -231,11 +238,18 @@ class Settings(BaseSettings):
     ai_planner_ip_budget: int = Field(default=120, ge=1, le=10_000)
     ai_planner_user_budget_window_seconds: int = Field(default=3_600, ge=60, le=86_400)
     openai_api_base_url: str = "https://api.openai.com/v1"
-    openai_model: str = "gpt-5.6-terra"
+    openai_model: str = "gpt-6-sol"
     openai_api_key: str | None = None
     anthropic_api_base_url: str = "https://api.anthropic.com/v1"
     anthropic_model: str = "claude-sonnet-5"
     anthropic_api_key: str | None = None
+    # "subscription" runs every Claude call on the accounts /admin/ai-accounts signs in on the
+    # host (app.ai.subscription), the owner's choice of 2026-09-25; the key is then unused.
+    anthropic_connection: Literal["api_key", "subscription"] = "api_key"
+    # When every account is full: "minimax" runs the call on MiniMax at once; "wait"
+    # leaves it for an account to free up (the news pipeline tries again every 30 minutes),
+    # which the owner chose on 2026-09-26 for quality.
+    ai_subscription_fallback: Literal["minimax", "wait"] = "minimax"
     minimax_api_base_url: str = "https://api.minimaxi.com/v1"
     minimax_model: str = "MiniMax-M3"
     # Gemini shares the key and base URL of the article search (hotspot_guide_gemini_*);
@@ -512,6 +526,49 @@ class Settings(BaseSettings):
     # belongs here later; the enum exists now so adding it is not a type change. Same
     # reasoning as public_read_rate_limit_mode: move on evidence, not on principle.
     jev_shadow_guide_assessment: Literal["off", "shadow"] = "off"
+    # Azure AI Speech narrates the YouTube videos the local pipeline in tools/video builds
+    # (docs/videos/DESIGN.md). The key stays on this server: the pipeline sends sentences to
+    # POST /api/v1/video/speech with a video tool token and gets audio back. The endpoint host
+    # is built from the region, which is why the region is pattern-checked and no base URL is
+    # stored.
+    azure_speech_region: str | None = Field(default=None, pattern=r"^[a-z][a-z0-9]{1,31}$")
+    azure_speech_key: str | None = None
+
+    @field_validator("azure_speech_region", mode="before")
+    @classmethod
+    def empty_azure_speech_region(cls, value: object) -> object:
+        # An empty AZURE_SPEECH_REGION= (as in .env.example) means "not set", not a bad region.
+        if isinstance(value, str):
+            return value.strip().lower() or None
+        return value
+
+    # Voices the pipeline may ask for: Taiwan Mandarin, and the multilingual voices that can
+    # speak it through <lang xml:lang="zh-TW">.
+    azure_speech_voices: str = (
+        "zh-TW-HsiaoChenNeural,zh-TW-YunJheNeural,zh-TW-HsiaoYuNeural,"
+        "en-US-AvaMultilingualNeural,en-US-AndrewMultilingualNeural,"
+        "en-US-BrianMultilingualNeural,en-US-EmmaMultilingualNeural"
+    )
+    # Billable characters per UTC month; Azure counts a Chinese character twice and bills the
+    # SSML markup too. 0 counts without blocking. The default stays under the free tier's
+    # 500,000 so a month of videos cannot turn into a bill.
+    azure_speech_monthly_character_limit: int = Field(default=450_000, ge=0, le=100_000_000)
+    azure_speech_timeout_seconds: float = Field(default=90.0, ge=5, le=280)
+    # Gemini narration uses the site's Gemini key (hotspot_guide_gemini_*). Its month counts
+    # the text characters sent: 300,000 is about a hundred 10-minute videos, roughly US$13 at
+    # the 2026 price of gemini-3.8-flash-tts.
+    video_speech_gemini_monthly_character_limit: int = Field(
+        default=300_000, ge=0, le=100_000_000
+    )
+    video_speech_gemini_timeout_seconds: float = Field(default=150.0, ge=5, le=280)
+    # Previews the owner reviews on /admin/videos: a 720p cut, the narration, the contact sheet.
+    # Production has no object storage, so they live in a volume on the host
+    # (docker-compose.prod.yml) and are served to admins only.
+    video_review_dir: str = "/var/lib/mokaair/video-reviews"
+    video_review_max_file_bytes: int = Field(default=400_000_000, ge=1_000_000, le=4_000_000_000)
+    video_review_max_total_bytes: int = Field(
+        default=20_000_000_000, ge=10_000_000, le=500_000_000_000
+    )
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None
@@ -603,6 +660,15 @@ class Settings(BaseSettings):
         )
 
     @property
+    def ai_accounts_configured(self) -> bool:
+        return bool(
+            self.ai_accounts_enabled
+            and self.ai_accounts_agent_hmac_key
+            and len(self.ai_accounts_agent_hmac_key) >= 32
+            and self.ai_accounts_agent_socket.startswith("/")
+        )
+
+    @property
     def amadeus_base_url(self) -> str:
         return (
             "https://api.amadeus.com"
@@ -673,6 +739,15 @@ class Settings(BaseSettings):
         return bool(self.jev_api_key and self.jev_api_base_url)
 
     @property
+    def azure_speech_configured(self) -> bool:
+        return bool(self.azure_speech_key and self.azure_speech_region)
+
+    @property
+    def azure_speech_voice_list(self) -> tuple[str, ...]:
+        voices = (voice.strip() for voice in self.azure_speech_voices.split(","))
+        return tuple(voice for voice in voices if voice)
+
+    @property
     def naver_maps_configured(self) -> bool:
         return bool(self.naver_maps_client_id and self.naver_maps_client_secret)
 
@@ -737,6 +812,14 @@ class Settings(BaseSettings):
                 errors.append(
                     "DEPLOY_AGENT_SOCKET must use the systemd-managed "
                     "/run/travel-scanner-deployer/deployer.sock path"
+                )
+        if self.ai_accounts_enabled:
+            if not self.ai_accounts_agent_hmac_key or len(self.ai_accounts_agent_hmac_key) < 32:
+                errors.append("AI_ACCOUNTS_AGENT_HMAC_KEY must be set to at least 32 characters")
+            if self.ai_accounts_agent_socket != "/run/mokaair-ai-accounts/agent.sock":
+                errors.append(
+                    "AI_ACCOUNTS_AGENT_SOCKET must use the systemd-managed "
+                    "/run/mokaair-ai-accounts/agent.sock path"
                 )
         pinned_endpoints = {
             "OPENAI_API_BASE_URL": (self.openai_api_key, "openai_api_base_url"),

@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import gzip
 from datetime import UTC, datetime, timedelta
+from typing import Any
 from unittest.mock import AsyncMock
 from uuid import UUID, uuid4
 
@@ -9,7 +11,9 @@ import pytest
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
+from app.config import get_settings
 from app.db import Base
+from app.guides.schemas import GuideDocument
 from app.news_automation.feeds import extract_article, parse_entries
 from app.news_automation.fetch import (
     MAX_RESPONSE_BYTES,
@@ -25,9 +29,14 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    auto_evidence_ok,
     content_fingerprint,
     event_date_problems,
+    evidence_present,
+    evidence_site,
+    evidence_sufficient,
     gate_result,
+    hard_policy_problems,
     normalized_title,
     transition_allowed,
 )
@@ -451,3 +460,569 @@ async def test_evidence_is_refetched_and_changed_content_fails_closed() -> None:
     current, reasons = await revalidate_evidence(session, [evidence], fetcher=fetcher)
     assert not current
     assert reasons == [f"source_content_changed:{evidence.url}"]
+
+
+@pytest.mark.asyncio
+async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    lead = NewsSource(
+        name="Lead",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/news",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = b"<rss><channel>" + b"".join(
+        f"<item><title>Story {name}</title><link>https://example.com/{name}</link></item>".encode()
+        for name in ("a", "broken", "c", "d")
+    ) + b"</channel></rss>"
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url,
+                    status_code=200,
+                    content_type="application/rss+xml",
+                    body=listing,
+                    etag='"listing"',
+                )
+            if url.endswith("/broken"):
+                raise httpx.ConnectError("connection refused")
+            if url == "https://official.example/facts":
+                raise UnsafeNewsUrl("robots.txt did not permit this fetch")
+            if url == "https://official.example/down":
+                raise httpx.ConnectTimeout("official site timed out")
+            primary = "down" if url.endswith("/d") else "facts"
+            body = (
+                f"<html><main>Distinct report for {url}."
+                f'<a href="https://official.example/{primary}">primary</a></main></html>'
+            )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([lead, official])
+        await session.commit()
+        first = await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(lead)
+        status, error, etag = lead.last_status, lead.last_error or "", lead.etag
+        requested.clear()
+        second = await scan_source(session, lead.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        urls = set(await session.scalars(select(NewsCandidate.canonical_url)))
+    assert first == 2
+    assert urls == {"https://example.com/a", "https://example.com/c"}
+    assert status == "partial"
+    assert "https://example.com/broken (ConnectError)" in error
+    # A refused primary page is left out; one that timed out holds the whole entry back.
+    assert "https://official.example/facts (UnsafeNewsUrl)" in error
+    assert "https://official.example/down (ConnectTimeout)" in error
+    # The listing validators are kept back so the skipped entries are tried again.
+    assert etag is None
+    assert second == 0
+    assert requested == [
+        "https://example.com/feed",
+        "https://example.com/broken",
+        "https://example.com/d",
+        "https://official.example/down",
+    ]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_robots_txt_is_read_once_per_host_for_the_life_of_a_fetcher() -> None:
+    robots_reads: list[str] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            robots_reads.append(request.headers["host"])
+            return httpx.Response(200, text="User-agent: *\nDisallow: /private", request=request)
+        return httpx.Response(
+            200, content=b"<html></html>", headers={"Content-Type": "text/html"}, request=request
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    for path in ("/a", "/b"):
+        await fetcher.fetch(f"https://example.com{path}", allowed_hosts={"example.com"})
+    with pytest.raises(UnsafeNewsUrl, match="robots"):
+        await fetcher.fetch("https://example.com/private/c", allowed_hosts={"example.com"})
+    assert robots_reads == ["example.com"]
+    await client.aclose()
+
+
+def test_a_malformed_href_is_dropped_instead_of_failing_the_page() -> None:
+    _, _, links = extract_article(
+        b'<main>Body <a href="https://[broken/path">bad</a>'
+        b'<a href="https://official.example/facts">good</a></main>',
+        "https://lead.example/story",
+    )
+    assert links == ["https://official.example/facts"]
+    rows = parse_entries(
+        b'<a href="https://[broken">A sufficiently long headline</a>'
+        b'<a href="/news/ok">Another sufficiently long headline</a>',
+        "html",
+        "https://example.com/",
+        {},
+    )
+    assert [row.url for row in rows] == ["https://example.com/news/ok"]
+
+
+@pytest.mark.asyncio
+async def test_robots_txt_outage_is_a_retryable_http_error_and_is_not_remembered() -> None:
+    robots_status = [503]
+    robots_reads = 0
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        nonlocal robots_reads
+        if request.url.path == "/robots.txt":
+            robots_reads += 1
+            status = robots_status[0]
+            return httpx.Response(status, text="User-agent: *\nAllow: /", request=request)
+        return httpx.Response(
+            200, content=b"<html></html>", headers={"Content-Type": "text/html"}, request=request
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    with pytest.raises(httpx.HTTPStatusError):
+        await fetcher.fetch("https://example.com/a", allowed_hosts={"example.com"})
+    robots_status[0] = 200
+    fetched = await fetcher.fetch("https://example.com/a", allowed_hosts={"example.com"})
+    assert fetched.status_code == 200
+    # Three attempts on the outage, one read after it.
+    assert robots_reads == 4
+    await client.aclose()
+
+
+@pytest.mark.asyncio
+async def test_a_feed_link_that_redirects_to_a_seen_page_files_nothing_new() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    source = NewsSource(
+        name="Lead",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    listing = (
+        b"<rss><channel><item><title>Story</title>"
+        b"<link>https://example.com/track?id=1</link></item></channel></rss>"
+    )
+    edition = ["first"]
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            # The tracking link lands on the article, whose sidebar text drifts.
+            body = f"<html><main>Report, {edition[0]} edition.</main></html>".encode()
+            return FetchResult(
+                url="https://example.com/story",
+                status_code=200,
+                content_type="text/html",
+                body=body,
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(source)
+        await session.commit()
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        edition[0] = "second"
+        await scan_source(session, source.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        statuses = list(await session.scalars(select(NewsCandidate.status)))
+    assert statuses == ["discovered"]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_compressed_responses_are_decoded_exactly_once() -> None:
+    feed = (
+        b"<rss><channel><item><title>Compressed release</title>"
+        b"<link>https://example.com/a</link></item></channel></rss>"
+    )
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(
+                200,
+                content=gzip.compress(b"User-agent: *\nAllow: /"),
+                headers={"Content-Encoding": "gzip", "Content-Type": "text/plain"},
+                request=request,
+            )
+        return httpx.Response(
+            200,
+            content=gzip.compress(feed),
+            headers={"Content-Encoding": "gzip", "Content-Type": "application/rss+xml"},
+            request=request,
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    fetcher = SafeNewsFetcher(client=client, resolver=lambda _host: _resolved("93.184.216.34"))
+    fetched = await fetcher.fetch("https://example.com/feed", allowed_hosts={"example.com"})
+    assert fetched.body == feed
+    assert parse_entries(fetched.body, "rss", fetched.url, {})[0].title == "Compressed release"
+    await client.aclose()
+
+
+def test_pages_of_one_website_are_one_source() -> None:
+    def row(url: str, first_party: bool = False, role: str = "evidence") -> NewsEvidence:
+        return NewsEvidence(
+            role=role, url=url, is_first_party=first_party, title="t", content_hash="h", excerpt="e"
+        )
+
+    assert evidence_site("https://WWW.Apple.com/newsroom/a") == "apple.com"
+    # An announcement and its own related page: one website, not corroboration.
+    assert not evidence_sufficient(
+        [row("https://www.apple.com/newsroom/a", True), row("https://apple.com/newsroom/b", True)]
+    )
+    assert evidence_sufficient(
+        [row("https://www.apple.com/newsroom/a", True), row("https://www.theverge.com/story")]
+    )
+    # Two websites but no first-party page, or a lead-only second site.
+    assert not evidence_sufficient(
+        [row("https://www.theverge.com/story"), row("https://techcrunch.com/story")]
+    )
+    assert not evidence_sufficient(
+        [row("https://openai.com/index/a", True), row("https://lead.example/x", role="lead_only")]
+    )
+    # Automatic publication (owner decision, 2026-09-25): two websites, or the company's own
+    # announcement on its own; a single third-party website still waits for a person.
+    assert auto_evidence_ok([row("https://www.apple.com/newsroom/a", True)])
+    assert auto_evidence_ok(
+        [row("https://www.apple.com/newsroom/a", True), row("https://www.theverge.com/story")]
+    )
+    assert not auto_evidence_ok([row("https://www.theverge.com/story")])
+    assert not auto_evidence_ok([row("https://openai.com/index/a", True, role="lead_only")])
+
+
+def test_one_evidence_page_is_enough_to_draft_and_to_pass_the_source_check() -> None:
+    """Owner decision, 2026-09-25: a single official or trusted source is drafted for a
+    person to confirm; only automatic publication still asks for two websites."""
+
+    def row(url: str, role: str = "evidence") -> NewsEvidence:
+        return NewsEvidence(
+            role=role, url=url, is_first_party=True, title="t", content_hash="h", excerpt="e"
+        )
+
+    assert evidence_present([row("https://www.apple.com/newsroom/a")])
+    assert not evidence_present([row("https://lead.example/x", role="lead_only")])
+    assert not evidence_present([])
+    document = GuideDocument.model_validate(
+        {"title": "T", "description": "D", "blocks": [{"type": "paragraph", "text": "Body."}]}
+    )
+
+    def source_problems(count: int) -> list[str]:
+        problems = hard_policy_problems(document, "ai", "zh-TW", source_count=count)
+        return [problem for problem in problems if problem.startswith("news_sources")]
+
+    assert source_problems(1) == []
+    assert source_problems(0) == ["news_sources: evidence from at least one website is required"]
+
+
+@pytest.mark.asyncio
+async def test_scanner_fetches_only_articles_on_other_websites_as_evidence() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    press = NewsSource(
+        name="Press",
+        url="https://press.example/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+    )
+    official = NewsSource(
+        name="Official",
+        url="https://official.example/news",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = (
+        b"<rss><channel><item><title>Story</title>"
+        b"<link>https://press.example/story</link></item></channel></rss>"
+    )
+    article = (
+        b"<html><main>Report."
+        b'<a href="https://press.example/related">related</a>'
+        b'<a href="https://www.press.example/other">same site</a>'
+        b'<a href="https://press.example/wp-content/uploads/photo.JPG">photo</a>'
+        b'<a href="https://official.example/assets/chart.png">chart</a>'
+        b'<a href="https://official.example/announcement">announcement</a>'
+        b"</main></html>"
+    )
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            official = b"<html><main>Official text.</main></html>"
+            body = article if url.endswith("/story") else official
+            return FetchResult(url=url, status_code=200, content_type="text/html", body=body)
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([press, official])
+        await session.commit()
+        await scan_source(session, press.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(press)
+        evidence = sorted(await session.scalars(select(NewsEvidence.url)))
+        status = press.last_status
+    await engine.dispose()
+
+    assert requested == [
+        "https://press.example/feed",
+        "https://press.example/story",
+        "https://official.example/announcement",
+    ]
+    assert evidence == ["https://official.example/announcement", "https://press.example/story"]
+    assert status == "succeeded"
+
+
+@pytest.mark.asyncio
+async def test_reviewers_never_see_the_per_locale_topic_link(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """On 2026-09-26 a reviewer held a Japanese article because its topic link named /ja/
+    while the zh-TW source named /zh-TW/; the link is the pipeline's, not the article's."""
+
+    from app.news_automation import ai as news_ai
+    from app.news_automation.policy import for_review
+
+    def linked(locale: str) -> GuideDocument:
+        return GuideDocument.model_validate(
+            {
+                "title": "T",
+                "description": "D",
+                "blocks": [
+                    {"type": "paragraph", "text": "Body."},
+                    {
+                        "type": "link",
+                        "text": "More",
+                        "url": f"https://mokaair.com/{locale}/life/topics/crypto",
+                    },
+                    {"type": "link", "text": "Source", "url": "https://www.coindesk.com/a"},
+                ],
+            }
+        )
+
+    assert [block["type"] for block in for_review(linked("ja"))["blocks"]] == [
+        "paragraph",
+        "link",
+    ]
+    seen: list[dict[str, Any]] = []
+
+    async def structured(*args: Any) -> tuple[Any, dict[str, int], str]:
+        seen.append(args[-1])
+        return object(), {}, "model"
+
+    monkeypatch.setattr(news_ai, "_structured", structured)
+    settings = NewsAutomationSettings(id=1)
+    await news_ai.review_locale(get_settings(), settings, linked("zh-TW"), "ja", linked("ja"))
+    await news_ai.final_edit(get_settings(), settings, linked("zh-TW"), "ja", linked("ja"), [])
+    for payload in seen:
+        for key in ("verified_zh_tw", "localized_article", "article"):
+            if key in payload:
+                urls = [block.get("url") for block in payload[key]["blocks"]]
+                assert all("/life/topics/" not in str(url) for url in urls), key
+                assert "https://www.coindesk.com/a" in urls, "other links stay"
+
+
+def test_the_site_adds_its_own_crypto_disclaimer_where_a_model_left_none() -> None:
+    """On 2026-09-26 the writer and two translators left the disclaimer out of a crypto story."""
+
+    from app.news_automation.policy import (
+        CRYPTO_MARKERS,
+        document_fingerprint,
+        with_crypto_disclaimer,
+    )
+
+    def article(locale: str) -> GuideDocument:
+        return GuideDocument.model_validate(
+            {
+                "title": "T",
+                "description": "D",
+                "blocks": [
+                    {"type": "paragraph", "text": "Body."},
+                    {
+                        "type": "link",
+                        "text": "More",
+                        "url": f"https://mokaair.com/{locale}/life/topics/crypto",
+                    },
+                ],
+            }
+        )
+
+    for locale, marker in CRYPTO_MARKERS.items():
+        bare = article(locale)
+        noticed = with_crypto_disclaimer(bare, "crypto", locale)
+        callouts = [block for block in noticed.blocks if block.type == "callout"]
+        assert len(callouts) == 1 and marker in callouts[0].text, locale
+        assert noticed.blocks[-1].type == "link", "the topic link stays last"
+        assert not [
+            problem
+            for problem in hard_policy_problems(noticed, "crypto", locale, source_count=1)
+            if problem.startswith(("crypto_disclaimer", "finance_no_disclaimer"))
+        ], locale
+        assert document_fingerprint(noticed) == document_fingerprint(bare), (
+            "a verification of the words stays valid"
+        )
+        assert with_crypto_disclaimer(noticed, "crypto", locale) == noticed, "added once"
+    assert with_crypto_disclaimer(article("en"), "ai", "en") == article("en")
+
+
+def test_a_rerun_starts_from_the_words_without_the_last_runs_artwork() -> None:
+    from app.news_automation.policy import document_fingerprint, site_additions_removed
+
+    drawn = GuideDocument.model_validate(
+        {
+            "title": "T",
+            "description": "D",
+            "hero": {
+                "src": "/guides/news-assets/abc-hero.png",
+                "alt": "Hero",
+                "width": 1200,
+                "height": 630,
+            },
+            "blocks": [
+                {"type": "paragraph", "text": "Body."},
+                {
+                    "type": "image",
+                    "src": "/guides/news-assets/abc-diagram.svg",
+                    "alt": "Diagram",
+                    "width": 1200,
+                    "height": 800,
+                },
+                {"type": "link", "text": "More", "url": "https://mokaair.com/en/life/topics/ai-news"},
+            ],
+        }
+    )
+    words = site_additions_removed(drawn)
+    assert words.hero is None
+    assert [block.type for block in words.blocks] == ["paragraph"]
+    assert document_fingerprint(words) == document_fingerprint(drawn)
+
+
+@pytest.mark.asyncio
+async def test_refreshing_evidence_takes_the_current_text_only_when_every_page_reads() -> None:
+    from app.news_automation.validation import refresh_evidence
+
+    source = NewsSource(
+        name="Official",
+        url="https://example.com/feed",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    evidence = NewsEvidence(
+        candidate_id=uuid4(),
+        role="evidence",
+        is_first_party=True,
+        url="https://example.com/release",
+        title="Official product update",
+        content_hash="old",
+        excerpt="Old text.",
+        etag='"stale"',
+    )
+    session = AsyncMock()
+    session.scalars.return_value = [source]
+    fetcher = AsyncMock()
+    fetcher.fetch.side_effect = TimeoutError()
+    changed, problems = await refresh_evidence(session, [evidence], fetcher=fetcher)
+    assert (changed, problems) == ([], [f"source_refetch_failed:{evidence.url}:TimeoutError"])
+    assert (evidence.content_hash, evidence.excerpt) == ("old", "Old text."), "nothing changed"
+
+    body = b"<html><main>Official product update, now with the pricing details added.</main></html>"
+    fetcher.fetch.side_effect = None
+    fetcher.fetch.return_value = FetchResult(
+        url=evidence.url, status_code=200, content_type="text/html", body=body, etag='"new"'
+    )
+    changed, problems = await refresh_evidence(session, [evidence], fetcher=fetcher)
+    _, text, _ = extract_article(body, evidence.url)
+    assert (changed, problems) == ([evidence.url], [])
+    assert evidence.content_hash == content_fingerprint(text) and "pricing" in evidence.excerpt
+    assert evidence.etag == '"new"'
+    assert "etag" not in fetcher.fetch.await_args.kwargs, "a stale ETag cannot hide the change"

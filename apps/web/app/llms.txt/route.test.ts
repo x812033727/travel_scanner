@@ -124,7 +124,7 @@ describe("llms.txt", () => {
   it("names the guides and lifestyle hubs, which carry no switch", async () => {
     const text = await body();
     expect(text).toContain(`- [Travel intel and guides](${siteUrl}/en/guides): ${metadata.guidesDescription}`);
-    expect(text).toContain(`- [Lifestyle](${siteUrl}/en/life): ${metadata.lifeDescription}`);
+    expect(text).toContain(`- [Tech & life](${siteUrl}/en/life): ${metadata.lifeDescription}`);
   });
 
   it("lists each top-level topic where its articles are, and every series hub once", async () => {

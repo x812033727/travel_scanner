@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { adsbygoogleQueue } from "./adsense-loader";
+import { adsbygoogleQueue, useAdsenseDocument } from "./adsense-loader";
 import { isAdsensePublisherId, isAdsenseSlotId } from "@/lib/adsense";
 
 /** Reserved before the ad arrives, so filling it shifts nothing below it. */
@@ -17,7 +17,9 @@ export const LAZY_ROOT_MARGIN = "0px 0px 800px 0px";
  * One in-article unit, labelled and with its box reserved.
  *
  * The server decides whether this renders at all; when advertising is off the article emits
- * no slot and no reserved space, so a reader sees exactly the page they see today. The label
+ * no slot and no reserved space, so a reader sees exactly the page they see today. It also
+ * renders nothing outside an `AdsenseDocument`: without the tag in the document there is
+ * nothing to fill the box. The label
  * may only ever read "廣告" / "Advertisements": the programme policies forbid dressing an ad
  * up as a recommendation.
  *
@@ -35,6 +37,7 @@ export function ArticleAdSlot({ publisherId, slotId, label, cmpEnabled, lazy = f
   lazy?: boolean;
 }) {
   const ref = useRef<HTMLModElement>(null);
+  const tagLoaded = useAdsenseDocument();
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
@@ -61,7 +64,7 @@ export function ArticleAdSlot({ publisherId, slotId, label, cmpEnabled, lazy = f
     observer.observe(element);
     return () => observer.disconnect();
   }, [cmpEnabled, lazy]);
-  if (!isAdsensePublisherId(publisherId) || !isAdsenseSlotId(slotId)) return null;
+  if (!tagLoaded || !isAdsensePublisherId(publisherId) || !isAdsenseSlotId(slotId)) return null;
   return (
     <aside aria-label={label} className="article-ad-slot my-2">
       <p className="mb-1 text-xs uppercase tracking-wide text-[var(--muted)]">{label}</p>

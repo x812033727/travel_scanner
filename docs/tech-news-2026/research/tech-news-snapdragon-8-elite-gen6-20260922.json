@@ -1,0 +1,651 @@
+{
+  "slug": "tech-news-snapdragon-8-elite-gen6-20260922",
+  "vertical": "tech",
+  "display_order": 339,
+  "event_date": "2026-09-22",
+  "event_date_basis": "2026-09-26 重抓 Qualcomm 新聞稿的 Markdown 版（HTML 頁 <head> 裡 <link id=\"geo-artifacts-markdown-link\" rel=\"alternate\" type=\"text/markdown\"> 指向的官方版本）：front matter 印 publishedDate: \"Sep 22, 2026\"、location: \"MAUI\"、newsroomType: \"Press Note\"，正文頁首一行印「Press Note | Sep 22, 2026 | MAUI」。全文沒有任何時刻或時區字樣（a.m.、p.m.、PST、PDT、HST、Hawaii 以詞界比對皆 0 次）。qualcomm.com/sitemap.xml 這個網址的 <lastmod> 也是 2026-09-22（sitemap 不標時區，只作佐證，不是事件日依據）。依 DELTA-4-8 第 4 條協調者裁定：沒有時刻的稿子不換算，事件日照發布者日期 2026-09-22，slug、news_date、正文第一段一致，正文照新聞稿印的寫「9 月 22 日」，可以帶電頭茂宜島（Maui），不寫任何時區（DELTA-4-8 第 4 條；2026-09-26 第一輪查核依該條更正本欄原先要求寫出時區的句子）。要讓撰稿知道的一點：來源只印電頭 MAUI（茂宜島），沒有印 Hawaii 或任何時區。若發表是在茂宜島當地白天，台北日期可能已是 9 月 23 日，但來源沒有時刻，所以不可寫成台北 9 月 23 日，也不可寫任何發表時刻。",
+  "title": "高通發表兩款 Snapdragon 旗艦手機平台：Extreme 版與 8 Elite Gen 6 差在哪",
+  "title_candidates": [
+    "高通發表兩款 Snapdragon 旗艦手機平台：Extreme 版與 8 Elite Gen 6 差在哪",
+    "高通 Snapdragon 8 Elite Extreme Gen 6 與 8 Elite Gen 6：旗艦平台分兩級",
+    "高通一次發表兩款旗艦手機平台：Extreme 版與 8 Elite Gen 6 新聞稿各寫了什麼",
+    "Snapdragon 8 Elite Gen 6 分兩級：高通新聞稿寫了哪些品牌，沒寫代工廠與上市日",
+    "高通兩款 2 奈米旗艦手機平台登場：品牌名單、夥伴說法與還沒公布的事"
+  ],
+  "checked_on": "2026-09-26",
+  "sources": [
+    {
+      "title": "Snapdragon Leads the Agentic AI Age with Two of the World's Fastest Mobile SoCs Powering the Next Generation of Smartphones",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "final_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "publisher": "Qualcomm",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T14:05:08Z",
+      "http_status": 200,
+      "bytes": 8917,
+      "raw_file": "_raw/tech-news-snapdragon-8-elite-gen6-20260922/release.md",
+      "verbatim_quote": "Qualcomm Technologies, Inc. unveiled today its newest premium mobile lineup – the Snapdragon® 8 Elite Extreme Gen 6 Mobile Platform and Snapdragon® 8 Elite Gen 6 Mobile Platform.",
+      "used_for": "事件本身、日期與電頭、兩款平台的定位、Extreme 版列的新功能、2 奈米與 CPU／GPU／NPU、品牌名單、夥伴引言文件的出處"
+    },
+    {
+      "title": "Snapdragon Summit Partner Quote Sheet（Snapdragon Summit 2026 press kit，Day 1）",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "final_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "publisher": "Qualcomm",
+      "checked_on": "2026-09-26",
+      "fetched_at": "2026-09-26T14:05:18Z",
+      "http_status": 200,
+      "bytes": 86268,
+      "raw_file": "_raw/tech-news-snapdragon-8-elite-gen6-20260922/PartnerQuoteSheet.pdf（pypdf 抽出的文字：PartnerQuoteSheet.pdf.txt）",
+      "verbatim_quote": "as we bring Snapdragon 8 Elite Extreme Gen 6 to our flagship portfolio for the first time",
+      "used_for": "各品牌引言各自點名哪一款平台；vivo 與 RedMagic 提到的即將推出產品名稱"
+    }
+  ],
+  "sourcing_verdict": "full",
+  "sourcing_notes": "2026-09-26（台北）以 curl -sSL --max-time 30 --compressed -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓，同一主機間隔 1.5 秒，任何請求都沒有帶入人名、email 或個人資料；落地檔與請求紀錄在 _raw/tech-news-snapdragon-8-elite-gen6-20260922/（fetch-log.tsv 記每一筆的狀態碼、落地網址與檔案大小）。bytes 一律是落地檔案大小，不是 curl 的 size_download（壓縮後）。\n取得配方（可重現）：\n(1) https://www.qualcomm.com/robots.txt → 200、492 bytes，寫著 Sitemap: https://www.qualcomm.com/sitemap.xml 與 LLMs.txt: https://www.qualcomm.com/llms.txt。\n(2) https://www.qualcomm.com/sitemap.xml → 200、1,677,790 bytes、10,607 個 <url>；/news/releases/2026/09/ 底下 <lastmod> 在 2026-09-22 以後的新聞稿有五則：本篇（09-22）、Googlebook（09-22，稿面日期 Sep 21）、PickNik 收購與 Snapdragon Sound Elite Gen 2（09-23）、Apple 專利授權續約（09-24）。Qualcomm 的 /news/rss 依探索代理紀錄是 404，本輪沒有再試。\n(3) 新聞稿 HTML 頁 https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast → 200、13,616 bytes，是 React 外殼：去標籤後可見文字只有 138 字元（就是 <title>），沒有正文。所以 sources[] 放的是 .md，不是 HTML 網址。\n(4) 同一頁 <head> 的 <link id=\"geo-artifacts-markdown-link\" rel=\"alternate\" type=\"text/markdown\" href=\"….md\"> 指向 sources[0] 的 .md → 200、8,917 bytes、text/markdown，帶 front matter 與全文；與探索代理 16:03 的 raw/qcom-sd-summit.md 位元組完全相同（cmp 無差異）。另外 robots.txt 指向的 llms.txt → /en-us/llms.txt → /en-us/news/releases/llms.txt（200、25,717 bytes）也列出同一個 .md 網址，所以 .md 是官方索引裡的正式網址，不是我們拼出來的。\n(5) sources[1] 的 PDF 網址取自 .md 正文「visit Snapdragon Summit [Partner Quote Sheet](…PartnerQuoteSheet.pdf)」的連結 → 200、86,268 bytes、application/pdf、2 頁；與探索代理的 raw/qcom-partner-quotes.pdf 位元組相同。文字用系統 python 的 pypdf 抽出，存成 PartnerQuoteSheet.pdf.txt。pypdf 會把字距造成的 “Technologies” 抽成 “T echnologies”、“Together” 抽成 “T ogether”，所以本紀錄的 PDF 引文都避開這些字，逐字比對用的是空白正規化後的 pypdf 文字。\n查過、沒有正文、不進 sources[] 的頁面（都是 200 的 React 外殼，<head> 裡沒有 text/markdown 的 alternate 連結）：press kit 頁 /news/press-kits/snapdragon-summit-2026-press-kit（8,983 bytes，可見文字只有「Snapdragon Summit 2026」）、OnQ 部落格 /news/onq/2026/09/mobile-experiences-snapdragon-summit-2026（10,423 bytes，只有標題）、活動頁 /company/events/snapdragon-summit（9,482 bytes，只有標題）。所以 Summit 其他天的內容與活動頁上的日期地點都沒有讀到。\n在地化版本：以 sitemap（沒有 zh-tw 或其他語系的新聞稿網址）、llms.txt（只列 en-us）與一次限定 qualcomm.com／qualcomm.cn 網域的搜尋（結果只有英文頁）查核到 2026-09-26，未查到這則新聞稿的繁中版；是「未查到」，不是「沒有」。\n與探索代理筆記不同、以來源為準的地方：candidates-tech.md 第 3 則寫「夥伴引言裡 HONOR、Motorola、RedMagic 明確點名 Extreme Gen 6」。重讀 PDF 後，vivo 的引言也點名 Extreme Gen 6（並說 iQOO 16 與 iQOO Pad Ultra 會是首批之一），Xiaomi 的引言點名兩款都會用；Doubao Mobile Assistant、OPPO、STEPX 三段沒有點名任一款。見 verified_facts。\n判定 full 的範圍：這篇只能寫「高通發表了什麼、新聞稿怎麼區分兩款、品牌與夥伴說了什麼、還沒公布什麼」，兩條來源完整涵蓋；2nm process node 以外的規格數字、代工廠、上市日、售價、台灣資訊不在任何一條來源裡，依指派列與 tech.md 不寫，不是來源不足。",
+  "verified_facts": [
+    {
+      "fact": "發布日期與電頭：新聞稿類型為 Press Note，日期 2026 年 9 月 22 日，電頭 MAUI（茂宜島），沒有時刻與時區。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Press Note | Sep 22, 2026 | MAUI"
+    },
+    {
+      "fact": "事件本身：Qualcomm Technologies, Inc. 同日發表兩款新的高階行動平台，正式名稱是 Snapdragon® 8 Elite Extreme Gen 6 Mobile Platform 與 Snapdragon® 8 Elite Gen 6 Mobile Platform。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Qualcomm Technologies, Inc. unveiled today its newest premium mobile lineup – the Snapdragon® 8 Elite Extreme Gen 6 Mobile Platform and Snapdragon® 8 Elite Gen 6 Mobile Platform."
+    },
+    {
+      "fact": "新聞稿標題的「World's Fastest」是高通自己的說法，而且原文是「Two of the World's Fastest Mobile SoCs」＝「全球最快的行動 SoC 之二」，不是「全球最快的兩款」。新聞稿正文沒有任何測試條件、跑分或比較對象（fastest 只出現在 front matter 的 title 與 H1 標題，共 2 次）。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Snapdragon Leads the Agentic AI Age with Two of the World's Fastest Mobile SoCs Powering the Next Generation of Smartphones"
+    },
+    {
+      "fact": "高通的說法：兩款平台都結合效能與裝置端智慧，並在 AI、遊戲、相機與連網四方面有所進步（新聞稿 Highlights 第二點）。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Both platforms combine performance and on-device intelligence with advancements across AI, gaming, camera, and connectivity."
+    },
+    {
+      "fact": "為什麼同一代分兩款：高通行動手機事業資深副總裁暨總經理（Senior Vice President and General Manager of Mobile Handsets, Qualcomm Technologies, Inc.）在新聞稿引言裡稱這是「multi-flagship strategy」（多旗艦策略），這個策略讓高通能在推進行動裝置可能性的同時，把最新 AI 功能帶到更廣的高階裝置（原文 allows us to … while bringing，不寫成「目的是」）。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "our multi-flagship strategy allows us to push the boundaries of what's possible for mobile while bringing our latest AI innovations to a broader range of premium devices"
+    },
+    {
+      "fact": "同一段引言的下一句：藉由設計兩款平台，高通讓手機廠（OEM）有更多選擇（原文 By designing two innovative platforms, we're giving OEMs greater choice，不寫成「是為了」）。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By designing two innovative platforms, we're giving OEMs greater choice"
+    },
+    {
+      "fact": "Extreme 版的定位：高通稱 Snapdragon 8 Elite Extreme Gen 6 是 Qualcomm Technologies 最強大的行動平台，用於「最先進的 Android 手機」。這是高通的自我定位，新聞稿沒有附比較數據。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "As Qualcomm Technologies' most powerful mobile platform, Snapdragon 8 Elite Extreme Gen 6 delivers breakthrough AI capabilities and advanced performance to power the most advanced Android smartphones."
+    },
+    {
+      "fact": "Extreme 版「New features」第一點：讓日常使用的 AI 代理（everyday agents）提供更快、更個人化、更可靠、會隨使用者一天作息調整的體驗。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Enables everyday agents to deliver faster, more personalized, and more dependable experiences that adapt to users throughout the day."
+    },
+    {
+      "fact": "Extreme 版「New features」第二點：新的 Adreno Neural Fusion，用 AI 提供智慧化的遊戲圖形（intelligent graphics），高通稱可帶來更沉浸的遊戲、更豐富的畫面與更長的遊戲時間。原文沒有給任何續航或幀率數字。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Enhanced mobile gaming with the new Adreno Neural Fusion, using AI to deliver intelligent graphics for more immersive gameplay, richer visuals, and longer playtime."
+    },
+    {
+      "fact": "Extreme 版「New features」第三點：AI 相機功能，包括支援 Advanced Professional Video（APV）與 Intelligent Pixel Control。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "AI powered camera capabilities with Advanced Professional Video (APV) support and Intelligent Pixel Control deliver deeper scene understanding, enhanced image quality, and more natural-looking photos and videos."
+    },
+    {
+      "fact": "8 Elite Gen 6 的製程與架構：高通寫它建構在「同樣的」先進 2 奈米製程節點上（句中的 same 是對照前一節的 Extreme 版），採用自研的 Qualcomm Oryon™ CPU、重新架構的 Qualcomm® Adreno™ GPU 與 Qualcomm® Hexagon™ NPU。新聞稿沒有另外為 Extreme 版單獨寫製程，也沒有寫由哪一家晶圓廠製造。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Snapdragon 8 Elite Gen 6 is built on the same advanced 2nm process node, powered by the custom-built Qualcomm Oryon™ CPU, rearchitected Qualcomm® Adreno™ GPU, and the advanced Qualcomm® Hexagon™ NPU."
+    },
+    {
+      "fact": "兩款的差別，新聞稿只給這一句：8 Elite Gen 6 能把 Extreme 版「許多相同的」AI、遊戲、影像與連網功能帶到更多頂級手機。原文是 many of the same，不是全部；新聞稿沒有列出 8 Elite Gen 6 少了哪些功能。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "This enables the platform to power many of the same breakthrough AI, gaming, imaging, and connectivity features as Snapdragon 8 Elite Extreme Gen 6 to a broader range of top-tier smartphones."
+    },
+    {
+      "fact": "首發品牌：搭載這兩款平台的裝置「將」在全球手機品牌的旗艦機上首度登場，名單以 including 起頭（不是全名單），依原文順序為 HONOR、iQOO、Motorola、OnePlus、OPPO、REDMI、RedMagic、vivo、Xiaomi。這一句把兩款平台放在一起講，沒有把品牌配到哪一款；用的是未來式 will debut，沒有日期。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Devices powered by Snapdragon 8 Elite Extreme Gen 6 and Snapdragon 8 Elite Gen 6 will debut in flagship smartphones from leading global OEMs and smartphone brands, including HONOR, iQOO, Motorola, OnePlus, OPPO, REDMI, RedMagic, vivo, and Xiaomi."
+    },
+    {
+      "fact": "新聞稿把夥伴說法放在另一份文件：正文請讀者到 Snapdragon Summit 的 Partner Quote Sheet 看業界夥伴的說法（連結即 sources[1] 的 PDF）。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "To hear from key industry players, visit Snapdragon Summit"
+    },
+    {
+      "fact": "讀者自己去哪裡看後續：新聞稿指向兩款平台的產品頁與 Snapdragon Summit Event Hub（活動資訊與直播重播）。產品頁是行銷頁，依 tech.md 不能當能力宣稱的來源；Event Hub 本輪讀到的是外殼。正文可以寫「高通新聞室與 Snapdragon Summit 活動頁」這類去處，不寫網址（FAQ 不得有網址）。",
+      "url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md",
+      "is_vendor_claim": false,
+      "verbatim_quote": "Additional information, livestream replays and event content are also available on the"
+    },
+    {
+      "fact": "HONOR 的引言（HONOR 產品總裁 President of Products）點名 Snapdragon 8 Elite Extreme Gen 6，說它是推進 AI 體驗與行動影像的基礎。引言沒有說哪一支機型、什麼時候推出。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "With Snapdragon 8 Elite Extreme Gen 6, we have an exceptional foundation to advance seamless AI experiences and revolutionary mobile imaging"
+    },
+    {
+      "fact": "Motorola 的引言（Motorola Mobility 全球產品行銷主管）說要把 Snapdragon 8 Elite Extreme Gen 6 帶進自己的旗艦產品線，並用了 for the first time。這句可以讀成「第一次把這顆晶片放進旗艦線」，也可能被讀成「第一次用 Extreme 等級」；原文沒有說明，照原句寫，不延伸。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "as we bring Snapdragon 8 Elite Extreme Gen 6 to our flagship portfolio for the first time"
+    },
+    {
+      "fact": "RedMagic 的引言點名 Snapdragon 8 Elite Extreme Gen 6，說它提供下一代手機遊戲需要的速度、效率與技術。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Snapdragon 8 Elite Extreme Gen 6 delivers the speed, efficiency, and advanced technologies needed to power the next generation of mobile gaming experiences."
+    },
+    {
+      "fact": "同一段 RedMagic 引言最後提到「即將推出的 RedMagic 12Pro+」（原文寫法 12Pro+，中間沒有空格）。要注意：那一句的主詞是「與 Qualcomm Technologies 的持續合作」，沒有直接寫 12Pro+ 搭載哪一款平台；沒有上市日。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "in our upcoming RedMagic 12Pro+."
+    },
+    {
+      "fact": "vivo 的引言（vivo 資深副總裁暨技術長 Senior Vice President & CTO）說「即將推出的 iQOO 16 與 iQOO Pad Ultra」會是「首批」搭載 Snapdragon 8 Elite Extreme Gen 6 的裝置之一。原文是 among the first，不是「第一款」；沒有上市日，也沒有說 iQOO Pad Ultra 是什麼類型的裝置（只給名稱）。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Our upcoming iQOO 16 and iQOO Pad Ultra will be among the first devices to feature the Snapdragon 8 Elite Extreme Gen 6"
+    },
+    {
+      "fact": "vivo 同一段引言接著說，之後會有更多 vivo 產品採用 Snapdragon 8 Elite Extreme Gen 6（未來式、沒有機型與日期）。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Moving forward, more vivo products will be powered by Snapdragon 8 Elite Extreme Gen 6"
+    },
+    {
+      "fact": "Xiaomi 的引言（Xiaomi 合夥人暨總裁 Partner and President）是夥伴文件裡唯一點名兩款都會用的：會把 Snapdragon 8 Elite Extreme Gen 6 與 Snapdragon 8 Elite Gen 6 用在即將推出的多款高階裝置上（原文 across our upcoming premium devices，不寫成「同時採用」），讓旗艦體驗有差異、適合更多使用者。沒有說哪一支用哪一款。「唯一」只在夥伴文件這個範圍內成立，文章不寫「唯一」。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "By leveraging both Snapdragon 8 Elite Extreme Gen 6 and Snapdragon 8 Elite Gen 6 across our upcoming premium devices, we're able to deliver differentiated flagship experiences tailored to a wider range of users."
+    },
+    {
+      "fact": "Xiaomi 的引言也直接呼應高通的「多旗艦策略」，說它讓 Xiaomi 更有彈性。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "new multi-flagship strategy gives us greater flexibility to do exactly that"
+    },
+    {
+      "fact": "OPPO 的引言（OPPO 資深副總裁暨產品長）沒有點名任何一款平台，只說與 Qualcomm Technologies 合作提供更個人化的 agentic AI 體驗。所以不可以把 OPPO 配到任何一款。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "to deliver more personalized and connected agentic AI experiences to users."
+    },
+    {
+      "fact": "夥伴文件裡另有兩家 AI 軟體夥伴 Doubao Mobile Assistant 與 STEPX 的引言，都只說「新的 Snapdragon 行動平台」或 Snapdragon，沒有點名哪一款，也不是手機品牌。文件的條目依序是 Doubao Mobile Assistant、HONOR、Motorola、OPPO、RedMagic、STEPX、vivo、Xiaomi；新聞稿名單裡的 iQOO、OnePlus、REDMI 沒有自己的條目（iQOO 只出現在 vivo 的引言裡）。條目數是研究者清點，不可寫進文章。",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf",
+      "is_vendor_claim": true,
+      "verbatim_quote": "Congratulations on the launch of the new Snapdragon mobile platform!"
+    }
+  ],
+  "not_said": [
+    "沒有寫晶圓代工廠。以 TSMC、Taiwan Semiconductor、foundry、foundries、Samsung 做詞界比對，並在刪去所有空白後再比對一次（防 pypdf 把字拆開），2026-09-26 查核新聞稿 .md 與夥伴 PDF 皆 0 次；另外讀過、但不列入 sources[] 的兩份產品簡介 PDF 也是 0 次。新聞稿只寫 2nm process node。不可寫「台積電 2 奈米」或任何代工廠。",
+    "除了 2nm process node（8 Elite Gen 6 那段，1 次），沒有規格數字。新聞稿 .md 裡 GHz、percent 皆 0 次，9 個 % 都是網址裡的 %20：沒有時脈、核心數、快取、記憶體、跑分、效能或能效百分比，也沒有與上一代的比較（Gen 5、previous generation 皆 0 次）。",
+    "「World's Fastest」沒有附依據。fastest 只出現在標題（front matter 與 H1），正文沒有測試條件、比較對象或數據。",
+    "沒有上市日、售價與機型。新聞稿只說裝置「將」首度登場（will debut），沒有日期、價格或任何機型名稱；機型名稱只出現在夥伴 PDF 的 vivo（iQOO 16、iQOO Pad Ultra）與 RedMagic（RedMagic 12Pro+）引言裡，都寫 upcoming、沒有日期。",
+    "沒有任何地區或市場資訊。Taiwan、China、Asia、Europe、United States、U.S. 在新聞稿與夥伴 PDF 皆 0 次。以兩份文件查核到 2026-09-26，未見台灣上市、台灣售價或台灣販售機型的任何說明。",
+    "沒有說 8 Elite Gen 6 少了哪些功能。新聞稿只寫它提供 Extreme 版「許多相同的」（many of the same）功能；Extreme 版那三點 New features 裡哪幾點 8 Elite Gen 6 也有、哪幾點沒有，新聞稿沒有寫。",
+    "品牌名單不是全名單，也沒有把品牌配到平台。名單以 including 起頭；名單裡沒有 Samsung，只代表這一句沒有列，不代表 Samsung 不會採用。哪個品牌用哪一款，新聞稿沒寫；只有夥伴 PDF 裡 HONOR、Motorola、RedMagic、vivo 的引言點名 Extreme 版，Xiaomi 說兩款都用。",
+    "沒有寫發表時刻或時區。電頭只有 MAUI，沒有 Hawaii 字樣；沒有 a.m.／p.m. 或時區縮寫。",
+    "沒有提到任何競爭對手或其他晶片公司（MediaTek、Dimensity、Apple、Google 皆 0 次）。",
+    "Snapdragon Summit 其他天的內容沒有讀到。press kit 頁、OnQ 部落格與活動頁本輪都是只剩標題的 React 外殼、沒有 Markdown 版；這是「讀不到」，不是「高通沒有發表別的東西」。"
+  ],
+  "unverified_or_excluded": [
+    {
+      "claim": "兩款平台的規格與效能數字：例如 CPU「2 Prime cores, up to 5 GHz」「6 Performance cores, up to 4.0 GHz」、Extreme 版 CPU／GPU／NPU 提升 13%／44%／35%、8 Elite Gen 6 提升 10%／35%／14%（皆「相較上一代 Snapdragon 8 Elite Gen 5」）、LPDDR5x/6、UFS 5.0、8K60 錄影、X105 數據機下載 14.8 Gbps、零件編號 SM8975／SM8950，以及「2nm Process Technology」。",
+      "seen_where": "高通官網的兩份產品簡介 PDF：https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/Snapdragon-8-Elite-Extreme-Gen-6-Product-Brief.pdf（200、1,386,487 bytes、3 頁）與 https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/Snapdragon-8-Elite-Gen-6-Product-Brief.pdf（200、1,190,871 bytes、3 頁），由一次限定 qualcomm.com／qualcomm.cn 網域的搜尋找到，2026-09-26 已下載並用 pypdf 讀完（存在 _raw 同一目錄，brief-*.pdf.txt）。",
+      "why_excluded": "(1) 產品簡介是行銷文件，tech.md 規定產品行銷頁不能當能力宣稱的來源，指派列也寫「沒有規格數字就不寫」。(2) 兩份都印「Materials are subject to change without notice」，Extreme 版的 PDF ModDate 是 2026-09-24（新聞稿之後才改過），是會變的文件。(3) 8 Elite Gen 6 的簡介在第 2 頁與第 3 頁都印了與 Extreme 版完全相同的「2 Prime cores, up to 5.0 GHz」「6 Performance cores, up to 4.0 GHz」，卻標了不同的 CPU 提升幅度（10% 對 13%），看不出是實際規格相同還是文件錯誤。任何一個數字都不寫；若協調者要改用，須先把 PDF 列入 sources[] 並逐條加 verbatim_quote。兩份簡介同樣沒有寫代工廠。"
+    },
+    {
+      "claim": "「全球第一顆 5 GHz 行動 CPU」。",
+      "seen_where": "搜尋結果的摘要（產品頁的行銷文字）；產品簡介 PDF 只寫 up to 5 GHz。",
+      "why_excluded": "行銷頁說法、不在 sources[]，而且是「第一」這種不能寫的宣稱。"
+    },
+    {
+      "claim": "由台積電以 2 奈米製程製造。",
+      "seen_where": "這是聯發科天璣 9600 Pro 繁中新聞稿的寫法（candidates-tech.md 第 4 則），不是高通的。",
+      "why_excluded": "高通新聞稿與夥伴 PDF 都沒有代工廠字樣（見 not_said 第一條）。DELTA-4-8 第 4 條明定不可寫「台積電 2 奈米」。"
+    },
+    {
+      "claim": "聯發科天璣 9600 Pro／9600M 與這兩款的比較。",
+      "seen_where": "candidates-tech.md 第 4 則。",
+      "why_excluded": "DELTA-4-8 第 4 條：Snapdragon 只寫高通，聯發科沒有入選，不合併、不比較。"
+    },
+    {
+      "claim": "Snapdragon Summit 2026 的日期、地點與第二天以後的發表（例如 OnQ 部落格標題 snapdragon-summit-agentic-ai-pcs-linux 看起來是 PC 平台）。",
+      "seen_where": "sitemap 列出 OnQ 部落格 mobile-experiences-snapdragon-summit-2026、adreno-neural-fusion-ai-rendering、hexagon-npu-agentic-ai-architecture、snapdragon-for-agentic-age、snapdragon-summit-agentic-ai-pcs-linux 與 press kit 頁（lastmod 2026-09-24）。",
+      "why_excluded": "抓過的 press kit 頁、mobile-experiences 那篇 OnQ 與活動頁都是只剩標題的外殼、沒有 Markdown 版；其餘幾篇只看到 sitemap 網址、沒有讀。沒有讀到正文的東西不寫；Summit 的活動期間也不寫，只寫新聞稿電頭。"
+    },
+    {
+      "claim": "搭載這兩款平台的手機在台灣上市的時間、售價與機型。",
+      "seen_where": "讀者最自然會問的問題。",
+      "why_excluded": "兩條來源都沒有任何台灣或地區資訊，也沒有日期與價格；寫「官方未說明」或「以查核日為準未見」。"
+    },
+    {
+      "claim": "繁體中文版的高通新聞稿（BRIEF 第 8 條的語系比對）。",
+      "seen_where": "sitemap 沒有 zh-tw 或其他語系的新聞稿網址；llms.txt 只列 en-us；一次限定 qualcomm.com／qualcomm.cn 的搜尋只回英文頁。",
+      "why_excluded": "未查到，所以沒有語系差異可比；寫成「未查到繁中版」，不可寫「高通沒有發繁中稿」。"
+    },
+    {
+      "claim": "HONOR 引言裡的 YOYO Suggestions、YOYO Agent 與 ARRI 合作。",
+      "seen_where": "夥伴 PDF 的 HONOR 段落。",
+      "why_excluded": "那是 HONOR 自己的軟體與合作，不是這兩款平台的功能；寫進晶片文章會讓讀者以為是晶片功能。正文不提。"
+    },
+    {
+      "claim": "品牌之間的從屬關係（例如 REDMI 屬於 Xiaomi、iQOO 屬於 vivo、RedMagic 與 ZTE／Nubia 的關係）。",
+      "seen_where": "一般常識；夥伴 PDF 只在職稱與 vivo 引言的「our upcoming iQOO 16」隱約帶到。",
+      "why_excluded": "兩條來源都沒有明寫品牌從屬關係，不補。"
+    },
+    {
+      "claim": "Qualcomm 與 Apple 續約全球專利授權（09-24）、PickNik 收購與 Snapdragon Sound Elite Gen 2（09-23）。",
+      "seen_where": "sitemap 同一週的其他新聞稿。",
+      "why_excluded": "不同事件，不在本篇範圍，也不在 sources[]。"
+    },
+    {
+      "claim": "PDF 的 metadata（建立時間 2026-09-21 20:30 −10:00、作者欄）。",
+      "seen_where": "pypdf 讀到的 PartnerQuoteSheet.pdf 文件資訊。",
+      "why_excluded": "metadata 不是事件資訊；作者欄是個人姓名，不進任何筆記或文章。"
+    }
+  ],
+  "editorial_brief": "讀者是接下來幾個月會在 Android 旗艦手機規格表上看到「Snapdragon 8 Elite Extreme Gen 6」或「Snapdragon 8 Elite Gen 6」的台灣一般讀者。他們要知道的是：高通這一代一次推出兩款旗艦平台，兩款怎麼分、新聞稿說了什麼、哪些品牌會用、還有哪些事沒公布，以及之後新機上市時怎麼自己查。這不是比較文，也不是購買建議。\n\n最重要的一件事：這是「同一代分兩級」的公告，而新聞稿能撐住的差別只有定性說法——Extreme 版是高通稱「最強大的行動平台」、列了三點新功能；8 Elite Gen 6 採用「同樣的」2 奈米節點，並採用 Oryon CPU、Adreno GPU、Hexagon NPU（「同樣的」只修飾 2 奈米節點），提供 Extreme 版「許多相同的」功能給更多頂級手機。除了 2 奈米製程節點，沒有任何規格數字，也沒有代工廠、上市日、售價或台灣資訊。第一段就要讓讀者知道：現在還沒有台灣上市的消息。\n\n建議五節：一、高通發表了什麼（9 月 22 日，電頭茂宜島，不寫時區；兩款名稱；多旗艦策略的說法）。二、兩款怎麼分：新聞稿寫了什麼（結尾放表，建議三欄「項目｜8 Elite Extreme Gen 6｜8 Elite Gen 6」，列「高通的定位」「製程與架構」「新聞稿列的功能」「夥伴引言點名」；每一格只放新聞稿或夥伴 PDF 寫的內容，沒寫的格子寫「新聞稿未列」。製程那列建議寫法：8 Elite Gen 6 一格寫「2 奈米；Oryon CPU、Adreno GPU、Hexagon NPU」，Extreme 一格寫「新聞稿以『同樣的』2 奈米節點對照」或「新聞稿未單獨列」）。三、哪些品牌會用：including 名單與夥伴引言（結尾放圖）；名單是兩款合寫、不是全名單；夥伴 PDF 裡點名 Extreme 的是 HONOR、Motorola、RedMagic、vivo，Xiaomi 說兩款都用，OPPO 沒點名；vivo 提到的 iQOO 16、iQOO Pad Ultra 與 RedMagic 提到的 RedMagic 12Pro+ 都是「即將推出」、沒有日期。四、新聞稿沒寫的事：代工廠、2 奈米製程節點以外的規格數字、「全球最快之二」的依據、上市日與售價、台灣。五、之後看新機規格表可以怎麼讀、去哪裡查（高通新聞室、Snapdragon Summit 活動頁、各品牌台灣官網公布的規格；若用情境舉例要標明是編輯設計的例子），不做「該等哪一顆」的建議。\n\nFAQ 可以放：台灣什麼時候買得到（官方未說明）、是不是台積電做的（新聞稿沒寫）、兩款差在哪（只有定性說法）、哪些手機會用（including 名單與三個夥伴提到的產品名）、「全球最快」是誰說的（高通的標題說法，新聞稿沒附測試）。\n\n命名：產品名一律照英文原名（Snapdragon、Oryon、Adreno、Hexagon、Adreno Neural Fusion、Advanced Professional Video、Intelligent Pixel Control），zh-TW 不譯成「驍龍」；兩款可以簡稱「Extreme 版」與「8 Elite Gen 6」，不要自創「標準版」「一般版」「降規版」。人名不必寫，夥伴與高通主管用公司與職稱稱呼即可。\n\n刻意不寫：聯發科與任何比較；代工廠；2 奈米製程節點以外的任何規格數字；購買建議；Summit 其他天的發表（PC、耳機音訊、PickNik、Apple 授權）；HONOR 的 YOYO／ARRI；品牌從屬關係。",
+  "must_not_write": [
+    "不寫台積電、TSMC、三星或任何代工廠，也不寫「台灣製造」「台灣供應鏈受惠」。高通兩份來源都沒有代工廠字樣。",
+    "不寫任何時脈、核心數、快取、記憶體、儲存、跑分、效能或能效百分比、零件編號。新聞稿一個都沒有；產品簡介 PDF 已排除（見 unverified_or_excluded 第一條）。",
+    "不把「Two of the World's Fastest Mobile SoCs」寫成事實或寫成「全球最快的兩款」。要寫就是「高通在標題稱兩款是全球最快的行動 SoC 之二」，並交代新聞稿沒有附測試條件。",
+    "「最強大的行動平台」「breakthrough」「advanced」一律寫成高通的說法，不寫成本站判斷。",
+    "不寫「共九家」「名單為」「九大品牌」，也不暗示名單外的品牌（例如 Samsung）不會採用。名單以 including 起頭，而且是兩款合寫。",
+    "不自己把品牌配到 Extreme 版或 8 Elite Gen 6。只能照夥伴 PDF 寫：HONOR、Motorola、RedMagic、vivo 的引言點名 Extreme 版，Xiaomi 說兩款都用；OPPO、OnePlus、REDMI、iQOO 各自用哪一款，來源沒寫。",
+    "不寫 RedMagic 12Pro+「搭載」Extreme 版。那一句只說與 Qualcomm Technologies 的合作讓它能在即將推出的 RedMagic 12Pro+ 上帶給玩家更好的體驗，沒有直接寫哪一款平台。",
+    "vivo 的說法是「首批之一」（among the first），不寫成「首款」「第一支」；也不替 iQOO Pad Ultra 補裝置類型（來源只有名稱）。",
+    "Motorola 的 for the first time 照原句寫（第一次把 Snapdragon 8 Elite Extreme Gen 6 帶進旗艦產品線），不延伸成「Motorola 首次採用高通旗艦晶片」或「首次採用 Extreme 等級」。",
+    "不寫任何上市日、上市月份、「年底前」「近期」、售價或台灣上市消息。沒有來源。",
+    "不寫 8 Elite Gen 6「功能跟 Extreme 一樣」或「少了某某功能」。原文只有 many of the same。",
+    "不把 2 奈米寫成 Extreme 版另外列出的規格。可以寫「高通表示 8 Elite Gen 6 採用與 Extreme 版同樣的 2 奈米製程節點」這種貼近原句的寫法。",
+    "不換算台北日期、不寫發表時刻，也不寫任何時區。正文照 DELTA-4-8 第 4 條寫新聞稿印的「9 月 22 日」，可帶電頭茂宜島（Maui）；slug、news_date 都是 2026-09-22。",
+    "不把 Oryon CPU、Adreno GPU、Hexagon NPU 或 2 奈米寫成 Extreme 版另外列出的規格：新聞稿只在 8 Elite Gen 6 那段列出它們，same 只修飾 2nm process node。表格的 Extreme 一格寫「新聞稿未列」。",
+    "不寫聯發科、天璣 9600 Pro 或任何其他晶片公司，不做比較（DELTA-4-8 第 4 條）。",
+    "不寫 Summit 其他天的發表（PC 平台、Snapdragon Sound、PickNik、Apple 授權），也不寫 Summit 的活動期間。",
+    "不寫 HONOR 的 YOYO Suggestions、YOYO Agent、ARRI，避免讀成晶片功能。",
+    "不寫品牌從屬關係（REDMI／Xiaomi、iQOO／vivo、RedMagic／ZTE、Nubia）。",
+    "不寫購買建議：不寫「值不值得等」「該買哪一顆」「旗艦機會漲價」。",
+    "不寫「高通沒有發繁中稿」，只能寫本輪未查到。",
+    "圖解與主圖不畫任何商標、字標、晶片外觀或介面截圖；圖上出現的數字（例如 2 奈米、9 月 22 日）都必須也出現在正文。"
+  ],
+  "live_data_warnings": [
+    "新聞稿 .md 是 HTML 外殼頁的機器可讀版本，查核日 2026-09-26 與探索代理同日 16:03 抓到的版本位元組相同；發布當天要再抓一次，確認內容沒變。",
+    "夥伴引言 PDF 放在 press kit 的 Day 1 資料夾，可能被替換或下架；發布當天重抓，若檔案大小（86,268 bytes）或內容變了要重新比對引文。",
+    "品牌名單與夥伴提到的機型都是「將要推出」。查核日之後各品牌可能陸續發表新機、公布台灣上市資訊；正文寫「截至 2026 年 9 月 26 日查核」，不可寫成「目前沒有任何手機採用」這種會過期的否定句。",
+    "sitemap 的 <lastmod> 是會變動的值，只用來找到新聞稿，不寫進文章。",
+    "（已排除、僅供參考）產品簡介 PDF 註明「Materials are subject to change without notice」，Extreme 版 PDF 在 9 月 24 日改過；若日後有人想引用，要當天重抓。"
+  ],
+  "overlaps_existing_article": [
+    {
+      "slug": "tech-news-nvidia-mediatek-20260831",
+      "locales": 5,
+      "says": "五語齊全。NVIDIA 投資聯發科技 35 億美元可轉債與三個合作領域（AI 基礎建設、邊緣 AI、車用）；文中的 Dimensity 只指 Dimensity Auto 車用平台，沒有手機晶片。本篇的第二個結尾連結（DELTA-4-8 第 5 條指定）；本篇不重講那篇內容，也不因此把聯發科寫進正文。"
+    },
+    {
+      "slug": "tech-news-2026-index",
+      "locales": 5,
+      "says": "五語齊全。科技索引、第一個結尾連結；目前沒有任何 Qualcomm／Snapdragon 條目。由協調者用 update_index.py 補，撰稿不碰。"
+    },
+    {
+      "slug": "tech-news-googlebook-launch-20260921",
+      "locales": 1,
+      "says": "只有 zh-TW，不能連。Googlebook 首波機型處理器可選 Intel Core Ultra Series 3 或 Snapdragon X Elite（PC 平台，與本篇的手機平台不同產品線），並提到合作晶片廠有 Intel、Qualcomm、MediaTek。本篇不提 Googlebook。"
+    },
+    {
+      "slug": "tech-news-apple-m6-m5-ultra-20260825",
+      "locales": 5,
+      "says": "五語齊全。Apple M6 是 Apple 首款 2 奈米晶片，並寫明 Apple 的四個官方頁都沒有台積電／TSMC。與本篇只有「2 奈米」與「新聞稿沒寫代工廠」這兩個共同點；本篇不提 Apple、不連它。"
+    },
+    {
+      "slug": "tech-news-apple-september-hardware-20260909",
+      "locales": 5,
+      "says": "五語齊全。iPhone 18 Pro 的 A20 Pro，Apple 表示以 2 奈米製程打造。與本篇無事件重疊，不比較、不連。"
+    },
+    {
+      "slug": "tech-news-iphone-duo-20260909",
+      "locales": 5,
+      "says": "五語齊全。iPhone Duo 同樣用 A20 Pro、2 奈米。與本篇無事件重疊，不比較、不連。"
+    },
+    {
+      "slug": "lm-studio-getting-started",
+      "locales": 1,
+      "says": "只有 zh-TW。Windows ARM 版支援、文件點名 Snapdragon X Elite。PC 平台，與本篇無關，不能連。"
+    },
+    {
+      "slug": "microsoft-copilot-windows-office",
+      "locales": 1,
+      "says": "只有 zh-TW。Copilot+ PC 硬體條件之一是 Snapdragon X 系列。PC 平台，與本篇無關，不能連。"
+    }
+  ],
+  "second_link": {
+    "slug": "tech-news-nvidia-mediatek-20260831",
+    "title": "NVIDIA 投資聯發科技 35 億美元：合作深化公告與可轉債申報書各寫了什麼"
+  },
+  "hero_label": "同一代旗艦分兩級",
+  "diagram": {
+    "title": "高通旗艦手機平台分兩級",
+    "caption": "依高通 2026 年 9 月 22 日的新聞稿與夥伴引言整理：兩款平台、首發品牌名單與新聞稿沒寫的事，查核日 2026 年 9 月 26 日。",
+    "nodes": [
+      [
+        "Extreme 版",
+        "高通稱最強的行動平台"
+      ],
+      [
+        "8 Elite Gen 6",
+        "同為 2 奈米、許多功能相同"
+      ],
+      [
+        "首發品牌",
+        "「包括」起頭，不是全名單"
+      ],
+      [
+        "沒寫的事",
+        "代工廠、詳細規格、上市日、台灣"
+      ]
+    ]
+  },
+  "corrections_applied": [],
+  "factcheck": {
+    "checked_by": "independent factcheck agent (round 1)",
+    "checked_on": "2026-09-26",
+    "method": "2026-09-26（台北）22:32 以 curl -sSL --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 兩條（同一主機間隔 2 秒，UA、標頭、查詢字串都沒有帶入任何人的姓名或 email），另抓一次新聞稿 HTML 外殼確認 <link id=\"geo-artifacts-markdown-link\" rel=\"alternate\" type=\"text/markdown\"> 仍指向 sources[0] 的 .md。兩條都是 HTTP 200：.md 8,917 bytes（text/markdown，正文完整），PDF 86,268 bytes（application/pdf，2 頁，系統 python 的 pypdf 抽文字），兩者與研究代理 _raw 的檔案逐位元組相同（cmp 無差異）。研究紀錄 2 條 sources 與 25 條 verified_facts 的 verbatim_quote 27/27 命中（.md 為精確連續子字串；PDF 為空白正規化並還原 pypdf 拆開的 “T echnologies”／“T ogether” 後的連續子字串）。以詞界比對再查一次：TSMC、foundry、Samsung、Taiwan、Hawaii、HST、PDT、PST、a.m.、p.m.、GHz、percent 在兩份來源皆 0 次；.md 裡 9 個 % 都是網址的 %20；唯一的規格數字是 2nm（1 次）。把內容包拆成 121 條主張（title、description、兩段前言、4 條 summary、13 段正文、表格 8 格與 caption、圖解 caption／alt、5 題 FAQ、callout、兩個結尾連結、兩條 sources、研究紀錄的 hero_label／diagram 與 must_not_write 裡的日期規則）逐條回兩份來源。兩個結尾連結的 text 與目標內容包現行 zh-TW title 逐字相同，兩個目標都有五語。",
+    "claims_checked": 121,
+    "changes": [
+      {
+        "claim": "description 最後一句",
+        "before": "以及代工廠、規格數字、上市日與台灣資訊為何都還沒公布。",
+        "after": "以及新聞稿沒有寫的代工廠、時脈等規格數字、上市日與台灣資訊。",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "正文第一段：新聞稿在 Snapdragon Summit 期間發布",
+        "before": "這則新聞稿也在 Snapdragon Summit 期間發布。",
+        "after": "（刪除；新聞稿只有 Snapdragon Summit 標籤與夥伴引言文件的連結，沒有寫 Summit 的活動期間，研究紀錄 must_not_write 也不准寫）",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "summary 第 2 條：自研的範圍",
+        "before": "並採用自研的 Oryon CPU、Adreno GPU 與 Hexagon NPU",
+        "after": "並採用自研的 Oryon CPU，以及 Adreno GPU 與 Hexagon NPU",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "「新聞稿沒有任何規格數字」（summary 第 4 條、第四節第一段、FAQ 第 3 題、callout，共四處）：新聞稿印了 2nm",
+        "before": "新聞稿沒有寫代工廠、任何規格數字……／記憶體或其他規格數字／新聞稿沒有給出任何規格數字／新聞稿只有定性說法，沒有規格數字",
+        "after": "新聞稿沒有寫代工廠、2 奈米製程節點以外的規格數字……／記憶體或 2 奈米製程節點以外的其他規格數字／除了 2 奈米製程節點，新聞稿沒有給出任何規格數字／新聞稿除了 2 奈米製程節點，只有定性說法，沒有其他規格數字",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "多旗艦策略那段：allows us to／we're giving 被寫成目的",
+        "before": "目的是把最新 AI 功能帶到更廣的高階裝置；同一段引言接著說，設計兩款平台是為了給手機廠（OEM）更多選擇。……有所進步——這同樣是高通的說法。",
+        "after": "讓高通能把最新 AI 功能帶到更廣的高階裝置，而設計兩款平台讓手機廠（OEM）有更多選擇。……有所進步。（同時把該段的歸因語從四個減為兩個）",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "Adreno Neural Fusion 做什麼（正文；研究紀錄 verified_facts 同步）",
+        "before": "用 AI 產生遊戲畫面，高通稱能帶來更沉浸的遊戲",
+        "after": "用 AI 提供智慧化的遊戲圖形（intelligent graphics），帶來更沉浸的遊戲（段首「高通稱」與段尾「這三點都是高通的說法」仍在）",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "表格「製程與架構」列的 Extreme 一格",
+        "before": "2 奈米製程節點；Oryon CPU、Adreno GPU、Hexagon NPU（新聞稿未單獨列製程）",
+        "after": "新聞稿未列（8 Elite Gen 6 那段寫的是「同樣的」2 奈米製程節點）",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "Xiaomi 引言（夥伴段與 FAQ 第 4 題）：「唯一」與「同時採用」",
+        "before": "Xiaomi 的合夥人暨總裁是唯一點名兩款都會用的，說即將推出的高階裝置會同時採用兩款平台。／Xiaomi 說即將推出的高階裝置會同時採用兩款平台",
+        "after": "Xiaomi 的合夥人暨總裁則點名兩款都會用，說會在即將推出的高階裝置上採用這兩款平台。／Xiaomi 說會在即將推出的高階裝置上採用這兩款平台",
+        "source_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf"
+      },
+      {
+        "claim": "第三節最後一段：能確認的機型「僅止於這裡列出的部分」，但 RedMagic 12Pro+ 不在這一節",
+        "before": "僅止於這裡列出的部分",
+        "after": "僅止於這一篇列出的部分",
+        "source_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf"
+      },
+      {
+        "claim": "第五節：機型出處",
+        "before": "新聞稿裡「即將推出」的機型",
+        "after": "夥伴引言裡「即將推出」的機型",
+        "source_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf"
+      },
+      {
+        "claim": "FAQ 第 2 題：新聞稿怎麼寫 2 奈米",
+        "before": "新聞稿與夥伴引言文件都沒有提到任何晶圓代工廠的名字，只寫兩款平台建構在 2 奈米製程節點上",
+        "after": "新聞稿與夥伴引言文件都沒有提到任何晶圓代工廠的名字；新聞稿只寫 8 Elite Gen 6 建構在與 Extreme 版「同樣的」2 奈米製程節點上（夥伴 PDF 沒有 2 奈米）",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "FAQ 第 3 題：「同樣的」修飾範圍",
+        "before": "8 Elite Gen 6 則建構在「同樣的」2 奈米製程節點與 Oryon CPU、Adreno GPU、Hexagon NPU 上，",
+        "after": "8 Elite Gen 6 則建構在「同樣的」2 奈米製程節點上，採用 Oryon CPU、Adreno GPU 與 Hexagon NPU，",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      },
+      {
+        "claim": "研究紀錄 event_date_basis、editorial_brief、must_not_write 仍要求正文寫「美國夏威夷時間 9 月 22 日」（與 DELTA-4-8 第 4 條相反；內容包本來就沒有）",
+        "before": "正文寫「美國夏威夷時間 9 月 22 日」（三處）",
+        "after": "正文照新聞稿印的寫「9 月 22 日」，可帶電頭茂宜島（Maui），不寫任何時區；must_not_write 另加一條：Oryon／Adreno／Hexagon 與 2 奈米不寫成 Extreme 版另外列出的規格",
+        "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+      }
+    ],
+    "reader_first_edits": [
+      "多旗艦策略那段四個歸因語（引言裡稱、同一段引言接著說、新聞稿也說、這同樣是高通的說法）減為兩個。",
+      "Extreme 版那段四個（高通稱、新聞稿列出、高通稱、這三點都是高通的說法）減為兩個（高通稱……並列出、這三點都是高通的說法）。",
+      "8 Elite Gen 6 那段刪去重複的「原文是「許多相同的」」（英文 many of the same 已在同句括號裡）。"
+    ],
+    "open_questions": [
+      "第三節夥伴引言那段是五家公司各自的說法，逐一歸因是 tech.md 的要求，所以仍有五個「點名／說」；是否要再壓縮，留給協調者。",
+      "FAQ 第 2 題的問句寫了「台積電」（研究紀錄 editorial_brief 建議的題目），答句說新聞稿沒有任何代工廠；協調者若要「全文不出現代工廠名稱」，這一題要換問法。",
+      "callout 第一句「這兩款平台是高通……發布的新聞稿」主詞不通（平台≠新聞稿），屬文字問題，第一輪未改。"
+    ],
+    "coordinator_rulings": [
+      "DELTA-4-8 第 4 條：沒有時刻的稿子不換算，照新聞稿印的「9 月 22 日」寫、可帶電頭茂宜島、不寫時區。內容包與圖解 caption 已照做；研究紀錄三處相反的指示已改。",
+      "DELTA-4-8 第 4 條：只寫高通，不寫代工廠、不寫台積電 2 奈米、不併聯發科。已照做。",
+      "指派訊息說兩份來源都沒有規格數字；實際上新聞稿印了一個：2nm process node（8 Elite Gen 6 那段）。以來源為準：保留 2 奈米，並在四處「沒有規格數字」的句子加上「2 奈米製程節點以外」。"
+    ],
+    "second_round": {
+      "checked_by": "independent factcheck agent (round 2)",
+      "checked_on": "2026-09-26",
+      "method": "2026-09-26（台北）22:51 以 curl -sSL --max-time 30 -A 'Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)' 重抓 sources[] 兩條與新聞稿 HTML 外殼（同一主機間隔 2 秒，UA、標頭、查詢字串都沒有帶入任何人的姓名或 email）：.md 200、8,917 bytes、text/markdown；PDF 200、86,268 bytes、application/pdf、2 頁（系統 python 的 pypdf 抽文字）；兩者與第一輪 round1/ 的檔案逐位元組相同。27 條 verbatim_quote 以程式做連續字串比對 27/27 命中（唯一含「|」的是新聞稿頁首原樣的一行 Press Note | Sep 22, 2026 | MAUI，不是拼接）。逐條重查第一輪改過或新寫的每一句（16 處內容包文字與研究紀錄的修改）、以固定種子 20260926 從第一輪 94 條 CONFIRMED 抽 32 條重查，並回掃 including、many of the same、allows、across、upcoming、will debut、among the first、for the first time 的但書。新聞稿 .md 逐行列出所有數字：兩款平台唯一的規格數字是 2nm（1 次）；其餘是日期、產品名裡的 8 與 6、圖片網址參數、聯絡電話與「Related Press Releases」裡別的新聞稿（Dragonwing Q-2390 等），都不是這兩款平台的規格。內容包 zh-TW 全文的數字只有 2026／9／22／26（日期）、8 與 6（產品名）、2（奈米）、16（iQOO 16）、12（RedMagic 12Pro+）與第二個結尾連結標題裡的 35（目標文章標題），沒有其他數字混進來。",
+      "claims_checked": 87,
+      "result": "87 條：CONFIRMED 75、CHANGED 11、NOT FOUND 0、OUT OF SCOPE 1（FAQ 第 2 題問句，依裁定保留）；內容包改 7 處文字、研究紀錄改 9 處文字。查核報告：factcheck/tech-news-snapdragon-8-elite-gen6-20260922-round2.md。",
+      "changes": [
+        {
+          "claim": "正文第一段：台灣上市的否定句沒有指向來源",
+          "before": "查核到 2026 年 9 月 26 日為止，還沒有看到這兩款平台在台灣上市的消息。",
+          "after": "查核到 2026 年 9 月 26 日為止，新聞稿與夥伴引言文件都沒有提到這兩款平台在台灣上市的消息。",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        },
+        {
+          "claim": "第三節夥伴段：Xiaomi 的 across our upcoming premium devices",
+          "before": "說會在即將推出的高階裝置上採用這兩款平台。",
+          "after": "說會把這兩款平台用在即將推出的多款高階裝置上，沒有說哪一支用哪一款。",
+          "source_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf"
+        },
+        {
+          "claim": "FAQ 第 4 題：同上",
+          "before": "Xiaomi 說會在即將推出的高階裝置上採用這兩款平台，",
+          "after": "Xiaomi 說會把這兩款平台用在即將推出的多款高階裝置上、沒有說哪一支用哪一款，",
+          "source_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf"
+        },
+        {
+          "claim": "第四節小標與研究紀錄 diagram 第四格：新聞稿其實寫了 2 奈米與 CPU／GPU／NPU，「沒寫規格」過寬",
+          "before": "新聞稿沒寫的事：代工廠、規格、上市日、台灣／代工廠、規格、上市日、台灣",
+          "after": "新聞稿沒寫的事：代工廠、詳細規格、上市日、台灣／代工廠、詳細規格、上市日、台灣",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        },
+        {
+          "claim": "FAQ 第 1 題：「還沒有查到台灣上市的官方資訊」超出兩份文件的範圍",
+          "before": "高通新聞稿與 Snapdragon Summit 夥伴引言文件都沒有提到台灣，也沒有給出任何上市日或售價；查核到 2026 年 9 月 26 日為止，還沒有查到台灣上市的官方資訊。",
+          "after": "查核到 2026 年 9 月 26 日為止，高通新聞稿與 Snapdragon Summit 夥伴引言文件都沒有提到台灣，也沒有給出任何上市日或售價。",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        },
+        {
+          "claim": "FAQ 第 2 題答句（協調者裁定 2：只說兩份文件都沒有代工廠，不留任何暗示）",
+          "before": "新聞稿與夥伴引言文件都沒有提到任何晶圓代工廠的名字；新聞稿只寫 8 Elite Gen 6 建構在與 Extreme 版「同樣的」2 奈米製程節點上，沒有說明由誰製造。",
+          "after": "新聞稿與夥伴引言文件都沒有提到任何晶圓代工廠的名字，也沒有說明由誰製造。",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        },
+        {
+          "claim": "callout 第一句主詞（協調者裁定 3，純文字修正）",
+          "before": "這兩款平台是高通 2026 年 9 月 22 日發布的新聞稿，電頭茂宜島，",
+          "after": "這兩款平台是高通在 2026 年 9 月 22 日的新聞稿裡發表的，電頭茂宜島，",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        },
+        {
+          "claim": "研究紀錄 verified_facts：多旗艦策略與 OEM 選擇仍寫成「目的是／是為了」（第一輪只改了內容包）",
+          "before": "目的是把最新 AI 功能帶到更廣的高階裝置。／設計兩款平台是為了給手機廠（OEM）更多選擇。",
+          "after": "這個策略讓高通能在推進行動裝置可能性的同時，把最新 AI 功能帶到更廣的高階裝置（allows us to … while bringing）／藉由設計兩款平台，高通讓手機廠（OEM）有更多選擇（we're giving OEMs greater choice）",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        },
+        {
+          "claim": "研究紀錄 verified_facts：Xiaomi 仍寫「同時採用」（第一輪只改了內容包）",
+          "before": "即將推出的高階裝置會同時採用 Snapdragon 8 Elite Extreme Gen 6 與 Snapdragon 8 Elite Gen 6",
+          "after": "會把兩款用在即將推出的多款高階裝置上（across our upcoming premium devices，不寫成「同時採用」）",
+          "source_url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2026-press-kit/day-1/documents/PartnerQuoteSheet.pdf"
+        },
+        {
+          "claim": "研究紀錄 not_said、editorial_brief（三處）、sourcing_notes 仍寫「沒有任何規格數字」，與新聞稿的 2nm 相反",
+          "before": "沒有規格數字。……GHz、%、percent 皆 0 次／沒有任何規格數字／規格數字／任何規格數字／規格數字……不在任何一條來源裡；editorial_brief 的「「同樣的」2 奈米節點與 Oryon CPU……」",
+          "after": "一律改成「2 奈米製程節點（2nm process node）以外的規格數字」；% 註明是網址的 %20；editorial_brief 註明「同樣的」只修飾 2 奈米節點",
+          "source_url": "https://www.qualcomm.com/news/releases/2026/09/snapdragon-leads-the-agentic-ai-age-with-two-of-the-world-s-fast.md"
+        }
+      ],
+      "open_questions": [
+        "第一段的台灣否定句改成指向兩份文件後，第一段有「新聞稿電頭寫的地點是」與「新聞稿與夥伴引言文件都沒有提到」兩個指向來源的片語；後者是否定句必須指向 sources[] 的要求，若協調者認為超過開頭段一個歸因語的上限，可改成「這兩份文件」但不能拿掉範圍。",
+        "第二節 8 Elite Gen 6 那段的「——不是全部」是研究紀錄 verified_facts 對 many of the same 的讀法（語用上的推論，不是原文字面）；保留，翻譯時照「many of the same」譯，不要再加強成「少了某些功能」。"
+      ],
+      "coordinator_rulings": [
+        "裁定 1：第三節夥伴引言段保留五個歸因（HONOR 產品總裁、RedMagic、Motorola 全球產品行銷主管、vivo 資深副總裁暨技術長、Xiaomi 合夥人暨總裁），五個職稱逐一對過 PDF，未改。",
+        "裁定 2：FAQ 第 2 題問句保留「台積電」；答句刪掉 2 奈米那一句，只說兩份文件都沒有代工廠名字、沒有說明由誰製造。",
+        "裁定 3：callout 第一句改成「這兩款平台是高通在 2026 年 9 月 22 日的新聞稿裡發表的」，沒有新增事實。",
+        "裁定 4：新聞稿 .md 逐行列數字，兩款平台唯一的規格數字是 2nm（第 40 行，1 次）；四處「2 奈米製程節點以外」的句子正確，內容包沒有混進其他數字。另把同一個「沒寫規格」的說法在第四節小標、圖解第四格與研究紀錄四處一併收窄。"
+      ],
+      "verdict": "ok"
+    }
+  },
+  "translations": {
+    "en": {
+      "hero_label": "Same Gen, Two Tiers",
+      "diagram": {
+        "title": "Qualcomm Splits Flagship Lineup in Two",
+        "caption": "Compiled from Qualcomm's September 22, 2026 press release and partner quotes: the two platforms, the launch-brand list, and what the press release does not state, fact-checked September 26, 2026.",
+        "nodes": [
+          [
+            "Extreme Version",
+            "Qualcomm's most powerful"
+          ],
+          [
+            "8 Elite Gen 6",
+            "Same 2nm, shared features"
+          ],
+          [
+            "Launch Brands",
+            "\"Including\" list, not complete"
+          ],
+          [
+            "Not Stated",
+            "Foundry, specs, launch, Taiwan"
+          ]
+        ]
+      }
+    },
+    "ja": {
+      "hero_label": "同世代フラッグシップが2段階",
+      "diagram": {
+        "title": "Qualcommのフラッグシップ向けSoC、2段階",
+        "caption": "Qualcommの2026年9月22日付プレスリリースとパートナー発言に基づく整理：2機種の位置づけ、初採用ブランド一覧、プレスリリースに書かれていない点。確認日は2026年9月26日。",
+        "nodes": [
+          [
+            "Extreme版",
+            "Qualcommが最強と称する"
+          ],
+          [
+            "8 Elite Gen 6",
+            "同じ2nm、機能の多くが共通"
+          ],
+          [
+            "初採用ブランド",
+            "例示であり全リストではない"
+          ],
+          [
+            "未記載事項",
+            "受託製造・詳細仕様・発売日・台湾"
+          ]
+        ]
+      }
+    },
+    "ko": {
+      "hero_label": "동일 세대 플래그십 2단계",
+      "diagram": {
+        "title": "퀄컴, 플래그십 SoC를 2단계로 분리",
+        "caption": "퀄컴의 2026년 9월 22일 보도자료와 파트너 코멘트를 바탕으로 정리: 두 플랫폼의 포지셔닝, 출시 브랜드 목록, 보도자료에 나오지 않은 내용. 확인일은 2026년 9월 26일.",
+        "nodes": [
+          [
+            "Extreme 버전",
+            "퀄컴이 최강이라 부르는 플랫폼"
+          ],
+          [
+            "8 Elite Gen 6",
+            "동일한 2nm, 기능 다수 공통"
+          ],
+          [
+            "출시 브랜드",
+            "\"including\"으로 시작, 전체 아님"
+          ],
+          [
+            "미기재 항목",
+            "파운드리·상세 사양·출시일·대만"
+          ]
+        ]
+      }
+    },
+    "zh-CN": {
+      "hero_label": "同一代旗舰分两级",
+      "diagram": {
+        "title": "高通旗舰手机平台分两级",
+        "caption": "依高通 2026 年 9 月 22 日的新闻稿与伙伴引言整理：两款平台、首发品牌名单与新闻稿没写的事，查核日 2026 年 9 月 26 日。",
+        "nodes": [
+          [
+            "Extreme 版",
+            "高通称最强的移动平台"
+          ],
+          [
+            "8 Elite Gen 6",
+            "同为 2 纳米、许多功能相同"
+          ],
+          [
+            "首发品牌",
+            "“包括”开头，不是全名单"
+          ],
+          [
+            "没写的事",
+            "代工厂、详细规格、上市日、台湾"
+          ]
+        ]
+      }
+    }
+  }
+}

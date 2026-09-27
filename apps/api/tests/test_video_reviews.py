@@ -1,0 +1,603 @@
+"""/admin/videos: the review file store, the decision rules, and who may call what."""
+
+from __future__ import annotations
+
+import hashlib
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
+from unittest.mock import AsyncMock, MagicMock
+from uuid import uuid4
+
+import pytest
+from fastapi import FastAPI
+from httpx import ASGITransport, AsyncClient
+
+from app.auth.service import current_user
+from app.config import Settings
+from app.db import get_session
+from app.models import User, VideoProject, VideoReview, VideoToolToken
+from app.problems import AppError, app_error_handler
+from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
+from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
+from app.video_reviews import admin_api, admin_service
+from app.video_reviews.schemas import DecisionIn, DropIn, DubLocalesIn, ProjectIn, ReviewIn
+from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
+from app.video_speech import admin_api as speech_api
+
+
+def _store(root: Path, **limits: int) -> ReviewStore:
+    return ReviewStore(
+        root,
+        max_file_bytes=limits.get("max_file_bytes", 50_000_000),
+        max_total_bytes=limits.get("max_total_bytes", 100_000_000),
+    )
+
+
+def _parts(data: bytes) -> list[bytes]:
+    return [data[start : start + PART_BYTES] for start in range(0, len(data), PART_BYTES)]
+
+
+def test_parts_arrive_in_any_order_and_the_last_one_assembles_and_verifies(tmp_path: Path) -> None:
+    store = _store(tmp_path)
+    data = bytes(range(256)) * (PART_BYTES // 256 * 2 + 3)
+    sha = hashlib.sha256(data).hexdigest()
+    chunks = _parts(data)
+    assert len(chunks) == 3
+    first = store.put_part("ai-model-choice", sha, index=2, count=3, size=len(data), data=chunks[2])
+    assert (first.received, first.complete) == ([2], False)
+    assert store.path("ai-model-choice", sha) is None
+    store.put_part("ai-model-choice", sha, index=0, count=3, size=len(data), data=chunks[0])
+    done = store.put_part("ai-model-choice", sha, index=1, count=3, size=len(data), data=chunks[1])
+    assert done.complete
+    path = store.path("ai-model-choice", sha)
+    assert path is not None and path.read_bytes() == data
+    assert not (tmp_path / "ai-model-choice" / ".parts").joinpath(sha).exists()
+    again = store.put_part("ai-model-choice", sha, index=0, count=3, size=len(data), data=b"")
+    assert again.complete, "a finished file is not uploaded twice"
+
+
+def test_parts_that_do_not_add_up_to_the_hash_are_thrown_away(tmp_path: Path) -> None:
+    store = _store(tmp_path)
+    data = b"preview"
+    with pytest.raises(StorageRefused) as mismatch:
+        store.put_part("v", "0" * 64, index=0, count=1, size=len(data), data=data)
+    assert mismatch.value.code == "video_review_hash_mismatch"
+    assert store.path("v", "0" * 64) is None
+    sha = hashlib.sha256(data).hexdigest()
+    with pytest.raises(StorageRefused) as short:
+        store.put_part("v", sha, index=0, count=1, size=len(data), data=data[:3])
+    assert short.value.code == "video_review_bad_part"
+    with pytest.raises(StorageRefused) as count:
+        store.put_part("v", sha, index=0, count=2, size=len(data), data=data)
+    assert count.value.code == "video_review_bad_part"
+
+
+def test_names_limits_and_the_total_cap_are_enforced(tmp_path: Path) -> None:
+    store = _store(tmp_path, max_file_bytes=1_000_000, max_total_bytes=1_000_010)
+    for slug in ("../etc", "UPPER", "a" * 81, ""):
+        with pytest.raises(StorageRefused):
+            store.put_part(slug, "a" * 64, index=0, count=1, size=1, data=b"x")
+    with pytest.raises(StorageRefused) as not_hex:
+        store.path("ok", "../../secret")
+    assert not_hex.value.code == "video_review_bad_hash"
+    with pytest.raises(StorageRefused) as too_big:
+        store.put_part("ok", "a" * 64, index=0, count=1, size=1_000_001, data=b"x")
+    assert too_big.value.status == 413
+    first = b"a" * 1_000_000
+    store.put_part(
+        "ok", hashlib.sha256(first).hexdigest(), index=0, count=1, size=len(first), data=first
+    )
+    second = b"b" * 20
+    with pytest.raises(StorageRefused) as full:
+        store.put_part(
+            "ok", hashlib.sha256(second).hexdigest(), index=0, count=1, size=20, data=second
+        )
+    assert full.value.status == 507
+
+
+def test_only_files_a_live_review_shows_are_kept(tmp_path: Path) -> None:
+    store = _store(tmp_path)
+    names = []
+    for body in (b"old cut", b"new cut", b"sheet"):
+        sha = hashlib.sha256(body).hexdigest()
+        store.put_part("v", sha, index=0, count=1, size=len(body), data=body)
+        names.append(sha)
+    reviews = [
+        VideoReview(status="superseded", files=[{"sha256": names[0]}]),
+        VideoReview(status="pending", files=[{"sha256": names[1]}, {"sha256": names[2]}]),
+    ]
+    assert admin_service.kept_files(reviews) == {names[1], names[2]}
+    assert store.keep_only("v", admin_service.kept_files(reviews)) == [names[0]]
+    assert store.path("v", names[1]) is not None and store.path("v", names[0]) is None
+
+
+def _review(
+    gate: str, status: str = "pending", payload: dict[str, Any] | None = None
+) -> VideoReview:
+    return VideoReview(gate=gate, status=status, payload=payload or {}, files=[])
+
+
+def test_decisions_need_a_pending_review_a_reason_to_reject_and_an_outline_choice() -> None:
+    outline = _review("outline", payload={"options": [{"key": "A"}, {"key": "B"}, {"key": "C"}]})
+    assert admin_service.outline_choices(outline.payload) == ["A", "B", "C"]
+    approve = DecisionIn(decision="approve")
+    assert "選一個大綱" in (admin_service.decision_problem(outline, approve) or "")
+    assert (
+        admin_service.decision_problem(outline, DecisionIn(decision="approve", choice="B")) is None
+    )
+    assert admin_service.decision_problem(outline, DecisionIn(decision="approve", choice="D"))
+    assert "原因" in (
+        admin_service.decision_problem(_review("final"), DecisionIn(decision="reject")) or ""
+    )
+    assert (
+        admin_service.decision_problem(
+            _review("final"), DecisionIn(decision="reject", note="片頭太長")
+        )
+        is None
+    )
+    assert admin_service.decision_problem(_review("audio", "superseded"), approve)
+    assert admin_service.decision_problem(_review("publish"), approve) is None
+
+
+def test_a_look_review_needs_one_of_its_sheets_chosen_and_a_storyboard_does_not() -> None:
+    look = _review("look", payload={"options": [{"key": "A"}, {"key": "B"}]})
+    approve = DecisionIn(decision="approve")
+    assert "角色設定圖" in (admin_service.decision_problem(look, approve) or "")
+    assert admin_service.decision_problem(look, DecisionIn(decision="approve", choice="B")) is None
+    assert admin_service.decision_problem(look, DecisionIn(decision="approve", choice="Z"))
+    assert admin_service.decision_problem(_review("storyboard"), approve) is None
+
+
+def test_a_dubs_review_is_approved_as_uploaded_or_sent_back_with_a_reason() -> None:
+    """No choice to make: approving says the tracks are on YouTube, rejecting needs a reason."""
+    approve = DecisionIn(decision="approve")
+    assert admin_service.decision_problem(_review("dubs"), approve) is None
+    assert (
+        admin_service.decision_problem(_review("dubs"), DecisionIn(decision="approve", choice="en"))
+        is None
+    ), "a stray choice is ignored, not refused"
+    assert "原因" in (
+        admin_service.decision_problem(_review("dubs"), DecisionIn(decision="reject")) or ""
+    )
+    assert (
+        admin_service.decision_problem(
+            _review("dubs"), DecisionIn(decision="reject", note="英文太快")
+        )
+        is None
+    )
+
+
+def test_a_dubs_review_carries_its_tracks_as_m4a_mp3_or_wav() -> None:
+    base = {"gate": "dubs", "content_sha256": "a" * 64, "summary": "配音"}
+    track = {"role": "dub_zh_cn", "sha256": "b" * 64, "size": 1}
+    for content_type in ("audio/mp4", "audio/mpeg", "audio/wav"):
+        review = ReviewIn.model_validate(
+            {**base, "files": [{**track, "content_type": content_type}]}
+        )
+        assert review.gate == "dubs" and review.files[0].content_type == content_type
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**base, "files": [{**track, "content_type": "audio/ogg"}]})
+
+
+def test_the_dub_languages_are_the_caption_languages_each_at_most_once_in_page_order() -> None:
+    assert DubLocalesIn.model_validate({"locales": []}).locales == []
+    assert DubLocalesIn.model_validate({"locales": ["ko", "en"]}).locales == ["en", "ko"]
+    assert DubLocalesIn.model_validate({"locales": ["zh-CN", "ja", "ko", "en"]}).locales == [
+        "en",
+        "ja",
+        "ko",
+        "zh-CN",
+    ]
+    for bad in (["en", "en"], ["zh-TW"], ["fr"], ["en", "ja", "ko", "zh-CN", "en"]):
+        with pytest.raises(ValueError):
+            DubLocalesIn.model_validate({"locales": bad})
+
+
+@pytest.mark.asyncio
+async def test_the_owner_picks_a_video_s_dub_languages_and_a_dropped_one_takes_none(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    project = VideoProject(id=uuid4(), slug="v", title="AI 模型怎麼挑", stage="final")
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    session = AsyncMock()
+    session.add = MagicMock()
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    assert admin_service._summary(project, 0)["dub_locales"] == [], "off until the owner ticks one"
+
+    chosen = DubLocalesIn.model_validate({"locales": ["ko", "en"]})
+    assert await admin_service.set_dub_locales(session, "v", owner, chosen) == "view"
+    assert project.dub_locales == ["en", "ko"]
+    assert admin_service._summary(project, 0)["dub_locales"] == ["en", "ko"]
+    audit = session.add.call_args.args[0]
+    assert audit.action == "video_dub_locales_set" and audit.actor_user_id == owner.id
+    assert audit.target == f"video_project:{project.id}"
+    assert audit.metadata_json == {"slug": "v", "locales": ["en", "ko"]}
+    assert session.commit.await_count == 1
+
+    same = DubLocalesIn.model_validate({"locales": ["en", "ko"]})
+    assert await admin_service.set_dub_locales(session, "v", owner, same) == "view"
+    assert session.add.call_count == 1 and session.commit.await_count == 1, (
+        "the same choice again is not a change"
+    )
+
+    project.dropped_at = datetime.now(UTC)
+    with pytest.raises(AppError) as refused:
+        await admin_service.set_dub_locales(
+            session, "v", owner, DubLocalesIn.model_validate({"locales": []})
+        )
+    assert refused.value.code == "video_project_dropped"
+    assert project.dub_locales == ["en", "ko"]
+
+
+def test_a_review_carries_up_to_48_files_and_a_subject_that_is_an_id() -> None:
+    base = {"gate": "storyboard", "content_sha256": "a" * 64, "summary": "分鏡"}
+    file = {"role": "shot_01", "sha256": "b" * 64, "size": 1, "content_type": "image/png"}
+    ReviewIn.model_validate({**base, "files": [file] * 48})
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**base, "files": [file] * 49})
+    assert ReviewIn.model_validate({**base, "gate": "look", "subject": "jingwei"}).subject
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**base, "gate": "look", "subject": "Jing Wei"})
+
+
+@pytest.mark.asyncio
+async def test_a_look_review_replaces_only_the_pending_one_of_its_character(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    store = _store(tmp_path)
+    project = VideoProject(id=uuid4(), slug="v", title="精衛填海", stage="look")
+    jingwei = VideoReview(
+        gate="look",
+        subject="jingwei",
+        status="pending",
+        content_sha256="a" * 64,
+        payload={},
+        files=[],
+    )
+    yandi = VideoReview(
+        gate="look",
+        subject="yandi",
+        status="pending",
+        content_sha256="b" * 64,
+        payload={},
+        files=[],
+    )
+    outline = VideoReview(
+        gate="outline",
+        subject=None,
+        status="pending",
+        content_sha256="c" * 64,
+        payload={},
+        files=[],
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(
+        admin_service, "_reviews", AsyncMock(return_value=[jingwei, yandi, outline])
+    )
+    monkeypatch.setattr(admin_service, "auto_approves_audio", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_approves_storyboard", AsyncMock(return_value=True))
+    session = AsyncMock()
+    session.add = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+
+    newer = ReviewIn(
+        gate="look",
+        subject="jingwei",
+        content_sha256="d" * 64,
+        summary="精衛的新設定圖",
+        payload={"options": [{"key": "A"}]},
+    )
+    out = await admin_service.submit_review(session, store, "v", newer, token)
+    assert out.subject == "jingwei" and out.status == "pending"
+    assert (jingwei.status, yandi.status, outline.status) == ("superseded", "pending", "pending")
+
+    board = ReviewIn(
+        gate="storyboard",
+        content_sha256="e" * 64,
+        summary="分鏡",
+        payload={"shots": [{"id": "a"}], "judge": {"overall": 9, "problems": []}},
+    )
+    auto = await admin_service.submit_review(session, store, "v", board, token)
+    assert auto.status == "approved" and auto.note == AUTO_APPROVED_STORYBOARD_NOTE
+    assert session.add.call_args.args[0].action == "video_review_auto_approved"
+
+
+@pytest.mark.asyncio
+async def test_dropping_a_video_closes_its_reviews_deletes_its_previews_and_is_final(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    store = _store(tmp_path)
+    body = b"outline preview"
+    sha = hashlib.sha256(body).hexdigest()
+    store.put_part("v", sha, index=0, count=1, size=len(body), data=body)
+    project = VideoProject(id=uuid4(), slug="v", title="Google AI 學生方案", stage="outline")
+    pending = _review("outline")
+    decided = _review("audio", "approved")
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[pending, decided]))
+    monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
+    session = AsyncMock()
+    session.add = MagicMock()
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+
+    note = DropIn(note="  第二批已經做了這題  ")
+    assert await admin_service.drop_project(session, store, "v", owner, note) == "view"
+    assert (pending.status, decided.status) == ("superseded", "approved")
+    assert project.dropped_at is not None and project.dropped_by_user_id == owner.id
+    assert project.dropped_note == "第二批已經做了這題"
+    assert store.path("v", sha) is None, "a dropped video keeps no previews"
+    assert session.add.call_args.args[0].action == "video_project_dropped"
+
+    await admin_service.drop_project(session, store, "v", owner, DropIn(note="again"))
+    assert session.add.call_count == 1 and project.dropped_note == "第二批已經做了這題"
+
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+    outline = ReviewIn(gate="outline", content_sha256="a" * 64, summary="大綱")
+    with pytest.raises(AppError) as submitted:
+        await admin_service.submit_review(session, store, "v", outline, token)
+    with pytest.raises(AppError) as decided_after:
+        await admin_service.decide(session, "v", uuid4(), owner, DecisionIn(decision="approve"))
+    assert submitted.value.code == decided_after.value.code == "video_project_dropped"
+
+
+def test_a_report_keeps_the_source_article_an_older_tool_does_not_send() -> None:
+    assert ProjectIn(title="t", stage="s").source_guide is None
+    assert ProjectIn(title="t", stage="s", source_guide="ai-news-x-20260820").source_guide
+    with pytest.raises(ValueError):
+        ProjectIn(title="t", stage="s", source_guide="../etc")
+
+
+def test_a_review_payload_is_capped() -> None:
+    body = {"gate": "final", "content_sha256": "a" * 64, "summary": "成片"}
+    ReviewIn.model_validate({**body, "payload": {"text": "字" * 1000}})
+    with pytest.raises(ValueError):
+        ReviewIn.model_validate({**body, "payload": {"text": "字" * 100_000}})
+
+
+def _app(user: User | None = None) -> FastAPI:
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(admin_api.tool_router, prefix="/api/v1")
+    app.include_router(admin_api.admin_router, prefix="/api/v1")
+
+    async def session() -> Any:
+        yield AsyncMock()
+
+    app.dependency_overrides[get_session] = session
+    if user is not None:
+        app.dependency_overrides[current_user] = lambda: user
+    return app
+
+
+@pytest.mark.asyncio
+async def test_admin_routes_need_content_capabilities(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused")
+    monkeypatch.setattr(admin_service, "list_projects", AsyncMock(return_value=[]))
+
+    # The list route opens the review store first (it prunes published videos' mp4 files).
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    decide = AsyncMock()
+    drop = AsyncMock()
+    dubs = AsyncMock()
+    monkeypatch.setattr(admin_service, "decide", decide)
+    monkeypatch.setattr(admin_service, "drop_project", drop)
+    monkeypatch.setattr(admin_service, "set_dub_locales", dubs)
+    app = _app(viewer)
+    review = f"/api/v1/admin/videos/v/reviews/{uuid4()}/decision"
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        nobody = await client.get("/api/v1/admin/videos")
+        viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
+        listed = await client.get("/api/v1/admin/videos")
+        refused = await client.post(review, json={"decision": "approve"})
+        not_dropped = await client.post("/api/v1/admin/videos/v/drop", json={"note": "重複"})
+        not_dubbed = await client.put("/api/v1/admin/videos/v/dubs", json={"locales": ["en"]})
+    assert nobody.status_code == 403 and listed.status_code == 200
+    assert refused.status_code == 403, "a viewer can read but not decide"
+    assert not_dropped.status_code == 403, "nor drop a video"
+    assert not_dubbed.status_code == 403, "nor pick its dub languages"
+    decide.assert_not_awaited()
+    drop.assert_not_awaited()
+    dubs.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_a_content_manager_sets_the_dub_languages_and_bad_ones_never_reach_the_service(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    view = {
+        "slug": "v",
+        "title": "AI 模型怎麼挑",
+        "stage": "final",
+        "checklist": [],
+        "youtube_video_id": None,
+        "last_synced_at": "2026-09-27T00:00:00Z",
+        "pending": 0,
+        "dub_locales": ["en"],
+        "reviews": [],
+    }
+    set_dubs = AsyncMock(return_value=view)
+    monkeypatch.setattr(admin_service, "set_dub_locales", set_dubs)
+    url = "/api/v1/admin/videos/v/dubs"
+    transport = ASGITransport(app=_app(owner))
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        saved = await client.put(url, json={"locales": ["en"]})
+        twice = await client.put(url, json={"locales": ["en", "en"]})
+        original = await client.put(url, json={"locales": ["zh-TW"]})
+        unknown = await client.put(url, json={"locales": ["en"], "note": "x"})
+    assert saved.status_code == 200, saved.text
+    assert saved.json()["dub_locales"] == ["en"]
+    assert set_dubs.await_args.args[3].locales == ["en"]
+    assert twice.status_code == 422 and original.status_code == 422
+    assert unknown.status_code == 200, "an extra field is ignored, as on the other routes"
+    assert set_dubs.await_count == 2
+
+
+@pytest.mark.asyncio
+async def test_pipeline_routes_need_a_video_tool_token() -> None:
+    app = _app()
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.get("/api/v1/video/reviews/v")
+        admin = await client.get("/api/v1/admin/videos")
+    assert response.status_code == 401
+    assert admin.status_code == 401
+
+
+@pytest.mark.asyncio
+async def test_uploaded_parts_land_in_the_configured_store(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    app = _app()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+    app.dependency_overrides[speech_api.video_tool] = lambda: token
+    body = b"narration preview"
+    sha = hashlib.sha256(body).hexdigest()
+    url = f"/api/v1/video/reviews/ai-model-choice/files/{sha}"
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        done = await client.put(
+            url, params={"part": 0, "parts": 1, "size": len(body)}, content=body
+        )
+        wrong = await client.put(
+            f"/api/v1/video/reviews/ai-model-choice/files/{'b' * 64}",
+            params={"part": 0, "parts": 1, "size": len(body)},
+            content=body,
+        )
+    assert done.status_code == 200 and done.json() == {"received": [0], "complete": True}
+    assert (tmp_path / "ai-model-choice" / sha).read_bytes() == body
+    assert wrong.status_code == 422 and wrong.json()["code"] == "video_review_hash_mismatch"
+
+
+@pytest.mark.asyncio
+async def test_a_preview_is_served_with_byte_ranges_and_never_cached(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    preview = tmp_path / "preview.mp4"
+    preview.write_bytes(bytes(range(200)))
+    monkeypatch.setattr(
+        admin_service, "file_for_admin", AsyncMock(return_value=(preview, "video/mp4"))
+    )
+
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    app = _app(owner)
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.get(
+            f"/api/v1/admin/videos/v/files/{'a' * 64}", headers={"Range": "bytes=10-19"}
+        )
+    assert response.status_code == 206
+    assert response.content == bytes(range(10, 20))
+    assert response.headers["content-type"] == "video/mp4"
+    assert response.headers["cache-control"] == "private, no-store"
+
+
+@pytest.mark.asyncio
+async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_file_is_rejudged(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """The hands-off approvals (docs/videos/HANDS-OFF.md): the server applies the rules to the
+    worker's payload as it arrives, and a file sent again while it waits is judged again."""
+    store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
+    now = datetime.now(UTC)
+    project = VideoProject(id=uuid4(), slug="v", title="t", stage="final", checklist=[])
+    waiting = VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="final",
+        subject=None,
+        status="pending",
+        content_sha256="f" * 64,
+        summary="成片",
+        payload={},
+        files=[],
+        created_at=now,
+    )
+    decided = VideoReview(
+        id=uuid4(),
+        project_id=project.id,
+        gate="audio",
+        subject=None,
+        status="approved",
+        content_sha256="a" * 64,
+        summary="旁白",
+        payload={},
+        files=[],
+        created_at=now,
+        decided_at=now,
+    )
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=[waiting, decided]))
+    monkeypatch.setattr(admin_service, "auto_approves_audio", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_approves_storyboard", AsyncMock(return_value=False))
+    monkeypatch.setattr(admin_service, "auto_picks_outline", AsyncMock(return_value=True))
+    final_rule = AsyncMock(return_value=True)
+    monkeypatch.setattr(admin_service, "auto_approves_final", final_rule)
+    session = AsyncMock()
+    session.add = MagicMock()
+    token = VideoToolToken(id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x")
+
+    pick = {
+        "choice": "B",
+        "probabilities": {"A": 0.26, "B": 0.74},
+        "options": {"A": {"stance": 0.9, "demo": 0.4}, "B": {"stance": 0.81, "demo": 0.92}},
+        "advice": 0.05,
+    }
+    outline = ReviewIn(
+        gate="outline",
+        content_sha256="c" * 64,
+        summary="大綱",
+        payload={"options": [{"key": "A"}, {"key": "B"}], "pick": pick},
+    )
+    picked = await admin_service.submit_review(session, store, "v", outline, token)
+    assert picked.status == "approved" and picked.choice == "B"
+    assert (
+        picked.note == "Jev 挑了 B（0.74）：符合立場 0.81、有示範 0.92、建議 0.05，依設定自動核准"
+    )
+    assert session.add.call_args.args[0].action == "video_review_auto_approved"
+
+    # The same final cut sent again while it waits: the quality check arrived after the fact.
+    qa = {"ok": True, "final_sha256": "f" * 64, "items": []}
+    resent = ReviewIn(
+        gate="final", content_sha256="f" * 64, summary="成片＋品管", payload={"qa": qa}
+    )
+    again = await admin_service.submit_review(session, store, "v", resent, token)
+    assert again.id == waiting.id and again.status == "approved"
+    assert again.note == QA_AUTO_APPROVED_NOTE
+    assert waiting.summary == "成片＋品管" and waiting.payload == {"qa": qa}
+    assert final_rule.await_args.args[1:] == ("final", {"qa": qa}, "f" * 64)
+
+    # A decided review of the same file comes back as it is.
+    settled = ReviewIn(gate="audio", content_sha256="a" * 64, summary="旁白", payload={"x": 1})
+    same = await admin_service.submit_review(session, store, "v", settled, token)
+    assert same.id == decided.id and same.status == "approved" and decided.payload == {}
+
+    # A character's sheet: the judge's suggestion stands when the owner turned that on.
+    monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=True))
+    sheets = ReviewIn(
+        gate="look",
+        subject="jingwei",
+        content_sha256="d" * 64,
+        summary="精衛的設定圖",
+        payload={
+            "options": [{"key": "B", "judge": {"overall": 8, "problems": []}}],
+            "suggested": "B",
+        },
+    )
+    picked_sheet = await admin_service.submit_review(session, store, "v", sheets, token)
+    assert picked_sheet.status == "approved" and picked_sheet.choice == "B"
+    assert picked_sheet.note == "judge 給 B 8/10、沒有列出問題，依設定自動選"

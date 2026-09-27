@@ -20,11 +20,13 @@ export default async function proxy(request: NextRequest) {
   // Report-Only, a minute of blocked ads once enforced. And an article URL whose article does
   // not exist still gets the relaxed policy, because the renderer establishes that with an
   // API read this cannot afford per request; that page carries no ad code either way.
+  // The query goes in too: a URL carrying one is served without ads, so it keeps the strict
+  // policy as well.
   const adsense = adsenseRequestGate({
     host: request.headers.get("host"),
     dnt: request.headers.get("dnt"),
     gpc: request.headers.get("sec-gpc"),
-    pathname: request.nextUrl.pathname,
+    pathname: `${request.nextUrl.pathname}${request.nextUrl.search}`,
   }) !== null && (await fetchAdsenseConfig()).enabled;
   const options = { nonce, production: process.env.NODE_ENV === "production", adsense };
   // Two policies per document. The script half is enforced; the resource half only reports.

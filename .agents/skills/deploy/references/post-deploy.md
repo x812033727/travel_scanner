@@ -15,9 +15,9 @@
 
 ## 大功能上線後的三個問題
 
-CI 綠、部署成功、首頁 200，功能仍可能一半是啞的。2026-09-07 那批景點主題上線後找到三類本機測試看不見的缺陷：
+CI 綠、部署成功、首頁 200，功能仍可能一半是啞的。2026-09-07 那批景點主題上線後找到三類本機測試看不見的缺陷（做法：平行的稽核代理加一輪反駁；改程式前先對正式站驗證，不要只憑稽核報告動手）：
 
-1. **新資料真的進 DB 了嗎？** 只有 seed 對真 DB 跑過才看得見的推導錯誤（例如座標來源的 type 有、URL 是 NULL，排行榜照列但加入行程 404）。
+1. **新資料真的進 DB 了嗎？** 只有 seed 對真 DB 跑過才看得見的推導錯誤（例如座標來源的 type 有、URL 是 NULL，排行榜照列但加入行程 404）。`is_durable_coordinate_source` 要 type **與** https URL 都有，缺一個就掉出 `_planner_eligible`、`planner_ready` 與加入行程，排行榜卻照列。新 seed 的景點預設也是「列得出來、用不了」：`seed_catalog` 不寫 `google_place_id` 與 `map_match_status`，新列是 `unverified`、沒有 `hotspot_place_profiles`；兩條自動流程都接不到（`due_refresh_targets` 對 profile 是 inner join，`refresh_due_map_place_ids` 只看 verified，collector 印 `place_enrichment: {'skipped': True, 'reason': 'nothing_due'}`），只有後台的 `POST /admin/hotspots/place-enrichment/runs`（`enrichment_targets` 用 outer join）碰得到。
 2. **新的背景工作有沒有人聽？** endpoint、佇列、worker 訂閱、額度守衛、設定卡全都在，前端卻沒有任何一處呼叫它。
 3. **順序對嗎？** 例如先扣額度才檢查供應商有沒有金鑰，按二十次沒設定的按鈕就把當天額度花光。
 
@@ -41,6 +41,10 @@ CI 綠、部署成功、首頁 200，功能仍可能一半是啞的。2026-09-07
 - 用 User-Agent 數爬蟲的 429 會被自己的稽核與冒名的掃描器騙；按來源位址分開、對照公布的網段再下結論。
 - server 層級的 `access_log` 會**取代**繼承的那一條，加了條件式 log 之後正常請求可能整整幾天沒有任何紀錄（2026-09-19 到 22 就發生過）；`ops/nginx/README.md` 現在要求同層放兩條。
 
+## 不看 log 就能驗的：`/zh-TW/foods` 的篩選抽屜（`useModalSheet`）
+
+375px 寬點「美食篩選，目前選了 0 個條件」：要有 `role=dialog`、`aria-modal=true`、焦點在抽屜裡、body `overflow: hidden`。按 Escape 或「關閉美食篩選」後這些都撤掉、表單仍在 DOM、焦點回到開啟鈕。手機寬度沒有「開啟導覽選單」，導覽找「手機主要導覽」。
+
 ## 已知的主控台雜訊
 
-每頁一個跨來源的 `Failed to load resource: 400`（Travelpayouts 腳本之後），以及 `/zh-TW/foods` 的 React #418 hydration 警告，都不是部署造成的。
+每頁一個跨來源的 `Failed to load resource: 400`（Travelpayouts 腳本之後）不是部署造成的。`/zh-TW/foods` 的 React #418 hydration 警告不是 #493 造成的，但來源沒追到，也沒人查過 #493 之前有沒有。

@@ -26,6 +26,39 @@ def test_normalize_path_removes_locale_queries_and_dynamic_ids() -> None:
     assert normalize_path("/api/v1/auth/me") is None
 
 
+def test_normalize_path_keeps_the_slug_of_a_published_article_url() -> None:
+    # Long enough for the token rule, which used to fold every such article into one row.
+    assert (
+        normalize_path("/zh-TW/life/claude-code-first-project-setup?utm_source=x")
+        == "/life/claude-code-first-project-setup"
+    )
+    assert normalize_path("/en/guides/howto/tokyo-where-to-stay-first-trip/") == (
+        "/guides/howto/tokyo-where-to-stay-first-trip"
+    )
+    assert normalize_path("/ja/guides/intel/japan-rail-pass-price-change-2026") == (
+        "/guides/intel/japan-rail-pass-price-change-2026"
+    )
+    # No 48-character cut: two slugs that share their first 48 characters stay apart.
+    slug = "a" * 48 + "-first-half"
+    assert normalize_path(f"/ko/life/{slug}") == f"/life/{slug}"
+
+
+def test_normalize_path_still_folds_tokens_outside_the_article_shapes() -> None:
+    # A share URL is a secret, whatever it looks like.
+    assert normalize_path("/zh-TW/share/claude-code-first-project-setup") == "/share/:id"
+    # Not a slug: capitals and underscores are what a token looks like.
+    assert normalize_path("/zh-TW/life/AbCdEfGhIjKlMnOpQrStUv_") == "/life/:id"
+    # Not an article shape: an unknown kind, or anything below the slug.
+    assert normalize_path("/zh-TW/guides/news/claude-code-first-project-setup") == (
+        "/guides/news/:id"
+    )
+    assert normalize_path("/zh-TW/life/claude-code-first-project-setup/extra") == (
+        "/life/:id/extra"
+    )
+    trip = "/zh-TW/trips/550e8400-e29b-41d4-a716-446655440000/share"
+    assert normalize_path(trip) == "/trips/:id/share"
+
+
 def test_daily_hashes_rotate_without_exposing_source_values() -> None:
     key = b"a-secret-long-enough"
     first = _digest(key, "analytics-day", "2026-09-01|203.0.113.1|UA")

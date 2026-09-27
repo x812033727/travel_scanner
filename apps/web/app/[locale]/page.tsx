@@ -22,6 +22,7 @@ import { getDiscoveryStatus } from "@/lib/discovery-status.server";
 import { discoveryFeedPath, getInitialDiscoveryFeed } from "@/lib/discovery.server";
 import { getSiteVisibility } from "@/lib/site-visibility.server";
 import { featureEnabled } from "@/lib/site-features";
+import { HomeGuides, loadHomeGuides } from "@/components/home-guides";
 
 export default async function Home() {
   const [locale, t, tc, discovery, visibility] = await Promise.all([
@@ -45,7 +46,10 @@ export default async function Home() {
   // than three grey rectangles. `/explore` has done this since it was written; the home page
   // never did, which is why its whole body -- hero, rail and all -- was a skeleton to a
   // crawler. The home page has no query of its own, so the path is the unfiltered feed.
-  const feed = await getInitialDiscoveryFeed(locale, discoveryFeedPath({}, discovery.enabled));
+  const [feed, guides] = await Promise.all([
+    getInitialDiscoveryFeed(locale, discoveryFeedPath({}, discovery.enabled)),
+    loadHomeGuides(locale),
+  ]);
   // `feed` is null when the switch is off, when the API could not be read, and when the feed
   // came back empty. Seeding the gate with `false` there renders `body` -- the hero, the quick
   // cards and the destination rail -- instead of a skeleton, and the client store still swaps
@@ -209,6 +213,7 @@ export default async function Home() {
           the response body. Here the graph reaches a crawler in both states. */}
       <StructuredData data={[organization(), webSite(locale, hotspotsEnabled)]} />
       <DiscoveryHomeGate initialEnabled={seeded} initialFeed={feed}>{body}</DiscoveryHomeGate>
+      <HomeGuides blocks={guides} />
     </>
   );
 }

@@ -7,8 +7,10 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from app.ai.catalog import ModelStatus, valid_model_id
 from app.guides.schemas import GuideDocument
 from app.i18n import Locale
+from app.news_automation.provider_schema import ProviderReply
 
 Vertical = Literal["ai", "tech", "crypto"]
 SourceVertical = Literal["ai", "tech", "crypto", "mixed"]
@@ -22,6 +24,8 @@ CandidateStatus = Literal[
     "jev_review",
     "shadow_review",
     "manual_review",
+    "needs_evidence",
+    "needs_redraft",
     "published",
     "duplicate",
     "rejected",
@@ -118,13 +122,57 @@ class SourceView(SourceWrite):
     updated_at: datetime
 
 
-class SettingsWrite(StrictModel):
-    enabled: bool
-    mode: Literal["shadow", "automatic"] = "shadow"
+def _clean_model_id(value: str | None) -> str | None:
+    # A Gemini model id is interpolated into the request path (security audit R2-25),
+    # so a stored id is held to the same pattern as the admin AI settings.
+    cleaned = (value or "").strip()
+    if not cleaned:
+        return None
+    if not valid_model_id(cleaned):
+        raise ValueError("model ids may contain letters, digits, dot, underscore, colon and -")
+    return cleaned
+
+
+_MODEL_KEYS = (
+    "writer_provider",
+    "writer_model",
+    "verifier_provider",
+    "verifier_model",
+    "editor_provider",
+    "editor_model",
+)
+
+
+class ModelsWrite(StrictModel):
+    """The writer, verifier and final editor models, chosen on the AI settings page."""
+
     writer_provider: ProviderName
     writer_model: str | None = Field(default=None, max_length=128)
     verifier_provider: ProviderName
     verifier_model: str | None = Field(default=None, max_length=128)
+    editor_provider: ProviderName
+    editor_model: str | None = Field(default=None, max_length=128)
+
+    @field_validator("writer_model", "verifier_model", "editor_model")
+    @classmethod
+    def model_id(cls, value: str | None) -> str | None:
+        return _clean_model_id(value)
+
+
+class SettingsWrite(StrictModel):
+    enabled: bool
+    mode: Literal["shadow", "automatic"] = "shadow"
+    # The models are chosen on the AI settings page (PUT /settings/models). A settings
+    # save that leaves them out keeps the stored choice, so the news page cannot put
+    # back a model it loaded before the owner changed it there.
+    writer_provider: ProviderName | None = None
+    writer_model: str | None = Field(default=None, max_length=128)
+    verifier_provider: ProviderName | None = None
+    verifier_model: str | None = Field(default=None, max_length=128)
+    # The editor keeps #763's defaults for callers that build settings from scratch (the
+    # settings CLI); a save still keeps the stored editor unless it sends one.
+    editor_provider: ProviderName | None = "anthropic"
+    editor_model: str | None = Field(default="claude-opus-5-5", max_length=128)
     global_concurrency: int = Field(ge=1, le=8)
     per_vertical_concurrency: int = Field(ge=1, le=4)
     min_shadow_days: int = Field(ge=1, le=90)
@@ -137,11 +185,22 @@ class SettingsWrite(StrictModel):
     prompt_version: str = Field(min_length=1, max_length=32)
     policy_version: str = Field(min_length=1, max_length=32)
 
+    @field_validator("writer_model", "verifier_model", "editor_model")
+    @classmethod
+    def model_id(cls, value: str | None) -> str | None:
+        return _clean_model_id(value)
+
     @model_validator(mode="after")
     def concurrency_order(self) -> Self:
         if self.per_vertical_concurrency > self.global_concurrency:
             raise ValueError("per-vertical concurrency cannot exceed global concurrency")
+        for key in ("writer_provider", "verifier_provider", "editor_provider"):
+            if key in self.model_fields_set and getattr(self, key) is None:
+                raise ValueError(f"{key} cannot be empty")
         return self
+
+    def sent_models(self) -> set[str]:
+        return {key for key in _MODEL_KEYS if key in self.model_fields_set}
 
 
 class GateView(StrictModel):
@@ -155,8 +214,22 @@ class GateView(StrictModel):
     reasons: list[str]
 
 
+class ModelOptionView(StrictModel):
+    value: str
+    label: str
+    description: str | None
+    status: ModelStatus
+
+
 class SettingsView(SettingsWrite):
+    writer_provider: ProviderName
+    verifier_provider: ProviderName
+    editor_provider: ProviderName
     gates: dict[Vertical, GateView]
+    # The admin model dropdowns: catalog models each vendor's news adapter can drive,
+    # and the model an empty choice falls back to.
+    model_options: dict[ProviderName, list[ModelOptionView]]
+    default_models: dict[ProviderName, str]
     updated_at: datetime
 
 
@@ -233,6 +306,9 @@ class CandidateDetail(CandidateSummary):
     lint: dict[str, Any]
     human_reason: str | None
     human_major_error: bool
+    # Filled only while the semantic duplicate check is waiting for an editor: the known
+    # titles closest to this one, so "not a duplicate" can be answered by eye.
+    similar_titles: list[str] = Field(default_factory=list)
 
 
 class CandidateAction(StrictModel):
@@ -245,7 +321,9 @@ class Claim(StrictModel):
     source_urls: list[str] = Field(min_length=1, max_length=4)
 
 
-class EditorialDraft(StrictModel):
+class EditorialDraft(ProviderReply):
+    document_fields = ("document",)
+
     eligible: bool
     exclusion_reason: str = Field(default="", max_length=1000)
     vertical: Vertical
@@ -256,7 +334,9 @@ class EditorialDraft(StrictModel):
     document: GuideDocument
 
 
-class VerificationResult(StrictModel):
+class VerificationResult(ProviderReply):
+    document_fields = ("corrected_document",)
+
     verdict: Literal["pass", "revise", "manual"]
     issues: list[str] = Field(default_factory=list, max_length=30)
     corrected_document: GuideDocument | None = None
@@ -268,17 +348,17 @@ class VerificationResult(StrictModel):
         return self
 
 
-class TranslationBundle(StrictModel):
-    documents: dict[Locale, GuideDocument]
+class LocalizedDocument(ProviderReply):
+    document_fields = ("document",)
 
-    @model_validator(mode="after")
-    def four_targets_only(self) -> Self:
-        if set(self.documents) != {"zh-CN", "en", "ja", "ko"}:
-            raise ValueError("translations must contain zh-CN, en, ja and ko")
-        return self
+    # One locale per call: four documents in one reply outran the request timeout, and
+    # a keyed map has no schema a strict provider accepts.
+    document: GuideDocument
 
 
-class LocaleReviewResult(StrictModel):
+class LocaleReviewResult(ProviderReply):
+    document_fields = ("corrected_document",)
+
     verdict: Literal["pass", "revise", "manual"]
     issues: list[str] = Field(default_factory=list, max_length=30)
     corrected_document: GuideDocument | None = None

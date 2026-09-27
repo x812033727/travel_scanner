@@ -21,4 +21,11 @@ describe("home", () => {
     expect(screen.getByRole("button", { name: /下一步/ })).toBeTruthy();
     expect(document.getElementById("trip-search")).toBeTruthy();
   });
+
+  it("says what the site is below the search, even when every article read fails", async () => {
+    const home = await Home();
+    await act(async () => { render(home, { wrapper: ThemeProvider }); });
+    expect(screen.getByRole("heading", { level: 2, name: "旅行與生活的實用指南" })).toBeTruthy();
+    expect(screen.getByText(/個人站長經營/)).toBeTruthy();
+  });
 });

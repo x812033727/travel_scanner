@@ -56,7 +56,7 @@ describe("SiteFooter", () => {
 
   it.each([
     ["旅遊情報攻略", "/guides"],
-    ["生活分享", "/life"],
+    ["生活科技", "/life"],
     ["搜尋文章", "/search/articles"],
     // Added after a crawl found these three in the sitemap with no inbound link anywhere on
     // the site: the 593 places and the merchant directory live behind the first two.

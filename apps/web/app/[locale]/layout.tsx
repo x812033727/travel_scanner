@@ -15,6 +15,8 @@ import { UsageCatalogProvider } from "@/components/usage-catalog-provider";
 import { CommunityProvider } from "@/components/community/provider";
 import { getCommunityState } from "@/lib/community/server";
 import { AnalyticsProvider } from "@/components/analytics-provider";
+import { PrivateRouteIsolation } from "@/components/private-route-isolation";
+import { ThirdPartyAudience } from "@/components/third-party-audience";
 import { TravelpayoutsDrive } from "@/components/travelpayouts-drive";
 import type { AdsenseConfig } from "@/lib/adsense";
 import { routing } from "@/i18n/routing";
@@ -127,6 +129,9 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
             <UsageCatalogProvider state={usageCatalog}>
               <AnalyticsProvider>
                 <TravelpayoutsDrive enabled={travelpayoutsDriveEnabled} />
+                {/* Drive and GA4's gtag.js stay off private pages; this keeps a private page
+                    out of a document either of them already ran in. */}
+                <PrivateRouteIsolation />
                 <LegacyUiLocalizer />
                 {/* One /auth/me for the whole page. It used to be asked three times —
                     by the header, the currency switcher and the account panel — and a
@@ -137,6 +142,8 @@ export default async function LocaleLayout({ children, params, ads }: Props) {
                   key={anonymousDocument ? "ads" : hasSession ? "session" : "anonymous"}
                   hasSession={!anonymousDocument && hasSession}
                 >
+                  {/* Drive and gtag.js wait for this: never for an administrator. */}
+                  <ThirdPartyAudience unknownRole={anonymousDocument && hasSession} />
                   <CommunityProvider state={community}>
                   <SavedItemsProvider hasSession={!anonymousDocument && hasSession}>
                     <div className="public-app-shell">

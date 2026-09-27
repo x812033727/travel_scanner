@@ -1,0 +1,533 @@
+"""HTTP surface of the video automation settings.
+
+``admin_router`` is the settings tab on /admin/videos: anyone who reviews videos can read it,
+only an admin who manages settings can change it, since it chooses paid models and budgets.
+``tool_router`` is how the worker (or the owner's own copy of the tool) reads the same values
+with a video tool token, through apps/web/app/api/video/automation.
+"""
+
+from __future__ import annotations
+
+from datetime import datetime
+from typing import Annotated
+from uuid import UUID
+
+import httpx
+from fastapi import APIRouter, Depends
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.admin.service import load_runtime_settings
+from app.ai.jev import JevError, JevRequestInvalid
+from app.auth.service import require_capability
+from app.db import get_session
+from app.infra import enforce_named_rate_limit, get_redis
+from app.models import User, VideoToolToken
+from app.problems import AppError
+from app.video_automation import requests as drama_requests
+from app.video_automation import series as drama_series
+from app.video_automation import settings as service
+from app.video_automation.ai import StageFailed, run_stage
+from app.video_automation.judge import (
+    JudgeOutlineIn,
+    JudgePolicyIn,
+    OutlinePick,
+    PolicyVerdict,
+    judge_outline,
+    judge_policy,
+)
+from app.video_automation.requests import RequestRefused
+from app.video_automation.schemas import (
+    DramaRequestIn,
+    DramaRequestOut,
+    DramaRequestsOut,
+    DramaRequestStart,
+    NextDramaRequestOut,
+    SeriesAction,
+    SeriesActionOut,
+    SeriesContextOut,
+    SeriesDocDecisionIn,
+    SeriesDocEditIn,
+    SeriesDocOut,
+    SeriesDocSubmitIn,
+    SeriesEpisodeEditIn,
+    SeriesEpisodeOut,
+    SeriesEpisodeRecapIn,
+    SeriesEpisodeStartIn,
+    SeriesEpisodeStartOut,
+    SeriesIn,
+    SeriesJobOut,
+    SeriesListOut,
+    SeriesOut,
+    SeriesPatch,
+    SettingsSave,
+    SettingsView,
+    SettingsWrite,
+    StageModelsWrite,
+    StagePromptsOut,
+    StageRunIn,
+    StageRunOut,
+    TopicsOut,
+)
+from app.video_automation.series import SeriesRefused
+from app.video_automation.topics import gather_topics
+from app.video_reviews.admin_service import list_projects
+from app.video_reviews.schemas import ProjectSummary
+from app.video_speech.admin_api import VideoTool
+from app.video_speech.checking import CheckUnavailable
+
+# A whole video is a few dozen stage calls; this only stops a runaway loop.
+RUNS_PER_HOUR = 120
+TOPIC_LOOKUPS_PER_HOUR = 12
+# The worker asks every few minutes; this only stops a runaway loop.
+REQUEST_CALLS_PER_HOUR = 240
+SERIES_CALLS_PER_HOUR = 240
+# Two Jev judgements per video at most; this only stops a runaway loop.
+JUDGE_CALLS_PER_HOUR = 60
+
+admin_router = APIRouter(prefix="/admin/video-automation", tags=["admin video automation"])
+tool_router = APIRouter(prefix="/video/automation", tags=["video automation (pipeline)"])
+Session = Annotated[AsyncSession, Depends(get_session)]
+ContentReader = Annotated[User, Depends(require_capability("content.read"))]
+ContentManager = Annotated[User, Depends(require_capability("content.manage"))]
+SettingsManager = Annotated[User, Depends(require_capability("settings.manage"))]
+
+
+class ToolSettingsView(SettingsWrite):
+    updated_at: datetime | None
+
+
+@admin_router.get("/settings", response_model=SettingsView)
+async def get_video_automation_settings(user: ContentReader, session: Session) -> SettingsView:
+    _ = user
+    return await service.settings_view(session)
+
+
+async def _save(session: AsyncSession, user: User, payload: SettingsWrite) -> SettingsView:
+    problems = service.settings_problems(payload, await load_runtime_settings(session))
+    if problems:
+        raise AppError(422, "video_automation_settings_invalid", "；".join(problems))
+    return await service.update_settings(session, user, payload)
+
+
+@admin_router.put("/settings", response_model=SettingsView)
+async def put_video_automation_settings(
+    payload: SettingsSave, user: SettingsManager, session: Session
+) -> SettingsView:
+    values = payload.model_dump()
+    missing = [
+        key
+        for key in (
+            "stage_models",
+            "drama",
+            "stage_instructions",
+            "channel_stance",
+            "auto_pick_outline",
+            "auto_approve_final",
+        )
+        if getattr(payload, key) is None
+    ]
+    if missing:
+        # The stage models are chosen on the AI settings page, and a page from before the drama
+        # settings, the standing instructions, the stance or the hands-off switches existed
+        # sends none: keep the stored ones.
+        current = service.settings_values(await service.settings_row(session)).model_dump()
+        for key in missing:
+            values[key] = current[key]
+    return await _save(session, user, SettingsWrite.model_validate(values))
+
+
+@admin_router.get("/prompts", response_model=StagePromptsOut)
+async def get_video_stage_prompts(user: ContentReader, session: Session) -> StagePromptsOut:
+    """What each stage was last told, standing instructions included, as the worker sent it."""
+    _ = user
+    return StagePromptsOut(prompts=await service.stage_prompts(session))
+
+
+@admin_router.put("/settings/models", response_model=SettingsView)
+async def put_video_automation_models(
+    payload: StageModelsWrite, user: SettingsManager, session: Session
+) -> SettingsView:
+    """Change only the stage models, from the AI settings page."""
+    current = service.settings_values(await service.settings_row(session)).model_dump()
+    merged = SettingsWrite.model_validate({**current, **payload.model_dump()})
+    return await _save(session, user, merged)
+
+
+@tool_router.get("/settings", response_model=ToolSettingsView)
+async def get_tool_video_automation_settings(tool: VideoTool, session: Session) -> ToolSettingsView:
+    _ = tool
+    row = await service.settings_row(session)
+    await session.commit()
+    return ToolSettingsView(**service.settings_values(row).model_dump(), updated_at=row.updated_at)
+
+
+@tool_router.post("/judge/outline", response_model=OutlinePick)
+async def judge_video_outline(
+    payload: JudgeOutlineIn, tool: VideoTool, session: Session
+) -> OutlinePick:
+    """Jev chooses among a brief's outlines against the channel's stance; one Jev call."""
+    await enforce_named_rate_limit(
+        "video_judge", str(tool.id), limit=JUDGE_CALLS_PER_HOUR, window_seconds=3600
+    )
+    row = await service.settings_row(session)
+    await session.commit()
+    stance = (row.channel_stance or "").strip()
+    if not row.auto_pick_outline or not stance:
+        raise AppError(
+            409,
+            "video_judge_not_enabled",
+            "頻道立場還是空白，或「由 Jev 挑大綱」關著；大綱照舊等站主",
+        )
+    runtime = await load_runtime_settings(session)
+    try:
+        return await judge_outline(runtime, get_redis(), stance, payload.brief, payload.options)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except JevRequestInvalid as error:
+        raise AppError(422, "video_judge_invalid", f"Jev 拒絕這個問題（{error}）") from error
+    except (JevError, httpx.HTTPError) as error:
+        raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
+
+
+@tool_router.post("/judge/policy", response_model=PolicyVerdict)
+async def judge_video_policy(
+    payload: JudgePolicyIn, tool: VideoTool, session: Session
+) -> PolicyVerdict:
+    """Jev judges a final cut's narration against the stance (the quality check's policy item)."""
+    await enforce_named_rate_limit(
+        "video_judge", str(tool.id), limit=JUDGE_CALLS_PER_HOUR, window_seconds=3600
+    )
+    row = await service.settings_row(session)
+    await session.commit()
+    stance = (row.channel_stance or "").strip()
+    if not stance:
+        raise AppError(409, "video_judge_not_enabled", "頻道立場還是空白，Jev 沒有依據可以判斷")
+    runtime = await load_runtime_settings(session)
+    try:
+        return await judge_policy(runtime, get_redis(), stance, payload.viewpoint, payload.script)
+    except CheckUnavailable as error:
+        raise AppError(error.status, error.code, error.detail) from error
+    except JevRequestInvalid as error:
+        raise AppError(422, "video_judge_invalid", f"Jev 拒絕這個問題（{error}）") from error
+    except (JevError, httpx.HTTPError) as error:
+        raise AppError(502, "video_judge_upstream_failed", "Jev 暫時無法判斷") from error
+
+
+@tool_router.post("/run", response_model=StageRunOut)
+async def run_video_stage(request: StageRunIn, tool: VideoTool, session: Session) -> StageRunOut:
+    """One writing stage with the model the owner chose for it; the model is not the caller's."""
+    await enforce_named_rate_limit(
+        "video_ai_run", str(tool.id), limit=RUNS_PER_HOUR, window_seconds=3600
+    )
+    # Kept before the run, and committed on its own, so a run the vendor refuses still leaves
+    # the owner the prompt to read.
+    await service.remember_prompt(session, request)
+    await session.commit()
+    row = await service.settings_row(session)
+    runtime = await load_runtime_settings(session)
+    try:
+        return await run_stage(session, runtime, row, request, tool.id)
+    except StageFailed as error:
+        raise AppError(
+            error.status,
+            error.code,
+            error.detail,
+            headers={"Retry-After": error.retry_after} if error.retry_after else None,
+        ) from error
+
+
+@tool_router.get("/videos", response_model=list[ProjectSummary])
+async def list_tool_videos(tool: VideoTool, session: Session) -> list[ProjectSummary]:
+    """Every video on /admin/videos, dropped ones too, so a new draft does not repeat a topic."""
+    _ = tool
+    return await list_projects(session)
+
+
+@tool_router.get("/topics", response_model=TopicsOut)
+async def get_video_topics(tool: VideoTool, session: Session) -> TopicsOut:
+    """Candidate topics for the next draft: the site's recent articles, then a web search."""
+    await enforce_named_rate_limit(
+        "video_topics", str(tool.id), limit=TOPIC_LOOKUPS_PER_HOUR, window_seconds=3600
+    )
+    row = await service.settings_row(session)
+    runtime = await load_runtime_settings(session)
+    return await gather_topics(session, runtime, get_redis(), row)
+
+
+# The owner's drama requests (docs/videos/DRAMA.md): filed on /admin/videos, claimed by the worker.
+
+
+def _refused(error: RequestRefused) -> AppError:
+    return AppError(error.status, error.code, error.detail)
+
+
+@admin_router.get("/drama-requests", response_model=DramaRequestsOut)
+async def list_drama_requests(user: ContentReader, session: Session) -> DramaRequestsOut:
+    """Every request the owner filed, newest first, with the video each one became."""
+    _ = user
+    return DramaRequestsOut(requests=await drama_requests.list_requests(session))
+
+
+@admin_router.post("/drama-requests", response_model=DramaRequestOut, status_code=201)
+async def create_drama_request(
+    payload: DramaRequestIn, user: ContentManager, session: Session
+) -> DramaRequestOut:
+    """The owner asks for an episode; the worker starts it on its next round, before any
+    scheduled draft. Refused while the drama route is switched off, so nothing queues for a
+    worker that will never take it."""
+    row = await service.settings_row(session)
+    if not row.drama_enabled:
+        raise AppError(
+            409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
+        )
+    return await drama_requests.create_request(session, user, payload)
+
+
+@admin_router.delete("/drama-requests/{request_id}", response_model=DramaRequestOut)
+async def cancel_drama_request(
+    request_id: UUID, user: ContentManager, session: Session
+) -> DramaRequestOut:
+    """Withdraw a request the worker has not started; a started one is dropped as a video."""
+    try:
+        return await drama_requests.cancel_request(session, user, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.get("/drama-requests", response_model=DramaRequestsOut)
+async def list_active_drama_requests(tool: VideoTool, session: Session) -> DramaRequestsOut:
+    """The requests still queued or in the making, oldest first, so a restarted worker can
+    tell which of its videos answers which request."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    return DramaRequestsOut(requests=await drama_requests.list_requests(session, active_only=True))
+
+
+@tool_router.get("/drama-requests/next", response_model=NextDramaRequestOut)
+async def next_drama_request(tool: VideoTool, session: Session) -> NextDramaRequestOut:
+    """The oldest queued request, or none: what the worker should start before a scheduled draft."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    return NextDramaRequestOut(request=await drama_requests.next_request(session))
+
+
+@tool_router.post("/drama-requests/{request_id}/start", response_model=DramaRequestOut)
+async def start_drama_request(
+    request_id: UUID, payload: DramaRequestStart, tool: VideoTool, session: Session
+) -> DramaRequestOut:
+    """The worker claims a queued request for the video it is about to make."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await drama_requests.start_request(session, tool, request_id, payload.slug)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+@tool_router.post("/drama-requests/{request_id}/done", response_model=DramaRequestOut)
+async def finish_drama_request(
+    request_id: UUID, tool: VideoTool, session: Session
+) -> DramaRequestOut:
+    """The worker reports the request's video is finished and published."""
+    await enforce_named_rate_limit(
+        "video_drama_requests", str(tool.id), limit=REQUEST_CALLS_PER_HOUR, window_seconds=3600
+    )
+    try:
+        return await drama_requests.finish_request(session, request_id)
+    except RequestRefused as error:
+        raise _refused(error) from error
+
+
+# A long drama series (docs/videos/SERIES.md): the owner plans it on /admin/videos, approves its
+# documents, and the worker plans the documents and starts the episodes in order.
+
+
+def _series_refused(error: SeriesRefused) -> AppError:
+    return AppError(error.status, error.code, error.detail)
+
+
+async def _series_limit(tool: VideoToolToken) -> None:
+    await enforce_named_rate_limit(
+        "video_series", str(tool.id), limit=SERIES_CALLS_PER_HOUR, window_seconds=3600
+    )
+
+
+@admin_router.get("/series", response_model=SeriesListOut)
+async def list_video_series(user: ContentReader, session: Session) -> SeriesListOut:
+    _ = user
+    return SeriesListOut(series=await drama_series.list_series(session))
+
+
+@admin_router.post("/series", response_model=SeriesOut, status_code=201)
+async def create_video_series(
+    payload: SeriesIn, user: ContentManager, session: Session
+) -> SeriesOut:
+    """The owner starts a series; the worker plans its setting book on its next round."""
+    row = await service.settings_row(session)
+    if not row.drama_enabled:
+        raise AppError(
+            409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
+        )
+    try:
+        return await drama_series.create_series(session, user, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.get("/series/{slug}", response_model=SeriesOut)
+async def video_series_detail(slug: str, user: ContentReader, session: Session) -> SeriesOut:
+    _ = user
+    try:
+        return await drama_series.series_view(session, slug)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.patch("/series/{slug}", response_model=SeriesOut)
+async def patch_video_series(
+    slug: str, payload: SeriesPatch, user: ContentManager, session: Session
+) -> SeriesOut:
+    try:
+        return await drama_series.patch_series(session, user, slug, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+def _doc_kind(kind: str) -> str:
+    if kind not in ("setting", "outline", "chapter"):
+        raise AppError(404, "video_series_doc_not_found", "沒有這種文件")
+    return kind
+
+
+@admin_router.post("/series/{slug}/docs/{kind}/decision", response_model=SeriesOut)
+@admin_router.post("/series/{slug}/docs/{kind}/{chapter}/decision", response_model=SeriesOut)
+async def decide_video_series_doc(
+    slug: str,
+    kind: str,
+    payload: SeriesDocDecisionIn,
+    user: ContentManager,
+    session: Session,
+    chapter: int = 0,
+) -> SeriesOut:
+    """Approve a document, or send it back with a note the worker rewrites it from."""
+    try:
+        return await drama_series.decide_doc(
+            session, user, slug, _doc_kind(kind), chapter, payload.decision, payload.note
+        )
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.put("/series/{slug}/docs/{kind}", response_model=SeriesOut)
+@admin_router.put("/series/{slug}/docs/{kind}/{chapter}", response_model=SeriesOut)
+async def edit_video_series_doc(
+    slug: str,
+    kind: str,
+    payload: SeriesDocEditIn,
+    user: ContentManager,
+    session: Session,
+    chapter: int = 0,
+) -> SeriesOut:
+    """The owner's own version of a document, approved at once when asked."""
+    try:
+        return await drama_series.edit_doc(session, user, slug, _doc_kind(kind), chapter, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.put("/series/{slug}/episodes/{number}", response_model=SeriesOut)
+async def edit_video_series_episode(
+    slug: str, number: int, payload: SeriesEpisodeEditIn, user: ContentManager, session: Session
+) -> SeriesOut:
+    try:
+        return await drama_series.edit_episode(session, user, slug, number, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.post("/series/{slug}/actions/{action}", response_model=SeriesActionOut)
+async def act_on_video_series(
+    slug: str, action: SeriesAction, user: ContentManager, session: Session
+) -> SeriesActionOut:
+    try:
+        view, detail = await drama_series.act(session, user, slug, action)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+    return SeriesActionOut(series=view, detail=detail)
+
+
+@admin_router.post("/series/{slug}/episodes/{number}/skip", response_model=SeriesOut)
+async def skip_video_series_episode(
+    slug: str, number: int, user: ContentManager, session: Session
+) -> SeriesOut:
+    try:
+        return await drama_series.skip_episode(session, user, slug, number)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.get("/series/next", response_model=SeriesJobOut)
+async def next_video_series_job(tool: VideoTool, session: Session) -> SeriesJobOut:
+    """The next document to plan or episode to start, or none while every series waits."""
+    await _series_limit(tool)
+    return await drama_series.next_job(session, await service.settings_row(session))
+
+
+@tool_router.get("/series/{slug}/context", response_model=SeriesContextOut)
+async def video_series_context(
+    slug: str, tool: VideoTool, session: Session, episode: int | None = None
+) -> SeriesContextOut:
+    await _series_limit(tool)
+    try:
+        return await drama_series.context_view(
+            session, await drama_series._series(session, slug), episode
+        )
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.post("/series/{slug}/docs", response_model=SeriesDocOut, status_code=201)
+async def submit_video_series_doc(
+    slug: str, payload: SeriesDocSubmitIn, tool: VideoTool, session: Session
+) -> SeriesDocOut:
+    await _series_limit(tool)
+    try:
+        return await drama_series.submit_doc(session, slug, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.post("/series/{slug}/episodes/{number}/start", response_model=SeriesEpisodeStartOut)
+async def start_video_series_episode(
+    slug: str, number: int, payload: SeriesEpisodeStartIn, tool: VideoTool, session: Session
+) -> SeriesEpisodeStartOut:
+    await _series_limit(tool)
+    try:
+        return await drama_series.start_episode(session, tool, slug, number, payload.slug)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.post("/series/{slug}/episodes/{number}/recap", response_model=SeriesEpisodeOut)
+async def recap_video_series_episode(
+    slug: str, number: int, payload: SeriesEpisodeRecapIn, tool: VideoTool, session: Session
+) -> SeriesEpisodeOut:
+    await _series_limit(tool)
+    try:
+        return await drama_series.recap_episode(session, slug, number, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@tool_router.post("/series/{slug}/episodes/{number}/done", response_model=SeriesEpisodeOut)
+async def finish_video_series_episode(
+    slug: str, number: int, tool: VideoTool, session: Session
+) -> SeriesEpisodeOut:
+    await _series_limit(tool)
+    try:
+        return await drama_series.finish_episode(session, slug, number)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error

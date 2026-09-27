@@ -9,12 +9,20 @@ from redis.asyncio import Redis
 from sqlalchemy import and_, case, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.admin.service import load_runtime_settings
+from app.ai.catalog import MODEL_CATALOG, Capability
 from app.guides import admin_service
 from app.guides.models import GuideArticleLocale
 from app.guides.schemas import GuideDocument
+from app.hotspots.ai_search import research_model
 from app.i18n import Locale
 from app.models import AdminAuditLog, User
 from app.news_automation.assets import mark_assets_public
+from app.news_automation.duplicates import (
+    DUPLICATE_UNCERTAIN,
+    HUMAN_PROVIDER,
+    similar_titles,
+)
 from app.news_automation.fetch import RedisHostRateLimiter
 from app.news_automation.models import (
     LOCALES,
@@ -26,8 +34,12 @@ from app.news_automation.models import (
     NewsSource,
 )
 from app.news_automation.policy import (
+    EVIDENCE_REFRESH_MARKER,
+    ZH_DRAFT_READY,
     document_fingerprint,
     evidence_fingerprint,
+    evidence_present,
+    evidence_site_count,
     gate_result,
     hard_policy_problems,
 )
@@ -39,6 +51,9 @@ from app.news_automation.schemas import (
     CandidateSummary,
     EvidenceView,
     GateView,
+    ModelOptionView,
+    ModelsWrite,
+    ProviderName,
     RunView,
     SettingsView,
     SettingsWrite,
@@ -48,8 +63,37 @@ from app.news_automation.schemas import (
     StatsView,
     Vertical,
 )
-from app.news_automation.validation import revalidate_evidence, validate_source_configuration
+from app.news_automation.validation import (
+    refresh_evidence,
+    revalidate_evidence,
+    validate_source_configuration,
+)
 from app.problems import AppError
+
+# The news stages run through the guide-search adapters in app.hotspots.ai_search, so a
+# vendor's dropdown offers the catalog models that can serve that adapter.
+MODEL_CAPABILITY: dict[ProviderName, Capability] = {
+    "openai": "responses_json_schema_strict",
+    "anthropic": "anthropic_structured_output",
+    "minimax": "responses_json_schema_strict",
+    "gemini": "gemini_structured",
+}
+
+
+def model_options() -> dict[ProviderName, list[ModelOptionView]]:
+    return {
+        provider: [
+            ModelOptionView(
+                value=entry.id,
+                label=entry.label,
+                description=entry.note,
+                status=entry.status,
+            )
+            for entry in MODEL_CATALOG[provider]
+            if capability in entry.capabilities
+        ]
+        for provider, capability in MODEL_CAPABILITY.items()
+    }
 
 
 def audit(
@@ -292,6 +336,9 @@ async def settings_view(session: AsyncSession) -> SettingsView:
     gates = {
         vertical: await gate_for(session, row, vertical) for vertical in ("ai", "tech", "crypto")
     }
+    # An empty model means the guide search's model for that vendor, else the planner's,
+    # as configured in the admin AI settings; the job resolves it the same way.
+    runtime = await load_runtime_settings(session)
     return SettingsView(
         enabled=row.enabled,
         mode=cast(Any, row.mode),
@@ -299,6 +346,8 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         writer_model=row.writer_model,
         verifier_provider=cast(Any, row.verifier_provider),
         verifier_model=row.verifier_model,
+        editor_provider=cast(Any, row.editor_provider),
+        editor_model=row.editor_model,
         global_concurrency=row.global_concurrency,
         per_vertical_concurrency=row.per_vertical_concurrency,
         min_shadow_days=row.min_shadow_days,
@@ -311,8 +360,26 @@ async def settings_view(session: AsyncSession) -> SettingsView:
         prompt_version=row.prompt_version,
         policy_version=row.policy_version,
         gates=gates,
+        model_options=model_options(),
+        default_models={
+            provider: research_model(runtime, provider) for provider in MODEL_CAPABILITY
+        },
         updated_at=row.updated_at,
     )
+
+
+async def update_models(session: AsyncSession, actor: User, payload: ModelsWrite) -> SettingsView:
+    """Change only the writer, verifier and final editor models, through a settings save."""
+    current = await settings_view(session)
+    if payload.model_dump() == current.model_dump(include=set(ModelsWrite.model_fields)):
+        return current
+    settings = SettingsWrite.model_validate(
+        {
+            **current.model_dump(include=set(SettingsWrite.model_fields)),
+            **payload.model_dump(),
+        }
+    )
+    return await update_settings(session, actor, settings)
 
 
 async def update_settings(
@@ -324,27 +391,33 @@ async def update_settings(
         "writer_model": row.writer_model,
         "verifier_provider": row.verifier_provider,
         "verifier_model": row.verifier_model,
+        "editor_provider": row.editor_provider,
+        "editor_model": row.editor_model,
         "prompt_version": row.prompt_version,
         "policy_version": row.policy_version,
     }
-    major_change = any(getattr(payload, key) != value for key, value in before.items())
     values = payload.model_dump()
+    # Models left out of the payload keep their stored value (see SettingsWrite).
+    for key in (
+        "writer_provider",
+        "writer_model",
+        "verifier_provider",
+        "verifier_model",
+        "editor_provider",
+        "editor_model",
+    ):
+        if key not in payload.sent_models():
+            values[key] = before[key]
+    major_change = any(values[key] != value for key, value in before.items())
+    # The owner removed the shadow gate on 2026-09-25: the final editor and Jev's last call
+    # decide each article, so auto-publish no longer waits for labelled days, and a model
+    # change no longer switches it off. The agreement figures still restart, for reference.
     if major_change:
         for vertical in ("ai", "tech", "crypto"):
-            values[f"auto_publish_{vertical}"] = False
             setattr(row, f"shadow_started_at_{vertical}", datetime.now(UTC))
-        values["mode"] = "shadow"
     for vertical in ("ai", "tech", "crypto"):
-        if values[f"auto_publish_{vertical}"]:
-            gate = await gate_for(session, row, cast(Vertical, vertical))
-            if not gate.eligible:
-                raise AppError(
-                    409,
-                    "news_gate_not_met",
-                    f"{vertical} 尚未達到自動發布門檻：{', '.join(gate.reasons)}",
-                )
-            if values["mode"] != "automatic":
-                raise AppError(409, "news_mode_shadow", "影子模式不能開啟自動發布")
+        if values[f"auto_publish_{vertical}"] and values["mode"] != "automatic":
+            raise AppError(409, "news_mode_shadow", "影子模式不能開啟自動發布")
     for key, value in values.items():
         setattr(row, key, value)
     row.updated_by_user_id = actor.id
@@ -385,12 +458,12 @@ async def list_candidates(
     *,
     page: int,
     limit: int,
-    status: str | None = None,
+    status: list[str] | None = None,
     vertical: Vertical | None = None,
 ) -> CandidatePage:
     criteria: list[Any] = []
     if status:
-        criteria.append(NewsCandidate.status == status)
+        criteria.append(NewsCandidate.status.in_(status))
     if vertical:
         criteria.append(NewsCandidate.vertical == vertical)
     total = int(
@@ -435,6 +508,9 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
         for locale, document in row.draft_bundle_json.items()
         if locale in LOCALES
     }
+    waiting_on_duplicate = (
+        row.status == "manual_review" and row.error_code == DUPLICATE_UNCERTAIN
+    )
     return CandidateDetail(
         **candidate_summary(row).model_dump(),
         evidence=[
@@ -489,6 +565,7 @@ async def candidate_detail(session: AsyncSession, candidate_id: UUID) -> Candida
         lint=row.lint_json,
         human_reason=row.human_reason,
         human_major_error=row.human_major_error,
+        similar_titles=await similar_titles(session, row) if waiting_on_duplicate else [],
     )
 
 
@@ -498,7 +575,14 @@ async def reject_candidate(
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review", "failed", "duplicate"}:
+    if row.status not in {
+        "manual_review",
+        "shadow_review",
+        "needs_evidence",
+        "needs_redraft",
+        "failed",
+        "duplicate",
+    }:
         raise AppError(409, "news_candidate_not_reviewable", "這個候選目前不能退件")
     row.status = "rejected"
     row.human_decision = "reject"
@@ -534,13 +618,15 @@ async def retry_candidate(
     row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
     if row is None:
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review", "failed"}:
+    if row.status not in {
+        "manual_review",
+        "shadow_review",
+        "needs_evidence",
+        "needs_redraft",
+        "failed",
+    }:
         raise AppError(409, "news_candidate_not_retryable", "這個候選目前不能重跑")
-    row.status = "discovered"
-    row.error_code = None
-    row.error_detail = None
-    row.retry_count += 1
-    row.human_reason = payload.reason
+    _queue_new_draft(row, payload.reason)
     audit(
         session,
         actor,
@@ -561,6 +647,169 @@ async def reverify_candidate(
         raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
     if row.status not in {"manual_review", "shadow_review", "failed"}:
         raise AppError(409, "news_candidate_not_retryable", "這個候選目前不能重新查核")
+    await _queue_reverify(session, row, payload.reason)
+    audit(
+        session,
+        actor,
+        "news_candidate_reverify_requested",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        retry_count=row.retry_count,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+async def refresh_candidate_evidence(
+    session: AsyncSession,
+    actor: User,
+    candidate_id: UUID,
+    payload: CandidateAction,
+    redis: Redis | None = None,
+) -> CandidateDetail:
+    """Re-check a candidate held for changed evidence against the current pages.
+
+    Each evidence page is fetched again and its current text replaces the stored excerpt and
+    hash. The saved five-locale article then goes through the fact check, the locale reviews
+    and Jev's last call again, against the new text; the old verification no longer matches
+    the evidence, so nothing can be published on it. A story already judged distinct stays
+    distinct: that decision is carried to the new evidence.
+    """
+
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if (
+        row.status != "manual_review"
+        or row.error_code != "news_evidence_changed"
+        or row.guide_article_id is None
+    ):
+        raise AppError(409, "news_candidate_not_refreshable", "這個候選不是在等來源更新")
+    evidence = list(
+        await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == row.id))
+    )
+    previous_hash = row.evidence_hash
+    distinct = (
+        await session.scalar(
+            select(NewsAssessment.id)
+            .where(
+                NewsAssessment.candidate_id == row.id,
+                NewsAssessment.assessment_type == "duplicate",
+                NewsAssessment.verdict == "pass",
+                NewsAssessment.evidence_hash == previous_hash,
+            )
+            .limit(1)
+        )
+        is not None
+    )
+    changed, problems = await refresh_evidence(
+        session,
+        evidence,
+        rate_limiter=RedisHostRateLimiter(redis) if redis is not None else None,
+    )
+    if problems:
+        await session.rollback()
+        raise AppError(
+            409, "news_evidence_refresh_failed", "無法讀取最新來源：" + "; ".join(problems[:3])
+        )
+    row.evidence_hash = evidence_fingerprint(
+        [{"url": item.url, "content_hash": item.content_hash} for item in evidence]
+    )
+    if distinct:
+        session.add(
+            NewsAssessment(
+                candidate_id=row.id,
+                assessment_type="duplicate",
+                verdict="pass",
+                provider=HUMAN_PROVIDER,
+                reasons_json=[payload.reason],
+                details_json={"basis": "evidence_refreshed", "previous_evidence": previous_hash},
+                evidence_hash=row.evidence_hash,
+                prompt_version=row.prompt_version,
+                created_by_user_id=actor.id,
+            )
+        )
+    await _queue_reverify(session, row, payload.reason, marker=EVIDENCE_REFRESH_MARKER)
+    audit(
+        session,
+        actor,
+        "news_candidate_evidence_refreshed",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        changed_urls=changed,
+        previous_evidence_sha256=previous_hash,
+        evidence_sha256=row.evidence_hash,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+async def clear_duplicate_candidate(
+    session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
+) -> CandidateDetail:
+    """An editor answers an uncertain duplicate check with "not a duplicate".
+
+    The answer is stored as a duplicate assessment for the current evidence, which the
+    pipeline honours instead of asking Jev again, and the candidate carries on: from its
+    article when it already has one (like a re-verify), otherwise from a new draft.
+    """
+
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if row.status != "manual_review" or row.error_code != DUPLICATE_UNCERTAIN:
+        raise AppError(
+            409, "news_candidate_not_duplicate_uncertain", "這個候選沒有在等待重複判定"
+        )
+    session.add(
+        NewsAssessment(
+            candidate_id=row.id,
+            assessment_type="duplicate",
+            verdict="pass",
+            provider=HUMAN_PROVIDER,
+            reasons_json=[payload.reason],
+            details_json={},
+            evidence_hash=row.evidence_hash,
+            prompt_version=row.prompt_version,
+            created_by_user_id=actor.id,
+        )
+    )
+    from_article = row.guide_article_id is not None
+    if from_article:
+        await _queue_reverify(session, row, payload.reason)
+    else:
+        _queue_new_draft(row, payload.reason)
+    audit(
+        session,
+        actor,
+        "news_candidate_duplicate_cleared",
+        f"news-candidate:{row.id}",
+        reason=payload.reason,
+        from_article=from_article,
+        retry_count=row.retry_count,
+    )
+    await session.commit()
+    return await candidate_detail(session, row.id)
+
+
+def _queue_new_draft(row: NewsCandidate, reason: str) -> None:
+    row.status = "discovered"
+    row.error_code = None
+    row.error_detail = None
+    row.retry_count += 1
+    row.human_reason = reason
+    # A new draft replaces the one the owner may have confirmed.
+    row.human_decision = None
+
+
+async def _queue_reverify(
+    session: AsyncSession,
+    row: NewsCandidate,
+    reason: str,
+    marker: str = "news_reverify_requested",
+) -> None:
+    """Run the edited guide drafts through the checks again instead of drafting anew."""
+
     if row.guide_article_id is None:
         raise AppError(409, "news_draft_unavailable", "候選尚未建立可編輯的五語草稿")
     locale_rows = list(
@@ -576,33 +825,111 @@ async def reverify_candidate(
         raise AppError(422, "news_locale_bundle_incomplete", "五個語言版本必須完整")
     row.draft_bundle_json = documents
     row.status = "discovered"
-    row.error_code = "news_reverify_requested"
+    row.error_code = marker
     row.error_detail = None
     row.retry_count += 1
+    row.human_reason = reason
+
+
+async def approve_candidate(
+    session: AsyncSession, actor: User, candidate_id: UUID, payload: CandidateAction
+) -> CandidateDetail:
+    """The owner confirms a Traditional Chinese draft for publication (2026-09-25).
+
+    The candidate is queued again; the pipeline then translates the other four locales,
+    reviews and checks them, saves the article and publishes it. The same action runs the
+    second stage again when it stopped on a translation or a check.
+    """
+
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    confirmed = row.human_decision == "publish"
+    waiting = row.status == "manual_review" and row.error_code == ZH_DRAFT_READY
+    stalled = (
+        confirmed
+        and row.status in {"manual_review", "failed"}
+        and row.error_code != "news_evidence_changed"
+    )
+    if not (waiting or stalled) or not await verified_zh_draft(session, row):
+        raise AppError(409, "news_candidate_not_approvable", "這個候選目前不能確認發布")
+    if not confirmed:
+        row.human_decision = "publish"
+        row.human_major_error = False
+        session.add(
+            NewsAssessment(
+                candidate_id=row.id,
+                assessment_type="human",
+                verdict="publish",
+                reasons_json=[payload.reason],
+                details_json={"stage": "zh_draft"},
+                evidence_hash=row.evidence_hash,
+                prompt_version=row.prompt_version,
+                created_by_user_id=actor.id,
+            )
+        )
     row.human_reason = payload.reason
+    row.status = "discovered"
+    row.error_code = None
+    row.error_detail = None
+    row.retry_count += 1
     audit(
         session,
         actor,
-        "news_candidate_reverify_requested",
+        "news_candidate_publish_confirmed",
         f"news-candidate:{row.id}",
         reason=payload.reason,
+        again=confirmed,
         retry_count=row.retry_count,
     )
     await session.commit()
     return await candidate_detail(session, row.id)
 
 
-async def publish_candidate(
-    session: AsyncSession,
-    actor: User,
-    candidate_id: UUID,
-    payload: CandidateAction,
-    redis: Redis | None = None,
-) -> CandidateDetail:
-    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
-    if row is None:
-        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
-    if row.status not in {"manual_review", "shadow_review"} or row.guide_article_id is None:
+async def verified_zh_draft(session: AsyncSession, row: NewsCandidate) -> GuideDocument | None:
+    """The stored Traditional Chinese draft, when a passing verification matches it."""
+
+    encoded = row.draft_bundle_json.get("zh-TW")
+    if not encoded:
+        return None
+    document = GuideDocument.model_validate(encoded)
+    verification = await _latest_pass(session, row, "verification")
+    if verification is None or verification.details_json.get(
+        "document_sha256"
+    ) != document_fingerprint(document):
+        return None
+    return document
+
+
+async def _latest_pass(
+    session: AsyncSession, row: NewsCandidate, assessment_type: str
+) -> NewsAssessment | None:
+    return cast(
+        NewsAssessment | None,
+        await session.scalar(
+            select(NewsAssessment)
+            .where(
+                NewsAssessment.candidate_id == row.id,
+                NewsAssessment.assessment_type == assessment_type,
+                NewsAssessment.verdict == "pass",
+                NewsAssessment.evidence_hash == row.evidence_hash,
+            )
+            .order_by(NewsAssessment.created_at.desc())
+        ),
+    )
+
+
+async def publication_bundle(
+    session: AsyncSession, row: NewsCandidate, redis: Redis | None = None
+) -> tuple[dict[Locale, GuideDocument], dict[Locale, int]]:
+    """Every check a publication needs, on the saved five-locale article.
+
+    Shared by the publish button and the pipeline's second stage. One evidence page is
+    enough here; automatic publication asks for two websites or a first-party page before
+    it gets here, and for the final editor and Jev's last call on every locale.
+    """
+
+    if row.guide_article_id is None:
         raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
     evidence = list(
         await session.scalars(select(NewsEvidence).where(NewsEvidence.candidate_id == row.id))
@@ -623,10 +950,8 @@ async def publish_candidate(
             "news_evidence_changed",
             f"來源內容或來源政策已變更，請重新查核：{'; '.join(evidence_reasons[:3])}",
         )
-    if len([item for item in evidence if item.role == "evidence"]) < 2 or not any(
-        item.is_first_party for item in evidence
-    ):
-        raise AppError(422, "news_evidence_insufficient", "發布需要兩個證據來源及一個第一方來源")
+    if not evidence_present(evidence):
+        raise AppError(422, "news_evidence_insufficient", "發布至少需要一個來源的證據")
     locale_rows = list(
         await session.scalars(
             select(GuideArticleLocale).where(GuideArticleLocale.article_id == row.guide_article_id)
@@ -646,22 +971,13 @@ async def publish_candidate(
             document,
             cast(Vertical, row.vertical),
             locale,
-            source_count=len([item for item in evidence if item.role == "evidence"]),
+            source_count=evidence_site_count(evidence),
         )
         for locale, document in documents.items()
     }
     if any(problems.values()):
         raise AppError(422, "news_hard_checks_failed", "硬性格式或政策檢查未通過")
-    latest_verification = await session.scalar(
-        select(NewsAssessment)
-        .where(
-            NewsAssessment.candidate_id == row.id,
-            NewsAssessment.assessment_type == "verification",
-            NewsAssessment.verdict == "pass",
-            NewsAssessment.evidence_hash == row.evidence_hash,
-        )
-        .order_by(NewsAssessment.created_at.desc())
-    )
+    latest_verification = await _latest_pass(session, row, "verification")
     if latest_verification is None:
         raise AppError(409, "news_verification_required", "請先重新查核後再發布")
     if latest_verification.details_json.get("document_sha256") != document_fingerprint(
@@ -693,12 +1009,59 @@ async def publish_candidate(
     versions = {cast(Locale, item.locale): item.version for item in locale_rows}
     if set(versions) != set(LOCALES):
         raise AppError(422, "news_locale_bundle_incomplete", "五個語言版本必須完整")
+    return documents, versions
+
+
+async def publish_news_bundle(
+    session: AsyncSession,
+    row: NewsCandidate,
+    actor: User | None,
+    documents: dict[Locale, GuideDocument],
+    versions: dict[Locale, int],
+    *,
+    reason: str,
+    metadata: dict[str, Any],
+) -> None:
+    """Publish the checked five-locale article; ``publish_bundle`` commits."""
+
+    if row.guide_article_id is None:
+        raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
     await mark_assets_public(session, row.id)
     row.status = "published"
+    row.published_at = datetime.now(UTC)
+    await admin_service.publish_bundle(
+        session,
+        actor,
+        row.guide_article_id,
+        documents,
+        versions,
+        reason=reason,
+        automation_metadata={
+            "candidate_id": str(row.id),
+            "evidence_sha256": row.evidence_hash,
+            "prompt_version": row.prompt_version,
+            "policy_version": row.policy_version,
+            **metadata,
+        },
+    )
+
+
+async def publish_candidate(
+    session: AsyncSession,
+    actor: User,
+    candidate_id: UUID,
+    payload: CandidateAction,
+    redis: Redis | None = None,
+) -> CandidateDetail:
+    row = await session.get(NewsCandidate, candidate_id, with_for_update=True)
+    if row is None:
+        raise AppError(404, "news_candidate_not_found", "找不到新聞候選")
+    if row.status not in {"manual_review", "shadow_review"} or row.guide_article_id is None:
+        raise AppError(409, "news_candidate_not_publishable", "這個候選目前不能發布")
+    documents, versions = await publication_bundle(session, row, redis)
     row.human_decision = "publish"
     row.human_reason = payload.reason
     row.human_major_error = payload.major_error
-    row.published_at = datetime.now(UTC)
     session.add(
         NewsAssessment(
             candidate_id=row.id,
@@ -711,20 +1074,14 @@ async def publish_candidate(
             created_by_user_id=actor.id,
         )
     )
-    await admin_service.publish_bundle(
+    await publish_news_bundle(
         session,
+        row,
         actor,
-        row.guide_article_id,
         documents,
         versions,
         reason=payload.reason,
-        automation_metadata={
-            "candidate_id": str(row.id),
-            "evidence_sha256": row.evidence_hash,
-            "prompt_version": row.prompt_version,
-            "policy_version": row.policy_version,
-            "human_override": True,
-        },
+        metadata={"human_override": True},
     )
     return await candidate_detail(session, row.id)
 

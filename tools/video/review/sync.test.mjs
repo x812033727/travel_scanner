@@ -1,0 +1,452 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import path from "node:path";
+import test from "node:test";
+
+import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
+import { EXIT, main } from "../cli.mjs";
+import { readApprovals } from "../core/approvals.mjs";
+import { lookHash } from "../core/drama.mjs";
+import { sandbox } from "../core/fixtures/load.mjs";
+import { DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
+import { SAMPLE_RATE } from "../core/timeline.mjs";
+import { ITEM_IDS } from "../qa/checks.mjs";
+import { encodeWav } from "../tts/wav.mjs";
+import { audioCheck, checklistFrom, guideSlugs, judgeBody, outlineOptions, PART_BYTES, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
+
+const TOKEN = `mkv_${"r".repeat(43)}`;
+const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
+
+test("a brief's outline options come out with their one-line angle and spoken hook", () => {
+  const brief = [
+    "## 大綱",
+    "",
+    "### 選項 A：判斷方法框架（推薦）",
+    "",
+    "一行說明：照觀點解說的骨架走。",
+    "",
+    "開場鉤子（口語）：「你以為升級就沒有廣告了嗎？」",
+    "",
+    "### 選項 B：從一個情境開始",
+    "一行說明：用情境貫穿全片。",
+    "## 會過期的事實",
+    "開場鉤子：不該被算進 B",
+  ].join("\n");
+  assert.deepEqual(outlineOptions(brief), [
+    { key: "A", title: "判斷方法框架", summary: "照觀點解說的骨架走。", hook: "你以為升級就沒有廣告了嗎？" },
+    { key: "B", title: "從一個情境開始", summary: "用情境貫穿全片。" },
+  ]);
+});
+
+test("the checklist, the Jev summary and the upload items are what the page shows", () => {
+  assert.deepEqual(checklistFrom([{ id: "outline approved", done: true }, { id: "on YouTube", done: false }]), [
+    { key: "outline_approved", label: "站主選好大綱", done: true },
+    { key: "on_youtube", label: "已上 YouTube", done: false },
+  ]);
+  const check = { lines: { a: { match: true, match_kind: "exact" }, b: { match: true, match_kind: "sound" }, c: { match: false, noul: 0.9 }, d: { match: false, noul: 0.1, intended: "稿子", heard: "聽到" } } };
+  assert.deepEqual(audioCheck(check, { flags: ["d"] }, 5), {
+    check: { lines: 5, checked: 4, exact: 1, alike: 1, judged_fine: 1, flagged: 1 },
+    flagged_lines: [{ id: "d", script: "稿子", heard: "聽到", noul: 0.1 }],
+  });
+  assert.deepEqual(uploadItems("# 上架\n- [ ] **AI 使用揭露**：看情況\n- [x] 已完成\n- [ ] 縮圖看得懂"), ["AI 使用揭露：看情況", "縮圖看得懂"]);
+});
+
+/**
+ * The site: it keeps what the tool sends and answers reads with the reviews it was given. The
+ * judge answers as `judge()` and `policy()` say (an object, or a Response for an error); by
+ * default the outline judge is off (409) and the policy judge is not there (404). Any other
+ * address is a description's link the quality check opens.
+ */
+function site({ judge = null, policy = null } = {}) {
+  const state = { calls: [], files: new Map(), reviews: [], judge: [] };
+  const answer = (value) => (value instanceof Response ? value : Response.json(value));
+  const fetchImpl = async (url, init = {}) => {
+    if (!url.startsWith("https://mokaair.com/")) return new Response("", { status: 200 });
+    const { pathname, searchParams } = new URL(url);
+    assert.equal(new Headers(init.headers).get("authorization"), `Bearer ${TOKEN}`);
+    if (pathname === "/api/video/automation/judge/outline") {
+      state.judge.push(JSON.parse(init.body));
+      return judge ? answer(judge()) : Response.json({ code: "video_judge_not_enabled", detail: "頻道立場還是空白，或「由 Jev 挑大綱」關著；大綱照舊等站主" }, { status: 409 });
+    }
+    if (pathname === "/api/video/automation/judge/policy") return policy ? answer(policy()) : Response.json({ detail: "Not Found" }, { status: 404 });
+    state.calls.push({ method: init.method, pathname });
+    const route = pathname.replace("/api/video/reviews/", "");
+    if (init.method === "PUT" && route.includes("/files/")) {
+      const hash = route.split("/files/")[1];
+      const parts = state.files.get(hash) ?? [];
+      parts[Number(searchParams.get("part"))] = Buffer.from(init.body);
+      state.files.set(hash, parts);
+      const complete = parts.filter(Boolean).length === Number(searchParams.get("parts"));
+      return Response.json({ received: parts.map((_, index) => index), complete });
+    }
+    if (init.method === "PUT") return Response.json({ ...JSON.parse(init.body), reviews: [], pending: 0 });
+    if (init.method === "POST") {
+      const body = JSON.parse(init.body);
+      state.reviews.unshift({ id: `r${state.reviews.length}`, status: "pending", choice: null, note: null, decided_at: null, ...body });
+      return Response.json(state.reviews[0], { status: 201 });
+    }
+    return Response.json({ slug: "fixture-minimal", reviews: state.reviews });
+  };
+  return { state, fetchImpl };
+}
+
+function context(box, fetchImpl, extra = {}) {
+  const out = { stdout: "", stderr: "" };
+  return {
+    out,
+    ctx: {
+      root: box.root,
+      env: { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN },
+      home: box.base,
+      fetch: fetchImpl,
+      stdout: { write: (text) => (out.stdout += text) },
+      stderr: { write: (text) => (out.stderr += text) },
+      now: () => new Date("2026-09-25T06:00:00Z"),
+      sleep: async () => {},
+      ...extra,
+    },
+  };
+}
+
+test("review-push submits the outline bound to brief.md, and review-pull records only that brief's approval", async () => {
+  const box = sandbox();
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug], push.ctx), EXIT.ok, push.out.stderr);
+  assert.deepEqual(server.state.calls.map((call) => `${call.method} ${call.pathname}`), [
+    `PUT /api/video/reviews/${box.slug}`,
+    `POST /api/video/reviews/${box.slug}/reviews`,
+  ]);
+  const [outline] = server.state.reviews;
+  const brief = readFileSync(path.join(box.dir, "brief.md"));
+  assert.equal(outline.gate, "outline");
+  assert.equal(outline.content_sha256, sha(brief));
+  assert.equal(outline.payload.brief, brief.toString("utf8"));
+  assert.equal("pick" in outline.payload, false, "a brief without options is nothing for Jev: the owner chooses");
+  assert.match(push.out.stdout, /the owner chooses the outline \(the brief has 0 options/);
+
+  const waiting = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], waiting.ctx), EXIT.owner);
+  assert.match(waiting.out.stdout, /outline: waiting for the owner/);
+
+  Object.assign(outline, { status: "approved", choice: "A", decided_at: "2026-09-25T06:30:00Z" });
+  const pulled = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pulled.ctx), EXIT.ok, pulled.out.stderr);
+  const [entry] = readApprovals(box.workdir).approvals;
+  assert.equal(entry.gate, "outline");
+  assert.equal(entry.sha256, sha(brief));
+  assert.match(entry.note, /chose outline A/);
+
+  const again = context(box, server.fetchImpl);
+  await main(["review-pull", "--slug", box.slug], again.ctx);
+  assert.match(again.out.stdout, /already recorded/);
+  appendFileSync(path.join(box.dir, "brief.md"), "\n改過一行。\n");
+  const changed = context(box, server.fetchImpl);
+  await main(["review-pull", "--slug", box.slug], changed.ctx);
+  assert.match(changed.out.stdout, /has since changed/);
+  assert.equal(readApprovals(box.workdir).approvals.length, 1, "an approval of the old brief is not recorded for the new one");
+});
+
+const PICK = { choice: "A", probabilities: { A: 0.8 }, options: { A: { stance: 0.9, demo: 0.7 } }, advice: 0.1, passed: true, note: "Jev 挑了 A（0.80）：符合立場 0.90、有示範 0.70、建議 0.10，依設定自動核准" };
+// A brief with the two outline options a judge takes; the fixture's has none.
+const OPTIONS_BRIEF = "# AI 模型怎麼挑\n\n## 觀眾看完能做到的事\n\n挑出一個模型。\n\n## 站主觀點\n\n套用立場：1\n排行榜只是起點。\n\n## 大綱\n\n### 選項 A：三個問題\n一行說明：照三個問題走。\n開場鉤子：「排行榜第一名不一定最好用」\n\n### 選項 B：從一個情境開始\n一行說明：用情境貫穿。\n";
+
+test("review-push --gate outline asks Jev first and sends the pick with the brief; a judge that is down still sends the outline, for the owner", async () => {
+  const box = sandbox();
+  writeFileSync(path.join(box.dir, "brief.md"), OPTIONS_BRIEF);
+  const server = site({ judge: () => PICK });
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], push.ctx), EXIT.ok, push.out.stderr);
+  const [asked] = server.state.judge;
+  assert.deepEqual(Object.keys(asked), ["slug", "brief", "options"], "the judge's strict request model");
+  assert.equal(asked.slug, box.slug);
+  assert.deepEqual(asked.options.map((option) => Object.keys(option)), [["key", "title", "summary", "hook"], ["key", "title", "summary", "hook"]]);
+  assert.equal(asked.options[1].hook, "", "a missing hook is sent as an empty string, never left out");
+  assert.deepEqual(judgeBody("s", "b", [{ key: "A", title: "t" }]).options, [{ key: "A", title: "t", summary: "", hook: "" }]);
+  const [outline] = server.state.reviews;
+  assert.deepEqual(outline.payload.pick, PICK, "the whole answer travels as the pick");
+  assert.equal(outline.summary, "企劃書與 2 個大綱選項；Jev 挑了 A");
+  assert.match(push.out.stdout, /Jev 挑了 A（0\.80）/);
+
+  const failed = site({ judge: () => ({ ...PICK, passed: false, note: "Jev 挑了 A（0.80）：…；沒過關" }) });
+  const again = context(box, failed.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(failed.state.reviews[0].payload.pick.passed, false, "a pick that did not pass still goes up, so the card shows the table");
+  assert.equal(failed.state.reviews[0].summary, "企劃書與 2 個大綱選項；Jev 沒有挑出過關的大綱，請站主選");
+
+  const down = site({ judge: () => Response.json({ code: "video_judge_upstream_failed", detail: "Jev 暫時無法判斷" }, { status: 502 }) });
+  const later = context(box, down.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], later.ctx), EXIT.ok, later.out.stderr);
+  assert.equal("pick" in down.state.reviews[0].payload, false);
+  assert.match(later.out.stdout, /Jev could not judge the outline \(Jev 暫時無法判斷\); it goes up for the owner/);
+
+  const revoked = site({ judge: () => Response.json({ code: "video_tool_token_invalid", detail: "token revoked" }, { status: 401 }) });
+  const owner = context(box, revoked.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "outline"], owner.ctx), EXIT.owner);
+  assert.match(owner.out.stderr, /token revoked/);
+  assert.equal(revoked.state.reviews.length, 0);
+});
+
+test("the article a video retells is its source_guide, or else the first site article it cites", () => {
+  const urls = ["https://example.com/a", "https://mokaair.com/zh-TW/guides/ai-news-x-20260820?utm_source=y", "https://www.mokaair.com/en/guides/other/", "https://mokaair.com/zh-TW/hotspots/x"];
+  assert.deepEqual(guideSlugs(urls), ["ai-news-x-20260820", "other"]);
+  assert.equal(sourceGuideOf({ source_guide: "pack-slug", sources: [{ url: urls[1] }] }), "pack-slug");
+  assert.equal(sourceGuideOf({ sources: urls.map((url) => ({ url })) }), "ai-news-x-20260820");
+  assert.equal(sourceGuideOf({ sources: [{ url: urls[0] }] }), null);
+});
+
+test("review-push --report-only lists the video on the site with its article and submits nothing", async () => {
+  const box = sandbox();
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  doc.sources.push({ title: "站內文章", url: "https://mokaair.com/zh-TW/guides/ai-workflow-cost-quality-latency", checked_on: "2026-09-24" });
+  writeFileSync(file, `${JSON.stringify(doc, null, 2)}\n`);
+  const server = site();
+  let reported = null;
+  const push = context(box, async (url, init) => {
+    if (init.method === "PUT") reported = JSON.parse(init.body);
+    return server.fetchImpl(url, init);
+  });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--report-only"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.deepEqual(server.state.calls.map((call) => call.method), ["PUT"]);
+  assert.equal(reported.source_guide, "ai-workflow-cost-quality-latency");
+  assert.match(push.out.stdout, /nothing submitted/);
+});
+
+test("the narration goes up as an encoded copy, in parts, before its review is submitted", async () => {
+  const box = sandbox();
+  const server = site();
+  const brief = readFileSync(path.join(box.dir, "brief.md"));
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "outline", file: "brief.md", sha256: sha(brief), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
+  const timeline = { fps: 30, total_frames: 90, lines: [{ id: "a" }, { id: "b" }], scenes: [], chapters: [] };
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
+  writeFileSync(path.join(box.workdir, "narration.wav"), encodeWav(new Int16Array(SAMPLE_RATE * 3)));
+  // The lines the worker's listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白).
+  const rewrites = [{ id: "b", before: "這就是它的答", after: "這就是它的回答", heard: "這就是它的打" }];
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "rewrites.json"), JSON.stringify(rewrites));
+  const encoded = Buffer.alloc(PART_BYTES + 10, 7);
+  const encode = async (kind, source, target) => {
+    assert.equal(kind, "narration");
+    writeFileSync(target, encoded);
+  };
+  const push = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug], push.ctx), EXIT.ok, push.out.stderr);
+  const uploads = server.state.calls.filter((call) => call.pathname.includes("/files/"));
+  assert.equal(uploads.length, 2, "a file over one part goes up in two");
+  const [audio] = server.state.reviews;
+  assert.equal(audio.gate, "audio");
+  assert.equal(audio.content_sha256, sha(readFileSync(path.join(box.workdir, "timeline.json"))));
+  assert.deepEqual(audio.files, [{ role: "narration", sha256: sha(encoded), size: encoded.length, content_type: "audio/mp4" }]);
+  assert.equal(Buffer.concat(server.state.files.get(sha(encoded))).equals(encoded), true);
+  assert.equal(audio.payload.duration_seconds, 3);
+  assert.deepEqual(audio.payload.rewrites, rewrites, "the review card lists what the listener reworded");
+  assert.match(audio.summary, /Jev 標記 0 句；改寫 1 句$/);
+});
+
+/** A work directory with a narration and a cut, enough for the final gate to hash and preview. */
+function cutVideo(box) {
+  mkdirSync(box.workdir, { recursive: true });
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const lexicon = JSON.parse(readFileSync(path.join(box.videos, "lexicon.json"), "utf8"));
+  writeSyntheticNarration(doc, lexicon, box.workdir);
+  const final = Buffer.from("the finished cut");
+  writeFileSync(path.join(box.workdir, "final.mp4"), final);
+  return { doc, final };
+}
+
+const encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+
+test("review-push --gate final runs the quality check and sends its report; a check that could not finish sends nothing", async () => {
+  const box = sandbox();
+  const { final } = cutVideo(box);
+  const server = site();
+  const push = context(box, server.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], push.ctx), EXIT.ok, push.out.stderr);
+  assert.match(push.out.stdout, /\[ \] policy: judge endpoint not available/, "qa ran, and printed its items");
+  const [review] = server.state.reviews;
+  assert.equal(review.gate, "final");
+  assert.equal(review.content_sha256, sha(final));
+  assert.equal(review.payload.qa.final_sha256, sha(final), "the report is of this very final.mp4");
+  assert.equal(review.payload.qa.ok, false);
+  assert.deepEqual(review.payload.qa.items.map((item) => item.id), ITEM_IDS);
+  assert.match(review.summary, /^成片 00:\d\d，自動品管 \d+ 項沒過：assemble、render/);
+  assert.deepEqual(review.files.map((file) => file.role), ["preview"]);
+  assert.ok(existsSync(path.join(box.workdir, "review", "qa.json")));
+
+  // Jev unreachable: the quality check ends with exit 4, and so does the push, without a review.
+  const down = site({ policy: () => { throw new TypeError("fetch failed"); } });
+  const later = context(box, down.fetchImpl, { encode });
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "final"], later.ctx), EXIT.external);
+  assert.match(later.out.stderr, /the quality check could not finish/);
+  assert.equal(down.state.reviews.length, 0);
+});
+
+test("review-push --gate publish attaches every file of the package with the package check and what the card shows", async () => {
+  const box = sandbox();
+  const { final } = cutVideo(box);
+  const upload = path.join(box.workdir, "upload");
+  mkdirSync(path.join(upload, "captions"), { recursive: true });
+  writeFileSync(path.join(upload, "final.mp4"), final);
+  writeFileSync(path.join(upload, "thumbnail.jpg"), Buffer.from([0xff, 0xd8, 0xff, 0xd9]));
+  for (const locale of ["zh-TW", "en"]) {
+    writeFileSync(path.join(upload, "captions", `${locale}.srt`), `1\n00:00:00,000 --> 00:00:01,000\n${locale}\n`);
+    writeFileSync(path.join(upload, `description.${locale}.txt`), `${locale} title\n\n${locale} body\n`);
+  }
+  writeFileSync(path.join(upload, "UPLOAD.md"), "# 上傳步驟\n");
+  const metadata = {
+    slug: box.slug, title: "AI 模型怎麼挑", description: "本文", tags: ["AI 模型"], chapters: [{ at: "00:00", title: "開場" }, { at: "00:10", title: "三個問題" }, { at: "00:20", title: "結論" }],
+    default_language: "zh-TW", localizations: { en: { title: "en title", description: "en body" } },
+    final_sha256: sha(final), thumbnail: "thumbnail.jpg", captions: ["captions/en.srt", "captions/zh-TW.srt"],
+    skipped_caption_locales: { ja: "no translation", ko: "no translation", "zh-CN": "no translation" },
+    contains_synthetic_media: false, disclosure_reason: "slides read by a stock TTS voice",
+  };
+  const bytes = `${JSON.stringify(metadata, null, 2)}\n`;
+  writeFileSync(path.join(upload, "metadata.json"), bytes);
+  writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-25T00:00:00Z", note: "" }] }));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], push.ctx), EXIT.ok, push.out.stderr);
+  const [publish] = server.state.reviews;
+  assert.equal(publish.gate, "publish");
+  assert.equal(publish.content_sha256, sha(bytes), "bound to metadata.json");
+  assert.equal(publish.summary, "上傳包 4 項齊全：請確認可以上架");
+  assert.deepEqual(publish.payload.package.items.map((item) => [item.id, item.ok]), [["files", true], ["descriptions", true], ["captions", true], ["disclosure", true]]);
+  assert.equal(publish.payload.package.final_sha256, sha(bytes), "the report names the file the gate hashes");
+  assert.equal(publish.payload.chapters, 3);
+  assert.ok(publish.payload.minutes > 0);
+  assert.deepEqual(publish.payload.locales, ["zh-TW", "en"]);
+  assert.deepEqual(publish.payload.zh, { title: "AI 模型怎麼挑", description: "本文", tags: ["AI 模型"] });
+  assert.deepEqual(publish.payload.disclosure, { synthetic: false, reason: "slides read by a stock TTS voice" });
+  assert.deepEqual(publish.payload.checklist, [], "UPLOAD.md has no self-check list any more");
+  assert.deepEqual(publish.files.map((file) => [file.role, file.content_type]), [
+    ["captions_en", "text/plain"],
+    ["captions_zh-TW", "text/plain"],
+    ["description_en", "text/plain"],
+    ["description_zh-TW", "text/plain"],
+    ["final", "video/mp4"],
+    ["metadata", "application/json"],
+    ["thumbnail", "image/jpeg"],
+  ]);
+  assert.equal(server.state.files.size, 7, "every file went up; UPLOAD.md did not");
+  assert.equal(Buffer.concat(server.state.files.get(sha(bytes))).toString("utf8"), bytes);
+
+  // The thumbnail gone: the check fails its files item and the summary says so; the owner decides.
+  rmSync(path.join(upload, "thumbnail.jpg"));
+  const broken = site();
+  const again = context(box, broken.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "publish"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(broken.state.reviews[0].summary, "上傳包 1 項沒過：files");
+  assert.equal(broken.state.reviews[0].payload.package.ok, false);
+});
+
+test("without a token the push needs the owner", async () => {
+  const box = sandbox();
+  const out = context(box, site().fetchImpl);
+  out.ctx.env = { VIDEO_WORKDIR: box.work };
+  assert.equal(await main(["review-push", "--slug", box.slug], out.ctx), EXIT.owner);
+  assert.match(out.out.stderr, /login/);
+});
+
+test("every pipeline step of both formats has a label for the site", () => {
+  for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
+  assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "dubs"]);
+});
+
+const png = (text) => Buffer.concat([Buffer.from("\x89PNG\r\n\x1a\n", "binary"), Buffer.from(text)]);
+
+/** A drama work directory with two characters' sheets, as the look stage leaves it. */
+function lookManifest(box, hash) {
+  const manifest = { look_hash: hash, characters: {} };
+  for (const [id, name] of [["jingwei", "精衛"], ["yandi", "炎帝"]]) {
+    mkdirSync(path.join(box.workdir, "characters", id), { recursive: true });
+    const candidates = [1, 2].map((n) => {
+      const file = `characters/${id}/00${n}.png`;
+      writeFileSync(path.join(box.workdir, file), png(`${id}${n}`));
+      return { n, seed: n, file, sha256: sha(png(`${id}${n}`)), key: `k${n}`, judge: { overall: 6 + n, passed: n === 2, problems: n === 1 ? ["blurry"] : [] } };
+    });
+    manifest.characters[id] = { name, prompt: "sheet", candidates, suggested: 2, needs_review: false };
+  }
+  writeFileSync(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify(manifest));
+  return manifest;
+}
+
+test("the look goes up as one review per character, and the owner's picks come back as the choice and the approval", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const manifest = lookManifest(box, lookHash(doc));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.ok, push.out.stderr);
+  const reviews = [...server.state.reviews].reverse();
+  assert.deepEqual(reviews.map((review) => [review.gate, review.subject]), [["look", "jingwei"], ["look", "yandi"]]);
+  const jingwei = reviews[0];
+  assert.equal(jingwei.content_sha256, sha(readFileSync(path.join(box.workdir, "characters", "manifest.json"))));
+  assert.deepEqual(jingwei.files.map((file) => [file.role, file.content_type]), [["candidate_a", "image/png"], ["candidate_b", "image/png"]]);
+  assert.equal(jingwei.payload.character.name, "精衛");
+  assert.equal(jingwei.payload.character.voice, "gemini:Kore");
+  assert.deepEqual(jingwei.payload.options.map((option) => [option.key, option.index, option.file_role, option.judge.overall]), [["A", 1, "candidate_a", 7], ["B", 2, "candidate_b", 8]]);
+  assert.equal(jingwei.payload.suggested, "B");
+  assert.match(jingwei.summary, /精衛 的設定圖 2 張，judge 建議 B/);
+  assert.match(push.out.stdout, /look \(jingwei\) submitted/);
+  assert.equal(server.state.files.size, 4, "every candidate went up");
+
+  // One character decided: the choice is written, the gate waits for the other.
+  Object.assign(reviews[0], { status: "approved", choice: "A", decided_at: "2026-09-26T09:00:00Z" });
+  const half = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], half.ctx), EXIT.owner);
+  assert.match(half.out.stdout, /look \(yandi\): waiting for the owner/);
+  assert.match(half.out.stdout, /look: jingwei = A; waiting for yandi/);
+  const choice = JSON.parse(readFileSync(path.join(box.workdir, "characters", "choice.json"), "utf8"));
+  assert.deepEqual(choice.chosen, { jingwei: 1 });
+  assert.equal(choice.look_hash, manifest.look_hash);
+  assert.equal(readApprovals(box.workdir).approvals.length, 0);
+
+  Object.assign(reviews[1], { status: "approved", choice: null, decided_at: "2026-09-26T09:05:00Z" });
+  const full = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], full.ctx), EXIT.ok, full.out.stderr);
+  assert.match(full.out.stdout, /look: approval recorded \(jingwei = A, yandi = B\)/, "approved without a pick takes the judge's suggestion");
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "characters", "choice.json"), "utf8")).chosen, { jingwei: 1, yandi: 2 });
+  const [entry] = readApprovals(box.workdir).approvals;
+  assert.equal(entry.gate, "look");
+  assert.equal(entry.sha256, jingwei.content_sha256);
+  assert.match(entry.note, /chose sheets jingwei = A, yandi = B/);
+  const again = context(box, server.fetchImpl);
+  await main(["review-pull", "--slug", box.slug], again.ctx);
+  assert.match(again.out.stdout, /already recorded/);
+});
+
+test("the storyboard goes up with every keyframe and the judge's lowest score, and its approval is recorded", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const shots = {};
+  for (const [index, scene] of doc.scenes.filter((each) => each.template === "shot").entries()) {
+    const file = `keyframes/${scene.id}-1.png`;
+    writeFileSync(path.join(box.workdir, file), png(scene.id));
+    shots[scene.id] = { file, sha256: sha(png(scene.id)), seed: 1, judge: { overall: 9 - index, passed: index < 3, problems: index < 3 ? [] : ["no bird"] }, needs_review: index === 3 };
+  }
+  writeFileSync(path.join(box.workdir, "keyframes", "contact-sheet.png"), png("sheet"));
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ look_hash: "l", visual_hash: "v", shots, duplicates: [{ a: "opening", b: "farewell", distance: 3 }] }));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "storyboard"], push.ctx), EXIT.ok, push.out.stderr);
+  const [board] = server.state.reviews;
+  assert.equal(board.gate, "storyboard");
+  assert.equal(board.subject, undefined);
+  assert.deepEqual(board.files.map((file) => file.role), ["shot_01", "shot_02", "shot_03", "shot_04", "contact_sheet"]);
+  assert.deepEqual(board.payload.shots.map((shot) => [shot.id, shot.chapter, shot.file_role, shot.needs_review]), [["opening", "發鳩山", "shot_01", false], ["farewell", null, "shot_02", false], ["sea-storm", "東海", "shot_03", false], ["bird", null, "shot_04", true]]);
+  assert.deepEqual(board.payload.judge, { overall: 6, problems: ["no bird"] });
+  assert.deepEqual(board.payload.duplicates, [{ a: "opening", b: "farewell", distance: 3 }]);
+  assert.match(board.summary, /分鏡 4 鏡，judge 最低 6\/10，1 鏡待修/);
+
+  Object.assign(board, { status: "approved", decided_at: "2026-09-26T10:00:00Z", note: "第四鏡再改" });
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pull.ctx), EXIT.ok, pull.out.stderr);
+  assert.match(pull.out.stdout, /storyboard: approval recorded/);
+  const [entry] = readApprovals(box.workdir).approvals;
+  assert.equal(entry.gate, "storyboard");
+  assert.equal(entry.sha256, board.content_sha256);
+});
