@@ -291,7 +291,7 @@ Terms of service (paragraph): The operator may publish videos produced on this s
 | 發布狀態 | In production（正式版） | 頁 10、11：測試中的授權 7 天過期、refresh token 跟著過期，而且只能給列出的測試使用者；正式版的 token 不會這樣過期（撤銷、6 個月沒用、超過每個用戶端的 token 數上限除外） |
 | 驗證 | 不送 | 頁 11、13：未驗證的正式版會先顯示警告畫面，總共只能有 100 個新使用者，功能照常；本站只有站主一人 |
 | youtube.force-ssl 算不算敏感 scope | 待核對 | 讀到的頁面都沒點名；算的話就是上面那個警告畫面，不影響使用 |
-| OAuth 用戶端 | 類型「網頁應用程式」；已授權的重新導向 URI 由 T8 決定，形式像 https://mokaair.com/api/…/callback | T8 票 |
+| OAuth 用戶端 | 類型「網頁應用程式」；已授權的重新導向 URI 是 https://mokaair.com/api/admin-video-youtube/callback（設定分頁的「YouTube 頻道」卡片上可以複製） | T8 票（2026-09-27 完成） |
 | 用戶端密鑰 | 站主自己貼進後台的設定分頁，不進 repo、不進對話 | T8 票 |
 
 ## 五、送出之後要一直守的規則（給 T8 與之後的維護）
