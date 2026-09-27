@@ -558,6 +558,9 @@ class SeriesDocOut(BaseModel):
     note: str | None
     decided_at: datetime | None
     created_at: datetime
+    # The owner's lines on this document's thread still waiting for the model
+    # (docs/videos/DRAMA-FLOW.md §三).
+    unanswered: int = 0
 
 
 class SeriesEpisodeOut(BaseModel):
@@ -597,6 +600,8 @@ class SeriesSummary(BaseModel):
     episodes_started: int
     episodes_ready: int
     docs_pending: int
+    # The owner's lines on every thread of this series still waiting for the model.
+    messages_pending: int = 0
     media_usd: float = 0.0
     clip_seconds: int = 0
     created_at: datetime
@@ -689,3 +694,81 @@ class SeriesEpisodeStartOut(BaseModel):
 class SeriesEpisodeRecapIn(StrictModel):
     recap: str = Field(min_length=1, max_length=4000)
     state: dict[str, object] = Field(default_factory=dict)
+
+
+# The discussion thread on a document or a screenplay (docs/videos/DRAMA-FLOW.md §三): the owner
+# writes a line, the worker's next round has the planner or the writer answer it, with a new
+# version of the document when the owner asked for a change.
+MESSAGE_SUBJECT_PATTERN = r"^(setting|outline|chapter:\d+|bible|script:\d+)$"
+MESSAGE_BODY_MAX_CHARS = 8_000
+MessageAuthor = Literal["owner", "planner", "writer"]
+MessageTarget = Literal["doc", "script"]
+
+
+class MessageIn(StrictModel):
+    subject: str = Field(pattern=MESSAGE_SUBJECT_PATTERN)
+    body: str = Field(min_length=1, max_length=MESSAGE_BODY_MAX_CHARS)
+
+    @field_validator("body")
+    @classmethod
+    def _trimmed(cls, value: str) -> str:
+        text = value.strip()
+        if not text:
+            raise ValueError("must not be blank")
+        return text
+
+
+class MessageOut(BaseModel):
+    id: UUID
+    subject: str
+    author: MessageAuthor
+    body_md: str
+    # The version the line was said about: a document's "v3", or the screenplay's SHA-256
+    # cut to 12 characters; None when the document did not exist yet.
+    refers_to: str | None
+    answered_at: datetime | None
+    created_at: datetime
+    created_by_user_id: UUID | None
+
+
+class MessagesOut(BaseModel):
+    messages: list[MessageOut]
+
+
+class MessageJob(BaseModel):
+    """The oldest line waiting for the model, with everything the model reads to answer it."""
+
+    message: MessageOut
+    thread: list[MessageOut]
+    series: SeriesSummary
+    subject: str
+    target: MessageTarget
+    # The document's latest version, for a document thread; None before the first version.
+    doc: SeriesDocOut | None
+    # The episode whose screenplay is discussed, for a script thread (its slug names the video).
+    episode: SeriesEpisodeOut | None
+    context: SeriesContextOut
+
+
+class MessageJobOut(BaseModel):
+    job: MessageJob | None
+
+
+class RevisedDocIn(StrictModel):
+    body_md: str = Field(min_length=1, max_length=MAX_DOC_MD_CHARS)
+    body_json: dict[str, object] = Field(default_factory=dict)
+
+
+class MessageAnswerIn(StrictModel):
+    """The model's answer: a reply, and the revised document when the owner asked for a change.
+    A screenplay's revision is written by the worker itself, so ``revised`` is ignored there."""
+
+    reply_md: str = Field(min_length=1, max_length=MESSAGE_BODY_MAX_CHARS)
+    revised: RevisedDocIn | None = None
+
+
+class MessageAnswerOut(BaseModel):
+    reply: MessageOut
+    # The new version filed from ``revised``, waiting for the owner; None when nothing was
+    # revised, or the document was approved meanwhile.
+    revision: SeriesDocOut | None

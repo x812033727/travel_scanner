@@ -542,6 +542,41 @@ class VideoDramaDoc(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+# The discussion thread on every series document and every episode's screenplay
+# (docs/videos/DRAMA-FLOW.md §三; migration 0106): the owner writes a line, the worker's next
+# round has the planner (documents) or the writer (screenplays) answer it, and a new version of
+# the document when the owner asked for a change.
+MESSAGE_AUTHORS = ("owner", "planner", "writer")
+MESSAGE_SUBJECT_PATTERN = r"^(setting|outline|chapter:\d+|bible|script:\d+)$"
+MESSAGE_BODY_MAX_CHARS = 8_000
+
+
+class VideoDramaMessage(Base):
+    __tablename__ = "video_drama_messages"
+    __table_args__ = (
+        CheckConstraint(
+            "author IN ('owner', 'planner', 'writer')", name="ck_video_drama_message_author"
+        ),
+        Index("ix_video_drama_messages_thread", "series_id", "subject", "created_at"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    series_id: Mapped[UUID] = mapped_column(ForeignKey("video_drama_series.id", ondelete="CASCADE"))
+    # setting | outline | chapter:<n> | bible | script:<episode number>
+    subject: Mapped[str] = mapped_column(String(24))
+    author: Mapped[str] = mapped_column(String(12))
+    body_md: Mapped[str] = mapped_column(Text)
+    # What the line was said about: a document's version ("v3") or the first 12 characters of
+    # the screenplay's SHA-256, so a reader knows which version it answers.
+    refers_to: Mapped[str | None] = mapped_column(String(16), nullable=True)
+    # Set on the owner's message once the model answered it; null is "waiting for the model".
+    answered_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    created_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+
+
 class VideoDramaEpisode(Base):
     __tablename__ = "video_drama_episodes"
     __table_args__ = (

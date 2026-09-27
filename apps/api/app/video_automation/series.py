@@ -34,6 +34,7 @@ from app.video_automation.models import (
     VideoAutomationSettings,
     VideoDramaDoc,
     VideoDramaEpisode,
+    VideoDramaMessage,
     VideoDramaRequest,
     VideoDramaSeries,
 )
@@ -71,6 +72,9 @@ EPISODE_OPEN = ("planned", "ready", "queued", "started")
 # the planner's to fill and nothing here reads them.
 BIBLE_LISTS = ("acts",)
 ONE_OFF_PREFIX = "one-off-"
+# The note on a version the discussion replaced (docs/videos/DRAMA-FLOW.md §三): such a version
+# is not one of the owner's rewrites, so it does not count against ``series_doc_rewrites``.
+DISCUSSION_NOTE = "討論後出了新版本"
 
 
 class SeriesRefused(Exception):
@@ -217,8 +221,14 @@ def _rewrite_job(
         return NextJob(kind=kind, chapter_number=chapter, rewrites_left=rewrites)
     if latest.status != "rejected":
         return None
-    # The first version was not a rewrite: version 2 is the first rewrite.
-    left = rewrites - (latest.version - 1)
+    # The first version was not a rewrite: version 2 is the first rewrite. A version the
+    # discussion replaced was not the owner sending it back, so it is not counted.
+    discussed = sum(
+        1
+        for doc in docs
+        if doc.kind == kind and doc.chapter_number == chapter and doc.note == DISCUSSION_NOTE
+    )
+    left = rewrites - (latest.version - 1 - discussed)
     if left <= 0:
         return None
     return NextJob(kind=kind, chapter_number=chapter, previous=latest, rewrites_left=left)
@@ -332,7 +342,12 @@ def beats_from_chapter(body: dict[str, Any]) -> dict[int, dict[str, Any]]:
 # --- views ----------------------------------------------------------------------------------
 
 
-def doc_view(doc: VideoDramaDoc) -> SeriesDocOut:
+def doc_subject(kind: str, chapter: int) -> str:
+    """The discussion thread's subject for a document (docs/videos/DRAMA-FLOW.md §三)."""
+    return f"chapter:{chapter}" if kind == "chapter" else kind
+
+
+def doc_view(doc: VideoDramaDoc, unanswered: int = 0) -> SeriesDocOut:
     return SeriesDocOut(
         id=doc.id,
         kind=cast(Any, doc.kind),
@@ -344,6 +359,7 @@ def doc_view(doc: VideoDramaDoc) -> SeriesDocOut:
         note=doc.note,
         decided_at=doc.decided_at,
         created_at=doc.created_at,
+        unanswered=unanswered,
     )
 
 
@@ -372,6 +388,7 @@ def summary_view(
     *,
     media_usd: float = 0.0,
     clip_seconds: int = 0,
+    messages_pending: int = 0,
 ) -> SeriesSummary:
     latest = latest_docs(docs)
     return SeriesSummary(
@@ -396,6 +413,7 @@ def summary_view(
         episodes_started=sum(1 for e in episodes if e.status == "started"),
         episodes_ready=sum(1 for e in episodes if e.status == "ready"),
         docs_pending=sum(1 for doc in latest.values() if doc.status == "review"),
+        messages_pending=messages_pending,
         media_usd=media_usd,
         clip_seconds=clip_seconds,
         created_at=series.created_at,
@@ -408,6 +426,18 @@ def summary_view(
 
 async def _series(session: AsyncSession, slug: str, *, lock: bool = False) -> VideoDramaSeries:
     statement = select(VideoDramaSeries).where(VideoDramaSeries.slug == slug)
+    if lock:
+        statement = statement.with_for_update()
+    row = await session.scalar(statement)
+    if row is None:
+        raise SeriesRefused(404, "video_series_not_found", "找不到這部作品")
+    return row
+
+
+async def _series_by_id(
+    session: AsyncSession, series_id: Any, *, lock: bool = True
+) -> VideoDramaSeries:
+    statement = select(VideoDramaSeries).where(VideoDramaSeries.id == series_id)
     if lock:
         statement = statement.with_for_update()
     row = await session.scalar(statement)
@@ -432,6 +462,20 @@ async def _episodes(session: AsyncSession, series: VideoDramaSeries) -> list[Vid
         .order_by(VideoDramaEpisode.number)
     )
     return list(rows.all())
+
+
+async def _unanswered(session: AsyncSession, series: VideoDramaSeries) -> dict[str, int]:
+    """The owner's lines still waiting for the model, by thread subject."""
+    rows = await session.execute(
+        select(VideoDramaMessage.subject, func.count())
+        .where(
+            VideoDramaMessage.series_id == series.id,
+            VideoDramaMessage.author == "owner",
+            VideoDramaMessage.answered_at.is_(None),
+        )
+        .group_by(VideoDramaMessage.subject)
+    )
+    return {str(subject): int(count) for subject, count in rows.all()}
 
 
 async def _started_this_month(session: AsyncSession, series: VideoDramaSeries) -> int:
@@ -579,7 +623,17 @@ async def list_series(session: AsyncSession, *, kind: str | None = None) -> list
         docs = await _docs(session, series)
         episodes = await _episodes(session, series)
         usd, seconds = await _spend(session, episodes)
-        out.append(summary_view(series, docs, episodes, media_usd=usd, clip_seconds=seconds))
+        waiting = await _unanswered(session, series)
+        out.append(
+            summary_view(
+                series,
+                docs,
+                episodes,
+                media_usd=usd,
+                clip_seconds=seconds,
+                messages_pending=sum(waiting.values()),
+            )
+        )
     return out
 
 
@@ -588,13 +642,24 @@ async def series_view(session: AsyncSession, slug: str) -> SeriesOut:
     docs = await _docs(session, series)
     episodes = await _episodes(session, series)
     usd, seconds = await _spend(session, episodes)
+    waiting = await _unanswered(session, series)
     videos = {
         project.slug: project.model_dump(mode="json")
         for project in await list_projects(session, series_slug=series.slug, limit=1000)
     }
     return SeriesOut(
-        **summary_view(series, docs, episodes, media_usd=usd, clip_seconds=seconds).model_dump(),
-        docs=[doc_view(doc) for doc in latest_docs(docs).values()],
+        **summary_view(
+            series,
+            docs,
+            episodes,
+            media_usd=usd,
+            clip_seconds=seconds,
+            messages_pending=sum(waiting.values()),
+        ).model_dump(),
+        docs=[
+            doc_view(doc, waiting.get(doc_subject(doc.kind, doc.chapter_number), 0))
+            for doc in latest_docs(docs).values()
+        ],
         episodes=[episode_view(episode, videos.get(episode.slug or "")) for episode in episodes],
     )
 
