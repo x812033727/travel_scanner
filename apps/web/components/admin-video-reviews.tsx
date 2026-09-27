@@ -113,7 +113,8 @@ function SendToYoutube({ slug, confirmation, connection, sync, mp4Gone, onSent }
   if (syncRunning(sync)) return null;
   if (!connection?.linked) return <><YoutubeLinkHint /><UploadedForm slug={slug} onLinked={onSent} /></>;
   const canUpload = !mp4Gone && Boolean(confirmation?.files.some((file) => file.role === "final"));
-  return <YoutubePublishForm key={sync?.finished_at ?? "new"} slug={slug} review={confirmation} connection={connection} canUpload={canUpload} previous={sync?.request ?? null} onSent={onSent} />;
+  // Keyed by the package and the last run: the form fills itself from them once, when it mounts.
+  return <YoutubePublishForm key={`${confirmation?.id ?? "none"}-${sync?.finished_at ?? "new"}`} slug={slug} review={confirmation} connection={connection} canUpload={canUpload} previous={sync?.request ?? null} onSent={onSent} />;
 }
 
 function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
@@ -222,7 +223,7 @@ function ReadyCard({ project, canManage, connection, onOpen, onLinked }: { proje
       {!detail && !error && <p className="text-sm text-[var(--muted)]">{t("readyLoading")}</p>}
       {confirmation && <UploadPackage slug={project.slug} review={confirmation} />}
       {project.youtube_sync && <YoutubeSyncPanel slug={project.slug} sync={project.youtube_sync} canManage={canManage} onChange={onLinked} />}
-      {canManage && <SendToYoutube slug={project.slug} confirmation={confirmation} connection={connection} sync={project.youtube_sync} mp4Gone={false} onSent={onLinked} />}
+      {canManage && detail && <SendToYoutube slug={project.slug} confirmation={confirmation} connection={connection} sync={project.youtube_sync} mp4Gone={false} onSent={onLinked} />}
     </article>
   </li>;
 }

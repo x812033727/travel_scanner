@@ -240,8 +240,11 @@ describe("the ready card and the list with a linked channel", () => {
     });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "上傳包影片" });
-    expect(await within(card).findByRole("form", { name: "送到 YouTube" })).toBeTruthy();
+    const form = await within(card).findByRole("form", { name: "送到 YouTube" });
     expect(within(card).queryByRole("form", { name: "已上傳到 YouTube" })).toBeNull();
+    // The card reads the package after the list; the form fills itself from it only once loaded.
+    expect((within(form).getByLabelText("中文標題") as HTMLInputElement).value).toBe("AI 模型怎麼挑：三個問題");
+    expect((within(form).getByLabelText("中文說明欄") as HTMLTextAreaElement).value).toBe("先把帳算清楚。");
     const needs = screen.getByRole("region", { name: "需要你" });
     expect(needs.textContent).toContain("送到一半的影片");
     expect(needs.textContent).toContain("YouTube 同步失敗");

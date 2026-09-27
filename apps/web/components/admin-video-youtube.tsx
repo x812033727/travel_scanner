@@ -162,8 +162,8 @@ export function YoutubeChannelCard() {
       <ol className="mt-3 grid list-decimal gap-2 pl-5 text-sm leading-6">
         <li>{t("step1")}</li>
         <li>{t("step2")}</li>
-        <li className="grid gap-2">{t("step3")}
-          <span className="flex flex-wrap items-center gap-2"><code className="break-all rounded bg-[var(--paper)] px-2 py-1 text-xs">{connection.redirect_uri}</code><CopyButton value={connection.redirect_uri} label={t("redirectUri")} /></span>
+        <li>{t("step3")}
+          <span className="mt-2 flex flex-wrap items-center gap-2"><code className="break-all rounded bg-[var(--paper)] px-2 py-1 text-xs">{connection.redirect_uri}</code><CopyButton value={connection.redirect_uri} label={t("redirectUri")} /></span>
         </li>
         <li>{t("step4", { scope: connection.scope })}</li>
         <li>{t("step5")}</li>
