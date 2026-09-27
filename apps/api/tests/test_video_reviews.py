@@ -21,7 +21,15 @@ from app.problems import AppError, app_error_handler
 from app.video_automation.judge import QA_AUTO_APPROVED_NOTE
 from app.video_automation.settings import AUTO_APPROVED_STORYBOARD_NOTE
 from app.video_reviews import admin_api, admin_service
-from app.video_reviews.schemas import DecisionIn, DropIn, DubLocalesIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import (
+    DecisionIn,
+    DropIn,
+    DubLocalesIn,
+    LocalesIn,
+    ProjectIn,
+    ProjectSummary,
+    ReviewIn,
+)
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech import admin_api as speech_api
 
@@ -194,41 +202,273 @@ def test_the_dub_languages_are_the_caption_languages_each_at_most_once_in_page_o
             DubLocalesIn.model_validate({"locales": bad})
 
 
+def test_a_language_choice_keeps_page_order_drops_empty_languages_and_a_dub_brings_captions() -> (
+    None
+):
+    """The language panel's body (docs/videos/LANGUAGES.md): each language with its parts."""
+    chosen = LocalesIn.model_validate(
+        {"locales": {"ko": {"dub": True}, "en": {"metadata": True}, "ja": {}}}
+    )
+    assert list(chosen.locales) == ["en", "ko"], "page order, the empty language dropped"
+    assert chosen.locales["ko"].model_dump() == {"metadata": False, "captions": True, "dub": True}
+    assert chosen.locales["en"].chosen() == ["metadata"]
+    assert LocalesIn.model_validate({}).locales == {}, (
+        "nothing chosen is 'only Traditional Chinese'"
+    )
+    assert LocalesIn.model_validate({"locales": {"en": {"voice": True}}}).locales == {}, (
+        "a stray field is ignored, as on the other routes, and leaves the language empty"
+    )
+    for bad in ({"zh-TW": {"captions": True}}, {"fr": {}}):
+        with pytest.raises(ValueError):
+            LocalesIn.model_validate({"locales": bad})
+    # A stored shape no page wrote reads as no choice, not as an error.
+    assert (
+        admin_service.locale_choices(
+            VideoProject(slug="v", title="t", stage="s", locales={"en": 1})
+        )
+        == {}
+    )
+
+
+def _batch(status: str, payload: dict[str, Any], day: int) -> VideoReview:
+    return VideoReview(
+        id=uuid4(),
+        gate="languages",
+        status=status,
+        content_sha256=str(day) * 64,
+        summary="languages",
+        payload=payload,
+        files=[],
+        created_at=datetime(2026, 9, day, tzinfo=UTC),
+    )
+
+
+def test_where_each_chosen_part_stands_follows_the_languages_batches_newest_last() -> None:
+    choices = admin_service.locale_choices(
+        VideoProject(
+            slug="v",
+            title="t",
+            stage="s",
+            locales={
+                "en": {"metadata": True, "dub": True},
+                "ja": {"captions": True},
+                "ko": {"metadata": True},
+            },
+        )
+    )
+    nothing = admin_service.language_states(choices, [])
+    assert {
+        locale: {part: out.state for part, out in parts.items()}
+        for locale, parts in nothing.items()
+    } == {
+        "en": {"metadata": "working", "captions": "working", "dub": "working"},
+        "ja": {"captions": "working"},
+        "ko": {"metadata": "working"},
+    }
+    first = _batch(
+        "approved",
+        {
+            "locales": {
+                "en": {"metadata": "ready", "captions": "ready", "dub": "ready"},
+                "ja": {"captions": "ready"},
+            }
+        },
+        20,
+    )
+    second = _batch(
+        "pending",
+        {
+            "locales": {
+                "ko": {"metadata": "ready"},
+                "en": {"dub": {"status": "skipped", "reason": "1.15 倍還塞不下"}},
+            }
+        },
+        22,
+    )
+    sent_back = _batch("rejected", {"locales": {"ja": {"captions": "skipped", "reason": "x"}}}, 23)
+    unrelated = VideoReview(
+        gate="dubs",
+        status="approved",
+        content_sha256="f" * 64,
+        payload={"locales": {"en": {"status": "ready"}}},
+        files=[],
+    )
+    # Newest first, as the service lists them; the states read them oldest first.
+    states = admin_service.language_states(choices, [sent_back, unrelated, second, first])
+    assert states["en"]["metadata"].state == "ready", "descriptions the site sends stay ready"
+    assert states["en"]["captions"].state == "ready"
+    assert (states["en"]["dub"].state, states["en"]["dub"].reason) == (
+        "skipped",
+        "1.15 倍還塞不下",
+    ), "the later batch speaks last"
+    assert states["ja"]["captions"].state == "ready", "a sent-back batch counts for nothing"
+    assert states["ko"]["metadata"].state == "ready"
+    uploaded = admin_service.language_states(choices, [first])
+    assert uploaded["en"]["dub"].state == "uploaded", (
+        "a dub ready in an approved batch was uploaded"
+    )
+    assert uploaded["ko"]["metadata"].state == "working"
+    # A batch the owner must act on is one with a dub track to upload.
+    assert admin_service.languages_need_owner(first.payload)
+    assert not admin_service.languages_need_owner(second.payload)
+    assert not admin_service.languages_need_owner({"locales": {"en": {"metadata": "ready"}}})
+    assert not admin_service.languages_need_owner({})
+
+
+def test_a_video_is_ready_to_upload_once_confirmed_decided_and_every_chosen_part_is_done() -> None:
+    noon = datetime(2026, 9, 27, 12, tzinfo=UTC)
+    choices = admin_service.locale_choices(
+        VideoProject(
+            slug="v", title="t", stage="s", locales={"en": {"metadata": True, "dub": True}}
+        )
+    )
+    done = admin_service.language_states(
+        choices,
+        [
+            _batch(
+                "pending",
+                {
+                    "locales": {
+                        "en": {
+                            "metadata": "ready",
+                            "captions": "ready",
+                            "dub": "skipped",
+                            "reason": "r",
+                        }
+                    }
+                },
+                20,
+            )
+        ],
+    )
+    working = admin_service.language_states(choices, [])
+    decided = VideoProject(
+        slug="v",
+        title="t",
+        stage="done",
+        checklist=[],
+        last_synced_at=noon,
+        locales={"en": {"metadata": True, "captions": True, "dub": True}},
+        locales_decided_at=noon,
+    )
+    assert admin_service.ready_to_upload(decided, noon, done)
+    assert not admin_service.ready_to_upload(decided, noon, working), "a part still working"
+    assert not admin_service.ready_to_upload(decided, None, done), (
+        "the upload confirmation is not approved"
+    )
+    undecided = VideoProject(
+        slug="v", title="t", stage="done", checklist=[], last_synced_at=noon, locales={}
+    )
+    assert not admin_service.ready_to_upload(undecided, noon, {}), (
+        "the owner has not decided the languages"
+    )
+    only_chinese = VideoProject(
+        slug="v", title="t", stage="done", locales={}, locales_decided_at=noon
+    )
+    assert admin_service.ready_to_upload(only_chinese, noon, {}), (
+        "'only Traditional Chinese' is a decision"
+    )
+    assert not admin_service.ready_to_upload(
+        VideoProject(
+            slug="v",
+            title="t",
+            stage="done",
+            locales={},
+            locales_decided_at=noon,
+            youtube_video_id="dQw4w9WgXcQ",
+        ),
+        noon,
+        {},
+    )
+    assert not admin_service.ready_to_upload(
+        VideoProject(
+            slug="v", title="t", stage="done", locales={}, locales_decided_at=noon, dropped_at=noon
+        ),
+        noon,
+        {},
+    )
+    # The summary carries the choice, the states and the verdict; the dub languages are derived
+    # for the older page.
+    summary = ProjectSummary(**admin_service._summary(decided, 0, None, noon, done))
+    assert summary.ready_to_upload and summary.locales_decided_at == noon
+    assert summary.locales["en"].model_dump() == {"metadata": True, "captions": True, "dub": True}
+    assert summary.languages["en"]["dub"].state == "skipped" and summary.dub_locales == ["en"]
+    assert not ProjectSummary(**admin_service._summary(undecided, 0)).ready_to_upload
+
+
 @pytest.mark.asyncio
-async def test_the_owner_picks_a_video_s_dub_languages_and_a_dropped_one_takes_none(
+async def test_the_owner_decides_a_video_s_languages_once_and_a_drama_or_a_dropped_one_refuses(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    project = VideoProject(id=uuid4(), slug="v", title="AI 模型怎麼挑", stage="final")
+    project = VideoProject(id=uuid4(), slug="v", title="AI 模型怎麼挑", stage="final", locales={})
     monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=project))
     monkeypatch.setattr(admin_service, "project_view", AsyncMock(return_value="view"))
     session = AsyncMock()
     session.add = MagicMock()
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
-    assert admin_service._summary(project, 0)["dub_locales"] == [], "off until the owner ticks one"
+    assert (
+        admin_service._summary(project, 0)["locales"] == {} and project.locales_decided_at is None
+    )
 
-    chosen = DubLocalesIn.model_validate({"locales": ["ko", "en"]})
-    assert await admin_service.set_dub_locales(session, "v", owner, chosen) == "view"
-    assert project.dub_locales == ["en", "ko"]
-    assert admin_service._summary(project, 0)["dub_locales"] == ["en", "ko"]
+    chosen = LocalesIn.model_validate({"locales": {"ko": {"dub": True}, "en": {"metadata": True}}})
+    assert await admin_service.set_locales(session, "v", owner, chosen) == "view"
+    assert project.locales == {
+        "en": {"metadata": True, "captions": False, "dub": False},
+        "ko": {"metadata": False, "captions": True, "dub": True},
+    }
+    decided = project.locales_decided_at
+    assert decided is not None
     audit = session.add.call_args.args[0]
-    assert audit.action == "video_dub_locales_set" and audit.actor_user_id == owner.id
+    assert audit.action == "video_locales_set" and audit.actor_user_id == owner.id
     assert audit.target == f"video_project:{project.id}"
-    assert audit.metadata_json == {"slug": "v", "locales": ["en", "ko"]}
+    assert audit.metadata_json == {"slug": "v", "locales": project.locales}
     assert session.commit.await_count == 1
+    assert admin_service._summary(project, 0)["dub_locales"] == ["ko"]
 
-    same = DubLocalesIn.model_validate({"locales": ["en", "ko"]})
-    assert await admin_service.set_dub_locales(session, "v", owner, same) == "view"
+    same = LocalesIn.model_validate(
+        {"locales": {"en": {"metadata": True}, "ko": {"captions": True, "dub": True}}}
+    )
+    assert await admin_service.set_locales(session, "v", owner, same) == "view"
     assert session.add.call_count == 1 and session.commit.await_count == 1, (
         "the same choice again is not a change"
     )
 
+    # "Only Traditional Chinese" is a decision too, recorded once with its time kept.
+    only = LocalesIn.model_validate({"locales": {}})
+    assert await admin_service.set_locales(session, "v", owner, only) == "view"
+    assert project.locales == {} and project.locales_decided_at == decided
+    assert session.commit.await_count == 2
+
+    # The dub checkboxes of the older page: a ticked language gets every part, an unticked one
+    # loses its dub and keeps the rest.
+    project.locales = {"en": {"metadata": True, "captions": True, "dub": True}}
+    await admin_service.set_dub_locales(
+        session, "v", owner, DubLocalesIn.model_validate({"locales": ["ja"]})
+    )
+    assert project.locales == {
+        "en": {"metadata": True, "captions": True, "dub": False},
+        "ja": {"metadata": True, "captions": True, "dub": True},
+    }
+    assert session.add.call_args.args[0].action == "video_locales_set"
+
+    project.format = "drama"
+    with pytest.raises(AppError) as drama:
+        await admin_service.set_locales(
+            session, "v", owner, LocalesIn.model_validate({"locales": {"en": {"dub": True}}})
+        )
+    assert drama.value.code == "video_locales_dub_not_for_drama"
+    await admin_service.set_locales(
+        session, "v", owner, LocalesIn.model_validate({"locales": {"en": {"captions": True}}})
+    )
+    assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}, (
+        "a drama takes descriptions and captions"
+    )
+
     project.dropped_at = datetime.now(UTC)
     with pytest.raises(AppError) as refused:
-        await admin_service.set_dub_locales(
-            session, "v", owner, DubLocalesIn.model_validate({"locales": []})
-        )
+        await admin_service.set_locales(session, "v", owner, only)
     assert refused.value.code == "video_project_dropped"
-    assert project.dub_locales == ["en", "ko"]
+    assert project.locales == {"en": {"metadata": False, "captions": True, "dub": False}}
 
 
 def test_a_review_carries_up_to_48_files_and_a_subject_that_is_an_id() -> None:
@@ -386,9 +626,11 @@ async def test_admin_routes_need_content_capabilities(
     decide = AsyncMock()
     drop = AsyncMock()
     dubs = AsyncMock()
+    languages = AsyncMock()
     monkeypatch.setattr(admin_service, "decide", decide)
     monkeypatch.setattr(admin_service, "drop_project", drop)
     monkeypatch.setattr(admin_service, "set_dub_locales", dubs)
+    monkeypatch.setattr(admin_service, "set_locales", languages)
     app = _app(viewer)
     review = f"/api/v1/admin/videos/v/reviews/{uuid4()}/decision"
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
@@ -398,13 +640,18 @@ async def test_admin_routes_need_content_capabilities(
         refused = await client.post(review, json={"decision": "approve"})
         not_dropped = await client.post("/api/v1/admin/videos/v/drop", json={"note": "重複"})
         not_dubbed = await client.put("/api/v1/admin/videos/v/dubs", json={"locales": ["en"]})
+        not_chosen = await client.put(
+            "/api/v1/admin/videos/v/languages", json={"locales": {"en": {"captions": True}}}
+        )
     assert nobody.status_code == 403 and listed.status_code == 200
     assert refused.status_code == 403, "a viewer can read but not decide"
     assert not_dropped.status_code == 403, "nor drop a video"
     assert not_dubbed.status_code == 403, "nor pick its dub languages"
+    assert not_chosen.status_code == 403, "nor decide its languages"
     decide.assert_not_awaited()
     drop.assert_not_awaited()
     dubs.assert_not_awaited()
+    languages.assert_not_awaited()
 
 
 @pytest.mark.asyncio
@@ -425,20 +672,39 @@ async def test_a_content_manager_sets_the_dub_languages_and_bad_ones_never_reach
         "reviews": [],
     }
     set_dubs = AsyncMock(return_value=view)
+    set_languages = AsyncMock(return_value=view)
     monkeypatch.setattr(admin_service, "set_dub_locales", set_dubs)
+    monkeypatch.setattr(admin_service, "set_locales", set_languages)
     url = "/api/v1/admin/videos/v/dubs"
+    languages = "/api/v1/admin/videos/v/languages"
     transport = ASGITransport(app=_app(owner))
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         saved = await client.put(url, json={"locales": ["en"]})
         twice = await client.put(url, json={"locales": ["en", "en"]})
         original = await client.put(url, json={"locales": ["zh-TW"]})
         unknown = await client.put(url, json={"locales": ["en"], "note": "x"})
+        chosen = await client.put(languages, json={"locales": {"ja": {"dub": True}}})
+        only = await client.put(languages, json={})
+        stray = await client.put(languages, json={"locales": {"en": {"voice": True}}})
+        chinese = await client.put(languages, json={"locales": {"zh-TW": {"captions": True}}})
     assert saved.status_code == 200, saved.text
     assert saved.json()["dub_locales"] == ["en"]
     assert set_dubs.await_args.args[3].locales == ["en"]
     assert twice.status_code == 422 and original.status_code == 422
     assert unknown.status_code == 200, "an extra field is ignored, as on the other routes"
     assert set_dubs.await_count == 2
+    assert chosen.status_code == 200, chosen.text
+    assert set_languages.await_args_list[0].args[3].locales["ja"].model_dump() == {
+        "metadata": False,
+        "captions": True,
+        "dub": True,
+    }
+    assert only.status_code == 200 and set_languages.await_args_list[1].args[3].locales == {}
+    assert stray.status_code == 200 and set_languages.await_args_list[2].args[3].locales == {}, (
+        "a stray part is ignored, as on the other routes, and leaves nothing chosen"
+    )
+    assert chinese.status_code == 422
+    assert set_languages.await_count == 3
 
 
 @pytest.mark.asyncio
@@ -586,6 +852,28 @@ async def test_jev_picks_the_outline_the_checks_pass_the_final_cut_and_a_resent_
     settled = ReviewIn(gate="audio", content_sha256="a" * 64, summary="旁白", payload={"x": 1})
     same = await admin_service.submit_review(session, store, "v", settled, token)
     assert same.id == decided.id and same.status == "approved" and decided.payload == {}
+
+    # A batch of languages: descriptions and captions the site sends, so nothing waits on the
+    # owner; a dub track does, since only they can upload it in Studio.
+    captions_only = ReviewIn(
+        gate="languages",
+        content_sha256="1" * 64,
+        summary="語言：en 標題說明與 CC",
+        payload={"locales": {"en": {"metadata": "ready", "captions": "ready"}}},
+    )
+    arrived = await admin_service.submit_review(session, store, "v", captions_only, token)
+    assert (arrived.status, arrived.note) == (
+        "approved",
+        admin_service.LANGUAGES_AUTO_APPROVED_NOTE,
+    )
+    with_dub = ReviewIn(
+        gate="languages",
+        content_sha256="2" * 64,
+        summary="語言：ja 配音",
+        payload={"locales": {"ja": {"metadata": "ready", "captions": "ready", "dub": "ready"}}},
+    )
+    waits = await admin_service.submit_review(session, store, "v", with_dub, token)
+    assert waits.status == "pending"
 
     # A character's sheet: the judge's suggestion stands when the owner turned that on.
     monkeypatch.setattr(admin_service, "auto_picks_look", AsyncMock(return_value=True))

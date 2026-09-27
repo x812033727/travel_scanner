@@ -3,8 +3,8 @@
 ``tool_router`` is what the local pipeline calls with its video tool token, through the web
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
-the owner lists the videos, opens one, watches its previews and decides, picks the languages to
-dub it in, or drops the video.
+the owner lists the videos, opens one, watches its previews and decides, chooses the languages to
+add after the final cut, or drops the video.
 """
 
 from __future__ import annotations
@@ -27,6 +27,7 @@ from app.video_reviews.schemas import (
     DecisionIn,
     DropIn,
     DubLocalesIn,
+    LocalesIn,
     PartOut,
     ProjectIn,
     ProjectOut,
@@ -144,11 +145,21 @@ async def link_youtube(
     return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
 
 
+@admin_router.put("/{slug}/languages", response_model=ProjectOut)
+async def set_languages(
+    slug: str, payload: LocalesIn, user: ContentManager, session: Session
+) -> ProjectOut:
+    """The language panel (docs/videos/LANGUAGES.md): which languages to add after the final cut
+    and what of each; an empty choice means only Traditional Chinese."""
+    return await service.set_locales(session, slug, user, payload)
+
+
 @admin_router.put("/{slug}/dubs", response_model=ProjectOut)
 async def set_dubs(
     slug: str, payload: DubLocalesIn, user: ContentManager, session: Session
 ) -> ProjectOut:
-    """Which languages to dub this video in; the worker makes those tracks after the final cut."""
+    """The dub checkboxes of a page from before the language panel; kept until that page is
+    replaced (docs/videos/LANGUAGES.md)."""
     return await service.set_dub_locales(session, slug, user, payload)
 
 

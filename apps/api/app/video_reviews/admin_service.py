@@ -46,10 +46,15 @@ from app.video_automation.settings import (
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews.schemas import (
+    DUB_LOCALES,
+    LOCALE_PARTS,
     YOUTUBE_VIDEO_ID_PATTERN,
     DecisionIn,
     DropIn,
     DubLocalesIn,
+    LanguagePartOut,
+    LocaleChoice,
+    LocalesIn,
     ProjectIn,
     ProjectOut,
     ProjectSummary,
@@ -73,6 +78,9 @@ YOUTUBE_PATH_KINDS = frozenset({"shorts", "embed", "live", "video", "v"})
 # Gates where approving means choosing one of the offered options (an outline; a character sheet).
 CHOICE_GATES = ("outline", "look")
 CHOICE_PROMPTS = {"outline": "請從 {} 選一個大綱", "look": "請從 {} 選一張角色設定圖"}
+# A languages batch with nothing for the owner to upload is approved as it arrives.
+LANGUAGES_AUTO_APPROVED_NOTE = "這一批沒有要你上傳的配音，依規則自動核准"
+EPOCH = datetime.min.replace(tzinfo=UTC)
 
 
 def review_store(settings: Settings) -> ReviewStore:
@@ -101,6 +109,102 @@ def decision_problem(review: VideoReview, decision: DecisionIn) -> str | None:
     if decision.decision == "approve" and choices and decision.choice not in choices:
         return CHOICE_PROMPTS[review.gate].format("、".join(choices))
     return None
+
+
+def locale_choices(project: VideoProject) -> dict[str, LocaleChoice]:
+    """The owner's language choice as stored (docs/videos/LANGUAGES.md), empty for a shape no
+    page wrote."""
+    raw = project.locales if isinstance(project.locales, dict) else {}
+    try:
+        chosen = LocalesIn.model_validate({"locales": raw}).locales
+    except ValueError:
+        return {}
+    return {str(locale): choice for locale, choice in chosen.items()}
+
+
+def _part_state(value: Any) -> tuple[str | None, str | None]:
+    """A part as a languages review reports it: "ready" or {"status": "skipped", "reason"}."""
+    if isinstance(value, str):
+        return value, None
+    if isinstance(value, dict):
+        status = value.get("status")
+        reason = value.get("reason")
+        return (status if isinstance(status, str) else None), (
+            reason if isinstance(reason, str) else None
+        )
+    return None, None
+
+
+def language_states(
+    choices: dict[str, LocaleChoice], reviews: Iterable[VideoReview]
+) -> dict[str, dict[str, LanguagePartOut]]:
+    """Where each chosen part stands, from the languages reviews (docs/videos/LANGUAGES.md).
+
+    The batches are read oldest first, so a later batch (the languages added after the first)
+    speaks last for the parts it names and leaves the rest as they were. A part a batch reports
+    "ready" or "skipped" (with the worker's reason) is that; a dub track "ready" in an approved
+    batch is "uploaded", since approving the batch is how the owner says they uploaded it;
+    a chosen part no batch has reported is "working". Sent-back batches count for nothing.
+    """
+    states: dict[str, dict[str, LanguagePartOut]] = {
+        locale: {part: LanguagePartOut(state="working") for part in choice.chosen()}
+        for locale, choice in choices.items()
+    }
+    batches = sorted(
+        (
+            review
+            for review in reviews
+            if review.gate == "languages" and review.status in ("pending", "approved")
+        ),
+        key=lambda review: review.created_at or EPOCH,
+    )
+    for review in batches:
+        reported = review.payload.get("locales") if isinstance(review.payload, dict) else None
+        if not isinstance(reported, dict):
+            continue
+        for locale, parts in reported.items():
+            if locale not in states or not isinstance(parts, dict):
+                continue
+            fallback = parts.get("reason") if isinstance(parts.get("reason"), str) else None
+            for part in LOCALE_PARTS:
+                if part not in states[locale] or part not in parts:
+                    continue
+                state, reason = _part_state(parts[part])
+                if state not in ("ready", "skipped"):
+                    continue
+                if state == "ready" and part == "dub" and review.status == "approved":
+                    state = "uploaded"
+                states[locale][part] = LanguagePartOut(
+                    state=state, reason=(reason or fallback) if state == "skipped" else None
+                )
+    return states
+
+
+def languages_need_owner(payload: dict[str, Any]) -> bool:
+    """Whether a languages batch carries a dub track, the one part only the owner can upload."""
+    reported = payload.get("locales") if isinstance(payload, dict) else None
+    if not isinstance(reported, dict):
+        return False
+    return any(
+        _part_state(parts.get("dub"))[0] == "ready"
+        for parts in reported.values()
+        if isinstance(parts, dict)
+    )
+
+
+def ready_to_upload(
+    project: VideoProject,
+    publish_approved_at: datetime | None,
+    languages: dict[str, dict[str, LanguagePartOut]],
+) -> bool:
+    """Whether the video may be scheduled (docs/videos/LANGUAGES.md §上架流程): its upload
+    confirmation approved, its languages decided and every chosen part ready, skipped or
+    uploaded, no YouTube id yet, and not dropped."""
+    if project.dropped_at is not None or project.youtube_video_id is not None:
+        return False
+    if publish_approved_at is None or project.locales_decided_at is None:
+        return False
+    return all(part.state != "working" for parts in languages.values() for part in parts.values())
 
 
 def kept_files(reviews: Iterable[VideoReview]) -> set[str]:
@@ -136,7 +240,10 @@ def _summary(
     pending: int,
     spend: SlugSpend | None = None,
     publish_approved_at: datetime | None = None,
+    languages: dict[str, dict[str, LanguagePartOut]] | None = None,
 ) -> dict[str, Any]:
+    choices = locale_choices(project)
+    states = languages if languages is not None else language_states(choices, [])
     return {
         "slug": project.slug,
         "title": project.title,
@@ -153,7 +260,11 @@ def _summary(
         "dropped_note": project.dropped_note,
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
-        "dub_locales": list(project.dub_locales or []),
+        "locales": choices,
+        "locales_decided_at": project.locales_decided_at,
+        "languages": states,
+        "ready_to_upload": ready_to_upload(project, publish_approved_at, states),
+        "dub_locales": [locale for locale, choice in choices.items() if choice.dub],
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,
     }
@@ -243,10 +354,32 @@ async def project_view(session: AsyncSession, slug: str) -> ProjectOut:
     reviews = await _reviews(session, project)
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
+    languages = language_states(locale_choices(project), reviews)
     return ProjectOut(
-        **_summary(project, pending, spend.get(project.slug), publish_approved_at(reviews)),
+        **_summary(
+            project, pending, spend.get(project.slug), publish_approved_at(reviews), languages
+        ),
         reviews=[_review_out(review) for review in reviews],
     )
+
+
+async def _language_batches(
+    session: AsyncSession, projects: list[VideoProject]
+) -> dict[Any, list[VideoReview]]:
+    """The languages reviews of these videos, by project id, for the list's states."""
+    if not projects:
+        return {}
+    rows = await session.scalars(
+        select(VideoReview).where(
+            VideoReview.project_id.in_([project.id for project in projects]),
+            VideoReview.gate == "languages",
+            VideoReview.status.in_(("pending", "approved")),
+        )
+    )
+    batches: dict[Any, list[VideoReview]] = {}
+    for review in rows:
+        batches.setdefault(review.project_id, []).append(review)
+    return batches
 
 
 async def list_projects(
@@ -279,8 +412,17 @@ async def list_projects(
     )
     listed = list(rows.all())
     spend = await spend_by_slug(session, [project.slug for project, _count, _at in listed])
+    batches = await _language_batches(session, [project for project, _count, _at in listed])
     return [
-        ProjectSummary(**_summary(project, int(count), spend.get(project.slug), approved_at))
+        ProjectSummary(
+            **_summary(
+                project,
+                int(count),
+                spend.get(project.slug),
+                approved_at,
+                language_states(locale_choices(project), batches.get(project.id, [])),
+            )
+        )
         for project, count, approved_at in listed
     ]
 
@@ -373,6 +515,10 @@ async def submit_review(
         session, payload.gate, payload.payload, payload.content_sha256, video_format
     ):
         auto_note = QA_AUTO_APPROVED_NOTE if payload.gate == "final" else PACKAGE_AUTO_APPROVED_NOTE
+    # A batch of languages waits for the owner only for a dub track they must upload in Studio;
+    # descriptions and captions the site sends itself (docs/videos/LANGUAGES.md).
+    elif payload.gate == "languages" and not languages_need_owner(payload.payload):
+        auto_note = LANGUAGES_AUTO_APPROVED_NOTE
     if auto_note is not None:
         review.status = "approved"
         review.note = auto_note
@@ -462,30 +608,72 @@ async def drop_project(
     return await project_view(session, slug)
 
 
-async def set_dub_locales(
-    session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
-) -> ProjectOut:
-    """The owner picks which languages this video gets dubbed in (docs/videos/DUBS.md).
+async def _apply_locales(
+    session: AsyncSession, project: VideoProject, user: User, payload: LocalesIn
+) -> None:
+    """Store the owner's language choice, note when they first decided, and log the change."""
+    if (project.format or "slides") == "drama" and any(
+        choice.dub for choice in payload.locales.values()
+    ):
+        raise AppError(
+            422,
+            "video_locales_dub_not_for_drama",
+            "漫劇的配音是第二期（docs/videos/DUBS.md），這裡先只能選標題說明與 CC",
+        )
+    chosen: dict[str, Any] = {
+        locale: choice.model_dump() for locale, choice in payload.locales.items()
+    }
+    if chosen == dict(project.locales or {}) and project.locales_decided_at is not None:
+        return
+    now = datetime.now(UTC)
+    project.locales = chosen
+    project.locales_decided_at = project.locales_decided_at or now
+    project.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="video_locales_set",
+            target=f"video_project:{project.id}",
+            metadata_json={"slug": project.slug, "locales": chosen},
+        )
+    )
+    await session.commit()
 
-    Every video is made in Traditional Chinese; the worker makes a track for each language chosen
-    here once the final cut is approved, and the owner uploads them in YouTube Studio. The choice
-    is the owner's alone: the pipeline's reports never touch it, and a dropped video takes none.
+
+async def set_locales(
+    session: AsyncSession, slug: str, user: User, payload: LocalesIn
+) -> ProjectOut:
+    """The owner decides a video's languages on the language panel (docs/videos/LANGUAGES.md).
+
+    Every video is made in Traditional Chinese; here the owner says which of en, ja, ko and
+    zh-CN to add and what of each. An empty choice is a decision too ("only Traditional
+    Chinese"), and the first save of either kind is what lets the video go up. The worker makes
+    only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
+    the owner's alone: the pipeline's reports never touch it, and a dropped video takes none.
     """
     project = await _project(session, slug)
     _refuse_dropped(project)
-    chosen: list[str] = list(payload.locales)
-    if chosen != list(project.dub_locales or []):
-        project.dub_locales = chosen
-        project.updated_at = datetime.now(UTC)
-        session.add(
-            AdminAuditLog(
-                actor_user_id=user.id,
-                action="video_dub_locales_set",
-                target=f"video_project:{project.id}",
-                metadata_json={"slug": slug, "locales": chosen},
-            )
-        )
-        await session.commit()
+    await _apply_locales(session, project, user, payload)
+    return await project_view(session, slug)
+
+
+async def set_dub_locales(
+    session: AsyncSession, slug: str, user: User, payload: DubLocalesIn
+) -> ProjectOut:
+    """The dub checkboxes of a page from before the language panel: a ticked language gets all
+    three parts, an unticked one loses its dub and keeps the rest (docs/videos/DUBS.md)."""
+    project = await _project(session, slug)
+    _refuse_dropped(project)
+    current = locale_choices(project)
+    merged: dict[str, LocaleChoice] = {}
+    for locale in DUB_LOCALES:
+        choice = current.get(locale, LocaleChoice())
+        if locale in payload.locales:
+            choice = LocaleChoice(metadata=True, captions=True, dub=True)
+        elif choice.dub:
+            choice = LocaleChoice(metadata=choice.metadata, captions=choice.captions, dub=False)
+        merged[locale] = choice
+    await _apply_locales(session, project, user, LocalesIn.model_validate({"locales": merged}))
     return await project_view(session, slug)
 
 
