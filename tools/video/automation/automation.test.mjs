@@ -264,7 +264,7 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
         calls.reports.push({ slug, ...body });
         const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null };
         // As the server does (admin_service.upsert_project): a report without the id clears it.
-        listed.set(slug, { ...known, title: body.title, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
+        listed.set(slug, { ...known, title: body.title, stage: body.stage, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
         return json({ slug, reviews: reviewsOf(slug) });
       }
       if (sub && init.method === "POST") {
@@ -442,6 +442,20 @@ test("a writer that answers without a script is asked once a run, and the video 
   assert.match(site.calls.reports.at(-1).checklist[0].label, /^卡住，需要人處理：writer failed 2 times in a row/);
   assert.equal(await main(["auto"], ctx), EXIT.ok);
   assert.equal(writers(), 2, "a blocked video is not asked again");
+
+  // This old auto.json has no retry field. One site request resumes it once, clears the
+  // writer's consecutive failures, and the same bad answer blocks it after two new runs.
+  const request = "2b06f60f-1026-477a-9d40-28683b00a22e";
+  Object.assign(site.listed.get(slug), { retry_request_id: request, retry_acknowledged_id: null });
+  assert.match(await automation.step(), /writer gave nothing usable/);
+  assert.equal(writers(), 3);
+  assert.deepEqual([automatedVideos(box.work)[0].status, automatedVideos(box.work)[0].failures], ["active", { writer: 1 }]);
+  assert.equal(site.listed.get(slug).retry_acknowledged_id, request);
+  assert.equal(site.calls.reports.at(-1).retry_acknowledged_id, request);
+  assert.match(await automation.step(), /blocked — writer failed 2 times in a row/);
+  assert.equal(writers(), 4);
+  assert.equal(await automation.step(), null);
+  assert.equal(writers(), 4, "an acknowledged request cannot trigger another paid retry");
 });
 
 test("an outline sent back is re-planned with the owner's note, and a spent budget stops auto for the owner", async () => {
