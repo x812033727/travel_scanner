@@ -105,6 +105,21 @@
 
 方向一致：站主只管故事與上架時間。要接的地方：`hands-off-drama-look` 的自動選與本設計的沿用都改 `review/sync.mjs`（沿用先查存檔、沒有才自動選）；`hands-off-web` 與本設計都改 `admin-video-reviews.tsx`（W0 先抽卡片檔）；`hands-off-settings` 的 migration 先進；`hands-off-worker` 動 `tools/video/automation`，本設計把新東西放 `series.mjs`。不套用 Jev 挑大綱。
 
+## 一鍵合集與免關卡（2026-09-27 加，設計在 [`BINGE.md`](BINGE.md)）
+
+作品表多了一組欄位（遷移 `0102_video_binge_series`），讓後台的一顆按鈕就能建立一部約兩小時、不留任何關卡、做完自動接成一支長片的爽文合集：
+
+| 欄位 | 預設 | 用途 |
+| --- | --- | --- |
+| `genre` | `xianxia-bonds` | 題材預設（六個）：企劃寫哪種故事、有沒有節奏規格；既有作品落在預設，提示詞與規則不變 |
+| `lead` | `dual-male` | 主角：`female`、`male`、`dual-male` |
+| `hands_off` | false | **免關卡**：設定集、總綱、細綱由查核模型出裁決、伺服器依 `series_doc_passed` 核准或退回重寫；劇本由 `script_check_passed` 判；設定圖與分鏡視為自動開關開著 |
+| `compilation` | false | 全部集數 `done\|skipped` 後，`next_job_for` 多給一種工作 `compilation`；`start_compilation`／`finish_compilation` 記 `compilation_slug`（`<作品>-full`）與時間；站主也可在完結的作品按「做合集」（`actions/compile`） |
+| `visual_tier` | `clips` | 每集有多少鏡頭買片段（`clips`、`hybrid` 四成、`stills` 一成），lint 依 `series.json` 擋 |
+| `total_minutes` | null | 一鍵表單給的總長度（30–480）；`binge_shape` 由它算 `planned_episodes` 與 `episodes_per_chapter` |
+
+`series_max_in_flight` 的上限從 2 放到 6。上面流程圖裡的每個【站主核准／退回】，在 `hands_off` 作品上都由查核與伺服器規則代替；「站主真正要做的」只剩暫停／放棄、關掉免關卡回到人審、下載合集成片上傳與選上架時間。門檻常數、節奏規格、題材預設、合集的 `compile` 指令與後台表單都在 `BINGE.md`。
+
 ## 成本與節奏（估計，試作後改）
 
 - 作品層文件：設定集、總綱各 1 次企劃呼叫（32k 輸出），每篇細綱 1 次；用 Claude Code 訂閱帳號不另計費。

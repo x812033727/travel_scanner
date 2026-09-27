@@ -6,8 +6,8 @@ import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import {
-  control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, ReviewCard, SLUG,
-  UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen,
+  CompilationDownload, control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, ReviewCard,
+  SLUG, UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
@@ -117,7 +117,9 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {project && <>
       <header className="grid gap-2"><h2 className="text-2xl font-bold">{project.title}</h2>
-        {project.series_slug && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
+        {project.series_slug && !project.compilation && <p className="text-sm text-[var(--muted)]">{t("episodeOf", { series: project.series_slug, number: project.episode_number ?? 0 })}</p>}
+        {project.series_slug && project.compilation && <p className="text-sm text-[var(--muted)]">{t("compilationOf", { series: project.series_slug })}</p>}
+        <CompilationDownload project={project} />
         {project.youtube_video_id && <p className="text-sm">
           {t("youtube", { id: project.youtube_video_id })}
           {project.youtube_publish_at && ` · ${t("scheduledAt", { time: when(project.youtube_publish_at) })}`}
@@ -192,6 +194,7 @@ function ReadyCard({ project, canManage, onOpen, onLinked }: { project: ProjectS
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
       {!detail && !error && <p className="text-sm text-[var(--muted)]">{t("readyLoading")}</p>}
       {confirmation && <UploadPackage slug={project.slug} review={confirmation} />}
+      <CompilationDownload project={project} />
       {canManage && <UploadedForm slug={project.slug} onLinked={onLinked} />}
     </article>
   </li>;

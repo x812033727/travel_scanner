@@ -15,3 +15,13 @@ Writer stage, variant `episode` (`SERIES_INSTRUCTIONS["writer:episode"]` = the d
 - Spell every name and term as the setting book does; new terms go to `lexicon_additions`.
 
 FIX mode with `fix.kind = "script"` is the owner's script-gate note (`owner_note`): rewrite what the note asks, keep every id you can, and the whole video.json comes back.
+
+## With the retention rules, a visual tier, or compilation mode (docs/videos/BINGE.md)
+
+The genre section at the end of the prompt (`genreBlock`) adds, when the series has them:
+
+- Retention (`genre_spec.retention`): the first line of the first shot is the hook itself (no title card, no greeting; about 5 seconds, one line of about 25 characters); the conflict is stated or shown by about 10 seconds; the `beats.satisfaction` moments are played as lines and pictures the viewer can point at, the first inside 30 seconds; an emotional beat every 20 to 30 seconds; the last line of the last shot is the cliffhanger and nothing follows it. The checker names the hook, satisfaction and cliffhanger lines and the tool measures them (hook inside 8 s, first satisfaction inside 30 s, at least 2, cliffhanger last), so a hook buried in the second shot is sent back.
+- Visual tier (`series.visual_tier`): mark each shot's `visual` as the tier says (`hybrid`: at most 40% `"clip"`, the climax of each beat; `stills`: at most 10%; `clips`: every shot a clip, `visual` may be left out) and give every `"still"` shot a `camera` move the tool renders (push in, pull out, pan left, pan right, tilt up, tilt down; anything else drifts). Lint refuses more clips than the tier allows.
+- Compilation mode (`series.compilation`): no title card and no outro card; the episode opens cold on its hook and ends on its cliffhanger, and never recaps earlier episodes. Lint refuses a `title` card as the first scene.
+
+FIX mode with `fix.kind = "script"` may also come from the checker on a hands-off series: `owner_note` is then the list of problems `scriptVerdict` found (a missing beat, a hook that ends too late, a satisfaction beat only mentioned, a summary after the cliffhanger), at most `MAX_PROMPT_FIX_ROUNDS` times before the script goes up as it is.

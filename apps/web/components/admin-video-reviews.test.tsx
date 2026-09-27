@@ -478,6 +478,35 @@ describe("AdminVideoReviews", () => {
     expect(screen.queryByRole("region", { name: "可以上架" })).toBeNull();
   });
 
+  it("offers a compilation's 1080p cut on its ready card and its page, says when it is still being cut, and nothing for an ordinary video", async () => {
+    const ready = { ...summary, slug: "upload-ready", title: "上傳包影片", stage: "done", pending: 0, publish_approved_at: "2026-09-27T05:00:00Z" };
+    const compilation = { ...ready, slug: "wenjian-full", title: "問劍 合集", series_slug: "wenjian", episode_number: null, compilation: true, download_available: true };
+    const cutting = { ...compilation, slug: "wenjian-cut", title: "問劍 合集（剪接中）", download_available: false };
+    const projects = [ready, compilation, cutting];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json(projects));
+      const project = projects.find((each) => url.endsWith(`/admin/videos/${each.slug}`)) ?? ready;
+      return Promise.resolve(Response.json({ ...project, reviews: [] }));
+    }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const full = await screen.findByRole("article", { name: "問劍 合集" });
+    const link = within(full).getByRole("link", { name: "下載 1080p 成片" });
+    expect(link.getAttribute("href")).toBe("/api/admin-video-download/wenjian-full");
+    expect(link.getAttribute("download")).toBe("wenjian-full.mp4");
+    const cut = screen.getByRole("article", { name: "問劍 合集（剪接中）" });
+    expect(cut.textContent).toContain("成片還在工人的工作區");
+    expect(within(cut).queryByRole("link")).toBeNull();
+    const plain = screen.getByRole("article", { name: "上傳包影片" });
+    expect(plain.textContent).not.toContain("1080p");
+    expect(plain.textContent).not.toContain("工作區");
+    // The video page says whose compilation it is and offers the same download.
+    fireEvent.click(within(full).getByRole("button", { name: "打開 wenjian-full" }));
+    await screen.findByText("作品 wenjian 的合集");
+    expect(screen.getByRole("link", { name: "下載 1080p 成片" }).getAttribute("href")).toBe("/api/admin-video-download/wenjian-full");
+    expect(screen.queryByText(/第 0 集/)).toBeNull();
+  });
+
   it("selects the text for Ctrl+C when the clipboard is refused, and shows the form on a ready video's page", async () => {
     const confirmation = {
       id: "66666666-6666-4666-8666-666666666666", gate: "publish", content_sha256: "5".repeat(64), summary: "上傳包",

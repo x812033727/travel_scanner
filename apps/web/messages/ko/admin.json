@@ -2302,7 +2302,10 @@
     "uploadedButton": "업로드함",
     "uploadedError": "기록하지 못했습니다: {message}",
     "scheduledAt": "{time}에 게시 예정",
-    "readyLoading": "업로드 패키지를 불러오는 중…"
+    "readyLoading": "업로드 패키지를 불러오는 중…",
+    "downloadCompilation": "1080p 완성본 내려받기",
+    "compilationInWorkspace": "완성본은 아직 워커의 작업 공간에 있습니다",
+    "compilationOf": "작품 {series}의 합본"
   },
   "videoSettings": {
     "loading": "설정을 불러오는 중…",
@@ -2374,6 +2377,7 @@
       "drama_monthly_judge_calls_budget": "월 판정 호출 수",
       "drama_monthly_music_budget": "월 음악 트랙 수",
       "drama_max_usd_per_video": "편당 최대 비용(미국 달러)",
+      "drama_series_max_in_flight": "동시에 진행하는 작품 수(1–6)",
       "drama_topic_scope": "드라마 소재(한 줄에 하나)",
       "channel_stance": "채널의 입장",
       "auto_pick_outline": "Jev가 아웃라인을 고르게 하기 (입장이 비어 있으면 효과 없음)",
@@ -2407,6 +2411,7 @@
     "dramaModels": "미디어 모델",
     "dramaSwitches": "옵션",
     "dramaBudgetHelp": "월 예산은 서버에서 막아 공급자에게 요청이 가지 않습니다. 편당 상한은 도구가 제출 전에 막습니다. 운영자가 2026-09-26에 당분간 상한 없이 시작하기로 하여 기본값은 넉넉하며, 시범 제작 후 낮춥니다.",
+    "seriesInFlightHelp": "워커가 동시에 진행하는 작품 수입니다. 1이면 한 작품을 끝낸 뒤 다음으로, 시범작과 본작을 함께 돌리려면 2로 두세요.",
     "voicePoolHelp": "작가 모델이 캐릭터에 배정할 수 있는 Gemini 목소리입니다. 내레이션은 위의 채널 목소리를 그대로 씁니다.",
     "preview": "미리보기",
     "stylePresets": {
@@ -2569,6 +2574,101 @@
     "oneOffTitle": "단편 에피소드",
     "dramaOn": "드라마가 켜져 있습니다. 워커가 요청한 단편 에피소드와 작품을 차례로 만듭니다.",
     "dramaOff": "드라마가 현재 꺼져 있습니다.",
-    "dramaOffHow": "워커는 드라마를 만들지 않으며, 요청한 단편 에피소드와 작품은 켤 때까지 기다립니다. 아래 ‘{settings}’에서 ‘{enable}’을(를) 선택한 뒤 저장하세요."
+    "dramaOffHow": "워커는 드라마를 만들지 않으며, 요청한 단편 에피소드와 작품은 켤 때까지 기다립니다. 아래 ‘{settings}’에서 ‘{enable}’을(를) 선택한 뒤 저장하세요.",
+    "binge": {
+      "title": "원버튼 촬영 시작",
+      "help": "장르, 주인공, 총 길이만 정하면 나머지는 워커가 맡습니다. 설정집, 총괄 개요, 각 장의 상세 개요, 대본은 검수기가 자동 승인하고, 한 편이 끝나면 다음 편으로 이어지며, 전편이 완성되면 하나의 합본으로 잇습니다. 완성본은 작품 페이지에서 내려받습니다. 편수와 장당 편수는 총 길이에서 계산하고, 작품 이름은 설정집이 정합니다.",
+      "genre": "장르",
+      "lead": "주인공",
+      "premise": "줄거리(선택)",
+      "premiseRequired": "줄거리(사용자 지정 장르는 필수)",
+      "premisePlaceholder": "비워 두면 기획자가 장르에 맞춰 만들어 냅니다. 사용자 지정 장르는 꼭 써 주세요.",
+      "totalMinutes": "총 길이(분, 30–480)",
+      "totalMinutesHint": "보통 60–240. 30분짜리 시범작도 괜찮습니다.",
+      "episodeMinutes": "편당 분(2–4)",
+      "tier": "화면 제작 방식",
+      "notePlaceholder": "예: 내레이션을 느리게, 유혈 장면 없이",
+      "quoteTitle": "예상",
+      "quoteLoading": "계산 중…",
+      "quoteError": "계산할 수 없습니다: {message}",
+      "quote": "{episodes}편 · {chapters}장(장당 {perChapter}편) · 클립 {seconds}초 · 이미지 {images}장 · 약 US${usd}",
+      "budgets": {
+        "clip_seconds": "이번 달 클립 예산은 {monthly}초, 이 작품에는 {needed}초가 필요합니다",
+        "images": "이번 달 이미지 예산은 {monthly}장, 이 작품에는 {needed}장이 필요합니다",
+        "judge_calls": "이번 달 judge 예산은 {monthly}회, 이 작품에는 {needed}회가 필요합니다",
+        "episodes_per_month": "월 편수 상한은 {monthly}편, 이 작품에는 {needed}편이 필요합니다"
+      },
+      "budgetsOver": {
+        "clip_seconds": "이번 달 클립 예산은 {monthly}초, 이 작품에는 {needed}초가 필요합니다: 먼저 설정 탭에서 올려 주세요",
+        "images": "이번 달 이미지 예산은 {monthly}장, 이 작품에는 {needed}장이 필요합니다: 먼저 설정 탭에서 올려 주세요",
+        "judge_calls": "이번 달 judge 예산은 {monthly}회, 이 작품에는 {needed}회가 필요합니다: 먼저 설정 탭에서 올려 주세요",
+        "episodes_per_month": "월 편수 상한은 {monthly}편, 이 작품에는 {needed}편이 필요합니다: 먼저 설정 탭에서 올려 주세요"
+      },
+      "overBudget": "예산이 다 차면 워커는 그 자리에서 기다리며 고장 나지 않습니다. 올리면 자동으로 이어 갑니다.",
+      "start": "원버튼 촬영 시작",
+      "starting": "만드는 중…",
+      "error": "시작하지 못했습니다: {message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "선협 인연",
+        "detail": "문파와 세가, 수위, 정도와 마도. 전생과 현생을 넘어 맺어진 지기."
+      },
+      "rebirth-revenge": {
+        "name": "환생 복수",
+        "detail": "배신당해 죽고, 아직 바꿀 수 있는 그날에 깨어난다. 이번에는 모두의 패를 안다."
+      },
+      "system-game": {
+        "name": "시스템 게임",
+        "detail": "게임이나 시스템이 강림하고 주인공만 규칙을 읽어 낸다. 히든 직업, 첫 클리어, 말도 안 되는 재능."
+      },
+      "urban-return": {
+        "name": "도시 귀환",
+        "detail": "여러 해 떠나 있다가 자신을 얕잡아 본 도시로, 아무도 상상 못 할 신분이나 실력을 지니고 돌아온다."
+      },
+      "empress-rise": {
+        "name": "여제의 부상",
+        "detail": "말로 취급받던 그녀가 한 수씩 판을 넘겨받아 왕좌를 손에 넣기까지."
+      },
+      "custom": {
+        "name": "사용자 지정",
+        "detail": "쓴 줄거리 그대로. 그것과 어긋나는 설정은 만들지 않습니다."
+      }
+    },
+    "leads": {
+      "female": "여주",
+      "male": "남주",
+      "dual-male": "남주 둘"
+    },
+    "tiers": {
+      "clips": {
+        "name": "전부 클립",
+        "detail": "모든 컷을 영상 클립으로 생성: 움직임이 가장 많고 비용도 가장 높습니다."
+      },
+      "hybrid": {
+        "name": "혼합",
+        "detail": "컷의 약 4할은 클립, 나머지는 정지 이미지에 카메라 움직임: 비용을 절반 이상 아낍니다."
+      },
+      "stills": {
+        "name": "정지 이미지",
+        "detail": "거의 모든 컷을 정지 이미지에 카메라 움직임으로, 핵심 컷 1할만 클립: 가장 저렴하며 시범작에 적합합니다."
+      }
+    },
+    "totalMinutesLabel": "총 {minutes}분",
+    "handsOff": "게이트 없음",
+    "handsOffHelp": "켜 두면 설정집·총괄 개요·상세 개요·대본을 검수기가 자동 승인하고, 통과하지 못할 때만 되돌리며, 막힐 때만 당신을 찾습니다. 끄면 한 건씩 승인하는 방식으로 돌아갑니다.",
+    "compilation": "합본",
+    "compilationStatuses": {
+      "waiting": "합본: 전편 완성 대기",
+      "queued": "합본: 워커 대기",
+      "making": "합본 제작 중",
+      "done": "합본 완성"
+    },
+    "compilationNone": "이 작품은 합본을 만들도록 설정되지 않았습니다. 완결 뒤 ‘합본 만들기’를 누를 수 있습니다.",
+    "compilationWaiting": "전편이 완성되면 워커가 하나로 잇습니다.",
+    "compilationQueued": "워커의 다음 회차에 합본을 시작합니다.",
+    "compilationStarting": "워커가 막 시작했고, 영상은 아직 보고되지 않았습니다.",
+    "compile": "합본 만들기",
+    "docNote": "메모:"
   }
 }

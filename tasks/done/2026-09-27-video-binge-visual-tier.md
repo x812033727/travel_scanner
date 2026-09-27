@@ -45,7 +45,9 @@ chain. The tools had no notion of a still shot.
       encoder version and segment cache key; the check compares frame 0 of a push-in to the
       keyframe and counts frames for the other moves.
 - [x] A compilation episode's lint refuses a title card in the cold open.
-- [x] The drama fixture and `smoke.mjs --fixture drama` carry a still shot.
+- [x] `smoke.mjs --fixture drama` runs a copy of the drama example with its first shot marked
+      `visual: "still"`, so the motion segment is exercised end to end; the example itself
+      keeps every shot a clip for the unit tests.
 
 ## Steps
 

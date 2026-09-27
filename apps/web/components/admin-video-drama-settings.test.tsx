@@ -112,6 +112,19 @@ describe("AdminVideoDramaSettings", () => {
     expect(saved.map((next) => next.updated_at)).toEqual(["2026-09-27T09:00:00Z"]);
   });
 
+  it("lets the worker keep up to six series in flight and sends the limit back with the drama block", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoDramaSettings view={view} onSaved={() => undefined} /></AdminOperationsProvider>);
+    const inFlight = screen.getByRole("spinbutton", { name: "同時進行的作品數（1–6）" }) as HTMLInputElement;
+    expect(inFlight.value).toBe("1");
+    expect(inFlight.getAttribute("min")).toBe("1");
+    expect(inFlight.getAttribute("max")).toBe("6");
+    fireEvent.change(inFlight, { target: { value: "6" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存漫劇設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect(puts[0].drama).toMatchObject({ series_max_in_flight: 6, series_episodes_per_month: 30, drama_enabled: false });
+  });
+
   it("tells a content reviewer why the drama settings are read-only", () => {
     stubFetch();
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"], ["content"])}><AdminVideoDramaSettings view={view} onSaved={() => undefined} /></AdminOperationsProvider>);

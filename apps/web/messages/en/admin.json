@@ -2302,7 +2302,10 @@
     "uploadedButton": "Uploaded",
     "uploadedError": "Not recorded: {message}",
     "scheduledAt": "Goes public {time}",
-    "readyLoading": "Loading the upload package…"
+    "readyLoading": "Loading the upload package…",
+    "downloadCompilation": "Download the 1080p cut",
+    "compilationInWorkspace": "The cut is still in the worker's workspace",
+    "compilationOf": "Compilation of series {series}"
   },
   "videoSettings": {
     "loading": "Loading settings…",
@@ -2374,6 +2377,7 @@
       "drama_monthly_judge_calls_budget": "Judge calls a month",
       "drama_monthly_music_budget": "Music tracks a month",
       "drama_max_usd_per_video": "Most spent on one video (US$)",
+      "drama_series_max_in_flight": "Series in flight at once (1–6)",
       "drama_topic_scope": "Drama subjects (one per line)",
       "channel_stance": "Channel stance",
       "auto_pick_outline": "Let Jev choose the outline (no effect while the stance is blank)",
@@ -2407,6 +2411,7 @@
     "dramaModels": "Media models",
     "dramaSwitches": "Options",
     "dramaBudgetHelp": "Each month's budget stops generation at the server before a vendor is called; the per-video cap stops the tool before it submits. The owner chose to start without a cap (2026-09-26): the defaults are wide and are lowered after the pilot.",
+    "seriesInFlightHelp": "How many series the worker pushes along at the same time: 1 finishes one before the next; set 2 to run a pilot beside a full series.",
     "voicePoolHelp": "Gemini voices the writer may give to characters; the narrator keeps the channel voice above.",
     "preview": "preview",
     "stylePresets": {
@@ -2569,6 +2574,101 @@
     "oneOffTitle": "One-off episodes",
     "dramaOn": "The drama route is on: the worker makes the requested episodes and the series in turn.",
     "dramaOff": "The drama route is off.",
-    "dramaOffHow": "The worker makes no drama, and the episodes and series you start wait until it is on. Tick “{enable}” under “{settings}” below, then save."
+    "dramaOffHow": "The worker makes no drama, and the episodes and series you start wait until it is on. Tick “{enable}” under “{settings}” below, then save.",
+    "binge": {
+      "title": "One-button binge",
+      "help": "Pick a genre, a lead and the total length; the worker does the rest. The checker approves the setting book, the outline, the chapter outlines and the screenplays, each episode starts as the previous one finishes, and the finished episodes are cut into one compilation you download from the series page. The episode count and the chapter size follow from the length; the setting book names the series.",
+      "genre": "Genre",
+      "lead": "Lead",
+      "premise": "Premise (optional)",
+      "premiseRequired": "Premise (required for a custom genre)",
+      "premisePlaceholder": "Leave it blank and the planner invents one from the genre; a custom genre needs one.",
+      "totalMinutes": "Total length (minutes, 30–480)",
+      "totalMinutesHint": "Usually 60–240; a 30-minute pilot is fine.",
+      "episodeMinutes": "Minutes per episode (2–4)",
+      "tier": "Picture",
+      "notePlaceholder": "e.g. slower narration, no gore",
+      "quoteTitle": "Estimate",
+      "quoteLoading": "Estimating…",
+      "quoteError": "No estimate: {message}",
+      "quote": "{episodes} episodes in {chapters} chapters ({perChapter} each) · {seconds} s of clips · {images} images · about US${usd}",
+      "budgets": {
+        "clip_seconds": "This month's clip budget is {monthly} s; this series needs {needed} s",
+        "images": "This month's image budget is {monthly}; this series needs {needed}",
+        "judge_calls": "This month's judge budget is {monthly} calls; this series needs {needed}",
+        "episodes_per_month": "The monthly episode limit is {monthly}; this series needs {needed}"
+      },
+      "budgetsOver": {
+        "clip_seconds": "This month's clip budget is {monthly} s; this series needs {needed} s: raise it on the settings tab first",
+        "images": "This month's image budget is {monthly}; this series needs {needed}: raise it on the settings tab first",
+        "judge_calls": "This month's judge budget is {monthly} calls; this series needs {needed}: raise it on the settings tab first",
+        "episodes_per_month": "The monthly episode limit is {monthly}; this series needs {needed}: raise it on the settings tab first"
+      },
+      "overBudget": "At a spent budget the worker waits rather than breaking, and continues once it is raised.",
+      "start": "Start the binge",
+      "starting": "Starting…",
+      "error": "Not started: {message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "Xianxia bonds",
+        "detail": "Sects and clans, cultivation ranks, the orthodox against the demonic path; confidants bound across past and present lives."
+      },
+      "rebirth-revenge": {
+        "name": "Rebirth and revenge",
+        "detail": "Betrayed and killed, she wakes on the one day everything can still change, knowing every card in every hand."
+      },
+      "system-game": {
+        "name": "System game",
+        "detail": "A game or a system descends and only the lead can read its rules: a hidden class, a first clear, an impossible talent."
+      },
+      "urban-return": {
+        "name": "Urban return",
+        "detail": "Years away, he comes back to the city that wrote him off with a standing nobody there can imagine."
+      },
+      "empress-rise": {
+        "name": "Empress rising",
+        "detail": "Counted as a pawn, she takes the game over piece by piece until the throne is hers."
+      },
+      "custom": {
+        "name": "Custom",
+        "detail": "Your premise as written; nothing that contradicts it is invented."
+      }
+    },
+    "leads": {
+      "female": "Female lead",
+      "male": "Male lead",
+      "dual-male": "Two male leads"
+    },
+    "tiers": {
+      "clips": {
+        "name": "All clips",
+        "detail": "Every shot is a generated clip: the most motion, the highest cost."
+      },
+      "hybrid": {
+        "name": "Hybrid",
+        "detail": "About four shots in ten are clips, the rest stills with camera motion: more than half the cost saved."
+      },
+      "stills": {
+        "name": "Stills",
+        "detail": "Almost every shot is a still with camera motion, a clip only for one key shot in ten: the cheapest, for the pilot."
+      }
+    },
+    "totalMinutesLabel": "{minutes} minutes in all",
+    "handsOff": "Hands-off",
+    "handsOffHelp": "While on, the checker approves the setting book, the outline, the chapter outlines and the screenplays, sends one back only when it fails, and turns to you only when stuck; off, you approve each document again.",
+    "compilation": "Compilation",
+    "compilationStatuses": {
+      "waiting": "Compilation: waiting for the episodes",
+      "queued": "Compilation: waiting for the worker",
+      "making": "Compilation in progress",
+      "done": "Compilation done"
+    },
+    "compilationNone": "This series is not set to make a compilation; once it is finished, press “Compile”.",
+    "compilationWaiting": "Once every episode is done, the worker cuts them into one.",
+    "compilationQueued": "The worker starts the compilation on its next round.",
+    "compilationStarting": "The worker has just started; the video has not reported yet.",
+    "compile": "Compile",
+    "docNote": "Note:"
   }
 }
