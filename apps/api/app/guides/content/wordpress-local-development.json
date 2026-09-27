@@ -235,6 +235,906 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Build a WordPress test site on your computer: MAMP and preparing to go live",
+      "description": "Practise WordPress locally without affecting a live site. Using MAMP for Windows, learn about installation paths, ports, databases and WordPress setup, isolating test data and diagnosing connection problems. Prepare separate file and database exports before launch. This is a beginner's environment for editing and layouts; local success does not validate production hosting.",
+      "hero": {
+        "src": "/guides/wordpress-local-development/hero-en.jpg",
+        "alt": "An original local-testing illustration combining a computer screen, a website folder and a database server.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A local WordPress site is like a practice desk of your own: try changes to posts, themes and plugins, then inspect the results before deciding whether to bring them to the live site. Services on your computer run the website; the browser is simply the window through which you operate it. Understanding that distinction prevents you from mistaking a closed browser page for a stopped test environment."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide is based on MAMP's Windows documentation; the software was not installed in the environment used to prepare it. Interfaces and features on macOS and in MAMP PRO may differ, so use the corresponding documentation. The example is a practice reading-notes site, with fictional posts and test accounts rather than real member or customer data."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish website files, the database and services",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The WordPress program, themes, plugins and uploaded images are files; posts, settings and other dynamic data are mostly stored in the database. The web server receives browsing requests and works with PHP and the database to produce pages. Copying a website folder alone usually does not preserve all its content, so record where both the files and database are stored from the outset."
+        },
+        {
+          "type": "paragraph",
+          "text": "MAMP brings the required local services together for practice or development. That does not mean it automatically provides a production domain, email, backups or ongoing maintenance. A reading-notes site can start with practising post structure, but public registration or notification emails still require separate setup and acceptance checks in a suitable production environment."
+        },
+        {
+          "type": "heading",
+          "text": "Install the version for your operating system",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Download the appropriate version from MAMP's official website and first check the current system requirements and installation instructions. The Windows documentation recommends a location such as C:\\MAMP, avoiding system folders with restricted permissions. If other web or database services already run on the computer, understand their purpose before removing an existing environment just to start a new tool."
+        },
+        {
+          "type": "paragraph",
+          "text": "After installation, record the MAMP version, selected PHP version, document root and ports, then start the services and open the start page. If the interface includes an entry for the PRO version, identify which product you are using; do not assume PRO-only features are included in the regular version. Do not copy a version number from an old tutorial to decide what to install now."
+        },
+        {
+          "type": "paragraph",
+          "text": "Local environments can consume disk space, especially when you create repeated sites or databases. Give each practice site a recognisable folder and database name, such as reading-practice, and record its purpose. Establishing this small habit helps prevent you from later deleting a site you need because you mistake it for old test files."
+        },
+        {
+          "type": "heading",
+          "text": "Create the database, then install WordPress",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Follow the official process to download WordPress, extract it and place the required program files in your configured document root or a subfolder. Open phpMyAdmin from MAMP's start page and create a dedicated database. Its name need not match the example, but it must match what you subsequently enter during WordPress installation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Open the local site's URL to reach the installer, then enter the database name, username, password and host. Use the port actually configured in your environment. MAMP's documentation uses localhost:8889 to illustrate a non-default MySQL port; the entry differs when using 3306. The database account and WordPress administrator serve different purposes and must not be confused."
+        },
+        {
+          "type": "paragraph",
+          "text": "Local documentation may use default database credentials for teaching convenience; those are not suitable security settings for a public service. Give the WordPress administrator a separate password as well, and clearly label the site as a test in its name. After setup, sign in to the dashboard, add a practice post and an image without sensitive information, then confirm they remain after saving and reopening them."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Download MAMP and WordPress from their official websites and confirm the document root and service ports.",
+            "Start MAMP and use phpMyAdmin to create a database dedicated to this site.",
+            "Place WordPress in the intended directory, open the local URL and enter the database connection details.",
+            "Create the site administrator and test sign-in, saving posts and displaying images."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Isolate external effects even when testing locally",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "localhost means the computer currently being used. Sending a localhost URL to a friend does not connect their browser to your site. Previewing from another device requires separate planning for network access and restrictions. A beginner's practice site does not need router forwarding or public services for this purpose; first complete the work on your own computer."
+        },
+        {
+          "type": "paragraph",
+          "text": "A test site with email, payment or external synchronisation features can still send outbound requests. Use test accounts and test modes, disable unnecessary notifications and avoid production credentials. When copying a live site to your computer, inspect scheduled jobs and integrations particularly carefully; a different URL does not guarantee that external services will be unaffected."
+        },
+        {
+          "type": "paragraph",
+          "text": "When you finish practising, stop the services in MAMP and, if necessary, confirm the application has exited. Closing the browser only stops you viewing the page; it does not automatically stop web and database services. On a shared computer, also consider whether other users can access your files and data. A local environment is not a safe for sensitive information."
+        },
+        {
+          "type": "heading",
+          "text": "Identify the layer responsible for an error",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the entire local URL is unreachable, first check whether the web service is running and the URL uses the right port, then investigate whether another application is occupying it. MAMP's ports can be changed, but update the URL or database settings you use accordingly. Do not reinstall WordPress every time: that may overwrite content you could still recover."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a database connection error, check the database service, name, credentials and port. If the home page works but particular pages fail, check plugins, permalinks and error logs. Change only one thing at a time, keep its original value and record the result. When sharing error screenshots, conceal credentials and private computer paths and provide only the necessary information."
+        },
+        {
+          "type": "heading",
+          "text": "Keep complete migration materials when preparing to launch",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress's Tools export produces content data in WXR format. It is useful for moving content, but it is not a complete backup of all program files and the database. To retain the whole site's settings, also prepare files and the database according to your migration method, and confirm that plugins, themes, media and any required licences can be used in production."
+        },
+        {
+          "type": "paragraph",
+          "text": "Production hosting may use different PHP and database versions, file permissions, HTTPS, email and URLs. Plan URL replacement and acceptance checks before launch; do not give visitors links containing localhost. Keep the local copy and a recoverable backup first. Only tidy up the practice environment once posts, images, forms and sign-in all work on the live site."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-development/diagram-1-en.svg",
+          "alt": "A diagram of four parts of a MAMP local environment: browser access, website files, the database and migration materials.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Keep files and the database together, then validate again in production.",
+          "description": "A diagram of four parts of a MAMP local environment: browser access, website files, the database and migration materials.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "Local practice",
+            "Additional checks before going live"
+          ],
+          "rows": [
+            [
+              "URL",
+              "localhost and local ports",
+              "Production domain and HTTPS"
+            ],
+            [
+              "Data",
+              "Fictional posts and test accounts",
+              "Lawfully public content and access rights"
+            ],
+            [
+              "Email and payments",
+              "Disabled or in test mode",
+              "Production settings and full acceptance checks"
+            ],
+            [
+              "Export",
+              "Content export or complete migration materials",
+              "Media, settings and URL replacement"
+            ],
+            [
+              "Operating time",
+              "Start and stop services yourself",
+              "Hosting maintenance and backup arrangements"
+            ]
+          ],
+          "caption": "Local success validates the practice workflow, not production readiness."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Back up before upgrading or removing the environment",
+          "text": "Keep the website files, database and version records. Confirm restoration in another isolated location before tidying up the old environment. An XML export of posts alone cannot preserve all website settings."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Build your first WordPress website",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan website maintenance and backups",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MAMP: installation on Windows",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Installation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP: installing WordPress on Windows",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/How-Tos/WordPress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP: port settings",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Preferences/Ports/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: Tools export",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "パソコンに WordPress のテストサイトを作る：MAMP と公開前の準備",
+      "description": "公開中のサイトに影響を与えずに WordPress を練習したいときは、パソコンにローカルのテストサイトを作れます。Windows 版 MAMP を例に、インストール先、ポート、データベース、WordPress の設定を整理し、テストデータの分離、接続エラーの切り分け、公開前に別途必要なファイルとデータベースの書き出しを説明します。初心者の編集やレイアウト練習向けであり、ローカルで動くことを本番サーバーの検証完了とはみなしません。",
+      "hero": {
+        "src": "/guides/wordpress-local-development/hero-ja.jpg",
+        "alt": "パソコンの画面、サイトのフォルダー、データベースサーバーを組み合わせた、ローカルテストを表すオリジナルイラスト。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ローカルの WordPress は、自分専用の練習机のようなものです。投稿、テーマ、プラグインを変更して結果を確認し、本番サイトにも反映するか判断できます。サイトを動かしているのはパソコン上のサービスで、ブラウザーは操作のための窓口にすぎません。この関係を理解すれば、ページを閉じただけでテスト環境も停止したと思い込まずに済みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このガイドは MAMP の Windows 向けドキュメントを基に整理しており、執筆環境で実際にインストールしたものではありません。macOS や MAMP PRO では画面や機能が異なる場合があるため、それぞれの資料を参照してください。以下では読書メモのサイトを作る練習を例とし、架空の投稿とテストアカウントを使います。実際の会員や顧客のデータは取り込みません。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトのファイル、データベース、サービスを区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress のプログラム、テーマ、プラグイン、アップロードした画像はファイルです。投稿、設定、その他の動的データの多くはデータベースに保存されます。ウェブサーバーは閲覧リクエストを受け取り、PHP とデータベースを使って画面を生成します。サイトのフォルダーをコピーするだけでは通常すべての内容は持ち出せないため、最初からファイルとデータベースの保存場所を記録しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MAMP はローカルで必要なサービスをまとめて提供し、練習や開発に向いています。ただし、本番用のドメイン、メール、バックアップ、長期運用まで自動で用意するわけではありません。読書メモのサイトではまず投稿の構成を練習できますが、外部からの登録や通知メールを受け付けるなら、適切な本番環境で別途設定と動作確認が必要です。"
+        },
+        {
+          "type": "heading",
+          "text": "自分の OS に合うものをインストールする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MAMP の公式サイトから対応するバージョンをダウンロードし、現在の動作要件とインストール手順を先に確認します。Windows 向け資料では、権限が制限されたシステムフォルダーを避け、C:\\MAMP などの場所を推奨しています。すでに別のウェブサービスやデータベースサービスがあるパソコンでは、その用途を把握し、新しいツールを起動するためだけに既存の環境をむやみに削除しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "インストール後は MAMP のバージョン、選択した PHP、ドキュメントルート、ポートを記録してからサービスを起動し、スタートページを開きます。画面に PRO 版への入口があっても、現在使っている製品を区別し、PRO 専用機能が通常版にも必ず含まれるとは考えないでください。古い解説のバージョン番号をそのまま使って、今入れるべき版を判断することも避けましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカル環境はディスク容量を使い、サイトやデータベースを何度も作ると特に増えます。各練習サイトには reading-practice のように識別しやすいフォルダー名とデータベース名を付け、用途も記録します。最初にこの習慣を付けておけば、後で整理するときに必要なサイトを古いテストファイルと誤認して削除するのを防げます。"
+        },
+        {
+          "type": "heading",
+          "text": "データベースを作ってから WordPress をインストールする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "公式の手順に沿って WordPress をダウンロードして展開し、必要なプログラムを設定済みのドキュメントルートまたはその下のフォルダーに置きます。MAMP のスタートページから phpMyAdmin を開き、専用データベースを作成します。名前は例と同じでなくてもかまいませんが、その後の WordPress インストールで入力する名前と一致させてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカルサイトの URL からインストール画面に進み、データベース名、ユーザー名、パスワード、ホストを入力します。ポートは自分の環境で実際に設定したものを使ってください。MAMP の資料では MySQL の標準以外のポートの例として localhost:8889 を使い、3306 の場合は入力方法が異なります。データベースのアカウントと WordPress の管理者は用途が違うため、混同しないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカル向け資料では説明の便宜上、データベースの初期認証情報を使うことがありますが、それを公開サービスの安全な設定として流用してはいけません。WordPress 管理者にも別のパスワードを設定し、サイト名にはテスト用だと分かる表示を入れます。設定後に管理画面へログインし、練習用の投稿と機密情報のない画像を追加して、保存後に開き直しても残っていることを確認しましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "公式の MAMP と WordPress をダウンロードし、ドキュメントルートとサービスのポートを確認する。",
+            "MAMP を起動し、phpMyAdmin でこのサイト専用のデータベースを作る。",
+            "予定したディレクトリに WordPress を置き、ローカル URL を開いてデータベース接続情報を入力する。",
+            "サイト管理者を作成し、ログイン、投稿の保存、画像表示をテストする。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "ローカルテストでも外部への影響を分離する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "localhost は、現在使っているそのパソコンを指します。友人に localhost の URL を送っても、相手のブラウザーが自分のサイトにつながるわけではありません。別の端末からプレビューするには、ネットワーク接続と制限を別途設計する必要があります。初心者の練習では、そのためにルーターの転送設定や外部公開を行う必要はなく、まず自分のパソコンで操作を完了しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストサイトでも、メール、決済、外部同期の機能があれば外部へリクエストを送る可能性があります。テストアカウントとテストモードを使い、不要な通知を無効にして、本番用の認証情報は使わないようにします。本番サイトのコピーをローカルに持ってくるときは、特にスケジュール処理と連携を確認してください。URL が違うだけで外部サービスに影響しないとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "練習を終えたら MAMP でサービスを停止し、必要に応じてアプリも終了したことを確認します。ブラウザーを閉じるのは画面を見なくなるだけで、ウェブサービスやデータベースサービスは自動停止しません。共有パソコンでは、ほかの利用者がファイルやデータへアクセスできるかも考えましょう。ローカル環境を機密情報の金庫とみなしてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "エラーが起きたら、どの層の問題か切り分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカル URL 全体が開けない場合は、まずウェブサービスが起動しているか、URL のポートが正しいかを確認し、次に別のアプリがそのポートを使っていないか調べます。MAMP のポートは変更できますが、変更後は使用中の URL やデータベース設定も合わせて更新します。毎回 WordPress を入れ直すと、まだ救える内容を上書きする恐れがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データベース接続エラーなら、データベースサービス、名前、認証情報、ポートを照合します。トップページは正常で特定のページだけ失敗するなら、プラグイン、パーマリンク、エラーログを確認します。一度に変更するのは一項目にし、元の値を残して結果を記録してください。エラー画面を共有するときは認証情報やパソコン上の個人的なパスを隠し、必要な情報だけを提供します。"
+        },
+        {
+          "type": "heading",
+          "text": "公開に向けて、移行に必要な一式を保存する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress のツールからのエクスポートは WXR 形式のコンテンツデータを生成し、内容の移行に適しています。ただし、すべてのプログラムとデータベースを含む完全なバックアップではありません。サイト全体の設定を残すには、移行方法に合わせてファイルとデータベースも準備し、プラグイン、テーマ、メディア、必要なライセンスを本番環境で使えるか確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本番サーバーでは PHP、データベース、ファイル権限、HTTPS、メール、URL が異なる場合があります。公開前に URL の置換と動作確認を計画し、localhost を含むリンクを訪問者に渡さないでください。まずローカルのコピーと復元可能なバックアップを残し、本番サイトの投稿、画像、フォーム、ログインを確認してから練習環境を整理します。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-development/diagram-1-ja.svg",
+          "alt": "MAMP のローカル環境を、閲覧の入口、サイトのファイル、データベース、移行用データの四つに分けた図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "ファイルとデータベースを一緒に保存し、本番環境で改めて検証する。",
+          "description": "MAMP のローカル環境を、閲覧の入口、サイトのファイル、データベース、移行用データの四つに分けた図。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "ローカルでの練習",
+            "本番公開時に別途確認すること"
+          ],
+          "rows": [
+            [
+              "URL",
+              "localhost とローカルのポート",
+              "本番ドメインと HTTPS"
+            ],
+            [
+              "データ",
+              "架空の投稿とテストアカウント",
+              "適法に公開できる内容とアクセス権"
+            ],
+            [
+              "メールと決済",
+              "無効化またはテストモード",
+              "本番設定と一通りの動作確認"
+            ],
+            [
+              "エクスポート",
+              "コンテンツファイルまたは移行用の一式",
+              "メディア、設定、URL の置換"
+            ],
+            [
+              "稼働時間",
+              "自分でサービスを起動・停止",
+              "サーバー保守とバックアップの計画"
+            ]
+          ],
+          "caption": "ローカルでの成功は練習手順の確認であり、本番環境の検証の代わりにはならない。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "環境の更新や削除の前にバックアップする",
+          "text": "サイトのファイル、データベース、バージョンの記録を残し、別の隔離された場所で復元できることを確認してから古い環境を整理します。投稿の XML エクスポートだけでは、サイトの設定全体は保存できません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "初めて WordPress サイトを作る",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイト保守とバックアップの計画",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MAMP：Windows へのインストール",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Installation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP：Windows での WordPress インストール",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/How-Tos/WordPress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP：ポート設定",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Preferences/Ports/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：ツールからのエクスポート",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "컴퓨터에 WordPress 테스트 사이트 만들기: MAMP와 공개 전 준비",
+      "description": "운영 중인 사이트에 영향을 주지 않고 WordPress를 연습하려면 컴퓨터에 로컬 테스트 사이트를 만들 수 있습니다. Windows용 MAMP를 예로 설치 위치, 포트, 데이터베이스와 WordPress 설정을 정리하고, 테스트 데이터 격리, 일반적인 연결 오류 구분, 공개 전에 별도로 필요한 파일·데이터베이스 내보내기를 설명합니다. 초보자의 편집·레이아웃 연습용이며, 로컬에서 작동한다고 운영 서버 검증까지 끝난 것은 아닙니다.",
+      "hero": {
+        "src": "/guides/wordpress-local-development/hero-ko.jpg",
+        "alt": "컴퓨터 화면, 웹사이트 폴더, 데이터베이스 서버로 구성한 로컬 테스트용 원본 일러스트.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "로컬 WordPress는 나만의 연습 책상과 같습니다. 글, 테마, 플러그인을 바꿔 보고 결과를 확인한 다음 운영 사이트에도 적용할지 결정할 수 있습니다. 사이트를 실행하는 것은 컴퓨터의 서비스이고, 브라우저는 이를 조작하는 창구일 뿐입니다. 이 관계를 이해해야 웹페이지를 닫은 것을 테스트 환경이 종료된 것으로 오해하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 안내는 MAMP의 Windows 문서를 바탕으로 정리했으며, 작성 환경에 실제로 설치한 것은 아닙니다. macOS와 MAMP PRO는 화면과 기능이 다를 수 있으므로 해당 문서를 사용하세요. 아래에서는 독서 메모 사이트를 만드는 연습을 예로 들어 가상의 글과 테스트 계정을 사용하며, 실제 회원이나 고객 데이터는 가져오지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "사이트 파일, 데이터베이스, 서비스를 먼저 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 프로그램, 테마, 플러그인, 업로드한 이미지는 파일입니다. 글, 설정, 그 밖의 동적 데이터는 대부분 데이터베이스에 저장됩니다. 웹 서버는 브라우저의 요청을 받아 PHP 및 데이터베이스와 함께 화면을 만듭니다. 사이트 폴더만 복사해서는 보통 전체 내용을 가져올 수 없으므로 처음부터 파일과 데이터베이스가 각각 어디에 있는지 기록하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "MAMP는 로컬에 필요한 서비스를 한데 모아 연습이나 개발에 쓰기 좋게 합니다. 그렇다고 운영 서버용 도메인, 메일, 백업, 장기 유지관리까지 자동으로 제공하는 것은 아닙니다. 독서 메모 사이트에서 먼저 글 구조를 연습할 수 있지만, 외부 사용자의 가입이나 알림 발송을 허용하려면 적절한 운영 환경에서 따로 설정하고 검증해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "자신의 운영체제에 맞게 설치하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MAMP 공식 사이트에서 적절한 버전을 내려받고 현재 시스템 요구사항과 설치 안내를 먼저 확인하세요. Windows 문서는 권한이 제한된 시스템 폴더를 피하고 C:\\MAMP 같은 위치를 권장합니다. 컴퓨터에 다른 웹 서비스나 데이터베이스 서비스가 이미 있다면 용도를 파악하고, 새 도구를 실행하려고 기존 환경을 함부로 삭제하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "설치 후 MAMP 버전, 선택한 PHP, 문서 루트, 포트를 기록한 다음 서비스를 시작하고 시작 페이지를 엽니다. 화면에 PRO 버전 진입점이 있어도 현재 사용하는 제품을 구분하고, PRO 전용 기능이 일반 버전에도 반드시 포함된다고 생각하지 마세요. 오래된 설명의 버전 번호를 그대로 따라 지금 설치할 버전을 판단해서도 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 환경은 디스크 공간을 사용하며, 사이트나 데이터베이스를 반복해 만들면 특히 많이 차지할 수 있습니다. 연습 사이트마다 reading-practice처럼 알아보기 쉬운 폴더명과 데이터베이스명을 쓰고 용도를 기록하세요. 이 작은 습관을 미리 정해 두면 나중에 정리할 때 보존할 사이트를 오래된 테스트 파일로 착각해 삭제하는 일을 막을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터베이스를 만든 뒤 WordPress 설치하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 절차에 따라 WordPress를 내려받아 압축을 풀고, 필요한 프로그램 파일을 설정된 문서 루트나 하위 폴더에 둡니다. MAMP 시작 페이지에서 phpMyAdmin을 열어 전용 데이터베이스를 만드세요. 이름은 예제와 같을 필요는 없지만, 이후 WordPress 설치에서 입력할 이름과 일치해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 사이트 주소로 설치 화면을 열고 데이터베이스명, 사용자명, 비밀번호, 호스트를 입력합니다. 포트는 자신의 환경에 실제로 설정된 값을 사용하세요. MAMP 문서는 기본값이 아닌 MySQL 포트의 예로 localhost:8889를 들며, 3306을 사용할 때는 입력 방식이 다릅니다. 데이터베이스 계정과 WordPress 관리자는 서로 다른 용도의 정보이므로 혼동하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬용 문서는 설명 편의를 위해 기본 데이터베이스 계정 정보를 사용할 수 있지만, 이를 외부 공개 서비스의 안전한 설정으로 그대로 쓰면 안 됩니다. WordPress 관리자도 별도 비밀번호를 사용하고 사이트명에 테스트용임을 분명히 표시하세요. 완료 후 관리자 화면에 로그인해 연습 글과 민감 정보가 없는 이미지를 추가하고, 저장한 뒤 다시 열어도 남아 있는지 확인합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "공식 MAMP와 WordPress를 내려받고 문서 루트와 서비스 포트를 확인합니다.",
+            "MAMP를 시작하고 phpMyAdmin으로 이 사이트 전용 데이터베이스를 만듭니다.",
+            "정해 둔 디렉터리에 WordPress를 넣고 로컬 주소를 열어 데이터베이스 연결 정보를 입력합니다.",
+            "사이트 관리자를 만들고 로그인, 글 저장, 이미지 표시를 테스트합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "로컬 테스트도 외부 영향을 격리하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "localhost는 지금 사용하는 컴퓨터를 뜻합니다. 친구에게 localhost 주소를 보내도 친구의 브라우저가 내 사이트에 연결되는 것은 아닙니다. 다른 기기에서 미리 보려면 네트워크 접근과 제한을 따로 설계해야 합니다. 초보 연습을 위해 라우터 포트 전달이나 외부 서비스를 열 필요는 없으며, 우선 자신의 컴퓨터에서 작업을 마치세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 사이트라도 메일, 결제, 외부 동기화 기능이 있으면 외부 요청을 보낼 수 있습니다. 테스트 계정과 테스트 모드를 사용하고 불필요한 알림을 끄며 운영용 인증 정보는 피하세요. 운영 사이트의 복사본을 로컬로 가져올 때는 예약 작업과 연동을 특히 확인해야 합니다. 주소가 다르다는 이유만으로 외부 서비스에 영향이 없다고 가정할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연습을 마치면 MAMP에서 서비스를 중지하고 필요하면 프로그램도 종료되었는지 확인하세요. 브라우저를 닫는 것은 화면을 보지 않는다는 뜻일 뿐, 웹 및 데이터베이스 서비스를 자동으로 중지하지 않습니다. 공용 컴퓨터에서는 다른 사용자가 내 파일과 데이터에 접근할 수 있는지도 고려해야 합니다. 로컬 환경을 민감 정보를 보관하는 금고처럼 여기지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "오류가 발생하면 어느 계층의 문제인지부터 판단하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 주소 전체가 열리지 않으면 먼저 웹 서비스가 실행 중인지, 주소의 포트가 맞는지 확인한 뒤 다른 프로그램이 포트를 쓰는지 조사하세요. MAMP의 포트는 바꿀 수 있지만 변경 후 사용하는 주소나 데이터베이스 설정도 맞춰 갱신해야 합니다. 매번 WordPress를 다시 설치하면 복구할 수 있던 내용을 덮어쓸 수도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터베이스 연결 오류라면 데이터베이스 서비스, 이름, 계정 정보, 포트를 대조하세요. 홈은 정상인데 특정 페이지만 실패한다면 플러그인, 고유주소, 오류 로그를 확인합니다. 한 번에 한 항목만 바꾸고 원래 값을 보존하며 결과를 기록하세요. 오류 화면을 공유할 때는 계정 정보와 컴퓨터의 개인 경로를 가리고 필요한 정보만 제공하면 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "공개를 준비할 때 완전한 이전 자료 보존하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 도구의 내보내기는 WXR 형식의 콘텐츠 데이터를 생성해 콘텐츠 이전에 적합하지만, 모든 프로그램과 데이터베이스를 포함한 전체 백업으로 볼 수는 없습니다. 사이트 전체 설정을 남기려면 이전 방법에 따라 파일과 데이터베이스도 준비하고, 플러그인·테마·미디어·필요한 라이선스를 운영 환경에서 사용할 수 있는지 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "운영 서버의 PHP, 데이터베이스, 파일 권한, HTTPS, 메일, 주소는 다를 수 있습니다. 공개 전에 주소 치환과 검증을 계획하고 localhost가 들어 있는 링크를 방문자에게 제공하지 마세요. 먼저 로컬 복사본과 복원 가능한 백업을 남겨 두고, 운영 사이트의 글·이미지·폼·로그인을 모두 확인한 뒤 연습 환경을 정리합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-development/diagram-1-ko.svg",
+          "alt": "MAMP 로컬 환경을 브라우저 진입점, 사이트 파일, 데이터베이스, 이전 자료의 네 부분으로 나눈 도식.",
+          "width": 1600,
+          "height": 900,
+          "caption": "파일과 데이터베이스를 함께 보존하고 운영 환경에서 다시 검증하세요.",
+          "description": "MAMP 로컬 환경을 브라우저 진입점, 사이트 파일, 데이터베이스, 이전 자료의 네 부분으로 나눈 도식.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "로컬 연습",
+            "실제 공개 전에 별도로 확인할 사항"
+          ],
+          "rows": [
+            [
+              "주소",
+              "localhost와 로컬 포트",
+              "운영 도메인과 HTTPS"
+            ],
+            [
+              "데이터",
+              "가상 글과 테스트 계정",
+              "적법하게 공개할 콘텐츠와 접근 권한"
+            ],
+            [
+              "메일과 결제",
+              "비활성화 또는 테스트 모드",
+              "운영 설정과 전체 검증"
+            ],
+            [
+              "내보내기",
+              "콘텐츠 파일 또는 완전한 이전 자료",
+              "미디어, 설정, 주소 치환"
+            ],
+            [
+              "운영 시간",
+              "직접 서비스 시작·중지",
+              "서버 유지관리와 백업 계획"
+            ]
+          ],
+          "caption": "로컬 성공은 연습 절차를 확인할 뿐 운영 환경 검증을 대신하지 못합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "환경을 업그레이드하거나 제거하기 전에 백업하기",
+          "text": "사이트 파일, 데이터베이스, 버전 기록을 보존하고 별도의 격리된 위치에서 복원할 수 있는지 확인한 뒤 기존 환경을 정리하세요. 글의 XML 내보내기 파일만으로는 사이트 전체 설정을 남길 수 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "처음 WordPress 사이트 만들기",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "사이트 유지관리와 백업 계획",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MAMP: Windows 설치",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Installation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP: Windows에서 WordPress 설치",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/How-Tos/WordPress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP: 포트 설정",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Preferences/Ports/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress: 도구 내보내기",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "在电脑上建立 WordPress 测试站：MAMP 与上线前准备",
+      "description": "想先练习 WordPress 而不影响正式网站，可以在电脑上建立本地测试站。这里以 Windows 的 MAMP 为例，整理安装位置、端口、数据库与 WordPress 设置，说明如何隔离测试数据、辨认常见连接问题，以及上线前必须另外处理的文件与数据库导出。适合初学者练习编辑与布局，不把本地能够运行视为正式服务器已完成验证。",
+      "hero": {
+        "src": "/guides/wordpress-local-development/hero-zh-cn.jpg",
+        "alt": "电脑画面、网站文件夹与数据库服务器组成的原创本地测试插图。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "本地 WordPress 像一张自己的练习桌：你可以试着修改文章、主题与插件，先看清效果，再决定是否应用到正式网站。网站由电脑上的服务运行，浏览器只是操作它的窗口。理解这个关系，才不会把关闭网页误认为已经停止测试环境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这份指南依据 MAMP 的 Windows 文档整理，没有在编写环境中实际安装。macOS 与 MAMP PRO 的界面和功能可能不同，应使用对应文档。以下以练习建立阅读笔记网站为例，使用虚构文章与测试账号，不导入真实会员或客户数据。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清网站文件、数据库与服务",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 程序、主题、插件及上传图片是文件；文章、设置与其他动态数据大多存于数据库。网页服务器接收浏览请求，再配合 PHP 与数据库生成画面。只复制一个网站文件夹通常不会带走完整内容，因此从第一天就应记录文件和数据库各放在哪里。"
+        },
+        {
+          "type": "paragraph",
+          "text": "MAMP 把本地所需服务整合在一起，适合练习或开发。这不代表它会自动提供正式服务器的域名、邮件、备份和长期运维。阅读笔记站可以先练习文章结构，但若要对外开放注册或发送通知，仍应在适当的正式环境中另外设置和验收。"
+        },
+        {
+          "type": "heading",
+          "text": "根据自己的操作系统安装",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从 MAMP 官方下载适用版本，先确认当前系统要求与安装说明。Windows 文档建议使用例如 C:\\MAMP 的位置，避免放进权限受限的系统文件夹。如果电脑已有其他网页或数据库服务，先了解它们的用途，不要为了启动新工具而随意移除原有环境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装完成后记录 MAMP 版本、PHP 选择、文档根目录与端口，再启动服务并打开起始页。如果界面附有 PRO 版本入口，先分清正在使用的产品，不把 PRO 专属功能当成普通版本一定包含。也不要照抄旧教程的版本号来判断当前应安装哪一版。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本地环境可能占用磁盘空间，尤其是在重复建立网站或数据库时。为每个练习站使用易于识别的文件夹与数据库名称，例如 reading-practice，并记录用途。先养成这个小习惯，日后整理时才不会把需要保留的网站误当成旧测试文件删除。"
+        },
+        {
+          "type": "heading",
+          "text": "建立数据库，再运行 WordPress 安装程序",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "按官方流程下载 WordPress，解压后将需要的程序放入已设置的文档根目录或其子文件夹。通过 MAMP 起始页打开 phpMyAdmin，建立专用数据库。数据库名称不必与示例完全相同，但要与后续 WordPress 安装时填写的名称一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着从本地网站地址进入安装画面，填写数据库名称、账号、密码及主机位置。使用自己环境实际设置的端口；MAMP 文档以 localhost:8889 演示非默认 MySQL 端口，而使用 3306 时填写方式不同。数据库账号和 WordPress 管理员是两组用途不同的信息，不要混为一谈。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本地文档可能使用方便教学的默认数据库账号密码，这不能沿用为对外服务的安全设置。WordPress 管理员也应使用独立密码，网站名称清楚加上测试字样。完成后登录后台，新增一篇练习文章与一张不含敏感信息的图片，确认保存后重新打开仍然存在。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "下载官方 MAMP 与 WordPress，确认文档根目录及服务端口。",
+            "启动 MAMP，通过 phpMyAdmin 建立这个网站专用的数据库。",
+            "把 WordPress 放在预定目录，打开本地地址并填入数据库连接信息。",
+            "建立网站管理员，完成登录、文章保存与图片显示测试。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "本地测试也要隔离外部影响",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "localhost 表示当前使用的那台电脑。你把 localhost 地址发给朋友，朋友的浏览器不会因此连接到你的网站。若要让其他设备预览，需要另外规划网络访问与限制；初学练习不必为此开放路由器转发或对外服务，先在自己的电脑上完成操作即可。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试站如果安装了发信、付款或外部同步功能，仍可能对外发送请求。使用测试账号与测试模式，停用不需要的通知，避免使用正式凭据。把正式站副本搬到本地时尤其要检查计划任务与集成，不能只因地址不同就假设它不会影响外部服务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "练习结束时在 MAMP 中停止服务，必要时确认程序已退出。关掉浏览器只代表不再看画面，不会自动停止网页及数据库服务。共享电脑也要考虑其他用户能否访问你的文件与数据，不要把本地环境当成保存敏感数据的保险箱。"
+        },
+        {
+          "type": "heading",
+          "text": "遇到错误先判断是哪一层",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果整个本地地址都打不开，先看网页服务是否启动、地址端口是否正确，再查是否被其他程序占用。MAMP 的端口可以调整，但改完要同步更新正在使用的地址或数据库设置。不要每次都重装 WordPress，否则可能覆盖仍能救回的内容。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若显示数据库连接错误，核对数据库服务、名称、账号密码与端口；若首页正常但特定页面出错，再检查插件、固定链接及错误日志。每次只改一项并保留原值，记录结果。分享错误画面时遮挡账号密码与电脑上的私人路径，提供必要信息即可。"
+        },
+        {
+          "type": "heading",
+          "text": "准备上线时，保存完整迁移材料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 的工具导出会生成 WXR 格式的内容数据，适合内容迁移，但不能当成包含全部程序与数据库的完整备份。若要保留整站设置，还需根据迁移方法准备文件及数据库，并确认插件、主题、媒体与必要授权能在正式环境中使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式服务器的 PHP、数据库、文件权限、HTTPS、邮件及网址都可能不同。上线前规划网址替换与验收，不要把含有 localhost 的链接直接交给访客。先保留本地副本与可恢复的备份，等正式网站的文章、图片、表单及登录都确认后，再整理练习环境。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-local-development/diagram-1-zh-cn.svg",
+          "alt": "MAMP 本地环境由浏览入口、网站文件、数据库及迁移材料四部分组成的图解。",
+          "width": 1600,
+          "height": 900,
+          "caption": "文件与数据库一起保存，正式环境再做一次验证。",
+          "description": "MAMP 本地环境由浏览入口、网站文件、数据库及迁移材料四部分组成的图解。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "本地练习",
+            "正式上线要另外确认"
+          ],
+          "rows": [
+            [
+              "网址",
+              "localhost 与本地端口",
+              "正式域名及 HTTPS"
+            ],
+            [
+              "数据",
+              "虚构文章与测试账号",
+              "合法公开内容与访问权限"
+            ],
+            [
+              "发信及付款",
+              "停用或使用测试模式",
+              "正式设置与完整验收"
+            ],
+            [
+              "导出",
+              "内容文件或完整迁移材料",
+              "媒体、设置及网址替换"
+            ],
+            [
+              "运行时间",
+              "自己启停服务",
+              "服务器维护与备份安排"
+            ]
+          ],
+          "caption": "本地成功能证明练习流程，不能替代正式环境验收。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先备份，再升级或移除环境",
+          "text": "保留网站文件、数据库与版本记录，确认能在另一个隔离位置还原后，再整理旧环境。只有文章 XML 导出文件不足以保留全部网站设置。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "第一次建立 WordPress 网站",
+              "kind": "life",
+              "slug": "wordpress-first-site"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "网站维护与备份安排",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "MAMP：Windows 安装",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Installation/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP：在 Windows 上安装 WordPress",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/How-Tos/WordPress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MAMP：端口设置",
+          "url": "https://documentation.mamp.info/en/MAMP-Windows/Preferences/Ports/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress：工具导出",
+          "url": "https://wordpress.org/documentation/article/tools-export-screen/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
