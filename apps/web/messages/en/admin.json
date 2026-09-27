@@ -2113,7 +2113,8 @@
       "look": "Character sheets",
       "storyboard": "Storyboard",
       "dubs": "Dub tracks",
-      "script": "Screenplay"
+      "script": "Screenplay",
+      "languages": "Languages"
     },
     "statuses": {
       "pending": "To decide",
@@ -2161,17 +2162,45 @@
     "dropConfirm": "Drop this video? This cannot be undone.",
     "dropButton": "Drop this video",
     "dropError": "Not dropped: {message}",
-    "dubsTitle": "Dub languages",
-    "dubsHelp": "For each language you tick, the worker makes a dubbed audio track once the final cut is approved and sends it here; you download it and upload it on the Languages page in YouTube Studio. Tracks can be added before or after the video is published.",
-    "dubsSave": "Save dub languages",
-    "dubsSaved": "Saved",
-    "dubsError": "Not saved: {message}",
     "approveDubs": "Uploaded these tracks in Studio",
     "downloadTrack": "Download {file}",
-    "dubStatuses": {
-      "ready": "Ready",
-      "skipped": "Skipped"
+    "languagesTitle": "This video's languages",
+    "languagesHelp": "Every video is made in Traditional Chinese. Tick what else it gets, per language: titles and descriptions, closed captions, a dub track. The worker makes only what is ticked and reports each part here; the video is scheduled once every ticked part is done. A dub track is timed with its captions, so ticking one ticks the other. \"Tick the defaults\" copies the settings tab's languages; \"Traditional Chinese only\" records that nothing else is wanted.",
+    "languagesLater": "The languages can be chosen once the final cut is approved.",
+    "languagesAfterPublish": "The video is on YouTube: what you tick now is made as a new batch and sent up. Unticking only holds for parts not on YouTube yet; what is already there you remove yourself in Studio.",
+    "languageColumn": "Language",
+    "parts": {
+      "metadata": "Titles and descriptions",
+      "captions": "Closed captions",
+      "dub": "Dub track"
     },
+    "partStates": {
+      "working": "In the making",
+      "ready": "Done",
+      "skipped": "Skipped",
+      "uploaded": "Uploaded"
+    },
+    "partSkipped": "Skipped ({reason})",
+    "dubDramaLater": "Dubbing a drama comes later; for now a drama gets titles, descriptions and captions.",
+    "tickDefaults": "Tick the defaults",
+    "zhOnly": "Traditional Chinese only",
+    "languagesSave": "Save",
+    "languagesSaved": "Saved",
+    "languagesError": "Not saved: {message}",
+    "approveLanguages": "Uploaded the dub tracks in Studio",
+    "studioTitle": "The dub tracks go up in Studio",
+    "studioNote": "Titles, descriptions and captions are sent through the API when the video is scheduled; only a dub track has to be uploaded by hand.",
+    "studioStep1": "Download each language's track above.",
+    "studioStep2": "In YouTube Studio open Languages in the left menu, then this video, Add language, pick the language, Add next to Dubbing, choose the file, Publish; once per language.",
+    "studioStep3": "Come back and press \"Uploaded the dub tracks in Studio\". Languages ticked later arrive as a new card.",
+    "publishStates": {
+      "deciding": "Waiting for your language choice",
+      "making": "Languages in the making",
+      "ready": "Ready to upload",
+      "scheduled": "Scheduled",
+      "published": "Published"
+    },
+    "scheduleWaits": "The publish time is sent to YouTube once the languages are done.",
     "locales": {
       "en": "English",
       "ja": "Japanese",

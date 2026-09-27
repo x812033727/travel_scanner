@@ -2113,7 +2113,8 @@
       "look": "キャラクター設定画",
       "storyboard": "絵コンテ",
       "dubs": "吹き替え音声",
-      "script": "脚本"
+      "script": "脚本",
+      "languages": "言語"
     },
     "statuses": {
       "pending": "判断待ち",
@@ -2161,17 +2162,45 @@
     "dropConfirm": "この動画を中止しますか？元に戻せません。",
     "dropButton": "この動画を中止する",
     "dropError": "中止できませんでした：{message}",
-    "dubsTitle": "吹き替えの言語",
-    "dubsHelp": "チェックした言語は、最終版の承認後にワーカーが吹き替え音声トラックを作ってここに送ります。ダウンロードして YouTube Studio の「言語」ページからアップロードしてください。トラックは公開の前でも後でも追加できます。",
-    "dubsSave": "吹き替えの言語を保存",
-    "dubsSaved": "保存しました",
-    "dubsError": "保存できませんでした：{message}",
     "approveDubs": "Studio にアップロード済み",
     "downloadTrack": "{file} をダウンロード",
-    "dubStatuses": {
-      "ready": "完成",
-      "skipped": "スキップ"
+    "languagesTitle": "この動画の言語",
+    "languagesHelp": "動画はすべて繁体字中国語で作られます。言語ごとに、ほかに何を作るかをチェックしてください：タイトルと説明、字幕（CC）、吹き替え。ワーカーはチェックしたものだけを作り、各マスの横に進み具合を書きます。チェックしたものがすべて出来上がると公開予約が送られます。吹き替えは字幕と同じタイムラインなので、吹き替えをチェックすると字幕もチェックされます。「既定どおりにチェック」は設定タブの言語を写し、「繁体字中国語のみ」はほかの言語を作らないと記録します。",
+    "languagesLater": "最終版が承認されると言語を選べます。",
+    "languagesAfterPublish": "動画は YouTube 上にあります。今チェックしたものは新しい一括分として作られ、送られます。チェックを外せるのはまだ YouTube に送っていない部分だけで、送ったものは Studio でご自身で削除してください。",
+    "languageColumn": "言語",
+    "parts": {
+      "metadata": "タイトルと説明",
+      "captions": "字幕（CC）",
+      "dub": "吹き替え"
     },
+    "partStates": {
+      "working": "作成中",
+      "ready": "完成",
+      "skipped": "スキップ",
+      "uploaded": "アップロード済み"
+    },
+    "partSkipped": "スキップ（{reason}）",
+    "dubDramaLater": "ドラマの吹き替えは次の段階です。今はタイトル・説明と字幕だけ選べます。",
+    "tickDefaults": "既定どおりにチェック",
+    "zhOnly": "繁体字中国語のみ",
+    "languagesSave": "保存",
+    "languagesSaved": "保存しました",
+    "languagesError": "保存できませんでした：{message}",
+    "approveLanguages": "Studio に吹き替えをアップロード済み",
+    "studioTitle": "吹き替えは Studio でアップロード",
+    "studioNote": "タイトルと説明、字幕は公開予約のときにサイトが API で送ります。手でアップロードするのは吹き替えだけです。",
+    "studioStep1": "上の各言語の音声トラックをダウンロードします。",
+    "studioStep2": "YouTube Studio の左メニュー「言語」→ この動画 →「言語を追加」→ 言語を選ぶ →「吹き替え」の横の「追加」→ ファイルを選択 →「公開」。言語ごとに一回ずつ。",
+    "studioStep3": "戻って「Studio に吹き替えをアップロード済み」を押します。あとでチェックした言語は新しいカードで届きます。",
+    "publishStates": {
+      "deciding": "言語の決定待ち",
+      "making": "言語を作成中",
+      "ready": "アップロード可",
+      "scheduled": "公開予約済み",
+      "published": "公開済み"
+    },
+    "scheduleWaits": "公開予約は言語が出来上がってから送られます。",
     "locales": {
       "en": "英語",
       "ja": "日本語",

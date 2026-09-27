@@ -227,13 +227,19 @@ describe("AdminVideoReviews", () => {
     confirm.mockRestore();
   });
 
-  it("shows a dubs review under its own gate and approves it as uploaded in Studio", async () => {
-    // The payload and files are what the worker will send (docs/videos/DUBS.md); the card's track
-    // list with download links is still to come, so only the gate and the decision are asserted.
-    const dubs = {
-      id: "55555555-5555-4555-8555-555555555555", gate: "dubs", content_sha256: "7".repeat(64), summary: "配音：en 完成、ja 跳過",
-      payload: { locales: { en: { file: "en.m4a", file_role: "dub_en", status: "ready" }, ja: { status: "skipped", reason: "1.15 倍還塞不下" } } },
-      files: [{ role: "dub_en", sha256: "8".repeat(64), size: 10, content_type: "audio/mp4" }],
+  it("shows a languages batch with each part's state and file and the Studio steps, and approves it as uploaded", async () => {
+    // The payload and files are what the worker sends (docs/videos/LANGUAGES.md): a state per part
+    // per language, the worker's reason when it gave one up, and a file per finished part.
+    const languages = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "languages", content_sha256: "7".repeat(64), summary: "語言：en 三項完成、ja 配音跳過",
+      payload: { locales: { ja: { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: "1.15 倍還塞不下" } }, en: { metadata: "ready", captions: "ready", dub: "ready" } } },
+      files: [
+        { role: "description_en", sha256: "8".repeat(64), size: 10, content_type: "text/plain" },
+        { role: "captions_en", sha256: "9".repeat(64), size: 10, content_type: "application/x-subrip" },
+        { role: "dub_en", sha256: "1".repeat(64), size: 10, content_type: "audio/mp4" },
+        { role: "description_ja", sha256: "2".repeat(64), size: 10, content_type: "text/plain" },
+        { role: "captions_ja", sha256: "3".repeat(64), size: 10, content_type: "application/x-subrip" },
+      ],
       status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
     };
     const posts: Array<{ url: string; body: unknown }> = [];
@@ -241,64 +247,188 @@ describe("AdminVideoReviews", () => {
       const url = String(input);
       if (init?.method === "POST") {
         posts.push({ url, body: JSON.parse(String(init.body)) });
-        return Promise.resolve(Response.json({ ...dubs, status: "approved" }));
+        return Promise.resolve(Response.json({ ...languages, status: "approved" }));
       }
       if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
-      return Promise.resolve(Response.json({ ...summary, dub_locales: ["en", "ja", "zh-CN"], reviews: [dubs] }));
+      return Promise.resolve(Response.json({ ...summary, ready_to_upload: false, locales_decided_at: "2026-09-27T04:30:00Z", locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true, dub: true } }, reviews: [languages] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const card = await screen.findByRole("article", { name: "配音音軌" });
-    expect(card.textContent).toContain("配音：en 完成、ja 跳過");
-    // The track list: English ready with its file to download, Japanese skipped with the reason.
-    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain(`/api/admin-video-files/${summary.slug}/${"8".repeat(64)}`);
-    expect(card.textContent).toContain("英文");
-    expect(card.textContent).toContain("跳過：1.15 倍還塞不下");
-    const approve = screen.getByRole("button", { name: "已在 Studio 上傳這些音軌" });
+    const card = await screen.findByRole("article", { name: "語言" });
+    expect(card.textContent).toContain("語言：en 三項完成、ja 配音跳過");
+    // English first whatever the payload's order, every part with its state and its file.
+    const rows = [...card.querySelectorAll("li")].map((row) => row.textContent);
+    expect(rows[0]).toContain("英文");
+    expect(rows[0]).toContain("配音已完成");
+    expect(rows[1]).toContain("日文");
+    expect(rows[1]).toContain("配音跳過（1.15 倍還塞不下）");
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain(`/api/admin-video-files/${summary.slug}/${"1".repeat(64)}`);
+    expect(within(card).getByRole("link", { name: "下載 description.en.txt" }).getAttribute("href")).toContain("8".repeat(64));
+    expect(within(card).getByRole("link", { name: "下載 ja.srt" }).getAttribute("href")).toContain("3".repeat(64));
+    expect(within(card).queryByRole("link", { name: "下載 ja.m4a" })).toBeNull();
+    // A dub track is the one part only the owner can upload, so the Studio steps are there.
+    expect(card.textContent).toContain("配音要在 Studio 上傳");
+    expect(card.textContent).toContain("「新增語言」");
+    const approve = screen.getByRole("button", { name: "已在 Studio 上傳配音" });
     expect(approve).toHaveProperty("disabled", false);
     fireEvent.click(approve);
     await waitFor(() => expect(posts).toHaveLength(1));
-    expect(posts[0].url).toContain(`/reviews/${dubs.id}/decision`);
+    expect(posts[0].url).toContain(`/reviews/${languages.id}/decision`);
     expect(posts[0].body).toEqual({ decision: "approve" });
   });
 
-  it("lets the owner tick the languages to dub a video in and saves them in the page's order", async () => {
-    const puts: Array<{ url: string; body: unknown }> = [];
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
-      const url = String(input);
-      if (init?.method === "PUT") {
-        puts.push({ url, body: JSON.parse(String(init.body)) });
-        return Promise.resolve(Response.json({ ...summary, dub_locales: ["en", "ko"], reviews: [] }));
-      }
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
-      return Promise.resolve(Response.json({ ...summary, dub_locales: ["en"], reviews: [] }));
-    }));
-    window.history.replaceState(null, "", "/?video=ai-model-choice");
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const section = await screen.findByRole("region", { name: "配音語言" });
-    expect(within(section).getByRole("checkbox", { name: "英文" })).toHaveProperty("checked", true);
-    const save = within(section).getByRole("button", { name: "儲存配音語言" });
-    expect(save).toHaveProperty("disabled", true);
-    fireEvent.click(within(section).getByRole("checkbox", { name: "韓文" }));
-    expect(save).toHaveProperty("disabled", false);
-    fireEvent.click(save);
-    await waitFor(() => expect(puts).toHaveLength(1));
-    expect(puts[0].url).toContain("/admin/videos/ai-model-choice/dubs");
-    expect(puts[0].body).toEqual({ locales: ["en", "ko"] });
-    await screen.findByText("已儲存");
-  });
-
-  it("does not offer dub languages to a reader without content.manage", async () => {
+  it("still reads a dubs review from before the languages gate", async () => {
+    const dubs = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "dubs", content_sha256: "7".repeat(64), summary: "配音：en 完成、ja 跳過",
+      payload: { locales: { en: { file: "en.m4a", file_role: "dub_en", status: "ready" }, ja: { status: "skipped", reason: "1.15 倍還塞不下" } } },
+      files: [{ role: "dub_en", sha256: "8".repeat(64), size: 10, content_type: "audio/mp4" }],
+      status: "approved", choice: null, note: null, decided_at: "2026-09-27T06:00:00Z", created_at: "2026-09-27T05:00:00Z",
+    };
     vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
       if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
-      return Promise.resolve(Response.json({ ...summary, dub_locales: [], reviews: [] }));
+      return Promise.resolve(Response.json({ ...summary, pending: 0, reviews: [dubs] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByText("過去的決定", { selector: "summary" }));
+    const card = screen.getByRole("article", { name: "配音音軌" });
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain("8".repeat(64));
+    expect(card.textContent).toContain("英文配音已完成");
+    expect(card.textContent).toContain("日文配音跳過（1.15 倍還塞不下）");
+  });
+
+  it("lets the owner choose each language's parts after the final cut, ticks the captions with a dub, and saves in the page's order", async () => {
+    const puts: Array<{ url: string; body: unknown }> = [];
+    let locales: Record<string, unknown> = { en: { metadata: true, captions: true, dub: false } };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body)) as { locales: Record<string, unknown> };
+        puts.push({ url, body });
+        locales = body.locales;
+        return Promise.resolve(Response.json({ ...summary, locales, reviews: [] }));
+      }
+      if (url.includes("/admin/video-automation/settings")) return Promise.resolve(Response.json({ caption_locales: ["ja", "zh-CN"], drama: { drama_caption_locales: ["en"] } }));
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({
+        ...summary, ready_to_upload: false, locales, locales_decided_at: "2026-09-27T04:30:00Z",
+        languages: { en: { metadata: { state: "ready" }, captions: { state: "working" } } }, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }],
+      }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    const box = (name: string) => within(panel).getByRole("checkbox", { name }) as HTMLInputElement;
+    expect(box("英文 標題與說明").checked).toBe(true);
+    expect(box("英文 CC 字幕").checked).toBe(true);
+    expect(box("英文 配音").checked).toBe(false);
+    expect(box("韓文 配音").disabled).toBe(false);
+    // Where the saved parts stand, next to their boxes; the unsaved dub has no state yet.
+    const cells = [...panel.querySelectorAll("tbody tr")][0].textContent;
+    expect(cells).toContain("已完成");
+    expect(cells).toContain("製作中");
+    const save = within(panel).getByRole("button", { name: "儲存" });
+    expect(save).toHaveProperty("disabled", true);
+    fireEvent.click(box("韓文 配音"));
+    expect(box("韓文 CC 字幕").checked).toBe(true);
+    fireEvent.click(box("英文 CC 字幕"));
+    expect(save).toHaveProperty("disabled", false);
+    fireEvent.click(save);
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect(puts[0].url).toContain("/admin/videos/ai-model-choice/languages");
+    expect(puts[0].body).toEqual({ locales: { en: { metadata: true, captions: false, dub: false }, ko: { metadata: false, captions: true, dub: true } } });
+    expect((await within(panel).findByRole("status")).textContent).toBe("已儲存");
+    await waitFor(() => expect(box("韓文 配音").checked).toBe(true));
+    expect(save).toHaveProperty("disabled", true);
+
+    fireEvent.click(within(panel).getByRole("button", { name: "照預設勾選" }));
+    await waitFor(() => expect(box("日文 CC 字幕").checked).toBe(true));
+    expect(box("日文 標題與說明").checked).toBe(true);
+    expect(box("簡體中文 CC 字幕").checked).toBe(true);
+    expect(box("英文 標題與說明").checked).toBe(false);
+    expect(box("韓文 配音").checked).toBe(false);
+    expect(save).toHaveProperty("disabled", false);
+
+    fireEvent.click(within(panel).getByRole("button", { name: "只出繁體中文" }));
+    await waitFor(() => expect(puts).toHaveLength(2));
+    expect(puts[1].body).toEqual({ locales: {} });
+    await waitFor(() => expect(box("日文 CC 字幕").checked).toBe(false));
+    expect(within(panel).getByRole("button", { name: "只出繁體中文" })).toHaveProperty("disabled", true);
+  });
+
+  it("waits for the final cut before offering languages, greys out a drama's dub, and lets a reader only look", async () => {
+    const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    vi.stubGlobal("fetch", detail({ reviews: [outline] }));
+    const first = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const early = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(early.textContent).toContain("成片核准後可以選語言");
+    expect(within(early).queryAllByRole("checkbox")).toHaveLength(0);
+    expect(screen.queryByText("等你決定語言")).toBeNull();
+    first.unmount();
+
+    vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
+    const second = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const drama = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(drama).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    expect(within(drama).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("disabled", false);
+    // Nothing decided yet: the page says so, and saving nothing is a decision too.
+    expect(screen.getByText("等你決定語言")).toBeTruthy();
+    expect(within(drama).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", false);
+    second.unmount();
+
+    vi.stubGlobal("fetch", detail({ pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const section = await screen.findByRole("region", { name: "配音語言" });
-    expect(within(section).getByRole("checkbox", { name: "日文" })).toHaveProperty("disabled", true);
-    expect(within(section).getByRole("button", { name: "儲存配音語言" })).toHaveProperty("disabled", true);
+    const reader = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(reader).getByRole("checkbox", { name: "日文 配音" })).toHaveProperty("disabled", true);
+    for (const name of ["照預設勾選", "只出繁體中文", "儲存"]) expect(within(reader).getByRole("button", { name })).toHaveProperty("disabled", true);
+  });
+
+  it("tells each finished video where it is on its way to YouTube, and lists one waiting for its languages under needs you", async () => {
+    const done = { key: "final_video_approved", label: "成片核准", done: true };
+    const base = { ...summary, pending: 0, checklist: [done], ready_to_upload: false, locales: {}, locales_decided_at: null, languages: {} };
+    const deciding = { ...base, slug: "pick-languages", title: "等語言的影片", stage: "languages" };
+    const making = {
+      ...base, slug: "making-languages", title: "做語言的影片", publish_approved_at: "2026-09-27T05:00:00Z", locales_decided_at: "2026-09-27T04:30:00Z",
+      locales: { en: { metadata: true, captions: true, dub: true } }, languages: { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "working" } } },
+    };
+    const ready = { ...base, slug: "upload-ready", title: "可上架的影片", publish_approved_at: "2026-09-27T05:00:00Z", locales_decided_at: "2026-09-27T04:30:00Z", ready_to_upload: true };
+    const scheduled = { ...base, slug: "scheduled-video", title: "排定的影片", youtube_video_id: "abcdefghijk", youtube_publish_at: "2999-01-01T00:00:00Z", publish_approved_at: "2026-09-27T05:00:00Z" };
+    const published = { ...base, slug: "public-video", title: "公開的影片", youtube_video_id: "abcdefghijl", youtube_publish_at: "2026-09-01T00:00:00Z", publish_approved_at: "2026-08-27T05:00:00Z" };
+    const all = [deciding, making, ready, scheduled, published];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json(all));
+      const project = all.find((each) => url.endsWith(`/admin/videos/${each.slug}`)) ?? making;
+      return Promise.resolve(Response.json({ ...project, reviews: [] }));
+    }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("article", { name: "可上架的影片" });
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "進行中", "已上架"]);
+    const needs = screen.getByRole("region", { name: "需要你" });
+    expect(needs.textContent).toContain("等語言的影片");
+    expect(needs.textContent).toContain("等你決定語言");
+    const working = screen.getByRole("region", { name: "進行中" });
+    expect(working.textContent).toContain("做語言的影片");
+    expect(working.textContent).toContain("語言製作中");
+    const onYouTube = screen.getByRole("region", { name: "已上架" });
+    const items = [...onYouTube.querySelectorAll("li")].map((item) => item.textContent);
+    expect(items[0]).toContain("排定的影片");
+    expect(items[0]).toContain("已排定");
+    expect(items[1]).toContain("公開的影片");
+    expect(items[1]).toContain("已上架");
+
+    fireEvent.click(screen.getByRole("button", { name: /做語言的影片/ }));
+    await screen.findByRole("heading", { name: "做語言的影片" });
+    expect(screen.getByText("語言製作中")).toBeTruthy();
+    expect(screen.getByText("排程會在語言做好後送出。")).toBeTruthy();
+    // The final cut may go up as private right away; only its scheduling waits for the languages.
+    expect(screen.getByRole("form", { name: "已上傳到 YouTube" })).toBeTruthy();
+    const panel = screen.getByRole("region", { name: "這支影片的語言" });
+    const row = [...panel.querySelectorAll("tbody tr")][0].textContent ?? "";
+    expect(row.match(/已完成/g)).toHaveLength(2);
+    expect(row).toContain("製作中");
   });
 
   it("keeps dramas off the tutorial list and shows a one-off drama with its spend on the drama tab", async () => {
