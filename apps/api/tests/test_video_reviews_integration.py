@@ -39,6 +39,56 @@ def _upload(store: ReviewStore, slug: str, body: bytes) -> str:
 
 
 @pytest.mark.asyncio(loop_scope="module")
+async def test_blocked_video_retry_is_one_request_until_worker_acknowledges_it(
+    tmp_path: Path,
+) -> None:
+    slug = f"retry-{uuid4().hex[:12]}"
+    store = ReviewStore(tmp_path, max_file_bytes=10_000, max_total_bytes=50_000)
+    async with SessionFactory() as session:
+        owner = User(email=f"retry-{uuid4()}@example.com", password_hash="unused")
+        session.add(owner)
+        await session.commit()
+        blocked = ProjectIn(title="A blocked video", stage="blocked", checklist=[])
+        await service.upsert_project(session, store, slug, blocked)
+
+        first = await service.retry_project(session, slug, owner)
+        second = await service.retry_project(session, slug, owner)
+        assert first.retry_request_id is not None
+        assert second.retry_request_id == first.retry_request_id
+        assert second.retry_acknowledged_id is None
+        listed = next(item for item in await service.list_projects(session) if item.slug == slug)
+        assert listed.retry_request_id == first.retry_request_id
+
+        # An unrelated acknowledgement cannot consume the pending request.
+        await service.upsert_project(
+            session, store, slug,
+            ProjectIn(title="A blocked video", stage="retrying", retry_acknowledged_id=uuid4()),
+        )
+        assert (await service.project_view(session, slug)).retry_acknowledged_id is None
+        with pytest.raises(AppError) as not_blocked:
+            await service.retry_project(session, slug, owner)
+        assert not_blocked.value.code == "video_retry_not_blocked"
+
+        await service.upsert_project(
+            session, store, slug,
+            ProjectIn(
+                title="A blocked video",
+                stage="retrying",
+                retry_acknowledged_id=first.retry_request_id,
+            ),
+        )
+        await service.upsert_project(session, store, slug, blocked)
+        again = await service.retry_project(session, slug, owner)
+        assert again.retry_request_id not in (None, first.retry_request_id)
+        assert again.retry_acknowledged_id == first.retry_request_id
+
+        audit = await session.scalars(
+            select(AdminAuditLog.action).where(AdminAuditLog.target.like("video_project:%"))
+        )
+        assert list(audit).count("video_project_retry_requested") >= 2
+
+
+@pytest.mark.asyncio(loop_scope="module")
 async def test_a_video_goes_from_report_to_decision_and_back_to_the_pipeline(
     tmp_path: Path,
 ) -> None:

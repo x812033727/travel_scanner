@@ -306,10 +306,8 @@ async def finish_link(
                 "video_youtube_no_channel",
                 "這個 Google 帳號沒有 YouTube 頻道；連結時請選擁有頻道的帳號或品牌帳號",
             )
-        old = values.get("refresh_token")
-        if old and old != grant.refresh_token:
-            # One grant at a time: the replaced one is told to Google, not just forgotten here.
-            await revoke_token(http, old)
+        # Google revocation removes the project's grant, including the token just issued.
+        # Replacing our stored token is enough; only an explicit unlink should revoke it.
     snippet = as_dict(channel.get("snippet"))
     now = datetime.now(UTC)
     values["refresh_token"] = grant.refresh_token
