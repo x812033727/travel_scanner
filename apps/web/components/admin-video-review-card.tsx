@@ -36,8 +36,18 @@ export type ProjectSummary = {
   // The languages the owner ticked to dub this video in (docs/videos/DUBS.md).
   dub_locales?: string[];
   series_slug?: string | null; episode_number?: number | null;
+  // What the site last sent this video's YouTube side through the linked channel
+  // (apps/api/app/video_youtube/state.py public_state); absent before the owner first sent it.
+  youtube_sync?: YoutubeSync | null;
 };
 export type Project = ProjectSummary & { reviews: Review[] };
+export type YoutubeSyncStep = { id: "upload" | "details" | "captions" | "thumbnail"; state: "pending" | "running" | "done" | "failed" | "skipped"; detail: string; at: string | null };
+export type YoutubeSync = {
+  status: "queued" | "running" | "done" | "failed"; interrupted: boolean;
+  request: { mode?: "upload" | "studio"; visibility?: "scheduled" | "unlisted" | "private"; publish_at?: string | null; title?: string; description?: string; video_id?: string | null };
+  steps: YoutubeSyncStep[]; progress: { sent: number; total: number } | null; error: string | null;
+  queued_at?: string | null; started_at: string | null; finished_at: string | null;
+};
 // The languages a video can be dubbed in, in the page's order; zh-TW is the original.
 export const DUB_LOCALES = ["en", "ja", "ko", "zh-CN"] as const;
 
@@ -82,8 +92,10 @@ export const jevPicked = (review: Review) => review.gate === "outline" && review
 
 /** The worker reports a video that stopped with stage "blocked" and a first checklist row of that key. */
 export const isBlocked = (project: ProjectSummary) => project.stage === "blocked" || project.checklist.some((item) => item.key === "blocked" && !item.done);
-/** What waits for the owner: a decision, or a video that stopped (docs/videos/HANDS-OFF.md). */
-export const needsOwner = (project: ProjectSummary) => !project.dropped_at && (project.pending > 0 || isBlocked(project));
+/** A run to YouTube that failed, or that stopped when the site restarted: the owner retries it. */
+export const youtubeSyncStuck = (sync: YoutubeSync | null | undefined) => Boolean(sync && (sync.status === "failed" || sync.interrupted));
+/** What waits for the owner: a decision, a video that stopped, or a YouTube run that did (docs/videos/HANDS-OFF.md). */
+export const needsOwner = (project: ProjectSummary) => !project.dropped_at && (project.pending > 0 || isBlocked(project) || youtubeSyncStuck(project.youtube_sync));
 /** The upload confirmation is approved and the owner has not pasted a YouTube address yet. */
 export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id && Boolean(project.publish_approved_at);
 

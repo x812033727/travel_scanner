@@ -6,11 +6,12 @@ import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import {
-  control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, ReviewCard, SLUG,
-  UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen,
+  control, DUB_LOCALES, isBlocked, mp4Retired, needsOwner, type Project, type ProjectSummary, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG,
+  UploadPackage, UploadedForm, fileUrl, useRefresh, useWhen, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
+import { syncRunning, useYoutubeConnection, YoutubeChannelCard, type YoutubeConnection, YoutubeLinkHint, YoutubePublishForm, YoutubeSyncPanel } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
@@ -98,10 +99,29 @@ function DubLanguages({ slug, project, canManage, onSaved }: { slug: string; pro
   </section>;
 }
 
+/** The newest approved upload confirmation: the package the site sends to YouTube. */
+const approvedPackage = (reviews: Review[] | undefined) => reviews?.find((review) => review.gate === "publish" && review.status === "approved") ?? null;
+
+/**
+ * How a video that is ready gets to YouTube: with the channel linked, the site sends the approved
+ * package itself (apps/web/components/admin-video-youtube.tsx); without it, the owner uploads in
+ * Studio and records the address here, as before.
+ */
+function SendToYoutube({ slug, confirmation, connection, sync, mp4Gone, onSent }: {
+  slug: string; confirmation: Review | null; connection: YoutubeConnection | null; sync: ProjectSummary["youtube_sync"]; mp4Gone: boolean; onSent: () => void;
+}) {
+  if (syncRunning(sync)) return null;
+  if (!connection?.linked) return <><YoutubeLinkHint /><UploadedForm slug={slug} onLinked={onSent} /></>;
+  const canUpload = !mp4Gone && Boolean(confirmation?.files.some((file) => file.role === "final"));
+  return <YoutubePublishForm key={sync?.finished_at ?? "new"} slug={slug} review={confirmation} connection={connection} canUpload={canUpload} previous={sync?.request ?? null} onSent={onSent} />;
+}
+
 function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
   const t = useTranslations("admin.videoReviews");
+  const ty = useTranslations("admin.videoYoutube");
   const when = useWhen();
   const manage = useAdminActionGuard("content.manage");
+  const { connection } = useYoutubeConnection();
   const [project, setProject] = useState<Project | null>(null);
   const [error, setError] = useState("");
   const load = useCallback(() => {
@@ -132,7 +152,13 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
         <p className="font-bold">{t("checklist")}</p>
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
       </section>}
-      {readyToUpload(project) && manage.allowed && <UploadedForm slug={slug} onLinked={load} />}
+      {project.youtube_sync && <YoutubeSyncPanel slug={slug} sync={project.youtube_sync} canManage={manage.allowed && !dropped} onChange={load} />}
+      {readyToUpload(project) && manage.allowed && <SendToYoutube slug={slug} confirmation={approvedPackage(project.reviews)} connection={connection} sync={project.youtube_sync} mp4Gone={retired} onSent={load} />}
+      {project.youtube_video_id && !dropped && manage.allowed && connection?.linked && !syncRunning(project.youtube_sync) && <details className="rounded-2xl border border-[var(--line)] p-4">
+        <summary className="cursor-pointer font-bold">{ty("resendTitle")}</summary>
+        <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{ty("resendHelp")}</p>
+        <div className="mt-3"><YoutubePublishForm key={project.youtube_sync?.finished_at ?? "resend"} slug={slug} review={approvedPackage(project.reviews)} connection={connection} canUpload={false} videoId={project.youtube_video_id} previous={project.youtube_sync?.request ?? null} onSent={load} /></div>
+      </details>}
       {!dropped && (project.format ?? "slides") === "slides" && <DubLanguages key={(project.dub_locales ?? []).join(",")} slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
       {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} />)}
@@ -147,6 +173,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
 /** One row of the list: the title, what state it is in, and where the worker is. */
 function ProjectItem({ project, onOpen }: { project: ProjectSummary; onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
+  const ty = useTranslations("admin.videoYoutube");
   const when = useWhen();
   return <li>
     <button type="button" onClick={() => onOpen(project.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
@@ -156,6 +183,8 @@ function ProjectItem({ project, onOpen }: { project: ProjectSummary; onOpen: (sl
           : <AdminStatusPill status={project.pending ? "pending" : "inactive"}>{project.pending ? t("pending", { count: project.pending }) : t("noPendingShort")}</AdminStatusPill>}
         {!project.dropped_at && isBlocked(project) && <AdminStatusPill status="failed">{t("stuck")}</AdminStatusPill>}
         {readyToUpload(project) && <AdminStatusPill status="active">{t("readyToUpload")}</AdminStatusPill>}
+        {syncRunning(project.youtube_sync) && <AdminStatusPill status="running">{ty("sendingPill")}</AdminStatusPill>}
+        {youtubeSyncStuck(project.youtube_sync) && <AdminStatusPill status="failed">{ty("stuckPill")}</AdminStatusPill>}
       </span>
       <span className="text-sm text-[var(--muted)]">{t("progress", { done: project.checklist.filter((item) => item.done).length, total: project.checklist.length })} · {t("lastSynced", { time: when(project.last_synced_at) })}</span>
       {project.youtube_video_id && <span className="text-sm text-[var(--muted)]">{t("youtube", { id: project.youtube_video_id })}{project.youtube_publish_at && ` · ${t("scheduledAt", { time: when(project.youtube_publish_at) })}`}</span>}
@@ -168,7 +197,7 @@ function ProjectItem({ project, onOpen }: { project: ProjectSummary; onOpen: (sl
  * A video whose upload confirmation is approved and that is not on YouTube yet: its package,
  * read from the approved publish review, and the form the owner fills in after uploading.
  */
-function ReadyCard({ project, canManage, onOpen, onLinked }: { project: ProjectSummary; canManage: boolean; onOpen: (slug: string) => void; onLinked: () => void }) {
+function ReadyCard({ project, canManage, connection, onOpen, onLinked }: { project: ProjectSummary; canManage: boolean; connection: YoutubeConnection | null; onOpen: (slug: string) => void; onLinked: () => void }) {
   const t = useTranslations("admin.videoReviews");
   const [detail, setDetail] = useState<Project | null>(null);
   const [error, setError] = useState("");
@@ -180,7 +209,7 @@ function ReadyCard({ project, canManage, onOpen, onLinked }: { project: ProjectS
     return () => { current = false; };
   }, [project.slug, project.last_synced_at]);
   // Reviews come newest first, so the first approved confirmation is the current package.
-  const confirmation = detail?.reviews.find((review) => review.gate === "publish" && review.status === "approved") ?? null;
+  const confirmation = approvedPackage(detail?.reviews);
   return <li>
     <article className="grid gap-4 rounded-[1.5rem] border border-[var(--teal)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={project.title}>
       <header className="flex flex-wrap items-center gap-3">
@@ -192,7 +221,8 @@ function ReadyCard({ project, canManage, onOpen, onLinked }: { project: ProjectS
       {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
       {!detail && !error && <p className="text-sm text-[var(--muted)]">{t("readyLoading")}</p>}
       {confirmation && <UploadPackage slug={project.slug} review={confirmation} />}
-      {canManage && <UploadedForm slug={project.slug} onLinked={onLinked} />}
+      {project.youtube_sync && <YoutubeSyncPanel slug={project.slug} sync={project.youtube_sync} canManage={canManage} onChange={onLinked} />}
+      {canManage && <SendToYoutube slug={project.slug} confirmation={confirmation} connection={connection} sync={project.youtube_sync} mp4Gone={false} onSent={onLinked} />}
     </article>
   </li>;
 }
@@ -211,6 +241,7 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
 function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const t = useTranslations("admin.videoReviews");
   const manage = useAdminActionGuard("content.manage");
+  const { connection } = useYoutubeConnection();
   const [projects, setProjects] = useState<ProjectSummary[] | null>(null);
   const [error, setError] = useState("");
   const load = useCallback(() => {
@@ -233,7 +264,7 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   const rows = (items: ProjectSummary[]) => items.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />);
   return <div className="grid gap-6" aria-label={t("listTitle")}>
     {groups.needs.length > 0 && <Group title={t("needsYou")}>{rows(groups.needs)}</Group>}
-    {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} onOpen={onOpen} onLinked={load} />)}</Group>}
+    {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={load} />)}</Group>}
     {groups.working.length > 0 && <Group title={t("inProgress")}>{rows(groups.working)}</Group>}
     {groups.published.length > 0 && <Group title={t("publishedSection")}>{rows(groups.published)}</Group>}
     {groups.dropped.length > 0 && <Group title={t("dropped")}>{rows(groups.dropped)}</Group>}
@@ -252,7 +283,7 @@ export function AdminVideoReviews() {
       items={[{ value: "reviews", label: t("tabReviews") }, { value: "drama", label: t("tabDrama") }, { value: "settings", label: t("tabSettings") }]}>
       {tab === "reviews" && <ProjectList onOpen={setSlug} />}
       {tab === "drama" && <AdminVideoSeries onOpenVideo={setSlug} />}
-      {tab === "settings" && <AdminVideoSettings />}
+      {tab === "settings" && <><div className="mt-6"><YoutubeChannelCard /></div><AdminVideoSettings /></>}
     </Tabs>
   </div>;
 }
