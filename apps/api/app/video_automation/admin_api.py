@@ -103,12 +103,20 @@ async def put_video_automation_settings(
     values = payload.model_dump()
     missing = [
         key
-        for key in ("stage_models", "drama", "stage_instructions")
+        for key in (
+            "stage_models",
+            "drama",
+            "stage_instructions",
+            "channel_stance",
+            "auto_pick_outline",
+            "auto_approve_final",
+        )
         if getattr(payload, key) is None
     ]
     if missing:
         # The stage models are chosen on the AI settings page, and a page from before the drama
-        # settings or the standing instructions existed sends none: keep the stored ones.
+        # settings, the standing instructions, the stance or the hands-off switches existed
+        # sends none: keep the stored ones.
         current = service.settings_values(await service.settings_row(session)).model_dump()
         for key in missing:
             values[key] = current[key]
