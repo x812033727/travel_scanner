@@ -1,7 +1,8 @@
 "use client";
 
+import { CheckCircle2, Copy, Download, XCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useMemo, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { AdminStatusPill } from "@/components/admin-ui";
 import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
@@ -27,6 +28,9 @@ export type ChecklistItem = { key: string; label: string; done: boolean };
 export type ProjectSummary = {
   slug: string; title: string; stage: string; checklist: ChecklistItem[];
   youtube_video_id: string | null; last_synced_at: string; pending: number;
+  // Set by the owner on the "ready to upload" card (docs/videos/HANDS-OFF.md), and when the upload
+  // confirmation was approved; both absent from an API older than this page.
+  youtube_publish_at?: string | null; publish_approved_at?: string | null;
   dropped_at?: string | null; dropped_note?: string | null;
   format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
   // The languages the owner ticked to dub this video in (docs/videos/DUBS.md).
@@ -45,17 +49,80 @@ export const SLUG = /^[a-z0-9](?:[a-z0-9-]{0,78}[a-z0-9])?$/;
 export const statusTone: Record<Status, string> = { pending: "pending", approved: "active", rejected: "failed", superseded: "inactive" };
 export const control = "min-h-11 w-full rounded-xl border border-[var(--control-border,var(--line))] bg-[var(--surface)] px-3 py-2 text-[var(--ink)]";
 
+// Jev's thresholds for choosing an outline (apps/api/app/video_automation/judge.py and the section
+// of docs/videos/HANDS-OFF.md on Jev picking the outline): the chosen option must keep to the
+// channel's stance and show something the viewer can do, and the brief must give no advice.
+export const PICK_MIN_STANCE = 0.6;
+export const PICK_MIN_DEMO = 0.6;
+export const PICK_MAX_ADVICE = 0.3;
+// The note the server writes on an outline Jev chose (judge.pick_note) starts with "Jev" and the
+// two characters U+6311 U+4E86 ("picked"); they are code points here because a component file may
+// not carry display text of its own.
+const JEV_NOTE = "Jev \u6311\u4e86";
+// A video on YouTube keeps its upload package in the review store; the mp4 alone leaves after
+// this long, counted from the later of the upload confirmation and the publish time
+// (apps/api/app/video_reviews/admin_service.py prune_published_previews).
+export const PREVIEW_RETENTION_MS = 7 * 24 * 60 * 60 * 1000;
+
 /** Payload readers: a review's payload is whatever the tool sent, so every field is checked. */
 export const record = (value: unknown): Record<string, unknown> => (value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {});
 export const list = (value: unknown): unknown[] => (Array.isArray(value) ? value : []);
 export const text = (value: unknown): string => (typeof value === "string" ? value : typeof value === "number" ? String(value) : "");
 export const count = (value: unknown): number => (typeof value === "number" && Number.isFinite(value) ? value : 0);
+export const number = (value: unknown): number | null => (typeof value === "number" && Number.isFinite(value) ? value : null);
 
 export function fileUrl(slug: string, file: ReviewFile | undefined): string | undefined {
   return file ? `/api/admin-video-files/${slug}/${file.sha256}` : undefined;
 }
 
 export const fileFor = (review: Review, role: string) => review.files.find((file) => file.role === role);
+
+/** An outline the server approved from Jev's pick, as opposed to one the owner chose. */
+export const jevPicked = (review: Review) => review.gate === "outline" && review.status === "approved" && (review.note ?? "").startsWith(JEV_NOTE);
+
+/** The worker reports a video that stopped with stage "blocked" and a first checklist row of that key. */
+export const isBlocked = (project: ProjectSummary) => project.stage === "blocked" || project.checklist.some((item) => item.key === "blocked" && !item.done);
+/** What waits for the owner: a decision, or a video that stopped (docs/videos/HANDS-OFF.md). */
+export const needsOwner = (project: ProjectSummary) => !project.dropped_at && (project.pending > 0 || isBlocked(project));
+/** The upload confirmation is approved and the owner has not pasted a YouTube address yet. */
+export const readyToUpload = (project: ProjectSummary) => !project.dropped_at && !project.youtube_video_id && Boolean(project.publish_approved_at);
+
+/** Whether the store has let go of this video's mp4 (the same rule as the server's prune). */
+export function mp4Retired(project: ProjectSummary, now = Date.now()): boolean {
+  if (!project.youtube_video_id || !project.publish_approved_at) return false;
+  const since = Math.max(Date.parse(project.publish_approved_at), project.youtube_publish_at ? Date.parse(project.youtube_publish_at) : 0);
+  return Number.isFinite(since) && since + PREVIEW_RETENTION_MS <= now;
+}
+
+const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
+const YOUTUBE_HOSTS = new Set(["youtu.be", "youtube.com", "www.youtube.com", "m.youtube.com", "studio.youtube.com"]);
+const YOUTUBE_PATH_KINDS = new Set(["shorts", "embed", "live", "video", "v"]);
+
+/**
+ * The eleven-character id in what the owner pasted, or null: youtu.be/<id>, watch?v=<id>,
+ * shorts/<id>, Studio's video/<id>/edit or the bare id. The server (admin_service.youtube_video_id)
+ * applies the same rule; this copy only tells the owner before they submit.
+ */
+export function youtubeVideoId(value: string): string | null {
+  const trimmed = value.trim();
+  if (YOUTUBE_ID.test(trimmed)) return trimmed;
+  let parsed: URL;
+  try {
+    parsed = new URL(trimmed.includes("://") ? trimmed : `https://${trimmed}`);
+  } catch {
+    return null;
+  }
+  const host = parsed.hostname.toLowerCase();
+  if ((parsed.protocol !== "https:" && parsed.protocol !== "http:") || !YOUTUBE_HOSTS.has(host)) return null;
+  const parts = parsed.pathname.split("/").filter(Boolean);
+  let candidate: string | null = null;
+  if (host === "youtu.be") candidate = parts[0] ?? null;
+  else if (parts[0] === "watch") candidate = parsed.searchParams.get("v");
+  else if (parts.length >= 2 && YOUTUBE_PATH_KINDS.has(parts[0])) candidate = parts[1];
+  return candidate && YOUTUBE_ID.test(candidate) ? candidate : null;
+}
+
+const sizeOf = (bytes: number) => (bytes >= 1_000_000 ? `${(bytes / 1_000_000).toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1000))} KB`);
 
 export function useWhen() {
   const locale = useLocale();
@@ -70,6 +137,50 @@ export function useRefresh(load: () => void) {
     const timer = window.setInterval(load, REFRESH_MS);
     return () => window.clearInterval(timer);
   }, [load]);
+}
+
+/** A probability against its threshold: green on the passing side, red on the other. */
+function Score({ value, passes }: { value: number | null; passes: (value: number) => boolean }) {
+  if (value === null) return <span className="text-[var(--muted)]">—</span>;
+  return <AdminStatusPill status={passes(value) ? "ok" : "failed"}>{value.toFixed(2)}</AdminStatusPill>;
+}
+
+/**
+ * Why Jev chose an outline (docs/videos/HANDS-OFF.md, the section on Jev picking it). payload.pick is
+ * { choice, probabilities: { key: p }, options: { key: { stance, demo } }, advice }; a pending
+ * review may carry a pick that did not clear the thresholds, and shows the same table.
+ */
+function PickTable({ review }: { review: Review }) {
+  const t = useTranslations("admin.videoReviews");
+  const pick = record(review.payload.pick);
+  const scores = record(pick.options);
+  const probabilities = record(pick.probabilities);
+  const listed = list(review.payload.options).map(record).map((option) => text(option.key)).filter(Boolean);
+  const keys = [...listed, ...Object.keys(scores).filter((key) => !listed.includes(key))];
+  const choice = text(pick.choice);
+  const advice = number(pick.advice);
+  if (keys.length === 0 && !choice && advice === null) return null;
+  const chosen = record(scores[choice]);
+  const passed = (number(chosen.stance) ?? 0) >= PICK_MIN_STANCE && (number(chosen.demo) ?? 0) >= PICK_MIN_DEMO && advice !== null && advice <= PICK_MAX_ADVICE;
+  return <div className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("pickReasons")}>
+    <p className="font-bold">{t("pickReasons")}</p>
+    <table className="w-full text-sm">
+      <thead><tr className="text-left text-xs text-[var(--muted)]"><th className="py-1 pr-3 font-semibold">{t("pickOption")}</th><th className="py-1 pr-3 font-semibold">{t("pickProbability")}</th><th className="py-1 pr-3 font-semibold">{t("pickStance")}</th><th className="py-1 font-semibold">{t("pickDemo")}</th></tr></thead>
+      <tbody>{keys.map((key) => {
+        const score = record(scores[key]);
+        const probability = number(probabilities[key]);
+        return <tr key={key} className={key === choice ? "font-bold" : ""}>
+          <td className="py-1 pr-3">{t("option", { key })}{key === choice && <span className="ml-2 text-xs text-[var(--teal)]">{t("pickChosen")}</span>}</td>
+          <td className="py-1 pr-3 font-mono">{probability === null ? "—" : probability.toFixed(2)}</td>
+          <td className="py-1 pr-3"><Score value={number(score.stance)} passes={(value) => value >= PICK_MIN_STANCE} /></td>
+          <td className="py-1"><Score value={number(score.demo)} passes={(value) => value >= PICK_MIN_DEMO} /></td>
+        </tr>;
+      })}</tbody>
+    </table>
+    <p className="flex flex-wrap items-center gap-2 text-sm"><span>{t("pickAdvice")}</span><Score value={advice} passes={(value) => value <= PICK_MAX_ADVICE} /></p>
+    <p className="text-xs text-[var(--muted)]">{t("pickThresholds", { min: PICK_MIN_STANCE, max: PICK_MAX_ADVICE })}</p>
+    {review.status === "pending" && !passed && <p className="text-sm text-amber-800">{t("pickBelow")}</p>}
+  </div>;
 }
 
 function OutlineBody({ review, choice, onChoice, disabled }: { review: Review; choice: string; onChoice: (key: string) => void; disabled: boolean }) {
@@ -89,6 +200,7 @@ function OutlineBody({ review, choice, onChoice, disabled }: { review: Review; c
         </label>;
       })}
     </fieldset>}
+    <PickTable review={review} />
     {brief && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("brief")}</summary><div className="mt-3 max-h-[32rem] overflow-y-auto whitespace-pre-wrap text-sm leading-7">{brief}</div></details>}
   </div>;
 }
@@ -211,17 +323,191 @@ function AudioBody({ slug, review }: { slug: string; review: Review }) {
   </div>;
 }
 
-function FinalBody({ slug, review }: { slug: string; review: Review }) {
+/**
+ * A check report as the worker sends it (docs/videos/HANDS-OFF.md, the automatic quality check): a final review's
+ * payload.qa over the eleven ids assemble, render, narration, pace, captions, metadata, facts,
+ * links, thumbnail, policy, disclosure, and a publish review's payload.package over files,
+ * descriptions, captions, disclosure. Shape: { ok, final_sha256, items: [{ id, ok, detail,
+ * warnings? }] }. The failed items come first with their detail; warnings sit under their item.
+ */
+export function CheckItems({ report, title }: { report: unknown; title: string }) {
+  const t = useTranslations("admin.videoReviews");
+  const items = list(record(report).items).map(record).filter((item) => text(item.id));
+  if (items.length === 0) return null;
+  const failed = items.filter((item) => item.ok !== true);
+  const passed = items.filter((item) => item.ok === true);
+  const label = (id: string) => (t.has(`qaItems.${id}`) ? t(`qaItems.${id}`) : id);
+  return <div className="grid gap-2" aria-label={title}>
+    <p className="flex flex-wrap items-center gap-2 font-bold">{title}<AdminStatusPill status={failed.length ? "failed" : "ok"}>{failed.length ? t("qaFailedCount", { count: failed.length }) : t("qaAllPassed", { count: items.length })}</AdminStatusPill></p>
+    <ul className="grid gap-1 text-sm leading-6">{[...failed, ...passed].map((item) => {
+      const id = text(item.id);
+      const ok = item.ok === true;
+      const warnings = list(item.warnings).map(text).filter(Boolean);
+      return <li key={id} className={ok ? "" : "rounded-xl bg-red-50 p-2 text-red-900"}>
+        <span className="flex items-start gap-2">
+          {ok ? <CheckCircle2 aria-hidden size={16} className="mt-1 shrink-0 text-[var(--teal)]" /> : <XCircle aria-hidden size={16} className="mt-1 shrink-0" />}
+          <span><strong>{label(id)}</strong>{text(item.detail) && <span className={ok ? "text-[var(--muted)]" : ""}> · {text(item.detail)}</span>}</span>
+        </span>
+        {warnings.length > 0 && <ul className="ml-6 grid gap-0.5 text-amber-800">{warnings.map((warning) => <li key={warning}>{t("qaWarning")}{warning}</li>)}</ul>}
+      </li>;
+    })}</ul>
+  </div>;
+}
+
+/** Text to paste into Studio, with a copy button; when the clipboard is refused the text is selected for Ctrl+C. */
+function CopyField({ label, value, rows }: { label: string; value: string; rows: number }) {
+  const t = useTranslations("admin.videoReviews");
+  const field = useRef<HTMLTextAreaElement>(null);
+  const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setStatus("copied");
+    } catch {
+      field.current?.focus();
+      field.current?.select();
+      setStatus("failed");
+    }
+  };
+  return <div className="grid gap-1">
+    <label className="grid gap-1 text-sm font-semibold">{label}<textarea ref={field} readOnly rows={rows} value={value} className={`${control} text-sm font-normal`} onFocus={(event) => event.currentTarget.select()} /></label>
+    <div className="flex flex-wrap items-center gap-3">
+      <Button secondary onClick={() => void copy()} aria-label={`${t("copy")} ${label}`}><Copy aria-hidden size={16} />{status === "copied" ? t("copied") : t("copy")}</Button>
+      {status === "failed" && <span role="status" className="text-sm text-amber-800">{t("copyFailed")}</span>}
+    </div>
+  </div>;
+}
+
+/**
+ * The upload package a publish (upload confirmation) review carries, for the owner to download and
+ * paste into Studio (docs/videos/HANDS-OFF.md, the upload package section). Contract with the worker
+ * (tools/video, ticket 2026-09-26-video-hands-off-worker); every field may be missing from an
+ * older tool, and the card renders what is there:
+ *   payload.package    { ok, final_sha256, items: [{ id: files | descriptions | captions | disclosure, ok, detail, warnings? }] }
+ *   payload.minutes    number     the video's length in minutes
+ *   payload.chapters   number     how many chapters
+ *   payload.locales    string[]   the locales that have captions and a description, e.g. ["zh-TW", "zh-CN", "en", "ja", "ko"]
+ *   payload.zh         { title, description, tags: string[] }   the zh-TW metadata the owner pastes
+ *   payload.disclosure { synthetic: boolean, reason: string }   whether to tick Studio's "altered or synthetic content"
+ *   files[]            { role, sha256, size, content_type } with the roles
+ *                        final                 final.mp4                 video/mp4
+ *                        thumbnail             thumbnail.jpg             image/jpeg
+ *                        captions_<locale>     captions/<locale>.srt     text/plain (application/x-subrip and text/vtt also accepted)
+ *                        description_<locale>  description.<locale>.txt  text/plain
+ *                        metadata              metadata.json             application/json
+ *                      where <locale> is the locale as listed (captions_zh-TW; a role is [a-z][A-Za-z0-9_-]*).
+ *                      payload.checklist, the older free-text list, is empty from this worker on.
+ *                      Downloads go through /api/admin-video-files/<slug>/<sha256>.
+ */
+export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string; review: Review; mp4Gone?: boolean }) {
+  const t = useTranslations("admin.videoReviews");
+  const payload = review.payload;
+  const minutes = number(payload.minutes);
+  const chapters = number(payload.chapters);
+  const locales = list(payload.locales).map(text).filter(Boolean);
+  const zh = record(payload.zh);
+  const tags = list(zh.tags).map(text).filter(Boolean);
+  const disclosure = record(payload.disclosure);
+  // The worker names a locale's files with the locale as is (captions_zh-TW); an older spelling
+  // lower-cased it with "_" (captions_zh_tw), so both map back to the listed locale.
+  const flat = (value: string) => value.toLowerCase().replace(/-/g, "_");
+  const localeOf = (role: string, prefix: string) => {
+    const suffix = role.slice(prefix.length);
+    return locales.find((locale) => flat(locale) === flat(suffix)) ?? suffix;
+  };
+  const downloads = review.files.flatMap((file) => {
+    if (file.role === "final") return mp4Gone ? [] : [{ file, label: t("downloadFinal"), name: "final.mp4" }];
+    if (file.role === "thumbnail") return [{ file, label: t("downloadThumbnail"), name: "thumbnail.jpg" }];
+    if (file.role.startsWith("captions_")) {
+      const locale = localeOf(file.role, "captions_");
+      return [{ file, label: t("downloadCaptions", { locale }), name: `${locale}.${file.content_type === "text/vtt" ? "vtt" : "srt"}` }];
+    }
+    if (file.role.startsWith("description_")) {
+      const locale = localeOf(file.role, "description_");
+      return [{ file, label: t("downloadDescription", { locale }), name: `description.${locale}.txt` }];
+    }
+    if (file.role === "metadata") return [{ file, label: t("downloadMetadata"), name: "metadata.json" }];
+    return [];
+  });
+  const facts = [minutes !== null && t("minutes", { minutes }), chapters !== null && t("packageChapters", { count: chapters }), locales.length > 0 && t("packageLocales", { count: locales.length })].filter(Boolean);
+  const hasText = Boolean(text(zh.title) || text(zh.description) || tags.length > 0);
+  if (facts.length === 0 && downloads.length === 0 && !mp4Gone && !hasText && typeof disclosure.synthetic !== "boolean") return null;
+  return <div className="grid gap-4" aria-label={t("uploadPackage")}>
+    {facts.length > 0 && <p className="text-sm text-[var(--muted)]">{facts.join(" · ")}</p>}
+    {(downloads.length > 0 || mp4Gone) && <div>
+      <p className="font-bold">{t("downloads")}</p>
+      {mp4Gone && <p className="mt-1 text-sm leading-6 text-[var(--muted)]">{t("mp4Retired")}</p>}
+      <ul className="mt-2 flex flex-wrap gap-2">{downloads.map(({ file, label, name }) => <li key={file.sha256}>
+        <a href={fileUrl(slug, file)} download={name} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--surface)] px-3 text-sm font-semibold hover:border-[var(--teal)]"><Download aria-hidden size={16} />{label}<span className="text-xs font-normal text-[var(--muted)]">{sizeOf(file.size)}</span></a>
+      </li>)}</ul>
+    </div>}
+    {hasText && <div className="grid gap-3">
+      {text(zh.title) && <CopyField label={t("zhTitle")} value={text(zh.title)} rows={1} />}
+      {text(zh.description) && <CopyField label={t("zhDescription")} value={text(zh.description)} rows={6} />}
+      {tags.length > 0 && <CopyField label={t("zhTags")} value={tags.join(", ")} rows={2} />}
+    </div>}
+    {typeof disclosure.synthetic === "boolean" && <p className="text-sm leading-6">
+      <strong>{t("disclosureTitle")}</strong>{" "}
+      <AdminStatusPill status={disclosure.synthetic ? "warning" : "ok"}>{disclosure.synthetic ? t("disclosureYes") : t("disclosureNo")}</AdminStatusPill>
+      {text(disclosure.reason) && <span className="block text-[var(--muted)]">{text(disclosure.reason)}</span>}
+    </p>}
+  </div>;
+}
+
+/**
+ * The owner uploaded the final cut in Studio (private, nothing else filled in): the pasted address
+ * and the optional publish time go to POST /admin/videos/{slug}/youtube, which records the id and
+ * when it goes public (docs/videos/HANDS-OFF.md, the YouTube API section, step one).
+ */
+export function UploadedForm({ slug, onLinked }: { slug: string; onLinked: () => void }) {
+  const t = useTranslations("admin.videoReviews");
+  const [url, setUrl] = useState("");
+  const [publishAt, setPublishAt] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const id = youtubeVideoId(url);
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!id) return;
+    setBusy(true);
+    setError("");
+    try {
+      // A datetime-local value is the owner's wall clock; the API wants a zoned instant.
+      await api(`/admin/videos/${slug}/youtube`, { method: "POST", body: JSON.stringify({ url: url.trim(), publish_at: publishAt ? new Date(publishAt).toISOString() : null }) });
+      onLinked();
+    } catch (problem) {
+      setError(t("uploadedError", { message: problem instanceof Error ? problem.message : "" }));
+    } finally {
+      setBusy(false);
+    }
+  };
+  return <form onSubmit={(event) => void submit(event)} className="grid gap-3 rounded-2xl border border-[var(--line)] p-4" aria-label={t("uploadedTitle")}>
+    <p className="font-bold">{t("uploadedTitle")}</p>
+    <p className="text-sm leading-6 text-[var(--muted)]">{t("uploadedHelp")}</p>
+    <label className="grid gap-2 text-sm font-semibold">{t("youtubeUrl")}
+      <input className={control} value={url} disabled={busy} placeholder={t("youtubeUrlPlaceholder")} onChange={(event) => setUrl(event.target.value)} />
+    </label>
+    {url.trim() && <p className={`text-sm ${id ? "text-[var(--muted)]" : "text-amber-800"}`}>{id ? t("youtubeId", { id }) : t("youtubeUrlInvalid")}</p>}
+    <label className="grid gap-2 text-sm font-semibold">{t("publishAt")}
+      <input type="datetime-local" className={control} value={publishAt} disabled={busy} onChange={(event) => setPublishAt(event.target.value)} />
+    </label>
+    {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+    <div><Button type="submit" disabled={busy || !id}>{busy ? t("saving") : t("uploadedButton")}</Button></div>
+  </form>;
+}
+
+function FinalBody({ slug, review, mp4Gone }: { slug: string; review: Review; mp4Gone: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const checks = record(review.payload.checks);
   const problems = list(checks.problems).map(text).filter(Boolean);
   const chapters = list(review.payload.chapters).map(record);
   const metadata = Object.entries(record(review.payload.metadata)).map(([locale, value]) => [locale, record(value)] as const);
-  const video = fileUrl(slug, fileFor(review, "preview"));
+  const video = mp4Gone ? undefined : fileUrl(slug, fileFor(review, "preview"));
   const sheet = fileUrl(slug, fileFor(review, "contact_sheet"));
   const poster = fileUrl(slug, fileFor(review, "thumbnail"));
   return <div className="grid gap-4">
     {video && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
+    <CheckItems report={review.payload.qa} title={t("qaTitle")} />
     {Object.keys(checks).length > 0 && <p className="leading-7"><strong>{t("checks")}</strong>{" "}{checks.ok === true ? t("checksOk") : problems.join("; ")}</p>}
     {chapters.length > 0 && <div><p className="font-bold">{t("chapters")}</p><ol className="mt-2 grid gap-1 text-sm">{chapters.map((chapter, index) => <li key={index}><span className="font-mono">{text(chapter.time)}</span> {text(chapter.title)}</li>)}</ol></div>}
     {sheet && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("contactSheet")}</summary>
@@ -235,10 +521,14 @@ function FinalBody({ slug, review }: { slug: string; review: Review }) {
   </div>;
 }
 
-function PublishBody({ review }: { review: Review }) {
+function PublishBody({ slug, review, mp4Gone }: { slug: string; review: Review; mp4Gone: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const items = list(review.payload.checklist).map(text).filter(Boolean);
-  return items.length ? <div><p className="font-bold">{t("uploadChecklist")}</p><ul className="mt-2 grid gap-1 text-sm leading-6">{items.map((item) => <li key={item}>• {item}</li>)}</ul></div> : null;
+  return <div className="grid gap-4">
+    <CheckItems report={review.payload.package} title={t("packageTitle")} />
+    <UploadPackage slug={slug} review={review} mp4Gone={mp4Gone} />
+    {items.length > 0 && <div><p className="font-bold">{t("uploadChecklist")}</p><ul className="mt-2 grid gap-1 text-sm leading-6">{items.map((item) => <li key={item}>• {item}</li>)}</ul></div>}
+  </div>;
 }
 
 /**
@@ -263,7 +553,7 @@ function DubsBody({ slug, review }: { slug: string; review: Review }) {
 }
 
 /** One review of one gate: its body, and the owner's approve or reject with a note. */
-export function ReviewCard({ slug, review, canManage, onDecided }: { slug: string; review: Review; canManage: boolean; onDecided: () => void }) {
+export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false }: { slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const [choice, setChoice] = useState("");
@@ -294,6 +584,7 @@ export function ReviewCard({ slug, review, canManage, onDecided }: { slug: strin
     <header className="flex flex-wrap items-center gap-3">
       <h3 className="text-lg font-bold">{title}</h3>
       <AdminStatusPill status={statusTone[review.status]}>{t(`statuses.${review.status}`)}</AdminStatusPill>
+      {jevPicked(review) && <AdminStatusPill status="active">{t("jevPicked")}</AdminStatusPill>}
       <span className="text-sm text-[var(--muted)]">{t("submittedAt", { time: when(review.created_at) })}</span>
     </header>
     <p className="mt-2 leading-7">{review.summary}</p>
@@ -303,8 +594,8 @@ export function ReviewCard({ slug, review, canManage, onDecided }: { slug: strin
       {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
       {review.gate === "storyboard" && <StoryboardBody slug={slug} review={review} />}
       {review.gate === "audio" && <AudioBody slug={slug} review={review} />}
-      {review.gate === "final" && <FinalBody slug={slug} review={review} />}
-      {review.gate === "publish" && <PublishBody review={review} />}
+      {review.gate === "final" && <FinalBody slug={slug} review={review} mp4Gone={mp4Gone} />}
+      {review.gate === "publish" && <PublishBody slug={slug} review={review} mp4Gone={mp4Gone} />}
       {review.gate === "dubs" && <DubsBody slug={slug} review={review} />}
     </div>
     {pending ? <div className="mt-5 grid gap-3 border-t border-[var(--line)] pt-4">

@@ -37,7 +37,7 @@ metadata:
 | 標題、說明、章節、字幕、揭露、上架檢查；全自動的上架包 | `.agents/skills/youtube-video/references/publish.md` |
 | 人工錄製的稿子格式（`video_kit.py` 讀得懂的寫法） | `.agents/skills/youtube-video/references/script-format.md` |
 | 全自動：一次性設定、主幹、指令、結束碼、發音、成本、坑、主機自動產線 | `.agents/skills/youtube-video/references/automated.md` |
-| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`caption-translate.md`、`caption-review.md`） |
+| 全自動的代理提示 | `.agents/skills/youtube-video/references/prompts/`（`planner.md`、`writer-video.md`、`verifier-video.md`、`listener-rewrite.md`、`caption-translate.md`、`caption-review.md`） |
 | AI 漫劇：一次性設定、主幹與關卡、指令、`video.json` 的角色與鏡頭、品檢與重做、成本、坑 | `.agents/skills/youtube-video/references/drama.md` |
 | AI 漫劇的代理提示（故事聖經、劇本與分鏡、連貫性查核、修鏡頭） | `.agents/skills/youtube-video/references/prompts/planner-drama.md`、`writer-drama.md`、`verifier-drama.md` |
 | 長篇漫劇：名稱、主幹、劇本關卡、一致性（人物表、設定圖存檔、前情）、張力規格、指令、坑 | `.agents/skills/youtube-video/references/series.md` |
@@ -68,7 +68,7 @@ metadata:
 | 3 | 查核：換人；改超過 3 個事實就第二輪再換人 | 查核代理（`prompts/verifier-video.md`） | `verify-1.md` 完成 |
 | 4 | 聽眾優先審稿：口語、句長、術語唸法、開場鉤子 | 審稿代理 | 協調者套用修正、`lint` 再過 |
 | 5 | `tts`：先 `--dry-run` 看字數與額度，再實際合成 | 工具 | 時間軸寫出、章節時間檢查過 |
-| 6 | `check-audio`（Jev 判斷）→ 被標的句子 `tts --redo` → `review-push` | 工具、站主 | **站主在 `/admin/videos` 核准旁白** → `review-pull` |
+| 6 | `check-audio`（Jev 判斷）→ 被標的句子 `tts --redo` → 重錄到上限仍被標的句子交給聽眾審稿模型改寫措辭（`prompts/listener-rewrite.md`，最多兩輪）→ `review-push` | 工具、站主 | Jev 全過就自動核准；**還有被標的句子才由站主在 `/admin/videos` 核准旁白** → `review-pull` |
 | 7 | `render` → `assemble` → CC 翻譯與 `captions` | 工具、翻譯代理 | 聯絡表看過；`checks.json` 全過；沒有過期翻譯 |
 | 8 | `review-push --gate final`：先跑 `qa`（11 項自動品管），再送 720p 成片與報告 | 工具 | 11 項全過就自動核准；沒過的才**由站主在 `/admin/videos` 看** → `review-pull` |
 | 9 | `package`（含上傳包檢查）→ `review-push --gate publish` 送完整上傳包 → 站主照 `UPLOAD.md` 在 Studio 上傳成「私人」、在後台貼上網址與上架時間 | 工具、站主 | 4 項全過就自動核准，影片進「可以上架」；影片 ID 由工人寫回 `video.json` |
