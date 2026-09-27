@@ -78,9 +78,12 @@ export function metadataProblem(answer, candidates) {
   if (!isObject(thumbnail) || !isText(thumbnail.headline) || thumbnail.headline.length > HEADLINE_MAX_CHARS) return `thumbnail.headline must be 1 to ${HEADLINE_MAX_CHARS} characters`;
   if (thumbnail.headline === COMPILATION_HEADLINE_PLACEHOLDER) return "thumbnail.headline is still the placeholder";
   if (thumbnail.tag !== undefined && thumbnail.tag !== null && (!isText(thumbnail.tag) || thumbnail.tag.length > TAG_MAX_CHARS)) return `thumbnail.tag must be at most ${TAG_MAX_CHARS} characters or null`;
-  if (candidates.length && !candidates.some((candidate) => candidate.episode === thumbnail.episode && candidate.shot === thumbnail.shot)) return "thumbnail.episode and thumbnail.shot must name one of thumbnail_candidates";
+  if (candidates.length && !candidates.some((candidate) => matchesCandidate(candidate, thumbnail))) return "thumbnail.episode and thumbnail.shot must name one of thumbnail_candidates";
   return null;
 }
+
+/** The planner names the candidate by the episode's slug as asked, or by its number: both are unambiguous. */
+export const matchesCandidate = (candidate, thumbnail) => (candidate.episode === thumbnail?.episode || candidate.number === thumbnail?.episode) && candidate.shot === thumbnail?.shot;
 
 /** Why a locale's translation of the upload fields cannot be used, or null. */
 export function translationProblem(answer, chapters) {
@@ -190,7 +193,7 @@ export async function planMetadata(automation, state) {
   const description = bytes(answer.description) > descriptionBudget(episodes.length) ? answer.description.slice(0, Math.floor(descriptionBudget(episodes.length) / 3)) : answer.description;
   video.youtube = { ...video.youtube, title: answer.title.trim(), description: description.trim(), tags: answer.tags.map((tag) => tag.trim()), video_id: null };
   video.thumbnail = { template: "thumb", data: { headline: answer.thumbnail.headline.trim(), ...(isText(answer.thumbnail.tag) ? { tag: answer.thumbnail.tag.trim() } : {}), shot: THUMB_SHOT } };
-  const chosen = candidates.find((candidate) => candidate.episode === answer.thumbnail.episode && candidate.shot === answer.thumbnail.shot) ?? candidates[0] ?? null;
+  const chosen = candidates.find((candidate) => matchesCandidate(candidate, answer.thumbnail)) ?? candidates[0] ?? null;
   const workdir = automation.workdir(state.slug);
   if (chosen && existsSync(chosen.file)) {
     mkdirSync(path.join(workdir, "keyframes"), { recursive: true });

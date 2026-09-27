@@ -137,7 +137,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 
 只在 `hands_off` 作品上判（`auto_approves_script` → `hands_off_series`），舊工人沒帶這些欄位的 payload 永遠不自動過。過了伺服器當場核准，備註 `SCRIPT_AUTO_APPROVED_NOTE`「查核對照細綱：四個節拍都在、沒有連貫性問題，依作品設定自動核准」（`admin_service.submit_review` 的 `gate == "script"` 分支）。沒過就照舊等站主——但工人在送審**之前**已經自己判過一次（下一節），所以送上來的多半會過。
 
-**秒數不是模型估的**：查核只指出 `hook_line`、`satisfaction_lines`、`cliffhanger_line` 這幾個句子 id，工人的 `retentionNumbers` 用估計時間軸（每分鐘 250 字）算 `hook_seconds`（鉤子句的結束）、`first_seconds`／`positions`（每個爽點句的開始）與 `cliffhanger_last`（最後一句的 id 是不是它）。提示詞寫「鉤子 ≤ 5 秒」，量測門檻放寬到 8 秒，是給估計誤差留的餘裕。
+**秒數不是模型估的**：查核只指出 `hook_line`、`satisfaction_lines`、`cliffhanger_line` 這幾個句子 id，工人的 `retentionNumbers` 用估計時間軸（每分鐘 250 字）算 `hook_seconds`（鉤子句的話說完的那一刻，不含句後停頓與換鏡的間隔）、`first_seconds`／`positions`（每個爽點句的開始）與 `cliffhanger_last`（最後一句的 id 是不是它）。提示詞寫「鉤子 ≤ 5 秒、一句最多約 28 字」，量測門檻放寬到 8 秒，是給估計誤差留的餘裕。裁決的 `problems` 只放會擋住文件的事（`無`、非改不可的 `弱`）：清單有東西就退回，所以「可以接受的弱」寫在 `notes`，不然 `MAX_WEAK_VERDICTS` 永遠用不到。
 
 ### 設定圖、分鏡、成片
 
@@ -217,7 +217,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 | --- | --- | --- | --- | --- |
 | `clips` | 1 | 30 | 每鏡都是片段；`visual` 可省 | 1.0 |
 | `hybrid` | 0.4 | 12（`ceil(0.4 × 30)`） | 最多四成 `visual: "clip"`，留給每個節拍的高潮：那一巴掌、揭露、出手、變臉；其餘 `visual: "still"` 並寫 `camera` | 0.4 |
-| `stills` | 0.1 | 3 | 最多一成 clip，一篇一個高潮；其餘 still | 0.1 |
+| `stills` | 0.1 | 3 | 最多一成 clip（無條件進位，30 鏡 3 個），先給最大的高潮；其餘 still | 0.1 |
 
 - **`visual` 欄位**：鏡頭 `data.visual` ∈ `VISUAL_MODES = ["clip", "still"]`，預設 `clip`（`shotVisual`）。`clipShotScenes`／`stillShotScenes` 分兩堆；`clipsHash` 只算 clip 鏡頭。
 - **lint**（`core/lint.mjs`）從 `docs/videos/<slug>/series.json` 的 `visual_tier` 讀等級（`draftEpisode` 從作品寫進去；沒有就不檢查）：超過上限是錯誤（`visualTierProblems`），`clips` 等級裡出現 still 只警告。合集模式（`series.json` 的 `compilation` 為真）第一個場景是 `title` 卡也是錯誤：冷開場。

@@ -18,6 +18,6 @@ You did not write the document, and nobody else will read it before the site act
 
 ## Answer
 
-`{"verdicts": {<key>: "有"|"弱"|"無"}, "similar_works": [text, empty when none], "problems": [zh-TW sentences the planner can act on, one for every 弱 or 無, empty when everything is 有], "notes": one zh-TW line}`
+`{"verdicts": {<key>: "有"|"弱"|"無"}, "similar_works": [text, empty when none], "problems": [zh-TW sentences the planner can act on: one for every 無, and for a 弱 the planner must fix before the document can be used; empty when the document may go out as it is, since any entry sends it back; a 弱 you can live with goes in "notes"], "notes": one zh-TW line}`
 
 The site approves when every required key is there, none is 無, at most one is 弱 (`MAX_WEAK_VERDICTS = 1`), and both lists are empty; anything else sends the document back with your `problems` as the note (prefixed 「[auto]」), so write problems the planner can fix in one rewrite. A verdict missing a key, or with a value outside the three words, cannot be filed; the worker asks once more with `previous_problem`, then files the document without a verdict and it waits for the owner.

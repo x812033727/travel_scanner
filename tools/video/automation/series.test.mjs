@@ -12,6 +12,7 @@ import { automationClient } from "./client.mjs";
 import { Automation, automatedVideos, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
 import { eachLine } from "../core/schema.mjs";
+import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
 import { castFrom, chapterRange, documentPayload, documentProblem, episodeSlug, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
@@ -412,6 +413,10 @@ test("the retention numbers are measured on the script's estimated timeline, and
   const ids = [...eachLine(video)].map(({ line }) => line.id);
   const numbers = retentionNumbers(video, { hook_line: ids[0], satisfaction_lines: [ids[1], ids[3]], cliffhanger_line: ids.at(-1) });
   assert.ok(numbers.hook_seconds > 0 && numbers.hook_seconds < 15, `the hook ends at ${numbers.hook_seconds} s`);
+  // The hook is measured where its words end, without the pause after the line or the gap to the next shot.
+  const hookLine = estimateTimeline(video).lines.find((line) => line.id === ids[0]);
+  assert.equal(numbers.hook_seconds, Number(frameToSeconds(hookLine.start_frame + framesFor(hookLine.audio_samples)).toFixed(1)));
+  assert.ok(numbers.hook_seconds < frameToSeconds(hookLine.end_frame));
   assert.equal(numbers.satisfaction.count, 2);
   assert.equal(numbers.satisfaction.first_seconds, numbers.satisfaction.positions[0]);
   assert.equal(numbers.cliffhanger_last, true);
@@ -422,7 +427,7 @@ test("the retention numbers are measured on the script's estimated timeline, and
   assert.deepEqual(scriptVerdict(passing, BINGE), { passed: true, problems: [] });
   assert.deepEqual(scriptVerdict({ ...passing, retention: null }, SERIES), { passed: true, problems: [] }, "the classic series has no timing rule");
   assert.match(scriptVerdict({ ...passing, retention: null }, BINGE).problems.join(" "), /named no hook/);
-  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: 12 } }, BINGE).problems.join(" "), /hook ends at 12 s/);
+  assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: 12 } }, BINGE).problems.join(" "), /hook line ends at 12 s; shorten it/);
   // A hook_line the script does not have measures as null; the site refuses a null, so the worker must too.
   assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, hook_seconds: null } }, BINGE).problems.join(" "), /hook_line is not a line of the script/);
   assert.match(scriptVerdict({ ...passing, retention: { ...passing.retention, satisfaction: { count: 0, first_seconds: null, positions: [] } } }, BINGE).problems.join(" "), /only 0 satisfaction beats[\s\S]*satisfaction_lines are not lines/);

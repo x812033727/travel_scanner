@@ -9,7 +9,7 @@
 import path from "node:path";
 
 import { eachLine } from "../core/schema.mjs";
-import { estimateTimeline, frameToSeconds } from "../core/timeline.mjs";
+import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./prompts.mjs";
 
@@ -177,7 +177,9 @@ export function retentionNumbers(video, retention) {
   const satisfaction = (Array.isArray(retention.satisfaction_lines) ? retention.satisfaction_lines : []).map((id) => lines.get(id)).filter(Boolean);
   const positions = satisfaction.map((line) => Number(frameToSeconds(line.start_frame).toFixed(1)));
   return {
-    hook_seconds: hook ? Number(frameToSeconds(hook.end_frame).toFixed(1)) : null,
+    // The hook lands when its words end: the pause after the line and the gap to the next shot
+    // are not part of it (a line's end_frame includes both).
+    hook_seconds: hook ? Number(frameToSeconds(hook.start_frame + framesFor(hook.audio_samples)).toFixed(1)) : null,
     satisfaction: { count: satisfaction.length, first_seconds: positions.length ? Math.min(...positions) : null, positions },
     cliffhanger_last: Boolean(retention.cliffhanger_line) && ids.at(-1) === retention.cliffhanger_line,
   };
@@ -208,7 +210,7 @@ export function scriptVerdict(check, series) {
       const count = retention.satisfaction?.count;
       const first = retention.satisfaction?.first_seconds;
       if (typeof hook !== "number") problems.push("the checker's hook_line is not a line of the script: name the first line's id");
-      else if (hook > HOOK_MAX_SECONDS) problems.push(`the hook ends at ${hook} s; it must land inside ${HOOK_MAX_SECONDS} s: make the first line the hook`);
+      else if (hook > HOOK_MAX_SECONDS) problems.push(`the hook line ends at ${hook} s; shorten it (or move what follows into the next line) so its words end inside ${HOOK_MAX_SECONDS} s`);
       if (typeof count !== "number" || count < MIN_SATISFACTION) problems.push(`only ${typeof count === "number" ? count : 0} satisfaction beats are played; at least ${MIN_SATISFACTION}`);
       if (typeof first !== "number") problems.push("the checker's satisfaction_lines are not lines of the script: name their ids");
       else if (first > FIRST_SATISFACTION_MAX_SECONDS) problems.push(`the first satisfaction beat starts at ${first} s; it must land inside ${FIRST_SATISFACTION_MAX_SECONDS} s`);

@@ -11,7 +11,7 @@ The worker runs this as the planner stage with variant `compilation` (`tools/vid
 - `title`: at most 100 characters, no angle brackets, following the genre's `title_formula`: the setting in one clause, the awakening or return, one concrete satisfaction, the villain still dreaming (e.g. 重生回開服當天，她覺醒逆天天賦，背叛者還在做夢，她已磨好刀｜一口氣看完). Two alternatives in `titles`.
 - `description`: zh-TW, within `description_budget_bytes` (with forty episodes that is 500 bytes, about 166 characters): the first two lines say what the story is and who it is for, then what happens without spoiling the end. The chapters, the article link and the sources are appended by the tool.
 - `tags`: at most 500 characters in all, including 漫劇, AI漫劇, 一口氣看完 and the genre's.
-- `thumbnail`: `{"headline": ≤ 12 characters of the biggest promise, "tag": ≤ 6 characters or null, "episode": n, "shot": id}`, naming one of `thumbnail_candidates` with a character's face and the highest judge score. The `thumb` template draws the headline and tag over that keyframe.
+- `thumbnail`: `{"headline": ≤ 12 characters of the biggest promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its slug; the tool also accepts its number), "shot": its "shot"}`, naming one of `thumbnail_candidates` (`[{episode, number, shot, judge, characters, prompt}]`) with a character's face and the highest judge score. The `thumb` template draws the headline and tag over that keyframe.
 
 ## Answer
 

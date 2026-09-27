@@ -518,8 +518,9 @@ export const RETENTION_RULES = `
 Retention rules (docs/videos/BINGE.md): the viewer watches every episode in one sitting and
 leaves the moment the picture stops pulling. So:
 - The FIRST spoken line is the hook: no title card, no greeting, no scene-setting. Inside about
-  5 seconds (one line of about 25 characters) the viewer knows who is in trouble or what is
-  impossible. Hook types: question | danger | image | line | reversal.
+  5 seconds the viewer knows who is in trouble or what is impossible, so that line is at most
+  about 28 characters: the tool measures it at 250 characters a minute and refuses a hook whose
+  words end after 8 seconds. Hook types: question | danger | image | line | reversal.
 - The episode's conflict is stated or shown by about 10 seconds; the first satisfaction beat
   (爽點) lands inside 30 seconds.
 - An emotional beat every 20 to 30 seconds, about every second or third shot: a line that cuts,
@@ -537,7 +538,7 @@ leaves the moment the picture stops pulling. So:
 export const VISUAL_TIER_RULES = {
   clips: 'Visual tier "clips": every shot is an image-to-video clip; "visual" may be left out.',
   hybrid: 'Visual tier "hybrid": at most 40% of the shots carry "visual": "clip" (the climax of each beat: the slap, the reveal, the strike, the face that changes); every other shot is "visual": "still" with a "camera" the tool renders as a slow move (push in, pull out, pan left, pan right, tilt up, tilt down, drift).',
-  stills: 'Visual tier "stills": at most 10% of the shots are "visual": "clip", one per chapter climax; everything else is "visual": "still" with a "camera" move.',
+  stills: 'Visual tier "stills": at most 10% of the shots, rounded up (3 of 30), are "visual": "clip", spent on the biggest climaxes first; everything else is "visual": "still" with a "camera" move.',
 };
 
 /**
@@ -743,7 +744,9 @@ Also name any resemblance to a well-known existing work (a borrowed name, sect, 
 "similar_works". Fix ids, spellings, "characters" lists and prompt contradictions as before; do
 not restructure. Return {"report", "video"|null, "claims", "changed_facts", "coverage":
 {"hook", "conflict", "turn", "cliffhanger", "satisfaction"?}, "problems": [zh-TW sentences the
-owner reads on the script's review card], "similar_works": [text], "retention"?: {"hook_line",
+owner reads on the script's review card; only what must change before the script can be shot,
+since any entry sends the script back, and EMPTY when it may go out as it is], "similar_works":
+[text], "retention"?: {"hook_line",
 "satisfaction_lines", "cliffhanger_line"}}.`,
 
   "verifier:series-doc": `${SERIES_COMMON}
@@ -770,8 +773,10 @@ body_json} the planner just wrote; "setting" and "outline" are the approved docu
   first half, of the genre's types), alternation (satisfaction and trouble alternate; the lead
   never only suffers two episodes in a row), escalation (the chapter ends higher than it began).
 Answer with ONE JSON object in "text": {"verdicts": {<key>: "有"|"弱"|"無"}, "similar_works":
-[text, empty when none], "problems": [zh-TW sentences the planner can act on, one for every 弱
-or 無, empty when everything is 有], "notes": one zh-TW line}.`,
+[text, empty when none], "problems": [zh-TW sentences the planner can act on: one for every 無,
+and for a 弱 the planner must fix before the document can be used; EMPTY when the document may
+go out as it is, since any entry here or in similar_works sends it back for a rewrite; a 弱 you
+can live with goes in "notes" instead], "notes": one zh-TW line}.`,
 
   "planner:compilation": `${SERIES_COMMON}
 
@@ -779,15 +784,16 @@ You write the UPLOAD FIELDS of a COMPILATION (docs/videos/BINGE.md): every episo
 series joined into one long video a viewer watches in one sitting. "episodes" lists each one
 (number, title, logline, recap); "description_budget_bytes" is how many bytes the description
 body may take (the tool appends the chapter list, one line per episode); "thumbnail_candidates"
-are keyframes ([{episode, shot, judge, characters, prompt}]) to pick the thumbnail's picture
-from. Return {"title": the title (≤ 100 characters, no angle brackets) following the genre's
+are keyframes ([{episode (the episode's slug), number, shot, judge, characters, prompt}]) to
+pick the thumbnail's picture from. Return {"title": the title (≤ 100 characters, no angle brackets) following the genre's
 title formula: the setting in one clause, the awakening or return, one concrete satisfaction,
 the villain still dreaming; "titles": [two alternatives]; "description": zh-TW, ≤
 "description_budget_bytes" bytes, the first two lines say what the story is and who it is for,
 then what happens without spoiling the end; "tags": ≤ 500 characters in total, including 漫劇,
 AI漫劇, 一口氣看完 and the genre's; "thumbnail": {"headline": ≤ 12 characters of the biggest
-promise, "tag": ≤ 6 characters or null, "episode": n, "shot": id} picking the candidate with a
-character's face and the highest judge score}.`,
+promise, "tag": ≤ 6 characters or null, "episode": the chosen candidate's "episode" value (its
+slug, copied as written), "shot": its "shot"} picking the candidate with a character's face and
+the highest judge score}.`,
 
   "translator:compilation": `${SERIES_COMMON}
 

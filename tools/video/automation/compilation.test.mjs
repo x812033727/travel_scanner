@@ -31,6 +31,8 @@ test("the description budget leaves room for the chapter lines, and the planner'
   assert.match(metadataProblem({ ...good, title: "（合集標題待企劃）" }, candidates), /placeholder/);
   assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, headline: "這個標題有十三個字實在太長" } }, candidates), /headline/);
   assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, shot: "other" } }, candidates), /thumbnail_candidates/);
+  assert.equal(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, episode: 1 } }, [{ episode: "e1", number: 1, shot: "opening" }]), null, "the episode's number names the candidate as well as its slug");
+  assert.match(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, episode: 2 } }, [{ episode: "e1", number: 1, shot: "opening" }]), /thumbnail_candidates/);
   assert.equal(metadataProblem({ ...good, thumbnail: { ...good.thumbnail, shot: "other" } }, []), null, "no candidates: any picture name passes and the thumb draws on the theme");
   assert.match(metadataProblem({ ...good, tags: ["x".repeat(501)] }, candidates), /tags/);
   assert.match(metadataProblem({ ...good, tags: [] }, candidates), /at least one word/);
