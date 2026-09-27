@@ -155,7 +155,10 @@ async def test_a_video_goes_from_report_to_decision_and_back_to_the_pipeline(
             ProjectIn(title="AI 模型怎麼挑", stage="published", youtube_video_id="abcDEF123_-"),
         )
         assert published.youtube_video_id == "abcDEF123_-"
-        assert store.path(slug, new_cut) is None, "published videos keep no previews"
+        # Since the hands-off work (docs/videos/HANDS-OFF.md) a published video keeps its previews
+        # until it has been on YouTube for seven days; prune_published_previews removes the mp4
+        # then (tests/test_video_reviews_youtube.py), so reporting the id alone deletes nothing.
+        assert store.path(slug, new_cut) is not None, "reporting the id keeps the previews"
 
 
 @pytest.mark.asyncio(loop_scope="module")

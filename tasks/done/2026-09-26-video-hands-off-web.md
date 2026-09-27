@@ -19,6 +19,7 @@ scope:
   - apps/api/app/video_reviews/admin_api.py
   - apps/api/app/video_reviews/admin_service.py
   - apps/api/tests/test_video_reviews_youtube.py
+  - apps/api/tests/test_video_reviews_integration.py
   - apps/api/tests/test_video_reviews.py
   - apps/web/messages/en/admin.json
   - apps/web/messages/ja/admin.json
@@ -105,3 +106,4 @@ cd apps/web && npx vitest run components/admin-video && npm run lint && npm run 
 - 複製鈕用 Clipboard API，失敗時（非安全來源或被拒）把該欄位的文字選取起來並提示按 Ctrl+C。
 - 「已上傳」表單前端先用同一套規則解析 id（`youtubeVideoId`），看不出 id 就不能送；`datetime-local` 轉成 ISO（帶 Z）再送。影片頁在「確認上架」已核准、還沒有 id 時也顯示這張表單，深連結 `?video=` 直接可用。
 - `previewsGone` 的文案改成「mp4 滿 7 天後刪除，其餘留著」；新增的 52 個鍵五語都在 `admin.videoReviews.*`。
+- 2026-09-27（claude-fable-5-1-video-drama）：CI 的 Postgres 整合測試 `test_video_reviews_integration.py` 還在驗舊規則「回報 YouTube id 就清掉預覽檔」，改成驗新規則（回報 id 不刪，滿 7 天由 `prune_published_previews` 刪 mp4）；檔案加進 scope。
