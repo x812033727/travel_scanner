@@ -6,8 +6,10 @@ from datetime import UTC, datetime
 from uuid import UUID
 
 from redis import Redis
+from redis.exceptions import RedisError
 from rq import Queue, Retry
 
+from app.admin.service import load_runtime_settings
 from app.config import get_settings
 from app.db import SessionFactory, engine
 from app.news_automation.jobs import enqueue_candidate_once, enqueue_source_scan
@@ -15,6 +17,26 @@ from app.news_automation.pipeline import orphaned_candidates, recover_stalled_ca
 from app.news_automation.scanner import claim_due_sources
 
 logger = logging.getLogger(__name__)
+
+
+def jev_budget_left(budget: int, now: datetime | None = None) -> bool:
+    """Whether today's Jev budget still has room, read from the counter Jev calls spend.
+
+    The key is the one ``app.ai.jev.consume_jev_call`` increments. An unreadable counter
+    says no, so paused candidates keep waiting for 00:00 UTC as before.
+    """
+
+    day = (now or datetime.now(UTC)).date().isoformat()
+    try:
+        connection = Redis.from_url(get_settings().redis_url)
+        try:
+            used = connection.get(f"jev-quota:{day}")
+        finally:
+            connection.close()
+    except RedisError:
+        return False
+    return int(used or 0) < budget
+
 
 
 async def tick() -> int:
@@ -28,7 +50,10 @@ async def tick() -> int:
     try:
         async with SessionFactory() as session:
             recovered = await recover_stalled_candidates(session)
-            orphaned = await orphaned_candidates(session)
+            budget = (await load_runtime_settings(session)).jev_daily_call_budget
+            await session.rollback()
+            room = await asyncio.to_thread(jev_budget_left, budget)
+            orphaned = await orphaned_candidates(session, jev_budget_left=room)
         rerun = [
             *((candidate_id, "recovered") for candidate_id in recovered),
             *((candidate_id, "orphaned") for candidate_id in orphaned),

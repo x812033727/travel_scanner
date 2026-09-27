@@ -228,7 +228,9 @@ budget is spent at the duplicate check, the candidate goes back to `discovered` 
 `news_jev_quota_paused` instead of waiting in the review queue as an uncertain duplicate;
 nothing is uncertain about the story. The orphan sweep skips it until 00:00 UTC (08:00 in
 Taipei) and then queues it again, 20 a minute, so each day runs as many as that day's budget
-allows and the rest pause again. A check that did reach Jev and came back between 0.25 and
+allows and the rest pause again. Raising the budget in the admin during the day that spent it
+does not wait for 00:00 UTC: every minute the scheduler compares today's count with the saved
+budget, and while there is room the sweep queues the paused candidates at once. A check that did reach Jev and came back between 0.25 and
 0.85 still waits for an editor. Later Jev stages keep their holds: a spent budget at the Jev
 final gate is `news_jev_final_hold`, which the owner can publish from.
 
