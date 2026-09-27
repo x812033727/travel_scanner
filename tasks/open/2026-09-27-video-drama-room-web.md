@@ -1,11 +1,11 @@
 ---
 id: 2026-09-27-video-drama-room-web
 title: Video drama room web: the discussion thread on documents and screenplays, the one-off episode's page
-status: open
+status: in-progress
 priority: P1
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1-video-languages
+claimed_at: 2026-09-27T11:36:45Z
 created_at: 2026-09-27T06:16:02Z
 completed_at:
 branch:
