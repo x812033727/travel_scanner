@@ -32,6 +32,14 @@ RETURNING = DEPARTURE + timedelta(days=4)
 DEPARTURE_MONTH = DEPARTURE.replace(day=1).isoformat()
 
 
+@pytest.fixture(autouse=True)
+def _parser_today_is_the_suites_today(monkeypatch: pytest.MonkeyPatch) -> None:
+    # TODAY is taken once, when this module loads; the parser asks for today on every call. A CI
+    # run that crossed 00:00 UTC between the two failed `assert TODAY.isoformat() in
+    # instructions` on #827 and #834 (2026-09-27). Both now read the same day.
+    monkeypatch.setattr(trip_parser_module, "_today", lambda: TODAY)
+
+
 def draft_body(**overrides: Any) -> str:
     payload: dict[str, Any] = {
         "origin": "TPE",

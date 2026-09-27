@@ -14,15 +14,17 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import path from "node:path";
 
 import { approve, sha256File } from "../core/approvals.mjs";
+import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
-import { eachLine, LINE_ID } from "../core/schema.mjs";
+import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { ARTIFACTS, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview, sourceGuideOf } from "../review/sync.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
+import { rewriteProblems } from "./rewrite.mjs";
 import { castFrom, episodeBrief, seriesStep } from "./series.mjs";
 
 export const STATE_FILE = "auto.json";
@@ -35,6 +37,9 @@ export const MAX_STAGE_FAILURES = 2;
 // A drama's failed sheets, keyframes or clips are handed to the writer to fix the prompts, this
 // many times per kind, before the video is blocked for a person (docs/videos/DRAMA.md).
 export const MAX_PROMPT_FIX_ROUNDS = 2;
+// Once the retakes are spent, the lines Jev still hears wrong are reworded by the listener and
+// retaken, this many rounds in all, before the narration waits for the owner (docs/videos/HANDS-OFF.md §旁白).
+export const MAX_REWRITE_ROUNDS = 2;
 const MAX_SOURCE_PAGES = 25;
 const MAX_SOURCE_CHARS = 350_000;
 const REQUIRED_SECTIONS = ["## 觀眾看完能做到的事", "## 站主觀點", "## 大綱"];
@@ -474,6 +479,7 @@ export class Automation {
       verified: false,
       listener_done: false,
       retakes: 0,
+      rewrites: 0,
       notes: [],
     };
     saveState(this.workdir(plan.slug), state);
@@ -565,6 +571,7 @@ export class Automation {
       verified: false,
       listener_done: false,
       retakes: 0,
+      rewrites: 0,
       prompt_fixes: {},
       notes: request.note ? [`owner request: ${request.note}`] : [],
     };
@@ -610,6 +617,7 @@ export class Automation {
       verified: false,
       listener_done: false,
       retakes: 0,
+      rewrites: 0,
       prompt_fixes: {},
       chosen: "A",
       notes: series.note ? [`series note: ${series.note}`] : [],
@@ -1129,11 +1137,114 @@ export class Automation {
       if (redo.code !== 0) return this.block(state,`retake failed: ${redo.out.trim().split("\n").at(-1)}`);
       check = await run(ctx, ["check-audio", "--slug", state.slug]);
     }
+    // The retakes are spent and Jev still hears some lines wrong: the listener rewords those
+    // lines, they are retaken and checked again, MAX_REWRITE_ROUNDS rounds in all
+    // (docs/videos/HANDS-OFF.md §旁白). What is still flagged after that waits for the owner.
+    let rounds = 0;
+    let rewritten = 0;
+    let problems = [];
+    while (check.code === 1 && (state.rewrites ?? 0) < MAX_REWRITE_ROUNDS) {
+      const round = await this.rewriteNarration(state, problems);
+      if (round.stopped) return round.stopped;
+      rounds += 1;
+      rewritten += round.ids.length;
+      problems = round.problems;
+      // Nothing changed: the same clips would only be flagged again; the next round, if any,
+      // is told why the rewrites were refused.
+      if (!round.ids.length) continue;
+      const redo = await run(ctx, ["tts", "--slug", state.slug, "--redo", round.flagsFile]);
+      if (redo.code !== 0) return this.block(state, `retake after the rewrite failed: ${lastLine(redo.out)}`);
+      check = await run(ctx, ["check-audio", "--slug", state.slug]);
+    }
     if (check.code === 4) return this.later(`${state.slug}: narration check could not finish (${check.out.trim().split("\n").at(-1)}); the next run tries again`);
     const pushed = await run(ctx, ["review-push", "--slug", state.slug, "--gate", "audio"]);
     if (pushed.code !== 0) return this.later(`${state.slug}: could not send the narration for review: ${pushed.out.trim()}`);
     await this.pull(state.slug);
-    return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}) and sent for review`;
+    const rewriting = rounds ? `; ${rewritten} lines rewritten in ${rounds} rewrite round${rounds === 1 ? "" : "s"}` : "";
+    return `${state.slug}: narration checked (${check.code === 0 ? "Jev passed every line" : "some lines flagged"}${rewriting}) and sent for review`;
+  }
+
+  /**
+   * One rewrite round (docs/videos/HANDS-OFF.md §旁白): the lines check-audio still flags, with
+   * what the transcriber heard, go to the listener's rewrite pass. A rewrite that keeps every
+   * number, Latin word and dictionary term (rewrite.mjs) replaces the line in video.json, the
+   * rest are dropped with the reason in the notes; a script the rewrites make fail lint is put
+   * back as it was. The accepted rewrites go to review/rewrites.json for the review card and
+   * their ids to a flags file for `tts --redo`. `previousProblems` are the refusals of the round
+   * before, so the listener does not repeat them. Answers { ids, flagsFile, problems }, or
+   * { stopped } with this run's line when the answer was unusable.
+   */
+  async rewriteNarration(state, previousProblems = []) {
+    const { ctx } = this;
+    const workdir = this.workdir(state.slug);
+    const dir = docDir(state.slug, ctx.root);
+    const reviewDir = path.join(workdir, "review");
+    const check = readJson(path.join(reviewDir, "check.json"), { lines: {} });
+    const flags = readJson(path.join(reviewDir, "check-flags.json"), { flags: [], notes: {} });
+    const file = path.join(dir, "video.json");
+    const source = readFileSync(file, "utf8");
+    const video = JSON.parse(source);
+    const lines = new Map([...eachLine(video)].map(({ line }) => [line.id, line]));
+    const flagged = (flags.flags ?? [])
+      .filter((id) => lines.has(id))
+      .map((id) => ({ id, text: spokenText(lines.get(id)), heard: check.lines?.[id]?.heard ?? "", jev: typeof check.lines?.[id]?.noul === "number" ? check.lines[id].noul : null }));
+    const round = (state.rewrites ?? 0) + 1;
+    const lexicon = readJson(lexiconFile(ctx.root), emptyLexicon());
+    const payload = { lines: flagged, lexicon: Object.keys(lexicon.terms), round, ...(previousProblems.length ? { previous_problems: previousProblems } : {}) };
+    const answer = await this.stage("listener", state.slug, payload, 16_000, state.format, "rewrite");
+    if (!Array.isArray(answer?.lines)) return { stopped: await this.retryLater(state, "listener", `rewrite round ${round} answered without a lines array`) };
+    this.cleared(state, "listener");
+    const accepted = [];
+    const problems = [];
+    const seen = new Set();
+    for (const entry of answer.lines) {
+      const id = String(entry?.id ?? "");
+      const before = flagged.find((each) => each.id === id);
+      if (!before) {
+        problems.push(`${id || "?"}: not one of the flagged lines`);
+        continue;
+      }
+      if (seen.has(id)) continue;
+      seen.add(id);
+      const after = typeof entry.text === "string" ? entry.text.trim() : "";
+      if (!after) {
+        problems.push(`${id}: the rewrite is empty`);
+        continue;
+      }
+      if (after === before.text) continue;
+      const found = rewriteProblems(before.text, after, { lexicon });
+      if (found.length) {
+        problems.push(`${id}: ${found.join("; ")}`);
+        continue;
+      }
+      accepted.push({ id, before: before.text, after, heard: before.heard });
+    }
+    if (accepted.length) {
+      for (const { id, after } of accepted) {
+        const line = lines.get(id);
+        line.text = after;
+        // The rewrite is what the voice says now; a spoken form written for the old text would fail lint.
+        delete line.say;
+        delete line.say_for;
+      }
+      writeVideo(dir, video);
+      const errors = lintErrors(ctx, state.slug);
+      if (errors.length) {
+        writeFileSync(file, source);
+        problems.push(`${accepted.map((each) => each.id).join(", ")}: lint refuses the rewritten script: ${errors.slice(0, 3).join("; ")}`);
+        accepted.length = 0;
+      }
+    }
+    state.rewrites = round;
+    for (const each of accepted) state.notes.push(`narration rewritten: ${each.id} 「${each.before}」 → 「${each.after}」`);
+    for (const problem of problems) state.notes.push(`narration rewrite dropped: ${problem}`);
+    // Every round's accepted rewrites, in order: review/sync.mjs sends them as the audio review's payload.rewrites.
+    atomicWrite(path.join(reviewDir, "rewrites.json"), `${JSON.stringify([...readJson(path.join(reviewDir, "rewrites.json"), []), ...accepted], null, 2)}\n`);
+    const flagsFile = path.join(reviewDir, "rewrite-flags.json");
+    if (accepted.length) atomicWrite(flagsFile, `${JSON.stringify({ slug: state.slug, flags: accepted.map((each) => each.id) }, null, 2)}\n`);
+    saveState(workdir, state);
+    this.log(`  rewrite round ${round}: ${accepted.length} of ${flagged.length} flagged lines rewritten${problems.length ? `, ${problems.length} dropped` : ""}`);
+    return { ids: accepted.map((each) => each.id), flagsFile, problems };
   }
 
   async captions(state) {

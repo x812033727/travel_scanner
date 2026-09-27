@@ -20,8 +20,8 @@ import { jpegBytes } from "../qa/test-images.mjs";
 import { PART_BYTES } from "../review/sync.mjs";
 import { automationClient } from "./client.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, planProblem, settle, sheetDone } from "./flow.mjs";
-import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, parseAnswer, references, STANCE_HEADING } from "./prompts.mjs";
+import { Automation, automatedVideos, mainGuide, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, settle, sheetDone } from "./flow.mjs";
+import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, STANCE_HEADING } from "./prompts.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
 const SITE = "https://site.test";
@@ -962,4 +962,147 @@ test("from the picked outline to YouTube without the owner: the final gate sends
   assert.equal(status.next, null);
   assert.equal(await automation.step(), null, "recorded once");
   assert.equal(site.listed.get(slug).youtube_video_id, "dQw4w9WgXcQ");
+});
+
+// The narration line Jev keeps hearing wrong (docs/videos/HANDS-OFF.md §旁白): the fixture's
+// x9fe, 它 heard as 他, which the same-sound rule would pass in the real check but stands here for
+// any line that is flagged after every retake.
+const ORIGINAL = fixture().scenes[1].lines[0].text;
+const HEARD_WRONG = "第一個問題是，你要他做什麼工作。";
+
+/**
+ * A tutorial taken to the narration gate with one retake allowed: the fake check-audio flags
+ * x9fe while `stillFlagged(video)` says so, writing check.json and check-flags.json as the real
+ * one does; the listener's rewrite pass answers `rewrite(body)`. tts writes a synthetic
+ * narration for the script as it stands; review-push and review-pull are the real commands.
+ */
+async function narrationGate({ rewrite, stillFlagged }) {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  assert.equal(fixture().scenes[1].lines[0].id, "x9fe");
+  const video = { ...fixture(), slug };
+  const answers = { ...answersFor(slug, { applies: "1、2" }), listener: (body) => (body.variant === "rewrite" ? rewrite(body) : { video, edits: [] }) };
+  const site = fakeSite({ answers, settings: { channel_stance: STANCE, max_retake_rounds: 1 }, judge: () => jevPick("B") });
+  const clock = { now: Date.parse("2026-09-27T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  ctx.encode = async (kind, source, target) => writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+  const workdir = path.join(box.work, slug);
+  const docFile = path.join(box.root, "docs", "videos", slug, "video.json");
+  const lexicon = () => readJson(path.join(box.root, "docs", "videos", "lexicon.json"));
+  const runs = [];
+  const redos = [];
+  ctx.runCommand = async (command, runCtx) => {
+    runs.push(command.join(" "));
+    const [name] = command;
+    const current = existsSync(docFile) ? readJson(docFile) : null;
+    const write = (file, data) => atomicWrite(path.join(workdir, file), JSON.stringify(data));
+    if (name === "tts") {
+      mkdirSync(workdir, { recursive: true });
+      writeSyntheticNarration(current, lexicon(), workdir);
+      const redo = command.indexOf("--redo");
+      if (redo >= 0) redos.push([path.basename(command[redo + 1]), readJson(command[redo + 1]).flags]);
+      return { code: 0, out: "narration" };
+    }
+    if (name === "check-audio") {
+      const lines = Object.fromEntries([...eachLine(current)].map(({ line }) => [line.id, { match: true, match_kind: "exact", intended: line.text, heard: line.text, noul: null }]));
+      const flagged = stillFlagged(current);
+      if (flagged) Object.assign(lines.x9fe, { match: false, match_kind: null, heard: HEARD_WRONG, noul: 0.2 });
+      write("review/check.json", { lines });
+      write("review/check-flags.json", { slug, speech_hash: "s", flags: flagged ? ["x9fe"] : [], notes: flagged ? { x9fe: `Jev 0.20: heard 「${HEARD_WRONG}」` } : {} });
+      return { code: flagged ? 1 : 0, out: flagged ? "1 flagged" : "every line passed" };
+    }
+    const { main: cli } = await import("../cli.mjs");
+    let out = "";
+    const sink = { write: (text) => (out += text) };
+    const code = await cli(command, { ...runCtx, stdout: sink, stderr: sink });
+    return { code, out };
+  };
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  for (const expected of [/Jev picked outline B/, /Jev chose outline B/, /script drafted/, /fact-check round 1/, /listener edit/, /narration synthesized/]) assert.match(await automation.step(), expected);
+  return {
+    site,
+    automation,
+    workdir,
+    runs,
+    redos,
+    state: () => automatedVideos(box.work)[0],
+    reviews: (gate) => site.reviewsOf(slug).filter((review) => review.gate === gate),
+    lineText: () => readJson(docFile).scenes[1].lines[0].text,
+    rewriteCalls: () => site.calls.run.filter((call) => call.stage === "listener" && call.variant === "rewrite"),
+  };
+}
+
+test("with the retakes spent, the listener rewords the line Jev keeps hearing wrong, only that line is retaken, and the re-check lets the site approve the narration", async () => {
+  const REWRITE = "第一個問題是，你要它做哪一種工作。";
+  const gate = await narrationGate({ rewrite: () => ({ lines: [{ id: "x9fe", text: REWRITE }] }), stillFlagged: (video) => video.scenes[1].lines[0].text === ORIGINAL });
+  assert.match(await gate.automation.step(), /narration checked \(Jev passed every line; 1 lines rewritten in 1 rewrite round\) and sent for review$/);
+  const [asked] = gate.rewriteCalls();
+  assert.equal(gate.rewriteCalls().length, 1);
+  assert.deepEqual(asked.payload.lines, [{ id: "x9fe", text: ORIGINAL, heard: HEARD_WRONG, jev: 0.2 }], "only the flagged line, with what was heard");
+  assert.ok(asked.payload.lexicon.includes("Sulafat"), "the dictionary's terms, the writer's additions included");
+  assert.equal(asked.payload.round, 1);
+  assert.equal("previous_problems" in asked.payload, false);
+  assert.deepEqual([asked.format, asked.variant], ["slides", "rewrite"]);
+  assert.ok(asked.instructions.startsWith(LISTENER_REWRITE));
+  assert.match(LISTENER_REWRITE, /Rewrite ONLY these sentences' wording[\s\S]*「和」→「跟」[\s\S]*「答」→「回答」[\s\S]*「旗艦」→「旗艦模型」[\s\S]*\{"lines": \[\{"id"/);
+  assert.equal(instructionsFor("listener", "drama", "", "rewrite"), LISTENER_REWRITE, "the same text for a drama");
+  assert.equal(gate.lineText(), REWRITE, "the script line is the rewrite");
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe"]], ["rewrite-flags.json", ["x9fe"]]], "one retake from the check's flags, then exactly the rewritten line");
+  assert.equal(gate.runs.filter((run) => run.startsWith("check-audio")).length, 3, "the first check, the one after the retake, the one after the rewrite");
+  const rewrites = readJson(path.join(gate.workdir, "review", "rewrites.json"));
+  assert.deepEqual(rewrites, [{ id: "x9fe", before: ORIGINAL, after: REWRITE, heard: HEARD_WRONG }]);
+  const [audio] = gate.reviews("audio");
+  assert.deepEqual(audio.payload.rewrites, rewrites, "the review card gets the list");
+  assert.equal(audio.payload.check.flagged, 0);
+  assert.match(audio.summary, /Jev 標記 0 句；改寫 1 句$/);
+  assert.deepEqual([audio.status, audio.note], ["approved", "Jev 判斷每一句都唸對了，依設定自動核准"], "the re-check passed every line and the owner's switch is on");
+  assert.ok(readApprovals(gate.workdir).approvals.some((entry) => entry.gate === "audio"));
+  const state = gate.state();
+  assert.deepEqual([state.retakes, state.rewrites], [1, 1]);
+  assert.ok(state.notes.includes(`narration rewritten: x9fe 「${ORIGINAL}」 → 「${REWRITE}」`));
+  assert.equal(MAX_REWRITE_ROUNDS, 2);
+});
+
+test("a rewrite that changes a number is dropped, the line keeps its text, and after the rounds the narration waits for the owner with the reasons in the notes", async () => {
+  const gate = await narrationGate({ rewrite: () => ({ lines: [{ id: "x9fe", text: "第 1 個問題是，你要它做什麼工作。" }] }), stillFlagged: (video) => video.scenes[1].lines[0].text === ORIGINAL });
+  assert.match(await gate.automation.step(), /narration checked \(some lines flagged; 0 lines rewritten in 2 rewrite rounds\) and sent for review$/);
+  const asked = gate.rewriteCalls();
+  assert.equal(asked.length, MAX_REWRITE_ROUNDS);
+  assert.equal("previous_problems" in asked[0].payload, false);
+  assert.deepEqual(asked[1].payload.previous_problems, ["x9fe: number 1 was added"], "the second round is told why the first was refused");
+  assert.equal(gate.lineText(), ORIGINAL, "the line keeps its text");
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe"]]], "nothing was retaken for a dropped rewrite");
+  assert.equal(gate.runs.filter((run) => run.startsWith("check-audio")).length, 2, "the same clips are not checked again");
+  assert.deepEqual(readJson(path.join(gate.workdir, "review", "rewrites.json")), []);
+  const [audio] = gate.reviews("audio");
+  assert.equal(audio.status, "pending", "the owner decides");
+  assert.deepEqual(audio.payload.rewrites, []);
+  assert.equal(audio.payload.flagged_lines.length, 1);
+  assert.match(audio.summary, /Jev 標記 1 句$/);
+  assert.equal(gate.state().rewrites, MAX_REWRITE_ROUNDS);
+  assert.deepEqual(gate.state().notes.filter((note) => note.startsWith("narration rewrite")), ["narration rewrite dropped: x9fe: number 1 was added", "narration rewrite dropped: x9fe: number 1 was added"]);
+  assert.equal(await gate.automation.step(), null, "the narration waits for the owner");
+});
+
+test("two rewrite rounds that Jev still flags send the narration to the owner with both rewrites listed", async () => {
+  const texts = { 1: "第一個問題是，你要它做哪一種工作。", 2: "第一個問題是，你要它處理哪一種工作。" };
+  const gate = await narrationGate({ rewrite: (body) => ({ lines: [{ id: "x9fe", text: texts[body.payload.round] }] }), stillFlagged: () => true });
+  assert.match(await gate.automation.step(), /narration checked \(some lines flagged; 2 lines rewritten in 2 rewrite rounds\) and sent for review$/);
+  const asked = gate.rewriteCalls();
+  assert.deepEqual(asked.map((call) => call.payload.lines[0].text), [ORIGINAL, texts[1]], "the second round rewrites the line as the first round left it");
+  assert.deepEqual(asked.map((call) => call.payload.round), [1, 2]);
+  assert.equal(gate.lineText(), texts[2]);
+  assert.deepEqual(gate.redos, [["check-flags.json", ["x9fe"]], ["rewrite-flags.json", ["x9fe"]], ["rewrite-flags.json", ["x9fe"]]]);
+  assert.equal(gate.runs.filter((run) => run.startsWith("check-audio")).length, 4);
+  const [audio] = gate.reviews("audio");
+  assert.equal(audio.status, "pending");
+  assert.deepEqual(audio.payload.rewrites, [
+    { id: "x9fe", before: ORIGINAL, after: texts[1], heard: HEARD_WRONG },
+    { id: "x9fe", before: texts[1], after: texts[2], heard: HEARD_WRONG },
+  ]);
+  assert.match(audio.summary, /Jev 標記 1 句；改寫 2 句$/);
+  assert.equal(gate.state().rewrites, MAX_REWRITE_ROUNDS);
+  assert.equal(gate.state().notes.filter((note) => note.startsWith("narration rewritten: ")).length, 2);
+  assert.equal(await gate.automation.step(), null, "the owner decides");
 });

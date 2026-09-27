@@ -223,6 +223,10 @@ test("the narration goes up as an encoded copy, in parts, before its review is s
   const timeline = { fps: 30, total_frames: 90, lines: [{ id: "a" }, { id: "b" }], scenes: [], chapters: [] };
   writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify(timeline));
   writeFileSync(path.join(box.workdir, "narration.wav"), encodeWav(new Int16Array(SAMPLE_RATE * 3)));
+  // The lines the worker's listener reworded after the retakes (docs/videos/HANDS-OFF.md §旁白).
+  const rewrites = [{ id: "b", before: "這就是它的答", after: "這就是它的回答", heard: "這就是它的打" }];
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "rewrites.json"), JSON.stringify(rewrites));
   const encoded = Buffer.alloc(PART_BYTES + 10, 7);
   const encode = async (kind, source, target) => {
     assert.equal(kind, "narration");
@@ -238,6 +242,8 @@ test("the narration goes up as an encoded copy, in parts, before its review is s
   assert.deepEqual(audio.files, [{ role: "narration", sha256: sha(encoded), size: encoded.length, content_type: "audio/mp4" }]);
   assert.equal(Buffer.concat(server.state.files.get(sha(encoded))).equals(encoded), true);
   assert.equal(audio.payload.duration_seconds, 3);
+  assert.deepEqual(audio.payload.rewrites, rewrites, "the review card lists what the listener reworded");
+  assert.match(audio.summary, /Jev 標記 0 句；改寫 1 句$/);
 });
 
 /** A work directory with a narration and a cut, enough for the final gate to hash and preview. */
