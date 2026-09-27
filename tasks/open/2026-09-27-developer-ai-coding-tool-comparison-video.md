@@ -40,3 +40,4 @@ scope:
 
 2026-09-27：Claude Code 2.1.270 與 Codex CLI 0.158.0-alpha.2.1 各修好同題，事後驗收皆 4/4；Gemini CLI 0.61.0 在登入階段因 `IneligibleTierError: UNSUPPORTED_CLIENT` 未啟動。完整證據見 `comparison.md`，原始媒體與 JSON/JSONL 只放 repo 外。Claude 輸出的美元數字是工具估算，不是實際訂閱扣款。遠端審核及 TTS 尚未執行。
 2026-09-28：獨立 verify-1.md、verify-2.md 完成；Google 官方棄用公告與本機登入錯誤重新核對，影片明示 Gemini 未進入程式能力比較。五語字幕經獨立交叉審稿，28 張字卡與縮圖已目視檢查，TTS 正在進行。原始 CLI 輸出只在 repo 外；畫面為實際輸出的視覺化。
+2026-09-28：Gemini Sulafat 旁白完成，`check-audio` 131/131 句、零標記；改寫的八句已同步五語字幕並經獨立覆核，`lint` 零錯誤零警告，最終成片重組中。站主大綱核准、正式站審核、11 項品管與待上架包尚待完成。
