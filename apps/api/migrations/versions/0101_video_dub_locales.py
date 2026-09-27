@@ -1,7 +1,7 @@
 """Per-video dub languages, and the dubs review gate (docs/videos/DUBS.md).
 
-Revision ID: 0100_video_dub_locales
-Revises: 0099_video_drama_series
+Revision ID: 0101_video_dub_locales
+Revises: 0100_video_hands_off
 
 Every video is made in Traditional Chinese; afterwards the owner ticks, on /admin/videos, which of
 en, ja, ko and zh-CN to dub it in (``video_projects.dub_locales``, empty by default), and the
@@ -19,8 +19,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0100_video_dub_locales"
-down_revision: str | None = "0099_video_drama_series"
+revision: str = "0101_video_dub_locales"
+down_revision: str | None = "0100_video_hands_off"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
