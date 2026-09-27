@@ -1,7 +1,7 @@
 ---
 id: 2026-09-27-integrate-batch029-wordpress-contact-guides
 title: Integrate Batch029 WordPress contact guides
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: codex-batch029-integrator
@@ -42,7 +42,7 @@ Four published WordPress guides about contact forms, SMTP delivery, chat/contact
 - [x] Claim exact four-pack/two-pair-task scope after both original owners release their tasks; create a separate worktree from current `origin/main`.
 - [x] Cherry-pick the two content commits plus each pair's review/release handoff commits without conflicts; compare each integrated content blob with its author commit.
 - [x] Run four-pack lint and inspect browser layout receipts and all 48 target assets.
-- [ ] Finish combined checks, rebase onto latest `origin/main`, review the 52 content blobs and PR copy, then push, open the PR and attach it to the task without enabling auto-merge.
+- [x] Finish combined scoped checks, rebase onto latest `origin/main`, review the 52 content blobs and PR copy, then push, open the PR and attach it to the task without enabling auto-merge.
 
 ## How to verify
 
@@ -61,3 +61,5 @@ All four scoped pack lints pass with only inherited `no_summary` and English tex
 Full Windows `test:web` ran for over 18 minutes without a final summary; the coordinator directed us to stop only this worktree's Vitest process and leave the complete suite to PR CI. A broad API pytest run reached about 42% and printed `EEEF` before it was stopped; the exact failing test names were not emitted. A separate `-x` diagnostic run and same-main API baseline worktree were prepared but stopped at the coordinator's direction to avoid delaying PR review; its partial progress log is `C:/Users/x8120/.codex/article-localization-release/batch029-contact/full-api-first-failure.log`. These broad suites are **not** claimed as passed; PR CI must validate them before merge, and any red check must be investigated against the same-main baseline. All scoped content/guide checks above passed.
 
 The coordinator has authorized a PR after validation and rebase, but explicitly deferred merge until the Batch028 production release finishes. This does not authorize any production import or publication. No content has been imported, published or deployed by this integration task.
+
+Review PR: https://github.com/x812033727/travel_scanner/pull/857. It was opened after the `f44555bb97153fa05cf3ca565ffa28db473e86d3` rebase and attached to the Codex task; auto-merge is off. The broad API/web checks above remain CI gates before merge. Keep this task in `review` until the PR is merged and do not mistake the review branch for a production release.
