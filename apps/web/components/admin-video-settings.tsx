@@ -6,6 +6,7 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminErrorState } from "@/components/admin-ui";
 import { AdminVideoSettingsDrama } from "@/components/admin-video-settings-drama";
 import { AdminVideoSettingsTutorial } from "@/components/admin-video-settings-tutorial";
+import { YouTubeConnectionCard } from "@/components/admin-video-youtube";
 import { Button, fieldClass, panelClass, Tabs } from "@/components/community/ui";
 import { Link } from "@/i18n/navigation";
 import { aiModelsHref } from "@/lib/admin-settings-ownership";
@@ -379,6 +380,7 @@ function SharedSettings({ view, canManage, onSaved }: SectionProps) {
       <p className="text-sm leading-6 text-[var(--muted)]">{t("subscriptionHelp")}</p>
     </Panel>
     <SaveRow label={t("saveShared")} busy={busy} saved={saved} error={error} disabled={disabled} onSave={() => void submit()} />
+    <YouTubeConnectionCard />
   </div>;
 }
 

@@ -567,6 +567,10 @@
       "label": "Gemini narration monthly character limit",
       "help": "When the channel voice is a Gemini voice (such as Sulafat), the most text characters sent per month, counted by UTC month; requests over it are refused before anything is sent. Default 300,000, about a hundred 10-minute videos; 0 counts without limiting."
     },
+    "youtube_oauth_client_id": {
+      "label": "YouTube OAuth client id",
+      "help": "Google Cloud → APIs & Services → Credentials → an OAuth 2.0 client of the web application type. Its redirect URI is the one the YouTube card under Video review › Settings › Shared shows; publish the consent screen to production, or the refresh token expires after 7 days."
+    },
     "jev_daily_call_budget": {
       "label": "Jev calls per day",
       "help": "Daily limit shared by the news automation, the Jev shadow assessment of place guides and the narration check, counted by UTC day; once spent, Jev is not called again that day. Default 200."
@@ -1538,6 +1542,10 @@
     "azure_speech_key": {
       "label": "Speech key",
       "help": "Azure portal → Speech resource → Keys and Endpoint, “KEY 1”. It stays on the server and is never sent to the video tool."
+    },
+    "youtube_oauth_client_secret": {
+      "label": "YouTube OAuth client secret",
+      "help": "The same client's secret. It stays on the server; the refresh token the owner's consent gives is kept separately, encrypted."
     }
   },
   "settingsPanel": {
@@ -2201,6 +2209,27 @@
       "published": "Published"
     },
     "scheduleWaits": "The publish time is sent to YouTube once the languages are done.",
+    "youtubeSyncTitle": "Sent to YouTube",
+    "youtubeSyncHelp": "Once you paste the address, the site fills in the titles and descriptions of the chosen languages, the captions and the thumbnail; the publish time goes once every chosen language is made. A dub track is still yours to upload in Studio.",
+    "youtubeSyncNone": "Nothing sent yet.",
+    "youtubeSyncOk": "Sent",
+    "youtubeSyncFailed": "Not all sent",
+    "youtubeSyncAt": "Last sent {time} ({reason})",
+    "youtubeSyncReasons": {
+      "linked": "after the address was pasted",
+      "languages": "after a language batch",
+      "manual": "sent again by hand"
+    },
+    "youtubeSyncSteps": {
+      "video": "Titles and descriptions",
+      "schedule": "Publish time",
+      "captions": "Captions",
+      "thumbnail": "Thumbnail"
+    },
+    "youtubeSyncScheduled": "Goes public {time}, set on YouTube",
+    "youtubeSyncRetry": "Send to YouTube again",
+    "youtubeSyncQueued": "Queued; this page refreshes in a few seconds.",
+    "youtubeSyncError": "Not queued: {message}",
     "locales": {
       "en": "English",
       "ja": "Japanese",
@@ -2495,7 +2524,22 @@
     "flowTitle": "Rounds",
     "seriesTitle": "Series",
     "seriesHelp": "The pace of a long series (docs/videos/SERIES.md): how many episodes are in the making at once, when the next chapter is planned, and how many times a document is rewritten from your note before it waits for you.",
-    "dramaGatesHelp": "Uploading to YouTube and the publish time are always yours. The screenplay waits for you unless you turn that off; the character sheets, the narration, the storyboard and the final cut each have a switch, and a switched-off gate waits for you as before."
+    "dramaGatesHelp": "Uploading to YouTube and the publish time are always yours. The screenplay waits for you unless you turn that off; the character sheets, the narration, the storyboard and the final cut each have a switch, and a switched-off gate waits for you as before.",
+    "youtubeTitle": "YouTube channel",
+    "youtubeHelp": "Once you have uploaded a cut in Studio as private and pasted its address, the site adds the titles and descriptions of the chosen languages, the captions and the thumbnail through the YouTube API, and sets the publish time once every chosen language is made. It asks for the youtube.force-ssl permission alone; the refresh token stays on the server and is never shown.",
+    "youtubeNotConfigured": "First fill in the YouTube OAuth client id and secret (a Google Cloud web application client, with the redirect URI below, its consent screen published) on the provider card:",
+    "youtubeProviderCard": "Azure Speech (video narration) card",
+    "youtubeRedirectUri": "Redirect URI",
+    "youtubeConnectedPill": "Connected",
+    "youtubeNotConnectedPill": "Not connected",
+    "youtubeConnected": "{channel}, connected {time}",
+    "youtubeNotConnected": "Connecting opens Google's consent screen and brings you back here.",
+    "youtubeConnect": "Connect the YouTube channel",
+    "youtubeRevoke": "Revoke the connection",
+    "youtubeRevokeConfirm": "After revoking, the site can neither fill in a video's details nor schedule it until you connect again. Revoke?",
+    "youtubeJustConnected": "Connected.",
+    "youtubeError": "The connection did not complete: {code}",
+    "youtubeOwnerOnly": "Only the site owner can connect or revoke: it is their Google account."
   },
   "videoSeries": {
     "listTitle": "Series",

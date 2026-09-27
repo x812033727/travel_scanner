@@ -12,6 +12,7 @@ import {
 } from "@/components/admin-video-review-card";
 import { AdminVideoSeries } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
+import { YouTubeSyncCard } from "@/components/admin-video-youtube";
 import { Button, Tabs } from "@/components/community/ui";
 import { useAdminQueryState, useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
@@ -218,6 +219,7 @@ function ProjectDetail({ slug, onBack }: { slug: string; onBack: () => void }) {
         <ul className="mt-2 grid gap-1 text-sm sm:grid-cols-2">{project.checklist.map((item) => <li key={item.key} className="flex items-center gap-2">{item.done ? <CheckCircle2 aria-hidden size={16} className="text-[var(--teal)]" /> : <Circle aria-hidden size={16} className="text-[var(--muted)]" />}<span className={item.done ? "" : "text-[var(--muted)]"}>{item.label}</span></li>)}</ul>
       </section>}
       {uploadable && manage.allowed && <UploadedForm slug={slug} onLinked={load} />}
+      {project.youtube_video_id && !dropped && <YouTubeSyncCard slug={slug} project={project} canManage={manage.allowed} onSynced={load} />}
       {!dropped && <LanguagePanel slug={slug} project={project} canManage={manage.allowed} onSaved={load} />}
       {live.length === 0 && !dropped && <p className="text-[var(--muted)]">{t("noPending")}</p>}
       {live.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={manage.allowed && !dropped} onDecided={load} mp4Gone={retired} />)}

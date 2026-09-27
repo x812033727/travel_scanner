@@ -2230,6 +2230,29 @@ class VideoProject(Timestamped, Base):
     locales_decided_at: Mapped[datetime | None] = mapped_column(
         DateTime(timezone=True), nullable=True
     )
+    # What the site last sent to YouTube for this video and how it went (docs/videos/HANDS-OFF.md
+    # §YouTube API 第一步; migration 0104): {"at", "reason", "ok", "steps": [{"id", "ok",
+    # "detail"}], "localizations", "captions", "scheduled_at", "thumbnail_sha256"}. Null until
+    # the owner pastes the video's address.
+    youtube_sync: Mapped[dict[str, Any] | None] = mapped_column(JSON, nullable=True)
+
+
+class VideoYoutubeChannel(Timestamped, Base):
+    """The YouTube channel the owner connected, through which the site fills in a video's
+    titles, descriptions, captions and thumbnail and schedules it (docs/videos/HANDS-OFF.md
+    §YouTube API 第一步). One row: the owner's consent gives a refresh token, kept encrypted
+    like the provider secrets and never returned; revoking deletes the row."""
+
+    __tablename__ = "video_youtube_channel"
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    channel_id: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    channel_title: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    refresh_token_encrypted: Mapped[str] = mapped_column(Text)
+    scope: Mapped[str] = mapped_column(String(200))
+    connected_by_user_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    connected_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
 class VideoReview(Timestamped, Base):

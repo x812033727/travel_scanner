@@ -567,6 +567,10 @@
       "label": "Gemini 旁白每月字數上限",
       "help": "頻道聲音用 Gemini（例如 Sulafat）時，每月最多送出的文字字數；以 UTC 按月計算，超過就拒絕、不會送出。預設 300,000，約一百支 10 分鐘的片；0 表示只計數不限制。"
     },
+    "youtube_oauth_client_id": {
+      "label": "YouTube OAuth 用戶端 ID",
+      "help": "Google Cloud → API 和服務 → 憑證 → 網頁應用程式類型的 OAuth 2.0 用戶端。redirect URI 填「影片審核 › 設定 › 共用」YouTube 卡上顯示的網址；同意畫面要發布成正式版，否則 refresh token 7 天就過期。"
+    },
     "jev_daily_call_budget": {
       "label": "Jev 每日呼叫次數",
       "help": "新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用的每日上限，以 UTC 日計算；用完當天就不再呼叫 Jev。預設 200。"
@@ -1538,6 +1542,10 @@
     "azure_speech_key": {
       "label": "Speech 金鑰",
       "help": "Azure 入口網站 → Speech 資源 → 金鑰與端點的「金鑰 1」。只存在伺服器，不會傳給影片工具。"
+    },
+    "youtube_oauth_client_secret": {
+      "label": "YouTube OAuth 用戶端密鑰",
+      "help": "同一個用戶端的密鑰，只存在伺服器；站主同意後拿到的 refresh token 另外加密保存。"
     }
   },
   "settingsPanel": {
@@ -2201,6 +2209,27 @@
       "published": "已上架"
     },
     "scheduleWaits": "排程會在語言做好後送出。",
+    "youtubeSyncTitle": "送到 YouTube 的東西",
+    "youtubeSyncHelp": "貼上網址後，網站補勾了的語系的標題說明、字幕與縮圖；上架時間在語言都做好後才送出。配音仍要你在 Studio 上傳。",
+    "youtubeSyncNone": "還沒送過。",
+    "youtubeSyncOk": "已送出",
+    "youtubeSyncFailed": "沒有全部送成",
+    "youtubeSyncAt": "上次送出 {time}（{reason}）",
+    "youtubeSyncReasons": {
+      "linked": "貼上網址後",
+      "languages": "語言批次送到後",
+      "manual": "手動重送"
+    },
+    "youtubeSyncSteps": {
+      "video": "標題與說明",
+      "schedule": "上架時間",
+      "captions": "字幕",
+      "thumbnail": "縮圖"
+    },
+    "youtubeSyncScheduled": "已在 YouTube 排定 {time} 公開",
+    "youtubeSyncRetry": "重送到 YouTube",
+    "youtubeSyncQueued": "已排入，幾秒後這頁會更新。",
+    "youtubeSyncError": "沒有排入：{message}",
     "locales": {
       "en": "英文",
       "ja": "日文",
@@ -2495,7 +2524,22 @@
     "flowTitle": "流程上限",
     "seriesTitle": "作品",
     "seriesHelp": "長篇作品（docs/videos/SERIES.md）的節奏：同時做幾集、剩幾集先規劃下一篇、文件退回後重寫幾輪才停下來等你。",
-    "dramaGatesHelp": "上傳到 YouTube 與上架時間永遠由你決定。劇本預設先給你看，關掉才自動核准；設定圖、旁白、分鏡、成片各有開關，關掉的關卡照舊等你。"
+    "dramaGatesHelp": "上傳到 YouTube 與上架時間永遠由你決定。劇本預設先給你看，關掉才自動核准；設定圖、旁白、分鏡、成片各有開關，關掉的關卡照舊等你。",
+    "youtubeTitle": "YouTube 頻道",
+    "youtubeHelp": "你在 Studio 上傳成私人、貼上網址後，網站用 YouTube API 補勾了的語系的標題說明、字幕與縮圖，語言都做好再送出上架時間。只要 youtube.force-ssl 一個權限；refresh token 存在伺服器，不會再顯示。",
+    "youtubeNotConfigured": "先在供應商卡填 YouTube OAuth 用戶端 ID 與密鑰（Google Cloud 的網頁應用程式用戶端，redirect URI 填下面這個，同意畫面要發布成正式版）：",
+    "youtubeProviderCard": "Azure 語音（影片旁白）卡",
+    "youtubeRedirectUri": "Redirect URI",
+    "youtubeConnectedPill": "已連結",
+    "youtubeNotConnectedPill": "還沒連結",
+    "youtubeConnected": "{channel}，{time} 連結",
+    "youtubeNotConnected": "按下去會到 Google 的同意畫面，同意後回到這裡。",
+    "youtubeConnect": "連結 YouTube 頻道",
+    "youtubeRevoke": "撤銷連結",
+    "youtubeRevokeConfirm": "撤銷後網站不能再補資料或排程，要重新連結才行。確定撤銷？",
+    "youtubeJustConnected": "已連結完成。",
+    "youtubeError": "連結沒有完成：{code}",
+    "youtubeOwnerOnly": "只有站主能連結或撤銷：這是站主自己的 Google 帳號。"
   },
   "videoSeries": {
     "listTitle": "作品",

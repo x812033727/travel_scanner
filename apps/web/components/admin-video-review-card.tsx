@@ -54,6 +54,9 @@ export type ProjectSummary = {
   locales_decided_at?: string | null;
   languages?: Partial<Record<string, Partial<Record<string, LanguagePart>>>>;
   ready_to_upload?: boolean;
+  // What the site last sent to YouTube for this video and how each step went (docs/videos/HANDS-OFF.md,
+  // the YouTube API's first step; admin-video-youtube.tsx shows it).
+  youtube_sync?: { at: string; video_id: string | null; reason: string; ok: boolean; steps: { id: string; ok: boolean; detail: string }[]; localizations?: string[]; captions?: string[]; scheduled_at?: string | null; thumbnail_sha256?: string | null } | null;
   dub_locales?: string[];
   series_slug?: string | null; episode_number?: number | null;
 };

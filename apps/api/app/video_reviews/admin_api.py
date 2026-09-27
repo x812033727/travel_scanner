@@ -39,6 +39,7 @@ from app.video_reviews.schemas import (
 )
 from app.video_reviews.storage import PART_BYTES, ReviewStore, StorageRefused
 from app.video_speech.admin_api import VideoTool
+from app.video_youtube import service as youtube
 
 Session = Annotated[AsyncSession, Depends(get_session)]
 ContentReader = Annotated[User, Depends(require_capability("content.read"))]
@@ -92,7 +93,12 @@ async def upload_part(
 
 @tool_router.post("/{slug}/reviews", response_model=ReviewOut, status_code=201)
 async def submit(slug: str, payload: ReviewIn, tool: VideoTool, session: Session) -> ReviewOut:
-    return await service.submit_review(session, await _store(session), slug, payload, tool)
+    review = await service.submit_review(session, await _store(session), slug, payload, tool)
+    # A language batch for a video already on YouTube: the site sends what is new, and the
+    # publish time once every language is made (docs/videos/LANGUAGES.md).
+    if payload.gate == "languages":
+        await youtube.enqueue_after_languages(session, slug)
+    return review
 
 
 @admin_router.get("", response_model=list[ProjectSummary])
@@ -142,7 +148,10 @@ async def link_youtube(
             "video_youtube_url_invalid",
             "看不出影片 id：貼上 youtu.be、watch?v=、shorts 或 Studio 的網址，或 11 個字元的 id",
         )
-    return await service.link_youtube(session, slug, user, video_id, payload.publish_at)
+    project = await service.link_youtube(session, slug, user, video_id, payload.publish_at)
+    # The site fills in the rest and schedules it (docs/videos/HANDS-OFF.md §YouTube API 第一步).
+    youtube.enqueue_sync(slug, "linked")
+    return project
 
 
 @admin_router.put("/{slug}/languages", response_model=ProjectOut)

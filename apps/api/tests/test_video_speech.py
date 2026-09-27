@@ -102,7 +102,9 @@ async def test_the_budget_refuses_a_request_that_would_cross_it_and_refunds_fail
 
 def test_the_admin_card_validates_region_and_voices() -> None:
     definition = PROVIDER_DEFINITIONS["azure_speech"]
-    assert definition.secret_fields == ("azure_speech_key",)
+    # The card also carries the YouTube OAuth client the site publishes through (video_youtube).
+    assert definition.secret_fields == ("azure_speech_key", "youtube_oauth_client_secret")
+    assert "youtube_oauth_client_id" in definition.config_fields
     cleaned = _validate_provider_values(
         "azure_speech",
         {},

@@ -266,6 +266,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   azure_speech_monthly_character_limit: { localized: true, type: "number" },
   azure_speech_timeout_seconds: { localized: true, type: "number" },
   video_speech_gemini_monthly_character_limit: { localized: true, type: "number" },
+  youtube_oauth_client_id: { localized: true },
   ekispert_api_base_url: { localized: true, type: "url" },
   ekispert_search_type: { localized: true, options: [{ value: "plain" }, { value: "departure" }] },
   ekispert_monthly_request_limit: { localized: true, type: "number" },
@@ -315,6 +316,7 @@ const fieldMeta: Record<string, FieldMeta> = {
 
 const secretLabels: Record<string, { label?: string; help?: string; localized?: boolean }> = {
   auth_google_client_secret: { localized: true },
+  youtube_oauth_client_secret: { localized: true },
   auth_line_channel_secret: { localized: true },
   auth_apple_private_key: { localized: true },
   openai_api_key: { localized: true },

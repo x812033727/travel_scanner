@@ -17,6 +17,8 @@ QUEUE_NAMES = (
     "travel-services",
     "auth-revocations",
     "community",
+    # A video's package to YouTube after the owner pastes its address (app.video_youtube).
+    "video-youtube",
     # "news" has its own worker (app.news_automation.worker): one candidate can hold a
     # worker for an hour, which must not happen to the process serving search.
 )

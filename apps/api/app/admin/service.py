@@ -222,15 +222,19 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "「影片工具權杖」送出句子，由伺服器呼叫 Azure 後把音檔傳回。每月上限以 Azure 的計費字元計算"
         "（一個中文字算兩個，SSML 標記也算），預設 450,000，低於免費層的 500,000。"
         "頻道聲音若選 Gemini（例如 Sulafat），用的是「AI 供應商與金鑰」裡的 Gemini 金鑰，"
-        "另有自己的每月字數上限（以送出的文字字數計）。",
+        "另有自己的每月字數上限（以送出的文字字數計）。"
+        "YouTube OAuth 用戶端（Google Cloud 的網頁應用程式用戶端）給網站補標題說明、字幕、縮圖"
+        "並排程；站主在「影片審核 › 設定 › 共用」按「連結 YouTube 頻道」同意後，refresh token "
+        "只存在伺服器。",
         (
             "azure_speech_region",
             "azure_speech_voices",
             "azure_speech_monthly_character_limit",
             "azure_speech_timeout_seconds",
             "video_speech_gemini_monthly_character_limit",
+            "youtube_oauth_client_id",
         ),
-        ("azure_speech_key",),
+        ("azure_speech_key", "youtube_oauth_client_secret"),
     ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
