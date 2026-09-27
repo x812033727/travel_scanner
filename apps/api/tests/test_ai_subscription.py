@@ -118,6 +118,22 @@ def test_research_provider_hands_claude_to_the_subscription_with_its_feature_mod
 
 
 @pytest.mark.asyncio
+async def test_openai_can_use_codex_subscription_without_an_api_key() -> None:
+    settings = _settings(openai_connection="subscription")
+    assert vendor_ready(settings, "openai")
+    provider = research_provider(settings, "openai", model="gpt-6-sol")
+    assert isinstance(provider, SubscriptionResearchProvider)
+    assert (provider.name, provider.model) == ("openai", "gpt-6-sol")
+    agent = FakeAgent('{"title": "Codex answer"}')
+    provider._agent = agent  # type: ignore[assignment]
+    answer, usage = await provider.structured(Answer, "answer", "Write.", {})
+    assert answer.title == "Codex answer" and usage["input_tokens"] == 100
+    assert agent.calls[0]["tool"] == "codex"
+    assert provider.served_by == "codex:b"
+    assert not vendor_ready(_settings(openai_connection="api_key"), "openai")
+
+
+@pytest.mark.asyncio
 async def test_a_subscription_answer_is_parsed_like_an_api_answer() -> None:
     agent = FakeAgent('```json\n{"title": "Hello"}\n```')
     provider = _provider(agent)

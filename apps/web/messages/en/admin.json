@@ -571,6 +571,14 @@
       "label": "Jev calls per day",
       "help": "Daily limit shared by the news automation, the Jev shadow assessment of place guides and the narration check, counted by UTC day; once spent, Jev is not called again that day. Default 200."
     },
+    "openai_connection": {
+      "label": "OpenAI connection",
+      "help": "Choose subscription accounts to run OpenAI calls for guide search, place introductions, reviews, Simplified names and AI news through the signed-in Codex accounts on the host. Video stages can choose Codex separately. Trip planning and trip text parsing still need an API key. Only the owner can switch this.",
+      "options": {
+        "api_key": "API key",
+        "subscription": "Subscription accounts (Codex on the host)"
+      }
+    },
     "anthropic_connection": {
       "label": "Claude connection",
       "help": "With \"Subscription accounts\", the Claude calls of guide search, place introductions, introduction review, Simplified names and AI news run on the Claude subscription accounts signed in under AI accounts on the host, not on an API key. The accounts take turns in order, A, B, C and back to A: one is left only when its 5-hour or weekly window is full. When every account is full, calls use MiniMax. The trip planner and trip text parsing still use the API key only. Only the owner can switch this.",
@@ -1048,7 +1056,7 @@
       "models": "Models by feature"
     },
     "hints": {
-      "subscriptions": "For the Claude Code, Codex and Antigravity you use on the host: billed to subscriptions, nothing extra, up to five accounts per tool. Of the site's features, only video automation's writing borrows the Claude accounts.",
+      "subscriptions": "Sign in to Claude Code, Codex and Antigravity on the host, with up to five accounts per tool. The site's writing features can use Claude Code or Codex subscriptions when selected in AI settings.",
       "api": "Keys and speech for the site's AI features, billed by API usage; keys are stored encrypted on the server only. Which model each feature uses is under Models by feature.",
       "models": "Every site feature that calls AI picks its vendor and model here; the feature pages only show the current choice and link back."
     },
@@ -1093,7 +1101,10 @@
       "support": {
         "apiKeyOnly": "API key only",
         "claudeSubscription": "Claude can use the subscription (switch the Claude connection under API keys)",
+        "codexSubscription": "OpenAI can use Codex subscription accounts (switch the OpenAI connection under API keys)",
         "claudeCode": "Uses the subscription with Claude Code",
+        "codex": "Uses the subscription with Codex",
+        "videoSubscriptions": "Can switch to Claude Code or Codex subscription accounts",
         "geminiApiKeyOnly": "Gemini runs on the API key only (the Antigravity subscriptions are for manual use on the host)"
       },
       "edit": "Change",
@@ -2314,7 +2325,7 @@
     "onePerLine": "One word or phrase per line.",
     "topicSources": "Where topics come from",
     "modelsTitle": "AI model for each stage",
-    "modelsHelp": "\"Claude Code (subscription)\" runs on the Claude subscription accounts signed in on the host, with no extra charge, within the plan's limits; the other choices use the site's API keys under AI services, billed by use. A vendor marked \"no key\" needs its key entered first.",
+    "modelsHelp": "Claude Code and Codex use their signed-in subscription accounts on the host within each plan's limits. The API choices use the site's keys and are billed by use. A vendor marked \"no key\" needs its key entered first.",
     "provider": "Vendor",
     "model": "Model",
     "noKey": "no key",
@@ -2397,7 +2408,7 @@
     "usage": "This month (UTC): {tokens} of {tokenBudget} API tokens used and {planTokens} tokens on the subscription accounts; {drafts} of {draftBudget} drafts made, {calls} model calls ({failed} failed).",
     "subscription": "subscription",
     "agentOff": "host agent not set up",
-    "subscriptionHelp": "The subscription accounts take turns in order, A, B, C and back to A: one is left only when its 5-hour or weekly window is full. When every account is full, the worker waits for a window to reset and never switches to an API key on its own. Codex is not offered: its command line cannot turn off running commands.",
+    "subscriptionHelp": "Claude Code and Codex subscription accounts rotate separately, A, B, C and back to A, when a usage window is full. When every account of the selected tool is full, the worker waits for a reset and never switches to an API key on its own.",
     "modelsManaged": "The model of each stage is chosen under AI settings › Models by feature.",
     "editModels": "Change in AI settings",
     "saveModels": "Save video models",

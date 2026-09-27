@@ -253,9 +253,11 @@ const aiVendorsProvider = {
     minimax_api_base_url: "https://api.minimaxi.com/v1",
     hotspot_guide_gemini_base_url: "https://generativelanguage.googleapis.com",
     jev_api_base_url: "https://api.typesafe.ai/v1",
+    openai_connection: "api_key",
     anthropic_connection: "api_key",
   },
   config_sources: {
+    openai_connection: "environment",
     anthropic_connection: "environment",
     openai_api_base_url: "environment",
     anthropic_api_base_url: "environment",
@@ -1454,6 +1456,18 @@ describe("AdminSettingsPanel", () => {
     const body = savedBody(fetchMock);
     expect(body.config).toEqual({ anthropic_connection: "subscription" });
     expect(body.secrets).toEqual({});
+  });
+
+  it("lets the owner choose Codex subscription for OpenAI calls", async () => {
+    const fetchMock = stubAiFetch(aiSnapshot);
+    render(<AdminSettingsPanel />);
+    const section = (await screen.findByRole("heading", { name: "AI 供應商與金鑰" })).closest("section")!;
+    const connection = within(section).getByLabelText(/^OpenAI 連線方式/) as HTMLSelectElement;
+    expect(Array.from(connection.options).map((option) => option.textContent)).toEqual(["API 金鑰", "訂閱帳號（主機 Codex）"]);
+    fireEvent.change(connection, { target: { value: "subscription" } });
+    fireEvent.click(within(section).getByRole("button", { name: "儲存設定" }));
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+    expect(savedBody(fetchMock).config).toEqual({ openai_connection: "subscription" });
   });
 
   it("carries the Jev key on the shared card even though Jev writes nothing", async () => {

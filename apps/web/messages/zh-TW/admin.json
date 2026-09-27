@@ -571,6 +571,14 @@
       "label": "Jev 每日呼叫次數",
       "help": "新聞自動化、景點介紹的 Jev 影子評估與影片旁白檢查共用的每日上限，以 UTC 日計算；用完當天就不再呼叫 Jev。預設 200。"
     },
+    "openai_connection": {
+      "label": "OpenAI 連線方式",
+      "help": "選「訂閱帳號」後，攻略搜尋、景點介紹與審查、簡體名稱及 AI 新聞的 OpenAI 呼叫改用主機已登入的 Codex 帳號。影片各階段可另外選 Codex。行程規劃與行程文字解析仍需要 API 金鑰。只有站主能切換。",
+      "options": {
+        "api_key": "API 金鑰",
+        "subscription": "訂閱帳號（主機 Codex）"
+      }
+    },
     "anthropic_connection": {
       "label": "Claude 連線方式",
       "help": "選「訂閱帳號」時，攻略搜尋、景點介紹、介紹審查、簡體名稱與 AI 新聞的 Claude 呼叫都改由主機上「AI 帳號」登入的 Claude 訂閱帳號執行，不用 API 金鑰。帳號依 A、B、C… 的順序輪流，一個帳號的 5 小時或每週額度用滿才換下一個，最後一個用滿再回到 A；每個帳號都用滿時改用 MiniMax。行程規劃與行程文字解析仍只用 API 金鑰。只有站主能切換。",
@@ -1048,7 +1056,7 @@
       "models": "各功能模型"
     },
     "hints": {
-      "subscriptions": "給你在主機上用的 Claude Code、Codex 與 Antigravity：走訂閱、不另外計費，每個工具最多五個帳號。網站功能裡只有影片自動化的撰稿會借用 Claude 帳號。",
+      "subscriptions": "可在主機登入 Claude Code、Codex 與 Antigravity，每個工具最多五個帳號。網站的文字工作可在 AI 設定中選擇使用 Claude Code 或 Codex 訂閱。",
       "api": "網站 AI 功能用的金鑰與語音：依 API 用量計費，金鑰只存在後端並加密保存。各功能選哪個模型在「各功能模型」。",
       "models": "網站每個會呼叫 AI 的功能都在這裡選廠商與模型；功能頁只顯示目前的選擇並連回這裡。"
     },
@@ -1093,7 +1101,10 @@
       "support": {
         "apiKeyOnly": "只能用 API 金鑰",
         "claudeSubscription": "選 Claude 時可走訂閱（在「API 金鑰」切換 Claude 連線方式）",
+        "codexSubscription": "選 OpenAI 時可走 Codex 訂閱（在「API 金鑰」切換 OpenAI 連線方式）",
         "claudeCode": "選「Claude Code」時走訂閱",
+        "codex": "選「Codex」時走訂閱",
+        "videoSubscriptions": "可改用 Claude Code 或 Codex 訂閱帳號",
         "geminiApiKeyOnly": "Gemini 只能用 API 金鑰（Antigravity 訂閱只供主機上手動使用）"
       },
       "edit": "修改",
@@ -2314,7 +2325,7 @@
     "onePerLine": "每行一個詞或短語。",
     "topicSources": "題目來源",
     "modelsTitle": "各階段的 AI 模型",
-    "modelsHelp": "「Claude Code（訂閱帳號）」用主機上登入的 Claude 訂閱帳號執行，不另外計費，額度由訂閱方案決定；其他選項用網站「AI 服務」裡的 API 金鑰，按用量計費。標示「沒有金鑰」的廠商要先填金鑰才能用。",
+    "modelsHelp": "Claude Code 與 Codex 使用主機上各自登入的訂閱帳號，額度由訂閱方案決定；API 選項使用網站的金鑰，按用量計費。標示「沒有金鑰」的廠商要先填金鑰。",
     "provider": "廠商",
     "model": "模型",
     "noKey": "沒有金鑰",
@@ -2397,7 +2408,7 @@
     "usage": "本月（UTC）API 已用 {tokens} / {tokenBudget} 個 token，訂閱帳號用了 {planTokens} 個 token；產生 {drafts} / {draftBudget} 支草稿，呼叫模型 {calls} 次（其中 {failed} 次失敗）。",
     "subscription": "訂閱帳號",
     "agentOff": "主機代理未設定",
-    "subscriptionHelp": "訂閱帳號依 A、B、C… 的順序輪流，一個帳號的 5 小時或每週額度用滿才換下一個，最後一個用滿再回到 A；每個帳號都用滿時，工人就等額度重置再繼續，不會自動改用 API 金鑰。Codex 不提供：它的指令列關不掉執行指令的能力。",
+    "subscriptionHelp": "Claude Code 與 Codex 的訂閱帳號分別按 A、B、C… 的順序輪流，額度用滿才換下一個。所選工具的帳號都滿時，工人等待額度重置，不會自動改用 API 金鑰。",
     "modelsManaged": "各階段用哪個模型，統一在「AI 設定 › 各功能模型」選擇。",
     "editModels": "到 AI 設定修改",
     "saveModels": "儲存影片模型",

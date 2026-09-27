@@ -87,6 +87,7 @@ def stage(monkeypatch: pytest.MonkeyPatch) -> dict[str, Any]:
 
     def provider(runtime: Settings, name: str, client: Any = None, **kwargs: Any) -> Any:
         state["asked"] = (name, kwargs)
+        state["runtime"] = runtime
         return state["provider"]
 
     monkeypatch.setattr(ai, "research_provider", provider)
@@ -130,6 +131,24 @@ async def test_a_stage_missing_from_the_settings_uses_the_default_model(
     await ai.run_stage(_session(), KEYS, row, _request("writer"), None)
     assert stage["asked"][0] == "anthropic"
     assert stage["asked"][1]["model"] == "claude-sonnet-5"
+
+
+@pytest.mark.asyncio
+async def test_video_api_choice_stays_on_the_api_when_site_research_uses_subscriptions(
+    stage: dict[str, Any],
+) -> None:
+    runtime = Settings(
+        openai_api_key="o", anthropic_api_key="a",
+        openai_connection="subscription", anthropic_connection="subscription",
+    )
+    row = VideoAutomationSettings(stage_models={
+        "verifier": {"provider": "openai", "model": "gpt-6-sol"}
+    })
+    await ai.run_stage(_session(), runtime, row, _request(), None)
+    assert stage["asked"][0] == "openai"
+    assert stage["runtime"].openai_connection == "api_key"
+    assert stage["runtime"].anthropic_connection == "api_key"
+    assert runtime.openai_connection == "subscription"
 
 
 @pytest.mark.asyncio
