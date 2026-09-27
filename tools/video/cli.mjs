@@ -35,7 +35,9 @@ export const AREAS = {
   "i18n-sheet": ["i18n", "2026-09-24-video-captions-i18n"],
   "i18n-merge": ["i18n", "2026-09-24-video-captions-i18n"],
   package: ["package", "2026-09-24-video-assemble-package"],
+  dub: ["dubs", "2026-09-26-video-dubs-command"],
   "youtube-sync": ["youtube", "2026-09-24-video-youtube-sync"],
+  qa: ["qa", "2026-09-26-video-hands-off-qa"],
   auto: ["automation", "2026-09-25-video-auto-orchestrator-one-command-that"],
   // The drama format's media stages (docs/videos/DRAMA.md).
   look: ["media", "2026-09-26-video-drama-look-keyframes"],
@@ -60,10 +62,14 @@ Usage: node tools/video/cli.mjs <command> [options]
   captions --slug S [--workdir D]                  caption files for every current locale
   i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
+  qa       --slug S [--workdir D]                  the eleven checks of the finished cut, written to review/qa.json (docs/videos/HANDS-OFF.md)
   auto [--once]                                    run the pipeline from the settings on /admin/videos (docs/videos/AUTOMATION.md)
 
   login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
   check-audio --slug S [--threshold 0.5] [--force]  transcribe every line; Jev judges the ones that differ
+  dub --slug S [--locale en,ja,ko,zh-CN] [--format m4a|mp3|wav] [--dry-run] [--redo F] [--force] [--style T]
+                                                   a YouTube audio track per locale: the translation read by the
+                                                   narration voice, laid into the slide windows (docs/videos/DUBS.md)
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
@@ -111,6 +117,9 @@ async function cmdStatus(args, ctx) {
     ctx.stdout.write(`  [${step.done ? "x" : " "}] ${step.id}${!step.done && step.note ? `: ${step.note}` : ""}\n`);
   }
   if (status.stop) ctx.stdout.write("\nA STOP file is present: stages will exit after their current unit of work.\n");
+  // Dubs are optional (the owner picks each video's languages), so they are shown only once one exists.
+  const dubs = Object.entries(status.dubs ?? {}).filter(([, dub]) => dub.status !== "missing");
+  if (dubs.length) ctx.stdout.write(`  dubs: ${dubs.map(([locale, dub]) => `${locale} ${dub.status}${dub.note ? ` (${dub.note})` : ""}`).join("; ")}\n`);
   ctx.stdout.write(status.next ? `\nNext: ${status.next.todo}\n` : "\nDone: the video is on YouTube.\n");
   return EXIT.ok;
 }

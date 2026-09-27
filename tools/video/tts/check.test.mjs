@@ -1,13 +1,31 @@
 import assert from "node:assert/strict";
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
 import { EXIT, main } from "../cli.mjs";
 import { fixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
-import { eachLine, spokenText } from "../core/schema.mjs";
-import { SAMPLE_RATE } from "../core/timeline.mjs";
-import { comparable, GIVE_UP_AFTER, hintTerms, MAX_HINT_TERMS, matchKind, matches, reading, spokenForm } from "./check.mjs";
+import { UsageError } from "../core/paths.mjs";
+import { eachLine, spokenText, textHash } from "../core/schema.mjs";
+import { SAMPLE_RATE, SAMPLES_PER_FRAME } from "../core/timeline.mjs";
+import {
+  checkFiles,
+  comparable,
+  DUB_LOCALES,
+  dubLexicon,
+  dubLines,
+  GIVE_UP_AFTER,
+  hintTerms,
+  lexiconFor,
+  matchKind,
+  matches,
+  MAX_HINT_TERMS,
+  MAX_INTENDED_CHARACTERS,
+  parseDubLocale,
+  reading,
+  spokenForm,
+  trackFiles,
+} from "./check.mjs";
 import { concatSamples, downsample, encodeWav } from "./wav.mjs";
 
 const TOKEN = `mkv_${"t".repeat(43)}`;
@@ -65,6 +83,76 @@ test("hintTerms lists each English word a line says once, as the script spells i
   assert.equal(hintTerms(many).length, MAX_HINT_TERMS);
 });
 
+test("--locale takes a dub's locale and nothing else", () => {
+  assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko", "zh-CN"]);
+  for (const locale of DUB_LOCALES) assert.equal(parseDubLocale(locale), locale);
+  for (const bad of ["zh-TW", "fr", "EN", "zh-cn", ""]) assert.throws(() => parseDubLocale(bad), UsageError, bad);
+});
+
+test("a dub's clips, timeline, transcript cache and flags file are its own, beside the narration's", () => {
+  assert.deepEqual(trackFiles(), { audio: "audio", timeline: "timeline.json" });
+  assert.deepEqual(trackFiles("zh-CN"), { audio: path.join("dubs", "zh-CN", "audio"), timeline: path.join("dubs", "zh-CN", "timeline.json") });
+  assert.deepEqual(checkFiles(), { cache: path.join("review", "check.json"), flags: path.join("review", "check-flags.json") });
+  assert.deepEqual(checkFiles("ja"), { cache: path.join("review", "check.ja.json"), flags: path.join("review", "check-flags.ja.json") });
+});
+
+test("a dub applies only the dictionary's aliases without CJK characters; the narration applies them all", () => {
+  const lexicon = { schema_version: 1, terms: { API: "A P I", p95: "P 九十五", NotebookLM: "Notebook L M", AI: null } };
+  assert.deepEqual(dubLexicon(lexicon).terms, { API: "A P I", p95: null, NotebookLM: "Notebook L M", AI: null });
+  const line = { id: "k7p2", text: "The API keeps p95 under a second." };
+  assert.equal(spokenForm(line, lexiconFor(lexicon, "en")), "The A P I keeps p95 under a second.");
+  assert.equal(spokenForm(line, lexiconFor(lexicon)), "The A P I keeps P 九十五 under a second.");
+  assert.equal(lexiconFor(lexicon), lexicon, "the narration's dictionary is untouched");
+  assert.deepEqual(dubLexicon(undefined).terms, {});
+});
+
+test("an English dub hints only the dictionary's terms; the other dubs hint every Latin word", () => {
+  const lexicon = { schema_version: 1, terms: { GPT: null, Go: null, "MMLU-Pro": null, p95: "P 九十五" } };
+  const line = { id: "k7p2", text: "Compared with Go, GPT-5.5 keeps p95 low on MMLU-Pro, e.g. in a test." };
+  assert.deepEqual(hintTerms(line, { locale: "en", lexicon }), ["Go", "GPT-5.5", "p95", "MMLU-Pro"]);
+  assert.deepEqual(hintTerms({ id: "m4qa", text: "Every time a new model comes out, I switch." }, { locale: "en", lexicon }), []);
+  assert.deepEqual(hintTerms({ id: "x9fe", text: "Go と GPT-5.5 を比べると、p95 が低い。" }, { locale: "ja", lexicon }), ["Go", "GPT-5.5", "p95"]);
+  assert.deepEqual(hintTerms(line), hintTerms(line, { locale: "zh-TW", lexicon }));
+  assert.ok(hintTerms(line).includes("Compared"), "the narration hints every Latin word, as before");
+});
+
+test("outside Chinese a transcript passes only when its words match after case, width, spacing and punctuation", () => {
+  const lexicon = { schema_version: 1, terms: { AI: null } };
+  const en = { id: "k7p2", text: "Every time a new model comes out, the leaderboard has a new number one." };
+  assert.equal(matchKind("every time a new model comes out the leaderboard has a new number one", en, lexicon, "en"), "exact");
+  assert.equal(matchKind("Every time a new model comes out, the leaderboard has a new number 1.", en, lexicon, "en"), null, "digits against words are Jev's call");
+  assert.equal(matchKind("Um, every time a new model comes out, the leaderboard has a new number one.", en, lexicon, "en"), null, "English has no filler rule");
+  assert.ok(matches("It's the leaderboard's.", { id: "a1b2", text: "its the leaderboards" }, lexicon, "en"));
+  const ja = { id: "m4qa", text: "新しいモデルが出るたびに、AI ランキングの1位が変わります。" };
+  assert.equal(matchKind("新しいモデルが出るたびにＡＩランキングの１位が変わります", ja, lexicon, "ja"), "exact", "NFKC folds full-width letters and digits");
+  assert.equal(matchKind("新しいモデルが出るたびに、AI ランキングの一位が変わります。", ja, lexicon, "ja"), null);
+  const ko = { id: "x9fe", text: "새 모델이 나올 때마다 순위표 1위가 바뀝니다." };
+  assert.equal(matchKind("새모델이 나올때마다 순위표 1위가 바뀝니다", ko, lexicon, "ko"), "exact", "the transcriber and the translator space words differently");
+  assert.equal(matchKind("새 모델이 나올 때마다 순위표 1위가 바뀝니다.".normalize("NFD"), ko, lexicon, "ko"), "exact", "decomposed Hangul composes again");
+  assert.equal(matchKind("새 모델이 나올 때마다 순위표 2위가 바뀝니다.", ko, lexicon, "ko"), null);
+});
+
+test("zh-CN keeps the same-sound and filler rules, in Simplified characters", () => {
+  const lexicon = { schema_version: 1, terms: {} };
+  const line = (text) => ({ id: "k7p2", text });
+  assert.equal(matchKind("重要的是你知道他考的不是你的工作", line("重要的是，你知道它考的不是你的工作。"), lexicon, "zh-CN"), "sound");
+  assert.equal(matchKind("吉莲大多数只要一次", line("级联大多数只要一次。"), lexicon, "zh-CN"), "sound");
+  assert.equal(matchKind("三成的升级比例诶，是示范用的假设", line("三成的升级比例，是示范用的假设。"), lexicon, "zh-CN"), "filler");
+  assert.equal(matchKind("官方自己也没有给出一句肯定答案馁", line("官方自己也没有给出一句肯定答案。"), lexicon, "zh-CN"), "filler");
+  assert.equal(matchKind("单一期间就是一次呼叫的时间", line("单一旗舰，就是一次呼叫的时间。"), lexicon, "zh-CN"), null, "旗 qí and 期 qī differ in tone");
+});
+
+test("a dub's lines follow its timeline and say their translation; a line without one stops the check", () => {
+  const timeline = { lines: [{ id: "m4qa", scene: "hook" }, { id: "k7p2", scene: "hook" }] };
+  const translation = { lines: { k7p2: { text: "First" }, m4qa: { text: "Second" } } };
+  assert.deepEqual(dubLines(timeline, translation, "en", "s"), [
+    { scene: "hook", line: { id: "m4qa", text: "Second" } },
+    { scene: "hook", line: { id: "k7p2", text: "First" } },
+  ]);
+  assert.throws(() => dubLines(timeline, { lines: { k7p2: { text: "First" } } }, "en", "s"), /m4qa has no en translation.*dub --slug s --locale en/);
+  assert.throws(() => dubLines(timeline, null, "ko", "s"), UsageError);
+});
+
 test("downsampling keeps what 16 kHz can carry and removes what it cannot", () => {
   const low = downsample(sine(48_000, 1000, 0.1), 3);
   const ideal = sine(16_000, 1000, 0.1);
@@ -79,7 +167,7 @@ test("downsampling keeps what 16 kHz can carry and removes what it cannot", () =
 
 /** A site that synthesizes tones, transcribes clips in narration order, and judges with Jev. */
 function site({ heardFor, noul, fails = () => false }) {
-  const calls = { speech: 0, transcribe: [], hints: [], judge: [], failed: 0 };
+  const calls = { speech: 0, transcribe: [], hints: [], languages: [], judge: [], judgeLanguages: [], failed: 0 };
   const tone = (milliseconds) => sine(SAMPLE_RATE, 440, milliseconds / 1000);
   const quiet = (milliseconds) => new Int16Array(Math.round((milliseconds / 1000) * SAMPLE_RATE));
   const fetchImpl = async (url, init) => {
@@ -99,10 +187,12 @@ function site({ heardFor, noul, fails = () => false }) {
       }
       calls.transcribe.push(wav.length);
       calls.hints.push(body.terms);
+      calls.languages.push(body.language);
       return Response.json({ text: heardFor(calls.transcribe.length - 1) });
     }
     if (url.endsWith("/speech/judge")) {
       calls.judge.push(body.lines);
+      calls.judgeLanguages.push(body.language);
       return Response.json({ results: body.lines.map((line) => ({ id: line.id, noul: noul(line) })) });
     }
     calls.speech += 1;
@@ -150,8 +240,10 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   const first = context(box, server.fetchImpl);
   assert.equal(await main(["check-audio", "--slug", box.slug], first.ctx), EXIT.lint, first.out.stderr);
   assert.equal(server.calls.transcribe.length, lines.length);
+  assert.ok(server.calls.languages.every((language) => language === undefined), "the narration's requests carry no language field");
   assert.equal(server.calls.judge.length, 1, "one Jev call for the one scene with a difference");
   assert.deepEqual(server.calls.judge[0].map((line) => line.id), [wrong]);
+  assert.deepEqual(server.calls.judgeLanguages, [undefined]);
   const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
   assert.deepEqual(flags.flags, [wrong]);
   assert.match(flags.notes[wrong], /Jev 0\.08/);
@@ -233,4 +325,103 @@ test("check-audio stops when Gemini fails line after line, instead of retrying e
   assert.equal(await main(["check-audio", "--slug", box.slug], run.ctx), EXIT.external);
   assert.equal(server.calls.failed, GIVE_UP_AFTER * 5, "five tries for each line before it gives up");
   assert.match(run.out.stdout, new RegExp(`Gemini failed ${GIVE_UP_AFTER} lines in a row`));
+});
+
+/**
+ * A dub of the fixture, the way `dub` leaves it: the translation in the repository, and one clip
+ * per line plus a timeline under dubs/<locale>/ in the work directory.
+ */
+function writeDub(box, locale, texts) {
+  const lines = [...eachLine(fixture())];
+  const translation = { locale, lines: Object.fromEntries(lines.map(({ line }) => [line.id, { source_hash: textHash(line.text), text: texts[line.id] }])) };
+  mkdirSync(path.join(box.dir, "i18n"), { recursive: true });
+  writeFileSync(path.join(box.dir, "i18n", `${locale}.json`), JSON.stringify(translation));
+  const audioDir = path.join(box.workdir, "dubs", locale, "audio");
+  mkdirSync(audioDir, { recursive: true });
+  const timeline = { locale, speech_hash: "speech0000000000", translation_hash: "translation00000", total_frames: 0, lines: [] };
+  for (const { scene, line } of lines) {
+    const samples = sine(SAMPLE_RATE, 440, 0.3);
+    writeFileSync(path.join(audioDir, `${line.id}.wav`), encodeWav(samples));
+    const frames = Math.ceil(samples.length / SAMPLES_PER_FRAME) + 9;
+    timeline.lines.push({ id: line.id, scene: scene.id, start_frame: timeline.total_frames, end_frame: timeline.total_frames + frames, audio_samples: samples.length, tempo: 1 });
+    timeline.total_frames += frames;
+  }
+  writeFileSync(path.join(box.workdir, "dubs", locale, "timeline.json"), JSON.stringify(timeline));
+  return timeline;
+}
+
+const ENGLISH = [
+  "Every time a new model comes out, the leaderboard has a new number one. Do you really switch every time?",
+  "Today, three questions help you decide which AI model to use in five minutes.",
+  "The first question is what work you want it to do.",
+  "The second question is how long you can wait for it to think before it answers.",
+  "The third question is how much you are willing to pay for it each month.",
+  "Write those three answers down, then look at the leaderboard: the choice becomes clear.",
+  "The full comparison table is in the article linked in the description. See you in the next video.",
+];
+
+test("check-audio --locale checks a dub against its translation, in its language, with its own cache and flags", async () => {
+  const box = sandbox();
+  const ids = [...eachLine(fixture())].map(({ line }) => line.id);
+  const texts = Object.fromEntries(ids.map((id, index) => [id, ENGLISH[index]]));
+  const wrong = ids[2];
+  // The last scene's first line is longer than Jev's field takes.
+  const long = ids[5];
+  texts[long] = "Write those three answers down and look again at the leaderboard, ".repeat(8).trim();
+  assert.ok([...texts[long]].length > MAX_INTENDED_CHARACTERS);
+  const timeline = writeDub(box, "en", texts);
+  // Line 0 comes back in lower case without punctuation, the wrong line says something else,
+  // the long line is cut short, and the rest come back as written.
+  const heardFor = (count) => {
+    const id = ids[count % ids.length];
+    if (id === ids[0]) return texts[id].toLowerCase().replace(/[,.?]/g, "");
+    if (id === wrong) return "Today, three questions decide it.";
+    if (id === long) return texts[long].slice(0, 100);
+    return texts[id];
+  };
+  const server = site({ heardFor, noul: (line) => (line.id === wrong ? 0.1 : 0.9) });
+
+  const first = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "en"], first.ctx), EXIT.lint, first.out.stderr);
+  assert.equal(server.calls.transcribe.length, ids.length);
+  assert.deepEqual([...new Set(server.calls.languages)], ["en"], "every clip is transcribed as English");
+  ids.forEach((id, index) => assert.deepEqual(server.calls.hints[index], texts[id].includes("AI") ? ["AI"] : undefined, `${id} hints only dictionary terms`));
+  assert.deepEqual(server.calls.judgeLanguages, ["en", "en"], "one Jev call per scene with a difference, in English");
+  const judged = server.calls.judge.flat();
+  assert.deepEqual(judged.map((line) => line.id).sort(), [wrong, long].sort());
+  assert.equal([...judged.find((line) => line.id === long).intended].length, MAX_INTENDED_CHARACTERS, "an over-long line is cut to what Jev takes");
+  assert.match(first.out.stdout, new RegExp(`${long}  is longer than Jev takes`));
+  assert.match(first.out.stdout, /en dub: 7 of 7 lines checked: 5 match the script word for word, 0 differ only by same-sound/);
+  assert.match(first.out.stdout, /1 judged fine by Jev, 1 flagged/);
+  assert.match(first.out.stdout, new RegExp(`dub --slug ${box.slug} --locale en --redo`));
+
+  const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.en.json"), "utf8"));
+  assert.deepEqual(flags.flags, [wrong]);
+  assert.equal(flags.locale, "en");
+  assert.equal(flags.translation_hash, timeline.translation_hash);
+  assert.match(flags.notes[wrong], /Jev 0\.10/);
+  assert.ok(existsSync(path.join(box.workdir, "review", "check.en.json")));
+  assert.ok(!existsSync(path.join(box.workdir, "review", "check.json")), "the narration's cache is not touched");
+  assert.ok(!existsSync(path.join(box.workdir, "review", "check-flags.json")));
+  const state = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8"));
+  assert.equal(state.runs.at(-1).stage, "check-audio");
+  assert.equal(state.runs.at(-1).locale, "en");
+  assert.equal(state.runs.at(-1).lines, ids.length);
+
+  const again = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "en"], again.ctx), EXIT.lint);
+  assert.equal(server.calls.transcribe.length, ids.length, "unchanged clips are not transcribed again");
+  assert.equal(server.calls.judge.length, 2, "judged lines are not asked again");
+});
+
+test("check-audio --locale asks for dub first when there is no dub, with the usage exit code", async () => {
+  const box = sandbox();
+  const server = site({ heardFor: () => "", noul: () => 1 });
+  const missing = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "ja"], missing.ctx), EXIT.usage);
+  assert.match(missing.out.stderr, new RegExp(`no ja dub yet: run dub --slug ${box.slug} --locale ja first`));
+  assert.equal(server.calls.transcribe.length, 0);
+  const narration = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--locale", "zh-TW"], narration.ctx), EXIT.usage);
+  assert.match(narration.out.stderr, /--locale must be one of en, ja, ko, zh-CN/);
 });
