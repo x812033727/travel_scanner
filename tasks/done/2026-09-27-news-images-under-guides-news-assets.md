@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-news-images-under-guides-news-assets
 title: News images under /guides/news-assets answer 500 in production
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: claude-opus-5-5
 claimed_at: 2026-09-27T07:45:59Z
 created_at: 2026-09-27T06:41:12Z
-completed_at:
+completed_at: 2026-09-27T08:32:11Z
 branch: claude/news-assets-direct-api
 depends_on: []
 scope:
@@ -118,3 +118,7 @@ one from `news_assets` with the owner's OK.
   `image/svg+xml; charset=utf-8` to `image/svg+xml`; buffers at most 5 MiB, declared or
   streamed; drops the body for HEAD after the same checks, since the API answers GET
   only. Seven of the ten new tests fail against the old route.
+- Unticked when closed: the deploy step and the two production checks, which need the
+  merged code live. The owner chose on 2026-09-27 to deploy as soon as this merges.
+  Before the deploy, the public checks under "How to verify" failed as expected: the
+  missing name, two heroes, one diagram and a HEAD request all answered 500.
