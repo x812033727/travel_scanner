@@ -1,0 +1,566 @@
+{
+  "title": "AI Fixed the Bug. Can You Merge? Three PR Review Gates",
+  "description": "The two original tests passed, but splitting 100 cents allocated only 99. Follow a real patch and test run to learn how to review requirements, the diff, and regression before merging.\nThis is a rerunnable local demo, not a production incident or a merged PR.",
+  "tags": [
+    "AI code review",
+    "PR review",
+    "bug fix",
+    "code review",
+    "regression testing"
+  ],
+  "chapters": {
+    "opening": "Green Tests Can Miss Bugs",
+    "why-green": "Green Is Not Correctness",
+    "gate-one": "Gate 1: The Requirements",
+    "gate-two": "Gate 2: Read the Diff",
+    "gate-three": "Gate 3: Run Regression",
+    "three-gates": "The Merge Decision"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "405e76fd08bc",
+      "why-green": "9a325a577386",
+      "gate-one": "b13802d92b87",
+      "gate-two": "718420424dc5",
+      "gate-three": "6afcb2caf84a",
+      "three-gates": "4147b69644f1"
+    },
+    "title": "60dfbe8e4887",
+    "description": "c8e4e57628d7",
+    "tags": "02ae8ee95e1b"
+  },
+  "lines": {
+    "v40000": {
+      "source_hash": "bdce6cb79602",
+      "text": "Three people split 100 cents. Old tests passed, but the shares totaled 99."
+    },
+    "v40001": {
+      "source_hash": "e6b1acfb9433",
+      "text": "Now AI submits a fix. Would you merge it immediately?"
+    },
+    "v40002": {
+      "source_hash": "f4bdc8206af4",
+      "text": "We'll check requirements, diff, and regression. All three must pass."
+    },
+    "v40003": {
+      "source_hash": "12aac56ecd5c",
+      "text": "First, let us see how that one cent disappeared."
+    },
+    "v40007": {
+      "source_hash": "1dc357b5d2bb",
+      "text": "The first old test only covered an evenly divisible amount."
+    },
+    "v40008": {
+      "source_hash": "fa881e7d0f7d",
+      "text": "The invalid count was also rejected. Both tests were green."
+    },
+    "v40009": {
+      "source_hash": "bcaa3d3e19e6",
+      "text": "No test covered a remainder, so the bug stayed hidden."
+    },
+    "v40010": {
+      "source_hash": "f4632f3818cf",
+      "text": "This demo uses files we actually ran, not an imagined example."
+    },
+    "v40011": {
+      "source_hash": "854cc74888e9",
+      "text": "It shows the code passed old tests, not that the accounting was right."
+    },
+    "v4e1000": {
+      "source_hash": "257a0539259b",
+      "text": "These are the two tests we actually ran on the starter project."
+    },
+    "v4e1001": {
+      "source_hash": "604a72f4197f",
+      "text": "The first splits 120 cents equally among three people."
+    },
+    "v4e1002": {
+      "source_hash": "158258a830f0",
+      "text": "The second expects an error for zero people."
+    },
+    "v4e1003": {
+      "source_hash": "2d6e005cb8df",
+      "text": "Both pass, but neither tells us whether remainders are handled."
+    },
+    "v40014": {
+      "source_hash": "54bf68f35a43",
+      "text": "For 100 cents and three people, the starter returned 33, 33, and 33."
+    },
+    "v40015": {
+      "source_hash": "d2c6fceb7861",
+      "text": "That is not a display issue; the total really is one cent short."
+    },
+    "v40016": {
+      "source_hash": "ab4b62a36ba9",
+      "text": "If that cent enters the books, green tests do not justify a merge."
+    },
+    "v40017": {
+      "source_hash": "e51d5461d033",
+      "text": "Next, let us inspect the patch AI actually submitted."
+    },
+    "v40018": {
+      "source_hash": "4e46b4b85d41",
+      "text": "The failure is captured in a repeatable acceptance test file."
+    },
+    "v40021": {
+      "source_hash": "b101ccb58d0a",
+      "text": "I asked Claude Code to fix my own split function to meet the task."
+    },
+    "v40022": {
+      "source_hash": "4abebf07b951",
+      "text": "It changed code and tests, and all nine of its own tests passed."
+    },
+    "v40023": {
+      "source_hash": "d8134ff9d7cb",
+      "text": "This was no production incident or real merged PR."
+    },
+    "v40024": {
+      "source_hash": "ea9d8ffcc709",
+      "text": "It is a local patch that anyone can rerun."
+    },
+    "v40025": {
+      "source_hash": "623fb0149b6f",
+      "text": "It is useful for review practice, not evidence of a product incident."
+    },
+    "v40028": {
+      "source_hash": "03ce58b90df6",
+      "text": "Gate one: do not start with AI's completion message."
+    },
+    "v40029": {
+      "source_hash": "ac0e59bb790d",
+      "text": "Write requirements as conditions you can calculate yourself."
+    },
+    "v40030": {
+      "source_hash": "faae53af4d8a",
+      "text": "The fix must preserve input rules, not just repair one example."
+    },
+    "v40031": {
+      "source_hash": "fe7725c07e60",
+      "text": "It must not silently change how the shares are assigned."
+    },
+    "v40032": {
+      "source_hash": "5eddd7d02432",
+      "text": "You should be able to state this first gate without the tool."
+    },
+    "v40035": {
+      "source_hash": "d9135343912e",
+      "text": "First, the output length must equal the number of people."
+    },
+    "v40036": {
+      "source_hash": "607075845c51",
+      "text": "Second, all shares must add up to the original amount."
+    },
+    "v40037": {
+      "source_hash": "f8d4b5eb9a11",
+      "text": "Third, any two shares may differ by at most one cent."
+    },
+    "v40038": {
+      "source_hash": "81dda6143618",
+      "text": "Fourth, when cents remain, earlier people get them first."
+    },
+    "v40039": {
+      "source_hash": "ea7b01e544b9",
+      "text": "Together, those four rules define the full allocation."
+    },
+    "v40040": {
+      "source_hash": "dc9ffec6b28f",
+      "text": "Fixing only 100 divided by three would miss other amounts."
+    },
+    "v4e2000": {
+      "source_hash": "3ac38937e469",
+      "text": "Testing only 100 divided by three could hard-code a special case."
+    },
+    "v4e2001": {
+      "source_hash": "fee80b68f60e",
+      "text": "Try two cents among three people: the first two should get one each."
+    },
+    "v4e2002": {
+      "source_hash": "b33245997182",
+      "text": "The third gets zero, and the total remains two cents."
+    },
+    "v4e2003": {
+      "source_hash": "ca3c65c46c5e",
+      "text": "That case quickly exposes duplicate allocations caused by rounding."
+    },
+    "v40042": {
+      "source_hash": "76b71949df72",
+      "text": "The starter also had input validation."
+    },
+    "v40043": {
+      "source_hash": "d518fa420523",
+      "text": "The amount cannot be negative, fractional, or beyond a safe integer."
+    },
+    "v40044": {
+      "source_hash": "d5c1c3ecc4e2",
+      "text": "The count must be a safe integer from 1 through 100."
+    },
+    "v40045": {
+      "source_hash": "9044a418bc9a",
+      "text": "A patch that removes those checks fails, even if this example works."
+    },
+    "v40046": {
+      "source_hash": "b03b5f1a73d0",
+      "text": "They are existing rules, not optional extra credit."
+    },
+    "v40049": {
+      "source_hash": "658527a8e2a2",
+      "text": "For 100 cents and three people, expect 34, 33, and 33."
+    },
+    "v40050": {
+      "source_hash": "a925ba8d8882",
+      "text": "That checks both the total and the remainder order."
+    },
+    "v40051": {
+      "source_hash": "3119aa25287f",
+      "text": "Checking only that each share is close is not enough."
+    },
+    "v40052": {
+      "source_hash": "3a5a1bb778c2",
+      "text": "Write the contract first to give the review a measuring stick."
+    },
+    "v40053": {
+      "source_hash": "d7fced1b5201",
+      "text": "For two cents and three people, the order is 1, 1, 0."
+    },
+    "v40056": {
+      "source_hash": "a73e45a0e973",
+      "text": "Gate two: open the actual diff, not just the completion message."
+    },
+    "v40057": {
+      "source_hash": "126c24bb9eed",
+      "text": "First, check that it changed only the expected code and tests."
+    },
+    "v40058": {
+      "source_hash": "c15e11ac7449",
+      "text": "Then trace 100 divided by three through the new logic."
+    },
+    "v40059": {
+      "source_hash": "f456d8bb9a2b",
+      "text": "Finally, check that the original protections remain."
+    },
+    "v40060": {
+      "source_hash": "4f6bbae45bf5",
+      "text": "A text summary can miss details. Review the diff itself."
+    },
+    "v40063": {
+      "source_hash": "a0d19d496458",
+      "text": "This patch first computes the minimum share for each person."
+    },
+    "v40064": {
+      "source_hash": "09e7946cf2de",
+      "text": "Then it finds how many cents remain for earlier people."
+    },
+    "v40065": {
+      "source_hash": "7e951879624a",
+      "text": "For 100 divided by three, the base is 33 and the remainder is one."
+    },
+    "v40066": {
+      "source_hash": "3618ecc45b29",
+      "text": "The first gets one more; the others stay at 33."
+    },
+    "v40067": {
+      "source_hash": "48ff9bebcf96",
+      "text": "Trace two cents among three people: the first two each get one cent."
+    },
+    "v4e3000": {
+      "source_hash": "57bdbb9533a1",
+      "text": "In the full diff, the function's first two validation blocks remain."
+    },
+    "v4e3001": {
+      "source_hash": "23f7345afeeb",
+      "text": "Invalid amounts and counts are still rejected before allocation."
+    },
+    "v4e3002": {
+      "source_hash": "4d9b9a341c53",
+      "text": "AI replaced average rounding with a base share and remainder."
+    },
+    "v4e3003": {
+      "source_hash": "a3bb5b3937da",
+      "text": "That is the scope of this local diff, not a claim about other files."
+    },
+    "v40070": {
+      "source_hash": "ad4ae39cbd92",
+      "text": "I checked the original validations in the diff; they remain."
+    },
+    "v40071": {
+      "source_hash": "2a19a4bb46a6",
+      "text": "The file list shows only the code and tests changed."
+    },
+    "v40072": {
+      "source_hash": "7349ef8149fc",
+      "text": "New tests cover remainders, zero amount, and invalid inputs."
+    },
+    "v40073": {
+      "source_hash": "5331b4db7edd",
+      "text": "That is visible evidence, not just the tool's word."
+    },
+    "v40074": {
+      "source_hash": "5ba88bf87ce8",
+      "text": "If it also changed deployment or billing settings, discuss that separately."
+    },
+    "v40075": {
+      "source_hash": "98474ad69212",
+      "text": "Read test assertions, not just test names."
+    },
+    "v4e4000": {
+      "source_hash": "5a3cef74f312",
+      "text": "For new tests, check exactly what their assertions verify."
+    },
+    "v4e4001": {
+      "source_hash": "d07de38125f8",
+      "text": "This patch tests that 100 split three ways yields 34, 33, 33."
+    },
+    "v4e4002": {
+      "source_hash": "635b1a419f78",
+      "text": "It also tests two cents among five: 1, 1, then zeros."
+    },
+    "v4e4003": {
+      "source_hash": "602addb25a69",
+      "text": "Those cases matter more than the raw count of tests."
+    },
+    "v40077": {
+      "source_hash": "0a86151d9adf",
+      "text": "This is a local patch, not a PR someone has already approved."
+    },
+    "v40078": {
+      "source_hash": "947b33e62106",
+      "text": "Real projects also need module, type, and operational review."
+    },
+    "v40079": {
+      "source_hash": "824126470917",
+      "text": "The scope grows if this function connects to payments."
+    },
+    "v40080": {
+      "source_hash": "cc9fd3b6c2d2",
+      "text": "You can carry this demo method into real reviews."
+    },
+    "v40081": {
+      "source_hash": "c2cb8ca8590a",
+      "text": "I label this scope clearly so no one mistakes it for real approval."
+    },
+    "v40084": {
+      "source_hash": "c4b75dd11f4b",
+      "text": "Gate three: run the patch against a separate, later acceptance suite."
+    },
+    "v40085": {
+      "source_hash": "d90fe4be7155",
+      "text": "Tool-written tests help, but cannot be the only standard."
+    },
+    "v40086": {
+      "source_hash": "9e44193e41da",
+      "text": "If a test did not fail on old code, it may not cover the bug."
+    },
+    "v40087": {
+      "source_hash": "b1b069e2ad6b",
+      "text": "So I ran the same later acceptance suite against the old code first."
+    },
+    "v40088": {
+      "source_hash": "573b0f8a6412",
+      "text": "Ideally, first reproduce the old failure, then assess the new patch."
+    },
+    "v40091": {
+      "source_hash": "54ae599e11cb",
+      "text": "The old code passed both original tests but only one of four later groups."
+    },
+    "v40092": {
+      "source_hash": "52ca6af5097f",
+      "text": "That shows the new suite catches the defect we meant to fix."
+    },
+    "v40093": {
+      "source_hash": "01add10dd1d3",
+      "text": "The patch then passed all four later acceptance groups."
+    },
+    "v40094": {
+      "source_hash": "f6480ff13614",
+      "text": "That is stronger red-to-green evidence."
+    },
+    "v40095": {
+      "source_hash": "169ce3e99b08",
+      "text": "It counters the false comfort of old exact-division tests."
+    },
+    "v40098": {
+      "source_hash": "19058931fb74",
+      "text": "Acceptance covers more than 100 ÷ 3."
+    },
+    "v40099": {
+      "source_hash": "79455758e5a3",
+      "text": "I also ran amounts from 0 to 500 with 1 to 20 people."
+    },
+    "v40100": {
+      "source_hash": "6abee849e0d3",
+      "text": "Each case checks the total and a maximum gap of one cent."
+    },
+    "v40101": {
+      "source_hash": "a5c9d6ea31c0",
+      "text": "These property checks catch remainder combinations you may miss."
+    },
+    "v40102": {
+      "source_hash": "a37fafdea235",
+      "text": "The loop covers many cases, but it is not a formal proof."
+    },
+    "v40103": {
+      "source_hash": "1a0ac8a90761",
+      "text": "Add business-specific cases for risks beyond this test range."
+    },
+    "v4shot0": {
+      "source_hash": "de6e7d5145f8",
+      "text": "This is local acceptance output from the same patch."
+    },
+    "v4shot1": {
+      "source_hash": "8a919c885783",
+      "text": "Four green groups are recorded, but still compare the full diff and contract."
+    },
+    "v4e5000": {
+      "source_hash": "2e02fa633f9e",
+      "text": "For every case in the loop, I checked more than the total."
+    },
+    "v4e5001": {
+      "source_hash": "3eca25f525ee",
+      "text": "It also checks output length so nobody is omitted."
+    },
+    "v4e5002": {
+      "source_hash": "57c0b8c21c75",
+      "text": "It compares largest and smallest shares; the gap must be at most one."
+    },
+    "v4e5003": {
+      "source_hash": "6bf607e84bda",
+      "text": "All three assertions must hold for each case to pass this gate."
+    },
+    "v40105": {
+      "source_hash": "11f8d7a1d872",
+      "text": "A zero amount must give everyone zero, not throw a strange error."
+    },
+    "v40106": {
+      "source_hash": "4cffc17beb4c",
+      "text": "Negative, fractional, or huge amounts must still be rejected."
+    },
+    "v40107": {
+      "source_hash": "c98bb18535ed",
+      "text": "The same goes for zero, over 100, or fractional people counts."
+    },
+    "v40108": {
+      "source_hash": "1c78309ab1d0",
+      "text": "Regression means fixing the new bug while preserving old rules."
+    },
+    "v40109": {
+      "source_hash": "01e87cdac3f2",
+      "text": "Input validation is especially easy to drop during a rewrite."
+    },
+    "v40112": {
+      "source_hash": "3c4887cb9f19",
+      "text": "Now put the three gates together."
+    },
+    "v40113": {
+      "source_hash": "18d459e519ac",
+      "text": "The requirement contract defines what fixed means."
+    },
+    "v40114": {
+      "source_hash": "8842573a83ae",
+      "text": "The diff shows which files and lines actually changed."
+    },
+    "v40115": {
+      "source_hash": "67d7b592809d",
+      "text": "Regression tests show old and new rules hold within the tested range."
+    },
+    "v40116": {
+      "source_hash": "9b6aea8a2369",
+      "text": "Miss a gate, and the review record is incomplete."
+    },
+    "v40119": {
+      "source_hash": "6c282c96e4a8",
+      "text": "I put three things in the review record."
+    },
+    "v40120": {
+      "source_hash": "0c6b9f81f856",
+      "text": "First, the explicit acceptance conditions."
+    },
+    "v40121": {
+      "source_hash": "cec1f2016187",
+      "text": "Second, the actual scope of the diff."
+    },
+    "v40122": {
+      "source_hash": "4e5c1eb1c9ef",
+      "text": "Third, which test failed before and passed after the patch."
+    },
+    "v40123": {
+      "source_hash": "c667677352e8",
+      "text": "Put those in the PR description so others can rerun the check."
+    },
+    "v4e6000": {
+      "source_hash": "0b2a107023cf",
+      "text": "Include the original failing case in the review summary."
+    },
+    "v4e6001": {
+      "source_hash": "8ae634716027",
+      "text": "Attach the full diff, not just two attractive core lines."
+    },
+    "v4e6002": {
+      "source_hash": "b400ae6a9af4",
+      "text": "List rerun commands and the range of tests that passed."
+    },
+    "v4e6003": {
+      "source_hash": "6d6b0b94b86c",
+      "text": "The next reviewer can verify it instead of trusting a verbal report."
+    },
+    "v40126": {
+      "source_hash": "4f53c19e4114",
+      "text": "Passing this small task still cannot decide for a real business."
+    },
+    "v40127": {
+      "source_hash": "da2af025c9f9",
+      "text": "If the requirement was wrong, tests may pass for the wrong behavior."
+    },
+    "v40128": {
+      "source_hash": "a8787fe77f41",
+      "text": "Someone must review scope, data impact, and rollback options too."
+    },
+    "v40129": {
+      "source_hash": "248575fb4d73",
+      "text": "The person merging must own that judgment."
+    },
+    "v40130": {
+      "source_hash": "a279c86bd152",
+      "text": "Merging is a responsible human decision, not a model's decision."
+    },
+    "v40133": {
+      "source_hash": "573341929b08",
+      "text": "In GitHub's formal flow, reviewers can comment on changed lines."
+    },
+    "v40134": {
+      "source_hash": "3fd58f5836ce",
+      "text": "They can request changes or approve after reading the evidence."
+    },
+    "v40135": {
+      "source_hash": "ef98ae2595e8",
+      "text": "We are not approving any real PR here."
+    },
+    "v40136": {
+      "source_hash": "e9f991595c10",
+      "text": "The point is to let the next reviewer find the same evidence."
+    },
+    "v40137": {
+      "source_hash": "15079fc6cea9",
+      "text": "The video shows the rule, not someone else's PR as decoration."
+    },
+    "v40140": {
+      "source_hash": "00eba74120e8",
+      "text": "Back to the start: AI fixed the bug and tests are green. Merge?"
+    },
+    "v40141": {
+      "source_hash": "1ee199942c5a",
+      "text": "Check requirements, diff, and regression; then a person decides."
+    },
+    "v40142": {
+      "source_hash": "e004c9558377",
+      "text": "Keep the starter, patch, and tests together for this example."
+    },
+    "v40143": {
+      "source_hash": "f1e364815967",
+      "text": "Try this on your next small fix instead of memorizing a rule."
+    },
+    "v40144": {
+      "source_hash": "829be474e7cf",
+      "text": "Then carry the method from this exercise into larger changes."
+    }
+  }
+}
