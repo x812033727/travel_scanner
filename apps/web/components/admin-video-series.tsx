@@ -7,6 +7,7 @@ import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { control, list, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
 import { Button } from "@/components/community/ui";
+import { Link } from "@/i18n/navigation";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 
@@ -38,6 +39,8 @@ type DramaRequest = {
 };
 
 export const SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
+// The drama part of the settings tab, where the route is switched on (docs/videos/DRAMA-FLOW.md, section 1).
+const DRAMA_SETTINGS = "/admin/videos?tab=settings&section=drama";
 const ASPECTS = ["world", "bonds", "structure", "mood"] as const;
 const TONES = ["dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"] as const;
 const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
@@ -84,7 +87,7 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
   return <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
     <summary className="cursor-pointer text-lg font-bold">{t("newSeries")}</summary>
     <form className="mt-4 grid gap-3" onSubmit={(event) => { event.preventDefault(); void create(); }} aria-label={t("newSeries")}>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("newSeriesHelp")}</p>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("newSeriesHelp")} <Link href={DRAMA_SETTINGS} className="font-semibold text-[var(--teal)] underline">{t("openDramaSettings")}</Link></p>
       <div className="grid gap-3 md:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">{t("fields.title")}<input className={control} value={title} disabled={busy} maxLength={200} onChange={(event) => setTitle(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("fields.slug")}<input className={control} value={slug} disabled={busy} placeholder={t("slugPlaceholder")} aria-invalid={Boolean(slug) && !slugOk} onChange={(event) => setSlug(event.target.value)} /></label>
@@ -145,7 +148,7 @@ function NewDramaForm({ onFiled }: { onFiled: () => void }) {
   return <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
     <summary className="cursor-pointer text-lg font-bold">{t("newDrama")}</summary>
     <form className="mt-4 grid gap-3" onSubmit={(event) => { event.preventDefault(); void file(); }} aria-label={t("newDrama")}>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("newDramaHelp")}</p>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("newDramaHelp")} <Link href={DRAMA_SETTINGS} className="font-semibold text-[var(--teal)] underline">{t("openDramaSettings")}</Link></p>
       <label className="grid gap-2 text-sm font-semibold">{t("premise")}
         <textarea className={control} rows={4} value={premise} disabled={busy} maxLength={4000} placeholder={t("premisePlaceholder")} onChange={(event) => setPremise(event.target.value)} />
       </label>

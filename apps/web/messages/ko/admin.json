@@ -2191,7 +2191,7 @@
     "drama": "AI 드라마",
     "spend": "미디어 비용 US${usd}(클립 {seconds}초)",
     "newDrama": "새 드라마",
-    "newDramaHelp": "줄거리(또는 각색할 사이트 글의 slug)를 쓰고 스타일과 길이를 고릅니다. 호스트의 워커가 예약 초안보다 먼저 기획하며, 개요·설정화·내레이션·스토리보드·최종 편집은 이 페이지에서 결정합니다. 설정에서 「AI 드라마」를 먼저 켜 두세요.",
+    "newDramaHelp": "줄거리(또는 각색할 사이트 글의 slug)를 쓰고 스타일과 길이를 고릅니다. 호스트의 워커가 예약 초안보다 먼저 기획하며, 개요·설정화·내레이션·스토리보드·최종 편집은 이 페이지에서 결정합니다. 드라마 설정에서 「AI 드라마」를 먼저 켜 두세요.",
     "premise": "줄거리(필수)",
     "premisePlaceholder": "누가 무엇을 원하고, 무엇이 가로막으며, 어떻게 끝나는지. 퍼블릭 도메인 설화나 창작.",
     "workingTitle": "가제(선택)",
@@ -2302,7 +2302,8 @@
     "uploadedButton": "업로드함",
     "uploadedError": "기록하지 못했습니다: {message}",
     "scheduledAt": "{time}에 게시 예정",
-    "readyLoading": "업로드 패키지를 불러오는 중…"
+    "readyLoading": "업로드 패키지를 불러오는 중…",
+    "openDramaSettings": "드라마 설정 열기"
   },
   "videoSettings": {
     "loading": "설정을 불러오는 중…",
@@ -2344,7 +2345,7 @@
       "voice_style": "말투(음성 모델에 주는 영어 설명)",
       "target_minutes_min": "최소 길이(분)",
       "target_minutes_max": "최대 길이(분)",
-      "caption_locales": "자막 언어(번체 중국어는 항상 포함)",
+      "caption_locales": "언어 패널 기본 체크(번체 중국어는 항상 만듭니다)",
       "max_drafts_per_month": "월간 최대 초안 수",
       "monthly_token_budget_millions": "월간 모델 토큰 한도(백만)",
       "max_verify_rounds": "영상당 최대 팩트체크 횟수",
@@ -2378,7 +2379,15 @@
       "channel_stance": "채널의 입장",
       "auto_pick_outline": "Jev가 아웃라인을 고르게 하기 (입장이 비어 있으면 효과 없음)",
       "auto_approve_final": "자동 검사를 모두 통과하면 최종본을 승인하고, 업로드 패키지가 준비되면 \"업로드 확인\"도 승인",
-      "drama_auto_pick_look": "설정화 자동 선택: judge 최고 점수의 한 장이 기준을 넘고 문제가 없으면 그 인물을 승인"
+      "drama_auto_pick_look": "설정화 자동 선택: judge 최고 점수의 한 장이 기준을 넘고 문제가 없으면 그 인물을 승인",
+      "drama_stage_models_follow": "단계 모델은 튜토리얼과 같음",
+      "drama_voice_follows": "내레이션 목소리는 튜토리얼과 같음(채널 목소리)",
+      "series_script_gate": "생성을 시작하기 전에 대본을 먼저 보여 주기(단편과 시리즈의 각 회)",
+      "series_max_in_flight": "동시에 제작하는 회차 수(1–2)",
+      "series_auto_continue": "이전 회의 업로드가 확인되면 다음 회를 자동으로 시작",
+      "series_chapter_ahead": "몇 회 남았을 때 다음 장을 기획할지",
+      "series_doc_rewrites": "되돌린 문서를 기다리기 전에 다시 쓰는 횟수",
+      "series_episodes_per_month": "한 달에 시작할 수 있는 회차 수"
     },
     "stages": {
       "planner": "기획(주제와 개요)",
@@ -2394,7 +2403,6 @@
       "ko": "한국어",
       "zh-CN": "간체 중국어"
     },
-    "usage": "이번 달(UTC) 사용량: API 토큰 {tokens} / {tokenBudget}, 구독 계정 토큰 {planTokens}, 초안 {drafts} / {draftBudget}개, 모델 호출 {calls}회(실패 {failed}회).",
     "subscription": "구독 계정",
     "agentOff": "호스트 에이전트 미설정",
     "subscriptionHelp": "구독 계정은 A, B, C… 순서로 돌아가며, 5시간 또는 주간 한도를 다 쓴 경우에만 다음으로 넘어가고 마지막 다음은 A로 돌아갑니다. 모두 다 쓰면 작업기는 한도가 초기화될 때까지 기다렸다가 계속하며, 스스로 API 키로 바꾸지 않습니다. Codex는 제공하지 않습니다. 명령줄에서 명령 실행을 끌 수 없기 때문입니다.",
@@ -2407,7 +2415,7 @@
     "dramaModels": "미디어 모델",
     "dramaSwitches": "옵션",
     "dramaBudgetHelp": "월 예산은 서버에서 막아 공급자에게 요청이 가지 않습니다. 편당 상한은 도구가 제출 전에 막습니다. 운영자가 2026-09-26에 당분간 상한 없이 시작하기로 하여 기본값은 넉넉하며, 시범 제작 후 낮춥니다.",
-    "voicePoolHelp": "작가 모델이 캐릭터에 배정할 수 있는 Gemini 목소리입니다. 내레이션은 위의 채널 목소리를 그대로 씁니다.",
+    "voicePoolHelp": "작가 모델이 캐릭터에 배정할 수 있는 Gemini 목소리입니다. 내레이션은 위의 목소리를 씁니다.",
     "preview": "미리보기",
     "stylePresets": {
       "cinematic-3d": "시네마틱 3D 실사",
@@ -2416,7 +2424,7 @@
       "custom": "사용자 지정(스타일은 대본이 제공)"
     },
     "instructionsTitle": "단계별 상시 지시",
-    "instructionsHelp": "매번 말해야 하는 내용을 여기에 적습니다. 워커는 해당 단계를 실행할 때 이 글을 프롬프트 끝에 덧붙이며, 슬라이드와 드라마 모든 영상에 적용됩니다. 칸마다 4,000자까지이고, 비우면 아무것도 붙지 않습니다. 한 회만의 요청은 「새 드라마」의 메모나 관문을 되돌릴 때의 메모에 적으세요.",
+    "instructionsHelp": "매번 말해야 하는 내용을 여기에 적습니다. 워커는 해당 단계를 실행할 때 이 글을 프롬프트 끝에 덧붙이며, 튜토리얼 영상 모두에 적용됩니다. 드라마의 것은 「드라마」에 있습니다. 칸마다 4,000자까지이고, 비우면 아무것도 붙지 않습니다.",
     "instructionFor": "{stage} 상시 지시",
     "instructionPlaceholder": "예: 내레이션은 대만 구어체로, 마지막은 다음 회 예고로 끝내기",
     "promptsTitle": "현재 프롬프트(읽기 전용)",
@@ -2429,7 +2437,36 @@
     "promptSent": "{slug} · {time}",
     "stanceTitle": "채널의 입장",
     "stanceHelp": "이 채널이 믿는 것. 기획 모델은 각 영상의 운영자 관점을 이 입장만을 근거로 쓰고, 집필과 Jev의 검사도 이것을 읽습니다. \"각 단계의 상설 지시\"와는 다릅니다: 상설 지시는 어떻게 쓸지, 입장은 무엇을 믿는지입니다. 한 줄에 한 항목, 번호를 붙여 최대 4,000자. 비어 있는 동안 Jev는 아웃라인을 고르지 않고 예전처럼 당신을 기다립니다. 초안은 docs/videos/HANDS-OFF.md의 「頻道立場」 절에 있으니 고쳐서 붙여 넣으세요. 바꾼 내용은 그 뒤에 기획되는 영상에만 적용됩니다.",
-    "stancePlaceholder": "예: 1. 돈을 쓰기 전에 계산부터: 정말 쓸 한도와 기능을 위해 결제하고, 광고를 없애려고 결제하지 않는다."
+    "stancePlaceholder": "예: 1. 돈을 쓰기 전에 계산부터: 정말 쓸 한도와 기능을 위해 결제하고, 광고를 없애려고 결제하지 않는다.",
+    "sectionsLabel": "설정 구분",
+    "sections": {
+      "tutorial": "튜토리얼 영상",
+      "drama": "드라마",
+      "shared": "공용"
+    },
+    "tutorialHelp": "튜토리얼 영상: 슬라이드와 채널 목소리로, 일정에 따라 주제부터 만듭니다. 이 탭의 각 부분은 따로 저장합니다. 드라마 설정은 「드라마」에, 둘 다 쓰는 것은 「공용」에 있습니다.",
+    "sharedHelp": "두 영상 모두 쓰는 것: 채널 입장, 피할 주제, 월간 모델 토큰 한도.",
+    "saveTutorial": "튜토리얼 설정 저장",
+    "saveDrama": "드라마 설정 저장",
+    "saveShared": "공용 설정 저장",
+    "avoidElsewhere": "피할 주제는 「공용」에 있습니다.",
+    "avoidHelp": "튜토리얼과 드라마 모두 이 주제를 피합니다.",
+    "tokenTitle": "월간 모델 토큰",
+    "usageDrafts": "이번 달(UTC) 초안 {drafts} / {draftBudget}개.",
+    "usageTokens": "이번 달(UTC): API 토큰 {tokens} / {tokenBudget}, 구독 계정 토큰 {planTokens}, 모델 호출 {calls}회(실패 {failed}회).",
+    "localesHelp": "최종본이 승인될 때 언어 패널에 미리 체크되는 언어만 정합니다(docs/videos/LANGUAGES.md). 그 영상의 패널을 저장하기 전에는 다른 언어를 만들지 않습니다.",
+    "dramaInstructionsHelp": "워커가 해당 단계를 실행할 때 프롬프트 끝에 덧붙입니다. 단편과 시리즈의 각 회 모두에 적용되며, 튜토리얼의 것은 「튜토리얼 영상」에 있습니다. 칸마다 4,000자까지이고, 비우면 아무것도 붙지 않습니다. 한 회만의 요청은 요청의 메모나 토론에 적으세요.",
+    "dramaModelsOwn": "드라마의 각 단계는 이 모델로 실행됩니다. 'AI 설정 › 기능별 모델 › 드라마 단계'에서 고릅니다.",
+    "dramaModelsFollow": "드라마의 각 단계는 튜토리얼과 같은 모델로 실행됩니다. 따로 두려면 'AI 설정 › 기능별 모델 › 드라마 단계'에서 고르세요.",
+    "dramaModelsTitle": "드라마 단계",
+    "dramaModelsHelp": "드라마의 여섯 단계(기획, 작성, 검증, 청취자 검토, 자막 번역, 자막 검토)는 튜토리얼과 다른 모델로 실행할 수 있습니다. '튜토리얼과 같음'에 체크하면 위의 선택을 그대로 씁니다.",
+    "dramaStage": "드라마: {stage}",
+    "voiceTitle": "내레이션과 캐릭터 목소리",
+    "dramaVoiceHelp": "드라마 내레이션은 채널 목소리를 쓰거나 따로 고릅니다. 캐릭터 목소리는 아래 풀에서 배정합니다.",
+    "flowTitle": "횟수 한도",
+    "seriesTitle": "시리즈",
+    "seriesHelp": "장편 시리즈(docs/videos/SERIES.md)의 속도: 동시에 만드는 회차 수, 다음 장을 기획하는 시점, 되돌린 문서를 몇 번 다시 쓰고 나서 당신을 기다릴지.",
+    "dramaGatesHelp": "YouTube 업로드와 공개 시각은 언제나 당신이 정합니다. 대본은 기본으로 먼저 보여 주며, 끄면 자동 승인됩니다. 설정화·내레이션·스토리보드·최종본에는 각각 스위치가 있고, 끈 관문은 예전처럼 당신을 기다립니다."
   },
   "videoSeries": {
     "listTitle": "작품",
@@ -2438,7 +2475,7 @@
     "loadError": "작품을 불러오지 못했습니다",
     "retry": "다시 시도",
     "newSeries": "새 작품",
-    "newSeriesHelp": "줄거리를 직접 쓰고, 중시하는 면을 고르고, 감정선과 형태를 정합니다. 워커가 설정집, 총괄 개요, 각 장의 세부 개요를 차례로 기획하고 여기서 하나씩 승인합니다. 각 회의 대본도 먼저 읽고, 회차는 순서대로 제작됩니다. 설정에서 「AI 드라마」를 먼저 켜 두세요.",
+    "newSeriesHelp": "줄거리를 직접 쓰고, 중시하는 면을 고르고, 감정선과 형태를 정합니다. 워커가 설정집, 총괄 개요, 각 장의 세부 개요를 차례로 기획하고 여기서 하나씩 승인합니다. 각 회의 대본도 먼저 읽고, 회차는 순서대로 제작됩니다. 드라마 설정에서 「AI 드라마」를 먼저 켜 두세요.",
     "fields": {
       "title": "작품 제목",
       "slug": "슬러그(소문자·숫자·하이픈)",
@@ -2555,6 +2592,7 @@
     "openVideo": "열기",
     "skip": "건너뛰기",
     "skipConfirm": "{n}화를 건너뛸까요? 작품은 다음 화로 넘어갑니다.",
-    "oneOffTitle": "단편 에피소드"
+    "oneOffTitle": "단편 에피소드",
+    "openDramaSettings": "드라마 설정 열기"
   }
 }

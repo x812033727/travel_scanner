@@ -2191,7 +2191,7 @@
     "drama": "AI 漫劇",
     "spend": "媒體花費 US${usd}（{seconds} 片段秒）",
     "newDrama": "新的漫劇",
-    "newDramaHelp": "寫下故事前提（或填一篇站上文章的 slug 改編）、選風格與長度。主機上的工人會先做它再做排程草稿；大綱、角色設定圖、旁白、分鏡、成片都在這一頁等你決定。設定分頁要先開啟「AI 漫劇」。",
+    "newDramaHelp": "寫下故事前提（或填一篇站上文章的 slug 改編）、選風格與長度。主機上的工人會先做它再做排程草稿；大綱、角色設定圖、旁白、分鏡、成片都在這一頁等你決定。漫劇設定要先開啟「AI 漫劇」。",
     "premise": "故事前提（必填）",
     "premisePlaceholder": "誰想要什麼、什麼擋在前面、結局怎樣。公有領域的傳說或原創故事。",
     "workingTitle": "暫定標題（選填）",
@@ -2302,7 +2302,8 @@
     "uploadedButton": "已上傳",
     "uploadedError": "沒有記下：{message}",
     "scheduledAt": "排定 {time} 上架",
-    "readyLoading": "讀取上傳包…"
+    "readyLoading": "讀取上傳包…",
+    "openDramaSettings": "前往漫劇設定"
   },
   "videoSettings": {
     "loading": "讀取設定中…",
@@ -2344,7 +2345,7 @@
       "voice_style": "說話風格（給語音模型的英文描述）",
       "target_minutes_min": "最短長度（分鐘）",
       "target_minutes_max": "最長長度（分鐘）",
-      "caption_locales": "CC 字幕語系（繁體中文一定有）",
+      "caption_locales": "語言面板預先勾選（繁體中文一定會做）",
       "max_drafts_per_month": "每月最多幾支草稿",
       "monthly_token_budget_millions": "每月模型 token 上限（百萬）",
       "max_verify_rounds": "每支最多查核幾輪",
@@ -2378,7 +2379,15 @@
       "channel_stance": "頻道立場",
       "auto_pick_outline": "由 Jev 挑大綱（立場留白時沒有作用）",
       "auto_approve_final": "自動品管全過就核准成片；上傳包備好就核准「確認上架」",
-      "drama_auto_pick_look": "設定圖自動選：judge 分數最高的那張達到門檻、沒有問題時，就核准該角色"
+      "drama_auto_pick_look": "設定圖自動選：judge 分數最高的那張達到門檻、沒有問題時，就核准該角色",
+      "drama_stage_models_follow": "各階段模型跟教學一樣",
+      "drama_voice_follows": "旁白聲音跟教學一樣（頻道聲音）",
+      "series_script_gate": "劇本先給我看，再開始生成（單集與作品的每一集）",
+      "series_max_in_flight": "同時最多幾集在做（1–2）",
+      "series_auto_continue": "上一集確認上架後自動開始下一集",
+      "series_chapter_ahead": "剩幾集時先規劃下一篇",
+      "series_doc_rewrites": "文件退回後最多重寫幾輪",
+      "series_episodes_per_month": "每月最多開始幾集"
     },
     "stages": {
       "planner": "企劃（選題與大綱）",
@@ -2394,7 +2403,6 @@
       "ko": "韓文",
       "zh-CN": "簡體中文"
     },
-    "usage": "本月（UTC）API 已用 {tokens} / {tokenBudget} 個 token，訂閱帳號用了 {planTokens} 個 token；產生 {drafts} / {draftBudget} 支草稿，呼叫模型 {calls} 次（其中 {failed} 次失敗）。",
     "subscription": "訂閱帳號",
     "agentOff": "主機代理未設定",
     "subscriptionHelp": "訂閱帳號依 A、B、C… 的順序輪流，一個帳號的 5 小時或每週額度用滿才換下一個，最後一個用滿再回到 A；每個帳號都用滿時，工人就等額度重置再繼續，不會自動改用 API 金鑰。Codex 不提供：它的指令列關不掉執行指令的能力。",
@@ -2407,7 +2415,7 @@
     "dramaModels": "媒體模型",
     "dramaSwitches": "選項",
     "dramaBudgetHelp": "每月預算在伺服器擋，請求不會送到廠商；單支上限由工具在送出前擋。站主 2026-09-26 決定先不設上限：預設開很大，試作完再調低。",
-    "voicePoolHelp": "撰稿模型可以分配給角色的 Gemini 聲音；旁白沿用上面的頻道聲音。",
+    "voicePoolHelp": "撰稿模型可以分配給角色的 Gemini 聲音；旁白用上面的聲音。",
     "preview": "預覽版",
     "stylePresets": {
       "cinematic-3d": "電影感 3D 寫實",
@@ -2416,7 +2424,7 @@
       "custom": "自訂（風格由劇本提供）"
     },
     "instructionsTitle": "各階段的常設指示",
-    "instructionsHelp": "每次都要講的話寫在這裡。工人跑該階段時會把這段文字接在提示詞後面，投影片與漫劇每一支都適用；每格最多 4,000 字，清空就是不加。單集的要求請寫在「新的漫劇」的備註，或退回關卡時的備註。",
+    "instructionsHelp": "每次都要講的話寫在這裡。工人跑該階段時會把這段文字接在提示詞後面，教學影片每一支都適用；漫劇的在「漫劇」。每格最多 4,000 字，清空就是不加。",
     "instructionFor": "{stage}的常設指示",
     "instructionPlaceholder": "例如：旁白一律用台灣口語；結尾留下一集的懸念",
     "promptsTitle": "目前的提示詞（唯讀）",
@@ -2429,7 +2437,36 @@
     "promptSent": "{slug} · {time}",
     "stanceTitle": "頻道立場",
     "stanceHelp": "這個頻道相信什麼。企劃模型寫每一支影片的站主觀點時，只以這份立場為依據；撰稿與 Jev 的檢查也會讀它。跟「各階段的常設指示」分開：常設指示寫怎麼寫，立場寫相信什麼。每條一行、加編號，最多 4,000 字。留白時 Jev 不會替你挑大綱，大綱照舊等你。草稿在 docs/videos/HANDS-OFF.md 的「頻道立場」一節，改過再貼進來；改了只影響之後才寫企劃的影片。",
-    "stancePlaceholder": "例如：1. 先把帳算清楚再花錢：付費是為了真的用得到的額度與能力，不是為了拿掉廣告。"
+    "stancePlaceholder": "例如：1. 先把帳算清楚再花錢：付費是為了真的用得到的額度與能力，不是為了拿掉廣告。",
+    "sectionsLabel": "設定分頁",
+    "sections": {
+      "tutorial": "教學影片",
+      "drama": "漫劇",
+      "shared": "共用"
+    },
+    "tutorialHelp": "教學影片：投影片加頻道聲音，依排程從題目做起。這個分頁的每一部分各自儲存；漫劇的設定在「漫劇」，兩種都用到的在「共用」。",
+    "sharedHelp": "兩種影片都用到的：頻道立場、要避開的題材、每月模型 token 上限。",
+    "saveTutorial": "儲存教學設定",
+    "saveDrama": "儲存漫劇設定",
+    "saveShared": "儲存共用設定",
+    "avoidElsewhere": "要避開的題材在「共用」。",
+    "avoidHelp": "教學影片與漫劇都會避開這些題材。",
+    "tokenTitle": "每月模型 token",
+    "usageDrafts": "本月（UTC）產生 {drafts} / {draftBudget} 支草稿。",
+    "usageTokens": "本月（UTC）API 已用 {tokens} / {tokenBudget} 個 token，訂閱帳號用了 {planTokens} 個 token；呼叫模型 {calls} 次（其中 {failed} 次失敗）。",
+    "localesHelp": "只影響成片核准後語言面板打開時預先勾了什麼（docs/videos/LANGUAGES.md）；你在那支影片的面板儲存之前，不會做任何其他語言。",
+    "dramaInstructionsHelp": "工人跑該階段時接在提示詞後面，單集與作品的每一集都適用；教學影片的在「教學影片」。每格最多 4,000 字，清空就是不加。單集的要求寫在請求的備註或討論串。",
+    "dramaModelsOwn": "漫劇的各階段用這些模型，在「AI 設定 › 各功能模型 › 漫劇各階段」選擇。",
+    "dramaModelsFollow": "漫劇的各階段跟教學影片用同樣的模型；要分開，在「AI 設定 › 各功能模型 › 漫劇各階段」選。",
+    "dramaModelsTitle": "漫劇各階段",
+    "dramaModelsHelp": "漫劇的六個階段（企劃、撰稿、查核、聽眾審稿、字幕翻譯、字幕審稿）可以用跟教學影片不一樣的模型；勾「跟教學一樣」就沿用上面的選擇。",
+    "dramaStage": "漫劇：{stage}",
+    "voiceTitle": "旁白與角色聲音",
+    "dramaVoiceHelp": "漫劇的旁白用頻道聲音，或自己選一個；角色的聲音從下面的聲音池分配。",
+    "flowTitle": "流程上限",
+    "seriesTitle": "作品",
+    "seriesHelp": "長篇作品（docs/videos/SERIES.md）的節奏：同時做幾集、剩幾集先規劃下一篇、文件退回後重寫幾輪才停下來等你。",
+    "dramaGatesHelp": "上傳到 YouTube 與上架時間永遠由你決定。劇本預設先給你看，關掉才自動核准；設定圖、旁白、分鏡、成片各有開關，關掉的關卡照舊等你。"
   },
   "videoSeries": {
     "listTitle": "作品",
@@ -2438,7 +2475,7 @@
     "loadError": "作品讀不到",
     "retry": "再試一次",
     "newSeries": "新的作品",
-    "newSeriesHelp": "用你的話寫前提、勾你在意的面向、選情感線與形狀。工人依序規劃設定集、總綱、每篇細綱，你在這裡逐份核准；每一集的劇本也先給你看，集數依序製作。設定分頁要先開啟「AI 漫劇」。",
+    "newSeriesHelp": "用你的話寫前提、勾你在意的面向、選情感線與形狀。工人依序規劃設定集、總綱、每篇細綱，你在這裡逐份核准；每一集的劇本也先給你看，集數依序製作。漫劇設定要先開啟「AI 漫劇」。",
     "fields": {
       "title": "作品名稱",
       "slug": "代號（小寫英數與連字號）",
@@ -2555,6 +2592,7 @@
     "openVideo": "打開",
     "skip": "跳過",
     "skipConfirm": "跳過第 {n} 集？作品會直接做下一集。",
-    "oneOffTitle": "單集漫劇"
+    "oneOffTitle": "單集漫劇",
+    "openDramaSettings": "前往漫劇設定"
   }
 }

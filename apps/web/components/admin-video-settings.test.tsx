@@ -1,8 +1,8 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoModelSettings } from "./admin-video-model-settings";
-import { AdminVideoSettings, linesToList, mediaChoice, saveBody, settingsBody, STAGES } from "./admin-video-settings";
+import { AdminVideoSettings, dramaBody, linesToList, mediaChoice, normalizeDrama, settingsBody, sharedBody, STAGES, tutorialBody } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -29,6 +29,9 @@ const view = {
     max_clips_per_video: 40, max_retakes_per_shot: 2, monthly_clip_seconds_budget: 3000, monthly_images_budget: 1500, monthly_judge_calls_budget: 3000,
     monthly_music_budget: 60, max_usd_per_video: 200, judge_min_score: 7, auto_approve_storyboard: false, auto_pick_look: false, character_voice_pool: [], music_enabled: true,
     subtitle_burn_in: true, style_preset: "cinematic-3d", drama_topic_scope: ["山海經", "民間傳說"],
+    series_max_in_flight: 1, series_script_gate: true, series_auto_continue: true, series_chapter_ahead: 2, series_doc_rewrites: 2, series_episodes_per_month: 30,
+    drama_stage_models: null, drama_stage_instructions: { writer: "每集結尾一個懸念" }, drama_voice: null, drama_caption_locales: [],
+    drama_auto_approve_audio: true, drama_auto_approve_final: true, drama_max_verify_rounds: 3, drama_max_retake_rounds: 2,
   },
   media_options: {
     images: { gemini: [{ value: "gemini-3-pro-image", label: "Gemini 3 Pro Image", description: null, status: "stable", resolutions: [], durations: [], reference_images: 14, native_audio: false, usd_per_second: null, usd_per_image: 0.134, usd_per_track: null }], minimax: [] },
@@ -51,7 +54,16 @@ const view = {
   updated_at: "2026-09-25T08:00:00Z",
 };
 
-const prompts = [{ stage: "planner", format: "drama", slug: "jingwei", instructions: "You are the planner.\n\n## The owner's standing instructions\n每集結尾留下一集的懸念", sent_at: "2026-09-26T15:00:00Z" }];
+const prompts = [
+  { stage: "planner", format: "drama", variant: "setting", slug: "jingwei", instructions: "You are the planner.\n\n## The owner's standing instructions\n每集結尾留下一集的懸念", sent_at: "2026-09-26T15:00:00Z" },
+  { stage: "writer", format: "slides", variant: "", slug: "ai-model-choice", instructions: "You are the writer.", sent_at: "2026-09-26T16:00:00Z" },
+];
+
+/** A merge the way the API answers a partial save: the sent fields over the stored ones, drama field by field. */
+function merged(body: Record<string, unknown>) {
+  const { drama, ...rest } = body as { drama?: Record<string, unknown> };
+  return { ...view, ...rest, drama: { ...view.drama, ...(drama ?? {}) }, updated_at: "2026-09-27T08:00:00Z" };
+}
 
 function stubFetch() {
   const puts: unknown[] = [];
@@ -61,92 +73,97 @@ function stubFetch() {
     if (init?.method === "PUT") {
       const body = JSON.parse(String(init.body));
       puts.push(body);
-      return Promise.resolve(Response.json({ ...view, ...body }));
+      return Promise.resolve(Response.json(merged(body)));
     }
     return Promise.resolve(Response.json(view));
   }));
   return puts;
 }
 
+const settingsAt = (section: string) => window.history.replaceState(null, "", `/zh-TW/admin/videos?tab=settings&section=${section}`);
+const manager = () => render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+
+beforeEach(() => window.history.replaceState(null, "", "/zh-TW/admin/videos?tab=settings"));
 afterEach(() => vi.unstubAllGlobals());
 
 describe("AdminVideoSettings", () => {
-  it("keeps one topic per line and sends only what the API stores", () => {
+  it("builds each part's body from the whole, one topic per line, without the options or the other parts", () => {
     expect(linesToList(" AI \n\nAI 工具教學\r\n")).toEqual(["AI", "AI 工具教學"]);
     const body = settingsBody(view as never);
     expect(Object.keys(body)).not.toContain("model_options");
     expect(Object.keys(body)).not.toContain("updated_at");
     expect(Object.keys(body.stage_models)).toEqual([...STAGES]);
-    expect(saveBody(body, "AI", "")).not.toHaveProperty("stage_models");
+    const tutorial = tutorialBody(body, "AI\n工具");
+    expect(tutorial.topic_scope).toEqual(["AI", "工具"]);
+    expect(tutorial).not.toHaveProperty("stage_models");
+    expect(tutorial).not.toHaveProperty("drama");
+    expect(tutorial).not.toHaveProperty("channel_stance");
+    expect(tutorial).not.toHaveProperty("topic_avoid");
+    expect(Object.keys(sharedBody(body, "Stocks\n"))).toEqual(["channel_stance", "topic_avoid", "monthly_token_budget_millions"]);
+    expect(Object.keys(dramaBody(body.drama, "山海經"))).toEqual(["drama"]);
+    // An older site's drama object lacks the series and the split's fields; the defaults fill them.
+    const older = normalizeDrama({ drama_enabled: true } as never);
+    expect(older).toMatchObject({ drama_enabled: true, drama_stage_models: null, drama_voice: null, drama_stage_instructions: {}, drama_caption_locales: [], series_script_gate: true, drama_max_verify_rounds: 3 });
   });
 
-  it("lets a settings manager turn drafts on and save without touching the stage models", async () => {
+  it("opens on the tutorial part, saves only its fields, and keeps the drama's and the shared ones out of the body", async () => {
     const puts = stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    manager();
     const enabled = await screen.findByRole("checkbox", { name: "自動產生草稿" });
+    expect(screen.getByRole("tab", { name: "教學影片", selected: true })).toBeTruthy();
     fireEvent.click(enabled);
     fireEvent.change(screen.getByRole("spinbutton", { name: "多久產生一次新草稿（小時）" }), { target: { value: "48" } });
-    expect(screen.queryByRole("group", { name: "撰稿" })).toBeNull();
+    expect(screen.queryByRole("textbox", { name: "要避開的題材" })).toBeNull();
+    expect(screen.queryByRole("textbox", { name: "頻道立場" })).toBeNull();
+    expect(screen.queryByRole("checkbox", { name: "開啟 AI 漫劇" })).toBeNull();
     expect(screen.getAllByText(/Anthropic Claude API · Claude Opus 5\.5/, { selector: "dd" })).toHaveLength(3);
     expect(screen.getByRole("link", { name: "到 AI 設定修改" }).getAttribute("href")).toContain("/admin/ai-accounts?tab=models&section=video");
-    fireEvent.change(screen.getByRole("textbox", { name: "要避開的題材" }), { target: { value: "Stocks\n  Elections  \n" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    const writer = screen.getByRole("textbox", { name: "撰稿的常設指示" });
+    expect(writer).toHaveProperty("value", "結尾留懸念");
+    fireEvent.change(writer, { target: { value: "" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: "英文" }));
+    // Only the slides prompts show here; the drama's are on the drama part.
+    expect(screen.getByText(/撰稿 · ai-model-choice · /).tagName).toBe("SUMMARY");
+    expect(screen.queryByText(/企劃（選題與大綱） · setting · jingwei/)).toBeNull();
+    expect(screen.getByText(/產生 1 \/ 8 支草稿/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "儲存教學設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     const body = puts[0] as Record<string, unknown>;
-    expect(body).toMatchObject({ enabled: true, draft_interval_hours: 48, topic_avoid: ["Stocks", "Elections"] });
-    expect(body).not.toHaveProperty("stage_models");
-    expect(body).not.toHaveProperty("model_options");
+    expect(body).toMatchObject({ enabled: true, draft_interval_hours: 48, topic_scope: ["AI", "Tech"], stage_instructions: { writer: "" }, caption_locales: ["ja", "ko", "zh-CN"] });
+    expect(Object.keys(body).sort()).toEqual([
+      "auto_approve_audio", "auto_approve_final", "auto_pick_outline", "caption_locales", "draft_interval_hours", "enabled", "max_drafts_per_month",
+      "max_retake_rounds", "max_verify_rounds", "max_waiting_drafts", "stage_instructions", "target_minutes_max", "target_minutes_min", "topic_from_search",
+      "topic_from_site", "topic_scope", "topics_per_run", "voice",
+    ]);
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
+    expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings");
   });
 
-  it("edits a stage's standing instructions, saves them with the rest, and shows the prompts as sent", async () => {
+  it("saves the shared part on its own: the stance, the topics to avoid and the token budget", async () => {
     const puts = stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
-    const writer = await screen.findByRole("textbox", { name: "撰稿的常設指示" });
-    expect(writer).toHaveProperty("value", "結尾留懸念");
-    fireEvent.change(screen.getByRole("textbox", { name: "企劃（選題與大綱）的常設指示" }), { target: { value: "每集結尾留下一集的懸念" } });
-    fireEvent.change(writer, { target: { value: "" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
-    await waitFor(() => expect(puts).toHaveLength(1));
-    expect((puts[0] as Record<string, unknown>).stage_instructions).toEqual({ writer: "", planner: "每集結尾留下一集的懸念" });
-    const sent = await screen.findByText(/企劃（選題與大綱） · 漫劇 · jingwei · /);
-    expect(sent.tagName).toBe("SUMMARY");
-    expect(screen.getByText(/You are the planner\./).textContent).toContain("每集結尾留下一集的懸念");
-  });
-
-  it("writes the channel stance, flips the hands-off switches and saves them with the rest", async () => {
-    const puts = stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    manager();
+    fireEvent.click(await screen.findByRole("tab", { name: "共用" }));
     const stance = await screen.findByRole("textbox", { name: "頻道立場" });
     expect(stance).toHaveProperty("value", "");
     fireEvent.change(stance, { target: { value: "1. 先把帳算清楚再花錢" } });
-    fireEvent.click(screen.getByRole("checkbox", { name: "由 Jev 挑大綱（立場留白時沒有作用）" }));
-    fireEvent.click(screen.getByRole("checkbox", { name: "開啟 AI 漫劇" }));
-    fireEvent.click(screen.getByRole("checkbox", { name: /設定圖自動選/ }));
-    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    fireEvent.change(screen.getByRole("textbox", { name: "要避開的題材" }), { target: { value: "Stocks\n  Elections  \n" } });
+    fireEvent.change(screen.getByRole("spinbutton", { name: "每月模型 token 上限（百萬）" }), { target: { value: "30" } });
+    expect(screen.getByText(/API 已用 1,500 \/ 20,000,000 個 token/)).toBeTruthy();
+    expect(screen.getByText(/呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
+    expect(screen.queryByRole("checkbox", { name: "自動產生草稿" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "儲存共用設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
-    const body = puts[0] as Record<string, unknown>;
-    expect(body).toMatchObject({ channel_stance: "1. 先把帳算清楚再花錢", auto_pick_outline: false, auto_approve_final: true });
-    expect((body.drama as Record<string, unknown>).auto_pick_look).toBe(true);
+    expect(puts[0]).toEqual({ channel_stance: "1. 先把帳算清楚再花錢", topic_avoid: ["Stocks", "Elections"], monthly_token_budget_millions: 30 });
+    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
   });
 
-  it("picks a stage model on the AI settings page and saves only the models", async () => {
+  it("deep-links to the drama part, follows the clip model's resolutions and lengths, and saves the drama object alone", async () => {
+    settingsAt("drama");
     const puts = stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoModelSettings /></AdminOperationsProvider>);
-    const writer = await screen.findByRole("group", { name: "撰稿" });
-    fireEvent.change(writer.querySelectorAll("select")[1], { target: { value: "claude-opus-5-5" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存影片模型" }));
-    await waitFor(() => expect(puts).toHaveLength(1));
-    const body = puts[0] as { stage_models: Record<string, unknown> };
-    expect(Object.keys(body)).toEqual(["stage_models"]);
-    expect(body.stage_models.writer).toEqual(opus);
-    expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings/models");
-  });
-
-  it("turns the drama route on, follows the clip model's resolutions and lengths, and saves the drama block", async () => {
-    const puts = stubFetch();
-    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoSettings /></AdminOperationsProvider>);
+    manager();
     fireEvent.click(await screen.findByRole("checkbox", { name: "開啟 AI 漫劇" }));
+    expect(screen.getByRole("tab", { name: "漫劇", selected: true })).toBeTruthy();
+    expect(screen.queryByRole("checkbox", { name: "自動產生草稿" })).toBeNull();
     const resolution = screen.getByRole("combobox", { name: "片段解析度" }) as HTMLSelectElement;
     expect([...resolution.options].map((option) => option.value)).toEqual(["720p", "1080p"]);
     expect(screen.getAllByRole("option", { name: /MiniMax API \(沒有金鑰\)/ })).toHaveLength(3);
@@ -157,25 +174,92 @@ describe("AdminVideoSettings", () => {
     fireEvent.click(screen.getByRole("checkbox", { name: "Kore" }));
     fireEvent.change(screen.getByRole("spinbutton", { name: "單支最多花費（美元）" }), { target: { value: "120" } });
     fireEvent.change(screen.getByRole("textbox", { name: "漫劇題材（每行一個）" }), { target: { value: "山海經\n原創玄幻\n" } });
-    fireEvent.click(screen.getByRole("button", { name: "儲存設定" }));
+    fireEvent.change(screen.getByRole("spinbutton", { name: "同時最多幾集在做（1–2）" }), { target: { value: "2" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: /劇本先給我看/ }));
+    fireEvent.click(screen.getByRole("checkbox", { name: /設定圖自動選/ }));
+    // The drama's prompts, with the series document's variant, and only those.
+    expect(screen.getByText(/企劃（選題與大綱） · setting · jingwei · /).tagName).toBe("SUMMARY");
+    expect(screen.queryByText(/撰稿 · ai-model-choice/)).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "儲存漫劇設定" }));
     await waitFor(() => expect(puts).toHaveLength(1));
     const body = puts[0] as { drama: Record<string, unknown> };
-    expect(body.drama).toMatchObject({ drama_enabled: true, clip_provider: "minimax", clip_model: "MiniMax-H3", clip_resolution: "768p", clip_seconds_default: 8, max_usd_per_video: 120, drama_topic_scope: ["山海經", "原創玄幻"] });
+    expect(Object.keys(body)).toEqual(["drama"]);
+    expect(body.drama).toMatchObject({
+      drama_enabled: true, clip_provider: "minimax", clip_model: "MiniMax-H3", clip_resolution: "768p", clip_seconds_default: 8, max_usd_per_video: 120,
+      drama_topic_scope: ["山海經", "原創玄幻"], series_max_in_flight: 2, series_script_gate: false, auto_pick_look: true, drama_stage_models: null, drama_voice: null,
+    });
     expect(body.drama.character_voice_pool).toEqual([{ provider: "gemini", name: "Kore" }]);
     expect(mediaChoice(view.media_options as never, "clips", "minimax", "MiniMax-H3")?.usd_per_second).toBe(0.13);
     expect(mediaChoice(view.media_options as never, "clips", "gemini", "nope")).toBeNull();
+    expect((await screen.findByRole("status")).textContent).toBe("已儲存");
   });
 
-  it("shows a vendor without a key and keeps a reader from saving", async () => {
+  it("gives the drama its own narrator voice, standing instructions and language defaults, or follows the tutorial's", async () => {
+    settingsAt("drama");
+    const puts = stubFetch();
+    manager();
+    const follows = await screen.findByRole("checkbox", { name: "旁白聲音跟教學一樣（頻道聲音）" });
+    expect(follows).toHaveProperty("checked", true);
+    expect(screen.queryByRole("combobox", { name: "聲音" })).toBeNull();
+    fireEvent.click(follows);
+    // The drama's voice starts from the channel voice, then differs.
+    const name = screen.getByRole("combobox", { name: "聲音" }) as HTMLSelectElement;
+    expect(name.value).toBe("Sulafat");
+    fireEvent.change(name, { target: { value: "Kore" } });
+    const writer = screen.getByRole("textbox", { name: "撰稿的常設指示" });
+    expect(writer).toHaveProperty("value", "每集結尾一個懸念");
+    fireEvent.change(screen.getByRole("textbox", { name: "查核的常設指示" }), { target: { value: "對照設定集" } });
+    fireEvent.click(screen.getByRole("checkbox", { name: "日文" }));
+    fireEvent.click(screen.getByRole("checkbox", { name: "旁白由 Jev 判斷每一句都唸對時，自動核准" }));
+    expect(screen.getByText(/漫劇的各階段跟教學影片用同樣的模型/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "儲存漫劇設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const body = puts[0] as { drama: Record<string, unknown> };
+    expect(body.drama).toMatchObject({
+      drama_voice: { provider: "gemini", name: "Kore", style: "Relaxed", model: null, rate: "+0%" },
+      drama_stage_instructions: { writer: "每集結尾一個懸念", verifier: "對照設定集" },
+      drama_caption_locales: ["ja"], drama_auto_approve_audio: false, drama_auto_approve_final: true,
+    });
+    expect(body).not.toHaveProperty("voice");
+    expect(body).not.toHaveProperty("stage_instructions");
+  });
+
+  it("picks the tutorial's and the drama's stage models on the AI settings page, null when the drama follows", async () => {
+    const puts = stubFetch();
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoModelSettings /></AdminOperationsProvider>);
+    const writer = await screen.findByRole("group", { name: "撰稿" });
+    fireEvent.change(writer.querySelectorAll("select")[1], { target: { value: "claude-opus-5-5" } });
+    const follows = screen.getByRole("checkbox", { name: "各階段模型跟教學一樣" });
+    expect(follows).toHaveProperty("checked", true);
+    expect(screen.queryByRole("group", { name: "漫劇：撰稿" })).toBeNull();
+    fireEvent.click(screen.getByRole("button", { name: "儲存影片模型" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    expect(puts[0]).toEqual({ stage_models: { ...view.stage_models, writer: opus }, drama_stage_models: null });
+    expect(vi.mocked(fetch).mock.calls.at(-1)?.[0]).toBe("/api/travel/admin/video-automation/settings/models");
+
+    fireEvent.click(follows);
+    const dramaWriter = screen.getByRole("group", { name: "漫劇：撰稿" });
+    fireEvent.change(within(dramaWriter).getAllByRole("combobox")[0], { target: { value: "claude_code" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存影片模型" }));
+    await waitFor(() => expect(puts).toHaveLength(2));
+    const second = puts[1] as { drama_stage_models: Record<string, unknown> };
+    // The drama's choices start as a copy of the tutorial's (the writer was just set to Opus there).
+    expect(second.drama_stage_models.writer).toEqual({ provider: "claude_code", model: "claude-opus-5-5" });
+    expect(second.drama_stage_models.planner).toEqual(sonnet);
+  });
+
+  it("shows a vendor without a key and keeps a reader from saving on every part", async () => {
     stubFetch();
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoSettings /><AdminVideoModelSettings /></AdminOperationsProvider>);
     expect(await screen.findByText(/要有「管理設定」權限才能修改/)).toBeTruthy();
-    expect(screen.getByRole("button", { name: "儲存設定" })).toHaveProperty("disabled", true);
+    expect(screen.getByRole("button", { name: "儲存教學設定" })).toHaveProperty("disabled", true);
     expect(await screen.findByRole("button", { name: "儲存影片模型" })).toHaveProperty("disabled", true);
     expect(screen.getAllByRole("option", { name: "OpenAI API (沒有金鑰)" }).length).toBe(STAGES.length);
     expect(screen.getAllByRole("option", { name: "Claude Code (訂閱帳號) (主機代理未設定)" }).length).toBe(STAGES.length);
-    expect(screen.getByText(/1 \/ 8 支草稿，呼叫模型 3 次（其中 1 次失敗）/)).toBeTruthy();
-    expect(screen.queryByRole("spinbutton", { name: /訂閱帳號用到幾 %/ })).toBeNull();
+    fireEvent.click(screen.getByRole("tab", { name: "共用" }));
+    expect(await screen.findByRole("button", { name: "儲存共用設定" })).toHaveProperty("disabled", true);
     expect(screen.getByText(/用滿才換下一個，最後一個用滿再回到 A/)).toBeTruthy();
+    fireEvent.click(screen.getByRole("tab", { name: "漫劇" }));
+    expect(await screen.findByRole("button", { name: "儲存漫劇設定" })).toHaveProperty("disabled", true);
   });
 });
