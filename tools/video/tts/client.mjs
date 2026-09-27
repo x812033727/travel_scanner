@@ -3,6 +3,7 @@
 // Failures are sorted by who can fix them, which is what the CLI's exit code reports: the owner
 // (a revoked token, the card not filled in, a voice not on the allowlist), the service (budget
 // spent, Azure down), or nobody right now (throttling, retried with the server's Retry-After).
+import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { toNarrationRate } from "./wav.mjs";
 
 export const USER_AGENT = "Mokaair-video-cli/1.0 (https://mokaair.com; support@mokaair.com)";
@@ -74,20 +75,27 @@ export async function speechStatus(options) {
 const postJson = (options, path, body) =>
   call({ ...defaults(options), path, init: { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } });
 
+// The server's default language for a clip and for Jev's state; a dub names its own.
+const trackLanguage = (language) => (language === NARRATION_LOCALE ? {} : { language });
+
 /**
  * The words in one clip, as the server's transcriber hears them. `terms` are the English words
- * the line says; a server from before they existed refuses the field, so it goes only when set.
+ * the line says and `language` the locale the clip is read in; a server from before either
+ * existed refuses the field, so each goes only when it says something the default does not.
  */
-export async function transcribeClip({ wav, terms = [], ...options }) {
-  const request = { audio: Buffer.from(wav).toString("base64"), ...(terms.length ? { terms } : {}) };
+export async function transcribeClip({ wav, terms = [], language = NARRATION_LOCALE, ...options }) {
+  const request = { audio: Buffer.from(wav).toString("base64"), ...(terms.length ? { terms } : {}), ...trackLanguage(language) };
   const response = await postJson(options, "speech/transcribe", request);
   const body = await response.json();
   return typeof body.text === "string" ? body.text : "";
 }
 
-/** Jev's probability, per line id, that each transcript says its intended words; one Jev call. */
-export async function judgeLines({ lines, ...options }) {
-  const response = await postJson(options, "speech/judge", { lines });
+/**
+ * Jev's probability, per line id, that each transcript says its intended words; one Jev call.
+ * `language` is what the lines are written in, sent the same way as for a clip.
+ */
+export async function judgeLines({ lines, language = NARRATION_LOCALE, ...options }) {
+  const response = await postJson(options, "speech/judge", { lines, ...trackLanguage(language) });
   const body = await response.json();
   return new Map((body.results ?? []).map((result) => [result.id, Number(result.noul)]));
 }

@@ -115,6 +115,10 @@ class PairingView(BaseModel):
     status: Literal["pending", "approved", "denied"]
 
 
+# The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md).
+TrackLanguage = Literal["zh-TW", "en", "ja", "ko", "zh-CN"]
+
+
 class TranscribeIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     # One narrated line as a base64 WAV; the tool sends 16 kHz mono, a few seconds long.
@@ -122,6 +126,8 @@ class TranscribeIn(BaseModel):
     # The English words the line says. Without them the transcriber hears a lone "Go" in
     # Mandarin as 狗 or 各, and the check flags a line the voice read correctly.
     terms: list[HintTerm] = Field(default_factory=list, max_length=20)
+    # What language the clip is read in; the transcript comes back in that language's script.
+    language: TrackLanguage = "zh-TW"
 
 
 class TranscribeOut(BaseModel):
@@ -139,6 +145,8 @@ class JudgeLineIn(BaseModel):
 class JudgeIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     lines: list[JudgeLineIn] = Field(min_length=1, max_length=40)
+    # Goes into Jev's state, so it reads the lines as that language rather than as Mandarin.
+    language: TrackLanguage = "zh-TW"
 
 
 class JudgeResult(BaseModel):
