@@ -2313,7 +2313,10 @@
     "uploadedButton": "アップロード済み",
     "uploadedError": "記録できませんでした：{message}",
     "scheduledAt": "{time} に公開予定",
-    "readyLoading": "アップロードパッケージを読み込み中…"
+    "readyLoading": "アップロードパッケージを読み込み中…",
+    "downloadCompilation": "1080p の本編をダウンロード",
+    "compilationInWorkspace": "本編はまだワーカーの作業領域にあります",
+    "compilationOf": "作品 {series} の総集編"
   },
   "videoSettings": {
     "loading": "設定を読み込んでいます…",
@@ -2385,6 +2388,7 @@
       "drama_monthly_judge_calls_budget": "月あたりの判定回数",
       "drama_monthly_music_budget": "月あたりの音楽トラック数",
       "drama_max_usd_per_video": "1本あたりの上限（米ドル）",
+      "drama_series_max_in_flight": "同時に進める作品数（1–6）",
       "drama_topic_scope": "ドラマの題材（1行に1つ）",
       "channel_stance": "チャンネルの立場",
       "auto_pick_outline": "Jev にアウトラインを選ばせる（立場が空欄の間は無効）",
@@ -2418,6 +2422,7 @@
     "dramaModels": "メディアモデル",
     "dramaSwitches": "オプション",
     "dramaBudgetHelp": "月ごとの予算はサーバー側で止め、ベンダーへは送りません。1本あたりの上限はツールが送信前に止めます。オーナーは 2026-09-26 に当面上限なしと決めたため、既定値は大きめで、試作後に下げます。",
+    "seriesInFlightHelp": "ワーカーが同時に進める作品の数。1 なら一作を終えてから次へ。試作と本番を並行するなら 2。",
     "voicePoolHelp": "脚本モデルがキャラクターに割り当ててよい Gemini の声。ナレーションは上のチャンネルの声のままです。",
     "preview": "プレビュー版",
     "stylePresets": {
@@ -2580,7 +2585,102 @@
     "oneOffTitle": "単発エピソード",
     "dramaOn": "ドラマはオンです。ワーカーが依頼した単発エピソードと作品を順に作ります。",
     "dramaOff": "ドラマは現在オフです。",
-    "dramaOffHow": "ワーカーはドラマを作りません。依頼した単発エピソードと作品は、オンにするまで待機します。下の「{settings}」で「{enable}」にチェックを入れて保存してください。"
+    "dramaOffHow": "ワーカーはドラマを作りません。依頼した単発エピソードと作品は、オンにするまで待機します。下の「{settings}」で「{enable}」にチェックを入れて保存してください。",
+    "binge": {
+      "title": "ワンボタンで撮り始める",
+      "help": "ジャンル、主役、総尺を選べば残りはワーカーが進めます。設定集、総綱、各章の細綱、脚本はチェッカーが自動承認し、1 話が終わるごとに次の話へ進み、全話完成後に 1 本の総集編にまとめます。本編は作品ページからダウンロードします。話数と各章の話数は総尺から算出し、作品名は設定集が決めます。",
+      "genre": "ジャンル",
+      "lead": "主役",
+      "premise": "あらすじ（任意）",
+      "premiseRequired": "あらすじ（カスタムでは必須）",
+      "premisePlaceholder": "空欄ならプランナーがジャンルから考えます。カスタムのジャンルでは必ず書いてください。",
+      "totalMinutes": "総尺（分、30–480）",
+      "totalMinutesHint": "通常は 60–240。30 分の試作でも構いません。",
+      "episodeMinutes": "1 話の分数（2–4）",
+      "tier": "映像の作り方",
+      "notePlaceholder": "例：ナレーションをゆっくり、流血なし",
+      "quoteTitle": "見積もり",
+      "quoteLoading": "見積もり中…",
+      "quoteError": "見積もれません：{message}",
+      "quote": "{episodes} 話・{chapters} 章（各 {perChapter} 話）・クリップ {seconds} 秒・画像 {images} 枚・約 US${usd}",
+      "budgets": {
+        "clip_seconds": "今月のクリップ予算は {monthly} 秒、この作品には {needed} 秒必要です",
+        "images": "今月の画像予算は {monthly} 枚、この作品には {needed} 枚必要です",
+        "judge_calls": "今月の judge 予算は {monthly} 回、この作品には {needed} 回必要です",
+        "episodes_per_month": "月あたりの話数上限は {monthly} 話、この作品には {needed} 話必要です"
+      },
+      "budgetsOver": {
+        "clip_seconds": "今月のクリップ予算は {monthly} 秒、この作品には {needed} 秒必要です：先に設定タブで引き上げてください",
+        "images": "今月の画像予算は {monthly} 枚、この作品には {needed} 枚必要です：先に設定タブで引き上げてください",
+        "judge_calls": "今月の judge 予算は {monthly} 回、この作品には {needed} 回必要です：先に設定タブで引き上げてください",
+        "episodes_per_month": "月あたりの話数上限は {monthly} 話、この作品には {needed} 話必要です：先に設定タブで引き上げてください"
+      },
+      "overBudget": "予算が尽きるとワーカーはそこで待ち、壊れることはありません。引き上げれば自動で続きます。",
+      "start": "ワンボタンで撮り始める",
+      "starting": "作成中…",
+      "error": "始められませんでした：{message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "仙俠の絆",
+        "detail": "門派と世家、修為、正道と魔道。前世と今生を越えて結ばれた知己。"
+      },
+      "rebirth-revenge": {
+        "name": "重生復讐",
+        "detail": "裏切られて死に、まだ変えられる一日に目覚める。今度は全員の手札を知っている。"
+      },
+      "system-game": {
+        "name": "システムゲーム",
+        "detail": "ゲームやシステムが降臨し、主役だけがルールを読める。隠し職業、初クリア、規格外の才能。"
+      },
+      "urban-return": {
+        "name": "都市帰還",
+        "detail": "何年も離れたのち、自分を見限った街へ、誰も想像しない身分か実力を携えて戻る。"
+      },
+      "empress-rise": {
+        "name": "女帝の台頭",
+        "detail": "駒と見なされた彼女が一手ずつ盤面を奪い、玉座を手にするまで。"
+      },
+      "custom": {
+        "name": "カスタム",
+        "detail": "書かれたあらすじのまま。矛盾する設定は加えません。"
+      }
+    },
+    "leads": {
+      "female": "女性主役",
+      "male": "男性主役",
+      "dual-male": "男性主役二人"
+    },
+    "tiers": {
+      "clips": {
+        "name": "全クリップ",
+        "detail": "全ショットを動画クリップで生成：動きは最も多く、費用も最も高い。"
+      },
+      "hybrid": {
+        "name": "ハイブリッド",
+        "detail": "ショットの約 4 割をクリップ、残りは静止画にカメラワーク：費用は半分以下。"
+      },
+      "stills": {
+        "name": "静止画",
+        "detail": "ほぼ全ショットを静止画にカメラワーク、要所の 1 割だけクリップ：最も安く、試作向き。"
+      }
+    },
+    "totalMinutesLabel": "全 {minutes} 分",
+    "handsOff": "ゲートなし",
+    "handsOffHelp": "オンの間は、設定集・総綱・細綱・脚本をチェッカーが自動承認し、不合格のときだけ差し戻し、詰まったときだけあなたに回します。オフにすると 1 件ずつ承認に戻ります。",
+    "compilation": "総集編",
+    "compilationStatuses": {
+      "waiting": "総集編：全話の完成待ち",
+      "queued": "総集編：ワーカー待ち",
+      "making": "総集編を制作中",
+      "done": "総集編が完成"
+    },
+    "compilationNone": "この作品は総集編を作る設定になっていません。完結後に「総集編を作る」を押せます。",
+    "compilationWaiting": "全話が完成したら、ワーカーが 1 本にまとめます。",
+    "compilationQueued": "ワーカーの次の巡回で総集編を始めます。",
+    "compilationStarting": "ワーカーが始めたところで、動画はまだ報告されていません。",
+    "compile": "総集編を作る",
+    "docNote": "備考："
   },
   "videoYoutube": {
     "title": "YouTube チャンネル",

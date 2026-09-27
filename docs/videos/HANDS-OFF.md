@@ -23,6 +23,8 @@
 | 上架確認（`UPLOAD.md` 的自我檢查） | 站主 | 併進自動品管；上傳包備好就自動核准，影片進「可以上架」清單 |
 | 上傳與上架時間 | 站主在 Studio 做全部 | 第一步：站主在 Studio 只上傳 mp4（私人），到後台貼上影片網址、選上架時間，其餘由網站用 API 補齊並排程。第二步（稽核通過後）：站主在後台選時間就好 |
 | 漫劇的角色設定圖 | 站主每個角色挑一張 | judge 分數最高、且達到門檻的那張 |
+| 長篇作品的設定集、總綱、每篇細綱 | 站主逐份核准 | **免關卡作品**（2026-09-27，[`BINGE.md`](BINGE.md)）：查核模型出裁決，伺服器依規則核准或退回重寫；其他作品照舊 |
+| 長篇作品的每集劇本 | 站主 | 免關卡作品：查核的節拍覆蓋與量測節奏過就核准；不過先由撰稿模型修，修不好才交給站主 |
 | 卡住的影片 | 站主 | 仍然是站主：那是故障，不是決定 |
 
 之後仍然會找站主的情況只有四種：影片卡住（同一階段連續失敗、預算、缺金鑰）、自動品管有項目沒過、Jev 找不到過關的大綱而且已經重寫兩次，以及上架時間。`/admin/videos` 把「需要你」的項目排在最上面，「可以上架」排第二。
@@ -157,6 +159,19 @@ OAuth 的做法：
 ## 漫劇的設定圖
 
 `look` 階段已經幫每個角色標出分數最高的 `suggested`。設定分頁加一個開關「設定圖自動選」：分數最高的那張達到 `judge_min_score`、而且沒有列出問題時，伺服器就用它核准這個角色的 `look` 審核。預設關閉，理由和 `auto_approve_storyboard` 一樣：第一支漫劇要由站主看過。這張票在漫劇那條線（`2026-09-26-video-hands-off-drama-look`），要先和那條線的 session 協調。
+
+## 免關卡的作品：文件與劇本由查核決定（2026-09-27 加，設計在 [`BINGE.md`](BINGE.md)）
+
+長篇作品（`SERIES.md`）多了每部作品自己的旗標 `hands_off`；後台的「一鍵開拍」預設開著。開著時，原本等站主的四份文件與每集劇本都由查核模型的答案加伺服器規則決定（`apps/api/app/video_automation/judge.py`），跟 Jev 挑大綱、自動品管同一個信任模型：工人的 payload 帶判斷，伺服器套門檻，每筆寫進 `admin_audit_logs`。
+
+| 決定 | 規則 | 常數 |
+| --- | --- | --- |
+| 設定集、總綱、篇章細綱 | `series_doc_passed(judge, kind)`：查核在新 session 對文件出裁決 `{verdicts: {項目: 有／弱／無}, problems, similar_works, notes}`；該 kind 的必要項目都在、沒有「無」、「弱」最多一個、`problems` 與 `similar_works` 都空才過。過→核准；不過→退回重寫（`series_doc_rewrites` 輪）；重寫用完→停在待審，卡片附查核的問題 | `REQUIRED_VERDICTS`（setting 4 項、outline 5 項、chapter 6 項）、`MAX_WEAK_VERDICTS = 1` |
+| 每集劇本 | `script_check_passed(payload, retention_required)`：`coverage` 的 hook／conflict／turn／cliffhanger 沒有「無」、「弱」≤ 1；`continuity_problems` 與 `similar_works` 空；有節奏規格的題材再看 `coverage.satisfaction`、`retention.hook_seconds`、`retention.satisfaction.count`／`first_seconds`、`retention.cliffhanger_last`。秒數由工人在估計時間軸上量，不是模型估的 | `COVERAGE_BEATS`、`HOOK_MAX_SECONDS = 8.0`、`FIRST_SATISFACTION_MAX_SECONDS = 30.0`、`MIN_SATISFACTION = 2`、`RETENTION_GENRES` |
+| 設定圖、分鏡 | 影片屬於免關卡作品時，`auto_pick_look`／`auto_approve_storyboard` 視為開著，門檻仍是 `judge_min_score` | — |
+| 合集成片 | `final_qa_passed` 對合集影片改用六項 `COMPILATION_QA_ITEMS`（報告要有 `kind: "compilation"`）；每集自己已過完 11 項 | `COMPILATION_QA_ITEMS` |
+
+沉默不算通過：少一個鍵、多一句問題、舊工人沒帶的欄位，都留給站主。站主把作品的「免關卡」關掉，就回到逐份核准。門檻先訂成常數，試作（票 `2026-09-27-video-binge-pilot`）後對照站主自己會怎麼判再調。
 
 ## 設定（新增到 `video_automation_settings`）
 

@@ -1,6 +1,8 @@
 // `assemble`: frames + narration → final.mp4, then the checks that prove it is what the timeline says.
 // A drama (docs/videos/DRAMA.md) also brings its clips, its subtitle strips and its music: each
 // shot is fitted to its lines and captioned in its own segment, the music is ducked under the voice.
+// A shot marked visual "still" (docs/videos/BINGE.md) has no clip: its keyframe is animated with a
+// slow camera move in a motion segment that encodes exactly like a clip segment.
 import { existsSync, mkdirSync, readdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
@@ -24,6 +26,9 @@ import {
   layoutDrama,
   measureMixArgs,
   mixArgs,
+  motionFramePsnrArgs,
+  motionSegmentArgs,
+  motionSegmentKey,
   subtitleTrack,
 } from "./drama.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "./ffmpeg.mjs";
@@ -54,8 +59,9 @@ import {
 
 /**
  * What a drama needs beyond the frames and narration, each checked against the script it was
- * made for: the clips, current subtitle strips when they are burned in, and the music, either
- * generated into the work directory or the owner's own file under <work base>/_music/.
+ * made for: the clips manifest (which names the keyframe of every still shot too), current
+ * subtitle strips when they are burned in, and the music, either generated into the work
+ * directory or the owner's own file under <work base>/_music/.
  * Returns { problem } with what to run first when something is missing.
  */
 async function dramaInputs(doc, workdir, workBase, manifest, speech, visual) {
@@ -146,20 +152,25 @@ export async function run(command, args, ctx) {
       ctx.stdout.write(`stopped by the STOP file after ${encoded} segments; rerun to continue\n`);
       return EXIT.ok;
     }
-    if (scene.kind === "clip") {
-      const clipFile = resolve(scene.clip.file);
-      if (!existsSync(clipFile)) {
-        ctx.stderr.write(`${scene.clip.file} for shot ${scene.id} is missing; run clips again\n`);
+    if (scene.kind === "clip" || scene.kind === "motion") {
+      const motion = scene.kind === "motion";
+      const source = resolve(motion ? scene.keyframe.file : scene.clip.file);
+      if (!existsSync(source)) {
+        ctx.stderr.write(`${motion ? scene.keyframe.file : scene.clip.file} for shot ${scene.id} is missing; run ${motion ? "keyframes" : "clips"} again\n`);
         return EXIT.usage;
       }
-      const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(clipFile))).stdout);
-      const available = clipFrames(probe);
-      const fit = fitPlan(available, scene.frames, scene.fit);
-      fits[scene.id] = { available, ...fit };
+      let fit = null;
+      let available = null;
+      if (!motion) {
+        const probe = JSON.parse((await runTool(tools.ffprobe, probeArgs(source))).stdout);
+        available = clipFrames(probe);
+        fit = fitPlan(available, scene.frames, scene.fit);
+        fits[scene.id] = { available, ...fit };
+      }
       const strips = inputs.subtitles ? subtitleTrack(scene, manifest.subtitles.cues, manifest.subtitles.blank) : null;
       // A dissolve overlays the previous scene's last frame, so its segment is keyed on that too.
       const previousKey = scene.transition === "dissolve" && index > 0 ? keys[index - 1] : null;
-      const key = clipSegmentKey(scene, fit, strips, previousKey);
+      const key = motion ? motionSegmentKey(scene, scene.move, strips, previousKey) : clipSegmentKey(scene, fit, strips, previousKey);
       keys[index] = key;
       const segment = path.join(segmentsDir, `${scene.id}-${key}.mp4`);
       segmentFiles.push(segment);
@@ -176,11 +187,18 @@ export async function run(command, args, ctx) {
         if (!existsSync(dissolveFrom)) await runTool(tools.ffmpeg, lastFrameArgs(segmentFiles[index - 1], previous.frames, dissolveFrom));
       }
       const partial = `${segment}.partial.mp4`;
-      await runTool(tools.ffmpeg, clipSegmentArgs({ clip: clipFile, frames: scene.frames, fit, subtitlesList, dissolveFrom, outFile: partial }));
+      const args = motion
+        ? motionSegmentArgs({ keyframe: source, frames: scene.frames, move: scene.move, subtitlesList, dissolveFrom, outFile: partial })
+        : clipSegmentArgs({ clip: source, frames: scene.frames, fit, subtitlesList, dissolveFrom, outFile: partial });
+      await runTool(tools.ffmpeg, args);
       renameSync(partial, segment);
       encoded += 1;
-      const how = fit.speed === 1 && fit.pad === 0 ? "" : ` at ${fit.speed}x${fit.pad ? `, last frame held ${fit.pad} frames` : ""}`;
-      ctx.stdout.write(`encoded ${scene.id} (${scene.frames} frames from a ${available}-frame clip${how})\n`);
+      if (motion) {
+        ctx.stdout.write(`encoded ${scene.id} (${scene.frames} frames, motion ${scene.move.name})\n`);
+      } else {
+        const how = fit.speed === 1 && fit.pad === 0 ? "" : ` at ${fit.speed}x${fit.pad ? `, last frame held ${fit.pad} frames` : ""}`;
+        ctx.stdout.write(`encoded ${scene.id} (${scene.frames} frames from a ${available}-frame clip${how})\n`);
+      }
       continue;
     }
     const key = segmentKey(scene);
@@ -235,7 +253,7 @@ export async function run(command, args, ctx) {
   if (bed !== null) problems.push(...checkBed(bed));
   const psnr = [];
   layout.forEach((scene, index) => {
-    if (scene.kind === "clip") return;
+    if (scene.kind !== "stills") return;
     psnr.push(...segmentSamples(scene).map((sample) => ({ scene: scene.id, segment: segmentFiles[index], rivalFiles: rivalImages(scene, sample.file), ...sample })));
   });
   const measure = async (sample, file) => parsePsnr((await runTool(tools.ffmpeg, psnrArgs(sample.segment, sample.n, resolve(file)))).stderr);
@@ -254,12 +272,26 @@ export async function run(command, args, ctx) {
     delete sample.rivalFiles;
   }
   // A shot's clip must open on its keyframe (measured on the clip itself, before any dissolve
-  // is laid over it) and must not sit frozen on its last frame.
+  // is laid over it) and must not sit frozen on its last frame. A motion shot cannot freeze, and
+  // opens on its keyframe only when its move starts at zoom 1.0 (a pull-out or a pan starts
+  // inside the picture), so the picture chain's first frame is measured then and null is
+  // recorded otherwise.
   const shots = [];
   for (const scene of layout) {
+    if (scene.kind === "motion") {
+      const record = { shot: scene.id, kind: "motion", move: scene.move.name, keyframe_psnr: null };
+      if (scene.move.startsAtIdentity && existsSync(resolve(scene.keyframe.file))) {
+        const value = parsePsnr((await runTool(tools.ffmpeg, motionFramePsnrArgs(resolve(scene.keyframe.file), scene.move, scene.frames))).stderr);
+        record.keyframe_psnr = Number.isFinite(value) ? Number(value.toFixed(2)) : "inf";
+        const problem = keyframeProblem(scene, value);
+        if (problem) problems.push(problem);
+      }
+      shots.push(record);
+      continue;
+    }
     if (scene.kind !== "clip") continue;
     const fit = fits[scene.id];
-    const record = { shot: scene.id, fit };
+    const record = { shot: scene.id, kind: "clip", fit };
     const freeze = freezeProblem(scene, fit);
     if (freeze) problems.push(freeze);
     if (scene.keyframe && existsSync(resolve(scene.keyframe))) {
@@ -289,7 +321,7 @@ export async function run(command, args, ctx) {
     seconds,
   };
   atomicWrite(path.join(workdir, ARTIFACTS.checks), `${JSON.stringify(checks, null, 2)}\n`);
-  recordStage(workdir, "assemble", { ok: checks.ok, encoded_segments: encoded, seconds, ...(drama ? { shots: shots.length, music: bed !== null } : {}) }, ctx.now());
+  recordStage(workdir, "assemble", { ok: checks.ok, encoded_segments: encoded, seconds, ...(drama ? { shots: shots.length, stills: shots.filter((shot) => shot.kind === "motion").length, music: bed !== null } : {}) }, ctx.now());
   const bedText = bed === null ? "" : `, music bed ${bed} LUFS`;
   ctx.stdout.write(`${final}: ${timeline.total_frames} frames, ${loudness.integrated} LUFS, true peak ${loudness.truePeak} dBFS${bedText}; ${encoded} of ${layout.length} segments encoded in ${seconds} s\n`);
   for (const problem of problems) ctx.stdout.write(`CHECK ${problem}\n`);

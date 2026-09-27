@@ -3,11 +3,13 @@
 // for the drama example, stand-in keyframes, clips and music) so it needs neither the narration
 // server, a token nor any media vendor:
 // render → assemble (with its own checks) → review → approve the final video → package.
+// The drama example runs from a copy with its first shot marked visual "still", so assemble also
+// encodes one motion segment (the keyframe under a push-in) beside the clips.
 //
 //   node tools/video/assemble/smoke.mjs [--fixture minimal|drama] [--workdir DIR] [--channel msedge] [--until assemble]
 //
 // CI runs both fixtures in .github/workflows/video-tooling.yml after installing Chromium and ffmpeg.
-import { existsSync, mkdirSync, mkdtempSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -30,8 +32,20 @@ if (!["minimal", "drama"].includes(values.fixture)) {
   process.stderr.write("smoke: --fixture is minimal or drama\n");
   process.exit(2);
 }
-const FIXTURE = fileURLToPath(new URL(`../core/fixtures/${values.fixture}/video.json`, import.meta.url));
+const EXAMPLE = fileURLToPath(new URL(`../core/fixtures/${values.fixture}/video.json`, import.meta.url));
 const base = path.resolve(values.workdir ?? mkdtempSync(path.join(tmpdir(), "video-smoke-")));
+let FIXTURE = EXAMPLE;
+if (values.fixture === "drama") {
+  // A copy beside a copy of the shared lexicon (loadProject reads it from the parent directory),
+  // with the opening shot as a still: the example itself keeps every shot a clip for the tests.
+  const dir = path.join(base, "example", "drama");
+  cpSync(path.dirname(EXAMPLE), dir, { recursive: true });
+  cpSync(path.join(path.dirname(EXAMPLE), "..", "lexicon.json"), path.join(base, "example", "lexicon.json"));
+  const doc = JSON.parse(readFileSync(EXAMPLE, "utf8"));
+  doc.scenes.find((scene) => scene.template === "shot").data.visual = "still";
+  FIXTURE = path.join(dir, "video.json");
+  writeFileSync(FIXTURE, `${JSON.stringify(doc, null, 2)}\n`);
+}
 const project = loadProject({ file: FIXTURE });
 const workdir = path.join(base, project.doc.slug);
 mkdirSync(workdir, { recursive: true });

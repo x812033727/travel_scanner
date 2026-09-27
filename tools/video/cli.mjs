@@ -45,6 +45,8 @@ export const AREAS = {
   clips: ["media", "2026-09-26-video-drama-clips-music"],
   music: ["media", "2026-09-26-video-drama-clips-music"],
   "media-status": ["media", "2026-09-26-video-drama-media-client"],
+  // A binge series' compilation: the episodes' cuts joined with chapter cards (docs/videos/BINGE.md).
+  compile: ["compile", "2026-09-27-video-binge-compile"],
 };
 
 const HELP = `Automated YouTube video pipeline (docs/videos/DESIGN.md)
@@ -73,6 +75,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   audition, tts, review, render, assemble, package, youtube-sync
                                                    media stages, each built by its own ticket
   look, keyframes, clips, music, media-status      the drama format's generation stages (docs/videos/DRAMA.md)
+  compile --slug <series>-full [--workdir D] [--force] [--dry-run]
+                                                   join a binge series' cleared episodes into its compilation, with
+                                                   chapter cards, merged captions and chapters (docs/videos/BINGE.md)
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing.

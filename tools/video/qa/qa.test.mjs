@@ -12,8 +12,9 @@ import { eachLine, LOCALES, textHash } from "../core/schema.mjs";
 import { runCaptions } from "../core/stages.mjs";
 import { buildTimeline, SAMPLE_RATE, speechHash, visualHash } from "../core/timeline.mjs";
 import { sourceHashes } from "../core/translations.mjs";
-import { ITEM_IDS } from "./checks.mjs";
+import { COMPILATION_ITEM_IDS, ITEM_IDS } from "./checks.mjs";
 import { jpegBytes } from "./test-images.mjs";
+import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeEpisode, writeTranslations } from "../compile/fixture.mjs";
 
 const TOKEN = `mkv_${"q".repeat(43)}`;
 const SITE = "https://site.test";
@@ -259,4 +260,58 @@ test("usage: qa needs a slug, and a script with lint errors is sent to lint firs
   assert.equal(await main(["qa", "--slug", box.slug], second.ctx), EXIT.lint);
   assert.match(second.out.stdout, /has 1 lint errors; run lint first/);
   assert.equal(existsSync(path.join(box.workdir, "review", "qa.json")), false);
+});
+
+const COMPILATION_FRAMES = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * 60 + 120;
+
+test("a compiled series passes its six checks without a judge, and a re-cut episode fails the join", async () => {
+  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, LOCALES])) });
+  writeTranslations(box, box.doc);
+  const fake = fakeFfmpeg({ total: COMPILATION_FRAMES });
+  const compiled = compileContext(box, fake);
+  assert.equal(await main(["compile", "--slug", box.slug], compiled.ctx), EXIT.ok, compiled.out.stderr);
+  const server = site();
+  const { out, ctx } = context(box, server.fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.ok, out.stdout + out.stderr);
+  const report = readReport(box.workdir);
+  assert.deepEqual(Object.keys(report), ["ok", "final_sha256", "kind", "items"]);
+  assert.equal(report.kind, "compilation");
+  assert.equal(report.ok, true);
+  assert.deepEqual(report.items.map((item) => item.id), COMPILATION_ITEM_IDS);
+  const byId = Object.fromEntries(report.items.map((item) => [item.id, item]));
+  assert.match(byId.assemble.detail, new RegExp(`^${COMPILATION_FRAMES} frames, -14.4 LUFS; every check passed$`));
+  assert.equal(byId.captions.detail, "caption files for zh-TW, en, ja, ko, zh-CN, merged from every episode");
+  assert.match(byId.metadata.detail, /for zh-TW, en, ja, ko, zh-CN; 3 chapters$/);
+  assert.equal(byId.links.detail, "the description has no links");
+  assert.match(byId.disclosure.detail, /^tick altered or synthetic content: a drama/);
+  assert.equal(server.calls.some((call) => call.url.endsWith("/judge/policy")), false, "no judge for a compilation");
+  assert.match(out.stdout, /6 of 6 checks passed/);
+
+  // An episode re-cut after the join: the join is of other cuts, and so are the captions.
+  writeEpisode(box.work, "wuxia-ep-2");
+  const again = context(box, site().fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], again.ctx), EXIT.lint);
+  const failed = Object.fromEntries(readReport(box.workdir).items.filter((item) => !item.ok).map((item) => [item.id, item.detail]));
+  assert.deepEqual(Object.keys(failed), ["assemble", "captions", "metadata"]);
+  assert.equal(failed.assemble, "checks.json was written for other cuts or cards; run compile again");
+  assert.equal(failed.captions, "captions were merged for other cuts; run compile again");
+  assert.match(failed.metadata, /chapter times are unknown; run compile/);
+
+  // An episode never approved is named.
+  writeEpisode(box.work, "wuxia-ep-3", { approved: false });
+  const never = context(box, site().fetchImpl);
+  await main(["qa", "--slug", box.slug], never.ctx);
+  assert.match(readReport(box.workdir).items[0].detail, /episodes not cleared for upload: wuxia-ep-3/);
+});
+
+test("a compilation missing a locale's captions in one episode fails its captions item and names the episode", async () => {
+  const box = compilationSandbox({ captions: { "wuxia-ep-2": ["zh-TW"] } });
+  writeTranslations(box, box.doc);
+  const compiled = compileContext(box, fakeFfmpeg({ total: COMPILATION_FRAMES }));
+  assert.equal(await main(["compile", "--slug", box.slug], compiled.ctx), EXIT.ok, compiled.out.stderr);
+  const { ctx } = context(box, site().fetchImpl);
+  assert.equal(await main(["qa", "--slug", box.slug], ctx), EXIT.lint);
+  const captions = readReport(box.workdir).items.find((item) => item.id === "captions");
+  assert.match(captions.detail, /en: no caption file, 1 episodes have none \(wuxia-ep-2\)/);
+  assert.match(captions.detail, /ja: no caption file, 3 episodes have none/);
 });

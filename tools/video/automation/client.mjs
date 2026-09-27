@@ -135,5 +135,9 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     episodeRecap: (slug, number, body) => request("POST", `automation/series/${slug}/episodes/${number}/recap`, body),
     /** Report the episode cleared for upload, so the next one may start. */
     episodeDone: (slug, number) => request("POST", `automation/series/${slug}/episodes/${number}/done`),
+    // A binge series' compilation (docs/videos/BINGE.md): started under the video's slug once
+    // every episode is cleared for upload, reported done when the compilation is.
+    compilationStart: (slug, videoSlug) => request("POST", `automation/series/${slug}/compilation/start`, { slug: videoSlug }),
+    compilationDone: (slug) => request("POST", `automation/series/${slug}/compilation/done`),
   };
 }

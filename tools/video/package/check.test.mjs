@@ -111,9 +111,10 @@ test("readPackageReport reads upload/ and compares final.mp4 with the final gate
   const bytes = `${JSON.stringify(record, null, 2)}\n`;
   writeFileSync(path.join(upload, "metadata.json"), bytes);
   writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-27T00:00:00Z", note: "" }] }));
-  const { report, files: listed } = await readPackageReport(box.workdir);
+  const { report, files: listed, finalSha256 } = await readPackageReport(box.workdir);
   assert.equal(report.ok, true, JSON.stringify(report.items));
   assert.equal(report.final_sha256, sha(bytes));
+  assert.equal(finalSha256, sha(final), "the publish gate reuses the hash for a compilation's download entry");
   assert.deepEqual([...listed.keys()].sort(), ["UPLOAD.md", "captions/zh-TW.srt", "description.zh-TW.txt", "final.mp4", "metadata.json"]);
   assert.equal(listFiles(path.join(box.workdir, "nowhere")).size, 0);
 

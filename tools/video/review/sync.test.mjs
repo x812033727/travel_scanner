@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 
@@ -9,11 +9,12 @@ import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
-import { DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
+import { COMPILATION_STEPS, DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
-import { ITEM_IDS } from "../qa/checks.mjs";
+import { COMPILATION_ITEM_IDS, ITEM_IDS } from "../qa/checks.mjs";
 import { encodeWav } from "../tts/wav.mjs";
-import { audioCheck, checklistFrom, guideSlugs, judgeBody, outlineOptions, PART_BYTES, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
+import { compilationSandbox, compileContext, EPISODE_FRAMES, EPISODES, fakeFfmpeg, writeTranslations } from "../compile/fixture.mjs";
+import { audioCheck, checklistFrom, downloadNote, guideSlugs, judgeBody, outlineOptions, PART_BYTES, previewArgs, REVIEW_GATES, sourceGuideOf, STEP_LABELS, uploadItems } from "./sync.mjs";
 
 const TOKEN = `mkv_${"r".repeat(43)}`;
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -354,8 +355,9 @@ test("without a token the push needs the owner", async () => {
   assert.match(out.out.stderr, /login/);
 });
 
-test("every pipeline step of both formats has a label for the site", () => {
-  for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
+test("every pipeline step of every format has a label for the site", () => {
+  for (const id of [...SLIDES_STEPS, ...DRAMA_STEPS, ...COMPILATION_STEPS]) assert.ok(STEP_LABELS[id], `no label for "${id}"`);
+  assert.deepEqual(COMPILATION_STEPS.map((id) => STEP_LABELS[id]), ["合集標題與說明", "章節卡與縮圖", "合集串接", "五語標題與說明", "成片核准", "上傳包", "已上 YouTube"]);
   assert.deepEqual(REVIEW_GATES, ["outline", "script", "look", "audio", "storyboard", "final", "publish", "dubs"]);
 });
 
@@ -453,4 +455,89 @@ test("the storyboard goes up with every keyframe and the judge's lowest score, a
   const [entry] = readApprovals(box.workdir).approvals;
   assert.equal(entry.gate, "storyboard");
   assert.equal(entry.sha256, board.content_sha256);
+});
+
+test("the 720p preview of a compilation caps its bitrate; a cut's and the narration's arguments are unchanged", () => {
+  const cut = previewArgs("preview", "final.mp4", "review/p.mp4");
+  assert.equal(cut.join(" "), "-hide_banner -y -loglevel error -i final.mp4 -vf scale=1280:720:flags=lanczos -c:v libx264 -preset veryfast -crf 26 -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart review/p.mp4");
+  const long = previewArgs("preview", "final.mp4", "review/p.mp4", { compilation: true });
+  assert.equal(long.join(" "), "-hide_banner -y -loglevel error -i final.mp4 -vf scale=1280:720:flags=lanczos -c:v libx264 -preset veryfast -crf 26 -maxrate 2M -bufsize 4M -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart review/p.mp4");
+  assert.equal(previewArgs("narration", "n.wav", "n.m4a").join(" "), "-hide_banner -y -loglevel error -i n.wav -c:a aac -b:a 96k -ac 1 -movflags +faststart n.m4a");
+  assert.equal(downloadNote(2.5 * 1024 ** 3), "合集 2.50 GB，成片從網站下載後上傳");
+});
+
+test("the script gate sends the checker's similar works and retention verdict when the worker wrote them", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], push.ctx), EXIT.ok, push.out.stderr);
+  const [script] = server.state.reviews;
+  assert.equal(script.gate, "script");
+  assert.deepEqual(script.payload.similar_works, [{ title: "魔道祖師", how: "a sect rivalry" }]);
+  assert.deepEqual(script.payload.retention, { score: 0.8, passed: true });
+  assert.deepEqual(script.payload.continuity_problems, ["a name changed"]);
+  rmSync(path.join(box.workdir, "review", "script-check.json"));
+  const bare = site();
+  const again = context(box, bare.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], again.ctx), EXIT.ok, again.out.stderr);
+  assert.deepEqual(bare.state.reviews[0].payload.similar_works, []);
+  assert.equal(bare.state.reviews[0].payload.retention, null);
+});
+
+const COMPILATION_FRAMES = EPISODES.reduce((sum, slug) => sum + EPISODE_FRAMES[slug], 0) + EPISODES.length * 60 + 120;
+
+test("a compilation reports its series, goes up for the final gate with the six-item check and a capped preview, and its package keeps final.mp4 home", async () => {
+  const box = compilationSandbox({ captions: Object.fromEntries(EPISODES.map((slug) => [slug, ["zh-TW", "en", "ja", "ko", "zh-CN"]])) });
+  writeTranslations(box, box.doc);
+  const compiled = compileContext(box, fakeFfmpeg({ total: COMPILATION_FRAMES }));
+  assert.equal(await main(["compile", "--slug", box.slug], compiled.ctx), EXIT.ok, compiled.out.stderr);
+  const server = site();
+  let reported = null;
+  const encodes = [];
+  const encodeCompilation = async (kind, source, target, env, options) => {
+    encodes.push({ kind, options });
+    writeFileSync(target, Buffer.from(`${kind} of ${path.basename(source)}`));
+  };
+  const push = context(box, async (url, init) => {
+    if (init.method === "PUT" && !url.includes("/files/")) reported = JSON.parse(init.body);
+    return server.fetchImpl(url, init);
+  }, { encode: encodeCompilation });
+  assert.equal(await main(["review-push", "--slug", box.slug], push.ctx), EXIT.ok, push.out.stderr + push.out.stdout);
+  assert.equal(reported.series_slug, "wuxia");
+  assert.equal("episode_number" in reported, false);
+  assert.equal(reported.stage, "final video approved");
+  assert.ok(reported.checklist.some((item) => item.key === "video_compiled" && item.done && item.label === "合集串接"));
+  const [review] = server.state.reviews;
+  assert.equal(review.gate, "final", "the first gate a compilation waits at");
+  assert.equal(review.content_sha256, sha(readFileSync(path.join(box.workdir, "final.mp4"))));
+  assert.equal(review.payload.qa.kind, "compilation");
+  assert.equal(review.payload.qa.ok, true);
+  assert.deepEqual(review.payload.qa.items.map((item) => item.id), COMPILATION_ITEM_IDS);
+  assert.deepEqual(review.payload.compilation, { series: "wuxia", episodes: EPISODES, total_frames: COMPILATION_FRAMES });
+  assert.equal(review.payload.chapters.length, 3);
+  assert.match(review.summary, /^成片 07:31，自動品管 6 項全過$/);
+  assert.deepEqual(encodes, [{ kind: "preview", options: { compilation: true } }]);
+  assert.deepEqual(review.files.map((file) => file.role), ["preview", "contact_sheet", "thumbnail"].filter((role) => role !== "contact_sheet" || existsSync(path.join(box.workdir, "contact-sheet.png"))));
+
+  // Approved on the site: recorded, then the package and its publish review without the cut.
+  Object.assign(review, { status: "approved", decided_at: "2026-09-27T07:00:00Z" });
+  const pull = context(box, server.fetchImpl);
+  assert.equal(await main(["review-pull", "--slug", box.slug], pull.ctx), EXIT.ok, pull.out.stderr);
+  const packaged = compileContext(box, fakeFfmpeg({ total: COMPILATION_FRAMES }));
+  assert.equal(await main(["package", "--slug", box.slug], packaged.ctx), EXIT.ok, packaged.out.stderr + packaged.out.stdout);
+  const publish = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug], publish.ctx), EXIT.ok, publish.out.stderr);
+  const [confirm] = server.state.reviews;
+  assert.equal(confirm.gate, "publish");
+  assert.equal(confirm.payload.package.ok, true);
+  const bytes = statSync(path.join(box.workdir, "upload", "final.mp4")).size;
+  assert.deepEqual(confirm.payload.download, { path: "upload/final.mp4", bytes, sha256: sha(readFileSync(path.join(box.workdir, "final.mp4"))) });
+  assert.deepEqual(confirm.payload.episodes, EPISODES);
+  assert.equal(confirm.summary, `上傳包 4 項齊全：合集 ${(bytes / 1024 ** 3).toFixed(2)} GB，成片從網站下載後上傳；請確認可以上架`);
+  const roles = confirm.files.map((file) => file.role);
+  assert.equal(roles.includes("final"), false, "the cut is downloaded from the site, not stored twice");
+  assert.ok(roles.includes("metadata") && roles.includes("thumbnail") && roles.includes("captions_zh-TW") && roles.includes("description_en"));
+  assert.equal(server.state.files.has(sha(readFileSync(path.join(box.workdir, "final.mp4")))), false);
 });

@@ -6,6 +6,7 @@
 // (k7p2)") is what a writer agent needs to fix its draft, which a generic validator does not give.
 import { createHash } from "node:crypto";
 
+import { isCompilation, validateCompilation } from "./compilation.mjs";
 import { DRAMA_FORMAT, SHOT_TEMPLATE, validateDrama } from "./drama.mjs";
 
 export const SCHEMA_VERSION = 1;
@@ -67,6 +68,8 @@ const TOP_KEYS = new Set([
   "subtitles",
   // Drama-only: which long series and episode this is (docs/videos/SERIES.md).
   "series",
+  // A series' compilation, validated in compilation.mjs: the episodes it joins (docs/videos/BINGE.md).
+  "compilation",
 ]);
 const VOICE_KEYS = new Set(["provider", "name", "rate", "lang", "style", "model"]);
 const YOUTUBE_KEYS = new Set([
@@ -191,9 +194,10 @@ function validateLine(line, label, seenLines, errors) {
   }
 }
 
-function validateScenes(scenes, errors, format) {
-  if (!Array.isArray(scenes) || scenes.length === 0) {
-    errors.push({ path: "scenes", message: "must be a non-empty array" });
+function validateScenes(scenes, errors, format, compilation = false) {
+  // A compilation's scenes are its cards, and one without cards or an outro has none at all.
+  if (!Array.isArray(scenes) || (scenes.length === 0 && !compilation)) {
+    errors.push({ path: "scenes", message: compilation ? "must be an array" : "must be a non-empty array" });
     return;
   }
   const seenScenes = new Map();
@@ -215,7 +219,8 @@ function validateScenes(scenes, errors, format) {
     if (scene.chapter !== undefined && !isText(scene.chapter)) {
       errors.push({ path: `${where}.chapter`, message: "must be a non-empty string when present" });
     }
-    if (sceneIndex === 0 && !isText(scene.chapter)) {
+    // A compilation's chapters are its episodes, one each, wherever its first card sits.
+    if (sceneIndex === 0 && !compilation && !isText(scene.chapter)) {
       errors.push({ path: `${where}.chapter`, message: "the first scene must open a chapter: YouTube needs one at 00:00" });
     }
     // A drama's "shot" is not an HTML template; drama.mjs checks its data, and refuses it in any other format.
@@ -260,7 +265,9 @@ export function validateVideo(doc) {
   ) {
     errors.push({ path: "target_minutes", message: "must be [min, max] in minutes" });
   }
-  validateVoice(doc.voice, errors);
+  // A compilation narrates nothing, so its voice is optional; anything else needs one.
+  const compilation = isCompilation(doc);
+  if (!compilation || doc.voice !== undefined) validateVoice(doc.voice, errors);
   validateYoutube(doc.youtube, errors);
   if (doc.thumbnail !== undefined) {
     if (!isObject(doc.thumbnail) || !THUMBNAIL_TEMPLATES.includes(doc.thumbnail.template) || !isObject(doc.thumbnail.data)) {
@@ -289,8 +296,11 @@ export function validateVideo(doc) {
       });
     }
   }
-  validateScenes(doc.scenes, errors, doc.format);
-  validateDrama(doc, errors, validateVoice);
+  validateScenes(doc.scenes, errors, doc.format, compilation);
+  // A compilation is a drama without shots, a cast or a look: compilation.mjs has its rules,
+  // and the drama rules (which would demand all three) do not apply.
+  if (compilation) validateCompilation(doc, errors);
+  else validateDrama(doc, errors, validateVoice);
   return errors;
 }
 

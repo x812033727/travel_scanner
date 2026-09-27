@@ -164,8 +164,10 @@ class VideoAutomationSettings(Base):
             name="ck_video_drama_preset",
         ),
         # The series columns; migration 0099 creates the same constraints under the same names.
+        # A binge series (docs/videos/BINGE.md; migration 0102) may keep up to six episodes in
+        # the making at once; the constraint is recreated under the same name.
         CheckConstraint(
-            "series_max_in_flight BETWEEN 1 AND 2 AND series_chapter_ahead BETWEEN 0 AND 10 "
+            "series_max_in_flight BETWEEN 1 AND 6 AND series_chapter_ahead BETWEEN 0 AND 10 "
             "AND series_doc_rewrites BETWEEN 0 AND 5 "
             "AND series_episodes_per_month BETWEEN 0 AND 500",
             name="ck_video_drama_series",
@@ -401,6 +403,21 @@ class VideoDramaRequest(Base):
 # documents the owner approves (the setting book, the whole-series outline, each chapter's
 # detailed outline, one row per version), and the episode table.
 SERIES_STATUSES = ("setting", "outline", "active", "paused", "finished")
+# A binge series (docs/videos/BINGE.md; migration 0102): the genre preset the planner writes
+# from, who leads, how many shots may be image-to-video clips, and the compilation of every
+# episode into one long video once they are all cleared for upload.
+SERIES_GENRES = (
+    "xianxia-bonds",
+    "rebirth-revenge",
+    "system-game",
+    "urban-return",
+    "empress-rise",
+    "custom",
+)
+SERIES_LEADS = ("female", "male", "dual-male")
+VISUAL_TIERS = ("clips", "hybrid", "stills")
+MIN_TOTAL_MINUTES = 30
+MAX_TOTAL_MINUTES = 480
 DOC_KINDS = ("setting", "outline", "chapter")
 DOC_STATUSES = ("generating", "review", "approved", "rejected")
 EPISODE_STATUSES = ("planned", "ready", "queued", "started", "done", "skipped")
@@ -422,6 +439,24 @@ class VideoDramaSeries(Base):
             "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
             name="ck_video_drama_series_style",
         ),
+        CheckConstraint(
+            "genre IN ('xianxia-bonds', 'rebirth-revenge', 'system-game', 'urban-return', "
+            "'empress-rise', 'custom')",
+            name="ck_video_drama_series_genre",
+        ),
+        CheckConstraint(
+            "lead IN ('female', 'male', 'dual-male')", name="ck_video_drama_series_lead"
+        ),
+        CheckConstraint(
+            "visual_tier IN ('clips', 'hybrid', 'stills')", name="ck_video_drama_series_tier"
+        ),
+        CheckConstraint(
+            "total_minutes IS NULL OR total_minutes BETWEEN 30 AND 480",
+            name="ck_video_drama_series_total_minutes",
+        ),
+        # Named as migration 0102 names it, so a database built from the models (0001's
+        # create_all) and one upgraded from 0101 carry the same constraint.
+        UniqueConstraint("compilation_slug", name="uq_video_drama_series_compilation_slug"),
     )
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
@@ -451,6 +486,29 @@ class VideoDramaSeries(Base):
     # without waiting for the previous one; the worker's next round clears them.
     requested_chapter: Mapped[int | None] = mapped_column(Integer, nullable=True)
     force_next: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    # The binge columns (docs/videos/BINGE.md; migration 0102). The genre picks the planner's
+    # conflict engine and the satisfaction beats the chapter outlines must schedule; a
+    # hands-off series has its documents, screenplays, sheets and storyboards decided by the
+    # checks instead of the owner; a compilation series joins every episode into one long video
+    # once they are all cleared for upload; the visual tier caps how many shots are clips.
+    genre: Mapped[str] = mapped_column(
+        String(32), default="xianxia-bonds", server_default="xianxia-bonds"
+    )
+    lead: Mapped[str] = mapped_column(String(12), default="dual-male", server_default="dual-male")
+    hands_off: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    compilation: Mapped[bool] = mapped_column(Boolean, default=False, server_default="false")
+    visual_tier: Mapped[str] = mapped_column(String(8), default="clips", server_default="clips")
+    # The length the owner asked the whole compilation to be; the episode count came from it.
+    total_minutes: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    # The compilation video's slug once the worker started it, and when it started and was
+    # cleared for upload; null while the episodes are still being made.
+    compilation_slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    compilation_started_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    compilation_finished_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
     created_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
