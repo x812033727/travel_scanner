@@ -384,6 +384,10 @@ class DramaRequestOut(BaseModel):
     note: str | None
     status: RequestStatus
     slug: str | None
+    # The series this request is an episode of: a one-off drama's own one-episode series
+    # (docs/videos/DRAMA-FLOW.md §二), or the long series it belongs to.
+    series_slug: str | None = None
+    episode_number: int | None = None
     created_by_user_id: UUID | None
     created_at: datetime
     started_at: datetime | None
@@ -460,24 +464,33 @@ class TopicsOut(StrictModel):
 # (the setting book, the whole-series outline, each chapter's detailed outline), the episode
 # table, and what the worker asks for and reports.
 SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
+# A long series, or a one-off drama: one episode, one story bible (docs/videos/DRAMA-FLOW.md §二).
+SeriesKind = Literal["series", "one-off"]
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
 SeriesAspect = Literal["world", "bonds", "structure", "mood"]
 SeriesTone = Literal[
     "dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"
 ]
-DocKind = Literal["setting", "outline", "chapter"]
+DocKind = Literal["setting", "outline", "chapter", "bible"]
 DocStatus = Literal["generating", "review", "approved", "rejected"]
 EpisodeStatus = Literal["planned", "ready", "queued", "started", "done", "skipped"]
-SeriesJobKind = Literal["setting", "outline", "chapter", "episode"]
+SeriesJobKind = Literal["setting", "outline", "chapter", "bible", "episode"]
+# What the owner fills in for a one-off drama: every number is fixed at one.
+ONE_OFF_EPISODES = 1
 SeriesAction = Literal["plan-next-chapter", "start-next"]
 MAX_DOC_MD_CHARS = 200_000
 MAX_DOC_JSON_BYTES = 512 * 1024
 
 
 class SeriesIn(StrictModel):
-    """What the owner fills in to start a series; the setting book is planned from it."""
+    """What the owner fills in to start a series; the setting book is planned from it.
+
+    A ``one-off`` is one episode with one story bible: its numbers are fixed at one whatever
+    was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二).
+    """
 
     slug: str = Field(pattern=SERIES_SLUG_PATTERN)
+    kind: SeriesKind = "series"
     title: str = Field(min_length=1, max_length=200)
     premise: str = Field(min_length=1, max_length=4000)
     aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
@@ -485,7 +498,7 @@ class SeriesIn(StrictModel):
     style_preset: StylePreset = "cinematic-3d"
     target_minutes: int = Field(default=3, ge=1, le=8)
     planned_episodes: int = Field(default=100, ge=1, le=500)
-    episodes_per_chapter: int = Field(default=10, ge=4, le=20)
+    episodes_per_chapter: int = Field(default=10, ge=1, le=20)
     open_ended: bool = True
     note: str | None = Field(default=None, min_length=1, max_length=2000)
 
@@ -505,6 +518,16 @@ class SeriesIn(StrictModel):
         if len(set(value)) != len(value):
             raise ValueError("aspects must not repeat")
         return value
+
+    @model_validator(mode="after")
+    def _numbers_by_kind(self) -> SeriesIn:
+        if self.kind == "one-off":
+            self.planned_episodes = ONE_OFF_EPISODES
+            self.episodes_per_chapter = ONE_OFF_EPISODES
+            self.open_ended = False
+        elif self.episodes_per_chapter < 4:
+            raise ValueError("a series has at least 4 episodes per chapter")
+        return self
 
 
 class SeriesPatch(StrictModel):
@@ -555,6 +578,7 @@ class SeriesEpisodeOut(BaseModel):
 class SeriesSummary(BaseModel):
     id: UUID
     slug: str
+    kind: SeriesKind = "series"
     title: str
     premise: str
     aspects: list[SeriesAspect]

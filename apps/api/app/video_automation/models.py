@@ -437,9 +437,11 @@ class VideoDramaRequest(Base):
 
 # A long drama series (docs/videos/SERIES.md; migration 0099): the series the owner planned, the
 # documents the owner approves (the setting book, the whole-series outline, each chapter's
-# detailed outline, one row per version), and the episode table.
+# detailed outline, one row per version), and the episode table. A one-off drama is a series of
+# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0105).
+SERIES_KINDS = ("series", "one-off")
 SERIES_STATUSES = ("setting", "outline", "active", "paused", "finished")
-DOC_KINDS = ("setting", "outline", "chapter")
+DOC_KINDS = ("setting", "outline", "chapter", "bible")
 DOC_STATUSES = ("generating", "review", "approved", "rejected")
 EPISODE_STATUSES = ("planned", "ready", "queued", "started", "done", "skipped")
 
@@ -452,7 +454,7 @@ class VideoDramaSeries(Base):
             name="ck_video_drama_series_status",
         ),
         CheckConstraint(
-            "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 4 AND 20 "
+            "planned_episodes BETWEEN 1 AND 500 AND episodes_per_chapter BETWEEN 1 AND 20 "
             "AND target_minutes BETWEEN 1 AND 8",
             name="ck_video_drama_series_numbers",
         ),
@@ -460,10 +462,14 @@ class VideoDramaSeries(Base):
             "style_preset IN ('cinematic-3d', 'anime-2d', 'ink-wash', 'custom')",
             name="ck_video_drama_series_style",
         ),
+        CheckConstraint("kind IN ('series', 'one-off')", name="ck_video_drama_series_kind"),
     )
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(40), unique=True)
+    # "series": the documents are the setting book, the outline and the chapters' outlines;
+    # "one-off": one episode, one story bible (docs/videos/DRAMA-FLOW.md §二).
+    kind: Mapped[str] = mapped_column(String(12), default="series", server_default="series")
     title: Mapped[str] = mapped_column(String(200))
     # The story in the owner's words; the setting book is planned from it.
     premise: Mapped[str] = mapped_column(Text)
@@ -505,7 +511,7 @@ class VideoDramaDoc(Base):
             "series_id", "kind", "chapter_number", "version", name="uq_video_drama_doc_version"
         ),
         CheckConstraint(
-            "kind IN ('setting', 'outline', 'chapter')", name="ck_video_drama_doc_kind"
+            "kind IN ('setting', 'outline', 'chapter', 'bible')", name="ck_video_drama_doc_kind"
         ),
         CheckConstraint(
             "status IN ('generating', 'review', 'approved', 'rejected')",

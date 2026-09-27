@@ -13,6 +13,7 @@ import pytest
 import pytest_asyncio
 from fastapi import FastAPI
 from httpx import ASGITransport, AsyncClient
+from pydantic import ValidationError
 from sqlalchemy import delete, select
 
 from app.auth.service import current_user
@@ -29,12 +30,15 @@ from app.video_automation.models import (
     VideoDramaRequest,
     VideoDramaSeries,
 )
+from app.video_automation.requests import request_view
 from app.video_automation.schemas import (
+    DramaRequestIn,
     SeriesDocSubmitIn,
     SeriesEpisodeRecapIn,
     SeriesIn,
     SeriesJobOut,
     SeriesOut,
+    SeriesPatch,
 )
 from app.video_speech import admin_api as speech_api
 
@@ -45,6 +49,7 @@ def _series(**changes: Any) -> VideoDramaSeries:
     values: dict[str, Any] = {
         "id": uuid4(),
         "slug": "xianxia",
+        "kind": "series",
         "title": "問劍",
         "premise": "兩個少年在正道與魔道之間",
         "aspects": ["world", "bonds"],
@@ -265,6 +270,101 @@ def test_a_document_the_worker_sends_must_have_the_shape_the_owner_reads() -> No
     assert planned[2]["tension"] == [2, 3, 3, 4, 5]
 
 
+BIBLE = {
+    "characters": [{"id": "jingwei", "name": "精衛", "appearance": "x"}],
+    "acts": [{"number": 1, "title": "溺水"}, {"number": 2, "title": "化鳥"}],
+    "outline": {
+        "title": "精衛填海",
+        "logline": "一隻鳥要填平東海",
+        "hook": "h",
+        "conflict": "c",
+        "turn": "t",
+        "cliffhanger": "x",
+    },
+    "music": "古琴",
+    "not_doing": ["不寫戀愛"],
+    "lexicon": {"東海": "the sea"},
+}
+
+
+def _one_off(**changes: Any) -> VideoDramaSeries:
+    values: dict[str, Any] = {
+        "slug": "one-off-1a2b3c4d",
+        "kind": "one-off",
+        "title": "精衛填海",
+        "aspects": [],
+        "planned_episodes": 1,
+        "episodes_per_chapter": 1,
+        "open_ended": False,
+        "status": "setting",
+    }
+    values.update(changes)
+    return _series(**values)
+
+
+def test_a_one_off_is_one_episode_with_one_story_bible_whatever_the_form_sent() -> None:
+    one_off = SeriesIn(
+        slug="one-off-x", kind="one-off", title="精衛填海", premise="p", planned_episodes=30
+    )
+    assert (one_off.planned_episodes, one_off.episodes_per_chapter, one_off.open_ended) == (
+        1,
+        1,
+        False,
+    )
+    assert one_off.aspects == [] and one_off.tone == "dual-male-leads-subtext"
+    series = SeriesIn(slug="xianxia", title="問劍", premise="p")
+    assert (series.kind, series.planned_episodes, series.episodes_per_chapter) == (
+        "series",
+        100,
+        10,
+    )
+    with pytest.raises(ValidationError, match="at least 4"):
+        SeriesIn(slug="xianxia", title="問劍", premise="p", episodes_per_chapter=2)
+    with pytest.raises(ValidationError):
+        SeriesIn(slug="xianxia", kind="movie", title="問劍", premise="p")  # type: ignore[arg-type]
+    assert service.one_off_slug("1a2b3c4d-0000-4000-8000-000000000000") == "one-off-1a2b3c4d"
+
+
+def test_a_one_off_plans_its_bible_then_starts_its_episode_and_never_a_chapter() -> None:
+    fresh = _one_off()
+    job = _next(fresh, [], [_episode(1, "planned", fresh)])
+    assert job is not None and (job.kind, job.previous, job.rewrites_left) == ("bible", None, 2)
+    rejected = _doc("bible", status="rejected")
+    again = _next(fresh, [rejected], [_episode(1, "planned", fresh)])
+    assert again is not None and again.kind == "bible" and again.previous is rejected
+    assert _next(fresh, [_doc("bible", status="review")], []) is None, "the owner is reading it"
+    active = _one_off(status="active")
+    job = _next(active, [_doc("bible")], [_episode(1, "ready", active)])
+    assert job is not None and (job.kind, job.episode_number) == ("episode", 1), (
+        "no chapter outline stands between the bible and the episode"
+    )
+    assert _next(active, [_doc("bible")], [_episode(1, "started", active)]) is None
+    assert _next(active, [_doc("bible")], [_episode(1, "done", active)]) is None
+    assert service.setting_kind(active) == "bible" and service.setting_kind(_series()) == "setting"
+
+
+def test_a_story_bible_has_the_cast_the_acts_and_one_outline_and_only_a_one_off_has_one() -> None:
+    one_off = _one_off()
+
+    def doc(kind: str, **body: Any) -> SeriesDocSubmitIn:
+        return SeriesDocSubmitIn(kind=kind, body_md="# x", body_json=body)
+
+    assert service.doc_problem(one_off, doc("bible", **BIBLE)) is None
+    assert "characters" in str(service.doc_problem(one_off, doc("bible", acts=[{}], outline={})))
+    assert "acts" in str(
+        service.doc_problem(one_off, doc("bible", characters=BIBLE["characters"], outline={}))
+    )
+    assert "outline" in str(
+        service.doc_problem(
+            one_off, doc("bible", characters=BIBLE["characters"], acts=[{}], outline="x")
+        )
+    )
+    assert "one document" in str(
+        service.doc_problem(one_off, doc("setting", characters=BIBLE["characters"]))
+    )
+    assert "setting book" in str(service.doc_problem(_series(), doc("bible", **BIBLE)))
+
+
 def _app(user: User | None = None) -> FastAPI:
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
@@ -338,10 +438,66 @@ async def test_the_owner_routes_need_the_content_capabilities_and_the_drama_swit
         )
     assert off.status_code == 409 and off.json()["code"] == "video_drama_disabled"
     assert created.status_code == 201 and created.json()["status"] == "active"
+    assert created.json()["kind"] == "series"
     assert bad.status_code == 422
     assert decided.status_code == 200
     assert service.decide_doc.await_args.args[3:] == ("chapter", 2, "approve", None)  # type: ignore[attr-defined]
     assert unknown.status_code == 404
+
+
+@pytest.mark.asyncio
+async def test_the_request_form_makes_a_one_off_and_the_list_filters_by_kind(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    owner = _user("owner")
+    one_off = _one_off()
+    listed = AsyncMock(return_value=[service.summary_view(one_off, [], [])])
+    monkeypatch.setattr(service, "list_series", listed)
+    monkeypatch.setattr(
+        settings_service,
+        "settings_row",
+        AsyncMock(return_value=VideoAutomationSettings(drama_enabled=True)),
+    )
+    request = VideoDramaRequest(
+        id=uuid4(),
+        premise="精衛填海",
+        style_preset="ink-wash",
+        target_minutes=2,
+        status="queued",
+        series_id=one_off.id,
+        episode_number=1,
+        created_at=WHEN,
+    )
+    create = AsyncMock(return_value=request_view(request, series_slug=one_off.slug))
+    monkeypatch.setattr(service, "create_one_off", create)
+    decide = AsyncMock(
+        return_value=SeriesOut(**listed.return_value[0].model_dump(), docs=[], episodes=[])
+    )
+    monkeypatch.setattr(service, "decide_doc", decide)
+    base = "/api/v1/admin/video-automation"
+    async with AsyncClient(transport=ASGITransport(app=_app(owner)), base_url="http://t") as client:
+        only_one_offs = await client.get(f"{base}/series", params={"kind": "one-off"})
+        every = await client.get(f"{base}/series")
+        bad_kind = await client.get(f"{base}/series", params={"kind": "movie"})
+        filed = await client.post(
+            f"{base}/drama-requests",
+            json={"premise": "精衛填海", "style_preset": "ink-wash", "target_minutes": 2},
+        )
+        approved = await client.post(
+            f"{base}/series/{one_off.slug}/docs/bible/decision", json={"decision": "approve"}
+        )
+    assert only_one_offs.status_code == 200
+    assert only_one_offs.json()["series"][0]["kind"] == "one-off"
+    assert listed.await_args_list[0].kwargs == {"kind": "one-off"}
+    assert every.status_code == 200 and listed.await_args_list[1].kwargs == {"kind": None}
+    assert bad_kind.status_code == 422
+    assert filed.status_code == 201, filed.text
+    assert filed.json()["series_slug"] == one_off.slug and filed.json()["episode_number"] == 1
+    assert filed.json()["status"] == "queued"
+    payload = create.await_args.args[2]
+    assert isinstance(payload, DramaRequestIn) and payload.style_preset == "ink-wash"
+    assert approved.status_code == 200
+    assert decide.await_args.args[3:] == ("bible", 0, "approve", None)
 
 
 @pytest.mark.asyncio
@@ -547,6 +703,103 @@ async def test_a_series_is_planned_document_by_document_and_made_episode_by_epis
 
         view = await service.series_view(session, slug)
         assert (view.episodes_done, view.episodes_ready, view.docs_pending) == (1, 9, 0)
+        await session.delete(owner)
+        await session.delete(token)
+        await session.commit()
+
+
+@pytest_asyncio.fixture(loop_scope="module")
+async def clean_one_off() -> AsyncIterator[list[str]]:
+    slugs: list[str] = []
+    yield slugs
+    async with SessionFactory() as session:
+        for slug in slugs:
+            found = await session.scalar(
+                select(VideoDramaSeries).where(VideoDramaSeries.slug == slug)
+            )
+            if found is not None:
+                await session.execute(
+                    delete(VideoDramaRequest).where(VideoDramaRequest.series_id == found.id)
+                )
+                await session.delete(found)
+        await session.commit()
+    await engine.dispose()
+
+
+@integration
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a_one_off_goes_from_the_request_form_through_its_bible_to_its_episode(
+    clean_one_off: list[str],
+) -> None:
+    async with SessionFactory() as session:
+        owner = User(email=f"one-off-{uuid4()}@example.com", password_hash="unused")
+        session.add(owner)
+        token = VideoToolToken(name="one-off-test", token_hash=uuid4().hex, token_prefix="mkv_o")
+        session.add(token)
+        await session.commit()
+        settings = await settings_service.settings_row(session)
+        from app.video_automation import requests as drama_requests
+
+        filed = await service.create_one_off(
+            session,
+            owner,
+            DramaRequestIn(
+                premise="精衛填海", title="精衛", style_preset="ink-wash", target_minutes=2
+            ),
+        )
+        assert filed.series_slug is not None and filed.series_slug.startswith("one-off-")
+        slug = filed.series_slug
+        clean_one_off.append(slug)
+        assert filed.status == "queued" and filed.episode_number == 1
+        assert await drama_requests.next_request(session) is None or (
+            (await drama_requests.next_request(session)).id != filed.id  # type: ignore[union-attr]
+        ), "an episode's request starts through the series, not the old queue"
+
+        created = await service.series_view(session, slug)
+        assert (created.kind, created.status, created.chapters) == ("one-off", "setting", 1)
+        assert (created.planned_episodes, created.episodes_per_chapter) == (1, 1)
+        assert [e.status for e in created.episodes] == ["planned"]
+        assert created.title == "精衛" and created.style_preset == "ink-wash"
+
+        job = (await service.next_job(session, settings)).job
+        assert job is not None and job.kind == "bible" and job.series.slug == slug
+        assert job.context.setting is None
+        with pytest.raises(service.SeriesRefused, match="one document"):
+            await service.submit_doc(
+                session,
+                slug,
+                SeriesDocSubmitIn(kind="setting", body_md="# x", body_json=BIBLE),
+            )
+        await service.submit_doc(
+            session, slug, SeriesDocSubmitIn(kind="bible", body_md="# 故事聖經", body_json=BIBLE)
+        )
+        assert (await service.next_job(session, settings)).job is None, "the owner is reading it"
+        approved = await service.decide_doc(session, owner, slug, "bible", 0, "approve", None)
+        assert approved.status == "active" and approved.docs[0].kind == "bible"
+        episode = approved.episodes[0]
+        assert episode.status == "ready" and episode.title == "精衛填海"
+        assert episode.logline == "一隻鳥要填平東海" and episode.beats["hook"] == "h"
+
+        job = (await service.next_job(session, settings)).job
+        assert job is not None and (job.kind, job.episode.number) == ("episode", 1)  # type: ignore[union-attr]
+        assert job.context.setting is not None and job.context.setting.kind == "bible"
+        assert job.context.chapter is None and job.context.chapter_range == (1, 1)
+        started = await service.start_episode(session, token, slug, 1, f"{slug}-e001")
+        assert started.request.id == filed.id, "the request filed with the form travels on"
+        assert started.request.status == "started" and started.request.series_slug == slug
+        assert started.episode.status == "started"
+        assert (
+            started.context.setting is not None
+            and "characters" in started.context.setting.body_json
+        )
+        assert (await service.next_job(session, settings)).job is None
+        finished = await service.finish_episode(session, slug, 1)
+        assert finished.status == "done"
+        assert (await service.series_view(session, slug)).status == "finished"
+        request = await session.get(VideoDramaRequest, filed.id)
+        assert request is not None and request.status == "done"
+        with pytest.raises(service.SeriesRefused, match="集數不能改"):
+            await service.patch_series(session, owner, slug, SeriesPatch(planned_episodes=3))
         await session.delete(owner)
         await session.delete(token)
         await session.commit()

@@ -36,6 +36,7 @@ from app.video_automation.judge import (
     judge_outline,
     judge_policy,
 )
+from app.video_automation.models import DOC_KINDS
 from app.video_automation.requests import RequestRefused
 from app.video_automation.schemas import (
     DramaRequestIn,
@@ -57,6 +58,7 @@ from app.video_automation.schemas import (
     SeriesEpisodeStartOut,
     SeriesIn,
     SeriesJobOut,
+    SeriesKind,
     SeriesListOut,
     SeriesOut,
     SeriesPatch,
@@ -281,15 +283,19 @@ async def list_drama_requests(user: ContentReader, session: Session) -> DramaReq
 async def create_drama_request(
     payload: DramaRequestIn, user: ContentManager, session: Session
 ) -> DramaRequestOut:
-    """The owner asks for an episode; the worker starts it on its next round, before any
-    scheduled draft. Refused while the drama route is switched off, so nothing queues for a
+    """The owner asks for a one-off drama: a one-episode series whose story bible the worker
+    plans on its next round (docs/videos/DRAMA-FLOW.md §二); the answer names the series in
+    ``series_slug``. Refused while the drama route is switched off, so nothing queues for a
     worker that will never take it."""
     row = await service.settings_row(session)
     if not row.drama_enabled:
         raise AppError(
             409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
         )
-    return await drama_requests.create_request(session, user, payload)
+    try:
+        return await drama_series.create_one_off(session, user, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
 
 
 @admin_router.delete("/drama-requests/{request_id}", response_model=DramaRequestOut)
@@ -365,9 +371,12 @@ async def _series_limit(tool: VideoToolToken) -> None:
 
 
 @admin_router.get("/series", response_model=SeriesListOut)
-async def list_video_series(user: ContentReader, session: Session) -> SeriesListOut:
+async def list_video_series(
+    user: ContentReader, session: Session, kind: SeriesKind | None = None
+) -> SeriesListOut:
+    """Every series, newest first; ``kind`` keeps only the long series or the one-offs."""
     _ = user
-    return SeriesListOut(series=await drama_series.list_series(session))
+    return SeriesListOut(series=await drama_series.list_series(session, kind=kind))
 
 
 @admin_router.post("/series", response_model=SeriesOut, status_code=201)
@@ -406,7 +415,7 @@ async def patch_video_series(
 
 
 def _doc_kind(kind: str) -> str:
-    if kind not in ("setting", "outline", "chapter"):
+    if kind not in DOC_KINDS:
         raise AppError(404, "video_series_doc_not_found", "沒有這種文件")
     return kind
 
