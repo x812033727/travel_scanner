@@ -71,6 +71,7 @@ from app.video_automation.schemas import (
     SeriesListOut,
     SeriesOut,
     SeriesPatch,
+    SeriesWithdrawnOut,
     SettingsSave,
     SettingsView,
     SettingsWrite,
@@ -419,6 +420,18 @@ async def patch_video_series(
 ) -> SeriesOut:
     try:
         return await drama_series.patch_series(session, user, slug, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.delete("/series/{slug}", response_model=SeriesWithdrawnOut)
+async def withdraw_video_series(
+    slug: str, user: ContentManager, session: Session
+) -> SeriesWithdrawnOut:
+    """Withdraw a drama before the worker starts any of its episodes (a one-off at its story
+    bible, a series at its documents); its queued requests are cancelled with it."""
+    try:
+        return await drama_series.withdraw_series(session, user, slug)
     except SeriesRefused as error:
         raise _series_refused(error) from error
 

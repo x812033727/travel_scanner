@@ -547,6 +547,14 @@ class SeriesPatch(StrictModel):
     status: Literal["active", "paused", "finished"] | None = None
 
 
+class SeriesWithdrawnOut(BaseModel):
+    """A drama the owner withdrew before any episode started, and how many of its queued
+    requests were cancelled with it."""
+
+    slug: str
+    requests_cancelled: int
+
+
 class SeriesDocOut(BaseModel):
     id: UUID
     kind: DocKind

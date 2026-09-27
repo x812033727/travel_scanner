@@ -57,6 +57,7 @@ from app.video_automation.schemas import (
     SeriesOut,
     SeriesPatch,
     SeriesSummary,
+    SeriesWithdrawnOut,
 )
 from app.video_media.meter import spend_by_slug
 from app.video_reviews.admin_service import list_projects
@@ -67,6 +68,8 @@ BEAT_FIELDS = ("hook", "conflict", "turn", "cliffhanger")
 RECENT_RECAPS = 3
 ACTIVE_STATUSES = ("setting", "outline", "active")
 EPISODE_OPEN = ("planned", "ready", "queued", "started")
+# The episodes a drama may be withdrawn with: none of them has been handed to the worker.
+WITHDRAWABLE = ("planned", "ready")
 # The story bible of a one-off (docs/videos/DRAMA-FLOW.md §二): the cast as in a setting book,
 # the acts, and the one outline the episode is written from; music, not_doing and lexicon are
 # the planner's to fill and nothing here reads them.
@@ -705,6 +708,56 @@ async def patch_series(
     )
     await session.commit()
     return await series_view(session, slug)
+
+
+async def withdraw_series(session: AsyncSession, actor: User, slug: str) -> SeriesWithdrawnOut:
+    """The owner takes back a drama no episode of which has started: a one-off still at its
+    story bible, or a series still at its documents. The series goes with its documents,
+    threads and episode rows; the requests still queued for it stay as cancelled rows, so the
+    request list keeps the record. Once an episode is in the making it is dropped as a video."""
+    series = await _series(session, slug, lock=True)
+    begun = [e.number for e in await _episodes(session, series) if e.status not in WITHDRAWABLE]
+    if begun:
+        raise SeriesRefused(
+            409,
+            "video_series_started",
+            f"第 {min(begun)} 集已經開始做了，不能撤回；要停就到影片清單放棄那支影片",
+        )
+    now = _now()
+    requests = list(
+        (
+            await session.scalars(
+                select(VideoDramaRequest)
+                .where(
+                    VideoDramaRequest.series_id == series.id,
+                    VideoDramaRequest.status == "queued",
+                )
+                .with_for_update()
+            )
+        ).all()
+    )
+    for request in requests:
+        request.status = "cancelled"
+        request.cancelled_at = now
+        request.updated_at = now
+    session.add(
+        AdminAuditLog(
+            actor_user_id=actor.id,
+            action="video_series_withdrawn",
+            target=f"video-series:{series.slug}",
+            metadata_json={
+                "kind": series.kind,
+                "status": series.status,
+                "requests_cancelled": [str(request.id) for request in requests],
+            },
+        )
+    )
+    # The requests keep their row and lose the series (ON DELETE SET NULL); write their new
+    # status before the series goes.
+    await session.flush()
+    await session.delete(series)
+    await session.commit()
+    return SeriesWithdrawnOut(slug=slug, requests_cancelled=len(requests))
 
 
 def _new_episode(

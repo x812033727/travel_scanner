@@ -62,6 +62,12 @@ const docTone: Record<DocStatus, string> = { generating: "running", review: "pen
 const episodeTone: Record<EpisodeStatus, string> = { planned: "inactive", ready: "queued", queued: "queued", started: "active", done: "ok", skipped: "inactive" };
 const requestTone: Record<RequestStatus, string> = { queued: "pending", started: "active", done: "inactive", cancelled: "inactive" };
 const message = (problem: unknown) => (problem instanceof Error ? problem.message : "");
+// A drama no episode of which the worker has started may be withdrawn (the server has the last word):
+// on its page every episode is still planned or ready; on a list card, a one-off still at its bible or
+// with its one episode ready.
+const withdrawable = (series: Series) => series.episodes.every((episode) => episode.status === "planned" || episode.status === "ready");
+const oneOffWithdrawable = (series: SeriesSummary) => series.status === "setting" || (series.status === "active" && series.episodes_ready === 1 && series.episodes_started === 0 && series.episodes_done === 0);
+const withdraw = (series: SeriesSummary) => api(`/admin/video-automation/series/${series.slug}`, { method: "DELETE" });
 // The status pill's key: a one-off waiting on its first document (the server starts it at "setting",
 // apps/api/app/video_automation/series.py create_one_off) waits for a story bible, not a setting book.
 const statusKey = (series: SeriesSummary) => (series.kind === "one-off" && series.status === "setting" ? "bible" : series.status);
@@ -245,6 +251,8 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
   const [oneOffs, setOneOffs] = useState<SeriesSummary[]>([]);
   const [requests, setRequests] = useState<DramaRequest[]>([]);
   const [error, setError] = useState("");
+  const [withdrawing, setWithdrawing] = useState("");
+  const [withdrawError, setWithdrawError] = useState("");
   const load = useCallback(() => {
     api<{ series: SeriesSummary[] }>("/admin/video-automation/series?kind=series").then((value) => { setSeries((value.series ?? []).filter((each) => each.kind !== "one-off")); setError(""); }).catch((problem: unknown) => setError(message(problem)));
     // One-off episodes are series of one episode; an older site ignores the filter and is filtered here.
@@ -257,6 +265,19 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
     }).catch(() => setRequests([]));
   }, []);
   useRefresh(load);
+  const takeBack = async (each: SeriesSummary) => {
+    if (!window.confirm(t("withdrawConfirm", { title: each.title }))) return;
+    setWithdrawing(each.slug);
+    setWithdrawError("");
+    try {
+      await withdraw(each);
+      load();
+    } catch (problem) {
+      setWithdrawError(t("actionError", { message: message(problem) }));
+    } finally {
+      setWithdrawing("");
+    }
+  };
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
   return <div className="grid gap-4">
     {manage.allowed && <NewSeriesForm onCreated={(slug) => { load(); onOpenSeries(slug); }} />}
@@ -275,7 +296,8 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
     <DramaQueue requests={requests} canManage={manage.allowed} onChanged={load} onOpen={onOpenVideo} />
     {oneOffs.length > 0 && <section className="grid gap-3" aria-label={t("oneOffTitle")}>
       <h3 className="text-lg font-bold">{t("oneOffTitle")}</h3>
-      <ul className="grid gap-4">{oneOffs.map((each) => <li key={each.slug}>
+      {withdrawError && <p role="alert" className="text-sm text-red-800">{withdrawError}</p>}
+      <ul className="grid gap-4">{oneOffs.map((each) => <li key={each.slug} className="grid gap-2">
         <button type="button" onClick={() => onOpenSeries(each.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
           <span className="flex flex-wrap items-center gap-3"><span className="text-lg font-bold">{each.title}</span>
             <AdminStatusPill status="active">{t("oneOff")}</AdminStatusPill>
@@ -285,6 +307,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
           <span className="text-sm text-[var(--muted)]">{t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })} · {t(`presets.${each.style_preset}`)} · {t("minutesEach", { minutes: each.target_minutes })}</span>
           <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
         </button>
+        {manage.allowed && oneOffWithdrawable(each) && <div><Button secondary disabled={withdrawing === each.slug} onClick={() => void takeBack(each)}>{withdrawing === each.slug ? t("saving") : t("withdraw")}</Button></div>}
       </li>)}</ul>
     </section>}
   </div>;
@@ -421,6 +444,19 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
     }
   };
   const patch = (body: Record<string, unknown>) => api(`/admin/video-automation/series/${slug}`, { method: "PATCH", body: JSON.stringify(body) });
+  // Withdrawn, the series is gone: back to the list rather than a page that can no longer load.
+  const takeBack = async (current: Series) => {
+    if (!window.confirm(t("withdrawConfirm", { title: current.title }))) return;
+    setBusy("withdraw");
+    setActionError("");
+    try {
+      await withdraw(current);
+      onBack();
+    } catch (problem) {
+      setActionError(t("actionError", { message: message(problem) }));
+      setBusy("");
+    }
+  };
   const skip = (number: number) => {
     if (!window.confirm(t("skipConfirm", { n: number }))) return;
     void act(`skip-${number}`, () => api(`/admin/video-automation/series/${slug}/episodes/${number}/skip`, { method: "POST" }));
@@ -442,6 +478,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
           {series.status === "paused" && <Button secondary disabled={busy === "resume"} onClick={() => void act("resume", () => patch({ status: "active" }))}>{t("resume")}</Button>}
           {series.status === "active" && !oneOff && <Button secondary disabled={busy === "plan"} onClick={() => void act("plan", () => api(`/admin/video-automation/series/${slug}/actions/plan-next-chapter`, { method: "POST" }))}>{t("planNextChapter")}</Button>}
           {series.status === "active" && <Button secondary disabled={busy === "start"} onClick={() => void act("start", () => api(`/admin/video-automation/series/${slug}/actions/start-next`, { method: "POST" }))}>{t("startNext")}</Button>}
+          {withdrawable(series) && <Button secondary disabled={busy === "withdraw"} onClick={() => void takeBack(series)}>{busy === "withdraw" ? t("saving") : t("withdraw")}</Button>}
         </div>}
         {(series.requested_chapter || series.force_next) && <p className="text-sm text-[var(--muted)]">{series.requested_chapter ? t("chapterRequested", { n: series.requested_chapter }) : ""}{series.force_next ? ` ${t("nextForced")}` : ""}</p>}
         {actionError && <p role="alert" className="text-sm text-red-800">{actionError}</p>}

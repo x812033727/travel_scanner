@@ -39,6 +39,7 @@ from app.video_automation.schemas import (
     SeriesJobOut,
     SeriesOut,
     SeriesPatch,
+    SeriesWithdrawnOut,
 )
 from app.video_speech import admin_api as speech_api
 
@@ -501,6 +502,31 @@ async def test_the_request_form_makes_a_one_off_and_the_list_filters_by_kind(
 
 
 @pytest.mark.asyncio
+async def test_withdrawing_a_drama_needs_the_manage_capability_and_says_why_it_was_refused(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    withdrawn = SeriesWithdrawnOut(slug="one-off-1a2b3c4d", requests_cancelled=1)
+    started = service.SeriesRefused(409, "video_series_started", "第 1 集已經開始做了，不能撤回")
+    withdraw = AsyncMock(side_effect=[withdrawn, started])
+    monkeypatch.setattr(service, "withdraw_series", withdraw)
+    url = "/api/v1/admin/video-automation/series/one-off-1a2b3c4d"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_user("viewer"))), base_url="http://t"
+    ) as client:
+        forbidden = await client.delete(url)
+    assert forbidden.status_code == 403 and withdraw.await_count == 0
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(_user("owner"))), base_url="http://t"
+    ) as client:
+        done = await client.delete(url)
+        refused = await client.delete(url)
+    assert done.status_code == 200
+    assert done.json() == {"slug": "one-off-1a2b3c4d", "requests_cancelled": 1}
+    assert withdraw.await_args_list[0].args[2] == "one-off-1a2b3c4d"
+    assert refused.status_code == 409 and refused.json()["code"] == "video_series_started"
+
+
+@pytest.mark.asyncio
 async def test_the_worker_routes_need_a_token_and_ask_for_the_next_job(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
@@ -800,6 +826,54 @@ async def test_a_one_off_goes_from_the_request_form_through_its_bible_to_its_epi
         assert request is not None and request.status == "done"
         with pytest.raises(service.SeriesRefused, match="集數不能改"):
             await service.patch_series(session, owner, slug, SeriesPatch(planned_episodes=3))
+        await session.delete(owner)
+        await session.delete(token)
+        await session.commit()
+
+
+@integration
+@pytest.mark.asyncio(loop_scope="module")
+async def test_a_drama_is_withdrawn_before_its_episode_starts_and_not_after(
+    clean_one_off: list[str],
+) -> None:
+    async with SessionFactory() as session:
+        owner = User(email=f"withdraw-{uuid4()}@example.com", password_hash="unused")
+        session.add(owner)
+        token = VideoToolToken(name="withdraw-test", token_hash=uuid4().hex, token_prefix="mkv_w")
+        session.add(token)
+        await session.commit()
+        form = DramaRequestIn(premise="精衛填海", style_preset="ink-wash", target_minutes=2)
+
+        # Still at its story bible: the series goes, the request stays as a cancelled row.
+        waiting = await service.create_one_off(session, owner, form)
+        assert waiting.series_slug is not None
+        clean_one_off.append(waiting.series_slug)
+        out = await service.withdraw_series(session, owner, waiting.series_slug)
+        assert (out.slug, out.requests_cancelled) == (waiting.series_slug, 1)
+        with pytest.raises(service.SeriesRefused, match="找不到"):
+            await service.series_view(session, waiting.series_slug)
+        request = await session.get(VideoDramaRequest, waiting.id)
+        assert request is not None
+        await session.refresh(request)
+        assert request.status == "cancelled" and request.cancelled_at is not None
+        assert request.series_id is None
+        await session.delete(request)
+
+        # Approved and started: refused, nothing changes.
+        begun = await service.create_one_off(session, owner, form)
+        assert begun.series_slug is not None
+        slug = begun.series_slug
+        clean_one_off.append(slug)
+        await service.submit_doc(
+            session, slug, SeriesDocSubmitIn(kind="bible", body_md="# 故事聖經", body_json=BIBLE)
+        )
+        await service.decide_doc(session, owner, slug, "bible", 0, "approve", None)
+        await service.start_episode(session, token, slug, 1, f"{slug}-e001")
+        with pytest.raises(service.SeriesRefused, match="已經開始做了") as refused:
+            await service.withdraw_series(session, owner, slug)
+        assert refused.value.code == "video_series_started"
+        await session.rollback()
+        assert (await service.series_view(session, slug)).episodes[0].status == "started"
         await session.delete(owner)
         await session.delete(token)
         await session.commit()

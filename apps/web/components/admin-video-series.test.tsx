@@ -46,7 +46,7 @@ type Call = { url: string; method: string; body?: Record<string, unknown> };
  * threads by subject (an owner's line posted here shows up on the next read), the requests.
  * `answer` plays the model: it answers every waiting line and, when given, files the new documents.
  */
-function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; oneOffs?: (typeof oneOff)[] } = {}) {
+function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; oneOffs?: (typeof oneOff)[]; withdrawRefused?: boolean } = {}) {
   const calls: Call[] = [];
   let currentDocs = options.docs ?? docs;
   const threads = options.threads ?? {};
@@ -57,6 +57,10 @@ function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; on
     const method = init?.method ?? "GET";
     const body = init?.body ? JSON.parse(String(init.body)) as Record<string, unknown> : undefined;
     calls.push({ url, method, body });
+    if (method === "DELETE" && url.includes("/admin/video-automation/series/")) {
+      if (options.withdrawRefused) return Promise.resolve(Response.json({ code: "video_series_started", detail: "第 1 集已經開始做了，不能撤回" }, { status: 409 }));
+      return Promise.resolve(Response.json({ slug: url.split("/").pop(), requests_cancelled: 1 }));
+    }
     if (url.endsWith("/admin/video-automation/series") && method === "POST") return Promise.resolve(Response.json(newOne, { status: 201 }));
     if (url.endsWith("/admin/video-automation/series?kind=series")) return Promise.resolve(Response.json({ series: [summary] }));
     if (url.endsWith("/admin/video-automation/series?kind=one-off")) return Promise.resolve(Response.json({ series: options.oneOffs ?? [] }));
@@ -71,6 +75,7 @@ function stubFetch(options: { docs?: Doc[]; threads?: Record<string, Line[]>; on
       return Promise.resolve(Response.json({ messages: threads[subject] ?? [] }));
     }
     if (url.includes("/admin/video-automation/series/new-one")) return Promise.resolve(Response.json(newOne));
+    if (url.includes("/admin/video-automation/series/one-off-9f8e7d6c")) return Promise.resolve(Response.json({ ...oneOff, slug: "one-off-9f8e7d6c", title: "大禹治水", status: "setting", episodes_started: 0, docs: [], episodes: [{ ...oneOffEpisodes[0], status: "planned", slug: null, started_at: null, video: null }] }));
     if (url.includes("/admin/video-automation/series/one-off-1a2b3c4d")) return Promise.resolve(Response.json({ ...oneOff, docs: [bible], episodes: oneOffEpisodes }));
     if (url.includes("/admin/video-automation/series/wenjian")) return Promise.resolve(Response.json({ ...summary, docs: currentDocs, episodes }));
     if (url.endsWith("/drama-requests") && method === "POST") return Promise.resolve(Response.json({ id: "r1", premise: body?.premise, title: null, source_guide: null, style_preset: body?.style_preset, target_minutes: body?.target_minutes, note: null, status: "queued", slug: null, series_slug: "one-off-1a2b3c4d", episode_number: 1, created_at: "2026-09-27T04:00:00Z", started_at: null, finished_at: null, cancelled_at: null }, { status: 201 }));
@@ -154,6 +159,47 @@ describe("AdminVideoSeries", () => {
     expect(screen.queryByRole("button", { name: "先規劃下一篇" })).toBeNull();
     expect(screen.getByRole("button", { name: "現在開始下一集" })).toBeTruthy();
     expect(screen.queryByText(/\/1 集/)).toBeNull();
+    expect(screen.queryByRole("button", { name: "撤回" }), "its episode has started").toBeNull();
+  });
+
+  it("withdraws a one-off the worker has not started, from its card or its page, and says why when refused", async () => {
+    const waiting = { ...oneOff, slug: "one-off-9f8e7d6c", title: "大禹治水", status: "setting", episodes_started: 0 };
+    const { calls } = stubFetch({ oneOffs: [waiting, oneOff] });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    const oneOffs = await screen.findByRole("region", { name: "單集漫劇" });
+    const withdraws = within(oneOffs).getAllByRole("button", { name: "撤回" });
+    expect(withdraws, "only the one still at its bible").toHaveLength(1);
+    expect(withdraws[0].closest("li")?.textContent).toContain("大禹治水");
+    const listed = calls.filter((call) => call.url.endsWith("?kind=one-off")).length;
+    fireEvent.click(withdraws[0]);
+    await waitFor(() => expect(calls.some((call) => call.method === "DELETE")).toBe(true));
+    expect(confirm.mock.calls[0][0]).toContain("大禹治水");
+    expect(calls.find((call) => call.method === "DELETE")?.url).toMatch(/\/admin\/video-automation\/series\/one-off-9f8e7d6c$/);
+    await waitFor(() => expect(calls.filter((call) => call.url.endsWith("?kind=one-off")).length).toBeGreaterThan(listed));
+
+    // From its page: withdrawn, the page goes back to the list.
+    fireEvent.click(within(oneOffs).getByRole("button", { name: /大禹治水/ }));
+    await screen.findByRole("heading", { name: /大禹治水/ });
+    const deletes = calls.filter((call) => call.method === "DELETE").length;
+    fireEvent.click(screen.getByRole("button", { name: "撤回" }));
+    await waitFor(() => expect(calls.filter((call) => call.method === "DELETE").length).toBe(deletes + 1));
+    await waitFor(() => expect(window.location.search).not.toContain("series="));
+    confirm.mockRestore();
+  });
+
+  it("keeps a one-off whose withdrawal the server refused and shows the reason", async () => {
+    const waiting = { ...oneOff, slug: "one-off-9f8e7d6c", title: "大禹治水", status: "setting", episodes_started: 0 };
+    stubFetch({ oneOffs: [waiting], withdrawRefused: true });
+    const confirm = vi.spyOn(window, "confirm").mockReturnValue(true);
+    window.history.replaceState(null, "", "/?series=one-off-9f8e7d6c");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoSeries onOpenVideo={() => undefined} /></AdminOperationsProvider>);
+    await screen.findByRole("heading", { name: /大禹治水/ });
+    fireEvent.click(screen.getByRole("button", { name: "撤回" }));
+    expect((await screen.findByRole("alert")).textContent).toContain("第 1 集已經開始做了");
+    expect(window.location.search).toContain("series=one-off-9f8e7d6c");
+    expect(screen.getByRole("button", { name: "撤回" })).toHaveProperty("disabled", false);
+    confirm.mockRestore();
   });
 
   it("opens a series: the chapter outline waiting for the owner, its beats table, and the episode table", async () => {
@@ -272,6 +318,7 @@ describe("AdminVideoSeries", () => {
     await screen.findByRole("heading", { name: /問劍/ });
     expect(screen.queryByRole("button", { name: "核准" })).toBeNull();
     expect(screen.queryByRole("button", { name: "跳過" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "撤回" })).toBeNull();
     expect(screen.queryByText("新的作品")).toBeNull();
     expect(screen.queryByRole("textbox", { name: "給模型的話" })).toBeNull();
     expect(screen.queryByRole("button", { name: "送出" })).toBeNull();
