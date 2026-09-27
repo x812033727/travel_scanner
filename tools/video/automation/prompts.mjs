@@ -175,6 +175,11 @@ zh-CN about as long as the source). Keep every number, price, date, version and 
 plain, ja です／ます, ko 합니다체, zh-CN mainland wording in Simplified characters. Opinions stay
 first person. Do not add or drop anything the narration says. Title at most 100 characters, no
 angle brackets; tags at most 500 characters in total. "video" shows the slides for context.
+The worksheet's "parts" says what the owner chose for this locale: "captions" the lines,
+"metadata" the title, description, tags and chapter names; a worksheet without a part has no
+entries for it, so fill only what it holds. When a line carries "max_chars", the owner also chose a
+dub: the same voice reads your translation in the time the zh-TW line takes, so stay under it
+(cut words around numbers and names, never the numbers and names themselves).
 
 Return {"worksheet": <the worksheet with every empty "text" filled; "id", "scene", "source" and
 "todo" unchanged>}.`,
@@ -184,9 +189,10 @@ Return {"worksheet": <the worksheet with every empty "text" filled; "id", "scene
 You review another model's "locale" translation as a native viewer who also reads Traditional
 Chinese. Fix, most serious first: meaning that differs from the zh-TW line; any number, date,
 version or name that differs; opinions that lost their first person; one term translated two ways
-or differently from the slide; lines too long to read at speaking pace; register slips; a title,
-description, tags or chapter names a viewer would not search for. Change nothing that is already
-right; do not invent style changes.
+or differently from the slide; lines too long to read at speaking pace, or over their "max_chars"
+when a line carries one (the dub's budget); register slips; a title, description, tags or chapter
+names a viewer would not search for. Review only the parts the worksheet holds ("parts"). Change
+nothing that is already right; do not invent style changes.
 
 Return {"worksheet": <the worksheet with your fixes applied>, "fixes": ["<id>: <problem> → <fix>", …]}.`,
 };
@@ -568,4 +574,24 @@ they carry>}, "mysteries": {<id>: "planted"|"advanced"|"revealed"}, "open_thread
 };
 
 /** Every "<stage>:<variant>" text: the series documents and episode stages, and the listener's rewrite pass. */
-export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE };
+/**
+ * The translator's shortening pass (docs/videos/DUBS.md, fitting a dub back into the timeline),
+ * variant "shorten": a dub's window did not fit even sped up, so a few lines of one locale are
+ * cut down to a character budget, nothing else. The skill's reference text is
+ * .agents/skills/youtube-video/references/prompts/caption-translate.md, its last section.
+ */
+export const TRANSLATOR_SHORTEN = `${COMMON}
+
+You shorten a few "locale" caption lines so their dub fits the time the zh-TW line takes
+(docs/videos/DUBS.md). "lines" lists each: "id", the zh-TW "source", the current translation
+"text", its character count "chars", the most it may have "max_chars", the seconds the voice took
+("seconds") and how far its slide window ran over ("window_over_seconds"). Cut words, not meaning:
+every number, price, date, version, product and proper name, and what the sentence claims, stay
+exactly as they are; drop a hedge, a repeated subject, a connective, a filler; keep the register
+(en plain, ja です／ます, ko 합니다체, zh-CN Simplified). Numbers and currency codes read slowly for
+their length, so cut the words around them. The captions show the shortened line too. Never
+touch a line that is not listed. "video" shows the slides for context.
+
+Return {"lines": [{"id": "<id>", "text": "<the shortened translation, at most max_chars characters>"}, …]}.`;
+
+export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "translator:shorten": TRANSLATOR_SHORTEN };

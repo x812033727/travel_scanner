@@ -5,13 +5,17 @@ import { NARRATION_LOCALE } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
 
 /**
- * Metadata for zh-TW and every locale with a translation file. A locale's translation supplies
- * { title, description, tags?, chapters?: { sceneId: title } }; the article link uses that
- * locale when the source article has it, zh-TW otherwise.
+ * Metadata for zh-TW and the localized locales: the ones the owner chose titles and descriptions
+ * for (`locales`, docs/videos/LANGUAGES.md), else every locale with a translation file. A chosen
+ * locale whose title or description is not translated yet is a problem. A locale's translation
+ * supplies { title, description, tags?, chapters?: { sceneId: title } }; the article link uses
+ * that locale when the source article has it, zh-TW otherwise.
  */
-export function composeMetadata({ doc, timeline, translations = {}, pack = null }) {
-  const locales = [NARRATION_LOCALE, ...Object.keys(translations).filter((locale) => translations[locale]?.title && translations[locale]?.description)];
-  const problems = [];
+export function composeMetadata({ doc, timeline, translations = {}, pack = null, locales: wanted = null }) {
+  const translated = (locale) => Boolean(translations[locale]?.title && translations[locale]?.description);
+  const asked = wanted ?? Object.keys(translations).filter(translated);
+  const problems = asked.filter((locale) => locale !== NARRATION_LOCALE && !translated(locale)).map((locale) => `${locale}: the title and description are not translated yet (i18n-sheet --locale ${locale} --parts metadata, then i18n-merge)`);
+  const locales = [NARRATION_LOCALE, ...asked.filter((locale) => locale !== NARRATION_LOCALE && translated(locale))];
   const perLocale = {};
   for (const locale of locales) {
     const translation = locale === NARRATION_LOCALE ? null : translations[locale];
@@ -69,10 +73,10 @@ export function dubSteps(dubs = [], skippedDubs = {}) {
       "",
       "- 頻道要有「進階功能」（設定 → 頻道 → 功能使用資格）。",
       "- YouTube 已經替這個語言自動配音的話，要先在同一頁刪掉自動配音，才傳得上去；建議在設定 → 頻道 → 進階設定取消「允許自動配音」。",
-      "- 傳完到影片頁的「配音音軌」卡片按核准，表示已上傳。",
+      "- 傳完到影片頁的「語言」卡片按「已在 Studio 上傳配音」；標題說明與字幕由網站的 API 送上，不用手動。",
     );
   } else {
-    lines.push("這支沒有配音音軌。要加，在 `/admin/videos` 這支影片的頁面勾選語言，工人做好會再送一張卡片。");
+    lines.push("這支沒有配音音軌。要加，在 `/admin/videos` 這支影片的頁面勾那個語言的「配音」，工人做好會再送一張「語言」卡片。");
   }
   const skipped = Object.entries(skippedDubs);
   if (skipped.length) {

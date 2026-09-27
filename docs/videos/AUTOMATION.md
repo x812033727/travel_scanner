@@ -50,7 +50,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | 各階段常設指示 | `stage_instructions`：六個階段各一段（每格最多 4000 字），工人接在該階段提示詞之後；清空就是不加 | `drama_stage_instructions`：同樣六格，只給漫劇（單集與作品的每一集）；遷移時從教學的複製一份 | 「目前的提示詞」依格式與 variant 分開顯示（`video_stage_prompts`） |
 | 聲音 | `voice`：頻道聲音（Gemini Sulafat，沿用 `docs/videos/README.md`） | `drama_voice`：旁白，`null` 就跟教學一樣；角色聲音池 `character_voice_pool` | — |
 | 長度 | 目標長度 8–12 分鐘 | 每個請求與作品各自帶 `target_minutes` | — |
-| 語言預設 | `caption_locales`（en、ja、ko、zh-CN）：語言面板的預先勾選 | `drama_caption_locales`（預設空） | 語言面板落地前（[`LANGUAGES.md`](LANGUAGES.md)），兩種影片的 CC 仍照 `caption_locales` 做 |
+| 語言預設 | `caption_locales`（en、ja、ko、zh-CN）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（預設空） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
 | 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段 | — |
 | 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
 | 關卡 | 旁白 Jev 全過自動核准、Jev 挑大綱、自動品管全過核准成片與上架確認（都開） | `drama_auto_approve_audio`、`drama_auto_approve_final`（遷移時從教學的複製）、設定圖自動選、分鏡自動核准（關）、「劇本先給我看」`series_script_gate`（開） | — |
@@ -74,8 +74,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 1. **選題**：從站上最近 14 天已發布的 AI／科技新聞與文章，加上 Brave 搜尋結果，排除已經做過的題目與避開的題材。由企劃模型挑出題目、寫 `brief.md`（含 2–3 個大綱與「站主觀點」；有頻道立場時第一行寫「套用立場：N、M」）→ 先問 Jev 挑哪一個（[`HANDS-OFF.md`](HANDS-OFF.md)）→ 送審「選大綱」。Jev 過關的伺服器直接核准；沒過就把原因交回企劃模型重寫，兩次仍不過、或立場空白，才**停下來等站主**。
 2. **大綱選定**之後：撰稿 → lint（錯誤會把 lint 訊息餵回撰稿模型，最多改 3 次）→ 查核（改超過 3 個事實就再查一輪，每輪都是新的對話、看不到上一輪的結論，等於換人查；最多照設定的輪數）→ 聽眾審稿 → lint。
 3. **旁白**：tts → check-audio → 被標的句子重錄，最多照設定的輪數。全數通過且設定開著，就自動核准旁白；否則送審等站主。
-4. **成片**：render → assemble → 翻譯 → 字幕審稿 → captions → `qa`（11 項自動品管）→ 送審「看成片」，報告一起送。全過的伺服器直接核准；有項目沒過才**停下來等站主**。
-5. **成片核准**之後：package（寫完就跑上傳包檢查，揭露答案寫進 `metadata.json`）→ 送審「確認上架」，附完整上傳包。4 項全過的伺服器直接核准，影片進「可以上架」。站主在 Studio 上傳成私人、在後台貼上網址，工人下一輪把影片 id 寫進工作區的 `video.json`，影片就算完成。
+4. **成片**：render → assemble → captions（只有繁體中文）→ `qa`（11 項自動品管，字幕與標題說明兩項只看 zh-TW 加已選的語言）→ 送審「看成片」，報告一起送。全過的伺服器直接核准；有項目沒過才**停下來等站主**。翻譯不再擋成片：其他語言在成片核准後由站主決定（下面「語言」）。
+5. **成片核准**之後：package（寫完就跑上傳包檢查，揭露答案寫進 `metadata.json`）→ 送審「確認上架」，附完整上傳包。4 項全過的伺服器直接核准。站主隨時可以在 Studio 上傳成私人、在後台貼上網址；影片要語言都做好才算「可以上架」、排程才會送出（[`LANGUAGES.md`](LANGUAGES.md) §上架流程）。工人下一輪把影片 id 寫進工作區的 `video.json`，影片就算完成。
 
 站主退回時，退回的理由存在審核紀錄。工人會把它交給下一次撰稿或聽眾審稿的模型。
 
@@ -112,6 +112,18 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 ## 長篇作品（2026-09-27 加，設計在 `SERIES.md`）
 
 工人每輪先問 `GET /video/automation/series/next`，再問單集請求，再看排程草稿。作品的工作有四種：`setting`／`outline`／`chapter` 是企劃模型（variant `setting`、`outline`、`chapter`）寫一份文件送到站上等站主；`episode` 是在站上開始下一集（影片 slug 為 `<作品>-e001` 這種），工人寫 `docs/videos/<slug>/series.json`（人物表、本集細綱、前情、謎團、設定集全文）與 `brief.md`（只有選項 A，本機直接核准），之後照漫劇的步驟走，多了三件事：撰稿與查核用作品變體（`writer:episode`、`verifier:episode`，查核另輸出 `coverage` 與 `problems` 到 `review/script-check.json`）；聽眾審稿之後多一個**劇本關卡**（`script.md` 只含敘事，站主退回就走撰稿 FIX 模式，最多 `MAX_PROMPT_FIX_ROUNDS` 輪）；`look` 先查作品存檔 `<VIDEO_WORKDIR>/_series/<作品>/characters/`，有核准過的設定圖就沿用並直接核准 look，只畫新角色（`review-pull` 核准 look 時把選中的圖存進去）。合成完成後查核模型（variant `recap`）寫 150 字前情 `POST …/recap`；上架確認後 `POST …/done`，站上依 `series_max_in_flight`、`series_auto_continue` 與前一集是否完成決定下一集何時開始。文件被退回帶 `previous` 與 `owner_note` 重寫，站上限制 `series_doc_rewrites` 輪。
+
+## 語言（2026-09-27 加，設計在 `LANGUAGES.md`）
+
+每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko、zh-CN）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
+
+1. **翻譯**（一輪一個語言）：`i18n-sheet --locale <l> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯模型 → 字幕審稿模型 → `i18n-merge`。工作表沒有勾的部件就沒有那一段，merge 也不動它。
+2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試。
+3. **全部做好**：`captions`（只寫 zh-TW 與勾了 CC 的語系；有配音的跟配音時間軸；沒勾的語系的字幕檔刪掉）→ `package`（`upload/` 只放 zh-TW 與勾了的：`description.<l>.txt`、`captions/<l>.srt`、`dubs/<l>.m4a`；`metadata.json` 多 `language_choice`）→ `review-push --gate languages`：payload 每語每部件 `ready` 或 `{status: "skipped", reason}`，檔案 `description_<l>`、`captions_<l>`、`dub_<l>`（語系小寫、連字號改底線）。沒有配音的批次伺服器直接核准；有配音的等站主在 Studio 上傳後按「已在 Studio 上傳配音」。
+
+之後多勾的部件，站上會再標成「製作中」，工人再做一批、再送一筆（舊的 superseded）；影片已經在 YouTube 上也一樣。站主沒勾或只出繁體中文的影片，`captions` 與 `package` 只有 zh-TW，其他檔案一個位元組都不變。
+
+成本：翻譯每個語言一次翻譯加一次審稿呼叫；配音見 `DUBS.md` §成本（一條 10 分鐘約 US$0.135，月額度 `video_speech_gemini_monthly_character_limit` 要先調高）；YouTube 配額見 `LANGUAGES.md` §成本。
 
 ## 安全與成本
 

@@ -15,8 +15,8 @@ import { approvalState, sha256File } from "../core/approvals.mjs";
 import { burnIn, isDrama, subtitlesHash } from "../core/drama.mjs";
 import { checkYoutubeFields } from "../core/metadata.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
-import { ARTIFACTS, lintProject, loadProject } from "../core/state.mjs";
+import { captionLocalesOf, chosenLocales, readLanguages } from "../core/stages.mjs";
+import { ARTIFACTS, dubArtifacts, lintProject, loadProject } from "../core/state.mjs";
 import { chapterList, checkChapters, estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { checksCurrent } from "../package/cli.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
@@ -94,7 +94,12 @@ export async function run(command, args, ctx) {
   const approval = await approvalState({ gate: "audio", docDir: project.dir, workdir });
   const thumbnailFile = inWork(THUMBNAIL_FILE);
   const reports = readdirSync(project.dir).filter((name) => VERIFY_FILE.test(name));
-  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? timeline : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null });
+  // The owner's language choice (docs/videos/LANGUAGES.md): the captions and metadata items look
+  // at zh-TW and the chosen locales; a dub track given up on only warns.
+  const languages = readLanguages(workdir);
+  const captionLocales = captionLocalesOf(languages);
+  const skippedDubs = Object.fromEntries((chosenLocales(languages, "dub") ?? []).map((locale) => [locale, readJson(dubArtifacts(workdir, locale).skipped, null)]).filter(([, gaveUp]) => gaveUp).map(([locale, gaveUp]) => [locale, gaveUp.reason ?? ""]));
+  const { problems: metadataProblems, metadata } = composeMetadata({ doc, timeline: timelineCurrent ? timeline : estimateTimeline(doc), translations: project.translations, pack: project.pack ?? null, locales: chosenLocales(languages, "metadata") });
   const descriptions = [metadata.description, ...Object.values(metadata.localizations).map((fields) => fields.description)];
 
   const items = [];
@@ -113,7 +118,7 @@ export async function run(command, args, ctx) {
       items.push(item("pace", false, error.message));
     }
   }
-  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech, locales: LOCALES, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))) }));
+  items.push(captionsItem({ lintWarnings: lint.warnings, manifest: captions, current: captions?.speech_hash === speech, locales: captionLocales, hasCaptionFile: (locale) => existsSync(inWork(path.join("captions", `${locale}.srt`))), skippedDubs }));
   items.push(metadataItem({
     problems: metadataProblems,
     tagProblems: checkYoutubeFields({ title: "", description: "", tags: metadata.tags }, "youtube"),
