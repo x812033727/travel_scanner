@@ -2313,7 +2313,10 @@
     "uploadedButton": "已上传",
     "uploadedError": "没有记下：{message}",
     "scheduledAt": "定于 {time} 上架",
-    "readyLoading": "读取上传包…"
+    "readyLoading": "读取上传包…",
+    "downloadCompilation": "下载 1080p 成片",
+    "compilationInWorkspace": "成片还在工人的工作区",
+    "compilationOf": "作品 {series} 的合集"
   },
   "videoSettings": {
     "loading": "正在读取设置…",
@@ -2385,6 +2388,7 @@
       "drama_monthly_judge_calls_budget": "每月 judge 次数",
       "drama_monthly_music_budget": "每月配乐首数",
       "drama_max_usd_per_video": "单部最多花费（美元）",
+      "drama_series_max_in_flight": "同时进行的作品数（1–6）",
       "drama_topic_scope": "漫剧题材（每行一个）",
       "channel_stance": "频道立场",
       "auto_pick_outline": "由 Jev 挑大纲（立场留白时没有作用）",
@@ -2418,6 +2422,7 @@
     "dramaModels": "媒体模型",
     "dramaSwitches": "选项",
     "dramaBudgetHelp": "每月预算在服务器拦截，请求不会发给厂商；单部上限由工具在提交前拦截。站长 2026-09-26 决定先不设上限：默认开得很大，试做完再调低。",
+    "seriesInFlightHelp": "工人同时推进几部作品：1 是一部做完再做下一部；试做与正式一部要同时跑就开 2。",
     "voicePoolHelp": "撰稿模型可以分配给角色的 Gemini 声音；旁白沿用上面的频道声音。",
     "preview": "预览版",
     "stylePresets": {
@@ -2580,7 +2585,102 @@
     "oneOffTitle": "单集漫剧",
     "dramaOn": "漫剧已开启：工人会依序制作发起的单集漫剧与作品。",
     "dramaOff": "漫剧目前是关闭的。",
-    "dramaOffHow": "工人不会制作任何漫剧，你发起的单集漫剧与作品会等到开启后才开始。在下方“{settings}”勾选“{enable}”，再点保存。"
+    "dramaOffHow": "工人不会制作任何漫剧，你发起的单集漫剧与作品会等到开启后才开始。在下方“{settings}”勾选“{enable}”，再点保存。",
+    "binge": {
+      "title": "一键开拍",
+      "help": "选题材、选主角、填总长度，其余交给工人：设定集、总纲、细纲与剧本由查核自动核准，每一集做完就接下一集，全部完成后合成一部合集，成片在作品页下载。集数与每篇集数由总长度算出来；作品名称由设定集决定。",
+      "genre": "题材",
+      "lead": "主角",
+      "premise": "故事前提（选填）",
+      "premiseRequired": "故事前提（自定义题材必填）",
+      "premisePlaceholder": "留空就由企划依题材自己想一个；自定义题材一定要写。",
+      "totalMinutes": "总长度（分钟，30–480）",
+      "totalMinutesHint": "一般 60–240；30 分钟的试做也可以。",
+      "episodeMinutes": "每集分钟（2–4）",
+      "tier": "画面做法",
+      "notePlaceholder": "例如：旁白慢一点、不要血腥",
+      "quoteTitle": "估算",
+      "quoteLoading": "估算中…",
+      "quoteError": "估不出来：{message}",
+      "quote": "{episodes} 集，{chapters} 篇（每篇 {perChapter} 集）· 片段 {seconds} 秒 · 图片 {images} 张 · 约 US${usd}",
+      "budgets": {
+        "clip_seconds": "本月片段预算 {monthly} 秒，这部要 {needed} 秒",
+        "images": "本月图片预算 {monthly} 张，这部要 {needed} 张",
+        "judge_calls": "本月 judge 预算 {monthly} 次，这部要 {needed} 次",
+        "episodes_per_month": "每月集数上限 {monthly} 集，这部要 {needed} 集"
+      },
+      "budgetsOver": {
+        "clip_seconds": "本月片段预算 {monthly} 秒，这部要 {needed} 秒：先到设置标签页调高",
+        "images": "本月图片预算 {monthly} 张，这部要 {needed} 张：先到设置标签页调高",
+        "judge_calls": "本月 judge 预算 {monthly} 次，这部要 {needed} 次：先到设置标签页调高",
+        "episodes_per_month": "每月集数上限 {monthly} 集，这部要 {needed} 集：先到设置标签页调高"
+      },
+      "overBudget": "预算不够时工人会停在那里等，不会坏掉；调高之后自动继续。",
+      "start": "一键开拍",
+      "starting": "创建中…",
+      "error": "没有开拍：{message}"
+    },
+    "genres": {
+      "xianxia-bonds": {
+        "name": "仙侠羁绊",
+        "detail": "门派世家与修为，正道与魔道，前世今生结伴的知己。"
+      },
+      "rebirth-revenge": {
+        "name": "重生复仇",
+        "detail": "被背叛而死，醒在还来得及的那一天；这次她知道每个人手上的牌。"
+      },
+      "system-game": {
+        "name": "系统游戏",
+        "detail": "游戏或系统降临，只有主角读得懂规则：隐藏职业、首杀、逆天天赋。"
+      },
+      "urban-return": {
+        "name": "都市归来",
+        "detail": "离开多年后回到把他看扁的城市，带着没人想得到的身份或实力。"
+      },
+      "empress-rise": {
+        "name": "女帝崛起",
+        "detail": "被当棋子的她一步步接手棋局，直到王座是她的。"
+      },
+      "custom": {
+        "name": "自定义",
+        "detail": "照你写的前提来，不加任何与它矛盾的设定。"
+      }
+    },
+    "leads": {
+      "female": "女主",
+      "male": "男主",
+      "dual-male": "双男主"
+    },
+    "tiers": {
+      "clips": {
+        "name": "全片段",
+        "detail": "每一镜都生成视频片段：最贵、动作最多。"
+      },
+      "hybrid": {
+        "name": "混合",
+        "detail": "约四成的镜头用片段，其余用静图加镜头运动：省一半以上。"
+      },
+      "stills": {
+        "name": "静图",
+        "detail": "几乎全部用静图加镜头运动，只有一成关键镜头用片段：最省，试做用这个。"
+      }
+    },
+    "totalMinutesLabel": "共 {minutes} 分钟",
+    "handsOff": "免关卡",
+    "handsOffHelp": "打开时，设定集、总纲、细纲与剧本由查核自动核准，查核没过才退回重写，卡住才找你；关掉就回到逐份核准。",
+    "compilation": "合集",
+    "compilationStatuses": {
+      "waiting": "合集：等每集完成",
+      "queued": "合集：等工人开始",
+      "making": "合集制作中",
+      "done": "合集完成"
+    },
+    "compilationNone": "这部作品没有设置要做合集；完结后可以点“做合集”。",
+    "compilationWaiting": "每一集完成后，工人会把它们合成一部。",
+    "compilationQueued": "工人的下一轮会开始做合集。",
+    "compilationStarting": "工人刚开始做，视频还没回报。",
+    "compile": "做合集",
+    "docNote": "备注："
   },
   "videoYoutube": {
     "title": "YouTube 频道",

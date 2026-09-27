@@ -36,6 +36,9 @@ export type ProjectSummary = {
   // The languages the owner ticked to dub this video in (docs/videos/DUBS.md).
   dub_locales?: string[];
   series_slug?: string | null; episode_number?: number | null;
+  // A binge series' compilation (docs/videos/BINGE.md): series_slug set, no episode number, and
+  // a 1080p cut too big for the review store, downloaded from the worker's volume once it is there.
+  compilation?: boolean; download_available?: boolean;
   // What the site last sent this video's YouTube side through the linked channel
   // (apps/api/app/video_youtube/state.py public_state); absent before the owner first sent it.
   youtube_sync?: YoutubeSync | null;
@@ -86,6 +89,8 @@ export function fileUrl(slug: string, file: ReviewFile | undefined): string | un
 }
 
 export const fileFor = (review: Review, role: string) => review.files.find((file) => file.role === role);
+/** Where a compilation's 1080p cut downloads from; the API streams it from the worker's volume. */
+export const downloadUrl = (slug: string) => `/api/admin-video-download/${slug}`;
 
 /** An outline the server approved from Jev's pick, as opposed to one the owner chose. */
 export const jevPicked = (review: Review) => review.gate === "outline" && review.status === "approved" && (review.note ?? "").startsWith(JEV_NOTE);
@@ -562,6 +567,19 @@ function DubsBody({ slug, review }: { slug: string; review: Review }) {
       {href && <a className="font-semibold text-[var(--teal)] underline" href={href} download={name}>{t("downloadTrack", { file: name })}</a>}
     </li>;
   })}</ul>;
+}
+
+/**
+ * A compilation's 1080p cut (docs/videos/BINGE.md): the download once the worker's volume has
+ * it, otherwise a line saying it is still being cut there. Nothing for an ordinary video, so the
+ * ready card, the video page and the series page can all place it without a check of their own.
+ */
+export function CompilationDownload({ project, canManage }: { project: ProjectSummary; canManage: boolean }) {
+  const t = useTranslations("admin.videoReviews");
+  // The API serves the cut to content.manage only, so a reader is shown nothing rather than a link that answers 403.
+  if (!project.compilation || !canManage) return null;
+  if (!project.download_available) return <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationInWorkspace")}</p>;
+  return <p><a href={downloadUrl(project.slug)} download={`${project.slug}.mp4`} className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-[var(--teal)] bg-[var(--surface)] px-3 text-sm font-semibold hover:bg-[var(--paper)]"><Download aria-hidden size={16} />{t("downloadCompilation")}</a></p>;
 }
 
 /** One review of one gate: its body, and the owner's approve or reject with a note. */

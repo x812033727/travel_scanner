@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { dramaFixture, fixture } from "../core/fixtures/load.mjs";
-import { assembleItem, captionsItem, disclosureDecision, disclosureItem, item, ITEM_IDS, metadataItem, narrationItem, qaReport, renderItem } from "./checks.mjs";
+import { assembleItem, captionsItem, COMPILATION_ITEM_IDS, compilationCaptionsItem, disclosureDecision, disclosureItem, item, ITEM_IDS, metadataItem, narrationItem, qaReport, renderItem } from "./checks.mjs";
 import { narrationScript, ownerViewpoint, policyRequest, policyVerdict, SCRIPT_MAX_CHARS, VIEWPOINT_MAX_CHARS } from "./policy.mjs";
 
 test("the report lists exactly the eleven items in order and is ok only when every item is", () => {
@@ -132,4 +132,29 @@ test("the verdict is the judge's passed flag with its note, and never a pass by 
   assert.deepEqual(policyVerdict({ ok: true, note: "not the field the endpoint uses" }), { ok: false, detail: "the judge answered without a verdict" });
   assert.deepEqual(policyVerdict({}), { ok: false, detail: "the judge answered without a verdict" });
   assert.equal(policyVerdict(null).ok, false);
+});
+
+test("a compilation's report has its six items and says so, and its captions item reads compile's merge", () => {
+  assert.deepEqual(COMPILATION_ITEM_IDS, ["assemble", "captions", "metadata", "links", "thumbnail", "disclosure"]);
+  const items = COMPILATION_ITEM_IDS.map((id) => item(id, true, `${id} fine`));
+  const report = qaReport(items, "ab".repeat(32), COMPILATION_ITEM_IDS);
+  assert.deepEqual(Object.keys(report), ["ok", "final_sha256", "kind", "items"]);
+  assert.equal(report.kind, "compilation");
+  assert.equal(report.ok, true);
+  assert.throws(() => qaReport(items, null), /exactly assemble, render/, "the eleven are the default");
+  assert.throws(() => qaReport(ITEM_IDS.map((id) => item(id, true, "")), null, COMPILATION_ITEM_IDS), /exactly assemble, captions/);
+  assert.equal("kind" in qaReport(ITEM_IDS.map((id) => item(id, true, "")), null), false);
+  assert.match(assembleItem({ checks: { ok: true }, current: false, finalExists: true, command: "compile", stale: "other cuts or cards" }).detail, /^checks\.json was written for other cuts or cards; run compile again$/);
+  assert.match(assembleItem({ checks: null, current: false, finalExists: false, command: "compile" }).detail, /run compile$/);
+  assert.match(metadataItem({ problems: [], tagProblems: [], chapterProblems: [], locales: ["zh-TW"], chapters: 0, timelineCurrent: false, command: "compile" }).detail, /run compile$/);
+  const manifest = { compilation_hash: "h", locales: { "zh-TW": { cues: 6, problems: [] }, en: { cues: 6, problems: ["cue 4 overlaps the previous cue"] } }, skipped: { ja: ["wuxia-ep-2"] } };
+  const locales = ["zh-TW", "en", "ja"];
+  const fine = compilationCaptionsItem({ lintWarnings: [{ path: "scenes", message: "x" }], manifest: { ...manifest, locales: { ...manifest.locales, en: { cues: 6, problems: [] } }, skipped: {} }, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true });
+  assert.deepEqual(fine, { id: "captions", ok: true, detail: "caption files for zh-TW, en, merged from every episode" });
+  const broken = compilationCaptionsItem({ lintWarnings: [{ path: "i18n/en.json", message: "not translated: title" }], manifest, current: true, locales, hasCaptionFile: () => true });
+  assert.equal(broken.ok, false);
+  assert.equal(broken.detail, "i18n/en.json: not translated: title; en: cue 4 overlaps the previous cue; ja: no caption file, 1 episodes have none (wuxia-ep-2)");
+  assert.match(compilationCaptionsItem({ lintWarnings: [], manifest: null, current: false, locales, hasCaptionFile: () => true }).detail, /missing; run compile/);
+  assert.match(compilationCaptionsItem({ lintWarnings: [], manifest, current: false, locales, hasCaptionFile: () => true }).detail, /merged for other cuts; run compile again/);
+  assert.equal(compilationCaptionsItem({ lintWarnings: [], manifest, current: true, locales: ["zh-TW"], hasCaptionFile: () => false }).detail, "zh-TW: no caption file");
 });

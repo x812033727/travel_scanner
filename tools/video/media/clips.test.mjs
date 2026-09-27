@@ -7,7 +7,7 @@ import test from "node:test";
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { approve } from "../core/approvals.mjs";
-import { lookHash, mixHash } from "../core/drama.mjs";
+import { clipsHash, lookHash, mixHash } from "../core/drama.mjs";
 import { dramaFixture, fixtureLexicon, sandbox } from "../core/fixtures/load.mjs";
 import { FPS, visualHash } from "../core/timeline.mjs";
 import { clipPrompt, clipRubric, clipSeconds, lastFrameArgs, MAX_CLIP_TAKES, proxyArgs } from "./clips.mjs";
@@ -99,10 +99,18 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), tooLargeOn
   return { state, fetchImpl };
 }
 
-/** A drama work directory after tts, look (chosen and approved) and keyframes (approved). */
-function prepared() {
+/**
+ * A drama work directory after tts, look (chosen and approved) and keyframes (approved).
+ * `mutate(doc)` changes the script first and writes it back, so the hashes match what the
+ * stages read from disk.
+ */
+function prepared(mutate = null) {
   const box = sandbox("fixture-drama", "drama");
   const doc = dramaFixture();
+  if (mutate) {
+    mutate(doc);
+    writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(doc, null, 2)}\n`);
+  }
   mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
   mkdirSync(path.join(box.workdir, "characters", "jingwei"), { recursive: true });
   mkdirSync(path.join(box.workdir, "characters", "yandi"), { recursive: true });
@@ -191,7 +199,7 @@ test("clips need an approved storyboard, then each shot gets a clip from its key
   assert.equal(await main(["clips", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
   const frames = (id) => timeline.scenes.find((scene) => scene.id === id).end_frame - timeline.scenes.find((scene) => scene.id === id).start_frame;
   const expected = ["opening", "farewell", "sea-storm", "bird"].map((id) => clipSeconds(frames(id), [4, 5, 6, 7, 8, 9, 10]));
-  assert.match(dry.out.stdout, new RegExp(`4 shots, ${expected.reduce((a, b) => a + b, 0)} clip seconds for one take each`));
+  assert.match(dry.out.stdout, new RegExp(`4 shots: 0 stills \\(animated keyframes, nothing to buy\\) and 4 clips priced, ${expected.reduce((a, b) => a + b, 0)} clip seconds for one take each`));
   assert.match(dry.out.stdout, /2988 of 3000 clip seconds left this month/);
   assert.equal(site.state.clips.length, 0);
 
@@ -266,6 +274,52 @@ test("a shot that fails every take is left for a prompt fix, and the STOP file e
   assert.equal(await main(["clips", "--slug", box.slug, "--shot", "farewell"], stopped.ctx), EXIT.ok, stopped.out.stderr);
   assert.match(stopped.out.stdout, /stopped by the STOP file/);
   assert.equal(manifestOf(box, "clips").shots.farewell, undefined);
+});
+
+test("a still shot buys no clip: its keyframe goes into the manifest, a clip may continue from it, and it needs a passed keyframe", async () => {
+  // sea-storm becomes a still; bird continues from it, so bird's previous frame is that keyframe.
+  const { box, timeline, shots } = prepared((doc) => {
+    doc.scenes.find((scene) => scene.id === "sea-storm").data.visual = "still";
+  });
+  await approve({ gate: "look", docDir: box.dir, workdir: box.workdir, note: "test" });
+  await approve({ gate: "storyboard", docDir: box.dir, workdir: box.workdir, note: "test" });
+  const site = mediaSite();
+  const dry = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, "--dry-run"], dry.ctx), EXIT.ok, dry.out.stderr);
+  const frames = (id) => timeline.scenes.find((scene) => scene.id === id).end_frame - timeline.scenes.find((scene) => scene.id === id).start_frame;
+  const expected = ["opening", "farewell", "bird"].map((id) => clipSeconds(frames(id), [4, 5, 6, 7, 8, 9, 10]));
+  assert.match(dry.out.stdout, /sea-storm: [\d.]+ s of lines → still, its keyframe under a camera move \(no clip to buy\)/);
+  assert.match(dry.out.stdout, new RegExp(`4 shots: 1 stills \\(animated keyframes, nothing to buy\\) and 3 clips priced, ${expected.reduce((a, b) => a + b, 0)} clip seconds for one take each`));
+  assert.match(dry.out.stdout, new RegExp(`about US\\$${(expected.reduce((a, b) => a + b, 0) * 0.15 + 3 * 0.01).toFixed(2)}`), "only the three clips are priced");
+
+  let extracted = 0;
+  const run = context(box, site.fetchImpl, { extractFrame: async () => { extracted += 1; } });
+  assert.equal(await main(["clips", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  assert.deepEqual(site.state.clips.map((request) => request.shot_id), ["opening", "farewell", "bird"], "no clip is asked for the still");
+  const bird = site.state.clips[2];
+  assert.deepEqual(bird.references.at(-1), { sha256: shots["sea-storm"].sha256, role: "previous_frame" }, "a clip after a still continues from the keyframe itself");
+  assert.equal(extracted, 0, "there is no clip to take a last frame of");
+  const manifest = manifestOf(box, "clips");
+  assert.deepEqual(Object.keys(manifest.shots), ["sea-storm", "opening", "farewell", "bird"], "stills are recorded first, then the clips in order");
+  assert.deepEqual(manifest.shots["sea-storm"], { still: true, file: "keyframes/sea-storm-1.png", sha256: shots["sea-storm"].sha256 });
+  assert.equal(manifest.shots.bird.continues.file, "keyframes/sea-storm-1.png");
+  const order = ["opening", "farewell", "sea-storm", "bird"].map((id) => ({ id, sha256: manifest.shots[id].sha256 }));
+  assert.equal(manifest.clips_hash, clipsHash(order), "the clips hash covers the still's keyframe in script order");
+  assert.notEqual(manifest.clips_hash, clipsHash(order.map((shot) => (shot.id === "sea-storm" ? { ...shot, sha256: "0".repeat(64) } : shot))), "a redrawn keyframe changes it");
+  assert.match(run.out.stdout, /3 clips generated in \d+ s; 4 shots in the manifest \(1 stills\)/);
+  const state = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8"));
+  const last = state.runs.filter((each) => each.stage === "clips").at(-1);
+  assert.equal(last.shots, 4);
+  assert.equal(last.stills, 1);
+  assert.equal(last.generated, 3);
+
+  // A still whose keyframe failed its checks stops the stage like any undrawn shot.
+  const keyframes = manifestOf(box, "keyframes");
+  keyframes.shots["sea-storm"].needs_review = true;
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify(keyframes));
+  const flagged = context(box, site.fetchImpl);
+  assert.equal(await main(["clips", "--slug", box.slug, "--shot", "sea-storm"], flagged.ctx), EXIT.usage);
+  assert.match(flagged.out.stderr, /shots sea-storm have no passed keyframe; run keyframes first/);
 });
 
 test("music is generated a little longer than the video and cached, or the owner's own track is checked", async () => {

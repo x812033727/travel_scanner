@@ -18,6 +18,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
@@ -31,14 +32,17 @@ from app.problems import AppError
 from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
+    SCRIPT_AUTO_APPROVED_NOTE,
     pick_choice,
     pick_reason,
 )
+from app.video_automation.models import VideoDramaSeries
 from app.video_automation.settings import (
     AUTO_APPROVED_NOTE,
     AUTO_APPROVED_STORYBOARD_NOTE,
     auto_approves_audio,
     auto_approves_final,
+    auto_approves_script,
     auto_approves_storyboard,
     auto_picks_look,
     auto_picks_outline,
@@ -137,8 +141,12 @@ def _summary(
     pending: int,
     spend: SlugSpend | None = None,
     publish_approved_at: datetime | None = None,
+    compilation: bool = False,
+    download_available: bool = False,
 ) -> dict[str, Any]:
     return {
+        "compilation": compilation,
+        "download_available": download_available,
         "slug": project.slug,
         "title": project.title,
         "format": project.format or "slides",
@@ -240,15 +248,59 @@ def _confirmations() -> Any:
     )
 
 
-async def project_view(session: AsyncSession, slug: str) -> ProjectOut:
+async def project_view(session: AsyncSession, slug: str, work_dir: str | None = None) -> ProjectOut:
     project = await _project(session, slug)
     reviews = await _reviews(session, project)
     pending = sum(1 for review in reviews if review.status == "pending")
     spend = await spend_by_slug(session, [project.slug])
+    compiled = work_dir is not None and slug in await compilation_slugs(session)
     return ProjectOut(
-        **_summary(project, pending, spend.get(project.slug), publish_approved_at(reviews)),
+        **_summary(
+            project,
+            pending,
+            spend.get(project.slug),
+            publish_approved_at(reviews),
+            compilation=compiled,
+            download_available=compiled and download_file(work_dir, slug) is not None,
+        ),
         reviews=[_review_out(review) for review in reviews],
     )
+
+
+async def compilation_slugs(session: AsyncSession) -> set[str]:
+    """The slugs of every compilation video a binge series started (docs/videos/BINGE.md)."""
+    rows = await session.scalars(
+        select(VideoDramaSeries.compilation_slug).where(
+            VideoDramaSeries.compilation_slug.is_not(None)
+        )
+    )
+    return {str(slug) for slug in rows.all() if slug}
+
+
+def download_file(work_dir: str | None, slug: str) -> Path | None:
+    """Where a compilation's 1080p cut sits on the worker's volume, when the API can see it."""
+    if not work_dir or not valid_slug(slug):
+        return None
+    root = Path(work_dir)
+    file = root / slug / "upload" / "final.mp4"
+    try:
+        if not file.is_file() or not file.resolve().is_relative_to(root.resolve()):
+            return None
+    except OSError:
+        return None
+    return file
+
+
+async def download_path(session: AsyncSession, work_dir: str | None, slug: str) -> Path:
+    """The compilation cut the owner downloads from /admin/videos, or a 404 that says why."""
+    project = await _project(session, slug)
+    _refuse_dropped(project)
+    if slug not in await compilation_slugs(session):
+        raise AppError(404, "video_download_not_found", "只有合集的成片從這裡下載")
+    file = download_file(work_dir, slug)
+    if file is None:
+        raise AppError(404, "video_download_not_found", "成片還不在工人的工作區，或 API 沒有掛載它")
+    return file
 
 
 async def list_projects(
@@ -257,9 +309,11 @@ async def list_projects(
     video_format: str | None = None,
     series_slug: str | None = None,
     limit: int = 200,
+    work_dir: str | None = None,
 ) -> list[ProjectSummary]:
     """The videos, newest first; a format or a series narrows them (docs/videos/SERIES.md),
-    so a hundred episodes do not push the tutorials past the cap."""
+    so a hundred episodes do not push the tutorials past the cap. With the worker's work
+    directory, a compilation says whether its cut is there to download."""
     pending = (
         select(VideoReview.project_id, func.count().label("pending"))
         .where(VideoReview.status == "pending")
@@ -281,8 +335,19 @@ async def list_projects(
     )
     listed = list(rows.all())
     spend = await spend_by_slug(session, [project.slug for project, _count, _at in listed])
+    compiled = await compilation_slugs(session) if work_dir is not None else set()
     return [
-        ProjectSummary(**_summary(project, int(count), spend.get(project.slug), approved_at))
+        ProjectSummary(
+            **_summary(
+                project,
+                int(count),
+                spend.get(project.slug),
+                approved_at,
+                compilation=project.slug in compiled,
+                download_available=project.slug in compiled
+                and download_file(work_dir, project.slug) is not None,
+            )
+        )
         for project, count, approved_at in listed
     ]
 
@@ -352,22 +417,35 @@ async def submit_review(
     # The owner chose on 2026-09-25 to let Jev's check stand for them on the narration: when it
     # passed every line and the setting is on, the review is decided as it arrives.
     auto_note = None
+    series_slug = project.series_slug
     if payload.gate == "audio" and await auto_approves_audio(session, payload.payload):
         auto_note = AUTO_APPROVED_NOTE
-    # A drama's storyboard may stand on the judge's scores when the owner turned that on.
-    elif payload.gate == "storyboard" and await auto_approves_storyboard(session, payload.payload):
+    # A drama's storyboard may stand on the judge's scores when the owner turned that on, or
+    # when the series is hands-off (docs/videos/BINGE.md).
+    elif payload.gate == "storyboard" and await auto_approves_storyboard(
+        session, payload.payload, series_slug
+    ):
         auto_note = AUTO_APPROVED_STORYBOARD_NOTE
     # A character's sheet is picked by the judge's score when the owner turned that on.
-    elif payload.gate == "look" and await auto_picks_look(session, payload.payload):
+    elif payload.gate == "look" and await auto_picks_look(session, payload.payload, series_slug):
         auto_note = look_pick_note(payload.payload)
         review.choice = str(payload.payload.get("suggested"))
+    # An episode's screenplay stands on the checker's coverage on a hands-off series.
+    elif payload.gate == "script" and await auto_approves_script(
+        session, series_slug, payload.payload
+    ):
+        auto_note = SCRIPT_AUTO_APPROVED_NOTE
     # The owner decided on 2026-09-27 (docs/videos/HANDS-OFF.md) that Jev chooses the outline
     # and that a final cut and its upload confirmation stand on the automatic checks.
     elif payload.gate == "outline" and await auto_picks_outline(session, payload.payload):
         auto_note = pick_reason(payload.payload)
         review.choice = pick_choice(payload.payload)
     elif payload.gate in ("final", "publish") and await auto_approves_final(
-        session, payload.gate, payload.payload, payload.content_sha256
+        session,
+        payload.gate,
+        payload.payload,
+        payload.content_sha256,
+        compilation=slug in await compilation_slugs(session),
     ):
         auto_note = QA_AUTO_APPROVED_NOTE if payload.gate == "final" else PACKAGE_AUTO_APPROVED_NOTE
     if auto_note is not None:

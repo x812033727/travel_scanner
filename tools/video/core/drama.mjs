@@ -18,6 +18,12 @@ export const NARRATOR = "narrator";
 export const CHARACTER_ID = /^[a-z][a-z0-9-]{1,23}$/;
 export const FIT_MODES = ["auto", "freeze", "slow", "trim"];
 export const TRANSITIONS = ["cut", "dissolve"];
+// How a shot reaches the screen: as a generated clip, or as a still (its keyframe under a slow
+// camera move that ffmpeg animates in assemble). A still costs one image instead of clip seconds.
+export const VISUAL_MODES = ["clip", "still"];
+// A binge series' visual tier caps the share of its shots that may be clips (docs/videos/BINGE.md).
+export const VISUAL_TIERS = ["clips", "hybrid", "stills"];
+export const TIER_CLIP_SHARE_MAX = { clips: 1, hybrid: 0.4, stills: 0.1 };
 export const SUBTITLE_STYLES = ["drama", "plain"];
 export const MUSIC_TRACK = /^[a-z0-9][a-z0-9._-]{0,63}\.(?:mp3|m4a|wav|flac)$/;
 // An episode of a long series (docs/videos/SERIES.md): the series' slug as the site knows it.
@@ -63,7 +69,7 @@ export const DEFAULT_MUSIC = { gain_db: -20, duck_db: -10, fade_in_ms: 1500, fad
 
 const LOOK_KEYS = new Set(["preset", "style", "negative", "motion", "candidates", "style_frames"]);
 const CHARACTER_KEYS = new Set(["id", "name", "appearance", "voice", "sheet_prompt"]);
-const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "fit", "seed", "transition", "start_frame", "end_frame"]);
+const SHOT_KEYS = new Set(["prompt", "camera", "motion", "negative", "characters", "fit", "seed", "transition", "start_frame", "end_frame", "visual"]);
 const MUSIC_KEYS = new Set(["prompt", "track", "sha256", "gain_db", "duck_db", "fade_in_ms", "fade_out_ms"]);
 const SUBTITLE_KEYS = new Set(["burn_in", "style", "speaker_prefix"]);
 const SERIES_KEYS = new Set(["slug", "episode", "chapter"]);
@@ -82,6 +88,13 @@ export const isDrama = (doc) => doc?.format === DRAMA_FORMAT;
 export const isSeriesEpisode = (doc) => isDrama(doc) && isObject(doc.series);
 export const isShot = (scene) => scene?.template === SHOT_TEMPLATE;
 export const shotScenes = (doc) => (doc?.scenes ?? []).filter(isShot);
+/** "clip" or "still": a shot is a clip unless it says otherwise. */
+export const shotVisual = (scene) => scene?.data?.visual ?? "clip";
+export const isClipShot = (scene) => isShot(scene) && shotVisual(scene) === "clip";
+/** The shots the clips stage generates a clip for. */
+export const clipShotScenes = (doc) => shotScenes(doc).filter(isClipShot);
+/** The shots assemble animates from their keyframe instead. */
+export const stillShotScenes = (doc) => shotScenes(doc).filter((scene) => shotVisual(scene) === "still");
 
 /** Scenes and lines in order with lint-style labels (schema.mjs's eachLine, kept local to avoid the cycle). */
 function* lines(doc) {
@@ -195,6 +208,7 @@ function validateShotData(data, where, characterIds, earlierShots, errors) {
     }
   }
   if (data.fit !== undefined && !FIT_MODES.includes(data.fit)) errors.push({ path: `${where}.fit`, message: `must be one of ${FIT_MODES.join(", ")}` });
+  if (data.visual !== undefined && !VISUAL_MODES.includes(data.visual)) errors.push({ path: `${where}.visual`, message: `must be one of ${VISUAL_MODES.join(", ")}` });
   if (data.seed !== undefined && !(Number.isInteger(data.seed) && data.seed >= 0 && data.seed <= 2_147_483_647)) errors.push({ path: `${where}.seed`, message: "must be a non-negative 31-bit integer" });
   if (data.transition !== undefined && !TRANSITIONS.includes(data.transition)) errors.push({ path: `${where}.transition`, message: `must be one of ${TRANSITIONS.join(", ")}` });
   if (data.start_frame !== undefined) {
@@ -205,6 +219,8 @@ function validateShotData(data, where, characterIds, earlierShots, errors) {
   if (data.end_frame !== undefined && !(isObject(data.end_frame) && isShortText(data.end_frame.prompt, LIMITS.prompt))) {
     errors.push({ path: `${where}.end_frame`, message: "must be { prompt } for the shot's last frame" });
   }
+  // A still is its keyframe with a camera move: an end frame would be bought and never shown.
+  if (data.visual === "still" && data.end_frame !== undefined) errors.push({ path: `${where}.end_frame`, message: "a still shot has no end_frame: it belongs to a clip" });
 }
 
 function validateMusic(music, errors) {
@@ -410,6 +426,33 @@ export function shotProblems(doc, timeline) {
     if (median < MIN_MEDIAN_SHOT_SECONDS) warnings.push({ path: "scenes", message: `the median shot is ${median.toFixed(1)} s; cuts this fast read as a montage, merge some shots` });
     const long = seconds.filter((length) => length > WARN_SHOT_SECONDS).length / seconds.length;
     if (long > LONG_SHOT_SHARE_WARN) warnings.push({ path: "scenes", message: `${Math.round(long * 100)}% of the shots run over ${WARN_SHOT_SECONDS} s; the clip models cannot hold a shot that long` });
+  }
+  return { errors, warnings };
+}
+
+/**
+ * Whether the script keeps to a binge series' visual tier (docs/videos/BINGE.md): the tier caps
+ * how many of the shots may be clips, rounded up, so a 30-shot episode has at most 12 clips in
+ * the hybrid tier and 3 in the stills tier. The clips tier caps nothing and only remarks on
+ * stills, since the series is paying for clips anyway. Returns { errors, warnings } like
+ * shotProblems, with an error for a tier this file does not know.
+ */
+export function visualTierProblems(doc, tier) {
+  const errors = [];
+  const warnings = [];
+  if (!VISUAL_TIERS.includes(tier)) {
+    errors.push({ path: "series.visual_tier", message: `"${tier}" is not a visual tier; the tiers are ${VISUAL_TIERS.join(", ")}` });
+    return { errors, warnings };
+  }
+  const shots = shotScenes(doc).length;
+  const clips = clipShotScenes(doc).length;
+  if (tier === "clips") {
+    if (shots - clips > 0) warnings.push({ path: "scenes", message: `the clips tier plays every shot as a clip; ${shots - clips} still shots here will be animated keyframes instead` });
+    return { errors, warnings };
+  }
+  const allowed = Math.ceil(TIER_CLIP_SHARE_MAX[tier] * shots);
+  if (clips > allowed) {
+    errors.push({ path: "scenes", message: `${clips} of ${shots} shots are clips; the "${tier}" tier allows at most ${allowed}: mark the rest visual "still"` });
   }
   return { errors, warnings };
 }

@@ -16,6 +16,7 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { AutomationError, automationClient } from "../automation/client.mjs";
 import { GATES, approvalState, approve, readApprovals, sha256File } from "../core/approvals.mjs";
+import { isCompilation } from "../core/compilation.mjs";
 import { isDrama, shotScenes } from "../core/drama.mjs";
 import { atomicWrite, docDir, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { dubRole, dubsForUpload } from "../core/stages.mjs";
@@ -37,8 +38,13 @@ export const REVIEW_GATES = ["outline", "script", "look", "audio", "storyboard",
 const UPLOAD_CHECKLIST = path.join("upload", "UPLOAD.md");
 
 // The owner reads the site in Traditional Chinese; status's step ids are English. Every step of
-// both formats (core/state.mjs SLIDES_STEPS and DRAMA_STEPS) has a label here.
+// every format (core/state.mjs SLIDES_STEPS, DRAMA_STEPS and COMPILATION_STEPS) has a label here.
 export const STEP_LABELS = {
+  // A series' compilation (docs/videos/BINGE.md).
+  "metadata planned": "合集標題與說明",
+  "cards rendered": "章節卡與縮圖",
+  "video compiled": "合集串接",
+  "metadata translated": "五語標題與說明",
   brief: "企劃書",
   "outline approved": "站主選好大綱",
   "script passes lint": "稿子通過檢查",
@@ -282,21 +288,34 @@ async function upload(request, slug, file, role, contentType) {
   return { role, sha256, size, content_type: contentType };
 }
 
-/** Encode a smaller copy for the page with ffmpeg, once per source file. */
-async function encodeDefault(kind, source, target, env) {
-  const tools = await locateFfmpeg(env);
-  const args = kind === "narration"
-    ? ["-hide_banner", "-y", "-loglevel", "error", "-i", source, "-c:a", "aac", "-b:a", "96k", "-ac", "1", "-movflags", "+faststart", target]
-    : ["-hide_banner", "-y", "-loglevel", "error", "-i", source, "-vf", "scale=1280:720:flags=lanczos", "-c:v", "libx264", "-preset", "veryfast", "-crf", "26", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", target];
-  await runTool(tools.ffmpeg, args);
+/**
+ * The ffmpeg arguments of a review copy: the narration as a small mono AAC, the cut as 720p.
+ * A compilation's preview (docs/videos/BINGE.md) is hours long, so its bitrate is capped as
+ * well, or the review store would hold a file nearly the size of the cut.
+ */
+export function previewArgs(kind, source, target, { compilation = false } = {}) {
+  if (kind === "narration") return ["-hide_banner", "-y", "-loglevel", "error", "-i", source, "-c:a", "aac", "-b:a", "96k", "-ac", "1", "-movflags", "+faststart", target];
+  return [
+    "-hide_banner", "-y", "-loglevel", "error", "-i", source,
+    "-vf", "scale=1280:720:flags=lanczos",
+    "-c:v", "libx264", "-preset", "veryfast", "-crf", "26",
+    ...(compilation ? ["-maxrate", "2M", "-bufsize", "4M"] : []),
+    "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", target,
+  ];
 }
 
-async function preview(ctx, workdir, kind, source) {
+/** Encode a smaller copy for the page with ffmpeg, once per source file. */
+async function encodeDefault(kind, source, target, env, options = {}) {
+  const tools = await locateFfmpeg(env);
+  await runTool(tools.ffmpeg, previewArgs(kind, source, target, options));
+}
+
+async function preview(ctx, workdir, kind, source, options = {}) {
   const hash = (await sha256File(source)).slice(0, 16);
   const target = path.join(workdir, "review", `${kind}-${hash}.${kind === "narration" ? "m4a" : "mp4"}`);
   if (!existsSync(target)) {
     mkdirSync(path.dirname(target), { recursive: true });
-    await (ctx.encode ?? encodeDefault)(kind, source, target, ctx.env);
+    await (ctx.encode ?? encodeDefault)(kind, source, target, ctx.env, options);
   }
   return target;
 }
@@ -311,7 +330,8 @@ const imageType = (file) => IMAGE_TYPES[path.extname(file).toLowerCase()] ?? "ap
  * (docs/videos/DRAMA.md) puts the look before the narration and the storyboard before the cut.
  */
 async function nextGate(places, workdir, doc) {
-  const order = isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
+  // A compilation's episodes went through every gate; the owner sees its cut, then its package.
+  const order = isCompilation(doc) ? ["final"] : isDrama(doc) ? ["outline", ...(doc.series ? ["script"] : []), "look", "audio", "storyboard", "final"] : ["outline", "audio", "final"];
   for (const gate of order) {
     const state = await approvalState({ gate, ...places });
     if (state.status === "missing" || state.status === "stale") return gate;
@@ -360,6 +380,10 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
         beats: project.series?.beats ?? null,
         coverage: check?.coverage ?? null,
         continuity_problems: check?.problems ?? [],
+        // A binge series' checker also names the works the script resembles and its retention
+        // verdict (docs/videos/BINGE.md); the worker writes both into script-check.json.
+        similar_works: check?.similar_works ?? [],
+        retention: check?.retention ?? null,
         narrative_hash: narrativeHash(doc),
       },
       files: [],
@@ -393,15 +417,17 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     if (!qa) ctx.stdout.write(`${slug}: no quality check report for this final.mp4; the review goes up without one\n`);
     const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
     const checks = readJson(path.join(workdir, ARTIFACTS.checks), null) ?? {};
+    const compilation = isCompilation(doc);
     const { metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack });
-    const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file), "preview", "video/mp4")];
+    const files = [await upload(request, slug, await preview(ctx, workdir, "preview", file, { compilation }), "preview", "video/mp4")];
     const sheet = path.join(workdir, ARTIFACTS.contactSheet);
     if (existsSync(sheet)) files.push(await upload(request, slug, sheet, "contact_sheet", "image/png"));
     const thumbnail = path.join(workdir, "thumbnail.jpg");
     if (existsSync(thumbnail)) files.push(await upload(request, slug, thumbnail, "thumbnail", "image/jpeg"));
     // The dub tracks made so far go up beside the cut, so the owner can hear them on the site
     // (docs/videos/DUBS.md). Only the m4a form: it is the audio type the review store takes.
-    const { dubs, skipped: skippedDubs } = dubsForUpload(project, workdir, timeline.speech_hash);
+    // A compilation has none of its own: its episodes' dubs are theirs.
+    const { dubs, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, timeline.speech_hash);
     const dubEntries = {};
     for (const dub of dubs) {
       const role = dub.format === "m4a" ? dubRole(dub.locale) : null;
@@ -421,6 +447,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
         metadata: { [metadata.default_language]: { title: metadata.title, description: metadata.description }, ...metadata.localizations },
         ...(qa ? { qa } : {}),
         ...(Object.keys(dubEntries).length ? { dubs: dubEntries } : {}),
+        ...(compilation ? { compilation: { series: doc.compilation.series, episodes: doc.compilation.episodes, total_frames: timeline.total_frames } } : {}),
       },
       files,
     };
@@ -450,28 +477,41 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
       files,
     };
   }
-  return publishSubmission({ request, workdir, slug });
+  return publishSubmission({ request, workdir, slug, compilation: isCompilation(doc) });
+}
+
+/** The publish summary's note for a compilation: the size, and that the file is downloaded from the site. */
+export function downloadNote(bytes) {
+  return `合集 ${(bytes / 1024 ** 3).toFixed(2)} GB，成片從網站下載後上傳`;
 }
 
 /**
  * The publish gate (docs/videos/HANDS-OFF.md §上傳包與「可以上架」): the package check's report,
  * what the 「可以上架」 card shows, and every file of the package attached, so the owner downloads
  * it from the site. The site approves the confirmation on arrival when the four items pass and
- * the owner's switch is on; final.mp4 goes up in parts like the preview.
+ * the owner's switch is on; final.mp4 goes up in parts like the preview. A compilation's
+ * final.mp4 is gigabytes and stays home (docs/videos/BINGE.md): the payload says where it is
+ * and how big, and the site serves the download from the work directory instead.
  */
-async function publishSubmission({ request, workdir, slug }) {
+async function publishSubmission({ request, workdir, slug, compilation = false }) {
   const file = path.join(workdir, ARTIFACTS.upload);
-  const { report, files: listed, metadata } = await readPackageReport(workdir);
+  const { report, files: listed, metadata, finalSha256 } = await readPackageReport(workdir);
   if (!metadata) throw new ReviewError("upload/metadata.json is missing; run package first", { who: "owner" });
   const files = [];
-  for (const entry of packageFiles(listed.keys())) files.push(await upload(request, slug, path.join(workdir, UPLOAD_DIR, entry.path), entry.role, entry.content_type));
+  for (const entry of packageFiles(listed.keys())) {
+    if (compilation && entry.role === "final") continue;
+    files.push(await upload(request, slug, path.join(workdir, UPLOAD_DIR, entry.path), entry.role, entry.content_type));
+  }
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   const minutes = timeline?.total_frames && timeline.fps ? Math.round((timeline.total_frames / timeline.fps / 60) * 10) / 10 : null;
   const checklist = existsSync(path.join(workdir, UPLOAD_CHECKLIST)) ? uploadItems(readFileSync(path.join(workdir, UPLOAD_CHECKLIST), "utf8")) : [];
+  const bytes = listed.get("final.mp4") ?? null;
+  const download = compilation ? { path: "upload/final.mp4", bytes, sha256: finalSha256 } : null;
+  const note = download && bytes !== null ? `：${downloadNote(bytes)}` : "";
   return {
     gate: "publish",
     content_sha256: await sha256File(file),
-    summary: report.ok ? `${packageSummary(report)}：請確認可以上架` : packageSummary(report),
+    summary: report.ok ? `${packageSummary(report)}${note ? `${note}；` : "："}請確認可以上架` : `${packageSummary(report)}${note}`,
     payload: {
       package: report,
       minutes,
@@ -480,6 +520,7 @@ async function publishSubmission({ request, workdir, slug }) {
       zh: { title: metadata.title ?? "", description: metadata.description ?? "", tags: metadata.tags ?? [] },
       disclosure: { synthetic: metadata.contains_synthetic_media === true, reason: typeof metadata.disclosure_reason === "string" ? metadata.disclosure_reason : "" },
       checklist,
+      ...(download ? { download, episodes: Array.isArray(metadata.episodes) ? metadata.episodes.map((episode) => episode.slug) : [] } : {}),
     },
     files,
   };
@@ -607,7 +648,8 @@ export async function reviewPush(args, ctx) {
         checklist: checklistFrom(status.steps),
         youtube_video_id: project.doc.youtube?.video_id || null,
         ...(sourceGuide ? { source_guide: sourceGuide } : {}),
-        ...(project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
+        // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
+        ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
       },
     });
     if (values["report-only"]) {

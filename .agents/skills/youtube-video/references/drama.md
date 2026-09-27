@@ -70,7 +70,20 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 - `format: "drama"`；範例 `tools/video/core/fixtures/drama/video.json`（精衛填海，兩個角色、四個鏡頭、一張結尾卡）。規則在 `tools/video/core/drama.mjs`（`validateDrama`、`shotProblems`）。
 - `look`：`preset`（`cinematic-3d`／`anime-2d`／`ink-wash`／`custom`）加可覆寫的 `style`、`negative`、`motion`（英文，給圖片與影片模型）、`candidates`（每角色幾張設定圖）、`style_frames`（`<VIDEO_DOCS>` 裡的參考圖）。
 - `characters[]`：`id`（小寫，不可是 `narrator`）、`name`（字幕與審核頁用）、`appearance`（英文 ≤ 800 字，設定圖與每個鏡頭都用它）、`voice`（同 `voice` 的物件；Gemini 聲音才有 `style`）、`sheet_prompt`（可選）。
-- 鏡頭場景 `template: "shot"`，`data`：`prompt`（英文 ≤ 1000 字，畫面本身）、`camera`、`motion`（給圖生影片）、`characters`（≤ 3 個 id，決定參考圖與 judge 的 identity 題）、`fit`（`auto`／`freeze`／`slow`／`trim`，片段比句子短或長時怎麼對齊）、`transition`（`cut`／`dissolve`）、`start_frame: { shot, at: "last" }`（接續更早的鏡頭；目前是把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始）、`end_frame: { prompt }`（另出一張當片段的末格）。卡片場景（`title`／`chapter`／`outro`）照投影片版型。
+- 鏡頭場景 `template: "shot"`，`data`：`prompt`（英文 ≤ 1000 字，畫面本身）、`camera`、`motion`（給圖生影片）、`characters`（≤ 3 個 id，決定參考圖與 judge 的 identity 題）、`fit`（`auto`／`freeze`／`slow`／`trim`，片段比句子短或長時怎麼對齊）、`transition`（`cut`／`dissolve`）、`start_frame: { shot, at: "last" }`（接續更早的鏡頭；目前是把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始）、`end_frame: { prompt }`（另出一張當片段的末格）、`visual`（`clip` 預設／`still`：見下一點）。卡片場景（`title`／`chapter`／`outro`）照投影片版型。
+- **`visual: "still"`**（長篇作品的畫面等級，設計在 `docs/videos/BINGE.md`）：這一鏡不買片段，`clips` 在 manifest 記 `{ still: true }` 指向它的關鍵影格，`assemble` 把關鍵影格做成一段慢運鏡（`zoompan`，編碼參數與片段段相同，仍 `-c copy` 串接）。運鏡由 `camera`（其次 `motion`）的關鍵字決定（`tools/video/assemble/drama.mjs` 的 `motionMove`），以**畫面看起來怎麼動**命名，所以 pan 跟攝影機用語相反：
+
+  | 寫在 `camera` 的字 | 運鏡 | 效果 |
+  | --- | --- | --- |
+  | push、dolly in、zoom in、closer、move in | `push-in` | 放大 10%，第 0 格是原圖 |
+  | pull、zoom out、widen、back away | `pull-out` | 從 1.10 倍縮回原圖 |
+  | pan left、pan to the left、left to right | `pan-right` | 1.08 倍，裁切窗從右滑到左（畫面往左跑） |
+  | pan right、pan to the right、right to left | `pan-left` | 1.08 倍，裁切窗從左滑到右 |
+  | tilt up、crane up、rise | `tilt-up` | 1.08 倍，從下滑到上 |
+  | tilt down、crane down、descend | `tilt-down` | 1.08 倍，從上滑到下 |
+  | 其他或沒寫 | `drift` | 放大 4% 並略往右，第 0 格是原圖 |
+
+  等級上限（`series.json` 的 `visual_tier`，lint 擋）：`hybrid` 最多四成鏡頭是 clip、`stills` 一成、`clips` 不限；沒有 `series.json` 就全視為 clip。still 鏡頭的關鍵影格要通過 judge（`needs_review` 的 `assemble` 會拒絕）。
 - 句子：`speaker`（`narrator` 或角色 id，預設旁白）、`emotion`（≤ 80 字，Gemini 聲音會併進 style；Azure 忽略並警告）。**句子仍是時鐘**：一個鏡頭的長度是它的句子加停頓，lint 對估計超過 12 秒的鏡頭報錯、10 秒警告，中位數低於 3 秒也警告——長旁白拆成更多鏡頭。
 - `music`：`prompt`（Lyria 生成）或 `track`＋`sha256`（自帶），`gain_db`（−20）、`duck_db`（−10）、`fade_in_ms`、`fade_out_ms`。
 - `subtitles`：`burn_in`（漫劇預設 true）、`style`（`drama`：白字黑邊；`plain`：黑底框）、`speaker_prefix`（角色句前加「【名字】」）。
@@ -99,6 +112,7 @@ node tools/video/assemble/smoke.mjs --fixture drama [--channel msedge]          
 - **主機地區**：Gemini 的影片功能在歐洲經濟區部分不開放，主機地區沒查過。第一支的第一鏡先 `clips --shot <第一鏡>` 單獨跑；被擋就到後台把 `clip_provider` 改成 `minimax`，並把結果記回 `docs/videos/DRAMA.md`。
 - **順序**：`keyframes` 要 look 核准且每角色有選定的圖（沒選就用 judge 建議）；`clips` 要 storyboard 核准；`render` 要 timeline（字幕條依旁白切）與縮圖鏡頭的關鍵影格；`assemble` 要六個雜湊都對（`look_hash`、`clips_hash`、`subtitles_hash`、`mix_hash` 加原本兩個）。改了 `look` 或角色外觀，設定圖、關鍵影格、片段全部過期；改音樂增益只重混音。
 - **judge 說片段太大**（413）：工具會自動做 720p 代理檔上傳再判，不用手動。
+- **still 鏡頭的 PSNR**：只有 `push-in` 與 `drift` 的第 0 格是整張關鍵影格，`assemble` 對它們算 PSNR；pan、tilt、pull-out 一開始就裁掉邊緣，只驗格數。`checks.json.metrics.shots` 記 `kind: "motion"` 與 `move`，看到 `drift` 多半是 `camera` 沒寫或用了表裡沒有的字。
 - **接續鏡頭**：`start_frame: { shot, at: "last" }` 目前只把上一鏡最後一格當參考圖，片段仍從自己的關鍵影格開始，所以 assemble 的第 0 格檢查仍成立；要真的從上一格接下去，等供應商支援時要一起改 assemble 的比對來源。
 - **Windows 本機**：Playwright 用 `--channel msedge`；整套測試並行時 `media/cache.json` 偶爾遇到 rename 的 EPERM（Windows 檔案鎖），單跑會過，CI 是 Linux 不受影響。
 - **字幕條**：不用 libass（內建字型只有 woff2，fontconfig 會悄悄換系統字型），每個不同的字幕文字一張 1920×260 透明 PNG，行高 1.5（Noto Sans TC 字框約 1.45 em，較緊會被版面檢查擋）。

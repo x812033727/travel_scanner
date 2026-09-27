@@ -572,6 +572,9 @@ class Settings(BaseSettings):
     video_review_max_total_bytes: int = Field(
         default=20_000_000_000, ge=10_000_000, le=500_000_000_000
     )
+    # The worker's work volume, mounted read-only into the API so a compilation's 1080p cut
+    # (too big for the review store) can be downloaded from /admin/videos (docs/videos/BINGE.md).
+    video_work_dir: str = "/var/lib/mokaair/video-work"
     line_messaging_enabled: bool = False
     line_channel_secret: str | None = None
     line_channel_access_token: str | None = None

@@ -133,6 +133,10 @@ class ProjectSummary(BaseModel):
     # The series this video is an episode of, if any (docs/videos/SERIES.md).
     series_slug: str | None = None
     episode_number: int | None = None
+    # A compilation of a binge series (docs/videos/BINGE.md): its 1080p cut is too big for
+    # the review store and is downloaded from the worker's volume when it is there.
+    compilation: bool = False
+    download_available: bool = False
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py public_state), or None when it never did.
     youtube_sync: dict[str, Any] | None = None

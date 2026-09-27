@@ -305,3 +305,128 @@ def test_the_pick_the_worker_carries_is_what_the_route_returned() -> None:
     assert outline_pick_passed(payload)
     assert judging.pick_choice(payload) == "B"
     assert isinstance(pick, OutlinePick)
+
+
+# --- the hands-off rules of a binge series (docs/videos/BINGE.md) ------------------------------
+
+
+def _doc_verdict(kind: str, **changes: Any) -> dict[str, Any]:
+    judge: dict[str, Any] = {
+        "verdicts": {key: "有" for key in judging.REQUIRED_VERDICTS[kind]},
+        "problems": [],
+        "similar_works": [],
+        "notes": "",
+    }
+    judge.update(changes)
+    return judge
+
+
+def test_a_document_passes_only_when_every_verdict_is_there_and_nothing_is_listed() -> None:
+    assert judging.series_doc_passed(_doc_verdict("setting"), "setting")
+    assert judging.series_doc_passed(_doc_verdict("outline"), "outline")
+    weak = _doc_verdict("chapter")
+    weak["verdicts"]["hooks"] = "弱"
+    assert judging.series_doc_passed(weak, "chapter"), "one weak beat is allowed"
+    weak["verdicts"]["alternation"] = "弱"
+    assert not judging.series_doc_passed(weak, "chapter"), "two are not"
+    missing = _doc_verdict("setting")
+    missing["verdicts"]["genre_fit"] = "無"
+    assert not judging.series_doc_passed(missing, "setting")
+    short = _doc_verdict("setting")
+    del short["verdicts"]["cast_playable"]
+    assert not judging.series_doc_passed(short, "setting"), "an older checker never passes"
+    assert not judging.series_doc_passed(_doc_verdict("setting", problems=["x"]), "setting")
+    assert not judging.series_doc_passed(
+        _doc_verdict("setting", similar_works=["《某作》的門派名"]), "setting"
+    )
+    assert not judging.series_doc_passed(_doc_verdict("setting"), "poem"), "an unknown kind"
+    assert not judging.series_doc_passed({"verdicts": {"originality": "yes"}}, "setting")
+    assert not judging.series_doc_passed(None, "setting")
+    note = judging.series_doc_note(_doc_verdict("setting"), True)
+    assert note.startswith("查核：originality 有") and note.endswith("依作品設定自動核准")
+    failed = judging.series_doc_note(
+        _doc_verdict("setting", problems=["反派沒有動機"], similar_works=["某作"]), False
+    )
+    assert failed.startswith("[auto] 查核沒過：反派沒有動機；與既有作品雷同：某作")
+    assert judging.series_doc_problems({"verdicts": {"originality": "無"}}) == ["缺少：originality"]
+    assert judging.series_doc_problems(None) == ["the checker gave no verdict"]
+
+
+def _script_payload(**changes: Any) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "coverage": {
+            "hook": "有",
+            "conflict": "有",
+            "turn": "有",
+            "cliffhanger": "有",
+            "satisfaction": "有",
+        },
+        "continuity_problems": [],
+        "similar_works": [],
+        "retention": {
+            "hook_seconds": 5.2,
+            "satisfaction": {"count": 2, "first_seconds": 24.0, "positions": [24.0, 150.0]},
+            "cliffhanger_last": True,
+        },
+    }
+    payload.update(changes)
+    return payload
+
+
+def test_a_screenplay_passes_on_its_coverage_and_a_retention_genre_on_the_measured_timing() -> None:
+    passed = judging.script_check_passed
+    assert passed(_script_payload(), retention_required=True)
+    assert passed(_script_payload(), retention_required=False)
+    weak = _script_payload()
+    weak["coverage"]["turn"] = "弱"
+    assert passed(weak, retention_required=True)
+    weak["coverage"]["hook"] = "弱"
+    assert not passed(weak, retention_required=True), "two weak beats"
+    gone = _script_payload()
+    gone["coverage"]["cliffhanger"] = "無"
+    assert not passed(gone, retention_required=False)
+    assert not passed(
+        _script_payload(continuity_problems=["名字兩種寫法"]), retention_required=False
+    )
+    assert not passed(_script_payload(similar_works=["某作"]), retention_required=False)
+    older = _script_payload()
+    del older["similar_works"]
+    assert not passed(older, retention_required=False), "an older worker never auto-passes"
+    late_hook = _script_payload()
+    late_hook["retention"]["hook_seconds"] = 12
+    assert not passed(late_hook, retention_required=True)
+    assert passed(late_hook, retention_required=False), "the classic series has no timing rule"
+    few = _script_payload()
+    few["retention"]["satisfaction"]["count"] = 1
+    assert not passed(few, retention_required=True)
+    late = _script_payload()
+    late["retention"]["satisfaction"]["first_seconds"] = 45
+    assert not passed(late, retention_required=True)
+    summary_after = _script_payload()
+    summary_after["retention"]["cliffhanger_last"] = False
+    assert not passed(summary_after, retention_required=True)
+    flat = _script_payload()
+    flat["coverage"]["satisfaction"] = "無"
+    assert not passed(flat, retention_required=True)
+    assert not passed(_script_payload(retention=None), retention_required=True)
+    assert not passed({}, retention_required=False)
+
+
+def test_a_compilation_s_final_cut_is_held_to_its_own_items() -> None:
+    sha = "f" * 64
+    report = _report(judging.COMPILATION_QA_ITEMS, sha, kind="compilation")
+    assert final_qa_passed({"qa": report}, sha, judging.COMPILATION_QA_ITEMS)
+    assert not final_qa_passed({"qa": report}, sha), "the eleven-item rule wants more"
+    plain = _report(judging.COMPILATION_QA_ITEMS, sha)
+    assert not final_qa_passed({"qa": plain}, sha, judging.COMPILATION_QA_ITEMS), (
+        "a report that does not say it is a compilation's is an episode's"
+    )
+    assert not final_qa_passed(
+        {"qa": _report(judging.COMPILATION_QA_ITEMS[:-1], sha, kind="compilation")},
+        sha,
+        judging.COMPILATION_QA_ITEMS,
+    )
+    assert judging.retention_required_for("rebirth-revenge")
+    assert judging.retention_required_for("custom")
+    assert not judging.retention_required_for("xianxia-bonds")
+    assert not judging.retention_required_for(None)

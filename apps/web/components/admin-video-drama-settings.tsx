@@ -19,6 +19,11 @@ const dramaNumberFields = {
   budget: [["monthly_clip_seconds_budget", 0, 100_000], ["monthly_images_budget", 0, 100_000], ["monthly_judge_calls_budget", 0, 100_000], ["monthly_music_budget", 0, 100_000], ["max_usd_per_video", 0, 10_000]],
 } as const;
 type DramaNumberField = (typeof dramaNumberFields)[keyof typeof dramaNumberFields][number][0];
+// The one series limit this tab edits (docs/videos/SERIES.md, docs/videos/BINGE.md): how many
+// series the worker keeps in flight at once, one to six, so a pilot and a full run can overlap.
+// The other series_* limits ride along untouched, as the whole drama block is sent back.
+export const SERIES_IN_FLIGHT_MAX = 6;
+type DramaForm = DramaSettings & { series_max_in_flight?: number };
 
 /**
  * The media vendors the chosen models need and the site has no key for, in the catalog's order.
@@ -41,7 +46,7 @@ export function AdminVideoDramaSettings({ view, onSaved }: { view: VideoSettings
   const t = useTranslations("admin.videoSettings");
   const locale = useLocale();
   const manage = useAdminActionGuard("settings.manage");
-  const [drama, setDrama] = useState<DramaSettings>(view.drama);
+  const [drama, setDrama] = useState<DramaForm>(view.drama);
   const [dramaScope, setDramaScope] = useState((view.drama.drama_topic_scope ?? []).join("\n"));
   // Open while the route is off, so the switch that starts everything is the first thing in view.
   const [open] = useState(!view.drama.drama_enabled);
@@ -49,7 +54,7 @@ export function AdminVideoDramaSettings({ view, onSaved }: { view: VideoSettings
   const [saved, setSaved] = useState(false);
   const [busy, setBusy] = useState(false);
   const disabled = !manage.allowed || busy;
-  const editDrama = (change: Partial<DramaSettings>) => { setDrama({ ...drama, ...change }); setSaved(false); };
+  const editDrama = (change: Partial<DramaForm>) => { setDrama({ ...drama, ...change }); setSaved(false); };
   const numberInput = ([key, min, max]: readonly [DramaNumberField, number, number]) => <label key={key} className="block text-sm font-semibold">{t(`fields.drama_${key}`)}
     <input className={fieldClass} type="number" min={min} max={max} value={drama[key]} disabled={disabled} onChange={(event) => editDrama({ [key]: Number(event.target.value) })} />
   </label>;
@@ -154,6 +159,12 @@ export function AdminVideoDramaSettings({ view, onSaved }: { view: VideoSettings
       <p className="text-sm leading-6 text-[var(--muted)]">{t("voicePoolHelp")}</p>
       <div className="grid gap-3 md:grid-cols-2">{dramaNumberFields.budget.map(numberInput)}</div>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("dramaBudgetHelp")}</p>
+      <div className="grid gap-3 md:grid-cols-2">
+        <label className="block text-sm font-semibold">{t("fields.drama_series_max_in_flight")}
+          <input className={fieldClass} type="number" min={1} max={SERIES_IN_FLIGHT_MAX} value={drama.series_max_in_flight ?? 1} disabled={disabled} onChange={(event) => editDrama({ series_max_in_flight: Number(event.target.value) })} />
+        </label>
+      </div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("seriesInFlightHelp")}</p>
       <label className="block text-sm font-semibold">{t("fields.drama_topic_scope")}<textarea className={fieldClass} rows={3} value={dramaScope} disabled={disabled} onChange={(event) => { setDramaScope(event.target.value); setSaved(false); }} /></label>
       {saveError && <p role="alert" className="text-sm text-red-800">{saveError}</p>}
       {saved && <p role="status" className="text-sm text-[var(--teal)]">{t("saved")}</p>}
