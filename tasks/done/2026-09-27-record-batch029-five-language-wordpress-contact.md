@@ -1,13 +1,13 @@
 ---
 id: 2026-09-27-record-batch029-five-language-wordpress-contact
 title: Record Batch029 five-language WordPress contact publication
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-batch029-release-record
 claimed_at: 2026-09-27T21:34:40Z
 created_at: 2026-09-27T21:34:34Z
-completed_at:
+completed_at: 2026-09-27T21:58:30Z
 branch: codex/article-localization-029-release-record
 depends_on: []
 scope:
@@ -28,10 +28,10 @@ merge status.
 
 ## Definition of done
 
-- [ ] A scoped Batch029 record lists each article's content, draft, publication,
+- [x] A scoped Batch029 record lists each article's content, draft, publication,
       and public/browser QA status with pinned release evidence.
 - [x] The owned production hold is independently cleared after final QA.
-- [ ] Repository task checks pass and a release-record PR is merged.
+- [x] Repository task checks pass and the release record is merged through a PR.
 
 ## Steps
 
@@ -40,7 +40,7 @@ merge status.
 - [x] Inspect all desktop/mobile and right-scroll visual captures.
 - [x] Verify and clear the exact Batch029 owned hold.
 - [x] Write and review the release record.
-- [ ] Open and merge the release-record PR.
+- [x] Open and merge the release-record PR after successful CI.
 
 ## How to verify
 
