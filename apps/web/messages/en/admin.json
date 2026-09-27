@@ -2429,7 +2429,18 @@
     "promptSent": "{slug} · {time}",
     "stanceTitle": "Channel stance",
     "stanceHelp": "What this channel believes. The planner writes each video's owner viewpoint from this alone; the writer and Jev's checks read it too. It is separate from the standing instructions: those say how to write, this says what you believe. One numbered point per line, at most 4,000 characters. While it is blank Jev does not choose outlines and they wait for you as before. A draft is in docs/videos/HANDS-OFF.md under 頻道立場; edit it and paste it here. A change only reaches videos planned after it.",
-    "stancePlaceholder": "e.g. 1. Count the cost before paying: pay for quota and abilities you will use, not to remove ads."
+    "stancePlaceholder": "e.g. 1. Count the cost before paying: pay for quota and abilities you will use, not to remove ads.",
+    "permission": {
+      "roles": "The account you are signed in with holds these admin roles: {roles}.",
+      "noRoles": "The account you are signed in with holds no admin role.",
+      "fix": "Sign in with the site owner's account ({owner}) to change them, or ask the owner to give this account the {operations} role on the {page} page."
+    },
+    "dramaMoved": "The drama settings are on the {tab} tab now, next to the series and the one-off episodes.",
+    "dramaMovedLink": "Open the {tab} tab",
+    "dramaSettingsTitle": "Drama settings",
+    "dramaSave": "Save drama settings",
+    "dramaKeyWarning": "The site has no key yet for {vendors}, so saving with the drama route on will be refused. Add the key first, or pick a vendor that has one.",
+    "dramaKeyLink": "Add keys in the AI settings"
   },
   "videoSeries": {
     "listTitle": "Series",
@@ -2555,6 +2566,9 @@
     "openVideo": "Open",
     "skip": "Skip",
     "skipConfirm": "Skip episode {n}? The series moves on without it.",
-    "oneOffTitle": "One-off episodes"
+    "oneOffTitle": "One-off episodes",
+    "dramaOn": "The drama route is on: the worker makes the requested episodes and the series in turn.",
+    "dramaOff": "The drama route is off.",
+    "dramaOffHow": "The worker makes no drama, and the episodes and series you start wait until it is on. Tick “{enable}” under “{settings}” below, then save."
   }
 }

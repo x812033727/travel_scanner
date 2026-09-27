@@ -2429,7 +2429,18 @@
     "promptSent": "{slug} · {time}",
     "stanceTitle": "频道立场",
     "stanceHelp": "这个频道相信什么。企划模型写每一支视频的站主观点时，只以这份立场为依据；撰稿与 Jev 的检查也会读它。跟“各阶段的常设指示”分开：常设指示写怎么写，立场写相信什么。每条一行、加编号，最多 4,000 字。留白时 Jev 不会替你挑大纲，大纲照旧等你。草稿在 docs/videos/HANDS-OFF.md 的“頻道立場”一节，改过再贴进来；改了只影响之后才写企划的视频。",
-    "stancePlaceholder": "例如：1. 先把账算清楚再花钱：付费是为了真的用得到的额度与能力，不是为了去掉广告。"
+    "stancePlaceholder": "例如：1. 先把账算清楚再花钱：付费是为了真的用得到的额度与能力，不是为了去掉广告。",
+    "permission": {
+      "roles": "你当前登录的账号，后台角色是：{roles}。",
+      "noRoles": "你当前登录的账号没有任何后台角色。",
+      "fix": "改用站长（{owner}）账号登录就能修改；或请站长到后台“{page}”页面，为这个账号加上“{operations}”角色。"
+    },
+    "dramaMoved": "漫剧的设置已移到“{tab}”标签页，和作品、单集漫剧放在一起。",
+    "dramaMovedLink": "前往“{tab}”标签页",
+    "dramaSettingsTitle": "漫剧设置",
+    "dramaSave": "保存漫剧设置",
+    "dramaKeyWarning": "网站还没有 {vendors} 的密钥，开启漫剧时点保存会被拒绝。请先填入密钥，或改选有密钥的厂商。",
+    "dramaKeyLink": "到 AI 设置填写密钥"
   },
   "videoSeries": {
     "listTitle": "作品",
@@ -2555,6 +2566,9 @@
     "openVideo": "打开",
     "skip": "跳过",
     "skipConfirm": "跳过第 {n} 集？作品会直接做下一集。",
-    "oneOffTitle": "单集漫剧"
+    "oneOffTitle": "单集漫剧",
+    "dramaOn": "漫剧已开启：工人会依序制作发起的单集漫剧与作品。",
+    "dramaOff": "漫剧目前是关闭的。",
+    "dramaOffHow": "工人不会制作任何漫剧，你发起的单集漫剧与作品会等到开启后才开始。在下方“{settings}”勾选“{enable}”，再点保存。"
   }
 }
