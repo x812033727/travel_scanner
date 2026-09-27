@@ -304,6 +304,7 @@ async function report(ctx, api, state, stage) {
     youtube_video_id: recordedVideoId(state, ctx.root),
     ...(guide ? { source_guide: guide } : {}),
     ...(state.series ? { series_slug: state.series.slug, ...(Number.isInteger(state.series.episode) ? { episode_number: state.series.episode } : {}) } : {}),
+    ...(state.retry_request_id ? { retry_acknowledged_id: state.retry_request_id } : {}),
   });
 }
 
@@ -445,6 +446,27 @@ export class Automation {
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "dropped" && dropped.has(state.slug)) return this.drop(state, dropped.get(state.slug));
     }
+    // A retry belongs to one site request and one local state transition. Remember the request
+    // before doing any paid stage so a stale list response or a failed report cannot replay it.
+    const siteBySlug = new Map(this.site.map((video) => [video.slug, video]));
+    for (const state of automatedVideos(this.workBase)) {
+      const siteVideo = siteBySlug.get(state.slug);
+      const request = siteVideo?.retry_request_id;
+      if (state.status !== "blocked" || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
+      state.retry_request_id = request;
+      state.status = "active";
+      const failedStage = /^([a-z_]+) failed \d+ times in a row:/.exec(state.blocked ?? "")?.[1];
+      if (failedStage && state.failures) delete state.failures[failedStage];
+      delete state.blocked;
+      saveState(this.workdir(state.slug), state);
+      try {
+        await report(this.ctx, this.api, state, "retrying");
+        siteVideo.retry_acknowledged_id = request;
+      } catch (error) {
+        return this.later(`${state.slug}: retry saved; could not report it yet (${error.message})`);
+      }
+      break;
+    }
     // The owner uploaded a finished video and pasted its address on /admin/videos: the id goes
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
@@ -462,6 +484,14 @@ export class Automation {
     }
     for (const state of automatedVideos(this.workBase)) {
       if (!["active", "done"].includes(state.status)) continue;
+      // If the first acknowledgement of a retry could not reach the site, send it before another stage.
+      if (state.status === "active" && state.retry_request_id && siteBySlug.get(state.slug)?.retry_acknowledged_id !== state.retry_request_id) {
+        try {
+          await report(this.ctx, this.api, state, "retrying");
+        } catch (error) {
+          return this.later(`${state.slug}: retry saved; could not report it yet (${error.message})`);
+        }
+      }
       let done = null;
       try {
         if (state.status === "active") done = await this.advance(state);

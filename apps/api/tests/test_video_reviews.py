@@ -625,10 +625,12 @@ async def test_admin_routes_need_content_capabilities(
     monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
     decide = AsyncMock()
     drop = AsyncMock()
+    retry = AsyncMock()
     dubs = AsyncMock()
     languages = AsyncMock()
     monkeypatch.setattr(admin_service, "decide", decide)
     monkeypatch.setattr(admin_service, "drop_project", drop)
+    monkeypatch.setattr(admin_service, "retry_project", retry)
     monkeypatch.setattr(admin_service, "set_dub_locales", dubs)
     monkeypatch.setattr(admin_service, "set_locales", languages)
     app = _app(viewer)
@@ -639,6 +641,7 @@ async def test_admin_routes_need_content_capabilities(
         listed = await client.get("/api/v1/admin/videos")
         refused = await client.post(review, json={"decision": "approve"})
         not_dropped = await client.post("/api/v1/admin/videos/v/drop", json={"note": "重複"})
+        not_retried = await client.post("/api/v1/admin/videos/v/retry")
         not_dubbed = await client.put("/api/v1/admin/videos/v/dubs", json={"locales": ["en"]})
         not_chosen = await client.put(
             "/api/v1/admin/videos/v/languages", json={"locales": {"en": {"captions": True}}}
@@ -646,12 +649,35 @@ async def test_admin_routes_need_content_capabilities(
     assert nobody.status_code == 403 and listed.status_code == 200
     assert refused.status_code == 403, "a viewer can read but not decide"
     assert not_dropped.status_code == 403, "nor drop a video"
+    assert not_retried.status_code == 403, "nor retry a blocked video"
     assert not_dubbed.status_code == 403, "nor pick its dub languages"
     assert not_chosen.status_code == 403, "nor decide its languages"
     decide.assert_not_awaited()
     drop.assert_not_awaited()
+    retry.assert_not_awaited()
     dubs.assert_not_awaited()
     languages.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_content_manager_can_request_a_blocked_video_retry(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    view = {
+        "slug": "v", "title": "Blocked video", "stage": "blocked", "checklist": [],
+        "youtube_video_id": None, "last_synced_at": "2026-09-27T00:00:00Z", "pending": 0,
+        "retry_request_id": str(uuid4()), "retry_acknowledged_id": None, "reviews": [],
+    }
+    request = AsyncMock(return_value=view)
+    monkeypatch.setattr(admin_service, "retry_project", request)
+    app = _app(owner)
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        response = await client.post("/api/v1/admin/videos/v/retry")
+    assert response.status_code == 200
+    assert response.json()["retry_request_id"] == view["retry_request_id"]
+    request.assert_awaited_once()
 
 
 @pytest.mark.asyncio

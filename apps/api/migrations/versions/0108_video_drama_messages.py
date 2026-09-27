@@ -1,7 +1,7 @@
 """A discussion thread on every series document and every screenplay (DRAMA-FLOW.md §三).
 
-Revision ID: 0107_video_drama_messages
-Revises: 0106_video_one_off_series
+Revision ID: 0108_video_drama_messages
+Revises: 0107_video_one_off_series
 
 ``video_drama_messages`` holds the owner's lines about a document (the setting book, the outline, a
 chapter's outline, a one-off's story bible) or an episode's screenplay, and the planner's or the
@@ -19,8 +19,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0107_video_drama_messages"
-down_revision: str | None = "0106_video_one_off_series"
+revision: str = "0108_video_drama_messages"
+down_revision: str | None = "0107_video_one_off_series"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

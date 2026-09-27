@@ -76,6 +76,8 @@ class ProjectIn(BaseModel):
     # An episode of a long series (docs/videos/SERIES.md). Left out, the stored ones stay.
     series_slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
     episode_number: int | None = Field(default=None, ge=1, le=10_000)
+    # The worker echoes the request it consumed. Older workers leave it out.
+    retry_acknowledged_id: UUID | None = None
 
 
 class ReviewFile(BaseModel):
@@ -180,6 +182,8 @@ class ProjectSummary(BaseModel):
     source_guide: str | None = None
     dropped_at: datetime | None = None
     dropped_note: str | None = None
+    retry_request_id: UUID | None = None
+    retry_acknowledged_id: UUID | None = None
     # What the drama route's generations have cost so far, from the media jobs (any month).
     media_usd: float = 0.0
     clip_seconds: int = 0

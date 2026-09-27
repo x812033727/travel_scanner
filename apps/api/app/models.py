@@ -2218,12 +2218,16 @@ class VideoProject(Timestamped, Base):
     dropped_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
-    # Superseded by ``locales`` on 2026-09-27 (docs/videos/LANGUAGES.md; migration 0105 copied it
+    # A blocked video's one-shot retry. The worker acknowledges this exact request in its
+    # next report; until then repeated clicks must not mint another request (migration 0104).
+    retry_request_id: Mapped[UUID | None] = mapped_column(nullable=True)
+    retry_acknowledged_id: Mapped[UUID | None] = mapped_column(nullable=True)
+    # Superseded by ``locales`` on 2026-09-27 (docs/videos/LANGUAGES.md; migration 0106 copied it
     # over). Neither read nor written any more; the column stays so no migration has to drop it.
     dub_locales: Mapped[list[str]] = mapped_column(JSON, default=list, server_default="[]")
     # The languages the owner chose for this video after its final cut, and what of each:
     # {"en": {"metadata": true, "captions": true, "dub": false}}, only the languages chosen,
-    # empty until they decide (docs/videos/LANGUAGES.md; migration 0105). The worker makes only
+    # empty until they decide (docs/videos/LANGUAGES.md; migration 0106). The worker makes only
     # those parts; ``locales_decided_at`` is the first save, "only Traditional Chinese" included,
     # and null while the video waits for the owner's decision.
     locales: Mapped[dict[str, Any]] = mapped_column(JSON, default=dict, server_default=text("'{}'"))
@@ -2287,7 +2291,7 @@ class VideoReview(Timestamped, Base):
         # (docs/videos/SERIES.md; migration 0099); dubs is a batch of finished dub tracks the
         # owner uploads (docs/videos/DUBS.md; migration 0101); languages is a batch of the parts
         # the owner chose for a video, descriptions, captions and dub tracks
-        # (docs/videos/LANGUAGES.md; migration 0105).
+        # (docs/videos/LANGUAGES.md; migration 0106).
         CheckConstraint(
             "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', "
             "'publish', 'dubs', 'languages')",

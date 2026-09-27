@@ -1,11 +1,11 @@
-"""0106 turns every queued one-off request into a one-episode series with a story bible to plan.
+"""0107 turns every queued one-off request into a one-episode series with a story bible to plan.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees a series
 without ``kind`` or the narrow checks, and the conversion (a queued request becomes a
 ``one-off`` series with its episode 1 planned and the request pointing at it) never runs there.
 This test seeds requests the way the site had them, takes the column and the wide checks off a
 real PostgreSQL, runs the migration through a real alembic context, and checks both directions
-inside one rolled back transaction, the way ``test_migration_0105_video_locales`` does.
+inside one rolled back transaction, the way ``test_migration_0106_video_locales`` does.
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0106_video_one_off_series"
+MIGRATION = "0107_video_one_off_series"
 SERIES = "video_drama_series"
 DOCS = "video_drama_docs"
 EPISODES = "video_drama_episodes"

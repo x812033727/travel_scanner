@@ -1,9 +1,9 @@
-"""0107 adds the discussion thread on every series document and every screenplay.
+"""0108 adds the discussion thread on every series document and every screenplay.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees a database
 without the table. This test takes it off a real PostgreSQL, runs the migration through a real
 alembic context, and checks both directions inside one rolled back transaction, the way
-``test_migration_0105_video_locales`` does.
+``test_migration_0106_video_locales`` does.
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0107_video_drama_messages"
+MIGRATION = "0108_video_drama_messages"
 MESSAGES = "video_drama_messages"
 SERIES = "video_drama_series"
 COLUMNS = {

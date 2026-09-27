@@ -1,7 +1,7 @@
 """A one-off drama is a series of one episode with a story bible (docs/videos/DRAMA-FLOW.md §二).
 
-Revision ID: 0106_video_one_off_series
-Revises: 0105_video_locales
+Revision ID: 0107_video_one_off_series
+Revises: 0106_video_locales
 
 The owner's one-off dramas used to travel as bare requests: the planner wrote a brief, the owner
 picked an outline on a card, and there was no screenplay gate. Now a one-off is a
@@ -27,8 +27,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0106_video_one_off_series"
-down_revision: str | None = "0105_video_locales"
+revision: str = "0107_video_one_off_series"
+down_revision: str | None = "0106_video_locales"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

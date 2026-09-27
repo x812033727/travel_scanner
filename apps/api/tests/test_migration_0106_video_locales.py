@@ -1,4 +1,4 @@
-"""0105 gives each video its language choice and admits the languages gate.
+"""0106 gives each video its language choice and admits the languages gate.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees a video
 without ``locales``, and the copy the migration makes (the dub languages ticked before become
@@ -33,7 +33,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0105_video_locales"
+MIGRATION = "0106_video_locales"
 PROJECTS = "video_projects"
 REVIEWS = "video_reviews"
 GATE_CHECK = "ck_video_review_gate"

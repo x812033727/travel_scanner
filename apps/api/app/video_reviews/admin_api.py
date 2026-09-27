@@ -133,6 +133,12 @@ async def drop(slug: str, payload: DropIn, user: ContentManager, session: Sessio
     return await service.drop_project(session, await _store(session), slug, user, payload)
 
 
+@admin_router.post("/{slug}/retry", response_model=ProjectOut)
+async def retry(slug: str, user: ContentManager, session: Session) -> ProjectOut:
+    """Ask the worker to resume a blocked video once on its next run."""
+    return await service.retry_project(session, slug, user)
+
+
 @admin_router.post("/{slug}/youtube", response_model=ProjectOut)
 async def link_youtube(
     slug: str, payload: YoutubeIn, user: ContentManager, session: Session

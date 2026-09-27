@@ -15,7 +15,7 @@ scope:
   - apps/api/migrations
   - apps/api/tests/test_video_series.py
   - apps/api/tests/test_video_drama_requests.py
-  - apps/api/tests/test_migration_0106_video_one_off_series.py
+  - apps/api/tests/test_migration_0107_video_one_off_series.py
 ---
 
 # Video drama room: a one-off episode is a one-episode series with a single story bible document
@@ -46,7 +46,7 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 
 ## Notes
 
-- 2026-09-27 做完（claude-fable-5-1-video-languages）。遷移是 `0106_video_one_off_series`（併 main 時從 0105 重新編號，接在 `0105_video_locales` 之後；分支自己的 T8 遷移 0104 隨 YouTube 那段一起 revert，main 的 T8 是 `0102_video_youtube_sync`；`messages-api` 那張的遷移要接 0105）。
+- 2026-09-27 做完（claude-fable-5-1-video-languages）。遷移是 `0107_video_one_off_series`（併 main 時從 0105 重新編號，接在 `0106_video_locales` 之後；分支自己的 T8 遷移 0104 隨 YouTube 那段一起 revert，main 的 T8 是 `0102_video_youtube_sync`；`messages-api` 那張的遷移要接 0105）。
   - `video_drama_series.kind`（`series`｜`one-off`，CHECK `ck_video_drama_series_kind`）；`ck_video_drama_series_numbers` 與 `ck_video_drama_doc_kind` 每次都重建（PostgreSQL 會把 BETWEEN 存成兩個比較，比對文字不可靠，照 0099 對 gate check 的做法）。
   - 轉換：`status = 'queued'` 且沒有 `series_id` 的請求各建一部 `one-off` 作品，**作品的 id 就用請求的 id**（三段 SQL 都以它為鍵，重跑找不到東西），slug `one-off-<id 前 8 碼>`，title 沒有就取 premise 前 200 字；同時建第 1 集（planned）；請求列補 `series_id`、`episode_number = 1`，狀態仍是 `queued`。已 `started` 的不動。
   - 請求列就是那一集的運送列：`start_episode` 找到同 series、同集數、`queued` 的請求就沿用（改 started、填 slug），沒有才新建；所以「單集漫劇」清單裡那筆請求會從排隊→製作中→完成，不會多一筆。`next_request`（舊路，工人的 `drama-requests/next`）只回沒有 `series_id` 的排隊請求，episode 的請求一律走 `series/next`。

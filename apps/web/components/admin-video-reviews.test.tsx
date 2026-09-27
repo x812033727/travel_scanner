@@ -91,6 +91,34 @@ describe("AdminVideoReviews", () => {
     expect(screen.queryByText("放棄這支影片")).toBeNull();
   });
 
+  it("lets a content manager request one retry for a blocked video", async () => {
+    const blocked = { ...summary, stage: "blocked", pending: 0, checklist: [{ key: "blocked", label: "卡住，需要人處理：writer failed twice", done: false }] };
+    const request = "2b06f60f-1026-477a-9d40-28683b00a22e";
+    let pending = false;
+    const posts: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "POST") { posts.push(url); pending = true; }
+      const value = { ...blocked, retry_request_id: pending ? request : null, retry_acknowledged_id: null };
+      return Promise.resolve(Response.json(url.endsWith("/admin/videos") ? [value] : { ...value, reviews: [] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    fireEvent.click(await screen.findByRole("button", { name: "重試這支影片" }));
+    await waitFor(() => expect(posts).toEqual([expect.stringContaining("/admin/videos/ai-model-choice/retry")]));
+    expect(await screen.findByText("已提出重試，工人下一輪會接手。")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "重試這支影片" })).toBeNull();
+  });
+
+  it("shows a blocked video's reason to a reader without the retry action", async () => {
+    const blocked = { ...summary, stage: "blocked", pending: 0, checklist: [{ key: "blocked", label: "卡住，需要人處理：缺金鑰", done: false }] };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos") ? [blocked] : { ...blocked, reviews: [] }))));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    expect(await screen.findByText("卡住，需要人處理：缺金鑰")).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "重試這支影片" })).toBeNull();
+  });
+
   it("drops a video with a reason once confirmed, then shows it as dropped", async () => {
     let dropped = false;
     const posts: Array<{ url: string; body: unknown }> = [];

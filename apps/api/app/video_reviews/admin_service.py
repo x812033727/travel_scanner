@@ -268,6 +268,8 @@ def _summary(
         "source_guide": project.source_guide,
         "dropped_at": project.dropped_at,
         "dropped_note": project.dropped_note,
+        "retry_request_id": project.retry_request_id,
+        "retry_acknowledged_id": project.retry_acknowledged_id,
         "media_usd": spend.usd if spend else 0.0,
         "clip_seconds": spend.clip_seconds if spend else 0,
         "locales": choices,
@@ -331,6 +333,9 @@ async def upsert_project(
         project.series_slug = payload.series_slug
     if payload.episode_number is not None:
         project.episode_number = payload.episode_number
+    # A stale or unrelated report cannot consume a newer retry request.
+    if payload.retry_acknowledged_id == project.retry_request_id:
+        project.retry_acknowledged_id = payload.retry_acknowledged_id
     project.last_synced_at = now
     project.updated_at = now
     await session.commit()
@@ -712,6 +717,33 @@ async def _apply_locales(
         )
     )
     await session.commit()
+
+
+async def retry_project(session: AsyncSession, slug: str, user: User) -> ProjectOut:
+    """Queue one retry for a blocked video; repeated clicks return the same request."""
+    if not valid_slug(slug):
+        raise AppError(404, "video_project_not_found", "找不到這支影片")
+    project = await session.scalar(
+        select(VideoProject).where(VideoProject.slug == slug).with_for_update()
+    )
+    if project is None:
+        raise AppError(404, "video_project_not_found", "找不到這支影片")
+    _refuse_dropped(project)
+    if project.stage != "blocked":
+        raise AppError(409, "video_retry_not_blocked", "只有卡住的影片可以重試")
+    if project.retry_request_id == project.retry_acknowledged_id:
+        project.retry_request_id = uuid4()
+        project.updated_at = datetime.now(UTC)
+        session.add(
+            AdminAuditLog(
+                actor_user_id=user.id,
+                action="video_project_retry_requested",
+                target=f"video_project:{project.id}",
+                metadata_json={"slug": slug, "request_id": str(project.retry_request_id)},
+            )
+        )
+        await session.commit()
+    return await project_view(session, slug)
 
 
 async def set_locales(

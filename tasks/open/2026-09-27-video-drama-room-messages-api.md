@@ -18,7 +18,7 @@ scope:
   - apps/api/app/video_automation/admin_api.py
   - apps/api/migrations
   - apps/api/tests/test_video_drama_messages.py
-  - apps/api/tests/test_migration_0107_video_drama_messages.py
+  - apps/api/tests/test_migration_0108_video_drama_messages.py
   - apps/web/app/api/video/automation/series
 ---
 
@@ -51,7 +51,7 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 
 ## Notes
 
-- 2026-09-27 做完（claude-fable-5-1-video-languages）。遷移是 `0107_video_drama_messages`（接 one-off 的 0106；併 main 時從 0106 重新編號）。
+- 2026-09-27 做完（claude-fable-5-1-video-languages）。遷移是 `0108_video_drama_messages`（接 one-off 的 0107；併 main 時從 0106 重新編號）。
   - 表照 DoD；`refers_to` 文件存 `v<版本號>`，劇本存 `script` 審核 `content_sha256` 前 12 碼（還沒有劇本審核時是 `null`）。
   - 發言規則（`messages.post_message`）：subject 要是這部作品有的（one-off 只有 `bible` 與 `script:1`；作品有 setting／outline／`chapter:n`（n ≤ 篇數）／`script:n`（n ≤ 集數）），不是就 404 `video_drama_thread_not_found`。文件核准 → 409 `video_drama_doc_approved`；文件還沒有第一版可以先留言（`refers_to` 為 null）。劇本：那一集還沒開始（沒 slug）→ 409 `video_drama_script_not_started`；最新的 `script` 審核已核准 → 409 `video_drama_script_approved`。
   - 工人：`GET /video/automation/series/messages/next` 回最舊、`answered_at` 為空的站主訊息，帶 `thread`、`series`、`target`（`doc`｜`script`）、`doc`（最新版）或 `episode`（帶 slug）、`context`（劇本用那一集、細綱用那篇第一集的脈絡）。`POST …/messages/{id}/answer`：回覆存成 `planner`／`writer` 那一則並寫 `answered_at`；文件有 `revised` 就出新版 `review`，被取代的 `review` 版標成 `rejected`、備註「討論後出了新版本」（`series.DISCUSSION_NOTE`），`_rewrite_job` 算重寫次數時扣掉這些，所以討論不吃 `series_doc_rewrites`；文件在中間被核准就只留回覆、丟掉 `revised`；劇本一律只留回覆。回覆過或不是站主的訊息 → 409 `video_drama_message_answered`。

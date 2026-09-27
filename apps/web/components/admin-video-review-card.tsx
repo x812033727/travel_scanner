@@ -45,6 +45,7 @@ export type ProjectSummary = {
   // confirmation was approved; both absent from an API older than this page.
   youtube_publish_at?: string | null; publish_approved_at?: string | null;
   dropped_at?: string | null; dropped_note?: string | null;
+  retry_request_id?: string | null; retry_acknowledged_id?: string | null;
   format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
   // The languages the owner chose after the final cut and what of each, when they first decided,
   // where each chosen part stands, and the server's verdict on whether the video may be scheduled

@@ -104,7 +104,7 @@ DEFAULT_DRAMA: dict[str, Any] = {
     # until the owner has looked at a first drama's sheets, like auto_approve_storyboard.
     "auto_pick_look": False,
     # The drama's own copies of the settings a tutorial keeps at the top level
-    # (docs/videos/DRAMA-FLOW.md §一; migration 0104): the stage models and the narrator voice
+    # (docs/videos/DRAMA-FLOW.md §一; migration 0105): the stage models and the narrator voice
     # (None follows the tutorial's), the standing instructions, the language defaults, the
     # automatic approval of the narration and of the final cut, and the rounds.
     "drama_stage_models": None,
@@ -184,7 +184,7 @@ class VideoAutomationSettings(Base):
             "AND series_episodes_per_month BETWEEN 0 AND 500",
             name="ck_video_drama_series",
         ),
-        # The drama's own rounds; migration 0104 creates the same constraint under the same name.
+        # The drama's own rounds; migration 0105 creates the same constraint under the same name.
         CheckConstraint(
             "drama_max_verify_rounds BETWEEN 1 AND 5 AND drama_max_retake_rounds BETWEEN 0 AND 5",
             name="ck_video_drama_rounds",
@@ -296,8 +296,8 @@ class VideoAutomationSettings(Base):
     series_doc_rewrites: Mapped[int] = mapped_column(Integer, default=2, server_default="2")
     series_episodes_per_month: Mapped[int] = mapped_column(Integer, default=30, server_default="30")
     # The drama's own copies of the tutorial's settings (docs/videos/DRAMA-FLOW.md §一; migration
-    # 0104). The models and the voice are NULL to follow the tutorial's; the instructions and the
-    # two switches were copied from the tutorial's columns when 0104 ran.
+    # 0105). The models and the voice are NULL to follow the tutorial's; the instructions and the
+    # two switches were copied from the tutorial's columns when 0105 ran.
     drama_stage_models: Mapped[dict[str, dict[str, str]] | None] = mapped_column(
         JSON, nullable=True
     )
@@ -440,7 +440,7 @@ class VideoDramaRequest(Base):
 # A long drama series (docs/videos/SERIES.md; migration 0099): the series the owner planned, the
 # documents the owner approves (the setting book, the whole-series outline, each chapter's
 # detailed outline, one row per version), and the episode table. A one-off drama is a series of
-# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0106).
+# one episode whose only document is its story bible (docs/videos/DRAMA-FLOW.md §二; 0107).
 SERIES_KINDS = ("series", "one-off")
 SERIES_STATUSES = ("setting", "outline", "active", "paused", "finished")
 # A binge series (docs/videos/BINGE.md; migration 0103): the genre preset the planner writes
@@ -601,7 +601,7 @@ class VideoDramaDoc(Base):
 
 
 # The discussion thread on every series document and every episode's screenplay
-# (docs/videos/DRAMA-FLOW.md §三; migration 0107): the owner writes a line, the worker's next
+# (docs/videos/DRAMA-FLOW.md §三; migration 0108): the owner writes a line, the worker's next
 # round has the planner (documents) or the writer (screenplays) answer it, and a new version of
 # the document when the owner asked for a change.
 MESSAGE_AUTHORS = ("owner", "planner", "writer")

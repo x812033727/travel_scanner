@@ -1,7 +1,7 @@
 """Each video's languages, and the languages review gate (docs/videos/LANGUAGES.md).
 
-Revision ID: 0105_video_locales
-Revises: 0104_video_split_settings
+Revision ID: 0106_video_locales
+Revises: 0105_video_split_settings
 
 Every video is made in Traditional Chinese; after its final cut the owner chooses, on
 /admin/videos, which of en, ja, ko and zh-CN to add and what of each: the title and description,
@@ -25,8 +25,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0105_video_locales"
-down_revision: str | None = "0104_video_split_settings"
+revision: str = "0106_video_locales"
+down_revision: str | None = "0105_video_split_settings"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

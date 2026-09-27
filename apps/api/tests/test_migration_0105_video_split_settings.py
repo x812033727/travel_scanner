@@ -1,4 +1,4 @@
-"""0104 gives the drama its own settings beside the tutorial's, copying the tutorial's values.
+"""0105 gives the drama its own settings beside the tutorial's, copying the tutorial's values.
 
 ``0001_initial`` builds a fresh database from the current models, so CI never sees a settings
 row without the drama columns, and the copy the migration makes (the standing instructions and
@@ -36,7 +36,7 @@ pytestmark = pytest.mark.skipif(
 )
 
 VERSIONS = Path(__file__).resolve().parents[1] / "migrations" / "versions"
-MIGRATION = "0104_video_split_settings"
+MIGRATION = "0105_video_split_settings"
 SETTINGS = "video_automation_settings"
 ROUNDS_CHECK = "ck_video_drama_rounds"
 COLUMNS = (

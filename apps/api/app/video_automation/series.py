@@ -1469,7 +1469,7 @@ async def start_episode(
     if taken is not None:
         raise SeriesRefused(409, "video_drama_request_slug_taken", f"{video_slug} 已經是另一支影片")
     now = _now()
-    # A one-off's request row was filed with the series (or by migration 0106): the episode
+    # A one-off's request row was filed with the series (or by migration 0107): the episode
     # travels as that row, so the owner's queue shows it started rather than a second request.
     queued = await session.scalar(
         select(VideoDramaRequest)

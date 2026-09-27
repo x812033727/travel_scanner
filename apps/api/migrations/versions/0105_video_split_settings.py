@@ -1,7 +1,7 @@
 """The drama's own settings, beside the tutorial's (docs/videos/DRAMA-FLOW.md §一).
 
-Revision ID: 0104_video_split_settings
-Revises: 0103_video_binge_series
+Revision ID: 0105_video_split_settings
+Revises: 0104_video_retry_request
 
 The settings tab on /admin/videos splits into a tutorial, a drama and a shared part, each saved
 on its own, so every value that may differ by format gets a drama column next to the tutorial's:
@@ -21,8 +21,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0104_video_split_settings"
-down_revision: str | None = "0103_video_binge_series"
+revision: str = "0105_video_split_settings"
+down_revision: str | None = "0104_video_retry_request"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
