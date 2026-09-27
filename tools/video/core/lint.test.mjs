@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
-import { billableEstimate, briefSections, checkBrief, lintVideo, templateSimilarity } from "./lint.mjs";
+import { billableEstimate, briefSections, checkBrief, lintVideo, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
 import { textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 
@@ -65,6 +65,26 @@ test("the brief must state the owner's view and what the viewer can do afterward
   const placeholder = fixtureBrief().replace("排行榜只是起點；我自己是先看工作類型，再看等待時間和價格。", "（待填）<!-- 站主寫 -->");
   assert.deepEqual(checkBrief(placeholder), ['brief.md needs a non-empty "## 站主觀點" section']);
   assert.equal(Object.keys(briefSections("## A\nx\n## B\n")).join(","), "A,B");
+});
+
+test("with a channel stance, 站主觀點 opens by naming the stance points it applies", () => {
+  const stance = "頻道立場\n1. 先把帳算清楚再花錢。\n2、官方原文優先。\n\n３．AI 的整理要點開來源核對。\n不是條目的一行";
+  assert.deepEqual(stancePoints(stance), { 1: "先把帳算清楚再花錢。", 2: "官方原文優先。", 3: "AI 的整理要點開來源核對。" });
+  assert.deepEqual(stancePoints(""), {});
+  assert.deepEqual(stancePoints(null), {});
+  const withLine = (line) => fixtureBrief().replace("排行榜只是起點；我自己是先看工作類型，再看等待時間和價格。", `${line}\n排行榜只是起點；我自己是先看工作類型。`);
+  assert.deepEqual(stanceProblems(fixtureBrief(), ""), [], "a blank stance is not checked");
+  assert.deepEqual(stanceProblems(fixtureBrief(), "no numbered points here"), [], "a stance without numbered points has nothing to apply");
+  assert.deepEqual(stanceProblems(withLine("套用立場：1、3"), stance), []);
+  assert.deepEqual(stanceProblems(withLine("套用立場: 2, ３"), stance), [], "an ASCII colon, commas and full-width digits read the same");
+  assert.deepEqual(stanceProblems(withLine("\n套用立場：2"), stance), [], "a blank line before it is fine");
+  assert.match(stanceProblems(fixtureBrief(), stance)[0], /^the first line of "## 站主觀點" must read 「套用立場：N、M」.*\(found 「排行榜只是起點/);
+  assert.match(stanceProblems(withLine("套用立場：4"), stance)[0], /names point 4, but the stance has only 1, 2, 3/);
+  assert.deepEqual(stanceProblems(withLine("套用立場：1、4、5"), stance).length, 2, "every unknown number is named");
+  assert.match(stanceProblems(withLine("套用立場："), stance)[0], /names no stance point; the stance has 1, 2, 3/);
+  assert.match(stanceProblems(withLine("套用立場：一"), stance)[0], /"一", which is not a point number/);
+  assert.match(stanceProblems("# x\n## 觀眾\ny\n", stance)[0], /needs a "## 站主觀點" section/);
+  assert.match(stanceProblems(null, stance)[0], /brief\.md is missing/);
 });
 
 test("a slide cannot reveal more elements than it has", () => {

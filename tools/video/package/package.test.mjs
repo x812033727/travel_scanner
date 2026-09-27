@@ -40,13 +40,18 @@ test("a description over YouTube's byte limit is a problem, named by locale", ()
   assert.match(problems.join("\n"), /zh-TW\.description: \d+ bytes/);
 });
 
-test("the checklist starts private and leaves the disclosure decisions to the owner", () => {
+test("UPLOAD.md keeps only the Studio steps: private first, the disclosure as metadata.json says, no self-check list", () => {
   const { metadata } = composeMetadata({ doc, timeline });
-  const text = uploadChecklist({ metadata, captions: ["captions/zh-TW.srt"], thumbnail: true });
-  assert.match(text, /瀏覽權限先選「私人」/);
-  assert.match(text, /captions\/zh-TW\.srt/);
-  assert.match(text, /AI 使用揭露/);
-  assert.match(text, /非原創內容政策/);
+  const slides = uploadChecklist({ metadata, captions: ["captions/zh-TW.srt"], thumbnail: true, disclosure: { synthetic: false, reason: "slides read by a stock TTS voice" } });
+  assert.match(slides, /瀏覽權限先選「私人」/);
+  assert.match(slides, /captions\/zh-TW\.srt/);
+  assert.match(slides, /「變造或合成內容」：不用勾。`metadata\.json` 的 `contains_synthetic_media` 是 `false`（slides read by a stock TTS voice）/);
+  assert.match(slides, /貼上 YouTube 網址/);
+  assert.doesNotMatch(slides, /- \[ \]/, "the self-check list moved into the automatic checks");
+  assert.doesNotMatch(slides, /非原創內容政策|AI 使用揭露|youtube-sync/);
+  const drama = uploadChecklist({ metadata: { ...metadata, contains_synthetic_media: true, disclosure_reason: "AI-generated shots and voices" }, captions: [], thumbnail: false, drama: true });
+  assert.match(drama, /「變造或合成內容」：勾「是」。`metadata\.json` 的 `contains_synthetic_media` 是 `true`（AI-generated shots and voices）/);
+  assert.match(drama, /還沒有字幕檔/);
 });
 
 test("the audio review page lists every line with its clip and exports flags with the timeline version", () => {

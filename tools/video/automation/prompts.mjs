@@ -94,7 +94,10 @@ brief.md, in zh-TW, with exactly these sections in this order:
 # <working title>
 ## 觀眾 — who, what they already know, the question they searched for
 ## 觀眾看完能做到的事 — one or two concrete things the viewer can DO afterwards
-## 站主觀點 — a first-person stance the owner confirms or rewrites; mark it as a proposal
+## 站主觀點 — the owner's first-person stance on this topic. When the prompt carries "## The channel's
+stance", this section's FIRST line reads 「套用立場：N、M」 (the numbers of the stance points this
+video applies, at least one), followed by the concrete opinion those points give on this topic;
+without a channel stance, propose one and mark it as a proposal the owner confirms or rewrites
 ## 示範或實算 — at least one worked example with numbers from the sources, and which slide shows it
 ## 大綱 — 2 or 3 options, each exactly like this:
 ### 選項 A：<angle in a few words>
@@ -256,7 +259,10 @@ brief.md, in zh-TW, with exactly these sections in this order:
 # <working title>
 ## 故事前提 — three to five sentences: who wants what, what stands in the way, how it ends; the source and what is invented
 ## 角色 — 2 to 4 characters: id, name, role, a one-line personality, an APPEARANCE in English an image model draws the same way every time, and the voice (a Gemini voice from "drama_settings.voices" when listed, with a Taiwan-Mandarin style line)
-## 站主觀點 — why this story, first person, marked as a proposal the owner confirms or rewrites
+## 站主觀點 — why this story, first person. When the prompt carries "## The channel's stance", this
+section's FIRST line reads 「套用立場：N、M」 (the numbers of the stance points this episode applies,
+at least one), followed by the reading those points give this story; without a channel stance,
+propose one and mark it as a proposal the owner confirms or rewrites
 ## 幕 — 3 acts with what happens in each and roughly how many shots
 ## 大綱 — 2 or 3 options, each exactly like this:
 ### 選項 A：<angle in a few words>
@@ -321,20 +327,37 @@ This is a drama: every line has a "speaker" and a character's line may have an "
 exactly, and keep a character's line in that character's voice (short, spoken, in the moment).`,
 };
 
-/** The instructions a stage gets for a video's format: the drama's own where it has one. */
 /** What the settings tab adds under the skill's text: the owner's standing instructions for the stage. */
 export const STANDING_HEADING = `## The owner's standing instructions
 The site owner wrote these on the settings tab for every video this stage works on. Follow them;
 where they contradict a rule above, they win. They may be in Chinese.`;
 
 /**
- * The stage's instructions for the format, with the owner's standing instructions (if any) last.
- * A series document or an episode stage (`variant`, docs/videos/SERIES.md) has its own text.
+ * The channel's stance (docs/videos/HANDS-OFF.md §頻道立場): what this channel believes, as the
+ * owner wrote it, numbered points. The planner writes 站主觀點 from it and names the points it
+ * applies; the writer keeps the narration's opinions inside it. Only these two stages read it.
  */
-export function instructionsFor(stage, format = "slides", standing = "", variant = null) {
+export const STANCE_HEADING = `## The channel's stance
+The site owner wrote these numbered points once; they are what this channel believes, and every
+video's 站主觀點 is written from them, never invented. The planner opens 站主觀點 with
+「套用立場：N、M」 naming the points it applies, then the concrete opinion they give on this topic;
+the writer marks the narration's opinions as the owner's and keeps them inside these points and
+the brief's 站主觀點. Never argue against a point. They may be in Chinese.`;
+const STANCE_STAGES = new Set(["planner", "writer"]);
+
+/**
+ * The stage's instructions for the format, then the channel's stance for the planner and the
+ * writer (blank: nothing), then the owner's standing instructions (if any) last. A series
+ * document or an episode stage (`variant`, docs/videos/SERIES.md) has its own text.
+ */
+export function instructionsFor(stage, format = "slides", standing = "", variant = null, stance = "") {
   const base = (variant && SERIES_INSTRUCTIONS[`${stage}:${variant}`]) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+  const parts = [base];
+  const belief = typeof stance === "string" && STANCE_STAGES.has(stage) ? stance.trim() : "";
+  if (belief) parts.push(`${STANCE_HEADING}\n${belief}`);
   const text = typeof standing === "string" ? standing.trim() : "";
-  return text ? `${base}\n\n${STANDING_HEADING}\n${text}` : base;
+  if (text) parts.push(`${STANDING_HEADING}\n${text}`);
+  return parts.join("\n\n");
 }
 
 /** The model's answer as JSON: the whole text, or the object inside a stray Markdown fence. */
