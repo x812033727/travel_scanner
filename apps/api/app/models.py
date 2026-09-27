@@ -2218,6 +2218,10 @@ class VideoProject(Timestamped, Base):
     dropped_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
+    # The languages the owner ticked on /admin/videos to dub this video in, a subset of en, ja,
+    # ko and zh-CN in that order, empty until they choose (docs/videos/DUBS.md; 0099). The worker
+    # makes those tracks once the final cut is approved; the owner uploads them in YouTube Studio.
+    dub_locales: Mapped[list[str]] = mapped_column(JSON, default=list, server_default="[]")
 
 
 class VideoReview(Timestamped, Base):
@@ -2230,9 +2234,11 @@ class VideoReview(Timestamped, Base):
         UniqueConstraint("project_id", "gate", "content_sha256", name="uq_video_review_content"),
         # look and storyboard are the drama format's gates (docs/videos/DRAMA.md; migration 0095);
         # script is an episode's screenplay before any image or clip is paid for
-        # (docs/videos/SERIES.md; migration 0099).
+        # (docs/videos/SERIES.md; migration 0099); dubs is a batch of finished dub tracks the
+        # owner uploads (docs/videos/DUBS.md; migration 0100).
         CheckConstraint(
-            "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', 'publish')",
+            "gate IN ('outline', 'script', 'look', 'storyboard', 'audio', 'final', "
+            "'publish', 'dubs')",
             name="ck_video_review_gate",
         ),
         CheckConstraint(
