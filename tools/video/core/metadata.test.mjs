@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { fixture } from "./fixtures/load.mjs";
-import { articleUrl, checkYoutubeFields, composeDescription, hashtagsFrom, tagsLength } from "./metadata.mjs";
+import { articlePath, articleUrl, checkYoutubeFields, composeDescription, hashtagsFrom, tagsLength } from "./metadata.mjs";
 import { estimateTimeline } from "./timeline.mjs";
 
 test("tag length is counted YouTube's way: commas between tags, quotes around tags with spaces", () => {
@@ -25,6 +25,8 @@ test("article links follow the site's URL shapes and carry the video campaign", 
   );
   assert.equal(articleUrl({ slug: "tokyo-subway", kind: "howto" }, "en", "x"), "https://mokaair.com/en/guides/howto/tokyo-subway?utm_source=youtube&utm_medium=video&utm_campaign=x");
   assert.equal(articleUrl(null, "zh-TW", "x"), null);
+  assert.equal(articlePath({ slug: "ai-news-gpt-6-sol-luna-20260923", kind: "life" }), "/life/ai-news-gpt-6-sol-luna-20260923");
+  assert.equal(articlePath({ slug: "tokyo-subway", kind: "howto" }), "/guides/howto/tokyo-subway");
 });
 
 test("the composed description opens with the article, then body, chapters, sources and hashtags", () => {

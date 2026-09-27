@@ -16,6 +16,7 @@ import path from "node:path";
 import { approve, sha256File } from "../core/approvals.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { stanceProblems } from "../core/lint.mjs";
+import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
 import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
@@ -82,6 +83,36 @@ function titleOf(brief) {
 /** The site article a video retells: its source_guide, or else the first site article it rests on. */
 export function mainGuide({ source_guide: guide, source_urls: urls }) {
   return (GUIDE_SLUG.test(guide ?? "") ? guide : null) ?? guideSlugs(urls)[0] ?? null;
+}
+
+// Until 2026-09-27 drafts read their article at /<locale>/guides/<slug>, a kind's list page the
+// site answers with 404 for an article; the writer of gpt-6-sol-luna-where-to-use refused twice
+// for want of a source. Addresses saved that way are read where the article is served.
+const STALE_ARTICLE_URL = /^https:\/\/(?:www\.)?mokaair\.com\/([A-Za-z-]+)\/guides\/([a-z0-9][a-z0-9-]{0,118}[a-z0-9])\/?(?:[?#].*)?$/;
+
+/**
+ * Where a stage reads a site article: the path its content pack's kind gives (core/metadata.mjs
+ * articlePath). A slug with no pack here is read as a life article, the section the drafts'
+ * topics come from (apps/api/app/video_automation/topics.py).
+ */
+export function siteArticleUrl(slug, root = ROOT, locale = "zh-TW") {
+  const kind = readJson(contentPackFile(slug, root), null)?.kind ?? "life";
+  return `${SITE}/${locale}${articlePath({ slug, kind })}`;
+}
+
+/**
+ * The pages a stage reads for a video: its site article first, then the rest, each stale
+ * /<locale>/guides/<slug> address moved to where the article is served. A kind's list page has
+ * no content pack, so it stays as it is.
+ */
+export function siteSources(sourceGuide, urls = [], root = ROOT) {
+  const moved = (urls ?? []).map((url) => {
+    const stale = STALE_ARTICLE_URL.exec(String(url));
+    if (!stale) return url;
+    if (stale[2] === sourceGuide || existsSync(contentPackFile(stale[2], root))) return siteArticleUrl(stale[2], root, stale[1]);
+    return url;
+  });
+  return [...new Set([...(sourceGuide ? [siteArticleUrl(sourceGuide, root)] : []), ...moved])];
 }
 
 /**
@@ -537,7 +568,7 @@ export class Automation {
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const minutes = Number(request.target_minutes) || 3;
     const stateBase = { format: "drama", request_id: request.id, premise: request.premise, style_preset: request.style_preset ?? null, target_minutes: minutes, source_guide: request.source_guide ?? null };
-    const sources = request.source_guide ? await readSources(this.read, [`https://mokaair.com/zh-TW/guides/${request.source_guide}`]) : [];
+    const sources = request.source_guide ? await readSources(this.read, [siteArticleUrl(request.source_guide, this.ctx.root)]) : [];
     let plan = null;
     let problem = null;
     for (let attempt = 0; attempt < 2 && !plan; attempt++) {
@@ -1059,8 +1090,7 @@ export class Automation {
     }
     const brief = readFileSync(path.join(dir, "brief.md"), "utf8");
     const option = outlineOptions(brief).find((each) => each.key === state.chosen) ?? null;
-    const siteUrl = state.source_guide ? [`https://mokaair.com/zh-TW/guides/${state.source_guide}`] : [];
-    const sources = await readSources(this.read, [...siteUrl, ...(state.source_urls ?? [])]);
+    const sources = await readSources(this.read, siteSources(state.source_guide, state.source_urls, this.ctx.root));
     const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { brief, chosen_option: option, sources, line_ids: this.freshIds(state, null, 140) }), 32_000, state.format, state.series ? "episode" : null);
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     const problem = await this.saveAndLint(state, answer);
@@ -1077,7 +1107,7 @@ export class Automation {
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const claims = existsSync(path.join(dir, "claims.md")) ? readFileSync(path.join(dir, "claims.md"), "utf8") : "";
     const round = state.verify_rounds + 1;
-    const urls = [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])];
+    const urls = siteSources(null, [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])], this.ctx.root);
     const sources = await readSources(this.read, urls);
     const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, state.series ? "episode" : null);
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);

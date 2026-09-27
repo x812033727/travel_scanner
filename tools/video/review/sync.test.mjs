@@ -194,6 +194,10 @@ test("the article a video retells is its source_guide, or else the first site ar
   assert.equal(sourceGuideOf({ source_guide: "pack-slug", sources: [{ url: urls[1] }] }), "pack-slug");
   assert.equal(sourceGuideOf({ sources: urls.map((url) => ({ url })) }), "ai-news-x-20260820");
   assert.equal(sourceGuideOf({ sources: [{ url: urls[0] }] }), null);
+  // Where the site serves articles: life under /life, the other kinds under /guides/<kind>.
+  const served = ["https://mokaair.com/zh-TW/life/ai-news-gpt-6-sol-luna-20260923", "https://mokaair.com/ja/guides/howto/tokyo-subway?utm_source=youtube"];
+  assert.deepEqual(guideSlugs(served), ["ai-news-gpt-6-sol-luna-20260923", "tokyo-subway"]);
+  assert.equal(sourceGuideOf({ sources: [{ url: served[0] }] }), "ai-news-gpt-6-sol-luna-20260923");
 });
 
 test("review-push --report-only lists the video on the site with its article and submits nothing", async () => {

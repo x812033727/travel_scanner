@@ -27,8 +27,10 @@ SITE_LIMIT = 60
 # Each topic word is one Brave query; they share the guide search's daily Brave budget.
 SEARCH_QUERIES = 5
 SEARCH_RESULTS = 10
-# Lifestyle articles are read at /guides/<slug>; /life is only the section's list page.
-SITE_URL = "https://mokaair.com/zh-TW/guides"
+# Lifestyle articles are read at /life/<slug> (apps/web/app/(ads-public)/[locale]/life/[slug]).
+# /guides/<slug> is a kind's list page and answers 404 for an article: until 2026-09-27 every
+# draft's writer was sent there, and one refused to write for want of its only source.
+SITE_URL = "https://mokaair.com/zh-TW/life"
 
 
 async def site_topics(session: AsyncSession, now: datetime | None = None) -> list[TopicView]:
