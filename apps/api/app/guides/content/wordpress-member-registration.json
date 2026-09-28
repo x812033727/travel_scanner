@@ -257,6 +257,990 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress Member Registration: Forms, Verification, and Account Recovery",
+      "description": "A visible form is only the first step in WordPress member registration. Using Ultimate Member, this guide connects role assignment, email activation, manual review, password resets, and profile visibility. It also explains when LoginPress helps with the appearance of the login page. A full acceptance sequence and troubleshooting table help Taiwan-based site owners build a clear, recoverable membership flow without collecting more data than needed.",
+      "hero": {
+        "src": "/guides/wordpress-member-registration/hero-en.jpg",
+        "alt": "Original illustration of a form document, identity shield, and member-page screen, representing the path from registration to login.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A reading club wants participants to register before downloading handouts. The easiest thing to overlook is not the form color but what happens after submission. If members never receive activation emails, administrators do not know who is awaiting review, or the password-reset link returns to the login page, a membership site that looks finished will not work."
+        },
+        {
+          "type": "paragraph",
+          "text": "Map the path through registration, identity confirmation, login, profile changes, and account recovery before choosing tools. This guide uses Ultimate Member to explain the member flow and LoginPress to cover the separate job of styling the login page. It does not assume both plugins must be installed, or that a polished login page means the membership rules are complete."
+        },
+        {
+          "type": "heading",
+          "text": "Decide who can join and which data you need",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Write the joining rule in one sentence, such as “Any reader can apply and receives ordinary membership after confirming their email address.” If officers must approve applications, name the reviewer and the criteria. Do not give every applicant site-management powers from the start; membership and admin access are separate decisions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep only fields that support the process. A reading club that sends notices may not need an address, date of birth, or company name; a display name can also differ from a contact name. Explain in advance which details appear on a profile and which are visible only to managers, so applicants understand their use before submitting."
+        },
+        {
+          "type": "list",
+          "items": [
+            "List the joining criteria, post-registration role, and content access needed.",
+            "For each field, record its purpose, why it is required, and who can see it.",
+            "Choose email activation, manual review, or another process, and assign someone to handle it."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Create the registration form and required pages",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In Ultimate Member, create a registration form under Forms and place its generated shortcode on the corresponding page after configuring the fields. Set the role for that form explicitly, or check Registration Default Role. Settings may move between versions; use the current dashboard and the official General/Users documentation as your reference."
+        },
+        {
+          "type": "paragraph",
+          "text": "The plugin needs matching pages for login, registration, account, profile, and password reset; keeping only the registration page is insufficient. Follow the official Default Pages guidance to create and verify each page mapping, preserving required shortcodes. If you customize page URLs, check every button and email link to ensure it still points to the right place."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check caching on member pages as well. The official guidance says Account, Login, Password Reset, Register, and User pages should not be cached. Review the cache plugin, host, and CDN settings together. Test with separate accounts so one person’s details or state cannot reach another through a shared cached page."
+        },
+        {
+          "type": "heading",
+          "text": "Make activation and review states clear",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Member role settings can require email activation or administrator review. Email activation also needs the corresponding Account Activation Email template enabled. For manual review, check both the applicant’s pending-review message and the notification that tells an administrator to review. If you turn off the emails while leaving the rule on, applicants may not know what to do next."
+        },
+        {
+          "type": "paragraph",
+          "text": "An email-activation page can say, “We received your application. Open the activation link in your inbox.” A manual-review page should explain the wait and provide a contact route. Show login instructions only after actual approval; do not display the same success message for every state. Confirming that an inbox works is also not the same as verifying a person’s real-world identity."
+        },
+        {
+          "type": "paragraph",
+          "text": "An administrator who adds a user directly in the dashboard may trigger a separate setting that approves the account automatically. The plugin offers an option to bypass role-registration rules for accounts created in the admin area, so acceptance testing must begin with the real front-end form. A dashboard-created account cannot prove that activation and review work for ordinary visitors."
+        },
+        {
+          "type": "heading",
+          "text": "Make sure password recovery completes",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "From a signed-out window, choose Forgot Password, enter your own test account, and confirm that the reset email reaches the expected inbox, its link opens the correct page, and the new password works afterward. Ultimate Member has notifications for both password reset and password change; check their templates and page settings rather than testing only the general welcome email."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also test duplicate applications, input errors, and expired or already-used links. Record whether the screen provides an understandable next step. Behavior can vary by version or customization, so adjust the wording to match observed results. Never ask a user for their original password in a support reply or post an activation or reset link in a public comment."
+        },
+        {
+          "type": "paragraph",
+          "text": "If email does not arrive, check whether the plugin triggered a notification, whether the sending service accepted it, and the recipient’s spam folder. Treat “sent” and “received” as separate findings: a success message alone does not prove delivery. Keep de-identified timestamps and error summaries so a maintainer can investigate."
+        },
+        {
+          "type": "heading",
+          "text": "Check login appearance and member data separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LoginPress can style the login form, password-recovery form, buttons, and messages. If you only need to brand an existing WordPress login page, start by evaluating that scope. If you use Ultimate Member front-end forms, configure their own appearance first; do not assume LoginPress will also control every third-party form."
+        },
+        {
+          "type": "paragraph",
+          "text": "Make field labels, error reasons, and return links easy to see, and do not let an oversized background image squeeze the mobile form. Use consistent names for the registration, login, and password-recovery entries, so a new member need not guess whether “Account Center” and “Member Login” lead to the same place."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Member form fields have Visibility and Privacy controls for different display modes and audiences. Inspect the member directory and profile too, viewing each as a visitor, the account owner, and another member. Data collected on a form is not necessarily suitable for public display; do not judge the visibility rule only from an administrator’s view."
+        },
+        {
+          "type": "heading",
+          "text": "Use one acceptance checklist for the whole lifecycle",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Complete a fresh front-end registration, activate or approve it according to the chosen process, then log in, open restricted content, change permitted fields, log out, and reset the password. Create another account that remains unactivated or is rejected, and confirm it cannot use restricted features. Use recognizable fake test names to keep these records separate from real members."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site supports account deletion or data requests, explain where to start, who is responsible, and what the process covers. The membership plugin, form logs, email service, and backups may each retain different data. Deleting one account does not justify promising that every system immediately has no record. Write guidance for the actual service process and review it regularly."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before opening registration, save a summary of settings, email templates, page mappings, and the acceptance date. Repeat the sequence when changing the mail service, URLs, or login tool. More registrations show that people completed a form; usable membership still depends on activation, login, and recovery working end to end."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-member-registration/diagram-1-en.svg",
+          "alt": "Four stages—form submission, activation or review, member login, and account recovery—with the items to verify at each stage.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A successful form submission clears only the first checkpoint in the member flow.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Where it gets stuck",
+            "Check first",
+            "Acceptance result"
+          ],
+          "rows": [
+            [
+              "Cannot log in after submitting the form",
+              "Account state and assigned role",
+              "Prompt is clear and follows the selected rule"
+            ],
+            [
+              "Activation email does not arrive",
+              "Template, sending, and delivery records",
+              "Link completes activation"
+            ],
+            [
+              "Manual review has no progress",
+              "Admin notice and pending list",
+              "Approval and rejection are traceable"
+            ],
+            [
+              "Password reset keeps looping back",
+              "Reset page and email URL",
+              "New password works for login"
+            ],
+            [
+              "Someone else sees profile data",
+              "Field privacy, directory, and caching",
+              "Each identity sees only permitted details"
+            ]
+          ],
+          "caption": "Locate the failing stage instead of blaming every registration problem on form styling."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Test with a new front-end account",
+          "text": "Accounts added by an administrator in the dashboard may follow different approval rules. Use a signed-out browser and a fresh test email address to complete the same process a visitor sees."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set WordPress member and editor roles",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan WordPress login security and recovery",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ultimate Member registration forms",
+          "url": "https://docs.ultimatemember.com/article/87-adding-a-registration-form",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member approval and notifications",
+          "url": "https://docs.ultimatemember.com/article/1652-how-to-enable-email-notification-on-activation-or-admin-review-upon-users-registration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member default pages",
+          "url": "https://docs.ultimatemember.com/article/111-default-pages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member email settings",
+          "url": "https://docs.ultimatemember.com/article/1916-emails-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member approval for accounts created in the admin area",
+          "url": "https://docs.ultimatemember.com/article/1650-auto-approve-a-user-on-registration-in-wp-admin",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member field visibility",
+          "url": "https://docs.ultimatemember.com/article/240-fields-visibility-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LoginPress login form customization",
+          "url": "https://loginpress.pro/doc/customize-your-first-login-form-with-loginpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressの会員登録フロー：フォーム、メール確認、アカウント復旧",
+      "description": "WordPressの会員登録では、フォームを表示することは第一歩にすぎません。本記事ではUltimate Memberを例に、権限の割り当て、メール認証、管理者による承認、パスワード再設定、プロフィールの公開範囲をどうつなぐかを説明します。LoginPressが担うログイン画面の外観も区別し、台湾のサイト運営者が過剰な個人情報を集めず、復旧可能な登録フローを作れるよう、検証手順と問題別の確認表を示します。",
+      "hero": {
+        "src": "/guides/wordpress-member-registration/hero-ja.jpg",
+        "alt": "フォームの書類、本人確認を表す盾、会員ページの画面を組み合わせたオリジナルの図。登録からログインまでの流れを示す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "読書会で参加者に登録後の資料ダウンロードを提供する場合、見落としやすいのはフォームの色ではなく送信後の流れです。認証メールが届かない、管理者が承認待ちに気付かない、パスワード再設定のリンクからログイン画面へ戻される、といった状態では、完成して見える会員サイトも使えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "まず登録、連絡先の確認、ログイン、プロフィール変更、アカウント復旧までの経路を描き、それからツールを選びます。ここではUltimate Memberで会員フローを、LoginPressでログイン画面の外観という別の役割を説明します。両方のプラグインが必須とはせず、見た目を整えるだけで会員ルールが完成したとも扱いません。"
+        },
+        {
+          "type": "heading",
+          "text": "誰が参加でき、どの情報が必要かを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「誰でも申請でき、メールアドレスの確認後に一般会員になる」のように、参加条件を一文で書きます。運営担当者の審査が必要なら、審査する人と判断基準も決めます。申請者全員に最初からサイト管理権限を与えないでください。会員資格と管理画面の権限は別に考えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "入力欄はフローに必要な情報だけに絞ります。通知を送るだけの読書会なら、住所、生年月日、会社名は不要かもしれません。表示名と連絡用の氏名も分けられます。プロフィールに公開する情報と管理者だけが扱う情報を事前に説明し、申請者が送信前に用途を理解できるようにします。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "参加条件、登録後の権限、閲覧が必要なコンテンツを整理する。",
+            "各入力欄の用途、必須にする理由、閲覧できる人を記録する。",
+            "メール認証か管理者審査などの方式を選び、担当者を決める。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "登録フォームと必要なページを作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate MemberのFormsで登録フォームを作成し、入力欄を設定してから、生成されたショートコードを対応するページに配置します。フォームの権限を明示するか、Registration Default Roleを確認してください。設定場所はバージョンで変わる可能性があるため、現在の管理画面と公式のGeneral／Users文書を基準にします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ログイン、登録、アカウント、プロフィール、パスワード再設定には対応するページが必要で、登録ページだけでは足りません。公式のDefault Pagesの説明に沿ってページと割り当てを確認し、必要なショートコードを残します。URLを変更した場合は、ボタンとメールのリンクが正しいページを指すか一つずつ確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "会員用ページのキャッシュも確認します。公式はAccount、Login、Password Reset、Register、Userの各ページをキャッシュしないよう求めています。キャッシュプラグイン、ホスティング、CDNをまとめて確認してください。複数のアカウントでテストし、前の利用者の情報や状態が共有キャッシュを通じて次の利用者に渡らないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "認証中・審査中の状態を明確に伝える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Memberのユーザー権限設定では、メール認証や管理者審査を登録方式に選べます。メール認証には対応するAccount Activation Emailテンプレートの有効化も必要です。審査方式なら、申請者向けの審査待ち通知と管理者向けの審査依頼通知の両方を確認します。ルールだけ設定してメールを切ると、利用者は次に何をすべきか分からなくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "メール認証ページには「申請を受け付けました。受信箱の認証リンクを開いてください」などと記し、審査ページには待ち時間と連絡方法を示します。ログイン案内は実際に承認された後にだけ表示し、全状態に同じ登録成功メッセージを使わないでください。メールアドレスが使えることの確認は、現実の本人確認とは異なります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理者が管理画面から直接ユーザーを追加すると、別の設定により自動承認される場合があります。公式には管理画面で作るアカウントを権限別の登録ルールから除外する選択肢があるため、受け入れテストは実際の公開フォームから始めます。管理画面で一人追加しただけでは、一般訪問者の認証と審査が動く証拠になりません。"
+        },
+        {
+          "type": "heading",
+          "text": "パスワード復旧も最後まで試す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ログアウトした画面から「パスワードを忘れた場合」を選び、自分のテストアカウントを入力します。再設定メールが想定した受信箱に届き、リンクが正しいページを開き、新しいパスワードでログインできることを確認します。Ultimate Memberには再設定と変更の通知があるので、一般的な歓迎メールだけでなく、対応するテンプレートとページ設定も確かめます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重複申請、入力ミス、期限切れや使用済みのリンクも試し、画面に理解しやすい次の手順が出るか記録します。バージョンや独自設定で動作は異なり得るため、実際の結果に合わせて文言を直します。サポート返信で元のパスワードを聞いたり、認証・再設定リンクを公開コメントに貼ったりしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "メールが届かない場合は、プラグインが通知を発行したか、送信サービスが受け付けたか、受信側の迷惑メールフォルダーに入っていないかを順に調べます。「送信済み」と「受信済み」は別です。画面の送信成功表示だけでは配信成功を証明できません。個人を特定できない形で時刻とエラーの要約を残すと、保守担当者が調査できます。"
+        },
+        {
+          "type": "heading",
+          "text": "ログイン画面の外観と会員情報を別々に検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LoginPressはログインフォーム、パスワード再設定フォーム、ボタン、メッセージなどの外観を調整できます。既存のWordPressログインページにブランド表現を加えたいだけなら、まずこの範囲を検討します。Ultimate Memberの公開フォームを使うなら、その表示設定を先に使い、LoginPressがすべての外部フォームを一括で制御するとは考えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "項目名、エラーの理由、戻るリンクを見やすくし、大きすぎる背景画像でスマートフォンの操作領域を狭めないようにします。登録、ログイン、パスワード再設定の入口には一貫した名前を使い、「アカウントセンター」と「会員ログイン」が同じ場所かどうかを新会員に推測させないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Memberのフォーム項目では、VisibilityとPrivacyで表示形式や対象を設定できます。会員一覧とプロフィールも、訪問者、本人、別の会員としてそれぞれ確認してください。フォームで集めた情報が公開に適するとは限りません。管理者本人の画面だけで公開範囲を判断しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "一つの検証表で会員の全過程を確かめる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "新規の公開フォームから登録し、選んだ方式で認証または承認して、ログイン、限定コンテンツの閲覧、許可された項目の変更、ログアウト、パスワード再設定まで進めます。別に未認証または拒否されたアカウントを作り、公開すべきでない機能を使えないことも確認します。実会員の一覧に混ざらない、見分けやすい架空の名前をテストに使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アカウント削除やデータ請求を提供する場合は、申請窓口、担当者、対応範囲を説明します。会員プラグイン、フォーム履歴、メールサービス、バックアップには別々の情報が残ることがあります。一つのアカウントを削除しただけで、全システムの記録が直ちに消えるとは約束できません。実際の運用に沿って説明を作り、定期的に見直します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "登録の一般公開前に、設定の要約、メールテンプレート、ページの割り当て、検証日を保存します。送信サービス、URL、ログインツールを変えたら、この一連の手順をやり直してください。登録数の増加で分かるのはフォームへの入力があったことだけです。使える会員アカウントには、認証、ログイン、復旧の完了が必要です。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-member-registration/diagram-1-ja.svg",
+          "alt": "フォーム送信、認証または審査、会員ログイン、アカウント復旧の四段階と、それぞれの確認項目。",
+          "width": 1600,
+          "height": 900,
+          "caption": "フォーム送信の成功は、会員フローの最初の関門にすぎません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "止まる場所",
+            "最初に調べること",
+            "合格の目安"
+          ],
+          "rows": [
+            [
+              "フォーム送信後にログインできない",
+              "アカウントの状態と割り当てた権限",
+              "案内が明確で、選んだルールに合う"
+            ],
+            [
+              "認証メールが届かない",
+              "テンプレート、送信、受信の記録",
+              "リンクで認証を完了できる"
+            ],
+            [
+              "管理者審査が進まない",
+              "管理者通知と審査待ち一覧",
+              "承認と拒否の両方を追跡できる"
+            ],
+            [
+              "再設定が元の画面へ戻る",
+              "再設定ページとメールのURL",
+              "新しいパスワードでログインできる"
+            ],
+            [
+              "他人にプロフィールが見える",
+              "項目の公開設定、一覧、キャッシュ",
+              "各利用者に許可された情報だけが見える"
+            ]
+          ],
+          "caption": "登録の問題をすべてフォームの見た目のせいにせず、止まった段階から調べます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "公開フォームから新規アカウントで試す",
+          "text": "管理者が管理画面で追加したアカウントには、別の承認ルールが適用される場合があります。ログアウトしたブラウザーと新しいテスト用メールアドレスで、訪問者が実際に見る全手順をたどってください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressの会員・編集者権限を設定する",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressのログイン保護と復旧を計画する",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ultimate Memberの登録フォーム",
+          "url": "https://docs.ultimatemember.com/article/87-adding-a-registration-form",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Memberの承認と通知",
+          "url": "https://docs.ultimatemember.com/article/1652-how-to-enable-email-notification-on-activation-or-admin-review-upon-users-registration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Memberの既定ページ",
+          "url": "https://docs.ultimatemember.com/article/111-default-pages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Memberのメール設定",
+          "url": "https://docs.ultimatemember.com/article/1916-emails-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Memberの管理画面で作成したアカウントの承認",
+          "url": "https://docs.ultimatemember.com/article/1650-auto-approve-a-user-on-registration-in-wp-admin",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Memberのフィールド表示設定",
+          "url": "https://docs.ultimatemember.com/article/240-fields-visibility-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LoginPressのログインフォームのカスタマイズ",
+          "url": "https://loginpress.pro/doc/customize-your-first-login-form-with-loginpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 회원 가입 절차: 양식, 확인, 계정 복구",
+      "description": "WordPress 회원 가입에서 양식이 보이는 것은 첫 단계일 뿐입니다. 이 글은 Ultimate Member를 예로 들어 역할 배정, 이메일 활성화, 관리자 심사, 비밀번호 재설정, 프로필 공개 범위를 연결하는 방법을 설명합니다. LoginPress가 맡는 로그인 화면 디자인은 별도로 구분합니다. 전체 점검 순서와 문제별 표를 통해 대만의 사이트 운영자가 과도한 개인정보 수집 없이 명확하고 복구 가능한 회원 절차를 만들도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-member-registration/hero-ko.jpg",
+        "alt": "가입 양식 문서, 신원 보호를 나타내는 방패, 회원 페이지 화면을 조합한 자체 제작 그림. 가입에서 로그인까지의 흐름을 표현한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "독서 모임에서 참가자가 가입한 뒤 자료를 내려받게 하려면 양식 색상보다 제출 이후의 절차를 놓치기 쉽습니다. 활성화 이메일이 오지 않거나, 관리자가 심사 대기자를 모르거나, 비밀번호 재설정 링크가 다시 로그인 페이지로 돌아가면 완성된 것처럼 보이는 회원 사이트도 제대로 쓸 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 가입, 연락처 확인, 로그인, 정보 수정, 계정 복구까지의 경로를 그리고 도구를 고르세요. 여기서는 Ultimate Member로 회원 절차를 설명하고, LoginPress로 로그인 화면 디자인이라는 별도 역할을 다룹니다. 두 플러그인을 반드시 함께 설치해야 한다고 가정하지 않으며, 화면을 꾸민 것만으로 회원 규칙이 완성됐다고 보지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "누가 가입하고 어떤 정보가 필요한지 결정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "“누구나 신청할 수 있고 이메일 주소를 확인하면 일반 회원이 된다”처럼 가입 조건을 한 문장으로 적습니다. 운영진의 심사가 필요하면 심사 담당자와 기준도 정하세요. 신청자 모두에게 처음부터 사이트 관리 권한을 주지 마세요. 회원 자격과 관리자 기능은 따로 결정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "입력란은 절차에 필요한 정보만 남깁니다. 공지만 보내는 독서 모임이라면 주소, 생년월일, 회사 이름이 필요하지 않을 수 있습니다. 화면에 표시할 별명과 연락용 이름도 나눌 수 있습니다. 어떤 정보가 프로필에 공개되고 어떤 정보는 관리자만 보는지 미리 설명하여 신청자가 제출 전에 용도를 알게 하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "가입 조건, 가입 후 역할, 필요한 콘텐츠 접근 권한을 적습니다.",
+            "각 입력란의 용도, 필수인 이유, 볼 수 있는 사람을 기록합니다.",
+            "이메일 활성화나 관리자 심사 등의 방식을 고르고 담당자를 지정합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "가입 양식과 필요한 페이지 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Member의 Forms에서 가입 양식을 만들고 입력란을 설정한 뒤 생성된 쇼트코드를 해당 페이지에 넣습니다. 양식의 역할을 명시하거나 Registration Default Role을 확인하세요. 설정 위치는 버전에 따라 바뀔 수 있으므로 현재 관리자 화면과 공식 General／Users 문서를 기준으로 삼습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인에는 로그인, 가입, 계정, 프로필, 비밀번호 재설정에 대응하는 페이지가 필요합니다. 가입 페이지 하나만 두어서는 안 됩니다. 공식 Default Pages 안내에 따라 페이지를 만들고 연결 상태를 확인하며 필요한 쇼트코드를 유지하세요. 페이지 주소를 바꿨다면 버튼과 이메일 링크가 여전히 올바른 곳을 가리키는지 하나씩 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "회원 관련 페이지의 캐시도 점검합니다. 공식 안내는 Account, Login, Password Reset, Register, User 페이지를 캐시하지 말라고 합니다. 캐시 플러그인, 호스팅, CDN 설정을 함께 확인하세요. 서로 다른 계정으로 시험하여 앞선 사용자의 정보나 상태가 공유 캐시를 통해 다음 사용자에게 보이지 않게 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "활성화와 심사 상태를 분명히 알리기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Member의 사용자 역할 설정에서 이메일 활성화 또는 관리자 심사 같은 가입 방식을 고를 수 있습니다. 이메일 활성화에는 해당 Account Activation Email 템플릿도 켜야 합니다. 관리자 심사라면 신청자에게 보낼 대기 알림과 관리자에게 보낼 심사 요청 알림을 모두 확인하세요. 규칙은 켰는데 이메일을 끄면 이용자가 다음 단계를 알기 어렵습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이메일 활성화 페이지에는 “신청을 받았습니다. 받은편지함에서 활성화 링크를 열어 주세요”라고 쓸 수 있습니다. 관리자 심사 페이지에는 대기와 연락 방법을 설명하세요. 실제 승인 후에만 로그인 안내를 보여 주고 모든 상태에 같은 가입 성공 메시지를 사용하지 마세요. 이메일을 사용할 수 있다는 확인은 실제 신원 확인과 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "관리자가 관리자 화면에서 사용자를 직접 추가하면 별도 설정 때문에 자동 승인될 수 있습니다. 공식 도구에는 관리자 화면에서 만든 계정에 역할별 가입 규칙을 적용하지 않는 옵션도 있습니다. 따라서 검수는 실제 공개 양식부터 시작해야 합니다. 관리자 화면에서 계정 하나를 만든 결과만으로 일반 방문자의 활성화와 심사 흐름이 통과했다고 할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "비밀번호 복구도 끝까지 시험하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "로그아웃한 화면에서 비밀번호 찾기를 누르고 자신의 테스트 계정을 입력합니다. 재설정 이메일이 예상한 받은편지함에 도착하는지, 링크가 올바른 페이지를 여는지, 새 비밀번호로 로그인되는지 확인하세요. Ultimate Member에는 비밀번호 재설정과 변경 알림이 있으므로 일반 환영 이메일만 시험하지 말고 관련 템플릿과 페이지 설정도 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "중복 신청, 잘못된 입력, 만료되거나 이미 사용한 링크도 시험하고 화면이 이해하기 쉬운 다음 단계를 알려 주는지 기록합니다. 버전이나 사용자 지정 설정에 따라 처리 방식이 다를 수 있으므로 실제 결과에 맞춰 문구를 수정하세요. 고객 지원 답변에서 기존 비밀번호를 요구하거나 활성화·재설정 링크를 공개 댓글에 붙이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이메일이 오지 않으면 플러그인이 알림을 발생시켰는지, 발송 서비스가 수락했는지, 받는 사람의 스팸함에 들어갔는지 확인합니다. “발송됨”과 “수신됨”은 구분해야 합니다. 화면의 전송 성공 표시만으로 실제 도착을 증명할 수 없습니다. 개인을 식별할 수 없도록 처리한 시각과 오류 요약을 남겨 관리자가 조사할 수 있게 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "로그인 화면과 회원 정보를 따로 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LoginPress는 로그인 양식, 비밀번호 찾기 양식, 버튼, 메시지의 모양을 바꿀 수 있습니다. 기존 WordPress 로그인 페이지에 브랜드 디자인을 더하는 것이 목적이라면 먼저 이 범위를 검토하세요. Ultimate Member의 공개 양식을 쓴다면 그 플러그인의 화면 설정부터 이용하고 LoginPress가 모든 타사 양식까지 함께 제어한다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "입력란 이름, 오류 이유, 돌아가기 링크를 보기 쉽게 하고 너무 큰 배경 이미지가 휴대전화 화면의 조작 공간을 좁히지 않게 합니다. 가입, 로그인, 비밀번호 찾기 입구에 일관된 이름을 사용하여 새 회원이 “계정 센터”와 “회원 로그인”이 같은 곳인지 추측하지 않게 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Member 양식 필드의 Visibility와 Privacy는 표시 방식과 대상을 조절합니다. 회원 목록과 프로필도 방문자, 본인, 다른 회원의 입장에서 각각 확인하세요. 양식에 입력한 정보가 모두 공개에 적합한 것은 아닙니다. 관리자 자신의 화면만 보고 공개 범위를 판단하지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "하나의 검수표로 계정의 전체 수명 주기 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "새 공개 양식으로 가입하고 선택한 방식에 따라 활성화 또는 승인한 다음 로그인, 회원 전용 콘텐츠 열람, 허용된 항목 수정, 로그아웃, 비밀번호 재설정까지 진행합니다. 활성화를 마치지 않았거나 거절된 계정도 따로 만들어 접근이 금지된 기능을 쓸 수 없는지 확인하세요. 실제 회원 명단에 섞이지 않도록 식별하기 쉬운 가명을 테스트 자료로 씁니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트가 계정 삭제나 자료 요청을 지원한다면 신청 경로, 담당자, 처리 범위를 설명합니다. 회원 플러그인, 양식 기록, 메일 서비스, 백업은 서로 다른 정보를 보관할 수 있습니다. 계정 하나를 삭제했다고 모든 시스템에서 즉시 모든 기록이 사라진다고 약속할 수는 없습니다. 실제 서비스 절차에 맞게 안내하고 정기적으로 점검하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "가입을 정식으로 열기 전에 설정 요약, 이메일 템플릿, 페이지 연결, 검수 날짜를 보관합니다. 발송 서비스, URL, 로그인 도구를 바꾸면 이 절차를 다시 수행하세요. 가입 건수 증가는 누군가 양식을 제출했다는 뜻일 뿐이며, 실제로 사용할 수 있는 회원 계정인지는 활성화, 로그인, 복구가 끝까지 되는지에 달려 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-member-registration/diagram-1-ko.svg",
+          "alt": "양식 제출, 활성화 또는 심사, 회원 로그인, 계정 복구의 네 단계와 각 단계에서 확인할 항목.",
+          "width": 1600,
+          "height": 900,
+          "caption": "양식 제출 성공은 회원 절차의 첫 관문만 통과한 것입니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "문제가 생긴 단계",
+            "먼저 확인할 것",
+            "통과 기준"
+          ],
+          "rows": [
+            [
+              "양식 제출 후 로그인 불가",
+              "계정 상태와 지정된 역할",
+              "안내가 명확하고 선택한 규칙과 일치"
+            ],
+            [
+              "활성화 이메일 미도착",
+              "템플릿, 발송, 수신 기록",
+              "링크로 활성화를 마칠 수 있음"
+            ],
+            [
+              "관리자 심사 진척 없음",
+              "관리자 알림과 대기 목록",
+              "승인과 거절을 모두 추적 가능"
+            ],
+            [
+              "비밀번호 재설정이 계속 되돌아감",
+              "재설정 페이지와 이메일 URL",
+              "새 비밀번호로 로그인 가능"
+            ],
+            [
+              "다른 사람이 프로필 정보를 봄",
+              "필드 공개 설정, 목록, 캐시",
+              "각 신원에 허용된 정보만 보임"
+            ]
+          ],
+          "caption": "가입 문제를 모두 양식 디자인 탓으로 돌리지 말고 멈춘 단계를 찾으세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "공개 양식에서 새 계정으로 시험하기",
+          "text": "관리자가 관리자 화면에서 추가한 계정에는 다른 승인 규칙이 적용될 수 있습니다. 로그아웃한 브라우저와 새 테스트 이메일 주소를 사용해 방문자가 실제로 보는 전체 절차를 따르세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 회원과 편집자 역할 설정하기",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 로그인 보안과 복구 준비하기",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ultimate Member 가입 양식",
+          "url": "https://docs.ultimatemember.com/article/87-adding-a-registration-form",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 승인 및 알림",
+          "url": "https://docs.ultimatemember.com/article/1652-how-to-enable-email-notification-on-activation-or-admin-review-upon-users-registration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 기본 페이지",
+          "url": "https://docs.ultimatemember.com/article/111-default-pages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 이메일 설정",
+          "url": "https://docs.ultimatemember.com/article/1916-emails-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 관리자 화면에서 만든 계정의 승인",
+          "url": "https://docs.ultimatemember.com/article/1650-auto-approve-a-user-on-registration-in-wp-admin",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 필드 표시 설정",
+          "url": "https://docs.ultimatemember.com/article/240-fields-visibility-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LoginPress 로그인 양식 사용자 지정",
+          "url": "https://loginpress.pro/doc/customize-your-first-login-form-with-loginpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 会员注册流程：表单、验证与账号恢复",
+      "description": "制作 WordPress 会员注册流程时，表单出现只是第一步。本文以 Ultimate Member 说明角色分配、邮件激活、人工审核、密码重置与资料展示如何衔接，并介绍 LoginPress 适合处理的登录页面外观需求。完整的验收顺序与常见问题对照，帮助台湾网站站长建立清晰、可恢复且不过度收集资料的会员流程。",
+      "hero": {
+        "src": "/guides/wordpress-member-registration/hero-zh-cn.jpg",
+        "alt": "由表单文件、身份防护盾牌和会员页面屏幕组成的原创插图，象征从注册到登录的过程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "读书会想让参加者注册后下载讲义，最容易忽略的不是表单颜色，而是提交之后发生什么。如果用户没有收到激活邮件、管理员不知道有人等待审核，或者忘记密码链接又返回登录页面，看似建好的会员网站仍然无法正常使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先画出注册、确认身份、登录、修改资料和恢复账号的路径，再选择工具。本文用 Ultimate Member 说明会员流程，用 LoginPress 补充登录页面外观的分工；不预设两个插件必须同时安装，也不把页面美化当成会员规则已经完成。"
+        },
+        {
+          "type": "heading",
+          "text": "先决定谁能加入，以及需要哪些资料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "用一句话写明加入条件，例如“任何读者都可以申请，确认邮箱后取得普通会员资格”。如果需要由负责人审核，还要列出审核人和依据。不要一开始就让所有申请者拥有网站管理权限；会员资格和后台管理能力应分开处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "只保留支持流程所需的字段。读书会如果只是发送通知，未必需要住址、生日和公司名称；昵称也可以与联系姓名分开。事先说明哪些资料会显示在个人页面、哪些仅供管理者处理，让申请者提交前了解用途。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "列出加入条件、注册后的角色和所需的内容访问权限。",
+            "为每个字段写明用途、设为必填的理由及可见对象。",
+            "选择邮件激活或人工审核等流程，并安排处理人。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "创建注册表单和必要页面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Ultimate Member 的 Forms 中创建注册表单，设置字段后把生成的短代码放到对应页面。明确指定此表单的角色，或检查 Registration Default Role。设置位置可能随版本变化，应以当前后台及官方 General／Users 文档为准。"
+        },
+        {
+          "type": "paragraph",
+          "text": "插件需要对应的登录、注册、账号、个人资料和密码重置等页面，不能只留下注册页。按照官方 Default Pages 说明创建并确认页面映射，保留必要的短代码。如果自定义了页面网址，还要逐项检查按钮和邮件链接是否仍指向正确位置。"
+        },
+        {
+          "type": "paragraph",
+          "text": "会员相关页面还要检查缓存。官方提醒 Account、Login、Password Reset、Register、User 页面不应缓存；请同时核对缓存插件、主机和 CDN 设置。用不同账号测试，避免前一人的资料或状态通过共享的缓存页面传给下一人。"
+        },
+        {
+          "type": "heading",
+          "text": "清楚说明激活或审核状态",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Ultimate Member 的用户角色设置中，可选择邮件激活或管理员审核等注册方式。邮件激活还需要启用对应的 Account Activation Email 模板；人工审核则要确认用户的待审通知，以及提醒管理员审核的通知。规则已经设置却关闭邮件时，用户可能不知道下一步。"
+        },
+        {
+          "type": "paragraph",
+          "text": "邮件激活页可以写“已收到申请，请打开邮箱中的激活链接”；人工审核页则应说明等待审核及联系方式。只有真正批准后才显示登录指引，不要让所有状态都出现同样的注册成功消息。确认邮箱可用也不等于完成真实身份认证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "管理员直接在后台新增用户，可能受到另一项设置影响而自动批准。官方提供了让后台创建账号绕过角色注册规则的选项，因此验收必须从真正的前台表单开始。不能用后台新增一个账号，就宣称普通访客的激活与审核流程已经通过。"
+        },
+        {
+          "type": "heading",
+          "text": "忘记密码也要能完成整个流程",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "从未登录的窗口点击忘记密码，输入自己的测试账号，确认重置邮件寄到预期邮箱、链接打开正确页面、完成后能用新密码登录。Ultimate Member 有密码重置和密码修改通知，应检查相应模板与页面设置，而不只是测试普通欢迎邮件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再测试重复申请、输入错误、过期或已经使用的链接等情形，记录页面是否给出易懂的下一步。不同版本或自定义设置的处理方式可能不同，应按实际结果修改文案。不要在客服回复中索取用户原密码，也不要把激活或重置链接贴在公开留言中。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果没有收到邮件，先检查插件是否触发通知、发送服务是否接受邮件，以及收件端的垃圾邮件文件夹。把“已发送”和“已收到”分开判断；页面显示发送成功，不能单独证明投递成功。保留去标识化的时间和错误摘要，方便维护者排查。"
+        },
+        {
+          "type": "heading",
+          "text": "分别验收登录外观与会员资料",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LoginPress 可以调整登录表单、忘记密码表单、按钮和消息等外观。如果需求只是为现有 WordPress 登录页加入品牌形象，可以先评估这个范围。如果使用 Ultimate Member 的前台表单，则先用它自己的版面设置，不预设 LoginPress 会同步控制所有第三方表单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "设计时让字段标签、错误原因和返回链接清楚可见，避免过大的背景图片挤压手机操作空间。注册、登录、忘记密码三个入口应使用一致的名称，让新会员不必猜测“账号中心”和“会员登录”是否指向同一处。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ultimate Member 表单字段中的 Visibility 和 Privacy 可以控制不同模式和对象的显示。还要查看会员目录及个人页面，分别以访客、本人和其他会员身份检查。表单收集的资料不一定适合公开，显示规则也不能只凭管理员自己的画面判断。"
+        },
+        {
+          "type": "heading",
+          "text": "用一份验收表覆盖整个账号生命周期",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "完成一次全新的前台注册，按选定流程激活或批准，然后登录、读取会员专区、修改允许的字段、退出并重置密码。再创建一个未完成激活或被拒绝的账号，确认它无法使用不应开放的功能。测试资料使用易识别的假名，避免混入正式会员名单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果网站提供账号删除或资料申请功能，应说明入口、负责人和处理范围。会员插件、表单记录、邮件服务和备份可能各自保存不同资料。不能只删除一个账号就承诺所有系统立即没有任何记录。根据实际服务流程制定说明并定期检查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正式开放前保存设置摘要、邮件模板、页面映射和验收日期。此后更换邮件服务、网址或登录工具时，重新走一遍流程。注册数量增加只能证明有人填写表单；真正可用的会员账号仍取决于激活、登录和恢复环节是否完整。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-member-registration/diagram-1-zh-cn.svg",
+          "alt": "表单提交、激活或审核、会员登录与账号恢复四个步骤，分别列出需要验证的项目。",
+          "width": 1600,
+          "height": 900,
+          "caption": "表单提交成功，只完成会员流程的第一关。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "出现问题的位置",
+            "先检查什么",
+            "验收结果"
+          ],
+          "rows": [
+            [
+              "提交表单后无法登录",
+              "账号状态与指定角色",
+              "提示清楚且符合所选规则"
+            ],
+            [
+              "收不到激活邮件",
+              "模板、发送与收件记录",
+              "链接可以完成激活"
+            ],
+            [
+              "人工审核没有进度",
+              "管理员通知与待审名单",
+              "批准和拒绝流程均可追踪"
+            ],
+            [
+              "忘记密码总是跳回原页",
+              "重置页面与邮件网址",
+              "新密码可以登录"
+            ],
+            [
+              "其他人看到个人资料",
+              "字段隐私、目录与缓存",
+              "不同身份只能看到允许的信息"
+            ]
+          ],
+          "caption": "按流程阶段定位问题，不要把所有注册问题都归因于表单样式。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "用前台新账号测试",
+          "text": "管理员在后台新增账号可能采用不同的批准规则。请使用未登录的浏览器和新的测试邮箱，完整走过访客实际看到的流程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "设置 WordPress 会员与编辑角色",
+              "kind": "life",
+              "slug": "wordpress-user-roles"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排 WordPress 登录安全与账号恢复",
+              "kind": "life",
+              "slug": "wordpress-security-basics"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Ultimate Member 注册表单",
+          "url": "https://docs.ultimatemember.com/article/87-adding-a-registration-form",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 审批与通知",
+          "url": "https://docs.ultimatemember.com/article/1652-how-to-enable-email-notification-on-activation-or-admin-review-upon-users-registration",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 默认页面",
+          "url": "https://docs.ultimatemember.com/article/111-default-pages",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 邮件设置",
+          "url": "https://docs.ultimatemember.com/article/1916-emails-tab",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 后台创建账号的审批",
+          "url": "https://docs.ultimatemember.com/article/1650-auto-approve-a-user-on-registration-in-wp-admin",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ultimate Member 字段可见性",
+          "url": "https://docs.ultimatemember.com/article/240-fields-visibility-mode",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LoginPress 登录表单自定义",
+          "url": "https://loginpress.pro/doc/customize-your-first-login-form-with-loginpress/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
