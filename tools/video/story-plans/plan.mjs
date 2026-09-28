@@ -340,7 +340,17 @@ export function loadPlan(dir = DEFAULT_PLAN) {
   const orphans = existsSync(reviewsDir) ? readdirSync(reviewsDir).filter((name) => name.endsWith(".json") && !files.includes(name)).map((name) => name.slice(0, -".json".length)) : [];
   // What the owner approved, kept so the schedule can show which titles the fact check changed.
   const seeds = existsSync(path.join(dir, "approved-seeds.json")) ? (read("approved-seeds.json").seeds ?? []) : [];
-  return { dir, series: read("series.json"), schedule: read("schedule.json"), stories, orphans, seeds };
+  return { dir, series: read("series.json"), schedule: read("schedule.json"), stories, orphans, seeds, guides: siteGuides() };
+}
+
+/**
+ * The slugs of the site's articles (the content packs of apps/api), for `related_guide`: a
+ * story's description links to its article, and a slug nobody wrote is a dead link in it. Null
+ * when the packs are not there to read.
+ */
+export function siteGuides(dir = path.join(ROOT, "apps", "api", "app", "guides", "content")) {
+  if (!existsSync(dir)) return null;
+  return new Set(readdirSync(dir).filter((name) => name.endsWith(".json")).map((name) => name.slice(0, -".json".length)));
 }
 
 /**
@@ -392,6 +402,8 @@ export function planProblems(plan, { expected = { everyday: 40, "asia-brand": 40
       else seen.set(value, entry.id);
     }
     if (!scheduled.length && !placed.has(entry.id)) problems.push(`${entry.id}: not in schedule.json`);
+    const guide = entry.story.related_guide;
+    if (plan.guides && typeof guide === "string" && !plan.guides.has(guide)) problems.push(`${entry.id}: related_guide "${guide}" is not an article of the site (apps/api/app/guides/content/${guide}.json)`);
     // A review that is there must be of this text; a finished plan has one for every story.
     if (entry.reviewError) problems.push(`${entry.id}: reviews/${entry.id}.json is not valid JSON (${entry.reviewError})`);
     else if (entry.review) for (const problem of reviewProblems(entry.review, entry.story, entry.id)) problems.push(`${entry.id}: review: ${problem}`);

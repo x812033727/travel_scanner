@@ -4,7 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 
-import { canonical, CHAPTER_KEYS, claimSupported, compile, compiledCurrent, DEFAULT_PLAN, hostOf, loadPlan, order, planProblems, reviewProblems, scheduleMarkdown, scheduleProblems, serialize, seriesProblems, storyHash, storyProblems, STORY_KEYS } from "./plan.mjs";
+import { canonical, CHAPTER_KEYS, claimSupported, compile, compiledCurrent, DEFAULT_PLAN, hostOf, loadPlan, order, planProblems, reviewProblems, scheduleMarkdown, scheduleProblems, serialize, seriesProblems, siteGuides, storyHash, storyProblems, STORY_KEYS } from "./plan.mjs";
 import { fetchProblems, fetchSources, main, reviewerOnlyFacts, USER_AGENT } from "./validate.mjs";
 
 const point = (text) => text.repeat(Math.ceil(80 / [...text].length));
@@ -262,6 +262,24 @@ test("a plan's stories have distinct slugs and titles, and each has a slot", () 
   assert.match(problems, /A02: title "一個範例的標題" is also A01's/);
   assert.match(problems, /A02: not in schedule\.json/);
   assert.match(problems, /A03: not valid JSON/);
+});
+
+test("a story's related article is one the site has", () => {
+  const plan = {
+    series: series(),
+    schedule: schedule([["A01", "B01"]]),
+    stories: [
+      { id: "A01", story: story({ related_guide: "overseas-atm-withdrawal" }) },
+      { id: "B01", story: story({ id: "B01", slug: "story-b", title: "B", category: "asia-brand", region: "jp", related_guide: "overseas-atm-withdrawl" }) },
+    ],
+    guides: new Set(["overseas-atm-withdrawal"]),
+  };
+  assert.deepEqual(planProblems(plan, { expected: null }), ['B01: related_guide "overseas-atm-withdrawl" is not an article of the site (apps/api/app/guides/content/overseas-atm-withdrawl.json)']);
+  // Where the articles are not there to read, the slug's shape is all that is checked.
+  assert.deepEqual(planProblems({ ...plan, guides: null }, { expected: null }), []);
+  // The repository's own articles are read from the content packs.
+  assert.ok(siteGuides().has("overseas-atm-withdrawal"));
+  assert.equal(siteGuides(path.join(os.tmpdir(), "no-such-directory-of-guides")), null);
 });
 
 const review = (read, overrides = {}) => ({ id: read.id, reviewed: "2026-09-28", reviewer: "a second reader", story_sha256: storyHash(read), verdict: "pass", sources_opened: 3, changes: [], notes: "", ...overrides });

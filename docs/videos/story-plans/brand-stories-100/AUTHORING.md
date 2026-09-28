@@ -34,7 +34,7 @@ node tools/video/story-plans/validate.mjs --partial --only <代號> --fetch   # 
 | `cast` | 0–3 個反覆出現的人物，`{ "id", "role", "appearance" }`；沒有就寫 `[]` |
 | `image_notes` | 這個題目的畫面要畫什麼、不能畫什麼 |
 | `sensitivity` | `none`，或 `care`（空難、抗爭、官司、醜聞、死亡） |
-| `related_guide` | 對應的 Mokaair 文章 slug，沒有就 `null` |
+| `related_guide` | 對應的 Mokaair 文章 slug，沒有就 `null`。檢查會確認站上有這篇文章（`apps/api/app/guides/content/<slug>.json`），因為影片說明欄會連過去 |
 | `thumbnail` | `{ "headline", "idea" }`：縮圖上的字（最多 12 字）與畫面構想 |
 
 除了 `cast` 的 `appearance` 用英文，其他文字都用台灣的繁體中文。專有名詞第一次出現時中文後面可以附原文。
