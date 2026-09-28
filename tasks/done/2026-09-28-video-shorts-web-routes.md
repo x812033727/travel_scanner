@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-web-routes
 title: Video shorts A2: web routes that forward the worker's Shorts calls
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: claude-fable-5-1-shorts
 claimed_at: 2026-09-28T05:17:29Z
 created_at: 2026-09-28T03:21:00Z
-completed_at:
+completed_at: 2026-09-28T05:40:10Z
 branch: claude/video-shorts-web-routes
 depends_on: []
 scope:
