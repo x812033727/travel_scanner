@@ -1,0 +1,923 @@
+{
+  "schema_version": 1,
+  "slug": "free-vs-paid-ai-plans-2026",
+  "format": "slides",
+  "source_guide": "ai-free-vs-paid-plans-2026",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語、台灣腔，輕鬆、像在跟朋友解釋，有起伏、中等偏快",
+    "model": "gemini-3.8-flash-tts"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "免費 AI 夠用嗎？一個月 20 美元到底值不值得，看你撞到哪種額度（2026）",
+    "description": "該不該為 AI 付錢？這支不看哪家最強，而是從你最常撞到的額度出發，幫你判斷該不該付、付哪一家。\n給在用免費版 ChatGPT、Claude 或 Gemini，常撞到限制、想知道要不要升級的人。\n\n涵蓋三家免費版各卡在哪、入門付費方案的名稱與價格、Gemini 各方案一次能讀多少、五種使用者情境、上一階方案是給誰的，以及付費前的三件事。價格以官網與登入後看到的為準。",
+    "tags": [
+      "免費 AI",
+      "AI 付費方案",
+      "ChatGPT Plus",
+      "Claude Pro",
+      "Google AI Plus",
+      "ChatGPT Go",
+      "AI 訂閱 2026",
+      "is ChatGPT Plus worth it"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "FREE vs PAID",
+      "headline": "Is $20/mo\n**worth it?**",
+      "sub": "ChatGPT · Claude · Gemini"
+    }
+  },
+  "sources": [
+    {
+      "title": "Anthropic Pricing（Claude plans）",
+      "url": "https://www.anthropic.com/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Claude Help Center：What is the Pro plan",
+      "url": "https://support.claude.com/en/articles/8325606-what-is-the-pro-plan",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini 訂閱方案（台灣）",
+      "url": "https://gemini.google/tw/subscriptions/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini subscriptions（美國）",
+      "url": "https://gemini.google/subscriptions/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini Apps Help：limits & upgrades",
+      "url": "https://support.google.com/gemini/answer/16275805",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI：Introducing ChatGPT Go",
+      "url": "https://openai.com/index/introducing-chatgpt-go/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI Help Center：File Uploads FAQ",
+      "url": "https://help.openai.com/en/articles/8555545-file-uploads-faq",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "免費 AI 夠用嗎",
+      "template": "title",
+      "data": {
+        "tag": "免費 vs 付費",
+        "title": "免費 AI 夠用嗎？**20 美元值不值得**",
+        "subtitle": "看你撞到哪一種額度"
+      },
+      "lines": [
+        {
+          "id": "dgs9",
+          "text": "該不該為 AI 付錢？先別看哪家最強。"
+        },
+        {
+          "id": "xyxk",
+          "text": "先看你每天最常卡在哪，卡的地方決定你該付哪一家。"
+        },
+        {
+          "id": "gwc5",
+          "text": "這支用三家官網的方案，幫你對號入座。"
+        },
+        {
+          "id": "q4s7",
+          "text": "只要三分鐘，你就知道自己該不該升級。"
+        }
+      ]
+    },
+    {
+      "id": "one-question",
+      "chapter": "先問一句：你卡在哪",
+      "template": "big",
+      "data": {
+        "kicker": "先問自己一句",
+        "text": "你卡在哪？",
+        "sub": "檔案數、五小時額度，還是讀不完的長文件"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "32k5",
+          "text": "答案先講：只是偶爾問問題、改改文字，三家的免費版都夠用。"
+        },
+        {
+          "id": "hjex",
+          "text": "真正該付費的，是每天大量用、常常撞到額度的人。"
+        },
+        {
+          "id": "xw58",
+          "text": "而且第一筆錢，通常付入門方案就夠，不必直接買上一階。"
+        },
+        {
+          "id": "dsrn",
+          "text": "所以問題不是付不付，是你卡在哪一種限制。"
+        },
+        {
+          "id": "kicy",
+          "text": "很多人付了錢，才發現自己根本沒撞到上限。"
+        },
+        {
+          "id": "8u69",
+          "text": "這支不會叫你一定要付錢，也不會替哪一家背書。"
+        }
+      ]
+    },
+    {
+      "id": "free-limits",
+      "chapter": "三家免費版各卡在哪",
+      "template": "table",
+      "data": {
+        "title": "三家免費版，各卡在哪",
+        "columns": [
+          "免費版",
+          "怎麼限制你",
+          "最常撞到"
+        ],
+        "rows": [
+          [
+            "ChatGPT",
+            "每天 3 個檔案",
+            "傳檔讀資料"
+          ],
+          [
+            "Claude",
+            "每 5 小時重置",
+            "連續長聊"
+          ],
+          [
+            "Gemini",
+            "上下文 32k token",
+            "一次讀長文件"
+          ]
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "y7dv",
+          "text": "三家都不用付錢就能用，差別在它們怎麼限制你。"
+        },
+        {
+          "id": "xb2w",
+          "text": "ChatGPT 免費版限的是檔案，一天只能傳三個。"
+        },
+        {
+          "id": "4gjv",
+          "text": "Claude 限的是用量，每五小時重置一次。"
+        },
+        {
+          "id": "4rdf",
+          "text": "Gemini 則是一次能讀的內容很少，上下文只有三萬兩千 token。"
+        },
+        {
+          "id": "rytt",
+          "text": "所以同樣是免費，卡住你的地方完全不一樣。"
+        },
+        {
+          "id": "9d6f",
+          "text": "先想想你上次被擋下來，是在做什麼事。"
+        },
+        {
+          "id": "qyfn",
+          "text": "那個畫面，就是你該付費的理由，或不必付的理由。"
+        },
+        {
+          "id": "dha4",
+          "text": "三種限制，對應三種完全不同的使用習慣。"
+        },
+        {
+          "id": "dvda",
+          "text": "這三個數字，是付費前最該先知道的。"
+        }
+      ]
+    },
+    {
+      "id": "claude-limits",
+      "template": "bullets",
+      "data": {
+        "title": "Claude 的額度怎麼算",
+        "items": [
+          "每 5 小時重置一次",
+          "付費方案另有每週上限",
+          "用完就等重置或升級"
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "mgvi",
+          "text": "以 Claude 為例，額度是這樣算的。",
+          "reveal": 1
+        },
+        {
+          "id": "6gzw",
+          "text": "它的用量每五小時重置一次。",
+          "reveal": 1
+        },
+        {
+          "id": "vkpf",
+          "text": "付費方案除了五小時，還有一個每週上限。",
+          "reveal": 1
+        },
+        {
+          "id": "far7",
+          "text": "用完了，就等重置，或者升級到更高的方案。"
+        },
+        {
+          "id": "eq9n",
+          "text": "Pro 的每週上限，是所有模型一起算的。"
+        }
+      ]
+    },
+    {
+      "id": "model-tier",
+      "template": "bullets",
+      "data": {
+        "title": "免費版的模型也不同",
+        "items": [
+          "免費多半是輕量或中階模型",
+          "旗艦模型通常要付費",
+          "付費買的是額度和模型"
+        ]
+      },
+      "lines": [
+        {
+          "id": "7v42",
+          "text": "還有一個差別是模型。",
+          "reveal": 1
+        },
+        {
+          "id": "2xji",
+          "text": "免費版拿到的，多半是輕量或中階的模型。",
+          "reveal": 1
+        },
+        {
+          "id": "nbjf",
+          "text": "旗艦模型通常要付費才有，所以付費買的是額度加上模型。",
+          "reveal": 1
+        },
+        {
+          "id": "ipyc",
+          "text": "如果免費版的模型已經夠你用，付費買的就只剩額度。"
+        },
+        {
+          "id": "47pj",
+          "text": "旗艦模型比較會推理，但日常小事不一定用得到。"
+        }
+      ]
+    },
+    {
+      "id": "entry-plans",
+      "chapter": "入門方案：名稱與價格",
+      "template": "table",
+      "data": {
+        "title": "入門付費方案",
+        "columns": [
+          "方案",
+          "月費",
+          "重點"
+        ],
+        "rows": [
+          [
+            "ChatGPT Go",
+            "8 美元",
+            "額度較免費版高，模型仍是輕量"
+          ],
+          [
+            "ChatGPT Plus",
+            "20 美元",
+            "旗艦模型與 Codex"
+          ],
+          [
+            "Claude Pro",
+            "20 美元，年繳每月 17",
+            "含 Claude Code"
+          ],
+          [
+            "Google AI Plus",
+            "NT$165",
+            "免費版 2 倍用量、可生成影片"
+          ],
+          [
+            "Google AI Pro",
+            "NT$650",
+            "免費版 4 倍、上下文 100 萬"
+          ]
+        ]
+      },
+      "claims": [
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "a7fp",
+          "text": "再來看入門付費方案，名稱、價格一次擺出來。"
+        },
+        {
+          "id": "6iqr",
+          "text": "ChatGPT 的入門叫 Go，美國定價每月八美元。"
+        },
+        {
+          "id": "tjm4",
+          "text": "要旗艦模型和寫程式的 Codex，要升到每月二十美元的 Plus。"
+        },
+        {
+          "id": "dbei",
+          "text": "Claude Pro 月繳二十美元，年繳折合每月十七，一次付兩百。"
+        },
+        {
+          "id": "a88i",
+          "text": "Gemini 是唯一在台灣頁直接標台幣的，AI Plus 每月一百六十五元。"
+        },
+        {
+          "id": "juqe",
+          "text": "AI Pro 每月六百五十元，用量是免費版的四倍。"
+        },
+        {
+          "id": "jnxh",
+          "text": "注意 Go 雖然便宜，模型還是輕量的那一級。"
+        },
+        {
+          "id": "nbyb",
+          "text": "所以價格最低，不一定最適合你。"
+        },
+        {
+          "id": "4eh9",
+          "text": "入門方案之間差的，主要是模型等級和額度倍數。"
+        }
+      ]
+    },
+    {
+      "id": "gemini-perks",
+      "template": "stats",
+      "data": {
+        "title": "Gemini 入門方案多給什麼",
+        "stats": [
+          {
+            "value": "2 倍",
+            "label": "AI Plus 用量"
+          },
+          {
+            "value": "200 點",
+            "label": "AI Plus 的 Flow 點數"
+          },
+          {
+            "value": "4 倍",
+            "label": "AI Pro 用量"
+          },
+          {
+            "value": "1,000 點",
+            "label": "AI Pro 的 Flow 點數"
+          }
+        ],
+        "source": "Gemini 台灣訂閱頁，2026-09"
+      },
+      "claims": [
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "nxh2",
+          "text": "Gemini 的兩個入門方案，差在用量和創作點數。",
+          "reveal": 1
+        },
+        {
+          "id": "rnm6",
+          "text": "AI Plus 是免費版兩倍用量，送兩百點 Flow。",
+          "reveal": 1
+        },
+        {
+          "id": "m9zg",
+          "text": "AI Pro 是四倍用量，Flow 點數給到一千點。",
+          "reveal": 1
+        },
+        {
+          "id": "w8tg",
+          "text": "Flow 是它的 AI 創意工作室，做影片場景用的。",
+          "reveal": 1
+        },
+        {
+          "id": "mihg",
+          "text": "不做影片的人，這些點數對你意義不大。"
+        }
+      ]
+    },
+    {
+      "id": "twd-note",
+      "template": "big",
+      "data": {
+        "kicker": "台幣價格",
+        "text": "登入後為準",
+        "sub": "ChatGPT、Claude 沒有在台灣頁標台幣"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "3eqb",
+          "text": "ChatGPT 和 Claude 的台幣價格，以你登入後看到的為準。"
+        },
+        {
+          "id": "xjnn",
+          "text": "從 App 內購買，價格可能和網頁不一樣。"
+        },
+        {
+          "id": "v8md",
+          "text": "付款前兩邊都看一次，選便宜的那邊。"
+        },
+        {
+          "id": "bygz",
+          "text": "同一個方案，用不同管道買，價格可能差一截。"
+        },
+        {
+          "id": "u65e",
+          "text": "匯率和稅也會讓實際扣款跟標價不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "context-stats",
+      "template": "stats",
+      "data": {
+        "title": "Gemini 各方案一次能讀多少",
+        "stats": [
+          {
+            "value": "32k",
+            "label": "免費版上下文"
+          },
+          {
+            "value": "128k",
+            "label": "AI Plus"
+          },
+          {
+            "value": "100 萬",
+            "label": "AI Pro 與 Ultra"
+          }
+        ],
+        "source": "Gemini Apps Help，2026-09"
+      },
+      "claims": [
+        "c4",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "znvh",
+          "text": "如果你常讀長文件，這張要看。",
+          "reveal": 1
+        },
+        {
+          "id": "spb5",
+          "text": "Gemini 免費版一次能讀三萬兩千 token，AI Plus 是十二萬八千。",
+          "reveal": 1
+        },
+        {
+          "id": "9xau",
+          "text": "AI Pro 直接放大到一百萬，差了三十倍以上。",
+          "reveal": 1
+        },
+        {
+          "id": "9vn7",
+          "text": "讀合約、論文、整本報告的人，最有感的就是這個。"
+        },
+        {
+          "id": "xf2h",
+          "text": "不常讀長文件的人，這一項可以跳過。"
+        }
+      ]
+    },
+    {
+      "id": "five-users",
+      "chapter": "五種使用者，對號入座",
+      "template": "steps",
+      "data": {
+        "title": "五種使用者，找你是哪種",
+        "steps": [
+          {
+            "title": "偶爾問問題",
+            "detail": "免費版就好"
+          },
+          {
+            "title": "每天寫作翻譯",
+            "detail": "Go、AI Plus 或 Claude Pro"
+          },
+          {
+            "title": "大量讀文件",
+            "detail": "AI Pro 或 Claude Pro"
+          },
+          {
+            "title": "寫程式",
+            "detail": "Claude Pro 或 ChatGPT Plus"
+          },
+          {
+            "title": "做圖做影片",
+            "detail": "AI Plus 起跳"
+          }
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "2hw6",
+          "text": "接下來用五種使用者，幫你對號入座。",
+          "reveal": 1
+        },
+        {
+          "id": "apn9",
+          "text": "偶爾問問題的，三家免費版都能問，免費就好。",
+          "reveal": 1
+        },
+        {
+          "id": "g5f8",
+          "text": "每天寫作翻譯的，預算低選 Go 或 AI Plus，重視品質選 Claude Pro。",
+          "reveal": 1
+        },
+        {
+          "id": "zn59",
+          "text": "大量讀文件的，看上下文，AI Pro 或 Claude Pro。",
+          "reveal": 1
+        },
+        {
+          "id": "kax6",
+          "text": "寫程式的，Claude Pro 有 Claude Code，ChatGPT Plus 有 Codex。",
+          "reveal": 1
+        },
+        {
+          "id": "viys",
+          "text": "做圖做影片的，Gemini 從 AI Plus 開始就能生成影片。"
+        },
+        {
+          "id": "mp5v",
+          "text": "不在這五種裡的，就找最接近的那一種。"
+        },
+        {
+          "id": "c8s6",
+          "text": "也可以同時是好幾種，那就看你最常卡的那一種。"
+        },
+        {
+          "id": "cjpd",
+          "text": "每一種都有兩個選項，挑你已經習慣的那家。"
+        }
+      ]
+    },
+    {
+      "id": "writer-case",
+      "template": "chat",
+      "data": {
+        "title": "每天寫作的人",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "我每天寫稿翻譯，Claude 免費版常常五小時內就用完"
+          },
+          {
+            "side": "left",
+            "name": "建議",
+            "text": "你卡的是用量，先試一個月入門方案，看額度夠不夠"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "526p",
+          "text": "舉個例子，有人每天寫稿翻譯，Claude 免費版常在五小時內用完。",
+          "reveal": 1
+        },
+        {
+          "id": "zrsy",
+          "text": "他卡的是用量，不是模型，先試一個月入門方案就好。",
+          "reveal": 1
+        },
+        {
+          "id": "8429",
+          "text": "如果只是偶爾卡一次，等五小時重置也是一種選擇。"
+        },
+        {
+          "id": "ja5d",
+          "text": "先解決卡住的那一點，其他功能是附帶的。"
+        },
+        {
+          "id": "734t",
+          "text": "付費之前，先確定你卡的是哪一種額度。"
+        }
+      ]
+    },
+    {
+      "id": "annual",
+      "template": "big",
+      "data": {
+        "kicker": "年繳划不划算",
+        "text": "每月省 3 美元",
+        "sub": "Claude Pro 年繳折合 17、月繳 20"
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "kbu4",
+          "text": "說到年繳，Claude Pro 年繳折合每月十七美元。"
+        },
+        {
+          "id": "39dy",
+          "text": "比月繳的二十美元，每月省三美元。"
+        },
+        {
+          "id": "dcby",
+          "text": "但年繳要一次付兩百，確定會長期用再選。"
+        },
+        {
+          "id": "buep",
+          "text": "Gemini 的台灣頁只列月費，沒有年繳選項。"
+        },
+        {
+          "id": "ah3g",
+          "text": "一年可以省三十六美元，但前提是你真的用滿一年。"
+        }
+      ]
+    },
+    {
+      "id": "upper-tier",
+      "chapter": "上一階給誰",
+      "template": "compare",
+      "data": {
+        "title": "上一階是給誰的",
+        "left": {
+          "heading": "上一階",
+          "points": [
+            "每天長時間使用",
+            "要最強模型與最高額度",
+            "Claude Max 每月 100 美元起"
+          ]
+        },
+        "right": {
+          "heading": "一般人",
+          "points": [
+            "先從入門方案開始",
+            "不夠再升級",
+            "隨時可以取消"
+          ]
+        }
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "mtr3",
+          "text": "那上一階的方案，是給誰的？",
+          "reveal": 1
+        },
+        {
+          "id": "sibb",
+          "text": "是每天長時間用、需要最強模型和最高額度的人。",
+          "reveal": 1
+        },
+        {
+          "id": "gczp",
+          "text": "像 Claude Max 每月一百美元起，用量是 Pro 的五倍或二十倍。"
+        },
+        {
+          "id": "i5ui",
+          "text": "一般人先從入門方案開始，不夠再升級就好。"
+        },
+        {
+          "id": "j8z4",
+          "text": "上一階的價格是入門的五倍以上，別一開始就衝。"
+        },
+        {
+          "id": "8ffa",
+          "text": "多數人一輩子都用不到上一階的額度。"
+        },
+        {
+          "id": "6jb9",
+          "text": "真的撞到入門方案的上限，再來考慮也不遲。"
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "template": "cta",
+      "data": {
+        "kicker": "完整比較表",
+        "title": "三家方案與決策圖",
+        "sub": "說明欄第一行就是文章連結"
+      },
+      "lines": [
+        {
+          "id": "iej3",
+          "text": "三家所有方案的比較表和決策圖，放在說明欄第一行的文章。"
+        },
+        {
+          "id": "cq7t",
+          "text": "學生優惠和團隊方案，也都整理在裡面。"
+        },
+        {
+          "id": "qat2",
+          "text": "方案常常改，文章會跟著更新。"
+        }
+      ]
+    },
+    {
+      "id": "three-things",
+      "chapter": "付費前先做三件事",
+      "template": "steps",
+      "data": {
+        "title": "付費前先做三件事",
+        "steps": [
+          {
+            "title": "用滿免費版兩週",
+            "detail": "看你真的卡在哪"
+          },
+          {
+            "title": "先買一個月",
+            "detail": "不要一開始就年繳"
+          },
+          {
+            "title": "比對內購與網頁價",
+            "detail": "App 內購可能比較貴"
+          }
+        ]
+      },
+      "claims": [
+        "c9",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "nrcs",
+          "text": "最後，付費前先做三件事。"
+        },
+        {
+          "id": "hfgg",
+          "text": "第一，先用滿免費版兩週，看你真的卡在哪。",
+          "reveal": 1
+        },
+        {
+          "id": "8n35",
+          "text": "第二，先買一個月，確定會長期用再考慮年繳。",
+          "reveal": 1
+        },
+        {
+          "id": "hepu",
+          "text": "第三，App 內購和網頁的價格都看一次。",
+          "reveal": 1
+        },
+        {
+          "id": "fv28",
+          "text": "這三件事做完，你花的每一塊錢都比較值得。"
+        },
+        {
+          "id": "4nb5",
+          "text": "尤其第一件，能幫你省下最多錢。"
+        }
+      ]
+    },
+    {
+      "id": "cancel",
+      "template": "bullets",
+      "data": {
+        "title": "取消要注意的地方",
+        "items": [
+          "三家都可以月繳、隨時取消",
+          "取消後用到當期結束",
+          "App 內購要回商店取消"
+        ]
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "f3ak",
+          "text": "三家都是月繳、隨時可以取消。",
+          "reveal": 1
+        },
+        {
+          "id": "7imn",
+          "text": "取消之後，付費功能會用到這一期結束。",
+          "reveal": 1
+        },
+        {
+          "id": "7xye",
+          "text": "從 App 裡買的，要回到 App 商店取消，刪掉 App 不等於取消。",
+          "reveal": 1
+        },
+        {
+          "id": "n8yc",
+          "text": "訂閱前先記下續約日，要取消時才不會錯過。"
+        },
+        {
+          "id": "27sx",
+          "text": "錢不會退，但功能會用到期滿。"
+        }
+      ]
+    },
+    {
+      "id": "switch-cost",
+      "template": "bullets",
+      "data": {
+        "title": "換一家的成本很低",
+        "items": [
+          "三家都能月繳",
+          "換家主要是重整對話和記憶",
+          "先買一個月最穩"
+        ]
+      },
+      "lines": [
+        {
+          "id": "3iph",
+          "text": "好消息是，換一家的成本其實很低。",
+          "reveal": 1
+        },
+        {
+          "id": "4rxi",
+          "text": "三家都能月繳，換家主要的麻煩，只是重新整理對話紀錄和記憶。",
+          "reveal": 1
+        },
+        {
+          "id": "87ss",
+          "text": "所以先買一個月試用，比一次年繳穩妥得多。",
+          "reveal": 1
+        },
+        {
+          "id": "6vy6",
+          "text": "不滿意就換，不必被一次付款綁住。"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "卡的地方決定付哪一家",
+      "template": "outro",
+      "data": {
+        "title": "卡的地方，決定你付哪一家",
+        "cta": "比較表與決策圖在說明欄的文章裡",
+        "lines": [
+          "偶爾用：免費版就好",
+          "常撞額度：先買一個月入門方案",
+          "價格：以登入後看到的為準"
+        ]
+      },
+      "lines": [
+        {
+          "id": "za75",
+          "text": "最後記住一句話：卡的地方，決定你付哪一家。"
+        },
+        {
+          "id": "nwep",
+          "text": "偶爾用的，免費版就好；常撞額度的，先買一個月入門方案。"
+        },
+        {
+          "id": "kkm9",
+          "text": "價格會變，以你登入後看到的為準，我們下一支影片見。"
+        },
+        {
+          "id": "g3v4",
+          "text": "先用滿免費版兩週，你就知道答案了。"
+        },
+        {
+          "id": "xpui",
+          "text": "這支所有價格都照官網整理，之後可能變動。"
+        }
+      ]
+    }
+  ]
+}

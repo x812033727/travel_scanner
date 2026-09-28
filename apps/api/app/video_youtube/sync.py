@@ -226,6 +226,9 @@ async def request_sync(
     project = await _locked_project(session, slug)
     if running(project.youtube_sync):
         raise Refused(409, "video_youtube_sync_running", "這支影片正在送 YouTube，等它跑完再送")
+    from app.video_youtube.vps import assert_idle
+
+    await assert_idle(slug, upload=payload.mode == "upload")
     review = approved_confirmation(await _project_reviews(session, project))
     if review is None:
         raise Refused(409, "video_youtube_not_ready", "這支影片還沒有核准的上傳包")
@@ -306,6 +309,9 @@ async def retry_sync(session: AsyncSession, slug: str, user: User) -> ProjectOut
     """Run the last request again: finished steps stay finished, the rest start over."""
     await _linked_connection(session)
     project = await _locked_project(session, slug)
+    from app.video_youtube.vps import assert_idle
+
+    await assert_idle(slug)
     state = project.youtube_sync
     if not state:
         raise Refused(409, "video_youtube_sync_missing", "這支影片還沒有送過 YouTube")

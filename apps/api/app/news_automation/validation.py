@@ -157,6 +157,31 @@ async def validate_source_configuration(
             await fetcher.close()
 
 
+def _legacy_match(
+    body: bytes,
+    url: str,
+    config: dict[str, object],
+    stored_hash: str,
+    *,
+    article_text: str,
+) -> bool:
+    """Whether unchanged legacy text also covers the complete current story.
+
+    Removed chrome can change the modern hash even when the story was fully recorded.
+    But the old parser sometimes stopped at an image and hashed only navigation or a lead.
+    Such a hash cannot authorize text it never covered. Require the entire current story
+    verbatim on full-line boundaries in the authenticated legacy text; otherwise obtain
+    fresh evidence. Partial matches and similarity thresholds cannot establish coverage.
+    """
+
+    _, legacy_text, _ = extract_article(body, url, config, legacy=True)
+    return (
+        content_fingerprint(legacy_text) == stored_hash
+        and bool(article_text.strip())
+        and f"\n{article_text}\n" in f"\n{legacy_text}\n"
+    )
+
+
 async def revalidate_evidence(
     session: AsyncSession,
     evidence: list[NewsEvidence],
@@ -202,7 +227,13 @@ async def revalidate_evidence(
             if not article_text.strip():
                 reasons.append(f"source_became_unreadable:{row.url}")
                 continue
-            if content_fingerprint(article_text) != row.content_hash:
+            if content_fingerprint(article_text) != row.content_hash and not _legacy_match(
+                fetched.body,
+                fetched.url,
+                matched_source.config_json,
+                row.content_hash,
+                article_text=article_text,
+            ):
                 reasons.append(f"source_content_changed:{row.url}")
                 continue
             row.retrieved_at = datetime.now(UTC)
