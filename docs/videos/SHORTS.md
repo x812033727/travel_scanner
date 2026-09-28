@@ -417,7 +417,7 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 | 期 | 票 | 做什麼 | scope | 依賴 |
 | --- | --- | --- | --- | --- |
 | 一 | `video-shorts-api`（A1） | 遷移（`video_projects` 三欄與 `format`、設定、時段、成效、花費）、`shorts_qa_passed` 與自動核准、時段指派的規則、後台端點（總覽、月曆、花費、設定、授權、暫停）、清單篩選與上限 | `apps/api/app/video_shorts`（models、schemas、settings、slots、costs、rules、overview、errors、admin_api，以及兩個空的路由檔 admin_publish_api、admin_automation_api）、`apps/api/app/models.py`、`apps/api/app/video_reviews`、`apps/api/app/video_automation`（judge、admin_api）、`apps/api/app/main.py`、`apps/api/app/admin/operations_service.py`、遷移、測試 | — |
-| 一 | `video-shorts-tools-push`（T1） | 腳本格式第 2 版、三個系列各自的版面、伺服器旁白、`check-audio`、`qa`、`package`、`push`、`import`、CI 的煙霧測試；工人每一輪先敲門（`POST shorts/tick`） | `tools/video/shorts`、`tools/video/automation`（cli、client）、`.github/workflows/video-tooling.yml` | A1 |
+| 一 | `video-shorts-tools-push`（T1） | 腳本格式第 2 版、三個系列各自的版面、伺服器旁白、`check-audio`、`qa`、`package`、`push`、`import`、CI 的煙霧測試；工人每一輪先敲門（`shorts/cli.mjs tick`，由工人的迴圈腳本呼叫） | `tools/video/shorts`、`ops/video/worker.sh`、`.github/workflows/video-tooling.yml` | A1 |
 | 一 | `video-shorts-web-routes`（A2） | 工人與工具端點的網站轉送；影片清單的轉送把篩選參數帶過去（原本的轉送不帶查詢字串） | `apps/web/app/api/video/automation/shorts`、`apps/web/app/api/video/automation/videos` | — |
 | 一 | `video-shorts-admin-tab`（W1） | Shorts 分頁：頂列、需要你、等你上傳、月曆、片庫、成效、花費、設定與授權；9:16 預覽與遮擋範圍；五語字串 | `apps/web/components/admin-video-shorts*`、`admin-video-reviews.tsx`、`admin-video-review-card.tsx`、`apps/web/app/api/admin-video-shorts`、`apps/web/messages` | A1；PR #870 合併之後 |
 | 一 | `video-shorts-youtube-auto`（Y1） | `tick`、照授權自動送出、依檔名認領、Shorts 的欄位、撤回、Data API 的成效快照、每 30 天驗證 | `apps/api/app/video_shorts`（publish、claim、stats、tick、admin_publish_api）、`apps/api/app/video_youtube`、測試 | A1 |
