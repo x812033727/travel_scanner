@@ -1,7 +1,7 @@
 ---
 id: 2026-09-27-record-batch030-five-language-wordpress-migration
 title: Record Batch030 five-language WordPress migration release
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-batch030-release-record
@@ -41,7 +41,7 @@ that distinguishes each step from a merged content PR.
 - [x] Recheck the sealed source-correction and target-publication receipts.
 - [x] Confirm final independent target QA and target hold-clear readback.
 - [x] Write and review the release record; run checks.
-- [ ] Open the release-record PR.
+- [x] Open the release-record PR.
 - [ ] Merge after successful CI and release coordination.
 
 ## How to verify
@@ -68,3 +68,7 @@ independent post-clear readback SHA-256 `d83e40084ea20f54229f00694f784f8cafb5825
 The one-off target driver never produced a final verify success receipt: it
 rejected only the three runtime-only public API metadata fields. The release
 record preserves this limitation and its pinned refusal evidence.
+
+Release-record PR #877 is open for review. Its merge remains a separate step;
+the production publication and browser acceptance occurred before this
+documentation PR.
