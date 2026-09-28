@@ -6,7 +6,9 @@ import test from "node:test";
 import { EXIT, main } from "../cli.mjs";
 import { fixture, sandbox } from "../core/fixtures/load.mjs";
 import { eachLine, textHash } from "../core/schema.mjs";
+import { writeLanguages } from "../core/stages.mjs";
 import { lintProject, loadProject } from "../core/state.mjs";
+import { estimateTimeline, speechHash } from "../core/timeline.mjs";
 import { sourceHashes } from "../core/translations.mjs";
 import { buildSheet, mergeSheet, sheetTodo } from "./cli.mjs";
 
@@ -185,4 +187,64 @@ test("an i18n file from before source hashes loads; lint calls its metadata poss
   const written = JSON.parse(readFileSync(path.join(box.dir, "i18n", "en.json"), "utf8"));
   assert.deepEqual(Object.keys(written.chapters), ["hook", "questions", "wrap"]);
   assert.deepEqual(Object.keys(written), ["title", "description", "tags", "chapters", "source_hashes", "lines"]);
+});
+
+test("a sheet narrowed with --parts holds only that part, merging keeps the rest untouched, and the dub budget comes only with a dub chosen", async () => {
+  const box = sandbox();
+  // A full translation first, so the untouched parts have something to keep.
+  const full = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], full.ctx), EXIT.ok, full.out.stderr);
+  const sheetPath = path.join(box.workdir, "i18n", "en.todo.json");
+  writeFileSync(sheetPath, JSON.stringify(filled(JSON.parse(readFileSync(sheetPath, "utf8")))));
+  assert.equal(await main(["i18n-merge", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
+  const file = path.join(box.dir, "i18n", "en.json");
+  const before = JSON.parse(readFileSync(file, "utf8"));
+
+  // Metadata only: no lines on the sheet; a merge keeps the lines as they were.
+  const meta = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "metadata"], meta.ctx), EXIT.ok, meta.out.stderr);
+  assert.match(meta.out.stdout, /^en: to translate 0 of 3 chapters; .*\(metadata only\)\n$/);
+  const metaSheet = JSON.parse(readFileSync(sheetPath, "utf8"));
+  assert.deepEqual([metaSheet.parts, metaSheet.lines, metaSheet.title.text, metaSheet.chapters.length], [["metadata"], [], "How to choose an AI model", 3]);
+  assert.match(metaSheet.note, /only the title, the description, the tags and the chapter names/);
+  metaSheet.title.text = "A better English title";
+  writeFileSync(sheetPath, JSON.stringify(metaSheet));
+  assert.equal(await main(["i18n-merge", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
+  const afterMeta = JSON.parse(readFileSync(file, "utf8"));
+  assert.equal(afterMeta.title, "A better English title");
+  assert.deepEqual(afterMeta.lines, before.lines, "the lines were not on the sheet, so they stay");
+  assert.deepEqual(Object.keys(afterMeta), Object.keys(before));
+
+  // Captions only: no title, description, tags or chapters; a merge keeps them.
+  const caps = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "captions"], caps.ctx), EXIT.ok, caps.out.stderr);
+  assert.match(caps.out.stdout, /^en: to translate 0 of 7 lines; .*\(captions only\)\n$/);
+  const capSheet = JSON.parse(readFileSync(sheetPath, "utf8"));
+  assert.deepEqual([capSheet.parts, capSheet.title, capSheet.description, capSheet.tags, capSheet.chapters, capSheet.lines.length], [["captions"], null, null, null, [], 7]);
+  assert.ok(capSheet.lines.every((line) => line.max_chars === undefined), "no narration timed yet: no budget");
+  capSheet.lines[0].text = "Shorter";
+  writeFileSync(sheetPath, JSON.stringify(capSheet));
+  assert.equal(await main(["i18n-merge", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
+  const afterCaps = JSON.parse(readFileSync(file, "utf8"));
+  assert.equal(afterCaps.lines[capSheet.lines[0].id].text, "Shorter");
+  assert.deepEqual([afterCaps.title, afterCaps.description, afterCaps.tags, afterCaps.chapters, afterCaps.source_hashes], [afterMeta.title, afterMeta.description, afterMeta.tags, afterMeta.chapters, afterMeta.source_hashes]);
+
+  // With the narration timed, the budget goes on the sheet only when the owner chose a dub for the locale.
+  const project = loadProject({ slug: box.slug, root: box.root });
+  mkdirSync(box.workdir, { recursive: true });
+  writeFileSync(path.join(box.workdir, "timeline.json"), JSON.stringify({ ...estimateTimeline(project.doc), speech_hash: speechHash(project.doc, project.lexicon) }));
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "captions"], context(box).ctx), EXIT.ok);
+  assert.ok(JSON.parse(readFileSync(sheetPath, "utf8")).lines.every((line) => Number.isInteger(line.max_chars)), "no choice written: budgets as before");
+  writeLanguages(box.workdir, { locales: { en: { metadata: true, captions: true, dub: false } }, decided_at: "2026-09-27T10:00:00Z" });
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], context(box).ctx), EXIT.ok);
+  assert.ok(JSON.parse(readFileSync(sheetPath, "utf8")).lines.every((line) => line.max_chars === undefined), "captions without a dub: no budget");
+  writeLanguages(box.workdir, { locales: { en: { metadata: true, captions: true, dub: true } }, decided_at: "2026-09-27T10:00:00Z" });
+  const dubbed = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en"], dubbed.ctx), EXIT.ok);
+  assert.ok(JSON.parse(readFileSync(sheetPath, "utf8")).lines.every((line) => Number.isInteger(line.max_chars)), "a dub chosen: every line has its budget");
+  assert.match(dubbed.out.stdout, /with max_chars for the dub/);
+
+  const bad = context(box);
+  assert.equal(await main(["i18n-sheet", "--slug", box.slug, "--locale", "en", "--parts", "dub"], bad.ctx), EXIT.usage);
+  assert.match(bad.out.stderr, /--parts must be among metadata, captions/);
 });

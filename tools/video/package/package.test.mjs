@@ -89,6 +89,23 @@ test("the final review page plays final.mp4 and seeks from chapters and lines", 
   assert.match(finalReviewHtml(doc, timeline, { problems: ["loudness off"] }), /自動檢查有問題：loudness off/);
 });
 
+test("with the owner's choice, metadata holds the chosen locales and names a chosen one not translated yet", () => {
+  const translations = {
+    en: { title: "How to pick an AI model", description: "Three questions." },
+    ja: { title: "AI モデルの選び方", description: "三つの質問。" },
+  };
+  const chosen = composeMetadata({ doc, timeline, translations, locales: ["ja"] });
+  assert.deepEqual(chosen.problems, []);
+  assert.deepEqual(Object.keys(chosen.metadata.localizations), ["ja"], "en is translated but not chosen");
+  const missing = composeMetadata({ doc, timeline, translations, locales: ["ko", "en"] });
+  assert.deepEqual(missing.problems, ["ko: the title and description are not translated yet (i18n-sheet --locale ko --parts metadata, then i18n-merge)"]);
+  assert.deepEqual(Object.keys(missing.metadata.localizations), ["en"]);
+  assert.deepEqual(composeMetadata({ doc, timeline, translations, locales: [] }).metadata.localizations, {}, "Traditional Chinese only");
+  const steps = uploadChecklist({ metadata: composeMetadata({ doc, timeline }).metadata, captions: [], thumbnail: false, dubs: [{ locale: "en", file: "dubs/en.m4a", format: "m4a", tempo_max: 1 }] });
+  assert.match(steps, /「語言」卡片按「已在 Studio 上傳配音」/);
+  assert.match(uploadChecklist({ metadata: composeMetadata({ doc, timeline }).metadata, captions: [], thumbnail: false }), /勾那個語言的「配音」/);
+});
+
 test("a compilation's metadata keys its chapters on episode slugs and falls back to 「第 N 集」 when eighty titles would not fit", () => {
   const episodes = Array.from({ length: 80 }, (_, index) => ({ slug: `wuxia-ep-${index + 1}`, number: index + 1, title: "山海經最倔強的一隻鳥到底為什麼要填海呢這是第一部的長標題" }));
   const long = compilationDocument({ series: "wuxia", episodes, voice: doc.voice });
