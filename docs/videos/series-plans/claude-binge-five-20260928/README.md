@@ -14,7 +14,7 @@
 | 4 | [她替公主試毒十年](taste-of-the-throne/README.md) | 女帝崛起／女主 | 嘗使嘗出太后的毒、皇帝的病、井裡的藥，最後嘗出自己的血脈 | 「試毒女官」是宮鬥裡沒被用爛的視角，舌頭就是偵探；每天喝的解毒湯其實是毒，公主一直知道，第 20 集把前面所有保護都變成利用；結局廢除嘗使，是一句話能講完的收尾 |
 | 5 | [符師與他的鬼](ghost-at-his-side/README.md) | 自訂／雙男主留白 | 搭檔死後一年回來坐在他桌上：「沈大人，你袖子裡有我。」只有他看得見的鬼，兩人聯手查全城的命被誰借走 | 站主偏好的仙俠雙男主羈絆與鬼怪符籙；「只有他看得見」是最強的兩人戲設定；借命符讓每個案子都是倒數；「你活的是他的命」翻轉後，燒符與不燒符就是整部的情感 |
 
-每部目錄：`source.mjs`（作者唯一編輯的檔）與 `build.mjs` 產生的 19 個檔案——`setting.md`／`.json`、`outline.md`／`.json`、`chapter-01..04.md`／`.json`、`documents.json`（六份待送件）、`series-request.json`（`SeriesIn`）、`continuity.md`、`packaging.md`／`.json`、`README.md`、`manifest.json`（來源與每個檔的雜湊）。
+每部目錄：作者編輯的來源 `source.mjs`（第一部與第三部太長，拆成 `setting.mjs`、`chapter-1.mjs`…`chapter-4.mjs`、`packaging.mjs`，由 `source.mjs` 組起來），與 `build.mjs` 產生的 19 個檔案——`setting.md`／`.json`、`outline.md`／`.json`、`chapter-01..04.md`／`.json`、`documents.json`（六份待送件）、`series-request.json`（`SeriesIn`）、`continuity.md`、`packaging.md`／`.json`、`README.md`、`manifest.json`（來源與每個檔的雜湊）。
 
 ## 五部共同的緊湊規格
 
