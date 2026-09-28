@@ -148,6 +148,20 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 2. **劇本本機裁決**：查核（`verifier:episode`）多回 `coverage.satisfaction` 與 `retention` 指名的句子 id，工人用估計時間軸算秒數（`retentionNumbers`），再用與伺服器同一套規則自己判一次（`scriptVerdict`：四個節拍沒有「無」、「弱」≤ 1、沒有連貫性與雷同問題、鉤子 ≤ 8 秒、第一個爽點 ≤ 30 秒、爽點 ≥ 2、懸念是最後一句）；不過就交撰稿 FIX 模式（最多 `MAX_PROMPT_FIX_ROUNDS` 輪）再查核、再聽眾審稿，過了才 `review-push --gate script`，伺服器依 `script_check_passed` 當場核准。設定圖與分鏡在免關卡作品上視為自動開關開著。每集的 `series.json` 帶 `visual_tier` 與 `compilation`：lint 擋超過等級上限的片段數，合集模式的第一個場景不能是片頭卡；`clips` 只買 `visual: "clip"` 的鏡頭，`assemble` 把 `still` 鏡頭的關鍵影格做成運鏡段。
 3. **合集**：全部集數完成後 `GET …/series/next` 回 `{kind: "compilation"}`，工人 `POST …/series/{slug}/compilation/start`（`{slug: "<作品>-full"}`）拿到每集與脈絡，建 `docs/videos/<作品>-full/video.json`（`compilation` 區塊、章節卡、outro、佔位標題）與 `compilation.json`，之後照 `COMPILATION_STEPS` 走：企劃寫標題／說明／標籤／縮圖（variant `planner:compilation`，縮圖底圖從前三集的關鍵影格挑一張複製到 `keyframes/thumb-source.png`）→ `render` 章節卡與縮圖 → `compile`（`-c copy` 串接每集成片、音訊重編一次、合併五語字幕、寫章節；結束碼 4 下一輪再試，其餘非 0 卡住）→ 翻譯四語標題與說明（variant `translator:compilation`）→ `qa`（6 項）→ 成片與上架確認照 HANDS-OFF 自動核准 → 站主貼網址後 `POST …/compilation/done`。合集的 1080p 成片不進審核檔案區（只送 720p 預覽），站主從後台下載。
 
+## 品牌故事（2026-09-28 加，設計在 `STORY.md`）
+
+品牌故事是 12–15 分鐘、只有旁白、約 90 張卡通靜態圖的非虛構短片，影片是漫劇，100 個故事是一部 `kind: "story"` 作品的 100 集（`hands_off`、`visual_tier: "stills"`）。企劃清單事先查核、由站主匯入，工人從 `GET /video/automation/series/next` 拿到 `kind: "episode"` 的工作，集數的 `beats` 就是整份企劃。實作在 `tools/video/automation/story.mjs`，操作步驟在 skill 的 `references/story.md`。
+
+一集的做法跟漫劇的集只差在稿子怎麼來：
+
+1. **開始**：用企劃定好的 `slug` 呼叫 `POST …/episodes/{n}/start`（別的代號伺服器回 409），寫 `series.json`（`kind: "story"`、`names`、人物、畫風、圖片模型、企劃）與 `brief.md`，大綱在本機核准。沒有模型呼叫。
+2. **一步最多一次模型呼叫**，每一次都帶 variant，不算進每月排程草稿：撰稿一章一次（`writer:story`，六章存在工作區的 `story/chapters/`，六章齊了合併成 `video.json`、`claims.md` 並 lint，錯誤落在哪一章就退回那一章）→ 查核一章一次（`verifier:story`，新 session，回句子 patch 與那一章的主張表，不回整份稿）→ 聽眾審稿一章一次（`listener:story`，只回 patch）。正常一支 18 次呼叫；量過最大的一次請求約 71 KB，一章的回答不到 10,000 字，都在轉送的 295 秒與輸出上限之內。
+3. **查核照企劃**：企劃的事實是查核過的，查核模型確認稿子說的跟企劃一樣，只在頁面裡找撰稿模型自己加的數字、年份、人名；`attributed` 的要說是誰的說法，`reviewer_only` 的照企劃的寫法、不去找頁面，`caveats` 照辦。工人讀整頁文字（`pageReader({ whole: true })`，其他呼叫者不變），用那一章的數字、年份（含昭和、平成、令和、民國）與名字切出段落交給模型，讀不到的 PDF 交企劃的 `supports`，並註明不是這次讀的。
+4. **劇本關卡在本機核准**，備註寫原因；故事不寫前情、不做合集、不送劇本關卡。之後照漫劇的步驟：有企劃人物才有 `look`，`tts` 之後先量長度（13 分鐘要在 11:30–15:30，否則撰稿模型砍最長的一章或補最瘦的一章，最多兩輪；段落沒有更多可講就卡住給站主決定，不塞內容），再 `check-audio`、`keyframes`、分鏡（伺服器依 judge 決定）、`render`、`clips`（全靜態圖只寫 manifest）、`music`、`assemble`、字幕、成片、上傳包、上架確認（`POST …/done`）。
+5. **圖片**：提示詞不得出現企劃 `names` 裡的名字、商標、文字或真人長相，lint 擋；沒過 judge 的鏡頭只把那幾鏡交給撰稿模型修（`writer:story-fix`），修正也先 lint 才保存。
+
+站主在影片頁退回旁白並寫原因時，聽眾審稿帶著那句話把六章再聽一次；在故事的劇本討論串留言，工人回一則說明（故事的稿子不從討論串整份重寫）。漫劇設定的「各階段常設指示」也會接在故事的提示詞後面。
+
 ## 安全與成本
 
 - `/video/automation/run` 只接受設定裡列出的階段名稱，模型由伺服器依設定決定，工人不能指定。每次呼叫都記下階段、模型、token 數與影片代號。上限有兩個，超過都回 429：

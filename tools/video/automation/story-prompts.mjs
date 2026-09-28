@@ -84,7 +84,8 @@ null}, "thumbnail_shot": "<scene id>" (the hook only)}.
   shots, never a longer shot. Vary the shot sizes; two shots in a row never show the same frame.
 - The last chapter ("now") ends with one outro card, {"id": "now-outro", "template": "outro",
   "data": {"title": "<the opening question answered in a short line>", "cta": "參考資料在說明欄"},
-  "lines": [...]}: its lines give the one-sentence answer to "plan.question" and one next step.
+  "lines": [...]}: its lines give the one-sentence answer to "plan.question" and one next step
+  (the site article linked in the description when "plan.related_guide" names one).
 - The hook: its first sentence is the question itself or a counter-intuitive fact, no greeting;
   within 30 seconds the viewer knows what the video answers. One of its shots draws
   "plan.thumbnail.idea" with room on the left for a headline: name it in "thumbnail_shot".

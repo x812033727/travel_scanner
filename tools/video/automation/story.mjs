@@ -903,6 +903,11 @@ export async function advanceStory(automation, state, next) {
   if (unchecked) return checkChapter(automation, state, unchecked);
   const unheard = CHAPTER_KEYS.find((key) => !entryOf(state, key).listened);
   if (unheard) return listenChapter(automation, state, unheard);
+  // Every chapter is checked and heard: flow.mjs must never fall back to its whole-script check.
+  if (!state.verified || !state.listener_done) {
+    Object.assign(state, { verified: true, listener_done: true });
+    automation.persist(state);
+  }
   if (next === "script approved") return approveScript(automation, state);
   if (next === "narration approved") {
     const length = await checkLength(automation, state);
@@ -927,7 +932,7 @@ async function writerPayload(automation, state, key, extra = {}) {
     today: automation.ctx.now().toISOString().slice(0, 10),
     slug: state.slug,
     chapter: { key, number: index + 1, of: CHAPTER_KEYS.length, label: CHAPTER_OF.get(key).label, point: plan.chapters[index].point, budget: { seconds: budget.seconds, chars: budget.chars, shots: budget.shots } },
-    plan: { id: plan.id, subject: plan.subject, category: plan.category, region: plan.region, title: info.title, logline: info.logline, question: plan.question, takeaway: plan.takeaway, chapters: plan.chapters, thumbnail: plan.thumbnail ?? null, image_notes: plan.image_notes ?? "", sensitivity: plan.sensitivity ?? "none" },
+    plan: { id: plan.id, subject: plan.subject, category: plan.category, region: plan.region, title: info.title, logline: info.logline, question: plan.question, takeaway: plan.takeaway, chapters: plan.chapters, thumbnail: plan.thumbnail ?? null, image_notes: plan.image_notes ?? "", sensitivity: plan.sensitivity ?? "none", related_guide: plan.related_guide ?? null },
     facts: factsPayload(plan, belongs),
     caveats: plan.caveats ?? "",
     sources: await sourcesPayload(automation, state, plan, writerSourceOrder(plan, key, belongs), anchors),
