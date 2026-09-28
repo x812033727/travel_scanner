@@ -96,15 +96,50 @@
         {
           "id": "iut8",
           "text": "GPT-6 Astra，每百萬個輸出 token 要 50 美元。Claude Opus 5.5 要 20，Gemini 3.8 Flash 不到 4 美元。"
+        }
+      ]
+    },
+    {
+      "id": "hook-pick",
+      "template": "compare",
+      "data": {
+        "title": "看跑分挑，還是看價格挑？",
+        "left": {
+          "heading": "兩種挑法",
+          "points": [
+            "看跑分挑：會花冤枉錢",
+            "看價格挑：做出來的還要重做"
+          ]
         },
+        "right": {
+          "heading": "所以我這樣算",
+          "points": [
+            "三件每月真的會做的事",
+            "照今天的官方價",
+            "每個模型都算一遍"
+          ]
+        }
+      },
+      "lines": [
         {
           "id": "4f5z",
           "text": "看跑分挑，會花冤枉錢；看價格挑，做出來的還要重做。"
         },
         {
           "id": "ed4s",
-          "text": "所以我拿三件每月真的會做的事，照今天的官方價，每個模型都算一遍。"
-        },
+          "text": "所以我拿三件每月真的會做的事，照今天的官方價，每個模型都算一遍。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hook-win",
+      "template": "big",
+      "data": {
+        "text": "贏家**不是**\n最聰明的模型",
+        "sub": "算式跟三個問題都在這，讓它變成你的算式"
+      },
+      "lines": [
         {
           "id": "4vsv",
           "text": "贏家不是最聰明的模型。算式跟三個問題都在這，讓它變成你的算式。"
@@ -196,13 +231,43 @@
           "say": "Google 這邊，是 Gemini 三點八 Flash：輸入零點七五美元、快取零點零七五美元、輸出三點七五美元。",
           "say_for": "f33620a6d02a",
           "reveal": 1
-        },
+        }
+      ],
+      "chapter": "五個模型的官方定價並排比較"
+    },
+    {
+      "id": "sheet-flash",
+      "template": "stats",
+      "data": {
+        "title": "Google 說：Flash 這個價格維持到年底",
+        "stats": [
+          {
+            "value": "$3.75",
+            "label": "Gemini 3.8 Flash 輸出",
+            "note": "到 2026 年底"
+          },
+          {
+            "value": "$7.50",
+            "label": "之後翻倍",
+            "note": "2027 年 1 月 1 日起"
+          },
+          {
+            "value": "未列價",
+            "label": "Gemini 3.8 Pro"
+          }
+        ],
+        "source": "每百萬輸出 token；Google 官方定價頁，2026-09-28"
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "lines": [
         {
           "id": "39yb",
           "text": "Google 說，Flash 這個價格維持到年底，之後會翻倍。至於 3.8 這一代的 Pro，目前還沒有列出價格。"
         }
-      ],
-      "chapter": "五個模型的官方定價並排比較"
+      ]
     },
     {
       "id": "formula",
@@ -210,7 +275,7 @@
       "template": "code",
       "data": {
         "language": "算式",
-        "code": "每月費用 =\n    新的輸入 token × 輸入價\n  + 快取輸入 token × 快取價\n  + 模型輸出 token × 輸出價\n  （寫進快取的新 token：寫入價取代輸入價，\n    只限有列寫入價的廠商）\n  （價格都以每百萬 token 計）\n\n工作 1：每天摘要一份 40 頁的 PDF\n  輸入 30k + 輸出 1k，30 天\n  = 輸入 0.9M，輸出 0.03M",
+        "code": "每月費用 =\n    新的輸入 token × 輸入價\n  + 快取輸入 token × 快取價\n  + 模型輸出 token × 輸出價\n  （寫進快取的新 token：寫入價取代輸入價，\n    只限有列寫入價的廠商）\n  （價格都以每百萬 token 計）",
         "highlight": [
           1,
           2,
@@ -226,14 +291,45 @@
         {
           "id": "493h",
           "text": "公式一張投影片就放得下。輸入 token 乘以輸入價，快取 token 乘以快取價，加上輸出 token 乘以輸出價。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "job1-inputs",
+      "template": "steps",
+      "data": {
+        "title": "工作 1：每天早上摘要一份 PDF",
+        "steps": [
+          {
+            "title": "每天早上",
+            "detail": "摘要一份\n40 頁的 PDF"
+          },
+          {
+            "title": "每一份",
+            "detail": "輸入 30k token\n輸出 1k token"
+          },
+          {
+            "title": "一個月",
+            "detail": "30 天"
+          },
+          {
+            "title": "每月合計",
+            "detail": "輸入 0.9M\n輸出 0.03M"
+          }
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
         {
           "id": "yvm3",
           "text": "第一件工作：每天早上摘要一份 40 頁的 PDF。輸入 3 萬個 token，輸出 1000 個，一個月 30 天。"
         },
         {
           "id": "uia6",
-          "text": "加起來，輸入不到 100 萬個 token，輸出 3 萬個。你看，不管用哪一家，這都花不了多少錢。"
+          "text": "加起來，輸入不到 100 萬個 token，輸出 3 萬個。你看，不管用哪一家，這都花不了多少錢。",
+          "reveal": 1
         }
       ]
     },
@@ -275,7 +371,21 @@
           "id": "d8vw",
           "text": "Sol 是 2.1 美元，Gemini Flash 是 0.79 美元，Grok 大約 2 美元。",
           "reveal": 2
-        },
+        }
+      ]
+    },
+    {
+      "id": "job1-verdict",
+      "template": "big",
+      "data": {
+        "kicker": "每天摘要 PDF 這種工作",
+        "text": "價差是真的，\n但只是**零用錢**",
+        "sub": "重點在品質：這幾個模型，摘要 PDF 都沒問題"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
         {
           "id": "gjky",
           "text": "這種工作，價差是真的，但都只是零用錢。重點在品質，而這幾個模型，摘要 PDF 都沒問題。"
@@ -403,13 +513,52 @@
           "id": "z6g3",
           "text": "Grok 4.7 大約 66 美元，Gemini 3.8 Flash 大約 24 美元。",
           "reveal": 2
-        },
+        }
+      ]
+    },
+    {
+      "id": "job2-caveat",
+      "template": "stats",
+      "data": {
+        "title": "Grok 4.7 和 Gemini 3.8 Flash 的快取",
+        "stats": [
+          {
+            "value": "未列",
+            "label": "快取寫入費",
+            "note": "這兩家都沒有列"
+          },
+          {
+            "value": "按小時",
+            "label": "Google 的快取儲存費",
+            "note": "這部分沒算進去"
+          }
+        ]
+      },
+      "claims": [
+        "c4",
+        "c5"
+      ],
+      "lines": [
         {
           "id": "tnfs",
           "text": "這兩家都沒有列快取寫入費。不過 Google 會按小時收快取儲存費，這部分我沒算進去。",
           "say": "這兩家都沒有列快取寫入費。不過 Google 會按小時收快取儲存費，這部分，我並沒有算進去。",
           "say_for": "98c67a1eab79"
-        },
+        }
+      ]
+    },
+    {
+      "id": "job2-range",
+      "template": "big",
+      "data": {
+        "kicker": "同樣的工作",
+        "text": "價差將近 **15 倍**",
+        "sub": "一旦選錯，每個月多花好幾百美元，或是要重做一大堆"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
         {
           "id": "cv6f",
           "text": "同樣的工作，價差將近 15 倍。這種工作一旦選錯，每個月就會多花好幾百美元，或是要重做一大堆。"
@@ -459,7 +608,21 @@
           "id": "gbsu",
           "text": "Grok 4.7 是 78 美元，Gemini Flash 是 34 美元，Sol 則是 90 美元。",
           "reveal": 2
-        },
+        }
+      ]
+    },
+    {
+      "id": "job3-input",
+      "template": "big",
+      "data": {
+        "kicker": "你看錢都花在哪裡？",
+        "text": "**輸入**",
+        "sub": "客服機器人讀的遠比寫的多，所以輸入價格最關鍵"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
         {
           "id": "b3ge",
           "text": "你看錢都花在哪裡？輸入。客服機器人讀的遠比寫的多，所以輸入價格最關鍵。"
@@ -469,9 +632,56 @@
     {
       "id": "retry",
       "chapter": "什麼時候貴的模型反而便宜？",
-      "template": "compare",
+      "template": "stats",
       "data": {
         "title": "把出錯的成本也算進去",
+        "stats": [
+          {
+            "value": "$24",
+            "label": "Gemini Flash",
+            "note": "寫程式，每月"
+          },
+          {
+            "value": "1 小時",
+            "label": "每週幫它修",
+            "note": "假設"
+          },
+          {
+            "value": "$160",
+            "label": "每月多了大約",
+            "note": "以時薪 $40 來算"
+          },
+          {
+            "value": "$184",
+            "label": "總共差不多"
+          }
+        ]
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "dsie",
+          "text": "接下來是轉折。帳單不只有 API 費用：便宜的模型如果要你幫它修，你的時間也要算進帳單。"
+        },
+        {
+          "id": "mbxu",
+          "text": "拿寫程式那件工作來說，用 Gemini Flash 是 24 美元，假設它每週要花你 1 小時來修。",
+          "reveal": 2
+        },
+        {
+          "id": "pmjw",
+          "text": "以時薪 40 美元來算，等於多了大約 160 美元，總共差不多 184 美元。",
+          "reveal": 2
+        }
+      ]
+    },
+    {
+      "id": "retry-compare",
+      "template": "compare",
+      "data": {
+        "title": "較貴的模型，這時反而比較便宜",
         "left": {
           "heading": "便宜模型，加上修正",
           "points": [
@@ -496,25 +706,34 @@
       ],
       "lines": [
         {
-          "id": "dsie",
-          "text": "接下來是轉折。帳單不只有 API 費用：便宜的模型如果要你幫它修，你的時間也要算進帳單。"
-        },
-        {
-          "id": "mbxu",
-          "text": "拿寫程式那件工作來說，用 Gemini Flash 是 24 美元，假設它每週要花你 1 小時來修。",
-          "reveal": 1
-        },
-        {
-          "id": "pmjw",
-          "text": "以時薪 40 美元來算，等於多了大約 160 美元，總共差不多 184 美元。"
-        },
-        {
           "id": "xauy",
           "text": "Opus 5.5 要 130 美元，但重試比較少，這時反而比較便宜。時數或時薪一改，結果又會翻回來。",
           "say": "Opus 五點五要 130 美元，但重試比較少，這時反而比較便宜。時數或時薪一改，結果又會翻回來。",
-          "say_for": "fcb604b40dfa",
-          "reveal": 1
-        },
+          "say_for": "fcb604b40dfa"
+        }
+      ]
+    },
+    {
+      "id": "retry-yours",
+      "template": "stats",
+      "data": {
+        "title": "真正重要的是你自己的數字",
+        "stats": [
+          {
+            "value": "你的時數",
+            "label": "我舉的例子：每週 1 小時"
+          },
+          {
+            "value": "你的時薪",
+            "label": "我舉的例子：每小時 $40"
+          }
+        ],
+        "source": "只有你自己量得出來"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
         {
           "id": "bxqs",
           "text": "時數和時薪這兩個數字，是我舉的例子。真正重要的是你自己的數字，而且只有你自己量得出來。"
@@ -533,7 +752,29 @@
         {
           "id": "pdgg",
           "text": "轉折背後的規則是：重試會讓一切成倍增加。便宜的價格試兩次，可能比貴的試一次還花錢。"
+        }
+      ]
+    },
+    {
+      "id": "rule-pick",
+      "template": "compare",
+      "data": {
+        "title": "挑模型的重點",
+        "left": {
+          "heading": "從來不是",
+          "points": [
+            "哪個模型最聰明"
+          ]
         },
+        "right": {
+          "heading": "而是在你的工作上",
+          "points": [
+            "誰的失敗率你負擔得起",
+            "價格又最低"
+          ]
+        }
+      },
+      "lines": [
         {
           "id": "h2z3",
           "text": "所以重點從來不是哪個模型最聰明，而是在你的工作上，誰的失敗率你負擔得起、價格又最低。"
@@ -626,7 +867,34 @@
           "id": "6cnv",
           "text": "客服機器人，我會選 Flash 或 Grok，再加一道檢查，因為那份帳單看的是輸入量。",
           "reveal": 1
-        },
+        }
+      ]
+    },
+    {
+      "id": "picks-switch",
+      "template": "stats",
+      "data": {
+        "title": "新模型衝上排行榜第一？我不會因此就換",
+        "stats": [
+          {
+            "value": "成本",
+            "label": "真的變了"
+          },
+          {
+            "value": "品質",
+            "label": "真的變了"
+          },
+          {
+            "value": "速度",
+            "label": "真的變了"
+          }
+        ],
+        "source": "這三樣真的變了，我才換（個人看法）"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
         {
           "id": "msvn",
           "text": "還有，新模型這週衝上排行榜第一，我不會因為這樣就換；我的成本、品質或速度真的變了，我才換。"
@@ -655,25 +923,71 @@
     {
       "id": "outro",
       "chapter": "所以，哪個 AI 值得付費？",
-      "template": "outro",
+      "template": "big",
       "data": {
-        "title": "它出的錯，你負擔得起的那一個",
-        "cta": "用公式算出你自己一個月的費用，再數數你的重試次數。",
-        "lines": [
-          "輸入 × 價格 + 快取 × 價格 + 輸出 × 價格",
-          "加上出錯的成本",
-          "優先選同家的便宜款，直到它不夠用"
-        ]
+        "kicker": "所以，哪一個值得付費？",
+        "text": "出的錯，\n你**負擔得起**",
+        "sub": "在你的工作上，又是做得到的裡面最便宜的那一個"
       },
       "lines": [
         {
           "id": "u2g7",
           "text": "所以，哪一個值得付費？就是在你的工作上，出的錯你負擔得起，又是做得到的裡面最便宜的那一個。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "outro-steps",
+      "template": "steps",
+      "data": {
+        "title": "決定之前",
+        "steps": [
+          {
+            "title": "用公式算",
+            "detail": "你自己\n一個月的費用"
+          },
+          {
+            "title": "記一個禮拜",
+            "detail": "你的重試次數"
+          },
+          {
+            "title": "出錯的成本",
+            "detail": "也加進去"
+          },
+          {
+            "title": "再決定"
+          }
+        ]
+      },
+      "lines": [
         {
           "id": "y5p9",
           "text": "用公式算出你自己一個月的費用，記一個禮拜的重試次數，加上出錯的成本，然後再決定。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "outro-end",
+      "template": "outro",
+      "data": {
+        "title": "每個價格，都來自各家官方頁面",
+        "cta": "2026 年 9 月 28 日的價格，之後會變動。連結都在說明欄。",
+        "lines": [
+          "OpenAI：GPT-6 Astra、GPT-6 Sol",
+          "Anthropic：Claude Opus 5.5",
+          "xAI：Grok 4.7",
+          "Google：Gemini 3.8 Flash"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c14"
+      ],
+      "lines": [
         {
           "id": "ypij",
           "text": "影片裡的每個價格，都來自各家 2026 年 9 月 28 日的官方頁面，之後會變動。連結都在說明欄。",
