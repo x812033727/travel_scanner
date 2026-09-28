@@ -76,7 +76,7 @@ metrics must be checked against the linked official sources before finalizing
 translations. Internal article targets require locale publication checks.
 
 Artwork render receipt SHA-256:
-`621ef947fd8081a9e41a10f3bfdb311a6c0c12a383865a43bf08b3a1c97e03f8`.
+`cd7fe39256484f6ae95d0e6676d53a85b41e8bdab111490bfb4825422794f363`.
 The independent 4×2 contact sheets were visually reviewed; desktop/mobile
 article-page previews remain pending until the translated documents exist.
 

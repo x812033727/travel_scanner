@@ -35,7 +35,7 @@ were exported as language-suffixed JPEGs. The strict report found zero canvas
 overflow, text overlap, or card-boundary issues across all 16 cases. Independent
 contact-sheet review found no visible missing glyphs or clipping. The receipt
 `C:\Users\x8120\.codex\article-localization-release\batch041-pair-a\asset-render-receipt.json`
-has SHA-256 `621ef947fd8081a9e41a10f3bfdb311a6c0c12a383865a43bf08b3a1c97e03f8`
+has SHA-256 `cd7fe39256484f6ae95d0e6676d53a85b41e8bdab111490bfb4825422794f363`
 and contains each SVG/PNG/JPEG hash and text bounding box.
 
 ## Locale documents
@@ -74,6 +74,17 @@ were checked against the keyword guide's access, estimate, 0–100 relative
 scale, privacy and row-limit caveats. These claims remain aligned. The source
 citation `checked_on` dates remain unchanged from the pinned zh-TW document;
 this editorial review did not silently rewrite their historic provenance.
+
+Independent peer review corrected four keyword-guide strings. The en/ja
+planning paragraph now says to record additions after the article is
+complete, matching zh-TW rather than delaying until publication. The
+zh-CN related-reading label uses `可执行`, and its diagram alt uses
+`排期验收` instead of a misleading scheduling term. Root metadata and
+zh-TW remain unchanged. The keyword diagram's en/ja/ko subtitle and footer
+now preserve the source's idea that a group of related reader questions forms
+one article topic. All 16 SVGs were rerendered after this change; the current
+receipt above reports zero layout issues. The desktop/mobile standalone article preview
+receipt is being finalized; it is not public-site verification.
 
 ## Outstanding acceptance
 
