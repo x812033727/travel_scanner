@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "campaign_id": "mokaair-ai-shorts-90d",
+  "name_zh": "AI 真的可以？",
+  "created_date": "2026-09-28",
+  "locale": "zh-TW",
+  "audience_zh": "台灣一般觀眾；不需懂程式或 AI 術語",
+  "format": { "width": 1080, "height": 1920, "fps": 30, "min_seconds": 25, "max_seconds": 55, "faceless": true, "voice_locale": "zh-TW" },
+  "goals": { "duration_days": 90, "public_views_target": 10000000, "planned_posts": 120, "posts_per_30_days": [30, 45, 45], "is_guarantee": false, "clock_starts_at": "first_public_release", "quality_metrics": ["engaged_views", "viewed_percentage", "average_percentage_viewed", "shares", "subscribers_gained"] },
+  "budget": { "currency": "TWD", "incremental_per_30_days": 3000, "total_90_days": 9000, "first_three_pilots": 300, "stop_new_paid_experiments_at": 2400, "completion_reserve": 600, "existing_subscription_fees_excluded": true, "unknown_cost_is_not_zero": true },
+  "publication": { "owner": "Mokaair 站主", "channel": "existing Mokaair channel", "timezone": "Asia/Taipei", "default_time": "19:30", "second_slot_time": "12:30", "auto_publish": false, "start_date": null },
+  "common_protocol": {
+    "required_evidence": ["input-and-prompt", "model-label-as-observed", "run-date", "raw-output", "retry-count", "verification", "cost-record", "asset-rights", "independent-review"],
+    "run_policy_zh": "每支在第一次執行前凍結輸入、答案與評分。A/B 分開新 context，預設各一次、零修稿重跑；技術失敗可各重試一次但保留失敗，超過即延後該題。首三支採各一次且不重試。只比較本次樣本；模型版本未提供時明寫未回傳。",
+    "presentation_policy_zh": "先盲選或猜答案，再展示原始結果與核對。資料不足不得補造勝負；沒差異就如實說這次結果相同。時間壓縮須標示，實際模型等待另記，不用剪輯秒數宣稱生成速度。",
+    "source_policy_zh": "原創測試資料、照片與畫面；參考影片只用於選題，未授權的第三方素材不放進成片。公開版本不含帳號、個資與金鑰。"
+  },
+  "series": [
+    { "id": "daily", "name_zh": "AI 挑戰台灣日常", "premise_zh": "用可核對的生活題，讓觀眾先猜 AI 會不會答對。" },
+    { "id": "blind", "name_zh": "AI 成品盲選", "premise_zh": "先看 A/B 成品，再揭示製作條件；喜好與功能正確分開。" },
+    { "id": "prompts", "name_zh": "英文熱門招式驗證", "premise_zh": "把提示技巧改成中文可重做的小測試；每支的熱門說法都需另有本週來源。" }
+  ],
+  "topics": [
+    {
+      "slug": "shorts-receipt-total", "series_id": "daily", "series": "daily", "release_order": 1, "pilot": true,
+      "topic_zh": "AI 核對收據總額", "hook_zh": "這張收據寫三百元，你敢直接付？", "estimated_seconds": 40, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "自製虛構收據；輸入純文字，畫面以收據字卡重排。這一集驗文字算式，不宣稱測過拍照辨識。",
+        "input_zh": "湯 85 元 × 2、茶 45 元 × 3、折扣 −30 元、收據印刷合計 300 元。",
+        "condition_a_zh": "核對這張收據，告訴我正確總額與印刷合計是否正確。",
+        "condition_b_zh": "相同輸入與問題，另加：先自行核對算式與限制，再提供簡短驗算。",
+        "runs_zh": "同一 Codex 會話可用模型、兩個全新子代理 context、每組一次、零重試；服務未回傳模型 ID 時記為未回傳。收據、測驗與海報打包在每組同一請求，共兩次原始回答，不能當六次獨立實驗。",
+        "scoring_zh": "各組兩項：總額 275 元、辨認印刷合計多算 25 元；兩項皆符才算答對。",
+        "failure_path_zh": "任一組失敗或輸出不完整照實保留；若沒有原始輸出則不做實測結論。"
+      },
+      "source_material": ["原創文字收據；清楚標示虛構收據", "實際輸出與驗算見 ../experiments；試片配置見 ../pilots"],
+      "truth_check": ["85 × 2 + 45 × 3 − 30 = 275；300 − 275 = 25", "畫面不得寫 OCR、照片辨識或 AI 看懂照片", "若兩組皆正確，結論只說這次都算對，不宣稱額外提示改善準確率"],
+      "provisional_titles": ["收據寫 300 元，AI 會發現算錯嗎？", "AI 核對帳單：這一筆到底差多少？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "這張收據寫三百元，你敢直接付？", "visual_zh": "虛構收據合計 300 放大；不先揭正確答案" },
+        { "seconds": "2–7", "voice_zh": "同一份文字，兩種問法，各問一次。", "visual_zh": "標示 A 直接核對／B 加驗算；文字輸入實驗" },
+        { "seconds": "7–24", "voice_zh": "先看原始回答，再一起算。", "visual_zh": "依真實輸出呈現 A/B，放大總額及驗算" },
+        { "seconds": "24–34", "voice_zh": "一百七加一百三十五，再扣三十，是二百七十五。", "visual_zh": "逐步算式及多付 25；數字由固定資料核算" },
+        { "seconds": "34–40", "voice_zh": "依實測填入 A/B 是否答對；限定為這次文字測試。", "visual_zh": "實測結論＋下一題：菜單價格也要核對嗎？" }
+      ],
+      "acceptance": ["原始兩組回答有留存", "275 與 25 的核算獨立通過", "文字輸入限制出現在成片或說明"], "source_ids": ["ref-sambucha-20260618"], "brief_path": "briefs/01-shorts-receipt-total.md"
+    },
+    {
+      "slug": "shorts-poster-blind", "series_id": "blind", "series": "blind", "release_order": 2, "pilot": true,
+      "topic_zh": "夜市海報盲選", "hook_zh": "兩張 AI 海報，你第一眼想看哪張？", "estimated_seconds": 42, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "比較同模型兩種提示產生的 HTML/CSS 海報，來源畫布 800×1000。這是排版生成；不描述為兩家生圖模型對決。",
+        "input_zh": "必含四段：MOKAAIR AI 夜市實驗室；週六 18:00–21:00；一起測試 AI 的腦洞；虛構活動・設計練習。只用 HTML/CSS，無 script、外連及 emoji。",
+        "condition_a_zh": "依相同規格製作一張夜市主題海報，回傳完整 HTML。",
+        "condition_b_zh": "相同規格另加：先自行核對限制、閱讀順序、手機可讀性與必填文字是否完整，再回傳 HTML。",
+        "runs_zh": "同模型兩個新 context、各一次、零修稿。用相同瀏覽器與尺寸渲染；不得偷偷修正文案再稱為原始成品。收據、測驗與海報打包在每組同一請求，共兩次原始回答，不能當六次獨立實驗。",
+        "scoring_zh": "先只給 A/B 圖讓觀眾選喜好；再查四段文字、無禁止元素、畫面無超框。美感偏好不換算為模型正確率。",
+        "failure_path_zh": "原始 HTML 如無法安全渲染，記失敗並只呈現可公開的錯誤說明；不執行外部程式碼。"
+      },
+      "source_material": ["原創虛構活動文字與兩組實際 HTML", "瀏覽器渲染 PNG 在 repo 外；實驗文字見 ../experiments"],
+      "truth_check": ["畫面及說明都保留虛構活動標籤，避免被當成真實活動公告", "四段文字逐字比對；含時間與全形標點", "揭曉時說明是同模型兩種問法，未驗證模型版本則不寫版本"],
+      "provisional_titles": ["AI 海報盲選：A 還是 B？", "同一個 AI，海報只差這句提示？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "兩張 AI 海報，你第一眼想看哪張？", "visual_zh": "A/B 先後各一秒，均填滿可讀安全區" },
+        { "seconds": "2–7", "voice_zh": "同一份文案，各做一次。先別看問法。", "visual_zh": "四項需求縮寫；虛構活動標籤" },
+        { "seconds": "7–25", "voice_zh": "先選你喜歡的，再找時間和活動名稱。", "visual_zh": "A/B 輪流全幅，放大標題及時間；不只用微小分屏" },
+        { "seconds": "25–35", "voice_zh": "依原始成品核對四段文字及版面，再揭示兩種提示。", "visual_zh": "逐項結果與提示差異；缺漏依證據標示" },
+        { "seconds": "35–42", "voice_zh": "喜歡哪張是你的選擇，字有沒有漏要另外查。", "visual_zh": "結果卡：偏好與必填檢查分欄" }
+      ],
+      "acceptance": ["原始HTML未被修稿替換", "A/B可在手機看清", "模型條件及虛構活動已揭示"], "source_ids": [], "brief_path": "briefs/02-shorts-poster-blind.md"
+    },
+    {
+      "slug": "shorts-prompt-check", "series_id": "prompts", "series": "prompts", "release_order": 3, "pilot": true,
+      "topic_zh": "額外驗算提示的小測試", "hook_zh": "加一句叫 AI 驗算，真的比較準？", "estimated_seconds": 45, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "原提案的神提示詞主題縮成有固定答案的三題。未查得當週英文爆紅證據前，不用爆紅、全網都在用等標題。",
+        "input_zh": "A：原價 240 元，打八折再減 30 元；B：三人每人兩杯、每杯 45 元；C：09:45 再過 95 分鐘。",
+        "condition_a_zh": "回答這三題，請給答案。",
+        "condition_b_zh": "相同三題，另加：先自行核對算式與限制，再提供簡短驗算。",
+        "runs_zh": "同模型、新 context、各一次、零重試；不因兩組都對而偷換題或挑錯誤樣本。收據、測驗與海報打包在每組同一請求，共兩次原始回答，不能當六次獨立實驗。",
+        "scoring_zh": "逐題比對 162 元、270 元、11:20；可接受等價時間與數字格式。以 0–3 題通過呈現，不能推論整體準確率。",
+        "failure_path_zh": "如兩組同分，明說這三題看不出改善；只記回答長度與有無可核對過程，不改叫 B 勝出。"
+      },
+      "source_material": ["三道原創日常題與先寫好的答案", "兩組原始回答及檢查紀錄見 ../experiments"],
+      "truth_check": ["240 × 0.8 − 30 = 162", "3 × 2 × 45 = 270", "09:45 + 60 分鐘 + 35 分鐘 = 11:20", "三題一次實測不是統計上證明有效"],
+      "provisional_titles": ["多這句提示，AI 算得比較準嗎？", "叫 AI 先驗算：三題實測結果"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "加一句叫 AI 驗算，真的比較準？", "visual_zh": "A 原問法／B 加驗算提示" },
+        { "seconds": "2–8", "voice_zh": "同一模型、三道題，每組只問一次。", "visual_zh": "價格、人數、時間三張題卡" },
+        { "seconds": "8–29", "voice_zh": "逐題展示原始回答，再核對答案。", "visual_zh": "實際 A/B 回答與 162、270、11:20 對照" },
+        { "seconds": "29–38", "voice_zh": "依實測說出通過題數；平手就說平手。", "visual_zh": "真實分數，標示 n=3、各一次" },
+        { "seconds": "38–45", "voice_zh": "驗算過程方便你檢查，但這三題不能代表全部。", "visual_zh": "限制與下一題：你想拿哪種題目測？" }
+      ],
+      "acceptance": ["答案在模型執行前固定", "不刪掉平手或正確樣本", "標示只測三題與模型ID未知時的限制"], "source_ids": [], "brief_path": "briefs/03-shorts-prompt-check.md"
+    },
+    {
+      "slug": "shorts-taiwan-location", "series_id": "daily", "series": "daily", "release_order": 4, "pilot": false,
+      "topic_zh": "一張照片猜台灣公開景點", "hook_zh": "只看這張照片，你猜得出在台灣哪裡？", "estimated_seconds": 45, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "使用三張自攝或已授權的公開景點照片；拍攝者先確認答案。只含公共地標，不定位住家、路人或私人行蹤。",
+        "input_zh": "製作前選定一張近景地標、一張有地形線索的遠景、一張易混淆景點。保存原檔與位置答案；模型輸入移除檔名、EXIF及浮水印中的答案。",
+        "condition_a_zh": "請猜這張照片中的台灣公開景點；只給一個地點與兩個可見線索，無法判定就說不確定。",
+        "condition_b_zh": "無 B 組；本集比較觀眾猜測與模型，不宣稱人類對 AI 的統計勝率。",
+        "runs_zh": "同模型每張一次、新 context、不開搜尋；如工具無法關閉搜尋就記錄其使用情況並改稱工具協助猜景點。",
+        "scoring_zh": "景點名稱完全吻合 1 分、只對縣市 0 分但另列；總分 0–3。答案由照片持有人及該景點官方頁雙重確認。",
+        "failure_path_zh": "沒有授權照片或位置可核對時，此題延後，改做已備料題目。"
+      },
+      "source_material": ["三張公共景點照片，需填作者、拍攝日期、授權與官方景點URL", "本地保存去除中繼資料後的模型輸入及原始回答"],
+      "truth_check": ["辨認的是公開地標，畫面不露人臉、車牌與精確私人住址", "官方頁只驗位置，不替模型補線索", "若只能猜縣市，標示未猜中景點"],
+      "provisional_titles": ["台灣人 vs AI：這張照片是哪裡？", "只剩這個線索，AI 猜得中台灣景點嗎？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "只看這張照片，你猜得出在台灣哪裡？", "visual_zh": "先出最有參與感的一張，暫不露答案" },
+        { "seconds": "2–8", "voice_zh": "三張公開景點，每張只能猜一次。", "visual_zh": "規則與照片來源簡標" },
+        { "seconds": "8–29", "voice_zh": "逐張先停一拍，展示模型猜測與可見線索。", "visual_zh": "真實猜測疊在照片，線索局部放大" },
+        { "seconds": "29–38", "voice_zh": "依答案卡揭曉景點及通過題數。", "visual_zh": "官方景點名稱；不呈現私人定位" },
+        { "seconds": "38–45", "voice_zh": "你猜對幾張？下一次只留一個招牌試試。", "visual_zh": "總結限於本組三張照片" }
+      ],
+      "acceptance": ["三張素材權利與答案皆可追溯", "移除檔名／EXIF答案", "沒有拿單次結果宣稱全面定位能力"], "source_ids": ["ref-zi8gzag-20231017", "ref-zi8gzag-20251029"], "brief_path": "briefs/04-shorts-taiwan-location.md"
+    },
+    {
+      "slug": "shorts-boba-game", "series_id": "blind", "series": "blind", "release_order": 5, "pilot": false,
+      "topic_zh": "珍奶小遊戲盲選", "hook_zh": "兩個 AI 做的珍奶遊戲，你想先玩哪個？", "estimated_seconds": 50, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "兩個當天實際可用的模型、相同提示與素材限制，各產一個離線HTML遊戲；模型ID照實記錄。只有一個模型可用時改題為同模型兩種問法，片名同步更正。",
+        "input_zh": "製作20秒接珍珠遊戲：手指左右移動杯子、接到珍珠加1分、倒數結束停止計分、有重新開始按鈕；適用360×640手機；只用原創HTML/CSS/JS與基本圖形，無外部資源。",
+        "condition_a_zh": "第一個可用模型，一次輸出完整HTML。",
+        "condition_b_zh": "第二個可用模型，完全相同需求與一次輸出額度。",
+        "runs_zh": "每模型一次、首稿直接在隔離瀏覽器測試；兩邊同樣畫面尺寸與5分鐘人工測試。修正只可另作第二版本並明說。",
+        "scoring_zh": "觸控、加分、20秒結束、結束後不再計分、重新開始共5項；遊玩喜好另外投票。",
+        "failure_path_zh": "有程式失敗可作本集結果；不得手改成可玩再稱一次完成。兩款皆不能運行時暫緩盲選，改為真實除錯題另開 brief。"
+      },
+      "source_material": ["原創遊戲需求與幾何圖形", "兩份原始HTML及手機尺寸操作錄影"],
+      "truth_check": ["計時用實際經過時間核對，勿只看畫面數字", "一次生成不等於零操作成本", "不把喜好票數當功能評分"],
+      "provisional_titles": ["AI 珍奶遊戲：你選 A 還是 B？", "同一個遊戲需求，兩個 AI 做成這樣"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "兩個 AI 做的珍奶遊戲，你想先玩哪個？", "visual_zh": "真實可玩片段A/B快切" },
+        { "seconds": "2–8", "voice_zh": "同一個需求，二十秒接珍珠，各做一次。", "visual_zh": "五項功能簡表" },
+        { "seconds": "8–33", "voice_zh": "各玩一段，再測結束和重來。", "visual_zh": "觸控錄影，等待標實際時間或加速" },
+        { "seconds": "33–43", "voice_zh": "依五項檢查揭曉可用程度與工具名稱。", "visual_zh": "五格真實評分；版本照當日紀錄" },
+        { "seconds": "43–50", "voice_zh": "能玩與好玩分開看。你會留哪一款？", "visual_zh": "盲選投票，不做排名冠軍字樣" }
+      ],
+      "acceptance": ["手機尺寸實際觸控測試", "兩組首稿與重试一致", "五項功能逐項有證據"], "source_ids": [], "brief_path": "briefs/05-shorts-boba-game.md"
+    },
+    {
+      "slug": "shorts-self-check", "series_id": "prompts", "series": "prompts", "release_order": 6, "pilot": false,
+      "topic_zh": "回答後自我檢查會改對還改錯", "hook_zh": "AI 改第二次，會更準還是改壞？", "estimated_seconds": 44, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "區別首支的平行提示比較：本集同一回答後追加檢查，測是否修正或破壞答案。",
+        "input_zh": "三題：17×24；從1到20含端點的偶數有幾個；14:50再過85分鐘。",
+        "condition_a_zh": "先回答三題，只列答案。",
+        "condition_b_zh": "在同一個context追加：請逐題核對你的答案；若錯就更正，若正確就保留，提供一句驗算。不得提示哪題錯。",
+        "runs_zh": "先一次回答，再一次自查；保持原題與所有原始內容。",
+        "scoring_zh": "答案408、10、16:15。每題標記對→對、錯→對、對→錯、錯→錯；不能只展示修正成功的題。",
+        "failure_path_zh": "三題原本全對且自查全對，就呈現沒有改變；不得故意告訴模型它錯了來製造翻車。"
+      },
+      "source_material": ["三道原創題目與算式答案", "同一context前後回覆"],
+      "truth_check": ["17×24=408；2至20共10個偶數；14:50+85分=16:15", "前後比較只說本回合，不與其他模型外推", "完整保留沒有修改的答案"],
+      "provisional_titles": ["AI 自我檢查：改對還是改錯？", "同一答案再檢查一次，結果變了嗎？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "AI 改第二次，會更準還是改壞？", "visual_zh": "前後箭頭不先貼勝敗" },
+        { "seconds": "2–8", "voice_zh": "先答三題，再請它自行檢查，不給答案。", "visual_zh": "三題與追加提示" },
+        { "seconds": "8–29", "voice_zh": "逐題對照第一次與第二次回答。", "visual_zh": "原文片段＋固定答案" },
+        { "seconds": "29–37", "voice_zh": "按真實紀錄說明哪些保留、哪些改動。", "visual_zh": "四種轉移類型只點亮實際發生者" },
+        { "seconds": "37–44", "voice_zh": "第二次也要核對，不能只因它改口就相信。", "visual_zh": "答案卡與可重做題目" }
+      ],
+      "acceptance": ["第二次未洩漏答案", "所有三題前後都展示", "結果與首支平行提示測試清楚區別"], "source_ids": [], "brief_path": "briefs/06-shorts-self-check.md"
+    },
+    {
+      "slug": "shorts-taiwan-phrases", "series_id": "daily", "series": "daily", "release_order": 7, "pilot": false,
+      "topic_zh": "台灣日常用語的語境", "hook_zh": "他說這間店很雷，AI 會想到打雷？", "estimated_seconds": 40, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "使用有上下文的繁中文字；測台灣華語日常說法，不宣稱閩南語聽辨。",
+        "input_zh": "1：朋友說『昨天那家餐廳很雷，我吃完很失望』。2：甲說『改天約，但我還沒看行事曆』。3：飯後乙說『你們先坐，我去買單』。",
+        "condition_a_zh": "解釋每句在這個情境中的意思，指出哪些事情尚不能確定。",
+        "condition_b_zh": "無B組；三句分開新context。",
+        "runs_zh": "每句一次、不補提示；回答後用事先答案逐項查核。",
+        "scoring_zh": "很雷指體驗差；改天約未確定日期且不能斷言拒絕；買單指付帳。每句正確1分，若加上無依據的人物動機扣回0分。",
+        "failure_path_zh": "若模型給多種可能且主解合理，記為可接受，不以模糊語義硬判錯誤。"
+      },
+      "source_material": ["原創三段假對話，無真實聊天截圖", "文字輸入與原始解釋"],
+      "truth_check": ["不把華語口語說成已測台語音訊", "改天約本就不唯一，評分承認不確定性", "兩位熟悉台灣用語的審稿者核對解讀，不一致就不評該句勝負"],
+      "provisional_titles": ["台灣人這樣講，AI 聽懂意思嗎？", "很雷、改天約、買單：AI 解釋對了嗎？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "他說這間店很雷，AI 會想到打雷？", "visual_zh": "第一句情境字卡；疑問而非預告模型犯錯" },
+        { "seconds": "2–7", "voice_zh": "三句台灣日常用語，都給完整情境。", "visual_zh": "標示文字理解測試" },
+        { "seconds": "7–26", "voice_zh": "逐句呈現回答，核對它有沒有亂猜。", "visual_zh": "原始解釋與情境關鍵字" },
+        { "seconds": "26–34", "voice_zh": "改天約還沒定日期，也不一定是拒絕。", "visual_zh": "模糊語意分開列出可知／不可知" },
+        { "seconds": "34–40", "voice_zh": "你的朋友最常講哪句讓 AI 猜不透的話？", "visual_zh": "提醒只收不含個資的自製例句" }
+      ],
+      "acceptance": ["模糊語意合理給分", "沒有台語音訊能力宣稱", "審稿者對答案達成一致"], "source_ids": [], "brief_path": "briefs/07-shorts-taiwan-phrases.md"
+    },
+    {
+      "slug": "shorts-photo-repair", "series_id": "blind", "series": "blind", "release_order": 8, "pilot": false,
+      "topic_zh": "AI 修圖有沒有改掉原本的東西", "hook_zh": "照片變清楚了，但這個細節還是真的嗎？", "estimated_seconds": 45, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "自拍文具靜物：三支不同顏色筆、一張寫『AB27』的卡、一枚五元硬幣。保存清晰原片，用固定縮圖與模糊產生劣化版本；不使用人像。",
+        "input_zh": "把同一劣化圖交給兩個可用修圖模型；只要求提高清晰度，不新增、刪除或更換物件與文字。",
+        "condition_a_zh": "第一個可用模型的原始修復輸出。",
+        "condition_b_zh": "第二個可用模型的原始修復輸出；只有一款工具時改同模型提示對照並同步更名。",
+        "runs_zh": "每組一次、同張輸入、相同像素輸出需求；不得用清晰原片當其中一組輸入。",
+        "scoring_zh": "比對筆數與顏色、AB27四個字元、硬幣位置與外觀三類保真度；畫面主觀清晰與客觀保真分開。",
+        "failure_path_zh": "缺授權圖片、影像編輯工具或成本超預算即延後；不得用手工畫面假冒模型修圖。"
+      },
+      "source_material": ["自攝靜物原片與拍攝權利紀錄", "可重現的劣化參數、原始修復圖與局部裁切"],
+      "truth_check": ["清晰原片作唯一真值，不能以看起來合理代替", "對照裁切位置一致", "原提案爛照片修好了是測試問題，沒有實測前不預告修好"],
+      "provisional_titles": ["AI 修圖變清楚，細節有沒有被改掉？", "修復前後盲選：哪張比較像原片？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "照片變清楚了，但這個細節還是真的嗎？", "visual_zh": "原始或實測修復局部；無結果前不合成假錯誤" },
+        { "seconds": "2–8", "voice_zh": "同一張模糊圖，各修一次，最後對原片。", "visual_zh": "劣化來源與規則" },
+        { "seconds": "8–29", "voice_zh": "先盲選清楚的，再查筆、文字和硬幣。", "visual_zh": "A/B與原片同區域放大" },
+        { "seconds": "29–38", "voice_zh": "依實測說明哪些細節保留、哪些不同。", "visual_zh": "三項核對結果" },
+        { "seconds": "38–45", "voice_zh": "看起來清楚，和還原原貌是兩件要分開查的事。", "visual_zh": "實驗限制：人工劣化的單張照片" }
+      ],
+      "acceptance": ["真值原片完整保留", "所有模型用同張劣化圖", "畫質與保真未混為一談"], "source_ids": [], "brief_path": "briefs/08-shorts-photo-repair.md"
+    },
+    {
+      "slug": "shorts-language-pair", "series_id": "prompts", "series": "prompts", "release_order": 9, "pilot": false,
+      "topic_zh": "同一道題的中英文對照", "hook_zh": "同一道題改用英文，AI 真的答得比較好？", "estimated_seconds": 42, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "三道固定答案題，事先由獨立審稿者確認中英信息一致。固定要求只回數值或時間，避免拿回答語言造成的篇幅差當正確率。",
+        "input_zh": "1：四盒各六顆，吃掉七顆，剩幾顆？／Four boxes contain six pieces each. Seven pieces are eaten. How many remain? 2：18:35加50分鐘／Add 50 minutes to 18:35. 3：180元減25元再打九折／Subtract 25 from 180, then apply a 10 percent discount.",
+        "condition_a_zh": "繁中題目，要求只回答數值或HH:MM。",
+        "condition_b_zh": "等義英文題目，要求相同輸出形式。",
+        "runs_zh": "同模型、每題每語一次、新context；按中英交替順序執行，共六次。",
+        "scoring_zh": "答案17、19:25、139.5；每語0–3分；小樣本只描述此次差異。",
+        "failure_path_zh": "翻譯若改變運算順序，作廢該題兩語結果，先修正輸入並重新記錄，不保留有利單邊。"
+      },
+      "source_material": ["原創三題雙語文本與事前對譯核對表", "六份原始回答"],
+      "truth_check": ["4×6−7=17；18:35+50分=19:25；(180−25)×0.9=139.5", "英文10 percent discount即九折，順序不調換", "不宣稱英文普遍優於中文"],
+      "provisional_titles": ["AI 用中文問還英文問？同題實測", "改成英文，這三題有變準嗎？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "同一道題改用英文，AI 真的答得比較好？", "visual_zh": "同題兩語並排" },
+        { "seconds": "2–7", "voice_zh": "先確認翻譯一樣，再用同模型各問一次。", "visual_zh": "模型及條件" },
+        { "seconds": "7–28", "voice_zh": "逐題展示兩語回答和驗算。", "visual_zh": "三題原始輸出與答案" },
+        { "seconds": "28–35", "voice_zh": "依這六次回答報分，平手照實說。", "visual_zh": "中英分數與樣本數" },
+        { "seconds": "35–42", "voice_zh": "題目翻得準也很重要，這次只測這三題。", "visual_zh": "限制與可複製雙語題目" }
+      ],
+      "acceptance": ["雙語等義獨立核對", "六次回覆全部留存", "不使用普遍優劣標題"], "source_ids": [], "brief_path": "briefs/09-shorts-language-pair.md"
+    },
+    {
+      "slug": "shorts-menu-glare", "series_id": "daily", "series": "daily", "release_order": 10, "pilot": false,
+      "topic_zh": "拍歪又反光的菜單辨識", "hook_zh": "菜單拍成這樣，AI 還知道多少錢？", "estimated_seconds": 45, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "自製虛構菜單，清晰版與同一菜單的透視、反光劣化版。劣化可用實拍，或明標模擬反光的可重現影像處理。",
+        "input_zh": "牛肉麵150、乾麵60、餛飩湯50、滷蛋15、豆干25、燙青菜40、紅茶30、豆漿35，單位元；部分欄位被反光遮住。",
+        "condition_a_zh": "請逐項讀出品名和價格，看不清楚的標『無法辨識』，不要猜。輸入清晰版。",
+        "condition_b_zh": "相同提示，輸入劣化版。",
+        "runs_zh": "同模型兩個新context、各一次；B不可看過A輸出。保留劣化參數或實拍條件。",
+        "scoring_zh": "每組8組品名／價格精確配對；遮蔽項的合理棄答另列，不與亂猜混成錯誤。",
+        "failure_path_zh": "如果劣化完全遮住關鍵文字，就只討論能否承認看不清，不要求模型猜出答案。"
+      },
+      "source_material": ["原創虛構菜單與8項答案", "清晰圖、劣化圖、模型輸出及同位置放大"],
+      "truth_check": ["每個價格只來自事前菜單，非真實店家價格", "標示這次才是圖片辨識，與收據文字試片分開", "模擬反光不冒充手機原始拍攝"],
+      "provisional_titles": ["菜單拍歪又反光，AI 會亂猜價格嗎？", "清楚 vs 模糊菜單：AI 讀對幾項？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "菜單拍成這樣，AI 還知道多少錢？", "visual_zh": "劣化菜單及原創示範標籤" },
+        { "seconds": "2–8", "voice_zh": "同一張菜單，清楚和反光各讀一次。", "visual_zh": "規則：看不清就說，不要猜" },
+        { "seconds": "8–30", "voice_zh": "挑三個代表位置放大，其餘結果完整列出。", "visual_zh": "讀對、讀錯、棄答各依實際情況標示" },
+        { "seconds": "30–38", "voice_zh": "依八項核對表報告結果。", "visual_zh": "每組對／錯／棄答三欄" },
+        { "seconds": "38–45", "voice_zh": "看不清楚就重拍，價格還是要核對。", "visual_zh": "清晰原稿收尾" }
+      ],
+      "acceptance": ["同源兩圖與劣化過程留存", "8項全數評分", "棄答與錯誤分開"], "source_ids": ["ref-sambucha-20260618"], "brief_path": "briefs/10-shorts-menu-glare.md"
+    },
+    {
+      "slug": "shorts-sketch-website", "series_id": "blind", "series": "blind", "release_order": 11, "pilot": false,
+      "topic_zh": "手繪草圖變可操作網頁", "hook_zh": "這張隨手畫，AI 能做成能按的網站？", "estimated_seconds": 50, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "原創手繪線稿包含標題、三張飲料卡、篩選鈕與購物計數；拍照掃描乾淨後作共同輸入。",
+        "input_zh": "三款虛構飲料：紅茶30、奶茶45、珍奶60；按『加入』增加杯數和總價；選『50元以下』只顯示前兩款；單檔HTML離線可用、手機360×640不橫向溢出。",
+        "condition_a_zh": "第一個可用模型，用草圖與相同文字需求一次產出。",
+        "condition_b_zh": "第二個可用模型相同輸入；若僅同模型可用，改做有無版面說明提示對照並改片名。",
+        "runs_zh": "各一次，不幫任一組修程式；同瀏覽器與尺寸操作。",
+        "scoring_zh": "草圖四個區塊是否存在、篩選是否正確、加一杯每款應3杯135元、手機無橫向捲動，共4項。",
+        "failure_path_zh": "若圖片輸入不可用，延後本題；不能改餵文字卻宣稱看懂手繪圖。"
+      },
+      "source_material": ["自製手繪圖與圖片權利紀錄", "兩份原始HTML、手機操作錄影及檢查表"],
+      "truth_check": ["30+45+60=135；50元以下不含珍奶60", "按鈕是否運作必須實際操作", "畫面漂亮與功能可用分開說"],
+      "provisional_titles": ["一張草圖，AI 做得出可用網站嗎？", "AI 網站盲選：看起來像，按起來呢？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "這張隨手畫，AI 能做成能按的網站？", "visual_zh": "原創草圖轉真實成品片段" },
+        { "seconds": "2–8", "voice_zh": "同一張圖、同一份需求，各做一次。", "visual_zh": "輸入與四項功能" },
+        { "seconds": "8–33", "voice_zh": "先看排版，再真的按篩選和加入。", "visual_zh": "手機錄影A/B輪替；總價放大" },
+        { "seconds": "33–43", "voice_zh": "依四項檢查揭示結果和模型條件。", "visual_zh": "四格核對，不補做成品" },
+        { "seconds": "43–50", "voice_zh": "你會用哪一版？只看截圖可能選得不一樣。", "visual_zh": "可操作差異收尾" }
+      ],
+      "acceptance": ["真實圖片輸入留存", "兩款網頁實際操作", "3杯135元驗算通過或如實記失敗"], "source_ids": [], "brief_path": "briefs/11-shorts-sketch-website.md"
+    },
+    {
+      "slug": "shorts-image-specificity", "series_id": "prompts", "series": "prompts", "release_order": 12, "pilot": false,
+      "topic_zh": "生圖描述具體化的差異", "hook_zh": "只改這句描述，AI 畫面會差多少？", "estimated_seconds": 40, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "同一可用圖片生成工具，相同尺寸與品質；只測提示內容。不要宣稱只改一個字或只變一個視覺變量。",
+        "input_zh": "A：畫一杯珍珠奶茶。B：畫一杯珍珠奶茶，透明杯放在淺灰桌面中央，左側窗光，杯底珍珠清楚可見，背景簡單，無文字。",
+        "condition_a_zh": "只送A提示一次。",
+        "condition_b_zh": "只送B提示一次。",
+        "runs_zh": "同模型、同尺寸、各一次；如可用固定seed則兩邊相同，若不能則記錄隨機性未受控。",
+        "scoring_zh": "共同條件只查珍奶主體；B另查透明杯、灰桌面、左側光、清楚珍珠、無文字。A未要求的內容不可算A做錯。",
+        "failure_path_zh": "若結果差異不明顯照實呈現；不得重抽直到B好看。需要新付費額度時依月預算停止線處理。"
+      },
+      "source_material": ["兩段原創提示詞", "兩張真實生成圖與模型／成本／seed可用性紀錄"],
+      "truth_check": ["明示單次隨機輸出，不能隔離所有變因", "不對A加上它沒被要求的評分條件", "生成圖標示AI產生示意"],
+      "provisional_titles": ["AI 生圖加具體描述，差在哪？", "同一杯珍奶，兩種提示的真實結果"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "只改這句描述，AI 畫面會差多少？", "visual_zh": "兩張實際圖先盲選" },
+        { "seconds": "2–7", "voice_zh": "同一工具各畫一次，設定相同。", "visual_zh": "A短描述／B具體描述" },
+        { "seconds": "7–25", "voice_zh": "對照杯子、桌面、光線和珍珠。", "visual_zh": "按B要求逐一圈出，有無皆如實" },
+        { "seconds": "25–33", "voice_zh": "依實測說明哪些要求有做到。", "visual_zh": "要求達成表，A不被額外扣分" },
+        { "seconds": "33–40", "voice_zh": "這次是單張結果，換一次生成仍可能不同。", "visual_zh": "AI示意與隨機性限制" }
+      ],
+      "acceptance": ["兩邊設定相同且各一次", "沒有選優樣本", "A/B評分不偷換需求"], "source_ids": [], "brief_path": "briefs/12-shorts-image-specificity.md"
+    },
+    {
+      "slug": "shorts-lunch-budget", "series_id": "daily", "series": "daily", "release_order": 13, "pilot": false,
+      "topic_zh": "150元午餐搭配守不守規則", "hook_zh": "午餐只給一百五，AI 有沒有偷偷超支？", "estimated_seconds": 40, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "自製虛構價目表；不拿它代表實際物價或營養建議。",
+        "input_zh": "主餐：雞肉飯85、乾麵60；配菜：青菜25、豆干20；飲料：紅茶35、豆漿40。規則：各選一個主餐、配菜、飲料；總額≤150；不得改價或漏飲料。",
+        "condition_a_zh": "給我一份符合上述規則的午餐，列出每項價格與總價。",
+        "condition_b_zh": "無B組；同題一次，另外用枚舉所有組合確認可行。",
+        "runs_zh": "固定清單一次回答，無額外搜尋；不因首答通過而加難題補拍成同次測試。",
+        "scoring_zh": "品項存在、三類各一、沿用價格、總額正確、總額≤150共5項。可接受多種合法答案；雞肉飯85+青菜25+紅茶35=145為其中一例。",
+        "failure_path_zh": "若模型說無解，用枚舉反例查核；若选择非清單商品，記違反規則。"
+      },
+      "source_material": ["原創價目表與組合核算", "單次原始午餐建議"],
+      "truth_check": ["示範價格非真實店家報價", "答案不唯一，合法組合均通過", "不宣稱營養均衡、健康效果或省錢比例"],
+      "provisional_titles": ["AI 幫配150元午餐，有照規則嗎？", "看起來剛好，AI 午餐帳單算對了嗎？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "午餐只給一百五，AI 有沒有偷偷超支？", "visual_zh": "150元上限與虛構價格標籤" },
+        { "seconds": "2–8", "voice_zh": "主餐、配菜、飲料各一，不准自己改價。", "visual_zh": "六項菜單分三欄" },
+        { "seconds": "8–25", "voice_zh": "看它選什麼，一項一項加。", "visual_zh": "原始方案與價格核對" },
+        { "seconds": "25–33", "voice_zh": "依五條規則報結果，不只看最後的總價。", "visual_zh": "通過或違反項目" },
+        { "seconds": "33–40", "voice_zh": "你會怎麼搭？留言也要把飲料算進去。", "visual_zh": "完整菜單收尾" }
+      ],
+      "acceptance": ["合法答案判定不只認一組", "總額程式或手算獨立核對", "虛構物價標明"], "source_ids": ["ref-sambucha-20260706"], "brief_path": "briefs/13-shorts-lunch-budget.md"
+    },
+    {
+      "slug": "shorts-notes-blind", "series_id": "blind", "series": "blind", "release_order": 14, "pilot": false,
+      "topic_zh": "雜亂筆記整理盲選", "hook_zh": "這份筆記亂成一團，哪個 AI 比較不漏事？", "estimated_seconds": 45, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "原創虛構活動筆記，先建立原文事實表；A/B同一可用模型的兩種提示，避免把無法取得的品牌放進影片。",
+        "input_zh": "原訂週五彩排，改週六10點；小林負責投影；預算上限2000；場地尚未確認；要借4張桌子；小陳週四前回覆音響能否借；不要買氣球；活動開始時間還沒決定。",
+        "condition_a_zh": "幫我把這份筆記整理成清楚的待辦清單。",
+        "condition_b_zh": "相同需求另加：分列已決定、待確認、負責人與期限；不要補造沒有的資訊。",
+        "runs_zh": "同模型、兩個新context、各一次；不再追加更正。",
+        "scoring_zh": "8項事實都保留；週五要標已變更而非有效期限；不捏造場地、活動時間與音響已借到。可讀性盲選另外記。",
+        "failure_path_zh": "輸出長得漂亮但遺漏或編造，就照實拆分評分；過長只裁切展示，完整版留在證據中。"
+      },
+      "source_material": ["原創8項筆記及真值表", "兩組原始清單與盲選字卡"],
+      "truth_check": ["彩排時間不等於活動開始時間", "音響待回覆不等於借到", "舊週五日期不能當成現在待辦"],
+      "provisional_titles": ["AI 整理筆記，清楚就代表沒漏嗎？", "兩份待辦清單盲選：你發現漏掉哪件事？"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "這份筆記亂成一團，哪個 AI 比較不漏事？", "visual_zh": "原始雜記與A/B清單" },
+        { "seconds": "2–8", "voice_zh": "同模型兩種問法，都只能看這份筆記。", "visual_zh": "規則及虛構資料標籤" },
+        { "seconds": "8–29", "voice_zh": "先選好讀的，再核對改期、待確認和不准買的東西。", "visual_zh": "兩份清單依重點放大" },
+        { "seconds": "29–38", "voice_zh": "依八項事實揭曉有沒有漏寫或多寫。", "visual_zh": "保留／遺漏／捏造三欄" },
+        { "seconds": "38–45", "voice_zh": "整理完還要對原文，漂亮清單也可能漏事。", "visual_zh": "原文與檢查重點" }
+      ],
+      "acceptance": ["八項事實逐一查核", "新版舊版時間辨清", "不洩漏真實會議資料"], "source_ids": [], "brief_path": "briefs/14-shorts-notes-blind.md"
+    },
+    {
+      "slug": "shorts-expert-role", "series_id": "prompts", "series": "prompts", "release_order": 15, "pilot": false,
+      "topic_zh": "扮演專家的提示有沒有幫助", "hook_zh": "叫 AI 扮演專家，答案就比較可靠？", "estimated_seconds": 43, "production_status": "planned",
+      "test_protocol": {
+        "setup_zh": "原創封閉資料題，避免醫療、投資或法律建議。角色只是一段提示，不能塑造成模型真有專業資格。",
+        "input_zh": "虛構展覽規則：A館週一休、B館週二休；兩館均10點開17點關；每館需90分鐘；步行30分鐘。星期一11點可參觀哪些館？若星期三14點出發想逛兩館，能在閉館前逛完嗎？",
+        "condition_a_zh": "只根據以上規則回答兩個問題，附簡短理由。",
+        "condition_b_zh": "在完全相同提示前加『請扮演行程規劃專家』，其他文字不變。",
+        "runs_zh": "同模型、全新context、各一次，不開網路查詢；來源只有虛構規則。",
+        "scoring_zh": "週一只能B館；週三兩館90+30+90=210分鐘，14點到17:30超過17點，不能全逛完。各題1分，理由與時間也須一致。",
+        "failure_path_zh": "兩組同分如實報告；語氣更有自信或更長不算正確率增加。"
+      },
+      "source_material": ["原創場館規則與先寫好的答案", "兩組原始回覆與等義題目核對"],
+      "truth_check": ["週一A館休館，B館未休；星期三兩館皆開", "210分鐘=3.5小時，14:00→17:30", "不是測真實行程交通、即時營業時間或專業資格"],
+      "provisional_titles": ["叫 AI 當專家，這題真的更準嗎？", "角色提示有用嗎？兩題行程邏輯實測"],
+      "narration_outline": [
+        { "seconds": "0–2", "voice_zh": "叫 AI 扮演專家，答案就比較可靠？", "visual_zh": "只有B多一行角色提示" },
+        { "seconds": "2–8", "voice_zh": "給兩館相同規則，只改專家這一句。", "visual_zh": "虛構場館規則與時間軸" },
+        { "seconds": "8–28", "voice_zh": "先查休館日，再把參觀和步行時間加起來。", "visual_zh": "原始答案與90+30+90" },
+        { "seconds": "28–35", "voice_zh": "依兩題核對結果報分，不比誰更有自信。", "visual_zh": "真實兩組分數與證據" },
+        { "seconds": "35–43", "voice_zh": "專家是一句提示，答案還是要拿規則檢查。", "visual_zh": "限定本次兩題，不做總體能力結論" }
+      ],
+      "acceptance": ["除角色句外提示完全一致", "閉館時間包含轉場步行", "不暗示模型有專業資格"], "source_ids": [], "brief_path": "briefs/15-shorts-expert-role.md"
+    }
+  ]
+}

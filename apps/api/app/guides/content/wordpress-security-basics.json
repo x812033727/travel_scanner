@@ -247,6 +247,950 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress Security Maintenance: Dividing Account, Update, and Plugin Responsibilities",
+      "description": "WordPress security depends on accounts, updates, firewalls, and backups working together. Starting from a small site’s real responsibilities, this guide explains least privilege, the features and limits of free Wordfence, recovery planning for two-factor authentication, and checks for learning mode and alerts. Practical steps and a comparison table help Taiwan-based site owners put someone in charge of each protection task and keep tracking the results.",
+      "hero": {
+        "src": "/guides/wordpress-security-basics/hero-en.jpg",
+        "alt": "Original illustration of a shield, document, and folder representing account protection, maintenance records, and backup recovery.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A studio website is managed by three people but has seven administrator accounts, including two belonging to contractors whose projects ended. Even with a security plugin, those extra entry points remain. Before adding defenses, write down who can enter, who updates the software, and who responds when something goes wrong."
+        },
+        {
+          "type": "paragraph",
+          "text": "The goal of security maintenance is to reduce risk and preserve recovery options; no plugin guarantees that a site will never have a problem. Wordfence is used below to illustrate features alongside WordPress’s official guidance. This is not a vendor ranking, and a clean scan is not a complete security certification."
+        },
+        {
+          "type": "heading",
+          "text": "List who controls each part of the site",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Record the owners of WordPress, hosting, the domain, backup storage, and the administrator mailbox. They may use different accounts, but each can affect the site. Confirm the current responsible person can still sign in to every entry point, and update recovery contacts to an inbox that actually receives notices."
+        },
+        {
+          "type": "paragraph",
+          "text": "Someone who writes routine posts usually does not need to install plugins; a contributor may not need to publish independently. Give people separate accounts and roles matched to their work, then remove unneeded access when a project ends. Before changing roles, handle post ownership and handoff records; do not delete content that must be retained just to tidy the user list."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Record each service account’s owner, work purpose, and recovery contact.",
+            "Review administrators and use lower-privilege accounts for routine editing.",
+            "Confirm the access end date and revocation method for contractors, and keep a handoff record."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Updates must include backups and functional checks",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Inventory the core software, themes, and plugins in use, and check official update and compatibility notices. Modified software from an unknown source is a poor foundation for a production site. Plan replacements for components that have stopped receiving maintenance but still serve important functions. Consider removing unused tools as well, so there is less to track later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before a significant update, confirm that a complete backup is available, and test login, forms, and key pages on a copy. Security fixes sometimes need priority; do not defer them indefinitely while waiting for perfect testing. If an immediate patch is impossible, ask the maintainer to assess temporary limits on affected features and record a definite deadline."
+        },
+        {
+          "type": "paragraph",
+          "text": "Automatic updates reduce omissions, but someone still needs to read failure notices and check outcomes. In a maintenance list, distinguish automatically updated components from integrations requiring manual verification, and assign an owner. A plugin list showing “up to date” does not cover the host’s PHP, the backup process, or administrators’ computers."
+        },
+        {
+          "type": "heading",
+          "text": "Understand what Wordfence can protect",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to the official documentation checked on the stated date, free Wordfence includes a firewall, scanning, and two-factor authentication. New firewall rules and malware signatures arrive thirty days later than for paying customers. That difference can inform your choice, but it cannot be translated into a guarantee that your site is safe or certain to be attacked."
+        },
+        {
+          "type": "paragraph",
+          "text": "After installation, first verify the notification address, current firewall status, and ability to complete a scan. Then read the file paths and changes behind each finding. Customized code can also differ from the original files. Do not delete or overwrite every difference on sight; save a copy and ask the maintainer which changes were intentional."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the host already supplies some protection, place its responsibilities beside the plugin’s in one table. Host backups, firewall blocking, and WordPress account checks address different problems. Before adding a tool, confirm compatibility and resource needs. More installations do not automatically produce clearer responsibilities."
+        },
+        {
+          "type": "heading",
+          "text": "Set up two-factor authentication and plan for a lost phone",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In Wordfence Login Security, open 2FA settings for your own account, add it to a TOTP-compatible authenticator, save the recovery codes, and enter the current code to enable it. Keep the original login window open while testing the password and code in a second browser; logging yourself out immediately could remove your route to adjust the settings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Store recovery codes where only authorized people can reach them, separately from everyday site instructions. The official documentation says each code can be used once and generating new codes invalidates the old set. During handoff, confirm how they are stored. Do not paste the QR code, secret key, or recovery codes into a work group visible to many people."
+        },
+        {
+          "type": "paragraph",
+          "text": "Custom login pages need extra testing. The official guidance warns that some third-party login forms may be incompatible; WooCommerce account pages have an integration option that must still be tested after enabling it. Passing 2FA in the dashboard does not mean the member entrance, social login, or every other connection method is automatically controlled in the same way."
+        },
+        {
+          "type": "heading",
+          "text": "After learning mode, confirm protection is on",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wordfence learning mode can allowlist some requests that look like attacks to reduce false blocks. Not all firewall protection is fully active during that period. According to the official guidance, do not use learning mode as the response when the site is under attack or has just been compromised."
+        },
+        {
+          "type": "paragraph",
+          "text": "When configuring it under suitable conditions, test routine actions such as saving posts, uploading images, and submitting forms. Review the allowlist, then switch back to Enabled and Protecting. If you enable learning mode manually, set an end date or schedule a clear manual shutoff; otherwise it may keep accepting new allowed requests unnoticed."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a real visitor is blocked, record the time and action, then check the reason in logs such as Live Traffic. Add a narrow exception only after confirming the action is legitimate. Do not turn off all protection because of one form issue, or allowlist a request you do not understand at a stranger’s direction."
+        },
+        {
+          "type": "heading",
+          "text": "Assign a person to handle each alert",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Track failed updates, unknown administrators, suspicious files, and repeated login failures separately, with an owner and response for each notice. An editor may report unusual behavior, while a maintainer handles file repair or hosting restrictions. Clear assignments keep an alert from sitting in a shared inbox because everyone assumes someone else took it."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you suspect a compromise, preserve necessary records, restrict affected entry points, and contact a maintainer who knows the site. Changing passwords and restoring files may be parts of the response, but you also need to establish the impact and whether the entry point was fixed. A scan that finds nothing for now is no substitute for incident investigation."
+        },
+        {
+          "type": "paragraph",
+          "text": "After each handoff or major new feature, recheck accounts, alerts, access to backups, and login recovery. A maintenance log should at least record the last check date and the next action. A security tool’s score can be a reference, but completed fixes and verifiable procedures make later follow-up possible."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-security-basics/diagram-1-en.svg",
+          "alt": "Four columns divide site-security maintenance into account, software, protection, and recovery responsibilities.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Give each task an owner, a check date, and a next step.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Task",
+            "Main purpose",
+            "What still needs attention"
+          ],
+          "rows": [
+            [
+              "Least privilege",
+              "Limit what each account can do",
+              "Regularly revoke access for people who have left"
+            ],
+            [
+              "Updates",
+              "Fix software and compatibility issues",
+              "Back up and check functions afterward"
+            ],
+            [
+              "Firewall",
+              "Handle requests using rules",
+              "Confirm its state and investigate false blocks"
+            ],
+            [
+              "Two-factor authentication",
+              "Strengthen login checks on supported entrances",
+              "Test recovery codes and other entrances"
+            ],
+            [
+              "Backups",
+              "Provide a route to recover data",
+              "Store a separate copy and rehearse restoration"
+            ]
+          ],
+          "caption": "Assign owners by function instead of expecting one tool to handle every job."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Confirm recovery before widening restrictions",
+          "text": "Before requiring others to enable login protection, use a test account to complete ordinary login and the lost-authenticator recovery path. Confirm hosting and domain accounts have their own recovery methods too."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan routine website maintenance",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Create a WordPress backup and restoration process",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hardening WordPress security",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence Free features",
+          "url": "https://www.wordfence.com/help/wordfence-free/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence two-factor authentication",
+          "url": "https://www.wordfence.com/help/tools/two-factor-authentication/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence learning mode",
+          "url": "https://www.wordfence.com/help/firewall/learning-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress roles and capabilities",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressのセキュリティ保守：アカウント、更新、防御プラグインの役割分担",
+      "description": "WordPressの安全性は、アカウント管理、更新、ファイアウォール、バックアップの組み合わせで支えます。本記事では小規模サイトの実際の担当分けから、最小権限、無料版Wordfenceの機能と限界、二要素認証の復旧準備、学習モードと警告の確認方法を説明します。作業手順と比較表を使い、台湾のサイト運営者が担当者と継続的な確認方法を定められるようにします。",
+      "hero": {
+        "src": "/guides/wordpress-security-basics/hero-ja.jpg",
+        "alt": "盾、書類、フォルダーを組み合わせたオリジナルの図。アカウント保護、保守記録、バックアップからの復旧を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ある制作事務所のサイトは三人で管理しているのに、管理者アカウントが七つあり、うち二つは契約が終わった業者のものです。セキュリティプラグインを入れていても、余分な入口は残ります。防御を強める前に、誰がアクセスでき、誰がプログラムを更新し、問題が起きたら誰が対応するかを書き出します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保守の目的はリスクを下げ、復旧できる状態を保つことです。問題が絶対に起きないと保証するプラグインはありません。以下ではWordfenceを機能説明の例にし、WordPress公式の推奨と合わせて作業順序を示します。製品の順位付けではなく、スキャン結果を完全な安全認証とも扱いません。"
+        },
+        {
+          "type": "heading",
+          "text": "サイトを管理できる人と入口を一覧にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress、ホスティング、ドメイン、バックアップ保存先、管理者用メールボックスの所有者を記録します。別のアカウントを使っていても、それぞれサイトに影響します。現在の担当者が各入口にログインできるか確認し、復旧用の連絡先を通知が届くメールアドレスに更新します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "日常的に記事を書く人がプラグインを導入する必要は通常ありません。原稿を投稿する人にも、自分で公開する権限が必要とは限りません。個別のアカウントと仕事に合った権限を使い、案件終了後は不要なアクセスを外します。変更前に記事の著者情報や引き継ぎ資料を整理し、一覧を片付けるために残すべき内容まで削除しないでください。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "各サービスのアカウント所有者、業務上の用途、復旧担当を記録する。",
+            "管理者一覧を見直し、通常の編集には権限の小さいアカウントを使う。",
+            "外部委託者のアクセス期限と解除方法を確認し、引き継ぎ記録を残す。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "更新にはバックアップと機能確認を含める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "使用中のWordPress本体、テーマ、プラグインを一覧にし、公式の更新情報と互換性の説明を確認します。出所不明の改変プログラムは本番サイトの土台に適しません。保守が止まっていて重要な機能を担う部品には代替計画を立てます。使わないツールも削除を検討し、今後追跡する対象を減らします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要な更新前には完全なバックアップを取得できることを確認し、複製環境でログイン、フォーム、主要ページを検証します。セキュリティ修正は優先が必要なこともあり、完璧なテストを待って無期限に延ばすべきではありません。すぐに修正できない場合は、保守担当者に影響する機能の一時制限を検討してもらい、対応期限を明記します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自動更新は見落としを減らせますが、失敗通知を読み結果を確認する担当者は必要です。自動更新する項目、手動検証が必要な連携、責任者を別々に記録します。プラグイン一覧が最新版でも、ホストのPHP、バックアップ処理、管理者の端末の更新を忘れないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "Wordfenceでできる防御を理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "確認日現在の公式文書によると、無料版Wordfenceにはファイアウォール、スキャン、二要素認証などが含まれます。新しいファイアウォール規則とマルウェアのシグネチャーは、有料顧客より三十日遅れて提供されます。この差は選択材料ですが、自分のサイトが必ず安全、または必ず攻撃されるという結論には変換できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "導入後は通知先のメールアドレス、現在のファイアウォール状態、スキャンの完了をまず確認し、検出結果のファイルパスと変更内容を読みます。独自に変更したプログラムも元ファイルと違って見えます。差異を見てすぐ全て削除・上書きせず、複製を保存してから、意図した変更か保守担当者に確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ホスト側にも防御機能がある場合は、プラグインとの担当範囲を同じ表に並べます。ホストのバックアップ、ファイアウォールによる遮断、WordPressアカウントの認証は別の問題に対応します。新しいツールを入れる前に互換性と必要な資源を確認してください。数を増やすだけでは分担は明確になりません。"
+        },
+        {
+          "type": "heading",
+          "text": "二要素認証を設定し、スマートフォン紛失にも備える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordfenceのLogin Securityで自分の2FA設定を開き、TOTPに対応する認証アプリにアカウントを追加します。復旧コードを保存してから現在のコードを入力し、有効にします。元のログイン画面を開いたまま別のブラウザーでパスワードと認証コードを試してください。すぐにログアウトして設定を直す入口を失わないためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "復旧コードは許可された人だけが取得できる場所に置き、日常のサイト操作文書とは分けて管理します。公式説明では各コードは一度しか使えず、再生成すると古いコードは無効になります。引き継ぎ時には保管方法を確認してください。QR Code、秘密鍵、復旧コードを多数が見られる作業グループに貼らないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独自のログインページは追加で検証が必要です。公式は一部の外部ログインフォームが非対応の場合を示しています。WooCommerceのアカウントページには連携オプションがありますが、有効化後も確認します。管理画面で2FAを通過したからといって、会員入口、ソーシャルログイン、その他の接続方法が自動的に同じ制御を受けるわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "学習モード終了後に防御状態を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wordfenceの学習モードは、攻撃に見える一部のリクエストを許可リストに加え、誤検知を減らします。この間、ファイアウォールの全ての防御が完全に有効とは限りません。公式説明に従い、攻撃を受けている最中や侵害直後の対処方法として学習モードを使わないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "適切な設定状況で記事の保存、画像のアップロード、フォーム送信などの日常操作を試し、許可リストを確認してEnabled and Protectingに戻します。手動で学習モードを始めるなら、終了日を設定するか手動で止める予定を明確にします。忘れて新しいリクエストを許可し続けないようにするためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実際の訪問者が遮断されたら、時刻と操作を記録し、Live Trafficなどのログで理由を調べます。正当な操作と確認してから、対象を絞った例外を追加します。一つのフォーム問題で防御全体を止めたり、知らない人の指示だけで理解できないリクエストを許可したりしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "警告ごとに対応する担当者を決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更新失敗、見知らぬ管理者、不審なファイル、大量のログイン失敗を分けて記録し、通知ごとに担当者と対応方法を決めます。編集者は異常を報告し、ファイルの修復やホスト側の制限は保守担当者が扱う、といった分担です。共有メールボックスで皆が「誰かが対応済み」と思い込むのを防げます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "侵害が疑われる場合は必要な記録を保存し、影響する入口を制限して、サイトを知る保守担当者に連絡します。パスワード変更やファイル復元は対応の一部ですが、影響範囲と侵入口が修正されたかも調べなければなりません。一時的にスキャンで何も見つからないことは、事故調査の代わりになりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎや重要機能の追加のたびに、アカウント、通知、バックアップの取得方法、ログイン復旧を再確認します。保守表には少なくとも最終確認日と次の行動を記録します。ツールの安全スコアは参考になりますが、実際の修正と検証できる手順があってこそ、継続的に追跡できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-security-basics/diagram-1-ja.svg",
+          "alt": "アカウント、プログラム、防御、復旧の四列でサイトのセキュリティ保守の分担を示す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "各作業に担当者、確認日、次の一手を記録します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "作業",
+            "主な役割",
+            "残る確認事項"
+          ],
+          "rows": [
+            [
+              "最小権限",
+              "アカウントで可能な操作を制限",
+              "退任者のアクセスを定期的に解除"
+            ],
+            [
+              "更新",
+              "プログラムと互換性の問題を修正",
+              "バックアップと更新後の検証"
+            ],
+            [
+              "ファイアウォール",
+              "規則に基づいてリクエストを処理",
+              "状態と誤遮断の確認"
+            ],
+            [
+              "二要素認証",
+              "対応する入口のログインを強化",
+              "復旧コードと別の入口の検証"
+            ],
+            [
+              "バックアップ",
+              "データ復旧の手段を確保",
+              "別置き保存と復元訓練"
+            ]
+          ],
+          "caption": "単一のツールに全てを任せず、機能ごとに担当者を決めます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "制限を広げる前に復旧を確かめる",
+          "text": "ほかの人にログイン保護を有効化してもらう前に、テストアカウントで通常のログインと認証アプリを失った場合の復旧を試します。ホストとドメインのアカウントにも、それぞれ復旧方法があることを確認します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "サイトの日常的な保守を計画する",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressのバックアップと復元の手順を作る",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPressのセキュリティ強化",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "無料版Wordfenceの機能",
+          "url": "https://www.wordfence.com/help/wordfence-free/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfenceの二要素認証",
+          "url": "https://www.wordfence.com/help/tools/two-factor-authentication/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfenceの学習モード",
+          "url": "https://www.wordfence.com/help/firewall/learning-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPressの権限と能力",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 보안 유지 관리: 계정, 업데이트, 보안 플러그인의 역할",
+      "description": "WordPress 보안은 계정, 업데이트, 방화벽, 백업이 함께 작동해야 유지됩니다. 이 글은 소규모 사이트의 실제 업무 분담을 기준으로 최소 권한, 무료 Wordfence의 기능과 한계, 2단계 인증 복구 준비, 학습 모드와 경고 점검 방법을 설명합니다. 실행할 수 있는 단계와 비교표를 통해 대만의 사이트 운영자가 각 보호 업무의 담당자를 정하고 계속 결과를 추적하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-security-basics/hero-ko.jpg",
+        "alt": "방패, 문서, 폴더를 조합한 자체 제작 그림. 계정 보호, 관리 기록, 백업 복구를 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "한 작업실 웹사이트는 세 명이 관리하지만 관리자 계정이 일곱 개이고, 그중 두 개는 계약이 끝난 업체의 것입니다. 보안 플러그인을 설치해도 이런 불필요한 입구는 남습니다. 보호를 강화하기 전에 누가 들어올 수 있는지, 누가 프로그램을 업데이트하는지, 문제가 생기면 누가 대응하는지 적어 두세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "보안 유지 관리의 목적은 위험을 줄이고 복구 능력을 유지하는 것입니다. 어떤 플러그인도 문제가 절대 생기지 않는다고 보장하지 못합니다. 아래에서는 Wordfence를 기능 설명의 예로 쓰고 WordPress 공식 권고와 함께 작업 순서를 제시합니다. 업체 순위를 매기지 않으며 검사 결과를 완전한 보안 인증으로 취급하지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "사이트를 제어할 수 있는 계정 목록 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress, 호스팅, 도메인, 백업 저장소, 관리자 이메일함의 소유자를 적습니다. 모두 같은 계정을 쓰지는 않지만 각각 사이트에 영향을 줍니다. 현재 담당자가 각 입구에 여전히 로그인할 수 있는지 확인하고 복구 연락처를 실제로 알림을 받는 이메일로 갱신하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일상적으로 글을 쓰는 사람에게는 보통 플러그인 설치 권한이 필요하지 않습니다. 원고만 제출하는 사람에게 직접 게시할 권한도 필요하지 않을 수 있습니다. 각자 계정과 업무에 맞는 역할을 사용하고 일이 끝나면 불필요한 권한을 없애세요. 역할을 바꾸기 전에 글의 작성자와 인수인계 자료를 정리하고, 사용자 목록을 정리하려고 보존해야 할 콘텐츠까지 삭제하지 마세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "서비스별 계정 소유자, 업무 용도, 복구 담당자를 기록합니다.",
+            "관리자 목록을 점검하고 일상적인 편집에는 더 낮은 권한의 계정을 사용합니다.",
+            "외부 인력의 접근 기한과 권한 해제 방법을 확인하고 인수인계 기록을 남깁니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "업데이트 절차에 백업과 기능 확인 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사용 중인 WordPress 코어, 테마, 플러그인을 목록으로 만들고 공식 업데이트와 호환성 안내를 확인합니다. 출처가 불분명한 수정 프로그램은 운영 사이트의 기반으로 적합하지 않습니다. 유지 관리가 중단됐지만 중요한 기능을 맡는 구성 요소는 교체 계획을 세우세요. 쓰지 않는 도구도 제거를 검토하면 앞으로 추적할 항목을 줄일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "중요한 업데이트 전에는 전체 백업을 얻을 수 있는지 확인하고 복제본에서 로그인, 양식, 주요 페이지를 시험합니다. 보안 패치는 때로 우선 처리해야 하므로 완벽한 테스트를 기다리며 무기한 미루지 마세요. 즉시 패치할 수 없다면 관리자에게 영향을 받는 기능을 임시로 제한할지 평가하게 하고 명확한 처리 기한을 기록합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자동 업데이트는 빠뜨릴 일을 줄이지만 실패 알림을 읽고 결과를 확인할 사람은 여전히 필요합니다. 목록에 자동 업데이트 항목, 수동 검증이 필요한 연동, 담당자를 따로 기록할 수 있습니다. 플러그인 목록이 최신이라고 해서 호스트의 PHP, 백업 절차, 관리자 자신의 컴퓨터 업데이트를 잊지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "Wordfence가 제공하는 보호 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "명시된 확인일의 공식 문서에 따르면 무료 Wordfence에는 방화벽, 검사, 2단계 인증 등이 포함됩니다. 새로운 방화벽 규칙과 악성코드 서명은 유료 고객보다 30일 늦게 제공됩니다. 이 차이는 선택의 근거가 될 수 있지만, 자기 사이트가 반드시 안전하거나 반드시 공격받는다는 결론으로 바로 바꿀 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "설치 후에는 알림 이메일 주소, 현재 방화벽 상태, 검사가 끝까지 실행되는지를 먼저 확인합니다. 이후 발견 항목의 파일 경로와 변경 내용을 읽으세요. 사용자 지정 코드도 원본 파일과 다르게 보일 수 있습니다. 차이가 보인다고 모두 지우거나 덮어쓰지 말고 복제본을 보관한 뒤 어떤 변경이 의도적이었는지 관리자에게 확인합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "호스트가 이미 일부 보호를 제공한다면 호스트와 플러그인의 책임 범위를 한 표에 적습니다. 호스트 백업, 방화벽 차단, WordPress 계정 확인은 서로 다른 문제를 다룹니다. 새 도구를 추가하기 전에 호환성과 자원 요구량을 확인하세요. 더 많이 설치한다고 역할 분담이 분명해지는 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "2단계 인증 설정과 휴대전화 분실 대비하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wordfence의 Login Security에서 자신의 2FA 설정을 열고 TOTP를 지원하는 인증 앱에 계정을 추가합니다. 복구 코드를 보관한 다음 현재 코드를 입력해 활성화하세요. 기존 로그인 창은 열어 둔 채 다른 브라우저에서 비밀번호와 인증 코드가 모두 통과하는지 시험합니다. 바로 로그아웃해서 설정을 고칠 입구를 잃지 않기 위해서입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "복구 코드는 허가받은 사람만 접근할 수 있는 곳에 보관하고 일반 사이트 작업 문서와 분리합니다. 공식 안내에 따르면 각 코드는 한 번만 사용할 수 있고 새 코드를 만들면 예전 코드는 무효가 됩니다. 인수인계할 때 보관 방법을 확인하세요. QR Code, 비밀 키, 복구 코드를 여러 사람이 보는 업무 대화방에 붙이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용자 지정 로그인 페이지는 추가 시험이 필요합니다. 공식 문서는 일부 타사 로그인 양식이 호환되지 않을 수 있다고 설명합니다. WooCommerce 계정 페이지에는 연동 옵션이 있지만 켠 뒤에도 확인해야 합니다. 관리자 화면의 2FA가 통과했다고 해서 회원 입구, 소셜 로그인, 기타 연결 방식에 자동으로 같은 통제가 적용되지는 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "학습 모드가 끝난 뒤 보호가 켜졌는지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wordfence 학습 모드는 공격처럼 보이는 일부 요청을 허용 목록에 넣어 잘못된 차단을 줄입니다. 그동안 모든 방화벽 보호가 완전히 켜진 것은 아닙니다. 공식 안내에 따르면 공격받는 중이거나 방금 침해된 사이트를 처리하는 수단으로 학습 모드를 사용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "적절한 설정 상황에서 글 저장, 이미지 업로드, 양식 제출 같은 평소 작업을 시험한 뒤 허용 목록을 살펴보고 Enabled and Protecting으로 되돌립니다. 학습 모드를 수동으로 켰다면 종료 날짜를 지정하거나 수동 종료 일정을 분명히 정하세요. 잊은 채 새로운 요청을 계속 허용하지 않기 위해서입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 방문자가 차단되면 먼저 시각과 동작을 기록하고 Live Traffic 같은 기록에서 이유를 확인합니다. 정당한 동작임을 확인한 경우에만 범위를 좁힌 예외를 추가하세요. 양식 문제 하나 때문에 모든 보호를 끄거나 낯선 사람의 말만 듣고 이해하지 못한 요청을 허용 목록에 넣지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "경고마다 처리할 사람 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "업데이트 실패, 낯선 관리자, 이상한 파일, 대량의 로그인 실패를 따로 기록하고 알림 유형마다 담당자와 처리 방법을 지정합니다. 편집자는 이상을 보고하고 파일 복구와 호스트 제한은 관리자가 맡는 식입니다. 공동 이메일함의 알림을 모두가 다른 사람이 처리했다고 오해하지 않게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "침해가 의심되면 필요한 기록을 보존하고 영향을 받는 입구를 제한한 뒤 사이트를 잘 아는 관리자에게 연락하세요. 비밀번호 변경과 파일 복원은 가능한 조치의 일부일 뿐이며 영향 범위와 침입 경로를 고쳤는지도 파악해야 합니다. 현재 검사에서 아무것도 발견되지 않았다는 결과가 사고 조사를 대신하지는 못합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인수인계하거나 중요한 기능을 추가한 뒤에는 계정, 알림, 백업 확보 방법, 로그인 복구를 다시 확인합니다. 관리표에는 최소한 마지막 확인 날짜와 다음 행동을 적으세요. 보안 도구의 점수는 참고할 수 있지만 실제 완료한 수정과 검증 가능한 절차가 있어야 이후에도 추적할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-security-basics/diagram-1-ko.svg",
+          "alt": "계정, 프로그램, 보호, 복구의 네 칸으로 웹사이트 보안 관리 책임을 나눈 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "업무마다 담당자, 확인 날짜, 다음 단계를 적습니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "업무",
+            "주요 역할",
+            "추가로 할 일"
+          ],
+          "rows": [
+            [
+              "최소 권한",
+              "계정이 할 수 있는 작업을 제한",
+              "퇴사자의 접근 권한을 정기적으로 해제"
+            ],
+            [
+              "업데이트",
+              "프로그램과 호환성 문제 수정",
+              "백업과 업데이트 후 기능 검사"
+            ],
+            [
+              "방화벽",
+              "규칙에 따라 요청 처리",
+              "상태와 잘못된 차단 확인"
+            ],
+            [
+              "2단계 인증",
+              "지원되는 입구의 로그인 확인 강화",
+              "복구 코드와 다른 입구 시험"
+            ],
+            [
+              "백업",
+              "데이터를 복구할 경로 마련",
+              "분리 보관과 복원 연습"
+            ]
+          ],
+          "caption": "도구 하나에 모든 일을 맡기지 말고 기능에 따라 담당자를 정합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "제한을 늘리기 전에 복구부터 확인하기",
+          "text": "다른 사람에게 로그인 보호를 켜라고 요구하기 전에 테스트 계정으로 정상 로그인과 인증 앱을 잃었을 때의 처리 절차를 시험하세요. 호스팅과 도메인 계정에도 각각 복구 방법이 있는지 확인합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "웹사이트의 일상 유지 관리 계획하기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 백업과 복원 절차 만들기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 보안 강화",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 무료 버전 기능",
+          "url": "https://www.wordfence.com/help/wordfence-free/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 2단계 인증",
+          "url": "https://www.wordfence.com/help/tools/two-factor-authentication/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 학습 모드",
+          "url": "https://www.wordfence.com/help/firewall/learning-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 역할과 권한",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 安全维护：账号、更新与防护插件的分工",
+      "description": "WordPress 安全需要账号、更新、防火墙与备份共同配合。本文从小型网站的实际分工出发，说明最小权限、Wordfence 免费功能与限制、双因素验证的恢复准备，以及学习模式和告警的检查方法。可执行的维护步骤和对照表，帮助台湾网站站长建立有人负责、能持续追踪的防护流程。",
+      "hero": {
+        "src": "/guides/wordpress-security-basics/hero-zh-cn.jpg",
+        "alt": "由盾牌、文件和文件夹组成的原创插图，代表账号防护、维护记录与备份恢复。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "工作室网站只有三个人管理，却有七个管理员账号，其中两个属于已经结束合作的供应商。即使安装了安全插件，这些多余的入口仍然存在。开始加强防护前，先写清楚“谁能进入、程序由谁更新、出事由谁处理”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安全维护的目标是降低风险并保留恢复能力，没有任何插件能保证永远不出问题。下文以 Wordfence 作为功能说明的例子，配合 WordPress 官方建议建立操作顺序；不提供供应商排名，也不把扫描结果当成完整的安全认证。"
+        },
+        {
+          "type": "heading",
+          "text": "先列出网站各处的控制权",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "列出 WordPress、主机、域名、备份空间和管理员邮箱的持有人。这些系统未必使用同一账号，但都可能影响网站。确认当前负责人仍能登录每个入口，并把恢复联系方式更新为能收到通知的邮箱。"
+        },
+        {
+          "type": "paragraph",
+          "text": "平时写文章的人通常不需要安装插件；只投稿的人也未必需要自行发布。为每个人使用独立账号及符合工作的角色，项目结束后移除不再需要的权限。调整前先处理文章作者归属和交接资料，不要为了整理名单直接删除仍需保留的内容。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "记录各项服务的账号持有人、工作用途和恢复联系人。",
+            "检查管理员名单，让日常编辑工作使用权限较小的账号。",
+            "确认外包人员的访问期限与撤销方式，并保留交接记录。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "更新流程要包含备份和功能检查",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先盘点正在使用的核心程序、主题和插件，核对官方更新及兼容性说明。来源不明的修改版程序不适合作为正式网站的基础。对已经停止维护却承担重要功能的组件，应制定替换计划；暂时不用的工具也要评估是否移除，减少以后需要追踪的项目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "重要更新前确认完整备份可以取得，并在副本上验证登录、表单和主要页面。安全修补有时必须优先处理，不宜为了等待完美测试而无限期搁置；如果无法立即修补，请维护者评估先限制受影响功能，并记录明确的处理期限。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自动更新能减少遗漏，但仍需要有人阅读失败通知并检查结果。可以在清单里分别记录自动更新项目、需要人工验证的整合以及负责人。不要只看插件清单显示“最新”，就忽略主机上的 PHP、备份程序或管理员自己的电脑更新。"
+        },
+        {
+          "type": "heading",
+          "text": "了解 Wordfence 可以提供哪些防护",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "根据查证当日的官方文档，Wordfence 免费版包含防火墙、扫描及双因素验证等功能；新防火墙规则与恶意程序特征比付费客户晚三十天取得。这项差异可以作为评估依据，但不能直接推算你的网站一定安全或一定会受到攻击。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装后先核对通知邮箱、当前防火墙状态以及扫描能否完成，再阅读每项发现对应的文件路径与修改内容。自定义过的程序也可能与原始文件不同；不要看到差异就全部删除或覆盖，先保存副本并询问维护者哪些修改是有意保留的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果主机本身已经提供部分防护，把主机和插件各自负责的范围列在同一张表。主机备份、防火墙拦截和 WordPress 账号验证处理的是不同问题。新增工具前先确认兼容性与资源需求；装得越多不等于分工越清楚。"
+        },
+        {
+          "type": "heading",
+          "text": "设置双因素验证，也为手机丢失做准备",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 Wordfence 的 Login Security 中打开自己账号的 2FA 设置，用支持 TOTP 的验证器添加账号，保存恢复码后输入当前代码启用。完成时先保留原来的登录窗口，再用另一个浏览器测试账号密码和验证码都能通过，避免马上退出后失去调整设置的入口。"
+        },
+        {
+          "type": "paragraph",
+          "text": "恢复码应放在只有授权人员可以取得的位置，并与普通网站操作文档分开管理。官方说明每个恢复码只能使用一次，重新生成会让旧码失效。交接时应确认保存方法，不要把 QR Code、密钥或恢复码直接贴进多人可见的工作群组。"
+        },
+        {
+          "type": "paragraph",
+          "text": "自定义登录页需要额外测试。官方指出某些第三方登录表单可能不兼容；WooCommerce 账号页面有相应的整合选项，启用后仍要验证。后台登录通过 2FA，不代表会员入口、社交登录和其他连接方式自动受到完全相同的控制。"
+        },
+        {
+          "type": "heading",
+          "text": "学习模式结束后要确认防护已开启",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Wordfence 的学习模式会把部分看似攻击的请求加入允许列表，以减少误拦截。在这段期间，并不是所有防火墙保护都完整启用。按照官方说明，网站正在遭受攻击或刚被入侵时，不应把学习模式当作处理方法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在适合的设置情境下，测试保存文章、上传图片和提交表单等日常操作，再检查允许列表并切回 Enabled and Protecting。手动开启学习模式时，要指定结束日期或明确安排人工关闭，避免忘记后不断接受新的允许项目。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果真实访客被拦截，先记录时间和操作，再到 Live Traffic 等日志核对原因。只有确定是合理操作才增加精确的例外；不要因为一个表单问题就关闭全部防护，也不要依陌生人的指示把不理解的请求加入允许列表。"
+        },
+        {
+          "type": "heading",
+          "text": "告警要交给明确的人处理",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "把更新失败、陌生管理员、异常文件和大量登录失败分别记录，为每类通知指定负责人和处理方式。例如编辑可以报告异常，但文件修复和主机限制由维护者处理；这样通知不会留在共用邮箱里，被每个人误以为已有别人接手。"
+        },
+        {
+          "type": "paragraph",
+          "text": "疑似遭到入侵时，先保存必要记录、限制受影响入口，并联系熟悉网站的维护人员。更换密码和恢复文件只是可能的处置步骤，还要查清影响范围，以及入口是否已经修补。扫描暂时没有发现，不能代替事件调查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "每次交接或新增重要功能后，重新检查账号、通知、取得备份的方式和登录恢复。维护表至少写上最后确认日期与下一步行动；安全工具显示的分数可以参考，真正完成的修补和可验证的流程才便于后续追踪。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-security-basics/diagram-1-zh-cn.svg",
+          "alt": "以账号、程序、防护和恢复四栏呈现网站安全维护的责任分工。",
+          "width": 1600,
+          "height": 900,
+          "caption": "每项工作都要写明负责人、检查日期和下一步。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "工作",
+            "主要作用",
+            "仍需补上的事"
+          ],
+          "rows": [
+            [
+              "最小权限",
+              "限制账号可执行的操作",
+              "定期撤销离职人员的访问权限"
+            ],
+            [
+              "更新",
+              "修补程序与兼容性问题",
+              "备份及更新后的验收"
+            ],
+            [
+              "防火墙",
+              "按规则处理请求",
+              "确认状态与误拦截"
+            ],
+            [
+              "双因素验证",
+              "加强受支持入口的登录验证",
+              "恢复码及其他入口测试"
+            ],
+            [
+              "备份",
+              "提供数据恢复途径",
+              "隔离保存与恢复演练"
+            ]
+          ],
+          "caption": "按功能分工安排负责人，不要让单一工具承担所有工作。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先确认恢复，再扩大限制",
+          "text": "要求其他人启用登录保护前，先用测试账号走过正常登录和失去验证器后的处理流程，并确认主机与域名账号也各有自己的恢复方法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "安排网站的日常维护",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立 WordPress 备份与恢复流程",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 安全加固",
+          "url": "https://developer.wordpress.org/advanced-administration/security/hardening/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 免费版功能",
+          "url": "https://www.wordfence.com/help/wordfence-free/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 双因素验证",
+          "url": "https://www.wordfence.com/help/tools/two-factor-authentication/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Wordfence 学习模式",
+          "url": "https://www.wordfence.com/help/firewall/learning-mode/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 角色与权限",
+          "url": "https://wordpress.org/documentation/article/roles-and-capabilities/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
