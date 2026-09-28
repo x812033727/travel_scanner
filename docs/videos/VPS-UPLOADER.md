@@ -44,6 +44,69 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
 
 ## 在獨立 VPS 準備容器
 
+### mokaair.com 同機部署
+
+站主已指定 mokaair.com 正式主機。2026-09-28 的唯讀預檢顯示 4 vCPU、約 16 GiB RAM
+（當時約 13 GiB 可用）、約 91 GiB 磁碟可用，Docker 與 Compose 已安裝，8789／6080
+未使用。這是當時的容量，正式執行前仍須重做預檢。目前尚未部署或登入 Google。
+
+採用兩個 Compose project：網站原有 project，以及獨立的 `mokaair-studio-uploader`。
+`docker-compose.prod.yml` 讓 API 額外加入 internal 的 `uploader_rpc` 網路，並唯讀掛入
+`/etc/mokaair-uploader/api`。網站其他容器不加入這個網路。上傳服務用
+`compose.mokaair.yml` 接上同一網路，另保留自己的對外網路連 YouTube。
+網站一般更新會重建 API，服務名稱與密鑰掛載仍存在；不需要修改主機部署腳本。
+
+待站主核准的執行順序：
+
+1. #890 與 #893 完成檢查並合併；核對實際合併版本，依 `deploy` skill 預檢、備份與部署網站。
+   先保持 `MOKAAIR_VPS_UPLOADER_URL` 未設定，網站部署會建立 RPC 網路，VPS 模式尚未啟用。
+2. 首次建立服務密鑰與 VNC 密碼，另提供 API UID 10001 能讀的同值密鑰檔。
+   下列初始化只適用於尚無這些檔案的主機；已有檔案時停止，不覆寫或輪換：
+
+   ```sh
+   set -eu
+   test ! -e /etc/mokaair-uploader/service-secret
+   test ! -e /etc/mokaair-uploader/vnc-password
+   test ! -e /etc/mokaair-uploader/api/service-secret
+   install -d -m 0700 /etc/mokaair-uploader
+   install -d -m 0700 -o 10001 -g 10001 /etc/mokaair-uploader/api
+   (umask 077; openssl rand -hex 32 > /etc/mokaair-uploader/service-secret)
+   (umask 077; openssl rand -hex 4 > /etc/mokaair-uploader/vnc-password)
+   chown 1000:1000 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/vnc-password
+   chmod 0400 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/vnc-password
+   install -m 0400 -o 10001 -g 10001 /etc/mokaair-uploader/service-secret /etc/mokaair-uploader/api/service-secret
+   ```
+
+3. 從範例建立 `ops/youtube-uploader/.env`（維持 0600），設定確定的 UC 頻道 ID，保留
+   `UPLOADER_PRIVATE_BIND_IP=127.0.0.1` 及 `UPLOADER_API_NETWORK=travel_scanner_uploader_rpc`。
+   從已核對合併版本的 repo 根目錄執行：
+
+   ```sh
+   docker compose --env-file ops/youtube-uploader/.env -f ops/youtube-uploader/compose.yml -f ops/youtube-uploader/compose.mokaair.yml build
+   docker compose --env-file ops/youtube-uploader/.env -f ops/youtube-uploader/compose.yml -f ops/youtube-uploader/compose.mokaair.yml up -d --no-build
+   curl --fail http://127.0.0.1:8789/health
+   ```
+
+4. 容器啟動驗證後，經站主核准，把網站 `.env` 中這三個設定填入，保留 0600 權限；
+   值只有服務網址、檔案路徑與頻道 ID，不含密鑰。只重建 API 容器套用新設定。
+
+   ```dotenv
+   MOKAAIR_VPS_UPLOADER_URL=http://mokaair-studio-uploader:8789
+   MOKAAIR_VPS_UPLOADER_SECRET_FILE=/run/mokaair-uploader/service-secret
+   MOKAAIR_VPS_UPLOADER_CHANNEL_ID=UC_replace_with_confirmed_channel_id
+   ```
+
+5. 由 API 容器以 UID 10001 驗證 authenticated `/status`，證明 DNS、唯讀檔案權限與
+   頻道設定相符。只回報通過與否，不輸出密鑰、完整環境變數或瀏覽器狀態。
+6. 站主經 SSH 隧道登入專用瀏覽器，核對頻道，再指定一支私人測試影片進行下方驗收。
+
+同機模式的啟停／升級都須帶上上述兩個 `-f`，保留獨立 volume。不要對網站執行
+`docker compose down`：它會嘗試刪除 uploader 使用中的共享網路；正常網站部署使用 `up`。
+要回退先停止 uploader，保留資料 volume，再移除網站 URL 設定並重建 API；確認遠端工作
+停住後才恢復原 API 上傳。Google 登入與真實上傳仍須獨立驗收，健康檢查不足以啟用自動上傳。
+
+### 另一台獨立 VPS
+
 以下是交付給營運者的指令，**本次沒有在正式主機執行**。建議預留 4 GiB RAM、2 vCPU，
 以及至少容納待傳影片總量兩倍的磁碟；這是起始規格，尚未經真實大檔負載測試。
 需要 Linux、Docker Engine 與 Compose plugin、可連 YouTube 的網路，以及站主 SSH 存取。
@@ -190,9 +253,11 @@ npm run typecheck:web
 
 `.github/workflows/youtube-uploader.yml` 額外跑 Node/Chromium fixture tests、獨立 Docker build，
 以及無 Google 帳號的 Xvfb/noVNC/HTTP 啟動檢查。主 CI 執行網站與 API 的檢查。
-2026-09-28 已在 commit `0b105dc3` 通過獨立 workflow 的測試、Docker build 與無帳號啟動：
-[CI 執行紀錄](https://github.com/x812033727/travel_scanner/actions/runs/36383247014)。
-這份紀錄不包含真實 Google 登入或影片上傳；後續修正仍需對應版本的 CI。
+2026-09-28 已在 commit `24424d4a` 通過獨立 workflow 的測試、Docker Compose build 與無帳號啟動：
+[CI 執行紀錄](https://github.com/x812033727/travel_scanner/actions/runs/36386376526)。
+新增的同機檢查會以 API UID 10001 讀取唯讀密鑰、核對 Docker DNS 與 authenticated status，
+並重建 client 後再測一次。CI 使用拋棄式網路、假密鑰與無登入瀏覽器。
+這份歷史紀錄不包含同機檢查、真實 Google 登入或影片上傳；同機改動仍須對應版本的 CI。
 
 ### 啟用前真人驗收（未執行）
 
