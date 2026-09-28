@@ -45,3 +45,5 @@ node tools/video/cli.mjs status --slug always-on-agent-explained --workdir <VIDE
 
 - GPT-6 Astra's OSWorld 2.0 figure is not spoken or shown: openai.com's launch page answers HTTP 403 to the editorial user agent and the official system card (deploymentsafety.openai.com) does not carry it. The stats card shows Anthropic's 81.8% partial only.
 - This video assumes video 1 (`openai-agents-broke-in`) is public first: two lines refer to last week's headlines and the closing points forward to video 3.
+
+- 2026-09-28（站主決定）：影片是繁中影片（繁中旁白與投影片），英文字幕之外，另做英文、日文、韓文三條配音音軌（`dub --locale en,ja,ko`，`docs/videos/DUBS.md`）；站主在 Studio「語言」頁上傳。前提：頻道已開通進階功能，且關掉「允許自動配音」。

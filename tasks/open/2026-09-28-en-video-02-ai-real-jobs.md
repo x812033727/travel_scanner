@@ -37,3 +37,5 @@ The exact commands or clicks that prove it works.
 ## Notes
 
 Findings, decisions and dead ends, so the next agent does not repeat them.
+
+- 2026-09-28（站主決定）：影片是繁中影片（繁中旁白與投影片），英文字幕之外，另做英文、日文、韓文三條配音音軌（`dub --locale en,ja,ko`，`docs/videos/DUBS.md`）；站主在 Studio「語言」頁上傳。前提：頻道已開通進階功能，且關掉「允許自動配音」。

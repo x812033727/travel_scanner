@@ -52,3 +52,5 @@ node tools/video/cli.mjs status --slug openai-agents-broke-in --workdir <VIDEO_W
 - No exploit details, no reproduction, no individual names, no legal or investment angle (brief §不做的事).
 - If the owner chooses the same channel as the zh-TW videos, note it in `scoreboard.csv` `notes`; the plan assumes a separate English channel.
 - 2026-09-28 (claude-fable-5-1): the tools-off run said one sentence and did nothing (1 turn, 2.5 s, no tool call, no file), the two-tool run fetched once, wrote once and reported (3 turns, 10.5 s); both in `demo-log.md`. The unrestricted case was described, not run. Counts reporters give for the Hugging Face incident (about 700 agents, 80,000 payloads) are not spoken because OpenAI's post could not be read (HTTP 403 to the editorial user agent); the Senate hearing is October 1 per the committee chair's office.
+
+- 2026-09-28（站主決定）：影片是繁中影片（繁中旁白與投影片），英文字幕之外，另做英文、日文、韓文三條配音音軌（`dub --locale en,ja,ko`，`docs/videos/DUBS.md`）；站主在 Studio「語言」頁上傳。前提：頻道已開通進階功能，且關掉「允許自動配音」。

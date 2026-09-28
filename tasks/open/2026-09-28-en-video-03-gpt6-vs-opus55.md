@@ -46,3 +46,5 @@ node tools/video/cli.mjs status --slug gpt6-vs-opus55-worth-paying --workdir <VI
 - openai.com/api/pricing/ and the Astra launch page answer HTTP 403 to the editorial user agent; platform.openai.com/docs/pricing does not, and its table rows are embedded as JSON (["gpt-6-astra"],[10],[1],[12.5],[50]).
 - Google's page lists no Pro model of the 3.8 generation on 2026-09-28; Gemini is represented by 3.8 Flash and the narration says so.
 - Gemini 3.8 Flash's price doubles on 2027-01-01 per the page; the video must be re-checked before any re-upload after that date.
+
+- 2026-09-28（站主決定）：影片是繁中影片（繁中旁白與投影片），英文字幕之外，另做英文、日文、韓文三條配音音軌（`dub --locale en,ja,ko`，`docs/videos/DUBS.md`）；站主在 Studio「語言」頁上傳。前提：頻道已開通進階功能，且關掉「允許自動配音」。
