@@ -273,7 +273,8 @@
       "is_first_party": true,
       "enabled": true,
       "scan_interval_minutes": 60,
-      "note": "On-chain research and hack reports; first-party for its own findings."
+      "config": {"article_tags": [], "article_classes": ["single-post__content"]},
+      "note": "On-chain research and hack reports; first-party for its own findings. The story sits outside <article> and <main>; those hold only the related-posts cards."
     },
     {
       "name": "Decrypt",

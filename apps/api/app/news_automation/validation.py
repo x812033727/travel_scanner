@@ -157,6 +157,18 @@ async def validate_source_configuration(
             await fetcher.close()
 
 
+def _legacy_match(body: bytes, url: str, config: dict[str, object], stored_hash: str) -> bool:
+    """Whether a hash stored by the pre-2026-09-28 extractor still matches the page.
+
+    The extractor stopped keeping scripts, navigation and tag lists that day, so every page
+    hashes differently now. Without this, each candidate stored before the deploy would be
+    held as changed evidence at publish.
+    """
+
+    _, legacy_text, _ = extract_article(body, url, config, legacy=True)
+    return content_fingerprint(legacy_text) == stored_hash
+
+
 async def revalidate_evidence(
     session: AsyncSession,
     evidence: list[NewsEvidence],
@@ -202,7 +214,9 @@ async def revalidate_evidence(
             if not article_text.strip():
                 reasons.append(f"source_became_unreadable:{row.url}")
                 continue
-            if content_fingerprint(article_text) != row.content_hash:
+            if content_fingerprint(article_text) != row.content_hash and not _legacy_match(
+                fetched.body, fetched.url, matched_source.config_json, row.content_hash
+            ):
                 reasons.append(f"source_content_changed:{row.url}")
                 continue
             row.retrieved_at = datetime.now(UTC)
