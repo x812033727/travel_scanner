@@ -1732,6 +1732,16 @@ async def start_episode(
             "video_series_story_slug",
             f"這個故事的影片代號是 {episode.slug}，不是 {video_slug}",
         )
+    if is_story(series):
+        # GET next only advertised this job. Recheck the current limits while holding the
+        # series lock, so a pause or a newly exhausted quota stops a stale or direct start.
+        quota = await _story_quota(session, series, await _episodes(session, series))
+        if quota is not None and quota.hold is not None:
+            raise SeriesRefused(
+                409,
+                "video_series_story_held",
+                quota.hold_detail or "這個故事目前不能開始",
+            )
     taken = await session.scalar(
         select(VideoDramaRequest.id).where(VideoDramaRequest.slug == video_slug)
     )
