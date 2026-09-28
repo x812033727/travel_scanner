@@ -5,9 +5,10 @@ to 20 minutes, and adds ``episodes_per_day`` (with ``ck_video_drama_series_per_d
 ``image_model`` and ``look``. The downgrade refuses while a story series, or a series longer than
 8 minutes, exists, and once they are gone puts the narrow checks back and drops the columns.
 
-This test takes a real PostgreSQL back to the shape 0108 left (the columns gone, the narrow
-checks back), seeds a series the way the site has them, runs the migration through a real
-alembic context both ways, and checks it all inside one rolled back transaction, the way
+This test takes a real PostgreSQL back to the shape the series table had before 0111 (as 0108
+left it; 0109 does not touch it): the columns gone, the narrow checks back. It seeds a series
+the way the site has them, runs the migration through a real alembic context both ways, and
+checks it all inside one rolled back transaction, the way
 ``test_migration_0107_video_one_off_series`` does.
 """
 
@@ -175,7 +176,7 @@ def _exercise(connection: Connection) -> None:
     assert not NEW_COLUMNS & columns(connection)
     assert "'story'" not in checks(connection)["ck_video_drama_series_kind"]
     assert "target_minutes <= 8" in checks(connection)["ck_video_drama_series_numbers"]
-    assert _refused(connection, new_columns=False), "0108's checks refuse a story"
+    assert _refused(connection, new_columns=False), "the older checks refuse a story"
     assert _refused(connection, new_columns=False, kind="series"), "and 13 minutes"
     assert not _refused(connection, new_columns=False, kind="series", target_minutes=8)
 
