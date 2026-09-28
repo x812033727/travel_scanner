@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-story-admin
 title: 後台的故事清單、匯入表單、每日支數與上架時段
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-story-admin
+claimed_at: 2026-09-28T14:27:24Z
 created_at: 2026-09-28T03:31:15Z
 completed_at:
-branch:
+branch: claude/video-story-admin
 depends_on:
   - 2026-09-28-video-story-api-series-kind
 scope:
@@ -55,3 +55,4 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
 - 新的後台頁或分頁要做的登記見 skill `backend-conventions`。
 - 分鏡審核卡片的分頁聯絡表不用這張票做：PR #895 合併時已經一起做了（`admin-video-review-card.tsx` 的 `StoryboardBody`，測試在 `admin-video-storyboard-pages.test.tsx`）。
 - 匯入指令多了 `--limit` 與 `--episodes-per-day`，作品多了 `look` 欄位（票 `api-series-kind`）；匯入表單要能選只匯入前幾個。
+- 2026-09-28 認領（claude-opus-5-5-video-story-admin），用了 `--force`：`claim` 先因為相依的票 `2026-09-28-video-story-api-series-kind` 還在 `in-progress` 而拒絕。它的 PR #910 已在 2026-09-28T11:49Z 合併進 main（`3156370b8`），只剩結案的 PR #923 還開著。`--force` 同時蓋過了 scope 的重疊：四張 `review` 狀態的 PR #870 票（`video-drama-room-web`、`video-drama-room-withdraw-a-one`、`video-languages-web`、`video-split-settings-web`；#870 在 06:38Z 合併，遠端分支已刪，只是沒人跑 `done`），以及兩張 9 月過期的票（`ask-origin-airport-at-trip-creation`、`display-card-promises-language`，只持有 `newTrip.json` 與 `community.json`，這張票不碰）。那些票都沒有動。分支 `claude/video-story-admin` 從 PR #936 的分支 `claude/video-story-admin-import-api`（草稿，匯入與恢復的端點）開，再併 main；#936 合併之前，這張票的 PR 會帶著它的 commit。
