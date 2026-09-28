@@ -1,6 +1,6 @@
 {
-  "title": "GPT-6 Astra vs Claude Opus 5.5 vs Gemini: Which One Is Actually Worth Paying For?",
-  "description": "Three jobs people actually run every month, priced on GPT-6 Astra, GPT-6 Sol, Claude Opus 5.5, Grok 4.7 and Gemini 3.8 Flash with the official list prices of September 28, 2026. The winner is not the smartest model, and the video ends with the three-question test that turns this math into yours.\n\nEvery price comes from the vendor's own pricing page on the recording date and will change; the formula is on screen so you can redo it with today's numbers. The picks at the end are the owner's opinion, labelled as such. No model was benchmarked here; the only measurement is arithmetic on published prices.\n\nRecorded 2026-09-28.",
+  "title": "GPT-6 Astra vs Claude Opus 5.5 vs Gemini: Which Is Worth Paying For? API Pricing, Worked Out",
+  "description": "Three jobs people actually run every month, priced on GPT-6 Astra, GPT-6 Sol, Claude Opus 5.5, Grok 4.7 and Gemini 3.8 Flash with the official list prices of September 28, 2026. The winner is not the smartest model, and the video ends with the three-question test that turns this math into yours.\n\nEvery price comes from the vendor's own pricing page on the recording date and will change; the formula is on screen so you can redo it with today's numbers. The picks at the end are the channel host's personal opinion, and the video labels them as such. No model was benchmarked here; the only measurement is arithmetic on published prices.\n\nRecorded 2026-09-28.",
   "tags": [
     "GPT-6 vs Claude",
     "Claude Opus 5.5",
@@ -9,14 +9,16 @@
     "AI API pricing 2026",
     "Gemini 3.8 Flash pricing",
     "Grok 4.7 pricing",
-    "AI cost comparison"
+    "AI cost comparison",
+    "GPT-6 Sol",
+    "token pricing"
   ],
   "chapters": {
     "hook": "Three price sheets, one month of work",
-    "sheet": "The five price sheets, side by side",
-    "formula": "The formula, and job one",
+    "sheet": "Official API prices for five models, side by side",
+    "formula": "How token costs add up: the formula and job one",
     "job2": "Job two: a coding agent for a month",
-    "job3": "Job three: a support bot at ten thousand chats",
+    "job3": "Job three: a support bot, 10,000 chats a month",
     "retry": "When the expensive model is cheaper",
     "test": "The three-question test, and my picks",
     "outro": "So which one is worth paying for?"
@@ -75,7 +77,7 @@
     },
     "qx54": {
       "source_hash": "f33620a6d02a",
-      "text": "Google's Gemini 3.8 Flash: seventy five cents in, seven and a half cents cached, three dollars seventy five out."
+      "text": "Google's Gemini 3.8 Flash: seventy-five cents in, seven and a half cents cached, three dollars seventy-five out."
     },
     "39yb": {
       "source_hash": "7fa85385d9d2",
@@ -87,7 +89,7 @@
     },
     "yvm3": {
       "source_hash": "1ab9390cccef",
-      "text": "Job one: summarize a forty page PDF every morning. Thirty thousand tokens in, a thousand out, thirty days a month."
+      "text": "Job one: summarize a forty-page PDF every morning. Thirty thousand tokens in, a thousand out, thirty days a month."
     },
     "uia6": {
       "source_hash": "7eec0fee179f",
@@ -99,7 +101,7 @@
     },
     "d8vw": {
       "source_hash": "245ab2c06009",
-      "text": "Sol, two dollars ten. Gemini Flash, seventy nine cents. Grok sits at about two dollars."
+      "text": "Sol, two dollars ten. Gemini Flash, seventy-nine cents. Grok sits at about two dollars."
     },
     "gjky": {
       "source_hash": "93eb1ebf8ff0",
@@ -115,15 +117,15 @@
     },
     "ph5f": {
       "source_hash": "7cf33b391fc7",
-      "text": "Two point four million cached tokens a day, and a hundred and fifty thousand tokens of output."
+      "text": "Plus two point four million cached and a hundred fifty thousand out, daily."
     },
     "xexs": {
       "source_hash": "b1017077bdff",
-      "text": "Twenty workdays: twelve million fresh, forty eight million cached, three million out. Now the prices bite."
+      "text": "Twenty workdays: twelve million fresh, forty-eight million cached, three million out. Now the prices bite."
     },
     "wz7s": {
       "source_hash": "1c74079d687b",
-      "text": "Astra: about three hundred forty eight dollars a month. A hundred fifty of that is cache writes, a fee OpenAI lists for its newer models."
+      "text": "Astra: about three hundred forty-eight dollars a month. A hundred fifty of that is cache writes, a fee OpenAI lists for its newer models."
     },
     "mcai": {
       "source_hash": "63aee44d13b7",
@@ -131,7 +133,7 @@
     },
     "z6g3": {
       "source_hash": "1068e3877c9e",
-      "text": "Grok 4.7: about sixty six. Gemini 3.8 Flash: about twenty four."
+      "text": "Grok 4.7: about sixty-six. Gemini 3.8 Flash: about twenty-four."
     },
     "tnfs": {
       "source_hash": "98c67a1eab79",
@@ -139,7 +141,7 @@
     },
     "cv6f": {
       "source_hash": "a484227409d5",
-      "text": "Same work, almost a fifteen fold price range. This is the job where picking wrong costs you hundreds a month, or a lot of redo."
+      "text": "Same work, almost a fifteen-fold price range. This is the job where picking wrong costs you hundreds a month, or a lot of rework."
     },
     "zyt2": {
       "source_hash": "f13c52eaa53c",
@@ -151,7 +153,7 @@
     },
     "gbsu": {
       "source_hash": "2994c4424747",
-      "text": "Grok 4.7: seventy eight. Gemini Flash: thirty four. Sol lands at ninety."
+      "text": "Grok 4.7: seventy-eight. Gemini Flash: thirty-four. Sol lands at ninety."
     },
     "b3ge": {
       "source_hash": "2288a5ac0aef",
@@ -163,11 +165,11 @@
     },
     "mbxu": {
       "source_hash": "fe3f38b6677f",
-      "text": "Take the coding job on Gemini Flash at twenty four dollars, and suppose it costs you one hour a week of fixing."
+      "text": "Take the coding job on Gemini Flash at twenty-four dollars, and suppose it costs you one hour a week of fixing."
     },
     "pmjw": {
       "source_hash": "0fda10e2229b",
-      "text": "At forty dollars an hour, that's about one hundred sixty dollars more, roughly one eighty four in total."
+      "text": "At forty dollars an hour, that's about one hundred sixty dollars more, roughly one eighty-four in total."
     },
     "xauy": {
       "source_hash": "fcb604b40dfa",
@@ -207,11 +209,11 @@
     },
     "m4uq": {
       "source_hash": "baed339cb11c",
-      "text": "For the coding agent, start with Opus 5.5 or Sol and count your retries for a week before you decide."
+      "text": "For the coding agent, I'd start with Opus 5.5 or Sol, count retries for a week, then decide."
     },
     "6cnv": {
       "source_hash": "62fefd6d3926",
-      "text": "For the support bot, Flash or Grok with a checking step, because input volume rules that bill."
+      "text": "For the support bot, I'd pick Flash or Grok with a checking step, because input volume drives that bill."
     },
     "msvn": {
       "source_hash": "ded5b42cb416",
