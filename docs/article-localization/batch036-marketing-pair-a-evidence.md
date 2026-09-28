@@ -11,12 +11,12 @@ This change adds complete zh-CN, en, ja and ko documents for the already publish
 
 | Article | Original pack SHA-256 | Current pack SHA-256 |
 | --- | --- | --- |
-| `marketing-plan-small-business` | `58f35e70c8fe86987f1dd8bd13980a958fc2793d093f88f90e70efa46683b1dd` | `77d224855a74c3d43c3f0a8bc5661dfb30872c1935ea731779fa04266cd343f0` |
+| `marketing-plan-small-business` | `58f35e70c8fe86987f1dd8bd13980a958fc2793d093f88f90e70efa46683b1dd` | `c1fc45fc749a353e34cbea08f4cb4f7192fffbc9037a0ead1db90e7fa41cced2` |
 | `paid-vs-organic-marketing` | `e3f9ce511bbbb568dea0de326b81c011d58c2271b3287e0576f383424e8582cc` | `d61970809da32cd7a59d83c154c715bed5a291f841da40dbd4b8140141dbbe7d` |
 
 | Article | Locale | Blocks | Sources | Canonical document SHA-256 |
 | --- | --- | ---: | ---: | --- |
-| `marketing-plan-small-business` | `zh-CN` | 33 | 2 | `9bab27a4302a1fa108f6de6ae61c538d729bc00e7e9080302954339579537399` |
+| `marketing-plan-small-business` | `zh-CN` | 33 | 2 | `74ce5e33aa9164caba873fd335baf47970804baeea2581b93e3a7c193d19050f` |
 | `marketing-plan-small-business` | `en` | 33 | 2 | `e6f10b78b5df8511017644ca98b8dd6c535ee8e96438d5d9c34d598c45e8013d` |
 | `marketing-plan-small-business` | `ja` | 33 | 2 | `02f13f1894c6f70188ebfa1ab2264ba343c3ba4366a3d3a6b3fdeb4b4134c12c` |
 | `marketing-plan-small-business` | `ko` | 33 | 2 | `967a336edb92f805b7d1df55636d0783056961e899a1ee00a1be055fc09a3efa` |
@@ -28,7 +28,7 @@ This change adds complete zh-CN, en, ja and ko documents for the already publish
 ## Localized image evidence
 
 - Browser-rendered SVG receipt SHA-256: `bb114ec4027cce5c2d89638823d179a0718c5bf2be5c2634ddbf685b3fce3883` (16 SVGs, no canvas/card overflow or text overlap; eight 1600×900 JPG heroes).
-- Content and asset audit SHA-256: `bb64b0a58761544d5c3e1bbc9a3d53f2e90c721c2d75d6585f9245a8a754c9bb` (two articles, eight documents, 24 assets).
+- Content and asset audit SHA-256: `bf08fa65420a3b186db2ac163ce236c11ceffd05e01c26fd8859361dfa7c7e3e` (two articles, eight documents, 24 assets).
 - All 16 hero and diagram previews were visually inspected for layout and missing glyphs. Source image credit, sizes, original assets and published zh-TW images remain intact.
 
 | Asset | SHA-256 |
@@ -63,4 +63,6 @@ This change adds complete zh-CN, en, ja and ko documents for the already publish
 - Both scoped pack lints passed. Source `no_summary` and advisory long-English-body warnings remain; translations are full documents rather than summaries.
 - Structure and all 33 block positions, list/table shapes, source URLs and checked dates, image credits/dimensions, and all three source ArticleInline kind/slug targets were preserved per locale. The resolver activates same-locale links only after their destinations are published.
 - API content-pack/link tests: 12 passed, 5 skipped. Web content-block tests: 65 passed. `npm run check:tasks` and `git diff --check` passed.
-- Independent editorial review and PR CI are pending. Guarded import, public publication and desktop/mobile live-page verification remain separate work.
+- Independent read-only editorial review marked both articles GO for meaning, figures, applicability, source dates, images, and publication-aware navigation. The zh-CN `照著` typo found in review was corrected; the source/pack hashes above reflect that correction.
+- Related-reading targets without a published same-locale document remain plain text as intended. A source-title mismatch for Google's "Do you need an SEO?" page and a Google Ads `hl=zh-Hant` URL inherited from zh-TW are recorded in the task for source-metadata follow-up; the linked pages support the claims.
+- PR CI is pending. Guarded import, public publication and desktop/mobile live-page verification remain separate work.

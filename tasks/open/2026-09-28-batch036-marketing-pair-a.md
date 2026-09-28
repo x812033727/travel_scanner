@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-batch036-marketing-pair-a
 title: Batch036 localize marketing pair A in five languages
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-root
@@ -32,7 +32,10 @@ repository drafts and translated original illustrations before guarded import.
 - [x] Add complete zh-CN/en/ja/ko documents for both articles, preserving 33
       source blocks, tables, source dates/URLs, and article-reference targets.
 - [x] Add and render 24 localized image assets with original credits intact.
-- [ ] Obtain independent editorial review and green PR checks before merge.
+- [x] Obtain independent editorial review of meaning, figures and navigation.
+- [ ] Obtain green PR checks before merge.
+- [ ] Correct the inherited Google SEO page title and `hl=zh-Hant` source
+      metadata through a versioned source follow-up before publication.
 - [ ] Import/publish guarded locale revisions and verify live pages separately.
 
 ## Steps
@@ -60,8 +63,10 @@ made its localized hero/diagram from the original SVGs. The first SVG browser
 run detected two overflowing English headings; both were reduced by 2 px and
 the next run passed all 16 assets. Both packs lint with source no-summary and
 advisory long-English-body warnings only. API tests: 12 passed, 5 skipped;
-web tests: 65 passed. Independent editorial review and public browser QA are
-still pending.
+web tests: 65 passed. Independent read-only editorial review marked both
+articles GO. The reviewer found a zh-CN `照著` typo, corrected in the pack;
+the SEO source page title and Google Ads forced-language URL remain inherited
+source-metadata follow-up. Public browser QA is pending.
 Draft PR: https://github.com/x812033727/travel_scanner/pull/908.
 CI began on the submitted branch; merge remains gated on independent editorial
 review and green checks.
