@@ -624,6 +624,29 @@ test("an explainer's drafted Shorts are saved with the fields the tool decides, 
   assert.match(instructionsFor("writer", "drama", "", "explainer"), /"shorts": the episode's two vertical Shorts/);
 });
 
+test("malformed optional Shorts leave the long video active and preserve the saved scripts", () => {
+  const box = sandbox("fixture-explainer", "explainer");
+  const file = shortsFile(box.slug, box.root);
+  const before = readFileSync(file, "utf8");
+  const videoFile = path.join(box.root, "docs", "videos", box.slug, "video.json");
+  const videoBefore = readFileSync(videoFile, "utf8");
+  const site = fakeSite({ settings: { drama: DRAMA_SETTINGS } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T10:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  const state = { slug: box.slug, status: "active", notes: [] };
+  for (const fields of [{ scenes: {} }, { scenes: "bad" }, { scenes: [null] }, { scenes: [[]] }, { evidence: {} }, { evidence: [null] }]) {
+    const drafts = JSON.parse(before);
+    Object.assign(drafts[0], fields);
+    const notesBefore = state.notes.length;
+    assert.equal(automation.saveShorts(state, drafts), "Shorts not saved (see notes)");
+    assert.equal(state.status, "active");
+    assert.equal(state.notes.length, notesBefore + 1);
+    assert.match(state.notes.at(-1), /the drafted Shorts were not saved/);
+    assert.equal(readFileSync(file, "utf8"), before);
+    assert.equal(readFileSync(videoFile, "utf8"), videoBefore);
+  }
+});
+
 test("an explainer request plans, writes and checks with the explainer prompts, and is settled with no characters", async () => {
   const brief = [
     "# 為什麼雷聲總比閃電晚到？",

@@ -22,7 +22,8 @@ export function episodeShortsProblems(shorts, video) {
     if (doc?.series !== EPISODE_SERIES) problems.push(`${where}: series must be ${EPISODE_SERIES}`);
     if (doc?.episode !== video.slug) problems.push(`${where}: episode must be ${video.slug}`);
     if (doc?.slug !== `${video.slug}-short-${index + 1}`) problems.push(`${where}: slug must be ${video.slug}-short-${index + 1}`);
-    for (const [i, scene] of (doc?.scenes ?? []).entries()) {
+    const scenes = Array.isArray(doc?.scenes) ? doc.scenes : [];
+    for (const [i, scene] of scenes.entries()) {
       if (scene?.shot !== undefined && !shots.has(scene.shot)) problems.push(`${where}, scene ${i}: "${scene.shot}" is not a shot of ${video.slug}`);
     }
   }

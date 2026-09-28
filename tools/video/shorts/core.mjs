@@ -31,14 +31,21 @@ export function validate(doc) {
   // keyframes, bound by hash when the Short is built, so it has no experiment to report.
   for (const field of episode ? ['description'] : ['description', 'experiment_summary', 'limitations']) if (typeof doc?.[field] !== 'string' || !doc[field].trim()) errors.push(`${field} required`);
   if (episode && !EPISODE_SLUG.test(doc?.episode ?? '')) errors.push('episode must be the long video\'s slug');
-  if (!episode && (!Array.isArray(doc?.evidence) || !doc.evidence.length)) errors.push('evidence required');
-  for (const item of doc?.evidence ?? []) if (!item.path || !/^[a-f0-9]{64}$/.test(item.sha256 ?? '')) errors.push('evidence requires path and sha256');
-  if (!Array.isArray(doc?.scenes) || doc.scenes.length < 3 || doc.scenes.length > 12) errors.push('3–12 scenes required');
-  for (const [i, scene] of (doc?.scenes ?? []).entries()) {
+  const evidence = Array.isArray(doc?.evidence) ? doc.evidence : [];
+  if (doc?.evidence !== undefined && !Array.isArray(doc.evidence)) errors.push('evidence must be an array');
+  if (!episode && !evidence.length) errors.push('evidence required');
+  for (const item of evidence) if (!item || typeof item.path !== 'string' || !item.path || !/^[a-f0-9]{64}$/.test(item.sha256 ?? '')) errors.push('evidence requires path and sha256');
+  const scenes = Array.isArray(doc?.scenes) ? doc.scenes : [];
+  if (scenes.length < 3 || scenes.length > 12) errors.push('3–12 scenes required');
+  for (const [i, scene] of scenes.entries()) {
+    if (!scene || typeof scene !== 'object' || Array.isArray(scene)) {
+      errors.push(`scene ${i}: an object is required`);
+      continue;
+    }
     if (typeof scene.headline !== 'string' || !scene.headline.trim() || scene.headline.length > 36) errors.push(`scene ${i}: headline 1–36 characters`);
     if (!Array.isArray(scene.narration) || !scene.narration.length || scene.narration.some(t => typeof t !== 'string' || !t.trim() || [...t].length > 38)) errors.push(`scene ${i}: narration phrases 1–38 characters`);
     if (scene.body && (!Array.isArray(scene.body) || scene.body.length > 5 || scene.body.some(t => typeof t !== 'string' || t.length > 85))) errors.push(`scene ${i}: up to five body rows of 85 characters`);
-    if (scene.asset && !doc.evidence?.some(e => e.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
+    if (scene.asset && !evidence.some(e => e?.path === scene.asset)) errors.push(`scene ${i}: asset must be evidence-bound`);
     if (scene.shot !== undefined && (!episode || typeof scene.shot !== 'string' || !scene.shot.trim())) errors.push(`scene ${i}: shot names a keyframe of the long episode (series ${EPISODE_SERIES} only)`);
     if (scene.shot !== undefined && scene.asset) errors.push(`scene ${i}: a scene shows a shot or an asset, not both`);
   }

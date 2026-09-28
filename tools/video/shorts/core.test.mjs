@@ -9,6 +9,22 @@ import { PROFILE, buildTimeline, sceneHtml, sha256, sourcePath, srt, validate, v
 const base = fileURLToPath(new URL('../../../docs/videos/ai-shorts/',import.meta.url));
 const pilot = () => JSON.parse(readFileSync(path.join(base,'pilots/shorts-receipt-total.json'),'utf8'));
 
+test('malformed Shorts collections return validation problems instead of throwing',()=>{
+  const cases = [
+    ['scenes object', {scenes:{}}], ['scenes string', {scenes:'bad'}],
+    ['scenes number', {scenes:7}], ['null scene', {scenes:[null]}],
+    ['primitive scene', {scenes:[3]}], ['array scene', {scenes:[[]]}],
+    ['evidence object', {evidence:{}}], ['evidence boolean', {evidence:true}],
+    ['null evidence row', {evidence:[null]}], ['primitive evidence row', {evidence:['bad']}],
+    ['non-string evidence path', {evidence:[{path:3,sha256:'a'.repeat(64)}]}],
+  ];
+  for (const [name, fields] of cases) {
+    let problems;
+    assert.doesNotThrow(()=>{problems=validate({...pilot(),...fields});},name);
+    assert.ok(problems.length>0,name);
+  }
+});
+
 test('actual pilot sources are intact and all three scripts have bounded real-evidence scenes',()=>{
   for(const slug of ['shorts-receipt-total','shorts-poster-blind','shorts-prompt-check']){
     const doc=JSON.parse(readFileSync(path.join(base,`pilots/${slug}.json`),'utf8'));
