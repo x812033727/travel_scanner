@@ -134,6 +134,17 @@ test("the verdict is the judge's passed flag with its note, and never a pass by 
   assert.equal(policyVerdict(null).ok, false);
 });
 
+test("captions look only at the wanted locales' translations, and a dub track given up on warns instead of failing", () => {
+  const manifest = { locales: { "zh-TW": { cues: 9, problems: [] }, en: { cues: 9, problems: [] } }, skipped: {} };
+  const staleKo = [{ path: "i18n/ko.json", message: "2 translations older than the zh-TW line: k7p2, m4qa" }];
+  const ignored = captionsItem({ lintWarnings: staleKo, manifest, current: true, locales: ["zh-TW", "en"], hasCaptionFile: () => true, skippedDubs: { en: "two shortening rounds were not enough" } });
+  assert.deepEqual(ignored, { id: "captions", ok: true, detail: "caption files for zh-TW, en, every translation current", warnings: ["en: dub track skipped (two shortening rounds were not enough); its captions follow the narration"] });
+  const wanted = captionsItem({ lintWarnings: staleKo, manifest, current: true, locales: ["zh-TW", "en", "ko"], hasCaptionFile: () => true });
+  assert.equal(wanted.ok, false);
+  assert.match(wanted.detail, /^i18n\/ko\.json: 2 translations older/);
+  assert.match(captionsItem({ lintWarnings: [], manifest, current: true, locales: ["zh-TW"], hasCaptionFile: () => true, skippedDubs: { ja: "" } }).warnings[0], /ja: dub track skipped \(no reason recorded\)/);
+});
+
 test("a compilation's report has its six items and says so, and its captions item reads compile's merge", () => {
   assert.deepEqual(COMPILATION_ITEM_IDS, ["assemble", "captions", "metadata", "links", "thumbnail", "disclosure"]);
   const items = COMPILATION_ITEM_IDS.map((id) => item(id, true, `${id} fine`));

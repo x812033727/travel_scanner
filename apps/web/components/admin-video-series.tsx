@@ -6,22 +6,31 @@ import { useCallback, useEffect, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
 import { AdminEmptyState, AdminErrorState, AdminStatusPill } from "@/components/admin-ui";
 import { AdminVideoDramaSettings } from "@/components/admin-video-drama-settings";
-import { CompilationDownload, control, isBlocked, list, needsOwner, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
+import { CompilationDownload, control, list, type ProjectSummary, record, text, useRefresh, useWhen } from "@/components/admin-video-review-card";
 import type { VideoSettingsView } from "@/components/admin-video-settings";
+import { DiscussionThread, docSubject } from "@/components/admin-video-thread";
 import { Button } from "@/components/community/ui";
+import { Link } from "@/i18n/navigation";
 import { useAdminQueryValue } from "@/lib/admin-workspace-navigation";
 import { api } from "@/lib/api";
 
 // The drama tab of /admin/videos (docs/videos/SERIES.md): a long series is planned document by
 // document (the setting book, the whole-series outline, each chapter's detailed outline), each
 // approved here, and made episode by episode; every episode is a video of its own with the usual
-// review cards, reached from the episode table. One-off episodes (a premise, not a series) are
-// filed and queued here too.
+// review cards, reached from the episode table. A one-off episode (docs/videos/DRAMA-FLOW.md,
+// section 2) is a series of one episode whose only document is its story bible; the form files one
+// and the list shows them apart. Every document carries a discussion thread (section 3).
 type SeriesStatus = "setting" | "outline" | "active" | "paused" | "finished";
-type DocKind = "setting" | "outline" | "chapter";
+type SeriesKind = "series" | "one-off";
+type DocKind = "setting" | "outline" | "chapter" | "bible";
 type DocStatus = "generating" | "review" | "approved" | "rejected";
 type EpisodeStatus = "planned" | "ready" | "queued" | "started" | "done" | "skipped";
-type SeriesDoc = { id: string; kind: DocKind; chapter_number: number; version: number; body_md: string; body_json: Record<string, unknown>; status: DocStatus; note: string | null; decided_at: string | null; created_at: string };
+export type SeriesDoc = {
+  id: string; kind: DocKind; chapter_number: number; version: number; body_md: string; body_json: Record<string, unknown>; status: DocStatus; note: string | null;
+  decided_at: string | null; created_at: string;
+  // The owner's lines on this document's thread the model has not answered; absent from an older API.
+  unanswered?: number;
+};
 type SeriesEpisode = {
   number: number; chapter_number: number; title: string; logline: string; beats: Record<string, unknown>; status: EpisodeStatus; slug: string | null;
   recap: string | null; started_at: string | null; finished_at: string | null; video: ProjectSummary | null;
@@ -37,6 +46,8 @@ type SeriesSummary = {
   planned_episodes: number; episodes_per_chapter: number; chapters: number; open_ended: boolean; status: SeriesStatus; note: string | null;
   requested_chapter: number | null; force_next: boolean; episodes_done: number; episodes_started: number; episodes_ready: number; docs_pending: number;
   media_usd: number; clip_seconds: number; created_at: string; updated_at: string;
+  // Both absent from an API older than one-offs and threads: a series then, with nothing waiting.
+  kind?: SeriesKind; messages_pending?: number;
   // The binge columns; absent from an API older than this page, which reads as the classic series.
   genre?: SeriesGenre; lead?: SeriesLead; hands_off?: boolean; compilation?: boolean; visual_tier?: VisualTier; total_minutes?: number | null;
   compilation_slug?: string | null; compilation_started_at?: string | null; compilation_finished_at?: string | null;
@@ -45,14 +56,19 @@ type SeriesSummary = {
 // the minutes, the media at the settings' prices, and each monthly budget it has to fit in.
 type BudgetLine = { needed: number; monthly: number; ok: boolean };
 type BingeQuote = { episodes: number; chapters: number; episodes_per_chapter: number; clip_seconds: number; images: number; judge_calls: number; usd: number; budgets: Record<string, BudgetLine>; ok: boolean };
-type Series = SeriesSummary & { docs: SeriesDoc[]; episodes: SeriesEpisode[] };
+export type Series = SeriesSummary & { docs: SeriesDoc[]; episodes: SeriesEpisode[] };
 type RequestStatus = "queued" | "started" | "done" | "cancelled";
 type DramaRequest = {
   id: string; premise: string; title: string | null; source_guide: string | null; style_preset: string; target_minutes: number;
   note: string | null; status: RequestStatus; slug: string | null; created_at: string; started_at: string | null; finished_at: string | null; cancelled_at: string | null;
+  // The one-off series the request became; a request from before one-offs were series has none.
+  series_slug?: string | null; episode_number?: number | null;
 };
 
 export const SERIES_SLUG = /^[a-z0-9][a-z0-9-]{1,39}$/;
+// The drama's settings, where the route is switched on: the panel at the top of this tab
+// (admin-video-drama-settings.tsx; docs/videos/DRAMA-FLOW.md, section 1).
+const DRAMA_SETTINGS = "/admin/videos?tab=drama";
 const ASPECTS = ["world", "bonds", "structure", "mood"] as const;
 const TONES = ["dual-male-leads-subtext", "dual-male-leads-explicit", "hetero-leads", "no-romance"] as const;
 const PRESETS = ["cinematic-3d", "anime-2d", "ink-wash", "custom"] as const;
@@ -73,6 +89,15 @@ const docTone: Record<DocStatus, string> = { generating: "running", review: "pen
 const episodeTone: Record<EpisodeStatus, string> = { planned: "inactive", ready: "queued", queued: "queued", started: "active", done: "ok", skipped: "inactive" };
 const requestTone: Record<RequestStatus, string> = { queued: "pending", started: "active", done: "inactive", cancelled: "inactive" };
 const message = (problem: unknown) => (problem instanceof Error ? problem.message : "");
+// A drama no episode of which the worker has started may be withdrawn (the server has the last word):
+// on its page every episode is still planned or ready; on a list card, a one-off still at its bible or
+// with its one episode ready.
+const withdrawable = (series: Series) => series.episodes.every((episode) => episode.status === "planned" || episode.status === "ready");
+const oneOffWithdrawable = (series: SeriesSummary) => series.status === "setting" || (series.status === "active" && series.episodes_ready === 1 && series.episodes_started === 0 && series.episodes_done === 0);
+const withdraw = (series: SeriesSummary) => api(`/admin/video-automation/series/${series.slug}`, { method: "DELETE" });
+// The status pill's key: a one-off waiting on its first document (the server starts it at "setting",
+// apps/api/app/video_automation/series.py create_one_off) waits for a story bible, not a setting book.
+const statusKey = (series: SeriesSummary) => (series.kind === "one-off" && series.status === "setting" ? "bible" : series.status);
 // Where a series' compilation stands, from the summary's compilation columns: not asked for, waiting
 // for the episodes, waiting for the worker to pick it up, being cut, or cleared for upload.
 type CompilationState = "none" | "waiting" | "queued" | "making" | "done";
@@ -247,7 +272,7 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
   return <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
     <summary className="cursor-pointer text-lg font-bold">{t("newSeries")}</summary>
     <form className="mt-4 grid gap-3" onSubmit={(event) => { event.preventDefault(); void create(); }} aria-label={t("newSeries")}>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("newSeriesHelp")}</p>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("newSeriesHelp")} <Link href={DRAMA_SETTINGS} className="font-semibold text-[var(--teal)] underline">{t("openDramaSettings")}</Link></p>
       <div className="grid gap-3 md:grid-cols-2">
         <label className="grid gap-2 text-sm font-semibold">{t("fields.title")}<input className={control} value={title} disabled={busy} maxLength={200} onChange={(event) => setTitle(event.target.value)} /></label>
         <label className="grid gap-2 text-sm font-semibold">{t("fields.slug")}<input className={control} value={slug} disabled={busy} placeholder={t("slugPlaceholder")} aria-invalid={Boolean(slug) && !slugOk} onChange={(event) => setSlug(event.target.value)} /></label>
@@ -277,8 +302,12 @@ function NewSeriesForm({ onCreated }: { onCreated: (slug: string) => void }) {
   </details>;
 }
 
-/** One-off episodes: a premise (or an article to adapt), a style and a length; the worker starts it next. */
-function NewDramaForm({ onFiled }: { onFiled: () => void }) {
+/**
+ * A one-off episode: a premise (or an article to adapt), a style and a length. The server files it
+ * as a series of one episode and answers with that series' slug, which the caller opens; an older
+ * server answers without one and the request stays in the queue below.
+ */
+function NewDramaForm({ onFiled }: { onFiled: (seriesSlug: string | null) => void }) {
   const t = useTranslations("admin.videoReviews");
   const [premise, setPremise] = useState("");
   const [title, setTitle] = useState("");
@@ -293,12 +322,12 @@ function NewDramaForm({ onFiled }: { onFiled: () => void }) {
     setBusy(true);
     setError("");
     try {
-      await api("/admin/video-automation/drama-requests", {
+      const filed = await api<DramaRequest>("/admin/video-automation/drama-requests", {
         method: "POST",
         body: JSON.stringify({ premise: premise.trim(), title: title.trim() || undefined, source_guide: guide.trim() || undefined, style_preset: preset, target_minutes: minutes, note: note.trim() || undefined }),
       });
       setPremise(""); setTitle(""); setGuide(""); setNote("");
-      onFiled();
+      onFiled(filed?.series_slug ?? null);
     } catch (problem) {
       setError(t("newDramaError", { message: message(problem) }));
     } finally {
@@ -308,7 +337,7 @@ function NewDramaForm({ onFiled }: { onFiled: () => void }) {
   return <details className="rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]">
     <summary className="cursor-pointer text-lg font-bold">{t("newDrama")}</summary>
     <form className="mt-4 grid gap-3" onSubmit={(event) => { event.preventDefault(); void file(); }} aria-label={t("newDrama")}>
-      <p className="text-sm leading-6 text-[var(--muted)]">{t("newDramaHelp")}</p>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("newDramaHelp")} <Link href={DRAMA_SETTINGS} className="font-semibold text-[var(--teal)] underline">{t("openDramaSettings")}</Link></p>
       <label className="grid gap-2 text-sm font-semibold">{t("premise")}
         <textarea className={control} rows={4} value={premise} disabled={busy} maxLength={4000} placeholder={t("premisePlaceholder")} onChange={(event) => setPremise(event.target.value)} />
       </label>
@@ -369,29 +398,52 @@ function DramaQueue({ requests, canManage, onChanged, onOpen }: { requests: Dram
   </section>;
 }
 
+/** What waits on a series card: documents for the owner, lines for the model. */
+function WaitingPills({ series }: { series: SeriesSummary }) {
+  const t = useTranslations("admin.videoSeries");
+  return <>
+    {series.docs_pending > 0 && <AdminStatusPill status="pending">{t("docsPending", { count: series.docs_pending })}</AdminStatusPill>}
+    {(series.messages_pending ?? 0) > 0 && <AdminStatusPill status="running">{t("messagesPending", { count: series.messages_pending ?? 0 })}</AdminStatusPill>}
+  </>;
+}
+
 /** The series the owner started, and the one-off episodes; opening a series shows its page. */
 function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string) => void; onOpenVideo: (slug: string) => void }) {
   const t = useTranslations("admin.videoSeries");
-  const tv = useTranslations("admin.videoReviews");
   const ts = useTranslations("admin.videoSettings");
-  const when = useWhen();
   const manage = useAdminActionGuard("content.manage");
   const [series, setSeries] = useState<SeriesSummary[] | null>(null);
-  const [videos, setVideos] = useState<ProjectSummary[]>([]);
+  const [oneOffs, setOneOffs] = useState<SeriesSummary[]>([]);
   const [requests, setRequests] = useState<DramaRequest[]>([]);
   const [settings, setSettings] = useState<VideoSettingsView | null>(null);
   const [error, setError] = useState("");
+  const [withdrawing, setWithdrawing] = useState("");
+  const [withdrawError, setWithdrawError] = useState("");
   const load = useCallback(() => {
-    api<{ series: SeriesSummary[] }>("/admin/video-automation/series").then((value) => { setSeries(value.series ?? []); setError(""); }).catch((problem: unknown) => setError(message(problem)));
-    // The one-off episodes (a premise, not a series); an older site ignores the filter and is filtered here.
-    api<ProjectSummary[]>("/admin/videos?format=drama").then((value) => setVideos((Array.isArray(value) ? value : []).filter((video) => video.format === "drama" && !video.series_slug))).catch(() => setVideos([]));
-    // Finished and withdrawn one-off requests drop off after a week; a site without the route leaves the queue empty.
+    api<{ series: SeriesSummary[] }>("/admin/video-automation/series?kind=series").then((value) => { setSeries((value.series ?? []).filter((each) => each.kind !== "one-off")); setError(""); }).catch((problem: unknown) => setError(message(problem)));
+    // One-off episodes are series of one episode; an older site ignores the filter and is filtered here.
+    api<{ series: SeriesSummary[] }>("/admin/video-automation/series?kind=one-off").then((value) => setOneOffs((value.series ?? []).filter((each) => each.kind === "one-off"))).catch(() => setOneOffs([]));
+    // Requests from before a one-off was a series still show here until they finish; the others
+    // are their series' cards. Finished and withdrawn ones drop off after a week.
     api<{ requests: DramaRequest[] }>("/admin/video-automation/drama-requests").then((value) => {
       const recent = Date.now() - 7 * 24 * 3600_000;
-      setRequests((value.requests ?? []).filter((request) => request.status === "queued" || request.status === "started" || Date.parse(request.created_at) > recent));
+      setRequests((value.requests ?? []).filter((request) => !request.series_slug && (request.status === "queued" || request.status === "started" || Date.parse(request.created_at) > recent)));
     }).catch(() => setRequests([]));
   }, []);
   useRefresh(load);
+  const takeBack = async (each: SeriesSummary) => {
+    if (!window.confirm(t("withdrawConfirm", { title: each.title }))) return;
+    setWithdrawing(each.slug);
+    setWithdrawError("");
+    try {
+      await withdraw(each);
+      load();
+    } catch (problem) {
+      setWithdrawError(t("actionError", { message: message(problem) }));
+    } finally {
+      setWithdrawing("");
+    }
+  };
   // The settings are read once, not with the minute-by-minute refresh above: the drama settings are
   // a form, and a re-read would throw away what the owner is typing. A site without the route, or an
   // answer without a drama block, shows neither the banner nor the form.
@@ -404,7 +456,7 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
   }, []);
   if (error) return <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />;
   // What waits for the owner comes first, as on the tutorials list; the sort keeps the rest in order.
-  const oneOffs = [...videos].sort((a, b) => Number(needsOwner(b)) - Number(needsOwner(a)));
+  const listedOneOffs = [...oneOffs].sort((a, b) => Number(b.docs_pending > 0) - Number(a.docs_pending > 0));
   return <div className="grid gap-4">
     {settings && (settings.drama.drama_enabled
       ? <p role="note" className="rounded-xl border border-[var(--line)] bg-[var(--paper)] p-4 text-sm leading-6">{t("dramaOn")}</p>
@@ -419,30 +471,30 @@ function SeriesList({ onOpenSeries, onOpenVideo }: { onOpenSeries: (slug: string
     {series && series.length > 0 && <ul className="grid gap-4" aria-label={t("listTitle")}>{series.map((each) => <li key={each.slug}>
       <button type="button" onClick={() => onOpenSeries(each.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
         <span className="flex flex-wrap items-center gap-3"><BookOpen aria-hidden size={20} className="text-[var(--teal)]" /><span className="text-lg font-bold">{each.title}</span>
-          <AdminStatusPill status={seriesTone[each.status]}>{t(`statuses.${each.status}`)}</AdminStatusPill>
-          {each.docs_pending > 0 && <AdminStatusPill status="pending">{t("docsPending", { count: each.docs_pending })}</AdminStatusPill>}
+          <AdminStatusPill status={seriesTone[each.status]}>{t(`statuses.${statusKey(each)}`)}</AdminStatusPill>
+          <WaitingPills series={each} />
           <BingePills series={each} />
         </span>
         <span className="text-sm text-[var(--muted)]">{t("progress", { done: each.episodes_done, total: each.planned_episodes, chapters: each.chapters })}{each.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: each.total_minutes })}` : ""} · {t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })}</span>
         <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
       </button>
     </li>)}</ul>}
-    {manage.allowed && <NewDramaForm onFiled={load} />}
+    {manage.allowed && <NewDramaForm onFiled={(seriesSlug) => { load(); if (seriesSlug) onOpenSeries(seriesSlug); }} />}
     <DramaQueue requests={requests} canManage={manage.allowed} onChanged={load} onOpen={onOpenVideo} />
-    {videos.length > 0 && <section className="grid gap-3" aria-label={t("oneOffTitle")}>
+    {oneOffs.length > 0 && <section className="grid gap-3" aria-label={t("oneOffTitle")}>
       <h3 className="text-lg font-bold">{t("oneOffTitle")}</h3>
-      <ul className="grid gap-4">{oneOffs.map((video) => <li key={video.slug}>
-        <button type="button" onClick={() => onOpenVideo(video.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
-          <span className="flex flex-wrap items-center gap-3"><span className="text-lg font-bold">{video.title}</span>
-            <AdminStatusPill status="active">{tv("drama")}</AdminStatusPill>
-            {video.dropped_at
-              ? <AdminStatusPill status="inactive">{tv("dropped")}</AdminStatusPill>
-              : <AdminStatusPill status={video.pending ? "pending" : "inactive"}>{video.pending ? tv("pending", { count: video.pending }) : tv("noPendingShort")}</AdminStatusPill>}
-            {!video.dropped_at && isBlocked(video) && <AdminStatusPill status="failed">{tv("stuck")}</AdminStatusPill>}
+      {withdrawError && <p role="alert" className="text-sm text-red-800">{withdrawError}</p>}
+      <ul className="grid gap-4">{listedOneOffs.map((each) => <li key={each.slug} className="grid gap-2">
+        <button type="button" onClick={() => onOpenSeries(each.slug)} className="grid w-full gap-2 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 text-left shadow-[var(--shadow-sm)] hover:border-[var(--teal)]">
+          <span className="flex flex-wrap items-center gap-3"><span className="text-lg font-bold">{each.title}</span>
+            <AdminStatusPill status="active">{t("oneOff")}</AdminStatusPill>
+            <AdminStatusPill status={seriesTone[each.status]}>{t(`statuses.${statusKey(each)}`)}</AdminStatusPill>
+            <WaitingPills series={each} />
           </span>
-          <span className="text-sm text-[var(--muted)]">{tv("progress", { done: video.checklist.filter((item) => item.done).length, total: video.checklist.length })} · {tv("lastSynced", { time: when(video.last_synced_at) })}{typeof video.media_usd === "number" && ` · ${tv("spend", { usd: video.media_usd.toFixed(2), seconds: video.clip_seconds ?? 0 })}`}</span>
-          {video.stage && !video.youtube_video_id && !video.dropped_at && <span className="text-sm text-[var(--muted)]">{tv("currentStep", { step: video.checklist.find((item) => !item.done)?.label ?? video.stage })}</span>}
+          <span className="text-sm text-[var(--muted)]">{t("spend", { usd: Number(each.media_usd ?? 0).toFixed(2), seconds: each.clip_seconds ?? 0 })} · {t(`presets.${each.style_preset}`)} · {t("minutesEach", { minutes: each.target_minutes })}</span>
+          <span className="line-clamp-2 text-sm leading-6">{each.premise}</span>
         </button>
+        {manage.allowed && oneOffWithdrawable(each) && <div><Button secondary disabled={withdrawing === each.slug} onClick={() => void takeBack(each)}>{withdrawing === each.slug ? t("saving") : t("withdraw")}</Button></div>}
       </li>)}</ul>
     </section>}
   </div>;
@@ -478,8 +530,11 @@ function BeatsTable({ episodes }: { episodes: Record<string, unknown>[] }) {
   </table></div>;
 }
 
-/** One document of a series: read it, approve it or send it back with a note, or rewrite it yourself. */
-function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; doc: SeriesDoc; canManage: boolean; onChanged: () => void }) {
+/**
+ * One document of a series: read it, discuss it with the model, approve it or send it back with a
+ * note, or rewrite it yourself. The video page of a one-off shows its story bible through this too.
+ */
+export function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; doc: SeriesDoc; canManage: boolean; onChanged: () => void }) {
   const t = useTranslations("admin.videoSeries");
   const when = useWhen();
   const [note, setNote] = useState("");
@@ -519,12 +574,15 @@ function DocPanel({ slug, doc, canManage, onChanged }: { slug: string; doc: Seri
     <summary className="flex cursor-pointer flex-wrap items-center gap-3">
       <span className="text-lg font-bold">{title}</span>
       <AdminStatusPill status={docTone[doc.status]}>{t(`docStatuses.${doc.status}`)}</AdminStatusPill>
+      {(doc.unanswered ?? 0) > 0 && <AdminStatusPill status="running">{t("thread.waiting")}</AdminStatusPill>}
       <span className="text-sm text-[var(--muted)]">{t("version", { n: doc.version })} · {when(doc.created_at)}</span>
     </summary>
     <div className="mt-4 grid gap-4">
       {doc.note && <p className="rounded-xl bg-[var(--paper)] p-3 text-sm leading-6"><strong>{doc.status === "rejected" ? t("sentBack") : t("docNote")}</strong> {doc.note}</p>}
       {episodes.length > 0 && <BeatsTable episodes={episodes} />}
       <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("readDoc")}</summary><div className="mt-3 max-h-[40rem] overflow-y-auto whitespace-pre-wrap text-sm leading-7">{doc.body_md}</div></details>
+      {/* An approved document keeps its thread as a record; a new version the model writes from the discussion arrives through onChanged. */}
+      <DiscussionThread seriesSlug={slug} subject={docSubject(doc.kind, doc.chapter_number)} canManage={canManage} readOnly={doc.status === "approved"} waiting={(doc.unanswered ?? 0) > 0} onPosted={onChanged} />
       {canManage && doc.status === "review" && <div className="grid gap-3 border-t border-[var(--line)] pt-4">
         <label className="grid gap-2 text-sm font-semibold">{t("note")}<textarea className={control} rows={3} value={note} disabled={busy} placeholder={t("notePlaceholder")} onChange={(event) => setNote(event.target.value)} /></label>
         <div className="flex flex-wrap gap-3">
@@ -580,40 +638,56 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
     }
   };
   const patch = (body: Record<string, unknown>) => api(`/admin/video-automation/series/${slug}`, { method: "PATCH", body: JSON.stringify(body) });
+  // Withdrawn, the series is gone: back to the list rather than a page that can no longer load.
+  const takeBack = async (current: Series) => {
+    if (!window.confirm(t("withdrawConfirm", { title: current.title }))) return;
+    setBusy("withdraw");
+    setActionError("");
+    try {
+      await withdraw(current);
+      onBack();
+    } catch (problem) {
+      setActionError(t("actionError", { message: message(problem) }));
+      setBusy("");
+    }
+  };
   const skip = (number: number) => {
     if (!window.confirm(t("skipConfirm", { n: number }))) return;
     void act(`skip-${number}`, () => api(`/admin/video-automation/series/${slug}/episodes/${number}/skip`, { method: "POST" }));
   };
-  const order = (doc: SeriesDoc) => (doc.kind === "setting" ? 0 : doc.kind === "outline" ? 1 : 1 + doc.chapter_number);
-  const state = series ? compilationState(series) : "none";
+  const order = (doc: SeriesDoc) => (doc.kind === "setting" || doc.kind === "bible" ? 0 : doc.kind === "outline" ? 1 : 1 + doc.chapter_number);
+  // A one-off is one episode planned from its bible: no chapters to plan, no episode count worth showing.
+  const oneOff = series?.kind === "one-off";
+  const state = series && !oneOff ? compilationState(series) : "none";
   // The current compilation first; an earlier one (the owner asked for another) only when nothing newer exists.
   const compilation = series ? (compilations.find((video) => video.slug === series.compilation_slug) ?? compilations[0] ?? null) : null;
-  // One compilation per series: the worker names it <series>-full, so a second cannot start.
-  const canCompile = series?.status === "finished" && state === "none";
+  // One compilation per series: the worker names it <series>-full, so a second cannot start. A one-off has none.
+  const canCompile = !oneOff && series?.status === "finished" && state === "none";
   return <section className="mt-6 grid gap-5">
     <div><Button secondary onClick={onBack}><ArrowLeft aria-hidden size={18} />{t("back")}</Button></div>
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
     {series && <>
       <header className="grid gap-2">
-        <h2 className="flex flex-wrap items-center gap-3 text-2xl font-bold">{series.title}<AdminStatusPill status={seriesTone[series.status]}>{t(`statuses.${series.status}`)}</AdminStatusPill><BingePills series={series} /></h2>
-        <p className="text-sm text-[var(--muted)]">{t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}{series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · {t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {t(`leads.${series.lead ?? "dual-male"}`)} · {t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}</p>
+        <h2 className="flex flex-wrap items-center gap-3 text-2xl font-bold">{series.title}{oneOff && <AdminStatusPill status="active">{t("oneOff")}</AdminStatusPill>}<AdminStatusPill status={seriesTone[series.status]}>{t(`statuses.${statusKey(series)}`)}</AdminStatusPill><WaitingPills series={series} /><BingePills series={series} /></h2>
+        <p className="text-sm text-[var(--muted)]">{oneOff ? "" : `${t("progress", { done: series.episodes_done, total: series.planned_episodes, chapters: series.chapters })}${series.total_minutes ? ` · ${t("totalMinutesLabel", { minutes: series.total_minutes })}` : ""} · `}{t("spend", { usd: Number(series.media_usd ?? 0).toFixed(2), seconds: series.clip_seconds ?? 0 })} · {oneOff ? "" : `${t(`leads.${series.lead ?? "dual-male"}`)} · `}{t(`tones.${series.tone}`)} · {t(`presets.${series.style_preset}`)} · {t("minutesEach", { minutes: series.target_minutes })}</p>
         <p className="whitespace-pre-wrap text-sm leading-6">{series.premise}</p>
         {series.note && <p className="text-sm text-[var(--muted)]">{t("fields.note")}: {series.note}</p>}
         {manage.allowed && <div className="flex flex-wrap gap-3">
           {series.status === "active" && <Button secondary disabled={busy === "pause"} onClick={() => void act("pause", () => patch({ status: "paused" }))}>{t("pause")}</Button>}
           {series.status === "paused" && <Button secondary disabled={busy === "resume"} onClick={() => void act("resume", () => patch({ status: "active" }))}>{t("resume")}</Button>}
-          {series.status === "active" && <Button secondary disabled={busy === "plan"} onClick={() => void act("plan", () => api(`/admin/video-automation/series/${slug}/actions/plan-next-chapter`, { method: "POST" }))}>{t("planNextChapter")}</Button>}
+          {series.status === "active" && !oneOff && <Button secondary disabled={busy === "plan"} onClick={() => void act("plan", () => api(`/admin/video-automation/series/${slug}/actions/plan-next-chapter`, { method: "POST" }))}>{t("planNextChapter")}</Button>}
           {series.status === "active" && <Button secondary disabled={busy === "start"} onClick={() => void act("start", () => api(`/admin/video-automation/series/${slug}/actions/start-next`, { method: "POST" }))}>{t("startNext")}</Button>}
+          {withdrawable(series) && <Button secondary disabled={busy === "withdraw"} onClick={() => void takeBack(series)}>{busy === "withdraw" ? t("saving") : t("withdraw")}</Button>}
           {canCompile && <Button secondary disabled={busy === "compile"} onClick={() => void act("compile", () => api(`/admin/video-automation/series/${slug}/actions/compile`, { method: "POST" }))}>{t("compile")}</Button>}
         </div>}
-        {manage.allowed && <div className="grid gap-1">
+        {manage.allowed && !oneOff && <div className="grid gap-1">
           <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={Boolean(series.hands_off)} disabled={busy === "hands-off"} onChange={(event) => void act("hands-off", () => patch({ hands_off: event.target.checked }))} />{t("handsOff")}</label>
           <p className="text-sm leading-6 text-[var(--muted)]">{t("handsOffHelp")}</p>
         </div>}
         {(series.requested_chapter || series.force_next) && <p className="text-sm text-[var(--muted)]">{series.requested_chapter ? t("chapterRequested", { n: series.requested_chapter }) : ""}{series.force_next ? ` ${t("nextForced")}` : ""}</p>}
         {actionError && <p role="alert" className="text-sm text-red-800">{actionError}</p>}
       </header>
-      {(state !== "none" || series.status === "finished" || compilation) && <section className="grid gap-3 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={t("compilation")}>
+      {!oneOff && (state !== "none" || series.status === "finished" || compilation) && <section className="grid gap-3 rounded-[1.5rem] border border-[var(--line)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={t("compilation")}>
         <h3 className="flex flex-wrap items-center gap-3 text-lg font-bold">{t("compilation")}{state !== "none" && <AdminStatusPill status={compilationTone[state]}>{t(`compilationStatuses.${state}`)}</AdminStatusPill>}</h3>
         {state === "none" && !compilation && <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationNone")}</p>}
         {state === "waiting" && <p className="text-sm leading-6 text-[var(--muted)]">{t("compilationWaiting")}</p>}
@@ -631,7 +705,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
       </section>}
       <section className="grid gap-4" aria-label={t("docsTitle")}>
         <h3 className="text-lg font-bold">{t("docsTitle")}</h3>
-        {series.docs.length === 0 && <p className="text-sm text-[var(--muted)]">{t("docsEmpty")}</p>}
+        {series.docs.length === 0 && <p className="text-sm text-[var(--muted)]">{oneOff ? t("bibleEmpty") : t("docsEmpty")}</p>}
         {[...series.docs].sort((a, b) => order(a) - order(b)).map((doc) => <DocPanel key={doc.id} slug={slug} doc={doc} canManage={manage.allowed} onChanged={load} />)}
       </section>
       <section className="grid gap-3" aria-label={t("episodesTitle")}>
