@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-correct-misleading-ai-links-before-batch038
 title: Correct misleading AI links before Batch038 translation
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-root
 claimed_at: 2026-09-28T11:19:23Z
 created_at: 2026-09-28T11:19:12Z
-completed_at:
+completed_at: 2026-09-28T12:16:36Z
 branch: codex/article-localization-038-source-links
 depends_on: []
 scope:
