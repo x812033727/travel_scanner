@@ -178,7 +178,7 @@ function listenAnswer(payload) {
 
 // --- the site ------------------------------------------------------------------------------------
 
-function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES } = {}) {
+function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES, held = null } = {}) {
   const calls = { run: [], episodes: [], reports: [], pages: [], answers: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
@@ -216,6 +216,8 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused 
       if (episode[3] !== "start") return json({ number: Number(episode[2]), status: episode[3] === "done" ? "done" : "started" });
       // The server's contract (apps/api/app/video_automation/series.py start_episode): a story starts under its planned slug.
       if (body.slug !== EPISODE.slug) return json({ code: "video_series_story_slug", detail: `這個故事的影片代號是 ${EPISODE.slug}，不是 ${body.slug}` }, 409);
+      // A limit that took hold after next advertised the story (#918): the start is refused.
+      if (held) return json({ code: "video_series_story_held", detail: held }, 409);
       const started = { ...EPISODE, status: "started" };
       return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: 13, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
     }
@@ -277,9 +279,9 @@ const standardAnswers = (overrides = {}) => ({
 });
 
 /** A story's world: the site, the automation, the media stand-ins (tts writes a timeline of `seconds()` when set). */
-function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, decide = () => ({ status: "approved" }) } = {}) {
+function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, held = null, decide = () => ({ status: "approved" }) } = {}) {
   const box = sandbox();
-  const site = storySite({ answers, raw, settings, paused, jobs, series });
+  const site = storySite({ answers, raw, settings, paused, jobs, series, held });
   const { ctx, out } = context(box, site.fetchImpl);
   const dir = path.join(box.root, "docs", "videos", SLUG);
   const workdir = path.join(box.work, SLUG);
@@ -797,7 +799,13 @@ test("the owner's storyboard note with no failed shot offers the writer every sh
   assert.ok(state().notes.includes("keyframes sent back: 轉折第一個畫面太暗"));
 });
 
-test("a paused subscription ends the round without counting a failure, a series with no shared look is refused at the start, and a thread on a story's screenplay is answered without a rewrite", async () => {
+test("a paused subscription ends the round without counting a failure, a start the site holds back writes nothing, a series with no shared look is refused at the start, and a thread on a story's screenplay is answered without a rewrite", async () => {
+  const held = storyWorld({ held: "今天已經開始 2 支故事，每日上限 2 支" });
+  assert.match(await held.automation.step(), /the site refused to start story 1 \(story-folding-umbrella\): 今天已經開始 2 支故事/);
+  assert.equal(held.automation.halted, true, "the round ends; the next one asks the site again");
+  assert.equal(held.state(), undefined, "nothing was written for a story that did not start");
+  assert.equal(existsSync(held.dir), false);
+
   const paused = storyWorld({ paused: (body) => body.stage === "writer" });
   await paused.automation.step();
   await assert.rejects(paused.automation.step(), (error) => error.code === "video_ai_subscription_paused");

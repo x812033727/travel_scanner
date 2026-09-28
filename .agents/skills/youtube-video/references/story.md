@@ -8,7 +8,7 @@
 
 - `GET /video/automation/series/next` 回 `kind: "episode"`、`series.kind: "story"` 的工作。作品帶 `hands_off: true`、`visual_tier: "stills"`、`target_minutes`（13）、`image_model`、`look`（`style`、`negative`、`motion`，每個故事共用的畫風）。
 - 集數帶 `slug`（企劃定好的影片代號，`story-…`）與 `beats`（整份企劃）：`id`、`category`、`region`、`subject`、`question`、六段 `chapters`（`hook`、`origin`、`idea`、`engine`、`turn`、`now`，各一個 `point`）、`takeaway`、`must_verify`（`claim`、`sources`、`core`、`attributed`、`reviewer_only`）、`sources`（`url`、`publisher`、`kind`、`supports`、`checked`）、`caveats`、`names`、`cast`、`image_notes`、`sensitivity`、`related_guide`、`thumbnail`、`publish`。
-- `POST …/series/<作品>/episodes/<n>/start` 一定要用企劃的 `slug`，用別的伺服器回 409 `video_series_story_slug`。
+- `POST …/series/<作品>/episodes/<n>/start` 一定要用企劃的 `slug`，用別的伺服器回 409 `video_series_story_slug`。開始時伺服器會再檢查一次作品是否暫停、每日、同時進行與每月上限（PR #918），不行就回 409 `video_series_story_held`：工人這一輪結束、什麼都不寫，下一輪再問。
 
 ## 主幹（一步最多一次模型呼叫）
 
