@@ -17,7 +17,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "NVIDIA RTX Spark 筆電 128 GB 裝得下哪些 AI 模型？本機 AI 能取代 ChatGPT 嗎？",
-    "description": "NVIDIA 說 RTX Spark 能跑 1200 億參數的模型，700 億參數的 Llama 3.3 原版檔案卻有 141 GB，放不進這台筆電最多的 128 GB。這支影片用一條算式「參數量 × 每個參數的位元組」，算出 16 GB、64 GB、128 GB 各裝得下哪些模型，再看決定速度的記憶體頻寬，以及本機 AI 能不能取代每月的 AI 訂閱。\n\n影片裡的規格、參數量與檔案大小，都來自 NVIDIA、Microsoft、Hugging Face 與 Ollama 的官方頁面，查閱日期是 2026 年 9 月 28 日，之後可能變動。當天 NVIDIA 的 RTX Spark 產品頁沒有列價格，也沒有列記憶體頻寬，價格以官網為準。頻道沒有 RTX Spark 實機，影片裡沒有任何實測速度，NVIDIA 的說法都標明是廠商說的。\n\nClaude Pro 的價格是 2026 年 9 月 28 日官網的月繳價，其他訂閱以各家官網為準。回本月數與電費粗估的算式都在畫面上，你可以代入自己的數字重算。「最在意哪一件事」的表與結論，是頻道主的看法，不是購買建議。",
+    "description": "NVIDIA 說 RTX Spark 能跑 1200 億參數的模型，700 億參數的 Llama 3.3 原版檔案卻有 141 GB，放不進這台筆電最多的 128 GB。這支影片用一條算式「參數量 × 每個參數的位元組」，算出 16 GB、64 GB、128 GB 各裝得下哪些模型，再看決定速度的記憶體頻寬，以及本機 AI 能不能取代每月的 AI 訂閱。\n\n影片裡的規格、參數量與檔案大小，都來自 NVIDIA、Microsoft、Hugging Face 與 Ollama 的官方頁面，查閱日期是 2026 年 9 月 28 日，之後可能變動。當天 NVIDIA 的 RTX Spark 產品頁沒有列價格，價格以官網為準；記憶體頻寬 300 GB/s 出自 NVIDIA 的開發者文件。頻道沒有 RTX Spark 實機，影片裡沒有任何實測速度，NVIDIA 的說法都標明是廠商說的。\n\nClaude Pro 的價格是 2026 年 9 月 28 日官網的月繳價，其他訂閱以各家官網為準。回本月數與電費粗估的算式都在畫面上，你可以代入自己的數字重算。「最在意哪一件事」的表與結論，是頻道主的看法，不是購買建議。",
     "tags": [
       "RTX Spark",
       "本機 AI",
@@ -162,6 +162,11 @@
     {
       "title": "JEDEC Standard No. 21-C, terms and definitions: memory capacity counts K as 1024 and M as 2^20",
       "url": "https://www.jedec.org/sites/default/files/2_00R20.pdf",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "NVIDIA Windows on Arm Porting Guide, RTX Spark System Overview (memory bandwidth), updated 2026-09-10",
+      "url": "https://docs.nvidia.com/rtx-spark/rtx-spark-porting-guide/latest/overview.html",
       "checked_on": "2026-09-28"
     }
   ],
@@ -378,7 +383,7 @@
         "left": {
           "heading": "一般與電競筆電",
           "points": [
-            "系統記憶體給 CPU 用",
+            "系統記憶體主要給 CPU 用",
             "Copilot+ PC 最低 16 GB",
             "電競筆電的顯示卡另有記憶體",
             "RTX 5060 筆電版：8 GB",
@@ -403,7 +408,7 @@
       "lines": [
         {
           "id": "5atc",
-          "text": "一般筆電的記憶體給處理器用；電競筆電的顯示卡，另外有自己的一小塊。",
+          "text": "一般筆電的記憶體主要給處理器用；電競筆電的顯示卡，另外有自己的一小塊。",
           "reveal": 1
         },
         {
@@ -478,7 +483,7 @@
         "highlight": [
           1
         ],
-        "caption": "參數量：Hugging Face 模型頁，2026-09-28"
+        "caption": "參數量：Hugging Face 模型 API，2026-09-28"
       },
       "claims": [
         "c9",
@@ -547,7 +552,7 @@
         },
         {
           "id": "tj2j",
-          "text": "4 位元是 40 到 43 GB，比算式多出一到兩成。",
+          "text": "4 位元是 40 到 43 GB，比算式多出一成多到兩成多。",
           "reveal": 1
         },
         {
@@ -955,8 +960,8 @@
       "data": {
         "title": "NVIDIA 公布了什麼？",
         "items": [
-          "有公布：算力、記憶體容量、功耗",
-          "九月底未公布：**記憶體頻寬**、token 速度",
+          "有公布：算力、記憶體容量、功耗、頻寬 300 GB/s",
+          "九月底未公布：**token 速度**",
           "要等的：出貨後的實機評測"
         ]
       },
@@ -969,12 +974,12 @@
       "lines": [
         {
           "id": "3xvu",
-          "text": "有公布的：算力、記憶體容量，還有功耗。",
+          "text": "有公布的：算力、記憶體容量、功耗，還有記憶體頻寬，每秒 300 GB。",
           "reveal": 1
         },
         {
           "id": "6jug",
-          "text": "九月底還沒公布的：記憶體頻寬，還有每秒能產生幾個 token。",
+          "text": "九月底還沒公布的：每秒能產生幾個 token。",
           "reveal": 1
         },
         {
@@ -1119,7 +1124,7 @@
       "lines": [
         {
           "id": "u5iy",
-          "text": "微軟的執行容器 MXC，讓代理只能碰政策允許的檔案和網站。",
+          "text": "微軟的執行容器 MXC，讓代理只能碰政策允許的檔案和網域。",
           "reveal": 1
         },
         {
@@ -1352,7 +1357,7 @@
           [
             "速度",
             "等實機評測",
-            "九月底頻寬未公布"
+            "九月底 token 速度未公布"
           ]
         ]
       },
