@@ -856,10 +856,10 @@ export async function draftStory(automation, started, job = {}) {
     chosen: "A",
     notes: [],
   };
-  const problem = planShapeProblem(plan);
+  const problem = planShapeProblem(plan) ?? (isText(series.look?.style) ? null : "the story series has no shared look (look.style); set it on /admin/videos");
   if (problem) {
     automation.persist(state);
-    return automation.block(state, `the story's plan cannot be written from: ${problem}`);
+    return automation.block(state, `the story cannot be written: ${problem}`);
   }
   const dir = docDir(slug, automation.ctx.root);
   mkdirSync(dir, { recursive: true });
@@ -1321,15 +1321,18 @@ export async function fixStoryPrompts(automation, state, kind, { targets = null,
     const chapters = readChapters(automation, state);
     const where = new Map();
     for (const chapter of Object.values(chapters)) for (const scene of chapter.scenes) if (scene.template === "shot") where.set(scene.id, chapter.key);
+    // The shots the checks failed; or, when the owner sent the storyboard back with a note alone,
+    // every shot, of which the writer patches only those the note is about.
     const named = found.filter((target) => where.has(target.id));
-    if (!named.length) return automation.block(state, `${kind} failed for shots the script does not have (${summary})`);
-    const shots = named.map((target) => {
+    const offered = named.length ? named : isText(ownerNote) ? [...where.keys()].map((id) => ({ id, problems: [] })) : [];
+    if (!offered.length) return automation.block(state, `${kind} failed for shots the script does not have (${summary})`);
+    const shots = offered.map((target) => {
       const scene = chapters[where.get(target.id)].scenes.find((each) => each.id === target.id);
       return { id: scene.id, prompt: scene.data.prompt, camera: scene.data.camera ?? "", characters: scene.data.characters ?? [], lines: scene.lines.map((each) => each.text), problems: target.problems ?? [] };
     });
     const answer = await automation.stage("writer", state.slug, { ...common, shots }, FIX_TOKENS, "drama", STORY_FIX_VARIANT);
     if (!Array.isArray(answer?.shots)) return automation.retryLater(state, "writer", `the ${kind} fix answered without shots`);
-    const wanted = new Set(named.map((target) => target.id));
+    const wanted = new Set(offered.map((target) => target.id));
     const castIds = new Set((info.characters ?? []).map((figure) => figure.id));
     const touched = new Set();
     const patched = [];

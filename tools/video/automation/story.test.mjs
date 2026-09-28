@@ -160,19 +160,26 @@ function checkAnswer(payload) {
   return { patch, drop: [], claims: payload.claims.map((row) => ({ ...row, verdict: verdict(row), note: "段落裡有" })), report: `第 ${payload.chapter.number} 章逐條對過。` };
 }
 
-/** The stand-in listener: in the hook, one line reworded and one whose year it changes (refused). */
+/**
+ * The stand-in listener: in the hook, one line reworded and one whose year it changes (refused);
+ * with the owner's note, the turn's closing line said more plainly.
+ */
 function listenAnswer(payload) {
-  if (payload.chapter.key !== "hook") return { patch: {}, drop: [], edits: [] };
   const lines = payload.scenes.flatMap((scene) => scene.lines);
+  if (payload.owner_note) {
+    const plain = lines.find((line) => line.text === "選一邊站。");
+    return plain ? { patch: { [plain.id]: "只能選一邊站。" }, drop: [], edits: [] } : { patch: {}, drop: [], edits: [] };
+  }
+  if (payload.chapter.key !== "hook") return { patch: {}, drop: [], edits: [] };
   const first = lines.find((line) => line.text === "雨傘用了三千年。");
   const second = lines.find((line) => line.text.includes("1928"));
-  return { patch: { [first.id]: "雨傘已經用了三千年。", [second.id]: second.text.replace("1928", "1929") }, drop: [], edits: [] };
+  return { patch: { ...(first ? { [first.id]: "雨傘已經用了三千年。" } : {}), ...(second ? { [second.id]: second.text.replace("1928", "1929") } : {}) }, drop: [], edits: [] };
 }
 
 // --- the site ------------------------------------------------------------------------------------
 
-function storySite({ answers = {}, jobs = null, settings = {}, raw = {} } = {}) {
-  const calls = { run: [], episodes: [], reports: [], pages: [] };
+function storySite({ answers = {}, jobs = null, settings = {}, raw = {}, paused = () => false, series = SERIES } = {}) {
+  const calls = { run: [], episodes: [], reports: [], pages: [], answers: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
   const queue = jobs ?? [{ kind: "episode", series: SERIES, chapter_number: null, episode: EPISODE, previous: null, rewrites_left: 0, context: { series: SERIES, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: EPISODE, episodes: [{ ...EPISODE, beats: {} }], recaps: [], mysteries: [] } }];
@@ -197,6 +204,11 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {} } = {}) 
     if (pathname === "/api/video/automation/videos") return json([]);
     if (pathname === "/api/video/automation/drama-requests/next") return json({ request: null });
     if (pathname === "/api/video/automation/series/messages/next") return json({ job: null });
+    const answered = /^\/api\/video\/automation\/series\/messages\/([^/]+)\/answer$/.exec(pathname);
+    if (answered) {
+      calls.answers.push({ id: answered[1], ...body });
+      return json({ reply: { id: "m2", body_md: body.reply_md }, revision: null });
+    }
     if (pathname === "/api/video/automation/series/next") return json({ job: queue.shift() ?? null });
     const episode = /^\/api\/video\/automation\/series\/([a-z0-9-]+)\/episodes\/(\d+)\/(start|recap|done)$/.exec(pathname);
     if (episode) {
@@ -205,10 +217,11 @@ function storySite({ answers = {}, jobs = null, settings = {}, raw = {} } = {}) 
       // The server's contract (apps/api/app/video_automation/series.py start_episode): a story starts under its planned slug.
       if (body.slug !== EPISODE.slug) return json({ code: "video_series_story_slug", detail: `這個故事的影片代號是 ${EPISODE.slug}，不是 ${body.slug}` }, 409);
       const started = { ...EPISODE, status: "started" };
-      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: 13, note: SERIES.note, status: "started", slug: body.slug, series_slug: SERIES.slug, episode_number: 1 }, episode: started, context: { series: SERIES, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
+      return json({ request: { id: "b0c1d2e3-0000-4000-8000-000000000001", premise: `品牌故事 第 1 集：${EPISODE.title}\n${EPISODE.logline}\nquestion: ${PLAN.question}`, title: `品牌故事 第 1 集 ${EPISODE.title}`, source_guide: null, style_preset: "custom", target_minutes: 13, note: series.note, status: "started", slug: body.slug, series_slug: series.slug, episode_number: 1 }, episode: started, context: { series, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: started, episodes: [{ ...started, beats: {} }], recaps: [], mysteries: [] } });
     }
     if (pathname === "/api/video/automation/run") {
       calls.run.push(body);
+      if (paused(body)) return json({ code: "video_ai_subscription_paused", detail: "every Claude account is at its cap" }, 429);
       const key = body.variant ? `${body.stage}:${body.variant}` : body.stage;
       const answer = answers[key]?.(body);
       const text = raw[key]?.(body) ?? JSON.stringify(answer ?? {});
@@ -264,9 +277,9 @@ const standardAnswers = (overrides = {}) => ({
 });
 
 /** A story's world: the site, the automation, the media stand-ins (tts writes a timeline of `seconds()` when set). */
-function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {} } = {}) {
+function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, settings = {}, paused, jobs = null, series, decide = () => ({ status: "approved" }) } = {}) {
   const box = sandbox();
-  const site = storySite({ answers, raw, settings });
+  const site = storySite({ answers, raw, settings, paused, jobs, series });
   const { ctx, out } = context(box, site.fetchImpl);
   const dir = path.join(box.root, "docs", "videos", SLUG);
   const workdir = path.join(box.work, SLUG);
@@ -319,7 +332,7 @@ function storyWorld({ answers = standardAnswers(), raw = {}, seconds = null, set
     }
     if (name === "review-push") {
       const gate = command[command.indexOf("--gate") + 1];
-      if (GATE_FILES[gate]) site.reviewsOf(SLUG).unshift({ id: `${gate}-${site.reviewsOf(SLUG).length}`, gate, status: "approved", choice: null, note: `${gate}：依設定自動核准`, decided_at: "2026-09-28T03:00:00Z", content_sha256: sha(path.join(workdir, GATE_FILES[gate])), payload: {} });
+      if (GATE_FILES[gate]) site.reviewsOf(SLUG).unshift({ id: `${gate}-${site.reviewsOf(SLUG).length}`, gate, choice: null, note: `${gate}：依設定自動核准`, decided_at: "2026-09-28T03:00:00Z", content_sha256: sha(path.join(workdir, GATE_FILES[gate])), payload: {}, ...decide(gate) });
       return { code: 0, out: `${gate} submitted` };
     }
     if (name === "review-pull") {
@@ -742,6 +755,68 @@ test("a narration too short whose passages hold no more waits for the owner, and
   }
   assert.match(await automation.step(), /blocked — the narration measures 16:[34]\d, over 15:30 after 2 length fixes; a story runs 11:30 to 15:30: the owner decides/);
   assert.equal(long.runs.filter((run) => run.startsWith("check-audio")).length, 0, "Jev is not paid for a narration that must change");
+});
+
+test("the owner who sends the narration back has the listener go over the six chapters with the note; a note that changes nothing leaves the video for a person", async () => {
+  let pushed = 0;
+  const world = storyWorld({ seconds: () => 780, decide: (gate) => (gate === "audio" && pushed++ === 0 ? { status: "rejected", note: "結尾那句太硬" } : { status: "approved" }) });
+  const { automation, site, state } = world;
+  await steps(automation, 1 + 6 + 6 + 6 + 1 + 1);
+  assert.match(await automation.step(), /narration checked .* and sent for review/);
+  assert.match(await automation.step(), /the owner sent the narration back \(結尾那句太硬\); the listener goes over the six chapters with the note/);
+  const heard = await steps(automation, 6);
+  heard.forEach((line, index) => assert.match(line, new RegExp(`chapter ${CHAPTER_KEYS[index]} heard`)));
+  const pass = site.calls.run.slice(-6);
+  assert.ok(pass.every((call) => call.variant === "story" && call.stage === "listener" && call.payload.owner_note === "結尾那句太硬"));
+  assert.equal(readChapter(automation, state(), "turn").scenes[1].lines[1].text, "只能選一邊站。");
+  assert.match(await automation.step(), /a story has no script gate/, "a changed line voids the local approval of the script");
+  assert.match(await automation.step(), /narration synthesized/);
+  assert.match(await automation.step(), /narration checked .* and sent for review/);
+  assert.match(await automation.step(), /keyframes done/);
+  assert.ok(state().notes.includes("narration sent back: 結尾那句太硬"));
+
+  const still = storyWorld({ seconds: () => 780, decide: (gate) => (gate === "audio" ? { status: "rejected", note: "再自然一點" } : { status: "approved" }), answers: standardAnswers({ "listener:story": (body) => (body.payload.owner_note ? { patch: {}, drop: [] } : listenAnswer(body.payload)) }) });
+  await steps(still.automation, 1 + 6 + 6 + 6 + 1 + 1 + 1 + 1 + 6);
+  assert.match(await still.automation.step(), /blocked — the owner sent the narration back \(再自然一點\) and the listener's pass changed nothing/);
+});
+
+test("the owner's storyboard note with no failed shot offers the writer every shot, and only the shot the note is about changes", async () => {
+  const world = storyWorld({
+    answers: standardAnswers({ "writer:story-fix": (body) => ({ shots: [{ id: "turn-01", prompt: "a broken umbrella rib under a bright street lamp, close up", camera: "slow push in" }] }) }),
+  });
+  const { automation, site, state } = world;
+  await steps(automation, 1 + 6 + 6 + 6 + 1);
+  const before = Object.fromEntries(CHAPTER_KEYS.map((key) => [key, readChapter(automation, state(), key)]));
+  assert.match(await automation.fixPrompts(state(), "keyframes", { targets: [], ownerNote: "轉折第一個畫面太暗" }), /keyframes prompts fixed \(round 1\) for turn-01/);
+  const call = site.calls.run.at(-1);
+  assert.equal(call.variant, "story-fix");
+  assert.equal(call.payload.shots.length, 12, "every shot is offered when the note names none");
+  assert.equal(call.payload.fix.owner_note, "轉折第一個畫面太暗");
+  assert.equal(readChapter(automation, state(), "turn").scenes[0].data.prompt, "a broken umbrella rib under a bright street lamp, close up");
+  for (const key of CHAPTER_KEYS.filter((each) => each !== "turn")) assert.deepEqual(readChapter(automation, state(), key), before[key]);
+  assert.ok(state().notes.includes("keyframes sent back: 轉折第一個畫面太暗"));
+});
+
+test("a paused subscription ends the round without counting a failure, a series with no shared look is refused at the start, and a thread on a story's screenplay is answered without a rewrite", async () => {
+  const paused = storyWorld({ paused: (body) => body.stage === "writer" });
+  await paused.automation.step();
+  await assert.rejects(paused.automation.step(), (error) => error.code === "video_ai_subscription_paused");
+  assert.equal(paused.state().status, "active");
+  assert.equal(paused.state().failures, undefined, "a paused subscription is no failure of the story");
+  assert.equal(readChapter(paused.automation, paused.state(), "hook"), null);
+
+  const bare = { ...SERIES, look: null };
+  const lookless = storyWorld({ series: bare, jobs: [{ kind: "episode", series: bare, chapter_number: null, episode: EPISODE, previous: null, rewrites_left: 0, context: { series: bare, setting: null, outline: null, chapter: null, chapter_number: null, chapter_range: null, episode: EPISODE, episodes: [], recaps: [], mysteries: [] } }] });
+  assert.match(await lookless.automation.step(), /blocked — the story cannot be written: the story series has no shared look/);
+
+  const world = storyWorld();
+  await steps(world.automation, 1 + 6);
+  const { answerScript, STORY_THREAD_REPLY } = await import("./discuss.mjs");
+  const calls = world.site.calls.run.length;
+  const job = { series: SERIES, subject: "script:1", target: "script", message: { id: "m1", body_md: "開場改短一點" }, thread: [], episode: { ...EPISODE, slug: SLUG }, context: {} };
+  assert.match(await answerScript(world.automation, job), /a story's screenplay is not rewritten from a thread/);
+  assert.deepEqual(world.site.calls.answers, [{ id: "m1", reply_md: STORY_THREAD_REPLY, revised: null }]);
+  assert.equal(world.site.calls.run.length, calls, "no model call");
 });
 
 test("a story's cast is generic: its figures carry no name of the story, speak with the narrator's voice, and bring the look step back", () => {

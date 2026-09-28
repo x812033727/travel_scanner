@@ -173,15 +173,17 @@ const FIXER = `${STORY_COMMON}
 You fix the PICTURES of a few shots of the story (or, when "fix.kind" is look, the description of
 a recurring figure): the image checks failed them. "fix.targets" names each with what the judge
 or the checks said, and "fix.owner_note" is the owner's own words when they sent a gate back;
-"shots" are those shots with their lines, for what each picture must show. Rewrite only what
-draws them, so an image model draws them cleanly in "look": fewer subjects in a crowded frame,
-simpler hands, a plainer camera move, no text, no logo, no name of "names", the subject clear of
-the bottom fifth of the frame where the subtitles sit. Do not touch any line.
+"shots" are those shots with their lines, for what each picture must show; when no target is
+named and the owner's note is all there is, "shots" is every shot and you patch only those the
+note is about. Rewrite only what draws them, so an image model draws them cleanly in "look":
+fewer subjects in a crowded frame, simpler hands, a plainer camera move, no text, no logo, no
+name of "names", the subject clear of the bottom fifth of the frame where the subtitles sit. Do
+not touch any line.
 
 Return {"shots": [{"id": "<shot id>", "prompt": "<English, at most 1000 characters>", "camera":
 "<one slow move>", "characters": [<cast ids in the frame>]}]} for shots, or {"characters":
 [{"id": "<figure id>", "appearance": "<English, generic, at most 800 characters>"}]} for look,
-holding only the named targets.`;
+holding only the shots or figures you change.`;
 
 /** The story's stages, keyed "<stage>:<variant>" as prompts.mjs looks them up. */
 export const STORY_INSTRUCTIONS = {
