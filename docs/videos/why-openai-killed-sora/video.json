@@ -74,8 +74,8 @@
       "template": "quote",
       "data": {
         "kicker": "Sora App 的停止公告",
-        "quote": "…after careful internal discussion about our broader research priorities, we've made the difficult decision to discontinue the Sora app.",
-        "translation": "經過內部對更廣的研究優先順序仔細討論，我們做了停掉 Sora App 的困難決定。",
+        "quote": "…after careful internal discussion about our broader research priorities, we've made the difficult decision…",
+        "translation": "……經過內部對更廣的研究優先順序仔細討論，我們做了困難的決定……",
         "source": "OpenAI，2026 年 3 月 24 日｜經 The Verge 引述"
       },
       "claims": ["c1"],
@@ -144,7 +144,7 @@
       "claims": ["c8"],
       "lines": [
         { "id": "qm8a", "text": "OpenAI 的棄用頁，把 Sora 的 API 和各個版本排在一起。", "reveal": 2 },
-        { "id": "p4jh", "text": "關閉日全是九月二十四號。", "reveal": 1 },
+        { "id": "p4jh", "text": "關閉日全都是同一天：九月二十四號。", "reveal": 1 },
         { "id": "p7mt", "text": "最右邊的建議替代，每一列都只有一條橫線。", "reveal": 1 },
         { "id": "xvcc", "text": "也就是說，官方沒有指定任何替代。" }
       ]
@@ -161,6 +161,7 @@
       },
       "claims": ["c2"],
       "lines": [
+        { "id": "crbf", "text": "那 OpenAI 自己還說了什麼？" },
         { "id": "p8yy", "text": "發言人給 CBS News 的聲明，多講了一點。" },
         { "id": "s884", "text": "隨著公司聚焦，算力需求也在成長。", "reveal": 1 },
         { "id": "3x7m", "text": "Sora 的研究團隊，會繼續做世界模擬，往機器人推進。" }
@@ -170,10 +171,9 @@
       "id": "said-vs-reported",
       "template": "compare",
       "data": {
-        "title": "OpenAI 說的，媒體報的",
         "left": {
           "heading": "OpenAI 自己說的",
-          "points": ["研究的優先順序\nApp 停止公告", "聚焦，算力需求成長\n發言人給 CBS News", "算力每天都要取捨\n給 CBS News 的聲明"]
+          "points": ["研究的優先順序\nApp 停止公告", "聚焦，算力需求成長\n發言人給 CBS News", "算力先給價值最高的用途\n給 CBS News 的聲明"]
         },
         "right": {
           "heading": "媒體報導",
@@ -183,9 +183,9 @@
       "claims": ["c1", "c2", "c3", "c9"],
       "lines": [
         { "id": "pcc8", "text": "左邊是 OpenAI 自己說的：研究優先順序、聚焦、算力。", "reveal": 1 },
-        { "id": "hv6h", "text": "它還說，每天都要取捨，算力給研究、給新產品，還是給使用者。" },
+        { "id": "hv6h", "text": "它還說，算力每天都在取捨，優先給價值最高的用途。" },
         { "id": "ufsf", "text": "右邊是媒體報的：路透社說它很吃算力，別的團隊分得少。", "reveal": 1 },
-        { "id": "5n89", "text": "財務長受訪說算力不夠；華爾街日報則說，用的人大幅變少。" }
+        { "id": "5n89", "text": "OpenAI 財務長受訪說算力不夠；華爾街日報說，用的人大幅變少。" }
       ]
     },
     {
@@ -198,9 +198,9 @@
       },
       "claims": ["c8", "c10"],
       "lines": [
-        { "id": "zbve", "text": "The Verge 和 TechCrunch 都寫，OpenAI 沒有再多解釋。" },
+        { "id": "zbve", "text": "當時 The Verge 和 TechCrunch 都寫，OpenAI 沒有另外解釋。" },
         { "id": "m4uq", "text": "官方沒公布的有三件事：第一，一秒影片的成本。", "reveal": 1 },
-        { "id": "xftc", "text": "第二，還有多少人在用。", "reveal": 1 },
+        { "id": "xftc", "text": "第二，到底還有多少人在用。", "reveal": 1 },
         { "id": "r26r", "text": "第三，為什麼不指定一個替代。", "reveal": 1 },
         { "id": "hr36", "text": "報導裡的成本和人數，我一個都不引用。" }
       ]
@@ -277,8 +277,7 @@
       "id": "table-others",
       "template": "table",
       "data": {
-        "title": "其他家｜2026 年 9 月 28 日官方價",
-        "columns": ["模型", "條件", "每秒", "一支 8 秒"],
+        "columns": ["其他家｜2026 年 9 月 28 日官方價", "條件", "每秒", "一支 8 秒"],
         "rows": [
           ["Kling 3.0", "720p，原生音訊", "$0.126", "≈ $1.01"],
           ["Seedance 2.0", "720p 16:9，token 換算", "≈ $0.15", "≈ $1.21"],
@@ -292,7 +291,7 @@
       "lines": [
         { "id": "pnnk", "text": "其他家一樣換算：Kling 3.0 有聲，一秒大約零點一三美元。", "say": "其他家一樣換算：Kling 三點零有聲，一秒大約零點一三美元。", "say_for": "6aed5db57db3", "reveal": 1 },
         { "id": "m6en", "text": "BytePlus 賣的 Seedance 2.0 用 token 算，一秒大約零點一五。", "say": "BytePlus 賣的 Seedance 二點零用 token 算，一秒大約零點一五。", "say_for": "ec14b91d56b0", "reveal": 1 },
-        { "id": "ctak", "text": "xAI 的 Grok Imagine，720p 一秒零點一四美元。", "say": "xAI 的 Grok Imagine，七二零 P 一秒零點一四美元。", "say_for": "0f67d82892b4", "reveal": 1 },
+        { "id": "ctak", "text": "xAI 的 Grok Imagine 1.5，720p 一秒零點一四美元。", "say": "xAI 的 Grok Imagine 一點五，七二零 P 一秒零點一四美元。", "say_for": "2bf00e6c4557", "reveal": 1 },
         { "id": "gkn6", "text": "MiniMax 的 H3，一秒零點零八美元。", "reveal": 1 },
         { "id": "uxum", "text": "Runway 自家的模型用點數算，一秒零點一二美元。", "reveal": 1 },
         { "id": "bhxq", "text": "Higgsfield 的價目頁讀不到數字，我就寫以官網為準，不猜。", "reveal": 1 }
@@ -344,12 +343,12 @@
       "template": "bullets",
       "data": {
         "title": "一支 8 秒，只是比較用的長度",
-        "items": ["Veo 3.1：4、6、8 秒；1080p 起只能 8 秒", "Grok Imagine：1 到 15 秒", "Runway Gen-4.5：2 到 10 秒", "Kling、Seedance、MiniMax：以原廠官網為準"]
+        "items": ["Veo 3.1：4、6、8 秒；1080p 起只能 8 秒", "Grok Imagine 1.5：1 到 15 秒", "Runway Gen-4.5：2 到 10 秒", "其他幾家：以原廠官網為準"]
       },
       "claims": ["c13", "c16", "c24"],
       "lines": [
         { "id": "wcet", "text": "一支八秒只是拿來比較的長度；Veo 3.1 可以選四、六、八秒。", "say": "一支八秒只是拿來比較的長度；Veo 三點一可以選四、六、八秒。", "say_for": "9098bd29d52c", "reveal": 1 },
-        { "id": "32i6", "text": "Grok 可以選一到十五秒。", "reveal": 1 },
+        { "id": "32i6", "text": "Grok Imagine 1.5 可以選一到十五秒。", "say": "Grok Imagine 一點五可以選一到十五秒。", "say_for": "b85310b1f839", "reveal": 1 },
         { "id": "p956", "text": "Runway 自家的模型，是二到十秒。", "reveal": 1 },
         { "id": "ux5y", "text": "其他家的秒數，我在原廠頁沒讀到，就以官網為準。", "reveal": 1 }
       ]
@@ -359,16 +358,16 @@
       "template": "compare",
       "data": {
         "title": "同一個模型，在哪買差很多",
-        "left": { "heading": "原廠價", "points": ["Seedance 2.0：約 $0.15／秒\n720p，BytePlus", "Veo 3.1 Fast 有聲：$0.10／秒\n720p，Gemini API"] },
-        "right": { "heading": "Runway 轉售價", "points": ["Seedance 2.0：36 點＝$0.36／秒\n480p／720p", "Veo 3.1 Fast 有聲：15 點＝$0.15／秒\n頁面沒寫解析度"] },
+        "left": { "heading": "原廠，每秒", "points": ["Seedance 2.0：約 $0.15\n720p，BytePlus", "Veo 3.1 Fast 有聲：$0.10\n720p，Gemini API"] },
+        "right": { "heading": "Runway 轉售，每秒", "points": ["Seedance 2.0：36 點＝$0.36\n480p 或 720p", "Veo 3.1 Fast 有聲：15 點＝$0.15\n頁面沒寫解析度"] },
         "verdict": "Runway 1 點 $0.01｜2026 年 9 月 28 日官方價"
       },
-      "claims": ["c5", "c6", "c13", "c15", "c20"],
+      "claims": ["c6", "c13", "c15", "c20"],
       "lines": [
         { "id": "8zb5", "text": "同一個模型，在哪裡買也有差。", "reveal": 1 },
         { "id": "cddp", "text": "原廠的 Seedance 一秒約零點一五美元，Veo 3.1 Fast 零點一。", "say": "原廠的 Seedance 一秒約零點一五美元，Veo 三點一 Fast 零點一。", "say_for": "1e24cf1dd0fd" },
         { "id": "stcw", "text": "放到 Runway 上轉售，變成零點三六和零點一五。", "reveal": 1 },
-        { "id": "abiv", "text": "多的是一個帳號接很多家的方便，我只比標價，不評好壞。" }
+        { "id": "abiv", "text": "轉售的好處，是一個帳號就能接很多家；我只比標價，不評好壞。" }
       ]
     },
     {
@@ -473,7 +472,8 @@
       },
       "claims": ["c11", "c26"],
       "lines": [
-        { "id": "gcva", "text": "所以我付錢之前，第一個打開的是價目表。", "reveal": 1 },
+        { "id": "ivpu", "text": "那付錢之前，該先看哪裡？" },
+        { "id": "gcva", "text": "我第一個打開的，是價目表。", "reveal": 1 },
         { "id": "iysq", "text": "換成一秒和一支八秒，旁邊寫下解析度、聲音和秒數。" },
         { "id": "nfcf", "text": "第二個是棄用頁，用 App 的人就看說明中心的停止服務說明。", "reveal": 1 },
         { "id": "5zif", "text": "記下最短給多久通知，有沒有指定替代。" },
@@ -484,7 +484,7 @@
       "id": "shutdown-records",
       "template": "table",
       "data": {
-        "title": "官方棄用頁上的四列",
+        "title": "官方棄用頁｜2026 年 9 月 28 日",
         "columns": ["模型", "通知或上線", "關閉日", "建議替代"],
         "rows": [
           ["Sora 2 與 Videos API", "2026-03-24 通知", "2026-09-24", "—"],
@@ -493,12 +493,12 @@
           ["Veo 3.1、Fast、Lite\n都是預覽版", "上線中", "尚未公布", "還沒棄用"]
         ]
       },
-      "claims": ["c8", "c25"],
+      "claims": ["c8", "c24", "c25"],
       "lines": [
         { "id": "gxbt", "text": "拿官方棄用頁比一比：Sora 的替代欄是空的。", "reveal": 1 },
-        { "id": "6sz5", "text": "Google 的 Veo 3.0 在六月三十號關閉，替代寫的是 Veo 3.1。", "say": "Google 的 Veo 三點零在六月三十號關閉，替代寫的是 Veo 三點一。", "say_for": "29f017cacc2b", "reveal": 1 },
-        { "id": "9udt", "text": "Gemini Omni Flash 的預覽版，上線三個月就關，替代是正式版。", "reveal": 1 },
-        { "id": "fxq5", "text": "最便宜的 Veo 3.1 Lite，在 Gemini API 上還是預覽版，關閉日還沒公布。", "say": "最便宜的 Veo 三點一 Lite，在 Gemini API 上還是預覽版，關閉日還沒公布。", "say_for": "3cdeeac72e07", "reveal": 1 }
+        { "id": "6sz5", "text": "Google 的 Veo 3.0，關閉日寫六月三十號，替代寫的是 Veo 3.1。", "say": "Google 的 Veo 三點零，關閉日寫六月三十號，替代寫的是 Veo 三點一。", "say_for": "4587fce5ef4d", "reveal": 1 },
+        { "id": "9udt", "text": "Gemini Omni Flash 的預覽版，從上線到關閉日只有三個月，替代是正式版。", "reveal": 1 },
+        { "id": "fxq5", "text": "到九月底，Veo 3.1 Lite 在 Gemini API 上還是預覽版，也還沒有關閉日。", "say": "到九月底，Veo 三點一 Lite 在 Gemini API 上還是預覽版，也還沒有關閉日。", "say_for": "5ffed9895500", "reveal": 1 }
       ]
     },
     {
