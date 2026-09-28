@@ -307,7 +307,9 @@ export function loadPlan(dir = DEFAULT_PLAN) {
     return entry;
   });
   const orphans = existsSync(reviewsDir) ? readdirSync(reviewsDir).filter((name) => name.endsWith(".json") && !files.includes(name)).map((name) => name.slice(0, -".json".length)) : [];
-  return { dir, series: read("series.json"), schedule: read("schedule.json"), stories, orphans };
+  // What the owner approved, kept so the schedule can show which titles the fact check changed.
+  const seeds = existsSync(path.join(dir, "approved-seeds.json")) ? (read("approved-seeds.json").seeds ?? []) : [];
+  return { dir, series: read("series.json"), schedule: read("schedule.json"), stories, orphans, seeds };
 }
 
 /**
@@ -418,5 +420,24 @@ export function scheduleMarkdown(plan) {
     }),
     "",
   ];
+  // The owner approved working titles; the fact check changed some. Both are shown side by side.
+  const bar = (value) => String(value).replaceAll("|", "｜");
+  const changed = (plan.seeds ?? []).filter((seed) => byId.has(seed.id) && (byId.get(seed.id).title !== seed.title || byId.get(seed.id).subject !== seed.subject));
+  if (changed.length) {
+    lines.push(
+      "## 跟核准時不一樣的標題",
+      "",
+      "寫企劃時查核過每個標題靠的說法；說法跟來源不一樣的，標題改成來源撐得住的版本。",
+      "",
+      "| 代號 | 核准時 | 現在 |",
+      "| --- | --- | --- |",
+      ...changed.map((seed) => {
+        const story = byId.get(seed.id);
+        const subject = story.subject !== seed.subject ? `（主題：${bar(seed.subject)} → ${bar(story.subject)}）` : "";
+        return `| ${seed.id} | ${bar(seed.title)} | ${bar(story.title)}${subject} |`;
+      }),
+      "",
+    );
+  }
   return lines.join("\n");
 }

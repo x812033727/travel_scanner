@@ -192,6 +192,18 @@ test("the schedule table names each day's two stories and counts the categories"
   assert.match(table, /\| 2 \| A02（還沒寫） \| K01 韓國的故事 \|/);
   assert.match(table, /\| 日韓台旅途品牌 \| 2（日本 1、韓國 1） \|/);
   assert.match(table, /\| 日常用品與隱形標準 \| 1 \|/);
+  assert.doesNotMatch(table, /跟核准時不一樣的標題/);
+  // What the owner approved beside what the fact check left.
+  const seeds = [
+    { id: "B01", subject: "範例", title: "日本的故事" },
+    { id: "K01", subject: "範例", title: "核准時的標題" },
+    { id: "A02", subject: "還沒寫", title: "還沒寫的標題" },
+  ];
+  const compared = scheduleMarkdown({ ...plan, seeds });
+  assert.match(compared, /## 跟核准時不一樣的標題/);
+  assert.match(compared, /\| K01 \| 核准時的標題 \| 韓國的故事 \|/);
+  assert.doesNotMatch(compared, /\| B01 \| 日本的故事 \| 日本的故事/);
+  assert.doesNotMatch(compared, /還沒寫的標題/);
 });
 
 test("a plan's stories have distinct slugs and titles, and each has a slot", () => {
