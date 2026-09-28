@@ -265,6 +265,1022 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "Handling WordPress Comment Spam: Review Rules and Akismet",
+      "description": "Stopping spam in WordPress comments takes sensible moderation rules and a way to correct mistakes, as well as a plugin. This guide covers discussion settings, Akismet activation and plan eligibility, reporting spam, and rescuing legitimate comments. Its daily review checklist helps small-site owners reduce the workload while leaving room for readers with real questions to join the discussion.",
+      "hero": {
+        "src": "/guides/wordpress-comment-spam/hero-en.jpg",
+        "alt": "Original illustration of a document, shield, and screen showing a comment passing protection and human review before publication.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Seeing many promotional links each day can make it tempting to empty every comment awaiting review. Some may actually add useful information or ask a genuine question. Comment management needs both to stop obvious spam and to give normal discussion a chance to be seen."
+        },
+        {
+          "type": "paragraph",
+          "text": "For a site publishing everyday how-to articles, set a moderation boundary with WordPress discussion settings, let Akismet help classify comments, and have a person handle uncertain items and mistakes. This is an ongoing process to adjust, not a switch that needs no further checking once turned on."
+        },
+        {
+          "type": "heading",
+          "text": "Decide which posts need comments first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "List why comments are open: additions to a tutorial, error reports, questions, or simply an old theme’s default feature. If one type of announcement needs no discussion, adjust that group of posts. Do not close a tutorial with lasting Q&A value merely because it was published some time ago."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the Discussion settings screen, you can control whether new posts accept comments, whether pingbacks or trackbacks are accepted, and whether people must sign in. Each choice has a cost. Requiring an account adds a barrier but can also discourage an occasional reader. If you do not need membership, assess whether moderation alone is enough."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the default for new posts separately from settings on existing posts. To change older posts, filter a small group first and confirm the scope of a bulk edit. Disabling new comments, deleting existing comments, and hiding the comment area are different actions. Useful contributions from readers may deserve to remain."
+        },
+        {
+          "type": "heading",
+          "text": "Set human moderation rules people can understand",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "At first, a person with the right permissions can approve comments while you observe daily volume. WordPress can also hold comments for review based on link counts and keywords, but many links do not automatically mean spam; a reader may be sharing references. Holding a comment pending confirmation is often easier to correct than deleting broadly."
+        },
+        {
+          "type": "paragraph",
+          "text": "A keyword can match inside a longer word, so avoid placing very short English strings or common Chinese words on a strict block list. Start with distinctive promotional phrases that recur, and record why and when each rule was added. If legitimate comments are caught, review the rule instead of making every reader guess which words they may use."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Place a short policy near the comment area: relevant additions are welcome, personal contact details should not be public, and unrelated ads are not accepted. Treat disagreement about content separately from spam. Do not "
+            },
+            {
+              "type": "text",
+              "text": "mark"
+            },
+            {
+              "type": "text",
+              "text": " a reader’s criticism as spam and feed the classifier a wrong signal."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Check the Akismet plan and connection",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet is an external spam-detection service. Activating its plugin requires a valid account or API key. Its official Personal plan is for non-commercial personal use. A site with ads, affiliate links, sales, or business promotion should check eligibility for a commercial plan; a small site is not automatically entitled to a free key."
+        },
+        {
+          "type": "paragraph",
+          "text": "When installing, confirm the author is Automattic, then connect it using the official flow for your current WordPress version. Settings may appear under Akismet Anti-spam, Jetpack, or a newer Connectors integration. After entering the key, confirm the account and site status. Do not put the key in a public screenshot or the body of a handover document."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the scope of Akismet protection for each integration. It can check WordPress comments, but contact forms may need extra field settings. Official guidance also says it does not handle WordPress spam user registrations. If fake members are the problem, address the registration process; a comment plugin cannot replace it."
+        },
+        {
+          "type": "heading",
+          "text": "Confirm classification in a way you can reverse",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When starting to monitor, consider sending spam to the Spam area for a person to review instead of immediately enabling the mode that silently discards the worst spam. That makes it easier to spot normal comments classified in error and establish your own review rhythm. Decide whether to use a more aggressive mode from actual volume and false positives."
+        },
+        {
+          "type": "paragraph",
+          "text": "The official test string is akismet-guaranteed-spam. Put only that string in the body of a test comment, then check the Spam tab under Comments in the admin area. Test on a controlled page and clean up the test record afterward. You need neither a real malicious link nor random nonsense to decide whether the tool works."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Confirm the plugin connection, initially keeping spam where a person can review it.",
+            "Submit the official test string and check that it reaches the Spam tab.",
+            "Submit a normal, relevant test comment too, and verify moderation and front-end display."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Rescue false positives and report missed spam",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Review the Spam tab regularly. For a confirmed legitimate comment, choose Not Spam and then follow the site’s approval process. Mark obvious spam that reached Pending or Published as Spam. Akismet says those corrective signals are collected while the service remains active."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not approve a whole batch of uncertain items just to clear the count. Narrow them by post, time, or repeating pattern. Read whether a comment responds to the topic and whether link text matches its destination. You need not open a suspicious link to make an initial judgment; irrelevant promotion is often apparent from the wording and repeated behavior."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the same reader is repeatedly misclassified, keep that comment and the classification clues for support to examine. Avoid a broad rule that always lets one identity through: identity fields can be forged, and a real reader’s account can be compromised. Sample comments again before bulk deletion and decide whether a handling record must be kept."
+        },
+        {
+          "type": "heading",
+          "text": "Include privacy and upkeep in the routine",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet sends comment information relevant to spam decisions to its service, so it cannot be described as entirely offline. It offers an option for a privacy notice by the comment area. The site should explain data flow as it actually operates, not paste standard wording that does not match its setup."
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign people to check Pending and Spam on a schedule, and briefly log suspected false positives, recurring spam types, and rule changes. As the site grows, recheck account usage and plan eligibility so you do not assume protection still works after a connection or eligibility problem. If the service warns you, first identify the affected scope."
+        },
+        {
+          "type": "paragraph",
+          "text": "After maintenance, use a signed-out window to check the comment entry point, pending-review notice, and published result. Let readers know whether their comment was received and whether it must wait. Otherwise the front end may say nothing while repeated submissions pile up in the admin area. Good moderation means normal discussion is handled, not merely that the spam count looks like zero."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-comment-spam/diagram-1-en.svg",
+          "alt": "A four-step loop of setting moderation rules, service classification, human review, and correcting mistakes for ongoing comment maintenance.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Reduce spam while still making real questions visible and answerable.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Main purpose",
+            "Maintenance focus"
+          ],
+          "rows": [
+            [
+              "Close comments on selected posts",
+              "Content that needs no discussion",
+              "Check old posts and retain existing comments"
+            ],
+            [
+              "WordPress moderation rules",
+              "Filter by links or words",
+              "Avoid short keywords that catch normal comments"
+            ],
+            [
+              "Akismet classification",
+              "Help identify spam",
+              "Plan eligibility, connection, and error reports"
+            ],
+            [
+              "Human review",
+              "Handle context and uncertain items",
+              "Named reviewers, clear rules, and records"
+            ]
+          ],
+          "caption": "Combine methods so automated classification and human judgment each do their part."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Correcting mistakes is part of protection",
+          "text": "Read a comment before choosing Spam or Not Spam. Disagreement is not spam, and clearing a count is not the same as completing review. Keep a process that lets legitimate readers be seen."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan the review process for member registration",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set up contact-form protection and retention",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress discussion settings",
+          "url": "https://wordpress.org/documentation/article/settings-discussion-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Activating Akismet",
+          "url": "https://akismet.com/support/getting-started/activate/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet free and paid eligibility",
+          "url": "https://akismet.com/support/getting-started/free-or-paid/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "What Akismet protects",
+          "url": "https://akismet.com/support/getting-started/what-does-akismet-protect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Testing Akismet",
+          "url": "https://akismet.com/support/getting-started/confirm/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Correcting Akismet classifications",
+          "url": "https://akismet.com/support/general/teach-akismet/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet privacy information",
+          "url": "https://akismet.com/privacy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressの迷惑コメント対策：承認ルールとAkismet",
+      "description": "WordPressのコメントを迷惑投稿から守るには、プラグインだけでなく適切な承認ルールと誤判定を直す手順が必要です。ディスカッション設定、Akismetの有効化とプランの利用資格、迷惑投稿の報告、正当なコメントの救出を説明します。小規模サイト向けの日常確認表で管理負担を減らしつつ、実際に質問したい読者が議論に参加できるようにします。",
+      "hero": {
+        "src": "/guides/wordpress-comment-spam/hero-ja.jpg",
+        "alt": "書類、盾、画面を描いたオリジナルイラスト。コメントが保護と人の確認を経て公開される様子を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "毎日ログインするたびに宣伝リンクが大量に並ぶと、承認待ちコメントを全部消したくなるかもしれません。しかし読者の補足や本当の質問も混ざり得ます。明らかな迷惑投稿を止めることと、通常の議論が見られる機会を残すことの両方が必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "生活情報の解説サイトを例に、まずWordPressのディスカッション設定で承認の境界を作り、Akismetで分類を補助し、不明なものと誤判定は人が扱います。一度有効にすれば永遠に確認不要になる機能ではなく、継続して調整する作業です。"
+        },
+        {
+          "type": "heading",
+          "text": "どの記事にコメントが必要か先に決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "コメントの目的を整理します。解説の補足、誤りの報告、質問なのか、古いテーマの標準機能を残しているだけなのか。特定の告知に議論が不要なら、その種類の記事の公開方法を調整できます。長く質問・回答の価値がある解説は、公開から時間がたっただけで一律に閉じる必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ディスカッション設定では、新しい記事でコメントを受けるか、pingbackやtrackbackを受けるか、ログインを必須にするかを管理できます。それぞれに代償があります。アカウント必須はハードルを一つ増やす一方、たまに訪れる読者の返信を妨げることもあります。会員機能が不要なら、まず承認手順で十分か検討します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい記事の既定設定と公開済み記事の個別設定は別々に確認します。過去記事を変更するなら、まず少数を絞り込み、一括編集の対象範囲を確認してください。新規コメントの停止、既存コメントの削除、コメント欄を隠すことは別の操作です。読者が以前寄せた有益な内容は残す価値があります。"
+        },
+        {
+          "type": "heading",
+          "text": "分かりやすい人手の承認ルールを作る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初期は権限のある人がコメントを承認し、日々の件数を見ます。WordPressにはリンク数やキーワードで承認待ちにする設定もありますが、リンクが多いだけで迷惑とは限りません。読者が参考資料を示していることもあります。まず確認待ちにする方が、広く削除するより修正しやすい場合が多いです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "キーワード判定は長い語の一部にも一致するため、短すぎる英字列や一般的な中国語の語を厳しい拒否リストに入れないでください。繰り返し現れる特徴的な宣伝文句から始め、ルールの理由と設定日を記録します。通常のコメントが止められたら、読者全員に使えない語を推測させるのではなくルールを見直します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "コメント欄の近くに短い規約を書きます。関連する補足は歓迎し、個人の連絡先は公開せず、無関係な広告は受け付けない、といった内容です。内容への異論と迷惑投稿を分けて扱い、読者が批判しただけで"
+            },
+            {
+              "type": "text",
+              "text": "迷惑投稿として扱い"
+            },
+            {
+              "type": "text",
+              "text": "、自動分類に誤った判断を学習させないでください。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Akismetのプランと接続を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismetは外部の迷惑投稿判定サービスです。プラグインの有効化後、有効なアカウントまたはAPIキーが必要です。公式のPersonalプランは非商用の個人利用向けです。広告、アフィリエイトリンク、販売、事業の宣伝があるサイトは商用プランの利用資格を確認し、規模が小さいだけで無料キーを使えると決めつけないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "インストール時は作者がAutomatticであることを確かめ、現在のWordPress版に対応する公式手順で接続します。設定入口はAkismet Anti-spam、Jetpack、または新しいConnectors連携にある場合があります。キーを入力したらアカウントとサイトの状態を確認し、公開スクリーンショットや引き継ぎ文書の本文にキーを書かないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "連携ごとにAkismetの保護範囲も調べます。WordPressコメントは検査できますが、お問い合わせフォームには追加のフィールド設定が必要な場合があります。公式資料はWordPressの迷惑ユーザー登録には対応しないとも説明しています。偽の会員が問題なら登録手順に戻って対処し、コメント用プラグインで代用しないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "元に戻せる方法で分類を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "観察を始める際は、最も深刻な迷惑投稿を黙って破棄する設定をすぐ有効にする代わりに、人が確認できるSpam欄へ送ることを検討します。正常なコメントの誤判定を見つけやすくなり、サイトに合った確認周期も作れます。より積極的に処理するかは、実際の件数と誤判定を見て決めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "公式テスト文字列はakismet-guaranteed-spamです。テストコメントの本文にその文字列だけを入れ、管理画面のCommentsにあるSpamタブで分類を確認します。管理できるページで試して記録を片付けてください。本物の悪意あるリンクを貼る必要も、適当な意味不明の文でツールの失敗を判断する必要もありません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "プラグインの接続を確認し、最初は人が調べられる迷惑分類を残す。",
+            "公式テスト文字列を投稿し、Spamタブに入るか確認する。",
+            "記事に関連する通常のテストコメントも送り、承認と公開画面の流れを確かめる。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "誤判定を救い、見逃された迷惑投稿を報告する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Spamタブを定期的に確認します。正常と確認したコメントはNot Spamを選び、サイトの承認手順に従って公開を判断します。承認待ちや公開済みに漏れた明らかな迷惑投稿はSpamとして報告します。Akismetの公式説明では、こうした修正のフィードバックが集められるにはサービスが有効であり続ける必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "件数をゼロにしたいだけで不明なコメントを一括承認しないでください。記事、時刻、繰り返すパターンで対象を絞り、記事の話題に答えているか、リンクの表示文字と行き先が合っているかを読みます。疑わしいリンクを直接開かなくても初期判断はでき、無関係な宣伝は文面や反復行動から分かることが多いです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ読者が何度も誤判定されるなら、そのコメントと分類の手掛かりをサポート用に残します。「この人は常に通す」という緩いルールを独自に作らないでください。名前などの欄は偽装でき、正当な読者のアカウントも乗っ取られる可能性があります。一括削除前に再度抜き取り確認し、処理記録を残す必要があるか確かめます。"
+        },
+        {
+          "type": "heading",
+          "text": "プライバシーと保守を日常の作業に入れる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismetは迷惑判定に関わるコメント情報をサービスへ送るため、完全にオフラインのプラグインとは説明できません。公式にはコメント欄のプライバシー表示設定があります。サイトも実際の利用方法に沿ってデータの流れを説明し、現状と違う定型文を貼るだけにしないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "承認待ちとSpamを決まった周期で確認する担当者を決め、疑わしい誤判定、繰り返す迷惑の種類、ルール変更を短く記録します。サイトの成長に合わせてアカウントの利用量とプラン資格を確認し、接続や資格が失効したのに保護が働くと思い込まないようにします。サービスから警告が来たら、まず影響範囲を確認します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "保守後はログアウトしたウィンドウからコメント入口、承認待ちの案内、公開結果を確認します。受け付けたか、待つ必要があるかを読者に伝えてください。画面に何も出ず管理画面に重複投稿がたまる状態を避けられます。良い管理とは通常の議論に対応できることであり、迷惑投稿の件数がゼロに見えるだけではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-comment-spam/diagram-1-ja.svg",
+          "alt": "承認ルールの設定、サービスによる分類、人の確認、誤判定の報告という四段階のコメント保守サイクルを示す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "迷惑投稿を減らし、本当の質問を読んで返答できるようにします。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "主な目的",
+            "保守の重点"
+          ],
+          "rows": [
+            [
+              "特定記事のコメントを閉じる",
+              "議論が不要な内容",
+              "過去記事と既存コメントの保持を確認"
+            ],
+            [
+              "WordPressの承認ルール",
+              "リンクや語で絞り込む",
+              "短すぎる語による誤検出を避ける"
+            ],
+            [
+              "Akismetの自動分類",
+              "迷惑投稿の識別を補助",
+              "プラン資格、接続、誤判定の報告"
+            ],
+            [
+              "人による確認",
+              "文脈と不確かな項目を扱う",
+              "担当者、明確な規約、記録"
+            ]
+          ],
+          "caption": "自動分類と人の判断がそれぞれ役立つよう、方法を組み合わせます。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "誤判定の修正も保護の一部",
+          "text": "内容を確認してからSpamまたはNot Spamを選びます。異なる意見は迷惑投稿ではなく、件数を空にしても確認完了とは限りません。正当な読者の声が見られる手順を残してください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "会員登録の審査手順を計画する",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "お問い合わせフォームの保護と保存を整える",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPressのディスカッション設定",
+          "url": "https://wordpress.org/documentation/article/settings-discussion-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismetの有効化",
+          "url": "https://akismet.com/support/getting-started/activate/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismetの無料・有料プランの利用資格",
+          "url": "https://akismet.com/support/getting-started/free-or-paid/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismetの保護対象",
+          "url": "https://akismet.com/support/getting-started/what-does-akismet-protect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismetのテスト方法",
+          "url": "https://akismet.com/support/getting-started/confirm/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismetの誤判定を修正する方法",
+          "url": "https://akismet.com/support/general/teach-akismet/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismetのプライバシー情報",
+          "url": "https://akismet.com/privacy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 스팸 댓글 처리: 승인 규칙과 Akismet",
+      "description": "WordPress 댓글에서 스팸을 막으려면 플러그인뿐 아니라 합리적인 승인 규칙과 오분류 수정 절차가 필요합니다. 이 글은 토론 설정, Akismet 활성화와 요금제 자격, 스팸 신고, 정상 댓글 복구를 다룹니다. 작은 사이트의 일상 검토 목록을 통해 관리 부담을 줄이면서 실제 질문이 있는 독자도 토론에 참여할 수 있게 합니다.",
+      "hero": {
+        "src": "/guides/wordpress-comment-spam/hero-ko.jpg",
+        "alt": "문서, 방패, 화면으로 댓글이 보호와 사람의 검토를 거쳐 공개되는 모습을 나타낸 자체 제작 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "매일 사이트에 접속할 때마다 광고 링크가 쌓여 있으면 승인 대기 댓글을 전부 지우고 싶어지기 쉽습니다. 하지만 독자의 보충 정보나 실제 질문도 섞여 있을 수 있습니다. 댓글 관리는 명백한 스팸을 막는 동시에 정상적인 토론이 보일 기회를 남겨야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "생활 정보 안내 사이트를 예로 들면 WordPress 토론 설정으로 승인 기준을 정하고 Akismet이 분류를 돕게 하며, 불확실한 항목과 오분류는 사람이 처리할 수 있습니다. 한 번 켜면 영원히 확인하지 않아도 되는 기능이 아니라 계속 조정하는 작업입니다."
+        },
+        {
+          "type": "heading",
+          "text": "어떤 글에 댓글이 필요한지 먼저 정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "댓글의 목적을 점검하세요. 안내 글을 보충하거나 오류를 알리고 질문을 받기 위한 것인지, 옛 테마의 기본 기능이 남은 것뿐인지 구분합니다. 어떤 유형의 공지는 토론이 필요 없다면 그 글들에 맞게 열림 상태를 조정하세요. 오래도록 질문과 답변에 가치가 있는 안내 글은 오래전에 발행됐다는 이유만으로 일괄 종료할 필요가 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "토론 설정 화면에서 새 글의 댓글 허용 여부, pingback이나 trackback 수신 여부, 로그인 필수 여부를 관리할 수 있습니다. 선택마다 대가가 있습니다. 계정 요구는 장벽을 높이지만 가끔 방문하는 독자의 답변을 막을 수도 있습니다. 회원 기능이 필요 없다면 승인 절차만으로 충분한지 먼저 평가하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 글에 적용되는 기본 설정과 이미 발행한 글의 개별 설정을 따로 확인하세요. 오래된 글을 바꾼다면 작은 묶음으로 먼저 추려 일괄 편집 범위를 검토합니다. 새 댓글 중단, 기존 댓글 삭제, 댓글 영역 숨김은 서로 다른 행동입니다. 독자가 이미 남긴 유용한 내용은 보존할 가치가 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "이해하기 쉬운 사람의 승인 규칙 만들기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "초기에는 권한을 가진 사람이 댓글을 승인하며 하루 분량을 살펴볼 수 있습니다. WordPress는 링크 수나 키워드로 승인 대기에 두는 기능도 제공하지만 링크가 많다고 반드시 스팸은 아닙니다. 독자가 참고 자료를 제시할 수도 있습니다. 우선 확인 대기에 두는 편이 광범위하게 바로 삭제하는 것보다 고치기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "키워드 비교는 긴 단어의 일부에도 걸릴 수 있으므로 아주 짧은 영문 문자열이나 흔한 중국어 단어를 엄격한 차단 목록에 넣지 마세요. 반복해서 등장하고 식별하기 쉬운 광고 문구부터 찾고 설정 이유와 날짜를 기록하세요. 정상 댓글이 막힌다면 모든 독자에게 피해야 할 말을 추측하게 하지 말고 규칙을 다시 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "댓글 영역 근처에 관련 내용 보충은 환영하지만 개인 연락처는 공개하지 않고 무관한 광고는 받지 않는다는 짧은 기준을 적으세요. 내용에 대한 반대 의견과 스팸을 구분하고, 독자가 비판했다는 이유만으로 "
+            },
+            {
+              "type": "text",
+              "text": "스팸으로 표시"
+            },
+            {
+              "type": "text",
+              "text": "해 자동 분류에 잘못된 피드백을 주지 마세요."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Akismet 요금제와 연결 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet은 외부 스팸 판정 서비스입니다. 플러그인을 켠 뒤 유효한 계정이나 API 키가 필요합니다. 공식 Personal 요금제는 비상업적 개인 사용을 대상으로 합니다. 광고, 제휴 링크, 판매 또는 사업 홍보가 있는 사이트는 상업용 요금제 자격을 확인해야 합니다. 사이트가 작다는 이유만으로 무료 키를 쓸 수 있다고 가정하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "설치할 때 제작자가 Automattic인지 확인하고 현재 WordPress 버전에 맞는 공식 활성화 절차를 따라 연결하세요. 설정 위치는 Akismet Anti-spam, Jetpack 또는 새 Connectors 연동에 있을 수 있습니다. 키를 입력한 뒤 계정과 사이트 상태를 확인하고 공개 화면 사진이나 인수인계 문서 본문에 키를 넣지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "연동에 따라 Akismet 보호 범위도 확인하세요. WordPress 댓글은 검사할 수 있지만 문의 양식에는 별도의 필드 설정이 필요할 수 있습니다. 공식 설명은 WordPress 스팸 사용자 가입을 담당하지 않는다고도 밝힙니다. 가짜 회원이 문제라면 회원 등록 흐름으로 돌아가야 하며 댓글 플러그인으로 대체할 수 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "되돌릴 수 있는 방법으로 분류 효과 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "처음 관찰할 때는 심한 스팸을 조용히 버리는 모드를 바로 쓰기보다 사람이 확인할 수 있는 Spam 영역으로 보내는 방안을 고려하세요. 정상 댓글의 오분류를 찾고 사이트에 맞는 검토 주기를 만들기 쉽습니다. 더 적극적으로 처리할지는 실제 양과 오분류 정도를 보고 결정하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "공식 시험 문자열은 akismet-guaranteed-spam입니다. 시험 댓글 본문에 그 문자열만 넣고 관리자 화면의 Comments 아래 Spam 탭에서 분류됐는지 확인하세요. 관리 가능한 페이지에서 시험하고 시험 기록을 정리합니다. 실제 악성 링크를 올릴 필요도 없고, 무작위로 쓴 말이 통과했다고 도구가 고장 났다고 판단해서도 안 됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "플러그인 연결이 유효한지 확인하고, 처음에는 사람이 검토할 수 있는 스팸 분류를 유지합니다.",
+            "공식 시험 문자열을 제출해 Spam 탭에 들어가는지 확인합니다.",
+            "글과 관련된 정상 시험 댓글도 제출해 승인과 공개 화면 표시를 확인합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "오분류를 복구하고 놓친 스팸도 신고하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Spam 탭을 정기적으로 살펴보세요. 정상 댓글로 확인되면 Not Spam을 선택한 뒤 사이트의 승인 절차에 따라 공개 여부를 결정합니다. 승인 대기나 공개 영역에 들어온 명백한 스팸은 Spam으로 신고합니다. Akismet 공식 설명에 따르면 서비스를 계속 활성화해야 이런 수정 피드백이 수집됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "숫자만 비우려고 불확실한 댓글을 한꺼번에 승인하지 마세요. 글, 시각, 반복 패턴으로 범위를 좁히고 댓글이 글 주제에 답하는지, 링크 문구와 실제 목적지가 맞는지 읽어보세요. 의심스러운 링크를 직접 열지 않아도 처음 판단할 수 있습니다. 무관한 광고는 문구와 반복 행동에서 드러나는 경우가 많습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 독자가 반복해서 잘못 분류되면 해당 댓글과 분류 단서를 지원팀 검토용으로 남기세요. “이 사람은 항상 통과”하는 느슨한 규칙을 임의로 만들지 마세요. 신원 입력란은 위조될 수 있고 정상 독자 계정도 탈취될 수 있습니다. 일괄 삭제 전 다시 표본을 확인하고 처리 기록 보존이 필요한지 살피세요."
+        },
+        {
+          "type": "heading",
+          "text": "개인정보와 유지관리를 일상 절차에 포함하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet은 스팸 판단에 필요한 댓글 정보를 서비스로 보내므로 완전히 오프라인인 플러그인이라고 설명할 수 없습니다. 공식 기능에는 댓글 영역의 개인정보 안내 옵션이 있습니다. 사이트도 실제 이용 방식에 맞춰 정보 흐름을 설명하고 현재 상황과 맞지 않는 정형 문구만 붙이지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "정해진 주기로 승인 대기와 Spam을 확인할 담당자를 지정하고 의심되는 오분류, 반복 스팸 유형, 규칙 수정을 짧게 기록하세요. 사이트가 성장하면 계정 사용량과 요금제 자격을 다시 확인해 연결이나 자격이 끊겼는데도 보호가 된다고 믿지 않도록 합니다. 서비스 경고가 오면 먼저 영향 범위를 확인하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "유지관리 후 로그인하지 않은 창에서 댓글 입력 위치, 승인 대기 안내, 공개 결과를 확인합니다. 독자가 댓글이 접수됐는지 기다려야 하는지 알 수 있어야 합니다. 공개 화면에는 아무 알림이 없는데 관리자 화면에는 중복 제출이 쌓이지 않도록 하세요. 좋은 관리란 정상 토론을 처리하는 것이지 스팸 숫자만 0으로 보이게 하는 것이 아닙니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-comment-spam/diagram-1-ko.svg",
+          "alt": "승인 규칙 설정, 서비스 분류, 사람의 검토, 오분류 신고의 네 단계를 이어 댓글을 관리하는 순환 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "스팸을 줄이면서 실제 질문을 읽고 답할 수 있게 하세요.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "주요 용도",
+            "관리 초점"
+          ],
+          "rows": [
+            [
+              "특정 글 댓글 닫기",
+              "토론이 필요 없는 내용",
+              "기존 글과 댓글의 보존 확인"
+            ],
+            [
+              "WordPress 승인 규칙",
+              "링크나 단어로 선별",
+              "짧은 키워드로 정상 댓글을 막지 않기"
+            ],
+            [
+              "Akismet 자동 분류",
+              "스팸 식별 보조",
+              "요금제 자격, 연결, 오분류 신고"
+            ],
+            [
+              "사람의 검토",
+              "문맥과 불확실한 항목 처리",
+              "담당자, 명확한 규칙, 기록"
+            ]
+          ],
+          "caption": "자동 분류와 사람의 판단이 각각 역할을 하도록 방법을 함께 쓰세요."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "오분류 수정도 보호의 일부",
+          "text": "댓글 내용을 확인한 뒤 Spam 또는 Not Spam을 선택하세요. 다른 의견은 스팸이 아니며 숫자를 비웠다고 검토가 끝난 것도 아닙니다. 정상 독자의 목소리가 보일 수 있는 절차를 유지하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "회원 등록의 승인 절차 계획하기",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "문의 양식의 보호와 보관 설정하기",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 토론 설정",
+          "url": "https://wordpress.org/documentation/article/settings-discussion-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 활성화",
+          "url": "https://akismet.com/support/getting-started/activate/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 무료 및 유료 요금제 자격",
+          "url": "https://akismet.com/support/getting-started/free-or-paid/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 보호 범위",
+          "url": "https://akismet.com/support/getting-started/what-does-akismet-protect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 시험 방법",
+          "url": "https://akismet.com/support/getting-started/confirm/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 오분류 수정",
+          "url": "https://akismet.com/support/general/teach-akismet/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 개인정보 안내",
+          "url": "https://akismet.com/privacy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 垃圾评论怎么处理：审核规则与 Akismet",
+      "description": "WordPress 评论防垃圾信息除了安装插件，还需要合理的审核规则与误判修正流程。本文整理讨论设置、Akismet 启用及方案资格、垃圾评论回报与正常评论救回方法，提供小型网站的日常审核清单，协助站长降低管理负担，也让确实想提问的读者顺利参与讨论。",
+      "hero": {
+        "src": "/guides/wordpress-comment-spam/hero-zh-cn.jpg",
+        "alt": "由文件、盾牌与屏幕构成的原创插图，呈现评论经过防护与人工审核后公开。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "每天登录网站都看到大量推销链接，很容易想直接清空所有待审核评论。但其中也可能有读者补充信息或提出真实问题。评论管理需要同时拦截明显的垃圾信息，并让正常讨论有机会被看见。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以经营生活教程网站为例，可以先用 WordPress 讨论设置建立审核边界，再让 Akismet 协助分类，最后由人处理不确定及误判项目。这是需要持续修正的工作流程，并非启用一次就永远不用检查。"
+        },
+        {
+          "type": "heading",
+          "text": "先决定哪些文章需要评论",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "盘点评论的用途：补充教程、报告错误、提问，还是只保留旧主题的默认功能。如果某类公告不需要讨论，可以针对这类文章调整开放方式；仍有长期问答价值的教程，不必只因发布时间较久就一律关闭。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在设置的讨论页面，可以管理新文章是否接受评论、是否接受 pingback 或 trackback，以及是否要求登录。这些选择各有代价：要求账号能增加一道门槛，也可能让偶尔来访的读者放弃回复；如果没有会员需求，先评估审核流程是否已经足够。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新文章的默认设置和已发布文章的个别设置要分别检查。若要调整旧文章，先筛选一小组并核对批量编辑的范围。不要把停用新评论、删除已有评论与隐藏评论区当作同一件事；读者之前提供的有用内容仍值得保留。"
+        },
+        {
+          "type": "heading",
+          "text": "设置容易理解的人工审核规则",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初期可以让有权限的人员批准评论，再观察每天的数量。WordPress 也提供按链接数量和关键词保留待审核的设置，但链接多不一定是垃圾内容，读者可能正在提供参考资料。先保留等待确认，通常比直接大范围删除更容易纠正。"
+        },
+        {
+          "type": "paragraph",
+          "text": "关键词匹配可能命中较长词语的一部分，所以不要把过短的英文字母或常见中文词加入严格封锁名单。先找反复出现、特征明显的推销短语，记录设置原因和日期；若正常评论被拦，应回头检查规则，而不是让每位读者猜测哪些字不能使用。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在评论区附近写简短规范，例如欢迎相关补充、不公开个人联系方式、不接受无关广告。把对内容的不同意见与垃圾信息分开处理，避免因为读者批评就"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "为垃圾，让自动分类收到错误反馈。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "确认 Akismet 方案与连接",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet 是外部垃圾信息判断服务，启用插件后需要有效账号或 API 密钥。官方 Personal 方案针对非商业个人用途；有广告、联盟链接、销售或业务推广的网站，应核对商业方案资格，不要只因网站规模小就假设可以使用免费密钥。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安装时核对作者是 Automattic，再按照目前 WordPress 版本的官方启用流程连接。设置入口可能位于 Akismet Anti-spam、Jetpack，或新版 Connectors 整合中；输入密钥后确认账号和站点状态，不要把密钥放进公开截图或交接文件正文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet 的保护范围也要按整合方式核对。WordPress 评论可以接受检查，但联系表单可能需要额外字段设置；官方还指出它不负责 WordPress 垃圾用户注册。如果问题是大量假会员，应回到会员注册流程处理，不能用评论插件替代。"
+        },
+        {
+          "type": "heading",
+          "text": "用可恢复的方式确认分类有效",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "开始观察时，可以选择把垃圾内容送往 Spam 区供人工查看，而不是立即使用悄悄丢弃最严重垃圾信息的模式。这样更容易确认正常评论是否被误判，并建立网站自己的检查节奏。是否改用更积极的处理方式，应根据实际数量和误判情况决定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "官方提供专用测试字符串 akismet-guaranteed-spam，可以在测试评论正文只填入这个字符串，再到后台 Comments 的 Spam 标签页确认分类。先在受控页面测试并清理测试记录，不必粘贴真实恶意链接，也不能仅凭随机乱写的文字就认定工具失效。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认插件连接有效，先保留可人工检查的垃圾分类。",
+            "提交官方测试字符串，检查是否进入 Spam 标签页。",
+            "再提交一则正常且与文章相关的测试评论，核对审核和前台显示流程。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "救回误判，也回报漏网内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "定期查看 Spam 标签页，对确认正常的评论使用 Not Spam，再按网站审核流程决定是否公开。对漏进待审核或已公开区域的明显垃圾内容，使用 Spam 回报。Akismet 官方说明，服务需要保持启用，这些修正反馈才能被收集。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要为了清空数量就批量批准不确定的内容。先按文章、时间或重复模式缩小范围，阅读评论是否回应文章主题，链接文字是否与实际目的地相符。判断可疑链接不需要直接打开，多数无关推销从文字和重复行为就能看出线索。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若同一位读者反复被误判，保留该次评论和分类线索供客服核查，避免自行建立“这个人永远放行”的宽松规则。身份字段可能被冒用，正常读者的账号也可能被盗。批量删除前再抽查，并确认是否需要保留处理记录。"
+        },
+        {
+          "type": "heading",
+          "text": "把隐私和维护安排纳入日常工作",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Akismet 会把与垃圾信息判断有关的评论资料送到服务端处理，因此不能描述成完全离线的插件。官方提供评论区的隐私提示选项；网站也应按实际使用方式说明资料流向，避免只粘贴一段与现况不符的套话。"
+        },
+        {
+          "type": "paragraph",
+          "text": "安排固定查看待审核和 Spam 的人员，简短记录疑似误判、反复出现的垃圾类型及规则调整。网站成长时核对账号用量和方案资格，避免连接或资格失效后仍以为防护正常运行。收到服务警告时，先确认影响范围再处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "维护后用未登录窗口检查评论入口、等待审核的提示和公开结果。让读者知道评论是否已接收、是否需要等待，不要让前台没有提示而后台累积多次提交。良好的管理是正常讨论能得到处理，而不只是垃圾数量看起来归零。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-comment-spam/diagram-1-zh-cn.svg",
+          "alt": "四步图解呈现设置审核规则、服务分类、人工查看及回报误判，构成评论维护循环。",
+          "width": 1600,
+          "height": 900,
+          "caption": "减少垃圾内容，也要让真实提问能被阅读与回复。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "主要用途",
+            "维护重点"
+          ],
+          "rows": [
+            [
+              "关闭特定文章评论",
+              "不需要讨论的内容",
+              "核对旧文章及已有评论的保留"
+            ],
+            [
+              "WordPress 待审核规则",
+              "按链接或词语筛选",
+              "避免过短关键词造成误拦"
+            ],
+            [
+              "Akismet 自动分类",
+              "协助识别垃圾信息",
+              "方案资格、连接与误判回报"
+            ],
+            [
+              "人工审核",
+              "处理上下文与不确定项目",
+              "固定人员、清楚规范与记录"
+            ]
+          ],
+          "caption": "搭配不同方法，让自动分类和人工判断各自发挥作用。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "误判修正是防护的一部分",
+          "text": "先确认内容再使用 Spam 或 Not Spam。不同意见不等于垃圾评论，清空数量也不等于完成审核；保留让正常读者被看见的流程。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "规划会员注册的审核流程",
+              "kind": "life",
+              "slug": "wordpress-member-registration"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立联系表单的防护与留存",
+              "kind": "life",
+              "slug": "wordpress-contact-forms"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 讨论设置",
+          "url": "https://wordpress.org/documentation/article/settings-discussion-screen/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 启用方式",
+          "url": "https://akismet.com/support/getting-started/activate/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 免费与付费资格",
+          "url": "https://akismet.com/support/getting-started/free-or-paid/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 保护范围",
+          "url": "https://akismet.com/support/getting-started/what-does-akismet-protect/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 测试方法",
+          "url": "https://akismet.com/support/getting-started/confirm/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 误判回报",
+          "url": "https://akismet.com/support/general/teach-akismet/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Akismet 隐私信息",
+          "url": "https://akismet.com/privacy/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
