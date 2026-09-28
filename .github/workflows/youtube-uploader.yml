@@ -22,8 +22,6 @@ jobs:
     timeout-minutes: 20
     env:
       UPLOADER_CHANNEL_ID: UCaaaaaaaaaaaaaaaaaaaaaa
-      UPLOADER_SECRET_PATH: ${{ runner.temp }}/uploader-secrets/uploader
-      UPLOADER_VNC_PASSWORD_PATH: ${{ runner.temp }}/uploader-secrets/vnc_password
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -46,6 +44,8 @@ jobs:
           printf '%s' 'ci-only-vnc-password' > "$RUNNER_TEMP/uploader-secrets/vnc_password"
           chmod 755 "$RUNNER_TEMP/uploader-secrets"
           chmod 444 "$RUNNER_TEMP/uploader-secrets/"*
+          printf 'UPLOADER_SECRET_PATH=%s\n' "$RUNNER_TEMP/uploader-secrets/uploader" >> "$GITHUB_ENV"
+          printf 'UPLOADER_VNC_PASSWORD_PATH=%s\n' "$RUNNER_TEMP/uploader-secrets/vnc_password" >> "$GITHUB_ENV"
       - name: Build the independent container with its deployment Compose
         run: docker compose -f ops/youtube-uploader/compose.yml build
       - name: Start the headful desktop and check readiness without an account
