@@ -1,18 +1,19 @@
 ---
 id: 2026-09-28-video-story-backlog
 title: 100 個品牌故事的完整企劃清單
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1-video-story
+claimed_at: 2026-09-28T03:37:23Z
 created_at: 2026-09-28T03:31:10Z
 completed_at:
-branch:
+branch: claude/video-story-backlog
 depends_on:
   - 2026-09-28-video-story-design-docs
 scope:
   - docs/videos/story-plans/brand-stories-100
+  - tools/video/story-plans
 ---
 
 # 100 個品牌故事的完整企劃清單
@@ -28,12 +29,12 @@ scope:
 - [ ] `docs/videos/story-plans/brand-stories-100/stories.json` 有 100 筆，分類是 40／40／20，`number` 1–100 不重複且等於排程順序，`slug` 不重複且符合影片代號規則（小寫、數字、連字號，最多 60 字元）。
 - [ ] 每一筆都有 `question`、六段 `chapters`、`takeaway`、`must_verify`、至少 3 個 https 的 `sources`、`names`、`image_notes`、`publish`。
 - [ ] 每一筆的核心說法（標題裡的那句話）至少有一個官方頁面或兩個獨立的可靠來源支持；不成立的題目已經換成備選，換掉的理由記在 `README.md`。
-- [ ] `validate.mjs` 檢查以上規則與排程（50 天、每天 12:00 與 20:00 各一支），在 `npm run test:tools` 裡跑。
+- [ ] `tools/video/story-plans/validate.mjs` 檢查以上規則與排程（50 天、每天 12:00 與 20:00 各一支），在 `npm run test:tools` 裡跑。
 - [ ] `README.md` 說明清單怎麼讀、怎麼改、怎麼匯入，並附 50 天排程表與備選清單。
 
 ## Steps
 
-- [ ] 定 `stories.json` 的形狀與 `validate.mjs`，先用 2 筆試作題目（A01 輪子行李箱、B18 迴轉壽司）寫完整。
+- [ ] 定 `stories.json` 的形狀與 `tools/video/story-plans/validate.mjs`，先用 2 筆試作題目（A01 輪子行李箱、B18 迴轉壽司）寫完整。
 - [ ] 分批研究與撰寫：每批約 10 個題目，一個代理寫、另一個代理查核核心說法與來源能否抓取。
 - [ ] 查核沒過的題目從備選遞補，重排 `number` 與 `publish`。
 - [ ] 寫 `README.md` 與排程表。
@@ -42,7 +43,7 @@ scope:
 ## How to verify
 
 ```bash
-node docs/videos/story-plans/brand-stories-100/validate.mjs
+node tools/video/story-plans/validate.mjs
 npm run test:tools
 ```
 
