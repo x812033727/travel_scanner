@@ -201,6 +201,9 @@ class NewsCandidate(Timestamped, Base):
     )
     event_date: Mapped[date | None] = mapped_column(Date, nullable=True)
     content_hash: Mapped[str] = mapped_column(String(64), index=True)
+    # policy.body_fingerprint of the lead page ("body-v1:<sha256>"), None when the page had
+    # too little story for one; the scanner's duplicate check compares it across URLs.
+    body_hash: Mapped[str | None] = mapped_column(String(80), nullable=True, index=True)
     evidence_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
     idempotency_key: Mapped[str] = mapped_column(String(64))
     guide_article_id: Mapped[UUID | None] = mapped_column(
@@ -244,6 +247,10 @@ class NewsEvidence(Base):
     etag: Mapped[str | None] = mapped_column(String(512), nullable=True)
     last_modified: Mapped[str | None] = mapped_column(String(512), nullable=True)
     content_hash: Mapped[str] = mapped_column(String(64))
+    # The story alone (policy.body_fingerprint), so page chrome that re-renders does not read
+    # as an edit. None on rows stored before migration 0112 and on pages with too little
+    # story; revalidation then compares content_hash as before.
+    body_hash: Mapped[str | None] = mapped_column(String(80), nullable=True)
     excerpt: Mapped[str] = mapped_column(Text)
 
 

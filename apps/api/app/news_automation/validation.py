@@ -6,10 +6,10 @@ from urllib.parse import urlsplit
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.news_automation.feeds import extract_article, parse_entries
+from app.news_automation.feeds import Article, extract_article, parse_entries, read_article
 from app.news_automation.fetch import RateLimiter, SafeNewsFetcher
 from app.news_automation.models import NewsEvidence, NewsSource
-from app.news_automation.policy import content_fingerprint
+from app.news_automation.policy import body_fingerprint, content_fingerprint, current_body_hash
 from app.problems import AppError
 
 
@@ -55,7 +55,7 @@ async def refresh_evidence(
     own_fetcher = fetcher is None
     fetcher = fetcher or SafeNewsFetcher(rate_limiter=rate_limiter)
     problems: list[str] = []
-    fetched_rows: list[tuple[NewsEvidence, str, str | None, str | None]] = []
+    fetched_rows: list[tuple[NewsEvidence, Article, str | None, str | None]] = []
     try:
         for row in evidence:
             matched_source = by_host.get(source_host(row.url))
@@ -77,13 +77,11 @@ async def refresh_evidence(
             except Exception as error:
                 problems.append(f"source_refetch_failed:{row.url}:{type(error).__name__}")
                 continue
-            _, article_text, _ = extract_article(
-                fetched.body, fetched.url, matched_source.config_json
-            )
-            if not article_text.strip():
+            article = read_article(fetched.body, fetched.url, matched_source.config_json)
+            if not article.text.strip():
                 problems.append(f"source_became_unreadable:{row.url}")
                 continue
-            fetched_rows.append((row, article_text, fetched.etag, fetched.last_modified))
+            fetched_rows.append((row, article, fetched.etag, fetched.last_modified))
     finally:
         if own_fetcher:
             await fetcher.close()
@@ -91,12 +89,14 @@ async def refresh_evidence(
         return [], problems
     changed: list[str] = []
     now = datetime.now(UTC)
-    for row, article_text, etag, last_modified in fetched_rows:
-        digest = content_fingerprint(article_text)
-        if digest != row.content_hash:
+    for row, article, etag, last_modified in fetched_rows:
+        digest = content_fingerprint(article.text)
+        story = body_fingerprint(article)
+        if not _same_story(row, digest, story):
             changed.append(row.url)
         row.content_hash = digest
-        row.excerpt = article_text[:8000]
+        row.body_hash = story
+        row.excerpt = article.text[:8000]
         row.retrieved_at = now
         row.etag = etag
         row.last_modified = last_modified
@@ -157,6 +157,21 @@ async def validate_source_configuration(
             await fetcher.close()
 
 
+def _same_story(row: NewsEvidence, content_hash: str, body_hash: str | None) -> bool:
+    """Whether the stored row and the current page hold the same story.
+
+    The story-only hash decides when both sides have one of the current version: page
+    chrome that re-renders (players, rails, relative times) does not change it, and any edit
+    to the headline or a story element does. Otherwise the whole-region hash decides, as
+    before 2026-09-28.
+    """
+
+    stored = current_body_hash(row.body_hash)
+    if stored is not None and body_hash is not None:
+        return stored == body_hash
+    return content_hash == row.content_hash
+
+
 def _legacy_match(
     body: bytes,
     url: str,
@@ -189,7 +204,12 @@ async def revalidate_evidence(
     fetcher: SafeNewsFetcher | None = None,
     rate_limiter: RateLimiter | None = None,
 ) -> tuple[bool, list[str]]:
-    """Refetch evidence through the SSRF-safe client and compare extracted text hashes."""
+    """Refetch evidence through the SSRF-safe client and compare extracted text hashes.
+
+    A row with a body hash is compared by the story alone when the current page yields one
+    too (``_same_story``); otherwise by ``content_hash``, and rows stored before the body hash
+    existed may also match the legacy extraction (``_legacy_match``).
+    """
 
     by_host, allowed_hosts, allowed_redirects = await _source_index(session)
     own_fetcher = fetcher is None
@@ -221,19 +241,21 @@ async def revalidate_evidence(
             if fetched.not_modified:
                 row.retrieved_at = datetime.now(UTC)
                 continue
-            _, article_text, _ = extract_article(
-                fetched.body, fetched.url, matched_source.config_json
-            )
-            if not article_text.strip():
+            article = read_article(fetched.body, fetched.url, matched_source.config_json)
+            if not article.text.strip():
                 reasons.append(f"source_became_unreadable:{row.url}")
                 continue
-            if content_fingerprint(article_text) != row.content_hash and not _legacy_match(
-                fetched.body,
-                fetched.url,
-                matched_source.config_json,
-                row.content_hash,
-                article_text=article_text,
-            ):
+            same = _same_story(row, content_fingerprint(article.text), body_fingerprint(article))
+            # A row without a body hash may still hold text from the pre-2026-09-28 parser.
+            if not same and current_body_hash(row.body_hash) is None:
+                same = _legacy_match(
+                    fetched.body,
+                    fetched.url,
+                    matched_source.config_json,
+                    row.content_hash,
+                    article_text=article.text,
+                )
+            if not same:
                 reasons.append(f"source_content_changed:{row.url}")
                 continue
             row.retrieved_at = datetime.now(UTC)
