@@ -1,0 +1,876 @@
+{
+  "schema_version": 1,
+  "slug": "vibe-coding-first-website-2026",
+  "format": "slides",
+  "source_guide": "vibe-coding-first-website",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語、台灣腔，輕鬆、像在跟朋友解釋，有起伏、中等偏快",
+    "model": "gemini-3.8-flash-tts"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "不會寫程式，也能在 2026 年做出第一個網站：用對話 vibe coding，免費上線",
+    "description": "完全不會寫程式，也能用對話做出一頁自己的網站並免費上線。這支從描述需求、產出、檢查、修改到上線，一次走完。\n給想要一頁個人網站或作品集、但不想先學 HTML 的人。\n\n涵蓋需求要寫滿的四個面向與技術邊界、Claude Artifacts 與 Gemini Canvas 怎麼邊做邊預覽、為什麼一次只改一件事、GitHub Pages 與 Cloudflare Pages 的免費限制，以及上線前的四個坑：圖片版權、個資與金鑰、AI 亂補內容、廣告與追蹤。方案與限制以官網當天為準。",
+    "tags": [
+      "vibe coding",
+      "AI 做網站",
+      "不會寫程式",
+      "GitHub Pages",
+      "Cloudflare Pages",
+      "Claude Artifacts",
+      "Gemini Canvas",
+      "no code website"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "VIBE CODING",
+      "headline": "No code.\n**First website today**",
+      "sub": "free · step by step"
+    }
+  },
+  "sources": [
+    {
+      "title": "Claude 說明中心：What are artifacts and how do I use them?",
+      "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Gemini Apps Help：Create docs, apps & more with Canvas",
+      "url": "https://support.google.com/gemini/answer/16047321",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "GitHub Docs：GitHub Pages limits",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Cloudflare Docs：Pages limits",
+      "url": "https://developers.cloudflare.com/pages/platform/limits/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Creative Commons：About CC Licenses",
+      "url": "https://creativecommons.org/share-your-work/cclicenses/",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "不會寫程式也能做網站",
+      "template": "title",
+      "data": {
+        "tag": "VIBE CODING",
+        "title": "不會寫程式，**今天就有自己的網站**",
+        "subtitle": "用對話做、免費上線"
+      },
+      "lines": [
+        {
+          "id": "9fna",
+          "text": "不用學 HTML，你今天就能有一頁自己的網站。"
+        },
+        {
+          "id": "awdg",
+          "text": "祕訣不是哪個工具最強，是你怎麼把需求講清楚。"
+        },
+        {
+          "id": "dhgv",
+          "text": "這支從描述需求一路走到免費上線，一次走完。"
+        },
+        {
+          "id": "pzdh",
+          "text": "不需要安裝任何開發工具。"
+        }
+      ]
+    },
+    {
+      "id": "what-is",
+      "chapter": "vibe coding 是什麼",
+      "template": "steps",
+      "data": {
+        "title": "vibe coding 的五個步驟",
+        "steps": [
+          {
+            "title": "描述需求",
+            "detail": "用中文寫清楚"
+          },
+          {
+            "title": "產出",
+            "detail": "AI 給你一個 HTML 檔"
+          },
+          {
+            "title": "打開來看",
+            "detail": "用瀏覽器看檔案"
+          },
+          {
+            "title": "一次改一件",
+            "detail": "用對話修改"
+          },
+          {
+            "title": "上線",
+            "detail": "放到免費服務"
+          }
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "mfcz",
+          "text": "這種用對話做網站的方法，叫 vibe coding。",
+          "reveal": 1
+        },
+        {
+          "id": "cnvq",
+          "text": "你先用中文把想要的東西描述清楚。",
+          "reveal": 1
+        },
+        {
+          "id": "nxpq",
+          "text": "AI 產生一個 HTML 檔，你在瀏覽器打開來看。",
+          "reveal": 1
+        },
+        {
+          "id": "veic",
+          "text": "不滿意就用對話改，一次只改一件事。",
+          "reveal": 1
+        },
+        {
+          "id": "qe7a",
+          "text": "最後放到免費的靜態網站服務，就上線了。",
+          "reveal": 1
+        },
+        {
+          "id": "5xx3",
+          "text": "整個過程只需要一個瀏覽器和兩個帳號。"
+        },
+        {
+          "id": "79te",
+          "text": "走完一次，你會得到一頁可以公開的個人介紹。"
+        }
+      ]
+    },
+    {
+      "id": "four-parts",
+      "chapter": "把需求寫成一段話",
+      "template": "bullets",
+      "data": {
+        "title": "需求要寫滿四個面向",
+        "items": [
+          "目的：這頁要做什麼",
+          "內容：要放哪些文字",
+          "風格：想要什麼感覺",
+          "不要什麼：最常被跳過"
+        ]
+      },
+      "lines": [
+        {
+          "id": "d7wu",
+          "text": "產出的品質，幾乎完全由你給的描述決定。",
+          "reveal": 1
+        },
+        {
+          "id": "zb99",
+          "text": "先寫目的，這頁網站要做什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "r6af",
+          "text": "再寫內容和風格，要放哪些字、想要什麼感覺。",
+          "reveal": 1
+        },
+        {
+          "id": "ata6",
+          "text": "最後一項最容易被跳過：不要什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "hti7",
+          "text": "沒寫清楚不要什麼，AI 會自己補一堆你不需要的東西。"
+        },
+        {
+          "id": "7ayd",
+          "text": "這四項寫滿，AI 就不用猜你想要什麼。"
+        }
+      ]
+    },
+    {
+      "id": "bad-good",
+      "template": "chat",
+      "data": {
+        "title": "同一個需求，兩種寫法",
+        "messages": [
+          {
+            "side": "right",
+            "name": "模糊",
+            "text": "幫我做一個網站"
+          },
+          {
+            "side": "left",
+            "name": "清楚",
+            "text": "一頁個人介紹，放自我介紹和三個作品，米白底、簡潔，不要動畫和廣告"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "ebbz",
+          "text": "看這兩種寫法的差別。",
+          "reveal": 1
+        },
+        {
+          "id": "a8y3",
+          "text": "「幫我做一個網站」，AI 只能亂猜。",
+          "reveal": 1
+        },
+        {
+          "id": "a23n",
+          "text": "寫清楚目的、內容、風格和不要什麼，出來的東西就穩很多。"
+        },
+        {
+          "id": "enem",
+          "text": "好的描述，其實就是把你腦中的畫面寫出來。"
+        },
+        {
+          "id": "knys",
+          "text": "寫得越具體，改的次數就越少。"
+        }
+      ]
+    },
+    {
+      "id": "tech-bounds",
+      "template": "big",
+      "data": {
+        "kicker": "再加一段技術邊界",
+        "text": "只要一個檔",
+        "sub": "檔名 index、樣式寫在同一檔、不連外部資源"
+      },
+      "lines": [
+        {
+          "id": "j8r3",
+          "text": "再加一段技術邊界，可以省掉後面一半的麻煩。"
+        },
+        {
+          "id": "dv87",
+          "text": "跟它說只要一個檔案，檔名叫 index，樣式寫在同一個檔裡。"
+        },
+        {
+          "id": "brrx",
+          "text": "不連外部字型或圖片，也不用需要安裝的框架。"
+        },
+        {
+          "id": "razt",
+          "text": "這樣的檔案點兩下就能看，搬到哪裡都不會壞。"
+        },
+        {
+          "id": "d2su",
+          "text": "這段邊界，是新手最容易省略、卻最值得寫的部分。"
+        },
+        {
+          "id": "gs6i",
+          "text": "就算之後換工具，這個檔案也還是能用。"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "chapter": "選一個能直接預覽的工具",
+      "template": "table",
+      "data": {
+        "title": "三家都能邊做邊預覽",
+        "columns": [
+          "工具",
+          "功能名稱",
+          "要注意的"
+        ],
+        "rows": [
+          [
+            "Claude",
+            "Artifacts",
+            "要先在設定開啟程式執行與檔案建立"
+          ],
+          [
+            "Gemini",
+            "Canvas",
+            "要登入，程式碼旁邊就是預覽"
+          ],
+          [
+            "ChatGPT",
+            "網站功能",
+            "方案與地區以官網為準"
+          ]
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "m7zh",
+          "text": "做網站的工具，三家主要的對話 AI 都有。"
+        },
+        {
+          "id": "25fx",
+          "text": "Claude 的叫 Artifacts，免費方案也能用。"
+        },
+        {
+          "id": "ciyv",
+          "text": "但要先在設定裡，把程式執行和檔案建立打開。"
+        },
+        {
+          "id": "ducf",
+          "text": "Gemini 的叫 Canvas，登入之後，程式碼旁邊就是預覽。"
+        },
+        {
+          "id": "8u87",
+          "text": "ChatGPT 也有做網站的功能，方案和地區限制以官網為準。"
+        },
+        {
+          "id": "sfxr",
+          "text": "三家都能用，挑你已經有帳號的那家就好。"
+        },
+        {
+          "id": "xe4c",
+          "text": "重點是它能不能讓你邊做邊看、做完能不能下載。"
+        },
+        {
+          "id": "kbcx",
+          "text": "Canvas 出錯時，還能打開主控台看錯誤訊息。"
+        }
+      ]
+    },
+    {
+      "id": "names-change",
+      "template": "big",
+      "data": {
+        "kicker": "提醒",
+        "text": "名稱常改",
+        "sub": "2026 年這些功能變動很快，以官網當天為準"
+      },
+      "lines": [
+        {
+          "id": "6nsw",
+          "text": "這些功能的名稱和方案，今年變動得很快。"
+        },
+        {
+          "id": "2mb4",
+          "text": "決定之前，以官網當天的說明為準。"
+        },
+        {
+          "id": "3rmm",
+          "text": "重點不是工具，是後面那套流程。"
+        },
+        {
+          "id": "2a7a",
+          "text": "今天的名字，下個月可能就換了。"
+        }
+      ]
+    },
+    {
+      "id": "open-file",
+      "chapter": "打開檔案、一次改一件事",
+      "template": "bullets",
+      "data": {
+        "title": "先在瀏覽器打開檔案",
+        "items": [
+          "預覽沒問題 ≠ 檔案沒問題",
+          "下載成檔案，點兩下打開",
+          "看錯字、連結、拉窄後的排版"
+        ]
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "9e6i",
+          "text": "預覽面板看起來沒問題，不代表檔案本身沒問題。",
+          "reveal": 1
+        },
+        {
+          "id": "7sun",
+          "text": "把它下載成檔案，放進新資料夾，點兩下用瀏覽器打開。",
+          "reveal": 1
+        },
+        {
+          "id": "8i4t",
+          "text": "這一關看錯字、每個連結，還有把視窗拉窄後的排版。",
+          "reveal": 1
+        },
+        {
+          "id": "4t79",
+          "text": "這才是讀者真正會看到的樣子。"
+        },
+        {
+          "id": "8qxq",
+          "text": "很多人跳過這一步，上線後才發現手機版跑掉。"
+        },
+        {
+          "id": "izrh",
+          "text": "這一關看的是畫面和文字，不是程式碼。"
+        },
+        {
+          "id": "v32s",
+          "text": "點每一個連結，確認都連到對的地方。"
+        }
+      ]
+    },
+    {
+      "id": "one-change",
+      "template": "steps",
+      "data": {
+        "title": "一次只改一件事",
+        "steps": [
+          {
+            "title": "只換配色",
+            "detail": "指到位置、給具體顏色"
+          },
+          {
+            "title": "加一段內容",
+            "detail": "說清楚放在哪裡"
+          },
+          {
+            "title": "手機版排版",
+            "detail": "說明窄螢幕要怎麼排"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "2zbn",
+          "text": "修改的時候，不要一次丟五個要求。"
+        },
+        {
+          "id": "nieh",
+          "text": "第一次只換配色，指清楚是哪一塊、換成什麼顏色。",
+          "reveal": 1
+        },
+        {
+          "id": "6ijm",
+          "text": "第二次加一段內容，說清楚要放在哪裡。",
+          "reveal": 1
+        },
+        {
+          "id": "sxwe",
+          "text": "第三次才修手機版，說明窄螢幕要怎麼排。",
+          "reveal": 1
+        },
+        {
+          "id": "fgdh",
+          "text": "一次改太多，它常常改好一個、弄壞另一個。"
+        },
+        {
+          "id": "x464",
+          "text": "慢一點，反而比較快做完。"
+        }
+      ]
+    },
+    {
+      "id": "vague-words",
+      "template": "chat",
+      "data": {
+        "title": "別說「好看一點」",
+        "messages": [
+          {
+            "side": "right",
+            "name": "模糊",
+            "text": "把網站改得好看一點"
+          },
+          {
+            "side": "left",
+            "name": "具體",
+            "text": "把標題改成深綠色，作品區改成兩欄，手機上變一欄"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "9ppa",
+          "text": "描述也要具體，別說「好看一點」。",
+          "reveal": 1
+        },
+        {
+          "id": "i69p",
+          "text": "說標題改成深綠色、作品區改兩欄，它才知道要做什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "3r7m",
+          "text": "每改完一輪，就重新下載、重新打開來看。"
+        },
+        {
+          "id": "wtvb",
+          "text": "指到具體位置、給具體結果，是修改的唯一原則。"
+        }
+      ]
+    },
+    {
+      "id": "backup",
+      "template": "big",
+      "data": {
+        "kicker": "改了幾輪之後",
+        "text": "每次滿意就備份",
+        "sub": "最容易把中途某一版傳上網"
+      },
+      "lines": [
+        {
+          "id": "tjmt",
+          "text": "改了幾輪之後，最容易把中途某一版傳上網。"
+        },
+        {
+          "id": "qfg7",
+          "text": "所以每滿意一次，就另存一份備份。"
+        },
+        {
+          "id": "p5j4",
+          "text": "對話裡的預覽，和你手上的檔案是兩件事。"
+        },
+        {
+          "id": "e3vp",
+          "text": "備份很簡單，但出事的時候差很多。"
+        }
+      ]
+    },
+    {
+      "id": "hosting",
+      "chapter": "免費上線",
+      "template": "table",
+      "data": {
+        "title": "兩個免費上線服務",
+        "columns": [
+          "服務",
+          "免費方案重點",
+          "網址"
+        ],
+        "rows": [
+          [
+            "GitHub Pages",
+            "網站上限 1 GB、每月頻寬軟性上限 100 GB",
+            "帳號名.github.io"
+          ],
+          [
+            "Cloudflare Pages",
+            "每月 500 次建置、每站最多 2 萬個檔案",
+            "專案名.pages.dev"
+          ]
+        ]
+      },
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "a4vh",
+          "text": "檔案準備好，就放到免費的靜態網站服務。"
+        },
+        {
+          "id": "hvjf",
+          "text": "GitHub Pages 的網站上限是一 GB，每月頻寬軟性上限一百 GB。"
+        },
+        {
+          "id": "bguq",
+          "text": "Cloudflare Pages 每月可以建置五百次，每個網站最多兩萬個檔案。"
+        },
+        {
+          "id": "mb62",
+          "text": "兩家拿到的網址，都是你的名稱接上它們的網域。"
+        },
+        {
+          "id": "fwg9",
+          "text": "兩家的免費方案，放一頁個人網站都綽綽有餘。"
+        },
+        {
+          "id": "knvi",
+          "text": "要注意的是，這些都是軟性上限，官方可以調整。"
+        },
+        {
+          "id": "4raw",
+          "text": "GitHub Pages 每小時建置也有軟性上限，是十次。"
+        }
+      ]
+    },
+    {
+      "id": "deploy-steps",
+      "template": "steps",
+      "data": {
+        "title": "上線前把資料夾整理好",
+        "steps": [
+          {
+            "title": "首頁叫 index",
+            "detail": "兩家都把它當入口"
+          },
+          {
+            "title": "檔名全英文小寫",
+            "detail": "不要有空白"
+          },
+          {
+            "title": "上傳或拖放",
+            "detail": "拿到網址"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "sitm",
+          "text": "上線前，先把資料夾整理成最單純的樣子。",
+          "reveal": 1
+        },
+        {
+          "id": "5ymd",
+          "text": "首頁檔名一定要叫 index，兩家都把它當入口。",
+          "reveal": 1
+        },
+        {
+          "id": "5y3q",
+          "text": "圖片放同一個資料夾，檔名全用英文小寫、不要有空白。",
+          "reveal": 1
+        },
+        {
+          "id": "7g2d",
+          "text": "Cloudflare 甚至可以直接把資料夾拖進去，完全不碰 Git。"
+        },
+        {
+          "id": "z4ax",
+          "text": "名稱亂取，是上線後網頁打不開最常見的原因。"
+        }
+      ]
+    },
+    {
+      "id": "not-for-business",
+      "template": "quote",
+      "data": {
+        "kicker": "GitHub 官方文件",
+        "quote": "GitHub Pages is not intended for or allowed to be used as a free web-hosting service to run your online business",
+        "translation": "GitHub Pages 不是讓你拿來免費經營線上生意的主機",
+        "source": "GitHub Docs：GitHub Pages limits"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "zt9w",
+          "text": "有一點要特別注意。"
+        },
+        {
+          "id": "3ggy",
+          "text": "GitHub 官方寫明，Pages 不能拿來免費經營線上生意或電商。",
+          "reveal": 1
+        },
+        {
+          "id": "5azv",
+          "text": "個人介紹、作品集沒問題，要賣東西就要另找服務。"
+        },
+        {
+          "id": "ntu6",
+          "text": "這條很多人不知道，卻是官方白紙黑字寫的。"
+        }
+      ]
+    },
+    {
+      "id": "check-before",
+      "chapter": "上線前的四個坑",
+      "template": "big",
+      "data": {
+        "kicker": "上線前最後一件事",
+        "text": "搜自己的個資",
+        "sub": "電話、地址、身分證號、像金鑰的字串"
+      },
+      "lines": [
+        {
+          "id": "ng8t",
+          "text": "上線前，最後一定要做一件事。"
+        },
+        {
+          "id": "bd8e",
+          "text": "用純文字編輯器打開檔案，搜自己的電話、地址和身分證號。"
+        },
+        {
+          "id": "d4hc",
+          "text": "還有任何看起來像金鑰的字串，也要搜一次。"
+        },
+        {
+          "id": "e4d8",
+          "text": "網頁原始碼所有人都看得到，刪掉之後也可能留在別人的快取。"
+        },
+        {
+          "id": "ykf6",
+          "text": "這一步只要兩分鐘，卻能避免最難收拾的問題。"
+        }
+      ]
+    },
+    {
+      "id": "four-traps",
+      "template": "bullets",
+      "data": {
+        "title": "最常踩的四個坑",
+        "items": [
+          "圖片版權：別直接抓搜尋結果的圖",
+          "個資與金鑰：原始碼人人看得到",
+          "AI 亂補內容：沒得過的獎、假連結",
+          "廣告與追蹤：要守隱私法規"
+        ]
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "cuer",
+          "text": "最常踩的坑有四個。",
+          "reveal": 1
+        },
+        {
+          "id": "rqt9",
+          "text": "第一是圖片版權，從搜尋結果直接抓圖是最常見的違規。",
+          "reveal": 1
+        },
+        {
+          "id": "y84a",
+          "text": "第二是個資與金鑰，已經貼出去的金鑰，要當作外洩立刻換掉。",
+          "reveal": 1
+        },
+        {
+          "id": "2vqk",
+          "text": "第三，AI 很會補細節，包括你沒得過的獎和不存在的連結。",
+          "reveal": 1
+        },
+        {
+          "id": "nng2",
+          "text": "第四，想放廣告或流量分析，就要自己遵守隱私法規。"
+        },
+        {
+          "id": "u83n",
+          "text": "這四個坑，跟你用哪個 AI 工具都沒關係。"
+        },
+        {
+          "id": "9vp8",
+          "text": "每一個坑，上線前都花不到五分鐘就能檢查。"
+        }
+      ]
+    },
+    {
+      "id": "cc-licenses",
+      "template": "compare",
+      "data": {
+        "title": "CC 授權怎麼看",
+        "left": {
+          "heading": "可以商用",
+          "points": [
+            "CC BY",
+            "CC BY-SA"
+          ]
+        },
+        "right": {
+          "heading": "有限制",
+          "points": [
+            "帶 NC：只限非商業",
+            "帶 ND：不能改作"
+          ]
+        }
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "j9nz",
+          "text": "真的要用別人的圖，先看 CC 授權。",
+          "reveal": 1
+        },
+        {
+          "id": "3r9q",
+          "text": "有的可以商用，帶 NC 的只能非商業、帶 ND 的不能改作。",
+          "reveal": 1
+        },
+        {
+          "id": "88xs",
+          "text": "而且六種授權都要標示原作者，最安全的還是自己拍、自己畫。"
+        },
+        {
+          "id": "4cum",
+          "text": "不確定授權，就不要用，這是最省事的規則。"
+        },
+        {
+          "id": "7r4j",
+          "text": "找不到授權資訊的圖，就當作不能用。"
+        }
+      ]
+    },
+    {
+      "id": "cta",
+      "template": "cta",
+      "data": {
+        "kicker": "完整教學",
+        "title": "需求範本與三組修改提示",
+        "sub": "說明欄第一行就是文章連結"
+      },
+      "lines": [
+        {
+          "id": "g5pn",
+          "text": "需求描述範本和三組修改提示，都放在說明欄第一行的文章。"
+        },
+        {
+          "id": "dftp",
+          "text": "直接複製，把括號裡換成你自己的內容就能用。"
+        },
+        {
+          "id": "dt7n",
+          "text": "範本會跟著官方改版更新。"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "做完第一頁之後",
+      "template": "outro",
+      "data": {
+        "title": "換任何題目都適用",
+        "cta": "需求範本與完整步驟在說明欄的文章裡",
+        "lines": [
+          "需求寫滿四面向加技術邊界",
+          "一次只改一件事，改完就重看",
+          "上線前搜一次自己的個資"
+        ]
+      },
+      "lines": [
+        {
+          "id": "9bdz",
+          "text": "一頁網站做完，你已經走完描述、產出、檢查、修改、上線一整圈。"
+        },
+        {
+          "id": "zp2f",
+          "text": "這一圈換到任何題目都適用。"
+        },
+        {
+          "id": "3asd",
+          "text": "想做更大的東西，就把需求拆成規劃、實作和驗證三段。"
+        },
+        {
+          "id": "3ghs",
+          "text": "先做出你的第一頁，我們下一支影片見。"
+        },
+        {
+          "id": "bhn6",
+          "text": "不用一次做到完美，先上線，再慢慢改。"
+        }
+      ]
+    }
+  ]
+}
