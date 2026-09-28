@@ -88,15 +88,15 @@
       "lines": [
         {
           "id": "hx5y",
-          "text": "Every AI company is now selling you an agent, and next they want to sell you one that never logs off."
+          "text": "Every AI company is now selling you an agent. Next, they want to sell you one that never logs off."
         },
         {
           "id": "prkk",
-          "text": "Most explanations stop at: it can use tools. That tells you nothing about what happens after you press enter."
+          "text": "Most explanations stop at one line: it can use tools. That tells you nothing about what happens after you press enter."
         },
         {
           "id": "7iga",
-          "text": "So I gave one agent a boring task and recorded every step. I will show you the five moves that turn a chatbot into an agent."
+          "text": "So I gave one agent a boring task and recorded every step. I'll show you the five moves that turn a chatbot into an agent."
         },
         {
           "id": "bdiv",
@@ -131,7 +131,7 @@
       "lines": [
         {
           "id": "hpt2",
-          "text": "Here is the one-sentence difference. A chatbot turns your text into text and waits. An agent takes a goal and works until it is done."
+          "text": "Here's the one-sentence difference. A chatbot turns your text into text and waits. An agent takes a goal and works until it's done."
         },
         {
           "id": "db9w",
@@ -164,7 +164,7 @@
         },
         {
           "id": "vaxb",
-          "text": "And a fourth if you have room: stop. An agent without a clear stop rule keeps going. That is how you get last week's headlines."
+          "text": "And a fourth, if you have room: stop. An agent without a clear stop rule keeps going. That's how you get last week's headlines."
         }
       ]
     },
@@ -197,12 +197,12 @@
         },
         {
           "id": "uf2w",
-          "text": "We named the three pages it could read, told it to leave blank any cell it could not read, and never to guess a number.",
+          "text": "We named the three pages it could read. We told it to leave blank any cell it couldn't read, and never to guess a number.",
           "reveal": 1
         },
         {
           "id": "6gvp",
-          "text": "It answered with its plan in one line: I will fetch each of the three pages. That is move one: the goal becomes a plan.",
+          "text": "It answered with its plan in one line: I'll fetch each of the three pages. That's move one: the goal becomes a plan.",
           "reveal": 1
         }
       ]
@@ -247,7 +247,9 @@
         {
           "id": "zdw7",
           "text": "Move three, observe. Two pages answered with prices. The third refused with a 403 error, access forbidden.",
-          "reveal": 1
+          "reveal": 1,
+          "say": "Move three, observe. Two pages answered with prices. The third refused with a four oh three error, access forbidden.",
+          "say_for": "8e03daddd0b1"
         },
         {
           "id": "n96a",
@@ -256,7 +258,7 @@
         },
         {
           "id": "9e9d",
-          "text": "Move five, stop and report: two sentences, what it did and what it could not do. Five turns, twenty two seconds.",
+          "text": "Move five, stop and report: two sentences, what it did and what it couldn't do. Five turns, twenty two seconds.",
           "reveal": 1
         }
       ]
@@ -309,11 +311,11 @@
       "lines": [
         {
           "id": "qpg5",
-          "text": "Here is the file. Three rows filled, each with the page its numbers came from. One row honest about being empty."
+          "text": "Here's the file. Three rows filled, each with the page its numbers came from. One row honest about being empty."
         },
         {
           "id": "6zh7",
-          "text": "That empty row is the most important thing in the file. An agent that guesses when a page fails is an agent you cannot use."
+          "text": "That empty row is the most important thing in the file. An agent that guesses when a page fails is an agent you can't use."
         }
       ]
     },
@@ -342,17 +344,17 @@
       "lines": [
         {
           "id": "5dmh",
-          "text": "Then it stopped and reported, in two sentences we had asked for: what it did, and what it could not do.",
+          "text": "Then it stopped and reported, in the two sentences we asked for: what it did, and what it couldn't do.",
           "reveal": 1
         },
         {
           "id": "2ph2",
-          "text": "The second sentence is the one to look for in any agent you use. The page refused, so I left it blank, rather than guessing.",
+          "text": "Look for that second sentence in any agent you use. In plain words: the page refused, so I left it blank, rather than guessing.",
           "reveal": 1
         },
         {
           "id": "v3m4",
-          "text": "A good agent tells you where it hit a wall. A bad one paints over the wall and hands you a clean looking file."
+          "text": "A good agent tells you where it hit a wall. A bad one paints over the wall and hands you a clean-looking file."
         }
       ]
     },
@@ -393,7 +395,7 @@
         },
         {
           "id": "q439",
-          "text": "Nothing here is magic. It is a loop that calls tools and looks at what comes back, and you can read every step of it."
+          "text": "Nothing here is magic. It's a loop that calls tools and looks at what comes back, and you can read every step of it."
         }
       ]
     },
@@ -532,11 +534,11 @@
       "lines": [
         {
           "id": "sy22",
-          "text": "Now the next step everyone is building: agents that keep working after you close the window."
+          "text": "Now, the next step everyone's building: agents that keep working after you close the window."
         },
         {
           "id": "zf6x",
-          "text": "It acts while you are away, so nobody is watching the loop.",
+          "text": "It acts while you're away, so nobody's watching the loop.",
           "reveal": 1
         },
         {
@@ -608,7 +610,7 @@
         },
         {
           "id": "wvpe",
-          "text": "Two, what can it touch while I am not watching? Tools, sites, secrets. If the answer is everything, stop.",
+          "text": "Two, what can it touch while I'm not watching? Tools, sites, secrets. If the answer is everything, stop.",
           "reveal": 1
         },
         {
@@ -643,12 +645,12 @@
         },
         {
           "id": "s6m4",
-          "text": "Book me a table for Friday hands over money and a decision, with no evidence until the confirmation lands.",
+          "text": "Book me a table for Friday. That hands over money and a decision, with no evidence until the confirmation lands.",
           "reveal": 1
         },
         {
           "id": "5djs",
-          "text": "List three options and do not book anything gives you a checkable list, and keeps the decision with you.",
+          "text": "List three options and don't book anything. That gives you a checkable list, and keeps the decision with you.",
           "reveal": 1
         }
       ]
@@ -677,7 +679,7 @@
         },
         {
           "id": "p8zt",
-          "text": "Next time, we start from the prices this agent found and I will show you which model is actually worth paying for."
+          "text": "Next time, we start from the prices this agent found and I'll show you which model is actually worth paying for."
         }
       ]
     }
