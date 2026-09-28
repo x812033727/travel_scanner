@@ -1,0 +1,910 @@
+{
+  "schema_version": 1,
+  "slug": "ai-agents-explained-what-they-cost",
+  "format": "slides",
+  "source_guide": "ai-news-openai-agents-api-20260910",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "台灣國語、台灣腔，輕鬆、像在跟朋友解釋，有起伏、中等偏快",
+    "model": "gemini-3.8-flash-tts"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "AI 代理是什麼、跑一次多少錢，以及那個能阻止它亂花錢的設定",
+    "description": "AI 代理到底是什麼、為什麼同一件事做成代理會貴十幾倍、委託前該問什麼。這支用一個五輪代理的帳單示意，把錢花在哪講清楚。\n給常聽到「AI 代理」「自動化」，但分不清它跟聊天差在哪、又怕帳單失控的人。\n\n涵蓋聊天、固定流程與代理的差別、代理由模型加指示加工具加環境組成、每輪重讀歷史為何讓成本暴增、委託時要問的權限紀錄停止與預算，以及資料落地與零資料保留兩個合規限制。表格數字為示意，用來說明結構。",
+    "tags": [
+      "AI 代理",
+      "AI agent",
+      "AI agent cost",
+      "OpenAI Agents API",
+      "AI 自動化",
+      "agentic AI",
+      "代理成本",
+      "token"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI AGENTS",
+      "headline": "Why it costs\n**16x more**",
+      "sub": "and the switch that stops it"
+    }
+  },
+  "sources": [
+    {
+      "title": "OpenAI Agents API 概覽",
+      "url": "https://developers.openai.com/api/docs/guides/agents-api/overview",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI：Introducing the Agents API",
+      "url": "https://openai.com/index/introducing-the-agents-api/",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI Data controls",
+      "url": "https://developers.openai.com/api/docs/guides/your-data",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI API Pricing",
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic：Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "AI 代理是什麼、跑一次多少錢",
+      "template": "title",
+      "data": {
+        "tag": "AI 代理",
+        "title": "AI 代理是什麼、**跑一次多少錢**？",
+        "subtitle": "還有那個能阻止它亂花錢的設定"
+      },
+      "lines": [
+        {
+          "id": "jrpz",
+          "text": "大家都在說 AI 代理，但同一件事，做成代理可能貴上十幾倍。"
+        },
+        {
+          "id": "rhcy",
+          "text": "這支告訴你它貴在哪，還有哪個設定能讓它不亂花你的錢。"
+        },
+        {
+          "id": "w977",
+          "text": "順便教你一句話分辨：眼前這個到底是不是真的代理。"
+        }
+      ]
+    },
+    {
+      "id": "chat-vs-agent",
+      "template": "compare",
+      "data": {
+        "title": "三種東西，別搞混",
+        "left": {
+          "heading": "聊天／固定流程",
+          "points": [
+            "聊天：給你步驟清單",
+            "流程：每次照寫死的做"
+          ]
+        },
+        "right": {
+          "heading": "代理",
+          "points": [
+            "自己決定下一步",
+            "自己選要用哪個工具"
+          ]
+        },
+        "verdict": "模型自己決定流程，才算代理"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "83wx",
+          "text": "先分清楚三種東西。你問問題、它給步驟，那是聊天。",
+          "reveal": 1
+        },
+        {
+          "id": "vegh",
+          "text": "每次都照寫死的步驟跑，那是固定流程。",
+          "reveal": 1
+        },
+        {
+          "id": "quyv",
+          "text": "代理不一樣，它自己決定下一步、自己選工具。"
+        },
+        {
+          "id": "j3jv",
+          "text": "有沒有聊天框不是重點，重點是決定權放在誰手上。"
+        },
+        {
+          "id": "t86a",
+          "text": "會呼叫一次工具，也不等於它就是完整的代理。"
+        },
+        {
+          "id": "yxd7",
+          "text": "規則穩定的工作，用固定流程反而比較好預測。"
+        }
+      ],
+      "chapter": "代理跟聊天差在哪"
+    },
+    {
+      "id": "agent-example",
+      "template": "chat",
+      "data": {
+        "title": "代理長什麼樣",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "幫我整理這份報名資料，找出重複的"
+          },
+          {
+            "side": "left",
+            "name": "代理",
+            "text": "先讀欄位，發現同名不一定同人，改用你允許的欄位比對。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "8dan",
+          "text": "舉個例子，你叫它整理報名資料、找出重複的。",
+          "reveal": 1
+        },
+        {
+          "id": "g6hk",
+          "text": "它先讀欄位，發現同名不一定是同一個人。",
+          "reveal": 1
+        },
+        {
+          "id": "q3cg",
+          "text": "於是改用你允許的欄位比對，這個轉彎就是代理的特徵。"
+        },
+        {
+          "id": "3iur",
+          "text": "它沒有擅自刪資料，只是換了比對的方法。"
+        },
+        {
+          "id": "t4e7",
+          "text": "自主性表現在調整做法，不是擴大權限。"
+        }
+      ]
+    },
+    {
+      "id": "what-makes-agent",
+      "chapter": "一個代理由什麼組成",
+      "template": "steps",
+      "data": {
+        "title": "一個代理由什麼組成",
+        "steps": [
+          {
+            "title": "模型",
+            "detail": "負責判斷"
+          },
+          {
+            "title": "指示",
+            "detail": "你交代的目標"
+          },
+          {
+            "title": "工具",
+            "detail": "真正去讀去改的手"
+          },
+          {
+            "title": "執行環境",
+            "detail": "它動手的沙箱"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "z3xv",
+          "text": "一個代理，其實是四樣東西組起來的。",
+          "reveal": 1
+        },
+        {
+          "id": "x2sc",
+          "text": "模型負責判斷，指示是你交代的目標。",
+          "reveal": 1
+        },
+        {
+          "id": "7gj6",
+          "text": "工具才是真正去讀資料、改檔案的手。",
+          "reveal": 1
+        },
+        {
+          "id": "trh6",
+          "text": "再加一個它動手的執行環境，也就是沙箱。",
+          "reveal": 1
+        },
+        {
+          "id": "dep5",
+          "text": "少了任何一樣，它就只能說、不能做。"
+        },
+        {
+          "id": "wfy8",
+          "text": "所以評估代理，先問它接了哪些工具、有什麼權限。"
+        },
+        {
+          "id": "bszf",
+          "text": "工具的範圍也有限，能讀一個資料夾，不等於能讀整台電腦。"
+        }
+      ]
+    },
+    {
+      "id": "says-done",
+      "template": "bullets",
+      "data": {
+        "title": "說「做完了」不等於做完",
+        "items": [
+          "沒有工具，它什麼都改不了",
+          "要看實際結果，不是它的語氣",
+          "權限由帳號和程式決定"
+        ]
+      },
+      "lines": [
+        {
+          "id": "naw5",
+          "text": "這裡有個重點：它說「我已經幫你更新」，不代表真的做了。",
+          "reveal": 1
+        },
+        {
+          "id": "677u",
+          "text": "沒有對應的工具或授權，它一個字都改不動。",
+          "reveal": 1
+        },
+        {
+          "id": "vbtd",
+          "text": "所以看的是實際結果，不是它講得多有把握。",
+          "reveal": 1
+        },
+        {
+          "id": "8wag",
+          "text": "沒有檔案、或檔案跟說明對不上，都要算沒完成。"
+        },
+        {
+          "id": "c68n",
+          "text": "完成要有證據，不是一句我做好了。"
+        },
+        {
+          "id": "5a79",
+          "text": "狀態不確定時，寧可再查一次，也不要直接算完成。"
+        }
+      ]
+    },
+    {
+      "id": "agent-loop",
+      "template": "steps",
+      "data": {
+        "title": "代理的運作迴圈",
+        "steps": [
+          {
+            "title": "判斷",
+            "detail": "決定下一步做什麼"
+          },
+          {
+            "title": "操作",
+            "detail": "用工具去做"
+          },
+          {
+            "title": "回饋",
+            "detail": "看結果再決定"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "n3m5",
+          "text": "代理運作靠一個迴圈，一直轉到事情做完。",
+          "reveal": 1
+        },
+        {
+          "id": "dgnj",
+          "text": "先判斷下一步，再用工具去操作。",
+          "reveal": 1
+        },
+        {
+          "id": "hwmy",
+          "text": "看到結果之後，再決定接下來怎麼走。",
+          "reveal": 1
+        },
+        {
+          "id": "rjcw",
+          "text": "每轉一圈，就多一次呼叫模型，也就多一筆錢。"
+        },
+        {
+          "id": "erz6",
+          "text": "所以迴圈轉越多圈，帳單就越長。"
+        }
+      ]
+    },
+    {
+      "id": "why-expensive",
+      "chapter": "為什麼跑一次這麼貴",
+      "template": "bullets",
+      "data": {
+        "title": "為什麼特別貴",
+        "items": [
+          "一件事呼叫模型好幾次",
+          "每次都把歷史重讀一遍",
+          "子代理各自再算一遍"
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "un5z",
+          "text": "接下來講錢。代理為什麼比一次問答貴那麼多？",
+          "reveal": 1
+        },
+        {
+          "id": "qfq7",
+          "text": "因為它做一件事，會呼叫模型好幾次。",
+          "reveal": 1
+        },
+        {
+          "id": "mhbv",
+          "text": "而且每一次，都把前面的對話和結果重新讀一遍。",
+          "reveal": 1
+        },
+        {
+          "id": "6pn5",
+          "text": "如果它還開了子代理，每個子代理又各自算一遍。"
+        },
+        {
+          "id": "tik7",
+          "text": "任務做得越久、來回越多，費用就越難只看名稱估。"
+        },
+        {
+          "id": "nuez",
+          "text": "這也是很多人第一次用代理，被帳單嚇到的原因。"
+        },
+        {
+          "id": "gixc",
+          "text": "每次送進去的，還包括指示、工具定義和工具回傳的結果。"
+        }
+      ]
+    },
+    {
+      "id": "one-vs-five",
+      "template": "big",
+      "data": {
+        "kicker": "同一件事",
+        "text": "0.06 → 0.95",
+        "sub": "一次問答 vs 五輪代理（示意）"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "9hqz",
+          "text": "同一件事，用一次問答大概六美分。"
+        },
+        {
+          "id": "th3u",
+          "text": "做成會來回五輪的代理，變成約九毛五。"
+        },
+        {
+          "id": "36u6",
+          "text": "差了大約十六倍，這還沒算子代理。"
+        },
+        {
+          "id": "k7aw",
+          "text": "這是示意數字，用來說明結構，不是某個產品的實際帳單。"
+        },
+        {
+          "id": "nwfx",
+          "text": "而且真實任務常常不只五輪。"
+        },
+        {
+          "id": "e2ux",
+          "text": "差距來自結構，不是模型變貴。"
+        }
+      ]
+    },
+    {
+      "id": "subagents",
+      "template": "bullets",
+      "data": {
+        "title": "子代理會讓帳單翻倍",
+        "items": [
+          "主代理把工作拆出去",
+          "每個子代理自己呼叫模型",
+          "重試和工具也要另外算"
+        ]
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "59w3",
+          "text": "再講子代理，這是帳單翻倍的另一個原因。",
+          "reveal": 1
+        },
+        {
+          "id": "rjzv",
+          "text": "主代理會把工作拆給好幾個子代理分頭做。",
+          "reveal": 1
+        },
+        {
+          "id": "t2rw",
+          "text": "每個子代理都自己呼叫模型、自己重讀歷史。",
+          "reveal": 1
+        },
+        {
+          "id": "2892",
+          "text": "估費用時，重試、工具和沙箱的錢也要算進去。"
+        },
+        {
+          "id": "6nza",
+          "text": "官方建議估算時，把這些全部加進去。"
+        }
+      ]
+    },
+    {
+      "id": "bill-table",
+      "chapter": "實算：五輪的帳單",
+      "template": "table",
+      "data": {
+        "title": "五輪代理的帳單",
+        "columns": [
+          "輪次",
+          "輸入 token",
+          "輸出 token",
+          "費用"
+        ],
+        "rows": [
+          [
+            "第 1 輪",
+            "20,000",
+            "2,000",
+            "$0.06"
+          ],
+          [
+            "第 2 輪",
+            "45,000",
+            "2,500",
+            "$0.12"
+          ],
+          [
+            "第 3 輪",
+            "75,000",
+            "3,000",
+            "$0.18"
+          ],
+          [
+            "第 4 輪",
+            "110,000",
+            "3,000",
+            "$0.25"
+          ],
+          [
+            "第 5 輪",
+            "150,000",
+            "4,000",
+            "$0.34"
+          ],
+          [
+            "合計",
+            "400,000",
+            "14,500",
+            "$0.95"
+          ]
+        ],
+        "highlight": 5
+      },
+      "claims": [
+        "c1",
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "gq6q",
+          "text": "把五輪攤開看，你就懂錢花在哪。"
+        },
+        {
+          "id": "bjcd",
+          "text": "第一輪的輸入只有兩萬字，到第五輪累積到十五萬。"
+        },
+        {
+          "id": "utze",
+          "text": "因為每一輪都把前面重讀一遍，輸入越滾越大。"
+        },
+        {
+          "id": "bgnm",
+          "text": "六輪加起來，輸入四十萬、輸出一萬四，快一美元。"
+        },
+        {
+          "id": "i28v",
+          "text": "注意輸出其實不多，是輸入在一直長大。"
+        },
+        {
+          "id": "3bfe",
+          "text": "這就是為什麼代理的帳單，重點在重讀的歷史。"
+        },
+        {
+          "id": "yuae",
+          "text": "換成更便宜的模型，倍數不變，只是每一格變小。"
+        },
+        {
+          "id": "yug2",
+          "text": "這張表假設完全沒有快取命中，是最貴的情況。"
+        },
+        {
+          "id": "ucxc",
+          "text": "有快取的話會便宜一些，但快取讀取一樣要付錢。"
+        }
+      ]
+    },
+    {
+      "id": "openai-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "OpenAI 文件原文",
+        "quote": "An agent may make several model calls while completing a task.",
+        "translation": "代理完成一個任務時，可能呼叫模型好幾次",
+        "source": "OpenAI Agents API 文件：Observability and usage"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "3n94",
+          "text": "這不是我編的，OpenAI 自己的文件就這樣寫。"
+        },
+        {
+          "id": "nhwz",
+          "text": "它說代理完成一個任務，可能呼叫模型好幾次。",
+          "reveal": 1
+        },
+        {
+          "id": "bqbk",
+          "text": "文件也寫，重複的呼叫可能一再處理很長的歷史。"
+        },
+        {
+          "id": "e633",
+          "text": "所以官方都說，總價很難只看任務名稱來估。"
+        }
+      ]
+    },
+    {
+      "id": "article-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "完整算法",
+        "title": "代理帳單怎麼估",
+        "sub": "說明欄第一行就是文章連結"
+      },
+      "lines": [
+        {
+          "id": "mhmx",
+          "text": "怎麼把這個算法套到自己的工作，完整版在說明欄第一行的文章。"
+        },
+        {
+          "id": "avps",
+          "text": "你只要換成自己的輪數和字數，就能估自己的帳單。"
+        },
+        {
+          "id": "ni5n",
+          "text": "算一次，你就知道該不該把這件事交給代理。"
+        }
+      ]
+    },
+    {
+      "id": "four-questions",
+      "chapter": "委託前先問四件事",
+      "template": "steps",
+      "data": {
+        "title": "委託前先問四件事",
+        "steps": [
+          {
+            "title": "權限",
+            "detail": "能讀寫哪些資料"
+          },
+          {
+            "title": "紀錄",
+            "detail": "誰能看、留多久"
+          },
+          {
+            "title": "停止",
+            "detail": "跑錯誰能喊停"
+          },
+          {
+            "title": "預算",
+            "detail": "試跑費用、每月上限"
+          }
+        ]
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "bh3n",
+          "text": "如果是要請人幫你做一個代理，先問四件事。",
+          "reveal": 1
+        },
+        {
+          "id": "grrh",
+          "text": "第一，它能讀寫哪些資料、連了哪些服務。",
+          "reveal": 1
+        },
+        {
+          "id": "ntt6",
+          "text": "第二，紀錄誰能看、留多久；第三，跑錯時誰能喊停。",
+          "reveal": 1
+        },
+        {
+          "id": "8qcn",
+          "text": "第四，先用真實資料試跑一週，記下實際費用。",
+          "reveal": 1
+        },
+        {
+          "id": "vzet",
+          "text": "這四題問不出答案的外包，先不要簽。"
+        },
+        {
+          "id": "jj2b",
+          "text": "答得出來，才代表對方真的想過出事怎麼辦。"
+        },
+        {
+          "id": "3xde",
+          "text": "這四件事，也是你自己用代理時的檢查清單。"
+        },
+        {
+          "id": "48gr",
+          "text": "問清楚這些，比比較哪個模型聰明更重要。"
+        }
+      ]
+    },
+    {
+      "id": "budget-switch",
+      "template": "big",
+      "data": {
+        "kicker": "跑錯時",
+        "text": "預算上限",
+        "sub": "唯一能自動擋住費用的東西"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "wxkd",
+          "text": "這四件裡，有一個設定最能救命：預算上限。"
+        },
+        {
+          "id": "f5f8",
+          "text": "代理跑錯方向時，只有它能自動把費用擋下來。"
+        },
+        {
+          "id": "ix3h",
+          "text": "設好每月上限和警示，再放手讓它跑。"
+        },
+        {
+          "id": "twky",
+          "text": "沒有上限的代理，就像沒有煞車的車。"
+        },
+        {
+          "id": "ghc5",
+          "text": "很多意外帳單，都是沒設這個造成的。"
+        },
+        {
+          "id": "tzx5",
+          "text": "先設低一點，跑順了再慢慢調高。"
+        }
+      ]
+    },
+    {
+      "id": "logs",
+      "template": "chat",
+      "data": {
+        "title": "出事時怎麼查",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "代理昨天花太多錢，我要怎麼知道它做了什麼？"
+          },
+          {
+            "side": "left",
+            "name": "紀錄",
+            "text": "看工作階段紀錄，每一輪的工具呼叫和子代理都查得到。"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "yhq4",
+          "text": "跑錯的時候，你會想知道它到底做了什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "72vw",
+          "text": "這時候靠的是工作階段紀錄，每一輪都查得到。",
+          "reveal": 1
+        },
+        {
+          "id": "97dz",
+          "text": "所以委託時，一定要問清楚紀錄在哪、誰看得到。"
+        },
+        {
+          "id": "wtui",
+          "text": "官方也說，用量數字是盡力記錄，不是最後帳單。"
+        }
+      ]
+    },
+    {
+      "id": "data-note",
+      "template": "bullets",
+      "data": {
+        "title": "合規先看兩點",
+        "items": [
+          "資料落地目前只支援美國",
+          "不支援零資料保留",
+          "連了哪些外部服務也要算"
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "grtm",
+          "text": "如果公司有資料規定，先看兩個限制。",
+          "reveal": 1
+        },
+        {
+          "id": "6k39",
+          "text": "OpenAI 的 Agents API 目前資料落地只支援美國。",
+          "reveal": 1
+        },
+        {
+          "id": "r35n",
+          "text": "而且不支援零資料保留，換自架也一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "dx6f",
+          "text": "連了哪些外部服務，資料就適用對方的規則。"
+        },
+        {
+          "id": "e65x",
+          "text": "這兩點要在開發前確認，別做到一半才發現不能上線。"
+        },
+        {
+          "id": "y4j5",
+          "text": "資料規定比功能更早決定你能不能用。"
+        }
+      ]
+    },
+    {
+      "id": "start-safe",
+      "chapter": "怎麼開始最安全",
+      "template": "bullets",
+      "data": {
+        "title": "先從安全的工作開始",
+        "items": [
+          "唯讀、能回查的先做",
+          "會改資料的留人工確認",
+          "跑順了再擴大範圍"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gfgy",
+          "text": "真的要用，先從安全的工作開始。",
+          "reveal": 1
+        },
+        {
+          "id": "rjnj",
+          "text": "唯讀、能回查的先做，例如整理公開資料、產草稿。",
+          "reveal": 1
+        },
+        {
+          "id": "3auf",
+          "text": "會改資料的動作，先留人工確認再放手。",
+          "reveal": 1
+        },
+        {
+          "id": "igut",
+          "text": "等費用紀錄、刪除流程和人工確認都跑順了，再擴大。"
+        },
+        {
+          "id": "kmqx",
+          "text": "不是因為產品寫著代理，就要一次給它全部權限。"
+        },
+        {
+          "id": "9yif",
+          "text": "資料不涉及客戶機密的內部工作，最適合先試。"
+        }
+      ]
+    },
+    {
+      "id": "autonomy",
+      "template": "big",
+      "data": {
+        "kicker": "最後一個觀念",
+        "text": "自主≠可靠",
+        "sub": "多步驟會放大第一步的錯"
+      },
+      "lines": [
+        {
+          "id": "jfu4",
+          "text": "最後一個觀念：自主程度越高，不代表越可靠。"
+        },
+        {
+          "id": "mhmq",
+          "text": "代理會把前一步的結果，當成後面每一步的根據。"
+        },
+        {
+          "id": "pdfe",
+          "text": "第一步讀錯，後面去重、統計、報告可能全部跟著錯。"
+        },
+        {
+          "id": "5g7p",
+          "text": "好的流程，會在重要的轉折點停下來檢查。"
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "chapter": "三句話收尾",
+      "template": "outro",
+      "data": {
+        "title": "先從唯讀、能回查的開始",
+        "cta": "完整算法與委託清單在說明欄的文章裡",
+        "lines": [
+          "分得出代理：模型自己決定下一步",
+          "算得出成本：每輪都重讀歷史",
+          "守得住預算：先設每月上限"
+        ]
+      },
+      "lines": [
+        {
+          "id": "2xgp",
+          "text": "最後收三句話。分得出代理，看它是不是自己決定下一步。"
+        },
+        {
+          "id": "sknr",
+          "text": "算得出成本，記得它每輪都重讀歷史。"
+        },
+        {
+          "id": "t344",
+          "text": "守得住預算，先設每月上限再放手，我們下一支影片見。"
+        },
+        {
+          "id": "2xyf",
+          "text": "停在待確認，不是它能力不夠，而是它處理得對。"
+        },
+        {
+          "id": "7e7i",
+          "text": "把任務交給代理，是減少手動操作，不是放棄掌控。"
+        }
+      ]
+    }
+  ]
+}
