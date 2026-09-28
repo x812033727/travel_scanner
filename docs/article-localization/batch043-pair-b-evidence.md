@@ -29,6 +29,7 @@ The local asset contact sheet (`contact-sheet.png`, SHA-256 `ee41a25dc0a58f15fb5
 - `npm run check:tasks`: exit 0, 1,067 task files; repository-wide stale/overlapping-task warnings are unrelated to these narrow scopes.
 - `git diff --check`: exit 0.
 - `uv run pytest tests/test_guides_content_links.py tests/test_guides_content_pack.py -q`: exit 0, 12 passed and 5 database-dependent tests skipped locally. CI must cover the database tests.
+- Additional `intake_check.py --from-content` returns exit 1 for each pack: the unchanged zh-TW first block is not `summary`, and the source description/body has two self-references instead of at most one. Source hashes and parsed equality demonstrate these are inherited editorial findings. Article targets and image-number checks pass. Follow-up: `2026-09-28-review-batch043-inherited-editorial-intake-failures`. This stricter intake is not reported as passing.
 
 Before any separate release, recheck the exact repository source, live versions/hashes/visibility, target-locale drafts, image deployment, publication-aware article links, CI and the guarded batch manifest. This candidate does not claim public availability or browser-verified publication.
 
