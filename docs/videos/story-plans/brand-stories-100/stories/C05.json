@@ -1,0 +1,207 @@
+{
+  "id": "C05",
+  "slug": "story-ctrl-alt-delete",
+  "category": "tech",
+  "region": "global",
+  "subject": "Ctrl+Alt+Del",
+  "title": "五分鐘寫成的重開機組合，為什麼變成 Windows 的登入鍵？",
+  "logline": "IBM 工程師 David Bradley 說他只花五分鐘，就寫好讓電腦不必斷電就能重開的 Ctrl+Alt+Delete，原本只給寫程式與寫手冊的人用；後來 Windows 把它變成登入前的安全鍵，許多人才認得它。",
+  "question": "電腦卡住時很多人反射性按下的 Ctrl+Alt+Delete，發明者說只花五分鐘寫完，這個原本只給內部用的重開機功能，怎麼變成 Windows 的登入鍵？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "電腦卡住時，很多人會下意識按下 Ctrl、Alt、Delete 三個鍵。寫出這個組合的 IBM 工程師 David Bradley 說，那段程式只花了他五分鐘；2001 年他和比爾蓋茲同台時還開玩笑：「我也許發明了它，但我想是比爾讓它出名的。」一個五分鐘寫成的小功能，怎麼跟著個人電腦走了四十多年，還變成 Windows 的登入鍵？這支影片要回答的就是這件事。"
+    },
+    {
+      "key": "origin",
+      "point": "1980 年，IBM 在佛羅里達州 Boca Raton 趕著做第一台個人電腦，公司只給團隊一年時間推出產品。Bradley 是後來被稱為「最初 12 人」的開發團隊成員；IBM 的官方沿革說他寫了「介面程式」，也就是開機時最先執行、負責跟硬體打交道的 BIOS。開發期間工程師常常需要重新啟動電腦，他要做的是一個不必關掉電源就能重來的方法。"
+    },
+    {
+      "key": "idea",
+      "point": "Bradley 一開始用的是 Ctrl+Alt+Esc，但這三個鍵都在鍵盤左邊，一不小心就會碰到、讓電腦重開。據說是首席程式設計師 Mel Hallerman 建議改成 Ctrl+Alt+Delete：在原本的 IBM PC 鍵盤上，這個組合幾乎不可能用一隻手按到，重點不是好記，是很難誤按。它原本只給寫程式和寫技術手冊的人用，IBM 也沒打算宣傳；照 Bradley 的說法，這段程式他五分鐘就寫完了。"
+    },
+    {
+      "key": "engine",
+      "point": "真正讓它家喻戶曉的是 Windows。從 Windows NT 開始，Ctrl+Alt+Delete 被拿來當登入前的安全鍵。微軟的說明是：有心人可以做一個跟登入畫面長得一模一樣的假畫面，騙走使用者的密碼；先按這三個鍵，才能確定輸入密碼時走的是「可信任的路徑」，因為這組按鍵會先被 Windows 自己接住，其他程式模仿不了。另一方面，Windows 或軟體卡住時，它也成了大家找出路的按鍵。"
+    },
+    {
+      "key": "turn",
+      "point": "2001 年 8 月，IBM PC 二十週年的活動上，Bradley 和蓋茲同台說了那句「是比爾讓它出名的」，照 CBS 與 GeekWire 的描述，蓋茲本人沒有笑。Bradley 後來在訪問裡說，蓋茲其實很有風度，在他 2004 年從 IBM 退休時還寫了信給他，「所以我不覺得他真的在生我的氣」。2013 年 9 月，蓋茲在哈佛大學被問到這件事，說用 Ctrl+Alt+Delete 登入「是個錯誤」：微軟原本想要一顆專用的按鍵，但當時 IBM 的鍵盤設計者不肯給。"
+    },
+    {
+      "key": "now",
+      "point": "四十多年過去，微軟的說明文件仍列著「登入前必須先按 Ctrl+Alt+Delete」這項安全設定，適用於 Windows 10 與 11；很多人的手指也還記得，電腦卡住時先按這三個鍵。回到開場的問題：一段原本只給內部用、五分鐘寫成的程式，會變成許多人都認得的按鍵組合，靠的不是設計多巧妙，而是後來被 Windows 拿去當登入鍵，也當卡住時的出口。"
+    }
+  ],
+  "takeaway": "一個設計能不能出名，往往不是看它多聰明，而是看後來有沒有人把它放進所有人每天都會經過的地方。",
+  "must_verify": [
+    {
+      "claim": "David Bradley 1975 年加入 IBM，1980 年是打造初代 IBM PC 的「最初 12 人」之一，負責寫 BIOS（IBM 沿革說他寫了「介面程式」），也寫出了 Ctrl+Alt+Delete；他自己說這段程式只花了五分鐘（另一處說法是幾分鐘）",
+      "sources": [
+        4,
+        5,
+        3,
+        6,
+        0,
+        8
+      ],
+      "core": true
+    },
+    {
+      "claim": "IBM PC 在佛羅里達州 Boca Raton 開發，IBM 只給團隊一年時間推出產品，1981 年 8 月 12 日在紐約發表",
+      "sources": [
+        5
+      ]
+    },
+    {
+      "claim": "Bradley 起初用 Ctrl+Alt+Esc，但太容易碰到鍵盤左側而誤重開；首席程式設計師 Mel Hallerman 建議改成在原本 IBM PC 鍵盤上幾乎不可能單手按到的 Ctrl+Alt+Delete",
+      "sources": [
+        1,
+        4
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "這組按鍵原本只給寫程式與寫技術文件的人在開發時使用，讓電腦不必關掉電源就能重新啟動，IBM 並未打算公開宣傳",
+      "sources": [
+        4,
+        1,
+        6
+      ]
+    },
+    {
+      "claim": "2001 年 8 月 IBM PC 二十週年活動上，Bradley 與蓋茲同台說：「我也許發明了它，但我想是比爾讓它出名的。」蓋茲當場沒有笑",
+      "sources": [
+        2,
+        3,
+        0,
+        6
+      ],
+      "core": true
+    },
+    {
+      "claim": "微軟說明，登入前先按 Ctrl+Alt+Delete 能確保輸入密碼時走的是可信任的路徑，防止惡意程式偽造登入畫面騙密碼；這組按鍵由 Windows 本身接收、其他程式無法模仿；此設定適用於 Windows 10 與 11",
+      "sources": [
+        7,
+        1
+      ]
+    },
+    {
+      "claim": "2013 年 9 月，蓋茲在哈佛大學說用 Ctrl+Alt+Delete 登入「是個錯誤」，微軟原本想要一顆專用的按鍵，但當時 IBM 的鍵盤設計者不肯給",
+      "sources": [
+        1,
+        2
+      ]
+    },
+    {
+      "claim": "照 GeekWire 的轉述，Bradley 在 2011 年的訪問中說，蓋茲其實很有風度地接受了那句玩笑，還在他從 IBM 退休時寫信給他，「所以我不覺得他真的在生我的氣」",
+      "sources": [
+        2
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "Bradley 於 2004 年 1 月從 IBM 退休",
+      "sources": [
+        0,
+        3,
+        6
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://en.wikipedia.org/wiki/David_Bradley_(engineer)",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "Bradley 1975 年加入 IBM、初代 IBM PC 十二名工程師之一並寫 ROM BIOS、2001 年 8 月 8 日 IBM PC 二十週年活動上的原話、2004 年 1 月 30 日退休",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Control-Alt-Delete",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "從 Ctrl+Alt+Esc 改成 Ctrl+Alt+Delete 的原因與 Mel Hallerman 的建議、1981 年在 Boca Raton 設計、原本只供內部開發使用、Windows NT 用它防止偽造登入畫面、2013 年 9 月蓋茲稱這是錯誤",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.geekwire.com/2013/rest-story-controlaltdelete-inventor-expect-command-widely/",
+      "publisher": "GeekWire",
+      "kind": "news",
+      "supports": "2013 年 9 月 27 日報導：蓋茲在哈佛說這是錯誤、IBM 的鍵盤設計者不肯給專用鍵；Bradley 說「五分鐘的工作」與那句玩笑、蓋茲面無表情；轉述 Bradley 2011 年說蓋茲很有風度並在他退休時寫信",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.cbsnews.com/news/ctrl-alt-delete-guy-reboots-life/",
+      "publisher": "CBS News",
+      "kind": "news",
+      "supports": "2004 年 1 月報導：Bradley 1975 年 6 月加入 IBM、1980 年是十二人團隊之一、花五分鐘寫出這段程式、在 IBM PC 二十週年活動上的那句話與蓋茲沒有笑、即將退休",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://lemelson.mit.edu/resources/david-bradley",
+      "publisher": "Lemelson-MIT Program（麻省理工學院）",
+      "kind": "academic",
+      "supports": "Bradley 1980 年成為打造 IBM PC 的「最初 12 人」之一；選這組按鍵是因為很難同時誤按；他說只花幾分鐘就想出來；原本只給程式設計師與寫電腦文件的人用；微軟後來把它用在 Windows",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.ibm.com/history/personal-computer",
+      "publisher": "IBM",
+      "kind": "official",
+      "supports": "IBM 的沿革：IBM PC 在 Boca Raton 開發、只給一年時間推出產品、「Dave Bradley 寫了介面程式」、1981 年 8 月 12 日在紐約發表",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.theregister.com/2004/01/29/ctrlaltdel_inventor_makes_final_reboot/",
+      "publisher": "The Register",
+      "kind": "news",
+      "supports": "2004 年 1 月 29 日報導：Bradley 寫了初代 PC 的 BIOS、選 Delete 是因為離兩個修飾鍵很遠、IBM 原本沒打算公開這組按鍵、2004 年 1 月退休、二十週年活動上蓋茲不為所動",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-do-not-require-ctrl-alt-del",
+      "publisher": "Microsoft Learn",
+      "kind": "official",
+      "supports": "微軟對「登入前不需要按 CTRL+ALT+DEL」設定的說明：要求先按這組鍵可確保輸入密碼時走可信任的路徑、防止惡意程式偽造登入畫面；適用於 Windows 10 與 11",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.purdue.edu/uns/html3month/030911.Bradley.pc.html",
+      "publisher": "Purdue University News Service",
+      "kind": "academic",
+      "supports": "2003 年 9 月 11 日普渡大學新聞稿：校友 Bradley 在 IBM 參與第一代個人電腦，以發明 Ctrl-Alt-Del 聞名",
+      "checked": "2026-09-28"
+    }
+  ],
+  "names": [
+    "David Bradley",
+    "Bradley",
+    "Mel Hallerman",
+    "IBM",
+    "IBM PC",
+    "Bill Gates",
+    "Gates",
+    "Microsoft",
+    "Windows",
+    "Windows NT",
+    "Harvard",
+    "CBS",
+    "GeekWire",
+    "Purdue"
+  ],
+  "cast": [
+    {
+      "id": "engineer",
+      "role": "設計 Ctrl+Alt+Delete 的 IBM 工程師",
+      "appearance": "a man in his 30s, neat short hair, wearing a short-sleeve collared shirt with a pocket protector and a simple digital watch, standing beside a beige boxy early-1980s desktop computer with a separate keyboard, confident practical expression, 1980s office setting"
+    }
+  ],
+  "image_notes": "全部畫面是卡通插畫，不寫任何文字。不畫 IBM 或微軟的商標，也不畫任何作業系統的畫面；電腦畫成一般化的 1980 年代米色桌上型電腦，不含真實機型的商標細節；鍵盤按鍵上不寫字母，用顏色標出三顆鍵即可；工程師畫成一般化的 1980 年代男性工程師，不對應任何真人的長相；提到的科技公司創辦人不畫臉部特寫或可辨識的長相，只用一般化的西裝人物剪影表示。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "headline": "五分鐘寫成的三個鍵",
+    "idea": "一隻卡通手同時按下三顆塗成不同顏色、上面沒有字的巨大鍵盤按鍵，背景兩個西裝人物剪影並排坐在台上"
+  }
+}

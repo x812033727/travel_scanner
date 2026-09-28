@@ -1,0 +1,22 @@
+{
+  "id": "C19",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check)",
+  "story_sha256": "6f1e49c1ddcf92c1a46bcf93a4c4fd87c49ed4a2603efc3563732284afe9998a",
+  "verdict": "fixed",
+  "sources_opened": 13,
+  "changes": [
+    "標題「它曾經幾乎在每一台電腦裡」沒有來源撐得住，改成「2000 年就有兩千五百萬人註冊的播放程式，後來怎麼了」；logline 與 question 同步刪掉「巔峰時」「幾乎人手一份」。",
+    "hook 刪掉沒有來源的「十之八九裝的是 Winamp」「下載次數最高的軟體之一」「年輕使用者幾乎沒聽過」，並用白話解釋 MP3。",
+    "origin 改正：Nullsoft 不是 1997 年 4 月由兩人成立（維基百科寫 Frankel 1998 年 1 月才正式成立），改成「開發它的公司叫 Nullsoft」；刪掉只有維基百科寫、而且其實是示範音檔不是開機畫面的 llama 口號；「免費放上網路」改成 Silicon UK 的說法（0.92 版免費，後來試用 14 天後收 10 美元）；面板的影響標為 Skinbase 的說法。",
+    "收購改用 AOL 1999 年 10-K 年報（美國證券交易委員會 EDGAR）這個一手來源：1999 年 5 月 28 日以約 72 萬股普通股取得 Nullsoft、同日取得 Spinner Networks；「1999 年 6 月、約八千萬美元」改成「年報沒有寫金額，媒體估計從約 8,000 萬到 1 億美元」，並補上 The Register 2004 年的 1 億美元說法。",
+    "engine 刪掉貶損 AOL 又沒有來源的「始終沒想清楚 Winamp 要怎麼賺錢」，改成年報寫的收購目的；Winamp3 補上 2002 年 8 月、不相容舊外掛與面板、吃資源不穩定，補上 2003 年 12 月 Winamp 5 重新支援舊面板，並刪掉沒有來源的「由盛轉衰的轉捩點」。",
+    "turn 補上 The Register 2004 年的報導（AOL 改組後 Nullsoft 只剩三人、Frankel 2004 年 1 月離開，標為轉述）與 The Register 2013 年對關閉公告的報導；「AOL 仍保留一成左右股份」改正為「AOL 取得 Radionomy 約 12% 的股份」。",
+    "2024 年開源改寫：刪掉只有維基百科寫的 Dolby，照 The Register 寫程式碼「似乎」含 SHOUTcast 伺服器程式與 Microsoft、Intel 的編解碼程式，不當成定論；刪除原始碼庫改成「該報詢問後不久、上傳一個月後」，拿掉推測動機的「只好」；補上條款禁止分支與後來放寬。",
+    "Frankel 的話改成他本人問答網站 askjf.com（2024 年 9 月 24 日）的原文「條款的寫法完全荒謬」，並新增該頁為來源。",
+    "now 刪掉沒有來源的「仍有播放程式在賣」「大多數人早就改用手機串流」與貶損新東家的「每一任新老闆都想利用這個名字賺錢」，改成 Winamp 官網與 Llama Group 官網寫的現況；takeaway 刪掉加了引號卻沒有出處的「不知道要幹嘛」。",
+    "縮圖標題「消失的播放器」與內容矛盾（Winamp 沒有消失），改成「它後來怎麼了」。",
+    "names 補上 Winamp3、Winamp 5、Frankel、America Online、Spinner.com、Spinner Networks、GitHub、Windows、TechCrunch、The Register、Silicon UK、Skinbase，刪掉已不再提到的 Dolby；image_notes 補上不畫閃電形狀的標誌與美洲駝。"
+  ],
+  "notes": "兩千五百萬註冊人數的原始出處是 AOL 2004 年的網站（維基百科引 web.archive.org 的存檔，WebFetch 讀不到），現在靠維基百科與 Silicon UK。收購日期：年報寫 1999 年 5 月 28 日，媒體多寫 1999 年 6 月（可能是公開宣布的時間），企劃以年報為準。8,000 萬美元追到維基百科引的是 Retro Tech Dreams 部落格，The Register 2004 年寫 1 億美元，兩者都不是一手數字，年報只寫了股數。The Register 2004 年「只剩三人」是單一來源，旁白要說是該報的報導。原始碼庫的刪除日期：維基百科寫 2024 年 10 月 16 日，The Register 同日的文章說「剛剛刪除」，企劃只寫上傳一個月後。維基百科說 Radionomy 後來改名 Llama Group（之後又叫 Winamp Group），2015 年 Vivendi 取得 Radionomy 多數股權；這段所有權變化只有維基百科，企劃沒有寫。askjf.com 標為 official，是因為它是 Frankel 本人發表原話的地方。"
+}

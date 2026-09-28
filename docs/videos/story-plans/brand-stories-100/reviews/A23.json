@@ -1,0 +1,22 @@
+{
+  "id": "A23",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check); sources read as the worker reads them, readable pages added and the review bound again by Claude Sonnet 5",
+  "story_sha256": "58e9d808e1ea168eb447669f120904ae298eb5973dee61d878494a2716a3e3a3",
+  "verdict": "fixed",
+  "sources_opened": 16,
+  "changes": [
+    "補上工人讀得到的來源：加州上訴法院判決書（sources[0]）是PDF，工人讀不到，改引兩篇Ventura County Star的審判報導——2019年6月12日的開庭報導（sources[8]）證實「28年的關係」與1988年開始合作，供must_verify[4]查核；2019年6月20日Underwood主管出庭作證的報導（sources[9]）證實2016年11月9日的會面、Huy Fong要求大砍價格並要求改向Chilico供貨，供must_verify[5]查核。這兩篇沒有寫到判決書裡九成五、Kern郡、60萬平方英尺工廠、每公噸500與610美元這些更細的數字，仍只有判決書本身撐著，詳見notes。",
+    "標題、問題與縮圖的「不註冊商標」「沒商標」不正確：公司註冊了公雞圖案與綠蓋瓶子，只有 sriracha 這個字沒有註冊，全部改成「名字沒註冊」；標題的「賣到全世界」沒有來源，改成「做成大生意」。",
+    "「台灣籍貨輪」改成 NBC 寫的「台灣的貨輪（在巴拿馬登記）」，補上 1975 年在越南就做辣椒醬與 1980 年在華埠附近約 5,000 平方英尺的建築創業。",
+    "拿掉查不到出處的中文名「陳德」（內文與 names 都拿掉）。",
+    "Rosemead 廠房的「六千三百坪」是把 6,300 平方公尺誤當成坪，連同只有維基百科的面積一起拿掉；Irwindale 新廠改用判決書的約 60 萬平方英尺。",
+    "2001、2012、2022 年的營收只有維基百科轉述媒體，改成 Fortune 引述 IBISWorld 的 2020 年約 1.31 億美元，並註明公司不公布營收。",
+    "美國專利商標局「駁回其他業者申請」只有律師網站的「apparently」與維基百科撐，改成「據報導」並標 attributed；補上 Tran 起初把別人用這個名字當成免費宣傳（Gibney）。",
+    "turn 段改成兩邊的主張並列：價格與成本註明是判決書整理的事實，補上 Huy Fong 主張農場扣住約 700 萬美元設備、初審法院駁回農場對 Tran 個人的侵權主張，只講到陪審團與上訴法院怎麼判，不寫動機。",
+    "「Tabasco 已成為美國賣得最好的是拉差」改成有日期、有出處的說法：Fortune 引述 NielsenIQ，2023 年下半年；補上 Circana 的三分之一美國家庭廚房；「搶佔空出來的貨架」這類評論拿掉。",
+    "缺貨不再寫成全由拆夥造成：補上 2022 年 6 月停產時報導的原因是墨西哥乾旱，logline 的因果說法改成時間先後。",
+    "names 補上 Tran、Underwood、Huey Fong、NielsenIQ、Circana、IBISWorld；cast 的角色說明改成中性；image_notes 補上不畫綠色瓶蓋、不畫其他品牌瓶子、當事人畫面中性、難民船只畫遠景。"
+  ],
+  "notes": "Tran 離開越南的年份各來源不一：NBC 寫 1979 年，維基百科說 Huey Fong 號 1978 年 12 月載難民到香港、他 1979 年春天到美國，所以寫 1978 到 1979 年間。沒有打開美國專利商標局的紀錄，無法確認有誰申請 sriracha 被駁回，只能當報導講。維基百科說陪審團的補償金是 1,480 萬美元扣掉 Huy Fong 溢付款主張成立的 146 萬美元，判決書只寫 1,332 萬美元，以判決書為準。洛杉磯商業期刊說 Underwood 是「唯一」供應商，與判決書說早年還向其他農家買辣椒不一致，沒有採用。判決書的事實段與量刑段有對 Huy Fong 行為的強烈評語，也提到當事人的家人與情緒，都不宜進旁白。Huy Fong 2024 年 9 月之後的生產狀況、Tran 與 Underwood 的現況都沒有查到可靠來源，旁白講到 2024 年為止。找補充來源時翻到Ventura County Star 2019年4月18日的報導，寫Irwindale工廠是「650,000-square-foot」；下載判決書PDF核對原文，FACTS段寫的是「600,000-square-foot factory」，跟企劃現在的「約60萬平方英尺」一致，這篇VC Star的數字有出入，沒有採用它，也不要拿它當Irwindale廠房面積的來源。must_verify[5]裡Huy Fong要求的每公噸500美元、Underwood成本每公噸610美元，以及2017年1月初的不交貨通知，這些具體數字只有判決書寫，另外查了VC Star的closing-arguments與post-verdict兩篇、NBC、Fortune 2024，都沒有讀到，仍只靠判決書撐著。"
+}
