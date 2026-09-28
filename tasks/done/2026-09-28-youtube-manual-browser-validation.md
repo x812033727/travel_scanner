@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-youtube-manual-browser-validation
 title: Verify manual YouTube upload guide on desktop and mobile
-status: in-progress
+status: done
 priority: P2
 area: web
 owner: codex-pr-merge-watch
 claimed_at: 2026-09-28T04:54:04Z
 created_at: 2026-09-28T04:23:22Z
-completed_at:
+completed_at: 2026-09-28T07:21:24Z
 branch: codex/pr890-browser-validation
 depends_on:
   - 2026-09-28-youtube-manual-upload
@@ -30,16 +30,16 @@ as a browser pass or a real YouTube upload.
 
 ## Definition of done
 
-- [ ] Desktop and narrow mobile views show all five steps without horizontal overflow.
-- [ ] Switching language, copying full descriptions, downloading the correctly named caption
+- [x] Desktop and narrow mobile views show all five steps without horizontal overflow.
+- [x] Switching language, copying full descriptions, downloading the correctly named caption
       and thumbnail, and returning to the edited API form work in a real browser.
-- [ ] Save screenshots and record the browser/viewport and fixture used in MANUAL-UPLOAD.md.
+- [x] Save screenshots and record the browser/viewport and fixture used in MANUAL-UPLOAD.md.
 
 ## Steps
 
-- [ ] Start an isolated local API fixture and web preview of codex/youtube-manual-upload.
-- [ ] Exercise a new video and a failed sync with an existing video ID.
-- [ ] Record visual evidence; keep real production/YouTube changes outside this task.
+- [x] Run an isolated API fixture and production web build in CI (local preview lacked memory).
+- [x] Exercise a new video and a failed sync with an existing video ID.
+- [x] Record visual evidence; keep real production/YouTube changes outside this task.
 
 ## How to verify
 
@@ -48,6 +48,16 @@ the description. Verify the retained chapters, each caption's language and file 
 and the existing-video Studio link. Resize to a narrow mobile viewport and check each step.
 
 ## Notes
+
+- Completed on combined manual/VPS head `1857a71282728cfd5b94a4b65cca088be5de9936`:
+  CI 36388892582 web, API, containers and full-stack-smoke all succeeded. Web unit tests:
+  3479 passed. Browser suite: 523 passed, 9 skipped; all 20 manual-upload cases passed.
+  Downloaded artifact 10955499457 and reviewed all eight desktop/mobile, new/existing,
+  light/dark JPEGs in `test-results/pr890-visual-1857/`. Five steps and controls fit;
+  overflow assertions pass. Fixed navigation appears at the scrolled capture position.
+  Exact Chromium viewports and synthetic-fixture limitations are in MANUAL-UPLOAD.md.
+  Real VPS/Studio acceptance remains in its own open task. Earlier pending notes below
+  describe intermediate attempts and are superseded by this completed CI evidence.
 
 - CI run 36385509808 reached the intended UI, but all 20 manual cases failed
   because actual downloads returned `canceled`; 503 unrelated browser cases passed.
