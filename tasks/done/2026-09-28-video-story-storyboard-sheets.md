@@ -55,4 +55,4 @@ npm run test:tools
   - 摘要：`分鏡 95 鏡（聯絡表 4 頁），judge 最低 5/10，3 鏡待修`；待修的也放不下時接 `，其中 17 鏡沒附單張圖`；超過上限卻沒有聯絡表時括號寫「沒有聯絡表」。
   - `content_sha256` 仍是 `keyframes/manifest.json` 的雜湊；payload 仍受伺服器 256 KiB（`MAX_PAYLOAD_BYTES`）限制，100 鏡、每鏡 1,000 字英文提示詞約 115 KB。
 - **後台審核卡**（`admin-video-review-card.tsx` 的 `StoryboardBody`，只讀沒改）：不會壞。`file_role: null` 的鏡頭照樣列出、只是沒有圖（`fileFor(review, "")` 找不到檔），`sheets`、`omitted` 被忽略，摘要照常顯示；沒分頁的長分鏡那一張 `contact_sheet` 也照常顯示。**看不到的是分頁**：卡片只找 role 為 `contact_sheet` 的檔，`contact_sheet_01`… 不顯示，所以分頁送審時卡上沒有任何聯絡表，也看不出沒附圖的鏡頭在第幾頁。要補的是依 `payload.sheets` 逐頁顯示、沒附圖的鏡頭標出頁數（五語文字）；`video-story-admin` 的 scope 不含這個元件，要另開票或擴那張。
-- 與 PR #870：它改 import、`REVIEW_GATES`、`STEP_LABELS`、`nextGate`、final 與 dubs、在 `downloadNote` 後加 `languagesSubmission`、`recordApproval`；這張票只動 `lookSubmissions` 之後到 `storyboardSubmission` 結尾，測試只動 import 那一行與舊分鏡測試之後，彼此不相鄰。
+- 與 PR #870：它改 import、`REVIEW_GATES`、`STEP_LABELS`、`nextGate`、final 與 dubs、在 `downloadNote` 後加 `languagesSubmission`、`recordApproval`；這張票只動 `lookSubmissions` 之後到 `storyboardSubmission` 結尾，測試只動 import 那一行與舊分鏡測試之後，彼此不相鄰。#870 在 2026-09-28 06:38Z 合併進 main，這個分支併進已含 #870 的 #888 分支時沒有衝突；合併後分鏡測試重跑全過，4、20、46、47 鏡的送審內容也仍與 #870 版本逐位元組相同。
