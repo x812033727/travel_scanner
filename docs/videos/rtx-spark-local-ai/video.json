@@ -17,7 +17,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "NVIDIA RTX Spark 筆電 128 GB 裝得下哪些 AI 模型？本機 AI 能取代 ChatGPT 嗎？",
-    "description": "NVIDIA 說 RTX Spark 能跑 1200 億參數的模型，700 億參數的 Llama 3.3 原版檔案卻有 141 GB，放不進這台筆電最多的 128 GB。這支影片用一條算式「參數量 × 每個參數的位元組」，算出 16 GB、64 GB、128 GB 各裝得下哪些模型，再看決定速度的記憶體頻寬，以及本機 AI 能不能取代每月的 AI 訂閱。\n\n影片裡的規格、參數量與檔案大小，都來自 NVIDIA、Microsoft、Hugging Face 與 Ollama 的官方頁面，查閱日期是 2026 年 9 月 28 日，之後可能變動。當天 NVIDIA 的 RTX Spark 產品頁沒有列價格，價格以官網為準；記憶體頻寬 300 GB/s 出自 NVIDIA 的開發者文件。頻道沒有 RTX Spark 實機，影片裡沒有任何實測速度，NVIDIA 的說法都標明是廠商說的。\n\nClaude Pro 的價格是 2026 年 9 月 28 日官網的月繳價，其他訂閱以各家官網為準。回本月數與電費粗估的算式都在畫面上，你可以代入自己的數字重算。「最在意哪一件事」的表與結論，是頻道主的看法，不是購買建議。",
+    "description": "NVIDIA 說 RTX Spark 能跑 1200 億參數的模型，700 億參數的 Llama 3.3 原版檔案卻有 141 GB，放不進這台筆電最多的 128 GB。這支影片用一條算式「參數量 × 每個參數的位元組」，算出 16 GB、64 GB、128 GB 各裝得下哪些模型，再看決定速度的記憶體頻寬，以及本機 AI 能不能取代每月的 AI 訂閱。\n\n影片裡的規格、參數量與檔案大小，都來自 NVIDIA、Microsoft、OpenAI、Hugging Face 與 Ollama 的官方頁面，查閱日期是 2026 年 9 月 28 日，之後可能變動。當天 NVIDIA 的 RTX Spark 產品頁沒有列價格，價格以官網為準；記憶體頻寬 300 GB/s 出自 NVIDIA 的開發者文件。頻道沒有 RTX Spark 實機，影片裡沒有任何實測速度：每秒幾個 token 的數字，是用這個頻寬算出的理論上限。NVIDIA 的說法都標明是廠商說的。\n\nClaude Pro 的價格是 2026 年 9 月 28 日官網的月繳價，其他訂閱以各家官網為準。回本月數與電費粗估的算式都在畫面上，你可以代入自己的數字重算。「最在意哪一件事」的表與結論，是頻道主的看法，不是購買建議。",
     "tags": [
       "RTX Spark",
       "本機 AI",
@@ -167,6 +167,11 @@
     {
       "title": "NVIDIA Windows on Arm Porting Guide, RTX Spark System Overview (memory bandwidth), updated 2026-09-10",
       "url": "https://docs.nvidia.com/rtx-spark/rtx-spark-porting-guide/latest/overview.html",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI, gpt-oss-120b & gpt-oss-20b Model Card (arXiv 2508.10925): parameter counts, MXFP4 at 4.25 bits, top-4 of 128 experts",
+      "url": "https://arxiv.org/abs/2508.10925",
       "checked_on": "2026-09-28"
     }
   ],
@@ -408,17 +413,17 @@
       "lines": [
         {
           "id": "5atc",
-          "text": "一般筆電的記憶體主要給處理器用；電競筆電的顯示卡，另外有自己的一小塊。",
+          "text": "一般筆電記憶體主要給處理器用；電競筆電的顯示卡另有一小塊。",
           "reveal": 1
         },
         {
           "id": "td4z",
-          "text": "RTX Spark 是統一記憶體，處理器和顯示晶片共用。",
-          "reveal": 1
+          "text": "RTX Spark 是統一記憶體，處理器和顯示晶片共用。"
         },
         {
           "id": "bmxq",
-          "text": "顯示晶片能用多少，Windows 設了上限，五月的公告沒寫數字。"
+          "text": "顯示晶片能用多少，Windows 設了上限，五月的公告沒寫數字。",
+          "reveal": 1
         }
       ]
     },
@@ -733,7 +738,7 @@
       "lines": [
         {
           "id": "i3ft",
-          "text": "OpenAI 的 gpt-oss-20b 檔案 13.8 GB，16 GB 太擠，64 以上放得下。",
+          "text": "OpenAI 的 gpt-oss-20b 檔案 13.8 GB，16 太擠，64 以上放得下。",
           "reveal": 1
         },
         {
@@ -1015,7 +1020,9 @@
         "verdict": "NVIDIA 技術部落格：回答階段受限於記憶體"
       },
       "claims": [
-        "c26"
+        "c24",
+        "c26",
+        "c38"
       ],
       "lines": [
         {
@@ -1034,7 +1041,7 @@
         },
         {
           "id": "msnd",
-          "text": "所以不知道頻寬，就算不出回答多快。"
+          "text": "頻寬有了，回答速度的上限就算得出來。"
         }
       ]
     },
@@ -1059,12 +1066,13 @@
       },
       "claims": [
         "c10",
-        "c27"
+        "c27",
+        "c38"
       ],
       "lines": [
         {
           "id": "rv27",
-          "text": "不過有一件事算得出來：不同結構的模型，每一步要搬的量差很多。"
+          "text": "要算上限，先看每一步要搬的量：不同結構的模型差很多。"
         },
         {
           "id": "uc8u",
@@ -1079,6 +1087,73 @@
         {
           "id": "kpbj",
           "text": "要動的少了十幾倍，可能快很多，但這是比例，不是實測。"
+        }
+      ]
+    },
+    {
+      "id": "active-bytes",
+      "template": "code",
+      "data": {
+        "title": "每個 token 要讀多少",
+        "language": "算式",
+        "code": "Llama 3.3 70B，4 位元：705.5 億 × 0.5 ≈ 35 GB\n\ngpt-oss-120b 原版：每次只動 51 億個參數\n  專家  36 億 × 0.53 位元組 ≈ 1.9 GB   4.25 位元\n  其他  15 億 × 2 位元組    ≈ 3 GB     16 位元\n  合計  51 億               ≈ 5 GB\n",
+        "highlight": [
+          1,
+          6
+        ],
+        "caption": "每層 128 個專家只用 4 個；出自 OpenAI 的模型卡與 config.json"
+      },
+      "claims": [
+        "c10",
+        "c39",
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "j4w5",
+          "text": "gpt-oss-120b 原版每次大約讀 5 GB：專家 4 位元多，其他是 16 位元。"
+        }
+      ]
+    },
+    {
+      "id": "speed-ceiling",
+      "template": "stats",
+      "data": {
+        "title": "每秒最多幾個 token",
+        "stats": [
+          {
+            "value": "約 8.6 個",
+            "label": "Llama 3.3 70B",
+            "note": "4 位元：300 ÷ 35 GB"
+          },
+          {
+            "value": "約 60 個",
+            "label": "gpt-oss-120b 原版",
+            "note": "300 ÷ 5 GB"
+          }
+        ],
+        "source": "理論上限＝頻寬 300 GB/s ÷ 每個 token 要讀的量；不是實測"
+      },
+      "claims": [
+        "c24",
+        "c38",
+        "c39",
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "wxrv",
+          "text": "每秒 300 GB 除以 35 GB，Llama 最多每秒八個多 token。",
+          "reveal": 1
+        },
+        {
+          "id": "efif",
+          "text": "gpt-oss-120b 是 300 除以 5，最多大約 60 個。",
+          "reveal": 1
+        },
+        {
+          "id": "3s2v",
+          "text": "這是理論上限：上下文和其他程式也要搶頻寬，實際只會更慢。"
         }
       ]
     },
@@ -1207,21 +1282,21 @@
       "lines": [
         {
           "id": "k76b",
-          "text": "再來算錢：雲端訂閱按月付，像 Claude 的 Pro 方案，九月底是月繳 20 美元。",
-          "reveal": 1
+          "text": "再來算錢：雲端訂閱按月付，像 Claude 的 Pro 方案，九月底是月繳 20 美元。"
         },
         {
           "id": "45uq",
-          "text": "用量每五小時重置，另外還有每週上限。"
-        },
-        {
-          "id": "e55p",
-          "text": "自己的機器一次付清，只是另外要付電費。",
+          "text": "用量每五小時重置，另外還有每週上限。",
           "reveal": 1
         },
         {
+          "id": "e55p",
+          "text": "自己的機器一次付清，只是另外要付電費。"
+        },
+        {
           "id": "hh47",
-          "text": "RTX Spark 的價格，九月底 NVIDIA 產品頁還沒有列。"
+          "text": "RTX Spark 的價格，九月底 NVIDIA 產品頁還沒有列。",
+          "reveal": 1
         }
       ]
     },
