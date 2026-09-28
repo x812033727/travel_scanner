@@ -1,0 +1,200 @@
+{
+  "id": "C17",
+  "slug": "story-excel-1900-leap-year",
+  "category": "tech",
+  "region": "global",
+  "subject": "試算表與 1900 閏年錯誤",
+  "title": "Excel 至今把 1900 年當閏年，微軟說改掉弊大於利",
+  "logline": "Excel 至今把 1900 年當成閏年：這個假設來自 1980 年代的對手 Lotus 1-2-3，微軟為了相容跟著做；微軟的支援文件承認這樣不對，但說改正的壞處比好處多。",
+  "question": "1900 年明明不是閏年，為什麼 Excel 到現在還把它當閏年，微軟也選擇不改？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "在 Excel 裡，1900 年有 2 月 29 日。可是照 1582 年起用的格里曆，也就是現在通行的公曆，能被 100 整除的年份還要能被 400 整除才是閏年，所以 1900 年不是閏年，2 月只有 28 天。這不是沒人發現的漏洞：微軟自己的支援文件標題就寫著「Excel 錯誤地假設 1900 年是閏年」，還說技術上可以改正，只是改正的壞處比好處多。這支影片要回答：一家軟體公司為什麼選擇留下一個明知不對的日期？"
+    },
+    {
+      "key": "origin",
+      "point": "故事要從更早的試算表說起。試算表是一格一格的數字表，改一個數字，相關的總數會自動重算。1978 年，哈佛商學院的學生 Dan Bricklin 看教授在畫滿格線的黑板上做財務模型，一有錯就得擦掉重寫一串數字，於是想讓電腦來算。他找程式設計師 Bob Frankston 一起寫出 VisiCalc，1979 年在 Apple II 電腦上推出，一般認為是第一套個人電腦上的試算表。照美國電腦歷史博物館的說法，它讓個人電腦變成做生意的工具，也帶動了 Apple II 的銷售。"
+    },
+    {
+      "key": "idea",
+      "point": "1982 年，Mitch Kapor 與 Jonathan Sachs 創立 Lotus，1983 年推出給 IBM 個人電腦用的 Lotus 1-2-3，很快就賣贏 VisiCalc；同年 10 月 6 日公司股票上市，上市前十二個月營收 1,280 萬美元。Lotus 1-2-3 把日期存成序號：從 1900 年 1 月 1 日算第 1 天，每過一天加 1，而它把 1900 年也當成閏年。微軟的說明是，這讓程式比較容易處理閏年，幾乎不影響其他日期的計算。前 Excel 程式經理 Joel Spolsky 回憶，同事 Ed Fries 說這在 Lotus「大概是故意的」：程式得塞進 640K 記憶體，跳過 1900 年，判斷閏年又快又簡單。"
+    },
+    {
+      "key": "engine",
+      "point": "相容本來就是這一行的武器：照 Low End Mac 的說法，Lotus 1-2-3 操作很像 VisiCalc，使用者轉過去很容易。微軟的 Excel 在 1985 年推出，第一版給蘋果的麥金塔電腦，早期麥金塔版預設用另一套從 1904 年起算的日期；Windows 版用的，則是從 1900 年起算的那一套。照微軟的說明，微軟自家的試算表 Multiplan 和 Excel 推出時也都假設 1900 年是閏年，好用和 Lotus 1-2-3 一樣的日期序號，讓工作表在兩套軟體之間搬來搬去。Spolsky 記得 Ed Fries 說得更直接：「我們得這樣做，因為要能匯入 Lotus 1-2-3 的工作表。」"
+    },
+    {
+      "key": "turn",
+      "point": "微軟的支援文件把兩條路的代價都寫出來。如果現在改正：現有 Excel 工作表和其他文件裡，幾乎所有日期都會少一天，調整起來很花時間，尤其是用到日期的公式；像 WEEKDAY 這種算星期幾的函數，結果會改變，公式可能出錯；Excel 和其他使用日期的程式之間，日期序號也不再相容。如果不改，只有一個問題：1900 年 3 月 1 日以前的日期，WEEKDAY 會算錯，而很少人用到那麼早的日期。其他閏年，包括同樣不是閏年的 2100 年，Excel 都算對。"
+    },
+    {
+      "key": "now",
+      "point": "所以直到今天，Excel 的 1900 年仍有 2 月 29 日，微軟最新版的支援文件也還是這樣說明。回到開頭的問題：這個錯留下來，不是因為修不好，而是太多工作表和程式早已依賴同一套日期序號；把一天改對，反而會讓幾乎所有日期都少一天。有時候，軟體最難改的不是程式碼，而是大家已經依賴的相容。"
+    }
+  ],
+  "takeaway": "一個錯誤一旦被大量檔案依賴，把它改對的代價，可能比留著它還高。",
+  "must_verify": [
+    {
+      "claim": "微軟支援文件〈Excel incorrectly assumes that the year 1900 is a leap year〉寫明：Lotus 1-2-3 推出時假設 1900 年是閏年；Multiplan 與 Excel 推出時也這樣假設，以便使用與 Lotus 1-2-3 相同的日期序號、方便搬移工作表；技術上可以改正，但壞處多於好處",
+      "sources": [
+        0
+      ],
+      "core": true
+    },
+    {
+      "claim": "同一份文件列出改正的後果：現有工作表幾乎所有日期少一天、WEEKDAY 等函數結果改變、與其他程式的日期序號不再相容；不改則只有 1900 年 3 月 1 日前的 WEEKDAY 會錯；其他閏年（含 2100 年）都正確",
+      "sources": [
+        0
+      ]
+    },
+    {
+      "claim": "格里曆規定能被 100 整除的年份須能被 400 整除才是閏年，所以 1900 年不是閏年；微軟文件說 Excel 為了與其他程式相容而把 1900 年當閏年",
+      "sources": [
+        7
+      ]
+    },
+    {
+      "claim": "Excel 的 1900 日期系統以 1900 年 1 月 1 日為起點，是 Windows 版的預設；1904 日期系統以 1904 年 1 月 1 日為起點，是早期麥金塔版的預設；Excel 第一版於 1985 年推出",
+      "sources": [
+        8,
+        1
+      ]
+    },
+    {
+      "claim": "前 Excel 程式經理 Joel Spolsky 2006 年回憶，同事 Ed Fries 說「我們得這樣做，因為要能匯入 Lotus 123 的工作表」，又說這在 Lotus「大概是故意的」：Lotus 得塞進 640K，忽略 1900 年就能只看年份最後兩個位元判斷閏年，又快又簡單",
+      "sources": [
+        6
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "1978 年哈佛商學院學生 Dan Bricklin 看教授在黑板上做財務模型、改錯得擦掉重寫而想到 VisiCalc，與程式設計師 Bob Frankston 開發，1979 年在 Apple II 上推出，帶動 Apple II 銷售",
+      "sources": [
+        5,
+        2,
+        4
+      ]
+    },
+    {
+      "claim": "VisiCalc 一般被認為是第一套個人電腦試算表軟體",
+      "sources": [
+        2,
+        4
+      ]
+    },
+    {
+      "claim": "Lotus Development 由 Mitch Kapor 與 Jonathan Sachs 於 1982 年創立，Lotus 1-2-3 在 IBM PC 上比對手快；公司 1983 年 10 月 6 日上市，上市前十二個月營收 1,280 萬美元",
+      "sources": [
+        3
+      ]
+    },
+    {
+      "claim": "Lotus 1-2-3 於 1983 年推出，只給 IBM PC 與其他 MS-DOS 電腦用，很快賣贏 VisiCalc；照 Low End Mac，它操作很像 VisiCalc，使用者轉換容易",
+      "sources": [
+        4,
+        2,
+        3
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/wrongly-assumes-1900-is-leap-year",
+      "publisher": "Microsoft Learn（Excel 支援文件）",
+      "kind": "official",
+      "supports": "Excel 錯誤地假設 1900 年是閏年；源自 Lotus 1-2-3，Multiplan 與 Excel 為使用相同日期序號而沿用；技術上可以改正但壞處多於好處；改正與不改正各自的後果；其他閏年含 2100 年都正確",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Microsoft_Excel",
+      "publisher": "Wikipedia（Microsoft Excel 條目）",
+      "kind": "reference",
+      "supports": "Excel 於 1985 年 9 月 30 日上市，第一版給麥金塔；Multiplan 1982 年推出；Lotus 1-2-3 到 1983 年成為主流；1900 閏年問題源自 Lotus 1-2-3",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/VisiCalc",
+      "publisher": "Wikipedia（VisiCalc 條目）",
+      "kind": "reference",
+      "supports": "Bricklin 在哈佛商學院看教授在畫格線的黑板上做財務模型、改錯得擦掉重寫而想到 VisiCalc；與 Frankston 開發；是第一套個人電腦試算表程式；1-2-3 推出後幾乎立刻成功，VisiCalc 銷量下滑",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.computerhistory.org/tdih/october/6/",
+      "publisher": "Computer History Museum（歷史上的今天，10 月 6 日）",
+      "kind": "archive",
+      "supports": "Lotus Development 由 Mitch Kapor 與 Jonathan Sachs 於 1982 年創立，1983 年 10 月 6 日上市，上市前十二個月營收 1,280 萬美元；Lotus 1-2-3 在 IBM PC 上比對手快",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://lowendmac.com/2006/visicalc-and-the-rise-of-the-apple-ii/",
+      "publisher": "Low End Mac（Tom Hormby，2006 年）",
+      "kind": "news",
+      "supports": "VisiCalc 1978 年起於哈佛商學院，教授上課時改一格就得改其他所有格；Bricklin 找 Frankston 寫成程式，1979 年開賣；VisiCalc 是第一套試算表；Lotus 1-2-3 於 1983 年推出、只給 IBM PC 與 MS-DOS 電腦，操作像 VisiCalc 而轉換容易，很快賣贏 VisiCalc",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.computerhistory.org/timeline/1979/",
+      "publisher": "Computer History Museum（電腦史年表 1979）",
+      "kind": "archive",
+      "supports": "哈佛 MBA 學生 Dan Bricklin 與程式設計師 Bob Frankston 開發 VisiCalc，讓個人電腦變成做生意的機器；最初為 Apple II 開發，並帶動其銷售",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.joelonsoftware.com/2006/06/16/my-first-billg-review/",
+      "publisher": "Joel on Software（Joel Spolsky，2006 年）",
+      "kind": "news",
+      "supports": "曾任 Excel 程式經理的 Spolsky 回憶：Excel 以 1900 年 1 月 1 日為第 1 天；同事 Ed Fries 說 Excel 這樣做是為了能匯入 Lotus 123 的工作表，這在 Lotus 大概是故意的，因為要塞進 640K，忽略 1900 年判斷閏年又快又簡單",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/microsoft-365-apps/excel/determine-a-leap-year",
+      "publisher": "Microsoft Learn（判斷閏年的方法）",
+      "kind": "official",
+      "supports": "格里曆 1582 年起用；能被 100 整除的年份（例如 1900）要能被 400 整除才是閏年；Excel 為了與其他程式相容而把 1900 年當閏年",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/office/date-systems-in-excel-e7fe7167-48a9-4b96-bb53-5612a800b487",
+      "publisher": "Microsoft 支援（Excel 的日期系統）",
+      "kind": "official",
+      "supports": "1900 日期系統以 1900 年 1 月 1 日為起點，是 Windows 版 Excel 的預設；1904 日期系統以 1904 年 1 月 1 日為起點，是早期麥金塔版 Excel 的預設",
+      "checked": "2026-09-28"
+    }
+  ],
+  "names": [
+    "Excel",
+    "Microsoft Excel",
+    "Microsoft",
+    "Lotus 1-2-3",
+    "Lotus",
+    "Lotus Development",
+    "Dan Bricklin",
+    "Bob Frankston",
+    "VisiCalc",
+    "Mitch Kapor",
+    "Jonathan Sachs",
+    "Multiplan",
+    "Software Arts",
+    "Apple",
+    "Apple II",
+    "Macintosh",
+    "IBM",
+    "IBM PC",
+    "Windows",
+    "Harvard Business School",
+    "Joel Spolsky",
+    "Ed Fries",
+    "Low End Mac",
+    "Computer History Museum"
+  ],
+  "cast": [],
+  "image_notes": "畫 1970 年代末的商學院教室（畫滿格線與數字的黑板示意）、1980 年代的辦公室與個人電腦、現代辦公桌上的筆電。螢幕上的表格只畫抽象格線與色塊，不畫可讀的數字或字母，不重現任何試算表軟體的介面、配色或圖示；電腦主機與螢幕不畫品牌標誌，例如彩虹色的蘋果或藍色的字母商標；月曆只畫格子與一個被圈起來的格子，不寫字。不畫真實人物的長相。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "headline": "故意不修的錯誤",
+    "idea": "一個放大的月曆，二月多出一格被紅圈圈起來，旁邊疊著抽象的表格格線；月曆與表格都不寫字，不畫任何軟體介面或標誌"
+  }
+}

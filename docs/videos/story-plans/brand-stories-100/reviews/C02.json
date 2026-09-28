@@ -1,0 +1,20 @@
+{
+  "id": "C02",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check)",
+  "story_sha256": "43ec97fd8ebc53c8b503a41294eb368a40aa720121ab0350b900c6871267003e",
+  "verdict": "fixed",
+  "sources_opened": 16,
+  "changes": [
+    "核心說法錯誤：SQLite 不是「從第一行開始」就屬於公共領域，2000 年 5 月 29 日第一次提交的原始碼開頭是 Hipp 的著作權與 GNU GPL，Hipp 在 ACM SIGMOD Record 2019 年的專訪也說 1.0 版因為連結 GPL 的 GDBM 只能用 GPL，直到 2001 年 9 月 16 日的提交才「放棄著作權，準備 2.0 版」，因此標題、摘要、問題、開場與 idea 段都改成這個版本，並新增 GitHub 官方鏡像的三個頁面、SIGMOD Record 專訪與官方版本年表為來源。",
+    "標題「寫進幾乎每支手機的資料庫，作者一開始就放棄了著作權」改成「幾乎每支智慧型手機都有的資料庫，作者為什麼放棄著作權？」。",
+    "拿掉查無來源的「作者從一開始就沒有申請專利」「沒有人能反悔把它收回去變成付費軟體」，以及與事實相反的「沒有人能靠授權金收費」（Hwaci 其實出售所有權保證書）。",
+    "Motorola 一段的引述改正為 Hipp 說的「以今天的標準不算多，但對我來說那就是一切」而不是「全世界的錢」，時間改成他說的 2001、2002 年、用途改成新的手機作業系統，並補上 SIGMOD Record 裡 Hipp 說 Motorola、AOL 來電付費支援作第二個來源，金額仍標 attributed。",
+    "聯盟權益「每年至少 23 個工作天的優先技術支援」改成官方寫的「每年 23 個人天的專屬支援」，查無來源的「主動找上門」改成 Hipp 說的「Symbian 主動要求成立聯盟」並標 attributed。",
+    "turn 段改寫成公共領域的代價（Hipp 說有些國家不承認放棄著作權、公司擔心程式碼來源，所以宣誓書正本鎖在防火保險箱、Hwaci 出售所有權保證書），原本 turn 段的 Motorola 移到 engine 段。",
+    "現況段拿掉來源沒有的「包含手機裡的相簿、瀏覽紀錄和大多數 App」，開場的「每支手機、每台電腦」改成官方列出的 Android、iPhone、Mac 與 Windows 10、11。",
+    "起點段拿掉來源沒有的「需要另外安裝、需要專人管理」，改成 Hipp 自述的伺服器當掉、程式跟著動不了、接到抱怨電話的是他，並因維基百科（General Dynamics）與 CoRecursive（Bath Iron Works）說法不一，只寫他是承包商、不寫雇主名稱。",
+    "「佈署」改成「部署」、「支持開發」改成「資助開發」，資料庫、伺服器、公共領域、GPL、人天加上白話解釋，names 補上 Informix、GDBM、AOL、Android、iPhone、Mac、Windows，縮圖與圖像說明改成沒有刻字的印章、不畫著作權符號。"
+  ],
+  "notes": "sqlite.org 的 Fossil 時間線被機器人驗證擋住，放棄著作權的日期改用 GitHub 官方鏡像確認：提交時間是 2001-09-16，檔頭寫 2001 年 9 月 15 日，稿子只說「2001 年 9 月」。Hipp 在 CoRecursive 說 2000 年有空寫 SQLite 是因為政府合約停擺，還說成柯林頓與金瑞契的爭執，年份對不上那次停擺（1995–96 年），稿子不要用這段。Motorola 八萬美元只有 CoRecursive 一個來源，稿子要交代是他的回憶。「每支 Android、iPhone 都有」是 SQLite 官方的說法，旁白要說是官方說的。GDBM 是自由軟體基金會的程式，稿子若提到它，不要把 GPL 講成 SQLite 自願選的授權。"
+}

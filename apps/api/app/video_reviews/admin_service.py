@@ -23,7 +23,7 @@ from typing import Any
 from urllib.parse import parse_qs, urlsplit
 from uuid import uuid4
 
-from sqlalchemy import func, select
+from sqlalchemy import and_, func, or_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import Settings
@@ -33,6 +33,8 @@ from app.video_automation.judge import (
     PACKAGE_AUTO_APPROVED_NOTE,
     QA_AUTO_APPROVED_NOTE,
     SCRIPT_AUTO_APPROVED_NOTE,
+    SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
+    SHORTS_QA_AUTO_APPROVED_NOTE,
     pick_choice,
     pick_reason,
 )
@@ -67,9 +69,16 @@ from app.video_reviews.schemas import (
     ReviewOut,
 )
 from app.video_reviews.storage import ReviewStore, valid_slug
+from app.video_shorts import costs as shorts_costs
+from app.video_shorts import slots as shorts_slots
+from app.video_shorts.settings import auto_approves_shorts
 from app.video_youtube.state import public_state
 
 LIVE = ("pending", "approved", "rejected")
+# The list's cap, and how many public Shorts the Shorts tab gets at once: the public ones
+# only grow, and the older ones are read from the numbers instead (docs/videos/SHORTS.md).
+LIST_LIMIT = 200
+PUBLIC_SHORTS_LIMIT = 60
 # How long the mp4 of a video that is on YouTube stays in the review store, counted from the
 # later of the upload confirmation's decision and the publish time (HANDS-OFF.md). The
 # thumbnail, captions and descriptions are small and stay.
@@ -249,10 +258,22 @@ def _summary(
     *,
     compilation: bool = False,
     download_available: bool = False,
+    hold: shorts_slots.Hold | None = None,
 ) -> dict[str, Any]:
     choices = locale_choices(project)
     states = languages if languages is not None else language_states(choices, [])
+    is_short = project.shorts_line is not None
     return {
+        "shorts_line": project.shorts_line,
+        "shorts_series": project.shorts_series,
+        "source_slug": project.source_slug,
+        "shorts_state": (
+            shorts_slots.state_of(project, pending, publish_approved_at, hold)
+            if is_short
+            else None
+        ),
+        "slot_at": hold.starts_at if is_short and hold is not None else None,
+        "youtube_removed_at": project.youtube_removed_at,
         "compilation": compilation,
         "download_available": download_available,
         "slug": project.slug,
@@ -275,7 +296,15 @@ def _summary(
         "locales": choices,
         "locales_decided_at": project.locales_decided_at,
         "languages": states,
-        "ready_to_upload": ready_to_upload(project, publish_approved_at, states),
+        # A Short's languages are the Shorts settings', not a choice made video by video, so
+        # it waits for no decision on the language panel.
+        "ready_to_upload": (
+            publish_approved_at is not None
+            and project.youtube_video_id is None
+            and project.dropped_at is None
+            if is_short
+            else ready_to_upload(project, publish_approved_at, states)
+        ),
         "dub_locales": [locale for locale, choice in choices.items() if choice.dub],
         "series_slug": project.series_slug,
         "episode_number": project.episode_number,
@@ -333,6 +362,20 @@ async def upsert_project(
         project.series_slug = payload.series_slug
     if payload.episode_number is not None:
         project.episode_number = payload.episode_number
+    if payload.shorts_line is not None:
+        project.shorts_line = payload.shorts_line
+    if payload.shorts_series is not None:
+        project.shorts_series = payload.shorts_series
+    if payload.source_slug is not None:
+        project.source_slug = payload.source_slug
+    # The card pipeline only makes Shorts, and the lists tell a Short by its content line: a
+    # row in that format without one would show among the tutorials.
+    if project.format == "shorts" and project.shorts_line is None:
+        raise AppError(
+            422,
+            "video_shorts_line_missing",
+            "Shorts 要帶內容線（shorts_line：lab、cut 或 drama）",
+        )
     # A stale or unrelated report cannot consume a newer retry request.
     if payload.retry_acknowledged_id == project.retry_request_id:
         project.retry_acknowledged_id = payload.retry_acknowledged_id
@@ -372,6 +415,7 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
     spend = await spend_by_slug(session, [project.slug])
     languages = language_states(locale_choices(project), reviews)
     compiled = work_dir is not None and slug in await compilation_slugs(session)
+    held = await shorts_slots.holds(session, [slug]) if project.shorts_line is not None else {}
     return ProjectOut(
         **_summary(
             project,
@@ -381,6 +425,7 @@ async def project_view(session: AsyncSession, slug: str, work_dir: str | None = 
             languages,
             compilation=compiled,
             download_available=compiled and download_file(work_dir, slug) is not None,
+            hold=held.get(slug),
         ),
         reviews=[_review_out(review) for review in reviews],
     )
@@ -441,17 +486,44 @@ async def download_path(session: AsyncSession, work_dir: str | None, slug: str) 
     return file
 
 
+def _is_public(now: datetime) -> Any:
+    """A video whose publish time is past: what the Shorts tab counts as public."""
+    return and_(
+        VideoProject.youtube_video_id.is_not(None), VideoProject.youtube_publish_at <= now
+    )
+
+
+def _not_public(now: datetime) -> Any:
+    return or_(
+        VideoProject.youtube_video_id.is_(None),
+        VideoProject.youtube_publish_at.is_(None),
+        VideoProject.youtube_publish_at > now,
+    )
+
+
 async def list_projects(
     session: AsyncSession,
     *,
     video_format: str | None = None,
     series_slug: str | None = None,
-    limit: int = 200,
+    shorts: str | None = None,
+    state: str | None = None,
+    limit: int | None = None,
+    before: datetime | None = None,
     work_dir: str | None = None,
 ) -> list[ProjectSummary]:
     """The videos, newest first; a format or a series narrows them (docs/videos/SERIES.md),
     so a hundred episodes do not push the tutorials past the cap. With the worker's work
-    directory, a compilation says whether its cut is there to download."""
+    directory, a compilation says whether its cut is there to download.
+
+    ``shorts`` keeps the Shorts apart (docs/videos/SHORTS.md): ``exclude`` is every list that
+    existed before them, ``only`` is the Shorts tab and the worker's Shorts round. With
+    ``only`` the Shorts still to deal with all come, and of the public ones the latest
+    PUBLIC_SHORTS_LIMIT; ``state`` keeps one state, and ``limit`` and ``before`` page through
+    it (``before`` is the publish time of the last public Short read, or the last report of
+    any other).
+    """
+    now = datetime.now(UTC)
     pending = (
         select(VideoReview.project_id, func.count().label("pending"))
         .where(VideoReview.status == "pending")
@@ -468,14 +540,59 @@ async def list_projects(
         statement = statement.where(VideoProject.format == video_format)
     if series_slug is not None:
         statement = statement.where(VideoProject.series_slug == series_slug)
-    rows = await session.execute(
-        statement.order_by(VideoProject.last_synced_at.desc()).limit(limit)
-    )
-    listed = list(rows.all())
+    if shorts == "exclude":
+        statement = statement.where(VideoProject.shorts_line.is_(None))
+    elif shorts == "only":
+        statement = statement.where(VideoProject.shorts_line.is_not(None))
+    cap = limit or LIST_LIMIT
+    if shorts != "only":
+        if before is not None:
+            statement = statement.where(VideoProject.last_synced_at < before)
+        listed = list(
+            (
+                await session.execute(
+                    statement.order_by(VideoProject.last_synced_at.desc()).limit(cap)
+                )
+            ).all()
+        )
+    else:
+        listed = []
+        if state in (None, "published"):
+            public = statement.where(_is_public(now))
+            if before is not None and state == "published":
+                public = public.where(VideoProject.youtube_publish_at < before)
+            listed += list(
+                (
+                    await session.execute(
+                        public.order_by(VideoProject.youtube_publish_at.desc()).limit(
+                            limit or PUBLIC_SHORTS_LIMIT
+                        )
+                    )
+                ).all()
+            )
+        if state != "published":
+            waiting = statement.where(_not_public(now))
+            if before is not None and state is not None:
+                waiting = waiting.where(VideoProject.last_synced_at < before)
+            # Read whole and cut after the state is known: a state is not a column, and the
+            # Shorts that are not public yet are a few dozen.
+            listed = (
+                list(
+                    (
+                        await session.execute(
+                            waiting.order_by(VideoProject.last_synced_at.desc()).limit(LIST_LIMIT)
+                        )
+                    ).all()
+                )
+                + listed
+            )
     spend = await spend_by_slug(session, [project.slug for project, _count, _at in listed])
     batches = await _language_batches(session, [project for project, _count, _at in listed])
     compiled = await compilation_slugs(session) if work_dir is not None else set()
-    return [
+    held = await shorts_slots.holds(
+        session, [project.slug for project, _count, _at in listed if project.shorts_line]
+    )
+    summaries = [
         ProjectSummary(
             **_summary(
                 project,
@@ -486,10 +603,14 @@ async def list_projects(
                 compilation=project.slug in compiled,
                 download_available=project.slug in compiled
                 and download_file(work_dir, project.slug) is not None,
+                hold=held.get(project.slug),
             )
         )
         for project, count, approved_at in listed
     ]
+    if shorts == "only" and state is not None:
+        summaries = [item for item in summaries if item.shorts_state == state][:cap]
+    return summaries
 
 
 async def submit_review(
@@ -585,6 +706,18 @@ async def submit_review(
     elif payload.gate == "outline" and await auto_picks_outline(session, payload.payload):
         auto_note = pick_reason(payload.payload)
         review.choice = pick_choice(payload.payload)
+    # A Short is held to its own twelve checks and reads its own switch
+    # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
+    # rule below is not asked about a Short at all.
+    elif payload.gate in ("final", "publish") and project.shorts_line is not None:
+        if await auto_approves_shorts(
+            session, payload.gate, payload.payload, payload.content_sha256
+        ):
+            auto_note = (
+                SHORTS_QA_AUTO_APPROVED_NOTE
+                if payload.gate == "final"
+                else SHORTS_PACKAGE_AUTO_APPROVED_NOTE
+            )
     elif payload.gate in ("final", "publish") and await auto_approves_final(
         session,
         payload.gate,
@@ -610,10 +743,28 @@ async def submit_review(
                 metadata_json={"slug": slug, "gate": review.gate, "sha256": review.content_sha256},
             )
         )
+        await _short_approved(session, project, review, now)
     project.last_synced_at = now
     await session.commit()
     store.keep_only(slug, kept_files([*reviews, review]))
     return _review_out(review)
+
+
+async def _short_approved(
+    session: AsyncSession, project: VideoProject, review: VideoReview, now: datetime
+) -> None:
+    """What follows a Short's approval, whoever gave it (docs/videos/SHORTS.md): the final
+    cut's reported usage goes into the ledger, and an approved upload package takes the Short
+    to its slot, or to the library while the run has none for it. The caller commits."""
+    if project.shorts_line is None:
+        return
+    if review.gate == "final":
+        await shorts_costs.record_usage(
+            session, project.slug, review.payload, review.content_sha256, now
+        )
+        await shorts_costs.record_media(session, project.slug, now)
+    elif review.gate == "publish":
+        await shorts_slots.assign_approved(session, project, now)
 
 
 async def decide(
@@ -651,6 +802,8 @@ async def decide(
             },
         )
     )
+    if review.status == "approved":
+        await _short_approved(session, project, review, now)
     await session.commit()
     return _review_out(review)
 
@@ -674,6 +827,9 @@ async def drop_project(
     project.dropped_note = payload.note.strip()
     project.dropped_by_user_id = user.id
     project.updated_at = now
+    if project.shorts_line is not None:
+        # A dropped Short leaves its slot to the next one in the library.
+        await shorts_slots.release(session, slug, now)
     session.add(
         AdminAuditLog(
             actor_user_id=user.id,

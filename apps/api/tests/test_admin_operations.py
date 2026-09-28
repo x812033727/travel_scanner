@@ -403,3 +403,72 @@ async def test_system_health_treats_disconnected_agent_snapshots_as_stale(
 
     assert result["deployment"].status == "unavailable"
     assert result["backup"].status == "unavailable"
+
+
+class _Counts:
+    """A session that answers the one statement of the counts with these numbers."""
+
+    def __init__(self, values: dict[str, int]) -> None:
+        self.values = values
+
+    async def execute(self, _statement: Any) -> Any:
+        mapping = Mock()
+        mapping.one.return_value = self.values
+        result = Mock()
+        result.mappings.return_value = mapping
+        return result
+
+
+@pytest.mark.asyncio
+async def test_the_videos_badge_takes_in_what_waits_on_the_shorts_tab(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    labels = (
+        "users",
+        "hotspots_pending",
+        "foods_pending",
+        "merchants_pending",
+        "guides_pending",
+        "hotels_pending",
+        "community_jobs_pending",
+        "news_review_pending",
+        "video_reviews_pending",
+        "deployments_active",
+        "providers_unhealthy",
+    )
+    session = _Counts({**dict.fromkeys(labels, 0), "video_reviews_pending": 2, "foods_pending": 1})
+    waiting = AsyncMock(return_value=3)
+    monkeypatch.setattr(operations_service, "shorts_owner_needs_count", waiting)
+
+    values = await operations_service._live_pending_counts(session)  # type: ignore[arg-type]  # noqa: SLF001
+
+    waiting.assert_awaited_once_with(session)
+    assert values["video_reviews_pending"] == 5, "two reviews, and three things on the Shorts tab"
+    assert values["pending_total"] == 6
+
+
+@pytest.mark.asyncio
+async def test_the_counts_are_cached_under_a_key_a_count_without_shorts_never_used(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    stored: dict[str, str] = {"admin:operations:pending:v3": '{"video_reviews_pending":1}'}
+
+    async def get(key: str) -> str | None:
+        return stored.get(key)
+
+    async def put(key: str, value: str, ex: int) -> None:
+        assert ex == 15
+        stored[key] = value
+
+    monkeypatch.setattr(
+        operations_service, "get_redis", lambda: SimpleNamespace(get=get, set=put)
+    )
+    live = AsyncMock(return_value={"video_reviews_pending": 5})
+    monkeypatch.setattr(operations_service, "_live_pending_counts", live)
+
+    first = await operations_service.pending_counts(object())  # type: ignore[arg-type]
+    second = await operations_service.pending_counts(object())  # type: ignore[arg-type]
+
+    assert first == second == {"video_reviews_pending": 5}
+    assert stored["admin:operations:pending:v4"] == '{"video_reviews_pending":5}'
+    live.assert_awaited_once()

@@ -13,6 +13,9 @@ depends_on:
   - 2026-09-28-video-shorts-api
 scope:
   - tools/video/shorts
+  - tools/video/automation/cli.mjs
+  - tools/video/automation/client.mjs
+  - tools/video/automation/automation.test.mjs
   - .github/workflows/video-tooling.yml
 ---
 
@@ -34,6 +37,7 @@ scope:
 - [ ] `package --dir <成片目錄>` 寫 `upload/metadata.json`（`title`、`titles`、`description`、`tags`、`category_id`、`made_for_kids`、`contains_synthetic_media`、`disclosure_reason`、`default_language`、`final_sha256`、`line`、`series`、`source`）與四項上傳包檢查；`manifest.status` 不再寫死 `owner-review-required`，改成反映品管結果。
 - [ ] `push --dir <成片目錄>`：`PUT reviews/<slug>`（`format: "shorts"`、`shorts_line`、`shorts_series`、`source_slug`、檢查清單）→ 分段上傳檔案（4 MiB 一段）→ 送 `final` 審核（檔案角色 `preview`＝`final.mp4`、`thumbnail`＝`cover.png`、`contact_sheet`，實測線另有 `evidence_*`；`payload.qa`、`payload.usage`）→ 成片核准後送 `publish` 審核（`metadata`、`final`、`captions_zh-TW`、`description_zh-TW`；`payload.package`）。同一份成片再 `push` 一次是安全的。
 - [ ] `import --from <目錄>`：讀一支外來的 Shorts（`final.mp4`、`zh-TW.srt`、`meta.json`），包成同一種成片目錄；之後照常 `check-audio`、`qa`、`package`、`push`。外來的檢查結果一律不採用。
+- [ ] 工人敲門：`auto` 每一輪一開始先 `POST /api/video/automation/shorts/tick`，排在「自動產線有沒有開」的檢查之前（教學影片的自動草稿關著時 Shorts 的排程照走）；敲門失敗只記一行，不擋住這一輪。第一期沒有這一步的話，時段不會自己鎖定、成效也不會讀（伺服器的 `tick` 在 Y1）。`shortsStep()` 在第二期的 T2。
 - [ ] `video-tooling.yml` 的煙霧測試多一支 Shorts：用程式產生的音檔走 `files` 來源，從腳本做到 `package`，不碰任何服務。
 - [ ] `node --test tools/video/shorts/*.test.mjs` 全過；新增的純函式（格式檢查、品管項目、上傳包、送審的 body）都有測試，網路用注入的 `fetch`。
 
@@ -59,7 +63,9 @@ npm run test:tools
 
 ## Notes
 
-- 共用的核心檔（`tools/video/core`、`tools/video/tts`、`tools/video/review`）只匯入、不修改；缺的函式先在 `tools/video/shorts` 裡包一層。
+- 共用的核心檔（`tools/video/core`、`tools/video/tts`、`tools/video/review`）只匯入、不修改；缺的函式先在 `tools/video/shorts` 裡包一層。`tools/video/automation` 只加敲門那幾行。
+- A1 定下來的送審內容（`apps/api/app/video_shorts/schemas.py` 的 `UsageReport`、`apps/api/app/video_automation/judge.py` 的 `SHORTS_QA_ITEMS`）：`payload.qa` 與 `payload.package` 都要帶 `kind: "shorts"`，`final_sha256` 等於那一筆審核的 `content_sha256`；`payload.usage` 是 `{ narration: { seconds, characters, calls, provider, model }, stages: { <階段>: { calls, input_tokens, output_tokens, provider, model } }, checks: { transcribe, judge, policy } }`。本機語音的 `provider` 寫 `windows`（記 0 元）。
+- 聲音與長度範圍讀 `GET /api/video/automation/shorts/settings`。
 - 工具每個請求都算在同一個權杖的每分鐘 120 次裡；一支 Shorts 約 14 句，逐句轉寫沒問題，但不要平行送。
 - Jev 每天 200 次是全站共用的（新聞、景點、影片）；一支 Shorts 一輪旁白檢查 1 次、政策判斷 1 次。
 - 審核的檔案類型沒有 `image/webp`；封面與聯絡表用 PNG 或 JPEG。

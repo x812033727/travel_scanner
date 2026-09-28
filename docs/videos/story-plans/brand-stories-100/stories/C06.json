@@ -1,0 +1,249 @@
+{
+  "id": "C06",
+  "slug": "story-email-at-sign",
+  "category": "tech",
+  "region": "global",
+  "subject": "email 的 @",
+  "title": "email 裡的 @，來自一個沒有人叫他做的小專案",
+  "logline": "1971 年，BBN 工程師 Ray Tomlinson 做出沒人指派的網路郵件，據同事回憶他還說「別跟任何人講」；他拿來分隔使用者與主機的 @，後來成了全世界電子郵件地址的格式。",
+  "question": "每天都在用的電子郵件地址裡那個 @，是誰決定放上去的？他是被要求這麼做的嗎？",
+  "chapters": [
+    {
+      "key": "hook",
+      "point": "你的電子郵件地址中間有一個 @。這個格式不是哪家公司開會定下的，而是 1971 年一位工程師在沒人指派的情況下自己做出來的；據同事回憶，他展示的時候還說了一句「別跟任何人講」。這支影片要回答：一個不在工作清單上的小改動，後來為什麼變成全世界共用的地址格式？"
+    },
+    {
+      "key": "origin",
+      "point": "Ray Tomlinson 在麻省理工學院拿到電機碩士，1967 年進入美國研究公司 BBN（Bolt Beranek and Newman）。1968 年 12 月，BBN 拿下美國政府研究機構 ARPA 的案子，替 ARPANET 做網路上的封包交換機；ARPANET 就是後來網際網路的前身。1971 年，Tomlinson 被要求讓一支本機郵件程式 SNDMSG 能在他參與開發的作業系統 TENEX 上執行。SNDMSG 只能讓同一台分時電腦（很多人輪流共用的大型電腦）上的使用者互相留言。"
+    },
+    {
+      "key": "idea",
+      "point": "當時還有一支實驗性的檔案傳輸程式 CPYNET，能把檔案經網路送到另一台電腦。照 Tomlinson 自己的說法，他想到 CPYNET 也能把內容接到別台電腦的信箱檔案後面，就把它的程式碼接進 SNDMSG，讓信送到網路另一端；這是他覺得「很妙」才做的小專案，不是公司正式指派的工作。據同事 Jerry Burchfiel 在 1998 年的回憶，Tomlinson 展示給他看時說：「別跟任何人講！這不是我們該做的工作。」地址中間他放了 @：它不會出現在任何人名裡，英文裡原本表示單價，正好讀成使用者「在」哪台主機。"
+    },
+    {
+      "key": "engine",
+      "point": "user@host 會變成大家的預設，靠的不是行銷，而是用的人。照網路先驅合寫的網際網路簡史，網路郵件本來就是為了讓建網路的人彼此協調；1972 年 7 月，規劃 ARPANET 的 Larry Roberts 寫出第一個能列出、選讀、存檔、轉寄與回覆郵件的程式。照《Forbes ASAP》的說法，Roberts 開始所有聯絡都用電子郵件，靠他撥經費的研究人員也只好跟著上線。後來格式寫進公開的標準：1982 年，網路社群公開發行的技術文件 RFC 822 把地址定為「本地部分 @ 網域」。"
+    },
+    {
+      "key": "turn",
+      "point": "ARPANET 原本不是為了寄信而建：照網際網路簡史，它最初的主要動機是共用資源，讓各地的人使用接在網路上的分時電腦。結果第一個熱門應用卻是電子郵件，之後十多年都是網路上最大的應用；照 Katie Hafner 與 Matthew Lyon 1996 年出版的網路史，1973 年一份 ARPA 的研究發現網路流量有四分之三是電子郵件。還有一個小反轉：連年份都有兩種說法，網際網路名人堂的傳記與他過世時的報導說 1971 年，網際網路簡史與電腦歷史博物館的年表記在 1972 年；第一封信寫了什麼，也沒有人記得。"
+    },
+    {
+      "key": "now",
+      "point": "今天訂機票的確認信、訂房通知、電子登機證，都寄到一個用 @ 隔開的地址。現行的郵件格式標準 RFC 5322（2008 年）仍然把地址定為「本地部分 @ 網域」；照電腦歷史博物館的年表，@ 要到 1980 年代末才真正成為全世界的標準。回到開場的問題：決定這個符號用法的，不是哪一場發表會，而是一個不在工作清單上的小功能。"
+    }
+  ],
+  "takeaway": "很多「早該有」的功能，一開始都不是任務清單上的項目，而是有人在沒人要求時，自己多做的那一點點。",
+  "must_verify": [
+    {
+      "claim": "Ray Tomlinson 在 BBN 結合本機郵件程式 SNDMSG 與檔案傳輸程式 CPYNET，做出 ARPANET 第一個能把信送到另一台電腦的程式。網際網路名人堂的官方傳記與他過世時的報導說是 1971 年；網際網路簡史與電腦歷史博物館的年表記在 1972 年，這裡採用 1971 年並在旁白交代兩種說法",
+      "sources": [
+        6,
+        1,
+        3,
+        7,
+        8
+      ],
+      "core": true
+    },
+    {
+      "claim": "1971 年他被要求讓本機郵件程式 SNDMSG 能在 TENEX 作業系統上執行；讓信跨電腦送出，照他本人的說法是他覺得「很妙」（neat）的小專案，不是公司正式指派的工作",
+      "sources": [
+        3,
+        1
+      ],
+      "core": true
+    },
+    {
+      "claim": "據同事 Jerry Burchfiel 在 1998 年《Forbes ASAP》的回憶，Tomlinson 展示網路郵件時說：「別跟任何人講！這不是我們該做的工作。」（Don't tell anyone! This isn't what we're supposed to be working on.）維基百科的引述也出自這篇",
+      "sources": [
+        4,
+        3
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "他用 @ 分隔使用者與主機（user@host）；照他的說法，@ 不會出現在任何名字裡，英文裡原本表示單價，拿來表示使用者「在」另一台主機",
+      "sources": [
+        4,
+        1,
+        0,
+        6
+      ]
+    },
+    {
+      "claim": "@ 在電腦之前就用在商業上：歷史學者 Giorgio Stabile 找到 1536 年一封佛羅倫斯商人的信，@ 代表以雙耳陶罐（amphora）容量為準的單位；西班牙 1448 年的紀錄已有類似符號；至少 1889 年就有打字機把它放上鍵盤",
+      "sources": [
+        11,
+        2
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "第一封測試信在並排的兩台電腦之間寄出，內容沒有留下來；Tomlinson 後來說那些測試訊息「完全不值得記得，所以我也忘了」，很可能只是像 QWERTYUIOP 的一串按鍵",
+      "sources": [
+        3,
+        4
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "照網際網路簡史：ARPANET 最初的主要動機是共用資源；BBN 在 1968 年 12 月得標做網路的封包交換機；電子郵件是 1972 年出現的第一個熱門應用，之後十多年都是網路上最大的應用",
+      "sources": [
+        7
+      ]
+    },
+    {
+      "claim": "1972 年 7 月，規劃 ARPANET 的 Larry Roberts 寫出第一個能列出、選讀、存檔、轉寄與回覆郵件的程式；照《Forbes ASAP》的說法，他開始所有聯絡都用電子郵件，靠他撥經費的研究人員因此跟著上線",
+      "sources": [
+        7,
+        4
+      ]
+    },
+    {
+      "claim": "照 Katie Hafner 與 Matthew Lyon 1996 年的網路史《Where Wizards Stay Up Late》（經維基百科引用），1973 年一份 ARPA 的研究發現 ARPANET 上四分之三的流量是電子郵件",
+      "sources": [
+        5
+      ],
+      "attributed": true
+    },
+    {
+      "claim": "1982 年的郵件格式標準 RFC 822 把地址定為「本地部分 @ 網域」，2008 年的現行標準 RFC 5322 沿用同樣的寫法；電腦歷史博物館的年表說 @ 要到 1980 年代末才成為全世界的標準",
+      "sources": [
+        9,
+        10,
+        8
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://www.internethalloffame.org/inductees/ray-tomlinson/",
+      "publisher": "Internet Hall of Fame（Internet Society）",
+      "kind": "official",
+      "supports": "Tomlinson 在 BBN 做出跨網路送信的程式；@ 是從他那台電傳打字機的標點鍵裡挑的，用來分隔本機與網路，user@host 從此成為電子郵件的標準",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.informationweek.com/software/creator-of-network-email-ray-tomlinson-dies/d/d-id/1324592",
+      "publisher": "InformationWeek",
+      "kind": "news",
+      "supports": "引 Tomlinson 本人的回顧：網路郵件是他覺得 neat 的小專案、不是公司正式指派；CPYNET 能把內容接到信箱檔案；@ 在英文裡表示單價、用來表示使用者「在」別台主機；1971 年",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://time.com/4249407/tomlinson-history-at-symbol/",
+      "publisher": "Time",
+      "kind": "news",
+      "supports": "有研究者把 @ 追溯到 16 世紀的義大利商人；它長期用來表示已不再使用的重量等計量單位，因此出現在打字機與鍵盤上；Tomlinson 選它的理由",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Ray_Tomlinson",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "1971 年被要求讓 SNDMSG 能在 TENEX 上執行、接進 CPYNET 的程式碼；第一封測試信在並排的兩台電腦間寄出、內容沒有留下、QWERTYUIOP 與「entirely forgettable」的說法；「別跟任何人講」引自 Forbes",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.forbes.com/asap/1998/1005/126.html",
+      "publisher": "Forbes ASAP（Sasha Cavender，〈Legends〉，1998 年 10 月 5 日）",
+      "kind": "news",
+      "supports": "同事 Jerry Burchfiel 回憶 Tomlinson 說「Don't tell anyone! This isn't what we're supposed to be working on.」；@ 不會出現在任何名字裡；第一封信內容已被遺忘；Larry Roberts 改用電子郵件讓研究人員跟著上線",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/History_of_email",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "1973 年一份 ARPA 研究發現 ARPANET 四分之三的流量是電子郵件，引自 Hafner 與 Lyon 1996 年的《Where Wizards Stay Up Late》第 194 頁",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.internethalloffame.org/official-biography-raymond-tomlinson",
+      "publisher": "Internet Hall of Fame（Internet Society）官方傳記",
+      "kind": "official",
+      "supports": "1963 年 RPI 學士、1965 年麻省理工學院電機碩士；1967 年進入 BBN、參與開發 TENEX；1971 年結合 SNDMSG 與 CPYNET 做出 ARPANET 第一個網路郵件程式；選 @ 分隔本機與網路",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+      "publisher": "Internet Society（Leiner、Cerf、Kahn、Roberts 等人合著的網際網路簡史）",
+      "kind": "academic",
+      "supports": "ARPANET 最初的主要動機是共用資源；BBN 1968 年 12 月得標；電子郵件是 1972 年的第一個熱門應用、Tomlinson 同年 3 月寫出收發軟體、Roberts 7 月寫出第一個郵件管理程式、之後十多年是最大的網路應用",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.computerhistory.org/internethistory/1970s/",
+      "publisher": "Computer History Museum（電腦歷史博物館）",
+      "kind": "archive",
+      "supports": "年表把 Tomlinson 的網路郵件程式與 user@host 記在 1972 年；@ 要到 1980 年代末才成為全世界的標準",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc822",
+      "publisher": "RFC Editor（RFC 822，1982 年 8 月）",
+      "kind": "official",
+      "supports": "ARPA 網際網路文字訊息格式標準，把地址定為 local-part、@、domain 三段",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5322",
+      "publisher": "RFC Editor（RFC 5322，2008 年 10 月）",
+      "kind": "official",
+      "supports": "現行的網際網路訊息格式標準仍把地址定為本地部分、@、網域",
+      "checked": "2026-09-28"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/At_sign",
+      "publisher": "Wikipedia",
+      "kind": "reference",
+      "supports": "西班牙 1448 年的紀錄已有類似 @ 的符號；歷史學者 Giorgio Stabile 找到 1536 年 Francesco Lapi 的信，@ 代表 amphora 單位；@ 在帳目上表示單價；1889 年起出現在打字機鍵盤",
+      "checked": "2026-09-28"
+    }
+  ],
+  "names": [
+    "Ray Tomlinson",
+    "Raymond Tomlinson",
+    "Tomlinson",
+    "BBN",
+    "Bolt Beranek and Newman",
+    "ARPANET",
+    "ARPA",
+    "DARPA",
+    "SNDMSG",
+    "CPYNET",
+    "TENEX",
+    "Jerry Burchfiel",
+    "Burchfiel",
+    "Larry Roberts",
+    "Roberts",
+    "Forbes ASAP",
+    "Forbes",
+    "Katie Hafner",
+    "Matthew Lyon",
+    "Where Wizards Stay Up Late",
+    "Giorgio Stabile",
+    "Francesco Lapi",
+    "麻省理工學院",
+    "MIT",
+    "Internet Society",
+    "網際網路名人堂",
+    "Computer History Museum",
+    "電腦歷史博物館"
+  ],
+  "cast": [
+    {
+      "id": "engineer",
+      "role": "在 BBN 寫出網路郵件程式的工程師",
+      "appearance": "a man around thirty with short neat dark hair and black plastic-frame glasses, wearing a short-sleeve white or light-blue button-down shirt with a thin tie, seated at a large teleprinter terminal with a paper printout roll, calm curious expression"
+    }
+  ],
+  "image_notes": "畫 1970 年代美國研究公司的機房：大型電腦機櫃、兩台並排的電傳打字終端機、紙捲與連線的電纜，用一個信封沿著電纜從一台機器跑到另一台表現「送到別台電腦」。不畫任何公司、機構或電腦廠牌的標誌與招牌字；不畫真實 Tomlinson 或其他真人的長相；不畫任何真實電子郵件軟體、網站或手機的介面。@ 是字元，照「不畫文字」的規則不入畫，只在旁白、字幕與縮圖標題出現。",
+  "sensitivity": "none",
+  "related_guide": null,
+  "thumbnail": {
+    "headline": "沒人叫他做的功能",
+    "idea": "一台老式電傳打字終端機吐出長長的紙捲，一個信封沿著電纜飛向並排的另一台機器，背景是滿是電腦機櫃的機房"
+  }
+}

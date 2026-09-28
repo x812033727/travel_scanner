@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { dramaBrief, dramaFixture, fixture, fixtureBrief, fixtureLexicon } from "./fixtures/load.mjs";
+import { dramaBrief, dramaFixture, fixture, fixtureBrief, fixtureLexicon, storyBrief, storyFixture, storySeries } from "./fixtures/load.mjs";
 import { billableEstimate, briefSections, checkBrief, lintVideo, stancePoints, stanceProblems, templateSimilarity } from "./lint.mjs";
 import { textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
@@ -223,6 +223,16 @@ test("an episode of a compilation opens cold: no title card first", () => {
   series.compilation = false;
   doc.scenes.push({ id: "bye", chapter: "結尾", template: "outro", data: { title: "下一集", cta: "完整故事在說明欄" }, lines: [{ id: "outr", text: "下一集見。" }] });
   assert.deepEqual(lintVideo(doc, ctx).errors, [], "a plain episode may close on a card");
+});
+
+test("series.json's kind decides whether the brand story rules apply", () => {
+  const doc = storyFixture();
+  doc.scenes[4].data.visual = "clip";
+  doc.scenes[5].data.camera = "slow pan past an IBM reading machine";
+  const story = lintVideo(doc, context({ brief: storyBrief(), series: storySeries() }));
+  assert.deepEqual(story.errors.map((error) => error.path), ["scenes[4].data.visual", "scenes[5].data.camera"]);
+  const plain = { ...storySeries(), kind: undefined };
+  assert.deepEqual(lintVideo(doc, context({ brief: storyBrief(), series: plain })).errors, [], "the same script in a plain series may buy one clip and name a brand in a picture");
 });
 
 test("Azure bills each Chinese character twice, plus markup", () => {

@@ -2184,19 +2184,33 @@ class VideoProject(Timestamped, Base):
 
     __tablename__ = "video_projects"
     __table_args__ = (
-        CheckConstraint("format IN ('slides', 'drama')", name="ck_video_project_format"),
+        # "shorts" is the card pipeline of a Short (docs/videos/SHORTS.md; migration 0109
+        # recreates the constraint under the same name).
+        CheckConstraint("format IN ('slides', 'drama', 'shorts')", name="ck_video_project_format"),
         # A YouTube video id is eleven characters (migration 0100 adds this NOT VALID); length()
         # rather than char_length() so the SQLite-backed tests can build the table too.
         CheckConstraint(
             "youtube_video_id IS NULL OR length(youtube_video_id) = 11",
             name="ck_video_project_youtube_id",
         ),
+        CheckConstraint(
+            "shorts_line IS NULL OR shorts_line IN ('lab', 'cut', 'drama')",
+            name="ck_video_project_shorts_line",
+        ),
     )
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     slug: Mapped[str] = mapped_column(String(80), unique=True, index=True)
     title: Mapped[str] = mapped_column(String(200))
-    # Which pipeline makes it: "slides" or the AI drama route (docs/videos/DRAMA.md; 0097).
+    # Which pipeline makes it: "slides", the AI drama route (docs/videos/DRAMA.md; 0097), or
+    # "shorts", the card pipeline of a Short.
     format: Mapped[str] = mapped_column(String(8), default="slides", server_default="slides")
+    # A Short (docs/videos/SHORTS.md; migration 0109) is a video whose content line is set:
+    # "lab" (an experiment), "cut" (a highlight of a tutorial) or "drama" (a vertical short of
+    # a drama, which keeps format "drama"). ``shorts_series`` is the series within the line,
+    # ``source_slug`` the video a highlight or a vertical short was cut from.
+    shorts_line: Mapped[str | None] = mapped_column(String(8), nullable=True)
+    shorts_series: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    source_slug: Mapped[str | None] = mapped_column(String(80), nullable=True)
     # An episode of a long drama series (docs/videos/SERIES.md): the series' slug and the
     # episode's number, so the drama tab lists a series' episodes together. Migration 0099.
     series_slug: Mapped[str | None] = mapped_column(String(40), nullable=True, index=True)
@@ -2242,6 +2256,12 @@ class VideoProject(Timestamped, Base):
     # where the last run stopped instead of uploading a second copy. A capability URL: it never
     # leaves the server, and it is cleared once the upload finishes.
     youtube_upload_session: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # When the site found the video gone from YouTube, or private again after it was public
+    # (the check the developer policies ask for at least every thirty days; migration 0109).
+    # Its numbers are no longer read and it leaves the lists of what is public.
+    youtube_removed_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
 
 
 class VideoYoutubeConnection(Timestamped, Base):

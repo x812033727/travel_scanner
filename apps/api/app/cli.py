@@ -87,6 +87,7 @@ from app.search.schemas import SearchCreate
 from app.trips.name_backfill import backfill_trip_item_names
 from app.trips.routing import NaverDirectionsProvider, RoutePoint
 from app.usage.service import PACKAGE_DEFAULTS, create_usage_account, grant_package
+from app.video_automation.story_cli import import_story_file
 from app.video_media.prune_cli import prune_video_media
 
 
@@ -242,6 +243,12 @@ async def set_admin(email: str, enabled: bool) -> None:
         await session.commit()
         state = "administrator" if user.is_admin else "regular user"
         print(f"Updated {normalized_email} to {state}")
+
+
+def _stdin_text() -> str:
+    """All of standard input as UTF-8 (a byte order mark from a Windows editor is dropped), so
+    a JSON file piped in reads the same whatever the console's code page."""
+    return sys.stdin.buffer.read().decode("utf-8-sig")
 
 
 def _read_password(from_stdin: bool) -> str:
@@ -1064,6 +1071,28 @@ def main() -> None:
         help="Expire old media generation jobs and delete the files no live job names",
     )
     media_prune.add_argument("--dry-run", action="store_true")
+    story_import = subparsers.add_parser(
+        "video-story-import",
+        help=(
+            "Import a brand-story backlog, the compiled stories.json on standard input, as the "
+            "episodes of a story series (docs/videos/STORY.md). Reports what it would create, "
+            "update, leave alone and refuse unless --apply; one bad story refuses the file."
+        ),
+    )
+    story_import.add_argument(
+        "--series", required=True, help="The story series' slug; the file's series.slug matches it"
+    )
+    story_import.add_argument(
+        "--apply", action="store_true", help="Write the rows instead of only reporting them"
+    )
+    story_import.add_argument(
+        "--limit", type=int, help="Import only the first N stories in production order"
+    )
+    story_import.add_argument(
+        "--episodes-per-day",
+        type=int,
+        help="Stories that may start per Taipei day (1-12); read when the import makes the series",
+    )
     guides_links_rebuild.add_argument(
         "--dry-run", action="store_true", help="Report what would change without writing"
     )
@@ -1229,6 +1258,19 @@ def main() -> None:
     elif args.command == "video-media-prune":
         outcome = asyncio.run(prune_video_media(dry_run=args.dry_run))
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
+    elif args.command == "video-story-import":
+        outcome = asyncio.run(
+            import_story_file(
+                _stdin_text(),
+                series=args.series,
+                apply=args.apply,
+                limit=args.limit,
+                episodes_per_day=args.episodes_per_day,
+            )
+        )
+        print(json.dumps(outcome, ensure_ascii=False, indent=2))
+        if outcome["problems"]:
+            raise SystemExit(1)
     elif args.command == "guides-links-rebuild":
         outcome = asyncio.run(rebuild_guide_links(dry_run=args.dry_run))
         print(json.dumps(outcome, ensure_ascii=False, indent=2))
