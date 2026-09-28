@@ -65,8 +65,13 @@ TextInline correction at block 9; publish that corrected zh-TW revision and
 recapture its new version/hash before Batch032 translations can publish.
 The 500-error links to already five-language backup and maintenance articles.
 Comment-spam links to `wordpress-member-registration` and
-`wordpress-contact-forms`, currently zh-TW-only, so target-locale links must
-render as plain text until those destinations publish in that locale.
+`wordpress-contact-forms`, which were zh-TW-only at the Pair A inventory.
+The independent read-only publication snapshot at 2026-09-28T00:03:32Z
+(`b7417d7b8f3ee636a2b50c58925f7b7e6b940764cb23a9ed3978c5a99bc3ac5a`)
+shows `wordpress-contact-forms` published in all five languages;
+`wordpress-member-registration` remains zh-TW-only. The former now resolves
+as a same-locale link, while the latter must render as plain text for the four
+target locales. Recheck destination publication before release.
 
 Local validation receipt: `C:\Users\x8120\.codex\article-localization-release\batch032-pair-a\validation.json`,
 SHA-256 `6955df72ae1d5216f3dfabb45a2c8e82fd025ce50ef931d7ae2d46a378dd0e75`.

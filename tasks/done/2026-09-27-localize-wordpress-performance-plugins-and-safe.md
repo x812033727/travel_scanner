@@ -62,8 +62,13 @@ before the locale additions can be published. Performance links to
 `website-cache-cdn` and `pagespeed-performance-review` (inventory zh-TW only)
 and `wordpress-website-backup` (five-language); reset links to
 `wordpress-website-backup` and `wordpress-local-development` (five-language)
-and `wordpress-theme-selection` (inventory zh-TW only). Unpublished
-same-language targets must render as plain text.
+and `wordpress-theme-selection` (zh-TW only at Pair B inventory). The
+independent read-only publication snapshot at 2026-09-28T00:03:32Z
+(`b7417d7b8f3ee636a2b50c58925f7b7e6b940764cb23a9ed3978c5a99bc3ac5a`)
+shows `wordpress-theme-selection` published in all five languages. Its
+same-locale links now resolve; `website-cache-cdn` and
+`pagespeed-performance-review` remain zh-TW-only in that snapshot and must
+render as plain text for the four target locales. Recheck before release.
 
 Local validation receipt:
 `C:\Users\x8120\.codex\article-localization-release\batch032-pair-b\validation.json`,
