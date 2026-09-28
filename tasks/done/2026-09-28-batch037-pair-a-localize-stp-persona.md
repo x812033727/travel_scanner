@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-batch037-pair-a-localize-stp-persona
 title: Batch037 Pair A: localize STP persona research and social media planning
-status: review
+status: done
 priority: P1
 area: docs
 owner: codex-batch037-pair-a
 claimed_at: 2026-09-28T10:57:18Z
 created_at: 2026-09-28T10:57:09Z
-completed_at:
+completed_at: 2026-09-28T13:26:49Z
 branch: codex/article-localization-037-social-a
 depends_on: []
 scope:
@@ -16,6 +16,8 @@ scope:
   - apps/web/public/guides/stp-persona-research
   - apps/web/public/guides/social-media-planning
   - docs/article-localization/batch037-pair-a-evidence.md
+  - tasks/open/2026-09-28-batch037-pair-a-localize-stp-persona.md
+  - tasks/done/2026-09-28-batch037-pair-a-localize-stp-persona.md
 ---
 
 # Batch037 Pair A: localize STP persona research and social media planning
@@ -73,5 +75,8 @@ four-lock `READ ONLY` production snapshot on 2026-09-28 confirmed both articles
 active/published with `zh-TW` v4 source matching the inventory and no target locale
 rows. The independent Pair B review passed document structure, source and link
 preservation, and 16 SVG browser renders. Pack lint has only inherited `no_summary`
-and English-length advisories. No production writes, import, publication, merge, or
-deployment occurred in this task.
+and English-length advisories. PR #911 subsequently passed all nine checks and was
+merged at 2026-09-28T13:04:26Z as merge commit
+`ebde813d6a7fa9cdd8282bfa2400d002c0a6add8`. This closes the authoring and
+review task. No production deployment, import, or publication occurred as part of
+this task; those are separate approval and release steps.
