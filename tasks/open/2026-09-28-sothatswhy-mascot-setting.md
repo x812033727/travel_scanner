@@ -1,6 +1,6 @@
 ---
 id: 2026-09-28-sothatswhy-mascot-setting
-title: So That's Why: design the original mascot (the director) and the 3-second opener
+title: "So That's Why: series look and the 3-second opener (no mascot)"
 status: in-progress
 priority: P2
 area: docs
@@ -11,30 +11,31 @@ completed_at:
 branch: claude/knowledge-series-planning-v84n79
 depends_on: []
 scope:
-  - docs/videos/so-thats-why/mascot.md
+  - docs/videos/so-thats-why/look.md
 ---
 
-# So That's Why: design the original mascot (the director) and the 3-second opener
+# So That's Why: series look and the 3-second opener (no mascot)
 
 ## Why
 
-「原來如此事務所」每集片頭、章節卡與結尾蓋章都有吉祥物「所長」，關鍵影格要拿它的設定圖當參考才會跨 100 集一致。還沒有造型、提示詞與設定圖。
+「原來如此事務所」100 集要一眼認得出是同一個系列。站主 2026-09-28 決定不用吉祥物，所以辨識度只能靠固定畫風、色盤與片頭、結尾的蓋章動作；這些要先定好，每集的 `look` 與片頭才能重用。
 
 ## Definition of done
 
-- [x] `docs/videos/so-thats-why/mascot.md`：外觀描述、英文提示詞、色盤、禁止事項（不像任何既有角色或頻道吉祥物，不用黑貓）。
-- [ ] 站主從候選設定圖選定一張（圖檔留在 repo 外，文件記雜湊與日期）。
-- [x] 片頭 3 秒（推門、蓋章「受理」）與結尾蓋章「原來如此」的分鏡。
+- [x] `docs/videos/so-thats-why/look.md`：系列 `look`（扁平插畫、色盤、negative 擋文字與吉祥物）、人物與 logo 的畫法規則、片頭 3 秒、結尾蓋章、章節卡。
+- [ ] 片頭三張關鍵影格生成，站主確認；檔名與 SHA-256 記在 `look.md` 的「選定紀錄」（圖檔留在 repo 外）。
 
 ## Steps
 
-- [x] 寫三個造型方向給站主選。
-- [ ] 生成設定圖、站主選定、記錄。
+- [x] 寫 `look.md`。
+- [ ] 主機開啟漫劇設定與圖片金鑰後，用 `look.md` 的 `look` 與片頭分鏡生成三張關鍵影格。
+- [ ] 站主確認，記雜湊。
 
 ## How to verify
 
-站主在後台核准設定圖；`mascot.md` 記錄的雜湊與存檔一致。
+站主看過三張片頭關鍵影格；`look.md` 記錄的雜湊與存檔一致。
 
 ## Notes
 
-- 2026-09-28：`mascot.md` 寫好三個方向（A 水豚、B 郵差鴿、C 燈泡機器人，推薦 A）、系列 `look`（`preset: custom`，`style`／`negative` 已對過 `tools/video/core/drama.mjs` 的 LOOK_KEYS）、片頭與結尾分鏡。等站主選方向；選定後才能跑 `look` 生設定圖，要漫劇設定開啟與圖片金鑰（主機）。
+- 2026-09-28：第一版寫了吉祥物「所長」的三個造型方向（水豚、郵差鴿、燈泡機器人）。站主回覆「不用所長」，所以刪掉 `mascot.md`、改寫成 `look.md`，片頭改成無人的門、信與印章。id 保留不改，因為 `2026-09-28-sothatswhy-pilot-3` 依賴它。
+- `look` 的 `style`／`negative`／`candidates` 已對過 `tools/video/core/drama.mjs` 的 LOOK_KEYS；`push-in`、`drift` 是 `tools/video/assemble/drama.mjs` 的運鏡關鍵字。
