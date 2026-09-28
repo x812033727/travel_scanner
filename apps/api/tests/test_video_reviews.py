@@ -1012,3 +1012,55 @@ async def test_a_compilation_s_cut_is_downloaded_with_byte_ranges_and_only_by_a_
     ) as client:
         refused = await client.get("/api/v1/admin/videos/s-full/download")
     assert refused.status_code == 403, "a viewer watches previews but does not take the cut"
+
+
+@pytest.mark.asyncio
+async def test_the_list_takes_the_shorts_filter_and_a_state_only_with_it(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]
+    listed = AsyncMock(return_value=[])
+    monkeypatch.setattr(admin_service, "list_projects", listed)
+    monkeypatch.setattr(admin_service, "prune_published_previews", AsyncMock(return_value={}))
+
+    async def settings(_: Any) -> Settings:
+        return Settings(video_review_dir=str(tmp_path))
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    url = "/api/v1/admin/videos"
+    before = "2026-10-01T00:00:00+08:00"
+    async with AsyncClient(
+        transport=ASGITransport(app=_app(owner)), base_url="http://test"
+    ) as client:
+        plain = await client.get(url)
+        others = await client.get(url, params={"shorts": "exclude", "format": "drama"})
+        tab = await client.get(
+            url,
+            params={
+                "shorts": "only",
+                "state": "published",
+                "limit": 20,
+                "before": before,
+                "format": "shorts",
+            },
+        )
+        stateless = await client.get(url, params={"state": "library"})
+        unknown = await client.get(url, params={"shorts": "some"})
+        too_many = await client.get(url, params={"shorts": "only", "limit": 201})
+        naive = await client.get(url, params={"before": "2026-10-01T00:00:00"})
+    assert [plain.status_code, others.status_code, tab.status_code] == [200, 200, 200]
+    calls = [call.kwargs for call in listed.await_args_list]
+    assert len(calls) == 3
+    assert {
+        key: calls[0][key] for key in ("video_format", "shorts", "state", "limit", "before")
+    } == {"video_format": None, "shorts": None, "state": None, "limit": None, "before": None}, (
+        "asked as before, the list is asked as before"
+    )
+    assert (calls[1]["shorts"], calls[1]["video_format"]) == ("exclude", "drama")
+    assert (calls[2]["shorts"], calls[2]["state"], calls[2]["limit"]) == ("only", "published", 20)
+    assert calls[2]["video_format"] == "shorts"
+    assert calls[2]["before"] == datetime.fromisoformat(before)
+    assert stateless.status_code == 422
+    assert stateless.json()["code"] == "video_shorts_state_needs_only"
+    assert [unknown.status_code, too_many.status_code, naive.status_code] == [422, 422, 422]

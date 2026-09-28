@@ -16,7 +16,7 @@ scope:
   - apps/api/app/video_shorts/claim.py
   - apps/api/app/video_shorts/stats.py
   - apps/api/app/video_shorts/tick.py
-  - apps/api/app/video_shorts/publish_api.py
+  - apps/api/app/video_shorts/admin_publish_api.py
   - apps/api/app/video_youtube/client.py
   - apps/api/app/video_youtube/requests.py
   - apps/api/app/video_youtube/sync.py
@@ -54,7 +54,7 @@ scope:
 - [ ] `client.py` 加讀取用的方法（上傳清單、`videos.list` 帶 `statistics`、`fileDetails`、`contentDetails`）。
 - [ ] `requests.py`：Shorts 的 `update_body` 變體（語系、分類、沒有縮圖）。
 - [ ] `sync.py`：把「誰發起」抽出來，讓伺服器可以在授權之下建立請求；站主按鈕的路徑不變。
-- [ ] `publish.py`、`claim.py`、`stats.py`、`tick.py`；端點都放 `publish_api.py`（A1 已經把這個空的路由檔掛進 `main.py`，後台與工人兩種路由都在這一檔）。
+- [ ] `publish.py`、`claim.py`、`stats.py`、`tick.py`；端點都放 `admin_publish_api.py`（A1 已經把這個空的路由檔掛進 `main.py`，後台與工人兩種路由都在這一檔）。
 - [ ] 測試。
 
 ## How to verify
@@ -76,6 +76,15 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run pytest tests/tes
 5. 沒有通過稽核的專案，對 Studio 上傳的影片呼叫 `captions.insert` 與設 `publishAt` 會不會成功（跟 `2026-09-27-video-youtube-sync-field-test` 同一個問題，結果共用）。官方文件列的條件都符合，但沒有任何一頁明說。
 
 已經查過、不用再測的（2026-09-28 讀官方頁，依據在 `docs/videos/SHORTS.md` §政策與依據）：Shorts 的「相關影片」只能在 Studio 設，API 寫不了；Shorts 不能做標題與縮圖的 A/B 測試；Shorts 的自訂縮圖只能在電腦版 Studio 設。
+
+A1 已經備好的（2026-09-28）：
+
+- `app/video_shorts/slots.py` 的 `lock_due_slots(session, now)`：鎖定到期的時段、從片庫補、記錯過，呼叫端 commit。稽核還沒通過時它會優先補站主已經上傳的那幾支。
+- `app/video_shorts/settings.py` 的 `may_publish(row, channel, now)`：授權有效、沒有暫停才回 True，否則回原因；每一次自動送出之前都要問它。授權的 id 在 `video_shorts_settings.consent_id`。
+- `video_shorts_settings.last_tick_at`／`last_tick`：`tick` 寫這兩欄，頂列與「需要你」已經在讀（超過 15 分鐘沒有回報就提醒）。
+- `video_projects.youtube_removed_at`：影片被刪或改回私人時寫它；成效清單已經會帶出來。
+- 成效表的時間窗欄位叫 `period`（`window` 是 PostgreSQL 的保留字）。
+- 路由檔名帶 `admin` 是為了 `tests/test_error_localization.py`：它靠檔名分辨後台的錯誤碼，檔名沒有 `admin` 的檔丟 `AppError` 會被要求補四語訊息。
 
 其他：
 
