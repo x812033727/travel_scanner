@@ -29,9 +29,9 @@ current published zh-TW version while keeping publication as a separate gate.
 
 ## Definition of done
 
-- [ ] Both packs include complete zh-TW, zh-CN, en, ja and ko documents with
+- [x] Both packs include complete zh-TW, zh-CN, en, ja and ko documents with
       the same block structure, numbers, cautions, sources and relevant links.
-- [ ] Original zh-TW documents and pack metadata remain unchanged.
+- [x] Original zh-TW documents and pack metadata remain unchanged.
 - [ ] Both text-bearing hero and diagram SVGs plus raster covers have four
       localized versions, with rendered desktop/mobile visual QA.
 - [ ] Pack, content-link, asset, API/web, i18n and task checks pass; a reviewed
@@ -42,7 +42,8 @@ current published zh-TW version while keeping publication as a separate gate.
 
 - [x] Four-lock read-only production and repository inventory captured.
 - [x] Claimed exact two-pack, two-asset-directory and evidence scope.
-- [ ] Translate and review all eight missing locale documents.
+- [x] Translate all eight missing locale documents and independently compare
+      root metadata and zh-TW against pinned sources; peer review is in progress.
 - [x] Localized both text-bearing hero/diagram sets into four languages;
       Edge rendered all 16 SVGs with zero layout issues and exported eight JPGs.
 - [ ] Validate, peer-review and open a focused PR.
@@ -78,3 +79,15 @@ Artwork render receipt SHA-256:
 `621ef947fd8081a9e41a10f3bfdb311a6c0c12a383865a43bf08b3a1c97e03f8`.
 The independent 4×2 contact sheets were visually reviewed; desktop/mobile
 article-page previews remain pending until the translated documents exist.
+
+The combined keyword candidate outside the repository has SHA-256
+`1dd67c76d9b9f8de1960a1628c01317846d250abfba9d1b7a9a38a32131ece74`,
+audit receipt SHA-256
+`fb708e39c978bafe216dca5090b22631c136b678a5728b3521cb6b93a2b68d58`.
+The title candidate has SHA-256
+`0696ef4e8c13f93e8b391dc6fb8b5f6a86470dfd7ee4f04ebe6375ba9dcb2450`;
+its external audit and GuideDocument schema check passed. Both were installed
+only after confirming exact source SHA, unchanged root metadata and unchanged
+zh-TW. The resulting diffs add locale documents only. New-locale related
+reading labels are translated plain text until the exact target locales are
+public; they do not create premature public links.

@@ -38,14 +38,49 @@ contact-sheet review found no visible missing glyphs or clipping. The receipt
 has SHA-256 `621ef947fd8081a9e41a10f3bfdb311a6c0c12a383865a43bf08b3a1c97e03f8`
 and contains each SVG/PNG/JPEG hash and text bounding box.
 
+## Locale documents
+
+All eight missing documents are staged in the two packs, with the original
+root metadata and zh-TW document parsed-identical to their pinned sources.
+The keyword candidate was prepared outside the repository at
+`C:\Users\x8120\.codex\article-localization-release\batch041-pair-a\keyword-draft\seo-keyword-research.all-locales.candidate.json`
+(SHA-256 `1dd67c76d9b9f8de1960a1628c01317846d250abfba9d1b7a9a38a32131ece74`).
+Its structural audit receipt has SHA-256
+`fb708e39c978bafe216dca5090b22631c136b678a5728b3521cb6b93a2b68d58`:
+32 blocks, five source URLs/dates, the ordered list and six-row comparison
+table survive in each locale. External pack lint found zero errors.
+
+The title candidate at
+`C:\Users\x8120\.codex\article-localization-release\batch041-pair-a\title-draft\seo-title-writing-draft.json`
+has SHA-256 `0696ef4e8c13f93e8b391dc6fb8b5f6a86470dfd7ee4f04ebe6375ba9dcb2450`.
+Its external audit and GuideDocument schema check passed: 32 blocks and four
+source URLs/dates per locale, no changed zh-TW or root metadata. Both candidates
+were copied only after rechecking exact source file SHA-256 and parsed source
+parity; the repository diffs contain locale insertions only.
+
+Each source has two related-reading article links whose target-locale
+publication is not established. The eight new documents translate the visible
+labels but represent them as plain text inlines, so readers do not get clickable
+links to an unavailable localized article. This explains the expected
+`no_internal_link` lint warnings. The source format already lacks a summary
+block, explaining `no_summary` warnings. These warnings are recorded rather
+than replaced with a short abstract posing as the full translation.
+
+On 2026-09-28, current official
+[Google Ads Keyword Planner help](https://support.google.com/google-ads/answer/7337243?hl=en),
+[Google Trends data FAQ](https://support.google.com/trends/answer/4365533?hl=en)
+and [Search Console query-dimension documentation](https://support.google.com/webmasters/answer/17011259?hl=en)
+were checked against the keyword guide's access, estimate, 0–100 relative
+scale, privacy and row-limit caveats. These claims remain aligned. The source
+citation `checked_on` dates remain unchanged from the pinned zh-TW document;
+this editorial review did not silently rewrite their historic provenance.
+
 ## Outstanding acceptance
 
-- Complete and review the eight locale documents, including description,
-  rich text, tables, warnings, source titles, alt text and captions.
-- Keep the zh-TW documents and pack-level metadata byte-equivalent to source.
-- Validate article links against each destination's actual locale publication
-  state. Google Ads, Trends and Search Console interface/metrics claims need
-  current official-source review before publication.
+- Finish independent editorial and desktop/mobile rendered-page review of all
+  eight locale documents, including tables, warnings, alt text and captions.
+- Recheck title-link, Discover and WordPress interface claims against current
+  official sources before publication.
 - Run focused pack/API/Web/i18n/task checks, CI, guarded import dry-run and
   later production/browser verification. This document does not count any of
   those pending steps as passed.
