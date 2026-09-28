@@ -255,6 +255,8 @@ describe("the ready card and the list with a linked channel", () => {
     stub((url) => {
       if (url.endsWith("/admin/video-youtube")) return empty;
       if (url.endsWith("/admin/videos")) return [ready];
+      // The settings tab's own form is not what this test reads.
+      if (url.includes("/admin/video-automation/")) return new Response(null, { status: 404 });
       return { ...ready, reviews: [confirmation] };
     });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);

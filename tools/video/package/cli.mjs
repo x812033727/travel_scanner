@@ -11,7 +11,8 @@ import { compilationChecksCurrent, isCompilation } from "../core/compilation.mjs
 import { isDrama, lookHash, mixHash, subtitlesHash } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { LOCALES } from "../core/schema.mjs";
-import { dubsForUpload, runCaptions } from "../core/stages.mjs";
+import { DUB_LOCALES } from "../dubs/plan.mjs";
+import { captionLocalesOf, chosenLocales, dubsForUpload, readLanguages, runCaptions } from "../core/stages.mjs";
 import { approvedEpisodes, ARTIFACTS, loadProject, recordStage } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { disclosureDecision } from "../qa/checks.mjs";
@@ -21,11 +22,11 @@ import { composeMetadata, uploadChecklist } from "./metadata.mjs";
 /**
  * Why a locale has no caption file, for metadata.json's skipped_caption_locales: the line ids
  * the captions stage left out (missing or older than zh-TW), or that no translation exists at
- * all. The package check accepts either as a reason.
+ * all. The package check accepts either as a reason. `locales` are the caption locales wanted.
  */
-export function skippedCaptionLocales(manifest, written, { compilation = false } = {}) {
+export function skippedCaptionLocales(manifest, written, { locales = LOCALES, compilation = false } = {}) {
   const skipped = {};
-  for (const locale of LOCALES) {
+  for (const locale of locales) {
     if (written.includes(`captions/${locale}.srt`)) continue;
     const lines = manifest?.skipped?.[locale];
     // A compilation's manifest lists the episodes that have no file for the locale instead.
@@ -33,6 +34,17 @@ export function skippedCaptionLocales(manifest, written, { compilation = false }
     else skipped[locale] = Array.isArray(lines) && lines.length ? lines : `no translation (i18n/${locale}.json missing)`;
   }
   return skipped;
+}
+
+/**
+ * Whether the caption manifest was cut for this narration and for exactly the caption locales
+ * wanted now: the owner's choice may have grown or shrunk since the captions were last written.
+ */
+export function captionsCurrent(manifest, speech, wanted, translations) {
+  if (!manifest || manifest.speech_hash !== speech) return false;
+  const have = Object.keys(manifest.locales ?? {});
+  if (have.some((locale) => !wanted.includes(locale))) return false;
+  return wanted.every((locale) => manifest.locales?.[locale] || manifest.skipped?.[locale] || (locale !== "zh-TW" && !translations[locale]));
 }
 
 /**
@@ -85,6 +97,12 @@ export async function run(command, args, ctx) {
     return EXIT.owner;
   }
 
+  // The owner's language choice (docs/videos/LANGUAGES.md): which locales get a description, a
+  // caption file and a dub track; without one, every translated locale, as before.
+  const languages = readLanguages(workdir);
+  const captionLocales = captionLocalesOf(languages);
+  const metadataLocales = chosenLocales(languages, "metadata");
+  const dubLocales = chosenLocales(languages, "dub") ?? DUB_LOCALES;
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline));
   const captionsManifest = readJson(path.join(workdir, ARTIFACTS.captions), null);
   let captions;
@@ -94,8 +112,8 @@ export async function run(command, args, ctx) {
       return EXIT.usage;
     }
     captions = captionsManifest;
-  } else captions = captionsManifest?.speech_hash === speech ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
-  const { problems, metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack ?? null });
+  } else captions = captionsCurrent(captionsManifest, speech, captionLocales, project.translations) ? captionsManifest : runCaptions({ slug: values.slug, file: values.file, root: ctx.root, workdir, now: ctx.now() });
+  const { problems, metadata } = composeMetadata({ doc, timeline, translations: project.translations, pack: project.pack ?? null, locales: metadataLocales });
   if (problems.length) {
     for (const problem of problems) ctx.stdout.write(`ERROR ${problem}\n`);
     return EXIT.lint;
@@ -109,7 +127,7 @@ export async function run(command, args, ctx) {
   const thumbnail = existsSync(path.join(workdir, "thumbnail.jpg"));
   if (thumbnail) copyFileSync(path.join(workdir, "thumbnail.jpg"), path.join(upload, "thumbnail.jpg"));
   const captionFiles = [];
-  for (const name of readdirSync(path.join(workdir, "captions")).filter((file) => file.endsWith(".srt")).sort()) {
+  for (const name of readdirSync(path.join(workdir, "captions")).filter((file) => file.endsWith(".srt") && captionLocales.includes(path.basename(file, ".srt"))).sort()) {
     copyFileSync(path.join(workdir, "captions", name), path.join(upload, "captions", name));
     captionFiles.push(`captions/${name}`);
   }
@@ -119,7 +137,7 @@ export async function run(command, args, ctx) {
   }
   // The dub tracks the owner picked and the worker finished (docs/videos/DUBS.md); a locale the
   // worker gave up on is named with its reason, so the owner knows not to wait for it.
-  const { dubs: tracks, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, speech);
+  const { dubs: tracks, skipped: skippedDubs } = compilation ? { dubs: [], skipped: {} } : dubsForUpload(project, workdir, speech, dubLocales);
   const dubs = tracks.map((dub) => {
     mkdirSync(path.join(upload, "dubs"), { recursive: true });
     copyFileSync(dub.file, path.join(upload, "dubs", path.basename(dub.file)));
@@ -136,9 +154,11 @@ export async function run(command, args, ctx) {
     final_sha256: approval.sha256,
     thumbnail: thumbnail ? "thumbnail.jpg" : null,
     captions: captionFiles,
-    skipped_caption_locales: skippedCaptionLocales(captions, captionFiles, { compilation }),
+    skipped_caption_locales: skippedCaptionLocales(captions, captionFiles, { locales: captionLocales, compilation }),
     dubs,
     skipped_dub_locales: skippedDubs,
+    // What the owner chose per language (docs/videos/LANGUAGES.md), for youtube-sync and the card; null without a choice.
+    language_choice: languages ? languages.locales : null,
     ...(compiled ?? {}),
     contains_synthetic_media: disclosure.synthetic,
     disclosure_reason: disclosure.reason,

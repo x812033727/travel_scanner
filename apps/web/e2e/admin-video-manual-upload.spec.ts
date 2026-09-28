@@ -37,7 +37,7 @@ async function fixture(page: Page, baseURL: string | undefined, existing: boolea
   expect(["127.0.0.1", "localhost"]).toContain(new URL(origin).hostname);
   await pretendSignedIn(page);
   await page.context().grantPermissions(["clipboard-read", "clipboard-write"], { origin });
-  const writes: string[] = [], external: string[] = [], downloads: string[] = [];
+  const writes: string[] = [], external: string[] = [];
   const project: Project = {
     slug, title: "Synthetic manual-upload validation", stage: "publish", checklist: [], pending: 0,
     youtube_video_id: existing ? videoId : null, last_synced_at: "2026-09-28T00:00:00Z",
@@ -59,11 +59,9 @@ async function fixture(page: Page, baseURL: string | undefined, existing: boolea
     }
     if (url.pathname === `/api/admin-video-files/${slug}/${hash(4)}`) return route.fulfill({ json: metadata });
     if (url.pathname.startsWith(`/api/admin-video-files/${slug}/`)) {
-      const sha = url.pathname.split("/").at(-1)!;
-      const body = fileContent.get(sha);
-      if (!body) return route.fulfill({ status: 404, body: "Unknown synthetic file" });
-      downloads.push(sha);
-      return route.fulfill({ contentType: "application/octet-stream", body });
+      // Chromium downloads bypass route interception: the HTTP runtime fixture
+      // serves the bytes through the real BFF, including the session cookie.
+      return route.fallback();
     }
     const path = url.pathname.replace("/api/travel", "");
     if (path === `/admin/videos/${slug}`) return route.fulfill({ json: project });
@@ -77,7 +75,7 @@ async function fixture(page: Page, baseURL: string | undefined, existing: boolea
     if (path === "/analytics/config") return route.fulfill({ json: { first_party_enabled: false, ga4_enabled: false } });
     return route.fallback();
   });
-  return { writes, external, downloads, fileContent };
+  return { writes, external, fileContent };
 }
 
 async function download(link: Locator, page: Page, name: string, contents: string) {
@@ -147,7 +145,6 @@ for (const locale of locales) {
         await expect(form.getByRole("textbox", { name: copy.videoTitle, exact: true })).toHaveValue("Synthetic unsent title");
         await expect(form.getByRole("textbox", { name: copy.videoDescription, exact: true })).toHaveValue("Synthetic unsent description\n00:00 Draft chapter");
       }
-      expect(state.downloads).toContain(hash(3));
       expect(state.writes).toEqual([]);
       expect(state.external).toEqual([]);
       expect(errors).toEqual([]);
