@@ -10,6 +10,7 @@ tools/video/story-plans/validate.mjs.
 
 from __future__ import annotations
 
+import codecs
 import copy
 import io
 import json
@@ -1075,11 +1076,11 @@ def test_the_command_reads_the_file_from_standard_input_and_fails_on_a_problem(
     monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
 ) -> None:
     document = _file()
-    raw = "﻿" + json.dumps(document, ensure_ascii=False)
+    raw = codecs.BOM_UTF8 + json.dumps(document, ensure_ascii=False).encode("utf-8")
     outcome: dict[str, Any] = {"series": "stories-test", "problems": [], "create": 3}
     command = AsyncMock(return_value=outcome)
     monkeypatch.setattr(cli, "import_story_file", command)
-    monkeypatch.setattr(sys, "stdin", SimpleNamespace(buffer=io.BytesIO(raw.encode("utf-8"))))
+    monkeypatch.setattr(sys, "stdin", SimpleNamespace(buffer=io.BytesIO(raw)))
     monkeypatch.setattr(
         sys,
         "argv",
@@ -1107,7 +1108,7 @@ def test_the_command_reads_the_file_from_standard_input_and_fails_on_a_problem(
     assert json.loads(capsys.readouterr().out)["create"] == 3
 
     outcome["problems"] = ["B01: sources has 2 entries, at least 3"]
-    monkeypatch.setattr(sys, "stdin", SimpleNamespace(buffer=io.BytesIO(raw.encode("utf-8"))))
+    monkeypatch.setattr(sys, "stdin", SimpleNamespace(buffer=io.BytesIO(raw)))
     with pytest.raises(SystemExit) as failed:
         cli.main()
     assert failed.value.code == 1
