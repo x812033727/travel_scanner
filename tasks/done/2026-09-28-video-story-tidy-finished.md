@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-tidy-finished
 title: 影片上架後清掉工人的工作檔
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-video-story-tidy
 claimed_at: 2026-09-28T11:20:25Z
 created_at: 2026-09-28T03:31:14Z
-completed_at:
+completed_at: 2026-09-28T12:06:54Z
 branch: claude/video-story-tidy-finished
 depends_on: []
 scope:
