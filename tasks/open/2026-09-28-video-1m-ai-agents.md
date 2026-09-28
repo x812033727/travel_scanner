@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-ai-agents
 title: Million-views batch 3: what an AI agent actually is, what one costs to run, and the setting that keeps it from spending your money
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-4-8
+claimed_at: 2026-09-28T04:24:15Z
 created_at: 2026-09-28T02:39:11Z
 completed_at:
-branch:
+branch: claude/bold-noether-unopy8
 depends_on: []
 scope:
   - docs/videos/ai-agents-explained-what-they-cost
@@ -53,3 +53,7 @@ node tools/video/cli.mjs status --slug ai-agents-explained-what-they-cost --work
 - 官方數字都以撰稿當天重查為準，brief 的「會過期的事實」列了每個要重查的網址。
 - 常青題，不綁單一新聞；可搭任何新代理發布再推一波。
 - 記憶點：同一件事「一次問答 0.06 vs 五輪代理 0.95」，差約 16 倍；那個能救命的設定是「預算上限」。
+
+## Progress (2026-09-28, claude-opus-5-5)
+
+Pipeline stages 1–4 done: `video.json` (option A, 7 chapters, ~8.4 min, hook at 0:18, lint 0/0), `claims.md` (c1–c8), `verify-1.md`. Two facts corrected in the check: the OpenAI quote slide now carries the docs' verbatim sentence, and the five-round bill says on screen that it assumes no cache hits (the docs say caching within a session can reuse earlier processing). Lexicon gained `Agents`. Remaining stages need the same owner setup as the price-war video; next is `review-push --slug ai-agents-explained-what-they-cost --gate outline`.

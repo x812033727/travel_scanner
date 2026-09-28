@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-1m-free-vs-paid
 title: Million-views batch 6: free vs paid AI plans 2026, is 20 dollars a month worth it, worked out
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-4-8
+claimed_at: 2026-09-28T04:24:17Z
 created_at: 2026-09-28T02:30:47Z
 completed_at:
-branch:
+branch: claude/bold-noether-unopy8
 depends_on: []
 scope:
   - docs/videos/free-vs-paid-ai-plans-2026
