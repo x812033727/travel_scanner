@@ -7,6 +7,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
+import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
+
 const SKILL = path.join(".agents", "skills", "youtube-video", "references");
 
 /** The reference texts every writing stage reads, loaded once from the repository. */
@@ -387,7 +389,8 @@ const STANCE_STAGES = new Set(["planner", "writer"]);
  * pass (variant "rewrite") have their own text, the same for both formats.
  */
 export function instructionsFor(stage, format = "slides", standing = "", variant = null, stance = "", series = null) {
-  const base = (variant && VARIANT_INSTRUCTIONS[`${stage}:${variant}`]) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
+  // A brand story's stages (docs/videos/STORY.md) are variants kept in story-prompts.mjs.
+  const base = (variant && (VARIANT_INSTRUCTIONS[`${stage}:${variant}`] || STORY_INSTRUCTIONS[`${stage}:${variant}`])) || (format === "drama" && DRAMA_INSTRUCTIONS[stage]) || INSTRUCTIONS[stage];
   const parts = [base];
   // A binge series' genre section (docs/videos/BINGE.md) for the stages that plan, write or
   // check the story; the listener, the translator and the caption reviewer do not need it.

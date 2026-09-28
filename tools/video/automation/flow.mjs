@@ -28,6 +28,7 @@ import { checklistFrom, guideSlugs, judgeOutline, outlineOptions, outlineReview,
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { discussStep } from "./discuss.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
+import { advanceStory, fixStoryPrompts } from "./story.mjs";
 import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
@@ -69,9 +70,10 @@ const today = (ctx) => ctx.now().toISOString().slice(0, 10);
  * The prompt variant of an episode's writer and checker: "episode" for an episode of a long
  * series (the beats, the recaps, the next episode's promise); a one-off drama, though it is an
  * episode of its own one-episode series (docs/videos/DRAMA-FLOW.md, section 2), is written with
- * the drama prompts, since its story ends.
+ * the drama prompts, since its story ends. A brand story (story.mjs) has variants of its own and
+ * no recap.
  */
-const episodeVariant = (state) => (state.series && state.series.kind !== "one-off" ? "episode" : null);
+const episodeVariant = (state) => (state.series && !["one-off", "story"].includes(state.series.kind) ? "episode" : null);
 
 /** Every video the automation started, oldest first. */
 export function automatedVideos(workBase) {
@@ -985,6 +987,11 @@ export class Automation {
       const moved = await advanceCompilation(this, state, next);
       if (moved !== undefined) return moved;
     }
+    // A brand story (docs/videos/STORY.md) is written, checked and heard a chapter at a time.
+    if (state.story) {
+      const moved = await advanceStory(this, state, next);
+      if (moved !== undefined) return moved;
+    }
 
     if (next === "outline approved") {
       const review = await this.decision(state, "outline", path.join(dir, "brief.md"));
@@ -1219,6 +1226,8 @@ export class Automation {
    * prompt fix, at most MAX_PROMPT_FIX_ROUNDS times per kind; then the video waits for a person.
    */
   async fixPrompts(state, kind, { targets = null, ownerNote = null }) {
+    // A story's fix is a patch of the named shots alone (story.mjs).
+    if (state.story) return fixStoryPrompts(this, state, kind, { targets, ownerNote });
     const workdir = this.workdir(state.slug);
     const found = targets ?? this.failedTargets(state, kind);
     const what = FIX_SOURCES[kind]?.what ?? "shot";

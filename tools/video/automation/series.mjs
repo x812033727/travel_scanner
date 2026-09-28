@@ -13,6 +13,7 @@ import { eachLine } from "../core/schema.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { AutomationError, OUTPUT_INVALID } from "./client.mjs";
 import { BEATS, GENRE_SPECS, HOOK_TYPES, LEAD_ARCS, MIN_SATISFACTION } from "./prompts.mjs";
+import { startStory } from "./story.mjs";
 
 export const DOC_KINDS = ["setting", "outline", "chapter", "bible"];
 const BIBLE_LISTS = ["acts"];
@@ -433,6 +434,8 @@ export function documentName({ kind, chapter_number: chapter }) {
 /** Start the next episode on the site and draft it here from the chapter's beats. */
 export async function startEpisode(automation, job) {
   const { series, episode } = job;
+  // A brand story (docs/videos/STORY.md) starts under the slug its plan fixed, drafted by story.mjs.
+  if (series.kind === "story") return startStory(automation, job);
   const started = await automation.api.episodeStart(series.slug, episode.number, episodeSlug(series.slug, episode.number));
   return automation.draftEpisode(started.request, started.context, started.episode);
 }
