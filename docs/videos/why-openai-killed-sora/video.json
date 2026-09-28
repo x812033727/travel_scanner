@@ -36,7 +36,7 @@
     ],
     "video_id": null
   },
-  "thumbnail": { "template": "thumb", "data": { "tag": "Sora 已停止服務", "headline": "為什麼**收掉**\nSora？", "sub": "官方原話 vs 一秒 $0.05–$0.40" } },
+  "thumbnail": { "template": "thumb", "data": { "tag": "Sora 已停止服務", "headline": "為什麼**收掉**\nSora？", "sub": "官方原話 vs 720p 一秒 $0.05–$0.40" } },
   "sources": [
     { "title": "OpenAI API deprecations (Sora 2, Videos API)", "url": "https://developers.openai.com/api/docs/deprecations", "checked_on": "2026-09-28" },
     { "title": "OpenAI API pricing, archived 2026-08-02 (sora-2)", "url": "https://web.archive.org/web/20260802044220/https://developers.openai.com/api/docs/pricing", "checked_on": "2026-09-28" },
@@ -103,7 +103,7 @@
     {
       "id": "hook-range",
       "template": "big",
-      "data": { "kicker": "各家一秒的價錢", "text": "**$0.05** 到 $0.40", "sub": "OpenAI 的原話｜各家每秒價｜付錢前要查的兩個頁面" },
+      "data": { "kicker": "各家 720p 一秒的價錢", "text": "**$0.05** 到 $0.40", "sub": "OpenAI 的原話｜各家每秒價｜付錢前要查的兩個頁面" },
       "claims": ["c19"],
       "lines": [{ "id": "jbpw", "text": "這集攤開 OpenAI 的原話、各家一秒的價錢，和付錢前要查的兩個頁面。" }]
     },
@@ -125,7 +125,7 @@
         { "id": "whhz", "text": "先把日期排出來：三月二十四號，OpenAI 宣布 App 和 API 都要停。", "reveal": 1 },
         { "id": "tn22", "text": "四月二十六號，網頁和 App 先停，離宣布只有三十三天。", "reveal": 1 },
         { "id": "tvf2", "text": "九月二十四號，開發者用的 API 也關了。", "reveal": 1 },
-        { "id": "h8a6", "text": "停止之後，最後的匯出期一過，資料會永久刪除。", "reveal": 1 }
+        { "id": "h8a6", "text": "停止之後，資料會永久刪除；如果有最後的匯出期，就等它結束再刪。", "reveal": 1 }
       ]
     },
     {
