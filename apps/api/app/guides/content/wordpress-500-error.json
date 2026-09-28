@@ -224,6 +224,858 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "en": {
+      "title": "WordPress 500 Error: Find the Cause in the Logs",
+      "description": "When WordPress suddenly shows a 500 error, record the affected paths and recent changes before narrowing the cause with error logs. This guide explains how to interpret recovery mode, isolate plugins, and assess PHP memory and server settings. It gives Taiwan-based site owners a sequence for gathering evidence safely, reversing one change at a time, and checking real functions after recovery, so they can share useful details with hosting support without repeatedly reinstalling and risking data.",
+      "hero": {
+        "src": "/guides/wordpress-500-error/hero-en.jpg",
+        "alt": "Original illustration connecting a document, server, and screen in sequence to represent restoring site operation through error logs.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The homepage opens, but submitting a form returns 500; or a plugin was just updated and both the site and admin area stop responding. The same error screen can come from different places. The number alone cannot identify a broken plugin. Start by building a timeline you can verify."
+        },
+        {
+          "type": "paragraph",
+          "text": "Using a small studio’s WordPress site as an example, this guide divides the work into recording, locating, making the smallest reversible change, and checking functions. These steps are based on official documentation; they have not been tested on your site. Hosting-panel labels and available permissions still depend on your provider."
+        },
+        {
+          "type": "heading",
+          "text": "Preserve the failure scene and recent changes first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Record when you first noticed the problem, including the time zone, affected URL, action taken, and whether you were signed in. Rather than writing only “the site is down,” record “at 2 p.m. Taiwan time, a visitor submitted the inquiry form and saw 500, while the homepage still opened.” That gives you an event to match in server logs."
+        },
+        {
+          "type": "paragraph",
+          "text": "List changes between the last known good state and the failure: plugin updates, a PHP switch, theme code, a migration, or hosting rules. Save the current files and database state first so later adjustments do not erase the only clue. If the site handles orders or registrations, tell the owner what is affected and pause actions that could repeatedly create uncertain results."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Capture the error screen and URL, and remove personal information before sharing the screenshot.",
+            "Test the homepage, a single post, the login page, and the failing function separately; record success or failure.",
+            "List recent changes and the time of the existing backup, then choose one likely cause to test first."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "If a recovery notice arrives, check its clues",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For some fatal PHP errors during ordinary page loads, WordPress emails a recovery-mode link to the administrator address. It is not an entry point for every 500 error, scheduled task, or server failure. No email also does not rule out a plugin issue: the mail process may not have loaded or delivery may have failed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Check the site and context in the email, then use the link to sign in and read its failed-component hint. In recovery mode, suspension of the problem component mainly applies to the current administrator session; it does not mean ordinary visitors have recovered. If you deactivate the component, that changes site settings, so also check which functions it affects."
+        },
+        {
+          "type": "heading",
+          "text": "Use logs to locate the actual failure",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start with the PHP or web-server error log provided by your host and look for messages at the same time. If WordPress debugging is needed, prefer a test copy where the problem can be reproduced. WP_DEBUG_LOG works only when WP_DEBUG is enabled; by default it can write debug.log in the content directory, or use another valid path."
+        },
+        {
+          "type": "paragraph",
+          "text": "Back up wp-config.php before editing it, and avoid defining the same constant twice or using the wrong quotation marks. If brief evidence gathering is unavoidable in production, ask someone familiar with the host to suppress on-screen errors, restrict log access, and restore the settings afterward. Do not post raw logs with full paths, email addresses, or tokens in a public forum."
+        },
+        {
+          "type": "paragraph",
+          "text": "A plugin filename in the log is a lead, not the full diagnosis. Read the error type and nearby call information too. A deprecated-function notice may not have caused this outage. If the WordPress log is empty, logging may have failed or the error happened earlier; check the host-level log instead of declaring the site healthy."
+        },
+        {
+          "type": "heading",
+          "text": "Test only one hypothesis at a time",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the timeline and error both point to a recently updated plugin, deactivate that plugin on a copy and repeat the same action. When the admin area is inaccessible, official guidance also describes temporarily renaming its plugin folder through file management. Record the original name and active-plugin list first, and prioritize the identified component; deactivating everything may also disable forms, payments, and protection."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, disabling a gallery plugin restores posts but the inquiry form still fails. Those are two problems, so keep separate reproduction results and check each. If switching themes restores the site, investigate compatibility and custom code next rather than leaving the site indefinitely in an unconfigured default layout."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before restoring an earlier version, confirm its official source and compatibility with the data format. Some updates change the database; replacing old files alone may not reverse them. If a full-site restore is needed, first account for inquiries and orders added after the backup. Do not overwrite records that still need to be kept with older data."
+        },
+        {
+          "type": "heading",
+          "text": "Change hosting settings according to evidence",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A memory-exhausted message means that request exceeded the available limit, but raising the number is not a cure for every problem. Record the triggering action, input size, and hosting limits first. Then ask the provider whether resources can be changed or the plugin author to investigate abnormal use. Do not change memory, execution time, and PHP version all at once."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before following advice about .htaccess, confirm that the host uses and permits those rules. Ask support to check the error line and recent edits. If you temporarily move the file for a test, keep the original and remember that redirects and access restrictions may stop working too. Do not copy the same steps onto a site using a different server configuration."
+        },
+        {
+          "type": "paragraph",
+          "text": "A useful support ticket gives the exact time, affected URL, error summary, recent changes, steps tried, and their results. Send account credentials or a full backup only through the provider’s designated secure channel. One complete set of clues is more useful than repeatedly sending the same screenshot."
+        },
+        {
+          "type": "heading",
+          "text": "Check functions after the page returns",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After leaving recovery mode, use a signed-out browser to retest the path that originally failed. Check the functions that matter: login, saving a post, submitting a form, and receiving its notification. When a form says it succeeded, also verify that the data and email arrived; otherwise only the first half may be fixed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally record the confirmed cause, each change, and how to reverse it. Turn off temporary debugging, remove unneeded sensitive logs, and restore prior protection. Keep a de-identified incident note for future maintainers. If the cause remains unknown, label the site temporarily restored and the cause pending; no repeat error yet is not proof of a permanent fix."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-500-error/diagram-1-en.svg",
+          "alt": "Four steps show recording the failure, reading logs, changing one thing, and checking functions, with a reminder to retain a rollback path at each step.",
+          "width": 1600,
+          "height": 900,
+          "caption": "A visible site still needs a retest of the action that originally failed.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Clue",
+            "Check first",
+            "Avoid"
+          ],
+          "rows": [
+            [
+              "One function fails after an update",
+              "Component versions, compatibility, and the same action",
+              "Deactivating everything and closing the case"
+            ],
+            [
+              "Memory exhausted",
+              "Triggering input, processing flow, and hosting limit",
+              "Raising the limit without bounds"
+            ],
+            [
+              "Server configuration error",
+              "The file actually in use and the error line",
+              "Applying rules for another server"
+            ],
+            [
+              "No WordPress log",
+              "Log permissions and host error logs",
+              "Assuming there was no error"
+            ]
+          ],
+          "caption": "Choose the next step from observable clues; a 500 response is not a diagnosis."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Keep a way back",
+          "text": "Preserve original settings and an action log while repairing the site. For each change, be able to explain its purpose, impact, and reversal. Before restoring a site with orders or member data, decide how to keep new records."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Prepare a complete WordPress backup and restore",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Set up a routine WordPress maintenance process",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress common errors",
+          "url": "https://developer.wordpress.org/advanced-administration/wordpress/common-errors/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress debugging configuration",
+          "url": "https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress recovery mode",
+          "url": "https://wordpress.org/documentation/article/recovery-mode/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "WordPressの500エラー：ログから原因を探す",
+      "description": "WordPressで突然500エラーが出たら、まず影響範囲と直近の変更を記録し、エラーログで原因を絞ります。復旧モード、プラグインの切り分け、PHPメモリ、サーバー設定を判断する順序を説明します。台湾でサイトを運営する一般の方が、安全な証拠収集、一度に一つの変更の取り消し、復旧後の機能確認を行い、データを失いかねない再インストールを繰り返さずにホスティング会社へ有用な情報を伝えるための手順です。",
+      "hero": {
+        "src": "/guides/wordpress-500-error/hero-ja.jpg",
+        "alt": "書類、サーバー、画面を順につないだオリジナルイラスト。エラーログを手掛かりにサイトの操作を復旧する様子を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "トップページは開くのにフォームを送信すると500になる、あるいはプラグインを更新した直後に公開画面も管理画面も応答しなくなる。同じエラー画面でも発生箇所は異なります。数字だけで壊れたプラグインは特定できません。調査は、確認できる時系列を作るところから始めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "個人事業のWordPressサイトを例に、記録、原因箇所の特定、取り消せる最小限の変更、機能確認に分けて進めます。公式資料を基に整理した方法であり、あなたのサイトで実地検証したものではありません。ホスティング管理画面の名称や権限は契約先の実際の設定で確認してください。"
+        },
+        {
+          "type": "heading",
+          "text": "障害時の状態と直近の変更を先に残す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初に気づいた時刻とタイムゾーン、エラーのURL、実行した操作、ログイン中だったかを記録します。「サイトが落ちた」だけでなく、「台湾時間午後2時、訪問者が問い合わせフォームを送ると500が出たが、トップページは開いた」と書けば、サーバーログで近い出来事を探せます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に正常だった時点から障害までの変更を列挙します。プラグイン更新、PHPの切り替え、テーマのコード、移行、ホストのルールなどです。後の調整で唯一の手掛かりを上書きしないよう、現時点のファイルとデータベースを先に保存します。注文や申込を扱うサイトなら、影響範囲を責任者へ伝え、結果が不確かな操作を繰り返さないよう一時停止します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "エラー画面とURLを保存し、スクリーンショットを共有する前に個人情報を取り除く。",
+            "トップページ、記事、ログイン画面、問題の機能を別々に試し、成功と失敗を記録する。",
+            "直近の変更と既存バックアップの時刻を整理し、可能性の高い原因を一つ選んで検証する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "復旧通知が届いたら、その手掛かりを確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "通常のページ読み込み中に起こる一部の致命的なPHPエラーについて、WordPressは管理者メールアドレスへ復旧モードのリンクを送ります。すべての500エラー、定期処理、サーバー障害で使える入口ではありません。メールが届かなくてもプラグインの問題は否定できません。メール処理がまだ読み込まれていないか、配信に失敗した可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "メールの対象サイトと送信状況を確認してから、リンクでログインし、障害を起こしたコンポーネントの手掛かりを読みます。復旧モードで問題のコンポーネントが一時停止する範囲は主に現在の管理者セッションです。一般の訪問者まで復旧したわけではありません。コンポーネントを無効化するならサイト設定の変更になるので、関連機能への影響も調べます。"
+        },
+        {
+          "type": "heading",
+          "text": "ログで本当の失敗箇所を特定する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ホストが提供するPHPまたはWebサーバーのエラーログから、同じ時刻のメッセージを探します。WordPressのデバッグが必要なら、問題を再現できるテスト用コピーで有効にすることを優先します。WP_DEBUG_LOGはWP_DEBUGが有効なときだけ働き、標準ではコンテンツディレクトリのdebug.logに書き込めます。別の有効なパスも指定できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "wp-config.phpを編集する前に元のファイルをバックアップし、同じ定数の重複定義や引用符の誤りを避けます。本番環境で短時間の証拠収集が不可欠なら、ホスト設定に詳しい人と画面へのエラー表示を止め、ログへのアクセスを制限し、完了後に元へ戻してください。完全なパス、メールアドレス、トークンを含む生ログを公開掲示板へ貼らないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ログにプラグインのファイル名があっても、それは場所を絞る手掛かりであり、診断の全てではありません。エラーの種類と前後の呼び出し情報も読みます。非推奨機能の通知が今回の停止原因とは限りません。WordPressログが空なら、書き込みに失敗したか、もっと早い段階でエラーが起きた可能性があります。正常と決めつけず、ホスト側のログを確認します。"
+        },
+        {
+          "type": "heading",
+          "text": "仮説は一度に一つずつ検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "時系列とエラーの両方が更新直後のプラグインを指すなら、まずコピー上でそのプラグインを無効にし、同じ操作をやり直します。管理画面に入れない場合、公式資料はファイル管理からプラグインのフォルダー名を一時変更する方法も示しています。元の名前と有効なプラグイン一覧を記録し、特定されたものから扱います。全てを無効にすると、フォーム、決済、保護機能まで止まる可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えばギャラリーのプラグインを止めると記事は戻ったものの、問い合わせフォームはまだ失敗するなら、同じ問題として完了にはできません。二組の再現結果を残して別々に確認します。テーマの切り替えで回復した場合は互換性や独自コードを調べ、設定されていない標準レイアウトのまま長期間放置しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "前のバージョンへ戻す前に、公式の入手先とデータ形式の互換性を確認します。更新によってデータベースが変わることもあり、古いファイルだけに戻しても復旧できない場合があります。サイト全体を復元するなら、バックアップ後に追加された問い合わせや注文を先に扱い、残すべき記録を古いデータで上書きしないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "ホスト設定は証拠に沿って調整する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "メモリ不足のメッセージは、その処理が利用可能な上限を超えたことを示します。ただし上限を上げれば全て解決するわけではありません。引き金になった操作、入力の大きさ、ホストの制限を記録し、提供会社にリソース変更の可否を、またはプラグイン作者に異常な消費を確認してもらいます。メモリ、実行時間、PHPバージョンを一度に全て変えないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": ".htaccessに関する助言を試す前に、ホストがそのルールを使用し許可しているか確認します。サポートにエラー行と直近の変更を見てもらいます。テストのためファイルを一時的に移すなら原本を保存し、リダイレクトやアクセス制限も同時に働かなくなる可能性に注意します。別のサーバー設定を使うサイトへ同じ手順をそのまま当てはめないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サポートへの問い合わせには、正確な時刻、影響を受けるURL、エラーの要約、直近の変更、試した方法と結果を含められます。アカウント情報や完全なバックアップは、提供会社が指定する安全な経路で送ります。同じエラー画像を繰り返し送るより、手掛かりを一度にまとめた方が調査が進みます。"
+        },
+        {
+          "type": "heading",
+          "text": "画面が戻ってから機能まで確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "復旧モードを抜けた後、ログアウトしたブラウザーで元の失敗経路をもう一度試します。ログイン、記事保存、フォーム送信と通知など、実際に必要な機能を確認します。フォームが成功と表示されても、データとメールが届いたかも調べます。前半だけ直った可能性があるためです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に確認できた原因、変更箇所、戻し方を記録します。一時的なデバッグを止め、不要になった機密ログを整理し、元の保護を戻します。将来の保守担当者向けに個人情報を除いた障害概要を残します。原因が未確定なら「一時復旧、原因調査中」と書き、再発していないことを恒久修復の証明にしないでください。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-500-error/diagram-1-ja.svg",
+          "alt": "障害の記録、ログの確認、一項目ずつの変更、機能確認の四段階を示し、各段階で元に戻せる状態を残す図。",
+          "width": 1600,
+          "height": 900,
+          "caption": "画面が戻っても、元の失敗操作をもう一度試します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "手掛かり",
+            "先に確認",
+            "避けること"
+          ],
+          "rows": [
+            [
+              "更新後に一部の機能だけ失敗",
+              "コンポーネントの版、互換性、同じ操作",
+              "全てを止めてそのまま完了とする"
+            ],
+            [
+              "メモリ不足",
+              "入力、処理の流れ、ホストの上限",
+              "上限だけを無制限に上げる"
+            ],
+            [
+              "サーバー設定エラー",
+              "実際の設定ファイルとエラー行",
+              "別種のサーバーのルールを適用する"
+            ],
+            [
+              "WordPressログがない",
+              "ログ権限とホストのエラーログ",
+              "エラーはなかったと決めつける"
+            ]
+          ],
+          "caption": "観察できる手掛かりから次の一手を選びます。500自体は原因の診断ではありません。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "戻れる道を先に確保",
+          "text": "修復中は元の設定と作業記録を残します。各変更の目的、影響、戻し方を説明できるようにします。注文や会員情報があるサイトを復元する前に、新しい記録をどう保持するか決めてください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressの完全なバックアップと復元を準備する",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPressの日常保守手順を整える",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPressの一般的なエラー",
+          "url": "https://developer.wordpress.org/advanced-administration/wordpress/common-errors/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPressのデバッグ設定",
+          "url": "https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPressの復旧モード",
+          "url": "https://wordpress.org/documentation/article/recovery-mode/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "WordPress 500 오류: 로그에서 원인 찾기",
+      "description": "WordPress에 갑자기 500 오류가 나타나면 영향을 받는 범위와 최근 변경 사항부터 기록하고 오류 로그로 원인을 좁혀야 합니다. 이 글은 복구 모드, 플러그인 분리, PHP 메모리와 서버 설정을 판단하는 순서를 설명합니다. 대만에서 사이트를 운영하는 일반 관리자가 증거를 안전하게 모으고 한 번에 한 변경만 되돌리며 복구 후 실제 기능을 확인해, 자료를 잃을 수 있는 반복 재설치 대신 호스팅 지원팀에 유용한 정보를 전달하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/wordpress-500-error/hero-ko.jpg",
+        "alt": "문서, 서버, 화면을 차례로 연결해 오류 로그를 통해 사이트 기능을 복구하는 과정을 나타낸 자체 제작 삽화.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "첫 화면은 열리는데 양식을 제출하면 500 오류가 나거나, 플러그인을 방금 업데이트한 뒤 공개 화면과 관리자 화면이 함께 응답하지 않을 수 있습니다. 같은 오류 화면도 여러 위치에서 비롯됩니다. 숫자만 보고 어떤 플러그인이 고장 났다고 단정할 수 없습니다. 확인 가능한 시간 순서를 만드는 것부터 시작하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "개인 스튜디오의 WordPress 사이트를 예로 들어 기록, 원인 위치 파악, 되돌릴 수 있는 최소한의 조치, 기능 확인으로 나눕니다. 공식 문서를 바탕으로 정리한 절차이며 여러분의 사이트에서 직접 시험한 결과는 아닙니다. 호스팅 제어판의 이름과 사용 권한은 실제 서비스에서 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "장애 당시 상태와 최근 변경을 먼저 보존하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "처음 발견한 시각과 시간대, 오류 URL, 수행한 동작, 로그인 여부를 기록하세요. 단순히 “사이트가 다운됐다”가 아니라 “대만 시간 오후 2시에 방문자가 문의 양식을 보내자 500 오류가 났지만 첫 화면은 열렸다”처럼 적으면 서버 로그에서 가까운 사건을 찾을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막 정상 시점부터 장애까지 바뀐 항목을 나열합니다. 플러그인 업데이트, PHP 전환, 테마 코드, 사이트 이전, 호스팅 규칙 등이 해당합니다. 이후 조정으로 유일한 단서가 사라지지 않도록 현재 파일과 데이터베이스 상태를 먼저 보존하세요. 주문이나 신청 자료가 있다면 책임자에게 영향 범위를 알리고 결과가 불확실한 동작을 반복하지 않도록 잠시 중단하세요."
+        },
+        {
+          "type": "list",
+          "items": [
+            "오류 화면과 URL을 보관하고, 화면 사진을 공유하기 전 개인정보를 제거합니다.",
+            "첫 화면, 개별 글, 로그인 페이지, 원래 실패한 기능을 각각 시험하고 성공·실패를 적습니다.",
+            "최근 변경과 기존 백업 시각을 정리한 뒤 가장 가능성 높은 원인 하나를 먼저 검증합니다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "복구 알림이 오면 그 안의 단서를 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반 페이지를 불러오다가 발생하는 일부 치명적인 PHP 오류에 대해 WordPress는 관리자 이메일로 복구 모드 링크를 보냅니다. 모든 500 오류나 예약 작업, 서버 장애에 적용되는 입구는 아닙니다. 메일이 없다고 플러그인 문제를 배제할 수도 없습니다. 메일 처리 단계가 아직 실행되지 않았거나 전달이 실패했을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "메일에 적힌 사이트와 발송 상황을 확인한 뒤 링크로 로그인해 실패한 구성 요소에 관한 힌트를 읽습니다. 복구 모드에서 문제가 있는 요소를 일시 중단하는 범위는 주로 현재 관리자 세션입니다. 일반 방문자에게도 사이트가 복구됐다는 뜻은 아닙니다. 해당 요소를 비활성화하면 사이트 설정이 바뀌므로 관련 기능에 미치는 영향도 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "로그로 실제 실패 지점 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 호스팅 업체가 제공하는 PHP 또는 웹 서버 오류 로그에서 같은 시각의 메시지를 찾습니다. WordPress 디버깅이 필요하다면 문제를 재현할 수 있는 시험용 복사본에서 켜는 편이 좋습니다. WP_DEBUG_LOG는 WP_DEBUG가 켜져 있어야 작동하며, 기본적으로 콘텐츠 디렉터리의 debug.log에 기록하거나 다른 유효한 경로를 지정할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "wp-config.php를 수정하기 전에 원본을 백업하고 같은 상수를 중복 정의하거나 따옴표를 잘못 쓰지 않도록 하세요. 운영 환경에서 잠깐 증거를 모아야 한다면 호스팅 설정을 아는 사람과 화면 오류 표시를 끄고 로그 접근을 제한한 뒤 완료 후 원래대로 돌리세요. 전체 경로, 이메일 주소, 토큰이 든 원본 로그를 공개 게시판에 올리지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "로그에 플러그인 파일 이름이 보여도 위치를 좁히는 단서일 뿐입니다. 오류 유형과 주변 호출 정보도 읽어야 합니다. 오래된 기능에 대한 알림이 이번 중단의 원인이라는 보장도 없습니다. WordPress 로그가 비어 있다면 기록에 실패했거나 오류가 더 앞 단계에서 났을 수 있습니다. 정상이라고 선언하지 말고 호스팅 계층의 로그를 확인하세요."
+        },
+        {
+          "type": "heading",
+          "text": "한 번에 가설 하나만 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "시간 순서와 오류 내용이 모두 최근 업데이트한 플러그인을 가리킨다면 시험용 복사본에서 그 플러그인을 비활성화하고 같은 동작을 반복합니다. 관리자 화면에 들어갈 수 없을 때 공식 문서는 파일 관리에서 플러그인 폴더 이름을 임시로 바꾸는 방법도 안내합니다. 원래 이름과 활성 플러그인 목록을 먼저 적고 지목된 요소부터 처리하세요. 전부 끄면 양식, 결제, 보안 기능도 함께 멈출 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 갤러리 플러그인을 끄니 글은 복구됐지만 문의 양식은 여전히 실패한다면 같은 문제로 묶어 종료할 수 없습니다. 재현 결과 두 가지를 따로 보관하고 각각 확인하세요. 테마를 바꿔야 복구된다면 호환성과 사용자 지정 코드를 이어서 살펴보고, 설정하지 않은 기본 레이아웃을 장기간 운영하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이전 버전으로 되돌리기 전에 공식 배포처와 데이터 형식 호환성을 확인하세요. 일부 업데이트는 데이터베이스를 바꾸므로 오래된 파일만 복원해도 되돌아오지 않을 수 있습니다. 사이트 전체를 복원해야 한다면 백업 후 들어온 문의와 주문을 먼저 처리하세요. 보존해야 할 새 기록을 오래된 자료로 덮어쓰면 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "호스팅 설정은 증거에 따라 조정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "메모리 부족 메시지는 해당 처리가 사용 가능한 한도를 넘었다는 뜻이지만 수치를 올리는 것이 모든 문제의 해결책은 아닙니다. 유발 동작, 입력 크기, 호스팅 제한을 먼저 기록하세요. 그런 뒤 제공업체에 자원 조정 가능 여부를, 또는 플러그인 제작자에게 비정상 사용을 문의하세요. 메모리, 실행 시간, PHP 버전을 한꺼번에 모두 바꾸지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": ".htaccess 관련 제안을 따르기 전에 호스트가 이런 규칙을 사용하고 허용하는지 확인하세요. 지원팀에 오류가 난 줄과 최근 수정을 검토해 달라고 요청합니다. 시험을 위해 파일을 잠시 옮긴다면 원본을 보관하고 리디렉션과 접근 제한도 함께 작동하지 않을 수 있음을 기억하세요. 다른 서버 설정을 쓰는 사이트에 같은 절차를 그대로 적용하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "지원 요청에는 정확한 시각, 영향받은 URL, 오류 요약, 최근 변경, 시험한 방법과 결과를 담을 수 있습니다. 계정 비밀번호와 전체 백업은 제공업체가 지정한 안전한 경로로만 전달하세요. 같은 오류 화면을 연달아 보내는 것보다 단서를 한 번에 정리하는 편이 처리에 도움이 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "화면이 돌아온 뒤 기능까지 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "복구 모드를 끝낸 후 로그인하지 않은 브라우저로 원래 실패한 경로를 다시 시험하세요. 로그인, 글 저장, 양식 제출, 알림 수신 등 실제 필요한 기능을 확인합니다. 양식에 성공이라고 표시돼도 자료와 이메일이 도착했는지 확인해야 앞부분만 고쳐진 것은 아닌지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 확인된 원인, 바꾼 항목, 되돌리는 방법을 기록합니다. 임시 디버깅을 끄고 더 필요 없는 민감한 로그를 정리하며 기존 보호 조치를 복구하세요. 미래의 관리자를 위해 개인정보를 제거한 장애 요약을 남기세요. 원인이 아직 불분명하면 “임시 복구, 원인 조사 중”이라고 쓰고, 오류가 다시 나타나지 않았다는 사실을 영구적인 해결의 증거로 삼지 마세요."
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-500-error/diagram-1-ko.svg",
+          "alt": "장애 기록, 로그 확인, 한 번에 한 가지 변경, 기능 검증의 네 단계를 보여 주며 각 단계에서 되돌릴 방법을 남기도록 알리는 그림.",
+          "width": 1600,
+          "height": 900,
+          "caption": "화면이 돌아와도 원래 실패한 동작을 다시 시험해야 합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "단서",
+            "우선 확인",
+            "피할 조치"
+          ],
+          "rows": [
+            [
+              "업데이트 뒤 특정 기능 실패",
+              "구성 요소 버전, 호환성, 같은 동작",
+              "모든 기능을 끄고 바로 종료"
+            ],
+            [
+              "메모리 부족",
+              "유발 입력, 처리 흐름, 호스팅 한도",
+              "한도만 무작정 올리기"
+            ],
+            [
+              "서버 설정 오류",
+              "실제로 쓰는 설정 파일과 오류 줄",
+              "다른 서버의 규칙 적용"
+            ],
+            [
+              "WordPress 로그 없음",
+              "로그 권한과 호스트 오류 로그",
+              "오류가 없었다고 가정"
+            ]
+          ],
+          "caption": "관찰 가능한 단서에 따라 다음 단계를 선택하세요. 500 자체가 원인 진단은 아닙니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "되돌아갈 길을 먼저 남기기",
+          "text": "복구 중에는 원본 설정과 작업 기록을 보존하세요. 모든 변경의 목적, 영향, 되돌릴 방법을 설명할 수 있어야 합니다. 주문이나 회원 자료를 다루는 사이트를 복원하기 전에는 새 기록을 어떻게 보존할지 확인하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 전체 백업과 복원 준비하기",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WordPress 일상 유지관리 절차 만들기",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress의 일반적인 오류",
+          "url": "https://developer.wordpress.org/advanced-administration/wordpress/common-errors/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 디버깅 설정",
+          "url": "https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 복구 모드",
+          "url": "https://wordpress.org/documentation/article/recovery-mode/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "WordPress 出现 500 错误：从日志查找原因",
+      "description": "WordPress 突然出现 500 错误时，先记录故障范围和最近的改动，再用错误日志缩小原因。本文说明恢复模式、插件隔离、PHP 内存与服务器设置的判断顺序，提供安全收集证据、每次只撤销一项调整以及修复后验收的清单，让台湾的一般站长能与主机客服交换有用信息，避免反复重装而丢失资料。",
+      "hero": {
+        "src": "/guides/wordpress-500-error/hero-zh-cn.jpg",
+        "alt": "文件、服务器与屏幕依次连接的原创插图，象征通过错误日志恢复网站操作。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "网站首页能打开，提交表单却显示 500；或者刚更新插件，前台和后台就一起失去响应。相同的错误页面可能来自不同位置，只看数字无法判断是哪个插件出了问题。排查的起点是建立一条可以核对的时间线。"
+        },
+        {
+          "type": "paragraph",
+          "text": "下面以个人工作室的 WordPress 网站为例，把处理分成记录、定位、最小范围恢复和功能验收。这是一套根据官方文档整理的操作方法，并未在你的网站上实际测试；主机控制台的名称和可用权限仍应以所用服务为准。"
+        },
+        {
+          "type": "heading",
+          "text": "先保存故障现场与最近改动",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "记录第一次发现的时间及所在时区、出错网址、操作动作和当时是否登录。不要只写“网站挂了”，而应写成“台湾时间下午两点，访客提交咨询表单后看到 500，但首页仍能打开”。这样才能在服务器日志里找到接近的事件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着列出从最后一次正常到故障之间的改动：插件更新、PHP 切换、主题程序、搬站或主机规则。先保存现有文件和数据库状态，避免后续调整覆盖唯一的线索。对于有订单或报名资料的网站，应告知负责人受影响的范围，并暂停会反复产生不确定结果的操作。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "截取错误画面并保留网址，分享截图前移除其中的个人资料。",
+            "分别测试首页、单篇文章、登录页和原本出错的功能，记录成功或失败。",
+            "整理最近的改动与现有备份时间，先选择一个最可能的原因验证。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "收到恢复通知时，先检查其中的线索",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "对于部分发生在普通页面加载过程中的致命 PHP 错误，WordPress 会向管理员邮箱发送恢复模式链接。它不是所有 500、定时任务或服务器故障都能使用的入口。没有收到邮件，也不能排除插件问题，因为邮件流程可能尚未加载或投递失败。"
+        },
+        {
+          "type": "paragraph",
+          "text": "核对邮件中的网站和发送背景后，通过链接登录并阅读失败组件的提示。恢复模式对问题组件的暂停主要限于当前管理员会话，不代表普通访客已经恢复。如果决定停用该组件，这属于网站设置变更，仍需检查相关功能受到的影响。"
+        },
+        {
+          "type": "heading",
+          "text": "通过日志识别真正的失败点",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先从主机提供的 PHP 或网站服务器错误日志查找同一时间的消息。如需 WordPress 调试，优先在能复现问题的测试副本上启用。WP_DEBUG_LOG 只有在 WP_DEBUG 开启后才生效；默认可写入内容目录中的 debug.log，也可以指定其他有效路径。"
+        },
+        {
+          "type": "paragraph",
+          "text": "修改 wp-config.php 前先备份原文件，避免重复定义相同常量或误用引号。正式环境若必须短暂收集证据，请熟悉主机设置的人协助关闭页面错误显示、限制日志访问，并在完成后恢复设置。不要把包含完整路径、邮箱或令牌的原始日志贴到公开讨论区。"
+        },
+        {
+          "type": "paragraph",
+          "text": "看到某个插件文件名只是一条定位线索，还要阅读错误类型和相邻的调用信息。过时功能的提示未必是这次中断的原因。若 WordPress 日志为空，可能是日志未成功写入，或错误发生在更早阶段，应返回主机层日志核查，而不能因此认定网站正常。"
+        },
+        {
+          "type": "heading",
+          "text": "每次只验证一个假设",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果时间线和错误都指向刚更新的插件，可以先在副本上停用该插件，再重复同一操作。后台无法进入时，官方文档也提供通过文件管理暂时改名插件文件夹的方法。操作前记下原名称和已启用插件清单，优先处理明确指向的组件；全部停用可能连表单、付款和防护一起关闭。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如停用相册插件后文章恢复，但咨询表单仍失败，就不能把两者当作同一个问题结案。保留两组复现结果并分别确认。如果切换主题才恢复，接下来应检查兼容性和自定义程序，而不是长期让网站停留在未配置的默认版面。"
+        },
+        {
+          "type": "paragraph",
+          "text": "恢复上一版本前，要确认官方提供的版本来源及数据格式兼容性。有些更新会修改数据库，只换回旧文件未必能恢复。若需要整站还原，应先处理备份后新增的咨询与订单，不能用较旧数据覆盖仍需保留的记录。"
+        },
+        {
+          "type": "heading",
+          "text": "主机设置应按证据调整",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "内存耗尽的消息说明该次处理超过了可用上限，但提高数值并非所有问题的解法。先记录触发动作、输入大小和主机限制，再请服务商确认资源能否调整，或请插件作者检查异常消耗。不要一次把内存、执行时间和 PHP 版本全改掉。"
+        },
+        {
+          "type": "paragraph",
+          "text": "涉及 .htaccess 的建议，要先确认主机是否使用并允许这类规则。请客服核对错误行和最近的修改；如果暂时移走文件进行测试，要保存原件，并留意重定向和访问限制可能同时失效。使用其他服务器配置的网站，不能照搬相同步骤。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提供给客服的问题单可以包含准确时间、受影响的网址、错误摘要、最近改动、已测试的方法与结果。账号密码和完整备份应通过服务商指定的安全渠道发送。一次提供这些线索，比连续发送同一张错误画面更有助于推进处理。"
+        },
+        {
+          "type": "heading",
+          "text": "页面恢复后，还要完成一轮验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "离开恢复模式后，用未登录的浏览器再次测试原本出错的路径，并核对登录、文章保存、表单提交及通知等真正需要的功能。表单显示成功时，也要确认数据和邮件确实送达，以免只修好了前半段。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后记下确认的原因、修改项目和恢复方法，关闭临时调试、清理不再需要的敏感日志并恢复原有防护。保留一份去除身份信息的故障摘要，供以后维护人员参考；若原因仍未确定，应标为暂时恢复及待查事项，不能把暂时未再发生等同于永久修复。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/wordpress-500-error/diagram-1-zh-cn.svg",
+          "alt": "四个步骤依次为记录故障、阅读日志、每次调整一项与功能验收，提醒每一步保留恢复方法。",
+          "width": 1600,
+          "height": 900,
+          "caption": "网站重新显示后，仍需测试原本失败的操作。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "线索",
+            "优先核对",
+            "避免的做法"
+          ],
+          "rows": [
+            [
+              "更新后特定功能失败",
+              "组件版本、兼容性及相同操作",
+              "一次停用所有功能就直接结案"
+            ],
+            [
+              "内存耗尽",
+              "触发输入、处理流程和主机上限",
+              "只把上限无限调高"
+            ],
+            [
+              "服务器设置错误",
+              "实际使用的设置文件与错误行",
+              "套用另一种服务器的规则"
+            ],
+            [
+              "没有 WordPress 日志",
+              "日志权限与主机错误日志",
+              "认定没有任何错误"
+            ]
+          ],
+          "caption": "根据可观察的线索选择下一步，500 本身不是原因诊断。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先留下可回头的路",
+          "text": "修复期间保留原始设置与操作记录；每项变更都应能说明目的、影响和恢复方法。需要处理订单或会员资料时，先确认新增数据的保留方式，再执行还原。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "准备 WordPress 完整备份与还原",
+              "kind": "life",
+              "slug": "wordpress-website-backup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "建立 WordPress 日常维护流程",
+              "kind": "life",
+              "slug": "website-maintenance-routine"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress 常见错误",
+          "url": "https://developer.wordpress.org/advanced-administration/wordpress/common-errors/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 调试设置",
+          "url": "https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "WordPress 恢复模式",
+          "url": "https://wordpress.org/documentation/article/recovery-mode/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
