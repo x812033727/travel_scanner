@@ -297,6 +297,1154 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "Mailchimp 接 WordPress：MC4WP 表单与名单同步",
+      "description": "在 WordPress 放上 Mailchimp 订阅表单，需要同时处理 API 连线、受众栏位、确认信与退订状态。本文以原创二手书交换网站为例，整理 MC4WP 的基本安装、表单测试、兴趣更新及 Premium User Sync 的范围，也说明新版已移除的外挂退订表单功能。附操作步骤、比较表与原创图解，协助网站维护者避免重复收信与同步误解。",
+      "hero": {
+        "src": "/guides/mailchimp-wordpress-newsletter/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创网站画面、连线伺服器与受众资料夹，表达 MC4WP 表单及 Mailchimp 名单衔接。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "二手书交换网站希望访客能订阅每月书单，会员则可以更新偏好的书籍类别。这里其实有两个任务：让访客明确加入电子报，以及让既有资料保持正确。只要把两者混成自动同步所有会员，就容易把没有订阅的人也当成收件者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文依 2026 年 9 月 14 日查阅的 MC4WP、WordPress.org 与 Mailchimp 官方文件整理，以原创书籍交换网站示范。MC4WP 是第三方外挂，不是 Mailchimp 官方开发的产品；本篇没有实际安装外挂、连接帐户或寄送电子邮件。"
+        },
+        {
+          "type": "heading",
+          "text": "先分清楚 WordPress、MC4WP 与 Mailchimp",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 提供网站与会员资料，MC4WP 负责订阅表单和支援的整合，Mailchimp 管理受众及寄送行销邮件。先画出资料从哪里进来、送到哪个 audience，以及谁决定收件状态。外挂显示 Connected，代表连线有成功，还不代表每个栏位都已送对。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原创网站可以先采一个主要 audience，再用兴趣与分众整理不同书类。Mailchimp 的不同 audiences 各自维护资料；同一地址若在两份受众，各自寄送相同活动，可能收到两封。不要用每个网站分类都建一份受众的方式，让维护与退出管理越来越分散。"
+        },
+        {
+          "type": "paragraph",
+          "text": "免费 MC4WP 可建立基本订阅表单，Premium 另有多表单、User Sync 等功能。Mailchimp 帐户方案与外挂授权是两件事，购买其中一项不代表另一项也包含在内。先列出真正需要的功能，再核对当期方案，不用旧教学的价格或功能表当作现在承诺。"
+        },
+        {
+          "type": "heading",
+          "text": "连接帐户时保护 API 金钥",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 WordPress 外挂管理搜寻 MC4WP: Mailchimp for WordPress，核对作者与来源后安装启用。接著于 Mailchimp 建立可辨识用途的 Marketing API 金钥，再填入 WordPress 的 MC4WP > Mailchimp 设定。金钥名称可标明网站与用途，方便日后查找整合。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mailchimp 目前只在产生时显示完整金钥，后续不能再次读出同一份完整内容，因此应以合适方式安全保存。不要把金钥贴到文章 HTML、公开 JavaScript、截图或客服讨论区。若金钥外泄或整合不再使用，依官方程序撤销，并处理受影响的连线。"
+        },
+        {
+          "type": "paragraph",
+          "text": "连线完成后核对 audience，确认不是测试用或另一个品牌的名单。若修改过 Mailchimp 栏位，回到外挂更新受众资讯，让表单知道新的栏位结构。维护者若只看到没有连上，不要连续产生很多金钥试运气，先检查帐户、错误讯息与目前使用的设定。"
+        },
+        {
+          "type": "heading",
+          "text": "表单栏位要符合受众资料结构",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在 MC4WP > Forms 编辑表单，使用栏位工具产生符合 Mailchimp 格式的栏位，再放入需要显示的页面。原创书单只先收电子邮件与可选的小说、散文偏好，不因为受众有更多栏位，就把生日与地址也全部加上。必填设定要与 Mailchimp 端一致。"
+        },
+        {
+          "type": "paragraph",
+          "text": "表单可透过外挂提供的 shortcode 放进文章或页面；使用画面中实际的表单 ID，不照抄教学里的示例编号。若网站另有页面编辑器、快取或版型，先选一个测试页确认版面与提交结果，再放到其他入口，避免一次增加很多难以追查的表单。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若采双重确认，在表单的 Mailchimp Settings 将 Use double opt-in 设为 Yes。填表后应提示读者去收确认信，验收时分别查看尚待确认与已订阅状态。网页出现成功讯息，只能证明这次提交流程的结果，不能直接推定已完成信箱确认或一定会收到下一期电子报。"
+        },
+        {
+          "type": "heading",
+          "text": "资料更新与订阅状态各自验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP 的 update existing subscribers 可用新表单资料更新既有订阅者；若同时使用 replace interest groups，则要决定兴趣是取代还是追加。原创读者原本选小说，后来只勾散文，取代代表只保留散文，追加则保留两者。这个选择应符合表单文字给读者的期待。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Premium User Sync 用来让 WordPress 会员资料与 Mailchimp 中已存在的对应联络人同步。官方明确说明它不会自动订阅或退订会员，只更新所选 audience 内已有相同地址的对应资料。因此会员成功注册或修改暱称，不等于完成电子报订阅。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若启用 User Sync 的 webhook 选项，Mailchimp 端的资料修改也能回写 WordPress。双向同步前先决定每个栏位谁负责、哪些资料可以回写，再测试两边不同值的情境。没有清楚用途的会员角色、电话或其他个资，不应只因为技术上能同步就全部传送。"
+        },
+        {
+          "type": "heading",
+          "text": "退订流程要依新版功能调整",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP 开发者于二○二六年三月公布，自 4.12.0 移除透过外挂表单处理退订的功能，旧表单在更新后不再执行原本的退订要求。原因与没有验证地址拥有者的旧设计有关，这不是在表单加一个栏位就能继续沿用的功能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网站上需要退订入口时，依开发者建议连到该 audience 的 Mailchimp 托管退订页；电子报内则使用 Mailchimp 正确的退订连结，例如系统提供的 *|UNSUB|* 合并标签。网站输入地址的入口与信件内个人化连结是不同流程，不能把所有退订都说成必须再等一封确认信。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试时要确认退出后的收件状态，以及网站同步或重新汇入旧资料时不会任意恢复订阅。若读者表示不想再收到这个品牌的行销，还要检查是否存在多份 audience，不能因工具资料各自独立，就把清楚的退出要求只处理其中一小部分。"
+        },
+        {
+          "type": "heading",
+          "text": "用同一份测试表检查两边结果",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "准备自己控制的测试地址，依序测新订阅、错误格式、缺必填、尚未确认、重复填写、偏好更新与退订。每个情境都写下网页预期讯息、Mailchimp 状态及栏位值。这样才知道问题出在呈现、送出、栏位对应或后续确认，而不是只记一句表单坏了。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若网站使用 Contact Form 7 等整合，应另外核对该入口的启用状态、受众与订阅选择，不能只测 MC4WP 自己的表单。联络表单也不该默认全部订阅；本篇采可选且说明清楚的订阅方式，让一般询问仍能正常送出，不被迫加入电子报。"
+        },
+        {
+          "type": "paragraph",
+          "text": "准备正式寄送时，在 Mailchimp 再核对真正的收件者与重复活动，并检查信件中的网站连结和退出功能。网站外挂负责接入资料，寄件网域、内容与邮件投递仍需在寄送服务端处理。表单能用是起点，整段订阅生命周期都能预期运作，才算这次串接完成。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "确认外挂来源，连接对应 Mailchimp 帐户并安全保存金钥。",
+            "选定主要受众，核对栏位与双重确认，先放在单一测试页。",
+            "厘清偏好取代或追加、User Sync 范围及是否需要双向更新。",
+            "测试退出、重复地址与各表单入口，再核对真正的寄送对象。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/mailchimp-wordpress-newsletter/diagram-1-zh-cn.svg",
+          "alt": "四张卡片依序呈现帐户连线、表单确认、资料同步与退订验收，表达跨系统需要逐步核对结果。",
+          "width": 1600,
+          "height": 900,
+          "caption": "在 WordPress 看提交结果，在 Mailchimp 核对订阅状态与收件范围。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "看到的结果",
+            "已经能确认",
+            "仍需另外验证"
+          ],
+          "rows": [
+            [
+              "MC4WP 显示 Connected",
+              "API 连线可用",
+              "受众及栏位是否选对"
+            ],
+            [
+              "表单提交成功",
+              "提交流程完成",
+              "是否已点击确认信"
+            ],
+            [
+              "会员资料已更新",
+              "WordPress 资料改变",
+              "对应联络人与同步栏位"
+            ],
+            [
+              "User Sync 已启用",
+              "资料同步设定存在",
+              "不代表会自动加入订阅"
+            ],
+            [
+              "新版外挂已更新",
+              "程式版本更新",
+              "旧退订表单是否已替换"
+            ],
+            [
+              "同一地址只在一份表格",
+              "该表格没有重复",
+              "其他受众或活动是否再寄一次"
+            ]
+          ],
+          "caption": "原创串接验收对照，区分连线、资料、订阅状态与实际寄送。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "会员同步不会替你取得订阅",
+          "text": "User Sync 更新既有对应资料，不会自动订阅或退订。把会员资料与行销收件状态分开管理，并测试每个订阅入口。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理电子报订阅、寄送与退出责任",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "比较 Kit 的表单与自动信衔接",
+              "kind": "life",
+              "slug": "kit-newsletter-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量测真正成功的网站操作",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.org：MC4WP 外挂与作者",
+          "url": "https://wordpress.org/plugins/mailchimp-for-wp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：连接 Mailchimp API",
+          "url": "https://www.mc4wp.com/kb/connecting-mailchimp-account-api-key/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp：API 金钥与保护",
+          "url": "https://mailchimp.com/help/about-api-keys/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：建立订阅表单",
+          "url": "https://www.mc4wp.com/kb/create-mailchimp-sign-up-form/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：双重确认设定",
+          "url": "https://www.mc4wp.com/kb/block-spam-sign-ups/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：兴趣取代与追加",
+          "url": "https://www.mc4wp.com/kb/what-does-replace-groupings-mean/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：User Sync 范围与双向更新",
+          "url": "https://www.mc4wp.com/kb/sync-wordpress-users-with-mailchimp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：移除外挂表单退订功能",
+          "url": "https://www.mc4wp.com/blog/removing-unsubscribe-through-forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp：多次收到相同活动的原因",
+          "url": "https://mailchimp.com/help/my-subscriber-received-multiple-copies-of-my-campaign/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp：退订处理与受众范围",
+          "url": "https://mailchimp.com/help/about-unsubscribes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：Contact Form 7 订阅选择",
+          "url": "https://www.mc4wp.com/kb/subscribe-mailchimp-contact-form-7/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Connect Mailchimp to WordPress: MC4WP forms and audience sync",
+      "description": "Adding a Mailchimp signup form to WordPress means handling the API connection, audience fields, confirmation email, and unsubscribe status together. Using an original book-exchange site as an example, this guide covers basic MC4WP setup, form testing, interest updates, the limits of Premium User Sync, and the unsubscribe-form feature removed in recent versions. Steps, a comparison table, and original diagrams help site maintainers avoid duplicate messages and mistaken assumptions about syncing.",
+      "hero": {
+        "src": "/guides/mailchimp-wordpress-newsletter/hero-en.jpg",
+        "alt": "Original Mokaair illustration of a website screen, connection server, and audience folder showing how MC4WP forms connect to a Mailchimp audience.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A secondhand-book exchange site wants visitors to subscribe to a monthly reading list while members update their preferred book categories. These are two separate tasks: explicitly enrolling visitors in the newsletter and keeping existing data accurate. Treating them as automatic enrollment of every member risks sending mail to people who never subscribed."
+        },
+        {
+          "type": "paragraph",
+          "text": "This guide uses an original book-exchange site and MC4WP, WordPress.org, and Mailchimp documentation checked on September 14, 2026. MC4WP is a third-party plugin, not a product developed by Mailchimp. We did not install the plugin, connect an account, or send email for this guide."
+        },
+        {
+          "type": "heading",
+          "text": "Distinguish WordPress, MC4WP, and Mailchimp first",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress holds the website and member data; MC4WP provides signup forms and supported integrations; Mailchimp manages audiences and sends marketing email. Map where data enters, which audience receives it, and who determines subscription status. A Connected label proves the connection worked, not that every field was mapped correctly."
+        },
+        {
+          "type": "paragraph",
+          "text": "The sample site can start with one main audience and use interests and segments for different book categories. Mailchimp maintains audiences separately. An address in two audiences can receive the same campaign twice if each audience is mailed. Creating a separate audience for every site category also fragments maintenance and unsubscribe handling."
+        },
+        {
+          "type": "paragraph",
+          "text": "Free MC4WP can create a basic signup form. Premium adds capabilities such as multiple forms and User Sync. A Mailchimp account plan and a plugin license are separate purchases; one does not include the other. List the features you need and check current plans rather than treating old tutorial prices or feature lists as promises."
+        },
+        {
+          "type": "heading",
+          "text": "Protect the API key when connecting the account",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Search WordPress plugins for MC4WP: Mailchimp for WordPress, verify the author and source, then install and activate it. Create a Marketing API key in Mailchimp with a recognizable purpose and enter it under MC4WP > Mailchimp in WordPress. Name the key for the site and its use so you can identify the integration later."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mailchimp shows the full key only when it is created; you cannot retrieve that same full value later. Store it securely. Never paste it into article HTML, public JavaScript, screenshots, or support forums. If it leaks or the integration is retired, revoke it through the official process and repair affected connections."
+        },
+        {
+          "type": "paragraph",
+          "text": "After connecting, verify the audience is not a test list or another brand's list. If Mailchimp fields change, refresh audience information in the plugin so the form sees the new structure. If the site appears disconnected, inspect the account, error message, and current settings before creating multiple new keys at random."
+        },
+        {
+          "type": "heading",
+          "text": "Match form fields to the audience structure",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Edit the form under MC4WP > Forms. Use the field builder to generate fields in Mailchimp's required format, then place them on the intended page. The sample reading list initially collects only email and optional fiction or essay preferences; the existence of other audience fields is no reason to request birthdays and addresses. Required-field settings must match Mailchimp."
+        },
+        {
+          "type": "paragraph",
+          "text": "The plugin's shortcode can place a form in a post or page. Use the actual form ID shown in your installation, not an example number from a tutorial. If the site uses a page builder, cache, or theme, verify layout and submission on one test page before adding the form elsewhere; that keeps failures easier to trace."
+        },
+        {
+          "type": "paragraph",
+          "text": "For double opt-in, set Use double opt-in to Yes in the form's Mailchimp Settings. Tell readers to look for a confirmation message after submitting. During acceptance, inspect pending and subscribed states separately. A website success message confirms the result of the submission flow, not that the address was confirmed or will receive the next issue."
+        },
+        {
+          "type": "heading",
+          "text": "Test data updates and subscription status separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP's update existing subscribers setting can update an existing subscriber with new form data. If replace interest groups is also enabled, decide whether new interests replace or add to old ones. A reader who originally chose fiction and later checks only essays will retain only essays under replacement, or both under addition. The choice must match what the form tells the reader."
+        },
+        {
+          "type": "paragraph",
+          "text": "Premium User Sync synchronizes WordPress member data with matching contacts already in Mailchimp. The developer explicitly says it does not automatically subscribe or unsubscribe members: it updates matching addresses already present in the selected audience. A new membership or changed nickname is therefore not a newsletter signup."
+        },
+        {
+          "type": "paragraph",
+          "text": "With User Sync's webhook option, changes made in Mailchimp can also flow back to WordPress. Before enabling two-way sync, decide which system owns each field, which values may be written back, and test conflicting values. Do not send roles, phone numbers, or other personal data merely because the integration allows it."
+        },
+        {
+          "type": "heading",
+          "text": "Adjust unsubscribe flows for recent plugin versions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In March 2026, the MC4WP developer announced that version 4.12.0 removed unsubscribe handling through plugin forms. After updating, an old form no longer performs its former unsubscribe action. The old design did not verify ownership of the address; adding another form field does not restore that removed feature."
+        },
+        {
+          "type": "paragraph",
+          "text": "For an unsubscribe entry point on the site, the developer recommends the audience's Mailchimp-hosted unsubscribe page. In the newsletter, use Mailchimp's proper unsubscribe link, such as its *|UNSUB|* merge tag. A website address-entry flow and a personalized email link are different processes; do not claim every unsubscribe must wait for another confirmation email."
+        },
+        {
+          "type": "paragraph",
+          "text": "Verify the recipient status after an unsubscribe and ensure a site sync or reimport of old data does not silently restore it. If a reader asks to stop receiving marketing from this brand, check whether the address exists in multiple audiences. Independent tool records are no reason to handle a clear opt-out in only one small part of the brand's mailings."
+        },
+        {
+          "type": "heading",
+          "text": "Use one test matrix to check both systems",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Use addresses you control to test a new signup, invalid format, missing required fields, pending confirmation, repeat submission, preference update, and unsubscribe. For each case record the expected website message, Mailchimp status, and field values. This reveals whether the fault is display, submission, mapping, or later confirmation instead of merely saying the form is broken."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the site also integrates Contact Form 7, verify that entry point's activation, audience, and subscription choice separately; testing only MC4WP's own form is insufficient. A contact form should not subscribe every inquirer by default. This guide uses a clear optional signup so ordinary inquiries can be sent without joining the newsletter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before a real send, inspect actual recipients and duplicate campaigns in Mailchimp, and check website links and unsubscribe behavior in the message. The site plugin imports data; the sending service still handles sender domain, content, and delivery. A working form is only the start. The integration is complete when the whole subscription lifecycle behaves as expected."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Verify the plugin source, connect the correct Mailchimp account, and secure the key.",
+            "Choose the main audience, match fields and double opt-in, then start on one test page.",
+            "Define whether preferences replace or add, the scope of User Sync, and any two-way updates.",
+            "Test opt-outs, duplicate addresses, and every form entry point before confirming actual recipients."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/mailchimp-wordpress-newsletter/diagram-1-en.svg",
+          "alt": "Four cards show account connection, form confirmation, data sync, and unsubscribe testing in sequence, emphasizing that results must be checked across systems.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Check submission in WordPress and subscription status and recipient scope in Mailchimp.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Visible result",
+            "What it confirms",
+            "What still needs checking"
+          ],
+          "rows": [
+            [
+              "MC4WP shows Connected",
+              "The API connection works",
+              "Whether audience and fields are correct"
+            ],
+            [
+              "Form submission succeeds",
+              "The submission flow completed",
+              "Whether the confirmation link was clicked"
+            ],
+            [
+              "Member data was updated",
+              "WordPress data changed",
+              "Matching contact and synchronized fields"
+            ],
+            [
+              "User Sync is enabled",
+              "Sync settings exist",
+              "It does not automatically subscribe members"
+            ],
+            [
+              "Plugin updated to a recent version",
+              "The software version changed",
+              "Whether the old unsubscribe form was replaced"
+            ],
+            [
+              "An address appears once in one list",
+              "No duplicate in that list",
+              "Other audiences or campaigns may send again"
+            ]
+          ],
+          "caption": "Original integration checklist distinguishing connection, data, subscription status, and actual delivery."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Member sync does not obtain newsletter consent for you",
+          "text": "User Sync updates matching existing data; it does not automatically subscribe or unsubscribe people. Manage member records separately from marketing recipient status and test each signup entry point."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Plan responsibility for newsletter signup, delivery, and opt-out",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Compare how Kit forms connect to automated emails",
+              "kind": "life",
+              "slug": "kit-newsletter-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Measure website actions that actually succeeded",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.org: MC4WP plugin and developer",
+          "url": "https://wordpress.org/plugins/mailchimp-for-wp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Connect a Mailchimp account with an API key",
+          "url": "https://www.mc4wp.com/kb/connecting-mailchimp-account-api-key/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp: API keys and security",
+          "url": "https://mailchimp.com/help/about-api-keys/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Create a signup form",
+          "url": "https://www.mc4wp.com/kb/create-mailchimp-sign-up-form/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Double opt-in settings",
+          "url": "https://www.mc4wp.com/kb/block-spam-sign-ups/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Replacing and adding interests",
+          "url": "https://www.mc4wp.com/kb/what-does-replace-groupings-mean/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: User Sync scope and two-way updates",
+          "url": "https://www.mc4wp.com/kb/sync-wordpress-users-with-mailchimp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Removal of unsubscribe-through-form support",
+          "url": "https://www.mc4wp.com/blog/removing-unsubscribe-through-forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp: Why a subscriber receives the same campaign more than once",
+          "url": "https://mailchimp.com/help/my-subscriber-received-multiple-copies-of-my-campaign/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp: Unsubscribe handling and audience scope",
+          "url": "https://mailchimp.com/help/about-unsubscribes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Subscription choice in Contact Form 7",
+          "url": "https://www.mc4wp.com/kb/subscribe-mailchimp-contact-form-7/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "MailchimpとWordPressを連携：MC4WPのフォームと購読者データ",
+      "description": "WordPressにMailchimpの登録フォームを置くには、API接続、オーディエンスの項目、確認メール、配信停止の状態を合わせて扱う必要があります。架空の古本交換サイトを例に、MC4WPの基本設定、フォームのテスト、関心分野の更新、Premium User Syncの範囲、現行版で削除されたフォームからの配信停止機能を整理します。手順、比較表、独自の図解で重複配信や同期に関する誤解を防ぎます。",
+      "hero": {
+        "src": "/guides/mailchimp-wordpress-newsletter/hero-ja.jpg",
+        "alt": "サイト画面、接続サーバー、オーディエンスのフォルダーを描いたMokaair独自の図。MC4WPのフォームとMailchimpのリストの連携を表す。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "古本交換サイトでは、訪問者に毎月の本のリストを購読してもらい、会員には好みのジャンルを更新してもらいたいと考えています。ここには、訪問者が明確にニュースレターへ登録することと、既存データを正しく保つことという別々の仕事があります。全会員を自動同期・登録するものとして混同すると、購読していない人にもメールが届きかねません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事は架空の古本交換サイトを例に、2026年9月14日に確認したMC4WP、WordPress.org、Mailchimpの公式資料に基づきます。MC4WPは第三者製プラグインで、Mailchimpが開発した製品ではありません。この記事のためにプラグインの実機導入、アカウント接続、メール送信は行っていません。"
+        },
+        {
+          "type": "heading",
+          "text": "WordPress、MC4WP、Mailchimpの役割を分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressはサイトと会員情報を持ち、MC4WPは登録フォームと対応する連携を提供し、Mailchimpはオーディエンスを管理してマーケティングメールを送ります。データの入口、送信先のオーディエンス、購読状態を決める主体を先に図にしましょう。プラグインのConnected表示は接続成功を示すだけで、すべての項目が正しく送られた証拠ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "このサイトなら、まず主要なオーディエンスを一つ設け、関心分野とセグメントで本の種類を整理できます。Mailchimpではオーディエンスごとにデータを管理します。同じアドレスが二つにあり、それぞれへ同じキャンペーンを送れば、二通届く可能性があります。サイトのカテゴリーごとに別のオーディエンスを作ると管理や配信停止も分散します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "無料版MC4WPでは基本的な登録フォームを作れます。Premiumには複数フォームやUser Syncなどの機能があります。Mailchimpのアカウントプランとプラグインのライセンスは別で、一方の購入にもう一方は含まれません。必要な機能を挙げ、現在のプランを確認してください。古い解説の価格や機能を今の保証と見なさないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "アカウント接続時にAPIキーを守る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPressのプラグイン管理でMC4WP: Mailchimp for WordPressを探し、作者と配布元を確かめてからインストール・有効化します。Mailchimpで用途が分かるMarketing APIキーを作り、WordPressのMC4WP > Mailchimp設定に入力します。後で連携を識別できるよう、キー名にサイトと用途を含めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mailchimpが完全なキーを表示するのは作成時だけで、後から同じ完全な値を読み出せません。安全に保管してください。記事のHTML、公開JavaScript、スクリーンショット、サポート掲示板には貼らないでください。漏えいや連携終了時は公式手順でキーを無効化し、影響を受けた接続を修復します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接続後はオーディエンスを確認し、テスト用や別ブランドのリストではないことを確かめます。Mailchimp側の項目を変えた場合は、プラグインでオーディエンス情報を更新し、フォームに新しい構造を認識させます。未接続に見えるときはキーを次々作る前に、アカウント、エラー表示、現在の設定を調べましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "フォームの項目をオーディエンスの構造に合わせる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP > Formsでフォームを編集し、項目作成ツールでMailchimpの形式に合う項目を作って、必要なページに置きます。例の読書リストでは最初にメールアドレスと任意の小説・エッセイの好みだけを集めます。他の項目がオーディエンスにあるからといって、生年月日や住所まで集めません。必須項目の設定はMailchimp側と一致させます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プラグインのshortcodeを使えば記事やページにフォームを配置できます。解説の例示番号ではなく、実際の画面に表示されたフォームIDを使ってください。ページビルダー、キャッシュ、テーマがある場合は、一つのテストページで表示と送信結果を確認してから他の入口に広げると、不具合を追いやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ダブルオプトインを使うなら、フォームのMailchimp SettingsでUse double opt-inをYesにします。送信後は確認メールを探すよう読者に案内し、検証では確認待ちと購読済みを別々に確認します。サイトの成功表示は送信処理の結果であり、メールアドレスの確認や次号の受信を保証しません。"
+        },
+        {
+          "type": "heading",
+          "text": "データ更新と購読状態を別々に検証する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WPのupdate existing subscribersでは、新しいフォームデータで既存購読者を更新できます。replace interest groupsも使うなら、関心分野を置き換えるか追加するか決めます。以前は小説を選び、次にエッセイだけを選んだ読者は、置き換えならエッセイだけ、追加なら両方が残ります。フォームの説明と一致させましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Premium User Syncは、WordPressの会員データとMailchimpにすでに存在する対応先の連絡先を同期します。開発元は、会員を自動で購読・配信停止にしないと明示しています。選択したオーディエンスに同じアドレスがある連絡先の情報を更新する機能です。会員登録やニックネーム変更はニュースレター登録ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "User Syncのwebhookを有効にすると、Mailchimp側での変更をWordPressへ書き戻せます。双方向同期の前に、各項目の管理元、書き戻してよい値、両側で値が違う場合の扱いを決めてテストしてください。技術的に可能という理由だけで会員権限、電話番号、その他の個人情報をすべて送らないでください。"
+        },
+        {
+          "type": "heading",
+          "text": "新しい版に合わせて配信停止の経路を変える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WPの開発元は2026年3月、バージョン4.12.0からプラグインのフォーム経由の配信停止機能を削除すると発表しました。更新後の古いフォームは、従来の配信停止処理を実行しません。旧方式ではアドレスの所有者を確認していなかったことが理由に関係し、項目を追加しても復活しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "サイトに配信停止の入口が必要なら、開発元の勧めに従い、そのオーディエンスのMailchimp管理の配信停止ページへ案内します。ニュースレター内では、*|UNSUB|*マージタグなどMailchimpの正しい配信停止リンクを使います。サイトでのアドレス入力とメール内の個別リンクは異なる手順です。すべての配信停止に追加の確認メールが必要と説明してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "配信停止後の受信状態を確認し、サイト同期や古いデータの再インポートで勝手に購読を戻さないようにします。読者がそのブランドのマーケティングメールを拒否したなら、複数のオーディエンスにもアドレスがあるか確認します。ツール内の記録が分かれているからといって、明確な拒否を一部の配信だけに適用してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "同じテスト表で両システムの結果を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "自分で管理できるテストアドレスを用意し、新規登録、無効な形式、必須項目の欠落、確認待ち、再送信、好みの更新、配信停止を順に試します。各ケースでサイトに期待する表示、Mailchimpの状態、項目値を記録します。表示、送信、項目対応、後続の確認のどこに問題があるか分かり、単にフォームが壊れたで終わりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7などの連携も使うなら、その入口の有効化、オーディエンス、購読の選択を別途確認します。MC4WP本体のフォームだけのテストでは足りません。問い合わせフォームですべての質問者を標準で購読させないでください。この記事では任意で説明の明確な登録を使い、一般の問い合わせを購読なしでも送れるようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本番送信前にMailchimpで実際の宛先と重複キャンペーンを確認し、メール内のサイトリンクと配信停止を試します。サイトのプラグインはデータの取込みを担い、差出人ドメイン、内容、到達性は送信サービス側でも扱います。フォームの動作は出発点です。購読の全期間を通じて予想どおりに動いて初めて連携が完成します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "プラグインの配布元を確認し、正しいMailchimpアカウントを接続してキーを安全に保管する。",
+            "主要オーディエンスを選び、項目とダブルオプトインを確認して一つのテストページから始める。",
+            "好みの置換・追加、User Syncの範囲、双方向更新の必要性を定める。",
+            "配信停止、重複アドレス、各フォーム入口をテストし、本当の宛先を確認する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/mailchimp-wordpress-newsletter/diagram-1-ja.svg",
+          "alt": "アカウント接続、フォーム確認、データ同期、配信停止の検証を四枚のカードで順に示し、システムをまたいで結果を確認する必要性を表す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "WordPressで送信結果を、Mailchimpで購読状態と宛先の範囲を確認する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "画面に見える結果",
+            "確認できること",
+            "さらに確認すること"
+          ],
+          "rows": [
+            [
+              "MC4WPにConnectedと表示",
+              "API接続が使える",
+              "オーディエンスと項目の選択"
+            ],
+            [
+              "フォーム送信に成功",
+              "送信処理が完了",
+              "確認メールのリンクを押したか"
+            ],
+            [
+              "会員データが更新",
+              "WordPressのデータが変化",
+              "対応する連絡先と同期項目"
+            ],
+            [
+              "User Syncが有効",
+              "同期設定が存在",
+              "自動購読を意味しない"
+            ],
+            [
+              "プラグインを新版に更新",
+              "ソフトウェアの版が変化",
+              "古い配信停止フォームの置換"
+            ],
+            [
+              "同じメールアドレスが一つのリストに一件だけ",
+              "そのリストでは重複なし",
+              "他のオーディエンスやキャンペーンからの再送"
+            ]
+          ],
+          "caption": "接続、データ、購読状態、実際の送信を区別する独自の連携チェック表。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "会員同期だけでは購読の意思を取得できない",
+          "text": "User Syncは既存の対応データを更新しますが、自動で購読や配信停止にはしません。会員情報とマーケティングメールの受信状態を分けて管理し、各登録入口をテストしてください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ニュースレターの登録・送信・配信停止の責任を整理する",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Kitのフォームと自動メールの連携を比べる",
+              "kind": "life",
+              "slug": "kit-newsletter-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "本当に成功したサイト操作を測る",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.org：MC4WPプラグインと開発元",
+          "url": "https://wordpress.org/plugins/mailchimp-for-wp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：APIキーでMailchimpを接続",
+          "url": "https://www.mc4wp.com/kb/connecting-mailchimp-account-api-key/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp：APIキーと保護",
+          "url": "https://mailchimp.com/help/about-api-keys/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：登録フォームの作成",
+          "url": "https://www.mc4wp.com/kb/create-mailchimp-sign-up-form/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：ダブルオプトインの設定",
+          "url": "https://www.mc4wp.com/kb/block-spam-sign-ups/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：関心分野の置換と追加",
+          "url": "https://www.mc4wp.com/kb/what-does-replace-groupings-mean/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：User Syncの範囲と双方向更新",
+          "url": "https://www.mc4wp.com/kb/sync-wordpress-users-with-mailchimp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：フォーム経由の配信停止機能の削除",
+          "url": "https://www.mc4wp.com/blog/removing-unsubscribe-through-forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp：同じキャンペーンが複数届く理由",
+          "url": "https://mailchimp.com/help/my-subscriber-received-multiple-copies-of-my-campaign/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp：配信停止の処理とオーディエンスの範囲",
+          "url": "https://mailchimp.com/help/about-unsubscribes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP：Contact Form 7での購読選択",
+          "url": "https://www.mc4wp.com/kb/subscribe-mailchimp-contact-form-7/",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Mailchimp와 WordPress 연결: MC4WP 양식과 구독자 데이터 동기화",
+      "description": "WordPress에 Mailchimp 구독 양식을 배치할 때는 API 연결, 대상 그룹 필드, 확인 메일, 구독 취소 상태를 함께 관리해야 합니다. 가상의 중고책 교환 사이트를 예로 들어 MC4WP 기본 설정과 양식 테스트, 관심사 업데이트, Premium User Sync의 범위, 최신 버전에서 제거된 양식 기반 구독 취소 기능을 설명합니다. 단계별 안내와 비교표, 자체 제작 도해로 중복 발송과 동기화 오해를 줄일 수 있습니다.",
+      "hero": {
+        "src": "/guides/mailchimp-wordpress-newsletter/hero-ko.jpg",
+        "alt": "사이트 화면과 연결 서버, 대상 그룹 폴더를 그린 Mokaair 자체 제작 그림. MC4WP 양식이 Mailchimp 목록에 연결되는 모습을 나타낸다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "중고책 교환 사이트는 방문자가 매달 책 목록을 구독하고 회원은 선호하는 책 분야를 갱신하기를 바랍니다. 여기에는 방문자의 명시적인 뉴스레터 가입과 기존 자료의 정확한 유지라는 별개의 일이 있습니다. 이를 모든 회원의 자동 구독으로 혼동하면 신청하지 않은 사람에게도 메일을 보낼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 가상의 책 교환 사이트를 예로 들며, 2026년 9월 14일 확인한 MC4WP, WordPress.org, Mailchimp 공식 문서를 바탕으로 작성했습니다. MC4WP는 Mailchimp가 개발한 제품이 아닌 제삼자 플러그인입니다. 이 글을 위해 플러그인을 실제 설치하거나 계정을 연결하거나 이메일을 발송하지는 않았습니다."
+        },
+        {
+          "type": "heading",
+          "text": "WordPress, MC4WP, Mailchimp의 역할부터 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress는 사이트와 회원 자료를 보유하고, MC4WP는 구독 양식과 지원되는 연동을 제공하며, Mailchimp는 대상 그룹을 관리하고 마케팅 메일을 보냅니다. 자료가 어디로 들어와 어느 audience로 이동하는지, 누가 수신 상태를 결정하는지 먼저 그려 보세요. 플러그인의 Connected 표시는 연결 성공만 뜻하며 모든 필드가 정확히 전달되었다는 증거는 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예시 사이트는 주요 audience 하나를 두고 관심사와 세그먼트로 책 종류를 나눌 수 있습니다. Mailchimp의 audience는 각각 별도로 관리됩니다. 같은 주소가 두 그룹에 있고 양쪽에 동일한 캠페인을 보내면 두 통을 받을 수 있습니다. 사이트 분류마다 별도의 audience를 만드는 방식은 유지 관리와 구독 취소 처리를 분산시킵니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "무료 MC4WP는 기본 구독 양식을 만들 수 있고 Premium에는 여러 양식과 User Sync 등의 기능이 있습니다. Mailchimp 계정 요금제와 플러그인 라이선스는 별개이며 하나를 구매해도 다른 하나가 포함되지는 않습니다. 필요한 기능을 정리해 현재 요금제를 확인하고, 오래된 강좌의 가격이나 기능표를 현재의 약속으로 받아들이지 마세요."
+        },
+        {
+          "type": "heading",
+          "text": "계정 연결 시 API 키 보호하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "WordPress 플러그인 관리에서 MC4WP: Mailchimp for WordPress를 검색하고 작성자와 배포처를 확인한 뒤 설치·활성화합니다. Mailchimp에서 용도를 알아볼 수 있는 Marketing API 키를 만들고 WordPress의 MC4WP > Mailchimp 설정에 입력합니다. 나중에 연동을 찾을 수 있도록 키 이름에 사이트와 용도를 적습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mailchimp는 키를 만들 때만 전체 값을 보여 주며 나중에는 같은 전체 값을 다시 읽을 수 없습니다. 안전하게 보관하세요. 기사 HTML, 공개 JavaScript, 화면 캡처, 고객지원 게시판에 붙여 넣지 마세요. 키가 유출되거나 연동을 중단하면 공식 절차로 폐기하고 영향을 받은 연결을 복구합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "연결 후 대상 그룹이 시험용이나 다른 브랜드의 목록이 아닌지 확인합니다. Mailchimp 필드를 바꿨다면 플러그인에서 대상 그룹 정보를 갱신해 양식이 새로운 구조를 알도록 합니다. 연결되지 않은 것처럼 보일 때는 키를 무작정 여러 개 만들기 전에 계정, 오류 메시지, 현재 설정을 먼저 살핍니다."
+        },
+        {
+          "type": "heading",
+          "text": "양식 필드를 대상 그룹 구조에 맞추기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP > Forms에서 양식을 수정하고 필드 도구로 Mailchimp 형식에 맞는 필드를 만든 다음 필요한 페이지에 배치합니다. 예시 책 목록은 우선 이메일과 선택적인 소설·에세이 취향만 받습니다. audience에 다른 필드가 있다고 생일과 주소까지 모두 요청하지 마세요. 필수 필드 설정은 Mailchimp 쪽과 일치해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "플러그인이 제공하는 shortcode로 글이나 페이지에 양식을 넣을 수 있습니다. 강좌의 예시 번호를 복사하지 말고 실제 화면에 나온 양식 ID를 사용하세요. 페이지 빌더, 캐시, 테마가 있다면 시험 페이지 한 곳에서 레이아웃과 제출 결과를 확인한 뒤 다른 위치로 늘려야 문제를 추적하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이중 확인을 사용한다면 양식의 Mailchimp Settings에서 Use double opt-in을 Yes로 설정합니다. 제출 후 독자에게 확인 메일을 살펴보라고 안내하고, 검증할 때는 확인 대기와 구독 완료 상태를 따로 확인합니다. 웹페이지의 성공 메시지는 제출 흐름의 결과일 뿐 주소 확인 완료나 다음 호 수신을 보장하지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "자료 갱신과 구독 상태를 따로 검증하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP의 update existing subscribers는 새 양식 자료로 기존 구독자를 갱신할 수 있습니다. replace interest groups도 사용한다면 관심사가 기존 것을 대체하는지 추가되는지 결정하세요. 원래 소설을 선택한 독자가 나중에 에세이만 체크했다면 대체는 에세이만, 추가는 둘 다 남깁니다. 독자에게 보이는 양식 설명과 선택 결과가 맞아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Premium User Sync는 WordPress 회원 자료를 Mailchimp에 이미 있는 일치 연락처와 동기화합니다. 개발사는 이 기능이 회원을 자동으로 구독시키거나 구독 취소하지 않으며, 선택한 audience에 같은 주소가 이미 있는 자료를 갱신한다고 명시합니다. 회원 가입이나 별명 변경은 뉴스레터 구독 완료가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "User Sync의 webhook을 켜면 Mailchimp에서 바꾼 자료도 WordPress로 되돌려 쓸 수 있습니다. 양방향 동기화 전에 각 필드의 책임 시스템, 되돌려 쓸 값, 양쪽 값이 다른 경우를 정하고 시험하세요. 기술적으로 가능하다는 이유만으로 회원 역할, 전화번호, 다른 개인정보까지 전부 보내서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "최신 버전에 맞춰 구독 취소 경로 바꾸기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "MC4WP 개발사는 2026년 3월 버전 4.12.0부터 플러그인 양식을 통한 구독 취소 기능을 제거한다고 발표했습니다. 업데이트 후 오래된 양식은 이전 구독 취소 요청을 수행하지 않습니다. 기존 설계가 주소 소유자를 검증하지 않았다는 점과 관련이 있으며 필드 하나를 추가해 되살릴 수 있는 기능이 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사이트에 구독 취소 입구가 필요하면 개발사 권고에 따라 해당 audience의 Mailchimp 호스팅 구독 취소 페이지로 연결합니다. 뉴스레터 안에서는 시스템의 *|UNSUB|* 병합 태그 같은 올바른 Mailchimp 구독 취소 링크를 씁니다. 사이트의 주소 입력과 메일 안의 개인별 링크는 다른 절차이므로 모든 취소에 또 다른 확인 메일이 꼭 필요하다고 설명하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "구독 취소 후 수신 상태를 확인하고 사이트 동기화나 옛 자료 재가져오기로 구독이 임의 복구되지 않도록 합니다. 독자가 이 브랜드의 마케팅을 그만 받겠다고 했다면 여러 audience에도 주소가 있는지 살피세요. 도구의 자료가 분리되어 있다는 이유로 명확한 거절을 발송 일부에만 적용해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "하나의 시험표로 양쪽 시스템 결과 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 관리하는 시험 주소로 신규 구독, 잘못된 형식, 필수 항목 누락, 확인 대기, 반복 제출, 선호도 갱신, 구독 취소를 차례로 시험합니다. 각 경우에 예상 웹 메시지, Mailchimp 상태, 필드 값을 적으세요. 단순히 양식이 고장 났다고 하지 않고 표시, 제출, 필드 매핑, 후속 확인 중 어디가 문제인지 알 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Contact Form 7 등 다른 연동을 쓰면 그 입구의 활성화 여부, audience, 구독 선택도 따로 검증해야 합니다. MC4WP 자체 양식만 시험해서는 부족합니다. 문의 양식이 모든 문의자를 기본 구독자로 만들어서도 안 됩니다. 이 글은 일반 문의를 뉴스레터 가입 없이 보낼 수 있는 명확한 선택 가입을 사용합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 발송 전에는 Mailchimp에서 진짜 수신자와 중복 캠페인을 다시 확인하고 메일의 사이트 링크와 취소 기능을 검사합니다. 사이트 플러그인은 자료 유입을 담당하고 발신 도메인, 내용, 전달은 발송 서비스에서도 관리해야 합니다. 양식 작동은 시작일 뿐 구독의 전체 생애주기가 예상대로 움직여야 연동이 완료됩니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "플러그인 배포처를 확인하고 올바른 Mailchimp 계정을 연결하며 키를 안전하게 보관한다.",
+            "주요 audience를 정하고 필드와 이중 확인을 맞춘 뒤 시험 페이지 한 곳에서 시작한다.",
+            "관심사 대체·추가, User Sync 범위, 양방향 갱신 필요성을 정한다.",
+            "구독 취소, 중복 주소, 모든 양식 입구를 시험하고 실제 수신자를 확인한다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "image",
+          "src": "/guides/mailchimp-wordpress-newsletter/diagram-1-ko.svg",
+          "alt": "계정 연결, 양식 확인, 자료 동기화, 구독 취소 검증을 네 장의 카드로 보여 주며 시스템 간 결과를 단계별로 확인해야 함을 나타낸다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "WordPress에서 제출 결과를, Mailchimp에서 구독 상태와 수신 범위를 확인한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "보이는 결과",
+            "확인된 내용",
+            "추가 검증"
+          ],
+          "rows": [
+            [
+              "MC4WP가 Connected 표시",
+              "API 연결 사용 가능",
+              "대상 그룹과 필드 선택"
+            ],
+            [
+              "양식 제출 성공",
+              "제출 절차 완료",
+              "확인 메일 링크 클릭 여부"
+            ],
+            [
+              "회원 자료 갱신",
+              "WordPress 자료 변경",
+              "일치 연락처와 동기화 필드"
+            ],
+            [
+              "User Sync 활성화",
+              "동기화 설정 존재",
+              "자동 구독을 뜻하지 않음"
+            ],
+            [
+              "플러그인 최신판 업데이트",
+              "프로그램 버전 변경",
+              "옛 구독 취소 양식 교체 여부"
+            ],
+            [
+              "한 목록에 같은 이메일 주소가 한 건",
+              "그 목록에는 중복 없음",
+              "다른 audience나 캠페인의 중복 발송"
+            ]
+          ],
+          "caption": "연결, 자료, 구독 상태, 실제 발송을 구분한 자체 제작 검증표."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "회원 동기화만으로 구독 동의를 얻을 수 없다",
+          "text": "User Sync는 이미 있는 일치 자료를 갱신하지만 자동으로 구독시키거나 구독 취소하지 않습니다. 회원 정보와 마케팅 수신 상태를 나누어 관리하고 각 가입 입구를 시험하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "뉴스레터 가입·발송·수신 거부의 책임 정리",
+              "kind": "life",
+              "slug": "email-newsletter-planning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Kit 양식과 자동 메일의 연결 비교",
+              "kind": "life",
+              "slug": "kit-newsletter-setup"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "실제로 성공한 사이트 동작 측정",
+              "kind": "life",
+              "slug": "ga4-site-measurement"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "WordPress.org: MC4WP 플러그인과 개발사",
+          "url": "https://wordpress.org/plugins/mailchimp-for-wp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: API 키로 Mailchimp 연결",
+          "url": "https://www.mc4wp.com/kb/connecting-mailchimp-account-api-key/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp: API 키와 보호",
+          "url": "https://mailchimp.com/help/about-api-keys/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: 구독 양식 만들기",
+          "url": "https://www.mc4wp.com/kb/create-mailchimp-sign-up-form/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: 이중 확인 설정",
+          "url": "https://www.mc4wp.com/kb/block-spam-sign-ups/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: 관심사 대체와 추가",
+          "url": "https://www.mc4wp.com/kb/what-does-replace-groupings-mean/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: User Sync 범위와 양방향 갱신",
+          "url": "https://www.mc4wp.com/kb/sync-wordpress-users-with-mailchimp/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: 양식 기반 구독 취소 기능 제거",
+          "url": "https://www.mc4wp.com/blog/removing-unsubscribe-through-forms/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp: 같은 캠페인을 여러 번 받는 이유",
+          "url": "https://mailchimp.com/help/my-subscriber-received-multiple-copies-of-my-campaign/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Mailchimp: 구독 취소와 대상 그룹 범위",
+          "url": "https://mailchimp.com/help/about-unsubscribes/",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "MC4WP: Contact Form 7의 구독 선택",
+          "url": "https://www.mc4wp.com/kb/subscribe-mailchimp-contact-form-7/",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
