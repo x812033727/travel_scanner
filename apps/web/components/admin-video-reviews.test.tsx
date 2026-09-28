@@ -77,6 +77,9 @@ describe("AdminVideoReviews", () => {
     expect(sendBack.disabled).toBe(true);
     fireEvent.change(card.querySelector("textarea") as HTMLTextAreaElement, { target: { value: "片頭太長" } });
     expect(sendBack.disabled).toBe(false);
+    // Only a drama's script gate has a discussion; a tutorial's outline and final cut have none.
+    expect(within(card).queryByRole("region", { name: "討論" })).toBeNull();
+    expect(within(screen.getByRole("article", { name: "大綱" })).queryByRole("region", { name: "討論" })).toBeNull();
   });
 
   it("lets a reader look but not decide", async () => {
@@ -219,16 +222,16 @@ describe("AdminVideoReviews", () => {
       }
       if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests }));
       if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
-      return Promise.resolve(Response.json([{ ...summary, format: "drama", pending: 1, checklist: [{ key: "brief", label: "企劃", done: true }, { key: "look", label: "角色設定圖", done: false }] }]));
+      return Promise.resolve(Response.json([]));
     }));
     window.history.replaceState(null, "", "/?tab=drama");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    // Requests from before one-offs were series (no series_slug) still show as a queue.
     const queue = await screen.findByRole("region", { name: "發起的漫劇" });
     expect(queue.textContent).toContain("排隊中");
     expect(queue.textContent).toContain("製作中");
     expect(queue.textContent).toContain("改編文章 shanhaijing-kuafu");
     expect(screen.getByRole("button", { name: "打開 kuafu-chases-the-sun" })).toBeTruthy();
-    expect(screen.getByText("現在：角色設定圖")).toBeTruthy();
 
     fireEvent.click(screen.getByText("新的漫劇", { selector: "summary" }));
     const submit = screen.getByRole("button", { name: "排進製作" });
@@ -255,13 +258,19 @@ describe("AdminVideoReviews", () => {
     confirm.mockRestore();
   });
 
-  it("shows a dubs review under its own gate and approves it as uploaded in Studio", async () => {
-    // The payload and files are what the worker will send (docs/videos/DUBS.md); the card's track
-    // list with download links is still to come, so only the gate and the decision are asserted.
-    const dubs = {
-      id: "55555555-5555-4555-8555-555555555555", gate: "dubs", content_sha256: "7".repeat(64), summary: "配音：en 完成、ja 跳過",
-      payload: { locales: { en: { file: "en.m4a", file_role: "dub_en", status: "ready" }, ja: { status: "skipped", reason: "1.15 倍還塞不下" } } },
-      files: [{ role: "dub_en", sha256: "8".repeat(64), size: 10, content_type: "audio/mp4" }],
+  it("shows a languages batch with each part's state and file and the Studio steps, and approves it as uploaded", async () => {
+    // The payload and files are what the worker sends (docs/videos/LANGUAGES.md): a state per part
+    // per language, the worker's reason when it gave one up, and a file per finished part.
+    const languages = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "languages", content_sha256: "7".repeat(64), summary: "語言：en 三項完成、ja 配音跳過",
+      payload: { locales: { ja: { metadata: "ready", captions: "ready", dub: { status: "skipped", reason: "1.15 倍還塞不下" } }, en: { metadata: "ready", captions: "ready", dub: "ready" } } },
+      files: [
+        { role: "description_en", sha256: "8".repeat(64), size: 10, content_type: "text/plain" },
+        { role: "captions_en", sha256: "9".repeat(64), size: 10, content_type: "application/x-subrip" },
+        { role: "dub_en", sha256: "1".repeat(64), size: 10, content_type: "audio/mp4" },
+        { role: "description_ja", sha256: "2".repeat(64), size: 10, content_type: "text/plain" },
+        { role: "captions_ja", sha256: "3".repeat(64), size: 10, content_type: "application/x-subrip" },
+      ],
       status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
     };
     const posts: Array<{ url: string; body: unknown }> = [];
@@ -269,72 +278,202 @@ describe("AdminVideoReviews", () => {
       const url = String(input);
       if (init?.method === "POST") {
         posts.push({ url, body: JSON.parse(String(init.body)) });
-        return Promise.resolve(Response.json({ ...dubs, status: "approved" }));
+        return Promise.resolve(Response.json({ ...languages, status: "approved" }));
       }
       if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
-      return Promise.resolve(Response.json({ ...summary, dub_locales: ["en", "ja", "zh-CN"], reviews: [dubs] }));
+      return Promise.resolve(Response.json({ ...summary, ready_to_upload: false, locales_decided_at: "2026-09-27T04:30:00Z", locales: { en: { metadata: true, captions: true, dub: true }, ja: { metadata: true, captions: true, dub: true } }, reviews: [languages] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const card = await screen.findByRole("article", { name: "配音音軌" });
-    expect(card.textContent).toContain("配音：en 完成、ja 跳過");
-    // The track list: English ready with its file to download, Japanese skipped with the reason.
-    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain(`/api/admin-video-files/${summary.slug}/${"8".repeat(64)}`);
-    expect(card.textContent).toContain("英文");
-    expect(card.textContent).toContain("跳過：1.15 倍還塞不下");
-    const approve = screen.getByRole("button", { name: "已在 Studio 上傳這些音軌" });
+    const card = await screen.findByRole("article", { name: "語言" });
+    expect(card.textContent).toContain("語言：en 三項完成、ja 配音跳過");
+    // English first whatever the payload's order, every part with its state and its file.
+    const rows = [...card.querySelectorAll("li")].map((row) => row.textContent);
+    expect(rows[0]).toContain("英文");
+    expect(rows[0]).toContain("配音已完成");
+    expect(rows[1]).toContain("日文");
+    expect(rows[1]).toContain("配音跳過（1.15 倍還塞不下）");
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain(`/api/admin-video-files/${summary.slug}/${"1".repeat(64)}`);
+    expect(within(card).getByRole("link", { name: "下載 description.en.txt" }).getAttribute("href")).toContain("8".repeat(64));
+    expect(within(card).getByRole("link", { name: "下載 ja.srt" }).getAttribute("href")).toContain("3".repeat(64));
+    expect(within(card).queryByRole("link", { name: "下載 ja.m4a" })).toBeNull();
+    // A dub track is the one part only the owner can upload, so the Studio steps are there.
+    expect(card.textContent).toContain("配音要在 Studio 上傳");
+    expect(card.textContent).toContain("「新增語言」");
+    const approve = screen.getByRole("button", { name: "已在 Studio 上傳配音" });
     expect(approve).toHaveProperty("disabled", false);
     fireEvent.click(approve);
     await waitFor(() => expect(posts).toHaveLength(1));
-    expect(posts[0].url).toContain(`/reviews/${dubs.id}/decision`);
+    expect(posts[0].url).toContain(`/reviews/${languages.id}/decision`);
     expect(posts[0].body).toEqual({ decision: "approve" });
   });
 
-  it("lets the owner tick the languages to dub a video in and saves them in the page's order", async () => {
-    const puts: Array<{ url: string; body: unknown }> = [];
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+  it("still reads a dubs review from before the languages gate", async () => {
+    const dubs = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "dubs", content_sha256: "7".repeat(64), summary: "配音：en 完成、ja 跳過",
+      payload: { locales: { en: { file: "en.m4a", file_role: "dub_en", status: "ready" }, ja: { status: "skipped", reason: "1.15 倍還塞不下" } } },
+      files: [{ role: "dub_en", sha256: "8".repeat(64), size: 10, content_type: "audio/mp4" }],
+      status: "approved", choice: null, note: null, decided_at: "2026-09-27T06:00:00Z", created_at: "2026-09-27T05:00:00Z",
+    };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
-      if (init?.method === "PUT") {
-        puts.push({ url, body: JSON.parse(String(init.body)) });
-        return Promise.resolve(Response.json({ ...summary, dub_locales: ["en", "ko"], reviews: [] }));
-      }
       if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
-      return Promise.resolve(Response.json({ ...summary, dub_locales: ["en"], reviews: [] }));
+      return Promise.resolve(Response.json({ ...summary, pending: 0, reviews: [dubs] }));
     }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const section = await screen.findByRole("region", { name: "配音語言" });
-    expect(within(section).getByRole("checkbox", { name: "英文" })).toHaveProperty("checked", true);
-    const save = within(section).getByRole("button", { name: "儲存配音語言" });
+    fireEvent.click(await screen.findByText("過去的決定", { selector: "summary" }));
+    const card = screen.getByRole("article", { name: "配音音軌" });
+    expect(within(card).getByRole("link", { name: "下載 en.m4a" }).getAttribute("href")).toContain("8".repeat(64));
+    expect(card.textContent).toContain("英文配音已完成");
+    expect(card.textContent).toContain("日文配音跳過（1.15 倍還塞不下）");
+  });
+
+  it("lets the owner choose each language's parts after the final cut, ticks the captions with a dub, and saves in the page's order", async () => {
+    const puts: Array<{ url: string; body: unknown }> = [];
+    let locales: Record<string, unknown> = { en: { metadata: true, captions: true, dub: false } };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (init?.method === "PUT") {
+        const body = JSON.parse(String(init.body)) as { locales: Record<string, unknown> };
+        puts.push({ url, body });
+        locales = body.locales;
+        return Promise.resolve(Response.json({ ...summary, locales, reviews: [] }));
+      }
+      if (url.includes("/admin/video-automation/settings")) return Promise.resolve(Response.json({ caption_locales: ["ja", "zh-CN"], drama: { drama_caption_locales: ["en"] } }));
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
+      return Promise.resolve(Response.json({
+        ...summary, ready_to_upload: false, locales, locales_decided_at: "2026-09-27T04:30:00Z",
+        languages: { en: { metadata: { state: "ready" }, captions: { state: "working" } } }, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }],
+      }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const panel = await screen.findByRole("region", { name: "這支影片的語言" });
+    const box = (name: string) => within(panel).getByRole("checkbox", { name }) as HTMLInputElement;
+    expect(box("英文 標題與說明").checked).toBe(true);
+    expect(box("英文 CC 字幕").checked).toBe(true);
+    expect(box("英文 配音").checked).toBe(false);
+    expect(box("韓文 配音").disabled).toBe(false);
+    // Where the saved parts stand, next to their boxes; the unsaved dub has no state yet.
+    const cells = [...panel.querySelectorAll("tbody tr")][0].textContent;
+    expect(cells).toContain("已完成");
+    expect(cells).toContain("製作中");
+    const save = within(panel).getByRole("button", { name: "儲存" });
     expect(save).toHaveProperty("disabled", true);
-    fireEvent.click(within(section).getByRole("checkbox", { name: "韓文" }));
+    fireEvent.click(box("韓文 配音"));
+    expect(box("韓文 CC 字幕").checked).toBe(true);
+    fireEvent.click(box("英文 CC 字幕"));
     expect(save).toHaveProperty("disabled", false);
     fireEvent.click(save);
     await waitFor(() => expect(puts).toHaveLength(1));
-    expect(puts[0].url).toContain("/admin/videos/ai-model-choice/dubs");
-    expect(puts[0].body).toEqual({ locales: ["en", "ko"] });
-    await screen.findByText("已儲存");
+    expect(puts[0].url).toContain("/admin/videos/ai-model-choice/languages");
+    expect(puts[0].body).toEqual({ locales: { en: { metadata: true, captions: false, dub: false }, ko: { metadata: false, captions: true, dub: true } } });
+    expect((await within(panel).findByRole("status")).textContent).toBe("已儲存");
+    await waitFor(() => expect(box("韓文 配音").checked).toBe(true));
+    expect(save).toHaveProperty("disabled", true);
+
+    fireEvent.click(within(panel).getByRole("button", { name: "照預設勾選" }));
+    await waitFor(() => expect(box("日文 CC 字幕").checked).toBe(true));
+    expect(box("日文 標題與說明").checked).toBe(true);
+    expect(box("簡體中文 CC 字幕").checked).toBe(true);
+    expect(box("英文 標題與說明").checked).toBe(false);
+    expect(box("韓文 配音").checked).toBe(false);
+    expect(save).toHaveProperty("disabled", false);
+
+    fireEvent.click(within(panel).getByRole("button", { name: "只出繁體中文" }));
+    await waitFor(() => expect(puts).toHaveLength(2));
+    expect(puts[1].body).toEqual({ locales: {} });
+    await waitFor(() => expect(box("日文 CC 字幕").checked).toBe(false));
+    expect(within(panel).getByRole("button", { name: "只出繁體中文" })).toHaveProperty("disabled", true);
   });
 
-  it("does not offer dub languages to a reader without content.manage", async () => {
-    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
-      const url = String(input);
-      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json([summary]));
-      return Promise.resolve(Response.json({ ...summary, dub_locales: [], reviews: [] }));
-    }));
+  it("waits for the final cut before offering languages, greys out a drama's dub, and lets a reader only look", async () => {
+    const detail = (fields: Record<string, unknown>) => vi.fn((input: RequestInfo | URL) => Promise.resolve(Response.json(String(input).endsWith("/admin/videos") ? [summary] : { ...summary, ready_to_upload: false, ...fields })));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
+    vi.stubGlobal("fetch", detail({ reviews: [outline] }));
+    const first = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const early = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(early.textContent).toContain("成片核准後可以選語言");
+    expect(within(early).queryAllByRole("checkbox")).toHaveLength(0);
+    expect(screen.queryByText("等你決定語言")).toBeNull();
+    first.unmount();
+
+    vi.stubGlobal("fetch", detail({ format: "drama", pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
+    const second = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const drama = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(drama).getByRole("checkbox", { name: "英文 配音" })).toHaveProperty("disabled", true);
+    expect(within(drama).getByRole("checkbox", { name: "英文 CC 字幕" })).toHaveProperty("disabled", false);
+    // Nothing decided yet: the page says so, and saving nothing is a decision too.
+    expect(screen.getByText("等你決定語言")).toBeTruthy();
+    expect(within(drama).getByRole("button", { name: "儲存" })).toHaveProperty("disabled", false);
+    second.unmount();
+
+    vi.stubGlobal("fetch", detail({ pending: 0, locales_decided_at: null, reviews: [{ ...final, status: "approved", decided_at: "2026-09-27T04:00:00Z" }] }));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const section = await screen.findByRole("region", { name: "配音語言" });
-    expect(within(section).getByRole("checkbox", { name: "日文" })).toHaveProperty("disabled", true);
-    expect(within(section).getByRole("button", { name: "儲存配音語言" })).toHaveProperty("disabled", true);
+    const reader = await screen.findByRole("region", { name: "這支影片的語言" });
+    expect(within(reader).getByRole("checkbox", { name: "日文 配音" })).toHaveProperty("disabled", true);
+    for (const name of ["照預設勾選", "只出繁體中文", "儲存"]) expect(within(reader).getByRole("button", { name })).toHaveProperty("disabled", true);
   });
 
-  it("keeps dramas off the tutorial list and shows a one-off drama with its spend on the drama tab", async () => {
+  it("tells each finished video where it is on its way to YouTube, and lists one waiting for its languages under needs you", async () => {
+    const done = { key: "final_video_approved", label: "成片核准", done: true };
+    const base = { ...summary, pending: 0, checklist: [done], ready_to_upload: false, locales: {}, locales_decided_at: null, languages: {} };
+    const deciding = { ...base, slug: "pick-languages", title: "等語言的影片", stage: "languages" };
+    const making = {
+      ...base, slug: "making-languages", title: "做語言的影片", publish_approved_at: "2026-09-27T05:00:00Z", locales_decided_at: "2026-09-27T04:30:00Z",
+      locales: { en: { metadata: true, captions: true, dub: true } }, languages: { en: { metadata: { state: "ready" }, captions: { state: "ready" }, dub: { state: "working" } } },
+    };
+    const ready = { ...base, slug: "upload-ready", title: "可上架的影片", publish_approved_at: "2026-09-27T05:00:00Z", locales_decided_at: "2026-09-27T04:30:00Z", ready_to_upload: true };
+    const scheduled = { ...base, slug: "scheduled-video", title: "排定的影片", youtube_video_id: "abcdefghijk", youtube_publish_at: "2999-01-01T00:00:00Z", publish_approved_at: "2026-09-27T05:00:00Z" };
+    const published = { ...base, slug: "public-video", title: "公開的影片", youtube_video_id: "abcdefghijl", youtube_publish_at: "2026-09-01T00:00:00Z", publish_approved_at: "2026-08-27T05:00:00Z" };
+    const all = [deciding, making, ready, scheduled, published];
     vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
+      if (url.endsWith("/admin/videos")) return Promise.resolve(Response.json(all));
+      const project = all.find((each) => url.endsWith(`/admin/videos/${each.slug}`)) ?? making;
+      return Promise.resolve(Response.json({ ...project, reviews: [] }));
+    }));
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("article", { name: "可上架的影片" });
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["需要你", "可以上架", "進行中", "已上架"]);
+    const needs = screen.getByRole("region", { name: "需要你" });
+    expect(needs.textContent).toContain("等語言的影片");
+    expect(needs.textContent).toContain("等你決定語言");
+    const working = screen.getByRole("region", { name: "進行中" });
+    expect(working.textContent).toContain("做語言的影片");
+    expect(working.textContent).toContain("語言製作中");
+    const onYouTube = screen.getByRole("region", { name: "已上架" });
+    const items = [...onYouTube.querySelectorAll("li")].map((item) => item.textContent);
+    expect(items[0]).toContain("排定的影片");
+    expect(items[0]).toContain("已排定");
+    expect(items[1]).toContain("公開的影片");
+    expect(items[1]).toContain("已上架");
+
+    fireEvent.click(screen.getByRole("button", { name: /做語言的影片/ }));
+    await screen.findByRole("heading", { name: "做語言的影片" });
+    expect(screen.getByText("語言製作中")).toBeTruthy();
+    expect(screen.getByText("語言做好後才能送到 YouTube，那時上傳包裡才有這些語言。")).toBeTruthy();
+    // The site sends the video from the upload package, languages included, so nothing goes to YouTube before they are made.
+    expect(screen.queryByRole("form", { name: "已上傳到 YouTube" })).toBeNull();
+    const panel = screen.getByRole("region", { name: "這支影片的語言" });
+    const row = [...panel.querySelectorAll("tbody tr")][0].textContent ?? "";
+    expect(row.match(/已完成/g)).toHaveLength(2);
+    expect(row).toContain("製作中");
+  });
+
+  it("keeps dramas off the tutorial list and shows a one-off drama as a one-episode series on the drama tab", async () => {
+    const oneOff = {
+      id: "7c2e3d4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f", slug: "one-off-1a2b3c4d", kind: "one-off", title: "精衛填海", premise: "炎帝最小的女兒在東海溺水。", aspects: [], tone: "no-romance", style_preset: "ink-wash",
+      target_minutes: 2, planned_episodes: 1, episodes_per_chapter: 1, chapters: 1, open_ended: false, status: "setting", note: null, requested_chapter: null, force_next: false,
+      episodes_done: 0, episodes_started: 0, episodes_ready: 0, docs_pending: 1, messages_pending: 0, media_usd: 12.5, clip_seconds: 96, created_at: "2026-09-27T00:00:00Z", updated_at: "2026-09-27T01:00:00Z",
+    };
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/video-automation/series?kind=one-off")) return Promise.resolve(Response.json({ series: [oneOff] }));
       if (url.includes("/admin/video-automation/series")) return Promise.resolve(Response.json({ series: [] }));
       if (url.endsWith("/drama-requests")) return Promise.resolve(Response.json({ requests: [] }));
-      return Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", media_usd: 12.5, clip_seconds: 96 }, { ...summary, slug: "a-tutorial", title: "教學片", pending: 0 }]));
+      return Promise.resolve(Response.json([{ ...summary, pending: 0, format: "drama", series_slug: "one-off-1a2b3c4d", episode_number: 1, media_usd: 12.5, clip_seconds: 96 }, { ...summary, slug: "a-tutorial", title: "教學片", pending: 0 }]));
     }));
     const { unmount } = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
     await screen.findByRole("button", { name: /教學片/ });
@@ -342,9 +481,14 @@ describe("AdminVideoReviews", () => {
     unmount();
     window.history.replaceState(null, "", "/?tab=drama");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read"])}><AdminVideoReviews /></AdminOperationsProvider>);
-    const item = await screen.findByRole("button", { name: /AI 模型怎麼挑/ });
-    expect(item.textContent).toContain("AI 漫劇");
-    expect(item.textContent).toContain("媒體花費 US$12.50（96 片段秒）");
+    const item = await screen.findByRole("button", { name: /精衛填海/ });
+    expect(screen.getByRole("region", { name: "單集漫劇" }).contains(item)).toBe(true);
+    expect(item.textContent).toContain("單集");
+    expect(item.textContent).toContain("1 份等你核准");
+    expect(item.textContent).toContain("US$12.50 · 片段 96 秒");
+    expect(item.textContent).toContain("水墨");
+    fireEvent.click(item);
+    expect(window.location.search).toContain("series=one-off-1a2b3c4d");
   });
 
   it("shows a screenplay's beats, the checker's verdicts and every line with its speaker", async () => {
@@ -361,7 +505,19 @@ describe("AdminVideoReviews", () => {
       },
       files: [], status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
     };
-    vi.stubGlobal("fetch", vi.fn(() => Promise.resolve(Response.json({ ...summary, format: "drama", series_slug: "wenjian", episode_number: 1, reviews: [script] }))));
+    const said = [
+      { id: "m1", subject: "script:1", author: "owner", body_md: "鐘聲太早。", refers_to: "9".repeat(12), answered_at: "2026-09-27T05:10:00Z", created_at: "2026-09-27T05:05:00Z", created_by_user_id: "u1" },
+      { id: "m2", subject: "script:1", author: "writer", body_md: "移到沈瀾開口之後了。", refers_to: "9".repeat(12), answered_at: "2026-09-27T05:10:00Z", created_at: "2026-09-27T05:10:00Z", created_by_user_id: null },
+    ];
+    const calls: Array<{ url: string; method: string; body?: unknown }> = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      const method = init?.method ?? "GET";
+      calls.push({ url, method, body: init?.body ? JSON.parse(String(init.body)) : undefined });
+      if (url.endsWith("/messages") && method === "POST") return Promise.resolve(Response.json({ ...said[0], id: "m3", answered_at: null }, { status: 201 }));
+      if (url.includes("/messages?subject=")) return Promise.resolve(Response.json({ messages: said }));
+      return Promise.resolve(Response.json({ ...summary, format: "drama", series_slug: "wenjian", episode_number: 1, reviews: [script] }));
+    }));
     window.history.replaceState(null, "", "/?video=ai-model-choice");
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "劇本" });
@@ -374,6 +530,150 @@ describe("AdminVideoReviews", () => {
     expect(card.textContent).toContain("旁白：夜裡，鐘響了。");
     expect(card.textContent).toContain("鐘下有字");
     expect(screen.getByRole("button", { name: "核准劇本" })).toHaveProperty("disabled", false);
+    // The episode's thread on its series, read by the subject script:<episode>, sits in the card.
+    const thread = within(card).getByRole("region", { name: "討論" });
+    await waitFor(() => expect(thread.textContent).toContain("移到沈瀾開口之後了。"));
+    expect(calls.some((call) => call.url.endsWith("/admin/video-automation/series/wenjian/messages?subject=script%3A1"))).toBe(true);
+    expect(thread.textContent).toContain("撰稿");
+    expect(thread.textContent).toContain(`對劇本 ${"9".repeat(12)}`);
+    fireEvent.change(within(thread).getByRole("textbox", { name: "給模型的話" }), { target: { value: "結尾多一句旁白" } });
+    fireEvent.click(within(thread).getByRole("button", { name: "送出" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
+    const post = calls.find((call) => call.method === "POST");
+    expect(post?.url).toContain("/admin/video-automation/series/wenjian/messages");
+    expect(post?.body).toEqual({ subject: "script:1", body: "結尾多一句旁白" });
+    // The gate card's own note is still the one the decision reads.
+    expect(within(card).getByRole("textbox", { name: "意見（退回時必填）" })).toBeTruthy();
+  });
+
+  it("shows a one-off episode's story bible with its thread above the gates, and approves it on its series", async () => {
+    const script = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "script", content_sha256: "9".repeat(64), summary: "劇本 1 場", payload: { minutes: 2, scenes: [] },
+      files: [], status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
+    };
+    const bible = { id: "b1", kind: "bible", chapter_number: 0, version: 1, body_md: "# 故事聖經\n精衛。", body_json: {}, status: "review", note: null, decided_at: null, created_at: "2026-09-27T02:00:00Z", unanswered: 1 };
+    const series = {
+      id: "7c2e3d4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f", slug: "one-off-1a2b3c4d", kind: "one-off", title: "精衛填海", premise: "炎帝最小的女兒在東海溺水。", aspects: [], tone: "no-romance", style_preset: "ink-wash",
+      target_minutes: 2, planned_episodes: 1, episodes_per_chapter: 1, chapters: 1, open_ended: false, status: "setting", note: null, requested_chapter: null, force_next: false,
+      episodes_done: 0, episodes_started: 1, episodes_ready: 0, docs_pending: 1, messages_pending: 1, media_usd: 0, clip_seconds: 0, created_at: "2026-09-27T00:00:00Z", updated_at: "2026-09-27T01:00:00Z",
+      docs: [bible], episodes: [],
+    };
+    const line = { id: "m1", subject: "bible", author: "owner", body_md: "第二幕為什麼要死一個人？", refers_to: "v1", answered_at: null, created_at: "2026-09-27T02:30:00Z", created_by_user_id: "u1" };
+    const calls: Array<{ url: string; method: string; body?: unknown }> = [];
+    let approved = false;
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      const method = init?.method ?? "GET";
+      calls.push({ url, method, body: init?.body ? JSON.parse(String(init.body)) : undefined });
+      if (method === "POST") { approved = true; return Promise.resolve(Response.json({ ...bible, status: "approved", decided_at: "2026-09-27T06:00:00Z" })); }
+      if (url.includes("/messages?subject=bible")) return Promise.resolve(Response.json({ messages: [line] }));
+      if (url.includes("/messages?subject=")) return Promise.resolve(Response.json({ messages: [] }));
+      if (url.endsWith("/admin/video-automation/series/one-off-1a2b3c4d")) return Promise.resolve(Response.json({ ...series, docs: [{ ...bible, status: approved ? "approved" : "review" }] }));
+      return Promise.resolve(Response.json({ ...summary, title: "精衛填海", format: "drama", series_slug: "one-off-1a2b3c4d", episode_number: 1, reviews: [script] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    const panel = (await screen.findByText("故事聖經")).closest("details") as HTMLElement;
+    // The bible comes first on the page, the gate cards after it.
+    expect(panel.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(panel.textContent).toContain("等你決定");
+    expect(panel.textContent).toContain("第 1 版");
+    const thread = within(panel).getByRole("region", { name: "討論" });
+    await waitFor(() => expect(thread.textContent).toContain("第二幕為什麼要死一個人？"));
+    // The panel's summary pill (from the server's count), the thread header's, and the unanswered line's.
+    expect(within(panel).getAllByText("等模型回覆")).toHaveLength(3);
+    expect(within(panel).getByRole("textbox", { name: "給模型的話" })).toBeTruthy();
+    // The script card's thread is the episode's own subject.
+    expect(calls.some((call) => call.url.endsWith("/series/one-off-1a2b3c4d/messages?subject=script%3A1"))).toBe(true);
+
+    fireEvent.click(within(panel).getByRole("button", { name: "核准" }));
+    await waitFor(() => expect(calls.some((call) => call.method === "POST")).toBe(true));
+    const postIndex = calls.findIndex((call) => call.method === "POST");
+    const post = calls[postIndex];
+    expect(post?.url).toContain("/admin/video-automation/series/one-off-1a2b3c4d/docs/bible/decision");
+    expect(post?.body).toEqual({ decision: "approve" });
+    // The panel reads its series again and shows the approved bible, whose thread stays as a record;
+    // the video page reloads too, so the episode's gates follow the approval.
+    await waitFor(() => expect(within(panel.querySelector("summary") as HTMLElement).getByText("已核准")).toBeTruthy());
+    await waitFor(() => expect(within(panel).getByRole("region", { name: "討論" }).textContent).toContain("只留紀錄"));
+    expect(within(panel).queryByRole("textbox", { name: "給模型的話" })).toBeNull();
+    expect(within(panel).queryByRole("button", { name: "核准" })).toBeNull();
+    expect(calls.slice(postIndex + 1).some((call) => call.method === "GET" && call.url.endsWith("/admin/videos/ai-model-choice"))).toBe(true);
+  });
+
+  it("knows a one-off by its series' kind, so an owner-named one-off gets its bible on the episode page too", async () => {
+    const script = {
+      id: "55555555-5555-4555-8555-555555555555", gate: "script", content_sha256: "9".repeat(64), summary: "劇本 1 場", payload: { minutes: 2, scenes: [] },
+      files: [], status: "pending", choice: null, note: null, decided_at: null, created_at: "2026-09-27T05:00:00Z",
+    };
+    const bible = { id: "b1", kind: "bible", chapter_number: 0, version: 1, body_md: "# 故事聖經\n精衛。", body_json: {}, status: "review", note: null, decided_at: null, created_at: "2026-09-27T02:00:00Z", unanswered: 0 };
+    const series = {
+      id: "7c2e3d4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f", slug: "jingwei", kind: "one-off", title: "精衛填海", premise: "炎帝最小的女兒在東海溺水。", aspects: [], tone: "no-romance", style_preset: "ink-wash",
+      target_minutes: 2, planned_episodes: 1, episodes_per_chapter: 1, chapters: 1, open_ended: false, status: "setting", note: null, requested_chapter: null, force_next: false,
+      episodes_done: 0, episodes_started: 1, episodes_ready: 0, docs_pending: 1, messages_pending: 0, media_usd: 0, clip_seconds: 0, created_at: "2026-09-27T00:00:00Z", updated_at: "2026-09-27T01:00:00Z",
+      episodes: [],
+    };
+    let written = true;
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      calls.push(url);
+      if (url.includes("/messages?subject=")) return Promise.resolve(Response.json({ messages: [] }));
+      if (url.endsWith("/admin/video-automation/series/jingwei")) return Promise.resolve(Response.json({ ...series, docs: written ? [bible] : [] }));
+      return Promise.resolve(Response.json({ ...summary, title: "精衛填海", format: "drama", series_slug: "jingwei", episode_number: 1, reviews: [script] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    const first = render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const card = await screen.findByRole("article", { name: "劇本" });
+    const panel = (await screen.findByText("故事聖經")).closest("details") as HTMLElement;
+    expect(panel.compareDocumentPosition(card) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(panel.textContent).toContain("等你決定");
+    expect(within(panel).getByRole("button", { name: "核准" })).toBeTruthy();
+    expect(calls.some((url) => url.endsWith("/admin/video-automation/series/jingwei"))).toBe(true);
+    first.unmount();
+
+    // Before the worker has written the bible, the page says so instead of showing nothing.
+    written = false;
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    await screen.findByRole("article", { name: "劇本" });
+    expect(await screen.findByText("工人下一輪會寫故事聖經。")).toBeTruthy();
+    expect(screen.queryByText("故事聖經")).toBeNull();
+  });
+
+  it("keeps an approved screenplay's thread as a record in the history, and gives a rejected one none", async () => {
+    const base = { gate: "script", content_sha256: "9".repeat(64), summary: "劇本 1 場", payload: { minutes: 2, scenes: [] }, files: [], choice: null, created_at: "2026-09-27T05:00:00Z" };
+    const approved = { ...base, id: "55555555-5555-4555-8555-555555555555", status: "approved", note: null, decided_at: "2026-09-27T06:00:00Z" };
+    const rejected = { ...base, id: "66666666-6666-4666-8666-666666666666", content_sha256: "8".repeat(64), status: "rejected", note: "太短", decided_at: "2026-09-27T05:30:00Z", created_at: "2026-09-27T04:00:00Z" };
+    const said = [
+      { id: "m1", subject: "script:1", author: "owner", body_md: "鐘聲太早。", refers_to: "9".repeat(12), answered_at: "2026-09-27T05:10:00Z", created_at: "2026-09-27T05:05:00Z", created_by_user_id: "u1" },
+      { id: "m2", subject: "script:1", author: "writer", body_md: "移到沈瀾開口之後了。", refers_to: "9".repeat(12), answered_at: "2026-09-27T05:10:00Z", created_at: "2026-09-27T05:10:00Z", created_by_user_id: null },
+    ];
+    const calls: string[] = [];
+    vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      calls.push(url);
+      if (url.includes("/messages?subject=")) return Promise.resolve(Response.json({ messages: said }));
+      return Promise.resolve(Response.json({ ...summary, pending: 1, format: "drama", series_slug: "wenjian", episode_number: 1, reviews: [outline, approved, rejected] }));
+    }));
+    window.history.replaceState(null, "", "/?video=ai-model-choice");
+    render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
+    const live = await screen.findByRole("article", { name: "大綱" });
+    expect(within(live).queryByRole("region", { name: "討論" })).toBeNull();
+    fireEvent.click(screen.getByText("過去的決定", { selector: "summary" }));
+    const scripts = screen.getAllByRole("article", { name: "劇本" });
+    expect(scripts).toHaveLength(2);
+    const record = scripts.find((card) => card.textContent?.includes("已核准")) as HTMLElement;
+    const sentBack = scripts.find((card) => card.textContent?.includes("已退回")) as HTMLElement;
+    // The approved screenplay keeps its lines as a record without an input, even for a manager.
+    const thread = await within(record).findByRole("region", { name: "討論" });
+    await waitFor(() => expect(thread.textContent).toContain("移到沈瀾開口之後了。"));
+    expect(thread.textContent).toContain("只留紀錄");
+    expect(within(record).queryByRole("textbox", { name: "給模型的話" })).toBeNull();
+    expect(within(record).queryByRole("button", { name: "送出" })).toBeNull();
+    // The rejected one is superseded by a rewrite the worker discusses on the same subject; it shows no thread.
+    expect(within(sentBack).queryByRole("region", { name: "討論" })).toBeNull();
+    expect(calls.filter((url) => url.includes("/messages?subject="))).toHaveLength(1);
   });
 
   it("marks a dropped video in the list", async () => {

@@ -135,6 +135,12 @@ export function automationClient(ctx, { attempts = 4 } = {}) {
     episodeRecap: (slug, number, body) => request("POST", `automation/series/${slug}/episodes/${number}/recap`, body),
     /** Report the episode cleared for upload, so the next one may start. */
     episodeDone: (slug, number) => request("POST", `automation/series/${slug}/episodes/${number}/done`),
+    // The discussion threads (docs/videos/DRAMA-FLOW.md, section 3): the owner's lines on a
+    // document or a screenplay, answered one per round by the planner or the writer.
+    /** The oldest line waiting for the model, with the thread and the context, or null. */
+    messageNext: async () => (await request("GET", "automation/series/messages/next")).job ?? null,
+    /** The model's reply, and for a document the revised version the owner reads next. */
+    messageAnswer: (id, body) => request("POST", `automation/series/messages/${id}/answer`, body),
     // A binge series' compilation (docs/videos/BINGE.md): started under the video's slug once
     // every episode is cleared for upload, reported done when the compilation is.
     compilationStart: (slug, videoSlug) => request("POST", `automation/series/${slug}/compilation/start`, { slug: videoSlug }),

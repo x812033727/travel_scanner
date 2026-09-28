@@ -119,10 +119,10 @@ export { COMPILATION_STEPS };
 export function stepsFor(doc) {
   if (isCompilation(doc)) return COMPILATION_STEPS;
   if (!isDrama(doc)) return SLIDES_STEPS;
-  // The script gate belongs to an episode of a series (docs/videos/SERIES.md); a one-off drama
-  // keeps the owner's outline pick as its only reading before the sheets. Music is skipped when
+  // Every drama has the script gate (docs/videos/DRAMA-FLOW.md, section 2): the owner reads the
+  // screenplay, and may discuss it, before any image or clip is paid for. Music is skipped when
   // the script has none.
-  return DRAMA_STEPS.filter((id) => (id !== "music generated" || doc.music) && (id !== "script approved" || doc.series));
+  return DRAMA_STEPS.filter((id) => id !== "music generated" || doc.music);
 }
 
 /**
@@ -264,7 +264,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const final = await gate("final");
   const look = drama ? await gate("look") : null;
   const storyboard = drama ? await gate("storyboard") : null;
-  const script = drama && doc?.series ? await gate("script") : null;
+  const script = drama ? await gate("script") : null;
   const timeline = read(ARTIFACTS.timeline);
   const frames = read(ARTIFACTS.frames);
   const checks = read(ARTIFACTS.checks);

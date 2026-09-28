@@ -5,6 +5,9 @@ import zhCommunity from "../messages/zh-TW/community.json" with { type: "json" }
 // No endpoint interception or test authentication bypass. This suite needs the
 // CI/local PostgreSQL, Redis, private MinIO, Mailpit and ordinary RQ worker.
 test.skip(process.env.COMMUNITY_E2E !== "1", "Requires the community companion services");
+// The runner traces every browser context, including the separate administrator.
+// Keep first-failure evidence on local runs too, without starting tracing twice.
+test.use({ trace: "retain-on-failure" });
 
 const siteOrigin = new URL(process.env.PLAYWRIGHT_BASE_URL || `http://127.0.0.1:${process.env.PLAYWRIGHT_PORT || "3000"}`).origin;
 
@@ -197,7 +200,6 @@ test("reviewed pet rules filter conservatively and require confirmation before c
   const admin = await adminContext.newPage();
   admin.setDefaultTimeout(20_000);
   admin.setDefaultNavigationTimeout(45_000);
-  await adminContext.tracing.start({ screenshots: true, snapshots: true });
   try {
     await enableTestCommunity(admin.request);
     const suffix = `${Date.now()}${info.workerIndex}`;
@@ -331,9 +333,8 @@ test("reviewed pet rules filter conservatively and require confirmation before c
     await page.goto(`/zh-TW/community/posts/${postId}`);
     await expect(page.getByRole("link", { name, exact: true })).toHaveAttribute("href", `/zh-TW/pet-friendly/${candidate.id}`);
   } finally {
-    // Preserve the actual failed UI operation, including the secondary admin
-    // page, instead of masking it with teardown errors after the test timeout.
-    await adminContext.tracing.stop({ path: info.outputPath("pet-admin-trace.zip") }).catch(() => {});
+    // Runner-managed tracing preserves the secondary admin page. Do not mask a
+    // failed UI operation with a teardown error after the test timeout.
     await adminContext.close().catch(() => {});
   }
 });
