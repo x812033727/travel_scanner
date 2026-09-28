@@ -40,7 +40,7 @@ repository drafts and translated original illustrations before guarded import.
 - [x] Pin production and repository source versions and claim the pair scope.
 - [x] Author eight target documents and 24 language assets.
 - [x] Run content, asset, SVG-browser, focused tests and task checks.
-- [ ] Open draft PR and record its URL and CI status.
+- [x] Open draft PR and record its URL and CI status.
 
 ## How to verify
 
@@ -62,3 +62,6 @@ the next run passed all 16 assets. Both packs lint with source no-summary and
 advisory long-English-body warnings only. API tests: 12 passed, 5 skipped;
 web tests: 65 passed. Independent editorial review and public browser QA are
 still pending.
+Draft PR: https://github.com/x812033727/travel_scanner/pull/908.
+CI began on the submitted branch; merge remains gated on independent editorial
+review and green checks.
