@@ -47,3 +47,5 @@ npm run test:tools
 ## Notes
 
 `docs/videos/SHORTS.md:205` 刻意讓敲門不受長影片的「啟用」開關影響，但沒提 STOP 檔。
+
+正式站已經看到第一個問題（2026-09-28，部署 `50b3cb55` 之後）：video-worker 15:05:23Z 起來，第一次敲門在 15:05:41Z 因 API 還在啟動而失敗，下一次成功的 `POST /api/v1/video/automation/shorts/tick` 200 是 15:43:36Z，再下一次 15:48:37Z。中間 38 分鐘就是一輪 `auto` 的長度，遠超過 15 分鐘的門檻；當時沒有 Shorts 活動在跑，所以分頁沒有真的誤報。
