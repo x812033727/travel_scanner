@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-measurement-guide-source-links-before
 title: Correct measurement guide source links before localization
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-root
@@ -41,7 +41,7 @@ translating the four missing locales.
 - [x] Pin the seven findings and published-source baseline.
 - [x] Replace only the seven incorrect inline link nodes.
 - [x] Validate pack structure and exact JSON difference.
-- [ ] Open PR and record its URL.
+- [x] Open PR and record its URL.
 
 ## How to verify
 
@@ -59,3 +59,5 @@ Original read-only findings:
 Both AI articles are unrelated to the surrounding GA4/UTM/Search Console use
 of these words, so removing the link is more accurate than substituting an
 unverified destination. See the scoped evidence document for exact hashes.
+Draft PR: https://github.com/x812033727/travel_scanner/pull/902 .
+CI, merge, source-version rebind and publication remain separate checks.
