@@ -53,3 +53,7 @@ node tools/video/cli.mjs status --slug free-vs-paid-ai-plans-2026 --workdir <VID
 - 官方數字都以撰稿當天重查為準，brief 的「會過期的事實」列了每個要重查的網址。
 - 不談 API 價格（那是批次第 1 支）；這支只講訂閱方案。
 - 記憶點：先用滿免費版兩週再決定；卡的地方決定你付哪一家。
+
+## Progress (2026-09-28, claude-opus-5-5)
+
+Pipeline stages 1–4 done: `video.json` (option A, 10 chapters, ~8.1 min, lint 0/0), `claims.md` (c1–c12), `verify-1.md`. Claude and Gemini figures are confirmed on today's official pages. **Blocker before `tts`:** the ChatGPT figures (free tier 3 files a day, Go $8, Plus $20 with Codex, cancellation rules) come from the site article's 2026-09-13 check, because openai.com, chatgpt.com and help.openai.com return 403 from this environment. Recheck them in a browser, or run the independent verifier where OpenAI is reachable, and clear the PENDING rows in `claims.md`. One unverified line (every surface sharing one Claude quota) was replaced with the Pro page's own wording. Lexicon gained `Code`, `Flow`.
