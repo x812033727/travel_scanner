@@ -30,6 +30,12 @@ export const THEMES = Object.freeze({
     id: 'cut', brand: 'MOKAAIR / 長片精華', kicker: '一分鐘重點', footer: '完整影片在說明欄', rows: 'stack', rule: '114px', glow: 'left:-300px;top:700px;width:1000px;height:1000px',
     colors: { background: '#0d1b2e', text: '#eef4ff', muted: '#9db4d6', accent: '#5aa9ff', highlight: '#ffd166', glow: '#1f4f8a60', row: '#15294a', rowBorder: '#3a6fb0', caption: '#07111feb', track: '#203a5e' },
   },
+  // An explainer's Shorts (docs/videos/so-thats-why/look.md): the series' cream, ink navy,
+  // stamp red and mustard, its name in the header, and every card pointing to the long video.
+  'cut:sothatswhy': {
+    id: 'cut-sothatswhy', brand: '原來如此事務所', kicker: '原來如此', footer: '完整版在長片 ▶', rows: 'stack', rule: '114px', glow: 'left:520px;top:-240px;width:860px;height:860px',
+    colors: { background: '#1f2a44', text: '#f6efe3', muted: '#c9bfae', accent: '#d8452f', highlight: '#e8b64c', glow: '#d8452f33', row: '#2a3656', rowBorder: '#e8b64c', caption: '#141b2eeb', track: '#34405e' },
+  },
 });
 
 /** The theme of a script: by series for an experiment, by line otherwise. */
