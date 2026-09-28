@@ -1118,3 +1118,100 @@ async def test_a_file_that_is_not_json_is_refused_before_the_database() -> None:
     report = await import_story_file("{not json", series="stories-test")
     assert report["problems"][0].startswith("the file is not valid JSON")
     assert report["written"] is False and report["create"] == 0
+
+
+@pytest.mark.parametrize("hold", ["not_active", "per_day", "in_flight", "per_month"])
+async def test_story_start_rechecks_hold_after_job_was_advertised(
+    db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch, hold: str
+) -> None:
+    monkeypatch.setattr(service, "_now", lambda: WHEN)
+    await _import(db, _file(), apply=True, episodes_per_day=2)
+    async with db() as session:
+        token = VideoToolToken(name="story-claim", token_hash=uuid4().hex, token_prefix="mkv_s")
+        session.add(token)
+        await session.commit()
+        await service.start_episode(session, token, "stories-test", 1, "story-rolling-case")
+        first = await session.scalar(select(VideoDramaEpisode).where(VideoDramaEpisode.number == 1))
+        assert first is not None
+        first.status = "done"
+        await session.commit()
+        settings = await settings_service.settings_row(session)
+        job = (await service.next_job(session, settings)).job
+        assert job is not None and job.episode is not None and job.episode.number == 2
+        advertised_slug = job.episode.slug
+        assert advertised_slug is not None
+
+    # The GET only advertised a job. The owner can change its conditions before POST start.
+    async with db() as session:
+        series = await service._series(session, "stories-test", lock=True)
+        settings = await settings_service.settings_row(session)
+        if hold == "not_active":
+            series.status = "paused"
+        elif hold == "per_day":
+            series.episodes_per_day = 1
+        elif hold == "in_flight":
+            first = await session.scalar(
+                select(VideoDramaEpisode).where(VideoDramaEpisode.number == 1)
+            )
+            assert first is not None
+            first.status = "started"
+            settings.series_max_in_flight = 1
+        else:
+            settings.series_episodes_per_month = 1
+        await session.commit()
+
+    async with db() as session:
+        view = await service.series_view(session, "stories-test")
+        assert view.quota is not None and view.quota.hold == hold
+        with pytest.raises(service.SeriesRefused) as refused:
+            await service.start_episode(session, token, "stories-test", 2, advertised_slug)
+        assert (refused.value.status, refused.value.code) == (409, "video_series_story_held")
+        assert await session.scalar(select(func.count()).select_from(VideoDramaRequest)) == 1
+        second = await session.scalar(
+            select(VideoDramaEpisode).where(VideoDramaEpisode.number == 2)
+        )
+        assert second is not None and second.status == "ready" and second.request_id is None
+
+
+async def test_story_start_preserves_allowed_start_and_same_episode_retry_guard(
+    db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "_now", lambda: WHEN)
+    await _import(db, _file(), apply=True, episodes_per_day=1)
+    async with db() as session:
+        token = VideoToolToken(name="story-claim", token_hash=uuid4().hex, token_prefix="mkv_s")
+        session.add(token)
+        await session.commit()
+        started = await service.start_episode(
+            session, token, "stories-test", 1, "story-rolling-case"
+        )
+        assert started.episode.status == "started"
+        with pytest.raises(service.SeriesRefused) as refused:
+            await service.start_episode(session, token, "stories-test", 1, "story-rolling-case")
+        assert (refused.value.status, refused.value.code) == (
+            409,
+            "video_series_episode_not_ready",
+        )
+        assert await session.scalar(select(func.count()).select_from(VideoDramaRequest)) == 1
+
+
+@pytest.mark.parametrize("kind", ["series", "one-off"])
+async def test_story_start_guard_does_not_change_other_kinds(
+    db: async_sessionmaker[AsyncSession], monkeypatch: pytest.MonkeyPatch, kind: str
+) -> None:
+    series = _series(kind=kind, target_minutes=5, image_model=None, look=None)
+    episode = _episode(1)
+    episode.series_id = series.id
+    token = VideoToolToken(name="non-story", token_hash=uuid4().hex, token_prefix="mkv_s")
+    quota = AsyncMock(side_effect=AssertionError("story limits must not affect other kinds"))
+    monkeypatch.setattr(service, "_story_quota", quota)
+    async with db() as session:
+        session.add_all([series, token])
+        await session.flush()
+        session.add(episode)
+        await session.commit()
+    async with db() as session:
+        started = await service.start_episode(session, token, series.slug, 1, "non-story-episode")
+        assert started.episode.status == "started"
+        assert started.request.target_minutes == 5
+        quota.assert_not_awaited()
