@@ -2,7 +2,6 @@
   "schema_version": 1,
   "slug": "always-on-agent-explained",
   "format": "slides",
-  "narration_locale": "en",
   "target_minutes": [
     8,
     12
@@ -10,32 +9,36 @@
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "Relaxed, conversational tech explainer talking to a friend, in clear, natural English. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
   },
   "youtube": {
     "category_id": 28,
     "made_for_kids": false,
-    "default_language": "en",
-    "title": "Chatbots Are Over. Here's How an AI Agent Actually Works (and Fails).",
-    "description": "What actually happens between 'just handle it' and the result? This video records one real AI agent run, step by step, and turns it into the five moves that make an agent different from a chatbot, then shows where agents still fail by the makers' own numbers.\n\nThe run is a coding agent asked to read three official pricing pages and write a table; every tool call, the one page that refused, and the file it wrote are shown as they happened on 2026-09-28. The computer-use score on screen is Anthropic's own for Claude Opus 5.5; OpenAI's own GPT-6 Astra page is linked below. Reports about OpenAI's next assistant are labelled as reports.\n\nRecorded 2026-09-28.",
+    "default_language": "zh-TW",
+    "title": "聊天機器人時代結束了：AI 代理（AI Agent）實際怎麼運作、又怎麼失敗",
+    "description": "從一句「幫我處理好」到拿到結果，中間到底發生了什麼？這支影片把一次真實的 AI 代理執行一步一步記錄下來，整理成讓代理有別於聊天機器人的五個動作，再用廠商自己公布的數字，看看代理還會在哪裡失敗。\n\n這次執行，是請一個程式開發代理讀三個官方定價頁，再寫成一張表；每一次工具呼叫、那一個拒絕存取的網頁，還有它寫出的檔案，都照 2026 年 9 月 28 日當天的實際過程呈現。畫面上的電腦操作分數，是 Anthropic 自己為 Claude Opus 5.5 公布的；OpenAI 自己的 GPT-6 Astra 頁面連結放在下方。關於 OpenAI 下一款助理的消息，影片中都標明是報導。\n\n錄製日期：2026 年 9 月 28 日。",
     "tags": [
-      "AI agents explained",
-      "what is an AI agent",
-      "AI agent vs chatbot",
-      "computer use AI",
-      "always-on AI assistant",
+      "AI 代理",
+      "AI Agent",
+      "AI 代理是什麼",
+      "聊天機器人",
+      "AI 代理與聊天機器人的差別",
+      "AI 操作電腦",
+      "常駐 AI 助理",
       "Claude Code",
       "OpenAI DevDay",
-      "AI agents"
+      "Claude Opus 5.5",
+      "GPT-6 Astra",
+      "OSWorld"
     ],
     "video_id": null
   },
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "tag": "AGENTS, EXPLAINED",
-      "headline": "CHATBOT vs **AGENT**",
-      "sub": "one real run, five moves"
+      "tag": "AI 代理一次看懂",
+      "headline": "聊天機器人 vs **代理**",
+      "sub": "一次真實執行，五個動作"
     }
   },
   "sources": [
@@ -78,74 +81,74 @@
   "scenes": [
     {
       "id": "hook",
-      "chapter": "What an agent is, in one sentence",
+      "chapter": "AI 代理是什麼？一句話講清楚",
       "template": "title",
       "data": {
-        "tag": "AGENTS, EXPLAINED",
-        "title": "Chatbots are over. Here's how an **agent** actually works",
-        "subtitle": "One real run, five moves, and the tasks that still fail"
+        "tag": "AI 代理一次看懂",
+        "title": "聊天機器人時代結束了：**AI 代理**到底怎麼運作",
+        "subtitle": "一次真實執行、五個動作，還有仍會失敗的任務"
       },
       "lines": [
         {
           "id": "hx5y",
-          "text": "Every AI company is now selling you an agent. Next, they want to sell you one that never logs off."
+          "text": "現在每家 AI 公司都在賣你 AI 代理。下一步，要賣你永遠不下線的。"
         },
         {
           "id": "prkk",
-          "text": "Most explanations stop at one line: it can use tools. That tells you nothing about what happens after you press enter."
+          "text": "多數解釋只講一句：它會用工具。但按下 Enter 之後發生什麼，完全沒說。"
         },
         {
           "id": "7iga",
-          "text": "So I gave one agent a boring task and recorded every step. I'll show you the five moves that turn a chatbot into an agent."
+          "text": "所以我給代理一件無聊的事，全程錄下來。聊天機器人怎麼變成代理，帶你看這五個動作。"
         },
         {
           "id": "bdiv",
-          "text": "Plus the tasks that still go wrong, by the makers' own numbers, and what to do about it."
+          "text": "還有，照廠商自己的數字，哪些任務還會出錯，又該怎麼辦。"
         }
       ]
     },
     {
       "id": "difference",
-      "chapter": "Chatbot versus agent",
+      "chapter": "AI 代理和聊天機器人差在哪",
       "template": "compare",
       "data": {
-        "title": "The one-sentence difference",
+        "title": "一句話講差別",
         "left": {
-          "heading": "A chatbot",
+          "heading": "聊天機器人",
           "points": [
-            "Text in, text out",
-            "One turn, then it waits",
-            "Touches nothing"
+            "文字進、文字出",
+            "一個回合，然後等著",
+            "什麼都不碰"
           ]
         },
         "right": {
-          "heading": "An agent",
+          "heading": "AI 代理",
           "points": [
-            "A goal, not a question",
-            "Tools it can call",
-            "A loop: act, look, act again",
-            "A rule for when to stop"
+            "一個目標，不是一個問題",
+            "能呼叫的工具",
+            "迴圈：行動、觀察、再行動",
+            "何時該停的規則"
           ]
         }
       },
       "lines": [
         {
           "id": "hpt2",
-          "text": "Here's the one-sentence difference. A chatbot turns your text into text and waits. An agent takes a goal and works until it's done."
+          "text": "一句話講差別。聊天機器人把你的文字變成文字，然後等著；代理呢，接下目標，就一路做到完成。"
         },
         {
           "id": "db9w",
-          "text": "On the left, a chatbot: text in, text out, one turn, and it touches nothing outside the chat.",
+          "text": "左邊是聊天機器人：文字進、文字出，一個回合，對話以外的東西一概不碰。",
           "reveal": 1
         },
         {
           "id": "p7nm",
-          "text": "On the right, an agent: a goal, tools it can call, a loop of act, look, act again, and a rule for when to stop.",
+          "text": "右邊是代理：一個目標、能呼叫的工具，一個行動、觀察、再行動的迴圈，還有什麼時候該停的規則。",
           "reveal": 1
         },
         {
           "id": "qvb8",
-          "text": "Everything that makes agents useful, and everything that makes them dangerous, lives in that loop."
+          "text": "讓代理有用的一切，和讓它危險的一切，全都在這個迴圈裡。"
         }
       ]
     },
@@ -153,37 +156,37 @@
       "id": "three-words",
       "template": "big",
       "data": {
-        "kicker": "Remember three words",
-        "text": "goal + tools + loop",
-        "sub": "and a fourth: stop"
+        "kicker": "記住三個詞",
+        "text": "目標 + 工具 + 迴圈",
+        "sub": "再加第四個：停止"
       },
       "lines": [
         {
           "id": "agxs",
-          "text": "Goal, tools, loop. If you remember three words from this video, make it those three."
+          "text": "目標、工具、迴圈。如果這支影片你只記得住三個詞，就記這三個。"
         },
         {
           "id": "vaxb",
-          "text": "And a fourth, if you have room: stop. An agent without a clear stop rule keeps going. That's how you get last week's headlines."
+          "text": "還記得住的話，再加第四個：停止。停止規則不清楚，代理就會一直做下去，上週的頭條就是這樣來的。"
         }
       ]
     },
     {
       "id": "task",
-      "chapter": "A real run, step by step",
+      "chapter": "實際跑一次，一步一步拆解",
       "template": "chat",
       "data": {
-        "title": "The task we gave it",
+        "title": "我們交給它的任務",
         "messages": [
           {
             "side": "left",
-            "name": "Owner",
-            "text": "Find three official prices, write a table."
+            "name": "我們",
+            "text": "找出三個官方價格，寫成一張表。"
           },
           {
             "side": "right",
-            "name": "Agent",
-            "text": "I'll fetch each of the three pages."
+            "name": "AI 代理",
+            "text": "我會逐一抓取這三個網頁。"
           }
         ]
       },
@@ -193,16 +196,16 @@
       "lines": [
         {
           "id": "eyuh",
-          "text": "Now the real run. We gave a coding agent a small job with a checkable result: find three official model prices and write a table."
+          "text": "來看實測。我們給寫程式的代理一件能查核的小工作：找出三個模型的官方價格，寫成表格。"
         },
         {
           "id": "uf2w",
-          "text": "We named the three pages it could read. We told it to leave blank any cell it couldn't read, and never to guess a number.",
+          "text": "我們指定了它能讀的三個網頁，也交代它：讀不到的欄位就留白，絕對不要猜數字。",
           "reveal": 1
         },
         {
           "id": "6gvp",
-          "text": "It answered with its plan in one line: I'll fetch each of the three pages. That's move one: the goal becomes a plan.",
+          "text": "它先用一句話交代計畫：我會逐一抓取這三個網頁。這就是動作一：目標變成計畫。",
           "reveal": 1
         }
       ]
@@ -211,27 +214,27 @@
       "id": "moves",
       "template": "steps",
       "data": {
-        "title": "Five moves, one run",
+        "title": "一次執行，五個動作",
         "steps": [
           {
-            "title": "1 Plan",
-            "detail": "The goal becomes steps"
+            "title": "1 規劃",
+            "detail": "目標變成步驟"
           },
           {
-            "title": "2 Call a tool",
-            "detail": "Three fetches, three pages"
+            "title": "2 呼叫工具",
+            "detail": "抓取三次，三個網頁"
           },
           {
-            "title": "3 Observe",
-            "detail": "Two answers, one 403 error"
+            "title": "3 觀察",
+            "detail": "兩個有回應，一個 403 錯誤"
           },
           {
-            "title": "4 Act on it",
-            "detail": "Writes the table, blanks the failed one"
+            "title": "4 依結果行動",
+            "detail": "寫好表格，失敗的留白"
           },
           {
-            "title": "5 Stop and report",
-            "detail": "What it did, what it could not"
+            "title": "5 停下來回報",
+            "detail": "做了什麼、哪些做不到"
           }
         ]
       },
@@ -241,24 +244,22 @@
       "lines": [
         {
           "id": "6ifa",
-          "text": "Move one, plan. Move two, call a tool: it fetched all three pages we had named.",
+          "text": "動作一，規劃。動作二，呼叫工具：我們指定的三個網頁，它都去抓了。",
           "reveal": 2
         },
         {
           "id": "zdw7",
-          "text": "Move three, observe. Two pages answered with prices. The third refused with a 403 error, access forbidden.",
-          "reveal": 1,
-          "say": "Move three, observe. Two pages answered with prices. The third refused with a four oh three error, access forbidden.",
-          "say_for": "8e03daddd0b1"
+          "text": "動作三，觀察。兩個網頁回傳了價格，第三個拒絕了，回的是 403 錯誤，也就是禁止存取。",
+          "reveal": 1
         },
         {
           "id": "n96a",
-          "text": "Move four, act on what it saw. It wrote the table and left the failed model's cells blank, exactly as told.",
+          "text": "動作四，根據看到的結果行動。它寫好表格，把失敗那個模型的欄位留白，完全照我們說的做。",
           "reveal": 1
         },
         {
           "id": "9e9d",
-          "text": "Move five, stop and report: two sentences, what it did and what it couldn't do. Five turns, twenty two seconds.",
+          "text": "動作五，停下來回報：用兩句話說做了什麼、哪些做不到。5 個回合，22 秒。",
           "reveal": 1
         }
       ]
@@ -267,37 +268,37 @@
       "id": "result",
       "template": "table",
       "data": {
-        "title": "The file it wrote",
+        "title": "它寫出的檔案",
         "columns": [
-          "Model",
-          "Input / M",
-          "Output / M",
-          "Source"
+          "模型",
+          "輸入／百萬",
+          "輸出／百萬",
+          "來源"
         ],
         "rows": [
           [
             "Claude Opus 5.5",
             "$4",
             "$20",
-            "Anthropic's page"
+            "Anthropic 官網"
           ],
           [
             "GPT-6 Astra",
             "—",
             "—",
-            "403, not read"
+            "403，讀不到"
           ],
           [
-            "Grok 4.7, under 200k",
+            "Grok 4.7，未滿 200k",
             "$2.00",
             "$6.00",
-            "xAI docs"
+            "xAI 文件"
           ],
           [
-            "Grok 4.7, 200k and over",
+            "Grok 4.7，200k 以上",
             "$4.00",
             "$12.00",
-            "xAI docs"
+            "xAI 文件"
           ]
         ],
         "highlight": 1
@@ -311,11 +312,11 @@
       "lines": [
         {
           "id": "qpg5",
-          "text": "Here's the file. Three rows filled, each with the page its numbers came from. One row honest about being empty."
+          "text": "這就是那個檔案。有三列填好了，每列都寫了數字出自哪個網頁；還有一列，老老實實空著。"
         },
         {
           "id": "6zh7",
-          "text": "That empty row is the most important thing in the file. An agent that guesses when a page fails is an agent you can't use."
+          "text": "那一列空白，是整個檔案最重要的地方。網頁一讀不到就亂猜的代理，你根本沒辦法用。"
         }
       ]
     },
@@ -323,17 +324,17 @@
       "id": "report",
       "template": "chat",
       "data": {
-        "title": "Its final report",
+        "title": "它最後的回報",
         "messages": [
           {
             "side": "right",
-            "name": "Agent",
-            "text": "I fetched two pages and wrote their prices."
+            "name": "AI 代理",
+            "text": "我成功抓了兩個網頁，也寫下了它們的價格。"
           },
           {
             "side": "right",
-            "name": "Agent",
-            "text": "The third page said 403. I left it blank."
+            "name": "AI 代理",
+            "text": "第三個網頁回了 403，所以我留白。"
           }
         ]
       },
@@ -344,17 +345,17 @@
       "lines": [
         {
           "id": "5dmh",
-          "text": "Then it stopped and reported, in the two sentences we asked for: what it did, and what it couldn't do.",
+          "text": "然後它停下來，照我們要求的，用兩句話回報：做了什麼，還有什麼沒做到。",
           "reveal": 1
         },
         {
           "id": "2ph2",
-          "text": "Look for that second sentence in any agent you use. In plain words: the page refused, so I left it blank, rather than guessing.",
+          "text": "不管你用哪個代理，都要找這第二句。白話講就是：網頁拒絕了，所以我留白，而不是用猜的。",
           "reveal": 1
         },
         {
           "id": "v3m4",
-          "text": "A good agent tells you where it hit a wall. A bad one paints over the wall and hands you a clean-looking file."
+          "text": "好的代理會告訴你，它在哪裡碰壁；差的會把碰壁的地方塗掉，交給你一份看起來很乾淨的檔案。"
         }
       ]
     },
@@ -362,27 +363,27 @@
       "id": "run-numbers",
       "template": "stats",
       "data": {
-        "title": "The whole run, in numbers",
+        "title": "整次執行的數字",
         "stats": [
           {
             "value": "5",
-            "label": "turns"
+            "label": "回合"
           },
           {
             "value": "3",
-            "label": "pages fetched",
-            "note": "one refused"
+            "label": "抓取的網頁",
+            "note": "其中 1 個被拒"
           },
           {
             "value": "1",
-            "label": "file written"
+            "label": "寫出的檔案"
           },
           {
-            "value": "22 s",
-            "label": "start to finish"
+            "value": "22 秒",
+            "label": "從頭到尾"
           }
         ],
-        "source": "Recorded 2026-09-28 with two tools allowed: one to fetch pages, one to write files"
+        "source": "2026-09-28 錄製，只開放兩個工具：一個抓網頁，一個寫檔案"
       },
       "claims": [
         "c1"
@@ -390,12 +391,12 @@
       "lines": [
         {
           "id": "6wdb",
-          "text": "The whole run in numbers: five turns, three pages fetched, one of them refused, one file written, twenty two seconds.",
+          "text": "整次執行的數字：5 個回合，抓了 3 個網頁、其中 1 個被拒，寫出 1 個檔案，總共 22 秒。",
           "reveal": 4
         },
         {
           "id": "q439",
-          "text": "Nothing here is magic. It's a loop that calls tools and looks at what comes back, and you can read every step of it."
+          "text": "這裡沒有魔法。它就是一個迴圈：呼叫工具、看回傳的結果，而且每一步你都讀得到。"
         }
       ]
     },
@@ -403,11 +404,11 @@
       "id": "shows",
       "template": "bullets",
       "data": {
-        "title": "What the run shows",
+        "title": "這次執行說明了什麼",
         "items": [
-          "Every tool call is visible: you can read the trail",
-          "A failure became a blank cell, not an invented number",
-          "The receipt is the file, not the chat"
+          "每次工具呼叫都看得到：你讀得到軌跡",
+          "失敗變成空白欄位，而不是編出來的數字",
+          "收據是檔案，不是對話"
         ]
       },
       "claims": [
@@ -416,44 +417,44 @@
       "lines": [
         {
           "id": "fuue",
-          "text": "Three things this small run shows."
+          "text": "這次小小的執行，說明了三件事。"
         },
         {
           "id": "7bmr",
-          "text": "First, every tool call is visible. Agents leave a trail, and you can read it.",
+          "text": "第一，每一次工具呼叫都看得到。代理會留下軌跡，你可以回頭去讀。",
           "reveal": 1
         },
         {
           "id": "dduj",
-          "text": "Second, a failure became a blank cell, not an invented number, because we said so up front.",
+          "text": "第二，失敗變成了空白欄位，而不是編出來的數字，因為我們事先就講好了。",
           "reveal": 1
         },
         {
           "id": "ajex",
-          "text": "Third, the receipt is the file, not the chat. The chat says what happened; the file is what happened.",
+          "text": "第三，收據是檔案，不是對話。對話告訴你發生了什麼，檔案才是真正發生的事。",
           "reveal": 1
         }
       ]
     },
     {
       "id": "fail",
-      "chapter": "Where agents still fail: the makers' own numbers",
+      "chapter": "AI 代理還會在哪裡失敗：廠商自己的數字",
       "template": "stats",
       "data": {
-        "title": "Computer-use scores the labs publish",
+        "title": "各家實驗室公布的電腦操作分數",
         "stats": [
           {
             "value": "81.8%",
-            "label": "Claude Opus 5.5 on OSWorld 2.0",
-            "note": "partial credit, as Anthropic reports it"
+            "label": "Claude Opus 5.5 的 OSWorld 2.0 成績",
+            "note": "部分給分，Anthropic 公布的數字"
           },
           {
-            "value": "≈ 1 in 5",
-            "label": "tasks not fully completed",
-            "note": "at that score"
+            "value": "≈ 1/5",
+            "label": "任務沒有完全做完",
+            "note": "以這個分數來看"
           }
         ],
-        "source": "anthropic.com, 2026-09-22; OpenAI's GPT-6 Astra page is in the description"
+        "source": "anthropic.com，2026-09-22；OpenAI 的 GPT-6 Astra 頁面連結在說明欄"
       },
       "claims": [
         "c2",
@@ -462,16 +463,16 @@
       "lines": [
         {
           "id": "gxyd",
-          "text": "Now the uncomfortable part. The labs publish how often their agents finish tasks on a real computer, on a benchmark called OSWorld."
+          "text": "再來是不太舒服的部分。各家實驗室會用 OSWorld 基準測試，公布代理在真實電腦上完成任務的比例。"
         },
         {
           "id": "73y9",
-          "text": "Anthropic reports 81.8 percent for Claude Opus 5.5, with partial credit. Read it the other way: about one task in five is not fully done.",
+          "text": "Anthropic 公布，Claude Opus 5.5 拿到 81.8%，部分給分。反過來看，大約每 5 個任務，就有 1 個沒完全做完。",
           "reveal": 2
         },
         {
           "id": "u5vx",
-          "text": "For GPT-6 Astra, OpenAI's own launch page is linked in the description. Read its computer-use claim there and compare."
+          "text": "至於 GPT-6 Astra，OpenAI 自己的發表頁面連結在說明欄。它怎麼講電腦操作，你去那裡看，再自己比較。"
         }
       ]
     },
@@ -479,52 +480,52 @@
       "id": "shapes",
       "template": "bullets",
       "data": {
-        "title": "Four ways a task goes wrong",
+        "title": "任務出錯的四種樣子",
         "items": [
-          "Wrong page or stale data",
-          "Half finished, reported as done",
-          "A confident wrong number",
-          "Something you never asked for"
+          "讀錯網頁，或資料過時",
+          "只做一半，卻回報完成",
+          "信心滿滿的錯誤數字",
+          "做了你沒要求的事"
         ]
       },
       "lines": [
         {
           "id": "rcus",
-          "text": "When a task fails, it fails in one of four shapes."
+          "text": "任務失敗的時候，不外乎這四種樣子。"
         },
         {
           "id": "y342",
-          "text": "It reads the wrong page, or stale data.",
+          "text": "讀錯網頁，或是讀到過時的資料。",
           "reveal": 1
         },
         {
           "id": "ar7d",
-          "text": "It finishes half the job and reports it as done.",
+          "text": "只做了一半，卻回報說做完了。",
           "reveal": 1
         },
         {
           "id": "sfmt",
-          "text": "It produces a confident wrong number.",
+          "text": "信心滿滿地給出一個錯的數字。",
           "reveal": 1
         },
         {
           "id": "gb65",
-          "text": "Or it does something you never asked for, which is the shape that made the news last week.",
+          "text": "或是做了你根本沒要求的事，上週上新聞的就是這一種。",
           "reveal": 1
         }
       ]
     },
     {
       "id": "always-on",
-      "chapter": "Always-on: what the labs are building next",
+      "chapter": "常駐型 AI 代理：各家實驗室的下一步",
       "template": "bullets",
       "data": {
-        "title": "What changes when it never logs off",
+        "title": "永遠不下線，會改變什麼",
         "items": [
-          "It acts while you are away",
-          "It keeps state across chats",
-          "It runs in the background under the operating system's control, NVIDIA says of the new Windows agent framework",
-          "A persistent OpenAI assistant: reported, not announced, as we record"
+          "你不在時，它照樣行動",
+          "它會跨對話保留狀態",
+          "NVIDIA 表示，新的 Windows 代理框架讓代理在背景執行，受作業系統控管",
+          "OpenAI 的常駐助理：錄影時只是報導，還沒有正式宣布"
         ]
       },
       "claims": [
@@ -534,31 +535,31 @@
       "lines": [
         {
           "id": "sy22",
-          "text": "Now, the next step everyone's building: agents that keep working after you close the window."
+          "text": "再來，是大家都在打造的下一步：你關掉視窗之後，還會繼續工作的代理。"
         },
         {
           "id": "zf6x",
-          "text": "It acts while you're away, so nobody's watching the loop.",
+          "text": "你不在的時候，它照樣行動，所以沒有人盯著這個迴圈。",
           "reveal": 1
         },
         {
           "id": "6fh3",
-          "text": "It keeps state across chats, so a mistake in Monday's task can shape Friday's.",
+          "text": "它會在不同對話之間保留狀態，所以週一任務的一個錯，可能影響到週五的任務。",
           "reveal": 1
         },
         {
           "id": "txqe",
-          "text": "NVIDIA says the new Windows agent framework, part of its work with Microsoft, runs such agents in the background, under the operating system's control.",
+          "text": "NVIDIA 表示，在它和微軟的合作裡，新的 Windows 代理框架，能讓這類代理在背景執行，由作業系統控管。",
           "reveal": 1
         },
         {
           "id": "xc6d",
-          "text": "OpenAI is widely reported to be building a persistent assistant of its own. As we record, that is a report, not an announcement.",
+          "text": "許多媒體報導，OpenAI 也在打造自己的常駐助理。在我們錄影的時候，這只是報導，還沒有正式宣布。",
           "reveal": 1
         },
         {
           "id": "xc5x",
-          "text": "Whatever ships, the shape is the same: goal, tools, loop, and now a loop with no one in the room."
+          "text": "不管最後推出什麼，樣子都一樣：目標、工具、迴圈，只是這個迴圈，現在沒有人在場。"
         }
       ]
     },
@@ -566,56 +567,56 @@
       "id": "walls-cta",
       "template": "cta",
       "data": {
-        "kicker": "Last video",
-        "title": "The three walls that keep an agent in its box",
-        "sub": "Tools, network, secrets"
+        "kicker": "上一支影片",
+        "title": "把代理關在框框裡的三道牆",
+        "sub": "工具、網路、機密"
       },
       "lines": [
         {
           "id": "7w3r",
-          "text": "If that worries you, good. Last video was about the three walls that keep an agent in its box: tools, network, secrets. Watch it next."
+          "text": "會擔心嗎？那很好。上一支影片講的，就是把代理關在框裡的三道牆：工具、網路、機密。接著就去看它。"
         }
       ]
     },
     {
       "id": "questions",
-      "chapter": "Three questions before you hand it a task",
+      "chapter": "交辦任務給 AI 前，先問三個問題",
       "template": "steps",
       "data": {
-        "title": "Ask before you delegate",
+        "title": "交辦任務之前，先問清楚",
         "steps": [
           {
-            "title": "What is the evidence?",
-            "detail": "A file, a diff, a booking reference. Not a summary"
+            "title": "證據是什麼？",
+            "detail": "檔案、diff、訂位代號，而不是摘要"
           },
           {
-            "title": "What can it touch?",
-            "detail": "Tools, sites and secrets in reach while you are away"
+            "title": "它碰得到什麼？",
+            "detail": "你不在時，它碰得到的工具、網站和機密"
           },
           {
-            "title": "What does a wrong answer cost?",
-            "detail": "Cheap to check, or expensive to undo?"
+            "title": "答錯的代價多大？",
+            "detail": "查起來便宜，還是挽回很貴？"
           }
         ]
       },
       "lines": [
         {
           "id": "8j97",
-          "text": "So here are the three questions to ask before you hand an agent a task."
+          "text": "所以，把任務交給代理之前，先問這三個問題。"
         },
         {
           "id": "wppa",
-          "text": "One, what evidence will I get that it finished? A file, a diff, a booking reference. A summary is not evidence.",
+          "text": "第一，我會拿到什麼證據，證明它做完了？一個檔案、一份 diff、一個訂位代號。摘要不算證據。",
           "reveal": 1
         },
         {
           "id": "wvpe",
-          "text": "Two, what can it touch while I'm not watching? Tools, sites, secrets. If the answer is everything, stop.",
+          "text": "第二，我沒在看的時候，它碰得到什麼？工具、網站、機密。如果答案是全部，就先停下來。",
           "reveal": 1
         },
         {
           "id": "dujd",
-          "text": "Three, what does a wrong answer cost me? A blank cell is cheap. A wrong booking or a deleted folder is not.",
+          "text": "第三，答錯的話，我要付多少代價？一個空白欄位很便宜，訂錯位子、刪掉資料夾，就不便宜了。",
           "reveal": 1
         }
       ]
@@ -624,62 +625,62 @@
       "id": "delegation",
       "template": "chat",
       "data": {
-        "title": "Bad ask, good ask",
+        "title": "不好的交辦、好的交辦",
         "messages": [
           {
             "side": "left",
-            "name": "Bad ask",
-            "text": "Book me a table for Friday."
+            "name": "不好的交辦",
+            "text": "幫我訂週五的位子。"
           },
           {
             "side": "right",
-            "name": "Good ask",
-            "text": "List three options. Don't book anything."
+            "name": "好的交辦",
+            "text": "列出三個選項，什麼都不要訂。"
           }
         ]
       },
       "lines": [
         {
           "id": "qpj7",
-          "text": "Same errand, two ways to ask."
+          "text": "同一件差事，兩種交辦方式。"
         },
         {
           "id": "s6m4",
-          "text": "Book me a table for Friday. That hands over money and a decision, with no evidence until the confirmation lands.",
+          "text": "「幫我訂週五的位子。」這樣等於把錢和決定都交出去，而且確認信寄來之前，你手上沒有任何證據。",
           "reveal": 1
         },
         {
           "id": "5djs",
-          "text": "List three options and don't book anything. That gives you a checkable list, and keeps the decision with you.",
+          "text": "「列出三個選項，什麼都不要訂。」這樣你會拿到一份能查核的清單，決定權也還在你手上。",
           "reveal": 1
         }
       ]
     },
     {
       "id": "outro",
-      "chapter": "So is the chatbot really over?",
+      "chapter": "聊天機器人的時代真的結束了嗎？",
       "template": "outro",
       "data": {
-        "title": "The chat is now the receipt",
-        "cta": "Read the file, not the summary.",
+        "title": "對話，現在是收據",
+        "cta": "讀檔案，不是讀摘要。",
         "lines": [
-          "Goal, tools, loop, stop",
-          "Ask for evidence, limit reach, price the mistake",
-          "Next: which AI is actually worth paying for"
+          "目標、工具、迴圈、停止",
+          "要證據、限範圍、算清出錯的代價",
+          "下一支：哪個 AI 真正值得付費"
         ]
       },
       "lines": [
         {
           "id": "4nvh",
-          "text": "So is the chatbot over? Not quite. The chat is now the receipt, and the work happens behind it."
+          "text": "所以，聊天機器人的時代結束了嗎？不完全是。對話變成了收據，真正的工作在它背後進行。"
         },
         {
           "id": "5esi",
-          "text": "Your job changed too: from asking good questions to setting good boundaries, and reading the file, not the summary."
+          "text": "你的工作也變了：從問出好問題，變成設好界線，還有，要讀檔案，不是讀摘要。"
         },
         {
           "id": "p8zt",
-          "text": "Next time, we start from the prices this agent found and I'll show you which model is actually worth paying for."
+          "text": "下一支影片，我們從這個代理找到的價格出發，我帶你看哪個模型真正值得付費。"
         }
       ]
     }

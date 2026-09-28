@@ -24,229 +24,229 @@
   },
   "source_hashes": {
     "chapters": {
-      "hook": "97a8f3c8a67a",
-      "difference": "ca3c9197ddf8",
-      "task": "8d5d8200df35",
-      "fail": "9cf6c486a583",
-      "always-on": "b19e9f17d732",
-      "questions": "a84ba022312f",
-      "outro": "991919d8d09d"
+      "hook": "8542519d7e71",
+      "difference": "94b5210eef1e",
+      "task": "c4f767d858a0",
+      "fail": "946c9b4063dd",
+      "always-on": "0fd0dfbd3382",
+      "questions": "75eef60f93ac",
+      "outro": "c0514dd596f6"
     },
-    "title": "25f5dcf7e796",
-    "description": "a69904108cd1",
-    "tags": "fa89cd3c012e"
+    "title": "3ee26f99526d",
+    "description": "27f6202665bb",
+    "tags": "2e2a9c97e9a1"
   },
   "lines": {
     "hx5y": {
-      "source_hash": "a2cf20df483b",
+      "source_hash": "ffc236438880",
       "text": "今やどのAI企業もエージェントを売り込んでいます。次に売りたいのは、決してログオフしないエージェントです。"
     },
     "prkk": {
-      "source_hash": "d98ebfc876d2",
+      "source_hash": "280a6eed0483",
       "text": "たいていの説明は「ツールが使える」の一言で終わります。それでは、Enterキーを押した後に何が起きるのか分かりません。"
     },
     "7iga": {
-      "source_hash": "ba3e0230e26d",
+      "source_hash": "05db810ac737",
       "text": "そこで退屈な作業をエージェントに任せ、一部始終を記録しました。チャットボットをエージェントにする5つのステップを紹介します。"
     },
     "bdiv": {
-      "source_hash": "1f7a6bf3acc2",
+      "source_hash": "d6c68e11e09a",
       "text": "さらに、開発元自身の数字で見る、まだ失敗するタスクと、その対策も紹介します。"
     },
     "hpt2": {
-      "source_hash": "73190b85ca8f",
+      "source_hash": "ab7f65367b08",
       "text": "違いを一文で言うとこうです。チャットボットはテキストを受けてテキストを返し、待ちます。エージェントはゴールを受け取り、終わるまで動きます。"
     },
     "db9w": {
-      "source_hash": "96f7e2ce1f9a",
+      "source_hash": "c58d0ee4367c",
       "text": "左はチャットボット。テキストを入れてテキストが出る、1ターンで終わり、チャットの外には触れません。"
     },
     "p7nm": {
-      "source_hash": "26ae5bfe6034",
+      "source_hash": "d7ce61d28162",
       "text": "右はエージェント。ゴール、呼び出せるツール、「動く・見る・また動く」のループ、そしていつ止まるかのルールです。"
     },
     "qvb8": {
-      "source_hash": "17fd0cde75ed",
+      "source_hash": "af264fc3defb",
       "text": "エージェントを便利にするものも危険にするものも、すべてこのループの中にあります。"
     },
     "agxs": {
-      "source_hash": "16e2dfe11cc9",
+      "source_hash": "20ea214c0e2f",
       "text": "ゴール、ツール、ループ。この動画で3つの言葉を覚えるなら、この3つにしてください。"
     },
     "vaxb": {
-      "source_hash": "2a73ed2e3c92",
+      "source_hash": "fc941f32cb3e",
       "text": "余裕があれば4つ目に「ストップ」も。明確な停止ルールのないエージェントは動き続けます。先週のニュースは、そうして生まれました。"
     },
     "eyuh": {
-      "source_hash": "95a086d8b55d",
+      "source_hash": "387f1c50067d",
       "text": "では実際の実行です。コーディングエージェントに、結果を確かめられる小さな仕事を頼みました。公式のモデル価格を3つ調べて表にする仕事です。"
     },
     "uf2w": {
-      "source_hash": "0b48a6c1f995",
+      "source_hash": "029ba19125ec",
       "text": "読んでよいページは3つ指定しました。読めなかったセルは空欄のままにし、数字は決して推測しないよう伝えました。"
     },
     "6gvp": {
-      "source_hash": "c0918d6537fb",
+      "source_hash": "293ca9e93c25",
       "text": "返ってきた計画は1行でした。「3つのページをそれぞれ取得します」。これがステップ1、ゴールが計画になります。"
     },
     "6ifa": {
-      "source_hash": "b405b7bb8511",
+      "source_hash": "136fb03a5ac9",
       "text": "ステップ1は計画。ステップ2はツール呼び出しで、指定の3ページすべてを取りに行きました。"
     },
     "zdw7": {
-      "source_hash": "8e03daddd0b1",
+      "source_hash": "504c0ad45b81",
       "text": "ステップ3は観察。2つのページは価格を返しましたが、3つ目は403エラー、つまりアクセス拒否でした。"
     },
     "n96a": {
-      "source_hash": "673856bec4de",
+      "source_hash": "54e7d33674e4",
       "text": "ステップ4は、見たものに応じて動くこと。表を書き、失敗したモデルのセルは指示どおり空欄にしました。"
     },
     "9e9d": {
-      "source_hash": "16f303006ae0",
+      "source_hash": "0887f4acd0ee",
       "text": "ステップ5は停止と報告。したことと、できなかったことを2文で伝えました。5ターン、22秒です。"
     },
     "qpg5": {
-      "source_hash": "cec2cab88c0c",
+      "source_hash": "d29f33dfb7cb",
       "text": "これがそのファイルです。3行が埋まり、それぞれに数字の出典ページがあります。1行は、空であることを正直に示しています。"
     },
     "6zh7": {
-      "source_hash": "bdce527f154e",
+      "source_hash": "0fbf82af2a27",
       "text": "この空の行こそ、ファイルで一番大事な部分です。ページの取得に失敗したとき推測で埋めるエージェントは、使い物になりません。"
     },
     "5dmh": {
-      "source_hash": "2c78ce686865",
+      "source_hash": "49ca35163625",
       "text": "そして停止し、頼んだとおり2文で報告しました。したことと、できなかったことです。"
     },
     "2ph2": {
-      "source_hash": "706cff811366",
+      "source_hash": "a0b72bdbd7f5",
       "text": "どんなエージェントを使うときも、この2文目があるか見てください。平たく言えば「ページに拒否されたので、推測せず空欄にしました」です。"
     },
     "v3m4": {
-      "source_hash": "bf1631ce22bc",
+      "source_hash": "e195a9c52d82",
       "text": "良いエージェントは、どこで壁にぶつかったか教えてくれます。悪いほうは壁を塗り隠して、きれいに見えるファイルを渡します。"
     },
     "6wdb": {
-      "source_hash": "8281b4b2ef33",
+      "source_hash": "4a738aa5d69a",
       "text": "実行全体を数字で見ると、5ターン、取得したページ3つ（うち1つは拒否）、書いたファイル1つ、22秒です。"
     },
     "q439": {
-      "source_hash": "d451fb223fd3",
+      "source_hash": "3f50e8676c91",
       "text": "魔法は何もありません。ツールを呼び出し、返ってきたものを見るループで、その一歩一歩を読むことができます。"
     },
     "fuue": {
-      "source_hash": "b64ba548924e",
+      "source_hash": "49d4cd524f88",
       "text": "この小さな実行が示すことは3つです。"
     },
     "7bmr": {
-      "source_hash": "90944ee00b10",
+      "source_hash": "67fbc5231043",
       "text": "1つ目、ツール呼び出しはすべて見えます。エージェントは足跡を残し、それを読めます。"
     },
     "dduj": {
-      "source_hash": "352ed3fcd76b",
+      "source_hash": "0a531af3d245",
       "text": "2つ目、失敗はでっち上げの数字ではなく、空欄になりました。最初にそう指示したからです。"
     },
     "ajex": {
-      "source_hash": "967696386fdc",
+      "source_hash": "e20999c8f610",
       "text": "3つ目、レシートはチャットでなくファイルです。チャットは起きたことを語り、ファイルは起きたことそのものです。"
     },
     "gxyd": {
-      "source_hash": "236b999b2826",
+      "source_hash": "4b070a5e0f21",
       "text": "ここからは耳の痛い話です。各社は、実際のコンピューターでのエージェントのタスク完了率を、OSWorldというベンチマークで公表しています。"
     },
     "73y9": {
-      "source_hash": "a2dc49a1a9b5",
+      "source_hash": "b3513e245b35",
       "text": "Anthropicの発表では、Claude Opus 5.5は部分点込みで81.8%です。裏を返せば、およそ5つに1つのタスクは完全には終わっていません。"
     },
     "u5vx": {
-      "source_hash": "27641b163802",
+      "source_hash": "9cefddd452d0",
       "text": "GPT-6 Astraは、OpenAI自身の発表ページを概要欄に載せています。コンピューター操作の主張をそこで読み、比べてください。"
     },
     "rcus": {
-      "source_hash": "af910511f554",
+      "source_hash": "55bfe58e2a06",
       "text": "タスクが失敗するときの形は、4つのうちのどれかです。"
     },
     "y342": {
-      "source_hash": "318c90894d26",
+      "source_hash": "600ebb299fd9",
       "text": "間違ったページや、古いデータを読みます。"
     },
     "ar7d": {
-      "source_hash": "6a7a4f26b208",
+      "source_hash": "c32f9b138ac3",
       "text": "仕事を半分で終えて、完了したと報告します。"
     },
     "sfmt": {
-      "source_hash": "8bf168f65a3c",
+      "source_hash": "b2f8cafe8912",
       "text": "自信満々に、間違った数字を出します。"
     },
     "gb65": {
-      "source_hash": "6541ddd1fad9",
+      "source_hash": "b899e677c033",
       "text": "あるいは、頼んでもいないことをします。先週ニュースになったのは、この形です。"
     },
     "sy22": {
-      "source_hash": "5c059b9e79c8",
+      "source_hash": "856b97f566c1",
       "text": "続いて、各社がこぞって作っている次の段階。ウィンドウを閉じた後も働き続けるエージェントです。"
     },
     "zf6x": {
-      "source_hash": "0b83c72a3ed8",
+      "source_hash": "2d3154579e27",
       "text": "あなたがいない間に動くので、誰もループを見ていません。"
     },
     "6fh3": {
-      "source_hash": "79c3ad9b174b",
+      "source_hash": "f3419336eca8",
       "text": "チャットをまたいで状態を保つので、月曜のミスが金曜のタスクに響くこともあります。"
     },
     "txqe": {
-      "source_hash": "7a353b9a973f",
+      "source_hash": "3a4879ed2452",
       "text": "NVIDIAによると、Microsoftと進める新しいWindowsエージェントフレームワークは、こうしたエージェントをOSの管理下でバックグラウンド実行します。"
     },
     "xc6d": {
-      "source_hash": "bf529c86d0a9",
+      "source_hash": "7cbf035c28e6",
       "text": "OpenAIも独自の常駐型アシスタントを開発中だと広く報じられています。収録時点では報道されているだけで、正式発表ではありません。"
     },
     "xc5x": {
-      "source_hash": "6058be0e6e99",
+      "source_hash": "e87a126a5e1f",
       "text": "何が出てくるにせよ、形は同じです。ゴール、ツール、ループ。そして今度は、その場に誰もいないループです。"
     },
     "7w3r": {
-      "source_hash": "0bc20c63e3a2",
+      "source_hash": "4172472623fa",
       "text": "不安になったなら、それで正解です。前回は、エージェントを箱にとどめる3つの壁、ツール・ネットワーク・秘密情報の話でした。次はそちらをどうぞ。"
     },
     "8j97": {
-      "source_hash": "024ffa575751",
+      "source_hash": "152ca1136498",
       "text": "では、エージェントにタスクを任せる前に聞くべき3つの質問です。"
     },
     "wppa": {
-      "source_hash": "ac8a0a69b0a0",
+      "source_hash": "8a2e00fede52",
       "text": "1つ目、終わったことを示すどんな証拠が得られるか。ファイル、差分、予約番号などです。要約は証拠ではありません。"
     },
     "wvpe": {
-      "source_hash": "9799430159dd",
+      "source_hash": "cf0f574e8734",
       "text": "2つ目、見ていない間に何に触れられるか。ツール、サイト、秘密情報。答えが「すべて」なら、やめましょう。"
     },
     "dujd": {
-      "source_hash": "4633941534dc",
+      "source_hash": "fff6bfa8bc6c",
       "text": "3つ目、間違った答えの代償はいくらか。空欄なら安く済みます。誤った予約や消えたフォルダは、そうはいきません。"
     },
     "qpj7": {
-      "source_hash": "e546143e1b05",
+      "source_hash": "9fe7d0c0c93a",
       "text": "同じ用事の、2つの頼み方です。"
     },
     "s6m4": {
-      "source_hash": "e0368bbff727",
+      "source_hash": "968a1ee6870d",
       "text": "「金曜に席を予約して」。これではお金と決定を渡してしまい、予約確認が届くまで証拠は何もありません。"
     },
     "5djs": {
-      "source_hash": "87ff58ae5762",
+      "source_hash": "8415a857f0d6",
       "text": "「候補を3つ挙げて、何も予約しないで」。これなら確認できるリストが手に入り、決定はあなたの手に残ります。"
     },
     "4nvh": {
-      "source_hash": "66ab5a670931",
+      "source_hash": "54d1d2037ce9",
       "text": "チャットボットは終わりでしょうか。そうでもありません。チャットは今やレシートで、作業はその裏で進みます。"
     },
     "5esi": {
-      "source_hash": "6636850fc1e3",
+      "source_hash": "973820e14e68",
       "text": "あなたの役割も変わりました。良い質問をすることから、良い境界線を引き、要約ではなくファイルを読むことへ。"
     },
     "p8zt": {
-      "source_hash": "f68dcae0e257",
+      "source_hash": "13ef3589eaeb",
       "text": "次回は、このエージェントが見つけた価格から出発して、本当にお金を払う価値があるモデルはどれかをお見せします。"
     }
   }
