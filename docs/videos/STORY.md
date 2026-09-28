@@ -246,6 +246,10 @@
    - 不業配、不推薦購買；負面事件以判決或官方文件為準。
    - 每個故事留給觀眾一個帶得走的觀察。
 3. 每天在 YouTube Studio 上傳兩支並在後台貼網址。API 稽核通過之前，網站不能替站主上傳公開影片。
+4. 在漫劇設定勾選字幕語系（en、ja、ko、zh-CN）。故事是免關卡的，開始製作時伺服器會照這個設定替它決定語系；預設是空的，空的時候每支故事只有繁體中文。
+5. 看一遍漫劇設定裡各階段的常設指示。它們也會接在故事的提示詞後面，跟故事的規則衝突時以它們為準；只適合漫劇的指示（例如要角色有對白）會讓故事的稿子走樣。
+6. 改每日支數、暫停作品、略過或恢復故事、從後台匯入清單，帳號要有 `content.manage`（作品的其他操作都是這個權限）。
+7. 部署之後、工人開始清工作檔之前，先在主機上試跑一次清理，只列出會清什麼：`node tools/video/cli.mjs tidy --dry-run`。保留天數用工人的環境變數 `VIDEO_TIDY_DAYS` 調，設成 `off` 就不清。
 
 ## 分期與票
 
@@ -263,6 +267,18 @@
 | `video-story-admin` | 後台的故事清單、匯入表單、每日支數、「可以上架」預填時段，五語 | `apps/web/components`、`apps/web/messages` | api-series-kind |
 | `video-story-pilot` | 試作兩支，數字寫回這份文件 | `docs/videos/STORY.md` | worker、backlog、部署 |
 | `video-story-rollout` | 每天一支七天，再調成兩支 | `docs/videos/STORY.md` | pilot、tidy-finished |
+
+做這些票的時候另外開的：
+
+| 票 | 內容 | 依賴 |
+| --- | --- | --- |
+| `video-story-admin-import-api` | 後台用的匯入端點、恢復略過的故事 | api-series-kind |
+| `video-story-image-model-pricing` | 工人照作品的圖片模型估價、做快取與寫日誌 | worker、api-policy-languages |
+| `video-story-redo-dropped` | 放棄的故事可以重做一次 | admin-import-api、api-policy-languages |
+| `video-story-tidy-pages` | 清理工作檔時也清掉故事讀過的頁面 | tidy-finished、worker |
+| `video-tidied-late-languages` | 清掉之後才加的語系做不出來，後台要說清楚 | tidy-finished |
+| `video-drama-policy-questions` | 漫劇的立場檢查仍在問「有沒有示範」 | api-policy-languages |
+| `video-dropped-episode-request` | 放棄的集數，它的請求列還停在「已開始」 | api-policy-languages |
 
 順序：design-docs → backlog 與三張工具票平行 → PR #870 合併後 api-series-kind → api-policy-languages、worker、admin 平行 → tidy-finished → 部署（要站主同意）→ pilot → rollout。
 
