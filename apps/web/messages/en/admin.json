@@ -581,18 +581,10 @@
     },
     "anthropic_connection": {
       "label": "Claude connection",
-      "help": "With \"Subscription accounts\", the Claude calls of guide search, place introductions, introduction review, Simplified names and AI news run on the Claude subscription accounts signed in under AI accounts on the host, not on an API key. The accounts take turns in order, A, B, C and back to A: one is left only when its 5-hour or weekly window is full. When every account is full, calls use MiniMax. The trip planner and trip text parsing still use the API key only. Only the owner can switch this.",
+      "help": "With \"Subscription accounts\", the Claude calls of guide search, place introductions, introduction review, Simplified names and AI news run on the Claude subscription accounts signed in under AI accounts on the host, not on an API key. The accounts take turns in order, A, B, C and back to A: one is left only when its 5-hour or weekly window is full. When every account is full, calls wait for one to reset; they never switch to another vendor or model. The trip planner and trip text parsing still use the API key only. Only the owner can switch this.",
       "options": {
         "api_key": "API key",
         "subscription": "Subscription accounts (Claude Code on the host)"
-      }
-    },
-    "ai_subscription_fallback": {
-      "label": "When every subscription account is full",
-      "help": "What happens when every Claude account is full. \"Wait for an account\": news goes back to the queue and is tried again every 30 minutes, and other features fail that call. \"Use MiniMax\": the call runs on MiniMax at once, faster but weaker. Only the owner can change this.",
-      "options": {
-        "wait": "Wait for an account",
-        "minimax": "Use MiniMax"
       }
     }
   },
@@ -1095,7 +1087,6 @@
       "connection": {
         "apiKey": "API key",
         "subscription": "Subscription accounts",
-        "subscriptionFallback": "Subscription accounts (MiniMax when used up)",
         "none": "No AI calls"
       },
       "support": {
@@ -2129,7 +2120,8 @@
       "look": "Character sheets",
       "storyboard": "Storyboard",
       "dubs": "Dub tracks",
-      "script": "Screenplay"
+      "script": "Screenplay",
+      "languages": "Languages"
     },
     "statuses": {
       "pending": "To decide",
@@ -2177,17 +2169,45 @@
     "dropConfirm": "Drop this video? This cannot be undone.",
     "dropButton": "Drop this video",
     "dropError": "Not dropped: {message}",
-    "dubsTitle": "Dub languages",
-    "dubsHelp": "For each language you tick, the worker makes a dubbed audio track once the final cut is approved and sends it here; you download it and upload it on the Languages page in YouTube Studio. Tracks can be added before or after the video is published.",
-    "dubsSave": "Save dub languages",
-    "dubsSaved": "Saved",
-    "dubsError": "Not saved: {message}",
     "approveDubs": "Uploaded these tracks in Studio",
     "downloadTrack": "Download {file}",
-    "dubStatuses": {
-      "ready": "Ready",
-      "skipped": "Skipped"
+    "languagesTitle": "This video's languages",
+    "languagesHelp": "Every video is made in Traditional Chinese. Tick what else it gets, per language: titles and descriptions, closed captions, a dub track. The worker makes only what is ticked and reports each part here; the video is scheduled once every ticked part is done. A dub track is timed with its captions, so ticking one ticks the other. \"Tick the defaults\" copies the settings tab's languages; \"Traditional Chinese only\" records that nothing else is wanted.",
+    "languagesLater": "The languages can be chosen once the final cut is approved.",
+    "languagesAfterPublish": "The video is on YouTube: what you tick now is made as a new batch and sent up. Unticking only holds for parts not on YouTube yet; what is already there you remove yourself in Studio.",
+    "languageColumn": "Language",
+    "parts": {
+      "metadata": "Titles and descriptions",
+      "captions": "Closed captions",
+      "dub": "Dub track"
     },
+    "partStates": {
+      "working": "In the making",
+      "ready": "Done",
+      "skipped": "Skipped",
+      "uploaded": "Uploaded"
+    },
+    "partSkipped": "Skipped ({reason})",
+    "dubDramaLater": "Dubbing a drama comes later; for now a drama gets titles, descriptions and captions.",
+    "tickDefaults": "Tick the defaults",
+    "zhOnly": "Traditional Chinese only",
+    "languagesSave": "Save",
+    "languagesSaved": "Saved",
+    "languagesError": "Not saved: {message}",
+    "approveLanguages": "Uploaded the dub tracks in Studio",
+    "studioTitle": "The dub tracks go up in Studio",
+    "studioNote": "Titles, descriptions and captions are sent through the API when the video is scheduled; only a dub track has to be uploaded by hand.",
+    "studioStep1": "Download each language's track above.",
+    "studioStep2": "In YouTube Studio open Languages in the left menu, then this video, Add language, pick the language, Add next to Dubbing, choose the file, Publish; once per language.",
+    "studioStep3": "Come back and press \"Uploaded the dub tracks in Studio\". Languages ticked later arrive as a new card.",
+    "publishStates": {
+      "deciding": "Waiting for your language choice",
+      "making": "Languages in the making",
+      "ready": "Ready to upload",
+      "scheduled": "Scheduled",
+      "published": "Published"
+    },
+    "scheduleWaits": "It can go to YouTube once its languages are done: the upload package then carries them.",
     "locales": {
       "en": "English",
       "ja": "Japanese",
@@ -2207,7 +2227,7 @@
     "drama": "AI drama",
     "spend": "Media spend US${usd} ({seconds} clip seconds)",
     "newDrama": "New drama episode",
-    "newDramaHelp": "Write the premise (or name a site article to adapt), pick a style and a length. The worker on the host plans it before any scheduled draft, and you choose the outline, the character sheets, the narration, the storyboard and the final cut here as it goes. The AI drama route must be on in Settings.",
+    "newDramaHelp": "Write the premise (or name a site article to adapt), pick a style and a length. It becomes a one-episode series: the worker writes its story bible for you to discuss and approve, then the screenplay; the episode's page holds the gates after that. The AI drama route must be on in the drama settings.",
     "premise": "Premise (required)",
     "premisePlaceholder": "Who wants what, what stands in the way, how it ends. A public-domain tale or an original story.",
     "workingTitle": "Working title (optional)",
@@ -2319,6 +2339,7 @@
     "uploadedError": "Not recorded: {message}",
     "scheduledAt": "Goes public {time}",
     "readyLoading": "Loading the upload package…",
+    "openDramaSettings": "Open the drama settings",
     "downloadCompilation": "Download the 1080p cut",
     "compilationInWorkspace": "The cut is still in the worker's workspace",
     "compilationOf": "Compilation of series {series}"
@@ -2363,7 +2384,7 @@
       "voice_style": "Speaking style (an English description for the speech model)",
       "target_minutes_min": "Shortest length (minutes)",
       "target_minutes_max": "Longest length (minutes)",
-      "caption_locales": "Caption languages (Traditional Chinese is always included)",
+      "caption_locales": "Language panel pre-ticks (Traditional Chinese is always made)",
       "max_drafts_per_month": "Most drafts per month",
       "monthly_token_budget_millions": "Monthly model token limit (millions)",
       "max_verify_rounds": "Most fact-check rounds per video",
@@ -2398,7 +2419,15 @@
       "channel_stance": "Channel stance",
       "auto_pick_outline": "Let Jev choose the outline (no effect while the stance is blank)",
       "auto_approve_final": "Approve the final cut when every automatic check passes, and the upload confirmation once the package is ready",
-      "drama_auto_pick_look": "Pick character sheets automatically: approve a character when the judge's best sheet clears the threshold with no problems"
+      "drama_auto_pick_look": "Pick character sheets automatically: approve a character when the judge's best sheet clears the threshold with no problems",
+      "drama_stage_models_follow": "Same stage models as the tutorials",
+      "drama_voice_follows": "Same narrator voice as the tutorials (the channel voice)",
+      "series_script_gate": "Show me every screenplay before anything is generated (one-off episodes and series alike)",
+      "series_max_in_flight": "Episodes in the making at once (1–6)",
+      "series_auto_continue": "Start the next episode once the previous one's upload is confirmed",
+      "series_chapter_ahead": "Plan the next chapter when this many episodes remain",
+      "series_doc_rewrites": "Rewrites of a sent-back document before it waits for you",
+      "series_episodes_per_month": "Episodes that may start per month"
     },
     "stages": {
       "planner": "Planning (topic and outline)",
@@ -2414,7 +2443,6 @@
       "ko": "Korean",
       "zh-CN": "Simplified Chinese"
     },
-    "usage": "This month (UTC): {tokens} of {tokenBudget} API tokens used and {planTokens} tokens on the subscription accounts; {drafts} of {draftBudget} drafts made, {calls} model calls ({failed} failed).",
     "subscription": "subscription",
     "agentOff": "host agent not set up",
     "subscriptionHelp": "Claude Code and Codex subscription accounts rotate separately, A, B, C and back to A, when a usage window is full. When every account of the selected tool is full, the worker waits for a reset and never switches to an API key on its own.",
@@ -2427,8 +2455,7 @@
     "dramaModels": "Media models",
     "dramaSwitches": "Options",
     "dramaBudgetHelp": "Each month's budget stops generation at the server before a vendor is called; the per-video cap stops the tool before it submits. The owner chose to start without a cap (2026-09-26): the defaults are wide and are lowered after the pilot.",
-    "seriesInFlightHelp": "How many series the worker pushes along at the same time: 1 finishes one before the next; set 2 to run a pilot beside a full series.",
-    "voicePoolHelp": "Gemini voices the writer may give to characters; the narrator keeps the channel voice above.",
+    "voicePoolHelp": "Gemini voices the writer may give to characters; the narrator uses the voice above.",
     "preview": "preview",
     "stylePresets": {
       "cinematic-3d": "Cinematic 3D realistic",
@@ -2437,7 +2464,7 @@
       "custom": "Custom (the script supplies the style)"
     },
     "instructionsTitle": "Standing instructions per stage",
-    "instructionsHelp": "What you would otherwise repeat every time. The worker appends each stage's text to that stage's prompt on every video, slides and drama alike; at most 4,000 characters each, and an emptied field adds nothing. Wishes for one episode go in the new drama form's note, or in the note when you send a gate back.",
+    "instructionsHelp": "What you would otherwise repeat every time. The worker appends each stage's text to that stage's prompt on every tutorial; the drama's are on the Drama part. Up to 4,000 characters per field; empty means nothing is added.",
     "instructionFor": "{stage}: standing instructions",
     "instructionPlaceholder": "e.g. narrate in Taiwanese colloquial Mandarin; end on the next episode's hook",
     "promptsTitle": "The prompts as sent (read only)",
@@ -2451,6 +2478,35 @@
     "stanceTitle": "Channel stance",
     "stanceHelp": "What this channel believes. The planner writes each video's owner viewpoint from this alone; the writer and Jev's checks read it too. It is separate from the standing instructions: those say how to write, this says what you believe. One numbered point per line, at most 4,000 characters. While it is blank Jev does not choose outlines and they wait for you as before. A draft is in docs/videos/HANDS-OFF.md under 頻道立場; edit it and paste it here. A change only reaches videos planned after it.",
     "stancePlaceholder": "e.g. 1. Count the cost before paying: pay for quota and abilities you will use, not to remove ads.",
+    "sectionsLabel": "Settings sections",
+    "sections": {
+      "tutorial": "Tutorials",
+      "drama": "Drama",
+      "shared": "Shared"
+    },
+    "tutorialHelp": "The tutorial videos: slides and the channel voice, planned from topics on a schedule. Each part of this tab saves on its own; the drama's settings are on the Drama part, what both use on Shared.",
+    "sharedHelp": "What both kinds of video use: the channel stance, the topics to avoid, and the month's model token budget.",
+    "saveTutorial": "Save tutorial settings",
+    "saveDrama": "Save drama settings",
+    "saveShared": "Save shared settings",
+    "avoidElsewhere": "Topics to avoid are on the Shared part.",
+    "avoidHelp": "Both tutorials and dramas steer clear of these.",
+    "tokenTitle": "Monthly model tokens",
+    "usageDrafts": "This month (UTC): {drafts} of {draftBudget} drafts made.",
+    "usageTokens": "This month (UTC): {tokens} of {tokenBudget} API tokens used and {planTokens} tokens on the subscription accounts; {calls} model calls, {failed} of them failed.",
+    "localesHelp": "Only what the language panel pre-ticks when a video's final cut is approved (docs/videos/LANGUAGES.md); nothing is made in another language until you save that panel.",
+    "dramaInstructionsHelp": "Appended to each stage's prompt on every drama, one-off episodes and series episodes alike; the tutorials' are on the Tutorials part. Up to 4,000 characters per field; empty means nothing is added. A single episode's wishes go in the request's note or its discussion thread.",
+    "dramaModelsOwn": "The drama runs its stages on these models, chosen under AI settings › Models by feature › Drama stages.",
+    "dramaModelsFollow": "The drama's stages run on the tutorials' models. Give it its own under AI settings › Models by feature › Drama stages.",
+    "dramaModelsTitle": "Drama stages",
+    "dramaModelsHelp": "A drama's six stages (planning, writing, checking, listening, translating, caption review) may run on other models than a tutorial's. Tick \"same as the tutorials\" to keep the choices above.",
+    "dramaStage": "Drama: {stage}",
+    "voiceTitle": "Narrator and character voices",
+    "dramaVoiceHelp": "The drama's narrator: the channel voice, or one of its own. Characters speak with voices from the pool below.",
+    "flowTitle": "Rounds",
+    "seriesTitle": "Series",
+    "seriesHelp": "The pace of a long series (docs/videos/SERIES.md): how many episodes are in the making at once, when the next chapter is planned, and how many times a document is rewritten from your note before it waits for you.",
+    "dramaGatesHelp": "Uploading to YouTube and the publish time are always yours. The screenplay waits for you unless you turn that off; the character sheets, the narration, the storyboard and the final cut each have a switch, and a switched-off gate waits for you as before.",
     "permission": {
       "roles": "The account you are signed in with holds these admin roles: {roles}.",
       "noRoles": "The account you are signed in with holds no admin role.",
@@ -2470,7 +2526,7 @@
     "loadError": "The series could not be loaded",
     "retry": "Try again",
     "newSeries": "New series",
-    "newSeriesHelp": "The premise in your words, the sides of the genre you care about, the tone and the shape. The worker plans the setting book, then the whole-series outline, then each chapter's outline; you approve each here, read every episode's screenplay, and the episodes are made in order. The AI drama route must be on in Settings.",
+    "newSeriesHelp": "The premise in your words, the sides of the genre you care about, the tone and the shape. The worker plans the setting book, then the whole-series outline, then each chapter's outline; you approve each here, read every episode's screenplay, and the episodes are made in order. The AI drama route must be on in the drama settings.",
     "fields": {
       "title": "Title",
       "slug": "Slug (lowercase, digits, hyphens)",
@@ -2510,12 +2566,14 @@
     "saving": "Saving…",
     "statuses": {
       "setting": "Setting book",
+      "bible": "Story bible",
       "outline": "Outline",
       "active": "In the making",
       "paused": "Paused",
       "finished": "Finished"
     },
     "docsPending": "{count} to approve",
+    "messagesPending": "{count} waiting for the model",
     "progress": "{done}/{total} episodes · {chapters} chapters",
     "spend": "US${usd} · {seconds} clip seconds",
     "minutesEach": "{minutes} min each",
@@ -2529,10 +2587,12 @@
     "nextForced": "The next episode starts without waiting for the previous one.",
     "docsTitle": "Documents",
     "docsEmpty": "The worker writes the setting book on its next round.",
+    "bibleEmpty": "The worker writes the story bible on its next round.",
     "docKinds": {
       "setting": "Setting book",
       "outline": "Series outline",
-      "chapter": "Chapter outline"
+      "chapter": "Chapter outline",
+      "bible": "Story bible"
     },
     "chapterN": "Chapter {n} outline",
     "version": "version {n}",
@@ -2553,6 +2613,25 @@
     "saveApprove": "Save and approve",
     "saveReview": "Save as waiting",
     "editError": "Not saved: {message}",
+    "thread": {
+      "title": "Discussion",
+      "empty": "Nothing said yet. Ask the model a question or tell it what to change; its answers and the versions it writes stay here.",
+      "authors": {
+        "owner": "Owner",
+        "planner": "Planner",
+        "writer": "Writer"
+      },
+      "aboutVersion": "about version {n}",
+      "aboutScript": "about screenplay {hash}",
+      "waiting": "Waiting for the model",
+      "closed": "Approved: this thread stays as a record and takes no new lines.",
+      "input": "Your line to the model",
+      "placeholder": "For example: why does someone have to die in act two? Make the elder brother a man of few words.",
+      "send": "Send",
+      "sending": "Sending…",
+      "sendError": "Not sent: {message}",
+      "loadError": "The discussion could not be loaded: {message}"
+    },
     "beats": {
       "episode": "Ep.",
       "title": "Title",
@@ -2587,7 +2666,11 @@
     "openVideo": "Open",
     "skip": "Skip",
     "skipConfirm": "Skip episode {n}? The series moves on without it.",
+    "withdraw": "Withdraw",
+    "withdrawConfirm": "Withdraw “{title}”? No episode has started; its documents and threads are deleted and its queued request is marked withdrawn.",
     "oneOffTitle": "One-off episodes",
+    "oneOff": "One-off",
+    "openDramaSettings": "Open the drama settings",
     "dramaOn": "The drama route is on: the worker makes the requested episodes and the series in turn.",
     "dramaOff": "The drama route is off.",
     "dramaOffHow": "The worker makes no drama, and the episodes and series you start wait until it is on. Tick “{enable}” under “{settings}” below, then save.",

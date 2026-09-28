@@ -24,8 +24,8 @@
 | 縮圖 | 1280×720 JPEG | `tools/video/render/` |
 | 長度 | 8–12 分鐘（`video.json` 的 `target_minutes` 可以改）；漫劇一集 2–4 分鐘；一鍵合集把一部作品的每集接成一支，30–480 分鐘可設、預設 120（設計在 [`BINGE.md`](BINGE.md)） | `tools/video/core/schema.mjs`、`apps/api/app/video_automation/series.py` 的 `binge_shape` |
 | 合集 | 每集成片 `-c copy` 串接、音訊重編一次；集間 2 秒章節卡、片尾 4 秒卡；章節＝每集；五語字幕合併。審核頁只放 720p 預覽（`-crf 26 -maxrate 2M`，兩小時約 ≤ 2 GB）；1080p 成片從後台的作品頁或「可以上架」卡下載（`GET /admin/videos/{slug}/download`，API 唯讀掛載工人的 `video_work`）再上傳。合集的 `category_id` 是 24（娛樂） | `tools/video/core/compilation.mjs`、`tools/video/compile/cli.mjs` |
-| 字幕 | 五條 CC：zh-TW、en、ja、ko、zh-CN。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/drama.mjs` |
-| 配音音軌 | 投影片影片可以多掛 en、ja、ko、zh-CN 四條 YouTube 多語言音軌：同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡，站主在 Studio「語言」上傳。每支影片先只出繁體中文，站主在 `/admin/videos` 那支影片的頁面勾了語言才做；漫劇第一期不做。設計在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`（票 `2026-09-26-video-dubs-*`） |
+| 字幕 | zh-TW 的 CC 一定有。en、ja、ko、zh-CN 的 CC 與標題說明是每支影片的選擇：成片核准後站主在 `/admin/videos` 那支影片的「這支影片的語言」面板勾了才做，工人只做勾了的、做好才排上架（[`LANGUAGES.md`](LANGUAGES.md)；設定分頁的 `caption_locales` 只是面板的預先勾選）。投影片影片**不燒錄**；漫劇預設把繁中字幕燒進畫面（漫劇頻道的慣例），由 `video.json` 的 `subtitles.burn_in` 決定 | `tools/video/core/captions.mjs`、`tools/video/core/stages.mjs`、`tools/video/core/drama.mjs` |
+| 配音音軌 | 語言的第三個部件：投影片影片可以多掛 en、ja、ko、zh-CN 四條 YouTube 多語言音軌，同一個頻道聲音唸字幕的翻譯，塞在 zh-TW 的畫面時間軸裡。站主在同一個面板勾了配音才做（勾配音會一起勾 CC），做好後由站主在 Studio「語言」上傳、在「語言」卡片按「已在 Studio 上傳配音」；做不出來的語系跳過並寫原因，不擋上架。漫劇第一期不做。音軌怎麼做在 [`DUBS.md`](DUBS.md) | `tools/video/dubs`、`tools/video/automation/flow.mjs` |
 | 配樂 | 投影片影片沒有；漫劇有（`music`，由 Lyria 生成或站主提供有授權的檔案），在對白下自動壓低 | `tools/video/core/drama.mjs` |
 
 每句旁白和它後面的停頓，都補到整格（48,000 Hz ÷ 30 fps ＝ 每格 1,600 個取樣），所以十分鐘的影片不會有影音漂移。
