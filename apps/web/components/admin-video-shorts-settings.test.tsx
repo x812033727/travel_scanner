@@ -171,6 +171,37 @@ describe("ShortsSettingsPanel", () => {
     expect(run.textContent).toContain("先儲存再開跑");
   });
 
+  it("requires a fresh acknowledgement when saving settings changes the offered wording", async () => {
+    const calls = stubFetch();
+    const originalFetch = globalThis.fetch;
+    const nextHash = "b".repeat(64);
+    const nextOffer = { ...offer, text: offer.text + "\n三、更新後的公開時段。", text_sha256: nextHash, scope: { ...scope, slot_times: ["13:00", "19:30"] } };
+    vi.stubGlobal("fetch", vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const answer = await originalFetch(input, init);
+      if (init?.method !== "PUT") return answer;
+      return Response.json({ ...settings, ...JSON.parse(String(init.body)), consent: { ...none, offer: nextOffer } });
+    }));
+    mount();
+    const card = await screen.findByRole("region", { name: "自動上架授權" });
+    fireEvent.click(within(card).getByLabelText("我讀過上面每一項"));
+    expect(within(card).getByRole("button", { name: "我同意，開始自動上架" })).toHaveProperty("disabled", false);
+    fireEvent.change(within(screen.getByRole("region", { name: "節奏與時段" })).getByLabelText("公開時間（24 小時制，用逗號分開）"), { target: { value: "19:30, 13:00" } });
+    expect(within(card).getByRole("button", { name: "我同意，開始自動上架" })).toHaveProperty("disabled", true);
+    fireEvent.click(screen.getByRole("button", { name: "儲存 Shorts 設定" }));
+    await waitFor(() => expect(within(card).getByLabelText("你會同意的內容").textContent).toContain("更新後的公開時段"));
+    const read = within(card).getByLabelText("我讀過上面每一項");
+    expect(read).toHaveProperty("checked", false);
+    const agree = within(card).getByRole("button", { name: "我同意，開始自動上架" });
+    expect(agree).toHaveProperty("disabled", true);
+    fireEvent.click(agree);
+    expect(writes(calls).filter((call) => call.method === "POST")).toHaveLength(0);
+    fireEvent.click(read);
+    expect(agree).toHaveProperty("disabled", false);
+    fireEvent.click(agree);
+    await waitFor(() => expect(writes(calls).filter((call) => call.method === "POST")).toHaveLength(1));
+    expect(writes(calls).find((call) => call.method === "POST")?.body).toEqual({ text_sha256: nextHash });
+  });
+
   it("has nothing to agree to before a channel is linked, and offers a consent that ends soon again", async () => {
     stubFetch({ ...settings, consent: { ...none, offer: null } });
     const { unmount } = render(<ShortsSettingsPanel onChanged={vi.fn()} />);
