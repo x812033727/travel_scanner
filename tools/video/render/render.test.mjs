@@ -5,13 +5,13 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 import { compilationDocument } from "../core/compilation.mjs";
-import { dramaFixture } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture } from "../core/fixtures/load.mjs";
 import { estimateTimeline } from "../core/timeline.mjs";
 import { resolveRequest } from "./browser.mjs";
 import { coverageProblems } from "./cli.mjs";
 import { contactSheetHtml } from "./contact.mjs";
 import { bundledCoverage, covers, mergeRanges, parseUnicodeRanges, uncovered } from "./fonts.mjs";
-import { renderPlan, renderProblems, stillFile, themeHash, transitionFile } from "./plan.mjs";
+import { renderPlan, renderProblems, stillFile, themeHash, thumbnailVariantFile, transitionFile } from "./plan.mjs";
 import { BLANK_STRIP, blankStripHtml, blankStripKey, STRIP_SIZE, stripFile, stripHtml, subtitlePlan } from "./subtitles.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("../templates/fixtures/showcase/video.json", import.meta.url), "utf8"));
@@ -219,4 +219,27 @@ test("a compilation renders its chapter cards and outro as stills, numbered by e
   const bare = compilationDocument({ series: "wuxia", episodes: [{ slug: "wuxia-ep-1", number: 1 }], chapterCards: false, outro: false });
   assert.deepEqual(renderPlan(bare, "t").scenes, [], "nothing to draw but the thumbnail");
   assert.ok(renderPlan(bare, "t").thumbnail.key);
+});
+
+test("an explainer's thumbnail variants are drawn beside A, each on its own keyframe, and checked for glyphs", () => {
+  const doc = explainerFixture();
+  const keyframes = { flash: { file: "keyframes/flash-1.png", sha256: "aa" }, race: { file: "keyframes/race-1.png", sha256: "bb" } };
+  const plan = renderPlan(doc, "t", null, { keyframes });
+  assert.deepEqual(plan.thumbnail.variants.map((variant) => [variant.id, variant.file, variant.shot]), [["b", "thumbnail-b.jpg", "flash"], ["c", "thumbnail-c.jpg", "race"]]);
+  assert.equal(thumbnailVariantFile("c"), "thumbnail-c.jpg");
+  assert.match(plan.thumbnail.variants[0].html, /每 3 秒/);
+  assert.match(plan.thumbnail.variants[0].html, /原來如此事務所/, "a variant wears the series look too");
+  assert.match(plan.thumbnail.variants[1].html, /keyframes\/race-1\.png/);
+  assert.match(plan.thumbnail.variants[1].html, /layout-right/);
+  assert.equal(new Set([plan.thumbnail.key, ...plan.thumbnail.variants.map((variant) => variant.key)]).size, 3);
+  assert.equal(plan.thumbnail.html, renderPlan({ ...doc, thumbnail: { template: doc.thumbnail.template, data: doc.thumbnail.data } }, "t", null, { keyframes }).thumbnail.html, "A is unchanged by its variants");
+  assert.equal(renderPlan(doc, "t", null, { keyframes: { flash: keyframes.flash } }).thumbnail.variants[1].keyframe, null, "C's shot is not drawn yet");
+  assert.deepEqual(renderProblems(doc), []);
+  const stray = structuredClone(doc);
+  stray.thumbnail.variants[1].data.shot = "nowhere";
+  assert.deepEqual(renderProblems(stray), [{ path: "thumbnail", message: 'variant c: data.shot "nowhere" is not a shot of this video' }]);
+  const odd = structuredClone(doc);
+  odd.thumbnail.variants[0].data.headline = "𝕏";
+  assert.deepEqual(coverageProblems(renderPlan(odd, "t", null, { keyframes }), bundledCoverage()).map((problem) => problem.path), ["thumbnail variant b"]);
+  assert.equal(renderPlan(dramaFixture(), "t").thumbnail.variants, undefined, "no variants: the plan is as it was");
 });
