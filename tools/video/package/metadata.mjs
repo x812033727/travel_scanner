@@ -2,27 +2,28 @@
 // article, body, chapters, sources, hashtags) and tags, each checked against YouTube's limits.
 import { descriptionWithinBudget, isCompilation } from "../core/compilation.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription, tagsLength, TAGS_MAX_CHARS } from "../core/metadata.mjs";
-import { NARRATION_LOCALE } from "../core/schema.mjs";
+import { narrationLocale } from "../core/schema.mjs";
 import { chapterList, formatClock } from "../core/timeline.mjs";
 
 /**
- * Metadata for zh-TW and every locale with a translation file. A locale's translation supplies
+ * Metadata for the narration locale and every locale with a translation file. A locale's translation supplies
  * { title, description, tags?, chapters?: { sceneId: title } }; the article link uses that
- * locale when the source article has it, zh-TW otherwise. A compilation's chapters key on its
+ * locale when the source article has it, the narration locale otherwise. A compilation's chapters key on its
  * episode slugs, and when every title would pass YouTube's description limit they fall back to
  * 「第 N 集」 (docs/videos/BINGE.md), in the chapter list the upload card shows as well.
  */
 export function composeMetadata({ doc, timeline, translations = {}, pack = null }) {
-  const locales = [NARRATION_LOCALE, ...Object.keys(translations).filter((locale) => translations[locale]?.title && translations[locale]?.description)];
+  const narration = narrationLocale(doc);
+  const locales = [narration, ...Object.keys(translations).filter((locale) => translations[locale]?.title && translations[locale]?.description)];
   const compilation = isCompilation(doc);
   const problems = [];
   const perLocale = {};
   let zhChapters = {};
   for (const locale of locales) {
-    const translation = locale === NARRATION_LOCALE ? null : translations[locale];
+    const translation = locale === narration ? null : translations[locale];
     const title = translation ? translation.title : doc.youtube.title;
     const body = translation ? translation.description : doc.youtube.description;
-    const articleLocale = pack?.locales?.[locale] ? locale : NARRATION_LOCALE;
+    const articleLocale = pack?.locales?.[locale] ? locale : narration;
     const fields = {
       body,
       timeline,
@@ -36,12 +37,12 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
     if (compilation) {
       const budget = descriptionWithinBudget(body, timeline, fields.chapterTitles, { locale, sources: fields.sources, tags: fields.tags, article: fields.article });
       description = budget.description;
-      if (locale === NARRATION_LOCALE) zhChapters = budget.titles;
+      if (locale === narration) zhChapters = budget.titles;
     } else description = composeDescription(fields);
     problems.push(...checkYoutubeFields({ title, description, tags: [] }, `${locale}`));
     perLocale[locale] = { title, description };
   }
-  // Tags are one list per video, not per locale: the zh-TW ones first, then translated ones.
+  // Tags are one list per video, not per locale: the narration's first, then translated ones.
   const tags = [];
   for (const tag of [...doc.youtube.tags, ...locales.flatMap((locale) => translations[locale]?.tags ?? [])]) {
     if (!tags.includes(tag) && tagsLength([...tags, tag]) <= TAGS_MAX_CHARS) tags.push(tag);
@@ -51,14 +52,14 @@ export function composeMetadata({ doc, timeline, translations = {}, pack = null 
     problems,
     metadata: {
       slug: doc.slug,
-      default_language: NARRATION_LOCALE,
+      default_language: narration,
       category_id: doc.youtube.category_id,
       made_for_kids: doc.youtube.made_for_kids,
       privacy_status: "private",
-      title: perLocale[NARRATION_LOCALE].title,
-      description: perLocale[NARRATION_LOCALE].description,
+      title: perLocale[narration].title,
+      description: perLocale[narration].description,
       tags,
-      localizations: Object.fromEntries(Object.entries(perLocale).filter(([locale]) => locale !== NARRATION_LOCALE)),
+      localizations: Object.fromEntries(Object.entries(perLocale).filter(([locale]) => locale !== narration)),
       chapters,
     },
   };

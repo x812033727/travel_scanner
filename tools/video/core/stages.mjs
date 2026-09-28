@@ -3,10 +3,10 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-import { DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubLocales, dubScript, translationHash } from "../dubs/plan.mjs";
 import { buildCues, checkCues, toSrt, toVtt } from "./captions.mjs";
 import { atomicWrite, readJson } from "./paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, textHash } from "./schema.mjs";
+import { eachLine, LOCALES, narrationLocale, textHash } from "./schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "./state.mjs";
 import { checkChapters, speechHash } from "./timeline.mjs";
 
@@ -17,12 +17,13 @@ export class StageError extends Error {
   }
 }
 
-/** The text each locale shows for each line; translations older than their zh-TW line are left out. */
+/** The text each locale shows for each line; translations older than their narration line are left out. */
 export function localeTexts(doc, translations) {
-  const texts = { [NARRATION_LOCALE]: {} };
+  const narration = narrationLocale(doc);
+  const texts = { [narration]: {} };
   const skipped = {};
-  for (const { line } of eachLine(doc)) texts[NARRATION_LOCALE][line.id] = line.text;
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const { line } of eachLine(doc)) texts[narration][line.id] = line.text;
+  for (const locale of LOCALES.filter((each) => each !== narration)) {
     const translation = translations[locale];
     if (!translation) continue;
     texts[locale] = {};
@@ -58,7 +59,7 @@ export const dubRole = (locale) => `dub_${locale.toLowerCase().replace(/-/g, "_"
 export function dubsForUpload(project, workdir, speech) {
   const dubs = [];
   const skipped = {};
-  for (const locale of DUB_LOCALES) {
+  for (const locale of dubLocales(project.doc)) {
     const dub = currentDub(project, workdir, locale, speech);
     if (dub && !dub.stale) {
       dubs.push({ locale, file: dub.file, format: dub.format, total_frames: dub.total_frames, tempo_max: dub.tempo_max ?? 1 });
@@ -86,7 +87,7 @@ export function captionTimelineOf(dub) {
 }
 
 /**
- * Write captions/<locale>.srt and .vtt for zh-TW and every locale whose translation is complete
+ * Write captions/<locale>.srt and .vtt for the narration locale and every locale whose translation is complete
  * and current. A locale with missing or stale lines is reported and not written: a caption track
  * that silently skips sentences is worse than none. A locale with a current dub is cut on the
  * dub's timing, so a viewer who picks that audio and those captions reads what they hear, when
@@ -108,7 +109,7 @@ export function runCaptions({ slug, file, root, workdir, now = new Date() }) {
       manifest.skipped[locale] = skipped[locale];
       continue;
     }
-    const dub = locale === NARRATION_LOCALE ? null : currentDub(project, workdir, locale, speech);
+    const dub = locale === narrationLocale(project.doc) ? null : currentDub(project, workdir, locale, speech);
     const timed = dub && !dub.stale;
     const { cues } = buildCues(timed ? captionTimelineOf(dub) : timeline, byLine, locale);
     atomicWrite(path.join(workdir, "captions", `${locale}.srt`), toSrt(cues));

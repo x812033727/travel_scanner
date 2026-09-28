@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-english-narration-locale
 title: Slides pipeline: per-video narration locale so English-first videos can be produced
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-28T02:47:47Z
 created_at: 2026-09-28T02:13:09Z
 completed_at:
-branch:
+branch: claude/ai-video-planning-l43qas
 depends_on: []
 scope:
   - tools/video/core/schema.mjs

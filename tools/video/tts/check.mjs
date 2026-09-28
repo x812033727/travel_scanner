@@ -31,7 +31,7 @@ import { pinyin } from "pinyin-pro";
 
 import { emptyLexicon, isKnownTerm } from "../core/lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine, LOCALES, NARRATION_LOCALE, spokenText } from "../core/schema.mjs";
+import { eachLine, LOCALES, NARRATION_LOCALE, narrationLocale, spokenText } from "../core/schema.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
@@ -53,10 +53,11 @@ const TRANSCRIBE_RATE = 16_000;
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
 const CHINESE = new Set([NARRATION_LOCALE, "zh-CN"]);
 
-/** A `--locale` value: one of the dub locales, or a usage error naming them. */
-export function parseDubLocale(value) {
-  if (!DUB_LOCALES.includes(value)) {
-    throw new UsageError(`--locale must be one of ${DUB_LOCALES.join(", ")}: a dubbed track; the narration is checked without --locale`);
+/** A `--locale` value: a caption locale other than the narration's, or a usage error naming them. */
+export function parseDubLocale(value, narration = NARRATION_LOCALE) {
+  const dubs = LOCALES.filter((locale) => locale !== narration);
+  if (!dubs.includes(value)) {
+    throw new UsageError(`--locale must be one of ${dubs.join(", ")}: a dubbed track; the narration is checked without --locale`);
   }
   return value;
 }
@@ -65,14 +66,14 @@ export function parseDubLocale(value) {
  * Where a track's clips and timeline are, relative to the work directory: the narration's
  * artifacts, or the dubs/<locale>/ layout that `dub` writes (docs/videos/DUBS.md).
  */
-export function trackFiles(locale = NARRATION_LOCALE) {
-  if (locale === NARRATION_LOCALE) return { audio: ARTIFACTS.audio, timeline: ARTIFACTS.timeline };
+export function trackFiles(locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
+  if (locale === narration) return { audio: ARTIFACTS.audio, timeline: ARTIFACTS.timeline };
   return { audio: path.join("dubs", locale, "audio"), timeline: path.join("dubs", locale, "timeline.json") };
 }
 
 /** A track's transcript cache and flags file, relative to the work directory: one pair per locale. */
-export function checkFiles(locale = NARRATION_LOCALE) {
-  const suffix = locale === NARRATION_LOCALE ? "" : `.${locale}`;
+export function checkFiles(locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
+  const suffix = locale === narration ? "" : `.${locale}`;
   return { cache: path.join("review", `check${suffix}.json`), flags: path.join("review", `check-flags${suffix}.json`) };
 }
 
@@ -107,8 +108,8 @@ export function dubLexicon(lexicon) {
 }
 
 /** The dictionary a track's spoken forms come from: the narration's as it is, a dub's filtered. */
-export function lexiconFor(lexicon, locale = NARRATION_LOCALE) {
-  return locale === NARRATION_LOCALE ? lexicon : dubLexicon(lexicon);
+export function lexiconFor(lexicon, locale = NARRATION_LOCALE, narration = NARRATION_LOCALE) {
+  return locale === narration ? lexicon : dubLexicon(lexicon);
 }
 
 // Interjections the voice adds on its own, in Traditional and Simplified characters. 耶 and 餒
@@ -216,17 +217,18 @@ export async function checkAudio(args, ctx, options) {
   if (!values.slug && !values.file) throw new UsageError("check-audio needs --slug (or --file for an example outside docs/videos)");
   const threshold = values.threshold === undefined ? DEFAULT_THRESHOLD : Number(values.threshold);
   if (!(threshold > 0 && threshold < 1)) throw new UsageError("--threshold must be between 0 and 1");
-  const locale = values.locale === undefined ? NARRATION_LOCALE : parseDubLocale(values.locale);
-  const dub = locale !== NARRATION_LOCALE;
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const narration = narrationLocale(project.doc);
+  const locale = values.locale === undefined ? narration : parseDubLocale(values.locale, narration);
+  const dub = locale !== narration;
   if (lintProject(project).errors.length) {
     ctx.stdout.write(`${project.doc.slug} has lint errors; run lint first\n`);
     return EXIT.lint;
   }
   const { doc } = project;
-  const lexicon = lexiconFor(project.lexicon ?? readJson(lexiconFile(ctx.root), emptyLexicon()), locale);
+  const lexicon = lexiconFor(project.lexicon ?? readJson(lexiconFile(ctx.root), emptyLexicon()), locale, narration);
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
-  const track = trackFiles(locale);
+  const track = trackFiles(locale, narration);
   const timeline = readJson(path.join(workdir, track.timeline), null);
   if (!timeline) {
     throw new UsageError(dub ? `no ${locale} dub yet: run dub --slug ${doc.slug} --locale ${locale} first` : `no narration yet: run tts --slug ${doc.slug} first`);
@@ -235,7 +237,7 @@ export async function checkAudio(args, ctx, options) {
   // What makes the clips again: the flags file goes to it as `--redo`.
   const remake = dub ? `dub --slug ${doc.slug} --locale ${locale}` : `tts --slug ${doc.slug}`;
   const audioDir = path.join(workdir, track.audio);
-  const files = checkFiles(locale);
+  const files = checkFiles(locale, narration);
   const cacheFile = path.join(workdir, files.cache);
   const cache = readJson(cacheFile, { lines: {} });
   const results = {};

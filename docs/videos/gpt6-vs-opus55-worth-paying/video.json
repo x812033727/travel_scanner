@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "slug": "gpt6-vs-opus55-worth-paying",
+  "format": "slides",
+  "narration_locale": "en",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in clear, natural English. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "en",
+    "title": "GPT-6 Astra vs Claude Opus 5.5 vs Gemini: Which One Is Actually Worth Paying For?",
+    "description": "Three jobs people actually run every month, priced on GPT-6 Astra, GPT-6 Sol, Claude Opus 5.5, Grok 4.7 and Gemini 3.8 Flash with the official list prices of September 28, 2026. The winner is not the smartest model, and the video ends with the three-question test that turns this math into yours.\n\nEvery price comes from the vendor's own pricing page on the recording date and will change; the formula is on screen so you can redo it with today's numbers. The picks at the end are the owner's opinion, labelled as such. No model was benchmarked here; the only measurement is arithmetic on published prices.\n\nRecorded 2026-09-28.",
+    "tags": [
+      "GPT-6 vs Claude",
+      "Claude Opus 5.5",
+      "GPT-6 Astra pricing",
+      "which AI to pay for",
+      "AI API pricing 2026",
+      "Gemini 3.8 Flash pricing",
+      "Grok 4.7 pricing",
+      "AI cost comparison"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "SEPT 2026 PRICES",
+      "headline": "$50 vs **$20**",
+      "sub": "same job, per million tokens"
+    }
+  },
+  "sources": [
+    {
+      "title": "OpenAI API pricing (GPT-6 Astra, Sol, Luna)",
+      "url": "https://platform.openai.com/docs/pricing",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "OpenAI: GPT-6 Astra model page (price, context window)",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Anthropic: Introducing Claude Opus 5.5 (prices)",
+      "url": "https://www.anthropic.com/news/claude-opus-5-5",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "xAI: models and pricing (Grok 4.7)",
+      "url": "https://docs.x.ai/docs/models",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Google: Gemini API pricing (Gemini 3.8 Flash)",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_on": "2026-09-28"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Three price sheets, one month of work",
+      "template": "title",
+      "data": {
+        "tag": "SEPT 2026 PRICES",
+        "title": "Which AI is actually **worth paying** for?",
+        "subtitle": "GPT-6 Astra vs Claude Opus 5.5 vs Gemini, priced on three real jobs"
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "iut8",
+          "text": "GPT-6 Astra costs fifty dollars per million output tokens. Claude Opus 5.5 costs twenty. Gemini 3.8 Flash costs under four."
+        },
+        {
+          "id": "4f5z",
+          "text": "Pick by benchmark and you overpay. Pick by price and you get work you have to redo."
+        },
+        {
+          "id": "ed4s",
+          "text": "So I took three jobs people actually run every month and priced each one on each model, with the official rates as of today."
+        },
+        {
+          "id": "4vsv",
+          "text": "The winner is not the smartest model. Here is the math, and the three questions that make it your math."
+        }
+      ]
+    },
+    {
+      "id": "sheet",
+      "template": "table",
+      "data": {
+        "title": "Official list prices, per million tokens, 2026-09-28",
+        "columns": [
+          "Model",
+          "Input",
+          "Cached input",
+          "Output"
+        ],
+        "rows": [
+          [
+            "GPT-6 Astra",
+            "$10",
+            "$1",
+            "$50"
+          ],
+          [
+            "GPT-6 Sol",
+            "$2",
+            "$0.20",
+            "$10"
+          ],
+          [
+            "Claude Opus 5.5",
+            "$4",
+            "$0.20",
+            "$20"
+          ],
+          [
+            "Grok 4.7, under 200k",
+            "$2",
+            "$0.50",
+            "$6"
+          ],
+          [
+            "Gemini 3.8 Flash",
+            "$0.75",
+            "$0.075",
+            "$3.75"
+          ]
+        ]
+      },
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "zeh4",
+          "text": "First, the price sheets side by side, read from each company's own pricing page today."
+        },
+        {
+          "id": "mpni",
+          "text": "OpenAI's flagship, GPT-6 Astra: ten dollars in, one dollar for cached input, fifty out, per million tokens.",
+          "reveal": 1
+        },
+        {
+          "id": "bgt8",
+          "text": "OpenAI's cheaper sibling, GPT-6 Sol: two in, twenty cents cached, ten out.",
+          "reveal": 1
+        },
+        {
+          "id": "a8eb",
+          "text": "Anthropic's Claude Opus 5.5: four in, twenty cents cached, twenty out.",
+          "reveal": 1
+        },
+        {
+          "id": "xiua",
+          "text": "xAI's Grok 4.7, for prompts under two hundred thousand tokens: two in, fifty cents cached, six out.",
+          "reveal": 1
+        },
+        {
+          "id": "qx54",
+          "text": "Google's Gemini 3.8 Flash: seventy five cents in, seven and a half cents cached, three dollars seventy five out.",
+          "reveal": 1
+        },
+        {
+          "id": "39yb",
+          "text": "Google says that Flash price holds until the end of the year and then doubles. It lists no Pro price for the 3.8 generation yet."
+        }
+      ],
+      "chapter": "The five price sheets, side by side"
+    },
+    {
+      "id": "formula",
+      "chapter": "The formula, and job one",
+      "template": "code",
+      "data": {
+        "language": "the math",
+        "code": "monthly cost =\n    fresh input tokens   x input price\n  + cached input tokens  x cached price\n  + output tokens        x output price\n  + cache writes         x write price, where listed\n  (all per million tokens)\n\nJob 1: a 40-page PDF summarized every day\n  30k in + 1k out, 30 days\n  = 0.9M in, 0.03M out",
+        "highlight": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "caption": "Redo it any month with the prices of that day"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "493h",
+          "text": "The formula fits on one slide. Tokens in times the input price, cached tokens times the cached price, tokens out times the output price."
+        },
+        {
+          "id": "yvm3",
+          "text": "Job one: summarize a forty page PDF every morning. Thirty thousand tokens in, a thousand out, thirty days a month."
+        },
+        {
+          "id": "uia6",
+          "text": "That is under a million tokens in and thirty thousand out. Watch how little that costs anywhere."
+        }
+      ]
+    },
+    {
+      "id": "job1",
+      "template": "stats",
+      "data": {
+        "title": "Job 1: the daily PDF summary, per month",
+        "stats": [
+          {
+            "value": "$10.50",
+            "label": "GPT-6 Astra"
+          },
+          {
+            "value": "$4.20",
+            "label": "Claude Opus 5.5"
+          },
+          {
+            "value": "$2.10",
+            "label": "GPT-6 Sol"
+          },
+          {
+            "value": "$0.79",
+            "label": "Gemini 3.8 Flash"
+          }
+        ],
+        "source": "0.9M in, 0.03M out at the list prices above; Grok 4.7 lands at about $1.98"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "uwys",
+          "text": "Astra, ten dollars fifty a month. Opus 5.5, four twenty.",
+          "reveal": 2
+        },
+        {
+          "id": "d8vw",
+          "text": "Sol, two ten. Gemini Flash, seventy nine cents. Grok sits at about two dollars.",
+          "reveal": 2
+        },
+        {
+          "id": "gjky",
+          "text": "For a job like this the gap is real, but it is pocket money. The question is quality, and any of these can summarize a PDF."
+        }
+      ]
+    },
+    {
+      "id": "job2",
+      "chapter": "Job two: a coding agent for a month",
+      "template": "steps",
+      "data": {
+        "title": "What a day of agent traffic looks like",
+        "steps": [
+          {
+            "title": "Fresh input",
+            "detail": "0.6M tokens a day: new code and instructions"
+          },
+          {
+            "title": "Cached input",
+            "detail": "2.4M tokens a day: the context it re-reads"
+          },
+          {
+            "title": "Output",
+            "detail": "150k tokens a day: code and answers"
+          },
+          {
+            "title": "20 workdays",
+            "detail": "12M fresh, 48M cached, 3M out"
+          }
+        ]
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "afk4",
+          "text": "Job two is where the money goes: a coding agent working beside you all day, twenty workdays a month."
+        },
+        {
+          "id": "xupq",
+          "text": "Every turn it re-reads the whole conversation, so most of its input is cached. Say six hundred thousand fresh tokens a day.",
+          "reveal": 1
+        },
+        {
+          "id": "ph5f",
+          "text": "Two point four million cached tokens a day, and a hundred and fifty thousand tokens of output.",
+          "reveal": 2
+        },
+        {
+          "id": "xexs",
+          "text": "Twenty workdays: twelve million fresh, forty eight million cached, three million out. Now the prices bite.",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "job2-table",
+      "template": "table",
+      "data": {
+        "title": "Job 2: the coding agent, per month",
+        "columns": [
+          "Model",
+          "Input + cached",
+          "Cache writes",
+          "Output",
+          "Total"
+        ],
+        "rows": [
+          [
+            "GPT-6 Astra",
+            "$168",
+            "$150",
+            "$150",
+            "$468"
+          ],
+          [
+            "GPT-6 Sol",
+            "$34",
+            "$30",
+            "$30",
+            "$94"
+          ],
+          [
+            "Claude Opus 5.5",
+            "$58",
+            "$60",
+            "$60",
+            "$178"
+          ],
+          [
+            "Grok 4.7",
+            "$48",
+            "not listed",
+            "$18",
+            "$66"
+          ],
+          [
+            "Gemini 3.8 Flash",
+            "$13",
+            "not listed",
+            "$11",
+            "$24"
+          ]
+        ]
+      },
+      "claims": [
+        "c8",
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "wz7s",
+          "text": "Astra: about four hundred seventy dollars a month, and a third of that is cache writes, a fee OpenAI lists for this generation.",
+          "reveal": 1
+        },
+        {
+          "id": "mcai",
+          "text": "Sol, the cheaper OpenAI model: about ninety four. Opus 5.5: about one hundred seventy eight, sixty of it cache writes.",
+          "reveal": 2
+        },
+        {
+          "id": "z6g3",
+          "text": "Grok 4.7: about sixty six. Gemini 3.8 Flash: about twenty four. Neither lists a cache write fee on its price page.",
+          "reveal": 2
+        },
+        {
+          "id": "cv6f",
+          "text": "Same work, a twenty fold price range. This is the job where picking wrong costs you hundreds a month, or a lot of redo."
+        }
+      ]
+    },
+    {
+      "id": "job3",
+      "chapter": "Job three: a support bot at ten thousand chats",
+      "template": "stats",
+      "data": {
+        "title": "Job 3: 10,000 chats a month",
+        "stats": [
+          {
+            "value": "$450",
+            "label": "GPT-6 Astra"
+          },
+          {
+            "value": "$180",
+            "label": "Claude Opus 5.5"
+          },
+          {
+            "value": "$78",
+            "label": "Grok 4.7"
+          },
+          {
+            "value": "$34",
+            "label": "Gemini 3.8 Flash"
+          }
+        ],
+        "source": "3k tokens in and 300 out per chat: 30M in, 3M out; GPT-6 Sol lands at $90"
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "zyt2",
+          "text": "Job three: a support bot. Ten thousand chats a month, three thousand tokens in and three hundred out each. Thirty million in, three million out."
+        },
+        {
+          "id": "4e86",
+          "text": "Astra: four hundred fifty. Opus 5.5: one eighty.",
+          "reveal": 2
+        },
+        {
+          "id": "gbsu",
+          "text": "Grok 4.7: seventy eight. Gemini Flash: thirty four. Sol lands at ninety.",
+          "reveal": 2
+        },
+        {
+          "id": "b3ge",
+          "text": "Notice where the money goes: input. A support bot reads far more than it writes, so the input price matters most."
+        }
+      ]
+    },
+    {
+      "id": "retry",
+      "chapter": "When the expensive model is cheaper",
+      "template": "compare",
+      "data": {
+        "title": "Add the cost of being wrong",
+        "left": {
+          "heading": "Cheap model, plus fixing it",
+          "points": [
+            "Gemini 3.8 Flash: $24",
+            "One hour a week fixing its mistakes",
+            "At $40 an hour: about $160 more",
+            "Total about $184"
+          ]
+        },
+        "right": {
+          "heading": "Pricier model, fewer fixes",
+          "points": [
+            "Claude Opus 5.5: $178",
+            "Fewer retries, less babysitting",
+            "Total about $178",
+            "Your hour and your rate decide"
+          ]
+        }
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "dsie",
+          "text": "Now the twist. The bill is not just the API. If the cheap model needs you to fix its work, your time goes on the bill."
+        },
+        {
+          "id": "mbxu",
+          "text": "Take the coding job on Gemini Flash at twenty four dollars, and suppose it costs you one hour a week of fixing.",
+          "reveal": 1
+        },
+        {
+          "id": "pmjw",
+          "text": "At forty dollars an hour, that is about one hundred sixty dollars more, roughly one eighty four in total."
+        },
+        {
+          "id": "xauy",
+          "text": "Opus 5.5 at one seventy eight, with fewer retries, is now the cheaper option. Change the hour or the rate and it flips back.",
+          "reveal": 1
+        },
+        {
+          "id": "bxqs",
+          "text": "Those two numbers, the hour and the rate, are mine, as an example. Yours are the ones that count, and only you can measure them."
+        }
+      ]
+    },
+    {
+      "id": "rule",
+      "template": "big",
+      "data": {
+        "kicker": "The rule behind the twist",
+        "text": "retries multiply everything",
+        "sub": "two tries at a low price can cost more than one at a high price"
+      },
+      "lines": [
+        {
+          "id": "pdgg",
+          "text": "The rule behind the twist: retries multiply everything. Two tries at a low price can cost more than one at a high price."
+        },
+        {
+          "id": "h2z3",
+          "text": "So the real question is never which model is smartest. It is which model's failure rate on your job you can afford, at the lowest price."
+        }
+      ]
+    },
+    {
+      "id": "test",
+      "chapter": "The three-question test, and my picks",
+      "template": "steps",
+      "data": {
+        "title": "Ask before you pay",
+        "steps": [
+          {
+            "title": "What does a wrong answer cost?",
+            "detail": "Cheap to check, or expensive to undo"
+          },
+          {
+            "title": "How many retries do I really do?",
+            "detail": "Count them for a week"
+          },
+          {
+            "title": "Is the cheaper sibling good enough?",
+            "detail": "Sol, Flash, Grok before Astra or Opus"
+          }
+        ]
+      },
+      "lines": [
+        {
+          "id": "trey",
+          "text": "Here is the test I use before paying for any model. Three questions."
+        },
+        {
+          "id": "f4vb",
+          "text": "One, what does a wrong answer cost? If it is cheap to check, buy cheap. If it is expensive to undo, pay up.",
+          "reveal": 1
+        },
+        {
+          "id": "tqzv",
+          "text": "Two, how many retries do I really do? Count them for a week. Most people guess low.",
+          "reveal": 1
+        },
+        {
+          "id": "ez5e",
+          "text": "Three, is the cheaper sibling good enough? Every lab sells one: Sol under Astra, Flash under Pro, the smaller Claude models under Opus.",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "picks",
+      "template": "table",
+      "data": {
+        "title": "My picks, as opinion",
+        "columns": [
+          "Job",
+          "My pick",
+          "Why"
+        ],
+        "rows": [
+          [
+            "Daily PDF summary",
+            "The cheapest that reads well",
+            "Pocket money either way"
+          ],
+          [
+            "Coding agent",
+            "Opus 5.5 or Sol, then count retries",
+            "Cache writes and redo time dominate"
+          ],
+          [
+            "Support bot",
+            "Flash or Grok, with a checker",
+            "Input volume rules the bill"
+          ]
+        ]
+      },
+      "lines": [
+        {
+          "id": "wpuc",
+          "text": "My picks, and these are opinions, not measurements. For the daily summary, the cheapest model that reads well; the money is trivial.",
+          "reveal": 1
+        },
+        {
+          "id": "m4uq",
+          "text": "For the coding agent, start with Opus 5.5 or Sol and count your retries for a week before you decide.",
+          "reveal": 1
+        },
+        {
+          "id": "6cnv",
+          "text": "For the support bot, Flash or Grok with a checking step, because input volume rules that bill.",
+          "reveal": 1
+        },
+        {
+          "id": "msvn",
+          "text": "And I would not switch because a new model topped a chart this week. I switch when my cost, quality or speed actually changes."
+        }
+      ]
+    },
+    {
+      "id": "agent-cta",
+      "template": "cta",
+      "data": {
+        "kicker": "Last video",
+        "title": "The agent that read these price pages for us",
+        "sub": "Five moves, one 403, an honest blank cell"
+      },
+      "lines": [
+        {
+          "id": "d539",
+          "text": "By the way, the agent from last video fetched two of these price pages for us, and hit a wall on the third."
+        },
+        {
+          "id": "a6h2",
+          "text": "That run, wall included, is in the previous video."
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "So which one is worth paying for?",
+      "template": "outro",
+      "data": {
+        "title": "The one whose mistakes you can afford",
+        "cta": "Price your own month with the formula, then count your retries.",
+        "lines": [
+          "in × price + cached × price + out × price",
+          "Add the cost of being wrong",
+          "Prefer the cheaper sibling until it fails you"
+        ]
+      },
+      "lines": [
+        {
+          "id": "u2g7",
+          "text": "So which one is worth paying for? The one whose mistakes on your job you can afford, at the lowest price that gets you there."
+        },
+        {
+          "id": "y5p9",
+          "text": "Price your own month with the formula, count your retries for a week, and add the cost of being wrong. Then decide."
+        },
+        {
+          "id": "ypij",
+          "text": "Every price in this video is from the vendors' own pages on September 28, 2026, and they will change. The links are in the description."
+        }
+      ]
+    }
+  ]
+}

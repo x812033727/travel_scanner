@@ -8,12 +8,16 @@ import { fileURLToPath } from "node:url";
 export const FIXTURES = path.dirname(fileURLToPath(import.meta.url));
 export const FIXTURE_FILE = path.join(FIXTURES, "minimal", "video.json");
 export const DRAMA_FIXTURE_FILE = path.join(FIXTURES, "drama", "video.json");
+// The same three scenes narrated in English (`narration_locale: "en"`).
+export const EN_FIXTURE_FILE = path.join(FIXTURES, "en", "video.json");
 
 export const fixture = () => JSON.parse(readFileSync(FIXTURE_FILE, "utf8"));
 export const fixtureLexicon = () => JSON.parse(readFileSync(path.join(FIXTURES, "lexicon.json"), "utf8"));
 export const fixtureBrief = () => readFileSync(path.join(FIXTURES, "minimal", "brief.md"), "utf8");
 export const dramaFixture = () => JSON.parse(readFileSync(DRAMA_FIXTURE_FILE, "utf8"));
 export const dramaBrief = () => readFileSync(path.join(FIXTURES, "drama", "brief.md"), "utf8");
+export const enFixture = () => JSON.parse(readFileSync(EN_FIXTURE_FILE, "utf8"));
+export const enBrief = () => readFileSync(path.join(FIXTURES, "en", "brief.md"), "utf8");
 
 /** A fake repository holding a fixture (minimal or drama) as docs/videos/<slug>/, and a work base beside it. */
 export function sandbox(slug = "fixture-minimal", name = "minimal") {

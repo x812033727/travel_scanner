@@ -11,7 +11,7 @@ import { parseArgs } from "node:util";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { isDrama } from "../core/drama.mjs";
 import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
-import { eachLine } from "../core/schema.mjs";
+import { eachLine, LOCALES } from "../core/schema.mjs";
 import { ARTIFACTS, dubArtifacts, lintProject, loadProject, recordStage } from "../core/state.mjs";
 import { FPS, SAMPLES_PER_FRAME, framesFor, msToSamples, speechHash } from "../core/timeline.mjs";
 import { SpeechError, speechStatus, synthesize } from "../tts/client.mjs";
@@ -21,8 +21,8 @@ import { flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "../t
 import { encodeWav, parseWav, requireNarrationFormat } from "../tts/wav.mjs";
 import { encodeArgs, measureLoudnessArgs, parseLoudnorm, stretchArgs } from "./encode.mjs";
 import {
-  DEFAULT_FORMAT, DUB_FORMATS, DUB_LOCALES, GUARD_MS, MAX_TEMPO,
-  assembleTrack, defaultRate, dubLexicon, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
+  DEFAULT_FORMAT, DUB_FORMATS, GUARD_MS, MAX_TEMPO,
+  assembleTrack, defaultRate, dubLexicon, dubLocales, dubScript, estimatedLengths, layoutDub, measureRate, placeLines, shrinkBudgets, translationHash,
 } from "./plan.mjs";
 
 // When a stretched window still sticks out (atempo rounds), the next try is this much faster.
@@ -45,8 +45,9 @@ function options(args) {
     strict: true,
   }).values;
   if (!values.slug && !values.file) throw new UsageError("dub needs --slug (or --file for an example outside docs/videos)");
-  const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : DUB_LOCALES;
-  for (const locale of locales) if (!DUB_LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${DUB_LOCALES.join(", ")}`);
+  // Which locales can be dubbed depends on the narration language, so the list is checked once the video is read.
+  const locales = values.locale ? values.locale.split(",").map((locale) => locale.trim()).filter(Boolean) : null;
+  for (const locale of locales ?? []) if (!LOCALES.includes(locale)) throw new UsageError(`--locale must be among ${LOCALES.join(", ")}`);
   if (!DUB_FORMATS.includes(values.format)) throw new UsageError(`--format must be one of ${DUB_FORMATS.join(", ")}`);
   return { ...values, locales };
 }
@@ -266,6 +267,9 @@ async function dub(args, ctx) {
   const { EXIT } = ctx;
   const values = options(args);
   const project = loadProject({ slug: values.slug, file: values.file, root: ctx.root });
+  const allowed = dubLocales(project.doc);
+  values.locales ??= allowed;
+  for (const locale of values.locales) if (!allowed.includes(locale)) throw new UsageError(`--locale must be among ${allowed.join(", ")}: the video is narrated in the other one`);
   const lint = lintProject(project);
   if (lint.errors.length) {
     ctx.stdout.write(`${project.doc.slug} has ${lint.errors.length} lint errors; run lint first\n`);

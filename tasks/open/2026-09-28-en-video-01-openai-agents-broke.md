@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-en-video-01-openai-agents-broke
 title: Produce EN video 01: OpenAI's agents broke into government websites
-status: open
+status: in-progress
 priority: P1
 area: docs
-owner:
-claimed_at:
+owner: claude-fable-5-1
+claimed_at: 2026-09-28T02:48:20Z
 created_at: 2026-09-28T02:13:09Z
 completed_at:
-branch:
+branch: claude/ai-video-planning-l43qas
 depends_on:
   - 2026-09-28-video-english-narration-locale
 scope:

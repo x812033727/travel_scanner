@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-en-ai-video-season-one-plan
 title: English AI video season one plan: six videos aimed at one million views
-status: blocked
+status: in-progress
 priority: P1
 area: docs
 owner: claude-fable-5-1

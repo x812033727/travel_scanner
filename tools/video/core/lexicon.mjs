@@ -56,6 +56,23 @@ export function unknownTerms(text, lexicon) {
   return latinTerms(text).filter((term) => !isKnownTerm(term, lexicon));
 }
 
+// An all-caps part of a term ("SEC", the "GPT" of "GPT-6", "AI"): what an English voice spells
+// out or guesses at. Ordinary words it reads as written.
+const ACRONYM_PART = /^[A-Z]{2,}[0-9]*$/;
+
+export function hasAcronym(term) {
+  return String(term).split(JOINERS).some((part) => ACRONYM_PART.test(part));
+}
+
+/**
+ * The terms a narration in `locale` needs the dictionary for. A Mandarin voice needs every Latin
+ * term (unknownTerms); an English voice reads its own language, so only acronyms are checked.
+ */
+export function unknownTermsFor(text, lexicon, locale = "zh-TW") {
+  const unknown = unknownTerms(text, lexicon);
+  return locale === "en" ? unknown.filter(hasAcronym) : unknown;
+}
+
 /** Dictionary entries with a spoken form, longest first so "Claude Code" wins over "Claude". */
 export function substitutions(lexicon) {
   return Object.entries(lexicon?.terms ?? {})

@@ -12,9 +12,9 @@ import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksC
 import { burnIn, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
-import { DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
+import { dubLocales, dubScript, speechLexicon, translationHash } from "../dubs/plan.mjs";
 import { atomicWrite, contentPackFile, docDir, readJson, readText, stopRequested, videoFile } from "./paths.mjs";
-import { LOCALES, NARRATION_LOCALE } from "./schema.mjs";
+import { LOCALES, narrationLocale } from "./schema.mjs";
 import { speechHash, visualHash } from "./timeline.mjs";
 
 /**
@@ -135,7 +135,7 @@ export function loadProject({ slug, file, root }) {
   const doc = readJson(source);
   const dir = path.dirname(source);
   const translations = {};
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of LOCALES.filter((each) => each !== narrationLocale(doc))) {
     const translation = readJson(path.join(dir, "i18n", `${locale}.json`), null);
     if (translation) translations[locale] = translation;
   }
@@ -160,7 +160,9 @@ export function loadProject({ slug, file, root }) {
     // An episode of a series: the cast as the setting book has it, and this episode's beats
     // (docs/videos/SERIES.md); the worker writes it when it starts the episode.
     series: readJson(path.join(dir, "series.json"), null),
-    lexicon: readJson(path.join(shelf, "lexicon.json"), emptyLexicon()),
+    // The dictionary as this narration's voice may use it: an English narration drops the
+    // Chinese-character aliases, like a dub does (docs/videos/DUBS.md).
+    lexicon: speechLexicon(readJson(path.join(shelf, "lexicon.json"), emptyLexicon()), narrationLocale(doc)),
     pack: doc.source_guide ? readJson(contentPackFile(doc.source_guide, root), null) : undefined,
     translations,
     others,
@@ -224,7 +226,7 @@ const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((sho
  */
 export function dubsStatus(project, workdir, speech) {
   const result = {};
-  for (const locale of DUB_LOCALES) {
+  for (const locale of dubLocales(project?.doc)) {
     const files = dubArtifacts(workdir, locale);
     const skipped = readJson(files.skipped, null);
     const timeline = readJson(files.timeline, null);
@@ -385,7 +387,7 @@ function compilationDefinitions({ slug, workdir, doc, project, valid, lint, visu
   // episodes left no keyframe to pick draws on the theme alone and needs no source.
   const thumbSource = doc?.thumbnail?.data?.shot === undefined || Boolean(keyframes?.shots?.thumb?.file);
   const compiled = valid && compilationChecksCurrent(doc, checks, episodes);
-  const locales = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+  const locales = LOCALES.filter((locale) => locale !== narrationLocale(doc));
   const untranslated = locales.filter((locale) => !translationComplete(project.translations[locale]));
   return {
     "metadata planned": {

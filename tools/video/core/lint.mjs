@@ -4,9 +4,9 @@
 // The written-language list is the one the recorded route's video_kit.py uses, so a script that
 // passes one route's check does not fail the other's.
 import { emotionProblems, isDrama, shotProblems, visualTierProblems } from "./drama.mjs";
-import { unknownTerms, validateLexicon } from "./lexicon.mjs";
+import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
-import { DEFAULT_TARGET_MINUTES, LOCALES, NARRATION_LOCALE, eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { DEFAULT_TARGET_MINUTES, LOCALES, eachLine, narrationLocale, spokenText, textHash, validateVideo } from "./schema.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 
@@ -14,11 +14,16 @@ import { metadataStatus, namedWith } from "./translations.mjs";
 export const WRITTEN_ONLY = ["本文", "這篇文章", "如上表", "如下表", "上表", "下表", "綜上所述", "值得注意的是", "筆者", "如圖所示"];
 // Narrating how the facts were checked belongs in claims.md, not in the viewer's ear.
 export const PROCESS_TALK = ["本影片", "經查證", "根據官方文件", "查核後", "截至查證"];
+// The same two lists for an English narration (`narration_locale: "en"`), matched without case.
+export const WRITTEN_ONLY_EN = ["as shown above", "as shown below", "in this article", "the table below", "the table above", "as mentioned above"];
+export const PROCESS_TALK_EN = ["we verified", "according to the official documentation", "as of our check", "we checked"];
 // The two brief sections the monetization policy makes mandatory (docs/videos/DESIGN.md).
 export const BRIEF_SECTIONS = ["站主觀點", "觀眾看完能做到的事"];
 // A drama's brief is a story bible instead (docs/videos/DRAMA.md); the owner's stance stays.
 export const BRIEF_SECTIONS_DRAMA = ["故事前提", "角色", "站主觀點"];
 export const SENTENCE_WARN = 40;
+// An English word counts two units, so 40 is twenty words; spoken English runs to about 25 before it needs a breath.
+export const SENTENCE_WARN_EN = 50;
 export const HOOK_SECONDS = 30;
 export const SIMILARITY_WARN = 0.8;
 // SSML markup Azure also bills for, per line (a <break/> and the sentence wrapper); an estimate.
@@ -194,13 +199,15 @@ export function lintVideo(doc, context = {}) {
   for (const problem of validateLexicon(lexicon)) error(`lexicon.${problem.path}`, problem.message);
   for (const problem of checkBrief(context.brief, doc.format)) error("brief.md", problem);
   const drama = isDrama(doc);
+  const narration = narrationLocale(doc);
+  const english = narration === "en";
   if (!drama && doc.music) warn("music", "the channel spec puts no music under slides videos (docs/videos/README.md); a drama may");
   if (doc.source_guide && context.pack === null) error("source_guide", `no content pack named ${doc.source_guide}`);
   if (drama && doc.series) seriesProblems(doc, context.series, error, warn);
 
   for (const { line, label } of eachLine(doc)) {
     const spoken = spokenText(line);
-    for (const term of unknownTerms(spoken, lexicon)) {
+    for (const term of unknownTermsFor(spoken, lexicon, narration)) {
       error(label, `"${term}" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right`);
     }
     if (line.say !== undefined && line.say_for !== textHash(line.text)) {
@@ -209,7 +216,13 @@ export function lintVideo(doc, context = {}) {
     if (URL.test(line.text) || URL.test(spoken)) error(label, "never read a URL aloud: say it is in the description");
     for (const phrase of WRITTEN_ONLY) if (line.text.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
     for (const phrase of PROCESS_TALK) if (line.text.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
-    if (spokenUnits(line.text) > SENTENCE_WARN) warn(label, `${spokenUnits(line.text)} spoken units; split sentences longer than ${SENTENCE_WARN}`);
+    if (english) {
+      const lower = line.text.toLowerCase();
+      for (const phrase of WRITTEN_ONLY_EN) if (lower.includes(phrase)) error(label, `"${phrase}" is written language; say it the way you would out loud`);
+      for (const phrase of PROCESS_TALK_EN) if (lower.includes(phrase)) warn(label, `"${phrase}" narrates the process; facts and their sources go in claims.md and the description`);
+    }
+    const longest = english ? SENTENCE_WARN_EN : SENTENCE_WARN;
+    if (spokenUnits(line.text) > longest) warn(label, `${spokenUnits(line.text)} spoken units; split sentences longer than ${longest}`);
     if (/[()（）]/.test(line.text)) warn(label, "parentheses do not survive being read aloud; make it its own sentence");
   }
 
@@ -238,13 +251,13 @@ export function lintVideo(doc, context = {}) {
   const [low, high] = doc.target_minutes ?? DEFAULT_TARGET_MINUTES;
   if (minutes < low || minutes > high) warn("scenes", `about ${minutes.toFixed(1)} minutes; the target is ${low}-${high}`);
 
-  const article = context.pack ? articleUrl(context.pack, NARRATION_LOCALE, doc.slug) : null;
-  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: NARRATION_LOCALE });
+  const article = context.pack ? articleUrl(context.pack, narration, doc.slug) : null;
+  const description = composeDescription({ body: doc.youtube.description, timeline, article, sources: doc.sources ?? [], locale: narration });
   for (const problem of checkYoutubeFields({ title: doc.youtube.title, description, tags: doc.youtube.tags })) error("youtube", problem);
   if (!doc.youtube.tags.length) warn("youtube.tags", "no tags: add the product names and their common misspellings");
   if (!doc.sources?.length) warn("sources", "no sources: every fact in claims.md needs one, and they go in the description");
 
-  for (const locale of LOCALES.filter((each) => each !== NARRATION_LOCALE)) {
+  for (const locale of LOCALES.filter((each) => each !== narration)) {
     const translation = context.translations?.[locale];
     if (!translation) continue;
     const stale = [];
@@ -255,12 +268,12 @@ export function lintVideo(doc, context = {}) {
       else if (entry.source_hash !== textHash(line.text)) stale.push(line.id);
     }
     if (missing.length) warn(`i18n/${locale}.json`, `${missing.length} lines not translated: ${missing.join(", ")}`);
-    if (stale.length) warn(`i18n/${locale}.json`, `${stale.length} translations older than the zh-TW line: ${stale.join(", ")}`);
+    if (stale.length) warn(`i18n/${locale}.json`, `${stale.length} translations older than the ${narration} line: ${stale.join(", ")}`);
     const state = metadataStatus(doc, translation);
     const [absent, older, unknown] = ["missing", "stale", "unknown"].map((wanted) => namedWith(state, wanted));
     if (absent.length) warn(`i18n/${locale}.json`, `not translated: ${absent.join(", ")}`);
-    if (older.length) warn(`i18n/${locale}.json`, `translations older than the zh-TW text: ${older.join(", ")}`);
-    if (unknown.length) warn(`i18n/${locale}.json`, `translations merged before i18n-merge hashed their zh-TW text, so possibly stale: ${unknown.join(", ")}; i18n-sheet marks them todo`);
+    if (older.length) warn(`i18n/${locale}.json`, `translations older than the ${narration} text: ${older.join(", ")}`);
+    if (unknown.length) warn(`i18n/${locale}.json`, `translations merged before i18n-merge hashed their ${narration} text, so possibly stale: ${unknown.join(", ")}; i18n-sheet marks them todo`);
     if (state.orphans.length) warn(`i18n/${locale}.json`, `chapter titles for scenes that no longer open a chapter: ${state.orphans.join(", ")}; i18n-merge drops them`);
   }
 
