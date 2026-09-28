@@ -5,6 +5,7 @@ import path from "node:path";
 import test from "node:test";
 
 import { sandbox } from "../core/fixtures/load.mjs";
+import { writeLanguages } from "../core/stages.mjs";
 import { captionsItem, checkPackage, descriptionsItem, disclosureItem, filesItem, listFiles, PACKAGE_ITEM_IDS, packageFiles, packageReport, readPackageReport, skipReason } from "./check.mjs";
 
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -126,4 +127,36 @@ test("readPackageReport reads upload/ and compares final.mp4 with the final gate
   const none = await readPackageReport(path.join(box.work, "missing"));
   assert.equal(none.report.final_sha256, null);
   assert.ok(none.report.items.every((item) => !item.ok));
+});
+
+test("with the owner's choice, descriptions and captions are checked for zh-TW and the chosen locales, read from languages.json", async () => {
+  const present = files();
+  assert.equal(descriptionsItem({ files: present, metadata: metadata(), locales: ["zh-TW", "en"] }).detail, "descriptions for zh-TW, en");
+  assert.equal(descriptionsItem({ files: present, metadata: metadata(), locales: ["zh-TW", "ja"] }).detail, "no description for ja", "a chosen locale without its file fails, whatever metadata.json lists");
+  assert.equal(descriptionsItem({ files: present, metadata: { ...metadata(), localizations: {} }, locales: ["zh-TW"] }).ok, true);
+  const zhOnly = checkPackage({ files: present, metadata: { ...metadata(), skipped_caption_locales: {} }, finalSha256: FINAL, approvedSha256: FINAL, metadataSha256: "m".repeat(64), locales: ["zh-TW"], descriptionLocales: ["zh-TW"] });
+  assert.equal(zhOnly.ok, true, "nothing chosen: no reason needed for the other locales");
+  assert.equal(zhOnly.items[2].detail, "caption files for zh-TW");
+
+  const box = sandbox();
+  const upload = path.join(box.workdir, "upload");
+  mkdirSync(path.join(upload, "captions"), { recursive: true });
+  const final = Buffer.from("the approved cut");
+  writeFileSync(path.join(upload, "final.mp4"), final);
+  writeFileSync(path.join(upload, "captions", "zh-TW.srt"), "1\n00:00:00,000 --> 00:00:01,000\nx\n");
+  writeFileSync(path.join(upload, "description.zh-TW.txt"), "title\n\nbody\n");
+  const record = { ...metadata(), final_sha256: sha(final), thumbnail: null, localizations: {}, captions: ["captions/zh-TW.srt"], skipped_caption_locales: {} };
+  writeFileSync(path.join(upload, "metadata.json"), `${JSON.stringify(record, null, 2)}\n`);
+  writeFileSync(path.join(box.workdir, "approvals.json"), JSON.stringify({ approvals: [{ gate: "final", file: "final.mp4", sha256: sha(final), approved_at: "2026-09-27T00:00:00Z", note: "" }] }));
+  const noChoice = await readPackageReport(box.workdir);
+  assert.equal(noChoice.report.ok, false, "without a choice every locale needs captions or a reason");
+  assert.match(noChoice.report.items[2].detail, /en: no caption file and no reason/);
+  writeLanguages(box.workdir, { locales: {}, decided_at: "2026-09-27T10:00:00Z" });
+  const zh = await readPackageReport(box.workdir);
+  assert.equal(zh.report.ok, true, JSON.stringify(zh.report.items));
+  assert.deepEqual(zh.report.items.slice(1, 3).map((item) => item.detail), ["descriptions for zh-TW", "caption files for zh-TW"]);
+  writeLanguages(box.workdir, { locales: { ja: { metadata: true, captions: true, dub: false } }, decided_at: "2026-09-27T10:00:00Z" });
+  const ja = await readPackageReport(box.workdir);
+  assert.equal(ja.report.ok, false);
+  assert.deepEqual(ja.report.items.slice(1, 3).map((item) => item.detail), ["no description for ja", "ja: no caption file and no reason in skipped_caption_locales"]);
 });

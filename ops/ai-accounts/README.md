@@ -67,7 +67,8 @@ and puts it back if that one does not finish.
   for a fresh read.
 - **Claude:** Claude Code has no documented way to read plan usage outside a session. Its
   status line input carries `rate_limits.five_hour` and `seven_day` for Pro and Max
-  accounts, so each account's status line runs `statusline-record claude-<slot>`. That
+  accounts (checked against the status line docs on 2026-09-28: there is no per-model key, so
+  Fable, Opus and the rest show up only inside those two shared windows), so each account's status line runs `statusline-record claude-<slot>`. That
   records the latest numbers in `mokaair-usage.json` and prints a short line, or the
   owner's own status line command if one was configured before; that command is kept in
   `mokaair-statusline-chain.json`. The agent re-points the status line at the recorder
@@ -195,9 +196,13 @@ text parser do not; a reader cannot wait for a CLI.
   account being probed. When it is the probed account's turn, the run waits for the probe
   (seconds, within `queue_seconds`) instead of spending another account.
 - A run that hits a usage limit rests that account for 30 minutes and moves on to the next
-  one. When every account is at the cap, the answer is `subscription_quota_paused`.
-  Research features then wait or fall back to MiniMax according to `ai_subscription_fallback`;
-  a video writing stage remains paused.
+  one. A limit on one model family ("You've hit your Opus limit") rests the account for that
+  family only; the others keep using it. Before 2026-09-28 the agent did not recognise that
+  wording, so such a run failed instead of moving on. When every account is at the cap, the
+  answer is `subscription_quota_paused`: research features wait (the news pipeline tries
+  again later) and a video writing stage remains paused. Since 2026-09-28 nothing falls back
+  to MiniMax or any other model; the owner removed `ai_subscription_fallback`, and a stored
+  value is ignored.
 - Codex runs with shell, unified exec, browser, app, plugin, hooks and web search disabled,
   plus read-only sandboxing, an empty working directory, ephemeral history and a fixed output
   schema. The agent rejects any tool item in Codex's JSONL. A 2026-09-27 isolated host test

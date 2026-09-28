@@ -4,16 +4,17 @@ The AI vendors card selects API key or a host subscription account for Claude an
 research calls. The API hands the AI accounts agent one prompt; the agent runs Claude Code or
 Codex with tools disabled on a signed-in account. If a run hits the limit, it rotates accounts.
 
-When no account can serve (every one is at the cap, none is signed in, the agent is down, or
-all are busy past the wait), the call falls back to MiniMax, if the site has its key. The
-provider then reports MiniMax's name and model, so the run records show what actually served.
+The call always runs the vendor and model the feature chose. When no account can serve (every
+one is at the cap, none is signed in, the agent is down, or all are busy past the wait), the
+error goes back to the caller, which tries again later (the news pipeline pauses the candidate).
+The owner decided on 2026-09-28 that a full account hands over to the next one and never to
+MiniMax: the MiniMax fallback and its setting were removed.
 """
 
 from __future__ import annotations
 
 import json
-from collections.abc import Callable
-from typing import Any, Literal, Protocol, TypeVar
+from typing import Any, Literal, TypeVar
 
 from pydantic import BaseModel, ValidationError
 
@@ -21,7 +22,6 @@ from app.admin_ai_accounts.agent import AiAccountsAgentClient
 from app.admin_ai_accounts.schemas import AgentOverview
 from app.ai.structured_output import extract_json_document, repair_instruction, schema_instructions
 from app.config import Settings
-from app.problems import AppError
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
@@ -29,13 +29,13 @@ Connection = Literal["api_key", "subscription"]
 SUBSCRIPTION_TOOLS = {"anthropic": "claude", "openai": "codex"}
 SUBSCRIPTION_LABELS = {"claude": "Claude", "codex": "Codex"}
 
-# Why a subscription call gives way to MiniMax: nothing ran, so trying another vendor spends
-# nothing twice. A run that started and failed is reported instead.
 # The owner's choice of 2026-09-26: no usage cap. The accounts take turns in slot order
 # (A, B, C, … and back to A), and one is left only when its 5-hour or weekly window is full.
 FULL_PERCENT = 100
 
-FALLBACK_CODES = frozenset(
+# Why a subscription call is put off rather than failed: nothing ran, so trying again later
+# spends nothing twice. A run that started and failed is reported instead.
+WAIT_CODES = frozenset(
     {
         "subscription_quota_paused",
         "subscription_not_signed_in",
@@ -54,21 +54,6 @@ ANSWER_RULE = (
     "\n\nThe user message is the payload as JSON. Answer with the JSON object the schema "
     "describes and nothing else: no Markdown fence, no text before or after it."
 )
-
-
-class _Structured(Protocol):
-    name: Any
-    model: str
-
-    async def structured(
-        self,
-        schema: type[TModel],
-        schema_name: str,
-        instructions: str,
-        payload: dict[str, Any],
-    ) -> tuple[TModel, dict[str, int]]: ...
-
-    async def close(self) -> None: ...
 
 
 def on_subscription(settings: Settings, vendor: str) -> bool:
@@ -97,43 +82,27 @@ def run_seconds(timeout_seconds: float) -> float:
 
 
 class SubscriptionResearchProvider:
-    """``ResearchProvider`` on a vendor's subscription accounts, with MiniMax fallback."""
+    """``ResearchProvider`` on a vendor's subscription accounts, and nothing else."""
 
     def __init__(
         self,
         settings: Settings,
         model: str,
         timeout_seconds: float,
-        fallback: Callable[[], _Structured] | None = None,
         agent: AiAccountsAgentClient | None = None,
         vendor: Literal["anthropic", "openai"] = "anthropic",
     ) -> None:
         self.name: Any = vendor
         self.model = model
-        # "claude:b" for the account that answered last, or the fallback vendor's name.
+        # "claude:b" for the account that answered last.
         self.served_by: str | None = None
         self._settings = settings
         self._tool = SUBSCRIPTION_TOOLS[vendor]
         self._timeout_seconds = run_seconds(timeout_seconds)
-        self._fallback_factory = fallback
-        self._fallback: _Structured | None = None
         self._agent = agent or AiAccountsAgentClient(settings)
 
     async def close(self) -> None:
-        if self._fallback is not None:
-            await self._fallback.close()
-
-    async def _on_fallback(
-        self, schema: type[TModel], schema_name: str, instructions: str, payload: dict[str, Any]
-    ) -> tuple[TModel, dict[str, int]]:
-        if self._fallback is None:
-            assert self._fallback_factory is not None
-            self._fallback = self._fallback_factory()
-        # The rest of this provider's calls go there too: the accounts will not free up within
-        # one guide review or one news stage.
-        self.name, self.model = self._fallback.name, self._fallback.model
-        self.served_by = str(self._fallback.name)
-        return await self._fallback.structured(schema, schema_name, instructions, payload)
+        return None
 
     async def structured(
         self,
@@ -142,8 +111,6 @@ class SubscriptionResearchProvider:
         instructions: str,
         payload: dict[str, Any],
     ) -> tuple[TModel, dict[str, int]]:
-        if self._fallback is not None:
-            return await self._on_fallback(schema, schema_name, instructions, payload)
         system = f"{instructions.rstrip()}\n{schema_instructions(schema)}{ANSWER_RULE}"
         usage = {"input_tokens": 0, "output_tokens": 0}
         previous = ""
@@ -152,20 +119,17 @@ class SubscriptionResearchProvider:
             prompt = json.dumps(payload, ensure_ascii=False)
             if attempt and failure is not None:
                 prompt += repair_instruction(previous, failure)
-            try:
-                result = await self._agent.run_prompt(
-                    tool=self._tool,
-                    model=self.model,
-                    system=system,
-                    prompt=prompt,
-                    max_usage_percent=FULL_PERCENT,
-                    timeout_seconds=self._timeout_seconds,
-                    queue_seconds=QUEUE_SECONDS,
-                )
-            except AppError as error:
-                if error.code not in FALLBACK_CODES or self._fallback_factory is None:
-                    raise
-                return await self._on_fallback(schema, schema_name, instructions, payload)
+            # A full account hands over to the next one inside the agent (A -> B -> ... -> A);
+            # an error here means none of them can take the run now.
+            result = await self._agent.run_prompt(
+                tool=self._tool,
+                model=self.model,
+                system=system,
+                prompt=prompt,
+                max_usage_percent=FULL_PERCENT,
+                timeout_seconds=self._timeout_seconds,
+                queue_seconds=QUEUE_SECONDS,
+            )
             self.served_by = f"{self._tool}:{result.slot}"
             usage["input_tokens"] += result.input_tokens
             usage["output_tokens"] += result.output_tokens
