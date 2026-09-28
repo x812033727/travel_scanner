@@ -39,6 +39,8 @@ Chromium 操作 YouTube Studio。服務使用 Node 24、Playwright、SQLite 與�
 同一頻道只有一個瀏覽器 worker；有一筆工作等待人工處理時，後面的工作也等待，避免搶走
 站主正在處理的畫面。取消等待中的工作保留已知影片 ID 與素材，不會刪除 YouTube 影片。
 開始傳 MP4 後若來不及取得 ID 就中斷，必須填回既有影片網址才能繼續，不能盲目重新上傳。
+若此時上傳包已重新審核，可填原影片網址後取消舊工作，避免重跑舊資料。
+舊工作完成或取消後，出現新版核准包時會顯示「將新版核准包送到 VPS」。
 
 ## 在獨立 VPS 準備容器
 
@@ -188,6 +190,9 @@ npm run typecheck:web
 
 `.github/workflows/youtube-uploader.yml` 額外跑 Node/Chromium fixture tests、獨立 Docker build，
 以及無 Google 帳號的 Xvfb/noVNC/HTTP 啟動檢查。主 CI 執行網站與 API 的檢查。
+2026-09-28 已在 commit `0b105dc3` 通過獨立 workflow 的測試、Docker build 與無帳號啟動：
+[CI 執行紀錄](https://github.com/x812033727/travel_scanner/actions/runs/36383247014)。
+這份紀錄不包含真實 Google 登入或影片上傳；後續修正仍需對應版本的 CI。
 
 ### 啟用前真人驗收（未執行）
 

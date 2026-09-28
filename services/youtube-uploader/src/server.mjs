@@ -45,11 +45,12 @@ export function createServer({ store, secret, channel, runner }) {
         return send(200, await store.put(id, sha, Number(offset), await body(req, CHUNK)));
       }
       if (req.method === "POST" && action === "queue") return send(200, await store.queue(id));
-      if (req.method === "POST" && action === "cancel") return send(200, store.cancel(id));
-      if (req.method === "POST" && action === "resume") {
-        const value = JSON.parse((await body(req, 1000)).toString("utf8"));
+      if (req.method === "POST" && ["resume", "cancel"].includes(action)) {
+        const bytes = await body(req, 1000);
+        const value = bytes.length ? JSON.parse(bytes.toString("utf8")) : {};
+        if (!value || typeof value !== "object" || Array.isArray(value)) throw new Refused("invalid_json", 422);
         if (value.video_id != null && !VIDEO.test(value.video_id)) throw new Refused("invalid_video", 422);
-        return send(200, store.resume(id, value.video_id));
+        return send(200, action === "resume" ? store.resume(id, value.video_id) : store.cancel(id, value.video_id));
       }
       throw new Refused("method_not_allowed", 405);
     } catch (e) {

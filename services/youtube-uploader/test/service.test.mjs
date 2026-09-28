@@ -160,3 +160,15 @@ test("cancel before upload can resume staging, while completed video identities 
   f.store.patch(id, { state: "done" });
   assert.throws(() => f.store.create(hash("new-package"), manifest({ review_sha256: hash("new") })), { code: "existing_video_required" });
 });
+
+test("an uncertain old package can be reconciled and cancelled without resuming its upload", (t) => {
+  const f = fixture(t); const id = hash("old");
+  f.store.create(id, manifest());
+  f.store.patch(id, { state: "needs_action", upload_started: true });
+  assert.throws(() => f.store.cancel(id), { code: "video_id_required" });
+  assert.equal(f.store.cancel(id, ID).video_id, ID);
+  assert.equal(f.store.get(id).state, "cancelled");
+  const next = manifest({ review_sha256: hash("new-approval"), video_id: ID });
+  assert.equal(f.store.create(hash("next"), next).video_id, ID);
+  assert.equal(f.store.get(id).completed.length, 0);
+});

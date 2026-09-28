@@ -13,7 +13,7 @@ type Job = {
   steps: { id: string; done: boolean }[];
   files: { role: string; size: number; received: number }[];
 };
-type View = { configured: boolean; linked: boolean; job: Job | null };
+type View = { configured: boolean; linked: boolean; job: Job | null; new_package?: boolean };
 type Draft = { title: string; description: string; video_id: string | null };
 type Props = { slug?: string; draft?: Draft; onChange?: () => void; children?: ReactNode; disabled?: boolean };
 
@@ -29,7 +29,7 @@ function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pic
   useEffect(() => { change.current = onChange; }, [onChange]);
   const refresh = useCallback(async (signal?: AbortSignal) => {
     let result = await api<View>(path, { signal });
-    if (result.job?.state === "done" && !result.linked) {
+    if (result.job?.state === "done" && !result.linked && !result.new_package) {
       try {
         result = await api<View>(path + "/record", { method: "POST", body: "{}", signal });
       } catch (e) {
@@ -106,12 +106,13 @@ function JobPanel({ slug, draft, onChange }: Required<Pick<Props, "slug">> & Pic
         {needsId && <label className="grid gap-2 text-sm">{t("reconcileUrl")}<input className={control} value={url} onChange={(e) => setUrl(e.target.value)} disabled={busy} placeholder="https://youtu.be/…" /></label>}
         <Button disabled={busy || (needsId && !url.trim())} onClick={() => void action("resume")}>{t("resume")}</Button>
       </>}
-      {job.state === "cancelled" && <Button disabled={busy} onClick={() => void action("resume")}>{t("restart")}</Button>}
+      {job.state === "cancelled" && !view?.new_package && <Button disabled={busy} onClick={() => void action("resume")}>{t("restart")}</Button>}
+      {view?.new_package && ["done", "cancelled"].includes(job.state) && <Button disabled={busy} onClick={() => void action("start")}>{t("newPackage")}</Button>}
       <ul className="grid gap-1 text-sm">{job.steps.map((s) => <li key={s.id}>{s.done ? "✓" : "○"} {t.has(`steps.${s.id}`) ? t(`steps.${s.id}`) : s.id.startsWith("captions_") ? t("captionStep", { language: s.id.slice(9) }) : t("translationStep", { language: s.id.slice(13) })}</li>)}</ul>
       {job.video_id && <a href={`https://studio.youtube.com/video/${job.video_id}/edit`} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 text-sm text-[var(--teal)] underline"><ExternalLink size={16} aria-hidden />{t("openVideo")}</a>}
-      {job.state === "done" && <p className="text-sm">{view?.linked ? t("recorded") : t("recordHelp")}</p>}
-      {job.state === "done" && !view?.linked && <Button disabled={busy} onClick={() => void action("record")}>{t("record")}</Button>}
-      {["staging", "queued", "needs_action"].includes(job.state) && !needsId && <Button secondary disabled={busy} onClick={() => void action("cancel")}>{t("cancel")}</Button>}
+      {job.state === "done" && !view?.new_package && <p className="text-sm">{view?.linked ? t("recorded") : t("recordHelp")}</p>}
+      {job.state === "done" && !view?.linked && !view?.new_package && <Button disabled={busy} onClick={() => void action("record")}>{t("record")}</Button>}
+      {["staging", "queued", "needs_action"].includes(job.state) && <Button secondary disabled={busy || (needsId && !url.trim())} onClick={() => void action("cancel")}>{t("cancel")}</Button>}
     </>}
     <div><Button secondary disabled={busy} onClick={() => void action("refresh")}><RefreshCw size={16} aria-hidden />{t("refresh")}</Button></div>
   </section>;

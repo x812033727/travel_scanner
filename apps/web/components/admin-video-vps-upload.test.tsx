@@ -83,7 +83,7 @@ describe("VPS Studio mode", () => {
     await open();
     const resume = await screen.findByRole("button", { name: "已處理，繼續工作" });
     expect(resume).toHaveProperty("disabled", true);
-    expect(screen.queryByRole("button", { name: "取消等待中的工作" })).toBeNull();
+    expect(screen.getByRole("button", { name: "取消等待中的工作" })).toHaveProperty("disabled", true);
     expect(screen.getByText(/登入與驗證由你操作/)).toBeTruthy();
     fireEvent.change(screen.getByLabelText("核對後的 YouTube 影片網址"), { target: { value: "https://youtu.be/" + id } });
     fireEvent.click(resume);
@@ -126,5 +126,16 @@ describe("VPS Studio mode", () => {
     expect(screen.queryByRole("option", { name: "已放棄" })).toBeNull();
     fireEvent.change(screen.getByRole("combobox"), { target: { value: "test-video" } });
     await screen.findByRole("button", { name: "送到 VPS（私人）" });
+  });
+
+  it("offers a newly approved package without auto-recording an old completion", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockImplementation(() => Promise.resolve(Response.json({
+      ...view({ state: "done", video_id: id }), new_package: true,
+    }))));
+    render(<YoutubeVpsUpload slug="test-video" />);
+    await open();
+    await screen.findByRole("button", { name: "將新版核准包送到 VPS" });
+    expect(screen.queryByRole("button", { name: "記錄影片連結" })).toBeNull();
+    expect(vi.mocked(fetch).mock.calls.every(([, init]) => !init?.method)).toBe(true);
   });
 });

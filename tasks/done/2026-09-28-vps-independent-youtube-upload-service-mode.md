@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-vps-independent-youtube-upload-service-mode
 title: VPS independent YouTube upload service mode
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-vps-upload
 claimed_at: 2026-09-28T04:55:21Z
 created_at: 2026-09-28T04:50:52Z
-completed_at:
+completed_at: 2026-09-28T05:59:36Z
 branch: codex/youtube-vps-uploader
 depends_on:
   - 2026-09-28-youtube-manual-upload

@@ -154,10 +154,20 @@ async def status(session: AsyncSession, slug: str) -> dict[str, Any]:
     if settings is None:
         return {"configured": False, "job": None, "linked": False}
     job = await latest(slug)
+    approved = max(
+        (
+            review
+            for review in project.reviews
+            if review.gate == "publish" and review.status == "approved"
+        ),
+        key=lambda review: review.created_at,
+        default=None,
+    )
     return {
         "configured": True,
         "job": job,
         "linked": bool(job and job.get("video_id") and job["video_id"] == project.youtube_video_id),
+        "new_package": bool(job and approved and approved.content_sha256 != job["review_sha256"]),
     }
 
 
@@ -329,8 +339,18 @@ async def stage(session: AsyncSession, slug: str) -> dict[str, Any]:
     runtime, store, pack = await package(session, slug)
     if job["review_sha256"] != pack.sha256:
         raise Refused(409, "vps_package_changed", "核准的上傳包已變更，請先取消舊工作")
-    sources = await assets(session, slug, pack, runtime, store, need_video=not job.get("video_id"))
-    for entry in job.get("files", []):
+    entries = job.get("files", [])
+    sources = await assets(
+        session,
+        slug,
+        pack,
+        runtime,
+        store,
+        need_video=any(entry.get("role") == "final" for entry in entries),
+    )
+    if len(entries) != len(sources):
+        raise Refused(409, "vps_files_changed", "VPS 工作與已核准檔案不一致")
+    for entry in entries:
         source = next(
             (
                 file
@@ -384,6 +404,12 @@ async def action(
     if payload.url and not video_id:
         raise Refused(422, "vps_video_invalid", "請貼上有效的 YouTube 影片網址")
     if name == "resume":
+        known = project.youtube_video_id
+        if known and any(value and value != known for value in (job.get("video_id"), video_id)):
+            raise Refused(409, "vps_video_changed", "影片網址與網站已記錄的影片不同")
+        # A cancelled job may have been finished manually while the service was stopped.
+        # Carry that durable site ID into resume so it can never upload another MP4.
+        video_id = known or video_id
         _, _, pack = await package(session, slug)
         if job["review_sha256"] != pack.sha256:
             raise Refused(409, "vps_package_changed", "上傳包已變更，請先處理原工作")

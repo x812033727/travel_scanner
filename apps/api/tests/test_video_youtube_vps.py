@@ -221,6 +221,36 @@ async def test_progress_and_approval_mismatches_are_refused(fixture: tuple[Site,
     assert revoked.value.code == "vps_not_ready"
 
 
+async def test_resuming_cancelled_job_uses_video_link_recorded_manually(
+    fixture: tuple[Site, Remote],
+) -> None:
+    site, remote = fixture
+    await begin(site)
+    assert remote.job
+    remote.job["state"] = "cancelled"
+    async with site.factory() as session:
+        project = await session.scalar(select(VideoProject))
+        assert project
+        project.youtube_video_id = STUDIO_ID
+        await session.commit()
+    async with site.factory() as session:
+        result = await vps.action(session, SLUG, site.owner, "resume", vps.ResumeIn())
+    assert result["job"]["video_id"] == STUDIO_ID
+    assert json.loads(remote.calls[-1].content)["video_id"] == STUDIO_ID
+    remote.job["state"] = "staging"
+    async with site.factory() as session:
+        await vps.stage(session, SLUG)
+    assert remote.uploads, "the original immutable file list can still finish staging"
+    remote.job["state"] = "needs_action"
+    async with site.factory() as session:
+        with pytest.raises(Refused) as mismatch:
+            await vps.action(session, SLUG, site.owner, "resume", vps.ResumeIn(url="otherVid123"))
+    assert mismatch.value.code == "vps_video_changed"
+    remote.job["review_sha256"] = "b" * 64
+    async with site.factory() as session:
+        assert (await vps.status(session, SLUG))["new_package"] is True
+
+
 async def test_remote_errors_do_not_expose_secrets_and_wrong_channel_is_rejected(
     fixture: tuple[Site, Remote],
     monkeypatch: pytest.MonkeyPatch,

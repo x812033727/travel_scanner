@@ -107,12 +107,13 @@ export class Store {
     if (job.upload_started && !job.video_id && !videoId) throw new Refused("video_id_required");
     return this.view(this.patch(id, { state: job.state === "cancelled" ? "staging" : "queued", code: null, video_id: job.video_id || videoId || null }));
   }
-  cancel(id) {
+  cancel(id, videoId) {
     if ([...this.uploads].some((key) => key.startsWith(id))) throw new Refused("file_busy");
     const job = this.get(id);
     if (!["staging", "queued", "needs_action"].includes(job.state)) throw new Refused("cannot_cancel");
     // Preserve uncertain uploads: cancelling never grants permission to upload another copy.
-    if (job.upload_started && !job.video_id) throw new Refused("video_id_required");
-    return this.view(this.patch(id, { state: "cancelled", code: null }));
+    if (job.video_id && videoId && videoId !== job.video_id) throw new Refused("video_changed");
+    if (job.upload_started && !job.video_id && !videoId) throw new Refused("video_id_required");
+    return this.view(this.patch(id, { state: "cancelled", code: null, video_id: job.video_id || videoId || null }));
   }
 }
