@@ -284,6 +284,1102 @@
           "checked_on": "2026-09-14"
         }
       ]
+    },
+    "zh-CN": {
+      "title": "商品页 SEO：规格、变体与购买问题怎么整理",
+      "description": "商品页 SEO 不只是把热门词语放进标题，还要让搜索结果、变体网址与购买界面指向同一款商品。本文以原创桌面收纳盒案例，整理规格、选购问题、单页与多页变体、Product 结构化数据及上线检查流程，附比较表、操作步骤与原创 SVG，帮助商店避免价格、库存和图片不同步。",
+      "hero": {
+        "src": "/guides/ecommerce-product-seo/hero-zh-cn.jpg",
+        "alt": "Mokaair 原创文档、屏幕与核查盾牌，呈现商品规格、变体页面及数据一致性检查。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "读者搜索深型收纳盒，点进商品页却看到浅型款式，价格也与搜索展示不同。即使页面有许多关键词，这次访问仍可能无法完成购买。商品 SEO 应从读者找到哪一款、进站看到什么，以及能否确认条件开始检查。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本文根据 2026 年 9 月 14 日查阅的 Google 官方电商与结构化数据文档撰写。桌面收纳盒是原创教学案例，没有实际商品测试、价格推荐或商店部署；"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "与网址调整也不保证一定获得特殊搜索展示位。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "一个商品页先回答一组购买问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品标题应让人辨认类别、主要用途及必要的型号差异。收纳盒可以说明款式、尺寸或材质，而不是把所有可能的搜索词语堆在一起。读者若无法从名称知道自己正在看哪款，后续的图片与规格也容易被误读。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正文可以从实际选购问题安排：外部尺寸是否放得进柜子、内部空间是否足够、是否附盖，以及清洁方式有何限制。数据应来自自己的确认记录或制造商文档；没有测量过的承重与耐热能力，不要为了增加搜索内容而自行填入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品页与分类页各有用途。分类页帮助读者找适合的类型，商品页则提供某一款的完整条件。若所有商品只复制同一段品牌故事，读者仍无法比较差异；可以保留共通信息，同时补上每款确实不同、会影响选择的内容。"
+        },
+        {
+          "type": "heading",
+          "text": "规格、照片与交易信息应互相对得上",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先建立商品数据表，分开保存内外尺寸、单位、材质、包装内容及款式。不要把盒身高度当成含盖高度，也不要只在图片上标尺寸而没有文字说明。若供应商改版，保留版本与确认日期，避免新照片配到旧规格。"
+        },
+        {
+          "type": "paragraph",
+          "text": "图片应显示实际商品与选定款式；示意图则清楚标示其用途。以收纳盒为例，可以用原创图解说明量尺寸的位置，但不能把示意图当成真实容量实测。替代文字描述看得到的重要内容，不必将同一批关键词重复塞进每张图片。"
+        },
+        {
+          "type": "paragraph",
+          "text": "价格、币种、库存、配送与退换货说明都要让读者容易找到。本文不替商家设定交易规则，而是建议由实际负责人确认内容，并将适用条件链接到完整说明。需要先选规格才有价格时，界面也应清楚表达，避免用某款最低价代表全部组合。"
+        },
+        {
+          "type": "heading",
+          "text": "变体网址必须能还原正确选项",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同一商品可能有颜色、尺寸或材质变体。先梳理网站采用单页切换，还是不同款式分散于多个页面。对每个要被辨认的变体，测试直接打开其网址后是否已选好正确规格，并显示相符图片、价格、库存及加入购物车的商品。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的电商网址文档提醒，不应只靠 # 后的片段识别不同索引内容。若网站用网址"
+            },
+            {
+              "type": "text",
+              "text": "参数"
+            },
+            {
+              "type": "text",
+              "text": "选择款式，也要确认参数真的影响页面状态，而不是只有网址看起来不同。把链接传到另一个浏览器测试，是商店可以先做的基本检查。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "canonical 要根据实际设计处理。Google 的单页变体示例以一个代表整组商品的主要网址为基础；多页设计则没有一个单一网址代表所有 ProductGroup 内容。不要套用“所有规格都指回第一款”的规则，应让开发者根据页面内容与官方变体文档核对。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "选一款有代表性的商品，核对标题、规格、图片与交易信息。",
+            "列出所有变体网址，直接打开并检查是否还原正确购买选项。",
+            "确认现有平台输出的 Product 与变体标记，修正不一致数据。",
+            "完成技术与人工检查，再以固定商品及查询范围观察搜索表现。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "根据销售页用途选择 Product 标记",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 将商品结构化数据分为不同用途：可向你购买商品的页面，应查看商家信息（merchant listings）；无法直接向你购买的商品介绍或评论页，则可能适合商品摘要（product snippets）。两者有部分重叠，但不能把单纯导向别站购买的页面，当成自己的商家销售页。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ProductGroup 可说明同一商品的变体关系，搭配 Product 保存个别商品信息；variesBy、hasVariant 与群组标识符分别帮助描述差异、成员和群组。这些字段应根据真实商品建立，不要把完全不同用途的商品为了方便而硬凑成一组。"
+        },
+        {
+          "type": "paragraph",
+          "text": "标记通常由商店平台或插件生成，先查看现有输出，再决定是否需要调整。Google 也支持通过 Merchant Center 提供商品数据，但数据来源增加后，更需要同步价格与供货状态。网站标记与商品数据来源互相矛盾时，先找出由谁更新及何时更新。"
+        },
+        {
+          "type": "heading",
+          "text": "验收要看页面与标记的同一个版本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先用 Rich Results Test 检查适用数据与必要字段，再以网址检查工具查看 Google 能读取到的页面。Google 建议商品标记尽可能放在初始 HTML；若完全依赖动态生成，价格与库存快速变动时更要留意读取的可靠性。实际调整交由熟悉平台的人处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工验收应从搜索可能使用的变体网址开始，比对页面标题、所选规格、图片、价格、供货状态和标记值。加入购物车前再次确认商品，不必为了测试而完成付款。若切换规格后标记仍停留在默认款式，应记录具体复现步骤交给维护者。"
+        },
+        {
+          "type": "paragraph",
+          "text": "搜索测试通过不等于事实正确，也不保证显示评分、价格或其他特殊信息。没有真实评价就不要建立评分；没有适用标识符也不要随机填号码。保留测试日期与商品版本，让后续库存或版式变动时能找回原本的比较基准。"
+        },
+        {
+          "type": "heading",
+          "text": "持续检查读者是否找到合适商品",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品更新后，可先用固定页面与相关查询观察曝光和点击，再看读者进站后是否能完成选规格、查看配送及加入购物车。不要把所有商品平均在一起，就忽略某个款式持续导向错误页面。若数据量很小，先处理明确错误，不急着宣称 SEO 增长幅度。"
+        },
+        {
+          "type": "paragraph",
+          "text": "暂时缺货与永久停售应分开决策。暂时缺货可以保留准确供货说明与合理替代选项；永久停售则根据是否还有说明书、售后信息或真正替代品评估页面安排。不要只为维持流量，把每个旧商品都导向不相关的首页或热门款式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "建立价格、库存、款式与规格变更的检查清单，让商品管理者与网站维护者共用。读者反馈不符时，记下原始网址及当时选项，先修复信息问题，再评估内容改进。搜索可见度与购买信任应一起维护，才能让找到商品的人做出合适选择。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ecommerce-product-seo/diagram-1-zh-cn.svg",
+          "alt": "四栏呈现商品内容、变体网址、数据标记与持续验收，提醒不同版式需采用合适网址策略且不保证特殊展示。",
+          "width": 1600,
+          "height": 900,
+          "caption": "搜索链接、页面选项与数据标记应描述同一款商品。",
+          "description": "四栏呈现商品内容、变体网址、数据标记与持续验收，提醒不同版式需采用合适网址策略且不保证特殊展示。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "检查位置",
+            "应一致的信息",
+            "常见需要修正的情况"
+          ],
+          "rows": [
+            [
+              "商品名称与正文",
+              "款式、用途、型号与规格",
+              "标题写深型，内容却是浅型"
+            ],
+            [
+              "变体网址与界面",
+              "选项、图片、价格及库存",
+              "直接打开后回到默认款"
+            ],
+            [
+              "结构化数据",
+              "当前商品与真实销售条件",
+              "标记仍保留旧价或错误评分"
+            ],
+            [
+              "商品数据来源",
+              "币种、供货及适用版本",
+              "商店已更新，外部数据仍过期"
+            ]
+          ],
+          "caption": "原创收纳盒案例的验收表；每个位置都应对应同一个商品与款式。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先解决买错款式的风险",
+          "text": "直接打开变体网址，确认图片、价格、库存与购物车商品一致。关键词与标记无法补救错误的商品信息。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "整理 WooCommerce 商品信息",
+              "kind": "life",
+              "slug": "woocommerce-product-information"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理解 canonical 的适用场景",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "理清品牌与商品的实体关系",
+              "kind": "life",
+              "slug": "knowledge-graph-entities"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 商品结构化数据与提供方式",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google ProductGroup 与商品变体",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 电商网址与片段识别限制",
+          "url": "https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 商家商品标记技术准则",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 结构化数据内容一致性准则",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Product Page SEO: Organizing Specifications, Variants and Buying Questions",
+      "description": "Product page SEO goes beyond putting popular terms in titles: search results, variant URLs and the buying interface must point to the same product. Using an original desktop storage box example, this article covers specifications, buying questions, single-page and multipage variants, Product structured data and launch checks. Comparison tables, practical steps and original SVGs help stores keep prices, stock and images in sync.",
+      "hero": {
+        "src": "/guides/ecommerce-product-seo/hero-en.jpg",
+        "alt": "Original Mokaair document, screen and verification shield graphics depict checks of product specifications, variant pages and data consistency.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A reader searches for a deep storage box but lands on a product page showing a shallow model, with a price that also differs from the search result. Even if the page contains plenty of keywords, this visit may still fail to lead to a purchase. Product SEO checks should start with which variant readers find, what they see when they arrive and whether they can confirm the purchase conditions."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "This article is based on Google's official ecommerce and structured data documentation consulted on 2026-9-14. The desktop storage box is an original teaching example, with no actual product testing, price recommendations or store deployment; "
+            },
+            {
+              "type": "text",
+              "text": "markup"
+            },
+            {
+              "type": "text",
+              "text": " and URL changes do not guarantee special search placements either."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Start by Answering a Set of Buying Questions on Each Product Page",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A product title should identify its category, main purpose and necessary model distinctions. For a storage box, describe the variant, dimensions or material instead of piling together every possible search term. If readers cannot tell which variant they are viewing from its name, they can easily misinterpret the images and specifications that follow."
+        },
+        {
+          "type": "paragraph",
+          "text": "Organize the body around practical buying questions: will the external dimensions fit the cabinet, is the internal space sufficient, is a lid included and what cleaning restrictions apply? Information should come from your own verification records or manufacturer documentation. Do not invent unmeasured load capacities or heat resistance simply to add search content."
+        },
+        {
+          "type": "paragraph",
+          "text": "Product pages and category pages serve different purposes. Category pages help readers find a suitable type, while product pages provide complete details for a specific item. If every product simply repeats the same brand story, readers still cannot compare differences. You can retain shared information while adding details that genuinely differ between products and affect the choice."
+        },
+        {
+          "type": "heading",
+          "text": "Specifications, Photos and Purchase Information Should Match",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, create a product data sheet that stores internal and external dimensions, units, materials, package contents and variants separately. Do not treat the box body's height as its height with the lid, or show dimensions only in images without a text explanation. If the supplier revises the product, retain its version and verification date to avoid pairing new photos with old specifications."
+        },
+        {
+          "type": "paragraph",
+          "text": "Images should show the actual product and selected variant; illustrations should clearly state their purpose. For a storage box, an original diagram can show where to measure dimensions, but it cannot be presented as an actual capacity test. Alt text should describe important visible content, without repeatedly stuffing the same keywords into every image."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prices, currency, stock, shipping and return or exchange information should be easy for readers to find. This article does not set transaction rules for stores; it recommends having the person responsible confirm the content and linking applicable conditions to the full explanation. If a specification must be selected before a price is available, the interface should make that clear too, rather than using the lowest price for one variant to represent every combination."
+        },
+        {
+          "type": "heading",
+          "text": "Variant URLs Must Restore the Correct Options",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A product may have color, size or material variants. First, establish whether the site switches variants on one page or spreads them across multiple pages. For each variant that needs to be identifiable, test whether opening its URL directly selects the correct specifications and shows matching images, price, stock and the item to be added to the cart."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google's ecommerce URL documentation cautions against relying solely on fragments after # to identify different indexed content. If your site uses URL "
+            },
+            {
+              "type": "text",
+              "text": "parameters"
+            },
+            {
+              "type": "text",
+              "text": " to select variants, also confirm that the parameters actually affect the page state, rather than merely making the URLs look different. Sending the link to another browser for testing is a basic check a store can perform first."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Handle canonical URLs according to the actual design. Google's single-page variant example is based on one primary URL representing the entire product group; a multipage design has no single URL representing all ProductGroup content. Do not apply a blanket rule that every variant should point back to the first one. Have developers check the page content against the official variant documentation."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Choose a representative product and check its title, specifications, images and purchase information.",
+            "List all variant URLs, open them directly and check whether they restore the correct purchase options.",
+            "Check the Product and variant markup generated by the existing platform and correct inconsistent data.",
+            "Complete technical and manual checks, then monitor search performance using a fixed set of products and queries."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "Choose Product Markup Based on the Sales Page's Purpose",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google distinguishes different uses for product structured data: for pages where customers can buy products from you, consult merchant listings; product descriptions or review pages where customers cannot buy directly from you may be suited to product snippets. The two overlap in some respects, but a page that merely directs visitors to another site to buy should not be treated as your own merchant sales page."
+        },
+        {
+          "type": "paragraph",
+          "text": "ProductGroup can describe the relationships between variants of the same product, with Product storing information about individual products. The variesBy and hasVariant fields and the group identifier help describe differences, members and the group, respectively. Build these fields around real products; do not force products with completely different purposes into one group for convenience."
+        },
+        {
+          "type": "paragraph",
+          "text": "Markup is usually generated by the store platform or a plugin, so inspect the existing output before deciding whether adjustments are needed. Google also supports supplying product data through Merchant Center, but more data sources make it even more important to synchronize prices and availability. When website markup conflicts with product data sources, first determine who updates each source and when."
+        },
+        {
+          "type": "heading",
+          "text": "Validate the Same Version of the Page and Its Markup",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, use Rich Results Test to check applicable data and required fields, then use the URL Inspection tool to see the page Google can read. Google recommends placing product markup in the initial HTML whenever possible. If it relies entirely on dynamic generation, pay particular attention to how reliably it can be read when prices and stock change rapidly. Leave the actual adjustments to someone familiar with the platform."
+        },
+        {
+          "type": "paragraph",
+          "text": "Manual validation should start from variant URLs that search may use, comparing the page title, selected specifications, images, price, availability and markup values. Confirm the item again before adding it to the cart; there is no need to complete payment for testing. If the markup remains on the default variant after switching specifications, record specific reproduction steps for the maintainer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Passing a search test does not establish factual accuracy or guarantee that ratings, prices or other special information will appear. Do not create ratings without genuine reviews, or enter random numbers when no applicable identifier exists. Retain the test date and product version so you can recover the original comparison baseline when stock or page layouts change later."
+        },
+        {
+          "type": "heading",
+          "text": "Keep Checking Whether Readers Find Suitable Products",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "After updating products, first monitor impressions and clicks for a fixed set of pages and relevant queries, then check whether readers can select specifications, view shipping information and add items to the cart after arriving. Do not average all products together and overlook a particular variant that keeps leading to the wrong page. If the data volume is very small, address clear errors first rather than rushing to claim a percentage of SEO growth."
+        },
+        {
+          "type": "paragraph",
+          "text": "Temporary stock shortages and permanent discontinuations require separate decisions. For temporarily unavailable products, retain accurate availability information and reasonable alternatives. For permanently discontinued products, decide how to handle the page based on whether it still offers manuals, after-sales information or a genuine replacement. Do not redirect every old product to an unrelated homepage or popular model simply to preserve traffic."
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a shared checklist for product managers and website maintainers covering changes to prices, stock, variants and specifications. When readers report a mismatch, record the original URL and the options selected at the time, fix the information problem first, then assess content improvements. Maintain search visibility and purchasing trust together so people who find a product can make a suitable choice."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ecommerce-product-seo/diagram-1-en.svg",
+          "alt": "Four columns cover product content, variant URLs, markup and ongoing checks, noting that page layouts need suitable URL strategies and enhanced search appearances are not guaranteed.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Search links, page options and data markup should describe the same product variant.",
+          "description": "Four columns cover product content, variant URLs, markup and ongoing checks, noting that page layouts need suitable URL strategies and enhanced search appearances are not guaranteed.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "Where to Check",
+            "Information That Should Match",
+            "Common Issues to Fix"
+          ],
+          "rows": [
+            [
+              "Product name and body text",
+              "Variant, purpose, model and specifications",
+              "The title says deep, but the content describes the shallow model"
+            ],
+            [
+              "Variant URL and page display",
+              "Options, images, price and stock",
+              "Opening the URL directly returns to the default variant"
+            ],
+            [
+              "Structured data",
+              "Current product and actual sales conditions",
+              "Markup still contains an old price or incorrect rating"
+            ],
+            [
+              "Product data sources",
+              "Currency, availability and applicable version",
+              "The store is updated, but external data remains outdated"
+            ]
+          ],
+          "caption": "A validation table for the original storage box example; every location should refer to the same product and variant."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First Address the Risk of Buying the Wrong Variant",
+          "text": "Open the variant URL directly and confirm that the images, price, stock and cart item match. Keywords and markup cannot fix incorrect product information."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Organize WooCommerce product information",
+              "kind": "life",
+              "slug": "woocommerce-product-information"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Understand when canonical applies",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Clarify entity relationships between brands and products",
+              "kind": "life",
+              "slug": "knowledge-graph-entities"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Product Structured Data and Ways to Supply It",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google ProductGroup and Product Variants",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Ecommerce URLs and Fragment Identification Limitations",
+          "url": "https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Technical Guidelines for Merchant Product Markup",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google Guidelines on Structured Data Content Consistency",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "商品ページの SEO：仕様・バリエーション・購入時の疑問を整理する方法",
+      "description": "商品ページの SEO は、人気のキーワードをタイトルに入れるだけではありません。検索結果、バリエーションの URL、購入画面が同じ商品を指す必要があります。本記事では、独自に作成したデスク用収納ボックスの事例を使い、仕様、購入時の疑問、単一ページと複数ページでのバリエーション、Product 構造化データ、公開時のチェック手順を整理します。比較表、操作手順、オリジナルの SVG を添え、ショップで価格・在庫・画像の同期ずれを防ぐ方法を紹介します。",
+      "hero": {
+        "src": "/guides/ecommerce-product-seo/hero-ja.jpg",
+        "alt": "Mokaair オリジナルの書類、画面、確認を表す盾の図で、商品仕様、バリエーションページ、データの整合性チェックを表現。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "読者が深型の収納ボックスを検索して商品ページを開いたのに、浅型の商品が表示され、価格も検索結果と異なっている。ページにキーワードが多数あっても、この訪問は購入につながらない可能性があります。商品 SEO では、読者がどの商品を見つけ、サイトで何を目にし、条件を確認できるかという点からチェックを始めましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "本記事は、2026 年 9 月 14 日に確認した Google 公式の EC と構造化データのドキュメントに基づいています。デスク用収納ボックスは独自に作成した解説用の事例で、実際の商品のテスト、価格の推奨、ショップへの実装は行っていません。"
+            },
+            {
+              "type": "text",
+              "text": "マークアップ"
+            },
+            {
+              "type": "text",
+              "text": "や URL の調整も、特別な検索表示枠を必ず獲得できることを保証するものではありません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "商品ページでは、まず購入時の一連の疑問に答える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品タイトルは、カテゴリー、主な用途、必要な型番の違いが分かるようにしましょう。収納ボックスなら、考えられる検索キーワードをすべて並べるのではなく、タイプ、サイズ、素材などを示せます。読者が名称からどの商品を見ているのか分からなければ、その後の画像や仕様も誤解されやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文は、購入時に実際に生じる疑問に沿って構成できます。外寸が棚に収まるか、内部のスペースが十分か、ふたが付属するか、お手入れ方法にどのような制限があるか、といった疑問です。情報には、自社の確認記録やメーカーの資料を使いましょう。測定していない耐荷重や耐熱性能を、検索向けの内容を増やすために独自に記入してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "商品ページとカテゴリーページには、それぞれ役割があります。カテゴリーページは読者が適切なタイプを探すのを助け、商品ページは特定の商品の条件を詳しく伝えます。すべての商品に同じブランドストーリーをコピーするだけでは、読者は違いを比較できません。共通情報を残しつつ、商品ごとに実際に異なり、選択に影響する内容を補いましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "仕様・写真・取引情報の整合性を保つ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず商品データ表を作り、内寸と外寸、単位、素材、梱包内容、タイプを分けて保存します。本体の高さをふた込みの高さとして扱ったり、寸法を画像だけに記載してテキストの説明を省いたりしないでください。仕入先が仕様を変更した場合は、バージョンと確認日を記録し、新しい写真に古い仕様が組み合わされるのを防ぎましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画像は実際の商品と選択中のタイプを示し、イメージ図の場合はその用途を明示しましょう。収納ボックスなら、オリジナルの図解で寸法を測る位置を説明できますが、イメージ図を実際の容量の実測結果として扱うことはできません。代替テキストは、目に見える重要な内容を説明し、同じキーワード群をすべての画像に繰り返し詰め込む必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "価格、通貨、在庫、配送、返品・交換の説明は、読者が見つけやすくしましょう。本記事はショップに代わって取引ルールを定めるものではなく、実際の担当者が内容を確認し、適用条件から詳しい説明へリンクすることを勧めています。仕様を選択して初めて価格が決まる場合は、画面でもそのことを明示し、あるタイプの最安値をすべての組み合わせの価格として示さないようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "バリエーションの URL で正しい選択状態を再現する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同じ商品に、色、サイズ、素材のバリエーションがある場合があります。まず、サイトが単一ページ内で切り替える方式なのか、タイプごとに複数のページに分かれる方式なのかを整理しましょう。識別対象とする各バリエーションについて、URL を直接開くと正しい仕様が選択され、画像、価格、在庫、カートに追加する商品が一致しているかをテストします。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google の EC 向け URL ドキュメントでは、インデックス対象の異なるコンテンツを識別するために、# 以降のフラグメントだけに頼るべきではないとしています。サイトが URL の"
+            },
+            {
+              "type": "text",
+              "text": "パラメータ"
+            },
+            {
+              "type": "text",
+              "text": "でタイプを選択する場合も、URL の見た目が違うだけではなく、パラメータが実際にページの状態に影響していることを確認しましょう。リンクを別のブラウザに渡してテストすることは、ショップが最初にできる基本的なチェックです。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "canonical は実際の設計に合わせて設定します。Google の単一ページのバリエーションの例は、商品グループ全体を代表する主要 URL を基準にしています。一方、複数ページの設計では、すべての ProductGroup の内容を代表する単一の URL はありません。「すべての仕様を最初のタイプに正規化する」というルールを一律に適用せず、開発者がページの内容とバリエーションに関する公式ドキュメントを照合しましょう。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "代表的な商品を選び、タイトル、仕様、画像、取引情報を照合する。",
+            "すべてのバリエーションの URL を一覧にし、直接開いて正しい購入オプションが再現されるかを確認する。",
+            "既存プラットフォームが出力する Product とバリエーションのマークアップを確認し、不一致のあるデータを修正する。",
+            "技術面と目視のチェックを終え、対象商品と検索クエリの範囲を固定して検索パフォーマンスを観察する。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "販売ページの用途に合わせて Product マークアップを選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google は、商品構造化データを用途別に分類しています。自社から商品を購入できるページは merchant listings を確認し、自社から直接購入できない商品紹介やレビューページは product snippets が適している可能性があります。両者には重なる部分もありますが、購入先として別サイトへ誘導するだけのページを、自社の販売ページとして扱うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ProductGroup は同じ商品のバリエーション関係を説明し、Product と組み合わせて個別の商品情報を保持できます。variesBy、hasVariant、グループ識別子は、それぞれ違い、構成商品、グループを説明するのに役立ちます。これらの項目は実際の商品に基づいて作成し、用途がまったく異なる商品を、便宜上無理に同じグループにまとめないようにしましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マークアップは通常、ショップのプラットフォームやプラグインが生成します。まず既存の出力を確認し、調整が必要かを判断しましょう。Google は Merchant Center を通じた商品データの提供にも対応していますが、データソースが増えるほど、価格と販売状況の同期が重要になります。サイトのマークアップと商品データソースが矛盾している場合は、まず誰が、いつ更新しているのかを確認しましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "受け入れ確認ではページとマークアップのバージョンをそろえる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず Rich Results Test で対象となるデータと必須項目を確認し、URL 検査ツールで Google が読み取れるページを確認します。Google は、可能な限り初期 HTML に商品マークアップを含めることを推奨しています。動的な生成に全面的に依存する場合は、価格や在庫が頻繁に変わるときほど、読み取りの信頼性に注意が必要です。実際の調整は、プラットフォームに詳しい人に任せましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "手動の受け入れ確認では、検索で使われる可能性のあるバリエーションの URL から始め、ページタイトル、選択中の仕様、画像、価格、販売状況、マークアップの値を照合します。カートに追加する前に商品を再確認し、テストのために支払いまで完了する必要はありません。仕様を切り替えてもマークアップが初期設定のタイプのままなら、具体的な再現手順を記録して保守担当者に渡しましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索向けのテストに合格しても、情報が事実として正しいことを意味せず、評価、価格、その他の特別な情報の表示も保証されません。実際のレビューがなければ評価を作成せず、該当する識別子がなければ適当な番号を入力しないでください。テスト日と商品のバージョンを記録し、後で在庫やページテンプレートが変わったときに、元の比較基準を確認できるようにしましょう。"
+        },
+        {
+          "type": "heading",
+          "text": "読者が適切な商品を見つけられるか継続的に確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "商品を更新した後は、まず対象ページと関連する検索クエリを固定して表示回数とクリック数を観察し、次に訪問した読者が仕様の選択、配送の確認、カートへの追加を完了できるかを確認します。すべての商品の数値を平均して、特定のタイプが誤ったページへ誘導し続けている問題を見落とさないようにしましょう。データが少ない場合は、まず明確な誤りを修正し、SEO の成長率を急いで主張しないことが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一時的な在庫切れと販売終了は、分けて判断しましょう。一時的な在庫切れなら、正確な販売状況の説明と妥当な代替候補を残せます。販売終了の場合は、取扱説明書、アフターサービス情報、実際に代わりとなる商品があるかに応じて、ページの扱いを検討します。アクセスを維持するためだけに、過去のすべての商品を無関係なトップページや人気商品へ転送しないでください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "価格、在庫、タイプ、仕様の変更に関するチェックリストを作り、商品管理者とサイト保守担当者で共有しましょう。読者から不一致の報告があったら、元の URL とその時点の選択内容を記録し、まず情報の問題を修正してから、コンテンツの改善を検討します。検索での見つけやすさと購入時の信頼をともに維持することで、商品を見つけた人が適切に選べるようになります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ecommerce-product-seo/diagram-1-ja.svg",
+          "alt": "商品内容、バリエーションの URL、データのマークアップ、継続的な受け入れ確認を四つの列で表示。ページ構成に適した URL 戦略が必要で、特別な表示は保証されないことを示す。",
+          "width": 1600,
+          "height": 900,
+          "caption": "検索リンク、ページの選択肢、データのマークアップは、同じ商品バリエーションを示す必要があります。",
+          "description": "商品内容、バリエーションの URL、データのマークアップ、継続的な受け入れ確認を四つの列で表示。ページ構成に適した URL 戦略が必要で、特別な表示は保証されないことを示す。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "確認箇所",
+            "一致させる情報",
+            "修正が必要なよくある例"
+          ],
+          "rows": [
+            [
+              "商品名と本文",
+              "タイプ、用途、型番、仕様",
+              "タイトルは深型なのに、内容は浅型"
+            ],
+            [
+              "バリエーションの URL と画面",
+              "選択肢、画像、価格、在庫",
+              "直接開くと初期設定のタイプに戻る"
+            ],
+            [
+              "構造化データ",
+              "現在の商品と実際の販売条件",
+              "マークアップに古い価格や誤った評価が残っている"
+            ],
+            [
+              "商品データソース",
+              "通貨、販売状況、適用バージョン",
+              "ショップは更新済みだが、外部データは古いまま"
+            ]
+          ],
+          "caption": "独自に作成した収納ボックスの事例の受け入れ確認表。どの箇所も、同じ商品とタイプを示す必要があります。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず、違うタイプを購入してしまうリスクを解消する",
+          "text": "バリエーションの URL を直接開き、画像、価格、在庫、カートの商品が一致することを確認しましょう。キーワードやマークアップでは、誤った商品情報を補うことはできません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WooCommerce の商品情報を整理する",
+              "kind": "life",
+              "slug": "woocommerce-product-information"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "canonical が適用される場面を理解する",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ブランドと商品のエンティティとしての関係を明確にする",
+              "kind": "life",
+              "slug": "knowledge-graph-entities"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 商品構造化データと提供方法",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google ProductGroup と商品バリエーション",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google EC 向け URL とフラグメントによる識別の制限",
+          "url": "https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 販売者向け商品マークアップの技術ガイドライン",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 構造化データとコンテンツの整合性ガイドライン",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "상품 페이지 SEO: 사양, 변형 상품, 구매 질문을 정리하는 방법",
+      "description": "상품 페이지 SEO는 인기 검색어를 제목에 넣는 데서 끝나지 않습니다. 검색결과, 변형 상품 URL, 구매 화면이 같은 상품을 가리키도록 해야 합니다. 직접 만든 책상 정리함 사례로 사양, 구매 전 질문, 단일 페이지와 여러 페이지의 변형 상품 구성, Product 구조화 데이터, 공개 전 점검 절차를 정리합니다. 비교표, 실행 단계, 직접 제작한 SVG를 통해 쇼핑몰의 가격·재고·이미지 불일치를 방지하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/ecommerce-product-seo/hero-ko.jpg",
+        "alt": "Mokaair가 직접 제작한 문서, 화면, 검증 방패 그림으로 상품 사양, 변형 상품 페이지, 데이터 일치 여부 점검을 표현한 이미지.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "독자가 깊은 정리함을 검색해 상품 페이지에 들어갔는데 얕은 모델이 보이고, 가격도 검색결과와 다릅니다. 페이지에 키워드가 많더라도 이번 방문은 구매로 이어지지 않을 수 있습니다. 상품 SEO는 독자가 어떤 상품을 찾았는지, 사이트에 들어와 무엇을 보는지, 구매 조건을 확인할 수 있는지를 점검하는 데서 시작해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이 글은 2026년 9월 14일에 확인한 Google 공식 전자상거래 및 구조화 데이터 문서를 바탕으로 작성했습니다. 책상 정리함은 직접 만든 교육용 사례로, 실제 상품 테스트나 가격 추천, 쇼핑몰 배포는 진행하지 않았습니다. "
+            },
+            {
+              "type": "text",
+              "text": "마크업"
+            },
+            {
+              "type": "text",
+              "text": "과 URL을 조정해도 특수 검색 영역에 반드시 노출되는 것은 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "상품 페이지 하나에서 연관된 구매 질문에 먼저 답하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "상품 제목은 카테고리, 주요 용도, 필요한 모델 차이를 알아볼 수 있게 작성해야 합니다. 정리함이라면 가능한 검색어를 모두 나열하기보다 모델, 크기, 소재를 설명할 수 있습니다. 독자가 이름만으로 어떤 모델을 보고 있는지 알 수 없다면 이어지는 이미지와 사양도 잘못 이해하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "본문은 실제 구매 시 생기는 질문을 중심으로 구성할 수 있습니다. 외부 크기가 수납장에 들어가는지, 내부 공간은 충분한지, 뚜껑이 포함되는지, 세척 방법에 어떤 제한이 있는지 등을 설명하세요. 자료는 직접 확인한 기록이나 제조사 문서에 근거해야 합니다. 측정하지 않은 하중과 내열 성능을 검색용 콘텐츠를 늘리려고 임의로 입력하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "상품 페이지와 카테고리 페이지는 용도가 다릅니다. 카테고리 페이지는 독자가 적합한 유형을 찾도록 돕고, 상품 페이지는 특정 모델의 조건을 빠짐없이 제공합니다. 모든 상품에 같은 브랜드 이야기만 복사하면 독자는 여전히 차이를 비교할 수 없습니다. 공통 정보는 유지하되, 모델마다 실제로 다르고 선택에 영향을 주는 내용을 추가할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "사양, 사진, 거래 정보는 서로 일치해야 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 상품 데이터 표를 만들고 외부·내부 치수, 단위, 소재, 구성품, 모델 정보를 구분해 저장하세요. 상자 본체 높이를 뚜껑을 포함한 높이로 취급하지 말고, 텍스트 설명 없이 이미지에만 치수를 표시하지도 마세요. 공급업체가 제품을 개정하면 버전과 확인 날짜를 남겨 새 사진에 이전 사양이 연결되지 않도록 하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지는 실제 상품과 선택한 모델을 보여줘야 하며, 설명용 그림은 그 용도를 명확히 표시해야 합니다. 정리함의 경우 직접 제작한 그림으로 치수를 재는 위치를 설명할 수 있지만, 그 그림을 실제 용량 측정 결과처럼 제시해서는 안 됩니다. 대체 텍스트에는 눈에 보이는 중요한 내용을 설명하고, 모든 이미지에 같은 키워드를 반복해서 넣을 필요는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "가격, 통화, 재고, 배송, 반품·교환 안내는 모두 독자가 쉽게 찾을 수 있어야 합니다. 이 글은 판매자의 거래 규칙을 대신 정하지 않습니다. 실제 담당자가 내용을 확인하고, 적용 조건을 전체 안내에 연결하도록 권장합니다. 옵션을 먼저 선택해야 가격이 표시된다면 화면에도 이를 명확히 안내하고, 특정 모델의 최저가로 모든 조합의 가격을 대표하지 않도록 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "변형 상품 URL로 올바른 옵션을 다시 불러올 수 있어야 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 상품에도 색상, 크기, 소재에 따른 변형 상품이 있을 수 있습니다. 먼저 웹사이트가 단일 페이지에서 옵션을 전환하는지, 모델별로 여러 페이지를 사용하는지 파악하세요. 구분해서 인식되어야 하는 각 변형 상품의 URL을 직접 열어 올바른 옵션이 선택되어 있는지, 이미지·가격·재고·장바구니에 담길 항목이 모두 일치하는지 테스트하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google의 전자상거래 URL 문서는 서로 다른 색인 콘텐츠를 구분할 때 # 뒤의 프래그먼트에만 의존해서는 안 된다고 안내합니다. 웹사이트에서 URL "
+            },
+            {
+              "type": "text",
+              "text": "매개변수"
+            },
+            {
+              "type": "text",
+              "text": "로 모델을 선택한다면, URL만 다르게 보이는 것이 아니라 매개변수가 실제로 페이지 상태에 영향을 주는지도 확인해야 합니다. 링크를 다른 브라우저로 보내 테스트하는 것은 쇼핑몰에서 먼저 할 수 있는 기본 점검입니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "canonical은 실제 설계에 맞게 처리해야 합니다. Google의 단일 페이지 변형 상품 예시는 전체 상품 그룹을 대표하는 하나의 기본 URL을 바탕으로 합니다. 여러 페이지로 구성한 경우에는 모든 ProductGroup 콘텐츠를 대표하는 단일 URL이 없습니다. ‘모든 옵션이 첫 번째 모델을 가리키게 한다’는 규칙을 일괄 적용하지 말고, 개발자가 페이지 내용과 공식 변형 상품 문서를 대조해 확인하도록 해야 합니다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "대표 상품 하나를 골라 제목, 사양, 이미지, 거래 정보를 대조하세요.",
+            "모든 변형 상품 URL을 나열하고 직접 열어 올바른 구매 옵션이 복원되는지 확인하세요.",
+            "기존 플랫폼이 출력하는 Product 및 변형 상품 마크업을 확인하고 일치하지 않는 데이터를 수정하세요.",
+            "기술 점검과 수동 검수를 마친 뒤, 상품과 검색어 범위를 고정해 검색 성과를 관찰하세요."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "heading",
+          "text": "판매 페이지의 용도에 맞는 Product 마크업 선택하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google은 상품 구조화 데이터를 용도에 따라 구분합니다. 방문자가 여러분에게서 상품을 구매할 수 있는 페이지라면 판매자 등록정보(merchant listings)를 살펴봐야 합니다. 여러분에게서 직접 구매할 수 없는 상품 소개나 리뷰 페이지라면 제품 스니펫(product snippets)이 적합할 수 있습니다. 두 유형은 일부 겹치지만, 단순히 다른 사이트의 구매 페이지로 안내하는 페이지를 자신의 판매 페이지로 취급해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "ProductGroup은 같은 상품의 변형 관계를 설명하고, Product는 개별 상품 정보를 저장하는 데 함께 사용할 수 있습니다. variesBy, hasVariant, 그룹 식별자는 각각 차이점, 구성 상품, 그룹을 설명하는 데 도움이 됩니다. 이 필드들은 실제 상품에 근거해 작성해야 하며, 편의를 위해 용도가 완전히 다른 상품을 억지로 한 그룹에 묶어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마크업은 보통 쇼핑몰 플랫폼이나 플러그인이 생성하므로, 기존 출력을 먼저 살펴본 뒤 조정이 필요한지 결정하세요. Google은 Merchant Center를 통한 상품 데이터 제공도 지원합니다. 다만 데이터 출처가 늘어나면 가격과 판매 가능 여부를 동기화하는 일이 더 중요해집니다. 웹사이트 마크업과 상품 데이터 출처의 내용이 서로 모순된다면 누가 언제 업데이트하는지부터 파악하세요."
+        },
+        {
+          "type": "heading",
+          "text": "검수할 때는 같은 버전의 페이지와 마크업을 확인해야 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 Rich Results Test로 적용 가능한 데이터와 필수 필드를 점검한 뒤, URL 검사 도구로 Google이 읽을 수 있는 페이지를 확인하세요. Google은 상품 마크업을 가능한 한 초기 HTML에 넣도록 권장합니다. 동적 생성에 전적으로 의존한다면 가격과 재고가 빠르게 바뀔 때 데이터를 안정적으로 읽을 수 있는지 더욱 주의해야 합니다. 실제 조정은 해당 플랫폼에 익숙한 사람에게 맡기세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "수동 검수는 검색에 사용될 수 있는 변형 상품 URL에서 시작해 페이지 제목, 선택된 옵션, 이미지, 가격, 판매 가능 여부, 마크업 값을 대조해야 합니다. 장바구니에 담기 전에 품목을 다시 확인하되, 테스트를 위해 결제까지 완료할 필요는 없습니다. 옵션을 바꾼 뒤에도 마크업이 기본 모델에 머물러 있다면 구체적인 재현 절차를 기록해 유지보수 담당자에게 전달하세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색 테스트를 통과했다고 내용이 사실과 일치하는 것은 아니며, 평점·가격·기타 특수 정보의 표시도 보장되지 않습니다. 실제 리뷰가 없다면 평점을 만들지 말고, 적용 가능한 식별자가 없다면 임의의 번호를 입력하지 마세요. 테스트 날짜와 상품 버전을 남겨 이후 재고나 페이지 템플릿이 바뀌었을 때 원래 비교 기준을 다시 찾을 수 있도록 하세요."
+        },
+        {
+          "type": "heading",
+          "text": "독자가 적합한 상품을 찾는지 계속 확인하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "상품을 업데이트한 뒤에는 고정된 페이지와 관련 검색어로 노출과 클릭을 먼저 관찰하고, 독자가 사이트에 들어온 뒤 옵션 선택, 배송 정보 확인, 장바구니 담기를 완료할 수 있는지 살펴보세요. 모든 상품의 평균만 보고 특정 모델이 계속 잘못된 페이지로 연결되는 문제를 놓치지 마세요. 데이터가 적다면 명확한 오류부터 처리하고, SEO 성장 폭을 서둘러 주장하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "일시 품절과 영구 판매 중단은 구분해서 판단해야 합니다. 일시 품절이라면 정확한 공급 안내와 적절한 대체 옵션을 유지할 수 있습니다. 영구 판매 중단이라면 설명서, 사후 지원 정보, 실제 대체 상품이 남아 있는지에 따라 페이지 처리 방식을 검토하세요. 트래픽을 유지하려는 목적으로 모든 이전 상품을 관련 없는 홈페이지나 인기 모델로 연결하지 마세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "가격, 재고, 모델, 사양 변경을 위한 점검 목록을 만들어 상품 관리자와 웹사이트 유지보수 담당자가 함께 사용하세요. 독자가 불일치를 신고하면 원래 URL과 당시 옵션을 기록하고, 정보 문제부터 해결한 뒤 콘텐츠 개선을 검토하세요. 검색 가시성과 구매 신뢰를 함께 관리해야 상품을 찾은 사람이 적절한 선택을 할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ecommerce-product-seo/diagram-1-ko.svg",
+          "alt": "상품 콘텐츠, 변형 상품 URL, 데이터 마크업, 지속 검수를 네 열로 보여주며, 페이지 구성에 맞는 URL 전략이 필요하고 특수 표시가 보장되지 않음을 안내하는 도표.",
+          "width": 1600,
+          "height": 900,
+          "caption": "검색 링크, 페이지 옵션, 데이터 마크업은 같은 상품 모델을 설명해야 합니다.",
+          "description": "상품 콘텐츠, 변형 상품 URL, 데이터 마크업, 지속 검수를 네 열로 보여주며, 페이지 구성에 맞는 URL 전략이 필요하고 특수 표시가 보장되지 않음을 안내하는 도표.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "table",
+          "header": [
+            "점검 위치",
+            "일치해야 하는 정보",
+            "수정이 필요한 흔한 상황"
+          ],
+          "rows": [
+            [
+              "상품명과 본문",
+              "제품 유형, 용도, 모델 번호, 사양",
+              "제목에는 깊은 모델, 본문에는 얕은 모델로 표시"
+            ],
+            [
+              "변형 상품 URL과 화면",
+              "옵션, 이미지, 가격, 재고",
+              "직접 열면 기본 모델로 돌아감"
+            ],
+            [
+              "구조화 데이터",
+              "현재 상품과 실제 판매 조건",
+              "마크업에 이전 가격이나 잘못된 평점이 남아 있음"
+            ],
+            [
+              "상품 데이터 출처",
+              "통화, 판매 가능 여부, 적용 버전",
+              "쇼핑몰은 업데이트됐지만 외부 데이터는 여전히 오래된 상태"
+            ]
+          ],
+          "caption": "직접 만든 정리함 사례의 검수표. 모든 위치에서 같은 상품과 모델을 가리켜야 합니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "잘못된 모델을 구매할 위험부터 바로잡기",
+          "text": "변형 상품 URL을 직접 열어 이미지, 가격, 재고, 장바구니 항목이 일치하는지 확인하세요. 키워드와 마크업으로 잘못된 상품 정보를 보완할 수는 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "WooCommerce 상품 정보 정리하기",
+              "kind": "life",
+              "slug": "woocommerce-product-information"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "canonical을 적용할 상황 이해하기",
+              "kind": "life",
+              "slug": "canonical-url-guide"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "브랜드와 상품의 엔터티 관계 파악하기",
+              "kind": "life",
+              "slug": "knowledge-graph-entities"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 상품 구조화 데이터와 제공 방법",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google ProductGroup과 변형 상품",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product-variants",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 전자상거래 URL과 프래그먼트 식별 제한",
+          "url": "https://developers.google.com/search/docs/specialty/ecommerce/designing-a-url-structure-for-ecommerce-sites",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 판매자 상품 마크업 기술 가이드라인",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/merchant-listing",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google 구조화 데이터 콘텐츠 일치 가이드라인",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+          "checked_on": "2026-09-14"
+        }
+      ]
     }
   }
 }
