@@ -21,9 +21,9 @@ const isVendor = (value: unknown): value is Vendor => (vendors as readonly unkno
 const vendorLabels: Record<Vendor, string> = { openai: "OpenAI", anthropic: "Anthropic Claude", minimax: "MiniMax", gemini: "Google Gemini" };
 
 // How a feature's calls are paid for. "apiKey": the vendor key under the API keys tab.
-// "subscription": the Claude subscription accounts signed in on the host. "subscriptionFallback":
-// those accounts, and MiniMax once every account is at its cap.
-export type Connection = "apiKey" | "subscription" | "subscriptionFallback" | "none";
+// "subscription": the Claude or Codex subscription accounts signed in on the host. They take
+// turns (A, B, C and back to A) and never hand a call to another vendor or model.
+export type Connection = "apiKey" | "subscription" | "none";
 // Whether the feature can run on a subscription account at all.
 // "geminiApiKeyOnly": the row runs on Gemini. The owner signs the host's Antigravity CLI in to
 // Google AI subscriptions for their own use over SSH only (2026-09-25): Antigravity's terms
@@ -77,7 +77,7 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
   const siteConnection = (vendor: string): Connection => (
     (vendor === "anthropic" && text(vendorsCard.anthropic_connection) === "subscription") ||
     (vendor === "openai" && text(vendorsCard.openai_connection) === "subscription")
-  ) ? "subscriptionFallback" : "apiKey";
+  ) ? "subscription" : "apiKey";
   const siteSupport = (vendor: string): Support => vendor === "anthropic" && "anthropic_connection" in vendorsCard
     ? "claudeSubscription" : vendor === "openai" && "openai_connection" in vendorsCard ? "codexSubscription" : "apiKeyOnly";
   const rows: OverviewRow[] = [];
@@ -160,7 +160,6 @@ export function overviewRows(sources: OverviewSources, t: Translate, stageName: 
 const connectionTone: Record<Connection, string> = {
   apiKey: "border-[var(--line)] bg-[var(--paper)]",
   subscription: "border-emerald-300 bg-emerald-50 text-emerald-900",
-  subscriptionFallback: "border-emerald-300 bg-emerald-50 text-emerald-900",
   none: "border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]",
 };
 
