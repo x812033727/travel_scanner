@@ -8,6 +8,7 @@ from app.ai import catalog
 from app.config import Settings
 from app.hotspots.ai_search import AnthropicResearchProvider
 from app.news_automation.service import model_options as news_model_options
+from app.video_automation.settings import model_options as video_model_options
 
 # What an Anthropic request here may carry. Claude Opus 5.5 answers 400 to temperature,
 # top_p, top_k, a disabled or budgeted `thinking`, and a forced `tool_choice`.
@@ -95,10 +96,23 @@ def test_jev_options_cannot_be_offered_to_a_generating_code_path() -> None:
         ), field
 
 
-def test_news_offers_claude_opus_5_5_for_writing_and_fact_checking() -> None:
+def test_news_offers_claude_fable_and_opus_5_5_for_writing_and_fact_checking() -> None:
     offered = [option.value for option in news_model_options()["anthropic"]]
-    assert offered[0] == "claude-opus-5-5"
+    assert offered[:2] == ["claude-fable-5-1", "claude-opus-5-5"]
     assert "claude-opus-5" in offered
+
+
+def test_subscription_stages_offer_every_claude_and_openai_model() -> None:
+    # Claude Code and Codex take the API's model ids, so the subscription dropdowns list the
+    # whole vendor catalog: Fable was missing from them until 2026-09-28.
+    options = video_model_options()
+    assert "claude-fable-5-1" in [option.value for option in options["claude_code"]]
+    assert [option.value for option in options["claude_code"]] == [
+        entry.id for entry in catalog.MODEL_CATALOG["anthropic"]
+    ]
+    assert [option.value for option in options["codex"]] == [
+        entry.id for entry in catalog.MODEL_CATALOG["openai"]
+    ]
 
 
 def test_openai_dropdowns_offer_gpt_6_sol_and_luna_after_astra() -> None:

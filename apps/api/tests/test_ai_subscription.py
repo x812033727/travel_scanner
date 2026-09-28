@@ -63,28 +63,11 @@ class FakeAgent:
         )
 
 
-class FakeMiniMax:
-    name = "minimax"
-    model = "MiniMax-M3"
-
-    def __init__(self) -> None:
-        self.calls = 0
-        self.closed = False
-
-    async def structured(self, schema: Any, *_args: Any) -> tuple[Any, dict[str, int]]:
-        self.calls += 1
-        return schema(title="from MiniMax"), {"input_tokens": 7, "output_tokens": 3}
-
-    async def close(self) -> None:
-        self.closed = True
-
-
-def _provider(agent: FakeAgent, fallback: FakeMiniMax | None = None) -> Any:
+def _provider(agent: FakeAgent, model: str = "claude-opus-5-5") -> Any:
     return SubscriptionResearchProvider(
         _settings(),
-        "claude-opus-5-5",
+        model,
         240,
-        fallback=(lambda: fallback) if fallback is not None else None,
         agent=agent,  # type: ignore[arg-type]
     )
 
@@ -166,30 +149,32 @@ async def test_an_answer_off_the_schema_gets_one_repair_round() -> None:
     ],
 )
 @pytest.mark.asyncio
-async def test_when_no_account_can_serve_the_call_goes_to_minimax(code: str) -> None:
-    agent = FakeAgent(AppError(429, code, "every account is at its cap"))
-    minimax = FakeMiniMax()
-    provider = _provider(agent, minimax)
-    answer, usage = await provider.structured(Answer, "answer", "Write.", {})
-    assert answer.title == "from MiniMax" and usage == {"input_tokens": 7, "output_tokens": 3}
+async def test_when_no_account_can_serve_the_call_waits_and_never_leaves_the_model(
+    code: str,
+) -> None:
+    """The owner's rule of 2026-09-28: the chosen model or nothing, never MiniMax."""
+    agent = FakeAgent(AppError(429, code, "every account is at its cap"), '{"title": "later"}')
+    provider = _provider(agent, "claude-fable-5-1")
+    with pytest.raises(AppError) as waiting:
+        await provider.structured(Answer, "answer", "Write.", {})
+    assert waiting.value.code == code and code in subscription.WAIT_CODES
     assert (provider.name, provider.model, provider.served_by) == (
-        "minimax",
-        "MiniMax-M3",
-        "minimax",
+        "anthropic",
+        "claude-fable-5-1",
+        None,
     )
-    await provider.structured(Answer, "answer", "Again.", {})
-    assert len(agent.calls) == 1 and minimax.calls == 2, "the rest of the run stays on MiniMax"
-    await provider.close()
-    assert minimax.closed
+    answer, _usage = await provider.structured(Answer, "answer", "Again.", {})
+    assert answer.title == "later" and provider.served_by == "claude:b"
+    assert [call["model"] for call in agent.calls] == ["claude-fable-5-1"] * 2
 
 
 @pytest.mark.asyncio
 async def test_a_run_that_started_and_failed_is_reported_not_retried_elsewhere() -> None:
-    minimax = FakeMiniMax()
     failed = AppError(502, "subscription_run_failed", "claude run failed: overloaded")
     with pytest.raises(AppError) as error:
-        await _provider(FakeAgent(failed), minimax).structured(Answer, "answer", "Write.", {})
-    assert error.value.code == "subscription_run_failed" and minimax.calls == 0
+        await _provider(FakeAgent(failed)).structured(Answer, "answer", "Write.", {})
+    assert error.value.code == "subscription_run_failed"
+    assert "subscription_run_failed" not in subscription.WAIT_CODES
     paused = AppError(429, "subscription_quota_paused", "spent")
     with pytest.raises(AppError):
         await _provider(FakeAgent(paused)).structured(Answer, "answer", "Write.", {})
@@ -251,20 +236,19 @@ async def test_the_news_stages_run_on_the_subscription_when_claude_is_set_to_it(
 
 
 @pytest.mark.asyncio
-async def test_in_wait_mode_a_full_subscription_is_reported_instead_of_run_on_minimax(
+async def test_a_full_subscription_is_reported_even_with_a_minimax_key(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """The owner chose waiting over MiniMax on 2026-09-26; the news pipeline tries later."""
+    """The news pipeline tries later on the same model; MiniMax never takes the call."""
 
     full = AppError(429, "subscription_quota_paused", "every Claude account is at 100%")
     monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda _settings: FakeAgent(full))
-    provider = research_provider(
-        _settings(ai_subscription_fallback="wait"), "anthropic", model="claude-opus-5-5"
-    )
+    settings = _settings()
+    assert settings.minimax_api_key
+    provider = research_provider(settings, "anthropic", model="claude-opus-5-5")
+    assert isinstance(provider, SubscriptionResearchProvider)
     with pytest.raises(AppError) as waiting:
         await provider.structured(Answer, "answer", "Write.", {})
     assert waiting.value.code == "subscription_quota_paused"
-    fallback = research_provider(_settings(), "anthropic", model="claude-opus-5-5")
-    monkeypatch.setattr(subscription, "AiAccountsAgentClient", lambda _settings: FakeAgent(full))
-    assert isinstance(fallback, SubscriptionResearchProvider)
-    assert fallback._fallback_factory is not None, "the default still falls back to MiniMax"
+    assert (provider.name, provider.model) == ("anthropic", "claude-opus-5-5")
+    assert not hasattr(Settings(), "ai_subscription_fallback")
