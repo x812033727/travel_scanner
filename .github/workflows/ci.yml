@@ -121,11 +121,20 @@ jobs:
       - run: npm run build:web
       - run: npx playwright install --with-deps chromium
       - name: Run isolated browser UI tests
-        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/guides-adsense.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts e2e/korea-dual-maps.spec.ts e2e/seo.spec.ts
+        run: npx playwright test e2e/navigation.spec.ts e2e/readability.spec.ts e2e/signed-out.spec.ts e2e/travel-services.spec.ts e2e/stay22-allez.spec.ts e2e/stay22-script.spec.ts e2e/guides-adsense.spec.ts e2e/stay22-maps.spec.ts e2e/merchant-styles.spec.ts e2e/admin-domains.spec.ts e2e/admin-operations.spec.ts e2e/admin-video-manual-upload.spec.ts e2e/site-experience.spec.ts e2e/site-pages.spec.ts e2e/discovery-card-details.spec.ts e2e/planner-premium.spec.ts e2e/korea-dual-maps.spec.ts e2e/seo.spec.ts
         working-directory: apps/web
         # Serve the build from the step above instead of a dev server that compiles
         # each page on first visit; see playwright.config.ts.
         env: { PLAYWRIGHT_SERVE_BUILD: "true" }
+      # Keep only this small set of synthetic screenshots for visual review, not
+      # the hundreds of screenshots produced by the complete successful suite.
+      - name: Retain manual-upload visual evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always() && github.event_name == 'pull_request'
+        with:
+          name: youtube-manual-browser-evidence
+          path: apps/web/test-results/**/youtube-manual-*.jpg
+          retention-days: 3
       # Only when something failed or the job timed out (which GitHub reports as cancelled):
       # that is when the traces get read. Every push runs this workflow for both the push and
       # the pull_request event, so uploading on success stored about 280 MB per passing commit.
@@ -302,7 +311,11 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Run unmocked desktop and Pixel 7 journeys
         id: travel-journeys
-        run: npx playwright test e2e/full-stack.spec.ts
+        # Each invocation clears its output directory. Keep suites separate so later
+        # journeys cannot erase an earlier failure before the final artifact upload.
+        # There are no retries here, so capture the first failure instead of waiting
+        # for an on-first-retry trace that would never be recorded.
+        run: npx playwright test e2e/full-stack.spec.ts --output=test-results/travel --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true" }
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -313,17 +326,17 @@ jobs:
           retention-days: 7
       - name: Run private-media, mail and community browser journeys
         if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
-        run: npx playwright test e2e/community.spec.ts
+        run: npx playwright test e2e/community.spec.ts --output=test-results/community --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", COMMUNITY_E2E: "1" }
       - name: Run isolated admin domain journeys
         if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
-        run: npx playwright test e2e/admin-domains-full-stack.spec.ts --workers=1
+        run: npx playwright test e2e/admin-domains-full-stack.spec.ts --workers=1 --output=test-results/admin-domains --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_DOMAIN_E2E: "1" }
       - name: Run full-stack admin operations matrix
         if: ${{ !cancelled() && steps.stack-ready.outcome == 'success' }}
-        run: npx playwright test e2e/admin-operations-full-stack.spec.ts --workers=1
+        run: npx playwright test e2e/admin-operations-full-stack.spec.ts --workers=1 --output=test-results/admin-operations --trace=retain-on-failure
         working-directory: apps/web
         env: { PLAYWRIGHT_REUSE_EXISTING: "true", PLAYWRIGHT_SERVE_BUILD: "true", ADMIN_OPERATIONS_E2E: "1" }
       # Only on failure or timeout, for the storage reason given at the web job's upload.

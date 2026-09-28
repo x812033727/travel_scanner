@@ -9,11 +9,12 @@ with a video tool token, through apps/web/app/api/video/automation.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Annotated
+from typing import Annotated, Any
 from uuid import UUID
 
 import httpx
 from fastapi import APIRouter, Depends, Query
+from pydantic import ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -23,6 +24,7 @@ from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User, VideoToolToken
 from app.problems import AppError
+from app.video_automation import messages as drama_messages
 from app.video_automation import requests as drama_requests
 from app.video_automation import series as drama_series
 from app.video_automation import settings as service
@@ -35,13 +37,22 @@ from app.video_automation.judge import (
     judge_outline,
     judge_policy,
 )
+from app.video_automation.messages import MessageRefused
+from app.video_automation.models import DOC_KINDS
 from app.video_automation.requests import RequestRefused
 from app.video_automation.schemas import (
+    MESSAGE_SUBJECT_PATTERN,
     BingeQuoteOut,
     DramaRequestIn,
     DramaRequestOut,
     DramaRequestsOut,
     DramaRequestStart,
+    MessageAnswerIn,
+    MessageAnswerOut,
+    MessageIn,
+    MessageJobOut,
+    MessageOut,
+    MessagesOut,
     NextDramaRequestOut,
     SeriesAction,
     SeriesActionOut,
@@ -59,10 +70,12 @@ from app.video_automation.schemas import (
     SeriesEpisodeStartOut,
     SeriesIn,
     SeriesJobOut,
+    SeriesKind,
     SeriesListOut,
     SeriesOut,
     SeriesPatch,
     SeriesSummary,
+    SeriesWithdrawnOut,
     SettingsSave,
     SettingsView,
     SettingsWrite,
@@ -114,31 +127,32 @@ async def _save(session: AsyncSession, user: User, payload: SettingsWrite) -> Se
     return await service.update_settings(session, user, payload)
 
 
+def _validated(values: dict[str, Any]) -> SettingsWrite:
+    """The merged settings as a whole, or 422 naming what does not hold together.
+
+    The bounds and the consistency rules (a shortest length above the longest, no topic
+    source) live on ``SettingsWrite``; a save sends only some fields, so they can only be
+    checked once what was sent lies over what is stored.
+    """
+    try:
+        return SettingsWrite.model_validate(values)
+    except ValidationError as error:
+        problems = "；".join(
+            f"{'.'.join(str(part) for part in problem['loc'])}: {problem['msg']}"
+            if problem["loc"]
+            else str(problem["msg"])
+            for problem in error.errors()
+        )
+        raise AppError(422, "video_automation_settings_invalid", problems) from error
+
+
 @admin_router.put("/settings", response_model=SettingsView)
 async def put_video_automation_settings(
     payload: SettingsSave, user: SettingsManager, session: Session
 ) -> SettingsView:
-    values = payload.model_dump()
-    missing = [
-        key
-        for key in (
-            "stage_models",
-            "drama",
-            "stage_instructions",
-            "channel_stance",
-            "auto_pick_outline",
-            "auto_approve_final",
-        )
-        if getattr(payload, key) is None
-    ]
-    if missing:
-        # The stage models are chosen on the AI settings page, and a page from before the drama
-        # settings, the standing instructions, the stance or the hands-off switches existed
-        # sends none: keep the stored ones.
-        current = service.settings_values(await service.settings_row(session)).model_dump()
-        for key in missing:
-            values[key] = current[key]
-    return await _save(session, user, SettingsWrite.model_validate(values))
+    """Save the fields the tab sent; the rest keep their stored values (SettingsSave)."""
+    current = service.settings_values(await service.settings_row(session)).model_dump()
+    return await _save(session, user, _validated(payload.merged_over(current)))
 
 
 @admin_router.get("/prompts", response_model=StagePromptsOut)
@@ -152,10 +166,17 @@ async def get_video_stage_prompts(user: ContentReader, session: Session) -> Stag
 async def put_video_automation_models(
     payload: StageModelsWrite, user: SettingsManager, session: Session
 ) -> SettingsView:
-    """Change only the stage models, from the AI settings page."""
+    """Change only the stage models, from the AI settings page.
+
+    The drama's models change only when the page sends them: null means the drama follows the
+    tutorial's, left out keeps the stored choice (docs/videos/DRAMA-FLOW.md §一).
+    """
     current = service.settings_values(await service.settings_row(session)).model_dump()
-    merged = SettingsWrite.model_validate({**current, **payload.model_dump()})
-    return await _save(session, user, merged)
+    sent = payload.model_dump()
+    values = {**current, "stage_models": sent["stage_models"]}
+    if "drama_stage_models" in payload.model_fields_set:
+        values["drama"] = {**current["drama"], "drama_stage_models": sent["drama_stage_models"]}
+    return await _save(session, user, _validated(values))
 
 
 @tool_router.get("/settings", response_model=ToolSettingsView)
@@ -277,15 +298,19 @@ async def list_drama_requests(user: ContentReader, session: Session) -> DramaReq
 async def create_drama_request(
     payload: DramaRequestIn, user: ContentManager, session: Session
 ) -> DramaRequestOut:
-    """The owner asks for an episode; the worker starts it on its next round, before any
-    scheduled draft. Refused while the drama route is switched off, so nothing queues for a
+    """The owner asks for a one-off drama: a one-episode series whose story bible the worker
+    plans on its next round (docs/videos/DRAMA-FLOW.md §二); the answer names the series in
+    ``series_slug``. Refused while the drama route is switched off, so nothing queues for a
     worker that will never take it."""
     row = await service.settings_row(session)
     if not row.drama_enabled:
         raise AppError(
             409, "video_drama_disabled", "漫劇還沒開啟：先在影片審核的設定分頁打開 AI 漫劇"
         )
-    return await drama_requests.create_request(session, user, payload)
+    try:
+        return await drama_series.create_one_off(session, user, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
 
 
 @admin_router.delete("/drama-requests/{request_id}", response_model=DramaRequestOut)
@@ -361,9 +386,12 @@ async def _series_limit(tool: VideoToolToken) -> None:
 
 
 @admin_router.get("/series", response_model=SeriesListOut)
-async def list_video_series(user: ContentReader, session: Session) -> SeriesListOut:
+async def list_video_series(
+    user: ContentReader, session: Session, kind: SeriesKind | None = None
+) -> SeriesListOut:
+    """Every series, newest first; ``kind`` keeps only the long series or the one-offs."""
     _ = user
-    return SeriesListOut(series=await drama_series.list_series(session))
+    return SeriesListOut(series=await drama_series.list_series(session, kind=kind))
 
 
 @admin_router.post("/series", response_model=SeriesOut, status_code=201)
@@ -416,8 +444,20 @@ async def patch_video_series(
         raise _series_refused(error) from error
 
 
+@admin_router.delete("/series/{slug}", response_model=SeriesWithdrawnOut)
+async def withdraw_video_series(
+    slug: str, user: ContentManager, session: Session
+) -> SeriesWithdrawnOut:
+    """Withdraw a drama before the worker starts any of its episodes (a one-off at its story
+    bible, a series at its documents); its queued requests are cancelled with it."""
+    try:
+        return await drama_series.withdraw_series(session, user, slug)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
 def _doc_kind(kind: str) -> str:
-    if kind not in ("setting", "outline", "chapter"):
+    if kind not in DOC_KINDS:
         raise AppError(404, "video_series_doc_not_found", "沒有這種文件")
     return kind
 
@@ -487,6 +527,64 @@ async def skip_video_series_episode(
         return await drama_series.skip_episode(session, user, slug, number)
     except SeriesRefused as error:
         raise _series_refused(error) from error
+
+
+# The discussion thread on every document and every screenplay (docs/videos/DRAMA-FLOW.md §三):
+# the owner writes, the worker's next round answers.
+
+
+def _message_refused(error: MessageRefused) -> AppError:
+    return AppError(error.status, error.code, error.detail)
+
+
+Subject = Annotated[str, Query(pattern=MESSAGE_SUBJECT_PATTERN, max_length=24)]
+
+
+@admin_router.get("/series/{slug}/messages", response_model=MessagesOut)
+async def list_video_series_messages(
+    slug: str, subject: Subject, user: ContentReader, session: Session
+) -> MessagesOut:
+    """One thread, oldest first: the owner's lines and the model's answers."""
+    _ = user
+    try:
+        return MessagesOut(messages=await drama_messages.list_messages(session, slug, subject))
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+
+
+@admin_router.post("/series/{slug}/messages", response_model=MessageOut, status_code=201)
+async def post_video_series_message(
+    slug: str, payload: MessageIn, user: ContentManager, session: Session
+) -> MessageOut:
+    """The owner's line on a document or a screenplay; the model answers on the worker's next
+    round. Refused once the document is approved or the screenplay gate is passed."""
+    try:
+        return await drama_messages.post_message(session, user, slug, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+    except MessageRefused as error:
+        raise _message_refused(error) from error
+
+
+@tool_router.get("/series/messages/next", response_model=MessageJobOut)
+async def next_video_series_message(tool: VideoTool, session: Session) -> MessageJobOut:
+    """The oldest line waiting for the model, with what the model reads to answer it, or none."""
+    await _series_limit(tool)
+    return await drama_messages.next_message(session)
+
+
+@tool_router.post("/series/messages/{message_id}/answer", response_model=MessageAnswerOut)
+async def answer_video_series_message(
+    message_id: UUID, payload: MessageAnswerIn, tool: VideoTool, session: Session
+) -> MessageAnswerOut:
+    """The model's reply, and the document's new version when the owner asked for a change."""
+    await _series_limit(tool)
+    try:
+        return await drama_messages.answer_message(session, message_id, payload)
+    except SeriesRefused as error:
+        raise _series_refused(error) from error
+    except MessageRefused as error:
+        raise _message_refused(error) from error
 
 
 @tool_router.get("/series/next", response_model=SeriesJobOut)

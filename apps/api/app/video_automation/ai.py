@@ -46,8 +46,13 @@ class StageText(BaseModel):
     text: str = Field(description="The whole output file, exactly as it should be saved.")
 
 
-def stage_choice(row: VideoAutomationSettings, stage: str) -> tuple[str, str]:
-    choice = row.stage_models.get(stage) or DEFAULT_STAGE_MODELS[stage]
+def stage_choice(
+    row: VideoAutomationSettings, stage: str, format: str = "slides"
+) -> tuple[str, str]:
+    """The vendor and model a stage runs on: a drama's own choice when the owner made one
+    (docs/videos/DRAMA-FLOW.md §一), else the tutorial's, else the default."""
+    drama = (row.drama_stage_models or {}) if format == "drama" else {}
+    choice = drama.get(stage) or row.stage_models.get(stage) or DEFAULT_STAGE_MODELS[stage]
     return choice["provider"], choice["model"]
 
 
@@ -80,9 +85,9 @@ async def _on_api_key(
 ) -> tuple[str, str, dict[str, int]]:
     # Video stage choices named OpenAI API / Anthropic API must stay API-billed even when
     # the site-wide research connection for that vendor uses subscription accounts.
-    api_runtime = runtime.model_copy(update={
-        "openai_connection": "api_key", "anthropic_connection": "api_key"
-    })
+    api_runtime = runtime.model_copy(
+        update={"openai_connection": "api_key", "anthropic_connection": "api_key"}
+    )
     provider = research_provider(
         api_runtime,
         cast(AIProviderName, provider_name),
@@ -110,7 +115,7 @@ async def run_stage(
     token_id: Any,
     client: httpx.AsyncClient | None = None,
 ) -> StageRunOut:
-    provider_name, model = stage_choice(row, request.stage)
+    provider_name, model = stage_choice(row, request.stage, request.format)
     on_plan = provider_name in SUBSCRIPTION_PROVIDERS
     usage = await usage_view(session, row)
     # A series document, an episode planned from an approved chapter, a recap or a fix is not

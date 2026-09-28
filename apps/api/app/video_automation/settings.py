@@ -231,6 +231,26 @@ def drama_problems(drama: DramaSettings, runtime: Settings) -> list[str]:
         problem = _voice_problem(voice.provider, voice.name, runtime)
         if problem:
             problems.append(f"角色聲音：{problem}")
+    # The drama's own models and narrator voice (docs/videos/DRAMA-FLOW.md §一), when it does
+    # not follow the tutorial's.
+    if drama.drama_stage_models is not None:
+        options = model_options()
+        for stage, choice in drama.drama_stage_models.items():
+            if choice.model not in {option.value for option in options[choice.provider]}:
+                problems.append(
+                    f"漫劇的 {stage}：{choice.provider} 沒有 {choice.model} 這個可用的模型"
+                )
+    narrator = drama.drama_voice
+    if narrator is not None:
+        problem = _voice_problem(narrator.provider, narrator.name, runtime)
+        if problem:
+            problems.append(f"漫劇旁白：{problem}")
+        if (
+            narrator.provider == "gemini"
+            and narrator.model is not None
+            and narrator.model not in GEMINI_TTS_MODELS
+        ):
+            problems.append(f"漫劇旁白：Gemini 沒有 {narrator.model} 這個語音模型")
     return problems
 
 
@@ -338,12 +358,20 @@ def audio_check_passed(payload: dict[str, Any]) -> bool:
     )
 
 
-async def auto_approves_audio(session: AsyncSession, payload: dict[str, Any]) -> bool:
+async def auto_approves_audio(
+    session: AsyncSession, payload: dict[str, Any], format: str = "slides"
+) -> bool:
+    """Whether a narration review stands on Jev's check; a drama has its own switch."""
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
     # With no row yet the defaults apply, and the default is on (the owner's 2026-09-25 choice).
-    enabled = True if row is None else row.auto_approve_audio
+    if row is None:
+        enabled = True
+    elif format == "drama":
+        enabled = row.drama_auto_approve_audio
+    else:
+        enabled = row.auto_approve_audio
     return enabled and audio_check_passed(payload)
 
 
@@ -481,18 +509,25 @@ async def auto_approves_final(
     gate: str,
     payload: dict[str, Any],
     sha: str,
+    format: str = "slides",
     *,
     compilation: bool = False,
 ) -> bool:
     """Whether a final cut or an upload confirmation stands on the automatic checks.
 
-    A compilation (docs/videos/BINGE.md) is held to its own, shorter list of checks.
+    A drama has its own switch (docs/videos/DRAMA-FLOW.md §一); the checks are the same. A
+    compilation (docs/videos/BINGE.md) is held to its own, shorter list of checks.
     """
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
     # With no row yet the defaults apply, and the default is on (docs/videos/HANDS-OFF.md).
-    enabled = True if row is None else row.auto_approve_final
+    if row is None:
+        enabled = True
+    elif format == "drama":
+        enabled = row.drama_auto_approve_final
+    else:
+        enabled = row.auto_approve_final
     if not enabled:
         return False
     if gate == "final":

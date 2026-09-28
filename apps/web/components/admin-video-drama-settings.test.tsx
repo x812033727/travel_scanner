@@ -49,14 +49,16 @@ const view = {
 // What the API holds when the drama tab saves: someone changed the draft interval meanwhile.
 const stored = { ...view, draft_interval_hours: 48 };
 
+/** The API as the tab sees it: a partial save lands over the stored settings, the drama block field by field. */
 function stubFetch() {
   const puts: Array<Record<string, unknown>> = [];
   vi.stubGlobal("fetch", vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+    if (String(input).endsWith("/api/travel/admin/video-automation/prompts")) return Promise.resolve(Response.json({ prompts: [] }));
     expect(String(input)).toBe("/api/travel/admin/video-automation/settings");
     if (init?.method === "PUT") {
-      const body = JSON.parse(String(init.body)) as Record<string, unknown>;
+      const body = JSON.parse(String(init.body)) as { drama?: Record<string, unknown> };
       puts.push(body);
-      return Promise.resolve(Response.json({ ...stored, ...body, updated_at: "2026-09-27T09:00:00Z" }));
+      return Promise.resolve(Response.json({ ...stored, ...body, drama: { ...stored.drama, ...(body.drama ?? {}) }, updated_at: "2026-09-27T09:00:00Z" }));
     }
     return Promise.resolve(Response.json(stored));
   }));
@@ -105,17 +107,16 @@ describe("AdminVideoDramaSettings", () => {
       series_episodes_per_month: 30, series_script_gate: true,
     });
     expect((body.drama as { character_voice_pool: unknown }).character_voice_pool).toEqual([{ provider: "gemini", name: "Kore" }]);
-    // Everything outside the drama block goes back as the API holds it now, not as this tab loaded it.
-    expect(body.draft_interval_hours).toBe(48);
-    expect(body).not.toHaveProperty("stage_models");
+    // The drama block alone: the API keeps everything else as it holds it now.
+    expect(Object.keys(body)).toEqual(["drama"]);
     expect((await screen.findByRole("status")).textContent).toBe("已儲存");
     expect(saved.map((next) => next.updated_at)).toEqual(["2026-09-27T09:00:00Z"]);
   });
 
-  it("lets the worker keep up to six series in flight and sends the limit back with the drama block", async () => {
+  it("lets the worker keep up to six episodes in the making and sends the limit back with the drama block", async () => {
     const puts = stubFetch();
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "settings.manage"])}><AdminVideoDramaSettings view={view} onSaved={() => undefined} /></AdminOperationsProvider>);
-    const inFlight = screen.getByRole("spinbutton", { name: "同時進行的作品數（1–6）" }) as HTMLInputElement;
+    const inFlight = screen.getByRole("spinbutton", { name: "同時最多幾集在做（1–6）" }) as HTMLInputElement;
     expect(inFlight.value).toBe("1");
     expect(inFlight.getAttribute("min")).toBe("1");
     expect(inFlight.getAttribute("max")).toBe("6");
