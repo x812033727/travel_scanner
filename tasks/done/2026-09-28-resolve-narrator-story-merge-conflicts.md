@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-resolve-narrator-story-merge-conflicts
 title: Resolve narrator story merge conflicts
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-pr-merge-watch
 claimed_at: 2026-09-28T08:37:53Z
 created_at: 2026-09-28T08:37:53Z
-completed_at:
+completed_at: 2026-09-28T08:40:08Z
 branch: codex/pr897-story-conflict
 depends_on: []
 scope:
@@ -26,15 +26,15 @@ Synchronizing the parent can also restore an open ticket already completed by #8
 
 ## Definition of done
 
-- [ ] The merged document preserves the current main design and all authored story contracts.
-- [ ] The author's completed narrator-only ticket remains the sole copy of its ID.
-- [ ] Implementation/workflow files remain unchanged from the reviewed author head.
+- [x] The merged document preserves the current main design and all authored story contracts.
+- [x] The author's completed narrator-only ticket remains the sole copy of its ID.
+- [x] Implementation/workflow files remain unchanged from the reviewed author head.
 
 ## Steps
 
 - [x] Compare both document versions and check current head/worktree ownership.
-- [ ] Merge main, resolve only the documented differences and remove the duplicate open ticket.
-- [ ] Validate task structure, source preservation and diff integrity; require current-head CI.
+- [x] Merge main, resolve only the documented differences and remove the duplicate open ticket.
+- [x] Validate task structure, source preservation and diff integrity; require current-head CI.
 
 ## How to verify
 
@@ -51,3 +51,11 @@ checks. Full latest-head CI remains required before merge.
 - Read-only merge-tree against main d8d6363f reported only docs/videos/STORY.md.
   The feature document retains every main section and adds the series.json contract,
   STORY_RULES, narrator-only gate behavior and paginated contact-sheet explanation.
+- The resolved document is identical to the reviewed feature document. Removing only
+  its new contract section and reverting the expanded scope row reproduces main's
+  document exactly. All tools/video files, the video-tooling workflow and the author's
+  done ticket are unchanged. The reintroduced unclaimed open copy was removed.
+- Task validation passed for 1,016 files; staged/working diff checks and unmerged-file
+  checks passed. Evidence: test-results/pr897-document-union.json and pr897-tasks.log.
+  No implementation tests were rerun for this document-only resolution; the author's
+  existing test evidence remains applicable, and full new-head CI still gates merge.

@@ -1,0 +1,18 @@
+# Disposable CI client emulates the API's UID, read-only mount and RPC network.
+name: mokaair-uploader-rpc-test
+services:
+  client:
+    image: mokaair-studio-uploader-uploader:latest
+    user: "10001:10001"
+    command: [node, -e, "setInterval(() => {}, 60000)"]
+    environment:
+      UPLOADER_CHANNEL_ID: ${UPLOADER_CHANNEL_ID:?}
+    volumes:
+      - ${UPLOADER_CI_API_SECRET_DIR:?}:/run/mokaair-uploader:ro
+    networks: [uploader_rpc]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+networks:
+  uploader_rpc:
+    name: ${UPLOADER_API_NETWORK:?}
+    internal: true
