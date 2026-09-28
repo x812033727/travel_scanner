@@ -29,7 +29,7 @@ Season video 5 (`docs/ai-video-en-season-01/README.md`, brief `briefs/04-rtx-spa
 
 ## Steps
 
-- [ ] Planner writes `docs/videos/rtx-spark-local-ai/brief.md` from the season brief, re-reading every changeable fact on its official page.
+- [x] Planner writes `docs/videos/rtx-spark-local-ai/brief.md` from the season brief, re-reading every changeable fact on its official page.
 - [ ] `review-push --gate outline`; then writer, two verifiers, listener review.
 - [ ] Narration and dubs wait for the Gemini month to reset on 2026-10-01 (8,106 characters left on 2026-09-28).
 
@@ -44,3 +44,4 @@ node tools/video/cli.mjs status --slug rtx-spark-local-ai --workdir <VIDEO_WORKD
 
 - The owner asked on 2026-09-28 to keep planning after the first three were packaged (「繼續計畫別的」).
 - Schedule slot: 2026-10-27 15:00 UTC in `schedule.csv` (after shipping, so real reviews exist to compare with).
+- 2026-09-28: brief written (three outlines, A recommended) and sent for the owner's pick as outline review `786f8faa-d5d1-4ebf-ac04-15e695827413`. `review-push` needs a video.json, so the outline went up through the automation client's calls instead (report, judge — the stance is blank, so it waits for the owner — then submit), the same steps `flow.mjs` `submitOutline` takes.
