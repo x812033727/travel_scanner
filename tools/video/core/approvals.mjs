@@ -27,6 +27,10 @@ export const GATES = {
   // The owner's "I uploaded these dub tracks in Studio" (docs/videos/DUBS.md), bound to the
   // manifest `review-push --gate dubs` writes of the tracks it sent.
   dubs: ({ workdir }) => path.join(workdir, "dubs", "manifest.json"),
+  // A batch of the languages the owner chose (docs/videos/LANGUAGES.md), bound to the manifest
+  // `review-push --gate languages` writes of the parts and files it sent; approved on the site
+  // by the owner once the dub tracks are up in Studio, or by the site itself when there is none.
+  languages: ({ workdir }) => path.join(workdir, "review", "languages.json"),
 };
 
 export const approvalsFile = (workdir) => path.join(workdir, "approvals.json");

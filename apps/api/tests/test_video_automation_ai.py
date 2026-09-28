@@ -134,16 +134,51 @@ async def test_a_stage_missing_from_the_settings_uses_the_default_model(
 
 
 @pytest.mark.asyncio
+async def test_a_drama_runs_on_its_own_models_when_the_owner_chose_them(
+    stage: dict[str, Any],
+) -> None:
+    """The drama's models are a separate choice (docs/videos/DRAMA-FLOW.md §一); None follows
+    the tutorial's, and a stage missing from the drama's choice falls back the same way."""
+    drama_models = {
+        stage_name: {"provider": "anthropic", "model": "claude-opus-5-5"}
+        for stage_name in DEFAULT_STAGE_MODELS
+    }
+    row = VideoAutomationSettings(
+        stage_models=API_MODELS, drama_stage_models=drama_models, monthly_token_budget_millions=20
+    )
+    assert ai.stage_choice(row, "writer", "drama") == ("anthropic", "claude-opus-5-5")
+    assert ai.stage_choice(row, "writer", "slides") == ("anthropic", "claude-sonnet-5")
+    assert ai.stage_choice(row, "writer") == ("anthropic", "claude-sonnet-5")
+    follows = VideoAutomationSettings(stage_models=API_MODELS, drama_stage_models=None)
+    assert ai.stage_choice(follows, "writer", "drama") == ("anthropic", "claude-sonnet-5")
+    partial = VideoAutomationSettings(
+        stage_models=API_MODELS, drama_stage_models={"planner": drama_models["planner"]}
+    )
+    assert ai.stage_choice(partial, "writer", "drama") == ("anthropic", "claude-sonnet-5")
+
+    request = StageRunIn(
+        stage="writer", slug="jingwei", instructions="Write.", payload={}, format="drama"
+    )
+    await ai.run_stage(_session(), KEYS, row, request, None)
+    assert stage["asked"][0] == "anthropic"
+    assert stage["asked"][1]["model"] == "claude-opus-5-5"
+    await ai.run_stage(_session(), KEYS, row, _request("writer"), None)
+    assert stage["asked"][1]["model"] == "claude-sonnet-5", "a tutorial keeps its own"
+
+
+@pytest.mark.asyncio
 async def test_video_api_choice_stays_on_the_api_when_site_research_uses_subscriptions(
     stage: dict[str, Any],
 ) -> None:
     runtime = Settings(
-        openai_api_key="o", anthropic_api_key="a",
-        openai_connection="subscription", anthropic_connection="subscription",
+        openai_api_key="o",
+        anthropic_api_key="a",
+        openai_connection="subscription",
+        anthropic_connection="subscription",
     )
-    row = VideoAutomationSettings(stage_models={
-        "verifier": {"provider": "openai", "model": "gpt-6-sol"}
-    })
+    row = VideoAutomationSettings(
+        stage_models={"verifier": {"provider": "openai", "model": "gpt-6-sol"}}
+    )
     await ai.run_stage(_session(), runtime, row, _request(), None)
     assert stage["asked"][0] == "openai"
     assert stage["runtime"].openai_connection == "api_key"

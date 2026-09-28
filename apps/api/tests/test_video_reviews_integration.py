@@ -17,7 +17,7 @@ from app.models import AdminAuditLog, User, VideoToolToken
 from app.problems import AppError
 from app.video_automation import settings as automation
 from app.video_reviews import admin_service as service
-from app.video_reviews.schemas import DecisionIn, DropIn, DubLocalesIn, ProjectIn, ReviewIn
+from app.video_reviews.schemas import DecisionIn, DropIn, LocalesIn, ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
 
 pytestmark = pytest.mark.skipif(
@@ -260,13 +260,15 @@ async def test_a_dropped_video_stays_listed_with_its_article_and_takes_nothing_m
 
 
 @pytest.mark.asyncio(loop_scope="module")
-async def test_the_owner_s_dub_languages_reach_the_worker_and_its_tracks_come_back_for_upload(
+async def test_the_owner_s_languages_reach_the_worker_and_its_batch_comes_back_to_be_uploaded(
     tmp_path: Path,
 ) -> None:
+    """docs/videos/LANGUAGES.md: the choice after the final cut, the worker's batch, the states
+    on the list, the upload confirmation, and "ready to upload" once every part is done."""
     slug = f"it-{uuid4().hex[:12]}"
     store = ReviewStore(tmp_path, max_file_bytes=10_000_000, max_total_bytes=50_000_000)
     async with SessionFactory() as session:
-        owner = User(email=f"video-dubs-{uuid4()}@example.com", password_hash="unused")
+        owner = User(email=f"video-languages-{uuid4()}@example.com", password_hash="unused")
         token = VideoToolToken(name="it", token_hash=uuid4().hex * 2, token_prefix="mkv_it")
         session.add_all([owner, token])
         await session.commit()
@@ -274,51 +276,113 @@ async def test_the_owner_s_dub_languages_reach_the_worker_and_its_tracks_come_ba
         reported = await service.upsert_project(
             session, store, slug, ProjectIn(title="AI 模型怎麼挑", stage="final")
         )
-        assert reported.dub_locales == [], "off until the owner ticks a language"
+        assert reported.locales == {} and reported.locales_decided_at is None
+        assert not reported.ready_to_upload, "the owner has not decided the languages"
 
-        chosen = await service.set_dub_locales(
-            session, slug, owner, DubLocalesIn.model_validate({"locales": ["ko", "en"]})
+        chosen = await service.set_locales(
+            session,
+            slug,
+            owner,
+            LocalesIn.model_validate(
+                {"locales": {"ko": {"dub": True}, "en": {"metadata": True, "captions": True}}}
+            ),
         )
-        assert chosen.dub_locales == ["en", "ko"]
+        assert list(chosen.locales) == ["en", "ko"] and chosen.locales_decided_at is not None
+        assert chosen.dub_locales == ["ko"]
+        assert {part: out.state for part, out in chosen.languages["ko"].items()} == {
+            "captions": "working",
+            "dub": "working",
+        }
         listed = next(item for item in await service.list_projects(session) if item.slug == slug)
-        assert listed.dub_locales == ["en", "ko"], "the worker's list carries the choice"
+        assert list(listed.locales) == ["en", "ko"], "the worker's list carries the choice"
+        assert listed.languages["en"]["metadata"].state == "working"
         again = await service.upsert_project(
-            session, store, slug, ProjectIn(title="AI 模型怎麼挑", stage="dubs")
+            session, store, slug, ProjectIn(title="AI 模型怎麼挑", stage="languages")
         )
-        assert again.dub_locales == ["en", "ko"], "the pipeline's reports never touch it"
+        assert list(again.locales) == ["en", "ko"], "the pipeline's reports never touch it"
 
-        track = _upload(store, slug, b"english track")
-        dubs = await service.submit_review(
+        # The upload confirmation is approved, but the languages are still in the making.
+        package = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(gate="publish", content_sha256="5" * 64, summary="上傳包", payload={}),
+            token,
+        )
+        await service.decide(session, slug, package.id, owner, DecisionIn(decision="approve"))
+        assert not (await service.project_view(session, slug)).ready_to_upload
+
+        track = _upload(store, slug, b"korean track")
+        batch = await service.submit_review(
             session,
             store,
             slug,
             ReviewIn(
-                gate="dubs",
+                gate="languages",
                 content_sha256="6" * 64,
-                summary="配音：en 完成、ko 跳過",
+                summary="語言：en 標題說明與 CC；ko CC 與配音",
                 payload={
                     "locales": {
-                        "en": {"file": "en.m4a", "file_role": "dub_en", "status": "ready"},
-                        "ko": {"status": "skipped", "reason": "1.15 倍還塞不下"},
+                        "en": {"metadata": "ready", "captions": "ready"},
+                        "ko": {"captions": "ready", "dub": "ready"},
                     }
                 },
                 files=[
-                    {"role": "dub_en", "sha256": track, "size": 13, "content_type": "audio/mp4"}
+                    {"role": "dub_ko", "sha256": track, "size": 12, "content_type": "audio/mp4"}
                 ],
             ),
             token,
         )
-        assert dubs.status == "pending"
+        assert batch.status == "pending", "a dub track waits for the owner to upload it"
+        before = await service.project_view(session, slug)
+        assert before.languages["ko"]["dub"].state == "ready"
+        assert before.ready_to_upload, "every chosen part is made; the owner may schedule it"
         uploaded = await service.decide(
-            session, slug, dubs.id, owner, DecisionIn(decision="approve", note="已在 Studio 上傳")
+            session, slug, batch.id, owner, DecisionIn(decision="approve", note="已在 Studio 上傳")
         )
         assert (uploaded.status, uploaded.choice, uploaded.note) == (
             "approved",
             None,
             "已在 Studio 上傳",
         )
+        after = next(item for item in await service.list_projects(session) if item.slug == slug)
+        assert after.languages["ko"]["dub"].state == "uploaded"
+        assert after.languages["en"]["metadata"].state == "ready"
         path, content_type = await service.file_for_admin(session, store, slug, track)
-        assert path.read_bytes() == b"english track" and content_type == "audio/mp4"
+        assert path.read_bytes() == b"korean track" and content_type == "audio/mp4"
+
+        # A language added later: a second batch without a dub track is approved on arrival.
+        added = await service.set_locales(
+            session,
+            slug,
+            owner,
+            LocalesIn.model_validate(
+                {
+                    "locales": {
+                        "en": {"metadata": True, "captions": True},
+                        "ko": {"captions": True, "dub": True},
+                        "ja": {"metadata": True},
+                    }
+                }
+            ),
+        )
+        assert added.languages["ja"]["metadata"].state == "working" and not added.ready_to_upload
+        assert added.languages["ko"]["dub"].state == "uploaded", "the first batch still counts"
+        later = await service.submit_review(
+            session,
+            store,
+            slug,
+            ReviewIn(
+                gate="languages",
+                content_sha256="7" * 64,
+                summary="語言：ja 標題說明",
+                payload={"locales": {"ja": {"metadata": "ready"}}},
+            ),
+            token,
+        )
+        assert (later.status, later.note) == ("approved", service.LANGUAGES_AUTO_APPROVED_NOTE)
+        final = await service.project_view(session, slug)
+        assert final.languages["ja"]["metadata"].state == "ready" and final.ready_to_upload
 
         audit = list(
             await session.scalars(
@@ -326,17 +390,17 @@ async def test_the_owner_s_dub_languages_reach_the_worker_and_its_tracks_come_ba
             )
         )
         assert sorted(row.action for row in audit) == [
-            "video_dub_locales_set",
+            "video_locales_set",
+            "video_locales_set",
+            "video_review_approved",
             "video_review_approved",
         ]
-        picked = next(row for row in audit if row.action == "video_dub_locales_set")
-        assert picked.metadata_json == {"slug": slug, "locales": ["en", "ko"]}
+        picked = next(row for row in audit if row.action == "video_locales_set")
+        assert picked.metadata_json["slug"] == slug and "ko" in picked.metadata_json["locales"]
 
         await service.drop_project(session, store, slug, owner, DropIn(note="不做了"))
         with pytest.raises(AppError) as refused:
-            await service.set_dub_locales(
-                session, slug, owner, DubLocalesIn.model_validate({"locales": []})
-            )
+            await service.set_locales(session, slug, owner, LocalesIn.model_validate({}))
         assert refused.value.code == "video_project_dropped"
 
 
