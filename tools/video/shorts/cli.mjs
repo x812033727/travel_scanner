@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { copyFileSync, existsSync, readFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
@@ -15,13 +15,15 @@ const HELP = `Shorts pipeline (docs/videos/SHORTS.md)
   package      --dir BUILD_DIR
   push         --dir BUILD_DIR
   import       --from DIR --workdir OUTSIDE_REPO      (final.mp4, zh-TW.srt, meta.json)
+  from-episode --slug EPISODE --workdir OUTSIDE_REPO [--episode-workdir DIR] [--short 1|2] [--speech ...] [--check]
+               an explainer's two Shorts (docs/videos/<slug>/shorts.json) built on its keyframes
   tick         the worker's knock: the site does what is due on the Shorts calendar
   track-init   --dir OUTSIDE_REPO --start YYYY-MM-DD
   report       --dir TRACKING_DIR [--now ISO]
 Narration: server is the channel's voice through the site (needs \`node tools/video/cli.mjs login\`);
 windows is the installed voice; files takes one 000.wav, 001.wav, ... per phrase from --audio-dir.
 The order for one Short: build, check-audio, qa, package, push.`;
-const FLAGS = ['file', 'source-base', 'workdir', 'voice', 'channel', 'audio-dir', 'dir', 'start', 'now', 'speech', 'redo', 'threshold', 'verify', 'from'];
+const FLAGS = ['file', 'source-base', 'workdir', 'voice', 'channel', 'audio-dir', 'dir', 'start', 'now', 'speech', 'redo', 'threshold', 'verify', 'from', 'slug', 'episode-workdir', 'short'];
 const print = (value) => console.log(typeof value === 'string' ? value : JSON.stringify(value, null, 2));
 const need = (values, name) => {
   if (!values[name]) throw new Error(`--${name} required`);
@@ -37,7 +39,7 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     print(HELP);
     return 0;
   }
-  const {values} = parseArgs({args:args.slice(1),options:{...Object.fromEntries(FLAGS.map(k=>[k,{type:'string'}])),offline:{type:'boolean'}},strict:true});
+  const {values} = parseArgs({args:args.slice(1),options:{...Object.fromEntries(FLAGS.map(k=>[k,{type:'string'}])),offline:{type:'boolean'},check:{type:'boolean'}},strict:true});
   const site = async () => (await import('./site.mjs')).siteClient({ env, home, ...(fetchImpl ? { fetch: fetchImpl } : {}) });
   if (command==='track-init' || command==='report') {
     const {initTracking,trackingReport} = await import('./tracking.mjs');
@@ -90,6 +92,7 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
     print(await importShort({from:need(values,'from'),workdir:values.workdir}));
     return 0;
   }
+  if (command==='from-episode') return fromEpisode(values, { env, home, site });
   if (!['validate','build'].includes(command)) throw new Error(`unknown command ${command}`);
   if (!values.file) throw new Error('--file required');
   const sourceBase = path.resolve(values['source-base'] ?? path.join(ROOT,'docs/videos/ai-shorts'));
@@ -108,4 +111,42 @@ export async function main(args=process.argv.slice(2), { env = process.env, fetc
   }
   return 0;
 }
+/**
+ * An explainer's Shorts (docs/videos/so-thats-why/): shorts.json resolved against the episode's
+ * keyframes (each shot becomes its keyframe, bound by hash), then each built like any other script:
+ * the resolved script is written beside the builds and the episode's work directory is the source
+ * base. After this, check-audio, qa, package and push take each build directory as usual.
+ */
+async function fromEpisode(values, { env, home, site }) {
+  if (!values.slug) throw new Error('--slug required: the long episode');
+  if (values.short !== undefined && !['1','2'].includes(values.short)) throw new Error('--short must be 1 or 2');
+  const {loadEpisodeShorts} = await import('./episode.mjs');
+  const episode = loadEpisodeShorts({slug:values.slug, workdirFlag:values['episode-workdir'], env, home});
+  const picked = values.short ? [episode.shorts[Number(values.short)-1]] : episode.shorts;
+  for (const doc of picked) {
+    const errors = validate(doc);
+    if (errors.length) throw new Error(`${doc.slug}: ${errors.join('; ')}`);
+    verifyEvidence(doc, episode.workdir);
+  }
+  if (values.check) {
+    print(`${values.slug}: ${picked.length} Shorts valid; every keyframe matches its hash`);
+    return 0;
+  }
+  const workdir = need(values,'workdir');
+  const {build} = await import('./build.mjs');
+  const {SOURCES} = await import('./speech.mjs');
+  const speech = values.speech ?? (values['audio-dir'] ? 'files' : 'server');
+  if (!SOURCES.includes(speech)) throw new Error(`--speech must be one of ${SOURCES.join(', ')} (default server: the episode's channel voice)`);
+  const client = speech==='server' ? await site() : null;
+  const results = [];
+  for (const doc of picked) {
+    const file = path.join(workdir, 'episode-scripts', `${doc.slug}.json`);
+    mkdirSync(path.dirname(file), {recursive:true});
+    writeFileSync(file, `${JSON.stringify(doc,null,2)}\n`);
+    results.push(await build({file, sourceBase:episode.workdir, workdir, voice:values.voice, channel:values.channel, audioDir:values['audio-dir'], speech, client, lexicon:episode.lexicon ?? lexicon()}));
+  }
+  print(results);
+  return 0;
+}
+
 if (process.argv[1] && import.meta.url===pathToFileURL(path.resolve(process.argv[1])).href) main().then(code=>{process.exitCode=code;}).catch(error=>{console.error(error.message);process.exitCode=error.who==='owner'?3:error.who==='service'?4:1;});
