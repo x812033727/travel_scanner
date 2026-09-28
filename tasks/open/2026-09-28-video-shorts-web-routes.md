@@ -1,17 +1,18 @@
 ---
 id: 2026-09-28-video-shorts-web-routes
 title: Video shorts A2: web routes that forward the worker's Shorts calls
-status: open
+status: in-progress
 priority: P2
 area: web
-owner:
-claimed_at:
+owner: claude-fable-5-1-shorts
+claimed_at: 2026-09-28T05:17:29Z
 created_at: 2026-09-28T03:21:00Z
 completed_at:
-branch:
+branch: claude/video-shorts-web-routes
 depends_on: []
 scope:
   - apps/web/app/api/video/automation/shorts
+  - apps/web/app/api/video/automation/videos
 ---
 
 # Video shorts A2: web routes that forward the worker's Shorts calls
@@ -22,19 +23,21 @@ nginx 只對外開放網站，不開放 API；工人與本機工具打的每一�
 
 ## Definition of done
 
-- [ ] `apps/web/app/api/video/automation/shorts/` 底下有這些路由，每支都經 `forwardToSpeech` 轉送、只帶工具權杖、不帶 cookie：
+- [x] `apps/web/app/api/video/automation/shorts/` 底下有這些路由，每支都經 `forwardToSpeech` 轉送、只帶工具權杖、不帶 cookie：
+  - `GET settings`（A1 的端點：Shorts 的聲音、長度範圍、語言，工具合成旁白前要讀）
   - `POST tick`
   - `GET next`
   - `POST plan`、`POST topics`、`POST report`
   - `POST [slug]/start`、`POST [slug]/done`
-- [ ] 路徑裡的 `slug` 先用 Shorts 的規則檢查（`^[a-z][a-z0-9-]{2,79}$`），不合的回 404，不送到 API。
-- [ ] `route.test.ts`：每支路由轉到正確的上游路徑、沒有權杖回 401、壞的 slug 回 404、請求本體超過上限回 413。
+- [x] 影片清單的轉送（`apps/web/app/api/video/automation/videos/route.ts`）把篩選參數帶過去：`format`、`shorts`、`state`、`limit`、`before`，每個值先在這裡檢查，不認得的參數不轉送，值不合的回 422（悄悄丟掉篩選會回整份清單）。原本的轉送不帶查詢字串，工人帶 `shorts=exclude` 也沒有用。
+- [x] 路徑裡的 `slug` 先用 Shorts 的規則檢查（`^[a-z][a-z0-9-]{2,79}$`），不合的回 404，不送到 API。
+- [x] `route.test.ts`：每支路由轉到正確的上游路徑、沒有權杖回 401、壞的 slug 回 404、請求本體超過上限回 413。
 
 ## Steps
 
-- [ ] 照 `apps/web/app/api/video/automation/topics/route.ts` 與 `series/guard.ts` 的寫法。
-- [ ] 本體上限：`plan`、`topics`、`report` 1 MiB；其餘 64 KiB。
-- [ ] 測試照 `apps/web/app/api/video/automation/series/route.test.ts`。
+- [x] 照 `apps/web/app/api/video/automation/topics/route.ts` 與 `series/guard.ts` 的寫法。
+- [x] 本體上限：`plan`、`topics`、`report` 1 MiB；其餘 64 KiB。
+- [x] 測試照 `apps/web/app/api/video/automation/series/route.test.ts`。
 
 ## How to verify
 
