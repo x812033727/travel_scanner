@@ -42,7 +42,7 @@ drafts and translated original Mokaair illustrations before any import.
 - [x] Confirm inventory and source versions, claim narrow pair scope.
 - [x] Complete eight language documents and 24 image assets.
 - [x] Run content/asset and render audits, focused tests and task checks.
-- [ ] Open draft PR and record its URL and CI status.
+- [x] Open draft PR and record its URL and CI status.
 
 ## How to verify
 
@@ -66,3 +66,6 @@ Both packs lint with only existing `no_summary` and advisory English length
 warnings. Focused API tests: 12 passed, 5 skipped; web: 65 passed. All 16 SVGs
 passed canvas/card/overlap measurement and eight raster heroes are 1600x900.
 Independent editorial review and live browser QA are still pending.
+Draft PR: https://github.com/x812033727/travel_scanner/pull/907.
+CI began on the submitted branch; merge remains gated on independent editorial
+review and green checks.
