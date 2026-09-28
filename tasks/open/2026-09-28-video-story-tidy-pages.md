@@ -1,20 +1,22 @@
 ---
 id: 2026-09-28-video-story-tidy-pages
 title: 清理工作檔時也清掉故事讀過的頁面
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-story-worker
+claimed_at: 2026-09-28T16:00:18Z
 created_at: 2026-09-28T14:30:20Z
 completed_at:
-branch:
+branch: claude/video-story-worker
 depends_on:
   - 2026-09-28-video-story-tidy-finished
   - 2026-09-28-video-story-worker
 scope:
   - tools/video/automation/tidy.mjs
   - tools/video/automation/tidy.test.mjs
+  - tools/video/automation/story.mjs
+  - docs/videos/AUTOMATION.md
 ---
 
 # 清理工作檔時也清掉故事讀過的頁面
@@ -48,3 +50,5 @@ node --test "tools/video/automation/*.test.mjs"
 
 - 這是做工人票時回報的（2026-09-28）：工人票不能動 `tidy.mjs`，清理票不知道故事流程，所以落在兩張票中間。
 - 部署後先在主機上跑 `tidy --dry-run` 看它會清什麼，再讓它真的清。
+- 2026-09-29 認領（claude-opus-5-5-video-story-worker），在工人票的分支 `claude/video-story-worker`（PR #933）上做，因為 `story/pages/` 的名稱在那個分支的 `story.mjs`、還不在 main。用了 `--force`：`claim` 拒絕的理由是 scope 與 PR #870 的三張 `review` 票（`video-dubs-worker`、`video-drama-room-worker`、`video-split-settings-worker`）重疊，#870 早已合併、只是沒人結案；兩張相依的票都已在 `tasks/done/`（清理票隨 #921 上了 main，工人票在這個分支結案）。那三張票沒有動。
+- scope 加了兩個路徑：`tools/video/automation/story.mjs`（把頁面資料夾的名稱匯出成 `STORY_PAGES_DIR`，清理從這裡讀，名稱只寫一次）與 `docs/videos/AUTOMATION.md`（清理工作區一節的刪除清單，上面 Steps 已經說要加）。
