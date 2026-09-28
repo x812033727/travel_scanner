@@ -29,3 +29,38 @@ This draft localizes `stp-persona-research` and `social-media-planning` from the
 - `npm run typecheck:web`: passed. Focused web component tests for `content-blocks`, `guide-image`, `article`, `article-page`, and `lib/guides`: four files and 123 tests passed in the first run; Vitest timed out while starting the `article.test.tsx` worker under concurrent repository test load. A separate run of that file passed all 40 tests. The combined focused coverage is 163 passing tests across two runs; the first command itself exited nonzero because of the worker startup timeout.
 
 The branch is a review draft. It does not merge, deploy, import, publish, or change the production site. CI and a fresh source/version check remain gates before any later release action.
+
+## Independent editorial correction on 2026-09-28
+
+A further independent review of PR #911 at
+`893ff4adaa862d634b74ea746209ad53f4b089c5` read all eight target documents and
+checked the source, metadata, 24 localized assets, and their render receipts. It
+identified a source-meaning error in the simplified Chinese social-planning
+document: an existing audience community had become an existing social-media
+platform. The sentence now says
+`没有足够信息时，不把想象中的受众当成已经存在的社群。`
+The same document's `放著不管` is corrected to `放着不管`.
+
+The structural comparison permits exactly two changed text values:
+`/locales/zh-CN/blocks/5/text` and `/locales/zh-CN/blocks/20/text`.
+All five documents still validate against `GuideDocument`; the source document,
+other locales, root metadata, STP pack, and every asset are unchanged. The prior
+visual evidence therefore still applies. This supplement replaces only the old
+social-planning pack and simplified Chinese document hashes; it preserves the
+original audit as historical evidence.
+
+| Artifact | Previous SHA-256 | Corrected SHA-256 |
+| --- | --- | --- |
+| `social-media-planning.json` (UTF-8 LF bytes) | `f416e8357f96e1311fb8f636a84eb34a51ecee1dd6e0af72cb21d42c52bc7db8` | `7450262ad063b15ac494b47a814f9436e19a5d159206e5d791aaf957193216fe` |
+| `zh-CN` document (UTF-8 JSON, sorted keys, compact separators, unescaped Unicode) | `1f209d198fba6a16dd50d3e2c8dfb8e42d706b1ffaf6d51b2ba88dc6dbf5d7e6` | `7edc3d09013dd6f1ef155c3abea078f2bb9adacacadf3c509773b395d12ae494` |
+
+An independent follow-up reviewer re-read both complete paragraphs against
+`zh-TW`, recomputed the corrected hashes, verified the two-value-only diff and
+all five document schemas, and found no remaining editorial blocker. The
+unchanged asset and source evidence remains applicable.
+
+Scoped `pack_cli lint --kind life --slug social-media-planning` passed after the
+correction, retaining only the existing no-summary and English-length advisories.
+
+This is a repository editorial correction. It does not perform or establish a
+production deployment, content import, publication, or public-site acceptance.
