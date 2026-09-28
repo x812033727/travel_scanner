@@ -25,7 +25,7 @@ Strict editorial intake is **not fully passed**. Both source documents begin wit
 
 All 16 localized SVGs passed the final Chromium geometry checks with zero clipping, card-margin or overlap issues. The coordinating agent inspected all eight final full-resolution diagrams and the final five-language desktop/mobile cover sheets; no missing glyphs, overlap or numeric mismatch was found.
 
-The final standalone article preview loads the installed packs and assets, including the unchanged original locale, at desktop 1280 × 900 and mobile 390 × 844. All 20 cases passed: complete block/source counts, loaded 1600 × 900 covers, required image alt text, no horizontal overflow and no page errors. This HTML preview approximates article layout; it is **not** the actual Next.js route or production acceptance.
+The final standalone article preview loads the installed packs and assets, including the unchanged original locale, at desktop 1365 × 900 and mobile 375 × 812. All 20 cases passed: complete block/source counts, loaded 1600 × 900 covers, required image alt text, no horizontal overflow and no page errors. This HTML preview approximates article layout; it is **not** the actual Next.js route or production acceptance.
 
 ## Verification receipts
 
