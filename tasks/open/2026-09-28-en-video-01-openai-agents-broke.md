@@ -25,7 +25,7 @@ First video of the English season (`docs/ai-video-en-season-01/README.md`): the 
 ## Definition of done
 
 - [x] `docs/videos/openai-agents-broke-in/brief.md` exists with the eight required sections in the pipeline's order (copied from the season brief; `站主觀點` first line `套用立場：4、5`), and the outline gate is approved (`review-push --gate outline`, Jev or the owner).
-- [~] `video.json` (`narration_locale: en`), `claims.md` written; `verify-1.md` (and `verify-2.md` if more than three facts changed); every count on screen confirmed on the official page that day or replaced by "OpenAI says dozens".
+- [x] `video.json` (`narration_locale: en`), `claims.md`, `verify-1.md` (181 rows, 5 fact changes) and `verify-2.md` (61 rows, 2 changes) written; every count on screen is attributed or confirmed; listener review applied (19 lines); lint 0 errors, 1 warning (hook about 36 s by the estimator, under 30 s at the voice's pace); slides render with no layout problem.
 - [x] The chapter-6 demonstration is a real run recorded that day (`demo-log.md`) (tools off, then one allowed tool); the unrestricted case is described, never run.
 - [x] `docs/videos/lexicon.json` has the new abbreviations (SEC, API, CLI, URL) with English readings confirmed by `check-audio`.
 - [ ] Audio, final and publish gates approved; the owner uploaded it private in Studio; `scoreboard.csv` rows filled at 48 hours, 7 days and 28 days with Studio values only.
@@ -35,7 +35,7 @@ First video of the English season (`docs/ai-video-en-season-01/README.md`): the 
 
 - [x] Claimed with --force: the narration-locale tooling is on the same branch.
 - [x] Brief moved and script written; lint 0 errors (9.4 min estimated). `review-push --gate outline` needs the owner's video-tool token and is the next step on the owner's machine or the host worker.
-- [~] Writer done (claude-fable-5-1, 60 lines); verifier round 1 dispatched to an independent agent (writes `verify-1.md`); listener review after it.
+- [x] Writer done (claude-fable-5-1, 61 lines, about 9.3 min estimated); two independent verification rounds; listener review done.
 - [ ] `tts --dry-run` → `tts` → `check-audio` → `review-push` (audio) → `render` → `assemble` → `i18n-sheet`/translate/`i18n-merge`/`captions` → `review-push --gate final` → `package` → `review-push --gate publish`.
 - [ ] Owner uploads private, pastes the URL on /admin/videos, schedules 2026-10-06 15:00 UTC (or the next Tuesday after the tooling lands).
 
