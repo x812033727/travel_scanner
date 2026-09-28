@@ -52,3 +52,4 @@ scope:
 - 2026-09-28 的開發容器沒有 ffmpeg，完整 `build` 沒跑過；驗證、雜湊綁定、品牌 HTML、伺服器聲音（假 fetch）、工人存檔都有測試。第一次真的出片放在試片票。
 - 直式構圖沿用既有 `.asset` 版位（橫式關鍵影格等比縮進內容區、置中），沒有另外裁切；站主看過第一支再決定要不要改成裁 4:5。
 - `--voice server` 每句一個請求，量得到每句的真實長度；計費照旁白伺服器的字數。
+- 2026-09-28：`writer:explainer` 的縮圖說明改成系列規格（headline 每行 ≤ 10 字、≤ 2 行，`tag`／`pillar`，可選 `layout`，`variants` 的 B、C），原本寫 ≤ 12 字會一直被 lint 擋下再修。改在這張票，因為它的 scope 本來就含 `tools/video/automation`。

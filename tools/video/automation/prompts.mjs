@@ -952,8 +952,13 @@ not the text or its characters):
 - Lines: one spoken sentence each, about 25 characters, at most 40. Every Latin-letter word is in
   "lexicon" or lexicon_additions.
 - "music": {prompt (English: light, curious, no vocals)} when "drama_settings.music_enabled";
-  "subtitles": {burn_in: true}; "thumbnail": {template: "thumb", data: {headline ≤ 12 chars (the
-  question, shortened), tag?, shot: <the most striking shot id>}}.
+  "subtitles": {burn_in: true}; "thumbnail": {template: "thumb", data: {headline: the question
+  shortened, at most 2 lines of ≤ 10 characters (\n between them, **one word** stressed), tag: the
+  pillar's name (商業, 科學, 旅遊 or 科技), pillar: business|science|travel|tech, shot: <the most
+  striking shot id>, layout?: "right" when that picture's subject is on the left}, variants: [B,
+  C] for YouTube's thumbnail test, each {data: {...}} with only what differs from A: B {headline:
+  the surprising fact or number instead of the question}, C {headline: ≤ 6 characters in one line
+  contrasting two things ("圓窗 vs 方窗"), sub: ≤ 12 characters, shot: another shot showing both}}.
 - youtube.title is the question, ≤ 100 characters, no angle brackets; description is the body
   only; tags ≤ 500 characters in total; video_id null; sources list every page the facts rest on.
 `.trim();

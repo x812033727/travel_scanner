@@ -58,3 +58,4 @@ scope:
 - 2026-09-28：G1–G3、G5–G7 做完。系列 CSS 內嵌在頁面（跟關鍵影格底圖的 CSS 一樣），`theme.css` 沒動，所以其他影片的縮圖鍵不變；`render/plan.mjs` 的 `thumbnailSeries(doc)` 依 `isExplainer` 決定。用本機 Chromium（`/opt/pw-browsers/chromium-1194`）實際畫過左右兩種版面檢查。G4 牽涉 `render`、`package`、`qa` 三處，留在這張票。
 - 沒改 `automation/prompts.mjs`（其他代理的票正在改它）：解說版撰稿提示仍寫 headline ≤ 12 字，超過 10 字時 lint 擋下、撰稿的 lint 修正迴圈會改短。提示詞的字數與 `pillar`／`layout` 說明等那幾張票結束後再補。
 - 2026-09-28：G4 的 render 端做完。A 仍是 `thumbnail.jpg`（上架包、審片、qa 都不用改就照舊），B、C 是 `thumbnail-b.jpg`、`thumbnail-c.jpg`；變體的 `data` 蓋在 A 上，lint 每個變體都跑同樣檢查並回報 `variant b: ...`，變體的 `shot` 要是本集鏡頭，字型覆蓋也逐張查。沒有 `variants` 的影片 plan 與 manifest 完全不變（測試有比）。`tools/video/package` 當時在 `2026-09-26-video-dubs-worker` 的 scope，所以上架包與審片頁帶 B、C 另開票 `2026-09-28-thumbnail-variants-in-the-upload-package`。用本機 Chromium 畫過 fixture 的 B（同圖、事實大字）與 C（右版、換鏡頭、加 sub）檢查。
+- 2026-09-28 補：解說版撰稿提示的縮圖說明後來在票 `2026-09-28-sothatswhy-shorts-from-episode` 補上（≤ 10 字 2 行、pillar、layout、variants）。
