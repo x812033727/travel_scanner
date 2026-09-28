@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-api
 title: Video shorts A1: Shorts on the server: projects, slots, metrics, costs, settings and the auto-approval rule
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-fable-5-1-shorts
 claimed_at: 2026-09-28T03:39:52Z
 created_at: 2026-09-28T03:10:00Z
-completed_at:
+completed_at: 2026-09-28T05:16:27Z
 branch: claude/video-shorts-api
 depends_on: []
 scope:
