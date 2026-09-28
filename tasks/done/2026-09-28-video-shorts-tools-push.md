@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-shorts-tools-push
 title: Video shorts T1: the Shorts tool speaks to the site: server narration, check-audio, qa, package and push
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-fable-5-1-shorts
 claimed_at: 2026-09-28T05:47:27Z
 created_at: 2026-09-28T03:20:00Z
-completed_at:
+completed_at: 2026-09-28T06:52:06Z
 branch: claude/video-shorts-tools-push
 depends_on:
   - 2026-09-28-video-shorts-api
