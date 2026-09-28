@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Iterable
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from email.utils import parsedate_to_datetime
 from html.parser import HTMLParser
@@ -255,6 +257,30 @@ SKIPPED_TAGS = frozenset(
 )
 
 
+# The elements whose text is the story itself, for the body fingerprint. Loose text in a
+# <div> or <span> (bylines, relative times, "most popular" counters) is left out, and each
+# element's text is taken whole, so a link wrapped around other words does not split it.
+BODY_TAGS = frozenset(
+    {
+        "p",
+        "li",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "blockquote",
+        "pre",
+        "td",
+        "th",
+        "dd",
+        "dt",
+        "figcaption",
+    }
+)
+
+
 class _ArticleParser(HTMLParser):
     _void_tags = _LegacyArticleParser._void_tags
 
@@ -275,6 +301,14 @@ class _ArticleParser(HTMLParser):
         self.links: list[str] = []
         self.title = ""
         self._title = False
+        # Body fingerprint inputs: whole story elements, the first page <h1> outside the
+        # skipped chrome (a story region often starts below it), and JSON-LD blocks.
+        self.paragraphs: list[str] = []
+        self.headline = ""
+        self.json_ld: list[str] = []
+        self._body_open: list[tuple[int, list[str]]] = []
+        self._h1: tuple[int, list[str]] | None = None
+        self._json_ld: list[str] | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         self._start(tag, attrs, closed=False)
@@ -306,6 +340,13 @@ class _ArticleParser(HTMLParser):
             lowered in self.tags or element_id in self.ids or bool(element_classes & self.classes)
         ):
             self.capture_depths.append(depth)
+        if lowered == "script" and "ld+json" in (values.get("type") or "").casefold():
+            self._json_ld = []
+        if not self.skip_depths:
+            if lowered == "h1" and self._h1 is None and not self.headline:
+                self._h1 = (depth, [])
+            if lowered in BODY_TAGS and self.capture_depths:
+                self._body_open.append((depth, []))
         if lowered == "a":
             self._link(values)
 
@@ -318,11 +359,15 @@ class _ArticleParser(HTMLParser):
         lowered = tag.casefold()
         if lowered == "title":
             self._title = False
+        if lowered == "script" and self._json_ld is not None:
+            self.json_ld.append("".join(self._json_ld))
+            self._json_ld = None
         if lowered not in self.stack:
             return
         while self.stack:
             closed = self.stack.pop()
             depth = len(self.stack) + 1
+            self._close_body(depth)
             while self.capture_depths and self.capture_depths[-1] >= depth:
                 self.capture_depths.pop()
             while self.skip_depths and self.skip_depths[-1] >= depth:
@@ -330,10 +375,36 @@ class _ArticleParser(HTMLParser):
             if closed == lowered:
                 break
 
+    def _close_body(self, depth: int) -> None:
+        while self._body_open and self._body_open[-1][0] >= depth:
+            _, chunks = self._body_open.pop()
+            value = " ".join("".join(chunks).split())
+            if value:
+                self.paragraphs.append(value)
+        if self._h1 is not None and self._h1[0] >= depth:
+            self.headline = " ".join("".join(self._h1[1]).split())
+            self._h1 = None
+
+    def finish(self) -> None:
+        """Take what the page left open, so an unclosed last <p> still counts.
+
+        Deliberately not ``close()``: that would flush trailing text into ``text`` and
+        change the ``content_hash`` of every page stored before the body fingerprint.
+        """
+        self._close_body(1)
+
     def handle_data(self, data: str) -> None:
         if self._title and not self.title:
             self.title = _plain(data)
-        if self.capture_depths and not self.skip_depths:
+        if self._json_ld is not None:
+            self._json_ld.append(data)
+        if self.skip_depths:
+            return
+        if self._h1 is not None:
+            self._h1[1].append(data)
+        if self.capture_depths:
+            if self._body_open:
+                self._body_open[-1][1].append(data)
             value = _plain(data)
             if value:
                 self.text.append(value)
@@ -382,6 +453,75 @@ def parse_html_listing(body: bytes, base_url: str, config: dict[str, object]) ->
     return rows
 
 
+@dataclass(frozen=True)
+class Article:
+    """One page read with the current extractor.
+
+    ``text`` is the story region line by line (what ``content_hash`` covers). The rest
+    feeds ``policy.body_fingerprint``: whole story elements, the page headline, the
+    JSON-LD ``articleBody`` and the size of the region they were taken from.
+    """
+
+    title: str
+    text: str
+    links: list[str]
+    headline: str = ""
+    paragraphs: tuple[str, ...] = ()
+    article_body: str = ""
+    region_characters: int = 0
+
+
+def _article_body(blocks: list[str]) -> str:
+    """The first JSON-LD ``articleBody`` string on the page, or "" when there is none."""
+
+    def find(node: object) -> str:
+        if isinstance(node, dict):
+            value = node.get("articleBody")
+            if isinstance(value, str) and value.strip():
+                return value
+            nodes: Iterable[object] = node.values()
+        elif isinstance(node, list):
+            nodes = node
+        else:
+            return ""
+        for child in nodes:
+            found = find(child)
+            if found:
+                return found
+        return ""
+
+    for block in blocks:
+        try:
+            payload = json.loads(block)
+            found = find(payload)
+        except (ValueError, RecursionError):
+            continue
+        if found:
+            return found
+    return ""
+
+
+def read_article(
+    body: bytes, base_url: str, config: dict[str, object] | None = None
+) -> Article:
+    """Title, story text, in-story links and body-fingerprint inputs of one page."""
+
+    parser = _ArticleParser(config or {})
+    parser.feed(body.decode("utf-8", errors="replace"))
+    parser.finish()
+    text = "\n".join(parser.text)
+    links = [url for url in (_join(base_url, href) for href in parser.links) if url]
+    return Article(
+        title=parser.title[:500],
+        text=text[:40_000],
+        links=links,
+        headline=parser.headline,
+        paragraphs=tuple(parser.paragraphs),
+        article_body=_article_body(parser.json_ld),
+        region_characters=sum(len(line) for line in parser.text),
+    )
+
+
 def extract_article(
     body: bytes,
     base_url: str,
@@ -395,9 +535,10 @@ def extract_article(
     still be compared (see ``_LegacyArticleParser``).
     """
 
-    parser: _ArticleParser | _LegacyArticleParser = (
-        _LegacyArticleParser(config or {}) if legacy else _ArticleParser(config or {})
-    )
+    if not legacy:
+        article = read_article(body, base_url, config)
+        return article.title, article.text, article.links
+    parser = _LegacyArticleParser(config or {})
     parser.feed(body.decode("utf-8", errors="replace"))
     text = "\n".join(parser.text)
     links = [url for url in (_join(base_url, href) for href in parser.links) if url]

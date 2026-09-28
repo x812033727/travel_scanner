@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-correct-misleading-ai-links-before-batch038
 title: Correct misleading AI links before Batch038 translation
-status: review
+status: done
 priority: P2
 area: docs
 owner: codex-root
 claimed_at: 2026-09-28T11:19:23Z
 created_at: 2026-09-28T11:19:12Z
-completed_at:
+completed_at: 2026-09-28T12:16:36Z
 branch: codex/article-localization-038-source-links
 depends_on: []
 scope:
@@ -35,7 +35,7 @@ as the Batch038 translation baseline.
       words; preserve all other body text, images, metadata, sources and links.
 - [x] Pin the current published zh-TW source versions and record exact source
       and corrected pack hashes with a structural diff receipt.
-- [ ] Open a reviewed PR with focused pack and task checks. Live source
+- [x] Open a reviewed PR with focused pack and task checks. Live source
       revision and translation import remain separate guarded steps.
 
 ## Steps
@@ -44,7 +44,7 @@ as the Batch038 translation baseline.
       claim narrow scope.
 - [x] Verify production published source still matches repository baseline.
 - [x] Apply five exact replacements and validate the complete JSON diff.
-- [ ] Open PR and record its CI result.
+- [x] Open PR and record its CI result.
 
 ## How to verify
 
@@ -66,9 +66,10 @@ five-change exact diff receipt is documented in
 `docs/article-localization/batch038-source-link-corrections.md`. No live
 revision was written.
 
-Draft PR #913 is open; full CI is pending. The task remains in review until
-that check completes and the PR merges.
+PR #913 merged at 2026-09-28T12:06:27Z after all nine CI checks passed.
+The correction is in the repository; no live revision or translation import
+was run.
 
 Four focused pack lints passed with inherited `no_summary` advisories. API
 content/link tests passed (12 passed, 5 environment skips); `npm run
-check:tasks` and `git diff --check` passed. PR CI remains pending.
+check:tasks` and `git diff --check` passed.
