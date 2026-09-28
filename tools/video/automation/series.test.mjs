@@ -5,7 +5,8 @@ import path from "node:path";
 import test from "node:test";
 
 import { readApprovals } from "../core/approvals.mjs";
-import { dramaFixture, sandbox } from "../core/fixtures/load.mjs";
+import { dramaFixture, explainerFixture, sandbox } from "../core/fixtures/load.mjs";
+import { shortsFile } from "../shorts/episode.mjs";
 import { readJson } from "../core/paths.mjs";
 import { keepSheets, readStore, reuseSheets, sheetKey } from "../media/series-store.mjs";
 import { automationClient } from "./client.mjs";
@@ -17,7 +18,8 @@ import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
-import { castFrom, chapterRange, documentPayload, documentProblem, episodeBrief, episodeSlug, isOneOff, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, chapterRange, documentPayload, documentProblem, documentVariant, episodeBrief, episodeSlug, isExplainerOneOff, isOneOff, planDocument, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { checkBrief } from "../core/lint.mjs";
 
 const TOKEN = `mkv_${"s".repeat(43)}`;
 const SITE = "https://site.test";
@@ -120,7 +122,7 @@ function context(box, fetchImpl, clock) {
 }
 
 /** A site with the series routes: `jobs` is what next answers in turn; everything sent is recorded. */
-function fakeSite({ jobs = [], answers = {}, settings = {}, messages = [], decide = null, series = SERIES, compilation = null, episodeBeats = beats } = {}) {
+function fakeSite({ jobs = [], answers = {}, settings = {}, messages = [], decide = null, series = SERIES, compilation = null, episodeBeats = beats, oneOffStart = null } = {}) {
   const calls = { run: [], docs: [], episodes: [], reports: [], reviews: [], answers: [], compilations: [] };
   const projects = new Map();
   const reviewsOf = (slug) => projects.get(slug) ?? projects.set(slug, []).get(slug);
@@ -166,6 +168,8 @@ function fakeSite({ jobs = [], answers = {}, settings = {}, messages = [], decid
       calls.episodes.push({ series: episode[1], number: Number(episode[2]), action: episode[3], ...(body ?? {}) });
       if (episode[3] === "start") {
         const number = Number(episode[2]);
+        // Another one-off (an explainer) answers with its own series, bible and episode.
+        if (oneOffStart) return json(oneOffStart(body));
         if (episode[1] === ONE_OFF.slug) {
           // A one-off's bible stands where the setting book does; its outline is the episode's beats.
           const context = { series: ONE_OFF, setting: { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...BIBLE, status: "approved" }, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [oneOffEpisode("ready")], recaps: [], mysteries: [] };
@@ -1138,3 +1142,75 @@ for (const [name, gates, expected] of [
     else assert.ok(scriptCheckMatches(report, video), "the new report names the script it read");
   });
 }
+
+test("an explainer one-off plans a question's bible with no cast, and its brief has the explainer's sections", () => {
+  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: "flat-explainer" };
+  assert.equal(isExplainerOneOff(explainer), true);
+  assert.equal(isExplainerOneOff(ONE_OFF), false);
+  assert.equal(isExplainerOneOff({ ...SERIES, style_preset: "flat-explainer" }), false, "a long series is never an explainer");
+  assert.equal(documentVariant("bible", explainer), "bible-explainer");
+  assert.equal(documentVariant("bible", ONE_OFF), "bible");
+  assert.equal(documentVariant("setting", SERIES), "setting");
+  assert.match(instructionsFor("planner", "drama", "", "bible-explainer"), /BIBLE of ONE explainer episode/);
+
+  const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", closing: "下一題：彩虹為什麼是彎的？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
+  const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
+  const explainerJob = { ...job("bible"), series: explainer };
+  assert.equal(documentProblem("bible", bible, explainerJob), null);
+  assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, characters: ONE_OFF_CAST } }, explainerJob), /must be empty/);
+  assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, answer: "" } } }, explainerJob), /outline\.answer/);
+  assert.match(documentProblem("bible", { ...bible, body_json: { ...bible.body_json, outline: { ...outline, sources: ["http://x"] } } }, explainerJob), /https pages/);
+  assert.match(documentProblem("bible", bible, { ...job("bible"), series: ONE_OFF }), /characters must list the cast/, "a story one-off still needs its cast");
+
+  const brief = episodeBrief(explainer, { number: 1, title: outline.title, logline: outline.logline }, [], outline);
+  assert.deepEqual(checkBrief(brief, "drama", "flat-explainer"), []);
+  assert.match(brief, /## 一句答案\n光比聲音快太多。/);
+  assert.match(brief, /### 選項 A：為什麼雷聲總比閃電晚到？\n一行說明：光比聲音快太多。\n開場鉤子：「閃電亮了，你數到幾？」/);
+  assert.match(brief, /- https:\/\/en\.wikipedia\.org\/wiki\/Speed_of_sound/);
+  assert.doesNotMatch(brief, /## 角色/);
+});
+
+test("an explainer one-off goes from its question's bible to a narrator-only script with its two Shorts", async () => {
+  const box = sandbox();
+  const explainer = { ...ONE_OFF, title: "雷聲", premise: "為什麼雷聲總比閃電晚到？", style_preset: "flat-explainer" };
+  const slug = "one-off-7a1b2c3d-e001";
+  const outline = { title: "為什麼雷聲總比閃電晚到？", logline: "光比聲音快太多。", question: "為什麼雷聲總比閃電晚到？", answer: "光比聲音快太多。", reasons: ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"], hook: "閃電亮了，你數到幾？", sources: ["https://en.wikipedia.org/wiki/Speed_of_sound"] };
+  const bible = { body_md: "# 雷聲\n## 問題\n…\n", body_json: { characters: [], acts: [{ number: 1, title: "光先到", summary: "s", shots: 4 }], outline, music: "輕快", not_doing: [], lexicon: {} } };
+  const drafted = JSON.parse(readFileSync(new URL("../core/fixtures/explainer/shorts.json", import.meta.url), "utf8")).map(({ titles, description, scenes }) => ({ titles, description, scenes }));
+  const answers = {
+    "planner:bible-explainer": () => bible,
+    "writer:explainer": () => ({ video: { ...explainerFixture(), slug, look: {} }, claims: "c1｜光速｜https://en.wikipedia.org/wiki/Speed_of_sound｜2026-09-28｜race\n", lexicon_additions: {}, shorts: drafted }),
+  };
+  const episode = { number: 1, chapter_number: 1, title: outline.title, logline: outline.logline, beats: outline, status: "ready", slug: null, recap: null, started_at: null, finished_at: null, video: null };
+  const setting = { id: "b1", kind: "bible", chapter_number: 0, version: 1, ...bible, status: "approved" };
+  const oneOffStart = (body) => ({
+    request: { id: "explainer-request", premise: explainer.premise, title: "雷聲", source_guide: null, style_preset: "flat-explainer", target_minutes: 8, note: null, status: "started", slug: body.slug, series_slug: explainer.slug, episode_number: 1 },
+    episode: { ...episode, status: "started", slug: body.slug },
+    context: { series: explainer, setting, outline: null, chapter: null, chapter_number: 1, chapter_range: [1, 1], episode: null, episodes: [episode], recaps: [], mysteries: [] },
+  });
+  const site = fakeSite({ jobs: [job("bible", { series: explainer, chapter_number: null, context: { ...job("bible").context, series: explainer, setting: null, mysteries: [] } }), job("episode", { series: { ...explainer, status: "active", episodes_ready: 1 }, episode })], answers, oneOffStart });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-09-28T01:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+
+  assert.match(await automation.step(), /the story bible planned \(version 1\)/);
+  assert.equal(site.calls.run[0].variant, "bible-explainer");
+  assert.match(site.calls.run[0].instructions, /BIBLE of ONE explainer episode/);
+
+  assert.match(await automation.step(), /started from the approved story bible/);
+  const dir = path.join(box.root, "docs", "videos", slug);
+  assert.match(readFileSync(path.join(dir, "brief.md"), "utf8"), /^# 為什麼雷聲總比閃電晚到？\n\n## 問題\n/);
+  const state = automatedVideos(box.work).find((each) => each.slug === slug);
+  assert.equal(state.style_preset, "flat-explainer");
+  assert.deepEqual(state.source_urls, outline.sources, "the checker reads the pages the bible names");
+
+  assert.match(await automation.step(), /script drafted and passes lint; 2 Shorts drafted/);
+  const writer = site.calls.run.find((call) => call.stage === "writer");
+  assert.equal(writer.variant, "explainer");
+  const video = readJson(path.join(dir, "video.json"));
+  assert.equal(video.look.preset, "flat-explainer", "the writer cannot drop the explainer preset");
+  assert.deepEqual(video.characters, []);
+  assert.deepEqual(JSON.parse(readFileSync(shortsFile(slug, box.root), "utf8")).map((short) => short.slug), [`${slug}-short-1`, `${slug}-short-2`]);
+  assert.match(await automation.step(), /fact-check round 1/);
+  assert.equal(site.calls.run.find((call) => call.stage === "verifier").variant, "explainer");
+});

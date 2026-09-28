@@ -180,6 +180,42 @@ def is_one_off(series: VideoDramaSeries) -> bool:
     return series.kind == "one-off"
 
 
+# An illustrated explainer (docs/videos/so-thats-why/) is a one-off in this preset: its bible is a
+# question's, with no cast, and its outline carries the answer, the reasons and the sources.
+EXPLAINER_PRESET = "flat-explainer"
+
+
+def is_explainer(series: VideoDramaSeries) -> bool:
+    return is_one_off(series) and series.style_preset == EXPLAINER_PRESET
+
+
+def _explainer_bible_problem(body: dict[str, Any]) -> str | None:
+    """The explainer's bible: no cast, the acts, and an outline with the question, the answer,
+    the reasons and the https pages the facts rest on (tools/video/automation/series.mjs)."""
+    if body.get("characters") != []:
+        return "an explainer's bible has no characters"
+    for key in BIBLE_LISTS:
+        if not isinstance(body.get(key), list) or not body[key]:
+            return f"a story bible needs an {key} list"
+    outline = body.get("outline")
+    if not isinstance(outline, dict):
+        return "a story bible needs one outline (an object)"
+    for key in ("question", "answer", "hook"):
+        if not isinstance(outline.get(key), str) or not outline[key].strip():
+            return f"an explainer's outline needs its {key}"
+    reasons = outline.get("reasons")
+    if not isinstance(reasons, list) or len(reasons) < 2 or not all(
+        isinstance(reason, str) and reason.strip() for reason in reasons
+    ):
+        return "an explainer's outline lists its reasons"
+    sources = outline.get("sources")
+    if not isinstance(sources, list) or not sources or not all(
+        isinstance(url, str) and url.startswith("https://") for url in sources
+    ):
+        return "an explainer's outline lists the https pages its facts rest on"
+    return None
+
+
 def is_story(series: VideoDramaSeries) -> bool:
     return series.kind == "story"
 
@@ -356,6 +392,8 @@ def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | N
         return "a one-off drama has one document, its story bible"
     if payload.kind == "bible" and not is_one_off(series):
         return "a story bible belongs to a one-off drama; a series has a setting book"
+    if payload.kind == "bible" and is_explainer(series):
+        return _explainer_bible_problem(body)
     if payload.kind in ("setting", "bible"):
         name = "story bible" if payload.kind == "bible" else "setting book"
         characters = body.get("characters")

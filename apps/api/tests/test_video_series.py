@@ -366,6 +366,43 @@ def test_a_story_bible_has_the_cast_the_acts_and_one_outline_and_only_a_one_off_
     assert "setting book" in str(service.doc_problem(_series(), doc("bible", **BIBLE)))
 
 
+def test_an_explainer_bible_has_no_cast_and_answers_its_question_from_named_pages() -> None:
+    explainer = _one_off()
+    explainer.style_preset = "flat-explainer"
+    assert service.is_explainer(explainer) and not service.is_explainer(_one_off())
+    assert not service.is_explainer(_series(style_preset="flat-explainer")), "only a one-off"
+
+    def doc(**body: Any) -> SeriesDocSubmitIn:
+        return SeriesDocSubmitIn(kind="bible", body_md="# x", body_json=body)
+
+    outline = {
+        "question": "為什麼雷聲總比閃電晚到？",
+        "answer": "光比聲音快太多。",
+        "reasons": ["光速約每秒三十萬公里", "聲速約每秒三百四十公尺"],
+        "hook": "閃電亮了，你數到幾？",
+        "sources": ["https://en.wikipedia.org/wiki/Speed_of_sound"],
+    }
+    good = {"characters": [], "acts": [{"number": 1}], "outline": outline}
+    assert service.doc_problem(explainer, doc(**good)) is None
+    assert "no characters" in str(
+        service.doc_problem(explainer, doc(**{**good, "characters": BIBLE["characters"]}))
+    )
+    assert "answer" in str(
+        service.doc_problem(explainer, doc(**{**good, "outline": {**outline, "answer": " "}}))
+    )
+    assert "reasons" in str(
+        service.doc_problem(explainer, doc(**{**good, "outline": {**outline, "reasons": ["x"]}}))
+    )
+    assert "https" in str(
+        service.doc_problem(
+            explainer, doc(**{**good, "outline": {**outline, "sources": ["http://x"]}})
+        )
+    )
+    assert "characters" in str(service.doc_problem(_one_off(), doc(**good))), (
+        "a story one-off still needs its cast"
+    )
+
+
 def _app(user: User | None = None) -> FastAPI:
     app = FastAPI()
     app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
