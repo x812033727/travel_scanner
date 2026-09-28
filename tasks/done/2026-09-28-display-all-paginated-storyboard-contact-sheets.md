@@ -61,4 +61,10 @@ scoped ESLint, npm run check:i18n, npm run check:tasks and git diff --check.
   landed in PR #870 (main 79e26fcd, confirmed merged at 06:38:47Z); the current main
   component is that implementation. Claim only this narrow follow-up with --force
   under task-board rule 2; do not release, edit or close the other owner's tickets.
-- Merged main 210e6fdb locally before editing. No remote push or CI restart yet.
+- Merged main 210e6fdb locally before editing, then main 55e75518 without conflicts.
+  The latter merge did not change either validated component file. A scoped TypeScript
+  check of the component, new tests and their imported dependencies passed using the
+  repository's strict compiler options; the integrated task check validated 1,016 files.
+  Evidence: test-results/pr895-typecheck.log and pr895-main55-tasks.log. The full-project
+  CI checks still gate merge. Remote push waits for a slot in the three-PR CI batch and
+  the parent design PR #888 to land.
