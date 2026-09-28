@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-tidy-pages
 title: 清理工作檔時也清掉故事讀過的頁面
-status: in-progress
+status: done
 priority: P3
 area: tools
 owner: claude-opus-5-5-video-story-worker
 claimed_at: 2026-09-28T16:00:18Z
 created_at: 2026-09-28T14:30:20Z
-completed_at:
+completed_at: 2026-09-28T16:13:02Z
 branch: claude/video-story-worker
 depends_on:
   - 2026-09-28-video-story-tidy-finished
