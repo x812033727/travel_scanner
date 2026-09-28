@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-dubs-zh-cn-is-not
 title: Video dubs: zh-CN is not dubbed by default, only when chosen
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-09-28T09:53:44Z
 created_at: 2026-09-28T09:53:25Z
-completed_at:
+completed_at: 2026-09-28T10:00:36Z
 branch: claude/relaxed-wright-18jppu
 depends_on: []
 scope:
