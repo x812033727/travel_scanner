@@ -1,6 +1,8 @@
 # Caption translator prompt: one video, one locale
 
-Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>` (`<ROOT>/docs/videos/<SLUG>`), `<LOCALE>` (en, ja, ko or zh-CN). Run `node <ROOT>/tools/video/cli.mjs i18n-sheet --slug <SLUG> --locale <LOCALE>` first; it writes the worksheet this prompt names. Everything below the rule is the prompt.
+Fill the placeholders before dispatch: `<ROOT>`, `<VIDEO_WORKDIR>`, `<SLUG>`, `<VIDEO_DOCS>` (`<ROOT>/docs/videos/<SLUG>`), `<LOCALE>` (en, ja, ko or zh-CN). Run `node <ROOT>/tools/video/cli.mjs i18n-sheet --slug <SLUG> --locale <LOCALE> [--parts metadata,captions]` first; it writes the worksheet this prompt names. Everything below the rule is the prompt.
+
+**Which parts, and the dub budget** (`docs/videos/LANGUAGES.md`, `docs/videos/DUBS.md`). A language is made of three parts the owner ticks per video on `/admin/videos` after the final cut: the title, description, tags and chapter names (`metadata`), the captions (`captions`), and a dub track (`dub`, which reads the captions' translation aloud). `--parts` narrows the sheet to what was ticked: `--parts metadata` writes a sheet with no lines, `--parts captions` one with no title, description, tags or chapters (those fields are `null`); `i18n-merge` leaves a part the sheet does not hold exactly as it was. The sheet says which parts it holds in `parts`. When the owner also ticked a dub, and the narration is timed, every line carries `max_chars`: the same voice reads the translation in the time the zh-TW line takes, so a translation over its budget has to be shortened later; stay under it from the start. The worker (`tools/video/automation`) dispatches the same prompt with `parts` and the worksheet in the payload; a hand run passes the flags.
 
 ---
 
@@ -19,6 +21,8 @@ WRITE HERE ONLY: `<VIDEO_WORKDIR>/<SLUG>/i18n/<LOCALE>.todo.json`, the worksheet
 
 - One entry is one spoken sentence. Translate its meaning, not its words; keep every number, price, date, version and product name exactly as in the source (product names in their official spelling for `<LOCALE>`).
 - Length: about the time the sentence takes to say. English at most about 80 characters per line entry, Japanese and Korean at most about 40, Simplified Chinese about as long as the source. The tool splits long entries into caption cues; you do not.
+- `max_chars` on a line (present when the owner chose a dub for this locale) is a hard budget: the dub must fit the zh-TW line's slot even sped up 1.15×. Stay under it; cut the words around numbers and names, never the numbers and names.
+- Fill only the parts the sheet holds (`parts`): a sheet without lines wants the title, description, tags and chapter names alone; one without those wants the lines alone.
 - Register: en plain and direct; ja です／ます; ko 합니다체; zh-CN mainland wording and Simplified characters (视频, 软件, 默认), never a character-by-character conversion.
 - Do not add explanations, greetings or anything the narration does not say; do not drop a clause.
 - Opinions stay the owner's first person ("I", 「私は」, "저는", 「我」).
@@ -37,3 +41,7 @@ It writes `<VIDEO_DOCS>/i18n/<LOCALE>.json` and lists anything not translated or
 ## Report (at most 20 lines)
 
 Lines translated, the title you chose, terms you kept in English or transliterated and why, lines you were unsure of (id and why).
+
+## Shortening pass (the worker's `translator:shorten`)
+
+When `dub --locale <LOCALE>` ends with exit code 1, a slide window's lines do not fit even at 1.15× and `<VIDEO_WORKDIR>/<SLUG>/dubs/<LOCALE>/fit.json` lists them under `over`: for each line its `id`, `chars` (the translation's length now), `max_chars` (the most it may keep), `seconds` (how long the voice took) and `window_over_seconds`. Only those lines change. Cut words, not meaning: every number, price, date, version, product and proper name, and what the sentence claims, stay exactly; drop a hedge, a repeated subject, a connective, a filler; keep the register. Numbers and currency codes read slowly for their length, so cut the words around them. The captions show the shortened line too, so it must still read as a caption. Put the new text into a captions-only sheet (`i18n-sheet --slug <SLUG> --locale <LOCALE> --parts captions`, then edit those lines' `text`), run `i18n-merge`, then `dub --locale <LOCALE>` again; only the changed lines are synthesized again. The worker does this at most two rounds (`MAX_DUB_SHORTEN_ROUNDS` in `tools/video/automation/flow.mjs`) and then gives the locale's dub up with the reason, which the language card shows; a shortened line that is not shorter, or changes a digit, is dropped. Its payload is `{"locale", "lines": [{id, source, text, chars, max_chars, seconds, window_over_seconds}], "video"}` and it expects `{"lines": [{"id", "text"}]}`.

@@ -13,7 +13,8 @@ import path from "node:path";
 
 import { readApprovals, sha256File } from "../core/approvals.mjs";
 import { readJson } from "../core/paths.mjs";
-import { LOCALES } from "../core/schema.mjs";
+import { LOCALES, NARRATION_LOCALE } from "../core/schema.mjs";
+import { captionLocalesOf, chosenLocales, readLanguages } from "../core/stages.mjs";
 
 /** The four items, in the order the report lists them; the server requires every one of them. */
 export const PACKAGE_ITEM_IDS = ["files", "descriptions", "captions", "disclosure"];
@@ -65,13 +66,17 @@ export function packageLocales(metadata) {
   return [metadata?.default_language ?? "zh-TW", ...Object.keys(metadata?.localizations ?? {})];
 }
 
-/** descriptions: a non-empty description.<locale>.txt for the default language and every localization. */
-export function descriptionsItem({ files, metadata }) {
+/**
+ * descriptions: a non-empty description.<locale>.txt for the default language and every
+ * localization, or, with `locales` (zh-TW and the locales the owner chose titles and descriptions
+ * for), for exactly those: a chosen locale without its file fails, whatever metadata.json lists.
+ */
+export function descriptionsItem({ files, metadata, locales = null }) {
   if (!metadata) return item("descriptions", false, `${METADATA_FILE} is missing`);
-  const locales = packageLocales(metadata);
-  const missing = locales.filter((locale) => !(sizeOf(files, `description.${locale}.txt`) > 0));
+  const wanted = locales ?? packageLocales(metadata);
+  const missing = wanted.filter((locale) => !(sizeOf(files, `description.${locale}.txt`) > 0));
   if (missing.length) return item("descriptions", false, `no description for ${missing.join(", ")}`);
-  return item("descriptions", true, `descriptions for ${locales.join(", ")}`);
+  return item("descriptions", true, `descriptions for ${wanted.join(", ")}`);
 }
 
 /** Why a locale has no caption file, from metadata.json's skipped_caption_locales, or null. */
@@ -115,12 +120,24 @@ export function disclosureItem({ metadata }) {
   return item("disclosure", true, `${synthetic ? "tick altered or synthetic content" : "no disclosure needed"}: ${reason}`);
 }
 
-/** The whole check, pure: `files` maps upload/ paths to sizes; `metadataSha256` binds the report. */
-export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = LOCALES }) {
+/**
+ * The whole check, pure: `files` maps upload/ paths to sizes; `metadataSha256` binds the report.
+ * `locales` are the caption locales wanted and `descriptionLocales` the description locales
+ * (docs/videos/LANGUAGES.md: zh-TW plus what the owner chose); without a choice every locale
+ * needs captions or a reason, and the descriptions are what metadata.json lists.
+ */
+export function checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales = LOCALES, descriptionLocales = null }) {
   return packageReport(
-    [filesItem({ files, metadata, finalSha256, approvedSha256 }), descriptionsItem({ files, metadata }), captionsItem({ files, metadata, locales }), disclosureItem({ metadata })],
+    [filesItem({ files, metadata, finalSha256, approvedSha256 }), descriptionsItem({ files, metadata, locales: descriptionLocales }), captionsItem({ files, metadata, locales }), disclosureItem({ metadata })],
     metadataSha256,
   );
+}
+
+/** The caption and description locales the owner's choice in the work directory asks for; the defaults without one. */
+export function packageLocalesWanted(workdir) {
+  const languages = readLanguages(workdir);
+  const metadata = chosenLocales(languages, "metadata");
+  return { languages, locales: captionLocalesOf(languages), descriptionLocales: metadata ? [NARRATION_LOCALE, ...metadata] : null };
 }
 
 /**
@@ -159,11 +176,15 @@ export function listFiles(dir) {
 }
 
 /**
- * Read <workdir>/upload/ and check it; the approved final is the final gate's last approval.
- * Returns { report, files, metadata, finalSha256 }; without metadata.json every item fails and
- * the report has no hash, since there is nothing a review could bind to.
+ * Read <workdir>/upload/ and check it; the approved final is the final gate's last approval, and
+ * the locales are the owner's choice in the work directory unless given. Returns { report, files,
+ * metadata, finalSha256 }; without metadata.json every item fails and the report has no hash,
+ * since there is nothing a review could bind to.
  */
-export async function readPackageReport(workdir, { locales = LOCALES } = {}) {
+export async function readPackageReport(workdir, given = {}) {
+  const wanted = packageLocalesWanted(workdir);
+  const locales = given.locales ?? wanted.locales;
+  const descriptionLocales = given.descriptionLocales === undefined ? wanted.descriptionLocales : given.descriptionLocales;
   const dir = path.join(workdir, UPLOAD_DIR);
   const files = listFiles(dir);
   const metadataFile = path.join(dir, METADATA_FILE);
@@ -172,5 +193,5 @@ export async function readPackageReport(workdir, { locales = LOCALES } = {}) {
   const finalSha256 = existsSync(finalFile) ? await sha256File(finalFile) : null;
   const approvedSha256 = readApprovals(workdir).approvals.filter((entry) => entry.gate === "final").at(-1)?.sha256 ?? null;
   const metadataSha256 = metadata ? await sha256File(metadataFile) : null;
-  return { report: checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales }), files, metadata, finalSha256 };
+  return { report: checkPackage({ files, metadata, finalSha256, approvedSha256, metadataSha256, locales, descriptionLocales }), files, metadata, finalSha256 };
 }
