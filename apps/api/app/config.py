@@ -503,6 +503,10 @@ class Settings(BaseSettings):
     # signal rather than a long answer being written: 20s, not the planner's 90.
     jev_timeout_seconds: float = Field(default=20.0, gt=0, le=60)
     jev_daily_call_budget: int = Field(default=200, ge=1, le=5_000)
+    # RQ workers in the news-worker container (app.news_automation.worker). How many
+    # candidates run at once is still the admin's global and per-vertical concurrency; one
+    # process past that keeps source scans from waiting behind an hour-long candidate.
+    news_worker_processes: int = Field(default=3, ge=1, le=8)
     # The vendor caps a request at 64k tokens, and state plus the longest single
     # question at 32k. These sit under both, so a batch splits on our own estimate
     # instead of on a 422 from the far side.

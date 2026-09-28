@@ -1,16 +1,13 @@
-import { execFile } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, realpathSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { promisify } from 'node:util';
 import { fontDir, parseUnicodeRanges, covers } from '../render/fonts.mjs';
 import { locateFfmpeg, runTool } from '../assemble/ffmpeg.mjs';
 import { encodeWav, parseWav, requireNarrationFormat } from '../tts/wav.mjs';
 import { ROOT, isInside, resolveWorkBase, stopRequested } from '../core/paths.mjs';
-import { PROFILE, buildTimeline, esc, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
+import { PROFILE, SCRIPT_FILE, USAGE_FILE, buildTimeline, esc, lineOf, phrasesOf, sceneHtml, sha256, srt, validate, verifyEvidence } from './core.mjs';
+import { themeOf, themeText } from './layouts.mjs';
+import { WINDOWS_VOICE, defaultSource, flaggedPhrases, narrate } from './speech.mjs';
 
-const exec = promisify(execFile);
-const HERE = path.dirname(fileURLToPath(import.meta.url));
 const saveJson = (file, data) => writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
 const number = i => String(i).padStart(3, '0');
 export function loudnessResult(stderr) {
@@ -19,6 +16,37 @@ export function loudnessResult(stderr) {
   const data = JSON.parse(blocks.at(-1)[0]);
   if (!['input_i','input_tp','input_lra','input_thresh','target_offset'].every(k=>Number.isFinite(Number(data[k])))) throw new Error('invalid loudness measurement (silent or corrupt audio)');
   return data;
+}
+
+/** What a final cut measures as: the streams of final.mp4 and its loudness, read from the file. */
+export async function measureFinal(final, { ffmpeg, ffprobe }) {
+  const probe = JSON.parse((await runTool(ffprobe,['-v','error','-show_streams','-show_format','-of','json',final])).stdout);
+  const video = probe.streams.find(s=>s.codec_type==='video');
+  const audio = probe.streams.find(s=>s.codec_type==='audio');
+  const measured = await runTool(ffmpeg,['-hide_banner','-i',final,'-af','loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-']);
+  return { video, audio, format: probe.format, loudness: loudnessResult(measured.stderr) };
+}
+
+/** Why a measured cut is not a Short of `frames` frames; empty when it is one. */
+export function profileProblems({ video, audio }, frames) {
+  const problems = [];
+  if (video?.width !== PROFILE.width || video?.height !== PROFILE.height) problems.push(`the picture is ${video?.width}×${video?.height}, not ${PROFILE.width}×${PROFILE.height}`);
+  if (video?.codec_name !== 'h264') problems.push(`the video codec is ${video?.codec_name}, not h264`);
+  if (video?.r_frame_rate !== `${PROFILE.fps}/1`) problems.push(`the frame rate is ${video?.r_frame_rate}, not ${PROFILE.fps}`);
+  if (Number(video?.nb_frames) !== frames) problems.push(`${video?.nb_frames} frames, the timeline has ${frames}`);
+  if (audio?.codec_name !== 'aac' || audio?.sample_rate !== '48000') problems.push(`the audio is ${audio?.codec_name} at ${audio?.sample_rate} Hz, not aac at 48000`);
+  const seconds = frames / PROFILE.fps;
+  // Less than a frame apart: an AAC stream ends on its own block, a little past the last frame.
+  if (!Number.isFinite(Number(audio?.duration)) || Math.abs(Number(audio.duration) - seconds) > .08) problems.push(`the audio runs ${audio?.duration}s against ${seconds.toFixed(3)}s of picture`);
+  return problems;
+}
+
+/** Why a measured loudness is outside −14 ± 1 LUFS or above −0.8 dBTP; empty when inside. */
+export function loudnessProblems(loudness) {
+  const problems = [];
+  if (Math.abs(Number(loudness.input_i) + 14) > 1) problems.push(`${loudness.input_i} LUFS is outside −14 ± 1`);
+  if (Number(loudness.input_tp) > -.8) problems.push(`the true peak ${loudness.input_tp} dBTP is above −0.8`);
+  return problems;
 }
 
 // Embed only the bundled subsets used by this production. No remote font requests.
@@ -69,7 +97,7 @@ async function renderFrames(doc, timeline, evidence, directory, channel) {
   };
   const assets = new Map();
   const layout = [];
-  const fontCss = embeddedFont(JSON.stringify(doc) + evidence.filter(e=>e.file.endsWith('.html')).map(e=>e.bytes.toString('utf8')).join('') + 'MOKAAIR AI 真的可以？實測紀錄原創實測0123456789');
+  const fontCss = embeddedFont(JSON.stringify(doc) + evidence.filter(e=>e.file.endsWith('.html')).map(e=>e.bytes.toString('utf8')).join('') + themeText() + '0123456789');
   try {
     for (const item of evidence.filter(e => doc.scenes.some(s=>s.asset===e.path))) {
       let bytes;
@@ -135,24 +163,14 @@ async function renderFrames(doc, timeline, evidence, directory, channel) {
   } finally { await browser.close(); }
 }
 
-async function speech(doc, directory, voice, ffmpeg, externalAudio) {
-  const phrases = doc.scenes.flatMap(s=>s.narration);
-  const speechKey = sha256(JSON.stringify({phrases, voice, rate:1, speechScript:readFileSync(path.join(HERE,'speech.ps1'),'utf8')}));
-  const cache = path.join(path.dirname(directory), '.speech', speechKey.slice(0,16));
-  mkdirSync(cache, { recursive:true });
-  if (externalAudio) {
-    mkdirSync(path.join(directory,'external-audio'),{recursive:true});
-    for(const [i,bytes] of externalAudio.entries()) writeFileSync(path.join(directory,'external-audio',`${number(i)}.wav`),bytes);
-  } else if (!existsSync(path.join(cache,'complete.json'))) {
-    if (process.platform !== 'win32') throw new Error('supply --audio-dir with measured per-phrase WAVs, or run the Windows local narrator');
-    writeFileSync(path.join(cache,'phrases.json'), JSON.stringify(phrases));
-    await exec('powershell.exe', ['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.join(HERE,'speech.ps1'),'-InputJson',path.join(cache,'phrases.json'),'-OutputDirectory',cache,'-Voice',voice], { windowsHide:true, maxBuffer:1024*1024 });
-    saveJson(path.join(cache,'complete.json'),{voice,rate:1,phrases:phrases.length,provider:'Windows installed speech',incremental_api_cost_ntd:0});
-  }
+// Whatever the source, a clip ends on the 48 kHz mono grid the timeline counts in.
+async function normalizeClips(clips, directory, ffmpeg) {
+  mkdirSync(path.join(directory,'source-audio'),{recursive:true});
   const wavs = [];
-  for (const [i] of phrases.entries()) {
-    const input = path.join(externalAudio ? path.join(directory,'external-audio') : cache,`${number(i)}.wav`);
+  for (const [i,bytes] of clips.entries()) {
+    const input = path.join(directory,'source-audio',`${number(i)}.wav`);
     const output = path.join(directory,'audio',`${number(i)}.wav`);
+    writeFileSync(input,bytes);
     await runTool(ffmpeg,['-y','-v','error','-i',input,'-ac','1','-ar','48000','-c:a','pcm_s16le',output]);
     const wav = parseWav(readFileSync(output));
     requireNarrationFormat(wav);
@@ -162,32 +180,50 @@ async function speech(doc, directory, voice, ffmpeg, externalAudio) {
   return wavs;
 }
 
-export async function build({ file, sourceBase, workdir, voice='Microsoft Hanhan Desktop', channel=process.platform==='win32'?'msedge':undefined, audioDir }) {
+/**
+ * Build a Short from its script. `speech` names where the narration comes from (server, windows,
+ * files); `client` is the site, needed for the server's voice; `redo` is a finished build whose
+ * check flagged phrases, which are synthesized again while the rest come from the cache.
+ */
+export async function build({ file, sourceBase, workdir, voice=WINDOWS_VOICE, channel=process.platform==='win32'?'msedge':undefined, audioDir, speech, client=null, redo=null, lexicon=null, synthesizeImpl }) {
   const documentBytes = readFileSync(file);
   const doc = JSON.parse(documentBytes);
   const errors = validate(doc);
   if (errors.length) throw new Error(errors.join('\n'));
+  if (lineOf(doc) === 'drama') throw new Error('a vertical drama short is made by the drama pipeline; bring its cut in with `import`');
   const evidence = verifyEvidence(doc,sourceBase);
   const base = resolveWorkBase({flag:workdir,root:ROOT});
   let ancestor = base;
   while (!existsSync(ancestor)) ancestor = path.dirname(ancestor);
   if (isInside(path.resolve(realpathSync(ancestor),path.relative(ancestor,base)),realpathSync(ROOT))) throw new Error('output symlink points inside repository');
-  const codeHash = sha256(['build.mjs','core.mjs','speech.ps1'].map(f=>readFileSync(path.join(HERE,f),'utf8')).join('\n'));
-  const externalAudio = audioDir ? doc.scenes.flatMap(s=>s.narration).map((_s,i)=>readFileSync(path.join(audioDir,`${number(i)}.wav`))) : null;
-  const audioHash = externalAudio ? sha256(externalAudio.map(bytes=>sha256(bytes)).join('')) : null;
-  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,voice,channel,audioHash})).slice(0,16);
+  const source = speech ?? (audioDir ? 'files' : defaultSource());
+  // The voice and the length a Short may have are the owner's settings when the site is asked.
+  const settings = source === 'server' && client ? await client.settings() : null;
+  const range = settings ? { minSeconds: settings.seconds_min, maxSeconds: settings.seconds_max } : PROFILE;
+  const narration = await narrate({ doc, source, workBase: base, voice: settings?.voice, client, audioDir, windowsVoice: voice, lexicon, redo: redo ? flaggedPhrases(path.join(redo,'check.json')) : [], synthesizeImpl });
+  const codeHash = sha256(['build.mjs','core.mjs','layouts.mjs','speech.mjs','speech.ps1'].map(f=>readFileSync(new URL(f,import.meta.url),'utf8')).join('\n'));
+  const audioHash = sha256(narration.clips.map(bytes=>sha256(bytes)).join(''));
+  const buildId = sha256(JSON.stringify({document:sha256(documentBytes),codeHash,source,voice:narration.voice,channel,audioHash})).slice(0,16);
   // Every attempt is separate: a failed rerun must never leave an old successful manifest next to new bytes.
   const directory = path.join(base,doc.slug,`${buildId}-${Date.now()}`);
   if (stopRequested(path.join(base,doc.slug)) || stopRequested(directory)) throw new Error('STOP requested');
-  for (const sub of ['audio','frames','clips','assets','upload']) mkdirSync(path.join(directory,sub),{recursive:true});
+  for (const sub of ['audio','frames','clips','assets','upload','evidence']) mkdirSync(path.join(directory,sub),{recursive:true});
+  // The script and its evidence travel with the build: the checks and the push read them from
+  // here, so a script edited afterwards cannot stand in for the one that was filmed.
+  writeFileSync(path.join(directory,SCRIPT_FILE),documentBytes);
+  for (const item of evidence) {
+    const copy = path.join(directory,'evidence',item.path);
+    mkdirSync(path.dirname(copy),{recursive:true});
+    copyFileSync(item.file,copy);
+  }
   const {ffmpeg,ffprobe,version} = await locateFfmpeg();
-  console.error(`${doc.slug}: synthesize/measure narration`);
-  const wavs = await speech(doc,directory,voice,ffmpeg,externalAudio);
-  const timeline = buildTimeline(doc,wavs.map(w=>w.samples.length/w.sampleRate));
+  console.error(`${doc.slug}: measure narration (${source})`);
+  const wavs = await normalizeClips(narration.clips,directory,ffmpeg);
+  const timeline = buildTimeline(doc,wavs.map(w=>w.samples.length/w.sampleRate),range);
   const samples = new Int16Array(timeline.frames*1600);
   for (const cue of timeline.cues) samples.set(wavs[cue.index].samples,cue.startFrame*1600);
   writeFileSync(path.join(directory,'narration.wav'),encodeWav(samples));
-  console.error(`${doc.slug}: render ${timeline.cues.length} caption frames (${timeline.seconds.toFixed(2)}s)`);
+  console.error(`${doc.slug}: render ${timeline.cues.length} caption frames (${timeline.seconds.toFixed(2)}s, ${themeOf(doc).id})`);
   const layout = await renderFrames(doc,timeline,evidence,directory,channel);
   console.error(`${doc.slug}: encode portrait video`);
   for (const cue of timeline.cues) {
@@ -201,23 +237,22 @@ export async function build({ file, sourceBase, workdir, voice='Microsoft Hanhan
   const filter = `aformat=channel_layouts=stereo,loudnorm=I=-14:TP=-1:LRA=11:measured_I=${loud.input_i}:measured_TP=${loud.input_tp}:measured_LRA=${loud.input_lra}:measured_thresh=${loud.input_thresh}:offset=${loud.target_offset}:linear=true:print_format=json`;
   const final = path.join(directory,'upload','final.mp4');
   await runTool(ffmpeg,['-y','-hide_banner','-f','concat','-safe','1','-i',listFile,'-i',path.join(directory,'narration.wav'),'-map','0:v:0','-map','1:a:0','-c:v','copy','-af',filter,'-ar','48000','-ac','2','-c:a','aac','-b:a','192k','-movflags','+faststart',final]);
-  const probe = JSON.parse((await runTool(ffprobe,['-v','error','-show_streams','-show_format','-of','json',final])).stdout);
-  const video = probe.streams.find(s=>s.codec_type==='video');
-  const audio = probe.streams.find(s=>s.codec_type==='audio');
-  if (video?.width!==1080 || video?.height!==1920 || video?.codec_name!=='h264' || video?.r_frame_rate!=='30/1' || Number(video.nb_frames)!==timeline.frames || audio?.codec_name!=='aac' || audio?.sample_rate!=='48000' || !Number.isFinite(Number(audio?.duration)) || Math.abs(Number(audio.duration)-timeline.seconds)>.08) throw new Error('encoded output failed profile/duration checks');
-  const measured = await runTool(ffmpeg,['-hide_banner','-i',final,'-af','loudnorm=I=-14:TP=-1:LRA=11:print_format=json','-f','null','-']);
-  const finalLoud = loudnessResult(measured.stderr);
-  if (Math.abs(Number(finalLoud.input_i)+14)>1 || Number(finalLoud.input_tp)>-.8) throw new Error(`final loudness failed: ${finalLoud.input_i} LUFS, ${finalLoud.input_tp} dBTP`);
+  const measured = await measureFinal(final,{ffmpeg,ffprobe});
+  const wrong = profileProblems(measured,timeline.frames);
+  if (wrong.length) throw new Error(`encoded output failed profile/duration checks: ${wrong.join('; ')}`);
+  const loudWrong = loudnessProblems(measured.loudness);
+  if (loudWrong.length) throw new Error(`final loudness failed: ${loudWrong.join('; ')}`);
+  const {video,audio} = measured;
   writeFileSync(path.join(directory,'upload','zh-TW.srt'),srt(timeline));
   writeFileSync(path.join(directory,'upload','cover.png'),readFileSync(path.join(directory,'frames','000.png')));
-  const description = `${doc.titles[0]}\n\n${doc.description}\n\n實測範圍：${doc.experiment_summary}\n限制：${doc.limitations}\n旁白：${audioDir ? '外部提供旁白（需聽審）' : `${voice} 本機合成（試片）`}\n\n#AI #實測 #Shorts\n`;
-  writeFileSync(path.join(directory,'upload','description.zh-TW.txt'),description);
   saveJson(path.join(directory,'upload','titles.json'),doc.titles);
   saveJson(path.join(directory,'timeline.json'),timeline);
-  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,seconds:timeline.seconds,frames:timeline.frames,layout,loudness:finalLoud,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,checked_at:new Date().toISOString()});
-  const uploadFiles = ['final.mp4','zh-TW.srt','cover.png','description.zh-TW.txt','titles.json'];
-  const manifest = {schema_version:1,slug:doc.slug,build_id:buildId,status:'owner-review-required',created_at:new Date().toISOString(),document_sha256:sha256(documentBytes),code_sha256:codeHash,ffmpeg:version,narrator:audioDir?'external':voice,incremental_api_cost_ntd:audioDir?null:0,evidence:evidence.map(({file:_file,bytes:_bytes,...e})=>e),files:uploadFiles.map(name=>({name,sha256:sha256(readFileSync(path.join(directory,'upload',name)))}))};
+  saveJson(path.join(directory,'checks.json'),{ok:true,profile:PROFILE,range,seconds:timeline.seconds,frames:timeline.frames,layout,loudness:measured.loudness,video:{codec:video.codec_name,width:video.width,height:video.height,fps:video.r_frame_rate},audio:{codec:audio.codec_name,sample_rate:audio.sample_rate},evidence_verified:true,audio_sha256:sha256(wavs.map((_w,i)=>sha256(readFileSync(path.join(directory,'audio',`${number(i)}.wav`)))).join('')),final_sha256:sha256(readFileSync(final)),checked_at:new Date().toISOString()});
+  // What the site's ledger is told when the final cut is approved: /video/speech takes no slug,
+  // so only the tool knows which Short the narration was for (docs/videos/SHORTS.md §花費與預算).
+  saveJson(path.join(directory,USAGE_FILE),{narration:{seconds:Number(wavs.reduce((sum,w)=>sum+w.samples.length/w.sampleRate,0).toFixed(3)),characters:phrasesOf(doc).reduce((sum,phrase)=>sum+[...phrase].length,0),calls:narration.calls,provider:narration.provider,...(narration.model?{model:narration.model}:{})},stages:{},checks:{}});
+  const uploadFiles = ['final.mp4','zh-TW.srt','cover.png','titles.json'];
+  const manifest = {schema_version:2,slug:doc.slug,line:lineOf(doc),series:doc.series,build_id:buildId,status:'built',created_at:new Date().toISOString(),document_sha256:sha256(documentBytes),code_sha256:codeHash,ffmpeg:version,narrator:{source,provider:narration.provider,voice:narration.voice},evidence:evidence.map(({file:_file,bytes:_bytes,...e})=>e),files:uploadFiles.map(name=>({name,sha256:sha256(readFileSync(path.join(directory,'upload',name)))}))};
   saveJson(path.join(directory,'upload','manifest.json'),manifest);
-  writeFileSync(path.join(directory,'upload','UPLOAD.md'),`# ${doc.titles[0]}\n\n狀態：試片完成，待站主審片。尚未上傳、發布或排程。\n\n1. 播放 final.mp4，核對台灣中文旁白、字幕、每次揭曉和手機介面遮擋。\n2. 使用 titles.json 的標題與 description.zh-TW.txt；在 Studio 上傳成私人。\n3. 上傳 zh-TW.srt，使用 cover.png 作封面參考。Shorts 封面能否選取，以手機版 Studio／YouTube 的實際介面為準。\n4. 由站主決定合成內容揭露、兒童與付費宣傳欄位、公開時間。影片為工具測試與原創圖形，海報活動為虛構。\n5. 公開後記錄影片 ID 和時間，24h／72h／7d 匯出 Studio 指標。\n\n${doc.limitations}\n\nSHA-256 見 manifest.json。技術檢查通過不等於真人聽審或發布成功。\n`);
-  return {directory,final,seconds:timeline.seconds,buildId,status:manifest.status};
+  return {directory,final,seconds:timeline.seconds,buildId,status:manifest.status,narration:{source,calls:narration.calls}};
 }
