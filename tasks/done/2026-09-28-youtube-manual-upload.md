@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-youtube-manual-upload
 title: YouTube manual upload guide with downloads and copyable fields
-status: in-progress
+status: done
 priority: P1
 area: web
 owner: codex-manual-upload
 claimed_at: 2026-09-28T03:59:10Z
 created_at: 2026-09-28T03:58:57Z
-completed_at:
+completed_at: 2026-09-28T04:42:08Z
 branch: codex/youtube-manual-upload
 depends_on: []
 scope:
@@ -37,13 +37,13 @@ history, and a partially uploaded video must not be uploaded again.
       tags and disclosure/audience settings to Studio steps, with five UI locales.
 - [x] Existing video IDs open the original Studio page; full-video, compilation and missing-file
       cases are distinguished, and metadata/clipboard errors remain recoverable.
-- [ ] Focused regression tests, lint for changed components, web typecheck and i18n pass.
+- [x] Focused regression tests, lint for changed components, web typecheck and i18n pass.
 
 ## Steps
 
 - [x] Inspect existing approved-package and file-download contracts and active work.
 - [x] Add isolated manual guide and narrow entry points.
-- [ ] Validate and prepare a draft PR.
+- [x] Validate and prepare a draft PR.
 
 ## How to verify
 
@@ -67,6 +67,10 @@ history, and a partially uploaded video must not be uploaded again.
   Initial full lint found one set-state-in-effect error, fixed by remounting the package
   loader for reload. Resource pressure prevented completing the full local lint rerun;
   the changed components are checked separately and CI will run the full gate.
+- Final scoped ESLint and task validation pass locally. GitHub CI run 36378423453 for
+  c35c1e7b passed full web lint, i18n, task validation and web typecheck.
+  Remaining CI jobs were still running when this implementation receipt was recorded.
+- Draft PR: https://github.com/x812033727/travel_scanner/pull/890. No merge or deployment.
 - Browser visual validation is explicitly outstanding in 2026-09-28-youtube-manual-browser-validation.
   Chrome tab creation/recovery timed out repeatedly; local available memory reached about 0.26 GiB.
   Preview processes were stopped. This is not a browser/device acceptance receipt.
