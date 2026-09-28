@@ -7,6 +7,7 @@ import { emotionProblems, EXPLAINER_PRESET, isDrama, shotProblems, visualTierPro
 import { unknownTerms, validateLexicon } from "./lexicon.mjs";
 import { articleUrl, checkYoutubeFields, composeDescription } from "./metadata.mjs";
 import { DEFAULT_TARGET_MINUTES, LOCALES, NARRATION_LOCALE, eachLine, spokenText, textHash, validateVideo } from "./schema.mjs";
+import { isStory, storyProblems } from "./story.mjs";
 import { DEFAULT_CPM, chapterList, checkChapters, estimateTimeline, formatClock, frameToSeconds, spokenUnits } from "./timeline.mjs";
 import { metadataStatus, namedWith } from "./translations.mjs";
 
@@ -144,7 +145,7 @@ export function billableEstimate(doc) {
 /**
  * Lint one video.
  * context: { lexicon, brief (markdown or null), others: [{ slug, doc }], translations: { locale: json },
- *            pack (the source_guide content pack or null), cpm }
+ *            pack (the source_guide content pack or null), series (series.json or null), cpm }
  */
 /**
  * An episode of a series uses the cast as the setting book has it, word for word, so the
@@ -234,6 +235,13 @@ export function lintVideo(doc, context = {}) {
     for (const problem of shots.errors) error(problem.path, problem.message);
     for (const problem of shots.warnings) warn(problem.path, problem.message);
     for (const problem of emotionProblems(doc)) warn(problem.path, problem.message);
+  }
+  // A brand story (docs/videos/STORY.md) is known by its series.json, which the worker writes
+  // when it starts the episode; its rules come on top of the drama's.
+  if (isStory(context.series)) {
+    const story = storyProblems(doc, context.series, timeline);
+    for (const problem of story.errors) error(problem.path, problem.message);
+    for (const problem of story.warnings) warn(problem.path, problem.message);
   }
   const chapters = chapterList(timeline);
   for (const problem of checkChapters(timeline)) {

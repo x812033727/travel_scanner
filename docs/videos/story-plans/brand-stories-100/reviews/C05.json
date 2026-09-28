@@ -1,0 +1,19 @@
+{
+  "id": "C05",
+  "reviewed": "2026-09-28",
+  "reviewer": "Claude Opus 5.5 (independent fact check)",
+  "story_sha256": "b4bb744e23f5e7a4015da8e7bcd05207f3369ccdee74b828ab74b3244a51e010",
+  "verdict": "fixed",
+  "sources_opened": 9,
+  "changes": [
+    "標題「五分鐘寫成的按鍵組合，讓比爾蓋茲背了四十年的鍋」沒有來源又帶貶意（Windows NT 才開始用它登入，也沒有人讓蓋茲「背鍋」四十年），改成「五分鐘寫成的重開機組合，為什麼變成 Windows 的登入鍵？」。",
+    "開場、問題與現況段的「全世界最有名的按鍵組合」「每一台電腦都會用到」沒有來源，拿掉並改成「許多人都認得」與 Windows 的登入流程。",
+    "Bradley 的名言改回原話的意思「我也許發明了它，但我想是比爾讓它出名的」，拿掉原本多加的「真正」。",
+    "turn 段時序錯誤：Bradley 說蓋茲很有風度、退休時寫信給他，是 GeekWire 轉述他 2011 年的訪問，並非 2013 年蓋茲發言後的「緩頰」（GeekWire 當時還聯絡不上他），也不是兩人「通過信」，已改正，並補上 CBS、GeekWire、The Register 都寫到的蓋茲當場沒有笑。",
+    "起點段沒有來源的「整台斷電很傷電源供應器跟硬碟」拿掉，只留「不必關掉電源就能重新啟動」，並新增 IBM 官方沿革（Boca Raton、只給一年、「Dave Bradley 寫了介面程式」）為一手來源。",
+    "新增麻省理工學院 Lemelson-MIT 的 Bradley 介紹與普渡大學新聞稿，撐起「最初 12 人」「很難誤按」「只給寫程式與寫文件的人用」「幾分鐘寫成」，核心說法不再只靠兩家新聞。",
+    "新增微軟 Learn 的安全設定說明，作為登入前先按這組鍵的理由（可信任的路徑、防止偽造登入畫面）與仍適用於 Windows 10、11 的一手來源，「只有作業系統核心能接收它」改成「由 Windows 本身接收、其他程式模仿不了」。",
+    "Mel Hallerman 建議改鍵只有維基百科一個來源，旁白改成「據說」，names 補上 IBM PC、Windows NT、Harvard、CBS、GeekWire、Purdue，cast 的直立式機殼改成 1980 年代的桌上型電腦，縮圖構想拿掉與事實不符的「相視而笑」。"
+  ],
+  "notes": "Fast Company 2018 年的長文回 403，Computer History Museum 沒找到專講 Ctrl+Alt+Del 的頁面。IBM 官方沿革只說 Bradley 寫了「介面程式」，沒有提 Ctrl+Alt+Del 與十二人，「最初 12 人」靠 Lemelson-MIT、CBS 與維基百科。五分鐘的說法 CBS 與 GeekWire 都有，Lemelson-MIT 寫「幾分鐘」，稿子要交代是 Bradley 自己說的。GeekWire 引的 Bradley 原話出自影片，這裡只引用 GeekWire 的文字報導。2001 年活動的確切日期與地點（8 月 8 日、The Tech Museum）只有維基百科，稿子只說 2001 年 8 月。The Register 把那句話記成「是比爾蓋茲讓它真正出名的」，與影片版本略有不同，稿子用 GeekWire 與維基百科一致的版本。微軟說明文件的預設值表列出用戶端電腦的有效預設是要求先按這組鍵，但一般家用電腦實際上是否要求未能確認，稿子只說這項設定仍在，不要說「每次登入都要按」。"
+}

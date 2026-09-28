@@ -623,7 +623,7 @@ function SeriesPage({ slug, onBack, onOpenVideo }: { slug: string; onBack: () =>
     api<Series>(`/admin/video-automation/series/${slug}`).then((value) => { setSeries(value); setError(""); }).catch((problem: unknown) => setError(message(problem)));
     // The compilation is the series' one video without an episode number (docs/videos/BINGE.md);
     // the episodes come with the series itself. An older site ignores the filter and is filtered here.
-    api<ProjectSummary[]>(`/admin/videos?series=${slug}`)
+    api<ProjectSummary[]>(`/admin/videos?series=${slug}&shorts=exclude`)
       .then((value) => setCompilations((Array.isArray(value) ? value : []).filter((video) => video.series_slug === slug && video.episode_number == null)))
       .catch(() => setCompilations([]));
   }, [slug]);

@@ -7,6 +7,13 @@ from uuid import UUID
 
 from pydantic import AwareDatetime, BaseModel, Field, field_validator, model_validator
 
+from app.video_shorts.schemas import (
+    SHORTS_SERIES_PATTERN,
+    SLUG_PATTERN,
+    ShortsLine,
+    ShortsState,
+)
+
 # look and storyboard belong to the drama format (docs/videos/DRAMA.md): the character sheets
 # the owner picks from, one review per character, and the keyframes before any clip is made.
 # script is an episode's screenplay, read before any image or clip is paid for
@@ -59,7 +66,9 @@ class ChecklistItem(BaseModel):
     done: bool
 
 
-VideoFormat = Literal["slides", "drama"]
+# "shorts" is the card pipeline of a Short (docs/videos/SHORTS.md). A vertical drama short
+# keeps "drama": what makes a video a Short is its ``shorts_line``, not its format.
+VideoFormat = Literal["slides", "drama", "shorts"]
 
 
 class ProjectIn(BaseModel):
@@ -78,6 +87,11 @@ class ProjectIn(BaseModel):
     episode_number: int | None = Field(default=None, ge=1, le=10_000)
     # The worker echoes the request it consumed. Older workers leave it out.
     retry_acknowledged_id: UUID | None = None
+    # A Short (docs/videos/SHORTS.md): its content line, its series within the line, and the
+    # video a highlight or a vertical short was cut from. Left out, the stored ones stay.
+    shorts_line: ShortsLine | None = None
+    shorts_series: str | None = Field(default=None, pattern=SHORTS_SERIES_PATTERN)
+    source_slug: str | None = Field(default=None, pattern=SLUG_PATTERN)
 
 
 class ReviewFile(BaseModel):
@@ -208,6 +222,16 @@ class ProjectSummary(BaseModel):
     # What the site last sent this video's YouTube side through the linked channel, step by step
     # (app/video_youtube/state.py public_state), or None when it never did.
     youtube_sync: dict[str, Any] | None = None
+    # A Short (docs/videos/SHORTS.md): its line, series and source; where it stands, one of the
+    # eight states the Shorts tab groups by; and when the slot it holds goes public. All None
+    # for a video that is not a Short.
+    shorts_line: ShortsLine | None = None
+    shorts_series: str | None = None
+    source_slug: str | None = None
+    shorts_state: ShortsState | None = None
+    slot_at: datetime | None = None
+    # When the site found the video gone from YouTube, or private again.
+    youtube_removed_at: datetime | None = None
 
 
 class ProjectOut(ProjectSummary):

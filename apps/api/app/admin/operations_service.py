@@ -47,6 +47,7 @@ from app.models import (
 from app.news_automation.models import NewsCandidate
 from app.problems import AppError
 from app.schema import expected_schema_revision
+from app.video_shorts.overview import owner_needs_count as shorts_owner_needs_count
 
 NAVIGATION_REGISTRY: tuple[AdminNavigationItem, ...] = (
     AdminNavigationItem(
@@ -198,6 +199,9 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
         key: int(value or 0)
         for key, value in (await session.execute(statement)).mappings().one().items()
     }
+    # What waits for the owner on the Shorts tab besides reviews: a consent to publish that
+    # stopped holding, days of missed slots, files to upload (docs/videos/SHORTS.md).
+    values["video_reviews_pending"] += await shorts_owner_needs_count(session)
     values["users_total"] = values["users"]
     values["pending_total"] = sum(
         values[key]
@@ -219,7 +223,8 @@ async def _live_pending_counts(session: AsyncSession) -> dict[str, int]:
 async def pending_counts(session: AsyncSession) -> dict[str, int]:
     redis = get_redis()
     # v3: video_reviews_pending joined the counts; a cached v2 dict would show no badge.
-    cache_key = "admin:operations:pending:v3"
+    # v4: that count takes in what waits on the Shorts tab besides reviews.
+    cache_key = "admin:operations:pending:v4"
     try:
         cached = await redis.get(cache_key)
         if cached:

@@ -13,6 +13,10 @@ import { eachLine, LOCALES, NARRATION_LOCALE, spokenText, textHash } from "../co
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
 
 export const DUB_LOCALES = LOCALES.filter((locale) => locale !== NARRATION_LOCALE);
+// What gets a dub when nobody chose (no --locale, no languages.json): not zh-CN. A viewer who
+// reads Simplified hears Mandarin already in the zh-TW narration, so that track adds nothing
+// unless the owner ticks it for a video (the owner's call, 2026-09-28).
+export const DEFAULT_DUB_LOCALES = DUB_LOCALES.filter((locale) => locale !== "zh-CN");
 export const DUB_FORMATS = ["m4a", "mp3", "wav"];
 export const DEFAULT_FORMAT = "m4a";
 // Silence between two dubbed lines once the original pause is used up.

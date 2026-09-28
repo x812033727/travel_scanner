@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Annotated, Any, Literal, Self, get_args
 from uuid import UUID
 
@@ -14,6 +14,7 @@ from pydantic import (
 )
 
 from app.ai.catalog import ModelStatus
+from app.video_media.catalog import MEDIA_VENDORS, find_model
 
 # "claude_code" and "codex" use the host's subscription accounts; the others use API keys.
 ProviderName = Literal["claude_code", "codex", "openai", "anthropic", "minimax", "gemini"]
@@ -463,8 +464,15 @@ class TopicsOut(StrictModel):
 # (the setting book, the whole-series outline, each chapter's detailed outline), the episode
 # table, and what the worker asks for and reports.
 SERIES_SLUG_PATTERN = r"^[a-z0-9][a-z0-9-]{1,39}$"
-# A long series, or a one-off drama: one episode, one story bible (docs/videos/DRAMA-FLOW.md §二).
-SeriesKind = Literal["series", "one-off"]
+# A long series, a one-off drama (one episode, one story bible; docs/videos/DRAMA-FLOW.md §二), or
+# a brand-story series (no documents; its episodes are a planned backlog; docs/videos/STORY.md).
+SeriesKind = Literal["series", "one-off", "story"]
+# How long one episode may run: a drama's episode, and a story, which is 12 to 15 minutes. The
+# database allows the longer one for every kind (migration 0111); the schemas hold the rest to 8.
+SERIES_MAX_MINUTES = 8
+STORY_MAX_MINUTES = 20
+# How many stories may start on one Asia/Taipei calendar day, at most.
+STORY_MAX_PER_DAY = 12
 SeriesStatus = Literal["setting", "outline", "active", "paused", "finished"]
 SeriesAspect = Literal["world", "bonds", "structure", "mood"]
 SeriesTone = Literal[
@@ -487,6 +495,44 @@ MAX_DOC_MD_CHARS = 200_000
 MAX_DOC_JSON_BYTES = 512 * 1024
 
 
+class StoryLook(StrictModel):
+    """The look every story of a story series shares (docs/videos/STORY.md §一支故事影片的規格):
+    the image prompt's style, what the pictures must never show, and how the camera moves over
+    a still. A story series has no setting book, so the series row keeps it (migration 0111)."""
+
+    style: str = Field(min_length=1, max_length=600)
+    negative: str = Field(min_length=1, max_length=400)
+    motion: str | None = Field(default=None, min_length=1, max_length=400)
+
+    @field_validator("style", "negative", "motion")
+    @classmethod
+    def _not_blank(cls, value: str | None) -> str | None:
+        if value is not None and not value.strip():
+            raise ValueError("must not be blank")
+        return value
+
+
+def image_model_problem(model_id: str) -> str | None:
+    """Why a series cannot name this image model, or None: it must be an image model of the
+    media catalog that is not retired (app.video_media.catalog)."""
+    found = [
+        model
+        for vendor in MEDIA_VENDORS
+        if (model := find_model(vendor, "image", model_id)) is not None
+    ]
+    if not found:
+        return f"{model_id} is not an image model of the media catalog"
+    if all(model.status == "retired" for model in found):
+        return f"{model_id} is retired"
+    return None
+
+
+def _known_image_model(value: str | None) -> str | None:
+    if value is not None and (problem := image_model_problem(value)):
+        raise ValueError(problem)
+    return value
+
+
 class SeriesIn(StrictModel):
     """What the owner fills in to start a series; the setting book is planned from it.
 
@@ -497,6 +543,11 @@ class SeriesIn(StrictModel):
 
     A ``one-off`` is one episode with one story bible: its numbers are fixed at one whatever
     was sent, and aspects and tone may be left out (docs/videos/DRAMA-FLOW.md §二).
+
+    A ``story`` series (docs/videos/STORY.md) is always hands-off, stills only and never
+    compiled, needs its title, premise and shared look, and may run to STORY_MAX_MINUTES; its
+    episodes come from the backlog import, not from documents. The daily count and the look
+    belong to a story series only; every other kind stays at SERIES_MAX_MINUTES.
     """
 
     slug: str | None = Field(default=None, pattern=SERIES_SLUG_PATTERN)
@@ -506,7 +557,7 @@ class SeriesIn(StrictModel):
     aspects: list[SeriesAspect] = Field(default_factory=list, max_length=4)
     tone: SeriesTone = "dual-male-leads-subtext"
     style_preset: StylePreset = "cinematic-3d"
-    target_minutes: int = Field(default=3, ge=1, le=8)
+    target_minutes: int = Field(default=3, ge=1, le=STORY_MAX_MINUTES)
     planned_episodes: int = Field(default=100, ge=1, le=500)
     episodes_per_chapter: int = Field(default=10, ge=1, le=20)
     open_ended: bool = True
@@ -517,11 +568,19 @@ class SeriesIn(StrictModel):
     compilation: bool = False
     visual_tier: VisualTier = "clips"
     total_minutes: int | None = Field(default=None, ge=30, le=480)
+    episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
+    image_model: str | None = Field(default=None, min_length=1, max_length=128)
+    look: StoryLook | None = None
 
     @field_validator("title", "premise", "note")
     @classmethod
     def _trimmed(cls, value: str | None) -> str | None:
         return None if value is None else value.strip()
+
+    @field_validator("image_model")
+    @classmethod
+    def _image_model(cls, value: str | None) -> str | None:
+        return _known_image_model(value)
 
     @field_validator("aspects")
     @classmethod
@@ -541,6 +600,24 @@ class SeriesIn(StrictModel):
             raise ValueError("a custom series needs a premise")
         if self.total_minutes is None and not self.premise and self.genre == "xianxia-bonds":
             raise ValueError("premise must not be blank")
+        if self.kind == "story":
+            if not self.hands_off or self.visual_tier != "stills" or self.compilation:
+                raise ValueError(
+                    'a story series is hands_off, visual_tier "stills" and never a compilation'
+                )
+            if self.total_minutes is not None:
+                raise ValueError("a story series takes its episodes from the backlog import")
+            if not self.title or not self.premise:
+                raise ValueError("a story series needs a title and a premise")
+            if self.look is None:
+                raise ValueError("a story series needs the look every story shares")
+        else:
+            if self.target_minutes > SERIES_MAX_MINUTES:
+                raise ValueError(
+                    f"an episode is at most {SERIES_MAX_MINUTES} minutes; only a story runs longer"
+                )
+            if self.episodes_per_day is not None or self.look is not None:
+                raise ValueError("only a story series has a daily count and a shared look")
         if self.kind == "one-off":
             if self.total_minutes is not None:
                 raise ValueError("a one-off drama is one episode, not a binge series")
@@ -554,14 +631,20 @@ class SeriesIn(StrictModel):
 
 
 class SeriesPatch(StrictModel):
-    """What the owner may change later; a field left out stays as it is."""
+    """What the owner may change later; a field left out stays as it is.
+
+    The length may reach STORY_MAX_MINUTES and the daily count and the look may be set only on
+    a story series; the service refuses them on the other kinds, which keep their limits.
+    ``episodes_per_day`` or ``image_model`` sent as null lifts the daily limit or follows the
+    settings tab again.
+    """
 
     title: str | None = Field(default=None, min_length=1, max_length=200)
     premise: str | None = Field(default=None, min_length=1, max_length=4000)
     aspects: list[SeriesAspect] | None = Field(default=None, max_length=4)
     tone: SeriesTone | None = None
     style_preset: StylePreset | None = None
-    target_minutes: int | None = Field(default=None, ge=1, le=8)
+    target_minutes: int | None = Field(default=None, ge=1, le=STORY_MAX_MINUTES)
     planned_episodes: int | None = Field(default=None, ge=1, le=500)
     episodes_per_chapter: int | None = Field(default=None, ge=4, le=20)
     open_ended: bool | None = None
@@ -574,6 +657,15 @@ class SeriesPatch(StrictModel):
     hands_off: bool | None = None
     compilation: bool | None = None
     visual_tier: VisualTier | None = None
+    # A story series (docs/videos/STORY.md).
+    episodes_per_day: int | None = Field(default=None, ge=1, le=STORY_MAX_PER_DAY)
+    image_model: str | None = Field(default=None, min_length=1, max_length=128)
+    look: StoryLook | None = None
+
+    @field_validator("image_model")
+    @classmethod
+    def _image_model(cls, value: str | None) -> str | None:
+        return _known_image_model(value)
 
 
 class SeriesWithdrawnOut(BaseModel):
@@ -615,6 +707,35 @@ class SeriesEpisodeOut(BaseModel):
     video: dict[str, object] | None = None
 
 
+# Why no story starts now (docs/videos/STORY.md §每日配額與排程): the series is paused or over, the
+# day's count is reached (the Asia/Taipei calendar day), the episodes in the making fill
+# ``series_max_in_flight``, the month's ``series_episodes_per_month`` is reached, the stories
+# cleared for upload that the owner has not uploaded fill the buffer, or no story is ready.
+StoryHold = Literal[
+    "not_active", "per_day", "in_flight", "per_month", "upload_buffer", "none_ready"
+]
+
+
+class StoryQuotaOut(BaseModel):
+    """Where a story series stands against its limits, and the reason no story starts now
+    (``hold`` and the sentence the owner reads, ``hold_detail``), or None for both when the
+    next one may. The same function decides the worker's next job, so the page and the worker
+    cannot disagree. ``day`` is the Asia/Taipei calendar day ``started_today`` counts."""
+
+    day: date
+    started_today: int
+    episodes_per_day: int | None
+    in_flight: int
+    max_in_flight: int
+    started_this_month: int
+    episodes_per_month: int
+    awaiting_upload: int
+    upload_buffer: int
+    ready: int
+    hold: StoryHold | None = None
+    hold_detail: str | None = None
+
+
 class SeriesSummary(BaseModel):
     id: UUID
     slug: str
@@ -651,6 +772,15 @@ class SeriesSummary(BaseModel):
     compilation_slug: str | None = None
     compilation_started_at: datetime | None = None
     compilation_finished_at: datetime | None = None
+    # The brand-story columns (docs/videos/STORY.md): the daily count, the image model (None
+    # follows the settings tab) and the shared look; the other kinds leave them None. The worker's
+    # episode job reads them here with the kind and the length, and needs no second request.
+    episodes_per_day: int | None = None
+    image_model: str | None = None
+    look: dict[str, object] | None = None
+    # A story series' standing against its limits, on the owner's reads (the list and the series
+    # page); None for the other kinds and wherever the worker reads a summary.
+    quota: StoryQuotaOut | None = None
     created_at: datetime
     updated_at: datetime
 

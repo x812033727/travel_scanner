@@ -14,7 +14,7 @@ from uuid import UUID
 
 import httpx
 from fastapi import APIRouter, Depends, Query
-from pydantic import ValidationError
+from pydantic import AwareDatetime, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
@@ -88,8 +88,9 @@ from app.video_automation.schemas import (
 )
 from app.video_automation.series import SeriesRefused
 from app.video_automation.topics import gather_topics
-from app.video_reviews.admin_service import list_projects
-from app.video_reviews.schemas import ProjectSummary
+from app.video_reviews.admin_service import LIST_LIMIT, list_projects
+from app.video_reviews.schemas import ProjectSummary, VideoFormat
+from app.video_shorts.schemas import ShortsFilter, ShortsState
 from app.video_speech.admin_api import VideoTool
 from app.video_speech.checking import CheckUnavailable
 
@@ -263,10 +264,26 @@ async def run_video_stage(request: StageRunIn, tool: VideoTool, session: Session
 
 
 @tool_router.get("/videos", response_model=list[ProjectSummary])
-async def list_tool_videos(tool: VideoTool, session: Session) -> list[ProjectSummary]:
-    """Every video on /admin/videos, dropped ones too, so a new draft does not repeat a topic."""
+async def list_tool_videos(
+    tool: VideoTool,
+    session: Session,
+    format: VideoFormat | None = None,
+    shorts: ShortsFilter | None = None,
+    state: ShortsState | None = None,
+    limit: Annotated[int | None, Query(ge=1, le=LIST_LIMIT)] = None,
+    before: AwareDatetime | None = None,
+) -> list[ProjectSummary]:
+    """Every video on /admin/videos, dropped ones too, so a new draft does not repeat a topic.
+
+    The rounds that make tutorials and dramas ask with ``shorts=exclude``, so ninety days of
+    Shorts do not push their videos past the cap; the Shorts round asks with ``shorts=only``
+    (docs/videos/SHORTS.md)."""
     _ = tool
-    return await list_projects(session)
+    if state is not None and shorts != "only":
+        raise AppError(422, "video_shorts_state_needs_only", "state 只能跟 shorts=only 一起用")
+    return await list_projects(
+        session, video_format=format, shorts=shorts, state=state, limit=limit, before=before
+    )
 
 
 @tool_router.get("/topics", response_model=TopicsOut)

@@ -9,7 +9,7 @@ import path from "node:path";
 
 import { approvalState, readApprovals } from "./approvals.mjs";
 import { COMPILATION_HEADLINE_PLACEHOLDER, COMPILATION_STEPS, compilationChecksCurrent, isCompilation, lintCompilation, PLACEHOLDER_TITLE } from "./compilation.mjs";
-import { burnIn, hasCast, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
+import { burnIn, isDrama, lookHash, mixHash, subtitlesHash } from "./drama.mjs";
 import { emptyLexicon } from "./lexicon.mjs";
 import { lintVideo } from "./lint.mjs";
 import { DUB_LOCALES, dubScript, translationHash } from "../dubs/plan.mjs";
@@ -84,7 +84,8 @@ export const SLIDES_STEPS = [
 /**
  * A drama's steps. The look comes before the narration so the owner can drop a concept before
  * anything else is paid for; render (local, cheap, fails on a missing glyph) comes before clips,
- * the most expensive stage; music is skipped when the script has none.
+ * the most expensive stage; music is skipped when the script has none, and the two look steps
+ * when it has no characters (`narratorOnly`).
  */
 export const DRAMA_STEPS = [
   "brief",
@@ -116,16 +117,30 @@ export const DRAMA_STEPS = [
  */
 export { COMPILATION_STEPS };
 
-const LOOK_STEPS = new Set(["look generated", "look approved"]);
-
-export function stepsFor(doc) {
+/** The steps of the video's format, before `stepsFor` drops the look of a drama with no characters. */
+function formatSteps(doc) {
   if (isCompilation(doc)) return COMPILATION_STEPS;
   if (!isDrama(doc)) return SLIDES_STEPS;
   // Every drama has the script gate (docs/videos/DRAMA-FLOW.md, section 2): the owner reads the
   // screenplay, and may discuss it, before any image or clip is paid for. Music is skipped when
-  // the script has none; a drama with no characters (a narrator-only explainer) has no sheets to
-  // draw or pick, so no look steps.
-  return DRAMA_STEPS.filter((id) => (id !== "music generated" || doc.music) && (!LOOK_STEPS.has(id) || hasCast(doc)));
+  // the script has none.
+  return DRAMA_STEPS.filter((id) => id !== "music generated" || doc.music);
+}
+
+/** The two steps that draw and choose the cast's character sheets. */
+export const LOOK_STEPS = ["look generated", "look approved"];
+
+/**
+ * Whether a drama is told by the narrator alone, as a brand story may be (docs/videos/STORY.md):
+ * with no characters there is no sheet to draw or choose, so it has no look steps and its
+ * keyframes are drawn from the look's style frames alone.
+ */
+export const narratorOnly = (doc) => isDrama(doc) && !isCompilation(doc) && !doc.characters?.length;
+
+/** The steps `pipelineStatus` walks for this video, in order. */
+export function stepsFor(doc) {
+  const steps = formatSteps(doc);
+  return narratorOnly(doc) ? steps.filter((id) => !LOOK_STEPS.includes(id)) : steps;
 }
 
 /**
@@ -261,11 +276,13 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const compilation = isCompilation(doc);
   // A compilation is a drama for the disclosure and the steps, not for the media stages here.
   const drama = isDrama(doc) && !compilation;
+  // A narrator-only drama has no cast: no look gate to ask about, no character sheets to read.
+  const cast = drama && !narratorOnly(doc);
   const gate = (name) => approvalState({ gate: name, docDir: dir, workdir });
   const outline = await gate("outline");
   const audio = await gate("audio");
   const final = await gate("final");
-  const look = drama ? await gate("look") : null;
+  const look = cast ? await gate("look") : null;
   const storyboard = drama ? await gate("storyboard") : null;
   const script = drama ? await gate("script") : null;
   const timeline = read(ARTIFACTS.timeline);
@@ -273,7 +290,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const checks = read(ARTIFACTS.checks);
   const captions = read(ARTIFACTS.captions);
   const upload = read(ARTIFACTS.upload);
-  const characters = drama ? read(ARTIFACTS.characters) : null;
+  const characters = cast ? read(ARTIFACTS.characters) : null;
   const keyframes = drama ? read(ARTIFACTS.keyframes) : null;
   const clips = drama ? read(ARTIFACTS.clips) : null;
   const music = drama ? read(ARTIFACTS.music) : null;
@@ -283,7 +300,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   const lookNow = valid && drama ? lookHash(doc) : null;
   const subtitles = valid && drama ? subtitlesHash(doc) : null;
   const mix = valid && drama ? mixHash(doc) : null;
-  const chosen = drama ? lookChosen(characters, read(ARTIFACTS.characterChoice), lookNow) : null;
+  const chosen = cast ? lookChosen(characters, read(ARTIFACTS.characterChoice), lookNow) : null;
 
   const framesDone = Boolean(visual) && frames?.visual_hash === visual && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
   const assembledDrama = !drama || (checks?.look_hash === lookNow && checks.clips_hash === clips?.clips_hash && checks.subtitles_hash === subtitles && checks.mix_hash === mix);
