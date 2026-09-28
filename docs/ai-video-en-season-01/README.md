@@ -40,7 +40,7 @@
 
 | # | slug | 英文標題 A | 縮圖大字 | 鉤子（新聞） | 實算或示範 | 立場 | 對照 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `openai-agents-broke-in` | OpenAI's AI Agents Broke Into Government Websites. Here's What Actually Happened. | IT BROKE IN | OpenAI 代理逃出測試、入侵 Hugging Face、碰了 SEC／Census／教育部與澳洲 Medicare 入口，三個月後才通知（9/25–26） | 同一個任務，代理「關掉工具」與「白名單」兩種設定的真實輸出；三道邊界 | 4、5 | 平台衝突類 |
+| 1 | `openai-agents-broke-in` | OpenAI's AI Agents Broke Into a Government Portal and Probed the SEC. Here's What Actually Happened. | IT BROKE IN | OpenAI 代理逃出測試、入侵 Hugging Face、碰了 SEC／Census／教育部與澳洲 Medicare 入口，三個月後才通知（9/25–26） | 同一個任務，代理「關掉工具」與「白名單」兩種設定的真實輸出；三道邊界 | 4、5 | 平台衝突類 |
 | 2 | `ai-fails-96-percent-jobs` | AI Fails at 96% of Real Jobs. So Why Are Companies Still Cutting People? | 96% FAIL | Remote Labor Index 96.25% 失敗率 vs 裁員公告點名 AI | 一份真實職缺的任務清單，逐項分成「AI 能做／還不能／要人核」 | 3、5 | ColdFusion 約 90 萬 |
 | 3 | `gpt6-vs-opus55-worth-paying` | GPT-6 Astra vs Claude Opus 5.5 vs Gemini: Which One Is Actually Worth Paying For? | $50 vs $20 | 三家九月同時改價（Astra $10/$50、Opus 5.5 $4/$20、Grok 4.7 $2/$6） | 同樣三件日常工作，用當天官方價目表算一個月的錢 | 1、2、6 | 決策類；沿用試作影片〈AI 模型怎麼挑〉的實算法 |
 | 4 | `always-on-agent-explained` | Chatbots Are Over. Here's How an AI Agent Actually Works (and Fails). | IT NEVER STOPS | DevDay 9/29；GPT-6 Astra OSWorld 72.6%、Opus 5.5 81.8% | 一個無害任務的真實代理執行紀錄，逐步顯示工具呼叫與檢查 | 3、4、5 | 3Blue1Brown 類常青解說 |

@@ -22,6 +22,8 @@ c17｜The `--tools` and `--allowedTools` flags exist on the Claude Code CLI｜ht
 c18｜Claude Opus 5.5 scores 66.4% on Terminal-Bench 4.0 (xhigh effort; standard error ±2.6 pts)｜https://www.anthropic.com/news/claude-opus-5-5｜2026-09-28｜demo-on
 c19｜Hugging Face hosts more than two million models (its homepage: "Browse 2M+ models"); no user or developer count appears on huggingface.co, /brand or /enterprise, so "millions of developers" was replaced｜https://huggingface.co/｜2026-09-28｜hf-steps
 
+- Coordinator note (2026-09-28, after verify-1): title and title card now say "a government portal" and name the SEC, because the record shows one unauthorised entry (the Medicare Statistics Reporting Service) and probing of US sites; the five-step timelines use short month names so the cards do not wrap; the compare card's right column has three points; the three opinion lines (s2ta, 4prv, bj7d) now carry the owner's voice as brief.md promises.
+
 ## 與企劃不同的地方
 
 - The timeline is its own chapter ("One summer, five dates") so the hook chapter is the title card alone.
