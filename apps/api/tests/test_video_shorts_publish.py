@@ -66,6 +66,8 @@ from app.video_shorts.quota import Quota
 from app.video_shorts.schemas import SettingsWrite, TickOut
 from app.video_speech import admin_api as speech_api
 from app.video_youtube import connection, requests, sync
+from app.video_youtube.client import YoutubeClient
+from app.video_youtube.schemas import PublishIn
 from app.video_youtube.state import new_state
 from tests.test_video_youtube import CHANNEL, SITE, FakeGoogle, Site
 
@@ -518,6 +520,103 @@ def finished(starts_at: datetime, status: str = "done", **fields: Any) -> dict[s
 
 
 # --- what is sent, and when ---------------------------------------------------------------------
+
+
+async def test_automatic_sync_preserves_the_owner_s_studio_schedule(
+    site: ShortsSite, now: datetime
+) -> None:
+    await ready(site, now)
+    assert (await send(site, now)).sent == 1
+    chosen = requests.publish_at_text(now + 44 * HOURS)
+    site.youtube.videos[VIDEO]["status"]["publishAt"] = chosen
+
+    await sync.run_sync("receipt", site.factory)
+
+    assert site.google.updates == []
+    assert site.youtube.videos[VIDEO]["status"]["publishAt"] == chosen
+    state = (await project_of(site)).youtube_sync
+    assert state is not None and state["status"] == "failed"
+    assert "Studio" in state["error"]
+
+
+async def test_an_explicit_owner_request_can_change_a_studio_schedule(
+    site: ShortsSite, now: datetime
+) -> None:
+    await ready(site, now)
+    site.youtube.videos[VIDEO]["status"]["publishAt"] = requests.publish_at_text(now + 44 * HOURS)
+    async with site.factory() as session:
+        await shorts_settings.set_paused(session, site.owner, True)
+        await sync.request_sync(
+            session,
+            site.store,
+            "receipt",
+            site.owner,
+            PublishIn(
+                mode="studio", url=VIDEO, visibility="scheduled", publish_at=now + 20 * HOURS
+            ),
+        )
+    await sync.run_sync("receipt", site.factory)
+    chosen = requests.publish_at_text(now + 20 * HOURS)
+    assert site.google.updates[-1]["status"]["publishAt"] == chosen
+
+
+@pytest.mark.parametrize("changed", ["paused", "revoked", "expired", "replaced"])
+async def test_queued_automatic_sync_rechecks_its_consent(
+    site: ShortsSite, now: datetime, changed: str
+) -> None:
+    await ready(site, now)
+    assert (await send(site, now)).sent == 1
+    async with site.factory() as session:
+        if changed == "paused":
+            await shorts_settings.set_paused(session, site.owner, True)
+        elif changed == "revoked":
+            await shorts_settings.revoke_autopublish(session, site.owner)
+        else:
+            row = await shorts_settings.settings_row(session)
+            if changed == "expired":
+                row.consent_expires_at = datetime.now(UTC) - timedelta(minutes=1)
+            else:
+                row.consent_id = uuid4()
+            await session.commit()
+
+    await sync.run_sync("receipt", site.factory)
+
+    assert site.google.updates == []
+    state = (await project_of(site)).youtube_sync
+    assert state is not None and state["status"] == "failed"
+
+
+async def test_automatic_sync_rechecks_pause_after_reading_youtube(
+    site: ShortsSite, now: datetime, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    await ready(site, now)
+    assert (await send(site, now)).sent == 1
+    original = YoutubeClient.video
+
+    async def pause_after_read(client: YoutubeClient, video_id: str) -> dict[str, Any] | None:
+        video = await original(client, video_id)
+        async with site.factory() as session:
+            await shorts_settings.set_paused(session, site.owner, True)
+        return video
+
+    monkeypatch.setattr(YoutubeClient, "video", pause_after_read)
+    await sync.run_sync("receipt", site.factory)
+    assert site.google.updates == []
+    state = (await project_of(site)).youtube_sync
+    assert state is not None and state["status"] == "failed"
+
+
+async def test_automatic_sync_can_finish_the_same_studio_schedule(
+    site: ShortsSite, now: datetime
+) -> None:
+    await ready(site, now)
+    when = requests.publish_at_text(now + 20 * HOURS)
+    site.youtube.videos[VIDEO]["status"]["publishAt"] = when
+    assert (await send(site, now)).sent == 1
+    await sync.run_sync("receipt", site.factory)
+    assert site.google.updates[-1]["status"]["publishAt"] == when
+    state = (await project_of(site)).youtube_sync
+    assert state is not None and state["status"] == "done"
 
 
 async def test_a_locked_short_is_scheduled_for_its_slot_under_the_owner_s_consent(
