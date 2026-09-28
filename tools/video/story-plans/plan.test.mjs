@@ -4,8 +4,8 @@ import os from "node:os";
 import path from "node:path";
 import { test } from "node:test";
 
-import { canonical, CHAPTER_KEYS, claimSupported, compile, compiledCurrent, DEFAULT_PLAN, loadPlan, order, planProblems, reviewProblems, scheduleMarkdown, scheduleProblems, serialize, seriesProblems, storyHash, storyProblems, STORY_KEYS } from "./plan.mjs";
-import { fetchSources, main, USER_AGENT } from "./validate.mjs";
+import { canonical, CHAPTER_KEYS, claimSupported, compile, compiledCurrent, DEFAULT_PLAN, hostOf, loadPlan, order, planProblems, reviewProblems, scheduleMarkdown, scheduleProblems, serialize, seriesProblems, storyHash, storyProblems, STORY_KEYS } from "./plan.mjs";
+import { fetchProblems, fetchSources, main, reviewerOnlyFacts, USER_AGENT } from "./validate.mjs";
 
 const point = (text) => text.repeat(Math.ceil(80 / [...text].length));
 
@@ -104,6 +104,18 @@ test("a claim needs a primary source, two independent ones, or to be told as som
   assert.equal(claimSupported({ sources: [1, 3] }, sameVoice), false);
   const sameHost = [...sources, { url: "https://www.news.example.org/c", publisher: "Another Name", kind: "news", supports: "x", checked: "2026-09-28" }];
   assert.equal(claimSupported({ sources: [1, 3] }, sameHost), false);
+  // Two language editions of one encyclopedia are one voice, whatever the publisher field says.
+  const editions = [...sources, { url: "https://ja.wikipedia.org/wiki/Example", publisher: "維基百科（日文）", kind: "reference", supports: "x", checked: "2026-09-28" }];
+  assert.equal(claimSupported({ sources: [2, 3] }, editions), false);
+  assert.equal(claimSupported({ sources: [1, 3] }, editions), true, "an encyclopedia and a newspaper are two voices");
+  // A page read through the Wayback Machine is its publisher's page: two publishers kept there
+  // are two voices, and the copy of an article beside the article itself is one.
+  const kept = (url, publisher) => ({ url: `https://web.archive.org/web/20251226124930/${url}`, publisher, kind: "news", supports: "x", checked: "2026-09-28" });
+  const archived = [kept("https://www.daily.example.com/a", "Daily Example"), kept("http://weekly.example.net/b", "Weekly Example"), kept("https://news.example.org/a", "Example News（存檔）"), sources[1]];
+  assert.equal(hostOf(archived[0].url), "daily.example.com");
+  assert.equal(claimSupported({ sources: [0, 1] }, archived), true);
+  assert.equal(claimSupported({ sources: [2, 3] }, archived), false);
+  assert.match(storyProblems(story({ sources: [...sources, kept("https://news.example.org/a/", "Example News（存檔）")] })).join("\n"), /sources\[3\]\.url repeats an earlier source/);
 
   const weak = story();
   weak.must_verify[1] = { claim: "只有一個新聞來源", sources: [1] };
@@ -174,6 +186,11 @@ test("compile lists the stories in production order with their slots", () => {
   assert.deepEqual(compiled.stories.map((each) => [each.number, each.id, each.publish]), [[1, "A01", { day: 1, slot: "12:00" }], [2, "B01", { day: 1, slot: "20:00" }]]);
   assert.equal(compiled.series.slug, "brand-stories");
   assert.deepEqual(planProblems(plan, { expected: null }), []);
+  // What the fact checker left for the writer travels with the story; without a review it is empty.
+  assert.deepEqual(compiled.stories.map((each) => each.caveats), ["", ""]);
+  plan.stories[1].review = review(story(), { notes: " 專利被同業繞過的說法查不到出處，不要提。 " });
+  assert.deepEqual(compile(plan).stories.map((each) => each.caveats), ["專利被同業繞過的說法查不到出處，不要提。", ""]);
+  assert.deepEqual(Object.keys(compile(plan).stories[0]).slice(-3), ["thumbnail", "caveats", "publish"]);
   assert.match(planProblems(plan).join("\n"), /1 stories are everyday, expected 40/);
 });
 
@@ -204,6 +221,12 @@ test("the schedule table names each day's two stories and counts the categories"
   assert.match(compared, /\| K01 \| 核准時的標題 \| 韓國的故事 \|/);
   assert.doesNotMatch(compared, /\| B01 \| 日本的故事 \| 日本的故事/);
   assert.doesNotMatch(compared, /還沒寫的標題/);
+  // The facts only the reviewer could read the evidence for are listed, with the title's marked.
+  assert.doesNotMatch(compared, /只有查核的人讀得到證據的事實/);
+  plan.stories[2].review = review(plan.stories[2].story, { reviewer_only: [0, 3] });
+  const listed = scheduleMarkdown(plan);
+  assert.match(listed, /## 只有查核的人讀得到證據的事實/);
+  assert.match(listed, /\| K01 \| 第一個事實 \| 是 \|\n\| K01 \| 第四個事實 \|  \|/);
 });
 
 test("a plan's stories have distinct slugs and titles, and each has a slot", () => {
@@ -238,6 +261,7 @@ test("a review is bound to the text it read", () => {
   assert.match(reviewProblems(review(read, { verdict: "replace" }), read).join("\n"), /verdict must be one of pass, fixed/);
   assert.match(reviewProblems(review(read, { story_sha256: "abc" }), read).join("\n"), /story_sha256 must be the story's hash/);
   assert.match(reviewProblems(review(read, { reviewer: "" }), read).join("\n"), /reviewer is missing/);
+  assert.match(reviewProblems(review(read, { notes: "字".repeat(801) }), read).join("\n"), /notes is 801 characters, at most 800/);
   assert.match(reviewProblems(review(read), read, "A02").join("\n"), /does not match the file name A02\.json/);
 });
 
@@ -286,17 +310,139 @@ test("validate --write compiles a plan directory and the check then passes", asy
   }
 });
 
-test("fetchSources asks for every source under the worker's name", async () => {
+const page = (body, { status = 200, type = "text/html; charset=utf-8" } = {}) => new Response(body, { status, headers: { "content-type": type } });
+const prose = `<html><head><title>Example</title></head><body><p>${"A sentence the page says. ".repeat(40)}</p></body></html>`;
+const noWait = async () => {};
+
+test("fetchSources reads every source with the worker's reader, under the worker's name", async () => {
   const asked = [];
   const fetchImpl = async (url, options) => {
-    asked.push([url, options.headers["User-Agent"]]);
+    asked.push([new URL(url).hostname, options.headers["User-Agent"]]);
     if (url.includes("wikipedia")) throw new Error("socket hang up");
-    return { status: url.includes("news") ? 403 : 200 };
+    return url.includes("news") ? page("no", { status: 403 }) : page(prose);
   };
-  const results = await fetchSources({ stories: [{ id: "A01", story: story() }] }, { fetchImpl, gap: 0 });
-  assert.deepEqual(results.map((each) => each.status ?? each.error), [200, 403, "socket hang up"]);
+  const lines = [];
+  const results = await fetchSources({ stories: [{ id: "A01", story: story() }] }, { fetchImpl, sleep: noWait, log: (line) => lines.push(line) });
+  assert.deepEqual(
+    results.map((each) => [each.id, each.index, each.status, each.readable, each.error]),
+    [
+      ["A01", 0, 200, true, undefined],
+      ["A01", 1, 403, false, "HTTP 403"],
+      ["A01", 2, 0, false, "socket hang up"],
+    ],
+  );
+  // A page that could not be reached is asked for once more, and then the way the finished
+  // video's link check asks; one that answered is asked for once.
+  assert.deepEqual(asked.map(([host]) => host).sort(), ["en.wikipedia.org", "en.wikipedia.org", "en.wikipedia.org", "example.com", "news.example.org"]);
   assert.ok(asked.every(([, agent]) => agent === USER_AGENT));
   assert.doesNotMatch(USER_AGENT, /gmail|@(?!mokaair\.com)/);
+  assert.ok(lines.includes("A01 200 text https://example.com/history"));
+  assert.ok(lines.includes("A01 0 no text (socket hang up) again https://en.wikipedia.org/wiki/Example"));
+});
+
+test("a report too large to arrive in the reader's time is there, and unreadable", async () => {
+  // The reader waits for the whole page and gives up; the link check waits for the status only.
+  const asksForThePage = (options) => !String(options.headers.Accept).includes("application/pdf");
+  const fetchImpl = async (url, options) => {
+    if (!url.endsWith("/big-report.pdf")) return page(prose);
+    if (asksForThePage(options)) throw Object.assign(new Error("This operation was aborted"), { name: "AbortError" });
+    return page("%PDF-1.7", { type: "application/pdf" });
+  };
+  const source = (url, publisher, kind = "news") => ({ url, publisher, kind, supports: "報告", checked: "2026-09-28" });
+  const read = story({
+    sources: [source("https://example.com/big-report.pdf", "Example Institute", "official"), source("https://news.example.org/a", "Example News"), source("https://en.wikipedia.org/wiki/Example", "Wikipedia", "reference")],
+    must_verify: [
+      { claim: "只寫在大報告裡", sources: [0], core: true },
+      { claim: "大報告與報導都有", sources: [0, 1] },
+      { claim: "兩家都有", sources: [1, 2] },
+      { claim: "百科的說法", sources: [2], attributed: true },
+    ],
+  });
+  assert.deepEqual(storyProblems(read), []);
+  const plan = { stories: [{ id: "A01", story: read }] };
+  const lines = [];
+  const results = await fetchSources(plan, { fetchImpl, sleep: noWait, log: (line) => lines.push(line) });
+  assert.deepEqual(results.map((each) => [each.status, each.readable, each.error]), [
+    [200, false, "the link opens, the reader gave up: timed out"],
+    [200, true, undefined],
+    [200, true, undefined],
+  ]);
+  assert.ok(lines.includes("A01 200 no text (the link opens, the reader gave up: timed out) https://example.com/big-report.pdf"));
+  // So it is no dead link: the one fact that rests on it alone is the reviewer's to vouch for.
+  assert.deepEqual(fetchProblems(plan, results).map((problem) => problem.split(" cites ")[0]), ["A01: must_verify[0]"]);
+  plan.stories[0].review = review(read, { reviewer_only: [0] });
+  assert.deepEqual(fetchProblems(plan, results), []);
+});
+
+test("a page that answers without text is there, and no use to the worker's fact check", async () => {
+  const source = (url, publisher, kind = "news") => ({ url, publisher, kind, supports: "報導", checked: "2026-09-28" });
+  const read = story({
+    sources: [source("https://example.com/report.pdf", "Example Corp", "official"), source("https://app.example.net/page", "Example App"), source("https://news.example.org/a", "Example News"), source("https://gone.example.org/b", "Gone News")],
+    must_verify: [
+      { claim: "只有 PDF", sources: [0], core: true },
+      { claim: "PDF 加上讀得到的報導", sources: [0, 2] },
+      { claim: "兩頁都讀不到", sources: [0, 1] },
+      { claim: "一頁讀得到，一頁不見了", sources: [2, 3] },
+    ],
+  });
+  assert.deepEqual(storyProblems(read), []);
+  const fetchImpl = async (url) => {
+    if (url.endsWith(".pdf")) return page("%PDF-1.7", { type: "application/pdf" });
+    if (url.includes("app.example.net")) return page('<html><body><div id="root"></div><script>render()</script></body></html>');
+    if (url.includes("gone")) return page("gone", { status: 404 });
+    return page(prose);
+  };
+  const plan = { stories: [{ id: "A01", story: read }] };
+  const results = await fetchSources(plan, { fetchImpl, sleep: noWait });
+  assert.deepEqual(results.map((each) => [each.status, each.readable]), [[200, false], [200, false], [200, true], [404, false]]);
+  assert.match(results[0].error, /not a text page \(application\/pdf\)/);
+  assert.equal(results[1].error, "only 0 characters of text");
+  const hint = "cite one it can read as well, or list the fact in the review's reviewer_only when there is none";
+  assert.deepEqual(fetchProblems(plan, results), [
+    "A01: sources[3] https://gone.example.org/b answered 404",
+    `A01: must_verify[0] cites only pages the worker cannot read (sources[0]: not a text page (application/pdf)): ${hint}`,
+    `A01: must_verify[2] cites only pages the worker cannot read (sources[0]: not a text page (application/pdf); sources[1]: only 0 characters of text): ${hint}`,
+  ]);
+
+  // The reviewer looked and found no page the worker can read: the review says so, the check
+  // accepts it, and the compiled story tells the worker which facts to take on the plan's word.
+  plan.stories[0].review = review(read, { reviewer_only: [0, 2] });
+  assert.deepEqual(reviewProblems(plan.stories[0].review, read), []);
+  assert.deepEqual(fetchProblems(plan, results), ["A01: sources[3] https://gone.example.org/b answered 404"]);
+  assert.deepEqual(reviewerOnlyFacts(plan), [
+    { id: "A01", index: 0, core: true, claim: "只有 PDF" },
+    { id: "A01", index: 2, core: false, claim: "兩頁都讀不到" },
+  ]);
+  const compiled = compile({ series: series(), schedule: schedule([["A01", "B01"]]), stories: plan.stories });
+  assert.deepEqual(compiled.stories[0].must_verify.map((claim) => claim.reviewer_only === true), [true, false, true, false]);
+  assert.equal(read.must_verify[0].reviewer_only, undefined, "compile leaves the story itself alone");
+
+  // The list is held to what the reader gets: a fact with a readable page comes off it.
+  plan.stories[0].review = review(read, { reviewer_only: [1] });
+  assert.match(fetchProblems(plan, results).join("\n"), /A01: must_verify\[1\] is in the review's reviewer_only, but the worker can read sources\[2\]: take it off the list/);
+  for (const bad of [[4], [0, 0], [-1], ["0"], "0"]) {
+    assert.match(reviewProblems(review(read, { reviewer_only: bad }), read).join("\n"), /reviewer_only must list, once each, the indexes of the must_verify facts/);
+  }
+});
+
+test("validate --fetch reports what it read and keeps it when asked", async () => {
+  const dir = mkdtempSync(path.join(os.tmpdir(), "story-plan-"));
+  try {
+    mkdirSync(path.join(dir, "stories"));
+    writeFileSync(path.join(dir, "series.json"), JSON.stringify(series()));
+    writeFileSync(path.join(dir, "schedule.json"), JSON.stringify(schedule([["A01", "B01"]])));
+    writeFileSync(path.join(dir, "stories", "A01.json"), JSON.stringify(story()));
+    writeFileSync(path.join(dir, "stories", "B01.json"), JSON.stringify(story({ id: "B01", slug: "story-b", title: "B", category: "asia-brand", region: "jp" })));
+    const report = path.join(dir, "read.json");
+    const out = { text: "", write(chunk) { this.text += chunk; } };
+    const fetchImpl = async (url) => (url.includes("news") ? page("gone", { status: 410 }) : page(prose));
+    assert.equal(await main(["--plan", dir, "--only", "B01", "--fetch", "--report", report], { stdout: out, stderr: out, fetchImpl }), 1);
+    assert.match(out.text, /3 sources read: 2 give the worker text, 0 answer without text, 1 do not answer/);
+    assert.match(out.text, /PROBLEM B01: sources\[1\] https:\/\/news\.example\.org\/a answered 410\n1 problems/);
+    assert.deepEqual(JSON.parse(readFileSync(report, "utf8")).map((each) => [each.id, each.status]), [["B01", 200], ["B01", 410], ["B01", 200]]);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
 
 test("the repository's plan is complete, sound and compiled", () => {

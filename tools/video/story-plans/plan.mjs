@@ -33,7 +33,7 @@ export const PREFIXES = {
   T: { category: "asia-brand", region: "tw" },
   C: { category: "tech", region: null },
 };
-export const LIMITS = { title: 60, logline: 120, question: 120, takeaway: 120, subject: 40, pointMin: 60, pointMax: 400, headline: 12, appearance: 800, claim: 200, supports: 240, imageNotes: 400 };
+export const LIMITS = { title: 60, logline: 120, question: 120, takeaway: 120, subject: 40, pointMin: 60, pointMax: 400, headline: 12, appearance: 800, claim: 200, supports: 240, imageNotes: 400, notes: 800 };
 
 // The fields of a story file, in the order the files are written in.
 export const STORY_KEYS = ["id", "slug", "category", "region", "subject", "title", "logline", "question", "chapters", "takeaway", "must_verify", "sources", "names", "cast", "image_notes", "sensitivity", "related_guide", "thumbnail"];
@@ -59,9 +59,22 @@ function text(story, key, max, problems) {
   else if (length(value) > max) problems.push(`${key} is ${length(value)} characters, at most ${max}`);
 }
 
-const hostOf = (url) => {
+// Sites whose every edition and mirror are one voice: the English, Chinese and Japanese
+// Wikipedia are three hosts of one encyclopedia, and an article in one is often a translation
+// of another, so two of them do not corroborate each other.
+const ONE_VOICE = ["wikipedia.org", "wikimedia.org", "wikiwand.com", "wikimili.com"];
+
+// A page kept by the Wayback Machine is its publisher's page: the copy and the live article
+// are one source, and two publishers' pages read there are two.
+const ARCHIVED = /^https:\/\/web\.archive\.org\/web\/\d{4,14}(?:[a-z]{2}_)?\/(https?:\/\/.+)$/i;
+
+/** The original address of a Wayback Machine copy; any other address as it is. */
+export const originalUrl = (url) => ARCHIVED.exec(String(url))?.[1] ?? url;
+
+export const hostOf = (url) => {
   try {
-    return new URL(url).hostname.replace(/^www\./, "");
+    const host = new URL(originalUrl(url)).hostname.replace(/^www\./, "").toLowerCase();
+    return ONE_VOICE.find((site) => host === site || host.endsWith(`.${site}`)) ?? host;
   } catch {
     return "";
   }
@@ -124,9 +137,11 @@ export function storyProblems(story, fileId = story?.id) {
       problems.push(`${where} is not an object`);
       return;
     }
+    // The Wayback Machine's copy of a page is that page: listing both is listing it twice.
+    const address = String(originalUrl(source.url)).replace(/^https?:\/\//i, "").replace(/\/$/, "");
     if (typeof source.url !== "string" || !HTTPS.test(source.url)) problems.push(`${where}.url must be an https URL`);
-    else if (urls.has(source.url)) problems.push(`${where}.url repeats an earlier source`);
-    else urls.add(source.url);
+    else if (urls.has(address)) problems.push(`${where}.url repeats an earlier source`);
+    else urls.add(address);
     if (!isText(source.publisher)) problems.push(`${where}.publisher is missing`);
     if (!SOURCE_KINDS.includes(source.kind)) problems.push(`${where}.kind must be one of ${SOURCE_KINDS.join(", ")}`);
     if (!isText(source.supports)) problems.push(`${where}.supports is missing: say what this page is the evidence for`);
@@ -256,7 +271,15 @@ export function storyHash(story) {
 }
 
 export const REVIEW_VERDICTS = ["pass", "fixed"];
-export const REVIEW_KEYS = ["id", "reviewed", "reviewer", "story_sha256", "verdict", "sources_opened", "changes", "notes"];
+export const REVIEW_KEYS = ["id", "reviewed", "reviewer", "story_sha256", "verdict", "sources_opened", "changes", "notes", "reviewer_only"];
+
+/**
+ * The must_verify facts (by index) whose every source is a document the worker's reader cannot
+ * turn into text (a PDF, a page over its size): the reviewer read the document, the worker
+ * takes the plan's word. The list is the reviewer's finding; `validate.mjs --fetch` holds it to
+ * what the reader does get.
+ */
+export const reviewerOnly = (review) => (Array.isArray(review?.reviewer_only) ? review.reviewer_only.filter(Number.isInteger) : []);
 
 /**
  * Problems with a story's review (reviews/<id>.json): a second reader opened the sources and
@@ -277,6 +300,14 @@ export function reviewProblems(review, story, fileId = review?.id) {
   else if (review.verdict === "fixed" && !review.changes.length) problems.push('verdict "fixed" needs the changes it made');
   else if (review.verdict === "pass" && review.changes.length) problems.push('verdict "pass" has changes: it is "fixed"');
   if (review.notes !== undefined && typeof review.notes !== "string") problems.push("notes must be text");
+  else if (length(review.notes ?? "") > LIMITS.notes) problems.push(`notes is ${length(review.notes)} characters, at most ${LIMITS.notes}: the writer reads them with the story`);
+  if (review.reviewer_only !== undefined) {
+    const listed = review.reviewer_only;
+    const claims = Array.isArray(story?.must_verify) ? story.must_verify.length : Infinity;
+    if (!Array.isArray(listed) || !listed.every((each) => Number.isInteger(each) && each >= 0 && each < claims) || new Set(listed).size !== listed.length) {
+      problems.push("reviewer_only must list, once each, the indexes of the must_verify facts whose sources the worker cannot read");
+    }
+  }
   if (typeof review.story_sha256 !== "string" || !/^[0-9a-f]{64}$/.test(review.story_sha256)) problems.push("story_sha256 must be the story's hash (validate.mjs --hash <id>)");
   else if (story && review.story_sha256 !== storyHash(story)) problems.push("the story changed after this review: read it again and record the new hash (validate.mjs --hash <id>)");
   return problems;
@@ -314,8 +345,11 @@ export function loadPlan(dir = DEFAULT_PLAN) {
 
 /**
  * The file the server imports (apps/api video-story-import): the series row, then every story
- * in production order with its number and its publishing slot. Stories the schedule does not
- * place are left out; `planProblems` says so.
+ * in production order with its number and its publishing slot. Two things come from the
+ * story's review: `caveats`, what its fact checker left for the writer (the review's notes:
+ * which anecdote has no source, which figure the sources disagree on), and `reviewer_only` on
+ * each fact whose sources the worker cannot read. Stories the schedule does not place are left
+ * out; `planProblems` says so.
  */
 export function compile(plan) {
   const placed = order(plan.schedule);
@@ -323,7 +357,9 @@ export function compile(plan) {
     .filter((entry) => entry.story && placed.has(entry.id))
     .map((entry) => {
       const { number, day, slot } = placed.get(entry.id);
-      return { number, ...entry.story, publish: { day, slot } };
+      const unread = new Set(reviewerOnly(entry.review));
+      const facts = (Array.isArray(entry.story.must_verify) ? entry.story.must_verify : []).map((claim, index) => (unread.has(index) ? { ...claim, reviewer_only: true } : claim));
+      return { number, ...entry.story, must_verify: facts, caveats: typeof entry.review?.notes === "string" ? entry.review.notes.trim() : "", publish: { day, slot } };
     })
     .sort((a, b) => a.number - b.number);
   return { schema_version: SCHEMA_VERSION, series: plan.series, stories };
@@ -436,6 +472,24 @@ export function scheduleMarkdown(plan) {
         const subject = story.subject !== seed.subject ? `（主題：${bar(seed.subject)} → ${bar(story.subject)}）` : "";
         return `| ${seed.id} | ${bar(seed.title)} | ${bar(story.title)}${subject} |`;
       }),
+      "",
+    );
+  }
+  // The facts only the reviewer could read the evidence for, so the owner sees which they are.
+  const unread = plan.stories.flatMap((entry) =>
+    reviewerOnly(entry.review)
+      .map((index) => ({ id: entry.id, index, claim: entry.story?.must_verify?.[index] }))
+      .filter((fact) => fact.claim),
+  );
+  if (unread.length) {
+    lines.push(
+      "## 只有查核的人讀得到證據的事實",
+      "",
+      "這幾條事實的來源都是主機工人讀不到的文件（PDF、太大的頁面）。查核的人讀過文件，也找過工人讀得到的頁面但沒有；製作時工人以企劃為準，只確認稿子沒有多說。",
+      "",
+      "| 代號 | 事實 | 標題靠它 |",
+      "| --- | --- | --- |",
+      ...unread.map((fact) => `| ${fact.id} | ${bar(fact.claim.claim)} | ${fact.claim.core === true ? "是" : ""} |`),
       "",
     );
   }
