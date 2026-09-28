@@ -46,6 +46,8 @@ c41｜gpt-oss-120b's ceiling. 「gpt-oss-120b 原版是 300 除以 5，最多約
 
 ## 與企劃不同的地方
 
+- 2026-09-28，站主在對話中確認：保留速度一章的理論上限實算（Llama 3.3 70B 4 位元約每秒八個多 token、gpt-oss-120b 原版約 60 個，用 NVIDIA 自己公布的 300 GB/s 除以每個 token 要讀的量，畫面標「理論上限、不是實測」）。企劃的「不做的事」與實算三原本寫不報 RTX Spark 的 tokens/s，那是在頻寬尚未找到時寫的；brief.md 綁著大綱核准的雜湊，所以不改，差異記在這裡。
+
 - Hook (chapter 1): the first sentence is now the viewer's question on the title card, 「128 GB 的 RTX Spark 筆電，裝得下哪些模型？」, as the writing rules require; NVIDIA's claim moved to the second sentence. The `big` card 「141 GB」 became a two-cell `stats` (1200 億 and 141 GB), each revealed on its own sentence, which is outline A's "開場並排兩個數字". 「十月上市」 moved out of the hook to chapter 2's first line (「NVIDIA 說十月開始出貨」) to keep the hook at 29.7 s by the estimator. The plan bullet 「NVIDIA 還沒公布的數字」 became 「決定速度的那個數字」 so it stays true if NVIDIA publishes the bandwidth before upload.
 - Chapter 2: the compare card's left side is 「一般與電競筆電」: only a discrete GPU has its own memory, so 「顯示卡另外有自己的一小塊」 is said of gaming laptops. Prism and x86 emulation are left out; the Arm and MediaTek line stays.
 - Chapter 3: the DGX Spark quote is gone (owner decision). In its place a `stats` card 「回到開場那兩句」 pays off the hook: 1200 億 × 0.5 ≈ 60 GB fits, 705.5 億 × 2 = 141 GB does not.
