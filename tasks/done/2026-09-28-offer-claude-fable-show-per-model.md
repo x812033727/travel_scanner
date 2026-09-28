@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-offer-claude-fable-show-per-model
 title: Offer Claude Fable, show per-model quota, and rotate subscription accounts without MiniMax fallback
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5
 claimed_at: 2026-09-28T02:21:37Z
 created_at: 2026-09-28T02:21:23Z
-completed_at:
-branch:
+completed_at: 2026-09-28T02:46:11Z
+branch: claude/fable-quota-model-switching-xuzb2v
 depends_on: []
 scope:
   - apps/api/app/ai/catalog.py
@@ -59,7 +59,7 @@ subscription accounts, and asked that a full account hand over to the next one (
       admin card, overview labels and the five locales.
 - [x] Agent: broader limit notice, per-family resting, ignore limit words inside long answers.
 - [x] README in `ops/ai-accounts`.
-- [ ] After deploy: the agent is a host service copied from `apps/api`; reinstall it
+- [ ] (Follow-up, not part of this PR) After deploy: the agent is a host service copied from `apps/api`; reinstall it
       (`ops/ai-accounts/install.sh`) or the family-limit change does not reach the host.
 
 ## How to verify
