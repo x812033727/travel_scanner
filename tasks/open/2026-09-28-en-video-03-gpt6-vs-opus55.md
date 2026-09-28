@@ -32,7 +32,8 @@ Third of the three English videos the owner chose on 2026-09-28 (season plan `do
 
 - [x] Prices read 2026-09-28: platform.openai.com/docs/pricing and the GPT-6 Astra model page (200 with the editorial user agent), anthropic.com, docs.x.ai, ai.google.dev.
 - [x] Script written (50 lines, about 8.1 min estimated); verified twice; listener review done.
-- [ ] Re-open every price on recording day; then the pipeline steps on the owner's machine or the host worker.
+- [x] Recorded 2026-09-28, the day the prices were read: zh-TW narration (Sulafat) → `check-audio` (3 flags left, all transcriber errors confirmed by Whisper) → the owner approved the audio on /admin/videos and chose to carry the approval over the re-pacing (clips unchanged, only scene gaps) → re-paced to 27 scenes (longest state 11.5 s) → `render` → `assemble` → caption reviews applied in 4 locales → dubs en/ja/ko fit and checked → `captions` → `qa` 10/11 → `review-push --gate final` (pending the owner).
+- [ ] `package` → publish gate → dubs gate; the owner uploads the three dub tracks.
 
 ## How to verify
 
@@ -48,3 +49,9 @@ node tools/video/cli.mjs status --slug gpt6-vs-opus55-worth-paying --workdir <VI
 - Gemini 3.8 Flash's price doubles on 2027-01-01 per the page; the video must be re-checked before any re-upload after that date.
 
 - 2026-09-28（站主決定）：影片是繁中影片（繁中旁白與投影片），英文字幕之外，另做英文、日文、韓文三條配音音軌（`dub --locale en,ja,ko`，`docs/videos/DUBS.md`）；站主在 Studio「語言」頁上傳。前提：頻道已開通進階功能，且關掉「允許自動配音」。
+- 2026-09-28 (claude-opus-5-5), what the production taught:
+  - The site's Gemini transcriber in `check-audio` pulls text toward what it knows (Gemini 3.8 → 1.5, 2026 → 2023, Grok 4.7 → 視覺, even memorised old prices). A local Whisper (faster-whisper medium/large-v3) settles each flag for free; filed as `2026-09-28-check-audio-gemini-transcriber-rewrites-unfamiliar`.
+  - `check-audio` transcription is billed against the same Gemini month: about 2,000 characters a dub track. Check once, then Whisper.
+  - Scene-whole dub requests mis-split without falling back: clips shifted by one line (heard as lines "spoken" at 0.4–0.6x the track's rate). Dub with `--line-by-line` (added the same day).
+  - Slides were re-paced so no state stays over 15 s (QA `pace`); line ids and texts did not change, so narration and translations stayed valid.
+  - QA: `policy` fails until the channel stance is filled in on the site.

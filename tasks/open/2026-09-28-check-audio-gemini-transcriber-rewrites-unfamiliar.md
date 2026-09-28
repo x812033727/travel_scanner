@@ -58,3 +58,9 @@ node tools/video/cli.mjs check-audio --slug gpt6-vs-opus55-worth-paying --workdi
   minute for five clips on four cores.
 - 命令列 kept coming back as 命令行 on `openai-agents-broke-in` (`td49`); that one may be the voice
   and was fixed with `say` 終端機版.
+- The transcription is billed against the site's monthly Gemini characters: checking six dub tracks
+  on 2026-09-28 took the month from 21,622 to 8,106 left (the retakes in between were about 400).
+  That makes a second-opinion transcript that runs locally worth more than a better prompt.
+- On the same day it also wrote Gemini 1.5 Flash's real old prices into a Japanese line that said
+  something else entirely (qx54), so a transcript that differs in numbers is not proof the voice
+  said them.
