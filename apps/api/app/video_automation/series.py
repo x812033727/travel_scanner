@@ -99,6 +99,8 @@ ONE_OFF_PREFIX = "one-off-"
 # The note on a version the discussion replaced (docs/videos/DRAMA-FLOW.md §三): such a version
 # is not one of the owner's rewrites, so it does not count against ``series_doc_rewrites``.
 DISCUSSION_NOTE = "討論後出了新版本"
+RECONCILIATION_NOTE = "文字已修改，製作資料尚未同步；請明確要求討論模型同步後再核准"
+DEPENDENCY_NOTE = "上游文件有新版本，請重新核對後核准"
 # A brand-story series (docs/videos/STORY.md §每日配額與排程). A story counts against the day it
 # started on in Asia/Taipei, where the owner lives and the upload slots are; and no new story
 # starts while this many are cleared for upload (their upload confirmation approved) without a
@@ -302,6 +304,41 @@ def approved_doc(docs: list[VideoDramaDoc], kind: str, chapter: int = 0) -> Vide
     return max(found, key=lambda doc: doc.version) if found else None
 
 
+def document_prerequisite_problem(
+    docs: list[VideoDramaDoc], kind: str, chapter: int = 0
+) -> str | None:
+    """Approval always follows the latest parent versions, including preloaded drafts."""
+    required: list[tuple[str, int, str]] = []
+    if kind in ("outline", "chapter"):
+        required.append(("setting", 0, "設定集"))
+    if kind == "chapter":
+        required.append(("outline", 0, "全劇大綱"))
+        if chapter > 1:
+            required.append(("chapter", chapter - 1, f"第 {chapter - 1} 篇細綱"))
+    latest = latest_docs(docs)
+    for parent_kind, parent_chapter, label in required:
+        parent = latest.get((parent_kind, parent_chapter))
+        if parent is None or parent.status != "approved":
+            return f"請先核准{label}的最新版本"
+    return None
+
+
+def episode_document_problem(
+    series: VideoDramaSeries, docs: list[VideoDramaDoc], number: int
+) -> str | None:
+    """A ready row is only a cache: its current document approvals authorize production."""
+    if is_story(series):
+        return None
+    kind, chapter = ("bible", 0) if is_one_off(series) else ("chapter", chapter_of(series, number))
+    problem = document_prerequisite_problem(docs, kind, chapter)
+    if problem:
+        return problem
+    current = latest_docs(docs).get((kind, chapter))
+    if current is None or current.status != "approved":
+        return "請先核准故事聖經的最新版本" if is_one_off(series) else "請先核准本篇細綱的最新版本"
+    return None
+
+
 def doc_problem(series: VideoDramaSeries, payload: SeriesDocSubmitIn) -> str | None:
     """Why a document the worker sends cannot be filed, in the worker's words; None when it can.
 
@@ -464,12 +501,14 @@ def _rewrite_job(
         return NextJob(kind=kind, chapter_number=chapter, rewrites_left=rewrites)
     if latest.status != "rejected":
         return None
-    # The first version was not a rewrite: version 2 is the first rewrite. A version the
-    # discussion replaced was not the owner sending it back, so it is not counted.
+    # The first version was not a rewrite. Discussion replacements and previously approved
+    # versions (including a dependent reopened for review) did not use this rewrite budget.
     discussed = sum(
         1
         for doc in docs
-        if doc.kind == kind and doc.chapter_number == chapter and doc.note == DISCUSSION_NOTE
+        if doc.kind == kind
+        and doc.chapter_number == chapter
+        and (doc.note == DISCUSSION_NOTE or doc.status == "approved")
     )
     left = rewrites - (latest.version - 1 - discussed)
     if left <= 0:
@@ -512,10 +551,6 @@ def next_job_for(
             episode_number=min(e.number for e in episodes if e.status == "ready"),
         )
     rewrites = settings.series_doc_rewrites
-    if series.status == "setting":
-        return _rewrite_job(setting_kind(series), 0, docs, rewrites)
-    if series.status == "outline":
-        return _rewrite_job("outline", 0, docs, rewrites)
     if series.status == "finished":
         # Every episode is cleared for upload: a compilation series joins them once
         # (docs/videos/BINGE.md), unless nothing was made or the owner skipped it all.
@@ -528,10 +563,15 @@ def next_job_for(
         ):
             return NextJob(kind="compilation")
         return None
-    if series.status != "active":
+    if series.status not in ACTIVE_STATUSES:
         return None
-    by_number = {episode.number: episode for episode in episodes}
+    # Current versions determine the stage, including older out-of-order approvals.
     latest = latest_docs(docs)
+    for kind in ["bible"] if is_one_off(series) else ["setting", "outline"]:
+        current = latest.get((kind, 0))
+        if current is None or current.status != "approved":
+            return _rewrite_job(kind, 0, docs, rewrites)
+    by_number = {episode.number: episode for episode in episodes}
     started_numbers = [e.number for e in episodes if e.status in ("started", "done", "skipped")]
     reached = max(started_numbers, default=0)
     # A one-off has no chapter outlines: its bible made the episode ready.
@@ -573,6 +613,8 @@ def next_job_for(
     if not ready:
         return None
     number = ready[0]
+    if episode_document_problem(series, docs, number):
+        return None
     previous_episode = by_number.get(number - 1)
     previous_done = number == 1 or (
         previous_episode is not None and previous_episode.status in ("done", "skipped")
@@ -636,6 +678,7 @@ def doc_view(doc: VideoDramaDoc, unanswered: int = 0) -> SeriesDocOut:
         decided_at=doc.decided_at,
         created_at=doc.created_at,
         unanswered=unanswered,
+        needs_reconciliation=not bool(doc.body_json),
     )
 
 
@@ -1229,6 +1272,70 @@ async def _doc(
     return doc
 
 
+def _check_document_approval(
+    series: VideoDramaSeries, docs: list[VideoDramaDoc], payload: SeriesDocSubmitIn
+) -> None:
+    if not payload.body_json:
+        raise SeriesRefused(422, "video_series_structured_data_required", RECONCILIATION_NOTE)
+    problem = doc_problem(series, payload)
+    if problem:
+        raise SeriesRefused(422, "video_series_doc_invalid", problem)
+    problem = document_prerequisite_problem(docs, payload.kind, payload.chapter_number)
+    if problem:
+        raise SeriesRefused(409, "video_series_doc_prerequisite", problem)
+
+
+async def invalidate_document_dependents(
+    session: AsyncSession,
+    series: VideoDramaSeries,
+    docs: list[VideoDramaDoc],
+    kind: str,
+    chapter: int,
+) -> None:
+    """Preserve approval history while requiring review after an upstream revision.
+
+    Earlier chapters, running requests and finished videos retain their material. The caller
+    already holds the series lock and owns the transaction.
+    """
+    if is_story(series):
+        return
+    for dependent in latest_docs(docs).values():
+        affected = (
+            (kind == "setting" and dependent.kind in ("outline", "chapter"))
+            or (kind == "outline" and dependent.kind == "chapter")
+            or (
+                kind == "chapter"
+                and dependent.kind == "chapter"
+                and dependent.chapter_number > chapter
+            )
+        )
+        if not affected or dependent.status != "approved":
+            continue
+        session.add(
+            VideoDramaDoc(
+                id=uuid4(),
+                series_id=series.id,
+                kind=dependent.kind,
+                chapter_number=dependent.chapter_number,
+                version=dependent.version + 1,
+                body_md=dependent.body_md,
+                body_json=dependent.body_json,
+                status="review",
+                note=DEPENDENCY_NOTE,
+                created_at=_now(),
+            )
+        )
+    for episode in await _episodes(session, series):
+        if episode.status != "ready":
+            continue
+        if kind == "chapter" and episode.chapter_number < chapter:
+            continue
+        episode.status = "planned"
+        episode.beats = {}
+        episode.updated_at = _now()
+    series.updated_at = _now()
+
+
 async def _apply_approval(
     session: AsyncSession, series: VideoDramaSeries, doc: VideoDramaDoc
 ) -> None:
@@ -1253,8 +1360,11 @@ async def _apply_approval(
         if series.status in ("setting", "outline"):
             series.status = "active"
     elif doc.kind == "setting":
-        if series.status == "setting":
-            series.status = "outline"
+        if series.status in ACTIVE_STATUSES:
+            current_outline = latest_docs(await _docs(session, series)).get(("outline", 0))
+            series.status = (
+                "active" if current_outline and current_outline.status == "approved" else "outline"
+            )
         # The one-button form left the title to the planner: the setting book names it.
         title = body.get("title")
         if AUTO_TITLE in series.title and isinstance(title, str) and title.strip():
@@ -1270,7 +1380,7 @@ async def _apply_approval(
                 episode.title = values["title"]
                 episode.logline = values["logline"]
                 episode.updated_at = _now()
-        if series.status == "outline":
+        if series.status in ACTIVE_STATUSES:
             series.status = "active"
     else:
         beats = beats_from_chapter(body)
@@ -1302,14 +1412,34 @@ async def decide_doc(
     chapter: int,
     decision: str,
     note: str | None,
+    *,
+    expected_version: int,
 ) -> SeriesOut:
     series = await _series(session, slug, lock=True)
     doc = await _doc(session, series, kind, chapter)
+    if doc.version != expected_version:
+        raise SeriesRefused(
+            409, "video_series_doc_stale", "文件已有新版本，請重新載入並審閱後再決定"
+        )
     if doc.status != "review":
         raise SeriesRefused(409, "video_series_doc_not_pending", "這份文件不在等你決定")
     text = (note or "").strip()
     if decision == "reject" and not text:
         raise SeriesRefused(422, "video_series_note_required", "退回要寫原因，模型才知道改什麼")
+    docs = await _docs(session, series)
+    if decision == "approve":
+        _check_document_approval(
+            series,
+            docs,
+            SeriesDocSubmitIn(
+                kind=cast(Any, kind),
+                chapter_number=chapter,
+                body_md=doc.body_md,
+                body_json=doc.body_json or {},
+            ),
+        )
+    else:
+        await invalidate_document_dependents(session, series, docs, kind, chapter)
     doc.status = "approved" if decision == "approve" else "rejected"
     doc.note = text or None
     doc.decided_at = _now()
@@ -1342,10 +1472,13 @@ async def edit_doc(
     latest = latest_docs(docs).get((kind, chapter))
     if latest is None:
         raise SeriesRefused(404, "video_series_doc_not_found", "這份文件還沒有產生")
-    body_json = payload.body_json if payload.body_json is not None else latest.body_json
+    body_json = payload.body_json
+    if body_json is None:
+        body_json = latest.body_json if payload.body_md == latest.body_md else {}
     if payload.approve:
-        problem = doc_problem(
+        _check_document_approval(
             series,
+            docs,
             SeriesDocSubmitIn(
                 kind=cast(Any, kind),
                 chapter_number=chapter,
@@ -1353,8 +1486,6 @@ async def edit_doc(
                 body_json=body_json or {},
             ),
         )
-        if problem:
-            raise SeriesRefused(422, "video_series_doc_invalid", problem)
     if latest.status == "review":
         latest.status = "rejected"
         latest.note = latest.note or "站主自己改了一版"
@@ -1369,10 +1500,12 @@ async def edit_doc(
         body_md=payload.body_md,
         body_json=body_json or {},
         status="approved" if payload.approve else "review",
+        note=RECONCILIATION_NOTE if not body_json else None,
         decided_at=_now() if payload.approve else None,
         decided_by_user_id=actor.id if payload.approve else None,
         created_at=_now(),
     )
+    await invalidate_document_dependents(session, series, docs, kind, chapter)
     session.add(doc)
     if payload.approve:
         await _apply_approval(session, series, doc)
@@ -1526,7 +1659,11 @@ async def skip_episode(session: AsyncSession, actor: User, slug: str, number: in
 
 
 async def context_view(
-    session: AsyncSession, series: VideoDramaSeries, episode_number: int | None
+    session: AsyncSession,
+    series: VideoDramaSeries,
+    episode_number: int | None,
+    *,
+    discussion: bool = False,
 ) -> SeriesContextOut:
     docs = await _docs(session, series)
     episodes = await _episodes(session, series)
@@ -1537,7 +1674,12 @@ async def context_view(
     episode = next((e for e in episodes if e.number == episode_number), None)
     # A one-off's story bible stands where a series' setting book does: the cast, the mysteries
     # and the document the writer reads (docs/videos/DRAMA-FLOW.md §二).
-    setting = approved_doc(docs, setting_kind(series))
+    latest = latest_docs(docs)
+
+    def context_doc(kind: str, number: int = 0) -> VideoDramaDoc | None:
+        return latest.get((kind, number)) if discussion else approved_doc(docs, kind, number)
+
+    setting = context_doc(setting_kind(series))
     done = [e for e in episodes if e.status == "done" and e.recap]
     recaps = [
         {"number": e.number, "title": e.title, "recap": e.recap, "state": e.state_json or {}}
@@ -1548,12 +1690,10 @@ async def context_view(
     return SeriesContextOut(
         series=summary_view(series, docs, episodes),
         setting=doc_view(setting) if setting else None,
-        outline=(doc_view(found) if (found := approved_doc(docs, "outline")) else None),
+        outline=(doc_view(found) if (found := context_doc("outline")) else None),
         chapter=(
             doc_view(found)
-            if chapter
-            and not is_one_off(series)
-            and (found := approved_doc(docs, "chapter", chapter))
+            if chapter and not is_one_off(series) and (found := context_doc("chapter", chapter))
             else None
         ),
         chapter_number=chapter,
@@ -1671,6 +1811,8 @@ async def submit_doc(
     version = (latest.version + 1) if latest else 1
     rewrites = settings.series_doc_rewrites if settings is not None else 0
     status, note = auto_doc_status(series, payload, version, rewrites)
+    if status == "approved":
+        _check_document_approval(series, docs, payload)
     now = _now()
     doc = VideoDramaDoc(
         id=uuid4(),
@@ -1684,6 +1826,9 @@ async def submit_doc(
         note=note,
         decided_at=now if status != "review" else None,
         created_at=now,
+    )
+    await invalidate_document_dependents(
+        session, series, docs, payload.kind, payload.chapter_number
     )
     session.add(doc)
     if status == "approved":
@@ -1724,6 +1869,12 @@ async def start_episode(
             if is_story(series)
             else "這一集的篇章細綱還沒核准",
         )
+    if not is_story(series):
+        problem = episode_document_problem(series, await _docs(session, series), number)
+        if series.status not in ACTIVE_STATUSES or problem:
+            raise SeriesRefused(
+                409, "video_series_episode_documents", problem or "這部作品目前暫停製作"
+            )
     # A story's video slug was planned with it and imported (docs/videos/STORY.md); the video
     # is made under that name or not at all, so the backlog and the video list stay one.
     if is_story(series) and episode.slug and video_slug != episode.slug:

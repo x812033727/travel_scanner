@@ -492,7 +492,14 @@ async def decide_video_series_doc(
     """Approve a document, or send it back with a note the worker rewrites it from."""
     try:
         return await drama_series.decide_doc(
-            session, user, slug, _doc_kind(kind), chapter, payload.decision, payload.note
+            session,
+            user,
+            slug,
+            _doc_kind(kind),
+            chapter,
+            payload.decision,
+            payload.note,
+            expected_version=payload.expected_version,
         )
     except SeriesRefused as error:
         raise _series_refused(error) from error

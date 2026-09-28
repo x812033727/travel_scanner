@@ -8,6 +8,7 @@ import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { lookHash } from "../core/drama.mjs";
+import { scriptCheckBinding } from "../core/script-check.mjs";
 import { sandbox } from "../core/fixtures/load.mjs";
 import { COMPILATION_STEPS, DRAMA_STEPS, SLIDES_STEPS } from "../core/state.mjs";
 import { SAMPLE_RATE } from "../core/timeline.mjs";
@@ -618,7 +619,8 @@ test("the 720p preview of a compilation caps its bitrate; a cut's and the narrat
 test("the script gate sends the checker's similar works and retention verdict when the worker wrote them", async () => {
   const box = sandbox("fixture-drama", "drama");
   mkdirSync(path.join(box.workdir, "review"), { recursive: true });
-  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  writeFileSync(path.join(box.workdir, "review", "script-check.json"), JSON.stringify({ ...scriptCheckBinding(doc), coverage: { hook: "yes" }, problems: ["a name changed"], similar_works: [{ title: "魔道祖師", how: "a sect rivalry" }], retention: { score: 0.8, passed: true } }));
   const server = site();
   const push = context(box, server.fetchImpl);
   assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], push.ctx), EXIT.ok, push.out.stderr);
@@ -627,6 +629,18 @@ test("the script gate sends the checker's similar works and retention verdict wh
   assert.deepEqual(script.payload.similar_works, [{ title: "魔道祖師", how: "a sect rivalry" }]);
   assert.deepEqual(script.payload.retention, { score: 0.8, passed: true });
   assert.deepEqual(script.payload.continuity_problems, ["a name changed"]);
+  assert.equal(script.payload.check_status, "current");
+  doc.scenes[0].lines[0].text += "新的情節。";
+  writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(doc));
+  const changed = site();
+  const stalePush = context(box, changed.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "script"], stalePush.ctx), EXIT.ok, stalePush.out.stderr);
+  const stale = changed.state.reviews[0].payload;
+  assert.equal(stale.check_status, "stale");
+  assert.equal(stale.coverage, null);
+  assert.equal(stale.retention, null);
+  assert.deepEqual(stale.similar_works, []);
+  assert.match(stale.continuity_problems[0], /舊查核報告不適用/);
   rmSync(path.join(box.workdir, "review", "script-check.json"));
   const bare = site();
   const again = context(box, bare.fetchImpl);

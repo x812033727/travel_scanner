@@ -13,6 +13,7 @@ import { answerProblem, discussStep, documentDiscussionPayload, parseSubject, re
 import { Automation, automatedVideos, settle } from "./flow.mjs";
 import { instructionsFor, SERIES_INSTRUCTIONS } from "./prompts.mjs";
 import { eachLine } from "../core/schema.mjs";
+import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, framesFor, frameToSeconds } from "../core/timeline.mjs";
 import { lintCompilation } from "../core/compilation.mjs";
 import { compilationSlug } from "./compilation.mjs";
@@ -912,3 +913,132 @@ test("a hands-off episode's screenplay is fixed from the checker's verdict befor
   assert.equal(state.prompt_fixes.script, 1);
   assert.equal(state.series.hands_off, true);
 });
+
+
+for (const [name, edit, changes] of [
+  ["longer hook", (doc) => { doc.scenes[0].lines[0].text = "她終於回到當年離開的城市卻發現眼前那個人早已不是她記憶中曾經熟悉的模樣"; }, true],
+  ["removed payoff", (doc) => { doc.scenes[1].lines.pop(); }, true],
+  ["moved payoff", (doc) => { doc.scenes[1].lines.reverse(); }, true],
+  ["changed ending", (doc) => { doc.scenes.at(-1).lines.at(-1).text = "結局已變。"; }, true],
+  ["changed pause", (doc) => { doc.scenes[0].lines[0].pause_after_ms = 500; }, true],
+  ["no-op", () => {}, false],
+  ["media prompt only", (doc) => { doc.scenes[0].data.prompt += ", soft light"; }, false],
+]) {
+  test(`listener ${name}: the exact saved narrative and timing require fresh evidence`, async () => {
+    const slug = "listener-check-e001";
+    const box = sandbox(slug, "drama");
+    const series = { slug: "listener-check", episode: 1, chapter: 1, genre: "rebirth-revenge", hands_off: false, compilation: true };
+    const settings = { voice: { provider: "gemini", name: "Sulafat", style: "Taiwan Mandarin" }, max_verify_rounds: 3, drama: { style_preset: "cinematic-3d", subtitle_burn_in: true, music_enabled: false, character_voice_pool: [] } };
+    let video = dramaFixture();
+    video.scenes = video.scenes.filter((scene) => scene.template !== "outro");
+    video.scenes.at(-1).chapter = "End";
+    video.scenes[0].lines = video.scenes[0].lines.slice(0, 1);
+    video.scenes[0].lines[0].text = "她回來了。";
+    video.sources = [];
+    video = settle(video, { slug, settings, root: box.root, format: "drama", series, cast: video.characters });
+    const ids = [...eachLine(video)].map(({ line }) => line.id);
+    const retention = { hook_line: ids[0], satisfaction_lines: [ids[1], ids[2]], cliffhanger_line: ids.at(-1) };
+    const coverage = { hook: "有", conflict: "有", turn: "有", cliffhanger: "有", satisfaction: "有" };
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(video));
+    writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ slug: series.slug, episode: 1, chapter: 1, characters: video.characters, series, beats: { turn: "不得刪除" }, setting_md: "World rules", chapter_md: "Chapter outline", recaps: [{ number: 0, recap: "Earlier events" }] }));
+    mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+    const checkFile = path.join(box.workdir, "review", "script-check.json");
+    const check = { ...scriptCheckBinding(video), coverage, problems: [], similar_works: [], retention: retentionNumbers(video, retention) };
+    writeFileSync(checkFile, JSON.stringify(check));
+    const candidate = structuredClone(video);
+    edit(candidate);
+    const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, now: () => new Date("2026-09-28T12:00:00Z"), stdout: { write() {} }, fetch: async () => { throw new Error("unexpected network"); } };
+    const automation = new Automation(ctx, {}, settings);
+    automation.refs = smallRefs;
+    const stages = [];
+    automation.stage = async (stage, _slug, payload) => {
+      stages.push(stage);
+      assert.equal(payload.setting_md, "World rules");
+      assert.deepEqual(payload.beats, { turn: "不得刪除" });
+      if (stage === "listener") return { video: candidate, edits: [] };
+      assert.equal(stage, "verifier", JSON.stringify(payload.lint_errors));
+      assert.deepEqual(payload.video, readJson(path.join(box.dir, "video.json")));
+      return { report: "# Fresh verification", changed_facts: 0, coverage, problems: [], retention };
+    };
+    const state = { slug, format: "drama", status: "active", series, notes: [], source_urls: [], verify_rounds: 1, verified: true, listener_done: false, prompt_fixes: {} };
+    await automation.listen(state);
+    const saved = readJson(path.join(box.dir, "video.json"));
+    assert.equal(state.verified, !changes);
+    assert.equal(state.listener_done, true);
+    assert.equal(scriptCheckMatches(readJson(checkFile), saved), !changes);
+    if (changes) {
+      // This is the next real worker stage. Listener completion survives it: no loop.
+      if (name === "longer hook" || name === "changed ending") {
+        state.series.hands_off = name === "changed ending";
+        if (state.series.hands_off) settings.drama.series_script_gate = false;
+        // Both manual and automatic gate paths refuse an old report before looking
+        // for a prior approval or allowing the settings bypass.
+        await automation.scriptGate(state);
+      } else {
+        await automation.verify(state);
+      }
+      assert.equal(state.verified, true);
+      assert.equal(state.listener_done, true);
+      const fresh = readJson(checkFile);
+      assert.ok(scriptCheckMatches(fresh, saved));
+      assert.deepEqual(fresh.retention, retentionNumbers(saved, retention));
+      if (name === "longer hook") {
+        assert.equal(scriptVerdict(check, series).passed, true);
+        assert.equal(scriptVerdict(fresh, series).passed, false);
+        assert.equal(fresh.retention.hook_seconds, 8.4);
+      }
+      assert.deepEqual(stages, ["listener", "verifier"]);
+    } else {
+      assert.deepEqual(stages, ["listener"]);
+    }
+  });
+}
+
+for (const [name, edit, recheck] of [
+  ["pause", (video) => { video.scenes[0].lines[0].pause_after_ms = 500; }, true],
+  ["spoken form", (video) => { const line = video.scenes[0].lines[0]; line.say = "這句口白現在更長了。"; line.say_for = createHash("sha256").update(line.text).digest("hex").slice(0, 12); }, true],
+  ["media prompt", (video) => { video.scenes[0].data.prompt += ", soft lighting"; }, false],
+]) {
+  test(`resumed approved episode with a changed ${name} rechecks evidence before media when needed`, async () => {
+    const { approve, approvalState } = await import("../core/approvals.mjs");
+    const { writeScreenplay } = await import("../core/screenplay.mjs");
+    const { pipelineStatus } = await import("../core/state.mjs");
+    const slug = "resumed-check-e001";
+    const box = sandbox(slug, "drama");
+    const series = { slug: "resumed-check", episode: 1, chapter: 1, hands_off: false };
+    const settings = { voice: { provider: "gemini", name: "Sulafat", style: "Taiwan Mandarin" }, max_verify_rounds: 3, drama: { style_preset: "cinematic-3d", subtitle_burn_in: true, music_enabled: false, character_voice_pool: [] } };
+    let video = dramaFixture();
+    video.sources = [];
+    video = settle(video, { slug, settings, root: box.root, format: "drama", series, cast: video.characters });
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(video));
+    writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ slug: series.slug, episode: 1, chapter: 1, series, characters: video.characters, beats: {}, setting_md: "World", chapter_md: "Chapter", recaps: [] }));
+    writeFileSync(path.join(box.dir, "verify-1.md"), "# Previous verification");
+    writeScreenplay(box.dir, video);
+    mkdirSync(path.join(box.workdir, "review"), { recursive: true });
+    const checkFile = path.join(box.workdir, "review", "script-check.json");
+    writeFileSync(checkFile, JSON.stringify(scriptCheckBinding(video)));
+    for (const gate of ["outline", "script"]) await approve({ gate, docDir: box.dir, workdir: box.workdir });
+    edit(video);
+    writeFileSync(path.join(box.dir, "video.json"), JSON.stringify(video));
+    writeScreenplay(box.dir, video);
+    assert.equal((await approvalState({ gate: "script", docDir: box.dir, workdir: box.workdir })).status, recheck ? "stale" : "approved", "spoken form and pauses invalidate the previous approval");
+    assert.equal((await pipelineStatus({ slug, root: box.root, workdir: box.workdir })).next.id, recheck ? "script approved" : "look generated", "the real pipeline requires a new approval only for changed speech");
+    const ctx = { root: box.root, env: { VIDEO_WORKDIR: box.work }, home: box.base, now: () => new Date("2026-09-28T12:00:00Z"), stdout: { write() {} }, fetch: async () => { throw new Error("unexpected network"); } };
+    const automation = new Automation(ctx, {}, settings);
+    automation.refs = smallRefs;
+    const calls = [];
+    automation.stage = async (stage, _slug, payload) => {
+      calls.push(stage);
+      assert.equal(stage, "verifier");
+      assert.deepEqual(payload.video, video);
+      return { report: "# Current verification", changed_facts: 0 };
+    };
+    automation.media = async (_state, command) => { calls.push(`media:${command}`); return "media"; };
+    const state = { slug, format: "drama", status: "active", series, notes: [], source_urls: [], verify_rounds: 1, verified: true, listener_done: true, prompt_fixes: {} };
+    await automation.advance(state);
+    assert.deepEqual(calls, recheck ? ["verifier"] : ["media:look"]);
+    assert.equal(state.listener_done, true);
+    assert.equal(state.verified, true);
+    assert.ok(scriptCheckMatches(readJson(checkFile), video));
+  });
+}

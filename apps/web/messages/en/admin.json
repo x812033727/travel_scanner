@@ -2619,9 +2619,9 @@
     "reject": "Send back",
     "decideError": "Not recorded: {message}",
     "editDoc": "Rewrite it yourself",
-    "editHelp": "Your version becomes the next one; approve it at once, or leave it waiting.",
+    "editHelp": "Text edits are saved as drafts. Synchronize the production data and review the new version before approving it.",
     "saveApprove": "Save and approve",
-    "saveReview": "Save as waiting",
+    "saveReview": "Save text draft",
     "editError": "Not saved: {message}",
     "thread": {
       "title": "Discussion",
@@ -2778,7 +2778,13 @@
     "compilationQueued": "The worker starts the compilation on its next round.",
     "compilationStarting": "The worker has just started; the video has not reported yet.",
     "compile": "Compile",
-    "docNote": "Note:"
+    "docNote": "Note:",
+    "reconcileHelp": "This text draft has not been synchronized with production data such as characters, episodes and beats, so it cannot be approved yet. Request changes in the discussion or ask AI to synchronize it. Model calls may incur charges.",
+    "reconcileAction": "Ask AI to synchronize production data",
+    "reconcileRequest": "Use the latest text draft to synchronize the full production data and submit a new version for my review. Preserve unchanged settings and continuity rules. If essential information is missing, explain it in the discussion before changing the story.",
+    "approvalOrder": "Approve the latest setting book, overall outline and preceding chapter outline in that order.",
+    "readProductionData": "Review production data",
+    "productionDataHelp": "These characters, episodes and story beats drive production. Check that they agree with the document before approving."
   },
   "videoYoutube": {
     "vps": {

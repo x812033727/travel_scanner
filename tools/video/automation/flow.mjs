@@ -20,6 +20,7 @@ import { articlePath, SITE } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT } from "../core/paths.mjs";
 import { eachLine, LINE_ID, spokenText } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
+import { scriptCheckBinding, scriptCheckMatches } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
 import { speechHash } from "../core/timeline.mjs";
@@ -880,7 +881,14 @@ export class Automation {
    */
   async scriptGate(state) {
     const dir = docDir(state.slug, this.ctx.root);
-    const file = writeScreenplay(dir, JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8")));
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const check = readJson(path.join(this.workdir(state.slug), "review", "script-check.json"), null);
+    if (state.series && !scriptCheckMatches(check, video)) {
+      state.verified = false;
+      saveState(this.workdir(state.slug), state);
+      return this.verify(state);
+    }
+    const file = writeScreenplay(dir, video);
     if (this.settings.drama?.series_script_gate === false) {
       await approve({ gate: "script", docDir: dir, workdir: this.workdir(state.slug), now: this.ctx.now(), note: "「劇本先給我看」關著，依設定自動核准" });
       return `${state.slug}: screenplay approved by the settings (劇本先給我看 is off)`;
@@ -888,7 +896,6 @@ export class Automation {
     const review = await this.decision(state, "script", file);
     if (!review) {
       if (state.series?.hands_off) {
-        const check = readJson(path.join(this.workdir(state.slug), "review", "script-check.json"), null);
         const verdict = scriptVerdict(check, state.series);
         const rounds = state.prompt_fixes?.script ?? 0;
         if (!verdict.passed && rounds < MAX_PROMPT_FIX_ROUNDS) return this.fixScript(state, verdict.problems.join("；"), "the checker");
@@ -1007,6 +1014,14 @@ export class Automation {
 
     if (next === "brief") return this.block(state,"brief.md is gone");
     if (next === "script passes lint") return this.write(state);
+    // Prompt repairs and resumed workers can reach this point after a saved script
+    // changed without changing script.md (for example its spoken form or pauses).
+    // Check the evidence before every downstream stage, even after script approval.
+    if (state.series && !state.compilation && state.verified) {
+      const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+      const check = readJson(path.join(workdir, "review", "script-check.json"), null);
+      if (!scriptCheckMatches(check, video)) state.verified = false;
+    }
     // status only knows that verify-1.md exists; the rounds and the listener edit are ours.
     if (!state.verified) return this.verify(state);
     if (!state.listener_done) return this.listen(state);
@@ -1333,21 +1348,25 @@ export class Automation {
     const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, 32_000, state.format, episodeVariant(state), state.series ?? null);
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);
-    if (state.series) {
-      // What the script gate shows the owner: whether each beat is delivered, and what jars;
-      // the retention numbers are measured on the checked script from the lines the checker
-      // named (docs/videos/BINGE.md), never taken from the model.
-      const reviewDir = path.join(this.workdir(state.slug), "review");
-      mkdirSync(reviewDir, { recursive: true });
-      const checked = answer.video && typeof answer.video === "object" ? answer.video : video;
-      atomicWrite(path.join(reviewDir, "script-check.json"), `${JSON.stringify({ round, coverage: answer.coverage ?? null, problems: Array.isArray(answer.problems) ? answer.problems : [], similar_works: Array.isArray(answer.similar_works) ? answer.similar_works : [], retention: retentionNumbers(checked, answer.retention) }, null, 2)}\n`);
-    }
     if (typeof answer.claims === "string") writeFileSync(path.join(dir, "claims.md"), answer.claims.endsWith("\n") ? answer.claims : `${answer.claims}\n`);
     state.verify_rounds = round;
     const changed = Number(answer.changed_facts) || 0;
     if (answer.video) {
       const problem = await this.saveAndLint(state, { video: answer.video });
       if (problem) return this.retryLater(state, "verifier", `fact-check round ${round} changed ${changed} facts but ${problem}`);
+    }
+    const checked = answer.video && typeof answer.video === "object" ? answer.video : video;
+    const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (state.series) {
+      // A lint repair may rewrite the verifier's candidate. Never bind that candidate's
+      // verdict to the repair: another bounded verification must read the saved script.
+      if (!scriptCheckMatches(scriptCheckBinding(checked), saved)) {
+        state.verified = false;
+        return this.retryLater(state, "verifier", "the lint repair changed the checked script; verification must run again");
+      }
+      const reviewDir = path.join(this.workdir(state.slug), "review");
+      mkdirSync(reviewDir, { recursive: true });
+      atomicWrite(path.join(reviewDir, "script-check.json"), `${JSON.stringify({ ...scriptCheckBinding(saved), round, coverage: answer.coverage ?? null, problems: Array.isArray(answer.problems) ? answer.problems : [], similar_works: Array.isArray(answer.similar_works) ? answer.similar_works : [], retention: retentionNumbers(saved, answer.retention) }, null, 2)}\n`);
     }
     state.verified = changed <= 3 || round >= settingsFor(this.settings, state.format).verifyRounds;
     this.cleared(state, "verifier");
@@ -1358,8 +1377,12 @@ export class Automation {
   async listen(state, note = null) {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
-    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(note ? { owner_note: note } : {}) }, 32_000, state.format);
+    const answer = await this.stage("listener", state.slug, { video, script_writing: this.reference().script_writing, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), ...(state.series ? this.seriesPayload(state) : {}), ...(note ? { owner_note: note } : {}) }, 32_000, state.format);
     const problem = await this.saveAndLint(state, answer);
+    const saved = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (!scriptCheckMatches(scriptCheckBinding(video), saved)) state.verified = false;
+    // Keep listener_done after the recheck, so a meaningful edit causes one new
+    // verification sequence rather than a verifier/listener loop.
     state.listener_done = !problem;
     if (problem) return this.retryLater(state, "listener", `the listener edit ${problem}`);
     this.cleared(state, "listener");

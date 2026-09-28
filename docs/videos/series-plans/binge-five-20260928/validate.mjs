@@ -101,15 +101,15 @@ export function validateSource(source, expectedSlug=source?.series?.slug) {
     for (const tag of ['漫劇','AI漫劇','一口氣看完']) check(p.tags.includes(tag),`missing required tag: ${tag}`);
     check(p.thumbnail_variants.length===3,'need three thumbnail compositions');
     for(const v of p.thumbnail_variants)check(text(v.headline)&&[...v.headline].length<=12&&v.episode>=1&&v.episode<=3&&text(v.scene)&&text(v.composition)&&text(v.promise),'invalid thumbnail or reference outside first three episodes');
-    check(source.continuity_notes.length>=3,'cross-episode continuity guidance missing');
+    check(Array.isArray(source.continuity_notes)&&source.continuity_notes.length>=3&&source.continuity_notes.every(text),'cross-episode continuity guidance missing or blank');
   }catch(error){errors.push(`invalid source shape: ${error.message}`);}
   return errors;
 }
 
-export async function validateFiles(slug,source) {
+export async function validateFiles(slug,source,root=ROOT) {
   const errors=[];
   for(const [name,expected] of Object.entries(compile(source))){
-    try{const actual=await fs.readFile(path.join(ROOT,slug,name),'utf8');if(actual!==expected)errors.push(`${name}: missing/stale generated file`);}catch{errors.push(`${name}: cannot read`);}
+    try{const actual=await fs.readFile(path.join(root,slug,name),'utf8');if(actual!==expected)errors.push(`${name}: missing/stale generated file`);}catch{errors.push(`${name}: cannot read`);}
   }
   return errors;
 }
@@ -140,7 +140,7 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
     try{const source=await loadSource(slug);const errors=[...validateSource(source,slug),...(sourceOnly?[]:await validateFiles(slug,source))];if(requireReviews){try{const review=JSON.parse(await fs.readFile(path.join(ROOT,'reviews',`${slug}.json`),'utf8'));errors.push(...validateReview(review,source));}catch(e){errors.push(`review: ${e.message}`);}}results.push({slug,title:source.series.title,source_sha256:hash(source),episodes:source.chapters.flatMap(c=>c.episodes).length,documents:6,errors});}
     catch(e){results.push({slug,errors:[e.message]});}
   }
-  const report={scope:'offline-production-plans',media_or_retention_measured:false,backend_created:false,source_only:sourceOnly,independent_review_required:requireReviews,ok:results.every(r=>r.errors.length===0),series:results};
+  const report={scope:'offline-production-plans',execution_scope:'local-validation-only',status_note:'This validation does not change or attest to production state or approve revised documents.',media_or_retention_measured:false,backend_created:false,source_only:sourceOnly,independent_review_required:requireReviews,ok:results.every(r=>r.errors.length===0),series:results};
   if(writeReport)await fs.writeFile(path.join(ROOT,'validation-report.json'),JSON.stringify(report,null,2)+'\n','utf8');
   console.log(JSON.stringify(report,null,2));
   if(!report.ok)process.exitCode=1;

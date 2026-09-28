@@ -2619,9 +2619,9 @@
     "reject": "退回",
     "decideError": "沒有記錄：{message}",
     "editDoc": "自己改",
-    "editHelp": "你改的版本會成為最新版：可以直接核准，或先留著待審。",
+    "editHelp": "文字修改會先儲存為草稿。同步製作資料並重新審核後，才能核准此版本。",
     "saveApprove": "儲存並核准",
-    "saveReview": "儲存為待審",
+    "saveReview": "儲存文字草稿",
     "editError": "沒有儲存：{message}",
     "thread": {
       "title": "討論",
@@ -2778,7 +2778,13 @@
     "compilationQueued": "工人的下一輪會開始做合集。",
     "compilationStarting": "工人剛開始做，影片還沒回報。",
     "compile": "做合集",
-    "docNote": "備註："
+    "docNote": "備註：",
+    "reconcileHelp": "這份文字草稿尚未同步角色、集數或節拍等製作資料，暫時不能核准。可在討論中指定修改，或請 AI 同步；模型呼叫可能產生費用。",
+    "reconcileAction": "請 AI 同步製作資料",
+    "reconcileRequest": "請以目前最新文字草稿為準，同步完整製作資料並提交新版供我審核。保留未修改的設定與連貫規則；若缺少必要資訊，先在討論中說明，不要自行改變故事。",
+    "approvalOrder": "請先依序核准最新版設定集、整部大綱與前篇細綱。",
+    "readProductionData": "檢查製作資料",
+    "productionDataHelp": "製作時會使用這份角色、集數與情節節拍資料。核准前請確認它與全文一致。"
   },
   "videoYoutube": {
     "vps": {

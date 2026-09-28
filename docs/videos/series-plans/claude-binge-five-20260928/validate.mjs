@@ -263,7 +263,7 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
     }
     for (const key of ["audience", "visual_identity", "music", "pinned_comment"]) check(isText(pk[key]), `packaging.${key} is missing`);
     check(Array.isArray(pk.why_million) && pk.why_million.length >= 3, "packaging.why_million: at least three reasons");
-    check(Array.isArray(source.continuity_notes) && source.continuity_notes.length >= 3, "continuity_notes: at least three");
+    check(Array.isArray(source.continuity_notes) && source.continuity_notes.length >= 3 && source.continuity_notes.every(isText), "continuity_notes: at least three nonempty rules");
   } catch (error) {
     errors.push(`invalid source shape: ${error.message}`);
   }
@@ -271,11 +271,11 @@ export function validateSource(source, expectedSlug = source?.series?.slug) {
 }
 
 /** The generated files that differ from what `compile(source)` gives now. */
-export async function validateFiles(slug, source) {
+export async function validateFiles(slug, source, root = ROOT) {
   const stale = [];
   for (const [name, expected] of Object.entries(compile(source))) {
     try {
-      const actual = await fs.readFile(path.join(ROOT, slug, name), "utf8");
+      const actual = await fs.readFile(path.join(root, slug, name), "utf8");
       if (actual !== expected) stale.push(`${name}: stale, rebuild with node build.mjs ${slug}`);
     } catch {
       stale.push(`${name}: missing, build with node build.mjs ${slug}`);
@@ -300,7 +300,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       results.push({ slug, errors: [error.message], warnings: [] });
     }
   }
-  const report = { scope: "offline production plans; nothing measured on media", checked_at: new Date().toISOString().slice(0, 10), source_only: sourceOnly, ok: results.every((r) => r.errors.length === 0), works: results };
+  const report = { scope: "offline production plans; nothing measured on media", execution_scope: "local-validation-only", status_note: "This validation does not change or attest to production state or approve revised documents.", checked_at: new Date().toISOString().slice(0, 10), source_only: sourceOnly, ok: results.every((r) => r.errors.length === 0), works: results };
   if (writeReport) await fs.writeFile(path.join(ROOT, "validation-report.json"), `${JSON.stringify({ ...report, checked_at: undefined }, null, 2)}\n`, "utf8");
   for (const r of results) {
     process.stdout.write(`${r.slug}: ${r.errors.length} error(s), ${r.warnings.length} warning(s)\n`);
