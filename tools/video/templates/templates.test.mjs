@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, escapeHtml, inlineSvg, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, thumbnailHtml, thumbnailProblems, visibility, visibleText } from "./templates.mjs";
+import { assetUrl, BRAND, escapeHtml, inlineSvg, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, thumbnailHtml, thumbnailProblems, visibility, visibleText } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -159,4 +159,25 @@ test("visibleText is what the font check sees: text without markup or the head",
   const text = visibleText(slideHtml(scene("keyword"), state({ chapter: "章" })));
   assert.match(text, /MMLU-Pro/);
   assert.doesNotMatch(text, /index\.css|<|style/);
+});
+
+test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a mirrored layout and a short headline", () => {
+  const thumb = { template: "thumb", data: { headline: "冰為什麼\n會**浮**？", tag: "科學", pillar: "science", shot: "a" } };
+  const plain = thumbnailHtml(thumb, { background: "https://video.local/work/keyframes/a.png" });
+  assert.match(plain, new RegExp(`<div class="brand">${BRAND}</div>`), "no series: the channel's thumbnail");
+  assert.doesNotMatch(plain, /thumb-stamp|pillar-|layout-right|#1f2a44/);
+  const own = thumbnailHtml(thumb, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
+  assert.match(own, /<div class="brand">原來如此事務所<\/div>/);
+  assert.match(own, /<div class="thumb-stamp" aria-hidden="true"><span>原來<\/span><span>如此<\/span><\/div>/);
+  assert.match(own, /<div class="tag pillar-science">科學<\/div>/);
+  assert.match(own, /rgba\(31,42,68,\.94\)/, "the ink-navy scrim");
+  const right = thumbnailHtml({ ...thumb, data: { ...thumb.data, layout: "right" } }, { background: "https://video.local/work/keyframes/a.png", series: "sothatswhy" });
+  assert.match(right, /<div class="thumb-scrim layout-right"><\/div><div class="thumb layout-right">/);
+  assert.match(thumbnailHtml({ ...thumb, data: { ...thumb.data, pillar: "sports" } }, { series: "sothatswhy" }), /<div class="tag">科學<\/div>/, "an unknown pillar keeps the default tag");
+
+  assert.deepEqual(thumbnailProblems(thumb, { series: "sothatswhy" }), []);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }), [], "the channel's thumbnails keep their length");
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
+  assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
 });

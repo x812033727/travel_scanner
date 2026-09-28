@@ -1,18 +1,21 @@
 ---
 id: 2026-09-28-so-that-s-why-thumbnail-template
 title: So That's Why: thumbnail template gaps (series palette, stamp, pillar accent, brand, headline check)
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus
+claimed_at: 2026-09-28T10:50:50Z
 created_at: 2026-09-28T10:30:50Z
 completed_at:
-branch:
+branch: claude/knowledge-series-planning-v84n79
 depends_on: []
 scope:
   - tools/video/templates/
   - tools/video/templates/theme.css
+  - tools/video/render/plan.mjs
+  - tools/video/core/fixtures/explainer/video.json
+  - docs/videos/so-thats-why/thumbnails.md
   - tools/video/core/schema.mjs
 ---
 
@@ -32,15 +35,16 @@ scope:
 
 ## Definition of done
 
-- [ ] `thumb` 可以選系列主題（色盤、字標、印章、主軸強調色），不影響其他影片現有的縮圖（雜湊不變的測試）。
+- [x] `thumb` 可以選系列主題（色盤、字標、印章、主軸強調色），不影響其他影片現有的縮圖（沒有系列時輸出不變的測試）。
 - [ ] 可以一次畫出多個版型給 YouTube「測試與比較」。
-- [ ] lint 依系列檢查 headline 字數與行數。
-- [ ] `thumbnails.md` 的缺口一節改成已支援。
+- [x] lint 依系列檢查 headline 字數與行數。
+- [x] `thumbnails.md` 的缺口一節改成支援狀態表（G4 仍未支援）。
 
 ## Steps
 
-- [ ] 讀 `thumbnails.md` 的「欄位對照」與「缺口」。
-- [ ] 版型與主題、lint、測試。
+- [x] 讀 `thumbnails.md` 的「欄位對照」與「缺口」。
+- [x] 版型與主題、lint、測試（G1–G3、G5–G7）。
+- [ ] G4：`thumbnail.variants`（最多 3），`render` 出 `thumbnail-a/b/c.jpg`，上架包與 qa 一起帶。
 
 ## How to verify
 
@@ -48,4 +52,6 @@ scope:
 
 ## Notes
 
-2026-09-28 開票；規格由規劃代理寫在 `thumbnails.md`，沒有改程式。
+2026-09-28 開票；規格由規劃代理寫在 `thumbnails.md`。
+- 2026-09-28：G1–G3、G5–G7 做完。系列 CSS 內嵌在頁面（跟關鍵影格底圖的 CSS 一樣），`theme.css` 沒動，所以其他影片的縮圖鍵不變；`render/plan.mjs` 的 `thumbnailSeries(doc)` 依 `isExplainer` 決定。用本機 Chromium（`/opt/pw-browsers/chromium-1194`）實際畫過左右兩種版面檢查。G4 牽涉 `render`、`package`、`qa` 三處，留在這張票。
+- 沒改 `automation/prompts.mjs`（其他代理的票正在改它）：解說版撰稿提示仍寫 headline ≤ 12 字，超過 10 字時 lint 擋下、撰稿的 lint 修正迴圈會改短。提示詞的字數與 `pillar`／`layout` 說明等那幾張票結束後再補。

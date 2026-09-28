@@ -8,7 +8,10 @@ import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { isShot } from "../core/drama.mjs";
+import { isExplainer, isShot } from "../core/drama.mjs";
+
+/** The series whose own thumbnail a video wears (templates.mjs THUMB_SERIES), or null. */
+export const thumbnailSeries = (doc) => (isExplainer(doc) ? "sothatswhy" : null);
 import { estimateTimeline } from "../core/timeline.mjs";
 import { ORIGIN, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, visibleText } from "../templates/templates.mjs";
 
@@ -52,7 +55,7 @@ export function renderProblems(doc, root = null) {
       else if (asset.endsWith(".svg")) for (const message of svgProblems(readFileSync(file, "utf8"))) problems.push({ path: where, message: `${asset}: ${message}` });
     }
   });
-  for (const message of thumbnailProblems(doc.thumbnail)) problems.push({ path: "thumbnail", message });
+  for (const message of thumbnailProblems(doc.thumbnail, { series: thumbnailSeries(doc) })) problems.push({ path: "thumbnail", message });
   return problems;
 }
 
@@ -102,7 +105,7 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     const keyframe = shot && keyframes[shot]?.file ? { file: keyframes[shot].file, sha256: keyframes[shot].sha256 ?? "" } : null;
     // The work directory is served under /work/ by the renderer's fake origin.
     const background = keyframe ? `${ORIGIN}/work/${keyframe.file.split("/").map(encodeURIComponent).join("/")}` : null;
-    const html = thumbnailHtml(doc.thumbnail, { background });
+    const html = thumbnailHtml(doc.thumbnail, { background, series: thumbnailSeries(doc) });
     thumbnail = { html, key: hash(theme, html, keyframe?.sha256 ?? ""), text: visibleText(html), ...(shot ? { shot, keyframe } : {}) };
   }
   return { scenes, thumbnail };

@@ -357,10 +357,34 @@ export function slideHtml(scene, state) {
   return page(`${chrome(scene, state)}<main class="content t-${scene.template}">${renderer(scene.data, context)}</main>`, SIZE);
 }
 
-export function thumbnailProblems(thumbnail) {
+/**
+ * A series' own thumbnail (docs/videos/so-thats-why/thumbnails.md): its palette, its name in place
+ * of the channel's, a red stamp, the tag coloured by the episode's pillar, and a shorter headline.
+ * The render plan picks it from the video (the flat-explainer look is So That's Why).
+ */
+export const THUMB_SERIES = {
+  sothatswhy: { brand: "原來如此事務所", stamp: ["原來", "如此"], headlineMax: 10, headlineLines: 2 },
+};
+export const THUMB_PILLARS = ["business", "science", "travel", "tech"];
+export const THUMB_LAYOUTS = ["left", "right"];
+const headlineShape = (headline) => {
+  const lines = headline.replace(/\*\*/g, "").split("\n");
+  return { lines: lines.length, chars: Math.max(...lines.map((line) => [...line.replace(/\s/g, "")].length)) };
+};
+
+export function thumbnailProblems(thumbnail, { series = null } = {}) {
   if (!thumbnail) return [];
   const data = thumbnail.data ?? {};
-  return [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"].filter(Boolean);
+  const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
+  if (data.layout !== undefined && !THUMB_LAYOUTS.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${THUMB_LAYOUTS.join(", ")}`);
+  if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
+  const own = THUMB_SERIES[series];
+  if (own && isText(data.headline)) {
+    const shape = headlineShape(data.headline);
+    if (shape.lines > own.headlineLines) problems.push(`thumbnail.data.headline has ${shape.lines} lines; this series takes at most ${own.headlineLines}`);
+    if (shape.chars > own.headlineMax) problems.push(`thumbnail.data.headline has a line of ${shape.chars} characters; this series takes at most ${own.headlineMax} a line, readable at phone size`);
+  }
+  return problems.filter(Boolean);
 }
 
 // A drama's thumbnail sits on a keyframe: the picture fills the frame under a scrim that keeps
@@ -370,22 +394,51 @@ const THUMB_BACKGROUND_CSS =
   ".thumb-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}" +
   ".thumb-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,38,39,.94) 0%,rgba(14,38,39,.72) 48%,rgba(14,38,39,.12) 100%)}";
 
+// So That's Why (docs/videos/so-thats-why/look.md): cream, ink navy, stamp red, mustard. Inline
+// for the same reason as the keyframe CSS: no other video's thumbnail key moves.
+const THUMB_SERIES_CSS = {
+  sothatswhy:
+    ".thumb-scrim{background:linear-gradient(90deg,rgba(31,42,68,.94) 0%,rgba(31,42,68,.7) 48%,rgba(31,42,68,.1) 100%)}" +
+    ".thumb h1{color:#f6efe3}.thumb em{color:#e8b64c}.thumb .sub{color:#e9dfcd}" +
+    ".thumb .brand{color:#e8b64c;letter-spacing:.12em}" +
+    ".thumb .tag{background:#e8b64c;color:#1f2a44}" +
+    ".thumb .tag.pillar-science{background:#f6efe3;color:#1f2a44}" +
+    ".thumb .tag.pillar-travel{background:#1f2a44;color:#e8b64c;box-shadow:inset 0 0 0 3px #e8b64c}" +
+    ".thumb .tag.pillar-tech{background:#1f2a44;color:#f6efe3;box-shadow:inset 0 0 0 3px #f6efe3}" +
+    ".thumb-stamp{position:absolute;left:785px;top:75px;width:150px;height:150px;transform:rotate(-8deg);border:9px solid #d8452f;border-radius:10px;" +
+    "color:#d8452f;opacity:.9;display:grid;grid-template-rows:1fr 1fr;place-items:center;font-size:52px;font-weight:900;line-height:1;letter-spacing:.04em}" +
+    ".thumb.layout-right~.thumb-stamp{left:auto;right:785px}",
+};
+// The text column on the right and the scrim mirrored, for a picture whose subject is on the left.
+const THUMB_RIGHT_CSS =
+  ".thumb.layout-right{padding-right:72px;padding-left:340px;align-items:flex-end;text-align:right}" +
+  ".thumb.layout-right .tag{align-self:flex-end}.thumb.layout-right .brand{left:auto;right:72px}" +
+  ".thumb-scrim.layout-right{transform:scaleX(-1)}";
+
 /**
  * The thumbnail as a page. `background` is the URL of a picture to fill it with (a drama's
  * keyframe, served from the work directory); without one the theme's ring decorates it.
+ * `series` names a series' own look (THUMB_SERIES); without one, and without `data.layout`,
+ * the page is byte for byte what it always was.
  */
-export function thumbnailHtml(thumbnail, { background = null } = {}) {
+export function thumbnailHtml(thumbnail, { background = null, series = null } = {}) {
   const data = thumbnail.data;
+  const own = THUMB_SERIES[series] ?? null;
+  const right = data.layout === "right";
+  const layout = right ? " layout-right" : "";
+  const pillar = own && THUMB_PILLARS.includes(data.pillar) ? ` pillar-${data.pillar}` : "";
   const body = [
-    background ? `<img class="thumb-bg" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim"></div>` : '<div class="thumb-art"></div>',
-    '<div class="thumb">',
-    data.tag ? `<div class="tag">${richText(data.tag)}</div>` : "",
+    background ? `<img class="thumb-bg" src="${escapeHtml(background)}" alt=""><div class="thumb-scrim${layout}"></div>` : '<div class="thumb-art"></div>',
+    `<div class="thumb${layout}">`,
+    data.tag ? `<div class="tag${pillar}">${richText(data.tag)}</div>` : "",
     `<h1 class="fit">${richText(data.headline)}</h1>`,
     data.sub ? `<div class="sub fit">${richText(data.sub)}</div>` : "",
-    `<div class="brand">${BRAND}</div>`,
+    `<div class="brand">${own ? escapeHtml(own.brand) : BRAND}</div>`,
     "</div>",
+    own ? `<div class="thumb-stamp" aria-hidden="true">${own.stamp.map((row) => `<span>${escapeHtml(row)}</span>`).join("")}</div>` : "",
   ].join("");
-  return page(body, THUMB_SIZE, background ? THUMB_BACKGROUND_CSS : "");
+  const css = [background ? THUMB_BACKGROUND_CSS : "", right ? THUMB_RIGHT_CSS : "", own ? THUMB_SERIES_CSS[series] : ""].join("");
+  return page(body, THUMB_SIZE, css);
 }
 
 /** The characters a slide will draw, for the font coverage check. */
