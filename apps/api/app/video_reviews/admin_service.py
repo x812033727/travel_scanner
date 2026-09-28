@@ -1036,8 +1036,8 @@ async def set_locales(
     Chinese"), and the first save of either kind is what lets the video go up. The worker makes
     only what was chosen, once the final cut is approved; a drama takes no dub yet. The choice is
     the owner's: the pipeline's reports never carry one, and a dropped video takes none. Only a
-    brand story, which nobody waits on, has the server decide from the settings when its video
-    first reports (``_decide_story_locales``); the owner may change that here too.
+    brand story, which runs without the owner, has the server decide from the settings when its
+    video first reports (``_decide_story_locales``); the owner may change that here too.
     """
     project = await _project(session, slug)
     _refuse_dropped(project)

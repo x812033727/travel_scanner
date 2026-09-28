@@ -75,6 +75,7 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 - **放棄影片**：`drop_project` 放棄的影片若是某一集（回報帶過 `series_slug`，伺服器用 slug 找到那一集，先鎖作品列再鎖集數列，順序同 `series.py`），還沒完成的集數（`planned`、`ready`、`queued`、`started`）標成 `skipped`，寫 audit `video_series_episode_skipped`（metadata 有 `number`、`dropped_video`）；那是作品最後一集時，照 `skip_episode` 的規則把作品標成 `finished`。已經 `done` 的集數（上架確認已核准）維持 `done`。
   - 其他類型不受害：長篇作品的下一集本來就等上一集 done 或 skipped，所以放棄後下一集照常開始，跟在作品頁按「略過」一樣；有測試（第 2 集放棄前第 3 集等著、放棄後開始；第 1 集已 done，放棄它的影片不改狀態）。
   - `finish_if_complete` 與 `EPISODE_OPEN` 在函式裡 import：`series.py` 在模組層 import 了 `admin_service`。
+  - **給 `video-story-admin` 與 `video-story-admin-import-api`**：放棄的故事是 `skipped` 而且 `started_at` 有值，所以「恢復略過的故事」（只恢復從沒開始的）不會讓它回來；它的 slug 也已經是 `/admin/videos` 上的一支影片，匯入會把同一個 slug 當成問題。要重做同一個題目，得在企劃清單給它新的 id 與 slug。
   - 看到但沒改：那一集的請求列（`video_drama_requests`）仍是 `started`，後台清單會一直顯示製作中。另開票 `2026-09-28-video-dropped-episode-request`。
 - **每小時上限**：圖片另有自己的計數 `video_media_submit_image`，每小時 240（新常數 `IMAGE_SUBMITS_PER_HOUR`）；judge 360。片段與配樂維持共用的 60（`SUBMITS_PER_HOUR`，計數名不變）：它們每一個都要等廠商幾分鐘，60 從來不是瓶頸，而片段是最貴的一種，一起放寬只會讓失控時燒得更快。這是 ticket 沒有明說的決定（ticket 寫「送圖」）。
   - 還限住花費的：每月預算（圖片、judge、片段秒數、配樂），伺服器在呼叫廠商前用 Redis 原子預留，超過就 429，廠商拒絕或失敗才退回（`video_media/meter.py`、`jobs.submit_job`）；每支影片的上限 `max_usd_per_video` 只有工人端擋（`tools/video/media/ledger.mjs` 加總伺服器給的 `usd_estimate`），伺服器不擋。每小時上限只決定失控時多快把月預算燒完：圖片 240 張／時約 US$16（Flash 1K）或 US$32（Pro），judge 360 次／時約 US$3.6；預設的 1,500 張月預算約 6 小時用完（原本 25 小時）。STORY.md 建議把圖片與 judge 的月預算調到各 9,000：Flash 下最多約 US$603＋US$90，那才是一個月的上限。
