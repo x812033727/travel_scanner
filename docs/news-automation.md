@@ -13,7 +13,7 @@ each switch does.
 | Piece | Where | What it does |
 | --- | --- | --- |
 | `news-scheduler` | compose profile `news`, `app.news_automation.scheduler` | Once a minute: queues a scan for every due source, fails candidates whose job died (see below), re-queues orphaned ones, queues the daily retention cleanup |
-| `news-worker` | compose profile `news`, `app.news_automation.worker` | The only consumer of the `news` RQ queue. The general `worker` does not read it, so a candidate's hour of model calls never blocks search or trip routing |
+| `news-worker` | compose profile `news`, `app.news_automation.worker` | The only consumer of the `news` RQ queue: one container running a pool of `NEWS_WORKER_PROCESSES` RQ workers (default 3). The admin's global and per-vertical concurrency still decide how many candidates run at once. Run exactly one such container, because it fails every in-flight candidate when it starts. The general `worker` does not read the queue, so a candidate's hour of model calls never blocks search or trip routing |
 | `/admin/news` | web | Sources, settings, the review queue, runs, and the per-category auto-publish switches with Jev's agreement figures |
 | Admin AI settings | `/admin/settings` → AI 服務 | API keys and the default model per vendor. The news jobs read them the same way the hotspot AI tasks do (`load_runtime_settings`) |
 
