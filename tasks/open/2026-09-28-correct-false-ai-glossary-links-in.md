@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-false-ai-glossary-links-in
 title: Correct false AI glossary links in Batch040 sources
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch040-source-fix
@@ -41,7 +41,7 @@ parameters article. The Batch040 translations must not reproduce these false lin
 - [x] Confirmed the four links against their surrounding zh-TW source paragraphs.
 - [x] Changed only the four `article` inlines to `text` in the three packs.
 - [x] Confirmed structural parity: only the four specified inline objects differ.
-- [ ] Completed relevant checks and opened a draft PR.
+- [x] Completed relevant checks and opened draft PR #930.
 
 ## How to verify
 
@@ -78,3 +78,7 @@ Local checks: structural JSON parity passed for all 33 blocks in each pack;
 warnings; `tests/test_guides_content_links.py` passed 3 tests;
 `npm run check:tasks` validated 1046 task files with unrelated existing warnings;
 `uv run alembic heads` returned the single `0111_video_story_series` head.
+
+Review: https://github.com/x812033727/travel_scanner/pull/930 is a draft PR;
+its CI was queued at creation. Merge, live source reconciliation, and public-page
+verification remain separate uncompleted steps.
