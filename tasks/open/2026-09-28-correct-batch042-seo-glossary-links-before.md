@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-batch042-seo-glossary-links-before
 title: Correct Batch042 SEO glossary links before localization
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch042-source-links
@@ -41,4 +41,4 @@ From `apps/api`, run `uv run python -m app.guides.pack_cli lint --kind life --sl
 
 ## Notes
 
-Base commit: `0d30e604c52f5e8abb55c4fc567e8699573010a8`. This PR changes repository source packs only. Current live revisions have not been asserted here; compare them again under the guarded release process before any source correction or translated-locale import.
+Base commit: `0d30e604c52f5e8abb55c4fc567e8699573010a8`. Draft PR: https://github.com/x812033727/travel_scanner/pull/942. This PR changes repository source packs only. Current live revisions have not been asserted here; compare them again under the guarded release process before any source correction or translated-locale import.
