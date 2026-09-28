@@ -33,7 +33,7 @@ import { instructionsFor, parseAnswer, references } from "./prompts.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
 import { castFrom, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
-import { episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
+import { episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 
 export const STATE_FILE = "auto.json";
 const GLOBAL_FILE = "auto-state.json";
@@ -1358,7 +1358,7 @@ export class Automation {
     const dir = docDir(state.slug, this.ctx.root);
     const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
     const shorts = Array.isArray(drafted)
-      ? drafted.map((doc, index) => ({ ...doc, schema_version: 1, slug: `${state.slug}-short-${index + 1}`, format: "shorts", locale: "zh-TW", series: "sothatswhy", episode: state.slug }))
+      ? drafted.map((doc, index) => ({ ...doc, ...episodeShortFields(state.slug, index) }))
       : drafted;
     const problems = episodeShortsProblems(shorts, video);
     if (problems.length) {

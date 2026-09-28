@@ -3,12 +3,9 @@ import assert from 'node:assert/strict';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { explainerFixture, sandbox } from '../core/fixtures/load.mjs';
-import { encodeWav, parseWav } from '../tts/wav.mjs';
-import { EPISODE_SERIES, episodeShort, sceneHtml, sha256, validate, verifyEvidence } from './core.mjs';
-import { episodeShortsProblems, loadEpisodeShorts, shortsFile } from './episode.mjs';
-import { phraseBody, serverPhrases } from './voice.mjs';
-
-const TOKEN = `mkv_${'s'.repeat(43)}`;
+import { main } from './cli.mjs';
+import { episodeShort, sceneHtml, sha256, validate, verifyEvidence } from './core.mjs';
+import { EPISODE_SERIES, episodeShortFields, episodeShortsProblems, loadEpisodeShorts, shortsFile } from './episode.mjs';
 
 /** The explainer fixture in a sandbox, with a keyframe per shot in its work directory. */
 function episodeBox({ review = [] } = {}) {
@@ -27,14 +24,16 @@ function episodeBox({ review = [] } = {}) {
 
 const shortsOf = (box) => JSON.parse(readFileSync(shortsFile(box.slug, box.root), 'utf8'));
 
-test('an episode Short needs its episode and shots, not an experiment report; the campaign series keep theirs', () => {
+test('an episode Short is a cut of its episode whose scenes may name shots; other lines may not', () => {
   const [doc] = JSON.parse(readFileSync(new URL('../core/fixtures/explainer/shorts.json', import.meta.url), 'utf8'));
   assert.deepEqual(validate(doc), []);
-  assert.deepEqual(validate({ ...doc, episode: undefined }), ["episode must be the long video's slug"]);
-  assert.deepEqual(validate({ ...doc, series: 'daily' }).sort(), ['evidence required', 'experiment_summary required', 'limitations required', 'scene 0: shot names a keyframe of the long episode (series sothatswhy only)', 'scene 1: shot names a keyframe of the long episode (series sothatswhy only)', 'scene 2: shot names a keyframe of the long episode (series sothatswhy only)'].sort());
+  assert.deepEqual(validate({ ...doc, source: undefined }), ['source.slug required']);
+  const lab = { ...doc, line: 'lab', series: 'daily', experiment_summary: 'x', limitations: 'y', evidence: [{ path: 'a.json', sha256: 'a'.repeat(64) }] };
+  assert.deepEqual(validate(lab), [0, 1, 2].map((i) => `scene ${i}: shot names a keyframe of the video a cut comes from (line cut only)`));
   const both = structuredClone(doc);
   both.scenes[0].asset = 'x.png';
   assert.ok(validate(both).includes('scene 0: a scene shows a shot or an asset, not both'));
+  assert.deepEqual(episodeShortFields('b08-nokia', 1), { schema_version: 2, slug: 'b08-nokia-short-2', format: 'shorts', locale: 'zh-TW', line: 'cut', series: EPISODE_SERIES, source: { slug: 'b08-nokia' } });
 });
 
 test('shots become keyframe evidence bound by hash; a changed, missing or unreviewed keyframe is refused', () => {
@@ -54,54 +53,41 @@ test('shots become keyframe evidence bound by hash; a changed, missing or unrevi
   assert.throws(() => episodeBox({ review: ['count'] }).load(), /shot "count" still needs a prompt fix/);
 });
 
-test("shorts.json holds this episode's two Shorts, named after it, showing only its shots", () => {
+test("shorts.json holds this episode's two Shorts, cut from it, named after it, showing only its shots", () => {
   const video = explainerFixture();
   const { box } = episodeBox();
   const shorts = shortsOf(box);
   assert.deepEqual(episodeShortsProblems(shorts, video), []);
   assert.deepEqual(episodeShortsProblems(shorts.slice(0, 1), video), ['shorts.json must hold 2 Shorts']);
   const wrong = structuredClone(shorts);
-  wrong[1].episode = 'other-video';
+  wrong[1].source.slug = 'other-video';
   wrong[1].slug = 'other';
   wrong[0].scenes[0].shot = 'answer';
+  wrong[0].line = 'drama';
   assert.deepEqual(episodeShortsProblems(wrong, video), [
+    'short 1: scene 0: shot names a keyframe of the video a cut comes from (line cut only)',
+    'short 1: scene 1: shot names a keyframe of the video a cut comes from (line cut only)',
+    'short 1: scene 2: shot names a keyframe of the video a cut comes from (line cut only)',
+    'short 1: must be a cut (schema_version 2, line "cut")',
     'short 1, scene 0: "answer" is not a shot of fixture-explainer',
-    'short 2: episode must be fixture-explainer',
+    'short 2: source.slug must be fixture-explainer',
     'short 2: slug must be fixture-explainer-short-2',
   ]);
 });
 
-test('the episode brand is on every frame and the last scene points to the long video', () => {
+test('the series theme brands every card and points every card to the long video', () => {
   const { load } = episodeBox();
   const [doc] = load().shorts;
-  const first = sceneHtml(doc, { sceneIndex: 0, text: '閃電亮了' });
-  const last = sceneHtml(doc, { sceneIndex: doc.scenes.length - 1, text: '原來如此' });
-  assert.match(first, /<div class="brand">原來如此事務所<\/div>/);
-  assert.match(first, /<div class="series">為什麼？<\/div>/);
-  assert.doesNotMatch(first, /完整版在長片/);
-  assert.match(last, /<div class="more">完整版在長片 ▶<\/div>/);
-  assert.match(last, /· 原來如此<\/div>/);
-  assert.equal(doc.series, EPISODE_SERIES);
+  const card = sceneHtml(doc, { sceneIndex: 0, text: '閃電亮了' });
+  assert.match(card, /data-theme="cut-sothatswhy"/);
+  assert.match(card, /<div class="brand">原來如此事務所<\/div>/);
+  assert.match(card, /<div class="series">原來如此<\/div>/);
+  assert.match(card, /· 完整版在長片 ▶<\/div>/);
+  assert.match(card, /background:#1f2a44/, 'the ink navy of the series');
+  assert.match(sceneHtml({ ...doc, series: 'other-video' }, { sceneIndex: 0, text: 'x' }), /data-theme="cut"/, "another cut keeps the highlights' theme");
 });
 
-test('the channel voice reads each phrase through the narration server, through the lexicon, one WAV each', async () => {
-  const requests = [];
-  const tone = encodeWav(Int16Array.from({ length: 48_000 }, (_, i) => (i > 4800 && i < 43_200 ? Math.round(8000 * Math.sin(i / 7)) : 0)));
-  const fetchImpl = async (url, init) => {
-    assert.equal(url, 'https://mokaair.test/api/video/speech');
-    assert.equal(new Headers(init.headers).get('authorization'), `Bearer ${TOKEN}`);
-    requests.push(JSON.parse(init.body));
-    return new Response(tone, { headers: { 'Content-Type': 'audio/wav', 'X-Billable-Characters': '12' } });
-  };
-  const voice = { provider: 'gemini', name: 'Sulafat', style: '輕鬆' };
-  const lexicon = { schema_version: 1, terms: { API: 'A P I' } };
-  const result = await serverPhrases({ phrases: ['光先到。', 'API 很快。'], voice, lexicon, site: 'https://mokaair.test', token: TOKEN, fetchImpl, sleep: async () => {} });
-  assert.equal(result.wavs.length, 2);
-  assert.equal(result.billable, 24);
-  assert.deepEqual(requests[0], { voice: 'gemini:Sulafat', style: '輕鬆', segments: [{ parts: [{ text: '光先到。' }], break_after_ms: 0 }] });
-  assert.deepEqual(requests[1].segments[0].parts, [{ text: 'API', alias: 'A P I' }, { text: ' 很快。' }]);
-  const wav = parseWav(result.wavs[0]);
-  assert.equal(wav.sampleRate, 48_000);
-  assert.ok(wav.samples.length < 48_000, 'the silence around the phrase is trimmed');
-  assert.deepEqual(phraseBody({ provider: 'azure', name: 'zh-TW-HsiaoChenNeural', rate: '+5%' }, '好', lexicon), { voice: 'zh-TW-HsiaoChenNeural', rate: '+5%', segments: [{ parts: [{ text: '好' }], break_after_ms: 0 }] });
+test('from-episode needs the episode and one of its two Shorts', async () => {
+  await assert.rejects(main(['from-episode']), /--slug required/);
+  await assert.rejects(main(['from-episode', '--slug', 'x', '--short', '3']), /--short must be 1 or 2/);
 });

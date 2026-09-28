@@ -1,7 +1,7 @@
 """The flat-explainer style preset for the drama route.
 
-Revision ID: 0112_video_flat_explainer
-Revises: 0111_video_story_series
+Revision ID: 0113_video_flat_explainer
+Revises: 0112_news_evidence_body_hash
 
 An illustrated "why" explainer (docs/videos/so-thats-why/) is a drama drawn in the new
 ``flat-explainer`` preset: narrator only, every shot a still. The owner picks it wherever a style
@@ -15,8 +15,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0112_video_flat_explainer"
-down_revision: str | None = "0111_video_story_series"
+revision: str = "0113_video_flat_explainer"
+down_revision: str | None = "0112_news_evidence_body_hash"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 

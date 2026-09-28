@@ -60,7 +60,7 @@ DEFAULT_CAPTION_LOCALES = ["en", "ja", "ko", "zh-CN"]
 # The AI drama route (docs/videos/DRAMA.md). The owner chose on 2026-09-26 to start without a
 # spending cap, so the budgets open wide and are lowered after the pilot; migration 0095 carries
 # the same values as server defaults, and the settings tab shows them.
-# flat-explainer (migration 0112) is the illustrated "why" explainer: narrator only, all stills.
+# flat-explainer (migration 0113) is the illustrated "why" explainer: narrator only, all stills.
 STYLE_PRESETS = ("cinematic-3d", "anime-2d", "ink-wash", "flat-explainer", "custom")
 STYLE_PRESET_CHECK = "style_preset IN ({})".format(
     ", ".join(f"'{preset}'" for preset in STYLE_PRESETS)

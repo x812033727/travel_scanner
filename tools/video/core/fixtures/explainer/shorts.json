@@ -1,11 +1,14 @@
 [
   {
-    "schema_version": 1,
+    "schema_version": 2,
     "slug": "fixture-explainer-short-1",
     "format": "shorts",
     "locale": "zh-TW",
+    "line": "cut",
     "series": "sothatswhy",
-    "episode": "fixture-explainer",
+    "source": {
+      "slug": "fixture-explainer"
+    },
     "titles": [
       "雷聲為什麼總比閃電晚到？",
       "先看到閃電，再聽到雷，原因很簡單"
@@ -31,7 +34,7 @@
       {
         "shot": "count",
         "headline": "數三秒＝一公里",
-        "big": "3 秒 ≈ 1 公里",
+        "big": "≈ 1 公里",
         "narration": [
           "所以數到三秒，雷大約在一公里外。",
           "光先到，聲音後到，原來如此。"
@@ -40,12 +43,15 @@
     ]
   },
   {
-    "schema_version": 1,
+    "schema_version": 2,
     "slug": "fixture-explainer-short-2",
     "format": "shorts",
     "locale": "zh-TW",
+    "line": "cut",
     "series": "sothatswhy",
-    "episode": "fixture-explainer",
+    "source": {
+      "slug": "fixture-explainer"
+    },
     "titles": [
       "光比聲音快幾倍？",
       "差了將近一百萬倍"

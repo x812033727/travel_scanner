@@ -1,27 +1,62 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { syncBuiltinESMExports } from 'node:module';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PROFILE, buildTimeline, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
+import { PROFILE, buildTimeline, saveJson, sceneHtml, sha256, sourcePath, srt, validate, verifyEvidence } from './core.mjs';
 
 const base = fileURLToPath(new URL('../../../docs/videos/ai-shorts/',import.meta.url));
 const pilot = () => JSON.parse(readFileSync(path.join(base,'pilots/shorts-receipt-total.json'),'utf8'));
 
-test('malformed Shorts collections return validation problems instead of throwing',()=>{
-  const cases = [
-    ['scenes object', {scenes:{}}], ['scenes string', {scenes:'bad'}],
-    ['scenes number', {scenes:7}], ['null scene', {scenes:[null]}],
-    ['primitive scene', {scenes:[3]}], ['array scene', {scenes:[[]]}],
-    ['evidence object', {evidence:{}}], ['evidence boolean', {evidence:true}],
-    ['null evidence row', {evidence:[null]}], ['primitive evidence row', {evidence:['bad']}],
-    ['non-string evidence path', {evidence:[{path:3,sha256:'a'.repeat(64)}]}],
-  ];
-  for (const [name, fields] of cases) {
-    let problems;
-    assert.doesNotThrow(()=>{problems=validate({...pilot(),...fields});},name);
-    assert.ok(problems.length>0,name);
+for (const [version, line] of [[1, 'lab'], [2, 'lab'], [2, 'cut'], [2, 'drama']]) {
+  const validScript = () => ({
+    ...pilot(),
+    schema_version: version,
+    ...(version === 2 ? { line } : {}),
+    ...(line !== 'lab' ? { series: 'source-video', source: { slug: 'source-video' } } : {}),
+  });
+  test(`v${version} ${line} reports malformed scene collections and rows without throwing`, () => {
+    assert.deepEqual(validate(validScript()), []);
+    for (const scenes of [{}, 'invalid', 0, true, null, [null], [undefined], [[]], [false]]) {
+      let errors;
+      assert.doesNotThrow(() => { errors = validate({ ...validScript(), scenes }); }, `scenes: ${JSON.stringify(scenes)}`);
+      assert.ok(errors.some((error) => /scenes|scene /.test(error)), `scenes: ${JSON.stringify(scenes)}`);
+    }
+  });
+  test(`v${version} ${line} reports malformed evidence collections and rows without throwing`, () => {
+    for (const evidence of [
+      {}, 'invalid', 0, true, null, [null], [undefined], [[]], [false],
+      [{ path: 123, sha256: 'a'.repeat(64) }], [{ path: ' ', sha256: 'a'.repeat(64) }],
+    ]) {
+      let errors;
+      assert.doesNotThrow(() => { errors = validate({ ...validScript(), evidence }); }, `evidence: ${JSON.stringify(evidence)}`);
+      assert.ok(errors.some((error) => error.includes('evidence')), `evidence: ${JSON.stringify(evidence)}`);
+    }
+  });
+}
+
+test('a failed report write preserves the previous complete JSON', (t) => {
+  const directory = mkdtempSync(path.join(os.tmpdir(), 'shorts-atomic-report-'));
+  const file = path.join(directory, 'qa.json');
+  const previous = `${JSON.stringify({ ok: false, final_sha256: 'previous-artifact' }, null, 2)}\n`;
+  const originalWrite = fs.writeFileSync;
+  writeFileSync(file, previous);
+  const interrupted = Object.assign(new Error('simulated interrupted report write'), { code: 'EIO' });
+  try {
+    t.mock.method(fs, 'writeFileSync', (target, data, ...options) => {
+      originalWrite(target, String(data).slice(0, 7), ...options);
+      throw interrupted;
+    });
+    syncBuiltinESMExports();
+    assert.throws(() => saveJson(file, { ok: true, final_sha256: 'new-artifact' }), (error) => error === interrupted);
+    assert.equal(readFileSync(file, 'utf8'), previous, 'a failed update must not truncate the last report');
+  } finally {
+    t.mock.restoreAll();
+    syncBuiltinESMExports();
+    rmSync(directory, { recursive: true, force: true });
   }
 });
 

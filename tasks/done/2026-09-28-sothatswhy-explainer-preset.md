@@ -70,3 +70,4 @@ scope:
 - 2026-09-28 在本機 Postgres 16 跑過 `alembic upgrade head`、`downgrade -1`、再 `upgrade head`，以及 0105、0103 的整合測試，都綠。
 - 2026-09-28 合併 main 時與 main 的 0105–0108 撞號，改成 `0109_video_flat_explainer`（接在 `0108_video_drama_messages` 後）。
 - 2026-09-28 再併 main：main 同時合進 `0109_video_shorts` 與 `0111_video_story_series`，兩支都接 0108，main 變成兩個 head（`tests/test_schema.py` 會紅）。0111 改接 `0109_video_shorts`（main 的 #918 也做了同樣的修正，併進來後以 main 為準），這個 PR 自己改號 `0112_video_flat_explainer` 接在 0111 後，測試檔同步改名。上面列的 0109 檔名現在是 0112。
+- 2026-09-28 第三次：#927 的 `0112_news_evidence_body_hash` 也接 0111，照站主在 PR 上的指示改號 `0113_video_flat_explainer`，接在 `0112_news_evidence_body_hash` 後，測試檔改名 `test_migration_0113_video_flat_explainer.py`。

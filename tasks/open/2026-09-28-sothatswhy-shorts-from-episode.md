@@ -18,6 +18,7 @@ scope:
   - tools/video/automation/automation.test.mjs
   - docs/videos/so-thats-why/README.md
   - docs/videos/ai-shorts/README.md
+  - docs/videos/so-thats-why/playlists.md
 ---
 
 # So That's Why: cut two Shorts from each long episode's keyframes and script
@@ -53,3 +54,4 @@ scope:
 - 直式構圖沿用既有 `.asset` 版位（橫式關鍵影格等比縮進內容區、置中），沒有另外裁切；站主看過第一支再決定要不要改成裁 4:5。
 - `--voice server` 每句一個請求，量得到每句的真實長度；計費照旁白伺服器的字數。
 - 2026-09-28：`writer:explainer` 的縮圖說明改成系列規格（headline 每行 ≤ 10 字、≤ 2 行，`tag`／`pillar`，可選 `layout`，`variants` 的 B、C），原本寫 ≤ 12 字會一直被 lint 擋下再修。改在這張票，因為它的 scope 本來就含 `tools/video/automation`。
+- 2026-09-28：併 #925（Shorts 腳本第 2 版、`speech.mjs`、`package`／`push`）後改寫：集的 Shorts 是第 2 版的 `line: "cut"`、`series: "sothatswhy"`、`source.slug`＝長片（`episode.mjs` 的 `episodeShortFields`），不再擴充第 1 版（#925 讓第 1 版只留給三支試片）。`build.mjs` 用 main 的原樣；`from-episode` 把 `shot` 換成關鍵影格後寫成腳本檔，交給一般 `build`（`--speech server` 預設），之後走 `check-audio`→`qa`→`package`→`push`，導回長片由 `package` 從網站讀網址。自己的 `voice.mjs` 刪掉（`speech.mjs` 的 server 旁白取代）。系列外觀是 `layouts.mjs` 的 `cut:sothatswhy` 主題（每張卡片底下「完整版在長片 ▶」，不再只有最後一格）。

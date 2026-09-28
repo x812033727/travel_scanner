@@ -61,7 +61,7 @@
 
 - 重用長片的關鍵影格重新構圖成直式，不另外生圖。
 - 發佈時間：長片隔天 12:00 發 Shorts 1、第三天 18:00 發 Shorts 2，所以每天都有兩支 Shorts 導回前兩天的長片（`schedule.csv`）。Shorts 說明欄第一行放長片連結，並設定「相關影片」。
-- 腳本：解說版撰稿寫長片時順手寫 `docs/videos/<slug>/shorts.json`（兩支，`series: "sothatswhy"`；場景用 `shot` 指長片的鏡頭，圖直接沿用那張關鍵影格並綁雜湊）。寫壞了只記在工人 notes，不擋長片，可以之後手寫。
+- 腳本：解說版撰稿寫長片時順手寫 `docs/videos/<slug>/shorts.json`：兩支長片精華（Shorts 腳本第 2 版，`line: "cut"`、`series: "sothatswhy"`、`source.slug` 是長片，[`../SHORTS.md`](../SHORTS.md)）；場景用 `shot` 指長片的鏡頭，圖直接沿用那張關鍵影格並綁雜湊。寫壞了只記在工人 notes，不擋長片，可以之後手寫。
 - 做法：長片的關鍵影格畫好（最好是成片核准）後，在有 ffmpeg 與 Chromium 的機器跑：
 
   ```bash
@@ -69,7 +69,7 @@
   node tools/video/shorts/cli.mjs from-episode --slug <slug> --workdir <repo 外的目錄>    # 兩支都做；--short 1 只做一支
   ```
 
-  聲音預設 `--voice server`：用長片 `video.json` 的頻道聲音經旁白伺服器逐句合成（按字數計費），也可以給 Windows 聲音名稱或 `--audio-dir`。長片已有 YouTube id 時說明欄第一行自動是「完整版：https://youtu.be/…」，沒有就留待補，`UPLOAD.md` 會提醒。畫面左上是「原來如此事務所」，最後一格加「完整版在長片 ▶」。
+  `from-episode` 把每支的 `shot` 換成關鍵影格、寫成腳本檔，再交給一般的 `build`（旁白預設 `--speech server`：頻道聲音經網站合成，按字數計費；也可以 `--speech windows` 或 `--audio-dir`）。之後每個 build 目錄照 Shorts 的一般順序走 `check-audio` → `qa` → `package` → `push`：`package` 從網站讀長片的網址，把 Short 導回長片。卡片用 `cut:sothatswhy` 主題（`tools/video/shorts/layouts.mjs`）：系列色盤、左上「原來如此事務所」、每張卡片底下「完整版在長片 ▶」。
 
 ## 多語
 
@@ -115,7 +115,7 @@
 
 ## 製作怎麼接現有產線
 
-1. 在 `/admin/videos` 發起一支漫劇：故事前提填 `episodes.json` 那一列的題目（可附 `hook`、`answer` 當備註），風格選**扁平插畫解說**（`flat-explainer`，migration 0112）。這會建一部單集作品（one-off，`docs/videos/DRAMA-FLOW.md`）：工人先寫一份解說版的「故事聖經」（問題、一句答案、原因、大綱、來源網址，沒有角色）給你核准，核准後用解說版的撰稿、查核提示詞，產出 `format: "drama"`、`look.preset: "flat-explainer"`、`characters: []`、全部 `visual: "still"` 的 `video.json`；沒有角色就沒有設定圖關卡，直接畫關鍵影格。規格見 `youtube-video` skill 的 `references/drama.md`，範例 `tools/video/core/fixtures/explainer/`。
+1. 在 `/admin/videos` 發起一支漫劇：故事前提填 `episodes.json` 那一列的題目（可附 `hook`、`answer` 當備註），風格選**扁平插畫解說**（`flat-explainer`，migration 0113）。這會建一部單集作品（one-off，`docs/videos/DRAMA-FLOW.md`）：工人先寫一份解說版的「故事聖經」（問題、一句答案、原因、大綱、來源網址，沒有角色）給你核准，核准後用解說版的撰稿、查核提示詞，產出 `format: "drama"`、`look.preset: "flat-explainer"`、`characters: []`、全部 `visual: "still"` 的 `video.json`；沒有角色就沒有設定圖關卡，直接畫關鍵影格。規格見 `youtube-video` skill 的 `references/drama.md`，範例 `tools/video/core/fixtures/explainer/`。
 2. 之後照漫劇路線：選大綱 → 劇本 → 查核 → 旁白 → 關鍵影格 → 合成 → 五語字幕 → 配音 → 上架包。
 3. Shorts：`shorts/cli.mjs from-episode`（見上面 Shorts 一節），用同一集的關鍵影格與 `shorts.json`。
 

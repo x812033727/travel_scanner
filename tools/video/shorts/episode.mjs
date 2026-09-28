@@ -1,11 +1,17 @@
 // An explainer episode's two Shorts (docs/videos/so-thats-why/README.md §Shorts): the scripts in
-// docs/videos/<slug>/shorts.json, their pictures the episode's keyframes in its work directory.
+// docs/videos/<slug>/shorts.json, cuts of the episode (schema 2, line "cut", docs/videos/SHORTS.md)
+// whose pictures are the episode's keyframes in its work directory.
 import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { docDir, lexiconFile, readJson, resolveWorkdir, ROOT } from '../core/paths.mjs';
-import { EPISODE_SERIES, episodeShort, validate } from './core.mjs';
+import { episodeShort, validate } from './core.mjs';
 
 export const SHORTS_PER_EPISODE = 2;
+// The series an explainer's Shorts carry: it picks their theme (layouts.mjs, cut:sothatswhy).
+export const EPISODE_SERIES = 'sothatswhy';
+
+/** The fields the tool decides for the episode's Short number `index` (0 or 1), over a draft. */
+export const episodeShortFields = (slug, index) => ({ schema_version: 2, slug: `${slug}-short-${index + 1}`, format: 'shorts', locale: 'zh-TW', line: 'cut', series: EPISODE_SERIES, source: { slug } });
 export const shortsFile = (slug, root = ROOT) => path.join(docDir(slug, root), 'shorts.json');
 
 /**
@@ -19,8 +25,9 @@ export function episodeShortsProblems(shorts, video) {
   for (const [index, doc] of shorts.entries()) {
     const where = `short ${index + 1}`;
     for (const error of validate(doc)) problems.push(`${where}: ${error}`);
+    if (doc?.schema_version !== 2 || doc?.line !== 'cut') problems.push(`${where}: must be a cut (schema_version 2, line "cut")`);
     if (doc?.series !== EPISODE_SERIES) problems.push(`${where}: series must be ${EPISODE_SERIES}`);
-    if (doc?.episode !== video.slug) problems.push(`${where}: episode must be ${video.slug}`);
+    if (doc?.source?.slug !== video.slug) problems.push(`${where}: source.slug must be ${video.slug}`);
     if (doc?.slug !== `${video.slug}-short-${index + 1}`) problems.push(`${where}: slug must be ${video.slug}-short-${index + 1}`);
     const scenes = Array.isArray(doc?.scenes) ? doc.scenes : [];
     for (const [i, scene] of scenes.entries()) {
