@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-wordpress-blog-build-source-inline
 title: Correct WordPress blog-build source inline
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-batch033
@@ -36,7 +36,7 @@ blocked until the published source is corrected and their baseline rebound.
 - [x] Claim the exact source pack path on a branch from latest main.
 - [x] Replace the mistaken inline without changing the visible sentence.
 - [x] Verify the minimal diff, new normalized source hash, lint and tests.
-- [ ] Open source-only draft PR and leave the task in review.
+- [x] Open source-only draft PR and leave the task in review.
 
 ## How to verify
 
@@ -64,3 +64,6 @@ A structural comparison against `origin/main` proved the changed inline is
 the only JSON difference. Pack lint passed with the existing no-summary
 advisory; content-link and guide-link tests passed (9 passed, 6 skipped).
 `npm run check:tasks` and `git diff --check` passed.
+Draft source-only PR: https://github.com/x812033727/travel_scanner/pull/883.
+No merge, deployment or publication has occurred; move this task to done
+only after the correction is merged.
