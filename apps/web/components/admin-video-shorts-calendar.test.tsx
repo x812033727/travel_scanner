@@ -65,6 +65,16 @@ describe("a slot's time is a time of day in the calendar's zone", () => {
     expect(zonedInstant("2026-10-05T19:30", "Asia/Nowhere")).toBeNull();
   });
 
+  it("rejects nonexistent wall times and keeps the existing fall-back choice", () => {
+    expect(zonedInstant("2027-03-14T02:30", "America/Los_Angeles")).toBeNull();
+    // Lord Howe advances by half an hour, so a one-hour-only check is insufficient.
+    expect(zonedInstant("2026-10-04T02:15", "Australia/Lord_Howe")).toBeNull();
+    expect(zonedInstant("2027-03-14T01:30", "America/Los_Angeles")?.toISOString()).toBe("2027-03-14T09:30:00.000Z");
+    expect(zonedInstant("2027-03-14T03:30", "America/Los_Angeles")?.toISOString()).toBe("2027-03-14T10:30:00.000Z");
+    expect(zonedInstant("2026-11-01T01:30", "America/Los_Angeles")?.toISOString()).toBe("2026-11-01T08:30:00.000Z");
+    expect(zonedInstant("2027-02-30T19:30", TAIPEI)).toBeNull();
+  });
+
   it("writes an instant back as that zone's wall clock", () => {
     expect(localInput("2026-10-05T11:30:00Z", TAIPEI)).toBe("2026-10-05T19:30");
     expect(localInput("2026-10-05T16:30:00Z", TAIPEI)).toBe("2026-10-06T00:30");
