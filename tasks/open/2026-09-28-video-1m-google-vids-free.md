@@ -53,3 +53,7 @@ node tools/video/cli.mjs status --slug google-vids-free-ai-video-omni-1-1 --work
 - 官方數字都以撰稿當天重查為準，brief 的「會過期的事實」列了每個要重查的網址。
 - 不放實際生成的影片片段（使用範圍未定）；用投影片版型描述流程。
 - 記憶點：關分頁前要先把生成片段插進 Vid，否則消失。
+
+## Progress (2026-09-28, claude-opus-5-5)
+
+Pipeline stages 1–4 done: `video.json` (option A, 11 chapters, ~8.2 min, lint 0/0), `claims.md` (c1–c11), `verify-1.md`. Two facts corrected: the usage-scope quote is now the help page's verbatim sentence, and the quota chapter no longer calls the 6-clip figure a personal-account limit (the page labels it Workspace Individual; default is 500 seconds; the generation page says most users get 50). Follow-up filed for the site article: `google-vids-quota-recheck`. Lexicon gained `Lite`, `Vid`, `Individual`. Remaining stages need the owner setup; next is `review-push --slug google-vids-free-ai-video-omni-1-1 --gate outline`.
