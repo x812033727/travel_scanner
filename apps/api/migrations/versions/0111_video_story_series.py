@@ -16,11 +16,8 @@ make, and each runs 12 to 15 minutes. So:
   ``look`` (JSON: the style, the negative prompt and the motion every story of the series
   shares, since a story series has no setting book to keep them in; NULL for the other kinds).
 
-The number skips 0109 and 0110 on purpose. Two open pull requests add a 0109 on top of 0108 as
-well, #898 (``0109_video_shorts``) and #904 (``0109_video_flat_explainer``), and whichever of
-them merges second takes the next number. ``down_revision`` names the head main had when this
-branch was last pushed: when the pull request leaves draft, set it again to the head main has
-then, and the number too if a merged migration took it (skill backend-conventions, "編號會撞").
+The Shorts foundation (``0109_video_shorts``, #898) merged before the story feature (#910).
+This migration follows that revision so the merged features share one upgrade chain.
 
 The columns are added only when missing and the checks replaced whatever their text, so the
 upgrade may run again. The downgrade refuses while a story series, or any series longer than 8
