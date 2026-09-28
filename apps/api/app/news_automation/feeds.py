@@ -154,9 +154,9 @@ class _LegacyArticleParser(HTMLParser):
     It ends the capture at the first self-closing tag (``<img/>``, ``<br/>``) and pops end
     tags by depth without checking the name, so on Cloudflare, Chainalysis and SEC pages it
     kept a tag list or site navigation instead of the story. The publish revalidation
-    (``validation._legacy_match``) still compares against it, so a candidate stored before
-    the fix is not held as changed. Once no such candidate waits (retention clears them
-    after 90 days) this class can go.
+    (``validation._legacy_match``) still compares against it when its authenticated text
+    covers the entire current story. Truncated legacy captures require fresh evidence.
+    Once no such candidate waits (retention clears them after 90 days) this class can go.
     """
 
     _void_tags = {
