@@ -44,7 +44,7 @@ export const LINE_OVERHEAD_MS = 400;
 const STYLE_TAIL = "Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace.";
 // The zh-TW style names Taiwan Mandarin; a dub keeps the manner and changes the language.
 export const DUB_STYLES = {
-  "zh-TW": `Relaxed, conversational tech explainer talking to a friend, in natural Taiwanese Mandarin with a Taiwan accent. ${STYLE_TAIL}`,
+  "zh-TW": `Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. ${STYLE_TAIL}`,
   en: `Relaxed, conversational tech explainer talking to a friend, in clear, natural English. ${STYLE_TAIL}`,
   ja: `Relaxed, conversational tech explainer talking to a friend, in natural standard Japanese. ${STYLE_TAIL}`,
   ko: `Relaxed, conversational tech explainer talking to a friend, in natural standard Korean. ${STYLE_TAIL}`,
