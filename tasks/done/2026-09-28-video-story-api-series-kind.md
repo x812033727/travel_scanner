@@ -1,13 +1,13 @@
 ---
 id: 2026-09-28-video-story-api-series-kind
 title: 作品類型 story：遷移、每日配額、圖片模型覆寫與匯入指令
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-video-story-api
 claimed_at: 2026-09-28T09:49:14Z
 created_at: 2026-09-28T03:31:12Z
-completed_at:
+completed_at: 2026-09-28T12:10:58Z
 branch: claude/video-story-api-series-kind
 depends_on:
   - 2026-09-28-video-story-design-docs
