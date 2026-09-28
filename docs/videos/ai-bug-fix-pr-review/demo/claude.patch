@@ -1,0 +1,73 @@
+diff --git a/fare.mjs b/fare.mjs
+index 111f656..cd9633e 100644
+--- a/fare.mjs
++++ b/fare.mjs
+@@ -5,6 +5,7 @@ export function splitFareCents(totalCents, people) {
+   if (!Number.isSafeInteger(people) || people < 1 || people > 100) {
+     throw new RangeError('people must be a safe integer from 1 to 100');
+   }
+-  const each = Math.round(totalCents / people);
+-  return Array(people).fill(each);
++  const base = Math.floor(totalCents / people);
++  const remainder = totalCents - base * people;
++  return Array.from({ length: people }, (_, i) => (i < remainder ? base + 1 : base));
+ }
+diff --git a/fare.test.mjs b/fare.test.mjs
+index 433b84d..05329b4 100644
+--- a/fare.test.mjs
++++ b/fare.test.mjs
+@@ -6,6 +6,54 @@ test('evenly divisible total', () => {
+   assert.deepEqual(splitFareCents(120, 3), [40, 40, 40]);
+ });
+ 
++test('non-divisible total gives remainder cents to earlier positions', () => {
++  assert.deepEqual(splitFareCents(100, 3), [34, 33, 33]);
++  assert.deepEqual(splitFareCents(101, 3), [34, 34, 33]);
++  assert.deepEqual(splitFareCents(7, 4), [2, 2, 2, 1]);
++});
++
++test('total smaller than the number of people', () => {
++  assert.deepEqual(splitFareCents(2, 5), [1, 1, 0, 0, 0]);
++});
++
++test('zero total', () => {
++  assert.deepEqual(splitFareCents(0, 1), [0]);
++  assert.deepEqual(splitFareCents(0, 4), [0, 0, 0, 0]);
++});
++
++test('single person takes the whole fare', () => {
++  assert.deepEqual(splitFareCents(1234, 1), [1234]);
++});
++
++test('shares always sum to the total and differ by at most one cent', () => {
++  for (let people = 1; people <= 100; people += 7) {
++    for (const totalCents of [0, 1, 5, 99, 100, 101, 12345, 999999]) {
++      const shares = splitFareCents(totalCents, people);
++      assert.equal(shares.length, people);
++      assert.ok(shares.every(Number.isInteger), 'every share is an integer');
++      assert.equal(
++        shares.reduce((sum, share) => sum + share, 0),
++        totalCents,
++      );
++      assert.ok(Math.max(...shares) - Math.min(...shares) <= 1);
++      // remainder cents land in the earlier positions, so shares never increase
++      assert.deepEqual(shares, [...shares].sort((a, b) => b - a));
++    }
++  }
++});
++
+ test('invalid passenger count', () => {
+   assert.throws(() => splitFareCents(100, 0), RangeError);
+ });
++
++test('invalid people values are rejected', () => {
++  for (const people of [-1, 101, 2.5, NaN, Infinity, '3', null, undefined]) {
++    assert.throws(() => splitFareCents(100, people), RangeError);
++  }
++});
++
++test('invalid totals are rejected', () => {
++  for (const totalCents of [-1, 1.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1, '100', null, undefined]) {
++    assert.throws(() => splitFareCents(totalCents, 3), RangeError);
++  }
++});
