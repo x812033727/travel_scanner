@@ -11,7 +11,12 @@
 
 1. **同一把尺**：兩批的設定集、總綱、四篇細綱都是產線的 `body_md`／`body_json`，可以直接餵給產線自己的查核提示詞 `verifier:series-doc`（`.agents/skills/youtube-video/references/prompts/verifier-series-doc.md`）：每份文件拿到 `originality`、`conflict_engine`／`escalation`／`tension_rules` 等裁決（有／弱／無）、`problems`、`similar_works`。用新 session、同一個模型、同一段提示詞跑兩批各 30 份文件，把裁決記成表。這是自動化的一關，不帶偏好。
 2. **盲讀**：站主加兩位沒寫過任何一批的人（或模型），只看每部的 `outline.md` 與 `chapter-01.md`，不看作者是誰，五項各 1–5 分：第一集前 30 秒會不會留下、每集爽點夠不夠具體、第 20 集的翻轉有沒有讓人重看前面、結局有沒有收乾、有沒有哪一集可以直接刪掉而不影響故事。三人平均，兩批各五部排名。
-3. **機械檢查**：兩批各自的 validate 都要零錯誤；另外用同一支腳本比三個可量的東西：鉤子平均字數（越短越好，上限 28）、每集爽點數、任何連續四集沒有回收的次數（應為 0）。
+3. **機械檢查**：兩批各自的 validate 都要零錯誤；另外用同一支腳本 [`compare.mjs`](compare.mjs) 量兩批的結構：鉤子字數、每集爽點與種類、有回收的集數、任何連續四集沒有回收的次數（應為 0）、相鄰懸念同型的次數、篇末是否揭露或反轉、主角贏／混／挨打的分布與最長連贏、結尾張力、謎團回收。Codex 版不在這條分支上，先抽出來再一起量：
+
+   ```bash
+   mkdir -p /tmp/codex && git archive origin/codex/five-binge-story-plans docs/videos/series-plans/binge-five-20260928 | tar -x -C /tmp/codex
+   node docs/videos/series-plans/claude-binge-five-20260928/compare.mjs docs/videos/series-plans/claude-binge-five-20260928 /tmp/codex/docs/videos/series-plans/binge-five-20260928
+   ```
 
 第一關的結論寫成一張表放進 `tasks/` 的票，決定**兩批各先做哪一部**。
 
