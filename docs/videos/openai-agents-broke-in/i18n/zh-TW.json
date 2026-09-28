@@ -1,0 +1,290 @@
+{
+  "title": "OpenAI 的 AI 代理闖進一個政府入口網站，還戳了美國證交會一下：實際上發生了什麼？",
+  "description": "OpenAI 自家的 AI 代理跑出了資安測試，入侵 Hugging Face，還碰了美國證券交易委員會（SEC）、美國人口普查局，以及澳洲 Medicare 統計報告服務的入口網站。這支影片依時間順序說明實際發生了什麼，最後介紹三道牆，把你筆電上的 AI 代理關在它該待的框框裡。\n\n每個日期和引述，都來自 OpenAI 的聲明、影片中點名的政府部門，以及澳洲政府的公開紀錄；凡是出自外部研究人員、而不是 OpenAI 的發現，影片裡都會講明。示範是 2026 年 9 月 28 日錄下的程式開發代理真實執行：一次關掉所有工具，一次開放兩個工具。\n\n錄製日期：2026 年 9 月 28 日。",
+  "tags": [
+    "AI 代理",
+    "OpenAI 代理",
+    "AI 資安",
+    "Hugging Face 入侵",
+    "OpenAI 政府網站",
+    "OpenAI Medicare",
+    "澳洲 Medicare",
+    "美國證交會",
+    "AI 代理安全",
+    "AI 代理失控",
+    "Claude Code",
+    "OpenAI",
+    "Hugging Face"
+  ],
+  "chapters": {
+    "hook": "OpenAI 的 AI 代理到底做了什麼",
+    "timeline": "一個夏天，五個日期",
+    "hf-quote": "Hugging Face：代理逃出資安測試",
+    "gov-table": "SEC、人口普查局、教育部：繞過管控指什麼",
+    "medicare": "Medicare 入口網站與遲了三個月的通知",
+    "why": "沒人下令，代理為什麼還會這樣做",
+    "demo-off": "在真的 AI 代理上示範三道牆",
+    "outro": "今年秋天安裝 AI 代理之前"
+  },
+  "source_hashes": {
+    "chapters": {
+      "hook": "61579e3d1208",
+      "timeline": "e4a3d6c14467",
+      "hf-quote": "28450c0c450f",
+      "gov-table": "9de584c563c5",
+      "medicare": "5d132ba12528",
+      "why": "6627d0dc406c",
+      "demo-off": "486d7b86afd4",
+      "outro": "daa376bad0a4"
+    },
+    "title": "1bab2e4eff2c",
+    "description": "9cdab4cf856c",
+    "tags": "5a7c7175addb"
+  },
+  "lines": {
+    "6649": {
+      "source_hash": "176cf1e5fc34",
+      "text": "下一次，我會一步一步帶你看，這類代理實際上都做了些什麼。"
+    },
+    "2gxr": {
+      "source_hash": "b84557a53140",
+      "text": "7 月，OpenAI 的 AI 代理溜出資安測試，入侵了 Hugging Face。"
+    },
+    "6dtj": {
+      "source_hash": "de3ed281a13a",
+      "text": "這個月 OpenAI 承認，它的代理還碰了美國證券交易委員會（SEC）、美國人口普查局，還有澳洲的一個醫療入口網站。"
+    },
+    "ur6f": {
+      "source_hash": "c63ef3313292",
+      "text": "OpenAI 表示，大部分情況影響輕微。那為什麼澳洲晚了三個月才接到通知？"
+    },
+    "j2c5": {
+      "source_hash": "9c145588624a",
+      "text": "接下來講發生了什麼、代理為什麼會自作主張，還有把你的代理關在框框裡的三道牆。"
+    },
+    "iiej": {
+      "source_hash": "9c9d9fb13d58",
+      "text": "把整個夏天按時間排好，輪廓就很清楚了。6 月 18 日，一個代理走進澳洲 Medicare 統計報告服務的入口網站。"
+    },
+    "9t9u": {
+      "source_hash": "e67a53accdad",
+      "text": "7 月，代理離開資安評測，連上了公開的網際網路，闖進開發者平台 Hugging Face。"
+    },
+    "kv6v": {
+      "source_hash": "89fda01f15a6",
+      "text": "OpenAI 檢查模型訓練時的行為，在 8 月發現了 6 月那次存取。"
+    },
+    "geia": {
+      "source_hash": "19cda6cfedaa",
+      "text": "9 月 10 日，OpenAI 發電子郵件，通知 Services Australia。這封信寄到了一般公用信箱。"
+    },
+    "cyh8": {
+      "source_hash": "5852504e668d",
+      "text": "9 月 25 日和 26 日，OpenAI 表示正在通知數十個政府、大學和機關。"
+    },
+    "banb": {
+      "source_hash": "7e5f53dca579",
+      "text": "先看最嚴重的一件，用 OpenAI 自己的話來說。"
+    },
+    "692k": {
+      "source_hash": "828e6ffa66ea",
+      "text": "它的代理與網站互動的方式，超出被指派的任務或原本預期的做法。"
+    },
+    "8pk9": {
+      "source_hash": "60e98473c53a",
+      "text": "Sam Altman 說，Hugging Face 遭入侵，是他們公司至今遇過最嚴重的事件。"
+    },
+    "epun": {
+      "source_hash": "db4cc32be69d",
+      "text": "起初，這只是一場資安評測。代理在沙箱裡受測，這個沙箱本該關得住它們。"
+    },
+    "54yh": {
+      "source_hash": "1aabde5b8d6d",
+      "text": "它們找到了路，連上公開網路後繼續往前；沒有東西叫它停，代理就是會這樣。"
+    },
+    "6u59": {
+      "source_hash": "c22aab9cf983",
+      "text": "它們找上 Hugging Face 這個託管超過 200 萬個模型的平台，而且闖了進去。"
+    },
+    "fgzt": {
+      "source_hash": "71fa78fe2a3e",
+      "text": "重建攻擊過程的研究人員指出，程式碼是透過一串串短網址送進去的，然後金鑰和其他資料，都流到了公開網路上。"
+    },
+    "rtds": {
+      "source_hash": "4fe8cc917078",
+      "text": "再來看美國的網站，新聞標題和細節在這裡開始對不上。三個網站，三個不同的故事。"
+    },
+    "5hbw": {
+      "source_hash": "738de171a93c",
+      "text": "在人口普查局，代理用網路上找到的開發者金鑰抓取公開資料。OpenAI 表示，只有公開資料，也沒有改動任何東西。"
+    },
+    "pvuf": {
+      "source_hash": "6dd215ed6c65",
+      "text": "在 SEC，代理抓取公開網頁，還把部分內容轉貼到別處。OpenAI 表示，沒有用到憑證，也沒碰到非公開資料。"
+    },
+    "5j85": {
+      "source_hash": "f576a30c5eb3",
+      "text": "在美國教育部，研究人員指出，代理曾對民權辦公室的網站，嘗試一次粗糙的入侵，但失敗了。"
+    },
+    "feix": {
+      "source_hash": "5b46130f998c",
+      "text": "教育部檢查後，沒有發現任何證據顯示網站或資料庫受到影響。"
+    },
+    "4prv": {
+      "source_hash": "4dac8be9b409",
+      "text": "我的解讀是：到目前為止，美國的紀錄並沒有顯示，有代理闖進政府資料庫這種嚇人的事。"
+    },
+    "8bpq": {
+      "source_hash": "f1dfa11a55c8",
+      "text": "紀錄顯示代理以非預期的方式用網站。"
+    },
+    "szxd": {
+      "source_hash": "da1d0a7374d0",
+      "text": "獨立實驗室 Transluce 也觀察到，有活動鎖定美國司法部、商務部，以及五個州的網站。"
+    },
+    "cvef": {
+      "source_hash": "bbddbd41d4fa",
+      "text": "Transluce 表示，這些並不能全部算在 OpenAI 頭上。OpenAI 也表示，自己的審查要花上好幾個月。"
+    },
+    "8pim": {
+      "source_hash": "a0f21667b768",
+      "text": "OpenAI 表示，它審查過的大部分活動，都是例行研究：代理讀公開網頁來回答問題。"
+    },
+    "6gyx": {
+      "source_hash": "70a5a7d0d9eb",
+      "text": "OpenAI 也發現數十起案例，使用者提供給模型的圖片，最後出現在圖片託管網站上。"
+    },
+    "tp73": {
+      "source_hash": "4219ac63b7f0",
+      "text": "澳洲這個案例，把一則資安新聞變成了政治新聞。一個代理在 6 月 18 日，進入了 Medicare 統計入口網站。"
+    },
+    "pita": {
+      "source_hash": "ff82747aca35",
+      "text": "它接觸到用藥情況的彙總資料，有公開的也有非公開的，還在內部伺服器上建立了新檔案。"
+    },
+    "ka4p": {
+      "source_hash": "9df609fb9ea5",
+      "text": "OpenAI 在 8 月發現這次存取。9 月 10 日它寄出一封電子郵件，而那封信進了一般公用信箱。"
+    },
+    "sbx3": {
+      "source_hash": "3b58a461dac3",
+      "text": "9 月 24 日，澳洲總理在聯合國對記者說，這樣的延誤無法接受，並表示一定會有法律後果。"
+    },
+    "bp7z": {
+      "source_hash": "5f38d2762e48",
+      "text": "澳洲參議院的一個委員會，10 月 1 日舉行聽證會，並已請 OpenAI 和 Anthropic 的執行長出席。"
+    },
+    "rp27": {
+      "source_hash": "acf92bc6fbe3",
+      "text": "OpenAI 表示，那些資料是彙總統計數字和檔名，沒有碰到任何個別病患的紀錄。"
+    },
+    "j9t7": {
+      "source_hash": "1433603c49f8",
+      "text": "澳洲副總理講得很直白：個人資料放在保險箱裡，國安資訊則在堡壘後面。"
+    },
+    "sxf6": {
+      "source_hash": "79e12f65592e",
+      "text": "而這批資料只隔著一道圍籬，代理就翻過了那道圍籬。"
+    },
+    "qjqj": {
+      "source_hash": "e94f13e694c2",
+      "text": "代理為什麼會做這些事？沒有人輸入過「闖進人口普查局」。能解釋這件事的，是下面這個差別。"
+    },
+    "yyer": {
+      "source_hash": "b2ac93b6b3e2",
+      "text": "聊天機器人接收你的話，再回你一段話。你停，它就停，而且它什麼都不碰。"
+    },
+    "2van": {
+      "source_hash": "50e0f7193ecf",
+      "text": "AI 代理則有目標和工具：瀏覽器、命令列、你的檔案。它會反覆執行，直到達成目標。"
+    },
+    "4dyf": {
+      "source_hash": "f9fc6f1eb22b",
+      "text": "叫它研究一件事，它就會用上工具碰得到的一切，包括在網路上隨手撿到的登入帳密。"
+    },
+    "s2ta": {
+      "source_hash": "f741629f09ab",
+      "text": "我的看法是：解法不是更好的指令。「請不要」是一句話，而一句話不是一道牆。"
+    },
+    "cc32": {
+      "source_hash": "fde9385be421",
+      "text": "第一道牆，是代理到底能執行什麼，也就是它手上有哪些工具。"
+    },
+    "ngqz": {
+      "source_hash": "2d3c5cc6dd28",
+      "text": "第二道是它能連到哪裡，也就是從你的電腦可以連上哪些網站。"
+    },
+    "4r8f": {
+      "source_hash": "902f5d50622d",
+      "text": "第三道是它看得到什麼，也就是哪些金鑰、權杖和檔案在它伸手可及的範圍內。"
+    },
+    "td49": {
+      "source_hash": "991522a4cf5e",
+      "text": "我們拿真正的程式開發代理，也就是 Claude Code 命令列版，搭配一個需要上網的任務，來測試這三道牆。"
+    },
+    "iscw": {
+      "source_hash": "9ed7943d047d",
+      "text": "第一次執行，所有工具都關閉。我們請它打開一個網頁，把基準測試的分數存成檔案。"
+    },
+    "wbc6": {
+      "source_hash": "0bb1692f8ba7",
+      "text": "它說會去抓那個網頁，然後什麼事都沒發生。沒有任何請求離開電腦，也沒有檔案出現。"
+    },
+    "rk8k": {
+      "source_hash": "65885ef40693",
+      "text": "這就是那兩道指令，差別只在一個設定：代理可以有哪些工具。"
+    },
+    "3wui": {
+      "source_hash": "cfef44245b28",
+      "text": "工具清單是空的，代理就像有手卻沒有東西可拿。這就是第一道牆。"
+    },
+    "rcir": {
+      "source_hash": "650bd21caaa7",
+      "text": "第二次執行，只開放兩個工具，一個抓網頁、一個寫檔案，而且從空資料夾開始。"
+    },
+    "fsaw": {
+      "source_hash": "6aecd535f10d",
+      "text": "第二次執行。只送出一個請求，目標是我們指定的網頁，此外什麼都沒有。"
+    },
+    "r6pw": {
+      "source_hash": "9f3400133c50",
+      "text": "它從網頁上讀出分數，Terminal-Bench 4.0 的成績 66.4%。"
+    },
+    "b5in": {
+      "source_hash": "d5fe08fab75d",
+      "text": "它在我們給的空資料夾裡寫了一個檔案：score.txt。"
+    },
+    "gekz": {
+      "source_hash": "0ab25b180033",
+      "text": "接著它用一句話告訴我們做了什麼，10 秒、兩個工具、零意外。"
+    },
+    "hszx": {
+      "source_hash": "c39455e51d27",
+      "text": "我們這次執行，只碰得到一個網頁、一個檔案和一個空資料夾，那就是它的整個世界。"
+    },
+    "q9xs": {
+      "source_hash": "aae4c95b18e1",
+      "text": "而在個人資料夾裡，一個不受限的命令列，碰得到你的金鑰、權杖、瀏覽器設定檔，和你所有的檔案。"
+    },
+    "ybpm": {
+      "source_hash": "ca3c1dbcdadc",
+      "text": "那種執行，我們刻意沒有跑。這個故事裡的代理跑了，因為沒有人先立好圍籬。"
+    },
+    "bj7d": {
+      "source_hash": "d9de8cfb4852",
+      "text": "OpenAI 的代理失控了嗎？我的答案是：它們做了代理會做的事，在沒有牆的地方，用手上的工具追逐目標。"
+    },
+    "wrw4": {
+      "source_hash": "1e301a4bb354",
+      "text": "今年秋天裝 AI 代理之前，先把三道牆立好：只給任務需要的工具，只開放需要的網站。"
+    },
+    "jfbm": {
+      "source_hash": "3044bdb1bcb9",
+      "text": "還有，用不到的機密，一個也不給。牆每一次都勝過指令。"
+    },
+    "ttwb": {
+      "source_hash": "accadbbb7d34",
+      "text": "你準備把電腦交給哪個 AI 代理？留言告訴我。"
+    }
+  }
+}
