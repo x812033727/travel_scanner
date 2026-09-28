@@ -4,6 +4,7 @@ import { CheckCircle2, Copy, Download, XCircle } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { type FormEvent, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { AdminStatusPill } from "@/components/admin-ui";
+import { ShortsEvidence, ShortsPlayer } from "@/components/admin-video-shorts-player";
 import { Button } from "@/components/community/ui";
 import { api } from "@/lib/api";
 
@@ -46,7 +47,13 @@ export type ProjectSummary = {
   youtube_publish_at?: string | null; publish_approved_at?: string | null;
   dropped_at?: string | null; dropped_note?: string | null;
   retry_request_id?: string | null; retry_acknowledged_id?: string | null;
-  format?: "slides" | "drama"; media_usd?: number; clip_seconds?: number;
+  format?: "slides" | "drama" | "shorts"; media_usd?: number; clip_seconds?: number;
+  // A Short (docs/videos/SHORTS.md) is a video whose content line is set: its series, the video it
+  // was cut from, where it stands as the Shorts tab groups them, the slot it holds, and when the
+  // site found it gone from YouTube. All absent from an API older than the Shorts tab.
+  shorts_line?: "lab" | "cut" | "drama" | null; shorts_series?: string | null; source_slug?: string | null;
+  shorts_state?: "making" | "needs_you" | "library" | "slotted" | "scheduled" | "published" | "missed" | "dropped" | null;
+  slot_at?: string | null; youtube_removed_at?: string | null;
   // The languages the owner chose after the final cut and what of each, when they first decided,
   // where each chosen part stands, and the server's verdict on whether the video may be scheduled
   // (docs/videos/LANGUAGES.md); all absent from an API older than the language panel, which
@@ -319,8 +326,11 @@ export function JudgeLine({ value }: { value: unknown }) {
   return <span className="text-sm leading-6 text-[var(--muted)]">{t("judgeScore", { score: judge.overall })}{problems.length > 0 && `：${problems.join("；")}`}</span>;
 }
 
+// A picture of a video that is sixteen by nine is cropped to that; one of a Short is shown whole.
+const pictureClass = (vertical: boolean) => (vertical ? "mx-auto aspect-[9/16] w-full max-w-[14rem] rounded-xl bg-black object-contain" : "aspect-video w-full rounded-xl object-cover");
+
 /** The look gate: one character's candidate sheets, the owner picks the one every shot is drawn from. */
-function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; review: Review; choice: string; onChoice: (key: string) => void; disabled: boolean }) {
+function LookBody({ slug, review, choice, onChoice, disabled, vertical }: { slug: string; review: Review; choice: string; onChoice: (key: string) => void; disabled: boolean; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const character = record(review.payload.character);
   const options = list(review.payload.options).map(record).filter((option) => text(option.key));
@@ -336,7 +346,7 @@ function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; 
         return <label key={key} className={`grid gap-2 rounded-2xl border p-3 ${selected ? "border-[var(--teal)] bg-[var(--paper)]" : "border-[var(--line)]"}`}>
           {/* A private, session-bound preview: the image optimizer cannot fetch it. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          {src && <img src={src} alt={t("candidate", { key })} className="aspect-video w-full rounded-xl object-cover" loading="lazy" />}
+          {src && <img src={src} alt={t("candidate", { key })} className={pictureClass(vertical)} loading="lazy" />}
           <span className="flex items-center gap-3 font-bold"><input type="radio" name={`look-${review.id}`} value={key} checked={selected} onChange={() => onChoice(key)} />{t("candidate", { key })}{suggested === key && <span className="text-sm font-semibold text-[var(--teal)]">{t("suggested")}</span>}</span>
           <JudgeLine value={option.judge} />
         </label>;
@@ -346,7 +356,7 @@ function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; 
 }
 
 /** The storyboard gate: uploaded keyframes and every contact-sheet page, with the judge's verdict. */
-function StoryboardBody({ slug, review }: { slug: string; review: Review }) {
+function StoryboardBody({ slug, review, vertical }: { slug: string; review: Review; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const shots = list(review.payload.shots).map(record);
   const duplicates = list(review.payload.duplicates).map(record);
@@ -366,7 +376,7 @@ function StoryboardBody({ slug, review }: { slug: string; review: Review }) {
       const page = sheets.findIndex(sheet => sheet.shots.includes(text(shot.id)));
       return <li key={text(shot.id) || index} className={`grid gap-2 rounded-2xl border p-3 ${shot.needs_review === true ? "border-amber-600" : "border-[var(--line)]"}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {src && <img src={src} alt={text(shot.id)} className="aspect-video w-full rounded-xl object-cover" loading="lazy" />}
+        {src && <img src={src} alt={text(shot.id)} className={pictureClass(vertical)} loading="lazy" />}
         {!src && page >= 0 && <a href={fileUrl(slug, sheets[page].file)} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{sheetLabel(page)}</a>}
         <span className="font-bold">{index + 1}. {text(shot.id)}{text(shot.chapter) && <span className="text-sm font-normal text-[var(--muted)]"> · {text(shot.chapter)}</span>}{typeof shot.seconds === "number" && <span className="text-sm font-normal text-[var(--muted)]"> · {t("seconds", { seconds: shot.seconds })}</span>}</span>
         {shot.needs_review === true && <span className="text-sm font-semibold text-amber-800">{t("shotNeedsReview")}</span>}
@@ -508,6 +518,8 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
     return [];
   });
   const facts = [minutes !== null && t("minutes", { minutes }), chapters !== null && t("packageChapters", { count: chapters }), locales.length > 0 && t("packageLocales", { count: locales.length })].filter(Boolean);
+  // A Short carries two titles, the one in use and a spare (tools/video/shorts/package.mjs).
+  const spare = list(zh.titles).map(text).filter((title) => title && title !== text(zh.title));
   const hasText = Boolean(text(zh.title) || text(zh.description) || tags.length > 0);
   if (facts.length === 0 && downloads.length === 0 && !mp4Gone && !hasText && typeof disclosure.synthetic !== "boolean") return null;
   return <div className="grid gap-4" aria-label={t("uploadPackage")}>
@@ -521,6 +533,7 @@ export function UploadPackage({ slug, review, mp4Gone = false }: { slug: string;
     </div>}
     {hasText && <div className="grid gap-3">
       {text(zh.title) && <CopyField label={t("zhTitle")} value={text(zh.title)} rows={1} />}
+      {spare.map((title) => <CopyField key={title} label={t("zhTitleSpare")} value={title} rows={1} />)}
       {text(zh.description) && <CopyField label={t("zhDescription")} value={text(zh.description)} rows={6} />}
       {tags.length > 0 && <CopyField label={t("zhTags")} value={tags.join(", ")} rows={2} />}
     </div>}
@@ -574,7 +587,7 @@ export function UploadedForm({ slug, onLinked }: { slug: string; onLinked: () =>
   </form>;
 }
 
-function FinalBody({ slug, review, mp4Gone }: { slug: string; review: Review; mp4Gone: boolean }) {
+function FinalBody({ slug, review, mp4Gone, vertical }: { slug: string; review: Review; mp4Gone: boolean; vertical: boolean }) {
   const t = useTranslations("admin.videoReviews");
   const checks = record(review.payload.checks);
   const problems = list(checks.problems).map(text).filter(Boolean);
@@ -583,9 +596,15 @@ function FinalBody({ slug, review, mp4Gone }: { slug: string; review: Review; mp
   const video = mp4Gone ? undefined : fileUrl(slug, fileFor(review, "preview"));
   const sheet = fileUrl(slug, fileFor(review, "contact_sheet"));
   const poster = fileUrl(slug, fileFor(review, "thumbnail"));
+  // What an experiment's claims rest on (tools/video/shorts/push.mjs names each file evidence_<path>).
+  const evidence = review.files.filter((file) => file.role.startsWith("evidence_"));
+  const titles = list(review.payload.titles).map(text).filter(Boolean);
   return <div className="grid gap-4">
-    {video && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
+    {video && vertical && <ShortsPlayer src={video} poster={poster} />}
+    {video && !vertical && <label className="grid gap-2 font-bold">{t("preview")}<video controls preload="metadata" src={video} poster={poster} className="aspect-video w-full rounded-xl bg-black" /></label>}
+    {titles.length > 0 && <div><p className="font-bold">{t("titles")}</p><ol className="mt-2 grid gap-1 text-sm leading-6">{titles.map((title, index) => <li key={title} className="flex flex-wrap items-center gap-2"><span>{title}</span><AdminStatusPill status={index === 0 ? "active" : "inactive"}>{index === 0 ? t("titleInUse") : t("titleSpare")}</AdminStatusPill></li>)}</ol></div>}
     <CheckItems report={review.payload.qa} title={t("qaTitle")} />
+    <ShortsEvidence files={evidence} urlOf={(file) => fileUrl(slug, file)} />
     {Object.keys(checks).length > 0 && <p className="leading-7"><strong>{t("checks")}</strong>{" "}{checks.ok === true ? t("checksOk") : problems.join("; ")}</p>}
     {chapters.length > 0 && <div><p className="font-bold">{t("chapters")}</p><ol className="mt-2 grid gap-1 text-sm">{chapters.map((chapter, index) => <li key={index}><span className="font-mono">{text(chapter.time)}</span> {text(chapter.title)}</li>)}</ol></div>}
     {sheet && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("contactSheet")}</summary>
@@ -682,7 +701,11 @@ export function CompilationDownload({ project, canManage }: { project: ProjectSu
  * the thread the page attaches under a drama's script gate (docs/videos/DRAMA-FLOW.md, section 3);
  * the page knows the series and the episode, this card does not.
  */
-export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false, discussion }: { slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean; discussion?: ReactNode }) {
+export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false, discussion, vertical = false }: {
+  slug: string; review: Review; canManage: boolean; onDecided: () => void; mp4Gone?: boolean; discussion?: ReactNode;
+  // The video is nine by sixteen (a Short): its player and its pictures are shown whole, not cropped to 16:9.
+  vertical?: boolean;
+}) {
   const t = useTranslations("admin.videoReviews");
   const when = useWhen();
   const [choice, setChoice] = useState("");
@@ -720,10 +743,10 @@ export function ReviewCard({ slug, review, canManage, onDecided, mp4Gone = false
     <div className="mt-4">
       {review.gate === "outline" && <OutlineBody review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
       {review.gate === "script" && <ScriptBody review={review} />}
-      {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} />}
-      {review.gate === "storyboard" && <StoryboardBody slug={slug} review={review} />}
+      {review.gate === "look" && <LookBody slug={slug} review={review} choice={choice} onChoice={setChoice} disabled={!canManage || busy} vertical={vertical} />}
+      {review.gate === "storyboard" && <StoryboardBody slug={slug} review={review} vertical={vertical} />}
       {review.gate === "audio" && <AudioBody slug={slug} review={review} />}
-      {review.gate === "final" && <FinalBody slug={slug} review={review} mp4Gone={mp4Gone} />}
+      {review.gate === "final" && <FinalBody slug={slug} review={review} mp4Gone={mp4Gone} vertical={vertical} />}
       {review.gate === "publish" && <PublishBody slug={slug} review={review} mp4Gone={mp4Gone} />}
       {(review.gate === "languages" || review.gate === "dubs") && <LanguagesBody slug={slug} review={review} />}
     </div>

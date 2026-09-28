@@ -172,6 +172,24 @@ def update_body(
     return {"id": current.get("id"), "snippet": snippet, "status": status, "localizations": merged}
 
 
+def unschedule_body(current: dict[str, Any]) -> dict[str, Any]:
+    """The videos.update body that takes a scheduled video off the schedule: everything it has
+    now, private, with no publish time. Nothing else of the video changes, so the other
+    languages it has are sent back as they are: a part that is left out is emptied."""
+    snippet_now = as_dict(current.get("snippet"))
+    status_now = as_dict(current.get("status"))
+    snippet = {key: copy.deepcopy(snippet_now[key]) for key in SNIPPET_FIELDS if key in snippet_now}
+    status = {key: status_now[key] for key in STATUS_FIELDS if key in status_now}
+    status["privacyStatus"] = "private"
+    status.pop("publishAt", None)
+    return {
+        "id": current.get("id"),
+        "snippet": snippet,
+        "status": status,
+        "localizations": copy.deepcopy(as_dict(current.get("localizations"))),
+    }
+
+
 def language_key(value: str) -> str:
     key = value.strip().lower().replace("_", "-")
     return LANGUAGE_ALIASES.get(key, key)
