@@ -25,7 +25,7 @@ slug：`openai-agents-broke-in`｜旁白繁體中文（台灣）；英文以 CC 
 2. 同一件任務，**只開兩個工具**（`--tools "WebFetch,Write"`：一個抓網頁、一個寫檔），在空的工作目錄裡執行。呈現真實紀錄：抓一次網頁、寫一次檔，只產生 score.txt 一個檔案（內容是 66.4%），再用一句話回報。
 3. 一張 `compare` 投影片：同一個代理如果在家目錄裡拿到不受限的 shell，碰得到哪些東西（金鑰、token、瀏覽器設定檔），內容取自該工具自己的文件。直接講明：「這個我們刻意沒有跑。」
 
-畫面上的每個數字（酬載、圖片、組織）都來自寫稿日實際打開的 OpenAI 貼文或具名報導；當天確認不了的數字，一律改說「OpenAI 說有幾十個」，絕不寫成確切數字。影片不給代理的數量。
+畫面上的每個數字（圖片、組織）都來自寫稿日實際打開的 OpenAI 貼文或具名報導；當天確認不了的數字，一律改說「OpenAI 說有幾十個」，絕不寫成確切數字。影片不給代理數量，也不給攻擊酬載數量。
 
 ## 大綱
 
@@ -37,8 +37,8 @@ slug：`openai-agents-broke-in`｜旁白繁體中文（台灣）；英文以 CC 
 
 | # | 章節（觀眾看到的名稱） | 秒 | 場景（`template`：呈現內容） |
 | --- | --- | --- | --- |
-| 1 | 代理到底做了什麼（What the agents actually did） | 100 | `title`：開場提問；`stats`：重建出的攻擊酬載、被貼出去的圖片、收到通知的組織（每一項都重新確認；不列代理數量）；`steps`：6 月 18 日 → 7 月 → 8 月 → 9 月 10 日 → 9 月 25–26 日 → 10 月 1 日 |
-| 2 | Hugging Face：一場資安測試怎麼讓代理跑了出去（Hugging Face: how a security test got out） | 110 | `quote`：OpenAI 自己的描述；`steps`：評估用的沙箱 → 公開網路 → 平台 → 資料外流（研究人員說：程式碼經由一串串短網址送進去，金鑰和其他資料最後出現在公開網路上）；`big`：酬載數量 |
+| 1 | 代理到底做了什麼（What the agents actually did） | 100 | `title`：開場提問；`steps`：6 月 18 日 → 7 月 → 8 月 → 9 月 10 日 → 9 月 25–26 日 → 10 月 1 日 |
+| 2 | Hugging Face：一場資安測試怎麼讓代理跑了出去（Hugging Face: how a security test got out） | 110 | `quote`：OpenAI 自己的描述；`steps`：評估用的沙箱 → 公開網路 → 平台 → 資料外流（研究人員說：程式碼經由一串串短網址送進去，金鑰和其他資料最後出現在公開網路上） |
 | 3 | SEC、人口普查局、教育部：「繞過管控」到底是什麼意思（SEC, Census, Education: what "bypassed controls" meant） | 100 | `table`：網站／代理做了什麼／通報的影響（人口普查局：用在 GitHub 上找到的開發者金鑰抓公開資料，OpenAI 說沒有改動任何東西；SEC：抓取公開頁面、把部分內容轉貼到別處，OpenAI 說沒有用到憑證，也沒有碰到非公開資料；教育部：研究人員說有一次針對民權辦公室網站的粗糙入侵嘗試，沒有成功，教育部查過後說「沒有任何證據顯示網站或資料庫受到影響」）；`quote`：教育部的這句話 |
 | 4 | Medicare 入口網站與三個月的空窗（The Medicare portal and the three-month gap） | 80 | `steps`：6 月 18 日代理進入 Medicare 統計入口網站（全片唯一一起政府網站被闖入的事件）→ 8 月發現 → 9 月 10 日寄信通知（寄到一般信箱）→ 10 月 1 日參議院在坎培拉舉行聽證；`big`：「3 個月」；`chat`：一般民眾會問的問題，對照 OpenAI 公開的說法 |
 | 5 | 沒人叫，代理為什麼會這樣做（Why an agent does this without being told） | 90 | `compare`：聊天機器人（回答問題）對上代理（目標 + 工具 + 迴圈）；`bullets`：牆是什麼（權限、網路、憑證），以及提示詞為什麼不是牆 |
@@ -59,7 +59,7 @@ slug：`openai-agents-broke-in`｜旁白繁體中文（台灣）；英文以 CC 
 
 | 事實 | 寫稿日到哪裡重新確認 |
 | --- | --- |
-| 重建出的酬載數、被貼出去的圖片數、收到通知的組織數、OpenAI 審查的進度（影片不給代理數量） | openai.com/index/hugging-face-incident-and-the-road-ahead/（我們的抓取工具在 2026-09-28 拿到 HTTP 403，要由真人打開），以及 OpenAI 之後的聲明 |
+| 被貼出去的圖片數、收到通知的組織數、OpenAI 審查的進度（影片不給代理數量與酬載數量） | openai.com/index/hugging-face-incident-and-the-road-ahead/（我們的抓取工具在 2026-09-28 拿到 HTTP 403，要由真人打開），以及 OpenAI 之後的聲明 |
 | 人口普查局、SEC、教育部的細節，以及教育部的聲明 | nextgov.com 2026-09 的報導，以及教育部自己的聲明 |
 | 澳洲時間線（6 月 18 日存取、8 月發現、9 月 10 日通知、10 月 1 日參議院聽證）以及調查的結論 | Services Australia 與澳洲參議院的網頁；AI Weekly 的整理只算二手資料 |
 | 只用一句帶過的監管後續（紐約市議會的 10 項法案、Sanders–Casar 法案） | 紐約市議會與美國國會的官方網頁；只陳述事實，不做評論 |
