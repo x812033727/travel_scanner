@@ -9,7 +9,8 @@ claimed_at: 2026-09-28T05:17:16Z
 created_at: 2026-09-28T05:17:00Z
 completed_at:
 branch: claude/ai-hourly-news-efficiency-b1c0d2
-depends_on: [2026-09-28-news-extractor-keeps-tag-lists-and]
+depends_on:
+  - 2026-09-28-news-extractor-keeps-tag-lists-and
 scope:
   - apps/api/app/news_automation/pipeline.py
   - apps/api/app/news_automation/policy.py
