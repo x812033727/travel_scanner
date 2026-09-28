@@ -212,6 +212,42 @@ async def test_captions_the_video_already_has_are_not_uploaded_again(
     assert "en 已經有了" in detail
 
 
+async def test_a_request_made_under_a_standing_consent_says_so_in_the_audit_log(
+    site: Site, launched: list[str]
+) -> None:
+    """The Shorts calendar sends on the owner's behalf (docs/videos/SHORTS.md §上架)."""
+    await site.link()
+    await _package(site)
+    _studio_video(site)
+    behalf = {"auto": True, "consent_id": "0d9f4c1e-consent"}
+    site.google.refuse["captions.insert"] = (403, "quotaExceeded")
+    async with site.factory() as session:
+        await sync.request_sync(
+            session, review_store(site.settings), SLUG, site.owner, _publish(), on_behalf=behalf
+        )
+    await sync.run_sync(SLUG, site.factory)
+    async with site.factory() as session:
+        await sync.retry_sync(session, SLUG, site.owner, on_behalf=behalf)
+    site.google.refuse.clear()
+    await sync.run_sync(SLUG, site.factory)
+    # The owner's own button, afterwards: nothing of the kind is recorded.
+    await _request(site, _publish(visibility="private", publish_at=None))
+    async with site.factory() as session:
+        entries = (await session.scalars(select(AdminAuditLog))).all()
+    requested = [
+        entry.metadata_json for entry in entries if entry.action == "video_youtube_sync_requested"
+    ]
+    automatic = [data for data in requested if data.get("auto")]
+    by_hand = [data for data in requested if "auto" not in data]
+    assert len(automatic) == 1 and len(by_hand) == 1
+    assert automatic[0]["consent_id"] == "0d9f4c1e-consent"
+    assert automatic[0]["mode"] == "studio" and automatic[0]["video_id"] == STUDIO_ID
+    assert "consent_id" not in by_hand[0]
+    (retried,) = [entry for entry in entries if entry.action == "video_youtube_sync_retried"]
+    assert retried.metadata_json == {"slug": SLUG, **behalf}
+    assert retried.actor_user_id == site.owner.id, "the one who gave the consent"
+
+
 @pytest.mark.parametrize(
     ("privacy", "channel", "expected"),
     [
