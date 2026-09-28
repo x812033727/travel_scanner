@@ -10,8 +10,10 @@ import test from "node:test";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { readApprovals } from "../core/approvals.mjs";
-import { clipsHash, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
-import { sandbox } from "../core/fixtures/load.mjs";
+import { clipsHash, EXPLAINER_PRESET, hasCast, isExplainer, lookHash, mixHash, shotScenes, subtitlesHash } from "../core/drama.mjs";
+import { explainerFixture, sandbox, storyFixture, storySeries } from "../core/fixtures/load.mjs";
+import { BRIEF_SECTIONS_DRAMA, briefSectionsFor } from "../core/lint.mjs";
+import { isStory } from "../core/story.mjs";
 import { readJson } from "../core/paths.mjs";
 import { eachLine } from "../core/schema.mjs";
 import { pipelineStatus } from "../core/state.mjs";
@@ -20,8 +22,10 @@ import { automationClient } from "./client.mjs";
 import { MAX_PAGE_CHARS, pageReader } from "./fetch.mjs";
 import { Automation, automatedVideos, MAX_STAGE_FAILURES } from "./flow.mjs";
 import { instructionsFor } from "./prompts.mjs";
+import { isExplainerOneOff, startEpisode } from "./series.mjs";
 import { STORY_INSTRUCTIONS } from "./story-prompts.mjs";
 import {
+  advanceStory,
   anchorsFor,
   applyPatch,
   CHAPTER_KEYS,
@@ -826,6 +830,40 @@ test("a paused subscription ends the round without counting a failure, a start t
   assert.match(await answerScript(world.automation, job), /a story's screenplay is not rewritten from a thread/);
   assert.deepEqual(world.site.calls.answers, [{ id: "m1", reply_md: STORY_THREAD_REPLY, revised: null }]);
   assert.equal(world.site.calls.run.length, calls, "no model call");
+});
+
+test("a story is never taken for an explainer (#904), nor an explainer for a story", async () => {
+  // The story's own files: the custom look, the drama's brief sections, series.json of kind "story".
+  const world = storyWorld();
+  await steps(world.automation, 1 + 6);
+  const video = world.video();
+  assert.equal(video.look.preset, "custom");
+  assert.notEqual(video.look.preset, EXPLAINER_PRESET);
+  assert.equal(isExplainer(video), false);
+  assert.equal(hasCast(video), false, "a narrator-only story has no look gate, as #904's hasCast and #897's narratorOnly both read it");
+  assert.deepEqual(briefSectionsFor(video.format, video.look.preset), BRIEF_SECTIONS_DRAMA);
+  assert.equal(isStory(readJson(path.join(world.dir, "series.json"))), true);
+  assert.equal(isExplainerOneOff(SERIES), false, "a story series is no one-off");
+  assert.equal(world.automation.variantOf(world.state()), null, "the explainer's variants never reach a story");
+  assert.ok(world.site.calls.run.every((call) => call.variant === "story"));
+  assert.equal(isExplainer(storyFixture()), false);
+  assert.equal(isStory(storySeries()), true);
+  // The explainer: its video is no story, and a one-off in the flat-explainer preset is started
+  // under <series>-e001 and drafted by the drama's flow; the story's steps leave it alone.
+  assert.equal(isExplainer(explainerFixture()), true);
+  assert.equal(isStory({ slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, characters: [] }), false, "a one-off's series.json names no kind");
+  const started = [];
+  const drama = {
+    api: { episodeStart: async (series, number, slug) => (started.push(slug), { request: { slug }, context: {}, episode: { number } }) },
+    draftEpisode: async (request) => `drafted ${request.slug} as a drama`,
+  };
+  const oneOff = { ...SERIES, slug: "one-off-7a1b2c3d", kind: "one-off", style_preset: EXPLAINER_PRESET, look: null };
+  assert.equal(isExplainerOneOff(oneOff), true);
+  assert.equal(await startEpisode(drama, { kind: "episode", series: oneOff, episode: { number: 1, slug: null, beats: {} } }), "drafted one-off-7a1b2c3d-e001 as a drama");
+  assert.deepEqual(started, ["one-off-7a1b2c3d-e001"]);
+  const explainerState = { slug: "one-off-7a1b2c3d-e001", status: "active", format: "drama", style_preset: EXPLAINER_PRESET, series: { slug: "one-off-7a1b2c3d", episode: 1, chapter: 1, kind: "one-off" } };
+  assert.equal(await advanceStory(world.automation, explainerState, "script passes lint"), undefined);
+  assert.equal(world.automation.variantOf(explainerState), "explainer");
 });
 
 test("a story's cast is generic: its figures carry no name of the story, speak with the narrator's voice, and bring the look step back", () => {
