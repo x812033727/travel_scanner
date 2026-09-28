@@ -38,20 +38,35 @@ afterEach(() => {
 });
 
 describe("why a window has no number", () => {
+  const published = "2026-10-05T11:30:00Z";
+  const at = (hours: number) => Date.parse(published) + hours * 60 * 60 * 1000;
+
   it("is that its time has not come, that it is open, or that it closed unread", () => {
-    const published = "2026-10-05T11:30:00Z";
-    const at = (hours: number) => Date.parse(published) + hours * 60 * 60 * 1000;
-    expect(blankReason("d1", published, at(23.9))).toBe("early");
-    expect(blankReason("d1", published, at(24))).toBe("waiting");
-    expect(blankReason("d1", published, at(47.9))).toBe("waiting");
-    expect(blankReason("d1", published, at(48))).toBe("missed");
-    expect(blankReason("d3", published, at(71))).toBe("early");
-    expect(blankReason("d3", published, at(72))).toBe("waiting");
-    expect(blankReason("d3", published, at(96))).toBe("missed");
-    expect(blankReason("d7", published, at(7 * 24 - 1))).toBe("early");
-    expect(blankReason("d7", published, at(8 * 24))).toBe("waiting");
-    expect(blankReason("d7", published, at(9 * 24))).toBe("missed");
-    expect(blankReason("d1", null, at(100))).toBe("early");
+    const short = { published_at: published, removed_at: null };
+    expect(blankReason("d1", short, at(23.9))).toBe("early");
+    expect(blankReason("d1", short, at(24))).toBe("waiting");
+    expect(blankReason("d1", short, at(47.9))).toBe("waiting");
+    expect(blankReason("d1", short, at(48))).toBe("missed");
+    expect(blankReason("d3", short, at(71))).toBe("early");
+    expect(blankReason("d3", short, at(72))).toBe("waiting");
+    expect(blankReason("d3", short, at(96))).toBe("missed");
+    expect(blankReason("d7", short, at(7 * 24 - 1))).toBe("early");
+    expect(blankReason("d7", short, at(8 * 24))).toBe("waiting");
+    expect(blankReason("d7", short, at(9 * 24))).toBe("missed");
+    expect(blankReason("now", short, at(1))).toBe("waiting");
+    expect(blankReason("d1", { published_at: null }, at(100))).toBe("early");
+  });
+
+  it("is that the Short was taken down, for every window that had not closed by then", () => {
+    // Found gone sixty hours after it went public: day 1 had closed, day 3 and 7 had not.
+    const short = { published_at: published, removed_at: new Date(at(60)).toISOString() };
+    for (const now of [at(61), at(30 * 24)]) {
+      expect(blankReason("d1", short, now)).toBe("missed");
+      expect(blankReason("d3", short, now)).toBe("removed");
+      expect(blankReason("d7", short, now)).toBe("removed");
+      expect(blankReason("now", short, now)).toBe("removed");
+    }
+    expect(blankReason("d1", { published_at: null, removed_at: short.removed_at }, at(61))).toBe("removed");
   });
 });
 
@@ -95,6 +110,11 @@ describe("ShortsMetrics", () => {
     render(<ShortsMetrics onOpenVideo={onOpenVideo} />);
     const header = await screen.findByRole("rowheader", { name: /已經拿掉的/ });
     expect(header.textContent).toContain("已下架");
+    // Nothing of it is read again: no cell promises a number that will not come.
+    const row = header.closest("tr") as HTMLElement;
+    expect(cell(row, "now").textContent).toContain("讀取");
+    for (const period of ["d1", "d3", "d7"]) expect(cell(row, period).textContent).toBe("已下架，不再讀取");
+    expect(row.textContent).not.toMatch(/時間還沒到|等下一次讀取/);
     fireEvent.click(within(header).getByRole("button", { name: "打開這支" }));
     expect(onOpenVideo).toHaveBeenCalledWith("taken-down");
   });
