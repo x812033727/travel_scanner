@@ -395,6 +395,7 @@ test("every story stage has its own prompt: the writer is told the length comes 
   assert.match(writer, /beyond the plan is told from a passage you were\s+given, and the checker will look for it there/);
   assert.match(writer, /never\s+pad with generalities, never add what you remember/);
   assert.match(writer, /"caveats" are the plan's fact checker's orders/);
+  assert.match(writer, /an official page, or on two independent reliable sources/);
   assert.match(writer, /no name of "names"\s+in any prompt/);
   assert.match(writer, /"no_more": true/);
   assert.doesNotMatch(writer, /No real living people, no real brands/, "a story is not the drama's fiction");

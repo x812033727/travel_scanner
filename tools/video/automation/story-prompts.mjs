@@ -29,6 +29,9 @@ Rules that never bend:
 - "caveats" are the plan's fact checker's orders to you: what they say not to mention is not
   mentioned; a figure they say the sources disagree on is told the way they say; a sentence they
   say is somebody's account is told as that person's account.
+- What is told beyond "facts" rests on an official page, or on two independent reliable sources
+  (major media, an encyclopedia, a museum, a court document; two editions of one site are one
+  source). What a single non-official source alone says is told as that source's account.
 - A fact marked "attributed" is somebody's account: the narration says whose (「照某某的說法」
   「據某某回憶」「據說」), never tells it as settled. The same for any anecdote that rests on one
   source that is not official.

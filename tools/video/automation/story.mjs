@@ -1254,8 +1254,9 @@ async function resizeChapter(automation, state, key, delta, measured) {
   state.story.resizes = round;
   const entry = entryOf(state, key);
   await keepChapter(automation, state, key, read, { previous: current });
-  // Whatever the writer added is checked and heard like the rest.
-  Object.assign(entry, { checked: false, check_rounds: 0, listened: false });
+  // Whatever the writer added is checked and heard like the rest; a rewritten chapter starts its
+  // lint fixes afresh.
+  Object.assign(entry, { checked: false, check_rounds: 0, listened: false, lint_fixes: 0 });
   state.verified = false;
   state.listener_done = false;
   state.notes.push(`length: ${measured}; the writer ${delta > 0 ? "added about" : "cut about"} ${Math.abs(delta)} s ${delta > 0 ? "to" : "from"} ${key} (round ${round})`);

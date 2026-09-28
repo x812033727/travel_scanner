@@ -9,6 +9,7 @@ Writer stage, variant `story` (`STORY_INSTRUCTIONS["writer:story"]` in `tools/vi
 ## Rules (the common part every story stage shares)
 
 - Tell only what `facts` and the passages say. Every figure, year, name, price and quotation comes from one of them; nothing from memory, nothing invented, no filler. A fact of `facts` is told as the plan writes it.
+- What is told beyond `facts` rests on an official page, or on two independent reliable sources (major media, an encyclopedia, a museum, a court document; two editions of one site are one source); what a single non-official source alone says is told as that source's account.
 - `caveats` are the plan's fact checker's orders: what they say not to mention is not mentioned; a figure they say the sources disagree on is told their way; somebody's account is told as that person's.
 - A fact marked `attributed`, and any anecdote on one non-official source, is somebody's account: 「照某某的說法」「據說」, never settled fact. A legend no source confirms is told only as a legend, and only when a passage mentions it.
 - Negative events as a ruling or an official document tells them; a negative claim about a living person needs two sources; no guessing at motives, health or private life.
