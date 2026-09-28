@@ -11,6 +11,7 @@ export const BRAND = "MOKAAIR";
 export const SITE_LABEL = "mokaair.com";
 
 const isText = (value) => typeof value === "string" && value.trim().length > 0;
+const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const isTextList = (value, min, max) => Array.isArray(value) && value.length >= min && value.length <= max && value.every(isText);
 const isPercent = (value) => typeof value === "number" && value >= 0 && value <= 100;
 const visibleLength = (value) => [...value.replace(/\*\*/g, "")].length;
@@ -372,8 +373,35 @@ const headlineShape = (headline) => {
   return { lines: lines.length, chars: Math.max(...lines.map((line) => [...line.replace(/\s/g, "")].length)) };
 };
 
+/**
+ * YouTube's "Test & compare" takes up to three thumbnails (docs/videos/so-thats-why/thumbnails.md,
+ * A/B): `thumbnail` itself is A, and `thumbnail.variants` holds B and C, each `{ data }` laid over
+ * A's data (so B may change only the headline). Returns [{ id: "b", thumbnail }, ...].
+ */
+export const THUMB_VARIANT_IDS = ["b", "c"];
+export function thumbnailVariants(thumbnail) {
+  const variants = Array.isArray(thumbnail?.variants) ? thumbnail.variants : [];
+  return variants.slice(0, THUMB_VARIANT_IDS.length).map((variant, index) => ({
+    id: THUMB_VARIANT_IDS[index],
+    thumbnail: { template: thumbnail.template, data: { ...thumbnail.data, ...(variant?.data ?? {}) } },
+  }));
+}
+
 export function thumbnailProblems(thumbnail, { series = null } = {}) {
   if (!thumbnail) return [];
+  const problems = ownThumbnailProblems(thumbnail, series);
+  if (thumbnail.variants === undefined) return problems;
+  const variants = thumbnail.variants;
+  if (!Array.isArray(variants) || !variants.length || variants.length > THUMB_VARIANT_IDS.length || !variants.every((variant) => isObject(variant) && isObject(variant.data))) {
+    return [...problems, `thumbnail.variants must be 1 to ${THUMB_VARIANT_IDS.length} of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)`];
+  }
+  for (const { id, thumbnail: variant } of thumbnailVariants(thumbnail)) {
+    for (const message of ownThumbnailProblems(variant, series)) problems.push(`variant ${id}: ${message}`);
+  }
+  return problems;
+}
+
+function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
   if (data.layout !== undefined && !THUMB_LAYOUTS.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${THUMB_LAYOUTS.join(", ")}`);

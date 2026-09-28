@@ -107,7 +107,19 @@ Studio 的縮圖測試一支影片最多 3 張，依觀看時間分享選出勝�
 
 - A 與 B 只差大字，量的是「文字寫法」；C 換背景，量的是「畫面」。前 20 集每集都測，把勝出的變體記在該集的 `brief.md`；第 20 集檢討時看哪個變體勝率高，改成預設。
 - 測試期間不改標題，否則分不出是誰的效果。
-- **現在能做的**：`video.json` 只有一個 `thumbnail`，`render` 只出一張 `thumbnail.jpg`（缺口 G4）。做法是先 render 一次存下 A，改 `thumbnail.data` 再 render 存 B、C，檔名自己改成 `thumbnail-a.jpg` 等，在 Studio 手動上傳到測試。上架包的 `UPLOAD.md` 只會列一張。
+- **做法**：`thumbnail` 本身是 A；`thumbnail.variants` 放 B、C（最多兩個），每個是 `{ "data": {...} }`，蓋在 A 的 `data` 上，所以 B 只要寫 `headline`，C 寫 `headline`、`sub`、`shot`（可加 `layout`）。lint 對每個變體跑同樣的字數與欄位檢查，`shot` 必須是本集的鏡頭。`render` 除了 `thumbnail.jpg`（A）另外出 `thumbnail-b.jpg`、`thumbnail-c.jpg`，`frames/manifest.json` 的 `thumbnail_variants` 列出來；拿掉變體再 render，舊檔會刪掉。範例：`tools/video/core/fixtures/explainer/video.json`。
+- 上架包（`package`）與審片頁還只帶 A：B、C 先從工作目錄手動上傳到 Studio 的「測試與比較」，等票 `2026-09-28-thumbnail-variants-in-the-upload-package` 做完。
+
+```json
+"thumbnail": {
+  "template": "thumb",
+  "data": { "headline": "雷聲為什麼\n**晚到**？", "tag": "科學", "pillar": "science", "shot": "flash" },
+  "variants": [
+    { "data": { "headline": "**每 3 秒**\n走一公里" } },
+    { "data": { "headline": "光 vs 聲", "sub": "同時出發，誰先到？", "shot": "race", "layout": "right" } }
+  ]
+}
+```
 
 ## 欄位對照
 
@@ -123,7 +135,7 @@ Studio 的縮圖測試一支影片最多 3 張，依觀看時間分享選出勝�
 | 品牌字樣 | —（固定 `BRAND`） | 「原來如此事務所」 | 固定 MOKAAIR，青綠色（G5） |
 | 印章 | — | 紅色方印 | 沒有（G2） |
 | 主軸配色 | — | 見上表 | 沒有（G3） |
-| 版面變體 | — | 3 張測試圖 | 只有一張（G4） |
+| 版面變體 | `thumbnail.variants` | 3 張測試圖 | 有（G4，上架包還只帶 A） |
 | 文字在右、插圖在左 | — | 主體只能在右 | 遮罩方向固定左深右淺，不能鏡像（G7） |
 
 ## 缺口與支援狀態
@@ -135,7 +147,7 @@ Studio 的縮圖測試一支影片最多 3 張，依觀看時間分享選出勝�
 | G1 | 系列色盤 | 已支援 | 自動：墨藍遮罩、奶油大字、芥末黃強調與字樣 |
 | G2 | 印章 | 已支援 | 自動：「原來如此」2×2 紅色方印，約 (860, 150)，旋轉 −8°，用 CSS 畫 |
 | G3 | 主軸配色 | 已支援 | `thumbnail.data.pillar`：`business`／`science`／`travel`／`tech`，標籤配色照「各主軸強調色」表 |
-| G4 | 三張 A/B 變體 | **還沒有** | 照「A/B 測試」一節手動改 `thumbnail.data` 重畫；留在票裡 |
+| G4 | 三張 A/B 變體 | 已支援（render）；上架包待補 | `thumbnail.variants`，見「A/B 測試」一節；`package` 帶 B、C 在票 `2026-09-28-thumbnail-variants-in-the-upload-package` |
 | G5 | 系列字樣 | 已支援 | 自動：「原來如此事務所」取代 MOKAAIR |
 | G6 | 大字長度 | 已支援 | lint／render 擋：每行 ≤ 10 字、≤ 2 行（`**` 與空白不算） |
 | G7 | 主體在左的鏡頭 | 已支援 | `thumbnail.data.layout: "right"`：文字欄、遮罩、印章一起鏡像 |

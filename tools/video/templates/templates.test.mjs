@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
 
-import { assetUrl, BRAND, escapeHtml, inlineSvg, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, thumbnailHtml, thumbnailProblems, visibility, visibleText } from "./templates.mjs";
+import { assetUrl, BRAND, escapeHtml, inlineSvg, richText, sceneProblems, slideHtml, svgProblems, TEMPLATE_SPECS, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibility, visibleText } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -180,4 +180,19 @@ test("So That's Why wears its own thumbnail: palette, name, stamp, pillar tag, a
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一二三四五六七八九十十一" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "一\n二\n三" } }, { series: "sothatswhy" }), ["thumbnail.data.headline has 3 lines; this series takes at most 2"]);
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { headline: "x", layout: "top", pillar: "sports" } }), ["thumbnail.data.layout must be one of left, right", "thumbnail.data.pillar must be one of business, science, travel, tech"]);
+});
+
+test("a thumbnail's B and C variants for YouTube's test are laid over A and linted like it", () => {
+  const thumb = { template: "thumb", data: { headline: "冰為什麼\n會**浮**？", tag: "科學", pillar: "science", shot: "a" }, variants: [{ data: { headline: "**差 9%**" } }, { data: { headline: "冰 vs 石", sub: "誰會沉下去？", shot: "b" } }] };
+  const variants = thumbnailVariants(thumb);
+  assert.deepEqual(variants.map((variant) => variant.id), THUMB_VARIANT_IDS);
+  assert.deepEqual(variants[0].thumbnail, { template: "thumb", data: { headline: "**差 9%**", tag: "科學", pillar: "science", shot: "a" } }, "B only changes the headline");
+  assert.equal(variants[1].thumbnail.data.shot, "b");
+  assert.deepEqual(thumbnailVariants({ template: "thumb", data: { headline: "x" } }), [], "no variants: A alone");
+  assert.deepEqual(thumbnailProblems(thumb, { series: "sothatswhy" }), []);
+  const long = { ...thumb, variants: [{ data: { headline: "一二三四五六七八九十十一" } }] };
+  assert.deepEqual(thumbnailProblems(long, { series: "sothatswhy" }), ["variant b: thumbnail.data.headline has a line of 12 characters; this series takes at most 10 a line, readable at phone size"]);
+  assert.deepEqual(thumbnailProblems({ ...thumb, variants: [{ data: { layout: "top" } }] }), ["variant b: thumbnail.data.layout must be one of left, right"]);
+  const shape = "thumbnail.variants must be 1 to 2 of { data: {...} } (A is the thumbnail itself; YouTube tests up to three)";
+  for (const variants of [[], [{}], "b", [{ data: {} }, { data: {} }, { data: {} }]]) assert.deepEqual(thumbnailProblems({ ...thumb, variants }), [shape], JSON.stringify(variants));
 });
