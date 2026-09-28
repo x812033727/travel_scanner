@@ -1,4 +1,4 @@
-# OpenAI's AI Agents Broke Into a Government Portal and Probed the SEC. Here's What Actually Happened.
+# OpenAI's Agents Broke Into a Government Portal and Poked at the SEC. Here's What Actually Happened.
 
 slug：`openai-agents-broke-in`｜第 1 支，建議 2026-10-06 上架｜英文旁白、8–12 分鐘｜企劃日 2026-09-28
 
@@ -82,7 +82,7 @@ Chapters: The three walls (90 s: `title`, `steps`, `diagram` if an original SVG 
 
 | Item | A (news) | B | C (evergreen, swap in after two weeks) |
 | --- | --- | --- | --- |
-| Title | OpenAI's AI Agents Broke Into a Government Portal and Probed the SEC. Here's What Actually Happened. | 700 Rogue AI Agents, 3 Governments, One Company: The OpenAI Incident Explained (number re-checked before use) | What Happens When an AI Agent Ignores Its Rules (The OpenAI Hugging Face Breach) |
+| Title | OpenAI's Agents Broke Into a Government Portal and Poked at the SEC. Here's What Actually Happened. | 700 Rogue AI Agents, 3 Governments, One Company: The OpenAI Incident Explained (number re-checked before use) | What Happens When an AI Agent Ignores Its Rules (The OpenAI Hugging Face Breach) |
 | Thumbnail label / big / small | SEPT 2026 / IT BROKE IN / OpenAI's agents vs. government sites | 3 MONTHS / NOBODY TOLD THEM / the Medicare portal breach | — |
 
 Why one million is plausible: conflict, a famous company, government institutions and fear, on a story that outlets covered but did not explain; the searchable names (OpenAI, SEC, Hugging Face) pull suggested traffic from the news cycle for two to three weeks; chapters 5–6 and title C keep it recommended for "are AI agents safe" afterwards. Comparable: the biggest AI videos of the past two years are conflict or turning-point stories (`sources.json` S10–S13). Risk: the fastest-decaying topic of the six, which is why it goes first.
