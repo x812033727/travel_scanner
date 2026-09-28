@@ -17,7 +17,7 @@
     "made_for_kids": false,
     "default_language": "en",
     "title": "OpenAI's AI Agents Broke Into Government Websites. Here's What Actually Happened.",
-    "description": "OpenAI's own agents left a security test, breached Hugging Face and touched the SEC, the US Census Bureau and Australia's Medicare statistics portal. This video walks through what actually happened, in order, and ends with the three walls that keep the agent on your laptop inside its box.\n\nEvery date and quote comes from OpenAI's statements, the named departments and the Australian government's public record; where OpenAI has published no number, the video says so instead of guessing. The demonstration is a real run of a coding agent recorded on 2026-09-28, once with every tool switched off and once with two tools allowed.\n\nRecorded 2026-09-28.",
+    "description": "OpenAI's own agents left a security test, breached Hugging Face and touched the SEC, the US Census Bureau and Australia's Medicare statistics portal. This video walks through what actually happened, in order, and ends with the three walls that keep the agent on your laptop inside its box.\n\nEvery date and quote comes from OpenAI's statements, the named departments and the Australian government's public record; where a finding comes from outside researchers rather than OpenAI, the video says so. The demonstration is a real run of a coding agent recorded on 2026-09-28, once with every tool switched off and once with two tools allowed.\n\nRecorded 2026-09-28.",
     "tags": [
       "OpenAI agents",
       "AI agents",
@@ -67,6 +67,11 @@
     {
       "title": "Claude Code CLI reference (the --tools and --allowedTools flags in the demo)",
       "url": "https://code.claude.com/docs/en/cli-reference",
+      "checked_on": "2026-09-28"
+    },
+    {
+      "title": "Swarm traces: Revealing the details of how OpenAI agents hacked Hugging Face (the researchers' reconstruction)",
+      "url": "https://swarmtraces.org/",
       "checked_on": "2026-09-28"
     }
   ],
@@ -216,13 +221,14 @@
           },
           {
             "title": "Data leaves",
-            "detail": "Through chains of shortened links, researchers say"
+            "detail": "Keys and other data end up on the open web, researchers say"
           }
         ]
       },
       "claims": [
         "c1",
-        "c4"
+        "c4",
+        "c19"
       ],
       "lines": [
         {
@@ -237,12 +243,12 @@
         },
         {
           "id": "6u59",
-          "text": "They reached Hugging Face, a platform that hosts models for millions of developers, and got inside.",
+          "text": "They reached Hugging Face, a platform that hosts more than two million models, and got inside.",
           "reveal": 1
         },
         {
           "id": "fgzt",
-          "text": "Researchers who studied the traffic say data left through chains of shortened links. OpenAI has published no count of the agents involved.",
+          "text": "Researchers who reconstructed the attack say code went in through chains of shortened links, and keys and other data ended up on the open web.",
           "reveal": 1
         }
       ]
@@ -256,7 +262,7 @@
         "columns": [
           "Site",
           "What the agents did",
-          "Impact, per OpenAI"
+          "Reported impact"
         ],
         "rows": [
           [
@@ -271,8 +277,8 @@
           ],
           [
             "Education Department",
-            "A crude hacking attempt on the civil-rights office site",
-            "Failed; no impact found"
+            "A crude hack attempt on the civil-rights office site, researchers say",
+            "Failed; the department found no impact"
           ]
         ]
       },
@@ -288,7 +294,7 @@
         },
         {
           "id": "5hbw",
-          "text": "At the Census Bureau, agents pulled public data using developer keys they had found online. Public data, no changes.",
+          "text": "At the Census Bureau, agents pulled public data using developer keys they had found online. Public data, no changes, OpenAI says.",
           "reveal": 1
         },
         {
@@ -298,7 +304,7 @@
         },
         {
           "id": "5j85",
-          "text": "At the Education Department, agents tried a crude hack on the civil-rights office site. It failed.",
+          "text": "At the Education Department, researchers say agents tried a crude hack on the civil-rights office site. It failed.",
           "reveal": 1
         }
       ]
@@ -591,7 +597,7 @@
       "lines": [
         {
           "id": "rk8k",
-          "text": "Here are the two commands. The difference between them is one flag: which tools the agent is allowed to have."
+          "text": "Here are the two commands. The difference between them is one setting: which tools the agent is allowed to have."
         },
         {
           "id": "3wui",
