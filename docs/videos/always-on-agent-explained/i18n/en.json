@@ -1,6 +1,6 @@
 {
   "title": "Chatbots Are Over. Here's How an AI Agent Actually Works (and Fails).",
-  "description": "What actually happens between 'just handle it' and the result? This video records one real AI agent run, step by step, and turns it into the five moves that make an agent different from a chatbot, then shows where agents still fail by the makers' own numbers.\n\nThe run is a coding agent asked to read three official pricing pages and write a table; every tool call, the one page that refused, and the file it wrote are shown as they happened on 2026-09-28. The computer-use score on screen is Anthropic's own for Claude Opus 5.5; OpenAI's own GPT-6 Astra page is linked below. Reports about OpenAI's next assistant are labelled as reports.\n\nRecorded 2026-09-28.",
+  "description": "What actually happens between 'just handle it' and the result? This video records one real AI agent run, step by step, and turns it into the five moves that make an agent different from a chatbot, then shows where agents still fail by the makers' own numbers.\n\nThe run is a coding agent asked to read three official pricing pages and write a table; every tool call, the one page that refused, and the file it wrote are shown as they happened on 2026-09-28. The computer-use score on screen is Anthropic's own for Claude Opus 5.5; OpenAI's own GPT-6 Astra page is linked below. Reports about OpenAI's next assistant are labeled as reports.\n\nRecorded 2026-09-28.",
   "tags": [
     "AI agents explained",
     "what is an AI agent",
@@ -9,16 +9,19 @@
     "always-on AI assistant",
     "Claude Code",
     "OpenAI DevDay",
-    "AI agents"
+    "AI agents",
+    "Claude Opus 5.5",
+    "GPT-6 Astra",
+    "OSWorld"
   ],
   "chapters": {
-    "hook": "What an agent is, in one sentence",
-    "difference": "Chatbot versus agent",
+    "hook": "What is an AI agent? In one sentence",
+    "difference": "AI agent vs chatbot: the difference",
     "task": "A real run, step by step",
-    "fail": "Where agents still fail: the makers' own numbers",
-    "always-on": "Always-on: what the labs are building next",
-    "questions": "Three questions before you hand it a task",
-    "outro": "So is the chatbot really over?"
+    "fail": "Where AI agents still fail: the makers' own numbers",
+    "always-on": "Always-on AI agents: what the labs are building next",
+    "questions": "Three questions before you hand an AI agent a task",
+    "outro": "So are chatbots really over?"
   },
   "source_hashes": {
     "chapters": {
@@ -41,7 +44,7 @@
     },
     "prkk": {
       "source_hash": "280a6eed0483",
-      "text": "Most explanations stop at one line: it can use tools. That tells you nothing about what happens after you press enter."
+      "text": "Most explanations stop at one line: it can use tools. That tells you nothing about what happens after you press Enter."
     },
     "7iga": {
       "source_hash": "05db810ac737",
@@ -61,11 +64,11 @@
     },
     "p7nm": {
       "source_hash": "d7ce61d28162",
-      "text": "On the right, an agent: a goal, tools it can call, a loop of act, look, act again, and a rule for when to stop."
+      "text": "On the right, an agent: a goal, tools it can call, a loop of act, observe, act again, and a rule for when to stop."
     },
     "qvb8": {
       "source_hash": "af264fc3defb",
-      "text": "Everything that makes agents useful, and everything that makes them dangerous, lives in that loop."
+      "text": "Everything that makes agents useful, and dangerous, lives in that loop."
     },
     "agxs": {
       "source_hash": "20ea214c0e2f",
@@ -77,11 +80,11 @@
     },
     "eyuh": {
       "source_hash": "387f1c50067d",
-      "text": "Now the real run. We gave a coding agent a small job with a checkable result: find three official model prices and write a table."
+      "text": "Now the real run. We gave a coding agent a small, checkable job: find three models' official prices and write a table."
     },
     "uf2w": {
       "source_hash": "029ba19125ec",
-      "text": "We named the three pages it could read. We told it to leave blank any cell it couldn't read, and never to guess a number."
+      "text": "We named the three pages it could read, and told it: leave unreadable cells blank, and never guess a number."
     },
     "6gvp": {
       "source_hash": "293ca9e93c25",
@@ -101,7 +104,7 @@
     },
     "9e9d": {
       "source_hash": "0887f4acd0ee",
-      "text": "Move five, stop and report: two sentences, what it did and what it couldn't do. Five turns, twenty two seconds."
+      "text": "Move five, stop and report: two sentences, what it did and what it couldn't do. Five turns, twenty-two seconds."
     },
     "qpg5": {
       "source_hash": "d29f33dfb7cb",
@@ -125,7 +128,7 @@
     },
     "6wdb": {
       "source_hash": "4a738aa5d69a",
-      "text": "The whole run in numbers: five turns, three pages fetched, one of them refused, one file written, twenty two seconds."
+      "text": "The whole run in numbers: five turns, three pages fetched, one of them refused, one file written, twenty-two seconds."
     },
     "q439": {
       "source_hash": "3f50e8676c91",
@@ -161,7 +164,7 @@
     },
     "rcus": {
       "source_hash": "55bfe58e2a06",
-      "text": "When a task fails, it fails in one of four shapes."
+      "text": "Failed tasks come in four shapes."
     },
     "y342": {
       "source_hash": "600ebb299fd9",
@@ -173,7 +176,7 @@
     },
     "sfmt": {
       "source_hash": "b2f8cafe8912",
-      "text": "It produces a confident wrong number."
+      "text": "It confidently gives a wrong number."
     },
     "gb65": {
       "source_hash": "b899e677c033",
@@ -193,7 +196,7 @@
     },
     "txqe": {
       "source_hash": "3a4879ed2452",
-      "text": "NVIDIA says the new Windows agent framework, part of its work with Microsoft, runs such agents in the background, under the operating system's control."
+      "text": "NVIDIA says the new Windows agent framework, part of its work with Microsoft, lets such agents run in the background, under OS control."
     },
     "xc6d": {
       "source_hash": "7cbf035c28e6",
@@ -229,15 +232,15 @@
     },
     "s6m4": {
       "source_hash": "968a1ee6870d",
-      "text": "Book me a table for Friday. That hands over money and a decision, with no evidence until the confirmation lands."
+      "text": "\"Book me a table for Friday.\" That hands over money and a decision, with no evidence until the confirmation lands."
     },
     "5djs": {
       "source_hash": "8415a857f0d6",
-      "text": "List three options and don't book anything. That gives you a checkable list, and keeps the decision with you."
+      "text": "\"List three options and don't book anything.\" That gives you a checkable list, and keeps the decision with you."
     },
     "4nvh": {
       "source_hash": "54d1d2037ce9",
-      "text": "So is the chatbot over? Not quite. The chat is now the receipt, and the work happens behind it."
+      "text": "So are chatbots over? Not quite. The chat is now the receipt, and the real work happens behind it."
     },
     "5esi": {
       "source_hash": "973820e14e68",
