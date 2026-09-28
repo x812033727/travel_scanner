@@ -67,18 +67,18 @@ PR #871（2026-09-28 合併）交付的是本機產線：`node tools/video/short
   → 成效快照（第 1、3、7 天）→ 每週報告 → 下週排片
 ```
 
-站上看到的狀態（伺服器算，`ShortsState`）：
+站上看到的狀態（伺服器算，`shorts_state`；判斷的順序是已放棄、已公開、需要你、已排程、已排時段、片庫，所以等站主處理的影片不會被它的時段蓋住）：
 
-| 狀態 | 條件 | 在分頁的哪裡 |
-| --- | --- | --- |
-| 製作中 | 有影片、成片還沒核准 | 製作中 |
-| 需要你 | 品管沒過且自動修完仍不過、卡住（同一步連續失敗、預算、缺金鑰、缺素材） | 需要你 |
-| 在片庫 | 上傳包已核准、沒有時段 | 片庫 |
-| 已排時段 | 有時段、還沒有 YouTube 影片 id | 月曆；稽核前同時列在「等你上傳」 |
-| 已排程 | 有影片 id、`publishAt` 在未來、同步完成 | 月曆 |
-| 已公開 | `publishAt` 已過，且 YouTube 回報是公開 | 成效 |
-| 錯過時段 | 時段到了還沒有影片 id（稽核前站主沒上傳，或沒有庫存） | 每週報告；影片回到片庫 |
-| 已放棄 | 站主或規則放棄 | 已放棄 |
+| 狀態 | `shorts_state` | 條件 | 在分頁的哪裡 |
+| --- | --- | --- | --- |
+| 製作中 | `making` | 有影片、上傳包還沒核准 | 製作中 |
+| 需要你 | `needs_you` | 有審核在等站主（品管沒過且自動修完仍不過）、卡住（同一步連續失敗、預算、缺金鑰、缺素材） | 需要你 |
+| 在片庫 | `library` | 上傳包已核准、沒有時段 | 片庫 |
+| 已排時段 | `slotted` | 佔著一格（`assigned` 或 `locked`）、還沒排上 YouTube | 月曆；稽核前同時列在「等你上傳」 |
+| 已排程 | `scheduled` | 有影片 id、`publishAt` 在未來、同步完成 | 月曆 |
+| 已公開 | `published` | `publishAt` 已過（Y1 確認 YouTube 回報公開之後，時段也標成 `published`） | 成效 |
+| 錯過時段 | `missed` | 錯過了一格、現在沒有佔任何一格；它人在片庫，下一個空格會輪到它 | 片庫（標「錯過」）、每週報告 |
+| 已放棄 | `dropped` | 站主或規則放棄 | 已放棄 |
 
 全自動之下仍然會找站主的情況只有這些：頻道連結或自動上架授權失效、稽核前要上傳的那一批、品管自動修不好的那一支、卡住的影片、題目缺站主才有的素材（自己拍的照片）、預算到頂、片庫連續幾天是空的。
 
@@ -255,35 +255,39 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 ## 花費與預算
 
 - 自動記帳：伺服器今天只有漫劇的媒體工作記得到每支影片的花費（`video_media_jobs.usd_estimate`）；旁白字數、轉寫、Jev 都是不分影片的月計數或日計數，`/video/speech` 連影片代號都不收。所以旁白與模型呼叫的用量由工具在送審時自己回報（`payload.usage`：旁白秒數與字數、各階段的呼叫次數與 token），伺服器照回報寫進 `video_shorts_costs`；圖片、片段、音樂則從媒體工作的紀錄抄過來。送出生成請求時先記一筆 `reserved`，成功改 `confirmed`，失敗刪掉。
+- 旁白的金額是照廠商價目估的：Gemini 的語音每秒 25 個輸出 token，`gemini-3.8-flash-tts` 每百萬 token US$9（2027-01-01 起 US$18），`gemini-3.8-flash-lite-tts` US$6（之後 US$12）；40 秒的旁白約 US$0.009。價目是 2026-09-28 讀 ai.google.dev/gemini-api/docs/pricing 的，寫在 `app/video_shorts/costs.py`；價目裡沒有的聲音記成 `unknown`。本機語音（試片用的 Windows 語音）記 0。
+- 模型呼叫走訂閱帳號的記 0、附次數；走計費 API 的記成 `unknown`，等站主補金額。
 - 手動補帳：新訂閱、工具費。廠商沒回報金額的填 `unknown`，不能填 0。
-- 幣別：原幣與當天匯率一起存，報表用新台幣。
-- 上限（預設沿用 #871，站主可改）：每 30 天 NT$3,000；到 NT$2,400 停止開新的付費工作，保留 NT$600 做完手上的；90 天 NT$9,000。有 `unknown` 的帳時，付費工作一律先停。
+- 幣別：原幣與當天匯率一起存，報表用新台幣。匯率服務沒有回應時用帳上最近一次的匯率，再沒有就用備用匯率（美元 32），並在那一筆的備註寫明。
+- 上限（預設沿用 #871，站主可改）：每 30 天 NT$3,000；到 NT$2,400 停止開新的付費工作，保留 NT$600 做完手上的；90 天 NT$9,000。有 `unknown` 的帳時，付費工作一律先停。預留的金額算在已花的裡面。
+- 「每 30 天」從開跑日起算，一輪三期；還沒開跑時看的是到今天為止的 30 天與 90 天。
 - 走訂閱帳號的模型呼叫不算新增花費，但每週報告會列用了幾次。
 - 超過上限時工人停在目前的步驟，分頁寫原因；不會悄悄換成較便宜的模型。不用錢的工作（文字題的實測、長片精華）照常做。
 
 ## 資料模型
 
-遷移編號接實作當時的 head（今天 main 是 `0104_video_retry_request`；PR #870 先合併的話從 `0109` 起）。一律「不存在才建」，CHECK 的重建照 `0095`、`0099` 的做法。
+第一期的表在遷移 `0109_video_shorts`（A1）；題庫、素材、每週報告的表在 A3 自己的遷移。一律「不存在才建」，CHECK 的重建照 `0101`、`0106` 的做法。
 
 `video_projects` 的新欄位：
 
 | 欄位 | 型別 | 說明 |
 | --- | --- | --- |
-| `format` 的 CHECK | 重建成 `format IN ('slides', 'drama', 'shorts')` | `shorts` 是字卡式 Shorts 的產線 |
+| `format` 的 CHECK | 重建成 `format IN ('slides', 'drama', 'shorts')` | `shorts` 是字卡式 Shorts 的產線；用這個格式回報的影片一定要帶 `shorts_line` |
 | `shorts_line` | String(8)，可空；CHECK `lab`、`cut`、`drama` | 不是空的就是一支 Shorts |
 | `shorts_series` | String(40)，可空 | 系列 |
 | `source_slug` | String(80)，可空 | 精華與漫劇短篇的來源影片 |
+| `youtube_removed_at` | 時間，可空 | 每 30 天的驗證發現影片被刪或改回私人的時間（Y1 寫入）；之後不再讀它的數字 |
 
 新表：
 
 | 表 | 欄位 |
 | --- | --- |
-| `video_shorts_settings`（一列，id 1） | `enabled`、`lines`、`weekly_quota`、`campaign_start`、`daily_pattern`、`slot_times`、`timezone`、`stock_days`、`lock_hours`、`upload_ahead_days`、`max_per_day`、`seconds_min`／`seconds_max`、`voice`、`stage_models`、`subject_models`、`stage_instructions`、`locales`、`auto_approve`、`autopublish`、`paused_at`、`consent_at`／`consent_by_user_id`／`consent_text_sha256`／`consent_expires_at`／`consent_scope`、`budget_ntd_30d`、`budget_soft_ntd`、`budget_total_ntd`、`made_for_kids`。獨立一張表，不加進 `video_automation_settings`：各格式的設定各自儲存是站主 2026-09-27 的要求，也避開 PR #870 正在改的那張表 |
-| `video_shorts_slots` | `id`、`starts_at`（唯一）、`phase`、`line`、`series`、`topic_slug`、`project_slug`（唯一、可空）、`status`（`open`、`planned`、`assigned`、`locked`、`scheduled`、`published`、`missed`、`skipped`）、`locked_at`、`note` |
+| `video_shorts_settings`（一列，id 1） | `enabled`、`lines`、`weekly_quota`、`campaign_start`、`daily_pattern`、`slot_times`、`timezone`、`stock_days`、`lock_hours`、`upload_ahead_days`、`max_per_day`、`seconds_min`／`seconds_max`、`voice`、`stage_models`、`subject_models`、`stage_instructions`、`locales`、`auto_approve`、`autopublish`、`paused_at`、`consent_id`／`consent_at`／`consent_by_user_id`／`consent_text_sha256`／`consent_expires_at`／`consent_scope`、`budget_ntd_30d`、`budget_soft_ntd`、`budget_total_ntd`、`made_for_kids`、`last_tick_at`／`last_tick`（工人上次敲門的時間與那一輪做了什麼）。獨立一張表，不加進 `video_automation_settings`：各格式的設定各自儲存是站主 2026-09-27 的要求 |
+| `video_shorts_slots` | `id`、`starts_at`（唯一）、`phase`、`line`、`series`、`topic_slug`、`project_slug`（可空）、`status`（`open`、`planned`、`assigned`、`locked`、`scheduled`、`published`、`missed`、`skipped`）、`locked_at`、`note`。一支 Shorts 同時只佔一格：`project_slug` 的唯一索引只算狀態不是 `missed`、`skipped` 的列，錯過的那一格留著當時排的代號當紀錄 |
 | `video_shorts_topics` | `slug`（唯一）、`line`、`series`、`title`、`hook`、`status`（`idea`、`ready`、`needs_assets`、`making`、`made`、`dropped`）、`brief`（JSON：測試規格、真值核對、完成條件、旁白大綱、標題備案、來源）、`source_slug`、`origin`（`campaign`、`planner`、`owner`、`auto`）、`release_order`、`assets_needed` |
 | `video_shorts_assets` | 站主上傳的素材：`topic_slug`、`sha256`、`filename`、`content_type`、`size`、`author`、`taken_on`、`rights_note`、`uploaded_by_user_id`。檔案放媒體庫 |
-| `video_shorts_metrics` | `project_slug`、`youtube_video_id`、`window`（`d1`、`d3`、`d7`、`now`）、`source`（`data_api`、`analytics_api`、`studio_export`）、`captured_at`、`range_start`／`range_end`、`views`、`engaged_views`、`likes`、`comments`、`shares`、`subscribers_gained`、`avg_view_seconds`、`avg_view_percent`、`stayed_percent`、`raw`。`(youtube_video_id, source, window)` 唯一；`d1`、`d3`、`d7` 寫了就不改，`now` 原地更新 |
-| `video_shorts_costs` | `occurred_at`、`project_slug`、`category`、`amount`、`currency`、`fx_rate`、`amount_ntd`、`status`（`confirmed`、`reserved`、`unknown`）、`source`（`auto`、`manual`）、`note` |
+| `video_shorts_metrics` | `project_slug`、`youtube_video_id`、`period`（時間窗：`d1`、`d3`、`d7`、`now`；`window` 是 PostgreSQL 的保留字，所以欄位不叫那個名字）、`source`（`data_api`、`analytics_api`、`studio_export`）、`captured_at`、`range_start`／`range_end`、`views`、`engaged_views`、`likes`、`comments`、`shares`、`subscribers_gained`、`avg_view_seconds`、`avg_view_percent`、`stayed_percent`、`raw`。`(youtube_video_id, source, period)` 唯一；`d1`、`d3`、`d7` 寫了就不改，`now` 原地更新 |
+| `video_shorts_costs` | `occurred_at`、`project_slug`、`category`、`amount`、`currency`、`fx_rate`、`amount_ntd`、`status`（`confirmed`、`reserved`、`unknown`）、`source`（`auto`、`manual`）、`units`（工具回報的用量：秒數、字數、次數）、`note`、`dedupe_key`（唯一、可空：自動記的帳用它認出同一筆，例如 `usage:<slug>:<成片雜湊前 16 碼>:narration`）。`unknown` 的列沒有金額，其他狀態一定有，由 CHECK 保證 |
 | `video_shorts_reports` | `week_start`（唯一）、`body_md`、`rows`（報告引用的原值）、`plan`（下週排片）、`model`、`generated_at` |
 
 審核關卡不加新的：Shorts 用既有的 `final` 與 `publish`。`ProjectIn`、`ProjectSummary` 多 `shorts_line`、`shorts_series`、`source_slug`、`shorts_state`、`slot_at`。
@@ -295,20 +299,23 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 
 ## 端點
 
-後台路徑不需要四語錯誤；`AppError` 只在 `admin_api.py`，模組丟 `ShortsRefused`。
+後台路徑不需要四語錯誤；`AppError` 只出現在檔名帶 `admin` 的路由檔（`admin_api.py`、`admin_publish_api.py`、`admin_automation_api.py`，`tests/test_error_localization.py` 靠檔名分辨），模組丟 `ShortsRefused`。三個路由檔都已經掛進 `main.py`：A1 的端點在 `admin_api.py`，Y1 加在 `admin_publish_api.py`，A3 加在 `admin_automation_api.py`。
 
 | 誰 | 端點 | 做什麼 |
 | --- | --- | --- |
-| 後台（content.read） | `GET /admin/video-shorts/overview` | 頂列：授權與暫停、今明兩天的時段、庫存天數、本期花費、頻道連結、需要你的數量 |
-| 後台（content.read） | `GET /admin/video-shorts/slots?from=&to=` | 月曆 |
-| 後台（content.manage） | `PATCH /admin/video-shorts/slots/{id}` | 換時段、指定影片、抽掉、標成不發 |
+| 後台（content.read） | `GET /admin/video-shorts/overview` | 頂列：授權與暫停、今明兩天的時段、庫存天數、本期花費、頻道連結、工人上次回報、需要你的每一項 |
+| 後台（content.read） | `GET /admin/video-shorts/slots?from=&to=` | 月曆（兩個日期是設定時區的當地日期，都含；不帶就是整輪） |
+| 後台（content.manage） | `PATCH /admin/video-shorts/slots/{id}` | 一次一個動作（`action`）：`move` 換時段、`assign` 指定影片、`clear` 抽掉、`skip` 標成不發、`reopen` 重新開啟、`note` 寫備註 |
 | 後台（content.read） | `GET /admin/video-shorts/metrics`、`…/costs`、`…/reports`、`…/topics` | 成效、花費帳、每週報告、題庫 |
-| 後台（content.manage） | `POST /admin/video-shorts/costs`、`POST …/topics`、`PATCH …/topics/{slug}`、`POST …/topics/{slug}/assets` | 補帳、新增想法、改題目、上傳素材 |
+| 後台（content.manage） | `POST /admin/video-shorts/costs`、`PATCH`／`DELETE …/costs/{id}` | 補一筆、改一筆（替 `unknown` 補上金額）、刪掉自己補錯的；自動記的帳不能刪，預留的不能改 |
+| 後台（content.manage） | `POST …/topics`、`PATCH …/topics/{slug}`、`POST …/topics/{slug}/assets` | 新增想法、改題目、上傳素材 |
 | 後台（content.manage） | `GET /admin/video-shorts/uploads/batch.zip`、`POST …/uploads/claim` | 下載這一批、我上傳好了 |
 | 後台（settings.manage） | `GET`／`PUT /admin/video-shorts/settings`、`POST …/campaign/start` | 設定、開跑 |
 | 後台（settings.manage） | `POST`／`DELETE /admin/video-shorts/autopublish` | 授權、撤銷 |
 | 後台（content.manage） | `POST /admin/video-shorts/pause`、`…/resume`、`…/recall` | 暫停、繼續、撤回已排程的 |
-| 工人（VideoTool） | `POST /video/automation/shorts/tick` | 做到期的事，回做了幾件 |
+| 工具與工人（VideoTool） | `GET /video/automation/shorts/settings` | Shorts 的聲音、長度範圍、語言、有沒有暫停；不含授權 |
+| 工具與工人 | `GET /video/automation/videos?shorts=only\|exclude` | 影片清單。原本的迴圈帶 `exclude`，Shorts 的那一輪帶 `only`（可再帶 `state=`、`limit=`、`before=`）；後台的 `GET /admin/videos` 收同樣的參數 |
+| 工人 | `POST /video/automation/shorts/tick` | 做到期的事，回做了幾件 |
 | 工人 | `GET /video/automation/shorts/next` | 下一件工作：`plan`、`brief`、`make`（帶題目、內容線、脈絡）、`report`，或沒有 |
 | 工人 | `POST …/shorts/plan`、`…/shorts/topics`、`…/shorts/{slug}/start`、`…/shorts/{slug}/done`、`…/shorts/report` | 寫回排片、新題目、開始、完成、每週報告 |
 | 工人 | 既有的 `/video/reviews/*`、`/video/speech/*`、`/video/automation/run`、`/video/automation/judge/policy` | 送審、旁白與檢查、模型階段、政策判斷 |
@@ -409,13 +416,13 @@ YouTube 的開發人員政策對「代替使用者寫入」有三條要求（原
 
 | 期 | 票 | 做什麼 | scope | 依賴 |
 | --- | --- | --- | --- | --- |
-| 一 | `video-shorts-api`（A1） | 遷移（`video_projects` 三欄與 `format`、設定、時段、成效、花費）、`shorts_qa_passed` 與自動核准、時段指派的規則、後台端點（總覽、月曆、花費、設定、授權、暫停）、清單篩選與上限 | `apps/api/app/video_shorts`（models、schemas、settings、slots、costs、rules、errors、admin_api 與兩個空的路由檔）、`apps/api/app/models.py`、`apps/api/app/video_reviews`、`apps/api/app/video_automation`（judge、admin_api）、`apps/api/app/main.py`、`apps/api/app/admin/operations_service.py`、遷移、測試 | — |
-| 一 | `video-shorts-tools-push`（T1） | 腳本格式第 2 版、三個系列各自的版面、伺服器旁白、`check-audio`、`qa`、`package`、`push`、`import`、CI 的煙霧測試 | `tools/video/shorts`、`.github/workflows/video-tooling.yml` | A1 |
-| 一 | `video-shorts-web-routes`（A2） | 工人與工具端點的網站轉送 | `apps/web/app/api/video/automation/shorts` | — |
+| 一 | `video-shorts-api`（A1） | 遷移（`video_projects` 三欄與 `format`、設定、時段、成效、花費）、`shorts_qa_passed` 與自動核准、時段指派的規則、後台端點（總覽、月曆、花費、設定、授權、暫停）、清單篩選與上限 | `apps/api/app/video_shorts`（models、schemas、settings、slots、costs、rules、overview、errors、admin_api，以及兩個空的路由檔 admin_publish_api、admin_automation_api）、`apps/api/app/models.py`、`apps/api/app/video_reviews`、`apps/api/app/video_automation`（judge、admin_api）、`apps/api/app/main.py`、`apps/api/app/admin/operations_service.py`、遷移、測試 | — |
+| 一 | `video-shorts-tools-push`（T1） | 腳本格式第 2 版、三個系列各自的版面、伺服器旁白、`check-audio`、`qa`、`package`、`push`、`import`、CI 的煙霧測試；工人每一輪先敲門（`POST shorts/tick`） | `tools/video/shorts`、`tools/video/automation`（cli、client）、`.github/workflows/video-tooling.yml` | A1 |
+| 一 | `video-shorts-web-routes`（A2） | 工人與工具端點的網站轉送；影片清單的轉送把篩選參數帶過去（原本的轉送不帶查詢字串） | `apps/web/app/api/video/automation/shorts`、`apps/web/app/api/video/automation/videos` | — |
 | 一 | `video-shorts-admin-tab`（W1） | Shorts 分頁：頂列、需要你、等你上傳、月曆、片庫、成效、花費、設定與授權；9:16 預覽與遮擋範圍；五語字串 | `apps/web/components/admin-video-shorts*`、`admin-video-reviews.tsx`、`admin-video-review-card.tsx`、`apps/web/app/api/admin-video-shorts`、`apps/web/messages` | A1；PR #870 合併之後 |
-| 一 | `video-shorts-youtube-auto`（Y1） | `tick`、照授權自動送出、依檔名認領、Shorts 的欄位、撤回、Data API 的成效快照、每 30 天驗證 | `apps/api/app/video_shorts`（publish、claim、stats、tick）、`apps/api/app/video_youtube`、測試 | A1 |
+| 一 | `video-shorts-youtube-auto`（Y1） | `tick`、照授權自動送出、依檔名認領、Shorts 的欄位、撤回、Data API 的成效快照、每 30 天驗證 | `apps/api/app/video_shorts`（publish、claim、stats、tick、admin_publish_api）、`apps/api/app/video_youtube`、測試 | A1 |
 | 一 | `video-shorts-pilot-launch`（P1） | 三支試片改用頻道聲音重做並 `push`；站主做完一次性的第 1–4 項；第一批上傳與公開；把實測的數字與 YouTube 的實測結果寫回這份文件 | `docs/videos/SHORTS.md` | T1、W1、Y1、部署 |
-| 二 | `video-shorts-automation-api`（A3） | 題庫與素材、匯入 15 題、`shorts/next` 的規則、每週排片與報告的寫回、`subject` 階段與 `variant`、每月上限 | `apps/api/app/video_shorts`（topics、assets、jobs、plan、reports）、`apps/api/app/video_automation`（ai、schemas）、遷移、測試 | A1 |
+| 二 | `video-shorts-automation-api`（A3） | 題庫與素材、匯入 15 題、`shorts/next` 的規則、每週排片與報告的寫回、`subject` 階段與 `variant`、每月上限 | `apps/api/app/video_shorts`（topics、assets、jobs、plan、reports、admin_automation_api）、`apps/api/app/video_automation`（ai、schemas）、遷移、測試 | A1 |
 | 二 | `video-shorts-worker-lab`（T2） | `shortsStep()`、每週排片、實測線的製作與自動修、每週報告、提示詞 | `tools/video/automation`（shorts、flow）、`tools/video/shorts/lab*`、skill 的 `references/prompts` | A3、T1 |
 | 二 | `video-shorts-worker-cut`（T3） | 長片精華：挑段落、改寫、連回完整影片 | `tools/video/shorts/cut*`、skill 的 `references/prompts` | T2 |
 | 二 | `video-shorts-worker-drama`（T4） | 漫劇直式短篇：產線依 `aspect` 走、直式關鍵影格與運鏡、燒錄字幕的安全區 | `tools/video/core/drama.mjs`、`tools/video/media`、`tools/video/render`、`tools/video/assemble`、`tools/video/shorts/vertical*` | T2、`2026-09-26-video-drama-pilot` |
