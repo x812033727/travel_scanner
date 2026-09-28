@@ -1,0 +1,560 @@
+{
+  "title": "Claude Code, Codex & Gemini CLI: Same Task, Two Fixes, One Login Block",
+  "description": "Three AI coding tools received the same small task. Two completed it; one was blocked by personal account login. Google ended Login with Google support for personal Gemini CLI accounts in June 2026; enterprise access and API keys have separate paths. Follow the starter files, diffs, and later acceptance tests to build a comparison method of your own.\nThis is one small hands-on demonstration. Default models and account conditions differed, so these results are not a capability ranking. Reported usage estimates are not actual bills.",
+  "tags": [
+    "Claude Code",
+    "Codex",
+    "Gemini CLI",
+    "AI coding tools",
+    "coding agents"
+  ],
+  "chapters": {
+    "opening": "Three Tools, One Task",
+    "not-a-rank": "Not a Capability Ranking",
+    "problem": "The Task and Starter",
+    "baseline": "The Same Starting Point",
+    "which-version": "What Each CLI Did",
+    "acceptance": "Later Acceptance Tests",
+    "cost": "How to Track Cost"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "df1eb8e96398",
+      "not-a-rank": "7353a4d11e78",
+      "problem": "53e23c5e3f17",
+      "baseline": "0387961ea255",
+      "which-version": "32fc03347afd",
+      "acceptance": "9f3eda5029a5",
+      "cost": "65f83206a456"
+    },
+    "title": "a3da6983a561",
+    "description": "88f668d33646",
+    "tags": "075aa46fdd92"
+  },
+  "lines": {
+    "v30000": {
+      "source_hash": "a0b35723b04b",
+      "text": "Three tools got the same task. Two fixed it; one was blocked at login."
+    },
+    "v30001": {
+      "source_hash": "55616c62e4ff",
+      "text": "Let us inspect the diffs and tests before deciding what fits you."
+    },
+    "v30002": {
+      "source_hash": "98f461facc36",
+      "text": "Look at what happened first, then discuss the choice."
+    },
+    "v30007": {
+      "source_hash": "f9d0d17c42c0",
+      "text": "First, a limit: this small trial is not a capability ranking."
+    },
+    "v30008": {
+      "source_hash": "a59c201790ce",
+      "text": "The tools had different default models, permissions, and accounts."
+    },
+    "v30009": {
+      "source_hash": "2c3d59dbdf1c",
+      "text": "So I will not use runtime to rank their intelligence."
+    },
+    "v30010": {
+      "source_hash": "de04774cad3c",
+      "text": "The useful lesson is how to design a checkable trial of your own."
+    },
+    "v30011": {
+      "source_hash": "d92b8e74cebf",
+      "text": "Try this method on your work before deciding whether to pay."
+    },
+    "v30014": {
+      "source_hash": "71cb60daca5a",
+      "text": "The task is small: split an integer amount among several people."
+    },
+    "v30015": {
+      "source_hash": "ec1d0b500a88",
+      "text": "Split 100 cents among three people. The total must remain 100."
+    },
+    "v30016": {
+      "source_hash": "39c1f61e5476",
+      "text": "Give any extra cents to earlier people in array order."
+    },
+    "v30017": {
+      "source_hash": "a79db4a31471",
+      "text": "The rule is simple to grasp and makes errors easy to spot."
+    },
+    "v30018": {
+      "source_hash": "6ab154d18f99",
+      "text": "If the shares do not add up, the function has not done its job."
+    },
+    "v30021": {
+      "source_hash": "9a89e1c1e4d0",
+      "text": "The starter code divides by the count, then gives everyone that amount."
+    },
+    "v30022": {
+      "source_hash": "026d04dde280",
+      "text": "It works when divisible, but may over- or under-allocate otherwise."
+    },
+    "v30023": {
+      "source_hash": "f04098a8f078",
+      "text": "More interestingly, both starter tests were green."
+    },
+    "v30024": {
+      "source_hash": "95e75e933362",
+      "text": "One tested exact division, one an invalid count. Neither tested remainders."
+    },
+    "v30025": {
+      "source_hash": "bb596f0818d1",
+      "text": "The code is simple enough to pinpoint the faulty line."
+    },
+    "v30028": {
+      "source_hash": "b79f14597914",
+      "text": "With 100 cents and three people, it returned 33, 33, and 33."
+    },
+    "v30029": {
+      "source_hash": "1cff395414e8",
+      "text": "That adds to 99. One cent vanished."
+    },
+    "v30030": {
+      "source_hash": "0c8732528f27",
+      "text": "This is the same task I sent to all three CLIs."
+    },
+    "v30031": {
+      "source_hash": "7469a1fe8003",
+      "text": "If you only trust the old green tests, you miss it."
+    },
+    "v30032": {
+      "source_hash": "5bf85c6805dd",
+      "text": "A missing cent could cause a dispute when travel companions split a bill."
+    },
+    "v30035": {
+      "source_hash": "f12d94f55ecb",
+      "text": "I copied the same starter files into three empty directories."
+    },
+    "v30036": {
+      "source_hash": "c7088bac11bf",
+      "text": "All three received exactly the same prompt."
+    },
+    "v30037": {
+      "source_hash": "8531c98bf300",
+      "text": "Only after their runs did I write a separate acceptance suite."
+    },
+    "v30038": {
+      "source_hash": "e3aeedad4bac",
+      "text": "That at least makes the starting point of each change clear."
+    },
+    "v30039": {
+      "source_hash": "888f2385c602",
+      "text": "The demo contains no personal bills or real traveler data."
+    },
+    "v30040": {
+      "source_hash": "e2180fd7d7ea",
+      "text": "I committed each starting copy so the diffs are clear."
+    },
+    "v3e1000": {
+      "source_hash": "6eb6ae90e629",
+      "text": "The starter code includes input checks as well as division."
+    },
+    "v3e1001": {
+      "source_hash": "96d4933f496b",
+      "text": "The amount must be a nonnegative safe integer, measured in cents."
+    },
+    "v3e1002": {
+      "source_hash": "44ba7754e852",
+      "text": "The count must be a safe integer from 1 through 100."
+    },
+    "v3e1003": {
+      "source_hash": "e96aead2cdb6",
+      "text": "A fix must keep those rules, not just handle the remainder."
+    },
+    "v30042": {
+      "source_hash": "9a62d66071bc",
+      "text": "The challenge is written in the same task file."
+    },
+    "v30043": {
+      "source_hash": "4e08e79091cb",
+      "text": "Keep input checks, exact totals, gap ≤1 cent."
+    },
+    "v30044": {
+      "source_hash": "f8bdb6530360",
+      "text": "Extra cents must go to earlier people in order."
+    },
+    "v30045": {
+      "source_hash": "db2c6df4c856",
+      "text": "The tools must add tests and report their results."
+    },
+    "v30046": {
+      "source_hash": "ac5ce23acd24",
+      "text": "The input rules are explicit, so the tools do not have to guess."
+    },
+    "v3e2000": {
+      "source_hash": "287e4201625f",
+      "text": "Of the old tests visible to the tools, the first uses exact division."
+    },
+    "v3e2001": {
+      "source_hash": "e05430033e9d",
+      "text": "Splitting 120 cents three ways gives 40 each, so it already passes."
+    },
+    "v3e2002": {
+      "source_hash": "41c9ba89baa0",
+      "text": "The second only checks that zero people triggers an error."
+    },
+    "v3e2003": {
+      "source_hash": "e5b424c56552",
+      "text": "Neither asks how to split 100 cents among three people."
+    },
+    "v30049": {
+      "source_hash": "631140263777",
+      "text": "Now the results, including what we cannot fairly compare."
+    },
+    "v30050": {
+      "source_hash": "b3ecd7dad9ab",
+      "text": "I ran the three CLI tools installed locally that day."
+    },
+    "v30051": {
+      "source_hash": "58697e25914f",
+      "text": "Raw logs stay in the work folder; two diffs are in the demo package."
+    },
+    "v30052": {
+      "source_hash": "fe379d409b0c",
+      "text": "I am not presenting someone else's online review as my test."
+    },
+    "v30053": {
+      "source_hash": "ba3f9167530a",
+      "text": "These numbers describe only this run, not a vendor promise."
+    },
+    "v30056": {
+      "source_hash": "ee160bac8a02",
+      "text": "In this run, Claude Code changed both the code and tests."
+    },
+    "v30057": {
+      "source_hash": "f23813f2886b",
+      "text": "It calculates the base share and remainder, then gives the first people an extra cent each."
+    },
+    "v30058": {
+      "source_hash": "67709a096bc0",
+      "text": "Its nine self-written tests passed, as did four later acceptance groups."
+    },
+    "v30059": {
+      "source_hash": "435a6268e122",
+      "text": "That shows it solved this task, not every other task."
+    },
+    "v30060": {
+      "source_hash": "bac5872b5899",
+      "text": "The number of self-written tests is not a test quality score."
+    },
+    "v30063": {
+      "source_hash": "2128ed88b5ae",
+      "text": "In the core diff, it finds the base share, then the leftover cents."
+    },
+    "v30064": {
+      "source_hash": "8fe65319058e",
+      "text": "Earlier array positions get those extra cents first."
+    },
+    "v30065": {
+      "source_hash": "847b80b43ac0",
+      "text": "The original invalid-input checks remain."
+    },
+    "v30066": {
+      "source_hash": "8add1ca430e7",
+      "text": "Review the full diff line by line, not just the four core lines."
+    },
+    "v30067": {
+      "source_hash": "36e37f82c340",
+      "text": "The allocation rule is short, but preserving the total is the main contract."
+    },
+    "v30070": {
+      "source_hash": "d770c9c20b0e",
+      "text": "Codex also changed those same two files."
+    },
+    "v30071": {
+      "source_hash": "503be79b476f",
+      "text": "It used a remainder-based form with the same core condition."
+    },
+    "v30072": {
+      "source_hash": "907874f05858",
+      "text": "Its five self-written tests passed, as did four later acceptance groups."
+    },
+    "v30073": {
+      "source_hash": "f56e580407e1",
+      "text": "Different test counts do not show which tool is more reliable."
+    },
+    "v30074": {
+      "source_hash": "f6c8ca5fb22d",
+      "text": "I still check whether it changed anything outside the task."
+    },
+    "v30077": {
+      "source_hash": "c021f34d54f7",
+      "text": "The second diff computes the remainder before the base share."
+    },
+    "v30078": {
+      "source_hash": "ad812970a910",
+      "text": "Within our acceptance scope, both versions preserved the total."
+    },
+    "v30079": {
+      "source_hash": "c70bc1c96b99",
+      "text": "Code that looks right is not enough; run your own cases."
+    },
+    "v30080": {
+      "source_hash": "08d0fa369e54",
+      "text": "Keep the diffs and tests so the next reviewer can follow the work."
+    },
+    "v30081": {
+      "source_hash": "4fb967db0501",
+      "text": "The patches differ, but both must be judged against the requirements."
+    },
+    "v3e3000": {
+      "source_hash": "f91fa15332ba",
+      "text": "The diffs use a different operation order; similar wording proves nothing."
+    },
+    "v3e3001": {
+      "source_hash": "19bd26730497",
+      "text": "Both find the base and remainder, then give extra cents to earlier people."
+    },
+    "v3e3002": {
+      "source_hash": "9474377ba757",
+      "text": "For two cents and three people, the result should be 1, 1, 0."
+    },
+    "v3e3003": {
+      "source_hash": "10168968a3d6",
+      "text": "You can trace that case through both real diffs, line by line."
+    },
+    "v30084": {
+      "source_hash": "530378b40f11",
+      "text": "Gemini CLI did not begin solving the task in this run."
+    },
+    "v30085": {
+      "source_hash": "82aacc743754",
+      "text": "Personal account login was reported unsupported, before it read the task."
+    },
+    "v30086": {
+      "source_hash": "1a75a2fb7f67",
+      "text": "It made no patch, so I will not invent a result for it."
+    },
+    "v30087": {
+      "source_hash": "ec51c0208781",
+      "text": "Google has ended Gemini CLI login for personal accounts."
+    },
+    "v30088": {
+      "source_hash": "8499a4fd3148",
+      "text": "After that error, I stopped the run instead of quietly changing accounts."
+    },
+    "v3e4000": {
+      "source_hash": "b8aeb69ef50e",
+      "text": "Google ended personal account login for Gemini CLI in June."
+    },
+    "v3e4001": {
+      "source_hash": "4d7f13af64d5",
+      "text": "The model never received the code, so there was no model answer."
+    },
+    "v3e4002": {
+      "source_hash": "e508f76077ec",
+      "text": "The starter code failed later tests; that is still the starter's failure."
+    },
+    "v3e4003": {
+      "source_hash": "e93a8c38a989",
+      "text": "Enterprise access or an API key could be tried, but neither was used here."
+    },
+    "v30091": {
+      "source_hash": "f1ba53254606",
+      "text": "Whether it starts at all is the first practical choice factor."
+    },
+    "v30092": {
+      "source_hash": "68b4547a2d3a",
+      "text": "If it never ran, do not call the unchanged starter code its answer."
+    },
+    "v30093": {
+      "source_hash": "003288ac67c0",
+      "text": "The two patches from the other tools are also only single-run outputs."
+    },
+    "v30094": {
+      "source_hash": "a6e711d3cc88",
+      "text": "This table separates availability from solving the problem."
+    },
+    "v30095": {
+      "source_hash": "e05b16ff90e8",
+      "text": "To get a code diff from Gemini CLI, switch to supported access and rerun the same task."
+    },
+    "v30098": {
+      "source_hash": "b9be2e18ac49",
+      "text": "Now a third common condition: later acceptance testing."
+    },
+    "v30099": {
+      "source_hash": "b9a46959d51c",
+      "text": "I wrote that suite separately after all three tool runs."
+    },
+    "v30100": {
+      "source_hash": "30828ee90bc3",
+      "text": "Those four later acceptance groups had not been written yet."
+    },
+    "v30101": {
+      "source_hash": "6a2426e55ea8",
+      "text": "It checks beyond tool-written tests, but was not a preplanned blind test."
+    },
+    "v30102": {
+      "source_hash": "31baecd99373",
+      "text": "That is why the answering tool should not set the only test cases."
+    },
+    "v30105": {
+      "source_hash": "65576ff4593e",
+      "text": "The first case splits 100 cents among three people."
+    },
+    "v30106": {
+      "source_hash": "bb3d1a45f22f",
+      "text": "The second tries two cents among three people, and zero total."
+    },
+    "v30107": {
+      "source_hash": "4b7f53513306",
+      "text": "The third tests many amounts and counts for totals and maximum gaps."
+    },
+    "v30108": {
+      "source_hash": "e96edc267c71",
+      "text": "The fourth confirms invalid inputs are still rejected."
+    },
+    "v30109": {
+      "source_hash": "4650e73c9549",
+      "text": "You can copy these check types into your own practice project."
+    },
+    "v3e5000": {
+      "source_hash": "61dd3f402caa",
+      "text": "I created this separate acceptance suite only after all three tool runs ended."
+    },
+    "v3e5001": {
+      "source_hash": "570f6c32986d",
+      "text": "So it was not a preregistered blind test; that limit matters."
+    },
+    "v3e5002": {
+      "source_hash": "f564cda9df4b",
+      "text": "But the tools could not see this new file while generating patches."
+    },
+    "v3e5003": {
+      "source_hash": "a8bc3eca18f9",
+      "text": "I copied the same suite into all three folders and ran each one."
+    },
+    "v30112": {
+      "source_hash": "033e05e83333",
+      "text": "The Claude Code and Codex patches passed all four groups."
+    },
+    "v30113": {
+      "source_hash": "6e93c12af171",
+      "text": "Gemini CLI made no patch; the starter passed only one group."
+    },
+    "v30114": {
+      "source_hash": "95161d961748",
+      "text": "That is a starter-code result, not a failure rate for the tool."
+    },
+    "v30115": {
+      "source_hash": "613deff1a567",
+      "text": "Do not cut that note when turning these results into a video."
+    },
+    "v30116": {
+      "source_hash": "ae651a25c6d6",
+      "text": "Do not mark a run that never started with a red failure cross."
+    },
+    "v3shot0": {
+      "source_hash": "b216f1c612ad",
+      "text": "This table comes from actual test output, not memory."
+    },
+    "v3shot1": {
+      "source_hash": "d61674c4281b",
+      "text": "All four later checks passed; we kept the raw output and image source."
+    },
+    "v30119": {
+      "source_hash": "a9692fb59ede",
+      "text": "Now cost. Do not rush to put all three plans in one price table."
+    },
+    "v30120": {
+      "source_hash": "a44a1ddf430b",
+      "text": "Claude Code's output included an estimated dollar amount."
+    },
+    "v30121": {
+      "source_hash": "50b067daef15",
+      "text": "This Codex output showed token usage, but no dollar bill."
+    },
+    "v30122": {
+      "source_hash": "675e404c8767",
+      "text": "Gemini never ran the model, so it had no comparable usage."
+    },
+    "v30123": {
+      "source_hash": "83439fdaafa1",
+      "text": "Plans and limits change; check the official sites on publication day."
+    },
+    "v30124": {
+      "source_hash": "5bfe2cb63164",
+      "text": "I recorded pricing separately from this run's reported usage."
+    },
+    "v30126": {
+      "source_hash": "ea7d046bd327",
+      "text": "Claude Code showed about $0.30 this time, an estimate from the tool."
+    },
+    "v30127": {
+      "source_hash": "3dbc402b5a44",
+      "text": "That number cannot tell if my subscription bill increased."
+    },
+    "v30128": {
+      "source_hash": "d470ca01e65a",
+      "text": "Codex had many cached input tokens, so the total token count misleads."
+    },
+    "v30129": {
+      "source_hash": "bbf1c6f1f405",
+      "text": "For real cost, use your own bill and workload."
+    },
+    "v30130": {
+      "source_hash": "0f8458877952",
+      "text": "With a fixed monthly fee, one task has no single attributable price."
+    },
+    "v3e6000": {
+      "source_hash": "7593c13e0d13",
+      "text": "To repeat this comparison, I suggest recording file hashes first."
+    },
+    "v3e6001": {
+      "source_hash": "e55d48047f09",
+      "text": "Put tool versions and permission modes in the same table."
+    },
+    "v3e6002": {
+      "source_hash": "4ef40d7dc4f9",
+      "text": "Record diffs and acceptance output, not subjective quality scores."
+    },
+    "v3e6003": {
+      "source_hash": "dce376f3ea8a",
+      "text": "Keep billed amounts separate from tool-reported usage."
+    },
+    "v30133": {
+      "source_hash": "d201c4964e13",
+      "text": "I first check that all three tools work with my own account."
+    },
+    "v30134": {
+      "source_hash": "78aeee5c97f5",
+      "text": "Then I use a small, clear task with the same start and prompt."
+    },
+    "v30135": {
+      "source_hash": "887971d34bff",
+      "text": "Finally, I keep the diffs, tests, and actual spend together."
+    },
+    "v30136": {
+      "source_hash": "59904c793b3b",
+      "text": "For confidential work, switch to a sample without real data."
+    },
+    "v30137": {
+      "source_hash": "3e4585c6c8b4",
+      "text": "The checklist works with your current tools; no need to replace them all."
+    },
+    "v30140": {
+      "source_hash": "035130d7585d",
+      "text": "To choose, see which tools can run, then compare available diffs on the same task."
+    },
+    "v30141": {
+      "source_hash": "5db090e7a1bb",
+      "text": "Two finished and one hit login here; that is not a capability ranking."
+    },
+    "v30142": {
+      "source_hash": "bc3411273551",
+      "text": "When rerunning, inspect the starter, two diffs, and acceptance tests together."
+    },
+    "v30143": {
+      "source_hash": "a189dd089800",
+      "text": "Use one of your own small tasks next time for an answer relevant to you."
+    },
+    "v30144": {
+      "source_hash": "8822ca1f6667",
+      "text": "Rerun with your requirements; that is the useful basis for choosing."
+    }
+  }
+}

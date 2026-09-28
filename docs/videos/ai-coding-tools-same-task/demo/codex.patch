@@ -1,0 +1,46 @@
+diff --git a/fare.mjs b/fare.mjs
+index 111f656..932297f 100644
+--- a/fare.mjs
++++ b/fare.mjs
+@@ -5,6 +5,7 @@ export function splitFareCents(totalCents, people) {
+   if (!Number.isSafeInteger(people) || people < 1 || people > 100) {
+     throw new RangeError('people must be a safe integer from 1 to 100');
+   }
+-  const each = Math.round(totalCents / people);
+-  return Array(people).fill(each);
++  const remainder = totalCents % people;
++  const each = (totalCents - remainder) / people;
++  return Array.from({ length: people }, (_, index) => each + (index < remainder ? 1 : 0));
+ }
+diff --git a/fare.test.mjs b/fare.test.mjs
+index 433b84d..719e2e7 100644
+--- a/fare.test.mjs
++++ b/fare.test.mjs
+@@ -6,6 +6,25 @@ test('evenly divisible total', () => {
+   assert.deepEqual(splitFareCents(120, 3), [40, 40, 40]);
+ });
+ 
+-test('invalid passenger count', () => {
+-  assert.throws(() => splitFareCents(100, 0), RangeError);
++test('non-divisible totals give earlier positions the remainder', () => {
++  assert.deepEqual(splitFareCents(100, 3), [34, 33, 33]);
++  assert.deepEqual(splitFareCents(2, 3), [1, 1, 0]);
++  assert.deepEqual(splitFareCents(Number.MAX_SAFE_INTEGER, 3),
++    [3002399751580331, 3002399751580330, 3002399751580330]);
++});
++
++test('zero total gives everyone zero cents', () => {
++  assert.deepEqual(splitFareCents(0, 3), [0, 0, 0]);
++});
++
++test('invalid totals', () => {
++  for (const total of [-1, 1.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1, '100']) {
++    assert.throws(() => splitFareCents(total, 3), RangeError);
++  }
++});
++
++test('invalid passenger counts', () => {
++  for (const people of [0, 101, 1.5, NaN, Infinity, '3']) {
++    assert.throws(() => splitFareCents(100, people), RangeError);
++  }
+ });
