@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-batch037-pair-a-localize-stp-persona
 title: Batch037 Pair A: localize STP persona research and social media planning
-status: in-progress
+status: review
 priority: P1
 area: docs
 owner: codex-batch037-pair-a
@@ -32,7 +32,7 @@ missing locale packs and assets for review while preserving the published source
   hero/diagram artwork, with the original `zh-TW` document and root metadata unchanged.
 - [x] The packs, browser-rendered artwork, publication-aware links, and source/asset
   integrity pass scoped validation and independent review.
-- [ ] A draft PR contains this exact two-article scope and evidence; release remains
+- [x] A draft PR contains this exact two-article scope and evidence; release remains
   gated separately.
 
 ## Steps
@@ -41,7 +41,7 @@ missing locale packs and assets for review while preserving the published source
   source/version snapshot.
 - [x] Translate every reader-visible field and text-bearing graphic; render JPG covers.
 - [x] Run structural/hash audit, scoped pack/API/web checks, and browser visual review.
-- [ ] Open a draft PR for review.
+- [x] Open a draft PR for review.
 
 ## How to verify
 
@@ -64,7 +64,10 @@ worker under concurrent test load. `article.test.tsx` passed separately (40 test
 
 ## Notes
 
-Base `origin/main` was `5329ad8920300fec4fda06ded8bd006607a72d4f`.
+Draft PR: https://github.com/x812033727/travel_scanner/pull/911. The branch was
+rebased onto `origin/main` `b00b917fa1463b84ecf1524d459176d3fc0b43c7` before
+opening it; that main update only added unrelated newsletter articles. Original
+starting `origin/main` was `5329ad8920300fec4fda06ded8bd006607a72d4f`.
 The pinned inventory's original pack and asset hashes match that checkout. A fresh
 four-lock `READ ONLY` production snapshot on 2026-09-28 confirmed both articles
 active/published with `zh-TW` v4 source matching the inventory and no target locale
