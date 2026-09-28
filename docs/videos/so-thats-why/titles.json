@@ -1,0 +1,2358 @@
+{
+  "schema_version": 1,
+  "series_names": {
+    "zh-TW": {
+      "name": "原來如此事務所",
+      "outro": "原來如此！"
+    },
+    "en": {
+      "name": "So That's Why",
+      "outro": "So that's why!"
+    },
+    "ja": {
+      "name": "なるほど事務所",
+      "outro": "なるほど！"
+    },
+    "ko": {
+      "name": "그래서그랬구나 사무소",
+      "outro": "그래서 그랬구나!"
+    },
+    "zh-CN": {
+      "name": "原来如此事务所",
+      "outro": "原来如此！"
+    }
+  },
+  "rules": [
+    "All locales: title is a single natural 'why' question without the series suffix (the tool appends it); numbers from the zh-TW title are kept identical; no facts beyond the zh-TW title/answer.",
+    "zh-TW: the episodes.json title unchanged, full-width ？ at the end; thumb ≤ 10 characters, the punchiest fragment.",
+    "en: 'Why does/is/did … ?' in Title Case, the phrasing people type into search; brand names as sold in the US (Costco, 7-Eleven, TSMC, NVIDIA, LINE); ≤ 70 characters; thumb ≤ 4 words.",
+    "ja: 「なぜ〇〇は〜のか？」 with full-width ？; katakana/market names (コストコ, セブン-イレブン, スタバ, TSMC, NVIDIA); ≤ 40 characters; thumb ≤ 10 characters.",
+    "ko: 「〇〇은/는 왜 ~할까?」 with ASCII ?; Hangul brand names where Koreans use them (코스트코, 세븐일레븐, 노키아, 엔비디아), Latin where they don't (TSMC, USB-C, AI); ≤ 40 characters; thumb ≤ 10 characters.",
+    "zh-CN: 「为什么……？」 in Simplified characters and mainland terms and names (高铁, 手机, 网速, 开市客, 诺基亚, 台积电, 英伟达, 谷歌, 宜家, 爱彼迎, 优衣库); 7-Eleven, iPhone, LINE, Netflix, Supreme, YouTube stay in Latin; ≤ 40 characters; thumb ≤ 10 characters.",
+    "Reframe only when the zh-TW premise is ordinary for that audience (their own country or daily habit); the re-asked question stays inside the zh-TW answer, and the reason is recorded in reframed.<locale>."
+  ],
+  "episodes": {
+    "B01": {
+      "zh-TW": {
+        "title": "為什麼賣最多手機的 Nokia，擋不住晚來的 iPhone？",
+        "thumb": "Nokia輸在哪？"
+      },
+      "en": {
+        "title": "Why Couldn't Nokia, the Top Phone Seller, Stop the Late iPhone?",
+        "thumb": "How Nokia Lost"
+      },
+      "ja": {
+        "title": "なぜ世界一売れていたNokiaは後発のiPhoneを止められなかったのか？",
+        "thumb": "Nokiaの敗因"
+      },
+      "ko": {
+        "title": "휴대폰 판매 1위 노키아는 왜 늦게 나온 아이폰을 막지 못했을까?",
+        "thumb": "노키아는 왜 졌나"
+      },
+      "zh-CN": {
+        "title": "为什么卖最多手机的诺基亚，挡不住晚来的iPhone？",
+        "thumb": "诺基亚输在哪？"
+      },
+      "reframed": {}
+    },
+    "B02": {
+      "zh-TW": {
+        "title": "為什麼 7-Eleven 是美國品牌，最後被日本人買下？",
+        "thumb": "7-11變日本的？"
+      },
+      "en": {
+        "title": "Why Did a Japanese Company End Up Buying American 7-Eleven?",
+        "thumb": "Japan Bought 7-Eleven"
+      },
+      "ja": {
+        "title": "なぜアメリカ生まれのセブン-イレブンを日本企業が買収したのか？",
+        "thumb": "本家を買収？"
+      },
+      "ko": {
+        "title": "미국 브랜드 세븐일레븐은 왜 일본 회사가 사들였을까?",
+        "thumb": "일본이 샀다?"
+      },
+      "zh-CN": {
+        "title": "为什么美国品牌7-Eleven最后被日本人买下？",
+        "thumb": "7-11成了日本的？"
+      },
+      "reframed": {}
+    },
+    "B03": {
+      "zh-TW": {
+        "title": "為什麼可口可樂的配方要鎖在保險庫？",
+        "thumb": "配方鎖保險庫？"
+      },
+      "en": {
+        "title": "Why Is Coca-Cola's Recipe Locked in a Vault?",
+        "thumb": "Locked in a Vault"
+      },
+      "ja": {
+        "title": "なぜコカ・コーラのレシピは金庫に保管されているのか？",
+        "thumb": "なぜ金庫に？"
+      },
+      "ko": {
+        "title": "코카콜라 제조법은 왜 금고에 보관할까?",
+        "thumb": "왜 금고에?"
+      },
+      "zh-CN": {
+        "title": "为什么可口可乐的配方要锁在保险库里？",
+        "thumb": "配方锁进保险库"
+      },
+      "reframed": {}
+    },
+    "B04": {
+      "zh-TW": {
+        "title": "為什麼 IKEA 要你自己組家具？",
+        "thumb": "為什麼要自己組？"
+      },
+      "en": {
+        "title": "Why Does IKEA Make You Assemble Your Own Furniture?",
+        "thumb": "Build It Yourself?"
+      },
+      "ja": {
+        "title": "なぜIKEAの家具は自分で組み立てるのか？",
+        "thumb": "なぜ自分で組立？"
+      },
+      "ko": {
+        "title": "이케아는 왜 가구를 직접 조립하게 할까?",
+        "thumb": "왜 직접 조립?"
+      },
+      "zh-CN": {
+        "title": "为什么宜家要你自己组装家具？",
+        "thumb": "为什么要自己装？"
+      },
+      "reframed": {}
+    },
+    "B05": {
+      "zh-TW": {
+        "title": "為什麼好市多熱狗幾十年都賣 1.5 美元？",
+        "thumb": "幾十年1.5美元"
+      },
+      "en": {
+        "title": "Why Has Costco's Hot Dog Been $1.50 for Decades?",
+        "thumb": "$1.50 for Decades"
+      },
+      "ja": {
+        "title": "なぜコストコのホットドッグは何十年も1.5ドルなのか？",
+        "thumb": "何十年も1.5ドル"
+      },
+      "ko": {
+        "title": "코스트코 핫도그는 왜 수십 년째 1.5달러일까?",
+        "thumb": "수십 년 1.5달러"
+      },
+      "zh-CN": {
+        "title": "为什么开市客的热狗几十年都卖1.5美元？",
+        "thumb": "几十年1.5美元"
+      },
+      "reframed": {}
+    },
+    "B06": {
+      "zh-TW": {
+        "title": "為什麼說麥當勞其實是房地產公司？",
+        "thumb": "其實是房地產？"
+      },
+      "en": {
+        "title": "Why Do People Say McDonald's Is Really a Real Estate Company?",
+        "thumb": "Burgers or Real Estate?"
+      },
+      "ja": {
+        "title": "なぜマクドナルドは「実は不動産会社」と言われるのか？",
+        "thumb": "実は不動産会社？"
+      },
+      "ko": {
+        "title": "맥도날드는 왜 사실 부동산 회사라고 할까?",
+        "thumb": "사실 부동산 회사?"
+      },
+      "zh-CN": {
+        "title": "为什么说麦当劳其实是房地产公司？",
+        "thumb": "其实是房地产？"
+      },
+      "reframed": {}
+    },
+    "B07": {
+      "zh-TW": {
+        "title": "為什麼星巴克最小杯叫「中杯」？",
+        "thumb": "最小杯叫中杯？"
+      },
+      "en": {
+        "title": "Why Is Starbucks' \"Tall\" Actually the Smallest Size?",
+        "thumb": "Tall = Small?"
+      },
+      "ja": {
+        "title": "なぜスタバの「トール」は大きいサイズじゃないのか？",
+        "thumb": "トールなのに小さい"
+      },
+      "ko": {
+        "title": "스타벅스 '톨'은 왜 큰 사이즈가 아닐까?",
+        "thumb": "톨이 제일 작다?"
+      },
+      "zh-CN": {
+        "title": "为什么星巴克最小杯叫“中杯”？",
+        "thumb": "最小杯叫中杯？"
+      },
+      "reframed": {}
+    },
+    "B08": {
+      "zh-TW": {
+        "title": "為什麼 Blockbuster 拒絕買下 Netflix？",
+        "thumb": "拒買Netflix？"
+      },
+      "en": {
+        "title": "Why Did Blockbuster Turn Down Buying Netflix?",
+        "thumb": "No to Netflix"
+      },
+      "ja": {
+        "title": "なぜブロックバスターはNetflixの買収を断ったのか？",
+        "thumb": "Netflix拒否"
+      },
+      "ko": {
+        "title": "블록버스터는 왜 넷플릭스 인수를 거절했을까?",
+        "thumb": "넷플릭스를 거절?"
+      },
+      "zh-CN": {
+        "title": "为什么百视达拒绝收购Netflix？",
+        "thumb": "拒绝买Netflix"
+      },
+      "reframed": {}
+    },
+    "B09": {
+      "zh-TW": {
+        "title": "為什麼柯達發明數位相機，卻被數位相機打倒？",
+        "thumb": "敗給自己的發明"
+      },
+      "en": {
+        "title": "Why Did Kodak Invent the Digital Camera, Then Lose to It?",
+        "thumb": "Beaten by Its Invention"
+      },
+      "ja": {
+        "title": "なぜコダックはデジカメを発明したのに、デジカメに負けたのか？",
+        "thumb": "自分の発明に負けた"
+      },
+      "ko": {
+        "title": "코닥은 왜 디지털카메라를 발명하고도 무너졌을까?",
+        "thumb": "자기 발명에 졌다"
+      },
+      "zh-CN": {
+        "title": "为什么柯达发明了数码相机，却被数码相机打败？",
+        "thumb": "败给自己的发明"
+      },
+      "reframed": {}
+    },
+    "B10": {
+      "zh-TW": {
+        "title": "為什麼任天堂一開始是賣撲克牌的？",
+        "thumb": "原來賣撲克牌？"
+      },
+      "en": {
+        "title": "Why Did Nintendo Start Out Selling Playing Cards?",
+        "thumb": "It Started With Cards"
+      },
+      "ja": {
+        "title": "なぜ花札屋の任天堂はタクシーや即席麺を経てゲーム会社になったのか？",
+        "thumb": "花札屋がゲームへ"
+      },
+      "ko": {
+        "title": "닌텐도는 왜 처음에 카드를 팔던 회사였을까?",
+        "thumb": "처음엔 카드 회사?"
+      },
+      "zh-CN": {
+        "title": "为什么任天堂一开始是卖扑克牌的？",
+        "thumb": "原来卖扑克牌？"
+      },
+      "reframed": {
+        "ja": "花札から始まったことは日本ではよく知られているので、タクシーや即席麺など回り道を経てゲーム会社になった点に問いを移した。"
+      }
+    },
+    "B11": {
+      "zh-TW": {
+        "title": "為什麼 Uniqlo 發熱衣能紅遍全世界？",
+        "thumb": "發熱衣紅遍全球"
+      },
+      "en": {
+        "title": "Why Did Uniqlo's Heattech Become a Global Hit?",
+        "thumb": "Heattech Went Global"
+      },
+      "ja": {
+        "title": "なぜ日本の定番肌着ヒートテックは世界中で売れたのか？",
+        "thumb": "定番肌着が世界へ"
+      },
+      "ko": {
+        "title": "유니클로 히트텍은 왜 전 세계에서 인기일까?",
+        "thumb": "히트텍 세계 히트"
+      },
+      "zh-CN": {
+        "title": "为什么优衣库发热衣能火遍全世界？",
+        "thumb": "发热衣火遍全球"
+      },
+      "reframed": {
+        "ja": "ヒートテックは日本では定番の肌着なので、「国内の普段着がなぜ世界で売れたのか」という角度で問い直した。"
+      }
+    },
+    "B12": {
+      "zh-TW": {
+        "title": "為什麼台積電不自己設計晶片？",
+        "thumb": "台積電不設計？"
+      },
+      "en": {
+        "title": "Why Doesn't TSMC Design Its Own Chips?",
+        "thumb": "Why TSMC Doesn't Design"
+      },
+      "ja": {
+        "title": "なぜTSMCは自社でチップを設計しないのか？",
+        "thumb": "なぜ設計しない？"
+      },
+      "ko": {
+        "title": "TSMC는 왜 직접 반도체를 설계하지 않을까?",
+        "thumb": "왜 설계 안 할까?"
+      },
+      "zh-CN": {
+        "title": "为什么台积电不自己设计芯片？",
+        "thumb": "台积电不设计？"
+      },
+      "reframed": {}
+    },
+    "B13": {
+      "zh-TW": {
+        "title": "為什麼 Toyota 讓產線上任何人都能喊停？",
+        "thumb": "誰都能喊停"
+      },
+      "en": {
+        "title": "Why Does Toyota Let Any Worker Stop the Production Line?",
+        "thumb": "Anyone Can Stop It"
+      },
+      "ja": {
+        "title": "なぜトヨタは誰でも生産ラインを止められるのか？",
+        "thumb": "誰でもライン停止"
+      },
+      "ko": {
+        "title": "도요타는 왜 누구나 생산 라인을 멈출 수 있게 할까?",
+        "thumb": "누구나 멈춘다"
+      },
+      "zh-CN": {
+        "title": "为什么丰田让生产线上任何人都能喊停？",
+        "thumb": "谁都能喊停"
+      },
+      "reframed": {}
+    },
+    "B14": {
+      "zh-TW": {
+        "title": "為什麼 LEGO 差點破產又活過來？",
+        "thumb": "差點破產"
+      },
+      "en": {
+        "title": "Why Did LEGO Almost Go Bankrupt, and How Did It Come Back?",
+        "thumb": "LEGO Almost Died"
+      },
+      "ja": {
+        "title": "なぜレゴは倒産寸前から復活できたのか？",
+        "thumb": "倒産寸前から復活"
+      },
+      "ko": {
+        "title": "레고는 왜 파산 직전까지 갔다가 살아났을까?",
+        "thumb": "파산 직전 레고"
+      },
+      "zh-CN": {
+        "title": "为什么乐高差点破产又活了过来？",
+        "thumb": "差点破产"
+      },
+      "reframed": {}
+    },
+    "B15": {
+      "zh-TW": {
+        "title": "為什麼 Dyson 做了幾千個原型才推出吸塵器？",
+        "thumb": "幾千個原型"
+      },
+      "en": {
+        "title": "Why Did Dyson Build Thousands of Prototypes Before Its Vacuum?",
+        "thumb": "Thousands of Prototypes"
+      },
+      "ja": {
+        "title": "なぜダイソンは何千もの試作機を作ってから掃除機を出したのか？",
+        "thumb": "試作機が数千台"
+      },
+      "ko": {
+        "title": "다이슨은 왜 청소기 하나에 시제품을 수천 개나 만들었을까?",
+        "thumb": "시제품 수천 개"
+      },
+      "zh-CN": {
+        "title": "为什么戴森做了几千个原型才推出吸尘器？",
+        "thumb": "几千个原型"
+      },
+      "reframed": {}
+    },
+    "B16": {
+      "zh-TW": {
+        "title": "為什麼 Supreme 故意只做一點點貨？",
+        "thumb": "故意少做？"
+      },
+      "en": {
+        "title": "Why Does Supreme Deliberately Make So Few Items?",
+        "thumb": "Sold Out on Purpose"
+      },
+      "ja": {
+        "title": "なぜシュプリームはわざと少ししか作らないのか？",
+        "thumb": "わざと少なく"
+      },
+      "ko": {
+        "title": "슈프림은 왜 일부러 조금만 만들까?",
+        "thumb": "일부러 조금만"
+      },
+      "zh-CN": {
+        "title": "为什么Supreme故意只做一点点货？",
+        "thumb": "故意少做"
+      },
+      "reframed": {}
+    },
+    "B17": {
+      "zh-TW": {
+        "title": "為什麼 Tesla 一開始先賣昂貴跑車？",
+        "thumb": "先賣貴跑車"
+      },
+      "en": {
+        "title": "Why Did Tesla Start by Selling an Expensive Sports Car?",
+        "thumb": "Sports Car First?"
+      },
+      "ja": {
+        "title": "なぜテスラは最初に高価なスポーツカーを売ったのか？",
+        "thumb": "最初は高級車"
+      },
+      "ko": {
+        "title": "테슬라는 왜 처음에 비싼 스포츠카부터 팔았을까?",
+        "thumb": "스포츠카부터?"
+      },
+      "zh-CN": {
+        "title": "为什么特斯拉一开始先卖昂贵跑车？",
+        "thumb": "先卖贵跑车"
+      },
+      "reframed": {}
+    },
+    "B18": {
+      "zh-TW": {
+        "title": "為什麼 Google 要把公司改名 Alphabet？",
+        "thumb": "Google改名？"
+      },
+      "en": {
+        "title": "Why Did Google Change Its Name to Alphabet?",
+        "thumb": "Google → Alphabet?"
+      },
+      "ja": {
+        "title": "なぜGoogleは社名をAlphabetに変えたのか？",
+        "thumb": "Alphabetへ"
+      },
+      "ko": {
+        "title": "구글은 왜 회사 이름을 알파벳으로 바꿨을까?",
+        "thumb": "왜 알파벳?"
+      },
+      "zh-CN": {
+        "title": "为什么谷歌要把公司改名Alphabet？",
+        "thumb": "谷歌改名？"
+      },
+      "reframed": {}
+    },
+    "B19": {
+      "zh-TW": {
+        "title": "為什麼 Airbnb 靠賣麥片撐過倒閉危機？",
+        "thumb": "靠麥片續命"
+      },
+      "en": {
+        "title": "Why Did Airbnb Survive by Selling Cereal?",
+        "thumb": "Saved by Cereal"
+      },
+      "ja": {
+        "title": "なぜAirbnbはシリアルを売って倒産の危機を乗り越えたのか？",
+        "thumb": "シリアルで生還"
+      },
+      "ko": {
+        "title": "에어비앤비는 왜 시리얼을 팔아 위기를 넘겼을까?",
+        "thumb": "시리얼로 버텼다"
+      },
+      "zh-CN": {
+        "title": "为什么爱彼迎靠卖麦片撑过倒闭危机？",
+        "thumb": "靠麦片续命"
+      },
+      "reframed": {}
+    },
+    "B20": {
+      "zh-TW": {
+        "title": "為什麼印表機便宜、墨水卻很貴？",
+        "thumb": "墨水為何這麼貴"
+      },
+      "en": {
+        "title": "Why Are Printers Cheap but Ink So Expensive?",
+        "thumb": "Why Is Ink Pricey?"
+      },
+      "ja": {
+        "title": "なぜプリンターは安いのにインクは高いのか？",
+        "thumb": "インクが高すぎる"
+      },
+      "ko": {
+        "title": "프린터는 싼데 잉크는 왜 비쌀까?",
+        "thumb": "잉크가 비싼 이유"
+      },
+      "zh-CN": {
+        "title": "为什么打印机便宜，墨水却很贵？",
+        "thumb": "墨水为何这么贵"
+      },
+      "reframed": {}
+    },
+    "B21": {
+      "zh-TW": {
+        "title": "為什麼航空公司故意超賣機位？",
+        "thumb": "故意超賣"
+      },
+      "en": {
+        "title": "Why Do Airlines Overbook Flights on Purpose?",
+        "thumb": "Overbooked on Purpose"
+      },
+      "ja": {
+        "title": "なぜ航空会社はわざとオーバーブッキングするのか？",
+        "thumb": "わざと売りすぎ"
+      },
+      "ko": {
+        "title": "항공사는 왜 일부러 좌석을 초과 판매할까?",
+        "thumb": "일부러 초과 판매"
+      },
+      "zh-CN": {
+        "title": "为什么航空公司故意超售机票？",
+        "thumb": "故意超售"
+      },
+      "reframed": {}
+    },
+    "B22": {
+      "zh-TW": {
+        "title": "為什麼 Samsung 從賣魚乾變成科技巨頭？",
+        "thumb": "從賣魚乾起家"
+      },
+      "en": {
+        "title": "Why Did Samsung Go From Dried Fish Trader to Tech Giant?",
+        "thumb": "From Dried Fish?"
+      },
+      "ja": {
+        "title": "なぜサムスンは干物商から巨大テック企業になったのか？",
+        "thumb": "干物から電子へ"
+      },
+      "ko": {
+        "title": "삼성은 왜 건어물 무역에서 반도체로 갔을까?",
+        "thumb": "건어물에서 반도체"
+      },
+      "zh-CN": {
+        "title": "为什么三星能从卖鱼干变成科技巨头？",
+        "thumb": "从卖鱼干起家"
+      },
+      "reframed": {}
+    },
+    "B23": {
+      "zh-TW": {
+        "title": "為什麼 Yahoo 拒絕賣給微軟？",
+        "thumb": "拒絕微軟"
+      },
+      "en": {
+        "title": "Why Did Yahoo Refuse to Sell to Microsoft?",
+        "thumb": "Yahoo Said No"
+      },
+      "ja": {
+        "title": "なぜYahoo!はマイクロソフトへの売却を拒んだのか？",
+        "thumb": "買収を拒否"
+      },
+      "ko": {
+        "title": "야후는 왜 마이크로소프트의 인수를 거절했을까?",
+        "thumb": "인수 거절한 야후"
+      },
+      "zh-CN": {
+        "title": "为什么雅虎拒绝卖给微软？",
+        "thumb": "拒绝微软"
+      },
+      "reframed": {}
+    },
+    "B24": {
+      "zh-TW": {
+        "title": "為什麼 Zara 兩週就能把新款送到店裡？",
+        "thumb": "兩週上新款"
+      },
+      "en": {
+        "title": "Why Can Zara Get New Styles Into Stores in Two Weeks?",
+        "thumb": "New Styles, 2 Weeks"
+      },
+      "ja": {
+        "title": "なぜZARAは2週間で新作を店に並べられるのか？",
+        "thumb": "新作が2週間で"
+      },
+      "ko": {
+        "title": "자라는 왜 2주 만에 신상품을 매장에 낼 수 있을까?",
+        "thumb": "신상 2주 만에"
+      },
+      "zh-CN": {
+        "title": "为什么Zara两周就能把新款送到店里？",
+        "thumb": "两周上新"
+      },
+      "reframed": {}
+    },
+    "B25": {
+      "zh-TW": {
+        "title": "為什麼 LINE 在台灣日本很紅，在美國卻沒人用？",
+        "thumb": "美國沒人用？"
+      },
+      "en": {
+        "title": "Why Is LINE Huge in Taiwan and Japan but Barely Used in the US?",
+        "thumb": "Not Big in America"
+      },
+      "ja": {
+        "title": "なぜLINEは日本や台湾で大人気なのに、アメリカでは使われないのか？",
+        "thumb": "アメリカで不人気"
+      },
+      "ko": {
+        "title": "라인은 왜 일본·대만에선 인기인데 미국에선 안 쓸까?",
+        "thumb": "미국에선 안 쓴다"
+      },
+      "zh-CN": {
+        "title": "为什么LINE在台湾日本很火，在美国却没人用？",
+        "thumb": "美国没人用？"
+      },
+      "reframed": {}
+    },
+    "S01": {
+      "zh-TW": {
+        "title": "為什麼飛機航線在地圖上是彎的？",
+        "thumb": "航線為何彎的"
+      },
+      "en": {
+        "title": "Why Do Flight Paths Look Curved on a Map?",
+        "thumb": "Why Planes Fly Curved"
+      },
+      "ja": {
+        "title": "なぜ飛行機の航路は地図上で曲がって見えるのか？",
+        "thumb": "航路が曲がる？"
+      },
+      "ko": {
+        "title": "비행기 항로는 왜 지도에서 휘어져 보일까?",
+        "thumb": "항로가 휘었다?"
+      },
+      "zh-CN": {
+        "title": "为什么飞机航线在地图上是弯的？",
+        "thumb": "航线为何是弯的"
+      },
+      "reframed": {}
+    },
+    "S02": {
+      "zh-TW": {
+        "title": "為什麼天空是藍的，夕陽卻是紅的？",
+        "thumb": "天藍夕陽紅"
+      },
+      "en": {
+        "title": "Why Is the Sky Blue but Sunsets Red?",
+        "thumb": "Blue Sky, Red Sunset"
+      },
+      "ja": {
+        "title": "なぜ空は青いのに夕焼けは赤いのか？",
+        "thumb": "空は青、夕日は赤"
+      },
+      "ko": {
+        "title": "하늘은 파란데 노을은 왜 빨갈까?",
+        "thumb": "노을은 왜 빨강"
+      },
+      "zh-CN": {
+        "title": "为什么天空是蓝的，夕阳却是红的？",
+        "thumb": "天蓝夕阳红"
+      },
+      "reframed": {}
+    },
+    "S03": {
+      "zh-TW": {
+        "title": "為什麼切洋蔥會流眼淚？",
+        "thumb": "切洋蔥必流淚"
+      },
+      "en": {
+        "title": "Why Does Cutting Onions Make You Cry?",
+        "thumb": "Onion Tears"
+      },
+      "ja": {
+        "title": "なぜ玉ねぎを切ると涙が出るのか？",
+        "thumb": "玉ねぎで涙"
+      },
+      "ko": {
+        "title": "양파를 썰면 왜 눈물이 날까?",
+        "thumb": "양파 눈물의 비밀"
+      },
+      "zh-CN": {
+        "title": "为什么切洋葱会流眼泪？",
+        "thumb": "切洋葱必流泪"
+      },
+      "reframed": {}
+    },
+    "S04": {
+      "zh-TW": {
+        "title": "為什麼貓喜歡把東西推下桌？",
+        "thumb": "貓為何推東西"
+      },
+      "en": {
+        "title": "Why Do Cats Knock Things Off Tables?",
+        "thumb": "Cats vs. Tables"
+      },
+      "ja": {
+        "title": "なぜ猫はテーブルの物を落とすのか？",
+        "thumb": "猫が物を落とす理由"
+      },
+      "ko": {
+        "title": "고양이는 왜 물건을 책상에서 떨어뜨릴까?",
+        "thumb": "고양이의 밀기"
+      },
+      "zh-CN": {
+        "title": "为什么猫喜欢把东西推下桌？",
+        "thumb": "猫为何推东西"
+      },
+      "reframed": {}
+    },
+    "S05": {
+      "zh-TW": {
+        "title": "為什麼打哈欠會傳染？",
+        "thumb": "哈欠會傳染"
+      },
+      "en": {
+        "title": "Why Are Yawns Contagious?",
+        "thumb": "Yawns Are Contagious"
+      },
+      "ja": {
+        "title": "なぜあくびはうつるのか？",
+        "thumb": "あくびはうつる"
+      },
+      "ko": {
+        "title": "하품은 왜 옮을까?",
+        "thumb": "하품이 옮는 이유"
+      },
+      "zh-CN": {
+        "title": "为什么打哈欠会传染？",
+        "thumb": "哈欠会传染"
+      },
+      "reframed": {}
+    },
+    "S06": {
+      "zh-TW": {
+        "title": "為什麼泡澡久了手指會皺？",
+        "thumb": "手指為何會皺"
+      },
+      "en": {
+        "title": "Why Do Your Fingers Wrinkle in the Bath?",
+        "thumb": "Wrinkly Fingers"
+      },
+      "ja": {
+        "title": "なぜお風呂に長く入ると指がしわしわになるのか？",
+        "thumb": "指がしわしわ"
+      },
+      "ko": {
+        "title": "목욕을 오래 하면 왜 손가락이 쭈글쭈글해질까?",
+        "thumb": "쭈글쭈글 손가락"
+      },
+      "zh-CN": {
+        "title": "为什么泡澡久了手指会皱？",
+        "thumb": "手指为何会皱"
+      },
+      "reframed": {}
+    },
+    "S07": {
+      "zh-TW": {
+        "title": "為什麼冰塊會浮起來？",
+        "thumb": "冰為何會浮"
+      },
+      "en": {
+        "title": "Why Does Ice Float?",
+        "thumb": "Why Ice Floats"
+      },
+      "ja": {
+        "title": "なぜ氷は水に浮くのか？",
+        "thumb": "氷が浮く理由"
+      },
+      "ko": {
+        "title": "얼음은 왜 물에 뜰까?",
+        "thumb": "얼음이 뜨는 이유"
+      },
+      "zh-CN": {
+        "title": "为什么冰块会浮起来？",
+        "thumb": "冰为何会浮"
+      },
+      "reframed": {}
+    },
+    "S08": {
+      "zh-TW": {
+        "title": "為什麼吃辣會痛又會上癮？",
+        "thumb": "越痛越上癮"
+      },
+      "en": {
+        "title": "Why Does Spicy Food Hurt, and Why Do We Crave It?",
+        "thumb": "Pain You Crave"
+      },
+      "ja": {
+        "title": "なぜ辛いものは痛いのにクセになるのか？",
+        "thumb": "痛いのにクセになる"
+      },
+      "ko": {
+        "title": "매운 음식은 왜 아픈데도 중독될까?",
+        "thumb": "아픈데 중독된다"
+      },
+      "zh-CN": {
+        "title": "为什么吃辣会痛又会上瘾？",
+        "thumb": "越痛越上瘾"
+      },
+      "reframed": {}
+    },
+    "S09": {
+      "zh-TW": {
+        "title": "為什麼飛機上的番茄汁特別好喝？",
+        "thumb": "機上番茄汁"
+      },
+      "en": {
+        "title": "Why Does Tomato Juice Taste Better on a Plane?",
+        "thumb": "Plane Tomato Juice"
+      },
+      "ja": {
+        "title": "なぜ飛行機のトマトジュースはおいしいのか？",
+        "thumb": "機内トマトジュース"
+      },
+      "ko": {
+        "title": "비행기에서 마시는 토마토 주스는 왜 맛있을까?",
+        "thumb": "기내 토마토 주스"
+      },
+      "zh-CN": {
+        "title": "为什么飞机上的番茄汁特别好喝？",
+        "thumb": "机上番茄汁"
+      },
+      "reframed": {}
+    },
+    "S10": {
+      "zh-TW": {
+        "title": "為什麼人會做夢？",
+        "thumb": "人為何做夢"
+      },
+      "en": {
+        "title": "Why Do We Dream?",
+        "thumb": "Why We Dream"
+      },
+      "ja": {
+        "title": "なぜ人は夢を見るのか？",
+        "thumb": "夢を見る理由"
+      },
+      "ko": {
+        "title": "사람은 왜 꿈을 꿀까?",
+        "thumb": "꿈을 꾸는 이유"
+      },
+      "zh-CN": {
+        "title": "为什么人会做梦？",
+        "thumb": "人为何做梦"
+      },
+      "reframed": {}
+    },
+    "S11": {
+      "zh-TW": {
+        "title": "為什麼鍵盤不是照 ABC 排？",
+        "thumb": "鍵盤不照ABC"
+      },
+      "en": {
+        "title": "Why Aren't Keyboards in ABC Order?",
+        "thumb": "Why Not ABC?"
+      },
+      "ja": {
+        "title": "なぜキーボードはABC順に並んでいないのか？",
+        "thumb": "なぜABC順じゃない"
+      },
+      "ko": {
+        "title": "키보드는 왜 ABC 순서가 아닐까?",
+        "thumb": "왜 ABC순 아닐까"
+      },
+      "zh-CN": {
+        "title": "为什么键盘不按ABC排？",
+        "thumb": "键盘不按ABC"
+      },
+      "reframed": {}
+    },
+    "S12": {
+      "zh-TW": {
+        "title": "為什麼一天是 24 小時、一小時是 60 分鐘？",
+        "thumb": "為何24和60"
+      },
+      "en": {
+        "title": "Why Does a Day Have 24 Hours and an Hour 60 Minutes?",
+        "thumb": "Why 24 and 60?"
+      },
+      "ja": {
+        "title": "なぜ1日は24時間、1時間は60分なのか？",
+        "thumb": "なぜ24と60？"
+      },
+      "ko": {
+        "title": "하루는 왜 24시간이고 한 시간은 왜 60분일까?",
+        "thumb": "왜 24와 60?"
+      },
+      "zh-CN": {
+        "title": "为什么一天是24小时、一小时是60分钟？",
+        "thumb": "为何24和60"
+      },
+      "reframed": {}
+    },
+    "S13": {
+      "zh-TW": {
+        "title": "為什麼微波爐不能放金屬？",
+        "thumb": "金屬不能放？"
+      },
+      "en": {
+        "title": "Why Can't You Put Metal in the Microwave?",
+        "thumb": "No Metal Allowed?"
+      },
+      "ja": {
+        "title": "なぜ電子レンジに金属を入れてはいけないのか？",
+        "thumb": "金属はNG？"
+      },
+      "ko": {
+        "title": "전자레인지에 왜 금속을 넣으면 안 될까?",
+        "thumb": "금속은 왜 안 돼?"
+      },
+      "zh-CN": {
+        "title": "为什么微波炉不能放金属？",
+        "thumb": "金属不能进？"
+      },
+      "reframed": {}
+    },
+    "S14": {
+      "zh-TW": {
+        "title": "為什麼喝咖啡會想上廁所？",
+        "thumb": "喝完就想上廁所"
+      },
+      "en": {
+        "title": "Why Does Coffee Make You Need the Bathroom?",
+        "thumb": "Coffee = Bathroom?"
+      },
+      "ja": {
+        "title": "なぜコーヒーを飲むとトイレに行きたくなるのか？",
+        "thumb": "コーヒーでトイレ"
+      },
+      "ko": {
+        "title": "커피를 마시면 왜 화장실에 가고 싶을까?",
+        "thumb": "커피 후 화장실"
+      },
+      "zh-CN": {
+        "title": "为什么喝咖啡会想上厕所？",
+        "thumb": "喝完就想上厕所"
+      },
+      "reframed": {}
+    },
+    "S15": {
+      "zh-TW": {
+        "title": "為什麼鳥站在電線上不會觸電？",
+        "thumb": "鳥不會觸電？"
+      },
+      "en": {
+        "title": "Why Don't Birds Get Shocked on Power Lines?",
+        "thumb": "No Shock for Birds?"
+      },
+      "ja": {
+        "title": "なぜ電線にとまった鳥は感電しないのか？",
+        "thumb": "鳥は感電しない？"
+      },
+      "ko": {
+        "title": "전깃줄 위의 새는 왜 감전되지 않을까?",
+        "thumb": "새는 감전 안 돼?"
+      },
+      "zh-CN": {
+        "title": "为什么鸟站在电线上不会触电？",
+        "thumb": "鸟不会触电？"
+      },
+      "reframed": {}
+    },
+    "S16": {
+      "zh-TW": {
+        "title": "為什麼高鐵車頭都是長鼻子？",
+        "thumb": "高鐵長鼻子"
+      },
+      "en": {
+        "title": "Why Do Bullet Trains Have Such Long Noses?",
+        "thumb": "Why the Long Nose?"
+      },
+      "ja": {
+        "title": "なぜ新幹線の先頭はあんなに長いのか？",
+        "thumb": "新幹線の長い鼻"
+      },
+      "ko": {
+        "title": "고속열차 앞머리는 왜 길쭉할까?",
+        "thumb": "긴 코의 비밀"
+      },
+      "zh-CN": {
+        "title": "为什么高铁车头都是长鼻子？",
+        "thumb": "高铁长鼻子"
+      },
+      "reframed": {
+        "ja": "日本の視聴者にとって高速鉄道は新幹線なので、身近な新幹線の長い先頭形状として問うた。"
+      }
+    },
+    "S17": {
+      "zh-TW": {
+        "title": "為什麼手機電池用久會不耐用？",
+        "thumb": "電池越用越差"
+      },
+      "en": {
+        "title": "Why Do Phone Batteries Wear Out Over Time?",
+        "thumb": "Battery Dying Faster?"
+      },
+      "ja": {
+        "title": "なぜスマホのバッテリーは使うほど持たなくなるのか？",
+        "thumb": "電池がもたない"
+      },
+      "ko": {
+        "title": "휴대폰 배터리는 왜 오래 쓰면 빨리 닳을까?",
+        "thumb": "배터리가 빨리 닳아"
+      },
+      "zh-CN": {
+        "title": "为什么手机电池用久了会不耐用？",
+        "thumb": "电池越用越差"
+      },
+      "reframed": {}
+    },
+    "S18": {
+      "zh-TW": {
+        "title": "為什麼雷聲總比閃電晚到？",
+        "thumb": "雷聲總是晚到"
+      },
+      "en": {
+        "title": "Why Do We Hear Thunder After We See Lightning?",
+        "thumb": "Light First, Then Boom"
+      },
+      "ja": {
+        "title": "なぜ雷の音は稲妻より遅れて聞こえるのか？",
+        "thumb": "光ってから音"
+      },
+      "ko": {
+        "title": "천둥은 왜 번개보다 늦게 들릴까?",
+        "thumb": "번개 뒤 천둥"
+      },
+      "zh-CN": {
+        "title": "为什么雷声总比闪电晚到？",
+        "thumb": "雷声总是晚到"
+      },
+      "reframed": {}
+    },
+    "S19": {
+      "zh-TW": {
+        "title": "為什麼洋芋片袋裡一半是空氣？",
+        "thumb": "一半是空氣？"
+      },
+      "en": {
+        "title": "Why Are Chip Bags Half Full of Air?",
+        "thumb": "Half Air?"
+      },
+      "ja": {
+        "title": "なぜポテチの袋は半分が空気なのか？",
+        "thumb": "半分は空気？"
+      },
+      "ko": {
+        "title": "과자 봉지는 왜 절반이 공기일까?",
+        "thumb": "절반이 공기?"
+      },
+      "zh-CN": {
+        "title": "为什么薯片袋里一半是空气？",
+        "thumb": "一半是空气？"
+      },
+      "reframed": {}
+    },
+    "S20": {
+      "zh-TW": {
+        "title": "為什麼人會暈車？",
+        "thumb": "為什麼會暈車"
+      },
+      "en": {
+        "title": "Why Do We Get Carsick?",
+        "thumb": "Why You Get Carsick"
+      },
+      "ja": {
+        "title": "なぜ人は車酔いするのか？",
+        "thumb": "車酔いの正体"
+      },
+      "ko": {
+        "title": "사람은 왜 멀미를 할까?",
+        "thumb": "멀미의 정체"
+      },
+      "zh-CN": {
+        "title": "为什么人会晕车？",
+        "thumb": "为什么会晕车"
+      },
+      "reframed": {}
+    },
+    "S21": {
+      "zh-TW": {
+        "title": "為什麼月亮總是同一面對著地球？",
+        "thumb": "永遠同一面"
+      },
+      "en": {
+        "title": "Why Does the Moon Always Show Us the Same Side?",
+        "thumb": "Same Side, Always"
+      },
+      "ja": {
+        "title": "なぜ月はいつも同じ面を地球に向けているのか？",
+        "thumb": "いつも同じ面"
+      },
+      "ko": {
+        "title": "달은 왜 항상 같은 면만 보여 줄까?",
+        "thumb": "늘 같은 얼굴"
+      },
+      "zh-CN": {
+        "title": "为什么月亮总是同一面对着地球？",
+        "thumb": "永远同一面"
+      },
+      "reframed": {}
+    },
+    "S22": {
+      "zh-TW": {
+        "title": "為什麼鐵軌下面要鋪碎石？",
+        "thumb": "鐵軌下的碎石"
+      },
+      "en": {
+        "title": "Why Are Railway Tracks Laid on Crushed Stone?",
+        "thumb": "Why the Rocks?"
+      },
+      "ja": {
+        "title": "なぜ線路の下には砂利が敷いてあるのか？",
+        "thumb": "線路に砂利？"
+      },
+      "ko": {
+        "title": "철로 아래에는 왜 자갈을 깔까?",
+        "thumb": "왜 자갈을 깔까"
+      },
+      "zh-CN": {
+        "title": "为什么铁轨下面要铺碎石？",
+        "thumb": "铁轨下的碎石"
+      },
+      "reframed": {}
+    },
+    "S23": {
+      "zh-TW": {
+        "title": "為什麼彩虹是彎的？",
+        "thumb": "彩虹為何彎"
+      },
+      "en": {
+        "title": "Why Are Rainbows Curved?",
+        "thumb": "Why Rainbows Bend"
+      },
+      "ja": {
+        "title": "なぜ虹は弧を描くのか？",
+        "thumb": "虹はなぜ丸い"
+      },
+      "ko": {
+        "title": "무지개는 왜 휘어져 있을까?",
+        "thumb": "휘어진 무지개"
+      },
+      "zh-CN": {
+        "title": "为什么彩虹是弯的？",
+        "thumb": "彩虹为何弯"
+      },
+      "reframed": {}
+    },
+    "S24": {
+      "zh-TW": {
+        "title": "為什麼肚子餓會咕嚕叫？",
+        "thumb": "肚子咕嚕叫"
+      },
+      "en": {
+        "title": "Why Does Your Stomach Growl When You're Hungry?",
+        "thumb": "Stomach Growling?"
+      },
+      "ja": {
+        "title": "なぜお腹が空くとグーッと鳴るのか？",
+        "thumb": "お腹が鳴る理由"
+      },
+      "ko": {
+        "title": "배가 고프면 왜 꼬르륵 소리가 날까?",
+        "thumb": "꼬르륵의 정체"
+      },
+      "zh-CN": {
+        "title": "为什么肚子饿了会咕咕叫？",
+        "thumb": "肚子咕咕叫"
+      },
+      "reframed": {}
+    },
+    "S25": {
+      "zh-TW": {
+        "title": "為什麼剪頭髮不痛、拔頭髮會痛？",
+        "thumb": "剪不痛拔會痛"
+      },
+      "en": {
+        "title": "Why Doesn't Cutting Hair Hurt, but Pulling It Does?",
+        "thumb": "Cut vs. Pull"
+      },
+      "ja": {
+        "title": "なぜ髪は切っても痛くないのに、抜くと痛いのか？",
+        "thumb": "切ると抜くの差"
+      },
+      "ko": {
+        "title": "머리카락은 왜 자를 땐 안 아프고 뽑을 땐 아플까?",
+        "thumb": "자르면 괜찮은데?"
+      },
+      "zh-CN": {
+        "title": "为什么剪头发不痛，拔头发会痛？",
+        "thumb": "剪不痛拔会痛"
+      },
+      "reframed": {}
+    },
+    "T01": {
+      "zh-TW": {
+        "title": "為什麼日本開車靠左？",
+        "thumb": "日本靠左開"
+      },
+      "en": {
+        "title": "Why Does Japan Drive on the Left?",
+        "thumb": "Japan Drives Left"
+      },
+      "ja": {
+        "title": "なぜ日本は左側通行になったのか？「武士の刀」説の真偽",
+        "thumb": "武士のせい？"
+      },
+      "ko": {
+        "title": "일본은 왜 차가 왼쪽으로 다닐까?",
+        "thumb": "왜 왼쪽 통행?"
+      },
+      "zh-CN": {
+        "title": "为什么日本开车靠左？",
+        "thumb": "日本靠左开"
+      },
+      "reframed": {
+        "ja": "左側通行は日本人には当たり前なので、いつどう定着したのか、よく聞く「武士の刀」説は本当かを問う形にした。"
+      }
+    },
+    "T02": {
+      "zh-TW": {
+        "title": "為什麼韓國人用扁扁的金屬筷子？",
+        "thumb": "韓國鐵筷子"
+      },
+      "en": {
+        "title": "Why Do Koreans Use Flat Metal Chopsticks?",
+        "thumb": "Metal Chopsticks?"
+      },
+      "ja": {
+        "title": "なぜ韓国人は平たい金属の箸を使うのか？",
+        "thumb": "金属の箸？"
+      },
+      "ko": {
+        "title": "우리는 왜 쇠젓가락을 쓸까? 은수저 독 감별설부터 따져 보기",
+        "thumb": "은수저 독 감별설"
+      },
+      "zh-CN": {
+        "title": "为什么韩国人用扁扁的金属筷子？",
+        "thumb": "韩国铁筷子"
+      },
+      "reframed": {
+        "ko": "쇠젓가락은 한국 시청자에게 일상이라, 흔히 듣는 은수저 독 감별설을 앞세워 그 이유를 따져 보는 질문으로 바꿨다."
+      }
+    },
+    "T03": {
+      "zh-TW": {
+        "title": "為什麼日本電車那麼準時？",
+        "thumb": "為何這麼準時"
+      },
+      "en": {
+        "title": "Why Are Japanese Trains So Punctual?",
+        "thumb": "Always On Time"
+      },
+      "ja": {
+        "title": "なぜ日本の電車は秒単位で走れるのか？指差確認と遅延証明書のワケ",
+        "thumb": "秒単位の時刻表"
+      },
+      "ko": {
+        "title": "일본 전철은 왜 그렇게 정확할까?",
+        "thumb": "일본 전철 정시성"
+      },
+      "zh-CN": {
+        "title": "为什么日本电车那么准时？",
+        "thumb": "为何这么准时"
+      },
+      "reframed": {
+        "ja": "電車が時間通りなのは日本人には普通なので、秒単位の時刻表・指差確認・遅延証明書という仕組みの側を問うた。"
+      }
+    },
+    "T04": {
+      "zh-TW": {
+        "title": "為什麼在泰國不能摸別人的頭？",
+        "thumb": "別摸頭"
+      },
+      "en": {
+        "title": "Why Shouldn't You Touch Someone's Head in Thailand?",
+        "thumb": "Don't Touch the Head"
+      },
+      "ja": {
+        "title": "なぜタイでは人の頭を触ってはいけないのか？",
+        "thumb": "頭に触らないで"
+      },
+      "ko": {
+        "title": "태국에서는 왜 남의 머리를 만지면 안 될까?",
+        "thumb": "머리 만지지 마세요"
+      },
+      "zh-CN": {
+        "title": "为什么在泰国不能摸别人的头？",
+        "thumb": "别摸头"
+      },
+      "reframed": {}
+    },
+    "T05": {
+      "zh-TW": {
+        "title": "為什麼美國要給小費，日本卻不收？",
+        "thumb": "小費給不給"
+      },
+      "en": {
+        "title": "Why Does America Expect Tips When Japan Doesn't?",
+        "thumb": "Tip or No Tip?"
+      },
+      "ja": {
+        "title": "なぜアメリカではチップが必要なのか？日本にない習慣のワケ",
+        "thumb": "なぜチップ？"
+      },
+      "ko": {
+        "title": "미국은 왜 팁을 주고 일본은 안 받을까?",
+        "thumb": "팁 문화 차이"
+      },
+      "zh-CN": {
+        "title": "为什么美国要给小费，日本却不收？",
+        "thumb": "小费给不给"
+      },
+      "reframed": {
+        "ja": "チップがないのは日本では当然なので、日本側から「なぜアメリカではチップが必要なのか」と問い直した。"
+      }
+    },
+    "T06": {
+      "zh-TW": {
+        "title": "為什麼歐洲上廁所要付錢？",
+        "thumb": "上廁所要錢？"
+      },
+      "en": {
+        "title": "Why Do You Have to Pay to Use Toilets in Europe?",
+        "thumb": "Pay to Pee?"
+      },
+      "ja": {
+        "title": "なぜヨーロッパのトイレは有料なのか？",
+        "thumb": "トイレが有料？"
+      },
+      "ko": {
+        "title": "유럽은 왜 화장실이 유료일까?",
+        "thumb": "화장실이 유료?"
+      },
+      "zh-CN": {
+        "title": "为什么在欧洲上厕所要付钱？",
+        "thumb": "上厕所要钱？"
+      },
+      "reframed": {}
+    },
+    "T07": {
+      "zh-TW": {
+        "title": "為什麼飛機窗戶是圓的？",
+        "thumb": "窗戶為何是圓的"
+      },
+      "en": {
+        "title": "Why Are Airplane Windows Round?",
+        "thumb": "Why Round Windows?"
+      },
+      "ja": {
+        "title": "なぜ飛行機の窓は丸いのか？",
+        "thumb": "窓が丸い理由"
+      },
+      "ko": {
+        "title": "비행기 창문은 왜 둥글까?",
+        "thumb": "둥근 창문의 비밀"
+      },
+      "zh-CN": {
+        "title": "为什么飞机窗户是圆的？",
+        "thumb": "窗户为何是圆的"
+      },
+      "reframed": {}
+    },
+    "T08": {
+      "zh-TW": {
+        "title": "為什麼免稅店都在出境之後？",
+        "thumb": "出境後才免稅"
+      },
+      "en": {
+        "title": "Why Are Duty-Free Shops Only After Passport Control?",
+        "thumb": "Only After Departure"
+      },
+      "ja": {
+        "title": "なぜ免税店は出国審査の後にあるのか？",
+        "thumb": "出国後だけ？"
+      },
+      "ko": {
+        "title": "면세점은 왜 출국 심사 뒤에 있을까?",
+        "thumb": "출국 후에만?"
+      },
+      "zh-CN": {
+        "title": "为什么免税店都在出境之后？",
+        "thumb": "出境后才免税"
+      },
+      "reframed": {}
+    },
+    "T09": {
+      "zh-TW": {
+        "title": "為什麼日本到處都是自動販賣機？",
+        "thumb": "滿街販賣機"
+      },
+      "en": {
+        "title": "Why Are There Vending Machines Everywhere in Japan?",
+        "thumb": "Vending Machine Nation"
+      },
+      "ja": {
+        "title": "なぜ日本の自販機は外に置いても壊されないのか？",
+        "thumb": "壊されない自販機"
+      },
+      "ko": {
+        "title": "일본에는 왜 자판기가 그렇게 많을까?",
+        "thumb": "자판기 천국 일본"
+      },
+      "zh-CN": {
+        "title": "为什么日本到处都是自动售货机？",
+        "thumb": "满街售货机"
+      },
+      "reframed": {
+        "ja": "自販機の多さは日本人には見慣れた風景なので、答えにある治安の良さを軸に「屋外に置いても壊されない」点を問うた。"
+      }
+    },
+    "T10": {
+      "zh-TW": {
+        "title": "為什麼韓國人那麼愛喝冰美式？",
+        "thumb": "韓國人愛冰美式"
+      },
+      "en": {
+        "title": "Why Do Koreans Love Iced Americanos So Much?",
+        "thumb": "Iced Americano Nation"
+      },
+      "ja": {
+        "title": "なぜ韓国人はアイスアメリカーノが大好きなのか？",
+        "thumb": "アイスアメリカーノ"
+      },
+      "ko": {
+        "title": "아이스 아메리카노는 왜 한국인의 일상 연료가 됐을까?",
+        "thumb": "아아=일상 연료"
+      },
+      "zh-CN": {
+        "title": "为什么韩国人那么爱喝冰美式？",
+        "thumb": "韩国人爱冰美式"
+      },
+      "reframed": {
+        "ko": "한국인에게 아이스 아메리카노 사랑은 새롭지 않아서, 어떻게 빨리빨리 생활의 일상 연료가 됐는지를 묻는 형태로 바꿨다."
+      }
+    },
+    "T11": {
+      "zh-TW": {
+        "title": "為什麼杜拜能在沙漠變成大城市？",
+        "thumb": "沙漠變大城"
+      },
+      "en": {
+        "title": "Why Did Dubai Become a Major City in the Middle of the Desert?",
+        "thumb": "A City From Sand"
+      },
+      "ja": {
+        "title": "なぜドバイは砂漠の中で大都市になれたのか？",
+        "thumb": "砂漠の大都市"
+      },
+      "ko": {
+        "title": "두바이는 왜 사막 한가운데서 대도시가 될 수 있었을까?",
+        "thumb": "사막 위 대도시"
+      },
+      "zh-CN": {
+        "title": "为什么迪拜能在沙漠里变成大城市？",
+        "thumb": "沙漠变大城"
+      },
+      "reframed": {}
+    },
+    "T12": {
+      "zh-TW": {
+        "title": "為什麼新加坡禁止賣口香糖？",
+        "thumb": "禁賣口香糖"
+      },
+      "en": {
+        "title": "Why Did Singapore Ban Selling Chewing Gum?",
+        "thumb": "Gum Is Banned?"
+      },
+      "ja": {
+        "title": "なぜシンガポールではガムの販売が禁止されているのか？",
+        "thumb": "ガム禁止の国"
+      },
+      "ko": {
+        "title": "싱가포르는 왜 껌 판매를 금지했을까?",
+        "thumb": "껌 금지 국가"
+      },
+      "zh-CN": {
+        "title": "为什么新加坡禁止卖口香糖？",
+        "thumb": "禁卖口香糖"
+      },
+      "reframed": {}
+    },
+    "T13": {
+      "zh-TW": {
+        "title": "為什麼威尼斯蓋在水上？",
+        "thumb": "水上之城"
+      },
+      "en": {
+        "title": "Why Is Venice Built on Water?",
+        "thumb": "A City on Water"
+      },
+      "ja": {
+        "title": "なぜヴェネツィアは水の上に建っているのか？",
+        "thumb": "水上の都"
+      },
+      "ko": {
+        "title": "베네치아는 왜 물 위에 지어졌을까?",
+        "thumb": "물 위의 도시"
+      },
+      "zh-CN": {
+        "title": "为什么威尼斯建在水上？",
+        "thumb": "水上之城"
+      },
+      "reframed": {}
+    },
+    "T14": {
+      "zh-TW": {
+        "title": "為什麼比薩斜塔不會倒？",
+        "thumb": "斜而不倒"
+      },
+      "en": {
+        "title": "Why Doesn't the Leaning Tower of Pisa Fall Over?",
+        "thumb": "Why It Won't Fall"
+      },
+      "ja": {
+        "title": "なぜピサの斜塔は倒れないのか？",
+        "thumb": "倒れない斜塔"
+      },
+      "ko": {
+        "title": "피사의 사탑은 왜 쓰러지지 않을까?",
+        "thumb": "안 쓰러지는 탑"
+      },
+      "zh-CN": {
+        "title": "为什么比萨斜塔不会倒？",
+        "thumb": "斜而不倒"
+      },
+      "reframed": {}
+    },
+    "T15": {
+      "zh-TW": {
+        "title": "為什麼日本旅館要穿浴衣吃晚餐？",
+        "thumb": "穿浴衣吃飯"
+      },
+      "en": {
+        "title": "Why Do Guests Wear Yukata to Dinner at Japanese Inns?",
+        "thumb": "Yukata at Dinner?"
+      },
+      "ja": {
+        "title": "旅館の浴衣は、なぜ館内や温泉街を歩いてもいいのか？",
+        "thumb": "浴衣で温泉街"
+      },
+      "ko": {
+        "title": "일본 료칸에서는 왜 유카타를 입고 저녁을 먹을까?",
+        "thumb": "유카타로 저녁?"
+      },
+      "zh-CN": {
+        "title": "为什么日本旅馆要穿浴衣吃晚饭？",
+        "thumb": "穿浴衣吃饭"
+      },
+      "reframed": {
+        "ja": "旅館で浴衣のまま夕食をとるのは日本では普通なので、館内や温泉街を浴衣で歩ける理由として問うた。"
+      }
+    },
+    "T16": {
+      "zh-TW": {
+        "title": "為什麼機票越接近出發越貴？",
+        "thumb": "越晚買越貴"
+      },
+      "en": {
+        "title": "Why Do Flights Get More Expensive Closer to Departure?",
+        "thumb": "Last-Minute Prices"
+      },
+      "ja": {
+        "title": "なぜ航空券は出発が近づくほど高くなるのか？",
+        "thumb": "直前ほど高い"
+      },
+      "ko": {
+        "title": "항공권은 왜 출발이 가까울수록 비쌀까?",
+        "thumb": "임박할수록 비싸다"
+      },
+      "zh-CN": {
+        "title": "为什么机票越接近出发越贵？",
+        "thumb": "越晚买越贵"
+      },
+      "reframed": {}
+    },
+    "T17": {
+      "zh-TW": {
+        "title": "為什麼往東飛時差比較難調？",
+        "thumb": "往東更難調"
+      },
+      "en": {
+        "title": "Why Is Jet Lag Worse When You Fly East?",
+        "thumb": "East Is Harder"
+      },
+      "ja": {
+        "title": "なぜ東へ飛ぶと時差ボケがつらいのか？",
+        "thumb": "東行きはつらい"
+      },
+      "ko": {
+        "title": "왜 동쪽으로 갈 때 시차 적응이 더 힘들까?",
+        "thumb": "동쪽이 더 힘들다"
+      },
+      "zh-CN": {
+        "title": "为什么往东飞时差更难倒？",
+        "thumb": "往东更难倒"
+      },
+      "reframed": {}
+    },
+    "T18": {
+      "zh-TW": {
+        "title": "為什麼英國插頭那麼大？",
+        "thumb": "英國大插頭"
+      },
+      "en": {
+        "title": "Why Are British Plugs So Big?",
+        "thumb": "Why So Big?"
+      },
+      "ja": {
+        "title": "なぜイギリスのプラグはあんなに大きいのか？",
+        "thumb": "巨大プラグ"
+      },
+      "ko": {
+        "title": "영국 플러그는 왜 그렇게 클까?",
+        "thumb": "거대한 플러그"
+      },
+      "zh-CN": {
+        "title": "为什么英国插头那么大？",
+        "thumb": "英国大插头"
+      },
+      "reframed": {}
+    },
+    "T19": {
+      "zh-TW": {
+        "title": "為什麼荷蘭人那麼高？",
+        "thumb": "荷蘭人為何高"
+      },
+      "en": {
+        "title": "Why Are Dutch People So Tall?",
+        "thumb": "Why So Tall?"
+      },
+      "ja": {
+        "title": "なぜオランダ人はあんなに背が高いのか？",
+        "thumb": "背が高すぎる"
+      },
+      "ko": {
+        "title": "네덜란드 사람들은 왜 그렇게 키가 클까?",
+        "thumb": "키가 큰 나라"
+      },
+      "zh-CN": {
+        "title": "为什么荷兰人那么高？",
+        "thumb": "荷兰人为何高"
+      },
+      "reframed": {}
+    },
+    "T20": {
+      "zh-TW": {
+        "title": "為什麼北歐人那麼愛喝咖啡？",
+        "thumb": "北歐愛咖啡"
+      },
+      "en": {
+        "title": "Why Do Nordic People Love Coffee So Much?",
+        "thumb": "Nordic Coffee Love"
+      },
+      "ja": {
+        "title": "なぜ北欧の人はコーヒーが大好きなのか？",
+        "thumb": "北欧とコーヒー"
+      },
+      "ko": {
+        "title": "북유럽 사람들은 왜 커피를 그렇게 좋아할까?",
+        "thumb": "북유럽 커피 사랑"
+      },
+      "zh-CN": {
+        "title": "为什么北欧人那么爱喝咖啡？",
+        "thumb": "北欧爱咖啡"
+      },
+      "reframed": {}
+    },
+    "T21": {
+      "zh-TW": {
+        "title": "為什麼京都沒有被原子彈轟炸？",
+        "thumb": "京都為何幸免"
+      },
+      "en": {
+        "title": "Why Wasn't Kyoto Hit by the Atomic Bomb?",
+        "thumb": "Why Kyoto Was Spared"
+      },
+      "ja": {
+        "title": "なぜ京都には原爆が落とされなかったのか？",
+        "thumb": "京都は外された"
+      },
+      "ko": {
+        "title": "교토는 왜 원자폭탄을 피했을까?",
+        "thumb": "교토가 빠진 이유"
+      },
+      "zh-CN": {
+        "title": "为什么京都没有被原子弹轰炸？",
+        "thumb": "京都为何幸免"
+      },
+      "reframed": {}
+    },
+    "T22": {
+      "zh-TW": {
+        "title": "為什麼美國還在用華氏？",
+        "thumb": "還在用華氏"
+      },
+      "en": {
+        "title": "Why Does the US Still Use Fahrenheit?",
+        "thumb": "Still Fahrenheit?"
+      },
+      "ja": {
+        "title": "なぜアメリカは今も華氏を使うのか？",
+        "thumb": "まだ華氏？"
+      },
+      "ko": {
+        "title": "미국은 왜 아직도 화씨를 쓸까?",
+        "thumb": "아직도 화씨?"
+      },
+      "zh-CN": {
+        "title": "为什么美国还在用华氏度？",
+        "thumb": "还在用华氏"
+      },
+      "reframed": {}
+    },
+    "T23": {
+      "zh-TW": {
+        "title": "為什麼韓國以前的年齡算法跟國際不一樣？",
+        "thumb": "韓國式年齡"
+      },
+      "en": {
+        "title": "Why Did Korea Count Ages Differently From the Rest of the World?",
+        "thumb": "Korean Age, Explained"
+      },
+      "ja": {
+        "title": "なぜ韓国の年齢の数え方は国際基準と違っていたのか？",
+        "thumb": "韓国式の年齢"
+      },
+      "ko": {
+        "title": "한국은 왜 '한국 나이'를 버리고 만 나이로 통일했을까?",
+        "thumb": "만 나이 통일"
+      },
+      "zh-CN": {
+        "title": "为什么韩国以前的年龄算法和国际不一样？",
+        "thumb": "韩国式年龄"
+      },
+      "reframed": {
+        "ko": "한국 나이는 한국 시청자에게 익숙하므로, 왜 법으로 만 나이로 통일했는지를 묻는 쪽으로 바꿨다."
+      }
+    },
+    "T24": {
+      "zh-TW": {
+        "title": "為什麼泰國的年份比西元多 543 年？",
+        "thumb": "比西元多543年"
+      },
+      "en": {
+        "title": "Why Is the Thai Calendar 543 Years Ahead?",
+        "thumb": "+543 Years?"
+      },
+      "ja": {
+        "title": "なぜタイの年号は西暦より543年多いのか？",
+        "thumb": "西暦＋543年"
+      },
+      "ko": {
+        "title": "태국 연도는 왜 서기보다 543년 많을까?",
+        "thumb": "서기+543년"
+      },
+      "zh-CN": {
+        "title": "为什么泰国的年份比公元多543年？",
+        "thumb": "比公元多543年"
+      },
+      "reframed": {}
+    },
+    "T25": {
+      "zh-TW": {
+        "title": "為什麼飛機起降要打開遮光板？",
+        "thumb": "遮光板要打開"
+      },
+      "en": {
+        "title": "Why Do You Open Window Shades for Takeoff and Landing?",
+        "thumb": "Shades Up, Why?"
+      },
+      "ja": {
+        "title": "なぜ離着陸のときは窓のシェードを開けるのか？",
+        "thumb": "シェードを開けて"
+      },
+      "ko": {
+        "title": "이착륙할 때 왜 창문 가리개를 열어야 할까?",
+        "thumb": "창문 가리개 열기"
+      },
+      "zh-CN": {
+        "title": "为什么飞机起降要打开遮光板？",
+        "thumb": "遮光板要打开"
+      },
+      "reframed": {}
+    },
+    "A01": {
+      "zh-TW": {
+        "title": "為什麼 AI 會一本正經地胡說八道？",
+        "thumb": "一本正經胡說"
+      },
+      "en": {
+        "title": "Why Does AI Confidently Make Things Up?",
+        "thumb": "Confidently Wrong"
+      },
+      "ja": {
+        "title": "なぜAIはもっともらしく嘘をつくのか？",
+        "thumb": "堂々と間違える"
+      },
+      "ko": {
+        "title": "AI는 왜 그럴듯하게 헛소리를 할까?",
+        "thumb": "그럴듯한 헛소리"
+      },
+      "zh-CN": {
+        "title": "为什么AI会一本正经地胡说八道？",
+        "thumb": "一本正经胡说"
+      },
+      "reframed": {}
+    },
+    "A02": {
+      "zh-TW": {
+        "title": "為什麼 iPhone 改用 USB-C？",
+        "thumb": "改用USB-C"
+      },
+      "en": {
+        "title": "Why Did the iPhone Switch to USB-C?",
+        "thumb": "iPhone Goes USB-C"
+      },
+      "ja": {
+        "title": "なぜiPhoneはUSB-Cに変わったのか？",
+        "thumb": "なぜUSB-C？"
+      },
+      "ko": {
+        "title": "아이폰은 왜 USB-C로 바꿨을까?",
+        "thumb": "왜 USB-C로?"
+      },
+      "zh-CN": {
+        "title": "为什么iPhone改用USB-C？",
+        "thumb": "改用USB-C"
+      },
+      "reframed": {}
+    },
+    "A03": {
+      "zh-TW": {
+        "title": "為什麼網速 Mbps 跟下載 MB 差 8 倍？",
+        "thumb": "差了8倍？"
+      },
+      "en": {
+        "title": "Why Are Internet Mbps and Download MB 8 Times Apart?",
+        "thumb": "Mbps ≠ MB"
+      },
+      "ja": {
+        "title": "なぜ回線速度のMbpsとダウンロードのMBは8倍違うのか？",
+        "thumb": "8倍の差の正体"
+      },
+      "ko": {
+        "title": "인터넷 속도 Mbps와 다운로드 MB는 왜 8배 차이가 날까?",
+        "thumb": "8배 차이의 정체"
+      },
+      "zh-CN": {
+        "title": "为什么网速Mbps和下载MB差8倍？",
+        "thumb": "差了8倍？"
+      },
+      "reframed": {}
+    },
+    "A04": {
+      "zh-TW": {
+        "title": "為什麼驗證碼要你點紅綠燈？",
+        "thumb": "點紅綠燈？"
+      },
+      "en": {
+        "title": "Why Do CAPTCHAs Make You Click Traffic Lights?",
+        "thumb": "Click the Traffic Lights"
+      },
+      "ja": {
+        "title": "なぜ画像認証で信号機を選ばされるのか？",
+        "thumb": "信号機を選べ"
+      },
+      "ko": {
+        "title": "캡차는 왜 신호등을 고르라고 할까?",
+        "thumb": "신호등을 고르세요"
+      },
+      "zh-CN": {
+        "title": "为什么验证码要你点红绿灯？",
+        "thumb": "点红绿灯？"
+      },
+      "reframed": {}
+    },
+    "A05": {
+      "zh-TW": {
+        "title": "為什麼手機越用越慢？",
+        "thumb": "越用越慢"
+      },
+      "en": {
+        "title": "Why Does Your Phone Get Slower Over Time?",
+        "thumb": "Why Phones Slow Down"
+      },
+      "ja": {
+        "title": "なぜスマホは使うほど遅くなるのか？",
+        "thumb": "スマホが遅い"
+      },
+      "ko": {
+        "title": "휴대폰은 왜 쓸수록 느려질까?",
+        "thumb": "쓸수록 느려져"
+      },
+      "zh-CN": {
+        "title": "为什么手机越用越慢？",
+        "thumb": "越用越慢"
+      },
+      "reframed": {}
+    },
+    "A06": {
+      "zh-TW": {
+        "title": "為什麼 Wi-Fi 隔一面牆就變慢？",
+        "thumb": "隔牆就變慢"
+      },
+      "en": {
+        "title": "Why Does Wi-Fi Slow Down Through a Single Wall?",
+        "thumb": "One Wall, Slow Wi-Fi"
+      },
+      "ja": {
+        "title": "なぜWi-Fiは壁一枚で遅くなるのか？",
+        "thumb": "壁一枚で遅く"
+      },
+      "ko": {
+        "title": "와이파이는 왜 벽 하나만 있어도 느려질까?",
+        "thumb": "벽 하나에 느려져"
+      },
+      "zh-CN": {
+        "title": "为什么Wi-Fi隔一面墙就变慢？",
+        "thumb": "隔墙就变慢"
+      },
+      "reframed": {}
+    },
+    "A07": {
+      "zh-TW": {
+        "title": "為什麼 NVIDIA 變成全世界最值錢的公司之一？",
+        "thumb": "NVIDIA憑什麼"
+      },
+      "en": {
+        "title": "Why Did NVIDIA Become One of the World's Most Valuable Companies?",
+        "thumb": "Why NVIDIA Won"
+      },
+      "ja": {
+        "title": "なぜNVIDIAは世界で最も価値ある企業の一つになったのか？",
+        "thumb": "なぜNVIDIA？"
+      },
+      "ko": {
+        "title": "엔비디아는 왜 세계에서 가장 비싼 회사 중 하나가 됐을까?",
+        "thumb": "엔비디아의 비결"
+      },
+      "zh-CN": {
+        "title": "为什么英伟达成了全世界最值钱的公司之一？",
+        "thumb": "英伟达凭什么"
+      },
+      "reframed": {}
+    },
+    "A08": {
+      "zh-TW": {
+        "title": "為什麼 AI 會數錯 strawberry 裡有幾個 r？",
+        "thumb": "幾個r？"
+      },
+      "en": {
+        "title": "Why Does AI Miscount the R's in \"Strawberry\"?",
+        "thumb": "How Many R's?"
+      },
+      "ja": {
+        "title": "なぜAIは「strawberry」のrの数を数え間違えるのか？",
+        "thumb": "rはいくつ？"
+      },
+      "ko": {
+        "title": "AI는 왜 strawberry의 r 개수를 틀리게 셀까?",
+        "thumb": "r은 몇 개?"
+      },
+      "zh-CN": {
+        "title": "为什么AI会数错strawberry里有几个r？",
+        "thumb": "几个r？"
+      },
+      "reframed": {}
+    },
+    "A09": {
+      "zh-TW": {
+        "title": "為什麼密碼要大小寫加符號？",
+        "thumb": "大小寫加符號"
+      },
+      "en": {
+        "title": "Why Do Passwords Need Uppercase, Lowercase and Symbols?",
+        "thumb": "Why Symbols?"
+      },
+      "ja": {
+        "title": "なぜパスワードに大文字・小文字・記号が必要なのか？",
+        "thumb": "記号が要る理由"
+      },
+      "ko": {
+        "title": "비밀번호는 왜 대소문자와 특수문자를 섞어야 할까?",
+        "thumb": "특수문자 왜 필요?"
+      },
+      "zh-CN": {
+        "title": "为什么密码要大小写加符号？",
+        "thumb": "大小写加符号"
+      },
+      "reframed": {}
+    },
+    "A10": {
+      "zh-TW": {
+        "title": "為什麼海底電纜比衛星更重要？",
+        "thumb": "海底電纜更重要"
+      },
+      "en": {
+        "title": "Why Do Undersea Cables Matter More Than Satellites?",
+        "thumb": "Cables Beat Satellites"
+      },
+      "ja": {
+        "title": "なぜ海底ケーブルは衛星より重要なのか？",
+        "thumb": "衛星より海底"
+      },
+      "ko": {
+        "title": "해저 케이블은 왜 위성보다 중요할까?",
+        "thumb": "해저 케이블"
+      },
+      "zh-CN": {
+        "title": "为什么海底光缆比卫星更重要？",
+        "thumb": "海底光缆更重要"
+      },
+      "reframed": {}
+    },
+    "A11": {
+      "zh-TW": {
+        "title": "為什麼 5G 沒有想像中快？",
+        "thumb": "5G不夠快？"
+      },
+      "en": {
+        "title": "Why Isn't 5G as Fast as We Expected?",
+        "thumb": "5G Letdown?"
+      },
+      "ja": {
+        "title": "なぜ5Gは思ったほど速くないのか？",
+        "thumb": "5Gが遅い？"
+      },
+      "ko": {
+        "title": "5G는 왜 생각보다 빠르지 않을까?",
+        "thumb": "5G 왜 느려?"
+      },
+      "zh-CN": {
+        "title": "为什么5G没有想象中快？",
+        "thumb": "5G不够快？"
+      },
+      "reframed": {}
+    },
+    "A12": {
+      "zh-TW": {
+        "title": "為什麼電腦用二進位？",
+        "thumb": "只有0和1？"
+      },
+      "en": {
+        "title": "Why Do Computers Use Binary?",
+        "thumb": "Only 0 and 1?"
+      },
+      "ja": {
+        "title": "なぜコンピューターは2進数を使うのか？",
+        "thumb": "なぜ0と1？"
+      },
+      "ko": {
+        "title": "컴퓨터는 왜 2진법을 쓸까?",
+        "thumb": "왜 0과 1뿐?"
+      },
+      "zh-CN": {
+        "title": "为什么计算机用二进制？",
+        "thumb": "只有0和1？"
+      },
+      "reframed": {}
+    },
+    "A13": {
+      "zh-TW": {
+        "title": "為什麼藍牙叫藍牙？",
+        "thumb": "名字來自國王"
+      },
+      "en": {
+        "title": "Why Is Bluetooth Called Bluetooth?",
+        "thumb": "Named After a King"
+      },
+      "ja": {
+        "title": "なぜBluetoothは「青い歯」という名前なのか？",
+        "thumb": "名前は王様から"
+      },
+      "ko": {
+        "title": "블루투스는 왜 이름이 블루투스일까?",
+        "thumb": "이름은 왕에게서"
+      },
+      "zh-CN": {
+        "title": "为什么蓝牙叫蓝牙？",
+        "thumb": "名字来自国王"
+      },
+      "reframed": {}
+    },
+    "A14": {
+      "zh-TW": {
+        "title": "為什麼遊戲主機要賠錢賣？",
+        "thumb": "賠錢也要賣"
+      },
+      "en": {
+        "title": "Why Are Game Consoles Sold at a Loss?",
+        "thumb": "Sold at a Loss"
+      },
+      "ja": {
+        "title": "なぜゲーム機は赤字で売られるのか？",
+        "thumb": "赤字で売る理由"
+      },
+      "ko": {
+        "title": "게임기는 왜 손해 보고 팔까?",
+        "thumb": "손해 보고 판다"
+      },
+      "zh-CN": {
+        "title": "为什么游戏机要亏本卖？",
+        "thumb": "亏本也要卖"
+      },
+      "reframed": {}
+    },
+    "A15": {
+      "zh-TW": {
+        "title": "為什麼 YouTube 總知道你想看什麼？",
+        "thumb": "它怎麼知道？"
+      },
+      "en": {
+        "title": "Why Does YouTube Always Know What You Want to Watch?",
+        "thumb": "It Knows You"
+      },
+      "ja": {
+        "title": "なぜYouTubeは見たい動画がわかるのか？",
+        "thumb": "見たい動画がバレる"
+      },
+      "ko": {
+        "title": "유튜브는 왜 내가 볼 영상을 알까?",
+        "thumb": "알고리즘의 정체"
+      },
+      "zh-CN": {
+        "title": "为什么YouTube总知道你想看什么？",
+        "thumb": "它怎么知道？"
+      },
+      "reframed": {}
+    },
+    "A16": {
+      "zh-TW": {
+        "title": "為什麼 AI 老是畫錯手指？",
+        "thumb": "手指又畫錯"
+      },
+      "en": {
+        "title": "Why Does AI Keep Drawing Hands Wrong?",
+        "thumb": "AI Can't Draw Hands"
+      },
+      "ja": {
+        "title": "なぜAIは手の指をよく描き間違えるのか？",
+        "thumb": "指が変なAI絵"
+      },
+      "ko": {
+        "title": "AI는 왜 손가락을 자꾸 이상하게 그릴까?",
+        "thumb": "손가락이 이상해"
+      },
+      "zh-CN": {
+        "title": "为什么AI老是画错手指？",
+        "thumb": "手指又画错"
+      },
+      "reframed": {}
+    },
+    "A17": {
+      "zh-TW": {
+        "title": "為什麼 Google 搜尋是免費的？",
+        "thumb": "免費的代價"
+      },
+      "en": {
+        "title": "Why Is Google Search Free?",
+        "thumb": "You're the Product"
+      },
+      "ja": {
+        "title": "なぜGoogle検索は無料なのか？",
+        "thumb": "無料のカラクリ"
+      },
+      "ko": {
+        "title": "구글 검색은 왜 무료일까?",
+        "thumb": "무료의 비밀"
+      },
+      "zh-CN": {
+        "title": "为什么谷歌搜索是免费的？",
+        "thumb": "免费的代价"
+      },
+      "reframed": {}
+    },
+    "A18": {
+      "zh-TW": {
+        "title": "為什麼 USB 總是插反？",
+        "thumb": "又插反了"
+      },
+      "en": {
+        "title": "Why Do You Always Plug In USB Upside Down?",
+        "thumb": "Wrong Side Again"
+      },
+      "ja": {
+        "title": "なぜUSBはいつも逆に挿してしまうのか？",
+        "thumb": "また逆だった"
+      },
+      "ko": {
+        "title": "USB는 왜 늘 거꾸로 꽂게 될까?",
+        "thumb": "또 거꾸로"
+      },
+      "zh-CN": {
+        "title": "为什么USB总是插反？",
+        "thumb": "又插反了"
+      },
+      "reframed": {}
+    },
+    "A19": {
+      "zh-TW": {
+        "title": "為什麼晶片越小越快？",
+        "thumb": "越小越快"
+      },
+      "en": {
+        "title": "Why Do Smaller Chips Run Faster?",
+        "thumb": "Smaller = Faster?"
+      },
+      "ja": {
+        "title": "なぜ半導体は小さいほど速いのか？",
+        "thumb": "小さいほど速い"
+      },
+      "ko": {
+        "title": "반도체는 왜 작을수록 빠를까?",
+        "thumb": "작을수록 빠르다"
+      },
+      "zh-CN": {
+        "title": "为什么芯片越小越快？",
+        "thumb": "越小越快"
+      },
+      "reframed": {}
+    },
+    "A20": {
+      "zh-TW": {
+        "title": "為什麼 Emoji 在不同手機長得不一樣？",
+        "thumb": "Emoji長不一樣"
+      },
+      "en": {
+        "title": "Why Do Emojis Look Different on Different Phones?",
+        "thumb": "Same Emoji, New Look"
+      },
+      "ja": {
+        "title": "なぜ絵文字はスマホによって見た目が違うのか？",
+        "thumb": "絵文字が違う？"
+      },
+      "ko": {
+        "title": "이모지는 왜 폰마다 모양이 다를까?",
+        "thumb": "폰마다 다른 이모지"
+      },
+      "zh-CN": {
+        "title": "为什么同一个emoji在不同手机上长得不一样？",
+        "thumb": "表情长得不同"
+      },
+      "reframed": {}
+    },
+    "A21": {
+      "zh-TW": {
+        "title": "為什麼手機拍夜景越來越清楚？",
+        "thumb": "夜景越拍越清"
+      },
+      "en": {
+        "title": "Why Are Phone Night Photos Getting So Much Better?",
+        "thumb": "Night Mode Magic"
+      },
+      "ja": {
+        "title": "なぜスマホの夜景写真はどんどんきれいになったのか？",
+        "thumb": "夜景がきれいに"
+      },
+      "ko": {
+        "title": "스마트폰 야경 사진은 왜 점점 선명해질까?",
+        "thumb": "선명해진 야경"
+      },
+      "zh-CN": {
+        "title": "为什么手机拍夜景越来越清楚？",
+        "thumb": "夜景越拍越清"
+      },
+      "reframed": {}
+    },
+    "A22": {
+      "zh-TW": {
+        "title": "為什麼網站一直要你接受 Cookie？",
+        "thumb": "又要接受Cookie"
+      },
+      "en": {
+        "title": "Why Do Websites Keep Asking You to Accept Cookies?",
+        "thumb": "Accept Cookies?"
+      },
+      "ja": {
+        "title": "なぜWebサイトはいつもCookieの同意を求めるのか？",
+        "thumb": "Cookie同意の謎"
+      },
+      "ko": {
+        "title": "웹사이트는 왜 자꾸 쿠키 동의를 요구할까?",
+        "thumb": "쿠키 동의 왜?"
+      },
+      "zh-CN": {
+        "title": "为什么网站总让你接受Cookie？",
+        "thumb": "又要接受Cookie"
+      },
+      "reframed": {}
+    },
+    "A23": {
+      "zh-TW": {
+        "title": "為什麼電動車沒有變速箱？",
+        "thumb": "沒有變速箱？"
+      },
+      "en": {
+        "title": "Why Don't Electric Cars Need a Gearbox?",
+        "thumb": "No Gears Needed"
+      },
+      "ja": {
+        "title": "なぜ電気自動車には変速機がないのか？",
+        "thumb": "変速機がない？"
+      },
+      "ko": {
+        "title": "전기차는 왜 변속기가 없을까?",
+        "thumb": "변속기가 없다?"
+      },
+      "zh-CN": {
+        "title": "为什么电动车没有变速箱？",
+        "thumb": "没有变速箱？"
+      },
+      "reframed": {}
+    },
+    "A24": {
+      "zh-TW": {
+        "title": "為什麼 AI 需要那麼多電？",
+        "thumb": "AI吃電大戶"
+      },
+      "en": {
+        "title": "Why Does AI Use So Much Electricity?",
+        "thumb": "AI's Power Hunger"
+      },
+      "ja": {
+        "title": "なぜAIはそんなに電力を使うのか？",
+        "thumb": "AIは電気食い"
+      },
+      "ko": {
+        "title": "AI는 왜 그렇게 많은 전기가 필요할까?",
+        "thumb": "전기 먹는 AI"
+      },
+      "zh-CN": {
+        "title": "为什么AI需要那么多电？",
+        "thumb": "AI吃电大户"
+      },
+      "reframed": {}
+    },
+    "A25": {
+      "zh-TW": {
+        "title": "為什麼 2038 年電腦可能會出問題？",
+        "thumb": "2038年問題"
+      },
+      "en": {
+        "title": "Why Could Computers Run Into Trouble in 2038?",
+        "thumb": "The 2038 Problem"
+      },
+      "ja": {
+        "title": "なぜ2038年にコンピューターが問題を起こすかもしれないのか？",
+        "thumb": "2038年問題"
+      },
+      "ko": {
+        "title": "왜 2038년에 컴퓨터에 문제가 생길 수 있을까?",
+        "thumb": "2038년 문제"
+      },
+      "zh-CN": {
+        "title": "为什么2038年电脑可能会出问题？",
+        "thumb": "2038年问题"
+      },
+      "reframed": {}
+    }
+  }
+}

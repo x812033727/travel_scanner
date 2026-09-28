@@ -64,7 +64,7 @@ function bodyOf(draft: Draft): ShortsSettingsBody | null {
 function ConsentCard({ consent, canManage, unsaved, onAnswer }: { consent: Consent; canManage: boolean; unsaved: boolean; onAnswer: (view: ShortsSettings) => void }) {
   const t = useTranslations("admin.videoShorts");
   const when = useWhen();
-  const [read, setRead] = useState(false);
+  const [readHash, setReadHash] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const send = async (init: RequestInit) => {
@@ -72,7 +72,7 @@ function ConsentCard({ consent, canManage, unsaved, onAnswer }: { consent: Conse
     setError("");
     try {
       onAnswer(await api<ShortsSettings>("/admin/video-shorts/autopublish", init));
-      setRead(false);
+      setReadHash(null);
     } catch (problem) {
       setError(t("settings.consent.error", { message: message(problem) }));
     } finally {
@@ -80,6 +80,7 @@ function ConsentCard({ consent, canManage, unsaved, onAnswer }: { consent: Conse
     }
   };
   const offer = consent.offer;
+  const read = offer !== null && readHash === offer.text_sha256;
   const [first, ...terms] = (offer?.text ?? "").split("\n").filter(Boolean);
   // What was agreed to is still what would be agreed to now: nothing new to read.
   const current = consent.state === "valid" && offer !== null && offer.text_sha256 === consent.text_sha256;
@@ -95,7 +96,7 @@ function ConsentCard({ consent, canManage, unsaved, onAnswer }: { consent: Conse
       <ul className="grid gap-1">{terms.map((term) => <li key={term}>{term}</li>)}</ul>
     </div> : <p className="text-sm leading-6 text-amber-800">{t("settings.consent.noChannel")}</p>}
     {unsaved && <p className="text-sm leading-6 text-amber-800">{t("settings.consent.unsaved")}</p>}
-    {canManage && offer && !current && <label className="flex min-h-11 items-start gap-2 text-sm font-semibold"><input type="checkbox" className="mt-1" checked={read} disabled={busy || unsaved} onChange={(event) => setRead(event.target.checked)} />{t("settings.consent.read")}</label>}
+    {canManage && offer && !current && <label className="flex min-h-11 items-start gap-2 text-sm font-semibold"><input type="checkbox" className="mt-1" checked={read} disabled={busy || unsaved} onChange={(event) => setReadHash(event.target.checked ? offer.text_sha256 : null)} />{t("settings.consent.read")}</label>}
     {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
     {canManage && <div className="flex flex-wrap gap-3">
       {offer && !current && <Button disabled={busy || unsaved || !read} onClick={() => void send({ method: "POST", body: JSON.stringify({ text_sha256: offer.text_sha256 }) })}>{busy ? t("saving") : t("settings.consent.agree")}</Button>}

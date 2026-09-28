@@ -46,6 +46,9 @@ jobs:
       - run: node tools/video/assemble/smoke.mjs --fixture drama --workdir "$RUNNER_TEMP/video-smoke-drama"
       # The brand story example: narrator only, every shot a still under a camera move.
       - run: node tools/video/assemble/smoke.mjs --fixture story --workdir "$RUNNER_TEMP/video-smoke-story"
+      # A Short from its script to its upload package, with supplied clips for the narration:
+      # what can be checked without the site passes, what cannot fails saying so.
+      - run: node tools/video/shorts/smoke.mjs --workdir "$RUNNER_TEMP/shorts-smoke"
       - if: failure()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
@@ -60,5 +63,8 @@ jobs:
             ${{ runner.temp }}/video-smoke-story/**/checks.json
             ${{ runner.temp }}/video-smoke-story/**/frames/manifest.json
             ${{ runner.temp }}/video-smoke-story/**/state.json
+            ${{ runner.temp }}/shorts-smoke/**/checks.json
+            ${{ runner.temp }}/shorts-smoke/**/qa.json
+            ${{ runner.temp }}/shorts-smoke/**/contact-sheet.png
           if-no-files-found: ignore
           retention-days: 7

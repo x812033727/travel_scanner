@@ -151,10 +151,12 @@ export type PublishState = "deciding" | "making" | "ready" | "scheduled" | "publ
  * states), or null before the final cut is approved and once the video is dropped: the owner has
  * still to choose its languages, the languages are in the making (so the upload can wait to be
  * scheduled), it may be uploaded, it is scheduled, or it is public. An older API knows only
- * "ready" and the two YouTube states.
+ * "ready" and the two YouTube states. A Short has none of the five: it chooses no languages of
+ * its own, and where it stands is its shorts_state, which the server works out
+ * (docs/videos/SHORTS.md) and the page shows in the same place.
  */
 export function publishState(project: ProjectSummary, now = Date.now()): PublishState | null {
-  if (project.dropped_at) return null;
+  if (project.dropped_at || project.shorts_line) return null;
   if (project.youtube_video_id) return project.youtube_publish_at && Date.parse(project.youtube_publish_at) > now ? "scheduled" : "published";
   if (!knowsLanguages(project)) return readyToUpload(project) ? "ready" : null;
   if (!finalApproved(project)) return null;

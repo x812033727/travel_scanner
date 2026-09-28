@@ -65,6 +65,16 @@ describe("a slot's time is a time of day in the calendar's zone", () => {
     expect(zonedInstant("2026-10-05T19:30", "Asia/Nowhere")).toBeNull();
   });
 
+  it("rejects nonexistent wall times and keeps the existing fall-back choice", () => {
+    expect(zonedInstant("2027-03-14T02:30", "America/Los_Angeles")).toBeNull();
+    // Lord Howe advances by half an hour, so a one-hour-only check is insufficient.
+    expect(zonedInstant("2026-10-04T02:15", "Australia/Lord_Howe")).toBeNull();
+    expect(zonedInstant("2027-03-14T01:30", "America/Los_Angeles")?.toISOString()).toBe("2027-03-14T09:30:00.000Z");
+    expect(zonedInstant("2027-03-14T03:30", "America/Los_Angeles")?.toISOString()).toBe("2027-03-14T10:30:00.000Z");
+    expect(zonedInstant("2026-11-01T01:30", "America/Los_Angeles")?.toISOString()).toBe("2026-11-01T08:30:00.000Z");
+    expect(zonedInstant("2027-02-30T19:30", TAIPEI)).toBeNull();
+  });
+
   it("writes an instant back as that zone's wall clock", () => {
     expect(localInput("2026-10-05T11:30:00Z", TAIPEI)).toBe("2026-10-05T19:30");
     expect(localInput("2026-10-05T16:30:00Z", TAIPEI)).toBe("2026-10-06T00:30");
@@ -86,8 +96,14 @@ describe("ShortsCalendar", () => {
     expect(first.textContent).toContain("AI 真的可以算對發票嗎");
     expect(first.textContent).toContain("已排影片");
     expect(first.textContent).toContain("實測");
-    expect(screen.getByRole("listitem", { name: "2026-10-06 19:30" }).textContent).toContain("空格");
-    expect(screen.getByRole("listitem", { name: "2026-10-07 12:30" }).textContent).toContain("連假");
+    // An empty slot says it once and what it lacks; one that is not publishing says only that.
+    const empty = screen.getByRole("listitem", { name: "2026-10-06 19:30" });
+    expect(empty.textContent?.match(/空格/g)).toHaveLength(1);
+    expect(empty.textContent).toContain("還沒有排影片");
+    const skipped = screen.getByRole("listitem", { name: "2026-10-07 12:30" });
+    expect(skipped.textContent).toContain("不發");
+    expect(skipped.textContent).toContain("連假");
+    expect(skipped.textContent).not.toMatch(/空格|還沒有排影片/);
     expect(screen.getByText("時間是 Asia/Taipei 的當地時間", { exact: false })).toBeTruthy();
     fireEvent.click(within(first).getByRole("button", { name: "打開這支" }));
     expect(onOpenVideo).toHaveBeenCalledWith("receipt-total");
