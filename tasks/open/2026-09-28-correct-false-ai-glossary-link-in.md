@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-correct-false-ai-glossary-link-in
 title: Correct false AI glossary link in image SEO source
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-batch041-source-fix
@@ -36,7 +36,7 @@ missing language documents unless corrected first.
 - [x] Checked the link against the surrounding crop and file-size paragraph.
 - [x] Changed only block 16's inline object from `article` to `text`.
 - [x] Compared full parsed JSON against the pinned original with that one expected change.
-- [ ] Record checks and open a focused PR.
+- [x] Recorded local checks and opened focused draft PR #934.
 
 ## How to verify
 
@@ -67,3 +67,6 @@ matches the pre-correction main document, and all four target locales are
 absent. The changed zh-TW source will therefore need a guarded live revision
 before target-language publication; its published v4 is not the corrected
 source. This PR does not import, deploy, revise, or publish anything.
+
+Review: https://github.com/x812033727/travel_scanner/pull/934 is draft;
+CI and merge remain pending.
