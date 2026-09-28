@@ -693,7 +693,7 @@ async def _serialize_foods(
         )
     merchants_by_food: dict[UUID, list[dict[str, Any]]] = defaultdict(list)
     destinations_seen: dict[UUID, set[str]] = defaultdict(set)
-    for relation, merchant in merchant_rows:
+    for merchant_relation, merchant in merchant_rows:
         merchant_sources = sources_by_merchant.get(merchant.id, [])
         if not merchant_sources:
             continue
@@ -707,15 +707,15 @@ async def _serialize_foods(
         ):
             continue
         if merchant_destination_id:
-            if len(merchants_by_food[relation.food_id]) >= 3:
+            if len(merchants_by_food[merchant_relation.food_id]) >= 3:
                 continue
-        elif merchant.destination_id in destinations_seen[relation.food_id]:
+        elif merchant.destination_id in destinations_seen[merchant_relation.food_id]:
             continue
-        destinations_seen[relation.food_id].add(merchant.destination_id)
+        destinations_seen[merchant_relation.food_id].add(merchant.destination_id)
         profile = destination_for_id(merchant.destination_id)
         city_name = profile.city if profile else merchant.destination_id
         names = merchant_names(merchant)
-        merchants_by_food[relation.food_id].append(
+        merchants_by_food[merchant_relation.food_id].append(
             {
                 "merchant_id": str(merchant.id),
                 "slug": merchant.slug,

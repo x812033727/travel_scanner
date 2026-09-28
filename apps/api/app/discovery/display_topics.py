@@ -49,6 +49,6 @@ async def attach_catalog_display_topics(
                 for theme in themes.get(hotspot_id, [])
                 if theme.get("slug") and theme.get("name")
             )
-        merchant_id = merchant_refs.get(item.id)
-        if merchant_id is not None:
-            item.display_topics.extend(merchant_topics.get(merchant_id, []))
+        merchant_ref = merchant_refs.get(item.id)
+        if merchant_ref is not None:
+            item.display_topics.extend(merchant_topics.get(merchant_ref, []))

@@ -183,7 +183,7 @@ async def list_saved_items(
                 )
             )
         ).all()
-        for favorite, food, localization in food_rows:
+        for food_favorite, food, localization in food_rows:
             items.append(
                 {
                     "type": "food",
@@ -191,7 +191,7 @@ async def list_saved_items(
                     "title": localization.name if localization else food.romanized_name,
                     "subtitle": food.local_name,
                     "map_links": [],
-                    "saved_at": favorite.created_at,
+                    "saved_at": food_favorite.created_at,
                 }
             )
     if type in {"all", "merchant"}:
@@ -226,7 +226,7 @@ async def list_saved_items(
             primary_categories.setdefault(
                 link.merchant_id, localized_name(category.names_json, locale)
             )
-        for favorite, merchant, area in merchant_rows:
+        for merchant_favorite, merchant, area in merchant_rows:
             profile = destination_for_id(merchant.destination_id)
             city_name = profile.city if profile else merchant.destination_id
             detail = (
@@ -255,7 +255,7 @@ async def list_saved_items(
                         map_match_status=merchant.map_match_status,
                         map_identities=catalog_map_identities(merchant),
                     ),
-                    "saved_at": favorite.created_at,
+                    "saved_at": merchant_favorite.created_at,
                 }
             )
     if type in {"all", "restaurant"}:
@@ -269,7 +269,7 @@ async def list_saved_items(
                 )
             )
         ).all()
-        for favorite, place in restaurant_rows:
+        for restaurant_favorite, place in restaurant_rows:
             items.append(
                 {
                     "type": "restaurant",
@@ -284,11 +284,11 @@ async def list_saved_items(
                             "primary": True,
                         }
                     ],
-                    "saved_at": favorite.created_at,
+                    "saved_at": restaurant_favorite.created_at,
                 }
             )
     if type in {"all", "service"}:
-        for favorite, product in (
+        for service_favorite, product in (
             await session.execute(
                 select(TravelServiceFavorite, TravelServiceProduct)
                 .join(
@@ -309,7 +309,7 @@ async def list_saved_items(
                     "map_identities": catalog_map_identities(product)
                     if product.status == "approved" else {},
                     "href": f"/destinations/{product.destination_id}/services?product={product.id}",
-                    "saved_at": favorite.created_at,
+                    "saved_at": service_favorite.created_at,
                 }
             )
     items.sort(key=lambda item: item["saved_at"], reverse=True)
