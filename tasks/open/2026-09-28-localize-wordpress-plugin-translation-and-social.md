@@ -1,7 +1,7 @@
 ---
 id: 2026-09-28-localize-wordpress-plugin-translation-and-social
 title: Localize WordPress plugin translation and social embeds guides
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: codex-batch034-two-guides
@@ -46,7 +46,7 @@ remain under review and are outside this task.
   source titles.
 - [x] Render and inspect localized visuals and run structural/content checks.
 - [x] Run scoped lint, relevant API tests, and task validation.
-- [ ] Open draft PR; retain the task in review until merge.
+- [x] Open draft PR; retain the task in review until merge.
 
 ## How to verify
 
@@ -74,3 +74,5 @@ remain under review and are outside this task.
 - Related API tests: 23 passed, 7 skipped. `npm run check:tasks` passed with
   warnings from unrelated longstanding task claims. No import, production
   write, or publication has occurred.
+- Draft PR: https://github.com/x812033727/travel_scanner/pull/889 . Keep this
+  task in review while the PR is open; merge and publication are separate.
