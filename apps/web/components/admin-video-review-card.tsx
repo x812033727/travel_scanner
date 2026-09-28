@@ -345,30 +345,40 @@ function LookBody({ slug, review, choice, onChoice, disabled }: { slug: string; 
   </div>;
 }
 
-/** The storyboard gate: every shot's keyframe with the judge's verdict, and the contact sheet. */
+/** The storyboard gate: uploaded keyframes and every contact-sheet page, with the judge's verdict. */
 function StoryboardBody({ slug, review }: { slug: string; review: Review }) {
   const t = useTranslations("admin.videoReviews");
   const shots = list(review.payload.shots).map(record);
   const duplicates = list(review.payload.duplicates).map(record);
-  const sheet = fileUrl(slug, fileFor(review, "contact_sheet"));
+  const metadata = list(review.payload.sheets).map(record);
+  // Long boards upload numbered sheets instead of most individual keyframes. Only
+  // attached files are renderable; optional payload metadata supplies the shot mapping.
+  const sheets = review.files
+    .filter((file, index, files) => /^contact_sheet(?:_\d+)?$/.test(file.role) && files.findIndex(other => other.role === file.role) === index)
+    .sort((a, b) => a.role.localeCompare(b.role, "en", { numeric: true }))
+    .map(file => ({ file, shots: metadata.filter(page => text(page.role) === file.role).flatMap(page => list(page.shots).map(text)) }));
+  const sheetLabel = (index: number) => sheets.length === 1 ? t("contactSheet") : `${t("contactSheet")} ${index + 1} / ${sheets.length}`;
   return <div className="grid gap-4">
     <p className="leading-7"><strong>{t("checks")}</strong> <JudgeLine value={review.payload.judge} /></p>
     {duplicates.length > 0 && <p className="text-sm leading-6 text-[var(--muted)]">{t("lookAlike", { pairs: duplicates.map((pair) => `${text(pair.a)}／${text(pair.b)}`).join("、") })}</p>}
     {shots.length > 0 && <ol className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">{shots.map((shot, index) => {
       const src = fileUrl(slug, fileFor(review, text(shot.file_role)));
+      const page = sheets.findIndex(sheet => sheet.shots.includes(text(shot.id)));
       return <li key={text(shot.id) || index} className={`grid gap-2 rounded-2xl border p-3 ${shot.needs_review === true ? "border-amber-600" : "border-[var(--line)]"}`}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         {src && <img src={src} alt={text(shot.id)} className="aspect-video w-full rounded-xl object-cover" loading="lazy" />}
+        {!src && page >= 0 && <a href={fileUrl(slug, sheets[page].file)} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-[var(--teal)] underline underline-offset-4">{sheetLabel(page)}</a>}
         <span className="font-bold">{index + 1}. {text(shot.id)}{text(shot.chapter) && <span className="text-sm font-normal text-[var(--muted)]"> · {text(shot.chapter)}</span>}{typeof shot.seconds === "number" && <span className="text-sm font-normal text-[var(--muted)]"> · {t("seconds", { seconds: shot.seconds })}</span>}</span>
         {shot.needs_review === true && <span className="text-sm font-semibold text-amber-800">{t("shotNeedsReview")}</span>}
         <span className="text-sm leading-6">{text(shot.prompt)}</span>
         <JudgeLine value={shot.judge} />
       </li>;
     })}</ol>}
-    {sheet && <details className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{t("contactSheet")}</summary>
+    {sheets.map((sheet, index) => <details key={sheet.file.role} className="rounded-2xl border border-[var(--line)] p-4"><summary className="cursor-pointer font-bold">{sheetLabel(index)}</summary>
+      {sheet.shots.length > 0 && <p className="mt-3 break-words text-xs text-[var(--muted)]">{[...new Set(sheet.shots)].join(" · ")}</p>}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={sheet} alt={t("contactSheet")} className="mt-3 w-full rounded-xl" loading="lazy" />
-    </details>}
+      <img src={fileUrl(slug, sheet.file)} alt={sheetLabel(index)} className="mt-3 w-full rounded-xl" loading="lazy" />
+    </details>)}
   </div>;
 }
 
