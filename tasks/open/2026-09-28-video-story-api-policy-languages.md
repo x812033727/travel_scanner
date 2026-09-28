@@ -1,14 +1,14 @@
 ---
 id: 2026-09-28-video-story-api-policy-languages
 title: 故事版立場檢查、自動語系、釋放名額、媒體每小時上限與 Flash 單價
-status: open
+status: in-progress
 priority: P1
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-video-story-policy
+claimed_at: 2026-09-28T11:46:43Z
 created_at: 2026-09-28T03:31:13Z
 completed_at:
-branch:
+branch: claude/video-story-api-policy-languages
 depends_on:
   - 2026-09-28-video-story-api-series-kind
 scope:
@@ -60,3 +60,4 @@ cd apps/api && uv run ruff check . && uv run mypy app && uv run mypy tests && uv
 - Jev 只讀文字、不會算數也讀不準日期（`apps/api/app/ai/jev.py` 開頭），題組只問文字判斷；事實對不對是查核階段的事。
 - 改單價前再讀一次官方價目頁，數字與日期寫進目錄的備註。2026-09-28 讀到的是：Flash 0.5K US$0.045、1K US$0.067、2K US$0.101、4K US$0.151；Pro 1K–2K US$0.134。
 - 如果試作發現 1K 放大後不夠清楚，要在 adapter 送尺寸參數改成 2K；那會讓每支成本從約 US$9 變成約 US$13，改之前先問站主。
+- 2026-09-28 認領（claude-opus-5-5-video-story-policy）：`claim` 因為相依的 `2026-09-28-video-story-api-series-kind` 還沒結案而拒絕。那張票的工作已經做完並推上去（PR #910，草稿），它的代理只在等整套測試跑完才 `done`；這個分支從 `origin/claude/video-story-api-series-kind`（`20a5af61`）開出、再併入 main（`5b35df86`），所以用 `--force` 認領。認領前查過：沒有 `policy-languages` 的遠端分支與開著的 PR。
