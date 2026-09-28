@@ -49,6 +49,14 @@ and the existing-video Studio link. Resize to a narrow mobile viewport and check
 
 ## Notes
 
+- CI run 36385509808 reached the intended UI, but all 20 manual cases failed
+  because actual downloads returned `canceled`; 503 unrelated browser cases passed.
+  A minimal real Edge probe reproduced that `<a download>` bypasses `context.route`:
+  a missing HTTP file cancels the download even with a route fixture; serving it over
+  HTTP saves the expected filename and bytes. Receipt: test-results/pr890-download-probe.json.
+  Serve seven fixed synthetic files in the runtime API and let the real streaming BFF
+  handle downloads. Keep all saved-file content/name assertions. Full CI and visual
+  evidence remain pending; this does not claim a real YouTube upload.
 - The first CI browser run reached the real server-side forbidden screen in all 20 cases:
   the isolated bootstrap omitted `/admin/videos`, so `canAccessAdminPath` correctly rejected it.
   Extend this task to the mock navigation and its owner/role matrix (no active claims on either
